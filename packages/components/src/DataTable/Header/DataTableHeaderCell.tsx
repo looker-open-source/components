@@ -33,6 +33,7 @@ import { Truncate } from '../../Truncate'
 import { useClickable } from '../../utils'
 import { columnSize, sizeInfersTruncate } from '../Column/columnSize'
 import { DataTableColumn } from '../Column'
+import { FocusableCell } from '../Column/FocusableCell'
 
 export interface DataTableHeaderCellProps extends DataTableColumn {
   className?: string
@@ -59,7 +60,7 @@ const DataTableHeaderCellLayout = forwardRef(
         onSort(id, sortDirection === 'asc' ? 'desc' : 'asc')
       }
     }
-    const clickableProps = useClickable({ onClick })
+    const { role, ...clickableProps } = useClickable({ onClick })
 
     const label = titleIcon ? (
       <Tooltip content={title}>
@@ -71,7 +72,8 @@ const DataTableHeaderCellLayout = forwardRef(
       title
     )
     return (
-      <th
+      <FocusableCell
+        as="th"
         aria-sort={
           sortDirection === 'asc'
             ? 'ascending'
@@ -83,7 +85,6 @@ const DataTableHeaderCellLayout = forwardRef(
         ref={ref}
         style={{ cursor: canSort ? 'pointer' : undefined }}
         {...clickableProps}
-        tabIndex={-1}
       >
         <Space gap="xxsmall" reverse={type === 'number'}>
           {label}
@@ -94,7 +95,7 @@ const DataTableHeaderCellLayout = forwardRef(
             ></Icon>
           )}
         </Space>
-      </th>
+      </FocusableCell>
     )
   }
 )
@@ -107,7 +108,4 @@ export const DataTableHeaderCell = styled(DataTableHeaderCellLayout)`
   color: ${(props) => props.theme.colors.text5};
   font-weight: ${(props) => props.theme.fontWeights.semiBold};
   text-align: left;
-  :focus {
-    outline: none;
-  }
 `

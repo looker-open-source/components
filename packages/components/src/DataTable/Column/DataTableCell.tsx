@@ -40,6 +40,7 @@ import { Paragraph } from '../../Text'
 import { Truncate } from '../../Truncate'
 import { useForkedRef } from '../../utils'
 import { columnSize, DataTableColumnSize } from './columnSize'
+import { FocusableCell } from './FocusableCell'
 
 export interface DataTableCellProps
   extends CompatibleHTMLProps<HTMLTableDataCellElement> {
@@ -117,17 +118,16 @@ const DataTableCellLayout = forwardRef(
       )
     }
     return (
-      <td
+      <FocusableCell
         focusVisible={isFocusVisible}
         onBlur={handleOnBlur}
         onClick={onClick}
         onKeyUp={handleOnKeyUp}
         ref={forkedRef}
-        tabIndex={-1}
         {...props}
       >
         {content}
-      </td>
+      </FocusableCell>
     )
   }
 )
@@ -136,10 +136,6 @@ DataTableCellLayout.displayName = 'DataTableCellLayout'
 
 export const DataTableCell = styled(DataTableCellLayout)`
   ${columnSize}
-
-  ${({ focusVisible, theme: { colors } }) =>
-    focusVisible && `border: 1px solid ${colors.key};`}
-
   a,
   ${Link} {
     color: inherit;
@@ -149,8 +145,5 @@ export const DataTableCell = styled(DataTableCellLayout)`
       outline: none;
       text-decoration: underline;
     }
-  }
-  :focus {
-    outline: none;
   }
 `
