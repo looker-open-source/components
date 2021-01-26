@@ -13,7 +13,7 @@ a ReachNode and will be displayed above the main `content`.
   const toggleExplore = () => setExplore(!explore)
   const title = (
     <>
-      <Icon color="inform" name="ArrowBackward" mr="small" />
+      <Icon name="ExploreOutline" mr="small" />
       Explore
     </>
   )
@@ -27,7 +27,7 @@ a ReachNode and will be displayed above the main `content`.
               <MenuItem onClick={toggleExplore} icon="ExploreOutline">
                 Explore
               </MenuItem>
-              <Panel title="Develop" content={'content from display...'}>
+              <Panel content={'content from display...'} title="Develop">
                 <MenuItem icon="Code">Develop</MenuItem>
               </Panel>
               <MenuItem icon="Group">Admin</MenuItem>
@@ -35,10 +35,6 @@ a ReachNode and will be displayed above the main `content`.
           </MenuList>
 
           <Panel
-            isOpen={explore}
-            setOpen={setExplore}
-            direction="left"
-            title={title}
             content={
               <MenuList>
                 <MenuItem icon="ArrowRight">DCL</MenuItem>
@@ -46,6 +42,10 @@ a ReachNode and will be displayed above the main `content`.
                 <MenuItem icon="ArrowRight">Licence</MenuItem>
               </MenuList>
             }
+            direction="left"
+            isOpen={explore}
+            setOpen={setExplore}
+            title={title}
           />
         </Panels>
       </Aside>

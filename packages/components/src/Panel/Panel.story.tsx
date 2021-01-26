@@ -42,7 +42,7 @@ export const Basic = () => {
 
   const title = (
     <>
-      <Icon color="inform" name="ArrowBackward" m="xsmall" />
+      <Icon name="ExploreOutline" m="xsmall" />
       Explore
     </>
   )
@@ -56,7 +56,7 @@ export const Basic = () => {
               <MenuItem onClick={toggleExplore} icon="ExploreOutline">
                 Explore
               </MenuItem>
-              <Panel title="Develop" content={'content from display...'}>
+              <Panel content={'content from display...'} title="Develop">
                 <MenuItem icon="Code">Develop</MenuItem>
               </Panel>
               <MenuItem icon="Group">Admin</MenuItem>
@@ -64,10 +64,6 @@ export const Basic = () => {
           </MenuList>
 
           <Panel
-            isOpen={explore}
-            setOpen={setExplore}
-            direction="left"
-            title={title}
             content={
               <MenuList>
                 <MenuItem icon="ArrowRight">DCL</MenuItem>
@@ -75,6 +71,10 @@ export const Basic = () => {
                 <MenuItem icon="ArrowRight">Licence</MenuItem>
               </MenuList>
             }
+            direction="left"
+            isOpen={explore}
+            setOpen={setExplore}
+            title={title}
           />
         </Panels>
       </Aside>

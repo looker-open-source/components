@@ -52,7 +52,7 @@ export const Panel: FC<PanelProps> = ({ children, content, ...props }) => {
   } else {
     // eslint-disable-next-line no-console
     console.warn(
-      `Element "${typeof children}" can't be used as target for Drawer`
+      `Element "${typeof children}" can't be used as target for Panel`
     )
   }
 

@@ -51,12 +51,8 @@ const PanelHeaderLayout: FC<HeaderPanelProps> = ({
   const icon = direction === 'left' ? 'ArrowLeft' : 'ArrowRight'
 
   return (
-    <header className={className}>
-      <IconButton
-        icon={icon}
-        label={`Close ${title} navigation`}
-        onClick={handleClose}
-      />
+    <header className={className} onClick={handleClose}>
+      <IconButton icon={icon} label={`Close ${title} navigation`} />
       <Heading>{title}</Heading>
     </header>
   )
