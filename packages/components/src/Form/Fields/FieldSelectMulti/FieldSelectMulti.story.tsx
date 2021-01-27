@@ -34,7 +34,8 @@ import { UnorderedList } from '../../../UnorderedList'
 import { Heading, Text } from '../../../Text'
 import { parseOption } from '../../Inputs/Combobox'
 import { SelectOptionProps, SelectOptionObject } from '../../Inputs/Select'
-import { options1k } from '../FieldSelect/options1k'
+import { cheeseOptions } from '../../Inputs/Select/stories/options'
+import { options1k } from '../../Inputs/Select/stories/options1k'
 import { FieldSelectMulti, FieldSelectMultiProps } from './FieldSelectMulti'
 
 const Template: Story<FieldSelectMultiProps> = (args) => (
@@ -216,14 +217,12 @@ const TestIndicator = () => {
 }
 
 export const SelectMultiDemo = () => {
-  const [cheeseOptions, setCheeseOptions] = useState([] as SelectOptionObject[])
+  const [delayedCheeseOptions, setCheeseOptions] = useState(
+    [] as SelectOptionObject[]
+  )
   useEffect(() => {
     const t = window.setTimeout(() => {
-      setCheeseOptions([
-        { label: 'Cheddar', value: 'cheddar' },
-        { label: 'Gouda', value: 'gouda' },
-        { label: 'Swiss', value: 'swiss' },
-      ])
+      setCheeseOptions(cheeseOptions)
     }, 2000)
     return () => {
       window.clearTimeout(t)
@@ -306,7 +305,7 @@ export const SelectMultiDemo = () => {
           placeholder="placeholder"
           description="this is the description"
           values={['cheddar']}
-          options={cheeseOptions}
+          options={delayedCheeseOptions}
           autoFocus
         />
       </SpaceVertical>
