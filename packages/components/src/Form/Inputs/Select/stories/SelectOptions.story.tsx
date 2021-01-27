@@ -26,13 +26,13 @@
 
 import { Story } from '@storybook/react/types-6-0'
 import React from 'react'
-import { ComboboxContext, ComboboxMultiContext, ComboboxUl } from '../Combobox'
 import {
-  cheeseOptions,
-  iconOptions,
-  optionsWithGroups,
-} from './stories/options'
-import { SelectOptions, SelectOptionsProps } from './SelectOptions'
+  ComboboxContext,
+  ComboboxMultiContext,
+  ComboboxUl,
+} from '../../Combobox'
+import { SelectOptions, SelectOptionsProps } from '../SelectOptions'
+import { cheeseOptions, iconOptions, optionsWithGroups } from './options'
 
 const Template: Story<SelectOptionsProps> = (args) => (
   <ComboboxContext.Provider
@@ -78,7 +78,7 @@ export const Overline = Template.bind({})
 Overline.args = {
   options: cheeseOptions.map((option) => ({
     ...option,
-    overline: "I'm a little teapot",
+    overline: 'Overline Text',
   })),
 }
 
@@ -94,7 +94,7 @@ KitchenSink.args = {
     description: "I'm a little teapot",
     detail: '0/50',
     icon: 'Favorite',
-    overline: "I'm a little teapot",
+    overline: 'Overline Text',
   })),
 }
 

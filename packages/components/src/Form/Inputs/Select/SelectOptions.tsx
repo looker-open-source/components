@@ -62,13 +62,6 @@ export function getSelectOptionIconProps(icon: SelectOptionIcon) {
   return isIconName(icon) ? { name: icon } : { artwork: icon }
 }
 
-const StyledIcon = styled(Icon)<{ hasOverline: boolean }>`
-  /* For proper alignment with option text */
-  height: ${({ theme }) => theme.lineHeights.small};
-  margin-top: ${({ hasOverline, theme }) =>
-    hasOverline ? theme.lineHeights.small : '0px'};
-`
-
 interface OptionLayoutProps
   extends Pick<ComboboxOptionIndicatorProps, 'indicator'> {
   option: SelectOptionObject
@@ -109,18 +102,19 @@ const OptionLayout = ({ option, ...rest }: OptionLayoutProps) => {
     <IconPlaceholder size="small" data-testid="option-icon-placeholder" />
   ) : undefined
 
-  const indicator = option.icon ? (
-    <StyledIcon
-      size="small"
-      mr="xsmall"
-      hasOverline={option.overline !== undefined}
-      color="text1"
-      {...getSelectOptionIconProps(option.icon)}
-      data-testid="option-icon"
-    />
-  ) : (
-    option.indicator || indicatorPropRef?.current || iconPlaceholder
-  )
+  const indicator = option.icon
+    ? // Use a function since otherwise isActive & isSelected are passed via cloneElement
+      () => (
+        <Icon
+          size="small"
+          mr="xsmall"
+          color="text1"
+          {...getSelectOptionIconProps(option.icon)}
+          data-testid="option-icon"
+          mt={option.overline ? 'large' : 'none'}
+        />
+      )
+    : option.indicator || indicatorPropRef?.current || iconPlaceholder
 
   if (option.icon && option.indicator) {
     // eslint-disable-next-line no-console
