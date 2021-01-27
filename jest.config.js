@@ -28,7 +28,6 @@ process.env.TZ = 'UTC'
 module.exports = {
   automock: false,
   collectCoverage: true,
-  coverageDirectory: 'coverage',
   coverageReporters: ['json', 'html'],
   moduleDirectories: ['./node_modules', './packages'],
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json', 'node'],

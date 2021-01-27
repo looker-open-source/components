@@ -47,7 +47,6 @@
 
     "pretest": "yarn prebuild",
     "test": "yarn jest",
-    "coverage": "yarn jest --coverage",
 
     "storybook": "yarn workspace storybook develop",
     "storybook-docs": "yarn workspace storybook develop-docs",
