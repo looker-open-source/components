@@ -26,7 +26,7 @@
 
 import { Story } from '@storybook/react/types-6-0'
 import React from 'react'
-import { ComboboxContext, ComboboxUl } from '../Combobox'
+import { ComboboxContext, ComboboxMultiContext, ComboboxUl } from '../Combobox'
 import {
   cheeseOptions,
   iconOptions,
@@ -41,7 +41,7 @@ const Template: Story<SelectOptionsProps> = (args) => (
         navigationOption: { value: 'cheddar' },
         option: { value: 'swiss' },
       },
-      listClientRect: { height: 600 } as DOMRect,
+      listClientRect: { height: 1000 } as DOMRect,
       listScrollPosition: 0,
     }}
   >
@@ -109,6 +109,50 @@ Loading.parameters = {
 }
 
 export const NoOptions = Template.bind({})
+
+const TemplateMulti: Story<SelectOptionsProps> = (args) => (
+  <ComboboxMultiContext.Provider
+    value={{
+      data: {
+        navigationOption: { value: 'cheddar' },
+        options: [{ value: 'swiss' }],
+      },
+      listClientRect: { height: 1000 } as DOMRect,
+      listScrollPosition: 0,
+    }}
+  >
+    <ComboboxUl height="100%">
+      <SelectOptions {...args} />
+    </ComboboxUl>
+  </ComboboxMultiContext.Provider>
+)
+
+export const BasicMulti = TemplateMulti.bind({})
+BasicMulti.args = {
+  isMulti: true,
+  options: cheeseOptions,
+}
+
+export const DetailMulti = TemplateMulti.bind({})
+DetailMulti.args = {
+  isMulti: true,
+  options: cheeseOptions.map((option) => ({ ...option, detail: '0/50' })),
+}
+
+export const DescriptionMulti = TemplateMulti.bind({})
+DescriptionMulti.args = {
+  isMulti: true,
+  options: cheeseOptions.map((option) => ({
+    ...option,
+    description: "I'm a little teapot",
+  })),
+}
+
+export const GroupsMulti = TemplateMulti.bind({})
+GroupsMulti.args = {
+  isMulti: true,
+  options: optionsWithGroups,
+}
 
 export default {
   component: SelectOptions,
