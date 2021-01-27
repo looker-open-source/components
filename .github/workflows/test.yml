@@ -32,6 +32,8 @@ jobs:
       - uses: c-hive/gha-yarn-cache@v1
       - run : yarn --silent
       - run: yarn test
+      - name: TestCoverage
+        uses: anuraag016/Jest-Coverage-Diff@v1.0
     env:
       CI: true
   build:
