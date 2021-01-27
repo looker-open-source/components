@@ -10,8 +10,8 @@
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@looker/components-providers": "^0.10.4",
-    "@storybook/addon-essentials": "^6.1.10",
-    "@storybook/addon-storyshots": "^6.1.10",
+    "@storybook/addon-essentials": "^6.1.15",
+    "@storybook/addon-storyshots": "^6.1.15",
     "@storybook/addon-storyshots-puppeteer": "^6.1.15",
     "@types/react": "^16.9.56",
     "babel-loader": "^8.2.2",

@@ -37,6 +37,6 @@ import initStoryshots from '@storybook/addon-storyshots'
  */
 
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { storyshotsConfig } from '@looker/storybook-config'
+import { imageSnapshots } from '@looker/storybook-config'
 
-initStoryshots(storyshotsConfig(path.resolve(__dirname, '../')))
+initStoryshots(imageSnapshots(path.resolve(__dirname, '../')))

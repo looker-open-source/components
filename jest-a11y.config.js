@@ -24,8 +24,21 @@
 
  */
 
-const main = require('@looker/storybook-config/src/main')
+process.env.TZ = 'UTC'
+
 module.exports = {
-  ...main,
-  stories: ['../src/**/*.stories.tsx', '../../packages/**/*.story.tsx'],
+  moduleDirectories: ['./node_modules', './packages'],
+  moduleFileExtensions: ['js', 'json', 'ts', 'tsx'],
+  moduleNameMapper: {
+    '@looker/(.+)$': '<rootDir>/packages/$1/src',
+    '\\.(css)$': '<rootDir>/config/jest/styleMock.js',
+    '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)$':
+      '<rootDir>/config/jest/fileMock.js',
+  },
+  roots: ['<rootDir>'],
+  testEnvironment: 'jsdom',
+  testMatch: ['**/*.a11y.ts'],
+  transform: {
+    '^.+\\.(js|jsx|ts|tsx)$': 'babel-jest',
+  },
 }

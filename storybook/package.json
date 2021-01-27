@@ -16,7 +16,7 @@
     "@looker/components-theme-editor": "^0.10.4",
     "@looker/design-tokens": "^0.10.4",
     "@looker/icons": "^0.10.4",
-    "@storybook/react": "^6.1.10",
+    "@storybook/react": "^6.1.15",
     "lodash": "^4.17.20",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
@@ -25,9 +25,9 @@
   },
   "devDependencies": {
     "@babel/core": "7.12.10",
-    "@looker/components-providers": "*",
-    "@storybook/addon-essentials": "^6.1.10",
-    "@storybook/addon-storyshots": "^6.1.10",
+    "@storybook/addon-a11y": "^6.1.15",
+    "@storybook/addon-essentials": "^6.1.15",
+    "@storybook/addon-storyshots": "^6.1.15",
     "babel-loader": "^8.2.2"
   }
 }

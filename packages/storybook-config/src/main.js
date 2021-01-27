@@ -36,7 +36,7 @@ const addonEssentials = {
 }
 
 const config = {
-  addons: [addonEssentials],
+  addons: [addonEssentials, '@storybook/addon-a11y'],
   stories: ['../**/*.story.tsx'],
   webpackFinal: async (config) => {
     config.module.rules.push({
@@ -50,7 +50,6 @@ const config = {
     config.module.rules.push({
       exclude: [
         excludeNodeModulesExcept([
-          'merge-anything', // a transitive dependency
           'react-hotkeys-hook', // ditto
         ]),
       ],
@@ -95,6 +94,6 @@ if (mode === 'fast') {
 }
 
 /* eslint-disable-next-line no-console */
-mode && console.log('Storybook build bode:', mode, '\n', config)
+mode && console.log('Storybook build mode:', mode, '\n', config)
 
 module.exports = config
