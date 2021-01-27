@@ -32,6 +32,7 @@ import { IconButton } from '../Button'
 export interface HeaderPanelProps {
   className?: string
   /**
+   * defines the icon displayed and the direction that the panel will appear and disappear
    * @default 'left'
    */
   direction?: 'left'
@@ -59,6 +60,5 @@ const PanelHeaderLayout: FC<HeaderPanelProps> = ({
 }
 
 export const PanelHeader = styled(PanelHeaderLayout)`
-  cursor: pointer;
-  display: inline-flex;
+  display: flex;
 `

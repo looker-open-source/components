@@ -26,7 +26,7 @@
 
 import React, { useState } from 'react'
 // import { Story } from '@storybook/react/types-6-0'
-import { MenuItem, MenuGroup, MenuList } from '../Menu'
+import { List, ListItem } from '../List'
 import { Aside, Page, Section } from '../Layout'
 import { Icon } from '../Icon'
 import { Panel, Panels, usePanel } from './'
@@ -43,7 +43,7 @@ export const Basic = () => {
   const title = (
     <>
       <Icon name="ExploreOutline" m="xsmall" />
-      Explore
+      Dog
     </>
   )
 
@@ -51,25 +51,23 @@ export const Basic = () => {
     <Page hasAside>
       <Aside width="12rem">
         <Panels>
-          <MenuList>
-            <MenuGroup label="Looker">
-              <MenuItem onClick={toggleExplore} icon="ExploreOutline">
-                Explore
-              </MenuItem>
-              <Panel content={'content from display...'} title="Develop">
-                <MenuItem icon="Code">Develop</MenuItem>
-              </Panel>
-              <MenuItem icon="Group">Admin</MenuItem>
-            </MenuGroup>
-          </MenuList>
+          <List>
+            <ListItem onClick={toggleExplore} icon="ExploreOutline">
+              Dog
+            </ListItem>
+            <Panel content={'content from display...'} title="Cat">
+              <ListItem icon="Code">Cat</ListItem>
+            </Panel>
+            <ListItem icon="Group">Fox</ListItem>
+          </List>
 
           <Panel
             content={
-              <MenuList>
-                <MenuItem icon="ArrowRight">DCL</MenuItem>
-                <MenuItem icon="ArrowRight">Internal Issues</MenuItem>
-                <MenuItem icon="ArrowRight">Licence</MenuItem>
-              </MenuList>
+              <List>
+                <ListItem icon="ArrowRight">Monkey</ListItem>
+                <ListItem icon="ArrowRight">Bear</ListItem>
+                <ListItem icon="ArrowRight">Rabbit</ListItem>
+              </List>
             }
             direction="left"
             isOpen={explore}
@@ -103,14 +101,12 @@ export const Hook = () => {
   return (
     <>
       {panel}
-      <MenuList>
-        <MenuGroup>
-          <MenuItem onClick={open} icon="Check">
-            Option A
-          </MenuItem>
-          <MenuItem icon="Check">Option B</MenuItem>
-        </MenuGroup>
-      </MenuList>
+      <List>
+        <ListItem onClick={open} icon="Check">
+          Option A
+        </ListItem>
+        <ListItem icon="Check">Option B</ListItem>
+      </List>
     </>
   )
 }

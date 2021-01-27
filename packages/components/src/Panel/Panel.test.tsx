@@ -30,7 +30,6 @@ import 'jest-styled-components'
 import React, { useState } from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { Icon } from '../Icon'
-import { MenuGroup, MenuItem, MenuList } from '../Menu'
 import { Panel, Panels, usePanel } from './'
 
 describe('Panel', () => {
@@ -51,14 +50,10 @@ describe('Panel', () => {
     return (
       <>
         {panel}
-        <MenuList>
-          <MenuGroup>
-            <MenuItem onClick={open} icon="Check">
-              Option A
-            </MenuItem>
-            <MenuItem icon="Check">Option B</MenuItem>
-          </MenuGroup>
-        </MenuList>
+        <ul>
+          <li onClick={open}>Option A</li>
+          <li>Option B</li>
+        </ul>
       </>
     )
   }
