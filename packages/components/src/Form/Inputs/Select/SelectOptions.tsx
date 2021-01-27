@@ -40,6 +40,7 @@ import {
   ComboboxMultiOption,
   ComboboxOption,
   ComboboxOptionIndicator,
+  ComboboxOptionIndicatorProps,
   ComboboxOptionText,
 } from '../Combobox'
 import {
@@ -68,74 +69,76 @@ const StyledIcon = styled(Icon)<{ hasOverline: boolean }>`
     hasOverline ? theme.lineHeights.small : '0px'};
 `
 
-interface OptionLayoutProps {
+interface OptionLayoutProps
+  extends Pick<ComboboxOptionIndicatorProps, 'indicator'> {
   option: SelectOptionObject
   scrollIntoView?: boolean
 }
 
-const OptionLayout = ({ option, scrollIntoView }: OptionLayoutProps) => {
-  const { description, detail, icon, overline, ...rest } = option
+interface OptionLayoutBaseProps extends OptionLayoutProps {
+  isMulti?: boolean
+}
+
+const OptionLayoutBase = ({
+  isMulti,
+  option,
+  scrollIntoView,
+}: OptionLayoutBaseProps) => {
+  const { description, detail, overline, ...rest } = option
+  const Component = isMulti ? ComboboxMultiOption : ComboboxOption
+
+  if (description || detail || overline) {
+    return (
+      <Component {...rest} py="xxsmall" scrollIntoView={scrollIntoView}>
+        <SelectOptionWithDescription
+          description={description}
+          overline={overline}
+          {...rest}
+        />
+        {detail && <ListItemDetail>{detail}</ListItemDetail>}
+      </Component>
+    )
+  }
+  return <Component {...rest} />
+}
+
+const OptionLayout = ({ option, ...rest }: OptionLayoutProps) => {
   const { hasIcons } = useContext(SelectOptionsContext)
+  const { indicatorPropRef } = useContext(ComboboxContext)
+  const iconPlaceholder = hasIcons ? (
+    <IconPlaceholder size="small" data-testid="option-icon-placeholder" />
+  ) : undefined
 
-  if (detail || hasIcons || description || overline) {
-    const iconToUse = icon ? (
-      <StyledIcon
-        size="small"
-        mr="xsmall"
-        hasOverline={overline !== undefined}
-        color="text1"
-        {...getSelectOptionIconProps(icon)}
-        data-testid="option-icon"
-      />
-    ) : hasIcons ? (
-      <IconPlaceholder size="small" data-testid="option-icon-placeholder" />
-    ) : null
+  const indicator = option.icon ? (
+    <StyledIcon
+      size="small"
+      mr="xsmall"
+      hasOverline={option.overline !== undefined}
+      color="text1"
+      {...getSelectOptionIconProps(option.icon)}
+      data-testid="option-icon"
+    />
+  ) : (
+    option.indicator || indicatorPropRef?.current || iconPlaceholder
+  )
 
-    return (
-      <ComboboxOption {...rest} py="xxsmall" scrollIntoView={scrollIntoView}>
-        {iconToUse}
-        {description || overline ? (
-          <SelectOptionWithDescription
-            description={description}
-            overline={overline}
-            {...rest}
-          />
-        ) : (
-          <ComboboxOptionText />
-        )}
-        {detail && <ListItemDetail>{detail}</ListItemDetail>}
-      </ComboboxOption>
-    )
+  if (option.icon && option.indicator) {
+    // eslint-disable-next-line no-console
+    console.warn('Use icon or indicator but not both at the same time.')
   }
-  return <ComboboxOption {...rest} />
+
+  return <OptionLayoutBase {...rest} option={{ ...option, indicator }} />
 }
 
-const MultiOptionLayout = ({ option, scrollIntoView }: OptionLayoutProps) => {
-  const { description, detail, ...rest } = option
-  if (description || detail) {
-    return (
-      <ComboboxMultiOption
-        {...rest}
-        py="xxsmall"
-        scrollIntoView={scrollIntoView}
-      >
-        {description ? (
-          <SelectOptionWithDescription description={description} {...rest} />
-        ) : (
-          <ComboboxOptionText />
-        )}
-        {detail && <ListItemDetail>{detail}</ListItemDetail>}
-      </ComboboxMultiOption>
-    )
-  }
-  return <ComboboxMultiOption {...rest} />
-}
+const MultiOptionLayout = (props: OptionLayoutProps) => (
+  <OptionLayoutBase {...props} isMulti />
+)
 
 export function SelectOptionWithDescription({
   description,
   overline,
 }: SelectOptionObject) {
-  return (
+  return description || overline ? (
     <Box>
       {overline && <ListItemOverline>{overline}</ListItemOverline>}
       {description ? (
@@ -156,6 +159,8 @@ export function SelectOptionWithDescription({
         <ComboboxOptionText />
       )}
     </Box>
+  ) : (
+    <ComboboxOptionText />
   )
 }
 
