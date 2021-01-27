@@ -47,19 +47,21 @@ import { ComboboxOptionObject } from '../../Inputs/Combobox'
 import { SelectOptionProps, SelectOptionGroupProps } from '../../Inputs/Select'
 import { useToggle } from '../../../utils'
 import { FieldToggleSwitch } from '../FieldToggleSwitch'
+import {
+  cheeseOptions,
+  iconOptions,
+  options,
+  optionsWithGroups,
+} from '../../Inputs/Select/stories/options'
+import { options1k } from '../../Inputs/Select/stories/options1k'
 import { FieldSelect, FieldSelectProps } from './FieldSelect'
-import { options1k } from './options1k'
 
 const Template: Story<FieldSelectProps> = (args) => <FieldSelect {...args} />
 
 export const Basic = Template.bind({})
 Basic.args = {
   label: 'Label',
-  options: [
-    { label: 'Cheddar', value: 'cheddar' },
-    { label: 'Gouda', value: 'gouda' },
-    { label: 'Swiss', value: 'swiss' },
-  ],
+  options: cheeseOptions,
   placeholder: 'Placeholder',
 }
 
@@ -104,57 +106,6 @@ ErrorInline.args = {
   ...Error.args,
   inline: true,
 }
-
-const options = [
-  { label: 'Apples', value: '1' },
-  { label: 'Bananas', value: '2' },
-  { label: 'Oranges', value: '3' },
-  { label: 'Pineapples', value: '4' },
-  { label: 'Kiwis', value: '5' },
-]
-const options2 = [
-  { label: 'Apples2', value: '12' },
-  { label: 'Bananas2', value: '22' },
-  { label: 'Oranges2', value: '32' },
-  { label: 'Pineapples2', value: '42' },
-  { label: 'Kiwis2', value: '52' },
-]
-const options3 = [
-  { label: 'Apples3', value: '13' },
-  { label: 'Bananas3', value: '23' },
-  { label: 'Oranges3', value: '33' },
-  { label: 'Pineapples3', value: '43' },
-  { label: 'Kiwis3', value: '53' },
-]
-const options4 = [
-  { label: 'Apples4', value: '14' },
-  { label: 'Bananas4', value: '24' },
-  { label: 'Oranges4', value: '34' },
-  { label: 'Pineapples4', value: '44' },
-  { label: 'Kiwis4', value: '54' },
-]
-const options5 = [
-  { label: 'Apples5', value: '15' },
-  { label: 'Bananas5', value: '25' },
-  { label: 'Oranges5', value: '35' },
-  { label: 'Pineapples5', value: '45' },
-  { label: 'Kiwis5', value: '55' },
-]
-
-const optionsWithGroups = [
-  { options },
-  { options: options2 },
-  { options: options3 },
-  { options: options4 },
-  { options: options5 },
-  {
-    label: 'CARS',
-    options: [
-      { description: 'Great resale value', label: 'Honda', value: 'honda' },
-      { description: 'Most popular make', label: 'Toyota', value: 'toyota' },
-    ],
-  },
-]
 
 const optionsWithDescriptions = options.map((option: ComboboxOptionObject) => ({
   ...option,
@@ -460,27 +411,6 @@ export const EmptyValue = () => {
 EmptyValue.parameters = {
   storyshots: { disable: true },
 }
-
-const iconOptions = [
-  { icon: 'ChartArea', label: 'Area', value: 'area' },
-  { label: 'ChartNoIcon', value: 'noicon' },
-  { icon: 'ChartBar', label: 'Bar', value: 'bar' },
-  { icon: 'ChartBoxPlot', label: 'Box Plot', value: 'boxplot' },
-  { icon: 'ChartColumn', label: 'Column', value: 'column' },
-  { icon: 'ChartCustom', label: 'Custom', value: 'custom' },
-  { icon: 'ChartDonutMultiples', label: 'Donut', value: 'donut' },
-  { icon: 'ChartFunnel', label: 'Funnel', value: 'funnel' },
-  { icon: 'ChartLine', label: 'Line', value: 'line' },
-  { icon: 'ChartMap', label: 'Map', value: 'map' },
-  { icon: 'ChartPie', label: 'Pie', value: 'pie' },
-  { icon: 'ChartScatterplot', label: 'Scatter Plot', value: 'scatterplot' },
-  { icon: 'ChartSingleRecord', label: 'Single Record', value: 'singlerecord' },
-  { icon: 'ChartSingleValue', label: 'Single Value', value: 'singlevalue' },
-  { icon: 'ChartTable', label: 'Table', value: 'table' },
-  { icon: 'ChartTimeline', label: 'Timeline', value: 'timeline' },
-  { icon: 'ChartWaterfall', label: 'Waterfall', value: 'waterfall' },
-  { icon: 'ChartWordCloud', label: 'Word Cloud', value: 'wordcloud' },
-]
 
 export const OptionIcons = () => {
   const [filterTerm, setFilterTerm] = useState('')

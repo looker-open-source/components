@@ -31,6 +31,7 @@ import { Icon, IconPlaceholder } from '../../../Icon'
 import { Spinner } from '../../../Spinner'
 import { Box } from '../../../Layout'
 import { ListItemDetail } from '../../../List/ListItemDetail'
+import { ListItemOverline } from '../../../List/ListItemOverline'
 import { Heading, HeadingProps, Paragraph, Text } from '../../../Text'
 import { useID } from '../../../utils'
 import {
@@ -60,9 +61,11 @@ export function getSelectOptionIconProps(icon: SelectOptionIcon) {
   return isIconName(icon) ? { name: icon } : { artwork: icon }
 }
 
-const StyledIcon = styled(Icon)`
-  /* For proper alignment with option text and check icon */
+const StyledIcon = styled(Icon)<{ hasOverline: boolean }>`
+  /* For proper alignment with option text */
   height: ${({ theme }) => theme.lineHeights.small};
+  margin-top: ${({ hasOverline, theme }) =>
+    hasOverline ? theme.lineHeights.small : '0px'};
 `
 
 interface OptionLayoutProps {
@@ -71,14 +74,15 @@ interface OptionLayoutProps {
 }
 
 const OptionLayout = ({ option, scrollIntoView }: OptionLayoutProps) => {
-  const { description, detail, icon, ...rest } = option
+  const { description, detail, icon, overline, ...rest } = option
   const { hasIcons } = useContext(SelectOptionsContext)
 
-  if (detail || hasIcons || description) {
+  if (detail || hasIcons || description || overline) {
     const iconToUse = icon ? (
       <StyledIcon
         size="small"
         mr="xsmall"
+        hasOverline={overline !== undefined}
         color="text1"
         {...getSelectOptionIconProps(icon)}
         data-testid="option-icon"
@@ -90,8 +94,12 @@ const OptionLayout = ({ option, scrollIntoView }: OptionLayoutProps) => {
     return (
       <ComboboxOption {...rest} py="xxsmall" scrollIntoView={scrollIntoView}>
         {iconToUse}
-        {description ? (
-          <SelectOptionWithDescription description={description} {...rest} />
+        {description || overline ? (
+          <SelectOptionWithDescription
+            description={description}
+            overline={overline}
+            {...rest}
+          />
         ) : (
           <ComboboxOptionText />
         )}
@@ -125,20 +133,28 @@ const MultiOptionLayout = ({ option, scrollIntoView }: OptionLayoutProps) => {
 
 export function SelectOptionWithDescription({
   description,
+  overline,
 }: SelectOptionObject) {
   return (
     <Box>
-      <Heading
-        fontFamily="body"
-        fontSize="small"
-        fontWeight="semiBold"
-        pb="xxsmall"
-      >
+      {overline && <ListItemOverline>{overline}</ListItemOverline>}
+      {description ? (
+        <>
+          <Heading
+            fontFamily="body"
+            fontSize="small"
+            fontWeight="semiBold"
+            pb="xxsmall"
+          >
+            <ComboboxOptionText />
+          </Heading>
+          <Paragraph color="subdued" fontSize="small">
+            {description}
+          </Paragraph>
+        </>
+      ) : (
         <ComboboxOptionText />
-      </Heading>
-      <Paragraph color="subdued" fontSize="small">
-        {description}
-      </Paragraph>
+      )}
     </Box>
   )
 }
@@ -346,15 +362,15 @@ function SelectCreateOption({
   const { data: dataMulti } = useContext(ComboboxMultiContext)
 
   const inputValue = isMulti ? dataMulti.inputValue : data.inputValue
-  const currentOptions = isMulti
-    ? dataMulti.options
-    : data.option
-    ? [data.option]
-    : []
 
   const shouldShow = useMemo(() => {
+    const currentOptions = isMulti
+      ? dataMulti.options
+      : data.option
+      ? [data.option]
+      : []
     return notInOptions(currentOptions, options, inputValue)
-  }, [currentOptions, options, inputValue])
+  }, [isMulti, data.option, dataMulti.options, options, inputValue])
 
   if (!shouldShow || !inputValue) {
     if (!options || options.length === 0) return <>{noOptions}</>

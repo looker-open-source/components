@@ -91,7 +91,8 @@ export const ComboboxOptionIndicator = styled(ComboboxOptionIndicatorLayout)`
   flex-shrink: 0;
   height: ${(props) => props.theme.lineHeights.small};
   justify-content: center;
-  margin-right: ${(props) => props.theme.space.xxsmall};
+  margin-right: ${({ indicator, theme }) =>
+    indicator ? theme.space.xxsmall : '0px'};
   width: ${({ theme, indicator, isMulti }) =>
     isMulti ? theme.space.xlarge : indicator ? theme.space.medium : '0px'};
 `

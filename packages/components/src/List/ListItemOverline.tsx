@@ -24,38 +24,10 @@
 
  */
 
-import { IconNames } from '@looker/icons'
-import { ReactNode } from 'react'
-import { ComboboxOptionObject, ComboboxOptionIndicatorProps } from '../Combobox'
-import { IconProps } from '../../../Icon'
+import styled from 'styled-components'
 
-export type SelectOptionIcon = IconNames | IconProps['artwork']
-
-export interface SelectOptionObject
-  extends ComboboxOptionObject,
-    Pick<ComboboxOptionIndicatorProps, 'indicator'> {
-  /**
-   * Supplementary element that appears below the option's label
-   */
-  description?: string | ReactNode
-  /**
-   * Supplementary element that appears right of the option's label
-   */
-  detail?: ReactNode
-  /**
-   * Icon shown to the left of the option label in the list and input when selected
-   * Use an IconName, or inline svg for a custom icon
-   */
-  icon?: SelectOptionIcon
-  /**
-   * Supplementary element that appears above the option's label
-   */
-  overline?: string | ReactNode
-}
-
-export interface SelectOptionGroupProps {
-  options: SelectOptionObject[]
-  label?: string | ReactNode
-}
-
-export type SelectOptionProps = SelectOptionObject | SelectOptionGroupProps
+export const ListItemOverline = styled.p`
+  color: ${({ theme: { colors } }) => colors.subdued};
+  font-size: ${({ theme: { fontSizes } }) => fontSizes.small};
+  padding-bottom: ${({ theme: { space } }) => space.xxxsmall};
+`

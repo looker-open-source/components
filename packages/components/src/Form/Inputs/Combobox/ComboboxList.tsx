@@ -258,7 +258,7 @@ const ComboboxListInternal = forwardRef(
 
 ComboboxListInternal.displayName = 'ComboboxListInternal'
 
-const ComboboxUl = styled.ul.withConfig({
+export const ComboboxUl = styled.ul.withConfig({
   shouldForwardProp,
 })<ComboboxListProps>`
   ${reset}
