@@ -37,6 +37,7 @@ import { HoverDisclosureContext, HoverDisclosure, useHovered } from '../utils'
 import { ListItemContext } from './ListItemContext'
 import { ListItemLayout } from './ListItemLayout'
 import { createSafeRel } from './utils'
+import { ItemBackgroundColorProps } from './types'
 
 const TruncateWrapper: FC<{
   color?: string
@@ -75,7 +76,9 @@ interface DetailObject {
   options: DetailOptions
 }
 
-export interface ListItemProps extends CompatibleHTMLProps<HTMLElement> {
+export interface ListItemProps
+  extends CompatibleHTMLProps<HTMLElement>,
+    Omit<ItemBackgroundColorProps, 'hovered'> {
   /*
    * optional extra description
    */
@@ -101,10 +104,6 @@ export interface ListItemProps extends CompatibleHTMLProps<HTMLElement> {
    */
   itemRole?: 'link' | 'button'
   /**
-   * Indicates the ListItem is checked
-   */
-  selected?: boolean
-  /**
    * If true, text children and description will be truncated if text overflows
    */
   truncate?: boolean
@@ -121,6 +120,7 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
     icon,
     iconArtwork,
     itemRole,
+    keyColor,
     onBlur,
     onClick,
     onKeyUp,
@@ -244,14 +244,15 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
   return (
     <HoverDisclosureContext.Provider value={{ visible: hovered }}>
       <ListItemLayout
-        description={description}
         accessory={accessory}
+        className={className}
+        description={description}
         disabled={disabled}
         focusVisible={isFocusVisible}
         hovered={hovered}
-        selected={selected}
-        className={className}
+        keyColor={keyColor}
         ref={itemRef}
+        selected={selected}
         {...itemDimensions}
       >
         {listItemContent}

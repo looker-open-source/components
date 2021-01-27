@@ -38,7 +38,7 @@ import { getItemBackgroundColor } from './utils'
 
 export interface ListItemLayoutProps
   extends CompatibleHTMLProps<HTMLLIElement>,
-    Omit<ItemBackgroundColorProps, 'keyColor'>,
+    ItemBackgroundColorProps,
     ItemDimensions {
   accessory?: boolean
   description?: ReactNode

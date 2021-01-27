@@ -118,6 +118,12 @@ Disabled.args = {
   disabled: true,
 }
 
+export const KeyColor = Template.bind({})
+KeyColor.args = {
+  ...Selected.args,
+  keyColor: true,
+}
+
 export const Link = () => {
   return (
     <ListItem itemRole="link" href="https://google.com" target="_blank">
@@ -134,6 +140,13 @@ Truncate.args = {
   children: lorem,
   description: lorem,
   truncate: true,
+}
+
+export const TruncateAndIconAndDetail = Template.bind({})
+TruncateAndIconAndDetail.args = {
+  ...Truncate.args,
+  detail: 'Detail',
+  icon: 'Calendar',
 }
 
 export default {
