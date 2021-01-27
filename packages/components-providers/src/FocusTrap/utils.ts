@@ -32,6 +32,7 @@
 // 3. The text of an input should not be selected on focus if it is readonly
 
 import { tabbable, isFocusable, FocusableElement } from 'tabbable'
+import { Trap } from '../TrapStack/types'
 
 const isSelectableInput = (
   node: FocusableElement
@@ -53,28 +54,31 @@ const checkFocusLost = () => {
     : true
 }
 
-export const activateFocusTrap = (container: HTMLElement) => {
+export const activateFocusTrap = ({
+  element,
+  options,
+}: Trap<{ clickOutsideDeactivates?: boolean }>) => {
   const nodeFocusedBeforeActivation = document.activeElement
-  let firstTabbableNode: FocusableElement = container
-  let lastTabbableNode: FocusableElement = container
+  let firstTabbableNode: FocusableElement = element
+  let lastTabbableNode: FocusableElement = element
   let mostRecentlyFocusedNode: FocusableElement | null = null
 
   const getInitialFocusNode = () => {
     let node
-    if (container.contains(document.activeElement)) {
+    if (element.contains(document.activeElement)) {
       node = document.activeElement as HTMLElement
     } else {
       // Look for data-autofocus b/c React strips autofocus from dom
       // https://github.com/facebook/react/issues/11851
-      const autoFocusElement = container.querySelector(
+      const autoFocusElement = element.querySelector(
         '[data-autofocus="true"]'
       ) as HTMLElement
 
       // In the absence of autofocus, the surface will have initial focus
-      const surfaceElement = container.querySelector(
+      const surfaceElement = element.querySelector(
         '[data-overlay-surface="true"]'
       ) as HTMLElement
-      node = autoFocusElement || surfaceElement || container
+      node = autoFocusElement || surfaceElement || element
     }
 
     if (!node || !isFocusable(node)) {
@@ -87,7 +91,7 @@ export const activateFocusTrap = (container: HTMLElement) => {
   }
 
   const updateTabbableNodes = () => {
-    const tabbableNodes = tabbable(container)
+    const tabbableNodes = tabbable(element)
     firstTabbableNode = tabbableNodes[0] || getInitialFocusNode()
     lastTabbableNode =
       tabbableNodes[tabbableNodes.length - 1] || getInitialFocusNode()
@@ -109,7 +113,10 @@ export const activateFocusTrap = (container: HTMLElement) => {
   // This needs to be done on mousedown and touchstart instead of click
   // so that it precedes the focus event.
   const checkPointerDown = function (e: MouseEvent | TouchEvent) {
-    if (!container.contains(e.target as Node)) {
+    if (
+      !element.contains(e.target as Node) &&
+      options?.clickOutsideDeactivates
+    ) {
       // immediately deactivate the trap
       deactivate()
     }
@@ -118,7 +125,7 @@ export const activateFocusTrap = (container: HTMLElement) => {
   // In case focus escapes the trap for some strange reason, pull it back in.
   const checkFocusIn = (e: FocusEvent) => {
     // In Firefox when you Tab out of an iframe the Document is briefly focused.
-    if (container.contains(e.target as Node) || e.target instanceof Document) {
+    if (element.contains(e.target as Node) || e.target instanceof Document) {
       return
     }
     e.stopImmediatePropagation()

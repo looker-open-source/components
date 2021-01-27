@@ -24,34 +24,25 @@
 
  */
 
-export * from './getNextFocusTarget'
-export * from './getWindowedListBoundaries'
-export * from './HoverDisclosure'
-export * from './mergeHandlers'
-export * from './getNextFocus'
-export * from './targetIsButton'
-export * from './undefinedCoalesce'
-export * from './useAnimationState'
-export * from './useClickable'
-export * from './useArrowKeyNav'
-export * from './useControlWarn'
-export * from './useReadOnlyWarn'
-export * from './useCallbackRef'
-export * from './useDelayedState'
-export * from './useFocusTrap'
-export * from './useForkedRef'
-export * from './useGlobalHotkeys'
-export * from './useHovered'
-export * from './useID'
-export * from './useIsTruncated'
-export * from './useMouseDownClick'
-export * from './usePopper'
-export * from './useResize'
-export * from './useScrollLock'
-export * from './useScrollPosition'
-export * from './useToggle'
-export * from './useWrapEvent'
-export * from './useMeasuredElement'
-export * from './useMouseDragPosition'
-export * from './usePreviousValue'
-export * from './useWindow'
+import React, { FC, createContext } from 'react'
+import { useDelayedState, UseDelayedStateReturn } from '../utils'
+
+const nestedMenuContext: UseDelayedStateReturn<string> = {
+  change: () => undefined,
+  delayChange: () => undefined,
+  value: '',
+  waitChange: () => undefined,
+}
+
+export const NestedMenuContext = createContext(nestedMenuContext)
+
+// Stores the id for the current nestedMenu to prevent them
+// from competing with each other (e.g. from hover vs arrow key)
+export const NestedMenuProvider: FC = ({ children }) => {
+  const nestedMenuProps = useDelayedState<string>('')
+  return (
+    <NestedMenuContext.Provider value={nestedMenuProps}>
+      {children}
+    </NestedMenuContext.Provider>
+  )
+}

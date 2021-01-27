@@ -75,7 +75,7 @@ export const Menu = forwardRef(
   ) => {
     const id = useID(propsID)
     const list = content && (
-      <MenuList id={id} {...props} ref={listRef}>
+      <MenuList id={id} {...props} ref={listRef} data-autofocus="true">
         {content}
       </MenuList>
     )

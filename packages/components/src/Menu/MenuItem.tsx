@@ -33,14 +33,17 @@ import { Placement } from '@popperjs/core'
 import { DialogContext } from '../Dialog'
 import { ListItemDetail } from '../List/ListItemDetail'
 import { Paragraph } from '../Text'
-import { useID } from '../utils/useID'
 import { Icon, IconPlaceholder } from '../Icon'
 import { Tooltip } from '../Tooltip'
 import { createSafeRel } from '../List/utils'
+import { useID } from '../utils'
 import { MenuItemContext } from './MenuItemContext'
 import { MenuItemLayout } from './MenuItemLayout'
+import { useNestedMenu, UseNestedMenuProps } from './useNestedMenu'
 
-export interface MenuItemProps extends CompatibleHTMLProps<HTMLElement> {
+export interface MenuItemProps
+  extends CompatibleHTMLProps<HTMLLIElement>,
+    Pick<UseNestedMenuProps, 'nestedMenu'> {
   iconArtwork?: ReactNode
   compact?: boolean
   /**
@@ -65,34 +68,63 @@ export interface MenuItemProps extends CompatibleHTMLProps<HTMLElement> {
   tooltipPlacement?: Placement
 }
 
-const MenuItemInternal: FC<MenuItemProps> = (props) => {
-  const {
-    children,
-    className,
-    compact: propCompact,
-    current,
-    description,
-    detail,
-    disabled,
-    href,
-    icon,
-    iconArtwork,
-    itemRole,
-    onBlur,
-    onClick,
-    onKeyUp,
-    target,
-    tooltip,
-    tooltipPlacement = 'left',
-  } = props
-
+const MenuItemInternal: FC<MenuItemProps> = ({
+  children,
+  className,
+  compact: propCompact,
+  current,
+  description,
+  detail,
+  disabled,
+  href,
+  icon,
+  iconArtwork,
+  itemRole,
+  onBlur,
+  onClick,
+  onKeyDown,
+  onKeyUp,
+  onMouseEnter,
+  onMouseLeave,
+  nestedMenu,
+  target,
+  tooltip,
+  tooltipPlacement = 'left',
+  ...props
+}) => {
   const [isFocusVisible, setFocusVisible] = useState(false)
+
   const {
     compact: contextCompact,
     renderIconPlaceholder,
     setRenderIconPlaceholder,
   } = useContext(MenuItemContext)
   const compact = propCompact === undefined ? contextCompact : propCompact
+
+  const id = useID(props.id)
+
+  const {
+    popover,
+    domProps: { onClick: nestedMenuOnClick, ...nestedMenuProps },
+  } = useNestedMenu({
+    compact,
+    id,
+    nestedMenu,
+    onClick,
+    onKeyDown,
+    onMouseEnter,
+    onMouseLeave,
+  })
+
+  if (detail && nestedMenu) {
+    // eslint-disable-next-line no-console
+    console.warn('The detail prop is not supported when nestedMenu is used.')
+  }
+  detail = nestedMenu ? (
+    <Icon color="text1" name="ArrowRight" size={compact ? 'small' : 'medium'} />
+  ) : (
+    detail
+  )
 
   const handleOnBlur = (event: React.FocusEvent<HTMLLIElement>) => {
     setFocusVisible(false)
@@ -103,8 +135,9 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
 
   const handleOnClick = (event: React.MouseEvent<HTMLLIElement>) => {
     setFocusVisible(false)
-    onClick && onClick(event)
-    // Close the Menu (unless event has preventDefault in onClick)
+    // nestedMenuOnClick wraps onClick from props
+    nestedMenuOnClick(event)
+    // Close the Menu unless event has preventDefault
     if (closeModal && !event.defaultPrevented) {
       closeModal()
     }
@@ -121,8 +154,6 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
     }
   }, [icon, setRenderIconPlaceholder])
 
-  const renderedIconID = useID(props.id)
-
   const renderedIcon =
     icon || iconArtwork ? (
       <Icon
@@ -135,7 +166,7 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
     ) : (
       renderIconPlaceholder && (
         <IconPlaceholder
-          data-testid={`menu-item-${renderedIconID}-icon-placeholder`}
+          data-testid={`menu-item-${id}-icon-placeholder`}
           size={compact ? 'small' : 'medium'}
         />
       )
@@ -152,7 +183,7 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
   const menuItemContent = (
     <Component
       href={href}
-      rel={createSafeRel(props.rel, props.target)}
+      rel={createSafeRel(props.rel, target)}
       role="menuitem"
       target={target}
       tabIndex={-1}
@@ -171,24 +202,32 @@ const MenuItemInternal: FC<MenuItemProps> = (props) => {
   )
 
   return (
-    <MenuItemLayout
-      aria-current={current && 'true'}
-      compact={compact}
-      disabled={disabled}
-      focusVisible={isFocusVisible}
-      onBlur={handleOnBlur}
-      onClick={disabled ? undefined : handleOnClick}
-      onKeyUp={handleOnKeyUp}
-      className={className}
-    >
-      {tooltip ? (
-        <Tooltip placement={tooltipPlacement} content={tooltip}>
-          {menuItemContent}
-        </Tooltip>
-      ) : (
-        menuItemContent
-      )}
-    </MenuItemLayout>
+    <>
+      <MenuItemLayout
+        aria-current={current && 'true'}
+        compact={compact}
+        disabled={disabled}
+        focusVisible={isFocusVisible}
+        onBlur={handleOnBlur}
+        onClick={disabled ? undefined : handleOnClick}
+        onKeyUp={handleOnKeyUp}
+        className={className}
+        {...props}
+        {...nestedMenuProps}
+      >
+        {tooltip ? (
+          <Tooltip placement={tooltipPlacement} content={tooltip}>
+            {menuItemContent}
+          </Tooltip>
+        ) : (
+          menuItemContent
+        )}
+      </MenuItemLayout>
+      {/* Keep nestedMenu popover outside of MenuItemLayout to prevent its events
+       from bubbling up to the MenuItem (especially onClick)
+       due to React Portal event bubbling */}
+      {popover}
+    </>
   )
 }
 

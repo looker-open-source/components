@@ -90,6 +90,18 @@ export interface UsePopoverProps extends UsePopoverToggleProps {
    * @default true
    */
   focusTrap?: boolean
+
+  /**
+   * Whether to lock scrolling outside the popover
+   * @default true
+   */
+  scrollLock?: boolean
+
+  /**
+   * Custom surface component to render the content in
+   * @private
+   */
+  surface?: typeof OverlaySurface
 }
 
 const useOpenWithoutElement = (
@@ -129,9 +141,11 @@ export const usePopover = ({
   triggerElement,
   triggerToggle = true,
   focusTrap = true,
+  scrollLock = true,
   cancelClickOutside,
+  surface,
 }: UsePopoverProps) => {
-  const [scrollElement, scrollRef] = useScrollLock()
+  const [scrollElement, scrollRef] = useScrollLock({ disabled: !scrollLock })
   const [, focusRef] = useFocusTrap({ disabled: !focusTrap })
 
   const [newTriggerElement, callbackRef] = useCallbackRef()
@@ -210,6 +224,8 @@ export const usePopover = ({
 
   const [containerElement, contentContainerRef] = useCallbackRef<HTMLElement>()
 
+  const SurfaceComponent = surface || OverlaySurface
+
   const popover = content && !openWithoutElem && isOpen && !disabled && (
     <DialogContext.Provider
       value={{
@@ -217,7 +233,7 @@ export const usePopover = ({
       }}
     >
       <Portal ref={scrollRef}>
-        <OverlaySurface placement={placement} ref={ref} style={style}>
+        <SurfaceComponent placement={placement} ref={ref} style={style}>
           <Flex
             flexDirection="column"
             alignItems="flex-start"
@@ -228,7 +244,7 @@ export const usePopover = ({
           >
             {content}
           </Flex>
-        </OverlaySurface>
+        </SurfaceComponent>
       </Portal>
     </DialogContext.Provider>
   )

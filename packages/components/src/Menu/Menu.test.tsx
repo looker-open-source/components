@@ -25,7 +25,13 @@
  */
 
 import '@testing-library/jest-dom/extend-expect'
-import { fireEvent, waitForElementToBeRemoved } from '@testing-library/react'
+import {
+  act,
+  fireEvent,
+  waitForElementToBeRemoved,
+  screen,
+} from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import React, { useRef } from 'react'
 
 import { renderWithTheme } from '@looker/components-test-utils'
@@ -211,5 +217,133 @@ describe('<Menu />', () => {
     expect(queryByText('Gouda')).toBeInTheDocument()
 
     fireEvent.click(document)
+  })
+
+  describe('MenuItem nestedMenu', () => {
+    beforeEach(() => {
+      jest.useFakeTimers()
+    })
+    afterEach(() => {
+      jest.runOnlyPendingTimers()
+      jest.useRealTimers()
+    })
+
+    test('toggle on hover', () => {
+      renderWithTheme(
+        <Menu
+          content={
+            <MenuItem nestedMenu={<MenuItem>Swiss</MenuItem>}>Gouda</MenuItem>
+          }
+        >
+          <Button>Cheese</Button>
+        </Menu>
+      )
+
+      const button = screen.getByText('Cheese')
+      userEvent.click(button)
+
+      const parent = screen.getByText('Gouda')
+      userEvent.hover(parent)
+      act(() => {
+        jest.advanceTimersByTime(100)
+      })
+      const child = screen.getByText('Swiss')
+      expect(child).toBeVisible()
+
+      // Hovering in the direction of the nestedMenu (ie right & down)
+      // triggers a delay to give the user time to get to the nestedMenu
+      fireEvent.mouseMove(parent, { screenX: 8, screenY: 3 })
+      fireEvent.mouseLeave(parent, { screenX: 9, screenY: 7 })
+      act(() => {
+        jest.advanceTimersByTime(100)
+      })
+      userEvent.hover(child)
+      expect(screen.getByText('Swiss')).toBeVisible()
+
+      userEvent.unhover(child)
+      // Nested menu remains open when hovered out
+      expect(screen.getByText('Swiss')).toBeVisible()
+
+      userEvent.hover(parent)
+      // If not hovering out in the direction of the nestedMenu
+      // it closes immediately
+      fireEvent.mouseMove(parent, { screenX: 8, screenY: 3 })
+      fireEvent.mouseLeave(parent, { screenX: 8, screenY: 6 })
+      expect(screen.queryByText('Swiss')).not.toBeInTheDocument()
+
+      fireEvent.click(document)
+    })
+
+    test('toggle on arrow keys', () => {
+      renderWithTheme(
+        <Menu
+          isOpen
+          content={
+            <MenuItem nestedMenu={<MenuItem>Swiss</MenuItem>}>Gouda</MenuItem>
+          }
+        >
+          <Button>Cheese</Button>
+        </Menu>
+      )
+
+      const parent = screen.getByText('Gouda')
+      fireEvent.keyDown(parent, { key: 'ArrowRight' })
+
+      const child = screen.getByText('Swiss')
+      expect(child).toBeVisible()
+      fireEvent.keyDown(child, { key: 'ArrowLeft' })
+
+      expect(screen.queryByText('Swiss')).not.toBeInTheDocument()
+
+      fireEvent.keyDown(parent, { key: 'ArrowRight' })
+      const child2 = screen.getByText('Swiss')
+      expect(child2).toBeVisible()
+
+      // Escape key closes the child & parent menus
+      fireEvent.keyDown(child2, { key: 'Escape' })
+      expect(screen.queryByText('Swiss')).not.toBeInTheDocument()
+      expect(screen.queryByText('Gouda')).not.toBeInTheDocument()
+    })
+
+    test('toggle on click', () => {
+      const onClick = jest.fn()
+      renderWithTheme(
+        <Menu
+          isOpen
+          content={
+            <>
+              <MenuItem nestedMenu={<MenuItem>Camembert</MenuItem>}>
+                French
+              </MenuItem>
+              <MenuItem
+                onClick={onClick}
+                nestedMenu={<MenuItem>Gouda</MenuItem>}
+              >
+                Dutch
+              </MenuItem>
+            </>
+          }
+        >
+          <Button>Cheese</Button>
+        </Menu>
+      )
+
+      // If the parent MenuItem doesn't have an onClick,
+      // click opens the nestedMenu and doesn't close the parent Menu
+      fireEvent.click(screen.getByText('French'))
+      expect(screen.getByText('Camembert')).toBeVisible()
+
+      // If the the nestedMenu was already opened via hover, click closes both Menus
+      // (userEvent.click fires 'mouseenter' first)
+      userEvent.click(screen.getByText('French'))
+      expect(screen.queryByRole('menu')).not.toBeInTheDocument()
+
+      // If the parent MenuItem has an onClick, click doesn't open the nestedMenu
+      // and the parent Menu is closed after
+      userEvent.click(screen.getByText('Cheese'))
+      fireEvent.click(screen.getByText('Dutch'))
+      expect(onClick).toHaveBeenCalledTimes(1)
+      expect(screen.queryByRole('menu')).not.toBeInTheDocument()
+    })
   })
 })

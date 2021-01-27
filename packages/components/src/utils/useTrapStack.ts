@@ -29,7 +29,10 @@ import { Context, Ref, useContext, useEffect } from 'react'
 import { useID } from './useID'
 import { useCallbackRef } from './useCallbackRef'
 
-export interface UseTrapStackProps<T extends HTMLElement = HTMLElement> {
+export interface UseTrapStackProps<
+  E extends HTMLElement = HTMLElement,
+  O extends {} = {}
+> {
   context: Context<TrapStackContextProps>
   /**
    * Turns off functionality completely, for use in components
@@ -39,7 +42,8 @@ export interface UseTrapStackProps<T extends HTMLElement = HTMLElement> {
   /**
    * A forwarded ref to be merged with the ref returned in the hook result
    */
-  ref?: Ref<T>
+  ref?: Ref<E>
+  options?: O
 }
 
 /**
@@ -47,11 +51,15 @@ export interface UseTrapStackProps<T extends HTMLElement = HTMLElement> {
  * stack of "traps" – e.g. scroll lock or focus trap in one or more
  * Dialogs & Popovers
  */
-export const useTrapStack = <T extends HTMLElement = HTMLElement>({
+export const useTrapStack = <
+  E extends HTMLElement = HTMLElement,
+  O extends {} = {}
+>({
   context,
   disabled = false,
   ref,
-}: UseTrapStackProps<T>): [T | null, (node: T | null) => void] => {
+  options,
+}: UseTrapStackProps<E, O>): [E | null, (node: E | null) => void] => {
   const id = useID()
   const [element, callbackRef] = useCallbackRef(ref)
   const {
@@ -79,7 +87,7 @@ export const useTrapStack = <T extends HTMLElement = HTMLElement>({
       if (disabled) {
         disableCurrentTrap?.()
       } else {
-        addTrap?.(id, element)
+        addTrap?.(id, { element, options })
       }
     }
     return () => {
@@ -93,6 +101,7 @@ export const useTrapStack = <T extends HTMLElement = HTMLElement>({
     disabled,
     id,
     element,
+    options,
     addTrap,
     removeTrap,
     disableCurrentTrap,

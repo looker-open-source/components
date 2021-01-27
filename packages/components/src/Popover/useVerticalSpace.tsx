@@ -27,6 +27,31 @@
 import { useEffect, CSSProperties, useState } from 'react'
 import { Placement } from '@popperjs/core'
 
+const topPlacements: Placement[] = [
+  'top',
+  'top-start',
+  'top-end',
+  'right-end',
+  'left-end',
+]
+
+const bottomPlacements: Placement[] = [
+  'bottom',
+  'bottom-start',
+  'bottom-end',
+  'right-start',
+  'left-start',
+]
+
+const sidePlacements: Placement[] = [
+  'left-start',
+  'left-end',
+  'left',
+  'right-start',
+  'right-end',
+  'right',
+]
+
 export const useVerticalSpace = (
   element: HTMLElement | null,
   pin: boolean,
@@ -37,8 +62,9 @@ export const useVerticalSpace = (
 ) => {
   const [spaceTop, setSpaceTop] = useState(0)
   const [spaceBottom, setSpaceBottom] = useState(0)
-  const placementIsBottom = placement && placement.includes('bottom')
-  const placementIsTop = placement && placement.includes('top')
+  const placementIsBottom = placement && bottomPlacements.includes(placement)
+  const placementIsTop = placement && topPlacements.includes(placement)
+  const placementIsSide = placement && sidePlacements.includes(placement)
 
   useEffect(() => {
     const getVerticalSpace = () => {
@@ -48,12 +74,16 @@ export const useVerticalSpace = (
           // If pin = true, we only care about the space on the placement side
           // Otherwise, we want both the top and bottom and pick the bigger
           if (!pin || placementIsTop) {
-            setSpaceTop(top)
+            // If placement is to the side, the height of the trigger should be included
+            const spaceTop = placementIsSide ? bottom : top
+            setSpaceTop(spaceTop)
           } else if (pin) {
             setSpaceTop(0)
           }
           if (!pin || placementIsBottom) {
-            setSpaceBottom(window.innerHeight - bottom)
+            // If placement is to the side, the height of the trigger should be included
+            const sideToUse = placementIsSide ? top : bottom
+            setSpaceBottom(window.innerHeight - sideToUse)
           } else if (pin) {
             setSpaceBottom(0)
           }
@@ -77,6 +107,7 @@ export const useVerticalSpace = (
     pin,
     placementIsBottom,
     placementIsTop,
+    placementIsSide,
     isOpen,
     popperStyle.transform,
   ])

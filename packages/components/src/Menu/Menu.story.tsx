@@ -38,7 +38,7 @@ import { Dialog, DialogLayout } from '../Dialog'
 import { Divider } from '../Divider'
 import { FieldToggleSwitch } from '../Form'
 import { Icon } from '../Icon'
-import { Space, SpaceVertical } from '../Layout'
+import { Flex, Space, SpaceVertical } from '../Layout'
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from '../Tabs'
 import { Heading, Text, Paragraph } from '../Text'
 import { Tooltip } from '../Tooltip'
@@ -514,7 +514,7 @@ LongMenus.parameters = {
 
 export const WithDialog = () => {
   const { value, setOn, setOff } = useToggle()
-  const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
+  const handleClick = (e: MouseEvent<HTMLLIElement>) => {
     e.preventDefault()
     setOn()
   }
@@ -593,5 +593,69 @@ export const ArrowKeyNavigation = () => (
 )
 
 ArrowKeyNavigation.parameters = {
+  storyshots: { disable: true },
+}
+
+export const NestedMenu = () => {
+  const getOnClick = (text: string) => () => {
+    alert(`You clicked ${text}`)
+  }
+
+  const nestedMenu = (
+    <>
+      <MenuItem onClick={getOnClick('Sub Item')}>Sub Item</MenuItem>
+      <MenuItem onClick={getOnClick('Another Sub Item')}>
+        Another Sub Item
+      </MenuItem>
+      <MenuItem onClick={getOnClick('Third Sub Item')}>Third Sub Item</MenuItem>
+      <MenuItem onClick={getOnClick('4th Sub Item')}>4th Sub Item</MenuItem>
+      <MenuItem onClick={getOnClick('Fifth Sub Item')}>Fifth Sub Item</MenuItem>
+    </>
+  )
+  const content = (
+    <>
+      <MenuGroup>
+        <MenuItem icon="Edit" onClick={getOnClick('Edit')}>
+          Edit
+        </MenuItem>
+        <MenuItem icon="Download" onClick={getOnClick('Download')}>
+          Download
+        </MenuItem>
+      </MenuGroup>
+      <MenuGroup label="Sub Menus">
+        <MenuItem nestedMenu={nestedMenu}>Sub Menu</MenuItem>
+        <MenuItem onClick={getOnClick('Sub Menu')} nestedMenu={nestedMenu}>
+          Sub Menu - with onClick
+        </MenuItem>
+        <MenuItem icon="Favorite" onClick={getOnClick('Favorite')}>
+          Favorite
+        </MenuItem>
+        <MenuItem nestedMenu={nestedMenu}>Sub Menu 3</MenuItem>
+      </MenuGroup>
+    </>
+  )
+  return (
+    <Flex height="100vh" flexDirection="column" justifyContent="space-between">
+      <Space between>
+        <Menu content={content}>
+          <Button>Nested Menu</Button>
+        </Menu>
+        <Menu content={content}>
+          <Button>Right-aligned</Button>
+        </Menu>
+      </Space>
+      <Space between>
+        <Menu content={content}>
+          <Button>Bottom-left-aligned</Button>
+        </Menu>
+        <Menu content={content}>
+          <Button>Bottom-right-aligned</Button>
+        </Menu>
+      </Space>
+    </Flex>
+  )
+}
+
+NestedMenu.parameters = {
   storyshots: { disable: true },
 }

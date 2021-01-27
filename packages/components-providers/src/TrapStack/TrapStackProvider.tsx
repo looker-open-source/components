@@ -26,11 +26,11 @@
 
 import noop from 'lodash/noop'
 import React, { Context, FC, useRef, useMemo } from 'react'
-import { TrapStackContextProps, TrapMap } from './types'
+import { Trap, TrapStackContextProps, TrapMap } from './types'
 import { getActiveTrap } from './utils'
 
 export interface TrapStackProviderProps {
-  activate: (element: HTMLElement) => () => void
+  activate: (trap: Trap) => () => void
   context: Context<TrapStackContextProps>
 }
 
@@ -54,7 +54,7 @@ export const TrapStackProvider: FC<TrapStackProviderProps> = ({
 
   // Create the context value
   const value = useMemo(() => {
-    const getTrap = (id?: string): HTMLElement | null => {
+    const getTrap = (id?: string): Trap | null => {
       const registeredTraps = registeredTrapsRef.current
       return id ? registeredTraps[id] || null : getActiveTrap(registeredTraps)
     }
@@ -64,7 +64,7 @@ export const TrapStackProvider: FC<TrapStackProviderProps> = ({
       if (newTrap !== activeTrapRef.current) {
         // Disable the existing trap and update the activeTrapRef
         // (whether there's a new trap or not)
-        activeTrapRef.current = newTrap
+        activeTrapRef.current = newTrap?.element || null
         deactivateRef.current()
         // If there's a new trap, activate it and
         // save the deactivate function that is returned
@@ -80,8 +80,8 @@ export const TrapStackProvider: FC<TrapStackProviderProps> = ({
       activeTrapRef.current = null
     }
 
-    const addTrap = (id: string, element: HTMLElement) => {
-      registeredTrapsRef.current[id] = element
+    const addTrap = (id: string, trap: Trap) => {
+      registeredTrapsRef.current[id] = trap
       enableCurrentTrap()
     }
 
