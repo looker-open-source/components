@@ -18,8 +18,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- Added keyboard accessibility to `DataTable`
-- `Tabs` and `Menu` arrow key navigation persists the last focused item
 - `Breakpoint` component
 - `CardMedia` supports background color props
 - `DialogContent` now support `hasHeader` & `hasFooter` properties to allow for more flexible compositions ([8039da2](https://github.com/looker-open-source/components/commit/8039da25d1646e8d50ee900e6243a3e3e44ea6ca))
