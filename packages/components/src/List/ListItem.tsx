@@ -37,7 +37,7 @@ import { HoverDisclosureContext, HoverDisclosure, useHovered } from '../utils'
 import { ListItemContext } from './ListItemContext'
 import { ListItemLayout } from './ListItemLayout'
 import { createSafeRel } from './utils'
-import { ItemBackgroundColorProps } from './types'
+import { ListItemBackgroundColorProps } from './types'
 
 const TruncateWrapper: FC<{
   color?: string
@@ -78,7 +78,7 @@ interface DetailObject {
 
 export interface ListItemProps
   extends CompatibleHTMLProps<HTMLElement>,
-    Omit<ItemBackgroundColorProps, 'hovered'> {
+    Omit<ListItemBackgroundColorProps, 'hovered'> {
   /*
    * optional extra description
    */

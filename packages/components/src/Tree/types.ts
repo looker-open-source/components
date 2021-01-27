@@ -27,11 +27,11 @@
 import { IconNames } from '@looker/icons'
 import { ReactNode } from 'react'
 import { AccordionProps } from '../Accordion'
-import { ItemBackgroundColorProps } from '../List/types'
+import { ListItemBackgroundColorProps } from '../List/types'
 
 export interface TreeProps
   extends Omit<AccordionProps, 'indicatorGap' | 'indicatorSize'>,
-    Omit<ItemBackgroundColorProps, 'hovered'> {
+    Omit<ListItemBackgroundColorProps, 'hovered'> {
   /**
    * If true, vertical lines will extend from the Tree indicator (and all sub-Trees' indicators)
    * @default false

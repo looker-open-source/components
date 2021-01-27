@@ -50,7 +50,7 @@ export const itemDimensionKeys = [
   'detailFontSize',
 ]
 
-export interface ItemBackgroundColorProps {
+export interface ListItemBackgroundColorProps {
   /**
    * Replace the normal uiN(1-5) color for selected and selected + hovered color with key colors
    * @default false

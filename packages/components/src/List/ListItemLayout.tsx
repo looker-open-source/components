@@ -30,15 +30,15 @@ import React, { forwardRef, ReactNode, Ref } from 'react'
 import styled from 'styled-components'
 import { Icon } from '../Icon'
 import {
-  ItemBackgroundColorProps,
+  ListItemBackgroundColorProps,
   ItemDimensions,
   itemDimensionKeys,
 } from './types'
-import { getItemBackgroundColor } from './utils'
+import { listItemBackgroundColor } from './utils'
 
 export interface ListItemLayoutProps
   extends CompatibleHTMLProps<HTMLLIElement>,
-    ItemBackgroundColorProps,
+    ListItemBackgroundColorProps,
     ItemDimensions {
   accessory?: boolean
   description?: ReactNode
@@ -95,7 +95,7 @@ export const ListItemLayout = styled(ListItemWrapper)`
   & > button,
   & > a {
     ${reset}
-    ${getItemBackgroundColor}
+    ${listItemBackgroundColor}
 
     align-items: center;
     border: none;

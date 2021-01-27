@@ -30,13 +30,13 @@ import {
   AccordionContent,
   AccordionDisclosureStyle,
 } from '../Accordion'
-import { getItemBackgroundColor } from '../List/utils'
-import { ItemBackgroundColorProps } from '../List/types'
+import { listItemBackgroundColor } from '../List/utils'
+import { ListItemBackgroundColorProps } from '../List/types'
 import { TreeItem, TreeItemLabel } from './TreeItem'
 import { TreeGroupLabel } from './TreeGroup'
 import { generateIndent, generateTreeBorder } from './utils'
 
-interface TreeStyleProps extends ItemBackgroundColorProps {
+interface TreeStyleProps extends ListItemBackgroundColorProps {
   border?: boolean
   depth: number
   branchFontWeight?: boolean
@@ -63,7 +63,7 @@ export const TreeStyle = styled.div<TreeStyleProps>`
     }
 
     & > ${AccordionDisclosureStyle} {
-      ${getItemBackgroundColor}
+      ${listItemBackgroundColor}
       background-clip: padding-box;
       color: ${({ disabled, theme: { colors } }) =>
         disabled ? colors.text1 : colors.text5};
