@@ -25,17 +25,18 @@
  */
 
 import path from 'path'
-import { imageSnapshot } from '@storybook/addon-storyshots-puppeteer'
+import { axeTest, imageSnapshot } from '@storybook/addon-storyshots-puppeteer'
 import { StoryshotsOptions } from '@storybook/addon-storyshots/dist/api/StoryshotsOptions'
 
 const STORYBOOK_DEFAULT_VIEWPORT = { height: 600, width: 800 }
 
-export const storyshotsConfig = (pkg: string) => {
+export const imageSnapshots = (pkg: string) => {
   const storybookUrl = `file:///${path.resolve(pkg, 'storybook-static')}`
 
   return {
     configPath: `${pkg}/.storybook`,
     framework: 'react',
+    suite: 'Image Snapshots',
     test: imageSnapshot({
       beforeScreenshot: async (page, { context }) => {
         // override viewport for responsive design tests
@@ -84,5 +85,16 @@ export const storyshotsConfig = (pkg: string) => {
 
       storybookUrl,
     }),
+  } as StoryshotsOptions
+}
+
+export const a11y = (pkg: string) => {
+  const storybookUrl = `file:///${path.resolve(pkg, 'storybook-static')}`
+
+  return {
+    configPath: `${pkg}/.storybook`,
+    framework: 'react',
+    suite: 'a11y suite',
+    test: axeTest({ storybookUrl }),
   } as StoryshotsOptions
 }

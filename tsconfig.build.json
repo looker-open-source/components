@@ -8,6 +8,8 @@
     "**/__mocks__/**",
     "**/*.shots.ts",
     "**/*.shots.tsx",
+    "**/*.a11y.ts",
+    "**/*.a11y.tsx",
     "**/*.spec.ts",
     "**/*.spec.tsx",
     "**/*.story.tsx",

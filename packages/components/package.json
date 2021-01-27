@@ -41,8 +41,8 @@
   },
   "devDependencies": {
     "@looker/components-test-utils": "^0.10.4",
-    "@storybook/addon-storyshots": "^6.1.10",
-    "@storybook/react": "^6.1.10",
+    "@storybook/addon-storyshots": "^6.1.15",
+    "@storybook/react": "^6.1.15",
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.5.0",
@@ -59,7 +59,7 @@
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-is": "^16.13.1",
-    "storybook": "^6.1.10",
+    "storybook": "^6.1.15",
     "styled-components": "^5.2.1"
   },
   "peerDependencies": {
