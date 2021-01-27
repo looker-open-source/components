@@ -75,7 +75,5 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: image-snapshot-diffs
-          path: |
-            packages/**/snapshots/*.png
-            !packages/**/snapshots/*.snap.png
+          path: packages/*/snapshots/**/*-diff.png
           retention-days: 1
