@@ -73,3 +73,12 @@ jobs:
       - run: yarn prebuild
       - run: yarn preimage-snapshots
       - run: yarn image-snapshots-only
+  coverage:
+    name: "Code Coverage"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: c-hive/gha-yarn-cache@v1
+      - run : yarn --silent
+      - run: yarn prebuild
+      - uses: anuraag016/Jest-Coverage-Diff@1.0

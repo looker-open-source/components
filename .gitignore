@@ -9,7 +9,7 @@ node_modules
 *.tsbuildinfo
 
 # testing
-/coverage
+coverage
 .cache
 .eslintcache
 
