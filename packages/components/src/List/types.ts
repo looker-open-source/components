@@ -52,7 +52,7 @@ export const itemDimensionKeys = [
 
 export interface ItemBackgroundColorProps {
   /**
-   * Replace the normal grey selected and selected + hovered color with key colors
+   * Replace the normal uiN(1-5) color for selected and selected + hovered color with key colors
    * @default false
    */
   keyColor?: boolean
