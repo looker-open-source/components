@@ -29,23 +29,23 @@ import { css } from 'styled-components'
 import { ItemBackgroundColorProps } from '../types'
 
 export const getItemBackgroundColor = ({
-  brand,
+  keyColor,
   disabled,
   hovered,
   selected,
   theme: { colors },
 }: ItemBackgroundColorProps & { theme: Theme }) => {
-  const brandColors = {
+  const keyColors = {
     all: colors.keySubtle,
     hovered: colors.ui1,
     selected: colors.keySubtle,
   }
-  const defaultColors = {
+  const uiColors = {
     all: itemSelectedColor(colors.ui2),
     hovered: colors.ui1,
     selected: itemSelectedColor(colors.ui2),
   }
-  const stateColors = brand ? brandColors : defaultColors
+  const stateColors = keyColor ? keyColors : uiColors
   let renderedColor
 
   if (disabled) renderedColor = 'transparent'
