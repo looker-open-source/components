@@ -31,15 +31,11 @@ import React, { FC, ReactNode, useContext, useRef, useState } from 'react'
 import { ListItemDetail } from '../List/ListItemDetail'
 import { Paragraph, Text } from '../Text'
 import { Truncate } from '../Truncate'
+import { FlexItem } from '../Layout'
 import { Icon, IconPlaceholder } from '../Icon'
 import { HoverDisclosureContext, HoverDisclosure, useHovered } from '../utils'
 import { ListItemContext } from './ListItemContext'
-import {
-  IconArea,
-  LabelArea,
-  AccessoryArea,
-  ListItemLayout,
-} from './ListItemLayout'
+import { ListItemLayout } from './ListItemLayout'
 import { createSafeRel } from './utils'
 
 const TruncateWrapper: FC<{
@@ -234,14 +230,14 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
         target={target}
         tabIndex={-1}
       >
-        <IconArea>{renderedIcon}</IconArea>
-        <LabelArea>
+        {renderedIcon}
+        <FlexItem>
           {renderedChildren}
           {renderedDescription}
-        </LabelArea>
-        {!accessory && <AccessoryArea>{renderedDetail}</AccessoryArea>}
+        </FlexItem>
+        {!accessory && renderedDetail}
       </ContentContainer>
-      {accessory && <AccessoryArea>{renderedDetail}</AccessoryArea>}
+      {accessory && renderedDetail}
     </>
   )
 
