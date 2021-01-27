@@ -26,9 +26,9 @@
 
 import { Story } from '@storybook/react/types-6-0'
 import React from 'react'
-import { SelectMulti, SelectMultiProps } from '../../Inputs/Select'
+import { Select, SelectProps } from '../Select'
 
-const Template: Story<SelectMultiProps> = (args) => <SelectMulti {...args} />
+const Template: Story<SelectProps> = (args) => <Select {...args} />
 
 export const Basic = Template.bind({})
 Basic.args = {
@@ -43,6 +43,18 @@ export const Placeholder = Template.bind({})
 Placeholder.args = {
   ...Basic.args,
   placeholder: 'Placeholder',
+}
+
+export const AutoResize = Template.bind({})
+AutoResize.args = {
+  ...Basic.args,
+  autoResize: true,
+}
+
+export const AutoResizePlaceholder = Template.bind({})
+AutoResizePlaceholder.args = {
+  ...Placeholder.args,
+  autoResize: true,
 }
 
 export const Disabled = Template.bind({})
@@ -69,39 +81,53 @@ ErrorPlaceholder.args = {
   validationType: 'error',
 }
 
-export const Values = Template.bind({})
-Values.args = {
+export const Value = Template.bind({})
+Value.args = {
   ...Basic.args,
-  values: ['cheddar', 'gouda'],
+  value: 'gouda',
 }
 
-export const DefaultValues = Template.bind({})
-DefaultValues.args = {
-  ...Basic.args,
-  defaultValues: ['gouda', 'swiss'],
-}
-
-export const WrappingValues = Template.bind({})
-WrappingValues.args = {
-  ...Basic.args,
-  defaultValues: ['cheddar', 'gouda', 'swiss'],
-  width: 250,
-}
-
-export const ErrorValues = Template.bind({})
-ErrorValues.args = {
-  ...Error.args,
-  values: ['cheddar', 'gouda'],
-}
-
-export const ErrorWrappingValues = Template.bind({})
-ErrorWrappingValues.args = {
-  ...WrappingValues.args,
-  defaultValues: ['cheddar', 'gouda', 'swiss'],
+export const ErrorValue = Template.bind({})
+ErrorValue.args = {
+  ...Value.args,
   validationType: 'error',
 }
 
+export const DefaultValue = Template.bind({})
+DefaultValue.args = {
+  ...Basic.args,
+  defaultValue: 'swiss',
+}
+
+export const Clearable = Template.bind({})
+Clearable.args = {
+  ...Basic.args,
+  isClearable: true,
+}
+
+export const ClearableValue = Template.bind({})
+ClearableValue.args = {
+  ...Clearable.args,
+  value: 'gouda',
+}
+
+export const ClearableError = Template.bind({})
+ClearableError.args = {
+  ...ClearableValue.args,
+  validationType: 'error',
+}
+
+export const Icon = Template.bind({})
+Icon.args = {
+  options: [
+    { icon: 'ChartBar', label: 'Bar', value: 'bar' },
+    { icon: 'ChartPie', label: 'Pie', value: 'pie' },
+    { icon: 'ChartTable', label: 'Table', value: 'table' },
+  ],
+  value: 'pie',
+}
+
 export default {
-  component: SelectMulti,
-  title: 'SelectMulti',
+  component: Select,
+  title: 'Select',
 }

@@ -29,5 +29,4 @@ import styled from 'styled-components'
 export const ListItemOverline = styled.p`
   color: ${({ theme: { colors } }) => colors.subdued};
   font-size: ${({ theme: { fontSizes } }) => fontSizes.small};
-  padding-bottom: ${({ theme: { space } }) => space.xxxsmall};
 `
