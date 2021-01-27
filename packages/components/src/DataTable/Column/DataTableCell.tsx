@@ -24,72 +24,125 @@
 
  */
 
-import React, { FC, ReactNode } from 'react'
+import React, {
+  forwardRef,
+  Ref,
+  ReactNode,
+  useEffect,
+  useRef,
+  useState,
+} from 'react'
 import styled from 'styled-components'
 import { CompatibleHTMLProps } from '@looker/design-tokens'
 import { Space, SpaceVertical } from '../../Layout'
 import { Link } from '../../Link'
 import { Paragraph } from '../../Text'
 import { Truncate } from '../../Truncate'
+import { useForkedRef } from '../../utils'
 import { columnSize, DataTableColumnSize } from './columnSize'
+import { FocusableCell } from './FocusableCell'
 
 export interface DataTableCellProps
   extends CompatibleHTMLProps<HTMLTableDataCellElement> {
   description?: ReactNode
+  focusVisible?: boolean
   indicator?: ReactNode
   size?: DataTableColumnSize
 }
 
-const DataTableCellLayout: FC<DataTableCellProps> = ({
-  children,
-  description,
-  indicator,
-  size,
-  ...props
-}) => {
-  let content =
-    size && size !== 'nowrap' ? <Truncate>{children}</Truncate> : children
+const DataTableCellLayout = forwardRef(
+  (props: DataTableCellProps, forwardedRef: Ref<HTMLElement>) => {
+    const { children, description, indicator, onBlur, onKeyUp, size } = props
 
-  if (description) {
-    content = (
-      <SpaceVertical gap="xxxsmall">
-        <span>{content}</span>
-        {description && (
-          <Paragraph fontSize="xsmall" color="subdued" truncate>
-            <Truncate>{description}</Truncate>
-          </Paragraph>
-        )}
-      </SpaceVertical>
-    )
+    const [isFocusVisible, setFocusVisible] = useState(false)
 
-    if (indicator) {
+    const handleOnKeyUp = (
+      event: React.KeyboardEvent<HTMLTableDataCellElement>
+    ) => {
+      setFocusVisible(true)
+      onKeyUp && onKeyUp(event)
+    }
+
+    const handleOnBlur = (
+      event: React.FocusEvent<HTMLTableDataCellElement>
+    ) => {
+      setFocusVisible(false)
+      onBlur && onBlur(event)
+    }
+
+    const onClick = () => {
+      setFocusVisible(false)
+    }
+
+    let content =
+      size && size !== 'nowrap' ? <Truncate>{children}</Truncate> : children
+
+    const ref = useRef<HTMLTableDataCellElement>(null)
+    const forkedRef = useForkedRef(ref, forwardedRef)
+
+    useEffect(() => {
+      const element = ref?.current?.querySelectorAll('a, button, input')
+      if (element) {
+        element.forEach((activeElement) =>
+          activeElement.setAttribute('tabIndex', '-1')
+        )
+      }
+    })
+
+    if (description) {
+      content = (
+        <SpaceVertical gap="xxxsmall">
+          <span>{content}</span>
+          {description && (
+            <Paragraph fontSize="xsmall" color="subdued" truncate>
+              <Truncate>{description}</Truncate>
+            </Paragraph>
+          )}
+        </SpaceVertical>
+      )
+
+      if (indicator) {
+        content = (
+          <Space gap="xsmall">
+            {indicator}
+            {content}
+          </Space>
+        )
+      }
+    } else if (indicator) {
       content = (
         <Space gap="xsmall">
           {indicator}
-          {content}
+          <span>{content}</span>
         </Space>
       )
     }
-  } else if (indicator) {
-    content = (
-      <Space gap="xsmall">
-        {indicator}
-        <span>{content}</span>
-      </Space>
+    return (
+      <FocusableCell
+        focusVisible={isFocusVisible}
+        onBlur={handleOnBlur}
+        onClick={onClick}
+        onKeyUp={handleOnKeyUp}
+        ref={forkedRef}
+        {...props}
+      >
+        {content}
+      </FocusableCell>
     )
   }
-  return <td {...props}>{content}</td>
-}
+)
+
+DataTableCellLayout.displayName = 'DataTableCellLayout'
 
 export const DataTableCell = styled(DataTableCellLayout)`
   ${columnSize}
-
   a,
   ${Link} {
     color: inherit;
     :hover,
     :focus {
       color: ${({ theme }) => theme.colors.link};
+      outline: none;
       text-decoration: underline;
     }
   }

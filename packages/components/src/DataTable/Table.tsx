@@ -29,7 +29,7 @@ import React, { FC } from 'react'
 import styled, { css } from 'styled-components'
 import { Spinner } from '../Spinner'
 import { Heading } from '../Text'
-import { useCallbackRef, useIsTruncated } from '../utils'
+import { useArrowKeyNav, useCallbackRef, useIsTruncated } from '../utils'
 import {
   getNumericColumnIndices,
   numericColumnCSS,
@@ -37,6 +37,7 @@ import {
 import { DataTableProps } from './types'
 import { DataTableHeader } from './Header/DataTableHeader'
 import { edgeShadow } from './utils/edgeShadow'
+import { getNextFocus } from './getNextFocus'
 
 export interface TableProps extends DataTableProps {
   caption: string
@@ -68,12 +69,18 @@ export const TableLayout: FC<TableProps> = ({
     </InterimState>
   )
 
+  const navProps = useArrowKeyNav({
+    axis: 'both',
+    getNextFocus: getNextFocus,
+  })
+
   return (
     <>
       <TableScroll ref={ref}>
         <table
           aria-label={caption}
           className={overflow ? `${className} overflow` : className}
+          {...navProps}
         >
           <thead>
             <DataTableHeader id={headerRowId} />

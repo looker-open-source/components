@@ -30,8 +30,10 @@ import { Icon } from '../../Icon'
 import { Space } from '../../Layout/Space'
 import { Tooltip } from '../../Tooltip'
 import { Truncate } from '../../Truncate'
+import { useClickable } from '../../utils'
 import { columnSize, sizeInfersTruncate } from '../Column/columnSize'
 import { DataTableColumn } from '../Column'
+import { FocusableCell } from '../Column/FocusableCell'
 
 export interface DataTableHeaderCellProps extends DataTableColumn {
   className?: string
@@ -53,11 +55,12 @@ const DataTableHeaderCellLayout = forwardRef(
   ) => {
     const { onSort } = useContext(DataTableContext)
 
-    const handleClick = () => {
+    const onClick = () => {
       if (onSort && canSort) {
         onSort(id, sortDirection === 'asc' ? 'desc' : 'asc')
       }
     }
+    const { role, ...clickableProps } = useClickable({ onClick })
 
     const label = titleIcon ? (
       <Tooltip content={title}>
@@ -69,7 +72,8 @@ const DataTableHeaderCellLayout = forwardRef(
       title
     )
     return (
-      <th
+      <FocusableCell
+        as="th"
         aria-sort={
           sortDirection === 'asc'
             ? 'ascending'
@@ -78,9 +82,9 @@ const DataTableHeaderCellLayout = forwardRef(
             : 'none'
         }
         className={className}
-        onClick={handleClick}
         ref={ref}
         style={{ cursor: canSort ? 'pointer' : undefined }}
+        {...clickableProps}
       >
         <Space gap="xxsmall" reverse={type === 'number'}>
           {label}
@@ -91,7 +95,7 @@ const DataTableHeaderCellLayout = forwardRef(
             ></Icon>
           )}
         </Space>
-      </th>
+      </FocusableCell>
     )
   }
 )

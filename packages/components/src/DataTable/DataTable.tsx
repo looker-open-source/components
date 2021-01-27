@@ -45,6 +45,7 @@ export const DataTableLayout: FC<DataTableProps> = (props) => {
     onSort,
     select,
   } = props
+
   /**
    * Extract columns that the user can specify visibility on
    */

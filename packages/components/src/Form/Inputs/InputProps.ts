@@ -87,6 +87,7 @@ export const inputPropKeys = [
   'required',
   'pattern',
   'step',
+  'tabIndex',
   'value',
   'aria-activedescendant',
   'aria-autocomplete',

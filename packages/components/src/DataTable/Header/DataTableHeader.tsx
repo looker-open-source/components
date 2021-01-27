@@ -44,11 +44,11 @@ export const DataTableHeader: FC<CompatibleHTMLProps<HTMLDivElement>> = ({
 
   return (
     <DataTableRow
+      checked={allSelected}
       id={useID(id)}
       isHeaderRow
       hasCheckbox={hasCheckbox}
       onChange={onChange}
-      checked={allSelected}
     >
       {headerColumns}
     </DataTableRow>

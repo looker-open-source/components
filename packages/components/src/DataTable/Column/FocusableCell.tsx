@@ -24,43 +24,28 @@
 
  */
 
-import React, { FC } from 'react'
-import { Checkbox, MixedBoolean } from '../../Form'
-import { ItemTarget } from './ItemTarget'
+import styled, { css } from 'styled-components'
+import { shouldForwardProp } from '@looker/design-tokens'
+import { FocusVisibleProps } from '../../utils'
 
-export interface DataTableCheckboxProps {
-  id?: string
-  checked?: MixedBoolean
-  disabled?: boolean
-  onChange?: () => void
+const focusVisibleStyle = css<FocusVisibleProps>`
+  &:focus {
+    outline: ${({ focusVisible, theme: { colors } }) => {
+      return focusVisible ? `1px solid ${colors.key}` : 'none'
+    }};
+  }
+`
+
+export interface FocusableCellProps extends FocusVisibleProps {
+  as?: 'th'
 }
 
-export const checkListProps = ['checked', 'disabled', 'onChange', 'id']
-
-export const DataTableCheckbox: FC<DataTableCheckboxProps> = ({
-  id,
-  onChange,
-  checked,
-  disabled,
-}) => {
-  const handleCellOnClick = () => !disabled && onChange && onChange()
-  const handleOnKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) =>
-    event.key === 'Enter' && event.currentTarget.click()
-  return (
-    <ItemTarget aria-labelledby={`rowheader-${id}`} onClick={handleCellOnClick}>
-      <Checkbox
-        aria-label={
-          id !== 'headerId'
-            ? undefined
-            : checked
-            ? 'Select none'
-            : 'Select all rows'
-        }
-        checked={checked}
-        disabled={disabled}
-        onKeyDown={handleOnKeyDown}
-        tabIndex={-1}
-      />
-    </ItemTarget>
-  )
-}
+export const FocusableCell = styled.td
+  .withConfig({
+    shouldForwardProp,
+  })
+  .attrs<FocusableCellProps>(() => ({
+    tabIndex: -1,
+  }))<FocusableCellProps>`
+  ${focusVisibleStyle}
+`

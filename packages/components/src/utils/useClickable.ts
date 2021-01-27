@@ -80,9 +80,8 @@ export function useClickable<E extends HTMLElement>({
             case ' ':
               onClick?.(e)
               break
-            case 'Tab':
-              setFocusVisible(true)
           }
+          setFocusVisible(true)
         }
         onKeyUp?.(e)
       },
