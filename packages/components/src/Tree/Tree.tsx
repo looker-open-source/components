@@ -36,7 +36,7 @@ import { TreeProps } from './types'
 
 const TreeLayout: FC<TreeProps> = ({
   border: propsBorder,
-  brand: propsBrand,
+  keyColor: propsKeyColor,
   children,
   detail,
   detailHoverDisclosure: propsDetailHoverDisclosure,
@@ -56,7 +56,10 @@ const TreeLayout: FC<TreeProps> = ({
 
   const treeContext = useContext(TreeContext)
   const hasBorder = undefinedCoalesce([propsBorder, treeContext.border])
-  const hasBrandColoring = undefinedCoalesce([propsBrand, treeContext.brand])
+  const hasKeyColoring = undefinedCoalesce([
+    propsKeyColor,
+    treeContext.keyColor,
+  ])
   const hasDetailHoverDisclosure = undefinedCoalesce([
     propsDetailHoverDisclosure,
     treeContext.detailHoverDisclosure,
@@ -94,16 +97,16 @@ const TreeLayout: FC<TreeProps> = ({
     <TreeContext.Provider
       value={{
         border: hasBorder,
-        brand: hasBrandColoring,
         depth: depth + 1,
         detailAccessory: hasDetailAccessory,
         detailHoverDisclosure: hasDetailHoverDisclosure,
+        keyColor: hasKeyColoring,
       }}
     >
       <TreeStyle
         className={className}
         border={hasBorder}
-        brand={hasBrandColoring}
+        keyColor={hasKeyColoring}
         depth={depth}
         disabled={disabled}
         selected={selected}
