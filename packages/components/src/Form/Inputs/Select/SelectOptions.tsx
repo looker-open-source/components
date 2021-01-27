@@ -102,19 +102,20 @@ const OptionLayout = ({ option, ...rest }: OptionLayoutProps) => {
     <IconPlaceholder size="small" data-testid="option-icon-placeholder" />
   ) : undefined
 
-  const indicator = option.icon
-    ? // Use a function since otherwise isActive & isSelected are passed via cloneElement
-      () => (
-        <Icon
-          size="small"
-          mr="xsmall"
-          color="text1"
-          {...getSelectOptionIconProps(option.icon)}
-          data-testid="option-icon"
-          mt={option.overline ? 'large' : 'none'}
-        />
-      )
-    : option.indicator || indicatorPropRef?.current || iconPlaceholder
+  const indicator = option.icon ? (
+    // Use a function since otherwise isActive & isSelected are passed via cloneElement
+    <Icon
+      size="small"
+      mt={option.overline ? 'large' : 'none'}
+      mr="xsmall"
+      color="text1"
+      {...getSelectOptionIconProps(option.icon)}
+      data-testid="option-icon"
+    />
+  ) : (
+    // Either an option or Select-level indicator can override the iconPlaceholder
+    option.indicator || indicatorPropRef?.current || iconPlaceholder
+  )
 
   if (option.icon && option.indicator) {
     // eslint-disable-next-line no-console
