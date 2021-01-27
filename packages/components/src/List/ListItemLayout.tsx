@@ -25,9 +25,9 @@
  */
 
 import omit from 'lodash/omit'
-import { reset, CompatibleHTMLProps } from '@looker/design-tokens'
+import { reset, CompatibleHTMLProps, Theme } from '@looker/design-tokens'
 import React, { forwardRef, ReactNode, Ref } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { Icon } from '../Icon'
 import {
   ItemBackgroundColorProps,
@@ -71,15 +71,60 @@ ListItemWrapper.displayName = 'ListItemWrapper'
  **/
 export const ListItemLayoutGrid = styled.div``
 
+export const IconArea = styled.div`
+  /**
+    Not having font-size:0; leads to this container being larger than its taller than its child icon
+    Believe it has something to do with the Icon's internal inline-flex container
+   */
+  align-self: start;
+  font-size: 0;
+  grid-column: 1;
+  grid-row: 1;
+`
+export const LabelArea = styled.div`
+  grid-column: 2;
+  grid-row: 1;
+  /**
+    Without min-width, truncate prop does not properly truncate
+  */
+  min-width: 0;
+`
+export const AccessoryArea = styled.div`
+  grid-column: 3;
+  grid-row: 1;
+`
+
+const getItemPadding = ({
+  accessory,
+  px: propsPx,
+  py: propsPy,
+  theme,
+}: {
+  accessory?: boolean
+  theme: Theme
+} & Pick<ItemDimensions, 'px' | 'py'>) => {
+  /**
+   * The check for 0.375rem gets density = -1 ListItems to the desired 48px min height.
+   * Without it, density = -1 ListItems would be at 44px.
+   */
+  const pt = propsPy === '0.375rem' ? propsPy : theme.space[propsPy]
+  const pr = accessory ? '0' : theme.space[propsPx]
+  const pb = pt
+  const pl = theme.space[propsPx]
+
+  return css`
+    padding: ${pt} ${pr} ${pb} ${pl};
+  `
+}
+
 export const ListItemLayout = styled(ListItemWrapper)`
   align-items: center;
   color: ${({ theme: { colors } }) => colors.text5};
   display: flex;
   font-size: ${({ theme: { fontSizes } }) => fontSizes.small};
   font-weight: ${({ theme: { fontWeights } }) => fontWeights.normal};
-  height: ${({ description, height }) =>
-    description ? height + 16 : height}px;
   list-style-type: none;
+  min-height: ${({ height }) => `${height}px`};
   outline: none;
   text-decoration: none;
   transition: ${({ theme: { easings, transitions } }) =>
@@ -90,32 +135,21 @@ export const ListItemLayout = styled(ListItemWrapper)`
   & > a {
     ${reset}
     ${getItemBackgroundColor}
+    ${getItemPadding}
 
     align-items: center;
     border: none;
     color: inherit;
     cursor: pointer;
-    display: flex;
+    display: grid;
     flex: 1;
     font-size: inherit;
     font-weight: inherit;
+    grid-template-columns: auto 1fr auto;
     outline: none;
-    /**
-     The check for 0.375rem gets density = -1 ListItems to the desired 48px min height.
-     Without it, density = -1 ListItems would be at 44px.
-     */
-    padding: ${({ accessory, px: propsPx, py: propsPy, theme }) => {
-      const pt = propsPy === '0.375rem' ? propsPy : theme.space[propsPy]
-      const pr = accessory ? '0' : theme.space[propsPx]
-      const pb = pt
-      const pl = theme.space[propsPx]
-
-      return `${pt} ${pr} ${pb} ${pl}`
-    }};
 
     text-align: left;
     text-decoration: none;
-    width: 100%;
 
     &:hover,
     &:focus {
@@ -130,7 +164,6 @@ export const ListItemLayout = styled(ListItemWrapper)`
     `&:focus-within button:after,
   &:focus-within a:after {
     content: '';
-    display:block;
     border: solid 2px ${colors.keyFocus};
     border-radius: 2px;
     margin: 0 1px;
@@ -143,7 +176,6 @@ export const ListItemLayout = styled(ListItemWrapper)`
   `}
 
   ${Icon} {
-    align-self: ${({ description }) => (description ? 'flex-start' : 'center')};
     transition: color
       ${({ theme }) => `${theme.transitions.quick}ms ${theme.easings.ease}`};
   }
