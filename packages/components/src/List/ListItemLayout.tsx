@@ -31,15 +31,15 @@ import styled from 'styled-components'
 import { Icon } from '../Icon'
 import {
   ListItemBackgroundColorProps,
-  ItemDimensions,
-  itemDimensionKeys,
+  ListItemDimensions,
+  listItemDimensionKeys,
 } from './types'
 import { listItemBackgroundColor } from './utils'
 
 export interface ListItemLayoutProps
   extends CompatibleHTMLProps<HTMLLIElement>,
     ListItemBackgroundColorProps,
-    ItemDimensions {
+    ListItemDimensions {
   accessory?: boolean
   description?: ReactNode
   focusVisible?: boolean
@@ -60,7 +60,7 @@ const ListItemWrapper = forwardRef(
           'hovered',
           'keyColor',
           'selected',
-          [...itemDimensionKeys]
+          [...listItemDimensionKeys]
         )}
         ref={ref}
         role="none"
