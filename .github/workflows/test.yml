@@ -32,8 +32,6 @@ jobs:
       - uses: c-hive/gha-yarn-cache@v1
       - run : yarn --silent
       - run: yarn test
-      - name: TestCoverage
-        uses: anuraag016/Jest-Coverage-Diff@1.0
     env:
       CI: true
   build:
@@ -75,3 +73,11 @@ jobs:
       - run: yarn prebuild
       - run: yarn preimage-snapshots
       - run: yarn image-snapshots-only
+  coverage:
+    name: "Code Coverage"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: c-hive/gha-yarn-cache@v1
+      - run : yarn --silent
+      - uses: anuraag016/Jest-Coverage-Diff@1.0
