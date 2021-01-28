@@ -44,22 +44,17 @@
     "lint:ts": "tsc",
     "lint:circular": "madge packages/*/src --circular --extensions ts,tsx",
     "lint-staged": "yarn exec lint-staged",
-
     "pretest": "yarn prebuild",
     "test": "yarn jest",
-
     "storybook": "yarn workspace storybook develop",
     "storybook-docs": "yarn workspace storybook develop-docs",
     "storybook-workspaces-build": "yarn lerna run storybook-build --scope '@looker/*' --stream --parallel",
-
     "storyshots-prep": "export storybookBuildMode=fast && yarn pretest && yarn storybook-workspaces-build",
     "pretest:image-snapshots": "yarn storyshots-prep",
     "test:image-snapshots": "yarn jest --config jest-image-snapshots.config.js",
-    "test:image-snapshots-update": "rm -rf packages/*/snapshots && yarn image-snapshots",
-
+    "test:image-snapshots-update": "rm -rf packages/*/snapshots && yarn test:image-snapshots",
     "pretest:a11y": "yarn storyshots-prep",
     "test:a11y": "yarn jest --config jest-a11y.config.js",
-
     "website-canary": "./config/website-canary.sh",
     "website-latest": "./config/website-latest.sh"
   },
