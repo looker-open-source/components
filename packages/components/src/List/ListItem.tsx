@@ -41,7 +41,7 @@ export interface ListItemProps extends CompatibleHTMLProps<HTMLElement> {
    */
   current?: boolean
   /*
-   * optional extra description
+   * optional description
    */
   description?: ReactNode
   /**
