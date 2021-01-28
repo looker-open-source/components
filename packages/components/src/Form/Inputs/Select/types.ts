@@ -34,9 +34,6 @@ export type SelectOptionIcon = IconNames | IconProps['artwork']
 export interface SelectOptionObject
   extends ComboboxOptionObject,
     Pick<ComboboxOptionIndicatorProps, 'indicator'> {
-  /**
-   * Supplementary element that appears below the option's label
-   */
   description?: string | ReactNode
   /**
    * Supplementary element that appears right of the option's label

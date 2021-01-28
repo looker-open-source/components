@@ -25,11 +25,10 @@
  */
 
 import { IconNames, iconNameList } from '@looker/icons'
-import React, { createContext, ReactNode, useContext, useMemo } from 'react'
+import React, { createContext, FC, ReactNode, useContext, useMemo } from 'react'
 import styled from 'styled-components'
 import { Icon, IconPlaceholder } from '../../../Icon'
 import { Spinner } from '../../../Spinner'
-import { Box } from '../../../Layout'
 import { ListItemDetail } from '../../../List/ListItemDetail'
 import { ListItemOverline } from '../../../List/ListItemOverline'
 import { Heading, HeadingProps, Paragraph, Text } from '../../../Text'
@@ -95,6 +94,19 @@ const OptionLayoutBase = ({
   return <Component {...rest} />
 }
 
+// Use an FC since isActive & isSelected are passed via cloneElement
+// and otherwise would get spread onto Icon
+const OptionIcon: FC<SelectOptionObject> = ({ overline, icon }) => (
+  <Icon
+    size="small"
+    mt={overline ? 'large' : 'none'}
+    mr="xsmall"
+    color="text1"
+    {...getSelectOptionIconProps(icon)}
+    data-testid="option-icon"
+  />
+)
+
 const OptionLayout = ({ option, ...rest }: OptionLayoutProps) => {
   const { hasIcons } = useContext(SelectOptionsContext)
   const { indicatorPropRef } = useContext(ComboboxContext)
@@ -103,15 +115,7 @@ const OptionLayout = ({ option, ...rest }: OptionLayoutProps) => {
   ) : undefined
 
   const indicator = option.icon ? (
-    // Use a function since otherwise isActive & isSelected are passed via cloneElement
-    <Icon
-      size="small"
-      mt={option.overline ? 'large' : 'none'}
-      mr="xsmall"
-      color="text1"
-      {...getSelectOptionIconProps(option.icon)}
-      data-testid="option-icon"
-    />
+    <OptionIcon {...option} />
   ) : (
     // Either an option or Select-level indicator can override the iconPlaceholder
     option.indicator || indicatorPropRef?.current || iconPlaceholder
@@ -134,7 +138,7 @@ export function SelectOptionWithDescription({
   overline,
 }: SelectOptionObject) {
   return description || overline ? (
-    <Box>
+    <div>
       {overline && <ListItemOverline>{overline}</ListItemOverline>}
       {description ? (
         <>
@@ -153,7 +157,7 @@ export function SelectOptionWithDescription({
       ) : (
         <ComboboxOptionText />
       )}
-    </Box>
+    </div>
   ) : (
     <ComboboxOptionText />
   )
