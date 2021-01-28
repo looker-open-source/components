@@ -24,41 +24,7 @@
 
  */
 
-import React, { ReactNode, FC } from 'react'
-import styled from 'styled-components'
-import { Heading } from '../Text'
-import { IconButton } from '../Button'
-
-export interface HeaderPanelProps {
-  className?: string
-  /**
-   * defines the icon displayed and the direction that the panel will appear and disappear
-   * @default 'left'
-   */
-  direction?: 'left'
-  /**
-   * callback to close Panel
-   */
-  handleClose?: () => void
-  title: string | ReactNode
-}
-
-const PanelHeaderLayout: FC<HeaderPanelProps> = ({
-  className,
-  direction,
-  handleClose,
-  title,
-}) => {
-  const icon = direction === 'left' ? 'ArrowLeft' : 'ArrowRight'
-
-  return (
-    <header className={className} onClick={handleClose}>
-      <IconButton icon={icon} label={`Close ${title} navigation`} />
-      <Heading>{title}</Heading>
-    </header>
-  )
-}
-
-export const PanelHeader = styled(PanelHeaderLayout)`
-  display: flex;
-`
+export * from './Panel'
+export * from './PanelHeader'
+export * from './Panels'
+export * from './usePanel'

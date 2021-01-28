@@ -26,8 +26,8 @@
 
 import React, { ReactNode, useState } from 'react'
 import { useAnimationState, useControlWarn } from '../utils'
+import { PanelHeader } from './PanelHeader'
 import { PanelSurface } from './PanelSurface'
-import { PanelHeader } from './'
 
 export interface UsePanelProps {
   /**
