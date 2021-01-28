@@ -180,7 +180,7 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
     )
 
   const renderedDescription =
-    typeof children === 'string' ? (
+    typeof description === 'string' ? (
       <Paragraph
         color="text2"
         fontSize={itemDimensions.descriptionFontSize}
