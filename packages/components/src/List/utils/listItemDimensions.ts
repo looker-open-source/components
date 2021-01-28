@@ -27,6 +27,8 @@
 import { DensityRamp, ListItemDimensions } from '../types'
 
 export const density0: ListItemDimensions = {
+  descriptionFontSize: 'xsmall',
+  descriptionLineHeight: 'xsmall',
   height: 36,
   iconGap: 'small',
   iconSize: 'small',
@@ -39,6 +41,8 @@ export const density0: ListItemDimensions = {
 // Positive density values
 export const densityPositive1: ListItemDimensions = {
   ...density0,
+  descriptionFontSize: 'small',
+  descriptionLineHeight: 'small',
   height: 48,
   iconSize: 'medium',
   labelFontSize: 'medium',
@@ -63,7 +67,7 @@ export const densityNegative3: ListItemDimensions = {
   ...densityNegative2,
   height: 24,
   iconSize: 'xxsmall',
-  labelFontSize: 'xxsmall',
+  labelFontSize: 'xsmall',
   labelLineHeight: 'xsmall',
 }
 

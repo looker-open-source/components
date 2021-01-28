@@ -24,13 +24,12 @@
 
  */
 
-import { CompatibleHTMLProps, FontSizes } from '@looker/design-tokens'
+import { CompatibleHTMLProps } from '@looker/design-tokens'
 import { IconNames } from '@looker/icons'
 import styled from 'styled-components'
 import React, { FC, ReactNode, useContext, useRef, useState } from 'react'
 import { ListItemDetail } from '../List/ListItemDetail'
-import { Paragraph, Text } from '../Text'
-import { Truncate } from '../Truncate'
+import { Paragraph } from '../Text'
 import { FlexItem } from '../Layout'
 import { Icon, IconPlaceholder } from '../Icon'
 import { HoverDisclosureContext, HoverDisclosure, useHovered } from '../utils'
@@ -38,18 +37,6 @@ import { ListItemContext } from './ListItemContext'
 import { ListItemLayout } from './ListItemLayout'
 import { createSafeRel } from './utils'
 import { ListItemBackgroundColorProps } from './types'
-
-const TruncateWrapper: FC<{
-  color?: string
-  fontSize?: FontSizes
-  lineHeight?: FontSizes
-}> = ({ children, color, fontSize, lineHeight }) => (
-  <Truncate>
-    <Text color={color} fontSize={fontSize} lineHeight={lineHeight}>
-      {children}
-    </Text>
-  </Truncate>
-)
 
 interface DetailOptions {
   /**
@@ -178,25 +165,30 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
   }
 
   const ContentContainer = !disabled && itemRole === 'link' ? 'a' : 'button'
-  const TextWrapper = truncate ? TruncateWrapper : Paragraph
 
   const renderedChildren =
     typeof children === 'string' ? (
-      <TextWrapper
+      <Paragraph
         fontSize={itemDimensions.labelFontSize}
         lineHeight={itemDimensions.labelLineHeight}
+        truncate={truncate}
       >
         {children}
-      </TextWrapper>
+      </Paragraph>
     ) : (
       children
     )
 
   const renderedDescription =
     typeof children === 'string' ? (
-      <TextWrapper color="text2" fontSize="xsmall">
+      <Paragraph
+        color="text2"
+        fontSize={itemDimensions.descriptionFontSize}
+        lineHeight={itemDimensions.descriptionLineHeight}
+        truncate={truncate}
+      >
         {description}
-      </TextWrapper>
+      </Paragraph>
     ) : (
       description
     )
