@@ -184,7 +184,7 @@ export const SelectOptionGroup = ({
     <SelectOptionGroupContainer>
       {label && (
         <SelectOptionGroupTitle isMulti={isMulti}>
-          <ComboboxOptionIndicator isMulti={isMulti} />
+          <ComboboxOptionIndicator indicator={isMulti && ' '} />
           {label}
         </SelectOptionGroupTitle>
       )}
