@@ -74,10 +74,28 @@ Description.args = {
   })),
 }
 
+export const DescriptionIcon = Template.bind({})
+DescriptionIcon.args = {
+  options: cheeseOptions.map((option) => ({
+    ...option,
+    description: "I'm a little teapot",
+    icon: 'Edit',
+  })),
+}
+
 export const Overline = Template.bind({})
 Overline.args = {
   options: cheeseOptions.map((option) => ({
     ...option,
+    overline: 'Overline Text',
+  })),
+}
+
+export const OverlineIcon = Template.bind({})
+OverlineIcon.args = {
+  options: cheeseOptions.map((option) => ({
+    ...option,
+    icon: 'Edit',
     overline: 'Overline Text',
   })),
 }
@@ -152,6 +170,15 @@ export const GroupsMulti = TemplateMulti.bind({})
 GroupsMulti.args = {
   isMulti: true,
   options: optionsWithGroups,
+}
+
+export const NoIndicatorMulti = TemplateMulti.bind({})
+NoIndicatorMulti.args = {
+  isMulti: true,
+  options: cheeseOptions.map((option) => ({
+    ...option,
+    indicator: false,
+  })),
 }
 
 export default {
