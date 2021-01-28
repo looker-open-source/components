@@ -113,6 +113,7 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
   const {
     children,
     className,
+    current,
     description,
     detail,
     disabled,
@@ -221,6 +222,8 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
   const listItemContent = (
     <>
       <ContentContainer
+        aria-current={current}
+        aria-selected={selected}
         href={href}
         onBlur={handleOnBlur}
         onClick={disabled ? undefined : handleOnClick}
@@ -252,7 +255,7 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
         hovered={hovered}
         keyColor={keyColor}
         ref={itemRef}
-        selected={selected}
+        selected={selected || current}
         {...itemDimensions}
       >
         {listItemContent}

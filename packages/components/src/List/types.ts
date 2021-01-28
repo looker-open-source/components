@@ -67,6 +67,12 @@ export interface ListItemBackgroundColorProps {
    */
   hovered?: boolean
   /**
+   * If true, the ListItem will have a darker background color (same as selected)
+   * Note: Using current and selected at the same time is not recommended
+   * @default false
+   */
+  current?: boolean
+  /**
    * If true, the ListItem will have a darker background color
    * @default false
    */

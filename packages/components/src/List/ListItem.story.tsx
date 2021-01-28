@@ -112,6 +112,12 @@ Selected.args = {
   selected: true,
 }
 
+export const Current = Template.bind({})
+Current.args = {
+  ...Basic.args,
+  current: true,
+}
+
 export const Disabled = Template.bind({})
 Disabled.args = {
   ...Basic.args,
