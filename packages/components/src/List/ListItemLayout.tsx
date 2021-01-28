@@ -25,9 +25,9 @@
  */
 
 import omit from 'lodash/omit'
-import { reset, CompatibleHTMLProps } from '@looker/design-tokens'
+import { reset, CompatibleHTMLProps, Theme } from '@looker/design-tokens'
 import React, { forwardRef, ReactNode, Ref } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { Icon } from '../Icon'
 import {
   ListItemBackgroundColorProps,
@@ -49,7 +49,7 @@ export interface ListItemLayoutProps
  * All of this drama is to deal with SC's behavior of auto-spreading the Element interface
  * used when styled extends a base type. E.g. (styled.li has `color` prop)
  */
-const ListItemWrapper = forwardRef(
+const ListItemLayoutInternal = forwardRef(
   (props: ListItemLayoutProps, ref: Ref<HTMLLIElement>) => {
     return (
       <li
@@ -69,7 +69,7 @@ const ListItemWrapper = forwardRef(
   }
 )
 
-ListItemWrapper.displayName = 'ListItemWrapper'
+ListItemLayoutInternal.displayName = 'ListItemLayoutInternal'
 
 /**
  * Make Safari (and older Chrome) happy.
@@ -77,15 +77,37 @@ ListItemWrapper.displayName = 'ListItemWrapper'
  **/
 export const ListItemLayoutGrid = styled.div``
 
-export const ListItemLayout = styled(ListItemWrapper)`
+const listItemPadding = ({
+  accessory,
+  px: propsPx,
+  py: propsPy,
+  theme,
+}: {
+  accessory?: boolean
+  theme: Theme
+} & Pick<ListItemDimensions, 'px' | 'py'>) => {
+  /**
+   * The check for 0.375rem gets density = -1 ListItems to the desired 48px min height.
+   * Without it, density = -1 ListItems would be at 44px.
+   */
+  const pt = propsPy === '0.375rem' ? propsPy : theme.space[propsPy]
+  const pr = accessory ? '0' : theme.space[propsPx]
+  const pb = pt
+  const pl = theme.space[propsPx]
+
+  return css`
+    padding: ${pt} ${pr} ${pb} ${pl};
+  `
+}
+
+export const ListItemLayout = styled(ListItemLayoutInternal)`
   align-items: center;
   color: ${({ theme: { colors } }) => colors.text5};
   display: flex;
   font-size: ${({ theme: { fontSizes } }) => fontSizes.small};
   font-weight: ${({ theme: { fontWeights } }) => fontWeights.normal};
-  height: ${({ description, height }) =>
-    description ? height + 16 : height}px;
   list-style-type: none;
+  min-height: ${({ height }) => height}px;
   outline: none;
   text-decoration: none;
   transition: ${({ theme: { easings, transitions } }) =>
@@ -96,6 +118,7 @@ export const ListItemLayout = styled(ListItemWrapper)`
   & > a {
     ${reset}
     ${listItemBackgroundColor}
+    ${listItemPadding}
 
     align-items: center;
     border: none;
@@ -106,18 +129,6 @@ export const ListItemLayout = styled(ListItemWrapper)`
     font-size: inherit;
     font-weight: inherit;
     outline: none;
-    /**
-     The check for 0.375rem gets density = -1 ListItems to the desired 48px min height.
-     Without it, density = -1 ListItems would be at 44px.
-     */
-    padding: ${({ accessory, px: propsPx, py: propsPy, theme }) => {
-      const pt = propsPy === '0.375rem' ? propsPy : theme.space[propsPy]
-      const pr = accessory ? '0' : theme.space[propsPx]
-      const pb = pt
-      const pl = theme.space[propsPx]
-
-      return `${pt} ${pr} ${pb} ${pl}`
-    }};
 
     text-align: left;
     text-decoration: none;
