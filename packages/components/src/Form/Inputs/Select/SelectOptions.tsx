@@ -94,13 +94,12 @@ const OptionLayoutBase = ({
   return <Component {...rest} />
 }
 
-// Use an FC since isActive & isSelected are passed via cloneElement
+// Use an FC since isActive & isSelected are passed to the indicator via cloneElement
 // and otherwise would get spread onto Icon
 const OptionIcon: FC<SelectOptionObject> = ({ overline, icon }) => (
   <Icon
     size="small"
     mt={overline ? 'large' : 'none'}
-    mr="xsmall"
     color="text1"
     {...getSelectOptionIconProps(icon)}
     data-testid="option-icon"
