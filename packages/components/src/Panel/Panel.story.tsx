@@ -25,7 +25,6 @@
  */
 
 import React, { useState } from 'react'
-// import { Story } from '@storybook/react/types-6-0'
 import { List, ListItem } from '../List'
 import { Aside, Page, Section } from '../Layout'
 import { Icon } from '../Icon'
@@ -85,28 +84,20 @@ Basic.parameters = {
 }
 
 export const Hook = () => {
-  const [isOpen, setOpen] = useState(false)
-  const open = () => setOpen(true)
-  const canClose = () => true
-
-  const { panel } = usePanel({
-    canClose,
+  const { panel, setOpen } = usePanel({
     content: 'Panel content',
-    direction: 'left',
-    isOpen,
-    setOpen,
     title: 'Panel Hook',
   })
 
   return (
     <>
-      {panel}
       <List>
-        <ListItem onClick={open} icon="Check">
+        <ListItem onClick={() => setOpen(true)} icon="Check">
           Option A
         </ListItem>
         <ListItem icon="Check">Option B</ListItem>
       </List>
+      {panel}
     </>
   )
 }

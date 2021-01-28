@@ -24,7 +24,45 @@
 
  */
 
-export * from './HeaderPanel'
-export * from './Panel'
-export * from './Panels'
-export * from './usePanel'
+import React, { ReactNode, FC } from 'react'
+import { Heading } from '../Text'
+import { Space } from '../Layout'
+import { IconButton } from '../Button'
+
+export interface PanelHeaderProps {
+  className?: string
+  /**
+   * defines the icon displayed and the direction that the panel will appear and disappear
+   * @default 'left'
+   */
+  direction?: 'left'
+  /**
+   * callback to close Panel
+   */
+  handleClose?: () => void
+  title: string | ReactNode
+}
+
+export const PanelHeader: FC<PanelHeaderProps> = ({
+  className,
+  direction,
+  handleClose,
+  title,
+}) => {
+  const icon = direction === 'left' ? 'ArrowBackward' : 'ArrowForward'
+
+  return (
+    <Space as="header" gap="small" className={className}>
+      <IconButton
+        onClick={handleClose}
+        icon={icon}
+        label={`Close ${title} navigation`}
+        toggle
+        shape="round"
+        outline
+        size="large"
+      />
+      <Heading>{title}</Heading>
+    </Space>
+  )
+}
