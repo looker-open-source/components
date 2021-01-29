@@ -31,7 +31,7 @@ import { ListItemStatefulProps } from '../List/types'
 
 export interface TreeProps
   extends Omit<AccordionProps, 'indicatorGap' | 'indicatorSize'>,
-    Omit<ListItemStatefulProps, 'hovered'> {
+    ListItemStatefulProps {
   /**
    * If true, vertical lines will extend from the Tree indicator (and all sub-Trees' indicators)
    * @default false
