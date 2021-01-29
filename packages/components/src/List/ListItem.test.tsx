@@ -27,7 +27,7 @@
 import 'jest-styled-components'
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { fireEvent } from '@testing-library/react'
+import { fireEvent, configure } from '@testing-library/react'
 
 import { ListItem } from './ListItem'
 
@@ -35,6 +35,13 @@ describe('ListItem', () => {
   test('renders children', () => {
     const { getByText } = renderWithTheme(<ListItem>who!</ListItem>)
     expect(getByText('who!')).toBeVisible()
+  })
+
+  test('renders description', () => {
+    const { getByText } = renderWithTheme(
+      <ListItem description="are you?">who!</ListItem>
+    )
+    expect(getByText('are you?')).toBeVisible()
   })
 
   test('renders detail', () => {
@@ -64,6 +71,19 @@ describe('ListItem', () => {
       </ListItem>
     )
     expect(getByTitle('SVG Title Here')).toBeInTheDocument()
+  })
+
+  xtest('has a key color border on key press', () => {
+    configure({ computedStyleSupportsPseudoElements: true })
+    const { getByRole } = renderWithTheme(<ListItem>Item</ListItem>)
+    const item = getByRole('listitem')
+    fireEvent.keyUp(item, {
+      key: 'Enter',
+    })
+    expect(window.getComputedStyle(item, ':after')).toHaveAttribute(
+      'border',
+      'solid 2px #9785F2'
+    )
   })
 
   test('is not clickable when disabled', () => {
