@@ -24,31 +24,24 @@
 
  */
 
-import { DerivativeColors, SpecifiableColors } from '../../system'
-import { accentBlendScale, generateInteractive } from './stateful'
-import { mixScaledColors, textBlends } from './blend'
-import { mixColors } from './mixColors'
+import { colors } from '../../tokens/color'
+import { tintOrShadeUiColor } from './tintOrShadeUiColor'
+import { uiBlends } from './blend'
 
-export const generateDerivativeColors = ({
-  background,
-  inform,
-  link,
-  positive,
-  text,
-  warn,
-}: SpecifiableColors): DerivativeColors => {
-  const accents = {
-    informAccent: mixScaledColors(accentBlendScale, inform, background),
-    positiveAccent: mixScaledColors(accentBlendScale, positive, background),
-    warnAccent: mixScaledColors(accentBlendScale, warn, background),
-  }
+const { background, text } = colors
 
-  return {
-    field: background,
-    inverse: text,
-    inverseOn: background,
-    linkInteractive: generateInteractive(link),
-    neutral: mixColors(textBlends[1], text, background),
-    ...accents,
-  }
-}
+describe('tintOrShadeUiColor', () => {
+  describe('light (stock theme)', () => {
+    test('ui1', () =>
+      expect(tintOrShadeUiColor(uiBlends[0], background)).toEqual('#f4f4f4'))
+    test('ui5', () =>
+      expect(tintOrShadeUiColor(uiBlends[4], background)).toEqual('#262626'))
+  })
+
+  describe('dark-mode', () => {
+    test('ui1', () =>
+      expect(tintOrShadeUiColor(uiBlends[0], text)).toEqual('#33393f'))
+    test('ui5', () =>
+      expect(tintOrShadeUiColor(uiBlends[4], text)).toEqual('#fff'))
+  })
+})

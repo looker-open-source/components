@@ -34,6 +34,7 @@ import { css } from 'styled-components'
 import { BlendColors, SpecifiableColors } from '../../system/color'
 import { tintOrShadeUiColor } from './tintOrShadeUiColor'
 import { scaleMixAmount } from './scaleMixAmount'
+import { mixColors } from './mixColors'
 
 export const textBlends = [45, 65, 78, 88, 95, 99]
 export const uiBlends = [4, 12, 23, 34, 85]
@@ -46,14 +47,6 @@ export const uiTransparencyBlend = (level: UIColorLevels) =>
   css`
     ${({ theme: { colors } }) => blendColorTransparency(colors.text, level)}
   `
-
-export const mixColors = (
-  mixAmount: number,
-  foreground: string,
-  background: string
-) => {
-  return mix(mixAmount / 100, foreground, background)
-}
 
 export const mixScaledColors = (
   mixAmount: number,
