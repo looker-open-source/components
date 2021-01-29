@@ -28,7 +28,6 @@ import React, { ReactNode } from 'react'
 import { data as mockData, CheeseData } from '../../__mocks__/DataTable/data'
 import { Link } from '../../Link'
 import { Status } from '../../Status'
-import { Span } from '../../Text/Span'
 import { Tooltip } from '../../Tooltip'
 import { DataTableCell } from '../Column'
 import { DataTableItem, DataTableAction } from '../Item'
@@ -99,7 +98,6 @@ export const itemBuilder = (
               size="xsmall"
             />
           </Tooltip>
-          <Span fontSize="xsmall">{status}</Span>
         </DataTableCell>
         <DataTableCell>{inventory}</DataTableCell>
         <DataTableCell>{color}</DataTableCell>

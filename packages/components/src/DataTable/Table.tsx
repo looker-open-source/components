@@ -175,6 +175,9 @@ export const Table = styled(TableLayout)`
   *border-collapse: collapse;
   border-spacing: 0;
   font-size: ${({ theme }) => theme.fontSizes.small};
+  /* stylelint-disable value-no-vendor-prefix, property-no-vendor-prefix */
+  height: -webkit-fill-available;
+  /* stylelint-enable */
   line-height: 1;
   width: 100%;
   td,
