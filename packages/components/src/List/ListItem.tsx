@@ -30,13 +30,14 @@ import styled from 'styled-components'
 import React, { FC, ReactNode, useContext, useRef, useState } from 'react'
 import { ListItemDetail } from '../List/ListItemDetail'
 import { Paragraph } from '../Text'
-import { FlexItem } from '../Layout'
 import { Icon, IconPlaceholder } from '../Icon'
 import { HoverDisclosureContext, HoverDisclosure, useHovered } from '../utils'
 import { ListItemContext } from './ListItemContext'
 import { ListItemLayout } from './ListItemLayout'
-import { createSafeRel } from './utils'
+import { ListItemLayoutAccessory } from './ListItemLayoutAccessory'
+import { ListItemWrapper } from './ListItemWrapper'
 import { ListItemBackgroundColorProps } from './types'
+import { createSafeRel } from './utils'
 
 interface DetailOptions {
   /**
@@ -52,17 +53,6 @@ interface DetailOptions {
   hoverDisclosure?: boolean
 }
 
-interface DetailObject {
-  /**
-   * Detail element displayed right of the label element
-   */
-  content: ReactNode
-  /**
-   * Options that affect detail behavior
-   */
-  options: DetailOptions
-}
-
 export interface ListItemProps
   extends CompatibleHTMLProps<HTMLElement>,
     Omit<ListItemBackgroundColorProps, 'hovered'> {
@@ -75,7 +65,7 @@ export interface ListItemProps
    * 1. ReactNode
    * 2. Object with content and options properties
    */
-  detail?: ReactNode | DetailObject
+  detail?: ReactNode | { content: ReactNode; options: DetailOptions }
   /**
    * Optional icon placed left of the item children
    */
@@ -119,7 +109,7 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
 
   const { iconGutter, itemDimensions } = useContext(ListItemContext)
 
-  const [isFocusVisible, setFocusVisible] = useState(false)
+  const [focusVisible, setFocusVisible] = useState(false)
 
   const itemRef = useRef<HTMLLIElement>(null)
   const [hovered] = useHovered(itemRef)
@@ -163,8 +153,6 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
       'itemRole="link" and disabled cannot be combined - use itemRole="button" if you need to offer a disabled ListItem'
     )
   }
-
-  const ContentContainer = !disabled && itemRole === 'link' ? 'a' : 'button'
 
   const renderedChildren =
     typeof children === 'string' ? (
@@ -211,47 +199,58 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
     </HoverDisclosure>
   )
 
+  const LabelContainer = !disabled && itemRole === 'link' ? 'a' : 'button'
+  const LabelContainerCreator: FC<{
+    children: ReactNode
+    className: string
+  }> = ({ children, className }) => (
+    <LabelContainer
+      aria-current={current}
+      aria-selected={selected}
+      className={className}
+      href={href}
+      onBlur={handleOnBlur}
+      onClick={disabled ? undefined : handleOnClick}
+      onKeyUp={handleOnKeyUp}
+      rel={createSafeRel(props.rel, props.target)}
+      role="listitem"
+      target={target}
+      tabIndex={-1}
+    >
+      {children}
+    </LabelContainer>
+  )
+
+  const Layout = accessory ? ListItemLayoutAccessory : ListItemLayout
   const listItemContent = (
-    <>
-      <ContentContainer
-        aria-current={current}
-        aria-selected={selected}
-        href={href}
-        onBlur={handleOnBlur}
-        onClick={disabled ? undefined : handleOnClick}
-        onKeyUp={handleOnKeyUp}
-        rel={createSafeRel(props.rel, props.target)}
-        role="listitem"
-        target={target}
-        tabIndex={-1}
-      >
-        {renderedIcon}
-        <FlexItem>
-          {renderedChildren}
-          {renderedDescription}
-        </FlexItem>
-        {!accessory && renderedDetail}
-      </ContentContainer>
-      {accessory && renderedDetail}
-    </>
+    <Layout
+      // eslint-disable-next-line react/no-children-prop
+      children={renderedChildren}
+      containerCreator={LabelContainerCreator}
+      description={renderedDescription}
+      detail={renderedDetail}
+      icon={renderedIcon}
+      px={itemDimensions.px}
+      py={itemDimensions.py}
+    />
   )
 
   return (
     <HoverDisclosureContext.Provider value={{ visible: hovered }}>
-      <ListItemLayout
-        accessory={accessory}
+      <ListItemWrapper
         className={className}
+        current={current}
         description={description}
         disabled={disabled}
-        focusVisible={isFocusVisible}
+        focusVisible={focusVisible}
         hovered={hovered}
         keyColor={keyColor}
         ref={itemRef}
-        selected={selected || current}
+        selected={selected}
         {...itemDimensions}
       >
         {listItemContent}
-      </ListItemLayout>
+      </ListItemWrapper>
     </HoverDisclosureContext.Provider>
   )
 }

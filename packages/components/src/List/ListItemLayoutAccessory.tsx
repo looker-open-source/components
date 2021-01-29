@@ -24,38 +24,41 @@
 
  */
 
-import { itemSelectedColor, Theme } from '@looker/design-tokens'
-import { css } from 'styled-components'
-import { ListItemBackgroundColorProps } from '../types'
+import React, { FC } from 'react'
+import styled from 'styled-components'
+import { FlexItem } from '../Layout'
+import { ListItemLayoutProps } from './ListItemLayout'
+import { listItemPadding } from './utils'
 
-export const listItemBackgroundColor = ({
-  keyColor,
-  current,
-  disabled,
-  hovered,
-  selected,
-  theme: { colors },
-}: ListItemBackgroundColorProps & { theme: Theme }) => {
-  const keyColors = {
-    all: colors.keySubtle,
-    hovered: colors.ui1,
-    selected: colors.keySubtle,
-  }
-  const uiColors = {
-    all: itemSelectedColor(colors.ui2),
-    hovered: colors.ui1,
-    selected: itemSelectedColor(colors.ui2),
-  }
-  const stateColors = keyColor ? keyColors : uiColors
-  let renderedColor
+export const ListItemLayoutAccessoryInternal: FC<ListItemLayoutProps> = ({
+  children,
+  className,
+  containerCreator,
+  description,
+  detail,
+  icon,
+}) => {
+  const content = (
+    <>
+      {icon}
+      <FlexItem>
+        {children}
+        {description}
+      </FlexItem>
+    </>
+  )
 
-  if (disabled) renderedColor = 'transparent'
-  else if ((selected || current) && hovered) renderedColor = stateColors.all
-  else if (selected || current) renderedColor = stateColors.selected
-  else if (hovered) renderedColor = stateColors.hovered
-  else renderedColor = 'transparent'
-
-  return css`
-    background-color: ${renderedColor};
-  `
+  return (
+    <>
+      {containerCreator({
+        children: content,
+        className: className || '',
+      })}
+      {detail}
+    </>
+  )
 }
+
+export const ListItemLayoutAccessory = styled(ListItemLayoutAccessoryInternal)`
+  ${(props) => listItemPadding({ accessory: true, ...props })}
+`
