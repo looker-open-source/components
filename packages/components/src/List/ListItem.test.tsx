@@ -73,6 +73,7 @@ describe('ListItem', () => {
     expect(getByTitle('SVG Title Here')).toBeInTheDocument()
   })
 
+  // At the moment, JSDom doesn't support the pseudo-selector parameter in getComputedStyle
   xtest('has a key color border on key press', () => {
     configure({ computedStyleSupportsPseudoElements: true })
     const { getByRole } = renderWithTheme(<ListItem>Item</ListItem>)
