@@ -66,9 +66,6 @@ Storybook is a tool used to develop, demonstrate and document components in isol
 - **yarn storybook** starts Storybook (includes stories from all packages)
 - **yarn storybook docs** starts Storybook in "Docs" mode
 - **yarn workspace [workspace-package-name] storybook** starts a storybook with just stories within the specified package.
-- **yarn image-snapshots** takes image-snapshots of all stories within packages/\*\*
-  - `preimage-snapshots` is a yarn task that runs `storybooks-build` task before capturing image snapshots.
-  - `image-snapshots-update` will remove and rebuild all existing snapshots if you have an _expected_ change.
 
 ### Workspace Commands
 
