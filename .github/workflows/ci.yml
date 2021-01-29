@@ -79,6 +79,7 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         with:
           commit-message: "chore: image-snapshot updates"
+          base: ${{ github.payload.pull_request.head.ref }}
           branch: ${{ github.payload.pull_request.head.ref }}/image-snapshots
           delete-branch: true
           title: 'chore: image-snapshot updates'
