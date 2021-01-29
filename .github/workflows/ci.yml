@@ -71,9 +71,9 @@ jobs:
     if: github.event.pull_request.draft == false
     steps:
       - uses: actions/checkout@v2
-      - uses: c-hive/gha-yarn-cache@v1
         with:
           ref: ${{ github.event.pull_request.head.ref }}
+      # - uses: c-hive/gha-yarn-cache@v1
       - run : yarn --silent
       - run: yarn test:image-snapshots-update
       - name: Create Pull Request
