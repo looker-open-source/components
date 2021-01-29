@@ -24,31 +24,24 @@
 
  */
 
-import { DerivativeColors, SpecifiableColors } from '../../system'
-import { accentBlendScale, generateInteractive } from './stateful'
-import { mixScaledColors, textBlends } from './blend'
+import { colors } from '../../tokens/color'
 import { mixColors } from './mixColors'
+import { textBlends } from './blend'
 
-export const generateDerivativeColors = ({
-  background,
-  inform,
-  link,
-  positive,
-  text,
-  warn,
-}: SpecifiableColors): DerivativeColors => {
-  const accents = {
-    informAccent: mixScaledColors(accentBlendScale, inform, background),
-    positiveAccent: mixScaledColors(accentBlendScale, positive, background),
-    warnAccent: mixScaledColors(accentBlendScale, warn, background),
-  }
+const { background, text } = colors
 
-  return {
-    field: background,
-    inverse: text,
-    inverseOn: background,
-    linkInteractive: generateInteractive(link),
-    neutral: mixColors(textBlends[1], text, background),
-    ...accents,
-  }
-}
+describe('mixColors', () => {
+  describe('light (stock theme)', () => {
+    test('text1', () =>
+      expect(mixColors(textBlends[0], text, background)).toEqual('#9da0a3'))
+    test('text5', () =>
+      expect(mixColors(textBlends[4], text, background)).toEqual('#30373d'))
+  })
+
+  describe('dark-mode', () => {
+    test('text1', () =>
+      expect(mixColors(textBlends[0], background, text)).toEqual('#878b8e'))
+    test('text5', () =>
+      expect(mixColors(textBlends[4], background, text)).toEqual('#f4f4f4'))
+  })
+})
