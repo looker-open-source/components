@@ -12,4 +12,3 @@ Please check the following items are addressed in your pull request (or are not 
 - [ ] Documentation updated
 - [ ] i18n impacts
 - [ ] a11y impacts
-- [ ] :rotating_light: Check for image-snapshot changes (run `yarn image-snapshots` locally)
