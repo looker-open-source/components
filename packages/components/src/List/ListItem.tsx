@@ -36,7 +36,7 @@ import { ListItemContext } from './ListItemContext'
 import { ListItemLayout } from './ListItemLayout'
 import { ListItemLayoutAccessory } from './ListItemLayoutAccessory'
 import { ListItemWrapper } from './ListItemWrapper'
-import { ListItemBackgroundColorProps } from './types'
+import { ListItemStatefulProps } from './types'
 import { createSafeRel } from './utils'
 
 interface DetailOptions {
@@ -55,7 +55,7 @@ interface DetailOptions {
 
 export interface ListItemProps
   extends CompatibleHTMLProps<HTMLElement>,
-    Omit<ListItemBackgroundColorProps, 'hovered'> {
+    Omit<ListItemStatefulProps, 'hovered'> {
   /*
    * optional extra description
    */
@@ -224,15 +224,15 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
   const Layout = accessory ? ListItemLayoutAccessory : ListItemLayout
   const listItemContent = (
     <Layout
-      // eslint-disable-next-line react/no-children-prop
-      children={renderedChildren}
       containerCreator={LabelContainerCreator}
       description={renderedDescription}
       detail={renderedDetail}
       icon={renderedIcon}
       px={itemDimensions.px}
       py={itemDimensions.py}
-    />
+    >
+      {renderedChildren}
+    </Layout>
   )
 
   return (

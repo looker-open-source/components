@@ -30,7 +30,7 @@ import React, { forwardRef, ReactNode, Ref } from 'react'
 import styled from 'styled-components'
 import { Icon } from '..'
 import {
-  ListItemBackgroundColorProps,
+  ListItemStatefulWithHoveredProps,
   ListItemDimensions,
   listItemDimensionKeys,
 } from './types'
@@ -38,7 +38,7 @@ import { listItemBackgroundColor } from './utils'
 
 export interface ListItemWrapperProps
   extends CompatibleHTMLProps<HTMLLIElement>,
-    ListItemBackgroundColorProps,
+    ListItemStatefulWithHoveredProps,
     ListItemDimensions {
   description?: ReactNode // Should be eventually deleted because the CSS could be handled in layout pieces
   focusVisible?: boolean

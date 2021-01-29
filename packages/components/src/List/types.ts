@@ -54,7 +54,7 @@ export const listItemDimensionKeys = [
   'detailFontSize',
 ]
 
-export interface ListItemBackgroundColorProps {
+export interface ListItemStatefulProps {
   /**
    * Replace the normal uiN(1-5) color for selected and selected + hovered color with key colors
    * @default false
@@ -66,11 +66,6 @@ export interface ListItemBackgroundColorProps {
    */
   disabled?: boolean
   /**
-   * If true, the ListItem will have a light background color
-   * @default false
-   */
-  hovered?: boolean
-  /**
    * If true, the ListItem will have a darker background color (same as selected)
    * Note: Using current and selected at the same time is not recommended
    * @default false
@@ -81,4 +76,13 @@ export interface ListItemBackgroundColorProps {
    * @default false
    */
   selected?: boolean
+}
+
+export interface ListItemStatefulWithHoveredProps
+  extends ListItemStatefulProps {
+  /**
+   * If true, the ListItem will have a light background color
+   * @default false
+   */
+  hovered?: boolean
 }

@@ -54,11 +54,14 @@ import {
 import { undefinedCoalesce } from '../utils'
 import { Truncate } from '../Truncate'
 import { listItemBackgroundColor } from '../List/utils'
-import { ListItemBackgroundColorProps } from '../List/types'
+import {
+  ListItemStatefulProps,
+  ListItemStatefulWithHoveredProps,
+} from '../List/types'
 import { TreeContext } from './TreeContext'
 
 export interface TreeItemProps
-  extends ListItemBackgroundColorProps,
+  extends ListItemStatefulProps,
     Omit<CompatibleHTMLProps<HTMLDivElement>, 'color'>,
     TextColorProps {
   children: ReactNode
@@ -254,7 +257,7 @@ export const TreeItemSpace = styled(Space)<TreeItemSpaceProps>`
     focusVisible && theme.colors.keyFocus};
 `
 
-export const TreeItemLabel = styled(Space)<ListItemBackgroundColorProps>`
+export const TreeItemLabel = styled(Space)<ListItemStatefulWithHoveredProps>`
   ${listItemBackgroundColor}
   align-items: center;
   color: ${({ disabled, theme: { colors } }) =>

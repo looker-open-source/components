@@ -31,12 +31,12 @@ import {
   AccordionDisclosureStyle,
 } from '../Accordion'
 import { listItemBackgroundColor } from '../List/utils'
-import { ListItemBackgroundColorProps } from '../List/types'
+import { ListItemStatefulWithHoveredProps } from '../List/types'
 import { TreeItem, TreeItemLabel } from './TreeItem'
 import { TreeGroupLabel } from './TreeGroup'
 import { generateIndent, generateTreeBorder } from './utils'
 
-interface TreeStyleProps extends ListItemBackgroundColorProps {
+interface TreeStyleProps extends ListItemStatefulWithHoveredProps {
   border?: boolean
   depth: number
   branchFontWeight?: boolean
