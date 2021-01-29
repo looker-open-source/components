@@ -56,10 +56,7 @@ const TreeLayout: FC<TreeProps> = ({
 
   const treeContext = useContext(TreeContext)
   const hasBorder = undefinedCoalesce([propsBorder, treeContext.border])
-  const hasKeyColoring = undefinedCoalesce([
-    propsKeyColor,
-    treeContext.keyColor,
-  ])
+  const useKeyColor = undefinedCoalesce([propsKeyColor, treeContext.keyColor])
   const hasDetailHoverDisclosure = undefinedCoalesce([
     propsDetailHoverDisclosure,
     treeContext.detailHoverDisclosure,
@@ -100,13 +97,13 @@ const TreeLayout: FC<TreeProps> = ({
         depth: depth + 1,
         detailAccessory: hasDetailAccessory,
         detailHoverDisclosure: hasDetailHoverDisclosure,
-        keyColor: hasKeyColoring,
+        keyColor: useKeyColor,
       }}
     >
       <TreeStyle
         className={className}
         border={hasBorder}
-        keyColor={hasKeyColoring}
+        keyColor={useKeyColor}
         depth={depth}
         disabled={disabled}
         selected={selected}

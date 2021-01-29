@@ -55,7 +55,7 @@ interface DetailOptions {
 
 export interface ListItemProps
   extends CompatibleHTMLProps<HTMLElement>,
-    Omit<ListItemStatefulProps, 'hovered'> {
+    ListItemStatefulProps {
   /*
    * optional extra description
    */
