@@ -98,6 +98,10 @@ export const itemBuilder = (
               size="xsmall"
             />
           </Tooltip>
+          <span>some text</span>
+          <p>
+            <a>link here</a>
+          </p>
         </DataTableCell>
         <DataTableCell>{inventory}</DataTableCell>
         <DataTableCell>{color}</DataTableCell>
