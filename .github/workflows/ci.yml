@@ -72,6 +72,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: c-hive/gha-yarn-cache@v1
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
       - run : yarn --silent
       - run: yarn test:image-snapshots-update
       - name: Create Pull Request
