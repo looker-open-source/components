@@ -36,8 +36,8 @@ export default {
 }
 
 export const Basic = () => {
-  const [explore, setExplore] = useState(false)
-  const toggleExplore = () => setExplore(!explore)
+  const [open, setOpen] = useState(false)
+  const toggleOpen = () => setOpen(!open)
 
   const title = (
     <>
@@ -51,7 +51,7 @@ export const Basic = () => {
       <Aside width="12rem">
         <Panels>
           <List>
-            <ListItem onClick={toggleExplore} icon="ExploreOutline">
+            <ListItem onClick={toggleOpen} icon="ExploreOutline">
               Dog
             </ListItem>
             <Panel content={'content from display...'} title="Cat">
@@ -69,8 +69,8 @@ export const Basic = () => {
               </List>
             }
             direction="left"
-            isOpen={explore}
-            setOpen={setExplore}
+            isOpen={open}
+            setOpen={setOpen}
             title={title}
           />
         </Panels>
