@@ -68,15 +68,28 @@ jobs:
   image-snapshots:
     name: "Image Snapshots"
     runs-on: ubuntu-latest
+    if: github.event.pull_request.draft == false
     steps:
       - uses: actions/checkout@v1
       - uses: c-hive/gha-yarn-cache@v1
       - run : yarn --silent
-      - run: yarn test:image-snapshots
-      - name: Upload snapshot diffs
-        if: ${{ failure() }}
-        uses: actions/upload-artifact@v2
+      - run: yarn test:image-snapshots-update
+      - name: Create Pull Request
+        # if: # changes in git
+        uses: peter-evans/create-pull-request@v3
         with:
-          name: image-snapshot-diffs
-          path: packages/*/snapshots/**/*-diff.png
-          retention-days: 1
+          commit-message: "chore: image-snapshot updates"
+          branch: ${{ github.payload.pull_request.head.ref }}/image-snapshots
+          delete-branch: true
+          title: 'chore: image-snapshot updates'
+          body: Image snapshot updates for targeted branch
+          labels: image-snapshots
+          assignees: peter-evans
+          reviewers: peter-evans
+      # - name: Upload snapshot diffs
+      #   if: ${{ failure() }}
+      #   uses: actions/upload-artifact@v2
+      #   with:
+      #     name: image-snapshot-diffs
+      #     path: packages/*/snapshots/**/*-diff.png
+      #     retention-days: 1
