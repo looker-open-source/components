@@ -12,7 +12,7 @@ jobs:
     name: "Lint: ESLint + Prettier, Stylelint, Typescript"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - uses: c-hive/gha-yarn-cache@v1
       - run: yarn install
       - run: yarn prebuild
@@ -28,7 +28,7 @@ jobs:
     name: "Tests: Jest + RTL"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - uses: c-hive/gha-yarn-cache@v1
       - run : yarn --silent
       - run: yarn test
@@ -41,7 +41,7 @@ jobs:
     name: "Build: ES & Typescript"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - uses: c-hive/gha-yarn-cache@v1
       - run : yarn --silent
       - run: yarn build
@@ -50,7 +50,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.pull_request.draft == false
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - uses: c-hive/gha-yarn-cache@v1
       - run : yarn --silent
       - run: yarn prebuild
@@ -60,17 +60,35 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.pull_request.draft == false
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - uses: c-hive/gha-yarn-cache@v1
       - run : yarn --silent
       - run: yarn prebuild
       - run: yarn workspace storybook build
   image-snapshots:
     name: "Image Snapshots"
-    if: false # Disabled until snapshot issues can be resolved
     runs-on: ubuntu-latest
+    if: github.event.pull_request.draft == false
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
       - uses: c-hive/gha-yarn-cache@v1
       - run : yarn --silent
-      - run: yarn test:image-snapshots
+      - run: yarn test:image-snapshots-update
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          commit-message: "chore: image-snapshot updates"
+          branch: "${{ github.event.pull_request.head.ref }}-snapshot-updates"
+          delete-branch: true
+          title: "chore: snapshot-updates for \"${{ github.event.pull_request.title }}\""
+          body: Image snapshot updates for the PR \"${{ github.event.pull_request.title }}\""
+          labels: image-snapshots
+          assignees: ${{ github.payload.pull_request.sender.login }}
+          reviewers: ${{ github.payload.pull_request.sender.login }}
+      - name: Check outputs
+        run: |
+          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
+          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
+          # - name: Upload snapshot diffs
