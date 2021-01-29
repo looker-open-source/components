@@ -171,12 +171,12 @@ const stickyColumns = css<TableProps>`
 `
 
 export const Table = styled(TableLayout)`
-  border-collapse: collapse;
+  /* the * is set so the border-bottom displays correctly on Firefox on sticky items */
+  *border-collapse: collapse;
   border-spacing: 0;
   font-size: ${({ theme }) => theme.fontSizes.small};
   line-height: 1;
   width: 100%;
-
   td,
   th {
     height: ${densityTarget}; /* acts like min-height */
