@@ -55,7 +55,8 @@
     "storyshots-prep": "export storybookBuildMode=fast && yarn pretest && yarn storybook-workspaces-build",
     "pretest:image-snapshots": "yarn storyshots-prep",
     "test:image-snapshots": "yarn jest --config jest-image-snapshots.config.js",
-    "test:image-snapshots-update": "rm -rf packages/*/snapshots && yarn test:image-snapshots --update",
+    "pretest:image-snapshots-update": "yarn storyshots-prep",
+    "test:image-snapshots-update": "rm -rf packages/*/snapshots && yarn jest --config jest-image-snapshots.config.js",
 
     "pretest:a11y": "yarn storyshots-prep",
     "test:a11y": "yarn jest --config jest-a11y.config.js",
