@@ -24,37 +24,29 @@
 
  */
 
-import { itemSelectedColor, Theme } from '@looker/design-tokens'
+import { SpaceRamp } from '@looker/design-tokens'
 import { css } from 'styled-components'
-import { TreeBackgroundStyleProps } from '../types'
+import { ListItemDimensions } from '../types'
 
-export const treeBackgroundColor = ({
-  brand,
-  disabled,
-  hovered,
-  selected,
-  theme: { colors },
-}: TreeBackgroundStyleProps & { theme: Theme }) => {
-  const brandColors = {
-    all: colors.keySubtle,
-    hovered: colors.ui1,
-    selected: colors.keySubtle,
-  }
-  const defaultColors = {
-    all: itemSelectedColor(colors.ui2),
-    hovered: colors.ui1,
-    selected: itemSelectedColor(colors.ui2),
-  }
-  const stateColors = brand ? brandColors : defaultColors
-  let renderedColor
-
-  if (disabled) return
-  else if (selected && hovered) renderedColor = stateColors.all
-  else if (selected) renderedColor = stateColors.selected
-  else if (hovered) renderedColor = stateColors.hovered
-  else return
+export const listItemPadding = ({
+  accessory,
+  px: propsPx,
+  py: propsPy,
+  theme: { space },
+}: {
+  accessory?: boolean
+  theme: { space: SpaceRamp }
+} & Pick<ListItemDimensions, 'px' | 'py'>) => {
+  /**
+   * The check for 0.375rem gets density = -1 ListItems to the desired 48px min height.
+   * Without it, density = -1 ListItems would be at 44px.
+   */
+  const pt = propsPy === '0.375rem' ? propsPy : space[propsPy]
+  const pr = accessory ? '0' : space[propsPx]
+  const pb = pt
+  const pl = space[propsPx]
 
   return css`
-    background-color: ${renderedColor};
+    padding: ${pt} ${pr} ${pb} ${pl};
   `
 }

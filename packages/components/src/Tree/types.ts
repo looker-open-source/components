@@ -27,33 +27,11 @@
 import { IconNames } from '@looker/icons'
 import { ReactNode } from 'react'
 import { AccordionProps } from '../Accordion'
-
-export interface TreeBackgroundStyleProps {
-  /**
-   * Replace the normal grey selected and selected + hovered color with brand colors
-   * @default false
-   */
-  brand?: boolean
-  /**
-   * If true, the Tree/TreeItem will have a "disabled" presentation.
-   * @default false
-   */
-  disabled?: boolean
-  /**
-   * If true, the Tree/TreeItem will have a light background color
-   * @default false
-   */
-  hovered?: boolean
-  /**
-   * If true, the Tree/TreeItem will have a darker background color
-   * @default false
-   */
-  selected?: boolean
-}
+import { ListItemStatefulProps } from '../List/types'
 
 export interface TreeProps
   extends Omit<AccordionProps, 'indicatorGap' | 'indicatorSize'>,
-    Omit<TreeBackgroundStyleProps, 'hovered'> {
+    ListItemStatefulProps {
   /**
    * If true, vertical lines will extend from the Tree indicator (and all sub-Trees' indicators)
    * @default false

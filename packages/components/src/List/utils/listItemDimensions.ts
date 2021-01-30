@@ -24,9 +24,11 @@
 
  */
 
-import { ItemDimensions } from '../types'
+import { DensityRamp, ListItemDimensions } from '../types'
 
-export const density0: ItemDimensions = {
+export const density0: ListItemDimensions = {
+  descriptionFontSize: 'xsmall',
+  descriptionLineHeight: 'xsmall',
   height: 36,
   iconGap: 'small',
   iconSize: 'small',
@@ -37,8 +39,10 @@ export const density0: ItemDimensions = {
 }
 
 // Positive density values
-export const densityPositive1: ItemDimensions = {
+export const densityPositive1: ListItemDimensions = {
   ...density0,
+  descriptionFontSize: 'small',
+  descriptionLineHeight: 'small',
   height: 48,
   iconSize: 'medium',
   labelFontSize: 'medium',
@@ -47,23 +51,23 @@ export const densityPositive1: ItemDimensions = {
 }
 
 // Negative density values
-export const densityNegative1: ItemDimensions = {
+export const densityNegative1: ListItemDimensions = {
   ...density0,
   height: 32,
   py: '0.375rem', // Note: We could get this value with "calc(${theme.xxsmall} + ${theme.xxxsmall})"
 }
-export const densityNegative2: ItemDimensions = {
+export const densityNegative2: ListItemDimensions = {
   ...densityNegative1,
   height: 28,
   iconGap: 'xsmall',
   iconSize: 'xsmall',
   py: 'xxsmall',
 }
-export const densityNegative3: ItemDimensions = {
+export const densityNegative3: ListItemDimensions = {
   ...densityNegative2,
   height: 24,
   iconSize: 'xxsmall',
-  labelFontSize: 'xxsmall',
+  labelFontSize: 'xsmall',
   labelLineHeight: 'xsmall',
 }
 
@@ -75,3 +79,6 @@ export const densities = {
   '0': density0,
   '1': densityPositive1,
 }
+
+export const listItemDimensions = (density: DensityRamp): ListItemDimensions =>
+  densities[density]

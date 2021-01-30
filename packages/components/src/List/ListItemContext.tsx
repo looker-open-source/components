@@ -25,11 +25,11 @@
  */
 
 import { createContext } from 'react'
-import { ItemDimensions } from './types'
+import { ListItemDimensions } from './types'
 import { density0 } from './utils'
 
 export interface ListItemContextProps {
-  itemDimensions: ItemDimensions
+  itemDimensions: ListItemDimensions
   iconGutter: boolean
 }
 

@@ -29,7 +29,9 @@ import { IconSize } from '..'
 
 export type DensityRamp = -3 | -2 | -1 | 0 | 1
 
-export interface ItemDimensions {
+export interface ListItemDimensions {
+  descriptionFontSize: FontSizes
+  descriptionLineHeight: LineHeights
   height: number
   px: SpacingSizes
   py: SpacingSizes | '0.375rem'
@@ -39,7 +41,9 @@ export interface ItemDimensions {
   labelLineHeight: LineHeights
 }
 
-export const itemDimensionKeys = [
+export const listItemDimensionKeys = [
+  'descriptionFontSize',
+  'descriptionLineHeight',
   'height',
   'px',
   'py',
@@ -49,3 +53,36 @@ export const itemDimensionKeys = [
   'labelLineHeight',
   'detailFontSize',
 ]
+
+export interface ListItemStatefulProps {
+  /**
+   * Replace the normal uiN(1-5) color for selected and selected + hovered color with key colors
+   * @default false
+   */
+  keyColor?: boolean
+  /**
+   * If true, the ListItem will have a "disabled" presentation.
+   * @default false
+   */
+  disabled?: boolean
+  /**
+   * If true, the ListItem will have a darker background color (same as selected)
+   * Note: Using current and selected at the same time is not recommended
+   * @default false
+   */
+  current?: boolean
+  /**
+   * If true, the ListItem will have a darker background color
+   * @default false
+   */
+  selected?: boolean
+}
+
+export interface ListItemStatefulWithHoveredProps
+  extends ListItemStatefulProps {
+  /**
+   * If true, the ListItem will have a light background color
+   * @default false
+   */
+  hovered?: boolean
+}

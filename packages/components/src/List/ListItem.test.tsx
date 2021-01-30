@@ -27,28 +27,39 @@
 import 'jest-styled-components'
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { screen, fireEvent } from '@testing-library/react'
+import { fireEvent, configure } from '@testing-library/react'
 
 import { ListItem } from './ListItem'
 
 describe('ListItem', () => {
   test('renders children', () => {
-    renderWithTheme(<ListItem>who!</ListItem>)
-    expect(screen.getByText('who!')).toBeVisible()
+    const { getByText } = renderWithTheme(<ListItem>who!</ListItem>)
+    expect(getByText('who!')).toBeVisible()
+  })
+
+  test('renders description', () => {
+    const { getByText } = renderWithTheme(
+      <ListItem description="are you?">who!</ListItem>
+    )
+    expect(getByText('are you?')).toBeVisible()
   })
 
   test('renders detail', () => {
-    renderWithTheme(<ListItem detail="Is an excellent question">who!</ListItem>)
-    expect(screen.getByText('Is an excellent question')).toBeVisible()
+    const { getByText } = renderWithTheme(
+      <ListItem detail="Is an excellent question">who!</ListItem>
+    )
+    expect(getByText('Is an excellent question')).toBeVisible()
   })
 
   test('renders icon', () => {
-    renderWithTheme(<ListItem icon="Beaker">Icon</ListItem>)
-    expect(screen.getByText('Icon')).toBeVisible()
+    const { getByText } = renderWithTheme(
+      <ListItem icon="Beaker">Icon</ListItem>
+    )
+    expect(getByText('Icon')).toBeVisible()
   })
 
   test('renders artwork', () => {
-    renderWithTheme(
+    const { getByTitle } = renderWithTheme(
       <ListItem
         iconArtwork={
           <svg xmlns="http://www.w3.org/2000/svg">
@@ -59,19 +70,33 @@ describe('ListItem', () => {
         Artwork
       </ListItem>
     )
-    expect(screen.getByTitle('SVG Title Here')).toBeInTheDocument()
+    expect(getByTitle('SVG Title Here')).toBeInTheDocument()
+  })
+
+  // At the moment, JSDom doesn't support the pseudo-selector parameter in getComputedStyle
+  xtest('has a key color border on key press', () => {
+    configure({ computedStyleSupportsPseudoElements: true })
+    const { getByRole } = renderWithTheme(<ListItem>Item</ListItem>)
+    const item = getByRole('listitem')
+    fireEvent.keyUp(item, {
+      key: 'Enter',
+    })
+    expect(window.getComputedStyle(item, ':after')).toHaveAttribute(
+      'border',
+      'solid 2px #9785F2'
+    )
   })
 
   test('is not clickable when disabled', () => {
     const callbackFn = jest.fn()
 
-    renderWithTheme(
+    const { getByText } = renderWithTheme(
       <ListItem itemRole="button" disabled onClick={callbackFn}>
         Item
       </ListItem>
     )
 
-    const item = screen.getByText('Item')
+    const item = getByText('Item')
     fireEvent.click(item)
 
     expect(callbackFn).toHaveBeenCalledTimes(0)
@@ -124,5 +149,51 @@ describe('ListItem', () => {
     expect(item.nodeName).toBe('A')
     expect(item).toHaveAttribute('href', 'https://google.com')
     expect(item).toHaveAttribute('rel', 'nogouda')
+  })
+
+  test('does not trigger onClick on detail click when accessory === true', () => {
+    const onClick = jest.fn()
+    const { getByText } = renderWithTheme(
+      <ListItem
+        detail={{ content: 'Detail', options: { accessory: true } }}
+        onClick={onClick}
+      >
+        Dimension
+      </ListItem>
+    )
+    fireEvent.click(getByText('Dimension'))
+    expect(onClick).toHaveBeenCalledTimes(1)
+    fireEvent.click(getByText('Detail'))
+    expect(onClick).toHaveBeenCalledTimes(1)
+  })
+
+  test('triggers onClick on detail click when accessory === false', () => {
+    const onClick = jest.fn()
+    const { getByText } = renderWithTheme(
+      <ListItem
+        detail={{ content: 'Detail', options: { accessory: false } }}
+        onClick={onClick}
+      >
+        Dimension
+      </ListItem>
+    )
+    fireEvent.click(getByText('Dimension'))
+    expect(onClick).toHaveBeenCalledTimes(1)
+    fireEvent.click(getByText('Detail'))
+    expect(onClick).toHaveBeenCalledTimes(2)
+  })
+
+  test('hides and shows detail when detailHoverDisclosure === true', () => {
+    const { getByText, queryByText } = renderWithTheme(
+      <ListItem
+        detail={{ content: 'Detail', options: { hoverDisclosure: true } }}
+      >
+        Label
+      </ListItem>
+    )
+
+    expect(queryByText('Detail')).not.toBeInTheDocument()
+    fireEvent.mouseEnter(getByText('Label'), { bubbles: true })
+    expect(queryByText('Detail')).toBeInTheDocument()
   })
 })
