@@ -39,7 +39,7 @@ export default {
 const listItems = (
   <>
     <ListItem icon="Calendar" description="Orange-y">
-      Cheddar
+      Pepper Jack
     </ListItem>
     <ListItem icon="Pivot" detail="Netherlands">
       Gouda
