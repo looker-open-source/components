@@ -174,6 +174,7 @@ export const Table = styled(TableLayout)`
   border-collapse: collapse;
   border-spacing: 0;
   font-size: ${({ theme }) => theme.fontSizes.small};
+  height: initial;
   line-height: 1;
   width: 100%;
 
