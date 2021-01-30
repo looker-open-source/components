@@ -24,8 +24,41 @@
 
  */
 
-import { DensityRamp, ItemDimensions } from '../types'
-import { densities } from './dimensions'
+import React, { FC } from 'react'
+import styled from 'styled-components'
+import { FlexItem } from '../Layout'
+import { ListItemLayoutProps } from './ListItemLayout'
+import { listItemPadding } from './utils'
 
-export const getItemDimensions = (density: DensityRamp): ItemDimensions =>
-  densities[density]
+export const ListItemLayoutAccessoryInternal: FC<ListItemLayoutProps> = ({
+  children,
+  className,
+  containerCreator,
+  description,
+  detail,
+  icon,
+}) => {
+  const content = (
+    <>
+      {icon}
+      <FlexItem>
+        {children}
+        {description}
+      </FlexItem>
+    </>
+  )
+
+  return (
+    <>
+      {containerCreator({
+        children: content,
+        className: className || '',
+      })}
+      {detail}
+    </>
+  )
+}
+
+export const ListItemLayoutAccessory = styled(ListItemLayoutAccessoryInternal)`
+  ${(props) => listItemPadding({ accessory: true, ...props })}
+`

@@ -24,16 +24,38 @@
 
  */
 
-import { createContext } from 'react'
+import { itemSelectedColor, Theme } from '@looker/design-tokens'
+import { css } from 'styled-components'
+import { ListItemStatefulWithHoveredProps } from '../types'
 
-export interface TreeContextProps {
-  border?: boolean
-  keyColor?: boolean
-  depth?: number
-  detailHoverDisclosure?: boolean
-  detailAccessory?: boolean
+export const listItemBackgroundColor = ({
+  keyColor,
+  current,
+  disabled,
+  hovered,
+  selected,
+  theme: { colors },
+}: ListItemStatefulWithHoveredProps & { theme: Theme }) => {
+  const keyColors = {
+    all: colors.keySubtle,
+    hovered: colors.ui1,
+    selected: colors.keySubtle,
+  }
+  const uiColors = {
+    all: itemSelectedColor(colors.ui2),
+    hovered: colors.ui1,
+    selected: itemSelectedColor(colors.ui2),
+  }
+  const stateColors = keyColor ? keyColors : uiColors
+  let renderedColor
+
+  if (disabled) renderedColor = 'transparent'
+  else if ((selected || current) && hovered) renderedColor = stateColors.all
+  else if (selected || current) renderedColor = stateColors.selected
+  else if (hovered) renderedColor = stateColors.hovered
+  else renderedColor = 'transparent'
+
+  return css`
+    background-color: ${renderedColor};
+  `
 }
-
-export const TreeContext = createContext<TreeContextProps>({
-  depth: 0,
-})

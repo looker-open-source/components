@@ -53,12 +53,15 @@ import {
 } from '../utils/HoverDisclosure'
 import { undefinedCoalesce } from '../utils'
 import { Truncate } from '../Truncate'
+import { listItemBackgroundColor } from '../List/utils'
+import {
+  ListItemStatefulProps,
+  ListItemStatefulWithHoveredProps,
+} from '../List/types'
 import { TreeContext } from './TreeContext'
-import { treeBackgroundColor } from './utils'
-import { TreeBackgroundStyleProps } from './types'
 
 export interface TreeItemProps
-  extends TreeBackgroundStyleProps,
+  extends ListItemStatefulProps,
     Omit<CompatibleHTMLProps<HTMLDivElement>, 'color'>,
     TextColorProps {
   children: ReactNode
@@ -107,7 +110,7 @@ export interface TreeItemProps
 const TreeItemLayout: FC<TreeItemProps> = ({
   children,
   className,
-  brand: propsBrand,
+  keyColor: propsKeyColor,
   detailAccessory: propsDetailAccessory,
   detailHoverDisclosure: propsDetailHoverDisclosure,
   disabled,
@@ -131,7 +134,7 @@ const TreeItemLayout: FC<TreeItemProps> = ({
     ...restProps
   } = Omit(props, ['color', 'detail', 'icon'])
 
-  const brand = undefinedCoalesce([propsBrand, treeContext.brand])
+  const keyColor = undefinedCoalesce([propsKeyColor, treeContext.keyColor])
 
   const detailAccessory = undefinedCoalesce([
     propsDetailAccessory,
@@ -214,7 +217,7 @@ const TreeItemLayout: FC<TreeItemProps> = ({
         {...restProps}
       >
         <TreeItemLabel
-          brand={brand}
+          keyColor={keyColor}
           disabled={disabled}
           hovered={isHovered}
           gap={gapSize}
@@ -254,8 +257,8 @@ export const TreeItemSpace = styled(Space)<TreeItemSpaceProps>`
     focusVisible && theme.colors.keyFocus};
 `
 
-export const TreeItemLabel = styled(Space)<TreeBackgroundStyleProps>`
-  ${treeBackgroundColor}
+export const TreeItemLabel = styled(Space)<ListItemStatefulWithHoveredProps>`
+  ${listItemBackgroundColor}
   align-items: center;
   color: ${({ disabled, theme: { colors } }) =>
     disabled ? colors.text1 : colors.text5};

@@ -41,7 +41,7 @@ export const DisabledAndSelected = () => (
       </Tree>
     </Tree>
     <Divider my="large" />
-    <Tree brand label="Brand Colors" defaultOpen>
+    <Tree keyColor label="Brand Colors" defaultOpen>
       <Tree disabled label="Disabled Tree" defaultOpen>
         <TreeItem disabled>Disabled TreeItem</TreeItem>
         <TreeItem selected>Selected TreeItem</TreeItem>

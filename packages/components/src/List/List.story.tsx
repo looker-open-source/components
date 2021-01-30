@@ -44,7 +44,7 @@ const listItems = (
     <ListItem icon="Pivot" detail="Netherlands">
       Gouda
     </ListItem>
-    <ListItem current>Mozzarella</ListItem>
+    <ListItem selected>Mozzarella</ListItem>
     <ListItem>Swiss</ListItem>
   </>
 )

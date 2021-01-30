@@ -27,27 +27,45 @@
 import { CompatibleHTMLProps } from '@looker/design-tokens'
 import { IconNames } from '@looker/icons'
 import styled from 'styled-components'
-import React, { FC, ReactNode, useContext, useState } from 'react'
+import React, { FC, ReactNode, useContext, useRef, useState } from 'react'
 import { ListItemDetail } from '../List/ListItemDetail'
 import { Paragraph } from '../Text'
 import { Icon, IconPlaceholder } from '../Icon'
+import { HoverDisclosureContext, HoverDisclosure, useHovered } from '../utils'
 import { ListItemContext } from './ListItemContext'
 import { ListItemLayout } from './ListItemLayout'
+import { ListItemLayoutAccessory } from './ListItemLayoutAccessory'
+import { ListItemWrapper } from './ListItemWrapper'
+import { ListItemStatefulProps } from './types'
 import { createSafeRel } from './utils'
 
-export interface ListItemProps extends CompatibleHTMLProps<HTMLElement> {
+interface DetailOptions {
   /**
-   * Indicates the ListItem is checked
+   * If true, the detail will appear outside of the item's grey background on hover
+   * In addition, if true, events originating from the detail will not bubble to the item's handlers
+   * @default false
    */
-  current?: boolean
+  accessory?: boolean
+  /**
+   * If true, the detail will only appear on hover
+   * @default false
+   */
+  hoverDisclosure?: boolean
+}
+
+export interface ListItemProps
+  extends CompatibleHTMLProps<HTMLElement>,
+    ListItemStatefulProps {
   /*
-   * optional description
+   * optional extra description
    */
   description?: ReactNode
   /**
-   * Detail element placed right of the item children
+   * Detail element placed right of the item children. Prop value can take one of two forms:
+   * 1. ReactNode
+   * 2. Object with content and options properties
    */
-  detail?: ReactNode
+  detail?: ReactNode | { content: ReactNode; options: DetailOptions }
   /**
    * Optional icon placed left of the item children
    */
@@ -62,6 +80,10 @@ export interface ListItemProps extends CompatibleHTMLProps<HTMLElement> {
    * - Use **'button'** for items that trigger in page interactions, like displaying a dialog
    */
   itemRole?: 'link' | 'button'
+  /**
+   * If true, text children and description will be truncated if text overflows
+   */
+  truncate?: boolean
 }
 
 const ListItemInternal: FC<ListItemProps> = (props) => {
@@ -76,27 +98,33 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
     icon,
     iconArtwork,
     itemRole,
+    keyColor,
     onBlur,
     onClick,
     onKeyUp,
+    selected,
     target,
+    truncate,
   } = props
 
-  const [isFocusVisible, setFocusVisible] = useState(false)
+  const { iconGutter, itemDimensions } = useContext(ListItemContext)
 
-  const handleOnBlur = (event: React.FocusEvent<HTMLLIElement>) => {
+  const [focusVisible, setFocusVisible] = useState(false)
+
+  const itemRef = useRef<HTMLLIElement>(null)
+  const [hovered] = useHovered(itemRef)
+
+  const handleOnBlur = (event: React.FocusEvent<HTMLElement>) => {
     setFocusVisible(false)
     onBlur && onBlur(event)
   }
 
-  const { iconGutter, itemDimensions } = useContext(ListItemContext)
-
-  const handleOnClick = (event: React.MouseEvent<HTMLLIElement>) => {
+  const handleOnClick = (event: React.MouseEvent<HTMLElement>) => {
     setFocusVisible(false)
     onClick && onClick(event)
   }
 
-  const handleOnKeyUp = (event: React.KeyboardEvent<HTMLLIElement>) => {
+  const handleOnKeyUp = (event: React.KeyboardEvent<HTMLElement>) => {
     onKeyUp && onKeyUp(event)
     setFocusVisible(true)
   }
@@ -125,18 +153,13 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
       'itemRole="link" and disabled cannot be combined - use itemRole="button" if you need to offer a disabled ListItem'
     )
   }
-  const Component =
-    !disabled && itemRole === 'link'
-      ? 'a'
-      : itemRole === 'button'
-      ? 'button'
-      : 'div'
 
   const renderedChildren =
     typeof children === 'string' ? (
       <Paragraph
         fontSize={itemDimensions.labelFontSize}
         lineHeight={itemDimensions.labelLineHeight}
+        truncate={truncate}
       >
         {children}
       </Paragraph>
@@ -144,41 +167,91 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
       children
     )
 
-  const listItemContent = (
-    <Component
+  const renderedDescription =
+    typeof description === 'string' ? (
+      <Paragraph
+        color="text2"
+        fontSize={itemDimensions.descriptionFontSize}
+        lineHeight={itemDimensions.descriptionLineHeight}
+        truncate={truncate}
+      >
+        {description}
+      </Paragraph>
+    ) : (
+      description
+    )
+
+  let accessory, hoverDisclosure, detailContent
+
+  if (typeof detail === 'object' && detail && 'options' in detail) {
+    accessory = detail.options.accessory
+    detailContent = detail.content
+    hoverDisclosure = detail.options.hoverDisclosure
+  } else {
+    detailContent = detail
+  }
+
+  const renderedDetail = detail && (
+    <HoverDisclosure visible={!hoverDisclosure}>
+      <ListItemDetail pr={accessory ? itemDimensions.px : '0'}>
+        {detailContent}
+      </ListItemDetail>
+    </HoverDisclosure>
+  )
+
+  const LabelContainer = !disabled && itemRole === 'link' ? 'a' : 'button'
+  const LabelContainerCreator: FC<{
+    children: ReactNode
+    className: string
+  }> = ({ children, className }) => (
+    <LabelContainer
+      aria-current={current}
+      aria-selected={selected}
+      className={className}
       href={href}
+      onBlur={handleOnBlur}
+      onClick={disabled ? undefined : handleOnClick}
+      onKeyUp={handleOnKeyUp}
       rel={createSafeRel(props.rel, props.target)}
       role="listitem"
       target={target}
       tabIndex={-1}
     >
-      {renderedIcon}
-      <span>
-        {renderedChildren}
-        {description && (
-          <Paragraph color="text2" fontSize="xsmall">
-            {description}
-          </Paragraph>
-        )}
-      </span>
-      {detail && <ListItemDetail>{detail}</ListItemDetail>}
-    </Component>
+      {children}
+    </LabelContainer>
+  )
+
+  const Layout = accessory ? ListItemLayoutAccessory : ListItemLayout
+  const listItemContent = (
+    <Layout
+      containerCreator={LabelContainerCreator}
+      description={renderedDescription}
+      detail={renderedDetail}
+      icon={renderedIcon}
+      px={itemDimensions.px}
+      py={itemDimensions.py}
+    >
+      {renderedChildren}
+    </Layout>
   )
 
   return (
-    <ListItemLayout
-      aria-current={current && 'true'}
-      description={description}
-      disabled={disabled}
-      focusVisible={isFocusVisible}
-      onBlur={handleOnBlur}
-      onClick={disabled ? undefined : handleOnClick}
-      onKeyUp={handleOnKeyUp}
-      className={className}
-      {...itemDimensions}
-    >
-      {listItemContent}
-    </ListItemLayout>
+    <HoverDisclosureContext.Provider value={{ visible: hovered }}>
+      <ListItemWrapper
+        className={className}
+        current={current}
+        description={description}
+        disabled={disabled}
+        focusVisible={focusVisible}
+        hovered={hovered}
+        keyColor={keyColor}
+        ref={itemRef}
+        selected={selected}
+        {...itemDimensions}
+      >
+        {listItemContent}
+      </ListItemWrapper>
+    </HoverDisclosureContext.Provider>
   )
 }
 
