@@ -85,10 +85,7 @@ jobs:
           title: "chore: snapshot-updates for \"${{ github.event.pull_request.title }}\""
           body: Image snapshot updates for the PR \"${{ github.event.pull_request.title }}\""
           labels: image-snapshots
-          reviewers: |
-            ${{ github.payload.pull_request.user.login }}
+          reviewers: "${{ github.payload.pull_request.sender.login }}"
       - name: Check outputs
         run: |
           echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
-          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
-          echo "Requester - ${{ github.payload.pull_request.user.login }}"
