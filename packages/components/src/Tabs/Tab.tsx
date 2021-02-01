@@ -31,8 +31,8 @@ import {
   layout,
   LayoutProps,
   reset,
-  space,
-  SpaceProps,
+  padding,
+  PaddingProps,
   shouldForwardProp,
   typography,
   TypographyProps,
@@ -42,7 +42,7 @@ import {
 export interface TabProps
   extends Omit<CompatibleHTMLProps<HTMLButtonElement>, 'type'>,
     LayoutProps,
-    SpaceProps,
+    PaddingProps,
     TypographyProps {
   disabled?: boolean
   focusVisible?: boolean
@@ -54,7 +54,7 @@ export interface TabProps
 const TabStyle = styled.button.withConfig({ shouldForwardProp })<TabProps>`
   ${reset}
   ${layout}
-  ${space}
+  ${padding}
   ${typography}
 
   background: transparent;
