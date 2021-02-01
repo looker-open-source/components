@@ -41,8 +41,8 @@ export const Basic = () => {
 
   const title = (
     <>
-      <Icon name="ExploreOutline" m="xsmall" />
-      Dog
+      <Icon name="ArrowLeft" m="xsmall" />
+      Left
     </>
   )
 
@@ -51,13 +51,26 @@ export const Basic = () => {
       <Aside width="12rem">
         <Panels>
           <List>
-            <ListItem onClick={toggleOpen} icon="ExploreOutline">
-              Dog
+            <ListItem onClick={toggleOpen} icon="ArrowForward">
+              Left
             </ListItem>
-            <Panel content={'content from display...'} title="Cat">
-              <ListItem icon="Code">Cat</ListItem>
+            <Panel
+              content={'content from Right...'}
+              direction="right"
+              title="Right"
+            >
+              <ListItem icon="ArrowBackward">Right</ListItem>
             </Panel>
-            <ListItem icon="Group">Fox</ListItem>
+            <Panel content={'content from Up...'} direction="up" title="Up">
+              <ListItem icon="ArrowDownward">Up</ListItem>
+            </Panel>
+            <Panel
+              content={'content from Down...'}
+              direction="down"
+              title="Down"
+            >
+              <ListItem icon="ArrowUpward">Down</ListItem>
+            </Panel>
           </List>
 
           <Panel

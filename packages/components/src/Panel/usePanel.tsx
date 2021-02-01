@@ -55,7 +55,7 @@ export interface UsePanelProps {
    * TODO: 'right' | 'up' | 'down'
    * @default 'left'
    */
-  direction?: 'left'
+  direction?: 'down' | 'left' | 'right' | 'up'
 
   /**
    * Dialog will be displayed immediately when rendered.
@@ -137,7 +137,11 @@ export const usePanel = ({
   }
 
   const panel = renderDOM && (
-    <PanelSurface aria-busy={busy ? true : undefined} className={className}>
+    <PanelSurface
+      aria-busy={busy ? true : undefined}
+      className={className}
+      direction={direction}
+    >
       <PanelHeader
         direction={direction}
         handleClose={handleClose}

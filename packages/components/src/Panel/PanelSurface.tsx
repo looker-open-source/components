@@ -25,12 +25,35 @@
  */
 
 import styled, { css } from 'styled-components'
+import { variant } from 'styled-system'
+
+type PanelSurfaceDirections = 'down' | 'left' | 'right' | 'up'
+export interface PanelSurfaceProps {
+  /**
+   * Edge of the screen from which the panel will enter
+   * down - left - right - up
+   * @default 'left'
+   */
+  direction?: PanelSurfaceDirections
+}
 
 const surfaceTransition = () => css`
   ${({ theme }) => `${theme.transitions.moderate}ms ${theme.easings.ease}`}
 `
 
-export const PanelSurface = styled.div`
+const direction = variant({
+  prop: 'direction',
+  variants: {
+    down: { transform: 'translate(0, 100%);' },
+    left: { transform: 'translate(-100%, 0);' },
+    right: { transform: 'translate(100%, 0);' },
+    up: { transform: 'translate(0, -100%);' },
+  },
+})
+
+export const PanelSurface = styled.div.attrs<PanelSurfaceProps>(
+  ({ direction = 'left' }) => ({ direction })
+)<PanelSurfaceProps>`
   background: ${({ theme }) => theme.colors.background};
   bottom: 0;
   height: 100%;
@@ -44,6 +67,6 @@ export const PanelSurface = styled.div`
   &.entering,
   &.exiting {
     opacity: 0.01;
-    transform: translateX(100%);
+    ${direction}
   }
 `
