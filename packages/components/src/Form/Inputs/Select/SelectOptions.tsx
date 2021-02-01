@@ -25,7 +25,14 @@
  */
 
 import { IconNames, iconNameList } from '@looker/icons'
-import React, { createContext, FC, ReactNode, useContext, useMemo } from 'react'
+import React, {
+  createContext,
+  FC,
+  ReactNode,
+  useContext,
+  useEffect,
+  useMemo,
+} from 'react'
 import styled from 'styled-components'
 import { Icon, IconPlaceholder } from '../../../Icon'
 import { Spinner } from '../../../Spinner'
@@ -120,10 +127,12 @@ const OptionLayout = ({ option, ...rest }: OptionLayoutProps) => {
     option.indicator || indicatorPropRef?.current || iconPlaceholder
   )
 
-  if (option.icon && option.indicator) {
-    // eslint-disable-next-line no-console
-    console.warn('Use icon or indicator but not both at the same time.')
-  }
+  useEffect(() => {
+    if (option.icon && option.indicator) {
+      // eslint-disable-next-line no-console
+      console.warn('Use icon or indicator but not both at the same time.')
+    }
+  }, [option.icon, option.indicator])
 
   return <OptionLayoutBase {...rest} option={{ ...option, indicator }} />
 }
@@ -138,25 +147,19 @@ export function SelectOptionWithDescription({
 }: SelectOptionObject) {
   return description || overline ? (
     <div>
-      {description || overline ? (
-        <>
-          {overline && <ListItemOverline>{overline}</ListItemOverline>}
-          <Heading
-            fontFamily="body"
-            fontSize="small"
-            fontWeight="semiBold"
-            pb="xxsmall"
-          >
-            <ComboboxOptionText />
-          </Heading>
-          {description && (
-            <Paragraph color="subdued" fontSize="small">
-              {description}
-            </Paragraph>
-          )}
-        </>
-      ) : (
+      {overline && <ListItemOverline>{overline}</ListItemOverline>}
+      <Heading
+        fontFamily="body"
+        fontSize="small"
+        fontWeight="semiBold"
+        pb="xxsmall"
+      >
         <ComboboxOptionText />
+      </Heading>
+      {description && (
+        <Paragraph color="subdued" fontSize="small">
+          {description}
+        </Paragraph>
       )}
     </div>
   ) : (
