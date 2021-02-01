@@ -138,9 +138,9 @@ export function SelectOptionWithDescription({
 }: SelectOptionObject) {
   return description || overline ? (
     <div>
-      {overline && <ListItemOverline>{overline}</ListItemOverline>}
-      {description ? (
+      {description || overline ? (
         <>
+          {overline && <ListItemOverline>{overline}</ListItemOverline>}
           <Heading
             fontFamily="body"
             fontSize="small"
@@ -149,9 +149,11 @@ export function SelectOptionWithDescription({
           >
             <ComboboxOptionText />
           </Heading>
-          <Paragraph color="subdued" fontSize="small">
-            {description}
-          </Paragraph>
+          {description && (
+            <Paragraph color="subdued" fontSize="small">
+              {description}
+            </Paragraph>
+          )}
         </>
       ) : (
         <ComboboxOptionText />
