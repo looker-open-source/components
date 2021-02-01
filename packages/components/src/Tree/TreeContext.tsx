@@ -30,8 +30,6 @@ export interface TreeContextProps {
   border?: boolean
   keyColor?: boolean
   depth?: number
-  detailHoverDisclosure?: boolean
-  detailAccessory?: boolean
 }
 
 export const TreeContext = createContext<TreeContextProps>({

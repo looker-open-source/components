@@ -47,49 +47,50 @@ const PickerItem = ({ children = 'Cost', truncate = false }) => {
     overlay === 'menu' ? setOverlay(undefined) : setOverlay('menu')
   const togglePopover = () =>
     overlay === 'popover' ? setOverlay(undefined) : setOverlay('popover')
+  const detailContent = (
+    <>
+      <IconButton
+        icon="Pivot"
+        label="Pivot"
+        tooltipPlacement="top"
+        onClick={() => alert('Pivot')}
+      />
+      <Popover
+        content="hello world"
+        isOpen={overlay === 'popover'}
+        setOpen={togglePopover}
+      >
+        <IconButton icon="Filter" label="Filter" tooltipPlacement="top" />
+      </Popover>
+      <Tooltip placement="top" content="Some exciting info or something">
+        <IconButton icon="CircleInfoOutline" label="Info" />
+      </Tooltip>
+      <Menu
+        isOpen={overlay === 'menu'}
+        setOpen={toggleMenu}
+        compact
+        content={
+          <>
+            <MenuItem>Brie</MenuItem>
+            <MenuItem>Cheddar</MenuItem>
+            <MenuItem>Gouda</MenuItem>
+          </>
+        }
+      >
+        <IconButton icon="DotsVert" label="Options" tooltipPlacement="top" />
+      </Menu>
+    </>
+  )
 
   return (
     <TreeItem
-      detail={
-        <>
-          <IconButton
-            icon="Pivot"
-            label="Pivot"
-            tooltipPlacement="top"
-            onClick={() => alert('Pivot')}
-          />
-          <Popover
-            content="hello world"
-            isOpen={overlay === 'popover'}
-            setOpen={togglePopover}
-          >
-            <IconButton icon="Filter" label="Filter" tooltipPlacement="top" />
-          </Popover>
-          <Tooltip placement="top" content="Some exciting info or something">
-            <IconButton icon="CircleInfoOutline" label="Info" />
-          </Tooltip>
-          <Menu
-            isOpen={overlay === 'menu'}
-            setOpen={toggleMenu}
-            compact
-            content={
-              <>
-                <MenuItem>Brie</MenuItem>
-                <MenuItem>Cheddar</MenuItem>
-                <MenuItem>Gouda</MenuItem>
-              </>
-            }
-          >
-            <IconButton
-              icon="DotsVert"
-              label="Options"
-              tooltipPlacement="top"
-            />
-          </Menu>
-        </>
-      }
-      detailAccessory={true}
-      detailHoverDisclosure={!overlay}
+      detail={{
+        content: detailContent,
+        options: {
+          accessory: true,
+          hoverDisclosure: !overlay,
+        },
+      }}
       onClick={() => alert(`Clicked on ${children}!`)}
       onMetaEnter={() => alert(`Cmd + Enter'ed on ${children}!`)}
       truncate={truncate}
