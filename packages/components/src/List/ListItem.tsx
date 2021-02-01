@@ -36,22 +36,8 @@ import { ListItemContext } from './ListItemContext'
 import { ListItemLayout } from './ListItemLayout'
 import { ListItemLayoutAccessory } from './ListItemLayoutAccessory'
 import { ListItemWrapper } from './ListItemWrapper'
-import { ListItemStatefulProps } from './types'
-import { createSafeRel } from './utils'
-
-interface DetailOptions {
-  /**
-   * If true, the detail will appear outside of the item's grey background on hover
-   * In addition, if true, events originating from the detail will not bubble to the item's handlers
-   * @default false
-   */
-  accessory?: boolean
-  /**
-   * If true, the detail will only appear on hover
-   * @default false
-   */
-  hoverDisclosure?: boolean
-}
+import { Detail, ListItemStatefulProps } from './types'
+import { createSafeRel, getDetailOptions } from './utils'
 
 export interface ListItemProps
   extends CompatibleHTMLProps<HTMLElement>,
@@ -65,7 +51,7 @@ export interface ListItemProps
    * 1. ReactNode
    * 2. Object with content and options properties
    */
-  detail?: ReactNode | { content: ReactNode; options: DetailOptions }
+  detail?: Detail
   /**
    * Optional icon placed left of the item children
    */
@@ -181,15 +167,7 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
       description
     )
 
-  let accessory, hoverDisclosure, detailContent
-
-  if (typeof detail === 'object' && detail && 'options' in detail) {
-    accessory = detail.options.accessory
-    detailContent = detail.content
-    hoverDisclosure = detail.options.hoverDisclosure
-  } else {
-    detailContent = detail
-  }
+  const { accessory, hoverDisclosure, detailContent } = getDetailOptions(detail)
 
   const renderedDetail = detail && (
     <HoverDisclosure visible={!hoverDisclosure}>
