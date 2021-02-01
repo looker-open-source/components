@@ -31,6 +31,8 @@ import {
   layout,
   LayoutProps,
   reset,
+  padding,
+  PaddingProps,
   shouldForwardProp,
   typography,
   TypographyProps,
@@ -40,6 +42,7 @@ import {
 export interface TabProps
   extends Omit<CompatibleHTMLProps<HTMLButtonElement>, 'type'>,
     LayoutProps,
+    PaddingProps,
     TypographyProps {
   disabled?: boolean
   focusVisible?: boolean
@@ -51,6 +54,7 @@ export interface TabProps
 const TabStyle = styled.button.withConfig({ shouldForwardProp })<TabProps>`
   ${reset}
   ${layout}
+  ${padding}
   ${typography}
 
   background: transparent;
@@ -66,8 +70,6 @@ const TabStyle = styled.button.withConfig({ shouldForwardProp })<TabProps>`
   font-family: ${({ theme }) => theme.fonts.brand};
   /* Remove default margin button in Safari */
   margin: 0;
-  padding-bottom: small;
-  padding-top: xsmall;
 
   &:active {
     border-bottom-color: ${({ selected, theme }) =>
@@ -151,8 +153,15 @@ const TabJSX = forwardRef((props: TabProps, ref: Ref<HTMLButtonElement>) => {
 TabJSX.displayName = 'TabJSX'
 
 export const Tab = styled(TabJSX).attrs(
-  ({ fontSize = 'small', fontWeight = 'medium' }) => ({
+  ({
+    fontSize = 'small',
+    fontWeight = 'medium',
+    pb = 'small',
+    pt = 'xsmall',
+  }) => ({
     fontSize,
     fontWeight,
+    pb,
+    pt,
   })
 )``
