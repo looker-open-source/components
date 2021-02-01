@@ -108,7 +108,7 @@ const InvisiBox = styled.div<PortalPlacementProps>`
   top: 0;
   z-index: ${({ theme: { zIndexFloor } }) => zIndexFloor};
 
-  * {
+  > * {
     pointer-events: auto;
   }
 `
