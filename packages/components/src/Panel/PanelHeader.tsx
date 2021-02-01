@@ -35,7 +35,7 @@ export interface PanelHeaderProps {
    * defines the icon displayed and the direction that the panel will appear and disappear
    * @default 'left'
    */
-  direction?: 'left'
+  direction?: 'down' | 'left' | 'right' | 'up'
   /**
    * callback to close Panel
    */
@@ -49,7 +49,16 @@ export const PanelHeader: FC<PanelHeaderProps> = ({
   handleClose,
   title,
 }) => {
-  const icon = direction === 'left' ? 'ArrowBackward' : 'ArrowForward'
+  const icon =
+    direction === 'left'
+      ? 'ArrowBackward'
+      : // eslint-disable-next-line no-constant-condition
+      direction === 'right'
+      ? 'ArrowForward'
+      : // eslint-disable-next-line no-constant-condition
+      direction === 'up'
+      ? 'ArrowUpward'
+      : 'ArrowDownward'
 
   return (
     <Space as="header" gap="small" className={className}>
