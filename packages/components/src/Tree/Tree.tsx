@@ -39,8 +39,6 @@ const TreeLayout: FC<TreeProps> = ({
   keyColor: propsKeyColor,
   children,
   detail,
-  detailHoverDisclosure: propsDetailHoverDisclosure,
-  detailAccessory: propsDetailAccessory,
   disabled,
   icon,
   label,
@@ -57,14 +55,6 @@ const TreeLayout: FC<TreeProps> = ({
   const treeContext = useContext(TreeContext)
   const hasBorder = undefinedCoalesce([propsBorder, treeContext.border])
   const useKeyColor = undefinedCoalesce([propsKeyColor, treeContext.keyColor])
-  const hasDetailHoverDisclosure = undefinedCoalesce([
-    propsDetailHoverDisclosure,
-    treeContext.detailHoverDisclosure,
-  ])
-  const hasDetailAccessory = undefinedCoalesce([
-    propsDetailAccessory,
-    treeContext.detailAccessory,
-  ])
   const startingDepth = 0
   const depth = treeContext.depth ? treeContext.depth : startingDepth
 
@@ -72,8 +62,6 @@ const TreeLayout: FC<TreeProps> = ({
     <TreeItemInner
       color={disabled ? 'text1' : 'text5'}
       detail={detail}
-      detailAccessory={hasDetailAccessory}
-      detailHoverDisclosure={hasDetailHoverDisclosure}
       icon={icon}
       truncate={truncate}
     >
@@ -95,8 +83,6 @@ const TreeLayout: FC<TreeProps> = ({
       value={{
         border: hasBorder,
         depth: depth + 1,
-        detailAccessory: hasDetailAccessory,
-        detailHoverDisclosure: hasDetailHoverDisclosure,
         keyColor: useKeyColor,
       }}
     >

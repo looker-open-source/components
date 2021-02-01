@@ -29,23 +29,17 @@ import React, {
   FocusEvent,
   KeyboardEvent,
   MouseEvent,
-  ReactNode,
   useContext,
   useRef,
   useState,
   Fragment,
 } from 'react'
 import styled from 'styled-components'
-import {
-  color,
-  CompatibleHTMLProps,
-  SpacingSizes,
-  TextColorProps,
-} from '@looker/design-tokens'
-import Omit from 'lodash/omit'
+import { color, TextColorProps } from '@looker/design-tokens'
+import omit from 'lodash/omit'
 import noop from 'lodash/noop'
 import { Space, FlexItem } from '../Layout'
-import { Icon, IconNames } from '../Icon'
+import { Icon } from '../Icon'
 import { useHovered } from '../utils/useHovered'
 import {
   HoverDisclosureContext,
@@ -53,68 +47,27 @@ import {
 } from '../utils/HoverDisclosure'
 import { undefinedCoalesce } from '../utils'
 import { Truncate } from '../Truncate'
-import { listItemBackgroundColor } from '../List/utils'
-import {
-  ListItemStatefulProps,
-  ListItemStatefulWithHoveredProps,
-} from '../List/types'
+import { ListItemProps } from '../List'
+import { getDetailOptions, listItemBackgroundColor } from '../List/utils'
+import { ListItemStatefulWithHoveredProps } from '../List/types'
 import { TreeContext } from './TreeContext'
 
 export interface TreeItemProps
-  extends ListItemStatefulProps,
-    Omit<CompatibleHTMLProps<HTMLDivElement>, 'color'>,
+  extends Omit<ListItemProps, 'color'>,
     TextColorProps {
-  children: ReactNode
-  className?: string
-  /**
-   * Supplementary element that appears right of the TreeItem's label
-   * Note: The detail container will stop propagation of events. Place your element(s) in the label
-   *  prop if you'd like events on them to bubble.
-   */
-  detail?: ReactNode
-  /**
-   * If true, the detail elements will appear outside of the TreeItem's grey background on hover
-   * In addition, if true, events will not propagate from the detail container
-   * @default false
-   */
-  detailAccessory?: boolean
-  /**
-   * If true, then the detail element this TreeItem will only appear on hover
-   * @default false
-   */
-  detailHoverDisclosure?: boolean
-  /**
-   * Gap size of the internal Space component
-   * @default 'xsmall'
-   */
-  gapSize?: SpacingSizes
-  /**
-   * Icon element that appears left of the TreeItem children
-   */
-  icon?: IconNames
-  /**
-   * onClick callback
-   */
-  onClick?: () => void
   /**
    * Callback that is triggered on CMD + Enter on Mac
    * or Windows key + Enter on PC
    */
   onMetaEnter?: () => void
-  /**
-   * Prevent text wrapping on long labels and instead render truncated text
-   **/
-  truncate?: boolean
 }
 
 const TreeItemLayout: FC<TreeItemProps> = ({
   children,
   className,
-  keyColor: propsKeyColor,
-  detailAccessory: propsDetailAccessory,
-  detailHoverDisclosure: propsDetailHoverDisclosure,
+  detail,
   disabled,
-  gapSize = 'xsmall',
+  keyColor: propsKeyColor,
   onMetaEnter = noop,
   selected,
   truncate,
@@ -132,51 +85,25 @@ const TreeItemLayout: FC<TreeItemProps> = ({
     onKeyDown = noop,
     onKeyUp = noop,
     ...restProps
-  } = Omit(props, ['color', 'detail', 'icon'])
+  } = omit(props, ['color', 'detail', 'icon'])
 
   const keyColor = undefinedCoalesce([propsKeyColor, treeContext.keyColor])
 
-  const detailAccessory = undefinedCoalesce([
-    propsDetailAccessory,
-    treeContext.detailAccessory,
-  ])
+  const { accessory, hoverDisclosure, detailContent } = getDetailOptions(detail)
 
-  const detailHoverDisclosure = undefinedCoalesce([
-    propsDetailHoverDisclosure,
-    treeContext.detailHoverDisclosure,
-  ])
-
-  const handleClick = (event: MouseEvent<HTMLDivElement>) => {
-    if (
-      detailRef.current &&
-      detailRef.current.contains(event.target as Node) &&
-      detailAccessory
-    ) {
-      event.stopPropagation()
-      return
-    }
-
+  const handleClick = (event: MouseEvent<HTMLElement>) => {
     setFocusVisible(false)
-    onClick()
+    onClick(event)
   }
 
-  const handleKeyUp = (event: KeyboardEvent<HTMLDivElement>) => {
+  const handleKeyUp = (event: KeyboardEvent<HTMLElement>) => {
     if (event.key === 'Tab' && event.currentTarget === event.target)
       setFocusVisible(true)
 
     onKeyUp(event)
   }
 
-  const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
-    if (
-      detailRef.current &&
-      detailRef.current.contains(event.target as Node) &&
-      detailAccessory
-    ) {
-      event.stopPropagation()
-      return
-    }
-
+  const handleKeyDown = (event: KeyboardEvent<HTMLElement>) => {
     if (event.key === 'Enter') {
       event.metaKey ? onMetaEnter() : onClick()
     }
@@ -184,23 +111,22 @@ const TreeItemLayout: FC<TreeItemProps> = ({
     onKeyDown(event)
   }
 
-  const handleBlur = (event: FocusEvent<HTMLDivElement>) => {
+  const handleBlur = (event: FocusEvent<HTMLElement>) => {
     setFocusVisible(false)
     onBlur(event)
   }
 
   const defaultIconSize = 12
 
-  const detail = (
-    <HoverDisclosure visible={!detailHoverDisclosure}>
-      <TreeItemDetail detailAccessory={!!detailAccessory} ref={detailRef}>
-        {props.detail}
+  const detailElement = (
+    <HoverDisclosure visible={!hoverDisclosure}>
+      <TreeItemDetail detailAccessory={!!accessory} ref={detailRef}>
+        {detailContent}
       </TreeItemDetail>
     </HoverDisclosure>
   )
 
   const TextWrapper = truncate ? Truncate : Fragment
-  const isTreeItemTabbable = onClick || onMetaEnter ? 0 : -1
 
   return (
     <HoverDisclosureContext.Provider value={{ visible: isHovered }}>
@@ -213,14 +139,13 @@ const TreeItemLayout: FC<TreeItemProps> = ({
         onKeyDown={handleKeyDown}
         onKeyUp={handleKeyUp}
         ref={itemRef}
-        tabIndex={isTreeItemTabbable}
+        tabIndex={-1}
         {...restProps}
       >
         <TreeItemLabel
           keyColor={keyColor}
           disabled={disabled}
           hovered={isHovered}
-          gap={gapSize}
           selected={selected}
         >
           {props.icon && (
@@ -229,9 +154,9 @@ const TreeItemLayout: FC<TreeItemProps> = ({
           <FlexItem flex="1" fontSize="xsmall" lineHeight="xsmall">
             <TextWrapper>{children}</TextWrapper>
           </FlexItem>
-          {!detailAccessory && detail}
+          {!accessory && detailElement}
         </TreeItemLabel>
-        {detailAccessory && detail}
+        {accessory && detailElement}
       </TreeItemSpace>
     </HoverDisclosureContext.Provider>
   )
