@@ -24,8 +24,19 @@
 
  */
 
-export * from './createSafeRel'
-export * from './getDetailOptions'
-export * from './listItemBackgroundColor'
-export * from './listItemDimensions'
-export * from './listItemPadding'
+import { Detail } from '../types'
+
+// Simplifies the type check when dealing with ListItem and related components
+export const getDetailOptions = (detail: Detail) => {
+  let accessory, hoverDisclosure, detailContent
+
+  if (typeof detail === 'object' && detail && 'options' in detail) {
+    accessory = detail.options.accessory
+    detailContent = detail.content
+    hoverDisclosure = detail.options.hoverDisclosure
+  } else {
+    detailContent = detail
+  }
+
+  return { accessory, detailContent, hoverDisclosure }
+}

@@ -25,6 +25,7 @@
  */
 
 import { FontSizes, LineHeights, SpacingSizes } from '@looker/design-tokens'
+import { ReactNode } from 'react'
 import { IconSize } from '..'
 
 export type DensityRamp = -3 | -2 | -1 | 0 | 1
@@ -86,3 +87,19 @@ export interface ListItemStatefulWithHoveredProps
    */
   hovered?: boolean
 }
+
+interface DetailOptions {
+  /**
+   * If true, the detail will appear outside of the item's grey background on hover
+   * In addition, if true, events originating from the detail will not bubble to the item's handlers
+   * @default false
+   */
+  accessory?: boolean
+  /**
+   * If true, the detail will only appear on hover
+   * @default false
+   */
+  hoverDisclosure?: boolean
+}
+
+export type Detail = ReactNode | { content: ReactNode; options: DetailOptions }
