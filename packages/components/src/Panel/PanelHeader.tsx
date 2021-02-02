@@ -60,12 +60,13 @@ export const PanelHeader: FC<PanelHeaderProps> = ({
       ? 'ArrowUpward'
       : 'ArrowDownward'
 
+  const label = typeof title === 'string' ? `Close ${title}` : 'Close Panel'
   return (
     <Space as="header" gap="small" className={className}>
       <IconButton
         onClick={handleClose}
         icon={icon}
-        label={`Close ${title} navigation`}
+        label={label}
         toggle
         shape="round"
         outline

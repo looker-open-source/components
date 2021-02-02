@@ -76,9 +76,9 @@ export const Basic = () => {
           <Panel
             content={
               <List>
-                <ListItem icon="ArrowRight">Monkey</ListItem>
-                <ListItem icon="ArrowRight">Bear</ListItem>
-                <ListItem icon="ArrowRight">Rabbit</ListItem>
+                <ListItem icon="ArrowRight">Panel option 1</ListItem>
+                <ListItem icon="ArrowRight">Panel option 2</ListItem>
+                <ListItem icon="ArrowRight">Panel option 3</ListItem>
               </List>
             }
             direction="left"

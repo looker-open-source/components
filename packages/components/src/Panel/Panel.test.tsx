@@ -158,7 +158,7 @@ describe('Panel', () => {
 
     expect(getByText('Panel content')).toBeInTheDocument()
 
-    fireEvent.click(getByText('Close Panel Hook navigation'))
+    fireEvent.click(getByText('Close Panel Hook'))
 
     expect(getByText('Option A')).toBeInTheDocument()
   })

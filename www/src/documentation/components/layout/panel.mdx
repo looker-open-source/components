@@ -3,9 +3,8 @@ title: Panel
 storybook: true
 ---
 
-`<Panel />` component displays with animation a secondery menu that should be
-passed as the prop `content`. The `Panel Heading` can be defined as a string or
-a ReachNode and will be displayed above the main `content`.
+`<Panel />` component displays content with directional animation by using prop `direction` - `down`, `left`, 'right', `up`. The elements to be displayed as the compoennt must be
+passed as the prop `content`. `<Panels />` should be the parent component grouping all the elements involved on the `Panel. The `Panel Heading`can be defined as a string or a ReactNode and will be displayed above the main`content`.
 
 ```jsx
 ;() => {
@@ -14,8 +13,8 @@ a ReachNode and will be displayed above the main `content`.
 
   const title = (
     <>
-      <Icon name="ExploreOutline" m="xsmall" />
-      Dog
+      <Icon name="ArrowLeft" m="xsmall" />
+      Left
     </>
   )
 
@@ -24,26 +23,39 @@ a ReachNode and will be displayed above the main `content`.
       <Aside width="12rem">
         <Panels>
           <List>
-            <ListItem onClick={toggleExplore} icon="ExploreOutline">
-              Dog
+            <ListItem onClick={toggleOpen} icon="ArrowForward">
+              Left
             </ListItem>
-            <Panel content={'content from display...'} title="Cat">
-              <ListItem icon="Code">Cat</ListItem>
+            <Panel
+              content={'content from Right...'}
+              direction="right"
+              title="Right"
+            >
+              <ListItem icon="ArrowBackward">Right</ListItem>
             </Panel>
-            <ListItem icon="Group">Fox</ListItem>
+            <Panel content={'content from Up...'} direction="up" title="Up">
+              <ListItem icon="ArrowDownward">Up</ListItem>
+            </Panel>
+            <Panel
+              content={'content from Down...'}
+              direction="down"
+              title="Down"
+            >
+              <ListItem icon="ArrowUpward">Down</ListItem>
+            </Panel>
           </List>
 
           <Panel
             content={
               <List>
-                <ListItem icon="ArrowRight">Monkey</ListItem>
-                <ListItem icon="ArrowRight">Bear</ListItem>
-                <ListItem icon="ArrowRight">Rabbit</ListItem>
+                <ListItem icon="ArrowRight">Panel option 1</ListItem>
+                <ListItem icon="ArrowRight">Panel option 2</ListItem>
+                <ListItem icon="ArrowRight">Panel option 3</ListItem>
               </List>
             }
             direction="left"
-            isOpen={explore}
-            setOpen={setExplore}
+            isOpen={open}
+            setOpen={setOpen}
             title={title}
           />
         </Panels>
