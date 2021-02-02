@@ -83,7 +83,7 @@ jobs:
         run: yarn test:image-snapshots-update
         id: snapshots-update
       - name: Create Pull Request
-        if: ${{ always() && (steps.snapshots-update.outcome == 'failure') }}
+        if: ${{ always() && (steps.snapshots-update.outcome == 'success') }}
         uses: peter-evans/create-pull-request@v3
         with:
           commit-message: "chore: image-snapshot updates"
