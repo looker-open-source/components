@@ -15,6 +15,7 @@ exports[`Link Snapshot 1`] = `
 .c0.active,
 .c0:visited {
   color: #0063c6;
+  outline: none;
   -webkit-text-decoration: underline;
   text-decoration: underline;
 }
