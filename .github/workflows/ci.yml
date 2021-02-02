@@ -76,11 +76,14 @@ jobs:
       - uses: c-hive/gha-yarn-cache@v1
       - run : yarn --silent
       - run: yarn test:image-snapshots
-
+        id: snapshots
+    # If snapshots failed, build fresh ones and open a PR to help out our friends
       - name: Fresh snapshots
-        if: ${{ failure() }}
+        if: ${{ always() && (steps.snapshots.outcome == 'failure' }}
         run: yarn test:image-snapshots-update
+        id: snapshots-update
       - name: Create Pull Request
+        if: ${{ always() && (steps.snapshots-update.outcome == 'failure' }}
         uses: peter-evans/create-pull-request@v3
         with:
           commit-message: "chore: image-snapshot updates"
@@ -89,7 +92,4 @@ jobs:
           title: "chore: snapshot-updates for \"${{ github.event.pull_request.title }}\""
           body: Image snapshot updates for the PR \"${{ github.event.pull_request.title }}\""
           labels: image-snapshots
-          reviewers: "lukelooker,${{ github.payload.pull_request.sender.login }}"
-      - name: Check outputs
-        run: |
-          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
+          reviewers: "${{ github.payload.pull_request.sender.login }}"
