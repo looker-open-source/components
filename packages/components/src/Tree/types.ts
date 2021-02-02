@@ -29,7 +29,10 @@ import { ListItemProps } from '../List'
 import { DensityRamp } from '../List/types'
 
 export interface TreeProps
-  extends Omit<AccordionProps, 'children' | 'indicatorGap' | 'indicatorSize'>,
+  extends Omit<
+      AccordionProps,
+      'children' | 'indicatorGap' | 'indicatorPosition' | 'indicatorSize'
+    >,
     ListItemProps {
   /**
    * If true, vertical lines will extend from the Tree indicator (and all sub-Trees' indicators)

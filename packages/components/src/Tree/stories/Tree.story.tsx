@@ -60,7 +60,6 @@ export const Basic = Template.bind({})
 Basic.args = {
   defaultOpen: true,
   density: -3,
-  indicatorPosition: 'left',
 }
 
 export const Border = Template.bind({})
