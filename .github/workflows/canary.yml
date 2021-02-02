@@ -34,11 +34,10 @@ jobs:
 
       - name: Create canary release
         run: |
-          yarn lerna version prerelease --conventional-commits --preid canary --yes --exact
+          yarn lerna version prerelease --conventional-commits --no-git-tag-version --no-push --preid canary --yes --exact
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git commit -am "chore: Publish"
-
       - run: echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} > .npmrc
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
