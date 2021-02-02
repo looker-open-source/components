@@ -28,21 +28,29 @@ import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
 import { reset, space, SpaceProps } from '@looker/design-tokens'
 import { InputProps, pickInputProps } from '../InputProps'
+import { ValidationType } from '../../ValidationMessage'
+import { inputTextValidation } from '../InputText'
 import { FauxRadio } from './FauxRadio'
 
 export interface RadioProps
   extends SpaceProps,
     Omit<InputProps, 'readonly' | 'type' | 'checked' | 'onClick'> {
   checked?: boolean
+  validationType?: ValidationType
 }
 
 const RadioLayout = forwardRef(
   (props: RadioProps, ref: Ref<HTMLInputElement>) => {
-    const { className, ...restProps } = props
+    const { className, validationType, ...restProps } = props
 
     return (
       <div className={className}>
-        <input type="radio" {...pickInputProps(restProps)} ref={ref} />
+        <input
+          type="radio"
+          aria-invalid={validationType === 'error' ? 'true' : undefined}
+          {...pickInputProps(restProps)}
+          ref={ref}
+        />
         <FauxRadio />
       </div>
     )
@@ -67,6 +75,10 @@ export const Radio = styled(RadioLayout)`
     position: absolute;
     width: 100%;
     z-index: 1;
+  }
+
+  input + ${FauxRadio} {
+    ${inputTextValidation}
   }
 
   input:checked + ${FauxRadio} {
