@@ -75,7 +75,7 @@ export const imageSnapshots = (pkg: string) => {
         return {
           customSnapshotIdentifier: story,
           customSnapshotsDir: path.join(pkg, 'snapshots', ...kind.split('/')),
-          failureThreshold: 0.05,
+          failureThreshold: 0.005,
           failureThresholdType: 'percent',
         }
       },
