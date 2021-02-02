@@ -95,6 +95,7 @@ export const Link = styled(LinkLayout)`
   &:visited {
     color: ${({ keyColor, theme: { colors } }) =>
       keyColor ? colors.keyInteractive : colors.linkInteractive};
+    outline: none;
     text-decoration: underline;
   }
 `
