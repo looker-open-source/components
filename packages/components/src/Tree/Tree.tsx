@@ -36,6 +36,12 @@ import { indicatorDefaults } from './utils'
 import { TreeStyle } from './TreeStyle'
 import { TreeProps } from './types'
 
+export const ListItemInner = styled(ListItem)`
+  & > button {
+    padding-left: 0;
+  }
+`
+
 const TreeLayout: FC<TreeProps> = ({
   border: propsBorder,
   keyColor: propsKeyColor,
@@ -65,9 +71,14 @@ const TreeLayout: FC<TreeProps> = ({
   const density = propsDensity || contextDensity
 
   const treeItem = (
-    <ListItem density={density} detail={detail} icon={icon} truncate={truncate}>
+    <ListItemInner
+      density={density}
+      detail={detail}
+      icon={icon}
+      truncate={truncate}
+    >
       {label}
-    </ListItem>
+    </ListItemInner>
   )
 
   const innerAccordion = (
