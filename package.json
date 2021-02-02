@@ -29,8 +29,8 @@
     "build:ts": "yarn lerna exec --stream --scope '@looker/*' --sort 'tsc -b tsconfig.build.json'",
     "bumpversion": "yarn lerna version --conventional-commits --no-git-tag-version --no-push --yes",
     "clean": "run-p -c clean:*",
-    "clean:build": "rm -Rf packages/*/cjs packages/*/esm packages/*/types",
-    "clean:legacy": "rm -Rf packages/*/lib packages/*/dist",
+    "clean:build": "rm -Rf packages/*/lib",
+    "clean:icons": "rm -Rf packages/icons/src/generated",
     "clean:storybook": "rm -Rf packages/*/storybook-static ",
     "clean:docs": "find docs -type f ! -name 'index.html' -delete",
     "clean:gatsby": "rm -Rf www/.cache www/public",
@@ -50,7 +50,7 @@
     "storybook": "yarn workspace storybook develop",
     "storybook-docs": "yarn workspace storybook develop-docs",
 
-    "pre:storyshots": "yarn pretest",
+    "prestoryshots": "yarn prebuild",
     "storyshots": "export storybookBuildMode=fast && yarn lerna run storybook-build --scope '@looker/*' --stream --parallel",
 
     "pretest:image-snapshots": "yarn storyshots",
