@@ -29,15 +29,18 @@ import React, { FC, useContext, useRef } from 'react'
 import { Accordion, AccordionContent, AccordionDisclosure } from '../Accordion'
 import { useHovered } from '../utils/useHovered'
 import { undefinedCoalesce } from '../utils'
+import { List, ListItem } from '../List'
+import { ListItemContext } from '../List/ListItemContext'
 import { TreeContext } from './TreeContext'
 import { indicatorDefaults } from './utils'
-import { TreeItemInner, TreeStyle } from './TreeStyle'
+import { TreeStyle } from './TreeStyle'
 import { TreeProps } from './types'
 
 const TreeLayout: FC<TreeProps> = ({
   border: propsBorder,
   keyColor: propsKeyColor,
   children,
+  density: propsDensity,
   detail,
   disabled,
   icon,
@@ -58,15 +61,13 @@ const TreeLayout: FC<TreeProps> = ({
   const startingDepth = 0
   const depth = treeContext.depth ? treeContext.depth : startingDepth
 
+  const { density: contextDensity } = useContext(ListItemContext)
+  const density = propsDensity || contextDensity
+
   const treeItem = (
-    <TreeItemInner
-      color={disabled ? 'text1' : 'text5'}
-      detail={detail}
-      icon={icon}
-      truncate={truncate}
-    >
+    <ListItem density={density} detail={detail} icon={icon} truncate={truncate}>
       {label}
-    </TreeItemInner>
+    </ListItem>
   )
 
   const innerAccordion = (
@@ -74,7 +75,9 @@ const TreeLayout: FC<TreeProps> = ({
       <AccordionDisclosure ref={disclosureRef} py="none">
         {treeItem}
       </AccordionDisclosure>
-      <AccordionContent>{children}</AccordionContent>
+      <AccordionContent>
+        <List density={density}>{children}</List>
+      </AccordionContent>
     </Accordion>
   )
 

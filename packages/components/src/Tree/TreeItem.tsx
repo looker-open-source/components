@@ -24,43 +24,17 @@
 
  */
 
-import React, {
-  FC,
-  FocusEvent,
-  KeyboardEvent,
-  MouseEvent,
-  useContext,
-  useRef,
-  useState,
-  Fragment,
-} from 'react'
+import React, { FC, useContext } from 'react'
 import styled from 'styled-components'
-import { color, TextColorProps } from '@looker/design-tokens'
+import { TextColorProps } from '@looker/design-tokens'
 import omit from 'lodash/omit'
-import noop from 'lodash/noop'
-import { Space, FlexItem } from '../Layout'
-import { Icon } from '../Icon'
-import { useHovered } from '../utils/useHovered'
-import {
-  HoverDisclosureContext,
-  HoverDisclosure,
-} from '../utils/HoverDisclosure'
 import { undefinedCoalesce } from '../utils'
-import { Truncate } from '../Truncate'
-import { ListItemProps } from '../List'
-import { getDetailOptions, listItemBackgroundColor } from '../List/utils'
-import { ListItemStatefulWithHoveredProps } from '../List/types'
+import { ListItem, ListItemProps } from '../List'
 import { TreeContext } from './TreeContext'
 
 export interface TreeItemProps
   extends Omit<ListItemProps, 'color'>,
-    TextColorProps {
-  /**
-   * Callback that is triggered on CMD + Enter on Mac
-   * or Windows key + Enter on PC
-   */
-  onMetaEnter?: () => void
-}
+    TextColorProps {}
 
 const TreeItemLayout: FC<TreeItemProps> = ({
   children,
@@ -68,147 +42,35 @@ const TreeItemLayout: FC<TreeItemProps> = ({
   detail,
   disabled,
   keyColor: propsKeyColor,
-  onMetaEnter = noop,
+  onBlur,
+  onClick,
+  onKeyDown,
+  onKeyUp,
   selected,
   truncate,
   ...props
 }) => {
   const treeContext = useContext(TreeContext)
-  const itemRef = useRef<HTMLDivElement>(null)
-  const detailRef = useRef<HTMLDivElement>(null)
-  const [isHovered] = useHovered(itemRef)
-  const [isFocusVisible, setFocusVisible] = useState(false)
-
-  const {
-    onBlur = noop,
-    onClick = noop,
-    onKeyDown = noop,
-    onKeyUp = noop,
-    ...restProps
-  } = omit(props, ['color', 'detail', 'icon'])
 
   const keyColor = undefinedCoalesce([propsKeyColor, treeContext.keyColor])
 
-  const { accessory, hoverDisclosure, detailContent } = getDetailOptions(detail)
-
-  const handleClick = (event: MouseEvent<HTMLElement>) => {
-    setFocusVisible(false)
-    onClick(event)
-  }
-
-  const handleKeyUp = (event: KeyboardEvent<HTMLElement>) => {
-    if (event.key === 'Tab' && event.currentTarget === event.target)
-      setFocusVisible(true)
-
-    onKeyUp(event)
-  }
-
-  const handleKeyDown = (event: KeyboardEvent<HTMLElement>) => {
-    if (event.key === 'Enter') {
-      event.metaKey ? onMetaEnter() : onClick()
-    }
-
-    onKeyDown(event)
-  }
-
-  const handleBlur = (event: FocusEvent<HTMLElement>) => {
-    setFocusVisible(false)
-    onBlur(event)
-  }
-
-  const defaultIconSize = 12
-
-  const detailElement = (
-    <HoverDisclosure visible={!hoverDisclosure}>
-      <TreeItemDetail detailAccessory={!!accessory} ref={detailRef}>
-        {detailContent}
-      </TreeItemDetail>
-    </HoverDisclosure>
-  )
-
-  const TextWrapper = truncate ? Truncate : Fragment
-
   return (
-    <HoverDisclosureContext.Provider value={{ visible: isHovered }}>
-      <TreeItemSpace
-        className={className}
-        focusVisible={isFocusVisible}
-        gap="none"
-        onBlur={handleBlur}
-        onClick={handleClick}
-        onKeyDown={handleKeyDown}
-        onKeyUp={handleKeyUp}
-        ref={itemRef}
-        tabIndex={-1}
-        {...restProps}
-      >
-        <TreeItemLabel
-          keyColor={keyColor}
-          disabled={disabled}
-          hovered={isHovered}
-          selected={selected}
-        >
-          {props.icon && (
-            <PrimaryIcon name={props.icon} size={defaultIconSize} />
-          )}
-          <FlexItem flex="1" fontSize="xsmall" lineHeight="xsmall">
-            <TextWrapper>{children}</TextWrapper>
-          </FlexItem>
-          {!accessory && detailElement}
-        </TreeItemLabel>
-        {accessory && detailElement}
-      </TreeItemSpace>
-    </HoverDisclosureContext.Provider>
+    <ListItem
+      className={className}
+      onBlur={onBlur}
+      onClick={onClick}
+      onKeyDown={onKeyDown}
+      onKeyUp={onKeyUp}
+      tabIndex={-1}
+      keyColor={keyColor}
+      disabled={disabled}
+      selected={selected}
+      detail={detail}
+      {...omit(props, ['color', 'detail', 'icon'])}
+    >
+      {children}
+    </ListItem>
   )
 }
 
-const PrimaryIcon = styled(Icon)`
-  height: ${({ theme }) => theme.lineHeights.xsmall};
-  opacity: 0.5;
-`
-
-interface TreeItemSpaceProps {
-  focusVisible: boolean
-}
-
-export const TreeItemSpace = styled(Space)<TreeItemSpaceProps>`
-  align-items: center;
-  cursor: pointer;
-  flex-shrink: 2;
-  min-height: ${({ theme }) => theme.sizes.medium};
-  min-width: 0;
-  outline: 1px solid transparent;
-  outline-color: ${({ focusVisible, theme }) =>
-    focusVisible && theme.colors.keyFocus};
-`
-
-export const TreeItemLabel = styled(Space)<ListItemStatefulWithHoveredProps>`
-  ${listItemBackgroundColor}
-  align-items: center;
-  color: ${({ disabled, theme: { colors } }) =>
-    disabled ? colors.text1 : colors.text5};
-  cursor: ${({ disabled }) => disabled && 'not-allowed'};
-  flex: 1;
-  flex-shrink: 2;
-  height: 100%;
-  max-width: 100%;
-  min-height: ${({ theme }) => theme.sizes.medium};
-  min-width: 0;
-  outline: none;
-`
-
-const TreeItemDetail = styled.div<{ detailAccessory: boolean }>`
-  align-items: center;
-  display: flex;
-  height: 100%;
-`
-
-export const TreeItem = styled(TreeItemLayout)`
-  /*
-    Note: first-child pseudo-selector is here to give this selector
-    more specificity over TreeGroup.
-  */
-  ${TreeItemLabel}:first-child {
-    ${color}
-  }
-`
+export const TreeItem = styled(TreeItemLayout)``

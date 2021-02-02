@@ -26,6 +26,7 @@
 
 import { AccordionProps } from '../Accordion'
 import { ListItemProps } from '../List'
+import { DensityRamp } from '../List/types'
 
 export interface TreeProps
   extends Omit<AccordionProps, 'children' | 'indicatorGap' | 'indicatorSize'>,
@@ -40,6 +41,11 @@ export interface TreeProps
    * @default false
    */
   branchFontWeight?: boolean
+  /**
+   * Determines the sizing and spacing of child TreeItems
+   * @default 0
+   */
+  density?: DensityRamp
   /**
    * Produce a small visual space between each `TreeItem` displayed in the list so adjacent
    * items that are in a "selected" or active state have visual separation.
