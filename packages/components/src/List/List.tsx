@@ -48,7 +48,7 @@ export interface ListProps
   /**
    * Determines how dense a list should be by affecting child ListItem
    * size and spacing.
-   * @default medium
+   * @default 0
    */
   density?: DensityRamp
 
@@ -77,7 +77,7 @@ export const ListInternal = forwardRef(
   (
     {
       children,
-      density,
+      density = 0,
       disabled,
       iconGutter = false,
       windowing,
@@ -90,9 +90,7 @@ export const ListInternal = forwardRef(
   ) => {
     const childArray = useMemo(() => Children.toArray(children), [children])
 
-    const itemDimensions = listItemDimensions(
-      density !== undefined ? density : 0
-    )
+    const { height } = listItemDimensions(density !== undefined ? density : 0)
 
     if (windowing === undefined) {
       if (childArray.length > 100) {
@@ -104,7 +102,7 @@ export const ListInternal = forwardRef(
 
     const { content, ref } = useWindow({
       childHeight: childArray[0]
-        ? getListItemHeight(childArray[0] as ReactChild, itemDimensions.height)
+        ? getListItemHeight(childArray[0] as ReactChild, height)
         : 0,
       children: children as JSX.Element | JSX.Element[],
       enabled: windowing !== 'none',
@@ -120,8 +118,8 @@ export const ListInternal = forwardRef(
     })
 
     const context = {
+      density,
       iconGutter,
-      itemDimensions,
     }
 
     return (

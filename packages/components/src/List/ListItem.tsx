@@ -36,12 +36,20 @@ import { ListItemContext } from './ListItemContext'
 import { ListItemLayout } from './ListItemLayout'
 import { ListItemLayoutAccessory } from './ListItemLayoutAccessory'
 import { ListItemWrapper } from './ListItemWrapper'
-import { Detail, ListItemStatefulProps } from './types'
-import { createSafeRel, getDetailOptions } from './utils'
+import { DensityRamp, Detail, ListItemStatefulProps } from './types'
+import { createSafeRel, getDetailOptions, listItemDimensions } from './utils'
 
 export interface ListItemProps
   extends CompatibleHTMLProps<HTMLElement>,
     ListItemStatefulProps {
+  /**
+   * Determines the sizing and spacing of the item
+   * Notes:
+   * - This prop is intended for internal components usage (density should be set on a parent List component for external use cases).
+   * - If you choose to use this prop on a ListItem directly, it must be consistent across all items for windowing purposes.
+   * @private
+   */
+  density?: DensityRamp
   /*
    * optional extra description
    */
@@ -77,6 +85,7 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
     children,
     className,
     current,
+    density: propsDensity,
     description,
     detail,
     disabled,
@@ -93,7 +102,9 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
     truncate,
   } = props
 
-  const { iconGutter, itemDimensions } = useContext(ListItemContext)
+  const { iconGutter, density: contextDensity } = useContext(ListItemContext)
+
+  const itemDimensions = listItemDimensions(propsDensity || contextDensity)
 
   const [focusVisible, setFocusVisible] = useState(false)
 
