@@ -24,35 +24,27 @@
 
  */
 
-import { css } from 'styled-components'
-import { Theme } from '@looker/design-tokens'
-import { IconSize } from '../../Icon'
-import { indicatorDefaults } from './indicatorDefaults'
+import React, { FC } from 'react'
+import { Tree } from '../Tree'
+import { TreeItem } from '../TreeItem'
+import { DensityRamp } from '../../List/types'
+import { Divider } from '../../Divider'
 
-export const generateTreeBorder = (
-  depth: number,
-  indicatorSize: IconSize,
-  theme: Theme
-) => {
-  const { sizes, space } = theme
-  const { indicatorGap } = indicatorDefaults
+const DensityTree: FC<{ density: DensityRamp }> = ({ density }) => (
+  <>
+    <Tree defaultOpen density={density} label="Tree of Cheese">
+      <Tree defaultOpen label="French Cheeses">
+        <TreeItem>Brie</TreeItem>
+      </Tree>
+      <TreeItem>Cheddar</TreeItem>
+      <TreeItem>Gouda</TreeItem>
+      <TreeItem>Swiss</TreeItem>
+    </Tree>
+    <Divider />
+  </>
+)
 
-  const itemBorderSize = '1px'
-  const itemPaddingSize = space.xxsmall
-  const indicatorIconSize = sizes[indicatorSize]
-  const indicatorGapSize = space[indicatorGap]
-  const depthSize = `${itemPaddingSize} + (${indicatorIconSize} + ${indicatorGapSize}) * ${depth}`
-  const borderSpacer = `(${indicatorIconSize} + ${itemBorderSize}) / 2 + ${depthSize}`
+const densities: DensityRamp[] = [1, 0, -1, -2, -3]
 
-  const preBorderStop = `calc(${borderSpacer} - ${itemBorderSize})`
-  const postBorderStop = `calc(${borderSpacer})`
-
-  return css`
-    background: linear-gradient(
-      90deg,
-      transparent ${preBorderStop},
-      ${theme.colors.ui2} ${preBorderStop} ${postBorderStop},
-      transparent ${postBorderStop}
-    );
-  `
-}
+export const Density = () =>
+  densities.map((density) => <DensityTree density={density} key={density} />)

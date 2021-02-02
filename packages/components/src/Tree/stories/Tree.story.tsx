@@ -30,6 +30,7 @@ import { Tree, TreeProps, TreeItem } from '..'
 
 export * from './BorderRadius.story'
 export * from './ColorfulTree.story'
+export * from './Density.story'
 export * from './DisabledAndSelected.story'
 export * from './FieldPicker.story'
 export * from './FileTree.story'
@@ -59,7 +60,6 @@ const Template: Story<TreeProps> = (args) => (
 export const Basic = Template.bind({})
 Basic.args = {
   defaultOpen: true,
-  density: -3,
 }
 
 export const Border = Template.bind({})

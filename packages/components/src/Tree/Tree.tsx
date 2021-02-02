@@ -31,13 +31,16 @@ import { useHovered } from '../utils/useHovered'
 import { undefinedCoalesce } from '../utils'
 import { List, ListItem } from '../List'
 import { ListItemContext } from '../List/ListItemContext'
+import { listItemDimensions } from '../List/utils'
 import { TreeContext } from './TreeContext'
 import { indicatorDefaults } from './utils'
 import { TreeStyle } from './TreeStyle'
 import { TreeProps } from './types'
 
 export const ListItemInner = styled(ListItem)`
-  & > button {
+  & > button,
+  & > a {
+    background-color: transparent;
     padding-left: 0;
   }
 `
@@ -69,6 +72,7 @@ const TreeLayout: FC<TreeProps> = ({
 
   const { density: contextDensity } = useContext(ListItemContext)
   const density = propsDensity || contextDensity
+  const { iconSize } = listItemDimensions(density)
 
   const treeItem = (
     <ListItemInner
@@ -82,7 +86,7 @@ const TreeLayout: FC<TreeProps> = ({
   )
 
   const innerAccordion = (
-    <Accordion {...indicatorDefaults} {...restProps}>
+    <Accordion {...indicatorDefaults} {...restProps} indicatorSize={iconSize}>
       <AccordionDisclosure ref={disclosureRef} py="none">
         {treeItem}
       </AccordionDisclosure>
@@ -101,15 +105,16 @@ const TreeLayout: FC<TreeProps> = ({
       }}
     >
       <TreeStyle
-        className={className}
         border={hasBorder}
-        keyColor={useKeyColor}
+        branchFontWeight={branchFontWeight}
+        className={className}
         depth={depth}
         disabled={disabled}
-        selected={selected}
-        hovered={isHovered}
         dividers={dividers}
-        branchFontWeight={branchFontWeight}
+        hovered={isHovered}
+        keyColor={useKeyColor}
+        indicatorSize={iconSize}
+        selected={selected}
       >
         {innerAccordion}
       </TreeStyle>
