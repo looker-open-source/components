@@ -29,7 +29,6 @@ import styled, { css } from 'styled-components'
 import { color, TextColorProps } from '@looker/design-tokens'
 import { AccordionDisclosure } from '../Accordion'
 import { Truncate } from '../Truncate'
-import { TreeItemLabel } from './TreeItem'
 
 export interface TreeGroupProps extends TextColorProps {
   className?: string
@@ -79,7 +78,7 @@ const treeGroupLabel = (labelColor?: string) =>
   `
 
 export const TreeGroup = styled(TreeGroupLayout)`
-  ${TreeItemLabel}, ${TreeGroupLabel}, ${AccordionDisclosure} {
+  ${TreeGroupLabel}, ${AccordionDisclosure} {
     ${color}
   }
 

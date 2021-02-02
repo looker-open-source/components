@@ -32,7 +32,7 @@ import {
 } from '../Accordion'
 import { listItemBackgroundColor } from '../List/utils'
 import { ListItemStatefulWithHoveredProps } from '../List/types'
-import { TreeItem, TreeItemLabel } from './TreeItem'
+import { TreeItem } from './TreeItem'
 import { TreeGroupLabel } from './TreeGroup'
 import { generateIndent, generateTreeBorder } from './utils'
 
@@ -48,8 +48,6 @@ const dividersCSS = css`
     margin-top: 1px;
   }
 `
-
-export const TreeItemInner = styled(TreeItem)``
 
 export const TreeStyle = styled.div<TreeStyleProps>`
   color: ${({ theme }) => theme.colors.text5};
@@ -76,19 +74,8 @@ export const TreeStyle = styled.div<TreeStyleProps>`
 
   ${({ dividers }) => dividers && dividersCSS}
 
-  ${TreeItemInner} {
-    border-width: 0;
-    height: 100%;
-
-    & > ${TreeItemLabel} {
-      background-color: transparent;
-      padding-left: ${({ theme }) => theme.space.none};
-    }
-  }
-
   ${TreeGroupLabel},
-  ${TreeItemLabel},
-  & > ${Accordion} > ${AccordionContent} > ${TreeItem} > ${TreeItemLabel} {
+  & > ${Accordion} > ${AccordionContent} > ${TreeItem} {
     ${({ depth, theme }) => generateIndent(depth + 2, theme)}
   }
 `
