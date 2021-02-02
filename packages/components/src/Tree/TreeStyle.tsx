@@ -33,15 +33,17 @@ import {
 import { listItemBackgroundColor } from '../List/utils'
 import { ListItemStatefulWithHoveredProps } from '../List/types'
 import { List, ListItem } from '../List'
+import { IconSize } from '../Icon'
 import { TreeItem } from './TreeItem'
 import { TreeGroup, TreeGroupLabel } from './TreeGroup'
 import { generateIndent, generateTreeBorder } from './utils'
 
 interface TreeStyleProps extends ListItemStatefulWithHoveredProps {
   border?: boolean
-  depth: number
   branchFontWeight?: boolean
+  depth: number
   dividers?: boolean
+  indicatorSize: IconSize
 }
 
 const dividersCSS = css`
@@ -57,8 +59,8 @@ export const TreeStyle = styled.div<TreeStyleProps>`
 
   & > ${Accordion} {
     & > ${AccordionContent} {
-      ${({ border, depth, theme }) =>
-        border && generateTreeBorder(depth, theme)}
+      ${({ border, depth, indicatorSize, theme }) =>
+        border && generateTreeBorder(depth, indicatorSize, theme)}
     }
 
     & > ${AccordionDisclosureStyle} {
@@ -69,7 +71,8 @@ export const TreeStyle = styled.div<TreeStyleProps>`
       font-weight: ${({ branchFontWeight, theme: { fontWeights } }) =>
         branchFontWeight ? fontWeights.normal : fontWeights.semiBold};
       padding-right: ${({ theme }) => theme.space.xxsmall};
-      ${({ depth, theme }) => generateIndent(depth, theme)}
+      ${({ depth, indicatorSize, theme }) =>
+        generateIndent(depth, indicatorSize, theme)}
     }
   }
 
@@ -78,6 +81,7 @@ export const TreeStyle = styled.div<TreeStyleProps>`
   & > ${Accordion} > ${AccordionContent} > ${List} > ${TreeGroup} > ${TreeGroupLabel},
   & > ${Accordion} > ${AccordionContent} > ${List} > ${ListItem} > button,
   & > ${Accordion} > ${AccordionContent} > ${List} > ${ListItem} > a {
-    ${({ depth, theme }) => generateIndent(depth + 2, theme)}
+    ${({ depth, indicatorSize, theme }) =>
+      generateIndent(depth + 2, indicatorSize, theme)}
   }
 `
