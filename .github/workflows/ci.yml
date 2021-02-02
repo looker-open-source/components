@@ -79,11 +79,11 @@ jobs:
         id: snapshots
     # If snapshots failed, build fresh ones and open a PR to help out our friends
       - name: Fresh snapshots
-        if: ${{ always() && (steps.snapshots.outcome == 'failure' }}
+        if: ${{ always() && (steps.snapshots.outcome == 'failure') }}
         run: yarn test:image-snapshots-update
         id: snapshots-update
       - name: Create Pull Request
-        if: ${{ always() && (steps.snapshots-update.outcome == 'failure' }}
+        if: ${{ always() && (steps.snapshots-update.outcome == 'failure') }}
         uses: peter-evans/create-pull-request@v3
         with:
           commit-message: "chore: image-snapshot updates"
