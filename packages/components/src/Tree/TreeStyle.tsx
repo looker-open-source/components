@@ -32,8 +32,9 @@ import {
 } from '../Accordion'
 import { listItemBackgroundColor } from '../List/utils'
 import { ListItemStatefulWithHoveredProps } from '../List/types'
+import { List, ListItem } from '../List'
 import { TreeItem } from './TreeItem'
-import { TreeGroupLabel } from './TreeGroup'
+import { TreeGroup, TreeGroupLabel } from './TreeGroup'
 import { generateIndent, generateTreeBorder } from './utils'
 
 interface TreeStyleProps extends ListItemStatefulWithHoveredProps {
@@ -74,8 +75,9 @@ export const TreeStyle = styled.div<TreeStyleProps>`
 
   ${({ dividers }) => dividers && dividersCSS}
 
-  ${TreeGroupLabel},
-  & > ${Accordion} > ${AccordionContent} > ${TreeItem} {
+  & > ${Accordion} > ${AccordionContent} > ${List} > ${TreeGroup} > ${TreeGroupLabel},
+  & > ${Accordion} > ${AccordionContent} > ${List} > ${ListItem} > button,
+  & > ${Accordion} > ${AccordionContent} > ${List} > ${ListItem} > a {
     ${({ depth, theme }) => generateIndent(depth + 2, theme)}
   }
 `
