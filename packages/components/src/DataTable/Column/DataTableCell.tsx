@@ -35,7 +35,6 @@ import React, {
 import styled from 'styled-components'
 import { CompatibleHTMLProps } from '@looker/design-tokens'
 import { Space, SpaceVertical } from '../../Layout'
-import { Link } from '../../Link'
 import { Paragraph } from '../../Text'
 import { Truncate } from '../../Truncate'
 import { useForkedRef } from '../../utils'
@@ -136,14 +135,4 @@ DataTableCellLayout.displayName = 'DataTableCellLayout'
 
 export const DataTableCell = styled(DataTableCellLayout)`
   ${columnSize}
-  a,
-  ${Link} {
-    color: inherit;
-    :hover,
-    :focus {
-      color: ${({ theme }) => theme.colors.link};
-      outline: none;
-      text-decoration: underline;
-    }
-  }
 `
