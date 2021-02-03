@@ -31,6 +31,9 @@ import React, {
   useEffect,
   useRef,
   useState,
+  FocusEvent,
+  KeyboardEvent,
+  MouseEvent,
 } from 'react'
 import styled from 'styled-components'
 import { CompatibleHTMLProps } from '@looker/design-tokens'
@@ -51,26 +54,31 @@ export interface DataTableCellProps
 
 const DataTableCellLayout = forwardRef(
   (props: DataTableCellProps, forwardedRef: Ref<HTMLElement>) => {
-    const { children, description, indicator, onBlur, onKeyUp, size } = props
+    const {
+      children,
+      description,
+      indicator,
+      onBlur,
+      onClick,
+      onKeyUp,
+      size,
+    } = props
 
     const [isFocusVisible, setFocusVisible] = useState(false)
 
-    const handleOnKeyUp = (
-      event: React.KeyboardEvent<HTMLTableDataCellElement>
-    ) => {
+    const handleOnKeyUp = (event: KeyboardEvent<HTMLTableDataCellElement>) => {
       setFocusVisible(true)
       onKeyUp && onKeyUp(event)
     }
 
-    const handleOnBlur = (
-      event: React.FocusEvent<HTMLTableDataCellElement>
-    ) => {
+    const handleOnBlur = (event: FocusEvent<HTMLTableDataCellElement>) => {
       setFocusVisible(false)
       onBlur && onBlur(event)
     }
 
-    const onClick = () => {
+    const handleOnClick = (event: MouseEvent<HTMLTableDataCellElement>) => {
       setFocusVisible(false)
+      onClick && onClick(event)
     }
 
     let content =
@@ -120,7 +128,7 @@ const DataTableCellLayout = forwardRef(
       <FocusableCell
         focusVisible={isFocusVisible}
         onBlur={handleOnBlur}
-        onClick={onClick}
+        onClick={handleOnClick}
         onKeyUp={handleOnKeyUp}
         ref={forkedRef}
         {...props}
