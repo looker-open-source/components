@@ -96,7 +96,9 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
     keyColor,
     onBlur,
     onClick,
+    onKeyDown,
     onKeyUp,
+    rel,
     selected,
     target,
     truncate,
@@ -122,8 +124,8 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
     onClick && onClick(event)
   }
 
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
-    onKeyUp && onKeyUp(event)
+  const handleOnKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
+    onKeyDown && onKeyDown(event)
     setFocusVisible(true)
   }
 
@@ -206,8 +208,9 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
       href={href}
       onBlur={handleOnBlur}
       onClick={disabled ? undefined : handleOnClick}
+      onKeyDown={handleOnKeyDown}
       onKeyUp={handleOnKeyUp}
-      rel={createSafeRel(props.rel, props.target)}
+      rel={createSafeRel(rel, target)}
       role="listitem"
       target={target}
       tabIndex={-1}
