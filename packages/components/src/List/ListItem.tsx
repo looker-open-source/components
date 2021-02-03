@@ -219,7 +219,6 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
       role="listitem"
       target={target}
       tabIndex={-1}
-      {...restProps}
     >
       {children}
     </LabelContainer>
@@ -252,6 +251,7 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
         ref={itemRef}
         selected={selected}
         {...itemDimensions}
+        {...restProps}
       >
         {listItemContent}
       </ListItemWrapper>
