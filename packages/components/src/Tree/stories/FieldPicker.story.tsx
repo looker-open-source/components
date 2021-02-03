@@ -38,7 +38,7 @@ import {
   Truncate,
   Badge,
 } from '../..'
-import { Tree, TreeArtificial, TreeItem, TreeGroup } from '..'
+import { Tree, TreeArtificial, TreeItem, TreeHeading } from '..'
 
 const PickerItem = ({ children = 'Cost', truncate = false }) => {
   const [overlay, setOverlay] = useState<string | undefined>(undefined)
@@ -106,20 +106,18 @@ const PickerItem = ({ children = 'Cost', truncate = false }) => {
 
 const fields = (
   <TreeArtificial density={-3}>
-    <TreeGroup label="DIMENSIONS" labelColor="text1">
-      <Tree branchFontWeight label="Created">
-        <PickerItem>Created Date</PickerItem>
-        <PickerItem>Created Month</PickerItem>
-        <PickerItem>Created Year</PickerItem>
-      </Tree>
-      <PickerItem>City</PickerItem>
-      <PickerItem>Country</PickerItem>
-      <PickerItem>ID</PickerItem>
-    </TreeGroup>
-    <TreeGroup label="MEASURES" color="orange">
-      <PickerItem>Sum</PickerItem>
-      <PickerItem>Max</PickerItem>
-    </TreeGroup>
+    <TreeHeading color="text1">DIMENSIONS</TreeHeading>
+    <Tree branchFontWeight label="Created">
+      <PickerItem>Created Date</PickerItem>
+      <PickerItem>Created Month</PickerItem>
+      <PickerItem>Created Year</PickerItem>
+    </Tree>
+    <PickerItem>City</PickerItem>
+    <PickerItem>Country</PickerItem>
+    <PickerItem>ID</PickerItem>
+    <TreeHeading color="orange">MEASURES</TreeHeading>
+    <PickerItem>Sum</PickerItem>
+    <PickerItem>Max</PickerItem>
   </TreeArtificial>
 )
 
