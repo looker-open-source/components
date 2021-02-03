@@ -41,7 +41,7 @@ export const DetailDescription = Template.bind({})
 DetailDescription.args = {
   ...Basic.args,
   description: 'describe something here.',
-  detail: '4/20',
+  detail: '0/50',
 }
 
 export const Checked = Template.bind({})
@@ -60,12 +60,6 @@ export const DisabledChecked = Template.bind({})
 DisabledChecked.args = {
   ...Checked.args,
   disabled: true,
-}
-
-export const ReadOnly = Template.bind({})
-ReadOnly.args = {
-  ...Basic.args,
-  readOnly: true,
 }
 
 export const Error = Template.bind({})

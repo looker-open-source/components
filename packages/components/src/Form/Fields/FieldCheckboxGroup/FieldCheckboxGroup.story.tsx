@@ -26,6 +26,7 @@
 
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
+import { options } from '../../../__mocks__/CheckboxRadio'
 import {
   FieldCheckboxGroup,
   FieldCheckboxGroupProps,
@@ -35,60 +36,6 @@ export default {
   component: FieldCheckboxGroup,
   title: 'FieldCheckboxGroup',
 }
-
-const options = [
-  {
-    label: 'Cheddar',
-    value: 'cheddar',
-  },
-  {
-    label: 'Gouda',
-    value: 'gouda',
-  },
-  {
-    disabled: true,
-    label: 'Swiss',
-    value: 'swiss',
-  },
-  {
-    label: 'Roquefort',
-    value: 'roquefort',
-  },
-  {
-    label: 'Cheddar',
-    value: 'cheddar',
-  },
-  {
-    label: 'Gouda',
-    value: 'gouda',
-  },
-  {
-    disabled: true,
-    label: 'Swiss',
-    value: 'swiss',
-  },
-  {
-    label: 'Roquefort',
-    value: 'roquefort',
-  },
-  {
-    label: 'Cheddar',
-    value: 'cheddar',
-  },
-  {
-    label: 'Gouda',
-    value: 'gouda',
-  },
-  {
-    disabled: true,
-    label: 'Swiss',
-    value: 'swiss',
-  },
-  {
-    label: 'Roquefort',
-    value: 'roquefort',
-  },
-]
 
 const defaultValueCheckbox = ['swiss', 'cheddar']
 

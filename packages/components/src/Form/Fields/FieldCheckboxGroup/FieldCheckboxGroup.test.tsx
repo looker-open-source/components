@@ -28,32 +28,14 @@ import React from 'react'
 import { fireEvent } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import map from 'lodash/map'
+import { fieldOptions } from '../../../__mocks__/CheckboxRadio'
 import { FieldCheckboxGroup } from './FieldCheckboxGroup'
-
-const fieldCheckboxOptions = [
-  {
-    label: 'Cheddar',
-    value: 'cheddar',
-  },
-  {
-    label: 'Gouda',
-    value: 'gouda',
-  },
-  {
-    label: 'Swiss',
-    value: 'swiss',
-  },
-  {
-    label: 'Roquefort',
-    value: 'roquefort',
-  },
-]
 
 const fieldCheckboxProps = {
   defaultValue: ['swiss', 'cheddar'],
   id: '1',
   name: 'group1',
-  options: fieldCheckboxOptions,
+  options: fieldOptions,
 }
 
 test('FieldCheckboxGroup render a list of checkbox', () => {

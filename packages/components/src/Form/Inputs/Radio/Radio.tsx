@@ -34,7 +34,7 @@ import { FauxRadio } from './FauxRadio'
 
 export interface RadioProps
   extends SpaceProps,
-    Omit<InputProps, 'readonly' | 'type' | 'checked' | 'onClick'> {
+    Omit<InputProps, 'readOnly' | 'type' | 'checked' | 'onClick'> {
   checked?: boolean
   validationType?: ValidationType
 }
@@ -46,10 +46,10 @@ const RadioLayout = forwardRef(
     return (
       <div className={className}>
         <input
-          type="radio"
-          aria-invalid={validationType === 'error' ? 'true' : undefined}
           {...pickInputProps(restProps)}
+          aria-invalid={validationType === 'error' ? 'true' : undefined}
           ref={ref}
+          type="radio"
         />
         <FauxRadio />
       </div>
@@ -68,8 +68,7 @@ export const Radio = styled(RadioLayout)`
   width: 1rem;
   input {
     background: ${(props) => props.theme.colors.field};
-    cursor: ${({ readOnly, disabled }) =>
-      readOnly || disabled ? 'not-allowed' : undefined};
+    cursor: ${({ disabled }) => (disabled ? 'not-allowed' : undefined)};
     height: 100%;
     opacity: 0;
     position: absolute;
@@ -86,8 +85,7 @@ export const Radio = styled(RadioLayout)`
       validationType === 'error'
         ? theme.colors.criticalBorder
         : theme.colors.ui2};
-    color: ${({ readOnly, theme }) =>
-      readOnly ? 'transparent' : theme.colors.key};
+    color: ${({ theme }) => theme.colors.key};
   }
 
   input:not(:checked) + ${FauxRadio} {
