@@ -48,11 +48,13 @@ const TreeHeadingLayout: FC<TreeHeadingProps> = ({
   const { labelFontSize } = listItemDimensions(density)
 
   return (
-    <div className={className}>
-      <Paragraph fontSize={labelFontSize} truncate={truncate}>
-        {children}
-      </Paragraph>
-    </div>
+    <Paragraph
+      className={className}
+      fontSize={labelFontSize}
+      truncate={truncate}
+    >
+      {children}
+    </Paragraph>
   )
 }
 
