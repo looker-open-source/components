@@ -26,8 +26,13 @@
 
 import React from 'react'
 import styled from 'styled-components'
-import { AccordionDisclosureStyle } from '../..'
-import { TreeItem, Tree, TreeItemLabel } from '..'
+import {
+  Accordion,
+  AccordionContent,
+  AccordionDisclosureStyle,
+} from '../../Accordion'
+import { List, ListItem } from '../../List'
+import { TreeItem, Tree } from '..'
 
 export const BorderRadiusOverride = () => (
   <BorderRadiusOverrideTree selected label="Created" defaultOpen dividers>
@@ -39,7 +44,8 @@ export const BorderRadiusOverride = () => (
 )
 
 const BorderRadiusOverrideTree = styled(Tree)`
-  ${AccordionDisclosureStyle}, ${TreeItemLabel} {
+  ${AccordionDisclosureStyle},
+  ${Accordion} > ${AccordionContent} > ${List} > ${ListItem} > button {
     border-radius: ${({ theme }) => theme.radii.medium};
   }
 `
