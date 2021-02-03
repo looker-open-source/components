@@ -92,7 +92,11 @@ const PickerItem = ({ children = 'Cost', truncate = false }) => {
         },
       }}
       onClick={() => alert(`Clicked on ${children}!`)}
-      onMetaEnter={() => alert(`Cmd + Enter'ed on ${children}!`)}
+      onKeyDown={(event) => {
+        if (event.key === 'Enter' && event.metaKey) {
+          alert(`CMD + Enter'ed on ${children}!`)
+        }
+      }}
       truncate={truncate}
     >
       {children}
@@ -101,7 +105,7 @@ const PickerItem = ({ children = 'Cost', truncate = false }) => {
 }
 
 const fields = (
-  <TreeArtificial>
+  <TreeArtificial density={-3}>
     <TreeGroup label="DIMENSIONS" labelColor="text1">
       <Tree branchFontWeight label="Created">
         <PickerItem>Created Date</PickerItem>

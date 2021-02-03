@@ -30,7 +30,6 @@ import { Accordion, AccordionContent, AccordionDisclosure } from '../Accordion'
 import { useHovered } from '../utils/useHovered'
 import { undefinedCoalesce } from '../utils'
 import { List } from '../List'
-import { ListItemContext } from '../List/ListItemContext'
 import { listItemDimensions, getDetailOptions } from '../List/utils'
 import { TreeContext } from './TreeContext'
 import { TreeItem } from './TreeItem'
@@ -76,8 +75,7 @@ const TreeLayout: FC<TreeProps> = ({
   const startingDepth = 0
   const depth = treeContext.depth ? treeContext.depth : startingDepth
 
-  const { density: contextDensity } = useContext(ListItemContext)
-  const density = propsDensity || contextDensity
+  const density = propsDensity || treeContext.density
   const { iconSize } = listItemDimensions(density)
 
   const { accessory, content, hoverDisclosure } = getDetailOptions(propsDetail)
@@ -144,6 +142,7 @@ const TreeLayout: FC<TreeProps> = ({
     <TreeContext.Provider
       value={{
         border: hasBorder,
+        density,
         depth: depth + 1,
         keyColor: useKeyColor,
       }}

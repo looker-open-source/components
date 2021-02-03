@@ -100,6 +100,7 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
     selected,
     target,
     truncate,
+    ...restProps
   } = props
 
   const { iconGutter, density: contextDensity } = useContext(ListItemContext)
@@ -119,6 +120,11 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
   const handleOnClick = (event: React.MouseEvent<HTMLElement>) => {
     setFocusVisible(false)
     onClick && onClick(event)
+  }
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
+    onKeyUp && onKeyUp(event)
+    setFocusVisible(true)
   }
 
   const handleOnKeyUp = (event: React.KeyboardEvent<HTMLElement>) => {
@@ -205,6 +211,7 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
       role="listitem"
       target={target}
       tabIndex={-1}
+      {...restProps}
     >
       {children}
     </LabelContainer>

@@ -25,13 +25,16 @@
  */
 
 import { createContext } from 'react'
+import { DensityRamp } from '../List/types'
 
 export interface TreeContextProps {
   border?: boolean
   keyColor?: boolean
+  density: DensityRamp
   depth?: number
 }
 
 export const TreeContext = createContext<TreeContextProps>({
+  density: 0,
   depth: 0,
 })
