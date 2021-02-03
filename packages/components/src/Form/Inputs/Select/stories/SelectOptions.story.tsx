@@ -83,20 +83,20 @@ DescriptionIcon.args = {
   })),
 }
 
-export const Overline = Template.bind({})
-Overline.args = {
+export const Preface = Template.bind({})
+Preface.args = {
   options: cheeseOptions.map((option) => ({
     ...option,
-    overline: 'Overline Text',
+    preface: 'Preface Text',
   })),
 }
 
-export const OverlineIcon = Template.bind({})
-OverlineIcon.args = {
+export const PrefaceIcon = Template.bind({})
+PrefaceIcon.args = {
   options: cheeseOptions.map((option) => ({
     ...option,
     icon: 'Edit',
-    overline: 'Overline Text',
+    preface: 'Preface Text',
   })),
 }
 
@@ -112,7 +112,7 @@ KitchenSink.args = {
     description: "I'm a little teapot",
     detail: '0/50',
     icon: 'Favorite',
-    overline: 'Overline Text',
+    preface: 'Preface Text',
   })),
 }
 

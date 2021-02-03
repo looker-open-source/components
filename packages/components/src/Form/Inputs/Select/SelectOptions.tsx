@@ -37,7 +37,7 @@ import styled from 'styled-components'
 import { Icon, IconPlaceholder } from '../../../Icon'
 import { Spinner } from '../../../Spinner'
 import { ListItemDetail } from '../../../List/ListItemDetail'
-import { ListItemOverline } from '../../../List/ListItemOverline'
+import { ListItemPreface } from '../../../List/ListItemPreface'
 import { Heading, HeadingProps, Paragraph, Text } from '../../../Text'
 import { useID } from '../../../utils'
 import {
@@ -83,15 +83,19 @@ const OptionLayoutBase = ({
   option,
   scrollIntoView,
 }: OptionLayoutBaseProps) => {
-  const { description, detail, overline, ...rest } = option
+  const { description, detail, preface, ...rest } = option
   const Component = isMulti ? ComboboxMultiOption : ComboboxOption
 
-  if (description || detail || overline) {
+  if (description || detail || preface) {
     return (
-      <Component {...rest} py="xxsmall" scrollIntoView={scrollIntoView}>
+      <Component
+        {...rest}
+        py={preface || description ? 'xsmall' : 'xxsmall'}
+        scrollIntoView={scrollIntoView}
+      >
         <SelectOptionWithDescription
           description={description}
-          overline={overline}
+          preface={preface}
           {...rest}
         />
         {detail && <ListItemDetail>{detail}</ListItemDetail>}
@@ -103,10 +107,10 @@ const OptionLayoutBase = ({
 
 // Use an FC since isActive & isSelected are passed to the indicator via cloneElement
 // and otherwise would get spread onto Icon
-const OptionIcon: FC<SelectOptionObject> = ({ overline, icon }) => (
+const OptionIcon: FC<SelectOptionObject> = ({ preface, icon }) => (
   <Icon
     size="small"
-    mt={overline ? 'large' : 'none'}
+    mt={preface ? 'medium' : 'none'}
     color="text1"
     {...getSelectOptionIconProps(icon)}
     data-testid="option-icon"
@@ -143,21 +147,16 @@ const MultiOptionLayout = (props: OptionLayoutProps) => (
 
 export function SelectOptionWithDescription({
   description,
-  overline,
+  preface,
 }: SelectOptionObject) {
-  return description || overline ? (
+  return description || preface ? (
     <div>
-      {overline && <ListItemOverline>{overline}</ListItemOverline>}
-      <Heading
-        fontFamily="body"
-        fontSize="small"
-        fontWeight="semiBold"
-        pb="xxsmall"
-      >
+      {preface && <ListItemPreface>{preface}</ListItemPreface>}
+      <Paragraph fontSize="small" lineHeight="small">
         <ComboboxOptionText />
-      </Heading>
+      </Paragraph>
       {description && (
-        <Paragraph color="subdued" fontSize="small">
+        <Paragraph color="text2" fontSize="xsmall" lineHeight="xsmall">
           {description}
         </Paragraph>
       )}

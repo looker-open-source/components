@@ -1003,17 +1003,17 @@ describe('Select', () => {
     fireEvent.click(document)
   })
 
-  test('option overline', () => {
+  test('option preface', () => {
     renderWithTheme(
       <Select
         placeholder="Search"
         options={[
-          { label: 'Foo', overline: 'Overline for Foo', value: 'FOO' },
+          { label: 'Foo', preface: 'Preface for Foo', value: 'FOO' },
           {
             label: 'Bar',
-            overline: (
+            preface: (
               <>
-                <strong>Overline for</strong> Bar
+                <strong>Preface for</strong> Bar
               </>
             ),
             value: 'BAR',
@@ -1024,13 +1024,13 @@ describe('Select', () => {
 
     const input = screen.getByPlaceholderText('Search')
     fireEvent.click(input)
-    const fooOverline = screen.getByText('Overline for Foo')
-    const barOverline = screen.getByText('Overline for')
-    expect(fooOverline).toBeVisible()
-    expect(barOverline).toBeVisible()
-    expect(barOverline.parentElement).toHaveTextContent('Overline for Bar')
+    const fooPreface = screen.getByText('Preface for Foo')
+    const barPreface = screen.getByText('Preface for')
+    expect(fooPreface).toBeVisible()
+    expect(barPreface).toBeVisible()
+    expect(barPreface.parentElement).toHaveTextContent('Preface for Bar')
 
-    fireEvent.click(fooOverline)
+    fireEvent.click(fooPreface)
     expect(input).toHaveDisplayValue('Foo')
 
     // Close popover to silence act() warning

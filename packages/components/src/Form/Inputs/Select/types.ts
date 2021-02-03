@@ -34,7 +34,7 @@ export type SelectOptionIcon = IconNames | IconProps['artwork']
 export interface SelectOptionObject
   extends ComboboxOptionObject,
     Pick<ComboboxOptionIndicatorProps, 'indicator'> {
-  description?: string | ReactNode
+  description?: ReactNode
   /**
    * Supplementary element that appears right of the option's label
    */
@@ -47,12 +47,12 @@ export interface SelectOptionObject
   /**
    * Supplementary element that appears above the option's label
    */
-  overline?: string | ReactNode
+  preface?: ReactNode
 }
 
 export interface SelectOptionGroupProps {
   options: SelectOptionObject[]
-  label?: string | ReactNode
+  label?: ReactNode
 }
 
 export type SelectOptionProps = SelectOptionObject | SelectOptionGroupProps

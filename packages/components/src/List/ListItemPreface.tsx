@@ -26,7 +26,8 @@
 
 import styled from 'styled-components'
 
-export const ListItemOverline = styled.p`
-  color: ${({ theme: { colors } }) => colors.subdued};
-  font-size: ${({ theme: { fontSizes } }) => fontSizes.small};
+export const ListItemPreface = styled.p`
+  color: ${({ theme: { colors } }) => colors.text2};
+  font-size: ${({ theme: { fontSizes } }) => fontSizes.xxsmall};
+  line-height: ${({ theme: { lineHeights } }) => lineHeights.xxsmall};
 `
