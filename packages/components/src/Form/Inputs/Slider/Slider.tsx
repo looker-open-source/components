@@ -248,8 +248,7 @@ interface SliderValueProps extends SliderInputProps {
 }
 
 const SliderValue = styled.div<SliderValueProps>`
-  background: ${({ theme, isFocused }) =>
-    isFocused ? theme.colors.keyAccent : theme.colors.keyText};
+  background: ${({ theme, isFocused }) => isFocused && theme.colors.keyAccent};
   border-radius: 1rem;
   color: ${({ theme: { colors }, disabled }) =>
     disabled ? colors.neutral : colors.key};
