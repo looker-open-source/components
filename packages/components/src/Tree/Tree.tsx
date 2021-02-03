@@ -29,15 +29,16 @@ import React, { FC, KeyboardEvent, MouseEvent, useContext, useRef } from 'react'
 import { Accordion, AccordionContent, AccordionDisclosure } from '../Accordion'
 import { useHovered } from '../utils/useHovered'
 import { undefinedCoalesce } from '../utils'
-import { List, ListItem } from '../List'
+import { List } from '../List'
 import { ListItemContext } from '../List/ListItemContext'
 import { listItemDimensions, getDetailOptions } from '../List/utils'
 import { TreeContext } from './TreeContext'
+import { TreeItem } from './TreeItem'
 import { indicatorDefaults } from './utils'
 import { TreeStyle } from './TreeStyle'
 import { TreeProps } from './types'
 
-const ListItemInner = styled(ListItem)`
+const TreeItemInner = styled(TreeItem)`
   & > button,
   & > a {
     background-color: transparent;
@@ -45,7 +46,7 @@ const ListItemInner = styled(ListItem)`
   }
 `
 
-const ListItemInnerDetail = styled.div``
+const TreeItemInnerDetail = styled.div``
 
 const TreeLayout: FC<TreeProps> = ({
   branchFontWeight,
@@ -103,13 +104,13 @@ const TreeLayout: FC<TreeProps> = ({
 
   const detail = {
     content: (
-      <ListItemInnerDetail
+      <TreeItemInnerDetail
         onClick={handleDetailClick}
         onKeyDown={handleDetailKeyDown}
         ref={detailRef}
       >
         {content}
-      </ListItemInnerDetail>
+      </TreeItemInnerDetail>
     ),
     options: {
       accessory,
@@ -118,14 +119,14 @@ const TreeLayout: FC<TreeProps> = ({
   }
 
   const label = (
-    <ListItemInner
+    <TreeItemInner
       density={density}
       detail={detail}
       icon={icon}
       truncate={truncate}
     >
       {propsLabel}
-    </ListItemInner>
+    </TreeItemInner>
   )
 
   const innerAccordion = (
