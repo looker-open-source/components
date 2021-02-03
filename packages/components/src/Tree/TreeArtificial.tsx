@@ -25,6 +25,7 @@
  */
 
 import React, { FC } from 'react'
+import { List } from '../List'
 import { DensityRamp } from '../List/types'
 import { listItemDimensions } from '../List/utils'
 import { TreeContext } from './TreeContext'
@@ -41,7 +42,7 @@ export const TreeArtificial: FC<{
   return (
     <TreeStyle depth={-1} indicatorSize={iconSize} dividers>
       <TreeContext.Provider value={{ density, depth: 0 }}>
-        {children}
+        <List>{children}</List>
       </TreeContext.Provider>
     </TreeStyle>
   )
