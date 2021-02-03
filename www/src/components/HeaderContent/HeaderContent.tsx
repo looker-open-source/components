@@ -47,8 +47,9 @@ export const HeaderContentLayout: FC<HeaderProps> = ({
   updateTheme,
   hasCustomTheme,
 }) => {
-  const location = useLocation()
-  const showHamburger = location.pathname.split('/').length < (isDev ? 2 : 4)
+  const { pathname } = useLocation()
+  const showHamburger =
+    pathname.substring(1).split('/').length < (isDev ? 2 : 4)
 
   const data = useStaticQuery(graphql`
     query HeaderNav {
