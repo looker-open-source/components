@@ -409,26 +409,3 @@ However, you can override a parent `Tree`'s `detailHoverDisclosure` prop at the 
   )
 }
 ```
-
-## TreeGroup
-
-`TreeGroup` can be used to label a grouping of `TreeItem`s. `TreeGroup` should be the child of a `Tree`and the parent of one or many `TreeItem`s.
-
-Use the `label` prop to set the text label of the `TreeGroup`.
-
-Use the `color` prop to set the text color of both the `TreeGroup` and all of its children.
-
-```jsx
-<Tree label="Cheeses" defaultOpen>
-  <TreeGroup label="American">
-    <TreeItem icon="LogoRings">Cream</TreeItem>
-    <TreeItem icon="LogoRings">Pepper Jack</TreeItem>
-    <TreeItem icon="LogoRings">String Cheese</TreeItem>
-  </TreeGroup>
-  <TreeGroup label="English" color="inform">
-    <TreeItem icon="LogoRings">Brighton Blue</TreeItem>
-    <TreeItem icon="LogoRings">Cheddar</TreeItem>
-    <TreeItem icon="LogoRings">Suffolk Gold</TreeItem>
-  </TreeGroup>
-</Tree>
-```
