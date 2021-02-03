@@ -428,8 +428,7 @@ interface ThumbLabelProps extends TypographyProps {
 }
 
 const ThumbLabel = styled.div<ThumbLabelProps>`
-  background: ${({ theme, focus }) =>
-    focus ? theme.colors.keyAccent : `rgba(255, 255, 255, 0.8)`};
+  background: ${({ theme, focus }) => focus && theme.colors.keyAccent};
   border-radius: 1rem;
   color: ${({ theme: { colors }, disabled }) =>
     disabled ? colors.neutral : colors.key};
