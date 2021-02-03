@@ -43,6 +43,10 @@ export interface ListItemProps
   extends CompatibleHTMLProps<HTMLElement>,
     ListItemStatefulProps {
   /**
+   * Determines color of child if child is a string
+   */
+  color?: string
+  /**
    * Determines the sizing and spacing of the item
    * Notes:
    * - This prop is intended for internal components usage (density should be set on a parent List component for external use cases).
@@ -84,6 +88,7 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
   const {
     children,
     className,
+    color,
     current,
     density: propsDensity,
     description,
@@ -162,6 +167,7 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
   const renderedChildren =
     typeof children === 'string' ? (
       <Paragraph
+        color={color}
         fontSize={itemDimensions.labelFontSize}
         lineHeight={itemDimensions.labelLineHeight}
         truncate={truncate}
@@ -175,7 +181,6 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
   const renderedDescription =
     typeof description === 'string' ? (
       <Paragraph
-        color="text2"
         fontSize={itemDimensions.descriptionFontSize}
         lineHeight={itemDimensions.descriptionLineHeight}
         truncate={truncate}

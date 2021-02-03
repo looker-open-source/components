@@ -26,19 +26,15 @@
 
 import React, { FC, useContext } from 'react'
 import styled from 'styled-components'
-import { TextColorProps } from '@looker/design-tokens'
 import omit from 'lodash/omit'
 import { undefinedCoalesce } from '../utils'
 import { ListItem, ListItemProps } from '../List'
 import { TreeContext } from './TreeContext'
 
-export interface TreeItemProps
-  extends Omit<ListItemProps, 'color'>,
-    TextColorProps {}
-
-const TreeItemLayout: FC<TreeItemProps> = ({
+const TreeItemLayout: FC<ListItemProps> = ({
   children,
   className,
+  color,
   detail,
   disabled,
   keyColor: propsKeyColor,
@@ -59,6 +55,7 @@ const TreeItemLayout: FC<TreeItemProps> = ({
   return (
     <ListItem
       className={className}
+      color={color}
       density={contextDensity}
       detail={detail}
       disabled={disabled}

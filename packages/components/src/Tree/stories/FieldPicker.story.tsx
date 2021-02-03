@@ -40,7 +40,11 @@ import {
 } from '../..'
 import { Tree, TreeArtificial, TreeItem, TreeHeading } from '..'
 
-const PickerItem = ({ children = 'Cost', truncate = false }) => {
+const PickerItem: FC<{ color?: string; truncate?: boolean }> = ({
+  children = 'Cost',
+  color,
+  truncate = false,
+}) => {
   const [overlay, setOverlay] = useState<string | undefined>(undefined)
 
   const toggleMenu = () =>
@@ -84,6 +88,7 @@ const PickerItem = ({ children = 'Cost', truncate = false }) => {
 
   return (
     <TreeItem
+      color={color}
       detail={{
         content: detailContent,
         options: {
@@ -116,8 +121,8 @@ const fields = (
     <PickerItem>Country</PickerItem>
     <PickerItem>ID</PickerItem>
     <TreeHeading color="orange">MEASURES</TreeHeading>
-    <PickerItem>Sum</PickerItem>
-    <PickerItem>Max</PickerItem>
+    <PickerItem color="orange">Sum</PickerItem>
+    <PickerItem color="orange">Max</PickerItem>
   </TreeArtificial>
 )
 
