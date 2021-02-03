@@ -47,13 +47,18 @@ export const LongLabels = () => (
           </TreeItem>
           <TreeItem
             icon="IdeDimensionGroup"
-            detail={
-              <IconButton
-                icon="CircleInfo"
-                label="Get Info"
-                onClick={() => alert("You've got info!")}
-              />
-            }
+            detail={{
+              content: (
+                <IconButton
+                  icon="CircleInfo"
+                  label="Get Info"
+                  onClick={() => alert("You've got info!")}
+                />
+              ),
+              options: {
+                accessory: true,
+              },
+            }}
           >
             Nunc convallis justo sed turpis interdum rutrum ac a neque. Contrary
             to popular belief, Lorem Ipsum is not simply random text. It has
@@ -87,13 +92,18 @@ export const LongLabels = () => (
           <TreeItem
             icon="IdeDimension"
             truncate
-            detail={
-              <IconButton
-                icon="CircleInfo"
-                label="Get Info"
-                onClick={() => alert("You've got info!")}
-              />
-            }
+            detail={{
+              content: (
+                <IconButton
+                  icon="CircleInfo"
+                  label="Get Info"
+                  onClick={() => alert("You've got info!")}
+                />
+              ),
+              options: {
+                accessory: true,
+              },
+            }}
           >
             Quisque euismod risus quis sapien luctus rutrum. Cras a dui luctus,
             dictum elit vel, pellentesque nisl. Contrary to popular belief,
