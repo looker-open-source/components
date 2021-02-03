@@ -24,63 +24,42 @@
 
  */
 
-import React, { FC } from 'react'
-import styled, { css } from 'styled-components'
+import React, { FC, useContext } from 'react'
+import styled from 'styled-components'
 import { color, TextColorProps } from '@looker/design-tokens'
-import { AccordionDisclosure } from '../Accordion'
-import { Truncate } from '../Truncate'
+import { Paragraph } from '../Text'
+import { listItemDimensions } from '../List/utils'
+import { TreeContext } from './TreeContext'
 
-export interface TreeGroupProps extends TextColorProps {
+export interface TreeHeadingProps extends TextColorProps {
   className?: string
-  /**
-   * Visible label of the TreeGroup
-   */
-  label: string
-  /**
-   * Sets the TreeGroup's label color
-   * Note: Will override the color prop (if provided)
-   */
-  labelColor?: string
   /**
    * Prevent text wrapping on group label's and instead render truncated text
    **/
   truncate?: boolean
 }
 
-const TreeGroupLayout: FC<TreeGroupProps> = ({
+const TreeHeadingLayout: FC<TreeHeadingProps> = ({
   children,
   className,
-  label,
   truncate,
-}) => (
-  <div className={className}>
-    <TreeGroupLabel>
-      {truncate ? <Truncate>{label}</Truncate> : label}
-    </TreeGroupLabel>
-    {children}
-  </div>
-)
+}) => {
+  const { density } = useContext(TreeContext)
+  const { labelFontSize } = listItemDimensions(density)
 
-export const TreeGroupLabel = styled.div`
-  font-size: ${({ theme }) => theme.fontSizes.xxsmall};
+  return (
+    <div className={className}>
+      <Paragraph fontSize={labelFontSize} truncate={truncate}>
+        {children}
+      </Paragraph>
+    </div>
+  )
+}
+
+export const TreeHeading = styled(TreeHeadingLayout)`
+  ${color}
   font-weight: ${({ theme }) => theme.fontWeights.semiBold};
   line-height: ${({ theme }) => theme.fontSizes.xsmall};
   padding: ${({ theme: { space } }) =>
     `${space.xsmall} ${space.xxsmall} ${space.xxsmall}`};
-`
-
-const treeGroupLabel = (labelColor?: string) =>
-  labelColor &&
-  css<TreeGroupProps>`
-    ${TreeGroupLabel} {
-      color: ${({ theme }) => theme.colors[labelColor] || labelColor};
-    }
-  `
-
-export const TreeGroup = styled(TreeGroupLayout)`
-  ${TreeGroupLabel}, ${AccordionDisclosure} {
-    ${color}
-  }
-
-  ${({ labelColor }) => treeGroupLabel(labelColor)}
 `

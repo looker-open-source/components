@@ -35,7 +35,7 @@ import { ListItemStatefulWithHoveredProps } from '../List/types'
 import { List, ListItem } from '../List'
 import { IconSize } from '../Icon'
 import { TreeItem } from './TreeItem'
-import { TreeGroup, TreeGroupLabel } from './TreeGroup'
+import { TreeHeading } from './TreeHeading'
 import { generateIndent, generateTreeBorder } from './utils'
 
 interface TreeStyleProps extends ListItemStatefulWithHoveredProps {
@@ -81,9 +81,18 @@ export const TreeStyle = styled.div<TreeStyleProps>`
 
   ${({ dividers }) => dividers && dividersCSS}
 
-  & > ${Accordion} > ${AccordionContent} > ${List} > ${TreeGroup} > ${TreeGroupLabel},
+  & > ${Accordion} > ${AccordionContent} > ${List} > ${TreeHeading},
   & > ${Accordion} > ${AccordionContent} > ${List} > ${ListItem} > button,
   & > ${Accordion} > ${AccordionContent} > ${List} > ${ListItem} > a {
+    ${({ depth, indicatorSize, theme }) =>
+      generateIndent(depth + 2, indicatorSize, theme)}
+  }
+
+  /**
+    These selectors are to support TreeArtifical
+   */
+  & > ${List} > ${TreeHeading}, & > ${List} > ${ListItem} > button,
+  & > ${List} > ${ListItem} > a {
     ${({ depth, indicatorSize, theme }) =>
       generateIndent(depth + 2, indicatorSize, theme)}
   }
