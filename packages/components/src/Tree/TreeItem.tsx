@@ -26,7 +26,6 @@
 
 import React, { FC, useContext } from 'react'
 import styled from 'styled-components'
-import omit from 'lodash/omit'
 import { undefinedCoalesce } from '../utils'
 import { ListItem, ListItemProps } from '../List'
 import { TreeContext } from './TreeContext'
@@ -65,7 +64,7 @@ const TreeItemLayout: FC<ListItemProps> = ({
       onKeyDown={onKeyDown}
       onKeyUp={onKeyUp}
       selected={selected}
-      {...omit(props, ['color', 'detail', 'icon'])}
+      {...props}
     >
       {children}
     </ListItem>

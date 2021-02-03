@@ -25,35 +25,13 @@
  */
 
 import React from 'react'
-import { Tree, TreeGroup, TreeItem } from '../..'
+import { Tree, TreeHeading, TreeItem } from '../..'
 
 export const ColorfulTree = () => (
   <Tree defaultOpen label="Colorful Tree">
-    <TreeGroup color="red" label="Red TreeGroup">
-      <TreeItem icon="Calendar">
-        Red TreeItem colored by parent TreeGroup's color prop
-      </TreeItem>
-      <TreeItem icon="Calendar">
-        Red TreeItem colored by parent TreeGroup's color prop
-      </TreeItem>
-      <TreeItem color="green" icon="Calendar">
-        Green TreeItem overriding parent color
-      </TreeItem>
-    </TreeGroup>
-    <TreeGroup
-      color="orange"
-      labelColor="blue"
-      label="Orange TreeGroup with 'blue' on labelColor prop"
-    >
-      <TreeItem icon="Calendar">
-        Orange TreeItem colored by parent TreeGroup's color prop
-      </TreeItem>
-      <TreeItem icon="Calendar">
-        Orange TreeItem colored by parent TreeGroup's color prop
-      </TreeItem>
-      <TreeItem color="purple" icon="Calendar">
-        Purple TreeItem overriding parent color
-      </TreeItem>
-    </TreeGroup>
+    <TreeHeading color="red">Red TreeHeading</TreeHeading>
+    <TreeItem color="green" icon="Calendar">
+      Green TreeItem
+    </TreeItem>
   </Tree>
 )
