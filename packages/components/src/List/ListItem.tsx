@@ -143,7 +143,7 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
     icon || iconArtwork ? (
       <Icon
         artwork={iconArtwork}
-        color="text1"
+        color={color}
         name={icon}
         size={itemDimensions.iconSize}
         mr={itemDimensions.iconGap}
