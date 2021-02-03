@@ -82,12 +82,20 @@ export const Radio = styled(RadioLayout)`
   }
 
   input:checked + ${FauxRadio} {
-    color: ${({ theme }) => theme.colors.key};
+    border-color: ${({ theme, validationType }) =>
+      validationType === 'error'
+        ? theme.colors.criticalBorder
+        : theme.colors.ui2};
+    color: ${({ readOnly, theme }) =>
+      readOnly ? 'transparent' : theme.colors.key};
   }
 
   input:not(:checked) + ${FauxRadio} {
     background: ${({ theme }) => theme.colors.field};
-    border-color: ${({ theme }) => theme.colors.ui2};
+    border-color: ${({ theme, validationType }) =>
+      validationType === 'error'
+        ? theme.colors.criticalBorder
+        : theme.colors.ui2};
   }
 
   input:focus + ${FauxRadio} {
@@ -97,11 +105,14 @@ export const Radio = styled(RadioLayout)`
   }
 
   input:disabled + ${FauxRadio} {
+    border-color: ${({ theme }) => theme.colors.ui2};
     color: ${({ theme }) => theme.colors.text1};
   }
 
   input:disabled:not(:checked) + ${FauxRadio} {
     background: ${({ theme }) => theme.colors.ui1};
+    border-color: ${({ theme }) => theme.colors.ui2};
+    color: transparent;
 
     &::after {
       background: ${({ theme }) => theme.colors.ui1};

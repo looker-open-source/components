@@ -33,9 +33,7 @@ import { omitFieldProps, pickFieldProps } from '../Field'
 import { FieldBaseProps } from '../FieldBase'
 import { FieldInline } from '../FieldInline'
 
-export interface FieldRadioProps
-  extends RadioProps,
-    Omit<FieldBaseProps, 'validationMessage'> {}
+export interface FieldRadioProps extends RadioProps, FieldBaseProps {}
 
 const FieldRadioLayout = forwardRef(
   (props: FieldRadioProps, ref: Ref<HTMLInputElement>) => {

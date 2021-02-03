@@ -68,6 +68,18 @@ ReadOnly.args = {
   readOnly: true,
 }
 
+export const Error = Template.bind({})
+Error.args = {
+  ...Basic.args,
+  validationMessage: { message: 'This is an error', type: 'error' },
+}
+
+export const DetailDescriptionError = Template.bind({})
+DetailDescriptionError.args = {
+  ...DetailDescription.args,
+  validationMessage: { message: 'This is an error', type: 'error' },
+}
+
 export default {
   component: FieldRadio,
   title: 'FieldRadio',
