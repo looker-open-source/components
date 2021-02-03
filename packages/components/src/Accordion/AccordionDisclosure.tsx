@@ -136,7 +136,8 @@ export const AccordionDisclosureStyle = styled.div
   }))<AccordionDisclosureStyleProps>`
   align-items: center;
   background-color: transparent;
-  ${({ color }) => (color ? colorStyleFn : 'color: currentColor;')}
+  ${({ color, theme }) =>
+    color ? colorStyleFn : `color: ${theme.colors.ui5};`}
   cursor: pointer;
   display: flex;
   outline: 1px solid transparent;
