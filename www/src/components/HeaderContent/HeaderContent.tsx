@@ -39,6 +39,8 @@ interface HeaderProps extends ThemeEditorProps {
   toggleNavigation: () => void
 }
 
+const isDev = process.env.NODE_ENV === 'development'
+
 export const HeaderContentLayout: FC<HeaderProps> = ({
   className,
   toggleNavigation,
@@ -46,7 +48,7 @@ export const HeaderContentLayout: FC<HeaderProps> = ({
   hasCustomTheme,
 }) => {
   const location = useLocation()
-  const currentPath = location.pathname
+  const showHamburger = location.pathname.split('/').length < (isDev ? 2 : 4)
 
   const data = useStaticQuery(graphql`
     query HeaderNav {
@@ -73,7 +75,7 @@ export const HeaderContentLayout: FC<HeaderProps> = ({
       height="100%"
     >
       <Space>
-        {currentPath === '/' ? (
+        {showHamburger ? (
           <span />
         ) : (
           <IconButton
