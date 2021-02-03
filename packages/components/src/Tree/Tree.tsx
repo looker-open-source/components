@@ -25,19 +25,19 @@
  */
 
 import styled from 'styled-components'
-import React, { FC, useContext, useRef } from 'react'
+import React, { FC, KeyboardEvent, MouseEvent, useContext, useRef } from 'react'
 import { Accordion, AccordionContent, AccordionDisclosure } from '../Accordion'
 import { useHovered } from '../utils/useHovered'
 import { undefinedCoalesce } from '../utils'
 import { List, ListItem } from '../List'
 import { ListItemContext } from '../List/ListItemContext'
-import { listItemDimensions } from '../List/utils'
+import { listItemDimensions, getDetailOptions } from '../List/utils'
 import { TreeContext } from './TreeContext'
 import { indicatorDefaults } from './utils'
 import { TreeStyle } from './TreeStyle'
 import { TreeProps } from './types'
 
-export const ListItemInner = styled(ListItem)`
+const ListItemInner = styled(ListItem)`
   & > button,
   & > a {
     background-color: transparent;
@@ -45,23 +45,28 @@ export const ListItemInner = styled(ListItem)`
   }
 `
 
+const ListItemInnerDetail = styled.div``
+
 const TreeLayout: FC<TreeProps> = ({
-  border: propsBorder,
-  keyColor: propsKeyColor,
-  children,
-  density: propsDensity,
-  detail,
-  disabled,
-  icon,
-  label,
-  className,
   branchFontWeight,
-  truncate,
+  border: propsBorder,
+  children,
+  className,
+  density: propsDensity,
+  detail: propsDetail,
+  disabled,
   dividers,
+  icon,
+  keyColor: propsKeyColor,
+  label: propsLabel,
+  onClick,
+  onKeyUp,
   selected,
+  truncate,
   ...restProps
 }) => {
   const disclosureRef = useRef<HTMLDivElement>(null)
+  const detailRef = useRef<HTMLDivElement>(null)
   const [isHovered] = useHovered(disclosureRef)
 
   const treeContext = useContext(TreeContext)
@@ -74,21 +79,59 @@ const TreeLayout: FC<TreeProps> = ({
   const density = propsDensity || contextDensity
   const { iconSize } = listItemDimensions(density)
 
-  const treeItem = (
+  const { accessory, content, hoverDisclosure } = getDetailOptions(propsDetail)
+
+  const handleDetailClick = (event: MouseEvent<HTMLElement>) => {
+    if (
+      accessory &&
+      detailRef.current &&
+      detailRef.current.contains(event.target as Node)
+    ) {
+      event.stopPropagation()
+    }
+  }
+
+  const handleDetailKeyDown = (event: KeyboardEvent<HTMLElement>) => {
+    if (
+      accessory &&
+      detailRef.current &&
+      detailRef.current.contains(event.target as Node)
+    ) {
+      event.stopPropagation()
+    }
+  }
+
+  const detail = {
+    content: (
+      <ListItemInnerDetail
+        onClick={handleDetailClick}
+        onKeyDown={handleDetailKeyDown}
+        ref={detailRef}
+      >
+        {content}
+      </ListItemInnerDetail>
+    ),
+    options: {
+      accessory,
+      hoverDisclosure,
+    },
+  }
+
+  const label = (
     <ListItemInner
       density={density}
       detail={detail}
       icon={icon}
       truncate={truncate}
     >
-      {label}
+      {propsLabel}
     </ListItemInner>
   )
 
   const innerAccordion = (
     <Accordion {...indicatorDefaults} {...restProps} indicatorSize={iconSize}>
       <AccordionDisclosure ref={disclosureRef} py="none">
-        {treeItem}
+        {label}
       </AccordionDisclosure>
       <AccordionContent>
         <List density={density}>{children}</List>

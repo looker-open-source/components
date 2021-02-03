@@ -178,12 +178,12 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
       description
     )
 
-  const { accessory, hoverDisclosure, detailContent } = getDetailOptions(detail)
+  const { accessory, content, hoverDisclosure } = getDetailOptions(detail)
 
   const renderedDetail = detail && (
     <HoverDisclosure visible={!hoverDisclosure}>
       <ListItemDetail pr={accessory ? itemDimensions.px : '0'}>
-        {detailContent}
+        {content}
       </ListItemDetail>
     </HoverDisclosure>
   )
