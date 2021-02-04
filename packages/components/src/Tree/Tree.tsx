@@ -32,20 +32,9 @@ import { undefinedCoalesce } from '../utils'
 import { List } from '../List'
 import { listItemDimensions, getDetailOptions } from '../List/utils'
 import { TreeContext } from './TreeContext'
-import { TreeItem } from './TreeItem'
 import { indicatorDefaults } from './utils'
-import { TreeStyle } from './TreeStyle'
+import { TreeItemInner, TreeItemInnerDetail, TreeStyle } from './TreeStyle'
 import { TreeProps } from './types'
-
-const TreeItemInner = styled(TreeItem)`
-  & > button,
-  & > a {
-    background-color: transparent;
-    padding-left: 0;
-  }
-`
-
-const TreeItemInnerDetail = styled.div``
 
 const TreeLayout: FC<TreeProps> = ({
   branchFontWeight,
