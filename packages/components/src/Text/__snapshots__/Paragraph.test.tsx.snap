@@ -6,7 +6,7 @@ exports[`A Paragraph component aligned 1`] = `
   font-size: 1rem;
   line-height: 1.5rem;
   text-align: right;
-  color: #262D33;
+  color: #939BA5;
 }
 
 <p
@@ -21,7 +21,7 @@ exports[`A Paragraph component decorated 1`] = `
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   font-size: 1rem;
   line-height: 1.5rem;
-  color: #262D33;
+  color: #939BA5;
   -webkit-text-decoration: line-through;
   text-decoration: line-through;
 }
@@ -39,7 +39,7 @@ exports[`A Paragraph component resized 1`] = `
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   font-size: 2.25rem;
   line-height: 2.75rem;
-  color: #262D33;
+  color: #939BA5;
 }
 
 <p
@@ -54,7 +54,7 @@ exports[`A Paragraph component text transformed 1`] = `
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   font-size: 1rem;
   line-height: 1.5rem;
-  color: #262D33;
+  color: #939BA5;
 }
 
 .c1 {
@@ -73,7 +73,7 @@ exports[`A Paragraph component truncated 1`] = `
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   font-size: 1rem;
   line-height: 1.5rem;
-  color: #262D33;
+  color: #939BA5;
 }
 
 .c1 {
@@ -95,7 +95,7 @@ exports[`A Paragraph component weight 1`] = `
   font-size: 1rem;
   font-weight: 700;
   line-height: 1.5rem;
-  color: #262D33;
+  color: #939BA5;
 }
 
 <p
@@ -125,7 +125,7 @@ exports[`A Paragraph component with multiline truncate 1`] = `
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   font-size: 1rem;
   line-height: 1.5rem;
-  color: #262D33;
+  color: #939BA5;
 }
 
 .c1 {
@@ -147,7 +147,7 @@ exports[`A Paragraph component wrapped 1`] = `
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   font-size: 1rem;
   line-height: 1.5rem;
-  color: #262D33;
+  color: #939BA5;
   overflow-wrap: break-word;
 }
 
@@ -163,7 +163,7 @@ exports[`A default Paragraph component 1`] = `
   font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
   font-size: 1rem;
   line-height: 1.5rem;
-  color: #262D33;
+  color: #939BA5;
 }
 
 <p
