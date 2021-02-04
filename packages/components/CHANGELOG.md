@@ -3,50 +3,48 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [0.10.4](https://github.com/looker-open-source/components/compare/v0.10.3...v0.10.4) (2021-01-25)
-
+# [0.11.0](https://github.com/looker-open-source/components/compare/v0.10.4...v0.11.0) (2021-02-04)
 
 ### Bug Fixes
 
-* Select group heading styles ([#1817](https://github.com/looker-open-source/components/issues/1817)) ([e4cae00](https://github.com/looker-open-source/components/commit/e4cae00da1535ef6e7d71bbe1592c6cff45230c0))
+- `Accordion` indicator will now follow theme color changes properly ([#1854](https://github.com/looker-open-source/components/issues/1854)) ([bc2a747](https://github.com/looker-open-source/components/commit/bc2a747afcd8392f693b0365a7e8ae6de540f732))
+- `DataTable` "sticky" cell border-bottom now presents properly in Safari ([#1830](https://github.com/looker-open-source/components/issues/1830)) ([cc8fe1d](https://github.com/looker-open-source/components/commit/cc8fe1df7b6f182d057313a8b85102235ded91e3))
+- `DataTable` Link color should be derived from theme.colors.link ([#1848](https://github.com/looker-open-source/components/issues/1848)) ([d17540a](https://github.com/looker-open-source/components/commit/d17540a8f366ac6c909af583387bfaf4cee81d73))
+- `RangeSlider` & `Slider` properly display on inverted themes ([#1853](https://github.com/looker-open-source/components/issues/1853)) ([54c4ab0](https://github.com/looker-open-source/components/commit/54c4ab01291e68227104cd567467d95f7a145954))
+- `Tab` no longer spuriously accepts MarginProps ([#1844](https://github.com/looker-open-source/components/issues/1844)) ([a23c50b](https://github.com/looker-open-source/components/commit/a23c50ba4009fc6670d5e6b91359a23701a1866a))
+- Downgrade react-hotkeys-hook to resolve hotkey breakages ([#1825](https://github.com/looker-open-source/components/issues/1825)) ([0fe9851](https://github.com/looker-open-source/components/commit/0fe9851cf6558b61f903836db74daf29b1ba8972))
 
+### Features
 
+- `DataTable` now supports keyboard navigation ([#1776](https://github.com/looker-open-source/components/issues/1776))
+- `List` & `ListItem` detail props ([#1800](https://github.com/looker-open-source/components/issues/1800)) ([afe3f41](https://github.com/looker-open-source/components/commit/afe3f41c9503509045f93a9a32adce63680679ab))
+- `MenuItem` supports `nestedMenu` ([#1780](https://github.com/looker-open-source/components/issues/1780)) ([7a1fada](https://github.com/looker-open-source/components/commit/7a1fada4523dd0805279baed974dc27836f32207))
+- `SelectOption` `prefac`e ([#1823](https://github.com/looker-open-source/components/issues/1823)) ([3016432](https://github.com/looker-open-source/components/commit/30164321fdff15e069367352ff59a264736368b0))
 
+## [0.10.4](https://github.com/looker-open-source/components/compare/v0.10.3...v0.10.4) (2021-01-25)
 
+### Bug Fixes
+
+- Select group heading styles ([#1817](https://github.com/looker-open-source/components/issues/1817)) ([e4cae00](https://github.com/looker-open-source/components/commit/e4cae00da1535ef6e7d71bbe1592c6cff45230c0))
 
 ## [0.10.3](https://github.com/looker-open-source/components/compare/v0.10.2...v0.10.3) (2021-01-25)
 
-
 ### Bug Fixes
 
-* **Text:** should not have default `color` and lineHeight based on fontSize ([#1813](https://github.com/looker-open-source/components/issues/1813)) ([226dfa9](https://github.com/looker-open-source/components/commit/226dfa9067d8326f87ce842badfa16c0be29cedd))
-
-
-
-
+- **Text:** should not have default `color` and lineHeight based on fontSize ([#1813](https://github.com/looker-open-source/components/issues/1813)) ([226dfa9](https://github.com/looker-open-source/components/commit/226dfa9067d8326f87ce842badfa16c0be29cedd))
 
 ## [0.10.2](https://github.com/looker-open-source/components/compare/v0.10.1...v0.10.2) (2021-01-22)
 
-
 ### Bug Fixes
 
-* Export `List` component family ([#1807](https://github.com/looker-open-source/components/issues/1807)) ([c50360c](https://github.com/looker-open-source/components/commit/c50360cd2e9926949cc5489b18794969524416a9))
-* On build properly set package.json "files" key ([#1806](https://github.com/looker-open-source/components/issues/1806)) ([c81c4bb](https://github.com/looker-open-source/components/commit/c81c4bb625c58ede49957aad90ac8d9d7b2c4b79))
-
-
-
-
+- Export `List` component family ([#1807](https://github.com/looker-open-source/components/issues/1807)) ([c50360c](https://github.com/looker-open-source/components/commit/c50360cd2e9926949cc5489b18794969524416a9))
+- On build properly set package.json "files" key ([#1806](https://github.com/looker-open-source/components/issues/1806)) ([c81c4bb](https://github.com/looker-open-source/components/commit/c81c4bb625c58ede49957aad90ac8d9d7b2c4b79))
 
 ## [0.10.1](https://github.com/looker-open-source/components/compare/v0.10.0...v0.10.1) (2021-01-22)
 
-
 ### Bug Fixes
 
-* Properly build ems/cjs/ts for easy deep-imports ([#1804](https://github.com/looker-open-source/components/issues/1804)) ([2a523cd](https://github.com/looker-open-source/components/commit/2a523cd70b079944376c6dc87c18202e05a97b01))
-
-
-
-
+- Properly build ems/cjs/ts for easy deep-imports ([#1804](https://github.com/looker-open-source/components/issues/1804)) ([2a523cd](https://github.com/looker-open-source/components/commit/2a523cd70b079944376c6dc87c18202e05a97b01))
 
 # [0.10.0](https://github.com/looker-open-source/components/compare/v0.9.29...v0.10.0) (2021-01-19)
 
