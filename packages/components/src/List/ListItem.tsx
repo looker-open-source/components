@@ -143,7 +143,7 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
     icon || iconArtwork ? (
       <Icon
         artwork={iconArtwork}
-        color={color}
+        color={color || 'text1'}
         name={icon}
         size={itemDimensions.iconSize}
         mr={itemDimensions.iconGap}
@@ -181,6 +181,7 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
   const renderedDescription =
     typeof description === 'string' ? (
       <Paragraph
+        color="text2"
         fontSize={itemDimensions.descriptionFontSize}
         lineHeight={itemDimensions.descriptionLineHeight}
         truncate={truncate}
