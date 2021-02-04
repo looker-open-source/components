@@ -24,7 +24,23 @@
 
  */
 
-export interface AliasColors {
+export interface AliasTextColors {
+  /**
+   * Used by Heading
+   * @note This is generally identical to colors.text5
+   * @default charcoal800
+   */
+  title: string
+
+  /**
+   * Used by Paragraph, Ul/Ol
+   * @note This is generally identical to colors.text5
+   * @default charcoal800
+   */
+  body: string
+}
+
+export interface AliasColors extends AliasTextColors {
   /**
    * Semantic alias for `text1`
    */

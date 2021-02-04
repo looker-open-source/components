@@ -30,12 +30,14 @@ import {
   space,
   SpaceProps,
   shouldForwardProp,
+  TextColorProps,
   typography,
   TypographyProps,
   PositionProps,
   LayoutProps,
   position,
   layout,
+  textColor,
 } from '@looker/design-tokens'
 import styled from 'styled-components'
 import { variant } from 'styled-system'
@@ -45,6 +47,7 @@ export interface UnorderedListProps
     PositionProps,
     LayoutProps,
     SpaceProps,
+    TextColorProps,
     TypographyProps {
   /**
    * Specify the type of marker to place next to list items.
@@ -67,10 +70,15 @@ const typeVariant = variant({
   },
 })
 
-export const UnorderedList = styled.ul.withConfig({
-  shouldForwardProp,
-})<UnorderedListProps>`
+export const UnorderedList = styled.ul
+  .withConfig({
+    shouldForwardProp,
+  })
+  .attrs<UnorderedListProps>(({ color = 'body' }) => ({
+    color,
+  }))<UnorderedListProps>`
   ${reset}
+  ${textColor}
   ${typography}
   ${typeVariant}
   ${space}
