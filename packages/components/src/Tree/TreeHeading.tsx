@@ -43,16 +43,7 @@ const TreeHeadingLayout: FC<TreeHeadingProps> = ({
   truncate,
 }) => {
   return (
-    <Paragraph
-      className={className}
-      fontSize="xxsmall"
-      fontWeight="semiBold"
-      lineHeight="xsmall"
-      pb="xxsmall"
-      pr="xxsmall"
-      pt="xsmall"
-      truncate={truncate}
-    >
+    <Paragraph className={className} truncate={truncate}>
       {children}
     </Paragraph>
   )
@@ -60,4 +51,10 @@ const TreeHeadingLayout: FC<TreeHeadingProps> = ({
 
 export const TreeHeading = styled(TreeHeadingLayout)`
   ${color}
+
+  font-size: ${({ theme }) => theme.fontSizes.xxsmall};
+  font-weight: ${({ theme }) => theme.fontWeights.semiBold};
+  line-height: ${({ theme }) => theme.fontSizes.xsmall};
+  padding: ${({ theme: { space } }) =>
+    `${space.xsmall} ${space.xxsmall} ${space.xxsmall}`};
 `
