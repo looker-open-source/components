@@ -28,7 +28,7 @@ import React, { FC } from 'react'
 import { Tree } from '../Tree'
 import { TreeItem } from '../TreeItem'
 import { DensityRamp } from '../../List/types'
-import { Divider } from '../../Divider'
+import { Grid } from '../../Layout'
 
 const DensityTree: FC<{ density: DensityRamp }> = ({ density }) => (
   <>
@@ -40,11 +40,15 @@ const DensityTree: FC<{ density: DensityRamp }> = ({ density }) => (
       <TreeItem>Gouda</TreeItem>
       <TreeItem>Swiss</TreeItem>
     </Tree>
-    <Divider />
   </>
 )
 
 const densities: DensityRamp[] = [1, 0, -1, -2, -3]
 
-export const Density = () =>
-  densities.map((density) => <DensityTree density={density} key={density} />)
+export const Density = () => (
+  <Grid columns={densities.length}>
+    {densities.map((density) => (
+      <DensityTree density={density} key={density} />
+    ))}
+  </Grid>
+)
