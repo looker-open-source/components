@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0](https://github.com/looker-open-source/components/compare/v0.10.4...v0.11.0) (2021-02-04)
+
+
+### Bug Fixes
+
+* `RangeSlider` & `Slider` properly display on inverted themes ([#1853](https://github.com/looker-open-source/components/issues/1853)) ([54c4ab0](https://github.com/looker-open-source/components/commit/54c4ab01291e68227104cd567467d95f7a145954))
+* **Accordion:** indicator will now follow theme color changes properly ([#1854](https://github.com/looker-open-source/components/issues/1854)) ([bc2a747](https://github.com/looker-open-source/components/commit/bc2a747afcd8392f693b0365a7e8ae6de540f732))
+* **DataTable:** "sticky" cell border-bottom now presents properly in Safari ([#1830](https://github.com/looker-open-source/components/issues/1830)) ([cc8fe1d](https://github.com/looker-open-source/components/commit/cc8fe1df7b6f182d057313a8b85102235ded91e3))
+* **DataTable:** Link color should be derived from theme.colors.link ([#1848](https://github.com/looker-open-source/components/issues/1848)) ([d17540a](https://github.com/looker-open-source/components/commit/d17540a8f366ac6c909af583387bfaf4cee81d73))
+* Tab no longer spuriously accepts MarginProps ([#1844](https://github.com/looker-open-source/components/issues/1844)) ([a23c50b](https://github.com/looker-open-source/components/commit/a23c50ba4009fc6670d5e6b91359a23701a1866a))
+* tintOrShadeUiColor now works with dark color and high mixAmount value ([#1827](https://github.com/looker-open-source/components/issues/1827)) ([6c2b8cc](https://github.com/looker-open-source/components/commit/6c2b8cc8befcda1e842cb9dd592496b39353c250))
+* **deps:** Downgrade react-hotkeys-hook to resolve hotkey breakages ([#1825](https://github.com/looker-open-source/components/issues/1825)) ([0fe9851](https://github.com/looker-open-source/components/commit/0fe9851cf6558b61f903836db74daf29b1ba8972))
+
+
+### Features
+
+* Add aliases for text color to allow for upstream flexibility ([#1862](https://github.com/looker-open-source/components/issues/1862)) ([4c2b399](https://github.com/looker-open-source/components/commit/4c2b399e19407cd07fc394f1193988817e349621))
+* **components:** Select option preface ([#1823](https://github.com/looker-open-source/components/issues/1823)) ([3016432](https://github.com/looker-open-source/components/commit/30164321fdff15e069367352ff59a264736368b0))
+* List & ListItem detail props ([#1800](https://github.com/looker-open-source/components/issues/1800)) ([afe3f41](https://github.com/looker-open-source/components/commit/afe3f41c9503509045f93a9a32adce63680679ab))
+* **components:** nestedMenu on MenuItem ([#1780](https://github.com/looker-open-source/components/issues/1780)) ([7a1fada](https://github.com/looker-open-source/components/commit/7a1fada4523dd0805279baed974dc27836f32207))
+* **DataTable:** Accessibility keyboard navigation ([#1776](https://github.com/looker-open-source/components/issues/1776)) ([3ff103c](https://github.com/looker-open-source/components/commit/3ff103c1975435c5227c62e18020a036a2e8bfa4)), closes [#1793](https://github.com/looker-open-source/components/issues/1793) [#1798](https://github.com/looker-open-source/components/issues/1798) [#1781](https://github.com/looker-open-source/components/issues/1781) [#1783](https://github.com/looker-open-source/components/issues/1783) [#1773](https://github.com/looker-open-source/components/issues/1773) [#1785](https://github.com/looker-open-source/components/issues/1785) [#1782](https://github.com/looker-open-source/components/issues/1782) [#1790](https://github.com/looker-open-source/components/issues/1790) [#1789](https://github.com/looker-open-source/components/issues/1789) [#1788](https://github.com/looker-open-source/components/issues/1788) [#1791](https://github.com/looker-open-source/components/issues/1791) [#1787](https://github.com/looker-open-source/components/issues/1787) [#1786](https://github.com/looker-open-source/components/issues/1786) [#1796](https://github.com/looker-open-source/components/issues/1796) [#1799](https://github.com/looker-open-source/components/issues/1799)
+
+
+
+
+
 ## [0.10.4](https://github.com/looker-open-source/components/compare/v0.10.3...v0.10.4) (2021-01-25)
 
 

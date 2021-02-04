@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0](https://github.com/looker-open-source/components/compare/v0.10.4...v0.11.0) (2021-02-04)
+
+
+### Bug Fixes
+
+* tintOrShadeUiColor now works with dark color and high mixAmount value ([#1827](https://github.com/looker-open-source/components/issues/1827)) ([6c2b8cc](https://github.com/looker-open-source/components/commit/6c2b8cc8befcda1e842cb9dd592496b39353c250))
+
+
+### Features
+
+* Add aliases for text color to allow for upstream flexibility ([#1862](https://github.com/looker-open-source/components/issues/1862)) ([4c2b399](https://github.com/looker-open-source/components/commit/4c2b399e19407cd07fc394f1193988817e349621))
+
+
+
+
+
 ## [0.10.4](https://github.com/looker-open-source/components/compare/v0.10.3...v0.10.4) (2021-01-25)
 
 **Note:** Version bump only for package @looker/design-tokens
