@@ -331,7 +331,7 @@ describe('DataTable', () => {
       <DataTable
         caption="this is a table's caption"
         columns={columns}
-        select={{ ...defaultSelectConfig, onClickRowSelect: true }}
+        select={{ ...defaultSelectConfig }}
       >
         {items}
       </DataTable>
@@ -352,13 +352,6 @@ describe('DataTable', () => {
     test('Checkbox click calls onSelect', () => {
       const { getAllByRole } = renderWithTheme(dataTableWithSelect)
       fireEvent.click(getAllByRole('checkbox')[1])
-      expect(onSelect).toHaveBeenCalledTimes(1)
-    })
-
-    test('Row click calls onSelect when onClickRowSelect is true', () => {
-      const { getByText } = renderWithTheme(dataTableWithOnClickRowSelect)
-      const nameCell = getByText('Richard Garfield')
-      fireEvent.click(nameCell)
       expect(onSelect).toHaveBeenCalledTimes(1)
     })
 

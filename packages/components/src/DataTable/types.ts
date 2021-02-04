@@ -91,11 +91,6 @@ export interface SelectConfig {
    */
   pageItems: string[]
   /**
-   * Ignore onClick behavior for row and trigger selection instead. Also changes row :hover behavior slightly
-   * @default false
-   */
-  onClickRowSelect?: boolean
-  /**
    * Callback performed when user makes a selection
    */
   onSelect: (id: string) => void

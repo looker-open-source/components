@@ -48,7 +48,6 @@ const Template: Story<DemoProps> = ({
 
   const select = selectActive
     ? {
-        onClickRowSelect: true,
         onSelect,
         onSelectAll,
         pageItems: allPageItems,

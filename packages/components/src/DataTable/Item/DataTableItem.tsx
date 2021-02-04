@@ -78,7 +78,7 @@ const DataTableItemLayout: FC<DataTableItemProps> = ({
 
   const handleClick = disabled
     ? undefined
-    : select && select.onClickRowSelect
+    : select
     ? handleOnSelect
     : onClick || undefined
 

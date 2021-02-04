@@ -283,7 +283,7 @@ You can add row select behavior on a `<DataTable />` by passing a valid into the
 
 The following properties are **required** in the object passed into the `select` prop.
 
-- `onSelect`: Clicking on a checkbox (or the row when `onClickRowSelect` is true) will trigger the `onSelect` callback, with the id of the checkbox's `DataTableItem` passed in as an argument.
+- `onSelect`: Clicking on a checkbox will trigger the `onSelect` callback, with the id of the checkbox's `DataTableItem` passed in as an argument.
 
 - `onSelectAll`: Callback that is triggered when the header's checkbox is clicked
 
@@ -292,8 +292,6 @@ The following properties are **required** in the object passed into the `select`
 - `pageItems`: An array containing the `id`s of all currently visible items. This is mainly used to help calculate the checked state of the header checkbox.
 
 The following properties are **optional** in the object passed into the `select` prop:
-
-- `onClickRowSelect`: If true, clicking on a row will trigger the `onSelect` function.
 
 **Note:** For accessibility purposes, the header checkbox is described by the ID of the header row. To set the ID of the header row, use the `headerRowId` prop on `DataTable`.
 
@@ -373,7 +371,6 @@ The following properties are **optional** in the object passed into the `select`
         select={{
           selectedItems: selections,
           pageItems: allSelectableItems,
-          onClickRowSelect: true,
           onSelect,
           onSelectAll,
         }}
@@ -458,7 +455,6 @@ The `useSelectManager` hook can be used to quickly create the standard building 
       caption="Cheeses example"
       columns={columns}
       select={{
-        onClickRowSelect: true,
         onSelect,
         onSelectAll,
         selectedItems: selections,
@@ -569,7 +565,6 @@ The `bulk` prop is used to configure a `DataTable`'s control bar. The object pas
           bulk={bulkActionsConfig}
           caption="Cheeses example"
           select={{
-            onClickRowSelect: true,
             onSelect,
             onSelectAll,
             selectedItems: selections,
