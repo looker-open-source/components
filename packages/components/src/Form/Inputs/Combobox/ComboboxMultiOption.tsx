@@ -98,7 +98,7 @@ const ComboboxMultiOptionInternal = forwardRef(
           isSelected={isSelected}
           isMulti={true}
         >
-          <Checkbox checked={isSelected} />
+          <Checkbox checked={isSelected} mt="xxxsmall" />
         </ComboboxOptionIndicator>
         {children || <ComboboxOptionText highlightText={highlightText} />}
       </ComboboxOptionWrapper>

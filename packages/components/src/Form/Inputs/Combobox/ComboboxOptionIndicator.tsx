@@ -31,7 +31,7 @@ import React, {
   useContext,
   useMemo,
 } from 'react'
-import styled from 'styled-components'
+import { Flex } from '../../../Layout'
 import {
   ComboboxContext,
   ComboboxMultiContext,
@@ -48,7 +48,7 @@ function isIndicatorFunction(
   return typeof children === 'function'
 }
 
-const ComboboxOptionIndicatorLayout: FC<ComboboxOptionIndicatorProps> = ({
+export const ComboboxOptionIndicator: FC<ComboboxOptionIndicatorProps> = ({
   children,
   indicator: propsIndicator,
   isActive,
@@ -78,20 +78,18 @@ const ComboboxOptionIndicatorLayout: FC<ComboboxOptionIndicatorProps> = ({
     return indicatorToUse
   }, [indicatorToUse, isActive, isSelected, value, label])
 
-  if (indicatorToUse !== undefined) {
-    return <>{indicator}</>
-  } else {
-    return <div {...props}>{children}</div>
-  }
-}
+  const content = indicator === undefined ? children : indicator
 
-export const ComboboxOptionIndicator = styled(ComboboxOptionIndicatorLayout)`
-  align-items: center;
-  display: flex;
-  flex-shrink: 0;
-  height: ${(props) => props.theme.lineHeights.small};
-  justify-content: center;
-  margin-right: ${(props) => props.theme.space.xxsmall};
-  width: ${({ theme, indicator, isMulti }) =>
-    isMulti ? theme.space.xlarge : indicator ? theme.space.medium : '0px'};
-`
+  return (
+    <Flex
+      width={content ? 'small' : 'none'}
+      alignItems="flex-start"
+      flexShrink={0}
+      justifyContent="center"
+      mr="xsmall"
+      {...props}
+    >
+      {content}
+    </Flex>
+  )
+}

@@ -731,6 +731,20 @@ describe('Select / SelectMulti', () => {
 })
 
 describe('Select', () => {
+  const globalConsole = global.console
+  const warnMock = jest.fn()
+
+  beforeEach(() => {
+    global.console = ({
+      warn: warnMock,
+    } as unknown) as Console
+  })
+
+  afterEach(() => {
+    jest.resetAllMocks()
+    global.console = globalConsole
+  })
+
   const options = [
     { label: 'Foo', value: 'FOO' },
     { label: 'Bar', value: 'BAR' },
@@ -942,7 +956,12 @@ describe('Select', () => {
         options={[
           { icon: 'ChartBar', label: 'Bar', value: 'bar' },
           { label: 'No Icon', value: 'noicon' },
-          { icon: 'ChartColumn', label: 'Column', value: 'column' },
+          {
+            icon: 'ChartColumn',
+            indicator: 'Test Indicator',
+            label: 'Column',
+            value: 'column',
+          },
           {
             icon: <>cool icon</>,
             label: 'Custom Icon',
@@ -966,6 +985,53 @@ describe('Select', () => {
     fireEvent.click(input)
     fireEvent.click(screen.getByText('Custom Icon'))
     expect(screen.getByTestId('input-icon')).toHaveTextContent('cool icon')
+
+    // Test icon+indicator warning
+    expect(screen.queryByText('Test Indicator')).not.toBeInTheDocument()
+    expect(warnMock.mock.calls).toMatchInlineSnapshot(`
+      Array [
+        Array [
+          "Use icon or indicator but not both at the same time.",
+        ],
+        Array [
+          "Use icon or indicator but not both at the same time.",
+        ],
+      ]
+    `)
+
+    // Close popover to silence act() warning
+    fireEvent.click(document)
+  })
+
+  test('option preface', () => {
+    renderWithTheme(
+      <Select
+        placeholder="Search"
+        options={[
+          { label: 'Foo', preface: 'Preface for Foo', value: 'FOO' },
+          {
+            label: 'Bar',
+            preface: (
+              <>
+                <strong>Preface for</strong> Bar
+              </>
+            ),
+            value: 'BAR',
+          },
+        ]}
+      />
+    )
+
+    const input = screen.getByPlaceholderText('Search')
+    fireEvent.click(input)
+    const fooPreface = screen.getByText('Preface for Foo')
+    const barPreface = screen.getByText('Preface for')
+    expect(fooPreface).toBeVisible()
+    expect(barPreface).toBeVisible()
+    expect(barPreface.parentElement).toHaveTextContent('Preface for Bar')
+
+    fireEvent.click(fooPreface)
+    expect(input).toHaveDisplayValue('Foo')
 
     // Close popover to silence act() warning
     fireEvent.click(document)

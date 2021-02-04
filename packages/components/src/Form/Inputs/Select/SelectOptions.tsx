@@ -25,12 +25,19 @@
  */
 
 import { IconNames, iconNameList } from '@looker/icons'
-import React, { createContext, ReactNode, useContext, useMemo } from 'react'
+import React, {
+  createContext,
+  FC,
+  ReactNode,
+  useContext,
+  useEffect,
+  useMemo,
+} from 'react'
 import styled from 'styled-components'
 import { Icon, IconPlaceholder } from '../../../Icon'
 import { Spinner } from '../../../Spinner'
-import { Box } from '../../../Layout'
 import { ListItemDetail } from '../../../List/ListItemDetail'
+import { ListItemPreface } from '../../../List/ListItemPreface'
 import { Heading, HeadingProps, Paragraph, Text } from '../../../Text'
 import { useID } from '../../../utils'
 import {
@@ -39,6 +46,7 @@ import {
   ComboboxMultiOption,
   ComboboxOption,
   ComboboxOptionIndicator,
+  ComboboxOptionIndicatorProps,
   ComboboxOptionText,
 } from '../Combobox'
 import {
@@ -60,86 +68,101 @@ export function getSelectOptionIconProps(icon: SelectOptionIcon) {
   return isIconName(icon) ? { name: icon } : { artwork: icon }
 }
 
-const StyledIcon = styled(Icon)`
-  /* For proper alignment with option text and check icon */
-  height: ${({ theme }) => theme.lineHeights.small};
-`
-
-interface OptionLayoutProps {
+interface OptionLayoutProps
+  extends Pick<ComboboxOptionIndicatorProps, 'indicator'> {
   option: SelectOptionObject
   scrollIntoView?: boolean
 }
 
-const OptionLayout = ({ option, scrollIntoView }: OptionLayoutProps) => {
-  const { description, detail, icon, ...rest } = option
-  const { hasIcons } = useContext(SelectOptionsContext)
-
-  if (detail || hasIcons || description) {
-    const iconToUse = icon ? (
-      <StyledIcon
-        size="small"
-        mr="xsmall"
-        color="text1"
-        {...getSelectOptionIconProps(icon)}
-        data-testid="option-icon"
-      />
-    ) : hasIcons ? (
-      <IconPlaceholder size="small" data-testid="option-icon-placeholder" />
-    ) : null
-
-    return (
-      <ComboboxOption {...rest} py="xxsmall" scrollIntoView={scrollIntoView}>
-        {iconToUse}
-        {description ? (
-          <SelectOptionWithDescription description={description} {...rest} />
-        ) : (
-          <ComboboxOptionText />
-        )}
-        {detail && <ListItemDetail>{detail}</ListItemDetail>}
-      </ComboboxOption>
-    )
-  }
-  return <ComboboxOption {...rest} />
+interface OptionLayoutBaseProps extends OptionLayoutProps {
+  isMulti?: boolean
 }
 
-const MultiOptionLayout = ({ option, scrollIntoView }: OptionLayoutProps) => {
-  const { description, detail, ...rest } = option
-  if (description || detail) {
+const OptionLayoutBase = ({
+  isMulti,
+  option,
+  scrollIntoView,
+}: OptionLayoutBaseProps) => {
+  const { description, detail, preface, ...rest } = option
+  const Component = isMulti ? ComboboxMultiOption : ComboboxOption
+
+  if (description || detail || preface) {
     return (
-      <ComboboxMultiOption
+      <Component
         {...rest}
-        py="xxsmall"
+        py={preface || description ? 'xsmall' : 'xxsmall'}
         scrollIntoView={scrollIntoView}
       >
-        {description ? (
-          <SelectOptionWithDescription description={description} {...rest} />
-        ) : (
-          <ComboboxOptionText />
-        )}
+        <SelectOptionWithDescription
+          description={description}
+          preface={preface}
+          {...rest}
+        />
         {detail && <ListItemDetail>{detail}</ListItemDetail>}
-      </ComboboxMultiOption>
+      </Component>
     )
   }
-  return <ComboboxMultiOption {...rest} />
+  return <Component {...rest} />
 }
+
+// Use an FC since isActive & isSelected are passed to the indicator via cloneElement
+// and otherwise would get spread onto Icon
+const OptionIcon: FC<SelectOptionObject> = ({ preface, icon }) => (
+  <Icon
+    size="small"
+    mt={preface ? 'medium' : 'none'}
+    color="text1"
+    {...getSelectOptionIconProps(icon)}
+    data-testid="option-icon"
+  />
+)
+
+const OptionLayout = ({ option, ...rest }: OptionLayoutProps) => {
+  const { hasIcons } = useContext(SelectOptionsContext)
+  const { indicatorPropRef } = useContext(ComboboxContext)
+  const iconPlaceholder = hasIcons ? (
+    <IconPlaceholder size="small" data-testid="option-icon-placeholder" />
+  ) : undefined
+
+  const indicator = option.icon ? (
+    <OptionIcon {...option} />
+  ) : (
+    // Either an option or Select-level indicator can override the iconPlaceholder
+    option.indicator || indicatorPropRef?.current || iconPlaceholder
+  )
+
+  useEffect(() => {
+    if (option.icon && option.indicator) {
+      // eslint-disable-next-line no-console
+      console.warn('Use icon or indicator but not both at the same time.')
+    }
+  }, [option.icon, option.indicator])
+
+  return <OptionLayoutBase {...rest} option={{ ...option, indicator }} />
+}
+
+const MultiOptionLayout = (props: OptionLayoutProps) => (
+  <OptionLayoutBase {...props} isMulti />
+)
 
 export function SelectOptionWithDescription({
   description,
+  preface,
 }: SelectOptionObject) {
-  return (
-    <Box>
-      <Heading
-        fontFamily="body"
-        fontSize="small"
-        fontWeight="semiBold"
-        pb="xxsmall"
-      >
+  return description || preface ? (
+    <div>
+      {preface && <ListItemPreface>{preface}</ListItemPreface>}
+      <Paragraph fontSize="small" lineHeight="small">
         <ComboboxOptionText />
-      </Heading>
-      <Paragraph color="subdued" fontSize="small">
-        {description}
       </Paragraph>
-    </Box>
+      {description && (
+        <Paragraph color="text2" fontSize="xsmall" lineHeight="xsmall">
+          {description}
+        </Paragraph>
+      )}
+    </div>
+  ) : (
+    <ComboboxOptionText />
   )
 }
 
@@ -165,7 +188,7 @@ export const SelectOptionGroup = ({
     <SelectOptionGroupContainer>
       {label && (
         <SelectOptionGroupTitle isMulti={isMulti}>
-          <ComboboxOptionIndicator isMulti={isMulti} />
+          <ComboboxOptionIndicator indicator={isMulti && ' '} />
           {label}
         </SelectOptionGroupTitle>
       )}
@@ -346,15 +369,15 @@ function SelectCreateOption({
   const { data: dataMulti } = useContext(ComboboxMultiContext)
 
   const inputValue = isMulti ? dataMulti.inputValue : data.inputValue
-  const currentOptions = isMulti
-    ? dataMulti.options
-    : data.option
-    ? [data.option]
-    : []
 
   const shouldShow = useMemo(() => {
+    const currentOptions = isMulti
+      ? dataMulti.options
+      : data.option
+      ? [data.option]
+      : []
     return notInOptions(currentOptions, options, inputValue)
-  }, [currentOptions, options, inputValue])
+  }, [isMulti, data.option, dataMulti.options, options, inputValue])
 
   if (!shouldShow || !inputValue) {
     if (!options || options.length === 0) return <>{noOptions}</>

@@ -69,6 +69,7 @@ the user to delete the current value.
 
   return (
     <Select
+      maxWidth={400}
       options={newOptions}
       aria-label="Fruits"
       placeholder="Controlled, searchable, clearable"
@@ -112,6 +113,7 @@ to allow the user to enter a value not found in the options.
 
   return (
     <Select
+      maxWidth={400}
       options={newOptions}
       aria-label="Fruits"
       placeholder="Controlled, searchable, creatable"
@@ -126,28 +128,13 @@ to allow the user to enter a value not found in the options.
 }
 ```
 
-## Name and ID
-
-A name and ID can be specified in the `<Select />` component. Names are important if the input is used in the context of a form, in which case a name is required for the value of the input to be captured.
-
-```jsx
-<Select
-  name="someName"
-  id="someId"
-  options={[
-    { value: 'cheddar', label: 'Cheddar' },
-    { value: 'gouda', label: 'Gouda' },
-    { value: 'swiss', label: 'Swiss' },
-  ]}
-/>
-```
-
 ## Groups
 
 Options can be organized into groups, with an optional `label`.
 
 ```jsx
 <Select
+  maxWidth={400}
   options={[
     {
       label: 'CHEESES',
@@ -181,6 +168,7 @@ Options can have a `description` property.
 
 ```jsx
 <Select
+  maxWidth={400}
   options={[
     { value: 'cheddar', label: 'Cheddar', description: 'Popular in the US' },
     { value: 'gouda', label: 'Gouda', description: 'Dutch sheeps milk' },
@@ -247,7 +235,7 @@ To allow the user to clear the `Select`'s value, add the `isClearable` prop.
 Indicates that options are currently being loaded.
 
 ```jsx
-<Select placeholder="Loading options" isLoading />
+<Select maxWidth={400} placeholder="Loading options" isLoading />
 ```
 
 ## scrollIntoView for improved UX on a long list of options
@@ -258,6 +246,7 @@ When you open the following list, `Mascarpone` will be highlighted and visible a
 
 ```jsx
 <Select
+  maxWidth={400}
   placeholder="Select your cheese of choice..."
   options={[
     { value: 'cheddar', label: 'Cheddar' },
@@ -299,7 +288,13 @@ To observe the performance impact, add `windowedOptions={false}` after `options=
   const options1k = Array.from(Array(1000), (_, index) => ({
     value: `${index}`,
   }))
-  return <Select placeholder="So many options..." options={options1k} />
+  return (
+    <Select
+      maxWidth={400}
+      placeholder="So many options..."
+      options={options1k}
+    />
+  )
 }
 ```
 
@@ -311,7 +306,7 @@ like width and height, separately from the input.
 ```jsx
 <Space>
   <Select
-    width={400}
+    maxWidth={400}
     listLayout={{ width: 'auto' }}
     placeholder="Accommodate wide options"
     options={[
@@ -327,7 +322,7 @@ like width and height, separately from the input.
     ]}
   />
   <Select
-    width={400}
+    maxWidth={400}
     listLayout={{ width: '90vw', maxWidth: 700, maxHeight: 300 }}
     options={[
       { value: 'cheddar', label: 'Cheddar' },
@@ -387,6 +382,7 @@ completely) or a function accepting `OptionIndicatorProps` and returning a React
 
 ```jsx
 <Select
+  maxWidth={400}
   indicator={({ isActive, isSelected }) => (
     <Icon name={isSelected ? 'Favorite' : isActive ? 'Plus' : 'Minus'} />
   )}
@@ -464,10 +460,48 @@ Right aligned content in the option.
 
 ```jsx
 <Select
+  maxWidth={400}
   placeholder="Select food"
   options={[
     { detail: 'Cheese', value: 'Gouda' },
     { detail: 'Fruit', value: 'Apple' },
+  ]}
+/>
+```
+
+## Preface
+
+Content rendered above the option label.
+
+```jsx
+<Select
+  maxWidth={400}
+  placeholder="Select a field"
+  options={[
+    {
+      label: 'Cost',
+      description: 'Cost to stock - not the price the customer paid',
+      preface: 'Inventory items',
+      value: 'inventory_items.cost',
+    },
+    { label: 'Count', preface: 'Order Items', value: 'order_items.count' },
+    {
+      label: 'Sale Price',
+      description: 'What the customer actually paid',
+      preface: 'Order Items',
+      value: 'order_items.sale_price',
+    },
+    {
+      label: 'Retail Price',
+      description: 'Base retail price',
+      preface: 'Inventory Items',
+      value: 'inventory_items.retail_price',
+    },
+    {
+      label: 'Count',
+      preface: 'Inventory Items',
+      value: 'inventory_items.count',
+    },
   ]}
 />
 ```
