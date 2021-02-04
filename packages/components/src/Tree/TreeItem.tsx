@@ -32,40 +32,19 @@ import { TreeContext } from './TreeContext'
 
 const TreeItemLayout: FC<ListItemProps> = ({
   children,
-  className,
-  color,
-  detail,
-  disabled,
+  density: propsDensity,
   keyColor: propsKeyColor,
-  onBlur,
-  onClick,
-  onKeyDown,
-  onKeyUp,
-  selected,
-  truncate,
-  ...props
+  ...restProps
 }) => {
   const { density: contextDensity, keyColor: contextKeyColor } = useContext(
     TreeContext
   )
 
+  const density = undefinedCoalesce([propsDensity, contextDensity])
   const keyColor = undefinedCoalesce([propsKeyColor, contextKeyColor])
 
   return (
-    <ListItem
-      className={className}
-      color={color}
-      density={contextDensity}
-      detail={detail}
-      disabled={disabled}
-      keyColor={keyColor}
-      onBlur={onBlur}
-      onClick={onClick}
-      onKeyDown={onKeyDown}
-      onKeyUp={onKeyUp}
-      selected={selected}
-      {...props}
-    >
+    <ListItem density={density} keyColor={keyColor} {...restProps}>
       {children}
     </ListItem>
   )
