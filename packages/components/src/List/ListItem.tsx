@@ -119,6 +119,9 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
   const itemRef = useRef<HTMLLIElement>(null)
   const [hovered] = useHovered(itemRef)
 
+  const descriptionColor = 'text2'
+  const iconColor = color || 'text1'
+
   const handleOnBlur = (event: React.FocusEvent<HTMLElement>) => {
     setFocusVisible(false)
     onBlur && onBlur(event)
@@ -143,7 +146,7 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
     icon || iconArtwork ? (
       <Icon
         artwork={iconArtwork}
-        color={color || 'text1'}
+        color={iconColor}
         name={icon}
         size={itemDimensions.iconSize}
         mr={itemDimensions.iconGap}
@@ -181,7 +184,7 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
   const renderedDescription =
     typeof description === 'string' ? (
       <Paragraph
-        color="text2"
+        color={descriptionColor}
         fontSize={itemDimensions.descriptionFontSize}
         lineHeight={itemDimensions.descriptionLineHeight}
         truncate={truncate}

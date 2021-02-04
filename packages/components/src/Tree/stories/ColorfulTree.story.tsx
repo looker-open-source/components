@@ -33,5 +33,10 @@ export const ColorfulTree = () => (
     <TreeItem color="green" icon="Calendar">
       Green TreeItem
     </TreeItem>
+    <Tree color="blue" defaultOpen icon="Calendar" label="Blue Tree">
+      <TreeItem color="purple" icon="Calendar">
+        Purple TreeItem
+      </TreeItem>
+    </Tree>
   </Tree>
 )

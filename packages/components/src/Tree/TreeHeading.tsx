@@ -26,11 +26,15 @@
 
 import React, { FC } from 'react'
 import styled from 'styled-components'
-import { color, TextColorProps } from '@looker/design-tokens'
 import { Paragraph } from '../Text'
 
-export interface TreeHeadingProps extends TextColorProps {
+export interface TreeHeadingProps {
+  children: string
   className?: string
+  /**
+   * Determines the text color
+   */
+  color?: string
   /**
    * Prevent text wrapping on group label's and instead render truncated text
    **/
@@ -40,21 +44,32 @@ export interface TreeHeadingProps extends TextColorProps {
 const TreeHeadingLayout: FC<TreeHeadingProps> = ({
   children,
   className,
+  color,
   truncate,
 }) => {
   return (
-    <Paragraph className={className} truncate={truncate}>
-      {children}
-    </Paragraph>
+    <li className={className}>
+      <Paragraph
+        color={color}
+        fontSize="xxsmall"
+        fontWeight="semiBold"
+        pt="xsmall"
+        pb="xxsmall"
+        pr="xxsmall"
+        truncate={truncate}
+      >
+        {children}
+      </Paragraph>
+    </li>
   )
 }
 
 export const TreeHeading = styled(TreeHeadingLayout)`
-  ${color}
-
-  font-size: ${({ theme }) => theme.fontSizes.xxsmall};
-  font-weight: ${({ theme }) => theme.fontWeights.semiBold};
-  line-height: ${({ theme }) => theme.fontSizes.xsmall};
-  padding: ${({ theme: { space } }) =>
-    `${space.xsmall} ${space.xxsmall} ${space.xxsmall}`};
+  & > ${Paragraph} {
+    /**
+      Currently, there is no 0.75rem lineHeight in the default theme object, which satisfies internal Explore use case.
+      This font size "xsmall" gets us the right value.
+    */
+    line-height: ${({ theme }) => theme.fontSizes.xsmall};
+  }
 `

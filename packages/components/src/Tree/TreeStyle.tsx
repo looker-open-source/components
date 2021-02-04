@@ -89,8 +89,6 @@ export const TreeStyle = styled.div<TreeStyleProps>`
 
       ${listItemBackgroundColor}
       background-clip: padding-box;
-      color: ${({ disabled, theme: { colors } }) =>
-        disabled ? colors.text1 : colors.text5};
       /**
         Tree's padding-right is handled by the internal item
        */
