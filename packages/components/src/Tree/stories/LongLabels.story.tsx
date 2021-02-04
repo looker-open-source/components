@@ -25,15 +25,11 @@
  */
 
 import React from 'react'
-import { Tree, TreeHeading, TreeItem, IconButton } from '../..'
-
-const headingLorem =
-  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc finibus, nulla vitae aliquam placerat, magna quam suscipit sapien, in pretium tellus dolor in nisi. Cras auctor scelerisque ipsum, sit amet faucibus magna bibendum eu. Sed sed tristique nisl, fermentum ultricies libero. Duis non ex nec felis mattis accumsan sed non.'
+import { Tree, TreeItem, IconButton } from '../..'
 
 export const LongLabels = () => (
   <Tree label="Tree with long labels " icon="ExploreOutline" defaultOpen>
     <Tree label="Wrapping next" icon="VisibilityOutline" defaultOpen>
-      <TreeHeading truncate>{headingLorem}</TreeHeading>
       <Tree
         label="Orders Lorem ipsum dolor sit amet, consectetur adipiscing elit. Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc."
         icon="Table"
@@ -71,7 +67,6 @@ export const LongLabels = () => (
       </Tree>
     </Tree>
     <Tree label="Truncated text" icon="VisibilityOutline" defaultOpen>
-      <TreeHeading truncate>{headingLorem}</TreeHeading>
       <Tree
         label="Users Lorem ipsum dolor sit amet, consectetur adipiscing elit. There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. "
         icon="Table"

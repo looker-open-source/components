@@ -26,50 +26,13 @@
 
 import React, { FC } from 'react'
 import styled from 'styled-components'
-import { Paragraph } from '../Text'
 
-export interface TreeHeadingProps {
-  children: string
+export interface TreeBranchProps {
   className?: string
-  /**
-   * Determines the text color
-   */
-  color?: string
-  /**
-   * Prevent text wrapping on group label's and instead render truncated text
-   **/
-  truncate?: boolean
 }
 
-const TreeHeadingLayout: FC<TreeHeadingProps> = ({
-  children,
-  className,
-  color,
-  truncate,
-}) => {
-  return (
-    <li className={className}>
-      <Paragraph
-        color={color}
-        fontSize="xxsmall"
-        fontWeight="semiBold"
-        pt="xsmall"
-        pb="xxsmall"
-        pr="xxsmall"
-        truncate={truncate}
-      >
-        {children}
-      </Paragraph>
-    </li>
-  )
+const TreeBranchLayout: FC<TreeBranchProps> = ({ children, className }) => {
+  return <li className={className}>{children}</li>
 }
 
-export const TreeHeading = styled(TreeHeadingLayout)`
-  & > ${Paragraph} {
-    /**
-      Currently, there is no 0.75rem lineHeight in the default theme object, which satisfies internal Explore use case.
-      This font size "xsmall" gets us the right value.
-    */
-    line-height: ${({ theme }) => theme.fontSizes.xsmall};
-  }
-`
+export const TreeBranch = styled(TreeBranchLayout)``

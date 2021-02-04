@@ -25,11 +25,10 @@
  */
 
 import React from 'react'
-import { Tree, TreeHeading, TreeItem } from '../..'
+import { Tree, TreeItem } from '../..'
 
 export const ColorfulTree = () => (
   <Tree defaultOpen label="Colorful Tree">
-    <TreeHeading color="red">Red TreeHeading</TreeHeading>
     <TreeItem color="green" icon="Calendar">
       Green TreeItem
     </TreeItem>

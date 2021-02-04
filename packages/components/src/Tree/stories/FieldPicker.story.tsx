@@ -25,6 +25,7 @@
  */
 
 import React, { FC, ReactNode, useState } from 'react'
+import styled from 'styled-components'
 import {
   IconButton,
   Menu,
@@ -37,8 +38,9 @@ import {
   Space,
   Truncate,
   Badge,
+  Paragraph,
 } from '../..'
-import { Tree, TreeArtificial, TreeItem, TreeHeading } from '..'
+import { Tree, TreeArtificial, TreeItem, TreeBranch } from '..'
 
 const PickerItem: FC<{ color?: string; truncate?: boolean }> = ({
   children = 'Cost',
@@ -109,9 +111,25 @@ const PickerItem: FC<{ color?: string; truncate?: boolean }> = ({
   )
 }
 
+const StyledParagraph = styled(Paragraph)`
+  line-height: 0.75rem;
+`
+
 const fields = (
   <TreeArtificial density={-3}>
-    <TreeHeading color="text1">DIMENSIONS</TreeHeading>
+    <TreeBranch>
+      <StyledParagraph
+        color="text1"
+        fontSize="xxsmall"
+        fontWeight="semiBold"
+        pt="xsmall"
+        pb="xxsmall"
+        pr="xxsmall"
+        truncate={true}
+      >
+        DIMENSIONS
+      </StyledParagraph>
+    </TreeBranch>
     <Tree branchFontWeight label="Created">
       <PickerItem>Created Date</PickerItem>
       <PickerItem>Created Month</PickerItem>
@@ -120,7 +138,19 @@ const fields = (
     <PickerItem>City</PickerItem>
     <PickerItem>Country</PickerItem>
     <PickerItem>ID</PickerItem>
-    <TreeHeading color="orange">MEASURES</TreeHeading>
+    <TreeBranch>
+      <StyledParagraph
+        color="orange"
+        fontSize="xxsmall"
+        fontWeight="semiBold"
+        pt="xsmall"
+        pb="xxsmall"
+        pr="xxsmall"
+        truncate={true}
+      >
+        MEASURES
+      </StyledParagraph>
+    </TreeBranch>
     <PickerItem color="orange">Sum</PickerItem>
     <PickerItem color="orange">Max</PickerItem>
   </TreeArtificial>
