@@ -40,7 +40,7 @@ export type TextColors = TextColor & AliasTextColors
 
 export { coreColors, intentColors, specifiableColors } from './specifiable'
 
-export type { AliasColors } from './aliases'
+export type { AliasColors, AliasTextColors } from './aliases'
 export type { DerivativeColors } from './derivative'
 export type { CoreColors, IntentColors, SpecifiableColors } from './specifiable'
 export type { BlendColors } from './blends'
