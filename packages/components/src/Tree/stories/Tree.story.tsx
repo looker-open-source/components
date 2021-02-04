@@ -34,7 +34,6 @@ export * from './Density.story'
 export * from './DisabledAndSelected.story'
 export * from './FieldPicker.story'
 export * from './FileTree.story'
-export * from './Flat.story'
 export * from './LongLabels.story'
 
 export default {
