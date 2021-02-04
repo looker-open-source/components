@@ -24,12 +24,10 @@
 
  */
 
-import React, { FC, useContext } from 'react'
+import React, { FC } from 'react'
 import styled from 'styled-components'
 import { color, TextColorProps } from '@looker/design-tokens'
 import { Paragraph } from '../Text'
-import { listItemDimensions } from '../List/utils'
-import { TreeContext } from './TreeContext'
 
 export interface TreeHeadingProps extends TextColorProps {
   className?: string
@@ -44,13 +42,15 @@ const TreeHeadingLayout: FC<TreeHeadingProps> = ({
   className,
   truncate,
 }) => {
-  const { density } = useContext(TreeContext)
-  const { labelFontSize } = listItemDimensions(density)
-
   return (
     <Paragraph
       className={className}
-      fontSize={labelFontSize}
+      fontSize="xxsmall"
+      fontWeight="semiBold"
+      lineHeight="xsmall"
+      pb="xxsmall"
+      pr="xxsmall"
+      pt="xsmall"
       truncate={truncate}
     >
       {children}
@@ -60,8 +60,4 @@ const TreeHeadingLayout: FC<TreeHeadingProps> = ({
 
 export const TreeHeading = styled(TreeHeadingLayout)`
   ${color}
-  font-weight: ${({ theme }) => theme.fontWeights.semiBold};
-  line-height: ${({ theme }) => theme.fontSizes.xsmall};
-  padding: ${({ theme: { space } }) =>
-    `${space.xsmall} ${space.xxsmall} ${space.xxsmall}`};
 `

@@ -64,12 +64,15 @@ export const TreeStyle = styled.div<TreeStyleProps>`
     }
 
     & > ${AccordionDisclosureStyle} {
+      ${ListItem} {
+        font-weight: ${({ branchFontWeight, theme: { fontWeights } }) =>
+          branchFontWeight ? fontWeights.normal : fontWeights.semiBold};
+      }
+
       ${listItemBackgroundColor}
       background-clip: padding-box;
       color: ${({ disabled, theme: { colors } }) =>
         disabled ? colors.text1 : colors.text5};
-      font-weight: ${({ branchFontWeight, theme: { fontWeights } }) =>
-        branchFontWeight ? fontWeights.normal : fontWeights.semiBold};
       /**
         Tree's padding-right is handled by the internal item
        */
