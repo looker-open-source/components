@@ -41,6 +41,7 @@ const TreeLayout: FC<TreeProps> = ({
   border: propsBorder,
   children,
   className,
+  color,
   density: propsDensity,
   detail: propsDetail,
   disabled,
@@ -107,8 +108,10 @@ const TreeLayout: FC<TreeProps> = ({
 
   const label = (
     <TreeItemInner
+      color={color}
       density={density}
       detail={detail}
+      disabled={disabled}
       icon={icon}
       truncate={truncate}
     >
@@ -118,7 +121,7 @@ const TreeLayout: FC<TreeProps> = ({
 
   const innerAccordion = (
     <Accordion {...indicatorDefaults} {...restProps} indicatorSize={iconSize}>
-      <AccordionDisclosure ref={disclosureRef} py="none">
+      <AccordionDisclosure color={color} ref={disclosureRef} py="none">
         {label}
       </AccordionDisclosure>
       <AccordionContent>
