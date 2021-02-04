@@ -32,7 +32,7 @@ export const generateColorAliases = ({
   text5,
 }: BlendColors): AliasColors => {
   return {
-    body: text1,
+    body: text5,
     secondary: text2,
     subdued: text1,
     title: text5,
