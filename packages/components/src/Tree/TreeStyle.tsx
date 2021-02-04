@@ -46,9 +46,27 @@ interface TreeStyleProps extends ListItemStatefulWithHoveredProps {
   indicatorSize: IconSize
 }
 
+export const TreeItemInner = styled(TreeItem)`
+  & > button,
+  & > a {
+    background-color: transparent;
+    padding-left: 0;
+  }
+`
+
+export const TreeItemInnerDetail = styled.div``
+
 const dividersCSS = css`
   ${TreeItem} {
     margin-top: 1px;
+  }
+
+  ${AccordionDisclosureStyle} {
+    margin-top: 1px;
+
+    ${TreeItemInner} {
+      margin-top: 0;
+    }
   }
 `
 
