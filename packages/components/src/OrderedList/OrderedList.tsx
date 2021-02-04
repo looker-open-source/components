@@ -36,6 +36,7 @@ import {
   LayoutProps,
   position,
   layout,
+  textColor,
 } from '@looker/design-tokens'
 import styled from 'styled-components'
 import { variant } from 'styled-system'
@@ -87,6 +88,7 @@ export const OrderedList = styled.div
     type,
   }))<OrderedListProps>`
   ${reset}
+  ${textColor}
   ${typography}
   ${typeVariant}
   ${space}
