@@ -55,7 +55,6 @@ export type {
   PaddingProps,
   PositionProps,
   SizeProps,
-  TextColorProps,
   VerticalAlignProps,
   WidthProps,
 } from 'styled-system'
