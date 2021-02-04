@@ -119,9 +119,10 @@ const TreeLayout: FC<TreeProps> = ({
     </TreeItemInner>
   )
 
+  const indicatorColor = disabled ? 'text1' : color
   const innerAccordion = (
     <Accordion {...indicatorDefaults} {...restProps} indicatorSize={iconSize}>
-      <AccordionDisclosure color={color} ref={disclosureRef} py="none">
+      <AccordionDisclosure color={indicatorColor} ref={disclosureRef} py="none">
         {label}
       </AccordionDisclosure>
       <AccordionContent>

@@ -119,8 +119,9 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
   const itemRef = useRef<HTMLLIElement>(null)
   const [hovered] = useHovered(itemRef)
 
-  const descriptionColor = 'text2'
-  const iconColor = color || 'text1'
+  const labelColor = disabled ? 'text1' : color
+  const descriptionColor = disabled ? 'text1' : 'text2'
+  const iconColor = disabled ? 'text1' : color || 'text1'
 
   const handleOnBlur = (event: React.FocusEvent<HTMLElement>) => {
     setFocusVisible(false)
@@ -170,7 +171,7 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
   const renderedChildren =
     typeof children === 'string' ? (
       <Paragraph
-        color={color}
+        color={labelColor}
         fontSize={itemDimensions.labelFontSize}
         lineHeight={itemDimensions.labelLineHeight}
         truncate={truncate}
