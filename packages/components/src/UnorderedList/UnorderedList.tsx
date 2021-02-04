@@ -36,6 +36,7 @@ import {
   LayoutProps,
   position,
   layout,
+  textColor,
 } from '@looker/design-tokens'
 import styled from 'styled-components'
 import { variant } from 'styled-system'
@@ -67,10 +68,15 @@ const typeVariant = variant({
   },
 })
 
-export const UnorderedList = styled.ul.withConfig({
-  shouldForwardProp,
-})<UnorderedListProps>`
+export const UnorderedList = styled.ul
+  .withConfig({
+    shouldForwardProp,
+  })
+  .attrs<UnorderedListProps>(({ color = 'body' }) => ({
+    color,
+  }))<UnorderedListProps>`
   ${reset}
+  ${textColor}
   ${typography}
   ${typeVariant}
   ${space}

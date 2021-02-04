@@ -26,19 +26,23 @@
 
 export const coreColors: Array<keyof CoreColors> = ['key', 'background', 'text']
 
-export interface CoreColors {
-  /**
-   * Default page background
-   * Used for: application background
-   * @default white
-   */
-  background: string
+export interface TextColor {
   /**
    * TODO
    * Used for: Text
    * @default charcoal800
    */
   text: string
+}
+
+export interface CoreColors extends TextColor {
+  /**
+   * Default page background
+   * Used for: application background
+   * @default white
+   */
+  background: string
+
   /**
    * Key color is applied strategically across the UI
    * Used for: default action buttons, toggle switches, interactive component accents

@@ -29,7 +29,7 @@ import { TextBase, TextBaseProps } from './TextBase'
 
 export const Code = styled(TextBase).attrs<TextBaseProps>(
   ({
-    color = 'text',
+    color = 'text5',
     fontFamily = 'code',
     fontSize = 'medium',
     lineHeight,

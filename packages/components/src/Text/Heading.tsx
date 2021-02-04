@@ -74,7 +74,7 @@ const headingLineHeight = (
 export const Heading = styled(TextBase).attrs<HeadingProps>(
   ({
     as = 'h2',
-    color = 'text',
+    color = 'title',
     fontFamily = 'brand',
     fontSize,
     fontWeight = 'normal',

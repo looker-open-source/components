@@ -29,9 +29,12 @@ import { BlendColors, AliasColors } from '../../system'
 export const generateColorAliases = ({
   text1,
   text2,
+  text5,
 }: BlendColors): AliasColors => {
   return {
+    body: text1,
     secondary: text2,
     subdued: text1,
+    title: text5,
   }
 }
