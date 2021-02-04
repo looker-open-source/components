@@ -47,3 +47,8 @@ export const Bullet = Template.bind({})
 Bullet.args = {
   type: 'bullet',
 }
+
+export const Color = Template.bind({})
+Color.args = {
+  color: 'key',
+}

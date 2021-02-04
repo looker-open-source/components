@@ -30,13 +30,14 @@ import {
   space,
   SpaceProps,
   shouldForwardProp,
+  textColor,
+  TextColorProps,
   typography,
   TypographyProps,
   PositionProps,
   LayoutProps,
   position,
   layout,
-  textColor,
 } from '@looker/design-tokens'
 import styled from 'styled-components'
 import { variant } from 'styled-system'
@@ -46,6 +47,7 @@ export interface OrderedListProps
     PositionProps,
     LayoutProps,
     SpaceProps,
+    TextColorProps,
     TypographyProps {
   /**
    * Specify the type of marker to place next to list items.

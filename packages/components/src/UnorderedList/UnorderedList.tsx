@@ -30,6 +30,7 @@ import {
   space,
   SpaceProps,
   shouldForwardProp,
+  TextColorProps,
   typography,
   TypographyProps,
   PositionProps,
@@ -46,6 +47,7 @@ export interface UnorderedListProps
     PositionProps,
     LayoutProps,
     SpaceProps,
+    TextColorProps,
     TypographyProps {
   /**
    * Specify the type of marker to place next to list items.
