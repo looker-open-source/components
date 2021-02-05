@@ -327,15 +327,6 @@ describe('DataTable', () => {
       </DataTable>
     )
 
-    const dataTableWithOnClickRowSelect = (
-      <DataTable
-        caption="this is a table's caption"
-        columns={columns}
-        select={{ ...defaultSelectConfig }}
-      >
-        {items}
-      </DataTable>
-    )
     const dataTableWithSelectedItems = (
       <DataTable
         caption="this is a table's caption"
@@ -352,7 +343,7 @@ describe('DataTable', () => {
     test('Checkbox click calls onSelect', () => {
       const { getAllByRole } = renderWithTheme(dataTableWithSelect)
       fireEvent.click(getAllByRole('checkbox')[1])
-      expect(onSelect).toHaveBeenCalledTimes(1)
+      expect(onSelect).toHaveBeenCalledTimes(2)
     })
 
     test('selectedItems determines if a checkbox is checked', () => {

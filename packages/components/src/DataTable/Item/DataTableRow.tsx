@@ -35,7 +35,7 @@ import React, {
   Ref,
   useContext,
 } from 'react'
-import styled from 'styled-components'
+import styled, { DefaultTheme } from 'styled-components'
 import { DataTableContext } from '../DataTableContext'
 import {
   DataTableCheckbox,
@@ -119,6 +119,18 @@ const DataTableRowLayout = forwardRef(
 
 DataTableRowLayout.displayName = 'DataTableRowLayout'
 
+const getRowHoverColor = (
+  theme: DefaultTheme,
+  hasOnClick: boolean,
+  isHeader: boolean | undefined,
+  isSelected: boolean | 'mixed' | undefined
+) => {
+  if (!isHeader || !hasOnClick) return undefined
+  if (isSelected && hasOnClick) return theme.colors.keyAccent
+  if (hasOnClick) return theme.colors.ui1
+  return undefined
+}
+
 export const DataTableRow = styled(DataTableRowLayout)`
   td,
   th {
@@ -139,12 +151,8 @@ export const DataTableRow = styled(DataTableRowLayout)`
 
     td,
     th {
-      background: ${({ checked, isHeaderRow, theme: { colors } }) =>
-        checked && !isHeaderRow
-          ? colors.keyAccent
-          : isHeaderRow
-          ? undefined
-          : colors.ui1};
+      background: ${({ checked, isHeaderRow, onClick, theme }) =>
+        getRowHoverColor(theme, onClick !== undefined, isHeaderRow, checked)};
     }
   }
 
