@@ -93,6 +93,7 @@ export const ListItemWrapper = styled(ListItemWrapperInternal)`
     flex: 1;
     font-size: inherit;
     font-weight: inherit;
+    min-width: 0;
     outline: none;
 
     text-align: left;

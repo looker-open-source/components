@@ -28,6 +28,7 @@ import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
 
 import { IconButton } from '../Button'
+import { Text } from '../Text'
 import { ListItem, ListItemProps } from './ListItem'
 
 const Template: Story<ListItemProps> = (args) => <ListItem {...args} />
@@ -152,6 +153,16 @@ export const TruncateAndIconAndDetail = Template.bind({})
 TruncateAndIconAndDetail.args = {
   ...Truncate.args,
   detail: 'Detail',
+  icon: 'Calendar',
+}
+
+export const TruncateAndIconAndDetailAndAccessory = Template.bind({})
+TruncateAndIconAndDetailAndAccessory.args = {
+  ...Truncate.args,
+  detail: {
+    content: <Text fontSize="xsmall">Detail Accessory</Text>,
+    options: { accessory: true },
+  },
   icon: 'Calendar',
 }
 
