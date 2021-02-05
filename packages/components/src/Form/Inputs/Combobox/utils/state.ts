@@ -362,7 +362,6 @@ export const reducerMulti: Reducer<
     case ComboboxActionType.SELECT_SILENT:
       return {
         ...nextState,
-        inputValue: '',
         navigationOption: undefined,
         options: action.options || [],
       }
