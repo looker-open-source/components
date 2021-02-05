@@ -110,8 +110,8 @@ export const ListItemWrapper = styled(ListItemWrapperInternal)`
 
   ${({ focusVisible, theme: { colors } }) =>
     focusVisible &&
-    `&:focus-within button:after,
-    &:focus-within a:after {
+    `&:focus-within > button:after,
+    &:focus-within > a:after {
       content: '';
       display:block;
       border: solid 2px ${colors.keyFocus};
