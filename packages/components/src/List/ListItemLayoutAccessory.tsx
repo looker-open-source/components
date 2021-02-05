@@ -26,7 +26,7 @@
 
 import React, { FC } from 'react'
 import styled from 'styled-components'
-import { FlexItem } from '../Layout'
+import { Flex } from '../Layout'
 import { ListItemLayoutProps } from './ListItemLayout'
 import { listItemPadding } from './utils'
 
@@ -41,10 +41,10 @@ export const ListItemLayoutAccessoryInternal: FC<ListItemLayoutProps> = ({
   const content = (
     <>
       {icon}
-      <FlexItem>
+      <Flex flexDirection="column" minWidth={0}>
         {children}
         {description}
-      </FlexItem>
+      </Flex>
     </>
   )
 

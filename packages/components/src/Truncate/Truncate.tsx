@@ -75,6 +75,7 @@ export const Truncate: FC<TruncateProps> = ({ children, width = '100%' }) => {
 
 const TextStyle = styled.span<WidthProps>`
   display: block;
+  line-height: 1;
   overflow: hidden;
   text-overflow: ellipsis;
   ${widthHelper}
