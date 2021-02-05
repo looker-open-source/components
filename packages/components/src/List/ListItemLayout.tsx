@@ -33,7 +33,7 @@ import { listItemPadding } from './utils'
 export interface ListItemLayoutProps
   extends Pick<ListItemDimensions, 'px' | 'py'> {
   className?: string
-  containerCreator: FC<{ children: ReactNode; className: string }>
+  labelCreator: FC<{ children: ReactNode; className: string }>
   description?: ReactNode
   detail?: ReactNode
   icon?: ReactNode
@@ -42,7 +42,7 @@ export interface ListItemLayoutProps
 const ListItemLayoutInternal: FC<ListItemLayoutProps> = ({
   children,
   className,
-  containerCreator,
+  labelCreator,
   description,
   detail,
   icon,
@@ -58,7 +58,7 @@ const ListItemLayoutInternal: FC<ListItemLayoutProps> = ({
     </>
   )
 
-  return containerCreator({
+  return labelCreator({
     children: content,
     className: className || '',
   })

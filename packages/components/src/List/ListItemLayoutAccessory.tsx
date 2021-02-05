@@ -33,7 +33,7 @@ import { listItemPadding } from './utils'
 export const ListItemLayoutAccessoryInternal: FC<ListItemLayoutProps> = ({
   children,
   className,
-  containerCreator,
+  labelCreator,
   description,
   detail,
   icon,
@@ -50,7 +50,7 @@ export const ListItemLayoutAccessoryInternal: FC<ListItemLayoutProps> = ({
 
   return (
     <>
-      {containerCreator({
+      {labelCreator({
         children: content,
         className: className || '',
       })}

@@ -84,6 +84,19 @@ export interface ListItemProps
   truncate?: boolean
 }
 
+interface ListItemLabelProps extends CompatibleHTMLProps<HTMLElement> {
+  disabled?: boolean
+  itemRole?: 'link' | 'button'
+}
+
+export const ListItemLabel = styled.div
+  .withConfig<ListItemLabelProps>({
+    shouldForwardProp: (prop) => prop !== 'itemRole',
+  })
+  .attrs<ListItemLabelProps>(({ disabled, itemRole }) => ({
+    as: !disabled && itemRole === 'link' ? 'a' : 'button',
+  }))<ListItemLabelProps>``
+
 const ListItemInternal: FC<ListItemProps> = (props) => {
   const {
     children,
@@ -206,15 +219,16 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
     </HoverDisclosure>
   )
 
-  const LabelContainer = !disabled && itemRole === 'link' ? 'a' : 'button'
-  const LabelContainerCreator: FC<{
+  const LabelCreator: FC<{
     children: ReactNode
     className: string
   }> = ({ children, className }) => (
-    <LabelContainer
+    <ListItemLabel
+      itemRole={itemRole}
       aria-current={current}
       aria-selected={selected}
       className={className}
+      disabled={disabled}
       href={href}
       onBlur={handleOnBlur}
       onClick={disabled ? undefined : handleOnClick}
@@ -226,13 +240,13 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
       tabIndex={-1}
     >
       {children}
-    </LabelContainer>
+    </ListItemLabel>
   )
 
   const Layout = accessory ? ListItemLayoutAccessory : ListItemLayout
   const listItemContent = (
     <Layout
-      containerCreator={LabelContainerCreator}
+      labelCreator={LabelCreator}
       description={renderedDescription}
       detail={renderedDetail}
       icon={renderedIcon}
