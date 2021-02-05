@@ -87,10 +87,12 @@ const DataTableRowLayout = forwardRef(
       }
     })
 
-    const handleOnClick = (event: React.MouseEvent<HTMLElement>) =>
-      event.target instanceof HTMLAnchorElement
+    const handleOnClick = (event: React.MouseEvent<HTMLElement>) => {
+      return event.target instanceof HTMLAnchorElement ||
+        event.target.nodeName === 'INPUT'
         ? undefined
         : onClick && onClick(event)
+    }
 
     const suppressClickPropagation = (event: React.MouseEvent<HTMLElement>) => {
       event.stopPropagation()

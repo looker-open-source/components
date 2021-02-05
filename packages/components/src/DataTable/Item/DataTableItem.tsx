@@ -74,13 +74,7 @@ const DataTableItemLayout: FC<DataTableItemProps> = ({
   const ref = useRef<HTMLTableRowElement>(null)
   const { select } = useContext(DataTableContext)
 
-  const handleOnSelect = () => select && select.onSelect(id)
-
-  const handleClick = disabled
-    ? undefined
-    : select
-    ? handleOnSelect
-    : onClick || undefined
+  const handleClick = disabled ? undefined : onClick || undefined
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
     const isEventFromChild = event.currentTarget !== event.target
@@ -110,7 +104,6 @@ const DataTableItemLayout: FC<DataTableItemProps> = ({
   const onChange = select ? () => select.onSelect(id) : undefined
 
   const checked = select && select.selectedItems.includes(id)
-
   return (
     <DataTableRow
       checked={checked}
