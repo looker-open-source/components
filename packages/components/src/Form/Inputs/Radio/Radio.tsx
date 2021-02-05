@@ -29,7 +29,6 @@ import styled from 'styled-components'
 import { reset, space, SpaceProps } from '@looker/design-tokens'
 import { InputProps, pickInputProps } from '../InputProps'
 import { ValidationType } from '../../ValidationMessage'
-import { inputTextValidation } from '../InputText'
 import { FauxRadio } from './FauxRadio'
 
 export interface RadioProps
@@ -77,23 +76,18 @@ export const Radio = styled(RadioLayout)`
   }
 
   input + ${FauxRadio} {
-    ${inputTextValidation}
-  }
-
-  input:checked + ${FauxRadio} {
     border-color: ${({ theme, validationType }) =>
       validationType === 'error'
         ? theme.colors.criticalBorder
         : theme.colors.ui2};
+  }
+
+  input:checked + ${FauxRadio} {
     color: ${({ theme }) => theme.colors.key};
   }
 
   input:not(:checked) + ${FauxRadio} {
     background: ${({ theme }) => theme.colors.field};
-    border-color: ${({ theme, validationType }) =>
-      validationType === 'error'
-        ? theme.colors.criticalBorder
-        : theme.colors.ui2};
   }
 
   input:focus + ${FauxRadio} {
@@ -103,13 +97,11 @@ export const Radio = styled(RadioLayout)`
   }
 
   input:disabled + ${FauxRadio} {
-    border-color: ${({ theme }) => theme.colors.ui2};
     color: ${({ theme }) => theme.colors.text1};
   }
 
   input:disabled:not(:checked) + ${FauxRadio} {
     background: ${({ theme }) => theme.colors.ui1};
-    border-color: ${({ theme }) => theme.colors.ui2};
     color: transparent;
 
     &::after {
