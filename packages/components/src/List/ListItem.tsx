@@ -24,13 +24,14 @@
 
  */
 
-import { CompatibleHTMLProps } from '@looker/design-tokens'
+import { CompatibleHTMLProps, FontSizes } from '@looker/design-tokens'
 import { IconNames } from '@looker/icons'
 import styled from 'styled-components'
 import React, { FC, ReactNode, useContext, useRef, useState } from 'react'
 import { ListItemDetail } from '../List/ListItemDetail'
-import { Paragraph } from '../Text'
+import { Text } from '../Text'
 import { Icon, IconPlaceholder } from '../Icon'
+import { Truncate } from '../Truncate'
 import { HoverDisclosureContext, HoverDisclosure, useHovered } from '../utils'
 import { ListItemContext } from './ListItemContext'
 import { ListItemLayout } from './ListItemLayout'
@@ -38,6 +39,18 @@ import { ListItemLayoutAccessory } from './ListItemLayoutAccessory'
 import { ListItemWrapper } from './ListItemWrapper'
 import { DensityRamp, Detail, ListItemStatefulProps } from './types'
 import { createSafeRel, getDetailOptions, listItemDimensions } from './utils'
+
+const TruncateWrapper: FC<{
+  color?: string
+  fontSize?: FontSizes
+  lineHeight?: FontSizes
+}> = ({ children, color, fontSize, lineHeight }) => (
+  <Truncate>
+    <Text color={color} fontSize={fontSize} lineHeight={lineHeight}>
+      {children}
+    </Text>
+  </Truncate>
+)
 
 export interface ListItemProps
   extends CompatibleHTMLProps<HTMLElement>,
@@ -181,30 +194,30 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
     )
   }
 
+  const TextWrapper = truncate ? TruncateWrapper : Text
+
   const renderedChildren =
     typeof children === 'string' ? (
-      <Paragraph
+      <TextWrapper
         color={labelColor}
         fontSize={itemDimensions.labelFontSize}
         lineHeight={itemDimensions.labelLineHeight}
-        truncate={truncate}
       >
         {children}
-      </Paragraph>
+      </TextWrapper>
     ) : (
       children
     )
 
   const renderedDescription =
     typeof description === 'string' ? (
-      <Paragraph
+      <TextWrapper
         color={descriptionColor}
         fontSize={itemDimensions.descriptionFontSize}
         lineHeight={itemDimensions.descriptionLineHeight}
-        truncate={truncate}
       >
         {description}
-      </Paragraph>
+      </TextWrapper>
     ) : (
       description
     )
