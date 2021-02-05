@@ -67,12 +67,15 @@ export const Radio = styled(RadioLayout)`
   width: 1rem;
   input {
     background: ${(props) => props.theme.colors.field};
-    cursor: ${({ disabled }) => (disabled ? 'not-allowed' : undefined)};
     height: 100%;
     opacity: 0;
     position: absolute;
     width: 100%;
     z-index: 1;
+
+    &:disabled {
+      cursor: not-allowed;
+    }
   }
 
   input + ${FauxRadio} {
