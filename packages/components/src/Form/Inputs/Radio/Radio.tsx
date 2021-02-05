@@ -28,21 +28,28 @@ import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
 import { reset, space, SpaceProps } from '@looker/design-tokens'
 import { InputProps, pickInputProps } from '../InputProps'
+import { ValidationType } from '../../ValidationMessage'
 import { FauxRadio } from './FauxRadio'
 
 export interface RadioProps
   extends SpaceProps,
-    Omit<InputProps, 'readonly' | 'type' | 'checked' | 'onClick'> {
+    Omit<InputProps, 'readOnly' | 'type' | 'checked' | 'onClick'> {
   checked?: boolean
+  validationType?: ValidationType
 }
 
 const RadioLayout = forwardRef(
   (props: RadioProps, ref: Ref<HTMLInputElement>) => {
-    const { className, ...restProps } = props
+    const { className, validationType, ...restProps } = props
 
     return (
       <div className={className}>
-        <input type="radio" {...pickInputProps(restProps)} ref={ref} />
+        <input
+          {...pickInputProps(restProps)}
+          aria-invalid={validationType === 'error' ? 'true' : undefined}
+          ref={ref}
+          type="radio"
+        />
         <FauxRadio />
       </div>
     )
@@ -60,13 +67,22 @@ export const Radio = styled(RadioLayout)`
   width: 1rem;
   input {
     background: ${(props) => props.theme.colors.field};
-    cursor: ${({ readOnly, disabled }) =>
-      readOnly || disabled ? 'not-allowed' : undefined};
     height: 100%;
     opacity: 0;
     position: absolute;
     width: 100%;
     z-index: 1;
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+
+  input + ${FauxRadio} {
+    border-color: ${({ theme, validationType }) =>
+      validationType === 'error'
+        ? theme.colors.criticalBorder
+        : theme.colors.ui2};
   }
 
   input:checked + ${FauxRadio} {
@@ -75,7 +91,6 @@ export const Radio = styled(RadioLayout)`
 
   input:not(:checked) + ${FauxRadio} {
     background: ${({ theme }) => theme.colors.field};
-    border-color: ${({ theme }) => theme.colors.ui2};
   }
 
   input:focus + ${FauxRadio} {
@@ -90,6 +105,7 @@ export const Radio = styled(RadioLayout)`
 
   input:disabled:not(:checked) + ${FauxRadio} {
     background: ${({ theme }) => theme.colors.ui1};
+    color: transparent;
 
     &::after {
       background: ${({ theme }) => theme.colors.ui1};

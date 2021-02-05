@@ -30,10 +30,48 @@ import { renderWithTheme } from '@looker/components-test-utils'
 import { screen } from '@testing-library/react'
 import { FieldRadio } from './FieldRadio'
 
-test('A FieldRadio disabled', () => {
-  renderWithTheme(
-    <FieldRadio disabled id="FieldRadioID" label="FM" name="thumbsUp" />
-  )
+describe('FieldRadio', () => {
+  test('FieldRadio renders with label', () => {
+    renderWithTheme(<FieldRadio id="FieldRadioID" label="FM" name="thumbsUp" />)
 
-  expect(screen.getByLabelText('FM')).toBeDisabled()
+    expect(screen.getByLabelText('FM')).toBeInTheDocument()
+  })
+
+  test('FieldRadio renders description and detail props', () => {
+    const { getByText } = renderWithTheme(
+      <FieldRadio
+        description="describe something here."
+        detail="0/50"
+        id="FieldRadioID"
+        label="FM"
+        name="thumbsUp"
+      />
+    )
+    expect(getByText('describe something here.')).toBeInTheDocument()
+    expect(getByText('0/50')).toBeInTheDocument()
+  })
+
+  test('FieldRadio renders disabled', () => {
+    const { getByRole } = renderWithTheme(
+      <FieldRadio disabled id="FieldRadioID" label="FM" name="thumbsUp" />
+    )
+    const RadioInput = getByRole('radio')
+
+    expect(RadioInput as HTMLInputElement).toBeDisabled()
+  })
+
+  test('FieldRadio renders with error message', () => {
+    const errorMessage = 'This is an error'
+
+    const { getByText } = renderWithTheme(
+      <FieldRadio
+        id="FieldRadioID"
+        label="FM"
+        name="thumbsUp"
+        validationMessage={{ message: errorMessage, type: 'error' }}
+      />
+    )
+
+    expect(getByText('This is an error')).toBeInTheDocument()
+  })
 })

@@ -50,13 +50,14 @@ const RadioGroupLayout = forwardRef(
   (
     {
       autoFocus,
+      defaultValue,
       disabled,
       inline,
       name: propsName,
-      options,
-      defaultValue,
-      value,
       onChange,
+      options,
+      validationType,
+      value,
       ...rest
     }: RadioGroupProps,
     ref: Ref<HTMLDivElement>
@@ -82,12 +83,13 @@ const RadioGroupLayout = forwardRef(
 
       return (
         <FieldRadio
+          detail={option.detail}
           disabled={option.disabled || disabled}
           key={option.value}
-          detail={option.detail}
           label={option.label}
           name={name}
           onChange={getChangeHandler(option.value)}
+          validationType={validationType}
           {...checkedProps}
           {...autoFocusProps}
         />

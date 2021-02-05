@@ -26,55 +26,56 @@
 
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
-import { FieldRadio, FieldRadioProps } from './FieldRadio'
+import { options } from '../../../__mocks__/CheckboxRadio'
+import { FieldRadioGroup, FieldRadioGroupProps } from './FieldRadioGroup'
 
-const Template: Story<FieldRadioProps> = (args) => <FieldRadio {...args} />
+export default {
+  component: FieldRadioGroup,
+  title: 'FieldRadioGroup',
+}
+
+const Template: Story<FieldRadioGroupProps> = (args) => (
+  <FieldRadioGroup
+    {...args}
+    autoFocus
+    label="Cheeses"
+    description="Pick all your cheeses"
+    options={options}
+  />
+)
 
 export const Basic = Template.bind({})
-Basic.args = {
-  id: 'fieldRadioId',
-  label: 'Field Radio Example',
-  name: 'thumbsUp',
-}
-
-export const DetailDescription = Template.bind({})
-DetailDescription.args = {
-  ...Basic.args,
-  description: 'describe something here.',
-  detail: '0/50',
-}
-
-export const Checked = Template.bind({})
-Checked.args = {
-  ...Basic.args,
-  checked: true,
-}
+Basic.args = {}
 
 export const Disabled = Template.bind({})
 Disabled.args = {
-  ...Basic.args,
   disabled: true,
 }
 
-export const DisabledChecked = Template.bind({})
-DisabledChecked.args = {
-  ...Checked.args,
-  disabled: true,
+export const Required = Template.bind({})
+Required.args = {
+  required: true,
+}
+
+export const Inline = Template.bind({})
+Inline.args = {
+  inline: true,
 }
 
 export const Error = Template.bind({})
 Error.args = {
-  ...Basic.args,
-  validationMessage: { message: 'This is an error', type: 'error' },
+  validationMessage: {
+    message: 'Select at least 1 cheese',
+    type: 'error',
+  },
 }
 
-export const DetailDescriptionError = Template.bind({})
-DetailDescriptionError.args = {
-  ...DetailDescription.args,
-  validationMessage: { message: 'This is an error', type: 'error' },
-}
-
-export default {
-  component: FieldRadio,
-  title: 'FieldRadio',
+export const ErrorInline = Template.bind({})
+ErrorInline.args = {
+  inline: true,
+  required: true,
+  validationMessage: {
+    message: 'Select at least 1 cheese',
+    type: 'error',
+  },
 }

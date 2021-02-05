@@ -48,11 +48,7 @@ const FieldRadioGroupLayout: FC<FieldRadioGroupProps> = ({
   const id = useID(propsID)
 
   return (
-    <Field
-      {...pickFieldProps(props)}
-      validationMessage={validationMessage}
-      id={id}
-    >
+    <Field {...pickFieldProps(props)} id={id}>
       <RadioGroup
         {...omitFieldProps(props)}
         aria-describedby={`describedby-${id}`}
@@ -61,6 +57,7 @@ const FieldRadioGroupLayout: FC<FieldRadioGroupProps> = ({
         inline={props.inline || inputsInline}
         name={name || id}
         options={options}
+        validationType={validationMessage && validationMessage.type}
       />
     </Field>
   )

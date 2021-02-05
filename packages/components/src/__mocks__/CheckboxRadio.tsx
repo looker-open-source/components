@@ -23,39 +23,76 @@
  SOFTWARE.
 
  */
-import 'jest-styled-components'
-import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import map from 'lodash/map'
-import { fieldOptions } from '../../../__mocks__/CheckboxRadio'
-import { FieldRadioGroup } from './FieldRadioGroup'
 
-const fieldRadioProps = {
-  defaultValue: 'cheddar',
-  id: '1',
-  name: 'group1',
-  options: fieldOptions,
-}
-test('FieldRadioGroup render a radio list', () => {
-  const extractCheckboxFromDomList = (list: HTMLElement) => {
-    const options = list.getElementsByTagName('label')
-    return map(options, (el: HTMLElement) => {
-      return el.textContent
-    })
-  }
+export const options = [
+  {
+    label: 'Cheddar',
+    value: 'cheddar',
+  },
+  {
+    label: 'Gouda',
+    value: 'gouda',
+  },
+  {
+    disabled: true,
+    label: 'Swiss',
+    value: 'swiss',
+  },
+  {
+    label: 'Roquefort',
+    value: 'roquefort',
+  },
+  {
+    label: 'Cheddar',
+    value: 'cheddar',
+  },
+  {
+    label: 'Gouda',
+    value: 'gouda',
+  },
+  {
+    disabled: true,
+    label: 'Swiss',
+    value: 'swiss',
+  },
+  {
+    label: 'Roquefort',
+    value: 'roquefort',
+  },
+  {
+    label: 'Cheddar',
+    value: 'cheddar',
+  },
+  {
+    label: 'Gouda',
+    value: 'gouda',
+  },
+  {
+    disabled: true,
+    label: 'Swiss',
+    value: 'swiss',
+  },
+  {
+    label: 'Roquefort',
+    value: 'roquefort',
+  },
+]
 
-  const renderListContent = () => {
-    const { getByTestId } = renderWithTheme(
-      <FieldRadioGroup {...fieldRadioProps} required />
-    )
-    return getByTestId('radio-list')
-  }
-
-  const domList = renderListContent()
-  expect(extractCheckboxFromDomList(domList)).toEqual([
-    'Cheddar',
-    'Gouda',
-    'Swiss',
-    'Roquefort',
-  ])
-})
+export const fieldOptions = [
+  {
+    label: 'Cheddar',
+    value: 'cheddar',
+  },
+  {
+    label: 'Gouda',
+    value: 'gouda',
+  },
+  {
+    label: 'Swiss',
+    value: 'swiss',
+  },
+  {
+    label: 'Roquefort',
+    value: 'roquefort',
+  },
+]
