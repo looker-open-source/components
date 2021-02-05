@@ -27,78 +27,53 @@
 import 'jest-styled-components'
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { fireEvent } from '@testing-library/react'
+import { screen, fireEvent } from '@testing-library/react'
 import { Radio } from './Radio'
 
-afterEach(() => {
-  jest.resetAllMocks()
-})
+describe('Radio', () => {
+  test('renders properly', () => {
+    renderWithTheme(<Radio defaultChecked />)
+    expect(screen.getByRole('radio')).toBeInTheDocument()
+  })
 
-test('Renders Radio', () => {
-  const { getByRole } = renderWithTheme(<Radio defaultChecked />)
-  const RadioInput = getByRole('radio')
+  test('accepts defaultChecked prop', () => {
+    renderWithTheme(<Radio defaultChecked />)
+    expect(screen.getByRole('radio')).toBeChecked()
+  })
 
-  expect(RadioInput as HTMLInputElement).toBeInTheDocument()
-})
+  test('should accept disabled prop', () => {
+    renderWithTheme(<Radio disabled />)
+    expect(screen.getByRole('radio')).toBeDisabled()
+  })
 
-test('Accepts defaultChecked prop', () => {
-  const { getByRole } = renderWithTheme(<Radio defaultChecked />)
-  const RadioInput = getByRole('radio')
+  test('should accept disabled and checked props together', () => {
+    renderWithTheme(<Radio disabled checked />)
+    expect(screen.getByRole('radio')).toBeDisabled()
+    expect(screen.getByRole('radio')).toBeChecked()
+  })
 
-  expect(RadioInput as HTMLInputElement).toBeChecked()
-})
+  test('has aria-describedby attribute', () => {
+    renderWithTheme(<Radio aria-describedby="some-id" id="RadioID" />)
+    expect(screen.getByRole('radio')).toHaveAttribute(
+      'aria-describedby',
+      'some-id'
+    )
+  })
 
-test('Radio should accept disabled prop', () => {
-  const { getByRole } = renderWithTheme(<Radio disabled />)
-  const RadioInput = getByRole('radio')
+  test('renders with error', () => {
+    renderWithTheme(<Radio validationType="error" />)
+    expect(screen.getByRole('radio')).toHaveAttribute('aria-invalid', 'true')
+  })
 
-  expect(RadioInput as HTMLInputElement).toBeDisabled() // toHaveAttribute('disabled')
-  // assertSnapshot(<Radio disabled id="RadioID" />)
-})
+  test('renders checked with error', () => {
+    renderWithTheme(<Radio defaultChecked validationType="error" />)
+    expect(screen.getByRole('radio')).toHaveAttribute('aria-invalid', 'true')
+  })
 
-test('Radio should accept disabled and checked props', () => {
-  const { getByRole } = renderWithTheme(<Radio disabled checked />)
-  const RadioInput = getByRole('radio')
-
-  expect(RadioInput as HTMLInputElement).toBeDisabled()
-  expect(RadioInput as HTMLInputElement).toBeChecked()
-})
-
-test('Radio with aria-describedby', () => {
-  const { getByRole } = renderWithTheme(
-    <Radio aria-describedby="some-id" id="RadioID" />
-  )
-  const RadioInput = getByRole('radio')
-
-  expect(RadioInput as HTMLInputElement).toHaveAttribute(
-    'aria-describedby',
-    'some-id'
-  )
-})
-
-test('Renders Radio with error', () => {
-  const { getByRole } = renderWithTheme(<Radio validationType="error" />)
-  const RadioInput = getByRole('radio')
-
-  expect(RadioInput as HTMLInputElement).toHaveAttribute('aria-invalid', 'true')
-})
-
-test('Renders Radio checked with error', () => {
-  const { getByRole } = renderWithTheme(
-    <Radio defaultChecked validationType="error" />
-  )
-  const RadioInput = getByRole('radio')
-
-  expect(RadioInput as HTMLInputElement).toHaveAttribute('aria-invalid', 'true')
-})
-
-test('Radio should trigger onChange handler', () => {
-  const onChange = jest.fn()
-  const { getByRole } = renderWithTheme(
-    <Radio id="radioID" onChange={onChange} />
-  )
-
-  const radioInput = getByRole('radio')
-  fireEvent.click(radioInput)
-  expect(onChange).toHaveBeenCalledTimes(1)
+  test('should trigger onChange handler', () => {
+    const onChange = jest.fn()
+    renderWithTheme(<Radio id="radioID" onChange={onChange} />)
+    fireEvent.click(screen.getByRole('radio'))
+    expect(onChange).toHaveBeenCalledTimes(1)
+  })
 })
