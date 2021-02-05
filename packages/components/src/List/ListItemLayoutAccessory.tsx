@@ -60,5 +60,5 @@ export const ListItemLayoutAccessoryInternal: FC<ListItemLayoutProps> = ({
 }
 
 export const ListItemLayoutAccessory = styled(ListItemLayoutAccessoryInternal)`
-  ${(props) => listItemPadding({ accessory: true, ...props })}
+  ${(props) => listItemPadding({ ...props })}
 `
