@@ -96,24 +96,40 @@ describe('Panel', () => {
   const UncontrolledPanel = () => (
     <Panels>
       <ul>
-        <li>Option A</li>
-        <Panel title="More Options" content={'Panel content'}>
-          <li>Option B</li>
+        <Panel
+          content={'content from the right edge...'}
+          direction="right"
+          title="Right"
+        >
+          <li>Right</li>
+        </Panel>
+        <Panel title="Left" content={'content from the left edge...'}>
+          <li>Left</li>
         </Panel>
       </ul>
     </Panels>
   )
 
+  test('Panel works properly when direction is equal to right', () => {
+    const { getByText } = renderWithTheme(<UncontrolledPanel />)
+
+    const right = getByText('Right')
+    expect(right).toBeInTheDocument()
+
+    fireEvent.click(right)
+    expect(getByText('content from the right edge...')).toBeInTheDocument()
+  })
+
   test('uncontrolled Panel displays content prop', () => {
     const { getByText } = renderWithTheme(<UncontrolledPanel />)
 
-    const liElement = getByText('Option B')
-    expect(liElement).toBeInTheDocument()
+    const left = getByText('Left')
+    expect(left).toBeInTheDocument()
 
-    fireEvent.click(liElement)
+    fireEvent.click(left)
 
     // Find content
-    expect(getByText('Panel content')).toBeInTheDocument()
+    expect(getByText('content from the left edge...')).toBeInTheDocument()
   })
 
   test('controlled Panel displays content', () => {

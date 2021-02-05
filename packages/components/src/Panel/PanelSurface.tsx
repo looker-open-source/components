@@ -27,11 +27,11 @@
 import styled, { css } from 'styled-components'
 import { variant } from 'styled-system'
 
-type PanelSurfaceDirections = 'down' | 'left' | 'right' | 'up'
+type PanelSurfaceDirections = 'left' | 'right'
 export interface PanelSurfaceProps {
   /**
    * Edge of the screen from which the panel will enter
-   * down - left - right - up
+   * left - right
    * @default 'left'
    */
   direction?: PanelSurfaceDirections
@@ -44,10 +44,8 @@ const surfaceTransition = () => css`
 const direction = variant({
   prop: 'direction',
   variants: {
-    down: { transform: 'translate(0, 100%);' },
     left: { transform: 'translate(-100%, 0);' },
     right: { transform: 'translate(100%, 0);' },
-    up: { transform: 'translate(0, -100%);' },
   },
 })
 

@@ -61,18 +61,7 @@ export const Basic = () => {
             >
               <ListItem icon="ArrowBackward">Right</ListItem>
             </Panel>
-            <Panel content={'content from Up...'} direction="up" title="Up">
-              <ListItem icon="ArrowDownward">Up</ListItem>
-            </Panel>
-            <Panel
-              content={'content from Down...'}
-              direction="down"
-              title="Down"
-            >
-              <ListItem icon="ArrowUpward">Down</ListItem>
-            </Panel>
           </List>
-
           <Panel
             content={
               <List>

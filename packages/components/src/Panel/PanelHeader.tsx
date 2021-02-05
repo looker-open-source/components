@@ -49,16 +49,7 @@ export const PanelHeader: FC<PanelHeaderProps> = ({
   handleClose,
   title,
 }) => {
-  const icon =
-    direction === 'left'
-      ? 'ArrowBackward'
-      : // eslint-disable-next-line no-constant-condition
-      direction === 'right'
-      ? 'ArrowForward'
-      : // eslint-disable-next-line no-constant-condition
-      direction === 'up'
-      ? 'ArrowUpward'
-      : 'ArrowDownward'
+  const icon = direction === 'left' ? 'ArrowBackward' : 'ArrowForward'
 
   const label = typeof title === 'string' ? `Close ${title}` : 'Close Panel'
   return (
