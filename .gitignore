@@ -3,5 +3,5 @@ coverage
 node_modules
 packages
 playground
-storybook
+/storybook
 www
