@@ -42,7 +42,7 @@ const TreeLayout: FC<TreeProps> = ({
   children,
   className,
   color,
-  density: propsDensity,
+  density: propsDensity = -3, // TODO: Set this to 0 after initial refactor PR
   detail: propsDetail,
   disabled,
   dividers,
