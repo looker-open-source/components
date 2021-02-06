@@ -55,7 +55,7 @@ export interface UsePanelProps {
    * TODO: 'right' | 'up' | 'down'
    * @default 'left'
    */
-  direction?: 'down' | 'left' | 'right' | 'up'
+  direction?: 'left' | 'right'
 
   /**
    * Dialog will be displayed immediately when rendered.

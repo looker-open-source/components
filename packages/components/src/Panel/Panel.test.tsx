@@ -106,6 +106,9 @@ describe('Panel', () => {
         <Panel title="Left" content={'content from the left edge...'}>
           <li>Left</li>
         </Panel>
+        <Panel content="My neat dialog" title="render prop">
+          {(panelProps) => <li {...panelProps}>render prop</li>}
+        </Panel>
       </ul>
     </Panels>
   )
@@ -177,5 +180,12 @@ describe('Panel', () => {
     fireEvent.click(getByText('Close Panel Hook'))
 
     expect(getByText('Option A')).toBeInTheDocument()
+  })
+
+  test('with no content fails', () => {
+    const { getByText } = renderWithTheme(<UncontrolledPanel />)
+    expect(getByText('render prop')).toBeInTheDocument()
+    fireEvent.click(getByText('render prop'))
+    expect(getByText('My neat dialog')).toBeInTheDocument()
   })
 })
