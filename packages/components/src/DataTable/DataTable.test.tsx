@@ -346,11 +346,6 @@ describe('DataTable', () => {
       expect(onSelect).toHaveBeenCalled()
     })
 
-    // test('correct  behavior onClick', () => {
-    //   const { debug } = renderWithTheme(dataTableWithClickableRows)
-    //   debug()
-    // })
-
     test('selectedItems determines if a checkbox is checked', () => {
       const { getAllByRole } = renderWithTheme(dataTableWithSelectedItems)
       const checkbox = getAllByRole('checkbox')[1]

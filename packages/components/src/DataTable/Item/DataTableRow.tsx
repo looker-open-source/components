@@ -24,7 +24,7 @@
 
  */
 
-import { CompatibleHTMLProps } from '@looker/design-tokens'
+import { CompatibleHTMLProps, Theme } from '@looker/design-tokens'
 import pick from 'lodash/pick'
 import React, {
   Children,
@@ -35,7 +35,7 @@ import React, {
   Ref,
   useContext,
 } from 'react'
-import styled, { DefaultTheme } from 'styled-components'
+import styled from 'styled-components'
 import { DataTableContext } from '../DataTableContext'
 import {
   DataTableCheckbox,
@@ -88,8 +88,7 @@ const DataTableRowLayout = forwardRef(
     })
 
     const handleOnClick = (event: React.MouseEvent<HTMLElement>) => {
-      return event.target instanceof HTMLAnchorElement ||
-        event.target.nodeName === 'INPUT'
+      return event.target instanceof HTMLAnchorElement
         ? undefined
         : onClick && onClick(event)
     }
@@ -106,7 +105,7 @@ const DataTableRowLayout = forwardRef(
         onClick={handleOnClick}
       >
         {hasCheckbox ? (
-          <ColumnType>
+          <ColumnType onClick={suppressClickPropagation}>
             <DataTableCheckbox {...pick(props, checkListProps)} />
           </ColumnType>
         ) : (
@@ -122,12 +121,12 @@ const DataTableRowLayout = forwardRef(
 DataTableRowLayout.displayName = 'DataTableRowLayout'
 
 const getRowHoverColor = (
-  theme: DefaultTheme,
+  theme: Theme,
   hasOnClick: boolean,
-  isHeader: boolean | undefined,
-  isSelected: boolean | 'mixed' | undefined
+  isHeader: boolean,
+  isSelected: boolean
 ) => {
-  if (!isHeader || !hasOnClick) return undefined
+  if (isHeader || !hasOnClick) return undefined
   if (isSelected && hasOnClick) return theme.colors.keyAccent
   if (hasOnClick) return theme.colors.ui1
   return undefined
@@ -154,7 +153,12 @@ export const DataTableRow = styled(DataTableRowLayout)`
     td,
     th {
       background: ${({ checked, isHeaderRow, onClick, theme }) =>
-        getRowHoverColor(theme, onClick !== undefined, isHeaderRow, checked)};
+        getRowHoverColor(
+          theme,
+          Boolean(onClick),
+          Boolean(isHeaderRow),
+          Boolean(checked)
+        )};
     }
   }
 
