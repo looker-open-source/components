@@ -26,6 +26,7 @@
 
 import { firePasteEvent, renderWithTheme } from '@looker/components-test-utils'
 import { cleanup, fireEvent, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import React from 'react'
 
 import { SelectMulti } from './SelectMulti'
@@ -80,20 +81,81 @@ describe('SelectMulti', () => {
     expect(getAllByRole('button')).toHaveLength(2)
   })
 
-  test('defaultValues', () => {
-    const options = [
-      { label: 'Foo', value: 'FOO' },
-      { label: 'Bar', value: 'BAR' },
-      { label: 'Baz', value: 'BAZ' },
-      { label: 'Qux', value: 'QUX' },
+  test('controlled value & context mismatch', () => {
+    const TestComponent = () => {
+      const [values, setValues] = React.useState<string[] | undefined>(['FOO'])
+      const handleFilter = () => {
+        // Contrived example to test how the component handles "unexpected" values
+        // i.e. the values prop is different from the values in context
+        // Tests a bug fix where the input value was getting lost (SELECT_SILENT)
+        setValues([])
+      }
+      return (
+        <SelectMulti
+          values={values}
+          onChange={setValues}
+          options={basicOptions}
+          isFilterable
+          onFilter={handleFilter}
+          placeholder="Search"
+        />
+      )
+    }
+    renderWithTheme(<TestComponent />)
+    const input = screen.getByPlaceholderText('Search')
+    userEvent.type(input, 'b')
+    expect(input).toHaveValue('b')
+
+    fireEvent.click(document)
+  })
+
+  test('controlled, filterable', () => {
+    const cheeses = [
+      { value: 'Cheddar' },
+      { value: 'Gouda' },
+      { value: 'Swiss' },
+      { value: 'Feta' },
+      { value: 'Mascarpone' },
+      { value: 'Brie' },
+      { value: 'Mozzarella' },
+      { value: 'Cotija' },
+      { value: 'Pepperjack' },
     ]
-    const { getByText, getAllByRole } = renderWithTheme(
-      <SelectMulti options={options} defaultValues={['BAR']} />
-    )
-    // should already have the chip
-    expect(getByText('Bar')).toBeVisible()
-    // 1 chip remove button and 1 clear all button
-    expect(getAllByRole('button')).toHaveLength(2)
+
+    const TestComponent = () => {
+      const [values, setValues] = React.useState<string[] | undefined>([
+        'Cheddar',
+      ])
+      const [term, setTerm] = React.useState('')
+
+      const options = React.useMemo(() => {
+        if (term === '') return cheeses
+        return cheeses.filter(
+          (cheese) =>
+            cheese.value.toUpperCase().indexOf(term.toUpperCase()) > -1
+        )
+      }, [term])
+      return (
+        <SelectMulti
+          values={values}
+          onChange={setValues}
+          options={options}
+          isFilterable
+          onFilter={setTerm}
+          placeholder="Search"
+        />
+      )
+    }
+
+    renderWithTheme(<TestComponent />)
+    const input = screen.getByPlaceholderText('Search')
+    userEvent.type(input, 'z')
+    // Tests a bug fix with the controlled value behavior where SELECT_SILENT
+    // was incorrectly triggered b/c the context value had '' for label
+    // when the selected option is filtered out (faulty logic in getComboboxText)
+    expect(input).toHaveValue('z')
+
+    fireEvent.click(document)
   })
 })
 
