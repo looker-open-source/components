@@ -29,8 +29,40 @@ import { fireEvent } from '@testing-library/react'
 import 'jest-styled-components'
 import React, { useState } from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { Icon } from '../Icon'
 import { Panel, Panels, usePanel } from './'
+
+const globalConsole = global.console
+/* eslint-disable-next-line @typescript-eslint/unbound-method */
+const globalGetBoundingClientRect = Element.prototype.getBoundingClientRect
+
+beforeEach(() => {
+  global.console = {
+    ...globalConsole,
+    error: jest.fn(),
+    warn: jest.fn(),
+  }
+  /* eslint-disable-next-line @typescript-eslint/unbound-method */
+  Element.prototype.getBoundingClientRect = jest.fn(() => {
+    return {
+      bottom: 0,
+      height: 30,
+      left: 0,
+      right: 0,
+      toJSON: jest.fn(),
+      top: 0,
+      width: 360,
+      x: 0,
+      y: 0,
+    }
+  })
+})
+
+afterEach(() => {
+  jest.resetAllMocks()
+  global.console = globalConsole
+  /* eslint-disable-next-line @typescript-eslint/unbound-method */
+  Element.prototype.getBoundingClientRect = globalGetBoundingClientRect
+})
 
 describe('Panel', () => {
   const UsePanelHook = () => {
@@ -62,13 +94,6 @@ describe('Panel', () => {
     const [option, setOption] = useState(false)
     const toggleOption = () => setOption(!option)
 
-    const title = (
-      <>
-        <Icon color="inform" name="ArrowBackward" m="xsmall" />
-        return to main option
-      </>
-    )
-
     return (
       <Panels>
         <ul>
@@ -80,7 +105,7 @@ describe('Panel', () => {
           isOpen={option}
           setOpen={setOption}
           direction="left"
-          title={title}
+          title="return to main option"
           content={
             <ul>
               <li>Panel 1</li>
@@ -187,5 +212,13 @@ describe('Panel', () => {
     expect(getByText('render prop')).toBeInTheDocument()
     fireEvent.click(getByText('render prop'))
     expect(getByText('My neat dialog')).toBeInTheDocument()
+  })
+
+  test('triggers console.warn if no children is passed', () => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore
+    renderWithTheme(<Panel>{null}</Panel>)
+    // eslint-disable-next-line no-console
+    expect(console.warn).toHaveBeenCalled()
   })
 })

@@ -35,7 +35,7 @@ export interface PanelHeaderProps {
    * defines the icon displayed and the direction that the panel will appear and disappear
    * @default 'left'
    */
-  direction?: 'down' | 'left' | 'right' | 'up'
+  direction?: 'left' | 'right'
   /**
    * callback to close Panel
    */
@@ -51,19 +51,23 @@ export const PanelHeader: FC<PanelHeaderProps> = ({
 }) => {
   const icon = direction === 'left' ? 'ArrowBackward' : 'ArrowForward'
 
-  const label = typeof title === 'string' ? `Close ${title}` : 'Close Panel'
+  const label = `Close ${title}`
   return (
-    <Space as="header" gap="small" className={className}>
+    <Space
+      as="header"
+      className={className}
+      height="40px"
+      ml="large"
+      mr="large"
+      mt="small"
+    >
       <IconButton
-        onClick={handleClose}
         icon={icon}
         label={label}
-        toggle
-        shape="round"
-        outline
-        size="large"
+        onClick={handleClose}
+        size="small"
       />
-      <Heading>{title}</Heading>
+      <Heading fontSize="xlarge">{title}</Heading>
     </Space>
   )
 }
