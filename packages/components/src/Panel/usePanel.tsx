@@ -75,8 +75,9 @@ export interface UsePanelProps {
 
   /**
    * Value displayed as Panel header clickable to close Panel
+   * TODO: title can be a ReactNode
    */
-  title: string | ReactNode
+  title: string
 }
 
 export interface UsePanelResponseDom {

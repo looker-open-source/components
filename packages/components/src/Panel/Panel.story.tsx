@@ -27,7 +27,6 @@
 import React, { useState } from 'react'
 import { List, ListItem } from '../List'
 import { Aside, Page, Section } from '../Layout'
-import { Icon } from '../Icon'
 import { Panel, Panels, usePanel } from './'
 
 export default {
@@ -38,13 +37,6 @@ export default {
 export const Basic = () => {
   const [open, setOpen] = useState(false)
   const toggleOpen = () => setOpen(!open)
-
-  const title = (
-    <>
-      <Icon name="ArrowLeft" m="xsmall" />
-      Left
-    </>
-  )
 
   return (
     <Page hasAside>
@@ -73,7 +65,7 @@ export const Basic = () => {
             direction="left"
             isOpen={open}
             setOpen={setOpen}
-            title={title}
+            title="Left"
           />
         </Panels>
       </Aside>
