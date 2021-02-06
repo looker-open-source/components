@@ -24,34 +24,24 @@
 
  */
 
-import styled from 'styled-components'
-import {
-  CompatibleHTMLProps,
-  reset,
-  shouldForwardProp,
-  textColor,
-  TextColorProps,
-  typography,
-  TypographyProps,
-} from '@looker/design-tokens'
+import { Story } from '@storybook/react/types-6-0'
+import React from 'react'
+import { Label, LabelProps } from './Label'
 
-export interface LabelProps
-  extends TextColorProps,
-    TypographyProps,
-    CompatibleHTMLProps<HTMLLabelElement> {}
+export default {
+  component: Label,
+  title: 'Label',
+}
 
-export const Label = styled.label
-  .withConfig({
-    shouldForwardProp,
-  })
-  .attrs<LabelProps>(
-    ({ color = 'text4', fontSize = 'xsmall', fontWeight = 'medium' }) => ({
-      color,
-      fontSize,
-      fontWeight,
-    })
-  )<LabelProps>`
-  ${reset}
-  ${textColor}
-  ${typography}
-`
+const Template: Story<LabelProps> = (args) => <Label {...args} />
+
+export const Basic = Template.bind({})
+Basic.args = { children: "It's a label!" }
+
+export const Typography = Template.bind({})
+Typography.args = {
+  ...Basic.args,
+  color: 'key',
+  fontSize: 'xlarge',
+  fontWeight: 'normal',
+}
