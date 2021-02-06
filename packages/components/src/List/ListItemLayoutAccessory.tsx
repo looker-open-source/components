@@ -26,14 +26,14 @@
 
 import React, { FC } from 'react'
 import styled from 'styled-components'
-import { FlexItem } from '../Layout'
+import { Flex } from '../Layout'
 import { ListItemLayoutProps } from './ListItemLayout'
 import { listItemPadding } from './utils'
 
 export const ListItemLayoutAccessoryInternal: FC<ListItemLayoutProps> = ({
   children,
   className,
-  containerCreator,
+  labelCreator,
   description,
   detail,
   icon,
@@ -41,16 +41,16 @@ export const ListItemLayoutAccessoryInternal: FC<ListItemLayoutProps> = ({
   const content = (
     <>
       {icon}
-      <FlexItem>
+      <Flex flexDirection="column" minWidth={0}>
         {children}
         {description}
-      </FlexItem>
+      </Flex>
     </>
   )
 
   return (
     <>
-      {containerCreator({
+      {labelCreator({
         children: content,
         className: className || '',
       })}
@@ -60,5 +60,5 @@ export const ListItemLayoutAccessoryInternal: FC<ListItemLayoutProps> = ({
 }
 
 export const ListItemLayoutAccessory = styled(ListItemLayoutAccessoryInternal)`
-  ${(props) => listItemPadding({ accessory: true, ...props })}
+  ${(props) => listItemPadding({ ...props })}
 `

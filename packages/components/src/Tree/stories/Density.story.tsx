@@ -25,25 +25,30 @@
  */
 
 import React, { FC } from 'react'
-import { List } from '../List'
-import { DensityRamp } from '../List/types'
-import { listItemDimensions } from '../List/utils'
-import { TreeContext } from './TreeContext'
-import { TreeStyle } from './TreeStyle'
+import { Tree } from '../Tree'
+import { TreeItem } from '../TreeItem'
+import { DensityRamp } from '../../List/types'
+import { Grid } from '../../Layout'
 
-/**
- *  Wrapper component for Tree and TreeItem elements that doesn't render an actual Tree
- *  Note: Used specifically for the Field Picker UI, which uses Accordions at the top-level
- * */
-export const TreeArtificial: FC<{
-  density?: DensityRamp
-}> = ({ children, density = 0 }) => {
-  const { iconSize } = listItemDimensions(density)
-  return (
-    <TreeStyle depth={-1} indicatorSize={iconSize} dividers>
-      <TreeContext.Provider value={{ density, depth: 0 }}>
-        <List>{children}</List>
-      </TreeContext.Provider>
-    </TreeStyle>
-  )
-}
+const DensityTree: FC<{ density: DensityRamp }> = ({ density }) => (
+  <>
+    <Tree defaultOpen density={density} label="Tree of Cheese">
+      <Tree defaultOpen label="French Cheeses">
+        <TreeItem>Brie</TreeItem>
+      </Tree>
+      <TreeItem>Cheddar</TreeItem>
+      <TreeItem>Gouda</TreeItem>
+      <TreeItem>Swiss</TreeItem>
+    </Tree>
+  </>
+)
+
+const densities: DensityRamp[] = [1, 0, -1, -2, -3]
+
+export const Density = () => (
+  <Grid columns={densities.length}>
+    {densities.map((density) => (
+      <DensityTree density={density} key={density} />
+    ))}
+  </Grid>
+)

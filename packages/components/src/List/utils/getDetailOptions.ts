@@ -24,26 +24,19 @@
 
  */
 
-import React, { FC } from 'react'
-import { List } from '../List'
-import { DensityRamp } from '../List/types'
-import { listItemDimensions } from '../List/utils'
-import { TreeContext } from './TreeContext'
-import { TreeStyle } from './TreeStyle'
+import { Detail } from '../types'
 
-/**
- *  Wrapper component for Tree and TreeItem elements that doesn't render an actual Tree
- *  Note: Used specifically for the Field Picker UI, which uses Accordions at the top-level
- * */
-export const TreeArtificial: FC<{
-  density?: DensityRamp
-}> = ({ children, density = 0 }) => {
-  const { iconSize } = listItemDimensions(density)
-  return (
-    <TreeStyle depth={-1} indicatorSize={iconSize} dividers>
-      <TreeContext.Provider value={{ density, depth: 0 }}>
-        <List>{children}</List>
-      </TreeContext.Provider>
-    </TreeStyle>
-  )
+// Simplifies the type check when dealing with ListItem and related components
+export const getDetailOptions = (detail: Detail) => {
+  let accessory, hoverDisclosure, content
+
+  if (typeof detail === 'object' && detail && 'options' in detail) {
+    accessory = detail.options.accessory
+    content = detail.content
+    hoverDisclosure = detail.options.hoverDisclosure
+  } else {
+    content = detail
+  }
+
+  return { accessory, content, hoverDisclosure }
 }

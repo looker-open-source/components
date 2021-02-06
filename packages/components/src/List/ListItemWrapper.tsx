@@ -28,7 +28,8 @@ import { CompatibleHTMLProps, reset } from '@looker/design-tokens'
 import omit from 'lodash/omit'
 import React, { forwardRef, ReactNode, Ref } from 'react'
 import styled from 'styled-components'
-import { Icon } from '..'
+import { Icon } from '../Icon'
+import { Truncate } from '../Truncate'
 import {
   ListItemStatefulWithHoveredProps,
   ListItemDimensions,
@@ -93,6 +94,7 @@ export const ListItemWrapper = styled(ListItemWrapperInternal)`
     flex: 1;
     font-size: inherit;
     font-weight: inherit;
+    min-width: 0;
     outline: none;
 
     text-align: left;
@@ -109,8 +111,8 @@ export const ListItemWrapper = styled(ListItemWrapperInternal)`
 
   ${({ focusVisible, theme: { colors } }) =>
     focusVisible &&
-    `&:focus-within button:after,
-    &:focus-within a:after {
+    `&:focus-within > button:after,
+    &:focus-within > a:after {
       content: '';
       display:block;
       border: solid 2px ${colors.keyFocus};
@@ -128,6 +130,10 @@ export const ListItemWrapper = styled(ListItemWrapperInternal)`
     align-self: ${({ description }) => (description ? 'flex-start' : 'center')};
     transition: color
       ${({ theme }) => `${theme.transitions.quick}ms ${theme.easings.ease}`};
+  }
+
+  ${Truncate} {
+    line-height: 1;
   }
 
   &[aria-current='true'] {

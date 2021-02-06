@@ -99,14 +99,13 @@ describe('Tree', () => {
     expect(onClose).toHaveBeenCalledTimes(1)
   })
 
-  test('Clicks on detail do not open the Tree or trigger callbacks when detailAccessory === true', () => {
+  test('Clicks on detail do not open the Tree or trigger callbacks when accessory === true', () => {
     const onOpen = jest.fn()
     const onClose = jest.fn()
     const { getByText, queryByText } = renderWithTheme(
       <Tree
         label="Tree Label"
-        detail="Tree Detail"
-        detailAccessory
+        detail={{ content: 'Tree Detail', options: { accessory: true } }}
         onClose={onClose}
         onOpen={onOpen}
       >
@@ -125,14 +124,13 @@ describe('Tree', () => {
     expect(onClose).toHaveBeenCalledTimes(0)
   })
 
-  test('Clicks on detail open the Tree and trigger callbacks when detailAccessory === false', () => {
+  test('Clicks on detail open the Tree and trigger callbacks when accessory === false', () => {
     const onOpen = jest.fn()
     const onClose = jest.fn()
     const { getByText, queryByText } = renderWithTheme(
       <Tree
         label="Tree Label"
-        detail="Tree Detail"
-        detailAccessory={false}
+        detail={{ content: 'Tree Detail', options: { accessory: false } }}
         onClose={onClose}
         onOpen={onOpen}
       >
@@ -151,9 +149,12 @@ describe('Tree', () => {
     expect(onClose).toHaveBeenCalledTimes(1)
   })
 
-  test('Shows and hides detail on Tree hover when detailHoverDisclosure === true', () => {
+  test('Shows and hides detail on Tree hover when hoverDisclosure === true', () => {
     renderWithTheme(
-      <Tree label="Tree Label" detail="Tree Detail" detailHoverDisclosure>
+      <Tree
+        label="Tree Label"
+        detail={{ content: 'Tree Detail', options: { hoverDisclosure: true } }}
+      >
         Hello World
       </Tree>
     )
@@ -161,47 +162,5 @@ describe('Tree', () => {
     expect(screen.queryByText('Tree Detail')).not.toBeInTheDocument()
     fireEvent.mouseEnter(screen.getByText('Tree Label'), { bubbles: true })
     expect(screen.queryByText('Tree Detail')).toBeInTheDocument()
-  })
-
-  test("Child Tree adopts Parent Tree's detailHoverDisclosure prop value (when Child Tree does not have prop value)", () => {
-    renderWithTheme(
-      <Tree
-        label="Parent Label"
-        detail="Parent Detail"
-        detailHoverDisclosure
-        defaultOpen
-      >
-        <Tree label="Child Label" detail="Child Detail">
-          Hello World
-        </Tree>
-      </Tree>
-    )
-
-    expect(screen.queryByText('Child Detail')).not.toBeInTheDocument()
-    fireEvent.mouseEnter(screen.getByText('Child Label'), {
-      bubbles: true,
-    })
-    expect(screen.queryByText('Child Detail')).toBeInTheDocument()
-  })
-
-  test("Child Tree detailHoverDisclosure prop value overrides Parent Tree's detailHoverDisclosure prop value", () => {
-    const { getByText } = renderWithTheme(
-      <Tree
-        label="Parent Tree Label"
-        defaultOpen
-        detail="Parent Tree Detail"
-        detailHoverDisclosure
-      >
-        <Tree
-          label="Child Tree Label"
-          detail="Child Tree Detail"
-          detailHoverDisclosure={false}
-        >
-          Hello World
-        </Tree>
-      </Tree>
-    )
-
-    getByText('Child Tree Detail')
   })
 })

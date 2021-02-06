@@ -25,68 +25,109 @@
  */
 
 import styled from 'styled-components'
-import React, { FC, useContext, useRef } from 'react'
+import React, { FC, KeyboardEvent, MouseEvent, useContext, useRef } from 'react'
 import { Accordion, AccordionContent, AccordionDisclosure } from '../Accordion'
 import { useHovered } from '../utils/useHovered'
 import { undefinedCoalesce } from '../utils'
+import { List } from '../List'
+import { listItemDimensions, getDetailOptions } from '../List/utils'
 import { TreeContext } from './TreeContext'
 import { indicatorDefaults } from './utils'
-import { TreeItemInner, TreeStyle } from './TreeStyle'
+import { TreeItemInner, TreeItemInnerDetail, TreeStyle } from './TreeStyle'
 import { TreeProps } from './types'
 
 const TreeLayout: FC<TreeProps> = ({
-  border: propsBorder,
-  keyColor: propsKeyColor,
-  children,
-  detail,
-  detailHoverDisclosure: propsDetailHoverDisclosure,
-  detailAccessory: propsDetailAccessory,
-  disabled,
-  icon,
-  label,
-  className,
   branchFontWeight,
-  truncate,
+  border: propsBorder,
+  children,
+  className,
+  color,
+  density: propsDensity = -3, // TODO: Set this to 0 after initial refactor PR
+  detail: propsDetail,
+  disabled,
   dividers,
+  icon,
+  keyColor: propsKeyColor,
+  label: propsLabel,
+  onClick,
+  onKeyUp,
   selected,
+  truncate,
   ...restProps
 }) => {
   const disclosureRef = useRef<HTMLDivElement>(null)
+  const detailRef = useRef<HTMLDivElement>(null)
   const [isHovered] = useHovered(disclosureRef)
 
   const treeContext = useContext(TreeContext)
   const hasBorder = undefinedCoalesce([propsBorder, treeContext.border])
   const useKeyColor = undefinedCoalesce([propsKeyColor, treeContext.keyColor])
-  const hasDetailHoverDisclosure = undefinedCoalesce([
-    propsDetailHoverDisclosure,
-    treeContext.detailHoverDisclosure,
-  ])
-  const hasDetailAccessory = undefinedCoalesce([
-    propsDetailAccessory,
-    treeContext.detailAccessory,
-  ])
   const startingDepth = 0
   const depth = treeContext.depth ? treeContext.depth : startingDepth
 
-  const treeItem = (
+  const density = propsDensity || treeContext.density
+  const { iconSize } = listItemDimensions(density)
+
+  const { accessory, content, hoverDisclosure } = getDetailOptions(propsDetail)
+
+  const handleDetailClick = (event: MouseEvent<HTMLElement>) => {
+    if (
+      accessory &&
+      detailRef.current &&
+      detailRef.current.contains(event.target as Node)
+    ) {
+      event.stopPropagation()
+    }
+  }
+
+  const handleDetailKeyDown = (event: KeyboardEvent<HTMLElement>) => {
+    if (
+      accessory &&
+      detailRef.current &&
+      detailRef.current.contains(event.target as Node)
+    ) {
+      event.stopPropagation()
+    }
+  }
+
+  const detail = {
+    content: (
+      <TreeItemInnerDetail
+        onClick={handleDetailClick}
+        onKeyDown={handleDetailKeyDown}
+        ref={detailRef}
+      >
+        {content}
+      </TreeItemInnerDetail>
+    ),
+    options: {
+      accessory,
+      hoverDisclosure,
+    },
+  }
+
+  const label = (
     <TreeItemInner
-      color={disabled ? 'text1' : 'text5'}
+      color={color}
+      density={density}
       detail={detail}
-      detailAccessory={hasDetailAccessory}
-      detailHoverDisclosure={hasDetailHoverDisclosure}
+      disabled={disabled}
       icon={icon}
       truncate={truncate}
     >
-      {label}
+      {propsLabel}
     </TreeItemInner>
   )
 
+  const indicatorColor = disabled ? 'text1' : color
   const innerAccordion = (
-    <Accordion {...indicatorDefaults} {...restProps}>
-      <AccordionDisclosure ref={disclosureRef} py="none">
-        {treeItem}
+    <Accordion {...indicatorDefaults} {...restProps} indicatorSize={iconSize}>
+      <AccordionDisclosure color={indicatorColor} ref={disclosureRef} py="none">
+        {label}
       </AccordionDisclosure>
-      <AccordionContent>{children}</AccordionContent>
+      <AccordionContent>
+        <List density={density}>{children}</List>
+      </AccordionContent>
     </Accordion>
   )
 
@@ -94,22 +135,22 @@ const TreeLayout: FC<TreeProps> = ({
     <TreeContext.Provider
       value={{
         border: hasBorder,
+        density,
         depth: depth + 1,
-        detailAccessory: hasDetailAccessory,
-        detailHoverDisclosure: hasDetailHoverDisclosure,
         keyColor: useKeyColor,
       }}
     >
       <TreeStyle
-        className={className}
         border={hasBorder}
-        keyColor={useKeyColor}
+        branchFontWeight={branchFontWeight}
+        className={className}
         depth={depth}
         disabled={disabled}
-        selected={selected}
-        hovered={isHovered}
         dividers={dividers}
-        branchFontWeight={branchFontWeight}
+        hovered={isHovered}
+        keyColor={useKeyColor}
+        indicatorSize={iconSize}
+        selected={selected}
       >
         {innerAccordion}
       </TreeStyle>

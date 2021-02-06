@@ -26,14 +26,14 @@
 
 import React, { FC, ReactNode } from 'react'
 import styled from 'styled-components'
-import { FlexItem } from '../Layout'
+import { Flex } from '../Layout'
 import { ListItemDimensions } from './types'
 import { listItemPadding } from './utils'
 
 export interface ListItemLayoutProps
   extends Pick<ListItemDimensions, 'px' | 'py'> {
   className?: string
-  containerCreator: FC<{ children: ReactNode; className: string }>
+  labelCreator: FC<{ children: ReactNode; className: string }>
   description?: ReactNode
   detail?: ReactNode
   icon?: ReactNode
@@ -42,7 +42,7 @@ export interface ListItemLayoutProps
 const ListItemLayoutInternal: FC<ListItemLayoutProps> = ({
   children,
   className,
-  containerCreator,
+  labelCreator,
   description,
   detail,
   icon,
@@ -50,20 +50,20 @@ const ListItemLayoutInternal: FC<ListItemLayoutProps> = ({
   const content = (
     <>
       {icon}
-      <FlexItem>
+      <Flex flexDirection="column" minWidth={0}>
         {children}
         {description}
-      </FlexItem>
+      </Flex>
       {detail}
     </>
   )
 
-  return containerCreator({
+  return labelCreator({
     children: content,
     className: className || '',
   })
 }
 
 export const ListItemLayout = styled(ListItemLayoutInternal)`
-  ${(props) => listItemPadding({ accessory: false, ...props })}
+  ${(props) => listItemPadding({ ...props })}
 `

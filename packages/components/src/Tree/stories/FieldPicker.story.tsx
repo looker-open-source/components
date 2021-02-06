@@ -25,6 +25,7 @@
  */
 
 import React, { FC, ReactNode, useState } from 'react'
+import styled from 'styled-components'
 import {
   IconButton,
   Menu,
@@ -37,61 +38,72 @@ import {
   Space,
   Truncate,
   Badge,
+  Paragraph,
 } from '../..'
-import { Tree, TreeArtificial, TreeItem, TreeGroup } from '..'
+import { Tree, TreeArtificial, TreeItem, TreeBranch } from '..'
 
-const PickerItem = ({ children = 'Cost', truncate = false }) => {
+const PickerItem: FC<{ color?: string; truncate?: boolean }> = ({
+  children = 'Cost',
+  color,
+  truncate = false,
+}) => {
   const [overlay, setOverlay] = useState<string | undefined>(undefined)
 
   const toggleMenu = () =>
     overlay === 'menu' ? setOverlay(undefined) : setOverlay('menu')
   const togglePopover = () =>
     overlay === 'popover' ? setOverlay(undefined) : setOverlay('popover')
+  const detailContent = (
+    <>
+      <IconButton
+        icon="Pivot"
+        label="Pivot"
+        tooltipPlacement="top"
+        onClick={() => alert('Pivot')}
+      />
+      <Popover
+        content="hello world"
+        isOpen={overlay === 'popover'}
+        setOpen={togglePopover}
+      >
+        <IconButton icon="Filter" label="Filter" tooltipPlacement="top" />
+      </Popover>
+      <Tooltip placement="top" content="Some exciting info or something">
+        <IconButton icon="CircleInfoOutline" label="Info" />
+      </Tooltip>
+      <Menu
+        isOpen={overlay === 'menu'}
+        setOpen={toggleMenu}
+        compact
+        content={
+          <>
+            <MenuItem>Brie</MenuItem>
+            <MenuItem>Cheddar</MenuItem>
+            <MenuItem>Gouda</MenuItem>
+          </>
+        }
+      >
+        <IconButton icon="DotsVert" label="Options" tooltipPlacement="top" />
+      </Menu>
+    </>
+  )
 
   return (
     <TreeItem
-      detail={
-        <>
-          <IconButton
-            icon="Pivot"
-            label="Pivot"
-            tooltipPlacement="top"
-            onClick={() => alert('Pivot')}
-          />
-          <Popover
-            content="hello world"
-            isOpen={overlay === 'popover'}
-            setOpen={togglePopover}
-          >
-            <IconButton icon="Filter" label="Filter" tooltipPlacement="top" />
-          </Popover>
-          <Tooltip placement="top" content="Some exciting info or something">
-            <IconButton icon="CircleInfoOutline" label="Info" />
-          </Tooltip>
-          <Menu
-            isOpen={overlay === 'menu'}
-            setOpen={toggleMenu}
-            compact
-            content={
-              <>
-                <MenuItem>Brie</MenuItem>
-                <MenuItem>Cheddar</MenuItem>
-                <MenuItem>Gouda</MenuItem>
-              </>
-            }
-          >
-            <IconButton
-              icon="DotsVert"
-              label="Options"
-              tooltipPlacement="top"
-            />
-          </Menu>
-        </>
-      }
-      detailAccessory={true}
-      detailHoverDisclosure={!overlay}
+      color={color}
+      detail={{
+        content: detailContent,
+        options: {
+          accessory: true,
+          hoverDisclosure: !overlay,
+        },
+      }}
       onClick={() => alert(`Clicked on ${children}!`)}
-      onMetaEnter={() => alert(`Cmd + Enter'ed on ${children}!`)}
+      onKeyDown={(event) => {
+        if (event.key === 'Enter' && event.metaKey) {
+          alert(`CMD + Enter'ed on ${children}!`)
+        }
+      }}
       truncate={truncate}
     >
       {children}
@@ -99,22 +111,48 @@ const PickerItem = ({ children = 'Cost', truncate = false }) => {
   )
 }
 
+const StyledParagraph = styled(Paragraph)`
+  line-height: 0.75rem;
+`
+
 const fields = (
-  <TreeArtificial>
-    <TreeGroup label="DIMENSIONS" labelColor="text1">
-      <Tree branchFontWeight label="Created">
-        <PickerItem>Created Date</PickerItem>
-        <PickerItem>Created Month</PickerItem>
-        <PickerItem>Created Year</PickerItem>
-      </Tree>
-      <PickerItem>City</PickerItem>
-      <PickerItem>Country</PickerItem>
-      <PickerItem>ID</PickerItem>
-    </TreeGroup>
-    <TreeGroup label="MEASURES" color="orange">
-      <PickerItem>Sum</PickerItem>
-      <PickerItem>Max</PickerItem>
-    </TreeGroup>
+  <TreeArtificial density={-3}>
+    <TreeBranch>
+      <StyledParagraph
+        color="text1"
+        fontSize="xxsmall"
+        fontWeight="semiBold"
+        pt="xsmall"
+        pb="xxsmall"
+        pr="xxsmall"
+        truncate={true}
+      >
+        DIMENSIONS
+      </StyledParagraph>
+    </TreeBranch>
+    <Tree branchFontWeight label="Created">
+      <PickerItem>Created Date</PickerItem>
+      <PickerItem>Created Month</PickerItem>
+      <PickerItem>Created Year</PickerItem>
+    </Tree>
+    <PickerItem>City</PickerItem>
+    <PickerItem>Country</PickerItem>
+    <PickerItem>ID</PickerItem>
+    <TreeBranch>
+      <StyledParagraph
+        color="orange"
+        fontSize="xxsmall"
+        fontWeight="semiBold"
+        pt="xsmall"
+        pb="xxsmall"
+        pr="xxsmall"
+        truncate={true}
+      >
+        MEASURES
+      </StyledParagraph>
+    </TreeBranch>
+    <PickerItem color="orange">Sum</PickerItem>
+    <PickerItem color="orange">Max</PickerItem>
   </TreeArtificial>
 )
 

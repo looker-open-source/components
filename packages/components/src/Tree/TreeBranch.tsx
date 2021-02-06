@@ -24,17 +24,15 @@
 
  */
 
-import React from 'react'
-import { TreeGroup } from '../TreeGroup'
-import { TreeItem } from '../TreeItem'
+import React, { FC } from 'react'
+import styled from 'styled-components'
 
-export const Flat = () => (
-  <TreeGroup label="Inventory Items">
-    <TreeItem icon="Calendar">Date</TreeItem>
-    <TreeItem icon="FieldNumber" onClick={() => alert('Clicked on Cost!')}>
-      Cost
-    </TreeItem>
-    <TreeItem icon="FieldNumber">Is Sold (Yes/No)</TreeItem>
-    <TreeItem icon="FieldNumber">Another Number</TreeItem>
-  </TreeGroup>
-)
+export interface TreeBranchProps {
+  className?: string
+}
+
+const TreeBranchLayout: FC<TreeBranchProps> = ({ children, className }) => {
+  return <li className={className}>{children}</li>
+}
+
+export const TreeBranch = styled(TreeBranchLayout)``

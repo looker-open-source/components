@@ -25,6 +25,7 @@
  */
 
 export * from './createSafeRel'
+export * from './getDetailOptions'
 export * from './listItemBackgroundColor'
 export * from './listItemDimensions'
 export * from './listItemPadding'

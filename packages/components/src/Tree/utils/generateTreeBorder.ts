@@ -26,11 +26,16 @@
 
 import { css } from 'styled-components'
 import { Theme } from '@looker/design-tokens'
+import { IconSize } from '../../Icon'
 import { indicatorDefaults } from './indicatorDefaults'
 
-export const generateTreeBorder = (depth: number, theme: Theme) => {
+export const generateTreeBorder = (
+  depth: number,
+  indicatorSize: IconSize,
+  theme: Theme
+) => {
   const { sizes, space } = theme
-  const { indicatorSize, indicatorGap } = indicatorDefaults
+  const { indicatorGap } = indicatorDefaults
 
   const itemBorderSize = '1px'
   const itemPaddingSize = space.xxsmall

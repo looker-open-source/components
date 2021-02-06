@@ -32,24 +32,43 @@ import {
 } from '../Accordion'
 import { listItemBackgroundColor } from '../List/utils'
 import { ListItemStatefulWithHoveredProps } from '../List/types'
-import { TreeItem, TreeItemLabel } from './TreeItem'
-import { TreeGroupLabel } from './TreeGroup'
+import { List, ListItem } from '../List'
+import { IconSize } from '../Icon'
+import { TreeItem } from './TreeItem'
+import { TreeBranch } from './TreeBranch'
 import { generateIndent, generateTreeBorder } from './utils'
 
 interface TreeStyleProps extends ListItemStatefulWithHoveredProps {
   border?: boolean
-  depth: number
   branchFontWeight?: boolean
+  depth: number
   dividers?: boolean
+  indicatorSize: IconSize
 }
+
+export const TreeItemInner = styled(TreeItem)`
+  & > button,
+  & > a {
+    background-color: transparent;
+    padding-left: 0;
+  }
+`
+
+export const TreeItemInnerDetail = styled.div``
 
 const dividersCSS = css`
   ${TreeItem} {
     margin-top: 1px;
   }
-`
 
-export const TreeItemInner = styled(TreeItem)``
+  ${AccordionDisclosureStyle} {
+    margin-top: 1px;
+
+    ${TreeItemInner} {
+      margin-top: 0;
+    }
+  }
+`
 
 export const TreeStyle = styled.div<TreeStyleProps>`
   color: ${({ theme }) => theme.colors.text5};
@@ -58,37 +77,42 @@ export const TreeStyle = styled.div<TreeStyleProps>`
 
   & > ${Accordion} {
     & > ${AccordionContent} {
-      ${({ border, depth, theme }) =>
-        border && generateTreeBorder(depth, theme)}
+      ${({ border, depth, indicatorSize, theme }) =>
+        border && generateTreeBorder(depth, indicatorSize, theme)}
     }
 
     & > ${AccordionDisclosureStyle} {
+      ${ListItem} {
+        font-weight: ${({ branchFontWeight, theme: { fontWeights } }) =>
+          branchFontWeight ? fontWeights.normal : fontWeights.semiBold};
+      }
+
       ${listItemBackgroundColor}
       background-clip: padding-box;
-      color: ${({ disabled, theme: { colors } }) =>
-        disabled ? colors.text1 : colors.text5};
-      font-weight: ${({ branchFontWeight, theme: { fontWeights } }) =>
-        branchFontWeight ? fontWeights.normal : fontWeights.semiBold};
-      padding-right: ${({ theme }) => theme.space.xxsmall};
-      ${({ depth, theme }) => generateIndent(depth, theme)}
+      /**
+        Tree's padding-right is handled by the internal item
+       */
+      padding-right: 0;
+      ${({ depth, indicatorSize, theme }) =>
+        generateIndent(depth, indicatorSize, theme)}
     }
   }
 
   ${({ dividers }) => dividers && dividersCSS}
 
-  ${TreeItemInner} {
-    border-width: 0;
-    height: 100%;
-
-    & > ${TreeItemLabel} {
-      background-color: transparent;
-      padding-left: ${({ theme }) => theme.space.none};
-    }
+  & > ${Accordion} > ${AccordionContent} > ${List} > ${TreeBranch},
+  & > ${Accordion} > ${AccordionContent} > ${List} > ${ListItem} > button,
+  & > ${Accordion} > ${AccordionContent} > ${List} > ${ListItem} > a {
+    ${({ depth, indicatorSize, theme }) =>
+      generateIndent(depth + 2, indicatorSize, theme)}
   }
 
-  ${TreeGroupLabel},
-  ${TreeItemLabel},
-  & > ${Accordion} > ${AccordionContent} > ${TreeItem} > ${TreeItemLabel} {
-    ${({ depth, theme }) => generateIndent(depth + 2, theme)}
+  /**
+    These selectors are to support TreeArtifical
+   */
+  & > ${List} > ${TreeBranch}, & > ${List} > ${ListItem} > button,
+  & > ${List} > ${ListItem} > a {
+    ${({ depth, indicatorSize, theme }) =>
+      generateIndent(depth + 2, indicatorSize, theme)}
   }
 `

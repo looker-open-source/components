@@ -29,7 +29,6 @@ import { css } from 'styled-components'
 import { ListItemDimensions } from '../types'
 
 export const listItemPadding = ({
-  accessory,
   px: propsPx,
   py: propsPy,
   theme: { space },
@@ -42,8 +41,8 @@ export const listItemPadding = ({
    * Without it, density = -1 ListItems would be at 44px.
    */
   const pt = propsPy === '0.375rem' ? propsPy : space[propsPy]
-  const pr = accessory ? '0' : space[propsPx]
   const pb = pt
+  const pr = space[propsPx]
   const pl = space[propsPx]
 
   return css`
