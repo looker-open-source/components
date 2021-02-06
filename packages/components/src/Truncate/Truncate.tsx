@@ -25,8 +25,6 @@
  */
 import React, { FC, useState, useCallback, ReactNode } from 'react'
 import styled from 'styled-components'
-import join from 'lodash/join'
-import omit from 'lodash/omit'
 import { width as widthHelper, WidthProps } from 'styled-system'
 import { useIsTruncated } from '../utils/useIsTruncated'
 import { useTooltip } from '../Tooltip'
@@ -65,13 +63,14 @@ const TruncateLayout: FC<TruncateProps> = ({
     width: 'auto',
   })
 
-  const className = join([domProps.className, propsClassName], ' ')
+  const { className: tooltipClassName, ...otherDomProps } = domProps
+  const className = [tooltipClassName, propsClassName].join(' ')
 
   return (
     <>
       {tooltip}
       <TextStyle
-        {...omit(domProps, 'className')}
+        {...otherDomProps}
         className={className}
         ref={textRef}
         width={width}
