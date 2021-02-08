@@ -27,7 +27,7 @@
 import React, { ReactNode, useState } from 'react'
 import { useAnimationState, useControlWarn } from '../utils'
 import { PanelHeader } from './PanelHeader'
-import { PanelSurface } from './PanelSurface'
+import { PanelSurface, PanelSurfaceDirections } from './PanelSurface'
 
 export interface UsePanelProps {
   /**
@@ -52,10 +52,9 @@ export interface UsePanelProps {
 
   /**
    * Edge of the screen from which the panel will enter
-   * TODO: 'right' | 'up' | 'down'
    * @default 'left'
    */
-  direction?: 'left' | 'right'
+  direction?: PanelSurfaceDirections
 
   /**
    * Dialog will be displayed immediately when rendered.
@@ -75,7 +74,6 @@ export interface UsePanelProps {
 
   /**
    * Value displayed as Panel header clickable to close Panel
-   * TODO: title can be a ReactNode
    */
   title: string
 }
