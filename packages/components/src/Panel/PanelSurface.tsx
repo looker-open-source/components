@@ -27,11 +27,10 @@
 import styled, { css } from 'styled-components'
 import { variant } from 'styled-system'
 
-type PanelSurfaceDirections = 'left' | 'right'
+export type PanelSurfaceDirections = 'left' | 'right'
 export interface PanelSurfaceProps {
   /**
    * Edge of the screen from which the panel will enter
-   * left - right
    * @default 'left'
    */
   direction?: PanelSurfaceDirections
@@ -64,7 +63,6 @@ export const PanelSurface = styled.div.attrs<PanelSurfaceProps>(
 
   &.entering,
   &.exiting {
-    opacity: 0.01;
     ${direction}
   }
 `

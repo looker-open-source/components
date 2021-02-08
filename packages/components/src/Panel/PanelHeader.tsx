@@ -24,7 +24,8 @@
 
  */
 
-import React, { ReactNode, FC } from 'react'
+import React, { FC, ReactNode, useContext } from 'react'
+import { ThemeContext } from 'styled-components'
 import { Heading } from '../Text'
 import { Space } from '../Layout'
 import { IconButton } from '../Button'
@@ -50,16 +51,18 @@ export const PanelHeader: FC<PanelHeaderProps> = ({
   title,
 }) => {
   const icon = direction === 'left' ? 'ArrowBackward' : 'ArrowForward'
+  const { space } = useContext(ThemeContext)
 
   const label = `Close ${title}`
   return (
     <Space
       as="header"
       className={className}
-      height="40px"
-      ml="large"
-      mr="large"
+      height={space.xxlarge}
+      px="large"
+      gap="small"
       mt="small"
+      mb="1.5rem"
     >
       <IconButton
         icon={icon}

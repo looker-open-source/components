@@ -25,6 +25,5 @@
  */
 
 export * from './Panel'
-export * from './PanelHeader'
 export * from './Panels'
 export * from './usePanel'
