@@ -77,8 +77,8 @@ Use the `disabled` prop to present your `Tree` in a disabled state. Note that us
 <>
   <Tree selected label="Orders" icon="Table" defaultOpen>
     <Tree disabled label="Created" defaultOpen>
-      <TreeItem>Created Date</TreeItem>
-      <TreeItem>Created Month</TreeItem>
+      <TreeItem selected>Created Date</TreeItem>
+      <TreeItem disabled>Created Month</TreeItem>
       <TreeItem>Created Year</TreeItem>
       <TreeItem>Created Quarter</TreeItem>
     </Tree>
@@ -86,8 +86,8 @@ Use the `disabled` prop to present your `Tree` in a disabled state. Note that us
   <Divider my="large" />
   <Tree keyColor selected label="Orders" icon="Table" defaultOpen>
     <Tree disabled label="Created" defaultOpen>
-      <TreeItem>Created Date</TreeItem>
-      <TreeItem>Created Month</TreeItem>
+      <TreeItem selected>Created Date</TreeItem>
+      <TreeItem disabled>Created Month</TreeItem>
       <TreeItem>Created Year</TreeItem>
       <TreeItem>Created Quarter</TreeItem>
     </Tree>
@@ -110,7 +110,7 @@ When text content overflows, it will render a tooltip to view the entire content
   defaultOpen
 >
   <TreeItem icon="IdeDimension">
-    <strong>Very long text wraps content.</strong> Cheese is a dairy product, derived from milk and produced in wide ranges of flavours, textures and forms by coagulation of the milk protein casein. It comprises proteins and fat from milk, usually the milk of cows, buffalo, goats, or sheep.
+    Cheese is a dairy product, derived from milk and produced in wide ranges of flavours, textures and forms by coagulation of the milk protein casein. It comprises proteins and fat from milk, usually the milk of cows, buffalo, goats, or sheep.
   </TreeItem>
 
 </Tree>
@@ -126,7 +126,7 @@ When text content overflows, it will render a tooltip to view the entire content
   defaultOpen
 >
   <TreeItem icon="IdeDimension" truncate>
-    <strong>Very long text renders a tooltip.</strong> Hover over me for a tooltip of the full content. Cheese is a dairy product, derived from milk and produced in wide ranges of flavours, textures and forms by coagulation of the milk protein casein. It comprises proteins and fat from milk, usually the milk of cows, buffalo, goats, or sheep.
+    Hover over me for a tooltip of the full content. Cheese is a dairy product, derived from milk and produced in wide ranges of flavours, textures and forms by coagulation of the milk protein casein. It comprises proteins and fat from milk, usually the milk of cows, buffalo, goats, or sheep.
   </TreeItem>
 </Tree>
 ```
@@ -138,8 +138,8 @@ You can nest trees within each other by passing a `Tree` in as a child of anothe
 **Note:** `Tree` will automatically indent any child `Tree` and `TreeItem`s based on their depth in the hierarchy.
 
 ```jsx
-<Tree label="Orders" icon="Table">
-  <Tree label="Created">
+<Tree defaultOpen label="Orders" icon="Table">
+  <Tree defaultOpen label="Created">
     <TreeItem>Created Date</TreeItem>
     <TreeItem>Created Month</TreeItem>
     <TreeItem>Created Year</TreeItem>
@@ -208,15 +208,12 @@ Use the `disabled` prop to present your `TreeItem` in a disabled state.
 
 Use the `onClick` prop to trigger a callback on click or when pressing the "Enter" key on a focused `TreeItem`.
 
-Use the `onMetaEnter` prop to trigger a callback when pressing the "Enter" key in combination with the meta key (i.e. "Command" or "Windows" key) on a focused `TreeItem`.
-
 ```jsx
 <Tree label="Cheeses" defaultOpen>
   <TreeItem
     icon="LogoRings"
     detail={<Text color="text2">is great</Text>}
     onClick={() => alert('Clicked Swiss')}
-    onMetaEnter={() => alert('Clicked Swiss while holding meta key')}
     selected
   >
     Swiss
@@ -226,186 +223,48 @@ Use the `onMetaEnter` prop to trigger a callback when pressing the "Enter" key i
 
 ## Customizing Detail Elements on Tree and TreeItem
 
-You can customize the look and behavior of `detail` elements using the `detailAccessory` and `detailHoverDisclosure` props.
+You can customize the look and behavior of `detail` elements by providing the `detail` prop an object with an "options" property.
 
-When `detailAccessory` is true, events on `detail` elements will not propagate.
+Enabling the `hoverDisclosure` option will hide and show the detail on hover on and hover off.
 
-In addition, when `detailAccessory` is true, the hover background will not apply to the `detail` elements.
-
-```jsx
-;() => {
-  const detail = (
-    <>
-      <IconButton
-        icon="Filter"
-        label="Filter"
-        onClick={() => alert('Filter')}
-      />
-      <IconButton
-        icon="CircleInfoOutline"
-        label="Info"
-        onClick={() => alert('Info')}
-      />
-      <IconButton
-        icon="DotsVert"
-        label="Options"
-        onClick={() => alert('Options')}
-      />
-    </>
-  )
-
-  return (
-    <Tree label="Orders" icon="Table" defaultOpen detailAccessory>
-      <TreeItem icon="FieldNumber" detail={detail}>
-        Cost
-      </TreeItem>
-      <TreeItem icon="FieldLocation" detail={detail}>
-        Location
-      </TreeItem>
-      <TreeItem icon="FieldTier" detail={detail}>
-        Tier
-      </TreeItem>
-    </Tree>
-  )
-}
-```
-
-Setting `detailAccessory` on a parent `Tree` will also apply it to all child `TreeItem`s, as seen above.
-
-However, you can override a parent `Tree`'s `detailAccessory` prop at the `TreeItem` level.
+Enabling the `accessory` option will render the detail element outside of the label container. This option is most commonly used when you'd like to have a button as your `detail` element.
 
 ```jsx
-;() => {
-  const detail = (
-    <>
+<Tree
+  label="Orders"
+  icon="Table"
+  defaultOpen
+  detail={{
+    content: (
       <IconButton
-        icon="Filter"
-        label="Filter"
-        onClick={() => alert('Filter')}
+        icon="CircleInfo"
+        label="Get Info"
+        onClick={() => alert("You've got info!")}
       />
-      <IconButton
-        icon="CircleInfoOutline"
-        label="Info"
-        onClick={() => alert('Info')}
-      />
-      <IconButton
-        icon="DotsVert"
-        label="Options"
-        onClick={() => alert('Options')}
-      />
-    </>
-  )
-
-  return (
-    <Tree label="Orders" icon="Table" defaultOpen detailAccessory>
-      <TreeItem icon="FieldNumber" detail={detail} detailAccessory={false}>
-        Cost
-      </TreeItem>
-      <TreeItem icon="FieldLocation" detail={detail}>
-        Location
-      </TreeItem>
-      <TreeItem icon="FieldTier" detail={detail}>
-        Tier
-      </TreeItem>
-    </Tree>
-  )
-}
-```
-
-Use `detailHoverDisclosure` to hide and show `detail` elements on hover.
-
-```jsx
-;() => {
-  const detail = (
-    <>
-      <IconButton
-        icon="Filter"
-        label="Filter"
-        onClick={() => alert('Filter')}
-      />
-      <IconButton
-        icon="CircleInfoOutline"
-        label="Info"
-        onClick={() => alert('Info')}
-      />
-      <IconButton
-        icon="DotsVert"
-        label="Options"
-        onClick={() => alert('Options')}
-      />
-    </>
-  )
-
-  return (
-    <Tree
-      label="Orders"
-      icon="Table"
-      defaultOpen
-      detailHoverDisclosure
-      detail="thelook"
-    >
-      <TreeItem icon="FieldNumber" detail={detail}>
-        Cost
-      </TreeItem>
-      <TreeItem icon="FieldLocation" detail={detail}>
-        Location
-      </TreeItem>
-      <TreeItem icon="FieldTier" detail={detail}>
-        Tier
-      </TreeItem>
-    </Tree>
-  )
-}
-```
-
-Setting `detailHoverDisclosure` on a parent `Tree` will apply it to all child `TreeItem`s.
-
-However, you can override a parent `Tree`'s `detailHoverDisclosure` prop at the `TreeItem` level.
-
-```jsx
-;() => {
-  const detail = (
-    <>
-      <IconButton
-        icon="Filter"
-        label="Filter"
-        onClick={() => alert('Filter')}
-      />
-      <IconButton
-        icon="CircleInfoOutline"
-        label="Info"
-        onClick={() => alert('Info')}
-      />
-      <IconButton
-        icon="DotsVert"
-        label="Options"
-        onClick={() => alert('Options')}
-      />
-    </>
-  )
-
-  return (
-    <Tree
-      label="Orders"
-      icon="Table"
-      defaultOpen
-      detailHoverDisclosure
-      detail="thelook"
-    >
-      <TreeItem
-        icon="FieldNumber"
-        detail={detail}
-        detailHoverDisclosure={false}
-      >
-        Cost
-      </TreeItem>
-      <TreeItem icon="FieldLocation" detail={detail}>
-        Location
-      </TreeItem>
-      <TreeItem icon="FieldTier" detail={detail}>
-        Tier
-      </TreeItem>
-    </Tree>
-  )
-}
+    ),
+    options: {
+      accessory: true,
+      hoverDisclosure: true,
+    },
+  }}
+>
+  <TreeItem
+    icon="FieldNumber"
+    detail={{
+      content: (
+        <IconButton
+          icon="Pivot"
+          label="Pivot"
+          onClick={() => alert("You've pivoted!")}
+        />
+      ),
+      options: {
+        accessory: true,
+        hoverDisclosure: true,
+      },
+    }}
+  >
+    Cost
+  </TreeItem>
+</Tree>
 ```
