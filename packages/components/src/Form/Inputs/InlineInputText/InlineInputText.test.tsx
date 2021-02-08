@@ -25,10 +25,26 @@
  */
 
 import { renderWithTheme } from '@looker/components-test-utils'
-import { screen } from '@testing-library/react'
-import React from 'react'
+import { screen, fireEvent } from '@testing-library/react'
+import React, { useState, ChangeEvent } from 'react'
+import { Button } from '../../../Button'
 import { InlineInputText, InlineInputTextBase } from './InlineInputText'
 
+const InlineInputTextOnChange = () => {
+  const [value, setValue] = useState('Type here...')
+  const onChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setValue(event.currentTarget.value)
+  }
+  const onClick = () => {
+    setValue('You clicked the button')
+  }
+  return (
+    <>
+      <InlineInputText value={value} onChange={onChange} />
+      <Button onClick={onClick}>Click Me</Button>
+    </>
+  )
+}
 describe('InlineInputText', () => {
   test('renders and displays placeholder', () => {
     const { getByPlaceholderText } = renderWithTheme(
@@ -46,10 +62,42 @@ describe('InlineInputText', () => {
     expect(value).toBeInTheDocument()
   })
 
+  test('renders and displays when passed prop simple', () => {
+    const { getByDisplayValue } = renderWithTheme(
+      <InlineInputText simple value="this is the value" />
+    )
+    const value = getByDisplayValue('this is the value')
+    expect(value).toHaveStyleRule('border-bottom-color: transparent')
+  })
+
+  test('renders and displays when passed prop readOnly', () => {
+    const { getByDisplayValue } = renderWithTheme(
+      <InlineInputText simple value="this is the value" />
+    )
+    const value = getByDisplayValue('this is the value')
+    expect(value).toHaveStyleRule('border-bottom-color: transparent')
+  })
+
+  test('renders and displays when passed prop underlineOnlyOnHover', () => {
+    const { getByDisplayValue } = renderWithTheme(
+      <InlineInputText underlineOnlyOnHover value="this is the value" />
+    )
+    const value = getByDisplayValue('this is the value')
+    expect(value).toHaveStyleRule('border-bottom-color: transparent')
+  })
+
   test('applies style when prop disabled is passed', () => {
     renderWithTheme(<InlineInputTextBase placeholder="type here..." />)
     expect(
       screen.getByPlaceholderText('type here...').parentElement
     ).toHaveStyleRule('border-bottom-color: #939BA5')
+  })
+
+  test('onChange behaves as expected', () => {
+    renderWithTheme(<InlineInputTextOnChange />)
+    expect(screen.getByText('Type here...')).toBeInTheDocument()
+    fireEvent.click(screen.getByText('Click Me'))
+    expect(screen.queryByText('Type here...')).not.toBeInTheDocument()
+    expect(screen.getByText('You clicked the button')).toBeInTheDocument()
   })
 })
