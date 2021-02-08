@@ -93,6 +93,18 @@ describe('InlineInputText', () => {
     ).toHaveStyleRule('border-bottom-color: #939BA5')
   })
 
+  test('change value as user types', () => {
+    renderWithTheme(<InlineInputTextBase placeholder="type here..." />)
+    expect(screen.getByPlaceholderText('type here...')).toBeInTheDocument()
+    fireEvent.change(
+      screen.getByPlaceholderText('type here...').closest('input') as Element,
+      {
+        target: { value: 'this is the new value' },
+      }
+    )
+    expect(screen.getByText('this is the new value')).toBeInTheDocument()
+  })
+
   test('onChange behaves as expected', () => {
     renderWithTheme(<InlineInputTextOnChange />)
     expect(screen.getByText('Type here...')).toBeInTheDocument()
