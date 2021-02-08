@@ -24,7 +24,7 @@
 
  */
 
-import { CompatibleHTMLProps } from '@looker/design-tokens'
+import { CompatibleHTMLProps, Theme } from '@looker/design-tokens'
 import pick from 'lodash/pick'
 import React, {
   Children,
@@ -87,10 +87,11 @@ const DataTableRowLayout = forwardRef(
       }
     })
 
-    const handleOnClick = (event: React.MouseEvent<HTMLElement>) =>
-      event.target instanceof HTMLAnchorElement
+    const handleOnClick = (event: React.MouseEvent<HTMLElement>) => {
+      return event.target instanceof HTMLAnchorElement
         ? undefined
         : onClick && onClick(event)
+    }
 
     const suppressClickPropagation = (event: React.MouseEvent<HTMLElement>) => {
       event.stopPropagation()
@@ -104,7 +105,7 @@ const DataTableRowLayout = forwardRef(
         onClick={handleOnClick}
       >
         {hasCheckbox ? (
-          <ColumnType>
+          <ColumnType onClick={suppressClickPropagation}>
             <DataTableCheckbox {...pick(props, checkListProps)} />
           </ColumnType>
         ) : (
@@ -118,6 +119,18 @@ const DataTableRowLayout = forwardRef(
 )
 
 DataTableRowLayout.displayName = 'DataTableRowLayout'
+
+const getRowHoverColor = (
+  theme: Theme,
+  hasOnClick: boolean,
+  isHeader: boolean,
+  isSelected: boolean
+) => {
+  if (isHeader || !hasOnClick) return undefined
+  if (isSelected && hasOnClick) return theme.colors.keyAccent
+  if (hasOnClick) return theme.colors.ui1
+  return undefined
+}
 
 export const DataTableRow = styled(DataTableRowLayout)`
   td,
@@ -139,12 +152,13 @@ export const DataTableRow = styled(DataTableRowLayout)`
 
     td,
     th {
-      background: ${({ checked, isHeaderRow, theme: { colors } }) =>
-        checked && !isHeaderRow
-          ? colors.keyAccent
-          : isHeaderRow
-          ? undefined
-          : colors.ui1};
+      background: ${({ checked, isHeaderRow, onClick, theme }) =>
+        getRowHoverColor(
+          theme,
+          Boolean(onClick),
+          Boolean(isHeaderRow),
+          Boolean(checked)
+        )};
     }
   }
 

@@ -117,7 +117,6 @@ const Template: Story<DemoProps> = ({
   }
 
   const selectConfig: SelectConfig = {
-    onClickRowSelect: true,
     onSelect,
     onSelectAll,
     pageItems: allPageItems,
