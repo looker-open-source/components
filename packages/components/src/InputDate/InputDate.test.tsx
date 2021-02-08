@@ -24,8 +24,8 @@
 
  */
 
-import React from 'react'
-import { fireEvent } from '@testing-library/react'
+import React, { useState } from 'react'
+import { fireEvent, screen } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
 
 import { Locales } from '../utils/i18n'
@@ -44,15 +44,30 @@ afterEach(() => {
   jest.clearAllMocks()
 })
 
+const ControlledInputDate = () => {
+  const [value, setValue] = useState<Date | undefined>(new Date('June 3, 2019'))
+  return (
+    <>
+      <button onClick={() => setValue(new Date('June 15, 2019'))}>
+        June 15, 2019
+      </button>
+      <button onClick={() => setValue(new Date('January 1, 2012'))}>
+        January 1, 2012
+      </button>
+      <InputDate value={value} onChange={(date?: Date) => setValue(date)} />
+    </>
+  )
+}
+
 test('calls onChange prop when a day is clicked', () => {
   const mockProps = {
     defaultValue: new Date('June 3, 2019'),
     onChange: jest.fn(),
   }
-  const { getByText } = renderWithTheme(<InputDate {...mockProps} />)
+  renderWithTheme(<InputDate {...mockProps} />)
   expect(mockProps.onChange).not.toHaveBeenCalled()
 
-  const date = getByText('15') // the 15th day of the month
+  const date = screen.getByText('15') // the 15th day of the month
   fireEvent.click(date)
   expect(mockProps.onChange).toHaveBeenCalledWith(
     new Date('June 15, 2019 12:00:00 PM')
@@ -63,15 +78,13 @@ test('updates text input value when day is clicked', () => {
   const mockProps = {
     onChange: jest.fn(),
   }
-  const { getByText, getByTestId } = renderWithTheme(
-    <InputDate {...mockProps} />
-  )
+  renderWithTheme(<InputDate {...mockProps} />)
   expect(mockProps.onChange).not.toHaveBeenCalled()
 
-  const input = getByTestId('text-input') as HTMLInputElement
+  const input = screen.getByTestId('text-input') as HTMLInputElement
   expect(input).toHaveValue('')
 
-  const date = getByText('15') // the 15th day of the month
+  const date = screen.getByText('15') // the 15th day of the month
   fireEvent.click(date)
 
   expect(input).toHaveValue('02/15/2020')
@@ -82,9 +95,55 @@ test('fills TextInput with value, and updates when props.value changes', () => {
     onChange: jest.fn(),
     value: new Date('June 3, 2019'),
   }
-  const { getByTestId } = renderWithTheme(<InputDate {...mockProps} />)
-  const input = getByTestId('text-input') as HTMLInputElement
+  renderWithTheme(<InputDate {...mockProps} />)
+  const input = screen.getByTestId('text-input') as HTMLInputElement
   expect(input).toHaveValue('06/03/2019')
+})
+
+test('user can change the selected date via text input field', () => {
+  renderWithTheme(<ControlledInputDate />)
+
+  expect(screen.getByDisplayValue('06/03/2019')).toBeInTheDocument()
+  fireEvent.click(screen.getByText('June 15, 2019')) // helper isDateInView returns true
+  expect(screen.getByDisplayValue('06/15/2019')).toBeInTheDocument()
+  fireEvent.click(screen.getByText('January 1, 2012')) // helper isDateInView returns false
+  expect(screen.getByDisplayValue('01/01/2012')).toBeInTheDocument()
+})
+
+test('user can change the selected date via text input field', () => {
+  renderWithTheme(<ControlledInputDate />)
+
+  expect(screen.getByText('June 2019')).toBeInTheDocument()
+
+  const TextInput = screen.getByDisplayValue('06/03/2019')
+  fireEvent.change(TextInput, { target: { value: '01/01/2012' } })
+  fireEvent.blur(TextInput) // update value on blur
+
+  expect(screen.getByText('January 2012')).toBeInTheDocument()
+})
+
+test('user can clear the selected date by deleting text input content', () => {
+  const mockProps = {
+    onChange: jest.fn(),
+    value: new Date('June 3, 2019'),
+  }
+  renderWithTheme(<InputDate {...mockProps} />)
+  const TextInput = screen.getByDisplayValue('06/03/2019')
+  fireEvent.change(TextInput, { target: { value: '' } })
+  fireEvent.blur(TextInput) // update value on blur
+
+  expect(mockProps.onChange).toHaveBeenCalledWith(undefined)
+})
+
+test('navigates from month to month', () => {
+  const mockProps = {
+    onChange: jest.fn(),
+    value: new Date('June 3, 2019'),
+  }
+  renderWithTheme(<InputDate {...mockProps} />)
+  expect(screen.getByText('June 2019')).toBeInTheDocument()
+  fireEvent.click(screen.getByText('Previous Month'))
+  expect(screen.getByText('May 2019')).toBeInTheDocument()
 })
 
 test('fills TextInput with defaultValue', () => {
@@ -92,8 +151,8 @@ test('fills TextInput with defaultValue', () => {
     defaultValue: new Date('June 3, 2019'),
     onChange: jest.fn(),
   }
-  const { getByTestId } = renderWithTheme(<InputDate {...mockProps} />)
-  const input = getByTestId('text-input') as HTMLInputElement
+  renderWithTheme(<InputDate {...mockProps} />)
+  const input = screen.getByTestId('text-input') as HTMLInputElement
   expect(input).toHaveValue('06/03/2019')
 })
 
@@ -102,8 +161,8 @@ test('validates text input to match localized date format', () => {
     defaultValue: new Date('June 3, 2019'),
     onValidationFail: jest.fn(),
   }
-  const { getByTestId } = renderWithTheme(<InputDate {...mockProps} />)
-  const input = getByTestId('text-input') as HTMLInputElement
+  renderWithTheme(<InputDate {...mockProps} />)
+  const input = screen.getByTestId('text-input') as HTMLInputElement
 
   fireEvent.change(input, { target: { value: '6/3/2019' } })
   fireEvent.blur(input) // validate on blur
@@ -135,11 +194,11 @@ test('localizes calendar', () => {
   const firstDayOfWeek = 1 // monday
   const localizationProps = { firstDayOfWeek, months, weekdaysShort }
 
-  const { getByText, container } = renderWithTheme(
+  const { container } = renderWithTheme(
     <InputDate localization={localizationProps} />
   )
 
-  expect(getByText('Febbraio 2020')).toBeInTheDocument()
+  expect(screen.getByText('Febbraio 2020')).toBeInTheDocument()
   expect(
     (container.querySelector('.DayPicker-WeekdaysRow') as HTMLElement)
       .textContent
@@ -148,30 +207,30 @@ test('localizes calendar', () => {
 
 describe('localizes text input', () => {
   test('Korean', () => {
-    const { getByDisplayValue } = renderWithTheme(
+    renderWithTheme(
       <InputDate
         dateStringLocale={Locales.Korean}
         defaultValue={new Date(Date.now())}
       />
     )
-    expect(getByDisplayValue('2020.02.01')).toBeInTheDocument()
+    expect(screen.getByDisplayValue('2020.02.01')).toBeInTheDocument()
   })
   test('Italian', () => {
-    const { getByDisplayValue } = renderWithTheme(
+    renderWithTheme(
       <InputDate
         dateStringLocale={Locales.Italian}
         defaultValue={new Date(Date.now())}
       />
     )
-    expect(getByDisplayValue('01/02/2020')).toBeInTheDocument()
+    expect(screen.getByDisplayValue('01/02/2020')).toBeInTheDocument()
   })
   test('English', () => {
-    const { getByDisplayValue } = renderWithTheme(
+    renderWithTheme(
       <InputDate
         dateStringLocale={Locales.English}
         defaultValue={new Date(Date.now())}
       />
     )
-    expect(getByDisplayValue('02/01/2020')).toBeInTheDocument()
+    expect(screen.getByDisplayValue('02/01/2020')).toBeInTheDocument()
   })
 })

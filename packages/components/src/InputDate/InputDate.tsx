@@ -58,10 +58,6 @@ export interface InputDateProps extends SpaceProps, BorderProps {
 }
 
 const isDateInView = (value: Date, viewMonth: Date) => {
-  if (!value) {
-    return false
-  }
-
   if (
     value.getFullYear() === viewMonth.getFullYear() &&
     value.getMonth() === viewMonth.getMonth()
