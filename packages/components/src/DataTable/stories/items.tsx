@@ -74,8 +74,6 @@ export const itemBuilder = (
         disabled={disabled}
         id={id}
         key={id}
-        // will be removed jsut for testing reasons
-        onClick={() => alert("This shouldn't happen when clicking checkbox")}
       >
         <DataTableCell description={type}>
           <Link
