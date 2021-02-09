@@ -30,6 +30,7 @@ import { DensityRamp } from './types'
 export interface ListItemContextProps {
   density: DensityRamp
   iconGutter: boolean
+  keyColor?: boolean
 }
 
 const listItemContext: ListItemContextProps = {

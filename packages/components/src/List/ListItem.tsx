@@ -32,7 +32,12 @@ import { ListItemDetail } from '../List/ListItemDetail'
 import { Text } from '../Text'
 import { Icon, IconPlaceholder } from '../Icon'
 import { Truncate } from '../Truncate'
-import { HoverDisclosureContext, HoverDisclosure, useHovered } from '../utils'
+import {
+  HoverDisclosureContext,
+  HoverDisclosure,
+  useHovered,
+  undefinedCoalesce,
+} from '../utils'
 import { ListItemContext } from './ListItemContext'
 import { ListItemLayout } from './ListItemLayout'
 import { ListItemLayoutAccessory } from './ListItemLayoutAccessory'
@@ -124,7 +129,7 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
     icon,
     iconArtwork,
     itemRole,
-    keyColor,
+    keyColor: propsKeyColor,
     onBlur,
     onClick,
     onKeyDown,
@@ -136,9 +141,14 @@ const ListItemInternal: FC<ListItemProps> = (props) => {
     ...restProps
   } = props
 
-  const { iconGutter, density: contextDensity } = useContext(ListItemContext)
+  const {
+    density: contextDensity,
+    iconGutter,
+    keyColor: contextKeyColor,
+  } = useContext(ListItemContext)
 
   const itemDimensions = listItemDimensions(propsDensity || contextDensity)
+  const keyColor = undefinedCoalesce([propsKeyColor, contextKeyColor])
 
   const [focusVisible, setFocusVisible] = useState(false)
 
