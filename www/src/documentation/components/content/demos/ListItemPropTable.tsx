@@ -56,8 +56,8 @@ export const ListItemPropTable = () => {
               <Code>string</Code>
             </TableDataCell>
             <TableDataCell>
-              If child is of type string, <Code>color</Code> determines the
-              color of the child element and icon, if present.
+              If the child element is of type string, <Code>color</Code>{' '}
+              determines the color of text and icon, if present.
             </TableDataCell>
           </TableRow>
           <TableRow>
@@ -66,8 +66,8 @@ export const ListItemPropTable = () => {
               <Code>ReactNode</Code>
             </TableDataCell>
             <TableDataCell>
-              Optional description element that sits underneath the child
-              element
+              <Code>description</Code> is an optional element that sits
+              underneath the child element.
             </TableDataCell>
           </TableRow>
           <TableRow>
@@ -76,7 +76,8 @@ export const ListItemPropTable = () => {
               <Code>ReactNode</Code>
             </TableDataCell>
             <TableDataCell>
-              Detail element placed right of the item children
+              <Code>detail</Code> is an optional element placed right of the
+              child element.
             </TableDataCell>
           </TableRow>
           <TableRow>
@@ -85,7 +86,8 @@ export const ListItemPropTable = () => {
               <Code>IconName (See Icon for valid icon names)</Code>
             </TableDataCell>
             <TableDataCell>
-              Optional icon placed left of the item children
+              <Code>icon</Code> is an optional icon element placed left of the
+              child element.
             </TableDataCell>
           </TableRow>
           <TableRow>
@@ -94,8 +96,8 @@ export const ListItemPropTable = () => {
               <Code>ReactNode</Code>
             </TableDataCell>
             <TableDataCell>
-              Optional icon/logo that is not available on our components list.
-              Note: use artwork prop with an svg instead of an icon name string.
+              <Code>iconArtwork</Code> allows you to use an svg instead of an
+              icon name string to render a custom icon.
             </TableDataCell>
           </TableRow>
           <TableRow>
@@ -104,12 +106,13 @@ export const ListItemPropTable = () => {
               <Code>"link" | "button"</Code>
             </TableDataCell>
             <TableDataCell>
-              Sets the correct accessible role for the item:
+              <Code>itemRole</Code> sets the correct accessible role for the
+              item. Below are its possible values:
               <BlackTextUnorderedList type="bullet">
-                <li>Use "link" for items that navigate to another page</li>
+                <li>Use "link" for items that navigate to another page.</li>
                 <li>
                   Use "button" for items that trigger in-page interactions, like
-                  displaying a dialog
+                  displaying a dialog.
                 </li>
               </BlackTextUnorderedList>
             </TableDataCell>
@@ -121,7 +124,7 @@ export const ListItemPropTable = () => {
             </TableDataCell>
             <TableDataCell>
               If true and text overflows, text children and description will be
-              truncated
+              truncated.
             </TableDataCell>
           </TableRow>
           <TableRow>
@@ -130,8 +133,8 @@ export const ListItemPropTable = () => {
               <Code>boolean</Code>
             </TableDataCell>
             <TableDataCell>
-              Replace the normal uiN(1-5) color for selected and selected +
-              hovered color with key colors
+              Using <Code>keyColor</Code> will replace the normal ui2 background
+              color for selected and selected + hovered items with key colors.
             </TableDataCell>
           </TableRow>
           <TableRow>
@@ -140,7 +143,12 @@ export const ListItemPropTable = () => {
               <Code>boolean</Code>
             </TableDataCell>
             <TableDataCell>
-              If true, the item will have a "disabled" presentation.
+              If true, the item will have the following properties:
+              <BlackTextUnorderedList type="bullet">
+                <li>color: text1</li>
+                <li>cursor: not-allowed</li>
+                <li>hover background: background (i.e. none)</li>
+              </BlackTextUnorderedList>
             </TableDataCell>
           </TableRow>
           <TableRow>
@@ -149,7 +157,7 @@ export const ListItemPropTable = () => {
               <Code>boolean</Code>
             </TableDataCell>
             <TableDataCell>
-              If true, the item will have a darker background color. Also,
+              If true, the item will have a ui2 background color. Also,
               aria-selected will be "true" for this item.
             </TableDataCell>
           </TableRow>
@@ -159,8 +167,8 @@ export const ListItemPropTable = () => {
               <Code>boolean</Code>
             </TableDataCell>
             <TableDataCell>
-              If true, the item will have a darker background color (same as
-              selected). Also, aria-current will be "true" for this item.
+              If true, the item will have a ui2 background color. Also,
+              aria-current will be "true" for this item.
             </TableDataCell>
           </TableRow>
         </TableBody>
