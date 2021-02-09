@@ -28,8 +28,62 @@ import { Resource } from 'i18next'
 
 export const i18nResources: Resource = {
   en: {
+    Avatar: {
+      Name: 'Avatar',
+    },
+    BulkActions: {
+      Button: 'Bulk Actions',
+      SelectedAll: 'Select all {{totalCount}} results',
+      SelectedItem: 'Clear Selection',
+      selectedItemCountEqualToPageCount:
+        'All {{pageCount}} displayed items selected',
+      selectedItemCountEqualToTotalCount: 'All {{totalCount}} items selected',
+      selectedItemCountLessThenPageCount:
+        '{{selectedItemCount}} of {{pageCount}} displayed items selected',
+    },
+    CalendarNav: {
+      Content: 'View Current Month',
+    },
+    CheckMarkMixed: {
+      checkMark: 'Check Mark Mixed',
+    },
     Chip: {
       Delete: 'Delete',
+    },
+    ColumnSelector: {
+      Apply: 'Apply',
+      Cancel: 'Cancel',
+      Label: 'Select columns to display',
+      SelectAll: 'Select All',
+      SelectNone: 'Select None',
+    },
+    ConfirmationDialog: {
+      cancelLabel: 'Cancel',
+      confirmLabel: 'Confirm',
+    },
+    CopyToClipboard: {
+      children: 'Copy to Clipboard',
+      success: 'Copied',
+    },
+    DataTableItem: {
+      actionsTooltip: 'Options',
+    },
+    InputFilters: {
+      label: 'Clear Filters',
+      placeholder: 'Filter List',
+    },
+    PromptDialog: {
+      cancelLabel: 'Cancel',
+      saveLabel: 'Save',
+    },
+    RequiredStar: {
+      Required: ' required',
+    },
+    Table: {
+      noResultsDisplay: 'No Results',
+    },
+    useDataTableSortManager: {
+      onClick: 'Row clicked',
     },
   },
 }

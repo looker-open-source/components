@@ -24,6 +24,7 @@
 
  */
 
+import { useTranslation } from 'react-i18next'
 import React, { ReactNode, FC, useContext } from 'react'
 import styled from 'styled-components'
 import { Button, ButtonTransparent } from '../../Button'
@@ -49,16 +50,24 @@ const BulkActionsLayout: FC<BulkActionsProps> = ({
   pageCount,
   totalCount,
 }) => {
+  const { t } = useTranslation('BulkActions')
   const { select } = useContext(DataTableContext)
   const selectedItemCount = select ? select.selectedItems.length : 0
 
   let message
   if (selectedItemCount < pageCount) {
-    message = `${selectedItemCount} of ${pageCount} displayed items selected`
+    message = t('selectedItemCountLessThenPageCount', {
+      pageCount: Number(pageCount),
+      selectedItemCount: Number(selectedItemCount),
+    })
   } else if (selectedItemCount === pageCount) {
-    message = `All ${pageCount} displayed items selected`
+    message = t('selectedItemCountEqualToPageCount', {
+      pageCount: Number(pageCount),
+    })
   } else if (totalCount && selectedItemCount === totalCount) {
-    message = `All ${totalCount} items selected`
+    message = t('selectedItemCountEqualToTotalCount', {
+      totalCount: Number(totalCount),
+    })
   }
 
   const selectedItemsText = (
@@ -75,8 +84,8 @@ const BulkActionsLayout: FC<BulkActionsProps> = ({
     >
       <Span fontWeight="semiBold" fontSize="xsmall">
         {selectedItemCount === totalCount
-          ? 'Clear Selection'
-          : `Select all ${totalCount} results`}
+          ? t('Clear Selection')
+          : t('SelectedAll', { totalCount: Number(totalCount) })}
       </Span>
     </ButtonTransparent>
   )
@@ -85,7 +94,7 @@ const BulkActionsLayout: FC<BulkActionsProps> = ({
     <div className={className}>
       <Menu content={actions}>
         <Button iconAfter="ArrowDropDown" size="xsmall">
-          Bulk Actions
+          {t('Bulk Actions')}
         </Button>
       </Menu>
       <Space gap="small" justifyContent="center">
