@@ -24,6 +24,7 @@
 
  */
 
+import { useTranslation } from 'react-i18next'
 import { reset } from '@looker/design-tokens'
 import React, {
   forwardRef,
@@ -120,6 +121,8 @@ const ChipJSX = forwardRef(
     }: ChipProps,
     ref: Ref<HTMLSpanElement>
   ) => {
+    const { t } = useTranslation('Chip')
+
     const clickableProps = useClickable({ disabled, onBlur, onClick, onKeyUp })
 
     const handleKeyDown = (event: KeyboardEvent<HTMLSpanElement>) => {
@@ -152,7 +155,7 @@ const ChipJSX = forwardRef(
             <IconButton
               disabled={disabled}
               icon="Close"
-              label="Delete"
+              label={t('Delete')}
               ml="xsmall"
               onClick={handleDelete}
               size="xxsmall"

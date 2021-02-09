@@ -19,7 +19,9 @@
   },
   "dependencies": {
     "@looker/design-tokens": "^0.11.0",
+    "i18next": "^19.8.7",
     "lodash": "^4.17.20",
+    "react-i18next": "^11.8.5",
     "tabbable": "^5.1.4"
   },
   "devDependencies": {
