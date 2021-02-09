@@ -141,6 +141,13 @@ export const ListItemWrapper = styled(ListItemWrapperInternal)`
     font-weight: ${({ theme: { fontWeights } }) => fontWeights.semiBold};
   }
 
+  /**
+    Styling for items that have nested menus
+   */
+  &[aria-expanded='true'] {
+    background: ${({ theme: { colors } }) => colors.ui1};
+  }
+
   &[disabled] {
     color: ${({ theme: { colors } }) => colors.text1};
 
