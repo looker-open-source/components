@@ -24,6 +24,7 @@
 
  */
 
+import { useTranslation } from 'react-i18next'
 import React, { FC } from 'react'
 import styled from 'styled-components'
 import { omitStyledProps, shouldForwardProp } from '@looker/design-tokens'
@@ -44,9 +45,11 @@ const AvatarLayout: FC<AvatarUserProps> = ({
   size,
   ...props
 }) => {
+  const { t } = useTranslation('Avatar')
+
   const firstInitial = user && user.first_name && user.first_name[0]
   const lastInitial = user && user.last_name && user.last_name[0]
-  const name = user ? `${user.first_name} ${user.last_name}` : 'Avatar'
+  const name = user ? `${user.first_name} ${user.last_name}` : t('Avatar')
 
   const BaseElement = role === 'button' ? 'button' : 'div'
 

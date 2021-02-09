@@ -28,8 +28,91 @@ import { Resource } from 'i18next'
 
 export const i18nResources: Resource = {
   en: {
+    AdvancedInputControls: {
+      'Clear Field': 'Clear Field',
+    },
+    Avatar: {
+      Avatar: 'Avatar',
+    },
+    BulkActions: {
+      All: 'All',
+      'Bulk Actions': 'Bulk Actions',
+      'Clear Selection': 'Clear Selection',
+      SelectedAll: 'Select all {{totalCount}} results',
+      'displayed items selected': 'displayed items selected',
+      'items selected': 'items selected',
+      of: 'of',
+    },
+    CalendarNav: {
+      'View Current Month': 'View Current Month',
+    },
+    CheckMarkMixed: {
+      'Check Mark Mixed': 'Check Mark Mixed',
+    },
     Chip: {
       Delete: 'Delete',
+    },
+    ColumnSelector: {
+      Apply: 'Apply',
+      Cancel: 'Cancel',
+      'Select All': 'Select All',
+      'Select None': 'Select None',
+      'Select columns to display': 'Select columns to display',
+    },
+    ConfirmationDialog: {
+      Cancel: 'Cancel',
+      Confirm: 'Confirm',
+    },
+    CopyToClipboard: {
+      Copied: 'Copied',
+      'Copy to Clipboard': 'Copy to Clipboard',
+    },
+    DataTableItem: {
+      Options: 'Options',
+    },
+    GetIntentLabel: {
+      Error: 'Error',
+      Inform: 'inform',
+      Positive: 'positive',
+      Warn: 'Warning',
+    },
+    InputDate: {
+      Date: 'Date',
+    },
+    InputFilters: {
+      'Clear Filters': 'Clear Filters',
+      'Filter List': 'Filter List',
+    },
+    InputSearch: {
+      Search: 'Search',
+    },
+    InputText: {
+      'Validation Error': 'Validation Error',
+    },
+    InputTimeSelect: {
+      'Select time': 'Select time',
+    },
+    MessageBar: {
+      Dismiss: 'Dismiss',
+    },
+    Pagination: {
+      'First page of results': 'First page of results',
+      'Last page of results': 'Last page of results',
+      'Next page of results': 'Next page of results',
+      'Previous page of results': 'Previous page of results',
+    },
+    PromptDialog: {
+      Cancel: 'Cancel',
+      Save: 'Save',
+    },
+    RequiredStar: {
+      required: ' required',
+    },
+    Table: {
+      'No Results': 'No Results',
+    },
+    useDataTableSortManager: {
+      'Row clicked': 'Row clicked',
     },
   },
 }

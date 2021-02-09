@@ -24,6 +24,7 @@
 
  */
 
+import { useTranslation } from 'react-i18next'
 import React, { FC } from 'react'
 import styled from 'styled-components'
 import { Flex } from '../Layout'
@@ -47,6 +48,7 @@ const PaginationLayout: FC<PaginationProps> = ({
   pages,
   onChange,
 }) => {
+  const { t } = useTranslation('Pagination')
   if (pages <= 1) return null
 
   const first = () => onChange(1)
@@ -57,13 +59,13 @@ const PaginationLayout: FC<PaginationProps> = ({
   return (
     <Flex alignItems="center" className={className}>
       <PaginationButton
-        label="First page of results"
+        label={t('First page of results')}
         icon="DoubleChevronLeft"
         onClick={first}
         disabled={current === 1}
       />
       <PaginationButton
-        label="Previous page of results"
+        label={t('Previous page of results')}
         icon="CaretLeft"
         onClick={previous}
         disabled={current === 1}
@@ -72,14 +74,14 @@ const PaginationLayout: FC<PaginationProps> = ({
         <b>{current}</b> of {pages}
       </Span>
       <PaginationButton
-        label="Next page of results"
+        label={t('Next page of results')}
         icon="CaretRight"
         onClick={next}
         disabled={pages - current === 0}
       />
       <PaginationButton
         mr="none"
-        label="Last page of results"
+        label={t('Last page of results')}
         icon="DoubleChevronRight"
         onClick={last}
         disabled={pages - current === 0}

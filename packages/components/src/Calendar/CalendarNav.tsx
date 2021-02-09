@@ -23,6 +23,7 @@
  SOFTWARE.
 
  */
+import { useTranslation } from 'react-i18next'
 import React, { FC, useContext, SyntheticEvent } from 'react'
 import { NavbarElementProps } from 'react-day-picker'
 import styled from 'styled-components'
@@ -53,6 +54,7 @@ export const CalendarNav: FC<NavbarElementProps> = ({
   nextMonth,
   previousMonth,
 }) => {
+  const { t } = useTranslation('CalendarNav')
   const {
     size,
     onNowClick = noop,
@@ -89,7 +91,7 @@ export const CalendarNav: FC<NavbarElementProps> = ({
         )}
       </NextButtonWrapper>
 
-      <Tooltip content="View Current Month">
+      <Tooltip content={t('View Current Month')}>
         <ButtonTransparent onClick={handleLabelClick} color="neutral">
           <Heading
             as={headingSizeMap(size)}

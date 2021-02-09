@@ -24,6 +24,7 @@
 
  */
 
+import { useTranslation } from 'react-i18next'
 import React, { FC, useState } from 'react'
 
 import { usePopover, PopoverContent } from '../../Popover'
@@ -44,6 +45,7 @@ export const ColumnSelector: FC<ColumnSelectorProps> = ({
   columnsVisible: defaultColumnsVisible,
   onColumnVisibilityChange,
 }) => {
+  const { t } = useTranslation('ColumnSelector')
   const [isOpen, setOpen] = useState(false)
 
   const selectableColumns = columns.filter((c) => c.hide !== undefined)
@@ -73,10 +75,10 @@ export const ColumnSelector: FC<ColumnSelectorProps> = ({
       <SpaceVertical>
         <Space gap="xxsmall">
           <ButtonTransparent size="xsmall" onClick={all}>
-            Select All
+            {t('Select All')}
           </ButtonTransparent>
           <ButtonTransparent size="xsmall" onClick={none}>
-            Select None
+            {t('Select None')}
           </ButtonTransparent>
         </Space>
         <CheckboxGroup
@@ -85,9 +87,9 @@ export const ColumnSelector: FC<ColumnSelectorProps> = ({
           options={options}
         />
         <Space reverse>
-          <ButtonTransparent onClick={apply}>Apply</ButtonTransparent>
+          <ButtonTransparent onClick={apply}>{t('Apply')}</ButtonTransparent>
           <ButtonTransparent onClick={cancel} color="neutral">
-            Cancel
+            {t('Cancel')}
           </ButtonTransparent>
         </Space>
       </SpaceVertical>
@@ -101,7 +103,7 @@ export const ColumnSelector: FC<ColumnSelectorProps> = ({
       {popover}
       <IconButton
         icon="ViewColumn"
-        label="Select columns to display"
+        label={t('Select columns to display')}
         {...domProps}
       />
     </>
