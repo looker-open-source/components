@@ -28,8 +28,9 @@ import { RefObject, useEffect, useState } from 'react'
 import { getCurrentNode } from './getCurrentNode'
 import { useCallbackRef } from './useCallbackRef'
 
-// Get the current hover state of an element
-// Recommended to be used with useCallbackRef
+/**
+ * Get the current hover / focus state of a element of which component has no control
+ */
 export function useHovered<E extends HTMLElement = HTMLElement>(
   hoverElement?: E | null | RefObject<E>
 ): [boolean, ((node: E | null) => void) | null] {
