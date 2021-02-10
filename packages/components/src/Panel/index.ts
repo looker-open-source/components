@@ -26,4 +26,5 @@
 
 export * from './Panel'
 export * from './Panels'
+export * from './types'
 export * from './usePanel'

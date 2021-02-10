@@ -29,7 +29,7 @@ import { ThemeContext } from 'styled-components'
 import { Heading } from '../Text'
 import { Space } from '../Layout'
 import { IconButton } from '../Button'
-import { PanelDirection } from './usePanel'
+import { PanelDirection } from './types'
 
 export interface PanelHeaderProps {
   className?: string

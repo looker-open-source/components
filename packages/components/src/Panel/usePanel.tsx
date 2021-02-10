@@ -24,73 +24,11 @@
 
  */
 
-import React, { ReactNode, useState } from 'react'
+import React, { useState } from 'react'
 import { useAnimationState, useControlWarn } from '../utils'
 import { PanelHeader } from './PanelHeader'
 import { PanelSurface } from './PanelSurface'
-
-export type PanelDirection = 'left' | 'right'
-export interface UsePanelProps {
-  /**
-   * Specify a callback to be called before each time trying to close Panel.
-   * This allows for use-cases where the user might lose work
-   * (think common "Save before closing warning" type flow)
-   */
-  canClose?: () => boolean
-
-  /**
-   * Element that will be displayed as Panel
-   */
-  content: ReactNode
-
-  /**
-   * Panel will be displayed immediately when rendered.
-   * NOTE: Once rendered, changes to this value will be ignored. This property cannot
-   * be used treat this component as "controlled"
-   * @default false
-   */
-  defaultOpen?: boolean
-
-  /**
-   * Edge of the screen from which the panel will enter
-   * @default 'left'
-   */
-  direction?: PanelDirection
-
-  /**
-   * Dialog will be displayed immediately when rendered.
-   * @default undefined
-   */
-  isOpen?: boolean
-
-  /**
-   * Specify a callback to be called each time this Dialog is closed
-   */
-  onClose?: () => void
-
-  /**
-   * Optional, for a controlled version of the component
-   */
-  setOpen?: (open: boolean) => void
-
-  /**
-   * Value displayed as Panel header clickable to close Panel
-   */
-  title: string
-}
-
-export interface UsePanelResponseDom {
-  onClick: () => void
-  role: string
-  'aria-expanded': boolean
-}
-
-export interface UsePanelResponse {
-  isOpen: boolean
-  setOpen: (open: boolean) => void
-  panel: ReactNode
-  domProps: UsePanelResponseDom
-}
+import { UsePanelProps, UsePanelResponse } from './types'
 
 export const usePanel = ({
   canClose,

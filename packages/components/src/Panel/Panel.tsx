@@ -25,14 +25,8 @@
  */
 
 import React, { FC, ReactNode, isValidElement, cloneElement } from 'react'
-import { UsePanelResponseDom, usePanel, UsePanelProps } from './usePanel'
-
-export type PanelRenderProp = (props: UsePanelResponseDom) => ReactNode
-
-export interface PanelProps extends Omit<UsePanelProps, 'content'> {
-  children?: PanelRenderProp | ReactNode
-  content: ReactNode
-}
+import { PanelProps, PanelRenderProp } from './types'
+import { usePanel } from './usePanel'
 
 const isRenderProp = (
   children: ReactNode | PanelRenderProp
