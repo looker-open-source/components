@@ -33,7 +33,7 @@ export interface UseTrapStackProps<
   E extends HTMLElement = HTMLElement,
   O extends {} = {}
 > {
-  context: Context<TrapStackContextProps>
+  context: Context<TrapStackContextProps<O>>
   /**
    * Turns off functionality completely, for use in components
    * where trap behavior can be optionally disabled

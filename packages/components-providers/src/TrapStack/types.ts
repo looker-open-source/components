@@ -26,38 +26,38 @@
 
 import { MutableRefObject } from 'react'
 
-export interface Trap<T extends {} = {}> {
+export interface Trap<O extends {} = {}> {
   element: HTMLElement
-  options?: T
+  options?: O
 }
 
-export interface TrapStackContextProps {
+export interface TrapStackContextProps<O extends {} = {}> {
   /**
-   * Stores the element for the active scroll lock (null if none are active)
+   * Stores the element for the active trap (null if none are active)
    */
   activeTrapRef?: MutableRefObject<HTMLElement | null>
   /**
    * @private
    */
-  addTrap?: (id: string, trap: Trap) => void
+  addTrap?: (id: string, trap: Trap<O>) => void
   /**
-   * Disables the current scroll lock (no scroll lock will be enabled as a result)
+   * Disables the current trap (no trap will be enabled as a result)
    */
   disableCurrentTrap?: () => void
   /**
-   * Enables the scroll lock stacked on top
+   * Enables the trap stacked on top
    */
   enableCurrentTrap?: () => void
   /**
    * @private
    */
-  getTrap?: (id: string) => Trap | null
+  getTrap?: (id: string) => Trap<O> | null
   /**
    * @private
    */
   removeTrap?: (id: string) => void
 }
 
-export interface TrapMap {
-  [key: string]: Trap
+export interface TrapMap<O extends {} = {}> {
+  [key: string]: Trap<O>
 }
