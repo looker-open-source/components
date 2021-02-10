@@ -36,79 +36,12 @@ import {
 import { Box } from './Box'
 
 describe('Box', () => {
-  test('Box default', () => {
-    assertSnapshot(<Box mt="large">🥑</Box>)
-  })
-
-  test('Responsive margin top Box', () => {
-    assertSnapshot(<Box mt={['large', 'medium', 'small']}>🥑</Box>)
-  })
-
-  test('Box with null values are removed from styling', () => {
-    assertSnapshot(<Box mt={['large', null, 'medium']}>🥑</Box>)
-  })
-
-  test('Box with SizeNone is valid', () => {
-    assertSnapshot(<Box mt="none">🥑</Box>)
-  })
-
-  test('Box supports background-color', () => {
-    assertSnapshot(<Box bg="key" />)
-  })
-
-  test('Box supports display', () => {
-    assertSnapshot(<Box display="inline-block" />)
-  })
-
-  test('Box supports height properties', () => {
-    assertSnapshot(<Box height="1vh" />)
-    assertSnapshot(<Box maxHeight="1vh" />)
-    assertSnapshot(<Box minHeight="1vh" />)
-  })
-
-  test('Box supports width', () => {
-    assertSnapshot(<Box width="1vw" />)
-    assertSnapshot(<Box maxWidth="1vw" />)
-    assertSnapshot(<Box minWidth="1vw" />)
-  })
-
   test('Box supports position, top, left, bottom, right', () => {
     assertSnapshot(<Box position="absolute" />)
     assertSnapshot(<Box top="1rem" />)
     assertSnapshot(<Box left="1rem" />)
     assertSnapshot(<Box right="1rem" />)
     assertSnapshot(<Box bottom="1rem" />)
-  })
-
-  test('Box supports responsive fontSize and lineHeight', () => {
-    assertSnapshot(<Box fontSize={['small', 'large']} />)
-    assertSnapshot(<Box lineHeight={['small', 'large']} />)
-  })
-
-  describe('borders', () => {
-    test('Box supports borders', () => {
-      assertSnapshot(<Box border="1px solid black" />)
-    })
-
-    test('supports borderRadius', () => {
-      assertSnapshot(<Box borderRadius="medium" />)
-    })
-
-    test('supports borderColor', () => {
-      assertSnapshot(<Box borderColor="ui2" />)
-    })
-  })
-
-  describe('fonts', () => {
-    test('font helpers', () => {
-      assertSnapshot(<Box fontFamily="brand" />)
-      assertSnapshot(<Box fontSize="small" />)
-      assertSnapshot(<Box fontWeight="bold" />)
-      assertSnapshot(<Box letterSpacing="10" />)
-      assertSnapshot(<Box lineHeight="medium" />)
-      assertSnapshot(<Box textAlign="right" />)
-      assertSnapshot(<Box color="ui4" />)
-    })
   })
 
   describe('flex', () => {
