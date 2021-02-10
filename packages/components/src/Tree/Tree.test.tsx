@@ -27,6 +27,7 @@
 import React, { useState } from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { screen, fireEvent } from '@testing-library/react'
+import { Button } from '../Button'
 import { Tree } from '.'
 
 describe('Tree', () => {
@@ -105,7 +106,10 @@ describe('Tree', () => {
     const { getByText, queryByText } = renderWithTheme(
       <Tree
         label="Tree Label"
-        detail={{ content: 'Tree Detail', options: { accessory: true } }}
+        detail={{
+          content: <Button>Tree Detail</Button>,
+          options: { accessory: true },
+        }}
         onClose={onClose}
         onOpen={onOpen}
       >
@@ -120,6 +124,38 @@ describe('Tree', () => {
     expect(queryByText('Hello World')).not.toBeInTheDocument()
     expect(onOpen).toHaveBeenCalledTimes(0)
     fireEvent.click(detail)
+    expect(queryByText('Hello World')).not.toBeInTheDocument()
+    expect(onClose).toHaveBeenCalledTimes(0)
+  })
+
+  test('Key presses on detail do not open the Tree or trigger callbacks when accessory === true', () => {
+    const onOpen = jest.fn()
+    const onClose = jest.fn()
+    const { getByText, queryByText } = renderWithTheme(
+      <Tree
+        label="Tree Label"
+        detail={{
+          content: <Button>Tree Detail</Button>,
+          options: { accessory: true },
+        }}
+        onClose={onClose}
+        onOpen={onOpen}
+      >
+        Hello World
+      </Tree>
+    )
+
+    const detail = getByText('Tree Detail')
+
+    expect(queryByText('Hello World')).not.toBeInTheDocument()
+    fireEvent.keyDown(detail, {
+      key: 'Enter',
+    })
+    expect(queryByText('Hello World')).not.toBeInTheDocument()
+    expect(onOpen).toHaveBeenCalledTimes(0)
+    fireEvent.keyDown(detail, {
+      key: 'Enter',
+    })
     expect(queryByText('Hello World')).not.toBeInTheDocument()
     expect(onClose).toHaveBeenCalledTimes(0)
   })
