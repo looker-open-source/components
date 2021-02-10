@@ -26,38 +26,15 @@
 
 import { MutableRefObject } from 'react'
 
-export interface Trap<O extends {} = {}> {
-  element: HTMLElement
-  options?: O
-}
-
-export interface TrapStackContextProps<O extends {} = {}> {
+export interface FocusTrapOptions {
   /**
-   * Stores the element for the active trap (null if none are active)
+   * A click outside the focus trap element will not be prevented
+   * and will deactivate the trap
    */
-  activeTrapRef?: MutableRefObject<HTMLElement | null>
+  clickOutsideDeactivates?: boolean
   /**
-   * @private
+   * A ref to track the last element to have focus before the trap activates
+   * in order to return focus there when it deactivates
    */
-  addTrap?: (id: string, trap: Trap<O>) => void
-  /**
-   * Disables the current trap (no trap will be enabled as a result)
-   */
-  disableCurrentTrap?: () => void
-  /**
-   * Enables the trap stacked on top
-   */
-  enableCurrentTrap?: () => void
-  /**
-   * @private
-   */
-  getTrap?: (id: string) => Trap<O> | null
-  /**
-   * @private
-   */
-  removeTrap?: (id: string) => void
-}
-
-export interface TrapMap<O extends {} = {}> {
-  [key: string]: Trap<O>
+  returnFocusRef: MutableRefObject<Element | null>
 }
