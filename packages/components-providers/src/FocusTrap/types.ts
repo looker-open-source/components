@@ -24,22 +24,9 @@
 
  */
 
-import { useRef } from 'react'
-import {
-  FocusTrapContext,
-  FocusTrapOptions,
-} from '@looker/components-providers'
-import { useTrapStack, UseTrapStackProps } from './useTrapStack'
+import { MutableRefObject } from 'react'
 
-export const useFocusTrap = <E extends HTMLElement = HTMLElement>({
-  options,
-  ...props
-}: Omit<UseTrapStackProps<E, Partial<FocusTrapOptions>>, 'context'> = {}) => {
-  const returnFocusRef = useRef<Element>(null)
-  return useTrapStack<E, FocusTrapOptions>({
-    context: FocusTrapContext,
-    // If options.returnFocusRef is set, it will override this one
-    options: { returnFocusRef, ...options },
-    ...props,
-  })
+export interface FocusTrapOptions {
+  clickOutsideDeactivates?: boolean
+  returnFocusRef: MutableRefObject<Element | null>
 }

@@ -48,7 +48,12 @@ const Inner: FC<{ clickOutsideDeactivates?: boolean }> = ({
   const { value, setOff, toggle } = useToggle()
   return (
     <>
-      {value && <div ref={ref}>{children}</div>}
+      {value && (
+        <div ref={ref}>
+          {children}
+          <button onClick={setOff}>Close</button>
+        </div>
+      )}
       <button onClick={toggle}>toggle</button>
       <button onClick={setOff}>Another button</button>
     </>
@@ -153,6 +158,30 @@ describe('useFocusTrap', () => {
       fireEvent.click(otherButton)
       otherButton.focus()
       expect(otherButton).toHaveFocus()
+    })
+
+    test.only('With nested traps', async () => {
+      render(
+        <FocusTrapComponent>
+          <Surface>
+            <Inner>
+              <Surface />
+            </Inner>
+          </Surface>
+        </FocusTrapComponent>
+      )
+      const toggle = screen.getByText('toggle')
+      toggle.focus()
+      fireEvent.click(toggle)
+
+      const toggleInner = screen.getAllByText('toggle')[0]
+      toggleInner.focus()
+      fireEvent.click(toggleInner)
+
+      const closeButtons = screen.getAllByText('Close')
+      fireEvent.click(closeButtons[0])
+      fireEvent.click(closeButtons[1])
+      await waitFor(() => expect(toggle).toHaveFocus())
     })
   })
 
