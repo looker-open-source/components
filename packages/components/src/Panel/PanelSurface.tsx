@@ -26,14 +26,14 @@
 
 import styled, { css } from 'styled-components'
 import { variant } from 'styled-system'
+import { PanelDirection } from './usePanel'
 
-export type PanelSurfaceDirections = 'left' | 'right'
 export interface PanelSurfaceProps {
   /**
    * Edge of the screen from which the panel will enter
    * @default 'left'
    */
-  direction?: PanelSurfaceDirections
+  direction?: PanelDirection
 }
 
 const surfaceTransition = () => css`

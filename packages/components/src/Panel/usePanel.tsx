@@ -27,8 +27,9 @@
 import React, { ReactNode, useState } from 'react'
 import { useAnimationState, useControlWarn } from '../utils'
 import { PanelHeader } from './PanelHeader'
-import { PanelSurface, PanelSurfaceDirections } from './PanelSurface'
+import { PanelSurface } from './PanelSurface'
 
+export type PanelDirection = 'left' | 'right'
 export interface UsePanelProps {
   /**
    * Specify a callback to be called before each time trying to close Panel.
@@ -54,7 +55,7 @@ export interface UsePanelProps {
    * Edge of the screen from which the panel will enter
    * @default 'left'
    */
-  direction?: PanelSurfaceDirections
+  direction?: PanelDirection
 
   /**
    * Dialog will be displayed immediately when rendered.
