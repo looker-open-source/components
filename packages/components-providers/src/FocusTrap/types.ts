@@ -24,12 +24,17 @@
 
  */
 
-export * from './CalendarPropTable'
-export * from './DateFormatTable'
-export * from './IconList'
-export * from './LocaleTable'
-export * from './SelectManagerParameterTable'
-export * from './SelectManagerReturnTable'
-export * from './TimeFormatTable'
-export * from './NamedBreakpointTable'
-export * from './ListItemPropTable'
+import { MutableRefObject } from 'react'
+
+export interface FocusTrapOptions {
+  /**
+   * A click outside the focus trap element will not be prevented
+   * and will deactivate the trap
+   */
+  clickOutsideDeactivates?: boolean
+  /**
+   * A ref to track the last element to have focus before the trap activates
+   * in order to return focus there when it deactivates
+   */
+  returnFocusRef: MutableRefObject<Element | null>
+}

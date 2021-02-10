@@ -33,6 +33,7 @@
 
 import { tabbable, isFocusable, FocusableElement } from 'tabbable'
 import { Trap } from '../TrapStack/types'
+import { FocusTrapOptions } from './types'
 
 const isSelectableInput = (
   node: FocusableElement
@@ -57,8 +58,14 @@ const checkFocusLost = () => {
 export const activateFocusTrap = ({
   element,
   options,
-}: Trap<{ clickOutsideDeactivates?: boolean }>) => {
-  const nodeFocusedBeforeActivation = document.activeElement
+}: Trap<FocusTrapOptions>) => {
+  if (options && !options.returnFocusRef.current) {
+    // The return focus element may already have been stored if this is an existing trap
+    // that has been superseded by a new focus trap and is now being re-activated.
+    // If it's empty, store the current focused element
+    options.returnFocusRef.current = document.activeElement
+  }
+  const nodeFocusedBeforeActivation = options?.returnFocusRef?.current
   let firstTabbableNode: FocusableElement = element
   let lastTabbableNode: FocusableElement = element
   let mostRecentlyFocusedNode: FocusableElement | null = null

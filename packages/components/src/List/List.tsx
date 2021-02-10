@@ -53,6 +53,11 @@ export interface ListProps
   density?: DensityRamp
 
   /**
+   * Replace the normal uiN(1-5) color for selected and selected + hovered color with key colors
+   */
+  keyColor?: boolean
+
+  /**
    * If true, all ListItem children without an icon will reserve space for an icon
    * for alignment purposes.
    */
@@ -80,6 +85,7 @@ export const ListInternal = forwardRef(
       density = 0,
       disabled,
       iconGutter = false,
+      keyColor,
       windowing,
       onBlur,
       onFocus,
@@ -120,6 +126,7 @@ export const ListInternal = forwardRef(
     const context = {
       density,
       iconGutter,
+      keyColor,
     }
 
     return (

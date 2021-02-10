@@ -1,0 +1,137 @@
+---
+title: List
+storybook: true
+---
+
+import { ListItemPropTable } from './demos'
+
+`List`, along with its companion component `ListItem`, renders a list of items. However, unlike standard `ul` and `li` elements, `List` and `ListItem` come prebuilt with a number of props to simplify item style and behavior customization.
+
+```jsx
+<List>
+  <ListItem icon="Calendar" description="Orange-y" detail="England">
+    Cheddar
+  </ListItem>
+  <ListItem icon="Pivot" detail="Netherlands">
+    Gouda
+  </ListItem>
+  <ListItem icon="AnalyticsApp" detail="Italy">
+    Mozzarella
+  </ListItem>
+  <ListItem icon="Account" detail="Switzerland">
+    Swiss
+  </ListItem>
+</List>
+```
+
+Use the `density` prop to set the size and spacing of your `List`. As `density` decreases, so does the height and spacing of your `List`'s child `ListItem`s.
+
+`density` values range from -3 to 1.
+
+```jsx
+;() => {
+  const [density, setDensity] = useState(0)
+  return (
+    <>
+      {`Density: ${density}`}
+      <Space gap="small" mt="small">
+        <Button onClick={() => density !== 1 && setDensity(density + 1)}>
+          + Density
+        </Button>
+        <Button onClick={() => density !== -3 && setDensity(density - 1)}>
+          - Density
+        </Button>
+      </Space>
+      <Divider />
+      <List density={density}>
+        <ListItem icon="Calendar">Item 1</ListItem>
+        <ListItem icon="Calendar">Item 2</ListItem>
+        <ListItem icon="Calendar">Item 3</ListItem>
+      </List>
+    </>
+  )
+}
+```
+
+Use the `iconGutter` prop if you want `ListItem` children without icons to align their text with `ListItem` children with icons.
+
+```jsx
+<>
+  <List>
+    <ListItem icon="Calendar">Item 1</ListItem>
+    <ListItem>Item 2</ListItem>
+    <ListItem>Item 3</ListItem>
+  </List>
+  <Divider />
+  <List iconGutter>
+    <ListItem icon="Calendar">Item 1</ListItem>
+    <ListItem>Item 2</ListItem>
+    <ListItem>Item 3</ListItem>
+  </List>
+</>
+```
+
+## ListItem
+
+`ListItem` renders an `li` element and should be the child of a `List` element.
+
+The table below displays `ListItem`'s prop names and descriptions.
+
+<ListItemPropTable />
+
+Note: In addition these custom props, `ListItem` also accepts standard handlers like `onClick`, `onKeyDown`, etc.
+
+```jsx
+<ListItem
+  color="orange"
+  icon="Calendar"
+  description="Orange-y"
+  detail="England"
+  onClick={() => alert('Get that Cheddar')}
+>
+  Cheddar
+</ListItem>
+```
+
+## Customizing a ListItem detail
+
+You can customize the look and behavior of `detail` elements by providing the `detail` prop an object with an "options" property.
+
+Enabling the `hoverDisclosure` option will hide and show the detail on hover on and hover off.
+
+Enabling the `accessory` option will render the detail element outside of the label container. This option is most commonly used when you'd like to have a button as your `detail` element.
+
+```jsx
+<List>
+  <ListItem
+    icon="FieldNumber"
+    detail={
+      <IconButton
+        icon="Pivot"
+        label="Pivot"
+        onClick={() => alert("You've pivoted!")}
+      />
+    }
+  >
+    ListItem (Standard)
+  </ListItem>
+  <ListItem
+    icon="FieldNumber"
+    detail={{
+      content: (
+        <IconButton
+          icon="Pivot"
+          label="Pivot"
+          onClick={() => alert("You've pivoted!")}
+        />
+      ),
+      options: {
+        accessory: true,
+        hoverDisclosure: true,
+      },
+    }}
+  >
+    ListItem (Options Enabled)
+  </ListItem>
+</List>
+```
