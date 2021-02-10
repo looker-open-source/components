@@ -27,7 +27,14 @@
 import { CompatibleHTMLProps, FontSizes } from '@looker/design-tokens'
 import { IconNames } from '@looker/icons'
 import styled from 'styled-components'
-import React, { FC, ReactNode, useContext, useRef, useState } from 'react'
+import React, {
+  FC,
+  forwardRef,
+  ReactNode,
+  Ref,
+  useContext,
+  useState,
+} from 'react'
 import { ListItemDetail } from '../List/ListItemDetail'
 import { Text } from '../Text'
 import { Icon, IconPlaceholder } from '../Icon'
@@ -35,7 +42,6 @@ import { Truncate } from '../Truncate'
 import {
   HoverDisclosureContext,
   HoverDisclosure,
-  useHovered,
   undefinedCoalesce,
 } from '../utils'
 import { ListItemContext } from './ListItemContext'
@@ -115,190 +121,215 @@ export const ListItemLabel = styled.div
     as: !disabled && itemRole === 'link' ? 'a' : 'button',
   }))<ListItemLabelProps>``
 
-const ListItemInternal: FC<ListItemProps> = (props) => {
-  const {
-    children,
-    className,
-    color,
-    current,
-    density: propsDensity,
-    description,
-    detail,
-    disabled,
-    href,
-    icon,
-    iconArtwork,
-    itemRole,
-    keyColor: propsKeyColor,
-    onBlur,
-    onClick,
-    onKeyDown,
-    onKeyUp,
-    rel,
-    selected,
-    target,
-    truncate,
-    ...restProps
-  } = props
+const ListItemInternal: FC<ListItemProps> = forwardRef(
+  (props, ref: Ref<HTMLLIElement>) => {
+    const {
+      children,
+      className,
+      color,
+      current,
+      density: propsDensity,
+      description,
+      detail,
+      disabled,
+      href,
+      icon,
+      iconArtwork,
+      itemRole,
+      keyColor: propsKeyColor,
+      onBlur,
+      onClick,
+      onFocus,
+      onKeyDown,
+      onKeyUp,
+      onMouseEnter,
+      onMouseLeave,
+      rel,
+      role,
+      selected,
+      target,
+      truncate,
+      ...restProps
+    } = props
 
-  const {
-    density: contextDensity,
-    iconGutter,
-    keyColor: contextKeyColor,
-  } = useContext(ListItemContext)
+    const {
+      density: contextDensity,
+      iconGutter,
+      keyColor: contextKeyColor,
+    } = useContext(ListItemContext)
 
-  const itemDimensions = listItemDimensions(propsDensity || contextDensity)
-  const keyColor = undefinedCoalesce([propsKeyColor, contextKeyColor])
+    const itemDimensions = listItemDimensions(propsDensity || contextDensity)
+    const keyColor = undefinedCoalesce([propsKeyColor, contextKeyColor])
 
-  const [focusVisible, setFocusVisible] = useState(false)
+    const [focusVisible, setFocusVisible] = useState(false)
+    const [hovered, setHovered] = useState(false)
 
-  const itemRef = useRef<HTMLLIElement>(null)
-  const [hovered] = useHovered(itemRef)
+    const labelColor = disabled ? 'text1' : color
+    const descriptionColor = disabled ? 'text1' : 'text2'
+    const iconColor = disabled ? 'text1' : color || 'text1'
 
-  const labelColor = disabled ? 'text1' : color
-  const descriptionColor = disabled ? 'text1' : 'text2'
-  const iconColor = disabled ? 'text1' : color || 'text1'
+    const handleOnBlur = (event: React.FocusEvent<HTMLElement>) => {
+      setFocusVisible(false)
+      setHovered(false)
+      onBlur && onBlur(event)
+    }
 
-  const handleOnBlur = (event: React.FocusEvent<HTMLElement>) => {
-    setFocusVisible(false)
-    onBlur && onBlur(event)
-  }
+    const handleOnClick = (event: React.MouseEvent<HTMLElement>) => {
+      setFocusVisible(false)
+      onClick && onClick(event)
+    }
 
-  const handleOnClick = (event: React.MouseEvent<HTMLElement>) => {
-    setFocusVisible(false)
-    onClick && onClick(event)
-  }
+    const handleOnKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
+      onKeyDown && onKeyDown(event)
+      setFocusVisible(true)
+    }
 
-  const handleOnKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
-    onKeyDown && onKeyDown(event)
-    setFocusVisible(true)
-  }
+    const handleOnKeyUp = (event: React.KeyboardEvent<HTMLElement>) => {
+      onKeyUp && onKeyUp(event)
+      setFocusVisible(true)
+    }
 
-  const handleOnKeyUp = (event: React.KeyboardEvent<HTMLElement>) => {
-    onKeyUp && onKeyUp(event)
-    setFocusVisible(true)
-  }
+    const handleOnMouseEnter = (event: React.MouseEvent<HTMLElement>) => {
+      onMouseEnter && onMouseEnter(event)
+      setHovered(true)
+    }
 
-  const renderedIcon =
-    icon || iconArtwork ? (
-      <Icon
-        artwork={iconArtwork}
-        color={iconColor}
-        name={icon}
-        size={itemDimensions.iconSize}
-        mr={itemDimensions.iconGap}
-      />
-    ) : (
-      iconGutter && (
-        <IconPlaceholder
+    const handleOnMouseLeave = (event: React.MouseEvent<HTMLElement>) => {
+      onMouseLeave && onMouseLeave(event)
+      setHovered(false)
+    }
+
+    const handleOnFocus = (event: React.FocusEvent<HTMLElement>) => {
+      onFocus && onFocus(event)
+      setHovered(true)
+    }
+
+    const renderedIcon =
+      icon || iconArtwork ? (
+        <Icon
+          artwork={iconArtwork}
+          color={iconColor}
+          name={icon}
           size={itemDimensions.iconSize}
           mr={itemDimensions.iconGap}
         />
+      ) : (
+        iconGutter && (
+          <IconPlaceholder
+            size={itemDimensions.iconSize}
+            mr={itemDimensions.iconGap}
+          />
+        )
       )
+
+    if (disabled && itemRole === 'link') {
+      // eslint-disable-next-line no-console
+      console.warn(
+        'itemRole="link" and disabled cannot be combined - use itemRole="button" if you need to offer a disabled ListItem'
+      )
+    }
+
+    const TextWrapper = truncate ? TruncateWrapper : Text
+
+    const renderedChildren =
+      typeof children === 'string' ? (
+        <TextWrapper
+          color={labelColor}
+          fontSize={itemDimensions.labelFontSize}
+          lineHeight={itemDimensions.labelLineHeight}
+        >
+          {children}
+        </TextWrapper>
+      ) : (
+        children
+      )
+
+    const renderedDescription =
+      typeof description === 'string' ? (
+        <TextWrapper
+          color={descriptionColor}
+          fontSize={itemDimensions.descriptionFontSize}
+          lineHeight={itemDimensions.descriptionLineHeight}
+        >
+          {description}
+        </TextWrapper>
+      ) : (
+        description
+      )
+
+    const { accessory, content, hoverDisclosure } = getDetailOptions(detail)
+
+    const renderedDetail = detail && (
+      <HoverDisclosure visible={!hoverDisclosure}>
+        <ListItemDetail pr={accessory ? itemDimensions.px : '0'}>
+          {content}
+        </ListItemDetail>
+      </HoverDisclosure>
     )
 
-  if (disabled && itemRole === 'link') {
-    // eslint-disable-next-line no-console
-    console.warn(
-      'itemRole="link" and disabled cannot be combined - use itemRole="button" if you need to offer a disabled ListItem'
-    )
-  }
-
-  const TextWrapper = truncate ? TruncateWrapper : Text
-
-  const renderedChildren =
-    typeof children === 'string' ? (
-      <TextWrapper
-        color={labelColor}
-        fontSize={itemDimensions.labelFontSize}
-        lineHeight={itemDimensions.labelLineHeight}
+    const LabelCreator: FC<{
+      children: ReactNode
+      className: string
+    }> = ({ children, className }) => (
+      <ListItemLabel
+        itemRole={itemRole}
+        aria-current={current}
+        aria-selected={selected}
+        className={className}
+        disabled={disabled}
+        href={href}
+        onBlur={handleOnBlur}
+        onClick={disabled ? undefined : handleOnClick}
+        onFocus={handleOnFocus}
+        onKeyDown={handleOnKeyDown}
+        onKeyUp={handleOnKeyUp}
+        rel={createSafeRel(rel, target)}
+        role={role || 'listitem'}
+        target={target}
+        tabIndex={-1}
       >
         {children}
-      </TextWrapper>
-    ) : (
-      children
+      </ListItemLabel>
     )
 
-  const renderedDescription =
-    typeof description === 'string' ? (
-      <TextWrapper
-        color={descriptionColor}
-        fontSize={itemDimensions.descriptionFontSize}
-        lineHeight={itemDimensions.descriptionLineHeight}
+    const Layout = accessory ? ListItemLayoutAccessory : ListItemLayout
+    const listItemContent = (
+      <Layout
+        labelCreator={LabelCreator}
+        description={renderedDescription}
+        detail={renderedDetail}
+        icon={renderedIcon}
+        px={itemDimensions.px}
+        py={itemDimensions.py}
       >
-        {description}
-      </TextWrapper>
-    ) : (
-      description
+        {renderedChildren}
+      </Layout>
     )
 
-  const { accessory, content, hoverDisclosure } = getDetailOptions(detail)
+    return (
+      <HoverDisclosureContext.Provider value={{ visible: hovered }}>
+        <ListItemWrapper
+          className={className}
+          current={current}
+          description={description}
+          disabled={disabled}
+          focusVisible={focusVisible}
+          hovered={hovered}
+          keyColor={keyColor}
+          onMouseEnter={handleOnMouseEnter}
+          onMouseLeave={handleOnMouseLeave}
+          ref={ref}
+          selected={selected}
+          {...itemDimensions}
+          {...restProps}
+        >
+          {listItemContent}
+        </ListItemWrapper>
+      </HoverDisclosureContext.Provider>
+    )
+  }
+)
 
-  const renderedDetail = detail && (
-    <HoverDisclosure visible={!hoverDisclosure}>
-      <ListItemDetail pr={accessory ? itemDimensions.px : '0'}>
-        {content}
-      </ListItemDetail>
-    </HoverDisclosure>
-  )
-
-  const LabelCreator: FC<{
-    children: ReactNode
-    className: string
-  }> = ({ children, className }) => (
-    <ListItemLabel
-      itemRole={itemRole}
-      aria-current={current}
-      aria-selected={selected}
-      className={className}
-      disabled={disabled}
-      href={href}
-      onBlur={handleOnBlur}
-      onClick={disabled ? undefined : handleOnClick}
-      onKeyDown={handleOnKeyDown}
-      onKeyUp={handleOnKeyUp}
-      rel={createSafeRel(rel, target)}
-      role="listitem"
-      target={target}
-      tabIndex={-1}
-    >
-      {children}
-    </ListItemLabel>
-  )
-
-  const Layout = accessory ? ListItemLayoutAccessory : ListItemLayout
-  const listItemContent = (
-    <Layout
-      labelCreator={LabelCreator}
-      description={renderedDescription}
-      detail={renderedDetail}
-      icon={renderedIcon}
-      px={itemDimensions.px}
-      py={itemDimensions.py}
-    >
-      {renderedChildren}
-    </Layout>
-  )
-
-  return (
-    <HoverDisclosureContext.Provider value={{ visible: hovered }}>
-      <ListItemWrapper
-        className={className}
-        current={current}
-        description={description}
-        disabled={disabled}
-        focusVisible={focusVisible}
-        hovered={hovered}
-        keyColor={keyColor}
-        ref={itemRef}
-        selected={selected}
-        {...itemDimensions}
-        {...restProps}
-      >
-        {listItemContent}
-      </ListItemWrapper>
-    </HoverDisclosureContext.Provider>
-  )
-}
+ListItemInternal.displayName = 'ListItemInternal'
 
 export const ListItem = styled(ListItemInternal)``
