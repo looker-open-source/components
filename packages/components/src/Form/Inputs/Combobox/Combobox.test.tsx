@@ -383,6 +383,11 @@ describe('<Combobox/> with children', () => {
 })
 
 describe('Keyboard navigation', () => {
+  const onChangeMock = jest.fn()
+  beforeEach(() => {
+    onChangeMock.mockClear()
+  })
+
   const arrowDown = {
     key: 'ArrowDown',
   }
@@ -392,12 +397,20 @@ describe('Keyboard navigation', () => {
   const enter = {
     key: 'Enter',
   }
+  const space = {
+    key: 'Spacebar',
+  }
 
   test.each([
     [
       'Combobox',
-      <Combobox id="with-options" openOnFocus key="combobox">
-        <ComboboxInput placeholder="Type here" />
+      <Combobox
+        id="with-options"
+        openOnFocus
+        key="combobox"
+        onChange={onChangeMock}
+      >
+        <ComboboxInput inputReadOnly placeholder="Type here" />
         <ComboboxList>
           <ComboboxOption label="Foo" value="101" />
           <ComboboxOption label="Bar" value="102" />
@@ -406,15 +419,20 @@ describe('Keyboard navigation', () => {
     ],
     [
       'ComboboxMulti',
-      <ComboboxMulti id="with-options" openOnFocus key="combobox-multi">
-        <ComboboxMultiInput placeholder="Type here" />
+      <ComboboxMulti
+        id="with-options"
+        openOnFocus
+        key="combobox-multi"
+        onChange={onChangeMock}
+      >
+        <ComboboxMultiInput inputReadOnly placeholder="Type here" />
         <ComboboxMultiList>
           <ComboboxMultiOption label="Foo" value="101" />
           <ComboboxMultiOption label="Bar" value="102" />
         </ComboboxMultiList>
       </ComboboxMulti>,
     ],
-  ])('arrows and enter (%s)', (name, jsx) => {
+  ])('arrows, enter and space (%s)', (name, jsx) => {
     const {
       getByText,
       getAllByRole,
@@ -455,8 +473,26 @@ describe('Keyboard navigation', () => {
     expect(items[0]).toHaveAttribute('aria-selected', 'false')
     expect(items[1]).toHaveAttribute('aria-selected', 'true')
 
+    fireEvent.keyDown(input, arrowUp)
+    expect(input).toHaveValue('Foo')
+    expect(items[0]).toHaveAttribute('aria-selected', 'true')
+    expect(items[1]).toHaveAttribute('aria-selected', 'false')
+
     fireEvent.keyDown(input, enter)
     expect(queryByRole('listbox')).not.toBeInTheDocument()
+
+    expect(onChangeMock).toHaveBeenCalledTimes(1)
+    const value = { label: 'Foo', value: '101' }
+    const onChangeValue = name === 'Combobox' ? value : [value]
+    expect(onChangeMock).toHaveBeenCalledWith(onChangeValue)
+
+    fireEvent.keyDown(input, arrowUp)
+    fireEvent.keyDown(input, arrowUp)
+    fireEvent.keyDown(input, space)
+    expect(onChangeMock).toHaveBeenCalledTimes(2)
+    const value2 = { label: 'Bar', value: '102' }
+    const onChangeValue2 = name === 'Combobox' ? value2 : [value, value2]
+    expect(onChangeMock).toHaveBeenNthCalledWith(2, onChangeValue2)
 
     if (name === 'Combobox') {
       // Selected value is the input's value
@@ -470,7 +506,7 @@ describe('Keyboard navigation', () => {
     fireEvent.click(document)
   })
 
-  test('arrows and enter with autoComplete = false', () => {
+  test('arrows, enter and space with autoComplete = false and no inputReadOnly', () => {
     const {
       getAllByRole,
       getByRole,
@@ -521,6 +557,13 @@ describe('Keyboard navigation', () => {
     fireEvent.keyDown(input, enter)
     expect(input).toHaveValue('Bar')
     expect(queryByRole('listbox')).not.toBeInTheDocument()
+
+    // Spacebar doesn't select the option without inputReadOnly
+    fireEvent.keyDown(input, arrowDown)
+    fireEvent.keyDown(input, arrowDown)
+    fireEvent.keyDown(input, space)
+    expect(input).toHaveValue('Bar')
+    expect(queryByRole('listbox')).toBeInTheDocument()
 
     // Close popover to silence act() warning
     fireEvent.click(document)
