@@ -60,6 +60,9 @@ export const activateFocusTrap = ({
   options,
 }: Trap<FocusTrapOptions>) => {
   if (options && !options.returnFocusRef.current) {
+    // The return focus element may already have been stored if this is an existing trap
+    // that has been superseded by a new focus trap and is now being re-activated.
+    // If it's empty, store the current focused element
     options.returnFocusRef.current = document.activeElement
   }
   const nodeFocusedBeforeActivation = options?.returnFocusRef?.current

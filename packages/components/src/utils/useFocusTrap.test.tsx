@@ -160,7 +160,7 @@ describe('useFocusTrap', () => {
       expect(otherButton).toHaveFocus()
     })
 
-    test.only('With nested traps', async () => {
+    test('With nested traps', async () => {
       render(
         <FocusTrapComponent>
           <Surface>
