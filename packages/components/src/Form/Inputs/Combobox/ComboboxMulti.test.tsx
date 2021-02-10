@@ -92,18 +92,26 @@ describe('<ComboboxMulti/> with values', () => {
     fireEvent.click(document)
   })
 
-  test('Removes existing values via option click', () => {
+  test('Removes existing values via option click or enter key', () => {
     renderComboboxMulti()
     const input = screen.getByPlaceholderText('Type here')
-    fireEvent.mouseDown(input)
+    fireEvent.keyDown(input, { key: 'ArrowDown' })
+    fireEvent.keyDown(input, { key: 'ArrowDown' })
+    fireEvent.keyDown(input, { key: 'ArrowDown' })
+    fireEvent.keyDown(input, { key: 'Enter' })
 
-    const bar = screen.getAllByText('Bar')[0]
-
-    fireEvent.click(bar)
-
-    expect(handleClick).toHaveBeenCalledTimes(1)
     expect(handleChange).toHaveBeenCalledTimes(1)
     expect(handleChange).toHaveBeenCalledWith([{ label: 'Qux', value: '104' }])
+
+    fireEvent.mouseDown(input)
+    const qux = screen.getAllByText('Qux')[0]
+    fireEvent.click(qux)
+
+    expect(handleClick).toHaveBeenCalledTimes(1)
+    expect(handleChange).toHaveBeenCalledTimes(2)
+    expect(handleChange).toHaveBeenNthCalledWith(2, [
+      { label: 'Bar', value: '102' },
+    ])
 
     // Close popover to silence act() warning
     fireEvent.click(document)
