@@ -25,27 +25,28 @@
  */
 
 import noop from 'lodash/noop'
-import React, { Context, FC, useRef, useMemo } from 'react'
+import React, { Context, ReactNode, useRef, useMemo } from 'react'
 import { Trap, TrapStackContextProps, TrapMap } from './types'
 import { getActiveTrap } from './utils'
 
-export interface TrapStackProviderProps {
-  activate: (trap: Trap) => () => void
-  context: Context<TrapStackContextProps>
+export interface TrapStackProviderProps<O extends {} = {}> {
+  activate: (trap: Trap<O>) => () => void
+  children?: ReactNode
+  context: Context<TrapStackContextProps<O>>
 }
 
 /**
  * Manages "trap" behavior (e.g. scroll lock & focus trap)
  * in a stack of elements (e.g. layered Dialogs & Popovers)
  */
-export const TrapStackProvider: FC<TrapStackProviderProps> = ({
+export const TrapStackProvider = <O,>({
   activate,
   context,
   children,
-}) => {
+}: TrapStackProviderProps<O>) => {
   // Stores all available trap elements
   // (map of ids to elements that have traps)
-  const registeredTrapsRef = useRef<TrapMap>({})
+  const registeredTrapsRef = useRef<TrapMap<O>>({})
   // Stores the current trap (element) where scrolling is allowed
   // null if no trap is active
   const activeTrapRef = useRef<HTMLElement | null>(null)
@@ -54,7 +55,7 @@ export const TrapStackProvider: FC<TrapStackProviderProps> = ({
 
   // Create the context value
   const value = useMemo(() => {
-    const getTrap = (id?: string): Trap | null => {
+    const getTrap = (id?: string): Trap<O> | null => {
       const registeredTraps = registeredTrapsRef.current
       return id ? registeredTraps[id] || null : getActiveTrap(registeredTraps)
     }
@@ -80,7 +81,7 @@ export const TrapStackProvider: FC<TrapStackProviderProps> = ({
       activeTrapRef.current = null
     }
 
-    const addTrap = (id: string, trap: Trap) => {
+    const addTrap = (id: string, trap: Trap<O>) => {
       registeredTrapsRef.current[id] = trap
       enableCurrentTrap()
     }
