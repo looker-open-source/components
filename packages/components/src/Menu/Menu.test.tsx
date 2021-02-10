@@ -30,6 +30,7 @@ import {
   fireEvent,
   waitForElementToBeRemoved,
   screen,
+  waitFor,
 } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import React, { useRef } from 'react'
@@ -274,10 +275,9 @@ describe('<Menu />', () => {
       fireEvent.click(document)
     })
 
-    test('toggle on arrow keys', () => {
+    test('toggle on arrow keys', async () => {
       renderWithTheme(
         <Menu
-          isOpen
           content={
             <MenuItem nestedMenu={<MenuItem>Swiss</MenuItem>}>Gouda</MenuItem>
           }
@@ -285,6 +285,9 @@ describe('<Menu />', () => {
           <Button>Cheese</Button>
         </Menu>
       )
+
+      const button = screen.getByText('Cheese')
+      userEvent.click(button)
 
       const parent = screen.getByText('Gouda')
       fireEvent.keyDown(parent, { key: 'ArrowRight' })
@@ -303,6 +306,8 @@ describe('<Menu />', () => {
       fireEvent.keyDown(child2, { key: 'Escape' })
       expect(screen.queryByText('Swiss')).not.toBeInTheDocument()
       expect(screen.queryByText('Gouda')).not.toBeInTheDocument()
+
+      await waitFor(() => expect(button).toHaveFocus())
     })
 
     test('toggle on click', () => {

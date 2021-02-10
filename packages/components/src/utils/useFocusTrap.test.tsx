@@ -40,30 +40,36 @@ afterEach(() => {
   jest.useRealTimers()
 })
 
-const Inner: FC<{ clickOutsideDeactivates?: boolean }> = ({
+interface TestProps {
+  clickOutsideDeactivates?: boolean
+  hideClose?: boolean
+}
+
+const Inner: FC<TestProps> = ({
   children,
   clickOutsideDeactivates,
+  hideClose,
 }) => {
   const [, ref] = useFocusTrap({ options: { clickOutsideDeactivates } })
   const { value, setOff, toggle } = useToggle()
   return (
     <>
-      {value && <div ref={ref}>{children}</div>}
+      {value && (
+        <div ref={ref}>
+          {children}
+          {!hideClose && <button onClick={setOff}>Close</button>}
+        </div>
+      )}
       <button onClick={toggle}>toggle</button>
       <button onClick={setOff}>Another button</button>
     </>
   )
 }
 
-const FocusTrapComponent: FC<{ clickOutsideDeactivates?: boolean }> = ({
-  children,
-  clickOutsideDeactivates,
-}) => {
+const FocusTrapComponent: FC<TestProps> = (props) => {
   return (
     <FocusTrapProvider>
-      <Inner clickOutsideDeactivates={clickOutsideDeactivates}>
-        {children}
-      </Inner>
+      <Inner {...props} />
     </FocusTrapProvider>
   )
 }
@@ -154,11 +160,35 @@ describe('useFocusTrap', () => {
       otherButton.focus()
       expect(otherButton).toHaveFocus()
     })
+
+    test('With nested traps', async () => {
+      render(
+        <FocusTrapComponent>
+          <Surface>
+            <Inner>
+              <Surface />
+            </Inner>
+          </Surface>
+        </FocusTrapComponent>
+      )
+      const toggle = screen.getByText('toggle')
+      toggle.focus()
+      fireEvent.click(toggle)
+
+      const toggleInner = screen.getAllByText('toggle')[0]
+      toggleInner.focus()
+      fireEvent.click(toggleInner)
+
+      const closeButtons = screen.getAllByText('Close')
+      fireEvent.click(closeButtons[0])
+      fireEvent.click(closeButtons[1])
+      await waitFor(() => expect(toggle).toHaveFocus())
+    })
   })
 
   describe('cycle focus when tabbing', () => {
     const CycleFocus = () => (
-      <FocusTrapComponent>
+      <FocusTrapComponent hideClose>
         <Surface>
           <button>First</button>
           <input type="text" />
