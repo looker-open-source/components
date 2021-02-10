@@ -58,7 +58,7 @@ import { useReadOnlyWarn } from '../utils/useReadOnlyWarn'
 export interface InputDateRangeProps {
   disabled?: boolean
   dateStringLocale?: Locales
-  defaultValue?: RangeModifier
+  defaultValue?: Partial<RangeModifier>
   id?: string
   localization?: CalendarLocalization
   onChange?: (range?: Partial<RangeModifier>) => void
@@ -294,7 +294,12 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
       inputs[activeDateInput].setValue(value)
 
       if (value.length === 0) {
-        handleDateChange([activeDateInput])
+        const inactiveDateInput = activeDateInput === 'from' ? 'to' : 'from'
+        if (inputs[inactiveDateInput].value === '') {
+          handleDateChange([activeDateInput, inactiveDateInput])
+        } else {
+          handleDateChange([activeDateInput])
+        }
       } else {
         const parsedValue = parseDateFromString(value, dateStringLocale)
         if (parsedValue) {
