@@ -142,7 +142,6 @@ const ListItemInternal: FC<ListItemProps> = forwardRef(
       keyColor: propsKeyColor,
       onBlur,
       onClick,
-      onFocus,
       onKeyDown,
       onKeyUp,
       onMouseEnter,
@@ -173,7 +172,6 @@ const ListItemInternal: FC<ListItemProps> = forwardRef(
 
     const handleOnBlur = (event: React.FocusEvent<HTMLElement>) => {
       setFocusVisible(false)
-      setHovered(false)
       onBlur && onBlur(event)
     }
 
@@ -200,11 +198,6 @@ const ListItemInternal: FC<ListItemProps> = forwardRef(
     const handleOnMouseLeave = (event: React.MouseEvent<HTMLElement>) => {
       onMouseLeave && onMouseLeave(event)
       setHovered(false)
-    }
-
-    const handleOnFocus = (event: React.FocusEvent<HTMLElement>) => {
-      onFocus && onFocus(event)
-      setHovered(true)
     }
 
     const renderedIcon =
@@ -283,7 +276,6 @@ const ListItemInternal: FC<ListItemProps> = forwardRef(
         href={href}
         onBlur={handleOnBlur}
         onClick={disabled ? undefined : handleOnClick}
-        onFocus={handleOnFocus}
         onKeyDown={handleOnKeyDown}
         onKeyUp={handleOnKeyUp}
         rel={createSafeRel(rel, target)}
