@@ -40,9 +40,15 @@ afterEach(() => {
   jest.useRealTimers()
 })
 
-const Inner: FC<{ clickOutsideDeactivates?: boolean }> = ({
+interface TestProps {
+  clickOutsideDeactivates?: boolean
+  hideClose?: boolean
+}
+
+const Inner: FC<TestProps> = ({
   children,
   clickOutsideDeactivates,
+  hideClose,
 }) => {
   const [, ref] = useFocusTrap({ options: { clickOutsideDeactivates } })
   const { value, setOff, toggle } = useToggle()
@@ -51,7 +57,7 @@ const Inner: FC<{ clickOutsideDeactivates?: boolean }> = ({
       {value && (
         <div ref={ref}>
           {children}
-          <button onClick={setOff}>Close</button>
+          {!hideClose && <button onClick={setOff}>Close</button>}
         </div>
       )}
       <button onClick={toggle}>toggle</button>
@@ -60,15 +66,10 @@ const Inner: FC<{ clickOutsideDeactivates?: boolean }> = ({
   )
 }
 
-const FocusTrapComponent: FC<{ clickOutsideDeactivates?: boolean }> = ({
-  children,
-  clickOutsideDeactivates,
-}) => {
+const FocusTrapComponent: FC<TestProps> = (props) => {
   return (
     <FocusTrapProvider>
-      <Inner clickOutsideDeactivates={clickOutsideDeactivates}>
-        {children}
-      </Inner>
+      <Inner {...props} />
     </FocusTrapProvider>
   )
 }
@@ -187,7 +188,7 @@ describe('useFocusTrap', () => {
 
   describe('cycle focus when tabbing', () => {
     const CycleFocus = () => (
-      <FocusTrapComponent>
+      <FocusTrapComponent hideClose>
         <Surface>
           <button>First</button>
           <input type="text" />
