@@ -94,9 +94,13 @@ test('user can change the selected date via text input field', () => {
 
   expect(screen.getByText('June 2019')).toBeInTheDocument()
 
-  const TextInput = screen.getByDisplayValue('06/03/2019')
-  fireEvent.change(TextInput, { target: { value: '01/01/2012' } })
-  fireEvent.blur(TextInput) // update value on blur
+  const FromTextInput = screen.getByDisplayValue('06/03/2019')
+  const ToTextInput = screen.getByDisplayValue('06/09/2019')
+  fireEvent.focus(ToTextInput) // execute helper toggleActiveDateInput
+  fireEvent.blur(ToTextInput) // execute helper toggleActiveDateInput
+  fireEvent.focus(FromTextInput) // execute helper toggleActiveDateInput
+  fireEvent.change(FromTextInput, { target: { value: '01/01/2012' } })
+  fireEvent.blur(FromTextInput) // update value on blur
 
   expect(screen.getByText('January 2012')).toBeInTheDocument()
 })
