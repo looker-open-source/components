@@ -101,6 +101,23 @@ test('user can change the selected date via text input field', () => {
   expect(screen.getByText('January 2012')).toBeInTheDocument()
 })
 
+test('navigates from month to month', () => {
+  const mockProps = {
+    onChange: jest.fn(),
+    value: {
+      from: new Date('June 3, 2019'),
+      to: new Date('June 9, 2019'),
+    },
+  }
+  renderWithTheme(<InputDateRange {...mockProps} />)
+  expect(screen.getByText('June 2019')).toBeInTheDocument()
+  fireEvent.click(screen.getByText('Previous Month'))
+  expect(screen.getByText('May 2019')).toBeInTheDocument()
+  fireEvent.click(screen.getByText('May 2019')) // jump to "now" (mocked date.now)
+  fireEvent.click(screen.getByText('Next Month'))
+  expect(screen.getByText('March 2020')).toBeInTheDocument()
+})
+
 test('calls onChange prop when a day is clicked', () => {
   const mockProps = {
     defaultValue: {
