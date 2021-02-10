@@ -24,9 +24,10 @@
 
  */
 
-import React from 'react'
-import { fireEvent } from '@testing-library/react'
+import React, { useState } from 'react'
+import { fireEvent, screen } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
+import { RangeModifier } from 'react-day-picker'
 import { Locales } from '../utils/i18n'
 import { InputDateRange } from './InputDateRange'
 
@@ -41,6 +42,63 @@ afterEach(() => {
   /* eslint-disable-next-line @typescript-eslint/unbound-method */
   global.Date.now = realDateNow // reset Date.now mock
   jest.clearAllMocks()
+})
+
+const ControlledInputDateRange = () => {
+  const [value, setValue] = useState<Partial<RangeModifier> | undefined>({
+    from: new Date('June 3, 2019'),
+    to: new Date('June 9, 2019'),
+  })
+  return (
+    <>
+      <button
+        onClick={() =>
+          setValue({
+            from: new Date('June 5, 2019'),
+            to: new Date('June 15, 2019'),
+          })
+        }
+      >
+        June 5 - 15, 2019
+      </button>
+      <button
+        onClick={() =>
+          setValue({
+            from: new Date('January 1, 2012'),
+            to: new Date('February 15, 2012'),
+          })
+        }
+      >
+        January 1 - February 15, 2012
+      </button>
+      <InputDateRange
+        value={value}
+        onChange={(date?: Partial<RangeModifier> | undefined) => setValue(date)}
+      />
+    </>
+  )
+}
+
+test('value can be controlled externally', () => {
+  renderWithTheme(<ControlledInputDateRange />)
+
+  expect(screen.getByDisplayValue('06/03/2019')).toBeInTheDocument()
+  fireEvent.click(screen.getByText('June 5 - 15, 2019')) // helper isDateRangeInView returns true
+  expect(screen.getByDisplayValue('06/15/2019')).toBeInTheDocument()
+  fireEvent.click(screen.getByText('January 1 - February 15, 2012')) // helper isDateRangeInView returns false
+  expect(screen.getByDisplayValue('01/01/2012')).toBeInTheDocument()
+})
+
+test('user can change the selected date via text input field', () => {
+  renderWithTheme(<ControlledInputDateRange />)
+
+  expect(screen.getByText('June 2019')).toBeInTheDocument()
+
+  const TextInput = screen.getByDisplayValue('06/03/2019')
+  fireEvent.change(TextInput, { target: { value: '01/01/2012' } })
+  fireEvent.blur(TextInput) // update value on blur
+
+  expect(screen.getByText('January 2012')).toBeInTheDocument()
 })
 
 test('calls onChange prop when a day is clicked', () => {

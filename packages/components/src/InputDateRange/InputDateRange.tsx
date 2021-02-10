@@ -66,7 +66,7 @@ export interface InputDateRangeProps {
   readOnly?: boolean
   ref?: Ref<HTMLDivElement>
   validationType?: ValidationType
-  value?: RangeModifier
+  value?: Partial<RangeModifier>
 }
 
 type Endpoint = 'to' | 'from'
