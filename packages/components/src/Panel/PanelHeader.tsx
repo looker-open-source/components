@@ -24,11 +24,12 @@
 
  */
 
-import React, { FC, ReactNode, useContext } from 'react'
+import React, { FC, useContext } from 'react'
 import { ThemeContext } from 'styled-components'
 import { Heading } from '../Text'
 import { Space } from '../Layout'
 import { IconButton } from '../Button'
+import { PanelDirection } from './usePanel'
 
 export interface PanelHeaderProps {
   className?: string
@@ -36,12 +37,12 @@ export interface PanelHeaderProps {
    * defines the icon displayed and the direction that the panel will appear and disappear
    * @default 'left'
    */
-  direction?: 'left' | 'right'
+  direction?: PanelDirection
   /**
    * callback to close Panel
    */
   handleClose?: () => void
-  title: string | ReactNode
+  title: string
 }
 
 export const PanelHeader: FC<PanelHeaderProps> = ({
