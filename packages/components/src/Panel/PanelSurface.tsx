@@ -26,15 +26,7 @@
 
 import styled, { css } from 'styled-components'
 import { variant } from 'styled-system'
-import { PanelDirection } from './usePanel'
-
-export interface PanelSurfaceProps {
-  /**
-   * Edge of the screen from which the panel will enter
-   * @default 'left'
-   */
-  direction?: PanelDirection
-}
+import { PanelSurfaceProps } from './types'
 
 const surfaceTransition = () => css`
   ${({ theme }) => `${theme.transitions.moderate}ms ${theme.easings.ease}`}
