@@ -27,7 +27,7 @@
 import { Theme } from '../theme'
 import { FontFamilyChoices, SpecifiableColors } from '../system'
 import { defaultFontFallbacks } from '../tokens/typography/font_families'
-import { generateFontFamilies } from '../utils/typography'
+import { generateFontFamilies } from './typography/generateFontFamilies'
 import { generateColors } from './color'
 
 export interface ThemeCustomizations {

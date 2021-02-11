@@ -25,23 +25,24 @@
  */
 
 import React, { FC } from 'react'
-import { css } from 'styled-components'
+import { createGlobalStyle } from 'styled-components'
 import { reset } from './GlobalStyle'
 
 const isIE11 =
   typeof window === `undefined` ||
   typeof document === `undefined` ||
   (!!window.MSInputMethodContext &&
+    /* istanbul ignore next */
     // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
     // @ts-ignore
     !!document.documentMode)
 
-const ieGlobalCSS = css`
+const IeGlobalCSS = createGlobalStyle`
   @media screen and (-ms-high-contrast: active),
     screen and (-ms-high-contrast: none) {
     ${reset}
   }
 `
 
-export const IEGlobalStyle: FC = () =>
-  isIE11 ? <style>{ieGlobalCSS}</style> : null
+export const IEGlobalStyle: FC<{ isIE?: boolean }> = ({ isIE = isIE11 }) =>
+  isIE ? <IeGlobalCSS /> : null

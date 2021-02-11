@@ -24,4 +24,17 @@
 
  */
 
-export { GoogleFontsLoader } from './GoogleFontsLoader'
+/**
+ * Converts malformed font-family specifications to well-formed structure per
+ * CSSWG specifications. Reference: https://developer.mozilla.org/en-US/docs/Web/CSS/font-family
+ */
+export const sanitizeFontFamily = (faces: string) =>
+  faces
+    .split(',')
+    .map((face) => sanitizeFontFace(face))
+    .join(', ')
+
+export const sanitizeFontFace = (face: string) => {
+  const sanitized = face.replace(/["']/g, '').trim()
+  return /\s/.test(sanitized) ? `'${sanitized}'` : sanitized
+}

@@ -39,27 +39,26 @@ interface GoogleFontSpecification {
 
 const googleFontsBaseUrl = 'https://fonts.googleapis.com/css2'
 
-const googleFontParam = ({
+export const googleFontParam = ({
   family,
-  italic,
+  italic = true,
   ...font
 }: GoogleFontSpecification) => {
-  italic = italic === undefined ? true : italic
-
   let uri = `${family.replace(/"/g, '').replace(/ /g, '+')}:`
 
   let weights = font.weights.map((weight) => `0,${weight}`)
   if (italic) {
     const italicizedWeights = font.weights.map((weight) => `1,${weight}`)
     weights = [...weights, ...italicizedWeights]
+    uri += 'ital,'
   }
 
-  uri += `ital,wght@${weights.join(';')}`
+  uri += `wght@${weights.join(';')}`
 
   return uri
 }
 
-const googleFontUrl = (theme: Theme) => {
+export const googleFontUrl = (theme: Theme) => {
   const url = new URL(googleFontsBaseUrl)
 
   const weights = Object.values(theme.fontWeights)

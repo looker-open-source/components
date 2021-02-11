@@ -31,6 +31,7 @@ export * from './pick'
 export { generateTheme } from './theme'
 export type { ThemeCustomizations } from './theme'
 export * from './helpers'
+export { itemSelectedColor } from './color/itemSelectedColor'
 export { pickSpecifiableColors } from './color/pickSpecifiableColors'
 export {
   intentUIBlend,
