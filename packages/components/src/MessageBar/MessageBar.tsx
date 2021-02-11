@@ -268,7 +268,7 @@ export const MessageBar = styled(MessageBarLayout).attrs(
   ${simpleLayoutCSS}
   align-items: center;
   ${({ intent, theme: { colors } }) =>
-    intent ? backgroundColor : `background: ${colors.informAccent}`}
+    intent ? backgroundColor : `background: ${colors.informAccent};`}
   border-radius: ${({ theme: { radii } }) => radii.medium};
   display: flex;
   font-size: ${({ theme: { fontSizes } }) => fontSizes.small};
