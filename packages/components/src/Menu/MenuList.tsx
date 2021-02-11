@@ -57,7 +57,6 @@ import {
   omitStyledProps,
 } from '@looker/design-tokens'
 import { useArrowKeyNav, useWindow } from '../utils'
-import { MenuItemContext } from './MenuItemContext'
 import { MenuGroup } from './MenuGroup'
 import { NestedMenuProvider } from './NestedMenuProvider'
 
@@ -206,15 +205,13 @@ export const MenuListInternal = forwardRef(
 
     return (
       <NestedMenuProvider>
-        <MenuItemContext.Provider value={context}>
-          <ul
-            role="menu"
-            {...omitStyledProps(omit(props, 'groupDividers'))}
-            {...navProps}
-          >
-            {content}
-          </ul>
-        </MenuItemContext.Provider>
+        <ul
+          role="menu"
+          {...omitStyledProps(omit(props, 'groupDividers'))}
+          {...navProps}
+        >
+          {content}
+        </ul>
       </NestedMenuProvider>
     )
   }
