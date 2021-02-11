@@ -27,6 +27,7 @@
 import { Story } from '@storybook/react/types-6-0'
 import React from 'react'
 import { VIEWPORT_MAP } from '../../utils-storybook'
+import { Icon } from '../../Icon'
 import { Box, BoxProps } from '.'
 
 export default {
@@ -50,7 +51,11 @@ const responsiveArgs: BoxProps & { children: JSX.Element } = {
   border: '1px solid',
   borderColor: 'ui2',
   borderRadius: 'medium',
-  children: <>Favorite Fruit: 🥑</>,
+  children: (
+    <>
+      <Icon name="LogoRings" size="medium" /> Looker
+    </>
+  ),
   color: 'key',
   display: ['block', 'inline-block'],
   fontFamily: 'brand',
