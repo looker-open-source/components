@@ -28,7 +28,6 @@ import { screen } from '@testing-library/react'
 import 'jest-styled-components'
 import * as React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { MenuGroup } from './MenuGroup'
 import { MenuItem } from './MenuItem'
 import { MenuList } from './MenuList'
 
@@ -90,28 +89,6 @@ describe('MenuList', () => {
 
       expect(screen.queryByTestId('before')).not.toBeInTheDocument()
       expect(screen.getByTestId('after')).toHaveStyle('height: 119400px;')
-    })
-
-    test('variable', () => {
-      const arr200 = Array.from(Array(200), (_, i) => i)
-      renderWithTheme(
-        <MenuList windowing="variable">
-          {arr200.map((num) => (
-            <MenuGroup key={num}>
-              {Array.from(Array((num + 1) % 15), (_, i) => (
-                <MenuItem key={i}>{`${num}_${i}`}</MenuItem>
-              ))}
-            </MenuGroup>
-          ))}
-        </MenuList>
-      )
-
-      expect(screen.getByText('0_0')).toBeVisible()
-      expect(screen.getByText('6_6')).toBeVisible()
-      expect(screen.queryByText('7_0')).not.toBeInTheDocument()
-
-      expect(screen.queryByTestId('before')).not.toBeInTheDocument()
-      expect(screen.getByTestId('after')).toHaveStyle('height: 61993px;')
     })
   })
 })
