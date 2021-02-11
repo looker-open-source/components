@@ -24,6 +24,7 @@
 
  */
 
+import { TFunction } from 'i18next'
 import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
 import { Icon, IconProps, IconNames } from '../Icon'
@@ -58,16 +59,16 @@ const getIntentIcon = (intent?: StatusIntent): IconNames => {
   }
 }
 
-export const getIntentLabel = (intent?: StatusIntent) => {
+export const getIntentLabel = (t: TFunction, intent?: StatusIntent) => {
   switch (intent) {
     case 'critical':
-      return 'Error'
+      return t('Error', { ns: 'GetIntentLabel' })
     case 'inform':
-      return 'Inform'
+      return t('Inform', { ns: 'GetIntentLabel' })
     case 'positive':
-      return 'Success'
+      return t('Success', { ns: 'GetIntentLabel' })
     case 'warn':
-      return 'Warning'
+      return t('Warning', { ns: 'GetIntentLabel' })
     case 'neutral':
     default:
       return undefined

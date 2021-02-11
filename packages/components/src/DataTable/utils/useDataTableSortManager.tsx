@@ -24,6 +24,7 @@
 
  */
 
+import { useTranslation } from 'react-i18next'
 import React, { useState, ReactNode } from 'react'
 import { DataTable } from '../DataTable'
 import { DataTableItem } from '../Item'
@@ -37,6 +38,7 @@ export const useDataTableSortManager = (
   defaultColumns: DataTableColumns,
   generateActions: (item: DataTableDatum) => ReactNode
 ) => {
+  const { t } = useTranslation('useDataTableSortManager')
   const [data, setData] = useState(defaultData)
   const [columns, setColumns] = useState(defaultColumns)
 
@@ -59,7 +61,7 @@ export const useDataTableSortManager = (
       <DataTableItem
         id={id}
         key={id}
-        onClick={() => alert(`Row clicked`)}
+        onClick={() => alert(t(`Row clicked`))}
         actions={generateActions(dataObj)}
       >
         {columns.map((column) => (

@@ -24,6 +24,7 @@
 
  */
 
+import { TFunction } from 'i18next'
 import {
   CompatibleHTMLProps,
   omitStyledProps,
@@ -112,6 +113,7 @@ const NoopComponent = () => <></>
  *  -- false returns NoopComponent
  */
 function getPrimaryActionButton(
+  t: TFunction,
   primaryAction?: SupportedActionTypes
 ): (props: DefaultDismissButtonProps) => ReactElement {
   switch (typeof primaryAction) {
@@ -130,7 +132,9 @@ function getPrimaryActionButton(
           onClick={onClick}
           icon="Close"
           size="small"
-          label={`Dismiss ${getIntentLabel(intent)}`}
+          label={`${t('Dismiss', { ns: 'MessageBar' })} ${getIntentLabel(
+            intent
+          )}`}
         />
       )
   }

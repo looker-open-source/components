@@ -24,19 +24,28 @@
 
  */
 
+import { useTranslation } from 'react-i18next'
 import React from 'react'
 
-export const CheckMarkMixed = () => (
-  <svg
-    width="16"
-    height="16"
-    viewBox="0 0 16 16"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <title>Check Mark Mixed</title>
-    <g stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round">
-      <line x1="5" y1="8" x2="11" y2="8"></line>
-    </g>
-  </svg>
-)
+export const CheckMarkMixed = () => {
+  const { t } = useTranslation('CheckMarkMixed')
+  return (
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <title>{t('Check Mark Mixed')}</title>
+      <g
+        stroke="currentColor"
+        strokeWidth="2"
+        fill="none"
+        strokeLinecap="round"
+      >
+        <line x1="5" y1="8" x2="11" y2="8"></line>
+      </g>
+    </svg>
+  )
+}

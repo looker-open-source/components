@@ -24,6 +24,7 @@
 
  */
 
+import { useTranslation } from 'react-i18next'
 import { densityTarget } from '@looker/design-tokens'
 import React, { FC } from 'react'
 import styled, { css } from 'styled-components'
@@ -44,15 +45,18 @@ export interface TableProps extends DataTableProps {
   columnsVisible: string[]
 }
 
-export const TableLayout: FC<TableProps> = ({
-  caption,
-  children,
-  className,
-  columnsVisible,
-  headerRowId,
-  noResultsDisplay = 'No Results',
-  state,
-}) => {
+export const TableLayout: FC<TableProps> = (props) => {
+  const { t } = useTranslation('Table')
+  const noResultsDisplayText = t('No Results')
+  const {
+    caption,
+    children,
+    className,
+    columnsVisible,
+    headerRowId,
+    noResultsDisplay = noResultsDisplayText,
+    state,
+  } = props
   const [element, ref] = useCallbackRef()
   const overflow = useIsTruncated(element, columnsVisible.length)
 
