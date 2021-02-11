@@ -35,10 +35,9 @@ export default {
   title: 'Box',
 }
 
-const Template: Story<BoxProps & { children: JSX.Element }> = ({
-  children,
-  ...args
-}) => (
+type BoxStoryProps = BoxProps & { children: JSX.Element }
+
+const Template: Story<BoxStoryProps> = ({ children, ...args }) => (
   <>
     {/* Render two Boxes to validate inline-block rendering */}
     <Box {...args}>{children}</Box>
@@ -46,7 +45,7 @@ const Template: Story<BoxProps & { children: JSX.Element }> = ({
   </>
 )
 
-const responsiveArgs: BoxProps & { children: JSX.Element } = {
+const responsiveArgs: BoxStoryProps = {
   bg: 'ui1',
   border: '1px solid',
   borderColor: 'ui2',
@@ -64,9 +63,9 @@ const responsiveArgs: BoxProps & { children: JSX.Element } = {
   height: ['100px', '200px', '50vh'],
   letterSpacing: '10',
   lineHeight: ['small', 'large'],
+  m: ['none', null, 'medium', 'xlarge'],
   maxHeight: '500px',
   maxWidth: '500px',
-  mt: ['none', null, 'medium', 'xlarge'],
   textAlign: ['left', 'center', 'right'],
   width: ['100px', '200px', '50vw'],
 }
@@ -94,6 +93,38 @@ DesktopLayout.args = { ...responsiveArgs }
 DesktopLayout.parameters = {
   viewport: {
     defaultViewport: 'desktop',
+    viewports: VIEWPORT_MAP,
+  },
+}
+
+const absolutePositioned: BoxStoryProps = {
+  alignContent: 'flex-end',
+  alignItems: 'baseline',
+  bg: 'key',
+  children: <>A Box</>,
+  color: 'text1',
+  display: 'flex',
+  flexDirection: 'column',
+  flexWrap: 'wrap',
+  height: '50px',
+  justifyContent: 'center',
+  position: 'absolute',
+  width: '50vw',
+}
+
+export const Positioning: Story<BoxStoryProps> = () => (
+  <>
+    <Box {...absolutePositioned} top="1rem" left="1rem" />
+    <Box bg="ui3" alignSelf="center" flexBasis="1" flex="1 1" order="unset">
+      Top box
+    </Box>
+    <Box {...absolutePositioned} bottom="1rem" right="1rem" />
+  </>
+)
+
+Positioning.parameters = {
+  viewport: {
+    defaultViewport: 'mobile',
     viewports: VIEWPORT_MAP,
   },
 }

@@ -36,35 +36,6 @@ import {
 import { Box } from './Box'
 
 describe('Box', () => {
-  test('Box supports position, top, left, bottom, right', () => {
-    assertSnapshot(<Box position="absolute" />)
-    assertSnapshot(<Box top="1rem" />)
-    assertSnapshot(<Box left="1rem" />)
-    assertSnapshot(<Box right="1rem" />)
-    assertSnapshot(<Box bottom="1rem" />)
-  })
-
-  describe('flex', () => {
-    test('supports flex properties', () => {
-      assertSnapshot(
-        <Box
-          display="flex"
-          alignContent="flex-end"
-          alignItems="baseline"
-          justifyContent="center"
-          flexWrap="wrap"
-          flexDirection="column"
-        />
-      )
-    })
-
-    test('supports flex item properties', () => {
-      assertSnapshot(
-        <Box alignSelf="center" flexBasis="1" flex="1 1" order="unset" />
-      )
-    })
-  })
-
   describe('as=', () => {
     test('allows Box to render as any HTML tag', () => {
       const boxAsButton = mountWithTheme(<Box as="button" />)
