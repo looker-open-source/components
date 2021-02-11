@@ -46,7 +46,7 @@ export interface TableProps extends DataTableProps {
 }
 
 export const TableLayout: FC<TableProps> = (props) => {
-  const { t } = useTranslation('Table')
+  const { t } = useTranslation('DataTable')
   const noResultsDisplayText = t('No Results')
   const {
     caption,

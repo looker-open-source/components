@@ -45,7 +45,7 @@ const AvatarLayout: FC<AvatarUserProps> = ({
   size,
   ...props
 }) => {
-  const { t } = useTranslation('Avatar')
+  const { t } = useTranslation('AvatarUser')
 
   const firstInitial = user && user.first_name && user.first_name[0]
   const lastInitial = user && user.last_name && user.last_name[0]
