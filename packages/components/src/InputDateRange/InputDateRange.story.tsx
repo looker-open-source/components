@@ -25,6 +25,7 @@
  */
 import React, { useState } from 'react'
 import { Story } from '@storybook/react/types-6-0'
+import { RangeModifier } from 'react-day-picker'
 import { VIEWPORT_MAP } from '../utils-storybook'
 import { Button } from '../Button'
 import { Popover, PopoverContent } from '../Popover'
@@ -90,7 +91,9 @@ export const TimeframeFilter = () => {
   const endDate = new Date()
   endDate.setDate(15)
 
-  const [controlledDateRange, setControlledDateRange] = useState<any>()
+  const [controlledDateRange, setControlledDateRange] = useState<
+    Partial<RangeModifier>
+  >()
 
   return (
     <Popover

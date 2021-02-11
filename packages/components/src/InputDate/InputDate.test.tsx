@@ -100,7 +100,7 @@ test('fills TextInput with value, and updates when props.value changes', () => {
   expect(input).toHaveValue('06/03/2019')
 })
 
-test('user can change the selected date via text input field', () => {
+test('value can be controlled externally', () => {
   renderWithTheme(<ControlledInputDate />)
 
   expect(screen.getByDisplayValue('06/03/2019')).toBeInTheDocument()
