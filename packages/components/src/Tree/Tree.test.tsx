@@ -121,9 +121,6 @@ describe('Tree', () => {
     fireEvent.click(detail)
     expect(screen.queryByText('Hello World')).not.toBeInTheDocument()
     expect(onOpen).toHaveBeenCalledTimes(0)
-    fireEvent.click(detail)
-    expect(screen.queryByText('Hello World')).not.toBeInTheDocument()
-    expect(onClose).toHaveBeenCalledTimes(0)
   })
 
   test('Key presses on detail do not open the Tree or trigger callbacks when accessory === true', () => {
@@ -151,11 +148,6 @@ describe('Tree', () => {
     })
     expect(screen.queryByText('Hello World')).not.toBeInTheDocument()
     expect(onOpen).toHaveBeenCalledTimes(0)
-    fireEvent.keyDown(detail, {
-      key: 'Enter',
-    })
-    expect(screen.queryByText('Hello World')).not.toBeInTheDocument()
-    expect(onClose).toHaveBeenCalledTimes(0)
   })
 
   test('Clicks on detail open the Tree and trigger callbacks when accessory === false', () => {
