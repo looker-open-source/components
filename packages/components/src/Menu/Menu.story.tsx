@@ -56,9 +56,6 @@ export default {
 const menuItems = (
   <>
     <MenuGroup>
-      <MenuItem description="this is the description" icon="Validate">
-        Validate
-      </MenuItem>
       <MenuItem
         detail="detail"
         description="this is the description"
