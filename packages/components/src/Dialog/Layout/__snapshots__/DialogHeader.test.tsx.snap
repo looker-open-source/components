@@ -2,7 +2,7 @@
 
 exports[`DialogHeader Snapshot 1`] = `
 .c7 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  font-family: Roboto,'Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   width: 1.25rem;
   height: 1.25rem;
   display: -webkit-inline-box;
@@ -24,7 +24,7 @@ exports[`DialogHeader Snapshot 1`] = `
 }
 
 .c4 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  font-family: Roboto,'Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   width: 36px;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -36,7 +36,7 @@ exports[`DialogHeader Snapshot 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  font-family: Roboto,'Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  font-family: Roboto,'Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   font-weight: 500;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
@@ -63,7 +63,7 @@ exports[`DialogHeader Snapshot 1`] = `
 }
 
 .c1 {
-  font-family: Roboto,'Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  font-family: Roboto,'Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   font-size: 1.125rem;
   font-weight: 600;
   line-height: 1.5rem;
@@ -87,7 +87,7 @@ exports[`DialogHeader Snapshot 1`] = `
 }
 
 .c5 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  font-family: Roboto,'Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   background: none;
   border: none;
   color: #959a9d;
@@ -121,7 +121,7 @@ exports[`DialogHeader Snapshot 1`] = `
 }
 
 .c0 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  font-family: Roboto,'Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   padding: 1rem;
   padding-right: 1rem;
   padding-left: 1rem;

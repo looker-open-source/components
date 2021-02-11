@@ -24,6 +24,8 @@
 
  */
 
+import { sanitizeFontFace } from './sanitizeFont'
+
 export const fontFacesToFamily = (
   faces: string[] | string,
   fallbacks: string[]
@@ -34,5 +36,5 @@ export const fontFacesToFamily = (
 
   faces = [...faces, ...fallbacks]
 
-  return faces.map((face) => `${face}`).join(', ')
+  return faces.map((face) => `${sanitizeFontFace(face)}`).join(', ')
 }

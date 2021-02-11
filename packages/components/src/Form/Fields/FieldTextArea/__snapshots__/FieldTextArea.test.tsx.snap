@@ -16,7 +16,7 @@ exports[`A FieldTextArea with default label 1`] = `
 }
 
 .c5 textarea {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  font-family: Roboto,'Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   min-height: 6.25rem;
   background: #FFFFFF;
   border: 1px solid #DEE1E5;
@@ -41,7 +41,7 @@ exports[`A FieldTextArea with default label 1`] = `
 }
 
 .c2 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  font-family: Roboto,'Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   color: #343C42;
   font-size: 0.75rem;
   font-weight: 500;
@@ -141,7 +141,7 @@ exports[`A FieldTextArea with label inline 1`] = `
 }
 
 .c5 textarea {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  font-family: Roboto,'Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   min-height: 6.25rem;
   background: #FFFFFF;
   border: 1px solid #DEE1E5;
@@ -166,7 +166,7 @@ exports[`A FieldTextArea with label inline 1`] = `
 }
 
 .c2 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  font-family: Roboto,'Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   color: #343C42;
   font-size: 0.75rem;
   font-weight: 500;

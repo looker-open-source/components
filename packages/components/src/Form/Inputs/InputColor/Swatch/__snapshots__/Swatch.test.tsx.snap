@@ -2,7 +2,7 @@
 
 exports[`Default Swatch 1`] = `
 .c0 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  font-family: Roboto,'Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   background: #FFFFFF;
   border: 1px solid #DEE1E5;
   border-radius: 0.25rem;
@@ -55,7 +55,7 @@ exports[`Default Swatch 1`] = `
 
 exports[`Swatch has a disabled state 1`] = `
 .c0 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  font-family: Roboto,'Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   background: #FFFFFF;
   border: 1px solid #DEE1E5;
   border-radius: 0.25rem;
@@ -94,7 +94,7 @@ exports[`Swatch has a disabled state 1`] = `
 
 exports[`Swatch with hex value passed 1`] = `
 .c0 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  font-family: Roboto,'Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   background: #FFFFFF;
   border: 1px solid #DEE1E5;
   border-radius: 0.25rem;
@@ -132,7 +132,7 @@ exports[`Swatch with hex value passed 1`] = `
 
 exports[`Swatch with width and height set 1`] = `
 .c0 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  font-family: Roboto,'Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   background: #FFFFFF;
   border: 1px solid #DEE1E5;
   border-radius: 0.25rem;

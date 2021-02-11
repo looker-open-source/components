@@ -2,7 +2,7 @@
 
 exports[`Avatar AvatarCombo renders Avatar and its secondary avatar 1`] = `
 .c6 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  font-family: Roboto,'Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   width: 1.5rem;
   height: 1.5rem;
   display: -webkit-inline-box;
@@ -39,7 +39,7 @@ exports[`Avatar AvatarCombo renders Avatar and its secondary avatar 1`] = `
 }
 
 .c1 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  font-family: Roboto,'Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   background: transparent;
   border: none;
   padding: 0;
@@ -67,7 +67,7 @@ exports[`Avatar AvatarCombo renders Avatar and its secondary avatar 1`] = `
 }
 
 .c4 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  font-family: Roboto,'Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   background: transparent;
   border: none;
   padding: 0;
@@ -170,7 +170,7 @@ exports[`Avatar AvatarCombo renders Avatar and its secondary avatar 1`] = `
 
 exports[`Avatar AvatarCombo renders Avatar initials and secondary with Code icon 1`] = `
 .c6 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  font-family: Roboto,'Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   width: 1.5rem;
   height: 1.5rem;
   display: -webkit-inline-box;
@@ -207,7 +207,7 @@ exports[`Avatar AvatarCombo renders Avatar initials and secondary with Code icon
 }
 
 .c1 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  font-family: Roboto,'Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   background: transparent;
   border: none;
   padding: 0;
@@ -235,7 +235,7 @@ exports[`Avatar AvatarCombo renders Avatar initials and secondary with Code icon
 }
 
 .c4 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  font-family: Roboto,'Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   background: transparent;
   border: none;
   padding: 0;
@@ -338,7 +338,7 @@ exports[`Avatar AvatarCombo renders Avatar initials and secondary with Code icon
 
 exports[`Avatar AvatarCombo renders AvatarIcon and secondary avatar if user is not available and updates icon if passed. 1`] = `
 .c3 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  font-family: Roboto,'Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   width: 1.5rem;
   height: 1.5rem;
   display: -webkit-inline-box;
@@ -361,7 +361,7 @@ exports[`Avatar AvatarCombo renders AvatarIcon and secondary avatar if user is n
 }
 
 .c1 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  font-family: Roboto,'Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   background: transparent;
   border: none;
   padding: 0;
@@ -394,7 +394,7 @@ exports[`Avatar AvatarCombo renders AvatarIcon and secondary avatar if user is n
 }
 
 .c4 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  font-family: Roboto,'Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   background: transparent;
   border: none;
   padding: 0;
@@ -503,7 +503,7 @@ exports[`Avatar AvatarCombo renders AvatarIcon and secondary avatar if user is n
 
 exports[`Avatar AvatarIcon renders  1`] = `
 .c2 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  font-family: Roboto,'Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   width: 1.5rem;
   height: 1.5rem;
   display: -webkit-inline-box;
@@ -526,7 +526,7 @@ exports[`Avatar AvatarIcon renders  1`] = `
 }
 
 .c0 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  font-family: Roboto,'Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   background: transparent;
   border: none;
   padding: 0;
@@ -584,7 +584,7 @@ exports[`Avatar AvatarIcon renders  1`] = `
 
 exports[`Avatar AvatarIcon renders different icon if specified 1`] = `
 .c2 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  font-family: Roboto,'Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   width: 1.5rem;
   height: 1.5rem;
   display: -webkit-inline-box;
@@ -607,7 +607,7 @@ exports[`Avatar AvatarIcon renders different icon if specified 1`] = `
 }
 
 .c0 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  font-family: Roboto,'Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   background: transparent;
   border: none;
   padding: 0;
@@ -679,7 +679,7 @@ exports[`Avatar AvatarUser shows initials if has broken url as avatar_url 1`] = 
 }
 
 .c0 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  font-family: Roboto,'Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   background: transparent;
   border: none;
   padding: 0;
@@ -732,7 +732,7 @@ exports[`Avatar AvatarUser shows initials if it has null as avatar_url  1`] = `
 }
 
 .c0 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  font-family: Roboto,'Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   background: transparent;
   border: none;
   padding: 0;
@@ -788,7 +788,7 @@ exports[`Avatar AvatarUser shows user profile picture if it has good avatar_url 
 }
 
 .c0 {
-  font-family: 'Roboto','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI','Helvetica','Arial',sans-serif;
+  font-family: Roboto,'Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   background: transparent;
   border: none;
   padding: 0;

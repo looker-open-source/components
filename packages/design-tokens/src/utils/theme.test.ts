@@ -99,9 +99,9 @@ describe('generateTheme', () => {
     })
     expect(generated.fonts).toMatchInlineSnapshot(`
       Object {
-        "body": "'Times new roman', 'Noto Sans JP', 'Noto Sans CJK KR', 'Noto Sans Arabic UI', 'Noto Sans Devanagari UI', 'Noto Sans Hebrew', 'Noto Sans Thai UI', 'Helvetica', 'Arial', sans-serif",
-        "brand": "verdana, 'Noto Sans JP', 'Noto Sans CJK KR', 'Noto Sans Arabic UI', 'Noto Sans Devanagari UI', 'Noto Sans Hebrew', 'Noto Sans Thai UI', 'Helvetica', 'Arial', sans-serif",
-        "code": "fixed, 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace",
+        "body": "'Times new roman', 'Noto Sans JP', 'Noto Sans CJK KR', 'Noto Sans Arabic UI', 'Noto Sans Devanagari UI', 'Noto Sans Hebrew', 'Noto Sans Thai UI', Helvetica, Arial, sans-serif",
+        "brand": "verdana, 'Noto Sans JP', 'Noto Sans CJK KR', 'Noto Sans Arabic UI', 'Noto Sans Devanagari UI', 'Noto Sans Hebrew', 'Noto Sans Thai UI', Helvetica, Arial, sans-serif",
+        "code": "fixed, Monaco, Menlo, 'Ubuntu Mono', Consolas, source-code-pro, monospace",
       }
     `)
   })
@@ -195,9 +195,9 @@ describe('generateTheme', () => {
           "semiBold": 600,
         },
         "fonts": Object {
-          "body": "'Roboto', 'Noto Sans JP', 'Noto Sans CJK KR', 'Noto Sans Arabic UI', 'Noto Sans Devanagari UI', 'Noto Sans Hebrew', 'Noto Sans Thai UI', 'Helvetica', 'Arial', sans-serif",
-          "brand": "Roboto, 'Noto Sans JP', 'Noto Sans CJK KR', 'Noto Sans Arabic UI', 'Noto Sans Devanagari UI', 'Noto Sans Hebrew', 'Noto Sans Thai UI', 'Helvetica', 'Arial', sans-serif",
-          "code": "'Roboto Mono', 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace",
+          "body": "Roboto, 'Noto Sans JP', 'Noto Sans CJK KR', 'Noto Sans Arabic UI', 'Noto Sans Devanagari UI', 'Noto Sans Hebrew', 'Noto Sans Thai UI', Helvetica, Arial, sans-serif",
+          "brand": "Roboto, 'Noto Sans JP', 'Noto Sans CJK KR', 'Noto Sans Arabic UI', 'Noto Sans Devanagari UI', 'Noto Sans Hebrew', 'Noto Sans Thai UI', Helvetica, Arial, sans-serif",
+          "code": "'Roboto Mono', Monaco, Menlo, 'Ubuntu Mono', Consolas, source-code-pro, monospace",
         },
         "lineHeights": Object {
           "large": "1.5rem",
