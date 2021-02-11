@@ -31,15 +31,8 @@ import { IconSize } from '../../Icon'
 import { indicatorDefaults } from './indicatorDefaults'
 
 /**
- * Ideally, we could use toHaveStyle on the internal AccordionContent container to
- * check if a linear-gradient background was added when border === true on <Tree>.
- *
- * However, toHaveStyle (as well as window.getComputedStyle) return undefined when
- * trying to check that container's background style. Visual snapshotting currently
- * accounts for the border styling / prop so ignoring this file for Codecov purposes.
- *
- * Relevant jest-dom issue:
- * https://github.com/testing-library/jest-dom/issues/170
+ * Creates a vertical "border" for Tree's content container
+ * Testing note: style rules validated by storyshots
  */
 export const generateTreeBorder = (
   depth: number,
