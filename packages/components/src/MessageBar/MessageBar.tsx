@@ -39,6 +39,7 @@ import React, {
   useEffect,
   ReactElement,
 } from 'react'
+import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
 import { variant } from 'styled-system'
 import { IconButton, ButtonProps, ButtonTransparent } from '../Button'
@@ -132,9 +133,7 @@ function getPrimaryActionButton(
           onClick={onClick}
           icon="Close"
           size="small"
-          label={`${t('Dismiss', { ns: 'MessageBar' })} ${getIntentLabel(
-            intent
-          )}`}
+          label={`${t('DismissIntent', { intent: getIntentLabel(t, intent) })}`}
         />
       )
   }
@@ -208,7 +207,8 @@ const MessageBarLayout = forwardRef(
       }
     }, [visibleProp])
 
-    const PrimaryButton = getPrimaryActionButton(primaryAction)
+    const { t } = useTranslation('MessageBar')
+    const PrimaryButton = getPrimaryActionButton(t, primaryAction)
     const SecondaryButton = getSecondaryActionButton(secondaryAction)
 
     const messageBarMarkup = (

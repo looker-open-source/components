@@ -53,26 +53,21 @@ const BulkActionsLayout: FC<BulkActionsProps> = ({
   const { t } = useTranslation('BulkActions')
   const { select } = useContext(DataTableContext)
   const selectedItemCount = select ? select.selectedItems.length : 0
-  const messageText = t('displayed items selected')
-  const allText = t('All')
 
   let message
   if (selectedItemCount < pageCount) {
-    message = `${selectedItemCount} ${t('of')} ${pageCount} ${messageText}`
-    // message = t('selectedItemCountLessThenPageCount', {
-    //   pageCount: Number(pageCount),
-    //   selectedItemCount: Number(selectedItemCount),
-    // })
+    message = t('SelectedCountOfTotalDisplayed', {
+      pageCount: Number(pageCount),
+      selectedItemCount: Number(selectedItemCount),
+    })
   } else if (selectedItemCount === pageCount) {
-    message = `${allText} ${pageCount} ${messageText}`
-    // message = t('selectedItemCountEqualToPageCount', {
-    //   pageCount: Number(pageCount),
-    // })
+    message = t('AllPageCountDisplayedSelected', {
+      pageCount: Number(pageCount),
+    })
   } else if (totalCount && selectedItemCount === totalCount) {
-    message = `${allText} ${totalCount} ${t('items selected')}`
-    // message = t('selectedItemCountEqualToTotalCount', {
-    //   totalCount: Number(totalCount),
-    // })
+    message = t('AllTotalCountSelected', {
+      totalCount: Number(totalCount),
+    })
   }
 
   const selectedItemsText = (
@@ -90,7 +85,7 @@ const BulkActionsLayout: FC<BulkActionsProps> = ({
       <Span fontWeight="semiBold" fontSize="xsmall">
         {selectedItemCount === totalCount
           ? t('Clear Selection')
-          : t('SelectedAll', { totalCount: Number(totalCount) })}
+          : t('SelectAllCountResults', { totalCount: Number(totalCount) })}
       </Span>
     </ButtonTransparent>
   )

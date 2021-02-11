@@ -32,7 +32,7 @@ const RequiredStarLayout: FC<{ className?: string }> = ({ className }) => {
   const { t } = useTranslation('RequiredStar')
   return (
     <span aria-hidden="true" className={className} data-testid="requiredStar">
-      <VisuallyHidden>{t('required')}</VisuallyHidden>
+      <VisuallyHidden>{` ${t('required')}`}</VisuallyHidden>
     </span>
   )
 }

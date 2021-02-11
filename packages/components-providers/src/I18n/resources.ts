@@ -31,17 +31,18 @@ export const i18nResources: Resource = {
     AdvancedInputControls: {
       'Clear Field': 'Clear Field',
     },
-    Avatar: {
+    AvatarUser: {
       Avatar: 'Avatar',
     },
     BulkActions: {
-      All: 'All',
+      AllPageCountDisplayedSelected:
+        'All {{pageCount}} displayed items selected',
+      AllTotalCountSelected: 'All {{totalCount}} items selected',
       'Bulk Actions': 'Bulk Actions',
       'Clear Selection': 'Clear Selection',
-      SelectedAll: 'Select all {{totalCount}} results',
-      'displayed items selected': 'displayed items selected',
-      'items selected': 'items selected',
-      of: 'of',
+      SelectAllCountResults: 'Select all {{totalCount}} results',
+      SelectedCountOfTotalDisplayed:
+        '{{selectedItemCount}} of {{pageCount}} displayed items selected',
     },
     CalendarNav: {
       'View Current Month': 'View Current Month',
@@ -67,14 +68,17 @@ export const i18nResources: Resource = {
       Copied: 'Copied',
       'Copy to Clipboard': 'Copy to Clipboard',
     },
+    DataTable: {
+      'No Results': 'No Results',
+    },
     DataTableItem: {
       Options: 'Options',
     },
     GetIntentLabel: {
       Error: 'Error',
-      Inform: 'inform',
-      Positive: 'positive',
-      Warn: 'Warning',
+      Inform: 'Inform',
+      Success: 'Success',
+      Warning: 'Warning',
     },
     InputDate: {
       Date: 'Date',
@@ -93,7 +97,7 @@ export const i18nResources: Resource = {
       'Select time': 'Select time',
     },
     MessageBar: {
-      Dismiss: 'Dismiss',
+      DismissIntent: 'Dismiss {{intent}}',
     },
     Pagination: {
       'First page of results': 'First page of results',
@@ -106,13 +110,7 @@ export const i18nResources: Resource = {
       Save: 'Save',
     },
     RequiredStar: {
-      required: ' required',
-    },
-    Table: {
-      'No Results': 'No Results',
-    },
-    useDataTableSortManager: {
-      'Row clicked': 'Row clicked',
+      required: 'required',
     },
   },
 }

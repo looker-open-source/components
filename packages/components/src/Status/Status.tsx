@@ -26,6 +26,7 @@
 
 import { TFunction } from 'i18next'
 import React, { forwardRef, Ref } from 'react'
+import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
 import { Icon, IconProps, IconNames } from '../Icon'
 
@@ -79,18 +80,23 @@ const StatusLayout = forwardRef(
   (
     { className, intent, size = 'medium', ...props }: StatusProps,
     ref: Ref<HTMLInputElement>
-  ) => (
-    <Icon
-      {...props}
-      className={className}
-      ref={ref}
-      color={intent}
-      name={getIntentIcon(intent)}
-      size={size}
-      /* Don't specify title if Status is wrapped in tooltip */
-      title={!props['aria-describedby'] ? getIntentLabel(intent) : undefined}
-    />
-  )
+  ) => {
+    const { t } = useTranslation()
+    return (
+      <Icon
+        {...props}
+        className={className}
+        ref={ref}
+        color={intent}
+        name={getIntentIcon(intent)}
+        size={size}
+        /* Don't specify title if Status is wrapped in tooltip */
+        title={
+          !props['aria-describedby'] ? getIntentLabel(t, intent) : undefined
+        }
+      />
+    )
+  }
 )
 
 StatusLayout.displayName = 'StatusLayout'
