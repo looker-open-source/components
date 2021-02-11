@@ -34,11 +34,16 @@ import {
   SelectConfig,
 } from '../'
 import { DataTableAction } from '../Item'
-import { useSelectManager, doDataTableSort } from '../utils'
+import {
+  useSelectManager,
+  doDataTableSort,
+  useDataTableSortManager,
+} from '../utils'
 import { filters as defaultFilters } from '../../__mocks__/filters'
 import { columns as mockColumns } from '../../__mocks__/DataTable/columns'
 import { data } from '../../__mocks__/DataTable/data'
 import { DataTableColumns } from '../Column'
+import { Link } from '../../Link'
 import {
   actions,
   itemBuilder,
@@ -150,6 +155,90 @@ const Template: Story<DemoProps> = ({
   )
 }
 
+const actionsUseDataTableSortManager = () => (
+  <>
+    <DataTableAction onClick={() => alert(`Ordered!!`)}>Order</DataTableAction>
+    <DataTableAction onClick={() => alert('Mmmm...')}>
+      Make Grilled Cheese
+    </DataTableAction>
+    <DataTableAction onClick={() => alert('Delete')}>Delete</DataTableAction>
+  </>
+)
+
+const columnsUseDataTableSortManager: DataTableColumns = [
+  {
+    hide: true,
+    id: 'calories',
+    title: 'Calories',
+    type: 'number',
+  },
+  {
+    canSort: true,
+    id: 'id',
+    title: 'ID',
+    type: 'number',
+  },
+  {
+    canSort: true,
+    id: 'name',
+    title: 'Name',
+    type: 'string',
+  },
+  {
+    canSort: true,
+    id: 'type',
+    title: 'Type',
+    type: 'string',
+  },
+]
+
+const dataUseDataTableSortManager = [
+  {
+    calories: 101,
+    id: 1,
+    name: 'Cheddar',
+    type: 'hard, artisan, processed',
+  },
+  {
+    calories: 102,
+    id: 2,
+    name: 'Brie',
+    type: 'soft, processed',
+  },
+  {
+    calories: 103,
+    id: 3,
+    name: (
+      <a href="https://components.looker.com/" target="_blank" rel="noreferrer">
+        Gouda
+      </a>
+    ),
+    type: 'semi-hard, artisan, brined',
+  },
+  {
+    calories: 104,
+    id: 4,
+    name: (
+      <Link
+        href="https://components.looker.com/"
+        target="_blank"
+        rel="noreferrer"
+      >
+        American
+      </Link>
+    ),
+    type: 'semi-soft, processed',
+  },
+]
+
+const Test = () =>
+  useDataTableSortManager(
+    'Caption...',
+    dataUseDataTableSortManager,
+    columnsUseDataTableSortManager,
+    actionsUseDataTableSortManager
+  )
+
 const TemplateAction: Story<DataTableProps> = ({ ...args }) => {
   return <DataTable {...args} />
 }
@@ -206,3 +295,5 @@ PrimaryAction.args = {
   children: itemsActionPrimary,
   columns: mockColumns,
 }
+
+export const TestUseDataTableSortManager = Test.bind({})
