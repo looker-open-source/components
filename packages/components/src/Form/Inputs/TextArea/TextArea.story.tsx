@@ -25,21 +25,40 @@
  */
 
 import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { screen } from '@testing-library/react'
-import { InputHidden } from './InputHidden'
+import { Story } from '@storybook/react/types-6-0'
+import { TextArea, TextAreaProps } from './TextArea'
 
-describe('InputHidden', () => {
-  test('name and id', () => {
-    renderWithTheme(<InputHidden name="Bob" id="Bobby" defaultValue="bob" />)
-    const input = screen.getByDisplayValue('bob')
-    expect(input).toHaveAttribute('name', 'Bob')
-    expect(input).toHaveAttribute('id', 'Bobby')
-  })
+export default {
+  component: TextArea,
+  title: 'TextArea',
+}
 
-  test('with a value', () => {
-    renderWithTheme(<InputHidden defaultValue="Some value" />)
+const Template: Story<TextAreaProps> = (args) => <TextArea {...args} />
 
-    expect(screen.getByDisplayValue('Some value')).toHaveValue('Some value')
-  })
-})
+export const Basic = Template.bind({})
+
+export const Placeholder = Template.bind({})
+Placeholder.args = {
+  placeholder: 'Placeholder',
+}
+
+export const Value = Template.bind({})
+Value.args = {
+  defaultValue: 'A value',
+}
+
+export const Disabled = Template.bind({})
+Disabled.args = {
+  ...Value.args,
+  disabled: true,
+}
+
+export const Resize = Template.bind({})
+Resize.args = {
+  resize: true,
+}
+
+export const Error = Template.bind({})
+Error.args = {
+  validationType: 'error',
+}

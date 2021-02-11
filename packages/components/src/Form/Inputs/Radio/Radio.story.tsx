@@ -25,21 +25,30 @@
  */
 
 import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { screen } from '@testing-library/react'
-import { InputHidden } from './InputHidden'
+import { Story } from '@storybook/react/types-6-0'
+import { Radio, RadioProps } from './Radio'
 
-describe('InputHidden', () => {
-  test('name and id', () => {
-    renderWithTheme(<InputHidden name="Bob" id="Bobby" defaultValue="bob" />)
-    const input = screen.getByDisplayValue('bob')
-    expect(input).toHaveAttribute('name', 'Bob')
-    expect(input).toHaveAttribute('id', 'Bobby')
-  })
+export default {
+  component: Radio,
+  title: 'Radio',
+}
 
-  test('with a value', () => {
-    renderWithTheme(<InputHidden defaultValue="Some value" />)
+const Template: Story<RadioProps> = (args) => <Radio {...args} />
 
-    expect(screen.getByDisplayValue('Some value')).toHaveValue('Some value')
-  })
-})
+export const Basic = Template.bind({})
+
+export const Checked = Template.bind({})
+Checked.args = {
+  checked: true,
+}
+
+export const Disabled = Template.bind({})
+Disabled.args = {
+  disabled: true,
+}
+
+export const DisabledChecked = Template.bind({})
+DisabledChecked.args = {
+  ...Disabled.args,
+  ...Checked.args,
+}

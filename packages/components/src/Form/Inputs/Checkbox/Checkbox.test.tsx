@@ -25,94 +25,74 @@
  */
 
 import React from 'react'
-import { assertSnapshot, renderWithTheme } from '@looker/components-test-utils'
-import { fireEvent } from '@testing-library/react'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { fireEvent, screen } from '@testing-library/react'
 import { Checkbox, CheckboxProps } from './Checkbox'
 
 afterEach(() => {
   jest.resetAllMocks()
 })
 
-test('Accepts defaultChecked prop, and toggles value without change handler', () => {
-  const { getByRole } = renderWithTheme(<Checkbox defaultChecked />)
-  const checkboxInput = getByRole('checkbox')
+describe('Checkbox', () => {
+  test('Accepts defaultChecked prop, and toggles value without change handler', () => {
+    renderWithTheme(<Checkbox defaultChecked />)
+    const checkboxInput = screen.getByRole('checkbox')
 
-  expect(checkboxInput as HTMLInputElement).toBeChecked()
+    expect(checkboxInput as HTMLInputElement).toBeChecked()
 
-  fireEvent.click(checkboxInput)
+    fireEvent.click(checkboxInput)
 
-  // toggled state:
-  expect(checkboxInput as HTMLInputElement).not.toBeChecked()
-})
+    // toggled state:
+    expect(checkboxInput as HTMLInputElement).not.toBeChecked()
+  })
 
-test('Accepts checked prop, and is read only without a change handler', () => {
-  const { getByRole } = renderWithTheme(<Checkbox checked />)
-  const checkboxInput = getByRole('checkbox')
+  test('Accepts checked prop, and is read only without a change handler', () => {
+    renderWithTheme(<Checkbox checked />)
+    const checkboxInput = screen.getByRole('checkbox')
 
-  expect(checkboxInput as HTMLInputElement).toBeChecked()
+    expect(checkboxInput).toBeChecked()
 
-  fireEvent.click(checkboxInput)
+    fireEvent.click(checkboxInput)
 
-  // unchanged state:
-  expect(checkboxInput as HTMLInputElement).toBeChecked()
-})
+    // unchanged state:
+    expect(checkboxInput).toBeChecked()
+  })
 
-test('Triggers onChange handler', () => {
-  const mockProps: CheckboxProps = {
-    onChange: jest.fn(),
-  }
+  test('Triggers onChange handler', () => {
+    const mockProps: CheckboxProps = {
+      onChange: jest.fn(),
+    }
 
-  const { getByRole } = renderWithTheme(<Checkbox {...mockProps} />)
+    renderWithTheme(<Checkbox {...mockProps} />)
 
-  const checkboxInput = getByRole('checkbox')
+    const checkboxInput = screen.getByRole('checkbox')
 
-  expect(mockProps.onChange).not.toHaveBeenCalled()
-  expect(checkboxInput as HTMLInputElement).not.toBeChecked()
+    expect(mockProps.onChange).not.toHaveBeenCalled()
+    expect(checkboxInput).not.toBeChecked()
 
-  fireEvent.click(checkboxInput)
+    fireEvent.click(checkboxInput)
 
-  expect(mockProps.onChange).toHaveBeenCalledTimes(1)
-  expect(checkboxInput as HTMLInputElement).toBeChecked()
-})
+    expect(mockProps.onChange).toHaveBeenCalledTimes(1)
+    expect(checkboxInput).toBeChecked()
+  })
 
-test('Checkbox checked set to mixed', () => {
-  assertSnapshot(<Checkbox checked="mixed" id="checkboxID" />)
-})
+  test("Checkbox readOnly doesn't register change events", () => {
+    const mockProps: CheckboxProps = {
+      onChange: jest.fn(),
+    }
 
-test('Checkbox should accept disabled', () => {
-  assertSnapshot(<Checkbox disabled id="checkboxID" />)
-})
-test('Checkbox should accept disabled & checked', () => {
-  assertSnapshot(<Checkbox disabled checked id="checkboxID" />)
-})
-test('Checkbox should accept disabled & checked="mixed"', () => {
-  assertSnapshot(<Checkbox disabled checked="mixed" id="checkboxID" />)
-})
+    renderWithTheme(<Checkbox readOnly id="checkboxID" {...mockProps} />)
 
-test("Checkbox readOnly doesn't register change events", () => {
-  const mockProps: CheckboxProps = {
-    onChange: jest.fn(),
-  }
+    const checkboxInput = screen.getByRole('checkbox')
+    fireEvent.click(checkboxInput)
+    expect(mockProps.onChange).toHaveBeenCalledTimes(0)
+  })
 
-  const { getByRole } = renderWithTheme(
-    <Checkbox readOnly id="checkboxID" {...mockProps} />
-  )
-
-  const checkboxInput = getByRole('checkbox')
-  fireEvent.click(checkboxInput)
-  expect(mockProps.onChange).toHaveBeenCalledTimes(0)
-})
-
-test('Checkbox should accept readOnly', () => {
-  assertSnapshot(<Checkbox readOnly id="checkboxID" />)
-})
-test('Checkbox should accept readOnly & checked', () => {
-  assertSnapshot(<Checkbox readOnly checked id="checkboxID" />)
-})
-test('Checkbox should accept readOnly & checked="mixed"', () => {
-  assertSnapshot(<Checkbox readOnly checked="mixed" id="checkboxID" />)
-})
-
-test('Checkbox with aria-describedby', () => {
-  assertSnapshot(<Checkbox aria-describedby="some-id" id="checkboxID" />)
+  test('Supports aria-describedby', () => {
+    renderWithTheme(<Checkbox aria-describedby="some-id" id="checkboxID" />)
+    expect(screen.getByRole('checkbox')).toHaveAttribute(
+      'aria-describedby',
+      'some-id'
+    )
+  })
 })
