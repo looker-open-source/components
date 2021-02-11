@@ -24,6 +24,7 @@
 
  */
 
+import { useTranslation } from 'react-i18next'
 import { CompatibleHTMLProps } from '@looker/design-tokens'
 import React, { FC, MouseEvent, ReactElement } from 'react'
 import styled from 'styled-components'
@@ -62,6 +63,7 @@ export const AdvancedInputControls: FC<AdvancedInputControlsProps> = ({
   summary,
   ...props
 }) => {
+  const { t } = useTranslation('AdvancedInputControls')
   const children = intersperseDivider(
     compact([
       summary && (
@@ -81,7 +83,7 @@ export const AdvancedInputControls: FC<AdvancedInputControlsProps> = ({
         <IconButton
           size="xsmall"
           icon="Close"
-          label="Clear Field"
+          label={t('Clear Field')}
           onClick={onClear}
           tooltipDisabled={disabled}
           disabled={disabled}

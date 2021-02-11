@@ -24,6 +24,7 @@
 
  */
 
+import { useTranslation } from 'react-i18next'
 import React, {
   FC,
   FormEvent,
@@ -100,20 +101,24 @@ export interface PromptDialogProps extends PromptBaseProps {
   isOpen?: boolean
 }
 
-export const PromptDialog: FC<PromptDialogProps> = ({
-  saveLabel = 'Save',
-  cancelColor = 'neutral',
-  cancelLabel = 'Cancel',
-  onSave,
-  onCancel,
-  inputLabel,
-  title,
-  secondary,
-  defaultValue = '',
-  close,
-  isOpen,
-  clearOnCancel,
-}) => {
+export const PromptDialog: FC<PromptDialogProps> = (props) => {
+  const { t } = useTranslation('PromptDialog')
+  const cancelLabelText = t('Cancel')
+  const saveLabelText = t('Save')
+  const {
+    cancelColor = 'neutral',
+    cancelLabel = cancelLabelText,
+    clearOnCancel,
+    close,
+    defaultValue = '',
+    isOpen,
+    inputLabel,
+    onSave,
+    onCancel,
+    saveLabel = saveLabelText,
+    secondary,
+    title,
+  } = props
   const [value, setValue] = useState(defaultValue)
   const hasValue = !!value.trim()
 

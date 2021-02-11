@@ -23,6 +23,7 @@
  SOFTWARE.
 
  */
+import { useTranslation } from 'react-i18next'
 import React, { useRef, useState, FC, cloneElement } from 'react'
 import { ButtonOutline } from '../Button/ButtonOutline'
 
@@ -47,11 +48,12 @@ export interface CopyToClipboardProps {
   success?: string | JSX.Element
 }
 
-export const CopyToClipboard: FC<CopyToClipboardProps> = ({
-  children = 'Copy to Clipboard',
-  content,
-  success = 'Copied',
-}) => {
+export const CopyToClipboard: FC<CopyToClipboardProps> = (props) => {
+  const { t } = useTranslation('CopyToClipboard')
+  const childrenText = t('Copy to Clipboard')
+  const successText = t('Copied')
+  const { children = childrenText, content, success = successText } = props
+
   const [copied, setCopied] = useState(false)
   const buttonRef = useRef<HTMLButtonElement>(null)
 

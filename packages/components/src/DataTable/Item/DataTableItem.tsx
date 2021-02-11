@@ -24,6 +24,7 @@
 
  */
 
+import { useTranslation } from 'react-i18next'
 import { CompatibleHTMLProps } from '@looker/design-tokens'
 import styled from 'styled-components'
 import React, { FC, ReactNode, useContext, useRef } from 'react'
@@ -61,16 +62,19 @@ export interface DataTableItemProps
   actionPrimary?: ReactNode
 }
 
-const DataTableItemLayout: FC<DataTableItemProps> = ({
-  actions,
-  actionsTooltip = 'Options',
-  children,
-  className,
-  disabled,
-  id,
-  onClick,
-  actionPrimary,
-}) => {
+const DataTableItemLayout: FC<DataTableItemProps> = (props) => {
+  const { t } = useTranslation('DataTableItem')
+  const actionsTooltipText = t('Options')
+  const {
+    actions,
+    actionsTooltip = actionsTooltipText,
+    children,
+    className,
+    disabled,
+    id,
+    onClick,
+    actionPrimary,
+  } = props
   const ref = useRef<HTMLTableRowElement>(null)
   const { select } = useContext(DataTableContext)
 
