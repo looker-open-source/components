@@ -24,4 +24,17 @@
 
  */
 
-export { GoogleFontsLoader } from './GoogleFontsLoader'
+import { screen } from '@testing-library/react'
+import { renderWithTheme } from '@looker/components-test-utils'
+import React from 'react'
+import styled from 'styled-components'
+import { cursor, CursorProps } from './cursor'
+
+test('cursor', () => {
+  const Test = styled.p<CursorProps>`
+    ${cursor}
+  `
+
+  renderWithTheme(<Test cursor="readonly">Find me</Test>)
+  expect(screen.getByText('Find me')).toHaveStyle('cursor: readonly')
+})

@@ -24,4 +24,5 @@
 
  */
 
-export { GoogleFontsLoader } from './GoogleFontsLoader'
+export { generateFontFamilies } from './generateFontFamilies'
+export { sanitizeFontFace, sanitizeFontFamily } from './sanitizeFont'

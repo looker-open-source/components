@@ -24,4 +24,8 @@
 
  */
 
-export { GoogleFontsLoader } from './GoogleFontsLoader'
+import { itemSelectedColor } from './itemSelectedColor'
+
+test('itemSelectedColor', () => {
+  expect(itemSelectedColor('#cc0000')).toEqual('#e00000')
+})
