@@ -24,57 +24,55 @@
 
  */
 
-import React, { useState } from 'react'
+import React from 'react'
+import { Story } from '@storybook/react/types-6-0'
 import { List, ListItem } from '../List'
 import { Aside, Page, Section } from '../Layout'
-import { Panel, Panels, usePanel } from './'
+import { Panel, Panels, PanelProps, usePanel } from './'
 
 export default {
   component: Panel,
   title: 'Panel',
 }
 
-export const Basic = () => {
-  const [open, setOpen] = useState(false)
-  const toggleOpen = () => setOpen(!open)
+const Template: Story<PanelProps> = (args) => (
+  <Page hasAside>
+    <Aside width="12rem">
+      <Panels>
+        <List>
+          <Panel {...args}>
+            <ListItem>option A</ListItem>
+          </Panel>
+          <ListItem>option B</ListItem>
+          <ListItem>option C</ListItem>
+          <ListItem>option D</ListItem>
+        </List>
+      </Panels>
+    </Aside>
+    <Section>Main stuff here...</Section>
+  </Page>
+)
 
-  return (
-    <Page hasAside>
-      <Aside width="12rem">
-        <Panels>
-          <List>
-            <ListItem onClick={toggleOpen} icon="ArrowForward">
-              Left
-            </ListItem>
-            <Panel
-              content={'content from Right...'}
-              direction="right"
-              title="Right"
-            >
-              <ListItem icon="ArrowBackward">Right</ListItem>
-            </Panel>
-          </List>
-          <Panel
-            content={
-              <List>
-                <ListItem icon="ArrowRight">Panel option 1</ListItem>
-                <ListItem icon="ArrowRight">Panel option 2</ListItem>
-                <ListItem icon="ArrowRight">Panel option 3</ListItem>
-              </List>
-            }
-            direction="left"
-            isOpen={open}
-            setOpen={setOpen}
-            title="Left"
-          />
-        </Panels>
-      </Aside>
-      <Section>Main stuff here...</Section>
-    </Page>
-  )
+export const Basic = Template.bind({})
+Basic.args = {
+  content: 'Panel Content',
+  title: 'Panel Title',
 }
 Basic.parameters = {
   storyshots: { disable: true },
+}
+
+export const Open = Template.bind({})
+Open.args = {
+  ...Basic.args,
+  defaultOpen: true,
+}
+
+export const DirectionRight = Template.bind({})
+DirectionRight.args = {
+  ...Basic.args,
+  defaultOpen: true,
+  direction: 'right',
 }
 
 export const Hook = () => {
