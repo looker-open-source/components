@@ -80,7 +80,6 @@ export interface UseNestedMenuProps
     'onClick' | 'onKeyDown' | 'onMouseEnter' | 'onMouseLeave'
   > {
   id: string
-  compact?: boolean
   /**
    * A list of menu items that will open to the right when the user hovers
    * or hits the right arrow key. Only supports one level of nesting.
@@ -91,7 +90,6 @@ export interface UseNestedMenuProps
 const noop = () => undefined
 
 export const useNestedMenu = ({
-  compact,
   id,
   onClick,
   onKeyDown,
@@ -193,7 +191,7 @@ export const useNestedMenu = ({
 
   const { popover, popperInstanceRef, domProps } = usePopover({
     content: (
-      <MenuList data-autofocus="true" {...listHandlers} compact={compact}>
+      <MenuList data-autofocus="true" {...listHandlers}>
         {nestedMenu}
       </MenuList>
     ),

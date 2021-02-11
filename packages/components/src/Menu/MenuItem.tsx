@@ -64,7 +64,6 @@ const MenuItemInternal: FC<MenuItemProps> = ({
     popover,
     domProps: { onClick: nestedMenuOnClick, ...nestedMenuProps },
   } = useNestedMenu({
-    compact,
     id,
     nestedMenu,
     onClick,
