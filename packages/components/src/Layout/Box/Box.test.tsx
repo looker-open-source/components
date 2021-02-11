@@ -25,50 +25,57 @@
  */
 
 import 'jest-styled-components'
-import React, { FC } from 'react'
-import noop from 'lodash/noop'
-import {
-  createWithTheme,
-  mountWithTheme,
-  assertSnapshot,
-} from '@looker/components-test-utils'
+import React from 'react'
+import { fireEvent, screen } from '@testing-library/react'
+import { renderWithTheme } from '@looker/components-test-utils'
 
 import { Box } from './Box'
 
 describe('Box', () => {
   describe('as=', () => {
     test('allows Box to render as any HTML tag', () => {
-      const boxAsButton = mountWithTheme(<Box as="button" />)
-      expect(boxAsButton.find('button').exists()).toBeTruthy()
+      renderWithTheme(<Box as="button">Press Me</Box>)
+      expect(screen.getByText('Press Me').tagName).toEqual('BUTTON')
     })
 
     test('any prop can be passed to Box', () => {
-      const BoxAsInput: FC<{ type?: string }> = (props) => (
-        <Box as="input" {...props} />
-      )
-      const boxAsCheckbox = mountWithTheme(<BoxAsInput type="checkbox" />)
-      expect(boxAsCheckbox.find('input[type="checkbox"]').exists()).toBeTruthy()
+      renderWithTheme(<Box as="input" type="checkbox" />)
+      expect(screen.getByRole('checkbox')).toBeInTheDocument()
     })
   })
 
   describe('core HTML attributes', () => {
     test('Box allows autoFocus', () => {
-      assertSnapshot(<Box autoFocus>Autofocus?</Box>)
+      renderWithTheme(
+        <Box as="input" type="text" defaultValue="Autofocus" autoFocus />
+      )
+      expect(screen.getByDisplayValue('Autofocus')).toHaveFocus()
     })
 
     test('Box allows for HTML events', () => {
-      assertSnapshot(<Box onMouseEnter={noop}>Autofocus?</Box>)
+      const handleClick = jest.fn()
+      renderWithTheme(<Box onClick={handleClick}>Click me</Box>)
+      fireEvent.click(screen.getByText('Click me'))
+      expect(handleClick).toHaveBeenCalledTimes(1)
     })
 
     test('Box allows for ARIA attributes', () => {
-      assertSnapshot(<Box aria-disabled>aria-disabled</Box>)
+      renderWithTheme(
+        <Box aria-label="for screen readers only">aria-label</Box>
+      )
+      expect(
+        screen.getByLabelText('for screen readers only')
+      ).toBeInTheDocument()
     })
   })
 
   describe('user select', () => {
     test('Box cannot be selected', () => {
-      const tree = createWithTheme(<Box userSelect="none" />).toJSON()
-      expect(tree).toHaveStyleRule('user-select', 'none')
+      renderWithTheme(<Box userSelect="none">Can't touch this</Box>)
+      expect(screen.getByText("Can't touch this")).toHaveStyleRule(
+        'user-select',
+        'none'
+      )
     })
   })
 })
