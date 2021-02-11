@@ -35,12 +35,15 @@ export const i18nInitOptions: InitOptions = {
     escapeValue: false,
   },
   lng: 'en',
-  missingKeyHandler: (lngs: string[], ns: string, key: string) => {
+  missingKeyHandler: (languages: string[], ns: string, key: string) => {
     if (process.env.NODE_ENV !== 'production') {
       throw new Error(
-        `Missing i18n key (${lngs.join(', ')}): "${key}" in ${ns}`
+        `Missing i18n key (${languages.join(', ')}): "${key}" in ${ns}`
       )
     }
+  },
+  react: {
+    useSuspense: false,
   },
   resources: i18nResources,
   saveMissing: true,
@@ -64,6 +67,9 @@ export const useI18n = ({
   resources = i18nResources,
 }: UseI18nProps) => {
   const [isInitialized, setInitialized] = useState(i18next.isInitialized)
+  if (!isInitialized) {
+    i18nInit({ ...i18nInitOptions, lng: locale, resources })
+  }
 
   useEffect(() => {
     const handleInitialized = () => {
@@ -71,7 +77,6 @@ export const useI18n = ({
     }
     if (!isInitialized) {
       i18next.on('initialized', handleInitialized)
-      i18nInit({ ...i18nInitOptions, lng: locale, resources })
     } else {
       if (resources) {
         Object.keys(resources).forEach((lng: string) => {

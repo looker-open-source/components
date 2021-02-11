@@ -482,8 +482,8 @@ describe('DataTable', () => {
       )
 
       getByText('Bulk Actions')
-      getByText('1 of 2 displayed items selected')
-      getByText('Select all 4 results')
+      getByText('SelectedCountOfTotalDisplayed 2 1')
+      getByText('SelectAllCountResults 4')
     })
 
     test('Control bar is not visible when bulk prop is not provided', () => {
@@ -551,7 +551,7 @@ describe('DataTable', () => {
       )
 
       expect(onTotalSelectAll).toHaveBeenCalledTimes(0)
-      fireEvent.click(getByText('Select all 4 results'))
+      fireEvent.click(getByText('SelectAllCountResults 4'))
       expect(onTotalSelectAll).toHaveBeenCalledTimes(1)
     })
 

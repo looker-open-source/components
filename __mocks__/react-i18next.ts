@@ -23,6 +23,10 @@
  SOFTWARE.
 
  */
-
-export * from './useI18n'
-export * from './resources'
+export const useTranslation = () => {
+  return {
+    t: (key: string, options: { [key: string]: string }) => {
+      return `${key} ${options ? Object.values(options).join(' ') : ''}`
+    },
+  }
+}

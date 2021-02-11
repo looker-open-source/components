@@ -88,9 +88,9 @@ export const ComponentsProvider: FC<ComponentsProviderProps> = ({
     return generateTheme(props.theme || defaultTheme, themeCustomizations)
   }, [props.theme, themeCustomizations])
 
-  const i18nInitialized = useI18n({ locale, resources })
+  useI18n({ locale, resources })
 
-  return i18nInitialized ? (
+  return (
     <ThemeProvider {...props} theme={theme}>
       {globalStyle && <GlobalStyle />}
       {loadGoogleFonts && <GoogleFontsLoader />}
@@ -99,5 +99,5 @@ export const ComponentsProvider: FC<ComponentsProviderProps> = ({
         <ScrollLockProvider>{children}</ScrollLockProvider>
       </FocusTrapProvider>
     </ThemeProvider>
-  ) : null
+  )
 }
