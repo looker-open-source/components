@@ -25,9 +25,18 @@
  */
 
 import React, { cloneElement, forwardRef, Ref, ReactElement } from 'react'
+import { Placement } from '@popperjs/core'
+import pick from 'lodash/pick'
+import omit from 'lodash/omit'
 import { useID } from '../utils'
-import { Popover, PopoverProps, UsePopoverResponseDom } from '../Popover'
-import { MenuList, MenuListProps } from './MenuList'
+import {
+  Popover,
+  PopoverProps,
+  UsePopoverResponseDom,
+  usePopoverPropKeys,
+} from '../Popover'
+import { ListProps } from '../List'
+import { MenuList } from './MenuList'
 
 export interface MenuDomProps extends UsePopoverResponseDom {
   'aria-controls': string
@@ -35,7 +44,7 @@ export interface MenuDomProps extends UsePopoverResponseDom {
 
 export interface MenuProps
   extends Omit<PopoverProps, 'children'>,
-    Omit<MenuListProps, 'children' | 'content'> {
+    Omit<ListProps, 'children' | 'content'> {
   /**
    * A ReactElement that accepts dom props
    */
@@ -44,62 +53,43 @@ export interface MenuProps
    * The ref to be passed to the list element (`ref` is passed to the triggering element)
    */
   listRef?: Ref<HTMLUListElement>
+  /**
+   * Can be one of: top, bottom, left, right, auto, with the modifiers: start,
+   * end. This value comes directly from popper.js. See
+   * https://popper.js.org/popper-documentation.html#Popper.placements for more
+   * info.
+   * @default bottom
+   */
+  placement?: Placement
+  /**
+   * By default MenuList will reposition itself if they overflow the widow.
+   * You can use the pin property to override this behavior.
+   */
+  pin?: boolean
+  /**
+   * Allow the overlay to break out of the scroll parent
+   */
+  escapeWithReference?: boolean
 }
 
 export const Menu = forwardRef(
   (
-    {
-      children,
-      content,
-      id: propsID,
-      listRef,
-
-      // Popover props to pass through
-      canClose,
-      cancelClickOutside,
-      disabled,
-      focusTrap,
-      hoverDisclosureRef,
-      isOpen,
-      onClose,
-      pin,
-      placement,
-      setOpen,
-      triggerElement,
-      triggerToggle,
-
-      // List props to pass through
-      ...props
-    }: MenuProps,
+    { children, content, id: propsID, listRef, ...props }: MenuProps,
     ref: Ref<any>
   ) => {
+    const popoverProps = pick(props, usePopoverPropKeys)
+    const listProps = omit(props, usePopoverPropKeys)
+
     const id = useID(propsID)
     const list = content && (
-      <MenuList id={id} {...props} ref={listRef} data-autofocus="true">
+      <MenuList id={id} {...listProps} ref={listRef} data-autofocus="true">
         {content}
       </MenuList>
     )
     children = cloneElement(children, { 'aria-controls': id })
 
     return (
-      <Popover
-        content={list}
-        ref={ref}
-        {...{
-          canClose,
-          cancelClickOutside,
-          disabled,
-          focusTrap,
-          hoverDisclosureRef,
-          isOpen,
-          onClose,
-          pin,
-          placement,
-          setOpen,
-          triggerElement,
-          triggerToggle,
-        }}
-      >
+      <Popover content={list} ref={ref} {...popoverProps}>
         {children}
       </Popover>
     )

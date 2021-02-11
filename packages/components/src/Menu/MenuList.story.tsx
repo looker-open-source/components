@@ -59,7 +59,7 @@ const groups: { label?: string; items: MenuItemProps[] }[] = [
   },
 ]
 
-const Template: Story = (args) => <MenuList {...args} />
+const Template: Story = (args) => <MenuList iconGutter {...args} />
 
 export const Basic = Template.bind({})
 Basic.args = {
