@@ -36,6 +36,6 @@ describe('TreeArtificial', () => {
       </TreeArtificial>
     )
 
-    getByText('Tree Item')
+    expect(getByText('Tree Item')).toBeInTheDocument()
   })
 })
