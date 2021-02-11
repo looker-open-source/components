@@ -56,6 +56,9 @@ export default {
 const menuItems = (
   <>
     <MenuGroup>
+      <MenuItem description="this is the description" icon="Validate">
+        Validate
+      </MenuItem>
       <MenuItem
         detail="detail"
         description="this is the description"
@@ -91,7 +94,7 @@ const menuItems = (
 )
 
 export const Basic = () => (
-  <Menu content={menuItems}>
+  <Menu content={menuItems} density={1}>
     <Button>Basic Menu</Button>
   </Menu>
 )
@@ -128,7 +131,7 @@ export const IconSpace = () => (
 
     <Divider />
 
-    <MenuList compact>
+    <MenuList>
       <MenuGroup label="MenuGroup with 3 Items">
         <MenuItem description="this is a description" icon="LogoRings">
           Looker
@@ -140,7 +143,7 @@ export const IconSpace = () => (
 
     <Divider />
 
-    <MenuList compact>
+    <MenuList>
       <MenuItem icon="LogoRings">Looker</MenuItem>
       <MenuItem icon="Validate">Validate</MenuItem>
       <MenuGroup label="MenuGroup with 1 Item">
@@ -149,7 +152,7 @@ export const IconSpace = () => (
     </MenuList>
 
     <Divider />
-    <MenuList compact>
+    <MenuList>
       <MenuGroup label="Icon, Artwork, and Detail">
         <MenuItem icon="ChartPie">Icon</MenuItem>
         <MenuItem
@@ -235,7 +238,7 @@ export const Hover = () => {
         </Paragraph>
 
         <div>
-          <Menu content={menuItems} hoverDisclosureRef={hoverRef} compact>
+          <Menu content={menuItems} hoverDisclosureRef={hoverRef}>
             <MenuIcons open={open} />
           </Menu>
         </div>
@@ -296,7 +299,6 @@ export const RealisticMenus = () => {
       </Menu>
 
       <Menu
-        compact
         content={
           <>
             <MenuGroup>
@@ -335,7 +337,6 @@ export const RealisticMenus = () => {
       </Menu>
 
       <Menu
-        compact
         content={
           <>
             <MenuGroup>
@@ -360,7 +361,6 @@ export const RealisticMenus = () => {
       </Menu>
 
       <Menu
-        compact
         content={
           <>
             <MenuGroup>
@@ -449,7 +449,6 @@ export const LongMenus = () => {
           <Button>No windowing (95)</Button>
         </Menu>
         <Menu
-          width={100}
           content={groups.slice(0, 5).map(({ label, items }, index) => (
             <MenuGroup key={`${label}-${index}`} label={label}>
               {items.map((item, index2) => (
@@ -463,7 +462,6 @@ export const LongMenus = () => {
           <Button>No windowing (groups)</Button>
         </Menu>
         <Menu
-          width={100}
           windowing={!value ? 'none' : undefined}
           content={array3000.map((item, i) => (
             <MenuItem key={i}>{item.label}</MenuItem>
@@ -472,7 +470,6 @@ export const LongMenus = () => {
           <Button>Fixed Windowing (3k)</Button>
         </Menu>
         <Menu
-          width={100}
           windowing={!value ? 'none' : undefined}
           content={array3000.map((item, i) => (
             <MenuItem key={i} description={item.description}>
@@ -481,21 +478,6 @@ export const LongMenus = () => {
           ))}
         >
           <Button>Fixed Windowing (description)</Button>
-        </Menu>
-        <Menu
-          width={300}
-          windowing={!value ? 'none' : 'variable'}
-          content={groups.map(({ label, items }, index) => (
-            <MenuGroup key={`${label}-${index}`} label={label}>
-              {items.map((item, index2) => (
-                <MenuItem key={`${item.label}-${index2}`}>
-                  {item.label}
-                </MenuItem>
-              ))}
-            </MenuGroup>
-          ))}
-        >
-          <Button>Variable Windowing (groups)</Button>
         </Menu>
         <FieldToggleSwitch
           on={longLabels}

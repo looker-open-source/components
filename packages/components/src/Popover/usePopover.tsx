@@ -48,6 +48,25 @@ import {
 import { usePopoverToggle, UsePopoverToggleProps } from './usePopoverToggle'
 import { useVerticalSpace } from './useVerticalSpace'
 
+export const usePopoverPropKeys = [
+  'content',
+  'onClose',
+  'placement',
+  'portalElement',
+  'pin',
+  'disableScrollLock',
+  'triggerElement',
+  'focusTrap',
+  'scrollLock',
+  'surface',
+  'disabled',
+  'isOpen',
+  'canClose',
+  'setOpen',
+  'triggerToggle',
+  'cancelClickOutside',
+]
+
 export interface UsePopoverProps extends UsePopoverToggleProps {
   /**
    * Content to render within the Popover surface.
