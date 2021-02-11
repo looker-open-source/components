@@ -24,4 +24,17 @@
 
  */
 
-export { GoogleFontsLoader } from './GoogleFontsLoader'
+import { screen } from '@testing-library/react'
+import { renderWithTheme } from '@looker/components-test-utils'
+import React from 'react'
+import styled from 'styled-components'
+import { textDecoration, TextDecorationProps } from './text_decoration'
+
+test('text-decoration', () => {
+  const Test = styled.p<TextDecorationProps>`
+    ${textDecoration}
+  `
+
+  renderWithTheme(<Test textDecoration="underline">Find me</Test>)
+  expect(screen.getByText('Find me')).toHaveStyle('text-decoration: underline')
+})

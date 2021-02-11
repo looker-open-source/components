@@ -24,4 +24,6 @@
 
  */
 
-export { GoogleFontsLoader } from './GoogleFontsLoader'
+import lighten from 'polished/lib/color/lighten'
+
+export const itemSelectedColor = (color: string) => lighten(0.04, color)

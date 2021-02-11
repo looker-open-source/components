@@ -24,4 +24,31 @@
 
  */
 
-export { GoogleFontsLoader } from './GoogleFontsLoader'
+import { mountWithTheme } from '@looker/components-test-utils'
+import React, { FC, useContext } from 'react'
+import { ThemeContext, ThemeProvider } from 'styled-components'
+import { GlobalStyle } from './GlobalStyle'
+
+test('GlobalStyle', () => {
+  const resetFn = jest.fn()
+
+  const TestWrapper: FC<{}> = ({ children }) => {
+    const theme = useContext(ThemeContext)
+
+    return (
+      <ThemeProvider theme={{ ...theme, reset: resetFn }}>
+        {children}
+      </ThemeProvider>
+    )
+  }
+
+  const Test = () => (
+    <TestWrapper>
+      <GlobalStyle />
+    </TestWrapper>
+  )
+
+  mountWithTheme(<Test />)
+  expect(document.body).toBeInTheDocument()
+  expect(document.body).toHaveStyle('background: rgb(255, 255, 255)')
+})
