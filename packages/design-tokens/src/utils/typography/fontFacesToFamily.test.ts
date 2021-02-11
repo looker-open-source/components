@@ -45,5 +45,5 @@ describe('fontFacesToFamily', () => {
   test('improperly quoted faces', () =>
     expect(
       fontFacesToFamily('Times New Roman', ['arial', 'Helvetica Neue'])
-    ).toEqual('Times New Roman, arial, Helvetica Neue'))
+    ).toEqual("'Times New Roman', arial, 'Helvetica Neue'"))
 })
