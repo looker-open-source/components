@@ -122,8 +122,6 @@ export const AccordionAlt = () => {
           }
         >
           <Status size="small" intent="neutral" />
-
-          {/* <Badge intent="neutral">&gt; 100,000 results</Badge> */}
         </Tooltip>
       ),
       disabled: true,

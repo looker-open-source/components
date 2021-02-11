@@ -24,38 +24,37 @@
 
  */
 
-import pickBy from 'lodash/pickBy'
-import identity from 'lodash/identity'
-import { FontFamilyChoices } from '../system'
-import { FontFamilyFallbacks } from '../system/typography/font_families'
+import styled, { css } from 'styled-components'
+import { variant } from 'styled-system'
+import { PanelSurfaceProps } from './types'
 
-export const fontFacesToFamily = (
-  faces: string[] | string,
-  fallbacks: string[]
-) => {
-  if (typeof faces === 'string') {
-    faces = [faces]
+const surfaceTransition = () => css`
+  ${({ theme }) => `${theme.transitions.moderate}ms ${theme.easings.ease}`}
+`
+
+const direction = variant({
+  prop: 'direction',
+  variants: {
+    left: { transform: 'translate(-100%, 0);' },
+    right: { transform: 'translate(100%, 0);' },
+  },
+})
+
+export const PanelSurface = styled.div.attrs<PanelSurfaceProps>(
+  ({ direction = 'left' }) => ({ direction })
+)<PanelSurfaceProps>`
+  background: ${({ theme }) => theme.colors.background};
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: transform ${surfaceTransition}, opacity ${surfaceTransition};
+  width: 100%;
+
+  &.entering,
+  &.exiting {
+    ${direction}
   }
-
-  faces = [...faces, ...fallbacks]
-
-  return faces.map((face) => `${face}`).join(', ')
-}
-
-export const generateFontFamilies = (
-  defaultFonts: FontFamilyChoices,
-  fallbacks: FontFamilyFallbacks,
-  customFonts?: Partial<FontFamilyChoices>
-) => {
-  const fontFamilies: FontFamilyChoices = {
-    ...defaultFonts,
-    ...pickBy(customFonts, identity),
-  }
-
-  Object.entries(fontFamilies).map(
-    ([key, fontFace]) =>
-      (fontFamilies[key] = fontFacesToFamily(fontFace, fallbacks[key]))
-  )
-
-  return fontFamilies
-}
+`

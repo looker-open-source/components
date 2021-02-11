@@ -24,11 +24,16 @@
 
  */
 
+/* istanbul ignore file */
 import { css } from 'styled-components'
 import { Theme } from '@looker/design-tokens'
 import { IconSize } from '../../Icon'
 import { indicatorDefaults } from './indicatorDefaults'
 
+/**
+ * Creates a vertical "border" for Tree's content container
+ * Testing note: style rules validated by storyshots
+ */
 export const generateTreeBorder = (
   depth: number,
   indicatorSize: IconSize,

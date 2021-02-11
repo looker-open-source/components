@@ -1,0 +1,101 @@
+---
+title: Panel
+storybook: true
+---
+
+`<Panel />` component displays content with directional animation by using prop `direction` - `down`, `left`, 'right', `up`. The elements to be displayed as the compoennt must be
+passed as the prop `content`. `<Panels />` should be the parent component grouping all the elements involved on the `Panel. The `Panel Heading`can be defined as a string or a ReactNode and will be displayed above the main`content`.
+
+```jsx
+;() => {
+  const [open, setOpen] = useState(false)
+  const toggleOpen = () => setExplore(!open)
+
+  const title = (
+    <>
+      <Icon name="ArrowLeft" m="xsmall" />
+      Left
+    </>
+  )
+
+  return (
+    <Page hasAside>
+      <Aside width="12rem">
+        <Panels>
+          <List>
+            <ListItem onClick={toggleOpen} icon="ArrowForward">
+              Left
+            </ListItem>
+            <Panel
+              content={'content from Right...'}
+              direction="right"
+              title="Right"
+            >
+              <ListItem icon="ArrowBackward">Right</ListItem>
+            </Panel>
+            <Panel content={'content from Up...'} direction="up" title="Up">
+              <ListItem icon="ArrowDownward">Up</ListItem>
+            </Panel>
+            <Panel
+              content={'content from Down...'}
+              direction="down"
+              title="Down"
+            >
+              <ListItem icon="ArrowUpward">Down</ListItem>
+            </Panel>
+          </List>
+
+          <Panel
+            content={
+              <List>
+                <ListItem icon="ArrowRight">Panel option 1</ListItem>
+                <ListItem icon="ArrowRight">Panel option 2</ListItem>
+                <ListItem icon="ArrowRight">Panel option 3</ListItem>
+              </List>
+            }
+            direction="left"
+            isOpen={open}
+            setOpen={setOpen}
+            title={title}
+          />
+        </Panels>
+      </Aside>
+      <Section>Main stuff here...</Section>
+    </Page>
+  )
+}
+```
+
+# usePanel
+
+We provide a custom hook that returns the opener function and rendered panel.
+Note: `panel` needs to be placed before `children`. The order in which the `panel` will be render metters for the component to be rendered correctly.
+
+```jsx
+;() => {
+  const [isOpen, setOpen] = useState(false)
+  const open = () => setOpen(true)
+  const canClose = () => true
+
+  const { panel } = usePanel({
+    canClose,
+    content: 'Panel content',
+    direction: 'left',
+    isOpen,
+    setOpen,
+    title: 'Panel Hook',
+  })
+
+  return (
+    <>
+      {panel}
+      <List>
+        <ListItem onClick={open} icon="Check">
+          Option A
+        </ListItem>
+        <ListItem icon="Check">Option B</ListItem>
+      </List>
+    </>
+  )
+}
+```
