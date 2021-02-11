@@ -115,8 +115,17 @@ const absolutePositioned: BoxStoryProps = {
 export const Positioning: Story<BoxStoryProps> = () => (
   <>
     <Box {...absolutePositioned} top="1rem" left="1rem" />
-    <Box bg="ui3" alignSelf="center" flexBasis="1" flex="1 1" order="unset">
-      Top box
+    <Box
+      bg="ui3"
+      alignItems="center"
+      justifyItems="center"
+      justifyContent="center"
+      flexBasis="1"
+      display="flex"
+      order="unset"
+      height="100vh"
+    >
+      <Box textAlign="center">Background box</Box>
     </Box>
     <Box {...absolutePositioned} bottom="1rem" right="1rem" />
   </>
