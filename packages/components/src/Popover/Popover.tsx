@@ -45,6 +45,26 @@ const isRenderProp = (
   children: ReactNode | PopoverRenderProp
 ): children is PopoverRenderProp => typeof children === 'function'
 
+export const popoverPropKeys = [
+  'content',
+  'onClose',
+  'placement',
+  'portalElement',
+  'pin',
+  'disableScrollLock',
+  'triggerElement',
+  'focusTrap',
+  'scrollLock',
+  'surface',
+  'disabled',
+  'isOpen',
+  'canClose',
+  'setOpen',
+  'triggerToggle',
+  'cancelClickOutside',
+  'hoverDisclosureRef',
+]
+
 export interface PopoverProps extends UsePopoverProps {
   /**
    * Component to wrap. The HOC will listen for mouse events on this

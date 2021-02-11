@@ -33,7 +33,7 @@ import {
   Popover,
   PopoverProps,
   UsePopoverResponseDom,
-  usePopoverPropKeys,
+  popoverPropKeys,
 } from '../Popover'
 import { ListProps } from '../List'
 import { MenuList } from './MenuList'
@@ -77,8 +77,8 @@ export const Menu = forwardRef(
     { children, content, id: propsID, listRef, ...props }: MenuProps,
     ref: Ref<any>
   ) => {
-    const popoverProps = pick(props, usePopoverPropKeys)
-    const listProps = omit(props, usePopoverPropKeys)
+    const popoverProps = pick(props, popoverPropKeys)
+    const listProps = omit(props, popoverPropKeys)
 
     const id = useID(propsID)
     const list = content && (
