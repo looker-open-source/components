@@ -32,36 +32,34 @@ import { Tree } from '.'
 
 describe('Tree', () => {
   test('Renders disclosure label and detail', () => {
-    const { getByText } = renderWithTheme(
+    renderWithTheme(
       <Tree label="Tree Label" detail="Tree Detail">
         Hello World
       </Tree>
     )
 
-    getByText('Tree Label')
-    getByText('Tree Detail')
+    screen.getByText('Tree Label')
+    screen.getByText('Tree Detail')
   })
 
   test('Renders and hides children on disclosure click', () => {
-    const { getByText, queryByText } = renderWithTheme(
-      <Tree label="Tree Label">Hello World</Tree>
-    )
+    renderWithTheme(<Tree label="Tree Label">Hello World</Tree>)
 
-    const treeLabel = getByText('Tree Label')
-    expect(queryByText('Hello World')).not.toBeInTheDocument()
+    const treeLabel = screen.getByText('Tree Label')
+    expect(screen.queryByText('Hello World')).not.toBeInTheDocument()
     fireEvent.click(treeLabel)
-    getByText('Hello World')
+    screen.getByText('Hello World')
     fireEvent.click(treeLabel)
-    expect(queryByText('Hello World')).not.toBeInTheDocument()
+    expect(screen.queryByText('Hello World')).not.toBeInTheDocument()
   })
 
   test('Shows children by default when defaultOpen is true (and uses uncontrolled open state)', () => {
-    const { getByText } = renderWithTheme(
+    renderWithTheme(
       <Tree label="Tree Label" defaultOpen>
         Hello World
       </Tree>
     )
-    getByText('Hello World')
+    screen.getByText('Hello World')
   })
 
   test('Handles controlled open state via isOpen and toggleOpen props', () => {
@@ -75,25 +73,25 @@ describe('Tree', () => {
       )
     }
 
-    const { getByText, queryByText } = renderWithTheme(<Wrapper />)
+    renderWithTheme(<Wrapper />)
 
-    const treeLabel = getByText('Tree Label')
-    getByText('Hello World')
+    const treeLabel = screen.getByText('Tree Label')
+    screen.getByText('Hello World')
     fireEvent.click(treeLabel)
-    expect(queryByText('Hello World')).not.toBeInTheDocument()
+    expect(screen.queryByText('Hello World')).not.toBeInTheDocument()
   })
 
   test('Triggers onClose and onOpen callbacks when provided via props', () => {
     const onClose = jest.fn()
     const onOpen = jest.fn()
 
-    const { getByText } = renderWithTheme(
+    renderWithTheme(
       <Tree label="Tree Label" onClose={onClose} onOpen={onOpen}>
         Hello World
       </Tree>
     )
 
-    const treeLabel = getByText('Tree Label')
+    const treeLabel = screen.getByText('Tree Label')
     fireEvent.click(treeLabel)
     expect(onOpen).toHaveBeenCalledTimes(1)
     fireEvent.click(treeLabel)
@@ -103,7 +101,7 @@ describe('Tree', () => {
   test('Clicks on detail do not open the Tree or trigger callbacks when accessory === true', () => {
     const onOpen = jest.fn()
     const onClose = jest.fn()
-    const { getByText, queryByText } = renderWithTheme(
+    renderWithTheme(
       <Tree
         label="Tree Label"
         detail={{
@@ -117,21 +115,21 @@ describe('Tree', () => {
       </Tree>
     )
 
-    const detail = getByText('Tree Detail')
+    const detail = screen.getByText('Tree Detail')
 
-    expect(queryByText('Hello World')).not.toBeInTheDocument()
+    expect(screen.queryByText('Hello World')).not.toBeInTheDocument()
     fireEvent.click(detail)
-    expect(queryByText('Hello World')).not.toBeInTheDocument()
+    expect(screen.queryByText('Hello World')).not.toBeInTheDocument()
     expect(onOpen).toHaveBeenCalledTimes(0)
     fireEvent.click(detail)
-    expect(queryByText('Hello World')).not.toBeInTheDocument()
+    expect(screen.queryByText('Hello World')).not.toBeInTheDocument()
     expect(onClose).toHaveBeenCalledTimes(0)
   })
 
   test('Key presses on detail do not open the Tree or trigger callbacks when accessory === true', () => {
     const onOpen = jest.fn()
     const onClose = jest.fn()
-    const { getByText, queryByText } = renderWithTheme(
+    renderWithTheme(
       <Tree
         label="Tree Label"
         detail={{
@@ -145,25 +143,25 @@ describe('Tree', () => {
       </Tree>
     )
 
-    const detail = getByText('Tree Detail')
+    const detail = screen.getByText('Tree Detail')
 
-    expect(queryByText('Hello World')).not.toBeInTheDocument()
+    expect(screen.queryByText('Hello World')).not.toBeInTheDocument()
     fireEvent.keyDown(detail, {
       key: 'Enter',
     })
-    expect(queryByText('Hello World')).not.toBeInTheDocument()
+    expect(screen.queryByText('Hello World')).not.toBeInTheDocument()
     expect(onOpen).toHaveBeenCalledTimes(0)
     fireEvent.keyDown(detail, {
       key: 'Enter',
     })
-    expect(queryByText('Hello World')).not.toBeInTheDocument()
+    expect(screen.queryByText('Hello World')).not.toBeInTheDocument()
     expect(onClose).toHaveBeenCalledTimes(0)
   })
 
   test('Clicks on detail open the Tree and trigger callbacks when accessory === false', () => {
     const onOpen = jest.fn()
     const onClose = jest.fn()
-    const { getByText, queryByText } = renderWithTheme(
+    renderWithTheme(
       <Tree
         label="Tree Label"
         detail={{ content: 'Tree Detail', options: { accessory: false } }}
@@ -174,14 +172,14 @@ describe('Tree', () => {
       </Tree>
     )
 
-    const detail = getByText('Tree Detail')
+    const detail = screen.getByText('Tree Detail')
 
-    expect(queryByText('Hello World')).not.toBeInTheDocument()
+    expect(screen.queryByText('Hello World')).not.toBeInTheDocument()
     fireEvent.click(detail)
-    getByText('Hello World')
+    screen.getByText('Hello World')
     expect(onOpen).toHaveBeenCalledTimes(1)
     fireEvent.click(detail)
-    expect(queryByText('Hello World')).not.toBeInTheDocument()
+    expect(screen.queryByText('Hello World')).not.toBeInTheDocument()
     expect(onClose).toHaveBeenCalledTimes(1)
   })
 
