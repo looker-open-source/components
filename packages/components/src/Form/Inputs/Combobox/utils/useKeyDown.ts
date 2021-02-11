@@ -56,6 +56,7 @@ export function useKeyDown() {
   function checkOnChange() {
     if (onChange) {
       if (context.transition) {
+        // not Multi
         ;(onChange as ComboboxCallback)(navigationOption)
       } else {
         const newOptions = xorWith(
@@ -131,15 +132,13 @@ export function useKeyDown() {
         // Don't scroll the page
         event.preventDefault()
 
-        // If the developer didn't render any options, there's no point in
-        // trying to navigate--but seriously what the heck? Give us some
-        // options fam.
-        if (options.length === 0) {
-          return
-        }
-
         if (state === ComboboxState.IDLE) {
-          transition && transition(ComboboxActionType.NAVIGATE)
+          // Opening a closed list
+          transition &&
+            transition(ComboboxActionType.NAVIGATE, {
+              persistSelection:
+                persistSelectionPropRef && persistSelectionPropRef.current,
+            })
         } else {
           const index = navigationOption
             ? findIndex(options, ['value', navigationOption.value])
