@@ -39,6 +39,7 @@ import React, {
   ReactElement,
 } from 'react'
 import styled from 'styled-components'
+import { variant } from 'styled-system'
 import { IconButton, ButtonProps, ButtonTransparent } from '../Button'
 import { Space } from '../Layout/Space'
 import { SimpleLayoutProps, simpleLayoutCSS } from '../Layout/utils/simple'
@@ -239,6 +240,24 @@ const MessageBarContent = styled.div`
   padding: 0 ${({ theme: { space } }) => space.large};
 `
 
+const backgroundColor = variant({
+  prop: 'intent',
+  variants: {
+    critical: {
+      backgroundColor: 'criticalAccent',
+    },
+    inform: {
+      backgroundColor: 'informAccent',
+    },
+    positive: {
+      backgroundColor: 'positiveAccent',
+    },
+    warn: {
+      backgroundColor: 'warnAccent',
+    },
+  },
+})
+
 export const MessageBar = styled(MessageBarLayout).attrs(
   ({ px = 'medium', py = 'small', width = '100%' }) => ({
     px,
@@ -247,10 +266,9 @@ export const MessageBar = styled(MessageBarLayout).attrs(
   })
 )`
   ${simpleLayoutCSS}
-
   align-items: center;
-  background: ${({ intent, theme: { colors } }) =>
-    intent === 'critical' ? colors.criticalAccent : colors.neutralAccent};
+  ${({ intent, theme: { colors } }) =>
+    intent ? backgroundColor : `background: ${colors.informAccent}`}
   border-radius: ${({ theme: { radii } }) => radii.medium};
   display: flex;
   font-size: ${({ theme: { fontSizes } }) => fontSizes.small};
