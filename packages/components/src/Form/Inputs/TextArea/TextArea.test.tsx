@@ -24,42 +24,48 @@
 
  */
 
-import 'jest-styled-components'
 import React from 'react'
-import { assertSnapshot } from '@looker/components-test-utils'
-
+import { renderWithTheme } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
 import { TextArea } from './TextArea'
 
-test('TextArea default', () => {
-  assertSnapshot(<TextArea id="TextAreaID" />)
-})
+describe('TextArea', () => {
+  test('with placeholder', () => {
+    renderWithTheme(
+      <TextArea id="TextAreaID" placeholder="this is a placeholder" />
+    )
+    expect(
+      screen.getByPlaceholderText('this is a placeholder')
+    ).toBeInTheDocument()
+  })
 
-test('TextArea with placeholder', () => {
-  assertSnapshot(
-    <TextArea id="TextAreaID" placeholder="this is a placeholder" />
-  )
-})
+  test('should accept disabled', () => {
+    renderWithTheme(<TextArea disabled id="TextAreaID" />)
+    expect(screen.getByRole('textbox')).toBeDisabled()
+  })
 
-test('TextArea should accept disabled', () => {
-  assertSnapshot(<TextArea disabled id="TextAreaID" />)
-})
+  test('with an error validation', () => {
+    renderWithTheme(<TextArea id="TextAreaID" validationType="error" />)
+    expect(screen.getByRole('textbox')).toBeInvalid()
+  })
 
-test('TextArea with an error validation', () => {
-  assertSnapshot(<TextArea id="TextAreaID" validationType="error" />)
-})
+  test('TextArea resizes with prop resize = true', () => {
+    renderWithTheme(<TextArea id="TextAreaID" resize />)
+    expect(screen.getByRole('textbox')).toHaveStyle('resize: vertical')
+  })
 
-test('TextArea resizes with prop resize = true', () => {
-  assertSnapshot(<TextArea id="TextAreaID" resize />)
-})
+  test('TextArea resizes with prop resize = false', () => {
+    renderWithTheme(<TextArea id="TextAreaID" resize={false} />)
+    expect(screen.getByRole('textbox')).toHaveStyle('resize: none')
+  })
 
-test('TextArea resizes with prop resize = false', () => {
-  assertSnapshot(<TextArea id="TextAreaID" resize={false} />)
-})
+  test('TextArea resizes with prop resize = none', () => {
+    renderWithTheme(<TextArea id="TextAreaID" resize="none" />)
+    expect(screen.getByRole('textbox')).toHaveStyle('resize: none')
+  })
 
-test('TextArea resizes with prop resize = none', () => {
-  assertSnapshot(<TextArea id="TextAreaID" resize="none" />)
-})
-
-test('TextArea resizes with prop resize = vertical', () => {
-  assertSnapshot(<TextArea id="TextAreaID" resize="vertical" />)
+  test('TextArea resizes with prop resize = vertical', () => {
+    renderWithTheme(<TextArea id="TextAreaID" resize="vertical" />)
+    expect(screen.getByRole('textbox')).toHaveStyle('resize: vertical')
+  })
 })

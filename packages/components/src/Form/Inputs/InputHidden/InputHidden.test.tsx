@@ -24,19 +24,23 @@
 
  */
 
-import 'jest-styled-components'
 import React from 'react'
-import { assertSnapshot } from '@looker/components-test-utils'
+import { renderWithTheme } from '@looker/components-test-utils'
 import { InputHidden } from './InputHidden'
 
-test('InputHidden default', () => {
-  assertSnapshot(<InputHidden />)
-})
+describe('InputHidden', () => {
+  test('name and id', () => {
+    const { container } = renderWithTheme(<InputHidden name="Bob" id="Bobby" />)
+    const input = container.querySelector('input')
+    expect(input).toHaveAttribute('name', 'Bob')
+    expect(input).toHaveAttribute('id', 'Bobby')
+  })
 
-test('InputHidden with name and id', () => {
-  assertSnapshot(<InputHidden name="Bob" id="Bobby" />)
-})
-
-test('InputHidden with a value', () => {
-  assertSnapshot(<InputHidden value="Some value" />)
+  test('with a value', () => {
+    const { container } = renderWithTheme(
+      <InputHidden defaultValue="Some value" />
+    )
+    const input = container.querySelector('input')
+    expect(input).toHaveValue('Some value')
+  })
 })

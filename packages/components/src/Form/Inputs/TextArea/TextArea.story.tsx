@@ -23,18 +23,42 @@
  SOFTWARE.
 
  */
-import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { screen } from '@testing-library/react'
-import { Badge } from './Badge'
 
-test('Badge', () => {
-  renderWithTheme(
-    <Badge size="small" intent="positive">
-      Good!
-    </Badge>
-  )
-  const badge = screen.getByText('Good!')
-  expect(badge).toHaveStyle('background: rgb(228, 245, 235)')
-  expect(badge).toHaveStyle('line-height: 16px')
-})
+import React from 'react'
+import { Story } from '@storybook/react/types-6-0'
+import { TextArea, TextAreaProps } from './TextArea'
+
+export default {
+  component: TextArea,
+  title: 'TextArea',
+}
+
+const Template: Story<TextAreaProps> = (args) => <TextArea {...args} />
+
+export const Basic = Template.bind({})
+
+export const Placeholder = Template.bind({})
+Placeholder.args = {
+  placeholder: 'Placeholder',
+}
+
+export const Value = Template.bind({})
+Value.args = {
+  defaultValue: 'A value',
+}
+
+export const Disabled = Template.bind({})
+Disabled.args = {
+  ...Value.args,
+  disabled: true,
+}
+
+export const Resize = Template.bind({})
+Resize.args = {
+  resize: true,
+}
+
+export const Error = Template.bind({})
+Error.args = {
+  validationType: 'error',
+}

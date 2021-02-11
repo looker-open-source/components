@@ -23,18 +23,60 @@
  SOFTWARE.
 
  */
-import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { screen } from '@testing-library/react'
-import { Badge } from './Badge'
 
-test('Badge', () => {
-  renderWithTheme(
-    <Badge size="small" intent="positive">
-      Good!
-    </Badge>
-  )
-  const badge = screen.getByText('Good!')
-  expect(badge).toHaveStyle('background: rgb(228, 245, 235)')
-  expect(badge).toHaveStyle('line-height: 16px')
-})
+import React from 'react'
+import { Story } from '@storybook/react/types-6-0'
+import { Checkbox, CheckboxProps } from './Checkbox'
+
+export default {
+  component: Checkbox,
+  title: 'Checkbox',
+}
+
+const Template: Story<CheckboxProps> = (args) => <Checkbox {...args} />
+
+export const Basic = Template.bind({})
+
+export const Checked = Template.bind({})
+Checked.args = {
+  checked: true,
+}
+
+export const Mixed = Template.bind({})
+Mixed.args = {
+  checked: 'mixed',
+}
+
+export const Disabled = Template.bind({})
+Disabled.args = {
+  disabled: true,
+}
+
+export const DisabledChecked = Template.bind({})
+DisabledChecked.args = {
+  ...Disabled.args,
+  ...Checked.args,
+}
+
+export const DisabledMixed = Template.bind({})
+DisabledChecked.args = {
+  ...Disabled.args,
+  ...Mixed.args,
+}
+
+export const ReadOnly = Template.bind({})
+ReadOnly.args = {
+  readOnly: true,
+}
+
+export const ReadOnlyChecked = Template.bind({})
+ReadOnly.args = {
+  readOnly: true,
+  ...Checked.args,
+}
+
+export const ReadOnlyMixed = Template.bind({})
+ReadOnly.args = {
+  readOnly: true,
+  ...Mixed.args,
+}

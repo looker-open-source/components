@@ -23,18 +23,32 @@
  SOFTWARE.
 
  */
-import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { screen } from '@testing-library/react'
-import { Badge } from './Badge'
 
-test('Badge', () => {
-  renderWithTheme(
-    <Badge size="small" intent="positive">
-      Good!
-    </Badge>
-  )
-  const badge = screen.getByText('Good!')
-  expect(badge).toHaveStyle('background: rgb(228, 245, 235)')
-  expect(badge).toHaveStyle('line-height: 16px')
-})
+import React from 'react'
+import { Story } from '@storybook/react/types-6-0'
+import { Radio, RadioProps } from './Radio'
+
+export default {
+  component: Radio,
+  title: 'Radio',
+}
+
+const Template: Story<RadioProps> = (args) => <Radio {...args} />
+
+export const Basic = Template.bind({})
+
+export const Checked = Template.bind({})
+Checked.args = {
+  checked: true,
+}
+
+export const Disabled = Template.bind({})
+Disabled.args = {
+  disabled: true,
+}
+
+export const DisabledChecked = Template.bind({})
+DisabledChecked.args = {
+  ...Disabled.args,
+  ...Checked.args,
+}

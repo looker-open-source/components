@@ -76,3 +76,8 @@ AfterText.args = {
   after: 'lbs',
   placeholder: 'Weight',
 }
+
+export const Error = Template.bind({})
+Error.args = {
+  validationType: 'error',
+}
