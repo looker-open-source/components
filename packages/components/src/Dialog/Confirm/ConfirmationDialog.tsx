@@ -100,6 +100,7 @@ export const ConfirmationDialog: FC<ConfirmationDialogProps> = (props) => {
     onCancel,
     onConfirm,
     title,
+    ...rest
   } = props
 
   const confirm = useCallback(() => {
@@ -115,7 +116,7 @@ export const ConfirmationDialog: FC<ConfirmationDialogProps> = (props) => {
   }, [close, onCancel])
 
   return (
-    <Dialog isOpen={isOpen} onClose={cancel} {...props}>
+    <Dialog isOpen={isOpen} onClose={cancel} {...rest}>
       <ConfirmLayout
         title={title}
         message={message}

@@ -51,7 +51,7 @@ describe('MessageBar', () => {
     expect(handleDismiss).not.toHaveBeenCalled()
 
     const dismissButton =
-      getByText('Dismiss Inform').closest('button') ||
+      getByText('DismissIntent Inform').closest('button') ||
       document.createElement('button') // suppress typescript warning about possible null button
 
     fireEvent.click(dismissButton)
@@ -83,7 +83,7 @@ describe('MessageBar', () => {
 
       // dismiss button
       const dismissButton =
-        getByText('Dismiss Inform').closest('button') ||
+        getByText('DismissIntent Inform').closest('button') ||
         document.createElement('button') // suppress typescript warning about possible null button
 
       fireEvent.click(dismissButton)
@@ -97,13 +97,13 @@ describe('MessageBar', () => {
         <MessageBar>Message text</MessageBar>
       )
 
-      expect(getByText('Dismiss Inform')).toBeInTheDocument()
+      expect(getByText('DismissIntent Inform')).toBeInTheDocument()
 
       rerender(
         withThemeProvider(<MessageBar noActions>Message text</MessageBar>)
       )
 
-      expect(queryByText('Dismiss Inform')).not.toBeInTheDocument()
+      expect(queryByText('DismissIntent Inform')).not.toBeInTheDocument()
     })
 
     test('accepts a text label to customize primaryAction', () => {
@@ -123,7 +123,7 @@ describe('MessageBar', () => {
       expect(
         getByText('Do you want to know what the matrix is?')
       ).toBeInTheDocument()
-      expect(queryByText('Dismiss Inform')).not.toBeInTheDocument()
+      expect(queryByText('DismissIntent Inform')).not.toBeInTheDocument()
 
       fireEvent.click(primaryButton)
 
@@ -174,7 +174,7 @@ describe('MessageBar', () => {
 
       expect(getByText('Take the red pill')).toBeInTheDocument()
       expect(getByText('Take the blue pill')).toBeInTheDocument()
-      expect(queryByText('Dismiss Inform')).not.toBeInTheDocument()
+      expect(queryByText('DismissIntent Inform')).not.toBeInTheDocument()
     })
 
     test('renders secondaryButton next to default Dismiss button', () => {
@@ -188,7 +188,7 @@ describe('MessageBar', () => {
       )
 
       expect(getByText('secondary action')).toBeInTheDocument()
-      expect(getByText('Dismiss Inform')).toBeInTheDocument()
+      expect(getByText('DismissIntent Inform')).toBeInTheDocument()
     })
   })
 
@@ -198,7 +198,7 @@ describe('MessageBar', () => {
         <MessageBar intent="warn">Warn</MessageBar>
       )
       // dismiss button
-      expect(getByText('Dismiss Warning')).toBeInTheDocument()
+      expect(getByText('DismissIntent Warning')).toBeInTheDocument()
       // icon title and color
       expect(getByTitle('Warning').closest('div')).toHaveStyleRule(
         'color',
@@ -213,7 +213,7 @@ describe('MessageBar', () => {
         </MessageBar>
       )
       // dismiss button
-      expect(getByText('Dismiss Error')).toBeInTheDocument()
+      expect(getByText('DismissIntent Error')).toBeInTheDocument()
       // icon title and color
       expect(getByTitle('Error').closest('div')).toHaveStyleRule(
         'color',
@@ -234,7 +234,7 @@ describe('MessageBar', () => {
       )
 
       // dismiss button
-      expect(getByText('Dismiss Inform')).toBeInTheDocument()
+      expect(getByText('DismissIntent Inform')).toBeInTheDocument()
       // icon title and color
       expect(getByTitle('Inform').closest('div')).toHaveStyleRule(
         'color',
@@ -249,7 +249,7 @@ describe('MessageBar', () => {
         </MessageBar>
       )
       // dismiss button
-      expect(getByText('Dismiss Success')).toBeInTheDocument()
+      expect(getByText('DismissIntent Success')).toBeInTheDocument()
 
       // icon title and color
       expect(getByTitle('Success').closest('div')).toHaveStyleRule(
