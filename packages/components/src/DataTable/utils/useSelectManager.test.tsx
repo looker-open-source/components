@@ -26,9 +26,8 @@
 
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { screen } from '@testing-library/react'
-import { DataTableItem } from '../Item/DataTableItem'
-import { DataTableAction } from '../Item/DataTableAction'
+import { screen, fireEvent } from '@testing-library/react'
+import { DataTableAction, DataTableItem } from '../Item'
 import { DataTableCell, DataTableColumns } from '../Column'
 import { DataTable } from '../DataTable'
 import { useSelectManager } from './useSelectManager'
@@ -111,5 +110,25 @@ describe('useSelectManager', () => {
     expect(screen.getByText('Gorgonzola')).toBeInTheDocument()
     expect(screen.getByText('Cheddar')).toBeInTheDocument()
     expect(screen.getByText('Blue')).toBeInTheDocument()
+  })
+
+  test('selects all checkbox', () => {
+    renderWithTheme(<Test />)
+    const checkbox = screen.getAllByRole('checkbox')
+    expect(checkbox[0]).toBeInTheDocument()
+    expect(checkbox[0]).toHaveAttribute('aria-checked', 'false')
+    fireEvent.click(checkbox[0])
+    expect(checkbox[0]).toHaveAttribute('aria-checked', 'true')
+    expect(checkbox[1]).toHaveAttribute('aria-checked', 'true')
+  })
+
+  test('selects individual checkbox', () => {
+    renderWithTheme(<Test />)
+    const checkbox = screen.getAllByRole('checkbox')
+    expect(checkbox[1]).toBeInTheDocument()
+    expect(checkbox[1]).toHaveAttribute('aria-checked', 'false')
+    fireEvent.click(checkbox[1])
+    expect(checkbox[1]).toHaveAttribute('aria-checked', 'true')
+    expect(checkbox[2]).toHaveAttribute('aria-checked', 'false')
   })
 })
