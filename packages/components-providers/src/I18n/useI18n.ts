@@ -26,7 +26,7 @@
 
 import i18next, { InitOptions, Resource } from 'i18next'
 import { initReactI18next } from 'react-i18next'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { i18nResources } from './resources'
 
 export const i18nInitOptions: InitOptions = {
@@ -62,38 +62,40 @@ export interface UseI18nProps {
   resources?: Resource
 }
 
+export const i18nUpdate = ({ resources, locale }: UseI18nProps) => {
+  if (resources) {
+    Object.keys(resources).forEach((lng: string) => {
+      const allNamespaces = resources[lng]
+      Object.keys(allNamespaces).forEach((ns: string) => {
+        i18next.addResourceBundle(lng, ns, allNamespaces[ns])
+      })
+    })
+  }
+  if (locale && locale !== i18next.language) {
+    i18next.changeLanguage(locale)
+  }
+}
+
 export const useI18n = ({
   locale = 'en',
   resources = i18nResources,
 }: UseI18nProps) => {
-  const [isInitialized, setInitialized] = useState(i18next.isInitialized)
-  if (!isInitialized) {
-    i18nInit({ ...i18nInitOptions, lng: locale, resources })
+  if (!i18next.isInitialized) {
+    i18nInit({ ...i18nInitOptions, lng: locale, resources }).catch((err) =>
+      // eslint-disable-next-line no-console
+      console.error(err)
+    )
   }
 
   useEffect(() => {
-    const handleInitialized = () => {
-      setInitialized(true)
-    }
-    if (!isInitialized) {
-      i18next.on('initialized', handleInitialized)
+    const update = () => i18nUpdate({ locale, resources })
+    if (i18next.isInitialized) {
+      update()
     } else {
-      if (resources) {
-        Object.keys(resources).forEach((lng: string) => {
-          const allNs = resources[lng]
-          Object.keys(allNs).forEach((ns: string) => {
-            i18next.addResourceBundle(lng, ns, allNs[ns])
-          })
-        })
-      }
-      if (locale && locale !== i18next.language) {
-        i18next.changeLanguage(locale)
-      }
+      i18next.on('initialized', update)
     }
     return () => {
-      i18next.off('initialized', handleInitialized)
+      i18next.off('initialized', update)
     }
-  }, [locale, resources, isInitialized])
-
-  return isInitialized
+  }, [locale, resources])
 }

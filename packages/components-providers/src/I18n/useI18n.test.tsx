@@ -23,13 +23,29 @@
  SOFTWARE.
 
  */
-const mock = {
-  addResourceBundle: jest.fn(),
-  changeLanguage: jest.fn(),
-  init: jest.fn(() => Promise.resolve()),
-  isInitialized: false,
-  off: jest.fn(),
-  on: jest.fn(),
+
+import { render } from '@testing-library/react'
+import i18next from 'i18next'
+import React from 'react'
+import { i18nResources } from './resources'
+import { useI18n, UseI18nProps } from './useI18n'
+
+const TestComponent = (props: UseI18nProps) => {
+  useI18n(props)
+  return null
 }
 
-export default { ...mock, use: () => mock }
+describe('useI18n', () => {
+  test('initializes i18next', () => {
+    render(<TestComponent />)
+    expect(i18next.init).toHaveBeenCalledTimes(1)
+  })
+
+  test('updates with new props', () => {
+    i18next.isInitialized = true
+    render(<TestComponent />)
+    expect(i18next.addResourceBundle).toHaveBeenCalledTimes(
+      Object.keys(i18nResources.en).length
+    )
+  })
+})
