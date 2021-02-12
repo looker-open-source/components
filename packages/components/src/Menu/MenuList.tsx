@@ -25,9 +25,10 @@
  */
 
 import React, { forwardRef, Ref } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { List, ListProps } from '../List'
 import { NestedMenuProvider } from './NestedMenuProvider'
+import { MenuGroup } from '.'
 
 export const MenuListInternal = forwardRef(
   ({ children, ...props }: ListProps, forwardedRef: Ref<HTMLUListElement>) => {
@@ -43,12 +44,14 @@ export const MenuListInternal = forwardRef(
 MenuListInternal.displayName = 'MenuListInternal'
 
 // TODO: Convert this over to "MenuDivider" (or use existing divider)
-// const dividersStyle = ({ groupDividers = true }: MenuListProps) =>
-//   groupDividers &&
-//   css`
-//     ${MenuGroup} ~ ${MenuGroup} {
-//       border-top: 1px solid ${({ theme: { colors } }) => colors.ui2};
-//     }
-//   `
+const dividersStyle = ({ groupDividers = true }: { groupDividers: boolean }) =>
+  groupDividers &&
+  css`
+    ${MenuGroup} ~ ${MenuGroup} {
+      border-top: 1px solid ${({ theme: { colors } }) => colors.ui2};
+    }
+  `
 
-export const MenuList = styled(MenuListInternal)``
+export const MenuList = styled(MenuListInternal)`
+  ${dividersStyle}
+`
