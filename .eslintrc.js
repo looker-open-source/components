@@ -24,12 +24,46 @@
 
  */
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const ignoreProps = require('./config/i18nIgnoredProps.js')
+
 module.exports = {
   extends: ['@looker/eslint-config', '@looker/eslint-config/license-header'],
   overrides: [
     {
       files: ['www/**/*.ts', 'www/**/*.tsx'],
       rules: {},
+    },
+    {
+      files: ['packages/*/src/**/*.tsx', 'packages/*/src/**/*.ts'],
+      rules: {
+        'i18next/no-literal-string': [
+          2,
+          {
+            ignoreAttribute: ignoreProps,
+            ignoreComponent: ['HyphenWrapper', 'Icon', 'WarningIcon'],
+            markupOnly: true,
+          },
+        ],
+      },
+    },
+    {
+      files: [
+        '*.test.*',
+        '*.spec.*',
+        '*.story.*',
+        '*.js',
+        '**/__mocks__/**',
+        '**/stories/**',
+        'packages/components-theme-editor/**',
+        'packages/design-tokens/**',
+        'packages/storybook-config/**',
+        'www/**',
+        'www/**',
+      ],
+      rules: {
+        'i18next/no-literal-string': 'off',
+      },
     },
   ],
   rules: {
