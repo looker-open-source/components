@@ -59,7 +59,7 @@ const groups: { label?: string; items: MenuItemProps[] }[] = [
   },
 ]
 
-const Template: Story = (args) => <MenuList iconGutter {...args} />
+const Template: Story = (args) => <MenuList {...args} />
 
 export const Basic = Template.bind({})
 Basic.args = {
@@ -77,6 +77,7 @@ Basic.args = {
       ))}
     </MenuGroup>
   )),
+  iconGutter: true,
 }
 
 const array200 = Array.from(Array(200), (_, i) => String(i + 1))

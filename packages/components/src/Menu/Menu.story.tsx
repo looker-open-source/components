@@ -91,7 +91,7 @@ const menuItems = (
 )
 
 export const Basic = () => (
-  <Menu content={menuItems} density={1}>
+  <Menu content={menuItems} density={1} iconGutter>
     <Button>Basic Menu</Button>
   </Menu>
 )
@@ -103,7 +103,7 @@ Basic.parameters = {
 export const Controlled = () => {
   const [isOpen, setOpen] = useState(false)
   return (
-    <Menu content={menuItems} isOpen={isOpen} setOpen={setOpen}>
+    <Menu content={menuItems} isOpen={isOpen} setOpen={setOpen} iconGutter>
       <Button>Controlled Menu</Button>
     </Menu>
   )
@@ -122,13 +122,14 @@ export const IconSpace = () => (
           <MenuItem>World</MenuItem>
         </>
       }
+      iconGutter
     >
       <Button>Icon Space Preserved</Button>
     </Menu>
 
     <Divider />
 
-    <MenuList>
+    <MenuList iconGutter>
       <MenuGroup label="MenuGroup with 3 Items">
         <MenuItem description="this is a description" icon="LogoRings">
           Looker
@@ -140,7 +141,7 @@ export const IconSpace = () => (
 
     <Divider />
 
-    <MenuList>
+    <MenuList iconGutter>
       <MenuItem icon="LogoRings">Looker</MenuItem>
       <MenuItem icon="Validate">Validate</MenuItem>
       <MenuGroup label="MenuGroup with 1 Item">
@@ -149,7 +150,7 @@ export const IconSpace = () => (
     </MenuList>
 
     <Divider />
-    <MenuList>
+    <MenuList iconGutter>
       <MenuGroup label="Icon, Artwork, and Detail">
         <MenuItem icon="ChartPie">Icon</MenuItem>
         <MenuItem
@@ -235,7 +236,7 @@ export const Hover = () => {
         </Paragraph>
 
         <div>
-          <Menu content={menuItems} hoverDisclosureRef={hoverRef}>
+          <Menu content={menuItems} hoverDisclosureRef={hoverRef} iconGutter>
             <MenuIcons open={open} />
           </Menu>
         </div>
@@ -256,6 +257,7 @@ export const RealisticMenus = () => {
   return (
     <Space gap="xxlarge">
       <Menu
+        iconGutter
         content={
           <>
             <MenuGroup>
@@ -296,6 +298,7 @@ export const RealisticMenus = () => {
       </Menu>
 
       <Menu
+        iconGutter
         content={
           <>
             <MenuGroup>
@@ -334,6 +337,7 @@ export const RealisticMenus = () => {
       </Menu>
 
       <Menu
+        iconGutter
         content={
           <>
             <MenuGroup>
@@ -531,7 +535,7 @@ export const WithTooltip = () => {
   const { value, toggle } = useToggle()
   return (
     <Space>
-      <Menu content={menuItems} disabled={value}>
+      <Menu iconGutter content={menuItems} disabled={value}>
         <Tooltip content="Open the menu" placement="right">
           <Button disabled={value}>Menu with Tooltip</Button>
         </Tooltip>
@@ -616,18 +620,18 @@ export const NestedMenu = () => {
   return (
     <Flex height="100vh" flexDirection="column" justifyContent="space-between">
       <Space between>
-        <Menu content={content}>
+        <Menu iconGutter content={content}>
           <Button>Nested Menu</Button>
         </Menu>
-        <Menu content={content}>
+        <Menu iconGutter content={content}>
           <Button>Right-aligned</Button>
         </Menu>
       </Space>
       <Space between>
-        <Menu content={content}>
+        <Menu iconGutter content={content}>
           <Button>Bottom-left-aligned</Button>
         </Menu>
-        <Menu content={content}>
+        <Menu iconGutter content={content}>
           <Button>Bottom-right-aligned</Button>
         </Menu>
       </Space>
