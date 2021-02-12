@@ -23,20 +23,14 @@
  SOFTWARE.
 
  */
-export const useTranslation = () => {
-  return {
-    t: (key: string, options: { [key: string]: string }) => {
-      return `${key} ${
-        options
-          ? Object.keys(options)
-              .map((optionsKey) =>
-                optionsKey === 'ns' ? '' : options[optionsKey]
-              )
-              .join(' ')
-          : ''
-      }`
-    },
-  }
+const mock = {
+  addResourceBundle: jest.fn(),
+  changeLanguage: jest.fn(),
+  init: jest.fn(() => Promise.resolve()),
+  isInitialized: true,
+  off: jest.fn(),
+  on: jest.fn(),
+  use: jest.fn(() => mock),
 }
 
-export const initReactI18next = jest.fn()
+export default mock
