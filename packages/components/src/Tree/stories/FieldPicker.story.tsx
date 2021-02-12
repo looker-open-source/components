@@ -74,7 +74,7 @@ const PickerItem: FC<{ color?: string; truncate?: boolean }> = ({
       <Menu
         isOpen={overlay === 'menu'}
         setOpen={toggleMenu}
-        compact
+        density={-1}
         content={
           <>
             <MenuItem>Brie</MenuItem>
