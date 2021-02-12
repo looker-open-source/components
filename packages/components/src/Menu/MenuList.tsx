@@ -30,8 +30,16 @@ import { List, ListProps } from '../List'
 import { NestedMenuProvider } from './NestedMenuProvider'
 import { MenuGroup } from '.'
 
+// TODO: Remove this interface and uses once MenuDivider is created
+export interface GroupDividersProps {
+  groupDividers?: boolean
+}
+
 export const MenuListInternal = forwardRef(
-  ({ children, ...props }: ListProps, forwardedRef: Ref<HTMLUListElement>) => {
+  (
+    { children, ...props }: ListProps & GroupDividersProps,
+    forwardedRef: Ref<HTMLUListElement>
+  ) => {
     return (
       <NestedMenuProvider>
         <List role="menu" ref={forwardedRef} {...props}>
@@ -43,8 +51,8 @@ export const MenuListInternal = forwardRef(
 )
 MenuListInternal.displayName = 'MenuListInternal'
 
-// TODO: Convert this over to "MenuDivider" (or use existing divider)
-const dividersStyle = ({ groupDividers = true }: { groupDividers: boolean }) =>
+// TODO: Delete once MenuDivider component is created
+const dividersStyle = ({ groupDividers = true }: GroupDividersProps) =>
   groupDividers &&
   css`
     ${MenuGroup} ~ ${MenuGroup} {
