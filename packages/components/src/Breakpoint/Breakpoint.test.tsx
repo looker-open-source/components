@@ -29,6 +29,14 @@ import { renderWithTheme } from '@looker/components-test-utils'
 import { screen } from '@testing-library/react'
 import { Breakpoint } from './Breakpoint'
 
+/**
+ * IMPORTANT NOTE:
+ * Breakpoint behavior is determined by viewport size (by design, really, that's a good thing).
+ *
+ * Within our test-suite the viewport size is configured in `jest.setup.js`.
+ * Specifically: document.body.clientHeight & document.body.width
+ */
+
 describe('Breakpoint', () => {
   test('all', () => {
     renderWithTheme(
