@@ -35,7 +35,7 @@ describe('Box', () => {
   describe('as=', () => {
     test('allows Box to render as any HTML tag', () => {
       renderWithTheme(<Box as="button">Press Me</Box>)
-      expect(screen.getByText('Press Me').tagName).toEqual('BUTTON')
+      expect(screen.getByRole('button')).toBeInTheDocument()
     })
 
     test('any prop can be passed to Box', () => {
