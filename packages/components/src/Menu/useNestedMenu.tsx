@@ -38,6 +38,7 @@ import React, {
 import { DialogContext } from '../Dialog'
 import { usePopover } from '../Popover'
 import { useWrapEvent } from '../utils'
+import { ListItemContext } from '../List/ListItemContext'
 import { MenuList } from './MenuList'
 import { NestedMenuContext } from './NestedMenuProvider'
 import { NestedMenuSurface } from './NestedMenuSurface'
@@ -104,6 +105,7 @@ export const useNestedMenu = ({
   )
 
   const { closeModal } = useContext(DialogContext)
+  const { density } = useContext(ListItemContext)
 
   // Show the nestedMenu by updating the context with the id for this one
   // Hide it by updating the context to an empty string
@@ -191,7 +193,7 @@ export const useNestedMenu = ({
 
   const { popover, popperInstanceRef, domProps } = usePopover({
     content: (
-      <MenuList data-autofocus="true" {...listHandlers}>
+      <MenuList data-autofocus="true" density={density} {...listHandlers}>
         {nestedMenu}
       </MenuList>
     ),

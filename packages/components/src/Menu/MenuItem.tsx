@@ -32,19 +32,19 @@ import { ListItem, ListItemProps } from '../List'
 import { Icon } from '../Icon'
 import { Tooltip } from '../Tooltip'
 import { useID } from '../utils'
+import { ListItemContext } from '../List/ListItemContext'
+import { listItemDimensions } from '../List/utils'
 import { useNestedMenu, UseNestedMenuProps } from './useNestedMenu'
 
 export interface MenuItemProps
   extends ListItemProps,
     Pick<UseNestedMenuProps, 'nestedMenu'> {
-  compact?: boolean
   tooltip?: string
   tooltipPlacement?: Placement
 }
 
 const MenuItemInternal: FC<MenuItemProps> = ({
   children,
-  compact: propCompact,
   detail,
   onClick,
   onKeyDown,
@@ -55,9 +55,6 @@ const MenuItemInternal: FC<MenuItemProps> = ({
   tooltipPlacement = 'left',
   ...props
 }) => {
-  // TODO: Replace compact with density
-  const compact = false
-
   const id = useID(props.id)
 
   const {
@@ -72,12 +69,15 @@ const MenuItemInternal: FC<MenuItemProps> = ({
     onMouseLeave,
   })
 
+  const { density } = useContext(ListItemContext)
+  const { iconSize } = listItemDimensions(density)
+
   if (detail && nestedMenu) {
     // eslint-disable-next-line no-console
     console.warn('The detail prop is not supported when nestedMenu is used.')
   }
   detail = nestedMenu ? (
-    <Icon color="text1" name="ArrowRight" size={compact ? 'small' : 'medium'} />
+    <Icon color="text1" name="ArrowRight" size={iconSize} />
   ) : (
     detail
   )
