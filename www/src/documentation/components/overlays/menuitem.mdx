@@ -59,12 +59,13 @@ Use the `detail` and/or `description` prop to provide extra explanatory informat
 
 ## Tooltip
 
-To implement Tooltip on MenuItem, pass a string value to the `tooltip` prop.
-You can change the tooltip position by setting `tooltipPlacement` to one of `bottom`, `left`, `right` or`top`. Tooltips will render to the`left` by default.
+To implement a tooltip on a `MenuItem`, wrap the `MenuItem` in a `Tooltip` element.
 
 ```jsx
 <MenuList>
-  <MenuItem tooltip="It is gouda!">Gouda</MenuItem>
+  <Tooltip content="It is gouda!">
+    <MenuItem>Gouda</MenuItem>
+  </Tooltip>
   <MenuItem
     tooltip="I have a Swiss Cheese joke, but it's full of holes."
     tooltipPlacement="right"
