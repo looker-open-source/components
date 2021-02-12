@@ -103,6 +103,10 @@ export interface ListItemProps
    */
   itemRole?: 'link' | 'button'
   /**
+   * Optional ref prop
+   */
+  ref?: Ref<HTMLLIElement>
+  /**
    * If true, text children and description will be truncated if text overflows
    */
   truncate?: boolean

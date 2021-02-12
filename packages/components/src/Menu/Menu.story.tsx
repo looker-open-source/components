@@ -60,7 +60,6 @@ const menuItems = (
         detail="detail"
         description="this is the description"
         icon="LogoRings"
-        tooltip="Some tooltip"
       >
         Looker
       </MenuItem>
@@ -91,7 +90,7 @@ const menuItems = (
 )
 
 export const Basic = () => (
-  <Menu content={menuItems} density={1} iconGutter>
+  <Menu content={menuItems} iconGutter>
     <Button>Basic Menu</Button>
   </Menu>
 )
