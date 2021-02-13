@@ -26,13 +26,13 @@
 
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { fireEvent } from '@testing-library/react'
+import { fireEvent, screen } from '@testing-library/react'
 import { columns } from '../../__mocks__/DataTable/columns'
 import { ColumnSelector } from './ColumnSelector'
 
 describe('ColumnSelector', () => {
   test('render', () => {
-    const { getByText } = renderWithTheme(
+    renderWithTheme(
       <ColumnSelector
         columns={columns}
         columnsVisible={[]}
@@ -40,22 +40,97 @@ describe('ColumnSelector', () => {
       />
     )
 
-    expect(getByText('Select columns to display')).toBeInTheDocument()
+    expect(screen.getByText('Select columns to display')).toBeInTheDocument()
   })
 
-  test('onClick displays popover of column options', () => {
-    const { getByText } = renderWithTheme(
+  test('open, select column, apply', () => {
+    const onChange = jest.fn()
+    renderWithTheme(
       <ColumnSelector
         columns={columns}
         columnsVisible={[]}
-        onColumnVisibilityChange={jest.fn()}
+        onColumnVisibilityChange={onChange}
       />
     )
-    const columnButton = getByText('Select columns to display')
 
-    fireEvent.click(columnButton)
+    fireEvent.click(screen.getByText('Select columns to display'))
+    expect(screen.getByText('Inventory')).toBeInTheDocument()
 
-    expect(getByText('Inventory')).toBeInTheDocument()
+    fireEvent.click(screen.getByLabelText('Inventory'))
+
+    fireEvent.click(screen.getByText('Apply'))
+
+    expect(onChange).toBeCalledWith(['inventory'])
+
+    // Close popover to silence act() warning
+    fireEvent.click(document)
+  })
+
+  test('cancel', () => {
+    const onChange = jest.fn()
+    renderWithTheme(
+      <ColumnSelector
+        columns={columns}
+        columnsVisible={[]}
+        onColumnVisibilityChange={onChange}
+      />
+    )
+
+    fireEvent.click(screen.getByText('Select columns to display'))
+    expect(screen.getByText('Inventory')).toBeInTheDocument()
+    fireEvent.click(screen.getByLabelText('Inventory'))
+    fireEvent.click(screen.getByText('Cancel'))
+    expect(onChange).toBeCalledTimes(0)
+
+    // Close popover to silence act() warning
+    fireEvent.click(document)
+  })
+
+  test('Select All', () => {
+    const onChange = jest.fn()
+    renderWithTheme(
+      <ColumnSelector
+        columns={columns}
+        columnsVisible={[]}
+        onColumnVisibilityChange={onChange}
+      />
+    )
+
+    fireEvent.click(screen.getByText('Select columns to display'))
+    fireEvent.click(screen.getByText('Select All'))
+    fireEvent.click(screen.getByText('Apply'))
+    expect(onChange).toBeCalledWith([
+      'name',
+      'status',
+      'inventory',
+      'color',
+      'description',
+      'origin',
+      'calories',
+      'fat',
+      'protein',
+      'calcium',
+    ])
+
+    // Close popover to silence act() warning
+    fireEvent.click(document)
+  })
+
+  test('Select None', () => {
+    const onChange = jest.fn()
+    renderWithTheme(
+      <ColumnSelector
+        columns={columns}
+        columnsVisible={[]}
+        onColumnVisibilityChange={onChange}
+      />
+    )
+
+    fireEvent.click(screen.getByText('Select columns to display'))
+    fireEvent.click(screen.getByText('Select All'))
+    fireEvent.click(screen.getByText('Select None'))
+    fireEvent.click(screen.getByText('Apply'))
+    expect(onChange).toBeCalledWith([])
 
     // Close popover to silence act() warning
     fireEvent.click(document)
