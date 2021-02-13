@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.12.0](https://github.com/looker-open-source/components/compare/v0.11.0...v0.12.0) (2021-02-13)
+
+### Bug Fixes
+
+- **FocusTrap:** Return focus behavior on nested focus traps ([#1886](https://github.com/looker-open-source/components/issues/1886)) ([78bfd87](https://github.com/looker-open-source/components/commit/78bfd87532c65cf33bc8fc00941387a3249a139e))
+
 # [0.11.0](https://github.com/looker-open-source/components/compare/v0.10.4...v0.11.0) (2021-02-04)
 
 **Note:** Version bump only for package @looker/icons

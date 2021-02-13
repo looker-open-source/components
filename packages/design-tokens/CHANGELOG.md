@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.12.0](https://github.com/looker-open-source/components/compare/v0.11.0...v0.12.0) (2021-02-13)
+
+### Bug Fixes
+
+- **theme:** Enable sanitizeFontFace to properly quote font-faces in font-family ([#1893](https://github.com/looker-open-source/components/issues/1893)) ([4aed07e](https://github.com/looker-open-source/components/commit/4aed07ea1c8278e5fd0188de7123111319f7e0f7))
+
 # [0.11.0](https://github.com/looker-open-source/components/compare/v0.10.4...v0.11.0) (2021-02-04)
 
 ### Bug Fixes
