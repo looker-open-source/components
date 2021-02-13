@@ -62,17 +62,19 @@ export function useMouseDragPosition(
   const handleMove = throttle(updateMousePos, 50)
 
   const handleEnd = () => {
-    setIsMouseDown(false)
+    requestAnimationFrame(() => {
+      setIsMouseDown(false)
+    })
   }
 
   useEffect(() => {
     targetRef && targetRef.addEventListener('mousedown', handleStart)
     targetRef && targetRef.addEventListener('touchstart', handleStart)
+    window.addEventListener('mouseup', handleEnd)
+    window.addEventListener('touchend', handleEnd)
 
     if (isMouseDown) {
       window.addEventListener('touchmove', handleMove)
-      window.addEventListener('touchend', handleEnd)
-      window.addEventListener('mouseup', handleEnd)
       window.addEventListener('mousemove', handleMove)
       window.addEventListener('mouseleave', handleEnd)
     }
@@ -80,11 +82,11 @@ export function useMouseDragPosition(
     return () => {
       targetRef && targetRef.removeEventListener('mousedown', handleStart)
       targetRef && targetRef.removeEventListener('touchstart', handleStart)
+      window.removeEventListener('mouseup', handleEnd)
+      window.removeEventListener('touchend', handleEnd)
 
       if (isMouseDown) {
         window.removeEventListener('touchmove', handleMove)
-        window.removeEventListener('touchend', handleEnd)
-        window.removeEventListener('mouseup', handleEnd)
         window.removeEventListener('mousemove', handleMove)
         window.removeEventListener('mouseleave', handleEnd)
       }
