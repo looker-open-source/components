@@ -258,7 +258,7 @@ describe('DataTable', () => {
     onSelectAll.mockClear()
   })
 
-  xdescribe('General Layout', () => {
+  describe('General Layout', () => {
     test('Renders a generated header and list item', () => {
       renderWithTheme(dataTableWithGeneratedHeader)
 
@@ -317,7 +317,7 @@ describe('DataTable', () => {
     })
   })
 
-  xdescribe('Selecting', () => {
+  describe('Selecting', () => {
     const dataTableWithSelect = (
       <DataTable
         caption="this is a table's caption"
@@ -380,7 +380,7 @@ describe('DataTable', () => {
     })
   })
 
-  xdescribe('Selecting All', () => {
+  describe('Selecting All', () => {
     const dataTableWithNoItemsSelected = (
       <DataTable
         caption="this is a table's caption"
@@ -451,7 +451,7 @@ describe('DataTable', () => {
     })
   })
 
-  xdescribe('Control Bar', () => {
+  describe('Control Bar', () => {
     const onBulkActionClick = jest.fn()
     const onTotalClearAll = jest.fn()
     const onTotalSelectAll = jest.fn()
@@ -581,7 +581,7 @@ describe('DataTable', () => {
     })
   })
 
-  xdescribe('Actions', () => {
+  describe('Actions', () => {
     const dataTableWithActions = (
       <DataTable
         caption="this is a table's caption"
@@ -643,7 +643,7 @@ describe('DataTable', () => {
     })
   })
 
-  xdescribe('Accessibility', () => {
+  describe('Accessibility', () => {
     const columns: DataTableColumns = [
       {
         id: 'calories',
@@ -727,7 +727,7 @@ describe('DataTable', () => {
     })
   })
 
-  xdescribe('Sorting', () => {
+  describe('Sorting', () => {
     const onSort = jest.fn()
     const dataTableWithSort = (
       <DataTable
@@ -760,7 +760,7 @@ describe('DataTable', () => {
     })
   })
 
-  xtest('Does not render children if state="loading"', () => {
+  test('Does not render children if state="loading"', () => {
     renderWithTheme(
       <DataTable
         caption="this is a table's caption"
@@ -773,7 +773,7 @@ describe('DataTable', () => {
     expect(screen.queryByText('Pepper Jack')).not.toBeInTheDocument()
   })
 
-  xtest('Does not render children if state="noResults"', () => {
+  test('Does not render children if state="noResults"', () => {
     renderWithTheme(
       <DataTable
         caption="this is a table's caption"
@@ -786,7 +786,7 @@ describe('DataTable', () => {
     expect(screen.queryByText('Pepper Jack')).not.toBeInTheDocument()
   })
 
-  xtest('Renders custom no results message when noResultsDisplay prop has a value', () => {
+  test('Renders custom no results message when noResultsDisplay prop has a value', () => {
     renderWithTheme(
       <DataTable
         caption="this is a table's caption"
@@ -800,28 +800,44 @@ describe('DataTable', () => {
     expect(screen.getByText('Cheddar')).toBeInTheDocument()
   })
 
-  xtest('Hides column is hide prop is true', () => {
+  test('default columnsVisible', () => {
+    renderWithTheme(
+      <DataTable
+        caption="this is a table's caption"
+        columns={[
+          {
+            hide: false,
+            id: 'blah',
+            title: 'blah',
+          },
+        ]}
+      >
+        <tr>
+          <td>Hello world</td>
+        </tr>
+      </DataTable>
+    )
+    expect(screen.getByText('blah')).toBeInTheDocument()
+  })
+
+  test('Hides column is hide prop is true', () => {
     renderWithTheme(dataTableWithGeneratedHeader)
     expect(screen.queryByText('Calories')).not.toBeInTheDocument()
   })
 
-  test('firstColumnStuck renders', () => {
-    renderWithTheme(
+  xtest('firstColumnStuck renders', () => {
+    const { container } = renderWithTheme(
       <DataTable
         caption="this is a table's caption"
         columns={columns}
-        firstColumnStuck={true}
+        firstColumnStuck
       >
         {items}
       </DataTable>
     )
-    expect(screen.getByText('ID')).toBeInTheDocument()
-    expect(screen.getByText('Name')).toBeInTheDocument()
-    expect(screen.getByText('Role')).toBeInTheDocument()
 
-    expect(screen.getByText('1')).toBeInTheDocument()
-    expect(screen.getByText('Richard Garfield')).toBeInTheDocument()
-    expect(screen.getByText('Game Designer')).toBeInTheDocument()
+    const secondColumn = container.querySelector('tbody tr td:nth-child(2)')
+    expect(secondColumn).not.toHaveStyleRule('position: sticky')
   })
 
   test('filters renders', () => {
@@ -836,7 +852,6 @@ describe('DataTable', () => {
           caption="this is a table's caption"
           columns={columns}
           filterConfig={filterConfig}
-          firstColumnStuck
         >
           {items}
         </DataTable>
