@@ -99,6 +99,7 @@ test('fires onChange callback on mouseMove', () => {
   const wrapper = getByTestId('range-slider-wrapper')
   fireEvent.mouseDown(wrapper)
   fireEvent.mouseMove(wrapper, { clientX: 100, clientY: 10 })
+  fireEvent.mouseUp(wrapper)
 
   expect(handleChange).toHaveBeenLastCalledWith([3, 10])
 })
@@ -112,6 +113,7 @@ test('fires onChange callback on touchMove', () => {
   const wrapper = getByTestId('range-slider-wrapper')
   fireEvent.touchStart(wrapper)
   fireEvent.touchMove(wrapper, { touches: [{ clientX: 100, clientY: 10 }] })
+  fireEvent.touchEnd(wrapper)
 
   expect(handleChange).toHaveBeenLastCalledWith([3, 10])
 })
