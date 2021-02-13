@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.12.0](https://github.com/looker-open-source/components/compare/v0.11.0...v0.12.0) (2021-02-13)
+
+
+### Bug Fixes
+
+* DataTable Simplify onClick behavior ([#1865](https://github.com/looker-open-source/components/issues/1865)) ([1c17444](https://github.com/looker-open-source/components/commit/1c174442a0e731f0b60e8573077b41ff1d5a2c61))
+
+
+### Features
+
+* Panel component ([#1815](https://github.com/looker-open-source/components/issues/1815)) ([62cafc5](https://github.com/looker-open-source/components/commit/62cafc5343062cfda69c6147be7641677df15e04))
+* Tree refactor with List pieces ([#1846](https://github.com/looker-open-source/components/issues/1846)) ([8940f68](https://github.com/looker-open-source/components/commit/8940f68f6cab0723404a50269c48fc6238aad14b)), closes [#1861](https://github.com/looker-open-source/components/issues/1861) [#1866](https://github.com/looker-open-source/components/issues/1866) [#1874](https://github.com/looker-open-source/components/issues/1874)
+
+
+
+
+
 # [0.11.0](https://github.com/looker-open-source/components/compare/v0.10.4...v0.11.0) (2021-02-04)
 
 
