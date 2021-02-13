@@ -24,21 +24,23 @@
 
  */
 
-import 'jest-styled-components'
 import React from 'react'
-import { assertSnapshot } from '@looker/components-test-utils'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
 import { DialogContent } from './DialogContent'
 
 describe('DialogContent', () => {
-  test('Snapshot', () => {
-    assertSnapshot(<DialogContent>Stuff</DialogContent>)
+  test('basic', () => {
+    renderWithTheme(<DialogContent>Stuff</DialogContent>)
+    expect(screen.getByText('Stuff')).toBeInTheDocument()
   })
 
-  test('Snapshot - No overflow', () => {
-    assertSnapshot(
-      <DialogContent>
-        <div style={{ height: '4rem' }}>Stuff</div>
+  test('hasHeader & hasFooter', () => {
+    renderWithTheme(
+      <DialogContent hasHeader hasFooter>
+        Stuff
       </DialogContent>
     )
+    expect(screen.getByText('Stuff')).toBeInTheDocument()
   })
 })

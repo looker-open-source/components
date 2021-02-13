@@ -26,19 +26,11 @@
 
 import 'jest-styled-components'
 import React from 'react'
-import { assertSnapshot, renderWithTheme } from '@looker/components-test-utils'
+import { renderWithTheme } from '@looker/components-test-utils'
 import { screen } from '@testing-library/react'
 import { DialogHeader } from './DialogHeader'
 
 describe('DialogHeader', () => {
-  test('Snapshot', () => {
-    assertSnapshot(
-      <DialogHeader id="test-DialogHeader">
-        The Heading for a Dialog
-      </DialogHeader>
-    )
-  })
-
   test('Passes through DOM props', async () => {
     renderWithTheme(
       <DialogHeader aria-label="ARIA label">Heading</DialogHeader>

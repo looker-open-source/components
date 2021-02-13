@@ -62,7 +62,7 @@ export const reset = css`
   }
 
   body {
-    background-color: ${({ theme: { colors } }) => colors.background};
+    background: ${({ theme: { colors } }) => colors.background};
   }
 `
 

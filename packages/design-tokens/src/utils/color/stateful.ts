@@ -41,7 +41,7 @@ export const generatePressed = (color: string) => darken(0.07, color)
 
 export const accentBlendScale = 16
 
-const generateStatefulColor = (
+export const generateStatefulColor = (
   background: string,
   color: string
 ): StatefulColorChoices => {

@@ -23,21 +23,18 @@
  SOFTWARE.
 
  */
-import { assertSnapshot } from '@looker/components-test-utils'
 import React from 'react'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
 import { Badge } from './Badge'
 
-test('Badge renders all sizes', () => {
-  assertSnapshot(<Badge>default (medium)</Badge>)
-  assertSnapshot(<Badge size="small">small</Badge>)
-  assertSnapshot(<Badge size="medium">medium</Badge>)
-  assertSnapshot(<Badge size="large">large</Badge>)
-})
-
-test('Badge renders all intents', () => {
-  assertSnapshot(<Badge intent="positive">positive</Badge>)
-  assertSnapshot(<Badge intent="inform">info</Badge>)
-  assertSnapshot(<Badge intent="neutral">neutral</Badge>)
-  assertSnapshot(<Badge intent="warn">warning</Badge>)
-  assertSnapshot(<Badge intent="critical">critical</Badge>)
+test('Badge', () => {
+  renderWithTheme(
+    <Badge size="small" intent="positive">
+      Good!
+    </Badge>
+  )
+  const badge = screen.getByText('Good!')
+  expect(badge).toHaveStyle('background: rgb(228, 245, 235)')
+  expect(badge).toHaveStyle('line-height: 16px')
 })

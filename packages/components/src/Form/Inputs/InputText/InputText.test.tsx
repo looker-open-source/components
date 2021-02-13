@@ -26,13 +26,8 @@
 
 import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import 'jest-styled-components'
+import { renderWithTheme } from '@looker/components-test-utils'
 import React from 'react'
-import {
-  assertSnapshot,
-  mountWithTheme,
-  renderWithTheme,
-} from '@looker/components-test-utils'
 
 import { InputText } from './InputText'
 
@@ -54,36 +49,45 @@ afterEach(() => {
 })
 
 describe('InputText', () => {
-  test('default', () => {
-    assertSnapshot(<InputText />)
-  })
-
   test('with name and id', () => {
-    assertSnapshot(<InputText name="Bob" id="Bobby" />)
+    renderWithTheme(<InputText name="Bob" id="Bobby" />)
+    expect(screen.getByRole('textbox')).toHaveAttribute('name', 'Bob')
+    expect(screen.getByRole('textbox')).toHaveAttribute('id', 'Bobby')
   })
 
   test('should accept disabled', () => {
-    assertSnapshot(<InputText disabled />)
+    renderWithTheme(<InputText disabled />)
+    expect(screen.getByRole('textbox')).toBeDisabled()
   })
 
   test('with a placeholder', () => {
-    assertSnapshot(<InputText placeholder="I am a placeholder" />)
+    renderWithTheme(<InputText placeholder="I am a placeholder" />)
+    expect(
+      screen.getByPlaceholderText('I am a placeholder')
+    ).toBeInTheDocument()
   })
 
   test('should accept readOnly', () => {
-    assertSnapshot(<InputText readOnly />)
+    renderWithTheme(<InputText readOnly />)
+    expect(screen.getByRole('textbox')).toHaveAttribute('readonly')
   })
 
   test('should accept required', () => {
-    assertSnapshot(<InputText required />)
+    renderWithTheme(<InputText required />)
+    expect(screen.getByRole('textbox')).toBeRequired()
   })
 
-  test('with a value', () => {
-    assertSnapshot(<InputText value="Some value" />)
+  test('should accept defaultValue', () => {
+    renderWithTheme(<InputText defaultValue="Some value" />)
+    expect(screen.getByRole('textbox')).toHaveValue('Some value')
   })
 
   test('with aria-describedby', () => {
-    assertSnapshot(<InputText aria-describedby="some-id" />)
+    renderWithTheme(<InputText aria-describedby="some-id" />)
+    expect(screen.getByRole('textbox')).toHaveAttribute(
+      'aria-describedby',
+      'some-id'
+    )
   })
   test('autoResize', () => {
     const { container, getByPlaceholderText, getByText } = renderWithTheme(
@@ -178,12 +182,11 @@ describe('InputText', () => {
   })
 
   test('Should trigger onChange handler', () => {
-    let counter = 0
-    const handleChange = () => counter++
+    const onChange = jest.fn()
 
-    const wrapper = mountWithTheme(<InputText onChange={handleChange} />)
+    renderWithTheme(<InputText onChange={onChange} />)
 
-    wrapper.find('input').simulate('change', { target: { value: '' } })
-    expect(counter).toEqual(1)
+    userEvent.type(screen.getByRole('textbox'), 'Hello world')
+    expect(onChange).toHaveBeenCalled()
   })
 })

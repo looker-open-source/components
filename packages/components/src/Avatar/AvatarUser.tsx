@@ -62,6 +62,7 @@ const AvatarLayout: FC<AvatarUserProps> = ({
           aria-hidden
           color={color}
           type="image/png"
+          data-test-id="avatar-photo"
           data={user.avatar_url}
         />
       )}

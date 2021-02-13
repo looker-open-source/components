@@ -24,4 +24,4 @@
 
  */
 
-export * from './GoogleFontsLoader'
+export { GoogleFontsLoader } from './GoogleFontsLoader'
