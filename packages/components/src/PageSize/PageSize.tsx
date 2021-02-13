@@ -24,6 +24,7 @@
 
  */
 
+import { useTranslation } from 'react-i18next'
 import React, { FC } from 'react'
 import styled from 'styled-components'
 import { Select } from '../Form'
@@ -66,11 +67,13 @@ export const PageSizeLayout: FC<PageSizeProps> = ({
   onChange,
   options = defaultPageSizes,
 }) => {
+  const { t } = useTranslation('PageSize')
+
   const handleOnChange = (newValue: string) => onChange(Number(newValue))
 
   return Math.min(...options) < total ? (
     <div className={className}>
-      Display
+      {t('Display')}
       <Select
         width="5rem"
         mx="xsmall"
@@ -78,7 +81,7 @@ export const PageSizeLayout: FC<PageSizeProps> = ({
         value={String(value)}
         onChange={handleOnChange}
       />
-      of {total}
+      {t('of')} {total}
     </div>
   ) : null
 }

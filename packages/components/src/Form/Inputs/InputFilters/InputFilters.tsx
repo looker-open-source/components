@@ -165,7 +165,7 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
               }
               isOpen={fieldEditing !== undefined}
               key={i}
-              placement="bottom-start"
+              placement={t('bottom-start')}
               setOpen={closeEditor}
             >
               {filterToken}

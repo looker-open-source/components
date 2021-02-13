@@ -74,6 +74,9 @@ export const i18nResources: Resource = {
     DataTableItem: {
       Options: 'Options',
     },
+    DialogHeader: {
+      Close: 'Close',
+    },
     GetIntentLabel: {
       Error: 'Error',
       Inform: 'Inform',
@@ -86,6 +89,7 @@ export const i18nResources: Resource = {
     InputFilters: {
       'Clear Filters': 'Clear Filters',
       'Filter List': 'Filter List',
+      'bottom-start': 'bottom-start',
     },
     InputSearch: {
       Search: 'Search',
@@ -99,18 +103,33 @@ export const i18nResources: Resource = {
     MessageBar: {
       DismissIntent: 'Dismiss {{intent}}',
     },
+    PageSize: {
+      Display: 'Display',
+      of: 'of',
+    },
     Pagination: {
       'First page of results': 'First page of results',
       'Last page of results': 'Last page of results',
       'Next page of results': 'Next page of results',
       'Previous page of results': 'Previous page of results',
+      of: 'of',
     },
     PromptDialog: {
       Cancel: 'Cancel',
       Save: 'Save',
     },
+    RangeSlider: {
+      'Maximum Value': 'Maximum Value',
+      'Minimum Value': 'Minimum Value',
+    },
     RequiredStar: {
       required: 'required',
+    },
+    SelectOptions: {
+      Loading: 'Loading',
+    },
+    TabList: {
+      Tabs: 'Tabs',
     },
   },
 }

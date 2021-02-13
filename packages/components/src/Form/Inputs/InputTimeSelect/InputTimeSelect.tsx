@@ -320,6 +320,7 @@ const InputTimeSelectLayout = forwardRef(
       }
     }
 
+    /* eslint-disable-next-line @typescript-eslint/unbound-method */
     const throttledHandleChange = useCallback(
       throttle(
         (v: MaybeComboboxOptionObject) => {

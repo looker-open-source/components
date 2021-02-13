@@ -71,7 +71,7 @@ const PaginationLayout: FC<PaginationProps> = ({
         disabled={current === 1}
       />
       <Span fontSize="small" mx="xxsmall">
-        <b>{current}</b> of {pages}
+        <b>{current}</b> {t('of')} {pages}
       </Span>
       <PaginationButton
         label={t('Next page of results')}

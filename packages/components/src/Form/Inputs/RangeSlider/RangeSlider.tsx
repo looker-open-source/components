@@ -24,6 +24,7 @@
 
  */
 
+import { useTranslation } from 'react-i18next'
 import React, {
   forwardRef,
   Ref,
@@ -178,6 +179,7 @@ export const InternalRangeSlider = forwardRef(
     }: RangeSliderProps,
     ref: Ref<HTMLDivElement>
   ) => {
+    const { t } = useTranslation('RangeSlider')
     /*
      * Validate props and render any necessary warnings
      * ------------------------------------------------------
@@ -374,7 +376,7 @@ export const InternalRangeSlider = forwardRef(
             onKeyDown={handleKeyboardNav}
             ref={minThumbRef}
             disabled={disabled}
-            aria-label="Minimum Value"
+            aria-label={t('Minimum Value')}
             role="slider"
             aria-valuemin={min}
             aria-valuemax={max}
@@ -389,7 +391,7 @@ export const InternalRangeSlider = forwardRef(
             onKeyDown={handleKeyboardNav}
             ref={maxThumbRef}
             disabled={disabled}
-            aria-label="Maximum Value"
+            aria-label={t('Maximum Value')}
             role="slider"
             aria-valuemin={min}
             aria-valuemax={max}
