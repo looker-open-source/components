@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2020 Looker Data Sciences, Inc.
+ Copyright (c) 2021 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -57,13 +57,14 @@ const IconGrid = styled.div`
 `
 
 const IconGridItem = styled.div`
-  text-align: center;
-  font-size: ${({ theme }) => theme.fontSizes.small};
-  cursor: pointer;
   border: 1px solid ${({ theme }) => theme.colors.ui1};
-  padding: 1rem;
   border-radius: ${({ theme }) => theme.radii.medium};
   color: ${({ theme }) => theme.colors.text3};
+  cursor: pointer;
+  font-size: ${({ theme }) => theme.fontSizes.small};
+  padding: 1rem;
+  text-align: center;
+
   &:hover {
     border-color: ${({ theme }) => theme.colors.keyFocus};
     color: ${({ theme }) => theme.colors.key};

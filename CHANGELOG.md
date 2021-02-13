@@ -5,28 +5,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [0.12.0](https://github.com/looker-open-source/components/compare/v0.11.0...v0.12.0) (2021-02-13)
 
-
-### Bug Fixes
-
-* **FocusTrap:** Return focus behavior on nested focus traps ([#1886](https://github.com/looker-open-source/components/issues/1886)) ([78bfd87](https://github.com/looker-open-source/components/commit/78bfd87532c65cf33bc8fc00941387a3249a139e))
-* **theme:** Enable sanitizeFontFace to properly quote font-faces in font-family ([#1893](https://github.com/looker-open-source/components/issues/1893)) ([4aed07e](https://github.com/looker-open-source/components/commit/4aed07ea1c8278e5fd0188de7123111319f7e0f7))
-* **Tree:** Removed default value on Tree density prop ([#1910](https://github.com/looker-open-source/components/issues/1910)) ([9ba8779](https://github.com/looker-open-source/components/commit/9ba877930768370aa0fa2d198bceb2edee609536)), closes [#1911](https://github.com/looker-open-source/components/issues/1911)
-* DataTable Simplify onClick behavior ([#1865](https://github.com/looker-open-source/components/issues/1865)) ([1c17444](https://github.com/looker-open-source/components/commit/1c174442a0e731f0b60e8573077b41ff1d5a2c61))
-* InlineInputText updated test coverage ([#1878](https://github.com/looker-open-source/components/issues/1878)) ([c6e7b5d](https://github.com/looker-open-source/components/commit/c6e7b5d98b128c49dc61a1e30a6d93ba44dc9743))
-* Radio validation error ([#1850](https://github.com/looker-open-source/components/issues/1850)) ([9b06e39](https://github.com/looker-open-source/components/commit/9b06e3918b7564241d83117814b45a0337580a64)), closes [#1859](https://github.com/looker-open-source/components/issues/1859)
-* Unable to filter SelectMulti with 1 or more controlled values ([#1873](https://github.com/looker-open-source/components/issues/1873)) ([4c8f214](https://github.com/looker-open-source/components/commit/4c8f214dc51b43e90f50668a9be7315ceb51d209))
-* **Label:** typography props now actually work ([#1871](https://github.com/looker-open-source/components/issues/1871)) ([fd8793a](https://github.com/looker-open-source/components/commit/fd8793abf5d2e055221421bafd9c2aa22ea8a3c5))
-
-
-### Features
-
-* Panel component ([#1815](https://github.com/looker-open-source/components/issues/1815)) ([62cafc5](https://github.com/looker-open-source/components/commit/62cafc5343062cfda69c6147be7641677df15e04))
-* Tree refactor with List pieces ([#1846](https://github.com/looker-open-source/components/issues/1846)) ([8940f68](https://github.com/looker-open-source/components/commit/8940f68f6cab0723404a50269c48fc6238aad14b)), closes [#1861](https://github.com/looker-open-source/components/issues/1861) [#1866](https://github.com/looker-open-source/components/issues/1866) [#1874](https://github.com/looker-open-source/components/issues/1874)
-
-
-
-
-
 # [0.11.0](https://github.com/looker-open-source/components/compare/v0.10.4...v0.11.0) (2021-02-04)
 
 ## [0.10.4](https://github.com/looker-open-source/components/compare/v0.10.3...v0.10.4) (2021-01-25)
