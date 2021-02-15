@@ -38,6 +38,7 @@ export interface ValidationMessageProps {
   type?: ValidationType
   /**
    * The validation message to render.
+   * I18n recommended: content that is user visible should be treated for i18n
    */
   message?: string
 }

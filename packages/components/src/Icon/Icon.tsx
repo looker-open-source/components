@@ -63,6 +63,7 @@ export interface IconProps
    * Explicitly specify a title for the SVG rendered by the icon.
    * NOTE: If title is not specified `aria-hidden="true"` will be applied to hide the SVG from
    * screen-readers
+   * I18n recommended: content that is user visible should be treated for i18n
    */
   title?: string
 }

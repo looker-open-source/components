@@ -52,6 +52,7 @@ export interface UseTooltipProps {
   /**
    * Content to display inside the tooltip. Can be a string or JSX.
    * If not defined, the Tooltip will not render.
+   * I18n recommended: content that is user visible should be treated for i18n
    */
   content?: ReactNode
   /**

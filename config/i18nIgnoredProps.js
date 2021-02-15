@@ -25,6 +25,7 @@
  */
 
 const ours = [
+  'align',
   'icon',
   'iconBefore',
   'iconAfter',

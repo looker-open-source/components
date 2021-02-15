@@ -46,6 +46,10 @@ import {
 export interface DataTableRowProps
   extends DataTableCheckboxProps,
     Omit<CompatibleHTMLProps<HTMLElement>, 'onChange' | 'checked'> {
+  /**
+   * Content displayed after selection checkbox (optional) and row cells.
+   * Used for DataTableActions
+   */
   secondary?: ReactNode
   hasCheckbox?: boolean
   /**

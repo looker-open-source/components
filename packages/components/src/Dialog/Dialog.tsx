@@ -39,6 +39,8 @@ export interface DialogProps extends Omit<UseDialogProps, 'content'> {
    * Prop is only marked optional to support legacy implementations.
    *
    * If `content` is not supplied `children` will used as the Dialog content instead
+   *
+   * I18n recommended: content that is user visible should be treated for i18n
    */
   content?: ReactNode
 }

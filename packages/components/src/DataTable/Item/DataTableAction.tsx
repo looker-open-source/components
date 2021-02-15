@@ -30,7 +30,9 @@ import React, { ReactNode } from 'react'
 import { MenuItem } from '../../Menu'
 
 export interface DataTableActionProps extends CompatibleHTMLProps<HTMLElement> {
-  children?: ReactNode
+  /**
+   * I18n recommended: content that is user visible should be treated for i18n
+   */
   detail?: ReactNode
   icon?: IconNames
   /**

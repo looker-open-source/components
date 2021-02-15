@@ -31,11 +31,13 @@ import { DialogLayout } from '../Layout'
 interface ConfirmLayoutProps {
   /**
    * Header content
+   * I18n recommended: content that is user visible should be treated for i18n
    */
   title: string
 
   /**
    * Primary dialog content
+   * I18n recommended: content that is user visible should be treated for i18n
    */
   message: ReactElement | string
   /**
