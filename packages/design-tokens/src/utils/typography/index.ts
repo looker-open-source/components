@@ -25,4 +25,4 @@
  */
 
 export { generateFontFamilies } from './generateFontFamilies'
-export { sanitizeFontFace, sanitizeFontFamily } from './sanitizeFont'
+export * from './sanitizeFont'
