@@ -25,7 +25,6 @@
  */
 
 import { CompatibleHTMLProps, StatefulColor } from '@looker/design-tokens'
-import { IconNames } from '@looker/icons'
 import {
   MaxWidthProps,
   MinWidthProps,
@@ -35,8 +34,8 @@ import {
 import { ButtonSizeProps, ButtonSizes } from './size'
 
 export interface ButtonIconProps {
-  iconBefore?: IconNames | undefined
-  iconAfter?: IconNames | undefined
+  iconBefore?: JSX.Element
+  iconAfter?: JSX.Element
 }
 
 export interface ButtonBaseProps
