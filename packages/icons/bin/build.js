@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2020 Looker Data Sciences, Inc.
+ Copyright (c) 2021 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -47,7 +47,7 @@ const iconGlyphPath = path.join(buildPath, 'glyphs')
 // typescript (globpath: string, ext: string)
 async function getBasenames(globpath, ext) {
   const filenames = await globPromise(path.join(globpath, `*.${ext}`))
-  const basenames = filenames.map(n => path.basename(n, `.${ext}`))
+  const basenames = filenames.map((n) => path.basename(n, `.${ext}`))
   basenames.sort()
   return basenames
 }
@@ -89,7 +89,7 @@ async function renameGlyphIndexFile() {
 
 async function generateIconNameFile() {
   function iconNameFile(icons) {
-    const iconNames = icons.map(i => {
+    const iconNames = icons.map((i) => {
       return `'${i}'`
     })
 
@@ -121,4 +121,4 @@ async function run() {
   spinner.stop()
 }
 /* eslint-enable-next-line no-console */
-run().catch(err => console.log(err))
+run().catch((err) => console.log(err))
