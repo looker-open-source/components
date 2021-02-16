@@ -25,7 +25,6 @@
  */
 
 import { useTranslation } from 'react-i18next'
-import { IconNames, iconNameList } from '@looker/icons'
 import React, {
   createContext,
   FC,
@@ -52,7 +51,6 @@ import {
 } from '../Combobox'
 import {
   SelectOptionGroupProps,
-  SelectOptionIcon,
   SelectOptionObject,
   SelectOptionProps,
 } from './types'
@@ -60,15 +58,6 @@ import { optionsHaveIcons, notInOptions } from './utils/options'
 import { useWindowedOptions } from './utils/useWindowedOptions'
 
 export const SelectOptionsContext = createContext({ hasIcons: false })
-
-function isIconName(icon?: SelectOptionIcon): icon is IconNames {
-  return typeof icon === 'string' && iconNameList.includes(icon)
-}
-
-export function getSelectOptionIconProps(icon: SelectOptionIcon) {
-  return isIconName(icon) ? { name: icon } : { artwork: icon }
-}
-
 interface OptionLayoutProps
   extends Pick<ComboboxOptionIndicatorProps, 'indicator'> {
   option: SelectOptionObject
@@ -108,15 +97,16 @@ const OptionLayoutBase = ({
 
 // Use an FC since isActive & isSelected are passed to the indicator via cloneElement
 // and otherwise would get spread onto Icon
-const OptionIcon: FC<SelectOptionObject> = ({ preface, icon }) => (
-  <Icon
-    size="small"
-    mt={preface ? 'medium' : 'none'}
-    color="text1"
-    {...getSelectOptionIconProps(icon)}
-    data-testid="option-icon"
-  />
-)
+const OptionIcon: FC<SelectOptionObject> = ({ preface, icon }) =>
+  icon ? (
+    <Icon
+      size="small"
+      mt={preface ? 'medium' : 'none'}
+      color="text1"
+      icon={icon}
+      data-testid="option-icon"
+    />
+  ) : null
 
 const OptionLayout = ({ option, ...rest }: OptionLayoutProps) => {
   const { hasIcons } = useContext(SelectOptionsContext)

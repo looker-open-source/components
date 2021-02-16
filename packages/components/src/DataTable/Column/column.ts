@@ -24,7 +24,7 @@
 
  */
 
-import { IconNames } from '@looker/icons'
+import { IconType } from '../../Icon'
 import { DataTableColumnSize } from './columnSize'
 
 export type DataTableColumnType = 'string' | 'number' | 'date'
@@ -39,7 +39,7 @@ export interface DataTableColumn {
    * NOTE: `title` will still be used in columnSelector and will be added as
    * a tooltip to the icon displayed in the header row.
    */
-  titleIcon?: IconNames
+  titleIcon?: IconType
   /**
    * A unique identifier for a given column
    * Note: A column object's id should match a key in your data object template

@@ -34,7 +34,7 @@ describe('InputSearch', () => {
   describe('Search icon', () => {
     test('shows by default', () => {
       renderWithTheme(<InputSearch />)
-      expect(screen.getByTitle('Search')).toBeInTheDocument()
+      expect(screen.getByTestId('search-icon')).toBeInTheDocument()
     })
     test('hidden with hideSearchIcon', () => {
       renderWithTheme(<InputSearch hideSearchIcon />)

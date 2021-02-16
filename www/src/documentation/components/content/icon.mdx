@@ -9,9 +9,9 @@ import { IconList } from './demos'
 
 ```jsx
 <Space around>
-  <Icon name="Check" />
-  <Icon name="Favorite" size="large" />
-  <Icon name="GearOutline" size="small" />
+  <Icon icon={<Done />} />
+  <Icon icon={<Favorite />} size="large" />
+  <Icon icon={<Settings />} size="small" />
 </Space>
 ```
 
@@ -59,7 +59,7 @@ import { IconList } from './demos'
 
 ```jsx
 <Space around>
-  <Icon name="Trash" color="inform" />
+  <Icon icon={<Delete />} color="inform" />
   <Box
     color="critical"
     bg="ui5"
@@ -70,7 +70,7 @@ import { IconList } from './demos'
     borderRadius="medium"
   >
     The text in this Box is red and so is the icon.
-    <Icon name="Trash" size="large" mx="auto" />
+    <Icon icon={<Delete />} size="large" mx="auto" />
   </Box>
 </Space>
 ```
@@ -81,11 +81,11 @@ import { IconList } from './demos'
 
 ```jsx
 <Space around>
-  <Icon name="Beaker" color="inform" size="xxsmall" />
-  <Icon name="Beaker" color="inform" size="xsmall" />
-  <Icon name="Beaker" color="inform" size="small" />
-  <Icon name="Beaker" color="inform" size="medium" />
-  <Icon name="Beaker" color="inform" size="large" />
+  <Icon name={<Beaker />} color="inform" size="xxsmall" />
+  <Icon name={<Beaker />} color="inform" size="xsmall" />
+  <Icon name={<Beaker />} color="inform" size="small" />
+  <Icon name={<Beaker />} color="inform" size="medium" />
+  <Icon name={<Beaker />} color="inform" size="large" />
 </Space>
 ```
 

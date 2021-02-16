@@ -26,9 +26,10 @@
 
 import styled from 'styled-components'
 import React, { forwardRef, Ref, useContext } from 'react'
+import { size } from '@looker/design-tokens'
+import { ArrowRight } from '@styled-icons/material'
 import { DialogContext } from '../Dialog'
 import { ListItem, ListItemProps } from '../List'
-import { Icon } from '../Icon'
 import { useForkedRef, useID } from '../utils'
 import { ListItemContext } from '../List/ListItemContext'
 import { listItemDimensions } from '../List/utils'
@@ -79,11 +80,7 @@ const MenuItemInternal = forwardRef(
       // eslint-disable-next-line no-console
       console.warn('The detail prop is not supported when nestedMenu is used.')
     }
-    detail = nestedMenu ? (
-      <Icon color="text1" name="ArrowRight" size={iconSize} />
-    ) : (
-      detail
-    )
+    detail = nestedMenu ? <NestedMenuIndicator size={iconSize} /> : detail
 
     const { closeModal } = useContext(DialogContext)
 
@@ -119,3 +116,8 @@ const MenuItemInternal = forwardRef(
 MenuItemInternal.displayName = 'MenuItemInternal'
 
 export const MenuItem = styled(MenuItemInternal)``
+
+const NestedMenuIndicator = styled(ArrowRight)`
+  color: ${({ theme }) => theme.colors.text1};
+  ${size}
+`

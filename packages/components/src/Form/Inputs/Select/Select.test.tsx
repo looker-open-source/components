@@ -28,6 +28,8 @@ import {
   getAllComboboxOptionText,
   renderWithTheme,
 } from '@looker/components-test-utils'
+import { ChartBar } from '@looker/icons'
+import { BarChart } from '@styled-icons/material'
 import { cleanup, fireEvent, screen } from '@testing-library/react'
 import React, { useState, useMemo, useEffect } from 'react'
 
@@ -954,10 +956,14 @@ describe('Select', () => {
       <Select
         placeholder="Select a visualization"
         options={[
-          { icon: 'ChartBar', label: 'Bar', value: 'bar' },
+          {
+            icon: <ChartBar data-testid="input-icon" />,
+            label: 'Bar',
+            value: 'bar',
+          },
           { label: 'No Icon', value: 'noicon' },
           {
-            icon: 'ChartColumn',
+            icon: <BarChart data-testid="input-icon" />,
             indicator: 'Test Indicator',
             label: 'Column',
             value: 'column',
@@ -974,17 +980,18 @@ describe('Select', () => {
     expect(screen.queryByTestId('input-icon')).not.toBeInTheDocument()
 
     const input = screen.getByPlaceholderText('Select a visualization')
+    expect(input).toBeInTheDocument()
     fireEvent.click(input)
-    expect(screen.getAllByTestId('option-icon')).toHaveLength(3)
+    expect(screen.getAllByTestId('input-icon')).toHaveLength(2)
     expect(screen.getByTestId('option-icon-placeholder')).toBeInTheDocument()
 
     fireEvent.click(screen.getByText('Column'))
     const inputIcon = screen.getByTestId('input-icon')
-    expect((inputIcon.firstChild as SVGElement).tagName).toBe('svg')
+    expect(inputIcon.tagName).toBe('svg')
 
     fireEvent.click(input)
     fireEvent.click(screen.getByText('Custom Icon'))
-    expect(screen.getByTestId('input-icon')).toHaveTextContent('cool icon')
+    expect(screen.getByText('cool icon')).toBeInTheDocument()
 
     // Test icon+indicator warning
     expect(screen.queryByText('Test Indicator')).not.toBeInTheDocument()

@@ -25,6 +25,7 @@
  */
 
 import React, { FC } from 'react'
+import { ArrowDropDown } from '@styled-icons/material'
 import { ButtonOutline } from '../../Button'
 import { Box } from '../../Layout'
 import { Paragraph } from '../../Text'
@@ -46,7 +47,7 @@ export const ContentOverflow: FC = ({ children }) => (
         </PopoverContent>
       }
     >
-      <ButtonOutline iconAfter="ArrowDropDown" m="xxlarge">
+      <ButtonOutline iconAfter={<ArrowDropDown />} m="xxlarge">
         {children}
       </ButtonOutline>
     </Popover>

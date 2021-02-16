@@ -33,7 +33,6 @@ const Template: Story<AvatarIconProps> = (args) => <AvatarIcon {...args} />
 export const Primary = Template.bind({})
 Primary.args = {
   color: 'key',
-  icon: 'User',
 }
 
 export default {
