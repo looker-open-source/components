@@ -2,7 +2,7 @@
 
 exports[`FadeIn renders with defaults 1`] = `
 .c0 {
-  font-family: Roboto,'Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
+  font-family: Roboto,'Noto Sans','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   -webkit-animation-delay: 0ms;
   animation-delay: 0ms;
   -webkit-animation-duration: 150ms;
@@ -24,7 +24,7 @@ exports[`FadeIn renders with defaults 1`] = `
 
 exports[`FadeIn renders with delay and duration props 1`] = `
 .c0 {
-  font-family: Roboto,'Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
+  font-family: Roboto,'Noto Sans','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   -webkit-animation-delay: 500ms;
   animation-delay: 500ms;
   -webkit-animation-duration: 400ms;

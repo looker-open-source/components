@@ -24,17 +24,12 @@
 
  */
 
-import { sanitizeFontFace } from './sanitizeFont'
+import { sanitizeFontFamily } from './sanitizeFont'
 
 export const fontFacesToFamily = (
   faces: string[] | string,
   fallbacks: string[]
 ) => {
-  if (typeof faces === 'string') {
-    faces = [faces]
-  }
-
-  faces = [...faces, ...fallbacks]
-
-  return faces.map((face) => `${sanitizeFontFace(face)}`).join(', ')
+  const facesStr = typeof faces === 'string' ? faces : faces.join(',')
+  return sanitizeFontFamily(`${facesStr}, ${fallbacks.join(',')}`)
 }

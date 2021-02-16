@@ -2,7 +2,7 @@
 
 exports[`SpaceVertical default 1`] = `
 .c0 {
-  font-family: Roboto,'Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
+  font-family: Roboto,'Noto Sans','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -53,7 +53,7 @@ exports[`SpaceVertical default 1`] = `
 
 exports[`SpaceVertical reversed 1`] = `
 .c0 {
-  font-family: Roboto,'Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
+  font-family: Roboto,'Noto Sans','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -104,7 +104,7 @@ exports[`SpaceVertical reversed 1`] = `
 
 exports[`SpaceVertical with specified gap 1`] = `
 .c0 {
-  font-family: Roboto,'Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
+  font-family: Roboto,'Noto Sans','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   width: 100%;
   display: -webkit-box;
   display: -webkit-flex;

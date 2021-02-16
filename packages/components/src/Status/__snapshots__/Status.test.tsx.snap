@@ -2,7 +2,7 @@
 
 exports[`critical Status 1`] = `
 .c0 {
-  font-family: Roboto,'Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
+  font-family: Roboto,'Noto Sans','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   width: 1.5rem;
   height: 1.5rem;
   display: -webkit-inline-box;
@@ -55,7 +55,7 @@ exports[`critical Status 1`] = `
 
 exports[`inform Status 1`] = `
 .c0 {
-  font-family: Roboto,'Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
+  font-family: Roboto,'Noto Sans','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   width: 1.5rem;
   height: 1.5rem;
   display: -webkit-inline-box;
@@ -108,7 +108,7 @@ exports[`inform Status 1`] = `
 
 exports[`neutral status 1`] = `
 .c0 {
-  font-family: Roboto,'Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
+  font-family: Roboto,'Noto Sans','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   width: 1.5rem;
   height: 1.5rem;
   display: -webkit-inline-box;
@@ -158,7 +158,7 @@ exports[`neutral status 1`] = `
 
 exports[`positive Status 1`] = `
 .c0 {
-  font-family: Roboto,'Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
+  font-family: Roboto,'Noto Sans','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   width: 1.5rem;
   height: 1.5rem;
   display: -webkit-inline-box;
@@ -211,7 +211,7 @@ exports[`positive Status 1`] = `
 
 exports[`warn Status 1`] = `
 .c0 {
-  font-family: Roboto,'Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
+  font-family: Roboto,'Noto Sans','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   width: 1.5rem;
   height: 1.5rem;
   display: -webkit-inline-box;

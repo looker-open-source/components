@@ -29,10 +29,10 @@
  * CSSWG specifications. Reference: https://developer.mozilla.org/en-US/docs/Web/CSS/font-family
  */
 export const sanitizeFontFamily = (faces: string) =>
-  faces
-    .split(',')
-    .map((face) => sanitizeFontFace(face))
-    .join(', ')
+  sanitizeFontFamilyArray(faces).join(', ')
+
+export const sanitizeFontFamilyArray = (faces: string) =>
+  faces.split(',').map((face) => sanitizeFontFace(face))
 
 export const sanitizeFontFace = (face: string) => {
   const sanitized = face.replace(/["']/g, '').trim()
