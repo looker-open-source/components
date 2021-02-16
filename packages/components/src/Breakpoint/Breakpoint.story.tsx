@@ -24,6 +24,7 @@
 
  */
 import React, { FC } from 'react'
+import { LookerLogo } from '@looker/icons'
 import { Story } from '@storybook/react/types-6-0'
 import {
   SpaceProps,
@@ -33,12 +34,12 @@ import {
   TextColorProps,
   textColor,
 } from '@looker/design-tokens'
+import { Menu } from '@styled-icons/material'
 import styled from 'styled-components'
 import { VIEWPORT_MAP } from '../utils-storybook'
 import { Card, CardContent, CardMedia } from '../Card'
 import { Heading, Paragraph, Span } from '../Text'
 import { Grid, Box } from '../Layout'
-import { Icon } from '../Icon'
 import { IconButton } from '../Button'
 import { InputSearch } from '../Form'
 import { Breakpoint, BreakpointProps } from './Breakpoint'
@@ -70,11 +71,6 @@ const LargeHeaderGrid = styled.div`
   display: grid;
   grid-gap: 1rem;
   grid-template-columns: auto auto 1fr;
-`
-
-const CustomIcon = styled(Icon)`
-  height: 20px;
-  width: 70px;
 `
 
 const Link = styled.a<TextColorProps>`
@@ -115,8 +111,10 @@ const Template: Story<BreakpointProps> = () => {
       <Breakpoint show="mobile">
         <NavHeader backgroundColor="ui1" p="small">
           <MobileHeaderGrid>
-            <CustomIcon name="LookerLogo" color="key" />
-            <IconButton icon="Hamburger" label="navigation" />
+            <Box color="key">
+              <LookerLogo width={70} height={20} title="Looker" />
+            </Box>
+            <IconButton icon={<Menu />} label="navigation" />
           </MobileHeaderGrid>
         </NavHeader>
         <Grid p="small" columns={1}>
@@ -130,7 +128,9 @@ const Template: Story<BreakpointProps> = () => {
       <Breakpoint show={['tablet', undefined]}>
         <NavHeader backgroundColor="inverse" p="medium">
           <LargeHeaderGrid>
-            <CustomIcon name="LookerLogo" color="text1" />
+            <Box color="text1">
+              <LookerLogo width={70} height={20} title="Looker" />
+            </Box>
             <nav>
               <Grid columns={4}>
                 <Link href="#" color="text1">

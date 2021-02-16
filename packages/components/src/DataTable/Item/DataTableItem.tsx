@@ -24,10 +24,11 @@
 
  */
 
-import { useTranslation } from 'react-i18next'
-import { CompatibleHTMLProps } from '@looker/design-tokens'
-import styled from 'styled-components'
 import React, { FC, ReactNode, useContext, useRef } from 'react'
+import { useTranslation } from 'react-i18next'
+import styled from 'styled-components'
+import { CompatibleHTMLProps } from '@looker/design-tokens'
+import { MoreVert } from '@styled-icons/material'
 import { IconButton } from '../../Button'
 import { Menu } from '../../Menu'
 import { DataTableContext } from '../DataTableContext'
@@ -97,7 +98,7 @@ const DataTableItemLayout: FC<DataTableItemProps> = (props) => {
         <ItemTarget>
           <Menu content={actions}>
             <IconButton
-              icon="DotsVert"
+              icon={<MoreVert />}
               label={actionsTooltip}
               size="small"
               tabIndex={-1}

@@ -26,7 +26,7 @@
 
 import React, { FC } from 'react'
 import styled from 'styled-components'
-import { Icon } from '../Icon'
+import { StyledIconBase } from '@styled-icons/styled-icon'
 import { AccordionIndicatorProps } from './indicator'
 
 interface AccordionDisclosureLayoutProps
@@ -41,15 +41,9 @@ const Layout: FC<AccordionDisclosureLayoutProps> = ({
   isOpen,
   indicatorIcons,
   indicatorPosition,
-  indicatorSize,
 }) => {
   const indicator = (
-    <Indicator>
-      <Icon
-        name={isOpen ? indicatorIcons.open : indicatorIcons.close}
-        size={indicatorSize}
-      />
-    </Indicator>
+    <Indicator>{isOpen ? indicatorIcons.open : indicatorIcons.close}</Indicator>
   )
 
   return (
@@ -86,5 +80,10 @@ export const AccordionDisclosureLayout = styled(Layout)`
       indicatorPosition === 'left'
         ? `margin-right: ${space[indicatorGap]};`
         : `margin-left: ${space[indicatorGap]};`}
+
+    ${StyledIconBase} {
+      height: ${({ indicatorSize, theme }) => theme.sizes[indicatorSize]};
+      width: ${({ indicatorSize, theme }) => theme.sizes[indicatorSize]};
+    }
   }
 `

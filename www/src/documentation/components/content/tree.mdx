@@ -111,7 +111,7 @@ When text content overflows, it will render a tooltip to view the entire content
   icon="Table"
   defaultOpen
 >
-  <TreeItem icon="IdeDimension">
+  <TreeItem icon={<IdeDimension />}>
     Cheese is a dairy product, derived from milk and produced in wide ranges of flavours, textures and forms by coagulation of the milk protein casein. It comprises proteins and fat from milk, usually the milk of cows, buffalo, goats, or sheep.
   </TreeItem>
 
@@ -127,7 +127,7 @@ When text content overflows, it will render a tooltip to view the entire content
   icon="Table"
   defaultOpen
 >
-  <TreeItem icon="IdeDimension" truncate>
+  <TreeItem icon={<IdeDimension />} truncate>
     Hover over me for a tooltip of the full content. Cheese is a dairy product, derived from milk and produced in wide ranges of flavours, textures and forms by coagulation of the milk protein casein. It comprises proteins and fat from milk, usually the milk of cows, buffalo, goats, or sheep.
   </TreeItem>
 </Tree>
@@ -205,7 +205,7 @@ Note: In addition these custom props, `TreeItem` also accepts standard handlers 
 ```jsx
 <Tree label="Cheeses" defaultOpen>
   <TreeItem
-    icon="LogoRings"
+    icon={<LogoRings />}
     detail={<Text color="text2">is great</Text>}
     onClick={() => alert('Clicked Swiss')}
     selected
@@ -247,8 +247,8 @@ Enabling the `accessory` option will render the detail element outside of the la
     detail={{
       content: (
         <IconButton
-          icon="Pivot"
-          label="Pivot"
+          icon={<Pivot />}
+          label={<Pivot />}
           onClick={() => alert("You've pivoted!")}
         />
       ),

@@ -40,9 +40,9 @@ import max from 'lodash/max'
 import isEmpty from 'lodash/isEmpty'
 import isEqual from 'lodash/isEqual'
 import values from 'lodash/values'
+import { Error } from '@styled-icons/material'
 import { useTranslation } from 'react-i18next'
 import { VisuallyHidden } from '../../../VisuallyHidden'
-import { Icon } from '../../../Icon'
 import { ValidationType } from '../../ValidationMessage'
 import {
   inputCSS,
@@ -425,13 +425,7 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
           </InputTextWrapper>
           {(inputs.from.isValid && inputs.to.isValid) || (
             <IconWrapper>
-              <Icon
-                key="warning"
-                name="Error"
-                size={20}
-                color="critical"
-                mr="xxsmall"
-              />
+              <ErrorIcon />
             </IconWrapper>
           )}
         </InputTextGroupWrapper>
@@ -470,6 +464,13 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
     )
   }
 )
+
+const ErrorIcon = styled(Error)`
+  color: ${({ theme }) => theme.colors.critical};
+  height: ${({ theme }) => theme.sizes.small};
+  margin-right: ${({ theme }) => theme.space.xxsmall};
+  width: ${({ theme }) => theme.sizes.small};
+`
 
 InputDateRange.displayName = 'InputDateRange'
 

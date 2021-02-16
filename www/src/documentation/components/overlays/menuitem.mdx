@@ -32,7 +32,7 @@ Use the `detail` and/or `description` prop to provide extra explanatory informat
 
 ```jsx
 <MenuList>
-  <MenuItem detail="⌘⇧↵" description="this is the description" icon="LogoRings">
+  <MenuItem detail="⌘⇧↵" description="this is the description" icon={<LogoRings />}>
     Looker
   </MenuItem>
   <MenuItem description="this is the description" icon="Validate">
@@ -79,7 +79,7 @@ To implement a tooltip on a `MenuItem`, wrap the `MenuItem` in a `Tooltip` eleme
 
 ```jsx
 <MenuList>
-  <MenuItem icon="LogoRings">Looker</MenuItem>
+  <MenuItem icon={<LogoRings />}>Looker</MenuItem>
   <MenuItem icon="Validate">Validate</MenuItem>
   <MenuItem icon="ChartPie">Pizza</MenuItem>
 </MenuList>
@@ -107,6 +107,6 @@ To implement a tooltip on a `MenuItem`, wrap the `MenuItem` in a `Tooltip` eleme
 Use the `disabled` prop to indicate an option that is not currently available.
 
 ```jsx
-<MenuItem icon="Beaker" disabled>Disabled</MenuItem>
-<MenuItem icon="Beaker">Enabled</MenuItem>
+<MenuItem icon={<Beaker />} disabled>Disabled</MenuItem>
+<MenuItem icon={<Beaker />}>Enabled</MenuItem>
 ```

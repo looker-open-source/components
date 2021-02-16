@@ -28,6 +28,7 @@ import { useTranslation } from 'react-i18next'
 import { reset } from '@looker/design-tokens'
 import React, { forwardRef, KeyboardEvent, MouseEvent, Ref } from 'react'
 import styled from 'styled-components'
+import { Close } from '@styled-icons/material'
 import {
   useClickable,
   GenericClickProps,
@@ -154,7 +155,7 @@ const ChipJSX = forwardRef((props: ChipProps, ref: Ref<HTMLSpanElement>) => {
         (onDelete && (
           <IconButton
             disabled={disabled}
-            icon="Close"
+            icon={<Close />}
             label={iconLabel}
             ml="xsmall"
             onClick={handleDelete}

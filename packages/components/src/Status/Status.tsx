@@ -25,10 +25,13 @@
  */
 
 import { TFunction } from 'i18next'
+import { StyledIcon } from '@styled-icons/styled-icon'
+import { CheckCircle, Error, Info, Warning } from '@styled-icons/material'
+import { color, size } from '@looker/design-tokens'
 import React, { forwardRef, Ref } from 'react'
 import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
-import { Icon, IconProps, IconNames } from '../Icon'
+import { IconProps } from '../Icon'
 
 export type StatusIntent =
   | 'critical'
@@ -37,26 +40,25 @@ export type StatusIntent =
   | 'positive'
   | 'warn'
 
-export interface StatusProps
-  extends Omit<IconProps, 'artwork' | 'color' | 'name'> {
+export interface StatusProps extends Omit<IconProps, 'color' | 'icon'> {
   /**
-   * @default: 'neutral'
+   * @default neutral
    */
   intent?: StatusIntent
 }
 
-const getIntentIcon = (intent?: StatusIntent): IconNames => {
+const getIntentIcon = (intent?: StatusIntent): StyledIcon => {
   switch (intent) {
     case 'critical':
-      return 'Error'
+      return Error
     case 'positive':
-      return 'CircleCheck'
+      return CheckCircle
     case 'warn':
-      return 'Warning'
+      return Warning
     case 'neutral':
     case 'inform':
     default:
-      return 'CircleInfo'
+      return Info
   }
 }
 
@@ -76,20 +78,21 @@ export const getIntentLabel = (t: TFunction, intent?: StatusIntent) => {
   }
 }
 
+const defaultIntent = 'neutral'
+
 const StatusLayout = forwardRef(
   (
-    { className, intent, size = 'medium', ...props }: StatusProps,
-    ref: Ref<HTMLInputElement>
+    { className, intent = defaultIntent, ...props }: StatusProps,
+    ref: Ref<SVGSVGElement>
   ) => {
-    const { t } = useTranslation()
+    const { t } = useTranslation('Status')
+    const Component = getIntentIcon(intent)
+
     return (
-      <Icon
-        {...props}
+      <Component
+        // {...props}
         className={className}
         ref={ref}
-        color={intent}
-        name={getIntentIcon(intent)}
-        size={size}
         /* Don't specify title if Status is wrapped in tooltip */
         title={
           !props['aria-describedby'] ? getIntentLabel(t, intent) : undefined
@@ -101,6 +104,13 @@ const StatusLayout = forwardRef(
 
 StatusLayout.displayName = 'StatusLayout'
 
-export const Status = styled(StatusLayout)`
+export const Status = styled(StatusLayout).attrs<StatusProps>(
+  ({ intent = defaultIntent, size = 'medium' }) => ({
+    color: intent,
+    size,
+  })
+)<StatusProps>`
+  ${color}
+  ${size}
   flex-shrink: 0;
 `

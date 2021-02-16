@@ -29,6 +29,7 @@ import startCase from 'lodash/startCase'
 import { IconButton, Space, Grid } from '@looker/components'
 import { ThemeEditor, ThemeEditorProps } from '@looker/components-theme-editor'
 import { useLocation } from '@reach/router'
+import { Menu } from '@styled-icons/material'
 import React, { FC } from 'react'
 import styled from 'styled-components'
 import { Search } from '../Search'
@@ -80,7 +81,7 @@ export const HeaderContentLayout: FC<HeaderProps> = ({
           <span />
         ) : (
           <IconButton
-            icon="Hamburger"
+            icon={<Menu />}
             size="small"
             label="Toggle navigation"
             onClick={toggleNavigation}

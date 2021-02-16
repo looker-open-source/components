@@ -27,6 +27,7 @@
 import 'jest-styled-components'
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
+import { Beaker } from '@looker/icons'
 import { fireEvent, configure } from '@testing-library/react'
 
 import { ListItem } from './ListItem'
@@ -53,7 +54,7 @@ describe('ListItem', () => {
 
   test('renders icon', () => {
     const { getByText } = renderWithTheme(
-      <ListItem icon="Beaker">Icon</ListItem>
+      <ListItem icon={<Beaker />}>Icon</ListItem>
     )
     expect(getByText('Icon')).toBeVisible()
   })
@@ -61,7 +62,7 @@ describe('ListItem', () => {
   test('renders artwork', () => {
     const { getByTitle } = renderWithTheme(
       <ListItem
-        iconArtwork={
+        icon={
           <svg xmlns="http://www.w3.org/2000/svg">
             <title>SVG Title Here</title>
           </svg>

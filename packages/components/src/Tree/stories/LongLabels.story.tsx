@@ -25,31 +25,38 @@
  */
 
 import React from 'react'
+import { IdeDimension, IdeDimensionGroup } from '@looker/icons'
+import { Info } from '@styled-icons/material'
+import {
+  Explore,
+  TableChart,
+  Visibility,
+} from '@styled-icons/material-outlined'
 import { Tree, TreeItem, IconButton } from '../..'
 
 export const LongLabels = () => (
-  <Tree label="Tree with long labels " icon="ExploreOutline" defaultOpen>
-    <Tree label="Wrapping next" icon="VisibilityOutline" defaultOpen>
+  <Tree label="Tree with long labels " icon={<Explore />} defaultOpen>
+    <Tree label="Wrapping next" icon={<Visibility />} defaultOpen>
       <Tree
         label="Orders Lorem ipsum dolor sit amet, consectetur adipiscing elit. Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc."
-        icon="Table"
+        icon={<TableChart />}
         defaultOpen
       >
-        <TreeItem icon="IdeDimension">
+        <TreeItem icon={<IdeDimension />}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </TreeItem>
-        <TreeItem icon="IdeDimension">
+        <TreeItem icon={<IdeDimension />}>
           Nam sit amet imperdiet lacus, eget ullamcorper nunc. Many desktop
           publishing packages and web page editors now use Lorem Ipsum as their
           default model text, and a search for 'lorem ipsum' will uncover many
           web sites still in their infancy.
         </TreeItem>
         <TreeItem
-          icon="IdeDimensionGroup"
+          icon={<IdeDimensionGroup />}
           detail={{
             content: (
               <IconButton
-                icon="CircleInfo"
+                icon={<Info />}
                 label="Get Info"
                 onClick={() => alert("You've got info!")}
               />
@@ -66,14 +73,14 @@ export const LongLabels = () => (
         </TreeItem>
       </Tree>
     </Tree>
-    <Tree label="Truncated text" icon="VisibilityOutline" defaultOpen>
+    <Tree label="Truncated text" icon={<Visibility />} defaultOpen>
       <Tree
         label="Users Lorem ipsum dolor sit amet, consectetur adipiscing elit. There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. "
-        icon="Table"
+        icon={<TableChart />}
         truncate
         defaultOpen
       >
-        <TreeItem icon="IdeDimension" truncate>
+        <TreeItem icon={<IdeDimension />} truncate>
           Very long text renders a tooltip. Vivamus vitae mauris et erat
           sagittis tempus. Mauris euismod aliquet arcu ut viverra. It has roots
           in a piece of classical Latin literature from 45 BC, making it over
@@ -84,12 +91,12 @@ export const LongLabels = () => (
           undoubtable source.
         </TreeItem>
         <TreeItem
-          icon="IdeDimension"
+          icon={<IdeDimension />}
           truncate
           detail={{
             content: (
               <IconButton
-                icon="CircleInfo"
+                icon={<Info />}
                 label="Get Info"
                 onClick={() => alert("You've got info!")}
               />
@@ -104,7 +111,7 @@ export const LongLabels = () => (
           Ipsum is not simply random text. It has roots in a piece of classical
           Latin literature from 45 BC, making it over 2000 years old.
         </TreeItem>
-        <TreeItem icon="IdeDimensionGroup" truncate>
+        <TreeItem icon={<IdeDimensionGroup />} truncate>
           This short text should not render a tooltip
         </TreeItem>
       </Tree>

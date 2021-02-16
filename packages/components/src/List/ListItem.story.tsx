@@ -25,8 +25,9 @@
  */
 
 import React from 'react'
+import { Pivot } from '@looker/icons'
 import { Story } from '@storybook/react/types-6-0'
-
+import { DateRange, Person } from '@styled-icons/material-outlined'
 import { IconButton } from '../Button'
 import { Text } from '../Text'
 import { ListItem, ListItemProps } from './ListItem'
@@ -41,7 +42,29 @@ Basic.args = {
 export const Icon = Template.bind({})
 Icon.args = {
   ...Basic.args,
-  icon: 'User',
+  icon: <Person />,
+}
+
+export const IconColor = Template.bind({})
+IconColor.args = {
+  ...Basic.args,
+  color: 'warn',
+  icon: <Person />,
+}
+
+export const IconCustomColor = Template.bind({})
+IconCustomColor.args = {
+  ...Basic.args,
+  color: '#cc00cc',
+  icon: <Person />,
+}
+
+export const IconColorDisabled = Template.bind({})
+IconColorDisabled.args = {
+  ...Basic.args,
+  color: 'warn',
+  disabled: true,
+  icon: <Person />,
 }
 
 export const Detail = Template.bind({})
@@ -54,7 +77,7 @@ export const Accessory = Template.bind({})
 Accessory.args = {
   ...Basic.args,
   detail: {
-    content: <IconButton icon="Pivot" label="Pivot" />,
+    content: <IconButton icon={<Pivot />} label="Pivot" />,
     options: { accessory: true },
   },
 }
@@ -63,7 +86,7 @@ export const HoverDisclosure = Template.bind({})
 HoverDisclosure.args = {
   ...Basic.args,
   detail: {
-    content: <IconButton icon="Pivot" label="Pivot" />,
+    content: <IconButton icon={<Pivot />} label="Pivot" />,
     options: { hoverDisclosure: true },
   },
 }
@@ -76,7 +99,7 @@ export const IconAndDetail = Template.bind({})
 IconAndDetail.args = {
   ...Basic.args,
   detail: 'A Detail',
-  icon: 'User',
+  icon: <Person />,
 }
 
 export const Description = Template.bind({})
@@ -89,7 +112,7 @@ export const IconAndDescription = Template.bind({})
 IconAndDescription.args = {
   ...Basic.args,
   description: 'A description',
-  icon: 'User',
+  icon: <Person />,
 }
 
 export const DetailAndDescription = Template.bind({})
@@ -104,7 +127,7 @@ IconAndDetailAndDescription.args = {
   ...Basic.args,
   description: 'A description',
   detail: 'A detail',
-  icon: 'User',
+  icon: <Person />,
 }
 
 export const Selected = Template.bind({})
@@ -152,8 +175,11 @@ Truncate.args = {
 export const TruncateAndIconAndDetail = Template.bind({})
 TruncateAndIconAndDetail.args = {
   ...Truncate.args,
-  detail: 'Detail',
-  icon: 'Calendar',
+  detail: {
+    content: 'Detail',
+    options: {},
+  },
+  icon: <DateRange />,
 }
 
 export const TruncateAndIconAndDetailAndAccessory = Template.bind({})
@@ -163,7 +189,7 @@ TruncateAndIconAndDetailAndAccessory.args = {
     content: <Text fontSize="xsmall">Detail Accessory</Text>,
     options: { accessory: true },
   },
-  icon: 'Calendar',
+  icon: <DateRange />,
 }
 
 export default {

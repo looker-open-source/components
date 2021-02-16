@@ -36,6 +36,7 @@ import React, {
   SyntheticEvent,
 } from 'react'
 import { shouldForwardProp } from '@looker/design-tokens'
+import { Error } from '@styled-icons/material'
 import styled from 'styled-components'
 import noop from 'lodash/noop'
 import add from 'lodash/add'
@@ -49,7 +50,6 @@ import {
   inputCSS,
 } from '../InputText'
 import { innerInputStyle } from '../innerInputStyle'
-import { Icon } from '../../../Icon'
 import {
   simpleLayoutCSS,
   SimpleLayoutProps,
@@ -523,20 +523,18 @@ const InputTimeInternal = forwardRef(
         ) : (
           <span />
         )}
-        {validationType && (
-          <WarningIcon
-            name="Error"
-            color="critical"
-            grid-area="warning"
-            size="small"
-          />
-        )}
+        {validationType && <ErrorIcon />}
       </div>
     )
   }
 )
 
-const WarningIcon = styled(Icon)``
+const ErrorIcon = styled(Error)`
+  color: ${({ theme }) => theme.colors.critical};
+  grid-area: warning;
+  height: ${({ theme }) => theme.sizes.small};
+  width: ${({ theme }) => theme.sizes.small};
+`
 
 const StyledInput = styled.input
   .withConfig({ shouldForwardProp })
@@ -569,7 +567,7 @@ export const InputTime = styled(InputTimeInternal)`
   grid-template-columns: auto auto auto auto 1fr;
   padding: 0 ${({ theme }) => theme.space.xsmall};
 
-  ${WarningIcon} {
+  ${ErrorIcon} {
     justify-self: end;
   }
 

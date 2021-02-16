@@ -25,7 +25,8 @@
  */
 
 import { SpacingSizes } from '@looker/design-tokens'
-import { createContext } from 'react'
+import { ExpandMore, ExpandLess } from '@styled-icons/material-rounded'
+import React, { createContext } from 'react'
 import { IconSize } from '../Icon'
 import { IndicatorIcons } from './indicator'
 
@@ -47,8 +48,8 @@ export const accordionContextDefaults: AccordionContextProps = {
   accordionDisclosureId: '',
   indicatorGap: 'xsmall',
   indicatorIcons: {
-    close: 'CaretDown',
-    open: 'CaretUp',
+    close: <ExpandMore />,
+    open: <ExpandLess />,
   },
   indicatorPosition: 'right',
   indicatorSize: 'small',

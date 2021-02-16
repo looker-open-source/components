@@ -25,6 +25,8 @@
  */
 
 import { Story } from '@storybook/react/types-6-0'
+import { ChartBar } from '@looker/icons'
+import { BarChart, PieChart, TableChart } from '@styled-icons/material'
 import React from 'react'
 import { Select, SelectProps } from '../Select'
 
@@ -120,12 +122,37 @@ ClearableError.args = {
 export const Icon = Template.bind({})
 Icon.args = {
   options: [
-    { icon: 'ChartBar', label: 'Bar', value: 'bar' },
-    { icon: 'ChartPie', label: 'Pie', value: 'pie' },
-    { icon: 'ChartTable', label: 'Table', value: 'table' },
+    { icon: <ChartBar />, label: 'Bar', value: 'bar' },
+    { icon: <PieChart />, label: 'Pie', value: 'pie' },
+    { icon: <TableChart />, label: 'Table', value: 'table' },
   ],
   value: 'pie',
 }
+
+export const TestRepro = () => (
+  <Select
+    placeholder="Select a visualization"
+    options={[
+      {
+        icon: <ChartBar data-testid="option-icon" />,
+        label: 'Bar',
+        value: 'bar',
+      },
+      { label: 'No Icon', value: 'noicon' },
+      {
+        icon: <BarChart data-testid="option-icon" />,
+        indicator: 'Test Indicator',
+        label: 'Column',
+        value: 'column',
+      },
+      {
+        icon: <p>Hello</p>,
+        label: 'Custom Icon',
+        value: 'custom',
+      },
+    ]}
+  />
+)
 
 export default {
   component: Select,

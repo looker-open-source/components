@@ -26,6 +26,7 @@
 
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
+import { Done } from '@styled-icons/material'
 import { List, ListItem } from '../List'
 import { Aside, Page, Section } from '../Layout'
 import { Panel, Panels, PanelProps, usePanel } from './'
@@ -84,10 +85,10 @@ export const Hook = () => {
   return (
     <>
       <List>
-        <ListItem onClick={() => setOpen(true)} icon="Check">
+        <ListItem onClick={() => setOpen(true)} icon={<Done />}>
           Option A
         </ListItem>
-        <ListItem icon="Check">Option B</ListItem>
+        <ListItem icon={<Done />}>Option B</ListItem>
       </List>
       {panel}
     </>

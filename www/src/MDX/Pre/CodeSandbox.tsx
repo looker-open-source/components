@@ -25,6 +25,7 @@
  */
 
 import { Icon, IconButton, IconNames, Tooltip } from '@looker/components'
+import { Assignment, Warning } from '@styled-icons/material'
 import { PrismTheme, Language } from 'prism-react-renderer'
 import React, { FC, ReactNode, useState, useCallback } from 'react'
 import CopyToClipboard from 'react-copy-to-clipboard'
@@ -100,7 +101,7 @@ export const CodeSandbox = ({
                   <ErrorWrapper>
                     <div>
                       <IconWrapper>
-                        <Icon name="Warning" size={24} />
+                        <Icon name={<Warning />} size={24} />
                       </IconWrapper>
                     </div>
                     <LiveError />
@@ -169,7 +170,7 @@ export const CopyButton: FC<CopyButtonProps> = ({ code, editorIsVisible }) => {
           <ActionButton
             {...tooltipProps}
             label="Copy"
-            icon="Clipboard"
+            icon={<Assignment />}
             size="xsmall"
             editorIsVisible={editorIsVisible}
             mt="small"

@@ -28,6 +28,7 @@ import React, { FC, useContext, SyntheticEvent } from 'react'
 import { NavbarElementProps } from 'react-day-picker'
 import styled from 'styled-components'
 import noop from 'lodash/noop'
+import { ChevronLeft, ChevronRight } from '@styled-icons/material'
 import { Tooltip } from '../Tooltip'
 import { IconButton, ButtonTransparent } from '../Button'
 import { Heading } from '../Text'
@@ -83,7 +84,7 @@ export const CalendarNav: FC<NavbarElementProps> = ({
       <NextButtonWrapper>
         {showPreviousButton && (
           <IconButton
-            icon="CaretLeft"
+            icon={<ChevronLeft />}
             label={labels.previousMonth}
             size={size}
             onClick={handlePreviousClick}
@@ -106,7 +107,7 @@ export const CalendarNav: FC<NavbarElementProps> = ({
       <PrevButtonWrapper>
         {showNextButton && (
           <IconButton
-            icon="CaretRight"
+            icon={<ChevronRight />}
             label={labels.nextMonth}
             size={size}
             onClick={handleNextClick}

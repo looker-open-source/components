@@ -79,12 +79,6 @@ Large.args = {
   size: 'large',
 }
 
-export const XLarge = Template.bind({})
-XLarge.args = {
-  ...Inform.args,
-  size: 'xlarge',
-}
-
 export default {
   component: Status,
   title: 'Status',

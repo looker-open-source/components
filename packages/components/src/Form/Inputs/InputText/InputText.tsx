@@ -24,9 +24,7 @@
 
  */
 
-import { useTranslation } from 'react-i18next'
 import omit from 'lodash/omit'
-import { IconNames } from '@looker/icons'
 import {
   omitStyledProps,
   space,
@@ -34,6 +32,8 @@ import {
   reset,
   layout,
 } from '@looker/design-tokens'
+import { StyledIconBase } from '@styled-icons/styled-icon'
+import { Error } from '@styled-icons/material'
 import React, { forwardRef, MouseEvent, ReactNode, Ref, useRef } from 'react'
 import styled, { css } from 'styled-components'
 import {
@@ -44,7 +44,6 @@ import {
 } from '../InputProps'
 import { innerInputStyle } from '../innerInputStyle'
 import { SimpleLayoutProps } from '../../../Layout/utils/simple'
-import { Icon } from '../../../Icon'
 import { Span } from '../../../Text'
 import { targetIsButton, useForkedRef, useWrapEvent } from '../../../utils'
 import { InlineInputTextBase } from '../InlineInputText'
@@ -77,16 +76,12 @@ export interface InputTextProps extends InputTextBaseProps {
    * If JSX is used, it will displace the built-in validation icon
    */
   after?: ReactNode
-  iconAfter?: IconNames
-  iconAfterTitle?: string
 
   /**
    * Content to place before the input
-   * If a string is used, formatting will be automatically applied
+   * If a string is used, forma ting will be automatically applied
    */
   before?: ReactNode
-  iconBefore?: IconNames
-  iconBeforeTitle?: string
 }
 
 const InputTextLayout = forwardRef(
@@ -95,14 +90,8 @@ const InputTextLayout = forwardRef(
       autoResize,
       children,
       className,
-
       before,
-      iconBefore,
-      iconBeforeTitle,
-
       after,
-      iconAfter,
-      iconAfterTitle,
 
       type = 'text',
       validationType,
@@ -120,7 +109,6 @@ const InputTextLayout = forwardRef(
     }: InputTextProps,
     forwardedRef: Ref<HTMLInputElement>
   ) => {
-    const { t } = useTranslation('InputText')
     const internalRef = useRef<null | HTMLInputElement>(null)
     const ref = useForkedRef<HTMLInputElement>(internalRef, forwardedRef)
 
@@ -145,18 +133,6 @@ const InputTextLayout = forwardRef(
 
     const onMouseDownWrapped = useWrapEvent(handleMouseDown, onMouseDown)
 
-    if (before && iconBefore) {
-      // eslint-disable-next-line no-console
-      console.warn('Use before or iconBefore, but not both at the same time.')
-      return null
-    }
-
-    if (after && iconAfter) {
-      // eslint-disable-next-line no-console
-      console.warn('Use after or iconAfter, but not both at the same time.')
-      return null
-    }
-
     const mouseHandlers = {
       onClick,
       onMouseDown: onMouseDownWrapped,
@@ -167,49 +143,33 @@ const InputTextLayout = forwardRef(
       onMouseUp,
     }
 
-    const iconBeforeOrPrefix = (iconBefore || typeof before === 'string') && (
+    const beforeToUse = before && (
       <InputTextContent pl="xxsmall">
-        {iconBefore ? (
-          <Icon name={iconBefore} title={iconBeforeTitle} size="small" />
-        ) : (
+        {typeof before === 'string' ? (
           <Span fontSize="small">{before}</Span>
-        )}
-      </InputTextContent>
-    )
-
-    const beforeToUse = iconBeforeOrPrefix || before || null
-
-    const iconAfterOrSuffix = (iconAfter || typeof after === 'string') && (
-      <InputTextContent pl="xsmall" pr="xxsmall">
-        {iconAfter ? (
-          <Icon name={iconAfter} title={iconAfterTitle} size="small" />
         ) : (
-          <Span fontSize="small">{after}</Span>
+          before
         )}
       </InputTextContent>
     )
 
-    const validationIcon = validationType === 'error' && (
-      <InputTextContent
-        pl={after || iconAfter ? 'xxsmall' : 'xsmall'}
-        pr="xxsmall"
-      >
-        <Icon
-          color="critical"
-          name="Error"
-          title={t('Validation Error')}
-          size="small"
-        />
-      </InputTextContent>
-    )
-
-    const afterToUse = iconAfterOrSuffix ? (
+    const afterToUse = (
       <>
-        {iconAfterOrSuffix}
-        {validationIcon}
+        {after && (
+          <InputTextContent pl="xsmall" pr="xxsmall">
+            {typeof after === 'string' ? (
+              <Span fontSize="small">{after}</Span>
+            ) : (
+              after
+            )}
+          </InputTextContent>
+        )}
+        {validationType === 'error' && (
+          <InputTextContent pl={after ? 'xxsmall' : 'xsmall'} pr="xxsmall">
+            <ErrorIcon />
+          </InputTextContent>
+        )}
       </>
-    ) : (
-      after || validationIcon
     )
 
     const inputProps = {
@@ -236,9 +196,9 @@ const InputTextLayout = forwardRef(
         {...mouseHandlers}
         {...omitStyledProps(omit(props, inputPropKeys))}
       >
-        {beforeToUse && beforeToUse}
+        {beforeToUse}
         {inner}
-        {afterToUse && afterToUse}
+        {afterToUse}
       </div>
     )
   }
@@ -280,6 +240,11 @@ export const InputTextContent = styled.div<SpaceProps>`
   display: flex;
   height: 100%;
   pointer-events: none;
+
+  ${StyledIconBase} {
+    height: ${({ theme }) => theme.sizes.small};
+    width: ${({ theme }) => theme.sizes.small};
+  }
 `
 
 export const inputTextValidation = css<{ validationType?: 'error' }>`
@@ -297,6 +262,10 @@ export const inputTextValidation = css<{ validationType?: 'error' }>`
       }
       `
       : ''}
+`
+
+export const ErrorIcon = styled(Error)`
+  color: ${({ theme }) => theme.colors.critical};
 `
 
 export const inputCSS = css`

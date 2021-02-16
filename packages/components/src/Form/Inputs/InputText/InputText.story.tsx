@@ -26,6 +26,7 @@
 
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
+import { Close, Info } from '@styled-icons/material-rounded'
 import { InputText, InputTextProps } from './InputText'
 
 export default {
@@ -55,13 +56,13 @@ Disabled.args = {
 
 export const IconBefore = Template.bind({})
 IconBefore.args = {
-  iconBefore: 'CircleInfo',
+  before: <Info />,
   value: 'With an icon before',
 }
 
 export const IconAfter = Template.bind({})
 IconAfter.args = {
-  iconAfter: 'Close',
+  after: <Close />,
   value: 'With an icon after',
 }
 

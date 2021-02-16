@@ -24,9 +24,9 @@
 
  */
 
-import { useTranslation } from 'react-i18next'
 import React, { forwardRef, Ref, FormEvent, useState } from 'react'
 import styled from 'styled-components'
+import { Search } from '@styled-icons/material-outlined'
 import { useControlWarn } from '../../../utils'
 import { Combobox, ComboboxInput, ComboboxList } from '../Combobox'
 import { SelectProps, SelectOptionObject, SelectOptions } from '../Select'
@@ -121,7 +121,6 @@ const InputSearchLayout = forwardRef(
     }: InputSearchProps,
     ref: Ref<HTMLInputElement>
   ) => {
-    const { t } = useTranslation('InputSearch')
     const isControlled = useControlWarn({
       controllingProps: ['value'],
       isControlledCheck: () => controlledValue !== undefined,
@@ -177,22 +176,23 @@ const InputSearchLayout = forwardRef(
         <ComboboxInput
           {...ariaProps}
           autoComplete={false}
+          before={
+            hideSearchIcon ? undefined : <Search data-testid="search-icon" />
+          }
+          disabled={disabled}
           autoFocus={autoFocus}
           autoResize={autoResize}
-          disabled={disabled}
           freeInput
-          iconBefore={hideSearchIcon ? undefined : 'Search'}
-          iconBeforeTitle={hideSearchIcon ? undefined : t('Search')}
           clearIconLabel={clearIconLabel}
+          value={valueToUse}
+          placeholder={placeholder}
           name={name}
           isClearable={isClearable}
           onChange={handleInputChange}
-          placeholder={placeholder}
           readOnly={readOnly}
           ref={ref}
           summary={summary}
           validationType={props.validationType}
-          value={valueToUse}
         />
         {!disabled && (options?.length || noOptionsLabel) && (
           <ComboboxList
