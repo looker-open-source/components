@@ -30,6 +30,7 @@ import { renderWithTheme } from '@looker/components-test-utils'
 import { RangeSlider } from './RangeSlider'
 
 const globalConsole = global.console
+const globalRequestAnimationFrame = global.requestAnimationFrame
 /* eslint-disable-next-line @typescript-eslint/unbound-method */
 const globalGetBoundingClientRect = Element.prototype.getBoundingClientRect
 
@@ -39,6 +40,9 @@ beforeEach(() => {
     error: jest.fn(),
     warn: jest.fn(),
   }
+  global.requestAnimationFrame = jest
+    .fn()
+    .mockImplementation((cb: Function) => cb())
   /* eslint-disable-next-line @typescript-eslint/unbound-method */
   Element.prototype.getBoundingClientRect = jest.fn(() => {
     return {
@@ -58,6 +62,7 @@ beforeEach(() => {
 afterEach(() => {
   jest.resetAllMocks()
   global.console = globalConsole
+  global.requestAnimationFrame = globalRequestAnimationFrame
   /* eslint-disable-next-line @typescript-eslint/unbound-method */
   Element.prototype.getBoundingClientRect = globalGetBoundingClientRect
 })
@@ -85,7 +90,7 @@ test('warns the developer if value prop falls outside of possible min/max range'
   expect(handleChange).toHaveBeenCalledWith([10, 20])
 })
 
-test('fires onChange callback when on mouseMove', () => {
+test('fires onChange callback on mouseMove', () => {
   const handleChange = jest.fn()
   const { getByTestId } = renderWithTheme(
     <RangeSlider onChange={handleChange} />
@@ -94,6 +99,22 @@ test('fires onChange callback when on mouseMove', () => {
   const wrapper = getByTestId('range-slider-wrapper')
   fireEvent.mouseDown(wrapper)
   fireEvent.mouseMove(wrapper, { clientX: 100, clientY: 10 })
+  fireEvent.mouseUp(wrapper)
+
+  expect(handleChange).toHaveBeenLastCalledWith([3, 10])
+})
+
+test('fires onChange callback on touchMove', () => {
+  const handleChange = jest.fn()
+  const { getByTestId } = renderWithTheme(
+    <RangeSlider onChange={handleChange} />
+  )
+
+  const wrapper = getByTestId('range-slider-wrapper')
+  fireEvent.touchStart(wrapper)
+  fireEvent.touchMove(wrapper, { touches: [{ clientX: 100, clientY: 10 }] })
+  fireEvent.touchEnd(wrapper)
+
   expect(handleChange).toHaveBeenLastCalledWith([3, 10])
 })
 
@@ -189,6 +210,22 @@ describe('disabled prop', () => {
 
     minThumb.focus()
     fireEvent.keyDown(document.activeElement as Element, { key: 'ArrowUp' })
+    expect(handleChange).toHaveBeenLastCalledWith([0, 10]) // unchanged
+    expect(handleChange).toHaveBeenCalledTimes(1)
+  })
+
+  test('disabled component does not respond to TOUCH input', () => {
+    const handleChange = jest.fn()
+    const { getByTestId } = renderWithTheme(
+      <RangeSlider onChange={handleChange} disabled />
+    )
+
+    expect(handleChange).toHaveBeenCalledWith([0, 10]) // initial render
+
+    const wrapper = getByTestId('range-slider-wrapper')
+    fireEvent.touchStart(wrapper)
+    fireEvent.touchMove(wrapper, { touches: [{ clientX: 100, clientY: 10 }] })
+
     expect(handleChange).toHaveBeenLastCalledWith([0, 10]) // unchanged
     expect(handleChange).toHaveBeenCalledTimes(1)
   })
