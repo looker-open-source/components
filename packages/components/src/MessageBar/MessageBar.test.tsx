@@ -219,9 +219,9 @@ describe('MessageBar', () => {
         'color',
         theme.colors.critical
       )
-      // MesasgeBar background
+      // MessageBar background
       expect(getByRole('status')).toHaveStyleRule(
-        'background',
+        'background-color',
         theme.colors.criticalAccent
       )
     })
