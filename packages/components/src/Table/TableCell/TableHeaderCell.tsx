@@ -35,7 +35,7 @@ export interface TableHeaderCellProps
 export const TableHeaderCell = styled.th
   .withConfig({ shouldForwardProp })
   .attrs<TableHeaderCellProps>(
-    ({ color = 'ui4', fontSize = 'xsmall', fontWeight = 'semiBold' }) => ({
+    ({ color = 'text2', fontSize = 'xsmall', fontWeight = 'semiBold' }) => ({
       color,
       fontSize,
       fontWeight,

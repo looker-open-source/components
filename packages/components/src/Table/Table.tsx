@@ -52,6 +52,6 @@ export const Table = styled.table
   ${space}
   ${layout}
   ${border}
-
   border-collapse: collapse;
+  color: ${({ theme: { colors } }) => colors.text5};
 `
