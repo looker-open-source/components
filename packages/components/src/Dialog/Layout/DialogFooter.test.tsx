@@ -24,36 +24,27 @@
 
  */
 
-import 'jest-styled-components'
 import React from 'react'
-import { assertSnapshot } from '@looker/components-test-utils'
-import { DialogContext } from '../DialogContext'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
 import { DialogFooter } from './DialogFooter'
 
-test('DialogFooter with Button', () => {
-  assertSnapshot(
-    <DialogFooter>
-      <button>Cancel</button>
-    </DialogFooter>
-  )
-})
+describe('DialogFooter', () => {
+  test('basic', () => {
+    renderWithTheme(
+      <DialogFooter>
+        <button>Cancel</button>
+      </DialogFooter>
+    )
+    expect(screen.getByRole('button')).toBeInTheDocument()
+  })
 
-test('DialogFooter with DialogContext', () => {
-  assertSnapshot(
-    <DialogContext.Consumer>
-      {({ closeModal }) => (
-        <DialogFooter>
-          <button onClick={closeModal}>Cancel</button>
-          <button
-            onClick={() => {
-              alert('Doing things...')
-              closeModal()
-            }}
-          >
-            Yes, Delete "Stuff"
-          </button>
-        </DialogFooter>
-      )}
-    </DialogContext.Consumer>
-  )
+  test('secondary', () => {
+    renderWithTheme(
+      <DialogFooter secondary={<button>Nevermind</button>}>
+        <button>Cancel</button>
+      </DialogFooter>
+    )
+    expect(screen.getByText('Nevermind')).toBeInTheDocument()
+  })
 })

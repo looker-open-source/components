@@ -24,7 +24,7 @@
 
  */
 
-import { assertSnapshot, renderWithTheme } from '@looker/components-test-utils'
+import { renderWithTheme } from '@looker/components-test-utils'
 import { screen, fireEvent } from '@testing-library/react'
 import React from 'react'
 import { AvatarCombo } from './AvatarCombo'
@@ -35,30 +35,6 @@ import { AvatarUser } from './AvatarUser'
 
 describe('Avatar', () => {
   describe('AvatarCombo', () => {
-    test('renders Avatar and its secondary avatar', () => {
-      const data = {
-        avatar_url:
-          'https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank',
-        first_name: 'John',
-        last_name: 'Smith',
-      }
-      assertSnapshot(<AvatarCombo secondaryIcon="Code" user={data} />)
-    })
-
-    test('renders Avatar initials and secondary with Code icon', () => {
-      const data = {
-        avatar_url:
-          'https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank',
-        first_name: 'John',
-        last_name: 'Smith',
-      }
-      assertSnapshot(<AvatarCombo secondaryIcon="Code" user={data} />)
-    })
-
-    test('renders AvatarIcon and secondary avatar if user is not available and updates icon if passed.', () => {
-      assertSnapshot(<AvatarCombo secondaryIcon="LogoRings" />)
-    })
-
     test('supports role as button & onClick event', () => {
       const fauxOnClick = jest.fn()
       renderWithTheme(
@@ -75,13 +51,25 @@ describe('Avatar', () => {
       fireEvent.click(button)
       expect(fauxOnClick.mock.calls.length).toBe(1)
     })
+
+    test('user', () => {
+      renderWithTheme(
+        <AvatarCombo
+          secondaryIcon="Account"
+          user={{
+            avatar_url:
+              'https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank',
+            first_name: 'John',
+            last_name: 'Smith',
+          }}
+        />
+      )
+
+      expect(screen.getByLabelText('John Smith')).toBeInTheDocument()
+    })
   })
 
   describe('AvatarIcon', () => {
-    test('renders ', () => {
-      assertSnapshot(<AvatarIcon />)
-    })
-
     test('supports role as button & onClick event', () => {
       const fauxOnClick = jest.fn()
       renderWithTheme(<AvatarIcon onClick={fauxOnClick} role="button" />)
@@ -94,7 +82,8 @@ describe('Avatar', () => {
     })
 
     test('renders different icon if specified', () => {
-      assertSnapshot(<AvatarIcon icon="Code" />)
+      renderWithTheme(<AvatarIcon aria-label="Code" icon="Code" />)
+      expect(screen.getByLabelText('Code')).toBeInTheDocument()
     })
   })
 
@@ -106,19 +95,10 @@ describe('Avatar', () => {
         first_name: 'John',
         last_name: 'Smith',
       }
-
-      assertSnapshot(<AvatarUser user={data} />)
-    })
-
-    test('shows initials if has broken url as avatar_url', () => {
-      const data = {
-        avatar_url:
-          'https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank',
-        first_name: 'John',
-        last_name: 'Smith',
-      }
-
-      assertSnapshot(<AvatarUser user={data} />)
+      const { container } = renderWithTheme(<AvatarUser user={data} />)
+      const image = container.querySelector('object')
+      expect(image).toBeInTheDocument()
+      expect(screen.getByLabelText('John Smith')).toBeInTheDocument()
     })
 
     test('shows initials if it has null as avatar_url ', () => {
@@ -128,7 +108,9 @@ describe('Avatar', () => {
         last_name: 'Smith',
       }
 
-      assertSnapshot(<AvatarUser user={data} />)
+      const { container } = renderWithTheme(<AvatarUser user={data} />)
+      const image = container.querySelector('object')
+      expect(image).not.toBeInTheDocument()
     })
   })
 

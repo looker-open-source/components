@@ -24,33 +24,41 @@
 
  */
 
-import 'jest-styled-components'
 import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { screen } from '@testing-library/react'
-import { DialogHeader } from './DialogHeader'
+import { Story } from '@storybook/react/types-6-0'
+import { TextArea, TextAreaProps } from './TextArea'
 
-describe('DialogHeader', () => {
-  test('Passes through DOM props', async () => {
-    renderWithTheme(
-      <DialogHeader aria-label="ARIA label">Heading</DialogHeader>
-    )
-    expect(await screen.findByLabelText('ARIA label')).toBeTruthy()
-  })
+export default {
+  component: TextArea,
+  title: 'TextArea',
+}
 
-  test('Close visible by default', async () => {
-    renderWithTheme(<DialogHeader>Heading</DialogHeader>)
-    expect(await screen.findByText('Close')).toBeTruthy()
-  })
+const Template: Story<TextAreaProps> = (args) => <TextArea {...args} />
 
-  test(`detail`, async () => {
-    renderWithTheme(<DialogHeader detail="Hello world">Header</DialogHeader>)
-    expect(await screen.findByText('Hello world')).toBeTruthy()
-    expect(screen.queryByLabelText('Close')).not.toBeInTheDocument()
-  })
+export const Basic = Template.bind({})
 
-  test('hideClose', () => {
-    renderWithTheme(<DialogHeader hideClose>Heading</DialogHeader>)
-    expect(screen.queryByLabelText('Close')).not.toBeInTheDocument()
-  })
-})
+export const Placeholder = Template.bind({})
+Placeholder.args = {
+  placeholder: 'Placeholder',
+}
+
+export const Value = Template.bind({})
+Value.args = {
+  defaultValue: 'A value',
+}
+
+export const Disabled = Template.bind({})
+Disabled.args = {
+  ...Value.args,
+  disabled: true,
+}
+
+export const Resize = Template.bind({})
+Resize.args = {
+  resize: true,
+}
+
+export const Error = Template.bind({})
+Error.args = {
+  validationType: 'error',
+}

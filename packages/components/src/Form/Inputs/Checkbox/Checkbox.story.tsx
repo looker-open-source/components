@@ -24,33 +24,59 @@
 
  */
 
-import 'jest-styled-components'
 import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { screen } from '@testing-library/react'
-import { DialogHeader } from './DialogHeader'
+import { Story } from '@storybook/react/types-6-0'
+import { Checkbox, CheckboxProps } from './Checkbox'
 
-describe('DialogHeader', () => {
-  test('Passes through DOM props', async () => {
-    renderWithTheme(
-      <DialogHeader aria-label="ARIA label">Heading</DialogHeader>
-    )
-    expect(await screen.findByLabelText('ARIA label')).toBeTruthy()
-  })
+export default {
+  component: Checkbox,
+  title: 'Checkbox',
+}
 
-  test('Close visible by default', async () => {
-    renderWithTheme(<DialogHeader>Heading</DialogHeader>)
-    expect(await screen.findByText('Close')).toBeTruthy()
-  })
+const Template: Story<CheckboxProps> = (args) => <Checkbox {...args} />
 
-  test(`detail`, async () => {
-    renderWithTheme(<DialogHeader detail="Hello world">Header</DialogHeader>)
-    expect(await screen.findByText('Hello world')).toBeTruthy()
-    expect(screen.queryByLabelText('Close')).not.toBeInTheDocument()
-  })
+export const Basic = Template.bind({})
 
-  test('hideClose', () => {
-    renderWithTheme(<DialogHeader hideClose>Heading</DialogHeader>)
-    expect(screen.queryByLabelText('Close')).not.toBeInTheDocument()
-  })
-})
+export const Checked = Template.bind({})
+Checked.args = {
+  checked: true,
+}
+
+export const Mixed = Template.bind({})
+Mixed.args = {
+  checked: 'mixed',
+}
+
+export const Disabled = Template.bind({})
+Disabled.args = {
+  disabled: true,
+}
+
+export const DisabledChecked = Template.bind({})
+DisabledChecked.args = {
+  ...Disabled.args,
+  ...Checked.args,
+}
+
+export const DisabledMixed = Template.bind({})
+DisabledChecked.args = {
+  ...Disabled.args,
+  ...Mixed.args,
+}
+
+export const ReadOnly = Template.bind({})
+ReadOnly.args = {
+  readOnly: true,
+}
+
+export const ReadOnlyChecked = Template.bind({})
+ReadOnly.args = {
+  readOnly: true,
+  ...Checked.args,
+}
+
+export const ReadOnlyMixed = Template.bind({})
+ReadOnly.args = {
+  readOnly: true,
+  ...Mixed.args,
+}
