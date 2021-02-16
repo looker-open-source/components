@@ -23,11 +23,20 @@
  SOFTWARE.
 
  */
-
-module.exports = (api) => {
-  api.cache(true)
-
+export const useTranslation = () => {
   return {
-    extends: '../../babel.config.js',
+    t: (key: string, options: { [key: string]: string }) => {
+      return `${key} ${
+        options
+          ? Object.keys(options)
+              .map((optionsKey) =>
+                optionsKey === 'ns' ? '' : options[optionsKey]
+              )
+              .join(' ')
+          : ''
+      }`
+    },
   }
 }
+
+export const initReactI18next = jest.fn()

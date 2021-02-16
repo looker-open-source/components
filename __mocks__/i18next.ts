@@ -23,11 +23,13 @@
  SOFTWARE.
 
  */
-
-module.exports = (api) => {
-  api.cache(true)
-
-  return {
-    extends: '../../babel.config.js',
-  }
+const mock = {
+  addResourceBundle: jest.fn(),
+  changeLanguage: jest.fn(),
+  init: jest.fn(() => Promise.resolve()),
+  isInitialized: false,
+  off: jest.fn(),
+  on: jest.fn(),
 }
+
+export default { ...mock, use: () => mock }

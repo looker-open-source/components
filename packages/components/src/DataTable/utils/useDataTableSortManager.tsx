@@ -24,7 +24,7 @@
 
  */
 
-import React, { useState, ReactNode } from 'react'
+import React, { MouseEvent, useState, ReactNode } from 'react'
 import { DataTable } from '../DataTable'
 import { DataTableItem } from '../Item'
 import { DataTableCell, DataTableColumns } from '../Column'
@@ -35,7 +35,8 @@ export const useDataTableSortManager = (
   caption: string,
   defaultData: DataTableData,
   defaultColumns: DataTableColumns,
-  generateActions: (item: DataTableDatum) => ReactNode
+  generateActions: (item: DataTableDatum) => ReactNode,
+  onClickItem?: (e: MouseEvent<HTMLTableDataCellElement>) => void
 ) => {
   const [data, setData] = useState(defaultData)
   const [columns, setColumns] = useState(defaultColumns)
@@ -59,7 +60,7 @@ export const useDataTableSortManager = (
       <DataTableItem
         id={id}
         key={id}
-        onClick={() => alert(`Row clicked`)}
+        onClick={onClickItem}
         actions={generateActions(dataObj)}
       >
         {columns.map((column) => (

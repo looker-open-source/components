@@ -24,6 +24,7 @@
 
  */
 
+import { useTranslation } from 'react-i18next'
 import omit from 'lodash/omit'
 import { IconNames } from '@looker/icons'
 import {
@@ -119,6 +120,7 @@ const InputTextLayout = forwardRef(
     }: InputTextProps,
     forwardedRef: Ref<HTMLInputElement>
   ) => {
+    const { t } = useTranslation('InputText')
     const internalRef = useRef<null | HTMLInputElement>(null)
     const ref = useForkedRef<HTMLInputElement>(internalRef, forwardedRef)
 
@@ -195,7 +197,7 @@ const InputTextLayout = forwardRef(
         <Icon
           color="critical"
           name="Error"
-          title="Validation Error"
+          title={t('Validation Error')}
           size="small"
         />
       </InputTextContent>

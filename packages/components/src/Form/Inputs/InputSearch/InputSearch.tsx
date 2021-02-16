@@ -24,6 +24,7 @@
 
  */
 
+import { useTranslation } from 'react-i18next'
 import React, { forwardRef, Ref, FormEvent, useState } from 'react'
 import styled from 'styled-components'
 import { useControlWarn } from '../../../utils'
@@ -112,6 +113,7 @@ const InputSearchLayout = forwardRef(
     }: InputSearchProps,
     ref: Ref<HTMLInputElement>
   ) => {
+    const { t } = useTranslation('InputSearch')
     const isControlled = useControlWarn({
       controllingProps: ['value'],
       isControlledCheck: () => controlledValue !== undefined,
@@ -168,7 +170,7 @@ const InputSearchLayout = forwardRef(
           {...ariaProps}
           value={valueToUse}
           iconBefore={hideSearchIcon ? undefined : 'Search'}
-          iconBeforeTitle={hideSearchIcon ? undefined : 'Search'}
+          iconBeforeTitle={hideSearchIcon ? undefined : t('Search')}
           disabled={disabled}
           autoFocus={autoFocus}
           placeholder={placeholder}

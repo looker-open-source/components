@@ -24,7 +24,9 @@
 
  */
 
+import { TFunction } from 'i18next'
 import React, { forwardRef, Ref } from 'react'
+import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
 import { Icon, IconProps, IconNames } from '../Icon'
 
@@ -58,16 +60,16 @@ const getIntentIcon = (intent?: StatusIntent): IconNames => {
   }
 }
 
-export const getIntentLabel = (intent?: StatusIntent) => {
+export const getIntentLabel = (t: TFunction, intent?: StatusIntent) => {
   switch (intent) {
     case 'critical':
-      return 'Error'
+      return t('Error', { ns: 'GetIntentLabel' })
     case 'inform':
-      return 'Inform'
+      return t('Inform', { ns: 'GetIntentLabel' })
     case 'positive':
-      return 'Success'
+      return t('Success', { ns: 'GetIntentLabel' })
     case 'warn':
-      return 'Warning'
+      return t('Warning', { ns: 'GetIntentLabel' })
     case 'neutral':
     default:
       return undefined
@@ -78,18 +80,23 @@ const StatusLayout = forwardRef(
   (
     { className, intent, size = 'medium', ...props }: StatusProps,
     ref: Ref<HTMLInputElement>
-  ) => (
-    <Icon
-      {...props}
-      className={className}
-      ref={ref}
-      color={intent}
-      name={getIntentIcon(intent)}
-      size={size}
-      /* Don't specify title if Status is wrapped in tooltip */
-      title={!props['aria-describedby'] ? getIntentLabel(intent) : undefined}
-    />
-  )
+  ) => {
+    const { t } = useTranslation()
+    return (
+      <Icon
+        {...props}
+        className={className}
+        ref={ref}
+        color={intent}
+        name={getIntentIcon(intent)}
+        size={size}
+        /* Don't specify title if Status is wrapped in tooltip */
+        title={
+          !props['aria-describedby'] ? getIntentLabel(t, intent) : undefined
+        }
+      />
+    )
+  }
 )
 
 StatusLayout.displayName = 'StatusLayout'

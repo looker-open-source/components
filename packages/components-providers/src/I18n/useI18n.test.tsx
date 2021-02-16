@@ -24,10 +24,28 @@
 
  */
 
-module.exports = (api) => {
-  api.cache(true)
+import { render } from '@testing-library/react'
+import i18next from 'i18next'
+import React from 'react'
+import { i18nResources } from './resources'
+import { useI18n, UseI18nProps } from './useI18n'
 
-  return {
-    extends: '../../babel.config.js',
-  }
+const TestComponent = (props: UseI18nProps) => {
+  useI18n(props)
+  return null
 }
+
+describe('useI18n', () => {
+  test('initializes i18next', () => {
+    render(<TestComponent />)
+    expect(i18next.init).toHaveBeenCalledTimes(1)
+  })
+
+  test('updates with new props', () => {
+    i18next.isInitialized = true
+    render(<TestComponent />)
+    expect(i18next.addResourceBundle).toHaveBeenCalledTimes(
+      Object.keys(i18nResources.en).length
+    )
+  })
+})

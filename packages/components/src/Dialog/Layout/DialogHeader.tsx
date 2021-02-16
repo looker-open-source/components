@@ -24,6 +24,7 @@
 
  */
 
+import { useTranslation } from 'react-i18next'
 import React, { FC, ReactNode, useContext } from 'react'
 import styled from 'styled-components'
 import {
@@ -64,6 +65,7 @@ const DialogHeaderLayout: FC<DialogHeaderProps> = ({
   fontWeight = 'semiBold',
   ...props
 }) => {
+  const { t } = useTranslation('DialogHeader')
   const { closeModal } = useContext(DialogContext)
   const { id } = props
 
@@ -89,7 +91,7 @@ const DialogHeaderLayout: FC<DialogHeaderProps> = ({
               tabIndex={-1}
               size="medium"
               onClick={closeModal}
-              label="Close"
+              label={t('Close')}
               icon="Close"
             />
           </Detail>

@@ -24,6 +24,7 @@
 
  */
 
+import { useTranslation } from 'react-i18next'
 import omit from 'lodash/omit'
 import styled from 'styled-components'
 import React, { FC, useMemo, useState, useRef } from 'react'
@@ -44,6 +45,7 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
   hideFilterIcon = false,
   onChange,
 }) => {
+  const { t } = useTranslation('InputFilters')
   const [fieldEditing, setFieldEditing] = useState<undefined | string>(
     undefined
   )
@@ -163,7 +165,7 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
               }
               isOpen={fieldEditing !== undefined}
               key={i}
-              placement="bottom-start"
+              placement={t('bottom-start')}
               setOpen={closeEditor}
             >
               {filterToken}
@@ -181,7 +183,7 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
             isFilterable
             onChange={handleFilterLookupChange}
             options={options}
-            placeholder="Filter List"
+            placeholder={t('Filter List')}
             ref={inputRef}
           />
         )}
@@ -189,7 +191,7 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
       {isClearable && (
         <IconButton
           icon="Close"
-          label="Clear Filters"
+          label={t('Clear Filters')}
           ml="auto"
           mt="xxsmall"
           mr="xsmall"

@@ -24,6 +24,7 @@
 
  */
 
+import { useTranslation } from 'react-i18next'
 import React, { Children, cloneElement, forwardRef, Ref } from 'react'
 import {
   fontSize,
@@ -49,6 +50,8 @@ const TabListLayout = forwardRef(
     { children, selectedIndex, onSelectTab, className }: TabListProps,
     ref: Ref<HTMLDivElement>
   ) => {
+    const { t } = useTranslation('TabList')
+
     const clonedChildren = Children.map(
       children,
       (child: JSX.Element, index: number) => {
@@ -64,7 +67,12 @@ const TabListLayout = forwardRef(
     const navProps = useArrowKeyNav({ axis: 'horizontal', ref })
 
     return (
-      <div aria-label="Tabs" className={className} role="tablist" {...navProps}>
+      <div
+        aria-label={t('Tabs')}
+        className={className}
+        role="tablist"
+        {...navProps}
+      >
         {clonedChildren}
       </div>
     )

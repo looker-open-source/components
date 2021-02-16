@@ -24,6 +24,7 @@
 
  */
 
+import { TFunction } from 'i18next'
 import {
   CompatibleHTMLProps,
   omitStyledProps,
@@ -38,6 +39,7 @@ import React, {
   useEffect,
   ReactElement,
 } from 'react'
+import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
 import { variant } from 'styled-system'
 import { IconButton, ButtonProps, ButtonTransparent } from '../Button'
@@ -112,6 +114,7 @@ const NoopComponent = () => <></>
  *  -- false returns NoopComponent
  */
 function getPrimaryActionButton(
+  t: TFunction,
   primaryAction?: SupportedActionTypes
 ): (props: DefaultDismissButtonProps) => ReactElement {
   switch (typeof primaryAction) {
@@ -130,7 +133,7 @@ function getPrimaryActionButton(
           onClick={onClick}
           icon="Close"
           size="small"
-          label={`Dismiss ${getIntentLabel(intent)}`}
+          label={`${t('DismissIntent', { intent: getIntentLabel(t, intent) })}`}
         />
       )
   }
@@ -204,7 +207,8 @@ const MessageBarLayout = forwardRef(
       }
     }, [visibleProp])
 
-    const PrimaryButton = getPrimaryActionButton(primaryAction)
+    const { t } = useTranslation('MessageBar')
+    const PrimaryButton = getPrimaryActionButton(t, primaryAction)
     const SecondaryButton = getSecondaryActionButton(secondaryAction)
 
     const messageBarMarkup = (

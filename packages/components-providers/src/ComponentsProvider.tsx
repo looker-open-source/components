@@ -34,12 +34,14 @@ import {
 import React, { FC, useMemo } from 'react'
 import { FocusTrapProvider } from './FocusTrap'
 import { ScrollLockProvider } from './ScrollLock'
+import { useI18n, UseI18nProps } from './I18n'
 import { ThemeProvider, ThemeProviderProps } from './ThemeProvider'
 import { ExtendComponentsTheme } from './ExtendComponentsProvider'
 
 export interface ComponentsProviderProps
   extends ThemeProviderProps,
-    ExtendComponentsTheme {
+    ExtendComponentsTheme,
+    UseI18nProps {
   /**
    * Prevent automatic injection of a basic CSS-reset into the DOM
    * @default true
@@ -77,12 +79,16 @@ export const ComponentsProvider: FC<ComponentsProviderProps> = ({
   globalStyle = true,
   ie11Support = false,
   loadGoogleFonts = false,
+  locale,
+  resources,
   themeCustomizations,
   ...props
 }) => {
   const theme = useMemo(() => {
     return generateTheme(props.theme || defaultTheme, themeCustomizations)
   }, [props.theme, themeCustomizations])
+
+  useI18n({ locale, resources })
 
   return (
     <ThemeProvider {...props} theme={theme}>

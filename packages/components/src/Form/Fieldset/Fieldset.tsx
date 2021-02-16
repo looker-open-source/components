@@ -134,6 +134,7 @@ const FieldsetLayout = forwardRef(
         gap={gap}
         ref={ref}
         role="group"
+        // eslint-disable-next-line i18next/no-literal-string
         align="start"
         flexWrap={wrap ? 'wrap' : undefined}
       >

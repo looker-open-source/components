@@ -23,16 +23,19 @@
  SOFTWARE.
 
  */
-
+import { useTranslation } from 'react-i18next'
 import React, { FC } from 'react'
 import styled from 'styled-components'
 import { VisuallyHidden } from '../../VisuallyHidden'
 
-const RequiredStarLayout: FC<{ className?: string }> = ({ className }) => (
-  <span aria-hidden="true" className={className} data-testid="requiredStar">
-    <VisuallyHidden> required</VisuallyHidden>
-  </span>
-)
+const RequiredStarLayout: FC<{ className?: string }> = ({ className }) => {
+  const { t } = useTranslation('RequiredStar')
+  return (
+    <span aria-hidden="true" className={className} data-testid="requiredStar">
+      <VisuallyHidden>{` ${t('required')}`}</VisuallyHidden>
+    </span>
+  )
+}
 
 export const RequiredStar = styled(RequiredStarLayout)`
   &::before {

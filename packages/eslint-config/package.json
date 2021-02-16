@@ -32,6 +32,7 @@
     "eslint-import-resolver-typescript": "^2.3.0",
     "eslint-import-resolver-webpack": "^0.13.0",
     "eslint-plugin-header": "^3.1.0",
+    "eslint-plugin-i18next": "^5.0.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jest-dom": "3.6.5",
     "eslint-plugin-mdx": "^1.8.2",

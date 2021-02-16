@@ -24,6 +24,7 @@
 
  */
 
+import { useTranslation } from 'react-i18next'
 import { IconNames, iconNameList } from '@looker/icons'
 import React, {
   createContext,
@@ -275,6 +276,7 @@ export function SelectOptions({
     scrollToFirst,
     scrollToLast,
   } = useWindowedOptions(windowedOptions, options, isMulti)
+  const { t } = useTranslation('SelectOptions')
   const keyPrefix = useID(options?.length.toString())
 
   const hasIcons = useMemo(() => optionsHaveIcons(options), [options])
@@ -282,7 +284,7 @@ export function SelectOptions({
   if (isLoading) {
     return (
       <EmptyListItem>
-        <Spinner size={30} aria-label="Loading" />
+        <Spinner size={30} aria-label={t('Loading')} />
       </EmptyListItem>
     )
   }

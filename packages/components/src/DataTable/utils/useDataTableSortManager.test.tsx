@@ -153,13 +153,13 @@ describe('useDataTableSortManager', () => {
   })
 
   test('DataTableItem onClick behaves as expected', () => {
-    global.alert = jest.fn()
+    const onClickMock = jest.fn()
     const Test = () =>
-      useDataTableSortManager('Caption...', data, columns, actions)
+      useDataTableSortManager('Caption...', data, columns, actions, onClickMock)
     renderWithTheme(<Test />)
     const cheddarCell = screen.getByText('Cheddar')
     expect(cheddarCell).toBeInTheDocument()
     fireEvent.click(cheddarCell)
-    expect(window.alert).toHaveBeenCalled()
+    expect(onClickMock).toHaveBeenCalled()
   })
 })
