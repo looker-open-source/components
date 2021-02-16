@@ -259,7 +259,8 @@ const backgroundColor = variant({
 })
 
 export const MessageBar = styled(MessageBarLayout).attrs(
-  ({ px = 'medium', py = 'small', width = '100%' }) => ({
+  ({ intent = 'inform', px = 'medium', py = 'small', width = '100%' }) => ({
+    intent,
     px,
     py,
     width,
@@ -267,9 +268,9 @@ export const MessageBar = styled(MessageBarLayout).attrs(
 )`
   ${simpleLayoutCSS}
   align-items: center;
-  ${({ intent, theme: { colors } }) =>
-    intent ? backgroundColor : `background: ${colors.informAccent};`}
+  ${backgroundColor}
   border-radius: ${({ theme: { radii } }) => radii.medium};
+  color: ${({ theme: { colors } }) => colors.text5};
   display: flex;
   font-size: ${({ theme: { fontSizes } }) => fontSizes.small};
 `
