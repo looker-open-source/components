@@ -112,9 +112,9 @@ const ButtonJSX = forwardRef(
         ref={ref}
         px={buttonPadding(!!(iconBefore || iconAfter), size)}
       >
-        {iconBefore && <ButtonIcon name={iconBefore} size={iconSize} />}
+        {iconBefore}
         {children}
-        {iconAfter && <ButtonIcon name={iconAfter} size={iconSize} />}
+        {iconAfter}
       </ButtonOuter>
     )
   }

@@ -39,7 +39,6 @@ import {
   SizeXSmall,
   SizeXXSmall,
 } from '@looker/design-tokens'
-import { IconNames } from '@looker/icons'
 import { Property } from 'csstype'
 import React, { forwardRef, Ref } from 'react'
 import { Placement } from '@popperjs/core'
@@ -81,7 +80,7 @@ export interface IconButtonProps
   /**
    * The Icon to display inside of the button
    */
-  icon: IconNames
+  icon: JSX.Element
   /**
    *  A hidden text label for the IconButton that is accessible to assistive technology
    */
