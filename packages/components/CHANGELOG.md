@@ -100,6 +100,12 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - Clicking outside a focus trap deactivates it
 
+## [0.9.28]
+
+### Removed
+
+- Reverted: `RangeSlider` now supports touch events
+
 ## [0.9.27]
 
 ### Added
