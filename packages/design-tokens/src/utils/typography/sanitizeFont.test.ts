@@ -43,7 +43,7 @@ describe('sanitizeFontFaces', () => {
     expect(sanitizeFontFamily("'Helvetica neue'")).toEqual("'Helvetica neue'")
   })
 
-  it('Several, improperly quoted', () => {
+  it('Several, properly quoted', () => {
     expect(sanitizeFontFamily("'Open Sans','Noto Sans'")).toEqual(
       "'Open Sans', 'Noto Sans'"
     )
@@ -55,7 +55,7 @@ describe('sanitizeFontFaces', () => {
     )
   })
 
-  it('Several, improperly quoted', () => {
+  it('Several, mixed properly & improperly quoted', () => {
     expect(sanitizeFontFamily("Helvetica neue, 'sans-serif'")).toEqual(
       "'Helvetica neue', sans-serif"
     )
