@@ -39,15 +39,14 @@ import {
   SizeXSmall,
   SizeXXSmall,
 } from '@looker/design-tokens'
-import { IconNames } from '@looker/icons'
 import { Property } from 'csstype'
 import React, { forwardRef, Ref } from 'react'
 import { Placement } from '@popperjs/core'
-import { Icon } from '../Icon'
+import { Icon, IconProps } from '../Icon'
 import { useTooltip } from '../Tooltip'
 import { useForkedRef, useWrapEvent } from '../utils'
 import { VisuallyHidden } from '../VisuallyHidden'
-import { ButtonBase, buttonCSS } from './ButtonBase'
+import { GenericButtonBase, buttonCSS } from './ButtonBase'
 import { ButtonBaseProps } from './types'
 import { iconButtonColor } from './iconButtonColor'
 import { iconButtonIconSizeMap, buttonSizeMap } from './size'
@@ -71,6 +70,7 @@ export interface IconButtonProps
   extends Omit<CompatibleHTMLProps<HTMLButtonElement>, 'children' | 'type'>,
     Omit<ButtonBaseProps, 'color'>,
     IconButtonVariantProps,
+    Pick<IconProps, 'icon'>,
     SpaceProps {
   type?: 'button' | 'submit' | 'reset'
   /*
@@ -78,10 +78,6 @@ export interface IconButtonProps
    */
   focusVisible?: boolean
   outline?: boolean
-  /**
-   * The Icon to display inside of the button
-   */
-  icon: IconNames
   /**
    *  A hidden text label for the IconButton that is accessible to assistive technology
    */
@@ -184,7 +180,7 @@ const IconButtonComponent = forwardRef(
     const actualRef = useForkedRef<HTMLButtonElement>(forwardRef, ref)
 
     return (
-      <ButtonBase
+      <GenericButtonBase
         aria-describedby={ariaDescribedBy}
         aria-expanded={ariaExpanded}
         aria-pressed={toggle ? true : undefined}
@@ -198,12 +194,12 @@ const IconButtonComponent = forwardRef(
       >
         <VisuallyHidden>{label}</VisuallyHidden>
         <Icon
-          name={icon}
+          icon={icon}
           size={iconButtonIconSizeMap[size]}
           aria-hidden={true}
         />
         {tooltip}
-      </ButtonBase>
+      </GenericButtonBase>
     )
   }
 )
@@ -246,7 +242,6 @@ export const IconButton = styled(IconButtonComponent).attrs(
 )<IconButtonProps>`
   ${reset}
   ${space}
-  /* remove padding applied to transparent buttons, so icon size is preserved correctly */
 
   background: none;
   border: none;
@@ -254,8 +249,4 @@ export const IconButton = styled(IconButtonComponent).attrs(
   padding: 0;
 
   ${(props) => props.outline && outlineCSS}
-
-  svg {
-    pointer-events: none;
-  }
 `

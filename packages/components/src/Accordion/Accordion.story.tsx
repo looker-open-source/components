@@ -26,6 +26,8 @@
 
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import { ExpandMore } from '@styled-icons/material-rounded'
+import { ChevronLeft, HelpOutline } from '@styled-icons/material'
 import { Badge } from '../Badge'
 import { Box, Space } from '../Layout'
 import { Fieldset, FieldText } from '../Form'
@@ -75,7 +77,7 @@ export const CustomizedIndicator = () => (
   <Accordion
     indicatorSize="large"
     indicatorPosition="left"
-    indicatorIcons={{ close: 'CaretLeft', open: 'CaretDown' }}
+    indicatorIcons={{ close: <ChevronLeft />, open: <ExpandMore /> }}
   >
     <AccordionDisclosure> See more...</AccordionDisclosure>
     <AccordionContent>{lorem}</AccordionContent>
@@ -96,7 +98,7 @@ export const Controlled = () => {
       <AccordionDisclosure>
         <Space between>
           Some Information
-          <Icon color="text2" name="CircleQuestionOutline" size="small" />
+          <Icon color="text2" icon={<HelpOutline />} size="small" />
         </Space>
       </AccordionDisclosure>
       <AccordionContent>
@@ -192,13 +194,15 @@ export const ApiExplorer = () => {
 
   return (
     <Customized>
-      <Accordion indicatorIcons={{ close: 'CaretLeft', open: 'CaretDown' }}>
+      <Accordion
+        indicatorIcons={{ close: <ChevronLeft />, open: <ExpandMore /> }}
+      >
         <AccordionDisclosure>First Group</AccordionDisclosure>
         <AccordionContent>{content}</AccordionContent>
       </Accordion>
       <Accordion
         defaultOpen
-        indicatorIcons={{ close: 'CaretLeft', open: 'CaretDown' }}
+        indicatorIcons={{ close: <ChevronLeft />, open: <ExpandMore /> }}
       >
         <AccordionDisclosure color="red">Second Group</AccordionDisclosure>
         <AccordionContent>{content}</AccordionContent>

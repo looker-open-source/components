@@ -34,10 +34,9 @@ import {
   SizeLarge,
   omitStyledProps,
 } from '@looker/design-tokens'
-import React, { forwardRef, Ref, ReactNode } from 'react'
+import { StyledIconProps } from '@styled-icons/styled-icon'
+import React, { forwardRef, ReactElement, Ref } from 'react'
 import styled from 'styled-components'
-/* eslint import/namespace: ['error', { allowComputed: true }] */
-import { Glyphs, IconNames } from '@looker/icons'
 import {
   sizeSimpleLayoutCSS,
   SizeSimpleLayoutProps,
@@ -50,23 +49,19 @@ export type IconSize =
   | SizeMedium
   | SizeLarge
 
+export type IconType = ReactElement<StyledIconProps>
+
 export interface IconProps
   extends Omit<CompatibleHTMLProps<HTMLDivElement>, 'onClick'>,
     SizeSimpleLayoutProps {
   /**
    * Display an icon/logo that is not available on our components list. Use artwork prop with an svg instead of Icon name.
    */
-  artwork?: ReactNode
   color?: string
   /**
-   * Used as the aria-label value for the icon
+   * Specify the JSX.Element (often SVG) to place.
    */
-  label?: string
-  /**
-   * Name of the icon type from our components Icon Library:
-   * https://looker-open-source.github.io/components/latest/components/content/icon/
-   */
-  name?: IconNames
+  icon: IconType
   /**
    * Explicitly specify a title for the SVG rendered by the icon.
    * NOTE: If title is not specified `aria-hidden="true"` will be applied to hide the SVG from
@@ -76,35 +71,17 @@ export interface IconProps
   title?: string
 }
 
-export type { IconNames }
-
 const IconLayout = forwardRef(
-  (
-    { artwork = undefined, label, name, title, ...props }: IconProps,
-    ref: Ref<HTMLDivElement>
-  ) => {
-    if ((artwork && name) || (!artwork && !name)) {
-      // eslint-disable-next-line no-console
-      console.warn('You may only specify name OR artwork, not both.')
-    }
-    const Glyph = name ? Glyphs[name] : 'div'
-    const value = artwork || (
-      <Glyph
-        aria-hidden={title === undefined && true}
-        fill="currentColor"
-        height="100%"
-        title={title}
-        width="100%"
-      />
-    )
+  ({ title, icon, ...props }: IconProps, ref: Ref<HTMLDivElement>) => {
     return (
       <div
-        aria-label={label || undefined}
+        aria-hidden={title === undefined && true}
+        title={title}
         ref={ref}
         role="img"
         {...omitStyledProps(props)}
       >
-        {value}
+        {icon}
       </div>
     )
   }
@@ -122,9 +99,5 @@ export const Icon = styled(IconLayout).attrs<IconProps>(
   ${color}
   align-items: center;
   flex-shrink: 0;
-
-  svg {
-    height: 100%;
-    width: 100%;
-  }
+  justify-content: center;
 `

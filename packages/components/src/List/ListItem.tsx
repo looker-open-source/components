@@ -25,7 +25,6 @@
  */
 
 import { CompatibleHTMLProps, FontSizes } from '@looker/design-tokens'
-import { IconNames } from '@looker/icons'
 import styled from 'styled-components'
 import React, {
   FC,
@@ -37,7 +36,7 @@ import React, {
 } from 'react'
 import { ListItemDetail } from '../List/ListItemDetail'
 import { Text } from '../Text'
-import { Icon, IconPlaceholder } from '../Icon'
+import { IconPlaceholder, IconType } from '../Icon'
 import { Truncate } from '../Truncate'
 import {
   HoverDisclosureContext,
@@ -95,11 +94,7 @@ export interface ListItemProps
   /**
    * Optional icon placed left of the item children
    */
-  icon?: IconNames
-  /**
-   * Display an icon/logo that is not available on our components list. Use artwork prop with an svg instead of Icon name.
-   */
-  iconArtwork?: ReactNode
+  icon?: IconType
   /**
    * Sets the correct accessible role for the ListItem:
    * - Use **'link'** for items that navigation to another page
@@ -135,10 +130,9 @@ const ListItemInternal = forwardRef(
       density: propsDensity,
       description,
       detail,
-      disabled,
+      disabled = false,
       href,
       icon,
-      iconArtwork,
       itemRole,
       keyColor: propsKeyColor,
       onBlur,
@@ -169,7 +163,6 @@ const ListItemInternal = forwardRef(
 
     const labelColor = disabled ? 'text1' : color
     const descriptionColor = disabled ? 'text1' : 'text2'
-    const iconColor = disabled ? 'text1' : color || 'text1'
 
     const handleOnBlur = (event: React.FocusEvent<HTMLElement>) => {
       setFocusVisible(false)
@@ -199,24 +192,6 @@ const ListItemInternal = forwardRef(
       () => setHovered(false),
       onMouseLeave
     )
-
-    const renderedIcon =
-      icon || iconArtwork ? (
-        <Icon
-          artwork={iconArtwork}
-          color={iconColor}
-          name={icon}
-          size={itemDimensions.iconSize}
-          mr={itemDimensions.iconGap}
-        />
-      ) : (
-        iconGutter && (
-          <IconPlaceholder
-            size={itemDimensions.iconSize}
-            mr={itemDimensions.iconGap}
-          />
-        )
-      )
 
     if (disabled && itemRole === 'link') {
       // eslint-disable-next-line no-console
@@ -290,10 +265,14 @@ const ListItemInternal = forwardRef(
     const Layout = accessory ? ListItemLayoutAccessory : ListItemLayout
     const listItemContent = (
       <Layout
-        labelCreator={LabelCreator}
+        color={color}
         description={renderedDescription}
         detail={renderedDetail}
-        icon={renderedIcon}
+        disabled={disabled}
+        icon={icon || (iconGutter && <IconPlaceholder />)}
+        iconGap={itemDimensions.iconGap}
+        iconSize={itemDimensions.iconSize}
+        labelCreator={LabelCreator}
         px={itemDimensions.px}
         py={itemDimensions.py}
       >

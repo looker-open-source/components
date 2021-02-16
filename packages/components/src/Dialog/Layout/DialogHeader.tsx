@@ -36,6 +36,7 @@ import {
   FontSizeProps,
   FontWeightProps,
 } from '@looker/design-tokens'
+import { Close } from '@styled-icons/material'
 import { IconButton } from '../../Button'
 import { Heading } from '../../Text'
 import { DialogContext } from '../DialogContext'
@@ -94,7 +95,7 @@ const DialogHeaderLayout: FC<DialogHeaderProps> = ({
               size="medium"
               onClick={closeModal}
               label={t('Close')}
-              icon="Close"
+              icon={<Close />}
             />
           </Detail>
         )

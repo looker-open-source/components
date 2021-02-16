@@ -34,8 +34,8 @@ import {
   inputTextDisabled,
   inputTextValidation,
   inputCSS,
+  ErrorIcon,
 } from '../InputText'
-import { Icon } from '../../../Icon'
 import {
   simpleLayoutCSS,
   SimpleLayoutProps,
@@ -67,7 +67,7 @@ const TextAreaLayout: FC<TextAreaProps> = ({
         aria-invalid={validationType === 'error' ? 'true' : undefined}
         {...textareaProps}
       />
-      {validationType && <Icon name="Error" color="critical" size="small" />}
+      {validationType && <ErrorIcon />}
     </div>
   )
 }
@@ -85,10 +85,12 @@ export const TextArea = styled(TextAreaLayout).attrs<TextAreaProps>(
   position: relative;
   width: 100%;
 
-  ${Icon} {
+  ${ErrorIcon} {
+    height: ${({ theme }) => theme.sizes.small};
     position: absolute;
     right: 0.5rem;
     top: 0.5rem;
+    width: ${({ theme }) => theme.sizes.small};
   }
 
   textarea {

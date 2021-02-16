@@ -25,7 +25,10 @@
  */
 
 import React, { FC, ReactNode } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import { color as colorHelper } from '@looker/design-tokens'
+import { StyledIconBase } from '@styled-icons/styled-icon'
+import { IconPlaceholder } from '../Icon'
 import { Flex } from '../Layout'
 import { ListItemDimensions } from './types'
 import { listItemPadding } from './utils'
@@ -33,15 +36,19 @@ import { listItemPadding } from './utils'
 export interface ListItemLayoutProps
   extends Pick<ListItemDimensions, 'px' | 'py'> {
   className?: string
+  color?: string
   labelCreator: FC<{ children: ReactNode; className: string }>
   description?: ReactNode
   detail?: ReactNode
+  disabled: boolean
   icon?: ReactNode
+  iconSize: string
+  iconGap: string
 }
 
 const ListItemLayoutInternal: FC<ListItemLayoutProps> = ({
   children,
-  className,
+  className = '',
   labelCreator,
   description,
   detail,
@@ -60,10 +67,28 @@ const ListItemLayoutInternal: FC<ListItemLayoutProps> = ({
 
   return labelCreator({
     children: content,
-    className: className || '',
+    className,
   })
 }
 
-export const ListItemLayout = styled(ListItemLayoutInternal)`
+export const listItemIconCSS = css<ListItemLayoutProps>`
+  & > svg,
+  & > ${StyledIconBase}, & > ${IconPlaceholder} {
+    ${colorHelper}
+    align-self: flex-start;
+    flex-grow: 0;
+    flex-shrink: 0;
+    height: ${({ iconSize, theme }) => theme.sizes[iconSize]};
+    margin-right: ${({ iconGap, theme }) => theme.space[iconGap]};
+    width: ${({ iconSize, theme }) => theme.sizes[iconSize]};
+  }
+`
+
+export const ListItemLayout = styled(ListItemLayoutInternal).attrs(
+  ({ color, disabled }) => ({
+    color: disabled ? 'text1' : color || 'text1',
+  })
+)<ListItemLayoutProps>`
   ${(props) => listItemPadding({ ...props })}
+  ${listItemIconCSS}
 `

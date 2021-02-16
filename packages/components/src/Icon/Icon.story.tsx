@@ -26,6 +26,14 @@
 
 import { Story } from '@storybook/react/types-6-0'
 import React from 'react'
+import {
+  Create,
+  Delete,
+  DeleteOutline,
+  FilterList,
+  Refresh,
+  Settings,
+} from '@styled-icons/material'
 import { Button, IconButton } from '../Button'
 import { Space, SpaceVertical } from '../Layout'
 import { Heading } from '../Text'
@@ -40,7 +48,7 @@ const Template: Story<IconProps> = (args) => <Icon {...args} />
 
 export const Basic = Template.bind({})
 Basic.args = {
-  name: 'Gear',
+  icon: <Settings />,
 }
 
 export const Small = Template.bind({})
@@ -57,8 +65,8 @@ Large.args = {
 
 export const Accessibility = () => (
   <Space around>
-    <Icon name="Trash" title="It's a trash can" />
-    <Icon name="TrashOutline" />
+    <Icon icon={<Delete />} title="It's a trash can" />
+    <Icon icon={<DeleteOutline />} />
   </Space>
 )
 
@@ -69,12 +77,12 @@ Accessibility.parameters = {
 export const Sizes = () => (
   <SpaceVertical>
     <Space>
-      <Icon name="Trash" size="xxsmall" />
-      <Icon name="Trash" size="xsmall" />
-      <Icon name="Trash" size="small" />
-      <Icon name="Trash" size="medium" />
-      <Icon name="Trash" size="large" />
-      <Icon name="Trash" />
+      <Icon icon={<Delete />} size="xxsmall" />
+      <Icon icon={<Delete />} size="xsmall" />
+      <Icon icon={<Delete />} size="small" />
+      <Icon icon={<Delete />} size="medium" />
+      <Icon icon={<Delete />} size="large" />
+      <Icon icon={<Delete />} />
     </Space>
   </SpaceVertical>
 )
@@ -86,7 +94,7 @@ Sizes.parameters = {
 export const Artwork = () => (
   <Space around>
     <Icon
-      artwork={
+      icon={
         <svg
           width="24"
           height="24"
@@ -100,11 +108,10 @@ export const Artwork = () => (
           />
         </svg>
       }
-      name="GearOutline"
       size="xxsmall"
     />
     <Icon
-      artwork={
+      icon={
         <svg>
           <rect
             width="100"
@@ -126,36 +133,36 @@ Artwork.parameters = {
 export const IconsInsideComponents = () => (
   <SpaceVertical>
     <Space gap="xsmall">
-      <Button size="large" iconAfter="Refresh">
+      <Button size="large" iconAfter={<Refresh />}>
         Add
       </Button>
-      <IconButton size="large" icon="Filter" label="Filter" />
+      <IconButton size="large" icon={<FilterList />} label="Filter" />
     </Space>
 
     <Space gap="xsmall">
-      <Button iconAfter="Refresh">Add</Button>
-      <IconButton size="medium" icon="Filter" label="Filter" />
+      <Button iconAfter={<Refresh />}>Add</Button>
+      <IconButton size="medium" icon={<FilterList />} label="Filter" />
     </Space>
 
     <Space gap="xsmall">
-      <Button size="small" iconAfter="Refresh">
+      <Button size="small" iconAfter={<Refresh />}>
         Add
       </Button>
-      <IconButton size="small" icon="Filter" label="Filter" />
+      <IconButton size="small" icon={<FilterList />} label="Filter" />
     </Space>
 
     <Space gap="xsmall">
-      <Button size="xsmall" iconAfter="Refresh">
+      <Button size="xsmall" iconAfter={<Refresh />}>
         Add
       </Button>
-      <IconButton size="xsmall" icon="Filter" label="Filter" />
+      <IconButton size="xsmall" icon={<FilterList />} label="Filter" />
     </Space>
 
     <Space gap="xsmall">
-      <Button size="xxsmall" iconAfter="Refresh">
+      <Button size="xxsmall" iconAfter={<Refresh />}>
         Add
       </Button>
-      <IconButton size="xxsmall" icon="Filter" label="Filter" />
+      <IconButton size="xxsmall" icon={<FilterList />} label="Filter" />
     </Space>
   </SpaceVertical>
 )
@@ -170,70 +177,70 @@ export const IconsPairedWithText = () => (
       <Heading fontSize="xxsmall">
         This is to compare icons size with a Heading
       </Heading>
-      <Icon size="xxxsmall" name="Edit" />
+      <Icon size="xxxsmall" icon={<Create />} />
     </Space>
 
     <Space gap="xsmall">
       <Heading fontSize="xsmall">
         This is to compare icons size with a Heading
       </Heading>
-      <Icon size="xxxsmall" name="Edit" />
+      <Icon size="xxxsmall" icon={<Create />} />
     </Space>
 
     <Space gap="xsmall">
       <Heading fontSize="small">
         This is to compare icons size with a Heading
       </Heading>
-      <Icon size="xxsmall" name="Edit" />
+      <Icon size="xxsmall" icon={<Create />} />
     </Space>
 
     <Space gap="xsmall">
       <Heading fontSize="medium">
         This is to compare icons size with a Heading
       </Heading>
-      <Icon size="xxsmall" name="Edit" />
+      <Icon size="xxsmall" icon={<Create />} />
     </Space>
 
     <Space gap="xsmall">
       <Heading fontSize="large">
         This is to compare icons size with a Heading
       </Heading>
-      <Icon size="xsmall" name="Edit" />
+      <Icon size="xsmall" icon={<Create />} />
     </Space>
 
     <Space gap="xsmall">
       <Heading fontSize="xlarge">
         This is to compare icons size with a Heading
       </Heading>
-      <Icon size="small" name="Edit" />
+      <Icon size="small" icon={<Create />} />
     </Space>
 
     <Space gap="xsmall">
       <Heading fontSize="xxlarge">
         This is to compare icons size with a Heading
       </Heading>
-      <Icon size="small" name="Edit" />
+      <Icon size="small" icon={<Create />} />
     </Space>
 
     <Space gap="xsmall">
       <Heading fontSize="xxxlarge">
         This is to compare icons size with a Heading
       </Heading>
-      <Icon size="medium" name="Edit" />
+      <Icon size="medium" icon={<Create />} />
     </Space>
 
     <Space gap="xsmall">
       <Heading fontSize="xxxxlarge">
         This is to compare icons size with a Heading
       </Heading>
-      <Icon size="medium" name="Edit" />
+      <Icon size="medium" icon={<Create />} />
     </Space>
 
     <Space gap="xsmall">
       <Heading fontSize="xxxxxlarge">
         This is to compare icons size with a Heading
       </Heading>
-      <Icon size="large" name="Edit" />
+      <Icon size="large" icon={<Create />} />
     </Space>
   </SpaceVertical>
 )

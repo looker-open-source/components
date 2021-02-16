@@ -42,7 +42,6 @@ const user = {
 export const Primary = Template.bind({})
 Primary.args = {
   color: 'key',
-  secondaryIcon: 'User',
   user,
 }
 

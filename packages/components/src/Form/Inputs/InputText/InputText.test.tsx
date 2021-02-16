@@ -103,7 +103,6 @@ describe('InputText', () => {
   test('with an error validation', () => {
     renderWithTheme(<InputText placeholder="Hello" validationType="error" />)
     expect(screen.getByPlaceholderText('Hello')).toHaveAttribute('aria-invalid')
-    expect(screen.getByTitle('Validation Error')).toBeInTheDocument()
   })
 
   describe('before & after', () => {
@@ -116,52 +115,12 @@ describe('InputText', () => {
       expect(getByText('after')).toBeVisible()
     })
 
-    test('icons', () => {
-      const { getByTitle } = renderWithTheme(
-        <InputText
-          iconBefore="Favorite"
-          iconBeforeTitle="Before Title"
-          iconAfter="Account"
-          iconAfterTitle="After Title"
-        />
-      )
-
-      expect(getByTitle('Before Title')).toBeInTheDocument()
-      expect(getByTitle('After Title')).toBeInTheDocument()
-    })
-
-    test('redundant ones should not render', () => {
-      const { queryByPlaceholderText } = renderWithTheme(
-        <>
-          <InputText placeholder="Hello" iconBefore="Favorite" before="$" />
-          <InputText placeholder="Goodbye" iconAfter="Account" after="%" />
-        </>
-      )
-
-      expect(queryByPlaceholderText('Hello')).not.toBeInTheDocument()
-      expect(queryByPlaceholderText('Goodbye')).not.toBeInTheDocument()
-      expect(warnMock.mock.calls).toMatchInlineSnapshot(`
-        Array [
-          Array [
-            "Use before or iconBefore, but not both at the same time.",
-          ],
-          Array [
-            "Use after or iconAfter, but not both at the same time.",
-          ],
-        ]
-      `)
-    })
-
     test('focus & blur behavior', () => {
       const handleBlur = jest.fn()
       const handleFocus = jest.fn()
       renderWithTheme(
         <>
-          <InputText
-            onBlur={handleBlur}
-            onFocus={handleFocus}
-            after={<span>after</span>}
-          />
+          <InputText onBlur={handleBlur} onFocus={handleFocus} after="after" />
           <button>click</button>
         </>
       )

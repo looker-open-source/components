@@ -42,7 +42,6 @@ import isEqual from 'lodash/isEqual'
 import values from 'lodash/values'
 import { useTranslation } from 'react-i18next'
 import { VisuallyHidden } from '../../../VisuallyHidden'
-import { Icon } from '../../../Icon'
 import { ValidationType } from '../../ValidationMessage'
 import {
   inputCSS,
@@ -50,6 +49,7 @@ import {
   inputTextFocus,
   inputTextValidation,
   inputTextDisabled,
+  ErrorIcon,
 } from '../InputText'
 import { InlineInputTextBase } from '../../Inputs/InlineInputText'
 import {
@@ -423,17 +423,7 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
               aria-labelledby={`${ariaLabelledby} ${endDateLabelledby}`}
             />
           </InputTextWrapper>
-          {(inputs.from.isValid && inputs.to.isValid) || (
-            <IconWrapper>
-              <Icon
-                key="warning"
-                name="Error"
-                size={20}
-                color="critical"
-                mr="xxsmall"
-              />
-            </IconWrapper>
-          )}
+          {(inputs.from.isValid && inputs.to.isValid) || <ErrorIcon />}
         </InputTextGroupWrapper>
         <MultiCalendarLayout>
           <VisuallyHidden aria-live="assertive">{monthTitle}</VisuallyHidden>
@@ -508,6 +498,7 @@ const InputTextGroupWrapper = styled.div<InputTextGroupWrapperProps>`
   ${inputCSS}
   align-items: center;
   display: grid;
+  font-family: ${({ theme }) => theme.fonts.body};
   grid-gap: ${({ theme }) => theme.space.xsmall};
   grid-template-columns: auto auto auto 1fr;
   padding: 0 ${({ theme: { space } }) => space.small};
@@ -523,10 +514,11 @@ const InputTextGroupWrapper = styled.div<InputTextGroupWrapperProps>`
   ${inputTextValidation}
 
   ${({ disabled }) => disabled && inputTextDisabled}
-`
 
-const IconWrapper = styled.div`
-  justify-self: right;
+  ${ErrorIcon} {
+    justify-self: right;
+    margin-right: ${({ theme }) => theme.space.xxsmall};
+  }
 `
 
 const InputTextWrapper = styled.div<{ inputLength: number }>`
