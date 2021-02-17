@@ -25,7 +25,7 @@
  */
 
 import { width, WidthProps } from '@looker/design-tokens'
-import React, { FunctionComponent, ReactNode, useContext } from 'react'
+import React, { FunctionComponent, useContext } from 'react'
 import styled, { css } from 'styled-components'
 import omit from 'lodash/omit'
 import pick from 'lodash/pick'
@@ -39,11 +39,6 @@ import { FieldBaseProps } from './FieldBase'
 import { RequiredStar } from './RequiredStar'
 
 export interface FieldProps extends FieldBaseProps, WidthProps {
-  /*
-   * optional extra description
-   */
-  description?: ReactNode
-
   /**
    * Id of the input element to match a label to.
    */
@@ -58,7 +53,6 @@ export interface FieldProps extends FieldBaseProps, WidthProps {
    * @default false
    */
   hideLabel?: boolean
-
   /**
    *
    */

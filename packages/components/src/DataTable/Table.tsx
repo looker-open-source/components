@@ -41,6 +41,9 @@ import { edgeShadow } from './utils/edgeShadow'
 import { getNextFocus } from './getNextFocus'
 
 export interface TableProps extends DataTableProps {
+  /**
+   * I18n recommended: content that is user visible should be treated for i18n
+   */
   caption: string
   columnsVisible: string[]
 }

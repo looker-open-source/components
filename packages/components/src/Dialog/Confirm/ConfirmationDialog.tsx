@@ -36,6 +36,7 @@ export type ConfirmationCallback = (close: () => void) => void
 export interface ConfirmationProps extends DialogProps {
   /**
    * Cancel button text
+   * I18n recommended: content that is user visible should be treated for i18n
    * @default 'Cancel'
    */
   cancelLabel?: string
@@ -51,11 +52,15 @@ export interface ConfirmationProps extends DialogProps {
   cancelColor?: StatefulColor
   /**
    * Confirmation button text
+   *
+   * I18n recommended: content that is user visible should be treated for i18n
    * @default 'Confirm'
    */
   confirmLabel?: string
   /**
    * Additional information about the action requiring confirmation
+   *
+   * I18n recommended: content that is user visible should be treated for i18n
    */
   message: ReactElement | string
   /**
@@ -69,6 +74,8 @@ export interface ConfirmationProps extends DialogProps {
   onConfirm: ConfirmationCallback
   /**
    * Dialog title text
+   *
+   * I18n recommended: content that is user visible should be treated for i18n
    */
   title: string
 }

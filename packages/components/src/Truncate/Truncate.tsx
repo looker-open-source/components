@@ -23,14 +23,13 @@
  SOFTWARE.
 
  */
-import React, { FC, useState, useCallback, ReactNode } from 'react'
+import React, { FC, useState, useCallback } from 'react'
 import styled from 'styled-components'
 import { width as widthHelper, WidthProps } from 'styled-system'
 import { useIsTruncated } from '../utils/useIsTruncated'
 import { useTooltip } from '../Tooltip'
 
 export interface TruncateProps extends WidthProps {
-  children: ReactNode
   className?: string
 }
 

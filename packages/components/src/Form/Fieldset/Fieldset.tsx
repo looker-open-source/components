@@ -68,7 +68,8 @@ export interface FieldsetProps
   wrap?: boolean
 
   /**
-   *  Displayed above the children of Fieldset
+   * Displayed above the children of Fieldset
+   * I18n recommended: content that is user visible should be treated for i18n
    */
   legend?: ReactNode
   /*
@@ -134,7 +135,6 @@ const FieldsetLayout = forwardRef(
         gap={gap}
         ref={ref}
         role="group"
-        // eslint-disable-next-line i18next/no-literal-string
         align="start"
         flexWrap={wrap ? 'wrap' : undefined}
       >

@@ -53,9 +53,12 @@ type BadgeIntent =
 export interface BadgeProps
   extends SpaceProps,
     CompatibleHTMLProps<HTMLSpanElement> {
+  /**
+   * I18n recommended: content that is user visible should be treated for i18n
+   */
   children: ReactNode
   /**
-   *  @default `default`
+   * @default key
    **/
   intent?: BadgeIntent
 

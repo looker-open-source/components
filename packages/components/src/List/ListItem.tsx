@@ -72,14 +72,17 @@ export interface ListItemProps
    * @private
    */
   density?: DensityRamp
-  /*
+  /**
    * optional extra description
+   * I18n recommended: content that is user visible should be treated for i18n
    */
   description?: ReactNode
   /**
    * Detail element placed right of the item children. Prop value can take one of two forms:
    * 1. ReactNode
    * 2. Object with content and options properties
+   *
+   * I18n recommended: content that is user visible should be treated for i18n
    */
   detail?: Detail
   /**

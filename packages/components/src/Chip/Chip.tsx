@@ -26,13 +26,7 @@
 
 import { useTranslation } from 'react-i18next'
 import { reset } from '@looker/design-tokens'
-import React, {
-  forwardRef,
-  KeyboardEvent,
-  MouseEvent,
-  ReactNode,
-  Ref,
-} from 'react'
+import React, { forwardRef, KeyboardEvent, MouseEvent, Ref } from 'react'
 import styled from 'styled-components'
 import {
   useClickable,
@@ -47,7 +41,9 @@ import { TruncateProps, truncate } from '../Text/truncate'
 export interface ChipProps
   extends GenericClickProps<HTMLSpanElement>,
     TruncateProps {
-  children: ReactNode
+  /**
+   * I18n recommended: content that is user visible should be treated for i18n
+   */
   prefix?: string
   onDelete?: (
     e?: MouseEvent<HTMLSpanElement> | KeyboardEvent<HTMLSpanElement>

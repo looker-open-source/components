@@ -46,6 +46,9 @@ import { FocusableCell } from './FocusableCell'
 
 export interface DataTableCellProps
   extends CompatibleHTMLProps<HTMLTableDataCellElement> {
+  /**
+   * I18n recommended: content that is user visible should be treated for i18n
+   */
   description?: ReactNode
   focusVisible?: boolean
   indicator?: ReactNode

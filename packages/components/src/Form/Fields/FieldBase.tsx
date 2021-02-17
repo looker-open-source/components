@@ -36,6 +36,7 @@ export interface FieldBaseProps {
   disabled?: boolean
   /**
    * Defines the label for the field.
+   * I18n recommended: content that is user visible should be treated for i18n
    */
   label?: string
   /**
@@ -44,14 +45,15 @@ export interface FieldBaseProps {
   required?: boolean
   /**
    * notes and details added to the top right corner of the field
+   * I18n recommended: content that is user visible should be treated for i18n
    */
   detail?: ReactNode
   /**
    * notes and more info added to the bottom of the field
+   * I18n recommended: content that is user visible should be treated for i18n
    */
   description?: ReactNode
   /**
-   *
    * Holds the type of validation (error, warning, etc.) and corresponding message.
    */
   validationMessage?: ValidationMessageProps
