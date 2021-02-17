@@ -24,11 +24,12 @@
 
  */
 
+export * from './getNextFocus'
 export * from './getNextFocusTarget'
 export * from './getWindowedListBoundaries'
 export * from './HoverDisclosure'
+export * from './i18n'
 export * from './mergeHandlers'
-export * from './getNextFocus'
 export * from './targetIsButton'
 export * from './undefinedCoalesce'
 export * from './useAnimationState'
