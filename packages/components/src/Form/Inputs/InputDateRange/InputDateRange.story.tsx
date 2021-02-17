@@ -26,13 +26,13 @@
 import React, { useState } from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import { RangeModifier } from 'react-day-picker'
-import { VIEWPORT_MAP } from '../utils-storybook'
-import { Button } from '../Button'
-import { Popover, PopoverContent } from '../Popover'
-import { DateFormat } from '../DateFormat'
-import { Tabs, Tab, TabList, TabPanels, TabPanel } from '../Tabs'
-import { MenuList, MenuItem } from '../Menu'
-import { InputDateRange, InputDateRangeProps } from './'
+import { VIEWPORT_MAP } from '../../../utils-storybook'
+import { Button } from '../../../Button'
+import { Popover, PopoverContent } from '../../../Popover'
+import { DateFormat } from '../../../DateFormat'
+import { Tabs, Tab, TabList, TabPanels, TabPanel } from '../../../Tabs'
+import { MenuList, MenuItem } from '../../../Menu'
+import { InputDateRange, InputDateRangeProps } from '.'
 
 export default {
   component: InputDateRange,
