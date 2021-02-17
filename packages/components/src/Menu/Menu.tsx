@@ -25,7 +25,6 @@
  */
 
 import React, { cloneElement, forwardRef, Ref, ReactElement } from 'react'
-import { Placement } from '@popperjs/core'
 import pick from 'lodash/pick'
 import omit from 'lodash/omit'
 import { useID } from '../utils'

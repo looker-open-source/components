@@ -106,10 +106,6 @@ export interface ListItemProps
    */
   itemRole?: 'link' | 'button'
   /**
-   * Optional ref prop
-   */
-  ref?: Ref<HTMLLIElement>
-  /**
    * If true, text children and description will be truncated if text overflows
    */
   truncate?: boolean
@@ -128,8 +124,8 @@ export const ListItemLabel = styled.div
     as: !disabled && itemRole === 'link' ? 'a' : 'button',
   }))<ListItemLabelProps>``
 
-const ListItemInternal: FC<ListItemProps> = forwardRef(
-  (props, ref: Ref<HTMLLIElement>) => {
+const ListItemInternal = forwardRef(
+  (props: ListItemProps, ref: Ref<HTMLLIElement>) => {
     const {
       children,
       className,

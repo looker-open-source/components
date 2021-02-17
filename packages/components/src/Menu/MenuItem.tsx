@@ -25,7 +25,7 @@
  */
 
 import styled from 'styled-components'
-import React, { FC, forwardRef, Ref, useContext } from 'react'
+import React, { forwardRef, Ref, useContext } from 'react'
 import { DialogContext } from '../Dialog'
 import { ListItem, ListItemProps } from '../List'
 import { Icon } from '../Icon'
@@ -38,7 +38,7 @@ export interface MenuItemProps
   extends ListItemProps,
     Pick<UseNestedMenuProps, 'nestedMenu'> {}
 
-const MenuItemInternal: FC<MenuItemProps> = forwardRef(
+const MenuItemInternal = forwardRef(
   (
     {
       children,
@@ -49,7 +49,7 @@ const MenuItemInternal: FC<MenuItemProps> = forwardRef(
       onMouseLeave,
       nestedMenu,
       ...props
-    },
+    }: MenuItemProps,
     forwardedRef: Ref<HTMLLIElement>
   ) => {
     const id = useID(props.id)
