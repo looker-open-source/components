@@ -44,6 +44,7 @@ import {
   UsePopperProps,
   useScrollLock,
   useForkedRef,
+  useID,
 } from '../utils'
 import { usePopoverToggle, UsePopoverToggleProps } from './usePopoverToggle'
 import { useVerticalSpace } from './useVerticalSpace'
@@ -102,6 +103,11 @@ export interface UsePopoverProps extends UsePopoverToggleProps {
    * @private
    */
   surface?: typeof OverlaySurface
+
+  /**
+   * The id of the dialog (if absent, a random id will be generated)
+   */
+  id?: string
 }
 
 const useOpenWithoutElement = (
@@ -144,6 +150,7 @@ export const usePopover = ({
   scrollLock = true,
   cancelClickOutside,
   surface,
+  id,
 }: UsePopoverProps) => {
   const [scrollElement, scrollRef] = useScrollLock({ disabled: !scrollLock })
   const [, focusRef] = useFocusTrap({ disabled: !focusTrap })
@@ -226,10 +233,13 @@ export const usePopover = ({
 
   const SurfaceComponent = surface || OverlaySurface
 
+  const dialogId = useID(id)
+
   const popover = content && !openWithoutElem && isOpen && !disabled && (
     <DialogContext.Provider
       value={{
         closeModal: handleClose,
+        dialogId,
       }}
     >
       <Portal ref={scrollRef}>
