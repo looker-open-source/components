@@ -25,8 +25,6 @@
  */
 
 import React, { cloneElement, forwardRef, Ref, ReactElement } from 'react'
-import pick from 'lodash/pick'
-import omit from 'lodash/omit'
 import { useID } from '../utils'
 import {
   Popover,
@@ -54,13 +52,27 @@ export interface MenuProps
   listRef?: Ref<HTMLUListElement>
 }
 
+const omitPopoverProps = (
+  props: Omit<MenuProps, 'children' | 'content' | 'id' | 'listRef'>,
+  popoverPropKeys: Array<keyof PopoverProps>
+) => {
+  const propsWithoutPopoverProps = { ...props }
+  popoverPropKeys.forEach((key) => delete propsWithoutPopoverProps[key])
+  return propsWithoutPopoverProps
+}
+
 export const Menu = forwardRef(
   (
     { children, content, id: propsID, listRef, ...props }: MenuProps,
     ref: Ref<any>
   ) => {
-    const popoverProps = pick(props, popoverPropKeys)
-    const listProps = omit(props, popoverPropKeys)
+    const popoverProps = popoverPropKeys.reduce((object, key) => {
+      if (props[key] !== undefined) {
+        object[key] = props[key]
+      }
+      return object
+    }, {})
+    const listProps = omitPopoverProps(props, popoverPropKeys)
 
     const id = useID(propsID)
     const list = content && (
