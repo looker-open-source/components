@@ -30,7 +30,7 @@ import styled, { css } from 'styled-components'
 import { useGlobalHotkeys } from '../utils'
 import { DialogContext } from './DialogContext'
 
-const SurfaceLayout: FC<{ className?: string }> = (props) => {
+const SurfaceLayout: FC<{ className?: string; id?: string }> = (props) => {
   const { closeModal } = useContext(DialogContext)
 
   const ref = useRef<null | HTMLDivElement>(null)

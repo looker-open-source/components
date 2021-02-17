@@ -48,11 +48,12 @@ describe('Dialog', () => {
   })
 
   test('defaultOpen', async () => {
-    renderWithTheme(<Dialog defaultOpen content={<SimpleContent />} />)
-    expect(screen.queryByText('Dialog content')).toBeInTheDocument()
-    const doneButton = screen.getByText('Done')
+    renderWithTheme(<Dialog defaultOpen content={<DialogMediumContent />} />)
+    expect(screen.queryByText(/We the People/)).toBeInTheDocument()
+    expect(screen.queryByLabelText(/The Constitution/)).toBeInTheDocument()
+    const doneButton = screen.getByText('Done Reading')
     fireEvent.click(doneButton)
-    await waitForElementToBeRemoved(() => screen.getByText('Dialog content'))
+    await waitForElementToBeRemoved(() => screen.getByText(/We the People/))
   })
 
   test('Dialog can be opened & closed', async () => {

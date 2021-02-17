@@ -29,10 +29,12 @@ import noop from 'lodash/noop'
 
 export interface DialogContextProps {
   closeModal: () => void
+  dialogId: string
 }
 
 const dialogContext: DialogContextProps = {
   closeModal: () => noop,
+  dialogId: '',
 }
 
 export const DialogContext = createContext(dialogContext)
