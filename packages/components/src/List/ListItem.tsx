@@ -43,6 +43,7 @@ import {
   HoverDisclosureContext,
   HoverDisclosure,
   undefinedCoalesce,
+  useWrapEvent,
 } from '../utils'
 import { ListItemContext } from './ListItemContext'
 import { ListItemLayout } from './ListItemLayout'
@@ -190,8 +191,14 @@ const ListItemInternal = forwardRef(
       setFocusVisible(true)
     }
 
-    const handleMouseEnter = useWrapEvent(() => setHovered(true), onMouseEnter)
-    const handleMouseLeave = useWrapEvent(() => setHovered(false), onMouseLeave)
+    const handleOnMouseEnter = useWrapEvent(
+      () => setHovered(true),
+      onMouseEnter
+    )
+    const handleOnMouseLeave = useWrapEvent(
+      () => setHovered(false),
+      onMouseLeave
+    )
 
     const renderedIcon =
       icon || iconArtwork ? (
