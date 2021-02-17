@@ -73,6 +73,8 @@ const SearchField = ({ index, store }: FauxSearchProps) => {
   const [query, setQuery] = useState('')
   const results: Result[] = useFlexSearch(query, index, store)
 
+  console.log('results', results)
+
   useEffect(() => {
     // Tracking the search term & results
     const t = window.setTimeout(() => {

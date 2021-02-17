@@ -84,8 +84,9 @@ module.exports = {
       options: {
         name: 'pages',
         engine: 'flexsearch',
-
-        // engineOptions: 'speed',
+        // engineOptions: {
+        //   profile: 'score',
+        // },
 
         // GraphQL query used to fetch all data for the search index. This is
         // required.
@@ -127,7 +128,6 @@ module.exports = {
             id: node.id,
             slug: node.slug,
             title: node.frontmatter.title,
-            body: node.rawBody,
           })),
       },
     },
