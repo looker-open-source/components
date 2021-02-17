@@ -108,9 +108,8 @@ const MenuItemInternal = forwardRef(
         >
           {children}
         </ListItem>
-        {/* Keep nestedMenu popover outside of MenuItemLayout to prevent its events
-       from bubbling up to the MenuItem (especially onClick)
-       due to React Portal event bubbling */}
+        {/* Keep nestedMenu popover outside of ListItem to prevent its events
+       from bubbling up (especially onClick) due to React Portal event bubbling */}
         {popover}
       </>
     )
