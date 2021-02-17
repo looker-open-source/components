@@ -29,7 +29,7 @@ import { getCurrentNode } from './getCurrentNode'
 import { useCallbackRef } from './useCallbackRef'
 
 /**
- * Get the current hover / focus state of a element of which component has no control
+ * Get the hover / focus state of an element over which the current component has no control
  */
 export function useHovered<E extends HTMLElement = HTMLElement>(
   hoverElement?: E | null | RefObject<E>
