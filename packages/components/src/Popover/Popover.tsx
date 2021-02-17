@@ -45,7 +45,21 @@ const isRenderProp = (
   children: ReactNode | PopoverRenderProp
 ): children is PopoverRenderProp => typeof children === 'function'
 
-export const popoverPropKeys = [
+export interface PopoverProps extends UsePopoverProps {
+  /**
+   * Component to wrap. The HOC will listen for mouse events on this
+   * component, maintain the state of isOpen accordingly, and pass that state into
+   * the Popover renderProp.
+   */
+  children: ReactNode | PopoverRenderProp
+
+  /**
+   * The element which hovering on/off of will show/hide the triggering element
+   */
+  hoverDisclosureRef?: HTMLElement | null | RefObject<HTMLElement>
+}
+
+export const popoverPropKeys: Array<keyof PopoverProps> = [
   'content',
   'onClose',
   'placement',
@@ -64,20 +78,6 @@ export const popoverPropKeys = [
   'cancelClickOutside',
   'hoverDisclosureRef',
 ]
-
-export interface PopoverProps extends UsePopoverProps {
-  /**
-   * Component to wrap. The HOC will listen for mouse events on this
-   * component, maintain the state of isOpen accordingly, and pass that state into
-   * the Popover renderProp.
-   */
-  children: ReactNode | PopoverRenderProp
-
-  /**
-   * The element which hovering on/off of will show/hide the triggering element
-   */
-  hoverDisclosureRef?: HTMLElement | null | RefObject<HTMLElement>
-}
 
 export const Popover = forwardRef(
   (
