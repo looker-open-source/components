@@ -26,6 +26,7 @@
 
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
+import { AcUnit } from '@styled-icons/material'
 import { AvatarCombo, AvatarComboProps } from './AvatarCombo'
 
 const Template: Story<AvatarComboProps> = (args) => <AvatarCombo {...args} />
@@ -42,7 +43,13 @@ const user = {
 export const Primary = Template.bind({})
 Primary.args = {
   color: 'key',
-  secondaryIcon: 'User',
+  user,
+}
+
+export const CustomIcon = Template.bind({})
+Primary.args = {
+  color: 'key',
+  secondaryIcon: <AcUnit />,
   user,
 }
 

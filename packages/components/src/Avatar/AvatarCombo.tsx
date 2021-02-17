@@ -27,15 +27,16 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
 import { omitStyledProps } from '@looker/design-tokens'
-import { IconNames } from '@looker/icons'
-import { Icon } from '../Icon'
+import { Person } from '@styled-icons/material'
+import { StyledIconBase } from '@styled-icons/styled-icon'
+import { IconType } from '../Icon'
 import { AvatarUser, AvatarUserProps } from './AvatarUser'
 import { AvatarIcon, AvatarIconProps } from './AvatarIcon'
 import { avatarButtonOverrides } from './Avatar'
 
 export interface AvatarComboProps
   extends Omit<AvatarIconProps & AvatarUserProps, 'size'> {
-  secondaryIcon: IconNames
+  secondaryIcon: IconType
   /**
    * Icon & border color for secondary AvatarIcon
    * @default 'keyFocus'
@@ -55,7 +56,7 @@ const AvatarLayout: FC<AvatarComboProps> = ({
   secondaryColor,
   secondaryBg,
   color,
-  icon = 'User',
+  icon = <Person />,
   user,
   role,
   ...props
@@ -92,7 +93,7 @@ export const AvatarCombo = styled(AvatarLayout)`
     right: -4px;
     width: 20px;
 
-    ${Icon} {
+    ${StyledIconBase} {
       height: 14px;
       width: 14px;
     }

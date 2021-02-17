@@ -26,6 +26,7 @@
 
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
+import { Accessibility } from '@styled-icons/material'
 import { AvatarIconProps, AvatarIcon } from './AvatarIcon'
 
 const Template: Story<AvatarIconProps> = (args) => <AvatarIcon {...args} />
@@ -33,7 +34,12 @@ const Template: Story<AvatarIconProps> = (args) => <AvatarIcon {...args} />
 export const Primary = Template.bind({})
 Primary.args = {
   color: 'key',
-  icon: 'User',
+}
+
+export const CustomIcon = Template.bind({})
+Primary.args = {
+  color: 'key',
+  icon: <Accessibility />,
 }
 
 export default {
