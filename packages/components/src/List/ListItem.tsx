@@ -190,15 +190,8 @@ const ListItemInternal = forwardRef(
       setFocusVisible(true)
     }
 
-    const handleOnMouseEnter = (event: React.MouseEvent<HTMLElement>) => {
-      onMouseEnter && onMouseEnter(event)
-      setHovered(true)
-    }
-
-    const handleOnMouseLeave = (event: React.MouseEvent<HTMLElement>) => {
-      onMouseLeave && onMouseLeave(event)
-      setHovered(false)
-    }
+    const handleMouseEnter = useWrapEvent(() => setHovered(true), onMouseEnter)
+    const handleMouseLeave = useWrapEvent(() => setHovered(false), onMouseLeave)
 
     const renderedIcon =
       icon || iconArtwork ? (
