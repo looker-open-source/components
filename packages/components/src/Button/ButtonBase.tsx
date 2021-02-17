@@ -31,11 +31,12 @@ import {
   StatefulColor,
   shouldForwardProp,
 } from '@looker/design-tokens'
+import { StyledIconBase } from '@styled-icons/styled-icon'
 import React, { forwardRef, Ref, useState } from 'react'
 import styled, { css } from 'styled-components'
 import { minWidth, maxWidth, width } from 'styled-system'
 import { buttonSize, buttonIconSizeMap, buttonPadding } from './size'
-import { ButtonIcon, buttonIcon } from './icon'
+import { buttonIcon } from './icon'
 import { ButtonProps } from './types'
 
 export const buttonCSS = (color: StatefulColor, focusVisible?: boolean) => css`
@@ -74,6 +75,13 @@ const ButtonOuter = styled.button
   .attrs(({ color = 'key' }) => ({ color }))<ButtonProps>`
   ${({ color, focusVisible }) => buttonCSS(color, focusVisible)}
   ${({ fullWidth }) => fullWidth && `width: 100%;`}
+
+  ${StyledIconBase} {
+    height: ${({ theme, size = 'medium' }) =>
+      theme.sizes[buttonIconSizeMap[size]]}px;
+    width: ${({ theme, size = 'medium' }) =>
+      theme.sizes[buttonIconSizeMap[size]]};
+  }
 `
 
 const ButtonJSX = forwardRef(
@@ -99,8 +107,6 @@ const ButtonJSX = forwardRef(
       setFocusVisible(false)
       onBlur && onBlur(event)
     }
-
-    const iconSize = buttonIconSizeMap[size]
 
     return (
       <ButtonOuter

@@ -34,6 +34,7 @@ import {
   SizeLarge,
   omitStyledProps,
 } from '@looker/design-tokens'
+import { StyledIcon } from '@styled-icons/styled-icon'
 import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
 import {
@@ -48,6 +49,8 @@ export type IconSize =
   | SizeMedium
   | SizeLarge
 
+export type IconType = StyledIcon | JSX.Element
+
 export interface IconProps
   extends Omit<CompatibleHTMLProps<HTMLDivElement>, 'onClick'>,
     SizeSimpleLayoutProps {
@@ -58,7 +61,7 @@ export interface IconProps
   /**
    * Specify the JSX.Element (often SVG) to place.
    */
-  icon?: JSX.Element
+  icon: IconType
   /**
    * Explicitly specify a title for the SVG rendered by the icon.
    * NOTE: If title is not specified `aria-hidden="true"` will be applied to hide the SVG from

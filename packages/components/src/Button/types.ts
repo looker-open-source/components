@@ -31,11 +31,12 @@ import {
   SpaceProps,
   WidthProps,
 } from 'styled-system'
+import { IconType } from '../Icon'
 import { ButtonSizeProps, ButtonSizes } from './size'
 
 export interface ButtonIconProps {
-  iconBefore?: JSX.Element
-  iconAfter?: JSX.Element
+  iconBefore?: IconType
+  iconAfter?: IconType
 }
 
 export interface ButtonBaseProps
