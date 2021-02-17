@@ -28,7 +28,7 @@ import React, { useState } from 'react'
 import { fireEvent, screen } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { RangeModifier } from 'react-day-picker'
-import { Locales } from '../utils/i18n'
+import { Locales } from '../../../utils/i18n'
 import { InputDateRange } from './InputDateRange'
 
 const realDateNow = Date.now.bind(global.Date)

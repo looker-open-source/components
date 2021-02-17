@@ -45,6 +45,7 @@ import {
   ButtonOutline,
   ButtonToggle,
   ButtonTransparent,
+  Calendar,
   Card,
   CardContent,
   CardMedia,
@@ -59,6 +60,8 @@ import {
   ConfirmLayout,
   CopyToClipboard,
   doDataTableSort,
+  DateFormat,
+  DateTimeFormat,
   Dialog,
   DialogContent,
   DialogContext,
@@ -74,6 +77,8 @@ import {
   FieldCheckboxGroup,
   FieldChips,
   FieldColor,
+  FieldDate,
+  FieldDateRange,
   FieldRadio,
   FieldRadioGroup,
   FieldRangeSlider,
@@ -99,6 +104,8 @@ import {
   InlineTextArea,
   InputChips,
   InputColor,
+  InputDate,
+  InputDateRange,
   InputFilters,
   InputHidden,
   InputSearch,
@@ -153,6 +160,7 @@ import {
   Tabs,
   Text,
   TextArea,
+  TimeFormat,
   Truncate,
   theme,
   ToggleSwitch,
@@ -171,17 +179,6 @@ import {
   useToggle,
   VisuallyHidden,
 } from '@looker/components'
-
-import { Calendar } from '@looker/components/src/Calendar'
-
-import { InputDate } from '@looker/components/src/InputDate'
-import { InputDateRange } from '@looker/components/src/InputDateRange'
-import { FieldDate } from '@looker/components/src/FieldDate'
-import { FieldDateRange } from '@looker/components/src/FieldDateRange'
-
-import { DateFormat } from '@looker/components/src/DateFormat'
-import { DateTimeFormat } from '@looker/components/src/DateTimeFormat'
-import { TimeFormat } from '@looker/components/src/TimeFormat'
 
 import { DialogSurface } from '@looker/components/src/Dialog/DialogSurface'
 import styled from 'styled-components'

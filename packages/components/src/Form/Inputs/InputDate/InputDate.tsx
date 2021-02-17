@@ -37,11 +37,15 @@ import styled from 'styled-components'
 import isFunction from 'lodash/isFunction'
 import isEqual from 'lodash/isEqual'
 import { BorderProps, SpaceProps } from '@looker/design-tokens'
-import { InputText } from '../Form/Inputs/InputText'
-import { Calendar, CalendarLocalization } from '../Calendar'
-import { ValidationType } from '../Form/ValidationMessage'
-import { Locales, formatDateString, parseDateFromString } from '../utils/i18n'
-import { useReadOnlyWarn } from '../utils/useReadOnlyWarn'
+import { InputText } from '../InputText'
+import { Calendar, CalendarLocalization } from '../../../Calendar'
+import { ValidationType } from '../../ValidationMessage'
+import {
+  Locales,
+  formatDateString,
+  parseDateFromString,
+} from '../../../utils/i18n'
+import { useReadOnlyWarn } from '../../../utils/useReadOnlyWarn'
 
 export interface InputDateProps extends SpaceProps, BorderProps {
   'aria-describedby'?: string

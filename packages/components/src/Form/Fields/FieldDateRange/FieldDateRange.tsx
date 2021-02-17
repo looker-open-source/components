@@ -26,20 +26,22 @@
 
 import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
-import { useID } from '../utils'
-import { useFormContext } from '../Form'
-import { InputDate, InputDateProps } from '../InputDate'
+import { useID } from '../../../utils'
+import { useFormContext } from '../../Form'
 import {
-  Field,
-  FieldProps,
-  omitFieldProps,
-  pickFieldProps,
-} from '../Form/Fields/Field'
+  InputDateRange,
+  InputDateRangeProps,
+} from '../../Inputs/InputDateRange'
+import { Field, FieldProps, omitFieldProps, pickFieldProps } from '../Field'
 
-export interface FieldDateProps extends FieldProps, InputDateProps {}
+export interface FieldInputDateRangeProps
+  extends FieldProps,
+    InputDateRangeProps {
+  ref: Ref<HTMLInputElement>
+}
 
-const FieldDateComponent = forwardRef(
-  (props: FieldDateProps, ref: Ref<HTMLInputElement>) => {
+const FieldDateRangeComponent = forwardRef(
+  (props: FieldInputDateRangeProps, ref: Ref<HTMLInputElement>) => {
     const validationMessage = useFormContext(props)
     const id = useID(props.id)
     return (
@@ -48,10 +50,9 @@ const FieldDateComponent = forwardRef(
         id={id}
         validationMessage={validationMessage}
       >
-        <InputDate
+        <InputDateRange
           {...omitFieldProps(props)}
           aria-describedby={`describedby-${id}`}
-          aria-labelledby={`labelledby-${id}`}
           id={id}
           validationType={validationMessage && validationMessage.type}
           ref={ref}
@@ -61,6 +62,6 @@ const FieldDateComponent = forwardRef(
   }
 )
 
-FieldDateComponent.displayName = 'FieldDateComponent'
+FieldDateRangeComponent.displayName = 'FieldDateRangeComponent'
 
-export const FieldDate = styled(FieldDateComponent)``
+export const FieldDateRange = styled(FieldDateRangeComponent)``

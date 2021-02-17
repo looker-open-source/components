@@ -27,6 +27,7 @@
 import React from 'react'
 import toPairs from 'lodash/toPairs'
 import {
+  Locales,
   Table,
   TableBody,
   TableDataCell,
@@ -34,7 +35,6 @@ import {
   TableHeaderCell,
   TableRow,
 } from '@looker/components'
-import { Locales } from '@looker/components/src/utils/i18n'
 
 export const LocaleTable = () => {
   return (

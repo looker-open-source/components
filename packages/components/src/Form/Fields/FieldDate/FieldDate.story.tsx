@@ -26,14 +26,15 @@
 import { Story } from '@storybook/react/types-6-0'
 import partial from 'lodash/partial'
 import React, { useState, SyntheticEvent } from 'react'
-import { Button } from '../Button'
-import { Grid } from '../Layout'
-import { Fieldset, FieldSelect, FieldSlider, FieldText } from '../Form'
-import { Popover, PopoverContent } from '../Popover'
-import { Paragraph } from '../Text'
-import { Locales, LocaleCodes } from '../utils/i18n'
-import { DateFormat } from '../DateFormat'
-import { FieldDate, FieldDateProps } from '../FieldDate'
+import { Button } from '../../../Button'
+import { Grid } from '../../../Layout'
+import { Fieldset } from '../../Fieldset'
+import { FieldSelect, FieldSlider, FieldText } from '../../Fields'
+import { Popover, PopoverContent } from '../../../Popover'
+import { Paragraph } from '../../../Text'
+import { Locales, LocaleCodes } from '../../../utils/i18n'
+import { DateFormat } from '../../../DateFormat'
+import { FieldDate, FieldDateProps } from '.'
 
 export default {
   component: FieldDate,

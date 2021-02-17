@@ -40,20 +40,24 @@ import max from 'lodash/max'
 import isEmpty from 'lodash/isEmpty'
 import isEqual from 'lodash/isEqual'
 import values from 'lodash/values'
-import { Icon } from '../Icon'
-import { ValidationType } from '../Form/ValidationMessage'
+import { Icon } from '../../../Icon'
+import { ValidationType } from '../../ValidationMessage'
 import {
   inputCSS,
   inputTextHover,
   inputTextFocus,
   inputTextValidation,
   inputTextDisabled,
-} from '../Form/Inputs/InputText'
-import { InlineInputTextBase } from '../Form/Inputs/InlineInputText'
-import { Calendar, CalendarLocalization } from '../Calendar'
-import { Locales, formatDateString, parseDateFromString } from '../utils/i18n'
-import { useID } from '../utils/useID'
-import { useReadOnlyWarn } from '../utils/useReadOnlyWarn'
+} from '../InputText'
+import { InlineInputTextBase } from '../../Inputs/InlineInputText'
+import { Calendar, CalendarLocalization } from '../../../Calendar'
+import {
+  Locales,
+  formatDateString,
+  parseDateFromString,
+} from '../../../utils/i18n'
+import { useID } from '../../../utils/useID'
+import { useReadOnlyWarn } from '../../../utils/useReadOnlyWarn'
 
 export interface InputDateRangeProps {
   disabled?: boolean

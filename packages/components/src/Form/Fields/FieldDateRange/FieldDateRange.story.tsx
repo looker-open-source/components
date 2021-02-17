@@ -25,10 +25,10 @@
  */
 import React, { useState } from 'react'
 import { Story } from '@storybook/react/types-6-0'
-import { Locales } from '../utils/i18n'
-import { FieldSelect } from '../Form/Fields/FieldSelect'
-import { Paragraph } from '../Text/Paragraph'
-import { DateFormat } from '../DateFormat'
+import { Locales } from '../../../utils/i18n'
+import { FieldSelect } from '../FieldSelect'
+import { Paragraph } from '../../../Text/Paragraph'
+import { DateFormat } from '../../../DateFormat'
 import { FieldDateRange, FieldInputDateRangeProps } from '.'
 
 interface DateRange {

@@ -25,11 +25,11 @@
  */
 import React, { useState } from 'react'
 import { Story } from '@storybook/react/types-6-0'
-import { DateFormat } from '../DateFormat'
-import { Space } from '../Layout/Space'
-import { Box } from '../Layout/Box'
-import { Heading, Text } from '../Text'
-import { InputDate, InputDateProps } from './'
+import { DateFormat } from '../../../DateFormat'
+import { Space } from '../../../Layout/Space'
+import { Box } from '../../../Layout/Box'
+import { Heading, Text } from '../../../Text'
+import { InputDate, InputDateProps } from '.'
 
 export default {
   component: InputDate,

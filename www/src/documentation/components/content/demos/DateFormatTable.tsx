@@ -24,6 +24,7 @@
 
  */
 import {
+  DateFormat,
   Table,
   TableBody,
   TableDataCell,
@@ -31,7 +32,6 @@ import {
   TableHeaderCell,
   TableRow,
 } from '@looker/components'
-import { DateFormat } from '@looker/components/src/DateFormat'
 import React from 'react'
 
 export const DateFormatTable = () => {
