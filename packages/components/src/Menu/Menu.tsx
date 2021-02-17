@@ -53,23 +53,6 @@ export interface MenuProps
    * The ref to be passed to the list element (`ref` is passed to the triggering element)
    */
   listRef?: Ref<HTMLUListElement>
-  /**
-   * Can be one of: top, bottom, left, right, auto, with the modifiers: start,
-   * end. This value comes directly from popper.js. See
-   * https://popper.js.org/popper-documentation.html#Popper.placements for more
-   * info.
-   * @default bottom
-   */
-  placement?: Placement
-  /**
-   * By default MenuList will reposition itself if they overflow the widow.
-   * You can use the pin property to override this behavior.
-   */
-  pin?: boolean
-  /**
-   * Allow the overlay to break out of the scroll parent
-   */
-  escapeWithReference?: boolean
 }
 
 export const Menu = forwardRef(
