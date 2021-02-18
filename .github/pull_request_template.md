@@ -8,7 +8,14 @@ Before requesting review from another developer please delete the lines above an
 
 Please check the following items are addressed in your pull request (or are not applicable)
 
-- [ ] Includes test coverage for all changes
-- [ ] Documentation updated
-- [ ] i18n impacts
-- [ ] a11y impacts
+- [ ] a11y impact (FUTURE: Make aXe pass req'd for CI ✅)
+
+#### Image snapshots (choose one)
+
+  - [ ] yes
+  - [ ] not applicable
+
+#### Documentation updated (choose one)
+
+  - [ ] yes
+  - [ ] not applicable
