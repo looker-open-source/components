@@ -25,6 +25,7 @@
  */
 
 import {
+  FocusEvent,
   MouseEvent as ReactMouseEvent,
   useRef,
   useContext,
@@ -57,7 +58,7 @@ export function useInputEvents<
     disabled,
     // highlights all the text in the box on click when true
     selectOnClick = false,
-    readOnly = false,
+    inputReadOnly = false,
     // wrapped events
     onClick,
     onMouseDown,
@@ -84,8 +85,16 @@ export function useInputEvents<
 
   const handleBlur = useBlur(context)
 
-  function handleFocus() {
-    if (!readOnly && selectOnClick) {
+  function handleFocus(e: FocusEvent<HTMLInputElement>) {
+    if (inputReadOnly) {
+      // User can't type in the input so deselect the text
+      // if it gets naturally selected from focusing via keyboard
+      const input = e.currentTarget
+      input.selectionStart = input.selectionEnd
+    } else if (selectOnClick) {
+      // If user can type in the input, and selectOnClick is true,
+      // a newly focused input should select the text on next click
+      // because the user is likely to want to replace it
       selectOnClickRef.current = true
     }
 
