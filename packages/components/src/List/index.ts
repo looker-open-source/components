@@ -26,3 +26,4 @@
 
 export * from './List'
 export * from './ListItem'
+export { listItemDimensions } from './utils'
