@@ -24,7 +24,7 @@
 
  */
 
-import { CompatibleHTMLProps, reset } from '@looker/design-tokens'
+import { CompatibleHTMLProps } from '@looker/design-tokens'
 import omit from 'lodash/omit'
 import React, { forwardRef, ReactNode, Ref } from 'react'
 import styled from 'styled-components'
@@ -83,7 +83,6 @@ export const ListItemWrapper = styled(ListItemWrapperInternal)`
 
   & > button,
   & > a {
-    ${reset}
     ${listItemBackgroundColor}
 
     align-items: center;
