@@ -48,17 +48,6 @@ export interface InputSearchProps
     | 'formatCreateLabel'
   > {
   /**
-   * @default true
-   */
-  isClearable?: SelectProps['isClearable']
-  hideSearchIcon?: boolean
-  /**
-   * Called when the user selects one of the options
-   * onChange will also be called with the option's value unless changeOnSelect is set to false
-   * @experimental
-   */
-  onSelectOption?: (option?: SelectOptionObject) => void
-  /**
    * Selecting an option updates the input's value
    * @default true
    * @experimental
@@ -71,11 +60,29 @@ export interface InputSearchProps
    * @experimental
    */
   clearOnClose?: boolean
+
+  /**
+   * customize the tooltip on the closing icon
+   * @default 'Clear Field'
+   */
+  clearIconLabel?: string
+
+  hideSearchIcon?: boolean
+  /**
+   * @default true
+   */
+  isClearable?: SelectProps['isClearable']
   /**
    * If defined, the popup will render with this text when there are no options.
    * @experimental
    */
   noOptionsLabel?: string
+  /**
+   * Called when the user selects one of the options
+   * onChange will also be called with the option's value unless changeOnSelect is set to false
+   * @experimental
+   */
+  onSelectOption?: (option?: SelectOptionObject) => void
   /**
    * If true, the popover opens when the text box is clicked.
    * @default false
@@ -88,27 +95,28 @@ export interface InputSearchProps
 const InputSearchLayout = forwardRef(
   (
     {
-      options,
-      disabled,
-      autoFocus,
-      isClearable = true,
-      placeholder,
-      name,
-      onChange,
-      onSelectOption,
-      value: controlledValue,
-      defaultValue,
-      noOptionsLabel,
-      indicator,
-      listLayout,
       autoResize,
-      windowedOptions: windowedOptionsProp,
-      isLoading,
-      hideSearchIcon,
-      readOnly,
-      summary,
+      autoFocus,
       changeOnSelect = true,
       clearOnClose = !changeOnSelect,
+      defaultValue,
+      disabled,
+      hideSearchIcon,
+      clearIconLabel,
+      indicator,
+      isClearable = true,
+      isLoading,
+      listLayout,
+      name,
+      noOptionsLabel,
+      onChange,
+      onSelectOption,
+      options,
+      placeholder,
+      readOnly,
+      summary,
+      value: controlledValue,
+      windowedOptions: windowedOptionsProp,
       ...props
     }: InputSearchProps,
     ref: Ref<HTMLInputElement>
@@ -168,22 +176,23 @@ const InputSearchLayout = forwardRef(
       >
         <ComboboxInput
           {...ariaProps}
-          value={valueToUse}
+          autoComplete={false}
+          autoFocus={autoFocus}
+          autoResize={autoResize}
+          disabled={disabled}
+          freeInput
           iconBefore={hideSearchIcon ? undefined : 'Search'}
           iconBeforeTitle={hideSearchIcon ? undefined : t('Search')}
-          disabled={disabled}
-          autoFocus={autoFocus}
-          placeholder={placeholder}
+          clearIconLabel={clearIconLabel}
           name={name}
-          validationType={props.validationType}
           isClearable={isClearable}
-          autoComplete={false}
-          autoResize={autoResize}
-          readOnly={readOnly}
           onChange={handleInputChange}
-          freeInput
-          summary={summary}
+          placeholder={placeholder}
+          readOnly={readOnly}
           ref={ref}
+          summary={summary}
+          validationType={props.validationType}
+          value={valueToUse}
         />
         {!disabled && (options?.length || noOptionsLabel) && (
           <ComboboxList

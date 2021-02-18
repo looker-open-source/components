@@ -36,11 +36,16 @@ import { Span } from '../../Text'
 
 export interface AdvancedInputControlsProps
   extends CompatibleHTMLProps<HTMLDivElement> {
-  showCaret?: boolean
+  /**
+   * customize the tooltip on the closing icon
+   * @default 'Clear Field'
+   */
+  clearIconLabel?: string
   isVisibleOptions?: boolean
   onClear: (e: MouseEvent<HTMLButtonElement>) => void
-  summary?: string
+  showCaret?: boolean
   showClear: boolean
+  summary?: string
   validationType?: 'error'
 }
 
@@ -53,17 +58,22 @@ const intersperseDivider = (children: ReactElement[]) =>
     </React.Fragment>
   ))
 
-export const AdvancedInputControls: FC<AdvancedInputControlsProps> = ({
-  validationType,
-  showClear,
-  disabled,
-  isVisibleOptions,
-  showCaret,
-  onClear,
-  summary,
-  ...props
-}) => {
+export const AdvancedInputControls: FC<AdvancedInputControlsProps> = (
+  props
+) => {
   const { t } = useTranslation('AdvancedInputControls')
+  const clearIconLabelText = t('Clear Field')
+  const {
+    disabled,
+    clearIconLabel = clearIconLabelText,
+    isVisibleOptions,
+    onClear,
+    showCaret,
+    showClear,
+    summary,
+    validationType,
+    ...rest
+  } = props
   const children = intersperseDivider(
     compact([
       summary && (
@@ -83,7 +93,7 @@ export const AdvancedInputControls: FC<AdvancedInputControlsProps> = ({
         <IconButton
           size="xsmall"
           icon="Close"
-          label={t('Clear Field')}
+          label={clearIconLabel}
           onClick={onClear}
           tooltipDisabled={disabled}
           disabled={disabled}
@@ -99,7 +109,7 @@ export const AdvancedInputControls: FC<AdvancedInputControlsProps> = ({
     ])
   )
 
-  return <SearchControlGrid {...props}>{children}</SearchControlGrid>
+  return <SearchControlGrid {...rest}>{children}</SearchControlGrid>
 }
 
 const SearchControlGrid = styled.div`

@@ -55,6 +55,7 @@ export const ComboboxInputInternal = forwardRef(
       autoComplete = true,
       disabled,
       freeInput,
+      clearIconLabel,
       inputReadOnly = false,
       isClearable,
       // wrapped events
@@ -154,13 +155,14 @@ export const ComboboxInputInternal = forwardRef(
         disabled={disabled}
         after={
           <AdvancedInputControls
-            validationType={validationType}
-            showClear={!!(isClearable && inputValue) && !disabled && !readOnly}
-            onClear={handleClear}
-            isVisibleOptions={isVisible}
             disabled={disabled}
+            clearIconLabel={clearIconLabel}
+            isVisibleOptions={isVisible}
+            onClear={handleClear}
             showCaret={!freeInput}
+            showClear={!!(isClearable && inputValue) && !disabled && !readOnly}
             summary={summary}
+            validationType={validationType}
           />
         }
         ref={ref}

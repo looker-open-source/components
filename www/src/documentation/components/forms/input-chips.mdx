@@ -191,3 +191,14 @@ As the name suggests, readOnly makes the text un-editable.
   values={['you', "can't", 'change', 'me', 'here']}
 />
 ```
+
+The `InputChips` component provides the prop `clearIconLabel` to customize the input icon label, the same is available to the individual `Chip` with the prop `chipIconLabel`. Hover over the the `x` icon to see the tooltip.
+
+```jsx
+<InputChips
+  placeholder="hover the x"
+  clearIconLabe="remove all"
+  chipIconLabel="remove this chip"
+  values={['you', "can't", 'change', 'me', 'here']}
+/>
+```
