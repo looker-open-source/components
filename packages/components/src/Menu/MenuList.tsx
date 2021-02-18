@@ -62,4 +62,6 @@ const dividersStyle = ({ groupDividers = true }: GroupDividersProps) =>
 
 export const MenuList = styled(MenuListInternal)`
   ${dividersStyle}
+
+  min-width: 12rem;
 `
