@@ -50,7 +50,11 @@ describe('Dialog', () => {
   test('defaultOpen', async () => {
     renderWithTheme(<Dialog defaultOpen content={<DialogMediumContent />} />)
     expect(screen.queryByText(/We the People/)).toBeInTheDocument()
-    expect(screen.queryByLabelText(/The Constitution/)).toBeInTheDocument()
+    expect(
+      screen.queryByLabelText(/The Constitution/, {
+        selector: '[role="dialog"]',
+      })
+    ).toBeInTheDocument()
     const doneButton = screen.getByText('Done Reading')
     fireEvent.click(doneButton)
     await waitForElementToBeRemoved(() => screen.getByText(/We the People/))
