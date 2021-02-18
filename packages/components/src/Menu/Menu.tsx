@@ -52,27 +52,35 @@ export interface MenuProps
   listRef?: Ref<HTMLUListElement>
 }
 
-const omitPopoverProps = (
+// Returns two object, the first being Popover props and the second being List props
+const partitionMenuProps = (
   props: Omit<MenuProps, 'children' | 'content' | 'id' | 'listRef'>,
   popoverPropKeys: Array<keyof PopoverProps>
 ) => {
-  const propsWithoutPopoverProps = { ...props }
-  popoverPropKeys.forEach((key) => delete propsWithoutPopoverProps[key])
-  return propsWithoutPopoverProps
+  const allProps = { ...props }
+
+  const popoverProps = {}
+  popoverPropKeys.forEach((key) => {
+    if (props[key] !== undefined) {
+      popoverProps[key] = props[key]
+    }
+    delete allProps[key]
+  })
+
+  const listProps = allProps
+
+  return [popoverProps, listProps]
 }
 
 export const Menu = forwardRef(
   (
-    { children, content, id: propsID, listRef, ...props }: MenuProps,
+    { children, content, id: propsID, listRef, ...restProps }: MenuProps,
     ref: Ref<any>
   ) => {
-    const popoverProps = popoverPropKeys.reduce((object, key) => {
-      if (props[key] !== undefined) {
-        object[key] = props[key]
-      }
-      return object
-    }, {})
-    const listProps = omitPopoverProps(props, popoverPropKeys)
+    const [popoverProps, listProps] = partitionMenuProps(
+      restProps,
+      popoverPropKeys
+    )
 
     const id = useID(propsID)
     const list = content && (
