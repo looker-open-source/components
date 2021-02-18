@@ -24,6 +24,24 @@
 
  */
 
+import { ExploreOutline } from '@looker/icons/src'
+import {
+  AddAlert,
+  Chat,
+  Create,
+  DeleteOutline,
+  Favorite,
+  MoreVert,
+  Person,
+  PieChart,
+  Refresh,
+  Undo,
+  VerifiedUser,
+} from '@styled-icons/material'
+import {
+  Create as CreateOutline,
+  CreateNewFolder,
+} from '@styled-icons/material-outlined'
 import React, {
   forwardRef,
   Fragment,
@@ -38,7 +56,6 @@ import { Card } from '../Card'
 import { Dialog, DialogLayout } from '../Dialog'
 import { Divider } from '../Divider'
 import { FieldToggleSwitch } from '../Form'
-import { Icon } from '../Icon'
 import { Flex, Space, SpaceVertical } from '../Layout'
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from '../Tabs'
 import { Heading, Text, Paragraph } from '../Text'
@@ -56,14 +73,14 @@ const menuItems = (
     <MenuItem
       detail="detail"
       description="this is the description"
-      icon="LogoRings"
+      icon={<LogoRings />}
     >
       Looker
     </MenuItem>
-    <MenuItem description="this is the description" icon="Validate">
+    <MenuItem description="this is the description" icon={<Validate />}>
       Validate
     </MenuItem>
-    <MenuItem detail="detail" icon="ChartPie">
+    <MenuItem detail="detail" icon={<ChartPie />}>
       Pizza
     </MenuItem>
 
@@ -116,7 +133,7 @@ export const IconSpace = () => (
     <Menu
       content={
         <>
-          <MenuItem icon="User">Hello</MenuItem>
+          <MenuItem icon={<Person />}>Hello</MenuItem>
           <MenuItem>World</MenuItem>
         </>
       }
@@ -132,7 +149,7 @@ export const IconSpace = () => (
       <MenuItem description="this is a description" icon="LogoRings">
         Looker
       </MenuItem>
-      <MenuItem icon="Validate">Validate</MenuItem>
+      <MenuItem icon={<VerifiedUser />}>Validate</MenuItem>
       <MenuItem>Pizza!</MenuItem>
     </MenuList>
 
@@ -140,7 +157,7 @@ export const IconSpace = () => (
 
     <MenuList iconGutter>
       <MenuItem icon="LogoRings">Looker</MenuItem>
-      <MenuItem icon="Validate">Validate</MenuItem>
+      <MenuItem icon={<VerifiedUser />}>Validate</MenuItem>
       <MenuHeading>MenuGroup with 1 Item</MenuHeading>
       <MenuItem>Pizza!</MenuItem>
     </MenuList>
@@ -148,9 +165,9 @@ export const IconSpace = () => (
     <Divider />
     <MenuList iconGutter>
       <MenuHeading>Icon, Artwork, and Detail</MenuHeading>
-      <MenuItem icon="ChartPie">Icon</MenuItem>
+      <MenuItem icon={<PieChart />}>Icon</MenuItem>
       <MenuItem
-        iconArtwork={
+        icon={
           <svg
             viewBox="0 0 24 24"
             fill="none"
@@ -208,8 +225,13 @@ const MenuIcons = forwardRef(
   ({ open, ...props }: { open: () => void }, ref: Ref<HTMLButtonElement>) => {
     return (
       <>
-        <IconButton icon="AddAlerts" label="Add Alert" onClick={open} />
-        <IconButton icon="DotsVert" label="More Options" ref={ref} {...props} />
+        <IconButton icon={<AddAlert />} label="Add Alert" onClick={open} />
+        <IconButton
+          icon={<MoreVert />}
+          label="More Options"
+          ref={ref}
+          {...props}
+        />
       </>
     )
   }
@@ -257,7 +279,7 @@ export const RealisticMenus = () => {
           <>
             <MenuItem
               description="some description"
-              icon="Refresh"
+              icon={<Refresh />}
               detail="⌘⇧↵"
             >
               Clear cache & refresh
@@ -266,11 +288,11 @@ export const RealisticMenus = () => {
             <MenuDivider />
 
             <MenuHeading>Options</MenuHeading>
-            <MenuItem icon="EditOutline" detail="⌘⇧E">
+            <MenuItem icon={<Create />} detail="⌘⇧E">
               Edit dashboard
             </MenuItem>
             <MenuItem description="some description">Get LookMl</MenuItem>
-            <MenuItem icon="Undo" detail="A longer detail">
+            <MenuItem icon={<Undo />} detail="A longer detail">
               Revert to original dashboard
             </MenuItem>
 
@@ -282,11 +304,11 @@ export const RealisticMenus = () => {
 
             <MenuDivider />
 
-            <MenuItem icon="TrashOutline">Move to Trash</MenuItem>
+            <MenuItem icon={<DeleteOutline />}>Move to Trash</MenuItem>
           </>
         }
       >
-        <IconButton label="Dashboard actions" size="medium" icon="DotsVert">
+        <IconButton label="Dashboard actions" size="medium" icon={<MoreVert />}>
           Icon Space Preserved
         </IconButton>
       </Menu>
@@ -295,18 +317,18 @@ export const RealisticMenus = () => {
         iconGutter
         content={
           <>
-            <MenuItem icon="Refresh" detail="⌘⇧↵">
+            <MenuItem icon={<Undo />} detail="⌘⇧↵">
               Clear cache &amp; refresh
             </MenuItem>
 
             <MenuDivider />
 
             <MenuHeading>Options</MenuHeading>
-            <MenuItem icon="EditOutline" detail="⌘⇧E">
+            <MenuItem icon={<CreateOutline />} detail="⌘⇧E">
               Edit dashboard
             </MenuItem>
             <MenuItem>Get LookMl</MenuItem>
-            <MenuItem icon="Undo">Revert to original dashboard</MenuItem>
+            <MenuItem icon={<Undo />}>Revert to original dashboard</MenuItem>
 
             <MenuDivider />
 
@@ -320,11 +342,11 @@ export const RealisticMenus = () => {
 
             <MenuDivider />
 
-            <MenuItem icon="TrashOutline">Move to Trash</MenuItem>
+            <MenuItem icon={<DeleteOutline />}>Move to Trash</MenuItem>
           </>
         }
       >
-        <IconButton label="Dashboard actions" size="medium" icon="DotsVert">
+        <IconButton label="Dashboard actions" size="medium" icon={<MoreVert />}>
           Icon Space Preserved
         </IconButton>
       </Menu>
@@ -333,23 +355,25 @@ export const RealisticMenus = () => {
         iconGutter
         content={
           <>
-            <MenuItem icon="EditOutline">Rename</MenuItem>
-            <MenuItem description="some description" icon="TrashOutline">
-              Delete
-            </MenuItem>
-            <MenuDivider />
-            <MenuHeading>Create</MenuHeading>
-            <MenuItem icon="FolderNew">Folder</MenuItem>
-            <MenuItem icon="ExploreOutline">Model</MenuItem>
-            <MenuItem icon="IdeFileView">New Item</MenuItem>
-            <MenuItem icon="IdeFileView">View</MenuItem>
-            <MenuItem icon="IdeFileDashboard">Dasbhaord</MenuItem>
-            <MenuItem icon="IdeFileDocument">Document</MenuItem>
-            <MenuItem icon="IdeFileGeneric">Generic LookML file</MenuItem>
+            <MenuGroup>
+              <MenuItem icon={<CreateOutline />}>Rename</MenuItem>
+              <MenuItem description="some description" icon={<DeleteOutline />}>
+                Delete
+              </MenuItem>
+            </MenuGroup>
+            <MenuGroup label="Create">
+              <MenuItem icon={<CreateNewFolder />}>Folder</MenuItem>
+              <MenuItem icon={<ExploreOutline />}>Model</MenuItem>
+              <MenuItem icon="IdeFileView">New Item</MenuItem>
+              <MenuItem icon="IdeFileView">View</MenuItem>
+              <MenuItem icon="IdeFileDashboard">Dasbhaord</MenuItem>
+              <MenuItem icon="IdeFileDocument">Document</MenuItem>
+              <MenuItem icon="IdeFileGeneric">Generic LookML file</MenuItem>
+            </MenuGroup>
           </>
         }
       >
-        <IconButton label="IDE actions" size="medium" icon="DotsVert" />
+        <IconButton label="IDE actions" size="medium" icon={<MoreVert />} />
       </Menu>
 
       <Menu
@@ -369,7 +393,7 @@ export const RealisticMenus = () => {
           </>
         }
       >
-        <IconButton label="Menu No Icons" size="medium" icon="DotsVert" />
+        <IconButton label="Menu No Icons" size="medium" icon={<MoreVert />} />
       </Menu>
     </Space>
   )
@@ -607,7 +631,7 @@ export const NestedMenu = () => {
   )
   const content = (
     <>
-      <MenuItem icon="Edit" onClick={getOnClick('Edit')}>
+      <MenuItem icon={<Create />} onClick={getOnClick('Edit')}>
         Edit
       </MenuItem>
       <MenuItem icon="Download" onClick={getOnClick('Download')}>
