@@ -38,6 +38,7 @@ import React, {
 import { DialogContext } from '../Dialog'
 import { usePopover } from '../Popover'
 import { useWrapEvent } from '../utils'
+import { ListItemContext } from '../List/ListItemContext'
 import { MenuList } from './MenuList'
 import { NestedMenuContext } from './NestedMenuProvider'
 import { NestedMenuSurface } from './NestedMenuSurface'
@@ -80,7 +81,6 @@ export interface UseNestedMenuProps
     'onClick' | 'onKeyDown' | 'onMouseEnter' | 'onMouseLeave'
   > {
   id: string
-  compact?: boolean
   /**
    * A list of menu items that will open to the right when the user hovers
    * or hits the right arrow key. Only supports one level of nesting.
@@ -91,7 +91,6 @@ export interface UseNestedMenuProps
 const noop = () => undefined
 
 export const useNestedMenu = ({
-  compact,
   id,
   onClick,
   onKeyDown,
@@ -106,6 +105,7 @@ export const useNestedMenu = ({
   )
 
   const { closeModal } = useContext(DialogContext)
+  const { density } = useContext(ListItemContext)
 
   // Show the nestedMenu by updating the context with the id for this one
   // Hide it by updating the context to an empty string
@@ -193,7 +193,7 @@ export const useNestedMenu = ({
 
   const { popover, popperInstanceRef, domProps } = usePopover({
     content: (
-      <MenuList data-autofocus="true" {...listHandlers} compact={compact}>
+      <MenuList data-autofocus="true" density={density} {...listHandlers}>
         {nestedMenu}
       </MenuList>
     ),

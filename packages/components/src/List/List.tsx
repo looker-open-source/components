@@ -86,10 +86,11 @@ export const ListInternal = forwardRef(
       disabled,
       iconGutter = false,
       keyColor,
-      windowing,
       onBlur,
       onFocus,
       onKeyDown,
+      role,
+      windowing,
       ...props
     }: ListProps,
     forwardedRef: Ref<HTMLUListElement>
@@ -131,7 +132,12 @@ export const ListInternal = forwardRef(
 
     return (
       <ListItemContext.Provider value={context}>
-        <ul tabIndex={-1} {...omitStyledProps(props)} {...navProps}>
+        <ul
+          tabIndex={-1}
+          role={role || 'list'}
+          {...omitStyledProps(props)}
+          {...navProps}
+        >
           {content}
         </ul>
       </ListItemContext.Provider>

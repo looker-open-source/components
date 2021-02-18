@@ -28,7 +28,6 @@ import { screen } from '@testing-library/react'
 import 'jest-styled-components'
 import * as React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { MenuGroup } from './MenuGroup'
 import { MenuItem } from './MenuItem'
 import { MenuList } from './MenuList'
 
@@ -36,17 +35,6 @@ import { MenuList } from './MenuList'
 const globalGetBoundingClientRect = Element.prototype.getBoundingClientRect
 
 describe('MenuList', () => {
-  test('allocates space for MenuItem when a sibling has an icon', () => {
-    const { getByTestId } = renderWithTheme(
-      <MenuList>
-        <MenuItem icon="Calendar">Gouda</MenuItem>
-        <MenuItem id="cheddar">Cheddar</MenuItem>
-      </MenuList>
-    )
-
-    getByTestId('menu-item-cheddar-icon-placeholder')
-  })
-
   describe('windowing', () => {
     beforeEach(() => {
       jest.useFakeTimers()
@@ -85,33 +73,15 @@ describe('MenuList', () => {
       )
 
       expect(screen.getByText('0')).toBeVisible()
-      expect(screen.getByText('14')).toBeVisible()
-      expect(screen.queryByText('15')).not.toBeInTheDocument()
+      expect(screen.getByText('15')).toBeVisible()
+      expect(screen.queryByText('16')).not.toBeInTheDocument()
 
+      const totalItems = arr3000.length
+      const windowedItems = 16
+      const defaultItemHeight = 36
+      const height = (totalItems - windowedItems) * defaultItemHeight
       expect(screen.queryByTestId('before')).not.toBeInTheDocument()
-      expect(screen.getByTestId('after')).toHaveStyle('height: 119400px;')
-    })
-
-    test('variable', () => {
-      const arr200 = Array.from(Array(200), (_, i) => i)
-      renderWithTheme(
-        <MenuList windowing="variable">
-          {arr200.map((num) => (
-            <MenuGroup key={num}>
-              {Array.from(Array((num + 1) % 15), (_, i) => (
-                <MenuItem key={i}>{`${num}_${i}`}</MenuItem>
-              ))}
-            </MenuGroup>
-          ))}
-        </MenuList>
-      )
-
-      expect(screen.getByText('0_0')).toBeVisible()
-      expect(screen.getByText('6_6')).toBeVisible()
-      expect(screen.queryByText('7_0')).not.toBeInTheDocument()
-
-      expect(screen.queryByTestId('before')).not.toBeInTheDocument()
-      expect(screen.getByTestId('after')).toHaveStyle('height: 61993px;')
+      expect(screen.getByTestId('after')).toHaveStyle(`height: ${height}px;`)
     })
   })
 })

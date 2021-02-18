@@ -26,8 +26,14 @@
 
 import React, { cloneElement, forwardRef, Ref, ReactElement } from 'react'
 import { useID } from '../utils'
-import { Popover, PopoverProps, UsePopoverResponseDom } from '../Popover'
-import { MenuList, MenuListProps } from './MenuList'
+import {
+  Popover,
+  PopoverProps,
+  UsePopoverResponseDom,
+  popoverPropKeys,
+} from '../Popover'
+import { ListProps } from '../List'
+import { MenuList, GroupDividersProps } from './MenuList'
 
 export interface MenuDomProps extends UsePopoverResponseDom {
   'aria-controls': string
@@ -35,7 +41,7 @@ export interface MenuDomProps extends UsePopoverResponseDom {
 
 export interface MenuProps
   extends Omit<PopoverProps, 'children'>,
-    Omit<MenuListProps, 'children' | 'content'> {
+    Omit<ListProps & GroupDividersProps, 'children' | 'content'> {
   /**
    * A ReactElement that accepts dom props
    */
@@ -46,60 +52,46 @@ export interface MenuProps
   listRef?: Ref<HTMLUListElement>
 }
 
+// Returns two object, the first being Popover props and the second being List props
+const partitionMenuProps = (
+  props: Omit<MenuProps, 'children' | 'content' | 'id' | 'listRef'>,
+  popoverPropKeys: Array<keyof PopoverProps>
+) => {
+  const allProps = { ...props }
+
+  const popoverProps = {}
+  popoverPropKeys.forEach((key) => {
+    if (props[key] !== undefined) {
+      popoverProps[key] = props[key]
+    }
+    delete allProps[key]
+  })
+
+  const listProps = allProps
+
+  return [popoverProps, listProps]
+}
+
 export const Menu = forwardRef(
   (
-    {
-      children,
-      content,
-      id: propsID,
-      listRef,
-
-      // Popover props to pass through
-      canClose,
-      cancelClickOutside,
-      disabled,
-      focusTrap,
-      hoverDisclosureRef,
-      isOpen,
-      onClose,
-      pin,
-      placement,
-      setOpen,
-      triggerElement,
-      triggerToggle,
-
-      // List props to pass through
-      ...props
-    }: MenuProps,
+    { children, content, id: propsID, listRef, ...restProps }: MenuProps,
     ref: Ref<any>
   ) => {
+    const [popoverProps, listProps] = partitionMenuProps(
+      restProps,
+      popoverPropKeys
+    )
+
     const id = useID(propsID)
     const list = content && (
-      <MenuList id={id} {...props} ref={listRef} data-autofocus="true">
+      <MenuList id={id} {...listProps} ref={listRef} data-autofocus="true">
         {content}
       </MenuList>
     )
     children = cloneElement(children, { 'aria-controls': id })
 
     return (
-      <Popover
-        content={list}
-        ref={ref}
-        {...{
-          canClose,
-          cancelClickOutside,
-          disabled,
-          focusTrap,
-          hoverDisclosureRef,
-          isOpen,
-          onClose,
-          pin,
-          placement,
-          setOpen,
-          triggerElement,
-          triggerToggle,
-        }}
-      >
+      <Popover content={list} ref={ref} {...popoverProps}>
         {children}
       </Popover>
     )

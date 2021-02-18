@@ -77,6 +77,7 @@ Basic.args = {
       ))}
     </MenuGroup>
   )),
+  iconGutter: true,
 }
 
 const array200 = Array.from(Array(200), (_, i) => String(i + 1))

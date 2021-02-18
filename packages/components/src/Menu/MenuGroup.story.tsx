@@ -71,17 +71,10 @@ const Template: Story<CustomStoryProps> = (args) => {
 
 export const Basic = Template.bind({})
 Basic.args = {
-  compact: false,
   description: true,
   detail: true,
   icons: true,
   label: 'Options',
-}
-
-export const Compact = Template.bind({})
-Compact.args = {
-  ...Basic.args,
-  compact: true,
 }
 
 export const NoDescriptions = Template.bind({})

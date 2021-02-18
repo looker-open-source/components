@@ -59,6 +59,26 @@ export interface PopoverProps extends UsePopoverProps {
   hoverDisclosureRef?: HTMLElement | null | RefObject<HTMLElement>
 }
 
+export const popoverPropKeys: Array<keyof PopoverProps> = [
+  'content',
+  'onClose',
+  'placement',
+  'portalElement',
+  'pin',
+  'disableScrollLock',
+  'triggerElement',
+  'focusTrap',
+  'scrollLock',
+  'surface',
+  'disabled',
+  'isOpen',
+  'canClose',
+  'setOpen',
+  'triggerToggle',
+  'cancelClickOutside',
+  'hoverDisclosureRef',
+]
+
 export const Popover = forwardRef(
   (
     { children, hoverDisclosureRef, ...props }: PopoverProps,
