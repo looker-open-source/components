@@ -58,6 +58,10 @@ export interface IconProps
    */
   artwork?: ReactNode
   color?: string
+  /**
+   * Used as the aria-label value for the icon
+   */
+  label?: string
   name?: IconNames
   /**
    * Explicitly specify a title for the SVG rendered by the icon.

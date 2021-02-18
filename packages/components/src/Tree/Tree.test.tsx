@@ -31,7 +31,7 @@ import { Button } from '../Button'
 import { Tree } from '.'
 
 describe('Tree', () => {
-  test('Renders disclosure label and detail', () => {
+  test('Renders string disclosure label and detail', () => {
     renderWithTheme(
       <Tree label="Tree Label" detail="Tree Detail">
         Hello World
@@ -40,6 +40,16 @@ describe('Tree', () => {
 
     screen.getByText('Tree Label')
     screen.getByText('Tree Detail')
+  })
+
+  test('Renders JSX Element disclosure label', () => {
+    renderWithTheme(
+      <Tree label={<div>Tree JSX Label</div>} detail="Tree Detail">
+        Hello World
+      </Tree>
+    )
+
+    screen.getByText('Tree JSX Label')
   })
 
   test('Renders and hides children on disclosure click', () => {

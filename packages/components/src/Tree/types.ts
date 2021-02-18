@@ -24,6 +24,7 @@
 
  */
 
+import { ReactNode } from 'react'
 import { AccordionProps } from '../Accordion'
 import { ListItemProps } from '../List'
 
@@ -49,4 +50,8 @@ export interface TreeProps
    * @default false
    */
   dividers?: boolean
+  /**
+   * Label text or element displayed within Tree's internal AccordionDisclosure
+   */
+  label: ReactNode
 }
