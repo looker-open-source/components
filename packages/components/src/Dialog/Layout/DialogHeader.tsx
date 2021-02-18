@@ -68,11 +68,12 @@ const DialogHeaderLayout: FC<DialogHeaderProps> = ({
   const { t } = useTranslation('DialogHeader')
   const { closeModal, dialogId } = useContext(DialogContext)
   const { id } = props
+  const headingId = dialogId ? `${dialogId}-heading` : undefined
 
   return (
-    <div {...omitStyledProps(props)}>
+    <header aria-labelledby={headingId} {...omitStyledProps(props)}>
       <Heading
-        id={dialogId ? `${dialogId}-heading` : undefined}
+        id={headingId}
         as="h3"
         mr="xlarge"
         fontSize={fontSize}
@@ -98,7 +99,7 @@ const DialogHeaderLayout: FC<DialogHeaderProps> = ({
           </Detail>
         )
       )}
-    </div>
+    </header>
   )
 }
 
