@@ -26,6 +26,7 @@
 
 import React, { FC, useState } from 'react'
 import { Story } from '@storybook/react/types-6-0'
+import { DateRange } from '@styled-icons/material'
 import { Grid, Space } from '../Layout'
 import { DensityRamp } from './types'
 import { List, ListProps } from './List'
@@ -38,7 +39,7 @@ export default {
 
 const listItems = (
   <>
-    <ListItem icon="Calendar" description="Orange-y">
+    <ListItem icon={<DateRange />} description="Orange-y">
       Cheddar
     </ListItem>
     <ListItem icon="Pivot" detail="Netherlands">

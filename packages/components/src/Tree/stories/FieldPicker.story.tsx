@@ -26,6 +26,9 @@
 
 import React, { FC, ReactNode, useState } from 'react'
 import styled from 'styled-components'
+import { FilterList, MoreVert } from '@styled-icons/material'
+import { Info } from '@styled-icons/material-outlined'
+import { ChevronRight, ExpandMore } from '@styled-icons/material-rounded'
 import {
   IconButton,
   Menu,
@@ -66,10 +69,14 @@ const PickerItem: FC<{ color?: string; truncate?: boolean }> = ({
         isOpen={overlay === 'popover'}
         setOpen={togglePopover}
       >
-        <IconButton icon="Filter" label="Filter" tooltipPlacement="top" />
+        <IconButton
+          icon={<FilterList />}
+          label="Filter"
+          tooltipPlacement="top"
+        />
       </Popover>
       <Tooltip placement="top" content="Some exciting info or something">
-        <IconButton icon="CircleInfoOutline" label="Info" />
+        <IconButton icon={<Info />} label="Info" />
       </Tooltip>
       <Menu
         isOpen={overlay === 'menu'}
@@ -83,7 +90,11 @@ const PickerItem: FC<{ color?: string; truncate?: boolean }> = ({
           </>
         }
       >
-        <IconButton icon="DotsVert" label="Options" tooltipPlacement="top" />
+        <IconButton
+          icon={<MoreVert />}
+          label="Options"
+          tooltipPlacement="top"
+        />
       </Menu>
     </>
   )
@@ -164,7 +175,7 @@ const ViewAccordion: FC<{
   <Accordion
     defaultOpen={defaultOpen}
     indicatorSize="xxsmall"
-    indicatorIcons={{ close: 'CaretRight', open: 'CaretDown' }}
+    indicatorIcons={{ close: <ChevronRight />, open: <ExpandMore /> }}
   >
     <AccordionDisclosure px="xxsmall" py="none" fontSize="xsmall">
       <Space between>

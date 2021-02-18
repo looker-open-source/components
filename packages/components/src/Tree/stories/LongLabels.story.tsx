@@ -25,14 +25,15 @@
  */
 
 import React from 'react'
+import { Info, TableChart, Visibility } from '@styled-icons/material-outlined'
 import { Tree, TreeItem, IconButton } from '../..'
 
 export const LongLabels = () => (
   <Tree label="Tree with long labels " icon="ExploreOutline" defaultOpen>
-    <Tree label="Wrapping next" icon="VisibilityOutline" defaultOpen>
+    <Tree label="Wrapping next" icon={<Visibility />} defaultOpen>
       <Tree
         label="Orders Lorem ipsum dolor sit amet, consectetur adipiscing elit. Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc."
-        icon="Table"
+        icon={<TableChart />}
         defaultOpen
       >
         <TreeItem icon="IdeDimension">
@@ -49,7 +50,7 @@ export const LongLabels = () => (
           detail={{
             content: (
               <IconButton
-                icon="CircleInfo"
+                icon={<Info />}
                 label="Get Info"
                 onClick={() => alert("You've got info!")}
               />
@@ -66,10 +67,10 @@ export const LongLabels = () => (
         </TreeItem>
       </Tree>
     </Tree>
-    <Tree label="Truncated text" icon="VisibilityOutline" defaultOpen>
+    <Tree label="Truncated text" icon={<Visibility />} defaultOpen>
       <Tree
         label="Users Lorem ipsum dolor sit amet, consectetur adipiscing elit. There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. "
-        icon="Table"
+        icon={<TableChart />}
         truncate
         defaultOpen
       >
@@ -89,7 +90,7 @@ export const LongLabels = () => (
           detail={{
             content: (
               <IconButton
-                icon="CircleInfo"
+                icon={<Info />}
                 label="Get Info"
                 onClick={() => alert("You've got info!")}
               />
