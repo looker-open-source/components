@@ -258,16 +258,21 @@ export interface SelectOptionsProps extends SelectOptionsBaseProps {
   isMulti?: boolean
 }
 
-export function SelectOptions({
-  options,
-  isFilterable,
-  showCreate,
-  formatCreateLabel,
-  isMulti,
-  noOptionsLabel = 'No options',
-  windowedOptions,
-  isLoading,
-}: SelectOptionsProps) {
+export function SelectOptions(props: SelectOptionsProps) {
+  const { t } = useTranslation('SelectOptions')
+  const noOptionsLabelText = t('No options')
+
+  const {
+    options,
+    isFilterable,
+    showCreate,
+    formatCreateLabel,
+    isMulti,
+    noOptionsLabel = noOptionsLabelText,
+    windowedOptions,
+    isLoading,
+  } = props
+
   const {
     start,
     end,
@@ -276,7 +281,6 @@ export function SelectOptions({
     scrollToFirst,
     scrollToLast,
   } = useWindowedOptions(windowedOptions, options, isMulti)
-  const { t } = useTranslation('SelectOptions')
   const keyPrefix = useID(options?.length.toString())
 
   const hasIcons = useMemo(() => optionsHaveIcons(options), [options])

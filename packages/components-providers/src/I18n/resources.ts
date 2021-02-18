@@ -127,6 +127,7 @@ export const i18nResources: Resource = {
     },
     SelectOptions: {
       Loading: 'Loading',
+      'No options': 'No options',
     },
     TabList: {
       Tabs: 'Tabs',
