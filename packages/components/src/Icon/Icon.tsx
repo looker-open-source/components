@@ -100,9 +100,4 @@ export const Icon = styled(IconLayout).attrs<IconProps>(
   ${color}
   align-items: center;
   flex-shrink: 0;
-
-  svg {
-    height: 100%;
-    width: 100%;
-  }
 `
