@@ -56,6 +56,6 @@ export const listItemBackgroundColor = ({
   else renderedColor = 'transparent'
 
   return css`
-    background-color: ${renderedColor};
+    background: ${renderedColor};
   `
 }
