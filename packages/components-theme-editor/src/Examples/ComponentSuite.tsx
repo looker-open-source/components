@@ -48,6 +48,7 @@ import {
   TabPanels,
   TabPanel,
 } from '@looker/components'
+import { Done } from '@styled-icons/material'
 import React, { useState } from 'react'
 
 export const ComponentSuite = () => {
@@ -71,7 +72,7 @@ export const ComponentSuite = () => {
       </ButtonGroup>
 
       <FieldText label="Hello" />
-      <IconButton icon="Check" label="Check" size="large" />
+      <IconButton icon={<Done />} label="Check" size="large" />
       <FieldSlider label="slider" />
 
       <Grid columns={3}>

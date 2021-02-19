@@ -24,7 +24,6 @@
 
  */
 
-import { useTranslation } from 'react-i18next'
 import omit from 'lodash/omit'
 import {
   omitStyledProps,
@@ -287,7 +286,7 @@ export const inputTextValidation = css<{ validationType?: 'error' }>`
       : ''}
 `
 
-const ErrorIcon = styled(Error)`
+export const ErrorIcon = styled(Error)`
   color: ${({ theme }) => theme.colors.critical};
 `
 

@@ -28,6 +28,7 @@ import { useTranslation } from 'react-i18next'
 import { reset } from '@looker/design-tokens'
 import React, { forwardRef, KeyboardEvent, MouseEvent, Ref } from 'react'
 import styled from 'styled-components'
+import { Close } from '@styled-icons/material'
 import {
   useClickable,
   GenericClickProps,

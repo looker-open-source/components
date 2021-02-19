@@ -27,6 +27,7 @@
 import { useTranslation } from 'react-i18next'
 import React, { FC } from 'react'
 import styled from 'styled-components'
+import { ChevronLeft, ChevronRight } from '@styled-icons/material-rounded'
 import { Flex } from '../Layout'
 import { IconButton, IconButtonProps } from '../Button'
 import { Span } from '../Text'
@@ -60,13 +61,13 @@ const PaginationLayout: FC<PaginationProps> = ({
     <Flex alignItems="center" className={className}>
       <PaginationButton
         label={t('First page of results')}
-        icon="DoubleChevronLeft"
+        icon={<DoubleChevronLeft />}
         onClick={first}
         disabled={current === 1}
       />
       <PaginationButton
         label={t('Previous page of results')}
-        icon="CaretLeft"
+        icon={<ChevronLeft />}
         onClick={previous}
         disabled={current === 1}
       />
@@ -75,14 +76,14 @@ const PaginationLayout: FC<PaginationProps> = ({
       </Span>
       <PaginationButton
         label={t('Next page of results')}
-        icon="CaretRight"
+        icon={<ChevronRight />}
         onClick={next}
         disabled={pages - current === 0}
       />
       <PaginationButton
         mr="none"
         label={t('Last page of results')}
-        icon="DoubleChevronRight"
+        icon={<DoubleChevronRight />}
         onClick={last}
         disabled={pages - current === 0}
       />

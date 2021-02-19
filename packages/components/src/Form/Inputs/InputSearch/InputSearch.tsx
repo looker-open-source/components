@@ -24,7 +24,6 @@
 
  */
 
-import { useTranslation } from 'react-i18next'
 import React, { forwardRef, Ref, FormEvent, useState } from 'react'
 import styled from 'styled-components'
 import { Search } from '@styled-icons/material-outlined'
@@ -122,7 +121,6 @@ const InputSearchLayout = forwardRef(
     }: InputSearchProps,
     ref: Ref<HTMLInputElement>
   ) => {
-    const { t } = useTranslation('InputSearch')
     const isControlled = useControlWarn({
       controllingProps: ['value'],
       isControlledCheck: () => controlledValue !== undefined,

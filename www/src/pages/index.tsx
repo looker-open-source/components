@@ -34,6 +34,7 @@ import {
   Paragraph,
   Section,
 } from '@looker/components'
+import { Explore, Undo } from '@styled-icons/material'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 import React from 'react'
 import { Helmet } from 'react-helmet'
@@ -112,7 +113,7 @@ const Intro = () => {
                   bg="rgba(0, 135, 225, 0.1)"
                   borderRadius="50%"
                 >
-                  <Icon name="CircleExplore" color="#0087E1" />
+                  <Icon icon={<Explore />} color="#0087E1" />
                 </Flex>
               </Box>
               <Heading as="h4" fontSize="large" fontWeight="semiBold">
@@ -134,7 +135,7 @@ const Intro = () => {
                   bg="rgba(255, 202, 98, 0.2)"
                   borderRadius="50%"
                 >
-                  <Icon name="Undo" color="#FFA800" />
+                  <Icon icon={<Undo />} color="#FFA800" />
                 </Flex>
               </Box>
               <Heading as="h4" fontSize="large" fontWeight="semiBold">

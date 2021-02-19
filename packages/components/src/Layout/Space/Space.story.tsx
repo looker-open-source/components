@@ -25,6 +25,7 @@
  */
 
 import { Story } from '@storybook/react/types-6-0'
+import { Delete } from '@styled-icons/material'
 import React from 'react'
 import { Button, IconButton } from '../../Button'
 import { Icon } from '../../Icon'
@@ -74,7 +75,7 @@ ReverseSpaceVertical.args = { ...Reverse.args }
 
 export const SpaceCrush = () => (
   <Space>
-    <Icon name="Account" size="large" />
+    <Icon icon={<Account />} size="large" />
     <Status intent="inform" />
     <Paragraph>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -100,7 +101,7 @@ export const SpaceCrush = () => (
 export const SpaceWrap = () => (
   <>
     <Space maxWidth="20rem" flexWrap="wrap">
-      <IconButton label="boo" icon="Trash" />
+      <IconButton label="boo" icon={<Delete />} />
       <button>boo</button>
       <button>boo</button>
       <button>boo</button>
@@ -121,7 +122,7 @@ export const SpaceWrap = () => (
     </Space>
 
     <Space reverse maxWidth="20rem" flexWrap="wrap">
-      <IconButton label="boo" icon="Trash" />
+      <IconButton label="boo" icon={<Delete />} />
       <button>boo</button>
       <button>boo</button>
       <button>boo</button>

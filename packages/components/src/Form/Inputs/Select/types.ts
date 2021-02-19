@@ -24,12 +24,9 @@
 
  */
 
-import { IconNames } from '@looker/icons'
 import { ReactNode } from 'react'
 import { ComboboxOptionObject, ComboboxOptionIndicatorProps } from '../Combobox'
-import { IconProps } from '../../../Icon'
-
-export type SelectOptionIcon = IconNames | IconProps['artwork']
+import { IconType } from '../../../Icon'
 
 export interface SelectOptionObject
   extends ComboboxOptionObject,
@@ -43,7 +40,7 @@ export interface SelectOptionObject
    * Icon shown to the left of the option label in the list and input when selected
    * Use an IconName, or inline svg for a custom icon
    */
-  icon?: SelectOptionIcon
+  icon?: IconType
   /**
    * Supplementary element that appears above the option's label
    */

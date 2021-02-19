@@ -12,13 +12,13 @@ import { ListItemPropTable } from './demos'
   <ListItem icon="Calendar" description="Orange-y" detail="England">
     Cheddar
   </ListItem>
-  <ListItem icon="Pivot" detail="Netherlands">
+  <ListItem icon={<Pivot />} detail="Netherlands">
     Gouda
   </ListItem>
   <ListItem icon="AnalyticsApp" detail="Italy">
     Mozzarella
   </ListItem>
-  <ListItem icon="Account" detail="Switzerland">
+  <ListItem icon={<Account />} detail="Switzerland">
     Swiss
   </ListItem>
 </List>
@@ -107,8 +107,8 @@ Enabling the `accessory` option will render the detail element outside of the la
     icon="FieldNumber"
     detail={
       <IconButton
-        icon="Pivot"
-        label="Pivot"
+        icon={<Pivot />}
+        label={<Pivot />}
         onClick={() => alert("You've pivoted!")}
       />
     }
@@ -120,8 +120,8 @@ Enabling the `accessory` option will render the detail element outside of the la
     detail={{
       content: (
         <IconButton
-          icon="Pivot"
-          label="Pivot"
+          icon={<Pivot />}
+          label={<Pivot />}
           onClick={() => alert("You've pivoted!")}
         />
       ),

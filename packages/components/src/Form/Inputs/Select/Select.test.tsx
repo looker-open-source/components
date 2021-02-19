@@ -954,10 +954,10 @@ describe('Select', () => {
       <Select
         placeholder="Select a visualization"
         options={[
-          { icon: 'ChartBar', label: 'Bar', value: 'bar' },
+          { icon: <ChartBar />, label: 'Bar', value: 'bar' },
           { label: 'No Icon', value: 'noicon' },
           {
-            icon: 'ChartColumn',
+            icon: <ChartColumn />,
             indicator: 'Test Indicator',
             label: 'Column',
             value: 'column',

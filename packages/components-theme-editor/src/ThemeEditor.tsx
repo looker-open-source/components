@@ -44,7 +44,7 @@ export const ThemeEditor: FC<ThemeEditorProps> = ({
     placement="cover"
   >
     <IconButton
-      icon="Beaker"
+      icon={<Beaker />}
       label="Customize Theme"
       tooltipDisabled
       toggle={hasCustomTheme}

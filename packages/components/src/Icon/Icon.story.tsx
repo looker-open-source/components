@@ -108,7 +108,6 @@ export const Artwork = () => (
           />
         </svg>
       }
-      name="GearOutline"
       size="xxsmall"
     />
     <Icon

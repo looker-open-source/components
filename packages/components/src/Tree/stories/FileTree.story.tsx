@@ -32,17 +32,17 @@ import { TreeItem } from '../TreeItem'
 import { TreeProps } from '../types'
 
 const Template: Story<TreeProps> = (args) => (
-  <Tree {...args} label="thelook" icon="Explore">
+  <Tree {...args} label="thelook" icon={<Explore />}>
     <Tree label="Users" icon={<Visibility />} defaultOpen branchFontWeight>
       <Tree label="Orders" icon={<TableChart />} defaultOpen branchFontWeight>
-        <TreeItem icon="IdeDimension">ID</TreeItem>
-        <TreeItem icon="IdeDimension">Status</TreeItem>
-        <TreeItem icon="IdeDimensionGroup">Created</TreeItem>
+        <TreeItem icon={<IdeDimension />}>ID</TreeItem>
+        <TreeItem icon={<IdeDimension />}>Status</TreeItem>
+        <TreeItem icon={<IdeDimensionGroup />}>Created</TreeItem>
       </Tree>
       <Tree label="Users" icon={<TableChart />} defaultOpen branchFontWeight>
-        <TreeItem icon="IdeDimension">ID</TreeItem>
-        <TreeItem icon="IdeDimension">Name</TreeItem>
-        <TreeItem icon="IdeDimensionGroup">Created</TreeItem>
+        <TreeItem icon={<IdeDimension />}>ID</TreeItem>
+        <TreeItem icon={<IdeDimension />}>Name</TreeItem>
+        <TreeItem icon={<IdeDimensionGroup />}>Created</TreeItem>
       </Tree>
     </Tree>
   </Tree>

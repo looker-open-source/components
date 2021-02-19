@@ -59,7 +59,7 @@ const PickerItem: FC<{ color?: string; truncate?: boolean }> = ({
   const detailContent = (
     <>
       <IconButton
-        icon="Pivot"
+        icon={<Pivot />}
         label="Pivot"
         tooltipPlacement="top"
         onClick={() => alert('Pivot')}

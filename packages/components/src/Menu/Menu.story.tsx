@@ -156,7 +156,7 @@ export const IconSpace = () => (
     <Divider />
 
     <MenuList iconGutter>
-      <MenuItem icon="LogoRings">Looker</MenuItem>
+      <MenuItem icon={<LogoRings />}>Looker</MenuItem>
       <MenuItem icon={<VerifiedUser />}>Validate</MenuItem>
       <MenuHeading>MenuGroup with 1 Item</MenuHeading>
       <MenuItem>Pizza!</MenuItem>
@@ -364,11 +364,11 @@ export const RealisticMenus = () => {
             <MenuGroup label="Create">
               <MenuItem icon={<CreateNewFolder />}>Folder</MenuItem>
               <MenuItem icon={<ExploreOutline />}>Model</MenuItem>
-              <MenuItem icon="IdeFileView">New Item</MenuItem>
-              <MenuItem icon="IdeFileView">View</MenuItem>
-              <MenuItem icon="IdeFileDashboard">Dasbhaord</MenuItem>
-              <MenuItem icon="IdeFileDocument">Document</MenuItem>
-              <MenuItem icon="IdeFileGeneric">Generic LookML file</MenuItem>
+              <MenuItem icon={<IdeFileView />}>New Item</MenuItem>
+              <MenuItem icon={<IdeFileView />}>View</MenuItem>
+              <MenuItem icon={<IdeFileDashboard />}>Dasbhaord</MenuItem>
+              <MenuItem icon={<IdeFileDocument />}>Document</MenuItem>
+              <MenuItem icon={<IdeFileGeneric />}>Generic LookML file</MenuItem>
             </MenuGroup>
           </>
         }

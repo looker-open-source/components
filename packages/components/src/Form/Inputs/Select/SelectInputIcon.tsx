@@ -25,10 +25,8 @@
  */
 
 import { IconNames } from '@looker/icons'
-import React, { ReactNode, useContext } from 'react'
-import { Icon } from '../../../Icon'
+import { ReactNode, useContext } from 'react'
 import { ComboboxContext } from '../Combobox'
-import { getSelectOptionIconProps } from './SelectOptions'
 import { SelectOptionProps } from './types'
 import { flattenOptions } from './utils/options'
 
@@ -59,18 +57,5 @@ export function SelectInputIcon({ options }: SelectInputIconProps) {
     return null
   }
 
-  const icon = option && getOptionIcon(option.value, options)
-  return (
-    <>
-      {icon && (
-        <Icon
-          {...getSelectOptionIconProps(icon)}
-          size="small"
-          ml="xxsmall"
-          color="text1"
-          data-testid="input-icon"
-        />
-      )}
-    </>
-  )
+  return option && getOptionIcon(option.value, options)
 }

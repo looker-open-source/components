@@ -43,14 +43,14 @@ describe('MenuItem', () => {
   })
 
   test('MenuItem - icon', () => {
-    renderWithTheme(<MenuItem icon="Beaker">Icon</MenuItem>)
+    renderWithTheme(<MenuItem icon={<Beaker />}>Icon</MenuItem>)
     expect(screen.getByText('Icon')).toBeVisible()
   })
 
   test('MenuItem - artwork', () => {
     renderWithTheme(
       <MenuItem
-        iconArtwork={
+        icon={
           <svg xmlns="http://www.w3.org/2000/svg">
             <title>SVG Title Here</title>
           </svg>

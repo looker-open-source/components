@@ -26,7 +26,7 @@
 
 import React, { FC, Fragment } from 'react'
 import { Story } from '@storybook/react/types-6-0'
-import { IconNames } from '@looker/icons'
+import { Create, Undo } from '@styled-icons/material-outlined'
 import { Grid } from '../Layout'
 import { DensityRamp } from '../List/types'
 import { MenuHeading, MenuList, MenuItem, MenuItemProps, MenuDivider } from '.'
@@ -37,7 +37,7 @@ const groups: { label?: string; items: MenuItemProps[] }[] = [
       {
         children: 'Edit Dashboard',
         detail: '⌘⇧E',
-        icon: 'EditOutline' as IconNames,
+        icon: <Create />,
       },
       {
         children: 'Get LookML',
@@ -46,7 +46,7 @@ const groups: { label?: string; items: MenuItemProps[] }[] = [
       {
         children: 'Revert to original dashboard',
         detail: 'A longer detail',
-        icon: 'Undo' as IconNames,
+        icon: <Undo />,
       },
     ],
     label: 'Options',

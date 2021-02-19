@@ -27,40 +27,41 @@
 import 'jest-styled-components'
 import React from 'react'
 import { assertSnapshot, renderWithTheme } from '@looker/components-test-utils'
+import { Add, Delete } from '@styled-icons/material'
 import { Icon } from './Icon'
 
 describe('Icon', () => {
   test('Default', () => {
-    assertSnapshot(<Icon name="Plus" />)
+    assertSnapshot(<Icon icon={<Add />} />)
   })
 
   test('Styled system size', () => {
-    assertSnapshot(<Icon name="Plus" size="large" />)
+    assertSnapshot(<Icon icon={<Add />} size="large" />)
   })
 
   test('Explicit size - integer as pixels', () => {
-    assertSnapshot(<Icon name="Plus" size={12} />)
+    assertSnapshot(<Icon icon={<Add />} size={12} />)
   })
 
   test('Explicit size - string', () => {
-    assertSnapshot(<Icon name="Plus" size="1rem" />)
+    assertSnapshot(<Icon icon={<Add />} size="1rem" />)
   })
 
   test('DOM attribute support', () => {
     const { findByLabelText } = renderWithTheme(
-      <Icon name="Plus" aria-label="Add" />
+      <Icon icon={<Add />} aria-label="Add" />
     )
     expect(findByLabelText('Add')).toBeTruthy()
   })
 
   test(`No title by default`, () => {
-    const { queryByLabelText } = renderWithTheme(<Icon name="Trash" />)
+    const { queryByLabelText } = renderWithTheme(<Icon icon={<Delete />} />)
     expect(queryByLabelText("Oscar's House")).toBeFalsy()
   })
 
   test(`Title is assigned properly to SVG art`, () => {
     const { getByTitle } = renderWithTheme(
-      <Icon name="Trash" title="Oscar's House" />
+      <Icon icon={<Delete />} title="Oscar's House" />
     )
     expect(getByTitle("Oscar's House")).toBeTruthy()
   })

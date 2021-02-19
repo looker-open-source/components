@@ -76,7 +76,7 @@ export const Accessory = Template.bind({})
 Accessory.args = {
   ...Basic.args,
   detail: {
-    content: <IconButton icon="Pivot" label="Pivot" />,
+    content: <IconButton icon={<Pivot />} label="Pivot" />,
     options: { accessory: true },
   },
 }
@@ -85,7 +85,7 @@ export const HoverDisclosure = Template.bind({})
 HoverDisclosure.args = {
   ...Basic.args,
   detail: {
-    content: <IconButton icon="Pivot" label="Pivot" />,
+    content: <IconButton icon={<Pivot />} label="Pivot" />,
     options: { hoverDisclosure: true },
   },
 }

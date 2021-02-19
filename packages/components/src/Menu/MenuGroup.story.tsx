@@ -26,7 +26,7 @@
 
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
-import { IconNames } from '@looker/icons'
+import { Create, Undo } from '@styled-icons/material-outlined'
 import { MenuGroup, MenuGroupProps } from './MenuGroup'
 import { MenuItem } from './MenuItem'
 
@@ -34,7 +34,7 @@ const itemList = [
   {
     children: 'Edit Dashboard',
     detail: '⌘⇧E',
-    icon: 'EditOutline' as IconNames,
+    icon: <Create />,
   },
   {
     children: 'Get LookML',
@@ -43,7 +43,7 @@ const itemList = [
   {
     children: 'Revert to original dashboard',
     detail: 'A longer detail',
-    icon: 'Undo' as IconNames,
+    icon: <Undo />,
   },
 ]
 

@@ -10,7 +10,7 @@ import { IconList } from './demos'
 ```jsx
 <Space around>
   <Icon name="Check" />
-  <Icon name="Favorite" size="large" />
+  <Icon icon={<Favorite />} size="large" />
   <Icon name="GearOutline" size="small" />
 </Space>
 ```
@@ -81,11 +81,11 @@ import { IconList } from './demos'
 
 ```jsx
 <Space around>
-  <Icon name="Beaker" color="inform" size="xxsmall" />
-  <Icon name="Beaker" color="inform" size="xsmall" />
-  <Icon name="Beaker" color="inform" size="small" />
-  <Icon name="Beaker" color="inform" size="medium" />
-  <Icon name="Beaker" color="inform" size="large" />
+  <Icon name={<Beaker />} color="inform" size="xxsmall" />
+  <Icon name={<Beaker />} color="inform" size="xsmall" />
+  <Icon name={<Beaker />} color="inform" size="small" />
+  <Icon name={<Beaker />} color="inform" size="medium" />
+  <Icon name={<Beaker />} color="inform" size="large" />
 </Space>
 ```
 

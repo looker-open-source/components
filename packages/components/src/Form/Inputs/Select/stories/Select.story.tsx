@@ -25,6 +25,7 @@
  */
 
 import { Story } from '@storybook/react/types-6-0'
+import { PieChart, TableChart } from '@styled-icons/material'
 import React from 'react'
 import { Select, SelectProps } from '../Select'
 
@@ -120,9 +121,9 @@ ClearableError.args = {
 export const Icon = Template.bind({})
 Icon.args = {
   options: [
-    { icon: 'ChartBar', label: 'Bar', value: 'bar' },
-    { icon: 'ChartPie', label: 'Pie', value: 'pie' },
-    { icon: 'ChartTable', label: 'Table', value: 'table' },
+    { icon: <ChartBar />, label: 'Bar', value: 'bar' },
+    { icon: <PieChart />, label: 'Pie', value: 'pie' },
+    { icon: <TableChart />, label: 'Table', value: 'table' },
   ],
   value: 'pie',
 }

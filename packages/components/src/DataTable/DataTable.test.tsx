@@ -26,10 +26,13 @@
 
 import React, { useState } from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
+import { Delete } from '@styled-icons/material'
 import { fireEvent, screen } from '@testing-library/react'
 import { IconButton } from '../Button'
 import { FieldFilter, InputFilters } from '../Form'
 import { Link } from '../Link'
+import { IconButton } from '../Button/IconButton'
+import { FieldFilter } from '../Form/Inputs/InputFilters'
 import {
   DataTable,
   DataTableAction,
@@ -143,7 +146,7 @@ const items = data.map(({ calories, id, name, type }) => {
 const itemsActionPrimary = data.map(({ calories, id, name, type }) => {
   const actionPrimary = (
     <IconButton
-      icon="Trash"
+      icon={<Delete />}
       label="Trash It"
       onClick={() => alert('Trash it')}
     />
@@ -170,7 +173,7 @@ const itemsActionsPrimaryAction = data.map(({ calories, id, name, type }) => {
 
   const ActionPrimary = (
     <IconButton
-      icon="Trash"
+      icon={<Delete />}
       label="Trash It"
       onClick={() => alert('Trash it')}
     />

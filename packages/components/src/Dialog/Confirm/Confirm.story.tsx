@@ -24,6 +24,7 @@
 
  */
 
+import { CircleInfoOutline } from '@looker/icons/src'
 import React from 'react'
 import { Button, ButtonOutline } from '../../Button'
 import { Icon } from '../../Icon'
@@ -85,7 +86,7 @@ Critical.parameters = {
 export const Rich = () => {
   const message = (
     <Space>
-      <Icon name="CircleInfoOutline" size="80px" />
+      <Icon icon={<CircleInfoOutline />} size="80px" />
       <SpaceVertical>
         <Paragraph>
           Canadians say "sorry" so often that{' '}

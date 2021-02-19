@@ -27,6 +27,7 @@
 import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { renderWithTheme } from '@looker/components-test-utils'
+import { Favorite } from '@styled-icons/material'
 import React from 'react'
 
 import { InputText } from './InputText'
@@ -118,12 +119,7 @@ describe('InputText', () => {
 
     test('icons', () => {
       const { getByTitle } = renderWithTheme(
-        <InputText
-          iconBefore="Favorite"
-          iconBeforeTitle="Before Title"
-          iconAfter="Account"
-          iconAfterTitle="After Title"
-        />
+        <InputText iconBefore={<Favorite />} iconAfter={<Account />} />
       )
 
       expect(getByTitle('Before Title')).toBeInTheDocument()
@@ -133,8 +129,8 @@ describe('InputText', () => {
     test('redundant ones should not render', () => {
       const { queryByPlaceholderText } = renderWithTheme(
         <>
-          <InputText placeholder="Hello" iconBefore="Favorite" before="$" />
-          <InputText placeholder="Goodbye" iconAfter="Account" after="%" />
+          <InputText placeholder="Hello" iconBefore={<Favorite />} before="$" />
+          <InputText placeholder="Goodbye" iconAfter={<Account />} after="%" />
         </>
       )
 

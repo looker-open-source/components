@@ -25,6 +25,8 @@
  */
 
 import { Story } from '@storybook/react/types-6-0'
+import { AddAlert, Favorite } from '@styled-icons/material'
+import { Settings } from '@styled-icons/material-outlined'
 import React from 'react'
 import { Button } from '../../../Button'
 import { Icon } from '../../../Icon'
@@ -88,10 +90,10 @@ export const After = Template.bind({})
 After.args = { after: '%', label: 'Percent' }
 
 export const IconBefore = Template.bind({})
-IconBefore.args = { iconBefore: 'GearOutline', label: 'Settings' }
+IconBefore.args = { iconBefore: <Settings />, label: 'Settings' }
 
 export const IconAfter = Template.bind({})
-IconAfter.args = { iconAfter: 'GearOutline', label: 'Settings' }
+IconAfter.args = { iconAfter: <Settings />, label: 'Settings' }
 
 export const Toggles = () => (
   <>
@@ -156,8 +158,12 @@ export const BeforeAfterValidation = () => {
     <SpaceVertical align="start">
       <Button onClick={toggle}>Toggle error state</Button>
       <Space>
-        <FieldText label="iconBefore" iconBefore="Favorite" {...validation} />
-        <FieldText label="iconAfter" iconAfter="Account" {...validation} />
+        <FieldText
+          label="iconBefore"
+          iconBefore={<Favorite />}
+          {...validation}
+        />
+        <FieldText label="iconAfter" iconAfter={<Account />} {...validation} />
         <FieldText label="before string" before="$" {...validation} />
         <FieldText label="after string" after="%" {...validation} />
         <FieldText
@@ -165,7 +171,7 @@ export const BeforeAfterValidation = () => {
           before={
             <Tooltip content="Some very important info">
               <Icon
-                name="AddAlerts"
+                icon={<AddAlert />}
                 size="small"
                 style={{ cursor: 'default' }}
               />

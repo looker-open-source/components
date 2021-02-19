@@ -42,7 +42,7 @@ const listItems = (
     <ListItem icon={<DateRange />} description="Orange-y">
       Cheddar
     </ListItem>
-    <ListItem icon="Pivot" detail="Netherlands">
+    <ListItem icon={<Pivot />} detail="Netherlands">
       Gouda
     </ListItem>
     <ListItem selected>Mozzarella</ListItem>
