@@ -84,7 +84,7 @@ describe('useFocusTrap', () => {
   describe('initial focus', () => {
     test('focus starts on surface', async () => {
       render(
-        <FocusTrapComponent>
+        <FocusTrapComponent hideClose>
           <Surface />
         </FocusTrapComponent>
       )
@@ -98,7 +98,8 @@ describe('useFocusTrap', () => {
       renderWithTheme(
         <FocusTrapComponent>
           <Surface>
-            <FieldText label="Text field" autoFocus />
+            <FieldText label="Text field A" />
+            <FieldText label="Text field B" autoFocus />
           </Surface>
         </FocusTrapComponent>
       )
@@ -106,8 +107,70 @@ describe('useFocusTrap', () => {
       fireEvent.click(toggle)
 
       await waitFor(() =>
-        expect(screen.getByLabelText('Text field')).toHaveFocus()
+        expect(screen.getByLabelText('Text field B')).toHaveFocus()
       )
+    })
+
+    describe('focus starts on tabbable element by priority', async () => {
+      const inputElement = <FieldText label="Text field" />
+      const footerElement = (
+        <footer>
+          <button>Footer button</button>
+        </footer>
+      )
+      const firstTabbableElement = <button>First button</button>
+
+      test('input element is 1st priority', async () => {
+        renderWithTheme(
+          <FocusTrapComponent>
+            <Surface>
+              {firstTabbableElement}
+              {footerElement}
+              {inputElement}
+            </Surface>
+          </FocusTrapComponent>
+        )
+        const toggle = screen.getByText('toggle')
+        fireEvent.click(toggle)
+
+        await waitFor(() =>
+          expect(screen.getByLabelText('Text field')).toHaveFocus()
+        )
+      })
+
+      test('footer element is 2nd priority', async () => {
+        renderWithTheme(
+          <FocusTrapComponent>
+            <Surface>
+              {firstTabbableElement}
+              {footerElement}
+            </Surface>
+          </FocusTrapComponent>
+        )
+        const toggle = screen.getByText('toggle')
+        fireEvent.click(toggle)
+
+        await waitFor(() =>
+          expect(screen.getByText('Footer button')).toHaveFocus()
+        )
+      })
+
+      test('first tabbable element is 3rd priority', async () => {
+        renderWithTheme(
+          <FocusTrapComponent>
+            <Surface>
+              {firstTabbableElement}
+              <button>Other button</button>
+            </Surface>
+          </FocusTrapComponent>
+        )
+        const toggle = screen.getByText('toggle')
+        fireEvent.click(toggle)
+
+        await waitFor(() =>
+          expect(screen.getByText('First button')).toHaveFocus()
+        )
+      })
     })
 
     test('error without autoFocus or surface', async () => {
@@ -129,7 +192,7 @@ describe('useFocusTrap', () => {
   describe('return focus', () => {
     test('focus returns to trigger', async () => {
       render(
-        <FocusTrapComponent>
+        <FocusTrapComponent hideClose>
           <Surface />
         </FocusTrapComponent>
       )
@@ -145,7 +208,7 @@ describe('useFocusTrap', () => {
 
     test('focus does not return to trigger', async () => {
       render(
-        <FocusTrapComponent>
+        <FocusTrapComponent hideClose>
           <Surface />
         </FocusTrapComponent>
       )
@@ -242,7 +305,7 @@ describe('useFocusTrap', () => {
     test('does not deactivate by default', async () => {
       render(
         <>
-          <FocusTrapComponent>
+          <FocusTrapComponent hideClose>
             <Surface />
           </FocusTrapComponent>
           <button>outside</button>
@@ -259,7 +322,7 @@ describe('useFocusTrap', () => {
     test('with clickOutsideDeactivates', async () => {
       render(
         <>
-          <FocusTrapComponent clickOutsideDeactivates>
+          <FocusTrapComponent clickOutsideDeactivates hideClose>
             <Surface />
           </FocusTrapComponent>
           <button>outside</button>

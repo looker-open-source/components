@@ -81,11 +81,25 @@ export const activateFocusTrap = ({
         '[data-autofocus="true"]'
       ) as HTMLElement
 
-      // In the absence of autofocus, the surface will have initial focus
+      // Without autofocus, fallback to a tabbable node by priority, if one exists.
+      const firstInputElement = element.querySelector('input, textarea, select')
+      const footerElement = element.querySelector('footer')
+      const firstTabbableFooterElement = footerElement
+        ? tabbable(footerElement)[0]
+        : null
+      const firstTabbableElement = tabbable(element)[0]
+      const prioritizedTabbableElement =
+        firstInputElement || firstTabbableFooterElement || firstTabbableElement
+
+      // In the absence of autofocus and any tabbable element, the surface will have initial focus.
       const surfaceElement = element.querySelector(
         '[data-overlay-surface="true"]'
       ) as HTMLElement
-      node = autoFocusElement || surfaceElement || element
+      node =
+        autoFocusElement ||
+        prioritizedTabbableElement ||
+        surfaceElement ||
+        element
     }
 
     if (!node || !isFocusable(node)) {
