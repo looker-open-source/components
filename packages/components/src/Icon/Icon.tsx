@@ -58,6 +58,14 @@ export interface IconProps
    */
   artwork?: ReactNode
   color?: string
+  /**
+   * Used as the aria-label value for the icon
+   */
+  label?: string
+  /**
+   * Name of the icon type from our components Icon Library:
+   * https://looker-open-source.github.io/components/latest/components/content/icon/
+   */
   name?: IconNames
   /**
    * Explicitly specify a title for the SVG rendered by the icon.

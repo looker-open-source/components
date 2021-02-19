@@ -61,7 +61,7 @@ export type {
 
 export type CompatibleHTMLProps<T> = Omit<
   HTMLProps<T>,
-  'as' | 'color' | 'height' | 'ref' | 'size' | 'width'
+  'as' | 'color' | 'height' | 'label' | 'ref' | 'size' | 'width'
 >
 
 export { userSelect } from './userSelect'
