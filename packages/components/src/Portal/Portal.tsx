@@ -78,7 +78,7 @@ export const Portal = forwardRef(
       }
     }, [el])
 
-    const content = <InvisiBox ref={ref} tabIndex={-1} {...props} />
+    const content = <InvisiBox ref={ref} {...props} />
 
     return createPortal(content, el.current)
   }
