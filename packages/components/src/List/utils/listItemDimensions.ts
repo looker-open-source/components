@@ -80,5 +80,9 @@ export const densities = {
   '1': densityPositive1,
 }
 
+/**
+ * Returns an object with size and spacing scaled to "density" parameter value
+ * @param density Accepts values from -3 (smallest) to 1 (largest)
+ */
 export const listItemDimensions = (density: DensityRamp): ListItemDimensions =>
   densities[density]
