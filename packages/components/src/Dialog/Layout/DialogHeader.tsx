@@ -66,7 +66,7 @@ const DialogHeaderLayout: FC<DialogHeaderProps> = ({
   ...props
 }) => {
   const { t } = useTranslation('DialogHeader')
-  const { closeModal, dialogId } = useContext(DialogContext)
+  const { closeModal, id: dialogId } = useContext(DialogContext)
   const { id } = props
   const headingId = dialogId ? `${dialogId}-heading` : undefined
 

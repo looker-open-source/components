@@ -182,7 +182,7 @@ export const useDialog = ({
     <DialogContext.Provider
       value={{
         closeModal: handleClose,
-        dialogId,
+        id: dialogId,
       }}
     >
       <Portal ref={portalRef}>

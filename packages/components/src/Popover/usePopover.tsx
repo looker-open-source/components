@@ -239,7 +239,7 @@ export const usePopover = ({
     <DialogContext.Provider
       value={{
         closeModal: handleClose,
-        dialogId,
+        id: dialogId,
       }}
     >
       <Portal ref={scrollRef}>
