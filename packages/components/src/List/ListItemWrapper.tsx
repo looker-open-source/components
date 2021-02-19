@@ -157,7 +157,7 @@ export const ListItemWrapper = styled(ListItemWrapperInternal)`
     }
 
     &:hover {
-      background: ${({ theme: { colors } }) => colors.background};
+      background: transparent;
       color: ${({ theme: { colors } }) => colors.text1};
     }
   }
