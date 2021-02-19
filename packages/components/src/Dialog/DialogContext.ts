@@ -29,10 +29,16 @@ import noop from 'lodash/noop'
 
 export interface DialogContextProps {
   closeModal: () => void
+  /**
+   * Used to connect the DialogHeader's title to the Dialog's `aria-labelledby`
+   * @private
+   */
+  id: string
 }
 
 const dialogContext: DialogContextProps = {
   closeModal: () => noop,
+  id: '',
 }
 
 export const DialogContext = createContext(dialogContext)

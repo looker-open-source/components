@@ -62,6 +62,7 @@ export const MediumContent = Template.bind({})
 MediumContent.args = {
   content: <DialogMediumContent />,
   defaultOpen: true,
+  id: 'CustomDialogId',
 }
 MediumContent.parameters = { docs: { disable: true } }
 

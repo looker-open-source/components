@@ -31,6 +31,7 @@ import {
   useAnimationState,
   useControlWarn,
   useFocusTrap,
+  useID,
   useScrollLock,
 } from '../utils'
 import { Backdrop } from './Backdrop'
@@ -78,6 +79,11 @@ export interface UseDialogBaseProps {
    * Specify a callback to be called each time this Popover is closed
    */
   canClose?: () => boolean
+
+  /**
+   * The id of the dialog (if absent, a random id will be generated)
+   */
+  id?: string
 }
 
 export interface UseDialogProps extends UseDialogBaseProps, DialogSurfaceProps {
@@ -116,6 +122,7 @@ export const useDialog = ({
   setOpen: controlledSetOpen,
   Surface: CustomSurface,
   placement,
+  id,
   ...surfaceProps
 }: UseDialogPropsInternal): UseDialogResponse => {
   const [uncontrolledIsOpen, setUncontrolledIsOpen] = useState(defaultOpen)
@@ -169,15 +176,20 @@ export const useDialog = ({
 
   const RenderSurface = CustomSurface || DialogSurface
 
+  const dialogId = useID(id)
+
   const dialog = renderDOM && (
     <DialogContext.Provider
       value={{
         closeModal: handleClose,
+        id: dialogId,
       }}
     >
       <Portal ref={portalRef}>
         <Backdrop className={className} onClick={handleClose} />
         <RenderSurface
+          id={dialogId}
+          aria-labelledby={`${dialogId}-heading`}
           aria-busy={busy ? true : undefined}
           className={className}
           placement={placement as DialogPlacements}
