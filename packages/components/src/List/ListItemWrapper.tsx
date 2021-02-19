@@ -77,9 +77,6 @@ export const ListItemWrapper = styled(ListItemWrapperInternal)`
   min-height: ${({ height }) => height}px;
   outline: none;
   text-decoration: none;
-  transition: ${({ theme: { easings, transitions } }) =>
-    `background ${transitions.quick}ms ${easings.ease},
-  color ${transitions.quick}ms ${easings.ease}`};
 
   & > button,
   & > a {
@@ -96,9 +93,11 @@ export const ListItemWrapper = styled(ListItemWrapperInternal)`
     font-weight: inherit;
     min-width: 0;
     outline: none;
-
     text-align: left;
     text-decoration: none;
+    transition: ${({ theme: { easings, transitions } }) =>
+      `background ${transitions.quick}ms ${easings.ease},
+  color ${transitions.quick}ms ${easings.ease}`};
     width: 100%;
 
     &:hover,
@@ -157,7 +156,6 @@ export const ListItemWrapper = styled(ListItemWrapperInternal)`
     }
 
     &:hover {
-      background: transparent;
       color: ${({ theme: { colors } }) => colors.text1};
     }
   }
