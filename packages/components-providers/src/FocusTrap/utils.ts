@@ -70,45 +70,58 @@ export const activateFocusTrap = ({
   let lastTabbableNode: FocusableElement = element
   let mostRecentlyFocusedNode: FocusableElement | null = null
 
-  const getInitialFocusNode = () => {
-    let node
+  const getInitialFocusNodeByPriority = () => {
+    // Return the already focused node within element
     if (element.contains(document.activeElement)) {
-      node = document.activeElement as HTMLElement
-    } else {
-      // Look for data-autofocus b/c React strips autofocus from dom
-      // https://github.com/facebook/react/issues/11851
-      const autoFocusElement = element.querySelector(
-        '[data-autofocus="true"]'
-      ) as HTMLElement
-
-      // Without autofocus, fallback to a tabbable node by priority, if one exists.
-      const firstInputElement = element.querySelector('input, textarea, select')
-      const footerElement = element.querySelector('footer')
-      const firstTabbableFooterElement = footerElement
-        ? tabbable(footerElement)[0]
-        : null
-      const firstTabbableElement = tabbable(element)[0]
-      const prioritizedTabbableElement =
-        firstInputElement || firstTabbableFooterElement || firstTabbableElement
-
-      // In the absence of autofocus and any tabbable element, the surface will have initial focus.
-      const surfaceElement = element.querySelector(
-        '[data-overlay-surface="true"]'
-      ) as HTMLElement
-      node =
-        autoFocusElement ||
-        prioritizedTabbableElement ||
-        surfaceElement ||
-        element
+      return document.activeElement as HTMLElement
     }
 
+    // Look for data-autofocus b/c React strips autofocus from dom
+    // https://github.com/facebook/react/issues/11851
+    const autoFocusElement = element.querySelector('[data-autofocus="true"]')
+    if (autoFocusElement) {
+      return autoFocusElement
+    }
+
+    // Without autofocus, fallback to a tabbable node by priority, if one exists.
+    const firstInputElement = element.querySelector('input, textarea, select')
+    if (firstInputElement) {
+      return firstInputElement
+    }
+
+    const footerElement = element.querySelector('footer')
+    const firstTabbableFooterElement = footerElement
+      ? tabbable(footerElement)[0]
+      : null
+    if (firstTabbableFooterElement) {
+      return firstTabbableFooterElement
+    }
+
+    const firstTabbableElement = tabbable(element)[0]
+    if (firstTabbableElement) {
+      return firstTabbableElement
+    }
+
+    // In the absence of autofocus and any tabbable element, the surface will have initial focus.
+    const surfaceElement = element.querySelector(
+      '[data-overlay-surface="true"]'
+    )
+    if (surfaceElement) {
+      return surfaceElement
+    }
+
+    // default to element
+    return element
+  }
+
+  const getInitialFocusNode = () => {
+    const node = getInitialFocusNodeByPriority()
     if (!node || !isFocusable(node)) {
       throw new Error(
         'Your focus trap needs to have at least one focusable element'
       )
     }
-
-    return node
+    return node as FocusableElement
   }
 
   const updateTabbableNodes = () => {

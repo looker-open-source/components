@@ -42,14 +42,9 @@ afterEach(() => {
 
 interface TestProps {
   clickOutsideDeactivates?: boolean
-  hideClose?: boolean
 }
 
-const Inner: FC<TestProps> = ({
-  children,
-  clickOutsideDeactivates,
-  hideClose,
-}) => {
+const Inner: FC<TestProps> = ({ children, clickOutsideDeactivates }) => {
   const [, ref] = useFocusTrap({ options: { clickOutsideDeactivates } })
   const { value, setOff, toggle } = useToggle()
   return (
@@ -57,7 +52,9 @@ const Inner: FC<TestProps> = ({
       {value && (
         <div ref={ref}>
           {children}
-          {!hideClose && <button onClick={setOff}>Close</button>}
+          <button tabIndex={-1} onClick={setOff}>
+            Close
+          </button>
         </div>
       )}
       <button onClick={toggle}>toggle</button>
@@ -84,7 +81,7 @@ describe('useFocusTrap', () => {
   describe('initial focus', () => {
     test('focus starts on surface', async () => {
       render(
-        <FocusTrapComponent hideClose>
+        <FocusTrapComponent>
           <Surface />
         </FocusTrapComponent>
       )
@@ -161,6 +158,7 @@ describe('useFocusTrap', () => {
             <Surface>
               {firstTabbableElement}
               <button>Other button</button>
+              <footer />
             </Surface>
           </FocusTrapComponent>
         )
@@ -192,7 +190,7 @@ describe('useFocusTrap', () => {
   describe('return focus', () => {
     test('focus returns to trigger', async () => {
       render(
-        <FocusTrapComponent hideClose>
+        <FocusTrapComponent>
           <Surface />
         </FocusTrapComponent>
       )
@@ -208,7 +206,7 @@ describe('useFocusTrap', () => {
 
     test('focus does not return to trigger', async () => {
       render(
-        <FocusTrapComponent hideClose>
+        <FocusTrapComponent>
           <Surface />
         </FocusTrapComponent>
       )
@@ -251,7 +249,7 @@ describe('useFocusTrap', () => {
 
   describe('cycle focus when tabbing', () => {
     const CycleFocus = () => (
-      <FocusTrapComponent hideClose>
+      <FocusTrapComponent>
         <Surface>
           <button>First</button>
           <input type="text" />
@@ -305,7 +303,7 @@ describe('useFocusTrap', () => {
     test('does not deactivate by default', async () => {
       render(
         <>
-          <FocusTrapComponent hideClose>
+          <FocusTrapComponent>
             <Surface />
           </FocusTrapComponent>
           <button>outside</button>
@@ -322,7 +320,7 @@ describe('useFocusTrap', () => {
     test('with clickOutsideDeactivates', async () => {
       render(
         <>
-          <FocusTrapComponent clickOutsideDeactivates hideClose>
+          <FocusTrapComponent clickOutsideDeactivates>
             <Surface />
           </FocusTrapComponent>
           <button>outside</button>
