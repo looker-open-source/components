@@ -44,7 +44,6 @@ import {
 } from '../InputProps'
 import { innerInputStyle } from '../innerInputStyle'
 import { SimpleLayoutProps } from '../../../Layout/utils/simple'
-import { IconType } from '../../../Icon'
 import { Span } from '../../../Text'
 import { targetIsButton, useForkedRef, useWrapEvent } from '../../../utils'
 import { InlineInputTextBase } from '../InlineInputText'
@@ -76,13 +75,13 @@ export interface InputTextProps extends InputTextBaseProps {
    * If a string is used, formatting will be automatically applied
    * If JSX is used, it will displace the built-in validation icon
    */
-  after?: ReactNode | IconType
+  after?: ReactNode
 
   /**
    * Content to place before the input
-   * If a string is used, formatting will be automatically applied
+   * If a string is used, forma ting will be automatically applied
    */
-  before?: ReactNode | IconType
+  before?: ReactNode
 }
 
 const InputTextLayout = forwardRef(

@@ -34,8 +34,8 @@ import {
   SizeLarge,
   omitStyledProps,
 } from '@looker/design-tokens'
-import { StyledIcon } from '@styled-icons/styled-icon'
-import React, { forwardRef, Ref } from 'react'
+import { StyledIconProps } from '@styled-icons/styled-icon'
+import React, { forwardRef, ReactElement, Ref } from 'react'
 import styled from 'styled-components'
 import {
   sizeSimpleLayoutCSS,
@@ -49,7 +49,7 @@ export type IconSize =
   | SizeMedium
   | SizeLarge
 
-export type IconType = StyledIcon | JSX.Element
+export type IconType = ReactElement<StyledIconProps>
 
 export interface IconProps
   extends Omit<CompatibleHTMLProps<HTMLDivElement>, 'onClick'>,
