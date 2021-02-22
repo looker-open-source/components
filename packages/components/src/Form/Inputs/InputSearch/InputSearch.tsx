@@ -176,7 +176,10 @@ const InputSearchLayout = forwardRef(
         <ComboboxInput
           {...ariaProps}
           autoComplete={false}
-          before={hideSearchIcon ? undefined : <Search />}
+          value={valueToUse}
+          before={
+            hideSearchIcon ? undefined : <Search data-testid="search-icon" />
+          }
           disabled={disabled}
           autoFocus={autoFocus}
           autoResize={autoResize}

@@ -161,7 +161,7 @@ const InputTextLayout = forwardRef(
             {typeof after === 'string' ? (
               <Span fontSize="small">{after}</Span>
             ) : (
-              before
+              after
             )}
           </InputTextContent>
         )}

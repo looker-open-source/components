@@ -956,16 +956,24 @@ describe('Select', () => {
       <Select
         placeholder="Select a visualization"
         options={[
-          { icon: <ChartBar />, label: 'Bar', value: 'bar' },
+          {
+            icon: <ChartBar data-testid="option-icon" />,
+            label: 'Bar',
+            value: 'bar',
+          },
           { label: 'No Icon', value: 'noicon' },
           {
-            icon: <BarChart />,
+            icon: <BarChart data-testid="option-icon" />,
             indicator: 'Test Indicator',
             label: 'Column',
             value: 'column',
           },
           {
-            icon: <>cool icon</>,
+            icon: (
+              <svg data-testid="option-icon" height="24px" width="24px">
+                <title>cool icon</title>
+              </svg>
+            ),
             label: 'Custom Icon',
             value: 'custom',
           },
@@ -976,6 +984,7 @@ describe('Select', () => {
     expect(screen.queryByTestId('input-icon')).not.toBeInTheDocument()
 
     const input = screen.getByPlaceholderText('Select a visualization')
+    expect(input).toBeInTheDocument()
     fireEvent.click(input)
     expect(screen.getAllByTestId('option-icon')).toHaveLength(3)
     expect(screen.getByTestId('option-icon-placeholder')).toBeInTheDocument()

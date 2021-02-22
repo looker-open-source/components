@@ -105,7 +105,6 @@ describe('InputText', () => {
   test('with an error validation', () => {
     renderWithTheme(<InputText placeholder="Hello" validationType="error" />)
     expect(screen.getByPlaceholderText('Hello')).toHaveAttribute('aria-invalid')
-    expect(screen.getByTitle('Validation Error')).toBeInTheDocument()
   })
 
   describe('before & after', () => {
@@ -118,25 +117,12 @@ describe('InputText', () => {
       expect(getByText('after')).toBeVisible()
     })
 
-    test('icons', () => {
-      const { getByTitle } = renderWithTheme(
-        <InputText before={<Favorite />} after={<Account />} />
-      )
-
-      expect(getByTitle('Before Title')).toBeInTheDocument()
-      expect(getByTitle('After Title')).toBeInTheDocument()
-    })
-
     test('focus & blur behavior', () => {
       const handleBlur = jest.fn()
       const handleFocus = jest.fn()
       renderWithTheme(
         <>
-          <InputText
-            onBlur={handleBlur}
-            onFocus={handleFocus}
-            after={<span>after</span>}
-          />
+          <InputText onBlur={handleBlur} onFocus={handleFocus} after="after" />
           <button>click</button>
         </>
       )

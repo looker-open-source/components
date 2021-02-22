@@ -26,7 +26,7 @@
 
 import { Story } from '@storybook/react/types-6-0'
 import { ChartBar } from '@looker/icons'
-import { PieChart, TableChart } from '@styled-icons/material'
+import { BarChart, PieChart, TableChart } from '@styled-icons/material'
 import React from 'react'
 import { Select, SelectProps } from '../Select'
 
@@ -128,6 +128,35 @@ Icon.args = {
   ],
   value: 'pie',
 }
+
+export const TestRepro = () => (
+  <Select
+    placeholder="Select a visualization"
+    options={[
+      {
+        icon: <ChartBar data-testid="option-icon" />,
+        label: 'Bar',
+        value: 'bar',
+      },
+      { label: 'No Icon', value: 'noicon' },
+      {
+        icon: <BarChart data-testid="option-icon" />,
+        indicator: 'Test Indicator',
+        label: 'Column',
+        value: 'column',
+      },
+      {
+        icon: (
+          <svg data-testid="option-icon">
+            <title>cool icon</title>
+          </svg>
+        ),
+        label: 'Custom Icon',
+        value: 'custom',
+      },
+    ]}
+  />
+)
 
 export default {
   component: Select,

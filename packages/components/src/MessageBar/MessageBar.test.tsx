@@ -26,7 +26,7 @@
 
 import 'jest-styled-components'
 import React from 'react'
-import { fireEvent } from '@testing-library/react'
+import { fireEvent, screen } from '@testing-library/react'
 import { theme } from '@looker/design-tokens'
 import {
   renderWithTheme,
@@ -200,9 +200,8 @@ describe('MessageBar', () => {
       // dismiss button
       expect(getByText('DismissIntent Warning')).toBeInTheDocument()
       // icon title and color
-      expect(getByTitle('Warning').closest('div')).toHaveStyleRule(
-        'color',
-        theme.colors.warn
+      expect(getByTitle('Warning').closest('svg')).toHaveStyle(
+        `color: ${theme.colors.warn}`
       )
     })
 
@@ -215,9 +214,8 @@ describe('MessageBar', () => {
       // dismiss button
       expect(getByText('DismissIntent Error')).toBeInTheDocument()
       // icon title and color
-      expect(getByTitle('Error').closest('div')).toHaveStyleRule(
-        'color',
-        theme.colors.critical
+      expect(getByTitle('Error').closest('svg')).toHaveStyle(
+        `color: ${theme.colors.critical}`
       )
       // MessageBar background
       expect(getByRole('status')).toHaveStyleRule(
@@ -236,9 +234,8 @@ describe('MessageBar', () => {
       // dismiss button
       expect(getByText('DismissIntent Inform')).toBeInTheDocument()
       // icon title and color
-      expect(getByTitle('Inform').closest('div')).toHaveStyleRule(
-        'color',
-        theme.colors.inform
+      expect(getByTitle('Inform').closest('svg')).toHaveStyle(
+        `color: ${theme.colors.inform}`
       )
     })
 
@@ -252,9 +249,8 @@ describe('MessageBar', () => {
       expect(getByText('DismissIntent Success')).toBeInTheDocument()
 
       // icon title and color
-      expect(getByTitle('Success').closest('div')).toHaveStyleRule(
-        'color',
-        theme.colors.positive
+      expect(getByTitle('Success').closest('svg')).toHaveStyle(
+        `color: ${theme.colors.positive}`
       )
     })
   })

@@ -38,6 +38,11 @@ exports[`ButtonTransparent Focus: renders outline when tabbing into focus, but n
   opacity: 0.25;
 }
 
+.c0 .StyledIconBase-ea9ulj-0 {
+  height: 1.125rempx;
+  width: 1.125rem;
+}
+
 .c1 {
   background: transparent;
   border: 1px solid transparent;
@@ -76,7 +81,7 @@ exports[`ButtonTransparent Focus: renders outline when tabbing into focus, but n
 
 exports[`ButtonTransparent Focus: renders outline when tabbing into focus, but not when clicking 2`] = `
 <button
-  class="ButtonBase__ButtonOuter-sc-1bpio6j-0 dasaca ButtonBase-sc-1bpio6j-1 ButtonTransparent-sc-799h13-0 itHerX iAPKHo"
+  class="ButtonBase__ButtonOuter-sc-1bpio6j-0 biSOaq ButtonBase-sc-1bpio6j-1 ButtonTransparent-sc-799h13-0 ewCTDA iAPKHo"
 >
   focus
 </button>

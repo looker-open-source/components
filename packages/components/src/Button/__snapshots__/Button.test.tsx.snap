@@ -38,6 +38,11 @@ exports[`Button Focus: renders outline when tabbing into focus, but not when cli
   opacity: 0.25;
 }
 
+.c0 .StyledIconBase-ea9ulj-0 {
+  height: 1.125rempx;
+  width: 1.125rem;
+}
+
 .c1 {
   background: #6C43E0;
   border: 1px solid #6C43E0;
@@ -74,7 +79,7 @@ exports[`Button Focus: renders outline when tabbing into focus, but not when cli
 
 exports[`Button Focus: renders outline when tabbing into focus, but not when clicking 2`] = `
 <button
-  class="ButtonBase__ButtonOuter-sc-1bpio6j-0 dasaca ButtonBase-sc-1bpio6j-1 Button-sc-18euc9m-0 itHerX eVQcHb"
+  class="ButtonBase__ButtonOuter-sc-1bpio6j-0 biSOaq ButtonBase-sc-1bpio6j-1 Button-sc-18euc9m-0 ewCTDA eVQcHb"
 >
   focus
 </button>

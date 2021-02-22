@@ -26,7 +26,7 @@
 
 import React, { FC, useContext } from 'react'
 import { ThemeContext } from 'styled-components'
-import { ArrowBack, ArrowForward } from '@styled-icons/material'
+import { ArrowBack, ArrowForward } from '@styled-icons/material-rounded'
 import { Heading } from '../Text'
 import { Space } from '../Layout'
 import { IconButton } from '../Button'
@@ -52,10 +52,8 @@ export const PanelHeader: FC<PanelHeaderProps> = ({
   handleClose,
   title,
 }) => {
-  const icon = direction === 'left' ? ArrowBack : ArrowForward
   const { space } = useContext(ThemeContext)
 
-  const label = `Close ${title}`
   return (
     <Space
       as="header"
@@ -67,8 +65,8 @@ export const PanelHeader: FC<PanelHeaderProps> = ({
       mb="1.5rem"
     >
       <IconButton
-        icon={icon}
-        label={label}
+        icon={direction === 'left' ? <ArrowBack /> : <ArrowForward />}
+        label={`Close ${title}`}
         onClick={handleClose}
         size="small"
       />
