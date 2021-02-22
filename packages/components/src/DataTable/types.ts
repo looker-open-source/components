@@ -24,8 +24,8 @@
 
  */
 
-import { ReactNode } from 'react'
-import { FieldFilter } from '../Form/Inputs/InputFilters'
+import { ReactElement, ReactNode } from 'react'
+import { InputFiltersProps } from '../Form/Inputs/InputFilters'
 import { DataTableColumns } from './Column'
 
 export interface DataTableProps {
@@ -56,7 +56,7 @@ export interface DataTableProps {
    * Object containing list of filters the user can select from
    * and an onFilter callback to update the filters
    **/
-  filterConfig?: FilterConfig
+  filters?: ReactElement<InputFiltersProps>
   /**
    * Which columns should be "stuck" to the edge of their frame when DataTable content overflows
    *
@@ -98,11 +98,6 @@ export interface SelectConfig {
    * Callback performed when user makes selects the header checkbox
    */
   onSelectAll: () => void
-}
-
-export interface FilterConfig {
-  filters: FieldFilter[]
-  onFilter: (filters: FieldFilter[]) => void
 }
 
 export interface BulkActionsConfig {

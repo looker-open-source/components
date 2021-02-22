@@ -40,7 +40,7 @@ export const DataTableLayout: FC<DataTableProps> = (props) => {
     className,
     caption,
     columns,
-    filterConfig,
+    filters: filterInput,
     firstColumnStuck: explicitFirstColumnStuck,
     onSort,
     select,
@@ -97,13 +97,14 @@ export const DataTableLayout: FC<DataTableProps> = (props) => {
     select,
   }
 
-  const filters = filterConfig && (
+  const filters = filterInput && (
     <DataTableFilters
       columns={columns}
       columnsVisible={columnsVisible}
       onColumnVisibilityChange={setColumnsVisible}
-      {...filterConfig}
-    />
+    >
+      {filterInput}
+    </DataTableFilters>
   )
 
   return (

@@ -26,6 +26,7 @@
 
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
+import { InputFilters } from '../../Form'
 import { columns } from '../../__mocks__/DataTable/columns'
 import { filters } from '../../__mocks__/filters'
 import { DataTableFilters } from './DataTableFilters'
@@ -36,10 +37,10 @@ describe('DataTableFilters', () => {
       <DataTableFilters
         columns={columns}
         columnsVisible={[]}
-        filters={filters}
-        onFilter={jest.fn()}
         onColumnVisibilityChange={jest.fn()}
-      />
+      >
+        <InputFilters filters={filters} onChange={jest.fn()} />
+      </DataTableFilters>
     )
 
     expect(getByPlaceholderText('Filter List')).toBeInTheDocument()
@@ -50,10 +51,10 @@ describe('DataTableFilters', () => {
       <DataTableFilters
         columns={columns}
         columnsVisible={[]}
-        filters={filters}
-        onFilter={jest.fn()}
         onColumnVisibilityChange={jest.fn()}
-      />
+      >
+        <InputFilters filters={filters} onChange={jest.fn()} />
+      </DataTableFilters>
     )
     expect(getByText('Select columns to display')).toBeInTheDocument()
   })

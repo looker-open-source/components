@@ -25,19 +25,17 @@
  */
 
 import styled from 'styled-components'
-import React, { FC } from 'react'
+import React, { FC, ReactElement } from 'react'
 import { densityTarget } from '@looker/design-tokens'
 import { DividerVertical } from '../../Divider'
-import { InputFilters } from '../../Form/Inputs/InputFilters'
-import { FilterConfig } from '../types'
+import { InputFilters, InputFiltersProps } from '../../Form/Inputs/InputFilters'
 import { DataTableColumns } from '../Column'
 import { ItemTarget } from '../Item/ItemTarget'
 import { ColumnSelector, ColumnSelectorProps } from './ColumnSelector'
 
-export interface DataTableFiltersProps
-  extends ColumnSelectorProps,
-    FilterConfig {
+export interface DataTableFiltersProps extends ColumnSelectorProps {
   className?: string
+  children: ReactElement<InputFiltersProps>
 }
 
 const hasSelectableColumns = (columns: DataTableColumns) =>
@@ -45,8 +43,7 @@ const hasSelectableColumns = (columns: DataTableColumns) =>
 
 const DataTableFiltersLayout: FC<DataTableFiltersProps> = ({
   className,
-  filters,
-  onFilter,
+  children,
   ...props
 }) => {
   const columnsSelector = (
@@ -60,7 +57,7 @@ const DataTableFiltersLayout: FC<DataTableFiltersProps> = ({
 
   return (
     <div className={className}>
-      <InputFilters filters={filters} onChange={onFilter} />
+      {children}
       {hasSelectableColumns(props.columns) && columnsSelector}
     </div>
   )
