@@ -31,7 +31,7 @@
 // 2. No need for most of the configurable features
 // 3. The text of an input should not be selected on focus if it is readonly
 
-import { tabbable, isFocusable, FocusableElement } from 'tabbable'
+import { tabbable, isFocusable, FocusableElement, isTabbable } from 'tabbable'
 import { Trap } from '../TrapStack/types'
 import { FocusTrapOptions } from './types'
 
@@ -84,9 +84,14 @@ export const activateFocusTrap = ({
     }
 
     // Without autofocus, fallback to a tabbable node by priority, if one exists.
-    const firstInputElement = element.querySelector('input, textarea, select')
-    if (firstInputElement) {
-      return firstInputElement
+    const inputElements = Array.from(
+      element.querySelectorAll('input, textarea, select')
+    )
+    const tabbableInputElement = inputElements.find((inputElement) =>
+      isTabbable(inputElement)
+    )
+    if (tabbableInputElement) {
+      return tabbableInputElement
     }
 
     const footerElement = element.querySelector('footer')
