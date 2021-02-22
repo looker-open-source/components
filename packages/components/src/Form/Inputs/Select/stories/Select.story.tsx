@@ -146,11 +146,7 @@ export const TestRepro = () => (
         value: 'column',
       },
       {
-        icon: (
-          <svg data-testid="option-icon">
-            <title>cool icon</title>
-          </svg>
-        ),
+        icon: <p>Hello</p>,
         label: 'Custom Icon',
         value: 'custom',
       },
