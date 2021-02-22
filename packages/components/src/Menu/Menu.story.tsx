@@ -43,11 +43,14 @@ import { Tab, TabList, TabPanel, TabPanels, Tabs } from '../Tabs'
 import { Heading, Text, Paragraph } from '../Text'
 import { Tooltip } from '../Tooltip'
 import { useToggle } from '../utils'
-import { Menu } from './Menu'
-import { MenuDivider } from './MenuDivider'
-import { MenuGroup } from './MenuGroup'
-import { MenuItem } from './MenuItem'
-import { MenuList } from './MenuList'
+import {
+  Menu,
+  MenuDivider,
+  MenuGroup,
+  MenuItem,
+  MenuList,
+  MenuHeading,
+} from '.'
 
 export default {
   component: Menu,
@@ -56,45 +59,38 @@ export default {
 
 const menuItems = (
   <>
-    <MenuGroup>
-      <MenuItem
-        detail="detail"
-        description="this is the description"
-        icon="LogoRings"
-      >
-        Looker
-      </MenuItem>
-      <MenuItem description="this is the description" icon="Validate">
-        Validate
-      </MenuItem>
-      <MenuItem detail="detail" icon="ChartPie">
-        Pizza
-      </MenuItem>
-    </MenuGroup>
+    <MenuItem
+      detail="detail"
+      description="this is the description"
+      icon="LogoRings"
+    >
+      Looker
+    </MenuItem>
+    <MenuItem description="this is the description" icon="Validate">
+      Validate
+    </MenuItem>
+    <MenuItem detail="detail" icon="ChartPie">
+      Pizza
+    </MenuItem>
 
     <MenuDivider />
 
-    <MenuGroup>
-      <MenuItem>Gouda</MenuItem>
-      <MenuItem current> Swiss</MenuItem>
-      <MenuItem>Cheddar</MenuItem>
-    </MenuGroup>
+    <MenuItem>Gouda</MenuItem>
+    <MenuItem current> Swiss</MenuItem>
+    <MenuItem>Cheddar</MenuItem>
 
     <MenuDivider />
 
-    <MenuGroup label="Create">
-      <MenuItem>Gouda</MenuItem>
-      <MenuItem> Swiss</MenuItem>
-      <MenuItem>Cheddar</MenuItem>
-    </MenuGroup>
+    <MenuHeading>Create</MenuHeading>
+    <MenuItem>Gouda</MenuItem>
+    <MenuItem> Swiss</MenuItem>
+    <MenuItem>Cheddar</MenuItem>
 
     <MenuDivider />
 
-    <MenuGroup>
-      <MenuItem>Gouda</MenuItem>
-      <MenuItem> Swiss</MenuItem>
-      <MenuItem>Cheddar</MenuItem>
-    </MenuGroup>
+    <MenuItem>Gouda</MenuItem>
+    <MenuItem> Swiss</MenuItem>
+    <MenuItem>Cheddar</MenuItem>
   </>
 )
 
@@ -138,13 +134,12 @@ export const IconSpace = () => (
     <Divider />
 
     <MenuList iconGutter>
-      <MenuGroup label="MenuGroup with 3 Items">
-        <MenuItem description="this is a description" icon="LogoRings">
-          Looker
-        </MenuItem>
-        <MenuItem icon="Validate">Validate</MenuItem>
-        <MenuItem>Pizza!</MenuItem>
-      </MenuGroup>
+      <MenuHeading>MenuGroup with 3 Items</MenuHeading>
+      <MenuItem description="this is a description" icon="LogoRings">
+        Looker
+      </MenuItem>
+      <MenuItem icon="Validate">Validate</MenuItem>
+      <MenuItem>Pizza!</MenuItem>
     </MenuList>
 
     <Divider />
@@ -152,63 +147,61 @@ export const IconSpace = () => (
     <MenuList iconGutter>
       <MenuItem icon="LogoRings">Looker</MenuItem>
       <MenuItem icon="Validate">Validate</MenuItem>
-      <MenuGroup label="MenuGroup with 1 Item">
-        <MenuItem>Pizza!</MenuItem>
-      </MenuGroup>
+      <MenuHeading>MenuGroup with 1 Item</MenuHeading>
+      <MenuItem>Pizza!</MenuItem>
     </MenuList>
 
     <Divider />
     <MenuList iconGutter>
-      <MenuGroup label="Icon, Artwork, and Detail">
-        <MenuItem icon="ChartPie">Icon</MenuItem>
-        <MenuItem
-          iconArtwork={
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 17H11V15H13V17ZM13 13H11V7H13V13Z"
-                fill="#7FFFD4"
-              />
-            </svg>
-          }
-        >
-          Artwork
-        </MenuItem>
-        <MenuItem
-          icon="Account"
-          detail={
-            <>
-              <Text fontSize="small" mr="xsmall" color="secondary">
-                Online
-              </Text>
-              <Icon
-                name="Chat"
-                verticalAlign="middle"
-                color="positive"
-                size={16}
-              />
-            </>
-          }
-        >
-          Chat
-        </MenuItem>
-        <MenuItem
-          icon="Account"
-          detail={
-            <>
-              <Text fontSize="small" mr="xsmall" color="secondary">
-                Offline
-              </Text>
-              <Icon name="Chat" verticalAlign="middle" size={16} />
-            </>
-          }
-        >
-          Chat
-        </MenuItem>
-      </MenuGroup>
+      <MenuHeading>Icon, Artwork, and Detail</MenuHeading>
+      <MenuItem icon="ChartPie">Icon</MenuItem>
+      <MenuItem
+        iconArtwork={
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 17H11V15H13V17ZM13 13H11V7H13V13Z"
+              fill="#7FFFD4"
+            />
+          </svg>
+        }
+      >
+        Artwork
+      </MenuItem>
+      <MenuItem
+        icon="Account"
+        detail={
+          <>
+            <Text fontSize="small" mr="xsmall" color="secondary">
+              Online
+            </Text>
+            <Icon
+              name="Chat"
+              verticalAlign="middle"
+              color="positive"
+              size={16}
+            />
+          </>
+        }
+      >
+        Chat
+      </MenuItem>
+      <MenuItem
+        icon="Account"
+        detail={
+          <>
+            <Text fontSize="small" mr="xsmall" color="secondary">
+              Offline
+            </Text>
+            <Icon name="Chat" verticalAlign="middle" size={16} />
+          </>
+        }
+      >
+        Chat
+      </MenuItem>
     </MenuList>
   </div>
 )
@@ -268,41 +261,34 @@ export const RealisticMenus = () => {
         iconGutter
         content={
           <>
-            <MenuGroup>
-              <MenuItem
-                description="some description"
-                icon="Refresh"
-                detail="⌘⇧↵"
-              >
-                Clear cache & refresh
-              </MenuItem>
-            </MenuGroup>
+            <MenuItem
+              description="some description"
+              icon="Refresh"
+              detail="⌘⇧↵"
+            >
+              Clear cache & refresh
+            </MenuItem>
 
             <MenuDivider />
 
-            <MenuGroup label="Options">
-              <MenuItem icon="EditOutline" detail="⌘⇧E">
-                Edit dashboard
-              </MenuItem>
-              <MenuItem description="some description">Get LookMl</MenuItem>
-              <MenuItem icon="Undo" detail="A longer detail">
-                Revert to original dashboard
-              </MenuItem>
-            </MenuGroup>
+            <MenuHeading>Options</MenuHeading>
+            <MenuItem icon="EditOutline" detail="⌘⇧E">
+              Edit dashboard
+            </MenuItem>
+            <MenuItem description="some description">Get LookMl</MenuItem>
+            <MenuItem icon="Undo" detail="A longer detail">
+              Revert to original dashboard
+            </MenuItem>
 
             <MenuDivider />
 
-            <MenuGroup>
-              <MenuItem icon="Download" detail="⌥⇧D">
-                Edit dashboard
-              </MenuItem>
-            </MenuGroup>
+            <MenuItem icon="Download" detail="⌥⇧D">
+              Edit dashboard
+            </MenuItem>
 
             <MenuDivider />
 
-            <MenuGroup>
-              <MenuItem icon="TrashOutline">Move to Trash</MenuItem>
-            </MenuGroup>
+            <MenuItem icon="TrashOutline">Move to Trash</MenuItem>
           </>
         }
       >
@@ -315,33 +301,32 @@ export const RealisticMenus = () => {
         iconGutter
         content={
           <>
-            <MenuGroup>
-              <MenuItem icon="Refresh" detail="⌘⇧↵">
-                Clear cache &amp; refresh
-              </MenuItem>
-            </MenuGroup>
+            <MenuItem icon="Refresh" detail="⌘⇧↵">
+              Clear cache &amp; refresh
+            </MenuItem>
 
-            <MenuGroup label="Options">
-              <MenuItem icon="EditOutline" detail="⌘⇧E">
-                Edit dashboard
-              </MenuItem>
-              <MenuItem>Get LookMl</MenuItem>
-              <MenuItem icon="Undo">Revert to original dashboard</MenuItem>
-            </MenuGroup>
+            <MenuDivider />
 
-            <MenuGroup>
-              <MenuItem
-                description="some description"
-                icon="Download"
-                detail="⌥⇧D"
-              >
-                Edit dashboard
-              </MenuItem>
-            </MenuGroup>
+            <MenuHeading>Options</MenuHeading>
+            <MenuItem icon="EditOutline" detail="⌘⇧E">
+              Edit dashboard
+            </MenuItem>
+            <MenuItem>Get LookMl</MenuItem>
+            <MenuItem icon="Undo">Revert to original dashboard</MenuItem>
 
-            <MenuGroup>
-              <MenuItem icon="TrashOutline">Move to Trash</MenuItem>
-            </MenuGroup>
+            <MenuDivider />
+
+            <MenuItem
+              description="some description"
+              icon="Download"
+              detail="⌥⇧D"
+            >
+              Edit dashboard
+            </MenuItem>
+
+            <MenuDivider />
+
+            <MenuItem icon="TrashOutline">Move to Trash</MenuItem>
           </>
         }
       >
@@ -354,21 +339,19 @@ export const RealisticMenus = () => {
         iconGutter
         content={
           <>
-            <MenuGroup>
-              <MenuItem icon="EditOutline">Rename</MenuItem>
-              <MenuItem description="some description" icon="TrashOutline">
-                Delete
-              </MenuItem>
-            </MenuGroup>
-            <MenuGroup label="Create">
-              <MenuItem icon="FolderNew">Folder</MenuItem>
-              <MenuItem icon="ExploreOutline">Model</MenuItem>
-              <MenuItem icon="IdeFileView">New Item</MenuItem>
-              <MenuItem icon="IdeFileView">View</MenuItem>
-              <MenuItem icon="IdeFileDashboard">Dasbhaord</MenuItem>
-              <MenuItem icon="IdeFileDocument">Document</MenuItem>
-              <MenuItem icon="IdeFileGeneric">Generic LookML file</MenuItem>
-            </MenuGroup>
+            <MenuItem icon="EditOutline">Rename</MenuItem>
+            <MenuItem description="some description" icon="TrashOutline">
+              Delete
+            </MenuItem>
+            <MenuDivider />
+            <MenuHeading>Create</MenuHeading>
+            <MenuItem icon="FolderNew">Folder</MenuItem>
+            <MenuItem icon="ExploreOutline">Model</MenuItem>
+            <MenuItem icon="IdeFileView">New Item</MenuItem>
+            <MenuItem icon="IdeFileView">View</MenuItem>
+            <MenuItem icon="IdeFileDashboard">Dasbhaord</MenuItem>
+            <MenuItem icon="IdeFileDocument">Document</MenuItem>
+            <MenuItem icon="IdeFileGeneric">Generic LookML file</MenuItem>
           </>
         }
       >
@@ -378,19 +361,17 @@ export const RealisticMenus = () => {
       <Menu
         content={
           <>
-            <MenuGroup>
-              <MenuItem>Rename</MenuItem>
-              <MenuItem>Delete</MenuItem>
-            </MenuGroup>
-            <MenuGroup label="Create">
-              <MenuItem>Folder</MenuItem>
-              <MenuItem>Model</MenuItem>
-              <MenuItem>New Item</MenuItem>
-              <MenuItem>View</MenuItem>
-              <MenuItem>Dasbhaord</MenuItem>
-              <MenuItem>Document</MenuItem>
-              <MenuItem>Generic LookML file</MenuItem>
-            </MenuGroup>
+            <MenuItem>Rename</MenuItem>
+            <MenuItem>Delete</MenuItem>
+            <MenuDivider />
+            <MenuHeading>Create</MenuHeading>
+            <MenuItem>Folder</MenuItem>
+            <MenuItem>Model</MenuItem>
+            <MenuItem>New Item</MenuItem>
+            <MenuItem>View</MenuItem>
+            <MenuItem>Dasbhaord</MenuItem>
+            <MenuItem>Document</MenuItem>
+            <MenuItem>Generic LookML file</MenuItem>
           </>
         }
       >

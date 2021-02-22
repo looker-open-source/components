@@ -27,7 +27,7 @@
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import { IconNames } from '@looker/icons'
-import { MenuGroup, MenuList, MenuItem, MenuItemProps, MenuDivider } from '.'
+import { MenuHeading, MenuList, MenuItem, MenuItemProps, MenuDivider } from '.'
 
 const groups: { label?: string; items: MenuItemProps[] }[] = [
   {
@@ -65,18 +65,17 @@ export const Basic = Template.bind({})
 Basic.args = {
   children: groups.map(({ label, items }, key, groupsArray) => (
     <>
-      <MenuGroup label={label} key={key}>
-        {items.map((item, i) => (
-          <MenuItem
-            key={i}
-            icon={item.icon}
-            detail={item.detail}
-            description={item.description}
-          >
-            {item.children}
-          </MenuItem>
-        ))}
-      </MenuGroup>
+      <MenuHeading>{label}</MenuHeading>
+      {items.map((item, i) => (
+        <MenuItem
+          key={i}
+          icon={item.icon}
+          detail={item.detail}
+          description={item.description}
+        >
+          {item.children}
+        </MenuItem>
+      ))}
       {key < groupsArray.length - 1 && <MenuDivider />}
     </>
   )),
