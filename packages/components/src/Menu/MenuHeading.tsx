@@ -24,17 +24,25 @@
 
  */
 
-import React, { FC, useRef, RefObject } from 'react'
+import React, { FC, useContext, useRef, RefObject } from 'react'
 import styled from 'styled-components'
 import { Heading } from '../Text/Heading'
+import { listItemDimensions } from '../List'
+import { ListItemContext } from '../List/ListItemContext'
+import { ListItemDimensions } from '../List/types'
 import { useElementVisibility } from './MenuHeading.hooks'
 
 export const MenuHeading: FC = ({ children }) => {
   const labelShimRef: RefObject<any> = useRef()
   const isLabelShimVisible = useElementVisibility(labelShimRef)
 
+  const { density } = useContext(ListItemContext)
+  const { height, labelFontSize, labelLineHeight, px, py } = listItemDimensions(
+    density
+  )
+
   return (
-    <MenuHeadingWrapper renderBoxShadow={!isLabelShimVisible}>
+    <MenuHeadingWrapper height={height} renderBoxShadow={!isLabelShimVisible}>
       {/*
         NOTE: The labelShimRef div is required for box-shadow to appear when the heading
         is sticky to the top of the container. Using IntersectionObserver,
@@ -42,14 +50,21 @@ export const MenuHeading: FC = ({ children }) => {
         render the shadow.
       */}
       <div ref={labelShimRef} style={{ height: '0' }} />
-      <Heading as="h2" fontSize="small" fontWeight="semiBold" pl="medium">
+      <Heading
+        as="h2"
+        fontSize={labelFontSize}
+        fontWeight="semiBold"
+        lineHeight={labelLineHeight}
+        px={px}
+        py={py}
+      >
         {children}
       </Heading>
     </MenuHeadingWrapper>
   )
 }
 
-interface MenuHeadingWrapperProps {
+interface MenuHeadingWrapperProps extends Pick<ListItemDimensions, 'height'> {
   renderBoxShadow: boolean
 }
 
@@ -58,6 +73,7 @@ const MenuHeadingWrapper = styled.li<MenuHeadingWrapperProps>`
   box-shadow: ${({ renderBoxShadow, theme: { colors } }) =>
     renderBoxShadow ? `0 4px 8px -2px ${colors.ui2}` : 'none'};
   margin-bottom: ${({ theme }) => theme.space.xxsmall};
+  min-height: ${({ height }) => `${height}px`};
   position: sticky;
   top: -1px;
 

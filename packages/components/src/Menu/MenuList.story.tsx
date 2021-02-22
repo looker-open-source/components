@@ -24,9 +24,11 @@
 
  */
 
-import React from 'react'
+import React, { FC } from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import { IconNames } from '@looker/icons'
+import { Grid } from '../Layout'
+import { DensityRamp } from '../List/types'
 import { MenuHeading, MenuList, MenuItem, MenuItemProps, MenuDivider } from '.'
 
 const groups: { label?: string; items: MenuItemProps[] }[] = [
@@ -93,6 +95,26 @@ LongList.parameters = {
   storyshots: false,
 }
 
+const DensityExample: FC<{ density?: DensityRamp }> = ({ density }) => (
+  <MenuList iconGutter density={density}>
+    <MenuHeading>Cheeses of the World</MenuHeading>
+    <MenuItem icon="Calendar" description="Yellow">
+      Swiss
+    </MenuItem>
+    <MenuItem>Parmesan</MenuItem>
+    <MenuItem selected>Cheddar</MenuItem>
+  </MenuList>
+)
+
+export const Density = () => (
+  <Grid columns={5}>
+    <DensityExample density={1} />
+    <DensityExample />
+    <DensityExample density={-1} />
+    <DensityExample density={-2} />
+    <DensityExample density={-3} />
+  </Grid>
+)
 export default {
   component: MenuList,
   title: 'MenuList',
