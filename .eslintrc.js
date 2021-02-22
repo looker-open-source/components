@@ -35,6 +35,12 @@ module.exports = {
       rules: {},
     },
     {
+      files: ['packages/icons/src/**/*.tsx'],
+      rules: {
+        'prettier/prettier': 'off',
+      },
+    },
+    {
       files: ['packages/*/src/**/*.tsx', 'packages/*/src/**/*.ts'],
       rules: {
         'i18next/no-literal-string': [
