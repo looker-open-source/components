@@ -44,6 +44,7 @@ import { Heading, Text, Paragraph } from '../Text'
 import { Tooltip } from '../Tooltip'
 import { useToggle } from '../utils'
 import { Menu } from './Menu'
+import { MenuDivider } from './MenuDivider'
 import { MenuGroup } from './MenuGroup'
 import { MenuItem } from './MenuItem'
 import { MenuList } from './MenuList'
@@ -70,16 +71,24 @@ const menuItems = (
         Pizza
       </MenuItem>
     </MenuGroup>
+
+    <MenuDivider />
+
     <MenuGroup>
       <MenuItem>Gouda</MenuItem>
       <MenuItem current> Swiss</MenuItem>
       <MenuItem>Cheddar</MenuItem>
     </MenuGroup>
+
+    <MenuDivider />
+
     <MenuGroup label="Create">
       <MenuItem>Gouda</MenuItem>
       <MenuItem> Swiss</MenuItem>
       <MenuItem>Cheddar</MenuItem>
     </MenuGroup>
+
+    <MenuDivider />
 
     <MenuGroup>
       <MenuItem>Gouda</MenuItem>
@@ -269,6 +278,8 @@ export const RealisticMenus = () => {
               </MenuItem>
             </MenuGroup>
 
+            <MenuDivider />
+
             <MenuGroup label="Options">
               <MenuItem icon="EditOutline" detail="⌘⇧E">
                 Edit dashboard
@@ -279,11 +290,15 @@ export const RealisticMenus = () => {
               </MenuItem>
             </MenuGroup>
 
+            <MenuDivider />
+
             <MenuGroup>
               <MenuItem icon="Download" detail="⌥⇧D">
                 Edit dashboard
               </MenuItem>
             </MenuGroup>
+
+            <MenuDivider />
 
             <MenuGroup>
               <MenuItem icon="TrashOutline">Move to Trash</MenuItem>
@@ -604,6 +619,9 @@ export const NestedMenu = () => {
           Download
         </MenuItem>
       </MenuGroup>
+
+      <MenuDivider />
+
       <MenuGroup label="Sub Menus">
         <MenuItem nestedMenu={nestedMenu}>Sub Menu</MenuItem>
         <MenuItem onClick={getOnClick('Sub Menu')} nestedMenu={nestedMenu}>

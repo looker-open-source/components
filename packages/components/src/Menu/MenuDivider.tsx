@@ -24,8 +24,8 @@
 
  */
 
-export * from './Menu'
-export * from './MenuList'
-export * from './MenuGroup'
-export * from './MenuItem'
-export * from './MenuDivider'
+import styled from 'styled-components'
+
+export const MenuDivider = styled.li`
+  border-top: 1px solid ${({ theme: { colors } }) => colors.ui2};
+`

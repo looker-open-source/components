@@ -25,21 +25,12 @@
  */
 
 import React, { forwardRef, Ref } from 'react'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { List, ListProps } from '../List'
 import { NestedMenuProvider } from './NestedMenuProvider'
-import { MenuGroup } from '.'
-
-// TODO: Remove this interface and uses once MenuDivider is created
-export interface GroupDividersProps {
-  groupDividers?: boolean
-}
 
 export const MenuListInternal = forwardRef(
-  (
-    { children, ...props }: ListProps & GroupDividersProps,
-    forwardedRef: Ref<HTMLUListElement>
-  ) => {
+  ({ children, ...props }: ListProps, forwardedRef: Ref<HTMLUListElement>) => {
     return (
       <NestedMenuProvider>
         <List role="menu" ref={forwardedRef} {...props}>
@@ -51,17 +42,6 @@ export const MenuListInternal = forwardRef(
 )
 MenuListInternal.displayName = 'MenuListInternal'
 
-// TODO: Delete once MenuDivider component is created
-const dividersStyle = ({ groupDividers = true }: GroupDividersProps) =>
-  groupDividers &&
-  css`
-    ${MenuGroup} ~ ${MenuGroup} {
-      border-top: 1px solid ${({ theme: { colors } }) => colors.ui2};
-    }
-  `
-
 export const MenuList = styled(MenuListInternal)`
-  ${dividersStyle}
-
   min-width: 12rem;
 `
