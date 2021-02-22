@@ -21,11 +21,18 @@ The `Chip` component is a compact element that can be set as `disabled` and has 
 }
 ```
 
-The `Chip` component provides the prop `chipIconLabel` to customize the icon label. Hover over the the `x` icon to see the tooltip.
+The `Chip` component provides the prop `iconLabel` to customize the icon label. Hover over the the `x` icon to see the tooltip.
 
 ```jsx
-<Space gap="xxsmall">
-  <Chip chipIconLabel="not delete">hover the x</Chip>
-  <Chip>hover the x</Chip>
-</Space>
+;() => {
+  const alertTrigger = () => alert('hello')
+  return (
+    <Space gap="xxsmall">
+      <Chip iconLabel="remove chip" onDelete={alertTrigger}>
+        hover the x
+      </Chip>
+      <Chip onDelete={alertTrigger}>hover the x</Chip>
+    </Space>
+  )
+}
 ```

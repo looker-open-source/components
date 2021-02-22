@@ -113,8 +113,8 @@ export const ComboboxMultiInputInternal = forwardRef(
       onDuplicate,
 
       // localization
-      clearIconLabel,
       chipIconLabel,
+      clearIconLabel,
 
       ...rest
     } = props

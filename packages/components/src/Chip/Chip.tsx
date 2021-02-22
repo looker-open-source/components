@@ -45,7 +45,7 @@ export interface ChipProps
    * customize the tooltip on the closing icon
    * @default 'Delete'
    */
-  chipIconLabel?: string
+  iconLabel?: string
   onDelete?: (
     e?: MouseEvent<HTMLSpanElement> | KeyboardEvent<HTMLSpanElement>
   ) => void
@@ -107,11 +107,11 @@ const ChipLabel = styled(Span)<SpanProps & TruncateProps>`
 
 const ChipJSX = forwardRef((props: ChipProps, ref: Ref<HTMLSpanElement>) => {
   const { t } = useTranslation('Chip')
-  const chipIconLabelText = t('Delete')
+  const iconLabelText = t('Delete')
   const {
     children,
     disabled,
-    chipIconLabel = chipIconLabelText,
+    iconLabel = iconLabelText,
     onBlur,
     onClick,
     onDelete,
@@ -155,7 +155,7 @@ const ChipJSX = forwardRef((props: ChipProps, ref: Ref<HTMLSpanElement>) => {
           <IconButton
             disabled={disabled}
             icon="Close"
-            label={chipIconLabel}
+            label={iconLabel}
             ml="xsmall"
             onClick={handleDelete}
             size="xxsmall"

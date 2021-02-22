@@ -343,7 +343,7 @@ export const InputChipsBaseInternal = forwardRef(
         <Chip
           aria-selected={isSelected}
           disabled={disabled}
-          chipIconLabel={chipIconLabel}
+          iconLabel={chipIconLabel}
           key={value}
           onClick={handleChipClick(value)}
           onDelete={onChipDelete}

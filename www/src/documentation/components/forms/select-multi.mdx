@@ -119,35 +119,39 @@ The `InputChips` component provides the prop `clearIconLabel` to customize the i
 ```jsx
 <Space>
   <SelectMulti
+    clearIconLabel="remove all chips"
+    defaultValues={['Cheddar']}
+    flex={1}
     options={[
       { value: 'Cheddar' },
       { value: 'Gouda' },
       { value: 'Swiss' },
       { value: 'Feta' },
-      { value: 'Mascarpone' },
-      { value: 'Brie' },
-      { value: 'Mozzarella' },
-      { value: 'Cotija' },
-      { value: 'Pepperjack' },
     ]}
     placeholder="Cheeses"
-    defaultValues={['Cheddar']}
-    clearIconLabel="remove chips"
-    flex={1}
   />
   <SelectMulti
-    options={[
-      { value: '0', label: 'Sunday' },
-      { value: '1', label: 'Monday' },
-      { value: '2', label: 'Tuesday' },
-      { value: '3', label: 'Wednesday' },
-      { value: '4', label: 'Thursday' },
-      { value: '5', label: 'Friday' },
-      { value: '6', label: 'Saturday' },
-    ]}
-    defaultValues={['1', '2', '3']}
+    defaultValues={['Gouda', 'Feta']}
     chipIconLabel="remove this chip"
     flex={1}
+    options={[
+      { value: 'Cheddar' },
+      { value: 'Gouda' },
+      { value: 'Swiss' },
+      { value: 'Feta' },
+    ]}
+  />
+  <SelectMulti
+    clearIconLabel="remove all chips"
+    defaultValues={['Cheddar', 'Swiss']}
+    chipIconLabel="remove this chip"
+    flex={1}
+    options={[
+      { value: 'Cheddar' },
+      { value: 'Gouda' },
+      { value: 'Swiss' },
+      { value: 'Feta' },
+    ]}
   />
 </Space>
 ```

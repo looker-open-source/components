@@ -62,7 +62,7 @@ export interface InputSearchProps
   clearOnClose?: boolean
 
   /**
-   * customize the tooltip on the closing icon
+   * customize the tooltip on the clear icon
    * @default 'Clear Field'
    */
   clearIconLabel?: string
