@@ -67,7 +67,7 @@ export const Basic = Template.bind({})
 Basic.args = {
   children: groups.map(({ label, items }, key, groupsArray) => (
     <>
-      <MenuHeading>{label}</MenuHeading>
+      {label && <MenuHeading>{label}</MenuHeading>}
       {items.map((item, i) => (
         <MenuItem
           key={i}
