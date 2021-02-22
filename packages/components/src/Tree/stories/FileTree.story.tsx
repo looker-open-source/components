@@ -25,6 +25,7 @@
  */
 
 import React from 'react'
+import { Explore, IdeDimension, IdeDimensionGroup } from '@looker/icons'
 import { Story } from '@storybook/react/types-6-0'
 import { TableChart, Visibility } from '@styled-icons/material-outlined'
 import { Tree } from '../Tree'

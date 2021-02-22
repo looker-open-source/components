@@ -24,6 +24,7 @@
 
  */
 
+import { ChartArea, ChartBar, ChartBoxPlot, ChartTimeline } from '@looker/icons'
 import {
   BarChart,
   BubbleChart,

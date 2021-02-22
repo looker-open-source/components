@@ -25,6 +25,7 @@
  */
 
 import React from 'react'
+import { Pivot } from '@looker/icons'
 import { Story } from '@storybook/react/types-6-0'
 import { DateRange, Person } from '@styled-icons/material'
 import { IconButton } from '../Button'

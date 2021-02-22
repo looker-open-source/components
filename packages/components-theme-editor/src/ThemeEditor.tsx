@@ -24,6 +24,7 @@
 
  */
 
+import { Beaker } from '@looker/icons'
 import { IconButton, Dialog } from '@looker/components'
 import React, { FC } from 'react'
 import {

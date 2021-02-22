@@ -28,6 +28,8 @@ import {
   getAllComboboxOptionText,
   renderWithTheme,
 } from '@looker/components-test-utils'
+import { ChartBar } from '@looker/icons'
+import { BarChart } from '@styled-icons/material'
 import { cleanup, fireEvent, screen } from '@testing-library/react'
 import React, { useState, useMemo, useEffect } from 'react'
 
@@ -957,7 +959,7 @@ describe('Select', () => {
           { icon: <ChartBar />, label: 'Bar', value: 'bar' },
           { label: 'No Icon', value: 'noicon' },
           {
-            icon: <ChartColumn />,
+            icon: <BarChart />,
             indicator: 'Test Indicator',
             label: 'Column',
             value: 'column',

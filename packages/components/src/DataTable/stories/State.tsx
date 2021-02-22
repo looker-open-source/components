@@ -24,6 +24,7 @@
 
  */
 
+import { Beaker } from '@looker/icons'
 import { Story } from '@storybook/react/types-6-0'
 import React from 'react'
 import { Icon } from '../../Icon'

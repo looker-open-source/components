@@ -25,6 +25,7 @@
  */
 
 import React from 'react'
+import { IdeDimension, IdeDimensionGroup } from '@looker/icons'
 import {
   Explore,
   Info,

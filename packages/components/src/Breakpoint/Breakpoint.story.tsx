@@ -24,6 +24,7 @@
 
  */
 import React, { FC } from 'react'
+import { LookerLogo } from '@looker/icons'
 import { Story } from '@storybook/react/types-6-0'
 import {
   SpaceProps,

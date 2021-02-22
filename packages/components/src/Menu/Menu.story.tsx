@@ -24,23 +24,32 @@
 
  */
 
-import { ExploreOutline } from '@looker/icons/src'
+import {
+  Account,
+  IdeFileDashboard,
+  IdeFileDocument,
+  IdeFileGeneric,
+  LogoRings,
+} from '@looker/icons'
 import {
   AddAlert,
   Chat,
   Create,
   DeleteOutline,
+  Download,
   Favorite,
   MoreVert,
   Person,
   PieChart,
   Refresh,
+  TableChart,
   Undo,
   VerifiedUser,
 } from '@styled-icons/material'
 import {
   Create as CreateOutline,
   CreateNewFolder,
+  Explore as ExploreOutline,
 } from '@styled-icons/material-outlined'
 import React, {
   forwardRef,
@@ -364,8 +373,8 @@ export const RealisticMenus = () => {
             <MenuGroup label="Create">
               <MenuItem icon={<CreateNewFolder />}>Folder</MenuItem>
               <MenuItem icon={<ExploreOutline />}>Model</MenuItem>
-              <MenuItem icon={<IdeFileView />}>New Item</MenuItem>
-              <MenuItem icon={<IdeFileView />}>View</MenuItem>
+              <MenuItem icon={<TableChart />}>New Item</MenuItem>
+              <MenuItem icon={<TableChart />}>View</MenuItem>
               <MenuItem icon={<IdeFileDashboard />}>Dasbhaord</MenuItem>
               <MenuItem icon={<IdeFileDocument />}>Document</MenuItem>
               <MenuItem icon={<IdeFileGeneric />}>Generic LookML file</MenuItem>

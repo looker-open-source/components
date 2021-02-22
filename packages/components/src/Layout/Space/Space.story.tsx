@@ -25,6 +25,7 @@
  */
 
 import { Story } from '@storybook/react/types-6-0'
+import { Account } from '@looker/icons'
 import { Delete } from '@styled-icons/material'
 import React from 'react'
 import { Button, IconButton } from '../../Button'

@@ -27,6 +27,7 @@
 import 'jest-styled-components'
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
+import { Beaker } from '@looker/icons'
 import { fireEvent, configure } from '@testing-library/react'
 
 import { ListItem } from './ListItem'
