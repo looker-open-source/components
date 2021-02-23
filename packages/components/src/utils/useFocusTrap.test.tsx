@@ -109,7 +109,13 @@ describe('useFocusTrap', () => {
     })
 
     describe('focus starts on tabbable element by priority', async () => {
-      const inputElement = <FieldText label="Text field" />
+      const inputElements = (
+        <>
+          <input type="hidden" />
+          <FieldText label="Hidden text field" style={{ display: 'none' }} />
+          <FieldText label="Text field" />
+        </>
+      )
       const footerElement = (
         <footer>
           <button>Footer button</button>
@@ -123,7 +129,7 @@ describe('useFocusTrap', () => {
             <Surface>
               {firstTabbableElement}
               {footerElement}
-              {inputElement}
+              {inputElements}
             </Surface>
           </FocusTrapComponent>
         )
