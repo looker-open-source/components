@@ -29,7 +29,6 @@ import styled from 'styled-components'
 import { Heading } from '../Text/Heading'
 import { listItemDimensions } from '../List'
 import { ListItemContext } from '../List/ListItemContext'
-import { ListItemDimensions } from '../List/types'
 import { useElementVisibility } from './MenuHeading.hooks'
 
 export const MenuHeading: FC = ({ children }) => {
