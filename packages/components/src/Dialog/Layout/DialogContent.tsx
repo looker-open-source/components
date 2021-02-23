@@ -31,9 +31,11 @@ import {
   reset,
   LayoutProps,
   layout,
+  omitStyledProps,
+  pickStyledProps,
 } from '@looker/design-tokens'
 import React, { FC, useRef, useState, useEffect } from 'react'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { useResize } from '../../utils'
 
 export interface DialogContentProps
@@ -53,7 +55,7 @@ export interface DialogContentProps
   hasHeader?: boolean
 }
 
-export const DialogContent: FC<DialogContentProps> = ({
+const DialogContentLayout: FC<DialogContentProps> = ({
   children,
   className,
   hasFooter,
@@ -80,39 +82,37 @@ export const DialogContent: FC<DialogContentProps> = ({
   }, [height])
 
   return (
-    <DialogContentWrapper
+    <div
+      className={overflow ? `overflow ${className}` : className}
       ref={internalRef}
-      hasOverflow={overflow}
-      px={['medium', 'xlarge']}
-      pb={overflow || !!hasFooter ? 'large' : 'xxxsmall'}
-      pt={overflow || !!hasHeader ? 'large' : 'xxxsmall'}
-      {...props}
+      {...omitStyledProps(props)}
     >
-      {children}
-    </DialogContentWrapper>
+      <Inner
+        px={['medium', 'xlarge']}
+        pb={overflow || !!hasFooter ? 'large' : 'xxxsmall'}
+        pt={overflow || !!hasHeader ? 'large' : 'xxxsmall'}
+        {...pickStyledProps(props)}
+      >
+        {children}
+      </Inner>
+    </div>
   )
 }
 
-interface DialogContentWrapperProps
-  extends LayoutProps,
-    CompatibleHTMLProps<HTMLDivElement>,
-    PaddingProps {
-  hasOverflow: boolean
-}
+const Inner = styled.div<PaddingProps>`
+  ${padding}
+`
 
-const DialogContentWrapper = styled.div<DialogContentWrapperProps>`
+export const DialogContent = styled(DialogContentLayout)`
   ${reset}
   ${layout}
-  ${padding}
 
   flex: 1 1 auto;
   overflow: auto;
 
-  ${({ hasOverflow, theme }) =>
-    hasOverflow &&
-    css`
-      border-bottom: 1px solid ${theme.colors.ui2};
-      border-top: 1px solid ${theme.colors.ui2};
-      box-shadow: inset 0 -4px 4px -4px ${theme.colors.ui2};
-    `}
+  &.overflow {
+    border-bottom: 1px solid ${({ theme }) => theme.colors.ui2};
+    border-top: 1px solid ${({ theme }) => theme.colors.ui2};
+    box-shadow: inset 0 -4px 4px -4px ${({ theme }) => theme.colors.ui2};
+  }
 `
