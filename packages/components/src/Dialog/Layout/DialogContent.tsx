@@ -35,7 +35,7 @@ import {
   pickStyledProps,
 } from '@looker/design-tokens'
 import React, { FC, useRef, useState, useEffect } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { useResize } from '../../utils'
 
 export interface DialogContentProps
@@ -82,8 +82,8 @@ const DialogContentLayout: FC<DialogContentProps> = ({
   }, [height])
 
   return (
-    <div
-      className={overflow ? `overflow ${className}` : className}
+    <DialogContentWrapper
+      overflow={overflow}
       ref={internalRef}
       {...omitStyledProps(props)}
     >
@@ -95,7 +95,7 @@ const DialogContentLayout: FC<DialogContentProps> = ({
       >
         {children}
       </Inner>
-    </div>
+    </DialogContentWrapper>
   )
 }
 
@@ -103,16 +103,18 @@ const Inner = styled.div<PaddingProps>`
   ${padding}
 `
 
-export const DialogContent = styled(DialogContentLayout)`
+const DialogContentWrapper = styled.div<{ overflow: boolean }>`
   ${reset}
   ${layout}
 
   flex: 1 1 auto;
   overflow: auto;
 
-  &.overflow {
-    border-bottom: 1px solid ${({ theme }) => theme.colors.ui2};
-    border-top: 1px solid ${({ theme }) => theme.colors.ui2};
-    box-shadow: inset 0 -4px 4px -4px ${({ theme }) => theme.colors.ui2};
-  }
+  ${({ overflow, theme }) =>
+    overflow &&
+    css`
+      border-bottom: 1px solid ${theme.colors.ui2};
+      border-top: 1px solid ${theme.colors.ui2};
+      box-shadow: inset 0 -4px 4px -4px ${theme.colors.ui2};
+    `}
 `
