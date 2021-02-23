@@ -24,16 +24,32 @@
 
  */
 
-export * from './Button'
-export * from './ButtonBase'
-export * from './ButtonGroup'
-export * from './ButtonItem'
-export * from './ButtonOutline'
-export * from './ButtonToggle'
-export * from './ButtonTransparent'
-export * from './IconButton'
-export * from './iconButtonColor'
-export * from './MultiFunctionButton'
-export * from './types'
+import React, { FC, ReactElement, useRef, cloneElement } from 'react'
+import { ButtonProps, IconButtonProps } from '.'
 
-export type { ButtonSizes } from './size'
+export interface MultiFunctionButtonProps {
+  children: ReactElement<ButtonProps | IconButtonProps>
+  alternate: ReactElement<ButtonProps | IconButtonProps>
+  isAlternate?: boolean
+}
+
+export const MultiFunctionButton: FC<MultiFunctionButtonProps> = ({
+  alternate,
+  children,
+  isAlternate = false,
+}) => {
+  const parent = useRef<HTMLDivElement>(null)
+  const handleFocus = () => {
+    parent && parent.current && parent.current.focus()
+  }
+
+  const childrenButton = cloneElement(children, {
+    onclick: handleFocus,
+  })
+
+  return (
+    <div aria-live="polite" ref={parent}>
+      {isAlternate ? alternate : childrenButton}
+    </div>
+  )
+}
