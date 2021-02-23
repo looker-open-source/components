@@ -37,12 +37,10 @@ export const MenuHeading: FC = ({ children }) => {
   const isLabelShimVisible = useElementVisibility(labelShimRef)
 
   const { density } = useContext(ListItemContext)
-  const { height, labelFontSize, labelLineHeight, px, py } = listItemDimensions(
-    density
-  )
+  const { px } = listItemDimensions(density)
 
   return (
-    <MenuHeadingWrapper height={height} renderBoxShadow={!isLabelShimVisible}>
+    <MenuHeadingWrapper renderBoxShadow={!isLabelShimVisible}>
       {/*
         NOTE: The labelShimRef div is required for box-shadow to appear when the heading
         is sticky to the top of the container. Using IntersectionObserver,
@@ -52,11 +50,13 @@ export const MenuHeading: FC = ({ children }) => {
       <div ref={labelShimRef} style={{ height: '0' }} />
       <Heading
         as="h2"
-        fontSize={labelFontSize}
-        fontWeight="semiBold"
-        lineHeight={labelLineHeight}
+        color="text5"
+        fontFamily="body"
+        fontSize="xsmall"
+        fontWeight="medium"
+        lineHeight="xsmall"
         px={px}
-        py={py}
+        py="xsmall"
       >
         {children}
       </Heading>
@@ -64,7 +64,7 @@ export const MenuHeading: FC = ({ children }) => {
   )
 }
 
-interface MenuHeadingWrapperProps extends Pick<ListItemDimensions, 'height'> {
+interface MenuHeadingWrapperProps {
   renderBoxShadow: boolean
 }
 
@@ -72,12 +72,6 @@ const MenuHeadingWrapper = styled.li<MenuHeadingWrapperProps>`
   background: ${({ theme: { colors } }) => colors.background};
   box-shadow: ${({ renderBoxShadow, theme: { colors } }) =>
     renderBoxShadow ? `0 4px 8px -2px ${colors.ui2}` : 'none'};
-  margin-bottom: ${({ theme }) => theme.space.xxsmall};
-  min-height: ${({ height }) => `${height}px`};
   position: sticky;
   top: -1px;
-
-  ${Heading} {
-    color: ${({ theme }) => theme.colors.text4};
-  }
 `
