@@ -42,6 +42,7 @@ export type {
   FontFamilyFallbacks,
   FontFamilyProps,
 } from './font_families'
+export type { FontSource, FontSources } from './font_sources'
 export { fontFamilies } from './font_families'
 export type { FontSizes, FontSizeProps, FontSizeRamp } from './font_sizes'
 export type {

@@ -24,14 +24,8 @@
 
  */
 
-import { mountWithTheme } from '@looker/components-test-utils'
-import React from 'react'
-import { theme } from '../theme'
-import {
-  googleFontParam,
-  googleFontUrl,
-  GoogleFontsLoader,
-} from './GoogleFontsLoader'
+import { theme } from '../../theme'
+import { googleFontParam, googleFontUrl } from './googleFontUrl'
 
 describe('GoogleFontsLoader', () => {
   describe('googleFontParam', () => {
@@ -55,15 +49,4 @@ describe('GoogleFontsLoader', () => {
     expect(googleFontUrl(theme)).toEqual(
       'https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap'
     ))
-
-  /**
-   * This throws a console error due to Styled Component's complain about doing `@import`
-   * inside a `createGlobalStyle`
-   *
-   * This should get rewritten to use React-Helmet (document.head injection)
-   */
-  xtest('GoogleFontsLoader', () => {
-    mountWithTheme(<GoogleFontsLoader />)
-    expect(document.head).toMatchInlineSnapshot({})
-  })
 })

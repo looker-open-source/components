@@ -24,21 +24,39 @@
 
  */
 
-import {
-  createShouldForwardProp,
-  props,
-} from '@styled-system/should-forward-prop'
+import React, { useContext } from 'react'
+import { Helmet } from 'react-helmet-async'
+import { ThemeContext } from 'styled-components'
+import { FontSources } from '@looker/design-tokens'
 
-export const shouldForwardProp = createShouldForwardProp([...props])
+export const fontFacesCSS = (fontSources: FontSources) =>
+  fontSources
+    .map(({ face, url }) => (face ? fontFace(face, url) : importFont(url)))
+    .join('\n')
 
-export * from './system'
-export * from './theme'
-export * from './GlobalStyle'
+export const importFont = (url: string) => `
+@import url(${url});`
 
-// Provided for legacy color implementations
-export { palette } from './legacy'
+export const fontFace = (face: string, url: string) => `
+@font-face {
+  font-family: ${face};
+  src: url(${url});
+}`
 
-// Useful external utilities
-export { transitions } from './tokens/transitions'
-export * from './tokens/breakpoints'
-export * from './utils'
+/**
+ * FontFaceLoader injects font @font-face imports into a style tag on the page's <HEAD>
+ * Font sources are determined using the fontSources key on the theme
+ */
+export const FontFaceLoader = () => {
+  const { fontSources } = useContext(ThemeContext)
+
+  if (!fontSources || fontSources.length === 0) return null
+
+  const css = fontFacesCSS(fontSources)
+
+  return (
+    <Helmet>
+      <style type="text/css">{css}</style>
+    </Helmet>
+  )
+}

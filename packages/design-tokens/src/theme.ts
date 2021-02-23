@@ -37,6 +37,7 @@ import {
   Shadows,
   SpaceRamp,
   TransitionRamp,
+  FontSources,
 } from './system'
 
 /**
@@ -64,6 +65,7 @@ export interface Theme {
   easings: Easings
   fontSizes: FontSizeRamp
   fonts: FontFamilyChoices
+  fontSources?: FontSources
   fontWeights: FontWeightRamp
   lineHeights: LineHeightRamp
   radii: Radii
