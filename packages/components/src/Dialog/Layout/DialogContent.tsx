@@ -55,7 +55,7 @@ export interface DialogContentProps
   hasHeader?: boolean
 }
 
-const DialogContentLayout: FC<DialogContentProps> = ({
+export const DialogContent: FC<DialogContentProps> = ({
   children,
   className,
   hasFooter,
@@ -83,7 +83,7 @@ const DialogContentLayout: FC<DialogContentProps> = ({
 
   return (
     <DialogContentWrapper
-      overflow={overflow}
+      hasOverflow={overflow}
       ref={internalRef}
       {...omitStyledProps(props)}
     >
@@ -99,19 +99,24 @@ const DialogContentLayout: FC<DialogContentProps> = ({
   )
 }
 
-const Inner = styled.div<PaddingProps>`
+interface InnerProps
+  extends LayoutProps,
+    PaddingProps,
+    CompatibleHTMLProps<HTMLDivElement> {}
+
+const Inner = styled.div<InnerProps>`
+  ${layout}
   ${padding}
 `
 
-const DialogContentWrapper = styled.div<{ overflow: boolean }>`
+const DialogContentWrapper = styled.div<{ hasOverflow: boolean }>`
   ${reset}
-  ${layout}
 
   flex: 1 1 auto;
   overflow: auto;
 
-  ${({ overflow, theme }) =>
-    overflow &&
+  ${({ hasOverflow, theme }) =>
+    hasOverflow &&
     css`
       border-bottom: 1px solid ${theme.colors.ui2};
       border-top: 1px solid ${theme.colors.ui2};
