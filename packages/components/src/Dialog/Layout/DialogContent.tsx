@@ -35,9 +35,8 @@ import {
   pickStyledProps,
 } from '@looker/design-tokens'
 import React, { FC, useRef, useState, useEffect } from 'react'
-import ReactResizeDetector from 'react-resize-detector'
 import styled from 'styled-components'
-import omit from 'lodash/omit'
+import { useResize } from '../../utils'
 
 export interface DialogContentProps
   extends LayoutProps,
@@ -56,39 +55,37 @@ export interface DialogContentProps
   hasHeader?: boolean
 }
 
-interface DialogContentLayoutProps extends DialogContentProps {
-  renderedHeight: string
-}
-
-const DialogContentLayout: FC<DialogContentLayoutProps> = ({
+const DialogContentLayout: FC<DialogContentProps> = ({
   children,
   className,
-  renderedHeight,
   hasFooter,
   hasHeader,
   ...props
 }) => {
   const internalRef = useRef<HTMLDivElement>(null)
   const [overflow, setOverflow] = useState(false)
+  const [height, setHeight] = useState(0)
+
+  const handleResize = () => {
+    if (internalRef.current) {
+      setHeight(internalRef.current.offsetHeight)
+    }
+  }
+
+  useResize(internalRef.current, handleResize)
 
   useEffect(() => {
-    /**
-     * Once you overflow, you never go back (tough luck chuck)
-     */
-    if (!overflow) {
-      const container = internalRef.current
-
-      if (container) {
-        setOverflow(container.offsetHeight < container.scrollHeight)
-      }
+    const container = internalRef.current
+    if (container) {
+      setOverflow(container.offsetHeight < container.scrollHeight)
     }
-  }, [overflow, renderedHeight])
+  }, [height])
 
   return (
     <div
       className={overflow ? `overflow ${className}` : className}
       ref={internalRef}
-      {...omit(omitStyledProps(props), ['renderedHeight'])}
+      {...omitStyledProps(props)}
     >
       <Inner
         px={['medium', 'xlarge']}
@@ -106,7 +103,7 @@ const Inner = styled.div<PaddingProps>`
   ${padding}
 `
 
-const DialogContentStyled = styled(DialogContentLayout)`
+export const DialogContent = styled(DialogContentLayout)`
   ${reset}
   ${layout}
 
@@ -119,13 +116,3 @@ const DialogContentStyled = styled(DialogContentLayout)`
     box-shadow: inset 0 -4px 4px -4px ${({ theme }) => theme.colors.ui2};
   }
 `
-
-export const DialogContent = (props: DialogContentProps) => {
-  return (
-    <ReactResizeDetector handleHeight>
-      {(height: string) => (
-        <DialogContentStyled renderedHeight={height} {...props} />
-      )}
-    </ReactResizeDetector>
-  )
-}
