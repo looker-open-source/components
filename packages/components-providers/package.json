@@ -1,7 +1,7 @@
 {
   "name": "@looker/components-providers",
   "license": "MIT",
-  "version": "0.14.0",
+  "version": "0.14.1",
   "main": "lib/cjs/index.js",
   "module": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -18,7 +18,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@looker/design-tokens": "^0.14.0",
+    "@looker/design-tokens": "^0.14.1",
     "i18next": "^19.8.7",
     "lodash": "^4.17.20",
     "react-i18next": "^11.8.5",
