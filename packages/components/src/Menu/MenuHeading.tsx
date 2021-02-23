@@ -51,7 +51,7 @@ export const MenuHeading: FC = ({ children }) => {
       <Heading
         as="h2"
         color="text5"
-        fontFamily="body"
+        fontFamily="brand"
         fontSize="xsmall"
         fontWeight="medium"
         lineHeight="xsmall"
