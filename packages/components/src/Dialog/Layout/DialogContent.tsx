@@ -31,11 +31,9 @@ import {
   reset,
   LayoutProps,
   layout,
-  omitStyledProps,
-  pickStyledProps,
 } from '@looker/design-tokens'
 import React, { FC, useRef, useState, useEffect } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { useResize } from '../../utils'
 
 export interface DialogContentProps
@@ -55,7 +53,7 @@ export interface DialogContentProps
   hasHeader?: boolean
 }
 
-const DialogContentLayout: FC<DialogContentProps> = ({
+export const DialogContent: FC<DialogContentProps> = ({
   children,
   className,
   hasFooter,
@@ -82,37 +80,39 @@ const DialogContentLayout: FC<DialogContentProps> = ({
   }, [height])
 
   return (
-    <div
-      className={overflow ? `overflow ${className}` : className}
+    <DialogContentWrapper
       ref={internalRef}
-      {...omitStyledProps(props)}
+      hasOverflow={overflow}
+      px={['medium', 'xlarge']}
+      pb={overflow || !!hasFooter ? 'large' : 'xxxsmall'}
+      pt={overflow || !!hasHeader ? 'large' : 'xxxsmall'}
+      {...props}
     >
-      <Inner
-        px={['medium', 'xlarge']}
-        pb={overflow || !!hasFooter ? 'large' : 'xxxsmall'}
-        pt={overflow || !!hasHeader ? 'large' : 'xxxsmall'}
-        {...pickStyledProps(props)}
-      >
-        {children}
-      </Inner>
-    </div>
+      {children}
+    </DialogContentWrapper>
   )
 }
 
-const Inner = styled.div<PaddingProps>`
-  ${padding}
-`
+interface DialogContentWrapperProps
+  extends LayoutProps,
+    CompatibleHTMLProps<HTMLDivElement>,
+    PaddingProps {
+  hasOverflow: boolean
+}
 
-export const DialogContent = styled(DialogContentLayout)`
+const DialogContentWrapper = styled.div<DialogContentWrapperProps>`
   ${reset}
   ${layout}
+  ${padding}
 
   flex: 1 1 auto;
   overflow: auto;
 
-  &.overflow {
-    border-bottom: 1px solid ${({ theme }) => theme.colors.ui2};
-    border-top: 1px solid ${({ theme }) => theme.colors.ui2};
-    box-shadow: inset 0 -4px 4px -4px ${({ theme }) => theme.colors.ui2};
-  }
+  ${({ hasOverflow, theme }) =>
+    hasOverflow &&
+    css`
+      border-bottom: 1px solid ${theme.colors.ui2};
+      border-top: 1px solid ${theme.colors.ui2};
+      box-shadow: inset 0 -4px 4px -4px ${theme.colors.ui2};
+    `}
 `
