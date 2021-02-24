@@ -48,7 +48,7 @@ export const TrapStackProvider = <O,>({
   const registeredTrapsRef = useRef<TrapMap<O>>({})
   // Stores the current trap (element) where scrolling is allowed
   // null if no trap is active
-  const activeTrapRef = useRef<HTMLElement | null>(null)
+  const activeTrapRef = useRef<HTMLElement>()
   // Stores the callback to remove the trap behavior
   const deactivateRef = useRef<() => void>()
 
@@ -64,7 +64,7 @@ export const TrapStackProvider = <O,>({
       if (newTrap?.element !== activeTrapRef.current) {
         // Disable the existing trap and update the activeTrapRef
         // (whether there's a new trap or not)
-        activeTrapRef.current = newTrap?.element || null
+        activeTrapRef.current = newTrap?.element
         deactivateRef.current?.()
         deactivateRef.current = undefined
         // If there's a new trap, activate it and
@@ -78,7 +78,7 @@ export const TrapStackProvider = <O,>({
     const disableCurrentTrap = () => {
       deactivateRef.current?.()
       deactivateRef.current = undefined
-      activeTrapRef.current = null
+      activeTrapRef.current = undefined
     }
 
     const addTrap = (id: string, trap: Trap<O>) => {

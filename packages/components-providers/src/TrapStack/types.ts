@@ -35,7 +35,7 @@ export interface TrapStackContextProps<O extends {} = {}> {
   /**
    * Stores the element for the active trap (null if none are active)
    */
-  activeTrapRef?: MutableRefObject<HTMLElement | null>
+  activeTrapRef?: MutableRefObject<HTMLElement | undefined>
   /**
    * @private
    */
