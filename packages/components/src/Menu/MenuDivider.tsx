@@ -31,7 +31,7 @@ export const MenuDivider = styled.li<SpaceProps>`
   ${space}
   border: none;
   border-top: 1px solid ${({ theme: { colors } }) => colors.ui2};
-  margin: ${({ theme }) => theme.space.xsmall};
+  margin: ${({ theme }) => theme.space.xsmall} 0;
 
   & + &,
   &:first-child,
