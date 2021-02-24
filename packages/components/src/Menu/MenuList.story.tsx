@@ -78,7 +78,7 @@ Basic.args = {
           {item.children}
         </MenuItem>
       ))}
-      {key < groupsArray.length - 1 && <MenuDivider />}
+      <MenuDivider />
     </>
   )),
   iconGutter: true,
@@ -101,8 +101,10 @@ const DensityExample: FC<{ density?: DensityRamp }> = ({ density }) => (
     <MenuItem icon="Calendar" description="Yellow">
       Swiss
     </MenuItem>
-    <MenuItem>Parmesan</MenuItem>
-    <MenuItem selected>Cheddar</MenuItem>
+    <MenuItem selected>Parmesan</MenuItem>
+    <MenuItem>Cheddar</MenuItem>
+    <MenuDivider />
+    <MenuItem>Pepper Jack</MenuItem>
   </MenuList>
 )
 

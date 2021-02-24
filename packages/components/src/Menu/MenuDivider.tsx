@@ -25,7 +25,17 @@
  */
 
 import styled from 'styled-components'
+import { SpaceProps, space } from '@looker/design-tokens'
 
-export const MenuDivider = styled.li`
+export const MenuDivider = styled.li<SpaceProps>`
+  ${space}
+  border: none;
   border-top: 1px solid ${({ theme: { colors } }) => colors.ui2};
+  margin: ${({ theme }) => theme.space.xsmall};
+
+  & + &,
+  &:first-child,
+  &:last-child {
+    display: none;
+  }
 `

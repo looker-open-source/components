@@ -24,7 +24,15 @@
 
  */
 
-import React, { forwardRef, MouseEvent, Ref, useRef, useState } from 'react'
+import React, {
+  forwardRef,
+  Fragment,
+  MouseEvent,
+  Ref,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 import { Button, IconButton } from '../Button'
 import { Card } from '../Card'
 import { Dialog, DialogLayout } from '../Dialog'
@@ -380,9 +388,41 @@ const array3000 = Array.from(Array(3000), (_, i) => {
   return { description, label: String(i + 1) }
 })
 
+const preamble = `We the People of the United States, in Order to form a more perfect Union,
+establish Justice, insure domestic Tranquility, provide for the common
+defense, promote the general Welfare, and secure the Blessings of Liberty
+to ourselves and our Posterity, do ordain and establish this Constitution
+for the United States of America.`
+
+const getString = (lengthLimit = 30) => {
+  const startLimit = preamble.length - 50
+  const length = getRandomInteger(lengthLimit)
+  const startIndex = getRandomInteger(startLimit)
+  return preamble.substr(startIndex, length)
+}
+
+const getItems = (labelLength: number) => {
+  const num = getRandomInteger(8)
+  const itemsLength = Math.pow(num, 2)
+  return Array.from(Array(itemsLength), (_, i) => {
+    return {
+      label: `${i}: ${getString(labelLength)}`,
+    }
+  })
+}
+
+const getGroups = (labelLength: number) =>
+  Array.from(Array(100), (_, i) => ({
+    items: getItems(labelLength),
+    label: `${i}: ${getString()}`,
+  }))
+
 export const LongMenus = () => {
   const { value, toggle } = useToggle(true)
   const { value: longLabels, toggle: toggleLongLabels } = useToggle()
+  const groups = useMemo(() => {
+    return getGroups(longLabels ? 120 : 30)
+  }, [longLabels])
   return (
     <SpaceVertical align="start" p="xlarge">
       <FieldToggleSwitch
@@ -397,6 +437,21 @@ export const LongMenus = () => {
           ))}
         >
           <Button>No windowing (95)</Button>
+        </Menu>
+        <Menu
+          content={groups.slice(0, 5).map(({ label, items }, index) => (
+            <Fragment key={`${label}-${index}`}>
+              <MenuDivider />
+              <MenuHeading>{label}</MenuHeading>
+              {items.map((item, index2) => (
+                <MenuItem key={`${item.label}-${index2}`}>
+                  {item.label}
+                </MenuItem>
+              ))}
+            </Fragment>
+          ))}
+        >
+          <Button>No windowing (groups)</Button>
         </Menu>
         <Menu
           windowing={!value ? 'none' : undefined}
