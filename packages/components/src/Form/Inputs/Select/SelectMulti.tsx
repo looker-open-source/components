@@ -47,55 +47,61 @@ import { useShouldWindowOptions } from './utils/useWindowedOptions'
 export interface SelectMultiProps
   extends Omit<ComboboxMultiProps, 'values' | 'defaultValues' | 'onChange'>,
     Omit<SelectBaseProps, 'isClearable'>,
-    Pick<ComboboxMultiInputProps, 'freeInput' | 'removeOnBackspace'>,
+    Pick<
+      ComboboxMultiInputProps,
+      'chipIconLabel' | 'clearIconLabel' | 'freeInput' | 'removeOnBackspace'
+    >,
     // validation callbacks for use with freeInput
     InputChipsValidationProps {
-  /**
-   * Values of the current selected option (controlled)
-   */
-  values?: string[]
-  /**
-   * Value of the initial option
-   */
-  defaultValues?: string[]
-  /**
-   * Handle an option being selected
-   */
-  onChange?: (values?: string[]) => void
   /**
    * Should the list close after an option is selected
    * @default false
    */
   closeOnSelect?: boolean
+
+  /**
+   * Value of the initial option
+   */
+  defaultValues?: string[]
+
+  /**
+   * Handle an option being selected
+   */
+  onChange?: (values?: string[]) => void
+
+  /**
+   * Values of the current selected option (controlled)
+   */
+  values?: string[]
 }
 
 const SelectMultiComponent = forwardRef(
   (
     {
-      options,
-      disabled,
       autoFocus,
-      isFilterable = false,
-      placeholder,
-      onFilter,
-      onChange,
-      values,
-      defaultValues,
-      noOptionsLabel,
-      indicator,
-      listLayout,
-      windowedOptions: windowedOptionsProp,
       closeOnSelect = false,
-      showCreate = false,
+      defaultValues,
+      disabled,
       formatCreateLabel,
-      isLoading,
-      removeOnBackspace = true,
-
       freeInput = false,
-      validate,
-      onValidationFail,
+      chipIconLabel,
+      clearIconLabel,
+      indicator,
+      isFilterable = false,
+      isLoading,
+      listLayout,
+      noOptionsLabel,
+      onChange,
       onDuplicate,
-
+      onFilter,
+      onValidationFail,
+      options,
+      placeholder,
+      removeOnBackspace = true,
+      showCreate = false,
+      validate,
+      values,
+      windowedOptions: windowedOptionsProp,
       ...props
     }: SelectMultiProps,
     ref: Ref<HTMLInputElement>
@@ -128,6 +134,8 @@ const SelectMultiComponent = forwardRef(
           disabled={disabled}
           autoFocus={autoFocus}
           placeholder={placeholder}
+          chipIconLabel={chipIconLabel}
+          clearIconLabel={clearIconLabel}
           removeOnBackspace={removeOnBackspace}
           validationType={props.validationType}
           autoComplete={false}

@@ -42,12 +42,17 @@ export interface ChipProps
   extends GenericClickProps<HTMLSpanElement>,
     TruncateProps {
   /**
-   * I18n recommended: content that is user visible should be treated for i18n
+   * customize the tooltip on the closing icon
+   * @default 'Delete'
    */
-  prefix?: string
+  iconLabel?: string
   onDelete?: (
     e?: MouseEvent<HTMLSpanElement> | KeyboardEvent<HTMLSpanElement>
   ) => void
+  /**
+   * I18n recommended: content that is user visible should be treated for i18n
+   */
+  prefix?: string
   readOnly?: boolean
 }
 
@@ -100,67 +105,65 @@ const ChipLabel = styled(Span)<SpanProps & TruncateProps>`
   ${truncate}
 `
 
-const ChipJSX = forwardRef(
-  (
-    {
-      children,
-      disabled,
-      onBlur,
-      onClick,
-      onDelete,
-      onKeyUp,
-      onKeyDown,
-      readOnly = false,
-      prefix,
-      truncate = true,
-      ...props
-    }: ChipProps,
-    ref: Ref<HTMLSpanElement>
-  ) => {
-    const { t } = useTranslation('Chip')
+const ChipJSX = forwardRef((props: ChipProps, ref: Ref<HTMLSpanElement>) => {
+  const { t } = useTranslation('Chip')
+  const iconLabelText = t('Delete')
+  const {
+    children,
+    disabled,
+    iconLabel = iconLabelText,
+    onBlur,
+    onClick,
+    onDelete,
+    onKeyUp,
+    onKeyDown,
+    readOnly = false,
+    prefix,
+    truncate = true,
+    ...rest
+  } = props
 
-    const clickableProps = useClickable({ disabled, onBlur, onClick, onKeyUp })
+  const clickableProps = useClickable({ disabled, onBlur, onClick, onKeyUp })
 
-    const handleKeyDown = (event: KeyboardEvent<HTMLSpanElement>) => {
-      if (event.key === 'Backspace') {
-        onDelete && onDelete(event)
-      }
+  const handleKeyDown = (event: KeyboardEvent<HTMLSpanElement>) => {
+    if (event.key === 'Backspace') {
+      onDelete && onDelete(event)
     }
-
-    const handleDelete = (e: MouseEvent<HTMLButtonElement>) => {
-      if (!disabled) {
-        onDelete && onDelete(e)
-      }
-      e.stopPropagation()
-    }
-
-    return (
-      <ChipStyle
-        {...clickableProps}
-        onKeyDown={useWrapEvent(handleKeyDown, onKeyDown)}
-        ref={ref}
-        {...props}
-      >
-        <ChipLabel truncate={truncate}>
-          {prefix && <ChipLabel fontWeight="normal">{prefix}: </ChipLabel>}
-          {children}
-        </ChipLabel>
-        {readOnly ||
-          disabled ||
-          (onDelete && (
-            <IconButton
-              disabled={disabled}
-              icon="Close"
-              label={t('Delete')}
-              ml="xsmall"
-              onClick={handleDelete}
-              size="xxsmall"
-            />
-          ))}
-      </ChipStyle>
-    )
   }
-)
+
+  const handleDelete = (e: MouseEvent<HTMLButtonElement>) => {
+    if (!disabled) {
+      onDelete && onDelete(e)
+    }
+    e.stopPropagation()
+  }
+
+  return (
+    <ChipStyle
+      {...clickableProps}
+      onKeyDown={useWrapEvent(handleKeyDown, onKeyDown)}
+      ref={ref}
+      {...rest}
+    >
+      <ChipLabel truncate={truncate}>
+        {prefix && <ChipLabel fontWeight="normal">{prefix}: </ChipLabel>}
+        {children}
+      </ChipLabel>
+      {readOnly ||
+        disabled ||
+        (onDelete && (
+          <IconButton
+            disabled={disabled}
+            icon="Close"
+            label={iconLabel}
+            ml="xsmall"
+            onClick={handleDelete}
+            size="xxsmall"
+          />
+        ))}
+    </ChipStyle>
+  )
+})
 
 ChipJSX.displayName = 'ChipJSX'
 

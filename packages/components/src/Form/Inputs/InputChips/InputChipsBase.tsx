@@ -83,18 +83,30 @@ export interface InputChipsControlProps {
 export interface InputChipsCommonProps
   extends Omit<InputTextBaseProps, 'defaultValue' | 'onChange'>,
     MaxHeightProps {
-  summary?: string
+  /**
+   * Format the value for display in the chip
+   */
+  formatChip?: (value: string) => string
+  /**
+   * customize the tooltip on the closing icon
+   * @default 'Delete'
+   */
+  chipIconLabel?: string
+
+  /**
+   * customize the tooltip on the closing icon
+   * @default 'Clear Field'
+   */
+  clearIconLabel?: string
+
   isClearable?: boolean
+  inputReadOnly?: boolean
   /**
    * Set to false to disable the removal of the last value on backspace key
    * @default true
    */
   removeOnBackspace?: boolean
-  /**
-   * Format the value for display in the chip
-   */
-  formatChip?: (value: string) => string
-  inputReadOnly?: boolean
+  summary?: string
 }
 
 export interface InputChipsBaseProps
@@ -117,6 +129,8 @@ export const InputChipsBaseInternal = forwardRef(
       onChange,
       onKeyDown,
       onFocus,
+      chipIconLabel,
+      clearIconLabel,
       inputValue,
       inputReadOnly,
       onInputChange,
@@ -327,14 +341,15 @@ export const InputChipsBaseInternal = forwardRef(
 
       return (
         <Chip
+          aria-selected={isSelected}
           disabled={disabled}
+          iconLabel={chipIconLabel}
+          key={value}
+          onClick={handleChipClick(value)}
           onDelete={onChipDelete}
           onMouseDown={stopPropagation}
-          onClick={handleChipClick(value)}
           readOnly={readOnly}
-          key={value}
           role="option"
-          aria-selected={isSelected}
           // Prevent the chip from receiving focus for better keyboard behavior
           tabIndex={disabled ? undefined : -1}
         >
@@ -355,15 +370,16 @@ export const InputChipsBaseInternal = forwardRef(
         disabled={disabled}
         after={
           <AdvancedInputControls
+            disabled={disabled}
+            clearIconLabel={clearIconLabel}
             isVisibleOptions={isVisibleOptions}
             onClear={handleClear}
+            showCaret={showCaret}
             showClear={
               isClearable && values.length > 0 && !disabled && !readOnly
             }
-            validationType={validationType}
-            disabled={disabled}
             summary={summary}
-            showCaret={showCaret}
+            validationType={validationType}
           />
         }
         height="auto"

@@ -114,6 +114,48 @@ callbacks to handle invalid values.
 }
 ```
 
+The `InputChips` component provides the prop `clearIconLabel` to customize the input icon label, the same is available to the individual `Chip` with the prop `chipIconLabel`. Hover over the the `x` icon to see the tooltip.
+
+```jsx
+<Space>
+  <SelectMulti
+    clearIconLabel="remove all chips"
+    defaultValues={['Cheddar']}
+    flex={1}
+    options={[
+      { value: 'Cheddar' },
+      { value: 'Gouda' },
+      { value: 'Swiss' },
+      { value: 'Feta' },
+    ]}
+    placeholder="Cheeses"
+  />
+  <SelectMulti
+    defaultValues={['Gouda', 'Feta']}
+    chipIconLabel="remove this chip"
+    flex={1}
+    options={[
+      { value: 'Cheddar' },
+      { value: 'Gouda' },
+      { value: 'Swiss' },
+      { value: 'Feta' },
+    ]}
+  />
+  <SelectMulti
+    clearIconLabel="remove all chips"
+    defaultValues={['Cheddar', 'Swiss']}
+    chipIconLabel="remove this chip"
+    flex={1}
+    options={[
+      { value: 'Cheddar' },
+      { value: 'Gouda' },
+      { value: 'Swiss' },
+      { value: 'Feta' },
+    ]}
+  />
+</Space>
+```
+
 ## removeOnBackspace
 
 The `removeOnBackspace` prop inherits from [`InputChips`](/components/forms/input-chips/#removeonbackspace).

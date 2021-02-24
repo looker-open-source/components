@@ -126,6 +126,8 @@ export const InputChipsInternal = forwardRef(
     {
       values,
       onChange,
+      chipIconLabel,
+      clearIconLabel,
       inputValue: controlledInputValue,
       onInputChange,
       parseInputValue = splitInputValue,
@@ -239,6 +241,8 @@ export const InputChipsInternal = forwardRef(
         ref={ref}
         values={values}
         onChange={onChange}
+        chipIconLabel={chipIconLabel}
+        clearIconLabel={clearIconLabel}
         inputValue={inputValue}
         onInputChange={handleInputChange}
         {...wrappedEvents}

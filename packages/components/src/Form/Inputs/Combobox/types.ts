@@ -145,6 +145,11 @@ export interface ComboboxInputCommonProps {
    * the `true` default.
    */
   autoComplete?: boolean
+  /**
+   * customize the tooltip on the clear icon
+   * @default 'Clear Field'
+   */
+  clearIconLabel?: string
   isClearable?: boolean
   /**
    * Makes the inputted value the source of truth, whether it matches an option or not
@@ -157,9 +162,9 @@ export interface ComboboxInputCommonProps {
 export interface ComboboxInputProps
   extends Omit<InputTextProps, 'autoComplete' | 'value' | 'defaultValue'>,
     ComboboxInputCommonProps {
-  value?: string
   defaultValue?: string
   summary?: string
+  value?: string
 }
 
 export interface ComboboxMultiInputProps

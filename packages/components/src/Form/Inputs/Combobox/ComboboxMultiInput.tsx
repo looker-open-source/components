@@ -112,6 +112,10 @@ export const ComboboxMultiInputInternal = forwardRef(
       onValidationFail,
       onDuplicate,
 
+      // localization
+      chipIconLabel,
+      clearIconLabel,
+
       ...rest
     } = props
 
@@ -238,6 +242,8 @@ export const ComboboxMultiInputInternal = forwardRef(
         : undefined,
       'aria-autocomplete': 'both',
       autoComplete: 'off',
+      chipIconLabel: chipIconLabel,
+      clearIconLabel: clearIconLabel,
       formatChip,
       formatTextToCopy,
       id: `listbox-input-${id}`,
