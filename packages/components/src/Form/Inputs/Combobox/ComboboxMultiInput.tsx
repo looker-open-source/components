@@ -240,7 +240,7 @@ export const ComboboxMultiInputInternal = forwardRef(
       autoComplete: 'off',
       formatChip,
       formatTextToCopy,
-      id: `listbox-${id}`,
+      id: `listbox-input-${id}`,
       inputReadOnly,
       inputValue,
       isVisibleOptions: isVisible,

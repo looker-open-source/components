@@ -136,6 +136,7 @@ const ComboboxListInternal = forwardRef(
       listRef,
       setListScrollPosition,
       setListClientRect,
+      id,
     } = contextToUse
 
     // Update context prop refs
@@ -180,6 +181,7 @@ const ComboboxListInternal = forwardRef(
         onBlur={handleBlur}
         ref={ref}
         role="listbox"
+        id={`listbox-${id}`}
         tabIndex={-1}
       />
     )
