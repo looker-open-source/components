@@ -90,6 +90,7 @@ export const DialogContent: FC<DialogContentProps> = ({
       pb={hasOverflow || !!hasFooter ? 'large' : 'xxxsmall'}
       pt={hasOverflow || !!hasHeader ? 'large' : 'xxxsmall'}
       {...pickStyledProps(props)}
+      data-testid="dialog-content"
     >
       {children}
     </InnerDialogContent>

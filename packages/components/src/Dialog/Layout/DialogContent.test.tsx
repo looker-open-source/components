@@ -29,6 +29,32 @@ import { renderWithTheme } from '@looker/components-test-utils'
 import { screen } from '@testing-library/react'
 import { DialogContent } from './DialogContent'
 
+const originalScrollHeight = Object.getOwnPropertyDescriptor(
+  HTMLElement.prototype,
+  'scrollHeight'
+)
+
+const originalOffsetHeight = Object.getOwnPropertyDescriptor(
+  HTMLElement.prototype,
+  'offsetHeight'
+)
+
+afterAll(() => {
+  originalScrollHeight &&
+    Object.defineProperty(
+      HTMLElement.prototype,
+      'scrollHeight',
+      originalScrollHeight
+    )
+
+  originalOffsetHeight &&
+    Object.defineProperty(
+      HTMLElement.prototype,
+      'offsetHeight',
+      originalOffsetHeight
+    )
+})
+
 describe('DialogContent', () => {
   test('basic', () => {
     renderWithTheme(<DialogContent>Stuff</DialogContent>)
@@ -42,5 +68,51 @@ describe('DialogContent', () => {
       </DialogContent>
     )
     expect(screen.getByText('Stuff')).toBeInTheDocument()
+  })
+
+  test('content does not have a box shadow when content does not overflow', () => {
+    Object.defineProperty(HTMLElement.prototype, 'scrollHeight', {
+      configurable: true,
+      value: 0,
+    })
+    Object.defineProperty(HTMLElement.prototype, 'offsetHeight', {
+      configurable: true,
+      value: 500,
+    })
+    renderWithTheme(
+      <DialogContent hasHeader hasFooter>
+        Stuff
+      </DialogContent>
+    )
+
+    expect(
+      getComputedStyle(screen.getByTestId('dialog-content')).getPropertyValue(
+        'box-shadow'
+      )
+    ).toEqual('')
+  })
+
+  test('content has a box shadow when content overflows', () => {
+    Object.defineProperty(HTMLElement.prototype, 'scrollHeight', {
+      configurable: true,
+      value: 500,
+    })
+
+    Object.defineProperty(HTMLElement.prototype, 'offsetHeight', {
+      configurable: true,
+      value: 0,
+    })
+
+    renderWithTheme(
+      <DialogContent hasHeader hasFooter>
+        Stuff
+      </DialogContent>
+    )
+
+    expect(
+      getComputedStyle(screen.getByTestId('dialog-content')).getPropertyValue(
+        'box-shadow'
+      )
+    ).toMatchInlineSnapshot(`"inset 0 -4px 4px -4px #DEE1E5"`)
   })
 })
