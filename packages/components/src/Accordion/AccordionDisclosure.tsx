@@ -27,6 +27,7 @@
 import React, {
   FC,
   KeyboardEvent,
+  MouseEvent,
   useContext,
   Ref,
   forwardRef,
@@ -39,7 +40,6 @@ import {
   CompatibleHTMLProps,
   padding,
   PaddingProps,
-  pickStyledProps,
   shouldForwardProp,
   TextColorProps,
   color as colorStyleFn,
@@ -59,7 +59,7 @@ export interface AccordionDisclosureProps
 }
 
 const AccordionDisclosureInternal: FC<AccordionDisclosureProps> = forwardRef(
-  ({ children, className, ...props }, ref) => {
+  ({ children, className, onClick, onKeyDown, onKeyUp, ...props }, ref) => {
     const [isFocusVisible, setFocusVisible] = useState(false)
     const {
       accordionContentId,
@@ -79,19 +79,23 @@ const AccordionDisclosureInternal: FC<AccordionDisclosureProps> = forwardRef(
     }
 
     const handleKeyDown = (event: KeyboardEvent<HTMLElement>) => {
-      if (event.keyCode === 13) {
-        handleToggle()
-      }
+      if (event.key === 'Enter') handleToggle()
+
+      onKeyDown && onKeyDown(event)
     }
 
     const handleKeyUp = (event: KeyboardEvent<HTMLElement>) => {
-      if (event.keyCode === 9 && event.currentTarget === event.target)
+      if (event.key === 'Tab' && event.currentTarget === event.target)
         setFocusVisible(true)
+
+      onKeyUp && onKeyUp(event)
     }
 
-    const handleClick = () => {
+    const handleClick = (event: MouseEvent<HTMLElement>) => {
       setFocusVisible(false)
       handleToggle()
+
+      onClick && onClick(event)
     }
 
     const handleBlur = () => {
@@ -112,7 +116,7 @@ const AccordionDisclosureInternal: FC<AccordionDisclosureProps> = forwardRef(
         onKeyUp={handleKeyUp}
         ref={ref}
         tabIndex={0}
-        {...pickStyledProps(props)}
+        {...props}
       >
         <AccordionDisclosureLayout {...accordionProps} isOpen={isOpen}>
           {children}
