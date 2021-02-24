@@ -201,7 +201,7 @@ export const InternalRangeSlider = forwardRef(
     const [containerRef, setContainerRef] = useState<HTMLElement | null>(null)
     const [focusedThumb, setFocusedThumb] = useState<ThumbIndices>()
 
-    const containerRect = useMeasuredElement(containerRef)
+    const [containerRect, refreshMeasurement] = useMeasuredElement(containerRef)
 
     const { mousePos, isMouseDown } = useMouseDragPosition(containerRef)
 
@@ -296,6 +296,16 @@ export const InternalRangeSlider = forwardRef(
     const handleMouseDrag = partial(handleMouseEvent, true)
 
     /*
+     * Mouse down event (and re-measure the client rectangle values)
+     */
+    useEffect(() => {
+      if (isMouseDown) {
+        refreshMeasurement()
+        handleMouseDown()
+      }
+    }, [isMouseDown])
+
+    /*
      * Only fire mouse drag event when mouse moves AFTER initial click
      */
     useEffect(
@@ -337,8 +347,6 @@ export const InternalRangeSlider = forwardRef(
     return (
       <div
         data-testid="range-slider-wrapper"
-        onMouseDown={handleMouseDown}
-        onTouchStart={handleMouseDown}
         onTouchEnd={handleBlur}
         className={className}
         id={id}

@@ -42,15 +42,17 @@ function measureElement(element?: HTMLElement | null) {
   return element.getBoundingClientRect()
 }
 
-export const useMeasuredElement = (element: HTMLElement | null): ClientRect => {
+export const useMeasuredElement = (
+  element: HTMLElement | null
+): [ClientRect, () => void] => {
   const [rect, setRect] = useState(measureElement())
 
-  const handleResize = useCallback(() => {
+  const refreshMeasurement = useCallback(() => {
     // Update client rect
     element && setRect(measureElement(element))
   }, [element])
 
-  useResize(element, handleResize)
+  useResize(element, refreshMeasurement)
 
-  return rect
+  return [rect, refreshMeasurement]
 }
