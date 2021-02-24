@@ -24,7 +24,6 @@
 
  */
 
-import noop from 'lodash/noop'
 import React, { Context, ReactNode, useRef, useMemo } from 'react'
 import { Trap, TrapStackContextProps, TrapMap } from './types'
 import { getActiveTrap } from './utils'
@@ -51,7 +50,7 @@ export const TrapStackProvider = <O,>({
   // null if no trap is active
   const activeTrapRef = useRef<HTMLElement | null>(null)
   // Stores the callback to remove the trap behavior
-  const deactivateRef = useRef<() => void>(noop)
+  const deactivateRef = useRef<() => void>()
 
   // Create the context value
   const value = useMemo(() => {
@@ -62,11 +61,12 @@ export const TrapStackProvider = <O,>({
 
     const enableCurrentTrap = () => {
       const newTrap = getTrap()
-      if (newTrap !== activeTrapRef.current) {
+      if (newTrap?.element !== activeTrapRef.current) {
         // Disable the existing trap and update the activeTrapRef
         // (whether there's a new trap or not)
         activeTrapRef.current = newTrap?.element || null
-        deactivateRef.current()
+        deactivateRef.current?.()
+        deactivateRef.current = undefined
         // If there's a new trap, activate it and
         // save the deactivate function that is returned
         if (newTrap) {
@@ -76,8 +76,8 @@ export const TrapStackProvider = <O,>({
     }
 
     const disableCurrentTrap = () => {
-      deactivateRef.current()
-      deactivateRef.current = noop
+      deactivateRef.current?.()
+      deactivateRef.current = undefined
       activeTrapRef.current = null
     }
 
