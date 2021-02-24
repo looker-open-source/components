@@ -33,7 +33,7 @@ export interface Trap<O extends {} = {}> {
 
 export interface TrapStackContextProps<O extends {} = {}> {
   /**
-   * Stores the element for the active trap (null if none are active)
+   * Stores the element for the active trap (undefined if none are active)
    */
   activeTrapRef?: MutableRefObject<HTMLElement | undefined>
   /**
@@ -51,7 +51,7 @@ export interface TrapStackContextProps<O extends {} = {}> {
   /**
    * @private
    */
-  getTrap?: (id: string) => Trap<O> | null
+  getTrap?: (id: string) => Trap<O> | undefined
   /**
    * @private
    */

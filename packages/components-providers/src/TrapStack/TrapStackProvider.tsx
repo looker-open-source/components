@@ -47,16 +47,16 @@ export const TrapStackProvider = <O,>({
   // (map of ids to elements that have traps)
   const registeredTrapsRef = useRef<TrapMap<O>>({})
   // Stores the current trap (element) where scrolling is allowed
-  // null if no trap is active
+  // undefined if no trap is active
   const activeTrapRef = useRef<HTMLElement>()
   // Stores the callback to remove the trap behavior
   const deactivateRef = useRef<() => void>()
 
   // Create the context value
   const value = useMemo(() => {
-    const getTrap = (id?: string): Trap<O> | null => {
+    const getTrap = (id?: string): Trap<O> | undefined => {
       const registeredTraps = registeredTrapsRef.current
-      return id ? registeredTraps[id] || null : getActiveTrap(registeredTraps)
+      return id ? registeredTraps[id] : getActiveTrap(registeredTraps)
     }
 
     const enableCurrentTrap = () => {
