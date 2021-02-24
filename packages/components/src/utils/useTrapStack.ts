@@ -29,11 +29,9 @@ import { Context, Ref, useContext, useEffect } from 'react'
 import { useID } from './useID'
 import { useCallbackRef } from './useCallbackRef'
 
-export interface UseTrapStackProps<
-  E extends HTMLElement = HTMLElement,
-  O extends {} = {}
+export interface UseTrapStackBaseProps<
+  Element extends HTMLElement = HTMLElement
 > {
-  context: Context<TrapStackContextProps<O>>
   /**
    * Turns off functionality completely, for use in components
    * where trap behavior can be optionally disabled
@@ -42,8 +40,15 @@ export interface UseTrapStackProps<
   /**
    * A forwarded ref to be merged with the ref returned in the hook result
    */
-  ref?: Ref<E>
-  options?: O
+  ref?: Ref<Element>
+}
+
+export interface UseTrapStackProps<
+  Element extends HTMLElement = HTMLElement,
+  Options extends {} = {}
+> extends UseTrapStackBaseProps<Element> {
+  context: Context<TrapStackContextProps<Options>>
+  options?: Options
 }
 
 /**

@@ -45,7 +45,7 @@ interface TestProps {
 }
 
 const Inner: FC<TestProps> = ({ children, clickOutsideDeactivates }) => {
-  const [, ref] = useFocusTrap({ options: { clickOutsideDeactivates } })
+  const [, ref] = useFocusTrap({ clickOutsideDeactivates })
   const { value, setOff, toggle } = useToggle()
   return (
     <>
@@ -108,7 +108,7 @@ describe('useFocusTrap', () => {
       )
     })
 
-    describe('focus starts on tabbable element by priority', async () => {
+    describe('focus starts on tabbable element by priority', () => {
       const inputElements = (
         <>
           <input type="hidden" />

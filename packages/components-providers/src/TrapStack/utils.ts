@@ -26,15 +26,15 @@
 import { TrapMap } from './types'
 
 export const getActiveTrap = <O extends {} = {}>(trapMap: TrapMap<O>) => {
-  // Sort the trap elements according to dom position and return the last
+  // Sort the traps according to their element's dom position and return the last
   // which we assume to be stacked on top since all components using Portal
   // share a single zIndexFloor and use dom order to determine stacking
-  const elements = Object.values(trapMap)
-  if (elements.length === 0) return null
+  const traps = Object.values(trapMap)
+  if (traps.length === 0) return
 
-  const sortedElements = elements.sort((trapA, trapB) => {
+  const sortedTraps = traps.sort((trapA, trapB) => {
     const relationship = trapA.element.compareDocumentPosition(trapB.element)
     return relationship > 3 ? 1 : -1
   })
-  return sortedElements[0] || null
+  return sortedTraps[0]
 }

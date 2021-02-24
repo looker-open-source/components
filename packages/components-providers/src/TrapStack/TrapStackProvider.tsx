@@ -24,7 +24,6 @@
 
  */
 
-import noop from 'lodash/noop'
 import React, { Context, ReactNode, useRef, useMemo } from 'react'
 import { Trap, TrapStackContextProps, TrapMap } from './types'
 import { getActiveTrap } from './utils'
@@ -48,25 +47,26 @@ export const TrapStackProvider = <O,>({
   // (map of ids to elements that have traps)
   const registeredTrapsRef = useRef<TrapMap<O>>({})
   // Stores the current trap (element) where scrolling is allowed
-  // null if no trap is active
-  const activeTrapRef = useRef<HTMLElement | null>(null)
+  // undefined if no trap is active
+  const activeTrapRef = useRef<HTMLElement>()
   // Stores the callback to remove the trap behavior
-  const deactivateRef = useRef<() => void>(noop)
+  const deactivateRef = useRef<() => void>()
 
   // Create the context value
   const value = useMemo(() => {
-    const getTrap = (id?: string): Trap<O> | null => {
+    const getTrap = (id?: string): Trap<O> | undefined => {
       const registeredTraps = registeredTrapsRef.current
-      return id ? registeredTraps[id] || null : getActiveTrap(registeredTraps)
+      return id ? registeredTraps[id] : getActiveTrap(registeredTraps)
     }
 
     const enableCurrentTrap = () => {
       const newTrap = getTrap()
-      if (newTrap !== activeTrapRef.current) {
+      if (newTrap?.element !== activeTrapRef.current) {
         // Disable the existing trap and update the activeTrapRef
         // (whether there's a new trap or not)
-        activeTrapRef.current = newTrap?.element || null
-        deactivateRef.current()
+        activeTrapRef.current = newTrap?.element
+        deactivateRef.current?.()
+        deactivateRef.current = undefined
         // If there's a new trap, activate it and
         // save the deactivate function that is returned
         if (newTrap) {
@@ -76,9 +76,9 @@ export const TrapStackProvider = <O,>({
     }
 
     const disableCurrentTrap = () => {
-      deactivateRef.current()
-      deactivateRef.current = noop
-      activeTrapRef.current = null
+      deactivateRef.current?.()
+      deactivateRef.current = undefined
+      activeTrapRef.current = undefined
     }
 
     const addTrap = (id: string, trap: Trap<O>) => {
