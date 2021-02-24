@@ -30,6 +30,8 @@ import * as React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { MenuItem } from './MenuItem'
 import { MenuList } from './MenuList'
+import { MenuHeading } from './MenuHeading'
+import { MenuDivider } from './MenuDivider'
 
 /* eslint-disable-next-line @typescript-eslint/unbound-method */
 const globalGetBoundingClientRect = Element.prototype.getBoundingClientRect
@@ -82,6 +84,22 @@ describe('MenuList', () => {
       const height = (totalItems - windowedItems) * defaultItemHeight
       expect(screen.queryByTestId('before')).not.toBeInTheDocument()
       expect(screen.getByTestId('after')).toHaveStyle(`height: ${height}px;`)
+    })
+  })
+
+  describe('composition', () => {
+    test('renders a MenuHeading, MenuDivider and MenuItems together', () => {
+      const { getByTestId, getByText } = renderWithTheme(
+        <MenuList>
+          <MenuHeading>My Menu List</MenuHeading>
+          <MenuItem>First</MenuItem>
+          <MenuDivider data-testid="divider" />
+          <MenuItem>Last</MenuItem>
+        </MenuList>
+      )
+
+      expect(getByTestId('divider')).toBeVisible()
+      getByText('My Menu List')
     })
   })
 })

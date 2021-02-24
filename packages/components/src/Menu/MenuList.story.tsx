@@ -24,10 +24,12 @@
 
  */
 
-import React from 'react'
+import React, { FC, Fragment } from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import { IconNames } from '@looker/icons'
-import { MenuGroup, MenuList, MenuItem, MenuItemProps } from '.'
+import { Grid } from '../Layout'
+import { DensityRamp } from '../List/types'
+import { MenuHeading, MenuList, MenuItem, MenuItemProps, MenuDivider } from '.'
 
 const groups: { label?: string; items: MenuItemProps[] }[] = [
   {
@@ -64,7 +66,8 @@ const Template: Story = (args) => <MenuList {...args} />
 export const Basic = Template.bind({})
 Basic.args = {
   children: groups.map(({ label, items }, key) => (
-    <MenuGroup label={label} key={key}>
+    <Fragment key={key}>
+      {label && <MenuHeading>{label}</MenuHeading>}
       {items.map((item, i) => (
         <MenuItem
           key={i}
@@ -75,7 +78,8 @@ Basic.args = {
           {item.children}
         </MenuItem>
       ))}
-    </MenuGroup>
+      <MenuDivider />
+    </Fragment>
   )),
   iconGutter: true,
 }
@@ -91,6 +95,28 @@ LongList.parameters = {
   storyshots: false,
 }
 
+const DensityExample: FC<{ density?: DensityRamp }> = ({ density }) => (
+  <MenuList iconGutter density={density}>
+    <MenuHeading>Cheeses of the World</MenuHeading>
+    <MenuItem icon="Calendar" description="Yellow">
+      Swiss
+    </MenuItem>
+    <MenuItem selected>Parmesan</MenuItem>
+    <MenuItem>Cheddar</MenuItem>
+    <MenuDivider />
+    <MenuItem>Pepper Jack</MenuItem>
+  </MenuList>
+)
+
+export const Density = () => (
+  <Grid columns={5}>
+    <DensityExample density={1} />
+    <DensityExample />
+    <DensityExample density={-1} />
+    <DensityExample density={-2} />
+    <DensityExample density={-3} />
+  </Grid>
+)
 export default {
   component: MenuList,
   title: 'MenuList',

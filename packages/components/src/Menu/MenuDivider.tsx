@@ -24,24 +24,18 @@
 
  */
 
-import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
-import { List, ListProps } from '../List'
-import { NestedMenuProvider } from './NestedMenuProvider'
+import { SpaceProps, space } from '@looker/design-tokens'
 
-export const MenuListInternal = forwardRef(
-  ({ children, ...props }: ListProps, forwardedRef: Ref<HTMLUListElement>) => {
-    return (
-      <NestedMenuProvider>
-        <List role="menu" ref={forwardedRef} {...props}>
-          {children}
-        </List>
-      </NestedMenuProvider>
-    )
+export const MenuDivider = styled.li<SpaceProps>`
+  ${space}
+  border: none;
+  border-top: 1px solid ${({ theme: { colors } }) => colors.ui2};
+  margin: ${({ theme }) => theme.space.xsmall} 0;
+
+  & + &,
+  &:first-child,
+  &:last-child {
+    display: none;
   }
-)
-MenuListInternal.displayName = 'MenuListInternal'
-
-export const MenuList = styled(MenuListInternal)`
-  min-width: 12rem;
 `
