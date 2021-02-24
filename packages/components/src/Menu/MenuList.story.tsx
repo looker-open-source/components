@@ -24,7 +24,7 @@
 
  */
 
-import React, { FC } from 'react'
+import React, { FC, Fragment } from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import { IconNames } from '@looker/icons'
 import { Grid } from '../Layout'
@@ -65,8 +65,8 @@ const Template: Story = (args) => <MenuList {...args} />
 
 export const Basic = Template.bind({})
 Basic.args = {
-  children: groups.map(({ label, items }, key, groupsArray) => (
-    <>
+  children: groups.map(({ label, items }, key) => (
+    <Fragment key={key}>
       {label && <MenuHeading>{label}</MenuHeading>}
       {items.map((item, i) => (
         <MenuItem
@@ -79,7 +79,7 @@ Basic.args = {
         </MenuItem>
       ))}
       <MenuDivider />
-    </>
+    </Fragment>
   )),
   iconGutter: true,
 }
