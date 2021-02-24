@@ -161,9 +161,7 @@ export const useDialog = ({
       ? controlledSetOpen
       : setUncontrolledIsOpen
 
-  const [, focusRef] = useFocusTrap({
-    options: { clickOutsideDeactivates: true },
-  })
+  const [, focusRef] = useFocusTrap({ clickOutsideDeactivates: true })
   const [, portalRef] = useScrollLock({ ref: focusRef })
 
   const handleOpen = () => setOpen(true)
