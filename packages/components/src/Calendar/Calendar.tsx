@@ -35,6 +35,7 @@ import { CalendarContext } from './CalendarContext'
 import { CalendarNav } from './CalendarNav'
 import { dayPickerCss } from './dayPickerCss'
 import { CalendarNavDisabled } from './CalendarNavDisabled'
+import { formatMonthTitle } from './formatMonthTitle'
 
 export interface CalendarLocalization {
   firstDayOfWeek: number
@@ -63,7 +64,7 @@ const NoopComponent: FC = () => null
 const InternalCalendar: FC<CalendarProps> = ({
   className,
   disabled,
-  localization = {},
+  localization,
   onDayClick,
   onMonthChange,
   onNextClick,
@@ -84,14 +85,6 @@ const InternalCalendar: FC<CalendarProps> = ({
     return (...args: any[]) => (disabled ? noop() : cb(...args))
   }
 
-  const formatMonthTitle = (month: Date) => {
-    if (localization.months) {
-      return `${localization.months[month.getMonth()]} ${month.getFullYear()}`
-    } else {
-      return LocaleUtils.formatMonthTitle(month)
-    }
-  }
-
   return (
     <CalendarContext.Provider
       value={{
@@ -104,8 +97,11 @@ const InternalCalendar: FC<CalendarProps> = ({
       }}
     >
       <DayPicker
-        {...localization}
-        localeUtils={{ ...LocaleUtils, formatMonthTitle }}
+        {...(localization || {})}
+        localeUtils={{
+          ...LocaleUtils,
+          formatMonthTitle: formatMonthTitle(localization),
+        }}
         className={`${renderDateRange && 'render-date-range'} ${className}`}
         selectedDays={selectedDates}
         month={viewMonth}

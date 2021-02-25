@@ -23,6 +23,20 @@
  SOFTWARE.
 
  */
-export * from './Calendar'
-export * from './formatMonthTitle'
-export type { CalendarSize } from './calendar-size'
+import { LocaleUtils } from 'react-day-picker'
+import { CalendarLocalization } from '@looker/components'
+
+/**
+ * Curried month formatter function.
+ * Takes a Date and returns a string containing the month and year (i.g. 'May 2021').
+ * Used to label the currently shown month and year in the Calendar component.
+ */
+export const formatMonthTitle = (localization?: CalendarLocalization) => (
+  month: Date
+) => {
+  if (localization?.months) {
+    return `${localization.months[month.getMonth()]} ${month.getFullYear()}`
+  } else {
+    return LocaleUtils.formatMonthTitle(month)
+  }
+}
