@@ -26,7 +26,10 @@
 
 import React from 'react'
 import { fireEvent } from '@testing-library/react'
-import { renderWithTheme } from '@looker/components-test-utils'
+import {
+  renderWithTheme,
+  withThemeProvider,
+} from '@looker/components-test-utils'
 import { RangeSlider } from './RangeSlider'
 
 const globalConsole = global.console
@@ -77,7 +80,7 @@ test('warns the developer if value prop falls outside of possible min/max range'
   // eslint-disable-next-line no-console
   expect(console.warn).not.toHaveBeenCalled()
   const handleChange = jest.fn()
-  renderWithTheme(
+  const { rerender } = renderWithTheme(
     <RangeSlider
       defaultValue={[0, 1000]}
       min={10}
@@ -88,6 +91,14 @@ test('warns the developer if value prop falls outside of possible min/max range'
   // eslint-disable-next-line no-console
   expect(console.warn).toHaveBeenCalled()
   expect(handleChange).toHaveBeenCalledWith([10, 20])
+
+  rerender(
+    withThemeProvider(
+      <RangeSlider onChange={handleChange} min={10} max={20} value={[-1, 1]} />
+    )
+  )
+
+  expect(handleChange).toHaveBeenCalledWith([10, 10])
 })
 
 test('fires onChange callback on mouseMove', () => {
