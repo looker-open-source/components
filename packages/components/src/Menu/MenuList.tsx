@@ -44,4 +44,5 @@ MenuListInternal.displayName = 'MenuListInternal'
 
 export const MenuList = styled(MenuListInternal)`
   min-width: 12rem;
+  overflow: auto;
 `
