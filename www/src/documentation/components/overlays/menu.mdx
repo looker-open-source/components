@@ -296,3 +296,30 @@ controlled via state values – or use the hook version.
   )
 }
 ```
+
+## MenuHeading and MenuDivider
+
+`MenuHeading` is typically used as a title for a group of `MenuItem`s. `MenuHeading` children must be of type string.
+
+`MenuDivider` is a divider element used to separate groups of `MenuItem`s.
+
+**Note:** As a convenience feature, `MenuDivider` will not render a divider if it is the first or last child of a `Menu`.
+
+```jsx
+<Menu
+  content={
+    <>
+      <MenuHeading>Good Cheeses</MenuHeading>
+      <MenuItem>Cheddar</MenuItem>
+      <MenuItem>Swiss</MenuItem>
+      <MenuItem>Brie</MenuItem>
+      <MenuDivider></MenuDivider>
+      <MenuHeading>Great Cheeses</MenuHeading>
+      <MenuItem>Pepper Jack</MenuItem>
+      <MenuItem>String Cheese</MenuItem>
+    </>
+  }
+>
+  <Button>Menu with headings and dividers</Button>
+</Menu>
+```

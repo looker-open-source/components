@@ -31,7 +31,7 @@ import { listItemDimensions } from '../List'
 import { ListItemContext } from '../List/ListItemContext'
 import { useElementVisibility } from './MenuHeading.hooks'
 
-export const MenuHeading: FC = ({ children }) => {
+export const MenuHeading: FC<{ children: string }> = ({ children }) => {
   const labelShimRef: RefObject<any> = useRef()
   const isLabelShimVisible = useElementVisibility(labelShimRef)
 
