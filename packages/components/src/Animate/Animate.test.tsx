@@ -26,7 +26,8 @@
 
 import 'jest-styled-components'
 import React from 'react'
-import { assertSnapshot } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
+import { assertSnapshot, renderWithTheme } from '@looker/components-test-utils'
 import { FadeIn } from './Animate'
 
 describe('FadeIn', () => {
@@ -35,5 +36,14 @@ describe('FadeIn', () => {
   })
   it('renders with delay and duration props', () => {
     assertSnapshot(<FadeIn delay="intricate" duration="complex" />)
+  })
+
+  it('renders elements inside', () => {
+    renderWithTheme(
+      <FadeIn>
+        <span>Some text</span>
+      </FadeIn>
+    )
+    expect(screen.getByText('Some text')).toBeVisible()
   })
 })

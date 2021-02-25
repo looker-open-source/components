@@ -10,11 +10,10 @@ exports[`FadeIn renders with defaults 1`] = `
 }
 
 .c1 {
-  -webkit-animation-fill-mode: forwards;
-  animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
   -webkit-animation-name: lbWRkT;
   animation-name: lbWRkT;
-  opacity: 0;
 }
 
 <div
@@ -32,11 +31,10 @@ exports[`FadeIn renders with delay and duration props 1`] = `
 }
 
 .c1 {
-  -webkit-animation-fill-mode: forwards;
-  animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
   -webkit-animation-name: lbWRkT;
   animation-name: lbWRkT;
-  opacity: 0;
 }
 
 <div
