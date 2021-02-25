@@ -59,7 +59,7 @@ export function useMouseDragPosition(
     updateMousePos(e)
   }
 
-  const handleMove = throttle(updateMousePos, 50)
+  const handleMove = throttle(updateMousePos, 25)
 
   const handleEnd = () => {
     requestAnimationFrame(() => {
