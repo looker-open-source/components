@@ -100,7 +100,7 @@ export const DashboardFilters = () => {
   const [buttonValue, setButtonValue] = useState(['CA'])
 
   useEffect(() => {
-    const timeout = setTimeout(() => setRenderSiblings(true), 500)
+    const timeout = setTimeout(() => setRenderSiblings(true), 1000)
     return () => {
       clearTimeout(timeout)
     }
