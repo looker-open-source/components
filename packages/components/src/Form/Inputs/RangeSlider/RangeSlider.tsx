@@ -296,20 +296,20 @@ export const InternalRangeSlider = forwardRef(
     const handleMouseDrag = partial(handleMouseEvent, true)
 
     /*
-     * Mouse down event (re-measure the client rectangle values before calculating point)
+     * Mouse down event (and re-measure the client rectangle values before calculating value).
      * This ensures accurate calculation when slider has moved to new location on page due
-     * to unrelated dom changes.
+     * to asynchronous dom changes.
      */
     useEffect(() => {
       if (isMouseDown) {
-        refreshDomRect() // re-measure rectangle
+        refreshDomRect() // re-measure rectangle when isMouseDown changes from false to true
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isMouseDown])
 
     useEffect(() => {
       if (isMouseDown) {
-        handleMouseDown() // fire mouseDown event
+        handleMouseDown() // fire mouseDown event after containerRect measurements are refreshed
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [containerRect])
