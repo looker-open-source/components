@@ -40,6 +40,7 @@ import max from 'lodash/max'
 import isEmpty from 'lodash/isEmpty'
 import isEqual from 'lodash/isEqual'
 import values from 'lodash/values'
+import { VisuallyHidden } from '../../../VisuallyHidden'
 import { Icon } from '../../../Icon'
 import { ValidationType } from '../../ValidationMessage'
 import {
@@ -50,7 +51,11 @@ import {
   inputTextDisabled,
 } from '../InputText'
 import { InlineInputTextBase } from '../../Inputs/InlineInputText'
-import { Calendar, CalendarLocalization } from '../../../Calendar'
+import {
+  Calendar,
+  CalendarLocalization,
+  formatMonthTitle,
+} from '../../../Calendar'
 import {
   Locales,
   formatDateString,
@@ -349,6 +354,11 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
       setViewMonth(transformMonth(month, viewMonthDiff))
     }
 
+    const _formatMonthTitle = formatMonthTitle(localization)
+    const monthTitle = `${_formatMonthTitle(viewMonth)} ${_formatMonthTitle(
+      viewNextMonth
+    )}`
+
     return (
       <InputDateRangeWrapper ref={ref}>
         <InputTextGroupWrapper
@@ -408,6 +418,7 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
           )}
         </InputTextGroupWrapper>
         <MultiCalendarLayout>
+          <VisuallyHidden aria-live="assertive">{monthTitle}</VisuallyHidden>
           <CalendarWrapper>
             <Calendar
               disabled={disabled}
