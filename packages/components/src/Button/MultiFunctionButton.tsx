@@ -24,32 +24,82 @@
 
  */
 
-import React, { FC, ReactElement, useRef, cloneElement } from 'react'
+import React, { FC, ReactElement, useRef, cloneElement, useEffect } from 'react'
+import styled from 'styled-components'
 import { ButtonProps, IconButtonProps } from '.'
 
 export interface MultiFunctionButtonProps {
-  children: ReactElement<ButtonProps | IconButtonProps>
   alternate: ReactElement<ButtonProps | IconButtonProps>
+  children: ReactElement<ButtonProps | IconButtonProps>
   isAlternate?: boolean
 }
 
-export const MultiFunctionButton: FC<MultiFunctionButtonProps> = ({
+const MultiFunctionButtonLayout: FC<MultiFunctionButtonProps> = ({
   alternate,
   children,
   isAlternate = false,
 }) => {
-  const parent = useRef<HTMLDivElement>(null)
-  const handleFocus = () => {
-    parent && parent.current && parent.current.focus()
-  }
+  const alternateRef = useRef<HTMLButtonElement>(null)
+  const childrenRef = useRef<HTMLButtonElement>(null)
 
+  const alternateButton = cloneElement(alternate, {
+    ref: alternateRef,
+  })
   const childrenButton = cloneElement(children, {
-    onclick: handleFocus,
+    ref: childrenRef,
+  })
+
+  // const finalHeight =
+  //   alternateButton.offsetHeight > childrenButton.getBoundingClientRect
+  //     ? alternateButton.offsetHeight
+  //     : childrenButton.getBoundingClientRect
+  // const finalWidth =
+  //   alternateButton.offsetWidth > childrenButton.offsetWidth
+  //     ? alternateButton.offsetHeight
+  //     : childrenButton.offsetHeight
+
+  console.log('finalHeight: ', alternateRef) // ?.current?.offsetWidth)
+  console.log('finalWidth: ', childrenRef) // ?.current?.offsetHeight)
+
+  useEffect(() => {
+    // IF, isAlternate = true && children button has focus put focus on alternate button
+    if (
+      isAlternate === true &&
+      childrenRef.current === document.activeElement
+    ) {
+      alternateRef?.current?.focus()
+    }
+    // IF, isAlternate = false && alternate button has focus put focus on children button
+    if (
+      isAlternate === false &&
+      alternateRef.current === document.activeElement
+    ) {
+      childrenRef?.current?.focus()
+    }
+    // IF isAlternate changes and focus is not on one of the two buttons do nothing
   })
 
   return (
-    <div aria-live="polite" ref={parent}>
-      {isAlternate ? alternate : childrenButton}
+    <div aria-live="polite">
+      {isAlternate ? alternateButton : childrenButton}
     </div>
   )
 }
+
+export const MultiFunctionButton = styled(MultiFunctionButtonLayout)`
+  align-items: center;
+  border: 1px solid blue;
+  display: flex;
+  height: 2.5rem;
+  justify-content: center;
+  width: 8rem;
+
+  *:nth-child(2) {
+    position: absolute;
+    top: -100000px;
+  }
+
+  /* .alt {
+    height: 2.5rem;
+  } */
+`
