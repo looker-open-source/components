@@ -199,7 +199,6 @@ export const Table = styled(TableLayout)`
 
   tbody td {
     color: ${({ theme }) => theme.colors.text4};
-    height: initial;
   }
 
   &.overflow {
@@ -207,6 +206,7 @@ export const Table = styled(TableLayout)`
       td,
       th {
         ${stickyColumns}
+        height: initial;
       }
     }
   }
