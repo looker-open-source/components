@@ -24,7 +24,7 @@
 
  */
 
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import { Grid } from '../Layout'
 import { DensityRamp } from './types'
@@ -69,6 +69,26 @@ LongList.args = {
 }
 
 LongList.parameters = {
+  storyshots: false,
+}
+
+export const ExpandingList = () => {
+  const [showMore, setShowMore] = useState(false)
+  return (
+    <List>
+      {showMore ? (
+        <>
+          <ListItem>Stuff</ListItem>
+          <ListItem onClick={() => setShowMore(false)}>Show Less</ListItem>
+        </>
+      ) : (
+        <ListItem onClick={() => setShowMore(true)}>Show More</ListItem>
+      )}
+    </List>
+  )
+}
+
+ExpandingList.parameters = {
   storyshots: false,
 }
 
