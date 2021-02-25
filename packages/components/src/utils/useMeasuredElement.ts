@@ -47,12 +47,12 @@ export const useMeasuredElement = (
 ): [ClientRect, () => void] => {
   const [rect, setRect] = useState(measureElement())
 
-  const refreshMeasurement = useCallback(() => {
+  const refreshDomRect = useCallback(() => {
     // Update client rect
     element && setRect(measureElement(element))
   }, [element])
 
-  useResize(element, refreshMeasurement)
+  useResize(element, refreshDomRect)
 
-  return [rect, refreshMeasurement]
+  return [rect, refreshDomRect]
 }

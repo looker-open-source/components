@@ -201,7 +201,7 @@ export const InternalRangeSlider = forwardRef(
     const [containerRef, setContainerRef] = useState<HTMLElement | null>(null)
     const [focusedThumb, setFocusedThumb] = useState<ThumbIndices>()
 
-    const [containerRect, refreshMeasurement] = useMeasuredElement(containerRef)
+    const [containerRect, refreshDomRect] = useMeasuredElement(containerRef)
 
     const { mousePos, isMouseDown } = useMouseDragPosition(containerRef)
 
@@ -225,10 +225,7 @@ export const InternalRangeSlider = forwardRef(
       // focus/highlight the thumb that moved on click
       const indexToFocus = indexOf(newValue, newPoint)
       const refToFocus = thumbRefs[indexToFocus]
-      requestAnimationFrame(() => {
-        // delaying focus is necessary for it to work with mouseDown event
-        refToFocus.current && refToFocus.current.focus()
-      })
+      refToFocus.current && refToFocus.current.focus()
     }
 
     const incrementPoint = (point: number) => {
@@ -296,14 +293,23 @@ export const InternalRangeSlider = forwardRef(
     const handleMouseDrag = partial(handleMouseEvent, true)
 
     /*
-     * Mouse down event (and re-measure the client rectangle values)
+     * Mouse down event (re-measure the client rectangle values before calculating point)
+     * This ensures accurate calculation when slider has moved to new location on page due
+     * to unrelated dom changes.
      */
     useEffect(() => {
       if (isMouseDown) {
-        refreshMeasurement()
-        handleMouseDown()
+        refreshDomRect() // re-measure rectangle
       }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isMouseDown])
+
+    useEffect(() => {
+      if (isMouseDown) {
+        handleMouseDown() // fire mouseDown event
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isMouseDown, containerRect])
 
     /*
      * Only fire mouse drag event when mouse moves AFTER initial click

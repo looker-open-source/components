@@ -95,7 +95,7 @@ Controlled.parameters = {
   storyshots: { disable: true },
 }
 
-export const FilterDashboard = () => {
+export const DashboardFilters = () => {
   const [renderSiblings, setRenderSiblings] = useState(false)
   const [buttonValue, setButtonValue] = useState(['CA'])
 
@@ -120,7 +120,7 @@ export const FilterDashboard = () => {
   )
 }
 
-FilterDashboard.parameters = {
+DashboardFilters.parameters = {
   storyshots: { disable: true },
 }
 
