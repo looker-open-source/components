@@ -36,12 +36,7 @@ import { CalendarNav } from './CalendarNav'
 import { dayPickerCss } from './dayPickerCss'
 import { CalendarNavDisabled } from './CalendarNavDisabled'
 import { formatMonthTitle } from './formatMonthTitle'
-
-export interface CalendarLocalization {
-  firstDayOfWeek: number
-  months: string[]
-  weekdaysShort: string[]
-}
+import { CalendarLocalization } from './types'
 
 interface CalendarProps {
   className?: string
