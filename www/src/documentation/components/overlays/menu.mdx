@@ -3,8 +3,8 @@ title: Menu
 storybook: true
 ---
 
-`Menu` is a specific implementation of [`Popover`](popover) that accepts an arry
-(or React Fragment) of [`MenuItem`](menuitem)s or `MenuGroup`s in the content prop.
+`Menu` is a specific implementation of [`Popover`](popover) that accepts an array
+(or React Fragment) of [`MenuItem`](menuitem)s in the content prop.
 
 **Note:** The direct child of `Menu` should be able to accept the following props. TypeScript currently doesn't support the enforcement of this.
 
@@ -35,6 +35,39 @@ storybook: true
     }
   >
     <Button disabled>Disabled Cheese</Button>
+  </Menu>
+</Space>
+```
+
+## Density
+
+Use the `density` prop to set the size and spacing of your `Menu`. As `density` decreases, so does the height and spacing of child `MenuItem`s.
+
+`density` values range from -3 to 1.
+
+```jsx
+<Space>
+  <Menu
+    density={1}
+    content={
+      <>
+        <MenuItem icon="FavoriteOutline">Gouda</MenuItem>
+        <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
+      </>
+    }
+  >
+    <Button>Big Items</Button>
+  </Menu>
+  <Menu
+    density={-3}
+    content={
+      <>
+        <MenuItem icon="FavoriteOutline">Gouda</MenuItem>
+        <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
+      </>
+    }
+  >
+    <Button>Small Items</Button>
   </Menu>
 </Space>
 ```
@@ -249,13 +282,12 @@ controlled via state values – or use the hook version.
               onChange={setKeywordSearch}
             />
           </Box>
-          <MenuGroup label="Cheeses">
-            {searchResults.map((cheese) => (
-              <MenuItem itemRole="link" href={`#${cheese}`} key={cheese}>
-                {cheese}
-              </MenuItem>
-            ))}
-          </MenuGroup>
+          <MenuHeading>Cheeses</MenuHeading>
+          {searchResults.map((cheese) => (
+            <MenuItem itemRole="link" href={`#${cheese}`} key={cheese}>
+              {cheese}
+            </MenuItem>
+          ))}
         </>
       }
     >
