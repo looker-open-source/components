@@ -27,7 +27,6 @@
 import React, {
   FC,
   KeyboardEvent,
-  MouseEvent,
   useContext,
   Ref,
   forwardRef,
@@ -44,6 +43,7 @@ import {
   TextColorProps,
   color as colorStyleFn,
 } from '@looker/design-tokens'
+import { useWrapEvent } from '../utils'
 import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout/utils/simple'
 import { AccordionContext } from './AccordionContext'
 import { AccordionDisclosureLayout } from './AccordionDisclosureLayout'
@@ -59,7 +59,10 @@ export interface AccordionDisclosureProps
 }
 
 const AccordionDisclosureInternal: FC<AccordionDisclosureProps> = forwardRef(
-  ({ children, className, onClick, onKeyDown, onKeyUp, ...props }, ref) => {
+  (
+    { children, className, onBlur, onClick, onKeyDown, onKeyUp, ...props },
+    ref
+  ) => {
     const [isFocusVisible, setFocusVisible] = useState(false)
     const {
       accordionContentId,
@@ -78,29 +81,26 @@ const AccordionDisclosureInternal: FC<AccordionDisclosureProps> = forwardRef(
       toggleOpen(!isOpen)
     }
 
-    const handleKeyDown = (event: KeyboardEvent<HTMLElement>) => {
-      if (event.key === 'Enter') handleToggle()
+    const handleKeyDown = useWrapEvent(
+      (event: KeyboardEvent<HTMLElement>) =>
+        event.key === 'Enter' && handleToggle(),
+      onKeyDown
+    )
 
-      onKeyDown && onKeyDown(event)
-    }
+    const handleKeyUp = useWrapEvent(
+      (event: KeyboardEvent<HTMLElement>) =>
+        event.key === 'Tab' &&
+        event.currentTarget === event.target &&
+        setFocusVisible(true),
+      onKeyUp
+    )
 
-    const handleKeyUp = (event: KeyboardEvent<HTMLElement>) => {
-      if (event.key === 'Tab' && event.currentTarget === event.target)
-        setFocusVisible(true)
-
-      onKeyUp && onKeyUp(event)
-    }
-
-    const handleClick = (event: MouseEvent<HTMLElement>) => {
+    const handleClick = useWrapEvent(() => {
       setFocusVisible(false)
       handleToggle()
+    }, onClick)
 
-      onClick && onClick(event)
-    }
-
-    const handleBlur = () => {
-      setFocusVisible(false)
-    }
+    const handleBlur = useWrapEvent(() => setFocusVisible(false), onBlur)
 
     return (
       <AccordionDisclosureStyle
