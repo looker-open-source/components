@@ -31,17 +31,17 @@ import {
   reset,
   LayoutProps,
   layout,
-  omitStyledProps,
   pickStyledProps,
 } from '@looker/design-tokens'
 import React, { FC, useRef, useState, useEffect } from 'react'
-import ReactResizeDetector from 'react-resize-detector'
-import styled from 'styled-components'
-import omit from 'lodash/omit'
+import styled, { css } from 'styled-components'
+import { useResize } from '../../utils'
 
-export interface DialogContentProps
+interface DialogStyleProps
   extends LayoutProps,
-    CompatibleHTMLProps<HTMLDivElement> {
+    CompatibleHTMLProps<HTMLDivElement> {}
+
+export interface DialogContentProps extends DialogStyleProps {
   /**
    * If the Dialog does not have a footer use this property to manually render padding
    * at the bottom of the DialogContent. (`hasFooter={false}`)
@@ -56,76 +56,64 @@ export interface DialogContentProps
   hasHeader?: boolean
 }
 
-interface DialogContentLayoutProps extends DialogContentProps {
-  renderedHeight: string
-}
-
-const DialogContentLayout: FC<DialogContentLayoutProps> = ({
+export const DialogContent: FC<DialogContentProps> = ({
   children,
   className,
-  renderedHeight,
   hasFooter,
   hasHeader,
   ...props
 }) => {
   const internalRef = useRef<HTMLDivElement>(null)
-  const [overflow, setOverflow] = useState(false)
+  const [hasOverflow, setHasOverflow] = useState(false)
+  const [height, setHeight] = useState(0)
+
+  const handleResize = () => {
+    if (internalRef.current) {
+      setHeight(internalRef.current.offsetHeight)
+    }
+  }
+
+  useResize(internalRef.current, handleResize)
 
   useEffect(() => {
-    /**
-     * Once you overflow, you never go back (tough luck chuck)
-     */
-    if (!overflow) {
-      const container = internalRef.current
-
-      if (container) {
-        setOverflow(container.offsetHeight < container.scrollHeight)
-      }
+    const container = internalRef.current
+    if (container) {
+      setHasOverflow(container.offsetHeight < container.scrollHeight)
     }
-  }, [overflow, renderedHeight])
+  }, [height])
 
   return (
-    <div
-      className={overflow ? `overflow ${className}` : className}
+    <InnerDialogContent
+      hasOverflow={hasOverflow}
       ref={internalRef}
-      {...omit(omitStyledProps(props), ['renderedHeight'])}
+      px={['medium', 'xlarge']}
+      pb={hasOverflow || !!hasFooter ? 'large' : 'xxxsmall'}
+      pt={hasOverflow || !!hasHeader ? 'large' : 'xxxsmall'}
+      {...pickStyledProps(props)}
+      data-testid="dialog-content"
     >
-      <Inner
-        px={['medium', 'xlarge']}
-        pb={overflow || !!hasFooter ? 'large' : 'xxxsmall'}
-        pt={overflow || !!hasHeader ? 'large' : 'xxxsmall'}
-        {...pickStyledProps(props)}
-      >
-        {children}
-      </Inner>
-    </div>
+      {children}
+    </InnerDialogContent>
   )
 }
 
-const Inner = styled.div<PaddingProps>`
-  ${padding}
-`
+interface InnerDialogContentProps extends DialogStyleProps, PaddingProps {
+  hasOverflow: boolean
+}
 
-const DialogContentStyled = styled(DialogContentLayout)`
+const InnerDialogContent = styled.div<InnerDialogContentProps>`
   ${reset}
   ${layout}
+  ${padding}
 
   flex: 1 1 auto;
   overflow: auto;
 
-  &.overflow {
-    border-bottom: 1px solid ${({ theme }) => theme.colors.ui2};
-    border-top: 1px solid ${({ theme }) => theme.colors.ui2};
-    box-shadow: inset 0 -4px 4px -4px ${({ theme }) => theme.colors.ui2};
-  }
+  ${({ hasOverflow, theme }) =>
+    hasOverflow &&
+    css`
+      border-bottom: 1px solid ${theme.colors.ui2};
+      border-top: 1px solid ${theme.colors.ui2};
+      box-shadow: inset 0 -4px 4px -4px ${theme.colors.ui2};
+    `}
 `
-
-export const DialogContent = (props: DialogContentProps) => {
-  return (
-    <ReactResizeDetector handleHeight>
-      {(height: string) => (
-        <DialogContentStyled renderedHeight={height} {...props} />
-      )}
-    </ReactResizeDetector>
-  )
-}
