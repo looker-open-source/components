@@ -297,6 +297,40 @@ controlled via state values – or use the hook version.
 }
 ```
 
+## Adding icon placeholder space
+
+If a `Menu` contains some number of `MenuItem`s with icons and some without, use the `iconGutter` prop to properly align all item labels with each other.
+
+More specifically, when `iconGutter` is true on a `Menu`, all `MenuItem`s without `icon` prop values will allocate icon placeholder space.
+
+```jsx
+<Space>
+  <Menu
+    content={
+      <>
+        <MenuItem icon="Calendar">Calendar</MenuItem>
+        <MenuItem>No icon</MenuItem>
+        <MenuItem icon="Pivot">Pivot</MenuItem>
+      </>
+    }
+  >
+    <Button>Icon Gutter</Button>
+  </Menu>
+  <Menu
+    iconGutter
+    content={
+      <>
+        <MenuItem icon="Calendar">Calendar</MenuItem>
+        <MenuItem>No icon</MenuItem>
+        <MenuItem icon="Pivot">Pivot</MenuItem>
+      </>
+    }
+  >
+    <Button>No icon Gutter</Button>
+  </Menu>
+</Space>
+```
+
 ## MenuHeading and MenuDivider
 
 `MenuHeading` is typically used as a title for a group of `MenuItem`s. `MenuHeading` children must be of type string.
