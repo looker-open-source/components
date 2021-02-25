@@ -359,7 +359,7 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
 
     const { t } = useTranslation('InputDateRange')
     const startDateLabelledby = `startDate-labelledby-${id}`
-    const endDateLabelledby = `startDate-labelledby-${id}`
+    const endDateLabelledby = `endDate-labelledby-${id}`
 
     const _formatMonthTitle = formatMonthTitle(localization)
     const monthTitle = `${_formatMonthTitle(viewMonth)} ${_formatMonthTitle(
