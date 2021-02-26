@@ -24,13 +24,19 @@
 
  */
 
+import { width, WidthProps } from '@looker/design-tokens'
 import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
 import { List, ListProps } from '../List'
 import { NestedMenuProvider } from './NestedMenuProvider'
 
+export interface MenuListProps extends ListProps, WidthProps {}
+
 export const MenuListInternal = forwardRef(
-  ({ children, ...props }: ListProps, forwardedRef: Ref<HTMLUListElement>) => {
+  (
+    { children, ...props }: MenuListProps,
+    forwardedRef: Ref<HTMLUListElement>
+  ) => {
     return (
       <NestedMenuProvider>
         <List role="menu" ref={forwardedRef} {...props}>
@@ -43,5 +49,7 @@ export const MenuListInternal = forwardRef(
 MenuListInternal.displayName = 'MenuListInternal'
 
 export const MenuList = styled(MenuListInternal)`
+  ${width}
   min-width: 12rem;
+  overflow: auto;
 `

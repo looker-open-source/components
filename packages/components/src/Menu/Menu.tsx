@@ -32,8 +32,7 @@ import {
   UsePopoverResponseDom,
   popoverPropKeys,
 } from '../Popover'
-import { ListProps } from '../List'
-import { MenuList } from './MenuList'
+import { MenuList, MenuListProps } from './MenuList'
 
 export interface MenuDomProps extends UsePopoverResponseDom {
   'aria-controls': string
@@ -41,7 +40,7 @@ export interface MenuDomProps extends UsePopoverResponseDom {
 
 export interface MenuProps
   extends Omit<PopoverProps, 'children'>,
-    Omit<ListProps, 'children' | 'content'> {
+    Omit<MenuListProps, 'children' | 'content'> {
   /**
    * A ReactElement that accepts dom props
    */
