@@ -451,6 +451,7 @@ export const LongMenus = () => {
       </Space>
       <Space align="start">
         <Menu
+          width={300}
           windowing={!value ? 'none' : undefined}
           content={array3000.map((item, i) => (
             <MenuItem key={i}>{item.label}</MenuItem>
@@ -459,6 +460,7 @@ export const LongMenus = () => {
           <Button>Windowing (3k)</Button>
         </Menu>
         <Menu
+          width={300}
           windowing={!value ? 'none' : undefined}
           content={array3000.map((item, i) => (
             <MenuItem key={i} description={item.description}>
@@ -469,6 +471,7 @@ export const LongMenus = () => {
           <Button>Windowing (description)</Button>
         </Menu>
         <Menu
+          width={300}
           windowing={!value ? 'none' : undefined}
           content={groups.map(({ label, items }, index) => [
             <MenuDivider key={`${label}-${index}-divider`} />,
