@@ -28,6 +28,7 @@ import 'jest-styled-components'
 import React, { useState } from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { fireEvent, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import { MultiFunctionButton } from './MultiFunctionButton'
 import { Button, ButtonTransparent } from '.'
 
@@ -41,7 +42,7 @@ describe('MultiFunctionButton', () => {
     }
     return (
       <MultiFunctionButton
-        alternate={<ButtonTransparent>Copied!</ButtonTransparent>}
+        alternate={<ButtonTransparent size="large">Copied!</ButtonTransparent>}
         isAlternate={change}
       >
         <Button onClick={handleIsAlternate}>Copy to Clipboard</Button>
@@ -50,49 +51,47 @@ describe('MultiFunctionButton', () => {
   }
 
   test('render children', () => {
-    renderWithTheme(
-      <MultiFunctionButton
-        alternate={<ButtonTransparent>Copied!</ButtonTransparent>}
-        isAlternate={false}
-      >
-        <Button>Copy to Clipboard</Button>
-      </MultiFunctionButton>
-    )
-    const button = screen.getByText('Copy to Clipboard')
-    expect(button).toBeInTheDocument()
-  })
-
-  test('isAlternate triggers alternate button to display', () => {
-    renderWithTheme(
-      <MultiFunctionButton
-        alternate={<ButtonTransparent>Copied!</ButtonTransparent>}
-        isAlternate={true}
-      >
-        <Button>Copy to Clipboard</Button>
-      </MultiFunctionButton>
-    )
-    const button = screen.getByText('Copied!')
-    expect(button).toBeInTheDocument()
-  })
-
-  xtest('component has same size at all times', () => {
     renderWithTheme(<CopyToClipboard />)
+    expect(screen.getByText('Copy to Clipboard')).toBeInTheDocument()
+  })
 
+  test('alternate button is displayed when isAlternate is true', () => {
+    renderWithTheme(<CopyToClipboard />)
     const button = screen.getByText('Copy to Clipboard')
-    expect(button).toHaveStyleRule('height: ??')
-    expect(button).toHaveStyleRule('height: ??')
+    fireEvent.click(button)
+    expect(screen.getByText('Copied!')).toBeInTheDocument()
+  })
+
+  test('component has same size at all times', () => {
+    Object.defineProperties(window.HTMLElement.prototype, {
+      offsetHeight: {
+        value: 44,
+      },
+    })
+
+    Object.defineProperties(window.HTMLElement.prototype, {
+      offsetWidth: {
+        value: 162,
+      },
+    })
+
+    renderWithTheme(<CopyToClipboard />)
+    const button = screen.getByText('Copy to Clipboard')
+    // screen.debug()
+    expect(button.closest('div')).toHaveStyle('height: 44px')
+    expect(button.closest('div')).toHaveStyle('width: 162px')
     fireEvent.click(button)
     const alternate = screen.getByText('Copied!')
-    expect(alternate).toHaveStyleRule('width: ??')
-    expect(button).toHaveStyleRule('height: ??')
+    expect(alternate.closest('div')).toHaveStyle('height: 44px')
+    expect(alternate.closest('div')).toHaveStyle('width: 162px')
   })
 
-  xtest('component remains focused at all times', () => {
+  test('component remains focused at all times', () => {
     renderWithTheme(<CopyToClipboard />)
     const button = screen.getByText('Copy to Clipboard')
-    expect(button.closest('div')).toHaveFocus()
-    fireEvent.click(button)
-    const alternate = screen.getByText('Copied!').closest('div')
+    expect(button).not.toHaveFocus()
+    userEvent.click(button)
+    const alternate = screen.getByText('Copied!')
     expect(alternate).toHaveFocus()
   })
 })

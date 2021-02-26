@@ -24,7 +24,14 @@
 
  */
 
-import React, { FC, ReactElement, useRef, cloneElement, useEffect } from 'react'
+import React, {
+  FC,
+  ReactElement,
+  useRef,
+  cloneElement,
+  useEffect,
+  useState,
+} from 'react'
 import styled from 'styled-components'
 import { ButtonProps, IconButtonProps } from '.'
 
@@ -34,72 +41,71 @@ export interface MultiFunctionButtonProps {
   isAlternate?: boolean
 }
 
-const MultiFunctionButtonLayout: FC<MultiFunctionButtonProps> = ({
+export const MultiFunctionButton: FC<MultiFunctionButtonProps> = ({
   alternate,
   children,
   isAlternate = false,
 }) => {
-  const alternateRef = useRef<HTMLButtonElement>(null)
-  const childrenRef = useRef<HTMLButtonElement>(null)
+  const [containerHeight, setContainerHeight] = useState(0)
+  const [containerWidth, setContainerWidth] = useState(0)
 
-  const alternateButton = cloneElement(alternate, {
-    ref: alternateRef,
-  })
-  const childrenButton = cloneElement(children, {
-    ref: childrenRef,
-  })
+  const aRef = useRef<HTMLButtonElement>(null)
+  const bRef = useRef<HTMLButtonElement>(null)
 
-  // const finalHeight =
-  //   alternateButton.offsetHeight > childrenButton.getBoundingClientRect
-  //     ? alternateButton.offsetHeight
-  //     : childrenButton.getBoundingClientRect
-  // const finalWidth =
-  //   alternateButton.offsetWidth > childrenButton.offsetWidth
-  //     ? alternateButton.offsetHeight
-  //     : childrenButton.offsetHeight
-
-  console.log('finalHeight: ', alternateRef) // ?.current?.offsetWidth)
-  console.log('finalWidth: ', childrenRef) // ?.current?.offsetHeight)
-
+  // calculating height and width button highest values to populate the component's dimensions.
   useEffect(() => {
-    // IF, isAlternate = true && children button has focus put focus on alternate button
-    if (
-      isAlternate === true &&
-      childrenRef.current === document.activeElement
-    ) {
-      alternateRef?.current?.focus()
+    const a = aRef.current
+    const b = bRef.current
+    if (!a || !b) return
+
+    setContainerHeight(Math.max(a.offsetHeight, b.offsetHeight, 0))
+    setContainerWidth(Math.max(a.offsetWidth, b.offsetWidth, 0))
+  }, [containerHeight, containerWidth])
+
+  // setting focus on the right button as the component moves between them
+  useEffect(() => {
+    if (isAlternate === true && aRef.current === document.activeElement) {
+      bRef.current?.focus()
     }
-    // IF, isAlternate = false && alternate button has focus put focus on children button
-    if (
-      isAlternate === false &&
-      alternateRef.current === document.activeElement
-    ) {
-      childrenRef?.current?.focus()
+    if (isAlternate === false && bRef.current === document.activeElement) {
+      aRef.current?.focus()
     }
-    // IF isAlternate changes and focus is not on one of the two buttons do nothing
-  })
+  }, [isAlternate])
 
   return (
-    <div aria-live="polite">
-      {isAlternate ? alternateButton : childrenButton}
-    </div>
+    <MultiFunctionButtonLayout
+      isAlternate={isAlternate}
+      height={containerHeight}
+      width={containerWidth}
+    >
+      {cloneElement(children, { ref: aRef })}
+      {cloneElement(alternate, { ref: bRef })}
+    </MultiFunctionButtonLayout>
   )
 }
 
-export const MultiFunctionButton = styled(MultiFunctionButtonLayout)`
+export interface MultiFunctionButtonLayoutProp {
+  isAlternate?: boolean
+  height: number
+  width: number
+}
+
+const MultiFunctionButtonLayout = styled.div<MultiFunctionButtonLayoutProp>`
   align-items: center;
-  border: 1px solid blue;
+  border: 1px solid ${({ theme }) => theme.colors.key};
   display: flex;
-  height: 2.5rem;
+  height: ${({ height }) => height}px;
   justify-content: center;
-  width: 8rem;
+  width: ${({ width }) => width}px;
 
-  *:nth-child(2) {
-    position: absolute;
-    top: -100000px;
-  }
-
-  /* .alt {
-    height: 2.5rem;
-  } */
+  ${({ isAlternate }) =>
+    isAlternate
+      ? `*:first-child {
+        position: absolute;
+        top: -100000px;
+      }`
+      : `*:last-child {
+        position: absolute;
+        top: -100000px;
+      }`}
 `
