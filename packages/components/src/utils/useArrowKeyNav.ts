@@ -25,7 +25,7 @@
  */
 
 import {
-  FocusEvent as ReactFocusEvent,
+  FocusEvent,
   KeyboardEvent,
   Ref,
   useCallback,
@@ -59,11 +59,11 @@ export interface UseArrowKeyNavProps<E extends HTMLElement> {
   /**
    * will be merged with the onBlur in the return
    */
-  onBlur?: (e: ReactFocusEvent<E>) => void
+  onBlur?: (e: FocusEvent<E>) => void
   /**
    * will be merged with the onFocus in the return
    */
-  onFocus?: (e: ReactFocusEvent<E>) => void
+  onFocus?: (e: FocusEvent<E>) => void
   /**
    * will be merged with the onKeyDown in the return
    */
@@ -133,8 +133,7 @@ export const useArrowKeyNav = <E extends HTMLElement = HTMLElement>({
     }
   }, [getNextFocus])
 
-  const handleFocus = (e: ReactFocusEvent<E>) => {
-    blurCountRef.current = 0
+  const handleFocus = (e: FocusEvent<E>) => {
     setFocusInside(true)
 
     // When focus lands on the container
@@ -152,7 +151,6 @@ export const useArrowKeyNav = <E extends HTMLElement = HTMLElement>({
     }
   }
 
-  const blurCountRef = useRef(0)
   const handleBlur = () => {
     setFocusInside(false)
   }
