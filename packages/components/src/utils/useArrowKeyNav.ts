@@ -100,7 +100,6 @@ export const useArrowKeyNav = <E extends HTMLElement = HTMLElement>({
       if (newFocusedItem) {
         e.preventDefault()
         newFocusedItem.focus()
-        focusedItemRef.current = newFocusedItem
       }
     }
   }
@@ -127,7 +126,6 @@ export const useArrowKeyNav = <E extends HTMLElement = HTMLElement>({
       const toFocus = getNextFocus(1, internalRef.current)
       if (toFocus) {
         toFocus.focus()
-        focusedItemRef.current = toFocus
       }
     }
   }, [getNextFocus])
