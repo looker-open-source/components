@@ -24,21 +24,23 @@
 
  */
 
-export const checkFocusedItemRemoved = (
+/**
+ * Checks a list of mutations against an element
+ * and returns true if it was removed
+ * @param mutationsList the list of mutations from a MutationObserver
+ * @param element
+ */
+export const checkElementRemoved = (
   mutationsList: MutationRecord[],
-  focusedItem?: HTMLElement
+  element?: HTMLElement
 ) => {
-  if (!focusedItem) return false
-  // Use traditional 'for loops' for IE 11
-  for (const { type, removedNodes } of mutationsList) {
+  if (!element) return false
+  return mutationsList.some(({ type, removedNodes }) => {
     if (type === 'childList' && removedNodes.length > 0) {
-      const focusRemoved = Array.from(removedNodes).some((node) => {
-        return node.contains(focusedItem)
+      return Array.from(removedNodes).some((node) => {
+        return node.contains(element)
       })
-      if (focusRemoved) {
-        return true
-      }
     }
-  }
-  return false
+    return false
+  })
 }

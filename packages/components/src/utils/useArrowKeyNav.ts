@@ -33,7 +33,7 @@ import {
   useRef,
   useState,
 } from 'react'
-import { checkFocusedItemRemoved } from './checkFocusedItemRemoved'
+import { checkElementRemoved } from './checkElementRemoved'
 import { getNextFocus as getNextFocusDefault } from './getNextFocus'
 import { useForkedRef } from './useForkedRef'
 import { useWrapEvent } from './useWrapEvent'
@@ -162,7 +162,7 @@ export const useArrowKeyNav = <E extends HTMLElement = HTMLElement>({
 
     // Create an observer to check if the focused element is removed
     const observer = new MutationObserver((mutationsList) => {
-      if (checkFocusedItemRemoved(mutationsList, focusedItemRef.current)) {
+      if (checkElementRemoved(mutationsList, focusedItemRef.current)) {
         // If it was, start focus back at the beginning
         placeInitialFocus()
       }
