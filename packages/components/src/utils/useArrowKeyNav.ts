@@ -126,7 +126,6 @@ export const useArrowKeyNav = <E extends HTMLElement = HTMLElement>({
     if (internalRef.current) {
       const toFocus = getNextFocus(1, internalRef.current)
       if (toFocus) {
-        // No need to update focusedItem with this since it's the default
         toFocus.focus()
         focusedItemRef.current = toFocus
       }
