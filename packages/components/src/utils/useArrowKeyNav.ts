@@ -147,6 +147,8 @@ export const useArrowKeyNav = <E extends HTMLElement = HTMLElement>({
         // Otherwise focus the first item
         placeInitialFocus()
       }
+    } else {
+      focusedItemRef.current = e.target
     }
   }
 

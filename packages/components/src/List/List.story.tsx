@@ -104,11 +104,12 @@ export const ExpandingList = () => {
       <List>
         {showMore2 ? (
           <>
-            <ListItem>Cheddar</ListItem>
-            <ListItem>Swiss</ListItem>
-            <ListItem>Gouda</ListItem>
-            <ListItem>American</ListItem>
+            <ListItem key="0">Cheddar</ListItem>
+            <ListItem key="1">Swiss</ListItem>
+            <ListItem key="2">Gouda</ListItem>
+            <ListItem key="3">American</ListItem>
             <ListItem
+              key="4"
               onClick={() => setShowMore2(false)}
               description="Replaces all items"
             >
@@ -117,9 +118,10 @@ export const ExpandingList = () => {
           </>
         ) : (
           <>
-            <ListItem>Cheddar</ListItem>
-            <ListItem>Gouda</ListItem>
+            <ListItem key="5">Cheddar</ListItem>
+            <ListItem key="6">Gouda</ListItem>
             <ListItem
+              key="7"
               onClick={() => setShowMore2(true)}
               description="Replaces all items"
             >
