@@ -46,11 +46,11 @@ export const CopyToClipboard = () => {
 
   const handleIsAlternate = () => {
     setChange(true)
-    setTimeout(() => setChange(false), 1500)
+    setTimeout(() => setChange(false), 2500)
   }
   return (
     <MultiFunctionButton
-      alternate={<ButtonTransparent>Copied!</ButtonTransparent>}
+      alternate={<ButtonTransparent size="large">Copied!</ButtonTransparent>}
       isAlternate={change}
     >
       <Button onClick={handleIsAlternate}>Copy to Clipboard</Button>
@@ -60,7 +60,7 @@ export const CopyToClipboard = () => {
 
 export const CopyToClipboardAlternate = Template.bind({})
 CopyToClipboardAlternate.args = {
-  alternate: <ButtonTransparent>Copied!</ButtonTransparent>,
+  alternate: <ButtonTransparent size="large">Copied!</ButtonTransparent>,
   children: <Button>Copy to Clipboard</Button>,
   isAlternate: true,
 }
@@ -74,7 +74,11 @@ export const Run = () => {
   }
   return (
     <MultiFunctionButton
-      alternate={<Button color="critical">Stop</Button>}
+      alternate={
+        <Button color="critical" size="large">
+          Stop
+        </Button>
+      }
       isAlternate={change}
     >
       <Button onClick={handleIsAlternate}>Run</Button>
@@ -84,7 +88,11 @@ export const Run = () => {
 
 export const RunAlternate = Template.bind({})
 RunAlternate.args = {
-  alternate: <Button color="critical">Stop</Button>,
+  alternate: (
+    <Button color="critical" size="large">
+      Stop
+    </Button>
+  ),
   children: <Button>Run</Button>,
   isAlternate: true,
 }
