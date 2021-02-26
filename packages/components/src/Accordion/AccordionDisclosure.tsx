@@ -39,11 +39,11 @@ import {
   CompatibleHTMLProps,
   padding,
   PaddingProps,
-  pickStyledProps,
   shouldForwardProp,
   TextColorProps,
   color as colorStyleFn,
 } from '@looker/design-tokens'
+import { useWrapEvent } from '../utils'
 import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout/utils/simple'
 import { AccordionContext } from './AccordionContext'
 import { AccordionDisclosureLayout } from './AccordionDisclosureLayout'
@@ -59,7 +59,10 @@ export interface AccordionDisclosureProps
 }
 
 const AccordionDisclosureInternal: FC<AccordionDisclosureProps> = forwardRef(
-  ({ children, className, ...props }, ref) => {
+  (
+    { children, className, onBlur, onClick, onKeyDown, onKeyUp, ...props },
+    ref
+  ) => {
     const [isFocusVisible, setFocusVisible] = useState(false)
     const {
       accordionContentId,
@@ -78,25 +81,26 @@ const AccordionDisclosureInternal: FC<AccordionDisclosureProps> = forwardRef(
       toggleOpen(!isOpen)
     }
 
-    const handleKeyDown = (event: KeyboardEvent<HTMLElement>) => {
-      if (event.keyCode === 13) {
-        handleToggle()
-      }
-    }
+    const handleKeyDown = useWrapEvent(
+      (event: KeyboardEvent<HTMLElement>) =>
+        event.key === 'Enter' && handleToggle(),
+      onKeyDown
+    )
 
-    const handleKeyUp = (event: KeyboardEvent<HTMLElement>) => {
-      if (event.keyCode === 9 && event.currentTarget === event.target)
-        setFocusVisible(true)
-    }
+    const handleKeyUp = useWrapEvent(
+      (event: KeyboardEvent<HTMLElement>) =>
+        event.key === 'Tab' &&
+        event.currentTarget === event.target &&
+        setFocusVisible(true),
+      onKeyUp
+    )
 
-    const handleClick = () => {
+    const handleClick = useWrapEvent(() => {
       setFocusVisible(false)
       handleToggle()
-    }
+    }, onClick)
 
-    const handleBlur = () => {
-      setFocusVisible(false)
-    }
+    const handleBlur = useWrapEvent(() => setFocusVisible(false), onBlur)
 
     return (
       <AccordionDisclosureStyle
@@ -112,7 +116,7 @@ const AccordionDisclosureInternal: FC<AccordionDisclosureProps> = forwardRef(
         onKeyUp={handleKeyUp}
         ref={ref}
         tabIndex={0}
-        {...pickStyledProps(props)}
+        {...props}
       >
         <AccordionDisclosureLayout {...accordionProps} isOpen={isOpen}>
           {children}

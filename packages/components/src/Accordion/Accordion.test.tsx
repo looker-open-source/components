@@ -93,4 +93,40 @@ describe('Accordion', () => {
     fireEvent.click(accordionLabel)
     getByText('My Accordion Content')
   })
+
+  // TODO: Move handler props to Accordion during AccordionDisclosure refactor PR
+  test('Wraps handlers passed into AccordionDisclosure', () => {
+    const handleKeyDown = jest.fn()
+    const handleKeyUp = jest.fn()
+    const handleClick = jest.fn()
+    const handleBlur = jest.fn()
+
+    const { getByText } = renderWithTheme(
+      <Accordion>
+        <AccordionDisclosure
+          onKeyDown={handleKeyDown}
+          onKeyUp={handleKeyUp}
+          onClick={handleClick}
+          onBlur={handleBlur}
+        >
+          My Accordion Label
+        </AccordionDisclosure>
+        <AccordionContent>My Accordion Content</AccordionContent>
+      </Accordion>
+    )
+
+    const accordionLabel = getByText('My Accordion Label')
+    fireEvent.click(accordionLabel)
+    expect(handleClick).toHaveBeenCalled()
+    fireEvent.blur(accordionLabel)
+    expect(handleBlur).toHaveBeenCalled()
+    fireEvent.keyDown(accordionLabel, {
+      key: 'Enter',
+    })
+    expect(handleKeyDown).toHaveBeenCalled()
+    fireEvent.keyUp(accordionLabel, {
+      key: 'Enter',
+    })
+    expect(handleKeyUp).toHaveBeenCalled()
+  })
 })
