@@ -40,6 +40,8 @@ import max from 'lodash/max'
 import isEmpty from 'lodash/isEmpty'
 import isEqual from 'lodash/isEqual'
 import values from 'lodash/values'
+import { useTranslation } from 'react-i18next'
+import { VisuallyHidden } from '../../../VisuallyHidden'
 import { Icon } from '../../../Icon'
 import { ValidationType } from '../../ValidationMessage'
 import {
@@ -50,7 +52,11 @@ import {
   inputTextDisabled,
 } from '../InputText'
 import { InlineInputTextBase } from '../../Inputs/InlineInputText'
-import { Calendar, CalendarLocalization } from '../../../Calendar'
+import {
+  Calendar,
+  CalendarLocalization,
+  formatMonthTitle,
+} from '../../../Calendar'
 import {
   Locales,
   formatDateString,
@@ -60,6 +66,7 @@ import { useID } from '../../../utils/useID'
 import { useReadOnlyWarn } from '../../../utils/useReadOnlyWarn'
 
 export interface InputDateRangeProps {
+  'aria-labelledby'?: string
   disabled?: boolean
   dateStringLocale?: Locales
   defaultValue?: Partial<RangeModifier>
@@ -134,6 +141,7 @@ const isDateRangeInView = (
 export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
   (
     {
+      'aria-labelledby': ariaLabelledby,
       dateStringLocale,
       defaultValue = {},
       disabled,
@@ -349,6 +357,15 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
       setViewMonth(transformMonth(month, viewMonthDiff))
     }
 
+    const { t } = useTranslation('InputDateRange')
+    const startDateLabelledby = `startDate-labelledby-${id}`
+    const endDateLabelledby = `endDate-labelledby-${id}`
+
+    const _formatMonthTitle = formatMonthTitle(localization)
+    const monthTitle = `${_formatMonthTitle(viewMonth)} ${_formatMonthTitle(
+      viewNextMonth
+    )}`
+
     return (
       <InputDateRangeWrapper ref={ref}>
         <InputTextGroupWrapper
@@ -359,6 +376,9 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
           }
         >
           <InputTextWrapper inputLength={inputs.from.value.length}>
+            <VisuallyHidden id={startDateLabelledby}>
+              {t('Start date')}
+            </VisuallyHidden>
             <InlineInputTextBase
               placeholder={`${formatDateString(
                 new Date(Date.now()),
@@ -373,12 +393,19 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
               onFocus={partial(handleTextInputFocus, 'from')}
               readOnly={readOnly}
               value={inputs.from.value}
+              aria-labelledby={`${ariaLabelledby} ${startDateLabelledby}`}
             />
           </InputTextWrapper>
-          <HyphenWrapper hasInputValues={!isEmpty(dateRange)}>
+          <HyphenWrapper
+            hasInputValues={!isEmpty(dateRange)}
+            aria-hidden="true"
+          >
             &ndash;
           </HyphenWrapper>
           <InputTextWrapper inputLength={inputs.to.value.length}>
+            <VisuallyHidden id={endDateLabelledby}>
+              {t('End date')}
+            </VisuallyHidden>
             <InlineInputTextBase
               placeholder={formatDateString(
                 new Date(Date.now()),
@@ -393,6 +420,7 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
               onFocus={partial(handleTextInputFocus, 'to')}
               readOnly={readOnly}
               value={inputs.to.value}
+              aria-labelledby={`${ariaLabelledby} ${endDateLabelledby}`}
             />
           </InputTextWrapper>
           {(inputs.from.isValid && inputs.to.isValid) || (
@@ -408,6 +436,7 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
           )}
         </InputTextGroupWrapper>
         <MultiCalendarLayout>
+          <VisuallyHidden aria-live="assertive">{monthTitle}</VisuallyHidden>
           <CalendarWrapper>
             <Calendar
               disabled={disabled}

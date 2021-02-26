@@ -23,7 +23,8 @@
  SOFTWARE.
 
  */
-export * from './Calendar'
-export * from './formatMonthTitle'
-export * from './types'
-export type { CalendarSize } from './calendar-size'
+export interface CalendarLocalization {
+  firstDayOfWeek: number
+  months: string[]
+  weekdaysShort: string[]
+}

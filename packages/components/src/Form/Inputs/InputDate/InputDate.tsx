@@ -37,8 +37,13 @@ import styled from 'styled-components'
 import isFunction from 'lodash/isFunction'
 import isEqual from 'lodash/isEqual'
 import { BorderProps, SpaceProps } from '@looker/design-tokens'
+import { VisuallyHidden } from '../../../VisuallyHidden'
 import { InputText } from '../InputText'
-import { Calendar, CalendarLocalization } from '../../../Calendar'
+import {
+  Calendar,
+  CalendarLocalization,
+  formatMonthTitle,
+} from '../../../Calendar'
 import { ValidationType } from '../../ValidationMessage'
 import {
   Locales,
@@ -188,11 +193,15 @@ export const InputDate: FC<InputDateProps> = forwardRef(
           readOnly={readOnly}
         />
         <CalendarWrapper>
+          <VisuallyHidden aria-live="assertive">
+            {viewMonth ? formatMonthTitle(localization)(viewMonth) : ''}
+          </VisuallyHidden>
           <Calendar
             selectedDates={selectedDate}
             onDayClick={handleDayClick}
             localization={localization}
             viewMonth={viewMonth}
+            onMonthChange={setViewMonth}
             onNowClick={handleNavClick}
             onNextClick={handleNavClick}
             onPrevClick={handleNavClick}
