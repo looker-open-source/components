@@ -26,7 +26,7 @@
 
 import React, { FC, useState } from 'react'
 import { Story } from '@storybook/react/types-6-0'
-import { Grid } from '../Layout'
+import { Grid, Space } from '../Layout'
 import { DensityRamp } from './types'
 import { List, ListProps } from './List'
 import { ListItem } from './ListItem'
@@ -74,30 +74,61 @@ LongList.parameters = {
 
 export const ExpandingList = () => {
   const [showMore, setShowMore] = useState(false)
+  const [showMore2, setShowMore2] = useState(false)
   return (
-    <List>
-      <ListItem>Cheddar</ListItem>
-      <ListItem>Gouda</ListItem>
-      {showMore ? (
-        <>
-          <ListItem>Swiss</ListItem>
-          <ListItem>American</ListItem>
+    <Space align="start">
+      <List>
+        <ListItem>Cheddar</ListItem>
+        <ListItem>Gouda</ListItem>
+        {showMore ? (
+          <>
+            <ListItem>Swiss</ListItem>
+            <ListItem>American</ListItem>
+            <ListItem
+              onClick={() => setShowMore(false)}
+              description="Keyboard nav should still work"
+            >
+              Show Less
+            </ListItem>
+          </>
+        ) : (
           <ListItem
-            onClick={() => setShowMore(false)}
-            description="Keyboard nav should still work"
+            onClick={() => setShowMore(true)}
+            description="To test keyboard nav"
           >
-            Show Less
+            Show More
           </ListItem>
-        </>
-      ) : (
-        <ListItem
-          onClick={() => setShowMore(true)}
-          description="To test keyboard nav"
-        >
-          Show More
-        </ListItem>
-      )}
-    </List>
+        )}
+      </List>
+
+      <List>
+        {showMore2 ? (
+          <>
+            <ListItem>Cheddar</ListItem>
+            <ListItem>Swiss</ListItem>
+            <ListItem>Gouda</ListItem>
+            <ListItem>American</ListItem>
+            <ListItem
+              onClick={() => setShowMore2(false)}
+              description="Replaces all items"
+            >
+              Show less
+            </ListItem>
+          </>
+        ) : (
+          <>
+            <ListItem>Cheddar</ListItem>
+            <ListItem>Gouda</ListItem>
+            <ListItem
+              onClick={() => setShowMore2(true)}
+              description="Replaces all items"
+            >
+              Show more
+            </ListItem>
+          </>
+        )}
+      </List>
+    </Space>
   )
 }
 
