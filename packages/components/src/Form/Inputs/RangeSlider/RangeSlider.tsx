@@ -53,6 +53,7 @@ import {
   useMeasuredElement,
   useMouseDragPosition,
   useReadOnlyWarn,
+  usePreviousValue,
 } from '../../../utils'
 import { ValidationType } from '../../ValidationMessage'
 
@@ -201,9 +202,10 @@ export const InternalRangeSlider = forwardRef(
     const [containerRef, setContainerRef] = useState<HTMLElement | null>(null)
     const [focusedThumb, setFocusedThumb] = useState<ThumbIndices>()
 
-    const containerRect = useMeasuredElement(containerRef)
+    const [containerRect, refreshDomRect] = useMeasuredElement(containerRef)
 
     const { mousePos, isMouseDown } = useMouseDragPosition(containerRef)
+    const previousIsMouseDown = usePreviousValue(isMouseDown)
 
     const minThumbRef = useRef<HTMLDivElement>(null)
     const maxThumbRef = useRef<HTMLDivElement>(null)
@@ -223,20 +225,18 @@ export const InternalRangeSlider = forwardRef(
 
     const focusChangedPoint = (newValue: number[], newPoint: number) => {
       // focus/highlight the thumb that moved on click
-      const indexToFocus = indexOf(newValue, newPoint)
+      const indexToFocus = indexOf(newValue, newPoint) as 0 | 1
       const refToFocus = thumbRefs[indexToFocus]
-      requestAnimationFrame(() => {
-        // delaying focus is necessary for it to work with mouseDown event
-        refToFocus.current && refToFocus.current.focus()
-      })
+      setFocusedThumb(indexToFocus)
+      refToFocus.current && refToFocus.current.focus()
     }
 
-    const incrementPoint = (point: number) => {
-      return Math.min(point + step, max)
+    const incrementPoint = (point: number, stepMultiplier = 1) => {
+      return Math.min(point + step * stepMultiplier, max)
     }
 
-    const decrementPoint = (point: number) => {
-      return Math.max(point - step, min)
+    const decrementPoint = (point: number, stepMultiplier = 1) => {
+      return Math.max(point - step * stepMultiplier, min)
     }
 
     const handleKeyboardNav = (e: KeyboardEvent) => {
@@ -248,7 +248,7 @@ export const InternalRangeSlider = forwardRef(
             e.key === 'ArrowUp' || e.key === 'ArrowRight'
               ? incrementPoint
               : decrementPoint
-          const newPoint = mutationFn(value[focusedThumb])
+          const newPoint = mutationFn(value[focusedThumb], e.shiftKey ? 10 : 1)
           const newValue = sort([newPoint, value[unfocusedThumb]])
           focusChangedPoint(newValue, newPoint)
           setValue(newValue)
@@ -296,16 +296,35 @@ export const InternalRangeSlider = forwardRef(
     const handleMouseDrag = partial(handleMouseEvent, true)
 
     /*
+     * Mouse down event (and re-measure the client rectangle values before calculating value).
+     * This ensures accurate calculation when slider has moved to new location on page due
+     * to asynchronous dom changes.
+     */
+    useEffect(() => {
+      if (isMouseDown) {
+        refreshDomRect() // re-measure rectangle when isMouseDown changes from false to true
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isMouseDown])
+
+    useEffect(() => {
+      if (isMouseDown) {
+        handleMouseDown() // fire mouseDown event after containerRect measurements are refreshed
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [containerRect])
+
+    /*
      * Only fire mouse drag event when mouse moves AFTER initial click
      */
     useEffect(
       () => {
-        if (isMouseDown) {
+        if (isMouseDown && previousIsMouseDown) {
           handleMouseDrag()
         }
       },
       // eslint-disable-next-line react-hooks/exhaustive-deps
-      [mousePos, isMouseDown]
+      [mousePos]
     )
 
     /*
@@ -337,8 +356,6 @@ export const InternalRangeSlider = forwardRef(
     return (
       <div
         data-testid="range-slider-wrapper"
-        onMouseDown={handleMouseDown}
-        onTouchStart={handleMouseDown}
         onTouchEnd={handleBlur}
         className={className}
         id={id}

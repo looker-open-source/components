@@ -25,8 +25,9 @@
  */
 
 import { Story } from '@storybook/react/types-6-0'
-import React, { useState } from 'react'
-import { Button } from '../../../Button'
+import React, { useState, useEffect } from 'react'
+import styled from 'styled-components'
+import { Button, ButtonGroup, ButtonItem } from '../../../Button'
 import { Space } from '../../../Layout'
 import { FieldRangeSlider, FieldRangeSliderProps } from './FieldRangeSlider'
 
@@ -93,3 +94,39 @@ export const Controlled = () => {
 Controlled.parameters = {
   storyshots: { disable: true },
 }
+
+export const DashboardFilters = () => {
+  const [renderSiblings, setRenderSiblings] = useState(false)
+  const [buttonValue, setButtonValue] = useState(['CA'])
+
+  useEffect(() => {
+    const timeout = setTimeout(() => setRenderSiblings(true), 1000)
+    return () => {
+      clearTimeout(timeout)
+    }
+  }, [])
+
+  return (
+    <FilterGrid>
+      {renderSiblings && (
+        <ButtonGroup value={buttonValue} onChange={setButtonValue}>
+          <ButtonItem value="CA">California</ButtonItem>
+          <ButtonItem value="AK">Alaska</ButtonItem>
+          <ButtonItem value="UT">Utah</ButtonItem>
+        </ButtonGroup>
+      )}
+      <FieldRangeSlider />
+    </FilterGrid>
+  )
+}
+
+DashboardFilters.parameters = {
+  storyshots: { disable: true },
+}
+
+const FilterGrid = styled.div`
+  display: grid;
+  grid-gap: 30px;
+  grid-template-columns: 1fr 1fr;
+  padding: 30px;
+`
