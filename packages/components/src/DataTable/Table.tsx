@@ -207,6 +207,7 @@ export const Table = styled(TableLayout)`
       td,
       th {
         ${stickyColumns}
+        height: initial;
       }
     }
   }
