@@ -76,13 +76,26 @@ export const ExpandingList = () => {
   const [showMore, setShowMore] = useState(false)
   return (
     <List>
+      <ListItem>Cheddar</ListItem>
+      <ListItem>Gouda</ListItem>
       {showMore ? (
         <>
-          <ListItem>Stuff</ListItem>
-          <ListItem onClick={() => setShowMore(false)}>Show Less</ListItem>
+          <ListItem>Swiss</ListItem>
+          <ListItem>American</ListItem>
+          <ListItem
+            onClick={() => setShowMore(false)}
+            description="Keyboard nav should still work"
+          >
+            Show Less
+          </ListItem>
         </>
       ) : (
-        <ListItem onClick={() => setShowMore(true)}>Show More</ListItem>
+        <ListItem
+          onClick={() => setShowMore(true)}
+          description="To test keyboard nav"
+        >
+          Show More
+        </ListItem>
       )}
     </List>
   )

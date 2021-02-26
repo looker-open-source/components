@@ -24,7 +24,16 @@
 
  */
 
-import { FocusEvent, KeyboardEvent, Ref, useRef, useState } from 'react'
+import {
+  FocusEvent as ReactFocusEvent,
+  KeyboardEvent,
+  Ref,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react'
+import { checkFocusedItemRemoved } from './checkFocusedItemRemoved'
 import { getNextFocus as getNextFocusDefault } from './getNextFocus'
 import { useForkedRef } from './useForkedRef'
 import { useWrapEvent } from './useWrapEvent'
@@ -50,11 +59,11 @@ export interface UseArrowKeyNavProps<E extends HTMLElement> {
   /**
    * will be merged with the onBlur in the return
    */
-  onBlur?: (e: FocusEvent<E>) => void
+  onBlur?: (e: ReactFocusEvent<E>) => void
   /**
    * will be merged with the onFocus in the return
    */
-  onFocus?: (e: FocusEvent<E>) => void
+  onFocus?: (e: ReactFocusEvent<E>) => void
   /**
    * will be merged with the onKeyDown in the return
    */
@@ -74,7 +83,7 @@ export const useArrowKeyNav = <E extends HTMLElement = HTMLElement>({
   onKeyDown,
 }: UseArrowKeyNavProps<E>) => {
   const internalRef = useRef<E>(null)
-  const [focusedItem, setFocusedItem] = useState<HTMLElement | null>(null)
+  const focusedItemRef = useRef<HTMLElement>()
   const [focusInside, setFocusInside] = useState(false)
 
   const handleArrowKey = (
@@ -91,7 +100,7 @@ export const useArrowKeyNav = <E extends HTMLElement = HTMLElement>({
       if (newFocusedItem) {
         e.preventDefault()
         newFocusedItem.focus()
-        setFocusedItem(newFocusedItem)
+        focusedItemRef.current = newFocusedItem
       }
     }
   }
@@ -113,26 +122,60 @@ export const useArrowKeyNav = <E extends HTMLElement = HTMLElement>({
     }
   }
 
-  const handleFocus = (e: FocusEvent<E>) => {
+  const placeInitialFocus = useCallback(() => {
+    if (internalRef.current) {
+      const toFocus = getNextFocus(1, internalRef.current)
+      if (toFocus) {
+        // No need to update focusedItem with this since it's the default
+        toFocus.focus()
+        focusedItemRef.current = toFocus
+      }
+    }
+  }, [getNextFocus])
+
+  const handleFocus = (e: ReactFocusEvent<E>) => {
+    blurCountRef.current = 0
     setFocusInside(true)
+
     // When focus lands on the container
     if (e.target === internalRef.current) {
       // Check if there's a previously focused item that is still rendered
-      if (focusedItem && internalRef.current.contains(focusedItem)) {
-        focusedItem.focus()
+      if (
+        focusedItemRef.current &&
+        internalRef.current.contains(focusedItemRef.current)
+      ) {
+        focusedItemRef.current.focus()
       } else {
-        const toFocus = getNextFocus(1, internalRef.current)
-        if (toFocus) {
-          // No need to update focusedItem with this since it's the default
-          toFocus.focus()
-        }
+        // Otherwise focus the first item
+        placeInitialFocus()
       }
     }
   }
 
+  const blurCountRef = useRef(0)
   const handleBlur = () => {
     setFocusInside(false)
   }
+
+  useEffect(() => {
+    const element = internalRef.current
+
+    // Create an observer to check if the focused element is removed
+    const observer = new MutationObserver((mutationsList) => {
+      if (checkFocusedItemRemoved(mutationsList, focusedItemRef.current)) {
+        // If it was, start focus back at the beginning
+        placeInitialFocus()
+      }
+    })
+
+    if (focusInside && element) {
+      // Observe the descendants as well as direct children
+      observer.observe(element, { childList: true, subtree: true })
+    }
+    return () => {
+      observer.disconnect()
+    }
+  }, [focusInside, placeInitialFocus])
 
   return {
     onBlur: useWrapEvent(handleBlur, onBlur),

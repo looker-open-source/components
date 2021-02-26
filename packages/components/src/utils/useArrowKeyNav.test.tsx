@@ -24,19 +24,18 @@
 
  */
 
-import { render, screen } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import React from 'react'
+import React, { FC, useState } from 'react'
 import { useArrowKeyNav, UseArrowKeyNavProps } from './useArrowKeyNav'
 
-const ArrowKeyNavComponent = ({
-  axis,
-}: {
+const ArrowKeyNavComponent: FC<{
   axis?: UseArrowKeyNavProps<HTMLUListElement>['axis']
-}) => {
+}> = ({ axis, children }) => {
   const navProps = useArrowKeyNav({ axis })
   return (
     <ul {...navProps}>
+      {children}
       <li tabIndex={-1}>first</li>
       <li tabIndex={-1}>second</li>
       <li tabIndex={-1}>third</li>
@@ -151,5 +150,44 @@ describe('useArrowKeyNav', () => {
     // Previous focus item is persisted
     userEvent.tab()
     expect(second).toHaveFocus()
+  })
+
+  test('un-mounting the focused item', async () => {
+    const TestComponent = () => {
+      const [showMore, setShowMore] = useState(false)
+      return (
+        <>
+          <button>before</button>
+          <ArrowKeyNavComponent>
+            {showMore ? (
+              <>
+                <li tabIndex={-1}>more stuff</li>
+                <li tabIndex={-1} onClick={() => setShowMore(false)}>
+                  less
+                </li>
+              </>
+            ) : (
+              <li tabIndex={-1} onClick={() => setShowMore(true)}>
+                more
+              </li>
+            )}
+          </ArrowKeyNavComponent>
+        </>
+      )
+    }
+    render(<TestComponent />)
+    const before = screen.getByText('before')
+    const more = screen.getByText('more')
+
+    userEvent.click(before)
+    userEvent.tab()
+    expect(more).toHaveFocus()
+
+    userEvent.type(more, '{enter}')
+    const moreStuff = screen.getByText('more stuff')
+    await waitFor(() => expect(moreStuff).toHaveFocus())
+
+    userEvent.type(moreStuff, '{arrowdown}')
+    expect(screen.getByText('less')).toHaveFocus()
   })
 })
