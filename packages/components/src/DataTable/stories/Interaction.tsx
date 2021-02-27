@@ -26,18 +26,14 @@
 
 import { Story } from '@storybook/react/types-6-0'
 import React, { useState } from 'react'
-import {
-  DataTable,
-  DataTableProps,
-  BulkActionsConfig,
-  FilterConfig,
-  SelectConfig,
-} from '../'
-import { DataTableAction } from '../Item'
-import { useSelectManager, doDataTableSort } from '../utils'
+import { InputFilters } from '../../Form/Inputs/InputFilters'
 import { filters as defaultFilters } from '../../__mocks__/filters'
 import { columns as mockColumns } from '../../__mocks__/DataTable/columns'
 import { data } from '../../__mocks__/DataTable/data'
+import { DataTable } from '../DataTable'
+import { DataTableProps, BulkActionsConfig, SelectConfig } from '../types'
+import { DataTableAction } from '../Item'
+import { useSelectManager, doDataTableSort } from '../utils'
 import { DataTableColumns } from '../Column'
 import {
   actions,
@@ -46,7 +42,8 @@ import {
   itemsActionPrimary,
 } from './items'
 
-interface DemoProps extends Omit<DataTableProps, 'bulk' | 'select'> {
+interface DemoProps
+  extends Omit<DataTableProps, 'bulk' | 'select' | 'filters'> {
   bulk: boolean
   caption: string
   columns: DataTableColumns
@@ -96,11 +93,6 @@ const Template: Story<DemoProps> = ({
 
   const [listFilters, setListFilters] = useState(defaultFilters)
 
-  const filterConfig: FilterConfig = {
-    filters: listFilters,
-    onFilter: (filters) => setListFilters(filters),
-  }
-
   const onTotalSelectAll = () =>
     setSelections([
       ...allPageItems,
@@ -140,7 +132,14 @@ const Template: Story<DemoProps> = ({
       bulk={bulk ? bulkActionsConfig : undefined}
       caption="DataTable Interactions"
       columns={cheeseColumns}
-      filterConfig={filters ? filterConfig : undefined}
+      filters={
+        filters ? (
+          <InputFilters
+            filters={listFilters}
+            onChange={(f) => setListFilters(f)}
+          />
+        ) : undefined
+      }
       select={select ? selectConfig : undefined}
       onSort={sort ? onSort : undefined}
       {...args}

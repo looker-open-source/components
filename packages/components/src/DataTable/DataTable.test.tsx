@@ -27,17 +27,15 @@
 import React, { useState } from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { fireEvent, screen } from '@testing-library/react'
+import { IconButton } from '../Button'
+import { FieldFilter, InputFilters } from '../Form'
 import { Link } from '../Link'
-import { IconButton } from '../Button/IconButton'
-
-import { FieldFilter } from '../Form/Inputs/InputFilters'
 import {
   DataTable,
   DataTableAction,
   DataTableCell,
   DataTableColumns,
   DataTableItem,
-  FilterConfig,
 } from '.'
 
 export const defaultFilters: FieldFilter[] = [
@@ -843,15 +841,16 @@ describe('DataTable', () => {
   test('filters renders', () => {
     const FilterDataTable = () => {
       const [listFilters, setListFilters] = useState(defaultFilters)
-      const filterConfig: FilterConfig = {
-        filters: listFilters,
-        onFilter: (filters) => setListFilters(filters),
-      }
       return (
         <DataTable
           caption="this is a table's caption"
           columns={columns}
-          filterConfig={filterConfig}
+          filters={
+            <InputFilters
+              filters={listFilters}
+              onChange={(f) => setListFilters(f)}
+            />
+          }
         >
           {items}
         </DataTable>
