@@ -100,8 +100,8 @@ export const ComponentsProvider: FC<ComponentsProviderProps> = ({
 
     if (loadGoogleFonts) {
       draft.fontSources = [
-        ...(theme.fontSources || []),
-        { url: googleFontUrl(theme) },
+        ...(draft.fontSources || []),
+        { url: googleFontUrl(draft) },
       ]
     }
 
