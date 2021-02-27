@@ -6,7 +6,7 @@ storybook: true
 `MenuItem` is an list item containing a button for triggering actions from with in a [`Menu`](menu) or [`MenuList`](menulist).
 
 For accessibility reasons, if you want your `MenuItem` to link somewhere then you can use the `itemRole` prop to identify it as a link.
-**Note:** If using the props `itemRole` don't use the prop `disabled` As it is bad-form and defeats the purpose.
+**Note:** If using the props `itemRole` don't use the prop `disabled` as it is bad-form and defeats the purpose.
 
 An icon can optionally be assigned to each item via the `icon` property.
 
@@ -42,19 +42,19 @@ Use the `detail` and/or `description` prop to provide extra explanatory informat
     Pizza
   </MenuItem>
 </MenuList>
- <Divider />
-  <MenuList>
-    <MenuItem description="this is the description"icon="Home">Home</MenuItem>
-    <MenuItem
-      detail="⌘⇧↵"
-      href="https://google.com"
-      itemRole="link"
-      icon="Public"
-      target="_blank"
-    >
-      Away
-    </MenuItem>
-  </MenuList>
+<Divider />
+<MenuList>
+  <MenuItem description="this is the description"icon="Home">Home</MenuItem>
+  <MenuItem
+    detail="⌘⇧↵"
+    href="https://google.com"
+    itemRole="link"
+    icon="Public"
+    target="_blank"
+  >
+    Away
+  </MenuItem>
+</MenuList>
 ```
 
 ## Tooltip
@@ -102,19 +102,9 @@ To implement a tooltip on a `MenuItem`, wrap the `MenuItem` in a `Tooltip` eleme
 </MenuItem>
 ```
 
-**Note:** If a `MenuItem` does not have an icon, but its sibling(s) does have an icon, the `MenuItem` without an icon will automatically allocate space on the left-hand side to align its text up with its sibling(s). This behavior applies to the `MenuItem` children of `MenuList` and `MenuGroup` elements.
-
-```jsx
-<MenuList>
-  <MenuItem icon="LogoRings">Cheddar</MenuItem>
-  <MenuItem>Gouda</MenuItem>
-  <MenuItem icon="ChartPie">Swiss</MenuItem>
-</MenuList>
-```
-
 ## Disabled
 
-Use the `disabled` to indicate an option that is not currently available.
+Use the `disabled` prop to indicate an option that is not currently available.
 
 ```jsx
 <MenuItem icon="Beaker" disabled>Disabled</MenuItem>
