@@ -178,9 +178,9 @@ const stickyColumns = css<TableProps>`
 `
 
 export const Table = styled(TableLayout)`
+  border-collapse: initial;
   border-spacing: 0;
   font-size: ${({ theme }) => theme.fontSizes.small};
-  height: initial;
   line-height: 1;
   width: 100%;
 
@@ -207,6 +207,7 @@ export const Table = styled(TableLayout)`
       td,
       th {
         ${stickyColumns}
+        height: initial;
       }
     }
   }

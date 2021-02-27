@@ -59,7 +59,7 @@ export function useMouseDragPosition(
     updateMousePos(e)
   }
 
-  const handleMove = throttle(updateMousePos, 50)
+  const handleMove = throttle(updateMousePos, 100)
 
   const handleEnd = () => {
     requestAnimationFrame(() => {
@@ -94,5 +94,5 @@ export function useMouseDragPosition(
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isMouseDown, targetRef])
 
-  return { isMouseDown, mousePos: mousePos }
+  return { isMouseDown, mousePos }
 }

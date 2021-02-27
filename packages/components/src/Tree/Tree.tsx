@@ -25,10 +25,16 @@
  */
 
 import styled from 'styled-components'
-import React, { FC, KeyboardEvent, MouseEvent, useContext, useRef } from 'react'
+import React, {
+  FC,
+  KeyboardEvent,
+  MouseEvent,
+  useContext,
+  useRef,
+  useState,
+} from 'react'
 import { Accordion, AccordionContent, AccordionDisclosure } from '../Accordion'
-import { useHovered } from '../utils/useHovered'
-import { undefinedCoalesce } from '../utils'
+import { undefinedCoalesce, useWrapEvent } from '../utils'
 import { List } from '../List'
 import { listItemDimensions, getDetailOptions } from '../List/utils'
 import { TreeContext } from './TreeContext'
@@ -51,13 +57,14 @@ const TreeLayout: FC<TreeProps> = ({
   label: propsLabel,
   onClick,
   onKeyUp,
+  onMouseEnter,
+  onMouseLeave,
   selected,
   truncate,
   ...restProps
 }) => {
-  const disclosureRef = useRef<HTMLDivElement>(null)
   const detailRef = useRef<HTMLDivElement>(null)
-  const [isHovered] = useHovered(disclosureRef)
+  const [hovered, setHovered] = useState(false)
 
   const treeContext = useContext(TreeContext)
   const hasBorder = undefinedCoalesce([propsBorder, treeContext.border])
@@ -89,6 +96,9 @@ const TreeLayout: FC<TreeProps> = ({
       event.stopPropagation()
     }
   }
+
+  const handleMouseEnter = useWrapEvent(() => setHovered(true), onMouseEnter)
+  const handleMouseLeave = useWrapEvent(() => setHovered(false), onMouseLeave)
 
   const detail = {
     content: (
@@ -122,7 +132,12 @@ const TreeLayout: FC<TreeProps> = ({
   const indicatorColor = disabled ? 'text1' : color
   const innerAccordion = (
     <Accordion {...indicatorDefaults} {...restProps} indicatorSize={iconSize}>
-      <AccordionDisclosure color={indicatorColor} ref={disclosureRef} py="none">
+      <AccordionDisclosure
+        color={indicatorColor}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        py="none"
+      >
         {label}
       </AccordionDisclosure>
       <AccordionContent>
@@ -147,9 +162,9 @@ const TreeLayout: FC<TreeProps> = ({
         depth={depth}
         disabled={disabled}
         dividers={dividers}
-        hovered={isHovered}
-        keyColor={useKeyColor}
+        hovered={hovered}
         indicatorSize={iconSize}
+        keyColor={useKeyColor}
         selected={selected}
       >
         {innerAccordion}

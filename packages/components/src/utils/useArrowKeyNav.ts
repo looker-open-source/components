@@ -24,7 +24,16 @@
 
  */
 
-import { FocusEvent, KeyboardEvent, Ref, useRef, useState } from 'react'
+import {
+  FocusEvent,
+  KeyboardEvent,
+  Ref,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react'
+import { checkElementRemoved } from './checkElementRemoved'
 import { getNextFocus as getNextFocusDefault } from './getNextFocus'
 import { useForkedRef } from './useForkedRef'
 import { useWrapEvent } from './useWrapEvent'
@@ -74,7 +83,7 @@ export const useArrowKeyNav = <E extends HTMLElement = HTMLElement>({
   onKeyDown,
 }: UseArrowKeyNavProps<E>) => {
   const internalRef = useRef<E>(null)
-  const [focusedItem, setFocusedItem] = useState<HTMLElement | null>(null)
+  const focusedItemRef = useRef<HTMLElement>()
   const [focusInside, setFocusInside] = useState(false)
 
   const handleArrowKey = (
@@ -91,7 +100,6 @@ export const useArrowKeyNav = <E extends HTMLElement = HTMLElement>({
       if (newFocusedItem) {
         e.preventDefault()
         newFocusedItem.focus()
-        setFocusedItem(newFocusedItem)
       }
     }
   }
@@ -113,26 +121,58 @@ export const useArrowKeyNav = <E extends HTMLElement = HTMLElement>({
     }
   }
 
+  const placeInitialFocus = useCallback(() => {
+    if (internalRef.current) {
+      const toFocus = getNextFocus(1, internalRef.current)
+      if (toFocus) {
+        toFocus.focus()
+      }
+    }
+  }, [getNextFocus])
+
   const handleFocus = (e: FocusEvent<E>) => {
     setFocusInside(true)
+
     // When focus lands on the container
     if (e.target === internalRef.current) {
       // Check if there's a previously focused item that is still rendered
-      if (focusedItem && internalRef.current.contains(focusedItem)) {
-        focusedItem.focus()
+      if (
+        focusedItemRef.current &&
+        internalRef.current.contains(focusedItemRef.current)
+      ) {
+        focusedItemRef.current.focus()
       } else {
-        const toFocus = getNextFocus(1, internalRef.current)
-        if (toFocus) {
-          // No need to update focusedItem with this since it's the default
-          toFocus.focus()
-        }
+        // Otherwise focus the first item
+        placeInitialFocus()
       }
+    } else {
+      focusedItemRef.current = e.target
     }
   }
 
   const handleBlur = () => {
     setFocusInside(false)
   }
+
+  useEffect(() => {
+    const element = internalRef.current
+
+    // Create an observer to check if the focused element is removed
+    const observer = new MutationObserver((mutationsList) => {
+      if (checkElementRemoved(mutationsList, focusedItemRef.current)) {
+        // If it was, start focus back at the beginning
+        placeInitialFocus()
+      }
+    })
+
+    if (focusInside && element) {
+      // Observe the descendants as well as direct children
+      observer.observe(element, { childList: true, subtree: true })
+    }
+    return () => {
+      observer.disconnect()
+    }
+  }, [focusInside, placeInitialFocus])
 
   return {
     onBlur: useWrapEvent(handleBlur, onBlur),

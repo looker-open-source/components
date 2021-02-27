@@ -24,4 +24,6 @@
 
  */
 export * from './Calendar'
+export * from './formatMonthTitle'
+export * from './types'
 export type { CalendarSize } from './calendar-size'

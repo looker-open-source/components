@@ -24,60 +24,23 @@
 
  */
 
-import {
-  SizeLarge,
-  SizeMedium,
-  SizeSmall,
-  FontSizes,
-} from '@looker/design-tokens'
-import { variant } from 'styled-system'
-
-export type SliderSizes = SizeSmall | SizeMedium | SizeLarge
-
-export interface SliderSizeProps {
-  /**
-   * Defines the size of the slider.
-   * @default "medium"
-   */
-  size?: SliderSizes
-}
-
-interface SliderSizeMap {
-  prop: 'size'
-  variants: {
-    [key in SliderSizes]: {
-      knobSize: number
-      trackHeight: number
-      fontSize: FontSizes
-      valueSpacing: string
+/**
+ * Checks a list of mutations against an element
+ * and returns true if it was removed
+ * @param mutationsList the list of mutations from a MutationObserver
+ * @param element
+ */
+export const checkElementRemoved = (
+  mutationsList: MutationRecord[],
+  element?: HTMLElement
+) => {
+  if (!element) return false
+  return mutationsList.some(({ type, removedNodes }) => {
+    if (type === 'childList' && removedNodes.length > 0) {
+      return Array.from(removedNodes).some((node) => {
+        return node.contains(element)
+      })
     }
-  }
+    return false
+  })
 }
-
-/* eslint-disable sort-keys-fix/sort-keys-fix */
-const sliderSizeMap: SliderSizeMap = {
-  prop: 'size',
-  variants: {
-    small: {
-      knobSize: 12,
-      trackHeight: 3,
-      fontSize: 'xxsmall',
-      valueSpacing: '-0.75rem',
-    },
-    medium: {
-      knobSize: 16,
-      trackHeight: 4,
-      fontSize: 'xsmall',
-      valueSpacing: '-0.85rem',
-    },
-    large: {
-      knobSize: 18,
-      trackHeight: 6,
-      fontSize: 'small',
-      valueSpacing: '-1rem',
-    },
-  },
-}
-/* eslint-enable sort-keys */
-
-export const sliderSize = variant(sliderSizeMap)

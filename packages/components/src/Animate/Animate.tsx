@@ -62,7 +62,6 @@ export const Animate = styled((props: AnimateProps) => (
 `
 
 export const FadeIn = styled(Animate)`
-  animation-fill-mode: forwards;
+  animation-fill-mode: both;
   animation-name: ${fadeIn};
-  opacity: 0;
 `

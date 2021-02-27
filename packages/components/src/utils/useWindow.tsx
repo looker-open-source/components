@@ -174,7 +174,7 @@ export const useWindow = <E extends HTMLElement = HTMLElement>({
   }, [childHeight, childArray])
 
   const [containerElement, callbackRef] = useCallbackRef<E>(ref)
-  const { height } = useMeasuredElement(enabled ? containerElement : null)
+  const [{ height }] = useMeasuredElement(enabled ? containerElement : null)
   const scrollPosition = useScrollPosition(enabled ? containerElement : null)
 
   // For variable childHeight

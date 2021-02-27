@@ -113,13 +113,15 @@ test('value can be controlled externally', () => {
 test('user can change the selected date via text input field', () => {
   renderWithTheme(<ControlledInputDate />)
 
-  expect(screen.getByText('June 2019')).toBeInTheDocument()
+  expect(screen.getAllByText('June 2019')).toHaveLength(2)
 
   const TextInput = screen.getByDisplayValue('06/03/2019')
   fireEvent.change(TextInput, { target: { value: '01/01/2012' } })
   fireEvent.blur(TextInput) // update value on blur
 
-  expect(screen.getByText('January 2012')).toBeInTheDocument()
+  expect(
+    screen.getByText('January 2012', { selector: 'h5' })
+  ).toBeInTheDocument()
 })
 
 test('user can clear the selected date by deleting text input content', () => {
@@ -141,9 +143,9 @@ test('navigates from month to month', () => {
     value: new Date('June 3, 2019'),
   }
   renderWithTheme(<InputDate {...mockProps} />)
-  expect(screen.getByText('June 2019')).toBeInTheDocument()
+  expect(screen.getAllByText('June 2019')).toHaveLength(2)
   fireEvent.click(screen.getByText('Previous Month'))
-  expect(screen.getByText('May 2019')).toBeInTheDocument()
+  expect(screen.getAllByText('May 2019')).toHaveLength(2)
 })
 
 test('fills TextInput with defaultValue', () => {
@@ -198,7 +200,9 @@ test('localizes calendar', () => {
     <InputDate localization={localizationProps} />
   )
 
-  expect(screen.getByText('Febbraio 2020')).toBeInTheDocument()
+  expect(
+    screen.getByText('Febbraio 2020', { selector: 'h5' })
+  ).toBeInTheDocument()
   expect(
     (container.querySelector('.DayPicker-WeekdaysRow') as HTMLElement)
       .textContent

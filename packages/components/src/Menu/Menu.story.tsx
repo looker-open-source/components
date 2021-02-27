@@ -425,11 +425,6 @@ export const LongMenus = () => {
   }, [longLabels])
   return (
     <SpaceVertical align="start" p="xlarge">
-      <FieldToggleSwitch
-        on={value}
-        label="Enable windowing"
-        onChange={toggle}
-      />
       <Space>
         <Menu
           content={array95.map((item, i) => (
@@ -453,15 +448,19 @@ export const LongMenus = () => {
         >
           <Button>No windowing (groups)</Button>
         </Menu>
+      </Space>
+      <Space align="start">
         <Menu
+          width={300}
           windowing={!value ? 'none' : undefined}
           content={array3000.map((item, i) => (
             <MenuItem key={i}>{item.label}</MenuItem>
           ))}
         >
-          <Button>Fixed Windowing (3k)</Button>
+          <Button>Windowing (3k)</Button>
         </Menu>
         <Menu
+          width={300}
           windowing={!value ? 'none' : undefined}
           content={array3000.map((item, i) => (
             <MenuItem key={i} description={item.description}>
@@ -469,8 +468,28 @@ export const LongMenus = () => {
             </MenuItem>
           ))}
         >
-          <Button>Fixed Windowing (description)</Button>
+          <Button>Windowing (description)</Button>
         </Menu>
+        <Menu
+          width={300}
+          windowing={!value ? 'none' : undefined}
+          content={groups.map(({ label, items }, index) => [
+            <MenuDivider key={`${label}-${index}-divider`} />,
+            <MenuHeading key={`${label}-${index}-heading`}>
+              {label}
+            </MenuHeading>,
+            ...items.map((item, index2) => (
+              <MenuItem key={`${item.label}-${index2}`}>{item.label}</MenuItem>
+            )),
+          ])}
+        >
+          <Button>Windowing (groups)</Button>
+        </Menu>
+        <FieldToggleSwitch
+          on={value}
+          label="Enable windowing"
+          onChange={toggle}
+        />
         <FieldToggleSwitch
           on={longLabels}
           onChange={toggleLongLabels}

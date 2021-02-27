@@ -35,8 +35,7 @@
     "lodash": "^4.17.20",
     "react-day-picker": "^7.4.8",
     "react-hotkeys-hook": "2.3.1",
-    "react-i18next": "^11.8.5",
-    "react-resize-detector": "^5.2.0",
+    "react-i18next": "11.8.8",
     "resize-observer-polyfill": "^1.5.1",
     "styled-system": "^5.1.5",
     "uuid": "^8.3.2"

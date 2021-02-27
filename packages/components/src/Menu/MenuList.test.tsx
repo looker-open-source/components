@@ -84,6 +84,9 @@ describe('MenuList', () => {
       const height = (totalItems - windowedItems) * defaultItemHeight
       expect(screen.queryByTestId('before')).not.toBeInTheDocument()
       expect(screen.getByTestId('after')).toHaveStyle(`height: ${height}px;`)
+      // Without overflow auto, windowing won't work.
+      // Testing the style here because we can't test rendered height.
+      expect(screen.getByRole('menu')).toHaveStyle('overflow: auto')
     })
   })
 
