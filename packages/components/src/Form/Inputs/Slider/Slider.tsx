@@ -98,7 +98,7 @@ const SliderInternal = forwardRef(
 
     const internalChangeHandler = (event: SyntheticEvent<HTMLInputElement>) => {
       const evtValue = (event.target as HTMLInputElement).value
-      setInternalValue(parseInt(evtValue))
+      setInternalValue(parseFloat(evtValue))
     }
 
     const handleChange = isFunction(onChange) ? onChange : internalChangeHandler

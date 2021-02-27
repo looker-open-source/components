@@ -49,6 +49,9 @@ Disabled.args = { ...Basic.args, disabled: true }
 export const Steps = Template.bind({})
 Steps.args = { label: 'Step', max: 1000, min: 100, step: 100 }
 
+export const FloatingSteps = Template.bind({})
+FloatingSteps.args = { label: 'Step', max: 3, min: 0, step: 0.5, value: 1.5 }
+
 const handleEvent = (cb: Dispatch<SetStateAction<number>>) => {
   return (event: SyntheticEvent<HTMLInputElement>) => {
     const target = event.target as HTMLInputElement

@@ -37,7 +37,9 @@ export default {
 }
 
 const Template: Story<FieldRangeSliderProps> = (args) => (
-  <FieldRangeSlider {...args} />
+  <Space p="xxlarge">
+    <FieldRangeSlider {...args} />
+  </Space>
 )
 
 export const Basic = Template.bind({})
