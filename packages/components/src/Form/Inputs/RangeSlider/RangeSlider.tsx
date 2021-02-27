@@ -162,6 +162,23 @@ const boundValueProp = (min: number, max: number, value?: number[]) => {
   })
 }
 
+const precisionRound = (number: number, precision: number) => {
+  const factor = Math.pow(10, precision)
+  const n = precision < 0 ? number : 0.01 / factor + number
+  return Math.round(n * factor) / factor
+}
+
+const getPrecision = (number: number) => {
+  if (!isFinite(number)) return 0
+  let e = 1
+  let p = 0
+  while (Math.round(number * e) / e !== number) {
+    e *= 10
+    p++
+  }
+  return p
+}
+
 export const InternalRangeSlider = forwardRef(
   (
     {
@@ -193,6 +210,8 @@ export const InternalRangeSlider = forwardRef(
     const readOnly = readOnlyProp || unintentionalReadOnly
     // make sure value array doesn't extend past min/max bounds
     const boundedValue = boundValueProp(min, max, valueProp || defaultValueProp)
+
+    const stepPrecision = getPrecision(step)
 
     /*
      * Internal component state and refs
@@ -232,11 +251,17 @@ export const InternalRangeSlider = forwardRef(
     }
 
     const incrementPoint = (point: number, stepMultiplier = 1) => {
-      return Math.min(point + step * stepMultiplier, max)
+      return Math.min(
+        precisionRound(point + step * stepMultiplier, stepPrecision),
+        max
+      )
     }
 
     const decrementPoint = (point: number, stepMultiplier = 1) => {
-      return Math.max(point - step * stepMultiplier, min)
+      return Math.max(
+        precisionRound(point - step * stepMultiplier, stepPrecision),
+        min
+      )
     }
 
     const handleKeyboardNav = (e: KeyboardEvent) => {
