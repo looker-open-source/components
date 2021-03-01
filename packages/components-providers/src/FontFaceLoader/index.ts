@@ -24,21 +24,4 @@
 
  */
 
-import {
-  createShouldForwardProp,
-  props,
-} from '@styled-system/should-forward-prop'
-
-export const shouldForwardProp = createShouldForwardProp([...props])
-
-export * from './system'
-export * from './theme'
-export * from './GlobalStyle'
-
-// Provided for legacy color implementations
-export { palette } from './legacy'
-
-// Useful external utilities
-export { transitions } from './tokens/transitions'
-export * from './tokens/breakpoints'
-export * from './utils'
+export { FontFaceLoader } from './FontFaceLoader'

@@ -24,8 +24,7 @@
 
  */
 
-import { createGlobalStyle } from 'styled-components'
-import { Theme } from '../theme'
+import { Theme } from '../../theme'
 
 interface GoogleFontSpecification {
   family: string
@@ -77,7 +76,3 @@ export const googleFontUrl = (theme: Theme) => {
 
   return url.toString()
 }
-
-export const GoogleFontsLoader = createGlobalStyle`
-  @import url(${({ theme }) => googleFontUrl(theme)});
-`

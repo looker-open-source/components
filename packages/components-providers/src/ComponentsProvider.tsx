@@ -27,16 +27,18 @@
 import {
   generateTheme,
   GlobalStyle,
-  GoogleFontsLoader,
   IEGlobalStyle,
+  googleFontUrl,
   theme as defaultTheme,
 } from '@looker/design-tokens'
 import React, { FC, useMemo } from 'react'
+import { HelmetProvider } from 'react-helmet-async'
 import { FocusTrapProvider } from './FocusTrap'
 import { ScrollLockProvider } from './ScrollLock'
 import { useI18n, UseI18nProps } from './I18n'
 import { ThemeProvider, ThemeProviderProps } from './ThemeProvider'
 import { ExtendComponentsTheme } from './ExtendComponentsProvider'
+import { FontFaceLoader } from './FontFaceLoader'
 
 export interface ComponentsProviderProps
   extends ThemeProviderProps,
@@ -47,6 +49,11 @@ export interface ComponentsProviderProps
    * @default true
    */
   globalStyle?: boolean
+  /**
+   * Load any font faces specified on theme.fontSources
+   * @default true
+   */
+  loadFontSources?: boolean
   /**
    * Load fonts from the Google Fonts CDN if not already available
    * @default false
@@ -78,6 +85,7 @@ export const ComponentsProvider: FC<ComponentsProviderProps> = ({
   children,
   globalStyle = true,
   ie11Support = false,
+  loadFontSources = true,
   loadGoogleFonts = false,
   locale,
   resources,
@@ -85,19 +93,33 @@ export const ComponentsProvider: FC<ComponentsProviderProps> = ({
   ...props
 }) => {
   const theme = useMemo(() => {
-    return generateTheme(props.theme || defaultTheme, themeCustomizations)
-  }, [props.theme, themeCustomizations])
+    const draft = generateTheme(
+      props.theme || defaultTheme,
+      themeCustomizations
+    )
+
+    if (loadGoogleFonts) {
+      draft.fontSources = [
+        ...(draft.fontSources || []),
+        { url: googleFontUrl(draft) },
+      ]
+    }
+
+    return draft
+  }, [props.theme, loadGoogleFonts, themeCustomizations])
 
   useI18n({ locale, resources })
 
   return (
-    <ThemeProvider {...props} theme={theme}>
-      {globalStyle && <GlobalStyle />}
-      {loadGoogleFonts && <GoogleFontsLoader />}
-      {ie11Support && <IEGlobalStyle />}
-      <FocusTrapProvider>
-        <ScrollLockProvider>{children}</ScrollLockProvider>
-      </FocusTrapProvider>
-    </ThemeProvider>
+    <HelmetProvider>
+      <ThemeProvider {...props} theme={theme}>
+        {globalStyle && <GlobalStyle />}
+        {loadFontSources && <FontFaceLoader />}
+        {ie11Support && <IEGlobalStyle />}
+        <FocusTrapProvider>
+          <ScrollLockProvider>{children}</ScrollLockProvider>
+        </FocusTrapProvider>
+      </ThemeProvider>
+    </HelmetProvider>
   )
 }
