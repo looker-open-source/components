@@ -5827,10 +5827,10 @@ babel-jest@^26.6.3:
     graceful-fs "^4.2.4"
     slash "^3.0.0"
 
-babel-loader-exclude-node-modules-except@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/babel-loader-exclude-node-modules-except/-/babel-loader-exclude-node-modules-except-1.0.3.tgz#eb572bb98868e4551c56a15b8b55bdded2a375fa"
-  integrity sha512-UEHoSzivswrRu3bb7UIVpY0g1kBnZvuU/2oXrRBhggjQOqW2HBCp6FsvuNc8ZupBUh+zClKxw8jxwuqZTSapwQ==
+babel-loader-exclude-node-modules-except@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/babel-loader-exclude-node-modules-except/-/babel-loader-exclude-node-modules-except-1.1.2.tgz#6ba549aed1dcc2eea09e5b06606b0258368f4fb9"
+  integrity sha512-WXp2d5mtOQQz6LPYQi+LvEvcWdzUonL4G7Gj30wcebXRGLGaj44BWa8o5hmOCrwqgA1ZE5TCvokKZzogWIGoJQ==
   dependencies:
     escape-string-regexp "2.0.0"
 
