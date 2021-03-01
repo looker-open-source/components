@@ -54,7 +54,7 @@ Steps.parameters = {
 }
 
 export const Floating = Template.bind({})
-Floating.args = { max: 1.1, min: 0.1, step: 0.1 }
+Floating.args = { max: 3.7, min: 0.1, step: 0.1 }
 
 Floating.parameters = {
   storyshots: { disable: true },

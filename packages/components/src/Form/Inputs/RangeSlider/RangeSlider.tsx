@@ -56,6 +56,7 @@ import {
   usePreviousValue,
 } from '../../../utils'
 import { ValidationType } from '../../ValidationMessage'
+import { getPrecision, precisionRound } from './precisionUtils'
 
 export interface RangeSliderProps
   extends SpaceProps,
@@ -119,10 +120,15 @@ const createNewValue = (
 const roundToStep = (
   min: number,
   max: number,
-  newPoint: number,
-  step: number
+  step: number,
+  newPoint: number
 ) => {
-  const roundedPoint = Math.round((newPoint - min) / step) * step + min
+  const stepPrecision = getPrecision(step)
+
+  const roundedPoint = precisionRound(
+    ((newPoint - min) / step) * step + min,
+    stepPrecision
+  )
   return Math.max(Math.min(roundedPoint, max), min)
 }
 
@@ -143,7 +149,7 @@ const calculatePointValue = (
   const newPoint =
     (mousePosition / containerRect.width) * possibleValueRange + min
 
-  return roundToStep(min, max, newPoint, step)
+  return roundToStep(min, max, step, newPoint)
 }
 
 /*
@@ -223,6 +229,8 @@ export const InternalRangeSlider = forwardRef(
      * ------------------------------------------------------
      */
 
+    const roundSliderValue = partial(roundToStep, min, max, step)
+
     const focusChangedPoint = (newValue: number[], newPoint: number) => {
       // focus/highlight the thumb that moved on click
       const indexToFocus = indexOf(newValue, newPoint) as 0 | 1
@@ -231,13 +239,11 @@ export const InternalRangeSlider = forwardRef(
       refToFocus.current && refToFocus.current.focus()
     }
 
-    const incrementPoint = (point: number, stepMultiplier = 1) => {
-      return Math.min(point + step * stepMultiplier, max)
-    }
+    const incrementPoint = (point: number, stepMultiplier = 1) =>
+      point + step * stepMultiplier
 
-    const decrementPoint = (point: number, stepMultiplier = 1) => {
-      return Math.max(point - step * stepMultiplier, min)
-    }
+    const decrementPoint = (point: number, stepMultiplier = 1) =>
+      point - step * stepMultiplier
 
     const handleKeyboardNav = (e: KeyboardEvent) => {
       if (!disabled && !readOnly) {
@@ -248,7 +254,9 @@ export const InternalRangeSlider = forwardRef(
             e.key === 'ArrowUp' || e.key === 'ArrowRight'
               ? incrementPoint
               : decrementPoint
-          const newPoint = mutationFn(value[focusedThumb], e.shiftKey ? 10 : 1)
+          const newPoint = roundSliderValue(
+            mutationFn(value[focusedThumb], e.shiftKey ? 10 : 1)
+          )
           const newValue = sort([newPoint, value[unfocusedThumb]])
           focusChangedPoint(newValue, newPoint)
           setValue(newValue)
