@@ -24,7 +24,7 @@
 
  */
 
-import React, { FC, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { SpaceVertical } from '../../../Layout'
 import {
@@ -53,7 +53,10 @@ const InputColorRevampLayout: FC<InputColorRevampProps> = ({
 
   // Passed back to the user via a state setter
   const selectedColor = simpleHSVtoFormattedColorString(hsv)
-  setColor(selectedColor)
+
+  useEffect(() => {
+    setColor(selectedColor)
+  }, [selectedColor, setColor])
 
   // Used as the background color for the SaturationAndLightnessPreview and
   // the handle on the HueSlider
