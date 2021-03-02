@@ -29,14 +29,4 @@ export * from './convertRemToPx'
 export * from './omit'
 export * from './pick'
 export * from './helpers'
-export { generateTheme } from './theme'
-export type { ThemeCustomizations } from './theme'
 export * from './typography'
-export { itemSelectedColor } from './color/itemSelectedColor'
-export { pickSpecifiableColors } from './color/pickSpecifiableColors'
-export {
-  intentUIBlend,
-  uiTransparencyBlend,
-  generateIntentShade,
-} from './color/blend'
-export { generatePressed, generateInteractive } from './color/stateful'

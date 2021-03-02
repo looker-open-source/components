@@ -24,29 +24,9 @@
 
  */
 
-import darken from 'polished/lib/color/darken'
 import getLuminance from 'polished/lib/color/getLuminance'
-import rgba from 'polished/lib/color/rgba'
-import lighten from 'polished/lib/color/lighten'
 import mix from 'polished/lib/color/mix'
-
-import { css } from 'styled-components'
-import { BlendColors, SpecifiableColors } from '../../system/color'
-import { tintOrShadeUiColor } from './tintOrShadeUiColor'
 import { scaleMixAmount } from './scaleMixAmount'
-import { mixColors } from './mixColors'
-
-export const textBlends = [45, 65, 78, 88, 95, 99]
-export const uiBlends = [4, 12, 23, 34, 85]
-type UIColorLevels = 1 | 2 | 3 | 4 | 5 | 6
-
-export const blendColorTransparency = (color: string, level: UIColorLevels) =>
-  rgba(color, uiBlends[level - 1] / 100)
-
-export const uiTransparencyBlend = (level: UIColorLevels) =>
-  css`
-    ${({ theme: { colors } }) => blendColorTransparency(colors.text, level)}
-  `
 
 export const mixScaledColors = (
   mixAmount: number,
@@ -77,44 +57,4 @@ export const mixScaledColors = (
     colorLuminance > 0.3 ? mixAmount : scaleMixAmount(mixAmount, adjustment)
 
   return mix(mixAdjustment / 100, foreground, background)
-}
-
-// Blends an intent color with the background
-export const intentUIBlend = (intent: string, level: UIColorLevels) => css`
-  ${({ theme: { colors } }) =>
-    mixScaledColors(uiBlends[level], colors[intent], colors.background)}
-`
-
-// Returns a tint or shade of an intent color, used to for text text that sits on top of a intentUIBlend
-// Adjust amount of lightening or darkening based on colors luminance as well as background colors luminance
-export const generateIntentShade = (color: string) => {
-  const intentColorLuminance = getLuminance(color)
-
-  const adjustAmount =
-    intentColorLuminance > 0.3 ? intentColorLuminance * 0.55 : 0.125
-  return css`
-    ${({ theme: { colors } }) =>
-      getLuminance(colors.background) > 0.5
-        ? darken(adjustAmount, color)
-        : lighten(adjustAmount, color)}
-  `
-}
-
-/* eslint-disable sort-keys-fix/sort-keys-fix */
-
-export const generateBlendColors = (colors: SpecifiableColors): BlendColors => {
-  const { background, text } = colors
-  return {
-    ui1: tintOrShadeUiColor(uiBlends[0], background),
-    ui2: tintOrShadeUiColor(uiBlends[1], background),
-    ui3: tintOrShadeUiColor(uiBlends[2], background),
-    ui4: tintOrShadeUiColor(uiBlends[3], background),
-    ui5: tintOrShadeUiColor(uiBlends[4], background),
-
-    text1: mixColors(textBlends[0], text, background),
-    text2: mixColors(textBlends[1], text, background),
-    text3: mixColors(textBlends[2], text, background),
-    text4: mixColors(textBlends[3], text, background),
-    text5: mixColors(textBlends[4], text, background),
-  }
 }

@@ -24,11 +24,17 @@
 
  */
 
-export * from './breakpoints'
-export * from './easings'
-export * from './radii'
-export * from './shadows'
-export * from './size'
-export * from './space'
-export * from './transitions'
-export * from './typography'
+import { BlendColors, AliasColors } from '../types'
+
+export const generateColorAliases = ({
+  text1,
+  text2,
+  text5,
+}: BlendColors): AliasColors => {
+  return {
+    body: text5,
+    secondary: text2,
+    subdued: text1,
+    title: text5,
+  }
+}

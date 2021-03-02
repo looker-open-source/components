@@ -24,11 +24,25 @@
 
  */
 
-export * from './breakpoints'
-export * from './easings'
-export * from './radii'
-export * from './shadows'
-export * from './size'
-export * from './space'
-export * from './transitions'
-export * from './typography'
+import React from 'react'
+import { screen } from '@testing-library/react'
+import { renderWithTheme } from '@looker/components-test-utils'
+import styled from 'styled-components'
+import { intentUIBlend } from './intentUIBlend'
+
+describe('intentUIBlend', () => {
+  test('default', () => {
+    const Test = styled.p`
+      background: ${intentUIBlend('critical', 1)};
+      background-color: ${intentUIBlend('critical', 2)};
+      color: ${intentUIBlend('critical', 5)};
+    `
+
+    renderWithTheme(<Test>Find me</Test>)
+
+    const test = screen.getByText('Find me')
+    expect(test).toHaveStyleRule('background', '#f8e4e6')
+    expect(test).toHaveStyleRule('background-color', '#f3cbd0')
+    expect(test).toHaveStyleRule('color', 'rgba(NaN,NaN,NaN,NaN)')
+  })
+})

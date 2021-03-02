@@ -24,12 +24,6 @@
 
  */
 
-import { BlendColors } from '../../system/color/blends'
-import { StatefulColors } from '../../system/color/stateful'
-import {
-  generateInteractive,
-  generatePressed,
-} from '../../utils/color/stateful'
 import {
   charcoal000,
   charcoal100,
@@ -50,7 +44,9 @@ import {
   red400,
   red500,
   white,
-} from '../../legacy/palette'
+} from '../legacy/palette'
+import { BlendColors, StatefulColors } from './types'
+import { generateInteractive, generatePressed } from './utils'
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 

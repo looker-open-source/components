@@ -24,17 +24,24 @@
 
  */
 
-import { BlendColors, AliasColors } from '../../system'
+import { generateColorAliases } from './utils/generateColorAliases'
+import { generateDerivativeColors } from './utils/generateDerivativeColors'
+import { fallbackBlends, fallbackStateful } from './fallbacks'
+import { Colors, SpecifiableColors } from './types'
+import { defaultCoreColors, defaultIntentColors } from './defaults'
 
-export const generateColorAliases = ({
-  text1,
-  text2,
-  text5,
-}: BlendColors): AliasColors => {
-  return {
-    body: text5,
-    secondary: text2,
-    subdued: text1,
-    title: text5,
-  }
+const specifiableColors: SpecifiableColors = {
+  ...defaultCoreColors,
+  ...defaultIntentColors,
+}
+
+const derivedColors = generateDerivativeColors(specifiableColors)
+const aliasColors = generateColorAliases(fallbackBlends)
+
+export const colors: Colors = {
+  ...specifiableColors,
+  ...derivedColors,
+  ...fallbackBlends,
+  ...fallbackStateful,
+  ...aliasColors,
 }

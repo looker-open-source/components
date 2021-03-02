@@ -24,11 +24,18 @@
 
  */
 
-export * from './breakpoints'
-export * from './easings'
-export * from './radii'
-export * from './shadows'
-export * from './size'
-export * from './space'
-export * from './transitions'
-export * from './typography'
+import { SpecifiableColors } from '../color'
+import { FontFamilyChoices } from '../system'
+
+export interface ThemeCustomizations {
+  /**
+   * Override default color specifications
+   */
+  colors?: Partial<SpecifiableColors>
+  /**
+   * Override default font-family specifications. Specified fonts will have out built-in
+   * font-stack appended. Built-in font stacks are designed to provide i18n character
+   * support and fallbacks for browsers that can't load web fonts.
+   */
+  fontFamilies?: Partial<FontFamilyChoices>
+}

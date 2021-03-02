@@ -33,15 +33,10 @@ import {
   red500,
   yellow500,
   white,
-} from '../../legacy/palette'
-import { IntentColors } from '../../system/color/specifiable'
-import { Colors, CoreColors, SpecifiableColors } from '../../system'
-import { generateColorAliases } from '../../utils/color/aliases'
-import { generateDerivativeColors } from '../../utils/color/derivatives'
-import { fallbackBlends, fallbackStateful } from './fallbacks'
+} from '../legacy/palette'
+import { CoreColors, IntentColors } from './types'
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
-
 export const defaultCoreColors: CoreColors = {
   background: white,
   text: charcoal800,
@@ -54,31 +49,4 @@ export const defaultIntentColors: IntentColors = {
   warn: yellow500,
   positive: green500,
   inform: blue500,
-}
-
-/**
- * @TODO - Deprecate code below and replace with `generatorColors` function
- * to create a single source-of-truth.
- *
- * export const colors = generateColors({
- *   ...defaultCoreColors,
- *   ...defaultIntentColors,
- * })
- *
- */
-
-const specifiableColors: SpecifiableColors = {
-  ...defaultCoreColors,
-  ...defaultIntentColors,
-}
-
-const derivedColors = generateDerivativeColors(specifiableColors)
-const aliasColors = generateColorAliases(fallbackBlends)
-
-export const colors: Colors = {
-  ...specifiableColors,
-  ...derivedColors,
-  ...fallbackBlends,
-  ...fallbackStateful,
-  ...aliasColors,
 }

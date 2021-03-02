@@ -24,8 +24,22 @@
 
  */
 
-import pick from 'lodash/pick'
-import { Colors, specifiableColors } from '../../system/color'
+import darken from 'polished/lib/color/darken'
+import getLuminance from 'polished/lib/color/getLuminance'
+import lighten from 'polished/lib/color/lighten'
+import { css } from 'styled-components'
 
-export const pickSpecifiableColors = (colors: Colors) =>
-  pick(colors, specifiableColors)
+// Returns a tint or shade of an intent color, used to for text text that sits on top of a intentUIBlend
+// Adjust amount of lightening or darkening based on colors luminance as well as background colors luminance
+export const generateIntentShade = (color: string) => {
+  const intentColorLuminance = getLuminance(color)
+
+  const adjustAmount =
+    intentColorLuminance > 0.3 ? intentColorLuminance * 0.55 : 0.125
+  return css`
+    ${({ theme: { colors } }) =>
+      getLuminance(colors.background) > 0.5
+        ? darken(adjustAmount, color)
+        : lighten(adjustAmount, color)}
+  `
+}

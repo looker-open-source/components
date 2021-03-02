@@ -24,24 +24,25 @@
 
  */
 
-import { colors } from '../../tokens/color'
+import { textBlends, uiBlends } from '../blendPoints'
+import { BlendColors, SpecifiableColors } from '../types'
 import { mixColors } from './mixColors'
-import { textBlends } from './blend'
+import { tintOrShadeUiColor } from './tintOrShadeUiColor'
 
-const { background, text } = colors
+/* eslint-disable sort-keys-fix/sort-keys-fix */
+export const generateBlendColors = (colors: SpecifiableColors): BlendColors => {
+  const { background, text } = colors
+  return {
+    ui1: tintOrShadeUiColor(uiBlends[0], background),
+    ui2: tintOrShadeUiColor(uiBlends[1], background),
+    ui3: tintOrShadeUiColor(uiBlends[2], background),
+    ui4: tintOrShadeUiColor(uiBlends[3], background),
+    ui5: tintOrShadeUiColor(uiBlends[4], background),
 
-describe('mixColors', () => {
-  describe('light (stock theme)', () => {
-    test('text1', () =>
-      expect(mixColors(textBlends[0], text, background)).toEqual('#9da0a3'))
-    test('text5', () =>
-      expect(mixColors(textBlends[4], text, background)).toEqual('#30373d'))
-  })
-
-  describe('dark-mode', () => {
-    test('text1', () =>
-      expect(mixColors(textBlends[0], background, text)).toEqual('#878b8e'))
-    test('text5', () =>
-      expect(mixColors(textBlends[4], background, text)).toEqual('#f4f4f4'))
-  })
-})
+    text1: mixColors(textBlends[0], text, background),
+    text2: mixColors(textBlends[1], text, background),
+    text3: mixColors(textBlends[2], text, background),
+    text4: mixColors(textBlends[3], text, background),
+    text5: mixColors(textBlends[4], text, background),
+  }
+}

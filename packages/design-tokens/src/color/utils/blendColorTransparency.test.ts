@@ -24,11 +24,23 @@
 
  */
 
-export * from './breakpoints'
-export * from './easings'
-export * from './radii'
-export * from './shadows'
-export * from './size'
-export * from './space'
-export * from './transitions'
-export * from './typography'
+import { colors } from '../colors'
+import { blendColorTransparency } from './blendColorTransparency'
+
+const { text } = colors
+
+describe('blendColorTransparency', () => {
+  test('text - 2', () => {
+    expect(blendColorTransparency(text, 2)).toEqual('rgba(38,45,51,0.12)')
+  })
+
+  test('named color - 4', () => {
+    expect(blendColorTransparency('purple', 2)).toEqual('rgba(128,0,128,0.12)')
+  })
+
+  test('rgb color - 5', () => {
+    expect(blendColorTransparency('rgb(0,20,50)', 2)).toEqual(
+      'rgba(0,20,50,0.12)'
+    )
+  })
+})

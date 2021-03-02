@@ -24,31 +24,8 @@
 
  */
 
-import { DerivativeColors, SpecifiableColors } from '../../system'
-import { accentBlendScale, generateInteractive } from './stateful'
-import { mixScaledColors, textBlends } from './blend'
-import { mixColors } from './mixColors'
+import rgba from 'polished/lib/color/rgba'
+import { uiBlends, UIColorLevels } from '../blendPoints'
 
-export const generateDerivativeColors = ({
-  background,
-  inform,
-  link,
-  positive,
-  text,
-  warn,
-}: SpecifiableColors): DerivativeColors => {
-  const accents = {
-    informAccent: mixScaledColors(accentBlendScale, inform, background),
-    positiveAccent: mixScaledColors(accentBlendScale, positive, background),
-    warnAccent: mixScaledColors(accentBlendScale, warn, background),
-  }
-
-  return {
-    field: background,
-    inverse: text,
-    inverseOn: background,
-    linkInteractive: generateInteractive(link),
-    neutral: mixColors(textBlends[1], text, background),
-    ...accents,
-  }
-}
+export const blendColorTransparency = (color: string, level: UIColorLevels) =>
+  rgba(color, uiBlends[level - 1] / 100)

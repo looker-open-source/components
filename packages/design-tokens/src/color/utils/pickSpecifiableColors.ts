@@ -24,11 +24,8 @@
 
  */
 
-export * from './breakpoints'
-export * from './easings'
-export * from './radii'
-export * from './shadows'
-export * from './size'
-export * from './space'
-export * from './transitions'
-export * from './typography'
+import pick from 'lodash/pick'
+import { Colors, specifiableColors } from '../types'
+
+export const pickSpecifiableColors = (colors: Colors) =>
+  pick(colors, specifiableColors)

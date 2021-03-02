@@ -24,30 +24,23 @@
 
  */
 
-import pickBy from 'lodash/pickBy'
-import identity from 'lodash/identity'
-import { Colors, SpecifiableColors } from '../../system'
-import { generateColorAliases } from './aliases'
-import { generateBlendColors } from './blend'
-import { generateDerivativeColors } from './derivatives'
-import { generateStatefulColors } from './stateful'
+import { screen } from '@testing-library/react'
+import { renderWithTheme } from '@looker/components-test-utils'
+import React from 'react'
+import styled from 'styled-components'
+import { generateIntentShade } from './generateIntentShade'
 
-export const generateColors = (
-  themeColors: SpecifiableColors,
-  customColors?: Partial<SpecifiableColors>
-): Colors => {
-  const specifiable = { ...themeColors, ...pickBy(customColors, identity) }
+describe('generateIntentShade', () => {
+  test('default', () => {
+    const Test = styled.p`
+      background: ${generateIntentShade('blue')};
+      color: ${generateIntentShade('lightblue')};
+    `
 
-  const blends = generateBlendColors(specifiable)
-  const derivatives = generateDerivativeColors(specifiable)
-  const statefulColors = generateStatefulColors(specifiable, derivatives)
-  const aliases = generateColorAliases(blends)
+    renderWithTheme(<Test>Find me</Test>)
 
-  return {
-    ...specifiable,
-    ...derivatives,
-    ...blends,
-    ...statefulColors,
-    ...aliases,
-  }
-}
+    const test = screen.getByText('Find me')
+    expect(test).toHaveStyle('background: #0000bf')
+    expect(test).toHaveStyle('color: #348fac')
+  })
+})

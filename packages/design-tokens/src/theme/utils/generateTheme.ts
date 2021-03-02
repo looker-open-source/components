@@ -24,24 +24,11 @@
 
  */
 
+import { generateColors } from '../../color'
 import { Theme } from '../theme'
-import { FontFamilyChoices, SpecifiableColors } from '../system'
-import { defaultFontFallbacks } from '../tokens/typography/font_families'
-import { generateFontFamilies } from './typography/generateFontFamilies'
-import { generateColors } from './color'
-
-export interface ThemeCustomizations {
-  /**
-   * Override default color specifications
-   */
-  colors?: Partial<SpecifiableColors>
-  /**
-   * Override default font-family specifications. Specified fonts will have out built-in
-   * font-stack appended. Built-in font stacks are designed to provide i18n character
-   * support and fallbacks for browsers that can't load web fonts.
-   */
-  fontFamilies?: Partial<FontFamilyChoices>
-}
+import { defaultFontFallbacks } from '../../tokens'
+import { ThemeCustomizations } from '../ThemeCustomizations'
+import { generateFontFamilies } from '../../utils/typography'
 
 export const generateTheme = (
   theme: Theme,
