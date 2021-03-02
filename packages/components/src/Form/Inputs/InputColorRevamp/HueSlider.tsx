@@ -24,36 +24,74 @@
 
  */
 
-import React, { FC, MouseEvent, useRef } from 'react'
+import React, { FC, MouseEvent, useRef, useState } from 'react'
 import styled from 'styled-components'
 import { HsvSimple } from './InputColorRevamp'
-
-interface HueSliderProps {
-  className?: string
-  hsv: HsvSimple
-  setHsv: (hsv: HsvSimple) => void
-}
 
 const sliderHeight = 12
 const sliderWidth = 200
 
+const handleHeight = 20
+const handleWidth = 20
+
+interface HandleProps {
+  color: string
+  position: number
+}
+
+const Handle = styled.div<HandleProps>`
+  background: ${({ color }) => color};
+  border: 2px solid ${({ theme: { colors } }) => colors.background};
+  border-radius: 100%;
+  box-shadow: ${({ theme }) => theme.shadows[1]};
+  cursor: pointer;
+  height: ${handleHeight}px;
+  left: 0;
+  position: relative;
+  /* Vertically centers slider */
+  top: calc(${sliderHeight}px / 2 - ${handleHeight}px / 2);
+  transform: translateX(${({ position = 0 }) => `${position}px`});
+  width: ${handleWidth}px;
+  &:focus {
+    border-width: 5px;
+    outline: none;
+    z-index: 1;
+  }
+`
+
+interface HueSliderProps {
+  className?: string
+  color: string
+  hsv: HsvSimple
+  setHsv: (hsv: HsvSimple) => void
+}
+
 export const HueSliderLayout: FC<HueSliderProps> = ({
   className,
+  color,
   hsv,
   setHsv,
 }) => {
+  const [handlePosition, setHandlePosition] = useState<number>(
+    (hsv.h / 360) * sliderWidth
+  )
   const sliderRef = useRef<HTMLDivElement>(null)
 
   const handleClick = (event: MouseEvent<HTMLDivElement>) => {
     const sliderLeft = sliderRef.current?.getBoundingClientRect().left || 0
     const clickEventX = event.clientX
+    setHandlePosition(clickEventX - handleWidth / 2)
 
     const newHue = ((clickEventX - sliderLeft) / sliderWidth) * 360
 
     setHsv({ ...hsv, h: newHue })
   }
 
-  return <div className={className} onClick={handleClick} ref={sliderRef} />
+  return (
+    <div className={className} onClick={handleClick} ref={sliderRef}>
+      <Handle color={color} position={handlePosition} />
+    </div>
+  )
 }
 
 export const HueSlider = styled(HueSliderLayout)`
