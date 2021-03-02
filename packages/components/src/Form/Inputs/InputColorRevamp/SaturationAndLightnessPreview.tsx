@@ -24,7 +24,8 @@
 
  */
 
-import React, { FC, MouseEvent, useRef } from 'react'
+import { useMouseDragPosition, usePreviousValue } from '@looker/components/src'
+import React, { FC, MouseEvent, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import { HsvSimple } from '../InputColorRevamp'
 
@@ -73,14 +74,15 @@ export const SaturationAndLightnessPreviewLayout: FC<SaturationAndLightnessPrevi
   hsv,
   setHsv,
 }) => {
+  const handleRef = useRef<HTMLDivElement>(null)
   const handleX = hsv.s * previewWidth - handleWidth / 2
   const handleY = previewHeight - hsv.v * previewHeight - handleHeight / 2
 
   const previewRef = useRef<HTMLDivElement>(null)
+  const previewLeft = previewRef.current?.getBoundingClientRect().left || 0
+  const previewTop = previewRef.current?.getBoundingClientRect().top || 0
 
   const handleClick = (event: MouseEvent<HTMLDivElement>) => {
-    const previewLeft = previewRef.current?.getBoundingClientRect().left || 0
-    const previewTop = previewRef.current?.getBoundingClientRect().top || 0
     const clickEventX = event.clientX
     const clickEventY = event.clientY
 
@@ -91,6 +93,42 @@ export const SaturationAndLightnessPreviewLayout: FC<SaturationAndLightnessPrevi
     setHsv({ ...hsv, s: newSaturation, v: newValue })
   }
 
+  const { isMouseDown, mousePos } = useMouseDragPosition(handleRef.current)
+  const previousIsMouseDown = usePreviousValue(isMouseDown)
+
+  const handleHandleDrag = () => {
+    let newSaturation = (mousePos.x - previewLeft) / previewWidth
+
+    if (newSaturation > 1) {
+      newSaturation = 1
+    } else if (newSaturation < 0) {
+      newSaturation = 0
+    }
+
+    let newValue = (previewHeight - (mousePos.y - previewTop)) / previewHeight
+
+    if (newValue > 1) {
+      newValue = 1
+    } else if (newValue < 0) {
+      newValue = 0
+    }
+
+    setHsv({ ...hsv, s: newSaturation, v: newValue })
+  }
+
+  /*
+   * Only fire mouse drag event when mouse moves AFTER initial click
+   */
+  useEffect(
+    () => {
+      if (isMouseDown && previousIsMouseDown) {
+        handleHandleDrag()
+      }
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [mousePos]
+  )
+
   return (
     <div className={className} onClick={handleClick} ref={previewRef}>
       <Handle2d
@@ -99,6 +137,7 @@ export const SaturationAndLightnessPreviewLayout: FC<SaturationAndLightnessPrevi
           // Prevents clicks on handle from triggering color change
           event.stopPropagation()
         }}
+        ref={handleRef}
         x={handleX}
         y={handleY}
       />
