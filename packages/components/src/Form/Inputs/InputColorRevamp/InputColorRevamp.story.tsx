@@ -35,7 +35,7 @@ export default {
 }
 
 export const Basic = () => {
-  const [color, setColor] = useState<string>()
+  const [color, setColor] = useState<string>('#0f0')
 
   return (
     <>
@@ -43,7 +43,7 @@ export const Basic = () => {
         <Paragraph>{`Selected Color: ${color}`}</Paragraph>
         <Box backgroundColor={color} height="small" width="small" />
       </Space>
-      <InputColorRevamp setColor={setColor} />
+      <InputColorRevamp color={color} setColor={setColor} />
     </>
   )
 }

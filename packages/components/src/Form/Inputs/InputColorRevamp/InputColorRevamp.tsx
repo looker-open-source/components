@@ -27,7 +27,10 @@
 import React, { FC, useState } from 'react'
 import styled from 'styled-components'
 import { SpaceVertical } from '../../../Layout'
-import { simpleHSVtoFormattedColorString } from '../InputColor/utils/color_format_utils'
+import {
+  simpleHSVtoFormattedColorString,
+  str2simpleHsv,
+} from '../InputColor/utils/color_format_utils'
 import { HueSlider } from './HueSlider'
 import { SaturationAndLightnessPreview } from './SaturationAndLightnessPreview'
 
@@ -38,11 +41,15 @@ export interface HsvSimple {
 }
 
 export interface InputColorRevampProps {
+  color: string
   setColor: (color: string) => void
 }
 
-const InputColorRevampLayout: FC<InputColorRevampProps> = ({ setColor }) => {
-  const [hsv, setHsv] = useState<HsvSimple>({ h: 0, s: 0, v: 0 })
+const InputColorRevampLayout: FC<InputColorRevampProps> = ({
+  color,
+  setColor,
+}) => {
+  const [hsv, setHsv] = useState<HsvSimple>(str2simpleHsv(color))
 
   // Passed back to the user via a state setter
   const selectedColor = simpleHSVtoFormattedColorString(hsv)
