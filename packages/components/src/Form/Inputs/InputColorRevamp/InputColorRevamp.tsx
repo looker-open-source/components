@@ -24,17 +24,45 @@
 
  */
 
-import React from 'react'
+import React, { FC, useState } from 'react'
 import styled from 'styled-components'
 import { SpaceVertical } from '../../../Layout'
-import { HuePreview } from './HuePreview'
+import { simpleHSVtoFormattedColorString } from '../InputColor/utils/color_format_utils'
+import { HueSlider } from './HueSlider'
 import { SaturationAndLightnessPreview } from './SaturationAndLightnessPreview'
 
-const InputColorRevampLayout = () => {
+export interface HsvSimple {
+  h: number
+  s: number
+  v: number
+}
+
+export interface InputColorRevampProps {
+  setColor: (color: string) => void
+}
+
+const InputColorRevampLayout: FC<InputColorRevampProps> = ({ setColor }) => {
+  const [hsv, setHsv] = useState<HsvSimple>({ h: 0, s: 0, v: 0 })
+
+  // Passed back to the user via a state setter
+  const selectedColor = simpleHSVtoFormattedColorString(hsv)
+  setColor(selectedColor)
+
+  // Used as the background color for SaturationAndLightnessPreview element
+  const previewBackgroundColor = simpleHSVtoFormattedColorString({
+    ...hsv,
+    s: 1,
+    v: 1,
+  })
+
   return (
     <SpaceVertical gap="medium">
-      <SaturationAndLightnessPreview />
-      <HuePreview />
+      <SaturationAndLightnessPreview
+        color={previewBackgroundColor}
+        hsv={hsv}
+        setHsv={setHsv}
+      />
+      <HueSlider hsv={hsv} setHsv={setHsv} />
     </SpaceVertical>
   )
 }

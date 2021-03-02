@@ -24,22 +24,39 @@
 
  */
 
-import React, { FC } from 'react'
+import React, { FC, MouseEvent, useRef } from 'react'
 import styled from 'styled-components'
+import { HsvSimple } from './InputColorRevamp'
 
-interface HuePreviewProps {
+interface HueSliderProps {
   className?: string
+  hsv: HsvSimple
+  setHsv: (hsv: HsvSimple) => void
 }
 
-export const HuePreviewLayout: FC<HuePreviewProps> = ({ className }) => {
-  const handleClick = () => {
-    alert('Color change!')
+const sliderHeight = 12
+const sliderWidth = 200
+
+export const HueSliderLayout: FC<HueSliderProps> = ({
+  className,
+  hsv,
+  setHsv,
+}) => {
+  const sliderRef = useRef<HTMLDivElement>(null)
+
+  const handleClick = (event: MouseEvent<HTMLDivElement>) => {
+    const sliderLeft = sliderRef.current?.getBoundingClientRect().left || 0
+    const clickEventX = event.clientX
+
+    const newHue = ((clickEventX - sliderLeft) / sliderWidth) * 360
+
+    setHsv({ ...hsv, h: newHue })
   }
 
-  return <div className={className} onClick={handleClick} />
+  return <div className={className} onClick={handleClick} ref={sliderRef} />
 }
 
-export const HuePreview = styled(HuePreviewLayout)`
+export const HueSlider = styled(HueSliderLayout)`
   background: linear-gradient(
     90deg,
     #f00 0,
@@ -52,6 +69,6 @@ export const HuePreview = styled(HuePreviewLayout)`
   );
 
   border-radius: ${({ theme }) => theme.radii.large};
-  height: 12px;
-  width: 200px;
+  height: ${sliderHeight}px;
+  width: ${sliderWidth}px;
 `

@@ -24,26 +24,50 @@
 
  */
 
-import React, { FC } from 'react'
+import React, { FC, MouseEvent, useRef } from 'react'
 import styled from 'styled-components'
+import { HsvSimple } from '../InputColorRevamp'
 
 interface SaturationAndLightnessPreviewProps {
   className?: string
+  color: string
+  hsv: HsvSimple
+  setHsv: (hsv: HsvSimple) => void
 }
+
+const previewHeight = 150
+const previewWidth = 200
 
 export const SaturationAndLightnessPreviewLayout: FC<SaturationAndLightnessPreviewProps> = ({
   className,
+  hsv,
+  setHsv,
 }) => {
-  return <div className={className} />
+  const previewRef = useRef<HTMLDivElement>(null)
+
+  const handleClick = (event: MouseEvent<HTMLDivElement>) => {
+    const previewLeft = previewRef.current?.getBoundingClientRect().left || 0
+    const previewTop = previewRef.current?.getBoundingClientRect().top || 0
+    const clickEventX = event.clientX
+    const clickEventY = event.clientY
+
+    const newSaturation = (clickEventX - previewLeft) / previewWidth
+    const newValue =
+      (previewHeight - (clickEventY - previewTop)) / previewHeight
+
+    setHsv({ ...hsv, s: newSaturation, v: newValue })
+  }
+
+  return <div className={className} onClick={handleClick} ref={previewRef} />
 }
 
 export const SaturationAndLightnessPreview = styled(
   SaturationAndLightnessPreviewLayout
 )`
-  background-color: ${({ theme }) => theme.colors.key};
+  background-color: ${({ color }) => color};
   background-image: linear-gradient(0deg, #000, transparent),
     linear-gradient(90deg, #fff, hsla(0, 0%, 100%, 0));
   border-radius: ${({ theme }) => theme.radii.medium};
-  height: 150px;
-  width: 200px;
+  height: ${previewHeight}px;
+  width: ${previewWidth}px;
 `
