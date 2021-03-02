@@ -38,12 +38,12 @@ export const Basic = () => {
   const [color, setColor] = useState<string>('#BFE8AC')
 
   return (
-    <Box padding="medium">
+    <>
       <Space gap="xsmall">
         <Paragraph>{`Selected Color: ${color}`}</Paragraph>
         <Box backgroundColor={color} height="small" width="small" />
       </Space>
       <InputColorRevamp color={color} setColor={setColor} />
-    </Box>
+    </>
   )
 }
