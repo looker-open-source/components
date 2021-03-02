@@ -37,6 +37,7 @@ const handleWidth = 20
 
 interface Handle2dProps {
   color: string
+  isMouseDown: boolean
   x: number
   y: number
 }
@@ -46,7 +47,7 @@ const Handle2d = styled.div<Handle2dProps>`
   border: 2px solid ${({ theme: { colors } }) => colors.background};
   border-radius: 100%;
   box-shadow: ${({ theme }) => theme.shadows[1]};
-  cursor: pointer;
+  cursor: ${({ isMouseDown }) => (isMouseDown ? 'grabbing' : 'pointer')};
   height: ${handleHeight}px;
   left: 0;
   position: relative;
@@ -69,12 +70,12 @@ interface SaturationAndLightnessPreviewProps {
 }
 
 export const SaturationAndLightnessPreviewLayout: FC<SaturationAndLightnessPreviewProps> = ({
+  backgroundColor,
   className,
   color,
   hsv,
   setHsv,
 }) => {
-  const handleRef = useRef<HTMLDivElement>(null)
   const handleX = hsv.s * previewWidth - handleWidth / 2
   const handleY = previewHeight - hsv.v * previewHeight - handleHeight / 2
 
@@ -93,7 +94,7 @@ export const SaturationAndLightnessPreviewLayout: FC<SaturationAndLightnessPrevi
     setHsv({ ...hsv, s: newSaturation, v: newValue })
   }
 
-  const { isMouseDown, mousePos } = useMouseDragPosition(handleRef.current)
+  const { isMouseDown, mousePos } = useMouseDragPosition(previewRef.current)
   const previousIsMouseDown = usePreviousValue(isMouseDown)
 
   const handleHandleDrag = () => {
@@ -130,28 +131,36 @@ export const SaturationAndLightnessPreviewLayout: FC<SaturationAndLightnessPrevi
   )
 
   return (
-    <div className={className} onClick={handleClick} ref={previewRef}>
+    <SaturationAndLightnessPreviewContainer
+      backgroundColor={backgroundColor}
+      className={className}
+      isMouseDown={isMouseDown}
+      onMouseDown={handleClick}
+      ref={previewRef}
+    >
       <Handle2d
         color={color}
-        onClick={(event) => {
-          // Prevents clicks on handle from triggering color change
-          event.stopPropagation()
-        }}
-        ref={handleRef}
+        isMouseDown={isMouseDown}
         x={handleX}
         y={handleY}
       />
-    </div>
+    </SaturationAndLightnessPreviewContainer>
   )
 }
 
-export const SaturationAndLightnessPreview = styled(
-  SaturationAndLightnessPreviewLayout
-)`
+const SaturationAndLightnessPreviewContainer = styled.div<{
+  backgroundColor: string
+  isMouseDown: boolean
+}>`
   background-color: ${({ backgroundColor }) => backgroundColor};
   background-image: linear-gradient(0deg, #000, transparent),
     linear-gradient(90deg, #fff, hsla(0, 0%, 100%, 0));
   border-radius: ${({ theme }) => theme.radii.medium};
+  cursor: ${({ isMouseDown }) => (isMouseDown ? 'grabbing' : 'default')};
   height: ${previewHeight}px;
   width: ${previewWidth}px;
 `
+
+export const SaturationAndLightnessPreview = styled(
+  SaturationAndLightnessPreviewLayout
+)``
