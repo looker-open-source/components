@@ -40,15 +40,16 @@ const handleWidth = 20
 
 interface HandleProps {
   color: string
+  isMouseDown: boolean
   position: number
 }
 
-const Handle = styled.div<HandleProps>`
+const HueHandle = styled.div<HandleProps>`
   background: ${({ color }) => color};
   border: 2px solid ${({ theme: { colors } }) => colors.background};
   border-radius: 100%;
   box-shadow: ${({ theme }) => theme.shadows[1]};
-  cursor: pointer;
+  cursor: ${({ isMouseDown }) => (isMouseDown ? 'grabbing' : 'pointer')};
   height: ${handleHeight}px;
   left: 0;
   position: relative;
@@ -76,7 +77,6 @@ export const HueSliderLayout: FC<HueSliderProps> = ({
   hsv,
   setHsv,
 }) => {
-  const handleRef = useRef<HTMLDivElement>(null)
   const handlePosition = (hsv.h / 360) * sliderWidth - handleWidth / 2
 
   const sliderRef = useRef<HTMLDivElement>(null)
@@ -88,7 +88,7 @@ export const HueSliderLayout: FC<HueSliderProps> = ({
     setHsv({ ...hsv, h: newHue })
   }
 
-  const { isMouseDown, mousePos } = useMouseDragPosition(handleRef.current)
+  const { isMouseDown, mousePos } = useMouseDragPosition(sliderRef.current)
   const previousIsMouseDown = usePreviousValue(isMouseDown)
 
   const handleHandleDrag = () => {
@@ -117,21 +117,22 @@ export const HueSliderLayout: FC<HueSliderProps> = ({
   )
 
   return (
-    <div className={className} onClick={handleSliderClick} ref={sliderRef}>
-      <Handle
+    <HueSliderTrack
+      className={className}
+      isMouseDown={isMouseDown}
+      onMouseDown={handleSliderClick}
+      ref={sliderRef}
+    >
+      <HueHandle
         color={color}
-        onClick={(event) => {
-          // Prevents clicks on handle from triggering color change
-          event.stopPropagation()
-        }}
-        ref={handleRef}
+        isMouseDown={isMouseDown}
         position={handlePosition}
       />
-    </div>
+    </HueSliderTrack>
   )
 }
 
-export const HueSlider = styled(HueSliderLayout)`
+const HueSliderTrack = styled.div<{ isMouseDown: boolean }>`
   background: linear-gradient(
     90deg,
     #f00 0,
@@ -144,6 +145,9 @@ export const HueSlider = styled(HueSliderLayout)`
   );
 
   border-radius: ${({ theme }) => theme.radii.large};
+  cursor: ${({ isMouseDown }) => (isMouseDown ? 'grabbing' : 'default')};
   height: ${sliderHeight}px;
   width: ${sliderWidth}px;
 `
+
+export const HueSlider = styled(HueSliderLayout)``
