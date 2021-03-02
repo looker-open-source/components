@@ -24,8 +24,12 @@
 
  */
 
-import React, { FC, MouseEvent, useRef } from 'react'
+import React, { FC, MouseEvent, useEffect, useRef } from 'react'
 import styled from 'styled-components'
+import {
+  useMouseDragPosition,
+  usePreviousValue,
+} from 'packages/components/src/utils'
 import { HsvSimple } from './InputColorRevamp'
 
 const sliderHeight = 12
@@ -72,27 +76,55 @@ export const HueSliderLayout: FC<HueSliderProps> = ({
   hsv,
   setHsv,
 }) => {
+  const handleRef = useRef<HTMLDivElement>(null)
   const handlePosition = (hsv.h / 360) * sliderWidth - handleWidth / 2
 
   const sliderRef = useRef<HTMLDivElement>(null)
+  const sliderLeft = sliderRef.current?.getBoundingClientRect().left || 0
 
-  const handleClick = (event: MouseEvent<HTMLDivElement>) => {
-    const sliderLeft = sliderRef.current?.getBoundingClientRect().left || 0
+  const handleSliderClick = (event: MouseEvent<HTMLDivElement>) => {
     const clickEventX = event.clientX
-
     const newHue = ((clickEventX - sliderLeft) / sliderWidth) * 360
-
     setHsv({ ...hsv, h: newHue })
   }
 
+  const { isMouseDown, mousePos } = useMouseDragPosition(handleRef.current)
+  const previousIsMouseDown = usePreviousValue(isMouseDown)
+
+  const handleHandleDrag = () => {
+    let newHue = ((mousePos.x - sliderLeft) / sliderWidth) * 360
+
+    // Keep user from sliding off the track
+    if (newHue > 360) {
+      newHue = 360
+    } else if (newHue < 0) {
+      newHue = 0
+    }
+    setHsv({ ...hsv, h: newHue })
+  }
+
+  /*
+   * Only fire mouse drag event when mouse moves AFTER initial click
+   */
+  useEffect(
+    () => {
+      if (isMouseDown && previousIsMouseDown) {
+        handleHandleDrag()
+      }
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [mousePos]
+  )
+
   return (
-    <div className={className} onClick={handleClick} ref={sliderRef}>
+    <div className={className} onClick={handleSliderClick} ref={sliderRef}>
       <Handle
         color={color}
         onClick={(event) => {
           // Prevents clicks on handle from triggering color change
           event.stopPropagation()
         }}
+        ref={handleRef}
         position={handlePosition}
       />
     </div>
