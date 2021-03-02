@@ -31,12 +31,15 @@ import React, {
   cloneElement,
   useEffect,
   useState,
+  RefObject,
 } from 'react'
 import styled from 'styled-components'
 import { ButtonProps, IconButtonProps } from '.'
 
 export interface MultiFunctionButtonProps {
-  alternate: ReactElement<ButtonProps | IconButtonProps>
+  alternate: ReactElement<
+    (ButtonProps | IconButtonProps) & { ref: RefObject<HTMLButtonElement> }
+  >
   children: ReactElement<ButtonProps | IconButtonProps>
   isAlternate?: boolean
 }
