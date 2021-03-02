@@ -24,7 +24,7 @@
 
  */
 
-import React, { FC, MouseEvent, useRef, useState } from 'react'
+import React, { FC, MouseEvent, useRef } from 'react'
 import styled from 'styled-components'
 import { HsvSimple } from './InputColorRevamp'
 
@@ -72,15 +72,13 @@ export const HueSliderLayout: FC<HueSliderProps> = ({
   hsv,
   setHsv,
 }) => {
-  const [handlePosition, setHandlePosition] = useState<number>(
-    (hsv.h / 360) * sliderWidth
-  )
+  const handlePosition = (hsv.h / 360) * sliderWidth - handleWidth / 2
+
   const sliderRef = useRef<HTMLDivElement>(null)
 
   const handleClick = (event: MouseEvent<HTMLDivElement>) => {
     const sliderLeft = sliderRef.current?.getBoundingClientRect().left || 0
     const clickEventX = event.clientX
-    setHandlePosition(clickEventX - handleWidth / 2)
 
     const newHue = ((clickEventX - sliderLeft) / sliderWidth) * 360
 
@@ -89,7 +87,14 @@ export const HueSliderLayout: FC<HueSliderProps> = ({
 
   return (
     <div className={className} onClick={handleClick} ref={sliderRef}>
-      <Handle color={color} position={handlePosition} />
+      <Handle
+        color={color}
+        onClick={(event) => {
+          // Prevents clicks on handle from triggering color change
+          event.stopPropagation()
+        }}
+        position={handlePosition}
+      />
     </div>
   )
 }

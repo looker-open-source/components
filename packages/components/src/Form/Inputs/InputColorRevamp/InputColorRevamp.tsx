@@ -57,7 +57,7 @@ const InputColorRevampLayout: FC<InputColorRevampProps> = ({
 
   // Used as the background color for the SaturationAndLightnessPreview and
   // the handle on the HueSlider
-  const fullSelectedColor = simpleHSVtoFormattedColorString({
+  const fullColor = simpleHSVtoFormattedColorString({
     ...hsv,
     s: 1,
     v: 1,
@@ -66,11 +66,12 @@ const InputColorRevampLayout: FC<InputColorRevampProps> = ({
   return (
     <SpaceVertical gap="medium">
       <SaturationAndLightnessPreview
-        color={fullSelectedColor}
+        backgroundColor={fullColor}
+        color={selectedColor}
         hsv={hsv}
         setHsv={setHsv}
       />
-      <HueSlider color={fullSelectedColor} hsv={hsv} setHsv={setHsv} />
+      <HueSlider color={fullColor} hsv={hsv} setHsv={setHsv} />
     </SpaceVertical>
   )
 }

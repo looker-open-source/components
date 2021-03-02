@@ -35,7 +35,7 @@ export default {
 }
 
 export const Basic = () => {
-  const [color, setColor] = useState<string>('#0f0')
+  const [color, setColor] = useState<string>('#BFE8AC')
 
   return (
     <>
