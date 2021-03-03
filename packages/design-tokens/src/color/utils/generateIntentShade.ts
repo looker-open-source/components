@@ -29,8 +29,8 @@ import getLuminance from 'polished/lib/color/getLuminance'
 import lighten from 'polished/lib/color/lighten'
 import { css } from 'styled-components'
 
-// Returns a tint or shade of an intent color, used to for text text that sits on top of a intentUIBlend
-// Adjust amount of lightening or darkening based on colors luminance as well as background colors luminance
+// Returns a tint or shade of an intent color, used for text that sits on top of an intentUIBlend
+// Adjust amount of lightening or darkening based on color's luminance as well as background color's luminance
 export const generateIntentShade = (color: string) => {
   const intentColorLuminance = getLuminance(color)
 
