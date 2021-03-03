@@ -41,7 +41,6 @@ import { Card, CardContent, CardMedia } from '../Card'
 import { Heading, Paragraph, Span } from '../Text'
 import { Grid, Box } from '../Layout'
 import { IconButton } from '../Button'
-import { Icon } from '../Icon'
 import { InputSearch } from '../Form'
 import { Breakpoint, BreakpointProps } from './Breakpoint'
 

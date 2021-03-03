@@ -38,40 +38,40 @@ exports[`Button Focus: renders outline when tabbing into focus, but not when cli
   opacity: 0.25;
 }
 
-.c0 .StyledIconBase-ea9ulj-0 {
-  height: 1.125rempx;
+.c1 .StyledIconBase-ea9ulj-0 {
+  height: 1.125rem;
   width: 1.125rem;
 }
 
-.c1 {
+.c2 {
   background: #6C43E0;
   border: 1px solid #6C43E0;
   color: #FFFFFF;
 }
 
-.c1:hover,
-.c1:focus,
-.c1.hover {
+.c2:hover,
+.c2:focus,
+.c2.hover {
   background: #7a55e3;
   border-color: #7a55e3;
 }
 
-.c1[aria-expanded='true'],
-.c1:active,
-.c1.active {
+.c2[aria-expanded='true'],
+.c2:active,
+.c2.active {
   background: #5424db;
   border-color: #5424db;
 }
 
-.c1[disabled]:hover,
-.c1[disabled]:active,
-.c1[disabled]:focus {
+.c2[disabled]:hover,
+.c2[disabled]:active,
+.c2[disabled]:focus {
   background-color: #6C43E0;
   border-color: #C1C6CC;
 }
 
 <button
-  class="c0 c1"
+  class="c0 ButtonBase__GenericButtonBase-sc-1bpio6j-1  c1 c2"
 >
   focus
 </button>
@@ -79,7 +79,7 @@ exports[`Button Focus: renders outline when tabbing into focus, but not when cli
 
 exports[`Button Focus: renders outline when tabbing into focus, but not when clicking 2`] = `
 <button
-  class="ButtonBase__ButtonOuter-sc-1bpio6j-0 biSOaq ButtonBase-sc-1bpio6j-1 Button-sc-18euc9m-0 ewCTDA eVQcHb"
+  class="ButtonBase__ButtonOuter-sc-1bpio6j-0 dasaca ButtonBase__GenericButtonBase-sc-1bpio6j-1 ButtonBase-sc-1bpio6j-2 Button-sc-18euc9m-0  LagEh eVQcHb"
 >
   focus
 </button>
