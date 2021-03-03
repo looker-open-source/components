@@ -65,12 +65,20 @@ import { Card } from '../Card'
 import { Dialog, DialogLayout } from '../Dialog'
 import { Divider } from '../Divider'
 import { FieldToggleSwitch } from '../Form'
+import { Icon } from '../Icon'
 import { Flex, Space, SpaceVertical } from '../Layout'
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from '../Tabs'
 import { Heading, Text, Paragraph } from '../Text'
 import { Tooltip } from '../Tooltip'
 import { useToggle } from '../utils'
-import { Menu, MenuDivider, MenuItem, MenuList, MenuHeading } from '.'
+import {
+  Menu,
+  MenuDivider,
+  MenuItem,
+  MenuList,
+  MenuHeading,
+  MenuGroup,
+} from '.'
 
 export default {
   component: Menu,
@@ -86,10 +94,10 @@ const menuItems = (
     >
       Looker
     </MenuItem>
-    <MenuItem description="this is the description" icon={<Validate />}>
+    <MenuItem description="this is the description" icon={<VerifiedUser />}>
       Validate
     </MenuItem>
-    <MenuItem detail="detail" icon={<ChartPie />}>
+    <MenuItem detail="detail" icon={<PieChart />}>
       Pizza
     </MenuItem>
 
@@ -155,7 +163,7 @@ export const IconSpace = () => (
 
     <MenuList iconGutter>
       <MenuHeading>MenuGroup with 3 Items</MenuHeading>
-      <MenuItem description="this is a description" icon="LogoRings">
+      <MenuItem description="this is a description" icon={<LogoRings />}>
         Looker
       </MenuItem>
       <MenuItem icon={<VerifiedUser />}>Validate</MenuItem>
@@ -192,14 +200,14 @@ export const IconSpace = () => (
         Artwork
       </MenuItem>
       <MenuItem
-        icon="Account"
+        icon={<Account />}
         detail={
           <>
             <Text fontSize="small" mr="xsmall" color="secondary">
               Online
             </Text>
             <Icon
-              name="Chat"
+              icon={<Chat />}
               verticalAlign="middle"
               color="positive"
               size={16}
@@ -210,13 +218,13 @@ export const IconSpace = () => (
         Chat
       </MenuItem>
       <MenuItem
-        icon="Account"
+        icon={<Account />}
         detail={
           <>
             <Text fontSize="small" mr="xsmall" color="secondary">
               Offline
             </Text>
-            <Icon name="Chat" verticalAlign="middle" size={16} />
+            <Icon icon={<Chat />} verticalAlign="middle" size={16} />
           </>
         }
       >
@@ -307,7 +315,7 @@ export const RealisticMenus = () => {
 
             <MenuDivider />
 
-            <MenuItem icon="Download" detail="⌥⇧D">
+            <MenuItem icon={<Download />} detail="⌥⇧D">
               Edit dashboard
             </MenuItem>
 
@@ -343,7 +351,7 @@ export const RealisticMenus = () => {
 
             <MenuItem
               description="some description"
-              icon="Download"
+              icon={<Download />}
               detail="⌥⇧D"
             >
               Edit dashboard
@@ -375,7 +383,7 @@ export const RealisticMenus = () => {
               <MenuItem icon={<ExploreOutline />}>Model</MenuItem>
               <MenuItem icon={<TableChart />}>New Item</MenuItem>
               <MenuItem icon={<TableChart />}>View</MenuItem>
-              <MenuItem icon={<IdeFileDashboard />}>Dasbhaord</MenuItem>
+              <MenuItem icon={<IdeFileDashboard />}>Dashboard</MenuItem>
               <MenuItem icon={<IdeFileDocument />}>Document</MenuItem>
               <MenuItem icon={<IdeFileGeneric />}>Generic LookML file</MenuItem>
             </MenuGroup>
@@ -396,7 +404,7 @@ export const RealisticMenus = () => {
             <MenuItem>Model</MenuItem>
             <MenuItem>New Item</MenuItem>
             <MenuItem>View</MenuItem>
-            <MenuItem>Dasbhaord</MenuItem>
+            <MenuItem>Dashboard</MenuItem>
             <MenuItem>Document</MenuItem>
             <MenuItem>Generic LookML file</MenuItem>
           </>
@@ -643,7 +651,7 @@ export const NestedMenu = () => {
       <MenuItem icon={<Create />} onClick={getOnClick('Edit')}>
         Edit
       </MenuItem>
-      <MenuItem icon="Download" onClick={getOnClick('Download')}>
+      <MenuItem icon={<Download />} onClick={getOnClick('Download')}>
         Download
       </MenuItem>
 
@@ -654,7 +662,7 @@ export const NestedMenu = () => {
       <MenuItem onClick={getOnClick('Sub Menu')} nestedMenu={nestedMenu}>
         Sub Menu - with onClick
       </MenuItem>
-      <MenuItem icon="Favorite" onClick={getOnClick('Favorite')}>
+      <MenuItem icon={<Favorite />} onClick={getOnClick('Favorite')}>
         Favorite
       </MenuItem>
       <MenuItem nestedMenu={nestedMenu}>Sub Menu 3</MenuItem>

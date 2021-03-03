@@ -31,8 +31,6 @@ import { fireEvent, screen } from '@testing-library/react'
 import { IconButton } from '../Button'
 import { FieldFilter, InputFilters } from '../Form'
 import { Link } from '../Link'
-import { IconButton } from '../Button/IconButton'
-import { FieldFilter } from '../Form/Inputs/InputFilters'
 import {
   DataTable,
   DataTableAction,

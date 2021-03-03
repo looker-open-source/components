@@ -26,7 +26,7 @@
 
 import React, { FC, Fragment } from 'react'
 import { Story } from '@storybook/react/types-6-0'
-import { Create, Undo } from '@styled-icons/material-outlined'
+import { Create, DateRange, Undo } from '@styled-icons/material-outlined'
 import { Grid } from '../Layout'
 import { DensityRamp } from '../List/types'
 import { MenuHeading, MenuList, MenuItem, MenuItemProps, MenuDivider } from '.'
@@ -98,7 +98,7 @@ LongList.parameters = {
 const DensityExample: FC<{ density?: DensityRamp }> = ({ density }) => (
   <MenuList iconGutter density={density}>
     <MenuHeading>Cheeses of the World</MenuHeading>
-    <MenuItem icon="Calendar" description="Yellow">
+    <MenuItem icon={<DateRange />} description="Yellow">
       Swiss
     </MenuItem>
     <MenuItem selected>Parmesan</MenuItem>

@@ -65,7 +65,7 @@ const DataTableHeaderCellLayout = forwardRef(
 
     const label = titleIcon ? (
       <Tooltip content={title}>
-        <Icon color="ui3" label={title} icon={titleIcon} size="small" />
+        <Icon color="ui3" title={title} icon={titleIcon} size="small" />
       </Tooltip>
     ) : size && sizeInfersTruncate(size) ? (
       <Truncate width="auto">{title}</Truncate>

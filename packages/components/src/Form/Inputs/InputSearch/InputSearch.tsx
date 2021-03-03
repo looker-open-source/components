@@ -183,7 +183,6 @@ const InputSearchLayout = forwardRef(
           autoFocus={autoFocus}
           autoResize={autoResize}
           freeInput
-          iconBefore={hideSearchIcon ? undefined : <Search />}
           clearIconLabel={clearIconLabel}
           value={valueToUse}
           placeholder={placeholder}

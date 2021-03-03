@@ -72,10 +72,9 @@ export interface IconProps
 }
 
 const IconLayout = forwardRef(
-  ({ label, title, icon, ...props }: IconProps, ref: Ref<HTMLDivElement>) => {
+  ({ title, icon, ...props }: IconProps, ref: Ref<HTMLDivElement>) => {
     return (
       <div
-        aria-label={label || undefined}
         aria-hidden={title === undefined && true}
         title={title}
         ref={ref}

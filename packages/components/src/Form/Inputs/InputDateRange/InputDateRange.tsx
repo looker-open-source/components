@@ -40,9 +40,9 @@ import max from 'lodash/max'
 import isEmpty from 'lodash/isEmpty'
 import isEqual from 'lodash/isEqual'
 import values from 'lodash/values'
+import { Error } from '@styled-icons/material'
 import { useTranslation } from 'react-i18next'
 import { VisuallyHidden } from '../../../VisuallyHidden'
-import { Icon } from '../../../Icon'
 import { ValidationType } from '../../ValidationMessage'
 import {
   inputCSS,

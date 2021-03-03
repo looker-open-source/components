@@ -99,7 +99,7 @@ export const itemBuilder = (
                   ? 'warn'
                   : 'positive'
               }
-              label={status}
+              title={status}
               size="xsmall"
             />
           </Tooltip>
