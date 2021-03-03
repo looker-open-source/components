@@ -128,7 +128,7 @@ export const IconSpace = () => (
     <Divider />
 
     <MenuList iconGutter>
-      <MenuHeading>MenuGroup with 3 Items</MenuHeading>
+      <MenuHeading>MenuList with 3 Items</MenuHeading>
       <MenuItem description="this is a description" icon="LogoRings">
         Looker
       </MenuItem>
@@ -141,7 +141,7 @@ export const IconSpace = () => (
     <MenuList iconGutter>
       <MenuItem icon="LogoRings">Looker</MenuItem>
       <MenuItem icon="Validate">Validate</MenuItem>
-      <MenuHeading>MenuGroup with 1 Item</MenuHeading>
+      <MenuHeading>MenuList with 1 Item</MenuHeading>
       <MenuItem>Pizza!</MenuItem>
     </MenuList>
 

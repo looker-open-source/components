@@ -39,7 +39,7 @@ const TestHook = ({ callback, testRef }: TestProps) => {
   return null
 }
 
-describe('MenuGroup Hooks', () => {
+describe('MenuHeading Hooks', () => {
   let isVisible: boolean
 
   const testRef = {

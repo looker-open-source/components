@@ -113,7 +113,6 @@ List,component
 ListItem,component
 LuminositySlider,component
 Menu,component
-MenuGroup,component
 MenuItem,component
 MenuList,component
 MessageBar,component
