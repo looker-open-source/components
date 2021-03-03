@@ -31,6 +31,5 @@
  * colors for example, we need to mix at a higher percentage so the resulting
  * blended color is visually distinguishable.
  */
-export const scaleMixAmount = (amount: number, number: number) => {
-  return amount * number
-}
+export const scaleMixAmount = (amount: number, number: number) =>
+  amount * number

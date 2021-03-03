@@ -33,16 +33,16 @@ import { intentUIBlend } from './intentUIBlend'
 describe('intentUIBlend', () => {
   test('default', () => {
     const Test = styled.p`
-      background: ${intentUIBlend('critical', 1)};
-      background-color: ${intentUIBlend('critical', 2)};
-      color: ${intentUIBlend('critical', 5)};
+      background: ${intentUIBlend('critical', 0)};
+      background-color: ${intentUIBlend('critical', 1)};
+      color: ${intentUIBlend('critical', 4)};
     `
 
     renderWithTheme(<Test>Find me</Test>)
 
     const test = screen.getByText('Find me')
-    expect(test).toHaveStyleRule('background', '#f8e4e6')
-    expect(test).toHaveStyleRule('background-color', '#f3cbd0')
-    expect(test).toHaveStyleRule('color', 'rgba(NaN,NaN,NaN,NaN)')
+    expect(test).toHaveStyleRule('background', '#fcf6f6')
+    expect(test).toHaveStyleRule('background-color', '#f8e4e6')
+    expect(test).toHaveStyleRule('color', '#d34054')
   })
 })

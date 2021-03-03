@@ -26,12 +26,16 @@
 
 import { css } from 'styled-components'
 import { uiBlends, UIColorLevels } from '../blendPoints'
+import { IntentColors } from '../types'
 import { mixScaledColors } from './mixScaledColors'
 
 /**
  * Blends an intent color with the background
  **/
-export const intentUIBlend = (intent: string, level: UIColorLevels) => css`
+export const intentUIBlend = (
+  intent: keyof IntentColors | 'key' | 'neutral',
+  level: UIColorLevels
+) => css`
   ${({ theme: { colors } }) =>
     mixScaledColors(uiBlends[level], colors[intent], colors.background)}
 `

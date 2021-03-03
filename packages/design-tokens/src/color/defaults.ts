@@ -36,17 +36,16 @@ import {
 } from '../legacy/palette'
 import { CoreColors, IntentColors } from './types'
 
-/* eslint-disable sort-keys-fix/sort-keys-fix */
 export const defaultCoreColors: CoreColors = {
   background: white,
-  text: charcoal800,
   key: purple400,
+  text: charcoal800,
 }
 
 export const defaultIntentColors: IntentColors = {
-  link: blue600,
   critical: red500,
-  warn: yellow500,
-  positive: green500,
   inform: blue500,
+  link: blue600,
+  positive: green500,
+  warn: yellow500,
 }
