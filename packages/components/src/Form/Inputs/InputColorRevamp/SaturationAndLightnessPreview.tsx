@@ -42,8 +42,12 @@ interface Handle2dProps {
   y: number
 }
 
-const Handle2d = styled.div<Handle2dProps>`
-  background: ${({ color }) => color};
+const Handle2d = styled.div.attrs<Handle2dProps>(({ color, x, y }) => ({
+  style: {
+    backgroundColor: color,
+    transform: `translate(${x}px,${y}px)`,
+  },
+}))<Handle2dProps>`
   border: 2px solid ${({ theme: { colors } }) => colors.background};
   border-radius: 100%;
   box-shadow: ${({ theme }) => theme.shadows[1]};
@@ -52,13 +56,7 @@ const Handle2d = styled.div<Handle2dProps>`
   left: 0;
   position: relative;
   top: 0;
-  transform: translate(${({ x = 0 }) => `${x}px`}, ${({ y = 0 }) => `${y}px`});
   width: ${handleWidth}px;
-  &:focus {
-    border-width: 5px;
-    outline: none;
-    z-index: 1;
-  }
 `
 
 interface SaturationAndLightnessPreviewProps {
@@ -148,11 +146,13 @@ export const SaturationAndLightnessPreviewLayout: FC<SaturationAndLightnessPrevi
   )
 }
 
-const SaturationAndLightnessPreviewContainer = styled.div<{
+const SaturationAndLightnessPreviewContainer = styled.div.attrs<{
+  backgroundColor: string
+  isMouseDown: boolean
+}>(({ backgroundColor }) => ({ style: { backgroundColor: backgroundColor } }))<{
   backgroundColor: string
   isMouseDown: boolean
 }>`
-  background-color: ${({ backgroundColor }) => backgroundColor};
   background-image: linear-gradient(0deg, #000, transparent),
     linear-gradient(90deg, #fff, hsla(0, 0%, 100%, 0));
   border-radius: ${({ theme }) => theme.radii.medium};

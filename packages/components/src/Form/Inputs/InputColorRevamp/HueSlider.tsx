@@ -44,8 +44,12 @@ interface HandleProps {
   position: number
 }
 
-const HueHandle = styled.div<HandleProps>`
-  background: ${({ color }) => color};
+const HueHandle = styled.div.attrs<HandleProps>(({ color, position }) => ({
+  style: {
+    background: color,
+    transform: `translateX(${position}px)`,
+  },
+}))<HandleProps>`
   border: 2px solid ${({ theme: { colors } }) => colors.background};
   border-radius: 100%;
   box-shadow: ${({ theme }) => theme.shadows[1]};
@@ -55,13 +59,7 @@ const HueHandle = styled.div<HandleProps>`
   position: relative;
   /* Vertically centers slider */
   top: calc(${sliderHeight}px / 2 - ${handleHeight}px / 2);
-  transform: translateX(${({ position = 0 }) => `${position}px`});
   width: ${handleWidth}px;
-  &:focus {
-    border-width: 5px;
-    outline: none;
-    z-index: 1;
-  }
 `
 
 interface HueSliderProps {
