@@ -44,12 +44,16 @@ export interface MultiFunctionButtonProps {
     }
   >
   children: ReactElement<ButtonProps | IconButtonProps>
+  setChildrenRef?: any
+  setAlternateRef?: any
   swap?: boolean
 }
 
 export const MultiFunctionButton: FC<MultiFunctionButtonProps> = ({
   alternate,
   children,
+  setChildrenRef,
+  setAlternateRef,
   swap = false,
 }) => {
   const [containerHeight, setContainerHeight] = useState(0)
@@ -66,7 +70,7 @@ export const MultiFunctionButton: FC<MultiFunctionButtonProps> = ({
       setContainerHeight(Math.max(a.offsetHeight, b.offsetHeight, 0))
       setContainerWidth(Math.max(a.offsetWidth, b.offsetWidth, 0))
     }
-  }, [containerHeight, containerWidth])
+  }, [aRef.current, bRef.current])
 
   // setting focus on the right button as the component moves between them
   useEffect(() => {
@@ -84,8 +88,20 @@ export const MultiFunctionButton: FC<MultiFunctionButtonProps> = ({
       height={containerHeight}
       width={containerWidth}
     >
-      {cloneElement(children, { 'aria-hidden': !!swap, ref: aRef })}
-      {cloneElement(alternate, { 'aria-hidden': !swap, ref: bRef })}
+      {cloneElement(children, {
+        'aria-hidden': !!swap,
+        ref: (node: HTMLButtonElement) => {
+          setChildrenRef?.(node)
+          aRef.current = node
+        },
+      })}
+      {cloneElement(alternate, {
+        'aria-hidden': !swap,
+        ref: (node: HTMLButtonElement) => {
+          setAlternateRef?.(node)
+          bRef.current = node
+        },
+      })}
     </MultiFunctionButtonLayout>
   )
 }

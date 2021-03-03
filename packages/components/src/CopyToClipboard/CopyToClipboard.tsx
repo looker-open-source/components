@@ -57,14 +57,14 @@ export const CopyToClipboard: FC<CopyToClipboardProps> = (props) => {
   const { children = childrenText, content, success = successText } = props
 
   const [copied, setCopied] = useState(false)
-  const buttonRef = useRef<HTMLButtonElement>(null)
+  const [buttonRef, setButtonRef] = useState<HTMLButtonElement>()
 
   const clickCopyButton = () => {
     const textField = document.createElement('textarea')
     textField.value = content
 
-    if (buttonRef.current) {
-      buttonRef.current.appendChild(textField)
+    if (buttonRef) {
+      buttonRef.appendChild(textField)
       textField.select()
       document.execCommand('copy')
       textField.remove()
@@ -78,14 +78,14 @@ export const CopyToClipboard: FC<CopyToClipboardProps> = (props) => {
       <ButtonOutline
         iconBefore="Clipboard"
         onClick={clickCopyButton}
-        ref={buttonRef}
+        ref={setButtonRef}
       >
         {children}
       </ButtonOutline>
     ) : (
       cloneElement(children, {
         onClick: clickCopyButton,
-        ref: buttonRef,
+        ref: setButtonRef,
       })
     )
 
@@ -100,7 +100,11 @@ export const CopyToClipboard: FC<CopyToClipboardProps> = (props) => {
 
   // return copied ? successButton : copyButton
   return (
-    <MultiFunctionButton alternate={successButton} swap={copied}>
+    <MultiFunctionButton
+      alternate={successButton}
+      swap={copied}
+      setChildrenRef={setButtonRef}
+    >
       {copyButton}
     </MultiFunctionButton>
   )
