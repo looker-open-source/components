@@ -84,8 +84,8 @@ export const MultiFunctionButton: FC<MultiFunctionButtonProps> = ({
       height={containerHeight}
       width={containerWidth}
     >
-      {cloneElement(children, { ariaHidden: !!swap, ref: aRef })}
-      {cloneElement(alternate, { ariaHidden: !swap, ref: bRef })}
+      {cloneElement(children, { 'aria-hidden': !!swap, ref: aRef })}
+      {cloneElement(alternate, { 'aria-hidden': !swap, ref: bRef })}
     </MultiFunctionButtonLayout>
   )
 }
