@@ -24,10 +24,11 @@
 
  */
 
-import { screen } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import React from 'react'
-import styled from 'styled-components'
+import styled, { ThemeProvider } from 'styled-components'
+import { theme } from '../../theme'
 import { generateIntentShade } from './generateIntentShade'
 
 describe('generateIntentShade', () => {
@@ -42,5 +43,25 @@ describe('generateIntentShade', () => {
     const test = screen.getByText('Find me')
     expect(test).toHaveStyle('background: #0000bf')
     expect(test).toHaveStyle('color: #348fac')
+  })
+
+  test('light background', () => {
+    const Test = styled.p`
+      background: ${generateIntentShade('blue')};
+      color: ${generateIntentShade('lightblue')};
+    `
+
+    const customTheme = theme
+    theme.colors.background = 'black'
+
+    render(
+      <ThemeProvider theme={customTheme}>
+        <Test>Find me</Test>
+      </ThemeProvider>
+    )
+
+    const test = screen.getByText('Find me')
+    expect(test).toHaveStyle('background: rgb(64, 64, 255);')
+    expect(test).toHaveStyle('color: rgb(255, 255, 255);')
   })
 })
