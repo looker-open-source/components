@@ -38,16 +38,19 @@ import { ButtonProps, IconButtonProps } from '.'
 
 export interface MultiFunctionButtonProps {
   alternate: ReactElement<
-    (ButtonProps | IconButtonProps) & { ref: RefObject<HTMLButtonElement> }
+    (ButtonProps | IconButtonProps) & {
+      ref: RefObject<HTMLButtonElement>
+      ariaHidden: boolean
+    }
   >
   children: ReactElement<ButtonProps | IconButtonProps>
-  isAlternate?: boolean
+  swap?: boolean
 }
 
 export const MultiFunctionButton: FC<MultiFunctionButtonProps> = ({
   alternate,
   children,
-  isAlternate = false,
+  swap = false,
 }) => {
   const [containerHeight, setContainerHeight] = useState(0)
   const [containerWidth, setContainerWidth] = useState(0)
@@ -59,55 +62,54 @@ export const MultiFunctionButton: FC<MultiFunctionButtonProps> = ({
   useEffect(() => {
     const a = aRef.current
     const b = bRef.current
-    if (!a || !b) return
-
-    setContainerHeight(Math.max(a.offsetHeight, b.offsetHeight, 0))
-    setContainerWidth(Math.max(a.offsetWidth, b.offsetWidth, 0))
+    if (a && b) {
+      setContainerHeight(Math.max(a.offsetHeight, b.offsetHeight, 0))
+      setContainerWidth(Math.max(a.offsetWidth, b.offsetWidth, 0))
+    }
   }, [containerHeight, containerWidth])
 
   // setting focus on the right button as the component moves between them
   useEffect(() => {
-    if (isAlternate === true && aRef.current === document.activeElement) {
+    if (swap === true && aRef.current === document.activeElement) {
       bRef.current?.focus()
     }
-    if (isAlternate === false && bRef.current === document.activeElement) {
+    if (swap === false && bRef.current === document.activeElement) {
       aRef.current?.focus()
     }
-  }, [isAlternate])
+  }, [swap])
 
   return (
     <MultiFunctionButtonLayout
-      isAlternate={isAlternate}
+      swap={swap}
       height={containerHeight}
       width={containerWidth}
     >
-      {cloneElement(children, { ref: aRef })}
-      {cloneElement(alternate, { ref: bRef })}
+      {cloneElement(children, { ariaHidden: !!swap, ref: aRef })}
+      {cloneElement(alternate, { ariaHidden: !swap, ref: bRef })}
     </MultiFunctionButtonLayout>
   )
 }
 
 export interface MultiFunctionButtonLayoutProp {
-  isAlternate?: boolean
+  swap?: boolean
   height: number
   width: number
 }
 
 const MultiFunctionButtonLayout = styled.div<MultiFunctionButtonLayoutProp>`
   align-items: center;
-  border: 1px solid ${({ theme }) => theme.colors.key};
   display: flex;
   height: ${({ height }) => height}px;
   justify-content: center;
   width: ${({ width }) => width}px;
 
-  ${({ isAlternate }) =>
-    isAlternate
-      ? `*:first-child {
+  ${({ swap }) =>
+    swap
+      ? `> *:first-child {
         position: absolute;
         top: -100000px;
       }`
-      : `*:last-child {
+      : `> *:last-child {
         position: absolute;
         top: -100000px;
       }`}
