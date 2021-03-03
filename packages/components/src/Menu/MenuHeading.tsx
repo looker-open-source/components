@@ -55,7 +55,7 @@ export const MenuHeading: FC<{ children: string }> = ({ children }) => {
         fontWeight="medium"
         lineHeight="xsmall"
         px={px}
-        py="xsmall"
+        pb="xsmall"
       >
         {children}
       </Heading>

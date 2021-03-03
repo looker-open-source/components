@@ -52,4 +52,5 @@ export const MenuList = styled(MenuListInternal)`
   ${width}
   min-width: 12rem;
   overflow: auto;
+  padding: ${({ theme }) => theme.space.xsmall} 0;
 `
