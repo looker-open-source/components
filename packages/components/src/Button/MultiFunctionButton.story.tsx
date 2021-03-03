@@ -25,50 +25,39 @@
  */
 
 import React, { useState } from 'react'
-import { Story } from '@storybook/react/types-6-0'
-import {
-  MultiFunctionButton,
-  MultiFunctionButtonProps,
-} from './MultiFunctionButton'
-import { ButtonTransparent, Button } from '.'
+import { MultiFunctionButton } from './MultiFunctionButton'
+import { Button, ButtonTransparent, IconButton } from '.'
 
 export default {
   component: MultiFunctionButton,
   title: 'MultiFunctionButton',
 }
 
-const Template: Story<MultiFunctionButtonProps> = (args) => (
-  <MultiFunctionButton {...args} />
-)
-
 export const CopyToClipboard = () => {
   const [change, setChange] = useState(false)
 
-  const handleIsAlternate = () => {
+  const handleSwap = () => {
     setChange(true)
     setTimeout(() => setChange(false), 2500)
   }
+
+  const alternateCopyButton = (
+    <ButtonTransparent iconBefore="Check" size="large">
+      Copied!
+    </ButtonTransparent>
+  )
+
   return (
-    <MultiFunctionButton
-      alternate={<ButtonTransparent size="large">Copied!</ButtonTransparent>}
-      isAlternate={change}
-    >
-      <Button onClick={handleIsAlternate}>Copy to Clipboard</Button>
+    <MultiFunctionButton alternate={alternateCopyButton} swap={change}>
+      <Button onClick={handleSwap}>Copy to Clipboard</Button>
     </MultiFunctionButton>
   )
 }
 
-export const CopyToClipboardAlternate = Template.bind({})
-CopyToClipboardAlternate.args = {
-  alternate: <ButtonTransparent size="large">Copied!</ButtonTransparent>,
-  children: <Button>Copy to Clipboard</Button>,
-  isAlternate: true,
-}
-
-export const Run = () => {
+export const ComponentSize = () => {
   const [change, setChange] = useState(false)
 
-  const handleIsAlternate = () => {
+  const handleSwap = () => {
     setChange(true)
     setTimeout(() => setChange(false), 1500)
   }
@@ -76,23 +65,12 @@ export const Run = () => {
     <MultiFunctionButton
       alternate={
         <Button color="critical" size="large">
-          Stop
+          This is a very large button
         </Button>
       }
-      isAlternate={change}
+      swap={change}
     >
-      <Button onClick={handleIsAlternate}>Run</Button>
+      <IconButton onClick={handleSwap} icon="Plus" label="label" />
     </MultiFunctionButton>
   )
-}
-
-export const RunAlternate = Template.bind({})
-RunAlternate.args = {
-  alternate: (
-    <Button color="critical" size="large">
-      Stop
-    </Button>
-  ),
-  children: <Button>Run</Button>,
-  isAlternate: true,
 }
