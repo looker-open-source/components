@@ -136,7 +136,7 @@ export const MixedState = () => {
             id="fruit-apple"
             name="fruit"
             value="apple"
-            label="🍏"
+            label="Apple"
             onChange={handleAppleChange}
             checked={appleState}
           />
@@ -145,20 +145,20 @@ export const MixedState = () => {
           <FieldCheckbox
             id="fruit-banana"
             name="fruit"
-            value="apple"
+            value="banana"
             onChange={handleBananaChange}
             checked={bananaState}
-            label="🍌"
+            label="Banana"
           />
         </li>
         <li>
           <FieldCheckbox
             id="fruit-avocado"
             name="fruit"
-            value="apple"
+            value="avocado"
             onChange={handleAvocadoChange}
             checked={avocadoState}
-            label="🥑"
+            label="avocado"
           />
         </li>
       </UnorderedList>
