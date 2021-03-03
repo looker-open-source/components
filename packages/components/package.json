@@ -24,6 +24,7 @@
   "dependencies": {
     "@looker/components-providers": "^0.15.1",
     "@looker/design-tokens": "^0.15.1",
+    "@popperjs/core": "^2.6.0",
     "@styled-icons/styled-icon": "^10.6.3",
     "@styled-icons/material": "^10.28.0",
     "@styled-icons/material-outlined": "^10.28.0",

@@ -41,6 +41,7 @@ import { Card, CardContent, CardMedia } from '../Card'
 import { Heading, Paragraph, Span } from '../Text'
 import { Grid, Box } from '../Layout'
 import { IconButton } from '../Button'
+import { Icon } from '../Icon'
 import { InputSearch } from '../Form'
 import { Breakpoint, BreakpointProps } from './Breakpoint'
 
@@ -111,7 +112,9 @@ const Template: Story<BreakpointProps> = () => {
       <Breakpoint show="mobile">
         <NavHeader backgroundColor="ui1" p="small">
           <MobileHeaderGrid>
-            <LookerLogo title="Looker" color="key" />
+            <Box color="key">
+              <LookerLogo width={70} height={20} title="Looker" />
+            </Box>
             <IconButton icon={<Menu />} label="navigation" />
           </MobileHeaderGrid>
         </NavHeader>

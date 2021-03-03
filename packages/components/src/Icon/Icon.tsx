@@ -99,4 +99,5 @@ export const Icon = styled(IconLayout).attrs<IconProps>(
   ${color}
   align-items: center;
   flex-shrink: 0;
+  justify-content: center;
 `

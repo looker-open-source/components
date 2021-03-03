@@ -46,7 +46,7 @@ import { Icon, IconProps } from '../Icon'
 import { useTooltip } from '../Tooltip'
 import { useForkedRef, useWrapEvent } from '../utils'
 import { VisuallyHidden } from '../VisuallyHidden'
-import { ButtonBase, buttonCSS } from './ButtonBase'
+import { GenericButtonBase, buttonCSS } from './ButtonBase'
 import { ButtonBaseProps } from './types'
 import { iconButtonColor } from './iconButtonColor'
 import { iconButtonIconSizeMap, buttonSizeMap } from './size'
@@ -180,7 +180,7 @@ const IconButtonComponent = forwardRef(
     const actualRef = useForkedRef<HTMLButtonElement>(forwardRef, ref)
 
     return (
-      <ButtonBase
+      <GenericButtonBase
         aria-describedby={ariaDescribedBy}
         aria-expanded={ariaExpanded}
         aria-pressed={toggle ? true : undefined}
@@ -199,7 +199,7 @@ const IconButtonComponent = forwardRef(
           aria-hidden={true}
         />
         {tooltip}
-      </ButtonBase>
+      </GenericButtonBase>
     )
   }
 )
@@ -242,7 +242,6 @@ export const IconButton = styled(IconButtonComponent).attrs(
 )<IconButtonProps>`
   ${reset}
   ${space}
-  /* remove padding applied to transparent buttons, so icon size is preserved correctly */
 
   background: none;
   border: none;
@@ -250,8 +249,4 @@ export const IconButton = styled(IconButtonComponent).attrs(
   padding: 0;
 
   ${(props) => props.outline && outlineCSS}
-
-  svg {
-    pointer-events: none;
-  }
 `

@@ -70,18 +70,20 @@ export const buttonCSS = (color: StatefulColor, focusVisible?: boolean) => css`
   ${space}
 `
 
+export const buttonIconSize = css<ButtonProps>`
+  ${StyledIconBase} {
+    height: ${({ theme, size = 'medium' }) =>
+      theme.sizes[buttonIconSizeMap[size]]};
+    width: ${({ theme, size = 'medium' }) =>
+      theme.sizes[buttonIconSizeMap[size]]};
+  }
+`
+
 const ButtonOuter = styled.button
   .withConfig({ shouldForwardProp })
   .attrs(({ color = 'key' }) => ({ color }))<ButtonProps>`
   ${({ color, focusVisible }) => buttonCSS(color, focusVisible)}
   ${({ fullWidth }) => fullWidth && `width: 100%;`}
-
-  ${StyledIconBase} {
-    height: ${({ theme, size = 'medium' }) =>
-      theme.sizes[buttonIconSizeMap[size]]}px;
-    width: ${({ theme, size = 'medium' }) =>
-      theme.sizes[buttonIconSizeMap[size]]};
-  }
 `
 
 const ButtonJSX = forwardRef(
@@ -128,6 +130,9 @@ const ButtonJSX = forwardRef(
 
 ButtonJSX.displayName = 'ButtonJSX'
 
-export const ButtonBase = styled(ButtonJSX)<ButtonProps>`
+export const GenericButtonBase = styled(ButtonJSX)<ButtonProps>``
+
+export const ButtonBase = styled(GenericButtonBase)<ButtonProps>`
   ${buttonIcon}
+  ${buttonIconSize}
 `
