@@ -33,7 +33,7 @@ export interface ThemeCustomizations {
    */
   colors?: Partial<SpecifiableColors>
   /**
-   * Override default font-family specifications. Specified fonts will have out built-in
+   * Override default font-family specifications. Specified fonts will have our built-in
    * font-stack appended. Built-in font stacks are designed to provide i18n character
    * support and fallbacks for browsers that can't load web fonts.
    */
