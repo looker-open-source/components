@@ -111,7 +111,7 @@
     "immer": "8.0.1",
     "node-fetch": "2.6.1",
     "node-forge": "0.10.0",
-    "prismjs": "1.22.0",
+    "prismjs": ">= 1.23.0",
     "react": "16.14.0",
     "react-dom": "16.14.0",
     "socket.io": "2.4.0"
