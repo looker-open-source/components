@@ -24,14 +24,14 @@
 
  */
 
-import { SpecifiableColors } from '../../system'
+import { colors } from '../colors'
+import { defaultCoreColors, defaultIntentColors } from '../defaults'
+import { SpecifiableColors } from '../types'
+import { generateDerivativeColors } from './generateDerivativeColors'
 import {
-  colors,
-  defaultCoreColors,
-  defaultIntentColors,
-} from '../../tokens/color'
-import { generateDerivativeColors } from './derivatives'
-import { generateStatefulColor, generateStatefulColors } from './stateful'
+  generateStatefulColor,
+  generateStatefulColors,
+} from './generateStatefulColors'
 
 const { background, key } = colors
 const specifiableColors: SpecifiableColors = {

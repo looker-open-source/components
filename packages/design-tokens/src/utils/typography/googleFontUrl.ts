@@ -25,7 +25,6 @@
  */
 
 import { Theme } from '../../theme'
-
 interface GoogleFontSpecification {
   family: string
   /**

@@ -24,17 +24,8 @@
 
  */
 
-import { BlendColors, AliasColors } from '../../system'
+import pick from 'lodash/pick'
+import { Colors, specifiableColors } from '../types'
 
-export const generateColorAliases = ({
-  text1,
-  text2,
-  text5,
-}: BlendColors): AliasColors => {
-  return {
-    body: text5,
-    secondary: text2,
-    subdued: text1,
-    title: text5,
-  }
-}
+export const pickSpecifiableColors = (colors: Colors) =>
+  pick(colors, specifiableColors)

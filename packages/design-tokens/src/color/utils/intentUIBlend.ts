@@ -24,39 +24,18 @@
 
  */
 
-import rgba from 'polished/lib/color/rgba'
-import lighten from 'polished/lib/color/lighten'
-import mix from 'polished/lib/color/mix'
 import { css } from 'styled-components'
-import { StatefulColor } from '../color'
+import { uiBlends, UIColorLevels } from '../blendPoints'
+import { IntentColors } from '../types'
+import { mixScaledColors } from './mixScaledColors'
 
-export const buttonShadow = (color: StatefulColor = 'key') =>
-  css`
-    box-shadow: 0 0 0 0.15rem ${({ theme }) => rgba(theme.colors[color], 0.25)};
-  `
-
-export const iconButtonColorDerivation = () => css`
-  color: ${({ theme }) => lighten(0.14, theme.colors.neutral)};
+/**
+ * Blends an intent color with the background
+ **/
+export const intentUIBlend = (
+  intent: keyof IntentColors | 'key' | 'neutral',
+  level: UIColorLevels
+) => css`
+  ${({ theme: { colors } }) =>
+    mixScaledColors(uiBlends[level], colors[intent], colors.background)}
 `
-
-export const tabShadowColor = () => css`
-  box-shadow: 0 0 0 0.15rem ${({ theme }) => rgba(theme.colors.keyFocus, 0.25)};
-`
-
-export const calendarMixColor = () => css`
-  color: ${({ theme: { colors } }) =>
-    mix(0.65, colors.keyAccent, colors.neutralInteractive)};
-`
-
-export const knobShadowColor = () => css`
-  box-shadow: 0 0 0.01rem 0.01rem
-    ${({ theme }) => rgba(theme.colors.keyInteractive, 0.5)};
-`
-
-export const toggleSwitchShadowColor = () => css`
-  box-shadow: 0 0 0 0.2rem
-    ${({ theme }) => rgba(theme.colors.keyInteractive, 0.4)};
-`
-
-export const disabledSwatchColor = (color?: string) =>
-  color && color !== 'transparent' ? rgba(color, 0.85) : undefined

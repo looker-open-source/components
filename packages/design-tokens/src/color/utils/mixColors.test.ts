@@ -24,11 +24,24 @@
 
  */
 
-export * from './breakpoints'
-export * from './easings'
-export * from './radii'
-export * from './shadows'
-export * from './size'
-export * from './space'
-export * from './transitions'
-export * from './typography'
+import { textBlends } from '../blendPoints'
+import { colors } from '../colors'
+import { mixColors } from './mixColors'
+
+const { background, text } = colors
+
+describe('mixColors', () => {
+  describe('light (stock theme)', () => {
+    test('text1', () =>
+      expect(mixColors(textBlends[0], text, background)).toEqual('#9da0a3'))
+    test('text5', () =>
+      expect(mixColors(textBlends[4], text, background)).toEqual('#30373d'))
+  })
+
+  describe('dark-mode', () => {
+    test('text1', () =>
+      expect(mixColors(textBlends[0], background, text)).toEqual('#878b8e'))
+    test('text5', () =>
+      expect(mixColors(textBlends[4], background, text)).toEqual('#f4f4f4'))
+  })
+})

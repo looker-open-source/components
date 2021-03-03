@@ -24,24 +24,9 @@
 
  */
 
-import { colors } from '../../tokens/color'
-import { mixColors } from './mixColors'
-import { textBlends } from './blend'
-
-const { background, text } = colors
-
-describe('mixColors', () => {
-  describe('light (stock theme)', () => {
-    test('text1', () =>
-      expect(mixColors(textBlends[0], text, background)).toEqual('#9da0a3'))
-    test('text5', () =>
-      expect(mixColors(textBlends[4], text, background)).toEqual('#30373d'))
-  })
-
-  describe('dark-mode', () => {
-    test('text1', () =>
-      expect(mixColors(textBlends[0], background, text)).toEqual('#878b8e'))
-    test('text5', () =>
-      expect(mixColors(textBlends[4], background, text)).toEqual('#f4f4f4'))
-  })
-})
+export { generateColors } from './generateColors'
+export { generateIntentShade } from './generateIntentShade'
+export { generatePressed, generateInteractive } from './generateStatefulColors'
+export { intentUIBlend } from './intentUIBlend'
+export { itemSelectedColor } from './itemSelectedColor'
+export { pickSpecifiableColors } from './pickSpecifiableColors'

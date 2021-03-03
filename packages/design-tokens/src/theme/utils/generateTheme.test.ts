@@ -25,7 +25,7 @@
  */
 
 import { theme } from '../theme'
-import { generateTheme } from './theme'
+import { generateTheme } from './generateTheme'
 
 describe('generateTheme', () => {
   test('color', () => {

@@ -25,8 +25,8 @@
  */
 
 import { DefaultTheme, InterpolationValue } from 'styled-components'
+import { Colors, colors } from '../color'
 import {
-  Colors,
   Easings,
   FontFamilyChoices,
   FontSizeRamp,
@@ -38,7 +38,7 @@ import {
   SpaceRamp,
   TransitionRamp,
   FontSources,
-} from './system'
+} from '../system'
 
 /**
  * Theme attributes shouldn't be exported as they should be consumed via `theme` rather than via
@@ -52,12 +52,11 @@ import {
   fontWeights,
   lineHeights,
   radii,
-  colors,
   sizes,
   shadows,
   space,
   transitions,
-} from './tokens'
+} from '../tokens'
 
 export interface Theme {
   breakpoints: string[]

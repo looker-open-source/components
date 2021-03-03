@@ -24,39 +24,22 @@
 
  */
 
-import rgba from 'polished/lib/color/rgba'
+import darken from 'polished/lib/color/darken'
+import getLuminance from 'polished/lib/color/getLuminance'
 import lighten from 'polished/lib/color/lighten'
-import mix from 'polished/lib/color/mix'
 import { css } from 'styled-components'
-import { StatefulColor } from '../color'
 
-export const buttonShadow = (color: StatefulColor = 'key') =>
-  css`
-    box-shadow: 0 0 0 0.15rem ${({ theme }) => rgba(theme.colors[color], 0.25)};
+// Returns a tint or shade of an intent color, used for text that sits on top of an intentUIBlend
+// Adjust amount of lightening or darkening based on color's luminance as well as background color's luminance
+export const generateIntentShade = (color: string) => {
+  const intentColorLuminance = getLuminance(color)
+
+  const adjustAmount =
+    intentColorLuminance > 0.3 ? intentColorLuminance * 0.55 : 0.125
+  return css`
+    ${({ theme: { colors } }) =>
+      getLuminance(colors.background) > 0.5
+        ? darken(adjustAmount, color)
+        : lighten(adjustAmount, color)}
   `
-
-export const iconButtonColorDerivation = () => css`
-  color: ${({ theme }) => lighten(0.14, theme.colors.neutral)};
-`
-
-export const tabShadowColor = () => css`
-  box-shadow: 0 0 0 0.15rem ${({ theme }) => rgba(theme.colors.keyFocus, 0.25)};
-`
-
-export const calendarMixColor = () => css`
-  color: ${({ theme: { colors } }) =>
-    mix(0.65, colors.keyAccent, colors.neutralInteractive)};
-`
-
-export const knobShadowColor = () => css`
-  box-shadow: 0 0 0.01rem 0.01rem
-    ${({ theme }) => rgba(theme.colors.keyInteractive, 0.5)};
-`
-
-export const toggleSwitchShadowColor = () => css`
-  box-shadow: 0 0 0 0.2rem
-    ${({ theme }) => rgba(theme.colors.keyInteractive, 0.4)};
-`
-
-export const disabledSwatchColor = (color?: string) =>
-  color && color !== 'transparent' ? rgba(color, 0.85) : undefined
+}

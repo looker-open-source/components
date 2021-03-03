@@ -24,11 +24,32 @@
 
  */
 
-export * from './breakpoints'
-export * from './easings'
-export * from './radii'
-export * from './shadows'
-export * from './size'
-export * from './space'
-export * from './transitions'
-export * from './typography'
+import { textBlends } from '../blendPoints'
+import { DerivativeColors, SpecifiableColors } from '../types'
+import { accentBlendScale, generateInteractive } from './generateStatefulColors'
+import { mixColors } from './mixColors'
+import { mixScaledColors } from './mixScaledColors'
+
+export const generateDerivativeColors = ({
+  background,
+  inform,
+  link,
+  positive,
+  text,
+  warn,
+}: SpecifiableColors): DerivativeColors => {
+  const accents = {
+    informAccent: mixScaledColors(accentBlendScale, inform, background),
+    positiveAccent: mixScaledColors(accentBlendScale, positive, background),
+    warnAccent: mixScaledColors(accentBlendScale, warn, background),
+  }
+
+  return {
+    field: background,
+    inverse: text,
+    inverseOn: background,
+    linkInteractive: generateInteractive(link),
+    neutral: mixColors(textBlends[1], text, background),
+    ...accents,
+  }
+}

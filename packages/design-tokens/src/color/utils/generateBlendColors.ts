@@ -24,30 +24,25 @@
 
  */
 
-import pickBy from 'lodash/pickBy'
-import identity from 'lodash/identity'
-import { Colors, SpecifiableColors } from '../../system'
-import { generateColorAliases } from './aliases'
-import { generateBlendColors } from './blend'
-import { generateDerivativeColors } from './derivatives'
-import { generateStatefulColors } from './stateful'
+import { textBlends, uiBlends } from '../blendPoints'
+import { BlendColors, SpecifiableColors } from '../types'
+import { mixColors } from './mixColors'
+import { tintOrShadeUiColor } from './tintOrShadeUiColor'
 
-export const generateColors = (
-  themeColors: SpecifiableColors,
-  customColors?: Partial<SpecifiableColors>
-): Colors => {
-  const specifiable = { ...themeColors, ...pickBy(customColors, identity) }
+/* eslint-disable sort-keys-fix/sort-keys-fix */
+export const generateBlendColors = ({
+  background,
+  text,
+}: SpecifiableColors): BlendColors => ({
+  ui1: tintOrShadeUiColor(uiBlends[0], background),
+  ui2: tintOrShadeUiColor(uiBlends[1], background),
+  ui3: tintOrShadeUiColor(uiBlends[2], background),
+  ui4: tintOrShadeUiColor(uiBlends[3], background),
+  ui5: tintOrShadeUiColor(uiBlends[4], background),
 
-  const blends = generateBlendColors(specifiable)
-  const derivatives = generateDerivativeColors(specifiable)
-  const statefulColors = generateStatefulColors(specifiable, derivatives)
-  const aliases = generateColorAliases(blends)
-
-  return {
-    ...specifiable,
-    ...derivatives,
-    ...blends,
-    ...statefulColors,
-    ...aliases,
-  }
-}
+  text1: mixColors(textBlends[0], text, background),
+  text2: mixColors(textBlends[1], text, background),
+  text3: mixColors(textBlends[2], text, background),
+  text4: mixColors(textBlends[3], text, background),
+  text5: mixColors(textBlends[4], text, background),
+})

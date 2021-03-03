@@ -24,24 +24,25 @@
 
  */
 
-import { colors } from '../../tokens/color'
-import { tintOrShadeUiColor } from './tintOrShadeUiColor'
-import { uiBlends } from './blend'
+import React from 'react'
+import { screen } from '@testing-library/react'
+import { renderWithTheme } from '@looker/components-test-utils'
+import styled from 'styled-components'
+import { intentUIBlend } from './intentUIBlend'
 
-const { background, text } = colors
+describe('intentUIBlend', () => {
+  test('default', () => {
+    const Test = styled.p`
+      background: ${intentUIBlend('critical', 0)};
+      background-color: ${intentUIBlend('critical', 1)};
+      color: ${intentUIBlend('critical', 4)};
+    `
 
-describe('tintOrShadeUiColor', () => {
-  describe('light (stock theme)', () => {
-    test('ui1', () =>
-      expect(tintOrShadeUiColor(uiBlends[0], background)).toEqual('#f4f4f4'))
-    test('ui5', () =>
-      expect(tintOrShadeUiColor(uiBlends[4], background)).toEqual('#262626'))
-  })
+    renderWithTheme(<Test>Find me</Test>)
 
-  describe('dark-mode', () => {
-    test('ui1', () =>
-      expect(tintOrShadeUiColor(uiBlends[0], text)).toEqual('#33393f'))
-    test('ui5', () =>
-      expect(tintOrShadeUiColor(uiBlends[4], text)).toEqual('#fff'))
+    const test = screen.getByText('Find me')
+    expect(test).toHaveStyleRule('background', '#fcf6f6')
+    expect(test).toHaveStyleRule('background-color', '#f8e4e6')
+    expect(test).toHaveStyleRule('color', '#d34054')
   })
 })

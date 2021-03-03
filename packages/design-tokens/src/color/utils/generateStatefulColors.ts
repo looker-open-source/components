@@ -31,8 +31,8 @@ import {
   StatefulColorChoices,
   SpecifiableColors,
   DerivativeColors,
-} from '../../system/color'
-import { mixScaledColors } from './blend'
+} from '../types'
+import { mixScaledColors } from './mixScaledColors'
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 

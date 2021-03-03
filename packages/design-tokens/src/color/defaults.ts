@@ -24,8 +24,28 @@
 
  */
 
-import pick from 'lodash/pick'
-import { Colors, specifiableColors } from '../../system/color'
+import {
+  blue500,
+  blue600,
+  charcoal800,
+  green500,
+  purple400,
+  red500,
+  yellow500,
+  white,
+} from '../legacy/palette'
+import { CoreColors, IntentColors } from './types'
 
-export const pickSpecifiableColors = (colors: Colors) =>
-  pick(colors, specifiableColors)
+export const defaultCoreColors: CoreColors = {
+  background: white,
+  key: purple400,
+  text: charcoal800,
+}
+
+export const defaultIntentColors: IntentColors = {
+  critical: red500,
+  inform: blue500,
+  link: blue600,
+  positive: green500,
+  warn: yellow500,
+}
