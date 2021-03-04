@@ -31,7 +31,10 @@ import { listItemDimensions } from '../List'
 import { ListItemContext } from '../List/ListItemContext'
 import { useElementVisibility } from './MenuHeading.hooks'
 
-export const MenuHeading: FC<{ children: string }> = ({ children }) => {
+export const MenuHeading: FC<{ children: string; className?: string }> = ({
+  children,
+  className,
+}) => {
   const labelShimRef: RefObject<any> = useRef()
   const isLabelShimVisible = useElementVisibility(labelShimRef)
 
@@ -39,7 +42,10 @@ export const MenuHeading: FC<{ children: string }> = ({ children }) => {
   const { px } = listItemDimensions(density)
 
   return (
-    <MenuHeadingWrapper renderBoxShadow={!isLabelShimVisible}>
+    <MenuHeadingWrapper
+      className={className}
+      renderBoxShadow={!isLabelShimVisible}
+    >
       {/*
         NOTE: The labelShimRef div is required for box-shadow to appear when the heading
         is sticky to the top of the container. Using IntersectionObserver,

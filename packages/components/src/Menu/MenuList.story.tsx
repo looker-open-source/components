@@ -25,10 +25,12 @@
  */
 
 import React, { FC, Fragment } from 'react'
+import styled from 'styled-components'
 import { Story } from '@storybook/react/types-6-0'
 import { IconNames } from '@looker/icons'
 import { Grid } from '../Layout'
 import { DensityRamp } from '../List/types'
+import { Heading } from '../Text'
 import { MenuHeading, MenuList, MenuItem, MenuItemProps, MenuDivider } from '.'
 
 const groups: { label?: string; items: MenuItemProps[] }[] = [
@@ -117,6 +119,24 @@ export const Density = () => (
     <DensityExample density={-3} />
   </Grid>
 )
+
+const CustomMenuHeading = styled(MenuHeading)`
+  ${Heading} {
+    font-size: ${({ theme: { fontSizes } }) => fontSizes.small};
+    font-weight: ${({ theme: { fontWeights } }) => fontWeights.bold};
+    line-height: ${({ theme: { lineHeights } }) => lineHeights.small};
+    padding-bottom: ${({ theme: { space } }) => space.xxsmall};
+    padding-top: ${({ theme: { space } }) => space.xxsmall};
+  }
+`
+
+export const MenuHeadingOverride = () => (
+  <MenuList>
+    <MenuHeading>Hello World</MenuHeading>
+    <CustomMenuHeading>Custom Hello World</CustomMenuHeading>
+  </MenuList>
+)
+
 export default {
   component: MenuList,
   title: 'MenuList',
