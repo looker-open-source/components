@@ -1,5 +1,16 @@
 #!/bin/bash
 
+localIcons=('Account' 'AnalyticsApp' 'Beaker' 'BrowseTable' 'CalendarDay' 'CalendarHour' 'CalendarMonth' 'CalendarQuarter' 'CalendarWeek' 'ChartArea' 'ChartBar' 'ChartBoxPlot' 'ChartTimeline' 'CheckProgress' 'CollapseAll' 'ColorFill' 'ColorText' 'CrossFilter' 'DashboardFile' 'DashboardGauge' 'DigitalMarketingApp' 'DimensionFill' 'DocumentFile' 'DoubleChevronLeft' 'Download' 'ExpandCollapse' 'Explore' 'FieldString' 'FieldTier' 'FindSelected' 'Flag' 'GitBranch' 'IdeDimension' 'IdeDimensionGroup' 'IdeFileDashboard' 'IdeFileDocument' 'IdeFileGeneric' 'IdeFileLookMl' 'IdeFileManifest' 'IdeFileModel' 'IdeParameter' 'LogoRings' 'LookerLogo' 'Lqa' 'Marketplace' 'ModelFile' 'More' 'Notes' 'Pivot' 'Public' 'QuickStart' 'Reports' 'Return' 'SalesAnalytics' 'SendWebhook' 'SqlRunner' 'UserAttributes' 'ViewFile' 'VisArea' 'VisBar' 'VisColumn' 'VisLine' 'VisMap' 'VisPie' 'VisScatter' 'VisSinglueValue' 'VisTable')
+
+for icon in ${localIcons[@]}; do
+  echo "Update $icon to <$icon /> from @looker/icons"
+  find . -type f -name "*.tsx" -print0 | xargs -0 sed -i -e "s/icon=\"$icon\"/icon={<$icon \/>}/g"
+  find . -type f -name "*.tsx" -print0 | xargs -0 sed -i -e "s/name=\"$icon\"/icon={<$icon \/>}/g"
+  find . -type f -name "*.tsx" -print0 | xargs -0 sed -i -e "s/iconBefore=\"$icon\"/iconBefore={<$icon \/>}/g"
+  find . -type f -name "*.tsx" -print0 | xargs -0 sed -i -e "s/iconAfter=\"$icon\"/iconAfter={<$icon \/>}/g"
+done
+
+
 icons='AddAlerts add_alert
 AddComment add_comment
 AlignCenter format_align_center
@@ -164,4 +175,6 @@ for icon in ${iconSet[@]}; do
   echo "Move $old to <$new />"
   find . -type f -name "*.tsx" -print0 | xargs -0 sed -i -e "s/icon=\"$old\"/icon={<$new \/>}/g"
   find . -type f -name "*.tsx" -print0 | xargs -0 sed -i -e "s/name=\"$old\"/icon={<$new \/>}/g"
+  find . -type f -name "*.tsx" -print0 | xargs -0 sed -i -e "s/iconBefore=\"$old\"/iconBefore={<$new \/>}/g"
+  find . -type f -name "*.tsx" -print0 | xargs -0 sed -i -e "s/iconAfter=\"$old\"/iconAfter={<$new \/>}/g"
 done

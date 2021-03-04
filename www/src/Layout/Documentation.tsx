@@ -114,7 +114,7 @@ const DocumentationLayout = (props: DocQuery) => {
           <Tooltip content="GitHub">
             <ButtonTransparent
               ml="auto"
-              iconAfter="External"
+              iconAfter={<Launch />}
               onClick={() => window.open(`${githubBase}${githubPath}`)}
             >
               View source

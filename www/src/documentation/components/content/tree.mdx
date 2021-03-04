@@ -12,11 +12,11 @@ Use the required `label` prop to set the text of the `Tree` disclosure. `label` 
 Use the `icon` prop to display an icon next to the `Tree` label.
 
 ```jsx
-<Tree label="Orders" icon="Table">
-  <TreeItem icon="FieldNumber">Cost</TreeItem>
-  <TreeItem icon="FieldLocation">Location</TreeItem>
-  <TreeItem icon="FieldTier">Tier</TreeItem>
-  <TreeItem icon="FieldYesNo">Oui ou Non</TreeItem>
+<Tree label="Orders" icon={<TableChart />}>
+  <TreeItem icon={<Tag />}>Cost</TreeItem>
+  <TreeItem icon={<Place />}>Location</TreeItem>
+  <TreeItem icon={<FieldTier />}>Tier</TreeItem>
+  <TreeItem icon={<Check />}>Oui ou Non</TreeItem>
 </Tree>
 ```
 
@@ -25,16 +25,16 @@ Use `detail` to display an element in the negative space of the `Tree` label.
 ```jsx
 <Tree
   label="Orders"
-  icon="Table"
+  icon={<TableChart />}
   detail={
     <IconButton
-      icon="CircleInfo"
+      icon={<Info />}
       label="Get Info"
       onClick={() => alert("You've got info!")}
     />
   }
 >
-  <TreeItem icon="FieldNumber">Cost</TreeItem>
+  <TreeItem icon={<Tag />}>Cost</TreeItem>
 </Tree>
 ```
 
@@ -43,7 +43,7 @@ Use the `branchFontWeight` prop if you'd like your `Tree`'s disclosure text to h
 These is especially useful when you want a nested `Tree` to match its sibling `TreeItem`s
 
 ```jsx
-<Tree label="Orders" icon="Table" defaultOpen>
+<Tree label="Orders" icon={<TableChart />} defaultOpen>
   <Tree branchFontWeight label="Created" defaultOpen>
     <TreeItem>Created Date</TreeItem>
     <TreeItem>Created Month</TreeItem>
@@ -59,7 +59,7 @@ These is especially useful when you want a nested `Tree` to match its sibling `T
 Use the `border` prop if you would like to have vertical lines expand from your `Tree`'s indicator icon when open.
 
 ```jsx
-<Tree border label="Orders" icon="Table" defaultOpen>
+<Tree border label="Orders" icon={<TableChart />} defaultOpen>
   <Tree label="Created" defaultOpen>
     <TreeItem>Created Date</TreeItem>
     <TreeItem>Created Month</TreeItem>
@@ -77,7 +77,7 @@ Use the `disabled` prop to present your `Tree` in a disabled state. Note that us
 
 ```jsx
 <>
-  <Tree selected label="Orders" icon="Table" defaultOpen>
+  <Tree selected label="Orders" icon={<TableChart />} defaultOpen>
     <Tree disabled label="Created" defaultOpen>
       <TreeItem selected>Created Date</TreeItem>
       <TreeItem disabled>Created Month</TreeItem>
@@ -86,7 +86,7 @@ Use the `disabled` prop to present your `Tree` in a disabled state. Note that us
     </Tree>
   </Tree>
   <Divider my="large" />
-  <Tree keyColor selected label="Orders" icon="Table" defaultOpen>
+  <Tree keyColor selected label="Orders" icon={<TableChart />} defaultOpen>
     <Tree disabled label="Created" defaultOpen>
       <TreeItem selected>Created Date</TreeItem>
       <TreeItem disabled>Created Month</TreeItem>
@@ -108,7 +108,7 @@ When text content overflows, it will render a tooltip to view the entire content
 <Tree
   border
   label="A very long label that wraps to a second line. Both the label and the tree item will wrap to two or more lines because there is just too much text."
-  icon="Table"
+  icon={<TableChart />}
   defaultOpen
 >
   <TreeItem icon={<IdeDimension />}>
@@ -124,7 +124,7 @@ When text content overflows, it will render a tooltip to view the entire content
   border
   label="A very label that wraps to a second line. Sometimes you don't want to take up extra vertical space, and instead it will cut off the text."
   truncate
-  icon="Table"
+  icon={<TableChart />}
   defaultOpen
 >
   <TreeItem icon={<IdeDimension />} truncate>
@@ -140,7 +140,7 @@ You can nest trees within each other by passing a `Tree` in as a child of anothe
 **Note:** `Tree` will automatically indent any child `Tree` and `TreeItem`s based on their depth in the hierarchy.
 
 ```jsx
-<Tree defaultOpen label="Orders" icon="Table">
+<Tree defaultOpen label="Orders" icon={<TableChart />}>
   <Tree defaultOpen label="Created">
     <TreeItem>Created Date</TreeItem>
     <TreeItem>Created Month</TreeItem>
@@ -159,7 +159,7 @@ Use the `onOpen` and `onClose` props if you would like to trigger callbacks on `
   onOpen={() => alert('Open!')}
   onClose={() => alert('Close!')}
   label="Cheese"
-  icon="Table"
+  icon={<TableChart />}
 >
   <TreeItem>Gouda</TreeItem>
 </Tree>
@@ -182,11 +182,11 @@ The `toggleOpen` prop should receive a function that has one parameter: a boolea
   const [isOpen, setIsOpen] = useState(true)
 
   return (
-    <Tree label="Orders" icon="Table" isOpen={isOpen} toggleOpen={setIsOpen}>
-      <TreeItem icon="FieldNumber">Cost</TreeItem>
-      <TreeItem icon="FieldLocation">Location</TreeItem>
-      <TreeItem icon="FieldTier">Tier</TreeItem>
-      <TreeItem icon="FieldYesNo">Oui ou Non</TreeItem>
+    <Tree label="Orders" icon={<TableChart />} isOpen={isOpen} toggleOpen={setIsOpen}>
+      <TreeItem icon={<Tag />}>Cost</TreeItem>
+      <TreeItem icon={<Place />}>Location</TreeItem>
+      <TreeItem icon={<FieldTier />}>Tier</TreeItem>
+      <TreeItem icon={<Check />}>Oui ou Non</TreeItem>
     </Tree>
   )
 }
@@ -226,12 +226,12 @@ Enabling the `accessory` option will render the detail element outside of the la
 ```jsx
 <Tree
   label="Orders"
-  icon="Table"
+  icon={<TableChart />}
   defaultOpen
   detail={{
     content: (
       <IconButton
-        icon="CircleInfo"
+        icon={<Info />}
         label="Get Info"
         onClick={() => alert("You've got info!")}
       />
@@ -243,7 +243,7 @@ Enabling the `accessory` option will render the detail element outside of the la
   }}
 >
   <TreeItem
-    icon="FieldNumber"
+    icon={<Tag />}
     detail={{
       content: (
         <IconButton
