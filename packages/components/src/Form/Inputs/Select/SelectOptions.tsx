@@ -27,13 +27,14 @@
 import { useTranslation } from 'react-i18next'
 import React, {
   createContext,
+  FC,
   ReactNode,
   useContext,
   useEffect,
   useMemo,
 } from 'react'
 import styled from 'styled-components'
-import { IconPlaceholder } from '../../../Icon'
+import { Icon, IconPlaceholder } from '../../../Icon'
 import { Spinner } from '../../../Spinner'
 import { ListItemDetail } from '../../../List/ListItemDetail'
 import { ListItemPreface } from '../../../List/ListItemPreface'
@@ -96,15 +97,16 @@ const OptionLayoutBase = ({
 
 // Use an FC since isActive & isSelected are passed to the indicator via cloneElement
 // and otherwise would get spread onto Icon
-// const OptionIcon: FC<SelectOptionObject> = ({ preface, icon }) => (
-//   <Icon
-//     size="small"
-//     mt={preface ? 'medium' : 'none'}
-//     color="text1"
-//     {...getSelectOptionIconProps(icon)}
-//     data-testid="option-icon"
-//   />
-// )
+const OptionIcon: FC<SelectOptionObject> = ({ preface, icon }) =>
+  icon ? (
+    <Icon
+      size="small"
+      mt={preface ? 'medium' : 'none'}
+      color="text1"
+      icon={icon}
+      data-testid="option-icon"
+    />
+  ) : null
 
 const OptionLayout = ({ option, ...rest }: OptionLayoutProps) => {
   const { hasIcons } = useContext(SelectOptionsContext)
@@ -113,10 +115,12 @@ const OptionLayout = ({ option, ...rest }: OptionLayoutProps) => {
     <IconPlaceholder size="small" data-testid="option-icon-placeholder" />
   ) : undefined
 
-  const indicator = option.icon
-    ? option.icon
-    : // Either an option or Select-level indicator can override the iconPlaceholder
-      option.indicator || indicatorPropRef?.current || iconPlaceholder
+  const indicator = option.icon ? (
+    <OptionIcon {...option} />
+  ) : (
+    // Either an option or Select-level indicator can override the iconPlaceholder
+    option.indicator || indicatorPropRef?.current || iconPlaceholder
+  )
 
   useEffect(() => {
     if (option.icon && option.indicator) {

@@ -281,16 +281,16 @@ export const inputTextValidation = css<{ validationType?: 'error' }>`
       : ''}
 `
 
-export const ErrorIcon = styled(Error)`
-  color: ${({ theme }) => theme.colors.critical};
-`
-
 export const inputCSS = css`
   background: ${({ theme: { colors } }) => colors.field};
   border: 1px solid ${({ theme: { colors } }) => colors.ui2};
   border-radius: ${({ theme: { radii } }) => radii.medium};
   color: ${({ theme: { colors } }) => colors.text4};
   font-size: ${({ theme: { fontSizes } }) => fontSizes.small};
+`
+
+export const ErrorIcon = styled(Error)`
+  color: ${({ theme }) => theme.colors.critical};
 `
 
 export const InputText = styled(InputTextLayout).attrs<InputTextProps>(
@@ -328,9 +328,12 @@ export const InputText = styled(InputTextLayout).attrs<InputTextProps>(
   }
 
   ${StyledIconBase} {
-    color: ${(props) => props.theme.colors.text1};
     height: ${({ theme }) => theme.sizes.small};
     width: ${({ theme }) => theme.sizes.small};
+  }
+
+  & > ${StyledIconBase} {
+    color: ${(props) => props.theme.colors.text1};
   }
 
   &:hover {

@@ -100,7 +100,7 @@ export const itemBuilder = (
                   : 'positive'
               }
               title={status}
-              size="small"
+              size="xsmall"
             />
           </Tooltip>
         </DataTableCell>
