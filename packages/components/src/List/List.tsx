@@ -137,7 +137,6 @@ export const ListInternal = forwardRef(
           role={role || 'list'}
           {...omitStyledProps(props)}
           {...navProps}
-          ref={ref}
         >
           {content}
         </ul>
