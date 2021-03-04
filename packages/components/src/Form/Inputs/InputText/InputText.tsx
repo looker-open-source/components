@@ -291,6 +291,8 @@ export const inputCSS = css`
 
 export const ErrorIcon = styled(Error)`
   color: ${({ theme }) => theme.colors.critical};
+  height: ${({ theme }) => theme.sizes.small};
+  width: ${({ theme }) => theme.sizes.small};
 `
 
 export const InputText = styled(InputTextLayout).attrs<InputTextProps>(

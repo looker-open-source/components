@@ -40,7 +40,6 @@ import max from 'lodash/max'
 import isEmpty from 'lodash/isEmpty'
 import isEqual from 'lodash/isEqual'
 import values from 'lodash/values'
-import { Error } from '@styled-icons/material'
 import { useTranslation } from 'react-i18next'
 import { VisuallyHidden } from '../../../VisuallyHidden'
 import { ValidationType } from '../../ValidationMessage'
@@ -50,6 +49,7 @@ import {
   inputTextFocus,
   inputTextValidation,
   inputTextDisabled,
+  ErrorIcon,
 } from '../InputText'
 import { InlineInputTextBase } from '../../Inputs/InlineInputText'
 import {
@@ -423,11 +423,7 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
               aria-labelledby={`${ariaLabelledby} ${endDateLabelledby}`}
             />
           </InputTextWrapper>
-          {(inputs.from.isValid && inputs.to.isValid) || (
-            <IconWrapper>
-              <ErrorIcon />
-            </IconWrapper>
-          )}
+          {(inputs.from.isValid && inputs.to.isValid) || <ErrorIcon />}
         </InputTextGroupWrapper>
         <MultiCalendarLayout>
           <VisuallyHidden aria-live="assertive">{monthTitle}</VisuallyHidden>
@@ -464,13 +460,6 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
     )
   }
 )
-
-const ErrorIcon = styled(Error)`
-  color: ${({ theme }) => theme.colors.critical};
-  height: ${({ theme }) => theme.sizes.small};
-  margin-right: ${({ theme }) => theme.space.xxsmall};
-  width: ${({ theme }) => theme.sizes.small};
-`
 
 InputDateRange.displayName = 'InputDateRange'
 
@@ -509,6 +498,7 @@ const InputTextGroupWrapper = styled.div<InputTextGroupWrapperProps>`
   ${inputCSS}
   align-items: center;
   display: grid;
+  font-family: ${({ theme }) => theme.fonts.body};
   grid-gap: ${({ theme }) => theme.space.xsmall};
   grid-template-columns: auto auto auto 1fr;
   padding: 0 ${({ theme: { space } }) => space.small};
@@ -524,10 +514,11 @@ const InputTextGroupWrapper = styled.div<InputTextGroupWrapperProps>`
   ${inputTextValidation}
 
   ${({ disabled }) => disabled && inputTextDisabled}
-`
 
-const IconWrapper = styled.div`
-  justify-self: right;
+  ${ErrorIcon} {
+    justify-self: right;
+    margin-right: ${({ theme }) => theme.space.xxsmall};
+  }
 `
 
 const InputTextWrapper = styled.div<{ inputLength: number }>`

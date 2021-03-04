@@ -153,6 +153,9 @@ export const TestRepro = () => (
     ]}
   />
 )
+TestRepro.parameters = {
+  storyshots: { disable: true },
+}
 
 export default {
   component: Select,
