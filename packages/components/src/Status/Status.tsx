@@ -117,5 +117,4 @@ export const Status = styled(StatusLayout).attrs<StatusProps>(
   ${color}
   ${size}
   flex-shrink: 0;
-  margin-bottom: 4px; /* temp fix for snapshot compat */
 `

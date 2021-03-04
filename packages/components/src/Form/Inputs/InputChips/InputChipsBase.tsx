@@ -382,7 +382,6 @@ export const InputChipsBaseInternal = forwardRef(
             validationType={validationType}
           />
         }
-        afterErrorIcon={false}
         height="auto"
         onChange={handleInputChange}
         onFocus={wrappedOnFocus}

@@ -56,13 +56,13 @@ Disabled.args = {
 
 export const IconBefore = Template.bind({})
 IconBefore.args = {
-  before: <Info />,
+  iconBefore: <Info />,
   value: 'With an icon before',
 }
 
 export const IconAfter = Template.bind({})
 IconAfter.args = {
-  after: <Close />,
+  iconAfter: <Close />,
   value: 'With an icon after',
 }
 

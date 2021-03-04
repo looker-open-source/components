@@ -91,10 +91,10 @@ export const After = Template.bind({})
 After.args = { after: '%', label: 'Percent' }
 
 export const IconBefore = Template.bind({})
-IconBefore.args = { before: <Settings />, label: 'Settings' }
+IconBefore.args = { iconBefore: <Settings />, label: 'Settings' }
 
 export const IconAfter = Template.bind({})
-IconAfter.args = { after: <Settings />, label: 'Settings' }
+IconAfter.args = { iconAfter: <Settings />, label: 'Settings' }
 
 export const Toggles = () => (
   <>
@@ -159,8 +159,12 @@ export const BeforeAfterValidation = () => {
     <SpaceVertical align="start">
       <Button onClick={toggle}>Toggle error state</Button>
       <Space>
-        <FieldText label="iconBefore" before={<Favorite />} {...validation} />
-        <FieldText label="iconAfter" after={<Account />} {...validation} />
+        <FieldText
+          label="iconBefore"
+          iconBefore={<Favorite />}
+          {...validation}
+        />
+        <FieldText label="iconAfter" iconAfter={<Account />} {...validation} />
         <FieldText label="before string" before="$" {...validation} />
         <FieldText label="after string" after="%" {...validation} />
         <FieldText
