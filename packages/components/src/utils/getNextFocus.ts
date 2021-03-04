@@ -40,8 +40,12 @@ export const getNextFocus = (direction: 1 | -1, element: HTMLElement) => {
   const tabStops = getTabStops(element)
 
   if (tabStops.length > 0) {
+    const firstVisibleChild = tabStops.find((childElement) => {
+      return childElement.offsetTop >= element.scrollTop
+    })
+
     const fallback =
-      direction === 1 ? tabStops[0] : tabStops[tabStops.length - 1]
+      direction === 1 ? firstVisibleChild : tabStops[tabStops.length - 1]
     if (
       document.activeElement &&
       tabStops.includes(document.activeElement as HTMLElement)
