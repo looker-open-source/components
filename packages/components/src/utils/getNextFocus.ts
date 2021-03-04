@@ -37,11 +37,20 @@ const getFallbackElement = (
   containerElement: HTMLElement,
   tabStops: HTMLElement[]
 ) => {
-  const firstVisibleChild = tabStops.find((childElement) => {
-    return childElement.offsetTop >= containerElement.scrollTop
-  })
+  let fallback
 
-  return direction === 1 ? firstVisibleChild : tabStops[tabStops.length - 1]
+  if (direction === 1) {
+    const firstVisibleChild = tabStops.find((childElement) => {
+      return childElement.offsetTop >= containerElement.scrollTop
+    })
+
+    if (firstVisibleChild) fallback = firstVisibleChild
+    else fallback = tabStops[0]
+  } else {
+    fallback = tabStops[tabStops.length - 1]
+  }
+
+  return fallback
 }
 
 /**
