@@ -65,7 +65,7 @@ IconGutter.args = {
 const array3000 = Array.from(Array(3000), (_, i) => String(i + 1))
 export const LongList = () => {
   return (
-    <Box maxHeight="500px">
+    <Box height="500px">
       <List>
         {array3000.map((item, i) => (
           <ListItem key={i}>{item}</ListItem>

@@ -87,7 +87,7 @@ Basic.args = {
 const array3000 = Array.from(Array(3000), (_, i) => String(i + 1))
 export const LongList = () => {
   return (
-    <Box maxHeight="500px">
+    <Box height="500px">
       <MenuList>
         {array3000.map((item, i) => (
           <MenuItem key={i}>{item}</MenuItem>
