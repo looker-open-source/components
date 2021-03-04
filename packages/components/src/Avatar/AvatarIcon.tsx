@@ -35,7 +35,7 @@ import { avatarCSS, AvatarProps } from './Avatar'
 
 export interface AvatarIconProps extends AvatarProps {
   /**
-   * Icon to display. If not sent will default to <pERSON /> from Material Icons
+   * Icon to display. If not sent will default to <PersonOutline /> from Material Icons
    */
   icon?: IconType
 

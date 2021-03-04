@@ -39,7 +39,7 @@ import {
   Download,
   Favorite,
   MoreVert,
-  Person,
+  PersonOutline,
   PieChart,
   Refresh,
   TableChart,
@@ -143,7 +143,7 @@ export const IconSpace = () => (
     <Menu
       content={
         <>
-          <MenuItem icon={<Person />}>Hello</MenuItem>
+          <MenuItem icon={<PersonOutline />}>Hello</MenuItem>
           <MenuItem>World</MenuItem>
         </>
       }

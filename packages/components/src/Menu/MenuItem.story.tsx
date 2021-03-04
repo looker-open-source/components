@@ -26,8 +26,7 @@
 
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
-import { Person } from '@styled-icons/material'
-
+import { PersonOutline } from '@styled-icons/material'
 import { MenuItem, MenuItemProps } from './MenuItem'
 
 const MenuItemTemplate: Story<MenuItemProps> = (args) => (
@@ -39,7 +38,7 @@ export const Basic = MenuItemTemplate.bind({})
 export const Icon = MenuItemTemplate.bind({})
 Icon.args = {
   ...Basic,
-  icon: <Person />,
+  icon: <PersonOutline />,
 }
 
 export const Detail = MenuItemTemplate.bind({})
@@ -52,7 +51,7 @@ export const IconAndDetail = MenuItemTemplate.bind({})
 IconAndDetail.args = {
   ...Basic,
   detail: 'A Detail',
-  icon: <Person />,
+  icon: <PersonOutline />,
 }
 
 export const Description = MenuItemTemplate.bind({})
@@ -65,7 +64,7 @@ export const IconAndDescription = MenuItemTemplate.bind({})
 IconAndDescription.args = {
   ...Basic,
   description: 'A description',
-  icon: <Person />,
+  icon: <PersonOutline />,
 }
 
 export const DetailAndDescription = MenuItemTemplate.bind({})
@@ -80,7 +79,7 @@ IconAndDetailAndDescription.args = {
   ...Basic,
   description: 'A description',
   detail: 'A detail',
-  icon: <Person />,
+  icon: <PersonOutline />,
 }
 
 export const Current = MenuItemTemplate.bind({})

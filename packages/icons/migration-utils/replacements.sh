@@ -143,7 +143,7 @@ Tune tune
 Undo undo
 UnusedContent low_priority
 Update update
-User person
+User person_outline
 Validate verified_user
 ViewColumn view_column
 ViewGrid grid_view
