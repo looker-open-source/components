@@ -28,6 +28,7 @@ import { TFunction } from 'i18next'
 import { StyledIcon } from '@styled-icons/styled-icon'
 import { CheckCircle, Error, Info, Warning } from '@styled-icons/material'
 import { color, size } from '@looker/design-tokens'
+import omit from 'lodash/omit'
 import React, { forwardRef, Ref } from 'react'
 import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
@@ -40,7 +41,8 @@ export type StatusIntent =
   | 'positive'
   | 'warn'
 
-export interface StatusProps extends Omit<IconProps, 'color' | 'icon'> {
+export interface StatusProps
+  extends Pick<IconProps, 'className' | 'size' | 'title'> {
   /**
    * @default neutral
    */
@@ -82,7 +84,7 @@ const defaultIntent = 'neutral'
 
 const StatusLayout = forwardRef(
   (
-    { className, intent = defaultIntent, ...props }: StatusProps,
+    { className, title, intent = defaultIntent, ...props }: StatusProps,
     ref: Ref<SVGSVGElement>
   ) => {
     const { t } = useTranslation('Status')
@@ -90,12 +92,14 @@ const StatusLayout = forwardRef(
 
     return (
       <Component
-        // {...props}
+        {...omit(props, 'size', 'crossOrigin')}
         className={className}
         ref={ref}
         /* Don't specify title if Status is wrapped in tooltip */
         title={
-          !props['aria-describedby'] ? getIntentLabel(t, intent) : undefined
+          !props['aria-describedby']
+            ? title || getIntentLabel(t, intent)
+            : undefined
         }
       />
     )
@@ -113,4 +117,5 @@ export const Status = styled(StatusLayout).attrs<StatusProps>(
   ${color}
   ${size}
   flex-shrink: 0;
+  margin-bottom: 4px; /* temp fix for snapshot compat */
 `
