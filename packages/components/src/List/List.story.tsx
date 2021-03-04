@@ -26,7 +26,7 @@
 
 import React, { FC, useState } from 'react'
 import { Story } from '@storybook/react/types-6-0'
-import { Grid, Space } from '../Layout'
+import { Box, Grid, Space } from '../Layout'
 import { DensityRamp } from './types'
 import { List, ListProps } from './List'
 import { ListItem } from './ListItem'
@@ -62,10 +62,17 @@ IconGutter.args = {
   iconGutter: true,
 }
 
-const array200 = Array.from(Array(200), (_, i) => String(i + 1))
-export const LongList = Template.bind({})
-LongList.args = {
-  children: array200.map((item, i) => <ListItem key={i}>{item}</ListItem>),
+const array3000 = Array.from(Array(3000), (_, i) => String(i + 1))
+export const LongList = () => {
+  return (
+    <Box maxHeight="500px">
+      <List>
+        {array3000.map((item, i) => (
+          <ListItem key={i}>{item}</ListItem>
+        ))}
+      </List>
+    </Box>
+  )
 }
 
 LongList.parameters = {
