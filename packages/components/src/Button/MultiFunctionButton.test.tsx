@@ -30,7 +30,6 @@ import { renderWithTheme } from '@looker/components-test-utils'
 import { fireEvent, screen, act } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { MultiFunctionButton } from './MultiFunctionButton'
-import { Button, ButtonTransparent } from '.'
 
 const CopyToClipboard = () => {
   const [change, setChange] = useState(false)
@@ -40,15 +39,8 @@ const CopyToClipboard = () => {
     setTimeout(() => setChange(false), 1500)
   }
   return (
-    <MultiFunctionButton
-      alternate={
-        <ButtonTransparent iconBefore="Check" size="small">
-          Copied!
-        </ButtonTransparent>
-      }
-      swap={change}
-    >
-      <Button onClick={handleSwap}>Copy to Clipboard</Button>
+    <MultiFunctionButton alternate={<button>Copied!</button>} swap={change}>
+      <button onClick={handleSwap}>Copy to Clipboard</button>
     </MultiFunctionButton>
   )
 }
@@ -61,15 +53,8 @@ describe('MultiFunctionButton', () => {
 
   test('if swap is false alternate button should display', () => {
     renderWithTheme(
-      <MultiFunctionButton
-        alternate={
-          <ButtonTransparent iconBefore="Check" size="small">
-            Copied!
-          </ButtonTransparent>
-        }
-        swap={false}
-      >
-        <Button>Copy to Clipboard</Button>
+      <MultiFunctionButton alternate={<button>Copied!</button>} swap={false}>
+        <button>Copy to Clipboard</button>
       </MultiFunctionButton>
     )
     expect(screen.getByText('Copied!')).toBeInTheDocument()
