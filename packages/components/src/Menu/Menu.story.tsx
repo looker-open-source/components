@@ -71,14 +71,7 @@ import { Tab, TabList, TabPanel, TabPanels, Tabs } from '../Tabs'
 import { Heading, Text, Paragraph } from '../Text'
 import { Tooltip } from '../Tooltip'
 import { useToggle } from '../utils'
-import {
-  Menu,
-  MenuDivider,
-  MenuItem,
-  MenuList,
-  MenuHeading,
-  MenuGroup,
-} from '.'
+import { Menu, MenuDivider, MenuItem, MenuList, MenuHeading } from '.'
 
 export default {
   component: Menu,
@@ -163,7 +156,7 @@ export const IconSpace = () => (
 
     <MenuList iconGutter>
       <MenuHeading>MenuList with 3 Items</MenuHeading>
-      <MenuItem description="this is a description" icon="LogoRings">
+      <MenuItem description="this is a description" icon={<LogoRings />}>
         Looker
       </MenuItem>
       <MenuItem icon={<VerifiedUser />}>Validate</MenuItem>
@@ -372,21 +365,18 @@ export const RealisticMenus = () => {
         iconGutter
         content={
           <>
-            <MenuGroup>
-              <MenuItem icon={<CreateOutline />}>Rename</MenuItem>
-              <MenuItem description="some description" icon={<DeleteOutline />}>
-                Delete
-              </MenuItem>
-            </MenuGroup>
-            <MenuGroup label="Create">
-              <MenuItem icon={<CreateNewFolder />}>Folder</MenuItem>
-              <MenuItem icon={<ExploreOutline />}>Model</MenuItem>
-              <MenuItem icon={<TableChart />}>New Item</MenuItem>
-              <MenuItem icon={<TableChart />}>View</MenuItem>
-              <MenuItem icon={<IdeFileDashboard />}>Dashboard</MenuItem>
-              <MenuItem icon={<IdeFileDocument />}>Document</MenuItem>
-              <MenuItem icon={<IdeFileGeneric />}>Generic LookML file</MenuItem>
-            </MenuGroup>
+            <MenuItem icon={<CreateOutline />}>Rename</MenuItem>
+            <MenuItem description="some description" icon={<DeleteOutline />}>
+              Delete
+            </MenuItem>
+            <MenuDivider />
+            <MenuItem icon={<CreateNewFolder />}>Folder</MenuItem>
+            <MenuItem icon={<ExploreOutline />}>Model</MenuItem>
+            <MenuItem icon={<TableChart />}>New Item</MenuItem>
+            <MenuItem icon={<TableChart />}>View</MenuItem>
+            <MenuItem icon={<IdeFileDashboard />}>Dashboard</MenuItem>
+            <MenuItem icon={<IdeFileDocument />}>Document</MenuItem>
+            <MenuItem icon={<IdeFileGeneric />}>Generic LookML file</MenuItem>
           </>
         }
       >

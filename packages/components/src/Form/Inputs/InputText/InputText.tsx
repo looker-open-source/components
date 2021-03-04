@@ -67,6 +67,13 @@ export interface InputTextBaseProps
   onMouseOver?: (e: MouseEvent<HTMLDivElement>) => void
   onMouseOut?: (e: MouseEvent<HTMLDivElement>) => void
   onMouseUp?: (e: MouseEvent<HTMLDivElement>) => void
+
+  /**
+   * Enable InputText's built-in error icon
+   * @private
+   * @default true
+   */
+  afterErrorIcon?: boolean
 }
 
 export interface InputTextProps extends InputTextBaseProps {
@@ -92,6 +99,7 @@ const InputTextLayout = forwardRef(
       className,
       before,
       after,
+      afterErrorIcon = true,
 
       type = 'text',
       validationType,
@@ -164,7 +172,7 @@ const InputTextLayout = forwardRef(
             )}
           </InputTextContent>
         )}
-        {validationType === 'error' && (
+        {validationType === 'error' && afterErrorIcon && (
           <InputTextContent pl={after ? 'xxsmall' : 'xsmall'} pr="xxsmall">
             <ErrorIcon />
           </InputTextContent>

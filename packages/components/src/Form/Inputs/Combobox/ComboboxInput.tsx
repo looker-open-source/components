@@ -165,6 +165,7 @@ export const ComboboxInputInternal = forwardRef(
             validationType={validationType}
           />
         }
+        afterErrorIcon={false}
         ref={ref}
         value={inputValue}
         readOnly={inputReadOnly || readOnly}
