@@ -25,70 +25,85 @@
  */
 
 import React, {
-  FC,
   ReactElement,
   useRef,
   cloneElement,
   useEffect,
   useState,
-  RefObject,
+  forwardRef,
+  RefAttributes,
+  Ref,
 } from 'react'
 import styled from 'styled-components'
+import { useForkedRef } from '../utils'
 import { ButtonProps, IconButtonProps } from '.'
 
 export interface MultiFunctionButtonProps {
   alternate: ReactElement<
-    (ButtonProps | IconButtonProps) & {
-      ref: RefObject<HTMLButtonElement>
-      ariaHidden: boolean
-    }
+    (ButtonProps | IconButtonProps) & RefAttributes<HTMLButtonElement>
   >
-  children: ReactElement<ButtonProps | IconButtonProps>
+  alternateRef?: Ref<HTMLButtonElement>
+  children: ReactElement<
+    (ButtonProps | IconButtonProps) & RefAttributes<HTMLButtonElement>
+  >
   swap?: boolean
 }
 
-export const MultiFunctionButton: FC<MultiFunctionButtonProps> = ({
-  alternate,
-  children,
-  swap = false,
-}) => {
-  const [containerHeight, setContainerHeight] = useState(0)
-  const [containerWidth, setContainerWidth] = useState(0)
+export const MultiFunctionButton = forwardRef(
+  (
+    {
+      alternate,
+      children,
+      alternateRef,
+      swap = false,
+    }: MultiFunctionButtonProps,
+    forwardedRef: Ref<HTMLButtonElement>
+  ) => {
+    const [containerHeight, setContainerHeight] = useState(0)
+    const [containerWidth, setContainerWidth] = useState(0)
 
-  const aRef = useRef<HTMLButtonElement>(null)
-  const bRef = useRef<HTMLButtonElement>(null)
+    const aRef = useRef<HTMLButtonElement>(null)
+    const bRef = useRef<HTMLButtonElement>(null)
 
-  // calculating height and width button highest values to populate the component's dimensions.
-  useEffect(() => {
-    const a = aRef.current
-    const b = bRef.current
-    if (a && b) {
-      setContainerHeight(Math.max(a.offsetHeight, b.offsetHeight, 0))
-      setContainerWidth(Math.max(a.offsetWidth, b.offsetWidth, 0))
-    }
-  }, [containerHeight, containerWidth])
+    // calculating height and width button highest values to populate the component's dimensions.
+    useEffect(() => {
+      const a = aRef.current
+      const b = bRef.current
+      if (a && b) {
+        setContainerHeight(Math.max(a.offsetHeight, b.offsetHeight, 0))
+        setContainerWidth(Math.max(a.offsetWidth, b.offsetWidth, 0))
+      }
+    }, [containerHeight, containerWidth])
 
-  // setting focus on the right button as the component moves between them
-  useEffect(() => {
-    if (swap === true && aRef.current === document.activeElement) {
-      bRef.current?.focus()
-    }
-    if (swap === false && bRef.current === document.activeElement) {
-      aRef.current?.focus()
-    }
-  }, [swap])
+    // setting focus on the right button as the component moves between them
+    useEffect(() => {
+      if (swap === true && aRef.current === document.activeElement) {
+        bRef.current?.focus()
+      }
+      if (swap === false && bRef.current === document.activeElement) {
+        aRef.current?.focus()
+      }
+    }, [swap])
 
-  return (
-    <MultiFunctionButtonLayout
-      swap={swap}
-      height={containerHeight}
-      width={containerWidth}
-    >
-      {cloneElement(children, { ariaHidden: !!swap, ref: aRef })}
-      {cloneElement(alternate, { ariaHidden: !swap, ref: bRef })}
-    </MultiFunctionButtonLayout>
-  )
-}
+    return (
+      <MultiFunctionButtonLayout
+        swap={swap}
+        height={containerHeight}
+        width={containerWidth}
+      >
+        {cloneElement(children, {
+          'aria-hidden': !!swap,
+          ref: useForkedRef(aRef, forwardedRef),
+        })}
+        {cloneElement(alternate, {
+          'aria-hidden': !swap,
+          ref: useForkedRef(bRef, alternateRef),
+        })}
+      </MultiFunctionButtonLayout>
+    )
+  }
+)
+MultiFunctionButton.displayName = 'MultiFunctionButton'
 
 export interface MultiFunctionButtonLayoutProp {
   swap?: boolean
