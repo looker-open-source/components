@@ -26,7 +26,6 @@
 
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
-import { Accessibility } from '@styled-icons/material'
 import { AvatarIconProps, AvatarIcon } from './AvatarIcon'
 
 const Template: Story<AvatarIconProps> = (args) => <AvatarIcon {...args} />
