@@ -125,6 +125,10 @@ const generate = async () => {
     await fs.outputFile(
       path.join(buildDir, 'index.ts'),
       `${license}
+export const iconsList = [
+${icons.map((icon) => `  '${icon}'`).join(',\n')},
+]
+
 ${icons
   .map((icon) => `export { ${icon} } from './${icon}'`)
   .filter((lines) => lines)

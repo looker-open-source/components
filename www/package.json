@@ -42,6 +42,8 @@
     "start": "gatsby develop --host 0.0.0.0"
   },
   "dependencies": {
-    "@styled-icons/material": "^10.28.0"
+    "@styled-icons/material": "^10.28.0",
+    "@styled-icons/material-outlined": "^10.28.0",
+    "@styled-icons/material-rounded": "^10.28.0"
   }
 }
