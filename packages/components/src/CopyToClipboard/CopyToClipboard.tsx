@@ -26,6 +26,7 @@
 import { useTranslation } from 'react-i18next'
 import React, { useRef, useState, FC, cloneElement } from 'react'
 import { ButtonOutline } from '../Button/ButtonOutline'
+import { MultiFunctionButton } from '../Button/MultiFunctionButton'
 
 /**
  */
@@ -97,5 +98,13 @@ export const CopyToClipboard: FC<CopyToClipboardProps> = (props) => {
       cloneElement(success, { 'aria-live': 'polite' })
     )
 
-  return copied ? successButton : copyButton
+  return (
+    <MultiFunctionButton
+      alternate={successButton}
+      ref={buttonRef}
+      swap={copied}
+    >
+      {copyButton}
+    </MultiFunctionButton>
+  )
 }
