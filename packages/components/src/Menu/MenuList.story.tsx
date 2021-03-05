@@ -25,12 +25,10 @@
  */
 
 import React, { FC, Fragment } from 'react'
-import styled from 'styled-components'
 import { Story } from '@storybook/react/types-6-0'
 import { IconNames } from '@looker/icons'
 import { Grid } from '../Layout'
 import { DensityRamp } from '../List/types'
-import { Heading } from '../Text'
 import { MenuHeading, MenuList, MenuItem, MenuItemProps, MenuDivider } from '.'
 
 const groups: { label?: string; items: MenuItemProps[] }[] = [
