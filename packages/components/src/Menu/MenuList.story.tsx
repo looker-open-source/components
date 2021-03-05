@@ -120,20 +120,17 @@ export const Density = () => (
   </Grid>
 )
 
-const CustomMenuHeading = styled(MenuHeading)`
-  ${Heading} {
-    font-size: ${({ theme: { fontSizes } }) => fontSizes.small};
-    font-weight: ${({ theme: { fontWeights } }) => fontWeights.bold};
-    line-height: ${({ theme: { lineHeights } }) => lineHeights.small};
-    padding-bottom: ${({ theme: { space } }) => space.xxsmall};
-    padding-top: ${({ theme: { space } }) => space.xxsmall};
-  }
-`
-
 export const MenuHeadingOverride = () => (
   <MenuList>
     <MenuHeading>Hello World</MenuHeading>
-    <CustomMenuHeading>Custom Hello World</CustomMenuHeading>
+    <MenuHeading
+      fontSize="small"
+      fontWeight="bold"
+      lineHeight="small"
+      py="xxsmall"
+    >
+      Custom Hello World
+    </MenuHeading>
   </MenuList>
 )
 
