@@ -122,6 +122,7 @@ export const MenuHeadingOverride = () => (
   <MenuList>
     <MenuHeading>Hello World</MenuHeading>
     <MenuHeading
+      color="inform"
       fontSize="small"
       fontWeight="bold"
       lineHeight="small"

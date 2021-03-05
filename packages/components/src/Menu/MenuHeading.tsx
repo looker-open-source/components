@@ -27,6 +27,7 @@
 import React, { FC, useContext, useRef, RefObject } from 'react'
 import styled from 'styled-components'
 import {
+  ColorProps,
   TypographyProps,
   SpaceProps,
   pickStyledProps,
@@ -36,7 +37,7 @@ import { listItemDimensions } from '../List'
 import { ListItemContext } from '../List/ListItemContext'
 import { useElementVisibility } from './MenuHeading.hooks'
 
-interface MenuHeadingProps extends TypographyProps, SpaceProps {
+interface MenuHeadingProps extends ColorProps, TypographyProps, SpaceProps {
   children: string
 }
 
