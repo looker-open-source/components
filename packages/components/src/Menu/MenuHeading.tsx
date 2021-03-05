@@ -26,12 +26,25 @@
 
 import React, { FC, useContext, useRef, RefObject } from 'react'
 import styled from 'styled-components'
+import {
+  ColorProps,
+  TypographyProps,
+  SpaceProps,
+  pickStyledProps,
+} from '@looker/design-tokens'
 import { Heading } from '../Text/Heading'
 import { listItemDimensions } from '../List'
 import { ListItemContext } from '../List/ListItemContext'
 import { useElementVisibility } from './MenuHeading.hooks'
 
-export const MenuHeading: FC<{ children: string }> = ({ children }) => {
+interface MenuHeadingProps extends ColorProps, TypographyProps, SpaceProps {
+  children: string
+}
+
+export const MenuHeading: FC<MenuHeadingProps> = ({
+  children,
+  ...restProps
+}) => {
   const labelShimRef: RefObject<any> = useRef()
   const isLabelShimVisible = useElementVisibility(labelShimRef)
 
@@ -56,6 +69,7 @@ export const MenuHeading: FC<{ children: string }> = ({ children }) => {
         lineHeight="xsmall"
         px={px}
         pb="xsmall"
+        {...pickStyledProps(restProps)}
       >
         {children}
       </Heading>

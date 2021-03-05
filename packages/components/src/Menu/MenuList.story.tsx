@@ -123,6 +123,22 @@ export const Density = () => (
     <DensityExample density={-3} />
   </Grid>
 )
+
+export const MenuHeadingOverride = () => (
+  <MenuList>
+    <MenuHeading>Hello World</MenuHeading>
+    <MenuHeading
+      color="inform"
+      fontSize="small"
+      fontWeight="bold"
+      lineHeight="small"
+      py="xxsmall"
+    >
+      Custom Hello World
+    </MenuHeading>
+  </MenuList>
+)
+
 export default {
   component: MenuList,
   title: 'MenuList',
