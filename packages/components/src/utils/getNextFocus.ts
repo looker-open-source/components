@@ -31,6 +31,28 @@ export const getTabStops = (ref: HTMLElement): HTMLElement[] =>
     )
   )
 
+// Returns a fallback element (called when the element with focus has been removed from the DOM)
+const getFallbackElement = (
+  direction: 1 | -1,
+  containerElement: HTMLElement,
+  tabStops: HTMLElement[]
+) => {
+  let fallback
+
+  if (direction === 1) {
+    const firstVisibleChild = tabStops.find((childElement) => {
+      return childElement.offsetTop >= containerElement.scrollTop
+    })
+
+    if (firstVisibleChild) fallback = firstVisibleChild
+    else fallback = tabStops[0]
+  } else {
+    fallback = tabStops[tabStops.length - 1]
+  }
+
+  return fallback
+}
+
 /**
  * Returns the next focusable inside an element in a given direction
  * @param direction 1 for forward -1 for reverse
@@ -40,8 +62,6 @@ export const getNextFocus = (direction: 1 | -1, element: HTMLElement) => {
   const tabStops = getTabStops(element)
 
   if (tabStops.length > 0) {
-    const fallback =
-      direction === 1 ? tabStops[0] : tabStops[tabStops.length - 1]
     if (
       document.activeElement &&
       tabStops.includes(document.activeElement as HTMLElement)
@@ -51,12 +71,12 @@ export const getNextFocus = (direction: 1 | -1, element: HTMLElement) => {
 
       if (next === tabStops.length || !tabStops[next]) {
         // Reached the end of tab stops for this direction
-        return fallback
+        return getFallbackElement(direction, element, tabStops)
       }
 
       return tabStops[next]
     }
-    return fallback
+    return getFallbackElement(direction, element, tabStops)
   }
   return null
 }

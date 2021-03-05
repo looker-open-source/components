@@ -148,5 +148,7 @@ export const ListInternal = forwardRef(
 export const List = styled(ListInternal)`
   ${reset}
 
+  height: 100%;
   list-style: none;
+  overflow: auto;
 `

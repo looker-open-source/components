@@ -27,7 +27,7 @@
 import React, { FC, Fragment } from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import { IconNames } from '@looker/icons'
-import { Grid } from '../Layout'
+import { Box, Grid } from '../Layout'
 import { DensityRamp } from '../List/types'
 import { MenuHeading, MenuList, MenuItem, MenuItemProps, MenuDivider } from '.'
 
@@ -84,11 +84,17 @@ Basic.args = {
   iconGutter: true,
 }
 
-const array200 = Array.from(Array(200), (_, i) => String(i + 1))
-export const LongList = Template.bind({})
-LongList.args = {
-  children: array200.map((item, i) => <MenuItem key={i}>{item}</MenuItem>),
-  height: '100vh',
+const array3000 = Array.from(Array(3000), (_, i) => String(i + 1))
+export const LongList = () => {
+  return (
+    <Box height="500px">
+      <MenuList>
+        {array3000.map((item, i) => (
+          <MenuItem key={i}>{item}</MenuItem>
+        ))}
+      </MenuList>
+    </Box>
+  )
 }
 
 LongList.parameters = {

@@ -135,3 +135,11 @@ Enabling the `accessory` option will render the detail element outside of the la
   </ListItem>
 </List>
 ```
+
+## Windowing
+
+If a `List` contains more than 100 children it will use windowing to display
+only the visible items for performance reasons. Windowing uses the item height to calculate
+positioning for natural scrolling behavior.
+
+**Note:** A parent element of your `List` should have an explicit height. If no explicit height is set, your `List` will attempt to render all child items and not utilize the windowing logic.
