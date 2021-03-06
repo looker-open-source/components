@@ -72,6 +72,10 @@ export * from './utils'
 export {
   ComponentsProvider,
   ExtendComponentsThemeProvider,
+  i18nInit,
+  i18nInitOptions,
+  i18nResources,
+  i18nUpdate,
 } from '@looker/components-providers'
 
 export { theme, Theme } from '@looker/design-tokens'

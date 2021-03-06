@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@looker/design-tokens": "^0.15.1",
-    "i18next": "^19.8.7",
+    "i18next": "19.9.1",
     "lodash": "^4.17.20",
     "react-helmet-async": "^1.0.7",
     "react-i18next": "11.8.8",
