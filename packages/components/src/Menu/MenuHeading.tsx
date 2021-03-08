@@ -24,7 +24,7 @@
 
  */
 
-import React, { FC, useContext, useRef, RefObject } from 'react'
+import React, { FC, useContext, useRef, ReactNode, RefObject } from 'react'
 import styled from 'styled-components'
 import {
   ColorProps,
@@ -38,7 +38,7 @@ import { ListItemContext } from '../List/ListItemContext'
 import { useElementVisibility } from './MenuHeading.hooks'
 
 interface MenuHeadingProps extends ColorProps, TypographyProps, SpaceProps {
-  children: string
+  children: ReactNode
 }
 
 export const MenuHeading: FC<MenuHeadingProps> = ({
