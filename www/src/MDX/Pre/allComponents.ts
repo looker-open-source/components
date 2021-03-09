@@ -179,6 +179,7 @@ import {
   useTabs,
   useToggle,
   VisuallyHidden,
+  i18nResources,
 } from '@looker/components'
 
 import { DialogSurface } from '@looker/components/src/Dialog/DialogSurface'
@@ -355,4 +356,5 @@ export const allComponents = {
   Truncate,
   UnorderedList,
   VisuallyHidden,
+  i18nResources,
 }

@@ -31,7 +31,7 @@
     "date-fns": "^2.17.0",
     "date-fns-tz": "^1.0.12",
     "hotkeys-js": "^3.8.1",
-    "i18next": "^19.8.7",
+    "i18next": "19.9.1",
     "lodash": "^4.17.20",
     "react-day-picker": "^7.4.8",
     "react-hotkeys-hook": "2.3.1",
