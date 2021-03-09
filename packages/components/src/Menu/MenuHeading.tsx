@@ -42,10 +42,12 @@ interface MenuHeadingProps
     TypographyProps,
     PaddingProps {
   children: ReactNode
+  className?: string
 }
 
-export const MenuHeading: FC<MenuHeadingProps> = ({
+const MenuHeadingInternal: FC<MenuHeadingProps> = ({
   children,
+  className,
   ...restProps
 }) => {
   const labelShimRef: RefObject<any> = useRef()
@@ -55,7 +57,10 @@ export const MenuHeading: FC<MenuHeadingProps> = ({
   const { px } = listItemDimensions(density)
 
   return (
-    <MenuHeadingWrapper renderBoxShadow={!isLabelShimVisible}>
+    <MenuHeadingWrapper
+      className={className}
+      renderBoxShadow={!isLabelShimVisible}
+    >
       {/*
         NOTE: The labelShimRef div is required for box-shadow to appear when the heading
         is sticky to the top of the container. Using IntersectionObserver,
@@ -79,6 +84,8 @@ export const MenuHeading: FC<MenuHeadingProps> = ({
     </MenuHeadingWrapper>
   )
 }
+
+export const MenuHeading = styled(MenuHeadingInternal)``
 
 interface MenuHeadingWrapperProps {
   renderBoxShadow: boolean
