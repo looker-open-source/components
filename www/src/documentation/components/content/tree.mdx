@@ -182,7 +182,12 @@ The `toggleOpen` prop should receive a function that has one parameter: a boolea
   const [isOpen, setIsOpen] = useState(true)
 
   return (
-    <Tree label="Orders" icon={<TableChart />} isOpen={isOpen} toggleOpen={setIsOpen}>
+    <Tree
+      label="Orders"
+      icon={<TableChart />}
+      isOpen={isOpen}
+      toggleOpen={setIsOpen}
+    >
       <TreeItem icon={<Tag />}>Cost</TreeItem>
       <TreeItem icon={<Place />}>Location</TreeItem>
       <TreeItem icon={<FieldTier />}>Tier</TreeItem>
