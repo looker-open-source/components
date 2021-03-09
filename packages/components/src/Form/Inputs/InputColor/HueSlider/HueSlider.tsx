@@ -30,7 +30,7 @@ import {
   useMouseDragPosition,
   usePreviousValue,
 } from 'packages/components/src/utils'
-import { SimpleHSV } from '../ColorWheel/color_wheel_utils'
+import { SimpleHSV } from '../utils/color_utils'
 
 const sliderHeight = 12
 const sliderWidth = 200

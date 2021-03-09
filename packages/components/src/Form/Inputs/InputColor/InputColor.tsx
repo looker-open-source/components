@@ -40,14 +40,13 @@ import { useFormContext } from '../../Form'
 import { SpaceVertical } from '../../../Layout'
 import { HueSlider } from './HueSlider'
 import { LightSaturationPreview } from './LightSaturationPreview'
-import { SimpleHSV } from './ColorWheel/color_wheel_utils'
 import { Swatch } from './Swatch'
 import {
   hsv2hex,
   simpleHSVtoFormattedColorString,
   str2simpleHsv,
 } from './utils/color_format_utils'
-import { isValidColor } from './utils/color_utils'
+import { isValidColor, SimpleHSV } from './utils/color_utils'
 
 export interface InputColorProps extends Omit<InputTextProps, 'height'> {
   /**

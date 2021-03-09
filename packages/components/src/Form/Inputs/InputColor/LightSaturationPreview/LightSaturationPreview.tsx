@@ -27,7 +27,7 @@
 import { useMouseDragPosition, usePreviousValue } from '@looker/components/src'
 import React, { FC, MouseEvent, useEffect, useRef } from 'react'
 import styled from 'styled-components'
-import { SimpleHSV } from '../ColorWheel/color_wheel_utils'
+import { SimpleHSV } from '../utils/color_utils'
 
 const previewHeight = 150
 const previewWidth = 200

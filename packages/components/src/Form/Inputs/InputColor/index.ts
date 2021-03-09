@@ -25,5 +25,4 @@
  */
 
 export * from './InputColor'
-export * from './ColorWheel'
 export * from './Swatch'
