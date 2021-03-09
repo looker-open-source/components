@@ -27,7 +27,7 @@
 import { useMouseDragPosition, usePreviousValue } from '@looker/components/src'
 import React, { FC, MouseEvent, useEffect, useRef } from 'react'
 import styled from 'styled-components'
-import { HsvSimple } from '../InputColorRevamp'
+import { HsvSimple } from '.'
 
 const previewHeight = 150
 const previewWidth = 200
@@ -59,7 +59,7 @@ const Handle2d = styled.div.attrs<Handle2dProps>(({ color, x, y }) => ({
   width: ${handleWidth}px;
 `
 
-interface SaturationAndLightnessPreviewProps {
+interface LightSaturationPreviewProps {
   backgroundColor: string
   className?: string
   color: string
@@ -67,7 +67,7 @@ interface SaturationAndLightnessPreviewProps {
   setHsv: (hsv: HsvSimple) => void
 }
 
-export const SaturationAndLightnessPreviewLayout: FC<SaturationAndLightnessPreviewProps> = ({
+export const LightSaturationPreviewLayout: FC<LightSaturationPreviewProps> = ({
   backgroundColor,
   className,
   color,
@@ -129,7 +129,7 @@ export const SaturationAndLightnessPreviewLayout: FC<SaturationAndLightnessPrevi
   )
 
   return (
-    <SaturationAndLightnessPreviewContainer
+    <LightSaturationPreviewContainer
       backgroundColor={backgroundColor}
       className={className}
       isMouseDown={isMouseDown}
@@ -142,11 +142,11 @@ export const SaturationAndLightnessPreviewLayout: FC<SaturationAndLightnessPrevi
         x={handleX}
         y={handleY}
       />
-    </SaturationAndLightnessPreviewContainer>
+    </LightSaturationPreviewContainer>
   )
 }
 
-const SaturationAndLightnessPreviewContainer = styled.div.attrs<{
+const LightSaturationPreviewContainer = styled.div.attrs<{
   backgroundColor: string
   isMouseDown: boolean
 }>(({ backgroundColor }) => ({ style: { backgroundColor: backgroundColor } }))<{
@@ -161,6 +161,4 @@ const SaturationAndLightnessPreviewContainer = styled.div.attrs<{
   width: ${previewWidth}px;
 `
 
-export const SaturationAndLightnessPreview = styled(
-  SaturationAndLightnessPreviewLayout
-)``
+export const LightSaturationPreview = styled(LightSaturationPreviewLayout)``

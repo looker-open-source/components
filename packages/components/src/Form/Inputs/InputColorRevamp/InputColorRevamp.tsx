@@ -32,7 +32,7 @@ import {
   str2simpleHsv,
 } from '../InputColor/utils/color_format_utils'
 import { HueSlider } from './HueSlider'
-import { SaturationAndLightnessPreview } from './SaturationAndLightnessPreview'
+import { LightSaturationPreview } from './LightSaturationPreview'
 
 export interface HsvSimple {
   h: number
@@ -58,7 +58,7 @@ const InputColorRevampLayout: FC<InputColorRevampProps> = ({
     setColor(selectedColor)
   }, [selectedColor, setColor])
 
-  // Used as the background color for the SaturationAndLightnessPreview and
+  // Used as the background color for the LightSaturationPreview and
   // the handle on the HueSlider
   const fullColor = simpleHSVtoFormattedColorString({
     ...hsv,
@@ -68,7 +68,7 @@ const InputColorRevampLayout: FC<InputColorRevampProps> = ({
 
   return (
     <SpaceVertical gap="medium">
-      <SaturationAndLightnessPreview
+      <LightSaturationPreview
         backgroundColor={fullColor}
         color={selectedColor}
         hsv={hsv}
