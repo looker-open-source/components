@@ -24,12 +24,12 @@
 
  */
 
-import React, { FC, useContext, useRef, RefObject } from 'react'
+import React, { FC, useContext, useRef, ReactNode, RefObject } from 'react'
 import styled from 'styled-components'
 import {
-  ColorProps,
+  TextColorProps,
   TypographyProps,
-  SpaceProps,
+  PaddingProps,
   pickStyledProps,
 } from '@looker/design-tokens'
 import { Heading } from '../Text/Heading'
@@ -37,12 +37,17 @@ import { listItemDimensions } from '../List'
 import { ListItemContext } from '../List/ListItemContext'
 import { useElementVisibility } from './MenuHeading.hooks'
 
-interface MenuHeadingProps extends ColorProps, TypographyProps, SpaceProps {
-  children: string
+interface MenuHeadingProps
+  extends TextColorProps,
+    TypographyProps,
+    PaddingProps {
+  children: ReactNode
+  className?: string
 }
 
-export const MenuHeading: FC<MenuHeadingProps> = ({
+const MenuHeadingInternal: FC<MenuHeadingProps> = ({
   children,
+  className,
   ...restProps
 }) => {
   const labelShimRef: RefObject<any> = useRef()
@@ -52,7 +57,10 @@ export const MenuHeading: FC<MenuHeadingProps> = ({
   const { px } = listItemDimensions(density)
 
   return (
-    <MenuHeadingWrapper renderBoxShadow={!isLabelShimVisible}>
+    <MenuHeadingWrapper
+      className={className}
+      renderBoxShadow={!isLabelShimVisible}
+    >
       {/*
         NOTE: The labelShimRef div is required for box-shadow to appear when the heading
         is sticky to the top of the container. Using IntersectionObserver,
@@ -76,6 +84,8 @@ export const MenuHeading: FC<MenuHeadingProps> = ({
     </MenuHeadingWrapper>
   )
 }
+
+export const MenuHeading = styled(MenuHeadingInternal)``
 
 interface MenuHeadingWrapperProps {
   renderBoxShadow: boolean
