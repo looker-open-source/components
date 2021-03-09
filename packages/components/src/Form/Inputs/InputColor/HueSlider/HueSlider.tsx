@@ -30,7 +30,7 @@ import {
   useMouseDragPosition,
   usePreviousValue,
 } from 'packages/components/src/utils'
-import { HsvSimple } from './InputColorRevamp'
+import { SimpleHSV } from '../ColorWheel/color_wheel_utils'
 
 const sliderHeight = 12
 const sliderWidth = 200
@@ -44,12 +44,14 @@ interface HandleProps {
   position: number
 }
 
-const HueHandle = styled.div.attrs<HandleProps>(({ color, position }) => ({
-  style: {
-    background: color,
-    transform: `translateX(${position}px)`,
-  },
-}))<HandleProps>`
+const HueSliderHandle = styled.div.attrs<HandleProps>(
+  ({ color, position }) => ({
+    style: {
+      background: color,
+      transform: `translateX(${position}px)`,
+    },
+  })
+)<HandleProps>`
   border: 2px solid ${({ theme: { colors } }) => colors.background};
   border-radius: 100%;
   box-shadow: ${({ theme }) => theme.shadows[1]};
@@ -65,8 +67,8 @@ const HueHandle = styled.div.attrs<HandleProps>(({ color, position }) => ({
 interface HueSliderProps {
   className?: string
   color: string
-  hsv: HsvSimple
-  setHsv: (hsv: HsvSimple) => void
+  hsv: SimpleHSV
+  setHsv: (hsv: SimpleHSV) => void
 }
 
 export const HueSliderLayout: FC<HueSliderProps> = ({
@@ -121,7 +123,7 @@ export const HueSliderLayout: FC<HueSliderProps> = ({
       onMouseDown={handleSliderClick}
       ref={sliderRef}
     >
-      <HueHandle
+      <HueSliderHandle
         color={color}
         isMouseDown={isMouseDown}
         position={handlePosition}

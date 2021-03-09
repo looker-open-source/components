@@ -24,26 +24,4 @@
 
  */
 
-import React, { useState } from 'react'
-import { Box, Space } from '../../../Layout'
-import { Paragraph } from '../../../Text'
-import { InputColorRevamp } from './InputColorRevamp'
-
-export default {
-  component: InputColorRevamp,
-  title: 'InputColorRevamp',
-}
-
-export const Basic = () => {
-  const [color, setColor] = useState<string>('#BFE8AC')
-
-  return (
-    <>
-      <Space gap="xsmall">
-        <Paragraph>{`Selected Color: ${color}`}</Paragraph>
-        <Box backgroundColor={color} height="small" width="small" />
-      </Space>
-      <InputColorRevamp color={color} setColor={setColor} />
-    </>
-  )
-}
+export * from './LightSaturationPreview'

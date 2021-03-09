@@ -27,7 +27,7 @@
 import { useMouseDragPosition, usePreviousValue } from '@looker/components/src'
 import React, { FC, MouseEvent, useEffect, useRef } from 'react'
 import styled from 'styled-components'
-import { HsvSimple } from '.'
+import { SimpleHSV } from '../ColorWheel/color_wheel_utils'
 
 const previewHeight = 150
 const previewWidth = 200
@@ -63,11 +63,11 @@ interface LightSaturationPreviewProps {
   backgroundColor: string
   className?: string
   color: string
-  hsv: HsvSimple
-  setHsv: (hsv: HsvSimple) => void
+  hsv: SimpleHSV
+  setHsv: (hsv: SimpleHSV) => void
 }
 
-export const LightSaturationPreviewLayout: FC<LightSaturationPreviewProps> = ({
+const LightSaturationPreviewLayout: FC<LightSaturationPreviewProps> = ({
   backgroundColor,
   className,
   color,

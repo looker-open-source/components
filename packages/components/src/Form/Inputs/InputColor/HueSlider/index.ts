@@ -23,4 +23,5 @@
  SOFTWARE.
 
  */
-export * from './InputColorRevamp'
+
+export * from './HueSlider'

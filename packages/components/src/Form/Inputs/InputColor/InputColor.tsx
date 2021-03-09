@@ -33,14 +33,14 @@ import React, {
   useEffect,
 } from 'react'
 import styled from 'styled-components'
-import get from 'lodash/get'
 import { useID, useWrapEvent } from '../../../utils'
 import { usePopover, PopoverContent } from '../../../Popover'
 import { InputText, InputTextProps } from '../InputText'
 import { useFormContext } from '../../Form'
-import { HueSaturation, SimpleHSV } from './ColorWheel/color_wheel_utils'
-import { ColorWheel } from './ColorWheel'
-import { LuminositySlider } from './LuminositySlider'
+import { SpaceVertical } from '../../../Layout'
+import { HueSlider } from './HueSlider'
+import { LightSaturationPreview } from './LightSaturationPreview'
+import { SimpleHSV } from './ColorWheel/color_wheel_utils'
 import { Swatch } from './Swatch'
 import {
   hsv2hex,
@@ -48,8 +48,6 @@ import {
   str2simpleHsv,
 } from './utils/color_format_utils'
 import { isValidColor } from './utils/color_utils'
-
-const colorWheelSize = 164
 
 export interface InputColorProps extends Omit<InputTextProps, 'height'> {
   /**
@@ -134,16 +132,6 @@ export const InputColorComponent = forwardRef(
       callOnChange(newColor)
     }
 
-    const handleColorChange = (hs: HueSaturation) => {
-      setColorState({ ...hs, v: get(color, 'v', 1) })
-    }
-
-    const handleSliderChange = (event: FormEvent<HTMLInputElement>) =>
-      setColorState({
-        ...(color || { h: 0, s: 100, v: 100 }),
-        v: Number(event.currentTarget.value) / 100,
-      })
-
     const handleInputTextChange = (event: FormEvent<HTMLInputElement>) => {
       const newValue = event.currentTarget.value
       setInputTextValue(newValue)
@@ -153,22 +141,33 @@ export const InputColorComponent = forwardRef(
       setColor(getColorFromText(event.currentTarget.value))
     }
 
+    const selectedColor = simpleHSVtoFormattedColorString({
+      ...(color || { h: 0, s: 1, v: 1 }),
+    })
+
+    // Used as the background color for the LightSaturationPreview and
+    // the handle on the HueSlider
+    const fullColor = simpleHSVtoFormattedColorString({
+      h: color ? color.h : 0,
+      s: 1,
+      v: 1,
+    })
+
     const content = (
       <PopoverContent display="flex" flexDirection="column">
-        <ColorWheel
-          size={colorWheelSize}
-          hue={get(color, 'h')}
-          saturation={get(color, 's')}
-          value={get(color, 'v')}
-          onColorChange={handleColorChange}
-        />
-        <LuminositySlider
-          min={0}
-          max={100}
-          step={1}
-          value={get(color, 'v', 1) * 100}
-          onChange={handleSliderChange}
-        />
+        <SpaceVertical gap="medium">
+          <LightSaturationPreview
+            backgroundColor={fullColor}
+            color={selectedColor}
+            hsv={color || { h: 0, s: 1, v: 1 }}
+            setHsv={setColorState}
+          />
+          <HueSlider
+            color={fullColor}
+            hsv={color || { h: 0, s: 1, v: 1 }}
+            setHsv={setColorState}
+          />
+        </SpaceVertical>
       </PopoverContent>
     )
 
