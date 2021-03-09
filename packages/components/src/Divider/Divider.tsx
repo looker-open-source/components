@@ -70,6 +70,7 @@ export const DividerBase = styled.hr
     ({ appearance = 'default', customColor, size = '1px' }) => ({
       appearance,
       bg: customColor,
+      my: 'none',
       size,
     })
   )<DividerProps>`
