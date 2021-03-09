@@ -27,6 +27,7 @@
 import React, { FC, MouseEvent, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import { useMouseDragPosition, usePreviousValue } from '../../../../utils'
+import { simpleHSVtoFormattedColorString } from '../utils/color_format_utils'
 import { SimpleHSV } from '../utils/color_utils'
 
 const previewHeight = 150
@@ -60,17 +61,13 @@ const Handle2d = styled.div.attrs<Handle2dProps>(({ color, x, y }) => ({
 `
 
 interface LightSaturationPreviewProps {
-  backgroundColor: string
   className?: string
-  color: string
   hsv: SimpleHSV
   setHsv: (hsv: SimpleHSV) => void
 }
 
 const LightSaturationPreviewLayout: FC<LightSaturationPreviewProps> = ({
-  backgroundColor,
   className,
-  color,
   hsv,
   setHsv,
 }) => {
@@ -127,6 +124,17 @@ const LightSaturationPreviewLayout: FC<LightSaturationPreviewProps> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [mousePos]
   )
+
+  // Used to generate the preview's backgroudn gradient
+  const backgroundColor = simpleHSVtoFormattedColorString({
+    h: hsv.h,
+    s: 1,
+    v: 1,
+  })
+
+  const color = simpleHSVtoFormattedColorString({
+    ...hsv,
+  })
 
   return (
     <LightSaturationPreviewContainer

@@ -27,6 +27,7 @@
 import React, { FC, MouseEvent, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import { useMouseDragPosition, usePreviousValue } from '../../../../utils'
+import { simpleHSVtoFormattedColorString } from '../utils/color_format_utils'
 import { SimpleHSV } from '../utils/color_utils'
 
 const sliderHeight = 12
@@ -63,14 +64,12 @@ const HueSliderHandle = styled.div.attrs<HandleProps>(
 
 interface HueSliderProps {
   className?: string
-  color: string
   hsv: SimpleHSV
   setHsv: (hsv: SimpleHSV) => void
 }
 
 export const HueSliderLayout: FC<HueSliderProps> = ({
   className,
-  color,
   hsv,
   setHsv,
 }) => {
@@ -121,7 +120,7 @@ export const HueSliderLayout: FC<HueSliderProps> = ({
       ref={sliderRef}
     >
       <HueSliderHandle
-        color={color}
+        color={simpleHSVtoFormattedColorString({ ...hsv })}
         isMouseDown={isMouseDown}
         position={handlePosition}
       />

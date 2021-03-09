@@ -140,29 +140,14 @@ export const InputColorComponent = forwardRef(
       setColor(getColorFromText(event.currentTarget.value))
     }
 
-    const selectedColor = simpleHSVtoFormattedColorString({
-      ...(color || { h: 0, s: 1, v: 1 }),
-    })
-
-    // Used as the background color for the LightSaturationPreview and
-    // the handle on the HueSlider
-    const fullColor = simpleHSVtoFormattedColorString({
-      h: color ? color.h : 0,
-      s: 1,
-      v: 1,
-    })
-
     const content = (
       <PopoverContent display="flex" flexDirection="column">
         <SpaceVertical gap="medium">
           <LightSaturationPreview
-            backgroundColor={fullColor}
-            color={selectedColor}
             hsv={color || { h: 0, s: 1, v: 1 }}
             setHsv={setColorState}
           />
           <HueSlider
-            color={fullColor}
             hsv={color || { h: 0, s: 1, v: 1 }}
             setHsv={setColorState}
           />
