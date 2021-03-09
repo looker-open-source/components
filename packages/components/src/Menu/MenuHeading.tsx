@@ -27,9 +27,9 @@
 import React, { FC, useContext, useRef, ReactNode, RefObject } from 'react'
 import styled from 'styled-components'
 import {
-  ColorProps,
+  TextColorProps,
   TypographyProps,
-  SpaceProps,
+  PaddingProps,
   pickStyledProps,
 } from '@looker/design-tokens'
 import { Heading } from '../Text/Heading'
@@ -37,7 +37,10 @@ import { listItemDimensions } from '../List'
 import { ListItemContext } from '../List/ListItemContext'
 import { useElementVisibility } from './MenuHeading.hooks'
 
-interface MenuHeadingProps extends ColorProps, TypographyProps, SpaceProps {
+interface MenuHeadingProps
+  extends TextColorProps,
+    TypographyProps,
+    PaddingProps {
   children: ReactNode
 }
 
