@@ -88,7 +88,7 @@ describe('InputColor', () => {
   test('opens on swatch click', () => {
     renderWithTheme(<InputColor value="green" />)
     fireEvent.click(screen.getByTestId('swatch'))
-    expect(screen.getByTestId('color-wheel')).toBeInTheDocument()
+    expect(screen.getByTestId('color-picker')).toBeInTheDocument()
     fireEvent.click(document)
   })
 
@@ -100,7 +100,7 @@ describe('InputColor', () => {
 
     // Find swatch, verify clicking doesn't open Popover
     fireEvent.click(screen.getByTestId('swatch'))
-    expect(screen.queryByTestId('color-wheel')).not.toBeInTheDocument()
+    expect(screen.queryByTestId('color-picker')).not.toBeInTheDocument()
   })
 
   test('readOnly', () => {
@@ -111,6 +111,6 @@ describe('InputColor', () => {
 
     // Find swatch, verify clicking doesn't open Popover
     fireEvent.click(screen.getByTestId('swatch'))
-    expect(screen.queryByTestId('color-wheel')).not.toBeInTheDocument()
+    expect(screen.queryByTestId('color-picker')).not.toBeInTheDocument()
   })
 })
