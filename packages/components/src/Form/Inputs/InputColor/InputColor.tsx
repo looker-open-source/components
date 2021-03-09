@@ -37,9 +37,6 @@ import { useID, useWrapEvent } from '../../../utils'
 import { usePopover, PopoverContent } from '../../../Popover'
 import { InputText, InputTextProps } from '../InputText'
 import { useFormContext } from '../../Form'
-import { SpaceVertical } from '../../../Layout'
-import { HueSlider } from './HueSlider'
-import { LightSaturationPreview } from './LightSaturationPreview'
 import { Swatch } from './Swatch'
 import {
   hsv2hex,
@@ -47,6 +44,7 @@ import {
   str2simpleHsv,
 } from './utils/color_format_utils'
 import { isValidColor, SimpleHSV } from './utils/color_utils'
+import { ColorPicker } from './ColorPicker'
 
 export interface InputColorProps extends Omit<InputTextProps, 'height'> {
   /**
@@ -142,16 +140,10 @@ export const InputColorComponent = forwardRef(
 
     const content = (
       <PopoverContent display="flex" flexDirection="column">
-        <SpaceVertical gap="medium">
-          <LightSaturationPreview
-            hsv={color || { h: 0, s: 1, v: 1 }}
-            setHsv={setColorState}
-          />
-          <HueSlider
-            hsv={color || { h: 0, s: 1, v: 1 }}
-            setHsv={setColorState}
-          />
-        </SpaceVertical>
+        <ColorPicker
+          hsv={color || { h: 0, s: 1, v: 1 }}
+          setHsv={setColorState}
+        />
       </PopoverContent>
     )
 
