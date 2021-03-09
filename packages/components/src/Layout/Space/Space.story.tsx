@@ -31,7 +31,6 @@ import { Icon } from '../../Icon'
 import { Status } from '../../Status'
 import { Paragraph } from '../../Text'
 import { Space, SpaceHelperProps } from './Space'
-import { SpaceVertical, SpaceVerticalProps } from './SpaceVertical'
 
 export default {
   component: Space,
@@ -44,9 +43,6 @@ interface WithChildren {
 
 const Template: Story<SpaceHelperProps & WithChildren> = (args) => (
   <Space {...args} />
-)
-const TemplateVertical: Story<SpaceVerticalProps & WithChildren> = (args) => (
-  <SpaceVertical {...args} />
 )
 
 export const Basic = Template.bind({})
@@ -65,12 +61,6 @@ Reverse.args = {
   ...Basic.args,
   reverse: true,
 }
-
-export const BasicSpaceVertical = TemplateVertical.bind({})
-BasicSpaceVertical.args = { ...Basic.args }
-
-export const ReverseSpaceVertical = TemplateVertical.bind({})
-ReverseSpaceVertical.args = { ...Reverse.args }
 
 export const SpaceCrush = () => (
   <Space>

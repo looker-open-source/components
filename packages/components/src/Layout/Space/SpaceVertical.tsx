@@ -74,8 +74,8 @@ const flexGap = ({ gap = defaultGap, reverse }: SpaceVerticalProps) => css`
 
 export const SpaceVertical = styled.div
   .withConfig({ shouldForwardProp })
-  .attrs<SpaceVerticalProps>(({ align = 'stretch', width = '100%' }) => ({
-    align,
+  .attrs<SpaceVerticalProps>(({ align = 'flex-start', width = '100%' }) => ({
+    alignItems: align,
     width,
   }))<SpaceVerticalProps>`
   ${spaceCSS}

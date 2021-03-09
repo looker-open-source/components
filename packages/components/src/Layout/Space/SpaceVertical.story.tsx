@@ -24,44 +24,34 @@
 
  */
 
-import 'jest-styled-components'
+import { Story } from '@storybook/react/types-6-0'
 import React from 'react'
-import { screen } from '@testing-library/react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { SpaceVertical } from './SpaceVertical'
+import { Button } from '../../Button'
+import { SpaceVertical, SpaceVerticalProps } from './SpaceVertical'
 
-const content = (
-  <>
-    <div>one</div>
-    <div>two</div>
-    <div>three</div>
-    <div>four</div>
-  </>
+export default {
+  component: SpaceVertical,
+  title: 'SpaceVertical',
+}
+
+interface WithChildren {
+  children: JSX.Element
+}
+
+const Template: Story<SpaceVerticalProps & WithChildren> = (args) => (
+  <SpaceVertical {...args} />
 )
 
-describe('SpaceVertical', () => {
-  xtest('default', () => {
-    renderWithTheme(<SpaceVertical>{content}</SpaceVertical>)
-    expect(screen.getByText('one')).toHaveStyle('margin-top: 0rem;')
+export const Basic = Template.bind({})
+Basic.args = {
+  children: (
+    <>
+      <Button>Button A</Button>
+      <Button>Button B</Button>
+      <Button>Button C</Button>
+    </>
+  ),
+}
 
-    expect(screen.getByText('one')).toHaveStyle('margin-top: 0rem')
-    expect(screen.getByText('two')).toHaveStyle('margin-top: 1rem')
-  })
-
-  xtest('specified gap', () => {
-    renderWithTheme(<SpaceVertical gap="xlarge">{content}</SpaceVertical>)
-    expect(screen.getByText('four')).toHaveStyle('margin-top: 2rem')
-    expect(screen.getByText('one')).not.toHaveStyle('margin-top')
-  })
-
-  test('reversed', () => {
-    renderWithTheme(
-      <SpaceVertical data-testid="space" reverse>
-        {content}
-      </SpaceVertical>
-    )
-    expect(screen.getByTestId('space')).toHaveStyle(
-      'flex-direction: column-reverse;'
-    )
-  })
-})
+export const Reverse = Template.bind({})
+Reverse.args = { ...Basic.args, reverse: true }
