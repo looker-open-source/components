@@ -26,10 +26,7 @@
 
 import React, { FC, MouseEvent, useEffect, useRef } from 'react'
 import styled from 'styled-components'
-import {
-  useMouseDragPosition,
-  usePreviousValue,
-} from 'packages/components/src/utils'
+import { useMouseDragPosition, usePreviousValue } from '../../../../utils'
 import { SimpleHSV } from '../utils/color_utils'
 
 const sliderHeight = 12
