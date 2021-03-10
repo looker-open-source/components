@@ -28,3 +28,7 @@ export * from './InputColor'
 export * from './HueSlider'
 export * from './LightSaturationPreview'
 export * from './Swatch'
+
+// TODO: Deprecate these directories
+export * from './ColorWheel'
+export * from './LuminositySlider'
