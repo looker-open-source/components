@@ -75,9 +75,10 @@ export const DividerBase = styled.hr
   )<DividerProps>`
   ${reset}
   ${position}
-  ${space}
 
   border: none;
+  margin: 0; /* reset <hr /> built-in margin */
+  ${space}
 
   ${({ customColor }) => (customColor ? color : appearanceVariant)}
 `

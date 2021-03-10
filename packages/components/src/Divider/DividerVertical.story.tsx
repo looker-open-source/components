@@ -24,37 +24,20 @@
 
  */
 
-import styled from 'styled-components'
-import { space } from '@looker/design-tokens'
-import { DividerBase, DividerProps } from './Divider'
+import React from 'react'
+import { Story } from '@storybook/react/types-6-0'
+import { DividerVertical, DividerVerticalProps } from './DividerVertical'
 
-export interface DividerVerticalProps extends DividerProps {
-  height?: number | string
-  stretch?: boolean
+export default {
+  component: DividerVertical,
+  title: 'DividerVertical',
 }
 
-export const DividerVertical = styled(DividerBase).attrs<DividerVerticalProps>(
-  (props) => {
-    if (props.height && props.stretch) {
-      // eslint-disable-next-line no-console
-      console.warn(
-        'When using DividerVertical, the props height and stretch are incompatible. The stretch value will be discarded'
-      )
-    }
+const Template: Story<DividerVerticalProps> = (args) => (
+  <DividerVertical {...args} />
+)
 
-    const { height = '1rem', mx = 'xsmall', my = 'xsmall' } = props
-
-    return {
-      ...props,
-      height,
-      mx,
-      my,
-    }
-  }
-)<DividerVerticalProps>`
-  ${space}
-  display: inline-block;
-  width: ${({ size }) => size};
-  ${({ height, stretch }) =>
-    stretch ? `align-self: stretch;` : `height: ${height};`}
-`
+export const Basic = Template.bind({})
+Basic.parameters = {
+  storyshots: { disable: true },
+}

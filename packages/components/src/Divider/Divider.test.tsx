@@ -26,17 +26,30 @@
 
 import 'jest-styled-components'
 import React from 'react'
-import { assertSnapshot } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
+import { renderWithTheme } from '@looker/components-test-utils'
 import { Divider } from './Divider'
 
-test('Default Divider', () => {
-  assertSnapshot(<Divider />)
-})
+describe('Divider', () => {
+  test('Default', () => {
+    renderWithTheme(<Divider data-testid="divider" />)
+    expect(screen.getByTestId('divider')).toBeInTheDocument()
+  })
 
-test('Divider with a variant', () => {
-  assertSnapshot(<Divider appearance="onDark" />)
-})
+  test('appearance', () => {
+    renderWithTheme(<Divider data-testid="divider" appearance="onDark" />)
+    expect(screen.getByTestId('divider')).toHaveStyle(
+      'background-color: rgb(112, 119, 129)'
+    )
+  })
 
-test('A custom Divider', () => {
-  assertSnapshot(<Divider size="20px" customColor="turquoise" />)
+  test('custom', () => {
+    renderWithTheme(
+      <Divider data-testid="divider" size="20px" customColor="turquoise" />
+    )
+    expect(screen.getByTestId('divider')).toHaveStyle('height: 20px')
+    expect(screen.getByTestId('divider')).toHaveStyle(
+      'background-color: turquoise'
+    )
+  })
 })
