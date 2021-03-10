@@ -48,6 +48,7 @@ interface Handle2dProps {
 const Handle2d = styled.div.attrs<Handle2dProps>(({ color, x, y }) => ({
   style: {
     backgroundColor: color,
+    // The ${HANDLE_WIDTH} / 2 and ${HANDLE_HEIGHT} / 2 center the handle on the click position
     transform: `translate(calc(${x}px - ${HANDLE_WIDTH} / 2), calc(${y}px - ${HANDLE_HEIGHT} / 2))`,
   },
 }))<Handle2dProps>`

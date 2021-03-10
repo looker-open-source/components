@@ -48,6 +48,7 @@ const HueSliderHandle = styled.div.attrs<HandleProps>(
   ({ color, position }) => ({
     style: {
       background: color,
+      // The ${HANDLE_WIDTH} / 2 centers the handle on the click position
       transform: `translateX(calc(${position}px - ${HANDLE_WIDTH} / 2))`,
     },
   })
