@@ -41,7 +41,7 @@ import { Swatch } from './Swatch'
 import {
   isValidColor,
   hsvToHex,
-  simpleHSVtoFormattedColorString,
+  simpleHsvToFormattedColorString,
   stringToSimpleHsv,
 } from './utils'
 import { SimpleHSV } from './types'
@@ -66,14 +66,14 @@ const createEventWithHSVValue = (
       value:
         typeof color === 'string'
           ? color
-          : simpleHSVtoFormattedColorString(color),
+          : simpleHsvToFormattedColorString(color),
     },
     target: {
       name,
       value:
         typeof color === 'string'
           ? color
-          : simpleHSVtoFormattedColorString(color),
+          : simpleHsvToFormattedColorString(color),
     },
   } as ChangeEvent<HTMLInputElement>
 }
@@ -126,7 +126,7 @@ export const InputColorComponent = forwardRef(
 
     const setColorState = (newColor: SimpleHSV) => {
       setColor(newColor)
-      newColor && setInputTextValue(simpleHSVtoFormattedColorString(newColor))
+      newColor && setInputTextValue(simpleHsvToFormattedColorString(newColor))
       callOnChange(newColor)
     }
 

@@ -31,7 +31,7 @@ import { rgbToRgbiString } from './rgbToRgbiString'
 import { rgbToRgbpString } from './rgbToRgbpString'
 import { rgbToHslString } from './rgbToHslString'
 
-export const simpleHSVtoFormattedColorString = (
+export const simpleHsvToFormattedColorString = (
   color: SimpleHSV,
   colorFormat?: string
 ) => {
