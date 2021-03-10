@@ -27,7 +27,7 @@
 import 'jest-styled-components'
 import React, { useState } from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { fireEvent } from '@testing-library/react'
+import { screen, fireEvent } from '@testing-library/react'
 import { FieldText } from '../Fields/FieldText'
 import { Fieldset } from './Fieldset'
 
@@ -39,75 +39,127 @@ const fieldTexts = (
   </>
 )
 
-describe('Fieldset - Accordion mode', () => {
-  test('Renders legend and children (on legend click)', () => {
-    const { getByText, queryByText } = renderWithTheme(
-      <Fieldset legend="Legend" accordion>
-        {fieldTexts}
-      </Fieldset>
-    )
+const globalConsole = global.console
+const warnMock = jest.fn()
 
-    expect(queryByText('one')).not.toBeInTheDocument()
-    expect(queryByText('two')).not.toBeInTheDocument()
-    expect(queryByText('three')).not.toBeInTheDocument()
-    fireEvent.click(getByText('Legend'))
-    getByText('one')
-    getByText('two')
-    getByText('three')
+beforeEach(() => {
+  jest.useFakeTimers()
+  global.console = ({
+    warn: warnMock,
+  } as unknown) as Console
+})
+
+afterEach(() => {
+  global.console = globalConsole
+})
+
+describe('Fieldset', () => {
+  test('Basic', () => {
+    renderWithTheme(<Fieldset>{fieldTexts}</Fieldset>)
+    expect(screen.getByText('three')).toBeInTheDocument()
   })
 
-  test('Renders children by default when defaultOpen === true', () => {
-    const { getByText } = renderWithTheme(
-      <Fieldset legend="Legend" accordion defaultOpen>
-        {fieldTexts}
-      </Fieldset>
-    )
-
-    getByText('one')
-    getByText('two')
-    getByText('three')
+  test('Accordion w/o Legend warning', () => {
+    renderWithTheme(<Fieldset accordion>{fieldTexts}</Fieldset>)
+    expect(warnMock.mock.calls).toMatchInlineSnapshot(`
+      Array [
+        Array [
+          "Please provide a value for the \\"legend\\" prop if using accordion mode",
+        ],
+      ]
+    `)
   })
 
-  test('Triggers onClose and onOpen callbacks on legend click', () => {
-    const onClose = jest.fn()
-    const onOpen = jest.fn()
-
-    const { getByText } = renderWithTheme(
-      <Fieldset legend="Legend" accordion onClose={onClose} onOpen={onOpen}>
-        {fieldTexts}
-      </Fieldset>
-    )
-
-    const disclosure = getByText('Legend')
-    fireEvent.click(disclosure)
-    expect(onOpen).toHaveBeenCalled()
-    fireEvent.click(disclosure)
-    expect(onClose).toHaveBeenCalled()
+  test('Inline', () => {
+    renderWithTheme(<Fieldset inline>{fieldTexts}</Fieldset>)
+    expect(screen.getByText('three')).toBeInTheDocument()
   })
 
-  test('Shows and hides children on legend click with provided isOpen and toggleOpen props', () => {
-    const Wrapper = () => {
-      const [isOpen, setIsOpen] = useState(false)
-      return (
-        <Fieldset
-          legend="Legend"
-          accordion
-          isOpen={isOpen}
-          toggleOpen={setIsOpen}
-        >
+  test('Legend', () => {
+    renderWithTheme(<Fieldset legend="Legend">{fieldTexts}</Fieldset>)
+    expect(screen.getByText('Legend')).toBeInTheDocument()
+  })
+
+  test('Special Legend', () => {
+    renderWithTheme(<Fieldset legend={<>Legend</>}>{fieldTexts}</Fieldset>)
+    expect(screen.getByText('Legend')).toBeInTheDocument()
+  })
+
+  test('Wrap', () => {
+    renderWithTheme(<Fieldset wrap>{fieldTexts}</Fieldset>)
+    expect(screen.getByText('three')).toBeInTheDocument()
+  })
+
+  describe('Accordion mode', () => {
+    test('Renders legend and children (on legend click)', () => {
+      const { getByText, queryByText } = renderWithTheme(
+        <Fieldset legend="Legend" accordion>
           {fieldTexts}
         </Fieldset>
       )
-    }
 
-    const { getByText, queryByText } = renderWithTheme(<Wrapper />)
+      expect(queryByText('one')).not.toBeInTheDocument()
+      expect(queryByText('two')).not.toBeInTheDocument()
+      expect(queryByText('three')).not.toBeInTheDocument()
+      fireEvent.click(getByText('Legend'))
+      getByText('one')
+      getByText('two')
+      getByText('three')
+    })
 
-    expect(queryByText('one')).not.toBeInTheDocument()
-    expect(queryByText('two')).not.toBeInTheDocument()
-    expect(queryByText('three')).not.toBeInTheDocument()
-    fireEvent.click(getByText('Legend'))
-    getByText('one')
-    getByText('two')
-    getByText('three')
+    test('Renders children by default when defaultOpen === true', () => {
+      const { getByText } = renderWithTheme(
+        <Fieldset legend="Legend" accordion defaultOpen>
+          {fieldTexts}
+        </Fieldset>
+      )
+
+      getByText('one')
+      getByText('two')
+      getByText('three')
+    })
+
+    test('Triggers onClose and onOpen callbacks on legend click', () => {
+      const onClose = jest.fn()
+      const onOpen = jest.fn()
+
+      const { getByText } = renderWithTheme(
+        <Fieldset legend="Legend" accordion onClose={onClose} onOpen={onOpen}>
+          {fieldTexts}
+        </Fieldset>
+      )
+
+      const disclosure = getByText('Legend')
+      fireEvent.click(disclosure)
+      expect(onOpen).toHaveBeenCalled()
+      fireEvent.click(disclosure)
+      expect(onClose).toHaveBeenCalled()
+    })
+
+    test('Shows and hides children on legend click with provided isOpen and toggleOpen props', () => {
+      const Wrapper = () => {
+        const [isOpen, setIsOpen] = useState(false)
+        return (
+          <Fieldset
+            legend="Legend"
+            accordion
+            isOpen={isOpen}
+            toggleOpen={setIsOpen}
+          >
+            {fieldTexts}
+          </Fieldset>
+        )
+      }
+
+      const { getByText, queryByText } = renderWithTheme(<Wrapper />)
+
+      expect(queryByText('one')).not.toBeInTheDocument()
+      expect(queryByText('two')).not.toBeInTheDocument()
+      expect(queryByText('three')).not.toBeInTheDocument()
+      fireEvent.click(getByText('Legend'))
+      getByText('one')
+      getByText('two')
+      getByText('three')
+    })
   })
 })
