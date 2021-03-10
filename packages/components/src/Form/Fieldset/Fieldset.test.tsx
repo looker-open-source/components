@@ -26,7 +26,7 @@
 
 import 'jest-styled-components'
 import React, { useState } from 'react'
-import { assertSnapshot, renderWithTheme } from '@looker/components-test-utils'
+import { renderWithTheme } from '@looker/components-test-utils'
 import { fireEvent } from '@testing-library/react'
 import { FieldText } from '../Fields/FieldText'
 import { Fieldset } from './Fieldset'
@@ -38,10 +38,6 @@ const fieldTexts = (
     <FieldText label="three" name="nam3" id="text-3" />
   </>
 )
-
-test('Fieldset', () => {
-  assertSnapshot(<Fieldset legend="Legend">{fieldTexts}</Fieldset>)
-})
 
 describe('Fieldset - Accordion mode', () => {
   test('Renders legend and children (on legend click)', () => {

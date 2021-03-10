@@ -26,21 +26,11 @@
 
 import 'jest-styled-components'
 import React from 'react'
-import { createWithTheme, mountWithTheme } from '@looker/components-test-utils'
+import { mountWithTheme } from '@looker/components-test-utils'
 import { Button } from '../Button/Button'
 import { FieldText } from './Fields/FieldText/FieldText'
 import { Form } from './Form'
 import { ValidationMessage } from './ValidationMessage'
-
-test('Form with one child', () => {
-  const component = createWithTheme(
-    <Form>
-      <FieldText label="label" id="text-field" name="name" />
-    </Form>
-  )
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
-})
 
 test('Form with two invalid children', () => {
   const component = mountWithTheme(

@@ -55,3 +55,6 @@ Basic.args = {
 
 export const Reverse = Template.bind({})
 Reverse.args = { ...Basic.args, reverse: true }
+
+export const Stretch = Template.bind({})
+Stretch.args = { ...Basic.args, align: 'stretch' }

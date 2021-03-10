@@ -156,7 +156,7 @@ const FieldsetLayout = forwardRef(
           <AccordionContent>{content}</AccordionContent>
         </Accordion>
       ) : (
-        <SpaceVertical>
+        <SpaceVertical align="stretch">
           {typeof legend === 'string' ? <Legend>{legend}</Legend> : legend}
           {content}
         </SpaceVertical>

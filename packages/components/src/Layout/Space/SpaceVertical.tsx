@@ -26,34 +26,15 @@
 
 import { shouldForwardProp } from '@looker/design-tokens'
 import styled, { css } from 'styled-components'
-import { variant } from 'styled-system'
 import { defaultGap, spaceCSS, SpaceHelperProps } from './Space'
 
 export interface SpaceVerticalProps extends Omit<SpaceHelperProps, 'align'> {
   /**
    * Align items vertically within `Space`. `stretch` will cause items to stretch the full-width the `SpaceVertical`
-   * @default 'stretch'
+   * @default 'start'
    */
-  align?: 'start' | 'center' | 'end' | 'stretch'
+  align?: 'start' | 'center' | 'end' | 'stretch' | 'initial'
 }
-
-const align = variant({
-  prop: 'align',
-  variants: {
-    center: {
-      alignItems: 'center',
-    },
-    end: {
-      alignItems: 'flex-end',
-    },
-    start: {
-      alignItems: 'flex-start',
-    },
-    stretch: {
-      alignItems: 'stretch',
-    },
-  },
-})
 
 const flexGap = ({ gap = defaultGap, reverse }: SpaceVerticalProps) => css`
   @supports (-moz-appearance: none) {
@@ -79,7 +60,6 @@ export const SpaceVertical = styled.div
     width,
   }))<SpaceVerticalProps>`
   ${spaceCSS}
-  ${align}
   ${flexGap}
   flex-direction: ${({ reverse }) => (reverse ? 'column-reverse' : 'column')};
 `
