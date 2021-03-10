@@ -50,11 +50,11 @@ export default {
 export const ExamplePage = () => (
   <Highlighter>
     <Page>
-      <Header height="4rem" px="large">
+      <Header border height="4rem" px="large">
         Header
       </Header>
       <Layout hasAside>
-        <Aside p="large" width="200px">
+        <Aside border="y" p="large" width="200px">
           Aside
         </Aside>
         <Section p="xxlarge" as="main">
@@ -127,7 +127,7 @@ export const ExamplePage = () => (
           Alternate Aside
         </AsideAlt>
       </Layout>
-      <Footer height="3rem" px="large">
+      <Footer border="top" height="3rem" px="large">
         I'm a footer
       </Footer>
     </Page>

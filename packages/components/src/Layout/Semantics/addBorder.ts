@@ -24,29 +24,38 @@
 
  */
 
-import { shouldForwardProp } from '@looker/design-tokens'
-import styled from 'styled-components'
-import { SemanticLayoutBase, semanticLayoutCSS } from './semanticStyledBase'
-import { addBorder } from './addBorder'
-export interface AsideProps extends SemanticLayoutBase {
-  /**
-   * Specify width of aside
-   * @default '12rem'
-   */
-  width?: string
+import { css } from 'styled-components'
+
+export const addBorder = (border?: string) => {
+  if (border === 'bottom') {
+    return css`
+      border-bottom: 1px solid ${({ theme }) => theme.colors.ui2};
+    `
+  } else if (border === 'left') {
+    return css`
+      border-left: 10px solid ${({ theme }) => theme.colors.ui2};
+    `
+  } else if (border === 'right') {
+    return css`
+      border-right: 1px solid ${({ theme }) => theme.colors.ui2};
+    `
+  } else if (border === 'top') {
+    return css`
+      border-top: 1px solid ${({ theme }) => theme.colors.ui2};
+    `
+  } else if (border === 'x') {
+    return css`
+      border-bottom: 1px solid ${({ theme }) => theme.colors.ui2};
+      border-top: 1px solid ${({ theme }) => theme.colors.ui2};
+    `
+  } else if (border === 'y') {
+    return css`
+      border-left: 1px solid ${({ theme }) => theme.colors.ui2};
+      border-right: 1px solid ${({ theme }) => theme.colors.ui2};
+    `
+  } else {
+    return css`
+      border: 1px solid ${({ theme }) => theme.colors.ui2};
+    `
+  }
 }
-
-export const Aside = styled.aside
-  .withConfig({ shouldForwardProp })
-  .attrs<AsideProps>(({ border, width = '12rem' }) => ({
-    border,
-    width,
-  }))<AsideProps>`
-  ${semanticLayoutCSS}
-
-  flex: 0 0 ${({ width }) => width};
-  max-width: ${({ width }) => width};
-  min-width: ${({ width }) => width};
-  width: 0;
-  ${({ border }) => border && addBorder(border)}
-`

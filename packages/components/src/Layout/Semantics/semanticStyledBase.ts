@@ -34,7 +34,9 @@ import { css } from 'styled-components'
 
 export interface SemanticLayoutBase
   extends PaddingProps,
-    CompatibleHTMLProps<HTMLElement> {}
+    CompatibleHTMLProps<HTMLElement> {
+  border?: string | boolean
+}
 
 export const semanticLayoutCSS = css`
   ${reset}
