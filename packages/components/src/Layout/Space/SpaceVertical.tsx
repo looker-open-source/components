@@ -26,34 +26,17 @@
 
 import { shouldForwardProp } from '@looker/design-tokens'
 import styled, { css } from 'styled-components'
-import { variant } from 'styled-system'
 import { defaultGap, spaceCSS, SpaceHelperProps } from './Space'
 
 export interface SpaceVerticalProps extends Omit<SpaceHelperProps, 'align'> {
   /**
-   * Align items vertically within `Space`. `stretch` will cause items to stretch the full-width the `SpaceVertical`
-   * @default 'stretch'
+   * Align items vertically within `Space`.
+   * `stretch` will cause items to stretch the full-width the `SpaceVertical`
+   * `start` & `end` will apply a `flex-start` and `flex-end` behavior respectively
+   * @default 'start'
    */
   align?: 'start' | 'center' | 'end' | 'stretch'
 }
-
-const align = variant({
-  prop: 'align',
-  variants: {
-    center: {
-      alignItems: 'center',
-    },
-    end: {
-      alignItems: 'flex-end',
-    },
-    start: {
-      alignItems: 'flex-start',
-    },
-    stretch: {
-      alignItems: 'stretch',
-    },
-  },
-})
 
 const flexGap = ({ gap = defaultGap, reverse }: SpaceVerticalProps) => css`
   @supports (-moz-appearance: none) {
@@ -74,12 +57,18 @@ const flexGap = ({ gap = defaultGap, reverse }: SpaceVerticalProps) => css`
 
 export const SpaceVertical = styled.div
   .withConfig({ shouldForwardProp })
-  .attrs<SpaceVerticalProps>(({ align = 'stretch', width = '100%' }) => ({
-    align,
-    width,
-  }))<SpaceVerticalProps>`
+  .attrs<SpaceVerticalProps>(({ align = 'flex-start', width = '100%' }) => {
+    // Use `flex-start|end` instead of `start|end`
+    if (['start', 'end'].includes('align')) {
+      align = `flex-${align}`
+    }
+
+    return {
+      alignItems: align,
+      width,
+    }
+  })<SpaceVerticalProps>`
   ${spaceCSS}
-  ${align}
   ${flexGap}
   flex-direction: ${({ reverse }) => (reverse ? 'column-reverse' : 'column')};
 `

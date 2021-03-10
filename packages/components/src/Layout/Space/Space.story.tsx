@@ -31,46 +31,28 @@ import { Icon } from '../../Icon'
 import { Status } from '../../Status'
 import { Paragraph } from '../../Text'
 import { Space, SpaceHelperProps } from './Space'
-import { SpaceVertical, SpaceVerticalProps } from './SpaceVertical'
 
 export default {
   component: Space,
   title: 'Space',
 }
 
-interface WithChildren {
-  children: JSX.Element
-}
-
-const Template: Story<SpaceHelperProps & WithChildren> = (args) => (
-  <Space {...args} />
-)
-const TemplateVertical: Story<SpaceVerticalProps & WithChildren> = (args) => (
-  <SpaceVertical {...args} />
+const Template: Story<SpaceHelperProps> = (args) => (
+  <Space {...args}>
+    <Button>Button A</Button>
+    <Button>Button B</Button>
+    <Button>Button C</Button>
+  </Space>
 )
 
 export const Basic = Template.bind({})
-Basic.args = {
-  children: (
-    <>
-      <Button>Button A</Button>
-      <Button>Button B</Button>
-      <Button>Button C</Button>
-    </>
-  ),
-}
+Basic.args = {}
 
 export const Reverse = Template.bind({})
 Reverse.args = {
   ...Basic.args,
   reverse: true,
 }
-
-export const BasicSpaceVertical = TemplateVertical.bind({})
-BasicSpaceVertical.args = { ...Basic.args }
-
-export const ReverseSpaceVertical = TemplateVertical.bind({})
-ReverseSpaceVertical.args = { ...Reverse.args }
 
 export const SpaceCrush = () => (
   <Space>

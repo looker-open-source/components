@@ -54,6 +54,9 @@ ComponentStyled.args = {
   children: <Button>Copy stuff</Button>,
   success: <Button>Success</Button>,
 }
+ComponentStyled.parameters = {
+  storyshots: { disable: true },
+}
 
 export default {
   component: CopyToClipboard,
