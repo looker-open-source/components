@@ -30,10 +30,12 @@ import { defaultGap, spaceCSS, SpaceHelperProps } from './Space'
 
 export interface SpaceVerticalProps extends Omit<SpaceHelperProps, 'align'> {
   /**
-   * Align items vertically within `Space`. `stretch` will cause items to stretch the full-width the `SpaceVertical`
+   * Align items vertically within `Space`.
+   * `stretch` will cause items to stretch the full-width the `SpaceVertical`
+   * `start` & `end` will apply a `flex-start` and `flex-end` behavior respectively
    * @default 'start'
    */
-  align?: 'start' | 'center' | 'end' | 'stretch' | 'initial'
+  align?: 'start' | 'center' | 'end' | 'stretch'
 }
 
 const flexGap = ({ gap = defaultGap, reverse }: SpaceVerticalProps) => css`

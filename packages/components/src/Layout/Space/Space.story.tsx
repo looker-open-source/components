@@ -37,24 +37,16 @@ export default {
   title: 'Space',
 }
 
-interface WithChildren {
-  children: JSX.Element
-}
-
-const Template: Story<SpaceHelperProps & WithChildren> = (args) => (
-  <Space {...args} />
+const Template: Story<SpaceHelperProps> = (args) => (
+  <Space {...args}>
+    <Button>Button A</Button>
+    <Button>Button B</Button>
+    <Button>Button C</Button>
+  </Space>
 )
 
 export const Basic = Template.bind({})
-Basic.args = {
-  children: (
-    <>
-      <Button>Button A</Button>
-      <Button>Button B</Button>
-      <Button>Button C</Button>
-    </>
-  ),
-}
+Basic.args = {}
 
 export const Reverse = Template.bind({})
 Reverse.args = {

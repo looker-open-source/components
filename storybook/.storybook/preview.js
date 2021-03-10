@@ -29,6 +29,21 @@ const postHeightMessage = () => {
 
 export const parameters = {
   layout: 'fullscreen',
+  argTypes: {
+    as: {
+      table: { disable: true },
+    },
+    forwardedAs: {
+      table: { disable: true },
+    },
+    ref: {
+      table: { disable: true },
+    },
+    theme: {
+      table: { disable: true },
+    },
+  },
+  controls: { expanded: true },
   docs: {
     page: () => {
       const [element, ref] = useCallbackRef()

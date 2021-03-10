@@ -30,28 +30,31 @@ import { Button } from '../../Button'
 import { SpaceVertical, SpaceVerticalProps } from './SpaceVertical'
 
 export default {
+  argTypes: {
+    forwardedAs: {
+      disable: true,
+    },
+    ref: {
+      disable: true,
+    },
+    theme: {
+      disable: true,
+    },
+  },
   component: SpaceVertical,
   title: 'SpaceVertical',
 }
 
-interface WithChildren {
-  children: JSX.Element
-}
-
-const Template: Story<SpaceVerticalProps & WithChildren> = (args) => (
-  <SpaceVertical {...args} />
+const Template: Story<SpaceVerticalProps> = (args) => (
+  <SpaceVertical {...args}>
+    <Button>Button A</Button>
+    <Button>Button B</Button>
+    <Button>Button C</Button>
+  </SpaceVertical>
 )
 
 export const Basic = Template.bind({})
-Basic.args = {
-  children: (
-    <>
-      <Button>Button A</Button>
-      <Button>Button B</Button>
-      <Button>Button C</Button>
-    </>
-  ),
-}
+Basic.args = {}
 
 export const Reverse = Template.bind({})
 Reverse.args = { ...Basic.args, reverse: true }
