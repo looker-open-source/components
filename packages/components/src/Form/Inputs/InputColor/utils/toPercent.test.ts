@@ -26,7 +26,7 @@
 
 import { toPercent } from './toPercent'
 
-describe('math_utils', () => {
+describe('toPercent', () => {
   const correctValues = [60, 24, 10, 13, 25]
   test('toPercent', () => {
     ;[
