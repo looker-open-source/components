@@ -54,7 +54,7 @@ export const ExamplePage = () => (
         Header
       </Header>
       <Layout hasAside>
-        <Aside border="y" p="large" width="200px">
+        <Aside borderY p="large" width="200px">
           Aside
         </Aside>
         <Section p="xxlarge" as="main">
@@ -127,7 +127,7 @@ export const ExamplePage = () => (
           Alternate Aside
         </AsideAlt>
       </Layout>
-      <Footer border="top" height="3rem" px="large">
+      <Footer borderTop height="3rem" px="large">
         I'm a footer
       </Footer>
     </Page>

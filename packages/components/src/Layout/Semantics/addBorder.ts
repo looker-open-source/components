@@ -26,36 +26,46 @@
 
 import { css } from 'styled-components'
 
-export const addBorder = (border?: string) => {
-  if (border === 'bottom') {
+type BorderPosition = 'all' | 'bottom' | 'left' | 'right' | 'top' | 'x' | 'y'
+
+export const borderHelper = (position: BorderPosition, color = 'ui2') => {
+  // if (color === false) return ''
+  if (position === 'all') {
+    // positions = [ 'bottom', 'left', 'right', 'top', ]
     return css`
-      border-bottom: 1px solid ${({ theme }) => theme.colors.ui2};
+      border: 1px solid ${({ theme }) => theme.colors[`${color}`]};
     `
-  } else if (border === 'left') {
+  } else if (position === 'bottom') {
+    // positions = [ 'bottom' ]
     return css`
-      border-left: 10px solid ${({ theme }) => theme.colors.ui2};
+      border-bottom: 1px solid ${({ theme }) => theme.colors[`${color}`]};
     `
-  } else if (border === 'right') {
+  } else if (position === 'left') {
+    // positions = [ 'left' ]
     return css`
-      border-right: 1px solid ${({ theme }) => theme.colors.ui2};
+      border-left: 1px solid ${({ theme }) => theme.colors[`${color}`]};
     `
-  } else if (border === 'top') {
+  } else if (position === 'right') {
+    // positions = [ 'right' ]
     return css`
-      border-top: 1px solid ${({ theme }) => theme.colors.ui2};
+      border-right: 1px solid ${({ theme }) => theme.colors[`${color}`]};
     `
-  } else if (border === 'x') {
+  } else if (position === 'top') {
+    // positions = [ 'top' ]
     return css`
-      border-bottom: 1px solid ${({ theme }) => theme.colors.ui2};
-      border-top: 1px solid ${({ theme }) => theme.colors.ui2};
+      border-top: 1px solid ${({ theme }) => theme.colors[`${color}`]};
     `
-  } else if (border === 'y') {
+  } else if (position === 'x') {
+    // positions = [ 'bottom', 'top', ]
     return css`
-      border-left: 1px solid ${({ theme }) => theme.colors.ui2};
-      border-right: 1px solid ${({ theme }) => theme.colors.ui2};
+      border-bottom: 1px solid ${({ theme }) => theme.colors[`${color}`]};
+      border-top: 1px solid ${({ theme }) => theme.colors[`${color}`]};
     `
-  } else {
+  } else if (position === 'y') {
+    // positions = [ 'left', 'right', ]
     return css`
-      border: 1px solid ${({ theme }) => theme.colors.ui2};
+      border-left: 1px solid ${({ theme }) => theme.colors[`${color}`]};
+      border-right: 1px solid ${({ theme }) => theme.colors[`${color}`]};
     `
   }
 }
