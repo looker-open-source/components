@@ -39,11 +39,11 @@ import { InputText, InputTextProps } from '../InputText'
 import { useFormContext } from '../../Form'
 import { Swatch } from './Swatch'
 import {
-  hsv2hex,
+  isValidColor,
+  hsvToHex,
   simpleHSVtoFormattedColorString,
-  str2simpleHsv,
-} from './utils/color_format_utils'
-import { isValidColor } from './utils/color_utils'
+  stringToSimpleHsv,
+} from './utils'
 import { SimpleHSV } from './types'
 import { ColorPicker } from './ColorPicker'
 
@@ -79,7 +79,7 @@ const createEventWithHSVValue = (
 }
 
 function getColorFromText(text?: string) {
-  return text && isValidColor(text) ? str2simpleHsv(text) : undefined
+  return text && isValidColor(text) ? stringToSimpleHsv(text) : undefined
 }
 
 export const InputColorComponent = forwardRef(
@@ -114,7 +114,7 @@ export const InputColorComponent = forwardRef(
 
     useEffect(() => {
       if (value && value !== inputTextValue) {
-        setColor(str2simpleHsv(value))
+        setColor(stringToSimpleHsv(value))
         !isFocused && setInputTextValue(value)
       }
     }, [isFocused, value, inputTextValue])
@@ -153,7 +153,7 @@ export const InputColorComponent = forwardRef(
     return (
       <div className={className}>
         <Swatch
-          color={color ? hsv2hex(color) : undefined}
+          color={color ? hsvToHex(color) : undefined}
           disabled={disabled}
           readOnly={readOnly}
           {...domProps}

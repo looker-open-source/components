@@ -24,19 +24,11 @@
 
  */
 
-import { toPercent } from './toPercent'
+import { hsv } from 'd3-hsv'
+import { SimpleHSV } from '../types'
 
-describe('math_utils', () => {
-  const correctValues = [60, 24, 10, 13, 25]
-  test('toPercent', () => {
-    ;[
-      [60, 100],
-      [60, 255],
-      [25, 255],
-      [32, 255],
-      [96, 384],
-    ].map((values, index) =>
-      expect(toPercent(values[0], values[1])).toBe(correctValues[index])
-    )
-  })
-})
+export const stringToSimpleHsv = (color: string) => {
+  const hsvColor = hsv(color)
+  const simpleHSV: SimpleHSV = { h: hsvColor.h, s: hsvColor.s, v: hsvColor.v }
+  return simpleHSV
+}

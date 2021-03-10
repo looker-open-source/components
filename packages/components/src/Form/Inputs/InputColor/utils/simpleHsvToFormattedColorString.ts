@@ -24,19 +24,33 @@
 
  */
 
-import { toPercent } from './toPercent'
+import { SimpleHSV } from '../types'
+import { simpleHsvToRgb } from './simpleHsvToRgb'
+import { rgbToColorName } from './rgbToColorName'
+import { rgbToRgbiString } from './rgbToRgbiString'
+import { rgbToRgbpString } from './rgbToRgbpString'
+import { rgbToHslString } from './rgbToHslString'
 
-describe('math_utils', () => {
-  const correctValues = [60, 24, 10, 13, 25]
-  test('toPercent', () => {
-    ;[
-      [60, 100],
-      [60, 255],
-      [25, 255],
-      [32, 255],
-      [96, 384],
-    ].map((values, index) =>
-      expect(toPercent(values[0], values[1])).toBe(correctValues[index])
-    )
-  })
-})
+export const simpleHSVtoFormattedColorString = (
+  color: SimpleHSV,
+  colorFormat?: string
+) => {
+  const rgbColor = simpleHsvToRgb(color)
+  switch (colorFormat) {
+    case 'NAME':
+      return rgbToColorName(rgbColor)
+    case 'RGBI':
+    case 'RGBIA':
+      return rgbToRgbiString(rgbColor)
+    case 'RGBP':
+    case 'RGBPA':
+      return rgbToRgbpString(rgbColor)
+    case 'HSL':
+    case 'HSLA':
+      return rgbToHslString(rgbColor)
+    case 'HEX3':
+    case 'HEX6':
+    default:
+      return rgbColor.hex()
+  }
+}

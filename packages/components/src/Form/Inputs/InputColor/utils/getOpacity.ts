@@ -24,19 +24,17 @@
 
  */
 
-import { toPercent } from './toPercent'
+import { Color, cubehelix, hcl, hsl, rgb, lab } from 'd3-color'
 
-describe('math_utils', () => {
-  const correctValues = [60, 24, 10, 13, 25]
-  test('toPercent', () => {
-    ;[
-      [60, 100],
-      [60, 255],
-      [25, 255],
-      [32, 255],
-      [96, 384],
-    ].map((values, index) =>
-      expect(toPercent(values[0], values[1])).toBe(correctValues[index])
-    )
-  })
-})
+export const getOpacity = (color: Color): number => {
+  if (
+    color instanceof cubehelix ||
+    color instanceof hcl ||
+    color instanceof hsl ||
+    color instanceof rgb ||
+    color instanceof lab
+  ) {
+    return color.opacity
+  }
+  return 1
+}

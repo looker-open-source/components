@@ -24,19 +24,9 @@
 
  */
 
-import { toPercent } from './toPercent'
+import { RGBColor } from 'd3-color'
+import { hsv } from 'd3-hsv'
+import { SimpleHSV } from '../types'
 
-describe('math_utils', () => {
-  const correctValues = [60, 24, 10, 13, 25]
-  test('toPercent', () => {
-    ;[
-      [60, 100],
-      [60, 255],
-      [25, 255],
-      [32, 255],
-      [96, 384],
-    ].map((values, index) =>
-      expect(toPercent(values[0], values[1])).toBe(correctValues[index])
-    )
-  })
-})
+export const simpleHsvToRgb = (color: SimpleHSV): RGBColor =>
+  hsv(color.h, color.s, color.v).rgb()

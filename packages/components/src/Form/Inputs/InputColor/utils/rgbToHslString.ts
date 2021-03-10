@@ -24,19 +24,21 @@
 
  */
 
-import { toPercent } from './toPercent'
+import { RGBColor, HSLColor, hsl } from 'd3-color'
+import { getOpacity } from './getOpacity'
 
-describe('math_utils', () => {
-  const correctValues = [60, 24, 10, 13, 25]
-  test('toPercent', () => {
-    ;[
-      [60, 100],
-      [60, 255],
-      [25, 255],
-      [32, 255],
-      [96, 384],
-    ].map((values, index) =>
-      expect(toPercent(values[0], values[1])).toBe(correctValues[index])
-    )
-  })
-})
+export const rgbToHslString = (
+  color: RGBColor | HSLColor,
+  opacity: number | null = null,
+  useAlpha = false
+) => {
+  const opacityUse = opacity || getOpacity(color)
+  const hslColor = hsl(color)
+  const h = isNaN(hslColor.h) ? 0 : hslColor.h
+  const s = isNaN(hslColor.s) ? 0 : Math.round(hslColor.s * 100)
+  const l = isNaN(hslColor.l) ? 100 : Math.round(hslColor.l * 100)
+  if (useAlpha || opacityUse !== 1) {
+    return `hsla(${h}, ${s}%, ${l}%, ${opacityUse})`
+  }
+  return `hsl(${h}, ${s}%, ${l}%)`
+}

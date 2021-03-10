@@ -24,19 +24,14 @@
 
  */
 
-import { toPercent } from './toPercent'
+import { Color } from 'd3-color'
+import { namedColors } from './named_colors'
 
-describe('math_utils', () => {
-  const correctValues = [60, 24, 10, 13, 25]
-  test('toPercent', () => {
-    ;[
-      [60, 100],
-      [60, 255],
-      [25, 255],
-      [32, 255],
-      [96, 384],
-    ].map((values, index) =>
-      expect(toPercent(values[0], values[1])).toBe(correctValues[index])
-    )
-  })
-})
+export const namedColorLookup = (color: Color) => {
+  const hex = color.hex().replace(/^#/, '')
+  const lookup = parseInt(hex, 16)
+  const namedColorsFlipped = new Map(
+    Object.entries(namedColors).map<[number, string]>(([k, v]) => [v, k])
+  )
+  return namedColorsFlipped.get(lookup)
+}

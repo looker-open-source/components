@@ -37,7 +37,7 @@ import {
 } from 'd3-color'
 import { hsv, HSVColor } from 'd3-hsv'
 import { SimpleHSV } from '../types'
-import { toPercent } from './math_utils'
+import { toPercent } from './toPercent'
 import { namedColors } from './named_colors'
 
 export enum ColorFormat {
@@ -53,8 +53,6 @@ export enum ColorFormat {
   TRANSPARENT,
   BAD,
 }
-
-const RGB_MAX_VALUE = 255
 
 const recognize = (format: string) => {
   // copied and tweaked from https://github.com/d3/d3-color/blob/master/src/color.js#L8
@@ -99,87 +97,6 @@ const recognize = (format: string) => {
 }
 
 export const getFormat = (value: string) => ColorFormat[recognize(value)]
-
-export const getOpacity = (color: Color): number => {
-  if (
-    color instanceof cubehelix ||
-    color instanceof hcl ||
-    color instanceof hsl ||
-    color instanceof rgb ||
-    color instanceof lab
-  ) {
-    return color.opacity
-  }
-  return 1
-}
-
-const namedColorLookup = (color: Color) => {
-  const hex = color.hex().replace(/^#/, '')
-  const lookup = parseInt(hex, 16)
-  const namedColorsFlipped = new Map(
-    Object.entries(namedColors).map<[number, string]>(([k, v]) => [v, k])
-  )
-  return namedColorsFlipped.get(lookup)
-}
-
-export const toColorName = (
-  color: RGBColor | HSLColor,
-  opacity: number | null = null
-) => {
-  const opacityUse = opacity || getOpacity(color)
-  const name = namedColorLookup(color)
-  if (name) return name
-  if (opacityUse !== 1) return rgb(color).toString()
-  return color.hex()
-}
-
-export const toRGBIString = (
-  color: RGBColor | HSLColor,
-  opacity: number | null = null,
-  useAlpha = false
-) => {
-  const opacityUse = opacity || getOpacity(color)
-  const rgb = color.rgb()
-  const r = Math.round(rgb.r)
-  const g = Math.round(rgb.g)
-  const b = Math.round(rgb.b)
-  if (useAlpha || opacityUse !== 1) {
-    return `rgba(${r}, ${g}, ${b}, ${opacityUse})`
-  }
-  return `rgb(${r}, ${g}, ${b})`
-}
-
-export const toRGBPString = (
-  color: RGBColor | HSLColor,
-  opacity: number | null = null,
-  useAlpha = false
-) => {
-  const opacityUse = opacity || getOpacity(color)
-  const rgb = color.rgb()
-  const r = toPercent(rgb.r, RGB_MAX_VALUE)
-  const g = toPercent(rgb.g, RGB_MAX_VALUE)
-  const b = toPercent(rgb.b, RGB_MAX_VALUE)
-  if (useAlpha || opacityUse !== 1) {
-    return `rgba(${r}%, ${g}%, ${b}%, ${opacityUse})`
-  }
-  return `rgb(${r}%, ${g}%, ${b}%)`
-}
-
-export const toHSLString = (
-  color: RGBColor | HSLColor,
-  opacity: number | null = null,
-  useAlpha = false
-) => {
-  const opacityUse = opacity || getOpacity(color)
-  const hslColor = hsl(color)
-  const h = isNaN(hslColor.h) ? 0 : hslColor.h
-  const s = isNaN(hslColor.s) ? 0 : Math.round(hslColor.s * 100)
-  const l = isNaN(hslColor.l) ? 100 : Math.round(hslColor.l * 100)
-  if (useAlpha || opacityUse !== 1) {
-    return `hsla(${h}, ${s}%, ${l}%, ${opacityUse})`
-  }
-  return `hsl(${h}, ${s}%, ${l}%)`
-}
 
 export const toFormattedColorString = (
   value: string,
@@ -227,39 +144,3 @@ export const hsvToColorString = (
   hsvColor: HSVColor,
   format: ColorFormat | null = null
 ) => toFormattedColorString(hsvColor.rgb().toString(), format)
-
-export const hsv2hex = (color: SimpleHSV) =>
-  hsv(color.h, color.s, color.v).hex()
-
-export const str2simpleHsv = (color: string) => {
-  const hsvColor = hsv(color)
-  const simpleHSV: SimpleHSV = { h: hsvColor.h, s: hsvColor.s, v: hsvColor.v }
-  return simpleHSV
-}
-
-export const simpleHSVtoRGB = (color: SimpleHSV): RGBColor =>
-  hsv(color.h, color.s, color.v).rgb()
-
-export const simpleHSVtoFormattedColorString = (
-  color: SimpleHSV,
-  colorFormat?: string
-) => {
-  const rgbColor = simpleHSVtoRGB(color)
-  switch (colorFormat) {
-    case 'NAME':
-      return toColorName(rgbColor)
-    case 'RGBI':
-    case 'RGBIA':
-      return toRGBIString(rgbColor)
-    case 'RGBP':
-    case 'RGBPA':
-      return toRGBPString(rgbColor)
-    case 'HSL':
-    case 'HSLA':
-      return toHSLString(rgbColor)
-    case 'HEX3':
-    case 'HEX6':
-    default:
-      return rgbColor.hex()
-  }
-}
