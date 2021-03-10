@@ -34,7 +34,7 @@ export default {
 }
 
 const Template: Story<DividerVerticalProps> = (args) => (
-  <DividerVerticalProps {...args} />
+  <DividerVertical {...args} />
 )
 
 export const Basic = Template.bind({})
