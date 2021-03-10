@@ -1,0 +1,73 @@
+/*
+
+ MIT License
+
+ Copyright (c) 2021 Looker Data Sciences, Inc.
+
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in all
+ copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ SOFTWARE.
+
+ */
+import React from 'react'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
+
+import { Aside } from './Aside'
+import { Footer } from './Footer'
+import { Header } from './Header'
+import { Layout } from './Layout'
+import { Section } from './Section'
+
+describe('Layout has border', () => {
+  test('render border properly', () => {
+    renderWithTheme(
+      <Layout>
+        <Header borderTop>Header</Header>
+        <Layout hasAside>
+          <Aside border width="20%">
+            Aside
+          </Aside>
+          <Section>foo</Section>
+        </Layout>
+        <Footer borderX>Footer</Footer>
+      </Layout>
+    )
+
+    const aside = screen.getByText('Aside')
+    const footer = screen.getByText('Footer')
+    const header = screen.getByText('Header')
+
+    expect(aside).toHaveStyle('border: 1px solid #DEE1E5;')
+    expect(footer).toHaveStyle('border-left: 1px solid #DEE1E5;')
+    expect(footer).toHaveStyle('border-right: 1px solid #DEE1E5;')
+    expect(header).toHaveStyle('border-top: 1px solid #DEE1E5;')
+  })
+
+  test('render border color if passed', () => {
+    renderWithTheme(
+      <Layout hasAside>
+        <Aside border="key" width="20%">
+          Aside
+        </Aside>
+        <Section>foo</Section>
+      </Layout>
+    )
+
+    expect(screen.getByText('Aside')).toHaveStyle('border: 1px solid #6C43E0;')
+  })
+})

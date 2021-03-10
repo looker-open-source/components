@@ -27,16 +27,14 @@
 import { shouldForwardProp } from '@looker/design-tokens'
 import styled from 'styled-components'
 import { headerFooterCSS, HeaderProps } from './Header'
-import { addBorder } from './addBorder'
+import { borderHelper, SemanticBorderProps } from './semanticBorderHelper'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface FooterProps extends HeaderProps {}
+export interface FooterProps extends HeaderProps, SemanticBorderProps {}
 
-export const Footer = styled.footer
-  .withConfig({ shouldForwardProp })
-  .attrs<FooterProps>(({ border }) => ({
-    border,
-  }))<FooterProps>`
+export const Footer = styled.footer.withConfig({
+  shouldForwardProp,
+})<FooterProps>`
   ${headerFooterCSS}
-  ${({ border }) => border && addBorder(border)}
+  ${borderHelper}
 `

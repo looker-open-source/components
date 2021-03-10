@@ -127,7 +127,7 @@ export const ExamplePage = () => (
           Alternate Aside
         </AsideAlt>
       </Layout>
-      <Footer borderTop height="3rem" px="large">
+      <Footer borderTop="key" height="3rem" px="large">
         I'm a footer
       </Footer>
     </Page>

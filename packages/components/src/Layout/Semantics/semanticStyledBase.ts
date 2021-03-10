@@ -25,28 +25,15 @@
  */
 
 import {
-  PaddingProps,
-  padding,
   CompatibleHTMLProps,
+  padding,
+  PaddingProps,
   reset,
 } from '@looker/design-tokens'
 import { css } from 'styled-components'
-import { Colors } from '@looker/design-tokens/src'
 
-interface SemanticBorders {
-  border?: borderProp
-  borderBottom?: borderProp
-  borderLeft?: borderProp
-  borderRight?: borderProp
-  borderTop?: borderProp
-  borderX?: borderProp
-  borderY?: borderProp
-}
-
-type borderProp = boolean | keyof Colors
 export interface SemanticLayoutBase
-  extends SemanticBorders,
-    PaddingProps,
+  extends PaddingProps,
     CompatibleHTMLProps<HTMLElement> {}
 
 export const semanticLayoutCSS = css`

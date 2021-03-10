@@ -28,10 +28,13 @@ import { shouldForwardProp } from '@looker/design-tokens'
 import styled, { css } from 'styled-components'
 import { height, HeightProps } from 'styled-system'
 import { SemanticLayoutBase, semanticLayoutCSS } from './semanticStyledBase'
-import { addBorder } from './addBorder'
+import { borderHelper, SemanticBorderProps } from './semanticBorderHelper'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface HeaderProps extends SemanticLayoutBase, HeightProps {}
+export interface HeaderProps
+  extends SemanticLayoutBase,
+    HeightProps,
+    SemanticBorderProps {}
 
 export const headerFooterCSS = css`
   ${semanticLayoutCSS}
@@ -42,11 +45,9 @@ export const headerFooterCSS = css`
   flex: 0 0 auto;
 `
 
-export const Header = styled.header
-  .withConfig({ shouldForwardProp })
-  .attrs<HeaderProps>(({ border }) => ({
-    border,
-  }))<HeaderProps>`
+export const Header = styled.header.withConfig({
+  shouldForwardProp,
+})<HeaderProps>`
   ${headerFooterCSS}
-  ${({ border }) => border && addBorder(border)}
+  ${borderHelper}
 `

@@ -26,11 +26,10 @@
 
 import { shouldForwardProp } from '@looker/design-tokens'
 import styled from 'styled-components'
-import { Colors } from '@looker/design-tokens/src'
 import { SemanticLayoutBase, semanticLayoutCSS } from './semanticStyledBase'
-import { borderHelper } from './addBorder'
+import { borderHelper, SemanticBorderProps } from './semanticBorderHelper'
 
-export interface AsideProps extends SemanticLayoutBase {
+export interface AsideProps extends SemanticLayoutBase, SemanticBorderProps {
   /**
    * Specify width of aside
    * @default '12rem'
@@ -40,38 +39,14 @@ export interface AsideProps extends SemanticLayoutBase {
 
 export const Aside = styled.aside
   .withConfig({ shouldForwardProp })
-  .attrs<AsideProps>(
-    ({
-      border,
-      borderBottom,
-      borderLeft,
-      borderRight,
-      borderTop,
-      borderX,
-      borderY,
-      width = '12rem',
-    }) => {
-      let position = ''
-
-      position = border === true ? 'all' : border
-      position = borderBottom === true ? 'bottom' : borderBottom
-      position = borderLeft === true ? 'left' : borderLeft
-      position = borderRight === true ? 'right' : borderRight
-      position = borderTop === true ? 'top' : borderTop
-      position = borderX === true ? 'x' : borderX
-      position = borderY === true ? 'y' : borderY
-
-      return {
-        position,
-        width,
-      }
-    }
-  )<AsideProps>`
+  .attrs<AsideProps>(({ width = '12rem' }) => ({
+    width,
+  }))<AsideProps>`
   ${semanticLayoutCSS}
 
   flex: 0 0 ${({ width }) => width};
   max-width: ${({ width }) => width};
   min-width: ${({ width }) => width};
   width: 0;
-  ${({ position }) => borderHelper(position)}
+  ${borderHelper}
 `
