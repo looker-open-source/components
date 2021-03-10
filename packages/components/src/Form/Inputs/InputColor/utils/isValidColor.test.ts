@@ -27,7 +27,7 @@
 import range from 'lodash/range'
 import { isValidColor } from './isValidColor'
 
-describe('color_utils', () => {
+describe('isValidColor', () => {
   const testColor = (pred: boolean) => (color: string) => {
     test(`${color}`, () => {
       expect(isValidColor(color)).toBe(pred)

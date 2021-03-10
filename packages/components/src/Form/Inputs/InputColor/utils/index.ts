@@ -24,7 +24,7 @@
 
  */
 
-export * from './color_utils'
+export * from './isValidColor'
 export * from './hsvToHex'
 export * from './simpleHsvToFormattedColorString'
 export * from './stringToSimpleHsv'
