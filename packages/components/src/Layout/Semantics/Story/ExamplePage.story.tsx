@@ -25,26 +25,14 @@
  */
 
 import React from 'react'
-import {
-  Layout,
-  Header,
-  Aside,
-  Footer,
-  Page,
-  Heading,
-  Tabs,
-  TabPanel,
-  TabPanels,
-  TabList,
-  Tab,
-  Section,
-  Paragraph,
-  SpaceVertical,
-} from '@looker/components'
 import styled from 'styled-components'
+import { Aside, Footer, Header, Layout, Page, Section } from '..'
+import { SpaceVertical } from '../../Space'
+import { Heading, Paragraph } from '../../../Text'
+import { Tab, Tabs, TabList, TabPanel, TabPanels } from '../../../Tabs'
 
 export default {
-  title: 'Layout/Semantics/ExamplePage',
+  title: 'Layout',
 }
 
 export const ExamplePage = () => (

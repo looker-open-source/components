@@ -82,14 +82,12 @@ export const borderHelper = ({
   borderTop,
   borderX,
   borderY,
-}: SemanticBorderProps) => {
-  return css`
-    ${border && borderPositionHelper(border)}
-    ${borderBottom && borderPositionHelper(borderBottom, 'bottom')}
-    ${borderLeft && borderPositionHelper(borderLeft, 'left')}
-    ${borderRight && borderPositionHelper(borderRight, 'right')}
-    ${borderTop && borderPositionHelper(borderTop, 'top')}
-    ${borderX && borderPositionHelper(borderX, 'x')}
-    ${borderY && borderPositionHelper(borderY, 'y')}
-  `
-}
+}: SemanticBorderProps) => css`
+  ${border && borderPositionHelper(border)}
+  ${borderBottom && borderPositionHelper(borderBottom, 'bottom')}
+  ${borderLeft && borderPositionHelper(borderLeft, 'left')}
+  ${borderRight && borderPositionHelper(borderRight, 'right')}
+  ${borderTop && borderPositionHelper(borderTop, 'top')}
+  ${borderX && borderPositionHelper(borderX, 'x')}
+  ${borderY && borderPositionHelper(borderY, 'y')}
+`
