@@ -26,10 +26,11 @@
 
 import 'jest-styled-components'
 import React from 'react'
+import { screen } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { DividerVertical } from './DividerVertical'
 
 test('render Default DividerVertical', () => {
-  const { getByTestId } = renderWithTheme(<DividerVertical />)
-  expect(getByTestId('DividerVertical')).toBeInTheDocument()
+  renderWithTheme(<DividerVertical data-testid="DividerVertical" />)
+  expect(screen.getByTestId('DividerVertical')).toBeInTheDocument()
 })
