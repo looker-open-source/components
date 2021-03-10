@@ -27,7 +27,8 @@
 import React, { FC } from 'react'
 import { SpaceVertical } from '../../../../Layout'
 import { LightSaturationPreview, HueSlider } from '..'
-import { SimpleHSV } from '../utils/color_utils'
+import { SimpleHSV } from '../types'
+import { COLOR_PICKER_WIDTH } from './dimensions'
 
 export interface ColorPickerProps {
   hsv: SimpleHSV
@@ -35,7 +36,11 @@ export interface ColorPickerProps {
 }
 
 export const ColorPicker: FC<ColorPickerProps> = ({ hsv, setHsv }) => (
-  <SpaceVertical gap="medium" data-testid="color-picker">
+  <SpaceVertical
+    width={COLOR_PICKER_WIDTH}
+    gap="medium"
+    data-testid="color-picker"
+  >
     <LightSaturationPreview hsv={hsv} setHsv={setHsv} />
     <HueSlider hsv={hsv} setHsv={setHsv} />
   </SpaceVertical>

@@ -24,17 +24,19 @@
 
  */
 
+import { theme } from '@looker/design-tokens'
 import React, { FC, MouseEvent, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import { useMouseDragPosition, usePreviousValue } from '../../../../utils'
+import { COLOR_PICKER_WIDTH } from '../ColorPicker/dimensions'
 import { simpleHSVtoFormattedColorString } from '../utils/color_format_utils'
-import { SimpleHSV } from '../utils/color_utils'
+import { SimpleHSV } from '../types'
 
-const previewHeight = 150
-const previewWidth = 200
+const PREVIEW_HEIGHT = 150
+const PREVIEW_WIDTH = COLOR_PICKER_WIDTH
 
-const handleHeight = 20
-const handleWidth = 20
+const HANDLE_HEIGHT = theme.sizes.small
+const HANDLE_WIDTH = theme.sizes.small
 
 interface Handle2dProps {
   color: string
@@ -46,18 +48,18 @@ interface Handle2dProps {
 const Handle2d = styled.div.attrs<Handle2dProps>(({ color, x, y }) => ({
   style: {
     backgroundColor: color,
-    transform: `translate(${x}px,${y}px)`,
+    transform: `translate(calc(${x}px - ${HANDLE_WIDTH} / 2), calc(${y}px - ${HANDLE_HEIGHT} / 2))`,
   },
 }))<Handle2dProps>`
   border: 2px solid ${({ theme: { colors } }) => colors.background};
   border-radius: 100%;
   box-shadow: ${({ theme }) => theme.shadows[1]};
   cursor: ${({ isMouseDown }) => (isMouseDown ? 'grabbing' : 'pointer')};
-  height: ${handleHeight}px;
+  height: ${HANDLE_HEIGHT};
   left: 0;
   position: relative;
   top: 0;
-  width: ${handleWidth}px;
+  width: ${HANDLE_WIDTH};
 `
 
 interface LightSaturationPreviewProps {
@@ -71,8 +73,8 @@ const LightSaturationPreviewLayout: FC<LightSaturationPreviewProps> = ({
   hsv,
   setHsv,
 }) => {
-  const handleX = hsv.s * previewWidth - handleWidth / 2
-  const handleY = previewHeight - hsv.v * previewHeight - handleHeight / 2
+  const handleX = hsv.s * PREVIEW_WIDTH
+  const handleY = PREVIEW_HEIGHT - hsv.v * PREVIEW_HEIGHT
 
   const previewRef = useRef<HTMLDivElement>(null)
   const previewLeft = previewRef.current?.getBoundingClientRect().left || 0
@@ -82,9 +84,9 @@ const LightSaturationPreviewLayout: FC<LightSaturationPreviewProps> = ({
     const clickEventX = event.clientX
     const clickEventY = event.clientY
 
-    const newSaturation = (clickEventX - previewLeft) / previewWidth
+    const newSaturation = (clickEventX - previewLeft) / PREVIEW_WIDTH
     const newValue =
-      (previewHeight - (clickEventY - previewTop)) / previewHeight
+      (PREVIEW_HEIGHT - (clickEventY - previewTop)) / PREVIEW_HEIGHT
 
     setHsv({ ...hsv, s: newSaturation, v: newValue })
   }
@@ -93,7 +95,7 @@ const LightSaturationPreviewLayout: FC<LightSaturationPreviewProps> = ({
   const previousIsMouseDown = usePreviousValue(isMouseDown)
 
   const handleHandleDrag = () => {
-    let newSaturation = (mousePos.x - previewLeft) / previewWidth
+    let newSaturation = (mousePos.x - previewLeft) / PREVIEW_WIDTH
 
     if (newSaturation > 1) {
       newSaturation = 1
@@ -101,7 +103,7 @@ const LightSaturationPreviewLayout: FC<LightSaturationPreviewProps> = ({
       newSaturation = 0
     }
 
-    let newValue = (previewHeight - (mousePos.y - previewTop)) / previewHeight
+    let newValue = (PREVIEW_HEIGHT - (mousePos.y - previewTop)) / PREVIEW_HEIGHT
 
     if (newValue > 1) {
       newValue = 1
@@ -165,8 +167,8 @@ const LightSaturationPreviewContainer = styled.div.attrs<{
     linear-gradient(90deg, #fff, hsla(0, 0%, 100%, 0));
   border-radius: ${({ theme }) => theme.radii.medium};
   cursor: ${({ isMouseDown }) => (isMouseDown ? 'grabbing' : 'default')};
-  height: ${previewHeight}px;
-  width: ${previewWidth}px;
+  height: ${PREVIEW_HEIGHT}px;
+  width: ${PREVIEW_WIDTH}px;
 `
 
 export const LightSaturationPreview = styled(LightSaturationPreviewLayout)``

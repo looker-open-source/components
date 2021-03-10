@@ -43,7 +43,8 @@ import {
   simpleHSVtoFormattedColorString,
   str2simpleHsv,
 } from './utils/color_format_utils'
-import { isValidColor, SimpleHSV } from './utils/color_utils'
+import { isValidColor } from './utils/color_utils'
+import { SimpleHSV } from './types'
 import { ColorPicker } from './ColorPicker'
 
 export interface InputColorProps extends Omit<InputTextProps, 'height'> {

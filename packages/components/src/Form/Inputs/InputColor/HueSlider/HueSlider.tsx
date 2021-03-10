@@ -24,17 +24,19 @@
 
  */
 
+import { theme } from '@looker/design-tokens'
 import React, { FC, MouseEvent, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import { useMouseDragPosition, usePreviousValue } from '../../../../utils'
+import { COLOR_PICKER_WIDTH } from '../ColorPicker/dimensions'
 import { simpleHSVtoFormattedColorString } from '../utils/color_format_utils'
-import { SimpleHSV } from '../utils/color_utils'
+import { SimpleHSV } from '../types'
 
-const sliderHeight = 12
-const sliderWidth = 200
+const SLIDER_HEIGHT = 12
+const SLIDER_WIDTH = COLOR_PICKER_WIDTH
 
-const handleHeight = 20
-const handleWidth = 20
+const HANDLE_HEIGHT = theme.sizes.small
+const HANDLE_WIDTH = theme.sizes.small
 
 interface HandleProps {
   color: string
@@ -46,7 +48,7 @@ const HueSliderHandle = styled.div.attrs<HandleProps>(
   ({ color, position }) => ({
     style: {
       background: color,
-      transform: `translateX(${position}px)`,
+      transform: `translateX(calc(${position}px - ${HANDLE_WIDTH} / 2))`,
     },
   })
 )<HandleProps>`
@@ -54,12 +56,12 @@ const HueSliderHandle = styled.div.attrs<HandleProps>(
   border-radius: 100%;
   box-shadow: ${({ theme }) => theme.shadows[1]};
   cursor: ${({ isMouseDown }) => (isMouseDown ? 'grabbing' : 'pointer')};
-  height: ${handleHeight}px;
+  height: ${HANDLE_HEIGHT};
   left: 0;
   position: relative;
   /* Vertically centers slider */
-  top: calc(${sliderHeight}px / 2 - ${handleHeight}px / 2);
-  width: ${handleWidth}px;
+  top: calc(${SLIDER_HEIGHT}px / 2 - ${HANDLE_HEIGHT} / 2);
+  width: ${HANDLE_WIDTH};
 `
 
 interface HueSliderProps {
@@ -73,14 +75,14 @@ export const HueSliderLayout: FC<HueSliderProps> = ({
   hsv,
   setHsv,
 }) => {
-  const handlePosition = (hsv.h / 360) * sliderWidth - handleWidth / 2
+  const handlePosition = (hsv.h / 360) * SLIDER_WIDTH
 
   const sliderRef = useRef<HTMLDivElement>(null)
   const sliderLeft = sliderRef.current?.getBoundingClientRect().left || 0
 
   const handleSliderClick = (event: MouseEvent<HTMLDivElement>) => {
     const clickEventX = event.clientX
-    const newHue = ((clickEventX - sliderLeft) / sliderWidth) * 360
+    const newHue = ((clickEventX - sliderLeft) / SLIDER_WIDTH) * 360
     setHsv({ ...hsv, h: newHue })
   }
 
@@ -88,7 +90,7 @@ export const HueSliderLayout: FC<HueSliderProps> = ({
   const previousIsMouseDown = usePreviousValue(isMouseDown)
 
   const handleHandleDrag = () => {
-    let newHue = ((mousePos.x - sliderLeft) / sliderWidth) * 360
+    let newHue = ((mousePos.x - sliderLeft) / SLIDER_WIDTH) * 360
 
     // Keep user from sliding off the track
     if (newHue > 360) {
@@ -142,8 +144,8 @@ const HueSliderTrack = styled.div<{ isMouseDown: boolean }>`
 
   border-radius: ${({ theme }) => theme.radii.large};
   cursor: ${({ isMouseDown }) => (isMouseDown ? 'grabbing' : 'default')};
-  height: ${sliderHeight}px;
-  width: ${sliderWidth}px;
+  height: ${SLIDER_HEIGHT}px;
+  width: ${SLIDER_WIDTH}px;
 `
 
 export const HueSlider = styled(HueSliderLayout)``
