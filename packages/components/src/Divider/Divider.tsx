@@ -70,15 +70,15 @@ export const DividerBase = styled.hr
     ({ appearance = 'default', customColor, size = '1px' }) => ({
       appearance,
       bg: customColor,
-      my: 'none',
       size,
     })
   )<DividerProps>`
   ${reset}
   ${position}
-  ${space}
 
   border: none;
+  margin: 0; /* reset <hr /> built-in margin */
+  ${space}
 
   ${({ customColor }) => (customColor ? color : appearanceVariant)}
 `
