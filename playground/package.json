@@ -14,7 +14,7 @@
     "analyze": "webpack --mode=production --profile"
   },
   "dependencies": {
-    "@looker/components": "^0.15.1",
+    "@looker/components": "*",
     "core-js": "^3.8.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",

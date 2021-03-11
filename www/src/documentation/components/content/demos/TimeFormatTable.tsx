@@ -30,8 +30,9 @@ import {
   TableHead,
   TableHeaderCell,
   TableRow,
-  TimeFormat,
 } from '@looker/components'
+import { TimeFormat } from '@looker/components/src/date'
+
 import React from 'react'
 
 export const TimeFormatTable = () => {
