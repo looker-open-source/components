@@ -1,6 +1,6 @@
 {
   "name": "@looker/prettier-config",
-  "version": "0.15.1",
+  "version": "0.16.0",
   "main": "index.json",
   "author": "Looker",
   "license": "MIT",
