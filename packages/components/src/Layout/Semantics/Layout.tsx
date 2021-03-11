@@ -33,6 +33,11 @@ export interface LayoutProps
   extends SimpleLayoutProps,
     CompatibleHTMLProps<HTMLElement> {
   /**
+   * fixed position for header and footer
+   * @default false
+   */
+  fixed?: boolean
+  /**
    * Supports scroll
    * @default true
    */
@@ -49,9 +54,15 @@ const hasAsideCSS = css`
 
 export const Layout = styled.div.withConfig({ shouldForwardProp })<LayoutProps>`
   ${simpleLayoutCSS}
-
   display: flex;
   flex: 1 0 auto;
+
+  ${({ fixed }) =>
+    fixed &&
+    `
+      flex: 1 1 auto;
+      overflow: hidden;
+    `}
 
   ${({ hasAside }) => (hasAside ? hasAsideCSS : 'flex-direction: column;')}
 `

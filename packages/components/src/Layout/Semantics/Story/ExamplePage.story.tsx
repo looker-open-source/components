@@ -37,9 +37,9 @@ export default {
 
 export const ExamplePage = () => (
   <Highlighter>
-    <Page>
+    <Page fixed>
       <Header height="4rem" px="large">
-        Header
+        I'm the header
       </Header>
       <Layout hasAside>
         <Aside p="large" width="200px">
