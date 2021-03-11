@@ -11,11 +11,11 @@
     "build": "build-storybook -c .storybook"
   },
   "dependencies": {
-    "@looker/components": "^0.15.1",
-    "@looker/components-providers": "^0.15.1",
-    "@looker/components-theme-editor": "^0.15.1",
-    "@looker/design-tokens": "^0.15.1",
-    "@looker/icons": "^0.15.1",
+    "@looker/components": "*",
+    "@looker/components-providers": "*",
+    "@looker/components-theme-editor": "*",
+    "@looker/design-tokens": "*",
+    "@looker/icons": "*",
     "@storybook/react": "^6.1.15",
     "lodash": "^4.17.20",
     "react": "^16.14.0",
