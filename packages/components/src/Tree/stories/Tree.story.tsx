@@ -27,6 +27,7 @@
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import { Tree, TreeProps, TreeItem } from '..'
+import { Box } from '../..'
 
 export * from './BorderRadius.story'
 export * from './ColorfulTree.story'
@@ -65,4 +66,21 @@ export const Border = Template.bind({})
 Border.args = {
   ...Basic.args,
   border: true,
+}
+
+export const Windowing = () => {
+  const array3000 = []
+  for (let i = 0; i < 3000; i++) {
+    array3000.push(i)
+  }
+
+  return (
+    <Box height="500px">
+      <Tree label="Hello World">
+        {array3000.map((i) => (
+          <TreeItem key={i}>{i}</TreeItem>
+        ))}
+      </Tree>
+    </Box>
+  )
 }

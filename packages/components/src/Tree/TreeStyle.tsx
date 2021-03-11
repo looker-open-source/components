@@ -73,12 +73,16 @@ const dividersCSS = css`
 export const TreeStyle = styled.div<TreeStyleProps>`
   color: ${({ theme }) => theme.colors.text5};
   flex-shrink: 2;
+  height: 100%;
   min-width: 0;
 
   & > ${Accordion} {
+    height: 100%;
+
     & > ${AccordionContent} {
       ${({ border, depth, indicatorSize, theme }) =>
         border && generateTreeBorder(depth, indicatorSize, theme)}
+      height: 100%;
     }
 
     & > ${AccordionDisclosureStyle} {
