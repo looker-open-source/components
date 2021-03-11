@@ -73,15 +73,18 @@ const dividersCSS = css`
 export const TreeStyle = styled.div<TreeStyleProps>`
   color: ${({ theme }) => theme.colors.text5};
   flex-shrink: 2;
+  /* For windowing / performance */
   height: 100%;
   min-width: 0;
 
   & > ${Accordion} {
+    /* For windowing / performance */
     height: 100%;
 
     & > ${AccordionContent} {
       ${({ border, depth, indicatorSize, theme }) =>
         border && generateTreeBorder(depth, indicatorSize, theme)}
+      /* For windowing / performance */
       height: 100%;
     }
 
