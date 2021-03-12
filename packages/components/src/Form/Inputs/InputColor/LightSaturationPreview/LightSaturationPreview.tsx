@@ -29,7 +29,7 @@ import styled from 'styled-components'
 import { useMouseDragPosition, usePreviousValue } from '../../../../utils'
 import { ColorPickerProps } from '../types'
 import { simpleHsvToHex } from '../utils'
-import { Handle2d } from './Handle2d'
+import { Handle2d } from '../Handle'
 
 const LightSaturationPreviewLayout: FC<ColorPickerProps> = ({
   className,

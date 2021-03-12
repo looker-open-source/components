@@ -24,32 +24,5 @@
 
  */
 
-import { theme } from '@looker/design-tokens'
-import styled from 'styled-components'
-
-const HANDLE_SIZE = theme.sizes.small
-
-interface HandleProps {
-  color: string
-  isMouseDown: boolean
-  position: number
-}
-
-export const Handle = styled.div.attrs<HandleProps>(({ color, position }) => ({
-  style: {
-    background: color,
-    // The ${HANDLE_WIDTH} / 2 centers the handle on the click position
-    transform: `translateX(calc(${position}px - ${HANDLE_SIZE} / 2))`,
-  },
-}))<HandleProps>`
-  border: 2px solid ${({ theme: { colors } }) => colors.background};
-  border-radius: 100%;
-  box-shadow: ${({ theme }) => theme.shadows[1]};
-  cursor: ${({ isMouseDown }) => (isMouseDown ? 'grabbing' : 'pointer')};
-  height: ${HANDLE_SIZE};
-  left: 0;
-  position: relative;
-  /* Vertically centers slider */
-  top: ${({ theme }) => `calc(${theme.space.small} / 2 - ${HANDLE_SIZE} / 2)`};
-  width: ${HANDLE_SIZE};
-`
+export * from './Handle'
+export * from './Handle2d'

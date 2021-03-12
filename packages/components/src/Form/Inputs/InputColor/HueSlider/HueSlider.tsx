@@ -29,7 +29,7 @@ import styled from 'styled-components'
 import { useMouseDragPosition, usePreviousValue } from '../../../../utils'
 import { simpleHsvToHex } from '../utils'
 import { ColorPickerProps } from '../types'
-import { Handle } from './Handle'
+import { Handle } from '../Handle'
 
 export const HueSliderLayout: FC<ColorPickerProps> = ({
   className,
@@ -90,7 +90,7 @@ export const HueSliderLayout: FC<ColorPickerProps> = ({
       <Handle
         color={sliderHandleColor}
         isMouseDown={isMouseDown}
-        position={handlePosition}
+        x={handlePosition}
       />
     </HueSliderTrack>
   )

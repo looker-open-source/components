@@ -50,15 +50,10 @@
 
  */
 
-import { theme } from '@looker/design-tokens'
 import styled from 'styled-components'
+import { HANDLE_SIZE, HandleProps, handleCSS } from './Handle'
 
-const HANDLE_SIZE = theme.sizes.small
-
-interface Handle2dProps {
-  color: string
-  isMouseDown: boolean
-  x: number
+interface Handle2dProps extends HandleProps {
   y: number
 }
 
@@ -69,13 +64,5 @@ export const Handle2d = styled.div.attrs<Handle2dProps>(({ color, x, y }) => ({
     transform: `translate(calc(${x}px - ${HANDLE_SIZE} / 2), calc(${y}px - ${HANDLE_SIZE} / 2))`,
   },
 }))<Handle2dProps>`
-  border: 2px solid ${({ theme: { colors } }) => colors.background};
-  border-radius: 100%;
-  box-shadow: ${({ theme }) => theme.shadows[1]};
-  cursor: ${({ isMouseDown }) => (isMouseDown ? 'grabbing' : 'pointer')};
-  height: ${HANDLE_SIZE};
-  left: 0;
-  position: relative;
-  top: 0;
-  width: ${HANDLE_SIZE};
+  ${handleCSS}
 `
