@@ -52,7 +52,7 @@ const responsiveArgs: BoxStoryProps = {
   borderRadius: 'medium',
   children: (
     <>
-      <Icon name="LogoRings" size="medium" /> Looker
+      <Icon display="inline-flex" name="LogoRings" size="medium" /> Looker
     </>
   ),
   color: 'key',
