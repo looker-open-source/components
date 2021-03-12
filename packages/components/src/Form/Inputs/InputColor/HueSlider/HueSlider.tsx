@@ -32,7 +32,6 @@ import { COLOR_PICKER_WIDTH } from '../ColorPicker/dimensions'
 import { simpleHsvToHex } from '../utils'
 import { SimpleHSV } from '../types'
 
-const SLIDER_HEIGHT = 12
 const SLIDER_WIDTH = COLOR_PICKER_WIDTH
 
 const HANDLE_HEIGHT = theme.sizes.small
@@ -61,7 +60,8 @@ const HueSliderHandle = styled.div.attrs<HandleProps>(
   left: 0;
   position: relative;
   /* Vertically centers slider */
-  top: calc(${SLIDER_HEIGHT}px / 2 - ${HANDLE_HEIGHT} / 2);
+  top: ${({ theme }) =>
+    `calc(${theme.space.small} / 2 - ${HANDLE_HEIGHT} / 2)`};
   width: ${HANDLE_WIDTH};
 `
 
@@ -148,7 +148,7 @@ const HueSliderTrack = styled.div<{ isMouseDown: boolean }>`
 
   border-radius: ${({ theme }) => theme.radii.large};
   cursor: ${({ isMouseDown }) => (isMouseDown ? 'grabbing' : 'default')};
-  height: ${SLIDER_HEIGHT}px;
+  height: ${({ theme }) => theme.space.small};
   width: ${SLIDER_WIDTH}px;
 `
 
