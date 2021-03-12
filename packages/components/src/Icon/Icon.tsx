@@ -119,9 +119,7 @@ export const Icon = styled(IconLayout).attrs<IconProps>(
 )<IconProps>`
   ${sizeSimpleLayoutCSS}
   ${color}
-  align-items: center;
   flex-shrink: 0;
-  justify-content: center;
 
   svg {
     height: 100%;
