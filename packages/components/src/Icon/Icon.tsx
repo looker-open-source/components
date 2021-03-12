@@ -113,14 +113,12 @@ const IconLayout = forwardRef(
 IconLayout.displayName = 'IconLayout'
 
 export const Icon = styled(IconLayout).attrs<IconProps>(
-  ({ display = 'inline-flex', size = 'medium' }) => ({
-    display,
+  ({ size = 'medium' }) => ({
     size,
   })
 )<IconProps>`
   ${sizeSimpleLayoutCSS}
   ${color}
-  align-items: center;
   flex-shrink: 0;
 
   svg {
