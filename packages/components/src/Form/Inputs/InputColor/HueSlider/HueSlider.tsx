@@ -24,43 +24,12 @@
 
  */
 
-import { theme } from '@looker/design-tokens'
 import React, { FC, MouseEvent, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import { useMouseDragPosition, usePreviousValue } from '../../../../utils'
 import { simpleHsvToHex } from '../utils'
 import { ColorPickerProps } from '../types'
-
-const HANDLE_HEIGHT = theme.sizes.small
-const HANDLE_WIDTH = theme.sizes.small
-
-interface HandleProps {
-  color: string
-  isMouseDown: boolean
-  position: number
-}
-
-const HueSliderHandle = styled.div.attrs<HandleProps>(
-  ({ color, position }) => ({
-    style: {
-      background: color,
-      // The ${HANDLE_WIDTH} / 2 centers the handle on the click position
-      transform: `translateX(calc(${position}px - ${HANDLE_WIDTH} / 2))`,
-    },
-  })
-)<HandleProps>`
-  border: 2px solid ${({ theme: { colors } }) => colors.background};
-  border-radius: 100%;
-  box-shadow: ${({ theme }) => theme.shadows[1]};
-  cursor: ${({ isMouseDown }) => (isMouseDown ? 'grabbing' : 'pointer')};
-  height: ${HANDLE_HEIGHT};
-  left: 0;
-  position: relative;
-  /* Vertically centers slider */
-  top: ${({ theme }) =>
-    `calc(${theme.space.small} / 2 - ${HANDLE_HEIGHT} / 2)`};
-  width: ${HANDLE_WIDTH};
-`
+import { Handle } from './Handle'
 
 export const HueSliderLayout: FC<ColorPickerProps> = ({
   className,
@@ -118,7 +87,7 @@ export const HueSliderLayout: FC<ColorPickerProps> = ({
       ref={sliderRef}
       width={width}
     >
-      <HueSliderHandle
+      <Handle
         color={sliderHandleColor}
         isMouseDown={isMouseDown}
         position={handlePosition}
