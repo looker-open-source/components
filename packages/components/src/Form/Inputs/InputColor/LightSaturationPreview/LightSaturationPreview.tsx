@@ -29,7 +29,7 @@ import React, { FC, MouseEvent, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import { useMouseDragPosition, usePreviousValue } from '../../../../utils'
 import { COLOR_PICKER_WIDTH } from '../ColorPicker/dimensions'
-import { simpleHsvToFormattedColorString } from '../utils'
+import { simpleHsvToHex } from '../utils'
 import { SimpleHSV } from '../types'
 
 const PREVIEW_HEIGHT = 150
@@ -129,13 +129,13 @@ const LightSaturationPreviewLayout: FC<LightSaturationPreviewProps> = ({
   )
 
   // Used to generate the preview's backgroudn gradient
-  const backgroundColor = simpleHsvToFormattedColorString({
+  const backgroundColor = simpleHsvToHex({
     h: hsv.h,
     s: 1,
     v: 1,
   })
 
-  const color = simpleHsvToFormattedColorString({
+  const color = simpleHsvToHex({
     ...hsv,
   })
 

@@ -41,7 +41,7 @@ import { Swatch } from './Swatch'
 import {
   isValidColor,
   hsvToHex,
-  simpleHsvToFormattedColorString,
+  simpleHsvToHex,
   stringToSimpleHsv,
 } from './utils'
 import { SimpleHSV } from './types'
@@ -63,17 +63,11 @@ const createEventWithHSVValue = (
   return {
     currentTarget: {
       name,
-      value:
-        typeof color === 'string'
-          ? color
-          : simpleHsvToFormattedColorString(color),
+      value: typeof color === 'string' ? color : simpleHsvToHex(color),
     },
     target: {
       name,
-      value:
-        typeof color === 'string'
-          ? color
-          : simpleHsvToFormattedColorString(color),
+      value: typeof color === 'string' ? color : simpleHsvToHex(color),
     },
   } as ChangeEvent<HTMLInputElement>
 }
@@ -126,7 +120,7 @@ export const InputColorComponent = forwardRef(
 
     const setColorState = (newColor: SimpleHSV) => {
       setColor(newColor)
-      newColor && setInputTextValue(simpleHsvToFormattedColorString(newColor))
+      newColor && setInputTextValue(simpleHsvToHex(newColor))
       callOnChange(newColor)
     }
 
@@ -140,7 +134,7 @@ export const InputColorComponent = forwardRef(
     }
 
     const content = (
-      <PopoverContent display="flex" flexDirection="column">
+      <PopoverContent p="medium">
         <ColorPicker
           hsv={color || { h: 0, s: 1, v: 1 }}
           setHsv={setColorState}

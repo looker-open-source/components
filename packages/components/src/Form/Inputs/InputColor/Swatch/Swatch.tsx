@@ -57,7 +57,6 @@ const emptySwatch = `position: relative;
     height: 1px;
     width: calc(100% + 12px);
     background: red;
-    /* left: 50%; */
     top: 50%;
     margin-left: -6px;
     transform: rotate(-45deg);

@@ -81,7 +81,7 @@ describe('isValidColor', () => {
       .map(testColor(true))
   })
 
-  describe('Inalid 3 string RGB colors', () => {
+  describe('Invalid 3 string RGB colors', () => {
     range(20)
       .map(() => randString('GHIJKLMNOPpo_+!&^%$', 3))
       .map(testColor(false))

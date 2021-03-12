@@ -24,33 +24,8 @@
 
  */
 
+import { hsv } from 'd3-hsv'
 import { SimpleHSV } from '../types'
-import { simpleHsvToRgb } from './simpleHsvToRgb'
-import { rgbToColorName } from './rgbToColorName'
-import { rgbToRgbiString } from './rgbToRgbiString'
-import { rgbToRgbpString } from './rgbToRgbpString'
-import { rgbToHslString } from './rgbToHslString'
 
-export const simpleHsvToFormattedColorString = (
-  color: SimpleHSV,
-  colorFormat?: string
-) => {
-  const rgbColor = simpleHsvToRgb(color)
-  switch (colorFormat) {
-    case 'NAME':
-      return rgbToColorName(rgbColor)
-    case 'RGBI':
-    case 'RGBIA':
-      return rgbToRgbiString(rgbColor)
-    case 'RGBP':
-    case 'RGBPA':
-      return rgbToRgbpString(rgbColor)
-    case 'HSL':
-    case 'HSLA':
-      return rgbToHslString(rgbColor)
-    case 'HEX3':
-    case 'HEX6':
-    default:
-      return rgbColor.hex()
-  }
-}
+export const simpleHsvToHex = (color: SimpleHSV) =>
+  hsv(color.h, color.s, color.v).rgb().hex()
