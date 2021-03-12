@@ -115,6 +115,9 @@ export const HueSliderLayout: FC<HueSliderProps> = ({
     [mousePos]
   )
 
+  // Should have full saturation and value to match slider tracl colors
+  const sliderHandleColor = simpleHsvToHex({ ...hsv, s: 1, v: 1 })
+
   return (
     <HueSliderTrack
       className={className}
@@ -123,7 +126,7 @@ export const HueSliderLayout: FC<HueSliderProps> = ({
       ref={sliderRef}
     >
       <HueSliderHandle
-        color={simpleHsvToHex({ ...hsv })}
+        color={sliderHandleColor}
         isMouseDown={isMouseDown}
         position={handlePosition}
       />

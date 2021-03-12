@@ -24,44 +24,16 @@
 
  */
 
-import { theme } from '@looker/design-tokens'
 import React, { FC, MouseEvent, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import { useMouseDragPosition, usePreviousValue } from '../../../../utils'
 import { COLOR_PICKER_WIDTH } from '../ColorPicker/dimensions'
 import { simpleHsvToHex } from '../utils'
 import { SimpleHSV } from '../types'
+import { Handle2d } from './Handle2d'
 
 const PREVIEW_HEIGHT = 150
 const PREVIEW_WIDTH = COLOR_PICKER_WIDTH
-
-const HANDLE_HEIGHT = theme.sizes.small
-const HANDLE_WIDTH = theme.sizes.small
-
-interface Handle2dProps {
-  color: string
-  isMouseDown: boolean
-  x: number
-  y: number
-}
-
-const Handle2d = styled.div.attrs<Handle2dProps>(({ color, x, y }) => ({
-  style: {
-    backgroundColor: color,
-    // The ${HANDLE_WIDTH} / 2 and ${HANDLE_HEIGHT} / 2 center the handle on the click position
-    transform: `translate(calc(${x}px - ${HANDLE_WIDTH} / 2), calc(${y}px - ${HANDLE_HEIGHT} / 2))`,
-  },
-}))<Handle2dProps>`
-  border: 2px solid ${({ theme: { colors } }) => colors.background};
-  border-radius: 100%;
-  box-shadow: ${({ theme }) => theme.shadows[1]};
-  cursor: ${({ isMouseDown }) => (isMouseDown ? 'grabbing' : 'pointer')};
-  height: ${HANDLE_HEIGHT};
-  left: 0;
-  position: relative;
-  top: 0;
-  width: ${HANDLE_WIDTH};
-`
 
 interface LightSaturationPreviewProps {
   className?: string
