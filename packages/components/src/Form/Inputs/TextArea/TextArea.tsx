@@ -86,11 +86,9 @@ export const TextArea = styled(TextAreaLayout).attrs<TextAreaProps>(
   width: 100%;
 
   ${ErrorIcon} {
-    height: ${({ theme }) => theme.sizes.small};
     position: absolute;
     right: 0.5rem;
     top: 0.5rem;
-    width: ${({ theme }) => theme.sizes.small};
   }
 
   textarea {
