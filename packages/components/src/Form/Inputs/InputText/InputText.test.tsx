@@ -27,6 +27,8 @@
 import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { renderWithTheme } from '@looker/components-test-utils'
+import { Account } from '@looker/icons'
+import { Favorite } from '@styled-icons/material'
 import React from 'react'
 
 import { InputText } from './InputText'
@@ -113,6 +115,37 @@ describe('InputText', () => {
 
       expect(getByText('before')).toBeVisible()
       expect(getByText('after')).toBeVisible()
+    })
+
+    test('icons', () => {
+      const { getByTitle } = renderWithTheme(
+        <InputText iconBefore={<Favorite />} iconAfter={<Account />} />
+      )
+
+      expect(getByTitle('Before Title')).toBeInTheDocument()
+      expect(getByTitle('After Title')).toBeInTheDocument()
+    })
+
+    test('redundant ones should not render', () => {
+      const { queryByPlaceholderText } = renderWithTheme(
+        <>
+          <InputText placeholder="Hello" iconBefore={<Favorite />} before="$" />
+          <InputText placeholder="Goodbye" iconAfter={<Account />} after="%" />
+        </>
+      )
+
+      expect(queryByPlaceholderText('Hello')).not.toBeInTheDocument()
+      expect(queryByPlaceholderText('Goodbye')).not.toBeInTheDocument()
+      expect(warnMock.mock.calls).toMatchInlineSnapshot(`
+        Array [
+          Array [
+            "Use before or iconBefore, but not both at the same time.",
+          ],
+          Array [
+            "Use after or iconAfter, but not both at the same time.",
+          ],
+        ]
+      `)
     })
 
     test('focus & blur behavior', () => {

@@ -289,10 +289,14 @@ export const inputCSS = css`
   font-size: ${({ theme: { fontSizes } }) => fontSizes.small};
 `
 
-export const ErrorIcon = styled(Error)`
-  color: ${({ theme }) => theme.colors.critical};
+const InputIconSize = css`
   height: ${({ theme }) => theme.sizes.small};
   width: ${({ theme }) => theme.sizes.small};
+`
+
+export const ErrorIcon = styled(Error)`
+  color: ${({ theme }) => theme.colors.critical};
+  ${InputIconSize}
 `
 
 export const InputText = styled(InputTextLayout).attrs<InputTextProps>(
@@ -330,12 +334,8 @@ export const InputText = styled(InputTextLayout).attrs<InputTextProps>(
   }
 
   ${StyledIconBase} {
-    height: ${({ theme }) => theme.sizes.small};
-    width: ${({ theme }) => theme.sizes.small};
-  }
-
-  & > ${StyledIconBase} {
     color: ${(props) => props.theme.colors.text1};
+    ${InputIconSize}
   }
 
   &:hover {
