@@ -29,16 +29,11 @@ import styled from 'styled-components'
 import { SpaceVertical } from '../../../../Layout'
 import { LightSaturationPreview, HueSlider } from '..'
 import { ColorPickerProps } from '../types'
-import { COLOR_PICKER_WIDTH } from './dimensions'
 
-const ColorPickerInternal: FC<ColorPickerProps> = ({ hsv, setHsv }) => (
-  <SpaceVertical
-    width={COLOR_PICKER_WIDTH}
-    gap="medium"
-    data-testid="color-picker"
-  >
-    <LightSaturationPreview hsv={hsv} setHsv={setHsv} />
-    <HueSlider hsv={hsv} setHsv={setHsv} />
+const ColorPickerInternal: FC<ColorPickerProps> = ({ hsv, setHsv, width }) => (
+  <SpaceVertical gap="medium" data-testid="color-picker">
+    <LightSaturationPreview hsv={hsv} setHsv={setHsv} width={width} />
+    <HueSlider hsv={hsv} setHsv={setHsv} width={width} />
   </SpaceVertical>
 )
 

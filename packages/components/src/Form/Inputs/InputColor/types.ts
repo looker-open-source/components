@@ -37,4 +37,5 @@ export interface ColorPickerProps {
   className?: string
   hsv: SimpleHSV
   setHsv: (hsv: SimpleHSV) => void
+  width: number
 }

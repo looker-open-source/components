@@ -28,11 +28,8 @@ import { theme } from '@looker/design-tokens'
 import React, { FC, MouseEvent, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import { useMouseDragPosition, usePreviousValue } from '../../../../utils'
-import { COLOR_PICKER_WIDTH } from '../ColorPicker/dimensions'
 import { simpleHsvToHex } from '../utils'
 import { ColorPickerProps } from '../types'
-
-const SLIDER_WIDTH = COLOR_PICKER_WIDTH
 
 const HANDLE_HEIGHT = theme.sizes.small
 const HANDLE_WIDTH = theme.sizes.small
@@ -69,15 +66,16 @@ export const HueSliderLayout: FC<ColorPickerProps> = ({
   className,
   hsv,
   setHsv,
+  width,
 }) => {
-  const handlePosition = (hsv.h / 360) * SLIDER_WIDTH
+  const handlePosition = (hsv.h / 360) * width
 
   const sliderRef = useRef<HTMLDivElement>(null)
   const sliderLeft = sliderRef.current?.getBoundingClientRect().left || 0
 
   const handleSliderClick = (event: MouseEvent<HTMLDivElement>) => {
     const clickEventX = event.clientX
-    const newHue = ((clickEventX - sliderLeft) / SLIDER_WIDTH) * 360
+    const newHue = ((clickEventX - sliderLeft) / width) * 360
     setHsv({ ...hsv, h: newHue })
   }
 
@@ -85,7 +83,7 @@ export const HueSliderLayout: FC<ColorPickerProps> = ({
   const previousIsMouseDown = usePreviousValue(isMouseDown)
 
   const handleHandleDrag = () => {
-    let newHue = ((mousePos.x - sliderLeft) / SLIDER_WIDTH) * 360
+    let newHue = ((mousePos.x - sliderLeft) / width) * 360
 
     // Keep user from sliding off the track
     if (newHue > 360) {
@@ -118,6 +116,7 @@ export const HueSliderLayout: FC<ColorPickerProps> = ({
       isMouseDown={isMouseDown}
       onMouseDown={handleSliderClick}
       ref={sliderRef}
+      width={width}
     >
       <HueSliderHandle
         color={sliderHandleColor}
@@ -128,7 +127,12 @@ export const HueSliderLayout: FC<ColorPickerProps> = ({
   )
 }
 
-const HueSliderTrack = styled.div<{ isMouseDown: boolean }>`
+interface HueSliderTrackProps {
+  isMouseDown: boolean
+  width: number
+}
+
+const HueSliderTrack = styled.div<HueSliderTrackProps>`
   background: linear-gradient(
     90deg,
     #f00 0,
@@ -143,7 +147,7 @@ const HueSliderTrack = styled.div<{ isMouseDown: boolean }>`
   border-radius: ${({ theme }) => theme.radii.large};
   cursor: ${({ isMouseDown }) => (isMouseDown ? 'grabbing' : 'default')};
   height: ${({ theme }) => theme.space.small};
-  width: ${SLIDER_WIDTH}px;
+  width: ${({ width }) => width}px;
 `
 
 export const HueSlider = styled(HueSliderLayout)``

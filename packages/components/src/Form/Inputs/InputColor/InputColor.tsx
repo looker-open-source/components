@@ -46,6 +46,7 @@ import {
 } from './utils'
 import { SimpleHSV } from './types'
 import { ColorPicker } from './ColorPicker'
+import { DEFAULT_INPUT_COLOR_WIDTH } from './dimensions'
 
 export interface InputColorProps extends Omit<InputTextProps, 'height'> {
   /**
@@ -138,6 +139,7 @@ export const InputColorComponent = forwardRef(
         <ColorPicker
           hsv={color || { h: 0, s: 1, v: 1 }}
           setHsv={setColorState}
+          width={DEFAULT_INPUT_COLOR_WIDTH}
         />
       </PopoverContent>
     )

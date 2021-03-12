@@ -27,21 +27,20 @@
 import React, { FC, MouseEvent, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import { useMouseDragPosition, usePreviousValue } from '../../../../utils'
-import { COLOR_PICKER_WIDTH } from '../ColorPicker/dimensions'
 import { ColorPickerProps } from '../types'
 import { simpleHsvToHex } from '../utils'
 import { Handle2d } from './Handle2d'
-
-const PREVIEW_HEIGHT = 150
-const PREVIEW_WIDTH = COLOR_PICKER_WIDTH
 
 const LightSaturationPreviewLayout: FC<ColorPickerProps> = ({
   className,
   hsv,
   setHsv,
+  width: previewWidth,
 }) => {
-  const handleX = hsv.s * PREVIEW_WIDTH
-  const handleY = PREVIEW_HEIGHT - hsv.v * PREVIEW_HEIGHT
+  const previewHeight = previewWidth * 0.75
+
+  const handleX = hsv.s * previewWidth
+  const handleY = previewHeight - hsv.v * previewHeight
 
   const previewRef = useRef<HTMLDivElement>(null)
   const previewLeft = previewRef.current?.getBoundingClientRect().left || 0
@@ -51,9 +50,9 @@ const LightSaturationPreviewLayout: FC<ColorPickerProps> = ({
     const clickEventX = event.clientX
     const clickEventY = event.clientY
 
-    const newSaturation = (clickEventX - previewLeft) / PREVIEW_WIDTH
+    const newSaturation = (clickEventX - previewLeft) / previewWidth
     const newValue =
-      (PREVIEW_HEIGHT - (clickEventY - previewTop)) / PREVIEW_HEIGHT
+      (previewHeight - (clickEventY - previewTop)) / previewHeight
 
     setHsv({ ...hsv, s: newSaturation, v: newValue })
   }
@@ -62,7 +61,7 @@ const LightSaturationPreviewLayout: FC<ColorPickerProps> = ({
   const previousIsMouseDown = usePreviousValue(isMouseDown)
 
   const handleHandleDrag = () => {
-    let newSaturation = (mousePos.x - previewLeft) / PREVIEW_WIDTH
+    let newSaturation = (mousePos.x - previewLeft) / previewWidth
 
     if (newSaturation > 1) {
       newSaturation = 1
@@ -70,7 +69,7 @@ const LightSaturationPreviewLayout: FC<ColorPickerProps> = ({
       newSaturation = 0
     }
 
-    let newValue = (PREVIEW_HEIGHT - (mousePos.y - previewTop)) / PREVIEW_HEIGHT
+    let newValue = (previewHeight - (mousePos.y - previewTop)) / previewHeight
 
     if (newValue > 1) {
       newValue = 1
@@ -111,7 +110,9 @@ const LightSaturationPreviewLayout: FC<ColorPickerProps> = ({
       className={className}
       isMouseDown={isMouseDown}
       onMouseDown={handleClick}
+      height={previewHeight}
       ref={previewRef}
+      width={previewWidth}
     >
       <Handle2d
         color={color}
@@ -123,19 +124,22 @@ const LightSaturationPreviewLayout: FC<ColorPickerProps> = ({
   )
 }
 
-const LightSaturationPreviewContainer = styled.div.attrs<{
+interface LightSaturationPreviewContainerProps
+  extends Pick<ColorPickerProps, 'width'> {
   backgroundColor: string
   isMouseDown: boolean
-}>(({ backgroundColor }) => ({ style: { backgroundColor: backgroundColor } }))<{
-  backgroundColor: string
-  isMouseDown: boolean
-}>`
+  height: number
+}
+
+const LightSaturationPreviewContainer = styled.div.attrs<LightSaturationPreviewContainerProps>(
+  ({ backgroundColor }) => ({ style: { backgroundColor: backgroundColor } })
+)<LightSaturationPreviewContainerProps>`
   background-image: linear-gradient(0deg, #000, transparent),
     linear-gradient(90deg, #fff, hsla(0, 0%, 100%, 0));
   border-radius: ${({ theme }) => theme.radii.medium};
   cursor: ${({ isMouseDown }) => (isMouseDown ? 'grabbing' : 'default')};
-  height: ${PREVIEW_HEIGHT}px;
-  width: ${PREVIEW_WIDTH}px;
+  height: ${({ height }) => height}px;
+  width: ${({ width }) => width}px;
 `
 
 export const LightSaturationPreview = styled(LightSaturationPreviewLayout)``
