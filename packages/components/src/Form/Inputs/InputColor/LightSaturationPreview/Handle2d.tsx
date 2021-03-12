@@ -53,8 +53,7 @@
 import { theme } from '@looker/design-tokens'
 import styled from 'styled-components'
 
-const HANDLE_HEIGHT = theme.sizes.small
-const HANDLE_WIDTH = theme.sizes.small
+const HANDLE_SIZE = theme.sizes.small
 
 interface Handle2dProps {
   color: string
@@ -66,17 +65,17 @@ interface Handle2dProps {
 export const Handle2d = styled.div.attrs<Handle2dProps>(({ color, x, y }) => ({
   style: {
     backgroundColor: color,
-    // The ${HANDLE_WIDTH} / 2 and ${HANDLE_HEIGHT} / 2 center the handle on the click position
-    transform: `translate(calc(${x}px - ${HANDLE_WIDTH} / 2), calc(${y}px - ${HANDLE_HEIGHT} / 2))`,
+    // The ${HANDLE_SIZE} / 2 offset centers the handle on the click position
+    transform: `translate(calc(${x}px - ${HANDLE_SIZE} / 2), calc(${y}px - ${HANDLE_SIZE} / 2))`,
   },
 }))<Handle2dProps>`
   border: 2px solid ${({ theme: { colors } }) => colors.background};
   border-radius: 100%;
   box-shadow: ${({ theme }) => theme.shadows[1]};
   cursor: ${({ isMouseDown }) => (isMouseDown ? 'grabbing' : 'pointer')};
-  height: ${HANDLE_HEIGHT};
+  height: ${HANDLE_SIZE};
   left: 0;
   position: relative;
   top: 0;
-  width: ${HANDLE_WIDTH};
+  width: ${HANDLE_SIZE};
 `
