@@ -44,6 +44,28 @@ Icon.args = {
   icon: 'User',
 }
 
+export const IconColor = Template.bind({})
+IconColor.args = {
+  ...Basic.args,
+  color: 'warn',
+  icon: 'User',
+}
+
+export const IconCustomColor = Template.bind({})
+IconCustomColor.args = {
+  ...Basic.args,
+  color: '#cc00cc',
+  icon: 'User',
+}
+
+export const IconColorDisabled = Template.bind({})
+IconColorDisabled.args = {
+  ...Basic.args,
+  color: 'warn',
+  disabled: true,
+  icon: 'User',
+}
+
 export const Detail = Template.bind({})
 Detail.args = {
   ...Basic.args,

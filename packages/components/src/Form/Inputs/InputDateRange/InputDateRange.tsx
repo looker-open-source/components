@@ -508,6 +508,7 @@ const InputTextGroupWrapper = styled.div<InputTextGroupWrapperProps>`
   ${inputCSS}
   align-items: center;
   display: grid;
+  font-family: ${({ theme }) => theme.fonts.body};
   grid-gap: ${({ theme }) => theme.space.xsmall};
   grid-template-columns: auto auto auto 1fr;
   padding: 0 ${({ theme: { space } }) => space.small};
