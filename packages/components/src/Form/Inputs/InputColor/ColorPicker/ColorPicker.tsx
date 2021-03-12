@@ -25,17 +25,13 @@
  */
 
 import React, { FC } from 'react'
+import styled from 'styled-components'
 import { SpaceVertical } from '../../../../Layout'
 import { LightSaturationPreview, HueSlider } from '..'
-import { SimpleHSV } from '../types'
+import { ColorPickerProps } from '../types'
 import { COLOR_PICKER_WIDTH } from './dimensions'
 
-export interface ColorPickerProps {
-  hsv: SimpleHSV
-  setHsv: (hsv: SimpleHSV) => void
-}
-
-export const ColorPicker: FC<ColorPickerProps> = ({ hsv, setHsv }) => (
+const ColorPickerInternal: FC<ColorPickerProps> = ({ hsv, setHsv }) => (
   <SpaceVertical
     width={COLOR_PICKER_WIDTH}
     gap="medium"
@@ -45,3 +41,5 @@ export const ColorPicker: FC<ColorPickerProps> = ({ hsv, setHsv }) => (
     <HueSlider hsv={hsv} setHsv={setHsv} />
   </SpaceVertical>
 )
+
+export const ColorPicker = styled(ColorPickerInternal)``

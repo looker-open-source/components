@@ -30,7 +30,7 @@ import styled from 'styled-components'
 import { useMouseDragPosition, usePreviousValue } from '../../../../utils'
 import { COLOR_PICKER_WIDTH } from '../ColorPicker/dimensions'
 import { simpleHsvToHex } from '../utils'
-import { SimpleHSV } from '../types'
+import { ColorPickerProps } from '../types'
 
 const SLIDER_WIDTH = COLOR_PICKER_WIDTH
 
@@ -65,13 +65,7 @@ const HueSliderHandle = styled.div.attrs<HandleProps>(
   width: ${HANDLE_WIDTH};
 `
 
-interface HueSliderProps {
-  className?: string
-  hsv: SimpleHSV
-  setHsv: (hsv: SimpleHSV) => void
-}
-
-export const HueSliderLayout: FC<HueSliderProps> = ({
+export const HueSliderLayout: FC<ColorPickerProps> = ({
   className,
   hsv,
   setHsv,

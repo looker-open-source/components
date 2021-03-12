@@ -28,20 +28,14 @@ import React, { FC, MouseEvent, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import { useMouseDragPosition, usePreviousValue } from '../../../../utils'
 import { COLOR_PICKER_WIDTH } from '../ColorPicker/dimensions'
+import { ColorPickerProps } from '../types'
 import { simpleHsvToHex } from '../utils'
-import { SimpleHSV } from '../types'
 import { Handle2d } from './Handle2d'
 
 const PREVIEW_HEIGHT = 150
 const PREVIEW_WIDTH = COLOR_PICKER_WIDTH
 
-interface LightSaturationPreviewProps {
-  className?: string
-  hsv: SimpleHSV
-  setHsv: (hsv: SimpleHSV) => void
-}
-
-const LightSaturationPreviewLayout: FC<LightSaturationPreviewProps> = ({
+const LightSaturationPreviewLayout: FC<ColorPickerProps> = ({
   className,
   hsv,
   setHsv,
