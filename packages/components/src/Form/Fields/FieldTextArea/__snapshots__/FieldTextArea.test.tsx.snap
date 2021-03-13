@@ -10,11 +10,9 @@ exports[`A FieldTextArea with default label 1`] = `
 }
 
 .c5 .InputText__ErrorIcon-sc-6cvg1f-2 {
-  height: 1.25rem;
   position: absolute;
   right: 0.5rem;
   top: 0.5rem;
-  width: 1.25rem;
 }
 
 .c5 textarea {
@@ -137,11 +135,9 @@ exports[`A FieldTextArea with label inline 1`] = `
 }
 
 .c5 .InputText__ErrorIcon-sc-6cvg1f-2 {
-  height: 1.25rem;
   position: absolute;
   right: 0.5rem;
   top: 0.5rem;
-  width: 1.25rem;
 }
 
 .c5 textarea {

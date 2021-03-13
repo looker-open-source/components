@@ -119,7 +119,10 @@ describe('InputText', () => {
 
     test('icons', () => {
       const { getByTitle } = renderWithTheme(
-        <InputText iconBefore={<Favorite />} iconAfter={<Account />} />
+        <InputText
+          iconBefore={<Favorite title="Before Title" />}
+          iconAfter={<Account title="After Title" />}
+        />
       )
 
       expect(getByTitle('Before Title')).toBeInTheDocument()

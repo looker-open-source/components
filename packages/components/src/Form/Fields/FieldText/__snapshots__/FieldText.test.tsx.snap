@@ -85,12 +85,9 @@ exports[`A FieldText with default label 1`] = `
 }
 
 .c5 .StyledIconBase-ea9ulj-0 {
+  color: #939BA5;
   height: 1.25rem;
   width: 1.25rem;
-}
-
-.c5 > .StyledIconBase-ea9ulj-0 {
-  color: #939BA5;
 }
 
 .c5:hover {
@@ -277,12 +274,9 @@ exports[`A FieldText with label inline 1`] = `
 }
 
 .c5 .StyledIconBase-ea9ulj-0 {
+  color: #939BA5;
   height: 1.25rem;
   width: 1.25rem;
-}
-
-.c5 > .StyledIconBase-ea9ulj-0 {
-  color: #939BA5;
 }
 
 .c5:hover {

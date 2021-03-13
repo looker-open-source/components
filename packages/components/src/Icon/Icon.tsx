@@ -98,4 +98,12 @@ export const Icon = styled(IconLayout).attrs<IconProps>(
   ${color}
   flex-shrink: 0;
   justify-content: center;
+
+  /**
+   * @TODO This is a compatibility fix and should probably be removed once
+   * icon refactor is complete and accepted
+   **/
+  svg {
+    vertical-align: initial;
+  }
 `

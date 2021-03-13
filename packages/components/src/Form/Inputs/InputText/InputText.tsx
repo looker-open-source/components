@@ -333,7 +333,7 @@ export const InputText = styled(InputTextLayout).attrs<InputTextProps>(
     }
   }
 
-  ${StyledIconBase} {
+  & > ${StyledIconBase} {
     color: ${(props) => props.theme.colors.text1};
     ${InputIconSize}
   }
