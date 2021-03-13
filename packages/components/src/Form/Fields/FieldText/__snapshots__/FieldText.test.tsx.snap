@@ -84,12 +84,6 @@ exports[`A FieldText with default label 1`] = `
   padding: 0 0.5rem;
 }
 
-.c5 .StyledIconBase-ea9ulj-0 {
-  color: #939BA5;
-  height: 1.25rem;
-  width: 1.25rem;
-}
-
 .c5:hover {
   border-color: #C1C6CC;
 }
@@ -271,12 +265,6 @@ exports[`A FieldText with label inline 1`] = `
 .c5 .InlineInputText__InlineInputTextBase-sc-1nk1o3l-2 input,
 .c5 .InlineInputText__InlineInputTextBase-sc-1nk1o3l-2 span {
   padding: 0 0.5rem;
-}
-
-.c5 .StyledIconBase-ea9ulj-0 {
-  color: #939BA5;
-  height: 1.25rem;
-  width: 1.25rem;
 }
 
 .c5:hover {

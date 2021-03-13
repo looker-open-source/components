@@ -20,6 +20,10 @@ exports[`Icon Default 1`] = `
   justify-content: center;
 }
 
+.c0 svg {
+  vertical-align: initial;
+}
+
 <div
   aria-hidden={true}
   className="c0"
@@ -62,6 +66,10 @@ exports[`Icon Explicit size - integer as pixels 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+}
+
+.c0 svg {
+  vertical-align: initial;
 }
 
 <div
@@ -108,6 +116,10 @@ exports[`Icon Explicit size - string 1`] = `
   justify-content: center;
 }
 
+.c0 svg {
+  vertical-align: initial;
+}
+
 <div
   aria-hidden={true}
   className="c0"
@@ -150,6 +162,10 @@ exports[`Icon Styled system size 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+}
+
+.c0 svg {
+  vertical-align: initial;
 }
 
 <div
