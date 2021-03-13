@@ -255,6 +255,15 @@ export const inputTextDisabled = css`
   }
 `
 
+const InputIconSize = css`
+  height: ${({ theme }) => theme.sizes.small};
+  width: ${({ theme }) => theme.sizes.small};
+`
+
+export const ErrorIcon = styled(Error)`
+  color: ${({ theme }) => theme.colors.critical};
+`
+
 export const InputTextContent = styled.div<SpaceProps>`
   ${space}
   align-items: center;
@@ -262,6 +271,15 @@ export const InputTextContent = styled.div<SpaceProps>`
   display: flex;
   height: 100%;
   pointer-events: none;
+
+  ${StyledIconBase} {
+    color: ${(props) => props.theme.colors.text1};
+    ${InputIconSize}
+  }
+
+  ${ErrorIcon} {
+    color: ${({ theme }) => theme.colors.critical};
+  }
 `
 
 export const inputTextValidation = css<{ validationType?: 'error' }>`
@@ -287,16 +305,6 @@ export const inputCSS = css`
   border-radius: ${({ theme: { radii } }) => radii.medium};
   color: ${({ theme: { colors } }) => colors.text4};
   font-size: ${({ theme: { fontSizes } }) => fontSizes.small};
-`
-
-const InputIconSize = css`
-  height: ${({ theme }) => theme.sizes.small};
-  width: ${({ theme }) => theme.sizes.small};
-`
-
-export const ErrorIcon = styled(Error)`
-  color: ${({ theme }) => theme.colors.critical};
-  ${InputIconSize}
 `
 
 export const InputText = styled(InputTextLayout).attrs<InputTextProps>(
@@ -331,14 +339,6 @@ export const InputText = styled(InputTextLayout).attrs<InputTextProps>(
     span {
       padding: 0 ${({ theme: { space } }) => space.xsmall};
     }
-  }
-
-  & > ${StyledIconBase} {
-    color: ${(props) => props.theme.colors.text1};
-  }
-
-  ${StyledIconBase} {
-    ${InputIconSize}
   }
 
   &:hover {

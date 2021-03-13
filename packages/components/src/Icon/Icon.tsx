@@ -72,19 +72,17 @@ export interface IconProps
 }
 
 const IconLayout = forwardRef(
-  ({ title, icon, ...props }: IconProps, ref: Ref<HTMLDivElement>) => {
-    return (
-      <div
-        aria-hidden={title === undefined && true}
-        title={title}
-        ref={ref}
-        role="img"
-        {...omitStyledProps(props)}
-      >
-        {icon}
-      </div>
-    )
-  }
+  ({ title, icon, ...props }: IconProps, ref: Ref<HTMLDivElement>) => (
+    <div
+      aria-hidden={title === undefined && true}
+      title={title}
+      ref={ref}
+      role="img"
+      {...omitStyledProps(props)}
+    >
+      {icon}
+    </div>
+  )
 )
 
 IconLayout.displayName = 'IconLayout'
@@ -96,7 +94,7 @@ export const Icon = styled(IconLayout).attrs<IconProps>(
 )<IconProps>`
   ${sizeSimpleLayoutCSS}
   ${color}
-  flex-shrink: 0;
+    flex-shrink: 0;
   justify-content: center;
 
   /**
