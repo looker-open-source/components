@@ -28,16 +28,16 @@ import { css } from 'styled-components'
 import { Colors } from '@looker/design-tokens'
 
 export interface SemanticBorderProps {
-  border?: borderProp
-  borderBottom?: borderProp
-  borderLeft?: borderProp
-  borderRight?: borderProp
-  borderTop?: borderProp
-  borderX?: borderProp
-  borderY?: borderProp
+  border?: BorderProp
+  borderBottom?: BorderProp
+  borderLeft?: BorderProp
+  borderRight?: BorderProp
+  borderTop?: BorderProp
+  borderX?: BorderProp
+  borderY?: BorderProp
 }
 
-type borderProp = boolean | keyof Colors
+type BorderProp = boolean | keyof Colors
 
 type BorderPosition = 'bottom' | 'left' | 'right' | 'top' | 'x' | 'y'
 
@@ -48,7 +48,7 @@ const borderPropertyHelper = (color: keyof Colors, property: string) =>
   `
 
 const borderPositionHelper = (
-  border: borderProp,
+  border: BorderProp,
   position?: BorderPosition
 ) => {
   if (!border) return null
