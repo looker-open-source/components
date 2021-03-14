@@ -30,22 +30,15 @@ import { screen } from '@testing-library/react'
 import { Aside } from './Aside'
 import { Footer } from './Footer'
 import { Header } from './Header'
-import { Layout } from './Layout'
-import { Section } from './Section'
 
 describe('Layout has border', () => {
   test('render border properly', () => {
     renderWithTheme(
-      <Layout>
+      <>
         <Header borderTop>Header</Header>
-        <Layout hasAside>
-          <Aside border width="20%">
-            Aside
-          </Aside>
-          <Section>foo</Section>
-        </Layout>
+        <Aside border>Aside</Aside>
         <Footer borderX>Footer</Footer>
-      </Layout>
+      </>
     )
 
     const aside = screen.getByText('Aside')
@@ -60,12 +53,9 @@ describe('Layout has border', () => {
 
   test('render border color if passed', () => {
     renderWithTheme(
-      <Layout hasAside>
-        <Aside border="key" width="20%">
-          Aside
-        </Aside>
-        <Section>foo</Section>
-      </Layout>
+      <>
+        <Aside border="key">Aside</Aside>
+      </>
     )
 
     expect(screen.getByText('Aside')).toHaveStyle('border: 1px solid #6C43E0;')
