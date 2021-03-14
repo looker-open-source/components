@@ -24,8 +24,12 @@
 
  */
 
+import { ListDivider } from '../List'
+
 export * from './Menu'
 export * from './MenuList'
 export * from './MenuItem'
-export * from './MenuDivider'
+export * from '../List/ListDivider'
 export * from './MenuHeading'
+
+export const MenuDivider = ListDivider

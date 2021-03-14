@@ -24,8 +24,17 @@
 
  */
 
-export * from './List'
-export * from './ListDivider'
-export * from './ListItem'
-export * from './ListItemContext'
-export { listItemDimensions } from './utils'
+import React, { FC } from 'react'
+import styled from 'styled-components'
+import { SpaceProps, space } from '@looker/design-tokens'
+import { Divider } from '../Divider'
+
+const ListDividerLayout: FC<{}> = (props) => (
+  <li {...props} aria-hidden="true">
+    <Divider />
+  </li>
+)
+
+export const ListDivider = styled(ListDividerLayout)<SpaceProps>`
+  ${space}
+`

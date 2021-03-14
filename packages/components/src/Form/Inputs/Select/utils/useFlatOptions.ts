@@ -24,17 +24,31 @@
 
  */
 
-import React, { FC } from 'react'
-import styled from 'styled-components'
-import { SpaceProps, space } from '@looker/design-tokens'
-import { Divider } from '../Divider'
+import { useMemo } from 'react'
+import {
+  SelectOptionGroupProps,
+  SelectOptionObject,
+  SelectOptionProps,
+} from '../types'
 
-const MenuDividerLayout: FC<{}> = (props) => (
-  <li {...props} aria-hidden="true">
-    <Divider />
-  </li>
-)
+export const useFlatOptions = (
+  options?: SelectOptionProps[]
+): [SelectOptionObject[] | undefined, boolean] => {
+  return useMemo(() => {
+    if (!options) return [options, false]
 
-export const MenuDivider = styled(MenuDividerLayout)<SpaceProps>`
-  ${space}
-`
+    let isGrouped = false
+    const flatOptions = options.reduce(
+      (acc: SelectOptionObject[], option: SelectOptionProps) => {
+        const optionAsGroup = option as SelectOptionGroupProps
+        if (optionAsGroup.options) {
+          isGrouped = true
+          return [...acc, ...optionAsGroup.options]
+        }
+        return [...acc, option as SelectOptionObject]
+      },
+      []
+    )
+    return [flatOptions, isGrouped]
+  }, [options])
+}

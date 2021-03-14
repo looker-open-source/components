@@ -42,6 +42,7 @@ import {
   pickAriaAndValidationProps,
 } from './utils/ariaProps'
 import { getOption, getFirstOption } from './utils/options'
+import { useFlatOptions } from './utils/useFlatOptions'
 import { useShouldWindowOptions } from './utils/useWindowedOptions'
 import { SelectOptionObject } from './types'
 
@@ -121,11 +122,13 @@ const SelectComponent = forwardRef(
     }: SelectProps,
     ref: Ref<HTMLInputElement>
   ) => {
-    const optionValue = getOption(value, options)
+    const [flatOptions, isGrouped] = useFlatOptions(options)
+    const optionValue = getOption(value, flatOptions)
     const nullDefault = (isClearable || placeholder) && !defaultValue
     const defaultOptionValue = nullDefault
       ? undefined
-      : getOption(defaultValue, options) || (options && getFirstOption(options))
+      : getOption(defaultValue, flatOptions) ||
+        (options && getFirstOption(options))
 
     function handleChange(option?: SelectOptionObject) {
       const newValue = option ? option.value : ''
@@ -144,7 +147,10 @@ const SelectComponent = forwardRef(
 
     const ariaProps = pickAriaAndValidationProps(props)
 
-    const windowedOptions = useShouldWindowOptions(options, windowedOptionsProp)
+    const windowedOptions = useShouldWindowOptions(
+      flatOptions,
+      windowedOptionsProp
+    )
 
     return (
       <Combobox
@@ -158,7 +164,7 @@ const SelectComponent = forwardRef(
       >
         <ComboboxInput
           {...ariaProps}
-          before={<SelectInputIcon options={options} />}
+          before={<SelectInputIcon flatOptions={flatOptions} />}
           disabled={disabled}
           autoFocus={autoFocus}
           placeholder={placeholder}
@@ -184,6 +190,8 @@ const SelectComponent = forwardRef(
           >
             <SelectOptions
               options={options}
+              flatOptions={flatOptions}
+              isGrouped={isGrouped}
               windowedOptions={windowedOptions}
               isFilterable={isFilterable}
               noOptionsLabel={noOptionsLabel}

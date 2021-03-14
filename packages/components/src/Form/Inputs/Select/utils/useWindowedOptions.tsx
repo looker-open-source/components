@@ -28,44 +28,27 @@ import findIndex from 'lodash/findIndex'
 import React, { useContext, useEffect, useMemo, useRef } from 'react'
 import { getWindowedListBoundaries } from '../../../../utils/getWindowedListBoundaries'
 import { ComboboxContext, ComboboxMultiContext } from '../../Combobox'
-import {
-  SelectOptionGroupProps,
-  SelectOptionObject,
-  SelectOptionProps,
-} from '../types'
+import { SelectOptionObject } from '../types'
 
 export const optionHeight = 28
 
 export function useShouldWindowOptions(
-  options?: SelectOptionProps[],
+  flatOptions?: SelectOptionObject[],
   propsWindowedOptions?: boolean
 ) {
   return useMemo(() => {
-    if (!options) return false
+    if (!flatOptions) return false
     if (propsWindowedOptions === false) return false
     // Without windowedOptions prop, default is to turn it on at 100 options
-    if (options.length < 100 && !propsWindowedOptions) return false
+    if (flatOptions.length < 100 && !propsWindowedOptions) return false
     // But we can't use windowedOptions if there are groups
-    const groupedOptions = options.find(
-      (option) => (option as SelectOptionGroupProps).options !== undefined
-    )
-    if (groupedOptions) {
-      if (propsWindowedOptions) {
-        // If the windowedOptions prop is true but there are groups, give a warning
-        /* eslint-disable-next-line no-console */
-        console.warn(
-          'The `windowedOptions` prop does not support grouped options.'
-        )
-      }
-      return false
-    }
     return true
-  }, [options, propsWindowedOptions])
+  }, [flatOptions, propsWindowedOptions])
 }
 
 export function useWindowedOptions(
   windowedOptions?: boolean,
-  options?: SelectOptionProps[],
+  flatOptions?: SelectOptionObject[],
   isMulti?: boolean
 ) {
   const context = useContext(ComboboxContext)
@@ -80,9 +63,6 @@ export function useWindowedOptions(
 
   // windowedOptions prop on ComboboxList disables useAddOptionToContext,
   // so we need to add it here to support keyboard nav
-
-  // Let TS know we have no grouped options (making it valid to assign to optionsRef)
-  const flatOptions = options as SelectOptionObject[]
 
   // add options to ComboboxContext.optionsRef
   useEffect(() => {
@@ -119,7 +99,7 @@ export function useWindowedOptions(
   const previouslyWindowedRef = useRef<boolean>()
   if (windowedOptions && !previouslyWindowedRef.current) {
     if (navigationOption) {
-      const selectedIndex = findIndex(options, [
+      const selectedIndex = findIndex(flatOptions, [
         'value',
         navigationOption.value,
       ])

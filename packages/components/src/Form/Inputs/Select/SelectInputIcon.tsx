@@ -27,29 +27,30 @@
 import React, { useContext } from 'react'
 import { Icon } from '../../../Icon'
 import { ComboboxContext } from '../Combobox'
-import { SelectOptionProps } from './types'
-import { flattenOptions } from './utils/options'
+import { SelectOptionObject } from './types'
 
-export function getOptionIcon(value: string, options: SelectOptionProps[]) {
-  const flattenedOptions = options && flattenOptions(options)
-  if (value && flattenedOptions) {
-    const option = flattenedOptions.find((opt) => opt.value === value)
+export function getOptionIcon(
+  value: string,
+  flatOptions: SelectOptionObject[]
+) {
+  if (value && flatOptions) {
+    const option = flatOptions.find((opt) => opt.value === value)
     return option?.icon ? <Icon color="text1" icon={option.icon} /> : null
   }
   return null
 }
 
 export interface SelectInputIconProps {
-  options?: SelectOptionProps[]
+  flatOptions?: SelectOptionObject[]
 }
 
-export const SelectInputIcon = ({ options }: SelectInputIconProps) => {
+export const SelectInputIcon = ({ flatOptions }: SelectInputIconProps) => {
   const {
     data: { option, inputValue },
   } = useContext(ComboboxContext)
-  if (!options || !option) return null
+  if (!flatOptions || !option) return null
   // Don't show the icon if the user is filtering
   if (option.label !== inputValue) return null
 
-  return getOptionIcon(option.value, options)
+  return getOptionIcon(option.value, flatOptions)
 }
