@@ -46,7 +46,7 @@ const LightSaturationPreviewLayout: FC<ColorPickerProps> = ({
   const previewLeft = previewRef.current?.getBoundingClientRect().left || 0
   const previewTop = previewRef.current?.getBoundingClientRect().top || 0
 
-  const handleClick = (event: MouseEvent<HTMLDivElement>) => {
+  const handleMouseDown = (event: MouseEvent<HTMLDivElement>) => {
     const clickEventX = event.clientX
     const clickEventY = event.clientY
 
@@ -109,10 +109,11 @@ const LightSaturationPreviewLayout: FC<ColorPickerProps> = ({
       backgroundColor={backgroundColor}
       className={className}
       isMouseDown={isMouseDown}
-      onMouseDown={handleClick}
+      onMouseDown={handleMouseDown}
       height={previewHeight}
       ref={previewRef}
       width={previewWidth}
+      data-testid="light-saturation-preview"
     >
       <Handle2d
         color={color}
