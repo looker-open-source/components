@@ -24,7 +24,8 @@
 
  */
 
-import { useContext } from 'react'
+import React, { useContext } from 'react'
+import { Icon } from '../../../Icon'
 import { ComboboxContext } from '../Combobox'
 import { SelectOptionProps } from './types'
 import { flattenOptions } from './utils/options'
@@ -33,7 +34,7 @@ export function getOptionIcon(value: string, options: SelectOptionProps[]) {
   const flattenedOptions = options && flattenOptions(options)
   if (value && flattenedOptions) {
     const option = flattenedOptions.find((opt) => opt.value === value)
-    return option?.icon || null
+    return option?.icon ? <Icon color="text1" icon={option.icon} /> : null
   }
   return null
 }
