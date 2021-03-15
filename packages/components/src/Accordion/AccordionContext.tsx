@@ -25,8 +25,7 @@
  */
 
 import { SpacingSizes } from '@looker/design-tokens'
-import { ExpandMore } from '@styled-icons/material'
-import { ExpandLess } from '@styled-icons/material-rounded'
+import { ExpandLess, ExpandMore } from '@styled-icons/material-rounded'
 import React, { createContext } from 'react'
 import { IconSize } from '../Icon'
 import { IndicatorIcons } from './indicator'

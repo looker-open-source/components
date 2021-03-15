@@ -28,11 +28,8 @@ import { useTranslation } from 'react-i18next'
 import React, { FC } from 'react'
 import styled from 'styled-components'
 import { DoubleChevronLeft } from '@looker/icons'
-import {
-  ChevronLeft,
-  ChevronRight,
-  DoubleArrow,
-} from '@styled-icons/material-rounded'
+import { DoubleArrow } from '@styled-icons/material'
+import { ChevronLeft, ChevronRight } from '@styled-icons/material-rounded'
 import { Flex } from '../Layout'
 import { IconButton, IconButtonProps } from '../Button'
 import { Span } from '../Text'
