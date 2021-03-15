@@ -32,22 +32,22 @@ import { screen, fireEvent } from '@testing-library/react'
 import { MenuItem } from './MenuItem'
 
 describe('MenuItem', () => {
-  test('MenuItem renders', () => {
+  test('renders', () => {
     renderWithTheme(<MenuItem>who!</MenuItem>)
     expect(screen.getByText('who!')).toBeVisible()
   })
 
-  test('MenuItem - detail', () => {
+  test('detail', () => {
     renderWithTheme(<MenuItem detail="Is an excellent question">who!</MenuItem>)
     expect(screen.getByText('Is an excellent question')).toBeVisible()
   })
 
-  test('MenuItem - icon', () => {
+  test('icon', () => {
     renderWithTheme(<MenuItem icon="Beaker">Icon</MenuItem>)
     expect(screen.getByText('Icon')).toBeVisible()
   })
 
-  test('MenuItem - artwork', () => {
+  test('artwork', () => {
     renderWithTheme(
       <MenuItem
         iconArtwork={
@@ -62,7 +62,7 @@ describe('MenuItem', () => {
     expect(screen.getByTitle('SVG Title Here')).toBeInTheDocument()
   })
 
-  test('MenuItem - disabled to be a button', () => {
+  test('disabled to be a button', () => {
     const callbackFn = jest.fn()
 
     renderWithTheme(
@@ -79,7 +79,7 @@ describe('MenuItem', () => {
     expect(item.closest('button')).toBeInTheDocument()
   })
 
-  test('MenuItem - disabled is not clickable', () => {
+  test('disabled is not clickable', () => {
     const callbackFn = jest.fn()
 
     renderWithTheme(
@@ -94,7 +94,7 @@ describe('MenuItem', () => {
     expect(callbackFn).toHaveBeenCalledTimes(0)
   })
 
-  test('MenuItem - link with target="_blank" and no passed-in rel prop value uses rel="noopener noreferrer"', () => {
+  test('link with target="_blank" and no passed-in rel prop value uses rel="noopener noreferrer"', () => {
     const { getByRole } = renderWithTheme(
       <MenuItem itemRole="link" href="https://google.com" target="_blank">
         Link
@@ -109,7 +109,7 @@ describe('MenuItem', () => {
     expect(item).toHaveAttribute('rel', 'noopener noreferrer')
   })
 
-  test('MenuItem - link with target="_blank" and passed-in rel prop value auto appends "noopener noreferrer" to rel prop value', () => {
+  test('link with target="_blank" and passed-in rel prop value auto appends "noopener noreferrer" to rel prop value', () => {
     const { getByRole } = renderWithTheme(
       <MenuItem
         itemRole="link"
@@ -129,7 +129,7 @@ describe('MenuItem', () => {
     expect(item).toHaveAttribute('rel', 'nogouda noopener noreferrer')
   })
 
-  test('MenuItem - link without target="_blank" does not auto append "noopener noreferrer"', () => {
+  test('link without target="_blank" does not auto append "noopener noreferrer"', () => {
     const { getByRole } = renderWithTheme(
       <MenuItem itemRole="link" rel="nogouda" href="https://google.com">
         Link
@@ -141,5 +141,56 @@ describe('MenuItem', () => {
     expect(item.nodeName).toBe('A')
     expect(item).toHaveAttribute('href', 'https://google.com')
     expect(item).toHaveAttribute('rel', 'nogouda')
+  })
+
+  test('Nested menu aria props', () => {
+    // Actual nested menu behavior is tested in Menu.test.tsx since it needs context
+    renderWithTheme(
+      <MenuItem
+        nestedMenu={
+          <>
+            <MenuItem>Child</MenuItem>
+          </>
+        }
+      >
+        Parent
+      </MenuItem>
+    )
+
+    // menuitem role goes on the button; li has role="none"
+    const item = screen.getByRole('none')
+
+    expect(item).toHaveAttribute('aria-haspopup', 'true')
+    expect(item).toHaveAttribute('aria-expanded', 'false')
+  })
+
+  test('Nested menu aria props', () => {
+    // Actual nested menu behavior is tested in Menu.test.tsx since it needs context
+    renderWithTheme(
+      <MenuItem
+        nestedMenu={
+          <>
+            <MenuItem>Child</MenuItem>
+          </>
+        }
+      >
+        Parent
+      </MenuItem>
+    )
+
+    const item = screen.getByRole('none')
+
+    expect(item).toHaveAttribute('aria-haspopup', 'true')
+    expect(item).toHaveAttribute('aria-expanded', 'false')
+  })
+
+  test('Without nested menu, no aria props', () => {
+    // Actual nested menu behavior is tested in Menu.test.tsx since it needs context
+    renderWithTheme(<MenuItem>No nesting</MenuItem>)
+
+    const item = screen.getByRole('none')
+
+    expect(item).not.toHaveAttribute('aria-haspopup')
+    expect(item).not.toHaveAttribute('aria-expanded')
   })
 })

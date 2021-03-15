@@ -221,8 +221,14 @@ export const useNestedMenu = ({
     }
   }, [isOpen])
 
+  const combinedDomProps = {
+    ...itemHandlers,
+    // No need for Popover's aria props without nestedMenu
+    ...(nestedMenu ? omit(domProps, 'onClick') : {}),
+  }
+
   return {
-    domProps: { ...itemHandlers, ...omit(domProps, 'onClick') },
+    domProps: combinedDomProps,
     popover,
   }
 }
