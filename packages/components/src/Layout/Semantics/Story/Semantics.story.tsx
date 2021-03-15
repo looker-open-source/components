@@ -38,8 +38,8 @@ const Template: Story<AsideProps> = (args) => (
   <Aside p="large" text-align="center" {...args} />
 )
 
-export const DefaultColor = Template.bind({})
-DefaultColor.args = {
+export const DefaultBorderColor = Template.bind({})
+DefaultBorderColor.args = {
   border: true,
   children: 'Aside',
 }

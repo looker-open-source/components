@@ -28,35 +28,32 @@ import { renderWithTheme } from '@looker/components-test-utils'
 import { screen } from '@testing-library/react'
 
 import { Aside } from './Aside'
-import { Footer } from './Footer'
-import { Header } from './Header'
 
 describe('Layout has border', () => {
   test('render border properly', () => {
-    renderWithTheme(
-      <>
-        <Header borderTop>Header</Header>
-        <Aside border>Aside</Aside>
-        <Footer borderX>Footer</Footer>
-      </>
+    renderWithTheme(<Aside border>Aside</Aside>)
+    expect(screen.getByText('Aside')).toHaveStyle('border: 1px solid #DEE1E5;')
+  })
+
+  test('render borderBottom properly', () => {
+    renderWithTheme(<Aside border>Aside</Aside>)
+
+    expect(screen.getByText('Aside')).toHaveStyle(
+      'border-bottom: 1px solid #DEE1E5;'
     )
+  })
+
+  test('render borderY properly', () => {
+    renderWithTheme(<Aside borderY>Aside</Aside>)
 
     const aside = screen.getByText('Aside')
-    const footer = screen.getByText('Footer')
-    const header = screen.getByText('Header')
 
-    expect(aside).toHaveStyle('border: 1px solid #DEE1E5;')
-    expect(footer).toHaveStyle('border-left: 1px solid #DEE1E5;')
-    expect(footer).toHaveStyle('border-right: 1px solid #DEE1E5;')
-    expect(header).toHaveStyle('border-top: 1px solid #DEE1E5;')
+    expect(aside).toHaveStyle('border-top: 1px solid #DEE1E5;')
+    expect(aside).toHaveStyle('border-bottom: 1px solid #DEE1E5;')
   })
 
   test('render border color if passed', () => {
-    renderWithTheme(
-      <>
-        <Aside border="key">Aside</Aside>
-      </>
-    )
+    renderWithTheme(<Aside border="key">Aside</Aside>)
 
     expect(screen.getByText('Aside')).toHaveStyle('border: 1px solid #6C43E0;')
   })
