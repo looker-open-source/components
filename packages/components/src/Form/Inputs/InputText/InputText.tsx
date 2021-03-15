@@ -261,6 +261,7 @@ const InputIconSize = css`
 `
 
 export const ErrorIcon = styled(Error)`
+  ${InputIconSize}
   color: ${({ theme }) => theme.colors.critical};
 `
 

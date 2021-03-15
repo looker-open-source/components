@@ -75,7 +75,7 @@ export const listItemIconCSS = css<ListItemLayoutProps>`
   & > svg,
   & > ${StyledIconBase}, & > ${IconPlaceholder} {
     ${colorHelper}
-    align-self: flex-start;
+    align-self: center;
     flex-grow: 0;
     flex-shrink: 0;
     height: ${({ iconSize, theme }) => theme.sizes[iconSize]};
