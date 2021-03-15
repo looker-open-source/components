@@ -40,20 +40,6 @@ const content = (
 )
 
 describe('SpaceVertical', () => {
-  xtest('default', () => {
-    renderWithTheme(<SpaceVertical>{content}</SpaceVertical>)
-    expect(screen.getByText('one')).toHaveStyle('margin-top: 0rem;')
-
-    expect(screen.getByText('one')).toHaveStyle('margin-top: 0rem')
-    expect(screen.getByText('two')).toHaveStyle('margin-top: 1rem')
-  })
-
-  xtest('specified gap', () => {
-    renderWithTheme(<SpaceVertical gap="xlarge">{content}</SpaceVertical>)
-    expect(screen.getByText('four')).toHaveStyle('margin-top: 2rem')
-    expect(screen.getByText('one')).not.toHaveStyle('margin-top')
-  })
-
   test('reversed', () => {
     renderWithTheme(
       <SpaceVertical data-testid="space" reverse>

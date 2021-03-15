@@ -25,7 +25,7 @@
  */
 
 import styled, { css } from 'styled-components'
-import { justifyContent, variant } from 'styled-system'
+import { variant } from 'styled-system'
 import {
   flexbox,
   FlexboxProps,
@@ -79,8 +79,8 @@ export interface SpaceHelperProps extends SimpleLayoutProps, FlexboxProps {
 
   /**
    * Justify items horizontally within `Space`
-   * NOTE: This will by overridden if `stretch=true`
-   * NOTE: Justifcation is based on flex-direction so if `reverse=true` this will be "backwards"
+   * NOTE: This will by overridden by any of stretch, evenly, reverse or between
+   * NOTE: Justification is based on flex-direction so if `reverse=true` this will be "backwards"
    * @default 'start'
    */
   justify?: 'start' | 'center' | 'end'

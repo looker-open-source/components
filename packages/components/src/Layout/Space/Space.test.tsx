@@ -40,16 +40,6 @@ const content = (
 )
 
 describe('Space', () => {
-  xtest('default', () => {
-    renderWithTheme(<Space data-testid="space">{content}</Space>)
-    // Should test default gap size
-  })
-
-  xtest('with specified gap', () => {
-    renderWithTheme(<Space gap="xlarge">{content}</Space>)
-    // Should test specified gap size
-  })
-
   test('reversed', () => {
     renderWithTheme(
       <Space reverse data-testid="space">
