@@ -74,6 +74,11 @@ describe('InputText', () => {
     expect(screen.getByRole('textbox')).toHaveAttribute('readonly')
   })
 
+  test('supports type prop', () => {
+    renderWithTheme(<InputText type="email" />)
+    expect(screen.getByRole('textbox')).toBeInTheDocument()
+  })
+
   test('should accept required', () => {
     renderWithTheme(<InputText required />)
     expect(screen.getByRole('textbox')).toBeRequired()
@@ -110,7 +115,7 @@ describe('InputText', () => {
   describe('before & after', () => {
     test('ReactNode', () => {
       const { getByText } = renderWithTheme(
-        <InputText before={<span>before</span>} after={<span>after</span>} />
+        <InputText before="before" after="after" />
       )
 
       expect(getByText('before')).toBeVisible()

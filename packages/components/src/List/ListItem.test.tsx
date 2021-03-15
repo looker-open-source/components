@@ -32,6 +32,20 @@ import { fireEvent, configure } from '@testing-library/react'
 
 import { ListItem } from './ListItem'
 
+const globalConsole = global.console
+const warnMock = jest.fn()
+
+beforeEach(() => {
+  jest.useFakeTimers()
+  global.console = ({
+    warn: warnMock,
+  } as unknown) as Console
+})
+
+afterEach(() => {
+  global.console = globalConsole
+})
+
 describe('ListItem', () => {
   test('renders children', () => {
     const { getByText } = renderWithTheme(<ListItem>who!</ListItem>)
@@ -196,5 +210,14 @@ describe('ListItem', () => {
     expect(queryByText('Detail')).not.toBeInTheDocument()
     fireEvent.mouseEnter(getByText('Label'), { bubbles: true })
     expect(queryByText('Detail')).toBeInTheDocument()
+  })
+
+  test('warns on disabled link', () => {
+    renderWithTheme(
+      <ListItem role="link" disabled>
+        Disabled but not
+      </ListItem>
+    )
+    expect(warnMock.mock.calls).toMatchInlineSnapshot(`Array []`)
   })
 })

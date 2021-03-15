@@ -32,6 +32,20 @@ import { screen, fireEvent } from '@testing-library/react'
 
 import { MenuItem } from './MenuItem'
 
+const globalConsole = global.console
+const warnMock = jest.fn()
+
+beforeEach(() => {
+  jest.useFakeTimers()
+  global.console = ({
+    warn: warnMock,
+  } as unknown) as Console
+})
+
+afterEach(() => {
+  global.console = globalConsole
+})
+
 describe('MenuItem', () => {
   test('MenuItem renders', () => {
     renderWithTheme(<MenuItem>who!</MenuItem>)
@@ -142,5 +156,29 @@ describe('MenuItem', () => {
     expect(item.nodeName).toBe('A')
     expect(item).toHaveAttribute('href', 'https://google.com')
     expect(item).toHaveAttribute('rel', 'nogouda')
+  })
+
+  test('warns on nested menu item w/ detail', () => {
+    const warnMock = jest.fn()
+
+    global.console = ({
+      warn: warnMock,
+    } as unknown) as Console
+
+    renderWithTheme(
+      <MenuItem detail="Something" nestedMenu>
+        Nested Menu
+      </MenuItem>
+    )
+    expect(warnMock.mock.calls).toMatchInlineSnapshot(`
+      Array [
+        Array [
+          "The detail prop is not supported when nestedMenu is used.",
+        ],
+        Array [
+          "The detail prop is not supported when nestedMenu is used.",
+        ],
+      ]
+    `)
   })
 })

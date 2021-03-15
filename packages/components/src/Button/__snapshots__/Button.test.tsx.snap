@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Button Focus: renders outline when tabbing into focus, but not when clicking 1`] = `
+exports[`Button focus-visible: renders outline when tabbing into focus, but not when clicking 1`] = `
 .c0 {
   font-family: Roboto,'Noto Sans','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   -webkit-align-items: center;
@@ -77,7 +77,7 @@ exports[`Button Focus: renders outline when tabbing into focus, but not when cli
 </button>
 `;
 
-exports[`Button Focus: renders outline when tabbing into focus, but not when clicking 2`] = `
+exports[`Button focus-visible: renders outline when tabbing into focus, but not when clicking 2`] = `
 <button
   class="ButtonBase__ButtonOuter-sc-1bpio6j-0 dasaca ButtonBase__GenericButtonBase-sc-1bpio6j-1 ButtonBase-sc-1bpio6j-2 Button-sc-18euc9m-0  LagEh eVQcHb"
 >

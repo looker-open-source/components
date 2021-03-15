@@ -26,7 +26,7 @@
 
 import React, { useState } from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { Delete } from '@styled-icons/material'
+import { Delete, Link as LinkIcon } from '@styled-icons/material'
 import { fireEvent, screen } from '@testing-library/react'
 import { IconButton } from '../Button'
 import { FieldFilter, InputFilters } from '../Form'
@@ -72,7 +72,14 @@ const columns: DataTableColumns = [
     type: 'number',
   },
   {
+    id: 'status',
+    title: 'Status',
+    titleIcon: <LinkIcon />,
+    type: 'text',
+  },
+  {
     id: 'name',
+    size: 'medium',
     title: 'Name',
     type: 'string',
   },
@@ -135,6 +142,7 @@ const items = data.map(({ calories, id, name, type }) => {
     <DataTableItem key={id} id={String(id)} actions={availableActions}>
       <DataTableCell>{calories}</DataTableCell>
       <DataTableCell>{id}</DataTableCell>
+      <DataTableCell>Meh.</DataTableCell>
       <DataTableCell>{name}</DataTableCell>
       <DataTableCell>{type}</DataTableCell>
     </DataTableItem>
