@@ -164,26 +164,6 @@ describe('MenuItem', () => {
     expect(item).toHaveAttribute('aria-expanded', 'false')
   })
 
-  test('Nested menu aria props', () => {
-    // Actual nested menu behavior is tested in Menu.test.tsx since it needs context
-    renderWithTheme(
-      <MenuItem
-        nestedMenu={
-          <>
-            <MenuItem>Child</MenuItem>
-          </>
-        }
-      >
-        Parent
-      </MenuItem>
-    )
-
-    const item = screen.getByRole('none')
-
-    expect(item).toHaveAttribute('aria-haspopup', 'true')
-    expect(item).toHaveAttribute('aria-expanded', 'false')
-  })
-
   test('Without nested menu, no aria props', () => {
     // Actual nested menu behavior is tested in Menu.test.tsx since it needs context
     renderWithTheme(<MenuItem>No nesting</MenuItem>)
