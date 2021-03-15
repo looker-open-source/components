@@ -75,7 +75,7 @@ const columns: DataTableColumns = [
     id: 'status',
     title: 'Status',
     titleIcon: <LinkIcon />,
-    type: 'text',
+    type: 'string',
   },
   {
     id: 'name',
