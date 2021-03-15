@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`A <h1> Heading 1`] = `
+exports[`Heading A <h1> Heading 1`] = `
 .c0 {
   font-family: Roboto,'Noto Sans','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   font-size: 1.5rem;
@@ -16,7 +16,7 @@ exports[`A <h1> Heading 1`] = `
 </h1>
 `;
 
-exports[`A <h1> Heading sized to <h2> 1`] = `
+exports[`Heading A <h1> Heading sized to <h2> 1`] = `
 .c0 {
   font-family: Roboto,'Noto Sans','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   font-size: 1.375rem;
@@ -32,7 +32,7 @@ exports[`A <h1> Heading sized to <h2> 1`] = `
 </h1>
 `;
 
-exports[`A Heading to bold 1`] = `
+exports[`Heading A Heading to bold 1`] = `
 .c0 {
   font-family: Roboto,'Noto Sans','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   font-size: 1.125rem;
@@ -48,7 +48,7 @@ exports[`A Heading to bold 1`] = `
 </h2>
 `;
 
-exports[`A Heading transformed 1`] = `
+exports[`Heading A Heading transformed 1`] = `
 .c0 {
   font-family: Roboto,'Noto Sans','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   font-size: 1.375rem;
@@ -68,7 +68,7 @@ exports[`A Heading transformed 1`] = `
 </h2>
 `;
 
-exports[`A Heading truncated 1`] = `
+exports[`Heading A Heading truncated 1`] = `
 .c0 {
   font-family: Roboto,'Noto Sans','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   font-size: 1.375rem;
@@ -90,7 +90,7 @@ exports[`A Heading truncated 1`] = `
 </h2>
 `;
 
-exports[`A Heading with multiline truncate 1`] = `
+exports[`Heading A Heading with multiline truncate 1`] = `
 .c0 {
   font-family: Roboto,'Noto Sans','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   font-size: 1.375rem;
@@ -113,7 +113,7 @@ exports[`A Heading with multiline truncate 1`] = `
 </h2>
 `;
 
-exports[`A Heading with variant 1`] = `
+exports[`Heading A Heading with variant 1`] = `
 .c0 {
   font-family: Roboto,'Noto Sans','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   font-size: 1.375rem;
@@ -129,7 +129,7 @@ exports[`A Heading with variant 1`] = `
 </h2>
 `;
 
-exports[`A default Heading 1`] = `
+exports[`Heading A default Heading 1`] = `
 .c0 {
   font-family: Roboto,'Noto Sans','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   font-size: 1.375rem;

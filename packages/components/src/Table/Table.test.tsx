@@ -26,11 +26,7 @@
 
 import 'jest-styled-components'
 import React from 'react'
-import { createWithTheme } from '@looker/components-test-utils'
+import { assertSnapshot } from '@looker/components-test-utils'
 import { Table } from './Table'
 
-test('A Table should render', () => {
-  const component = createWithTheme(<Table />)
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
-})
+test('A Table should render', () => assertSnapshot(<Table />))

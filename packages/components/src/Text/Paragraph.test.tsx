@@ -25,79 +25,35 @@
  */
 
 import React from 'react'
-import { createWithTheme } from '@looker/components-test-utils'
+import { assertSnapshot } from '@looker/components-test-utils'
 import { Paragraph } from './Paragraph'
 
-test('A default Paragraph component', () => {
-  const component = createWithTheme(<Paragraph>Hello</Paragraph>)
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
-})
+describe('Paragraph', () => {
+  test('default', () => assertSnapshot(<Paragraph>Hello</Paragraph>))
 
-test('A Paragraph component resized', () => {
-  const component = createWithTheme(
-    <Paragraph fontSize="xxxxlarge">Hello</Paragraph>
-  )
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
-})
+  test('fontSize', () =>
+    assertSnapshot(<Paragraph fontSize="xxxxlarge">Hello</Paragraph>))
 
-test('A Paragraph component aligned', () => {
-  const component = createWithTheme(
-    <Paragraph textAlign="right">Hello</Paragraph>
-  )
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
-})
+  test('textAlign', () =>
+    assertSnapshot(<Paragraph textAlign="right">Hello</Paragraph>))
 
-test('A Paragraph component weight', () => {
-  const component = createWithTheme(
-    <Paragraph fontWeight="bold">Hello</Paragraph>
-  )
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
-})
+  test('fontWeight', () =>
+    assertSnapshot(<Paragraph fontWeight="bold">Hello</Paragraph>))
 
-test('A Paragraph component with color', () => {
-  const component = createWithTheme(
-    <Paragraph color="critical">Hello</Paragraph>
-  )
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
-})
+  test('color', () =>
+    assertSnapshot(<Paragraph color="critical">Hello</Paragraph>))
 
-test('A Paragraph component text transformed', () => {
-  const component = createWithTheme(
-    <Paragraph textTransform="uppercase">Hello</Paragraph>
-  )
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
-})
+  test('textTransform', () =>
+    assertSnapshot(<Paragraph textTransform="uppercase">Hello</Paragraph>))
 
-test('A Paragraph component wrapped', () => {
-  const component = createWithTheme(<Paragraph breakword>Hello</Paragraph>)
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
-})
+  test('breakword', () =>
+    assertSnapshot(<Paragraph breakword>Hello</Paragraph>))
 
-test('A Paragraph component decorated', () => {
-  const component = createWithTheme(
-    <Paragraph textDecoration="line-through">Hello</Paragraph>
-  )
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
-})
+  test('textDecoration', () =>
+    assertSnapshot(<Paragraph textDecoration="line-through">Hello</Paragraph>))
 
-test('A Paragraph component truncated', () => {
-  const component = createWithTheme(<Paragraph truncate>Hello</Paragraph>)
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
-})
+  test('truncate', () => assertSnapshot(<Paragraph truncate>Hello</Paragraph>))
 
-test('A Paragraph component with multiline truncate', () => {
-  const component = createWithTheme(
-    <Paragraph truncateLines={2}>Hello</Paragraph>
-  )
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
+  test('multiline truncate', () =>
+    assertSnapshot(<Paragraph truncateLines={2}>Hello</Paragraph>))
 })
