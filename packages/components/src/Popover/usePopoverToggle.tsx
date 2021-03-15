@@ -161,6 +161,10 @@ export const usePopoverToggle = (
     if (isOpen) {
       document.addEventListener('mousedown', handleMouseDown, true)
       document.addEventListener('click', handleClickOutside, true)
+    } else if (mouseDownTarget) {
+      // popover was closed via mousedown, but still need to cancel next click
+      document.addEventListener('click', handleClickOutside, true)
+      // and then cleanup mouseDownTarget
       document.addEventListener('mouseup', handleMouseUp)
     }
 

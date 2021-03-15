@@ -33,34 +33,7 @@ import { renderWithTheme } from '@looker/components-test-utils'
 import { Button } from '../../../Button'
 import { InputColor } from './InputColor'
 
-/* eslint-disable-next-line @typescript-eslint/unbound-method */
-const globalGetBoundingClientRect = Element.prototype.getBoundingClientRect
-
 describe('InputColor', () => {
-  beforeEach(() => {
-    jest.useFakeTimers()
-    /* eslint-disable-next-line @typescript-eslint/unbound-method */
-    Element.prototype.getBoundingClientRect = jest.fn(() => {
-      return {
-        bottom: 0,
-        height: 200,
-        left: 0,
-        right: 0,
-        toJSON: jest.fn(),
-        top: 0,
-        width: 150,
-        x: 0,
-        y: 0,
-      }
-    })
-  })
-
-  afterEach(() => {
-    jest.resetAllMocks()
-    /* eslint-disable-next-line @typescript-eslint/unbound-method */
-    Element.prototype.getBoundingClientRect = globalGetBoundingClientRect
-  })
-
   test('with hidden input', () => {
     const { queryByDisplayValue } = renderWithTheme(
       <InputColor value="yellow" hideInput />
@@ -116,27 +89,6 @@ describe('InputColor', () => {
     renderWithTheme(<InputColor value="green" />)
     fireEvent.click(screen.getByTestId('swatch'))
     expect(screen.getByTestId('color-picker')).toBeInTheDocument()
-    fireEvent.click(document)
-  })
-
-  test.only('changes color on <ColorPicker/> click', () => {
-    renderWithTheme(<InputColor placeholder="Select a color" />)
-    const input = screen.getByPlaceholderText(
-      'Select a color'
-    ) as HTMLInputElement
-
-    fireEvent.click(screen.getByTestId('swatch'))
-
-    const lightSaturationPreview = screen.getByTestId(
-      'light-saturation-preview'
-    )
-
-    fireEvent.mouseDown(lightSaturationPreview, { clientX: 0, clientY: 0 })
-    fireEvent.mouseUp(lightSaturationPreview, { clientX: 0, clientY: 0 })
-
-    expect(input.value).toBe('#ffffff')
-
-    // Close popover to silence act() warning
     fireEvent.click(document)
   })
 
