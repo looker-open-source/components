@@ -26,8 +26,8 @@
 
 import { useTranslation } from 'react-i18next'
 import { CompatibleHTMLProps } from '@looker/design-tokens'
-import { ExpandLess, ExpandMore } from '@styled-icons/material-rounded'
-import { Close, Error } from '@styled-icons/material'
+import { Close, Error, ExpandMore } from '@styled-icons/material'
+import { ExpandLess } from '@styled-icons/material-rounded'
 import React, { FC, MouseEvent, ReactElement } from 'react'
 import styled from 'styled-components'
 import compact from 'lodash/compact'

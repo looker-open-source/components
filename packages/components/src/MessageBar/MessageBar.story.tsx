@@ -26,8 +26,7 @@
 
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
-import { Delete } from '@styled-icons/material'
-import { GridView } from '@styled-icons/material-outlined'
+import { Delete, GridView } from '@styled-icons/material'
 import { Button } from '../Button'
 import { MessageBar, MessageBarProps } from './MessageBar'
 

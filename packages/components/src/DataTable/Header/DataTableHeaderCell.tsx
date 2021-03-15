@@ -25,7 +25,8 @@
  */
 import React, { useContext, forwardRef, Ref } from 'react'
 import styled from 'styled-components'
-import { ExpandMore, ExpandLess } from '@styled-icons/material-rounded'
+import { ExpandMore } from '@styled-icons/material'
+import { ExpandLess } from '@styled-icons/material-rounded'
 import { DataTableContext } from '../DataTableContext'
 import { Icon } from '../../Icon'
 import { Space } from '../../Layout/Space'

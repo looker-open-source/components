@@ -158,7 +158,7 @@ const SelectComponent = forwardRef(
       >
         <ComboboxInput
           {...ariaProps}
-          before={<SelectInputIcon options={options} />}
+          iconBefore={<SelectInputIcon options={options} />}
           disabled={disabled}
           autoFocus={autoFocus}
           placeholder={placeholder}

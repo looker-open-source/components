@@ -108,7 +108,7 @@ export const TreeStyle = styled.div<TreeStyleProps>`
   }
 
   /**
-    These selectors are to support TreeArtifical
+    These selectors are to support TreeArtificial
    */
   & > ${List} > ${TreeBranch}, & > ${List} > ${ListItem} > button,
   & > ${List} > ${ListItem} > a {
