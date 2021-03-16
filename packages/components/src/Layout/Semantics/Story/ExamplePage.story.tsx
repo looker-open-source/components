@@ -25,9 +25,12 @@
  */
 
 import React from 'react'
+import { Story } from '@storybook/react/types-6-0'
+
 import styled from 'styled-components'
-import { Aside, Footer, Header, Layout, Page, Section } from '..'
+import { Aside, Footer, Header, Layout, LayoutProps, Page, Section } from '..'
 import { SpaceVertical } from '../../Space'
+import { MenuItem } from '../../../Menu/MenuItem'
 import { Heading, Paragraph } from '../../../Text'
 import { Tab, Tabs, TabList, TabPanel, TabPanels } from '../../../Tabs'
 
@@ -35,9 +38,9 @@ export default {
   title: 'Layout',
 }
 
-export const ExamplePage = () => (
+const Template: Story<LayoutProps> = (args) => (
   <Highlighter>
-    <Page fixed>
+    <Page {...args}>
       <Header height="4rem" px="large">
         I'm the header
       </Header>
@@ -111,12 +114,143 @@ export const ExamplePage = () => (
             </TabPanels>
           </Tabs>
         </Section>
-        <AsideAlt p="xxlarge" width="25rem">
+        <AsideAlt p="xxlarge" width="10rem">
           Alternate Aside
         </AsideAlt>
       </Layout>
       <Footer height="3rem" px="large">
         I'm a footer
+      </Footer>
+    </Page>
+  </Highlighter>
+)
+
+const Template2: Story<LayoutProps> = (args) => (
+  <Highlighter>
+    <Page {...args}>
+      <Header height="4rem" px="large">
+        Page Header
+      </Header>
+      <Layout fixed hasAside>
+        <Aside width="200px">
+          <Header height="4rem" px="large">
+            Aside Header
+          </Header>
+          <MenuItem
+            detail="detail"
+            description="this is the description"
+            icon="LogoRings"
+          >
+            Looker
+          </MenuItem>
+          <MenuItem description="this is the description" icon="Validate">
+            Validate
+          </MenuItem>
+          <MenuItem detail="detail" icon="ChartPie">
+            Pizza
+          </MenuItem>
+          <MenuItem
+            detail="detail"
+            description="this is the description"
+            icon="LogoRings"
+          >
+            Looker
+          </MenuItem>
+          <MenuItem description="this is the description" icon="Validate">
+            Validate
+          </MenuItem>
+          <MenuItem detail="detail" icon="ChartPie">
+            Pizza
+          </MenuItem>
+        </Aside>
+        <Layout>
+          <Section p="xxlarge" as="main">
+            <Heading>Section title</Heading>
+            <SpaceVertical>
+              <Paragraph fontSize="small">
+                I'm baby man braid cold-pressed seitan sartorial, tumblr ennui
+                selfies chia twee subway tile af 90's celiac. Gochujang
+                distillery tumeric flannel lumbersexual gastropub fashion axe
+                viral neutra. Pickled narwhal everyday carry activated charcoal
+                succulents occupy YOLO yuccie forage seitan kitsch. Celiac
+                bespoke cloud bread asymmetrical bicycle rights XOXO
+                cold-pressed hashtag listicle hell of migas. Chillwave brooklyn
+                fam occupy microdosing leggings. Poke af cornhole hot chicken.
+                Portland tattooed +1 chia ennui.
+              </Paragraph>
+              <Paragraph fontSize="small">
+                Neutra franzen cardigan, semiotics tousled gochujang green juice
+                activated charcoal succulents flannel ramps palo santo. Kale
+                chips williamsburg hexagon, etsy cray 8-bit cornhole tilde
+                neutra DIY snackwave whatever food truck marfa fashion axe.
+                Polaroid master cleanse twee DIY tbh pop-up biodiesel austin
+                hell of scenester woke man bun 3 wolf moon. Venmo coloring book
+                beard adaptogen four loko locavore wolf street art +1 kombucha
+                marfa 90's unicorn everyday carry.
+              </Paragraph>
+              <Paragraph fontSize="small">
+                Neutra franzen cardigan, semiotics tousled gochujang green juice
+                activated charcoal succulents flannel ramps palo santo. Kale
+                chips williamsburg hexagon, etsy cray 8-bit cornhole tilde
+                neutra DIY snackwave whatever food truck marfa fashion axe.
+                Polaroid master cleanse twee DIY tbh pop-up biodiesel austin
+                hell of scenester woke man bun 3 wolf moon. Venmo coloring book
+                beard adaptogen four loko locavore wolf street art +1 kombucha
+                marfa 90's unicorn everyday carry.
+              </Paragraph>
+              <Paragraph fontSize="small">
+                Neutra franzen cardigan, semiotics tousled gochujang green juice
+                activated charcoal succulents flannel ramps palo santo. Kale
+                chips williamsburg hexagon, etsy cray 8-bit cornhole tilde
+                neutra DIY snackwave whatever food truck marfa fashion axe.
+                Polaroid master cleanse twee DIY tbh pop-up biodiesel austin
+                hell of scenester woke man bun 3 wolf moon. Venmo coloring book
+                beard adaptogen four loko locavore wolf street art +1 kombucha
+                marfa 90's unicorn everyday carry.
+              </Paragraph>
+            </SpaceVertical>
+          </Section>
+          <Footer height="3rem" px="large">
+            Section Footer
+          </Footer>
+        </Layout>
+        <AsideAlt width="20rem">
+          <Header height="4rem" px="large">
+            Alternate Aside Header
+          </Header>
+          <MenuItem
+            detail="detail"
+            description="this is the description"
+            icon="LogoRings"
+          >
+            Looker
+          </MenuItem>
+          <MenuItem description="this is the description" icon="Validate">
+            Validate
+          </MenuItem>
+          <MenuItem detail="detail" icon="ChartPie">
+            Pizza
+          </MenuItem>
+          <MenuItem
+            detail="detail"
+            description="this is the description"
+            icon="LogoRings"
+          >
+            Looker
+          </MenuItem>
+          <MenuItem description="this is the description" icon="Validate">
+            Validate
+          </MenuItem>
+          <MenuItem detail="detail" icon="ChartPie">
+            Pizza
+          </MenuItem>
+          <Footer height="3rem" px="large">
+            Alternate Aside Footer
+          </Footer>
+        </AsideAlt>
+      </Layout>
+      <Footer height="3rem" px="large">
+        Page Footer
       </Footer>
     </Page>
   </Highlighter>
@@ -143,3 +277,16 @@ const Highlighter = styled.div`
     background-color: lightgoldenrodyellow;
   }
 `
+
+export const Basic = Template.bind({})
+Basic.args = {}
+
+export const Fixed = Template.bind({})
+Fixed.args = {
+  fixed: true,
+}
+
+export const MultipleLayouts = Template2.bind({})
+MultipleLayouts.args = {
+  fixed: true,
+}

@@ -47,6 +47,7 @@ export const Aside = styled.aside
   flex: 0 0 ${({ width }) => width};
   max-width: ${({ width }) => width};
   min-width: ${({ width }) => width};
+  overflow: auto;
   width: 0;
   ${borderHelper}
 `
