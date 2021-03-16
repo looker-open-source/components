@@ -92,6 +92,24 @@ describe('InputColor', () => {
     fireEvent.click(document)
   })
 
+  test('can receive focus and blur handlers', () => {
+    const onBlur = jest.fn()
+    const onFocus = jest.fn()
+    renderWithTheme(
+      <InputColor onBlur={onBlur} onFocus={onFocus} value="green" />
+    )
+
+    const input = screen.getByDisplayValue('green')
+
+    input.focus()
+    expect(input).toHaveFocus()
+    expect(onFocus).toHaveBeenCalled()
+
+    input.blur()
+    expect(input).not.toHaveFocus()
+    expect(onBlur).toHaveBeenCalled()
+  })
+
   test('changes color on <ColorPicker/> click', () => {
     renderWithTheme(<InputColor placeholder="Select a color" />)
     const input = screen.getByPlaceholderText(
