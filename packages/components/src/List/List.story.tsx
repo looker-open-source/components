@@ -145,18 +145,54 @@ ExpandingList.parameters = {
   storyshots: false,
 }
 
-const DensityExample: FC<{ density?: DensityRamp }> = ({ density }) => (
+const DensityExample: FC<{ density?: DensityRamp }> = ({
+  children,
+  density,
+}) => (
   <List iconGutter density={density}>
-    {listItems}
+    {children}
   </List>
 )
 
 export const Density = () => (
   <Grid columns={5}>
-    <DensityExample density={1} />
-    <DensityExample />
-    <DensityExample density={-1} />
-    <DensityExample density={-2} />
-    <DensityExample density={-3} />
+    <DensityExample density={1}>{listItems}</DensityExample>
+    <DensityExample>{listItems}</DensityExample>
+    <DensityExample density={-1}>{listItems}</DensityExample>
+    <DensityExample density={-2}>{listItems}</DensityExample>
+    <DensityExample density={-3}>{listItems}</DensityExample>
+  </Grid>
+)
+
+const CheeseWrapper: FC = ({ children }) => (
+  <div>
+    <strong>{children}</strong> cheese
+  </div>
+)
+
+const listItemsNonstringChildren = (
+  <>
+    <ListItem icon="Calendar" description="Orange-y">
+      <CheeseWrapper>Cheddar</CheeseWrapper>
+    </ListItem>
+    <ListItem icon="Pivot" detail="Netherlands">
+      <CheeseWrapper>Gouda</CheeseWrapper>
+    </ListItem>
+    <ListItem selected>
+      <CheeseWrapper>Mozzarella</CheeseWrapper>
+    </ListItem>
+    <ListItem>
+      <CheeseWrapper>Swiss</CheeseWrapper>
+    </ListItem>
+  </>
+)
+
+export const DensityWithNonstringChildren = () => (
+  <Grid columns={5}>
+    <DensityExample density={1}>{listItemsNonstringChildren}</DensityExample>
+    <DensityExample>{listItemsNonstringChildren}</DensityExample>
+    <DensityExample density={-1}>{listItemsNonstringChildren}</DensityExample>
+    <DensityExample density={-2}>{listItemsNonstringChildren}</DensityExample>
+    <DensityExample density={-3}>{listItemsNonstringChildren}</DensityExample>
   </Grid>
 )

@@ -225,33 +225,27 @@ const ListItemInternal = forwardRef(
       )
     }
 
-    const TextWrapper = truncate ? TruncateWrapper : Text
+    const Wrapper = truncate ? TruncateWrapper : Text
 
-    const renderedChildren =
-      typeof children === 'string' ? (
-        <TextWrapper
-          color={labelColor}
-          fontSize={itemDimensions.labelFontSize}
-          lineHeight={itemDimensions.labelLineHeight}
-        >
-          {children}
-        </TextWrapper>
-      ) : (
-        children
-      )
+    const renderedChildren = (
+      <Wrapper
+        color={labelColor}
+        fontSize={itemDimensions.labelFontSize}
+        lineHeight={itemDimensions.labelLineHeight}
+      >
+        {children}
+      </Wrapper>
+    )
 
-    const renderedDescription =
-      typeof description === 'string' ? (
-        <TextWrapper
-          color={descriptionColor}
-          fontSize={itemDimensions.descriptionFontSize}
-          lineHeight={itemDimensions.descriptionLineHeight}
-        >
-          {description}
-        </TextWrapper>
-      ) : (
-        description
-      )
+    const renderedDescription = (
+      <Wrapper
+        color={descriptionColor}
+        fontSize={itemDimensions.descriptionFontSize}
+        lineHeight={itemDimensions.descriptionLineHeight}
+      >
+        {description}
+      </Wrapper>
+    )
 
     const { accessory, content, hoverDisclosure } = getDetailOptions(detail)
 
