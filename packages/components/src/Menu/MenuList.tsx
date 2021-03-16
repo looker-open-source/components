@@ -50,7 +50,7 @@ MenuListInternal.displayName = 'MenuListInternal'
 
 export const MenuList = styled(MenuListInternal)`
   ${width}
+  margin: ${({ theme }) => theme.space.xsmall} 0;
   min-width: 12rem;
   overflow: auto;
-  padding: ${({ theme }) => theme.space.xsmall} 0;
 `
