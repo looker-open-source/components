@@ -128,4 +128,5 @@ export const DataTableLayout: FC<DataTableProps> = (props) => {
 
 export const DataTable = styled(DataTableLayout)<DataTableProps>`
   ${reset}
+  width: 100%;
 `

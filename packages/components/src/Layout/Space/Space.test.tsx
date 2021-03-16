@@ -26,82 +26,72 @@
 
 import 'jest-styled-components'
 import React from 'react'
-import { assertSnapshot } from '@looker/components-test-utils'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
 import { Space } from './Space'
 
-test('Space default', () => {
-  assertSnapshot(
-    <Space>
-      <div>🥑</div>
-      <div>🐛</div>
-      <div>🦜</div>
-      <div>🐈</div>
-    </Space>
-  )
-})
+const content = (
+  <>
+    <div>one</div>
+    <div>two</div>
+    <div>three</div>
+    <div>four</div>
+  </>
+)
 
-test('Space with specified gap', () => {
-  assertSnapshot(
-    <Space gap="xlarge">
-      <div>🥑</div>
-      <div>🐛</div>
-      <div>🦜</div>
-      <div>🐈</div>
-    </Space>
-  )
-})
+describe('Space', () => {
+  test('reversed', () => {
+    renderWithTheme(
+      <Space reverse data-testid="space">
+        {content}
+      </Space>
+    )
+    expect(screen.getByTestId('space')).toHaveStyle(
+      'flex-direction: row-reverse;'
+    )
+  })
 
-test('Space reversed', () => {
-  assertSnapshot(
-    <Space reverse>
-      <div>🥑</div>
-      <div>🐛</div>
-      <div>🦜</div>
-      <div>🐈</div>
-    </Space>
-  )
-})
+  test('around + gap (all you get is around)', () => {
+    renderWithTheme(
+      <Space around gap="xxlarge" data-testid="space">
+        {content}
+      </Space>
+    )
+    expect(screen.getByTestId('space')).toHaveStyle(
+      'justify-content: space-around;'
+    )
+  })
 
-test('Space around + gap (all you get is around)', () => {
-  assertSnapshot(
-    <Space around gap="xxlarge">
-      <div>🥑</div>
-      <div>🐛</div>
-      <div>🦜</div>
-      <div>🐈</div>
-    </Space>
-  )
-})
+  test('around', () => {
+    renderWithTheme(
+      <Space around data-testid="space">
+        {content}
+      </Space>
+    )
+    expect(screen.getByTestId('space')).toHaveStyle(
+      'justify-content: space-around;'
+    )
+  })
 
-test('Space around', () => {
-  assertSnapshot(
-    <Space around>
-      <div>🥑</div>
-      <div>🐛</div>
-      <div>🦜</div>
-      <div>🐈</div>
-    </Space>
-  )
-})
+  test('between', () => {
+    renderWithTheme(
+      <Space between data-testid="space">
+        {content}
+      </Space>
+    )
+    expect(screen.getByTestId('space')).toHaveStyle(
+      'justify-content: space-between;'
+    )
+  })
 
-test('Space between', () => {
-  assertSnapshot(
-    <Space between>
-      <div>🥑</div>
-      <div>🐛</div>
-      <div>🦜</div>
-      <div>🐈</div>
-    </Space>
-  )
-})
-
-test('Space evenly', () => {
-  assertSnapshot(
-    <Space evenly>
-      <div>🥑</div>
-      <div>🐛</div>
-      <div>🦜</div>
-      <div>🐈</div>
-    </Space>
-  )
+  test('evenly', () => {
+    renderWithTheme(
+      <Space evenly data-testid="space">
+        {content}
+      </Space>
+    )
+    expect(screen.getByTestId('space')).toHaveStyle(
+      'justify-content: space-evenly;'
+    )
+  })
 })

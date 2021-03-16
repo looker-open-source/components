@@ -72,9 +72,18 @@ export interface SpaceHelperProps extends SimpleLayoutProps, FlexboxProps {
   reverse?: boolean
   /**
    * Align items vertically within `Space`
+   * NOTE: This will by overridden if `stretch=true`
    * @default 'center'
    */
   align?: 'start' | 'center' | 'end'
+
+  /**
+   * Justify items horizontally within `Space`
+   * NOTE: This will by overridden by any of stretch, evenly, reverse or between
+   * NOTE: Justification is based on flex-direction so if `reverse=true` this will be "backwards"
+   * @default 'start'
+   */
+  justify?: 'start' | 'center' | 'end'
 
   /**
    * Stretch items full width of space
@@ -143,6 +152,21 @@ const verticalAlign = variant({
   },
 })
 
+const justify = variant({
+  prop: 'justify',
+  variants: {
+    center: {
+      justifyContent: 'center',
+    },
+    end: {
+      justifyContent: 'flex-end',
+    },
+    start: {
+      justifyContent: 'flex-start',
+    },
+  },
+})
+
 export const Space = styled.div
   .withConfig({ shouldForwardProp })
   .attrs<SpaceHelperProps>(({ alignItems = 'center', width = '100%' }) => ({
@@ -151,6 +175,7 @@ export const Space = styled.div
   }))<SpaceHelperProps>`
   ${spaceCSS}
   ${({ stretch }) => !stretch && verticalAlign}
+  ${({ stretch }) => !stretch && justify}
   flex-direction: ${({ reverse }) => (reverse ? 'row-reverse' : 'row')};
 
   ${({ around }) => around && 'justify-content: space-around;'}
