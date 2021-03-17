@@ -180,6 +180,7 @@ const stickyColumns = css<TableProps>`
 export const Table = styled(TableLayout)`
   border-collapse: initial;
   border-spacing: 0;
+  font-family: ${({ theme }) => theme.fonts.body};
   font-size: ${({ theme }) => theme.fontSizes.small};
   line-height: 1;
   width: 100%;
