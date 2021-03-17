@@ -26,29 +26,55 @@
 
 import { useMemo } from 'react'
 import {
+  FlatOption,
   SelectOptionGroupProps,
   SelectOptionObject,
   SelectOptionProps,
 } from '../types'
 
-export const useFlatOptions = (
-  options?: SelectOptionProps[]
-): [SelectOptionObject[] | undefined, number] => {
-  return useMemo(() => {
-    if (!options) return [options, 0]
+export type FlattenOptions = {
+  (options: SelectOptionProps[]): SelectOptionObject[]
+  (options: SelectOptionProps[], includeGroups: boolean): FlatOption[]
+}
 
-    let numGroups = 0
-    const flatOptions = options.reduce(
-      (acc: SelectOptionObject[], option: SelectOptionProps) => {
+export const useFlatOptions = (options?: SelectOptionProps[]) => {
+  return useMemo(() => {
+    if (!options)
+      return { flatOptions: undefined, navigationOptions: undefined }
+
+    return options.reduce(
+      (
+        acc: {
+          flatOptions: FlatOption[]
+          navigationOptions: SelectOptionObject[]
+        },
+        option: SelectOptionProps
+      ) => {
         const optionAsGroup = option as SelectOptionGroupProps
         if (optionAsGroup.options) {
-          numGroups++
-          return [...acc, ...optionAsGroup.options]
+          // Include the divider & header as pseudo options for windowing purposes
+          const groupPseudoOptions = [{}, { label: optionAsGroup.label }]
+          return {
+            flatOptions: [
+              ...acc.flatOptions,
+              ...groupPseudoOptions,
+              ...optionAsGroup.options,
+            ],
+            navigationOptions: [
+              ...acc.navigationOptions,
+              ...optionAsGroup.options,
+            ],
+          }
         }
-        return [...acc, option as SelectOptionObject]
+        return {
+          flatOptions: [...acc.flatOptions, option],
+          navigationOptions: [
+            ...acc.navigationOptions,
+            option as SelectOptionObject,
+          ],
+        }
       },
-      []
+      { flatOptions: [], navigationOptions: [] }
     )
-    return [flatOptions, numGroups]
   }, [options])
 }

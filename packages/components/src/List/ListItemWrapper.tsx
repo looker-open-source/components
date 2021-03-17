@@ -108,6 +108,9 @@ export const ListItemWrapper = styled(
       color: inherit;
       text-decoration: none;
     }
+    &:focus {
+      position: relative;
+    }
   }
 
   ${({ focusVisible, theme }) =>

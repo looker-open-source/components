@@ -136,6 +136,7 @@ const ComboboxListInternal = forwardRef(
       listRef,
       setListScrollPosition,
       setListClientRect,
+      isScrollingRef,
       id,
     } = contextToUse
 
@@ -227,17 +228,32 @@ const ComboboxListInternal = forwardRef(
       // used in InputTimeSelect for managing very long lists
 
       const setListClientRectOnce = once((containerElement: Element) => {
-        setListClientRect &&
-          setListClientRect(containerElement.getBoundingClientRect())
+        setListClientRect?.(containerElement.getBoundingClientRect())
       })
 
-      const scrollListener = throttle(() => {
+      const throttledScrollStateUpdate = throttle(
+        (containerElement: Element) => {
+          setListScrollPosition?.(containerElement.scrollTop)
+        },
+        50
+      )
+
+      const scrollListener = () => {
         if (contentContainer) {
           setListClientRectOnce(contentContainer)
-          setListScrollPosition &&
-            setListScrollPosition(contentContainer.scrollTop)
+
+          // Prevents issue where keyboard nav & hover battle over highlighting an option
+          // When the user keyboard navigates to an option outside the scroll window
+          // the menu scrolls to that option – if the mouse happens to be resting over the menu
+          // a mouseenter event is triggered on the respective option
+          // (see handleMouseEnter in useOptionEvents.ts)
+          if (isScrollingRef) isScrollingRef.current = true
+          window.requestAnimationFrame(() => {
+            if (isScrollingRef) isScrollingRef.current = false
+          })
+          throttledScrollStateUpdate(contentContainer)
         }
-      }, 50)
+      }
 
       if (contentContainer) {
         contentContainer.addEventListener('scroll', scrollListener)

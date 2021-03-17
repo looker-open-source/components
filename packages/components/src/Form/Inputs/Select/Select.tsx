@@ -122,7 +122,7 @@ const SelectComponent = forwardRef(
     }: SelectProps,
     ref: Ref<HTMLInputElement>
   ) => {
-    const [flatOptions, numGroups] = useFlatOptions(options)
+    const { flatOptions, navigationOptions } = useFlatOptions(options)
     const optionValue = getOption(value, flatOptions)
     const nullDefault = (isClearable || placeholder) && !defaultValue
     const defaultOptionValue = nullDefault
@@ -191,7 +191,7 @@ const SelectComponent = forwardRef(
             <SelectOptions
               options={options}
               flatOptions={flatOptions}
-              numGroups={numGroups}
+              navigationOptions={navigationOptions}
               windowedOptions={windowedOptions}
               isFilterable={isFilterable}
               noOptionsLabel={noOptionsLabel}

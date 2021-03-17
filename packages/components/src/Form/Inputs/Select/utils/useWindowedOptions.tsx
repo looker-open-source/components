@@ -28,12 +28,12 @@ import findIndex from 'lodash/findIndex'
 import React, { useContext, useEffect, useMemo, useRef } from 'react'
 import { getWindowedListBoundaries } from '../../../../utils/getWindowedListBoundaries'
 import { ComboboxContext, ComboboxMultiContext } from '../../Combobox'
-import { SelectOptionObject } from '../types'
+import { FlatOption, SelectOptionObject } from '../types'
 
 export const optionHeight = 28
 
 export function useShouldWindowOptions(
-  flatOptions?: SelectOptionObject[],
+  flatOptions?: FlatOption[],
   propsWindowedOptions?: boolean
 ) {
   return useMemo(() => {
@@ -48,8 +48,8 @@ export function useShouldWindowOptions(
 
 export function useWindowedOptions(
   windowedOptions?: boolean,
-  flatOptions?: SelectOptionObject[],
-  numGroups = 0,
+  flatOptions?: FlatOption[],
+  navigationOptions?: SelectOptionObject[],
   isMulti?: boolean
 ) {
   const context = useContext(ComboboxContext)
@@ -68,15 +68,10 @@ export function useWindowedOptions(
   // add options to ComboboxContext.optionsRef
   useEffect(() => {
     // optionsToWindow will be empty if windowedOptions is false, so no need to check windowedOptions as well
-    if (
-      windowedOptions &&
-      flatOptions &&
-      flatOptions.length > 0 &&
-      optionsRef
-    ) {
-      optionsRef.current = [...flatOptions]
+    if (navigationOptions?.length && optionsRef) {
+      optionsRef.current = navigationOptions
     }
-  }, [flatOptions, optionsRef, windowedOptions])
+  }, [navigationOptions, optionsRef])
 
   // Get the windowed list boundaries
   const containerHeight = listClientRect && listClientRect.height
@@ -87,16 +82,10 @@ export function useWindowedOptions(
         height: containerHeight,
         itemHeight: optionHeight,
         // For groups, add 2 for divider & header
-        length: flatOptions ? flatOptions.length + numGroups * 2 : 0,
+        length: flatOptions ? flatOptions.length : 0,
         scrollPosition: listScrollPosition,
       }),
-    [
-      flatOptions,
-      numGroups,
-      containerHeight,
-      listScrollPosition,
-      windowedOptions,
-    ]
+    [flatOptions, containerHeight, listScrollPosition, windowedOptions]
   )
 
   // The current value is highlighted when the menu first opens
@@ -113,7 +102,7 @@ export function useWindowedOptions(
       ])
       if (selectedIndex > -1) {
         start = selectedIndex
-        end = selectedIndex + numGroups * 2
+        end = selectedIndex
       }
     }
   }
@@ -123,16 +112,13 @@ export function useWindowedOptions(
   // we need to render the top or bottom of the list (which are outside our "window") and scroll there
   let scrollToFirst = false
   let scrollToLast = false
-  if (
-    windowedOptions &&
-    flatOptions &&
-    flatOptions.length &&
-    navigationOption
-  ) {
-    scrollToFirst = start > 0 && navigationOption.value === flatOptions[0].value
+  if (flatOptions?.length && navigationOptions?.length && navigationOption) {
+    scrollToFirst =
+      start > 0 && navigationOption.value === navigationOptions[0].value
     scrollToLast =
       end < flatOptions.length - 1 &&
-      navigationOption.value === flatOptions[flatOptions.length - 1].value
+      navigationOption.value ===
+        navigationOptions[navigationOptions.length - 1].value
   }
   const afterLength = flatOptions ? flatOptions.length - 1 - end : 0
 

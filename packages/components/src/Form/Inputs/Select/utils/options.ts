@@ -24,8 +24,13 @@
 
  */
 
-import { ComboboxOptionObject, getComboboxText } from '../../Combobox'
 import {
+  ComboboxOptionObject,
+  isComboboxOptionObject,
+  getComboboxText,
+} from '../../Combobox'
+import {
+  FlatOption,
   SelectOptionGroupProps,
   SelectOptionObject,
   SelectOptionProps,
@@ -33,12 +38,14 @@ import {
 
 export const getMatchingOption = (
   value?: string,
-  flatOptions?: SelectOptionObject[]
+  flatOptions?: FlatOption[]
 ) => {
-  return flatOptions?.find((option) => option.value === value)
+  if (value === undefined) return undefined
+  const matchingOption = flatOptions?.find((option) => option.value === value)
+  return matchingOption as SelectOptionObject
 }
 
-export function getOption(value?: string, flatOptions?: SelectOptionObject[]) {
+export function getOption(value?: string, flatOptions?: FlatOption[]) {
   const matchingOption = getMatchingOption(value, flatOptions)
   const label = matchingOption?.label
   // If this is a filterable Select and the current option has been filtered out
@@ -49,7 +56,7 @@ export function getOption(value?: string, flatOptions?: SelectOptionObject[]) {
 
 export const getOptions = (
   values?: string[],
-  flatOptions?: SelectOptionObject[]
+  flatOptions?: FlatOption[]
 ): SelectOptionObject[] | undefined => {
   if (!values) return undefined
   return values.map((value) => ({
@@ -58,8 +65,11 @@ export const getOptions = (
   }))
 }
 
-export const compareOption = (option: { value: string }, value: string) => {
-  return getComboboxText(option).toLowerCase() === value.toLowerCase()
+export const compareOption = (option: FlatOption, value: string) => {
+  if (isComboboxOptionObject(option)) {
+    return getComboboxText(option).toLowerCase() === value.toLowerCase()
+  }
+  return false
 }
 
 export const getFirstOption = (
@@ -73,7 +83,7 @@ export const getFirstOption = (
 // Is a value contained the specified options (logic to show the on-the-fly "Create" option)
 export const notInOptions = (
   currentOptions: ComboboxOptionObject[],
-  flatOptions?: SelectOptionObject[],
+  flatOptions?: FlatOption[],
   inputValue?: string
 ) => {
   if (!inputValue) return false
@@ -87,16 +97,16 @@ export const notInOptions = (
   )
 }
 
-const checkForIcon = (option: SelectOptionObject) => option.icon !== undefined
+const checkForIcon = (option: FlatOption) => option.icon !== undefined
 
-export const optionsHaveIcons = (options?: SelectOptionProps[]) => {
+export const optionsHaveIcons = (options?: FlatOption[]) => {
   if (!options || options.length === 0) return false
   return options.some((option) => {
     const optionAsGroup = option as SelectOptionGroupProps
     if (optionAsGroup.options) {
       return optionAsGroup.options.some(checkForIcon)
     } else {
-      return checkForIcon(option as SelectOptionObject)
+      return checkForIcon(option)
     }
   })
 }

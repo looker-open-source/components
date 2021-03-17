@@ -107,7 +107,7 @@ const SelectMultiComponent = forwardRef(
     }: SelectMultiProps,
     ref: Ref<HTMLInputElement>
   ) => {
-    const [flatOptions, numGroups] = useFlatOptions(options)
+    const { flatOptions, navigationOptions } = useFlatOptions(options)
     const optionValues = getOptions(values, flatOptions)
     const defaultOptionValues = getOptions(defaultValues, flatOptions)
 
@@ -167,7 +167,7 @@ const SelectMultiComponent = forwardRef(
               isMulti
               options={options}
               flatOptions={flatOptions}
-              numGroups={numGroups}
+              navigationOptions={navigationOptions}
               windowedOptions={windowedOptions}
               isFilterable={isFilterable}
               noOptionsLabel={noOptionsLabel}

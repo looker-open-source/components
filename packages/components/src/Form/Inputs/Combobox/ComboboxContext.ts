@@ -67,7 +67,7 @@ export interface ComboboxContextProps<
   inputReadOnlyPropRef?: MutableRefObject<boolean>
   windowedOptionsPropRef?: MutableRefObject<boolean>
   freeInputPropRef?: MutableRefObject<boolean>
-  isAutoScrollingRef?: MutableRefObject<boolean>
+  isScrollingRef?: MutableRefObject<boolean>
   indicatorPropRef?: MutableRefObject<ComboboxOptionIndicatorProps['indicator']>
   isVisible?: boolean
   openOnFocus?: boolean

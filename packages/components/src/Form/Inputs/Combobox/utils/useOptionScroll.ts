@@ -58,7 +58,6 @@ export function useOptionScroll<
     transition,
     listScrollPosition = 0,
     listClientRect = { height: 0 },
-    isAutoScrollingRef,
   } = useContext(context)
   /* scroll menu list to specified element on mount */
   const [newTriggerElement, callbackRef] = useCallbackRef()
@@ -86,16 +85,6 @@ export function useOptionScroll<
         listClientRect.height
       )
       if (visibility !== 'visible') {
-        // Prevents issue where keyboard nav & hover battle over highlighting an option
-        // When the user keyboard navigates to an option outside the scroll window
-        // the menu scrolls to that option – if the mouse happens to be resting over the menu
-        // a mouseenter event is triggered on the respective option
-        // (see handleMouseEnter in useOptionEvents.ts)
-        if (isAutoScrollingRef) isAutoScrollingRef.current = true
-        window.requestAnimationFrame(() => {
-          if (isAutoScrollingRef) isAutoScrollingRef.current = false
-        })
-
         const attachToTop = visibility === 'above'
         newTriggerElement.scrollIntoView(attachToTop) // false scrolls to bottom, true scrolls to top
       }

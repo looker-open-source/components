@@ -24,7 +24,6 @@
 
  */
 
-import throttle from 'lodash/throttle'
 import xorWith from 'lodash/xorWith'
 import { Context, useContext } from 'react'
 import { useWrapEvent } from '../../../../utils'
@@ -48,7 +47,7 @@ export function useOptionEvents<
     onChange,
     transition,
     closeOnSelectPropRef,
-    isAutoScrollingRef,
+    isScrollingRef,
   } = useContext(context)
   const { options } = data as ComboboxMultiData
 
@@ -70,11 +69,15 @@ export function useOptionEvents<
     }
   }
 
-  const handleMouseEnter = throttle(() => {
-    if (isAutoScrollingRef && isAutoScrollingRef.current) return
-    const option = { label, value }
-    transition && transition(ComboboxActionType.NAVIGATE, { option })
-  }, 50)
+  const handleMouseEnter = () => {
+    // Wait for isScrollingRef.current to be updated in ComboboxList scrollHandler
+    // (mouseenter event is fired before the scroll event)
+    window.requestAnimationFrame(() => {
+      if (isScrollingRef?.current) return
+      const option = { label, value }
+      transition && transition(ComboboxActionType.NAVIGATE, { option })
+    })
+  }
 
   return {
     onClick: useWrapEvent(handleClick, onClick),

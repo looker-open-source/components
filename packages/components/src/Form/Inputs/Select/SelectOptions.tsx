@@ -49,14 +49,10 @@ import {
   ComboboxOptionIndicator,
   ComboboxOptionIndicatorProps,
   ComboboxOptionText,
+  isComboboxOptionObject,
 } from '../Combobox'
-import {
-  SelectOptionGroupProps,
-  SelectOptionObject,
-  SelectOptionProps,
-} from './types'
+import { FlatOption, SelectOptionObject, SelectOptionProps } from './types'
 import { optionsHaveIcons, notInOptions } from './utils/options'
-import { useOptionsToRender } from './utils/useOptionsToRender'
 import { useWindowedOptions } from './utils/useWindowedOptions'
 
 export const SelectOptionsContext = createContext({ hasIcons: false })
@@ -172,7 +168,7 @@ const SelectOptionGroupTitle = styled(Heading).attrs<HeadingProps>(() => ({
 `
 
 const renderOptions = (
-  options: SelectOptionProps[],
+  options: FlatOption[],
   keyPrefix: string,
   isMulti: boolean,
   index: number
@@ -181,40 +177,25 @@ const renderOptions = (
 
   if (!option) return []
 
-  if (isGroupOption(option)) {
-    const { label, options: groupOptions } = option
-    return [
-      <ListDivider key={`divider-${keyPrefix}-${index}`} />,
-      label && (
-        <SelectOptionGroupTitle
-          isMulti={isMulti}
-          key={`header-${keyPrefix}-${index}`}
-        >
-          <ComboboxOptionIndicator indicator={isMulti && ' '} />
-          {label}
-        </SelectOptionGroupTitle>
-      ),
-      ...renderOptions(groupOptions, keyPrefix, isMulti, index + 1),
-      ...renderOptions(
-        options.slice(1),
-        keyPrefix,
-        isMulti,
-        index + groupOptions.length + 1
-      ),
-    ]
-  } else {
+  let item = <ListDivider key={`divider-${keyPrefix}-${index}`} />
+  if (isComboboxOptionObject(option)) {
     const OptionLayoutToUse = isMulti ? MultiOptionLayout : OptionLayout
-    return [
-      <OptionLayoutToUse option={option} key={`${keyPrefix}-${index}`} />,
-      ...renderOptions(options.slice(1), keyPrefix, isMulti, index + 1),
-    ]
+    item = <OptionLayoutToUse option={option} key={`${keyPrefix}-${index}`} />
+  } else if (option.label !== undefined) {
+    item = (
+      <SelectOptionGroupTitle
+        isMulti={isMulti}
+        key={`header-${keyPrefix}-${index}`}
+      >
+        <ComboboxOptionIndicator indicator={isMulti && ' '} />
+        {option.label}
+      </SelectOptionGroupTitle>
+    )
   }
-}
-
-const isGroupOption = (
-  option: SelectOptionProps
-): option is SelectOptionGroupProps => {
-  return (option as SelectOptionGroupProps).options !== undefined
+  return [
+    item,
+    ...renderOptions(options.slice(1), keyPrefix, isMulti, index + 1),
+  ]
 }
 
 export interface SelectOptionsBaseProps {
@@ -253,8 +234,8 @@ export interface SelectOptionsBaseProps {
 }
 
 export interface SelectOptionsProps extends SelectOptionsBaseProps {
-  flatOptions?: SelectOptionObject[]
-  numGroups: number
+  flatOptions?: FlatOption[]
+  navigationOptions?: SelectOptionObject[]
   isMulti?: boolean
 }
 
@@ -263,9 +244,8 @@ export const SelectOptions = (props: SelectOptionsProps) => {
   const noOptionsLabelText = t('No options')
 
   const {
-    options,
     flatOptions,
-    numGroups,
+    navigationOptions,
     isFilterable,
     showCreate,
     formatCreateLabel,
@@ -282,18 +262,17 @@ export const SelectOptions = (props: SelectOptionsProps) => {
     after,
     scrollToFirst,
     scrollToLast,
-  } = useWindowedOptions(windowedOptions, flatOptions, numGroups, isMulti)
+  } = useWindowedOptions(
+    windowedOptions,
+    flatOptions,
+    navigationOptions,
+    isMulti
+  )
   const keyPrefix = useID(flatOptions?.length.toString())
 
   const hasIcons = useMemo(() => optionsHaveIcons(flatOptions), [flatOptions])
 
-  const optionsToRender = useOptionsToRender({
-    end,
-    flatOptions,
-    numGroups,
-    options,
-    start,
-  })
+  const optionsToRender = flatOptions ? flatOptions.slice(start, end + 1) : []
 
   if (isLoading) {
     return (
@@ -323,22 +302,42 @@ export const SelectOptions = (props: SelectOptionsProps) => {
 
   return (
     <SelectOptionsContext.Provider value={{ hasIcons }}>
-      {flatOptions && scrollToFirst ? (
+      {navigationOptions && scrollToFirst ? (
         <OptionLayoutToUse
-          option={flatOptions[0] as SelectOptionObject}
+          option={navigationOptions[0]}
           key={`${keyPrefix}-0`}
           scrollIntoView={true}
         />
       ) : null}
       {before}
       {optionsToRender && optionsToRender.length > 0
-        ? renderOptions(optionsToRender, keyPrefix, isMulti, start)
+        ? optionsToRender.map((option, index) => {
+            const key = `${keyPrefix}-${start + index}`
+            if (isComboboxOptionObject(option)) {
+              const OptionLayoutToUse = isMulti
+                ? MultiOptionLayout
+                : OptionLayout
+              return <OptionLayoutToUse option={option} key={key} />
+            } else if (option.label !== undefined) {
+              return (
+                <SelectOptionGroupTitle isMulti={isMulti} key={key}>
+                  <ComboboxOptionIndicator indicator={isMulti && ' '} />
+                  {option.label}
+                </SelectOptionGroupTitle>
+              )
+            }
+            return <ListDivider key={key} />
+          })
         : createOption || noOptions}
       {after}
-      {flatOptions && scrollToLast ? (
+      {navigationOptions && scrollToLast ? (
         <OptionLayoutToUse
-          option={flatOptions[flatOptions.length - 1] as SelectOptionObject}
-          key={`${keyPrefix}-${flatOptions.length - 1}`}
+          option={
+            navigationOptions[
+              navigationOptions.length - 1
+            ] as SelectOptionObject
+          }
+          key={`${keyPrefix}-${navigationOptions.length - 1}`}
           scrollIntoView
         />
       ) : null}
@@ -347,7 +346,7 @@ export const SelectOptions = (props: SelectOptionsProps) => {
 }
 
 interface SelectCreateOptionProps {
-  flatOptions?: SelectOptionObject[]
+  flatOptions?: FlatOption[]
   noOptions: ReactNode
   formatLabel?: (inputText: string) => ReactNode
   isMulti?: boolean

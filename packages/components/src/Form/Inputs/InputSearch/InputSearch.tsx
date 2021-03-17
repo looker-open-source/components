@@ -130,7 +130,7 @@ const InputSearchLayout = forwardRef(
     const [value, setValue] = useState(defaultValue || '')
     const valueToUse = isControlled ? controlledValue : value
 
-    const [flatOptions, numGroups] = useFlatOptions(options)
+    const { flatOptions, navigationOptions } = useFlatOptions(options)
     const matchingOption = getMatchingOption(valueToUse, flatOptions)
     const optionValue = matchingOption || { value: '' }
 
@@ -212,7 +212,7 @@ const InputSearchLayout = forwardRef(
             <SelectOptions
               options={options}
               flatOptions={flatOptions}
-              numGroups={numGroups}
+              navigationOptions={navigationOptions}
               windowedOptions={windowedOptions}
               isFilterable
               noOptionsLabel={noOptionsLabel}
