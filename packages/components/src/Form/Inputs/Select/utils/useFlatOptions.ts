@@ -33,22 +33,22 @@ import {
 
 export const useFlatOptions = (
   options?: SelectOptionProps[]
-): [SelectOptionObject[] | undefined, boolean] => {
+): [SelectOptionObject[] | undefined, number] => {
   return useMemo(() => {
-    if (!options) return [options, false]
+    if (!options) return [options, 0]
 
-    let isGrouped = false
+    let numGroups = 0
     const flatOptions = options.reduce(
       (acc: SelectOptionObject[], option: SelectOptionProps) => {
         const optionAsGroup = option as SelectOptionGroupProps
         if (optionAsGroup.options) {
-          isGrouped = true
+          numGroups++
           return [...acc, ...optionAsGroup.options]
         }
         return [...acc, option as SelectOptionObject]
       },
       []
     )
-    return [flatOptions, isGrouped]
+    return [flatOptions, numGroups]
   }, [options])
 }

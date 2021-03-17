@@ -49,6 +49,7 @@ export function useShouldWindowOptions(
 export function useWindowedOptions(
   windowedOptions?: boolean,
   flatOptions?: SelectOptionObject[],
+  numGroups = 0,
   isMulti?: boolean
 ) {
   const context = useContext(ComboboxContext)
@@ -85,10 +86,17 @@ export function useWindowedOptions(
         enabled: windowedOptions,
         height: containerHeight,
         itemHeight: optionHeight,
-        length: flatOptions ? flatOptions.length : 0,
+        // For groups, add 2 for divider & header
+        length: flatOptions ? flatOptions.length + numGroups * 2 : 0,
         scrollPosition: listScrollPosition,
       }),
-    [flatOptions, containerHeight, listScrollPosition, windowedOptions]
+    [
+      flatOptions,
+      numGroups,
+      containerHeight,
+      listScrollPosition,
+      windowedOptions,
+    ]
   )
 
   // The current value is highlighted when the menu first opens
@@ -105,7 +113,7 @@ export function useWindowedOptions(
       ])
       if (selectedIndex > -1) {
         start = selectedIndex
-        end = selectedIndex
+        end = selectedIndex + numGroups * 2
       }
     }
   }
