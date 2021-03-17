@@ -79,35 +79,29 @@ export function useOptionScroll<
 
   /* scroll menu while keyboard navigating */
   useEffect(() => {
-    let t: number
     if (isActive && newTriggerElement) {
-      t = setTimeout(() => {
-        const visibility = relativeElementVisibility(
-          newTriggerElement,
-          listScrollPosition,
-          listClientRect.height
-        )
-        if (visibility !== 'visible') {
-          // Prevents issue where keyboard nav & hover battle over highlighting an option
-          // When the user keyboard navigates to an option outside the scroll window
-          // the menu scrolls to that option – if the mouse happens to be resting over the menu
-          // a mouseenter event is triggered on the respective option
-          // (see handleMouseEnter in useOptionEvents.ts)
-          if (isAutoScrollingRef) isAutoScrollingRef.current = true
-          window.requestAnimationFrame(() => {
-            if (isAutoScrollingRef) isAutoScrollingRef.current = false
-          })
+      const visibility = relativeElementVisibility(
+        newTriggerElement,
+        listScrollPosition,
+        listClientRect.height
+      )
+      if (visibility !== 'visible') {
+        // Prevents issue where keyboard nav & hover battle over highlighting an option
+        // When the user keyboard navigates to an option outside the scroll window
+        // the menu scrolls to that option – if the mouse happens to be resting over the menu
+        // a mouseenter event is triggered on the respective option
+        // (see handleMouseEnter in useOptionEvents.ts)
+        if (isAutoScrollingRef) isAutoScrollingRef.current = true
+        window.requestAnimationFrame(() => {
+          if (isAutoScrollingRef) isAutoScrollingRef.current = false
+        })
 
-          const attachToTop = visibility === 'above'
-          newTriggerElement.scrollIntoView(attachToTop) // false scrolls to bottom, true scrolls to top
-        }
-      }, 150)
-    }
-    return () => {
-      clearTimeout(t)
+        const attachToTop = visibility === 'above'
+        newTriggerElement.scrollIntoView(attachToTop) // false scrolls to bottom, true scrolls to top
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [newTriggerElement, isActive, listScrollPosition])
+  }, [newTriggerElement, isActive])
 
   return callbackRef
 }
