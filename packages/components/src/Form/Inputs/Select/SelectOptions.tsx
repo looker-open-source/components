@@ -311,23 +311,26 @@ export const SelectOptions = (props: SelectOptionsProps) => {
       ) : null}
       {before}
       {optionsToRender && optionsToRender.length > 0
-        ? optionsToRender.map((option, index) => {
-            const key = `${keyPrefix}-${start + index}`
-            if (isComboboxOptionObject(option)) {
-              const OptionLayoutToUse = isMulti
-                ? MultiOptionLayout
-                : OptionLayout
-              return <OptionLayoutToUse option={option} key={key} />
-            } else if (option.label !== undefined) {
-              return (
-                <SelectOptionGroupTitle isMulti={isMulti} key={key}>
-                  <ComboboxOptionIndicator indicator={isMulti && ' '} />
-                  {option.label}
-                </SelectOptionGroupTitle>
-              )
-            }
-            return <ListDivider key={key} />
-          })
+        ? [
+            ...optionsToRender.map((option, index) => {
+              const key = `${keyPrefix}-${start + index}`
+              if (isComboboxOptionObject(option)) {
+                const OptionLayoutToUse = isMulti
+                  ? MultiOptionLayout
+                  : OptionLayout
+                return <OptionLayoutToUse option={option} key={key} />
+              } else if (option.label !== undefined) {
+                return (
+                  <SelectOptionGroupTitle isMulti={isMulti} key={key}>
+                    <ComboboxOptionIndicator indicator={isMulti && ' '} />
+                    {option.label}
+                  </SelectOptionGroupTitle>
+                )
+              }
+              return <ListDivider key={key} />
+            }),
+            createOption,
+          ]
         : createOption || noOptions}
       {after}
       {navigationOptions && scrollToLast ? (
