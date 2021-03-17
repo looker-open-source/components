@@ -56,13 +56,6 @@ export const Layout = styled.div.withConfig({ shouldForwardProp })<LayoutProps>`
   ${simpleLayoutCSS}
   display: flex;
   flex: 1 1 auto;
-  overflow: auto;
-
-  ${({ fixed }) =>
-    fixed &&
-    `
-      overflow: hidden;
-    `}
-
+  overflow: ${({ fixed }) => (fixed ? 'hidden' : 'auto')};
   ${({ hasAside }) => (hasAside ? hasAsideCSS : 'flex-direction: column;')}
 `

@@ -70,7 +70,7 @@ describe('Layout', () => {
     )
   })
 
-  test('has Header and Footer positions fixed when passifn prop fixed', () => {
+  test('has Header and Footer positions fixed when passign prop fixed', () => {
     renderWithTheme(
       <Page fixed>
         <Header height="4rem" px="large">
