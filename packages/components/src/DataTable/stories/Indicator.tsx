@@ -74,8 +74,8 @@ const Template: Story<DataTableProps> = ({ ...args }) => {
   return <DataTable {...args} />
 }
 
-export const UseIndicator = Template.bind({})
-UseIndicator.args = {
+export const Indicator = Template.bind({})
+Indicator.args = {
   children: items,
   columns: columns,
 }
