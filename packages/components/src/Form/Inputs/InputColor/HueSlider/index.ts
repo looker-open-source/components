@@ -24,4 +24,4 @@
 
  */
 
-export * from './LuminositySlider'
+export * from './HueSlider'

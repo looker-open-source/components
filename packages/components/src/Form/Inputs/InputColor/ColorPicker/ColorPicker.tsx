@@ -24,34 +24,17 @@
 
  */
 
-import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { screen } from '@testing-library/react'
-import { Swatch } from './Swatch'
+import React, { FC } from 'react'
+import styled from 'styled-components'
+import { SpaceVertical } from '../../../../Layout'
+import { LightSaturationPreview, HueSlider } from '..'
+import { ColorPickerProps } from '../types'
 
-describe('Swatch', () => {
-  test('default', () => {
-    renderWithTheme(<Swatch />)
-    expect(screen.getByTestId('swatch')).toBeInTheDocument()
-  })
+const ColorPickerInternal: FC<ColorPickerProps> = ({ hsv, setHsv, width }) => (
+  <SpaceVertical gap="medium" data-testid="color-picker">
+    <LightSaturationPreview hsv={hsv} setHsv={setHsv} width={width} />
+    <HueSlider hsv={hsv} setHsv={setHsv} width={width} />
+  </SpaceVertical>
+)
 
-  test('hex value', () => {
-    renderWithTheme(<Swatch color="#4c6670" />)
-    expect(screen.getByTestId('swatch')).toHaveStyle(
-      'background-color: #4c6670'
-    )
-  })
-
-  test('width and height', () => {
-    renderWithTheme(<Swatch color="blue" width="50px" height="25px" />)
-    const swatch = screen.getByTestId('swatch')
-    expect(swatch).toHaveStyle('height: 25px')
-    expect(swatch).toHaveStyle('width: 50px')
-  })
-
-  test('disabled state', () => {
-    renderWithTheme(<Swatch color="blue" disabled />)
-    // eslint-disable-next-line jest-dom/prefer-enabled-disabled
-    expect(screen.getByTestId('swatch')).toHaveAttribute('disabled')
-  })
-})
+export const ColorPicker = styled(ColorPickerInternal)``

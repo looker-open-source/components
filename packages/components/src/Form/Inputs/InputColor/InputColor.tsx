@@ -33,23 +33,20 @@ import React, {
   useEffect,
 } from 'react'
 import styled from 'styled-components'
-import get from 'lodash/get'
 import { useID, useWrapEvent } from '../../../utils'
 import { usePopover, PopoverContent } from '../../../Popover'
 import { InputText, InputTextProps } from '../InputText'
 import { useFormContext } from '../../Form'
-import { HueSaturation, SimpleHSV } from './ColorWheel/color_wheel_utils'
-import { ColorWheel } from './ColorWheel'
-import { LuminositySlider } from './LuminositySlider'
 import { Swatch } from './Swatch'
 import {
-  hsv2hex,
-  simpleHSVtoFormattedColorString,
-  str2simpleHsv,
-} from './utils/color_format_utils'
-import { isValidColor } from './utils/color_utils'
-
-const colorWheelSize = 164
+  isValidColor,
+  hsvToHex,
+  simpleHsvToHex,
+  stringToSimpleHsv,
+} from './utils'
+import { SimpleHSV } from './types'
+import { ColorPicker } from './ColorPicker'
+import { DEFAULT_INPUT_COLOR_WIDTH } from './dimensions'
 
 export interface InputColorProps extends Omit<InputTextProps, 'height'> {
   /**
@@ -67,23 +64,17 @@ const createEventWithHSVValue = (
   return {
     currentTarget: {
       name,
-      value:
-        typeof color === 'string'
-          ? color
-          : simpleHSVtoFormattedColorString(color),
+      value: typeof color === 'string' ? color : simpleHsvToHex(color),
     },
     target: {
       name,
-      value:
-        typeof color === 'string'
-          ? color
-          : simpleHSVtoFormattedColorString(color),
+      value: typeof color === 'string' ? color : simpleHsvToHex(color),
     },
   } as ChangeEvent<HTMLInputElement>
 }
 
 function getColorFromText(text?: string) {
-  return text && isValidColor(text) ? str2simpleHsv(text) : undefined
+  return text && isValidColor(text) ? stringToSimpleHsv(text) : undefined
 }
 
 export const InputColorComponent = forwardRef(
@@ -118,7 +109,7 @@ export const InputColorComponent = forwardRef(
 
     useEffect(() => {
       if (value && value !== inputTextValue) {
-        setColor(str2simpleHsv(value))
+        setColor(stringToSimpleHsv(value))
         !isFocused && setInputTextValue(value)
       }
     }, [isFocused, value, inputTextValue])
@@ -130,19 +121,9 @@ export const InputColorComponent = forwardRef(
 
     const setColorState = (newColor: SimpleHSV) => {
       setColor(newColor)
-      newColor && setInputTextValue(simpleHSVtoFormattedColorString(newColor))
+      newColor && setInputTextValue(simpleHsvToHex(newColor))
       callOnChange(newColor)
     }
-
-    const handleColorChange = (hs: HueSaturation) => {
-      setColorState({ ...hs, v: get(color, 'v', 1) })
-    }
-
-    const handleSliderChange = (event: FormEvent<HTMLInputElement>) =>
-      setColorState({
-        ...(color || { h: 0, s: 100, v: 100 }),
-        v: Number(event.currentTarget.value) / 100,
-      })
 
     const handleInputTextChange = (event: FormEvent<HTMLInputElement>) => {
       const newValue = event.currentTarget.value
@@ -154,20 +135,11 @@ export const InputColorComponent = forwardRef(
     }
 
     const content = (
-      <PopoverContent display="flex" flexDirection="column">
-        <ColorWheel
-          size={colorWheelSize}
-          hue={get(color, 'h')}
-          saturation={get(color, 's')}
-          value={get(color, 'v')}
-          onColorChange={handleColorChange}
-        />
-        <LuminositySlider
-          min={0}
-          max={100}
-          step={1}
-          value={get(color, 'v', 1) * 100}
-          onChange={handleSliderChange}
+      <PopoverContent p="medium">
+        <ColorPicker
+          hsv={color || { h: 0, s: 1, v: 1 }}
+          setHsv={setColorState}
+          width={DEFAULT_INPUT_COLOR_WIDTH}
         />
       </PopoverContent>
     )
@@ -177,7 +149,7 @@ export const InputColorComponent = forwardRef(
     return (
       <div className={className}>
         <Swatch
-          color={color ? hsv2hex(color) : undefined}
+          color={color ? hsvToHex(color) : undefined}
           disabled={disabled}
           readOnly={readOnly}
           {...domProps}

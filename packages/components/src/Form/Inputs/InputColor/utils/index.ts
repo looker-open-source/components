@@ -24,34 +24,7 @@
 
  */
 
-import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { screen } from '@testing-library/react'
-import { Swatch } from './Swatch'
-
-describe('Swatch', () => {
-  test('default', () => {
-    renderWithTheme(<Swatch />)
-    expect(screen.getByTestId('swatch')).toBeInTheDocument()
-  })
-
-  test('hex value', () => {
-    renderWithTheme(<Swatch color="#4c6670" />)
-    expect(screen.getByTestId('swatch')).toHaveStyle(
-      'background-color: #4c6670'
-    )
-  })
-
-  test('width and height', () => {
-    renderWithTheme(<Swatch color="blue" width="50px" height="25px" />)
-    const swatch = screen.getByTestId('swatch')
-    expect(swatch).toHaveStyle('height: 25px')
-    expect(swatch).toHaveStyle('width: 50px')
-  })
-
-  test('disabled state', () => {
-    renderWithTheme(<Swatch color="blue" disabled />)
-    // eslint-disable-next-line jest-dom/prefer-enabled-disabled
-    expect(screen.getByTestId('swatch')).toHaveAttribute('disabled')
-  })
-})
+export * from './isValidColor'
+export * from './hsvToHex'
+export * from './simpleHsvToHex'
+export * from './stringToSimpleHsv'

@@ -88,7 +88,89 @@ describe('InputColor', () => {
   test('opens on swatch click', () => {
     renderWithTheme(<InputColor value="green" />)
     fireEvent.click(screen.getByTestId('swatch'))
-    expect(screen.getByTestId('color-wheel')).toBeInTheDocument()
+    expect(screen.getByTestId('color-picker')).toBeInTheDocument()
+    fireEvent.click(document)
+  })
+
+  test('can receive focus and blur handlers', () => {
+    const onBlur = jest.fn()
+    const onFocus = jest.fn()
+    renderWithTheme(
+      <InputColor onBlur={onBlur} onFocus={onFocus} value="green" />
+    )
+
+    const input = screen.getByDisplayValue('green')
+
+    input.focus()
+    expect(input).toHaveFocus()
+    expect(onFocus).toHaveBeenCalled()
+
+    input.blur()
+    expect(input).not.toHaveFocus()
+    expect(onBlur).toHaveBeenCalled()
+  })
+
+  test('changes color on <ColorPicker/> click', () => {
+    renderWithTheme(<InputColor placeholder="Select a color" />)
+    const input = screen.getByPlaceholderText(
+      'Select a color'
+    ) as HTMLInputElement
+
+    fireEvent.click(screen.getByTestId('swatch'))
+
+    const lightSaturationPreview = screen.getByTestId(
+      'light-saturation-preview'
+    )
+
+    fireEvent.mouseDown(lightSaturationPreview, { clientX: 0, clientY: 0 })
+
+    expect(input.value).toBe('#ffffff')
+
+    /**
+     * Close popover to silence act() warning
+     * Note: Having just one click event produces the act() warning,
+     * but having two events gets around this.
+     *
+     * Something about firing a mouseDown event (as opposed to a click
+     * event) within the popover leads to funky test behavior. We need to
+     * fire a mouseDown here, though, since the LightSaturationPreview uses mouse down
+     * to the start the color handle movement / dragging.
+     */
+    fireEvent.click(document)
+    fireEvent.click(document)
+  })
+
+  // mouseMove doesn't seem to move mouse position; leaving as xtest for now
+  xtest('changes color on <ColorPicker/> mouse drag', () => {
+    renderWithTheme(<InputColor placeholder="Select a color" />)
+    const input = screen.getByPlaceholderText(
+      'Select a color'
+    ) as HTMLInputElement
+
+    fireEvent.click(screen.getByTestId('swatch'))
+
+    const lightSaturationPreview = screen.getByTestId(
+      'light-saturation-preview'
+    )
+
+    fireEvent.mouseDown(lightSaturationPreview)
+
+    fireEvent.mouseMove(lightSaturationPreview, { clientX: 200, clientY: 0 })
+    expect(input.value).toBe('#ff0000')
+
+    fireEvent.mouseUp(lightSaturationPreview)
+
+    /**
+     * Close popover to silence act() warning
+     * Note: Having just one click event produces the act() warning,
+     * but having two events gets around this.
+     *
+     * Something about firing a mouseDown event (as opposed to a click
+     * event) within the popover leads to funky test behavior. We need to
+     * fire a mouseDown here, though, since the LightSaturationPreview uses mouse down
+     * to the start the color handle movement / dragging.
+     */
+    fireEvent.click(document)
     fireEvent.click(document)
   })
 
@@ -100,7 +182,7 @@ describe('InputColor', () => {
 
     // Find swatch, verify clicking doesn't open Popover
     fireEvent.click(screen.getByTestId('swatch'))
-    expect(screen.queryByTestId('color-wheel')).not.toBeInTheDocument()
+    expect(screen.queryByTestId('color-picker')).not.toBeInTheDocument()
   })
 
   test('readOnly', () => {
@@ -111,6 +193,6 @@ describe('InputColor', () => {
 
     // Find swatch, verify clicking doesn't open Popover
     fireEvent.click(screen.getByTestId('swatch'))
-    expect(screen.queryByTestId('color-wheel')).not.toBeInTheDocument()
+    expect(screen.queryByTestId('color-picker')).not.toBeInTheDocument()
   })
 })
