@@ -27,8 +27,9 @@
 import { shouldForwardProp } from '@looker/design-tokens'
 import styled from 'styled-components'
 import { SemanticLayoutBase, semanticLayoutCSS } from './semanticStyledBase'
+import { borderHelper, SemanticBorderProps } from './semanticBorderHelper'
 
-export interface AsideProps extends SemanticLayoutBase {
+export interface AsideProps extends SemanticLayoutBase, SemanticBorderProps {
   /**
    * Specify width of aside
    * @default '12rem'
@@ -47,4 +48,5 @@ export const Aside = styled.aside
   max-width: ${({ width }) => width};
   min-width: ${({ width }) => width};
   width: 0;
+  ${borderHelper}
 `

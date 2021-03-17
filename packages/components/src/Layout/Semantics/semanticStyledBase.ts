@@ -25,9 +25,9 @@
  */
 
 import {
-  PaddingProps,
-  padding,
   CompatibleHTMLProps,
+  padding,
+  PaddingProps,
   reset,
 } from '@looker/design-tokens'
 import { css } from 'styled-components'

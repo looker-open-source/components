@@ -25,18 +25,65 @@
  */
 
 import React from 'react'
-import {
-  Layout,
-  Header,
-  Aside,
-  Footer,
-  Grid,
-  Section,
-} from '@looker/components'
+import { Story } from '@storybook/react/types-6-0'
 import styled from 'styled-components'
+import { Layout, Header, Aside, AsideProps, Footer, Section } from '..'
+import { Grid } from '../../Grid'
 
 export default {
-  title: 'Layout/Semantics',
+  title: 'Layout',
+}
+
+const Template: Story<AsideProps> = (args) => (
+  <Aside p="large" text-align="center" {...args} />
+)
+
+export const DefaultBorderColor = Template.bind({})
+DefaultBorderColor.args = {
+  border: true,
+  children: 'Aside',
+}
+
+export const Border = Template.bind({})
+Border.args = {
+  border: 'key',
+  children: 'border',
+}
+
+export const BorderBottom = Template.bind({})
+BorderBottom.args = {
+  borderBottom: 'key',
+  children: 'border-bottom',
+}
+
+export const BorderLeft = Template.bind({})
+BorderLeft.args = {
+  borderLeft: 'key',
+  children: 'border-left',
+}
+
+export const BorderRight = Template.bind({})
+BorderRight.args = {
+  borderRight: 'key',
+  children: 'border-right',
+}
+
+export const BorderTop = Template.bind({})
+BorderTop.args = {
+  borderTop: 'key',
+  children: 'border-top',
+}
+
+export const BorderX = Template.bind({})
+BorderX.args = {
+  borderX: 'key',
+  children: 'border-left and border-right',
+}
+
+export const BorderY = Template.bind({})
+BorderY.args = {
+  borderY: 'key',
+  children: 'border-bottom and border-top',
 }
 
 export const CommonLayouts = () => (
