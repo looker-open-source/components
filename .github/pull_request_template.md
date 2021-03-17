@@ -1,21 +1,22 @@
-Thank so much for contributing to @looker/components!
+## 👋👋 Thank you for contributing to Looker Components (⚡️🍣)
 
-The CI & [README](https://github.com/looker-open-source/components/blob/main/README.md) should help to make most of our code standards clear
+📺 Watch a quick video on how to you make your pull requests fast and easy for you and your reviewer(s):
+https://threadit.app/thread/k45nyrqugoinw6xub9vf/message/fl8m57exhqg4r0a4hg01eebn
 
-Before requesting review from another developer please delete the lines above and summarize your change.
+- 👆 Make sure your pull request title follows [Pull Request Title Guidelines](https://github.com/looker-open-source/components/blob/main/CONTRIBUTING.md#title-guidelines) from our [Contribution guide](https://github.com/looker-open-source/components/blob/main/CONTRIBUTING.md)
+- 👉 Don't forget to replace these instructions with your _✨awesome✨_ description of what this change _actually does_. Additionally it's great to include context on how it works and why the change was needed.
+- 👇 Edit "Developer Checklist" to reflect items relevant to this PR (and try to make sure to check everything off before asking for review)
 
-### Requirements
+## Developer Checklist [ℹ️](https://github.com/looker-open-source/components/blob/main/CONTRIBUTING.md#developer-checklist)
 
-Please check the following items are addressed in your pull request (or are not applicable)
-
-- [ ] a11y impact (FUTURE: Make aXe pass req'd for CI ✅)
-
-#### Image snapshots (choose one)
-
-  - [ ] yes
-  - [ ] not applicable
-
-#### Documentation updated (choose one)
-
-  - [ ] yes
-  - [ ] not applicable
+- [ ] ♿️ Accessibility addressed
+- [ ] 🌏 Localization & Internationalization addressed
+- [ ] 🖼 Image Snapshot coverage
+- [ ] 📚 Documentation updated
+- [ ] 🧳 Bundle size impact addressed
+- [ ] 🏁 Performance impacts addressed
+- [ ] 👾 Browsers tested
+  - [ ] Chrome
+  - [ ] Firefox
+  - [ ] Safari
+  - [ ] IE11
