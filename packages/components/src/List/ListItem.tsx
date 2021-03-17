@@ -57,11 +57,9 @@ const TruncateWrapper: FC<{
   fontSize?: FontSizes
   lineHeight?: FontSizes
 }> = ({ children, color, fontSize, lineHeight }) => (
-  <Truncate>
-    <Text color={color} fontSize={fontSize} lineHeight={lineHeight}>
-      {children}
-    </Text>
-  </Truncate>
+  <Text color={color} fontSize={fontSize} lineHeight={lineHeight}>
+    <Truncate>{children}</Truncate>
+  </Text>
 )
 
 export interface ListItemProps
