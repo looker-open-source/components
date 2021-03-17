@@ -153,7 +153,7 @@ export const AccordionDisclosureStyle = styled.div
     focusVisible &&
     `
       &:focus {
-        box-shadow: inset 0 0 0 1px ${theme.colors.keyFocus};
+        box-shadow: inset 0 0 0 2px ${theme.colors.keyFocus};
       }
     `}
   `
