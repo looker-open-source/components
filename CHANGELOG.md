@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.16.2](https://github.com/looker-open-source/components/compare/v0.16.0...v0.16.2) (2021-03-17)
+
+
+### Bug Fixes
+
+* **MenuItem:** Remove unnecessary aria attributes when there is no nested menu ([#2049](https://github.com/looker-open-source/components/issues/2049)) ([2c6c784](https://github.com/looker-open-source/components/commit/2c6c784837746fdb539cfb9949f1dacbdde3ccb0))
+* **Space:** Remove snapshot tests, add justify support, default DataTable to 100% width ([#2050](https://github.com/looker-open-source/components/issues/2050)) ([fe50f4d](https://github.com/looker-open-source/components/commit/fe50f4d61104f8dee34e48214a25f8d912991584))
+* Icon refactor pre-patches ([#2030](https://github.com/looker-open-source/components/issues/2030)) ([776216b](https://github.com/looker-open-source/components/commit/776216b2eed5d922b81bcf585f79de66cfd55811)), closes [#2031](https://github.com/looker-open-source/components/issues/2031)
+
+
+
+
+
 ## [0.16.1](https://github.com/looker-open-source/components/compare/v0.16.0...v0.16.1) (2021-03-17)
 
 
