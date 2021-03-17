@@ -87,7 +87,6 @@ const TruncateLayout: FC<TruncateProps> = ({
 
 const TextStyle = styled.span<WidthProps>`
   display: block;
-  line-height: 1;
   overflow: hidden;
   text-overflow: ellipsis;
   ${widthHelper}

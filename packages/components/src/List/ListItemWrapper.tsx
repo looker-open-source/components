@@ -29,7 +29,6 @@ import omit from 'lodash/omit'
 import React, { forwardRef, ReactNode, Ref } from 'react'
 import styled from 'styled-components'
 import { Icon } from '../Icon'
-import { Truncate } from '../Truncate'
 import {
   ListItemStatefulWithHoveredProps,
   ListItemDimensions,
@@ -128,10 +127,6 @@ export const ListItemWrapper = styled(ListItemWrapperInternal)`
     align-self: ${({ description }) => (description ? 'flex-start' : 'center')};
     transition: color
       ${({ theme }) => `${theme.transitions.quick}ms ${theme.easings.ease}`};
-  }
-
-  ${Truncate} {
-    line-height: 1;
   }
 
   &[aria-current='true'] {
