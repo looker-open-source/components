@@ -25,7 +25,6 @@
  */
 
 import styled from 'styled-components'
-import { reset } from '@looker/design-tokens'
 import React, { FC, useState } from 'react'
 import { MixedBoolean } from '../Form'
 import { BulkActions } from './BulkActions'
@@ -127,6 +126,5 @@ export const DataTableLayout: FC<DataTableProps> = (props) => {
 }
 
 export const DataTable = styled(DataTableLayout)<DataTableProps>`
-  ${reset}
   width: 100%;
 `
