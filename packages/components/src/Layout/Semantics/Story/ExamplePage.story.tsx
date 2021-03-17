@@ -25,13 +25,12 @@
  */
 
 import React from 'react'
-import { Story } from '@storybook/react/types-6-0'
-
 import styled from 'styled-components'
+import { Story } from '@storybook/react/types-6-0'
 import { Aside, Footer, Header, Layout, LayoutProps, Page, Section } from '..'
 import { SpaceVertical } from '../../Space'
-import { MenuItem } from '../../../Menu/MenuItem'
 import { Heading, Paragraph } from '../../../Text'
+import { MenuItem } from '../../../Menu/MenuItem'
 import { Tab, Tabs, TabList, TabPanel, TabPanels } from '../../../Tabs'
 
 export default {

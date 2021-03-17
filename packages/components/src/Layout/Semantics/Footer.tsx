@@ -36,7 +36,7 @@ export const Footer = styled.footer.withConfig({
   shouldForwardProp,
 })<FooterProps>`
   ${headerFooterCSS}
-  ${borderHelper}
 
   width: 100%;
+  ${borderHelper}
 `
