@@ -102,26 +102,17 @@ export const ListItemWrapper = styled(ListItemWrapperInternal)`
     &:hover,
     &:focus {
       color: inherit;
-      position: relative;
       text-decoration: none;
     }
   }
 
-  ${({ focusVisible, theme: { colors } }) =>
+  ${({ focusVisible, theme }) =>
     focusVisible &&
-    `&:focus-within > button:after,
-    &:focus-within > a:after {
-      content: '';
-      display:block;
-      border: solid 2px ${colors.keyFocus};
-      border-radius: 2px;
-      margin: 0 1px;
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-    }
+    `
+      &:focus-within > button,
+      &:focus-within > a {
+        box-shadow: inset 0 0 0 2px ${theme.colors.keyFocus};
+      }
     `}
 
   ${Icon} {

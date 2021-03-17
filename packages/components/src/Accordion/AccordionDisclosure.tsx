@@ -144,13 +144,19 @@ export const AccordionDisclosureStyle = styled.div
     color ? colorStyleFn : `color: ${theme.colors.ui5};`}
   cursor: pointer;
   display: flex;
-  outline: 1px solid transparent;
-  outline-color: ${({ focusVisible, theme }) =>
-    focusVisible && theme.colors.keyFocus};
   ${padding}
+  outline: none;
   text-align: left;
   width: 100%;
-`
+
+  ${({ focusVisible, theme }) =>
+    focusVisible &&
+    `
+      &:focus {
+        box-shadow: inset 0 0 0 1px ${theme.colors.keyFocus};
+      }
+    `}
+  `
 
 export const AccordionDisclosure = styled(AccordionDisclosureInternal).attrs(
   (props) => ({
