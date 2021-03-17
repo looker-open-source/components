@@ -1,11 +1,41 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`A Paragraph component aligned 1`] = `
+exports[`Paragraph breakword 1`] = `
 .c0 {
   font-family: Roboto,'Noto Sans','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   font-size: 1rem;
   line-height: 1.5rem;
-  text-align: right;
+  color: #262D33;
+  overflow-wrap: break-word;
+}
+
+<p
+  className="c0 "
+>
+  Hello
+</p>
+`;
+
+exports[`Paragraph color 1`] = `
+.c0 {
+  font-family: Roboto,'Noto Sans','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: #CC1F36;
+}
+
+<p
+  className="c0 "
+>
+  Hello
+</p>
+`;
+
+exports[`Paragraph default 1`] = `
+.c0 {
+  font-family: Roboto,'Noto Sans','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
+  font-size: 1rem;
+  line-height: 1.5rem;
   color: #262D33;
 }
 
@@ -16,25 +46,7 @@ exports[`A Paragraph component aligned 1`] = `
 </p>
 `;
 
-exports[`A Paragraph component decorated 1`] = `
-.c0 {
-  font-family: Roboto,'Noto Sans','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  color: #262D33;
-  -webkit-text-decoration: line-through;
-  text-decoration: line-through;
-}
-
-<p
-  className="c0 "
-  textDecoration="line-through"
->
-  Hello
-</p>
-`;
-
-exports[`A Paragraph component resized 1`] = `
+exports[`Paragraph fontSize 1`] = `
 .c0 {
   font-family: Roboto,'Noto Sans','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   font-size: 2.25rem;
@@ -49,47 +61,7 @@ exports[`A Paragraph component resized 1`] = `
 </p>
 `;
 
-exports[`A Paragraph component text transformed 1`] = `
-.c0 {
-  font-family: Roboto,'Noto Sans','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  color: #262D33;
-}
-
-.c1 {
-  text-transform: uppercase;
-}
-
-<p
-  className="c0 c1"
->
-  Hello
-</p>
-`;
-
-exports[`A Paragraph component truncated 1`] = `
-.c0 {
-  font-family: Roboto,'Noto Sans','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  color: #262D33;
-}
-
-.c1 {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-<p
-  className="c0 c1"
->
-  Hello
-</p>
-`;
-
-exports[`A Paragraph component weight 1`] = `
+exports[`Paragraph fontWeight 1`] = `
 .c0 {
   font-family: Roboto,'Noto Sans','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   font-size: 1rem;
@@ -105,22 +77,7 @@ exports[`A Paragraph component weight 1`] = `
 </p>
 `;
 
-exports[`A Paragraph component with color 1`] = `
-.c0 {
-  font-family: Roboto,'Noto Sans','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  color: #CC1F36;
-}
-
-<p
-  className="c0 "
->
-  Hello
-</p>
-`;
-
-exports[`A Paragraph component with multiline truncate 1`] = `
+exports[`Paragraph multiline truncate 1`] = `
 .c0 {
   font-family: Roboto,'Noto Sans','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   font-size: 1rem;
@@ -142,13 +99,13 @@ exports[`A Paragraph component with multiline truncate 1`] = `
 </p>
 `;
 
-exports[`A Paragraph component wrapped 1`] = `
+exports[`Paragraph textAlign 1`] = `
 .c0 {
   font-family: Roboto,'Noto Sans','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   font-size: 1rem;
   line-height: 1.5rem;
+  text-align: right;
   color: #262D33;
-  overflow-wrap: break-word;
 }
 
 <p
@@ -158,7 +115,25 @@ exports[`A Paragraph component wrapped 1`] = `
 </p>
 `;
 
-exports[`A default Paragraph component 1`] = `
+exports[`Paragraph textDecoration 1`] = `
+.c0 {
+  font-family: Roboto,'Noto Sans','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: #262D33;
+  -webkit-text-decoration: line-through;
+  text-decoration: line-through;
+}
+
+<p
+  className="c0 "
+  textDecoration="line-through"
+>
+  Hello
+</p>
+`;
+
+exports[`Paragraph textTransform 1`] = `
 .c0 {
   font-family: Roboto,'Noto Sans','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   font-size: 1rem;
@@ -166,8 +141,33 @@ exports[`A default Paragraph component 1`] = `
   color: #262D33;
 }
 
+.c1 {
+  text-transform: uppercase;
+}
+
 <p
-  className="c0 "
+  className="c0 c1"
+>
+  Hello
+</p>
+`;
+
+exports[`Paragraph truncate 1`] = `
+.c0 {
+  font-family: Roboto,'Noto Sans','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: #262D33;
+}
+
+.c1 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+<p
+  className="c0 c1"
 >
   Hello
 </p>

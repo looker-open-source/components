@@ -26,20 +26,12 @@
 
 import 'jest-styled-components'
 import React from 'react'
-import { createWithTheme, renderWithTheme } from '@looker/components-test-utils'
+import { renderWithTheme } from '@looker/components-test-utils'
 import { theme } from '@looker/design-tokens'
 import { screen } from '@testing-library/react'
 import { Link } from './Link'
 
 describe('Link', () => {
-  test('Snapshot', () => {
-    const component = createWithTheme(
-      <Link href="https://looker.com">Avocado</Link>
-    )
-    const tree = component.toJSON()
-    expect(tree).toMatchSnapshot()
-  })
-
   test('Underline', () => {
     renderWithTheme(<Link underline>My link</Link>)
     const link = screen.getByText('My link')

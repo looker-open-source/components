@@ -25,63 +25,37 @@
  */
 
 import React from 'react'
-import { createWithTheme } from '@looker/components-test-utils'
+import { assertSnapshot } from '@looker/components-test-utils'
 import { Heading } from './Heading'
 
-test('A default Heading', () => {
-  const component = createWithTheme(<Heading>🥑</Heading>)
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
-})
+describe('Heading', () => {
+  test('A default Heading', () => assertSnapshot(<Heading>🥑</Heading>))
 
-test('A <h1> Heading', () => {
-  const component = createWithTheme(<Heading as="h1">🥑</Heading>)
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
-})
+  test('A <h1> Heading', () => assertSnapshot(<Heading as="h1">🥑</Heading>))
 
-test('A <h1> Heading sized to <h2>', () => {
-  const component = createWithTheme(
-    <Heading as="h1" fontSize="xlarge">
-      🥑
-    </Heading>
-  )
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
-})
+  test('A <h1> Heading sized to <h2>', () =>
+    assertSnapshot(
+      <Heading as="h1" fontSize="xlarge">
+        🥑
+      </Heading>
+    ))
 
-test('A Heading to bold', () => {
-  const component = createWithTheme(
-    <Heading fontSize="large" fontWeight="bold">
-      🥑
-    </Heading>
-  )
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
-})
+  test('A Heading to bold', () =>
+    assertSnapshot(
+      <Heading fontSize="large" fontWeight="bold">
+        🥑
+      </Heading>
+    ))
 
-test('A Heading transformed', () => {
-  const component = createWithTheme(
-    <Heading textTransform="capitalize">🥑</Heading>
-  )
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
-})
+  test('A Heading transformed', () =>
+    assertSnapshot(<Heading textTransform="capitalize">🥑</Heading>))
 
-test('A Heading with variant', () => {
-  const component = createWithTheme(<Heading color="subdued">🥑</Heading>)
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
-})
+  test('A Heading with variant', () =>
+    assertSnapshot(<Heading color="subdued">🥑</Heading>))
 
-test('A Heading truncated', () => {
-  const component = createWithTheme(<Heading truncate>🥑</Heading>)
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
-})
+  test('A Heading truncated', () =>
+    assertSnapshot(<Heading truncate>🥑</Heading>))
 
-test('A Heading with multiline truncate', () => {
-  const component = createWithTheme(<Heading truncateLines={2}>🥑</Heading>)
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
+  test('A Heading with multiline truncate', () =>
+    assertSnapshot(<Heading truncateLines={2}>🥑</Heading>))
 })
