@@ -24,6 +24,8 @@
 
  */
 
+import React from 'react'
+import { ArrowDropDown, ArrowRight } from '@styled-icons/material'
 import { AccordionIndicatorProps } from '../../Accordion'
 
 export const indicatorDefaults: Required<
@@ -31,8 +33,8 @@ export const indicatorDefaults: Required<
 > = {
   indicatorGap: 'xxsmall',
   indicatorIcons: {
-    close: 'ArrowRight',
-    open: 'ArrowDropDown',
+    close: <ArrowRight />,
+    open: <ArrowDropDown />,
   },
   indicatorPosition: 'left',
 }

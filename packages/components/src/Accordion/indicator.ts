@@ -25,12 +25,11 @@
  */
 
 import { SpacingSizes } from '@looker/design-tokens'
-import { IconNames } from '@looker/icons'
-import { IconSize } from '../Icon'
+import { IconSize, IconType } from '../Icon'
 
 export type IndicatorIcons = {
-  close: IconNames
-  open: IconNames
+  close: IconType
+  open: IconType
 }
 
 export type AccordionIndicatorPosition = undefined | 'left' | 'right'

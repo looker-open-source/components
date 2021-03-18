@@ -25,6 +25,7 @@
  */
 import React, { useContext, forwardRef, Ref } from 'react'
 import styled from 'styled-components'
+import { ExpandLess, ExpandMore } from '@styled-icons/material-rounded'
 import { DataTableContext } from '../DataTableContext'
 import { Icon } from '../../Icon'
 import { Space } from '../../Layout/Space'
@@ -64,7 +65,7 @@ const DataTableHeaderCellLayout = forwardRef(
 
     const label = titleIcon ? (
       <Tooltip content={title}>
-        <Icon color="ui3" label={title} name={titleIcon} size="small" />
+        <Icon color="ui3" title={title} icon={titleIcon} size="small" />
       </Tooltip>
     ) : size && sizeInfersTruncate(size) ? (
       <Truncate width="auto">{title}</Truncate>
@@ -90,7 +91,7 @@ const DataTableHeaderCellLayout = forwardRef(
           {label}
           {sortDirection && (
             <Icon
-              name={sortDirection === 'asc' ? 'CaretUp' : 'CaretDown'}
+              icon={sortDirection === 'asc' ? <ExpandLess /> : <ExpandMore />}
               size="small"
             ></Icon>
           )}

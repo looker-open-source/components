@@ -26,6 +26,8 @@
 
 import { Story } from '@storybook/react/types-6-0'
 import React, { useMemo, useState, useEffect } from 'react'
+import { Favorite } from '@styled-icons/material'
+import { ChevronRight, ExpandMore } from '@styled-icons/material-rounded'
 import { Button } from '../../../Button'
 import { Dialog, DialogLayout } from '../../../Dialog'
 import { Icon } from '../../../Icon'
@@ -384,8 +386,14 @@ export const SelectMultiDemo = () => {
         mb="xlarge"
         indicator={({ isActive, isSelected }) => (
           <Icon
-            name={
-              isActive ? 'CaretRight' : isSelected ? 'Favorite' : 'CaretDown'
+            icon={
+              isActive ? (
+                <ChevronRight />
+              ) : isSelected ? (
+                <Favorite />
+              ) : (
+                <ExpandMore />
+              )
             }
           />
         )}

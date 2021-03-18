@@ -25,8 +25,8 @@
  */
 
 import { CompatibleHTMLProps } from '@looker/design-tokens'
-import { IconNames } from '@looker/icons'
 import React, { ReactNode } from 'react'
+import { IconType } from '../../Icon'
 import { MenuItem } from '../../Menu'
 
 export interface DataTableActionProps extends CompatibleHTMLProps<HTMLElement> {
@@ -34,7 +34,7 @@ export interface DataTableActionProps extends CompatibleHTMLProps<HTMLElement> {
    * I18n recommended: content that is user visible should be treated for i18n
    */
   detail?: ReactNode
-  icon?: IconNames
+  icon?: IconType
   /**
    * Determines if the DataTableAction is an <a/> or <button/> element
    * Note: The value passed into this prop is passed into the underlying MenuItem's itemRole prop

@@ -24,8 +24,8 @@
 
  */
 
-import styled, { css } from 'styled-components'
-import { Icon } from '../Icon'
+import { css } from 'styled-components'
+import { StyledIconBase } from '@styled-icons/styled-icon'
 import { ButtonProps } from './types'
 
 export const iconMargins = (props: ButtonProps) => {
@@ -58,10 +58,8 @@ export const iconMargins = (props: ButtonProps) => {
   }
 }
 
-export const ButtonIcon = styled(Icon)``
-
 export const buttonIcon = (props: ButtonProps) => css`
-  ${ButtonIcon} {
+  ${StyledIconBase} {
     ${iconMargins(props)}
   }
 `

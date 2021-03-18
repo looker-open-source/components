@@ -24,6 +24,24 @@
 
  */
 
+import { ChartArea, ChartBar, ChartBoxPlot, ChartTimeline } from '@looker/icons'
+import {
+  BarChart,
+  BubbleChart,
+  DonutLarge,
+  FilterList,
+  LineStyle,
+  Looks6,
+  Map,
+  MultilineChart,
+  PieChart,
+  ShowChart,
+  TableChart,
+  Toc,
+  WaterfallChart,
+} from '@styled-icons/material'
+import React from 'react'
+
 export const options = [
   { label: 'Apples', value: '1' },
   { label: 'Bananas', value: '2' },
@@ -84,22 +102,22 @@ export const cheeseOptions = [
 ]
 
 export const iconOptions = [
-  { icon: 'ChartArea', label: 'Area', value: 'area' },
+  { icon: <ChartArea />, label: 'Area', value: 'area' },
   { label: 'ChartNoIcon', value: 'noicon' },
-  { icon: 'ChartBar', label: 'Bar', value: 'bar' },
-  { icon: 'ChartBoxPlot', label: 'Box Plot', value: 'boxplot' },
-  { icon: 'ChartColumn', label: 'Column', value: 'column' },
-  { icon: 'ChartCustom', label: 'Custom', value: 'custom' },
-  { icon: 'ChartDonutMultiples', label: 'Donut', value: 'donut' },
-  { icon: 'ChartFunnel', label: 'Funnel', value: 'funnel' },
-  { icon: 'ChartLine', label: 'Line', value: 'line' },
-  { icon: 'ChartMap', label: 'Map', value: 'map' },
-  { icon: 'ChartPie', label: 'Pie', value: 'pie' },
-  { icon: 'ChartScatterplot', label: 'Scatter Plot', value: 'scatterplot' },
-  { icon: 'ChartSingleRecord', label: 'Single Record', value: 'singlerecord' },
-  { icon: 'ChartSingleValue', label: 'Single Value', value: 'singlevalue' },
-  { icon: 'ChartTable', label: 'Table', value: 'table' },
-  { icon: 'ChartTimeline', label: 'Timeline', value: 'timeline' },
-  { icon: 'ChartWaterfall', label: 'Waterfall', value: 'waterfall' },
-  { icon: 'ChartWordCloud', label: 'Word Cloud', value: 'wordcloud' },
+  { icon: <ChartBar />, label: 'Bar', value: 'bar' },
+  { icon: <ChartBoxPlot />, label: 'Box Plot', value: 'boxplot' },
+  { icon: <BarChart />, label: 'Column', value: 'column' },
+  { icon: <MultilineChart />, label: 'Custom', value: 'custom' },
+  { icon: <DonutLarge />, label: 'Donut', value: 'donut' },
+  { icon: <FilterList />, label: 'Funnel', value: 'funnel' },
+  { icon: <ShowChart />, label: 'Line', value: 'line' },
+  { icon: <Map />, label: 'Map', value: 'map' },
+  { icon: <PieChart />, label: 'Pie', value: 'pie' },
+  { icon: <BubbleChart />, label: 'Scatter Plot', value: 'scatterplot' },
+  { icon: <Toc />, label: 'Single Record', value: 'singlerecord' },
+  { icon: <Looks6 />, label: 'Single Value', value: 'singlevalue' },
+  { icon: <TableChart />, label: 'Table', value: 'table' },
+  { icon: <ChartTimeline />, label: 'Timeline', value: 'timeline' },
+  { icon: <WaterfallChart />, label: 'Waterfall', value: 'waterfall' },
+  { icon: <LineStyle />, label: 'Word Cloud', value: 'wordcloud' },
 ]

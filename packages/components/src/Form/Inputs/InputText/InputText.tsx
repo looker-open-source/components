@@ -24,9 +24,7 @@
 
  */
 
-import { useTranslation } from 'react-i18next'
 import omit from 'lodash/omit'
-import { IconNames } from '@looker/icons'
 import {
   omitStyledProps,
   space,
@@ -34,6 +32,8 @@ import {
   reset,
   layout,
 } from '@looker/design-tokens'
+import { StyledIconBase } from '@styled-icons/styled-icon'
+import { Error } from '@styled-icons/material'
 import React, { forwardRef, MouseEvent, ReactNode, Ref, useRef } from 'react'
 import styled, { css } from 'styled-components'
 import {
@@ -44,7 +44,7 @@ import {
 } from '../InputProps'
 import { innerInputStyle } from '../innerInputStyle'
 import { SimpleLayoutProps } from '../../../Layout/utils/simple'
-import { Icon } from '../../../Icon'
+import { IconType } from '../../../Icon'
 import { Span } from '../../../Text'
 import { targetIsButton, useForkedRef, useWrapEvent } from '../../../utils'
 import { InlineInputTextBase } from '../InlineInputText'
@@ -77,16 +77,14 @@ export interface InputTextProps extends InputTextBaseProps {
    * If JSX is used, it will displace the built-in validation icon
    */
   after?: ReactNode
-  iconAfter?: IconNames
-  iconAfterTitle?: string
+  iconAfter?: IconType
 
   /**
    * Content to place before the input
    * If a string is used, formatting will be automatically applied
    */
   before?: ReactNode
-  iconBefore?: IconNames
-  iconBeforeTitle?: string
+  iconBefore?: IconType
 }
 
 const InputTextLayout = forwardRef(
@@ -98,11 +96,9 @@ const InputTextLayout = forwardRef(
 
       before,
       iconBefore,
-      iconBeforeTitle,
 
       after,
       iconAfter,
-      iconAfterTitle,
 
       type = 'text',
       validationType,
@@ -120,7 +116,6 @@ const InputTextLayout = forwardRef(
     }: InputTextProps,
     forwardedRef: Ref<HTMLInputElement>
   ) => {
-    const { t } = useTranslation('InputText')
     const internalRef = useRef<null | HTMLInputElement>(null)
     const ref = useForkedRef<HTMLInputElement>(internalRef, forwardedRef)
 
@@ -169,11 +164,7 @@ const InputTextLayout = forwardRef(
 
     const iconBeforeOrPrefix = (iconBefore || typeof before === 'string') && (
       <InputTextContent pl="xxsmall">
-        {iconBefore ? (
-          <Icon name={iconBefore} title={iconBeforeTitle} size="small" />
-        ) : (
-          <Span fontSize="small">{before}</Span>
-        )}
+        {iconBefore || <Span fontSize="small">{before}</Span>}
       </InputTextContent>
     )
 
@@ -181,11 +172,7 @@ const InputTextLayout = forwardRef(
 
     const iconAfterOrSuffix = (iconAfter || typeof after === 'string') && (
       <InputTextContent pl="xsmall" pr="xxsmall">
-        {iconAfter ? (
-          <Icon name={iconAfter} title={iconAfterTitle} size="small" />
-        ) : (
-          <Span fontSize="small">{after}</Span>
-        )}
+        {iconAfter || <Span fontSize="small">{after}</Span>}
       </InputTextContent>
     )
 
@@ -194,12 +181,7 @@ const InputTextLayout = forwardRef(
         pl={after || iconAfter ? 'xxsmall' : 'xsmall'}
         pr="xxsmall"
       >
-        <Icon
-          color="critical"
-          name="Error"
-          title={t('Validation Error')}
-          size="small"
-        />
+        <ErrorIcon />
       </InputTextContent>
     )
 
@@ -273,6 +255,16 @@ export const inputTextDisabled = css`
   }
 `
 
+const InputIconSize = css`
+  height: ${({ theme }) => theme.sizes.small};
+  width: ${({ theme }) => theme.sizes.small};
+`
+
+export const ErrorIcon = styled(Error)`
+  ${InputIconSize}
+  color: ${({ theme }) => theme.colors.critical};
+`
+
 export const InputTextContent = styled.div<SpaceProps>`
   ${space}
   align-items: center;
@@ -280,6 +272,15 @@ export const InputTextContent = styled.div<SpaceProps>`
   display: flex;
   height: 100%;
   pointer-events: none;
+
+  ${StyledIconBase} {
+    color: ${(props) => props.theme.colors.text1};
+    ${InputIconSize}
+  }
+
+  ${ErrorIcon} {
+    color: ${({ theme }) => theme.colors.critical};
+  }
 `
 
 export const inputTextValidation = css<{ validationType?: 'error' }>`

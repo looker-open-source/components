@@ -24,6 +24,7 @@
 
  */
 
+import { AddCircle, Delete } from '@styled-icons/material'
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import { Button } from './Button'
@@ -57,13 +58,13 @@ Disabled.args = {
 export const IconBefore = Template.bind({})
 IconBefore.args = {
   ...Basic.args,
-  iconBefore: 'CircleAdd',
+  iconBefore: <AddCircle />,
 }
 
 export const IconAfter = Template.bind({})
 IconAfter.args = {
   ...Basic.args,
-  iconAfter: 'Trash',
+  iconAfter: <Delete />,
 }
 
 export const FullWidth = Template.bind({})

@@ -25,6 +25,7 @@
  */
 
 import React, { useState } from 'react'
+import { Add, Check } from '@styled-icons/material'
 import { MultiFunctionButton } from './MultiFunctionButton'
 import { Button, ButtonTransparent, IconButton } from '.'
 
@@ -42,7 +43,7 @@ export const CopyToClipboard = () => {
   }
 
   const alternateCopyButton = (
-    <ButtonTransparent iconBefore="Check" size="large">
+    <ButtonTransparent iconBefore={<Check />} size="large">
       Copied!
     </ButtonTransparent>
   )
@@ -70,7 +71,7 @@ export const ComponentSize = () => {
       }
       swap={change}
     >
-      <IconButton onClick={handleSwap} icon="Plus" label="label" />
+      <IconButton onClick={handleSwap} icon={<Add />} label="label" />
     </MultiFunctionButton>
   )
 }

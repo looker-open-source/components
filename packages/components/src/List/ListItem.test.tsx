@@ -28,8 +28,23 @@ import 'jest-styled-components'
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { fireEvent, configure, screen } from '@testing-library/react'
+import { Beaker } from '@looker/icons'
 
 import { ListItem } from './ListItem'
+
+const globalConsole = global.console
+const warnMock = jest.fn()
+
+beforeEach(() => {
+  jest.useFakeTimers()
+  global.console = ({
+    warn: warnMock,
+  } as unknown) as Console
+})
+
+afterEach(() => {
+  global.console = globalConsole
+})
 
 describe('ListItem', () => {
   test('renders children', () => {
@@ -53,7 +68,7 @@ describe('ListItem', () => {
 
   test('renders icon', () => {
     const { getByText } = renderWithTheme(
-      <ListItem icon="Beaker">Icon</ListItem>
+      <ListItem icon={<Beaker />}>Icon</ListItem>
     )
     expect(getByText('Icon')).toBeVisible()
   })
@@ -61,7 +76,7 @@ describe('ListItem', () => {
   test('renders artwork', () => {
     const { getByTitle } = renderWithTheme(
       <ListItem
-        iconArtwork={
+        icon={
           <svg xmlns="http://www.w3.org/2000/svg">
             <title>SVG Title Here</title>
           </svg>
@@ -195,5 +210,14 @@ describe('ListItem', () => {
     expect(queryByText('Detail')).not.toBeInTheDocument()
     fireEvent.mouseEnter(getByText('Label'), { bubbles: true })
     expect(queryByText('Detail')).toBeInTheDocument()
+  })
+
+  test('warns on disabled link', () => {
+    renderWithTheme(
+      <ListItem role="link" disabled>
+        Disabled but not
+      </ListItem>
+    )
+    expect(warnMock.mock.calls).toMatchInlineSnapshot(`Array []`)
   })
 })

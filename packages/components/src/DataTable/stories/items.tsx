@@ -25,6 +25,7 @@
  */
 
 import React, { ReactNode } from 'react'
+import { Delete } from '@styled-icons/material'
 import { data as mockData, CheeseData } from '../../__mocks__/DataTable/data'
 import { Link } from '../../Link'
 import { Status } from '../../Status'
@@ -44,7 +45,11 @@ export const actions = (
 )
 
 const actionPrimary = (
-  <IconButton icon="Trash" label="Trash It" onClick={() => alert('Trash it')} />
+  <IconButton
+    icon={<Delete />}
+    label="Trash It"
+    onClick={() => alert('Trash it')}
+  />
 )
 
 export const itemBuilder = (
@@ -94,7 +99,7 @@ export const itemBuilder = (
                   ? 'warn'
                   : 'positive'
               }
-              label={status}
+              title={status}
               size="xsmall"
             />
           </Tooltip>

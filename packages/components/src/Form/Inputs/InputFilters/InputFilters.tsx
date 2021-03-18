@@ -28,6 +28,7 @@ import { useTranslation } from 'react-i18next'
 import omit from 'lodash/omit'
 import styled from 'styled-components'
 import React, { FC, useMemo, useState, useRef } from 'react'
+import { Close, FilterList } from '@styled-icons/material'
 import { Select, SelectOptionObject } from '../Select'
 import { InputText } from '../InputText'
 import { Icon } from '../../../Icon'
@@ -101,7 +102,13 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
   return (
     <div className={className} onClick={focusInput}>
       {!hideFilterIcon && (
-        <Icon color="ui4" mr="xsmall" mt="xxsmall" name="Filter" size={20} />
+        <Icon
+          color="ui4"
+          mr="xsmall"
+          mt="xxsmall"
+          icon={<FilterList />}
+          size={20}
+        />
       )}
       <ChipWrapper>
         {assignedFilters.map((filter, i) => {
@@ -190,7 +197,7 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
       </ChipWrapper>
       {isClearable && (
         <IconButton
-          icon="Close"
+          icon={<Close />}
           label={t('Clear Filters')}
           ml="auto"
           mt="xxsmall"
