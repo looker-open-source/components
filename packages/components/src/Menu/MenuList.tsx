@@ -28,6 +28,7 @@ import { width, WidthProps } from '@looker/design-tokens'
 import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
 import { List, ListProps } from '../List'
+import { Divider } from '../Divider'
 import { MenuDivider } from './MenuDivider'
 import { MenuItem } from './MenuItem'
 import { NestedMenuProvider } from './NestedMenuProvider'
@@ -57,7 +58,8 @@ export const MenuList = styled(MenuListInternal)`
 
   > :first-child {
     margin-top: ${({ theme }) => theme.space.xsmall};
-    hr {
+
+    ${Divider} {
       display: none;
     }
   }
@@ -70,7 +72,7 @@ export const MenuList = styled(MenuListInternal)`
   > :last-child {
     margin-bottom: ${({ theme }) => theme.space.xsmall};
 
-    hr {
+    ${Divider} {
       display: none;
     }
   }
