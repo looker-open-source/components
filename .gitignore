@@ -17,7 +17,7 @@ coverage
 docs/v*
 docs/latest
 docs/canary
-packages/icons/src/generated
+packages/icons/src
 playground/dist
 storybook-static
 www/public
