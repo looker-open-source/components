@@ -118,4 +118,8 @@ const MenuItemInternal = forwardRef(
 
 MenuItemInternal.displayName = 'MenuItemInternal'
 
-export const MenuItem = styled(MenuItemInternal)``
+export const MenuItem = styled(MenuItemInternal)`
+  &:last-child {
+    margin-bottom: ${({ theme }) => theme.space.xsmall};
+  }
+`

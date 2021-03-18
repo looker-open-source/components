@@ -60,8 +60,4 @@ export const MenuList = styled(MenuListInternal)`
   > *:first-child {
     margin-top: ${({ theme }) => theme.space.xsmall};
   }
-
-  > *:last-child {
-    margin-bottom: ${({ theme }) => theme.space.xsmall};
-  }
 `
