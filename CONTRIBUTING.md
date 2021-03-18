@@ -41,9 +41,13 @@ We squash Pull Requests (all commits in a pull request show up in our `main` bra
 
 So we use Conventional Commit style Pull Request titles:
 
-```
-<type>[optional scope]: <description>
-```
+`<type>[optional scope]: <description>`
+
+Examples:
+
+`fix(Button): Fixed support for `aria-\*` attributes`
+`feat(NewComponentName): Component to support exciting new thing`
+`chore(deps): Updated package dependency X from 1.0.2 to 1.0.6`
 
 #### Types
 
