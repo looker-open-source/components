@@ -228,7 +228,8 @@ const ComboboxListInternal = forwardRef(
       // used in InputTimeSelect for managing very long lists
 
       const setListClientRectOnce = once((containerElement: Element) => {
-        setListClientRect?.(containerElement.getBoundingClientRect())
+        setListClientRect &&
+          setListClientRect(containerElement.getBoundingClientRect())
       })
 
       const wait = 50

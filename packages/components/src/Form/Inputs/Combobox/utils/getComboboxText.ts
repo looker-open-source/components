@@ -26,20 +26,15 @@
 
 import { ComboboxOptionObject } from '../types'
 
-export const isComboboxOptionObject = (option?: {
-  value?: string
-}): option is ComboboxOptionObject =>
-  option ? option.value !== undefined : false
-
 export function getComboboxText(
   value?: string | ComboboxOptionObject,
-  options?: Array<{ value?: string }>
+  options?: ComboboxOptionObject[]
 ): string {
   if (value === undefined) return ''
   if (typeof value === 'string') {
     if (options && options.length > 0) {
       const currentOption = options.find((option) => option.value === value)
-      if (isComboboxOptionObject(currentOption)) {
+      if (currentOption) {
         return getComboboxText(currentOption)
       }
     }

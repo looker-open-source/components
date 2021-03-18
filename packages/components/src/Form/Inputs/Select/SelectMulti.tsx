@@ -108,8 +108,8 @@ const SelectMultiComponent = forwardRef(
     ref: Ref<HTMLInputElement>
   ) => {
     const { flatOptions, navigationOptions } = useFlatOptions(options)
-    const optionValues = getOptions(values, flatOptions)
-    const defaultOptionValues = getOptions(defaultValues, flatOptions)
+    const optionValues = getOptions(values, navigationOptions)
+    const defaultOptionValues = getOptions(defaultValues, navigationOptions)
 
     function handleChange(options: SelectOptionObject[] = []) {
       const newValues = options && options.map((option) => option.value)

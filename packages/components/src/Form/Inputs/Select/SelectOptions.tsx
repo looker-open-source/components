@@ -49,7 +49,6 @@ import {
   ComboboxOptionIndicator,
   ComboboxOptionIndicatorProps,
   ComboboxOptionText,
-  isComboboxOptionObject,
 } from '../Combobox'
 import { FlatOption, SelectOptionObject, SelectOptionProps } from './types'
 import { optionsHaveIcons, notInOptions } from './utils/options'
@@ -167,37 +166,6 @@ const SelectOptionGroupTitle = styled(Heading).attrs<HeadingProps>(() => ({
   padding-top: ${({ theme }) => theme.space.xxsmall};
 `
 
-const renderOptions = (
-  options: FlatOption[],
-  keyPrefix: string,
-  isMulti: boolean,
-  index: number
-): ReactNode[] => {
-  const option = options[0]
-
-  if (!option) return []
-
-  let item = <ListDivider key={`divider-${keyPrefix}-${index}`} />
-  if (isComboboxOptionObject(option)) {
-    const OptionLayoutToUse = isMulti ? MultiOptionLayout : OptionLayout
-    item = <OptionLayoutToUse option={option} key={`${keyPrefix}-${index}`} />
-  } else if (option.label !== undefined) {
-    item = (
-      <SelectOptionGroupTitle
-        isMulti={isMulti}
-        key={`header-${keyPrefix}-${index}`}
-      >
-        <ComboboxOptionIndicator indicator={isMulti && ' '} />
-        {option.label}
-      </SelectOptionGroupTitle>
-    )
-  }
-  return [
-    item,
-    ...renderOptions(options.slice(1), keyPrefix, isMulti, index + 1),
-  ]
-}
-
 export interface SelectOptionsBaseProps {
   /**
    * Options may be flat or grouped, label is option, without it the value is used
@@ -270,7 +238,9 @@ export const SelectOptions = (props: SelectOptionsProps) => {
   )
   const keyPrefix = useID(flatOptions?.length.toString())
 
-  const hasIcons = useMemo(() => optionsHaveIcons(flatOptions), [flatOptions])
+  const hasIcons = useMemo(() => optionsHaveIcons(navigationOptions), [
+    navigationOptions,
+  ])
 
   const optionsToRender = flatOptions ? flatOptions.slice(start, end + 1) : []
 
@@ -292,7 +262,7 @@ export const SelectOptions = (props: SelectOptionsProps) => {
 
   const createOption = isFilterable && showCreate && (
     <SelectCreateOption
-      flatOptions={flatOptions}
+      options={navigationOptions}
       formatLabel={formatCreateLabel}
       noOptions={noOptions}
       isMulti={isMulti}
@@ -314,11 +284,16 @@ export const SelectOptions = (props: SelectOptionsProps) => {
         ? [
             ...optionsToRender.map((option, index) => {
               const key = `${keyPrefix}-${start + index}`
-              if (isComboboxOptionObject(option)) {
+              if (option.value) {
                 const OptionLayoutToUse = isMulti
                   ? MultiOptionLayout
                   : OptionLayout
-                return <OptionLayoutToUse option={option} key={key} />
+                return (
+                  <OptionLayoutToUse
+                    option={option as SelectOptionObject}
+                    key={key}
+                  />
+                )
               } else if (option.label !== undefined) {
                 return (
                   <SelectOptionGroupTitle isMulti={isMulti} key={key}>
@@ -349,14 +324,14 @@ export const SelectOptions = (props: SelectOptionsProps) => {
 }
 
 interface SelectCreateOptionProps {
-  flatOptions?: FlatOption[]
+  options?: SelectOptionObject[]
   noOptions: ReactNode
   formatLabel?: (inputText: string) => ReactNode
   isMulti?: boolean
 }
 
 const SelectCreateOption = ({
-  flatOptions,
+  options,
   noOptions,
   formatLabel,
   isMulti,
@@ -372,11 +347,11 @@ const SelectCreateOption = ({
       : data.option
       ? [data.option]
       : []
-    return notInOptions(currentOptions, flatOptions, inputValue)
-  }, [isMulti, data.option, dataMulti.options, flatOptions, inputValue])
+    return notInOptions(currentOptions, options, inputValue)
+  }, [isMulti, data.option, dataMulti.options, options, inputValue])
 
   if (!shouldShow || !inputValue) {
-    if (!flatOptions || flatOptions.length === 0) return <>{noOptions}</>
+    if (!options || options.length === 0) return <>{noOptions}</>
     return null
   }
 

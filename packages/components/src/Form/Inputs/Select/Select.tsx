@@ -123,11 +123,11 @@ const SelectComponent = forwardRef(
     ref: Ref<HTMLInputElement>
   ) => {
     const { flatOptions, navigationOptions } = useFlatOptions(options)
-    const optionValue = getOption(value, flatOptions)
+    const optionValue = getOption(value, navigationOptions)
     const nullDefault = (isClearable || placeholder) && !defaultValue
     const defaultOptionValue = nullDefault
       ? undefined
-      : getOption(defaultValue, flatOptions) ||
+      : getOption(defaultValue, navigationOptions) ||
         (options && getFirstOption(options))
 
     function handleChange(option?: SelectOptionObject) {
@@ -164,7 +164,7 @@ const SelectComponent = forwardRef(
       >
         <ComboboxInput
           {...ariaProps}
-          before={<SelectInputIcon flatOptions={flatOptions} />}
+          before={<SelectInputIcon options={navigationOptions} />}
           disabled={disabled}
           autoFocus={autoFocus}
           placeholder={placeholder}

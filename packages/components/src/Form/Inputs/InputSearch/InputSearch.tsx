@@ -131,7 +131,7 @@ const InputSearchLayout = forwardRef(
     const valueToUse = isControlled ? controlledValue : value
 
     const { flatOptions, navigationOptions } = useFlatOptions(options)
-    const matchingOption = getMatchingOption(valueToUse, flatOptions)
+    const matchingOption = getMatchingOption(valueToUse, navigationOptions)
     const optionValue = matchingOption || { value: '' }
 
     function updateValue(newValue: string) {
