@@ -26,6 +26,7 @@
 
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
+import { Delete, GridView } from '@styled-icons/material'
 import { Button } from '../Button'
 import { MessageBar, MessageBarProps } from './MessageBar'
 
@@ -77,7 +78,10 @@ export const CustomActionsDeux = Template.bind({})
 CustomActionsDeux.args = {
   ...Positive.args,
   primaryAction: (
-    <Button onClick={() => alert('Primary Action Taken')} iconBefore="Trash">
+    <Button
+      onClick={() => alert('Primary Action Taken')}
+      iconBefore={<Delete />}
+    >
       Dismiss
     </Button>
   ),
@@ -85,7 +89,7 @@ CustomActionsDeux.args = {
     <Button
       onClick={() => alert('Secondary Action Taken')}
       color="neutral"
-      iconBefore="ViewGrid"
+      iconBefore={<GridView />}
     >
       Return To Menu
     </Button>

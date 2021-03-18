@@ -24,53 +24,32 @@
 
  */
 
-import { IconNames } from '@looker/icons'
-import React, { ReactNode, useContext } from 'react'
+import React, { useContext } from 'react'
 import { Icon } from '../../../Icon'
 import { ComboboxContext } from '../Combobox'
-import { getSelectOptionIconProps } from './SelectOptions'
 import { SelectOptionProps } from './types'
 import { flattenOptions } from './utils/options'
 
-export function getOptionIcon(
-  value: string,
-  options: SelectOptionProps[]
-): IconNames | ReactNode {
+export function getOptionIcon(value: string, options: SelectOptionProps[]) {
   const flattenedOptions = options && flattenOptions(options)
   if (value && flattenedOptions) {
     const option = flattenedOptions.find((opt) => opt.value === value)
-    return option && option.icon
+    return option?.icon ? <Icon color="text1" icon={option.icon} /> : null
   }
-  return undefined
+  return null
 }
 
 export interface SelectInputIconProps {
   options?: SelectOptionProps[]
 }
 
-export function SelectInputIcon({ options }: SelectInputIconProps) {
+export const SelectInputIcon = ({ options }: SelectInputIconProps) => {
   const {
     data: { option, inputValue },
   } = useContext(ComboboxContext)
   if (!options || !option) return null
+  // Don't show the icon if the user is filtering
+  if (option.label !== inputValue) return null
 
-  if (option.label !== inputValue) {
-    // Don't show the icon if the user is filtering
-    return null
-  }
-
-  const icon = option && getOptionIcon(option.value, options)
-  return (
-    <>
-      {icon && (
-        <Icon
-          {...getSelectOptionIconProps(icon)}
-          size="small"
-          ml="xxsmall"
-          color="text1"
-          data-testid="input-icon"
-        />
-      )}
-    </>
-  )
+  return getOptionIcon(option.value, options)
 }

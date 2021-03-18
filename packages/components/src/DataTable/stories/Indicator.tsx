@@ -25,6 +25,7 @@
  */
 
 import { Story } from '@storybook/react/types-6-0'
+import { PersonOutline } from '@styled-icons/material'
 import React from 'react'
 import { AvatarIcon } from '../../Avatar'
 import { DataTable, DataTableProps, DataTableCell, DataTableItem } from '..'
@@ -33,19 +34,19 @@ const data = [
   {
     description: 'User',
     id: '1',
-    indicator: <AvatarIcon color="key" icon="User" />,
+    indicator: <AvatarIcon color="key" icon={<PersonOutline />} />,
     name: 'Gorgonzola',
   },
   {
     description: 'User',
     id: '2',
-    indicator: <AvatarIcon color="key" icon="User" />,
+    indicator: <AvatarIcon color="key" icon={<PersonOutline />} />,
     name: 'Cheddar',
   },
   {
     description: 'User',
     id: '3',
-    indicator: <AvatarIcon color="key" icon="User" />,
+    indicator: <AvatarIcon color="key" icon={<PersonOutline />} />,
     name: `Blue`,
   },
 ]

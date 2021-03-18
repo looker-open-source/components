@@ -1,6 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Icon Default 1`] = `
+.c1 {
+  display: inline-block;
+  vertical-align: middle;
+  overflow: hidden;
+}
+
 .c0 {
   font-family: Roboto,'Noto Sans','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   width: 1.5rem;
@@ -8,34 +14,47 @@ exports[`Icon Default 1`] = `
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 .c0 svg {
-  height: 100%;
-  width: 100%;
+  vertical-align: initial;
 }
 
 <div
+  aria-hidden={true}
   className="c0"
   role="img"
 >
   <svg
-    aria-hidden={true}
+    aria-hidden="true"
+    className="c1"
     fill="currentColor"
-    height="100%"
+    focusable="false"
     viewBox="0 0 24 24"
-    width="100%"
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
+      d="M0 0h24v24H0z"
+      fill="none"
+    />
+    <path
       d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
-      fill="currentColor"
     />
   </svg>
 </div>
 `;
 
 exports[`Icon Explicit size - integer as pixels 1`] = `
+.c1 {
+  display: inline-block;
+  vertical-align: middle;
+  overflow: hidden;
+}
+
 .c0 {
   font-family: Roboto,'Noto Sans','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   width: 12px;
@@ -43,34 +62,47 @@ exports[`Icon Explicit size - integer as pixels 1`] = `
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 .c0 svg {
-  height: 100%;
-  width: 100%;
+  vertical-align: initial;
 }
 
 <div
+  aria-hidden={true}
   className="c0"
   role="img"
 >
   <svg
-    aria-hidden={true}
+    aria-hidden="true"
+    className="c1"
     fill="currentColor"
-    height="100%"
+    focusable="false"
     viewBox="0 0 24 24"
-    width="100%"
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
+      d="M0 0h24v24H0z"
+      fill="none"
+    />
+    <path
       d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
-      fill="currentColor"
     />
   </svg>
 </div>
 `;
 
 exports[`Icon Explicit size - string 1`] = `
+.c1 {
+  display: inline-block;
+  vertical-align: middle;
+  overflow: hidden;
+}
+
 .c0 {
   font-family: Roboto,'Noto Sans','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   width: 1rem;
@@ -78,34 +110,47 @@ exports[`Icon Explicit size - string 1`] = `
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 .c0 svg {
-  height: 100%;
-  width: 100%;
+  vertical-align: initial;
 }
 
 <div
+  aria-hidden={true}
   className="c0"
   role="img"
 >
   <svg
-    aria-hidden={true}
+    aria-hidden="true"
+    className="c1"
     fill="currentColor"
-    height="100%"
+    focusable="false"
     viewBox="0 0 24 24"
-    width="100%"
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
+      d="M0 0h24v24H0z"
+      fill="none"
+    />
+    <path
       d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
-      fill="currentColor"
     />
   </svg>
 </div>
 `;
 
 exports[`Icon Styled system size 1`] = `
+.c1 {
+  display: inline-block;
+  vertical-align: middle;
+  overflow: hidden;
+}
+
 .c0 {
   font-family: Roboto,'Noto Sans','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;
   width: 2rem;
@@ -113,28 +158,35 @@ exports[`Icon Styled system size 1`] = `
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 .c0 svg {
-  height: 100%;
-  width: 100%;
+  vertical-align: initial;
 }
 
 <div
+  aria-hidden={true}
   className="c0"
   role="img"
 >
   <svg
-    aria-hidden={true}
+    aria-hidden="true"
+    className="c1"
     fill="currentColor"
-    height="100%"
+    focusable="false"
     viewBox="0 0 24 24"
-    width="100%"
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
+      d="M0 0h24v24H0z"
+      fill="none"
+    />
+    <path
       d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
-      fill="currentColor"
     />
   </svg>
 </div>

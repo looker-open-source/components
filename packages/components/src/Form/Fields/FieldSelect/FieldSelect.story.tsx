@@ -25,6 +25,7 @@
  */
 
 import { Story } from '@storybook/react/types-6-0'
+import { Favorite } from '@styled-icons/material'
 import chunk from 'lodash/chunk'
 import React, {
   FormEvent,
@@ -267,7 +268,7 @@ export const SelectContent = () => {
         ]}
         aria-label="Fruits"
         defaultValue="1"
-        indicator={<Icon name="Favorite" />}
+        indicator={<Icon icon={<Favorite />} />}
       />
       <FieldSelect
         label="Test option re-render bug"

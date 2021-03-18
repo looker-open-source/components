@@ -30,6 +30,7 @@ import {
   omitStyledProps,
   TypographyProps,
 } from '@looker/design-tokens'
+import { Close } from '@styled-icons/material'
 import noop from 'lodash/noop'
 import isUndefined from 'lodash/isUndefined'
 import React, {
@@ -131,7 +132,7 @@ function getPrimaryActionButton(
         <IconButton
           id={id ? `${id}-iconButton` : undefined}
           onClick={onClick}
-          icon="Close"
+          icon={<Close />}
           size="small"
           label={`${t('DismissIntent', { intent: getIntentLabel(t, intent) })}`}
         />

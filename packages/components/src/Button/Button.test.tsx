@@ -26,27 +26,41 @@
 
 import { renderWithTheme } from '@looker/components-test-utils'
 import React from 'react'
-import { fireEvent } from '@testing-library/react'
+import { fireEvent, screen } from '@testing-library/react'
 import { Button } from './Button'
 
-test('Button accepts a className prop', () => {
-  const { container } = renderWithTheme(
-    <Button className="foo">button with class</Button>
-  )
-  expect(container.firstChild).toHaveClass('foo')
-})
+describe('Button', () => {
+  test('accepts a className prop', () => {
+    const { container } = renderWithTheme(
+      <Button className="foo">button with class</Button>
+    )
+    expect(container.firstChild).toHaveClass('foo')
+  })
 
-test('Button Focus: renders outline when tabbing into focus, but not when clicking', () => {
-  const { getByText } = renderWithTheme(
-    <>
-      <Button>button</Button>
-      <Button>focus</Button>
-    </>
-  )
+  test('focus-visible: renders outline when tabbing into focus, but not when clicking', () => {
+    const { getByText } = renderWithTheme(
+      <>
+        <Button>button</Button>
+        <Button>focus</Button>
+      </>
+    )
 
-  fireEvent.click(getByText('button'))
-  expect(getByText('focus')).toMatchSnapshot()
+    fireEvent.click(getByText('button'))
+    expect(getByText('focus')).toMatchSnapshot()
 
-  fireEvent.keyUp(getByText('focus'), { charCode: 9, code: 9, key: 'Tab' })
-  expect(getByText('focus')).toMatchSnapshot()
+    fireEvent.keyUp(getByText('focus'), { charCode: 9, code: 9, key: 'Tab' })
+    expect(getByText('focus')).toMatchSnapshot()
+  })
+
+  test('size', () => {
+    renderWithTheme(
+      <>
+        <Button size="xxsmall">Xsmall Button</Button>
+        <Button size="large">Large Button</Button>
+      </>
+    )
+
+    expect(screen.getByText('Xsmall Button')).toBeInTheDocument()
+    expect(screen.getByText('Large Button')).toBeInTheDocument()
+  })
 })
