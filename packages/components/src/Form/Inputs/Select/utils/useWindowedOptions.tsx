@@ -59,6 +59,7 @@ export function useWindowedOptions(
     data: { navigationOption },
     listClientRect,
     listScrollPosition,
+    isScrollingRef,
     optionsRef,
   } = contextToUse
 
@@ -114,7 +115,9 @@ export function useWindowedOptions(
   let scrollToLast = false
   if (flatOptions?.length && navigationOptions?.length && navigationOption) {
     scrollToFirst =
-      start > 0 && navigationOption.value === navigationOptions[0].value
+      !isScrollingRef?.current &&
+      start > 0 &&
+      navigationOption.value === navigationOptions[0].value
     scrollToLast =
       end < flatOptions.length - 1 &&
       navigationOption.value ===

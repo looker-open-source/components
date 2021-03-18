@@ -231,29 +231,25 @@ const ComboboxListInternal = forwardRef(
         setListClientRect?.(containerElement.getBoundingClientRect())
       })
 
-      const throttledScrollStateUpdate = throttle(
-        (containerElement: Element) => {
-          setListScrollPosition?.(containerElement.scrollTop)
-        },
-        50
-      )
-
-      const scrollListener = () => {
+      const wait = 50
+      let t: number
+      const scrollListener = throttle(() => {
         if (contentContainer) {
           setListClientRectOnce(contentContainer)
+          setListScrollPosition?.(contentContainer.scrollTop)
 
-          // Prevents issue where keyboard nav & hover battle over highlighting an option
-          // When the user keyboard navigates to an option outside the scroll window
-          // the menu scrolls to that option – if the mouse happens to be resting over the menu
-          // a mouseenter event is triggered on the respective option
-          // (see handleMouseEnter in useOptionEvents.ts)
+          // Solves issue where scrolling (regular or due to keyboard navigating)
+          // while the mouse is over the list triggers unintentional mouseenter
+          // causing the wrong option to get highlighted, and, if windowing is on
+          // and this option leaves the window, it gets pulled back in via
+          // scrollIntoView()
           if (isScrollingRef) isScrollingRef.current = true
-          window.requestAnimationFrame(() => {
+          clearTimeout(t)
+          t = setTimeout(() => {
             if (isScrollingRef) isScrollingRef.current = false
-          })
-          throttledScrollStateUpdate(contentContainer)
+          }, wait + 1)
         }
-      }
+      }, wait)
 
       if (contentContainer) {
         contentContainer.addEventListener('scroll', scrollListener)

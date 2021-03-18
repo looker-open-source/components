@@ -72,7 +72,7 @@ export function useOptionEvents<
   const handleMouseEnter = () => {
     // Wait for isScrollingRef.current to be updated in ComboboxList scrollHandler
     // (mouseenter event is fired before the scroll event)
-    window.requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
       if (isScrollingRef?.current) return
       const option = { label, value }
       transition && transition(ComboboxActionType.NAVIGATE, { option })
