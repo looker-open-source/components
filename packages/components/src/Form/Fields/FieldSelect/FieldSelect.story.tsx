@@ -121,6 +121,7 @@ const options1kGrouped = options1k.reduce(
   },
   []
 )
+options1kGrouped[3].label = ''
 
 export const GroupedWindowing = Template.bind({})
 GroupedWindowing.args = {

@@ -217,7 +217,7 @@ export const SelectOptions = (props: SelectOptionsProps) => {
     isFilterable,
     showCreate,
     formatCreateLabel,
-    isMulti = false,
+    isMulti,
     noOptionsLabel = noOptionsLabelText,
     windowedOptions,
     isLoading,
@@ -242,8 +242,6 @@ export const SelectOptions = (props: SelectOptionsProps) => {
     navigationOptions,
   ])
 
-  const optionsToRender = flatOptions ? flatOptions.slice(start, end + 1) : []
-
   if (isLoading) {
     return (
       <EmptyListItem>
@@ -252,6 +250,7 @@ export const SelectOptions = (props: SelectOptionsProps) => {
     )
   }
 
+  const optionsToRender = flatOptions ? flatOptions.slice(start, end + 1) : []
   const OptionLayoutToUse = isMulti ? MultiOptionLayout : OptionLayout
 
   const noOptions = (
@@ -283,6 +282,7 @@ export const SelectOptions = (props: SelectOptionsProps) => {
       {optionsToRender && optionsToRender.length > 0
         ? [
             ...optionsToRender.map((option, index) => {
+              // Add start to index to keep key consistent if options are windowed
               const key = `${keyPrefix}-${start + index}`
               if (option.value) {
                 const OptionLayoutToUse = isMulti

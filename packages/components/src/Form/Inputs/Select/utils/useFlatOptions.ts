@@ -37,6 +37,12 @@ export type FlattenOptions = {
   (options: SelectOptionProps[], includeGroups: boolean): FlatOption[]
 }
 
+/**
+ * Takes potentially grouped options and returns 2 arrays of flattened options:
+ * 1) flatOptions that includes dividers & headers (used for windowing), and
+ * 2) navigationOptions that only includes options with values
+ * @param options
+ */
 export const useFlatOptions = (options?: SelectOptionProps[]) => {
   return useMemo(() => {
     if (!options)
@@ -52,8 +58,12 @@ export const useFlatOptions = (options?: SelectOptionProps[]) => {
       ) => {
         const optionAsGroup = option as SelectOptionGroupProps
         if (optionAsGroup.options) {
-          // Include the divider & header as pseudo options for windowing purposes
-          const groupPseudoOptions = [{}, { label: optionAsGroup.label }]
+          // Include the divider
+          const groupPseudoOptions = [{}]
+          if (optionAsGroup.label) {
+            // ...and header as pseudo options for windowing purposes
+            groupPseudoOptions.push({ label: optionAsGroup.label })
+          }
           return {
             flatOptions: [
               ...acc.flatOptions,
