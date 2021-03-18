@@ -73,8 +73,8 @@ Buttons can have an icon before or after their content, using the `iconBefore` a
 
 ```jsx
 <Space>
-  <Button iconBefore="CircleAdd">Add To Cart</Button>
-  <Button iconAfter="Trash" color="critical">
+  <Button iconBefore={<AddCircle />}>Add To Cart</Button>
+  <Button iconAfter={<Delete />} color="critical">
     Delete
   </Button>
 </Space>

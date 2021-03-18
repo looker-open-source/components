@@ -14,11 +14,11 @@ An icon can optionally be assigned to each item via the `icon` property.
 
 ```jsx
 <MenuList>
-  <MenuItem icon="Home">Home</MenuItem>
+  <MenuItem icon={<Home />}>Home</MenuItem>
   <MenuItem
     itemRole="link"
     target="_blank"
-    icon="Public"
+    icon={<Public />}
     href="https://google.com"
   >
     Away
@@ -32,24 +32,24 @@ Use the `detail` and/or `description` prop to provide extra explanatory informat
 
 ```jsx
 <MenuList>
-  <MenuItem detail="⌘⇧↵" description="this is the description" icon="LogoRings">
+  <MenuItem detail="⌘⇧↵" description="this is the description" icon={<LogoRings />}>
     Looker
   </MenuItem>
-  <MenuItem description="this is the description" icon="Validate">
+  <MenuItem description="this is the description" icon={<VerifiedUser />}>
     Validate
   </MenuItem>
-  <MenuItem detail="⌘⇧↵" icon="ChartPie">
+  <MenuItem detail="⌘⇧↵" icon={<PieChart />}>
     Pizza
   </MenuItem>
 </MenuList>
 <Divider />
 <MenuList>
-  <MenuItem description="this is the description"icon="Home">Home</MenuItem>
+  <MenuItem description="this is the description"icon={<Home />}>Home</MenuItem>
   <MenuItem
     detail="⌘⇧↵"
     href="https://google.com"
     itemRole="link"
-    icon="Public"
+    icon={<Public />}
     target="_blank"
   >
     Away
@@ -79,9 +79,9 @@ To implement a tooltip on a `MenuItem`, wrap the `MenuItem` in a `Tooltip` eleme
 
 ```jsx
 <MenuList>
-  <MenuItem icon="LogoRings">Looker</MenuItem>
-  <MenuItem icon="Validate">Validate</MenuItem>
-  <MenuItem icon="ChartPie">Pizza</MenuItem>
+  <MenuItem icon={<LogoRings />}>Looker</MenuItem>
+  <MenuItem icon={<VerifiedUser />}>Validate</MenuItem>
+  <MenuItem icon={<PieChart />}>Pizza</MenuItem>
 </MenuList>
 ```
 
@@ -107,6 +107,6 @@ To implement a tooltip on a `MenuItem`, wrap the `MenuItem` in a `Tooltip` eleme
 Use the `disabled` prop to indicate an option that is not currently available.
 
 ```jsx
-<MenuItem icon="Beaker" disabled>Disabled</MenuItem>
-<MenuItem icon="Beaker">Enabled</MenuItem>
+<MenuItem icon={<Beaker />} disabled>Disabled</MenuItem>
+<MenuItem icon={<Beaker />}>Enabled</MenuItem>
 ```

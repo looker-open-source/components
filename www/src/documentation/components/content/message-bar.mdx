@@ -65,7 +65,7 @@ This is not the recommended happy path for using MessageBar, but it is available
     <MessageBar
       primaryAction={
         <IconButton
-          icon="Favorite"
+          icon={<Favorite />}
           label="Add to Favorites"
           onClick={handlePrimaryClick}
           color="key"
@@ -75,7 +75,7 @@ This is not the recommended happy path for using MessageBar, but it is available
         <IconButton
           onClick={handleSecondaryClick}
           color="neutral"
-          icon="Gear"
+          icon={<Settings />}
           label="Settings"
           color="neutral"
         />

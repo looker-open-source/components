@@ -26,21 +26,22 @@
 
 import React from 'react'
 import { Icon } from '@looker/components'
-import { iconNameList, IconNames } from '@looker/icons'
+import { iconsList } from '@looker/icons'
+import * as AllIcons from '@looker/icons'
 import CopyToClipboard from 'react-copy-to-clipboard'
 import styled from 'styled-components'
 
 export const IconList = () => {
   return (
     <IconGrid>
-      {iconNameList.map((name) => (
+      {iconsList.map((name) => (
         <CopyToClipboard
           text={`<Icon name="${name}" />`}
           onCopy={() => alert(`Copied icon "${name}" to clipboard.`)}
           key={name}
         >
           <IconGridItem>
-            <Icon name={name as IconNames} size={32} />
+            {AllIcons[name]}
             <div>{name}</div>
           </IconGridItem>
         </CopyToClipboard>

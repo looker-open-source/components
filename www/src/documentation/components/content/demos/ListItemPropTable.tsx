@@ -91,16 +91,6 @@ export const ListItemPropTable = () => {
             </TableDataCell>
           </TableRow>
           <TableRow>
-            <TableDataCell pr="large">iconArtwork</TableDataCell>
-            <TableDataCell pr="large">
-              <Code>ReactNode</Code>
-            </TableDataCell>
-            <TableDataCell>
-              <Code>iconArtwork</Code> allows you to use an svg instead of an
-              icon name string to render a custom icon.
-            </TableDataCell>
-          </TableRow>
-          <TableRow>
             <TableDataCell pr="large">itemRole</TableDataCell>
             <TableDataCell pr="large">
               <Code>"link" | "button"</Code>
