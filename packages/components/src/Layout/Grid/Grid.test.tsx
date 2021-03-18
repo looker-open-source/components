@@ -26,38 +26,52 @@
 
 import 'jest-styled-components'
 import React from 'react'
-import { assertSnapshot } from '@looker/components-test-utils'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
 import { Grid } from './Grid'
 
-test('Grid default', () => {
-  assertSnapshot(
-    <Grid>
-      <div>🥑</div>
-      <div>🐛</div>
-      <div>🦜</div>
-      <div>🐈</div>
-    </Grid>
-  )
-})
+const content = (
+  <>
+    <div>first</div>
+    <div>second</div>
+    <div>third</div>
+    <div>fourth</div>
+  </>
+)
 
-test('Grid with specified gap', () => {
-  assertSnapshot(
-    <Grid gap="xlarge">
-      <div>🥑</div>
-      <div>🐛</div>
-      <div>🦜</div>
-      <div>🐈</div>
-    </Grid>
-  )
-})
+describe('Grid', () => {
+  test('default', () => {
+    renderWithTheme(<Grid data-testid="grid">{content} </Grid>)
+    expect(screen.getByTestId('grid')).toHaveStyleRule('display', 'grid')
+  })
 
-test('Grid with specified columns', () => {
-  assertSnapshot(
-    <Grid columns={4}>
-      <div>🥑</div>
-      <div>🐛</div>
-      <div>🦜</div>
-      <div>🐈</div>
-    </Grid>
-  )
+  test('specified gap', () => {
+    renderWithTheme(
+      <Grid data-testid="grid" gap="xlarge">
+        {content}
+      </Grid>
+    )
+    expect(screen.getByTestId('grid')).toHaveStyleRule('grid-gap', '2rem')
+  })
+
+  test('specified columns', () => {
+    renderWithTheme(
+      <Grid data-testid="grid" columns={4}>
+        {content}
+      </Grid>
+    )
+    expect(screen.getByTestId('grid')).toHaveStyleRule(
+      'grid-template-columns',
+      'repeat(4,minmax(0,1fr))'
+    )
+  })
+
+  test('specified width', () => {
+    renderWithTheme(
+      <Grid data-testid="grid" width="50%">
+        {content}
+      </Grid>
+    )
+    expect(screen.getByTestId('grid')).toHaveStyleRule('width', '50%')
+  })
 })

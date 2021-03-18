@@ -37,11 +37,18 @@ export interface GridProps extends SpaceHelperProps {
   columns?: number
 }
 
-export const Grid = styled.div.withConfig({ shouldForwardProp })<GridProps>`
+/**
+ * Grid provides a simple implementation of the CSS Grid.
+ *
+ * By default `Grid` has two columns with a "medium" `gap` between grid cells and "100%" `width`
+ */
+export const Grid = styled.div
+  .withConfig({ shouldForwardProp })
+  .attrs<GridProps>(({ width = '100%' }) => ({ width }))<GridProps>`
   ${simpleLayoutCSS}
 
   display: grid;
   grid-gap: ${({ gap, theme }) => theme.space[gap || defaultGap]};
-  grid-template-columns: ${({ columns }) =>
-    `repeat(${columns || 2}, minmax(0, 1fr))`};
+  grid-template-columns:
+    repeat(${({ columns }) => columns || 2}, minmax(0, 1fr));
 `
