@@ -89,6 +89,7 @@ export const ListItemWrapper = styled(ListItemWrapperInternal)`
     flex: 1;
     font-size: inherit;
     font-weight: inherit;
+    margin: 0; /* safari has default margin */
     min-width: 0;
     outline: none;
     text-align: left;

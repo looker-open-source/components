@@ -24,17 +24,17 @@
 
  */
 
+import React, { FC } from 'react'
 import styled from 'styled-components'
 import { SpaceProps, space } from '@looker/design-tokens'
+import { Divider } from '../Divider'
 
-export const MenuDivider = styled.li<SpaceProps>`
+const MenuDividerLayout: FC<{}> = (props) => (
+  <li {...props} aria-hidden="true">
+    <Divider />
+  </li>
+)
+
+export const MenuDivider = styled(MenuDividerLayout)<SpaceProps>`
   ${space}
-  border: none;
-  border-top: 1px solid ${({ theme: { colors } }) => colors.ui2};
-
-  & + &,
-  &:first-child,
-  &:last-child {
-    display: none;
-  }
 `
