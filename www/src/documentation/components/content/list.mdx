@@ -9,16 +9,16 @@ import { ListItemPropTable } from './demos'
 
 ```jsx
 <List>
-  <ListItem icon="Calendar" description="Orange-y" detail="England">
+  <ListItem icon={<DateRange />} description="Orange-y" detail="England">
     Cheddar
   </ListItem>
-  <ListItem icon="Pivot" detail="Netherlands">
+  <ListItem icon={<Pivot />} detail="Netherlands">
     Gouda
   </ListItem>
-  <ListItem icon="AnalyticsApp" detail="Italy">
+  <ListItem icon={<AnalyticsApp />} detail="Italy">
     Mozzarella
   </ListItem>
-  <ListItem icon="Account" detail="Switzerland">
+  <ListItem icon={<Account />} detail="Switzerland">
     Swiss
   </ListItem>
 </List>
@@ -44,9 +44,9 @@ Use the `density` prop to set the size and spacing of your `List`. As `density` 
       </Space>
       <Divider />
       <List density={density}>
-        <ListItem icon="Calendar">Item 1</ListItem>
-        <ListItem icon="Calendar">Item 2</ListItem>
-        <ListItem icon="Calendar">Item 3</ListItem>
+        <ListItem icon={<DateRange />}>Item 1</ListItem>
+        <ListItem icon={<DateRange />}>Item 2</ListItem>
+        <ListItem icon={<DateRange />}>Item 3</ListItem>
       </List>
     </>
   )
@@ -58,13 +58,13 @@ Use the `iconGutter` prop if you want `ListItem` children without icons to align
 ```jsx
 <>
   <List>
-    <ListItem icon="Calendar">Item 1</ListItem>
+    <ListItem icon={<DateRange />}>Item 1</ListItem>
     <ListItem>Item 2</ListItem>
     <ListItem>Item 3</ListItem>
   </List>
   <Divider />
   <List iconGutter>
-    <ListItem icon="Calendar">Item 1</ListItem>
+    <ListItem icon={<DateRange />}>Item 1</ListItem>
     <ListItem>Item 2</ListItem>
     <ListItem>Item 3</ListItem>
   </List>
@@ -84,7 +84,7 @@ Note: In addition these custom props, `ListItem` also accepts standard handlers 
 ```jsx
 <ListItem
   color="orange"
-  icon="Calendar"
+  icon={<DateRange />}
   description="Orange-y"
   detail="England"
   onClick={() => alert('Get that Cheddar')}
@@ -104,11 +104,11 @@ Enabling the `accessory` option will render the detail element outside of the la
 ```jsx
 <List>
   <ListItem
-    icon="FieldNumber"
+    icon={<Tag />}
     detail={
       <IconButton
-        icon="Pivot"
-        label="Pivot"
+        icon={<Pivot />}
+        label={<Pivot />}
         onClick={() => alert("You've pivoted!")}
       />
     }
@@ -116,12 +116,12 @@ Enabling the `accessory` option will render the detail element outside of the la
     ListItem (Standard)
   </ListItem>
   <ListItem
-    icon="FieldNumber"
+    icon={<Tag />}
     detail={{
       content: (
         <IconButton
-          icon="Pivot"
-          label="Pivot"
+          icon={<Pivot />}
+          label={<Pivot />}
           onClick={() => alert("You've pivoted!")}
         />
       ),

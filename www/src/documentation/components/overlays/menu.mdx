@@ -17,8 +17,8 @@ storybook: true
   <Menu
     content={
       <>
-        <MenuItem icon="FavoriteOutline">Gouda</MenuItem>
-        <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
+        <MenuItem icon={<Favorite />}>Gouda</MenuItem>
+        <MenuItem icon={<Favorite />}>Swiss</MenuItem>
       </>
     }
   >
@@ -29,8 +29,8 @@ storybook: true
     disabled
     content={
       <>
-        <MenuItem icon="FavoriteOutline">Gouda</MenuItem>
-        <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
+        <MenuItem icon={<Favorite />}>Gouda</MenuItem>
+        <MenuItem icon={<Favorite />}>Swiss</MenuItem>
       </>
     }
   >
@@ -51,8 +51,8 @@ Use the `density` prop to set the size and spacing of your `Menu`. As `density` 
     density={1}
     content={
       <>
-        <MenuItem icon="FavoriteOutline">Gouda</MenuItem>
-        <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
+        <MenuItem icon={<Favorite />}>Gouda</MenuItem>
+        <MenuItem icon={<Favorite />}>Swiss</MenuItem>
       </>
     }
   >
@@ -62,8 +62,8 @@ Use the `density` prop to set the size and spacing of your `Menu`. As `density` 
     density={-3}
     content={
       <>
-        <MenuItem icon="FavoriteOutline">Gouda</MenuItem>
-        <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
+        <MenuItem icon={<Favorite />}>Gouda</MenuItem>
+        <MenuItem icon={<Favorite />}>Swiss</MenuItem>
       </>
     }
   >
@@ -80,8 +80,8 @@ To add a tooltip to the menu button, nest a `Tooltip` inside `Menu`.
 <Menu
   content={
     <>
-      <MenuItem icon="FavoriteOutline">Gouda</MenuItem>
-      <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
+      <MenuItem icon={<Favorite />}>Gouda</MenuItem>
+      <MenuItem icon={<Favorite />}>Swiss</MenuItem>
     </>
   }
 >
@@ -101,8 +101,8 @@ The `pin` props allow you to enforce the placement to varying degrees.
   placement="left"
   content={
     <>
-      <MenuItem icon="FavoriteOutline">Gouda</MenuItem>
-      <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
+      <MenuItem icon={<Favorite />}>Gouda</MenuItem>
+      <MenuItem icon={<Favorite />}>Swiss</MenuItem>
     </>
   }
 >
@@ -159,8 +159,8 @@ Control the state of the menu with the React `useState` hook.
         setOpen={setOpen}
         content={
           <>
-            <MenuItem icon="Mail">Email</MenuItem>
-            <MenuItem icon="Table">Spreadsheet</MenuItem>
+            <MenuItem icon={<Email />}>Email</MenuItem>
+            <MenuItem icon={<TableChart />}>Spreadsheet</MenuItem>
           </>
         }
       >
@@ -190,7 +190,7 @@ Control the state of the menu with the React `useState` hook.
             </>
           }
         >
-          <IconButton icon="DotsVert" label="More Options" />
+          <IconButton icon={<MoreVert />} label="More Options" />
         </Menu>
       </Flex>
     </Card>
@@ -235,7 +235,7 @@ controlled via state values – or use the hook version.
             </>
           }
         >
-          <IconButton icon="DotsVert" label="Options" />
+          <IconButton icon={<MoreVert />} label="Options" />
         </Menu>
       </Space>
       {confirm}
@@ -308,9 +308,9 @@ More specifically, when `iconGutter` is true on a `Menu`, all `MenuItem`s withou
   <Menu
     content={
       <>
-        <MenuItem icon="Calendar">Calendar</MenuItem>
+        <MenuItem icon={<DateRange />}>Calendar</MenuItem>
         <MenuItem>No icon</MenuItem>
-        <MenuItem icon="Pivot">Pivot</MenuItem>
+        <MenuItem icon={<Pivot />}>Pivot</MenuItem>
       </>
     }
   >
@@ -320,9 +320,9 @@ More specifically, when `iconGutter` is true on a `Menu`, all `MenuItem`s withou
     iconGutter
     content={
       <>
-        <MenuItem icon="Calendar">Calendar</MenuItem>
+        <MenuItem icon={<DateRange />}>Calendar</MenuItem>
         <MenuItem>No icon</MenuItem>
-        <MenuItem icon="Pivot">Pivot</MenuItem>
+        <MenuItem icon={<Pivot />}>Pivot</MenuItem>
       </>
     }
   >

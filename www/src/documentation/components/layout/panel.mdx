@@ -13,7 +13,7 @@ passed as the prop `content`. `<Panels />` should be the parent component groupi
 
   const title = (
     <>
-      <Icon name="ArrowLeft" m="xsmall" />
+      <Icon icon={<ArrowLeft />} m="xsmall" />
       Left
     </>
   )
@@ -23,7 +23,7 @@ passed as the prop `content`. `<Panels />` should be the parent component groupi
       <Aside width="12rem">
         <Panels>
           <List>
-            <ListItem onClick={toggleOpen} icon="ArrowForward">
+            <ListItem onClick={toggleOpen} icon={<ArrowForward />}>
               Left
             </ListItem>
             <Panel
@@ -31,26 +31,26 @@ passed as the prop `content`. `<Panels />` should be the parent component groupi
               direction="right"
               title="Right"
             >
-              <ListItem icon="ArrowBackward">Right</ListItem>
+              <ListItem icon={<ArrowBack />}>Right</ListItem>
             </Panel>
             <Panel content={'content from Up...'} direction="up" title="Up">
-              <ListItem icon="ArrowDownward">Up</ListItem>
+              <ListItem icon={<ArrowDownward />}>Up</ListItem>
             </Panel>
             <Panel
               content={'content from Down...'}
               direction="down"
               title="Down"
             >
-              <ListItem icon="ArrowUpward">Down</ListItem>
+              <ListItem icon={<ArrowUpward />}>Down</ListItem>
             </Panel>
           </List>
 
           <Panel
             content={
               <List>
-                <ListItem icon="ArrowRight">Panel option 1</ListItem>
-                <ListItem icon="ArrowRight">Panel option 2</ListItem>
-                <ListItem icon="ArrowRight">Panel option 3</ListItem>
+                <ListItem icon={<ArrowRight />}>Panel option 1</ListItem>
+                <ListItem icon={<ArrowRight />}>Panel option 2</ListItem>
+                <ListItem icon={<ArrowRight />}>Panel option 3</ListItem>
               </List>
             }
             direction="left"
@@ -90,10 +90,10 @@ Note: `panel` needs to be placed before `children`. The order in which the `pane
     <>
       {panel}
       <List>
-        <ListItem onClick={open} icon="Check">
+        <ListItem onClick={open} icon={<Done />}>
           Option A
         </ListItem>
-        <ListItem icon="Check">Option B</ListItem>
+        <ListItem icon={<Done />}>Option B</ListItem>
       </List>
     </>
   )
