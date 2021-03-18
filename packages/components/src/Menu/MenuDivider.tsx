@@ -29,8 +29,8 @@ import styled from 'styled-components'
 import { SpaceProps, space } from '@looker/design-tokens'
 import { Divider } from '../Divider'
 
-const MenuDividerLayout: FC<{ className?: string }> = ({ className }) => (
-  <li className={className} aria-hidden="true">
+const MenuDividerLayout: FC<{}> = (props) => (
+  <li {...props} aria-hidden="true">
     <Divider />
   </li>
 )
