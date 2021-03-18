@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.17.0](https://github.com/looker-open-source/components/compare/v0.16.2...v0.17.0) (2021-03-18)
+
+
+### Bug Fixes
+
+* **Grid:** Default to 100% width ([eb9e360](https://github.com/looker-open-source/components/commit/eb9e360496daeec5fd76c01fc705700a531a299a))
+
+
+### Features
+
+* **InputColor:** New ColorPicker base component, major overhaul of InputColor ([#2013](https://github.com/looker-open-source/components/issues/2013)) ([a4d625e](https://github.com/looker-open-source/components/commit/a4d625e9d71250c3654a6646cc018c47397a34f9))
+
+
+
+
+
 ## [0.16.2](https://github.com/looker-open-source/components/compare/v0.16.0...v0.16.2) (2021-03-17)
 
 **Note:** Version bump only for package www

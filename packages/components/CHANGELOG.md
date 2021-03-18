@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.17.0](https://github.com/looker-open-source/components/compare/v0.16.2...v0.17.0) (2021-03-18)
+
+
+### Bug Fixes
+
+* **DataTable:** display correct font-size when CSS reset is in-use ([#2067](https://github.com/looker-open-source/components/issues/2067)) ([fe30da9](https://github.com/looker-open-source/components/commit/fe30da90c629b8a3c13f4b076ecceea9cfc47807))
+* **DataTable:** update gap space between content and indicator ([#2065](https://github.com/looker-open-source/components/issues/2065)) ([7a2975a](https://github.com/looker-open-source/components/commit/7a2975aaf44b2702f6c7c2cef31fb587b89dd400))
+* **Grid:** Default to 100% width ([eb9e360](https://github.com/looker-open-source/components/commit/eb9e360496daeec5fd76c01fc705700a531a299a))
+* **Listitem:** Improved strategy for :focus-visible CSS (remove z-index from MenuHeading) ([bcbf47c](https://github.com/looker-open-source/components/commit/bcbf47c298d4e935be2cddaf8f9ec33856f21cc8))
+* **MenuList:** Deal with MenuDividers in unexpected places ([#2079](https://github.com/looker-open-source/components/issues/2079)) ([ea6e028](https://github.com/looker-open-source/components/commit/ea6e028f75503f16884cafc1ec9acd0e0ae4b5ae))
+
+
+### Features
+
+* **InputColor:** New ColorPicker base component, major overhaul of InputColor ([#2013](https://github.com/looker-open-source/components/issues/2013)) ([a4d625e](https://github.com/looker-open-source/components/commit/a4d625e9d71250c3654a6646cc018c47397a34f9))
+* **Layout:** Aside, Footer & Header now support border* props ([#2016](https://github.com/looker-open-source/components/issues/2016)) ([c5652ca](https://github.com/looker-open-source/components/commit/c5652ca92e51998be3d27c2b819d15dc76553fa2))
+
+
+
+
+
 ## [0.16.2](https://github.com/looker-open-source/components/compare/v0.16.0...v0.16.2) (2021-03-17)
 
 
