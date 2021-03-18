@@ -27,7 +27,7 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
 import { Flex } from '../Layout'
-import { ListItemLayoutProps } from './ListItemLayout'
+import { listItemIconCSS, ListItemLayoutProps } from './ListItemLayout'
 import { listItemPadding } from './utils'
 
 export const ListItemLayoutAccessoryInternal: FC<ListItemLayoutProps> = ({
@@ -59,6 +59,11 @@ export const ListItemLayoutAccessoryInternal: FC<ListItemLayoutProps> = ({
   )
 }
 
-export const ListItemLayoutAccessory = styled(ListItemLayoutAccessoryInternal)`
+export const ListItemLayoutAccessory = styled(
+  ListItemLayoutAccessoryInternal
+).attrs(({ color, disabled }) => ({
+  color: disabled ? 'text1' : color || 'text1',
+}))`
   ${(props) => listItemPadding({ ...props })}
+  ${listItemIconCSS}
 `

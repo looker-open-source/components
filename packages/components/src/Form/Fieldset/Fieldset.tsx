@@ -24,6 +24,8 @@
 
  */
 
+import omit from 'lodash/omit'
+import pick from 'lodash/pick'
 import React, { createContext, forwardRef, ReactNode, Ref } from 'react'
 import styled from 'styled-components'
 import {
@@ -31,8 +33,7 @@ import {
   SpacingSizes,
   omitStyledProps,
 } from '@looker/design-tokens'
-import omit from 'lodash/omit'
-import pick from 'lodash/pick'
+import { ArrowDropDown, ArrowRight } from '@styled-icons/material'
 import { Space, SpaceVertical } from '../../Layout'
 import { SimpleLayoutProps, simpleLayoutCSS } from '../../Layout/utils/simple'
 import { Legend } from '../Legend'
@@ -87,8 +88,8 @@ export interface FieldsetProps
 const accordionIndicatorDefaults: AccordionIndicatorProps = {
   indicatorGap: 'xsmall',
   indicatorIcons: {
-    close: 'ArrowRight',
-    open: 'ArrowDropDown',
+    close: <ArrowRight />,
+    open: <ArrowDropDown />,
   },
   indicatorPosition: 'left',
   indicatorSize: 'medium',

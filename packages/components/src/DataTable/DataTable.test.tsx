@@ -26,6 +26,7 @@
 
 import React, { useState } from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
+import { Delete, Link as LinkIcon } from '@styled-icons/material'
 import { fireEvent, screen } from '@testing-library/react'
 import { IconButton } from '../Button'
 import { FieldFilter, InputFilters } from '../Form'
@@ -71,7 +72,14 @@ const columns: DataTableColumns = [
     type: 'number',
   },
   {
+    id: 'status',
+    title: 'Status',
+    titleIcon: <LinkIcon />,
+    type: 'string',
+  },
+  {
     id: 'name',
+    size: 'medium',
     title: 'Name',
     type: 'string',
   },
@@ -134,6 +142,7 @@ const items = data.map(({ calories, id, name, type }) => {
     <DataTableItem key={id} id={String(id)} actions={availableActions}>
       <DataTableCell>{calories}</DataTableCell>
       <DataTableCell>{id}</DataTableCell>
+      <DataTableCell>Meh.</DataTableCell>
       <DataTableCell>{name}</DataTableCell>
       <DataTableCell>{type}</DataTableCell>
     </DataTableItem>
@@ -143,7 +152,7 @@ const items = data.map(({ calories, id, name, type }) => {
 const itemsActionPrimary = data.map(({ calories, id, name, type }) => {
   const actionPrimary = (
     <IconButton
-      icon="Trash"
+      icon={<Delete />}
       label="Trash It"
       onClick={() => alert('Trash it')}
     />
@@ -170,7 +179,7 @@ const itemsActionsPrimaryAction = data.map(({ calories, id, name, type }) => {
 
   const ActionPrimary = (
     <IconButton
-      icon="Trash"
+      icon={<Delete />}
       label="Trash It"
       onClick={() => alert('Trash it')}
     />

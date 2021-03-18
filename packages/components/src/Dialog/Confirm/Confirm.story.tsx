@@ -25,6 +25,7 @@
  */
 
 import React from 'react'
+import { Info } from '@styled-icons/material-outlined'
 import { Button, ButtonOutline } from '../../Button'
 import { Icon } from '../../Icon'
 import { Space, SpaceVertical } from '../../Layout'
@@ -85,7 +86,7 @@ Critical.parameters = {
 export const Rich = () => {
   const message = (
     <Space>
-      <Icon name="CircleInfoOutline" size="80px" />
+      <Icon icon={<Info />} size="80px" />
       <SpaceVertical>
         <Paragraph>
           Canadians say "sorry" so often that{' '}

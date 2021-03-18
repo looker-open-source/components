@@ -25,6 +25,7 @@
  */
 
 import { Story } from '@storybook/react/types-6-0'
+import { Create, Favorite } from '@styled-icons/material'
 import React from 'react'
 import {
   ComboboxContext,
@@ -79,7 +80,7 @@ DescriptionIcon.args = {
   options: cheeseOptions.map((option) => ({
     ...option,
     description: "I'm a little teapot",
-    icon: 'Edit',
+    icon: <Create />,
   })),
 }
 
@@ -95,7 +96,7 @@ export const PrefaceIcon = Template.bind({})
 PrefaceIcon.args = {
   options: cheeseOptions.map((option) => ({
     ...option,
-    icon: 'Edit',
+    icon: <Create />,
     preface: 'Preface Text',
   })),
 }
@@ -111,7 +112,7 @@ KitchenSink.args = {
     ...option,
     description: "I'm a little teapot",
     detail: '0/50',
-    icon: 'Favorite',
+    icon: <Favorite />,
     preface: 'Preface Text',
   })),
 }

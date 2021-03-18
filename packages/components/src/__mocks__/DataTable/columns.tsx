@@ -24,6 +24,8 @@
 
  */
 
+import React from 'react'
+import { Info } from '@styled-icons/material'
 import { DataTableColumns } from '../../DataTable/Column'
 
 export const columns: DataTableColumns = [
@@ -38,7 +40,7 @@ export const columns: DataTableColumns = [
     canSort: true,
     id: 'status',
     title: 'Status',
-    titleIcon: 'CircleInfo',
+    titleIcon: <Info />,
     type: 'string',
   },
   {

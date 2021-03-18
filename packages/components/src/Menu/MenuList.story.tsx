@@ -26,7 +26,7 @@
 
 import React, { FC, Fragment } from 'react'
 import { Story } from '@storybook/react/types-6-0'
-import { IconNames } from '@looker/icons'
+import { Create, DateRange, Undo } from '@styled-icons/material-outlined'
 import { Box, Grid, Space } from '../Layout'
 import { DensityRamp } from '../List/types'
 import { MenuHeading, MenuList, MenuItem, MenuItemProps, MenuDivider } from '.'
@@ -37,7 +37,7 @@ const groups: { label?: string; items: MenuItemProps[] }[] = [
       {
         children: 'Edit Dashboard',
         detail: '⌘⇧E',
-        icon: 'EditOutline' as IconNames,
+        icon: <Create />,
       },
       {
         children: 'Get LookML',
@@ -46,7 +46,7 @@ const groups: { label?: string; items: MenuItemProps[] }[] = [
       {
         children: 'Revert to original dashboard',
         detail: 'A longer detail',
-        icon: 'Undo' as IconNames,
+        icon: <Undo />,
       },
     ],
     label: 'Options',
@@ -104,7 +104,7 @@ LongList.parameters = {
 const DensityExample: FC<{ density?: DensityRamp }> = ({ density }) => (
   <MenuList iconGutter density={density}>
     <MenuHeading>Cheeses of the World</MenuHeading>
-    <MenuItem icon="Calendar" description="Yellow">
+    <MenuItem icon={<DateRange />} description="Yellow">
       Swiss
     </MenuItem>
     <MenuItem selected>Parmesan</MenuItem>

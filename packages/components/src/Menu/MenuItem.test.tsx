@@ -27,9 +27,24 @@
 import 'jest-styled-components'
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
+import { Beaker } from '@looker/icons'
 import { screen, fireEvent } from '@testing-library/react'
 
 import { MenuItem } from './MenuItem'
+
+const globalConsole = global.console
+const warnMock = jest.fn()
+
+beforeEach(() => {
+  jest.useFakeTimers()
+  global.console = ({
+    warn: warnMock,
+  } as unknown) as Console
+})
+
+afterEach(() => {
+  global.console = globalConsole
+})
 
 describe('MenuItem', () => {
   test('renders', () => {
@@ -43,14 +58,14 @@ describe('MenuItem', () => {
   })
 
   test('icon', () => {
-    renderWithTheme(<MenuItem icon="Beaker">Icon</MenuItem>)
+    renderWithTheme(<MenuItem icon={<Beaker />}>Icon</MenuItem>)
     expect(screen.getByText('Icon')).toBeVisible()
   })
 
   test('artwork', () => {
     renderWithTheme(
       <MenuItem
-        iconArtwork={
+        icon={
           <svg xmlns="http://www.w3.org/2000/svg">
             <title>SVG Title Here</title>
           </svg>
@@ -143,34 +158,27 @@ describe('MenuItem', () => {
     expect(item).toHaveAttribute('rel', 'nogouda')
   })
 
-  test('Nested menu aria props', () => {
-    // Actual nested menu behavior is tested in Menu.test.tsx since it needs context
+  test('warns on nested menu item w/ detail', () => {
+    const warnMock = jest.fn()
+
+    global.console = ({
+      warn: warnMock,
+    } as unknown) as Console
+
     renderWithTheme(
-      <MenuItem
-        nestedMenu={
-          <>
-            <MenuItem>Child</MenuItem>
-          </>
-        }
-      >
-        Parent
+      <MenuItem detail="Something" nestedMenu>
+        Nested Menu
       </MenuItem>
     )
-
-    // menuitem role goes on the button; li has role="none"
-    const item = screen.getByRole('none')
-
-    expect(item).toHaveAttribute('aria-haspopup', 'true')
-    expect(item).toHaveAttribute('aria-expanded', 'false')
-  })
-
-  test('Without nested menu, no aria props', () => {
-    // Actual nested menu behavior is tested in Menu.test.tsx since it needs context
-    renderWithTheme(<MenuItem>No nesting</MenuItem>)
-
-    const item = screen.getByRole('none')
-
-    expect(item).not.toHaveAttribute('aria-haspopup')
-    expect(item).not.toHaveAttribute('aria-expanded')
+    expect(warnMock.mock.calls).toMatchInlineSnapshot(`
+      Array [
+        Array [
+          "The detail prop is not supported when nestedMenu is used.",
+        ],
+        Array [
+          "The detail prop is not supported when nestedMenu is used.",
+        ],
+      ]
+    `)
   })
 })
