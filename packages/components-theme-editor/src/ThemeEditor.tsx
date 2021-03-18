@@ -24,6 +24,7 @@
 
  */
 
+import { Beaker } from '@looker/icons'
 import { IconButton, Dialog } from '@looker/components'
 import React, { FC } from 'react'
 import {
@@ -44,7 +45,7 @@ export const ThemeEditor: FC<ThemeEditorProps> = ({
     placement="cover"
   >
     <IconButton
-      icon="Beaker"
+      icon={<Beaker />}
       label="Customize Theme"
       tooltipDisabled
       toggle={hasCustomTheme}
