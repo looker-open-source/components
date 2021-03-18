@@ -10,11 +10,11 @@ If you need an icon for purely decorative purposes use an `<Icon />` instead.
 
 ```jsx
 <Space evenly>
-  <IconButton icon="Plus" label="Add Something Neat" />
-  <IconButton icon="Gear" label="Settings" />
-  <IconButton icon="Trash" label="Trash It" />
-  <IconButton icon="Close" label="Close" />
-  <IconButton icon="Favorite" label="Add to Favorites" />
+  <IconButton icon={<Add />} label="Add Something Neat" />
+  <IconButton icon={<Settings />} label="Settings" />
+  <IconButton icon={<Delete />} label="Trash It" />
+  <IconButton icon={<Close />} label="Close" />
+  <IconButton icon={<Favorite />} label="Add to Favorites" />
 </Space>
 ```
 
@@ -26,11 +26,11 @@ If you need an icon for purely decorative purposes use an `<Icon />` instead.
 
 ```jsx
 <Space evenly>
-  <IconButton icon="Favorite" label="Add to Favorites" size="xxsmall" />
-  <IconButton icon="Favorite" label="Add to Favorites" />
-  <IconButton icon="Favorite" label="Add to Favorites" size="small" />
-  <IconButton icon="Favorite" label="Add to Favorites" size="medium" />
-  <IconButton icon="Favorite" label="Add to Favorites" size="large" />
+  <IconButton icon={<Favorite />} label="Add to Favorites" size="xxsmall" />
+  <IconButton icon={<Favorite />} label="Add to Favorites" />
+  <IconButton icon={<Favorite />} label="Add to Favorites" size="small" />
+  <IconButton icon={<Favorite />} label="Add to Favorites" size="medium" />
+  <IconButton icon={<Favorite />} label="Add to Favorites" size="large" />
 </Space>
 ```
 
@@ -38,9 +38,9 @@ If you need an icon for purely decorative purposes use an `<Icon />` instead.
 
 ```jsx
 <Space evenly>
-  <IconButton icon="Favorite" label="Add to Favorites" />
-  <IconButton icon="Favorite" label="Add to Favorites" className="hover" />
-  <IconButton icon="Favorite" label="Add to Favorites" className="active" />
+  <IconButton icon={<Favorite />} label="Add to Favorites" />
+  <IconButton icon={<Favorite />} label="Add to Favorites" className="hover" />
+  <IconButton icon={<Favorite />} label="Add to Favorites" className="active" />
 </Space>
 ```
 
@@ -51,14 +51,14 @@ If you need an icon for purely decorative purposes use an `<Icon />` instead.
 ```jsx
 <Space evenly>
   <IconButton
-    icon="Trash"
+    icon={<Delete />}
     label="Trash it"
     outline
     shape="round"
     size="xxsmall"
   />
   <IconButton
-    icon="Trash"
+    icon={<Delete />}
     label="Trash it"
     outline
     shape="round"
@@ -91,7 +91,7 @@ You can also use your own `Tooltip` around `IconButton` (this will effectively r
 
 ```jsx
 <Tooltip content="I'm a little teapot">
-  <IconButton label="Add Something Neat" icon="Plus" size="xxsmall" />
+  <IconButton label="Add Something Neat" icon={<Add />} size="xxsmall" />
 </Tooltip>
 ```
 
@@ -100,5 +100,5 @@ You can also use your own `Tooltip` around `IconButton` (this will effectively r
 If you would like to disable the tooltip entirely, use the `tooltipDisabled` prop.
 
 ```jsx
-<IconButton label="no tooltip" icon="Home" size="large" tooltipDisabled />
+<IconButton label="no tooltip" icon={<Home />} size="large" tooltipDisabled />
 ```

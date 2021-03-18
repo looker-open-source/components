@@ -29,6 +29,7 @@ import { graphql } from 'gatsby'
 import React from 'react'
 import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
+import { Launch } from '@styled-icons/material'
 import {
   useTabs,
   TabList,
@@ -114,7 +115,7 @@ const DocumentationLayout = (props: DocQuery) => {
           <Tooltip content="GitHub">
             <ButtonTransparent
               ml="auto"
-              iconAfter="External"
+              iconAfter={<Launch />}
               onClick={() => window.open(`${githubBase}${githubPath}`)}
             >
               View source

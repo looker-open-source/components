@@ -29,7 +29,9 @@ import startCase from 'lodash/startCase'
 import React, { useEffect, useState } from 'react'
 import { graphql, navigate, useStaticQuery } from 'gatsby'
 import { useFlexSearch } from 'react-use-flexsearch'
-import { IconNames, InputSearch, SelectOptionObject } from '@looker/components'
+import { InputSearch, SelectOptionObject } from '@looker/components'
+import { Code, InsertDriveFile, VerifiedUser } from '@styled-icons/material'
+import { Info } from '@styled-icons/material-outlined'
 
 export const Search = () => {
   const data = useStaticQuery(
@@ -56,11 +58,11 @@ interface FauxSearchProps {
   store: any
 }
 
-const iconMap: { [key: string]: IconNames } = {
-  Components: 'Code',
-  Develop: 'CircleInfoOutline',
-  Foundations: 'Validate',
-  Utilities: 'Code',
+const iconMap: { [key: string]: JSX.Element } = {
+  Components: <Code />,
+  Develop: <Info />,
+  Foundations: <VerifiedUser />,
+  Utilities: <Code />,
 }
 
 interface Result {
@@ -111,7 +113,7 @@ const SearchField = ({ index, store }: FauxSearchProps) => {
     const pageType = startCase(slug.split('/')[0])
     return {
       detail: pageType,
-      icon: iconMap[pageType] || 'FileBlank',
+      icon: iconMap[pageType] || <InsertDriveFile />,
       label: title,
       value: `/${slug}`,
     }
