@@ -55,13 +55,23 @@ export const MenuList = styled(MenuListInternal)`
   min-width: 12rem;
   overflow: auto;
 
-  ${MenuDivider},
+  > :first-child {
+    margin-top: ${({ theme }) => theme.space.xsmall};
+    hr {
+      display: none;
+    }
+  }
+
   ${MenuDivider} + ${MenuItem},
-  > *:first-child {
+  ${MenuItem} + ${MenuDivider} {
     margin-top: ${({ theme }) => theme.space.xsmall};
   }
 
-  > *:last-child {
+  > :last-child {
     margin-bottom: ${({ theme }) => theme.space.xsmall};
+
+    hr {
+      display: none;
+    }
   }
 `

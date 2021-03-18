@@ -27,7 +27,7 @@
 import React, { FC, Fragment } from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import { IconNames } from '@looker/icons'
-import { Box, Grid } from '../Layout'
+import { Box, Grid, Space } from '../Layout'
 import { DensityRamp } from '../List/types'
 import { MenuHeading, MenuList, MenuItem, MenuItemProps, MenuDivider } from '.'
 
@@ -137,6 +137,46 @@ export const MenuHeadingOverride = () => (
       Custom Hello World
     </MenuHeading>
   </MenuList>
+)
+
+/**
+ * This storyshot is specifically for checking that space above the first item
+ * and space below the last item is maintained even with extraneous dividers.
+ */
+export const MenuListSpacing = () => (
+  <Space p="medium" style={{ background: 'salmon' }}>
+    <Box bg="background">
+      <MenuList>
+        <MenuDivider />
+        <MenuItem selected>Top Item</MenuItem>
+        <MenuItem selected>Top Item</MenuItem>
+        <MenuDivider />
+        <MenuItem selected>Bottom Item</MenuItem>
+        <MenuItem selected>Bottom Item</MenuItem>
+        <MenuDivider />
+      </MenuList>
+    </Box>
+    <Box bg="background">
+      <MenuList>
+        <MenuItem selected>Top Item</MenuItem>
+        <MenuItem selected>Top Item</MenuItem>
+        <MenuDivider />
+        <MenuItem selected>Bottom Item</MenuItem>
+        <MenuItem selected>Bottom Item</MenuItem>
+        <MenuDivider />
+      </MenuList>
+    </Box>
+    <Box bg="background">
+      <MenuList>
+        <MenuDivider />
+        <MenuItem selected>Top Item</MenuItem>
+        <MenuItem selected>Top Item</MenuItem>
+        <MenuDivider />
+        <MenuItem selected>Bottom Item</MenuItem>
+        <MenuItem selected>Bottom Item</MenuItem>
+      </MenuList>
+    </Box>
+  </Space>
 )
 
 export default {
