@@ -113,7 +113,7 @@ const DataTableCellLayout = forwardRef(
 
       if (indicator) {
         content = (
-          <Space gap="xsmall">
+          <Space gap="medium">
             {indicator}
             {content}
           </Space>
@@ -121,7 +121,7 @@ const DataTableCellLayout = forwardRef(
       }
     } else if (indicator) {
       content = (
-        <Space gap="xsmall">
+        <Space gap="medium">
           {indicator}
           <span>{content}</span>
         </Space>

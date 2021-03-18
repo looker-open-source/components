@@ -28,6 +28,7 @@ export default {
   title: 'DataTable',
 }
 
+export * from './Indicator'
 export * from './Interaction'
 export * from './Percentage'
 export * from './Responsive'
