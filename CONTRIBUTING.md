@@ -56,9 +56,9 @@ chore(deps): Updated package dependency X from 1.0.2 to 1.0.6
 We generally follow [Angular's types](https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#type). The most common types used are:
 
 - fix: a commit of the type fix patches a bug (this correlates with PATCH in Semantic Versioning).
-- feat: a commit of the type feat introduces a new feature or changes and existing one (this correlates with MINOR in Semantic Versioning).
+- feat: a commit of the type feat introduces a new feature or changes an existing one (this correlates with MINOR in Semantic Versioning).
 
-If a change does _NOT_ make a change to the build artifacts produced (`fix` or `feat` above) you can also use on of these alternative types:
+If a change does _NOT_ make a change to the build artifacts produced (`fix` or `feat` above) you can also use one of these alternative types:
 
 - build: Changes that affect the build system or external dependencies
 - docs: Documentation only changes
