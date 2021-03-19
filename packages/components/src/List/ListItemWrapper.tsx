@@ -24,7 +24,7 @@
 
  */
 
-import { CompatibleHTMLProps } from '@looker/design-tokens'
+import { CompatibleHTMLProps, shouldForwardProp } from '@looker/design-tokens'
 import omit from 'lodash/omit'
 import React, { forwardRef, ReactNode, Ref } from 'react'
 import styled from 'styled-components'
@@ -66,7 +66,11 @@ const ListItemWrapperInternal = forwardRef(
 
 ListItemWrapperInternal.displayName = 'ListItemWrapperInternal'
 
-export const ListItemWrapper = styled(ListItemWrapperInternal)`
+export const ListItemWrapper = styled(
+  ListItemWrapperInternal
+).withConfig<ListItemWrapperProps>({
+  shouldForwardProp,
+})`
   align-items: center;
   color: ${({ theme: { colors } }) => colors.text5};
   display: flex;

@@ -27,7 +27,7 @@
 import 'jest-styled-components'
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { fireEvent, configure } from '@testing-library/react'
+import { fireEvent, configure, screen } from '@testing-library/react'
 
 import { ListItem } from './ListItem'
 
@@ -38,10 +38,9 @@ describe('ListItem', () => {
   })
 
   test('renders description', () => {
-    const { getByText } = renderWithTheme(
-      <ListItem description="are you?">who!</ListItem>
-    )
-    expect(getByText('are you?')).toBeVisible()
+    renderWithTheme(<ListItem description="are you?">who!</ListItem>)
+    expect(screen.getByText('are you?')).toBeVisible()
+    expect(screen.getByRole('listitem')).not.toHaveAttribute('description')
   })
 
   test('renders detail', () => {
@@ -49,6 +48,7 @@ describe('ListItem', () => {
       <ListItem detail="Is an excellent question">who!</ListItem>
     )
     expect(getByText('Is an excellent question')).toBeVisible()
+    expect(screen.getByRole('listitem')).not.toHaveAttribute('detail')
   })
 
   test('renders icon', () => {
