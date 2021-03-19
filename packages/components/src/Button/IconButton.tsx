@@ -197,11 +197,7 @@ const IconButtonComponent = forwardRef(
         {...rest}
       >
         <VisuallyHidden>{label}</VisuallyHidden>
-        <Icon
-          icon={icon}
-          size={iconButtonIconSizeMap[size]}
-          aria-hidden={true}
-        />
+        <Icon icon={icon} size={iconButtonIconSizeMap[size]} />
         {tooltip}
       </GenericButtonBase>
     )
