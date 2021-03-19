@@ -27,8 +27,7 @@
 import { useTranslation } from 'react-i18next'
 import React, { FC } from 'react'
 import styled from 'styled-components'
-import { DoubleChevronLeft } from '@looker/icons'
-import { DoubleArrow } from '@styled-icons/material'
+import { DoubleChevronLeft, DoubleChevronRight } from '@looker/icons'
 import { ChevronLeft, ChevronRight } from '@styled-icons/material-rounded'
 import { Flex } from '../Layout'
 import { IconButton, IconButtonProps } from '../Button'
@@ -85,7 +84,7 @@ const PaginationLayout: FC<PaginationProps> = ({
       <PaginationButton
         mr="none"
         label={t('Last page of results')}
-        icon={<DoubleArrow />}
+        icon={<DoubleChevronRight />}
         onClick={last}
         disabled={pages - current === 0}
       />

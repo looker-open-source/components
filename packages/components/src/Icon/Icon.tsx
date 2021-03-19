@@ -54,9 +54,6 @@ export type IconType = ReactElement<StyledIconProps>
 export interface IconProps
   extends Omit<CompatibleHTMLProps<HTMLDivElement>, 'onClick'>,
     SizeSimpleLayoutProps {
-  /**
-   * Display an icon/logo that is not available on our components list. Use artwork prop with an svg instead of Icon name.
-   */
   color?: string
   /**
    * Specify the JSX.Element (often SVG) to place.
