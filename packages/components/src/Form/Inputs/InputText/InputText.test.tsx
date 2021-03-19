@@ -72,6 +72,11 @@ describe('InputText', () => {
     expect(screen.getByRole('textbox')).toHaveAttribute('readonly')
   })
 
+  test('should accept type', () => {
+    renderWithTheme(<InputText type="tel" />)
+    expect(screen.getByRole('textbox')).toHaveAttribute('type', 'tel')
+  })
+
   test('should accept required', () => {
     renderWithTheme(<InputText required />)
     expect(screen.getByRole('textbox')).toBeRequired()
@@ -110,6 +115,15 @@ describe('InputText', () => {
     test('ReactNode', () => {
       const { getByText } = renderWithTheme(
         <InputText before={<span>before</span>} after={<span>after</span>} />
+      )
+
+      expect(getByText('before')).toBeVisible()
+      expect(getByText('after')).toBeVisible()
+    })
+
+    test('Simple string', () => {
+      const { getByText } = renderWithTheme(
+        <InputText before="before" after="after" />
       )
 
       expect(getByText('before')).toBeVisible()

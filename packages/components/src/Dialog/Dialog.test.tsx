@@ -47,6 +47,13 @@ describe('Dialog', () => {
     expect(screen.queryByText('Dialog content')).not.toBeInTheDocument()
   })
 
+  test('Placement functions', () => {
+    renderWithTheme(
+      <Dialog isOpen placement="top" content={<SimpleContent />} />
+    )
+    expect(screen.queryByText('Dialog content')).toBeInTheDocument()
+  })
+
   test('defaultOpen', async () => {
     renderWithTheme(<Dialog defaultOpen content={<DialogMediumContent />} />)
     expect(screen.queryByText(/We the People/)).toBeInTheDocument()
@@ -273,6 +280,26 @@ describe('Dialog', () => {
         'width',
         '24.5rem'
       )
+    })
+
+    test('Dialog without content throws console warning', () => {
+      const globalConsole = global.console
+      const errorMock = jest.fn()
+
+      global.console = ({
+        error: errorMock,
+      } as unknown) as Console
+
+      renderWithTheme(<Dialog />)
+      expect(errorMock.mock.calls).toMatchInlineSnapshot(`
+        Array [
+          Array [
+            "Dialog cannot be used without specifying content",
+          ],
+        ]
+      `)
+
+      global.console = globalConsole
     })
   })
 })

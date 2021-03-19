@@ -55,13 +55,13 @@ import {
   SimpleLayoutProps,
 } from '../../../Layout/utils/simple'
 import { getAutoFocusProps } from '../InputProps'
+import { ValidationType } from '../../ValidationMessage'
 import {
   formatTimeString,
   TimeFormats,
   parseBase10Int,
   isValidTime,
-} from '../utils'
-import { ValidationType } from '../../ValidationMessage'
+} from './utils'
 
 export interface InputTimeProps extends Omit<SimpleLayoutProps, 'size'> {
   'aria-describedby'?: string
