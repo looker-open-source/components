@@ -384,7 +384,7 @@ completely) or a function accepting `OptionIndicatorProps` and returning a React
 <Select
   maxWidth={400}
   indicator={({ isActive, isSelected }) => (
-    <Icon name={isSelected ? 'Favorite' : isActive ? 'Plus' : 'Minus'} />
+    <Icon icon={isSelected ? 'Favorite' : isActive ? 'Plus' : 'Minus'} />
   )}
   options={[
     { value: 'cheddar', label: 'Cheddar' },
@@ -405,11 +405,11 @@ input when the option is selected. Use icons from our [list](/components/content
     placeholder="Select a visualization"
     options={[
       { icon: <ChartBar />, label: 'Bar', value: 'bar' },
-      { icon: 'ChartColumn', label: 'Column', value: 'column' },
-      { icon: 'ChartLine', label: 'Line', value: 'line' },
-      { icon: 'ChartMap', label: 'Map', value: 'map' },
-      { icon: 'ChartPie', label: 'Pie', value: 'pie' },
-      { icon: 'ChartTable', label: 'Table', value: 'table' },
+      { icon: <BarChart />, label: 'Column', value: 'column' },
+      { icon: <ShowChart />, label: 'Line', value: 'line' },
+      { icon: <Map />, label: 'Map', value: 'map' },
+      { icon: <PieChart />, label: 'Pie', value: 'pie' },
+      { icon: <TableChart />, label: 'Table', value: 'table' },
     ]}
   />
   <Select
