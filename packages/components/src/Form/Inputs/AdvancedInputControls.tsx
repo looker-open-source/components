@@ -95,7 +95,7 @@ export const AdvancedInputControls: FC<AdvancedInputControlsProps> = (
         <IconButton
           size="xsmall"
           icon={<Close />}
-          label={t('Clear Field')}
+          label={clearIconLabel}
           onClick={onClear}
           tooltipDisabled={disabled}
           disabled={disabled}
