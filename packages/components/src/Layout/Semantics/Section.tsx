@@ -40,4 +40,5 @@ export const Section = styled.section.withConfig({
   shouldForwardProp,
 })<SectionProps>`
   ${sectionCSS}
+  overflow: auto;
 `

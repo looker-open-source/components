@@ -28,6 +28,10 @@ import styled from 'styled-components'
 import { Layout } from './Layout'
 
 export const Page = styled(Layout)`
-  height: 100%;
+  ${({ fixed }) =>
+    fixed &&
+    `
+      height: 100vh;
+    `}
   width: 100%;
 `
