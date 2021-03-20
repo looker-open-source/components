@@ -29,7 +29,7 @@
     "eslint": "^7.22.0",
     "eslint-config-prettier": "7.0.0",
     "eslint-config-standard": "16.0.2",
-    "eslint-import-resolver-typescript": "^2.3.0",
+    "eslint-import-resolver-typescript": "^2.4.0",
     "eslint-import-resolver-webpack": "^0.13.0",
     "eslint-plugin-header": "^3.1.1",
     "eslint-plugin-i18next": "^5.0.0",
