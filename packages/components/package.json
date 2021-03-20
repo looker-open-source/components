@@ -55,7 +55,7 @@
     "@types/react-resize-detector": "^5.0.0",
     "@types/styled-components": "^5.1.5",
     "@types/uuid": "^8.3.0",
-    "csstype": "^3.0.5",
+    "csstype": "^3.0.7",
     "jest-styled-components": "^7.0.3",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
