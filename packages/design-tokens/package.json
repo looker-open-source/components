@@ -35,7 +35,7 @@
     "@testing-library/react": "^11.2.2",
     "@types/lodash": "^4.14.167",
     "@types/styled-components": "^5.1.5",
-    "csstype": "^3.0.5",
+    "csstype": "^3.0.7",
     "lodash": "^4.17.20",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
