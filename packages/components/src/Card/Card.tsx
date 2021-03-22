@@ -89,7 +89,7 @@ export const Card = styled.div
   transition: border ${cardTransition}, box-shadow ${cardTransition};
 
   &:hover {
-    border-color: ${(props) => props.theme.colors.ui4};
+    border-color: ${({ theme }) => theme.colors.ui4};
   }
 
   ${raised}

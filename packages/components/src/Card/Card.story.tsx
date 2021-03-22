@@ -23,12 +23,21 @@
  SOFTWARE.
 
  */
-import { renderWithTheme } from '@looker/components-test-utils'
-import React from 'react'
-import { screen } from '@testing-library/react'
-import { ChipButton } from './ChipButton'
 
-test('ChipButton', () => {
-  renderWithTheme(<ChipButton>chip</ChipButton>)
-  expect(screen.getByText('chip')).toBeInTheDocument()
-})
+import React from 'react'
+import { Story } from '@storybook/react/types-6-0'
+import { Card, CardProps } from './Card'
+
+export default {
+  component: Card,
+  title: 'Card',
+}
+
+const Template: Story<CardProps> = (args) => <Card {...args}>A basic card</Card>
+
+export const Default = Template.bind({})
+
+export const Raised = Template.bind({})
+Raised.args = {
+  raised: true,
+}

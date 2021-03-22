@@ -23,45 +23,29 @@
  SOFTWARE.
 
  */
-import { renderWithTheme } from '@looker/components-test-utils'
+
 import React from 'react'
-import { fireEvent, screen } from '@testing-library/react'
-import { Chip } from './Chip'
+import { screen } from '@testing-library/react'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { CardMedia } from './CardMedia'
 
-describe('Chip', () => {
+describe('CardMedia', () => {
   test('default', () => {
-    renderWithTheme(<Chip>chip</Chip>)
-    expect(screen.getByText('chip')).toBeInTheDocument()
-  })
-
-  test('disabled', () => {
-    renderWithTheme(<Chip disabled>chip</Chip>)
-    /* Disabled chips have no remove button */
-    expect(screen.queryByRole('button')).not.toBeInTheDocument()
-  })
-
-  test('Chip accepts a prefix and renders it with correct style', () => {
-    renderWithTheme(<Chip prefix="role">admin</Chip>)
-    expect(screen.getByText(/\brole\b/)).toHaveStyleRule('font-weight: 400')
-  })
-
-  test('onDelete works correctly', () => {
-    const onDeleteTrigger = jest.fn()
-
-    renderWithTheme(
-      <Chip onDelete={onDeleteTrigger} data-testid="chip">
-        clickable
-      </Chip>
+    const imgUrl = 'http://faux.com/faux-image.jpg'
+    renderWithTheme(<CardMedia data-testid="card-media" image={imgUrl} />)
+    expect(screen.getByTestId('card-media')).toBeInTheDocument()
+    expect(screen.getByTestId('card-media')).toHaveStyle(
+      `background-image: url('${imgUrl}')`
     )
+  })
 
-    fireEvent.click(screen.getByRole('button'))
-    expect(onDeleteTrigger).toHaveBeenCalledTimes(1)
-
-    const chip = screen.getByTestId('chip')
-
-    fireEvent.keyDown(chip, {
-      key: 'Backspace',
-    })
-    expect(onDeleteTrigger).toHaveBeenCalledTimes(2)
+  test('color', () => {
+    renderWithTheme(
+      <CardMedia data-testid="card-media" backgroundColor="key" />
+    )
+    expect(screen.getByTestId('card-media')).toBeInTheDocument()
+    expect(screen.getByTestId('card-media')).toHaveStyle(
+      'background-color: rgb(108, 67, 224);'
+    )
   })
 })

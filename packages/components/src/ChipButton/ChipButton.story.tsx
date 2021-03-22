@@ -25,87 +25,59 @@
  */
 
 import { Story } from '@storybook/react/types-6-0'
-import React, { useState } from 'react'
-import { ChipButton } from '../ChipButton'
+import React from 'react'
 import { Space } from '../Layout'
-import { Chip, ChipProps } from './Chip'
+import { ChipButton, ChipButtonProps } from './ChipButton'
 
 export default {
-  component: Chip,
-  title: 'Chip',
+  component: ChipButton,
+  title: 'ChipButton',
 }
 
-const Template: Story<ChipProps & { text: string }> = ({ text, ...args }) => (
-  <Chip {...args}>{text}</Chip>
+const Template: Story<ChipButtonProps> = (args) => (
+  <ChipButton {...args}>Chip Button</ChipButton>
 )
 
 export const Basic = Template.bind({})
-Basic.args = {
-  text: 'Basic',
-}
-
 export const Disabled = Template.bind({})
 Disabled.args = {
+  ...Basic.args,
   disabled: true,
-  text: 'Disabled',
 }
 
 export const Deletable = Template.bind({})
 Deletable.args = {
+  ...Basic.args,
   onDelete: () => {
     //
   },
-  text: 'Deletable',
 }
 
 export const Prefix = Template.bind({})
 Prefix.args = {
+  ...Basic.args,
   prefix: 'role',
-  text: 'admin',
 }
 
-export const ClickAndDelete = () => {
+export const ChipButtons = () => {
   const handleClick = () => alert('Clicked!')
   const handleDelete = () => alert('Deleted!')
   return (
     <Space>
-      <Chip onClick={handleClick}>Click Me</Chip>
-      <Chip disabled onClick={handleClick}>
+      <ChipButton onClick={handleClick}>Click Me</ChipButton>
+      <ChipButton disabled onClick={handleClick}>
         Click Me (nothing happens)
-      </Chip>
-      <Chip onClick={handleClick} onDelete={handleDelete}>
+      </ChipButton>
+      <ChipButton onClick={handleClick} onDelete={handleDelete}>
         Delete Me
-      </Chip>
-      <Chip disabled onClick={handleClick} onDelete={handleDelete}>
+      </ChipButton>
+      <ChipButton disabled onClick={handleClick} onDelete={handleDelete}>
         Delete Me (nothing happens)
-      </Chip>
+      </ChipButton>
     </Space>
   )
 }
 
-ClickAndDelete.parameters = {
-  storyshots: { disable: true },
-}
-
-export const Removable = () => {
-  const [values, setValues] = useState(['Cheddar', 'Gouda', 'Swiss'])
-  function getDeleteHandler(item: string) {
-    return () => {
-      const newValues = values.filter((value) => value !== item)
-      setValues(newValues)
-    }
-  }
-  return (
-    <Space>
-      {values.map((item) => (
-        <Chip onDelete={getDeleteHandler(item)} role="option" key={item}>
-          {item}
-        </Chip>
-      ))}
-    </Space>
-  )
-}
-
-Removable.parameters = {
+ChipButtons.parameters = {
   storyshots: { disable: true },
 }

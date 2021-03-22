@@ -24,19 +24,20 @@
 
  */
 
-import 'jest-styled-components'
 import React from 'react'
-import { assertSnapshot } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
+import { renderWithTheme } from '@looker/components-test-utils'
 import { Card } from './Card'
-import { CardMedia } from './CardMedia'
 
 describe('Card', () => {
-  test('default', () => assertSnapshot(<Card>🥑</Card>))
-  test('raised', () => assertSnapshot(<Card raised>🥑</Card>))
-  test('raised + CardMedia', () =>
-    assertSnapshot(
-      <Card raised>
-        <CardMedia image="http://placekitten.com/200/300" />
-      </Card>
-    ))
+  test('default', () => {
+    renderWithTheme(<Card>🥑</Card>)
+    expect(screen.getByText('🥑')).toBeInTheDocument()
+  })
+  test('raised', () => {
+    renderWithTheme(<Card raised>🥑</Card>)
+    expect(screen.getByText('🥑')).toHaveStyle(
+      'box-shadow: 0px 1px 8px rgba(0,0,0,0.08),0px 1px 1px rgba(0,0,0,0.05);'
+    )
+  })
 })
