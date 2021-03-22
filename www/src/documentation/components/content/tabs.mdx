@@ -3,81 +3,57 @@ title: Tabs
 storybook: true
 ---
 
-Tabs expects to receive a TabList with one or more Tab components. TabPanels expects TabPanel(s). Tabs manages the visibility of a single TabPanel based on its internal state.
+`Tabs` expects to receive a `TabList` with one or more Tab components. `TabPanels` expects `TabPanel`(s). `Tabs` manages the visibility of a single `TabPanel` based on its internal state.
 
-The order in which elements are placed inside TabList and TabPanels defines the relationship between them. The first Tab is related to the first TabPanel and so on.
-
-To create a disabled Tab add the disabled prop. You must still create a TabPanel for each Tab to keep the index positions in sync.
-
-Tabs supports scrolling when the number of Tabs are greater then the space alocated for it. - Try scrolling left-right.
+The order in which elements are placed inside `TabList` and `TabPanels` defines the relationship between them. The first `Tab` is related to the first `TabPanel` and so on.
 
 ```jsx
 <Tabs>
   <TabList>
     <Tab>Dog</Tab>
     <Tab>Cat</Tab>
-    <Tab disabled>Human</Tab>
-    <Tab>Fox</Tab>
-    <Tab>Monkey</Tab>
-    <Tab>Lion</Tab>
-    <Tab>Pig</Tab>
-    <Tab>Frog</Tab>
-    <Tab>Mouse</Tab>
-    <Tab>Bear</Tab>
-    <Tab>Cow</Tab>
   </TabList>
   <TabPanels>
-    <TabPanel>
-      <Heading fontWeight="SemiBold" fontSize="xxxlarge">
-        🐶 Dog
-      </Heading>
-    </TabPanel>
-    <TabPanel>
-      <Heading fontWeight="SemiBold" fontSize="xxxlarge">
-        🐱 Cat
-      </Heading>
-    </TabPanel>
-    <TabPanel>Placeholder for disabled "Human" tab</TabPanel>
-    <TabPanel>
-      <Heading fontWeight="SemiBold" fontSize="xxxlarge">
-        🦊 Fox
-      </Heading>
-    </TabPanel>
-    <TabPanel>
-      <Heading fontWeight="SemiBold" fontSize="xxxlarge">
-        🐵 Monkey
-      </Heading>
-    </TabPanel>
-    <TabPanel>
-      <Heading fontWeight="SemiBold" fontSize="xxxlarge">
-        🦁 Lion
-      </Heading>
-    </TabPanel>
-    <TabPanel>
-      <Heading fontWeight="SemiBold" fontSize="xxxlarge">
-        🐷 Pig
-      </Heading>
-    </TabPanel>
-    <TabPanel>
-      <Heading fontWeight="SemiBold" fontSize="xxxlarge">
-        🐸 Frog
-      </Heading>
-    </TabPanel>
-    <TabPanel>
-      <Heading fontWeight="SemiBold" fontSize="xxxlarge">
-        🐭 Mouse
-      </Heading>
-    </TabPanel>
-    <TabPanel>
-      <Heading fontWeight="SemiBold" fontSize="xxxlarge">
-        🐻 Bear
-      </Heading>
-    </TabPanel>
-    <TabPanel>
-      <Heading fontWeight="SemiBold" fontSize="xxxlarge">
-        🐮 Cow
-      </Heading>
-    </TabPanel>
+    <TabPanel>🐶 Dog</TabPanel>
+    <TabPanel>🐱 Cat</TabPanel>
+  </TabPanels>
+</Tabs>
+```
+
+## Horizonal Scroll
+
+`Tabs` supports scrolling when the tabs' combined width cannot be accomdated within the viewport width. - Try scrolling left-right.
+
+```jsx
+<Tabs>
+  <TabList>
+    <Tab>Really long tab title that should help demonstrate side-scroll</Tab>
+    <Tab>Yet-another-tab-title to get things width enough</Tab>
+    <Tab>Really, you must be obsessed with these long tab titles?</Tab>
+    <Tab>Okay, okay, we get it you want to see scrolling in action...</Tab>
+  </TabList>
+  <TabPanels>
+    <TabPanel>Tab Content 1</TabPanel>
+    <TabPanel>Tab Content 2</TabPanel>
+    <TabPanel>Tab Content 3</TabPanel>
+    <TabPanel>Tab Content 4</TabPanel>
+  </TabPanels>
+</Tabs>
+```
+
+## Disabled Tab(s)
+
+To create a disabled Tab add the `disabled` prop. NOTE: A `TabPanel` must still exist for disabled tabs to allow for tabs to keep the index positions in sync.
+
+```jsx
+<Tabs>
+  <TabList>
+    <Tab>Cat</Tab>
+    <Tab disabled>Dog</Tab>
+  </TabList>
+  <TabPanels>
+    <TabPanel>🐱 Cat</TabPanel>
+    <TabPanel>🐶 Dog</TabPanel>
   </TabPanels>
 </Tabs>
 ```
