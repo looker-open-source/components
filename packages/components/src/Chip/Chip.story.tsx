@@ -26,7 +26,6 @@
 
 import { Story } from '@storybook/react/types-6-0'
 import React, { useState } from 'react'
-import { ChipButton } from '../ChipButton'
 import { Space } from '../Layout'
 import { Chip, ChipProps } from './Chip'
 
