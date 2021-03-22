@@ -7,7 +7,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package @looker/components
 
+### BREAKING CHANGE
 
+* **Icon**: Change Icon interface to act as component rather than string union (#1925)
 
 
 
