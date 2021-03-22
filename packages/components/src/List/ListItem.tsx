@@ -61,6 +61,8 @@ const TruncateWrapper: FC<{
   </Text>
 )
 
+type ListItemRole = 'button' | 'link' | 'none'
+
 export interface ListItemProps
   extends CompatibleHTMLProps<HTMLElement>,
     ListItemStatefulProps {
@@ -97,8 +99,10 @@ export interface ListItemProps
    * Sets the correct accessible role for the ListItem:
    * - Use **'link'** for items that navigation to another page
    * - Use **'button'** for items that trigger in page interactions, like displaying a dialog
+   * - Use **'none'** when including buttons as children in the label container (i.e. the label container will be a <div>).
+   * @default 'button'
    */
-  itemRole?: 'link' | 'button'
+  itemRole?: ListItemRole
   /**
    * If true, text children and description will be truncated if text overflows
    */
@@ -107,17 +111,29 @@ export interface ListItemProps
 
 interface ListItemLabelProps extends CompatibleHTMLProps<HTMLElement> {
   disabled?: boolean
-  itemRole?: 'link' | 'button'
+  itemRole?: ListItemRole
 }
 
 export const ListItemLabel = styled.div
   .withConfig<ListItemLabelProps>({
     shouldForwardProp: (prop) => prop !== 'itemRole',
   })
-  .attrs<ListItemLabelProps>(({ disabled, itemRole = 'button' }) => ({
-    as: !disabled && itemRole === 'link' ? 'a' : 'button',
-    type: itemRole === 'button' || disabled ? 'button' : undefined,
-  }))<ListItemLabelProps>``
+  .attrs<ListItemLabelProps>(({ disabled, itemRole = 'button' }) => {
+    let domElement
+
+    if (!disabled && itemRole === 'link') {
+      domElement = 'a'
+    } else if (!disabled && itemRole === 'none') {
+      domElement = 'div'
+    } else {
+      domElement = 'button'
+    }
+
+    return {
+      as: domElement,
+      type: itemRole === 'button' || disabled ? 'button' : undefined,
+    }
+  })<ListItemLabelProps>``
 
 const ListItemInternal = forwardRef(
   (props: ListItemProps, ref: Ref<HTMLLIElement>) => {
