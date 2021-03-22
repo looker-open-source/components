@@ -24,11 +24,15 @@
 
  */
 
-import { assertSnapshot } from '@looker/components-test-utils'
-import 'jest-styled-components'
 import React from 'react'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
 import { VisuallyHidden } from './VisuallyHidden'
 
 test('VisuallyHiddenText default', () => {
-  assertSnapshot(<VisuallyHidden>I am hidden</VisuallyHidden>)
+  renderWithTheme(<VisuallyHidden>I am hidden</VisuallyHidden>)
+  expect(screen.getByText('I am hidden')).toBeInTheDocument()
+  expect(screen.getByText('I am hidden')).toHaveStyle(
+    'clip: rect(1px, 1px, 1px, 1px)'
+  )
 })

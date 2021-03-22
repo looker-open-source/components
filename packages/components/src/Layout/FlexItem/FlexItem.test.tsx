@@ -24,35 +24,34 @@
 
  */
 
-import 'jest-styled-components'
 import React from 'react'
-import { assertSnapshot } from '@looker/components-test-utils'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
 import { FlexItem } from './FlexItem'
 
-test('FlexItem default ', () => {
-  assertSnapshot(<FlexItem>💪</FlexItem>)
-})
+describe('FlexItem', () => {
+  test('default', () => {
+    renderWithTheme(<FlexItem data-testid="flex">💪</FlexItem>)
+    expect(screen.getByTestId('flex')).toHaveStyle('display: block;')
+  })
 
-test('FlexItem supports alignSelf ', () => {
-  assertSnapshot(<FlexItem alignSelf="center" />)
-})
+  test('alignSelf', () => {
+    renderWithTheme(<FlexItem data-testid="flex" alignSelf="center" />)
+    expect(screen.getByTestId('flex')).toHaveStyle('align-self: center;')
+  })
 
-test('FlexItem supports order ', () => {
-  assertSnapshot(<FlexItem order={1} />)
-  assertSnapshot(<FlexItem order={-1} />)
-})
+  test('order', () => {
+    renderWithTheme(<FlexItem data-testid="flex" order={1} />)
+    expect(screen.getByTestId('flex')).toHaveStyle('order: 1;')
+  })
 
-test('FlexItem supports flex ', () => {
-  assertSnapshot(<FlexItem flex="1" />)
-  assertSnapshot(<FlexItem flex="1 1" />)
-  assertSnapshot(<FlexItem flex="1 2 100px" />)
-  assertSnapshot(<FlexItem flex="1 50px" />)
-})
+  test('flex', () => {
+    renderWithTheme(<FlexItem data-testid="flex" flex="1 50px" />)
+    expect(screen.getByTestId('flex')).toHaveStyle('flex: 1 50px;')
+  })
 
-test('FlexItem supports basis ', () => {
-  assertSnapshot(<FlexItem flexBasis="100px" />)
-})
-
-test('FlexItem can be hidden ', () => {
-  assertSnapshot(<FlexItem hidden />)
+  test('basis', () => {
+    renderWithTheme(<FlexItem data-testid="flex" flexBasis="100px" />)
+    expect(screen.getByTestId('flex')).toHaveStyle('flex-basis: 100px;')
+  })
 })

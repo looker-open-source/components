@@ -25,20 +25,15 @@
  */
 
 import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { screen } from '@testing-library/react'
-import { TableDataCell } from './TableDataCell'
+import { Story } from '@storybook/react/types-6-0'
+import { ValidationMessage, ValidationMessageProps } from './ValidationMessage'
 
-test('TableDataCell', () => {
-  renderWithTheme(
-    <table>
-      <tbody>
-        <tr>
-          <TableDataCell data-testid="table-data-cell" />
-        </tr>
-      </tbody>
-    </table>
-  )
-  expect(screen.getByTestId('table-data-cell')).toBeInTheDocument()
-  expect(screen.getByTestId('table-data-cell').tagName).toEqual('TD')
-})
+const Template: Story<ValidationMessageProps> = (args) => (
+  <ValidationMessage {...args} />
+)
+
+export const Default = Template.bind({})
+Default.args = {
+  message: 'Error!',
+  type: 'error',
+}

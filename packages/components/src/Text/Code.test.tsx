@@ -25,16 +25,29 @@
  */
 
 import React from 'react'
-import { assertSnapshot } from '@looker/components-test-utils'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
 import { Code } from './Code'
 
-test('A default Code component', () => assertSnapshot(<Code>Hello</Code>))
+describe('Code', () => {
+  test('default', () => {
+    renderWithTheme(<Code>Hello</Code>)
+    expect(screen.getByText('Hello')).toBeInTheDocument()
+    expect(screen.getByText('Hello').tagName).toEqual('CODE')
+  })
 
-test('A Code component resized', () =>
-  assertSnapshot(<Code fontSize="xxxxlarge">Hello</Code>))
+  test('fontSize', () => {
+    renderWithTheme(<Code fontSize="xxxxlarge">Hello</Code>)
+    expect(screen.getByText('Hello')).toHaveStyle('font-size: 2.25rem;')
+  })
 
-test('A Code component aligned', () =>
-  assertSnapshot(<Code textAlign="right">Hello</Code>))
+  test('textAlign', () => {
+    renderWithTheme(<Code textAlign="right">Hello</Code>)
+    expect(screen.getByText('Hello')).toHaveStyle('text-align: right')
+  })
 
-test('A Code component weight', () =>
-  assertSnapshot(<Code fontWeight="bold">Hello</Code>))
+  test('fontWeight', () => {
+    renderWithTheme(<Code fontWeight="bold">Hello</Code>)
+    expect(screen.getByText('Hello')).toHaveStyle('font-weight: 700;')
+  })
+})

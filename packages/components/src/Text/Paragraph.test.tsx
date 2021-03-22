@@ -25,35 +25,61 @@
  */
 
 import React from 'react'
-import { assertSnapshot } from '@looker/components-test-utils'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
 import { Paragraph } from './Paragraph'
 
 describe('Paragraph', () => {
-  test('default', () => assertSnapshot(<Paragraph>Hello</Paragraph>))
+  test('default', () => {
+    renderWithTheme(<Paragraph>Hello</Paragraph>)
+    expect(screen.getByText('Hello')).toBeInTheDocument()
+    expect(screen.getByText('Hello').tagName).toEqual('P')
+  })
 
-  test('fontSize', () =>
-    assertSnapshot(<Paragraph fontSize="xxxxlarge">Hello</Paragraph>))
+  test('fontSize', () => {
+    renderWithTheme(<Paragraph fontSize="xxxxlarge">Hello</Paragraph>)
+    expect(screen.getByText('Hello')).toHaveStyle('font-size: 2.25rem;')
+  })
 
-  test('textAlign', () =>
-    assertSnapshot(<Paragraph textAlign="right">Hello</Paragraph>))
+  test('textAlign', () => {
+    renderWithTheme(<Paragraph textAlign="right">Hello</Paragraph>)
+    expect(screen.getByText('Hello')).toHaveStyle('text-align: right')
+  })
 
-  test('fontWeight', () =>
-    assertSnapshot(<Paragraph fontWeight="bold">Hello</Paragraph>))
+  test('fontWeight', () => {
+    renderWithTheme(<Paragraph fontWeight="bold">Hello</Paragraph>)
+    expect(screen.getByText('Hello')).toHaveStyle('font-weight: 700;')
+  })
 
-  test('color', () =>
-    assertSnapshot(<Paragraph color="critical">Hello</Paragraph>))
+  test('color', () => {
+    renderWithTheme(<Paragraph color="critical">Hello</Paragraph>)
+    expect(screen.getByText('Hello')).toHaveStyle('color:  rgb(204, 31, 54)')
+  })
 
-  test('textTransform', () =>
-    assertSnapshot(<Paragraph textTransform="uppercase">Hello</Paragraph>))
+  test('textTransform', () => {
+    renderWithTheme(<Paragraph textTransform="uppercase">Hello</Paragraph>)
+    expect(screen.getByText('Hello')).toHaveStyle('text-transform: uppercase;')
+  })
 
-  test('breakword', () =>
-    assertSnapshot(<Paragraph breakword>Hello</Paragraph>))
+  test('breakword', () => {
+    renderWithTheme(<Paragraph breakword>Hello</Paragraph>)
+    expect(screen.getByText('Hello')).toHaveStyle('overflow-wrap: break-word;')
+  })
 
-  test('textDecoration', () =>
-    assertSnapshot(<Paragraph textDecoration="line-through">Hello</Paragraph>))
+  test('textDecoration', () => {
+    renderWithTheme(<Paragraph textDecoration="line-through">Hello</Paragraph>)
+    expect(screen.getByText('Hello')).toHaveStyle(
+      'text-decoration: line-through;'
+    )
+  })
 
-  test('truncate', () => assertSnapshot(<Paragraph truncate>Hello</Paragraph>))
+  test('truncate', () => {
+    renderWithTheme(<Paragraph truncate>Hello</Paragraph>)
+    expect(screen.getByText('Hello')).toHaveStyle('text-overflow: ellipsis;')
+  })
 
-  test('multiline truncate', () =>
-    assertSnapshot(<Paragraph truncateLines={2}>Hello</Paragraph>))
+  test('multiline truncate', () => {
+    renderWithTheme(<Paragraph truncateLines={2}>Hello</Paragraph>)
+    expect(screen.getByText('Hello')).toHaveStyle('display: -webkit-box;')
+  })
 })

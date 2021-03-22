@@ -24,36 +24,46 @@
 
  */
 
-import 'jest-styled-components'
 import React from 'react'
-import { assertSnapshot } from '@looker/components-test-utils'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
 import { Flex } from './Flex'
 
-test('Flex default ', () => {
-  assertSnapshot(
-    <Flex>
-      <div>🥑</div>
-      <div>🐛</div>
-    </Flex>
-  )
-})
+describe('Flex', () => {
+  test('default ', () => {
+    renderWithTheme(
+      <Flex data-testid="flex">
+        <div>🥑</div>
+        <div>🐛</div>
+      </Flex>
+    )
+    expect(screen.getByTestId('flex')).toHaveStyle('display: flex')
+  })
 
-test('Flex supports justifyContent ', () => {
-  assertSnapshot(<Flex justifyContent="center" />)
-})
+  test('justifyContent', () => {
+    renderWithTheme(<Flex data-testid="flex" justifyContent="center" />)
+    expect(screen.getByTestId('flex')).toHaveStyle('justify-content: center')
+  })
 
-test('Flex supports alignItems ', () => {
-  assertSnapshot(<Flex alignItems="center" />)
-})
+  test('alignItems', () => {
+    renderWithTheme(<Flex data-testid="flex" alignItems="center" />)
+    expect(screen.getByTestId('flex')).toHaveStyle('align-items: center')
+  })
 
-test('Flex supports alignContent ', () => {
-  assertSnapshot(<Flex alignContent="start" />)
-})
+  test('alignContent', () => {
+    renderWithTheme(<Flex data-testid="flex" alignContent="start" />)
+    expect(screen.getByTestId('flex')).toHaveStyle('align-content: start')
+  })
 
-test('Flex supports flexDirection ', () => {
-  assertSnapshot(<Flex flexDirection="row-reverse" />)
-})
+  test('flexDirection', () => {
+    renderWithTheme(<Flex data-testid="flex" flexDirection="row-reverse" />)
+    expect(screen.getByTestId('flex')).toHaveStyle(
+      'flex-direction: row-reverse'
+    )
+  })
 
-test('Flex supports flexWrap ', () => {
-  assertSnapshot(<Flex flexWrap="nowrap" />)
+  test('flexWrap', () => {
+    renderWithTheme(<Flex data-testid="flex" flexWrap="nowrap" />)
+    expect(screen.getByTestId('flex')).toHaveStyle('flex-wrap: nowrap')
+  })
 })
