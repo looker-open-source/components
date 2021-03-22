@@ -57,7 +57,7 @@ const ListItemLayoutInternal: FC<ListItemLayoutProps> = ({
   const content = (
     <>
       {icon}
-      <Flex flexDirection="column" minWidth={0}>
+      <Flex flexDirection="column" minWidth={0} width="100%">
         {children}
         {description}
       </Flex>

@@ -81,8 +81,7 @@ export const ListItemWrapper = styled(
   outline: none;
   text-decoration: none;
 
-  & > button,
-  & > a {
+  & > *:first-child {
     ${listItemBackgroundColor}
 
     align-items: center;
@@ -113,8 +112,7 @@ export const ListItemWrapper = styled(
   ${({ focusVisible, theme }) =>
     focusVisible &&
     `
-      &:focus-within > button,
-      &:focus-within > a {
+      &:focus-within > *:first-child {
         box-shadow: inset 0 0 0 2px ${theme.colors.keyFocus};
       }
     `}
@@ -140,8 +138,7 @@ export const ListItemWrapper = styled(
   &[disabled] {
     color: ${({ theme: { colors } }) => colors.text1};
 
-    & > button,
-    & > a {
+    & > *:first-child {
       cursor: not-allowed;
     }
 
