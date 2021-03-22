@@ -64,7 +64,7 @@ import {
   parseBase10Int,
   isValidTime,
   TimeFormats,
-} from '../utils'
+} from '../InputTime/utils'
 
 /*
  * We've limited allowed intervals to a few approved options rather than
