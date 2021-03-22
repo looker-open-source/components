@@ -283,7 +283,7 @@ const ListItemInternal = forwardRef(
         iconSize={itemDimensions.iconSize}
         labelCreator={LabelCreator}
         px={itemDimensions.px}
-        py={itemDimensions.py}
+        py={itemRole === 'none' ? 'none' : itemDimensions.py}
       >
         {renderedChildren}
       </Layout>

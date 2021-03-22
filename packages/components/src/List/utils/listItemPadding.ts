@@ -33,7 +33,6 @@ export const listItemPadding = ({
   py: propsPy,
   theme: { space },
 }: {
-  accessory?: boolean
   theme: { space: SpaceRamp }
 } & Pick<ListItemDimensions, 'px' | 'py'>) => {
   /**
