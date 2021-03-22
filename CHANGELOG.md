@@ -3,12 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [0.18.1](https://github.com/looker-open-source/components/compare/v0.18.0...v0.18.1) (2021-03-22)
-
-**Note:** Version bump only for package monorepo
+# [1.0.0](https://github.com/looker-open-source/components/compare/v0.18.0...v1.0.0) (2021-03-22)
 
 
+### BREAKING CHANGE
 
+Version `1.0` changes how Icons are used within @looker/components, shipped within @looker/components and leveraged by downstream consumers.
+
+Fundamentally this changes icons from being a key/name (e.g.: "Calendar") to an SVG or component `<Calendar />`. Looker Components now leverages [Styled Icons](https://github.com/styled-icons/styled-icons) to provide types and design patterns as well as providing a complete set of "stock" Google Material icons.
 
 
 # [0.18.0](https://github.com/looker-open-source/components/compare/v0.17.0...v0.18.0) (2021-03-22)
