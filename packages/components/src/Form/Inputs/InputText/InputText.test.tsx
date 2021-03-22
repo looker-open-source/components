@@ -55,6 +55,7 @@ describe('InputText', () => {
     renderWithTheme(<InputText name="Bob" id="Bobby" />)
     expect(screen.getByRole('textbox')).toHaveAttribute('name', 'Bob')
     expect(screen.getByRole('textbox')).toHaveAttribute('id', 'Bobby')
+    expect(screen.getByRole('textbox')).toHaveAttribute('type', 'text')
   })
 
   test('should accept disabled', () => {

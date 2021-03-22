@@ -28,9 +28,17 @@ import 'jest-styled-components'
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { screen } from '@testing-library/react'
+import { Tooltip } from '../Tooltip'
 import { Status } from './Status'
 
 describe('Status', () => {
+  test('default', () => {
+    renderWithTheme(<Status data-testid="status" />)
+    expect(screen.getByTestId('status')).toHaveStyle(
+      'color: rgb(113, 118, 122)'
+    )
+  })
+
   test('critical Status', () => {
     renderWithTheme(<Status intent="critical" />)
     expect(screen.getByTitle('Error').parentElement).toHaveStyle(
@@ -64,5 +72,15 @@ describe('Status', () => {
     expect(screen.getByTitle('Warning').parentElement).toHaveStyle(
       'color: rgb(255, 168, 0)'
     )
+  })
+
+  test('wrapping in tooltip disable intent title', async () => {
+    renderWithTheme(
+      <Tooltip content="Meh">
+        <Status data-testid="status" title="Gone gone" />
+      </Tooltip>
+    )
+    expect(screen.getByTestId('status')).toHaveAttribute('aria-describedby')
+    expect(screen.queryByTitle('Gone gone')).not.toBeInTheDocument()
   })
 })

@@ -32,20 +32,6 @@ import { Beaker } from '@looker/icons'
 
 import { ListItem } from './ListItem'
 
-const globalConsole = global.console
-const warnMock = jest.fn()
-
-beforeEach(() => {
-  jest.useFakeTimers()
-  global.console = ({
-    warn: warnMock,
-  } as unknown) as Console
-})
-
-afterEach(() => {
-  global.console = globalConsole
-})
-
 describe('ListItem', () => {
   test('renders children', () => {
     const { getByText } = renderWithTheme(<ListItem>who!</ListItem>)
@@ -64,6 +50,17 @@ describe('ListItem', () => {
     )
     expect(getByText('Is an excellent question')).toBeVisible()
     expect(screen.getByRole('listitem')).not.toHaveAttribute('detail')
+  })
+
+  test('truncate', () => {
+    const { getByText } = renderWithTheme(
+      <ListItem truncate>
+        Some long text to truncate in my list item label
+      </ListItem>
+    )
+    expect(
+      getByText('Some long text to truncate in my list item label')
+    ).toBeVisible()
   })
 
   test('renders icon', () => {
@@ -212,12 +209,40 @@ describe('ListItem', () => {
     expect(queryByText('Detail')).toBeInTheDocument()
   })
 
+  test('onKeyUp callback functions', () => {
+    const onKeyUp = jest.fn()
+    renderWithTheme(<ListItem onKeyUp={onKeyUp}>Label</ListItem>)
+
+    fireEvent.keyUp(screen.getByText('Label'), {
+      charCode: 13,
+      code: 13,
+      key: 'Enter',
+    })
+
+    expect(onKeyUp).toHaveBeenCalled()
+  })
+
   test('warns on disabled link', () => {
+    const globalConsole = global.console
+    const warnMock = jest.fn()
+
+    global.console = ({
+      warn: warnMock,
+    } as unknown) as Console
+
     renderWithTheme(
-      <ListItem role="link" disabled>
+      <ListItem itemRole="link" disabled>
         Disabled but not
       </ListItem>
     )
-    expect(warnMock.mock.calls).toMatchInlineSnapshot(`Array []`)
+    expect(warnMock.mock.calls).toMatchInlineSnapshot(`
+      Array [
+        Array [
+          "itemRole=\\"link\\" and disabled cannot be combined - use itemRole=\\"button\\" if you need to offer a disabled ListItem",
+        ],
+      ]
+    `)
+
+    global.console = globalConsole
   })
 })
