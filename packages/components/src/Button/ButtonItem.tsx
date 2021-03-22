@@ -99,7 +99,9 @@ const ButtonLayout = forwardRef(
 
 ButtonLayout.displayName = 'ButtonLayout'
 
-const ButtonOuter = styled.button<ButtonItemProps>`
+const ButtonOuter = styled.button.attrs(({ type = 'button' }) => ({
+  type,
+}))<ButtonItemProps>`
   ${(props) =>
     props.focusVisible &&
     `box-shadow: 0 0 0.5px 1px ${props.theme.colors.keyFocus}`}

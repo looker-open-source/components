@@ -119,8 +119,9 @@ export const ListItemLabel = styled.div
   .withConfig<ListItemLabelProps>({
     shouldForwardProp: (prop) => prop !== 'itemRole',
   })
-  .attrs<ListItemLabelProps>(({ disabled, itemRole }) => ({
+  .attrs<ListItemLabelProps>(({ disabled, itemRole = 'button' }) => ({
     as: !disabled && itemRole === 'link' ? 'a' : 'button',
+    type: itemRole === 'button' || disabled ? 'button' : undefined,
   }))<ListItemLabelProps>``
 
 const ListItemInternal = forwardRef(

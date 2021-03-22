@@ -119,9 +119,13 @@ export interface IconButtonProps
   tooltipTextAlign?: Property.TextAlign
 }
 
-export const IconButtonStyle = styled.button.withConfig({
-  shouldForwardProp,
-})<IconButtonProps>`
+export const IconButtonStyle = styled.button
+  .withConfig({
+    shouldForwardProp,
+  })
+  .attrs(({ type = 'button' }) => ({
+    type,
+  }))<IconButtonProps>`
   ${({ focusVisible }) => buttonCSS('neutral', focusVisible)}
   height: auto;
 `

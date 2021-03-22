@@ -51,7 +51,11 @@ export interface TabProps
   onSelect?: () => void
 }
 
-const TabStyle = styled.button.withConfig({ shouldForwardProp })<TabProps>`
+const TabStyle = styled.button
+  .withConfig({ shouldForwardProp })
+  .attrs(({ type = 'button' }) => ({
+    type,
+  }))<TabProps>`
   ${reset}
   ${layout}
   ${padding}
