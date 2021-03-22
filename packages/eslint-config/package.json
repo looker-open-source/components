@@ -6,7 +6,7 @@
     "type": "git",
     "url": "git+https://github.com/looker-open-source/eslint-config.git"
   },
-  "version": "0.18.0",
+  "version": "0.18.1",
   "bugs": {
     "url": "https://github.com/looker-open-source/eslint-config/issues"
   },
