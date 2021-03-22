@@ -26,7 +26,7 @@
 
 import { Story } from '@storybook/react/types-6-0'
 import { ChartBar } from '@looker/icons'
-import { BarChart, PieChart, TableChart } from '@styled-icons/material'
+import { PieChart, TableChart } from '@styled-icons/material'
 import React from 'react'
 import { Select, SelectProps } from '../Select'
 
