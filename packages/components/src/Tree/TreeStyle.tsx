@@ -101,7 +101,7 @@ export const TreeStyle = styled.div<TreeStyleProps>`
   ${({ dividers }) => dividers && dividersCSS}
 
   & > ${Accordion} > ${AccordionContent} > ${List} > ${TreeBranch},
-  & > ${Accordion} > ${AccordionContent} > ${List} > ${ListItem} > *:first-child {
+  & > ${Accordion} > ${AccordionContent} > ${List} > ${ListItem} > .list-item-label {
     ${({ depth, indicatorSize, theme }) =>
       generateIndent(depth + 2, indicatorSize, theme)}
   }
@@ -109,7 +109,7 @@ export const TreeStyle = styled.div<TreeStyleProps>`
   /**
     These selectors are to support TreeArtificial
    */
-  & > ${List} > ${TreeBranch}, & > ${List} > ${ListItem} > *:first-child {
+  & > ${List} > ${TreeBranch}, & > ${List} > ${ListItem} > .list-item-label {
     ${({ depth, indicatorSize, theme }) =>
       generateIndent(depth + 2, indicatorSize, theme)}
   }
