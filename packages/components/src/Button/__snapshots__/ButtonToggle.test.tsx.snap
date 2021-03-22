@@ -146,6 +146,7 @@ exports[`ButtonToggle controlled 1`] = `
   <button
     aria-pressed="false"
     class="ButtonItem__ButtonOuter-sc-22szay-0 c2 c3"
+    type="button"
     value="Apples"
   >
     Apples
@@ -153,6 +154,7 @@ exports[`ButtonToggle controlled 1`] = `
   <button
     aria-pressed="false"
     class="ButtonItem__ButtonOuter-sc-22szay-0 c2 c3"
+    type="button"
     value="Oranges"
   >
     Oranges
@@ -160,6 +162,7 @@ exports[`ButtonToggle controlled 1`] = `
   <button
     aria-pressed="true"
     class="ButtonItem__ButtonOuter-sc-22szay-0 c2 c3"
+    type="button"
     value="Bananas"
   >
     Bananas
