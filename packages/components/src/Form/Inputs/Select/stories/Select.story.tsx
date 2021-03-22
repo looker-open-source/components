@@ -129,34 +129,6 @@ Icon.args = {
   value: 'pie',
 }
 
-export const TestRepro = () => (
-  <Select
-    placeholder="Select a visualization"
-    options={[
-      {
-        icon: <ChartBar data-testid="option-icon" />,
-        label: 'Bar',
-        value: 'bar',
-      },
-      { label: 'No Icon', value: 'noicon' },
-      {
-        icon: <BarChart data-testid="option-icon" />,
-        indicator: 'Test Indicator',
-        label: 'Column',
-        value: 'column',
-      },
-      {
-        icon: <p>Hello</p>,
-        label: 'Custom Icon',
-        value: 'custom',
-      },
-    ]}
-  />
-)
-TestRepro.parameters = {
-  storyshots: { disable: true },
-}
-
 export default {
   component: Select,
   title: 'Select',
