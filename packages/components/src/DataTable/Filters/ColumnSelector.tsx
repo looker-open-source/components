@@ -26,7 +26,7 @@
 
 import { useTranslation } from 'react-i18next'
 import React, { FC, useState } from 'react'
-
+import { ViewColumn } from '@styled-icons/material'
 import { usePopover, PopoverContent } from '../../Popover'
 import { IconButton } from '../../Button/IconButton'
 import { CheckboxGroup } from '../../Form/Inputs/OptionsGroup'
@@ -102,7 +102,7 @@ export const ColumnSelector: FC<ColumnSelectorProps> = ({
     <>
       {popover}
       <IconButton
-        icon="ViewColumn"
+        icon={<ViewColumn />}
         label={t('Select columns to display')}
         {...domProps}
       />

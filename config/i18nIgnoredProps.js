@@ -26,11 +26,13 @@
 
 const ours = [
   'align',
-  'icon',
-  'iconBefore',
-  'iconAfter',
   'gap',
   'grid-area',
+  'icon',
+  'iconAfter',
+  'iconBefore',
+  'iconVerticalAlign',
+  'iconViewBox',
   'textDecoration',
 ]
 const aria = [

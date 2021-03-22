@@ -26,6 +26,8 @@
 
 import { useTranslation } from 'react-i18next'
 import { CompatibleHTMLProps } from '@looker/design-tokens'
+import { Close, Error } from '@styled-icons/material'
+import { ExpandLess, ExpandMore } from '@styled-icons/material-rounded'
 import React, { FC, MouseEvent, ReactElement } from 'react'
 import styled from 'styled-components'
 import compact from 'lodash/compact'
@@ -87,12 +89,12 @@ export const AdvancedInputControls: FC<AdvancedInputControlsProps> = (
         </Span>
       ),
       validationType === 'error' && (
-        <Icon name="Error" size={20} color="critical" mx="xxsmall" />
+        <Icon icon={<Error />} size={20} color="critical" mx="xxsmall" />
       ),
       showClear && (
         <IconButton
           size="xsmall"
-          icon="Close"
+          icon={<Close />}
           label={clearIconLabel}
           onClick={onClear}
           tooltipDisabled={disabled}
@@ -101,7 +103,7 @@ export const AdvancedInputControls: FC<AdvancedInputControlsProps> = (
       ),
       showCaret && (
         <CaretIcon
-          name={isVisibleOptions ? 'CaretUp' : 'CaretDown'}
+          icon={isVisibleOptions ? <ExpandLess /> : <ExpandMore />}
           disabled={disabled}
           data-testid="caret"
         />

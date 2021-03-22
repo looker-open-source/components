@@ -31,11 +31,12 @@ import {
   StatefulColor,
   shouldForwardProp,
 } from '@looker/design-tokens'
+import { StyledIconBase } from '@styled-icons/styled-icon'
 import React, { forwardRef, Ref, useState } from 'react'
 import styled, { css } from 'styled-components'
 import { minWidth, maxWidth, width } from 'styled-system'
 import { buttonSize, buttonIconSizeMap, buttonPadding } from './size'
-import { ButtonIcon, buttonIcon } from './icon'
+import { buttonIcon } from './icon'
 import { ButtonProps } from './types'
 
 export const buttonCSS = (color: StatefulColor, focusVisible?: boolean) => css`
@@ -69,6 +70,15 @@ export const buttonCSS = (color: StatefulColor, focusVisible?: boolean) => css`
   ${space}
 `
 
+export const buttonIconSize = css<ButtonProps>`
+  ${StyledIconBase} {
+    height: ${({ theme, size = 'medium' }) =>
+      theme.sizes[buttonIconSizeMap[size]]};
+    width: ${({ theme, size = 'medium' }) =>
+      theme.sizes[buttonIconSizeMap[size]]};
+  }
+`
+
 const ButtonOuter = styled.button
   .withConfig({ shouldForwardProp })
   .attrs(({ color = 'key' }) => ({ color }))<ButtonProps>`
@@ -100,8 +110,6 @@ const ButtonJSX = forwardRef(
       onBlur && onBlur(event)
     }
 
-    const iconSize = buttonIconSizeMap[size]
-
     return (
       <ButtonOuter
         {...restProps}
@@ -112,9 +120,9 @@ const ButtonJSX = forwardRef(
         ref={ref}
         px={buttonPadding(!!(iconBefore || iconAfter), size)}
       >
-        {iconBefore && <ButtonIcon name={iconBefore} size={iconSize} />}
+        {iconBefore}
         {children}
-        {iconAfter && <ButtonIcon name={iconAfter} size={iconSize} />}
+        {iconAfter}
       </ButtonOuter>
     )
   }
@@ -122,6 +130,9 @@ const ButtonJSX = forwardRef(
 
 ButtonJSX.displayName = 'ButtonJSX'
 
-export const ButtonBase = styled(ButtonJSX)<ButtonProps>`
+export const GenericButtonBase = styled(ButtonJSX)<ButtonProps>``
+
+export const ButtonBase = styled(GenericButtonBase)<ButtonProps>`
   ${buttonIcon}
+  ${buttonIconSize}
 `

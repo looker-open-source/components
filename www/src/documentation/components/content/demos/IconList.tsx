@@ -25,29 +25,40 @@
  */
 
 import React from 'react'
-import { Icon } from '@looker/components'
-import { iconNameList, IconNames } from '@looker/icons'
+import { Icon, Paragraph, SpaceVertical } from '@looker/components'
+import { iconsList } from '@looker/icons'
+import * as AllIcons from '@looker/icons'
 import CopyToClipboard from 'react-copy-to-clipboard'
 import styled from 'styled-components'
 
-export const IconList = () => {
-  return (
-    <IconGrid>
-      {iconNameList.map((name) => (
-        <CopyToClipboard
-          text={`<Icon name="${name}" />`}
-          onCopy={() => alert(`Copied icon "${name}" to clipboard.`)}
-          key={name}
+export const IconList = () => (
+  <IconGrid>
+    {iconsList.map((name) => (
+      <CopyToClipboard
+        text={`<${name} />`}
+        onCopy={() => alert(`Copied icon "${name}" to clipboard.`)}
+        key={name}
+      >
+        <IconGridItem
+          p="small"
+          gap="xsmall"
+          align="center"
+          tabIndex={0}
+          role="button"
         >
-          <IconGridItem>
-            <Icon name={name as IconNames} size={32} />
-            <div>{name}</div>
-          </IconGridItem>
-        </CopyToClipboard>
-      ))}
-    </IconGrid>
-  )
-}
+          <Icon
+            display="inline-flex"
+            icon={AllIcons[name].render()}
+            size="large"
+          />
+          <Paragraph color="currentColor" fontSize="small" textAlign="center">
+            {name}
+          </Paragraph>
+        </IconGridItem>
+      </CopyToClipboard>
+    ))}
+  </IconGrid>
+)
 
 const IconGrid = styled.div`
   display: grid;
@@ -56,14 +67,11 @@ const IconGrid = styled.div`
   margin-top: 2rem;
 `
 
-const IconGridItem = styled.div`
-  border: 1px solid ${({ theme }) => theme.colors.ui1};
+const IconGridItem = styled(SpaceVertical)`
+  border: 1px solid ${({ theme }) => theme.colors.ui2};
   border-radius: ${({ theme }) => theme.radii.medium};
-  color: ${({ theme }) => theme.colors.text3};
   cursor: pointer;
-  font-size: ${({ theme }) => theme.fontSizes.small};
   padding: 1rem;
-  text-align: center;
 
   &:hover {
     border-color: ${({ theme }) => theme.colors.keyFocus};

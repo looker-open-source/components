@@ -27,6 +27,7 @@
 import 'jest-styled-components'
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
+import { Favorite } from '@styled-icons/material'
 import {
   act,
   fireEvent,
@@ -50,19 +51,21 @@ const runTimers = () =>
 
 describe('IconButton', () => {
   test('toggle applies aria-pressed', () => {
-    renderWithTheme(<IconButton label="Test" icon="Favorite" toggle />)
+    renderWithTheme(<IconButton label="Test" icon={<Favorite />} toggle />)
     const button = screen.getByRole('button')
     expect(button).toHaveAttribute('aria-pressed')
   })
 
   test('aria-pressed not present without toggle', () => {
-    renderWithTheme(<IconButton label="Test" icon="Favorite" />)
+    renderWithTheme(<IconButton label="Test" icon={<Favorite />} />)
     const button = screen.getByRole('button')
     expect(button).not.toHaveAttribute('aria-pressed')
   })
 
   test('allows for ARIA attributes', () => {
-    renderWithTheme(<IconButton label="Test" icon="Favorite" aria-haspopup />)
+    renderWithTheme(
+      <IconButton label="Test" icon={<Favorite />} aria-haspopup />
+    )
     const button = screen.getByRole('button')
     expect(button).toHaveAttribute('aria-haspopup')
   })
@@ -75,7 +78,7 @@ describe('IconButton', () => {
     renderWithTheme(
       <IconButton
         label="Test"
-        icon="Favorite"
+        icon={<Favorite />}
         onMouseEnter={fauxMouseEnter}
         onClick={fauxClick}
       />
@@ -95,7 +98,7 @@ describe('IconButton', () => {
 
   test('has built-in tooltip', async () => {
     const label = 'Mark as my Favorite'
-    renderWithTheme(<IconButton label={label} icon="Favorite" />)
+    renderWithTheme(<IconButton label={label} icon={<Favorite />} />)
 
     const notTooltip = screen.getByText(label)
     expect(notTooltip).toBeInTheDocument() // accessibility text
@@ -119,7 +122,7 @@ describe('IconButton', () => {
         id="test-iconButton"
         tooltipDisabled
         label={label}
-        icon="Favorite"
+        icon={<Favorite />}
       />
     )
 
@@ -135,7 +138,7 @@ describe('IconButton', () => {
     const label = 'Mark as my Favorite'
     const { getByText, getByRole } = renderWithTheme(
       <Tooltip content={tooltip}>
-        <IconButton label={label} icon="Favorite" />
+        <IconButton label={label} icon={<Favorite />} />
       </Tooltip>
     )
 
@@ -162,7 +165,7 @@ describe('IconButton', () => {
         tooltipWidth="4rem"
         tooltipTextAlign="right"
         label={label}
-        icon="Favorite"
+        icon={<Favorite />}
       />
     )
 

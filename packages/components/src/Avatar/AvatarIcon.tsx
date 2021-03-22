@@ -26,18 +26,18 @@
 
 import React, { FC } from 'react'
 import { omitStyledProps } from '@looker/design-tokens'
-import { IconNames } from '@looker/icons'
+import { PersonOutline } from '@styled-icons/material'
+import { StyledIconBase } from '@styled-icons/styled-icon'
 import styled from 'styled-components'
 import { variant } from 'styled-system'
-import { Icon } from '../Icon'
+import { IconType } from '../Icon'
 import { avatarCSS, AvatarProps } from './Avatar'
 
 export interface AvatarIconProps extends AvatarProps {
   /**
-   * Icon to display
-   * @default 'User'
+   * Icon to display. If not sent will default to <PersonOutline /> from Material Icons
    */
-  icon?: IconNames
+  icon?: IconType
 
   /**
    * Icon fill & border color
@@ -81,17 +81,13 @@ const size = variant({
 
 const AvatarLayout: FC<AvatarIconProps> = ({
   color,
-  icon = 'User',
+  icon = <PersonOutline />,
   role,
   ...props
 }) => {
   const BaseElement = role === 'button' ? 'button' : 'div'
 
-  return (
-    <BaseElement {...omitStyledProps(props)}>
-      <Icon name={icon} color={color} />
-    </BaseElement>
-  )
+  return <BaseElement {...omitStyledProps(props)}>{icon}</BaseElement>
 }
 
 export const AvatarIcon = styled(AvatarLayout).attrs(
@@ -105,7 +101,7 @@ export const AvatarIcon = styled(AvatarLayout).attrs(
   ${({ role }) => role === 'button' && 'cursor: pointer;'}
   border: solid 1px currentColor;
 
-  ${Icon} {
+  ${StyledIconBase} {
     ${size}
   }
 `

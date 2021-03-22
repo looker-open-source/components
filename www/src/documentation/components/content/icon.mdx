@@ -3,98 +3,70 @@ title: Icon
 storybook: true
 ---
 
-import { IconList } from './demos'
+`<Icon />` component uses the property `icon` to display the correct icon.
 
-`<Icon />` component uses the property `name` to display the correct icon.
-
-```jsx
-<Space around>
-  <Icon name="Check" />
-  <Icon name="Favorite" size="large" />
-  <Icon name="GearOutline" size="small" />
-</Space>
-```
-
-## Icon Attributes
-
-### artwork
-
-`artwork` allows for external patterns that is not already available in our Icon list. You may only specify name OR artwork, not both.
+Icon is expected be a `ReactNode` element (most likely an SVG).
 
 ```jsx
 <Space around>
-  <Icon
-    artwork={
-      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path
-          d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 17H11V15H13V17ZM13 13H11V7H13V13Z"
-          fill="#7FFFD4"
-        />
-      </svg>
-    }
-    size="large"
-  />
-  <Icon
-    artwork={
-      <svg
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M7 11H9V13H7V11ZM21 6V20C21 21.1 20.1 22 19 22H5C3.89 22 3 21.1 3 20L3.01 6C3.01 4.9 3.89 4 5 4H6V2H8V4H16V2H18V4H19C20.1 4 21 4.9 21 6ZM5 8H19V6H5V8ZM19 20V10H5V20H19ZM15 13H17V11H15V13ZM11 13H13V11H11V13Z"
-          fill="#FF7F50"
-        />
-      </svg>
-    }
-  />
+  <Icon icon={<Done />} />
+  <Icon icon={<Favorite />} size="large" />
+  <Icon icon={<Settings />} size="small" />
 </Space>
 ```
 
-### color
+## Color
 
-`color` by default, icons inherit the text color of the component they are embedded within. But it can also have it specify as a prop.
+`color` defaults to `currentColor` - that is, the text color of the component they are embedded within. However the developer can explicitly specify color as a prop.
 
 ```jsx
 <Space around>
-  <Icon name="Trash" color="inform" />
-  <Box
-    color="critical"
-    bg="ui5"
-    p="large"
-    width="210px"
-    display="flex"
-    flexDirection="column"
-    borderRadius="medium"
-  >
-    The text in this Box is red and so is the icon.
-    <Icon name="Trash" size="large" mx="auto" />
-  </Box>
+  <Icon icon={<Delete />} color="inform" />
+  <Flex alignItems="center" color="critical" bg="criticalSubtle" p="large">
+    <Icon icon={<Delete />} display="inline-flex" />
+    Text color is red so the Icon is as well
+  </Flex>
 </Space>
 ```
 
-### size
+## Size
 
 `size` can be specified by using the size prop. By default the size will be medium.
 
 ```jsx
 <Space around>
-  <Icon name="Beaker" color="inform" size="xxsmall" />
-  <Icon name="Beaker" color="inform" size="xsmall" />
-  <Icon name="Beaker" color="inform" size="small" />
-  <Icon name="Beaker" color="inform" size="medium" />
-  <Icon name="Beaker" color="inform" size="large" />
+  <Icon icon={<Beaker />} color="inform" size="xxsmall" />
+  <Icon icon={<Beaker />} color="inform" size="xsmall" />
+  <Icon icon={<Beaker />} color="inform" size="small" />
+  <Icon icon={<Beaker />} color="inform" size="medium" />
+  <Icon icon={<Beaker />} color="inform" size="large" />
 </Space>
 ```
 
-### Accessibility
+## Accessibility
 
 When using an `Icon` we strongly encourage specification of a `title` attribute. If an `Icon` is used without an explicitly specified `title` attribute `aria-hidden="true"` will be added to hide the icon from screen readers. The assumption will be made that other efforts have been made to give the user context.
 
-## Icon Library
+# Material Design Icons
+
+(Styled Icons)[https://styled-icons.js.org/] has a massive suite of prebuilt icons for an array of icon libraries including the Material Design collection. Within suite of components we often leverage `@styled-icons/material`, `@styled-icons/material-outlined` and `@styled-icons/material-rounded`
+
+```js static
+import { Add } from '@styled-icons/material'
+import { Add } from '@styled-icons/material-outlined'
+import { Add } from '@styled-icons/material-rounded'
+```
+
+# @looker/icons Library
+
+The Looker Components team ships a small suite of Looker-specific icons via a NPM package - `@looker/icons`. Below you can see a complete list of the icons we ship in our package. To use one simply add the package to your project and import the apppriate icon:
+
+```js static
+import { Pivot } from '@looker/icons'
+```
 
 **Tip:** you can click an icon below to copy it to your clipboard.
+
+import { IconList } from './demos'
 
 <IconList />

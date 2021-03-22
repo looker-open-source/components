@@ -26,42 +26,56 @@
 
 import 'jest-styled-components'
 import React from 'react'
-import { assertSnapshot, renderWithTheme } from '@looker/components-test-utils'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { theme } from '@looker/design-tokens'
+import { Add, Delete } from '@styled-icons/material'
+import { screen } from '@testing-library/react'
 import { Icon } from './Icon'
 
 describe('Icon', () => {
   test('Default', () => {
-    assertSnapshot(<Icon name="Plus" />)
+    renderWithTheme(<Icon icon={<Add />} />)
   })
 
   test('Styled system size', () => {
-    assertSnapshot(<Icon name="Plus" size="large" />)
+    renderWithTheme(
+      <Icon data-testid="icon-wrapper" icon={<Add />} size="large" />
+    )
+
+    expect(screen.getByTestId('icon-wrapper')).toHaveStyle(
+      `height: ${theme.sizes.large}`
+    )
+    expect(screen.getByTestId('icon-wrapper')).toHaveStyle(
+      `width: ${theme.sizes.large}`
+    )
   })
 
   test('Explicit size - integer as pixels', () => {
-    assertSnapshot(<Icon name="Plus" size={12} />)
+    renderWithTheme(
+      <Icon data-testid="icon-wrapper" icon={<Add />} size={12} />
+    )
+    expect(screen.getByTestId('icon-wrapper')).toHaveStyle('width: 12px')
   })
 
   test('Explicit size - string', () => {
-    assertSnapshot(<Icon name="Plus" size="1rem" />)
+    renderWithTheme(
+      <Icon data-testid="icon-wrapper" icon={<Add />} size="1rem" />
+    )
+    expect(screen.getByTestId('icon-wrapper')).toHaveStyle('width: 1rem')
   })
 
   test('DOM attribute support', () => {
-    const { findByLabelText } = renderWithTheme(
-      <Icon name="Plus" aria-label="Add" />
-    )
-    expect(findByLabelText('Add')).toBeTruthy()
+    renderWithTheme(<Icon icon={<Add />} aria-label="Add" />)
+    expect(screen.getByLabelText('Add')).toBeTruthy()
   })
 
   test(`No title by default`, () => {
-    const { queryByLabelText } = renderWithTheme(<Icon name="Trash" />)
-    expect(queryByLabelText("Oscar's House")).toBeFalsy()
+    renderWithTheme(<Icon icon={<Delete />} />)
+    expect(screen.queryByLabelText("Oscar's House")).toBeFalsy()
   })
 
   test(`Title is assigned properly to SVG art`, () => {
-    const { getByTitle } = renderWithTheme(
-      <Icon name="Trash" title="Oscar's House" />
-    )
-    expect(getByTitle("Oscar's House")).toBeTruthy()
+    renderWithTheme(<Icon icon={<Delete />} title="Oscar's House" />)
+    expect(screen.getByTitle("Oscar's House")).toBeTruthy()
   })
 })

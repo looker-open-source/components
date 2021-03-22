@@ -26,7 +26,9 @@
 
 import React from 'react'
 import styled from 'styled-components'
+import { LogoRings } from '@looker/icons'
 import { Story } from '@storybook/react/types-6-0'
+import { PieChart, VerifiedUser } from '@styled-icons/material'
 import { Aside, Footer, Header, Layout, LayoutProps, Page, Section } from '..'
 import { SpaceVertical } from '../../Space'
 import { Heading, Paragraph } from '../../../Text'
@@ -36,6 +38,36 @@ import { Tab, Tabs, TabList, TabPanel, TabPanels } from '../../../Tabs'
 export default {
   title: 'Layout',
 }
+
+const fillterParagraph = (
+  <Paragraph fontSize="small">
+    Neutra franzen cardigan, semiotics tousled gochujang green juice activated
+    charcoal succulents flannel ramps palo santo. Kale chips williamsburg
+    hexagon, etsy cray 8-bit cornhole tilde neutra DIY snackwave whatever food
+    truck marfa fashion axe. Polaroid master cleanse twee DIY tbh pop-up
+    biodiesel austin hell of scenester woke man bun 3 wolf moon. Venmo coloring
+    book beard adaptogen four loko locavore wolf street art +1 kombucha marfa
+    90's unicorn everyday carry.
+  </Paragraph>
+)
+
+const longContent = (
+  <SpaceVertical>
+    <Paragraph fontSize="small">
+      I'm baby man braid cold-pressed seitan sartorial, tumblr ennui selfies
+      chia twee subway tile af 90's celiac. Gochujang distillery tumeric flannel
+      lumbersexual gastropub fashion axe viral neutra. Pickled narwhal everyday
+      carry activated charcoal succulents occupy YOLO yuccie forage seitan
+      kitsch. Celiac bespoke cloud bread asymmetrical bicycle rights XOXO
+      cold-pressed hashtag listicle hell of migas. Chillwave brooklyn fam occupy
+      microdosing leggings. Poke af cornhole hot chicken. Portland tattooed +1
+      chia ennui.
+    </Paragraph>
+    {fillterParagraph}
+    {fillterParagraph}
+    {fillterParagraph}
+  </SpaceVertical>
+)
 
 const Template: Story<LayoutProps> = (args) => (
   <Highlighter>
@@ -61,55 +93,7 @@ const Template: Story<LayoutProps> = (args) => (
               <Tab>Black</Tab>
             </TabList>
             <TabPanels>
-              <TabPanel>
-                <SpaceVertical>
-                  <Paragraph fontSize="small">
-                    I'm baby man braid cold-pressed seitan sartorial, tumblr
-                    ennui selfies chia twee subway tile af 90's celiac.
-                    Gochujang distillery tumeric flannel lumbersexual gastropub
-                    fashion axe viral neutra. Pickled narwhal everyday carry
-                    activated charcoal succulents occupy YOLO yuccie forage
-                    seitan kitsch. Celiac bespoke cloud bread asymmetrical
-                    bicycle rights XOXO cold-pressed hashtag listicle hell of
-                    migas. Chillwave brooklyn fam occupy microdosing leggings.
-                    Poke af cornhole hot chicken. Portland tattooed +1 chia
-                    ennui.
-                  </Paragraph>
-                  <Paragraph fontSize="small">
-                    Neutra franzen cardigan, semiotics tousled gochujang green
-                    juice activated charcoal succulents flannel ramps palo
-                    santo. Kale chips williamsburg hexagon, etsy cray 8-bit
-                    cornhole tilde neutra DIY snackwave whatever food truck
-                    marfa fashion axe. Polaroid master cleanse twee DIY tbh
-                    pop-up biodiesel austin hell of scenester woke man bun 3
-                    wolf moon. Venmo coloring book beard adaptogen four loko
-                    locavore wolf street art +1 kombucha marfa 90's unicorn
-                    everyday carry.
-                  </Paragraph>
-                  <Paragraph fontSize="small">
-                    Neutra franzen cardigan, semiotics tousled gochujang green
-                    juice activated charcoal succulents flannel ramps palo
-                    santo. Kale chips williamsburg hexagon, etsy cray 8-bit
-                    cornhole tilde neutra DIY snackwave whatever food truck
-                    marfa fashion axe. Polaroid master cleanse twee DIY tbh
-                    pop-up biodiesel austin hell of scenester woke man bun 3
-                    wolf moon. Venmo coloring book beard adaptogen four loko
-                    locavore wolf street art +1 kombucha marfa 90's unicorn
-                    everyday carry.
-                  </Paragraph>
-                  <Paragraph fontSize="small">
-                    Neutra franzen cardigan, semiotics tousled gochujang green
-                    juice activated charcoal succulents flannel ramps palo
-                    santo. Kale chips williamsburg hexagon, etsy cray 8-bit
-                    cornhole tilde neutra DIY snackwave whatever food truck
-                    marfa fashion axe. Polaroid master cleanse twee DIY tbh
-                    pop-up biodiesel austin hell of scenester woke man bun 3
-                    wolf moon. Venmo coloring book beard adaptogen four loko
-                    locavore wolf street art +1 kombucha marfa 90's unicorn
-                    everyday carry.
-                  </Paragraph>
-                </SpaceVertical>
-              </TabPanel>
+              <TabPanel>{longContent}</TabPanel>
             </TabPanels>
           </Tabs>
         </Section>
@@ -124,6 +108,24 @@ const Template: Story<LayoutProps> = (args) => (
   </Highlighter>
 )
 
+const menuItems = (
+  <>
+    <MenuItem
+      detail="detail"
+      description="this is the description"
+      icon={<LogoRings />}
+    >
+      Looker
+    </MenuItem>
+    <MenuItem description="this is the description" icon={<VerifiedUser />}>
+      Validate
+    </MenuItem>
+    <MenuItem detail="detail" icon={<PieChart />}>
+      Pizza
+    </MenuItem>
+  </>
+)
+
 const Template2: Story<LayoutProps> = (args) => (
   <Highlighter>
     <Page {...args}>
@@ -135,79 +137,13 @@ const Template2: Story<LayoutProps> = (args) => (
           <Header height="4rem" px="large">
             Aside Header
           </Header>
-          <MenuItem
-            detail="detail"
-            description="this is the description"
-            icon="LogoRings"
-          >
-            Looker
-          </MenuItem>
-          <MenuItem description="this is the description" icon="Validate">
-            Validate
-          </MenuItem>
-          <MenuItem detail="detail" icon="ChartPie">
-            Pizza
-          </MenuItem>
-          <MenuItem
-            detail="detail"
-            description="this is the description"
-            icon="LogoRings"
-          >
-            Looker
-          </MenuItem>
-          <MenuItem description="this is the description" icon="Validate">
-            Validate
-          </MenuItem>
-          <MenuItem detail="detail" icon="ChartPie">
-            Pizza
-          </MenuItem>
+          {menuItems}
+          {menuItems}
         </Aside>
         <Layout>
           <Section p="xxlarge" as="main">
             <Heading>Section title</Heading>
-            <SpaceVertical>
-              <Paragraph fontSize="small">
-                I'm baby man braid cold-pressed seitan sartorial, tumblr ennui
-                selfies chia twee subway tile af 90's celiac. Gochujang
-                distillery tumeric flannel lumbersexual gastropub fashion axe
-                viral neutra. Pickled narwhal everyday carry activated charcoal
-                succulents occupy YOLO yuccie forage seitan kitsch. Celiac
-                bespoke cloud bread asymmetrical bicycle rights XOXO
-                cold-pressed hashtag listicle hell of migas. Chillwave brooklyn
-                fam occupy microdosing leggings. Poke af cornhole hot chicken.
-                Portland tattooed +1 chia ennui.
-              </Paragraph>
-              <Paragraph fontSize="small">
-                Neutra franzen cardigan, semiotics tousled gochujang green juice
-                activated charcoal succulents flannel ramps palo santo. Kale
-                chips williamsburg hexagon, etsy cray 8-bit cornhole tilde
-                neutra DIY snackwave whatever food truck marfa fashion axe.
-                Polaroid master cleanse twee DIY tbh pop-up biodiesel austin
-                hell of scenester woke man bun 3 wolf moon. Venmo coloring book
-                beard adaptogen four loko locavore wolf street art +1 kombucha
-                marfa 90's unicorn everyday carry.
-              </Paragraph>
-              <Paragraph fontSize="small">
-                Neutra franzen cardigan, semiotics tousled gochujang green juice
-                activated charcoal succulents flannel ramps palo santo. Kale
-                chips williamsburg hexagon, etsy cray 8-bit cornhole tilde
-                neutra DIY snackwave whatever food truck marfa fashion axe.
-                Polaroid master cleanse twee DIY tbh pop-up biodiesel austin
-                hell of scenester woke man bun 3 wolf moon. Venmo coloring book
-                beard adaptogen four loko locavore wolf street art +1 kombucha
-                marfa 90's unicorn everyday carry.
-              </Paragraph>
-              <Paragraph fontSize="small">
-                Neutra franzen cardigan, semiotics tousled gochujang green juice
-                activated charcoal succulents flannel ramps palo santo. Kale
-                chips williamsburg hexagon, etsy cray 8-bit cornhole tilde
-                neutra DIY snackwave whatever food truck marfa fashion axe.
-                Polaroid master cleanse twee DIY tbh pop-up biodiesel austin
-                hell of scenester woke man bun 3 wolf moon. Venmo coloring book
-                beard adaptogen four loko locavore wolf street art +1 kombucha
-                marfa 90's unicorn everyday carry.
-              </Paragraph>
-            </SpaceVertical>
+            {longContent}
           </Section>
           <Footer height="3rem" px="large">
             Section Footer
@@ -217,32 +153,8 @@ const Template2: Story<LayoutProps> = (args) => (
           <Header height="4rem" px="large">
             Alternate Aside Header
           </Header>
-          <MenuItem
-            detail="detail"
-            description="this is the description"
-            icon="LogoRings"
-          >
-            Looker
-          </MenuItem>
-          <MenuItem description="this is the description" icon="Validate">
-            Validate
-          </MenuItem>
-          <MenuItem detail="detail" icon="ChartPie">
-            Pizza
-          </MenuItem>
-          <MenuItem
-            detail="detail"
-            description="this is the description"
-            icon="LogoRings"
-          >
-            Looker
-          </MenuItem>
-          <MenuItem description="this is the description" icon="Validate">
-            Validate
-          </MenuItem>
-          <MenuItem detail="detail" icon="ChartPie">
-            Pizza
-          </MenuItem>
+          {menuItems}
+          {menuItems}
           <Footer height="3rem" px="large">
             Alternate Aside Footer
           </Footer>

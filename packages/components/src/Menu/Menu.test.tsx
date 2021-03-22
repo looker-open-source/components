@@ -34,8 +34,8 @@ import {
 } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import React, { useRef } from 'react'
-
 import { renderWithTheme } from '@looker/components-test-utils'
+import { Favorite } from '@styled-icons/material-outlined'
 import { Button } from '../Button'
 import { Tooltip } from '../Tooltip'
 import { Menu, MenuItem } from './'
@@ -44,8 +44,8 @@ const menu = (
   <Menu
     content={
       <>
-        <MenuItem icon="FavoriteOutline">Gouda</MenuItem>
-        <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
+        <MenuItem icon={<Favorite />}>Gouda</MenuItem>
+        <MenuItem icon={<Favorite />}>Swiss</MenuItem>
       </>
     }
   >
@@ -99,10 +99,10 @@ describe('<Menu />', () => {
         <Menu
           content={
             <>
-              <MenuItem icon="FavoriteOutline" onClick={handleClick}>
+              <MenuItem icon={<Favorite />} onClick={handleClick}>
                 Gouda
               </MenuItem>
-              <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
+              <MenuItem icon={<Favorite />}>Swiss</MenuItem>
             </>
           }
         >
@@ -138,8 +138,8 @@ describe('<Menu />', () => {
         disabled={true}
         content={
           <>
-            <MenuItem icon="FavoriteOutline">Gouda</MenuItem>
-            <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
+            <MenuItem icon={<Favorite />}>Gouda</MenuItem>
+            <MenuItem icon={<Favorite />}>Swiss</MenuItem>
           </>
         }
       >
@@ -164,8 +164,8 @@ describe('<Menu />', () => {
         isOpen={true}
         content={
           <>
-            <MenuItem icon="FavoriteOutline">Gouda</MenuItem>
-            <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
+            <MenuItem icon={<Favorite />}>Gouda</MenuItem>
+            <MenuItem icon={<Favorite />}>Swiss</MenuItem>
           </>
         }
       >
@@ -187,8 +187,8 @@ describe('<Menu />', () => {
             hoverDisclosureRef={hoverRef}
             content={
               <>
-                <MenuItem icon="FavoriteOutline">Gouda</MenuItem>
-                <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
+                <MenuItem icon={<Favorite />}>Gouda</MenuItem>
+                <MenuItem icon={<Favorite />}>Swiss</MenuItem>
               </>
             }
           >

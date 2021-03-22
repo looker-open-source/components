@@ -25,12 +25,12 @@ Dialogs break out of the standard application flow and UI to present new informa
       footer={
         <DialogContext.Consumer>
           {({ closeModal }) => (
-            <DialogFooter>
+            <>
               <Button onClick={closeModal}>Close Example Dialog</Button>
               <ButtonTransparent onClick={closeModal} color="neutral">
                 Cancel
               </ButtonTransparent>
-            </DialogFooter>
+            </>
           )}
         </DialogContext.Consumer>
       }

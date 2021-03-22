@@ -27,6 +27,8 @@
 import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { renderWithTheme } from '@looker/components-test-utils'
+import { Account } from '@looker/icons'
+import { Favorite } from '@styled-icons/material'
 import React from 'react'
 
 import { InputText } from './InputText'
@@ -53,6 +55,7 @@ describe('InputText', () => {
     renderWithTheme(<InputText name="Bob" id="Bobby" />)
     expect(screen.getByRole('textbox')).toHaveAttribute('name', 'Bob')
     expect(screen.getByRole('textbox')).toHaveAttribute('id', 'Bobby')
+    expect(screen.getByRole('textbox')).toHaveAttribute('type', 'text')
   })
 
   test('should accept disabled', () => {
@@ -108,13 +111,12 @@ describe('InputText', () => {
   test('with an error validation', () => {
     renderWithTheme(<InputText placeholder="Hello" validationType="error" />)
     expect(screen.getByPlaceholderText('Hello')).toHaveAttribute('aria-invalid')
-    expect(screen.getByTitle('Validation Error')).toBeInTheDocument()
   })
 
   describe('before & after', () => {
     test('ReactNode', () => {
       const { getByText } = renderWithTheme(
-        <InputText before={<span>before</span>} after={<span>after</span>} />
+        <InputText before="before" after="after" />
       )
 
       expect(getByText('before')).toBeVisible()
@@ -133,10 +135,8 @@ describe('InputText', () => {
     test('icons', () => {
       const { getByTitle } = renderWithTheme(
         <InputText
-          iconBefore="Favorite"
-          iconBeforeTitle="Before Title"
-          iconAfter="Account"
-          iconAfterTitle="After Title"
+          iconBefore={<Favorite title="Before Title" />}
+          iconAfter={<Account title="After Title" />}
         />
       )
 
@@ -147,8 +147,8 @@ describe('InputText', () => {
     test('redundant ones should not render', () => {
       const { queryByPlaceholderText } = renderWithTheme(
         <>
-          <InputText placeholder="Hello" iconBefore="Favorite" before="$" />
-          <InputText placeholder="Goodbye" iconAfter="Account" after="%" />
+          <InputText placeholder="Hello" iconBefore={<Favorite />} before="$" />
+          <InputText placeholder="Goodbye" iconAfter={<Account />} after="%" />
         </>
       )
 
@@ -171,11 +171,7 @@ describe('InputText', () => {
       const handleFocus = jest.fn()
       renderWithTheme(
         <>
-          <InputText
-            onBlur={handleBlur}
-            onFocus={handleFocus}
-            after={<span>after</span>}
-          />
+          <InputText onBlur={handleBlur} onFocus={handleFocus} after="after" />
           <button>click</button>
         </>
       )

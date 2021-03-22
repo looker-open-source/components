@@ -47,9 +47,9 @@ import {
   inputTextDisabled,
   inputTextValidation,
   inputCSS,
+  ErrorIcon,
 } from '../InputText'
 import { innerInputStyle } from '../innerInputStyle'
-import { Icon } from '../../../Icon'
 import {
   simpleLayoutCSS,
   SimpleLayoutProps,
@@ -523,20 +523,11 @@ const InputTimeInternal = forwardRef(
         ) : (
           <span />
         )}
-        {validationType && (
-          <WarningIcon
-            name="Error"
-            color="critical"
-            grid-area="warning"
-            size="small"
-          />
-        )}
+        {validationType && <ErrorIcon />}
       </div>
     )
   }
 )
-
-const WarningIcon = styled(Icon)``
 
 const StyledInput = styled.input
   .withConfig({ shouldForwardProp })
@@ -569,7 +560,7 @@ export const InputTime = styled(InputTimeInternal)`
   grid-template-columns: auto auto auto auto 1fr;
   padding: 0 ${({ theme }) => theme.space.xsmall};
 
-  ${WarningIcon} {
+  ${ErrorIcon} {
     justify-self: end;
   }
 

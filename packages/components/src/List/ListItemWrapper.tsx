@@ -25,10 +25,10 @@
  */
 
 import { CompatibleHTMLProps, shouldForwardProp } from '@looker/design-tokens'
+import { StyledIconBase } from '@styled-icons/styled-icon'
 import omit from 'lodash/omit'
 import React, { forwardRef, ReactNode, Ref } from 'react'
 import styled from 'styled-components'
-import { Icon } from '../Icon'
 import {
   ListItemStatefulWithHoveredProps,
   ListItemDimensions,
@@ -119,7 +119,7 @@ export const ListItemWrapper = styled(
       }
     `}
 
-  ${Icon} {
+  ${StyledIconBase}, svg {
     align-self: ${({ description }) => (description ? 'flex-start' : 'center')};
     transition: color
       ${({ theme }) => `${theme.transitions.quick}ms ${theme.easings.ease}`};

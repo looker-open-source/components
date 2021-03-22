@@ -25,6 +25,8 @@
  */
 
 import { renderWithTheme } from '@looker/components-test-utils'
+import { Account } from '@looker/icons'
+import { Code } from '@styled-icons/material'
 import { screen, fireEvent } from '@testing-library/react'
 import React from 'react'
 import { AvatarCombo } from './AvatarCombo'
@@ -39,7 +41,7 @@ describe('Avatar', () => {
       const fauxOnClick = jest.fn()
       renderWithTheme(
         <AvatarCombo
-          secondaryIcon="Account"
+          secondaryIcon={<Account />}
           onClick={fauxOnClick}
           role="button"
         />
@@ -55,7 +57,7 @@ describe('Avatar', () => {
     test('user', () => {
       renderWithTheme(
         <AvatarCombo
-          secondaryIcon="Account"
+          secondaryIcon={<Account />}
           user={{
             avatar_url:
               'https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank',
@@ -82,7 +84,7 @@ describe('Avatar', () => {
     })
 
     test('renders different icon if specified', () => {
-      renderWithTheme(<AvatarIcon aria-label="Code" icon="Code" />)
+      renderWithTheme(<AvatarIcon aria-label="Code" icon={<Code />} />)
       expect(screen.getByLabelText('Code')).toBeInTheDocument()
     })
   })

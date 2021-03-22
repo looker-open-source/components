@@ -42,6 +42,7 @@ import {
   Grid,
   CardContent,
 } from '@looker/components'
+import { MoreVert, Refresh } from '@styled-icons/material'
 import { FauxPieChart, FauxBarChart } from './Charts'
 
 export const FauxDashboard = () => (
@@ -50,8 +51,8 @@ export const FauxDashboard = () => (
       <Space between>
         <Heading fontSize="xxxlarge">Title</Heading>
         <Space width="auto" gap="small">
-          <IconButton size="medium" label="Refresh" icon="Refresh" />
-          <IconButton size="medium" label="Options" icon="DotsVert" />
+          <IconButton size="medium" label="Refresh" icon={<Refresh />} />
+          <IconButton size="medium" label="Options" icon={<MoreVert />} />
         </Space>
       </Space>
       <Space>

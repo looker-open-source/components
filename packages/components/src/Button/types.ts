@@ -25,18 +25,18 @@
  */
 
 import { CompatibleHTMLProps, StatefulColor } from '@looker/design-tokens'
-import { IconNames } from '@looker/icons'
 import {
   MaxWidthProps,
   MinWidthProps,
   SpaceProps,
   WidthProps,
 } from 'styled-system'
+import { IconType } from '../Icon'
 import { ButtonSizeProps, ButtonSizes } from './size'
 
 export interface ButtonIconProps {
-  iconBefore?: IconNames | undefined
-  iconAfter?: IconNames | undefined
+  iconBefore?: IconType
+  iconAfter?: IconType
 }
 
 export interface ButtonBaseProps
