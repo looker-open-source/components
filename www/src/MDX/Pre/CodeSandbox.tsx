@@ -102,7 +102,7 @@ export const CodeSandbox = ({
                   <ErrorWrapper>
                     <div>
                       <IconWrapper>
-                        <Icon name={<Warning />} size={24} />
+                        <Icon icon={<Warning />} size={24} />
                       </IconWrapper>
                     </div>
                     <LiveError />
