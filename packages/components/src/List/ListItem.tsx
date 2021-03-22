@@ -111,6 +111,7 @@ export interface ListItemProps
 
 interface ListItemLabelProps extends CompatibleHTMLProps<HTMLElement> {
   disabled?: boolean
+  height?: number
   itemRole?: ListItemRole
 }
 
@@ -133,7 +134,9 @@ export const ListItemLabel = styled.div
       as: domElement,
       type: itemRole === 'button' || disabled ? 'button' : undefined,
     }
-  })<ListItemLabelProps>``
+  })<ListItemLabelProps>`
+    ${({ height, itemRole }) => itemRole === 'none' && `height: ${height}px;`}
+  `
 
 const ListItemInternal = forwardRef(
   (props: ListItemProps, ref: Ref<HTMLLIElement>) => {
@@ -257,6 +260,7 @@ const ListItemInternal = forwardRef(
         aria-selected={selected}
         className={`list-item-label ${className}`}
         disabled={disabled}
+        height={itemDimensions.height}
         href={href}
         onBlur={handleOnBlur}
         onClick={disabled ? undefined : handleOnClick}

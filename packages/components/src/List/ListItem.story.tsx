@@ -169,8 +169,8 @@ export const NoRole = () => {
       ListItem
       <IconButton
         onClick={() => alert('Show me calendar')}
-        icon="Calendar"
-        label="Calendar"
+        icon={<PersonOutline />}
+        label="Person"
         ml="large"
       />
     </ListItem>
