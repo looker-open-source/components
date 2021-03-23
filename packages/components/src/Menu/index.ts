@@ -25,8 +25,7 @@
  */
 
 export * from './Menu'
-export * from './MenuDivider'
 export * from './MenuList'
 export * from './MenuItem'
-export * from '../List/ListDivider'
+export * from './MenuDivider'
 export * from './MenuHeading'
