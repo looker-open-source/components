@@ -193,6 +193,7 @@ const SelectComponent = forwardRef(
             {...listLayout}
           >
             <SelectOptions
+              flatOptions={flatOptions}
               navigationOptions={navigationOptions}
               windowedOptions={windowedOptions}
               isFilterable={isFilterable}
