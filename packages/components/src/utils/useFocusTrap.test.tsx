@@ -42,22 +42,11 @@ afterEach(() => {
 
 interface TestProps {
   clickOutsideDeactivates?: boolean
-  disabled?: boolean
 }
 
-const Inner: FC<TestProps> = ({
-  children,
-  clickOutsideDeactivates,
-  disabled,
-}) => {
-  const [, ref] = useFocusTrap({
-    clickOutsideDeactivates,
-    disabled,
-  })
+const Inner: FC<TestProps> = ({ children, clickOutsideDeactivates }) => {
+  const [, ref] = useFocusTrap({ clickOutsideDeactivates })
   const { value, setOff, toggle } = useToggle()
-  // Mimic Select behavior with disabled & onMouseDown
-  const toggleProps = disabled ? { onMouseDown: toggle } : { onClick: toggle }
-
   return (
     <>
       {value && (
@@ -68,7 +57,7 @@ const Inner: FC<TestProps> = ({
           </button>
         </div>
       )}
-      <button {...toggleProps}>toggle</button>
+      <button onClick={toggle}>toggle</button>
       <button onClick={setOff}>Another button</button>
     </>
   )
@@ -261,27 +250,6 @@ describe('useFocusTrap', () => {
       fireEvent.click(closeButtons[0])
       fireEvent.click(closeButtons[1])
       await waitFor(() => expect(toggle).toHaveFocus())
-    })
-
-    test('With nested traps, inner disabled', async () => {
-      render(
-        <FocusTrapComponent>
-          <Surface>
-            <input type="text" placeholder="input" />
-            <Inner disabled>
-              <Surface />
-            </Inner>
-          </Surface>
-        </FocusTrapComponent>
-      )
-      const toggle = screen.getByText('toggle')
-      toggle.focus()
-      fireEvent.click(toggle)
-
-      const toggleInner = screen.getAllByText('toggle')[0]
-      fireEvent.mouseDown(toggleInner)
-      toggleInner.focus()
-      expect(toggleInner).toHaveFocus()
     })
   })
 
