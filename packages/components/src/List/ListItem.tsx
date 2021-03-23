@@ -49,7 +49,12 @@ import { ListItemLabel } from './ListItemLabel'
 import { ListItemLayout } from './ListItemLayout'
 import { ListItemLayoutAccessory } from './ListItemLayoutAccessory'
 import { ListItemWrapper } from './ListItemWrapper'
-import { DensityRamp, Detail, ListItemStatefulProps } from './types'
+import {
+  DensityRamp,
+  Detail,
+  ListItemRole,
+  ListItemStatefulProps,
+} from './types'
 import { createSafeRel, getDetailOptions, listItemDimensions } from './utils'
 
 const TruncateWrapper: FC<{
@@ -61,8 +66,6 @@ const TruncateWrapper: FC<{
     <Truncate>{children}</Truncate>
   </Text>
 )
-
-export type ListItemRole = 'button' | 'link' | 'none'
 
 export interface ListItemProps
   extends CompatibleHTMLProps<HTMLElement>,

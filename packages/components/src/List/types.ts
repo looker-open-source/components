@@ -103,3 +103,5 @@ interface DetailOptions {
 }
 
 export type Detail = ReactNode | { content: ReactNode; options: DetailOptions }
+
+export type ListItemRole = 'button' | 'link' | 'none'

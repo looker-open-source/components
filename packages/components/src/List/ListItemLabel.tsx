@@ -27,8 +27,7 @@
 import { CompatibleHTMLProps, shouldForwardProp } from '@looker/design-tokens'
 import React, { FC } from 'react'
 import styled from 'styled-components'
-import { ListItemRole } from './ListItem'
-import { ListItemStatefulWithHoveredProps } from './types'
+import { ListItemRole, ListItemStatefulWithHoveredProps } from './types'
 import { listItemBackgroundColor } from './utils'
 
 export const ListItemLabelButton = styled.button``
