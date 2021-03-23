@@ -26,34 +26,36 @@
 
 import 'jest-styled-components'
 import React from 'react'
-import { mountWithTheme, assertSnapshot } from '@looker/components-test-utils'
-
+import { renderWithTheme } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import { ToggleSwitch } from './ToggleSwitch'
 
 describe('ToggleSwitch', () => {
   test('default', () => {
-    assertSnapshot(<ToggleSwitch />)
+    renderWithTheme(<ToggleSwitch />)
+    expect(screen.getByRole('switch')).toBeInTheDocument()
   })
 
-  test('on set to true', () => {
-    assertSnapshot(<ToggleSwitch on={true} />)
+  test('set to true', () => {
+    renderWithTheme(<ToggleSwitch on={true} onChange={jest.fn} />)
+    expect(screen.getByRole('switch')).toBeChecked()
   })
 
-  test('on set to false', () => {
-    assertSnapshot(<ToggleSwitch on={false} />)
+  test('set to false', () => {
+    renderWithTheme(<ToggleSwitch on={false} onChange={jest.fn} />)
+    expect(screen.getByRole('switch')).not.toBeChecked()
   })
 
-  test('that is disabled', () => {
-    assertSnapshot(<ToggleSwitch on={true} disabled />)
+  test('disabled', () => {
+    renderWithTheme(<ToggleSwitch on={true} disabled />)
+    expect(screen.getByRole('switch')).toBeDisabled()
   })
 
   test('Should trigger onChange handler', () => {
-    let counter = 0
-    const handleChange = () => counter++
-
-    const wrapper = mountWithTheme(<ToggleSwitch onChange={handleChange} />)
-
-    wrapper.find('input').simulate('change', { target: { value: '' } })
-    expect(counter).toEqual(1)
+    const onChange = jest.fn()
+    renderWithTheme(<ToggleSwitch onChange={onChange} />)
+    userEvent.click(screen.getByRole('switch'))
+    expect(onChange).toHaveBeenCalledTimes(1)
   })
 })

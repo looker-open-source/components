@@ -23,36 +23,75 @@
  SOFTWARE.
 
  */
-import { assertSnapshot } from '@looker/components-test-utils'
+
+import { render } from '@testing-library/react'
 import React from 'react'
 import { Locales } from '../utils/i18n'
 import { DateTimeFormat } from './DateTimeFormat'
 const date = new Date('January 25, 1988 11:58:03')
 
-test('DateTime renders', () => {
-  assertSnapshot(<DateTimeFormat>{date}</DateTimeFormat>)
-})
+describe('DateTimeFormat', () => {
+  test('renders', () => {
+    const { container } = render(<DateTimeFormat>{date}</DateTimeFormat>)
+    expect(container).toMatchInlineSnapshot(`
+      <div>
+        Jan 25, 1988, 11:58:03 AM
+      </div>
+    `)
+  })
 
-test('DateTimeFormat renders when passing specific locale', () => {
-  assertSnapshot(
-    <DateTimeFormat locale={Locales.Arabic}>{date}</DateTimeFormat>
-  )
-})
+  test('specific locale', () => {
+    const { container } = render(
+      <DateTimeFormat locale={Locales.Arabic}>{date}</DateTimeFormat>
+    )
+    expect(container).toMatchInlineSnapshot(`
+      <div>
+        ينا 25, 1988, 11:58:03 ص
+      </div>
+    `)
+  })
 
-test('DateTimeFormat displays timeZone prop if one is passed', () => {
-  assertSnapshot(
-    <DateTimeFormat timeZone="Asia/Kolkata">{date}</DateTimeFormat>
-  )
-})
+  test('displays timeZone prop if one is passed', () => {
+    const { container } = render(
+      <DateTimeFormat timeZone="Asia/Kolkata">{date}</DateTimeFormat>
+    )
+    expect(container).toMatchInlineSnapshot(`
+      <div>
+        Jan 25, 1988, 5:28:03 PM GMT+5:30
+      </div>
+    `)
+  })
 
-test('DateTimeFormat renders format prop short if one is passed', () => {
-  assertSnapshot(<DateTimeFormat format="short">{date}</DateTimeFormat>)
-})
+  test('format prop short if one is passed', () => {
+    const { container } = render(
+      <DateTimeFormat format="short">{date}</DateTimeFormat>
+    )
+    expect(container).toMatchInlineSnapshot(`
+      <div>
+        01/25/1988, 11:58 AM
+      </div>
+    `)
+  })
 
-test('DateTimeFormat renders format prop long if one is passed', () => {
-  assertSnapshot(<DateTimeFormat format="long">{date}</DateTimeFormat>)
-})
+  test('format prop long if one is passed', () => {
+    const { container } = render(
+      <DateTimeFormat format="long">{date}</DateTimeFormat>
+    )
+    expect(container).toMatchInlineSnapshot(`
+      <div>
+        January 25th, 1988 at 11:58:03 AM GMT+0
+      </div>
+    `)
+  })
 
-test('DateTimeFormat renders format prop full if one is passed', () => {
-  assertSnapshot(<DateTimeFormat format="full">{date}</DateTimeFormat>)
+  test('format prop full if one is passed', () => {
+    const { container } = render(
+      <DateTimeFormat format="full">{date}</DateTimeFormat>
+    )
+    expect(container).toMatchInlineSnapshot(`
+      <div>
+        Monday, January 25th, 1988 at 11:58:03 AM GMT+00:00
+      </div>
+    `)
+  })
 })

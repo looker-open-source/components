@@ -24,9 +24,17 @@
 
  */
 
-import 'jest-styled-components'
 import React from 'react'
-import { assertSnapshot } from '@looker/components-test-utils'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
 import { TableBody } from './TableBody'
 
-test('A <TableBody> should render', () => assertSnapshot(<TableBody />))
+test('TableBody', () => {
+  renderWithTheme(
+    <table>
+      <TableBody data-testid="table-body" />
+    </table>
+  )
+  expect(screen.getByTestId('table-body')).toBeInTheDocument()
+  expect(screen.getByTestId('table-body').tagName).toEqual('TBODY')
+})

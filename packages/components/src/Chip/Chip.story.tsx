@@ -26,7 +26,6 @@
 
 import { Story } from '@storybook/react/types-6-0'
 import React, { useState } from 'react'
-import { ChipButton } from '../ChipButton'
 import { Space } from '../Layout'
 import { Chip, ChipProps } from './Chip'
 
@@ -84,29 +83,6 @@ export const ClickAndDelete = () => {
 }
 
 ClickAndDelete.parameters = {
-  storyshots: { disable: true },
-}
-
-export const ChipButtons = () => {
-  const handleClick = () => alert('Clicked!')
-  const handleDelete = () => alert('Deleted!')
-  return (
-    <Space>
-      <ChipButton onClick={handleClick}>Click Me</ChipButton>
-      <ChipButton disabled onClick={handleClick}>
-        Click Me (nothing happens)
-      </ChipButton>
-      <ChipButton onClick={handleClick} onDelete={handleDelete}>
-        Delete Me
-      </ChipButton>
-      <ChipButton disabled onClick={handleClick} onDelete={handleDelete}>
-        Delete Me (nothing happens)
-      </ChipButton>
-    </Space>
-  )
-}
-
-ChipButtons.parameters = {
   storyshots: { disable: true },
 }
 

@@ -23,10 +23,12 @@
  SOFTWARE.
 
  */
-import { assertSnapshot } from '@looker/components-test-utils'
+import { renderWithTheme } from '@looker/components-test-utils'
 import React from 'react'
+import { screen } from '@testing-library/react'
 import { ChipButton } from './ChipButton'
 
-test('ChipButton renders correctly', () => {
-  assertSnapshot(<ChipButton>chip</ChipButton>)
+test('ChipButton', () => {
+  renderWithTheme(<ChipButton>chip</ChipButton>)
+  expect(screen.getByText('chip')).toBeInTheDocument()
 })

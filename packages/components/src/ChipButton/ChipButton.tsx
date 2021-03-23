@@ -26,7 +26,10 @@
 
 import styled from 'styled-components'
 import { inputHeight } from '../Form/Inputs/height'
-import { Chip } from '../Chip/Chip'
+import { Chip, ChipProps } from '../Chip/Chip'
+
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface ChipButtonProps extends Omit<ChipProps, 'role'> {}
 
 /**
    * Activates specialized styling Chip when used as a trigger for a Menu or Overlay
@@ -34,9 +37,10 @@ import { Chip } from '../Chip/Chip'
    * NOTE: Please consult with the @looker/components team when using this property
    * as it may be remove or extracted into a unique component in the future.
    *
-=   */
-
-export const ChipButton = styled(Chip).attrs(() => ({ role: 'button' }))`
+   */
+export const ChipButton = styled(Chip).attrs(() => ({
+  role: 'button',
+}))<ChipButtonProps>`
   border: 1px solid ${({ theme }) => theme.colors.ui2};
   cursor: pointer;
   font-size: ${({ theme }) => theme.fontSizes.small};

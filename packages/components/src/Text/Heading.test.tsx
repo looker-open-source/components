@@ -25,37 +25,55 @@
  */
 
 import React from 'react'
-import { assertSnapshot } from '@looker/components-test-utils'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
 import { Heading } from './Heading'
 
 describe('Heading', () => {
-  test('A default Heading', () => assertSnapshot(<Heading>🥑</Heading>))
+  test('default', () => {
+    renderWithTheme(<Heading>🥑</Heading>)
+    expect(screen.getByText('🥑')).toBeInTheDocument()
+    expect(screen.getByText('🥑').tagName).toEqual('H2')
+  })
 
-  test('A <h1> Heading', () => assertSnapshot(<Heading as="h1">🥑</Heading>))
+  test('<h1>', () => {
+    renderWithTheme(<Heading as="h1">🥑</Heading>)
+    expect(screen.getByText('🥑').tagName).toEqual('H1')
+    expect(screen.getByText('🥑')).toHaveStyle('font-size: 1.5rem;')
+  })
 
-  test('A <h1> Heading sized to <h2>', () =>
-    assertSnapshot(
+  test('<h1> sized to <h2>', () => {
+    renderWithTheme(
       <Heading as="h1" fontSize="xlarge">
         🥑
       </Heading>
-    ))
+    )
+    expect(screen.getByText('🥑').tagName).toEqual('H1')
+    expect(screen.getByText('🥑')).toHaveStyle('font-size: 1.375rem;')
+  })
 
-  test('A Heading to bold', () =>
-    assertSnapshot(
-      <Heading fontSize="large" fontWeight="bold">
-        🥑
-      </Heading>
-    ))
+  test('bold', () => {
+    renderWithTheme(<Heading fontWeight="bold">🥑</Heading>)
+    expect(screen.getByText('🥑')).toHaveStyle('font-weight: 700')
+  })
 
-  test('A Heading transformed', () =>
-    assertSnapshot(<Heading textTransform="capitalize">🥑</Heading>))
+  test('transform', () => {
+    renderWithTheme(<Heading textTransform="capitalize">🥑</Heading>)
+    expect(screen.getByText('🥑')).toHaveStyle('text-transform: capitalize')
+  })
 
-  test('A Heading with variant', () =>
-    assertSnapshot(<Heading color="subdued">🥑</Heading>))
+  test('variant color', () => {
+    renderWithTheme(<Heading color="subdued">🥑</Heading>)
+    expect(screen.getByText('🥑')).toHaveStyle('color: rgb(147, 155, 165)')
+  })
 
-  test('A Heading truncated', () =>
-    assertSnapshot(<Heading truncate>🥑</Heading>))
+  test('truncated', () => {
+    renderWithTheme(<Heading truncate>🥑</Heading>)
+    expect(screen.getByText('🥑')).toHaveStyle('text-overflow: ellipsis;')
+  })
 
-  test('A Heading with multiline truncate', () =>
-    assertSnapshot(<Heading truncateLines={2}>🥑</Heading>))
+  test('multiline truncate', () => {
+    renderWithTheme(<Heading truncateLines={2}>🥑</Heading>)
+    expect(screen.getByText('🥑')).toHaveStyle('display: -webkit-box;')
+  })
 })

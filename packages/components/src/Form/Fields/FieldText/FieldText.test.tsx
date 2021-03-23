@@ -24,104 +24,95 @@
 
  */
 
-import 'jest-styled-components'
 import React from 'react'
-import {
-  assertSnapshot,
-  mountWithTheme,
-  renderWithTheme,
-} from '@looker/components-test-utils'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import { FieldText } from './FieldText'
 
-test('A FieldText with default label', () => {
-  assertSnapshot(<FieldText id="FieldTextID" label="👍" />)
-})
+describe('FieldText', () => {
+  test('default label', () => {
+    renderWithTheme(<FieldText id="FieldTextID" label="👍" />)
+    expect(screen.getByLabelText('👍')).toBeInTheDocument()
+  })
 
-test('A FieldText with label inline', () => {
-  assertSnapshot(<FieldText id="FieldTextID" inline label="👍" />)
-})
+  test('label inline', () => {
+    renderWithTheme(<FieldText id="FieldTextID" inline label="👍" />)
+    expect(screen.getByLabelText('👍')).toBeInTheDocument()
+  })
 
-test('A FieldText required', () => {
-  const wrapper = mountWithTheme(
-    <FieldText id="FieldTextID" label="👍" required />
-  )
+  test('A FieldText required', () => {
+    renderWithTheme(<FieldText id="FieldTextID" label="👍" required />)
+    expect(screen.getByLabelText('👍 required')).toBeRequired()
+  })
 
-  expect(wrapper.text()).toMatch(`👍 required`)
-})
+  test('A FieldText disabled', () => {
+    renderWithTheme(<FieldText disabled id="FieldTextID" label="👍" />)
+    expect(screen.getByLabelText('👍')).toBeDisabled()
+  })
 
-test('A FieldText disabled', () => {
-  const wrapper = mountWithTheme(
-    <FieldText disabled id="FieldTextID" label="👍" />
-  )
-  wrapper.find('input').html().includes('disabled=""')
-})
+  test('description', () => {
+    renderWithTheme(
+      <FieldText
+        description="no vegetables allowed"
+        id="FieldTextID"
+        label="Text Input"
+        placeholder="placeholder"
+      />
+    )
+    expect(screen.getByText('no vegetables allowed')).toBeInTheDocument()
+  })
 
-test('A FieldText with description', () => {
-  const wrapper = mountWithTheme(
-    <FieldText
-      description="no vegetables allowed"
-      id="FieldTextID"
-      label="Text Input"
-      placeholder="placeholder"
-    />
-  )
-  expect(wrapper.text()).toMatch(`Text Inputno vegetables allowed`)
-})
+  test('detail', () => {
+    renderWithTheme(
+      <FieldText
+        detail="5/50"
+        id="FieldTextID"
+        label="hello"
+        placeholder="placeholder"
+      />
+    )
+    expect(screen.getByText('5/50')).toBeInTheDocument()
+  })
 
-test('A FieldText with detail', () => {
-  const wrapper = mountWithTheme(
-    <FieldText
-      detail="5/50"
-      id="FieldTextID"
-      label="hello"
-      placeholder="placeholder"
-    />
-  )
-  expect(wrapper.text()).toMatch(`hello5/50`)
-})
+  test('description has proper aria setup', () => {
+    const description = 'This is a description'
 
-test('A FieldText with description has proper aria setup', () => {
-  const description = 'This is a description'
+    const { container } = renderWithTheme(
+      <FieldText id="test" defaultValue="example" description={description} />
+    )
 
-  const { container, getByDisplayValue } = renderWithTheme(
-    <FieldText id="test" defaultValue="example" description={description} />
-  )
+    const input = screen.getByDisplayValue('example')
+    const id = input.getAttribute('aria-describedby')
+    expect(id).toBeDefined()
 
-  const input = getByDisplayValue('example')
-  const id = input.getAttribute('aria-describedby')
-  expect(id).toBeDefined()
+    const describedBy = container.querySelector(`#${id}`)
+    expect(describedBy).toHaveTextContent(description)
+  })
 
-  const describedBy = container.querySelector(`#${id}`)
-  expect(describedBy).toHaveTextContent(description)
-})
+  test('error has proper aria setup', () => {
+    const errorMessage = 'This is an error'
 
-test('A FieldText with error has proper aria setup', () => {
-  const errorMessage = 'This is an error'
+    const { container } = renderWithTheme(
+      <FieldText
+        id="test"
+        defaultValue="example"
+        validationMessage={{ message: errorMessage, type: 'error' }}
+      />
+    )
 
-  const { container, getByDisplayValue } = renderWithTheme(
-    <FieldText
-      id="test"
-      defaultValue="example"
-      validationMessage={{ message: errorMessage, type: 'error' }}
-    />
-  )
+    const input = screen.getByDisplayValue('example')
+    const id = input.getAttribute('aria-describedby')
+    expect(id).toBeDefined()
 
-  const input = getByDisplayValue('example')
-  const id = input.getAttribute('aria-describedby')
-  expect(id).toBeDefined()
+    const describedBy = container.querySelector(`#${id}`)
+    expect(describedBy).toHaveTextContent(errorMessage)
+  })
 
-  const describedBy = container.querySelector(`#${id}`)
-  expect(describedBy).toHaveTextContent(errorMessage)
-})
-
-test('FieldText supports onChange handler', () => {
-  let counter = 0
-  const handleChange = () => counter++
-
-  const wrapper = mountWithTheme(
-    <FieldText id="FieldTextID" onChange={handleChange} />
-  )
-
-  wrapper.find('input').simulate('change', { target: { value: '' } })
-  expect(counter).toEqual(1)
+  test('onChange handler', () => {
+    const onChange = jest.fn()
+    renderWithTheme(<FieldText id="FieldTextID" onChange={onChange} />)
+    userEvent.type(screen.getByRole('textbox'), 'Hello world')
+    expect(onChange).toHaveBeenCalledTimes(11)
+  })
 })

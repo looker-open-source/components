@@ -24,10 +24,15 @@
 
  */
 
+import { ReactNode } from 'react'
 import styled from 'styled-components'
 import { TextBase, TextBaseProps } from './TextBase'
 
-export const Code = styled(TextBase).attrs<TextBaseProps>(
+export interface CodeProps extends TextBaseProps {
+  children?: ReactNode
+}
+
+export const Code = styled(TextBase).attrs<CodeProps>(
   ({
     color = 'text5',
     fontFamily = 'code',
@@ -40,4 +45,4 @@ export const Code = styled(TextBase).attrs<TextBaseProps>(
     fontSize,
     lineHeight: lineHeight || fontSize,
   })
-)<TextBaseProps>``
+)<CodeProps>``

@@ -37,14 +37,14 @@ export interface CardMediaProps
   extends BackgroundPositionProps,
     BackgroundColorProps,
     CompatibleHTMLProps<HTMLDivElement> {
-  image: string
+  image?: string
 }
 
 export const CardMedia = styled.div.withConfig({
   shouldForwardProp,
 })<CardMediaProps>`
   ${backgroundColor}
-  background-image: url(${(props) => props.image});
+  background-image: url(${({ image }) => image});
   background-repeat: no-repeat;
   ${backgroundPosition}
   background-size: cover;

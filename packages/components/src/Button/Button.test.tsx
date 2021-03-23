@@ -46,10 +46,13 @@ describe('Button', () => {
     )
 
     fireEvent.click(getByText('button'))
-    expect(getByText('focus')).toMatchSnapshot()
+    // eslint-disable-next-line jest-dom/prefer-to-have-style
+    expect(screen.getByText('button').style.boxShadow).toEqual('')
 
     fireEvent.keyUp(getByText('focus'), { charCode: 9, code: 9, key: 'Tab' })
-    expect(getByText('focus')).toMatchSnapshot()
+    expect(screen.getByText('focus')).toHaveStyle(
+      'box-shadow: 0 0 0 0.15rem rgba(108,67,224,0.25);'
+    )
   })
 
   test('size', () => {

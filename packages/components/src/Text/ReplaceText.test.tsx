@@ -31,15 +31,29 @@ import { ReplaceText } from './ReplaceText'
 describe('ReplaceText', () => {
   test('globally replaces a case-insensitive string with JSX', () => {
     const { container } = renderWithTheme(
-      <div>
-        <ReplaceText
-          match="long"
-          replace={(text, index) => <span key={index}>{text}</span>}
-        >
-          Some LONG text that is long and this is how long it is.
-        </ReplaceText>
-      </div>
+      <ReplaceText
+        match="long"
+        replace={(text, index) => <span key={index}>{text}</span>}
+      >
+        Some LONG text that is long and this is how long it is.
+      </ReplaceText>
     )
-    expect(container.firstChild).toMatchSnapshot()
+    expect(container).toMatchInlineSnapshot(`
+      <div>
+        Some 
+        <span>
+          LONG
+        </span>
+         text that is 
+        <span>
+          long
+        </span>
+         and this is how 
+        <span>
+          long
+        </span>
+         it is.
+      </div>
+    `)
   })
 })

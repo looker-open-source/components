@@ -25,9 +25,12 @@
  */
 
 import React from 'react'
-import { assertSnapshot } from '@looker/components-test-utils'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
 import { Legend } from './Legend'
 
 test('A Legend', () => {
-  assertSnapshot(<Legend>This is a legend</Legend>)
+  renderWithTheme(<Legend>I am legend</Legend>)
+  expect(screen.getByText('I am legend')).toBeInTheDocument()
+  expect(screen.getByText('I am legend').tagName).toEqual('LEGEND')
 })

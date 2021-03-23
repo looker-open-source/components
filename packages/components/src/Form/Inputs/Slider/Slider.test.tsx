@@ -25,9 +25,8 @@
  */
 
 import React from 'react'
-import { fireEvent } from '@testing-library/react'
+import { fireEvent, screen } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
-
 import { Slider } from './Slider'
 
 describe('Slider', () => {
@@ -36,8 +35,8 @@ describe('Slider', () => {
       max: 1,
       value: 2,
     }
-    const { getByTestId } = renderWithTheme(<Slider {...props} />)
-    const input = getByTestId('slider-input') as HTMLInputElement
+    renderWithTheme(<Slider {...props} />)
+    const input = screen.getByTestId('slider-input') as HTMLInputElement
     expect(parseInt(input.value)).toEqual(props.max)
   })
 
@@ -46,9 +45,8 @@ describe('Slider', () => {
       min: 5,
       value: 1,
     }
-
-    const { getByTestId } = renderWithTheme(<Slider {...props} />)
-    const input = getByTestId('slider-input') as HTMLInputElement
+    renderWithTheme(<Slider {...props} />)
+    const input = screen.getByTestId('slider-input') as HTMLInputElement
     expect(parseInt(input.value)).toEqual(props.min)
   })
 
@@ -57,27 +55,29 @@ describe('Slider', () => {
       id: 'Slip',
       name: 'Slide',
     }
-    const { getByTestId } = renderWithTheme(<Slider {...props} />)
-    const input = getByTestId('slider-input')
+    renderWithTheme(<Slider {...props} />)
+    const input = screen.getByTestId('slider-input')
     expect(input).toHaveAttribute('id', props.id)
     expect(input).toHaveAttribute('name', props.name)
   })
 
   test('Slider input can be disabled', () => {
-    const { getByTestId } = renderWithTheme(<Slider disabled />)
-    const input = getByTestId('slider-input') as HTMLInputElement
+    renderWithTheme(<Slider disabled />)
+    const input = screen.getByTestId('slider-input') as HTMLInputElement
     expect(input).toBeDisabled()
   })
 
   test('Accessibility: Slider with aria-labelledby and <label>', () => {
-    const { getByLabelText, getByTestId } = renderWithTheme(
+    renderWithTheme(
       <>
         <label id="some-id">Slider Label</label>
         <Slider aria-labelledby="some-id" />
       </>
     )
 
-    expect(getByLabelText('Slider Label')).toEqual(getByTestId('slider-input'))
+    expect(screen.getByLabelText('Slider Label')).toEqual(
+      screen.getByTestId('slider-input')
+    )
   })
 
   test('Slider passes change event to optional onChange handler', () => {
@@ -96,8 +96,10 @@ describe('Slider', () => {
   })
 
   test('renders focus styles on keypress', () => {
-    const { getByTestId } = renderWithTheme(<Slider />)
-    fireEvent.keyUp(getByTestId('container'), { key: 'Tab', keyCode: 9 })
-    expect(getByTestId('slider-input')).toMatchSnapshot()
+    renderWithTheme(<Slider />)
+    fireEvent.keyUp(screen.getByTestId('container'), { key: 'Tab', keyCode: 9 })
+    expect(screen.getByTestId('slider-input')).toHaveStyleRule(
+      'border-width: 5px;'
+    )
   })
 })

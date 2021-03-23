@@ -26,105 +26,101 @@
 
 import 'jest-styled-components'
 import React from 'react'
-import {
-  assertSnapshot,
-  mountWithTheme,
-  renderWithTheme,
-} from '@looker/components-test-utils'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import { FieldTextArea } from './FieldTextArea'
 
-test('A FieldTextArea with default label', () => {
-  assertSnapshot(<FieldTextArea id="FieldTextAreaID" label="👍" />)
-})
+describe('FieldTextArea', () => {
+  test('default label', () => {
+    renderWithTheme(<FieldTextArea id="FieldTextAreaID" label="👍" />)
+    expect(screen.getByLabelText('👍')).toBeInTheDocument()
+  })
 
-test('A FieldTextArea with label inline', () => {
-  assertSnapshot(<FieldTextArea id="FieldTextAreaID" inline label="👍" />)
-})
+  test('label inline', () => {
+    renderWithTheme(<FieldTextArea id="FieldTextAreaID" inline label="👍" />)
+    expect(screen.getByLabelText('👍')).toBeInTheDocument()
+  })
 
-test('A FieldTextArea required', () => {
-  const wrapper = mountWithTheme(
-    <FieldTextArea id="FieldTextAreaID" label="👍" required />
-  )
+  test('required', () => {
+    renderWithTheme(<FieldTextArea id="FieldTextAreaID" label="👍" required />)
+    expect(screen.getByLabelText('👍 required')).toBeRequired()
+  })
 
-  expect(wrapper.text()).toMatch(`👍 required`)
-})
+  test('disabled', () => {
+    renderWithTheme(<FieldTextArea disabled id="FieldTextAreaID" label="👍" />)
+    expect(screen.getByLabelText('👍')).toBeDisabled()
+  })
 
-test('A FieldTextArea disabled', () => {
-  const wrapper = mountWithTheme(
-    <FieldTextArea disabled id="FieldTextAreaID" label="👍" />
-  )
-  wrapper.find('textarea').html().includes('disabled=""')
-})
+  test('description has proper aria setup', () => {
+    const description = 'This is a description'
 
-test('A FieldTextArea with description has proper aria setup', () => {
-  const description = 'This is a description'
+    const { container } = renderWithTheme(
+      <FieldTextArea
+        id="test"
+        defaultValue="example"
+        description={description}
+      />
+    )
 
-  const { container, getByDisplayValue } = renderWithTheme(
-    <FieldTextArea id="test" defaultValue="example" description={description} />
-  )
+    const input = screen.getByDisplayValue('example')
+    const id = input.getAttribute('aria-describedby')
+    expect(id).toBeDefined()
 
-  const input = getByDisplayValue('example')
-  const id = input.getAttribute('aria-describedby')
-  expect(id).toBeDefined()
+    const describedBy = container.querySelector(`#${id}`)
+    expect(describedBy).toHaveTextContent(description)
+  })
 
-  const describedBy = container.querySelector(`#${id}`)
-  expect(describedBy).toHaveTextContent(description)
-})
+  test('error has proper aria setup', () => {
+    const errorMessage = 'This is an error'
 
-test('A FieldTextArea with error has proper aria setup', () => {
-  const errorMessage = 'This is an error'
+    const { container } = renderWithTheme(
+      <FieldTextArea
+        id="test"
+        defaultValue="example"
+        validationMessage={{ message: errorMessage, type: 'error' }}
+      />
+    )
 
-  const { container, getByDisplayValue } = renderWithTheme(
-    <FieldTextArea
-      id="test"
-      defaultValue="example"
-      validationMessage={{ message: errorMessage, type: 'error' }}
-    />
-  )
+    const input = screen.getByDisplayValue('example')
+    const id = input.getAttribute('aria-describedby')
+    expect(id).toBeDefined()
 
-  const input = getByDisplayValue('example')
-  const id = input.getAttribute('aria-describedby')
-  expect(id).toBeDefined()
+    const describedBy = container.querySelector(`#${id}`)
+    expect(describedBy).toHaveTextContent(errorMessage)
+  })
 
-  const describedBy = container.querySelector(`#${id}`)
-  expect(describedBy).toHaveTextContent(errorMessage)
-})
+  test('detail', () => {
+    renderWithTheme(
+      <FieldTextArea
+        detail="5/50"
+        id="FieldTextAreaID"
+        label="hello"
+        placeholder="placeholder"
+      />
+    )
+    expect(screen.getByText('5/50')).toBeInTheDocument()
+  })
 
-test('A FieldTextArea with detail', () => {
-  const wrapper = mountWithTheme(
-    <FieldTextArea
-      detail="5/50"
-      id="FieldTextAreaID"
-      label="hello"
-      placeholder="placeholder"
-    />
-  )
-  expect(wrapper.text()).toMatch(`hello5/50`)
-})
+  test('validationMessage', () => {
+    renderWithTheme(
+      <FieldTextArea
+        id="FieldTextAreaID"
+        label="hello"
+        validationMessage={{
+          message: 'validation Message',
+          type: 'error',
+        }}
+        placeholder="placeholder"
+      />
+    )
+    expect(screen.getByText('validation Message')).toBeInTheDocument()
+  })
 
-test('A FieldTextArea with validationMessage', () => {
-  const wrapper = mountWithTheme(
-    <FieldTextArea
-      id="FieldTextAreaID"
-      label="hello"
-      validationMessage={{
-        message: 'validation Message',
-        type: 'error',
-      }}
-      placeholder="placeholder"
-    />
-  )
-  expect(wrapper.text()).toMatch(`hellovalidation Message`)
-})
-
-test('FieldTextArea supports onChange handler', () => {
-  let counter = 0
-  const handleChange = () => counter++
-
-  const wrapper = mountWithTheme(
-    <FieldTextArea id="FieldTextAreaID" onChange={handleChange} />
-  )
-
-  wrapper.find('textarea').simulate('change', { target: { value: '' } })
-  expect(counter).toEqual(1)
+  test('onChange handler', () => {
+    const onChange = jest.fn()
+    renderWithTheme(<FieldTextArea id="FieldTextID" onChange={onChange} />)
+    userEvent.type(screen.getByRole('textbox'), 'Hello world')
+    expect(onChange).toHaveBeenCalledTimes(11)
+  })
 })

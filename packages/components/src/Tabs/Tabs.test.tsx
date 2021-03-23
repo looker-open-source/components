@@ -26,11 +26,7 @@
 
 import 'jest-styled-components'
 import '@testing-library/jest-dom/extend-expect'
-import {
-  mountWithTheme,
-  renderWithTheme,
-  shallowWithTheme,
-} from '@looker/components-test-utils'
+import { mountWithTheme, renderWithTheme } from '@looker/components-test-utils'
 import React from 'react'
 import { fireEvent, screen } from '@testing-library/react'
 import { Tab } from './Tab'
@@ -40,7 +36,7 @@ import { TabPanels } from './TabPanels'
 import { Tabs, useTabs } from './Tabs'
 
 test('shows the correct number of navigation tabs', () => {
-  const tabs = shallowWithTheme(
+  renderWithTheme(
     <Tabs>
       <TabList>
         <Tab>tab1</Tab>
@@ -54,7 +50,7 @@ test('shows the correct number of navigation tabs', () => {
       </TabPanels>
     </Tabs>
   )
-  expect(tabs.find(Tab)).toHaveLength(3)
+  expect(screen.getAllByRole('tab')).toHaveLength(3)
 })
 
 test('starts with Tab at index 0 opened', () => {
@@ -183,22 +179,26 @@ describe('focus behavior', () => {
   )
 
   test('Tab Focus: does not render focus ring after click', () => {
-    const { getByText } = renderWithTheme(<TabTest />)
-
-    fireEvent.click(getByText('tab1'))
-    expect(getByText('tab1')).toMatchSnapshot()
+    renderWithTheme(<TabTest />)
+    fireEvent.click(screen.getByText('tab1'))
+    // eslint-disable-next-line jest-dom/prefer-to-have-style
+    expect(screen.getByText('tab1').style.boxShadow).toEqual('')
   })
 
   test('Tab Focus: renders focus ring for keyboard navigation', () => {
-    const { getByText } = renderWithTheme(<TabTest />)
-
-    fireEvent.keyUp(getByText('tab2'), { charCode: 9, code: 9, key: 'Tab' })
-    expect(getByText('tab2')).toMatchSnapshot()
+    renderWithTheme(<TabTest />)
+    fireEvent.keyUp(screen.getByText('tab2'), {
+      charCode: 9,
+      code: 9,
+      key: 'Tab',
+    })
+    expect(screen.getByText('tab2')).toHaveStyle(
+      'box-shadow: 0 0 0 0.15rem rgba(151,133,242,0.25);'
+    )
   })
 
   test('Tab keyboard navigation', () => {
     renderWithTheme(<TabTest />)
-
     const tab1 = screen.getByText('tab1')
     tab1.focus()
     expect(tab1).toHaveFocus()

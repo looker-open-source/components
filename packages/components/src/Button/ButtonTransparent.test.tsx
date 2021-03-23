@@ -28,7 +28,7 @@ import 'jest-styled-components'
 import '@testing-library/jest-dom/extend-expect'
 import { renderWithTheme } from '@looker/components-test-utils'
 import React from 'react'
-import { fireEvent } from '@testing-library/react'
+import { fireEvent, screen } from '@testing-library/react'
 import { ButtonTransparent } from './ButtonTransparent'
 
 test('ButtonTransparent Focus: renders outline when tabbing into focus, but not when clicking', () => {
@@ -40,8 +40,11 @@ test('ButtonTransparent Focus: renders outline when tabbing into focus, but not 
   )
 
   fireEvent.click(getByText('ButtonTransparent'))
-  expect(getByText('focus')).toMatchSnapshot()
+  // eslint-disable-next-line jest-dom/prefer-to-have-style
+  expect(screen.getByText('ButtonTransparent').style.boxShadow).toEqual('')
 
   fireEvent.keyUp(getByText('focus'), { charCode: 9, code: 9, key: 'Tab' })
-  expect(getByText('focus')).toMatchSnapshot()
+  expect(screen.getByText('focus')).toHaveStyle(
+    'box-shadow: 0 0 0 0.15rem rgba(108,67,224,0.25);'
+  )
 })
