@@ -37,7 +37,7 @@ import {
   ListItemLabelA,
   ListItemLabelDiv,
   ListItemLabelButton,
-} from '../List/ListItem'
+} from '../List/ListItemLabel'
 import { IconSize } from '../Icon'
 import { TreeItem } from './TreeItem'
 import { TreeBranch } from './TreeBranch'

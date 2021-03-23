@@ -24,11 +24,7 @@
 
  */
 
-import {
-  CompatibleHTMLProps,
-  FontSizes,
-  shouldForwardProp,
-} from '@looker/design-tokens'
+import { CompatibleHTMLProps, FontSizes } from '@looker/design-tokens'
 import styled from 'styled-components'
 import React, {
   FC,
@@ -49,21 +45,12 @@ import {
   useWrapEvent,
 } from '../utils'
 import { ListItemContext } from './ListItemContext'
+import { ListItemLabel } from './ListItemLabel'
 import { ListItemLayout } from './ListItemLayout'
 import { ListItemLayoutAccessory } from './ListItemLayoutAccessory'
 import { ListItemWrapper } from './ListItemWrapper'
-import {
-  DensityRamp,
-  Detail,
-  ListItemStatefulProps,
-  ListItemStatefulWithHoveredProps,
-} from './types'
-import {
-  createSafeRel,
-  getDetailOptions,
-  listItemBackgroundColor,
-  listItemDimensions,
-} from './utils'
+import { DensityRamp, Detail, ListItemStatefulProps } from './types'
+import { createSafeRel, getDetailOptions, listItemDimensions } from './utils'
 
 const TruncateWrapper: FC<{
   color?: string
@@ -75,7 +62,7 @@ const TruncateWrapper: FC<{
   </Text>
 )
 
-type ListItemRole = 'button' | 'link' | 'none'
+export type ListItemRole = 'button' | 'link' | 'none'
 
 export interface ListItemProps
   extends CompatibleHTMLProps<HTMLElement>,
@@ -122,77 +109,6 @@ export interface ListItemProps
    */
   truncate?: boolean
 }
-
-export const ListItemLabelButton = styled.button``
-export const ListItemLabelA = styled.a``
-export const ListItemLabelDiv = styled.div``
-
-const listItemLabelElement = (itemRole: ListItemRole, disabled?: boolean) => {
-  if (!disabled && itemRole === 'link') return ListItemLabelA
-  if (itemRole === 'none') return ListItemLabelDiv
-  return ListItemLabelButton
-}
-
-const ListItemLabelLayout: FC<ListItemLabelProps> = ({
-  children,
-  disabled,
-  itemRole = 'button',
-  ...props
-}) => {
-  const Component = listItemLabelElement(
-    itemRole,
-    disabled
-  ) as FC<ListItemLabelProps>
-
-  return (
-    <Component
-      disabled={disabled}
-      type={itemRole === 'button' || disabled ? 'button' : undefined}
-      {...props}
-    >
-      {children}
-    </Component>
-  )
-}
-
-interface ListItemLabelProps
-  extends CompatibleHTMLProps<HTMLElement>,
-    ListItemStatefulWithHoveredProps {
-  disabled?: boolean
-  height?: number
-  itemRole?: ListItemRole
-}
-
-export const ListItemLabel = styled(ListItemLabelLayout).withConfig({
-  shouldForwardProp: (prop) => prop === 'itemRole' || shouldForwardProp(prop),
-})`
-  ${({ height, itemRole }) => itemRole === 'none' && `height: ${height}px;`}
-  ${listItemBackgroundColor}
-
-  align-items: center;
-  border: none;
-  color: inherit;
-  cursor: pointer;
-  display: flex;
-  flex: 1;
-  font-size: inherit;
-  font-weight: inherit;
-  margin: 0; /* safari has default margin */
-  min-width: 0;
-  outline: none;
-  text-align: left;
-  text-decoration: none;
-  transition: ${({ theme: { easings, transitions } }) =>
-    `background ${transitions.quick}ms ${easings.ease},
-  color ${transitions.quick}ms ${easings.ease}`};
-  width: 100%;
-
-  &:hover,
-  &:focus {
-    color: inherit;
-    text-decoration: none;
-  }
-`
 
 const ListItemInternal = forwardRef(
   (props: ListItemProps, ref: Ref<HTMLLIElement>) => {
