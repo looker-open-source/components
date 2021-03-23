@@ -26,83 +26,79 @@
 
 import 'jest-styled-components'
 import React from 'react'
-import { mountWithTheme } from '@looker/components-test-utils'
+import { renderWithTheme } from '@looker/components-test-utils'
+import userEvent from '@testing-library/user-event'
+import { screen } from '@testing-library/react'
 import { Button } from '../Button/Button'
 import { FieldText } from './Fields/FieldText/FieldText'
 import { Form } from './Form'
-import { ValidationMessage } from './ValidationMessage'
 
-test('Form with two invalid children', () => {
-  const component = mountWithTheme(
-    <Form
-      validationMessages={{
-        name1: { message: 'e1', type: 'error' },
-        name2: { message: 'e2', type: 'error' },
-      }}
-    >
-      <FieldText label="label1" id="text-field" name="name1" />
-      <FieldText label="label2" id="text-field" name="name2" />
-    </Form>
-  )
+describe('Form', () => {
+  test('two invalid children', () => {
+    renderWithTheme(
+      <Form
+        validationMessages={{
+          name1: { message: 'e1', type: 'error' },
+          name2: { message: 'e2', type: 'error' },
+        }}
+      >
+        <FieldText label="label1" id="text-field" name="name1" />
+        <FieldText label="label2" id="text-field" name="name2" />
+      </Form>
+    )
 
-  const messages = component.find(ValidationMessage)
+    expect(screen.getByText('e1')).toBeInTheDocument()
+    expect(screen.getByText('e2')).toBeInTheDocument()
+  })
 
-  expect(messages).toHaveLength(2)
-  expect(
-    messages.map((validationMessage) => validationMessage.text())
-  ).toEqual(['e1', 'e2'])
-})
+  test('with one invalid child and a submit button', () => {
+    renderWithTheme(
+      <Form validationMessages={{ name2: { message: 'e2', type: 'error' } }}>
+        <FieldText label="label1" id="text-field" name="name1" />
+        <FieldText label="label2" id="text-field" name="name2" />
+        <Button>Submit</Button>
+      </Form>
+    )
+    expect(screen.getByText('e2')).toBeInTheDocument()
+  })
 
-test('Form with one invalid child and a submit button', () => {
-  const component = mountWithTheme(
-    <Form validationMessages={{ name2: { message: 'e2', type: 'error' } }}>
-      <FieldText label="label1" id="text-field" name="name1" />
-      <FieldText label="label2" id="text-field" name="name2" />
-      <Button>Submit</Button>
-    </Form>
-  )
-  expect(component.find(ValidationMessage).text()).toEqual('e2')
-})
+  test('Should trigger onInput handler', () => {
+    const onInput = jest.fn()
+    renderWithTheme(
+      <Form onInput={onInput}>
+        <FieldText label="label" id="text-field" name="name" />
+      </Form>
+    )
+    userEvent.type(screen.getByRole('textbox'), 'hi')
+    expect(onInput).toHaveBeenCalledTimes(2)
+  })
 
-test('Should trigger onInput handler', () => {
-  let counter = 0
-  const handleChange = () => counter++
+  test('Should trigger onChange handler', () => {
+    const onChange = jest.fn()
 
-  const wrapper = mountWithTheme(
-    <Form onInput={handleChange}>
-      <FieldText label="label" id="text-field" name="name" />
-    </Form>
-  )
+    renderWithTheme(
+      <Form onChange={onChange}>
+        <FieldText label="label" id="text-field" name="name" />
+      </Form>
+    )
+    userEvent.type(screen.getByRole('textbox'), 'hi')
+    expect(onChange).toHaveBeenCalledTimes(2)
+  })
 
-  wrapper.find('input').simulate('input', { target: { value: '' } })
-  expect(counter).toEqual(1)
-})
-
-test('Should trigger onChange handler', () => {
-  let counter = 0
-  const handleChange = () => counter++
-
-  const wrapper = mountWithTheme(
-    <Form onChange={handleChange}>
-      <FieldText label="label" id="text-field" name="name" />
-    </Form>
-  )
-
-  wrapper.find('input').simulate('change', { target: { value: '' } })
-  expect(counter).toEqual(1)
-})
-
-test('Should trigger onSubmit handler', () => {
-  let counter = 0
-  const handleChange = () => counter++
-
-  const wrapper = mountWithTheme(
-    <Form onChange={handleChange}>
-      <FieldText label="label" id="text-field" name="name" />
-      <Button type="submit">Submit</Button>
-    </Form>
-  )
-
-  wrapper.find('button').simulate('change', { target: { value: '' } })
-  expect(counter).toEqual(1)
+  /**
+   * JSDom Doesn't support `onSubmit` handler
+   * https://github.com/jsdom/jsdom/issues/1937
+   * https://github.com/jsdom/jsdom#unimplemented-parts-of-the-web-platform
+   */
+  xtest('Should trigger onSubmit handler', () => {
+    const onSubmit = jest.fn()
+    renderWithTheme(
+      <Form onSubmit={onSubmit}>
+        <FieldText label="label" id="text-field" name="name" />
+        <Button type="submit">Submit</Button>
+      </Form>
+    )
+    userEvent.click(screen.getByRole('button'))
+    expect(onSubmit).toHaveBeenCalled()
+  })
 })

@@ -26,7 +26,8 @@
 
 import 'jest-styled-components'
 import React from 'react'
-import { mountWithTheme, renderWithTheme } from '@looker/components-test-utils'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
 import { FieldDateRange } from './FieldDateRange'
 
 const realDateNow = Date.now.bind(global.Date)
@@ -43,7 +44,7 @@ afterEach(() => {
 })
 
 test('FieldDateRange renders and displays label', () => {
-  const wrapper = mountWithTheme(
+  renderWithTheme(
     <FieldDateRange
       defaultValue={{
         from: new Date('June 3, 2019'),
@@ -54,7 +55,7 @@ test('FieldDateRange renders and displays label', () => {
     />
   )
 
-  expect(wrapper.text()).toMatch(`Test Label`)
+  expect(screen.getAllByLabelText('Test Label').length).toEqual(2)
 })
 
 test('FieldDateRange should accept a disabled prop', () => {

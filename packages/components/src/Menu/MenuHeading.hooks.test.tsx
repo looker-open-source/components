@@ -24,7 +24,7 @@
 
  */
 
-import { mountWithTheme } from '@looker/components-test-utils'
+import { renderWithTheme } from '@looker/components-test-utils'
 import { act } from '@testing-library/react'
 import React, { RefObject } from 'react'
 import { useElementVisibility } from './MenuHeading.hooks'
@@ -54,7 +54,7 @@ describe('MenuHeading Hooks', () => {
 
   it('it returns true as the default visibility state', () => {
     act(() => {
-      mountWithTheme(<TestHook callback={cb} testRef={testRef} />)
+      renderWithTheme(<TestHook callback={cb} testRef={testRef} />)
     })
     expect(isVisible).toEqual(true)
   })
