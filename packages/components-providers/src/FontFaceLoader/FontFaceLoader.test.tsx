@@ -24,11 +24,11 @@
 
  */
 
-import { mount } from 'enzyme'
 import React from 'react'
 import { HelmetProvider } from 'react-helmet-async'
-import { FontSources } from '@looker/design-tokens'
 import { DefaultTheme, ThemeProvider } from 'styled-components'
+import { FontSources } from '@looker/design-tokens'
+import { render } from '@testing-library/react'
 import { fontFacesCSS, FontFaceLoader } from './FontFaceLoader'
 
 HelmetProvider.canUseDOM = false
@@ -71,7 +71,7 @@ describe('FontFaceLoader', () => {
   it('Does nothing if fontSource undefined', () => {
     const context = {} as any
 
-    mount(
+    render(
       <HelmetProvider context={context}>
         <ThemeProvider theme={({} as unknown) as DefaultTheme}>
           <FontFaceLoader />
@@ -84,7 +84,7 @@ describe('FontFaceLoader', () => {
   it('Does nothing if fontSource empty', () => {
     const context = {} as any
 
-    mount(
+    render(
       <HelmetProvider context={context}>
         <ThemeProvider
           theme={({ themeSources: [] } as unknown) as DefaultTheme}
@@ -100,7 +100,7 @@ describe('FontFaceLoader', () => {
   it('theme.fontSources has entries', () => {
     const context = {} as any
 
-    mount(
+    render(
       <HelmetProvider context={context}>
         <ThemeProvider
           theme={

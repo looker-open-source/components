@@ -25,60 +25,67 @@
  */
 
 import React from 'react'
-import { mountWithTheme, renderWithTheme } from '@looker/components-test-utils'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { fireEvent, screen } from '@testing-library/react'
 import { FieldTimeSelect } from './FieldTimeSelect'
 
-test('FieldTimeSelect should associate label and input field', () => {
-  const { getByLabelText } = renderWithTheme(
-    <FieldTimeSelect
-      label="Field Time Label"
-      id="field-time-select"
-      interval={10}
-    />
-  )
-  expect(getByLabelText('Field Time Label').tagName).toEqual('INPUT')
-})
+describe('FieldTimeSelect', () => {
+  test('should associate label and input field', () => {
+    const { getByLabelText } = renderWithTheme(
+      <FieldTimeSelect
+        label="Field Time Label"
+        id="field-time-select"
+        interval={10}
+      />
+    )
+    expect(getByLabelText('Field Time Label').tagName).toEqual('INPUT')
+  })
 
-test('FieldTimeSelect should accept required attributes', () => {
-  const { getByText } = renderWithTheme(
-    <FieldTimeSelect
-      label="Label"
-      id="field-time-select"
-      interval={10}
-      required
-    />
-  )
-  expect(getByText('required')).toBeVisible()
-})
+  test('should accept required attributes', () => {
+    const { getByText } = renderWithTheme(
+      <FieldTimeSelect
+        label="Label"
+        id="field-time-select"
+        interval={10}
+        required
+      />
+    )
+    expect(getByText('required')).toBeVisible()
+  })
 
-test('FieldTimeSelect should display error message', () => {
-  const errorMessage = 'This is an error'
+  test('should display error message', () => {
+    const errorMessage = 'This is an error'
 
-  const { getByText } = renderWithTheme(
-    <FieldTimeSelect
-      id="field-time-select"
-      interval={10}
-      label="Label"
-      validationMessage={{ message: errorMessage, type: 'error' }}
-    />
-  )
+    const { getByText } = renderWithTheme(
+      <FieldTimeSelect
+        id="field-time-select"
+        interval={10}
+        label="Label"
+        validationMessage={{ message: errorMessage, type: 'error' }}
+      />
+    )
 
-  expect(getByText('This is an error')).toBeVisible()
-})
+    expect(getByText('This is an error')).toBeVisible()
+  })
 
-test('FieldTimeSelect Should trigger onChange handler', () => {
-  const handleChange = jest.fn()
+  test('should trigger onChange handler', () => {
+    const onChange = jest.fn()
 
-  const wrapper = mountWithTheme(
-    <FieldTimeSelect
-      label="Label"
-      id="field-time-select"
-      interval={10}
-      onChange={handleChange}
-    />
-  )
+    renderWithTheme(
+      <FieldTimeSelect
+        label="Label"
+        id="field-time-select"
+        interval={10}
+        onChange={onChange}
+      />
+    )
 
-  wrapper.find('input').simulate('mousedown')
-  wrapper.find('li').at(0).simulate('click')
-  expect(handleChange).toHaveBeenCalledTimes(1)
+    fireEvent.click(screen.getByLabelText('Label'))
+    fireEvent.change(screen.getByLabelText('Label'), {
+      target: { value: '2pm' },
+    })
+    fireEvent.keyDown(screen.getByLabelText('Label'), { key: 'Enter' })
+    expect(onChange).toHaveBeenCalledTimes(1)
+    fireEvent.click(document)
+  })
 })

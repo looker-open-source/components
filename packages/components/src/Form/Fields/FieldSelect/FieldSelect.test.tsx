@@ -25,8 +25,8 @@
  */
 
 import React from 'react'
-import { mountWithTheme, renderWithTheme } from '@looker/components-test-utils'
-import { screen } from '@testing-library/react'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { fireEvent, screen } from '@testing-library/react'
 import { FieldSelect } from './FieldSelect'
 
 describe('FieldSelect', () => {
@@ -38,37 +38,34 @@ describe('FieldSelect', () => {
   })
 
   test('Accepts a value', () => {
-    const wrapper = mountWithTheme(
+    renderWithTheme(
       <FieldSelect
         label="👍"
-        name="thumbsUp"
-        id="thumbs-up"
         value="foobar"
         options={[{ label: 'Foobar', value: 'foobar' }]}
       />
     )
-
-    const input = wrapper.find('input')
-    expect(input.prop('value')).toEqual('Foobar')
+    expect(screen.getByRole('textbox')).toHaveValue('Foobar')
   })
 
   test('Should trigger onChange handler', () => {
-    const handleChange = jest.fn()
+    const onChange = jest.fn()
 
-    const wrapper = mountWithTheme(
+    renderWithTheme(
       <FieldSelect
         label="👍"
-        name="thumbsUp"
-        id="thumbs-up"
         value="foobar"
-        onChange={handleChange}
+        onChange={onChange}
         options={[{ label: 'Foobar', value: 'foobar' }]}
       />
     )
 
-    wrapper.find('input').simulate('mousedown')
-    wrapper.find('li').at(0).simulate('click')
-    expect(handleChange).toHaveBeenCalledTimes(1)
+    const input = screen.getByLabelText('👍')
+    fireEvent.mouseDown(input)
+    const foobar = screen.getByText('Foobar')
+    fireEvent.click(foobar)
+    expect(onChange).toHaveBeenCalledTimes(1)
+    fireEvent.click(document)
   })
 
   test('With an validation message displayed', () => {
