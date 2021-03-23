@@ -109,6 +109,12 @@ export interface ListItemProps
   truncate?: boolean
 }
 
+const listItemLabelElement = (itemRole: ListItemRole, disabled?: boolean) => {
+  if (!disabled && itemRole === 'link') return 'a'
+  if (itemRole === 'none') return 'div'
+  return 'button'
+}
+
 interface ListItemLabelProps extends CompatibleHTMLProps<HTMLElement> {
   disabled?: boolean
   height?: number
@@ -119,22 +125,10 @@ export const ListItemLabel = styled.div
   .withConfig<ListItemLabelProps>({
     shouldForwardProp: (prop) => prop !== 'itemRole',
   })
-  .attrs<ListItemLabelProps>(({ disabled, itemRole = 'button' }) => {
-    let domElement
-
-    if (!disabled && itemRole === 'link') {
-      domElement = 'a'
-    } else if (!disabled && itemRole === 'none') {
-      domElement = 'div'
-    } else {
-      domElement = 'button'
-    }
-
-    return {
-      as: domElement,
-      type: itemRole === 'button' || disabled ? 'button' : undefined,
-    }
-  })<ListItemLabelProps>`
+  .attrs<ListItemLabelProps>(({ disabled, itemRole = 'button' }) => ({
+    as: listItemLabelElement(itemRole, disabled),
+    type: itemRole === 'button' || disabled ? 'button' : undefined,
+  }))<ListItemLabelProps>`
     ${({ height, itemRole }) => itemRole === 'none' && `height: ${height}px;`}
   `
 
