@@ -24,14 +24,16 @@
 
  */
 
-import React from 'react'
+import React, { FC } from 'react'
 import { Pivot } from '@looker/icons'
 import { Story } from '@storybook/react/types-6-0'
 import { PersonOutline } from '@styled-icons/material'
 import { DateRange } from '@styled-icons/material-outlined'
 import { IconButton } from '../Button'
 import { Text } from '../Text'
+import { Grid } from '../Layout/Grid'
 import { ListItem, ListItemProps } from './ListItem'
+import { ListItemRole } from './types'
 
 const Template: Story<ListItemProps> = (args) => <ListItem {...args} />
 
@@ -206,6 +208,31 @@ TruncateAndIconAndDetailAndAccessory.args = {
   },
   icon: <DateRange />,
 }
+
+const RoleVariant: FC<{ itemRole: ListItemRole; description?: string }> = ({
+  itemRole,
+  description,
+}) => (
+  <ListItem itemRole={itemRole} description={description}>
+    Hello World
+  </ListItem>
+)
+export const RoleVariants = () => (
+  <Grid columns={3}>
+    <div>
+      <RoleVariant itemRole="button" />
+      <RoleVariant itemRole="button" description="Definitely a button" />
+    </div>
+    <div>
+      <RoleVariant itemRole="link" />
+      <RoleVariant itemRole="link" description="Definitely a link" />
+    </div>
+    <div>
+      <RoleVariant itemRole="none" />
+      <RoleVariant itemRole="none" description="Definitely a none" />
+    </div>
+  </Grid>
+)
 
 export default {
   component: ListItem,
