@@ -50,9 +50,11 @@ import styled, { css } from 'styled-components'
 import once from 'lodash/once'
 import throttle from 'lodash/throttle'
 import { usePopover } from '../../../Popover'
+import { listPadding } from '../../../List/utils'
 import { useResize } from '../../../utils'
 import { ComboboxOptionIndicatorProps } from './types'
 import { ComboboxContext, ComboboxMultiContext } from './ComboboxContext'
+import { ComboboxOption } from './ComboboxOption'
 import { useBlur } from './utils/useBlur'
 import { useKeyDown } from './utils/useKeyDown'
 import { useListWidths } from './utils/useListWidths'
@@ -232,13 +234,16 @@ const ComboboxListInternal = forwardRef(
           setListClientRect(containerElement.getBoundingClientRect())
       })
 
+      const updateScrollState = (containerElement: Element) => {
+        setListClientRectOnce(containerElement)
+        setListScrollPosition?.(containerElement.scrollTop)
+      }
+
       const wait = 50
       let t: number
       const scrollListener = throttle(() => {
         if (contentContainer) {
-          setListClientRectOnce(contentContainer)
-          setListScrollPosition?.(contentContainer.scrollTop)
-
+          updateScrollState(contentContainer)
           // Solves issue where scrolling (regular or due to keyboard navigating)
           // while the mouse is over the list triggers unintentional mouseenter
           // causing the wrong option to get highlighted, and, if windowing is on
@@ -254,7 +259,7 @@ const ComboboxListInternal = forwardRef(
 
       if (contentContainer) {
         contentContainer.addEventListener('scroll', scrollListener)
-        scrollListener()
+        updateScrollState(contentContainer)
       }
 
       return () => {
@@ -285,6 +290,7 @@ export const ComboboxUl = styled.ul.withConfig({
   outline: none;
   position: relative;
   ${layout}
+  ${() => listPadding(ComboboxOption)}
 `
 
 const isMultiPadding = css<ComboboxListInternalProps>`

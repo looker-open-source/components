@@ -24,36 +24,29 @@
 
  */
 
-import { width, WidthProps } from '@looker/design-tokens'
-import React, { forwardRef, Ref } from 'react'
-import styled from 'styled-components'
-import { List, ListProps } from '../List'
-import { listPadding } from '../List/utils'
-import { MenuItem } from './MenuItem'
-import { NestedMenuProvider } from './NestedMenuProvider'
+import { css, StyledComponent } from 'styled-components'
+import { Divider } from '../../Divider'
+import { ListDivider } from '../ListDivider'
 
-export interface MenuListProps extends ListProps, WidthProps {}
+export const listPadding = (ItemComponent: StyledComponent<any, any>) => css`
+  > :first-child {
+    margin-top: ${({ theme }) => theme.space.xsmall};
 
-export const MenuListInternal = forwardRef(
-  (
-    { children, ...props }: MenuListProps,
-    forwardedRef: Ref<HTMLUListElement>
-  ) => {
-    return (
-      <NestedMenuProvider>
-        <List role="menu" ref={forwardedRef} {...props}>
-          {children}
-        </List>
-      </NestedMenuProvider>
-    )
+    ${Divider} {
+      display: none;
+    }
   }
-)
-MenuListInternal.displayName = 'MenuListInternal'
 
-export const MenuList = styled(MenuListInternal)`
-  ${width}
-  min-width: 12rem;
-  overflow: auto;
+  ${ListDivider} + ${ItemComponent},
+  ${ItemComponent} + ${ListDivider} {
+    margin-top: ${({ theme }) => theme.space.xsmall};
+  }
 
-  ${() => listPadding(MenuItem)}
+  > :last-child {
+    margin-bottom: ${({ theme }) => theme.space.xsmall};
+
+    ${Divider} {
+      display: none;
+    }
+  }
 `
