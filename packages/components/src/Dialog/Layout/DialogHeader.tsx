@@ -32,7 +32,6 @@ import {
   omitStyledProps,
   SpaceProps,
   space,
-  reset,
   FontSizeProps,
   FontWeightProps,
 } from '@looker/design-tokens'
@@ -117,7 +116,6 @@ export const DialogHeader = styled(DialogHeaderLayout).attrs(
     px,
   })
 )`
-  ${reset}
   ${space}
   align-items: center;
   display: flex;

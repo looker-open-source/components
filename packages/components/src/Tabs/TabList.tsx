@@ -31,7 +31,6 @@ import {
   FontSizeProps,
   PaddingProps,
   padding,
-  reset,
 } from '@looker/design-tokens'
 import styled, { css } from 'styled-components'
 import { useArrowKeyNav } from '../utils'
@@ -106,7 +105,6 @@ export const TabList = styled(TabListLayout).attrs(
     fontSize,
   })
 )`
-  ${reset}
   ${padding}
   ${fontSize}
 

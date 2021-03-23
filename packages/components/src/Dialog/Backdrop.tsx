@@ -24,11 +24,7 @@
 
  */
 
-import {
-  CompatibleHTMLProps,
-  reset,
-  shouldForwardProp,
-} from '@looker/design-tokens'
+import { CompatibleHTMLProps, shouldForwardProp } from '@looker/design-tokens'
 import { OpacityProps, BackgroundColorProps, color } from 'styled-system'
 import styled, { CSSObject } from 'styled-components'
 
@@ -47,8 +43,7 @@ export const Backdrop = styled.div
   .attrs(() => ({
     'data-testid': 'backdrop',
   }))`
-  ${reset}
-  ${color}
+    ${color}
 
   background: ${({ theme }) => theme.colors.ui5};
   bottom: 0;

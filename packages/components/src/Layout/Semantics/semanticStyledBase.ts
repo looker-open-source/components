@@ -28,7 +28,6 @@ import {
   CompatibleHTMLProps,
   padding,
   PaddingProps,
-  reset,
 } from '@looker/design-tokens'
 import { css } from 'styled-components'
 
@@ -37,6 +36,5 @@ export interface SemanticLayoutBase
     CompatibleHTMLProps<HTMLElement> {}
 
 export const semanticLayoutCSS = css`
-  ${reset}
   ${padding}
 `

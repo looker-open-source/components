@@ -35,7 +35,6 @@ import React, {
 } from 'react'
 import {
   SpaceProps,
-  reset,
   space,
   typography,
   TypographyProps,
@@ -437,7 +436,6 @@ export const RangeSlider = styled(InternalRangeSlider).attrs<RangeSliderProps>(
     lineHeight,
   })
 )<RangeSliderProps>`
-  ${reset}
   ${space}
   ${typography}
   padding: 1.5rem 0 0.5rem;

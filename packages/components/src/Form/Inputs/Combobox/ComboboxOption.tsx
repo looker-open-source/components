@@ -32,7 +32,6 @@ import {
   color,
   flexbox,
   layout,
-  reset,
   space,
   typography,
   omitStyledProps,
@@ -155,7 +154,6 @@ const ComboboxOptionInternal = forwardRef(
 ComboboxOptionInternal.displayName = 'ComboboxOptionInternal'
 
 export const comboboxOptionStyle = css`
-  ${reset}
   ${color}
   ${flexbox}
   ${layout}

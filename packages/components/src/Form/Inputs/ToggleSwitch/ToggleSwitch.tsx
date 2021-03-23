@@ -25,7 +25,6 @@
  */
 
 import {
-  reset,
   space,
   SpaceProps,
   toggleSwitchShadowColor,
@@ -43,8 +42,6 @@ export interface ToggleSwitchProps
 }
 
 const DisabledKnob = styled.div`
-  ${reset}
-
   background: ${({ theme }) => theme.colors.ui3};
   border-radius: 1.25rem;
   bottom: 0;
@@ -82,7 +79,6 @@ export const ToggleSwitchLayout = forwardRef(
 ToggleSwitchLayout.displayName = 'ToggleSwitchLayout'
 
 export const ToggleSwitch = styled(ToggleSwitchLayout)`
-  ${reset}
   ${space}
 
   display: inline-block;

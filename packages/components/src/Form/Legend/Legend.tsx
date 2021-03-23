@@ -28,7 +28,6 @@ import styled from 'styled-components'
 import {
   CompatibleHTMLProps,
   color,
-  reset,
   space,
   SpaceProps,
   shouldForwardProp,
@@ -58,8 +57,7 @@ export const Legend = styled.legend
       p,
     })
   )<LegendProps>`
-  ${reset}
-  ${color}
+    ${color}
   ${space}
   ${typography}
 `

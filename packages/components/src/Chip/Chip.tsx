@@ -25,7 +25,6 @@
  */
 
 import { useTranslation } from 'react-i18next'
-import { reset } from '@looker/design-tokens'
 import React, { forwardRef, KeyboardEvent, MouseEvent, Ref } from 'react'
 import styled from 'styled-components'
 import { Close } from '@styled-icons/material'
@@ -58,8 +57,6 @@ export interface ChipProps
 }
 
 const ChipStyle = styled.span<FocusVisibleProps>`
-  ${reset}
-
   align-items: center;
   background: ${({ theme }) => theme.colors.keySubtle};
   border: 1px solid transparent;

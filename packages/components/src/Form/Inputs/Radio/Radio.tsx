@@ -26,7 +26,7 @@
 
 import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
-import { reset, space, SpaceProps } from '@looker/design-tokens'
+import { space, SpaceProps } from '@looker/design-tokens'
 import { InputProps, pickInputProps } from '../InputProps'
 import { ValidationType } from '../../ValidationMessage'
 import { FauxRadio } from './FauxRadio'
@@ -59,7 +59,6 @@ const RadioLayout = forwardRef(
 RadioLayout.displayName = 'RadioLayout'
 
 export const Radio = styled(RadioLayout)`
-  ${reset}
   ${space}
 
   height: 1rem;

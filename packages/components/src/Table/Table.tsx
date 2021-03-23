@@ -25,7 +25,6 @@
  */
 
 import {
-  reset,
   space,
   CompatibleHTMLProps,
   SpaceProps,
@@ -48,8 +47,7 @@ export const Table = styled.table
   .attrs<TableProps>(({ width = '100%' }) => ({
     width,
   }))<TableProps>`
-  ${reset}
-  ${space}
+    ${space}
   ${layout}
   ${border}
   border-collapse: collapse;

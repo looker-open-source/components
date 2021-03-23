@@ -25,12 +25,10 @@
  */
 
 import styled from 'styled-components'
-import { reset } from '@looker/design-tokens'
 
 const dotSize = 6
 
 export const FauxRadio = styled.div`
-  ${reset}
   background-color: currentColor;
   border: solid 1px ${({ theme }) => `${theme.colors.ui2}`};
   border-color: currentColor;

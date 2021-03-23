@@ -30,7 +30,6 @@ import {
   CompatibleHTMLProps,
   layout,
   LayoutProps,
-  reset,
   padding,
   PaddingProps,
   shouldForwardProp,
@@ -56,8 +55,7 @@ const TabStyle = styled.button
   .attrs(({ type = 'button' }) => ({
     type,
   }))<TabProps>`
-  ${reset}
-  ${layout}
+    ${layout}
   ${padding}
   ${typography}
 

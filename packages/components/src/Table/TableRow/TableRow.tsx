@@ -25,7 +25,6 @@
  */
 
 import {
-  reset,
   CompatibleHTMLProps,
   border,
   BorderProps,
@@ -43,7 +42,6 @@ export interface TableRowProps
 export const TableRow = styled.tr.withConfig({
   shouldForwardProp,
 })<TableRowProps>`
-  ${reset}
   ${border}
   ${typography}
 `

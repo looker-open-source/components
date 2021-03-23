@@ -26,7 +26,6 @@
 
 import {
   buttonShadow,
-  reset,
   space,
   StatefulColor,
   shouldForwardProp,
@@ -40,7 +39,6 @@ import { buttonIcon } from './icon'
 import { ButtonProps } from './types'
 
 export const buttonCSS = (color: StatefulColor, focusVisible?: boolean) => css`
-  ${reset}
   ${maxWidth}
   ${minWidth}
   ${width}

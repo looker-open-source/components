@@ -27,7 +27,7 @@
 import noop from 'lodash/noop'
 import React, { forwardRef, Ref, useState, FormEvent, useEffect } from 'react'
 import styled from 'styled-components'
-import { reset, space, SpaceProps } from '@looker/design-tokens'
+import { space, SpaceProps } from '@looker/design-tokens'
 import isUndefined from 'lodash/isUndefined'
 import { InputProps, pickInputProps } from '../InputProps'
 import { ValidationType } from '../../ValidationMessage'
@@ -100,7 +100,6 @@ const CheckboxLayout = forwardRef(
 CheckboxLayout.displayName = 'CheckboxLayout'
 
 export const Checkbox = styled(CheckboxLayout)`
-  ${reset}
   ${space}
   height: 1rem;
   position: relative;

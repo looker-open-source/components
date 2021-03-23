@@ -33,7 +33,6 @@ import {
   flexbox,
   layout,
   space,
-  reset,
 } from '@looker/design-tokens'
 import omit from 'lodash/omit'
 
@@ -77,7 +76,6 @@ const Layout: FC<TabPanelsProps> = ({
 export const TabPanels = styled(Layout).attrs(({ pt = 'large' }) => ({
   pt,
 }))`
-  ${reset}
   ${flexbox}
   ${layout}
   ${space}

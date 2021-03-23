@@ -31,7 +31,6 @@ import {
   CompatibleHTMLProps,
   layout,
   LayoutProps,
-  reset,
   space,
   SpaceProps,
   shouldForwardProp,
@@ -263,7 +262,6 @@ ComboboxListInternal.displayName = 'ComboboxListInternal'
 export const ComboboxUl = styled.ul.withConfig({
   shouldForwardProp,
 })<ComboboxListProps>`
-  ${reset}
   ${typography}
   ${space}
   list-style-type: none;

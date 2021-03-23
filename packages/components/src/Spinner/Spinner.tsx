@@ -30,7 +30,6 @@ import {
   position,
   SpaceProps,
   space,
-  reset,
   shouldForwardProp,
 } from '@looker/design-tokens'
 import omit from 'lodash/omit'
@@ -76,8 +75,7 @@ const Style = styled.div
   .attrs<SpinnerProps>(({ size = '30' }) => ({
     size,
   }))<SpinnerProps>`
-  ${reset}
-  ${space}
+    ${space}
   ${position}
 
   height: ${(props) => props.size}px;

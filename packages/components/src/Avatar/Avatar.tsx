@@ -26,7 +26,6 @@
 
 import {
   color,
-  reset,
   space,
   SpaceProps,
   typography,
@@ -108,8 +107,6 @@ export const avatarButtonOverrides = css`
 `
 
 export const avatarCSS = css`
-  ${reset}
-
   ${avatarButtonOverrides}
 
   ${color}

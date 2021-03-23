@@ -26,7 +26,6 @@
 
 import {
   CompatibleHTMLProps,
-  reset,
   space,
   SpaceProps,
   shouldForwardProp,
@@ -89,8 +88,7 @@ export const OrderedList = styled.div
     color,
     type,
   }))<OrderedListProps>`
-  ${reset}
-  ${textColor}
+    ${textColor}
   ${typography}
   ${typeVariant}
   ${space}

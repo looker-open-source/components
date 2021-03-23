@@ -25,7 +25,6 @@
  */
 
 import React, { FC } from 'react'
-import { reset } from '@looker/design-tokens'
 import styled from 'styled-components'
 
 export type ValidationType = 'error'
@@ -49,8 +48,6 @@ const ValidationMessageLayout: FC<ValidationMessageProps> = ({
 }) => <div className={className}>{message}</div>
 
 export const ValidationMessage = styled(ValidationMessageLayout)`
-  ${reset}
-
   font-size: ${(props) => props.theme.fontSizes.xsmall};
 
   ${({ theme, type }) => type === 'error' && `color: ${theme.colors.critical};`}

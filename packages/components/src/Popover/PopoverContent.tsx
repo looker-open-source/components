@@ -28,7 +28,6 @@ import styled from 'styled-components'
 import {
   FlexboxProps,
   flexbox,
-  reset,
   space,
   SpaceProps,
   shouldForwardProp,
@@ -42,8 +41,7 @@ export const PopoverContent = styled.div
   .attrs<PopoverContentProps>(({ p = 'small' }) => ({
     p,
   }))<PopoverContentProps>`
- ${reset}
-  ${space}
+   ${space}
   ${layout}
   ${flexbox}
 `

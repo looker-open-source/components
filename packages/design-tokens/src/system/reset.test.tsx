@@ -60,9 +60,7 @@ describe('reset', () => {
   })
 
   test('fontFamily', () => {
-    const Test = styled.p`
-      ${reset}
-    `
+    const Test = styled.p``
 
     renderWithTheme(<Test fontFamily="brand">Find me</Test>)
 

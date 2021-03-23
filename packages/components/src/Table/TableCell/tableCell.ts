@@ -25,7 +25,6 @@
  */
 
 import {
-  reset,
   CompatibleHTMLProps,
   border,
   BorderProps,
@@ -49,7 +48,6 @@ export interface TableCellProps
     CompatibleHTMLProps<HTMLTableCellElement> {}
 
 export const tableCellCSS = css`
-  ${reset}
   padding: ${(props) => props.theme.space.xsmall} 0;
   ${border}
   ${color}

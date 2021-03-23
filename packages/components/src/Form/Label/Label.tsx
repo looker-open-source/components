@@ -27,7 +27,6 @@
 import styled from 'styled-components'
 import {
   CompatibleHTMLProps,
-  reset,
   shouldForwardProp,
   textColor,
   TextColorProps,
@@ -51,7 +50,6 @@ export const Label = styled.label
       fontWeight,
     })
   )<LabelProps>`
-  ${reset}
-  ${textColor}
+    ${textColor}
   ${typography}
 `

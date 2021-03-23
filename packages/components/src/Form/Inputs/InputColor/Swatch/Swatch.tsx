@@ -28,7 +28,6 @@ import styled from 'styled-components'
 import {
   CompatibleHTMLProps,
   disabledSwatchColor,
-  reset,
   shouldForwardProp,
 } from '@looker/design-tokens'
 import { height, HeightProps, width, WidthProps } from 'styled-system'
@@ -72,8 +71,6 @@ export const Swatch = styled.div
       width,
     })
   )<SwatchProps>`
-  ${reset}
-
   ${inputCSS}
   ${width}
   ${height}

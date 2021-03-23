@@ -24,7 +24,7 @@
 
  */
 
-import { reset, omitStyledProps } from '@looker/design-tokens'
+import { omitStyledProps } from '@looker/design-tokens'
 import React, { FC, useContext, useRef } from 'react'
 import styled, { css } from 'styled-components'
 import { useGlobalHotkeys } from '../utils'
@@ -55,8 +55,6 @@ export const SurfaceBase = styled(SurfaceLayout).attrs(() => ({
   'aria-modal': true,
   role: 'dialog',
 }))`
-  ${reset}
-
   background: ${({ theme }) => theme.colors.background};
   color: ${({ theme }) => theme.colors.text};
   display: flex;

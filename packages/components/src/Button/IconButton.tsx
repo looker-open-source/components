@@ -29,7 +29,6 @@ import isFunction from 'lodash/isFunction'
 import styled, { css } from 'styled-components'
 import {
   CompatibleHTMLProps,
-  reset,
   SpaceProps,
   space,
   shouldForwardProp,
@@ -240,7 +239,6 @@ export const IconButton = styled(IconButtonComponent).attrs(
     type,
   })
 )<IconButtonProps>`
-  ${reset}
   ${space}
 
   background: none;

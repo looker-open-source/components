@@ -26,7 +26,6 @@
 
 import {
   CompatibleHTMLProps,
-  reset,
   space,
   SpaceProps,
   shouldForwardProp,
@@ -77,8 +76,7 @@ export const UnorderedList = styled.ul
   .attrs<UnorderedListProps>(({ color = 'body' }) => ({
     color,
   }))<UnorderedListProps>`
-  ${reset}
-  ${textColor}
+    ${textColor}
   ${typography}
   ${typeVariant}
   ${space}

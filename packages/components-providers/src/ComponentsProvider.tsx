@@ -33,6 +33,7 @@ import {
 } from '@looker/design-tokens'
 import React, { FC, useMemo } from 'react'
 import { HelmetProvider } from 'react-helmet-async'
+import styled from 'styled-components'
 import { FocusTrapProvider } from './FocusTrap'
 import { ScrollLockProvider } from './ScrollLock'
 import { useI18n, UseI18nProps } from './I18n'
@@ -113,13 +114,57 @@ export const ComponentsProvider: FC<ComponentsProviderProps> = ({
   return (
     <HelmetProvider>
       <ThemeProvider {...props} theme={theme}>
-        {globalStyle && <GlobalStyle />}
-        {loadFontSources && <FontFaceLoader />}
-        {ie11Support && <IEGlobalStyle />}
-        <FocusTrapProvider>
-          <ScrollLockProvider>{children}</ScrollLockProvider>
-        </FocusTrapProvider>
+        <StyleDefender>
+          {globalStyle && <GlobalStyle />}
+          {loadFontSources && <FontFaceLoader />}
+          {ie11Support && <IEGlobalStyle />}
+          <FocusTrapProvider>
+            <ScrollLockProvider>{children}</ScrollLockProvider>
+          </FocusTrapProvider>
+        </StyleDefender>
       </ThemeProvider>
     </HelmetProvider>
   )
 }
+
+const StyleDefender = styled.div`
+  box-sizing: border-box;
+  font-family: ${({ theme }) => theme.fonts.body};
+  font-size: 16px;
+
+  height: 100%;
+  width: 100%;
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  ol,
+  ul {
+    list-style: none;
+  }
+
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  ol,
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  a {
+    text-decoration: none;
+  }
+`

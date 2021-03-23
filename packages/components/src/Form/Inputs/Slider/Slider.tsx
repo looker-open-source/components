@@ -28,7 +28,6 @@ import React, { forwardRef, Ref, SyntheticEvent, useState } from 'react'
 import isFunction from 'lodash/isFunction'
 import styled, { css } from 'styled-components'
 import {
-  reset,
   space,
   SpaceProps,
   typography,
@@ -279,7 +278,6 @@ export const Slider = styled(SliderInternal).attrs(
     width,
   })
 )<SliderProps>`
-  ${reset}
   ${space}
   ${width}
   ${typography}

@@ -29,7 +29,6 @@ import {
   color,
   position,
   PositionProps,
-  reset,
   space,
   SpaceProps,
   shouldForwardProp,
@@ -73,8 +72,7 @@ export const DividerBase = styled.hr
       size,
     })
   )<DividerProps>`
-  ${reset}
-  ${position}
+    ${position}
 
   border: none;
   margin: 0; /* reset <hr /> built-in margin */

@@ -26,7 +26,6 @@
 
 import {
   CompatibleHTMLProps,
-  reset,
   typography,
   TypographyProps,
   omitStyledProps,
@@ -80,7 +79,6 @@ const LinkLayout = forwardRef(
 LinkLayout.displayName = 'LinkLayout'
 
 export const Link = styled(LinkLayout)`
-  ${reset}
   ${typography}
 
   color: ${({ keyColor, theme: { colors } }) =>

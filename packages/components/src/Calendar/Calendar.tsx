@@ -28,7 +28,7 @@ import DayPicker, { RangeModifier, LocaleUtils } from 'react-day-picker'
 import styled from 'styled-components'
 import has from 'lodash/has'
 import noop from 'lodash/noop'
-import { reset, calendarMixColor } from '@looker/design-tokens'
+import { calendarMixColor } from '@looker/design-tokens'
 import { inputTextFocus } from '../Form/Inputs/InputText'
 import { calendarSize, calendarSpacing } from './calendar-size'
 import { CalendarContext } from './CalendarContext'
@@ -115,7 +115,6 @@ const InternalCalendar: FC<CalendarProps> = ({
 export const Calendar = styled(InternalCalendar).attrs(() => ({
   size: 'medium',
 }))`
-  ${reset}
   ${dayPickerCss}
   ${calendarSpacing}
 

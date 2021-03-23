@@ -27,7 +27,6 @@
 import styled from 'styled-components'
 
 import {
-  reset,
   space,
   SpaceProps,
   shouldForwardProp,
@@ -61,7 +60,6 @@ export interface TextBaseProps
 export const TextBase = styled.span.withConfig({
   shouldForwardProp,
 })<TextBaseProps>`
-  ${reset}
   /* fontFamily is handled by reset */
   ${fontSize}
   ${fontStyle}

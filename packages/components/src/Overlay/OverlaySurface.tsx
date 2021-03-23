@@ -24,7 +24,7 @@
 
  */
 
-import { reset, fadeIn } from '@looker/design-tokens'
+import { fadeIn } from '@looker/design-tokens'
 import { Placement } from '@popperjs/core'
 import React, {
   CSSProperties,
@@ -79,7 +79,6 @@ const OverlaySurfaceLayout = forwardRef(
 OverlaySurfaceLayout.displayName = 'OverlaySurfaceLayout'
 
 export const OverlaySurface = styled(OverlaySurfaceLayout)`
-  ${reset}
   animation: ${fadeIn} ease-in;
   animation-duration: ${({ theme }) => `${theme.transitions.quick}ms`};
   max-width: ${({ maxWidth }) => maxWidth};

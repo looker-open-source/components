@@ -28,7 +28,6 @@ import {
   CompatibleHTMLProps,
   PaddingProps,
   padding,
-  reset,
   LayoutProps,
   layout,
   pickStyledProps,
@@ -102,7 +101,6 @@ interface InnerDialogContentProps extends DialogStyleProps, PaddingProps {
 }
 
 const InnerDialogContent = styled.div<InnerDialogContentProps>`
-  ${reset}
   ${layout}
   ${padding}
 

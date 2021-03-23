@@ -28,7 +28,6 @@ import {
   color,
   CompatibleHTMLProps,
   generateIntentShade,
-  reset,
   SizeLarge,
   SizeMedium,
   SizeSmall,
@@ -115,9 +114,7 @@ export const Badge = styled(BadgeLayout).attrs(
     size,
   })
 )`
-  ${reset}
-
-  border-radius:50px;
+  border-radius: 50px;
   display: inline-flex;
   font-weight: ${({ theme }) => theme.fontWeights.semiBold};
 

@@ -26,7 +26,7 @@
 
 import React, { FC } from 'react'
 import styled from 'styled-components'
-import { reset, knobShadowColor } from '@looker/design-tokens'
+import { knobShadowColor } from '@looker/design-tokens'
 
 export interface KnobProps {
   disabled?: boolean
@@ -59,8 +59,6 @@ const KnobContainerLayout: FC<KnobContainerProps> = ({
 )
 
 export const KnobContainer = styled(KnobContainerLayout)`
-  ${reset}
-
   background: ${({ on, theme }) => (on ? theme.colors.key : theme.colors.ui3)};
   border-radius: 1.25rem;
   bottom: 0;

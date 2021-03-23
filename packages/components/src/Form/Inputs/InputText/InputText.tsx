@@ -29,7 +29,6 @@ import {
   omitStyledProps,
   space,
   SpaceProps,
-  reset,
   layout,
 } from '@looker/design-tokens'
 import { StyledIconBase } from '@styled-icons/styled-icon'
@@ -314,8 +313,6 @@ export const InputText = styled(InputTextLayout).attrs<InputTextProps>(
     type,
   })
 )<InputTextProps>`
-  ${reset}
-
   align-items: center;
   color: ${({ theme }) => theme.colors.text};
   cursor: text;

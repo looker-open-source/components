@@ -25,7 +25,6 @@
  */
 
 import {
-  reset,
   CompatibleHTMLProps,
   border,
   BorderProps,
@@ -40,7 +39,6 @@ export interface TableSectionProps
     CompatibleHTMLProps<HTMLTableSectionElement> {}
 
 export const tableSectionCSS = css`
-  ${reset}
   ${border}
   ${typography}
 `

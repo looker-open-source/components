@@ -35,9 +35,10 @@ import React, {
 import styled from 'styled-components'
 import {
   CompatibleHTMLProps,
-  reset,
+  FontFamilies,
   omitStyledProps,
 } from '@looker/design-tokens'
+import { fontFamily } from 'styled-system'
 import { useArrowKeyNav, useWindow } from '../utils'
 import { ListItemContext } from './ListItemContext'
 import { listItemDimensions } from './utils'
@@ -53,15 +54,17 @@ export interface ListProps
   density?: DensityRamp
 
   /**
-   * Replace the normal uiN(1-5) color for selected and selected + hovered color with key colors
-   */
-  keyColor?: boolean
-
-  /**
    * If true, all ListItem children without an icon will reserve space for an icon
    * for alignment purposes.
    */
   iconGutter?: boolean
+
+  fontFamily?: FontFamilies
+
+  /**
+   * Replace the normal uiN(1-5) color for selected and selected + hovered color with key colors
+   */
+  keyColor?: boolean
 
   /**
    * Use windowing for long lists (strongly recommended to also define a width)
@@ -146,9 +149,12 @@ export const ListInternal = forwardRef(
 )
 
 export const List = styled(ListInternal)`
-  ${reset}
-
+  ${fontFamily}
   height: 100%;
   list-style: none;
   overflow: auto;
+
+  button {
+    ${fontFamily}
+  }
 `
