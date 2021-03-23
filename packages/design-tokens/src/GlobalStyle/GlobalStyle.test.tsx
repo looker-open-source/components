@@ -24,7 +24,7 @@
 
  */
 
-import { mountWithTheme } from '@looker/components-test-utils'
+import { renderWithTheme } from '@looker/components-test-utils'
 import React, { FC, useContext } from 'react'
 import { ThemeContext, ThemeProvider } from 'styled-components'
 import { GlobalStyle } from './GlobalStyle'
@@ -48,7 +48,7 @@ test('GlobalStyle', () => {
     </TestWrapper>
   )
 
-  mountWithTheme(<Test />)
+  renderWithTheme(<Test />)
   expect(document.body).toBeInTheDocument()
   expect(document.body).toHaveStyle('background: rgb(255, 255, 255)')
 })

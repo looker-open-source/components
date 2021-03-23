@@ -25,14 +25,9 @@
  */
 
 import { format } from 'util'
-import Adapter from 'enzyme-adapter-react-16'
-import { configure } from 'enzyme'
 
 require('@testing-library/jest-dom/extend-expect')
-require('jest-canvas-mock')
 require('jest-styled-components')
-
-configure({ adapter: new Adapter() })
 
 const observeMock = function (cb, config) {
   this.observeCallback = cb

@@ -26,13 +26,14 @@
 
 import 'jest-styled-components'
 import React from 'react'
-import { mountWithTheme } from '@looker/components-test-utils'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
 import { FieldChips } from './FieldChips'
 
 test('A FieldChip with description', () => {
   const handleChange = jest.fn()
 
-  const wrapper = mountWithTheme(
+  renderWithTheme(
     <FieldChips
       description="no vegetables allowed"
       id="FieldChipsID"
@@ -41,5 +42,6 @@ test('A FieldChip with description', () => {
       values={[]}
     />
   )
-  expect(wrapper.text()).toMatch(`Chip labelno vegetables allowed`)
+  expect(screen.getByLabelText('Chip label')).toBeInTheDocument()
+  expect(screen.getByText('no vegetables allowed')).toBeInTheDocument()
 })

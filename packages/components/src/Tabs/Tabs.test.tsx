@@ -26,7 +26,7 @@
 
 import 'jest-styled-components'
 import '@testing-library/jest-dom/extend-expect'
-import { mountWithTheme, renderWithTheme } from '@looker/components-test-utils'
+import { renderWithTheme } from '@looker/components-test-utils'
 import React from 'react'
 import { fireEvent, screen } from '@testing-library/react'
 import { Tab } from './Tab'
@@ -54,7 +54,7 @@ test('shows the correct number of navigation tabs', () => {
 })
 
 test('starts with Tab at index 0 opened', () => {
-  const tabs = mountWithTheme(
+  renderWithTheme(
     <Tabs>
       <TabList>
         <Tab>tab1</Tab>
@@ -69,15 +69,7 @@ test('starts with Tab at index 0 opened', () => {
     </Tabs>
   )
 
-  const EachTabPanel: any = tabs
-    .find(TabPanels)
-    .find(TabPanel)
-    .map((panel: any) => panel.props())
-
-  expect(EachTabPanel[0].children).toEqual('this is tab1 content')
-  expect(EachTabPanel[0].selected).toEqual(true)
-  expect(EachTabPanel[1].selected).toEqual(false)
-  expect(EachTabPanel[2].selected).toEqual(false)
+  expect(screen.getByText('this is tab1 content')).toBeInTheDocument()
 })
 
 const ChangingPanel = () => {
