@@ -263,7 +263,7 @@ describe('useFocusTrap', () => {
       await waitFor(() => expect(toggle).toHaveFocus())
     })
 
-    test.only('With nested traps, inner disabled', async () => {
+    test('With nested traps, inner disabled', async () => {
       render(
         <FocusTrapComponent>
           <Surface>
