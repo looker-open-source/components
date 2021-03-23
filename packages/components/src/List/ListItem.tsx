@@ -24,7 +24,11 @@
 
  */
 
-import { CompatibleHTMLProps, FontSizes } from '@looker/design-tokens'
+import {
+  CompatibleHTMLProps,
+  FontSizes,
+  shouldForwardProp,
+} from '@looker/design-tokens'
 import styled from 'styled-components'
 import React, {
   FC,
@@ -159,10 +163,8 @@ interface ListItemLabelProps
   itemRole?: ListItemRole
 }
 
-export const ListItemLabel = styled(
-  ListItemLabelLayout
-).withConfig<ListItemLabelProps>({
-  shouldForwardProp: (prop) => prop !== 'itemRole',
+export const ListItemLabel = styled(ListItemLabelLayout).withConfig({
+  shouldForwardProp: (prop) => prop === 'itemRole' || shouldForwardProp(prop),
 })`
   ${({ height, itemRole }) => itemRole === 'none' && `height: ${height}px;`}
   ${listItemBackgroundColor}
