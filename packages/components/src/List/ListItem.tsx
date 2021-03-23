@@ -48,8 +48,18 @@ import { ListItemContext } from './ListItemContext'
 import { ListItemLayout } from './ListItemLayout'
 import { ListItemLayoutAccessory } from './ListItemLayoutAccessory'
 import { ListItemWrapper } from './ListItemWrapper'
-import { DensityRamp, Detail, ListItemStatefulProps } from './types'
-import { createSafeRel, getDetailOptions, listItemDimensions } from './utils'
+import {
+  DensityRamp,
+  Detail,
+  ListItemStatefulProps,
+  ListItemStatefulWithHoveredProps,
+} from './types'
+import {
+  createSafeRel,
+  getDetailOptions,
+  listItemBackgroundColor,
+  listItemDimensions,
+} from './utils'
 
 const TruncateWrapper: FC<{
   color?: string
@@ -109,28 +119,78 @@ export interface ListItemProps
   truncate?: boolean
 }
 
+export const ListItemLabelButton = styled.button``
+export const ListItemLabelA = styled.a``
+export const ListItemLabelDiv = styled.div``
+
 const listItemLabelElement = (itemRole: ListItemRole, disabled?: boolean) => {
-  if (!disabled && itemRole === 'link') return 'a'
-  if (itemRole === 'none') return 'div'
-  return 'button'
+  if (!disabled && itemRole === 'link') return ListItemLabelA
+  if (itemRole === 'none') return ListItemLabelDiv
+  return ListItemLabelButton
 }
 
-interface ListItemLabelProps extends CompatibleHTMLProps<HTMLElement> {
+const ListItemLabelLayout: FC<ListItemLabelProps> = ({
+  children,
+  disabled,
+  itemRole = 'button',
+  ...props
+}) => {
+  const Component = listItemLabelElement(
+    itemRole,
+    disabled
+  ) as FC<ListItemLabelProps>
+
+  return (
+    <Component
+      disabled={disabled}
+      type={itemRole === 'button' || disabled ? 'button' : undefined}
+      {...props}
+    >
+      {children}
+    </Component>
+  )
+}
+
+interface ListItemLabelProps
+  extends CompatibleHTMLProps<HTMLElement>,
+    ListItemStatefulWithHoveredProps {
   disabled?: boolean
   height?: number
   itemRole?: ListItemRole
 }
 
-export const ListItemLabel = styled.div
-  .withConfig<ListItemLabelProps>({
-    shouldForwardProp: (prop) => prop !== 'itemRole',
-  })
-  .attrs<ListItemLabelProps>(({ disabled, itemRole = 'button' }) => ({
-    as: listItemLabelElement(itemRole, disabled),
-    type: itemRole === 'button' || disabled ? 'button' : undefined,
-  }))<ListItemLabelProps>`
-    ${({ height, itemRole }) => itemRole === 'none' && `height: ${height}px;`}
-  `
+export const ListItemLabel = styled(
+  ListItemLabelLayout
+).withConfig<ListItemLabelProps>({
+  shouldForwardProp: (prop) => prop !== 'itemRole',
+})`
+  ${({ height, itemRole }) => itemRole === 'none' && `height: ${height}px;`}
+  ${listItemBackgroundColor}
+
+  align-items: center;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  display: flex;
+  flex: 1;
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0; /* safari has default margin */
+  min-width: 0;
+  outline: none;
+  text-align: left;
+  text-decoration: none;
+  transition: ${({ theme: { easings, transitions } }) =>
+    `background ${transitions.quick}ms ${easings.ease},
+  color ${transitions.quick}ms ${easings.ease}`};
+  width: 100%;
+
+  &:hover,
+  &:focus {
+    color: inherit;
+    text-decoration: none;
+  }
+`
 
 const ListItemInternal = forwardRef(
   (props: ListItemProps, ref: Ref<HTMLLIElement>) => {
@@ -244,6 +304,14 @@ const ListItemInternal = forwardRef(
       </HoverDisclosure>
     )
 
+    const statefulProps = {
+      current,
+      disabled,
+      hovered,
+      keyColor,
+      selected,
+    }
+
     const LabelCreator: FC<{
       children: ReactNode
       className: string
@@ -252,8 +320,7 @@ const ListItemInternal = forwardRef(
         itemRole={itemRole}
         aria-current={current}
         aria-selected={selected}
-        className={`list-item-label ${className}`}
-        disabled={disabled}
+        className={className}
         height={itemDimensions.height}
         href={href}
         onBlur={handleOnBlur}
@@ -264,6 +331,7 @@ const ListItemInternal = forwardRef(
         role={role || 'listitem'}
         target={target}
         tabIndex={-1}
+        {...statefulProps}
       >
         {children}
       </ListItemLabel>
@@ -291,16 +359,12 @@ const ListItemInternal = forwardRef(
       <HoverDisclosureContext.Provider value={{ visible: hovered }}>
         <ListItemWrapper
           className={className}
-          current={current}
           description={description}
           disabled={disabled}
           focusVisible={focusVisible}
-          hovered={hovered}
-          keyColor={keyColor}
           onMouseEnter={handleOnMouseEnter}
           onMouseLeave={handleOnMouseLeave}
           ref={ref}
-          selected={selected}
           {...itemDimensions}
           {...restProps}
         >

@@ -29,16 +29,10 @@ import { StyledIconBase } from '@styled-icons/styled-icon'
 import omit from 'lodash/omit'
 import React, { forwardRef, ReactNode, Ref } from 'react'
 import styled from 'styled-components'
-import {
-  ListItemStatefulWithHoveredProps,
-  ListItemDimensions,
-  listItemDimensionKeys,
-} from './types'
-import { listItemBackgroundColor } from './utils'
+import { ListItemDimensions, listItemDimensionKeys } from './types'
 
 export interface ListItemWrapperProps
   extends CompatibleHTMLProps<HTMLLIElement>,
-    ListItemStatefulWithHoveredProps,
     ListItemDimensions {
   description?: ReactNode // Should be eventually deleted because the CSS could be handled in layout pieces
   focusVisible?: boolean
@@ -81,38 +75,10 @@ export const ListItemWrapper = styled(
   outline: none;
   text-decoration: none;
 
-  & > .list-item-label {
-    ${listItemBackgroundColor}
-
-    align-items: center;
-    border: none;
-    color: inherit;
-    cursor: pointer;
-    display: flex;
-    flex: 1;
-    font-size: inherit;
-    font-weight: inherit;
-    margin: 0; /* safari has default margin */
-    min-width: 0;
-    outline: none;
-    text-align: left;
-    text-decoration: none;
-    transition: ${({ theme: { easings, transitions } }) =>
-      `background ${transitions.quick}ms ${easings.ease},
-  color ${transitions.quick}ms ${easings.ease}`};
-    width: 100%;
-
-    &:hover,
-    &:focus {
-      color: inherit;
-      text-decoration: none;
-    }
-  }
-
   ${({ focusVisible, theme }) =>
     focusVisible &&
     `
-      &:focus-within > .list-item-label {
+      &:focus-within > * {
         box-shadow: inset 0 0 0 2px ${theme.colors.keyFocus};
       }
     `}
@@ -138,7 +104,7 @@ export const ListItemWrapper = styled(
   &[disabled] {
     color: ${({ theme: { colors } }) => colors.text1};
 
-    & > .list-item-label {
+    & > * {
       cursor: not-allowed;
     }
 
