@@ -27,7 +27,6 @@
 import { ComponentsProvider } from '@looker/components-providers'
 import { render, RenderOptions } from '@testing-library/react'
 import { mount } from 'enzyme'
-import 'jest-styled-components'
 import React, { ReactElement } from 'react'
 
 export const withThemeProvider = (Component: ReactElement<any>) => (

@@ -24,7 +24,6 @@
 
  */
 
-import 'jest-styled-components'
 import React from 'react'
 import { fireEvent } from '@testing-library/react'
 import { theme } from '@looker/design-tokens'

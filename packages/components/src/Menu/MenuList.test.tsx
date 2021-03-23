@@ -25,7 +25,6 @@
  */
 
 import { screen } from '@testing-library/react'
-import 'jest-styled-components'
 import * as React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { MenuItem } from './MenuItem'

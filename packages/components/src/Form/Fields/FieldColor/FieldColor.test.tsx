@@ -24,7 +24,6 @@
 
  */
 
-import 'jest-styled-components'
 import '@testing-library/jest-dom/extend-expect'
 import React, { FormEvent, useState } from 'react'
 import { fireEvent } from '@testing-library/react'

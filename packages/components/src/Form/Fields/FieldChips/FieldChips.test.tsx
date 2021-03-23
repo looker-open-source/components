@@ -24,7 +24,6 @@
 
  */
 
-import 'jest-styled-components'
 import React from 'react'
 import { mountWithTheme } from '@looker/components-test-utils'
 import { FieldChips } from './FieldChips'

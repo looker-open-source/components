@@ -28,8 +28,6 @@ import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { OrderedList } from './OrderedList'
 
-import 'jest-styled-components'
-
 describe('OrderedList', () => {
   test('Should display child li elements', () => {
     const { getByText } = renderWithTheme(

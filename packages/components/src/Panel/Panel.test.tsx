@@ -26,7 +26,6 @@
 
 import '@testing-library/jest-dom/extend-expect'
 import { fireEvent } from '@testing-library/react'
-import 'jest-styled-components'
 import React, { useState } from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { Panel, Panels, usePanel } from './'

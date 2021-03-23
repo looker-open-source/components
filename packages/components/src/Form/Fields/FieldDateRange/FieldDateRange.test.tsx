@@ -24,7 +24,6 @@
 
  */
 
-import 'jest-styled-components'
 import React from 'react'
 import { mountWithTheme, renderWithTheme } from '@looker/components-test-utils'
 import { FieldDateRange } from './FieldDateRange'

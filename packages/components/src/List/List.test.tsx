@@ -24,7 +24,6 @@
 
  */
 
-import 'jest-styled-components'
 import * as React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { ListItem } from './ListItem'

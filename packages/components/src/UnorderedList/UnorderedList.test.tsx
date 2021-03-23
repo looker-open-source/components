@@ -28,8 +28,6 @@ import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { UnorderedList } from './UnorderedList'
 
-import 'jest-styled-components'
-
 describe('UnorderedList', () => {
   test('Should display child li elements', () => {
     const { getByText } = renderWithTheme(

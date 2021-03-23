@@ -24,7 +24,6 @@
 
  */
 
-import 'jest-styled-components'
 import React, { createRef } from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { fireEvent, screen } from '@testing-library/react'

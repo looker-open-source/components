@@ -24,7 +24,6 @@
 
  */
 
-import 'jest-styled-components'
 import '@testing-library/jest-dom/extend-expect'
 import { renderWithTheme } from '@looker/components-test-utils'
 import React from 'react'

@@ -24,7 +24,6 @@
 
  */
 
-import 'jest-styled-components'
 import React, { useContext } from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import {
