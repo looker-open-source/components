@@ -42,8 +42,8 @@ Default.args = {
 
 export const FontSize = Template.bind({})
 FontSize.args = {
-  ...FontSize.args,
-  fontSize: 'large',
+  ...Default.args,
+  fontSize: 'xlarge',
 }
 
 export const TextAlign = Template.bind({})
@@ -61,11 +61,11 @@ FontWeight.args = {
 export const Color = Template.bind({})
 Color.args = {
   ...Default.args,
-  color: 'subdued',
+  color: 'key',
 }
 
 export const TextTransform = Template.bind({})
-Color.args = {
+TextTransform.args = {
   ...Default.args,
   textTransform: 'uppercase',
 }

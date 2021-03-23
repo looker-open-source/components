@@ -43,5 +43,6 @@ Basic.args = {
 export const Border = Template.bind({})
 Border.args = {
   ...Basic.args,
+  border: '1px solid',
   borderColor: 'key',
 }
