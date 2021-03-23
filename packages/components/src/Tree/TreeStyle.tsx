@@ -105,33 +105,40 @@ export const TreeStyle = styled.div<TreeStyleProps>`
 
   ${({ dividers }) => dividers && dividersCSS}
 
-  & > ${Accordion} > ${AccordionContent} > ${List} > ${TreeBranch},
-  & > ${Accordion} > ${AccordionContent} > ${List} > ${ListItem} > ${ListItemLabelButton},
-  & > ${Accordion} > ${AccordionContent} > ${List} > ${ListItem} > ${ListItemLabelA},
-  & > ${Accordion} > ${AccordionContent} > ${List} > ${ListItem} > ${ListItemLabelDiv} {
-    ${({ depth, indicatorSize, theme }) =>
-      generateIndent(depth + 2, indicatorSize, theme)}
+  & > ${Accordion} > ${AccordionContent} > ${List} {
+    &
+      > ${ListItem}
+      > ${ListItemLabelButton},
+      &
+      > ${ListItem}
+      > ${ListItemLabelA},
+      &
+      > ${ListItem}
+      > ${ListItemLabelDiv},
+      &
+      > ${TreeBranch} {
+      ${({ depth, indicatorSize, theme }) =>
+        generateIndent(depth + 2, indicatorSize, theme)}
+    }
   }
 
   /**
     These selectors are to support TreeArtificial
    */
-  &
-    > ${List}
-    > ${TreeBranch},
+  & > ${List} {
     &
-    > ${List}
-    > ${ListItem}
-    > ${ListItemLabelButton},
-    &
-    > ${List}
-    > ${ListItem}
-    > ${ListItemLabelA}
-    &
-    > ${List}
-    > ${ListItem}
-    > ${ListItemLabelDiv} {
-    ${({ depth, indicatorSize, theme }) =>
-      generateIndent(depth + 2, indicatorSize, theme)}
+      > ${TreeBranch},
+      &
+      > ${ListItem}
+      > ${ListItemLabelButton},
+      &
+      > ${ListItem}
+      > ${ListItemLabelA},
+      &
+      > ${ListItem}
+      > ${ListItemLabelDiv} {
+      ${({ depth, indicatorSize, theme }) =>
+        generateIndent(depth + 2, indicatorSize, theme)}
+    }
   }
 `
