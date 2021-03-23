@@ -26,11 +26,15 @@
 
 import 'jest-styled-components'
 import React from 'react'
-import { createWithTheme } from '@looker/components-test-utils'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
 import { TableFoot } from './TableFoot'
 
-test('A <TableFoot> should render', () => {
-  const component = createWithTheme(<TableFoot />)
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
+test('TableFoot renders', () => {
+  renderWithTheme(
+    <table>
+      <TableFoot data-testid="table-footer" />
+    </table>
+  )
+  expect(screen.getByTestId('table-footer')).toBeInTheDocument()
 })

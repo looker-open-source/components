@@ -23,11 +23,17 @@
  SOFTWARE.
 
  */
-import { assertSnapshot } from '@looker/components-test-utils'
+
+import { render } from '@testing-library/react'
 import React from 'react'
 import { TimeFormat } from '../TimeFormat'
 const date = new Date('January 25, 1988 11:58:03')
 
 test('TimeFormat renders only time', () => {
-  assertSnapshot(<TimeFormat>{date}</TimeFormat>)
+  const { container } = render(<TimeFormat>{date}</TimeFormat>)
+  expect(container).toMatchInlineSnapshot(`
+    <div>
+      11:58:03 AM
+    </div>
+  `)
 })

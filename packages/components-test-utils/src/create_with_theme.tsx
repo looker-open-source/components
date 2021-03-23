@@ -26,23 +26,16 @@
 
 import { ComponentsProvider } from '@looker/components-providers'
 import { render, RenderOptions } from '@testing-library/react'
-import { mount, shallow } from 'enzyme'
+import { mount } from 'enzyme'
 import 'jest-styled-components'
 import React, { ReactElement } from 'react'
-import { create } from 'react-test-renderer'
 
 export const withThemeProvider = (Component: ReactElement<any>) => (
   <ComponentsProvider globalStyle={false}>{Component}</ComponentsProvider>
 )
 
-export const createWithTheme = (Component: ReactElement<any>) =>
-  create(withThemeProvider(Component))
-
 export const mountWithTheme = (Component: ReactElement<any>) =>
   mount(withThemeProvider(Component))
-
-export const shallowWithTheme = (Component: ReactElement<any>) =>
-  shallow(withThemeProvider(Component))
 
 export const renderWithTheme = (
   Component: ReactElement<any>,

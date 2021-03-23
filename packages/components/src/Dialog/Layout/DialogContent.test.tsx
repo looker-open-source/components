@@ -113,6 +113,6 @@ describe('DialogContent', () => {
       getComputedStyle(screen.getByTestId('dialog-content')).getPropertyValue(
         'box-shadow'
       )
-    ).toMatchInlineSnapshot(`"inset 0 -4px 4px -4px #DEE1E5"`)
+    ).toEqual('inset 0 -4px 4px -4px #DEE1E5')
   })
 })

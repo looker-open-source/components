@@ -29,15 +29,23 @@ import { stringComparator, doDataTableSort } from './sort_utils'
 
 describe('DataTable Sort Utils', () => {
   test('Default string comparison', () => {
-    ;[
+    const compared = [
       ['Animal', 'Crossing'],
       ['MaRiO', 'mario'],
       ['Samus', 'Link'],
       ['', '%(#&@'],
       ['1234', '10000'],
-    ].map((values) =>
-      expect(stringComparator(values[0], values[1])).toMatchSnapshot()
-    )
+    ].map((values) => stringComparator(values[0], values[1]))
+
+    expect(compared).toMatchInlineSnapshot(`
+      Array [
+        -1,
+        0,
+        1,
+        -1,
+        1,
+      ]
+    `)
   })
 
   test('Default sort', () => {
@@ -89,10 +97,123 @@ describe('DataTable Sort Utils', () => {
       },
     ]
 
-    sets.map(({ id, sortDirection }) =>
-      expect(
-        doDataTableSort(data, columns, id, sortDirection)
-      ).toMatchSnapshot()
+    const defaultSort = sets.map(({ id, sortDirection }) =>
+      doDataTableSort(data, columns, id, sortDirection)
+    )
+
+    expect(defaultSort).toMatchInlineSnapshot(
+      `
+      Array [
+        Object {
+          "columns": Array [
+            Object {
+              "canSort": true,
+              "id": "id",
+              "title": "ID",
+              "type": "number",
+            },
+            Object {
+              "canSort": true,
+              "id": "name",
+              "sortDirection": "desc",
+              "title": "Name",
+              "type": "string",
+            },
+          ],
+          "data": Array [
+            Object {
+              "id": 1,
+              "name": "Shaq",
+            },
+            Object {
+              "id": 2,
+              "name": "Kobe",
+            },
+          ],
+        },
+        Object {
+          "columns": Array [
+            Object {
+              "canSort": true,
+              "id": "id",
+              "title": "ID",
+              "type": "number",
+            },
+            Object {
+              "canSort": true,
+              "id": "name",
+              "sortDirection": "desc",
+              "title": "Name",
+              "type": "string",
+            },
+          ],
+          "data": Array [
+            Object {
+              "id": 2,
+              "name": "Kobe",
+            },
+            Object {
+              "id": 1,
+              "name": "Shaq",
+            },
+          ],
+        },
+        Object {
+          "columns": Array [
+            Object {
+              "canSort": true,
+              "id": "id",
+              "title": "ID",
+              "type": "number",
+            },
+            Object {
+              "canSort": true,
+              "id": "name",
+              "sortDirection": "desc",
+              "title": "Name",
+              "type": "string",
+            },
+          ],
+          "data": Array [
+            Object {
+              "id": 2,
+              "name": "Kobe",
+            },
+            Object {
+              "id": 1,
+              "name": "Shaq",
+            },
+          ],
+        },
+        Object {
+          "columns": Array [
+            Object {
+              "canSort": true,
+              "id": "id",
+              "title": "ID",
+              "type": "number",
+            },
+            Object {
+              "canSort": true,
+              "id": "name",
+              "sortDirection": "desc",
+              "title": "Name",
+              "type": "string",
+            },
+          ],
+          "data": Array [
+            Object {
+              "id": 1,
+              "name": "Shaq",
+            },
+            Object {
+              "id": 2,
+              "name": "Kobe",
+            },
+          ],
+        },
+      ]
+    `
     )
   })
 })

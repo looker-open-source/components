@@ -24,13 +24,13 @@
 
  */
 
-import { mountWithTheme } from '@looker/components-test-utils'
+import { renderWithTheme } from '@looker/components-test-utils'
 import React from 'react'
 import { IEGlobalStyle } from './IE'
 
 describe('GlobalStyle', () => {
   test('Not IE', () => {
-    mountWithTheme(<IEGlobalStyle />)
+    renderWithTheme(<IEGlobalStyle />)
     expect(document.head).toMatchInlineSnapshot(`
       <head>
         <style
@@ -42,7 +42,7 @@ describe('GlobalStyle', () => {
   })
 
   test('Faux IE', () => {
-    mountWithTheme(<IEGlobalStyle isIE />)
+    renderWithTheme(<IEGlobalStyle isIE />)
     expect(document.head).toMatchInlineSnapshot(`
       <head>
         <style
