@@ -31,7 +31,7 @@ import { renderWithTheme } from '@looker/components-test-utils'
 import { MenuItem } from './MenuItem'
 import { MenuList } from './MenuList'
 import { MenuHeading } from './MenuHeading'
-import { MenuDivider } from './'
+import { MenuDivider } from './MenuDivider'
 
 /* eslint-disable-next-line @typescript-eslint/unbound-method */
 const globalGetBoundingClientRect = Element.prototype.getBoundingClientRect
