@@ -167,10 +167,7 @@ describe('ListItem', () => {
     const { getByRole } = renderWithTheme(
       <ListItem itemRole="none">No Role</ListItem>
     )
-
-    const item = getByRole('listitem')
-
-    expect(item.nodeName).toBe('DIV')
+    expect(getByRole('listitem').nodeName).toBe('DIV')
   })
 
   test('does not trigger onClick on detail click when accessory === true', () => {
