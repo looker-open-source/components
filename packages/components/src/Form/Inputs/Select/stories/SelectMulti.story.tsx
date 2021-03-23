@@ -27,6 +27,7 @@
 import { Story } from '@storybook/react/types-6-0'
 import React from 'react'
 import { SelectMulti, SelectMultiProps } from '../SelectMulti'
+import { options1kGrouped } from './options1k'
 
 const Template: Story<SelectMultiProps> = (args) => <SelectMulti {...args} />
 
@@ -99,6 +100,17 @@ ErrorWrappingValues.args = {
   ...WrappingValues.args,
   defaultValues: ['cheddar', 'gouda', 'swiss'],
   validationType: 'error',
+}
+
+export const GroupedWindowing = Template.bind({})
+GroupedWindowing.args = {
+  ...Basic.args,
+  options: options1kGrouped,
+  width: 300,
+}
+
+GroupedWindowing.parameters = {
+  storyshots: { disable: true },
 }
 
 export default {

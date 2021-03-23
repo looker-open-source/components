@@ -37,7 +37,10 @@ import { Heading, Text } from '../../../Text'
 import { parseOption } from '../../Inputs/Combobox'
 import { SelectOptionProps, SelectOptionObject } from '../../Inputs/Select'
 import { cheeseOptions } from '../../Inputs/Select/stories/options'
-import { options1k } from '../../Inputs/Select/stories/options1k'
+import {
+  options1k,
+  options1kGrouped,
+} from '../../Inputs/Select/stories/options1k'
 import { FieldSelectMulti, FieldSelectMultiProps } from './FieldSelectMulti'
 
 const Template: Story<FieldSelectMultiProps> = (args) => (

@@ -24,9 +24,6 @@
 
  */
 
-export * from './Menu'
-export * from './MenuDivider'
-export * from './MenuList'
-export * from './MenuItem'
-export * from '../List/ListDivider'
-export * from './MenuHeading'
+import { ListDivider } from '../List'
+
+export const MenuDivider = ListDivider

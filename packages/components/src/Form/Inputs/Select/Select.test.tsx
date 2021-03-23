@@ -37,7 +37,7 @@ import { Button } from '../../../Button'
 import { ComboboxOptionIndicatorFunction } from '../Combobox'
 import { Select } from './Select'
 import { SelectMulti } from './SelectMulti'
-import { SelectOptionObject, SelectOptionProps } from './types'
+import { SelectOptionProps } from './types'
 // for the requestAnimationFrame in handleBlur (not working currently)
 // jest.useFakeTimers()
 
@@ -499,7 +499,7 @@ describe('Select / SelectMulti', () => {
 
   describe('windowed options', () => {
     const testArray: Array<
-      [string, (longOptions: SelectOptionObject[]) => JSX.Element]
+      [string, (longOptions: SelectOptionProps[]) => JSX.Element]
     > = [
       [
         'Select',
@@ -539,6 +539,35 @@ describe('Select / SelectMulti', () => {
       // Close popover to silence act() warning
       fireEvent.click(document)
     })
+
+    test.each(testArray)(
+      '100 grouped options do not all render',
+      (_, getJSX) => {
+        const longOptions = Array.from(Array(100), (_, index) => ({
+          value: `${index}`,
+        }))
+        const groupedOptions = [
+          { label: 'First', options: longOptions.slice(0, 4) },
+          { label: 'Second', options: longOptions.slice(4, 20) },
+          { label: 'Third', options: longOptions.slice(20, 99) },
+        ]
+        renderWithTheme(getJSX(groupedOptions))
+
+        const inputs = screen.getAllByRole('textbox')
+        // SelectMulti has a hidden input
+        const input = inputs[inputs.length - 1]
+
+        fireEvent.mouseDown(input)
+
+        expect(screen.getByText('First')).toBeInTheDocument()
+        expect(screen.queryByText('3')).toBeInTheDocument()
+        // js-dom doesn't do layout so only the first divider (hidden), group header
+        // and 4 options are rendered
+        expect(screen.queryByText('4')).not.toBeInTheDocument()
+        // Close popover to silence act() warning
+        fireEvent.click(document)
+      }
+    )
 
     test.each(testArray)('99 options all render', (_, getJSX) => {
       const longOptions = Array.from(Array(99), (_, index) => ({
