@@ -28,6 +28,11 @@ import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import { Paragraph, ParagraphProps } from './Paragraph'
 
+export default {
+  component: Paragraph,
+  title: 'Paragraph',
+}
+
 const Template: Story<ParagraphProps> = (args) => <Paragraph {...args} />
 
 export const Default = Template.bind({})

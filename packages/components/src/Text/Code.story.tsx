@@ -28,6 +28,11 @@ import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import { Code, CodeProps } from './Code'
 
+export default {
+  component: Code,
+  title: 'Code',
+}
+
 const Template: Story<CodeProps> = (args) => <Code {...args} />
 
 export const Default = Template.bind({})

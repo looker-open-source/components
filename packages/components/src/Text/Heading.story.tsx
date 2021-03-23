@@ -28,6 +28,11 @@ import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import { Heading, HeadingProps } from './Heading'
 
+export default {
+  component: Heading,
+  title: 'Heading',
+}
+
 const Template: Story<HeadingProps> = (args) => <Heading {...args} />
 
 export const Default = Template.bind({})

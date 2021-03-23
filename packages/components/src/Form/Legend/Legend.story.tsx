@@ -28,6 +28,11 @@ import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import { Legend, LegendProps } from './Legend'
 
+export default {
+  component: Legend,
+  title: 'Legend',
+}
+
 const Template: Story<LegendProps> = (args) => <Legend {...args} />
 
 export const Default = Template.bind({})

@@ -28,6 +28,11 @@ import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import { ValidationMessage, ValidationMessageProps } from './ValidationMessage'
 
+export default {
+  component: ValidationMessage,
+  title: 'ValidationMessage',
+}
+
 const Template: Story<ValidationMessageProps> = (args) => (
   <ValidationMessage {...args} />
 )

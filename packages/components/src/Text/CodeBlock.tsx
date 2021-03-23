@@ -29,6 +29,11 @@ import React, { FC, ReactNode } from 'react'
 import styled from 'styled-components'
 import { TextBase, TextBaseProps } from './TextBase'
 
+export default {
+  component: CodeBlock,
+  title: 'CodeBlock',
+}
+
 export interface CodeBlockProps extends TextBaseProps, BorderProps {
   className?: string
   children?: ReactNode
