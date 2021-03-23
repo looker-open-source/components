@@ -165,7 +165,6 @@ const SelectMultiComponent = forwardRef(
           >
             <SelectOptions
               isMulti
-              options={options}
               flatOptions={flatOptions}
               navigationOptions={navigationOptions}
               windowedOptions={windowedOptions}

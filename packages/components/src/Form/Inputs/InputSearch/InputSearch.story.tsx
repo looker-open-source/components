@@ -26,6 +26,7 @@
 
 import React, { useState, useMemo } from 'react'
 import { Story } from '@storybook/react/types-6-0'
+import { options1kGrouped } from '../Select/stories/options1k'
 import { InputSearch, InputSearchProps } from './InputSearch'
 
 const Template: Story<InputSearchProps> = (args) => <InputSearch {...args} />
@@ -80,6 +81,17 @@ ReadOnly.args = {
   value: 'Only read',
 }
 ReadOnly.parameters = {
+  storyshots: { disable: true },
+}
+
+export const GroupedWindowing = Template.bind({})
+GroupedWindowing.args = {
+  ...Basic.args,
+  options: options1kGrouped,
+  width: 300,
+}
+
+GroupedWindowing.parameters = {
   storyshots: { disable: true },
 }
 

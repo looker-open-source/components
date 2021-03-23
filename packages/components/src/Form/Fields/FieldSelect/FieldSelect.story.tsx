@@ -108,28 +108,6 @@ ErrorInline.args = {
   inline: true,
 }
 
-const options1kGrouped = options1k.reduce(
-  (acc: SelectOptionGroupProps[], option) => {
-    const firstLetter = option.label.charAt(0).toUpperCase()
-    const latestGroup = acc[acc.length - 1]
-    if (!latestGroup || latestGroup.label !== firstLetter) {
-      return [...acc, { label: firstLetter, options: [option] }]
-    } else {
-      latestGroup.options.push(option)
-      return acc
-    }
-  },
-  []
-)
-options1kGrouped[3].label = ''
-
-export const GroupedWindowing = Template.bind({})
-GroupedWindowing.args = {
-  ...Basic.args,
-  options: options1kGrouped,
-  width: 300,
-}
-
 const optionsWithDescriptions = options.map((option: ComboboxOptionObject) => ({
   ...option,
   description: `${option.label} are the best ever!`,

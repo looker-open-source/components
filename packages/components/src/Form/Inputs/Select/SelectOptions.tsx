@@ -50,7 +50,7 @@ import {
   ComboboxOptionIndicatorProps,
   ComboboxOptionText,
 } from '../Combobox'
-import { FlatOption, SelectOptionObject, SelectOptionProps } from './types'
+import { FlatOption, SelectOptionObject } from './types'
 import { optionsHaveIcons, notInOptions } from './utils/options'
 import { useWindowedOptions } from './utils/useWindowedOptions'
 
@@ -167,10 +167,6 @@ const SelectOptionGroupTitle = styled(Heading).attrs<HeadingProps>(() => ({
 `
 
 export interface SelectOptionsBaseProps {
-  /**
-   * Options may be flat or grouped, label is option, without it the value is used
-   */
-  options?: SelectOptionProps[]
   /**
    * The user can type in the input (default false to mimic traditional select tag)
    */

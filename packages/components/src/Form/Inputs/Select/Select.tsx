@@ -44,11 +44,15 @@ import {
 import { getOption, getFirstOption } from './utils/options'
 import { useFlatOptions } from './utils/useFlatOptions'
 import { useShouldWindowOptions } from './utils/useWindowedOptions'
-import { SelectOptionObject } from './types'
+import { SelectOptionObject, SelectOptionProps } from './types'
 
 export interface SelectBaseProps
   extends SelectOptionsBaseProps,
     Pick<ComboboxOptionIndicatorProps, 'indicator'> {
+  /**
+   * Options may be flat or grouped, label is option, without it the value is used
+   */
+  options?: SelectOptionProps[]
   placeholder?: string
   /**
    * The user can clear the current value by clicking an x icon button
@@ -189,8 +193,6 @@ const SelectComponent = forwardRef(
             {...listLayout}
           >
             <SelectOptions
-              options={options}
-              flatOptions={flatOptions}
               navigationOptions={navigationOptions}
               windowedOptions={windowedOptions}
               isFilterable={isFilterable}

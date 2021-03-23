@@ -210,7 +210,6 @@ const InputSearchLayout = forwardRef(
             {...listLayout}
           >
             <SelectOptions
-              options={options}
               flatOptions={flatOptions}
               navigationOptions={navigationOptions}
               windowedOptions={windowedOptions}

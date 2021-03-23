@@ -32,10 +32,45 @@ import {
   SelectOptionProps,
 } from '../types'
 
-export type FlattenOptions = {
-  (options: SelectOptionProps[]): SelectOptionObject[]
-  (options: SelectOptionProps[], includeGroups: boolean): FlatOption[]
-}
+export const getFlatOptions = (options: SelectOptionProps[]) =>
+  options.reduce(
+    (
+      acc: {
+        flatOptions: FlatOption[]
+        navigationOptions: SelectOptionObject[]
+      },
+      option: SelectOptionProps
+    ) => {
+      const optionAsGroup = option as SelectOptionGroupProps
+      if (optionAsGroup.options) {
+        // Include the divider
+        const groupPseudoOptions = [{}]
+        if (optionAsGroup.label) {
+          // ...and header as pseudo options for windowing purposes
+          groupPseudoOptions.push({ label: optionAsGroup.label })
+        }
+        return {
+          flatOptions: [
+            ...acc.flatOptions,
+            ...groupPseudoOptions,
+            ...optionAsGroup.options,
+          ],
+          navigationOptions: [
+            ...acc.navigationOptions,
+            ...optionAsGroup.options,
+          ],
+        }
+      }
+      return {
+        flatOptions: [...acc.flatOptions, option],
+        navigationOptions: [
+          ...acc.navigationOptions,
+          option as SelectOptionObject,
+        ],
+      }
+    },
+    { flatOptions: [], navigationOptions: [] }
+  )
 
 /**
  * Takes potentially grouped options and returns 2 arrays of flattened options:
@@ -48,43 +83,6 @@ export const useFlatOptions = (options?: SelectOptionProps[]) => {
     if (!options)
       return { flatOptions: undefined, navigationOptions: undefined }
 
-    return options.reduce(
-      (
-        acc: {
-          flatOptions: FlatOption[]
-          navigationOptions: SelectOptionObject[]
-        },
-        option: SelectOptionProps
-      ) => {
-        const optionAsGroup = option as SelectOptionGroupProps
-        if (optionAsGroup.options) {
-          // Include the divider
-          const groupPseudoOptions = [{}]
-          if (optionAsGroup.label) {
-            // ...and header as pseudo options for windowing purposes
-            groupPseudoOptions.push({ label: optionAsGroup.label })
-          }
-          return {
-            flatOptions: [
-              ...acc.flatOptions,
-              ...groupPseudoOptions,
-              ...optionAsGroup.options,
-            ],
-            navigationOptions: [
-              ...acc.navigationOptions,
-              ...optionAsGroup.options,
-            ],
-          }
-        }
-        return {
-          flatOptions: [...acc.flatOptions, option],
-          navigationOptions: [
-            ...acc.navigationOptions,
-            option as SelectOptionObject,
-          ],
-        }
-      },
-      { flatOptions: [], navigationOptions: [] }
-    )
+    return getFlatOptions(options)
   }, [options])
 }
