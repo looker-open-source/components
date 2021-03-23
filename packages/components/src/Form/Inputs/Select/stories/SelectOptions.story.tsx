@@ -156,7 +156,7 @@ const TemplateMulti: Story<StoryProps> = (args) => {
         listScrollPosition: 0,
       }}
     >
-      <ComboboxUl height="100%">
+      <ComboboxUl isMulti height="100%">
         <SelectOptions {...args} {...optionProps} />
       </ComboboxUl>
     </ComboboxMultiContext.Provider>

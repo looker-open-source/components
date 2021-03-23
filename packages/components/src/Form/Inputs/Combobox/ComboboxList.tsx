@@ -46,7 +46,7 @@ import React, {
   useLayoutEffect,
   useEffect,
 } from 'react'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import once from 'lodash/once'
 import throttle from 'lodash/throttle'
 import { usePopover } from '../../../Popover'
@@ -55,6 +55,7 @@ import { useResize } from '../../../utils'
 import { ComboboxOptionIndicatorProps } from './types'
 import { ComboboxContext, ComboboxMultiContext } from './ComboboxContext'
 import { ComboboxOption } from './ComboboxOption'
+import { ComboboxMultiOption } from './ComboboxMultiOption'
 import { useBlur } from './utils/useBlur'
 import { useKeyDown } from './utils/useKeyDown'
 import { useListWidths } from './utils/useListWidths'
@@ -180,6 +181,7 @@ const ComboboxListInternal = forwardRef(
       <ComboboxUl
         {...props}
         {...widthProps}
+        isMulti={isMulti}
         onKeyDown={handleKeyDown}
         onBlur={handleBlur}
         ref={ref}
@@ -278,7 +280,7 @@ const ComboboxListInternal = forwardRef(
 
 ComboboxListInternal.displayName = 'ComboboxListInternal'
 
-export const ComboboxUl = styled.ul.withConfig({
+export const ComboboxUl = styled.ul.withConfig<{ isMulti?: boolean }>({
   shouldForwardProp,
 })<ComboboxListProps>`
   ${reset}
@@ -290,21 +292,15 @@ export const ComboboxUl = styled.ul.withConfig({
   outline: none;
   position: relative;
   ${layout}
-  ${() => listPadding(ComboboxOption)}
+
+  ${({ isMulti }) =>
+    listPadding(isMulti ? ComboboxMultiOption : ComboboxOption)}
 `
 
-const isMultiPadding = css<ComboboxListInternalProps>`
-  padding: ${({ isMulti, theme }) => (isMulti ? theme.space.xsmall : 0)} 0;
-`
+export const ComboboxList = (props: ComboboxListInternalProps) => (
+  <ComboboxListInternal {...props} isMulti={false} />
+)
 
-export const ComboboxList = styled(ComboboxListInternal).attrs(() => ({
-  isMulti: false,
-}))`
-  ${isMultiPadding}
-`
-
-export const ComboboxMultiList = styled(ComboboxListInternal).attrs(() => ({
-  isMulti: true,
-}))`
-  ${isMultiPadding}
-`
+export const ComboboxMultiList = (props: ComboboxListInternalProps) => (
+  <ComboboxListInternal {...props} isMulti />
+)
