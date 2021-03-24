@@ -77,7 +77,7 @@ Icon buttons have the `toggle` prop which can be used to show a toggleable state
 
   return (
     <IconButton
-      icon={isToggled ? 'Favorite' : 'FavoriteOutline'}
+      icon={isToggled ? <Favorite /> : <FavoriteOutline />}
       toggle={isToggled}
       onClick={() => setIsToggled(!isToggled)}
     />
