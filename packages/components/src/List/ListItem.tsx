@@ -117,7 +117,9 @@ export const ListItemLabel = styled.div
   .attrs<ListItemLabelProps>(({ disabled, itemRole = 'button' }) => ({
     as: !disabled && itemRole === 'link' ? 'a' : 'button',
     type: itemRole === 'button' || disabled ? 'button' : undefined,
-  }))<ListItemLabelProps>``
+  }))<ListItemLabelProps>`
+  font-family: inherit;
+`
 
 const ListItemInternal = forwardRef(
   (props: ListItemProps, ref: Ref<HTMLLIElement>) => {
