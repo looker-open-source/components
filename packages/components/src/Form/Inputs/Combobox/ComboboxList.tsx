@@ -280,9 +280,9 @@ const ComboboxListInternal = forwardRef(
 
 ComboboxListInternal.displayName = 'ComboboxListInternal'
 
-export const ComboboxUl = styled.ul.withConfig<{ isMulti?: boolean }>({
+export const ComboboxUl = styled.ul.withConfig({
   shouldForwardProp,
-})<ComboboxListProps>`
+})<ComboboxListInternalProps>`
   ${reset}
   ${typography}
   ${space}
