@@ -39,6 +39,7 @@ import { useI18n, UseI18nProps } from './I18n'
 import { ThemeProvider, ThemeProviderProps } from './ThemeProvider'
 import { ExtendComponentsTheme } from './ExtendComponentsProvider'
 import { FontFaceLoader } from './FontFaceLoader'
+import { StyleDefender } from './StyleDefender'
 
 export interface ComponentsProviderProps
   extends ThemeProviderProps,
@@ -113,12 +114,14 @@ export const ComponentsProvider: FC<ComponentsProviderProps> = ({
   return (
     <HelmetProvider>
       <ThemeProvider {...props} theme={theme}>
-        {globalStyle && <GlobalStyle />}
-        {loadFontSources && <FontFaceLoader />}
-        {ie11Support && <IEGlobalStyle />}
-        <FocusTrapProvider>
-          <ScrollLockProvider>{children}</ScrollLockProvider>
-        </FocusTrapProvider>
+        <StyleDefender>
+          {globalStyle && <GlobalStyle />}
+          {loadFontSources && <FontFaceLoader />}
+          {ie11Support && <IEGlobalStyle />}
+          <FocusTrapProvider>
+            <ScrollLockProvider>{children}</ScrollLockProvider>
+          </FocusTrapProvider>
+        </StyleDefender>
       </ThemeProvider>
     </HelmetProvider>
   )

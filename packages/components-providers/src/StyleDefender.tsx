@@ -24,18 +24,46 @@
 
  */
 
-import { css, createGlobalStyle } from 'styled-components'
+import styled from 'styled-components'
 
-export const reset = css`
-  html {
-    box-sizing: border-box;
-    font-size: 16px;
+export const StyleDefender = styled.div`
+  box-sizing: border-box;
+  font-family: ${({ theme }) => theme.fonts.body};
+  font-size: 16px;
+
+  height: 100%;
+  width: 100%;
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
   }
 
-  body {
-    background: ${({ theme: { colors } }) => colors.background};
+  * {
+    box-sizing: border-box;
+  }
+
+  /* ol,
+  ul {
+    list-style: none;
+  } */
+
+  /* body,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  ol,
+  ul {
+    margin: 0;
+    padding: 0;
+  } */
+
+  a {
+    text-decoration: none;
   }
 `
-
-export const GlobalStyle = createGlobalStyle`
-  `

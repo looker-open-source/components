@@ -40,8 +40,8 @@ const isIE11 =
 const IeGlobalCSS = createGlobalStyle`
   @media screen and (-ms-high-contrast: active),
     screen and (-ms-high-contrast: none) {
-    ${reset}
-  }
+      ${reset}
+      }
 `
 
 export const IEGlobalStyle: FC<{ isIE?: boolean }> = ({ isIE = isIE11 }) =>
