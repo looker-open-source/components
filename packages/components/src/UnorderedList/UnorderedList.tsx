@@ -74,8 +74,9 @@ export const UnorderedList = styled.ul
   .withConfig({
     shouldForwardProp,
   })
-  .attrs<UnorderedListProps>(({ color = 'body' }) => ({
+  .attrs<UnorderedListProps>(({ color = 'body', type = 'none' }) => ({
     color,
+    type,
   }))<UnorderedListProps>`
   ${reset}
   ${textColor}
