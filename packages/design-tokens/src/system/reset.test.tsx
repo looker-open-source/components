@@ -59,16 +59,14 @@ describe('reset', () => {
     )
   })
 
-  test('fontFamily', () => {
-    const Test = styled.p`
-      ${reset}
-    `
+  // xtest('fontFamily', () => {
+  //   const Test = styled.p``
 
-    renderWithTheme(<Test fontFamily="brand">Find me</Test>)
+  //   renderWithTheme(<Test fontFamily="brand">Find me</Test>)
 
-    const test = screen.getByText('Find me')
-    expect(test).toHaveStyle(
-      "font-family: Roboto,'Noto Sans','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif"
-    )
-  })
+  //   const test = screen.getByText('Find me')
+  //   expect(test).toHaveStyle(
+  //     "font-family: Roboto,'Noto Sans','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif"
+  //   )
+  // })
 })
