@@ -26,18 +26,16 @@
 
 import { css } from 'styled-components'
 
-import { FontFamilyProps, fontFamily } from 'styled-system'
+import { FontFamilyProps } from 'styled-system'
 
 export const reset = css<FontFamilyProps>`
+  font-family: inherit;
+  margin: 0;
+  padding: 0;
+
   /**
     * Global reset applied to prevent styling on top level tags outside of Looker
     * UI Components from interfering with styles.
     **/
   ${({ theme: { reset } }) => reset && reset()}
-  /**
-   * Use fontFamily helper from styled-system if props.fontFamily value is specified.
-   * Otherwise fall back to theme.fonts.border-style
-   **/
-  ${({ theme, ...props }) =>
-    props.fontFamily ? fontFamily : `font-family: ${theme.fonts.body};`}
 `

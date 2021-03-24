@@ -24,13 +24,15 @@
 
  */
 
-import { css, createGlobalStyle } from 'styled-components'
+import styled from 'styled-components'
 
-export const reset = css`
-  html {
-    box-sizing: border-box;
-    font-size: 16px;
-  }
+export const StyleDefender = styled.div`
+  background: ${({ theme: { colors } }) => colors.background};
+  box-sizing: border-box;
+  font-family: ${({ theme }) => theme.fonts.body};
+  font-size: 16px;
+  height: 100%;
+  width: 100%;
 
   *,
   *::before,
@@ -38,34 +40,11 @@ export const reset = css`
     box-sizing: inherit;
   }
 
-  body,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  p,
-  ol,
-  ul {
-    margin: 0;
-    padding: 0;
-  }
-
-  ol,
-  ul {
-    list-style: none;
+  * {
+    box-sizing: border-box;
   }
 
   a {
     text-decoration: none;
   }
-
-  body {
-    background: ${({ theme: { colors } }) => colors.background};
-  }
-`
-
-export const GlobalStyle = createGlobalStyle`
-  ${reset}
 `

@@ -29,12 +29,12 @@ import {
   Button,
   ButtonOutline,
   ButtonTransparent,
-  ComponentsProvider,
   DialogLayout,
   DialogContext,
   Layout,
   Section,
   Box,
+  ExtendComponentsThemeProvider,
 } from '@looker/components'
 import {
   pickSpecifiableColors,
@@ -104,12 +104,11 @@ export const ThemeEditorContent: FC<ThemeEditorContentProps> = ({
         </Aside>
         <Section pl="xxlarge">
           <Box border="1px solid" borderColor="ui2">
-            <ComponentsProvider
-              globalStyle={false}
+            <ExtendComponentsThemeProvider
               themeCustomizations={themeCustomizations}
             >
               <FauxDashboard />
-            </ComponentsProvider>
+            </ExtendComponentsThemeProvider>
           </Box>
         </Section>
       </Layout>
