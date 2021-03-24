@@ -114,7 +114,7 @@ export const ButtonItem = styled(ButtonLayout)`
   color: ${({ theme }) => theme.colors.text3};
   cursor: pointer;
   display: inline-flex;
-  font-family: ${({ theme }) => theme.fonts.body};
+  font-family: inherit;
   font-size: ${({ theme }) => theme.fontSizes.small};
   height: ${inputHeight};
   justify-content: center;
