@@ -31,6 +31,7 @@ import React, {
   useRef,
   ReactNode,
 } from 'react'
+import { StyleDefender } from '@looker/components-providers'
 import { createPortal } from 'react-dom'
 import styled from 'styled-components'
 
@@ -84,7 +85,11 @@ export const Portal = forwardRef(
       }
     }, [el])
 
-    const content = <InvisiBox ref={ref} {...props} />
+    const content = (
+      <StyleDefender>
+        <InvisiBox ref={ref} {...props} />
+      </StyleDefender>
+    )
 
     return createPortal(content, el.current)
   }
