@@ -85,6 +85,17 @@ Icon buttons have the `toggle` prop which can be used to show a toggleable state
 }
 ```
 
+### ToggleBackground
+
+Icon buttons have the `toggleBackground` prop which can be used to show a background color to the Icon. The `toggle` prop has to be explictly set to either `true` or `false`.
+
+```jsx
+<>
+  <IconButton icon={<Favorite />} m="small" toggleBackground />
+  <IconButton icon={<FavoriteOutline />} toggleBackground />
+</>
+```
+
 ## IconButton & Tooltip
 
 You can also use your own `Tooltip` around `IconButton` (this will effectively remove the "built-in" `Tooltip`)
