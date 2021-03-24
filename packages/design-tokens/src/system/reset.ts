@@ -29,6 +29,7 @@ import { css } from 'styled-components'
 import { FontFamilyProps } from 'styled-system'
 
 export const reset = css<FontFamilyProps>`
+  font-family: inherit;
   margin: 0;
   padding: 0;
 

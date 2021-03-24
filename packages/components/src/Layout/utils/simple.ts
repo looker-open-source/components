@@ -30,7 +30,6 @@ import {
   DisplayProps,
   layout,
   LayoutProps,
-  reset,
   space,
   SpaceProps,
   size,
@@ -46,7 +45,6 @@ import {
 export interface SimpleLayoutProps extends LayoutProps, SpaceProps {}
 
 export const simpleLayoutCSS = css`
-  ${reset}
   ${layout}
   ${space}
 `
@@ -59,7 +57,6 @@ export interface SizeSimpleLayoutProps
     VerticalAlignProps {}
 
 export const sizeSimpleLayoutCSS = css`
-  ${reset}
   ${size}
   ${space}
   ${overflow}
