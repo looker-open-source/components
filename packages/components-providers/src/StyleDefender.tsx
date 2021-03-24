@@ -44,24 +44,9 @@ export const StyleDefender = styled.div`
     box-sizing: border-box;
   }
 
-  /* ol,
-  ul {
-    list-style: none;
-  } */
-
-  /* body,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  p,
-  ol,
-  ul {
-    margin: 0;
-    padding: 0;
-  } */
+  button {
+    font-family: inherit;
+  }
 
   a {
     text-decoration: none;
