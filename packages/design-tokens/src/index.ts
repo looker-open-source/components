@@ -35,7 +35,6 @@ export * from './color'
 export * from './theme'
 
 export * from './system'
-export * from './GlobalStyle'
 
 // Provided for legacy color implementations
 export { palette } from './legacy'

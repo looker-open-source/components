@@ -82,20 +82,4 @@ describe('ComponentsProvider', () => {
       "font-family: Roboto,'Noto Sans','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;"
     )
   })
-
-  test('ie11Support', () => {
-    const Test = () => {
-      return (
-        <ComponentsProvider ie11Support>
-          <FauxParagraph>Some Text</FauxParagraph>
-        </ComponentsProvider>
-      )
-    }
-
-    renderWithTheme(<Test />)
-
-    expect(screen.getByText('Some Text')).toHaveStyle(
-      "font-family: Roboto,'Noto Sans','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif;"
-    )
-  })
 })

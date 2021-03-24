@@ -27,6 +27,7 @@
 import styled from 'styled-components'
 
 export const StyleDefender = styled.div`
+  background: ${({ theme: { colors } }) => colors.background};
   box-sizing: border-box;
   font-family: ${({ theme }) => theme.fonts.body};
   font-size: 16px;
@@ -42,10 +43,6 @@ export const StyleDefender = styled.div`
 
   * {
     box-sizing: border-box;
-  }
-
-  button {
-    font-family: inherit;
   }
 
   a {
