@@ -297,10 +297,10 @@ export const ComboboxUl = styled.ul.withConfig<{ isMulti?: boolean }>({
     listPadding(isMulti ? ComboboxMultiOption : ComboboxOption)}
 `
 
-export const ComboboxList = (props: ComboboxListInternalProps) => (
+export const ComboboxList = (props: ComboboxListProps) => (
   <ComboboxListInternal {...props} isMulti={false} />
 )
 
-export const ComboboxMultiList = (props: ComboboxListInternalProps) => (
+export const ComboboxMultiList = (props: ComboboxListProps) => (
   <ComboboxListInternal {...props} isMulti />
 )
