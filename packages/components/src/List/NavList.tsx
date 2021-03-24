@@ -24,13 +24,26 @@
 
  */
 
-export * from './List'
-export * from './ListDivider'
-export * from './ListItem'
-export * from './ListItemContext'
-<<<<<<< HEAD
-export * from './ListItemLabel'
-=======
-export * from './NavList'
->>>>>>> b45821b04 (feat(List): NavList)
-export { listItemDimensions } from './utils'
+import styled from 'styled-components'
+import { StyledIconBase } from '@styled-icons/styled-icon'
+import { AccordionDisclosureStyle } from '../Accordion/AccordionDisclosure'
+import { TextBase } from '../Text/TextBase'
+import { ListItemDetail } from './ListItemDetail'
+import { List, ListItemLabel } from './'
+
+export const NavList = styled(List)`
+  ${AccordionDisclosureStyle}, ${ListItemLabel} {
+    border-bottom-right-radius: 5rem;
+    border-top-right-radius: 5rem;
+    color: ${({ theme }) => theme.colors.key};
+
+    &:focus,
+    &:hover {
+      background-color: ${({ theme }) => theme.colors.keySubtle};
+    }
+  }
+
+  ${ListItemDetail}, ${StyledIconBase}, ${TextBase} {
+    color: ${({ theme }) => theme.colors.key};
+  }
+`
