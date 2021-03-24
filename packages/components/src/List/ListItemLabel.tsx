@@ -30,7 +30,9 @@ import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
 import { ListItemRole, ListItemStatefulWithHoveredProps } from './types'
 import { listItemBackgroundColor } from './utils'
 
-export const ListItemLabelButton = styled.button``
+export const ListItemLabelButton = styled.button`
+  font-family: inherit;
+`
 export const ListItemLabelLink = styled.a``
 export const ListItemLabelDiv = styled.div``
 
