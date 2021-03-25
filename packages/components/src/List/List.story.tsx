@@ -32,7 +32,6 @@ import { Box, Grid, Space } from '../Layout'
 import { DensityRamp } from './types'
 import { List, ListProps } from './List'
 import { ListItem } from './ListItem'
-import { NavList } from './NavList'
 
 export default {
   component: List,
@@ -198,13 +197,4 @@ export const DensityWithNonstringChildren = () => (
     <DensityExample density={-2}>{listItemsNonstringChildren}</DensityExample>
     <DensityExample density={-3}>{listItemsNonstringChildren}</DensityExample>
   </Grid>
-)
-
-export const navList = () => (
-  <NavList>
-    <ListItem icon={<Pivot />} description="Orange-y" detail="Netherlands">
-      Explore
-    </ListItem>
-    <ListItem icon={<DateRange />}>Develop</ListItem>
-  </NavList>
 )
