@@ -31,19 +31,33 @@ import { TextBase } from '../Text/TextBase'
 import { ListItemDetail } from '../List/ListItemDetail'
 import { List, ListItemLabel } from '../List'
 
+/**
+ * `NavList` is a variation of `List`
+ *   - `ListItem`  border-radius circular on the right side
+ *   - `ListItem` selected or "active"
+ *     - text color is `keyColor`
+ *     - background color is `keySubtle`
+ *
+ *
+ * @status: EXPERIMENTAL
+ * This component is in active development and may see significant change in
+ * it's behavior, interface & presentation. It may also be deprecated without
+ * SemVer major version change. _It is not recommended to use this component
+ * at this time.
+ */
+
 export const NavList = styled(List)`
   ${AccordionDisclosureStyle}, ${ListItemLabel} {
     border-bottom-right-radius: 5rem;
     border-top-right-radius: 5rem;
     color: ${({ theme }) => theme.colors.key};
 
-    &:focus,
-    &:hover {
+    &[aria-selected='true'] {
       background-color: ${({ theme }) => theme.colors.keySubtle};
+      color: ${({ theme }) => theme.colors.key};
+      ${ListItemDetail}, ${StyledIconBase}, ${TextBase} {
+        color: ${({ theme }) => theme.colors.key};
+      }
     }
-  }
-
-  ${ListItemDetail}, ${StyledIconBase}, ${TextBase} {
-    color: ${({ theme }) => theme.colors.key};
   }
 `
