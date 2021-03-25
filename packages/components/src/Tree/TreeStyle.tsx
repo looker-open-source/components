@@ -52,8 +52,8 @@ interface TreeStyleProps extends ListItemStatefulWithHoveredProps {
 }
 
 export const TreeItemInner = styled(TreeItem)`
-  & > button,
-  & > a {
+  > button,
+  > a {
     background-color: transparent;
     padding-left: 0;
   }
@@ -80,13 +80,13 @@ export const TreeStyle = styled.div<TreeStyleProps>`
   flex-shrink: 2;
   min-width: 0;
 
-  & > ${Accordion} {
-    & > ${AccordionContent} {
+  > ${Accordion} {
+    > ${AccordionContent} {
       ${({ border, depth, indicatorSize, theme }) =>
         border && generateTreeBorder(depth, indicatorSize, theme)}
     }
 
-    & > ${AccordionDisclosureStyle} {
+    > ${AccordionDisclosureStyle} {
       ${ListItem} {
         font-weight: ${({ branchFontWeight, theme: { fontWeights } }) =>
           branchFontWeight ? fontWeights.normal : fontWeights.semiBold};
@@ -105,18 +105,15 @@ export const TreeStyle = styled.div<TreeStyleProps>`
 
   ${({ dividers }) => dividers && dividersCSS}
 
-  & > ${Accordion} > ${AccordionContent} > ${List} {
-    &
-      > ${ListItem}
-      > ${ListItemLabelButton},
-      &
-      > ${ListItem}
-      > ${ListItemLabelLink},
-      &
-      > ${ListItem}
-      > ${ListItemLabelDiv},
-      &
-      > ${TreeBranch} {
+  > ${Accordion} > ${AccordionContent} > ${List} {
+    > ${ListItem} {
+      > ${ListItemLabelButton}, > ${ListItemLabelLink}, > ${ListItemLabelDiv} {
+        ${({ depth, indicatorSize, theme }) =>
+          generateIndent(depth + 2, indicatorSize, theme)}
+      }
+    }
+
+    > ${TreeBranch} {
       ${({ depth, indicatorSize, theme }) =>
         generateIndent(depth + 2, indicatorSize, theme)}
     }
@@ -125,18 +122,15 @@ export const TreeStyle = styled.div<TreeStyleProps>`
   /**
     These selectors are to support TreeArtificial
    */
-  & > ${List} {
-    &
-      > ${TreeBranch},
-      &
-      > ${ListItem}
-      > ${ListItemLabelButton},
-      &
-      > ${ListItem}
-      > ${ListItemLabelLink},
-      &
-      > ${ListItem}
-      > ${ListItemLabelDiv} {
+  > ${List} {
+    > ${ListItem} {
+      > ${ListItemLabelButton}, > ${ListItemLabelLink}, > ${ListItemLabelDiv} {
+        ${({ depth, indicatorSize, theme }) =>
+          generateIndent(depth + 2, indicatorSize, theme)}
+      }
+    }
+
+    > ${TreeBranch} {
       ${({ depth, indicatorSize, theme }) =>
         generateIndent(depth + 2, indicatorSize, theme)}
     }
