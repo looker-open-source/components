@@ -32,7 +32,6 @@ export const StyleDefender = styled.div`
   font-family: ${({ theme }) => theme.fonts.body};
   font-size: 16px;
   height: 100%;
-  line-height: 0;
   width: 100%;
 
   *,
@@ -43,7 +42,6 @@ export const StyleDefender = styled.div`
 
   * {
     box-sizing: border-box;
-    line-height: normal;
   }
 
   a {
