@@ -33,7 +33,6 @@ export const shouldForwardProp = createShouldForwardProp([...props])
 
 export * from './color'
 export * from './theme'
-
 export * from './system'
 
 // Provided for legacy color implementations
