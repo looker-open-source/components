@@ -104,6 +104,8 @@ export interface ListItemProps
    * - Use **'link'** for items that navigation to another page
    * - Use **'button'** for items that trigger in page interactions, like displaying a dialog
    * - Use **'none'** when including buttons as children in the label container (i.e. the label container will be a <div>).
+   *     NOTE: Height when using an item with a description and role='none' does not auto abide the @looker/components
+   *     density scale. Use 'button' or 'link' whenever possible to avoid space inconsistencies.
    * @default 'button'
    */
   itemRole?: ListItemRole
