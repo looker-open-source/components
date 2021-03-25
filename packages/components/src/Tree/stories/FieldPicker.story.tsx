@@ -43,6 +43,8 @@ import {
   Truncate,
   Badge,
   Paragraph,
+  Flex,
+  FlexItem,
 } from '../..'
 import { Tree, TreeArtificial, TreeItem, TreeBranch } from '..'
 import { HoverDisclosure } from '../../utils'
@@ -103,30 +105,28 @@ const PickerItem: FC<{ color?: string; truncate?: boolean }> = ({
       }}
       truncate={truncate}
     >
-      <Space between>
-        {children}
-        <div>
-          <HoverDisclosure>
+      <Flex alignItems="center">
+        <FlexItem flex={1}>{children}</FlexItem>
+        <HoverDisclosure>
+          <IconButton
+            icon={<Pivot />}
+            label="Pivot"
+            tooltipPlacement="top"
+            onClick={() => alert('Pivot')}
+          />
+          <Popover
+            content="hello world"
+            isOpen={overlay === 'popover'}
+            setOpen={togglePopover}
+          >
             <IconButton
-              icon={<Pivot />}
-              label="Pivot"
+              icon={<FilterList />}
+              label="Filter"
               tooltipPlacement="top"
-              onClick={() => alert('Pivot')}
             />
-            <Popover
-              content="hello world"
-              isOpen={overlay === 'popover'}
-              setOpen={togglePopover}
-            >
-              <IconButton
-                icon={<FilterList />}
-                label="Filter"
-                tooltipPlacement="top"
-              />
-            </Popover>
-          </HoverDisclosure>
-        </div>
-      </Space>
+          </Popover>
+        </HoverDisclosure>
+      </Flex>
     </TreeItem>
   )
 }
