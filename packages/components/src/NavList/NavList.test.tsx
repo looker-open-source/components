@@ -24,10 +24,33 @@
 
  */
 
-export * from './List'
-export * from './ListDivider'
-export * from './ListItem'
-export * from './ListItemContext'
-export * from './ListItemLabel'
-export * from './NavList'
-export { listItemDimensions } from './utils'
+import React from 'react'
+import { Pivot } from '@looker/icons'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
+import { ListItem } from '../List/ListItem'
+import { NavList } from './NavList'
+
+describe('NavList', () => {
+  test('display with keyColor', () => {
+    renderWithTheme(
+      <NavList>
+        <ListItem icon={<Pivot />} description="Orange-y" detail="Netherlands">
+          Explore
+        </ListItem>
+        <ListItem icon={<Pivot />}>Develop</ListItem>
+      </NavList>
+    )
+
+    const listItem = screen.getByText('Explore')
+
+    // NavList label
+    expect(listItem).toHaveStyle(`color: #6C43E0;`)
+
+    // NavList description
+    expect(screen.getByText('Orange-y')).toHaveStyle(`color: #6C43E0;`)
+
+    // NavList detail
+    expect(screen.getByText('Netherlands')).toHaveStyle(`color: #6C43E0;`)
+  })
+})

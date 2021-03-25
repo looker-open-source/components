@@ -28,8 +28,8 @@ import styled from 'styled-components'
 import { StyledIconBase } from '@styled-icons/styled-icon'
 import { AccordionDisclosureStyle } from '../Accordion/AccordionDisclosure'
 import { TextBase } from '../Text/TextBase'
-import { ListItemDetail } from './ListItemDetail'
-import { List, ListItemLabel } from './'
+import { ListItemDetail } from '../List/ListItemDetail'
+import { List, ListItemLabel } from '../List'
 
 export const NavList = styled(List)`
   ${AccordionDisclosureStyle}, ${ListItemLabel} {

@@ -24,10 +24,4 @@
 
  */
 
-export * from './List'
-export * from './ListDivider'
-export * from './ListItem'
-export * from './ListItemContext'
-export * from './ListItemLabel'
 export * from './NavList'
-export { listItemDimensions } from './utils'
