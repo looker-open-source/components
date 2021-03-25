@@ -50,7 +50,7 @@ export interface SelectBaseProps
   extends SelectOptionsBaseProps,
     Pick<ComboboxOptionIndicatorProps, 'indicator'> {
   /**
-   * Options may be flat or grouped, label is option, without it the value is used
+   * Options may be flat or grouped, label is optional – without it the value is used
    */
   options?: SelectOptionProps[]
   placeholder?: string

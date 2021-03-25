@@ -28,6 +28,12 @@ import { css, StyledComponent } from 'styled-components'
 import { Divider } from '../../Divider'
 import { ListDivider } from '../ListDivider'
 
+/**
+ * Produces a CSS interpolation for a styled collection component (e.g. Menu, Select)
+ * that applies spacing to the top of the first item, the bottom of the last,
+ * and the top and bottom of each divider.
+ * @param ItemComponent the styled item component in the collection, (e.g. MenuItem, ComboboxOption)
+ */
 export const listPadding = (ItemComponent: StyledComponent<any, any>) => css`
   > :first-child {
     margin-top: ${({ theme }) => theme.space.xsmall};

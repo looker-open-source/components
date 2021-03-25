@@ -41,7 +41,6 @@ export function useShouldWindowOptions(
     if (propsWindowedOptions === false) return false
     // Without windowedOptions prop, default is to turn it on at 100 options
     if (flatOptions.length < 100 && !propsWindowedOptions) return false
-    // But we can't use windowedOptions if there are groups
     return true
   }, [flatOptions, propsWindowedOptions])
 }
