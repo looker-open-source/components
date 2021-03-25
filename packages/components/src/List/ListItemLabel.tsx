@@ -31,11 +31,11 @@ import { ListItemRole, ListItemStatefulWithHoveredProps } from './types'
 import { listItemBackgroundColor } from './utils'
 
 export const ListItemLabelButton = styled.button``
-export const ListItemLabelA = styled.a``
+export const ListItemLabelLink = styled.a``
 export const ListItemLabelDiv = styled.div``
 
 const listItemLabelElement = (itemRole: ListItemRole, disabled?: boolean) => {
-  if (!disabled && itemRole === 'link') return ListItemLabelA
+  if (!disabled && itemRole === 'link') return ListItemLabelLink
   if (itemRole === 'none') return ListItemLabelDiv
   return ListItemLabelButton
 }

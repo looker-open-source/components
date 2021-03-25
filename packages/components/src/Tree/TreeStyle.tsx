@@ -34,7 +34,7 @@ import { listItemBackgroundColor } from '../List/utils'
 import { ListItemStatefulWithHoveredProps } from '../List/types'
 import { List, ListItem } from '../List'
 import {
-  ListItemLabelA,
+  ListItemLabelLink,
   ListItemLabelDiv,
   ListItemLabelButton,
 } from '../List/ListItemLabel'
@@ -111,7 +111,7 @@ export const TreeStyle = styled.div<TreeStyleProps>`
       > ${ListItemLabelButton},
       &
       > ${ListItem}
-      > ${ListItemLabelA},
+      > ${ListItemLabelLink},
       &
       > ${ListItem}
       > ${ListItemLabelDiv},
@@ -133,7 +133,7 @@ export const TreeStyle = styled.div<TreeStyleProps>`
       > ${ListItemLabelButton},
       &
       > ${ListItem}
-      > ${ListItemLabelA},
+      > ${ListItemLabelLink},
       &
       > ${ListItem}
       > ${ListItemLabelDiv} {
