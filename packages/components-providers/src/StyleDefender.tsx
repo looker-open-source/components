@@ -31,8 +31,8 @@ export const StyleDefender = styled.div`
   box-sizing: border-box;
   font-family: ${({ theme }) => theme.fonts.body};
   font-size: 16px;
-
   height: 100%;
+  line-height: 1;
   width: 100%;
 
   *,
