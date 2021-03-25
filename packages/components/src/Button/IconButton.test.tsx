@@ -184,7 +184,7 @@ describe('IconButton', () => {
 
   test('toggleBackground renders a background', () => {
     renderWithTheme(
-      <IconButton label="Test" toggleBackground icon={<Favorite />} />
+      <IconButton label="Test" toggle toggleBackground icon={<Favorite />} />
     )
     const button = screen.getByRole('button')
     expect(button).toHaveStyle('background-color: #F3F2FF;')
@@ -196,6 +196,7 @@ describe('IconButton', () => {
         icon={<Favorite />}
         label="Test"
         shape="round"
+        toggle
         toggleBackground
       />
     )

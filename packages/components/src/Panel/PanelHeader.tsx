@@ -68,6 +68,10 @@ export const PanelHeader: FC<PanelHeaderProps> = ({
         icon={direction === 'left' ? <ArrowBack /> : <ArrowForward />}
         label={`Close ${title}`}
         onClick={handleClose}
+        toggle
+        toggleBackground
+        // eslint-disable-next-line i18next/no-literal-string
+        shape="round"
         size="small"
       />
       <Heading fontSize="xlarge">{title}</Heading>

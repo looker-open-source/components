@@ -109,12 +109,12 @@ ToggleOff.args = {
 export const ToggleBackground = Template.bind({})
 ToggleBackground.args = {
   ...Basic.args,
+  toggle: true,
   toggleBackground: true,
 }
 
 export const ToggleBackgroundAndShapeRound = Template.bind({})
 ToggleBackgroundAndShapeRound.args = {
-  ...Basic.args,
+  ...ToggleBackground.args,
   shape: 'round',
-  toggleBackground: true,
 }

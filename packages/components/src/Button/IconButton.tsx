@@ -97,7 +97,8 @@ export interface IconButtonProps
    */
   toggle?: boolean
   /**
-   * option of background-color keySubtle
+   * to improve toggle's behavior this prop will update the background-color to keySubtle when togle is true
+   * @default false
    */
   toggleBackground?: boolean
   /**
@@ -246,8 +247,8 @@ export const IconButton = styled(IconButtonComponent).attrs(
   ${space}
 
   background: none;
-  background-color: ${({ theme, toggleBackground }) =>
-    toggleBackground && theme.colors.keySubtle};
+  background-color: ${({ theme, toggle, toggleBackground }) =>
+    toggle && toggleBackground && theme.colors.keySubtle};
   border: none;
   border-radius: ${({ shape }) => shape === 'round' && '100%'};
   ${iconButtonColor}
