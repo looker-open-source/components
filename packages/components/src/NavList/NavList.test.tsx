@@ -35,10 +35,14 @@ describe('NavList', () => {
   test('display with keyColor', () => {
     renderWithTheme(
       <NavList>
-        <ListItem icon={<Pivot />} description="Orange-y" detail="Netherlands">
+        <ListItem
+          description="Orange-y"
+          detail="Netherlands"
+          icon={<Pivot />}
+          selected
+        >
           Explore
         </ListItem>
-        <ListItem icon={<Pivot />}>Develop</ListItem>
       </NavList>
     )
 

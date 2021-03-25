@@ -31,6 +31,17 @@ import { TextBase } from '../Text/TextBase'
 import { ListItemDetail } from '../List/ListItemDetail'
 import { List, ListItemLabel } from '../List'
 
+/**
+ * `NavList Component` is a variating on our list with the changes:
+ *  - text is change color to `keyColor`
+ *  - border-radius circular on the right side
+ *  - background change color when with the prop `selected` to `keySubtle`
+ *
+ *
+ *  @status: EXPERIMENTAL
+ *This component is in active development and may see significant change in it's behavior, interface & presentation. It may also be deprecated without SemVer major version change. _It is not recommended to use this component at this time._`
+ */
+
 export const NavList = styled(List)`
   ${AccordionDisclosureStyle}, ${ListItemLabel} {
     border-bottom-right-radius: 5rem;

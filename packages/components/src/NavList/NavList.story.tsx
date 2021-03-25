@@ -24,7 +24,7 @@
 
  */
 
-import React from 'react'
+import React, { useState } from 'react'
 import { Pivot } from '@looker/icons'
 import { DateRange } from '@styled-icons/material-outlined'
 import { ListItem } from '../List/ListItem'
@@ -35,11 +35,24 @@ export default {
   title: 'NavList',
 }
 
-export const navList = () => (
-  <NavList>
-    <ListItem icon={<Pivot />} description="Orange-y" detail="Netherlands">
-      Explore
-    </ListItem>
-    <ListItem icon={<DateRange />}>Develop</ListItem>
-  </NavList>
-)
+export const NavListExample = () => {
+  const [selected, setSelected] = useState(false)
+  const handleClick = () => {
+    setSelected(!selected)
+  }
+  return (
+    <NavList>
+      <ListItem
+        description="Orange-y"
+        detail="Netherlands"
+        icon={<Pivot />}
+        selected
+      >
+        Explore
+      </ListItem>
+      <ListItem icon={<DateRange />} onClick={handleClick} selected={selected}>
+        Develop
+      </ListItem>
+    </NavList>
+  )
+}
