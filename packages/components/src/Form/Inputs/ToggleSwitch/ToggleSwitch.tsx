@@ -85,10 +85,8 @@ export const ToggleSwitch = styled(ToggleSwitchLayout)`
   ${reset}
   ${space}
 
-  display: inline-block;
   height: 1.25rem;
   position: relative;
-  vertical-align: middle;
   width: 2.1875rem;
 
   input {

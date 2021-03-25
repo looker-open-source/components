@@ -96,11 +96,6 @@ export const Icon = styled(IconLayout).attrs<IconProps>(
 
   svg {
     height: 100%;
-    /**
-    * @TODO vertical-align is a compatibility fix and should probably be removed once
-    * icon refactor is complete and accepted
-    **/
-    vertical-align: initial;
     width: 100%;
   }
 `
