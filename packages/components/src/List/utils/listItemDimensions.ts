@@ -44,6 +44,7 @@ export const densityPositive1: ListItemDimensions = {
   descriptionFontSize: 'small',
   descriptionLineHeight: 'small',
   height: 48,
+  iconGap: 'medium',
   iconSize: 'medium',
   labelFontSize: 'medium',
   labelLineHeight: 'medium',
@@ -59,13 +60,12 @@ export const densityNegative1: ListItemDimensions = {
 export const densityNegative2: ListItemDimensions = {
   ...densityNegative1,
   height: 28,
-  iconGap: 'xsmall',
-  iconSize: 'xsmall',
   py: 'xxsmall',
 }
 export const densityNegative3: ListItemDimensions = {
   ...densityNegative2,
   height: 24,
+  iconGap: 'xsmall',
   iconSize: 'xxsmall',
   labelFontSize: 'xsmall',
   labelLineHeight: 'xsmall',
