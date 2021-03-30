@@ -34,7 +34,7 @@ import {
   TextColorProps,
   textColor,
 } from '@looker/design-tokens'
-import { Menu } from '@styled-icons/material'
+import { Menu } from '@styled-icons/material/Menu'
 import styled from 'styled-components'
 import { VIEWPORT_MAP } from '../utils-storybook'
 import { Card, CardContent, CardMedia } from '../Card'

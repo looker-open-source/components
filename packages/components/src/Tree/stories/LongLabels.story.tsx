@@ -28,11 +28,10 @@ import React from 'react'
 import { IdeDimension } from '@looker/icons/src/IdeDimension'
 import { IdeDimensionGroup } from '@looker/icons/src/IdeDimensionGroup'
 import { Info } from '@styled-icons/material/Info'
-import {
-  Explore,
-  TableChart,
-  Visibility,
-} from '@styled-icons/material-outlined'
+import { Explore } from '@styled-icons/material-outlined/Explore'
+import { TableChart } from '@styled-icons/material-outlined/TableChart'
+import { Visibility } from '@styled-icons/material-outlined/Visibility'
+
 import { Tree, TreeItem, IconButton } from '../..'
 
 export const LongLabels = () => (

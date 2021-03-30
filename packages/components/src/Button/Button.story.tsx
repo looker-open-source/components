@@ -24,7 +24,8 @@
 
  */
 
-import { AddCircle, Delete } from '@styled-icons/material'
+import { AddCircle } from '@styled-icons/material/AddCircle'
+import { Delete } from '@styled-icons/material/Delete'
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import { Button } from './Button'

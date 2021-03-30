@@ -25,7 +25,7 @@
  */
 
 import React from 'react'
-import { Add } from '@styled-icons/material'
+import { Add } from '@styled-icons/material/Add'
 import { Story } from '@storybook/react/types-6-0'
 import { IconButton, IconButtonProps } from './IconButton'
 

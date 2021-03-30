@@ -26,7 +26,7 @@
 
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
-import { PersonOutline } from '@styled-icons/material-outlined'
+import { PersonOutline } from '@styled-icons/material-outlined/PersonOutline'
 import { MenuItem, MenuItemProps } from './MenuItem'
 
 const MenuItemTemplate: Story<MenuItemProps> = (args) => (

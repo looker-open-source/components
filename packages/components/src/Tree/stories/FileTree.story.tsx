@@ -28,11 +28,10 @@ import React from 'react'
 import { IdeDimension } from '@looker/icons/src/IdeDimension'
 import { IdeDimensionGroup } from '@looker/icons/src/IdeDimensionGroup'
 import { Story } from '@storybook/react/types-6-0'
-import {
-  Explore,
-  TableChart,
-  Visibility,
-} from '@styled-icons/material-outlined'
+import { Explore } from '@styled-icons/material-outlined/Explore'
+import { TableChart } from '@styled-icons/material-outlined/TableChart'
+import { Visibility } from '@styled-icons/material-outlined/Visibility'
+
 import { Tree } from '../Tree'
 import { TreeItem } from '../TreeItem'
 import { TreeProps } from '../types'

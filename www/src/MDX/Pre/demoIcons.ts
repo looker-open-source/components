@@ -199,7 +199,7 @@ import {
   Warning,
 } from '@styled-icons/material'
 // eslint-disable-next-line import/first
-import { Favorite as FavoriteOutline } from '@styled-icons/material-outlined'
+import { Favorite as FavoriteOutline } from '@styled-icons/material-outlined/Favorite'
 
 const others = {
   Add,
