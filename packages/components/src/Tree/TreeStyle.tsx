@@ -81,8 +81,8 @@ export const TreeStyle = styled.div<TreeStyleProps>`
   ${ListItem} {
     ${({ iconGap, theme }) =>
       listItemLabelCSS(css`
-        svg,
-        ${StyledIconBase}, ${IconPlaceholder} {
+        > svg,
+        > ${StyledIconBase}, > ${IconPlaceholder} {
           /* The -2px gets the icon gap to match design specs */
           margin-right: calc(${theme.space[iconGap]} - 2px);
         }
