@@ -25,8 +25,10 @@
  */
 
 import React from 'react'
+import { Download, Pivot } from '@looker/icons'
 import { Story } from '@storybook/react/types-6-0'
 import { Tree, TreeProps, TreeItem } from '..'
+import { Space } from '../../Layout'
 
 export * from './BorderRadius.story'
 export * from './ColorfulTree.story'
@@ -66,3 +68,18 @@ Border.args = {
   ...Basic.args,
   border: true,
 }
+
+export const Icon = () => (
+  <Tree
+    defaultOpen
+    icon={<Pivot />}
+    label={
+      <Space between>
+        "Pivot" icon has margin-right, but "Download" icon does not
+        <Download size={20} />
+      </Space>
+    }
+  >
+    <TreeItem>Don't mind me</TreeItem>
+  </Tree>
+)
