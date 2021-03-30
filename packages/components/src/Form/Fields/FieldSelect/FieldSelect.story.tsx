@@ -25,7 +25,7 @@
  */
 
 import { Story } from '@storybook/react/types-6-0'
-import { Favorite } from '@styled-icons/material'
+import { Favorite } from '@styled-icons/material/Favorite'
 import chunk from 'lodash/chunk'
 import React, {
   FormEvent,

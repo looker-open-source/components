@@ -27,7 +27,7 @@
 import 'jest-styled-components'
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { Favorite } from '@styled-icons/material'
+import { Favorite } from '@styled-icons/material/Favorite'
 import {
   act,
   fireEvent,

@@ -26,7 +26,8 @@
 
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
-import { Close, Info } from '@styled-icons/material-rounded'
+import { Close } from '@styled-icons/material-rounded/Close'
+import { Info } from '@styled-icons/material-rounded/Info'
 import { InputText, InputTextProps } from './InputText'
 
 export default {
