@@ -26,9 +26,10 @@
 
 import React from 'react'
 import styled from 'styled-components'
-import { LogoRings } from '@looker/icons'
+import { LogoRings } from '@looker/icons/src/LogoRings'
 import { Story } from '@storybook/react/types-6-0'
-import { PieChart, VerifiedUser } from '@styled-icons/material'
+import { PieChart } from '@styled-icons/material/PieChart'
+import { VerifiedUser } from '@styled-icons/material/VerifiedUser'
 import { Aside, Footer, Header, Layout, LayoutProps, Page, Section } from '..'
 import { SpaceVertical } from '../../Space'
 import { Heading, Paragraph } from '../../../Text'

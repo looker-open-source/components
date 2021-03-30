@@ -26,7 +26,7 @@
 
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
-import { Done } from '@styled-icons/material'
+import { Done } from '@styled-icons/material/Done'
 import { List, ListItem } from '../List'
 import { Aside, Page, Section } from '../Layout'
 import { Panel, Panels, PanelProps, usePanel } from './'

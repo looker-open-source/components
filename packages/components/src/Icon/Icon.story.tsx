@@ -26,14 +26,12 @@
 
 import { Story } from '@storybook/react/types-6-0'
 import React from 'react'
-import {
-  Create,
-  Delete,
-  DeleteOutline,
-  FilterList,
-  Refresh,
-  Settings,
-} from '@styled-icons/material'
+import { Create } from '@styled-icons/material/Create'
+import { Delete } from '@styled-icons/material/Delete'
+import { DeleteOutline } from '@styled-icons/material/DeleteOutline'
+import { FilterList } from '@styled-icons/material/FilterList'
+import { Refresh } from '@styled-icons/material/Refresh'
+import { Settings } from '@styled-icons/material/Settings'
 import { Button, IconButton } from '../Button'
 import { Space, SpaceVertical } from '../Layout'
 import { Heading } from '../Text'
