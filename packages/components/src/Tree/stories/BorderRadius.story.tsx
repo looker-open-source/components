@@ -27,7 +27,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { AccordionDisclosureStyle } from '../../Accordion'
-import { ListItemLabel } from '../../List'
+import { ListItemLabel } from '../../List/ListItemLabel'
 import { TreeItem, Tree } from '..'
 
 export const BorderRadiusOverride = () => (

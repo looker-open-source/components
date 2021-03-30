@@ -43,8 +43,11 @@ import {
   Truncate,
   Badge,
   Paragraph,
+  Flex,
+  FlexItem,
 } from '../..'
 import { Tree, TreeArtificial, TreeItem, TreeBranch } from '..'
+import { HoverDisclosure } from '../../utils'
 
 const PickerItem: FC<{ color?: string; truncate?: boolean }> = ({
   children = 'Cost',
@@ -59,23 +62,6 @@ const PickerItem: FC<{ color?: string; truncate?: boolean }> = ({
     overlay === 'popover' ? setOverlay(undefined) : setOverlay('popover')
   const detailContent = (
     <>
-      <IconButton
-        icon={<Pivot />}
-        label="Pivot"
-        tooltipPlacement="top"
-        onClick={() => alert('Pivot')}
-      />
-      <Popover
-        content="hello world"
-        isOpen={overlay === 'popover'}
-        setOpen={togglePopover}
-      >
-        <IconButton
-          icon={<FilterList />}
-          label="Filter"
-          tooltipPlacement="top"
-        />
-      </Popover>
       <Tooltip placement="top" content="Some exciting info or something">
         <IconButton icon={<Info />} label="Info" />
       </Tooltip>
@@ -110,6 +96,7 @@ const PickerItem: FC<{ color?: string; truncate?: boolean }> = ({
           hoverDisclosure: !overlay,
         },
       }}
+      itemRole="none"
       onClick={() => alert(`Clicked on ${children}!`)}
       onKeyDown={(event) => {
         if (event.key === 'Enter' && event.metaKey) {
@@ -118,7 +105,28 @@ const PickerItem: FC<{ color?: string; truncate?: boolean }> = ({
       }}
       truncate={truncate}
     >
-      {children}
+      <Flex alignItems="center">
+        <FlexItem flex={1}>{children}</FlexItem>
+        <HoverDisclosure>
+          <IconButton
+            icon={<Pivot />}
+            label="Pivot"
+            tooltipPlacement="top"
+            onClick={() => alert('Pivot')}
+          />
+          <Popover
+            content="hello world"
+            isOpen={overlay === 'popover'}
+            setOpen={togglePopover}
+          >
+            <IconButton
+              icon={<FilterList />}
+              label="Filter"
+              tooltipPlacement="top"
+            />
+          </Popover>
+        </HoverDisclosure>
+      </Flex>
     </TreeItem>
   )
 }

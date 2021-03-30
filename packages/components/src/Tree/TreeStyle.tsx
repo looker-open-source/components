@@ -33,6 +33,11 @@ import {
 import { listItemBackgroundColor } from '../List/utils'
 import { ListItemStatefulWithHoveredProps } from '../List/types'
 import { List, ListItem } from '../List'
+import {
+  ListItemLabelLink,
+  ListItemLabelDiv,
+  ListItemLabelButton,
+} from '../List/ListItemLabel'
 import { IconSize } from '../Icon'
 import { TreeItem } from './TreeItem'
 import { TreeBranch } from './TreeBranch'
@@ -47,8 +52,8 @@ interface TreeStyleProps extends ListItemStatefulWithHoveredProps {
 }
 
 export const TreeItemInner = styled(TreeItem)`
-  & > button,
-  & > a {
+  > button,
+  > a {
     background-color: transparent;
     padding-left: 0;
   }
@@ -75,13 +80,13 @@ export const TreeStyle = styled.div<TreeStyleProps>`
   flex-shrink: 2;
   min-width: 0;
 
-  & > ${Accordion} {
-    & > ${AccordionContent} {
+  > ${Accordion} {
+    > ${AccordionContent} {
       ${({ border, depth, indicatorSize, theme }) =>
         border && generateTreeBorder(depth, indicatorSize, theme)}
     }
 
-    & > ${AccordionDisclosureStyle} {
+    > ${AccordionDisclosureStyle} {
       ${ListItem} {
         font-weight: ${({ branchFontWeight, theme: { fontWeights } }) =>
           branchFontWeight ? fontWeights.normal : fontWeights.semiBold};
@@ -100,19 +105,34 @@ export const TreeStyle = styled.div<TreeStyleProps>`
 
   ${({ dividers }) => dividers && dividersCSS}
 
-  & > ${Accordion} > ${AccordionContent} > ${List} > ${TreeBranch},
-  & > ${Accordion} > ${AccordionContent} > ${List} > ${ListItem} > button,
-  & > ${Accordion} > ${AccordionContent} > ${List} > ${ListItem} > a {
-    ${({ depth, indicatorSize, theme }) =>
-      generateIndent(depth + 2, indicatorSize, theme)}
+  > ${Accordion} > ${AccordionContent} > ${List} {
+    > ${ListItem} {
+      > ${ListItemLabelButton}, > ${ListItemLabelLink}, > ${ListItemLabelDiv} {
+        ${({ depth, indicatorSize, theme }) =>
+          generateIndent(depth + 2, indicatorSize, theme)}
+      }
+    }
+
+    > ${TreeBranch} {
+      ${({ depth, indicatorSize, theme }) =>
+        generateIndent(depth + 2, indicatorSize, theme)}
+    }
   }
 
   /**
     These selectors are to support TreeArtificial
    */
-  & > ${List} > ${TreeBranch}, & > ${List} > ${ListItem} > button,
-  & > ${List} > ${ListItem} > a {
-    ${({ depth, indicatorSize, theme }) =>
-      generateIndent(depth + 2, indicatorSize, theme)}
+  > ${List} {
+    > ${ListItem} {
+      > ${ListItemLabelButton}, > ${ListItemLabelLink}, > ${ListItemLabelDiv} {
+        ${({ depth, indicatorSize, theme }) =>
+          generateIndent(depth + 2, indicatorSize, theme)}
+      }
+    }
+
+    > ${TreeBranch} {
+      ${({ depth, indicatorSize, theme }) =>
+        generateIndent(depth + 2, indicatorSize, theme)}
+    }
   }
 `

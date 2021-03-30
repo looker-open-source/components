@@ -41,7 +41,7 @@ export const ListItemLayoutAccessoryInternal: FC<ListItemLayoutProps> = ({
   const content = (
     <>
       {icon}
-      <Flex flexDirection="column" minWidth={0}>
+      <Flex flexDirection="column" minWidth={0} flexGrow={1}>
         {children}
         {description}
       </Flex>

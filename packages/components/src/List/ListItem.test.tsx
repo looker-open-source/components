@@ -163,6 +163,13 @@ describe('ListItem', () => {
     expect(item).toHaveAttribute('rel', 'nogouda')
   })
 
+  test('renders label container as <div> when itemRole="none"', () => {
+    const { getByRole } = renderWithTheme(
+      <ListItem itemRole="none">No Role</ListItem>
+    )
+    expect(getByRole('listitem').nodeName).toBe('DIV')
+  })
+
   test('does not trigger onClick on detail click when accessory === true', () => {
     const onClick = jest.fn()
     const { getByText } = renderWithTheme(

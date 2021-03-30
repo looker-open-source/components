@@ -24,14 +24,16 @@
 
  */
 
-import React from 'react'
+import React, { FC } from 'react'
 import { Pivot } from '@looker/icons'
 import { Story } from '@storybook/react/types-6-0'
 import { PersonOutline } from '@styled-icons/material'
 import { DateRange } from '@styled-icons/material-outlined'
 import { IconButton } from '../Button'
 import { Text } from '../Text'
+import { Grid } from '../Layout/Grid'
 import { ListItem, ListItemProps } from './ListItem'
+import { ListItemRole } from './types'
 
 const Template: Story<ListItemProps> = (args) => <ListItem {...args} />
 
@@ -163,6 +165,20 @@ export const Link = () => {
   )
 }
 
+export const NoRole = () => {
+  return (
+    <ListItem itemRole="none">
+      ListItem
+      <IconButton
+        onClick={() => alert('Show me calendar')}
+        icon={<PersonOutline />}
+        label="Person"
+        ml="large"
+      />
+    </ListItem>
+  )
+}
+
 const lorem =
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
 export const Truncate = Template.bind({})
@@ -192,6 +208,31 @@ TruncateAndIconAndDetailAndAccessory.args = {
   },
   icon: <DateRange />,
 }
+
+const RoleVariant: FC<{ itemRole: ListItemRole; description?: string }> = ({
+  itemRole,
+  description,
+}) => (
+  <ListItem itemRole={itemRole} description={description}>
+    Hello World
+  </ListItem>
+)
+export const RoleVariants = () => (
+  <Grid columns={3}>
+    <div>
+      <RoleVariant itemRole="button" />
+      <RoleVariant itemRole="button" description="Definitely a button" />
+    </div>
+    <div>
+      <RoleVariant itemRole="link" />
+      <RoleVariant itemRole="link" description="Definitely a link" />
+    </div>
+    <div>
+      <RoleVariant itemRole="none" />
+      <RoleVariant itemRole="none" description="Definitely a none" />
+    </div>
+  </Grid>
+)
 
 export default {
   component: ListItem,

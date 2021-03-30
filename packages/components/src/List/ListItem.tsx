@@ -45,10 +45,16 @@ import {
   useWrapEvent,
 } from '../utils'
 import { ListItemContext } from './ListItemContext'
+import { ListItemLabel } from './ListItemLabel'
 import { ListItemLayout } from './ListItemLayout'
 import { ListItemLayoutAccessory } from './ListItemLayoutAccessory'
 import { ListItemWrapper } from './ListItemWrapper'
-import { DensityRamp, Detail, ListItemStatefulProps } from './types'
+import {
+  DensityRamp,
+  Detail,
+  ListItemRole,
+  ListItemStatefulProps,
+} from './types'
 import { createSafeRel, getDetailOptions, listItemDimensions } from './utils'
 
 const TruncateWrapper: FC<{
@@ -97,27 +103,17 @@ export interface ListItemProps
    * Sets the correct accessible role for the ListItem:
    * - Use **'link'** for items that navigation to another page
    * - Use **'button'** for items that trigger in page interactions, like displaying a dialog
+   * - Use **'none'** when including buttons as children in the label container (i.e. the label container will be a <div>).
+   *     NOTE: Height when using an item with a description and role='none' does not auto abide the @looker/components
+   *     density scale. Use 'button' or 'link' whenever possible to avoid space inconsistencies.
+   * @default 'button'
    */
-  itemRole?: 'link' | 'button'
+  itemRole?: ListItemRole
   /**
    * If true, text children and description will be truncated if text overflows
    */
   truncate?: boolean
 }
-
-interface ListItemLabelProps extends CompatibleHTMLProps<HTMLElement> {
-  disabled?: boolean
-  itemRole?: 'link' | 'button'
-}
-
-export const ListItemLabel = styled.div
-  .withConfig<ListItemLabelProps>({
-    shouldForwardProp: (prop) => prop !== 'itemRole',
-  })
-  .attrs<ListItemLabelProps>(({ disabled, itemRole = 'button' }) => ({
-    as: !disabled && itemRole === 'link' ? 'a' : 'button',
-    type: itemRole === 'button' || disabled ? 'button' : undefined,
-  }))<ListItemLabelProps>``
 
 const ListItemInternal = forwardRef(
   (props: ListItemProps, ref: Ref<HTMLLIElement>) => {
@@ -231,6 +227,14 @@ const ListItemInternal = forwardRef(
       </HoverDisclosure>
     )
 
+    const statefulProps = {
+      current,
+      disabled,
+      hovered,
+      keyColor,
+      selected,
+    }
+
     const LabelCreator: FC<{
       children: ReactNode
       className: string
@@ -240,7 +244,7 @@ const ListItemInternal = forwardRef(
         aria-current={current}
         aria-selected={selected}
         className={className}
-        disabled={disabled}
+        height={itemDimensions.height}
         href={href}
         onBlur={handleOnBlur}
         onClick={disabled ? undefined : handleOnClick}
@@ -250,6 +254,7 @@ const ListItemInternal = forwardRef(
         role={role || 'listitem'}
         target={target}
         tabIndex={-1}
+        {...statefulProps}
       >
         {children}
       </ListItemLabel>
@@ -267,7 +272,7 @@ const ListItemInternal = forwardRef(
         iconSize={itemDimensions.iconSize}
         labelCreator={LabelCreator}
         px={itemDimensions.px}
-        py={itemDimensions.py}
+        py={itemRole === 'none' ? 'none' : itemDimensions.py}
       >
         {renderedChildren}
       </Layout>
@@ -277,16 +282,12 @@ const ListItemInternal = forwardRef(
       <HoverDisclosureContext.Provider value={{ visible: hovered }}>
         <ListItemWrapper
           className={className}
-          current={current}
           description={description}
           disabled={disabled}
           focusVisible={focusVisible}
-          hovered={hovered}
-          keyColor={keyColor}
           onMouseEnter={handleOnMouseEnter}
           onMouseLeave={handleOnMouseLeave}
           ref={ref}
-          selected={selected}
           {...itemDimensions}
           {...restProps}
         >
