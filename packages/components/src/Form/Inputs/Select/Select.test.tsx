@@ -30,22 +30,18 @@ import {
 } from '@looker/components-test-utils'
 import { ChartBar } from '@looker/icons'
 import { BarChart } from '@styled-icons/material'
-import { cleanup, fireEvent, screen } from '@testing-library/react'
+import { fireEvent, screen } from '@testing-library/react'
 import React, { useState, useMemo, useEffect } from 'react'
 
 import { Button } from '../../../Button'
 import { ComboboxOptionIndicatorFunction } from '../Combobox'
 import { Select } from './Select'
 import { SelectMulti } from './SelectMulti'
-import { SelectOptionObject, SelectOptionProps } from './types'
-// for the requestAnimationFrame in handleBlur (not working currently)
-// jest.useFakeTimers()
+import { SelectOptionProps } from './types'
 
 const options100 = Array.from(Array(100), (_, i) => ({
   value: String(i + 1),
 }))
-
-afterEach(cleanup)
 
 describe('Select / SelectMulti', () => {
   const options = [{ value: 'FOO' }, { value: 'BAR' }]
@@ -403,10 +399,10 @@ describe('Select / SelectMulti', () => {
       />,
     ],
   ])('option detail (%s)', (_, jsx) => {
-    const { getByPlaceholderText, getByText } = renderWithTheme(jsx)
-    const input = getByPlaceholderText('Search')
+    renderWithTheme(jsx)
+    const input = screen.getByPlaceholderText('Search')
     fireEvent.mouseDown(input)
-    expect(getByText('Info about option')).toBeVisible()
+    expect(screen.getByText('Info about option')).toBeVisible()
 
     // Close popover to silence act() warning
     fireEvent.click(document)
@@ -432,15 +428,13 @@ describe('Select / SelectMulti', () => {
       ],
     ])('label does nothing when clicked (%s)', (_, getJSX) => {
       const handleChange = jest.fn()
-      const { getByPlaceholderText, getByText } = renderWithTheme(
-        getJSX(handleChange)
-      )
+      renderWithTheme(getJSX(handleChange))
 
-      const input = getByPlaceholderText('Search')
+      const input = screen.getByPlaceholderText('Search')
 
       fireEvent.mouseDown(input)
 
-      const noOptions = getByText('No options')
+      const noOptions = screen.getByText('No options')
       fireEvent.click(noOptions)
 
       expect(handleChange).not.toHaveBeenCalled()
@@ -464,13 +458,12 @@ describe('Select / SelectMulti', () => {
         />,
       ],
     ])('custom label text (%s)', (_, jsx) => {
-      const { getByPlaceholderText, queryByText } = renderWithTheme(jsx)
+      renderWithTheme(jsx)
 
-      const input = getByPlaceholderText('Search')
-
+      const input = screen.getByPlaceholderText('Search')
       fireEvent.mouseDown(input)
 
-      const noOptions = queryByText(label)
+      const noOptions = screen.queryByText(label)
       expect(noOptions).toBeVisible()
 
       // Close popover to silence act() warning
@@ -499,7 +492,7 @@ describe('Select / SelectMulti', () => {
 
   describe('windowed options', () => {
     const testArray: Array<
-      [string, (longOptions: SelectOptionObject[]) => JSX.Element]
+      [string, (longOptions: SelectOptionProps[]) => JSX.Element]
     > = [
       [
         'Select',
@@ -523,37 +516,101 @@ describe('Select / SelectMulti', () => {
       const longOptions = Array.from(Array(100), (_, index) => ({
         value: `${index}`,
       }))
-      const { getByPlaceholderText, queryByText } = renderWithTheme(
-        getJSX(longOptions)
-      )
+      renderWithTheme(getJSX(longOptions))
 
-      const input = getByPlaceholderText('Search')
-
+      const input = screen.getByPlaceholderText('Search')
       fireEvent.mouseDown(input)
 
-      expect(queryByText('0')).toBeInTheDocument()
-      expect(queryByText('5')).toBeInTheDocument()
+      expect(screen.queryByText('0')).toBeInTheDocument()
+      expect(screen.queryByText('5')).toBeInTheDocument()
       // js-dom doesn't do layout so only the first option + 5 buffer are rendered
-      expect(queryByText('6')).not.toBeInTheDocument()
+      expect(screen.queryByText('6')).not.toBeInTheDocument()
 
       // Close popover to silence act() warning
       fireEvent.click(document)
     })
 
+    test.each(testArray)(
+      '100 grouped options do not all render',
+      (_, getJSX) => {
+        const longOptions = Array.from(Array(100), (_, index) => ({
+          value: `${index}`,
+        }))
+        const groupedOptions = [
+          { label: 'First', options: longOptions.slice(0, 4) },
+          { label: 'Second', options: longOptions.slice(4, 20) },
+          { label: 'Third', options: longOptions.slice(20, 99) },
+        ]
+        renderWithTheme(getJSX(groupedOptions))
+
+        const inputs = screen.getAllByRole('textbox')
+        // SelectMulti has a hidden input
+        const input = inputs[inputs.length - 1]
+        fireEvent.mouseDown(input)
+
+        expect(screen.getByText('First')).toBeInTheDocument()
+        expect(screen.queryByText('3')).toBeInTheDocument()
+        // js-dom doesn't do layout so only the first divider (hidden), group header
+        // and 4 options are rendered
+        expect(screen.queryByText('4')).not.toBeInTheDocument()
+        // Close popover to silence act() warning
+        fireEvent.click(document)
+      }
+    )
+
+    test.each(testArray)(
+      'Hover navigation is off while scrolling',
+      (_, getJSX) => {
+        jest.useFakeTimers()
+
+        const rafSpy = jest
+          .spyOn(window, 'requestAnimationFrame')
+          .mockImplementation((cb: any) => cb())
+
+        renderWithTheme(getJSX(options))
+
+        const input = screen.getByPlaceholderText('Search')
+        fireEvent.mouseDown(input)
+
+        // hover will not trigger navigate during & right after scroll
+        const container = screen.getByTestId('content-container')
+        fireEvent.scroll(container)
+
+        const bar = screen.getByText('BAR')
+        fireEvent.mouseOver(bar)
+        expect(
+          screen.queryByRole('option', { selected: true })
+        ).not.toBeInTheDocument()
+
+        // hover will trigger navigate after timeout
+        jest.runOnlyPendingTimers()
+
+        fireEvent.mouseOver(bar)
+        expect(
+          screen.queryByRole('option', { selected: true })
+        ).toHaveTextContent('BAR')
+
+        // Close popover to silence act() warning
+        fireEvent.click(document)
+
+        jest.runOnlyPendingTimers()
+        jest.useRealTimers()
+
+        rafSpy.mockRestore()
+      }
+    )
+
     test.each(testArray)('99 options all render', (_, getJSX) => {
       const longOptions = Array.from(Array(99), (_, index) => ({
         value: `${index}`,
       }))
-      const { getByPlaceholderText, queryByText } = renderWithTheme(
-        getJSX(longOptions)
-      )
+      renderWithTheme(getJSX(longOptions))
 
-      const input = getByPlaceholderText('Search')
-
+      const input = screen.getByPlaceholderText('Search')
       fireEvent.mouseDown(input)
 
-      expect(queryByText('0')).toBeInTheDocument()
-      expect(queryByText('98')).toBeInTheDocument()
+      expect(screen.queryByText('0')).toBeInTheDocument()
+      expect(screen.queryByText('98')).toBeInTheDocument()
 
       // Close popover to silence act() warning
       fireEvent.click(document)
@@ -574,13 +631,12 @@ describe('Select / SelectMulti', () => {
         />,
       ],
     ])('custom label text (%s)', (_, jsx) => {
-      const { getByPlaceholderText, queryByText } = renderWithTheme(jsx)
+      renderWithTheme(jsx)
 
-      const input = getByPlaceholderText('Search')
-
+      const input = screen.getByPlaceholderText('Search')
       fireEvent.mouseDown(input)
 
-      const noOptions = queryByText(label)
+      const noOptions = screen.queryByText(label)
       expect(noOptions).toBeVisible()
 
       // Close popover to silence act() warning

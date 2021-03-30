@@ -31,28 +31,14 @@ import {
   SelectOptionProps,
 } from '../types'
 
-export function flattenOptions(options: SelectOptionProps[]) {
-  return options.reduce(
-    (acc: SelectOptionObject[], option: SelectOptionProps) => {
-      const optionAsGroup = option as SelectOptionGroupProps
-      if (optionAsGroup.options) {
-        return [...acc, ...optionAsGroup.options]
-      }
-      return [...acc, option as SelectOptionObject]
-    },
-    []
-  )
-}
-
 export function getMatchingOption(
   value?: string,
-  options?: SelectOptionProps[]
+  options?: SelectOptionObject[]
 ) {
-  const flattenedOptions = options && flattenOptions(options)
-  return flattenedOptions?.find((option) => option.value === value)
+  return options?.find((option) => option.value === value)
 }
 
-export function getOption(value?: string, options?: SelectOptionProps[]) {
+export function getOption(value?: string, options?: SelectOptionObject[]) {
   const matchingOption = getMatchingOption(value, options)
   const label = matchingOption?.label
   // If this is a filterable Select and the current option has been filtered out
@@ -63,12 +49,11 @@ export function getOption(value?: string, options?: SelectOptionProps[]) {
 
 export function getOptions(
   values?: string[],
-  options?: SelectOptionProps[]
+  options?: SelectOptionObject[]
 ): SelectOptionObject[] | undefined {
   if (!values) return undefined
-  const flattenedOptions = options && flattenOptions(options)
   return values.map((value) => ({
-    label: getComboboxText(value, flattenedOptions),
+    label: getComboboxText(value, options),
     value,
   }))
 }
@@ -88,7 +73,7 @@ export function getFirstOption(
 // Is a value contained the specified options (logic to show the on-the-fly "Create" option)
 export function notInOptions(
   currentOptions: ComboboxOptionObject[],
-  options?: SelectOptionProps[],
+  options?: SelectOptionObject[],
   inputValue?: string
 ) {
   if (!inputValue) return false
@@ -97,22 +82,13 @@ export function notInOptions(
   }
   if (!options) return true
   return (
-    flattenOptions(options).find((option) =>
-      compareOption(option, inputValue)
-    ) === undefined
+    options.find((option) => compareOption(option, inputValue)) === undefined
   )
 }
 
 const checkForIcon = (option: SelectOptionObject) => option.icon !== undefined
 
-export const optionsHaveIcons = (options?: SelectOptionProps[]) => {
+export const optionsHaveIcons = (options?: SelectOptionObject[]) => {
   if (!options || options.length === 0) return false
-  return options.some((option) => {
-    const optionAsGroup = option as SelectOptionGroupProps
-    if (optionAsGroup.options) {
-      return optionAsGroup.options.some(checkForIcon)
-    } else {
-      return checkForIcon(option as SelectOptionObject)
-    }
-  })
+  return options.some((option) => checkForIcon(option))
 }

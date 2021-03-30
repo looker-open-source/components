@@ -42,6 +42,7 @@ import {
   pickAriaAndValidationProps,
 } from './utils/ariaProps'
 import { getOptions } from './utils/options'
+import { useFlatOptions } from './utils/useFlatOptions'
 import { useShouldWindowOptions } from './utils/useWindowedOptions'
 
 export interface SelectMultiProps
@@ -106,8 +107,9 @@ const SelectMultiComponent = forwardRef(
     }: SelectMultiProps,
     ref: Ref<HTMLInputElement>
   ) => {
-    const optionValues = getOptions(values, options)
-    const defaultOptionValues = getOptions(defaultValues, options)
+    const { flatOptions, navigationOptions } = useFlatOptions(options)
+    const optionValues = getOptions(values, navigationOptions)
+    const defaultOptionValues = getOptions(defaultValues, navigationOptions)
 
     function handleChange(options: SelectOptionObject[] = []) {
       const newValues = options && options.map((option) => option.value)
@@ -120,7 +122,10 @@ const SelectMultiComponent = forwardRef(
 
     const ariaProps = pickAriaAndValidationProps(props)
 
-    const windowedOptions = useShouldWindowOptions(options, windowedOptionsProp)
+    const windowedOptions = useShouldWindowOptions(
+      flatOptions,
+      windowedOptionsProp
+    )
 
     return (
       <ComboboxMulti
@@ -160,7 +165,8 @@ const SelectMultiComponent = forwardRef(
           >
             <SelectOptions
               isMulti
-              options={options}
+              flatOptions={flatOptions}
+              navigationOptions={navigationOptions}
               windowedOptions={windowedOptions}
               isFilterable={isFilterable}
               noOptionsLabel={noOptionsLabel}

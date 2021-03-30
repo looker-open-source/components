@@ -24,6 +24,8 @@
 
  */
 
+import { SelectOptionGroupProps } from '../types'
+
 export const options1k = [
   { label: '!it Jeans', value: '!it Jeans' },
   { label: "'47 Brand", value: "'47 Brand" },
@@ -1047,3 +1049,18 @@ export const options1k = [
   { label: 'Gift Warehouse', value: 'Gift Warehouse' },
   { label: 'GII', value: 'GII' },
 ]
+
+export const options1kGrouped = options1k.reduce(
+  (acc: SelectOptionGroupProps[], option) => {
+    const firstLetter = option.label.charAt(0).toUpperCase()
+    const latestGroup = acc[acc.length - 1]
+    if (!latestGroup || latestGroup.label !== firstLetter) {
+      return [...acc, { label: firstLetter, options: [option] }]
+    } else {
+      latestGroup.options.push(option)
+      return acc
+    }
+  },
+  []
+)
+options1kGrouped[3].label = ''

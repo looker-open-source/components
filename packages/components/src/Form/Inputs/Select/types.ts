@@ -53,3 +53,7 @@ export interface SelectOptionGroupProps {
 }
 
 export type SelectOptionProps = SelectOptionObject | SelectOptionGroupProps
+
+export interface FlatOption extends Omit<Partial<SelectOptionObject>, 'label'> {
+  label?: ReactNode
+}

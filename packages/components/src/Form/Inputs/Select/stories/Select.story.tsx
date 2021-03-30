@@ -29,6 +29,7 @@ import { ChartBar } from '@looker/icons'
 import { PieChart, TableChart } from '@styled-icons/material'
 import React from 'react'
 import { Select, SelectProps } from '../Select'
+import { options1kGrouped } from './options1k'
 
 const Template: Story<SelectProps> = (args) => <Select {...args} />
 
@@ -127,6 +128,17 @@ Icon.args = {
     { icon: <TableChart />, label: 'Table', value: 'table' },
   ],
   value: 'pie',
+}
+
+export const GroupedWindowing = Template.bind({})
+GroupedWindowing.args = {
+  ...Basic.args,
+  options: options1kGrouped,
+  width: 300,
+}
+
+GroupedWindowing.parameters = {
+  storyshots: { disable: true },
 }
 
 export default {

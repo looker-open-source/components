@@ -24,30 +24,35 @@
 
  */
 
-import React, { useContext } from 'react'
-import { Icon } from '../../../Icon'
-import { ComboboxContext } from '../Combobox'
-import { SelectOptionObject } from './types'
+import { css, StyledComponent } from 'styled-components'
+import { Divider } from '../../Divider'
+import { ListDivider } from '../ListDivider'
 
-export function getOptionIcon(value: string, options: SelectOptionObject[]) {
-  if (value && options) {
-    const option = options.find((opt) => opt.value === value)
-    return option?.icon ? <Icon color="text1" icon={option.icon} /> : null
+/**
+ * Produces a CSS interpolation for a styled collection component (e.g. Menu, Select)
+ * that applies spacing to the top of the first item, the bottom of the last,
+ * and the top and bottom of each divider.
+ * @param ItemComponent the styled item component in the collection, (e.g. MenuItem, ComboboxOption)
+ */
+export const listPadding = (ItemComponent: StyledComponent<any, any>) => css`
+  > :first-child {
+    margin-top: ${({ theme }) => theme.space.xsmall};
+
+    ${Divider} {
+      display: none;
+    }
   }
-  return null
-}
 
-export interface SelectInputIconProps {
-  options?: SelectOptionObject[]
-}
+  ${ListDivider} + ${ItemComponent},
+  ${ItemComponent} + ${ListDivider} {
+    margin-top: ${({ theme }) => theme.space.xsmall};
+  }
 
-export const SelectInputIcon = ({ options }: SelectInputIconProps) => {
-  const {
-    data: { option, inputValue },
-  } = useContext(ComboboxContext)
-  if (!options || !option) return null
-  // Don't show the icon if the user is filtering
-  if (option.label !== inputValue) return null
+  > :last-child {
+    margin-bottom: ${({ theme }) => theme.space.xsmall};
 
-  return getOptionIcon(option.value, options)
-}
+    ${Divider} {
+      display: none;
+    }
+  }
+`

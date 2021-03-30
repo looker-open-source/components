@@ -251,6 +251,7 @@ export const usePopover = ({
             overflowY="auto"
             borderRadius="inherit"
             ref={contentContainerRef}
+            data-testid="content-container"
           >
             {content}
           </Flex>

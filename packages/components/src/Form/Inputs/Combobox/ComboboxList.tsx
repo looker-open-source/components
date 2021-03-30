@@ -46,13 +46,16 @@ import React, {
   useLayoutEffect,
   useEffect,
 } from 'react'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import once from 'lodash/once'
 import throttle from 'lodash/throttle'
 import { usePopover } from '../../../Popover'
+import { listPadding } from '../../../List/utils'
 import { useResize } from '../../../utils'
 import { ComboboxOptionIndicatorProps } from './types'
 import { ComboboxContext, ComboboxMultiContext } from './ComboboxContext'
+import { ComboboxOption } from './ComboboxOption'
+import { ComboboxMultiOption } from './ComboboxMultiOption'
 import { useBlur } from './utils/useBlur'
 import { useKeyDown } from './utils/useKeyDown'
 import { useListWidths } from './utils/useListWidths'
@@ -136,6 +139,7 @@ const ComboboxListInternal = forwardRef(
       listRef,
       setListScrollPosition,
       setListClientRect,
+      isScrollingRef,
       id,
     } = contextToUse
 
@@ -177,6 +181,7 @@ const ComboboxListInternal = forwardRef(
       <ComboboxUl
         {...props}
         {...widthProps}
+        isMulti={isMulti}
         onKeyDown={handleKeyDown}
         onBlur={handleBlur}
         ref={ref}
@@ -231,17 +236,32 @@ const ComboboxListInternal = forwardRef(
           setListClientRect(containerElement.getBoundingClientRect())
       })
 
+      const updateScrollState = (containerElement: Element) => {
+        setListClientRectOnce(containerElement)
+        setListScrollPosition?.(containerElement.scrollTop)
+      }
+
+      const wait = 50
+      let t: number
       const scrollListener = throttle(() => {
         if (contentContainer) {
-          setListClientRectOnce(contentContainer)
-          setListScrollPosition &&
-            setListScrollPosition(contentContainer.scrollTop)
+          updateScrollState(contentContainer)
+          // Solves issue where scrolling (regular or due to keyboard navigating)
+          // while the mouse is over the list triggers unintentional mouseenter
+          // causing the wrong option to get highlighted, and, if windowing is on
+          // and this option leaves the window, it gets pulled back in via
+          // scrollIntoView()
+          if (isScrollingRef) isScrollingRef.current = true
+          clearTimeout(t)
+          t = setTimeout(() => {
+            if (isScrollingRef) isScrollingRef.current = false
+          }, wait + 1)
         }
-      }, 50)
+      }, wait)
 
       if (contentContainer) {
         contentContainer.addEventListener('scroll', scrollListener)
-        scrollListener()
+        updateScrollState(contentContainer)
       }
 
       return () => {
@@ -262,7 +282,7 @@ ComboboxListInternal.displayName = 'ComboboxListInternal'
 
 export const ComboboxUl = styled.ul.withConfig({
   shouldForwardProp,
-})<ComboboxListProps>`
+})<ComboboxListInternalProps>`
   ${reset}
   ${typography}
   ${space}
@@ -272,20 +292,15 @@ export const ComboboxUl = styled.ul.withConfig({
   outline: none;
   position: relative;
   ${layout}
+
+  ${({ isMulti }) =>
+    listPadding(isMulti ? ComboboxMultiOption : ComboboxOption)}
 `
 
-const isMultiPadding = css<ComboboxListInternalProps>`
-  padding: ${({ isMulti, theme }) => (isMulti ? theme.space.xsmall : 0)} 0;
-`
+export const ComboboxList = (props: ComboboxListProps) => (
+  <ComboboxListInternal {...props} isMulti={false} />
+)
 
-export const ComboboxList = styled(ComboboxListInternal).attrs(() => ({
-  isMulti: false,
-}))`
-  ${isMultiPadding}
-`
-
-export const ComboboxMultiList = styled(ComboboxListInternal).attrs(() => ({
-  isMulti: true,
-}))`
-  ${isMultiPadding}
-`
+export const ComboboxMultiList = (props: ComboboxListProps) => (
+  <ComboboxListInternal {...props} isMulti />
+)

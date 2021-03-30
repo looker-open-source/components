@@ -36,6 +36,7 @@ import React, {
 import styled from 'styled-components'
 import { Icon, IconPlaceholder } from '../../../Icon'
 import { Spinner } from '../../../Spinner'
+import { ListDivider } from '../../../List/ListDivider'
 import { ListItemDetail } from '../../../List/ListItemDetail'
 import { ListItemPreface } from '../../../List/ListItemPreface'
 import { Heading, HeadingProps, Paragraph, Text } from '../../../Text'
@@ -49,11 +50,7 @@ import {
   ComboboxOptionIndicatorProps,
   ComboboxOptionText,
 } from '../Combobox'
-import {
-  SelectOptionGroupProps,
-  SelectOptionObject,
-  SelectOptionProps,
-} from './types'
+import { FlatOption, SelectOptionObject } from './types'
 import { optionsHaveIcons, notInOptions } from './utils/options'
 import { useWindowedOptions } from './utils/useWindowedOptions'
 
@@ -136,10 +133,10 @@ const MultiOptionLayout = (props: OptionLayoutProps) => (
   <OptionLayoutBase {...props} isMulti />
 )
 
-export function SelectOptionWithDescription({
+export const SelectOptionWithDescription = ({
   description,
   preface,
-}: SelectOptionObject) {
+}: SelectOptionObject) => {
   return description || preface ? (
     <div>
       {preface && <ListItemPreface>{preface}</ListItemPreface>}
@@ -169,51 +166,7 @@ const SelectOptionGroupTitle = styled(Heading).attrs<HeadingProps>(() => ({
   padding-top: ${({ theme }) => theme.space.xxsmall};
 `
 
-export const SelectOptionGroup = ({
-  options,
-  label,
-  isMulti,
-}: SelectOptionGroupProps & { isMulti?: boolean }) => {
-  const keyPrefix = useID(options.length.toString())
-  return (
-    <SelectOptionGroupContainer>
-      {label && (
-        <SelectOptionGroupTitle isMulti={isMulti}>
-          <ComboboxOptionIndicator indicator={isMulti && ' '} />
-          {label}
-        </SelectOptionGroupTitle>
-      )}
-      {options.map((option, index) => {
-        const key = `${keyPrefix}-${index}`
-        return isMulti ? (
-          <MultiOptionLayout option={option} key={key} />
-        ) : (
-          <OptionLayout option={option} key={key} />
-        )
-      })}
-    </SelectOptionGroupContainer>
-  )
-}
-
-const SelectOptionGroupContainer = styled.div`
-  border-bottom: 1px solid;
-  border-color: ${({ theme }) => theme.colors.ui2};
-  border-top: 1px solid;
-  padding: ${({ theme }) => theme.space.xsmall} 0;
-  &:first-child,
-  & + div {
-    border-top: none;
-  }
-  &:last-child {
-    border-bottom: none;
-  }
-`
-
 export interface SelectOptionsBaseProps {
-  /**
-   * Options may be flat or grouped, label is option, without it the value is used
-   */
-  options?: SelectOptionProps[]
   /**
    * The user can type in the input (default false to mimic traditional select tag)
    */
@@ -245,15 +198,18 @@ export interface SelectOptionsBaseProps {
 }
 
 export interface SelectOptionsProps extends SelectOptionsBaseProps {
+  flatOptions?: FlatOption[]
+  navigationOptions?: SelectOptionObject[]
   isMulti?: boolean
 }
 
-export function SelectOptions(props: SelectOptionsProps) {
+export const SelectOptions = (props: SelectOptionsProps) => {
   const { t } = useTranslation('SelectOptions')
   const noOptionsLabelText = t('No options')
 
   const {
-    options,
+    flatOptions,
+    navigationOptions,
     isFilterable,
     showCreate,
     formatCreateLabel,
@@ -270,10 +226,17 @@ export function SelectOptions(props: SelectOptionsProps) {
     after,
     scrollToFirst,
     scrollToLast,
-  } = useWindowedOptions(windowedOptions, options, isMulti)
-  const keyPrefix = useID(options?.length.toString())
+  } = useWindowedOptions(
+    windowedOptions,
+    flatOptions,
+    navigationOptions,
+    isMulti
+  )
+  const keyPrefix = useID(flatOptions?.length.toString())
 
-  const hasIcons = useMemo(() => optionsHaveIcons(options), [options])
+  const hasIcons = useMemo(() => optionsHaveIcons(navigationOptions), [
+    navigationOptions,
+  ])
 
   if (isLoading) {
     return (
@@ -283,7 +246,7 @@ export function SelectOptions(props: SelectOptionsProps) {
     )
   }
 
-  const optionsToRender = options && options.slice(start, end + 1)
+  const optionsToRender = flatOptions ? flatOptions.slice(start, end + 1) : []
   const OptionLayoutToUse = isMulti ? MultiOptionLayout : OptionLayout
 
   const noOptions = (
@@ -294,7 +257,7 @@ export function SelectOptions(props: SelectOptionsProps) {
 
   const createOption = isFilterable && showCreate && (
     <SelectCreateOption
-      options={options}
+      options={navigationOptions}
       formatLabel={formatCreateLabel}
       noOptions={noOptions}
       isMulti={isMulti}
@@ -304,9 +267,9 @@ export function SelectOptions(props: SelectOptionsProps) {
 
   return (
     <SelectOptionsContext.Provider value={{ hasIcons }}>
-      {options && scrollToFirst ? (
+      {navigationOptions && scrollToFirst ? (
         <OptionLayoutToUse
-          option={options[0] as SelectOptionObject}
+          option={navigationOptions[0]}
           key={`${keyPrefix}-0`}
           scrollIntoView={true}
         />
@@ -314,33 +277,41 @@ export function SelectOptions(props: SelectOptionsProps) {
       {before}
       {optionsToRender && optionsToRender.length > 0
         ? [
-            ...optionsToRender.map(
-              (option: SelectOptionProps, index: number) => {
-                const optionAsGroup = option as SelectOptionGroupProps
-                // Keep key consistent if options are windowed
-                const correctedIndex = index + start
-                return optionAsGroup.options ? (
-                  <SelectOptionGroup
-                    key={correctedIndex}
-                    {...optionAsGroup}
-                    isMulti={isMulti}
-                  />
-                ) : (
+            ...optionsToRender.map((option, index) => {
+              // Add start to index to keep key consistent if options are windowed
+              const key = `${keyPrefix}-${start + index}`
+              if (option.value) {
+                const OptionLayoutToUse = isMulti
+                  ? MultiOptionLayout
+                  : OptionLayout
+                return (
                   <OptionLayoutToUse
                     option={option as SelectOptionObject}
-                    key={`${keyPrefix}-${correctedIndex}`}
+                    key={key}
                   />
                 )
+              } else if (option.label !== undefined) {
+                return (
+                  <SelectOptionGroupTitle isMulti={isMulti} key={key}>
+                    <ComboboxOptionIndicator indicator={isMulti && ' '} />
+                    {option.label}
+                  </SelectOptionGroupTitle>
+                )
               }
-            ),
+              return <ListDivider key={key} />
+            }),
             createOption,
           ]
         : createOption || noOptions}
       {after}
-      {options && scrollToLast ? (
+      {navigationOptions && scrollToLast ? (
         <OptionLayoutToUse
-          option={options[options.length - 1] as SelectOptionObject}
-          key={`${keyPrefix}-${options.length - 1}`}
+          option={
+            navigationOptions[
+              navigationOptions.length - 1
+            ] as SelectOptionObject
+          }
+          key={`${keyPrefix}-${navigationOptions.length - 1}`}
           scrollIntoView
         />
       ) : null}
@@ -349,18 +320,18 @@ export function SelectOptions(props: SelectOptionsProps) {
 }
 
 interface SelectCreateOptionProps {
-  options?: SelectOptionProps[]
+  options?: SelectOptionObject[]
   noOptions: ReactNode
   formatLabel?: (inputText: string) => ReactNode
   isMulti?: boolean
 }
 
-function SelectCreateOption({
+const SelectCreateOption = ({
   options,
   noOptions,
   formatLabel,
   isMulti,
-}: SelectCreateOptionProps) {
+}: SelectCreateOptionProps) => {
   const { data } = useContext(ComboboxContext)
   const { data: dataMulti } = useContext(ComboboxMultiContext)
 

@@ -33,24 +33,33 @@ import {
   ComboboxUl,
 } from '../../Combobox'
 import { SelectOptions, SelectOptionsProps } from '../SelectOptions'
+import { SelectOptionProps } from '../types'
+import { useFlatOptions } from '../utils/useFlatOptions'
 import { cheeseOptions, iconOptions, optionsWithGroups } from './options'
 
-const Template: Story<SelectOptionsProps> = (args) => (
-  <ComboboxContext.Provider
-    value={{
-      data: {
-        navigationOption: { value: 'cheddar' },
-        option: { value: 'swiss' },
-      },
-      listClientRect: { height: 1000 } as DOMRect,
-      listScrollPosition: 0,
-    }}
-  >
-    <ComboboxUl height="100%">
-      <SelectOptions {...args} />
-    </ComboboxUl>
-  </ComboboxContext.Provider>
-)
+interface StoryProps extends SelectOptionsProps {
+  options: SelectOptionProps[]
+}
+
+const Template: Story<StoryProps> = (args) => {
+  const optionProps = useFlatOptions(args.options)
+  return (
+    <ComboboxContext.Provider
+      value={{
+        data: {
+          navigationOption: { value: 'cheddar' },
+          option: { value: 'swiss' },
+        },
+        listClientRect: { height: 1000 } as DOMRect,
+        listScrollPosition: 0,
+      }}
+    >
+      <ComboboxUl isMulti={false} height="100%">
+        <SelectOptions {...args} {...optionProps} />
+      </ComboboxUl>
+    </ComboboxContext.Provider>
+  )
+}
 
 export const Basic = Template.bind({})
 Basic.args = {
@@ -63,16 +72,21 @@ Icons.args = {
 }
 
 export const Detail = Template.bind({})
+const detailOptions = cheeseOptions.map((option) => ({
+  ...option,
+  detail: '0/50',
+}))
 Detail.args = {
-  options: cheeseOptions.map((option) => ({ ...option, detail: '0/50' })),
+  options: detailOptions,
 }
 
 export const Description = Template.bind({})
+const descriptionOptions = cheeseOptions.map((option) => ({
+  ...option,
+  description: "I'm a little teapot",
+}))
 Description.args = {
-  options: cheeseOptions.map((option) => ({
-    ...option,
-    description: "I'm a little teapot",
-  })),
+  options: descriptionOptions,
 }
 
 export const DescriptionIcon = Template.bind({})
@@ -129,22 +143,25 @@ Loading.parameters = {
 
 export const NoOptions = Template.bind({})
 
-const TemplateMulti: Story<SelectOptionsProps> = (args) => (
-  <ComboboxMultiContext.Provider
-    value={{
-      data: {
-        navigationOption: { value: 'cheddar' },
-        options: [{ value: 'swiss' }],
-      },
-      listClientRect: { height: 1000 } as DOMRect,
-      listScrollPosition: 0,
-    }}
-  >
-    <ComboboxUl height="100%">
-      <SelectOptions {...args} />
-    </ComboboxUl>
-  </ComboboxMultiContext.Provider>
-)
+const TemplateMulti: Story<StoryProps> = (args) => {
+  const optionProps = useFlatOptions(args.options)
+  return (
+    <ComboboxMultiContext.Provider
+      value={{
+        data: {
+          navigationOption: { value: 'cheddar' },
+          options: [{ value: 'swiss' }],
+        },
+        listClientRect: { height: 1000 } as DOMRect,
+        listScrollPosition: 0,
+      }}
+    >
+      <ComboboxUl isMulti height="100%">
+        <SelectOptions {...args} {...optionProps} />
+      </ComboboxUl>
+    </ComboboxMultiContext.Provider>
+  )
+}
 
 export const BasicMulti = TemplateMulti.bind({})
 BasicMulti.args = {

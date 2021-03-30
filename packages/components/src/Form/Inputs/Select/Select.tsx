@@ -42,12 +42,17 @@ import {
   pickAriaAndValidationProps,
 } from './utils/ariaProps'
 import { getOption, getFirstOption } from './utils/options'
+import { useFlatOptions } from './utils/useFlatOptions'
 import { useShouldWindowOptions } from './utils/useWindowedOptions'
-import { SelectOptionObject } from './types'
+import { SelectOptionObject, SelectOptionProps } from './types'
 
 export interface SelectBaseProps
   extends SelectOptionsBaseProps,
     Pick<ComboboxOptionIndicatorProps, 'indicator'> {
+  /**
+   * Options may be flat or grouped, label is optional – without it the value is used
+   */
+  options?: SelectOptionProps[]
   placeholder?: string
   /**
    * The user can clear the current value by clicking an x icon button
@@ -121,11 +126,13 @@ const SelectComponent = forwardRef(
     }: SelectProps,
     ref: Ref<HTMLInputElement>
   ) => {
-    const optionValue = getOption(value, options)
+    const { flatOptions, navigationOptions } = useFlatOptions(options)
+    const optionValue = getOption(value, navigationOptions)
     const nullDefault = (isClearable || placeholder) && !defaultValue
     const defaultOptionValue = nullDefault
       ? undefined
-      : getOption(defaultValue, options) || (options && getFirstOption(options))
+      : getOption(defaultValue, navigationOptions) ||
+        (options && getFirstOption(options))
 
     function handleChange(option?: SelectOptionObject) {
       const newValue = option ? option.value : ''
@@ -144,7 +151,10 @@ const SelectComponent = forwardRef(
 
     const ariaProps = pickAriaAndValidationProps(props)
 
-    const windowedOptions = useShouldWindowOptions(options, windowedOptionsProp)
+    const windowedOptions = useShouldWindowOptions(
+      flatOptions,
+      windowedOptionsProp
+    )
 
     return (
       <Combobox
@@ -158,7 +168,7 @@ const SelectComponent = forwardRef(
       >
         <ComboboxInput
           {...ariaProps}
-          before={<SelectInputIcon options={options} />}
+          before={<SelectInputIcon options={navigationOptions} />}
           disabled={disabled}
           autoFocus={autoFocus}
           placeholder={placeholder}
@@ -183,7 +193,8 @@ const SelectComponent = forwardRef(
             {...listLayout}
           >
             <SelectOptions
-              options={options}
+              flatOptions={flatOptions}
+              navigationOptions={navigationOptions}
               windowedOptions={windowedOptions}
               isFilterable={isFilterable}
               noOptionsLabel={noOptionsLabel}

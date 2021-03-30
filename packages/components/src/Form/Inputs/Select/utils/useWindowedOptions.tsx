@@ -28,44 +28,27 @@ import findIndex from 'lodash/findIndex'
 import React, { useContext, useEffect, useMemo, useRef } from 'react'
 import { getWindowedListBoundaries } from '../../../../utils/getWindowedListBoundaries'
 import { ComboboxContext, ComboboxMultiContext } from '../../Combobox'
-import {
-  SelectOptionGroupProps,
-  SelectOptionObject,
-  SelectOptionProps,
-} from '../types'
+import { FlatOption, SelectOptionObject } from '../types'
 
 export const optionHeight = 28
 
 export function useShouldWindowOptions(
-  options?: SelectOptionProps[],
+  flatOptions?: FlatOption[],
   propsWindowedOptions?: boolean
 ) {
   return useMemo(() => {
-    if (!options) return false
+    if (!flatOptions) return false
     if (propsWindowedOptions === false) return false
     // Without windowedOptions prop, default is to turn it on at 100 options
-    if (options.length < 100 && !propsWindowedOptions) return false
-    // But we can't use windowedOptions if there are groups
-    const groupedOptions = options.find(
-      (option) => (option as SelectOptionGroupProps).options !== undefined
-    )
-    if (groupedOptions) {
-      if (propsWindowedOptions) {
-        // If the windowedOptions prop is true but there are groups, give a warning
-        /* eslint-disable-next-line no-console */
-        console.warn(
-          'The `windowedOptions` prop does not support grouped options.'
-        )
-      }
-      return false
-    }
+    if (flatOptions.length < 100 && !propsWindowedOptions) return false
     return true
-  }, [options, propsWindowedOptions])
+  }, [flatOptions, propsWindowedOptions])
 }
 
 export function useWindowedOptions(
   windowedOptions?: boolean,
-  options?: SelectOptionProps[],
+  flatOptions?: FlatOption[],
+  navigationOptions?: SelectOptionObject[],
   isMulti?: boolean
 ) {
   const context = useContext(ComboboxContext)
@@ -75,27 +58,20 @@ export function useWindowedOptions(
     data: { navigationOption },
     listClientRect,
     listScrollPosition,
+    isScrollingRef,
     optionsRef,
   } = contextToUse
 
   // windowedOptions prop on ComboboxList disables useAddOptionToContext,
   // so we need to add it here to support keyboard nav
 
-  // Let TS know we have no grouped options (making it valid to assign to optionsRef)
-  const flatOptions = options as SelectOptionObject[]
-
   // add options to ComboboxContext.optionsRef
   useEffect(() => {
     // optionsToWindow will be empty if windowedOptions is false, so no need to check windowedOptions as well
-    if (
-      windowedOptions &&
-      flatOptions &&
-      flatOptions.length > 0 &&
-      optionsRef
-    ) {
-      optionsRef.current = [...flatOptions]
+    if (navigationOptions?.length && optionsRef) {
+      optionsRef.current = navigationOptions
     }
-  }, [flatOptions, optionsRef, windowedOptions])
+  }, [navigationOptions, optionsRef])
 
   // Get the windowed list boundaries
   const containerHeight = listClientRect && listClientRect.height
@@ -105,6 +81,7 @@ export function useWindowedOptions(
         enabled: windowedOptions,
         height: containerHeight,
         itemHeight: optionHeight,
+        // For groups, add 2 for divider & header
         length: flatOptions ? flatOptions.length : 0,
         scrollPosition: listScrollPosition,
       }),
@@ -119,7 +96,7 @@ export function useWindowedOptions(
   const previouslyWindowedRef = useRef<boolean>()
   if (windowedOptions && !previouslyWindowedRef.current) {
     if (navigationOption) {
-      const selectedIndex = findIndex(options, [
+      const selectedIndex = findIndex(flatOptions, [
         'value',
         navigationOption.value,
       ])
@@ -135,16 +112,15 @@ export function useWindowedOptions(
   // we need to render the top or bottom of the list (which are outside our "window") and scroll there
   let scrollToFirst = false
   let scrollToLast = false
-  if (
-    windowedOptions &&
-    flatOptions &&
-    flatOptions.length &&
-    navigationOption
-  ) {
-    scrollToFirst = start > 0 && navigationOption.value === flatOptions[0].value
+  if (flatOptions?.length && navigationOptions?.length && navigationOption) {
+    scrollToFirst =
+      !isScrollingRef?.current &&
+      start > 0 &&
+      navigationOption.value === navigationOptions[0].value
     scrollToLast =
       end < flatOptions.length - 1 &&
-      navigationOption.value === flatOptions[flatOptions.length - 1].value
+      navigationOption.value ===
+        navigationOptions[navigationOptions.length - 1].value
   }
   const afterLength = flatOptions ? flatOptions.length - 1 - end : 0
 

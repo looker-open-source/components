@@ -24,17 +24,6 @@
 
  */
 
-import React, { FC } from 'react'
-import styled from 'styled-components'
-import { SpaceProps, space } from '@looker/design-tokens'
-import { Divider } from '../Divider'
+import { ListDivider } from '../List'
 
-const MenuDividerLayout: FC<{}> = (props) => (
-  <li {...props} aria-hidden="true">
-    <Divider />
-  </li>
-)
-
-export const MenuDivider = styled(MenuDividerLayout)<SpaceProps>`
-  ${space}
-`
+export const MenuDivider = ListDivider

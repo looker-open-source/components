@@ -36,6 +36,7 @@ import {
 } from '../Select/utils/ariaProps'
 import { getMatchingOption } from '../Select/utils/options'
 import { useShouldWindowOptions } from '../Select/utils/useWindowedOptions'
+import { useFlatOptions } from '../Select/utils/useFlatOptions'
 
 export interface InputSearchProps
   extends Omit<
@@ -129,7 +130,8 @@ const InputSearchLayout = forwardRef(
     const [value, setValue] = useState(defaultValue || '')
     const valueToUse = isControlled ? controlledValue : value
 
-    const matchingOption = getMatchingOption(valueToUse, options)
+    const { flatOptions, navigationOptions } = useFlatOptions(options)
+    const matchingOption = getMatchingOption(valueToUse, navigationOptions)
     const optionValue = matchingOption || { value: '' }
 
     function updateValue(newValue: string) {
@@ -161,7 +163,10 @@ const InputSearchLayout = forwardRef(
 
     const ariaProps = pickAriaAndValidationProps(props)
 
-    const windowedOptions = useShouldWindowOptions(options, windowedOptionsProp)
+    const windowedOptions = useShouldWindowOptions(
+      flatOptions,
+      windowedOptionsProp
+    )
 
     return (
       <Combobox
@@ -205,7 +210,8 @@ const InputSearchLayout = forwardRef(
             {...listLayout}
           >
             <SelectOptions
-              options={options}
+              flatOptions={flatOptions}
+              navigationOptions={navigationOptions}
               windowedOptions={windowedOptions}
               isFilterable
               noOptionsLabel={noOptionsLabel}

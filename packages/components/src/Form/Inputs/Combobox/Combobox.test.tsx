@@ -246,6 +246,10 @@ describe('<Combobox/> with children', () => {
     ['option level (Combobox)', GetIndicatorJSX(false)],
     ['option level (ComboboxMulti)', GetIndicatorJSXMulti(false)],
   ])('Customize the indicator at the %s', (_, getJSX) => {
+    const rafSpy = jest
+      .spyOn(window, 'requestAnimationFrame')
+      .mockImplementation((cb: any) => cb())
+
     const indicator = jest.fn()
     const { queryByTitle, getByText, getByPlaceholderText } = renderWithTheme(
       getJSX(indicator)
@@ -286,6 +290,7 @@ describe('<Combobox/> with children', () => {
 
     // Close popover to silence act() warning
     fireEvent.click(document)
+    rafSpy.mockRestore()
   })
 
   test('Does not highlight current selected value', () => {

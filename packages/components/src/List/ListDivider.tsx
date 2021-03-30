@@ -24,30 +24,17 @@
 
  */
 
-import React, { useContext } from 'react'
-import { Icon } from '../../../Icon'
-import { ComboboxContext } from '../Combobox'
-import { SelectOptionObject } from './types'
+import React, { FC } from 'react'
+import styled from 'styled-components'
+import { SpaceProps, space } from '@looker/design-tokens'
+import { Divider } from '../Divider'
 
-export function getOptionIcon(value: string, options: SelectOptionObject[]) {
-  if (value && options) {
-    const option = options.find((opt) => opt.value === value)
-    return option?.icon ? <Icon color="text1" icon={option.icon} /> : null
-  }
-  return null
-}
+const ListDividerLayout: FC<{}> = (props) => (
+  <li {...props} aria-hidden="true">
+    <Divider />
+  </li>
+)
 
-export interface SelectInputIconProps {
-  options?: SelectOptionObject[]
-}
-
-export const SelectInputIcon = ({ options }: SelectInputIconProps) => {
-  const {
-    data: { option, inputValue },
-  } = useContext(ComboboxContext)
-  if (!options || !option) return null
-  // Don't show the icon if the user is filtering
-  if (option.label !== inputValue) return null
-
-  return getOptionIcon(option.value, options)
-}
+export const ListDivider = styled(ListDividerLayout)<SpaceProps>`
+  ${space}
+`
