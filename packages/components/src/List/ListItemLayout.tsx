@@ -85,9 +85,9 @@ export const listItemIconCSS = css<ListItemLayoutProps>`
 `
 
 export const ListItemLayout = styled(ListItemLayoutInternal).attrs(
-  ({ color, disabled }) => ({
+  ({ color = 'text2', disabled }) => ({
     // Determines icon color
-    color: disabled ? 'text1' : color || 'text2',
+    color: disabled ? 'text1' : color,
   })
 )<ListItemLayoutProps>`
   ${(props) => listItemPadding({ ...props })}
