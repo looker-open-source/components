@@ -33,7 +33,7 @@ export const ListItemDetail = styled.div.attrs<PaddingProps>((props) => ({
 }))<PaddingProps>`
   ${padding}
   align-items: center;
-  color: ${({ theme: { colors } }) => colors.text1};
+  color: ${({ theme: { colors } }) => colors.text2};
   display: flex;
   font-family: ${({ theme }) => theme.fonts.body};
   font-size: ${({ theme }) => theme.fontSizes.xsmall};
