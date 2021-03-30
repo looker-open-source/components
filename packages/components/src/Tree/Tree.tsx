@@ -73,7 +73,7 @@ const TreeLayout: FC<TreeProps> = ({
   const depth = treeContext.depth ? treeContext.depth : startingDepth
 
   const density = propsDensity || treeContext.density
-  const { iconSize } = listItemDimensions(density)
+  const { iconGap, iconSize } = listItemDimensions(density)
 
   const { accessory, content, hoverDisclosure } = getDetailOptions(propsDetail)
 
@@ -163,6 +163,7 @@ const TreeLayout: FC<TreeProps> = ({
         disabled={disabled}
         dividers={dividers}
         hovered={hovered}
+        iconGap={iconGap}
         indicatorSize={iconSize}
         keyColor={useKeyColor}
         selected={selected}

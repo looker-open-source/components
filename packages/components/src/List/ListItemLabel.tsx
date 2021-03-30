@@ -26,13 +26,20 @@
 
 import { CompatibleHTMLProps, shouldForwardProp } from '@looker/design-tokens'
 import React, { FC } from 'react'
-import styled from 'styled-components'
+import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
 import { ListItemRole, ListItemStatefulWithHoveredProps } from './types'
 import { listItemBackgroundColor } from './utils'
 
 export const ListItemLabelButton = styled.button``
 export const ListItemLabelLink = styled.a``
 export const ListItemLabelDiv = styled.div``
+
+// Use listItemLabelCSS to target the internal button / link / div CSS of ListItem
+export const listItemLabelCSS = (style: FlattenSimpleInterpolation) => css`
+  > ${ListItemLabelButton}, > ${ListItemLabelLink}, > ${ListItemLabelDiv} {
+    ${style}
+  }
+`
 
 const listItemLabelElement = (itemRole: ListItemRole, disabled?: boolean) => {
   if (!disabled && itemRole === 'link') return ListItemLabelLink
