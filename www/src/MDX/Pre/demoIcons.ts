@@ -24,6 +24,7 @@
 
  */
 
+// eslint-disable-next-line no-restricted-imports
 import {
   Account,
   AnalyticsApp,
@@ -166,7 +167,7 @@ const ours = {
   VisTable,
 }
 
-// eslint-disable-next-line import/first
+// eslint-disable-next-line import/first, no-restricted-imports
 import {
   Add,
   AddCircle,

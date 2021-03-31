@@ -26,8 +26,10 @@
 
 import React from 'react'
 import { Icon, Paragraph, SpaceVertical } from '@looker/components'
+/* eslint-disable no-restricted-imports */
 import { iconsList } from '@looker/icons'
 import * as AllIcons from '@looker/icons'
+/* eslint-enable no-restricted-imports */
 import CopyToClipboard from 'react-copy-to-clipboard'
 import styled from 'styled-components'
 
