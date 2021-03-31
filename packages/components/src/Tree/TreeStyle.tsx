@@ -25,6 +25,8 @@
  */
 
 import styled, { css } from 'styled-components'
+import { StyledIconBase } from '@styled-icons/styled-icon'
+import { SpacingSizes } from '@looker/design-tokens'
 import {
   Accordion,
   AccordionContent,
@@ -33,12 +35,8 @@ import {
 import { listItemBackgroundColor } from '../List/utils'
 import { ListItemStatefulWithHoveredProps } from '../List/types'
 import { List, ListItem } from '../List'
-import {
-  ListItemLabelLink,
-  ListItemLabelDiv,
-  ListItemLabelButton,
-} from '../List/ListItemLabel'
-import { IconSize } from '../Icon'
+import { listItemLabelCSS } from '../List/ListItemLabel'
+import { IconPlaceholder, IconSize } from '../Icon'
 import { TreeItem } from './TreeItem'
 import { TreeBranch } from './TreeBranch'
 import { generateIndent, generateTreeBorder } from './utils'
@@ -48,15 +46,15 @@ interface TreeStyleProps extends ListItemStatefulWithHoveredProps {
   branchFontWeight?: boolean
   depth: number
   dividers?: boolean
+  iconGap: SpacingSizes
   indicatorSize: IconSize
 }
 
 export const TreeItemInner = styled(TreeItem)`
-  > button,
-  > a {
+  ${listItemLabelCSS(css`
     background-color: transparent;
     padding-left: 0;
-  }
+  `)}
 `
 
 export const TreeItemInnerDetail = styled.div``
@@ -79,6 +77,17 @@ export const TreeStyle = styled.div<TreeStyleProps>`
   color: ${({ theme }) => theme.colors.text5};
   flex-shrink: 2;
   min-width: 0;
+
+  ${ListItem} {
+    ${({ iconGap, theme }) =>
+      listItemLabelCSS(css`
+        > svg,
+        > ${StyledIconBase}, > ${IconPlaceholder} {
+          /* The -2px gets the icon gap to match design specs */
+          margin-right: calc(${theme.space[iconGap]} - 2px);
+        }
+      `)}
+  }
 
   > ${Accordion} {
     > ${AccordionContent} {
@@ -107,10 +116,8 @@ export const TreeStyle = styled.div<TreeStyleProps>`
 
   > ${Accordion} > ${AccordionContent} > ${List} {
     > ${ListItem} {
-      > ${ListItemLabelButton}, > ${ListItemLabelLink}, > ${ListItemLabelDiv} {
-        ${({ depth, indicatorSize, theme }) =>
-          generateIndent(depth + 2, indicatorSize, theme)}
-      }
+      ${({ depth, indicatorSize, theme }) =>
+        listItemLabelCSS(generateIndent(depth + 2, indicatorSize, theme))}
     }
 
     > ${TreeBranch} {
@@ -124,10 +131,8 @@ export const TreeStyle = styled.div<TreeStyleProps>`
    */
   > ${List} {
     > ${ListItem} {
-      > ${ListItemLabelButton}, > ${ListItemLabelLink}, > ${ListItemLabelDiv} {
-        ${({ depth, indicatorSize, theme }) =>
-          generateIndent(depth + 2, indicatorSize, theme)}
-      }
+      ${({ depth, indicatorSize, theme }) =>
+        listItemLabelCSS(generateIndent(depth + 2, indicatorSize, theme))}
     }
 
     > ${TreeBranch} {
