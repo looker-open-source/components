@@ -27,7 +27,7 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
 import { omitStyledProps } from '@looker/design-tokens'
-import { PersonOutline } from '@styled-icons/material'
+import { PersonOutline } from '@styled-icons/material/PersonOutline'
 import { StyledIconBase } from '@styled-icons/styled-icon'
 import { IconType } from '../Icon'
 import { AvatarUser, AvatarUserProps } from './AvatarUser'

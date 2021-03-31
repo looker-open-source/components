@@ -26,7 +26,8 @@
 
 import React, { FC, useContext } from 'react'
 import { ThemeContext } from 'styled-components'
-import { ArrowBack, ArrowForward } from '@styled-icons/material-rounded'
+import { ArrowBack } from '@styled-icons/material-rounded/ArrowBack'
+import { ArrowForward } from '@styled-icons/material-rounded/ArrowForward'
 import { Heading } from '../Text'
 import { Space } from '../Layout'
 import { IconButton } from '../Button'

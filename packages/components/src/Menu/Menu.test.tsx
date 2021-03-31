@@ -35,7 +35,7 @@ import {
 import userEvent from '@testing-library/user-event'
 import React, { useRef } from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { Favorite } from '@styled-icons/material-outlined'
+import { Favorite } from '@styled-icons/material-outlined/Favorite'
 import { Button } from '../Button'
 import { Tooltip } from '../Tooltip'
 import { Menu, MenuItem } from './'

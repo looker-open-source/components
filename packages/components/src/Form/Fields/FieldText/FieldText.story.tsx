@@ -24,10 +24,11 @@
 
  */
 
-import { Account } from '@looker/icons'
+import { Account } from '@looker/icons/src/Account'
 import { Story } from '@storybook/react/types-6-0'
-import { AddAlert, Favorite } from '@styled-icons/material'
-import { Settings } from '@styled-icons/material-outlined'
+import { AddAlert } from '@styled-icons/material/AddAlert'
+import { Favorite } from '@styled-icons/material/Favorite'
+import { Settings } from '@styled-icons/material-outlined/Settings'
 import React from 'react'
 import { Button } from '../../../Button'
 import { Icon } from '../../../Icon'

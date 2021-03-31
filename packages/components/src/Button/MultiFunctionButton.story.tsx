@@ -25,7 +25,8 @@
  */
 
 import React, { useState } from 'react'
-import { Add, Check } from '@styled-icons/material'
+import { Add } from '@styled-icons/material/Add'
+import { Check } from '@styled-icons/material/Check'
 import { MultiFunctionButton } from './MultiFunctionButton'
 import { Button, ButtonTransparent, IconButton } from '.'
 

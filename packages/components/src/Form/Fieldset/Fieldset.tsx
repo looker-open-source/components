@@ -33,7 +33,8 @@ import {
   SpacingSizes,
   omitStyledProps,
 } from '@looker/design-tokens'
-import { ArrowDropDown, ArrowRight } from '@styled-icons/material'
+import { ArrowDropDown } from '@styled-icons/material/ArrowDropDown'
+import { ArrowRight } from '@styled-icons/material/ArrowRight'
 import { Space, SpaceVertical } from '../../Layout'
 import { SimpleLayoutProps, simpleLayoutCSS } from '../../Layout/utils/simple'
 import { Legend } from '../Legend'

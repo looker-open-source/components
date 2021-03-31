@@ -76,6 +76,32 @@ module.exports = {
     'import/order': 'error',
     indentation: 'off',
     'no-console': 'warn',
+    'no-restricted-imports': [
+      'error',
+      {
+        paths: [
+          {
+            message: "Please import icons from '@looker/icons/src/SomeIcon'",
+            name: '@looker/icons',
+          },
+          {
+            message:
+              "Please import icons from '@styled-icons/material/SomeIcon'",
+            name: '@styled-icons/material',
+          },
+          {
+            message:
+              "Please import icons from '@styled-icons/material-outlined/SomeIcon'",
+            name: '@looker/material-outlined',
+          },
+          {
+            message:
+              "Please import icons from '@styled-icons/material-rounded/SomeIcon'",
+            name: '@looker/material-rounded',
+          },
+        ],
+      },
+    ],
     'no-undef': 'off', // Not needed with TS around
     'prettier/prettier': 'error',
     'react-hooks/exhaustive-deps': 'warn',

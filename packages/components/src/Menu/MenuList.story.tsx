@@ -26,7 +26,9 @@
 
 import React, { FC, Fragment } from 'react'
 import { Story } from '@storybook/react/types-6-0'
-import { Create, DateRange, Undo } from '@styled-icons/material-outlined'
+import { Create } from '@styled-icons/material-outlined/Create'
+import { DateRange } from '@styled-icons/material-outlined/DateRange'
+import { Undo } from '@styled-icons/material-outlined/Undo'
 import { Box, Grid, Space } from '../Layout'
 import { DensityRamp } from '../List/types'
 import { MenuHeading, MenuList, MenuItem, MenuItemProps, MenuDivider } from '.'

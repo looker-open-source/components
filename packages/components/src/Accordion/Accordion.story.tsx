@@ -26,8 +26,9 @@
 
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { HelpOutline } from '@styled-icons/material'
-import { ChevronLeft, ExpandMore } from '@styled-icons/material-rounded'
+import { ChevronLeft } from '@styled-icons/material-rounded/ChevronLeft'
+import { ExpandMore } from '@styled-icons/material-rounded/ExpandMore'
+import { HelpOutline } from '@styled-icons/material/HelpOutline'
 import { Badge } from '../Badge'
 import { Box, Space } from '../Layout'
 import { Fieldset, FieldText } from '../Form'

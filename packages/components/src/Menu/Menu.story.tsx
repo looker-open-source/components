@@ -23,34 +23,27 @@
  SOFTWARE.
 
  */
-
-import {
-  Account,
-  IdeFileDashboard,
-  IdeFileDocument,
-  IdeFileGeneric,
-  LogoRings,
-} from '@looker/icons'
-import {
-  AddAlert,
-  Chat,
-  Create,
-  DeleteOutline,
-  Download,
-  Favorite,
-  MoreVert,
-  PersonOutline,
-  PieChart,
-  Refresh,
-  TableChart,
-  Undo,
-  VerifiedUser,
-} from '@styled-icons/material'
-import {
-  Create as CreateOutline,
-  CreateNewFolder,
-  Explore as ExploreOutline,
-} from '@styled-icons/material-outlined'
+import { Account } from '@looker/icons/src/Account'
+import { IdeFileDashboard } from '@looker/icons/src/IdeFileDashboard'
+import { IdeFileDocument } from '@looker/icons/src/IdeFileDocument'
+import { IdeFileGeneric } from '@looker/icons/src/IdeFileGeneric'
+import { LogoRings } from '@looker/icons/src/LogoRings'
+import { AddAlert } from '@styled-icons/material/AddAlert'
+import { Chat } from '@styled-icons/material/Chat'
+import { Create } from '@styled-icons/material/Create'
+import { DeleteOutline } from '@styled-icons/material/DeleteOutline'
+import { Download } from '@styled-icons/material/Download'
+import { Favorite } from '@styled-icons/material/Favorite'
+import { MoreVert } from '@styled-icons/material/MoreVert'
+import { PersonOutline } from '@styled-icons/material/PersonOutline'
+import { PieChart } from '@styled-icons/material/PieChart'
+import { Refresh } from '@styled-icons/material/Refresh'
+import { TableChart } from '@styled-icons/material/TableChart'
+import { Undo } from '@styled-icons/material/Undo'
+import { VerifiedUser } from '@styled-icons/material/VerifiedUser'
+import { Create as CreateOutline } from '@styled-icons/material-outlined/Create'
+import { CreateNewFolder } from '@styled-icons/material-outlined/CreateNewFolder'
+import { Explore as ExploreOutline } from '@styled-icons/material-outlined/Explore'
 import React, {
   forwardRef,
   Fragment,

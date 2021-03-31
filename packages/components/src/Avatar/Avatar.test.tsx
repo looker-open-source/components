@@ -25,8 +25,8 @@
  */
 
 import { renderWithTheme } from '@looker/components-test-utils'
-import { Account } from '@looker/icons'
-import { Code } from '@styled-icons/material'
+import { Account } from '@looker/icons/src/Account'
+import { Code } from '@styled-icons/material/Code'
 import { screen, fireEvent } from '@testing-library/react'
 import React from 'react'
 import { AvatarCombo } from './AvatarCombo'

@@ -24,6 +24,7 @@
 
  */
 
+// eslint-disable-next-line no-restricted-imports
 import {
   Account,
   AnalyticsApp,
@@ -166,7 +167,7 @@ const ours = {
   VisTable,
 }
 
-// eslint-disable-next-line import/first
+// eslint-disable-next-line import/first, no-restricted-imports
 import {
   Add,
   AddCircle,
@@ -199,7 +200,7 @@ import {
   Warning,
 } from '@styled-icons/material'
 // eslint-disable-next-line import/first
-import { Favorite as FavoriteOutline } from '@styled-icons/material-outlined'
+import { Favorite as FavoriteOutline } from '@styled-icons/material-outlined/Favorite'
 
 const others = {
   Add,

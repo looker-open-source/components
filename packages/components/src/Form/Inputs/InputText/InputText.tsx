@@ -33,7 +33,7 @@ import {
   layout,
 } from '@looker/design-tokens'
 import { StyledIconBase } from '@styled-icons/styled-icon'
-import { Error } from '@styled-icons/material'
+import { Error } from '@styled-icons/material/Error'
 import React, { forwardRef, MouseEvent, ReactNode, Ref, useRef } from 'react'
 import styled, { css } from 'styled-components'
 import {

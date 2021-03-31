@@ -24,22 +24,24 @@
 
  */
 
-import { ChartArea, ChartBar, ChartBoxPlot, ChartTimeline } from '@looker/icons'
-import {
-  BarChart,
-  BubbleChart,
-  DonutLarge,
-  FilterList,
-  LineStyle,
-  Looks6,
-  Map,
-  MultilineChart,
-  PieChart,
-  ShowChart,
-  TableChart,
-  Toc,
-  WaterfallChart,
-} from '@styled-icons/material'
+import { ChartArea } from '@looker/icons/src/ChartArea'
+import { ChartBar } from '@looker/icons/src/ChartBar'
+import { ChartBoxPlot } from '@looker/icons/src/ChartBoxPlot'
+import { ChartTimeline } from '@looker/icons/src/ChartTimeline'
+import { BarChart } from '@styled-icons/material/BarChart'
+import { BubbleChart } from '@styled-icons/material/BubbleChart'
+import { DonutLarge } from '@styled-icons/material/DonutLarge'
+import { FilterList } from '@styled-icons/material/FilterList'
+import { LineStyle } from '@styled-icons/material/LineStyle'
+import { Looks6 } from '@styled-icons/material/Looks6'
+import { Map } from '@styled-icons/material/Map'
+import { MultilineChart } from '@styled-icons/material/MultilineChart'
+import { PieChart } from '@styled-icons/material/PieChart'
+import { ShowChart } from '@styled-icons/material/ShowChart'
+import { TableChart } from '@styled-icons/material/TableChart'
+import { Toc } from '@styled-icons/material/Toc'
+import { WaterfallChart } from '@styled-icons/material/WaterfallChart'
+
 import React from 'react'
 
 export const options = [

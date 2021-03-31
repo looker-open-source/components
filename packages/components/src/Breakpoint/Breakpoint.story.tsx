@@ -24,7 +24,7 @@
 
  */
 import React, { FC } from 'react'
-import { LookerLogo } from '@looker/icons'
+import { LookerLogo } from '@looker/icons/src/LookerLogo'
 import { Story } from '@storybook/react/types-6-0'
 import {
   SpaceProps,
@@ -34,7 +34,7 @@ import {
   TextColorProps,
   textColor,
 } from '@looker/design-tokens'
-import { Menu } from '@styled-icons/material'
+import { Menu } from '@styled-icons/material/Menu'
 import styled from 'styled-components'
 import { VIEWPORT_MAP } from '../utils-storybook'
 import { Card, CardContent, CardMedia } from '../Card'

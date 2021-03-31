@@ -30,7 +30,7 @@ import {
   omitStyledProps,
   TypographyProps,
 } from '@looker/design-tokens'
-import { Close } from '@styled-icons/material'
+import { Close } from '@styled-icons/material/Close'
 import noop from 'lodash/noop'
 import isUndefined from 'lodash/isUndefined'
 import React, {

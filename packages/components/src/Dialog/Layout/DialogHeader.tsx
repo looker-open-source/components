@@ -36,7 +36,7 @@ import {
   FontSizeProps,
   FontWeightProps,
 } from '@looker/design-tokens'
-import { Close } from '@styled-icons/material'
+import { Close } from '@styled-icons/material/Close'
 import { IconButton } from '../../Button'
 import { Heading } from '../../Text'
 import { DialogContext } from '../DialogContext'

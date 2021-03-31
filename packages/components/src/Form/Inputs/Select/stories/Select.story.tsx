@@ -25,8 +25,9 @@
  */
 
 import { Story } from '@storybook/react/types-6-0'
-import { ChartBar } from '@looker/icons'
-import { PieChart, TableChart } from '@styled-icons/material'
+import { ChartBar } from '@looker/icons/src/ChartBar'
+import { PieChart } from '@styled-icons/material/PieChart'
+import { TableChart } from '@styled-icons/material/TableChart'
 import React from 'react'
 import { Select, SelectProps } from '../Select'
 import { options1kGrouped } from './options1k'

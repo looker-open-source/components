@@ -26,10 +26,12 @@
 
 import React, { FC, ReactNode, useState } from 'react'
 import styled from 'styled-components'
-import { Pivot } from '@looker/icons'
-import { FilterList, MoreVert } from '@styled-icons/material'
-import { Info } from '@styled-icons/material-outlined'
-import { ChevronRight, ExpandMore } from '@styled-icons/material-rounded'
+import { Pivot } from '@looker/icons/src/Pivot'
+import { FilterList } from '@styled-icons/material/FilterList'
+import { MoreVert } from '@styled-icons/material/MoreVert'
+import { Info } from '@styled-icons/material-outlined/Info'
+import { ChevronRight } from '@styled-icons/material-rounded/ChevronRight'
+import { ExpandMore } from '@styled-icons/material-rounded/ExpandMore'
 import {
   IconButton,
   Menu,

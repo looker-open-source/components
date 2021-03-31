@@ -26,7 +26,8 @@
 
 import React, { useState } from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { Delete, Link as LinkIcon } from '@styled-icons/material'
+import { Delete } from '@styled-icons/material/Delete'
+import { Link as LinkIcon } from '@styled-icons/material/Link'
 import { fireEvent, screen } from '@testing-library/react'
 import { IconButton } from '../Button'
 import { FieldFilter, InputFilters } from '../Form'

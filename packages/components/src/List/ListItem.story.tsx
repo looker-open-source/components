@@ -25,10 +25,10 @@
  */
 
 import React, { FC } from 'react'
-import { Pivot } from '@looker/icons'
+import { Pivot } from '@looker/icons/src/Pivot'
 import { Story } from '@storybook/react/types-6-0'
-import { PersonOutline } from '@styled-icons/material'
-import { DateRange } from '@styled-icons/material-outlined'
+import { PersonOutline } from '@styled-icons/material/PersonOutline'
+import { DateRange } from '@styled-icons/material-outlined/DateRange'
 import { IconButton } from '../Button'
 import { Text } from '../Text'
 import { Grid } from '../Layout/Grid'

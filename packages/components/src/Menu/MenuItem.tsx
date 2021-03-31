@@ -27,7 +27,7 @@
 import styled from 'styled-components'
 import React, { forwardRef, Ref, useContext } from 'react'
 import { size } from '@looker/design-tokens'
-import { ArrowRight } from '@styled-icons/material'
+import { ArrowRight } from '@styled-icons/material/ArrowRight'
 import { DialogContext } from '../Dialog'
 import { ListItem, ListItemProps } from '../List'
 import { useForkedRef, useID } from '../utils'

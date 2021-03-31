@@ -25,8 +25,10 @@
  */
 
 import { Icon, IconButton, Tooltip } from '@looker/components'
-import { Assignment, Warning } from '@styled-icons/material'
-import { ExpandLess, ExpandMore } from '@styled-icons/material-rounded'
+import { Assignment } from '@styled-icons/material/Assignment'
+import { Warning } from '@styled-icons/material/Warning'
+import { ExpandLess } from '@styled-icons/material-rounded/ExpandLess'
+import { ExpandMore } from '@styled-icons/material-rounded/ExpandMore'
 import { PrismTheme, Language } from 'prism-react-renderer'
 import React, { FC, ReactNode, useState, useCallback } from 'react'
 import CopyToClipboard from 'react-copy-to-clipboard'
