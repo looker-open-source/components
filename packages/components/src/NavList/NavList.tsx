@@ -50,7 +50,6 @@ export const NavList = styled(List)`
   ${AccordionDisclosureStyle}, ${ListItemLabel} {
     border-bottom-right-radius: 5rem;
     border-top-right-radius: 5rem;
-    color: ${({ theme }) => theme.colors.key};
 
     &[aria-selected='true'] {
       background-color: ${({ theme }) => theme.colors.keySubtle};
