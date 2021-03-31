@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.3](https://github.com/looker-open-source/components/compare/v1.1.2...v1.1.3) (2021-03-31)
+
+
+### Bug Fixes
+
+* Remove all internal references from @looker/components to [@looke](https://github.com/looke)… ([#2149](https://github.com/looker-open-source/components/issues/2149)) ([9c368a6](https://github.com/looker-open-source/components/commit/9c368a6777dee2e5556002c8d2673647e6fec915))
+
+
+
+
+
 ## [1.1.2](https://github.com/looker-open-source/components/compare/v1.1.1...v1.1.2) (2021-03-31)
 
 **Note:** Version bump only for package @looker/components-theme-editor
