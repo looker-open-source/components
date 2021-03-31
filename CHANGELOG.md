@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.2](https://github.com/looker-open-source/components/compare/v1.1.1...v1.1.2) (2021-03-31)
+
+
+### Bug Fixes
+
+* **ToggleSwitch:** Remove verticalAlign / inline-block to improve layout ([#2128](https://github.com/looker-open-source/components/issues/2128)) ([47ea669](https://github.com/looker-open-source/components/commit/47ea6690e75a6d3e9dc11f3bd5fc37635b97a46f))
+* Revert changes to Babel build format ([#2145](https://github.com/looker-open-source/components/issues/2145)) ([a27f8c6](https://github.com/looker-open-source/components/commit/a27f8c68b5ddc43e6f1436519063ad548d94a01d))
+
+
+
+
+
 ## [1.1.1](https://github.com/looker-open-source/components/compare/v1.1.0...v1.1.1) (2021-03-31)
 
 
