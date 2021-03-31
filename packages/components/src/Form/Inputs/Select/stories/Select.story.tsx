@@ -25,7 +25,7 @@
  */
 
 import { Story } from '@storybook/react/types-6-0'
-import { ChartBar } from '@looker/icons/src/ChartBar'
+import { ChartBar } from '@looker/icons/lib/ChartBar'
 import { PieChart } from '@styled-icons/material/PieChart'
 import { TableChart } from '@styled-icons/material/TableChart'
 import React from 'react'

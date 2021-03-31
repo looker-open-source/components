@@ -25,7 +25,7 @@
  */
 
 import React, { FC } from 'react'
-import { Pivot } from '@looker/icons/src/Pivot'
+import { Pivot } from '@looker/icons/lib/Pivot'
 import { Story } from '@storybook/react/types-6-0'
 import { PersonOutline } from '@styled-icons/material/PersonOutline'
 import { DateRange } from '@styled-icons/material-outlined/DateRange'

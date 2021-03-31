@@ -24,10 +24,10 @@
 
  */
 
-import { ChartArea } from '@looker/icons/src/ChartArea'
-import { ChartBar } from '@looker/icons/src/ChartBar'
-import { ChartBoxPlot } from '@looker/icons/src/ChartBoxPlot'
-import { ChartTimeline } from '@looker/icons/src/ChartTimeline'
+import { ChartArea } from '@looker/icons/lib/ChartArea'
+import { ChartBar } from '@looker/icons/lib/ChartBar'
+import { ChartBoxPlot } from '@looker/icons/lib/ChartBoxPlot'
+import { ChartTimeline } from '@looker/icons/lib/ChartTimeline'
 import { BarChart } from '@styled-icons/material/BarChart'
 import { BubbleChart } from '@styled-icons/material/BubbleChart'
 import { DonutLarge } from '@styled-icons/material/DonutLarge'

@@ -23,11 +23,11 @@
  SOFTWARE.
 
  */
-import { Account } from '@looker/icons/src/Account'
-import { IdeFileDashboard } from '@looker/icons/src/IdeFileDashboard'
-import { IdeFileDocument } from '@looker/icons/src/IdeFileDocument'
-import { IdeFileGeneric } from '@looker/icons/src/IdeFileGeneric'
-import { LogoRings } from '@looker/icons/src/LogoRings'
+import { Account } from '@looker/icons/lib/Account'
+import { IdeFileDashboard } from '@looker/icons/lib/IdeFileDashboard'
+import { IdeFileDocument } from '@looker/icons/lib/IdeFileDocument'
+import { IdeFileGeneric } from '@looker/icons/lib/IdeFileGeneric'
+import { LogoRings } from '@looker/icons/lib/LogoRings'
 import { AddAlert } from '@styled-icons/material/AddAlert'
 import { Chat } from '@styled-icons/material/Chat'
 import { Create } from '@styled-icons/material/Create'

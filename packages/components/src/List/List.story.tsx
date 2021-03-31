@@ -26,7 +26,7 @@
 
 import React, { FC, useState } from 'react'
 import { Story } from '@storybook/react/types-6-0'
-import { Pivot } from '@looker/icons/src/Pivot'
+import { Pivot } from '@looker/icons/lib/Pivot'
 import { DateRange } from '@styled-icons/material-outlined/DateRange'
 import { Box, Grid, Space } from '../Layout'
 import { DensityRamp } from './types'

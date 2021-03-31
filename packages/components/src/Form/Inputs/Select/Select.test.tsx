@@ -28,7 +28,7 @@ import {
   getAllComboboxOptionText,
   renderWithTheme,
 } from '@looker/components-test-utils'
-import { ChartBar } from '@looker/icons/src/ChartBar'
+import { ChartBar } from '@looker/icons/lib/ChartBar'
 import { BarChart } from '@styled-icons/material/BarChart'
 import { fireEvent, screen } from '@testing-library/react'
 import React, { useState, useMemo, useEffect } from 'react'

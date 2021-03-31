@@ -24,7 +24,7 @@
 
  */
 
-import { LogoRings } from '@looker/icons/src/LogoRings'
+import { LogoRings } from '@looker/icons/lib/LogoRings'
 import { Story } from '@storybook/react/types-6-0'
 import React from 'react'
 import { VIEWPORT_MAP } from '../../utils-storybook'

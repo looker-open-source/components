@@ -81,7 +81,7 @@ module.exports = {
       {
         paths: [
           {
-            message: "Please import icons from '@looker/icons/src/SomeIcon'",
+            message: "Please import icons from '@looker/icons/lib/SomeIcon'",
             name: '@looker/icons',
           },
           {

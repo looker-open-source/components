@@ -25,8 +25,8 @@
  */
 
 import React from 'react'
-import { IdeDimension } from '@looker/icons/src/IdeDimension'
-import { IdeDimensionGroup } from '@looker/icons/src/IdeDimensionGroup'
+import { IdeDimension } from '@looker/icons/lib/IdeDimension'
+import { IdeDimensionGroup } from '@looker/icons/lib/IdeDimensionGroup'
 import { Info } from '@styled-icons/material/Info'
 import { Explore } from '@styled-icons/material-outlined/Explore'
 import { TableChart } from '@styled-icons/material-outlined/TableChart'
