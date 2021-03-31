@@ -10,11 +10,11 @@ Icons are defined in SVG format and are automatically built by a build script to
 
 ### Building Icons
 
-All icons should be exported as SVG and placed in the `icons/src/svg` directory. They do not need to be optimized beforehand, a build process will optimize them and convert them to components.
+All icons should be exported as SVG and placed in the `icons/svg` directory. They do not need to be optimized beforehand, a build process will optimize them and convert them to components.
 
 Icons are automatically built when starting or publishing the style guide, running the tests, building the components or publishing the component package. The icons can be manually built using the command:
 
-`yarn workspace @looker/icons build:icons`
+`yarn workspace @looker/icons prebuild`
 
 ### Naming Icons
 

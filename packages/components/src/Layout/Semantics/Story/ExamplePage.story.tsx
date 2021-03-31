@@ -26,8 +26,8 @@
 
 import React from 'react'
 import styled from 'styled-components'
-import { LogoRings } from '@looker/icons/lib/LogoRings'
 import { Story } from '@storybook/react/types-6-0'
+import { Home } from '@styled-icons/material/Home'
 import { PieChart } from '@styled-icons/material/PieChart'
 import { VerifiedUser } from '@styled-icons/material/VerifiedUser'
 import { Aside, Footer, Header, Layout, LayoutProps, Page, Section } from '..'
@@ -114,7 +114,7 @@ const menuItems = (
     <MenuItem
       detail="detail"
       description="this is the description"
-      icon={<LogoRings />}
+      icon={<Home />}
     >
       Looker
     </MenuItem>

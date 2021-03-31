@@ -23,27 +23,28 @@
  SOFTWARE.
 
  */
-import { Account } from '@looker/icons/lib/Account'
-import { IdeFileDashboard } from '@looker/icons/lib/IdeFileDashboard'
-import { IdeFileDocument } from '@looker/icons/lib/IdeFileDocument'
-import { IdeFileGeneric } from '@looker/icons/lib/IdeFileGeneric'
-import { LogoRings } from '@looker/icons/lib/LogoRings'
+
 import { AddAlert } from '@styled-icons/material/AddAlert'
 import { Chat } from '@styled-icons/material/Chat'
 import { Create } from '@styled-icons/material/Create'
+import { Dashboard } from '@styled-icons/material/Dashboard'
 import { DeleteOutline } from '@styled-icons/material/DeleteOutline'
 import { Download } from '@styled-icons/material/Download'
 import { Favorite } from '@styled-icons/material/Favorite'
 import { MoreVert } from '@styled-icons/material/MoreVert'
+import { AttachFile } from '@styled-icons/material/AttachFile'
 import { PersonOutline } from '@styled-icons/material/PersonOutline'
 import { PieChart } from '@styled-icons/material/PieChart'
 import { Refresh } from '@styled-icons/material/Refresh'
 import { TableChart } from '@styled-icons/material/TableChart'
+import { TextSnippet } from '@styled-icons/material/TextSnippet'
 import { Undo } from '@styled-icons/material/Undo'
 import { VerifiedUser } from '@styled-icons/material/VerifiedUser'
+import { AccountCircle } from '@styled-icons/material-outlined/AccountCircle'
 import { Create as CreateOutline } from '@styled-icons/material-outlined/Create'
 import { CreateNewFolder } from '@styled-icons/material-outlined/CreateNewFolder'
 import { Explore as ExploreOutline } from '@styled-icons/material-outlined/Explore'
+import { Home } from '@styled-icons/material-outlined/Home'
 import React, {
   forwardRef,
   Fragment,
@@ -76,7 +77,7 @@ const menuItems = (
     <MenuItem
       detail="detail"
       description="this is the description"
-      icon={<LogoRings />}
+      icon={<Home />}
     >
       Looker
     </MenuItem>
@@ -149,7 +150,7 @@ export const IconSpace = () => (
 
     <MenuList iconGutter>
       <MenuHeading>MenuList with 3 Items</MenuHeading>
-      <MenuItem description="this is a description" icon={<LogoRings />}>
+      <MenuItem description="this is a description" icon={<Home />}>
         Looker
       </MenuItem>
       <MenuItem icon={<VerifiedUser />}>Validate</MenuItem>
@@ -159,7 +160,7 @@ export const IconSpace = () => (
     <Divider />
 
     <MenuList iconGutter>
-      <MenuItem icon={<LogoRings />}>Looker</MenuItem>
+      <MenuItem icon={<Home />}>Looker</MenuItem>
       <MenuItem icon={<VerifiedUser />}>Validate</MenuItem>
       <MenuHeading>MenuList with 1 Item</MenuHeading>
       <MenuItem>Pizza!</MenuItem>
@@ -186,7 +187,7 @@ export const IconSpace = () => (
         Artwork
       </MenuItem>
       <MenuItem
-        icon={<Account />}
+        icon={<AccountCircle />}
         detail={
           <>
             <Text fontSize="small" mr="xsmall" color="secondary">
@@ -204,7 +205,7 @@ export const IconSpace = () => (
         Chat
       </MenuItem>
       <MenuItem
-        icon={<Account />}
+        icon={<AccountCircle />}
         detail={
           <>
             <Text fontSize="small" mr="xsmall" color="secondary">
@@ -367,9 +368,9 @@ export const RealisticMenus = () => {
             <MenuItem icon={<ExploreOutline />}>Model</MenuItem>
             <MenuItem icon={<TableChart />}>New Item</MenuItem>
             <MenuItem icon={<TableChart />}>View</MenuItem>
-            <MenuItem icon={<IdeFileDashboard />}>Dashboard</MenuItem>
-            <MenuItem icon={<IdeFileDocument />}>Document</MenuItem>
-            <MenuItem icon={<IdeFileGeneric />}>Generic LookML file</MenuItem>
+            <MenuItem icon={<Dashboard />}>Dashboard</MenuItem>
+            <MenuItem icon={<TextSnippet />}>Document</MenuItem>
+            <MenuItem icon={<AttachFile />}>Generic LookML file</MenuItem>
           </>
         }
       >

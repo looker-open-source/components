@@ -25,8 +25,8 @@
  */
 
 import { renderWithTheme } from '@looker/components-test-utils'
-import { Account } from '@looker/icons/lib/Account'
 import { Code } from '@styled-icons/material/Code'
+import { AccountCircle } from '@styled-icons/material-outlined/AccountCircle'
 import { screen, fireEvent } from '@testing-library/react'
 import React from 'react'
 import { AvatarCombo } from './AvatarCombo'
@@ -41,7 +41,7 @@ describe('Avatar', () => {
       const fauxOnClick = jest.fn()
       renderWithTheme(
         <AvatarCombo
-          secondaryIcon={<Account />}
+          secondaryIcon={<AccountCircle />}
           onClick={fauxOnClick}
           role="button"
         />
@@ -57,7 +57,7 @@ describe('Avatar', () => {
     test('user', () => {
       renderWithTheme(
         <AvatarCombo
-          secondaryIcon={<Account />}
+          secondaryIcon={<AccountCircle />}
           user={{
             avatar_url:
               'https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank',

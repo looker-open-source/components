@@ -24,10 +24,7 @@
 
  */
 
-import { ChartArea } from '@looker/icons/lib/ChartArea'
-import { ChartBar } from '@looker/icons/lib/ChartBar'
-import { ChartBoxPlot } from '@looker/icons/lib/ChartBoxPlot'
-import { ChartTimeline } from '@looker/icons/lib/ChartTimeline'
+import { AutoGraph } from '@styled-icons/material/AutoGraph'
 import { BarChart } from '@styled-icons/material/BarChart'
 import { BubbleChart } from '@styled-icons/material/BubbleChart'
 import { DonutLarge } from '@styled-icons/material/DonutLarge'
@@ -104,10 +101,10 @@ export const cheeseOptions = [
 ]
 
 export const iconOptions = [
-  { icon: <ChartArea />, label: 'Area', value: 'area' },
+  { icon: <AutoGraph />, label: 'Area', value: 'area' },
   { label: 'ChartNoIcon', value: 'noicon' },
-  { icon: <ChartBar />, label: 'Bar', value: 'bar' },
-  { icon: <ChartBoxPlot />, label: 'Box Plot', value: 'boxplot' },
+  { icon: <AutoGraph />, label: 'Bar', value: 'bar' },
+  { icon: <AutoGraph />, label: 'Box Plot', value: 'boxplot' },
   { icon: <BarChart />, label: 'Column', value: 'column' },
   { icon: <MultilineChart />, label: 'Custom', value: 'custom' },
   { icon: <DonutLarge />, label: 'Donut', value: 'donut' },
@@ -119,7 +116,7 @@ export const iconOptions = [
   { icon: <Toc />, label: 'Single Record', value: 'singlerecord' },
   { icon: <Looks6 />, label: 'Single Value', value: 'singlevalue' },
   { icon: <TableChart />, label: 'Table', value: 'table' },
-  { icon: <ChartTimeline />, label: 'Timeline', value: 'timeline' },
+  { icon: <AutoGraph />, label: 'Timeline', value: 'timeline' },
   { icon: <WaterfallChart />, label: 'Waterfall', value: 'waterfall' },
   { icon: <LineStyle />, label: 'Word Cloud', value: 'wordcloud' },
 ]

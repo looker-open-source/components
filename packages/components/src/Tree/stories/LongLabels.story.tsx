@@ -25,8 +25,6 @@
  */
 
 import React from 'react'
-import { IdeDimension } from '@looker/icons/lib/IdeDimension'
-import { IdeDimensionGroup } from '@looker/icons/lib/IdeDimensionGroup'
 import { Info } from '@styled-icons/material/Info'
 import { Explore } from '@styled-icons/material-outlined/Explore'
 import { TableChart } from '@styled-icons/material-outlined/TableChart'
@@ -42,17 +40,17 @@ export const LongLabels = () => (
         icon={<TableChart />}
         defaultOpen
       >
-        <TreeItem icon={<IdeDimension />}>
+        <TreeItem icon={<Info />}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </TreeItem>
-        <TreeItem icon={<IdeDimension />}>
+        <TreeItem icon={<Info />}>
           Nam sit amet imperdiet lacus, eget ullamcorper nunc. Many desktop
           publishing packages and web page editors now use Lorem Ipsum as their
           default model text, and a search for 'lorem ipsum' will uncover many
           web sites still in their infancy.
         </TreeItem>
         <TreeItem
-          icon={<IdeDimensionGroup />}
+          icon={<Info />}
           detail={{
             content: (
               <IconButton
@@ -80,7 +78,7 @@ export const LongLabels = () => (
         truncate
         defaultOpen
       >
-        <TreeItem icon={<IdeDimension />} truncate>
+        <TreeItem icon={<Info />} truncate>
           Very long text renders a tooltip. Vivamus vitae mauris et erat
           sagittis tempus. Mauris euismod aliquet arcu ut viverra. It has roots
           in a piece of classical Latin literature from 45 BC, making it over
@@ -91,7 +89,7 @@ export const LongLabels = () => (
           undoubtable source.
         </TreeItem>
         <TreeItem
-          icon={<IdeDimension />}
+          icon={<Info />}
           truncate
           detail={{
             content: (
@@ -111,7 +109,7 @@ export const LongLabels = () => (
           Ipsum is not simply random text. It has roots in a piece of classical
           Latin literature from 45 BC, making it over 2000 years old.
         </TreeItem>
-        <TreeItem icon={<IdeDimensionGroup />} truncate>
+        <TreeItem icon={<Info />} truncate>
           This short text should not render a tooltip
         </TreeItem>
       </Tree>

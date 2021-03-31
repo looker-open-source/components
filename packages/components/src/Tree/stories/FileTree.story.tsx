@@ -25,9 +25,8 @@
  */
 
 import React from 'react'
-import { IdeDimension } from '@looker/icons/lib/IdeDimension'
-import { IdeDimensionGroup } from '@looker/icons/lib/IdeDimensionGroup'
 import { Story } from '@storybook/react/types-6-0'
+import { TextSnippet } from '@styled-icons/material/TextSnippet'
 import { Explore } from '@styled-icons/material-outlined/Explore'
 import { TableChart } from '@styled-icons/material-outlined/TableChart'
 import { Visibility } from '@styled-icons/material-outlined/Visibility'
@@ -40,14 +39,14 @@ const Template: Story<TreeProps> = (args) => (
   <Tree {...args} label="thelook" icon={<Explore />}>
     <Tree label="Users" icon={<Visibility />} defaultOpen branchFontWeight>
       <Tree label="Orders" icon={<TableChart />} defaultOpen branchFontWeight>
-        <TreeItem icon={<IdeDimension />}>ID</TreeItem>
-        <TreeItem icon={<IdeDimension />}>Status</TreeItem>
-        <TreeItem icon={<IdeDimensionGroup />}>Created</TreeItem>
+        <TreeItem icon={<TextSnippet />}>ID</TreeItem>
+        <TreeItem icon={<TextSnippet />}>Status</TreeItem>
+        <TreeItem icon={<TextSnippet />}>Created</TreeItem>
       </Tree>
       <Tree label="Users" icon={<TableChart />} defaultOpen branchFontWeight>
-        <TreeItem icon={<IdeDimension />}>ID</TreeItem>
-        <TreeItem icon={<IdeDimension />}>Name</TreeItem>
-        <TreeItem icon={<IdeDimensionGroup />}>Created</TreeItem>
+        <TreeItem icon={<TextSnippet />}>ID</TreeItem>
+        <TreeItem icon={<TextSnippet />}>Name</TreeItem>
+        <TreeItem icon={<TextSnippet />}>Created</TreeItem>
       </Tree>
     </Tree>
   </Tree>

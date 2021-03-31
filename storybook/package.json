@@ -12,10 +12,8 @@
   },
   "dependencies": {
     "@looker/components": "^1.1.2",
-    "@looker/components-providers": "^1.1.2",
     "@looker/components-theme-editor": "^1.1.2",
     "@looker/design-tokens": "^1.1.2",
-    "@looker/icons": "^1.1.2",
     "@storybook/react": "^6.1.15",
     "lodash": "^4.17.20",
     "react": "^16.14.0",

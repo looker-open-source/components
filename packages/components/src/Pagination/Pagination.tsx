@@ -27,13 +27,13 @@
 import { useTranslation } from 'react-i18next'
 import React, { FC } from 'react'
 import styled from 'styled-components'
-import { DoubleChevronLeft } from '@looker/icons/lib/DoubleChevronLeft'
-import { DoubleChevronRight } from '@looker/icons/lib/DoubleChevronRight'
 import { ChevronLeft } from '@styled-icons/material-rounded/ChevronLeft'
 import { ChevronRight } from '@styled-icons/material-rounded/ChevronRight'
 import { Flex } from '../Layout'
 import { IconButton, IconButtonProps } from '../Button'
 import { Span } from '../Text'
+import { DoubleChevronLeft } from './DoubleChevronLeft'
+import { DoubleChevronRight } from './DoubleChevronRight'
 
 export interface PaginationProps {
   className?: string

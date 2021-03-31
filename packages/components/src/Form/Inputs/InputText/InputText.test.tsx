@@ -27,7 +27,7 @@
 import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { Account } from '@looker/icons/lib/Account'
+import { AccountCircle } from '@styled-icons/material-outlined/AccountCircle'
 import { Favorite } from '@styled-icons/material/Favorite'
 import React from 'react'
 
@@ -136,7 +136,7 @@ describe('InputText', () => {
       const { getByTitle } = renderWithTheme(
         <InputText
           iconBefore={<Favorite title="Before Title" />}
-          iconAfter={<Account title="After Title" />}
+          iconAfter={<AccountCircle title="After Title" />}
         />
       )
 
@@ -148,7 +148,11 @@ describe('InputText', () => {
       const { queryByPlaceholderText } = renderWithTheme(
         <>
           <InputText placeholder="Hello" iconBefore={<Favorite />} before="$" />
-          <InputText placeholder="Goodbye" iconAfter={<Account />} after="%" />
+          <InputText
+            placeholder="Goodbye"
+            iconAfter={<AccountCircle />}
+            after="%"
+          />
         </>
       )
 

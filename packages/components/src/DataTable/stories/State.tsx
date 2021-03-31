@@ -24,7 +24,7 @@
 
  */
 
-import { Beaker } from '@looker/icons/lib/Beaker'
+import { Science } from '@styled-icons/material-outlined/Science'
 import { Story } from '@storybook/react/types-6-0'
 import React from 'react'
 import { Icon } from '../../Icon'
@@ -71,7 +71,7 @@ NoResultsDisplayFancy.args = {
   ...NoResults.args,
   noResultsDisplay: (
     <SpaceVertical align="center">
-      <Icon size="xlarge" icon={<Beaker />} color="key" />
+      <Icon size="xlarge" icon={<Science />} color="key" />
       <Heading>The mad scientists have nothing for you...</Heading>
     </SpaceVertical>
   ),
