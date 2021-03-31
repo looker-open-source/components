@@ -25,8 +25,8 @@
  */
 
 import React, { useState } from 'react'
-import { Pivot } from '@looker/icons/lib/SomeIcon'
-import { DateRange } from '@styled-icons/material-outlined'
+import { Home } from '@styled-icons/material-outlined/Home'
+import { DateRange } from '@styled-icons/material-outlined/DateRange'
 import { ListItem } from '../List/ListItem'
 import { NavList } from './NavList'
 
@@ -45,7 +45,7 @@ export const NavListExample = () => {
       <ListItem
         description="Orange-y"
         detail="Netherlands"
-        icon={<Pivot />}
+        icon={<Home />}
         selected
       >
         Explore
