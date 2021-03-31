@@ -132,7 +132,11 @@ describe('InputSearch', () => {
   })
 
   describe('options', () => {
-    const options = [{ value: 'FOO' }, { value: 'BAR' }]
+    const options = [
+      { value: 'FOO' },
+      { value: 'BAR' },
+      { label: 'Empty', value: '' },
+    ]
 
     test('list opens on change, not click', () => {
       renderWithTheme(<InputSearch options={options} placeholder="type here" />)
@@ -142,7 +146,7 @@ describe('InputSearch', () => {
 
       fireEvent.change(input, { target: { value: 'F' } })
       expect(input).toHaveDisplayValue('F')
-      expect(screen.queryAllByRole('option')).toHaveLength(2)
+      expect(screen.queryAllByRole('option')).toHaveLength(3)
 
       // Close popover to silence act() warning
       fireEvent.click(document)

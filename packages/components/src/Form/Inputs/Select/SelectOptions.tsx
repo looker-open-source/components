@@ -280,7 +280,7 @@ export const SelectOptions = (props: SelectOptionsProps) => {
             ...optionsToRender.map((option, index) => {
               // Add start to index to keep key consistent if options are windowed
               const key = `${keyPrefix}-${start + index}`
-              if (option.value) {
+              if (option.value !== undefined) {
                 const OptionLayoutToUse = isMulti
                   ? MultiOptionLayout
                   : OptionLayout
