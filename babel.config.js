@@ -59,8 +59,11 @@ module.exports = (api) => {
           [
             '@babel/env',
             {
-              bugfixes: true,
-              targets: { ie: '11' },
+              corejs: 3,
+              targets: {
+                node: 6,
+              },
+              useBuiltIns: 'usage',
             },
           ],
           ...presets,
@@ -73,9 +76,9 @@ module.exports = (api) => {
           [
             '@babel/env',
             {
-              bugfixes: true,
+              corejs: 3,
               modules: false,
-              targets: { ie: '11' },
+              useBuiltIns: 'usage',
             },
           ],
           ...presets,
