@@ -25,7 +25,7 @@
  */
 
 import React from 'react'
-import { Pivot } from '@looker/icons'
+import { Pivot } from '@looker/icons/lib/SomeIcon'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { screen } from '@testing-library/react'
 import { ListItem } from '../List/ListItem'
@@ -35,10 +35,14 @@ describe('NavList', () => {
   test('display with keyColor', () => {
     renderWithTheme(
       <NavList>
-        <ListItem icon={<Pivot />} description="Orange-y" detail="Netherlands">
+        <ListItem
+          description="Orange-y"
+          detail="Netherlands"
+          icon={<Pivot />}
+          selected
+        >
           Explore
         </ListItem>
-        <ListItem icon={<Pivot />}>Develop</ListItem>
       </NavList>
     )
 
