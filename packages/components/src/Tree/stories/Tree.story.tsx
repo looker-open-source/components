@@ -25,7 +25,8 @@
  */
 
 import React from 'react'
-import { Download, Pivot } from '@looker/icons'
+import { Alarm } from '@styled-icons/material/Alarm'
+import { Download } from '@styled-icons/material/Download'
 import { Story } from '@storybook/react/types-6-0'
 import { Tree, TreeProps, TreeItem } from '..'
 import { Space } from '../../Layout'
@@ -72,10 +73,10 @@ Border.args = {
 export const Icon = () => (
   <Tree
     defaultOpen
-    icon={<Pivot />}
+    icon={<Alarm />}
     label={
       <Space between>
-        "Pivot" icon has margin-right, but "Download" icon does not
+        "Alarm" icon has margin-right, but "Download" icon does not
         <Download size={20} />
       </Space>
     }
