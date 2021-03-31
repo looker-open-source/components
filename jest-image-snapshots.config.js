@@ -30,7 +30,7 @@ module.exports = {
   moduleDirectories: ['./node_modules', './packages'],
   moduleFileExtensions: ['js', 'json', 'ts', 'tsx'],
   moduleNameMapper: {
-    '@looker/(.+)$': '<rootDir>/packages/$1/src',
+    '@looker/([^/]+)$': '<rootDir>/packages/$1/src',
     // Deep imports (e.g. icons)
     '@looker/([^/]+)/src/(.+)$': '<rootDir>/packages/$1/src/$2',
     '\\.(css)$': '<rootDir>/config/jest/styleMock.js',
