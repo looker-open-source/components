@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.1](https://github.com/looker-open-source/components/compare/v1.1.0...v1.1.1) (2021-03-31)
+
+
+### Bug Fixes
+
+* Use /lib in deep-import for Icons to correct build portability ([#2143](https://github.com/looker-open-source/components/issues/2143)) ([ef2b299](https://github.com/looker-open-source/components/commit/ef2b2995c602989c25c6925d061844e308a91e2e))
+
+
+
+
+
 # [1.1.0](https://github.com/looker-open-source/components/compare/v1.0.0...v1.1.0) (2021-03-31)
 
 **Note:** Version bump only for package @looker/icons
