@@ -25,7 +25,7 @@
  */
 
 import React from 'react'
-import { Pivot } from '@looker/icons/lib/SomeIcon'
+import { Home } from '@styled-icons/material/Home'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { screen } from '@testing-library/react'
 import { ListItem } from '../List/ListItem'
@@ -38,7 +38,7 @@ describe('NavList', () => {
         <ListItem
           description="Orange-y"
           detail="Netherlands"
-          icon={<Pivot />}
+          icon={<Home />}
           selected
         >
           Explore
