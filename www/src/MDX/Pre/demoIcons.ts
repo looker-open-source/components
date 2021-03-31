@@ -26,7 +26,6 @@
 
 // eslint-disable-next-line no-restricted-imports
 import {
-  Account,
   AnalyticsApp,
   Beaker,
   BrowseTable,
@@ -49,8 +48,6 @@ import {
   DigitalMarketingApp,
   DimensionFill,
   DocumentFile,
-  DoubleChevronLeft,
-  DoubleChevronRight,
   Download,
   ExpandCollapse,
   Explore,
@@ -97,7 +94,6 @@ import {
 } from '@looker/icons'
 
 const ours = {
-  Account,
   AnalyticsApp,
   Beaker,
   BrowseTable,
@@ -120,8 +116,6 @@ const ours = {
   DigitalMarketingApp,
   DimensionFill,
   DocumentFile,
-  DoubleChevronLeft,
-  DoubleChevronRight,
   Download,
   ExpandCollapse,
   Explore,

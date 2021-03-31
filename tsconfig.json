@@ -6,7 +6,6 @@
     "baseUrl": ".",
     "paths": {
       "@looker/*": ["packages/*/src"],
-      "@looker/icons": ["packages/icons/lib"]
     }
   },
   "include": [

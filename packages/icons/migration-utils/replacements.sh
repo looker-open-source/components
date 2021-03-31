@@ -1,6 +1,6 @@
 #!/bin/bash
 
-localIcons=('Account' 'AnalyticsApp' 'Beaker' 'BrowseTable' 'CalendarDay' 'CalendarHour' 'CalendarMonth' 'CalendarQuarter' 'CalendarWeek' 'ChartArea' 'ChartBar' 'ChartBoxPlot' 'ChartTimeline' 'CheckProgress' 'CollapseAll' 'ColorFill' 'ColorText' 'CrossFilter' 'DashboardFile' 'DashboardGauge' 'DigitalMarketingApp' 'DimensionFill' 'DocumentFile' 'DoubleChevronLeft' 'Download' 'ExpandCollapse' 'Explore' 'FieldString' 'FieldTier' 'FindSelected' 'Flag' 'GitBranch' 'IdeDimension' 'IdeDimensionGroup' 'IdeFileDashboard' 'IdeFileDocument' 'IdeFileGeneric' 'IdeFileLookMl' 'IdeFileManifest' 'IdeFileModel' 'IdeParameter' 'LogoRings' 'LookerLogo' 'Lqa' 'Marketplace' 'ModelFile' 'More' 'Notes' 'Pivot' 'Public' 'QuickStart' 'Reports' 'Return' 'SalesAnalytics' 'SendWebhook' 'SqlRunner' 'UserAttributes' 'ViewFile' 'VisArea' 'VisBar' 'VisColumn' 'VisLine' 'VisMap' 'VisPie' 'VisScatter' 'VisSinglueValue' 'VisTable')
+localIcons=('AnalyticsApp' 'Beaker' 'BrowseTable' 'CalendarDay' 'CalendarHour' 'CalendarMonth' 'CalendarQuarter' 'CalendarWeek' 'ChartArea' 'ChartBar' 'ChartBoxPlot' 'ChartTimeline' 'CheckProgress' 'CollapseAll' 'ColorFill' 'ColorText' 'CrossFilter' 'DashboardFile' 'DashboardGauge' 'DigitalMarketingApp' 'DimensionFill' 'DocumentFile' 'Download' 'ExpandCollapse' 'Explore' 'FieldString' 'FieldTier' 'FindSelected' 'Flag' 'GitBranch' 'IdeDimension' 'IdeDimensionGroup' 'IdeFileDashboard' 'IdeFileDocument' 'IdeFileGeneric' 'IdeFileLookMl' 'IdeFileManifest' 'IdeFileModel' 'IdeParameter' 'LogoRings' 'LookerLogo' 'Lqa' 'Marketplace' 'ModelFile' 'More' 'Notes' 'Pivot' 'Public' 'QuickStart' 'Reports' 'Return' 'SalesAnalytics' 'SendWebhook' 'SqlRunner' 'UserAttributes' 'ViewFile' 'VisArea' 'VisBar' 'VisColumn' 'VisLine' 'VisMap' 'VisPie' 'VisScatter' 'VisSinglueValue' 'VisTable')
 
 for icon in ${localIcons[@]}; do
   echo "Update $icon to <$icon /> from @looker/icons"
@@ -11,7 +11,8 @@ for icon in ${localIcons[@]}; do
 done
 
 
-icons='AddAlerts add_alert
+icons='Account account_circle
+AddAlerts add_alert
 AddComment add_comment
 AlignCenter format_align_center
 AlignLeft format_align_left
@@ -70,7 +71,6 @@ Dashboard dashboard
 DNS dns
 DotsHorz more_horiz
 DotsVert more_vert
-DoubleChevronRight double_arrow
 DragHandle drag_handle
 DragHandleDots drag_indicator
 Edit create
