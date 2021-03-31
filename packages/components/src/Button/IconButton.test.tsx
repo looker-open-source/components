@@ -181,4 +181,27 @@ describe('IconButton', () => {
     fireEvent.mouseOut(trigger)
     await waitForElementToBeRemoved(() => screen.getAllByText(label)[1])
   })
+
+  test('toggleBackground renders a background', () => {
+    renderWithTheme(
+      <IconButton label="Test" toggle toggleBackground icon={<Favorite />} />
+    )
+    const button = screen.getByRole('button')
+    expect(button).toHaveStyle('background-color: #F3F2FF;')
+  })
+
+  test('toggleBackground with shape renders a  round background', () => {
+    renderWithTheme(
+      <IconButton
+        icon={<Favorite />}
+        label="Test"
+        shape="round"
+        toggle
+        toggleBackground
+      />
+    )
+    const button = screen.getByRole('button')
+    expect(button).toHaveStyle('background-color: #F3F2FF;')
+    expect(button).toHaveStyle('border-radius: 100%;')
+  })
 })

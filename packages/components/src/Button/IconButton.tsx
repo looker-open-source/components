@@ -97,6 +97,11 @@ export interface IconButtonProps
    */
   toggle?: boolean
   /**
+   * to improve toggle's behavior this prop will update the background-color to keySubtle when togle is true
+   * @default false
+   */
+  toggleBackground?: boolean
+  /**
    * By default IconButton shows a Tooltip with the Button's label text. Setting disableTooltip will disable that behavior.
    * @default false
    */
@@ -136,6 +141,7 @@ const IconButtonComponent = forwardRef(
       size = 'xsmall',
       label,
       toggle,
+      toggleBackground,
       tooltipDisabled,
       tooltipPlacement,
       tooltipTextAlign,
@@ -206,12 +212,9 @@ const IconButtonComponent = forwardRef(
 
 IconButtonComponent.displayName = 'IconButtonComponent'
 
-const outlineCSS = (props: IconButtonProps) => {
-  const { shape } = props
-
+const outlineCSS = () => {
   return css`
     border: 1px solid ${({ theme: { colors } }) => colors.ui3};
-    ${shape === 'round' && 'border-radius: 100%;'}
 
     &:hover,
     &:focus,
@@ -244,9 +247,12 @@ export const IconButton = styled(IconButtonComponent).attrs(
   ${space}
 
   background: none;
+  background-color: ${({ theme, toggle, toggleBackground }) =>
+    toggle && toggleBackground && theme.colors.keySubtle};
   border: none;
+  border-radius: ${({ shape }) => shape === 'round' && '100%'};
   ${iconButtonColor}
   padding: 0;
 
-  ${(props) => props.outline && outlineCSS}
+  ${({ outline }) => outline && outlineCSS}
 `
