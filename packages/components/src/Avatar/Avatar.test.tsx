@@ -25,7 +25,7 @@
  */
 
 import { renderWithTheme } from '@looker/components-test-utils'
-import { Account } from '@looker/icons/src/Account'
+import { Account } from '@looker/icons/lib/Account'
 import { Code } from '@styled-icons/material/Code'
 import { screen, fireEvent } from '@testing-library/react'
 import React from 'react'

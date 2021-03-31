@@ -26,7 +26,7 @@
 
 import React, { FC, ReactNode, useState } from 'react'
 import styled from 'styled-components'
-import { Pivot } from '@looker/icons/src/Pivot'
+import { Pivot } from '@looker/icons/lib/Pivot'
 import { FilterList } from '@styled-icons/material/FilterList'
 import { MoreVert } from '@styled-icons/material/MoreVert'
 import { Info } from '@styled-icons/material-outlined/Info'

@@ -34,6 +34,7 @@ const ignore = [
   '**/stories/*',
   '__snapshots__',
   '__tests__',
+  '__mocks__',
 ]
 
 const plugins = [
@@ -58,11 +59,8 @@ module.exports = (api) => {
           [
             '@babel/env',
             {
-              corejs: 3,
-              targets: {
-                node: 6,
-              },
-              useBuiltIns: 'usage',
+              bugfixes: true,
+              targets: { ie: '11' },
             },
           ],
           ...presets,
@@ -75,9 +73,9 @@ module.exports = (api) => {
           [
             '@babel/env',
             {
-              corejs: 3,
+              bugfixes: true,
               modules: false,
-              useBuiltIns: 'usage',
+              targets: { ie: '11' },
             },
           ],
           ...presets,

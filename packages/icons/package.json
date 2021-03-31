@@ -18,7 +18,8 @@
     "access": "public"
   },
   "scripts": {
-    "prebuild": "./bin/prebuild.js"
+    "prebuild": "./bin/prebuild.js",
+    "postprebuild": "babel src --env-name esm --root-mode upward --out-dir lib --source-maps --extensions .ts,.tsx --no-comments && tsc -b tsconfig.build.json"
   },
   "dependencies": {
     "@styled-icons/styled-icon": "^10.6.3"

@@ -26,7 +26,7 @@
 
 import React from 'react'
 import styled from 'styled-components'
-import { LogoRings } from '@looker/icons/src/LogoRings'
+import { LogoRings } from '@looker/icons/lib/LogoRings'
 import { Story } from '@storybook/react/types-6-0'
 import { PieChart } from '@styled-icons/material/PieChart'
 import { VerifiedUser } from '@styled-icons/material/VerifiedUser'

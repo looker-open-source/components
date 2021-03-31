@@ -31,8 +31,6 @@ module.exports = {
   moduleFileExtensions: ['js', 'json', 'ts', 'tsx'],
   moduleNameMapper: {
     '@looker/([^/]+)$': '<rootDir>/packages/$1/src',
-    // Deep imports (e.g. icons)
-    '@looker/([^/]+)/src/(.+)$': '<rootDir>/packages/$1/src/$2',
     '\\.(css)$': '<rootDir>/config/jest/styleMock.js',
     '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)$':
       '<rootDir>/config/jest/fileMock.js',

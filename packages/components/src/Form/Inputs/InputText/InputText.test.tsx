@@ -27,7 +27,7 @@
 import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { Account } from '@looker/icons/src/Account'
+import { Account } from '@looker/icons/lib/Account'
 import { Favorite } from '@styled-icons/material/Favorite'
 import React from 'react'
 

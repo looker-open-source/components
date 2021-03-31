@@ -24,7 +24,7 @@
 
  */
 
-import { Account } from '@looker/icons/src/Account'
+import { Account } from '@looker/icons/lib/Account'
 import { Story } from '@storybook/react/types-6-0'
 import { AddAlert } from '@styled-icons/material/AddAlert'
 import { Favorite } from '@styled-icons/material/Favorite'
