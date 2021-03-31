@@ -24,7 +24,7 @@
 
  */
 import React, { FC } from 'react'
-import { LookerLogo } from '@looker/icons/lib/LookerLogo'
+import { Home } from '@styled-icons/material-outlined/Home'
 import { Story } from '@storybook/react/types-6-0'
 import {
   SpaceProps,
@@ -112,7 +112,7 @@ const Template: Story<BreakpointProps> = () => {
         <NavHeader backgroundColor="ui1" p="small">
           <MobileHeaderGrid>
             <Box color="key">
-              <LookerLogo width={70} height={20} title="Looker" />
+              <Home title="Home" />
             </Box>
             <IconButton icon={<Menu />} label="navigation" />
           </MobileHeaderGrid>
@@ -128,9 +128,7 @@ const Template: Story<BreakpointProps> = () => {
       <Breakpoint show={['tablet', undefined]}>
         <NavHeader backgroundColor="inverse" p="medium">
           <LargeHeaderGrid>
-            <Box color="text1">
-              <LookerLogo width={70} height={20} title="Looker" />
-            </Box>
+            <Box color="text1">My logo here!</Box>
             <nav>
               <Grid columns={4}>
                 <Link href="#" color="text1">

@@ -26,8 +26,8 @@
 
 import React, { FC, useState } from 'react'
 import { Story } from '@storybook/react/types-6-0'
-import { Pivot } from '@looker/icons/lib/Pivot'
 import { DateRange } from '@styled-icons/material-outlined/DateRange'
+import { SubdirectoryArrowLeft } from '@styled-icons/material/SubdirectoryArrowLeft'
 import { Box, Grid, Space } from '../Layout'
 import { DensityRamp } from './types'
 import { List, ListProps } from './List'
@@ -43,7 +43,7 @@ const listItems = (
     <ListItem icon={<DateRange />} description="Orange-y">
       Cheddar
     </ListItem>
-    <ListItem icon={<Pivot />} detail="Netherlands">
+    <ListItem icon={<SubdirectoryArrowLeft />} detail="Netherlands">
       Gouda
     </ListItem>
     <ListItem selected>Mozzarella</ListItem>
@@ -177,7 +177,7 @@ const listItemsNonstringChildren = (
     <ListItem icon={<DateRange />} description="Orange-y">
       <CheeseWrapper>Cheddar</CheeseWrapper>
     </ListItem>
-    <ListItem icon={<Pivot />} detail="Netherlands">
+    <ListItem icon={<SubdirectoryArrowLeft />} detail="Netherlands">
       <CheeseWrapper>Gouda</CheeseWrapper>
     </ListItem>
     <ListItem selected>

@@ -24,8 +24,8 @@
 
  */
 
-import { LogoRings } from '@looker/icons/lib/LogoRings'
 import { Story } from '@storybook/react/types-6-0'
+import { Home } from '@styled-icons/material-outlined/Home'
 import React from 'react'
 import { VIEWPORT_MAP } from '../../utils-storybook'
 import { Icon } from '../../Icon'
@@ -53,7 +53,7 @@ const responsiveArgs: BoxStoryProps = {
   borderRadius: 'medium',
   children: (
     <>
-      <Icon display="inline-flex" icon={<LogoRings />} size="medium" /> Looker
+      <Icon display="inline-flex" icon={<Home />} size="medium" /> Looker
     </>
   ),
   color: 'key',

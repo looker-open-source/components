@@ -28,7 +28,7 @@ import {
   getAllComboboxOptionText,
   renderWithTheme,
 } from '@looker/components-test-utils'
-import { ChartBar } from '@looker/icons/lib/ChartBar'
+import { AutoGraph } from '@styled-icons/material/AutoGraph'
 import { BarChart } from '@styled-icons/material/BarChart'
 import { fireEvent, screen } from '@testing-library/react'
 import React, { useState, useMemo, useEffect } from 'react'
@@ -1013,7 +1013,7 @@ describe('Select', () => {
         placeholder="Select a visualization"
         options={[
           {
-            icon: <ChartBar data-testid="input-icon" />,
+            icon: <AutoGraph data-testid="input-icon" />,
             label: 'Bar',
             value: 'bar',
           },

@@ -26,9 +26,9 @@
 
 import React, { FC, ReactNode, useState } from 'react'
 import styled from 'styled-components'
-import { Pivot } from '@looker/icons/lib/Pivot'
 import { FilterList } from '@styled-icons/material/FilterList'
 import { MoreVert } from '@styled-icons/material/MoreVert'
+import { SubdirectoryArrowLeft } from '@styled-icons/material/SubdirectoryArrowLeft'
 import { Info } from '@styled-icons/material-outlined/Info'
 import { ChevronRight } from '@styled-icons/material-rounded/ChevronRight'
 import { ExpandMore } from '@styled-icons/material-rounded/ExpandMore'
@@ -111,7 +111,7 @@ const PickerItem: FC<{ color?: string; truncate?: boolean }> = ({
         <FlexItem flex={1}>{children}</FlexItem>
         <HoverDisclosure>
           <IconButton
-            icon={<Pivot />}
+            icon={<SubdirectoryArrowLeft />}
             label="Pivot"
             tooltipPlacement="top"
             onClick={() => alert('Pivot')}

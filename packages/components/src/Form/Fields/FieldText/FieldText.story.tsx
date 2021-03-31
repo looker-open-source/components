@@ -24,7 +24,7 @@
 
  */
 
-import { Account } from '@looker/icons/lib/Account'
+import { AccountCircle } from '@styled-icons/material-outlined/AccountCircle'
 import { Story } from '@storybook/react/types-6-0'
 import { AddAlert } from '@styled-icons/material/AddAlert'
 import { Favorite } from '@styled-icons/material/Favorite'
@@ -165,7 +165,11 @@ export const BeforeAfterValidation = () => {
           iconBefore={<Favorite />}
           {...validation}
         />
-        <FieldText label="iconAfter" iconAfter={<Account />} {...validation} />
+        <FieldText
+          label="iconAfter"
+          iconAfter={<AccountCircle />}
+          {...validation}
+        />
         <FieldText label="before string" before="$" {...validation} />
         <FieldText label="after string" after="%" {...validation} />
         <FieldText

@@ -25,7 +25,7 @@
  */
 
 import { Story } from '@storybook/react/types-6-0'
-import { Account } from '@looker/icons/lib/Account'
+import { AccountCircle } from '@styled-icons/material-outlined/AccountCircle'
 import { Delete } from '@styled-icons/material/Delete'
 import React from 'react'
 import { Button, IconButton } from '../../Button'
@@ -58,7 +58,7 @@ Reverse.args = {
 
 export const SpaceCrush = () => (
   <Space>
-    <Icon icon={<Account />} size="large" />
+    <Icon icon={<AccountCircle />} size="large" />
     <Status intent="inform" />
     <Paragraph>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod

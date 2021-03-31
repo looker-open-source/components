@@ -25,7 +25,7 @@
  */
 
 import { Story } from '@storybook/react/types-6-0'
-import { ChartBar } from '@looker/icons/lib/ChartBar'
+import { AutoGraph } from '@styled-icons/material/AutoGraph'
 import { PieChart } from '@styled-icons/material/PieChart'
 import { TableChart } from '@styled-icons/material/TableChart'
 import React from 'react'
@@ -124,7 +124,7 @@ ClearableError.args = {
 export const Icon = Template.bind({})
 Icon.args = {
   options: [
-    { icon: <ChartBar />, label: 'Bar', value: 'bar' },
+    { icon: <AutoGraph />, label: 'Bar', value: 'bar' },
     { icon: <PieChart />, label: 'Pie', value: 'pie' },
     { icon: <TableChart />, label: 'Table', value: 'table' },
   ],

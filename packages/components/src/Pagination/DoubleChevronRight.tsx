@@ -24,32 +24,37 @@
 
  */
 
-import { Science } from '@styled-icons/material-outlined/Science'
-import { IconButton, Dialog } from '@looker/components'
-import React, { FC } from 'react'
+import React from 'react'
 import {
-  ThemeEditorContent,
-  ThemeEditorContentProps,
-} from './ThemeEditorContent'
+  StyledIcon,
+  StyledIconBase,
+  StyledIconProps,
+} from '@styled-icons/styled-icon'
 
-export interface ThemeEditorProps extends ThemeEditorContentProps {
-  hasCustomTheme: boolean
-}
+export const DoubleChevronRight: StyledIcon = React.forwardRef<
+  SVGSVGElement,
+  StyledIconProps
+>((props, ref) => {
+  const attrs: React.SVGProps<SVGSVGElement> = {
+    fill: 'currentColor',
+    xmlns: 'http://www.w3.org/2000/svg',
+  }
 
-export const ThemeEditor: FC<ThemeEditorProps> = ({
-  hasCustomTheme,
-  updateTheme,
-}) => (
-  <Dialog
-    content={<ThemeEditorContent updateTheme={updateTheme} />}
-    placement="cover"
-  >
-    <IconButton
-      icon={<Science />}
-      label="Customize Theme"
-      tooltipDisabled
-      toggle={hasCustomTheme}
-      size="small"
-    />
-  </Dialog>
-)
+  return (
+    <StyledIconBase
+      iconAttrs={attrs}
+      iconVerticalAlign="middle"
+      iconViewBox="0 0 24 24"
+      {...props}
+      ref={ref}
+    >
+      <path d="M6 16.59L10.58 12L6 7.41L7.41 6L13.41 12L7.41 18L6 16.59Z" />
+
+      <path d="M11 16.59L15.58 12L11 7.41L12.41 6L18.41 12L12.41 18L11 16.59Z" />
+    </StyledIconBase>
+  )
+})
+
+DoubleChevronRight.displayName = 'DoubleChevronRight'
+
+export const DoubleChevronRightDimensions = { height: 24, width: 24 }

@@ -25,10 +25,10 @@
  */
 
 import React, { FC } from 'react'
-import { Pivot } from '@looker/icons/lib/Pivot'
 import { Story } from '@storybook/react/types-6-0'
 import { PersonOutline } from '@styled-icons/material/PersonOutline'
 import { DateRange } from '@styled-icons/material-outlined/DateRange'
+import { SubdirectoryArrowLeft } from '@styled-icons/material/SubdirectoryArrowLeft'
 import { IconButton } from '../Button'
 import { Text } from '../Text'
 import { Grid } from '../Layout/Grid'
@@ -80,7 +80,7 @@ export const Accessory = Template.bind({})
 Accessory.args = {
   ...Basic.args,
   detail: {
-    content: <IconButton icon={<Pivot />} label="Pivot" />,
+    content: <IconButton icon={<SubdirectoryArrowLeft />} label="Pivot" />,
     options: { accessory: true },
   },
 }
@@ -89,7 +89,7 @@ export const HoverDisclosure = Template.bind({})
 HoverDisclosure.args = {
   ...Basic.args,
   detail: {
-    content: <IconButton icon={<Pivot />} label="Pivot" />,
+    content: <IconButton icon={<SubdirectoryArrowLeft />} label="Pivot" />,
     options: { hoverDisclosure: true },
   },
 }

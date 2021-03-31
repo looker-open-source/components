@@ -27,7 +27,7 @@
 import 'jest-styled-components'
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { Beaker } from '@looker/icons/lib/Beaker'
+import { Science } from '@styled-icons/material-outlined/Science'
 import { screen, fireEvent } from '@testing-library/react'
 
 import { MenuItem } from './MenuItem'
@@ -58,7 +58,7 @@ describe('MenuItem', () => {
   })
 
   test('icon', () => {
-    renderWithTheme(<MenuItem icon={<Beaker />}>Icon</MenuItem>)
+    renderWithTheme(<MenuItem icon={<Science />}>Icon</MenuItem>)
     expect(screen.getByText('Icon')).toBeVisible()
   })
 
