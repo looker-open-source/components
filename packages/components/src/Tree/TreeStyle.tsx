@@ -119,10 +119,14 @@ export const TreeStyle = styled.div<TreeStyleProps>`
 
     > ${AccordionDisclosureStyle} {
       ${ListItem} {
-        ${listItemBackgroundColor}
+        ${({ labelBackgroundOnly, ...restProps }) =>
+          labelBackgroundOnly && listItemBackgroundColor(restProps)}
         font-weight: ${({ branchFontWeight, theme: { fontWeights } }) =>
           branchFontWeight ? fontWeights.normal : fontWeights.semiBold};
       }
+
+      ${({ labelBackgroundOnly, ...restProps }) =>
+        !labelBackgroundOnly && listItemBackgroundColor(restProps)}
 
       background-clip: padding-box;
       /**
