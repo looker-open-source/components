@@ -28,31 +28,16 @@ import React from 'react'
 import { Tree, TreeItem } from '..'
 
 export const LabelBackgroundOnly = () => (
-  <Tree
-    defaultOpen
-    labelBackgroundOnly
-    label="Hello Label Background Only"
-    selected
-  >
+  <Tree defaultOpen labelBackgroundOnly label="Unselected Tree">
     <TreeItem itemRole="none" selected>
-      Item 1
+      Selected Item
     </TreeItem>
-    <TreeItem itemRole="none" selected>
-      Item 2
-    </TreeItem>
-    <TreeItem itemRole="none" selected>
-      Item 3
-    </TreeItem>
-    <Tree defaultOpen label="Child Tree" selected>
+    <TreeItem itemRole="none">Unselected Item</TreeItem>
+    <Tree defaultOpen label="Selected Tree" selected>
       <TreeItem itemRole="none" selected>
-        Item 4
+        Selected Item
       </TreeItem>
-      <TreeItem itemRole="none" selected>
-        Item 5
-      </TreeItem>
-      <TreeItem itemRole="none" selected>
-        Item 6
-      </TreeItem>
+      <TreeItem itemRole="none">Unselected Item</TreeItem>
     </Tree>
   </Tree>
 )
