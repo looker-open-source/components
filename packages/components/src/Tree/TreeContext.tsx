@@ -32,6 +32,7 @@ export interface TreeContextProps {
   keyColor?: boolean
   density: DensityRamp
   depth?: number
+  labelBackgroundOnly?: boolean
 }
 
 export const TreeContext = createContext<TreeContextProps>({

@@ -54,4 +54,10 @@ export interface TreeProps
    * Label text or element displayed within Tree's internal AccordionDisclosure
    */
   label: ReactNode
+  /**
+   * If true, the following visual changes occur:
+   * - TreeItem: Indent padding is not included in background color
+   * - Tree: Indicator and indent padding is not included in background color
+   */
+  labelBackgroundOnly?: boolean
 }

@@ -34,8 +34,14 @@ export const LabelBackgroundOnly = () => (
     label="Hello Label Background Only"
     selected
   >
-    <TreeItem selected>Item 1</TreeItem>
-    <TreeItem selected>Item 2</TreeItem>
-    <TreeItem selected>Item 3</TreeItem>
+    <TreeItem itemRole="none" selected>
+      Item 1
+    </TreeItem>
+    <TreeItem itemRole="none" selected>
+      Item 2
+    </TreeItem>
+    <TreeItem itemRole="none" selected>
+      Item 3
+    </TreeItem>
   </Tree>
 )
