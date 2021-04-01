@@ -43,5 +43,16 @@ export const LabelBackgroundOnly = () => (
     <TreeItem itemRole="none" selected>
       Item 3
     </TreeItem>
+    <Tree defaultOpen label="Child Tree" selected>
+      <TreeItem itemRole="none" selected>
+        Item 4
+      </TreeItem>
+      <TreeItem itemRole="none" selected>
+        Item 5
+      </TreeItem>
+      <TreeItem itemRole="none" selected>
+        Item 6
+      </TreeItem>
+    </Tree>
   </Tree>
 )

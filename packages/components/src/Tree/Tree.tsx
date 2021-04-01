@@ -158,6 +158,7 @@ const TreeLayout: FC<TreeProps> = ({
         density,
         depth: depth + 1,
         keyColor: useKeyColor,
+        labelBackgroundOnly: hasLabelBackgroundOnly,
       }}
     >
       <TreeStyle
