@@ -38,7 +38,6 @@ import { ThemeProvider, ThemeProviderProps } from './ThemeProvider'
 import { ExtendComponentsTheme } from './ExtendComponentsProvider'
 import { FontFaceLoader } from './FontFaceLoader'
 import { StyleDefender } from './StyleDefender'
-
 export interface ComponentsProviderProps
   extends ThemeProviderProps,
     ExtendComponentsTheme,
@@ -55,9 +54,32 @@ export interface ComponentsProviderProps
   loadGoogleFonts?: boolean
 
   /**
+   * Disables the "StyleDefender"
+   *
+   * StyledDefender is a utility component that attempts to ensure that a few common
+   * styles are injected at any point where @looker/components are injected into the DOM.
+   * When taking code-snapshots (a pattern we generally discourage) the `StyleDefender`
+   * may be visible in output. Enabling `snapshotMode` disables StyleDefender to narrow
+   * snapshot output.
+   *
    * @default false
    */
   snapshotMode?: boolean
+
+  /**
+   * Prevent automatic injection of a basic CSS-reset into the DOM
+   * @deprecated - no longer has any actual effect. Global reset no longer in use.
+   * @todo - Remove for 2.x series
+   */
+  globalStyle?: boolean
+
+  /**
+   * Enable style support for IE11
+   * @deprecated - no longer has any actual effect, IE11 support no longer requires
+   *  specialized implementation with changes to reset implementation
+   * @todo - Remove for 2.x series
+   */
+  ie11Support?: boolean
 }
 
 /**
