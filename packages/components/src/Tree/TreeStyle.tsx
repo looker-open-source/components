@@ -37,6 +37,10 @@ import { ListItemStatefulWithHoveredProps } from '../List/types'
 import { List, ListItem } from '../List'
 import { listItemLabelCSS } from '../List/ListItemLabel'
 import { IconPlaceholder, IconSize } from '../Icon'
+import {
+  AccordionDisclosureLayout,
+  Indicator,
+} from '../Accordion/AccordionDisclosureLayout'
 import { TreeItem } from './TreeItem'
 import { TreeBranch } from './TreeBranch'
 import { generateIndent, generateTreeBorder } from './utils'
@@ -118,6 +122,10 @@ export const TreeStyle = styled.div<TreeStyleProps>`
     }
 
     > ${AccordionDisclosureStyle} {
+      ${AccordionDisclosureLayout} > ${Indicator} {
+        margin-right: 0;
+      }
+
       ${ListItem} {
         ${({ labelBackgroundOnly, ...restProps }) =>
           labelBackgroundOnly && listItemBackgroundColor(restProps)}

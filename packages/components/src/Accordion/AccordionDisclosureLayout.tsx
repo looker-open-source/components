@@ -55,7 +55,7 @@ const Layout: FC<AccordionDisclosureLayoutProps> = ({
   )
 }
 
-const Indicator = styled.div`
+export const Indicator = styled.div`
   align-items: center;
   display: flex;
   justify-content: center;
