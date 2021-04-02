@@ -32,10 +32,4 @@ export const reset = css<FontFamilyProps>`
   font-family: inherit;
   margin: 0;
   padding: 0;
-
-  /**
-    * Global reset applied to prevent styling on top level tags outside of Looker
-    * UI Components from interfering with styles.
-    **/
-  ${({ theme: { reset } }) => reset && reset()}
 `
