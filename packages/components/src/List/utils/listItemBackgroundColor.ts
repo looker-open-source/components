@@ -29,6 +29,7 @@ import { css } from 'styled-components'
 import { ListItemStatefulWithHoveredProps } from '../types'
 
 export const listItemBackgroundColor = ({
+  statefulColor,
   keyColor,
   current,
   disabled,
@@ -41,15 +42,24 @@ export const listItemBackgroundColor = ({
     hovered: colors.ui1,
     selected: colors.keySubtle,
   }
+
   const uiColors = {
     all: itemSelectedColor(colors.ui2),
     hovered: colors.ui1,
     selected: itemSelectedColor(colors.ui2),
   }
+
   const stateColors = keyColor ? keyColors : uiColors
+  const colorValue =
+    statefulColor === 'key'
+      ? colors.keySubtle
+      : statefulColor === 'critical'
+      ? colors.criticalSubtle
+      : colors.neutralSubtle
   let renderedColor
 
   if (disabled) renderedColor = 'transparent'
+  else if (selected && statefulColor) renderedColor = colorValue
   else if ((selected || current) && hovered) renderedColor = stateColors.all
   else if (selected || current) renderedColor = stateColors.selected
   else if (hovered) renderedColor = stateColors.hovered

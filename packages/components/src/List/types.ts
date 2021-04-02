@@ -56,6 +56,7 @@ export const listItemDimensionKeys = [
 ]
 
 export interface ListItemStatefulProps {
+  statefulColor?: 'critical' | 'key' | 'neutral'
   /**
    * Replace the normal uiN(1-5) color for selected and selected + hovered color with key colors
    * @default false
