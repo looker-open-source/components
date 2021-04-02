@@ -52,6 +52,8 @@ export interface ListProps
    */
   density?: DensityRamp
 
+  statefulColor?: 'critical' | 'key' | 'neutral'
+
   /**
    * Replace the normal uiN(1-5) color for selected and selected + hovered color with key colors
    */
@@ -82,6 +84,7 @@ export const ListInternal = forwardRef(
   (
     {
       children,
+      statefulColor,
       density = 0,
       disabled,
       iconGutter = false,
@@ -128,6 +131,7 @@ export const ListInternal = forwardRef(
       density,
       iconGutter,
       keyColor,
+      statefulColor,
     }
 
     return (
@@ -152,3 +156,9 @@ export const List = styled(ListInternal)`
   list-style: none;
   overflow: auto;
 `
+
+// ${({ selected }) =>
+// selected &&
+// css`
+//   background: ${({ theme }) => theme.colors.criticalSubtle};
+// `}
