@@ -57,6 +57,8 @@ export interface ListProps
    */
   density?: DensityRamp
 
+  statefulColor?: 'critical' | 'key' | 'neutral'
+
   /**
    * If true, all ListItem children without an icon will reserve space for an icon
    * for alignment purposes.
@@ -93,6 +95,7 @@ export const ListInternal = forwardRef(
   (
     {
       children,
+      statefulColor,
       density = 0,
       disabled,
       height,
@@ -147,6 +150,7 @@ export const ListInternal = forwardRef(
       density,
       iconGutter,
       keyColor,
+      statefulColor,
     }
 
     return (
