@@ -24,18 +24,20 @@
 
  */
 
-import { createContext } from 'react'
-import { DensityRamp } from '../List/types'
+import React from 'react'
+import { Tree, TreeItem } from '..'
 
-export interface TreeContextProps {
-  border?: boolean
-  keyColor?: boolean
-  density: DensityRamp
-  depth?: number
-  labelBackgroundOnly?: boolean
-}
-
-export const TreeContext = createContext<TreeContextProps>({
-  density: 0,
-  depth: 0,
-})
+export const LabelBackgroundOnly = () => (
+  <Tree defaultOpen labelBackgroundOnly label="Unselected Tree">
+    <TreeItem itemRole="none" selected>
+      Selected Item
+    </TreeItem>
+    <TreeItem itemRole="none">Unselected Item</TreeItem>
+    <Tree defaultOpen label="Selected Tree" selected>
+      <TreeItem itemRole="none" selected>
+        Selected Item
+      </TreeItem>
+      <TreeItem itemRole="none">Unselected Item</TreeItem>
+    </Tree>
+  </Tree>
+)

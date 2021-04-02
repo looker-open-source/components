@@ -55,6 +55,7 @@ const TreeLayout: FC<TreeProps> = ({
   icon,
   keyColor: propsKeyColor,
   label: propsLabel,
+  labelBackgroundOnly: propsLabelBackgroundOnly,
   onClick,
   onKeyUp,
   onMouseEnter,
@@ -69,6 +70,10 @@ const TreeLayout: FC<TreeProps> = ({
   const treeContext = useContext(TreeContext)
   const hasBorder = undefinedCoalesce([propsBorder, treeContext.border])
   const useKeyColor = undefinedCoalesce([propsKeyColor, treeContext.keyColor])
+  const hasLabelBackgroundOnly = undefinedCoalesce([
+    propsLabelBackgroundOnly,
+    treeContext.labelBackgroundOnly,
+  ])
   const startingDepth = 0
   const depth = treeContext.depth ? treeContext.depth : startingDepth
 
@@ -153,6 +158,7 @@ const TreeLayout: FC<TreeProps> = ({
         density,
         depth: depth + 1,
         keyColor: useKeyColor,
+        labelBackgroundOnly: hasLabelBackgroundOnly,
       }}
     >
       <TreeStyle
@@ -166,6 +172,7 @@ const TreeLayout: FC<TreeProps> = ({
         iconGap={iconGap}
         indicatorSize={iconSize}
         keyColor={useKeyColor}
+        labelBackgroundOnly={hasLabelBackgroundOnly}
         selected={selected}
       >
         {innerAccordion}
