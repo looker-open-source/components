@@ -24,31 +24,24 @@
 
  */
 
-import React, { FC, ReactNode, useState } from 'react'
+import React, { FC, useState } from 'react'
 import styled from 'styled-components'
 import { FilterList } from '@styled-icons/material/FilterList'
 import { MoreVert } from '@styled-icons/material/MoreVert'
 import { SubdirectoryArrowLeft } from '@styled-icons/material/SubdirectoryArrowLeft'
 import { Info } from '@styled-icons/material-outlined/Info'
-import { ChevronRight } from '@styled-icons/material-rounded/ChevronRight'
-import { ExpandMore } from '@styled-icons/material-rounded/ExpandMore'
 import {
   IconButton,
   Menu,
   MenuItem,
   Tooltip,
   Popover,
-  Accordion,
-  AccordionContent,
-  AccordionDisclosure,
-  Space,
-  Truncate,
   Badge,
   Paragraph,
   Flex,
   FlexItem,
 } from '../..'
-import { Tree, TreeArtificial, TreeItem, TreeBranch } from '..'
+import { Tree, TreeItem, TreeBranch } from '..'
 import { HoverDisclosure } from '../../utils'
 
 const PickerItem: FC<{ color?: string; truncate?: boolean }> = ({
@@ -138,7 +131,7 @@ const StyledParagraph = styled(Paragraph)`
 `
 
 const fields = (
-  <TreeArtificial density={-3}>
+  <>
     <TreeBranch>
       <StyledParagraph
         color="text1"
@@ -175,35 +168,24 @@ const fields = (
     </TreeBranch>
     <PickerItem color="orange">Sum</PickerItem>
     <PickerItem color="orange">Max</PickerItem>
-  </TreeArtificial>
-)
-
-const ViewAccordion: FC<{
-  children: ReactNode
-  defaultOpen?: boolean
-  label: string
-}> = ({ children, defaultOpen, label }) => (
-  <Accordion
-    defaultOpen={defaultOpen}
-    indicatorSize="xxsmall"
-    indicatorIcons={{ close: <ChevronRight />, open: <ExpandMore /> }}
-  >
-    <AccordionDisclosure px="xxsmall" py="none" fontSize="xsmall">
-      <Space between>
-        <Truncate>{label}</Truncate>
-        <Badge intent="inform">1</Badge>
-      </Space>
-    </AccordionDisclosure>
-    <AccordionContent>{children}</AccordionContent>
-  </Accordion>
+  </>
 )
 
 export const FieldPicker = () => (
   <>
-    <ViewAccordion defaultOpen={true} label="Orders">
+    <Tree
+      density={-3}
+      defaultOpen={true}
+      detail={<Badge intent="inform">1</Badge>}
+      label="Orders"
+    >
       {fields}
-    </ViewAccordion>
-    <ViewAccordion label="Order Items">{fields}</ViewAccordion>
-    <ViewAccordion label="Users">{fields}</ViewAccordion>
+    </Tree>
+    <Tree density={-3} label="Order Items">
+      {fields}
+    </Tree>
+    <Tree density={-3} label="Users">
+      {fields}
+    </Tree>
   </>
 )
