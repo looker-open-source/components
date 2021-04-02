@@ -27,20 +27,16 @@
 import { css } from 'styled-components'
 import { Theme } from '@looker/design-tokens'
 import { IconSize } from '../../Icon'
-import { indicatorDefaults } from './indicatorDefaults'
 
 export const generateIndent = (
   depth: number,
   indicatorSize: IconSize,
   theme: Theme
 ) => {
-  const { sizes, space } = theme
-  const { indicatorGap } = indicatorDefaults
+  const { sizes } = theme
 
-  const treePaddingSize = space.xxsmall
   const indicatorIconSize = sizes[indicatorSize]
-  const indicatorGapSize = space[indicatorGap]
-  const indentCalculation = `${treePaddingSize} + (${indicatorIconSize} + ${indicatorGapSize}) * ${depth}`
+  const indentCalculation = `(${indicatorIconSize}) * ${depth}`
 
   return css`
     padding-left: calc(${indentCalculation});
