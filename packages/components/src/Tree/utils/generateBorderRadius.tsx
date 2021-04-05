@@ -24,20 +24,30 @@
 
  */
 
-import React from 'react'
-import styled from 'styled-components'
-import { TreeItem, Tree } from '..'
-import { generateBorderRadius } from '../utils/generateBorderRadius'
+import { RadiusSizes, Theme } from '@looker/design-tokens'
+import { css } from 'styled-components'
+import { AccordionDisclosureStyle } from '../../Accordion'
+import { ListItem } from '../../List/ListItem'
+import { ListItemLabel } from '../../List/ListItemLabel'
 
-export const BorderRadiusOverride = () => (
-  <BorderRadiusOverrideTree selected label="Created" defaultOpen dividers>
-    <TreeItem selected>Created Date</TreeItem>
-    <TreeItem selected>Created Month</TreeItem>
-    <TreeItem selected>Created Year</TreeItem>
-    <TreeItem selected>Created Quarter</TreeItem>
-  </BorderRadiusOverrideTree>
-)
+// util function to create medium border radius on Tree and sub-Tree components
+export const generateBorderRadius = (
+  borderRadius: RadiusSizes,
+  theme: Theme
+) => {
+  const { radii } = theme
 
-export const BorderRadiusOverrideTree = styled(Tree)`
-  ${({ theme }) => generateBorderRadius('medium', theme)}
-`
+  return css`
+    ${AccordionDisclosureStyle} {
+      border-radius: ${radii[borderRadius]};
+
+      ${ListItem} {
+        border-radius: ${radii[borderRadius]};
+      }
+    }
+
+    ${ListItemLabel} {
+      border-radius: ${radii[borderRadius]};
+    }
+  `
+}
