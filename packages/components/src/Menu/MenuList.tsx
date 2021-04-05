@@ -31,7 +31,10 @@ import { listPadding } from '../List/utils'
 import { NestedMenuProvider } from './NestedMenuProvider'
 
 export const MenuListInternal = forwardRef(
-  ({ children, ...props }: ListProps, forwardedRef: Ref<HTMLUListElement>) => {
+  (
+    { children, ...props }: Omit<ListProps, 'color' | 'keyColor'>,
+    forwardedRef: Ref<HTMLUListElement>
+  ) => {
     return (
       <NestedMenuProvider>
         <List role="menu" ref={forwardedRef} {...props}>

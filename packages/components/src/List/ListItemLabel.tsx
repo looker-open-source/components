@@ -27,7 +27,7 @@
 import { CompatibleHTMLProps, shouldForwardProp } from '@looker/design-tokens'
 import React, { FC } from 'react'
 import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
-import { ListItemRole, ListItemStatefulWithHoveredProps } from './types'
+import { ListItemRole, ListItemStatefulProps } from './types'
 import { listItemBackgroundColor } from './utils'
 
 export const ListItemLabelButton = styled.button`
@@ -73,7 +73,7 @@ const ListItemLabelLayout: FC<ListItemLabelProps> = ({
 
 interface ListItemLabelProps
   extends CompatibleHTMLProps<HTMLElement>,
-    ListItemStatefulWithHoveredProps {
+    ListItemStatefulProps {
   disabled?: boolean
   height?: number
   itemRole?: ListItemRole

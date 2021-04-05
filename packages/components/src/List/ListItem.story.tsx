@@ -30,10 +30,12 @@ import { PersonOutline } from '@styled-icons/material/PersonOutline'
 import { DateRange } from '@styled-icons/material-outlined/DateRange'
 import { SubdirectoryArrowLeft } from '@styled-icons/material/SubdirectoryArrowLeft'
 import { IconButton } from '../Button'
-import { Text } from '../Text'
+import { Heading, Text } from '../Text'
 import { Grid } from '../Layout/Grid'
+import { SpaceVertical } from '../Layout/Space/SpaceVertical'
 import { ListItem, ListItemProps } from './ListItem'
 import { ListItemRole } from './types'
+import { List } from './List'
 
 const Template: Story<ListItemProps> = (args) => <ListItem {...args} />
 
@@ -51,7 +53,7 @@ Icon.args = {
 export const IconColor = Template.bind({})
 IconColor.args = {
   ...Basic.args,
-  color: 'warn',
+  color: 'calculation',
   icon: <PersonOutline />,
 }
 
@@ -69,6 +71,45 @@ IconColorDisabled.args = {
   disabled: true,
   icon: <PersonOutline />,
 }
+
+const Example: FC<ListItemProps> = ({ children, ...props }) => {
+  const args = {
+    icon: <PersonOutline />,
+    ...props,
+  }
+
+  return (
+    <SpaceVertical>
+      <Heading as="h3">{children}</Heading>
+      <List width="100%">
+        <ListItem {...args}>Default</ListItem>
+        <ListItem {...args} color="key">
+          Key
+        </ListItem>
+        <ListItem {...args} color="calculation">
+          Calculation
+        </ListItem>
+        <ListItem {...args} color="dimension">
+          Dimension
+        </ListItem>
+        <ListItem {...args} color="measure">
+          Measure
+        </ListItem>
+      </List>
+    </SpaceVertical>
+  )
+}
+
+export const ColorComparison = () => (
+  <Grid columns={4}>
+    <Example>Default</Example>
+    <Example selected>Selected</Example>
+    <Example selected disabled>
+      Selected + Disabled
+    </Example>
+    <Example hovered>Hover</Example>
+  </Grid>
+)
 
 export const Detail = Template.bind({})
 Detail.args = {

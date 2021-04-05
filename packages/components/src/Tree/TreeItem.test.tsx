@@ -126,4 +126,58 @@ describe('TreeItem', () => {
     expect(onClick).not.toHaveBeenCalled()
     expect(onClickWhitespace).toHaveBeenCalledTimes(1)
   })
+
+  test('warns on duplicate color props', () => {
+    const globalConsole = global.console
+    const warnMock = jest.fn()
+
+    global.console = ({
+      warn: warnMock,
+    } as unknown) as Console
+
+    renderWithTheme(
+      <TreeItem keyColor color="calculation">
+        Whatever
+      </TreeItem>
+    )
+    expect(warnMock.mock.calls).toMatchInlineSnapshot(`
+      Array [
+        Array [
+          "color and keyColor cannot be combined, specify only one. keyColor is deprecated",
+        ],
+      ]
+    `)
+
+    global.console = globalConsole
+  })
+
+  test('keyColor', () => {
+    renderWithTheme(
+      <TreeItem selected keyColor>
+        Whatever
+      </TreeItem>
+    )
+    expect(screen.getByText('Whatever')).toHaveStyle('color: #262d33')
+    expect(screen.getByRole('listitem')).toHaveStyle('background: #f3f2ff')
+  })
+
+  test('warns onClickWhitespace && !labelBackgroundOnly', () => {
+    const globalConsole = global.console
+    const warnMock = jest.fn()
+
+    global.console = ({
+      warn: warnMock,
+    } as unknown) as Console
+
+    renderWithTheme(<TreeItem onClickWhitespace={jest.fn()}>Whatever</TreeItem>)
+    expect(warnMock.mock.calls).toMatchInlineSnapshot(`
+      Array [
+        Array [
+          "onClickWhitespace is only necessary on <TreeItem> when labelBackgroundOnly is enabled; use onClick on <TreeItem> or to its children instead",
+        ],
+      ]
+    `)
+
+    global.console = globalConsole
+  })
 })

@@ -26,7 +26,7 @@
 
 import { FontSizes, LineHeights, SpacingSizes } from '@looker/design-tokens'
 import { ReactNode } from 'react'
-import { IconSize } from '..'
+import { IconSize } from '../Icon'
 
 export type DensityRamp = -3 | -2 | -1 | 0 | 1
 
@@ -55,18 +55,45 @@ export const listItemDimensionKeys = [
   'detailFontSize',
 ]
 
-export interface ListItemStatefulProps {
-  statefulColor?: 'critical' | 'key' | 'neutral'
+export type LimitedListColor = 'key' | 'calculation' | 'dimension' | 'measure'
+export type ListColor = LimitedListColor | string
+
+export const listItemColorAppliesToLabel = ['calculation', 'measure']
+export const listItemColor = ['key', 'calculation', 'dimension', 'measure']
+
+export interface ListColorProps {
+  /**
+   * Replace the normal uiN(1-5) color, when ListItem is selected, with color label passed.
+   *
+   * List, ListItem, Tree & TreeItem now theme-based color assignments. Supported colors are:
+   *
+   *  - key
+   *  - calculation
+   *  - dimension
+   *  - measure
+   *
+   * The color is used a background color (using the `subtle` variant) when the item
+   * is `selected` or `current`. Items with `calculation` & `measure` will have a text
+   * color applied at all times unless they are `disabled`
+   */
+  color?: LimitedListColor
   /**
    * Replace the normal uiN(1-5) color for selected and selected + hovered color with key colors
+   * @todo - Remove in 2.x release
+   * @deprecated Use `color="key"` instead
    * @default false
    */
   keyColor?: boolean
+}
+
+export interface ListItemColorProps extends Pick<ListColorProps, 'keyColor'> {
   /**
-   * If true, the ListItem will have a "disabled" presentation.
-   * @default false
+   * Replace the normal uiN(1-5) color, when ListItem is selected, with color label passed.
    */
-  disabled?: boolean
+  color?: ListColor
+}
+
+export interface ListItemStatefulProps extends ListItemColorProps {
   /**
    * If true, the ListItem will have a darker background color (same as selected)
    * Note: Using current and selected at the same time is not recommended
@@ -74,21 +101,26 @@ export interface ListItemStatefulProps {
    */
   current?: boolean
   /**
+   * If true, the ListItem will have a "disabled" presentation.
+   * @default false
+   */
+  disabled?: boolean
+  /**
+   * Present ListItem in it's hovered state. Only for use in testing / image-snapshots.
+   *
+   * NOTE: This will only change the _initial_ hover state. If a hover event triggers a change
+   * of hover state the ListItem will return to it's default state.
+   *
+   * @private Test use only. May be deprecated and removed without notice.
+   * @default false
+   */
+  hovered?: boolean
+  /**
    * If true, the ListItem will have a darker background color
    * @default false
    */
   selected?: boolean
 }
-
-export interface ListItemStatefulWithHoveredProps
-  extends ListItemStatefulProps {
-  /**
-   * If true, the ListItem will have a light background color
-   * @default false
-   */
-  hovered?: boolean
-}
-
 interface DetailOptions {
   /**
    * If true, the detail will appear outside of the item's grey background on hover

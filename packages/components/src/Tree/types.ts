@@ -32,6 +32,7 @@ export interface TreeProps
   extends Omit<
       AccordionProps,
       | 'children'
+      | 'color'
       | 'content'
       | 'indicatorGap'
       | 'indicatorPosition'
