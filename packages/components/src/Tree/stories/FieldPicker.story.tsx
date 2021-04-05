@@ -31,18 +31,19 @@ import { MoreVert } from '@styled-icons/material/MoreVert'
 import { SubdirectoryArrowLeft } from '@styled-icons/material/SubdirectoryArrowLeft'
 import { Info } from '@styled-icons/material-outlined/Info'
 import {
+  Box,
   IconButton,
   Menu,
   MenuItem,
   Tooltip,
   Popover,
-  Badge,
   Paragraph,
   Flex,
   FlexItem,
 } from '../..'
-import { Tree, TreeItem, TreeBranch } from '..'
+import { TreeItem, TreeBranch } from '..'
 import { HoverDisclosure } from '../../utils'
+import { BorderRadiusOverrideTree } from './BorderRadius.story'
 
 const PickerItem: FC<{ color?: string; truncate?: boolean }> = ({
   children = 'Cost',
@@ -100,7 +101,7 @@ const PickerItem: FC<{ color?: string; truncate?: boolean }> = ({
       }}
       truncate={truncate}
     >
-      <Flex alignItems="center">
+      <Flex alignItems="center" px="xxsmall">
         <FlexItem flex={1}>{children}</FlexItem>
         <HoverDisclosure>
           <IconButton
@@ -145,11 +146,14 @@ const fields = (
         DIMENSIONS
       </StyledParagraph>
     </TreeBranch>
-    <Tree branchFontWeight label="Created">
+    <BorderRadiusOverrideTree
+      branchFontWeight
+      label={<Box px="xxsmall">Created</Box>}
+    >
       <PickerItem>Created Date</PickerItem>
       <PickerItem>Created Month</PickerItem>
       <PickerItem>Created Year</PickerItem>
-    </Tree>
+    </BorderRadiusOverrideTree>
     <PickerItem>City</PickerItem>
     <PickerItem>Country</PickerItem>
     <PickerItem>ID</PickerItem>
@@ -173,19 +177,28 @@ const fields = (
 
 export const FieldPicker = () => (
   <>
-    <Tree
+    <BorderRadiusOverrideTree
       density={-3}
       defaultOpen={true}
-      detail={<Badge intent="inform">1</Badge>}
-      label="Orders"
+      detail={3}
+      label={<Box px="xxsmall">Orders</Box>}
+      labelBackgroundOnly
     >
       {fields}
-    </Tree>
-    <Tree density={-3} label="Order Items">
+    </BorderRadiusOverrideTree>
+    <BorderRadiusOverrideTree
+      density={-3}
+      label={<Box px="xxsmall">Order Items</Box>}
+      labelBackgroundOnly
+    >
       {fields}
-    </Tree>
-    <Tree density={-3} label="Users">
+    </BorderRadiusOverrideTree>
+    <BorderRadiusOverrideTree
+      density={-3}
+      label={<Box px="xxsmall">Users</Box>}
+      labelBackgroundOnly
+    >
       {fields}
-    </Tree>
+    </BorderRadiusOverrideTree>
   </>
 )
