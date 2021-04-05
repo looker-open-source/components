@@ -31,6 +31,7 @@ export interface ListItemContextProps {
   density: DensityRamp
   iconGutter: boolean
   keyColor?: boolean
+  statefulColor?: 'critical' | 'key' | 'neutral'
 }
 
 const listItemContext: ListItemContextProps = {

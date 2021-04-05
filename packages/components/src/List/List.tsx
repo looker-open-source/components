@@ -52,6 +52,9 @@ export interface ListProps
    */
   density?: DensityRamp
 
+  /**
+   * Replace the normal uiN(1-5) color, when ListItem is selected, with color label passed.
+   */
   statefulColor?: 'critical' | 'key' | 'neutral'
 
   /**
@@ -156,9 +159,3 @@ export const List = styled(ListInternal)`
   list-style: none;
   overflow: auto;
 `
-
-// ${({ selected }) =>
-// selected &&
-// css`
-//   background: ${({ theme }) => theme.colors.criticalSubtle};
-// `}
