@@ -57,6 +57,9 @@ export interface ListProps
    */
   density?: DensityRamp
 
+  /**
+   * Replace the normal uiN(1-5) color, when ListItem is selected, with color label passed.
+   */
   statefulColor?: 'critical' | 'key' | 'neutral'
 
   /**
