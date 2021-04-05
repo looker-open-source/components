@@ -30,7 +30,7 @@ import { AccordionDisclosureStyle } from '../../Accordion'
 import { ListItem } from '../../List/ListItem'
 import { ListItemLabel } from '../../List/ListItemLabel'
 
-// util function to create medium border radius on Tree and sub-Tree components
+// Creates CSS for generating border radius on Tree and sub-Tree components
 export const generateBorderRadius = (
   borderRadius: RadiusSizes,
   theme: Theme
