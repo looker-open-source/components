@@ -154,6 +154,7 @@ const ListItemInternal = forwardRef(
       density: contextDensity,
       iconGutter,
       keyColor: contextKeyColor,
+      statefulColor,
     } = useContext(ListItemContext)
 
     const itemDimensions = listItemDimensions(propsDensity || contextDensity)
@@ -249,6 +250,7 @@ const ListItemInternal = forwardRef(
       hovered,
       keyColor,
       selected,
+      statefulColor,
     }
 
     const LabelCreator: FC<{
