@@ -26,9 +26,11 @@
 
 import 'jest-styled-components'
 import React from 'react'
-import { screen } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
 import { Basic, LongList } from './List.story'
+import { ListItem } from './ListItem'
+import { List } from './List'
 
 /* eslint-disable-next-line @typescript-eslint/unbound-method */
 const globalGetBoundingClientRect = Element.prototype.getBoundingClientRect
@@ -89,5 +91,74 @@ describe('List', () => {
 
       expect(screen.getByRole('list')).not.toHaveStyle('height: 100%')
     })
+  })
+  describe('color', () => {
+    test('displays the correct background when selected', () => {
+      renderWithTheme(
+        <List color="key">
+          <ListItem selected>Mozzarella</ListItem>
+        </List>
+      )
+      expect(screen.getByText('Mozzarella')).toBeInTheDocument()
+      expect(screen.getByText('Mozzarella').closest('button')).toHaveStyle(
+        'background: #F3F2FF;'
+      )
+    })
+
+    test('expects color="key" and keyColor have the same background-color value', () => {
+      renderWithTheme(
+        <>
+          <List color="key">
+            <ListItem selected>color</ListItem>
+          </List>
+          <List keyColor>
+            <ListItem selected>keyColor</ListItem>
+          </List>
+        </>
+      )
+      expect(screen.getByText('color').closest('button')).toHaveStyle(
+        'background: #F3F2FF;'
+      )
+      expect(screen.getByText('keyColor').closest('button')).toHaveStyle(
+        'background: #F3F2FF;'
+      )
+    })
+
+    test('updates ListItem get its text color updated', () => {
+      renderWithTheme(
+        <List color="calculation">
+          <ListItem selected>Mozzarella</ListItem>
+        </List>
+      )
+      expect(screen.getByText('Mozzarella')).toBeInTheDocument()
+      expect(screen.getByText('Mozzarella')).toHaveStyle('color: #319220;')
+    })
+  })
+
+  test('warns on duplicate color props', () => {
+    const globalConsole = global.console
+    const warnMock = jest.fn()
+
+    global.console = ({
+      warn: warnMock,
+    } as unknown) as Console
+
+    renderWithTheme(
+      <List keyColor color="calculation">
+        <ListItem>Whatevs</ListItem>
+      </List>
+    )
+    expect(warnMock.mock.calls).toMatchInlineSnapshot(`
+      Array [
+        Array [
+          "color and keyColor cannot be combined, specify only one. keyColor is deprecated",
+        ],
+        Array [
+          "color and keyColor cannot be combined, specify only one. keyColor is deprecated",
+        ],
+      ]
+    `)
+
+    global.console = globalConsole
   })
 })

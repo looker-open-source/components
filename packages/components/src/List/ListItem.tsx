@@ -49,6 +49,8 @@ import { ListItemLabel } from './ListItemLabel'
 import { ListItemLayout } from './ListItemLayout'
 import { ListItemLayoutAccessory } from './ListItemLayoutAccessory'
 import { ListItemWrapper } from './ListItemWrapper'
+import { listItemIconColor } from './utils/listItemIconColor'
+import { listItemLabelColor } from './utils/listItemLabelColor'
 import {
   DensityRamp,
   Detail,
@@ -70,10 +72,6 @@ const TruncateWrapper: FC<{
 export interface ListItemProps
   extends CompatibleHTMLProps<HTMLElement>,
     ListItemStatefulProps {
-  /**
-   * Determines color of child if child is a string
-   */
-  color?: string
   /**
    * Determines the sizing and spacing of the item
    * Notes:
@@ -122,19 +120,20 @@ export interface ListItemProps
 
 const ListItemInternal = forwardRef(
   (props: ListItemProps, ref: Ref<HTMLLIElement>) => {
-    const {
+    let {
       children,
       className,
-      color,
+      color: propsColor,
       current,
       density: propsDensity,
       description,
       detail,
       disabled = false,
+      hovered: propsHovered = false,
       href,
       icon,
       itemRole,
-      keyColor: propsKeyColor,
+      keyColor,
       onBlur,
       onClick,
       onClickWhitespace,
@@ -150,19 +149,27 @@ const ListItemInternal = forwardRef(
       ...restProps
     } = props
 
+    if (propsColor && keyColor) {
+      // eslint-disable-next-line no-console
+      console.warn(
+        'color and keyColor cannot be combined, specify only one. keyColor is deprecated'
+      )
+    } else if (keyColor) {
+      propsColor = 'key'
+    }
+
     const {
       density: contextDensity,
       iconGutter,
-      keyColor: contextKeyColor,
+      color: contextColor,
     } = useContext(ListItemContext)
 
     const itemDimensions = listItemDimensions(propsDensity || contextDensity)
-    const keyColor = undefinedCoalesce([propsKeyColor, contextKeyColor])
+    const color = undefinedCoalesce([propsColor, contextColor])
 
     const [focusVisible, setFocusVisible] = useState(false)
-    const [hovered, setHovered] = useState(false)
+    const [hovered, setHovered] = useState(propsHovered)
 
-    const labelColor = disabled ? 'text1' : color
     const descriptionColor = disabled ? 'text1' : 'text2'
 
     const handleOnBlur = (event: React.FocusEvent<HTMLElement>) => {
@@ -215,7 +222,7 @@ const ListItemInternal = forwardRef(
 
     const renderedChildren = (
       <Wrapper
-        color={labelColor}
+        color={listItemLabelColor(color, disabled)}
         fontSize={itemDimensions.labelFontSize}
         lineHeight={itemDimensions.labelLineHeight}
       >
@@ -244,16 +251,16 @@ const ListItemInternal = forwardRef(
     )
 
     const statefulProps = {
+      color,
       current,
       disabled,
       hovered,
-      keyColor,
       selected,
     }
 
     const LabelCreator: FC<{
       children: ReactNode
-      className: string
+      className?: string
     }> = ({ children, className }) => (
       <ListItemLabel
         itemRole={itemRole}
@@ -279,7 +286,7 @@ const ListItemInternal = forwardRef(
     const Layout = accessory ? ListItemLayoutAccessory : ListItemLayout
     const listItemContent = (
       <Layout
-        color={color}
+        color={listItemIconColor(color, disabled)}
         description={renderedDescription}
         detail={renderedDetail}
         disabled={disabled}
@@ -300,11 +307,11 @@ const ListItemInternal = forwardRef(
         onClickWhitespace && onClickWhitespace(event)
       }
     }
-
     return (
       <HoverDisclosureContext.Provider value={{ visible: hovered }}>
         <ListItemWrapper
           className={className}
+          color={listItemLabelColor(color, disabled)}
           description={description}
           disabled={disabled}
           focusVisible={focusVisible}

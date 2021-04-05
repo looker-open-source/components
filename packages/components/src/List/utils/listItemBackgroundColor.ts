@@ -26,40 +26,31 @@
 
 import { itemSelectedColor, Theme } from '@looker/design-tokens'
 import { css } from 'styled-components'
-import { ListItemStatefulWithHoveredProps } from '../types'
+import { ListItemStatefulProps } from '../types'
 
 export const listItemBackgroundColor = ({
-  statefulColor,
-  keyColor,
+  color,
   current,
   disabled,
   hovered,
   selected,
   theme: { colors },
-}: ListItemStatefulWithHoveredProps & { theme: Theme }) => {
-  const keyColors = {
-    all: colors.keySubtle,
-    hovered: colors.ui1,
-    selected: colors.keySubtle,
-  }
+}: ListItemStatefulProps & { theme: Theme }) => {
+  const stateColors = color
+    ? {
+        all: colors[`${color}Subtle`],
+        hovered: colors.ui1,
+        selected: colors[`${color}Subtle`],
+      }
+    : {
+        all: itemSelectedColor(colors.ui2),
+        hovered: colors.ui1,
+        selected: itemSelectedColor(colors.ui2),
+      }
 
-  const uiColors = {
-    all: itemSelectedColor(colors.ui2),
-    hovered: colors.ui1,
-    selected: itemSelectedColor(colors.ui2),
-  }
-
-  const stateColors = keyColor ? keyColors : uiColors
-  const colorValue =
-    statefulColor === 'key'
-      ? colors.keySubtle
-      : statefulColor === 'critical'
-      ? colors.criticalSubtle
-      : colors.neutralSubtle
   let renderedColor
 
   if (disabled) renderedColor = 'transparent'
-  else if (selected && statefulColor) renderedColor = colorValue
   else if ((selected || current) && hovered) renderedColor = stateColors.all
   else if (selected || current) renderedColor = stateColors.selected
   else if (hovered) renderedColor = stateColors.hovered

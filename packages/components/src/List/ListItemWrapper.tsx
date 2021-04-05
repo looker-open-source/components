@@ -24,16 +24,21 @@
 
  */
 
-import { CompatibleHTMLProps, shouldForwardProp } from '@looker/design-tokens'
+import {
+  CompatibleHTMLProps,
+  shouldForwardProp,
+  textColor,
+} from '@looker/design-tokens'
 import { StyledIconBase } from '@styled-icons/styled-icon'
 import omit from 'lodash/omit'
 import React, { forwardRef, ReactNode, Ref } from 'react'
 import styled from 'styled-components'
-import { ListItemDimensions, listItemDimensionKeys } from './types'
+import { ListColor, ListItemDimensions, listItemDimensionKeys } from './types'
 
 export interface ListItemWrapperProps
   extends CompatibleHTMLProps<HTMLLIElement>,
     ListItemDimensions {
+  color: ListColor
   description?: ReactNode // Should be eventually deleted because the CSS could be handled in layout pieces
   focusVisible?: boolean
 }
@@ -42,15 +47,9 @@ const ListItemWrapperInternal = forwardRef(
   (props: ListItemWrapperProps, ref: Ref<HTMLLIElement>) => {
     return (
       <li
-        {...omit(
-          props,
-          'current',
-          'focusVisible',
-          'hovered',
-          'keyColor',
-          'selected',
-          [...listItemDimensionKeys]
-        )}
+        {...omit(props, 'current', 'focusVisible', 'hovered', 'selected', [
+          ...listItemDimensionKeys,
+        ])}
         ref={ref}
         role="none"
       />
@@ -60,13 +59,13 @@ const ListItemWrapperInternal = forwardRef(
 
 ListItemWrapperInternal.displayName = 'ListItemWrapperInternal'
 
-export const ListItemWrapper = styled(
-  ListItemWrapperInternal
-).withConfig<ListItemWrapperProps>({
-  shouldForwardProp,
-})`
+export const ListItemWrapper = styled(ListItemWrapperInternal)
+  .withConfig<ListItemWrapperProps>({
+    shouldForwardProp,
+  })
+  .attrs(({ color = 'text5' }) => ({ color }))`
   align-items: center;
-  color: ${({ theme: { colors } }) => colors.text5};
+  ${textColor}
   display: flex;
   font-size: ${({ theme: { fontSizes } }) => fontSizes.small};
   font-weight: ${({ theme: { fontWeights } }) => fontWeights.normal};

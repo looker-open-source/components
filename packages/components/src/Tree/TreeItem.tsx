@@ -42,13 +42,23 @@ export interface TreeItemProps extends ListItemProps {
 const TreeItemLayout: FC<TreeItemProps> = ({
   children,
   density: propsDensity,
-  keyColor: propsKeyColor,
+  color: propsColor,
+  keyColor,
   onClickWhitespace,
   ...restProps
 }) => {
+  if (propsColor && keyColor) {
+    // eslint-disable-next-line no-console
+    console.warn(
+      'color and keyColor cannot be combined, specify only one. keyColor is deprecated'
+    )
+  } else if (keyColor) {
+    propsColor = 'key'
+  }
+
   const {
     density: contextDensity,
-    keyColor: contextKeyColor,
+    color: contextColor,
     labelBackgroundOnly,
   } = useContext(TreeContext)
 
@@ -58,13 +68,13 @@ const TreeItemLayout: FC<TreeItemProps> = ({
       'onClickWhitespace is only necessary on <TreeItem> when labelBackgroundOnly is enabled; use onClick on <TreeItem> or to its children instead'
     )
 
+  const color = undefinedCoalesce([propsColor, contextColor])
   const density = undefinedCoalesce([propsDensity, contextDensity])
-  const keyColor = undefinedCoalesce([propsKeyColor, contextKeyColor])
 
   return (
     <ListItem
       density={density}
-      keyColor={keyColor}
+      color={color}
       onClickWhitespace={onClickWhitespace}
       {...restProps}
     >

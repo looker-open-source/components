@@ -32,23 +32,25 @@ import React, {
   Ref,
   useMemo,
 } from 'react'
-import styled from 'styled-components'
-import { fontFamily, height, HeightProps } from 'styled-system'
 import {
   CompatibleHTMLProps,
   FontFamilies,
   shouldForwardProp,
+  height,
   width,
   WidthProps,
 } from '@looker/design-tokens'
+import { HeightProps, fontFamily } from 'styled-system'
+import styled from 'styled-components'
 import { useArrowKeyNav, useWindow } from '../utils'
 import { ListItemContext } from './ListItemContext'
+import { DensityRamp, ListColorProps } from './types'
 import { listItemDimensions } from './utils'
-import { DensityRamp } from './types'
 
 export interface ListProps
   extends HeightProps,
     WidthProps,
+    ListColorProps,
     Omit<CompatibleHTMLProps<HTMLUListElement>, 'label'> {
   /**
    * Determines how dense a list should be by affecting child ListItem
@@ -57,8 +59,6 @@ export interface ListProps
    */
   density?: DensityRamp
 
-  statefulColor?: 'critical' | 'key' | 'neutral'
-
   /**
    * If true, all ListItem children without an icon will reserve space for an icon
    * for alignment purposes.
@@ -66,15 +66,11 @@ export interface ListProps
   iconGutter?: boolean
 
   /**
-   * Specify font-family. Generally will end up inheriting `theme.fonts.body` but can be specified as `brand`, `code` or `body` to explicitly specify theme-controlled font-family
+   * Specify font-family. Can be specified as `brand`, `code` or `body` to explicitly
+   * specify theme-controlled font-family.
    * @default inherit
    */
   fontFamily?: FontFamilies
-
-  /**
-   * Replace the normal uiN(1-5) color for selected and selected + hovered color with key colors
-   */
-  keyColor?: boolean
 
   /**
    * Use windowing for long lists (strongly recommended to also define a width on List or its container)
@@ -95,7 +91,7 @@ export const ListInternal = forwardRef(
   (
     {
       children,
-      statefulColor,
+      color,
       density = 0,
       disabled,
       height,
@@ -110,6 +106,15 @@ export const ListInternal = forwardRef(
     }: ListProps,
     forwardedRef: Ref<HTMLUListElement>
   ) => {
+    if (color && keyColor) {
+      // eslint-disable-next-line no-console
+      console.warn(
+        'color and keyColor cannot be combined, specify only one. keyColor is deprecated'
+      )
+    } else if (keyColor) {
+      color = 'key'
+    }
+
     const childArray = useMemo(() => Children.toArray(children), [children])
 
     const itemDimensions = listItemDimensions(
@@ -147,10 +152,9 @@ export const ListInternal = forwardRef(
     })
 
     const context = {
+      color,
       density,
       iconGutter,
-      keyColor,
-      statefulColor,
     }
 
     return (
@@ -182,6 +186,7 @@ const ListStyle = styled.ul
   margin: 0;
   overflow: auto;
   padding: 0;
+  width: 100%;
 `
 
 export const List = styled(ListInternal)``

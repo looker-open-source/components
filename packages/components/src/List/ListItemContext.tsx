@@ -25,12 +25,13 @@
  */
 
 import { createContext } from 'react'
+import { ListColor } from '../List'
 import { DensityRamp } from './types'
 
 export interface ListItemContextProps {
   density: DensityRamp
   iconGutter: boolean
-  keyColor?: boolean
+  color?: ListColor
 }
 
 const listItemContext: ListItemContextProps = {
