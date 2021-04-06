@@ -26,9 +26,11 @@
 
 import 'jest-styled-components'
 import React from 'react'
-import { screen } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
 import { Basic, LongList } from './List.story'
+import { ListItem } from './ListItem'
+import { List } from './List'
 
 /* eslint-disable-next-line @typescript-eslint/unbound-method */
 const globalGetBoundingClientRect = Element.prototype.getBoundingClientRect
@@ -88,6 +90,41 @@ describe('List', () => {
       renderWithTheme(<Basic />)
 
       expect(screen.getByRole('list')).not.toHaveStyle('height: 100%')
+    })
+  })
+  describe('statefulColor', () => {
+    test('critical', () => {
+      renderWithTheme(
+        <List statefulColor="critical">
+          <ListItem selected>Mozzarella</ListItem>
+        </List>
+      )
+      expect(screen.getByText('Mozzarella')).toBeInTheDocument()
+      expect(screen.getByText('Mozzarella').closest('button')).toHaveStyle(
+        'background: #FFF2F4;'
+      )
+    })
+    test('neutral', () => {
+      renderWithTheme(
+        <List statefulColor="neutral">
+          <ListItem selected>Mozzarella</ListItem>
+        </List>
+      )
+      expect(screen.getByText('Mozzarella')).toBeInTheDocument()
+      expect(screen.getByText('Mozzarella').closest('button')).toHaveStyle(
+        'background: #FBFBFC;'
+      )
+    })
+    test('key', () => {
+      renderWithTheme(
+        <List statefulColor="key">
+          <ListItem selected>Mozzarella</ListItem>
+        </List>
+      )
+      expect(screen.getByText('Mozzarella')).toBeInTheDocument()
+      expect(screen.getByText('Mozzarella').closest('button')).toHaveStyle(
+        'background: #F3F2FF;'
+      )
     })
   })
 })
