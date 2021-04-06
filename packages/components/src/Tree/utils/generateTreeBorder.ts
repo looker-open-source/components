@@ -28,7 +28,6 @@
 import { css } from 'styled-components'
 import { Theme } from '@looker/design-tokens'
 import { IconSize } from '../../Icon'
-import { indicatorDefaults } from './indicatorDefaults'
 
 /**
  * Creates a vertical "border" for Tree's content container
@@ -39,14 +38,11 @@ export const generateTreeBorder = (
   indicatorSize: IconSize,
   theme: Theme
 ) => {
-  const { sizes, space } = theme
-  const { indicatorGap } = indicatorDefaults
+  const { sizes } = theme
 
   const itemBorderSize = '1px'
-  const itemPaddingSize = space.xxsmall
   const indicatorIconSize = sizes[indicatorSize]
-  const indicatorGapSize = space[indicatorGap]
-  const depthSize = `${itemPaddingSize} + (${indicatorIconSize} + ${indicatorGapSize}) * ${depth}`
+  const depthSize = `${indicatorIconSize} * ${depth}`
   const borderSpacer = `(${indicatorIconSize} + ${itemBorderSize}) / 2 + ${depthSize}`
 
   const preBorderStop = `calc(${borderSpacer} - ${itemBorderSize})`
