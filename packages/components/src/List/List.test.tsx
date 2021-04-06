@@ -27,6 +27,7 @@
 import 'jest-styled-components'
 import * as React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
 import { ListItem } from './ListItem'
 import { List } from './List'
 
@@ -93,6 +94,41 @@ describe('List', () => {
       const height = (3000 - 16) * 36
       expect(queryByTestId('before')).not.toBeInTheDocument()
       expect(getByTestId('after')).toHaveStyle(`height: ${height}px;`)
+    })
+  })
+  describe('statefulColor', () => {
+    test('critical', () => {
+      renderWithTheme(
+        <List statefulColor="critical">
+          <ListItem selected>Mozzarella</ListItem>
+        </List>
+      )
+      expect(screen.getByText('Mozzarella')).toBeInTheDocument()
+      expect(screen.getByText('Mozzarella').closest('button')).toHaveStyle(
+        'background: #FFF2F4;'
+      )
+    })
+    test('neutral', () => {
+      renderWithTheme(
+        <List statefulColor="neutral">
+          <ListItem selected>Mozzarella</ListItem>
+        </List>
+      )
+      expect(screen.getByText('Mozzarella')).toBeInTheDocument()
+      expect(screen.getByText('Mozzarella').closest('button')).toHaveStyle(
+        'background: #FBFBFC;'
+      )
+    })
+    test('key', () => {
+      renderWithTheme(
+        <List statefulColor="key">
+          <ListItem selected>Mozzarella</ListItem>
+        </List>
+      )
+      expect(screen.getByText('Mozzarella')).toBeInTheDocument()
+      expect(screen.getByText('Mozzarella').closest('button')).toHaveStyle(
+        'background: #F3F2FF;'
+      )
     })
   })
 })
