@@ -24,7 +24,7 @@
 
  */
 
-import { css, StyledComponent } from 'styled-components'
+import { css } from 'styled-components'
 import { Divider } from '../../Divider'
 import { ListDivider } from '../ListDivider'
 
@@ -34,7 +34,7 @@ import { ListDivider } from '../ListDivider'
  * and the top and bottom of each divider.
  * @param ItemComponent the styled item component in the collection, (e.g. MenuItem, ComboboxOption)
  */
-export const listPadding = (ItemComponent: StyledComponent<any, any>) => css`
+export const listPadding = css`
   > :first-child {
     margin-top: ${({ theme }) => theme.space.xsmall};
 
@@ -43,8 +43,8 @@ export const listPadding = (ItemComponent: StyledComponent<any, any>) => css`
     }
   }
 
-  ${ListDivider} + ${ItemComponent},
-  ${ItemComponent} + ${ListDivider} {
+  ${ListDivider} + *,
+  * + ${ListDivider} {
     margin-top: ${({ theme }) => theme.space.xsmall};
   }
 
