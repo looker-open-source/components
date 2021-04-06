@@ -29,6 +29,10 @@ import styled from 'styled-components'
 import { TreeItem, Tree } from '..'
 import { generateBorderRadius } from '../utils/generateBorderRadius'
 
+const BorderRadiusOverrideTree = styled(Tree)`
+  ${({ theme }) => generateBorderRadius('medium', theme)}
+`
+
 export const BorderRadiusOverride = () => (
   <BorderRadiusOverrideTree selected label="Created" defaultOpen dividers>
     <TreeItem selected>Created Date</TreeItem>
@@ -37,7 +41,3 @@ export const BorderRadiusOverride = () => (
     <TreeItem selected>Created Quarter</TreeItem>
   </BorderRadiusOverrideTree>
 )
-
-export const BorderRadiusOverrideTree = styled(Tree)`
-  ${({ theme }) => generateBorderRadius('medium', theme)}
-`

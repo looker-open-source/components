@@ -41,9 +41,13 @@ import {
   Flex,
   FlexItem,
 } from '../..'
-import { TreeItem, TreeBranch } from '..'
+import { TreeItem, TreeBranch, Tree } from '..'
 import { HoverDisclosure } from '../../utils'
-import { BorderRadiusOverrideTree } from './BorderRadius.story'
+import { generateBorderRadius } from '../utils/generateBorderRadius'
+
+const BorderRadiusOverrideTree = styled(Tree)`
+  ${({ theme }) => generateBorderRadius('medium', theme)}
+`
 
 const PickerItem: FC<{ color?: string; truncate?: boolean }> = ({
   children = 'Cost',
