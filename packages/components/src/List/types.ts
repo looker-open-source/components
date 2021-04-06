@@ -77,6 +77,10 @@ export interface ListItemStatefulProps {
    * @default false
    */
   selected?: boolean
+  /**
+   * Replace the normal uiN(1-5) color, when ListItem is selected, with color label passed.
+   */
+  statefulColor?: 'critical' | 'key' | 'neutral'
 }
 
 export interface ListItemStatefulWithHoveredProps
