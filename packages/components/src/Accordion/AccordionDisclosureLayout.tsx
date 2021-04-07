@@ -43,7 +43,9 @@ const Layout: FC<AccordionDisclosureLayoutProps> = ({
   indicatorPosition,
 }) => {
   const indicator = (
-    <Indicator>{isOpen ? indicatorIcons.open : indicatorIcons.close}</Indicator>
+    <AccordionIndicator>
+      {isOpen ? indicatorIcons.open : indicatorIcons.close}
+    </AccordionIndicator>
   )
 
   return (
@@ -55,7 +57,7 @@ const Layout: FC<AccordionDisclosureLayoutProps> = ({
   )
 }
 
-const Indicator = styled.div`
+export const AccordionIndicator = styled.div`
   align-items: center;
   display: flex;
   justify-content: center;
@@ -75,7 +77,7 @@ export const AccordionDisclosureLayout = styled(Layout)`
     flex: 1;
   }
 
-  & > ${Indicator} {
+  & > ${AccordionIndicator} {
     ${({ indicatorGap, indicatorPosition, theme: { space } }) =>
       indicatorPosition === 'left'
         ? `margin-right: ${space[indicatorGap]};`

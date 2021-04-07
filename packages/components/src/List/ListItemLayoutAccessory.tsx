@@ -61,8 +61,8 @@ export const ListItemLayoutAccessoryInternal: FC<ListItemLayoutProps> = ({
 
 export const ListItemLayoutAccessory = styled(
   ListItemLayoutAccessoryInternal
-).attrs(({ color, disabled }) => ({
-  color: disabled ? 'text1' : color || 'text1',
+).attrs(({ color = 'text2', disabled }) => ({
+  color: disabled ? 'text1' : color,
 }))`
   ${(props) => listItemPadding({ ...props })}
   ${listItemIconCSS}

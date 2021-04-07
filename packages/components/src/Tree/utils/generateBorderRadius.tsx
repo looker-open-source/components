@@ -24,18 +24,30 @@
 
  */
 
-import React from 'react'
-import { ArrowDropDown } from '@styled-icons/material/ArrowDropDown'
-import { ArrowRight } from '@styled-icons/material/ArrowRight'
-import { AccordionIndicatorProps } from '../../Accordion'
+import { RadiusSizes, Theme } from '@looker/design-tokens'
+import { css } from 'styled-components'
+import { AccordionDisclosureStyle } from '../../Accordion'
+import { ListItem } from '../../List/ListItem'
+import { ListItemLabel } from '../../List/ListItemLabel'
 
-export const indicatorDefaults: Required<
-  Omit<AccordionIndicatorProps, 'indicatorSize'>
-> = {
-  indicatorGap: 'none',
-  indicatorIcons: {
-    close: <ArrowRight />,
-    open: <ArrowDropDown />,
-  },
-  indicatorPosition: 'left',
+// Creates CSS for generating border radius on Tree and sub-Tree components
+export const generateBorderRadius = (
+  borderRadius: RadiusSizes,
+  theme: Theme
+) => {
+  const { radii } = theme
+
+  return css`
+    ${AccordionDisclosureStyle} {
+      border-radius: ${radii[borderRadius]};
+
+      ${ListItem} {
+        border-radius: ${radii[borderRadius]};
+      }
+    }
+
+    ${ListItemLabel} {
+      border-radius: ${radii[borderRadius]};
+    }
+  `
 }
