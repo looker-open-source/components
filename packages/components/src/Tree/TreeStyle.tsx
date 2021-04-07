@@ -51,7 +51,6 @@ interface TreeStyleProps extends ListItemStatefulWithHoveredProps {
   labelBackgroundOnly?: boolean
 }
 
-const indicatorSvgSize = 'small'
 const indicatorContainerSize = 'medium'
 
 export const TreeItemInner = styled(TreeItem)`
@@ -123,14 +122,7 @@ export const TreeStyle = styled.div<TreeStyleProps>`
     > ${AccordionDisclosureStyle} {
       ${AccordionIndicator} {
         height: ${({ theme }) => theme.sizes[indicatorContainerSize]};
-        margin-right: 0;
         width: ${({ theme }) => theme.sizes[indicatorContainerSize]};
-
-        /* stylelint-disable max-nesting-depth */
-        svg {
-          height: ${({ theme }) => theme.sizes[indicatorSvgSize]};
-          width: ${({ theme }) => theme.sizes[indicatorSvgSize]};
-        }
       }
 
       ${ListItem} {
