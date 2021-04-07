@@ -37,10 +37,7 @@ import { ListItemStatefulWithHoveredProps } from '../List/types'
 import { List, ListItem } from '../List'
 import { listItemLabelCSS } from '../List/ListItemLabel'
 import { IconPlaceholder, IconSize } from '../Icon'
-import {
-  AccordionDisclosureLayout,
-  Indicator,
-} from '../Accordion/AccordionDisclosureLayout'
+import { AccordionIndicator } from '../Accordion/AccordionDisclosureLayout'
 import { TreeItem } from './TreeItem'
 import { TreeBranch } from './TreeBranch'
 import { generateIndent, generateTreeBorder } from './utils'
@@ -124,7 +121,7 @@ export const TreeStyle = styled.div<TreeStyleProps>`
     }
 
     > ${AccordionDisclosureStyle} {
-      ${AccordionDisclosureLayout} > ${Indicator} {
+      ${AccordionIndicator} {
         height: ${({ theme }) => theme.sizes[indicatorContainerSize]};
         margin-right: 0;
         width: ${({ theme }) => theme.sizes[indicatorContainerSize]};
