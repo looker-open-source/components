@@ -343,15 +343,12 @@ export const InternalRangeSlider = forwardRef(
       if (!isEqual(value, boundedValue)) {
         setValue(sort(boundedValue))
       }
-      // Use JSON stringify for deep comparison
-      // Fixes issue where if a re-render occurs in the parent/ancestor
-      // between setValue(newValue) and the value prop updating,
-      // but the value prop is not memoized in the parent/ancestor
-      // shallow diffing in the deps array causes state value
-      // to be reverted to the stale prop value
-
+      // Compares of the min & max values (or fallbacks) themselves to avoid
+      // unintentionally reverting state value due to shallow diffing
+      // a newly instantiated but stale valueProp, if [valueProp] were used
+      // (see RerenderRepro story)
       // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [JSON.stringify(valueProp)])
+    }, valueProp || [min, max])
 
     /*
      * Fire onChange callback when internal value changes
