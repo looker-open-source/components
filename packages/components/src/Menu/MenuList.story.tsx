@@ -191,6 +191,15 @@ export const MenuListSpacing = () => (
   </Space>
 )
 
+export const AdjacentDividers = () => (
+  <MenuList>
+    <MenuItem>There should only be one divider here...</MenuItem>
+    <MenuDivider />
+    <MenuDivider />
+    <MenuItem>even though there are technically two</MenuItem>
+  </MenuList>
+)
+
 export default {
   component: MenuList,
   title: 'MenuList',
