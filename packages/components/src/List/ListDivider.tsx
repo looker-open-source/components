@@ -37,4 +37,6 @@ const ListDividerLayout: FC<{}> = (props) => (
 
 export const ListDivider = styled(ListDividerLayout)<SpaceProps>`
   ${space}
+
+  margin: ${({ theme }) => theme.space.xsmall} 0;
 `

@@ -26,7 +26,6 @@
 
 import { css } from 'styled-components'
 import { Divider } from '../../Divider'
-import { ListDivider } from '../ListDivider'
 
 /**
  * Produces a CSS interpolation for a styled collection component (e.g. Menu, Select)
@@ -41,11 +40,6 @@ export const listPadding = css`
     ${Divider} {
       display: none;
     }
-  }
-
-  ${ListDivider} + *,
-  * + ${ListDivider} {
-    margin-top: ${({ theme }) => theme.space.xsmall};
   }
 
   > :last-child {
