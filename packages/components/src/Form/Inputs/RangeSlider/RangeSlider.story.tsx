@@ -44,7 +44,6 @@ const NumberFilter = ({
   AST: { value?: number[] }
   onChange: (value: number[]) => void
 }) => {
-  // const rangeValue = React.useMemo(() => getRange(value), [value])
   const rangeValue = getRange(value)
   return (
     <RangeSlider min={0} max={100} value={rangeValue} onChange={onChange} />
@@ -86,5 +85,6 @@ export const RerenderRepro = () => {
 }
 
 RerenderRepro.parameters = {
+  docs: { disable: true },
   storyshots: { disable: true },
 }
