@@ -84,4 +84,15 @@ describe('Link', () => {
       'pizza noopener noreferrer'
     )
   })
+
+  test('External', () => {
+    renderWithTheme(
+      <Link href="https://looker.com" isExternal>
+        External Link
+      </Link>
+    )
+
+    const link = screen.getByText('External Link')
+    expect(link).toHaveAttribute('rel', 'external noreferrer')
+  })
 })
