@@ -30,12 +30,12 @@ import { fireEvent, screen } from '@testing-library/react'
 import { TreeItem } from '.'
 
 describe('TreeItem', () => {
-  test('Renders children', () => {
+  test('renders children', () => {
     const { getByText } = renderWithTheme(<TreeItem>Dimension</TreeItem>)
     getByText('Dimension')
   })
 
-  test('Does not trigger onClick on detail click when accessory === true', () => {
+  test('does not trigger onClick on detail click when accessory === true', () => {
     const onClick = jest.fn()
     const { getByText } = renderWithTheme(
       <TreeItem
@@ -51,7 +51,7 @@ describe('TreeItem', () => {
     expect(onClick).toHaveBeenCalledTimes(1)
   })
 
-  test('Triggers onClick on detail click when accessory === false', () => {
+  test('triggers onClick on detail click when accessory === false', () => {
     const onClick = jest.fn()
     const { getByText } = renderWithTheme(
       <TreeItem
@@ -67,7 +67,7 @@ describe('TreeItem', () => {
     expect(onClick).toHaveBeenCalledTimes(2)
   })
 
-  test('Hides and shows detail when detailHoverDisclosure is true', () => {
+  test('hides and shows detail when detailHoverDisclosure is true', () => {
     renderWithTheme(
       <TreeItem
         detail={{ content: 'Detail', options: { hoverDisclosure: true } }}

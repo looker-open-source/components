@@ -31,7 +31,7 @@ import { Button } from '../Button'
 import { Tree } from '.'
 
 describe('Tree', () => {
-  test('Renders string disclosure label and detail', () => {
+  test('renders string disclosure label and detail', () => {
     renderWithTheme(
       <Tree label="Tree Label" detail="Tree Detail">
         Hello World
@@ -42,7 +42,7 @@ describe('Tree', () => {
     screen.getByText('Tree Detail')
   })
 
-  test('Renders JSX Element disclosure label', () => {
+  test('renders JSX Element disclosure label', () => {
     renderWithTheme(
       <Tree label={<div>Tree JSX Label</div>} detail="Tree Detail">
         Hello World
@@ -52,7 +52,7 @@ describe('Tree', () => {
     screen.getByText('Tree JSX Label')
   })
 
-  test('Renders and hides children on disclosure click', () => {
+  test('renders and hides children on disclosure click', () => {
     renderWithTheme(<Tree label="Tree Label">Hello World</Tree>)
 
     const treeLabel = screen.getByText('Tree Label')
@@ -63,7 +63,7 @@ describe('Tree', () => {
     expect(screen.queryByText('Hello World')).not.toBeInTheDocument()
   })
 
-  test('Shows children by default when defaultOpen is true (and uses uncontrolled open state)', () => {
+  test('shows children by default when defaultOpen is true (and uses uncontrolled open state)', () => {
     renderWithTheme(
       <Tree label="Tree Label" defaultOpen>
         Hello World
@@ -72,7 +72,7 @@ describe('Tree', () => {
     screen.getByText('Hello World')
   })
 
-  test('Handles controlled open state via isOpen and toggleOpen props', () => {
+  test('handles controlled open state via isOpen and toggleOpen props', () => {
     const Wrapper = () => {
       const [isOpen, setIsOpen] = useState(true)
 
@@ -91,7 +91,7 @@ describe('Tree', () => {
     expect(screen.queryByText('Hello World')).not.toBeInTheDocument()
   })
 
-  test('Triggers onClose and onOpen callbacks when provided via props', () => {
+  test('triggers onClose and onOpen callbacks when provided via props', () => {
     const onClose = jest.fn()
     const onOpen = jest.fn()
 
@@ -108,7 +108,7 @@ describe('Tree', () => {
     expect(onClose).toHaveBeenCalledTimes(1)
   })
 
-  test('Clicks on detail do not open the Tree or trigger callbacks when accessory === true', () => {
+  test('clicks on detail do not open the Tree or trigger callbacks when accessory === true', () => {
     const onOpen = jest.fn()
     const onClose = jest.fn()
     renderWithTheme(
@@ -133,7 +133,7 @@ describe('Tree', () => {
     expect(onOpen).toHaveBeenCalledTimes(0)
   })
 
-  test('Key presses on detail do not open the Tree or trigger callbacks when accessory === true', () => {
+  test('does not open the Tree or trigger callbacks when accessory === true on detail key presses', () => {
     const onOpen = jest.fn()
     const onClose = jest.fn()
     renderWithTheme(
@@ -160,7 +160,7 @@ describe('Tree', () => {
     expect(onOpen).toHaveBeenCalledTimes(0)
   })
 
-  test('Clicks on detail open the Tree and trigger callbacks when accessory === false', () => {
+  test('opens the Tree and trigger callbacks when accessory === false on detail clicks', () => {
     const onOpen = jest.fn()
     const onClose = jest.fn()
     renderWithTheme(
@@ -185,7 +185,7 @@ describe('Tree', () => {
     expect(onClose).toHaveBeenCalledTimes(1)
   })
 
-  test('Shows and hides detail on Tree hover when hoverDisclosure === true', () => {
+  test('shows and hides detail on Tree hover when hoverDisclosure === true', () => {
     renderWithTheme(
       <Tree
         label="Tree Label"
