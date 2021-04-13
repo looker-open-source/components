@@ -24,19 +24,7 @@
 
  */
 
-import path from 'path'
 import initStoryshots from '@storybook/addon-storyshots'
+import { a11y } from 'storybook/src/setup/storyshotsConfig'
 
-/**
- * Yes, we intentionally break the dependency graph for `@looker/storybook-config`
- * It's okay because this code will never ship in the library (it's just to enable
- * Storybook generation)
- *
- * Don't add a package dependency to @looker/storybook-config because it will create a
- * looped dependency and make everybody's life terrible.
- */
-
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { a11y } from '@looker/storybook-config'
-
-initStoryshots(a11y(path.resolve(__dirname, '../')))
+initStoryshots(a11y())

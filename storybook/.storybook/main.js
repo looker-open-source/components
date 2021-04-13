@@ -24,7 +24,7 @@
 
  */
 
-const main = require('@looker/storybook-config/src/main')
+const main = require('../src/setup/main')
 module.exports = {
   ...main,
   stories: ['../src/**/*.stories.tsx', '../../packages/**/*.story.tsx'],

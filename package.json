@@ -48,10 +48,10 @@
     "test": "yarn jest",
 
     "storybook": "yarn workspace storybook develop",
-    "storybook-docs": "yarn workspace storybook develop-docs",
+    "storybook-nodocs": "yarn workspace storybook develop",
 
     "prestoryshots": "yarn prebuild",
-    "storyshots": "export storybookBuildMode=fast && yarn lerna run storybook-build --scope '@looker/*' --stream --parallel",
+    "storyshots": "export storybookBuildMode=fast && yarn workspace storybook build",
 
     "pretest:image-snapshots": "yarn storyshots",
     "test:image-snapshots": "yarn jest --config jest-image-snapshots.config.js",
