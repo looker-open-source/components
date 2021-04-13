@@ -33,6 +33,7 @@ import {
   Box,
   Button,
   ButtonOutline,
+  CopyToClipboard,
   Dialog,
   FieldSelect,
   FieldToggleSwitch,
@@ -436,5 +437,25 @@ export const MouseUp = () => {
 }
 
 MouseUp.parameters = {
+  storyshots: { disable: true },
+}
+
+export const MultiFunctionButton = () => {
+  return (
+    <Popover
+      content={
+        <PopoverContent>
+          <CopyToClipboard success="Copied" content="Copy content">
+            <Button>Copy</Button>
+          </CopyToClipboard>
+        </PopoverContent>
+      }
+    >
+      <Button>Open Popover</Button>
+    </Popover>
+  )
+}
+MultiFunctionButton.parameters = {
+  docs: { disable: true },
   storyshots: { disable: true },
 }
