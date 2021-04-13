@@ -5,9 +5,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "start-storybook  -c .storybook -p 3333  --host 0.0.0.0",
-    "develop": "export storybookBuildMode=develop && yarn start",
-    "develop-docs": "export storybookBuildMode=develop-docs && yarn start",
+    "develop": "start-storybook  -c .storybook -p 3333  --host 0.0.0.0",
     "build": "build-storybook -c .storybook"
   },
   "dependencies": {
