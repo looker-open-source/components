@@ -24,7 +24,7 @@
 
  */
 
-import React, { FC, ReactNode, useState } from 'react'
+import React, { FC, ReactNode } from 'react'
 import { Spinner } from '../../Spinner'
 import { DialogContent } from './DialogContent'
 import { DialogFooter } from './DialogFooter'
@@ -73,16 +73,8 @@ export const DialogLayout: FC<DialogLayoutProps> = ({
   header,
   headerCloseButton = !footer && true,
   headerDetail,
-  isLoading: isContentLoading,
+  isLoading,
 }) => {
-  // Delay rendering dialog content by one frame.
-  // This resolves a race condition where child content that needs a dom measurement
-  // finds width/height to be zero when it measures before dialog content finishes rendering.
-  const [isInitialLoad, setIsInitialLoad] = useState(true)
-  requestAnimationFrame(() => {
-    setIsInitialLoad(false)
-  })
-
   const dialogHeader = header && (
     <DialogHeader hideClose={!headerCloseButton} detail={headerDetail}>
       {header}
@@ -97,7 +89,7 @@ export const DialogLayout: FC<DialogLayoutProps> = ({
     <>
       {dialogHeader}
       <DialogContent hasFooter={!dialogFooter} hasHeader={!dialogHeader}>
-        {isContentLoading || isInitialLoad ? <DialogLoading /> : children}
+        {isLoading ? <DialogLoading /> : children}
       </DialogContent>
       {dialogFooter}
     </>
