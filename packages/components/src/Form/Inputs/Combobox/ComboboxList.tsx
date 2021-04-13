@@ -54,8 +54,6 @@ import { listPadding } from '../../../List/utils'
 import { useResize } from '../../../utils'
 import { ComboboxOptionIndicatorProps } from './types'
 import { ComboboxContext, ComboboxMultiContext } from './ComboboxContext'
-import { ComboboxOption } from './ComboboxOption'
-import { ComboboxMultiOption } from './ComboboxMultiOption'
 import { useBlur } from './utils/useBlur'
 import { useKeyDown } from './utils/useKeyDown'
 import { useListWidths } from './utils/useListWidths'
@@ -293,8 +291,7 @@ export const ComboboxUl = styled.ul.withConfig({
   position: relative;
   ${layout}
 
-  ${({ isMulti }) =>
-    listPadding(isMulti ? ComboboxMultiOption : ComboboxOption)}
+  ${listPadding}
 `
 
 export const ComboboxList = (props: ComboboxListProps) => (

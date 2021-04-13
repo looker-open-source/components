@@ -35,6 +35,17 @@ const ListDividerLayout: FC<{}> = (props) => (
   </li>
 )
 
+/**
+ * Divider component used to create borders between items
+ * Note: If 2 ListDividers are adjacent, the second one will automatically hide itself
+ */
 export const ListDivider = styled(ListDividerLayout)<SpaceProps>`
   ${space}
+
+  margin: ${({ theme }) => theme.space.xsmall} 0;
+
+  /* CSS for hiding second divider when 2 ListDividers are adjacent */
+  & + & {
+    display: none;
+  }
 `
