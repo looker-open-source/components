@@ -28,6 +28,9 @@ import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import { DialogLongContent } from '../../__mocks__/DialogLongContent'
 import { DialogMediumContent } from '../../__mocks__/DialogMediumContent'
+import { SpaceVertical } from '../../Layout/Space/SpaceVertical'
+import { CopyToClipboard } from '../../CopyToClipboard'
+import { Button } from '../../Button'
 import { Dialog, DialogProps } from '../Dialog'
 import { dialogSizes } from '../dialogWidth'
 import { dialogPlacements } from '../DialogSurface'
@@ -137,6 +140,28 @@ export const ClickOutside = () => {
 }
 
 ClickOutside.parameters = {
+  docs: { disable: true },
+  storyshots: { disable: true },
+}
+
+export const MultiFunctionButton = () => {
+  return (
+    <Dialog
+      content={
+        <DialogLayout header="A Dialog Example">
+          <SpaceVertical>
+            <CopyToClipboard success="Copied" content="Copy content">
+              <Button>Copy</Button>
+            </CopyToClipboard>
+          </SpaceVertical>
+        </DialogLayout>
+      }
+    >
+      <Button>Open Dialog</Button>
+    </Dialog>
+  )
+}
+MultiFunctionButton.parameters = {
   docs: { disable: true },
   storyshots: { disable: true },
 }
