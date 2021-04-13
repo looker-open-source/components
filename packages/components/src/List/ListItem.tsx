@@ -173,23 +173,29 @@ const ListItemInternal = forwardRef(
       onBlur && onBlur(event)
     }
 
-    const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    const handleOnClick = (event: React.MouseEvent<HTMLElement>) => {
       setFocusVisible(false)
       onClick && onClick(event)
     }
 
-    const handleKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
+    const handleOnKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
       onKeyDown && onKeyDown(event)
       setFocusVisible(true)
     }
 
-    const handleKeyUp = (event: React.KeyboardEvent<HTMLElement>) => {
+    const handleOnKeyUp = (event: React.KeyboardEvent<HTMLElement>) => {
       onKeyUp && onKeyUp(event)
       setFocusVisible(true)
     }
 
-    const handleMouseEnter = useWrapEvent(() => setHovered(true), onMouseEnter)
-    const handleMouseLeave = useWrapEvent(() => setHovered(false), onMouseLeave)
+    const handleOnMouseEnter = useWrapEvent(
+      () => setHovered(true),
+      onMouseEnter
+    )
+    const handleOnMouseLeave = useWrapEvent(
+      () => setHovered(false),
+      onMouseLeave
+    )
 
     if (disabled && itemRole === 'link') {
       // eslint-disable-next-line no-console
@@ -250,9 +256,9 @@ const ListItemInternal = forwardRef(
         height={itemDimensions.height}
         href={href}
         onBlur={handleOnBlur}
-        onClick={disabled ? undefined : handleClick}
-        onKeyDown={handleKeyDown}
-        onKeyUp={handleKeyUp}
+        onClick={disabled ? undefined : handleOnClick}
+        onKeyDown={handleOnKeyDown}
+        onKeyUp={handleOnKeyUp}
         rel={createSafeRel(rel, target)}
         role={role || 'listitem'}
         target={target}
@@ -281,7 +287,7 @@ const ListItemInternal = forwardRef(
       </Layout>
     )
 
-    const handlePaddingClick = (event: React.MouseEvent<HTMLElement>) => {
+    const handleOnPaddingClick = (event: React.MouseEvent<HTMLElement>) => {
       if (event.currentTarget === event.target) {
         setFocusVisible(true)
         onClick && onClick(event)
@@ -295,9 +301,9 @@ const ListItemInternal = forwardRef(
           description={description}
           disabled={disabled}
           focusVisible={focusVisible}
-          onClick={wrapperClick ? handlePaddingClick : undefined}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
+          onClick={wrapperClick ? handleOnPaddingClick : undefined}
+          onMouseEnter={handleOnMouseEnter}
+          onMouseLeave={handleOnMouseLeave}
           ref={ref}
           {...itemDimensions}
           {...restProps}

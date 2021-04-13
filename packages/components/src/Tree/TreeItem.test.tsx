@@ -30,12 +30,12 @@ import { fireEvent, screen } from '@testing-library/react'
 import { Tree, TreeItem } from '.'
 
 describe('TreeItem', () => {
-  test('renders children', () => {
+  test('Renders children', () => {
     const { getByText } = renderWithTheme(<TreeItem>Dimension</TreeItem>)
     getByText('Dimension')
   })
 
-  test('does not trigger onClick on detail click when accessory === true', () => {
+  test('Does not trigger onClick on detail click when accessory === true', () => {
     const onClick = jest.fn()
     const { getByText } = renderWithTheme(
       <TreeItem
@@ -51,7 +51,7 @@ describe('TreeItem', () => {
     expect(onClick).toHaveBeenCalledTimes(1)
   })
 
-  test('triggers onClick on detail click when accessory === false', () => {
+  test('Triggers onClick on detail click when accessory === false', () => {
     const onClick = jest.fn()
     const { getByText } = renderWithTheme(
       <TreeItem
@@ -67,7 +67,7 @@ describe('TreeItem', () => {
     expect(onClick).toHaveBeenCalledTimes(2)
   })
 
-  test('hides and shows detail when detailHoverDisclosure is true', () => {
+  test('Hides and shows detail when detailHoverDisclosure is true', () => {
     renderWithTheme(
       <TreeItem
         detail={{ content: 'Detail', options: { hoverDisclosure: true } }}
@@ -81,7 +81,7 @@ describe('TreeItem', () => {
     expect(screen.queryByText('Detail')).toBeInTheDocument()
   })
 
-  test('triggers onClick when indent padding is clicked when parent Tree has labelBackgroundOnly', () => {
+  test('Triggers onClick when indent padding is clicked when parent Tree has labelBackgroundOnly', () => {
     const onClick = jest.fn()
     renderWithTheme(
       <Tree defaultOpen label="Parent Tree" labelBackgroundOnly>
