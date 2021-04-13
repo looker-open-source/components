@@ -113,6 +113,14 @@ export interface ListItemProps
    * If true, text children and description will be truncated if text overflows
    */
   truncate?: boolean
+  /**
+   * If true, passed-in onClick callbacks will be applied to the wrapper and will only be called when:
+   *  1. The first ListItemLabel child is clicked
+   *  2. The ListItem is clicked (and the target is not a child)
+   * Note: This helps support TreeItem click behavior when Tree's labelBackgroundOnly prop is enabled
+   * @private
+   */
+  wrapperClick?: boolean
 }
 
 const ListItemInternal = forwardRef(
@@ -141,6 +149,7 @@ const ListItemInternal = forwardRef(
       selected,
       target,
       truncate,
+      wrapperClick,
       ...restProps
     } = props
 
@@ -164,29 +173,23 @@ const ListItemInternal = forwardRef(
       onBlur && onBlur(event)
     }
 
-    const handleOnClick = (event: React.MouseEvent<HTMLElement>) => {
+    const handleClick = (event: React.MouseEvent<HTMLElement>) => {
       setFocusVisible(false)
       onClick && onClick(event)
     }
 
-    const handleOnKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
+    const handleKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
       onKeyDown && onKeyDown(event)
       setFocusVisible(true)
     }
 
-    const handleOnKeyUp = (event: React.KeyboardEvent<HTMLElement>) => {
+    const handleKeyUp = (event: React.KeyboardEvent<HTMLElement>) => {
       onKeyUp && onKeyUp(event)
       setFocusVisible(true)
     }
 
-    const handleOnMouseEnter = useWrapEvent(
-      () => setHovered(true),
-      onMouseEnter
-    )
-    const handleOnMouseLeave = useWrapEvent(
-      () => setHovered(false),
-      onMouseLeave
-    )
+    const handleMouseEnter = useWrapEvent(() => setHovered(true), onMouseEnter)
+    const handleMouseLeave = useWrapEvent(() => setHovered(false), onMouseLeave)
 
     if (disabled && itemRole === 'link') {
       // eslint-disable-next-line no-console
@@ -247,9 +250,9 @@ const ListItemInternal = forwardRef(
         height={itemDimensions.height}
         href={href}
         onBlur={handleOnBlur}
-        onClick={disabled ? undefined : handleOnClick}
-        onKeyDown={handleOnKeyDown}
-        onKeyUp={handleOnKeyUp}
+        onClick={disabled ? undefined : handleClick}
+        onKeyDown={handleKeyDown}
+        onKeyUp={handleKeyUp}
         rel={createSafeRel(rel, target)}
         role={role || 'listitem'}
         target={target}
@@ -278,6 +281,13 @@ const ListItemInternal = forwardRef(
       </Layout>
     )
 
+    const handlePaddingClick = (event: React.MouseEvent<HTMLElement>) => {
+      if (event.currentTarget === event.target) {
+        setFocusVisible(true)
+        onClick && onClick(event)
+      }
+    }
+
     return (
       <HoverDisclosureContext.Provider value={{ visible: hovered }}>
         <ListItemWrapper
@@ -285,8 +295,9 @@ const ListItemInternal = forwardRef(
           description={description}
           disabled={disabled}
           focusVisible={focusVisible}
-          onMouseEnter={handleOnMouseEnter}
-          onMouseLeave={handleOnMouseLeave}
+          onClick={wrapperClick ? handlePaddingClick : undefined}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
           ref={ref}
           {...itemDimensions}
           {...restProps}

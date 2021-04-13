@@ -112,7 +112,10 @@ const PickerItem: FC<{ color?: string; truncate?: boolean }> = ({
             icon={<SubdirectoryArrowLeft />}
             label="Pivot"
             tooltipPlacement="top"
-            onClick={() => alert('Pivot')}
+            onClick={(event) => {
+              event.stopPropagation()
+              alert('Pivot')
+            }}
           />
           <Popover
             content="hello world"
