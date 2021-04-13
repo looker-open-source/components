@@ -24,9 +24,8 @@
 
  */
 
-import { css, StyledComponent } from 'styled-components'
+import { css } from 'styled-components'
 import { Divider } from '../../Divider'
-import { ListDivider } from '../ListDivider'
 
 /**
  * Produces a CSS interpolation for a styled collection component (e.g. Menu, Select)
@@ -34,18 +33,13 @@ import { ListDivider } from '../ListDivider'
  * and the top and bottom of each divider.
  * @param ItemComponent the styled item component in the collection, (e.g. MenuItem, ComboboxOption)
  */
-export const listPadding = (ItemComponent: StyledComponent<any, any>) => css`
+export const listPadding = css`
   > :first-child {
     margin-top: ${({ theme }) => theme.space.xsmall};
 
     ${Divider} {
       display: none;
     }
-  }
-
-  ${ListDivider} + ${ItemComponent},
-  ${ItemComponent} + ${ListDivider} {
-    margin-top: ${({ theme }) => theme.space.xsmall};
   }
 
   > :last-child {

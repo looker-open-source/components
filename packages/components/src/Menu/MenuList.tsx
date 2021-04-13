@@ -29,7 +29,6 @@ import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
 import { List, ListProps } from '../List'
 import { listPadding } from '../List/utils'
-import { MenuItem } from './MenuItem'
 import { NestedMenuProvider } from './NestedMenuProvider'
 
 export interface MenuListProps extends ListProps, WidthProps {}
@@ -55,5 +54,5 @@ export const MenuList = styled(MenuListInternal)`
   min-width: 12rem;
   overflow: auto;
 
-  ${() => listPadding(MenuItem)}
+  ${listPadding}
 `
