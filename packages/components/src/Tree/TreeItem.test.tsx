@@ -81,7 +81,7 @@ describe('TreeItem', () => {
     expect(screen.queryByText('Detail')).toBeInTheDocument()
   })
 
-  test('only triggers onClick on clicks to first label child and indent padding when parent Tree has labelBackgroundOnly', () => {
+  test('triggers onClick when indent padding is clicked when parent Tree has labelBackgroundOnly', () => {
     const onClick = jest.fn()
     renderWithTheme(
       <Tree defaultOpen label="Parent Tree" labelBackgroundOnly>
@@ -98,25 +98,9 @@ describe('TreeItem', () => {
       </Tree>
     )
 
-    const itemText = screen.getByText('Item Label')
-    const itemButton = screen.getByText('Item Button')
-    const detailButton = screen.getByText('Detail Button')
-
     // Expect indent padding click to trigger TreeItem onClick (i.e. non-TreeItem child click)
     // Note: This selector needs to change once Tree ARIA roles are implemented
     fireEvent.click(screen.getAllByRole('listitem')[1])
-    expect(onClick).toHaveBeenCalledTimes(1)
-
-    // Expect first label child click to trigger TreeItem onClick
-    fireEvent.click(itemText)
-    expect(onClick).toHaveBeenCalledTimes(2)
-
-    // Do not expect second label child click to trigger TreeItem onClick
-    fireEvent.click(itemButton)
-    expect(onClick).toHaveBeenCalledTimes(2)
-
-    // Do not expect detail clicks to trigger TreeItem onClick
-    fireEvent.click(detailButton)
-    expect(onClick).toHaveBeenCalledTimes(2)
+    expect(onClick).toHaveBeenCalled()
   })
 })
