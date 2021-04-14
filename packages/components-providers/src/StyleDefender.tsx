@@ -32,6 +32,7 @@ export const StyleDefender = styled.div`
   font-family: ${({ theme }) => theme.fonts.body};
   font-size: 16px;
   height: 100%;
+  line-height: normal;
   width: 100%;
 
   *,
