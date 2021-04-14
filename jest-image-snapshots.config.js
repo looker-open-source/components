@@ -27,7 +27,7 @@
 process.env.TZ = 'UTC'
 
 module.exports = {
-  moduleDirectories: ['./node_modules', './packages'],
+  moduleDirectories: ['./node_modules', './packages', './storybook'],
   moduleFileExtensions: ['js', 'json', 'ts', 'tsx'],
   moduleNameMapper: {
     '@looker/([^/]+)$': '<rootDir>/packages/$1/src',

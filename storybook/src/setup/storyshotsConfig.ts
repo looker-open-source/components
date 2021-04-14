@@ -30,11 +30,11 @@ import { StoryshotsOptions } from '@storybook/addon-storyshots/dist/api/Storysho
 
 const STORYBOOK_DEFAULT_VIEWPORT = { height: 600, width: 800 }
 
-export const imageSnapshots = (pkg: string) => {
-  const storybookUrl = `file:///${path.resolve(pkg, 'storybook-static')}`
+export const imageSnapshots = () => {
+  const storybookUrl = `file://${path.resolve('storybook/storybook-static')}`
 
   return {
-    configPath: `${pkg}/.storybook`,
+    configPath: `storybook/.storybook`,
     framework: 'react',
     suite: 'Image Snapshots',
     test: imageSnapshot({
@@ -74,7 +74,7 @@ export const imageSnapshots = (pkg: string) => {
       getMatchOptions({ context: { kind, story } }) {
         return {
           customSnapshotIdentifier: story,
-          customSnapshotsDir: path.join(pkg, 'snapshots', ...kind.split('/')),
+          customSnapshotsDir: path.join('snapshots', ...kind.split('/')),
           failureThreshold: 0.005,
           failureThresholdType: 'percent',
         }
@@ -90,11 +90,11 @@ export const imageSnapshots = (pkg: string) => {
   } as StoryshotsOptions
 }
 
-export const a11y = (pkg: string) => {
-  const storybookUrl = `file:///${path.resolve(pkg, 'storybook-static')}`
+export const a11y = () => {
+  const storybookUrl = 'storybook/storybook-static'
 
   return {
-    configPath: `${pkg}/.storybook`,
+    configPath: `storybook/.storybook`,
     framework: 'react',
     suite: 'a11y suite',
     test: axeTest({ storybookUrl }),

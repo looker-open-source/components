@@ -5,9 +5,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "start-storybook  -c .storybook -p 3333  --host 0.0.0.0",
-    "develop": "export storybookBuildMode=develop && yarn start",
-    "develop-docs": "export storybookBuildMode=develop-docs && yarn start",
+    "develop": "start-storybook  -c .storybook -p 3333  --host 0.0.0.0",
     "build": "build-storybook -c .storybook"
   },
   "dependencies": {
@@ -26,6 +24,7 @@
     "@storybook/addon-a11y": "^6.1.15",
     "@storybook/addon-essentials": "^6.1.15",
     "@storybook/addon-storyshots": "^6.1.15",
+    "@storybook/addon-storyshots-puppeteer": "^6.1.15",
     "babel-loader": "^8.2.2"
   }
 }

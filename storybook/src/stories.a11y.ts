@@ -24,10 +24,7 @@
 
  */
 
-module.exports = (api) => {
-  api.cache(true)
+import initStoryshots from '@storybook/addon-storyshots'
+import { a11y } from './setup/storyshotsConfig'
 
-  return {
-    extends: '../../babel.config.js',
-  }
-}
+initStoryshots(a11y())

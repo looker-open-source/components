@@ -35,6 +35,7 @@
     "clean:docs": "find docs -type f ! -name 'index.html' -delete",
     "clean:gatsby": "rm -Rf www/.cache www/public",
     "clean:coverage": "rm -rf coverage",
+
     "playground": "yarn workspace playground start",
     "gatsby": "yarn workspace www start",
     "fix": "yarn lint:es --fix",
@@ -48,10 +49,9 @@
     "test": "yarn jest",
 
     "storybook": "yarn workspace storybook develop",
-    "storybook-docs": "yarn workspace storybook develop-docs",
 
     "prestoryshots": "yarn prebuild",
-    "storyshots": "export storybookBuildMode=fast && yarn lerna run storybook-build --scope '@looker/*' --stream --parallel",
+    "storyshots": "export storybookBuildMode=fast && yarn workspace storybook build",
 
     "pretest:image-snapshots": "yarn storyshots",
     "test:image-snapshots": "yarn jest --config jest-image-snapshots.config.js",
