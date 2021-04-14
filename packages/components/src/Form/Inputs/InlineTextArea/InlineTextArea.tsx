@@ -96,7 +96,6 @@ const Input = styled.textarea<InlineTextAreaProps>`
   font: inherit;
   height: 100%;
   left: 0;
-  margin: 0;
   outline: none;
   padding: 0;
   position: absolute;

@@ -92,8 +92,6 @@ export const TextArea = styled(TextAreaLayout).attrs<TextAreaProps>(
   }
 
   textarea {
-    font-family: inherit;
-    margin: 0;
     ${simpleLayoutCSS}
     ${inputCSS}
     padding: ${({ theme }) => `${theme.space.xsmall} ${theme.space.small}`};
