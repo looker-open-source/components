@@ -28,7 +28,7 @@ import React, { FC, useState, ReactNode } from 'react'
 import styled from 'styled-components'
 import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout/utils/simple'
 import { useID } from '../utils'
-import { AccordionContext, accordionContextDefaults } from './AccordionContext'
+import { accordionContextDefaults } from './AccordionContext'
 import { AccordionContent } from './AccordionContent'
 import { AccordionDisclosure } from './AccordionDisclosure'
 import { AccordionIndicatorProps } from './indicator'
@@ -82,6 +82,7 @@ export interface AccordionProps
     SimpleLayoutProps {
   children: ReactNode
   className?: string
+  content: ReactNode
   /**
    * A unique ID primarily used to supply aria-controls and aria-labelledby to child AccordionDisclosure and child AccordionContent
    * Note: This will be auto-generated if left undefined
@@ -92,14 +93,19 @@ export interface AccordionProps
 const AccordionLayout: FC<AccordionProps> = ({
   children,
   className,
+  content,
   id,
-  indicatorGap,
-  indicatorSize,
-  indicatorIcons,
-  indicatorPosition,
+  indicatorGap: propsIndicatorGap,
+  indicatorSize: propsIndicatorSize,
+  indicatorIcons: propsIndicatorIcons,
+  indicatorPosition: propsIndicatorPosition,
   ...props
 }) => {
-  const [isOpen, setIsOpen] = useState(!!props.defaultOpen)
+  const uncontrolledState = useState(!!props.defaultOpen)
+  const uncontrolled = {
+    isOpen: uncontrolledState[0],
+    setIsOpen: uncontrolledState[1],
+  }
 
   if (
     (props.isOpen && props.toggleOpen === undefined) ||
@@ -111,28 +117,47 @@ const AccordionLayout: FC<AccordionProps> = ({
     )
 
   const accordionId = useID(id)
+  const accordionContentId = `${accordionId}-content`
+  const accordionDisclosureId = `${accordionId}-disclosure`
 
-  const context = {
-    ...accordionContextDefaults,
-    accordionContentId: `${accordionId}-content`,
-    accordionDisclosureId: `${accordionId}-disclosure`,
-    indicatorGap: indicatorGap || accordionContextDefaults.indicatorGap,
-    indicatorIcons: indicatorIcons || accordionContextDefaults.indicatorIcons,
-    indicatorPosition:
-      indicatorPosition || accordionContextDefaults.indicatorPosition,
-    indicatorSize: indicatorSize || accordionContextDefaults.indicatorSize,
-    isOpen: props.isOpen === undefined ? isOpen : props.isOpen,
-    onClose: props.onClose,
-    onOpen: props.onOpen,
-    toggleOpen: props.toggleOpen === undefined ? setIsOpen : props.toggleOpen,
-  }
+  const indicatorGap =
+    propsIndicatorGap || accordionContextDefaults.indicatorGap
+  const indicatorIcons =
+    propsIndicatorIcons || accordionContextDefaults.indicatorIcons
+  const indicatorPosition =
+    propsIndicatorPosition || accordionContextDefaults.indicatorPosition
+  const indicatorSize =
+    propsIndicatorSize || accordionContextDefaults.indicatorSize
+  const isOpen = props.isOpen === undefined ? uncontrolled.isOpen : props.isOpen
+  const onClose = props.onClose
+  const onOpen = props.onOpen
+  const toggleOpen =
+    props.toggleOpen === undefined ? uncontrolled.setIsOpen : props.toggleOpen
 
   return (
-    <AccordionContext.Provider value={context}>
-      <div className={className} id={accordionId}>
+    <div className={className} id={accordionId}>
+      <AccordionDisclosure
+        accordionContentId={accordionContentId}
+        accordionDisclosureId={accordionDisclosureId}
+        indicatorGap={indicatorGap}
+        indicatorIcons={indicatorIcons}
+        indicatorPosition={indicatorPosition}
+        indicatorSize={indicatorSize}
+        isOpen={isOpen}
+        onClose={onClose}
+        onOpen={onOpen}
+        toggleOpen={toggleOpen}
+      >
         {children}
-      </div>
-    </AccordionContext.Provider>
+      </AccordionDisclosure>
+      <AccordionContent
+        accordionContentId={accordionContentId}
+        accordionDisclosureId={accordionDisclosureId}
+        isOpen={isOpen}
+      >
+        {content}
+      </AccordionContent>
+    </div>
   )
 }
 

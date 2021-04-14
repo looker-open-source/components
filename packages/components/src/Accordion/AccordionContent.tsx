@@ -24,23 +24,23 @@
 
  */
 
-import React, { useContext, FC } from 'react'
+import React, { FC } from 'react'
 import styled from 'styled-components'
-
-import { AccordionContext } from './AccordionContext'
 
 export interface AccordionContentProps {
   className?: string
+  accordionContentId: string
+  accordionDisclosureId: string
+  isOpen: boolean
 }
 
 const AccordionContentLayout: FC<AccordionContentProps> = ({
   children,
   className,
+  accordionContentId,
+  accordionDisclosureId,
+  isOpen,
 }) => {
-  const { accordionContentId, accordionDisclosureId, isOpen } = useContext(
-    AccordionContext
-  )
-
   return isOpen ? (
     <div
       aria-labelledby={accordionDisclosureId}
