@@ -181,8 +181,7 @@ const SliderInput = styled.input.attrs(() => ({
   display: block;
   height: 22px;
   left: 8px;
-  margin-left: 0;
-  margin-right: 0;
+  margin: 0;
   position: relative;
   -webkit-appearance: none; /* stylelint-disable-line */
   width: calc(100% - 16px);
