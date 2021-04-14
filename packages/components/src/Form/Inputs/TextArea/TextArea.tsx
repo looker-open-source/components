@@ -102,6 +102,7 @@ export const TextArea = styled(TextAreaLayout).attrs<TextAreaProps>(
   }
 
   textarea {
+    font-family: inherit;
     margin: 0; /* override browser default(s) */
     ${simpleLayoutCSS}
     ${inputCSS}
