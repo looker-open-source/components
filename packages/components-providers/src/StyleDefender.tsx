@@ -29,6 +29,7 @@ import styled from 'styled-components'
 export const StyleDefender = styled.div`
   background: ${({ theme: { colors } }) => colors.background};
   box-sizing: border-box;
+  color: initial; /* Might better be set to theme.colors.text eventually */
   font-family: ${({ theme }) => theme.fonts.body};
   font-size: 16px;
   height: 100%;
