@@ -88,7 +88,10 @@ describe('TreeItem', () => {
         <TreeItem
           itemRole="none"
           onClick={onClick}
-          detail={<button>Detail Button</button>}
+          detail={{
+            content: <button>Detail Button</button>,
+            options: { accessory: true },
+          }}
         >
           <div>
             <p>Item Label</p>
@@ -101,6 +104,18 @@ describe('TreeItem', () => {
     // Expect indent padding click to trigger TreeItem onClick (i.e. non-TreeItem child click)
     // Note: This selector needs to change once Tree ARIA roles are implemented
     fireEvent.click(screen.getAllByRole('listitem')[1])
-    expect(onClick).toHaveBeenCalled()
+    expect(onClick).toHaveBeenCalledTimes(1)
+
+    // Expect click on label to trigger label click handler (but not wrapper handler)
+    fireEvent.click(screen.getByText('Item Label'))
+    expect(onClick).toHaveBeenCalledTimes(2)
+
+    // Expect click on child button to trigger label click handler (but not wrapper handler)
+    fireEvent.click(screen.getByText('Item Button'))
+    expect(onClick).toHaveBeenCalledTimes(3)
+
+    // Expect detail click to not trigger either handler since accessory is enabled
+    fireEvent.click(screen.getByText('Detail Button'))
+    expect(onClick).toHaveBeenCalledTimes(3)
   })
 })
