@@ -130,7 +130,9 @@ const ButtonJSX = forwardRef(
 
 ButtonJSX.displayName = 'ButtonJSX'
 
-export const GenericButtonBase = styled(ButtonJSX)<ButtonProps>``
+export const GenericButtonBase = styled(ButtonJSX)<ButtonProps>`
+  font-family: inherit;
+`
 
 export const ButtonBase = styled(GenericButtonBase)<ButtonProps>`
   ${buttonIcon}

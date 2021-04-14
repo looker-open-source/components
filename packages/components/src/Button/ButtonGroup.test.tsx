@@ -115,4 +115,16 @@ describe('ButtonGroup', () => {
     fireEvent.click(applesButton)
     expect(onChangeMock).not.toHaveBeenCalled()
   })
+
+  test('JSX children', () => {
+    renderWithTheme(
+      <ButtonGroup>
+        <ButtonItem>
+          <strong>BOLD</strong> thing
+        </ButtonItem>
+      </ButtonGroup>
+    )
+
+    expect(screen.getByRole('button')).toBeInTheDocument()
+  })
 })
