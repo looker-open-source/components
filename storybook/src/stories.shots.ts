@@ -25,6 +25,6 @@
  */
 
 import initStoryshots from '@storybook/addon-storyshots'
-import { imageSnapshots } from 'storybook/src/setup/storyshotsConfig'
+import { imageSnapshots } from './setup/storyshotsConfig'
 
 initStoryshots(imageSnapshots())
