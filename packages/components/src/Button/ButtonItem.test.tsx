@@ -24,31 +24,43 @@
 
  */
 
+import '@testing-library/jest-dom/extend-expect'
+import { fireEvent, screen } from '@testing-library/react'
+import React from 'react'
+
 import { renderWithTheme } from '@looker/components-test-utils'
-import React, { FC, useContext } from 'react'
-import { ThemeContext, ThemeProvider } from 'styled-components'
-import { GlobalStyle } from './GlobalStyle'
+import { ButtonItem } from './ButtonItem'
 
-test('GlobalStyle', () => {
-  const resetFn = jest.fn()
+describe('ButtonItem', () => {
+  test('focusVisible & handlers', () => {
+    const onBlur = jest.fn()
+    const onClick = jest.fn()
+    const onKeyUp = jest.fn()
 
-  const TestWrapper: FC<{}> = ({ children }) => {
-    const theme = useContext(ThemeContext)
-
-    return (
-      <ThemeProvider theme={{ ...theme, reset: resetFn }}>
-        {children}
-      </ThemeProvider>
+    renderWithTheme(
+      <ButtonItem onBlur={onBlur} onClick={onClick} onKeyUp={onKeyUp}>
+        A ButtonItem
+      </ButtonItem>
     )
-  }
 
-  const Test = () => (
-    <TestWrapper>
-      <GlobalStyle />
-    </TestWrapper>
-  )
+    const button = screen.getByRole('button')
 
-  renderWithTheme(<Test />)
-  expect(document.body).toBeInTheDocument()
-  expect(document.body).toHaveStyle('background: rgb(255, 255, 255)')
+    fireEvent.click(button)
+    expect(button).not.toHaveStyleRule('box-shadow')
+
+    fireEvent.keyUp(button, {
+      charCode: 9,
+      code: 9,
+      key: 'Tab',
+    })
+    expect(button).toHaveStyleRule('box-shadow: 0 0 0.5px 1px #9785F2')
+
+    fireEvent.blur(button)
+    // eslint-disable-next-line jest-dom/prefer-to-have-style
+    expect(button).not.toHaveStyleRule('box-shadow')
+
+    expect(onKeyUp).toHaveBeenCalledTimes(1)
+    expect(onClick).toHaveBeenCalledTimes(1)
+    expect(onBlur).toHaveBeenCalledTimes(1)
+  })
 })

@@ -24,25 +24,29 @@
 
  */
 
-import React, { FC } from 'react'
-import { createGlobalStyle } from 'styled-components'
-import { reset } from './GlobalStyle'
+import styled, { css } from 'styled-components'
 
-const isIE11 =
-  typeof window === `undefined` ||
-  typeof document === `undefined` ||
-  (!!window.MSInputMethodContext &&
-    /* istanbul ignore next */
-    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-    // @ts-ignore
-    !!document.documentMode)
+export const styleDefenderCSS = css`
+  background: ${({ theme: { colors } }) => colors.background};
+  box-sizing: border-box;
+  color: initial; /* Might better be set to theme.colors.text eventually */
+  font-family: ${({ theme }) => theme.fonts.body};
+  font-size: 16px;
+  height: 100%;
+  line-height: normal;
+  width: 100%;
 
-const IeGlobalCSS = createGlobalStyle`
-  @media screen and (-ms-high-contrast: active),
-    screen and (-ms-high-contrast: none) {
-    ${reset}
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+
+  * {
+    box-sizing: border-box;
   }
 `
 
-export const IEGlobalStyle: FC<{ isIE?: boolean }> = ({ isIE = isIE11 }) =>
-  isIE ? <IeGlobalCSS /> : null
+export const StyleDefender = styled.div`
+  ${styleDefenderCSS}
+`
