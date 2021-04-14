@@ -36,22 +36,15 @@ const TreeItemLayout: FC<ListItemProps> = ({
   keyColor: propsKeyColor,
   ...restProps
 }) => {
-  const {
-    density: contextDensity,
-    keyColor: contextKeyColor,
-    labelBackgroundOnly,
-  } = useContext(TreeContext)
+  const { density: contextDensity, keyColor: contextKeyColor } = useContext(
+    TreeContext
+  )
 
   const density = undefinedCoalesce([propsDensity, contextDensity])
   const keyColor = undefinedCoalesce([propsKeyColor, contextKeyColor])
 
   return (
-    <ListItem
-      density={density}
-      keyColor={keyColor}
-      wrapperClick={labelBackgroundOnly}
-      {...restProps}
-    >
+    <ListItem density={density} keyColor={keyColor} {...restProps}>
       {children}
     </ListItem>
   )

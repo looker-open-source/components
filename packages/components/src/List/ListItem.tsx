@@ -113,14 +113,6 @@ export interface ListItemProps
    * If true, text children and description will be truncated if text overflows
    */
   truncate?: boolean
-  /**
-   * If true, passed-in onClick callbacks will be applied to the wrapper and will only be called when:
-   *  1. The first ListItemLabel child is clicked
-   *  2. The ListItem is clicked (and the target is not a child)
-   * Note: This helps support TreeItem click behavior when Tree's labelBackgroundOnly prop is enabled
-   * @private
-   */
-  wrapperClick?: boolean
 }
 
 const ListItemInternal = forwardRef(
@@ -149,7 +141,6 @@ const ListItemInternal = forwardRef(
       selected,
       target,
       truncate,
-      wrapperClick,
       ...restProps
     } = props
 
@@ -301,7 +292,7 @@ const ListItemInternal = forwardRef(
           description={description}
           disabled={disabled}
           focusVisible={focusVisible}
-          onClick={wrapperClick ? handleOnPaddingClick : undefined}
+          onClick={handleOnPaddingClick}
           onMouseEnter={handleOnMouseEnter}
           onMouseLeave={handleOnMouseLeave}
           ref={ref}
