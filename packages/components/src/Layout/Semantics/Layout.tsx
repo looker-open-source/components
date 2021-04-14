@@ -61,9 +61,16 @@ const hasAsideCSS = css`
 export const Layout = styled.div.withConfig({ shouldForwardProp })<LayoutProps>`
   ${simpleLayoutCSS}
   display: flex;
-  /* ${({ scrollChildren }) => (scrollChildren ? 'contents' : 'flex')}; */
   flex: 1 1 auto;
-  overflow: ${({ fixed, scrollChildren }) =>
-    fixed || scrollChildren ? 'hidden' : 'auto'};
+  overflow: ${({ fixed }) => (fixed ? 'hidden' : 'auto')};
   ${({ hasAside }) => (hasAside ? hasAsideCSS : 'flex-direction: column;')}
+  ${({ scrollChildren }) =>
+    scrollChildren &&
+    css`
+      aside,
+      main {
+        height: fit-content;
+        overflow: auto;
+      }
+    `}
 `

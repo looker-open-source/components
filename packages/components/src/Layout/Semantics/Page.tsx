@@ -24,23 +24,14 @@
 
  */
 
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { Layout } from './Layout'
 
 export const Page = styled(Layout)`
-  ${({ fixed, scrollChildren }) =>
-    (fixed || scrollChildren) &&
+  ${({ fixed }) =>
+    fixed &&
     `
       height: 100vh;
-    `}
-  ${({ scrollChildren }) =>
-    scrollChildren &&
-    css`
-      aside,
-      section {
-        background: ${({ theme }) => theme.colors.critical};
-        overflow: auto;
-      }
     `}
   width: 100%;
 `
