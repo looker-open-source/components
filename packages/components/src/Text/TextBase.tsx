@@ -37,6 +37,7 @@ import {
   TypographyProps,
 } from '@looker/design-tokens'
 import {
+  fontFamily,
   fontSize,
   fontWeight,
   lineHeight,
@@ -62,7 +63,7 @@ export const TextBase = styled.span.withConfig({
   shouldForwardProp,
 })<TextBaseProps>`
   ${reset}
-  /* fontFamily is handled by reset */
+  ${fontFamily}
   ${fontSize}
   ${fontStyle}
   ${fontWeight}

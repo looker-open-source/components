@@ -26,12 +26,10 @@
 
 import {
   generateTheme,
-  GlobalStyle,
-  IEGlobalStyle,
   googleFontUrl,
   theme as defaultTheme,
 } from '@looker/design-tokens'
-import React, { FC, useMemo } from 'react'
+import React, { FC, Fragment, useMemo } from 'react'
 import { HelmetProvider } from 'react-helmet-async'
 import { FocusTrapProvider } from './FocusTrap'
 import { ScrollLockProvider } from './ScrollLock'
@@ -39,16 +37,11 @@ import { useI18n, UseI18nProps } from './I18n'
 import { ThemeProvider, ThemeProviderProps } from './ThemeProvider'
 import { ExtendComponentsTheme } from './ExtendComponentsProvider'
 import { FontFaceLoader } from './FontFaceLoader'
-
+import { StyleDefender } from './StyleDefender'
 export interface ComponentsProviderProps
   extends ThemeProviderProps,
     ExtendComponentsTheme,
     UseI18nProps {
-  /**
-   * Prevent automatic injection of a basic CSS-reset into the DOM
-   * @default true
-   */
-  globalStyle?: boolean
   /**
    * Load any font faces specified on theme.fontSources
    * @default true
@@ -59,9 +52,32 @@ export interface ComponentsProviderProps
    * @default false
    */
   loadGoogleFonts?: boolean
+
+  /**
+   * Disables the "StyleDefender"
+   *
+   * StyledDefender is a utility component that attempts to ensure that a few common
+   * styles are injected at any point where @looker/components are injected into the DOM.
+   * When taking code-snapshots (a pattern we generally discourage) the `StyleDefender`
+   * may be visible in output. Enabling `snapshotMode` disables StyleDefender to narrow
+   * snapshot output.
+   *
+   * @default false
+   */
+  snapshotMode?: boolean
+
+  /**
+   * Prevent automatic injection of a basic CSS-reset into the DOM
+   * @deprecated - no longer has any actual effect. Global reset no longer in use.
+   * @todo - Remove for 2.x series
+   */
+  globalStyle?: boolean
+
   /**
    * Enable style support for IE11
-   * @default false
+   * @deprecated - no longer has any actual effect, IE11 support no longer requires
+   *  specialized implementation with changes to reset implementation
+   * @todo - Remove for 2.x series
    */
   ie11Support?: boolean
 }
@@ -83,10 +99,9 @@ export interface ComponentsProviderProps
  */
 export const ComponentsProvider: FC<ComponentsProviderProps> = ({
   children,
-  globalStyle = true,
-  ie11Support = false,
   loadFontSources = true,
   loadGoogleFonts = false,
+  snapshotMode = false,
   locale,
   resources,
   themeCustomizations,
@@ -110,15 +125,17 @@ export const ComponentsProvider: FC<ComponentsProviderProps> = ({
 
   useI18n({ locale, resources })
 
+  const ConditionalStyleDefender = snapshotMode ? Fragment : StyleDefender
+
   return (
     <HelmetProvider>
       <ThemeProvider {...props} theme={theme}>
-        {globalStyle && <GlobalStyle />}
-        {loadFontSources && <FontFaceLoader />}
-        {ie11Support && <IEGlobalStyle />}
-        <FocusTrapProvider>
-          <ScrollLockProvider>{children}</ScrollLockProvider>
-        </FocusTrapProvider>
+        <ConditionalStyleDefender>
+          {loadFontSources && <FontFaceLoader />}
+          <FocusTrapProvider>
+            <ScrollLockProvider>{children}</ScrollLockProvider>
+          </FocusTrapProvider>
+        </ConditionalStyleDefender>
       </ThemeProvider>
     </HelmetProvider>
   )
