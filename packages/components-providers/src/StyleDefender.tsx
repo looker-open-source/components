@@ -24,9 +24,9 @@
 
  */
 
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
-export const StyleDefender = styled.div`
+export const styleDefenderCSS = css`
   background: ${({ theme: { colors } }) => colors.background};
   box-sizing: border-box;
   color: initial; /* Might better be set to theme.colors.text eventually */
@@ -45,10 +45,8 @@ export const StyleDefender = styled.div`
   * {
     box-sizing: border-box;
   }
+`
 
-  /**
-    * Global reset applied to prevent styling on top level tags outside of Looker
-    * UI Components from interfering with styles.
-    **/
-  ${({ theme: { reset } }) => reset && reset()}
+export const StyleDefender = styled.div`
+  ${styleDefenderCSS}
 `

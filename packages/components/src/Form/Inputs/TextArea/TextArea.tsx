@@ -106,7 +106,6 @@ export const TextArea = styled(TextAreaLayout).attrs<TextAreaProps>(
     margin: 0; /* override browser default(s) */
     ${simpleLayoutCSS}
     ${inputCSS}
-    font-family: inherit;
     padding: ${({ theme }) => `${theme.space.xsmall} ${theme.space.small}`};
     padding-right: ${(props) => props.theme.space.xlarge};
     ${textAreaResize}

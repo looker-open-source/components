@@ -31,7 +31,7 @@ import React, {
   useRef,
   ReactNode,
 } from 'react'
-import { StyleDefender } from '@looker/components-providers'
+import { styleDefenderCSS } from '@looker/components-providers'
 import { createPortal } from 'react-dom'
 import styled from 'styled-components'
 
@@ -85,11 +85,7 @@ export const Portal = forwardRef(
       }
     }, [el])
 
-    const content = (
-      <StyleDefender>
-        <InvisiBox ref={ref} {...props} />
-      </StyleDefender>
-    )
+    const content = <InvisiBox ref={ref} {...props} />
 
     return createPortal(content, el.current)
   }
@@ -97,7 +93,14 @@ export const Portal = forwardRef(
 
 Portal.displayName = 'Portal'
 
+/**
+ * InvisiBox is mounted outside of StyleDefender / ComponentsProvider
+ * DOM-output so it re-injects `styleDefenderCSS` to do a light-weight
+ * "CSS reset"
+ */
 const InvisiBox = styled.div<PortalPlacementProps>`
+  ${styleDefenderCSS}
+
   align-items: ${({ vertical }) =>
     vertical === 'top'
       ? 'flex-start'
