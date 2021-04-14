@@ -53,7 +53,7 @@ export const Editor: FC<EditorProps> = ({ name, themeCustomizations }) => {
     <SpaceVertical>
       <Heading>{name}</Heading>
       <ThemeEditorForm onChange={setCustom} theme={custom} />
-      <ComponentsProvider globalStyle={false} themeCustomizations={custom}>
+      <ComponentsProvider themeCustomizations={custom}>
         <Examples />
       </ComponentsProvider>
     </SpaceVertical>
