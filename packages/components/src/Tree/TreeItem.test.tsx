@@ -81,11 +81,16 @@ describe('TreeItem', () => {
     expect(screen.queryByText('Detail')).toBeInTheDocument()
   })
 
-  test('Triggers onClickWhitespace only when indent padding is clicked, itemRole = "none", and labelBackgroundOnly = true', () => {
+  test('Triggers onClickWhitespace when indent padding is clicked, itemRole = "none", and labelBackgroundOnly = true', () => {
     const onClickWhitespace = jest.fn()
+
+    // This onClick should be ignored within ListItem since the item has itemRole="none"
+    const onClick = jest.fn()
+
     renderWithTheme(
       <Tree defaultOpen label="Parent Tree" labelBackgroundOnly>
         <TreeItem
+          onClick={onClick}
           onClickWhitespace={onClickWhitespace}
           itemRole="none"
           detail={{
@@ -102,20 +107,23 @@ describe('TreeItem', () => {
     )
 
     // Expect indent padding click to trigger TreeItem onClickWhitespace (i.e. non-TreeItem child click)
-    // Note: This selector needs to change once Tree ARIA roles are implemented
-    fireEvent.click(screen.getAllByRole('listitem')[1])
+    // Note: This selector may need to change once Tree ARIA roles are implemented
+    fireEvent.click(screen.getAllByRole('none')[1])
     expect(onClickWhitespace).toHaveBeenCalledTimes(1)
 
-    // Expect click on label to trigger label click handler (but not wrapper handler)
+    // Do not expect click on label to trigger click handlers
     fireEvent.click(screen.getByText('Item Label'))
-    expect(onClickWhitespace).toHaveBeenCalledTimes(2)
+    expect(onClick).not.toHaveBeenCalled()
+    expect(onClickWhitespace).toHaveBeenCalledTimes(1)
 
-    // Expect click on child button to trigger label click handler (but not wrapper handler)
+    // Do not expect click on child button to trigger click handlers
     fireEvent.click(screen.getByText('Item Button'))
-    expect(onClickWhitespace).toHaveBeenCalledTimes(2)
+    expect(onClick).not.toHaveBeenCalled()
+    expect(onClickWhitespace).toHaveBeenCalledTimes(1)
 
-    // Expect detail click to not trigger either handler since accessory is enabled
+    // Do not expect detail click to trigger click handlers
     fireEvent.click(screen.getByText('Detail Button'))
-    expect(onClickWhitespace).toHaveBeenCalledTimes(2)
+    expect(onClick).not.toHaveBeenCalled()
+    expect(onClickWhitespace).toHaveBeenCalledTimes(1)
   })
 })
