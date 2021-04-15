@@ -51,7 +51,7 @@ const keyCommandCollection: { [key: string]: Set<Command> } = {}
  * doRectsIntersect calculates whether two elements (often two focus traps)
  * are layered on top of each other.
  */
-const doRectsIntersect = (r1: ClientRect, r2: ClientRect) => {
+const doRectsIntersect = (r1: DOMRect, r2: DOMRect) => {
   return !(
     r2.left > r1.right ||
     r2.right < r1.left ||
@@ -64,7 +64,7 @@ const doRectsIntersect = (r1: ClientRect, r2: ClientRect) => {
  * calculateIntersectionPoint returns a pixel coordinate where two elements
  * are layered on top of each other.
  */
-const calculateIntersectionPoint = (r1: ClientRect, r2: ClientRect) => {
+const calculateIntersectionPoint = (r1: DOMRect, r2: DOMRect) => {
   const y = Math.max(r2.top, r1.top)
   const x = Math.max(r1.left, r2.left)
   return { x, y }

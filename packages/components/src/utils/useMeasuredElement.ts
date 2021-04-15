@@ -29,14 +29,7 @@ import { useResize } from './useResize'
 
 function measureElement(element?: HTMLElement | null) {
   if (!element) {
-    return {
-      bottom: 0,
-      height: 0,
-      left: 0,
-      right: 0,
-      top: 0,
-      width: 0,
-    }
+    return new DOMRect()
   }
 
   return element.getBoundingClientRect()
@@ -44,7 +37,7 @@ function measureElement(element?: HTMLElement | null) {
 
 export const useMeasuredElement = (
   element: HTMLElement | null
-): [ClientRect, () => void] => {
+): [DOMRect, () => void] => {
   const [rect, setRect] = useState(measureElement())
 
   const refreshDomRect = useCallback(() => {
