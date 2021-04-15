@@ -117,7 +117,7 @@ const FieldsetLayout = forwardRef(
     } = omit(props, [...AccordionControlPropKeys])
 
     const accordionProps = {
-      ...pick(props, [...AccordionControlPropKeys]),
+      ...pick(restProps, [...AccordionControlPropKeys]),
       ...accordionIndicatorDefaults,
     }
 
@@ -153,9 +153,8 @@ const FieldsetLayout = forwardRef(
 
     const renderedFieldset = legend ? (
       accordion ? (
-        <Accordion {...accordionProps}>
-          <AccordionDisclosure>{legend}</AccordionDisclosure>
-          <AccordionContent>{content}</AccordionContent>
+        <Accordion {...accordionProps} content={content}>
+          {legend}
         </Accordion>
       ) : (
         <SpaceVertical>

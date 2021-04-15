@@ -33,7 +33,7 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import { Accordion, AccordionContent, AccordionDisclosure } from '../Accordion'
+import { Accordion } from '../Accordion'
 import { undefinedCoalesce, useWrapEvent } from '../utils'
 import { List } from '../List'
 import { listItemDimensions, getDetailOptions } from '../List/utils'
@@ -136,20 +136,20 @@ const TreeLayout: FC<TreeProps> = ({
 
   const indicatorColor = disabled ? 'text1' : color
   const innerAccordion = (
-    <Accordion {...indicatorDefaults} {...restProps}>
-      <AccordionDisclosure
-        color={indicatorColor}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        py="none"
-      >
-        {label}
-      </AccordionDisclosure>
-      <AccordionContent>
+    <Accordion
+      content={
         <List density={density} windowing="none">
           {children}
         </List>
-      </AccordionContent>
+      }
+      color={indicatorColor}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      py="none"
+      {...indicatorDefaults}
+      {...restProps}
+    >
+      {label}
     </Accordion>
   )
 

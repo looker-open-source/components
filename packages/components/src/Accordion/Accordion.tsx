@@ -26,12 +26,21 @@
 
 import React, { FC, useState, ReactNode } from 'react'
 import styled from 'styled-components'
+import {
+  color,
+  shouldForwardProp,
+  TextColorProps,
+  TypographyProps,
+  typography,
+  CompatibleHTMLProps,
+} from '@looker/design-tokens'
 import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout/utils/simple'
 import { useID } from '../utils'
 import { accordionContextDefaults } from './AccordionContext'
 import { AccordionContent } from './AccordionContent'
 import { AccordionDisclosure } from './AccordionDisclosure'
 import { AccordionIndicatorProps } from './indicator'
+
 export interface AccordionControlProps {
   /**
    * Use this property if you wish to use the component in a `uncontrolled` manner and have it open when initially rendering.
@@ -79,7 +88,10 @@ export const AccordionControlPropKeys = [
 export interface AccordionProps
   extends AccordionControlProps,
     AccordionIndicatorProps,
-    SimpleLayoutProps {
+    Omit<CompatibleHTMLProps<HTMLElement>, 'content'>,
+    SimpleLayoutProps,
+    TextColorProps,
+    TypographyProps {
   children: ReactNode
   className?: string
   content: ReactNode
@@ -99,17 +111,22 @@ const AccordionLayout: FC<AccordionProps> = ({
   indicatorSize: propsIndicatorSize,
   indicatorIcons: propsIndicatorIcons,
   indicatorPosition: propsIndicatorPosition,
+  defaultOpen,
+  isOpen: propsIsOpen,
+  onClose: propsOnClose,
+  onOpen: propsOnOpen,
+  toggleOpen: propsToggleOpen,
   ...props
 }) => {
-  const uncontrolledState = useState(!!props.defaultOpen)
+  const uncontrolledState = useState(!!defaultOpen)
   const uncontrolled = {
     isOpen: uncontrolledState[0],
     setIsOpen: uncontrolledState[1],
   }
 
   if (
-    (props.isOpen && props.toggleOpen === undefined) ||
-    (props.isOpen === undefined && props.toggleOpen)
+    (propsIsOpen && propsToggleOpen === undefined) ||
+    (propsIsOpen === undefined && propsToggleOpen)
   )
     // eslint-disable-next-line no-console
     console.warn(
@@ -128,11 +145,11 @@ const AccordionLayout: FC<AccordionProps> = ({
     propsIndicatorPosition || accordionContextDefaults.indicatorPosition
   const indicatorSize =
     propsIndicatorSize || accordionContextDefaults.indicatorSize
-  const isOpen = props.isOpen === undefined ? uncontrolled.isOpen : props.isOpen
-  const onClose = props.onClose
-  const onOpen = props.onOpen
+  const isOpen = propsIsOpen === undefined ? uncontrolled.isOpen : propsIsOpen
+  const onClose = propsOnClose
+  const onOpen = propsOnOpen
   const toggleOpen =
-    props.toggleOpen === undefined ? uncontrolled.setIsOpen : props.toggleOpen
+    propsToggleOpen === undefined ? uncontrolled.setIsOpen : propsToggleOpen
 
   return (
     <div className={className} id={accordionId}>
@@ -147,6 +164,7 @@ const AccordionLayout: FC<AccordionProps> = ({
         onClose={onClose}
         onOpen={onOpen}
         toggleOpen={toggleOpen}
+        {...props}
       >
         {children}
       </AccordionDisclosure>
@@ -161,20 +179,31 @@ const AccordionLayout: FC<AccordionProps> = ({
   )
 }
 
-export const Accordion = styled(AccordionLayout).attrs<AccordionProps>(
-  ({
-    indicatorGap = accordionContextDefaults.indicatorGap,
-    indicatorPosition = accordionContextDefaults.indicatorPosition,
-    indicatorSize = accordionContextDefaults.indicatorSize,
-    width = '100%',
-  }) => ({
-    indicatorGap,
-    indicatorPosition,
-    indicatorSize,
-    width,
+export const Accordion = styled(AccordionLayout)
+  .withConfig({
+    shouldForwardProp: (prop) =>
+      [...AccordionIndicatorPropKeys, ...AccordionControlPropKeys].includes(
+        prop
+      )
+        ? true
+        : shouldForwardProp(prop),
   })
-)<AccordionProps>`
+  .attrs<AccordionProps>(
+    ({
+      indicatorGap = accordionContextDefaults.indicatorGap,
+      indicatorPosition = accordionContextDefaults.indicatorPosition,
+      indicatorSize = accordionContextDefaults.indicatorSize,
+      width = '100%',
+    }) => ({
+      indicatorGap,
+      indicatorPosition,
+      indicatorSize,
+      width,
+    })
+  )<AccordionProps>`
   ${AccordionDisclosure}, ${AccordionContent} {
+    ${color}
     ${simpleLayoutCSS}
+    ${typography}
   }
 `

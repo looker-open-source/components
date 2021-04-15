@@ -31,7 +31,11 @@ import { ListItemProps } from '../List'
 export interface TreeProps
   extends Omit<
       AccordionProps,
-      'children' | 'indicatorGap' | 'indicatorPosition' | 'indicatorSize'
+      | 'children'
+      | 'content'
+      | 'indicatorGap'
+      | 'indicatorPosition'
+      | 'indicatorSize'
     >,
     ListItemProps {
   /**
