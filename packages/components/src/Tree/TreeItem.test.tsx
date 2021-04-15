@@ -81,13 +81,13 @@ describe('TreeItem', () => {
     expect(screen.queryByText('Detail')).toBeInTheDocument()
   })
 
-  test('Triggers onClick when indent padding is clicked when parent Tree has labelBackgroundOnly', () => {
-    const onClick = jest.fn()
+  test('Triggers onClickWhitespace only when indent padding is clicked, itemRole = "none", and labelBackgroundOnly = true', () => {
+    const onClickWhitespace = jest.fn()
     renderWithTheme(
       <Tree defaultOpen label="Parent Tree" labelBackgroundOnly>
         <TreeItem
+          onClickWhitespace={onClickWhitespace}
           itemRole="none"
-          onClick={onClick}
           detail={{
             content: <button>Detail Button</button>,
             options: { accessory: true },
@@ -101,21 +101,21 @@ describe('TreeItem', () => {
       </Tree>
     )
 
-    // Expect indent padding click to trigger TreeItem onClick (i.e. non-TreeItem child click)
+    // Expect indent padding click to trigger TreeItem onClickWhitespace (i.e. non-TreeItem child click)
     // Note: This selector needs to change once Tree ARIA roles are implemented
     fireEvent.click(screen.getAllByRole('listitem')[1])
-    expect(onClick).toHaveBeenCalledTimes(1)
+    expect(onClickWhitespace).toHaveBeenCalledTimes(1)
 
     // Expect click on label to trigger label click handler (but not wrapper handler)
     fireEvent.click(screen.getByText('Item Label'))
-    expect(onClick).toHaveBeenCalledTimes(2)
+    expect(onClickWhitespace).toHaveBeenCalledTimes(2)
 
     // Expect click on child button to trigger label click handler (but not wrapper handler)
     fireEvent.click(screen.getByText('Item Button'))
-    expect(onClick).toHaveBeenCalledTimes(3)
+    expect(onClickWhitespace).toHaveBeenCalledTimes(2)
 
     // Expect detail click to not trigger either handler since accessory is enabled
     fireEvent.click(screen.getByText('Detail Button'))
-    expect(onClick).toHaveBeenCalledTimes(3)
+    expect(onClickWhitespace).toHaveBeenCalledTimes(2)
   })
 })
