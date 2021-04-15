@@ -24,7 +24,7 @@
 
  */
 
-import React, { useState } from 'react'
+import React, { FC, ReactNode, useState } from 'react'
 import styled from 'styled-components'
 import { ChevronLeft } from '@styled-icons/material-rounded/ChevronLeft'
 import { ExpandMore } from '@styled-icons/material-rounded/ExpandMore'
@@ -117,68 +117,32 @@ Controlled.parameters = {
   storyshots: { disable: true },
 }
 
-export const Nested = () => (
+const Branch: FC<{ children?: ReactNode }> = ({ children }) => (
   <Accordion
-    m="xlarge"
-    pl="xlarge"
     indicatorPosition="left"
     defaultOpen
+    pl="medium"
     content={
       <UnorderedList>
         <li>Cheddar</li>
-        <li>Cheddar</li>
-        <li>Cheddar</li>
-        <li>
-          <Accordion
-            indicatorPosition="left"
-            defaultOpen
-            content={
-              <UnorderedList>
-                <li>Cheddar</li>
-                <li>Cheddar</li>
-                <li>Cheddar</li>
-                <li>
-                  <Accordion
-                    indicatorPosition="left"
-                    defaultOpen
-                    content={
-                      <UnorderedList>
-                        <li>Cheddar</li>
-                        <li>Cheddar</li>
-                        <li>Cheddar</li>
-                        <li>
-                          <Accordion
-                            indicatorPosition="left"
-                            defaultOpen
-                            content={
-                              <UnorderedList>
-                                <li>Cheddar</li>
-                                <li>Cheddar</li>
-                                <li>Cheddar</li>
-                                <li>Cheddar</li>
-                              </UnorderedList>
-                            }
-                          >
-                            Hello World
-                          </Accordion>
-                        </li>
-                      </UnorderedList>
-                    }
-                  >
-                    Hello World
-                  </Accordion>
-                </li>
-              </UnorderedList>
-            }
-          >
-            Hello World
-          </Accordion>
-        </li>
+        <li>Gouda</li>
+        <li>Swiss</li>
+        {children}
       </UnorderedList>
     }
   >
     Hello World
   </Accordion>
+)
+
+export const Nested = () => (
+  <Branch>
+    <Branch>
+      <Branch>
+        <Branch />
+      </Branch>
+    </Branch>
+  </Branch>
 )
 
 Nested.parameters = {
