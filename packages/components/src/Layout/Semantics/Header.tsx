@@ -33,7 +33,7 @@ import { borderHelper, SemanticBorderProps } from './semanticBorderHelper'
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface HeaderProps
   extends HeightProps,
-    Omit<SemanticLayoutBase, 'scrollWithin'>,
+    SemanticLayoutBase,
     SemanticBorderProps {}
 
 export const headerFooterCSS = css`

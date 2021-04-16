@@ -59,12 +59,3 @@ export const Layout = styled.div.withConfig({ shouldForwardProp })<LayoutProps>`
   overflow: ${({ fixed }) => (fixed ? 'hidden' : 'auto')};
   ${({ hasAside }) => (hasAside ? hasAsideCSS : 'flex-direction: column;')}
 `
-
-// ${({ scrollTogether }) =>
-//     scrollTogether &&
-//     css`
-//       aside,
-//       main {
-//         height: fit-content;
-//       }
-//     `}

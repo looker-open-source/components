@@ -130,7 +130,7 @@ describe('Semantics', () => {
     )
   })
 
-  xtest('using prop scrollWithin will have only selected areas scrolling together.', () => {
+  test('using prop scrollWithin will have only selected areas scrolling together.', () => {
     renderWithTheme(
       <Page fixed>
         <Layout hasAside>
@@ -142,9 +142,9 @@ describe('Semantics', () => {
         </Layout>
       </Page>
     )
-    expect(screen.getByText("I'm the Aside before")).not.toHaveStyle({
-      height: 'fit-content',
-    })
+    expect(screen.getByText("I'm the Aside before")).not.toHaveStyleRule(
+      'height'
+    )
     expect(screen.getByText("I'm the main area")).toHaveStyle({
       height: 'fit-content',
     })
