@@ -36,7 +36,6 @@ import styled from 'styled-components'
 import {
   CompatibleHTMLProps,
   reset,
-  omitStyledProps,
   shouldForwardProp,
 } from '@looker/design-tokens'
 import { useArrowKeyNav, useWindow } from '../utils'
@@ -137,6 +136,7 @@ export const ListInternal = forwardRef(
           tabIndex={-1}
           role={role || 'list'}
           windowing={windowing}
+          {...props}
           {...navProps}
         >
           {content}
