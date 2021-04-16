@@ -38,12 +38,6 @@ export interface LayoutProps
    */
   fixed?: boolean
   /**
-   * scroll patterns for different areas inside the layout:
-   *  independently | x number of areas together | all together
-   * @default false
-   */
-  scrollChildren?: boolean
-  /**
    * Supports scroll
    * @default true
    */
@@ -64,13 +58,13 @@ export const Layout = styled.div.withConfig({ shouldForwardProp })<LayoutProps>`
   flex: 1 1 auto;
   overflow: ${({ fixed }) => (fixed ? 'hidden' : 'auto')};
   ${({ hasAside }) => (hasAside ? hasAsideCSS : 'flex-direction: column;')}
-  ${({ scrollChildren }) =>
-    scrollChildren &&
-    css`
-      aside,
-      main {
-        height: fit-content;
-        overflow: auto;
-      }
-    `}
 `
+
+// ${({ scrollTogether }) =>
+//     scrollTogether &&
+//     css`
+//       aside,
+//       main {
+//         height: fit-content;
+//       }
+//     `}

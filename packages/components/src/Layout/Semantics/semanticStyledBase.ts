@@ -34,7 +34,15 @@ import { css } from 'styled-components'
 
 export interface SemanticLayoutBase
   extends PaddingProps,
-    CompatibleHTMLProps<HTMLElement> {}
+    CompatibleHTMLProps<HTMLElement> {
+  /**
+   * scroll patterns for different areas inside the layout:
+   *  independently (default) | all together
+   * this prop has to be used in conjunction with the prop fixed.
+   * @default false
+   */
+  scrollWithin?: boolean
+}
 
 export const semanticLayoutCSS = css`
   ${reset}

@@ -50,4 +50,5 @@ export const Aside = styled.aside
   overflow: auto;
   width: 0;
   ${borderHelper}
+  ${({ scrollWithin }) => scrollWithin && 'height: fit-content;'}
 `

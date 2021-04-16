@@ -264,8 +264,8 @@ export const ScrollSelectedAreas = () => (
           Chillwave brooklyn fam occupy microdosing leggings. Poke af cornhole
           hot chicken. Portland tattooed +1 chia ennui.
         </Aside>
-        <Layout hasAside scrollChildren>
-          <Section p="xxlarge" as="main">
+        <Layout hasAside>
+          <Section scrollWithin p="xxlarge" as="main">
             <Heading>Page title</Heading>
             <Tabs>
               <TabList distribute>
@@ -283,7 +283,7 @@ export const ScrollSelectedAreas = () => (
               </TabPanels>
             </Tabs>
           </Section>
-          <AsideAlt p="xxlarge" width="10rem">
+          <AsideAlt scrollWithin p="xxlarge" width="10rem">
             I'm baby man braid cold-pressed seitan sartorial, tumblr ennui
             selfies chia twee subway tile af 90's celiac. Gochujang distillery
             tumeric flannel lumbersexual gastropub fashion axe viral neutra.
@@ -302,8 +302,8 @@ export const ScrollSelectedAreas = () => (
 export const ScrollAllAreas = () => (
   <Highlighter>
     <Page fixed>
-      <Layout hasAside scrollChildren>
-        <Aside p="large" width="200px">
+      <Layout hasAside>
+        <Aside scrollWithin p="large" width="200px">
           I'm baby man braid cold-pressed seitan sartorial, tumblr ennui selfies
           chia twee subway tile af 90's celiac. Gochujang distillery tumeric
           flannel lumbersexual gastropub fashion axe viral neutra. Pickled
@@ -313,7 +313,7 @@ export const ScrollAllAreas = () => (
           Chillwave brooklyn fam occupy microdosing leggings. Poke af cornhole
           hot chicken. Portland tattooed +1 chia ennui.
         </Aside>
-        <Section p="xxlarge" as="main">
+        <Section scrollWithin p="xxlarge" as="main">
           <Heading>Page title</Heading>
           <Tabs>
             <TabList distribute>
@@ -331,7 +331,7 @@ export const ScrollAllAreas = () => (
             </TabPanels>
           </Tabs>
         </Section>
-        <AsideAlt p="xxlarge" width="10rem">
+        <AsideAlt scrollWithin p="xxlarge" width="10rem">
           I'm baby man braid cold-pressed seitan sartorial, tumblr ennui selfies
           chia twee subway tile af 90's celiac. Gochujang distillery tumeric
           flannel lumbersexual gastropub fashion axe viral neutra. Pickled

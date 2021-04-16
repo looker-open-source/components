@@ -41,4 +41,5 @@ export const Section = styled.section.withConfig({
 })<SectionProps>`
   ${sectionCSS}
   overflow: auto;
+  ${({ scrollWithin }) => scrollWithin && 'height: fit-content;'}
 `

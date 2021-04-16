@@ -28,9 +28,10 @@ import 'jest-styled-components'
 import React from 'react'
 import { screen } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
+import { Aside } from './Aside'
 import { Header, Layout, Page, Section } from './'
 
-describe('Layout', () => {
+describe('Semantics', () => {
   test('has Header and Footer scrolling with the page', () => {
     renderWithTheme(
       <Page>
@@ -70,7 +71,7 @@ describe('Layout', () => {
     )
   })
 
-  test('has Header and Footer positions fixed when passign prop fixed', () => {
+  test('has Header and Footer positions fixed when passing prop fixed', () => {
     renderWithTheme(
       <Page fixed>
         <Header height="4rem" px="large">
@@ -107,5 +108,48 @@ describe('Layout', () => {
     expect(screen.getByText("I'm the header").closest('div')).toHaveStyle(
       'overflow: hidden;'
     )
+  })
+  test('using prop scrollWithin will have areas scrolling together.', () => {
+    renderWithTheme(
+      <Page fixed>
+        <Layout hasAside>
+          <Aside scrollWithin>I'm the Aside before</Aside>
+          <Section scrollWithin>I'm the main area</Section>
+          <Aside scrollWithin>I'm the Aside after</Aside>
+        </Layout>
+      </Page>
+    )
+    expect(screen.getByText("I'm the Aside before")).toHaveStyle(
+      'height: fit-content;'
+    )
+    expect(screen.getByText("I'm the main area")).toHaveStyle(
+      'height: fit-content;'
+    )
+    expect(screen.getByText("I'm the Aside after")).toHaveStyle(
+      'height: fit-content;'
+    )
+  })
+
+  xtest('using prop scrollWithin will have only selected areas scrolling together.', () => {
+    renderWithTheme(
+      <Page fixed>
+        <Layout hasAside>
+          <Aside>I'm the Aside before</Aside>
+          <Layout hasAside>
+            <Section scrollWithin>I'm the main area</Section>
+            <Aside scrollWithin>I'm the Aside after</Aside>
+          </Layout>
+        </Layout>
+      </Page>
+    )
+    expect(screen.getByText("I'm the Aside before")).not.toHaveStyle({
+      height: 'fit-content',
+    })
+    expect(screen.getByText("I'm the main area")).toHaveStyle({
+      height: 'fit-content',
+    })
+    expect(screen.getByText("I'm the Aside after")).toHaveStyle({
+      height: 'fit-content',
+    })
   })
 })
