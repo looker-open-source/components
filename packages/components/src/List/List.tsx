@@ -37,6 +37,7 @@ import {
   CompatibleHTMLProps,
   reset,
   omitStyledProps,
+  shouldForwardProp,
 } from '@looker/design-tokens'
 import { useArrowKeyNav, useWindow } from '../utils'
 import { ListItemContext } from './ListItemContext'
@@ -132,23 +133,27 @@ export const ListInternal = forwardRef(
 
     return (
       <ListItemContext.Provider value={context}>
-        <ul
+        <ListStyle
           tabIndex={-1}
           role={role || 'list'}
-          {...omitStyledProps(props)}
+          windowing={windowing}
           {...navProps}
         >
           {content}
-        </ul>
+        </ListStyle>
       </ListItemContext.Provider>
     )
   }
 )
 
-export const List = styled(ListInternal)`
+const ListStyle = styled.ul.withConfig({ shouldForwardProp })<
+  Pick<ListProps, 'windowing'>
+>`
   ${reset}
 
-  height: 100%;
+  ${({ windowing }) => windowing !== 'none' && 'height: 100%;'}
   list-style: none;
   overflow: auto;
 `
+
+export const List = styled(ListInternal)``

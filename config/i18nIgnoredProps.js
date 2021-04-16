@@ -34,6 +34,7 @@ const ours = [
   'iconVerticalAlign',
   'iconViewBox',
   'textDecoration',
+  'windowing',
 ]
 const aria = [
   'aria-autocomplete',
