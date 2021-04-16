@@ -25,10 +25,10 @@
  */
 
 import 'jest-styled-components'
-import * as React from 'react'
+import React from 'react'
+import { screen } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { ListItem } from './ListItem'
-import { List } from './List'
+import { Basic, LongList } from './List.story'
 
 /* eslint-disable-next-line @typescript-eslint/unbound-method */
 const globalGetBoundingClientRect = Element.prototype.getBoundingClientRect
@@ -62,28 +62,17 @@ describe('List', () => {
     })
 
     test('fixed', () => {
-      const arr3000 = Array.from(Array(3000), (_, i) => i)
-      const {
-        getByTestId,
-        getByText,
-        queryByTestId,
-        queryByText,
-      } = renderWithTheme(
-        <List>
-          {arr3000.map((num) => (
-            <ListItem key={num}>{num}</ListItem>
-          ))}
-        </List>
-      )
+      renderWithTheme(<LongList />)
 
+      expect(screen.getByRole('list')).toHaveStyle('height: 100%')
       /**
        * We expect the first 16 elements based on the math below:
        * 6 + 360px / 36px
        * (buffer elements) + (ul height from mock / default ListItem height)
        */
-      expect(getByText('0')).toBeVisible()
-      expect(getByText('15')).toBeVisible()
-      expect(queryByText('16')).not.toBeInTheDocument()
+      expect(screen.getByText('0')).toBeVisible()
+      expect(screen.getByText('15')).toBeVisible()
+      expect(screen.queryByText('16')).not.toBeInTheDocument()
 
       /**
        * We expect the after container to have height: 107424px based on the math below:
@@ -91,8 +80,14 @@ describe('List', () => {
        * (total ListItems - displayed ListItems) * default ListItem height
        */
       const height = (3000 - 16) * 36
-      expect(queryByTestId('before')).not.toBeInTheDocument()
-      expect(getByTestId('after')).toHaveStyle(`height: ${height}px;`)
+      expect(screen.queryByTestId('before')).not.toBeInTheDocument()
+      expect(screen.getByTestId('after')).toHaveStyle(`height: ${height}px;`)
+    })
+
+    test('no height: 100% without windowing', () => {
+      renderWithTheme(<Basic />)
+
+      expect(screen.getByRole('list')).not.toHaveStyle('height: 100%')
     })
   })
 })

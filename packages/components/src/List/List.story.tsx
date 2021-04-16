@@ -64,7 +64,7 @@ IconGutter.args = {
   iconGutter: true,
 }
 
-const array3000 = Array.from(Array(3000), (_, i) => String(i + 1))
+const array3000 = Array.from(Array(3000), (_, i) => String(i))
 export const LongList = () => {
   return (
     <Box height="500px">
