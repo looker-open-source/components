@@ -31,6 +31,13 @@ import { borderHelper, SemanticBorderProps } from './semanticBorderHelper'
 
 export interface AsideProps extends SemanticLayoutBase, SemanticBorderProps {
   /**
+   * To be used within the context of <Page fixed> container.
+   * When true, this removes the inner overflow-y scrolling
+   * and allows content within a Layout group to scroll together.
+   * @default false
+   */
+  scrollWithin?: boolean
+  /**
    * Specify width of aside
    * @default '12rem'
    */
@@ -50,4 +57,5 @@ export const Aside = styled.aside
   overflow: auto;
   width: 0;
   ${borderHelper}
+  ${({ scrollWithin }) => scrollWithin && 'height: fit-content;'}
 `

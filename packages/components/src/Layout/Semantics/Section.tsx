@@ -29,7 +29,15 @@ import styled, { css } from 'styled-components'
 import { SemanticLayoutBase, semanticLayoutCSS } from './semanticStyledBase'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface SectionProps extends SemanticLayoutBase {}
+export interface SectionProps extends SemanticLayoutBase {
+  /**
+   * To be used within the context of <Page fixed> container.
+   * When true, this removes the inner overflow-y scrolling
+   * and allows content within a Layout group to scroll together.
+   * @default false
+   */
+  scrollWithin?: boolean
+}
 
 export const sectionCSS = css`
   ${semanticLayoutCSS}
@@ -41,4 +49,5 @@ export const Section = styled.section.withConfig({
 })<SectionProps>`
   ${sectionCSS}
   overflow: auto;
+  ${({ scrollWithin }) => scrollWithin && 'height: fit-content;'}
 `
