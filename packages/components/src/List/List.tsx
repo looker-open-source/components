@@ -33,9 +33,10 @@ import React, {
   useMemo,
 } from 'react'
 import styled from 'styled-components'
-import { height, HeightProps } from 'styled-system'
+import { fontFamily, height, HeightProps } from 'styled-system'
 import {
   CompatibleHTMLProps,
+  FontFamilies,
   reset,
   shouldForwardProp,
   width,
@@ -58,15 +59,17 @@ export interface ListProps
   density?: DensityRamp
 
   /**
-   * Replace the normal uiN(1-5) color for selected and selected + hovered color with key colors
-   */
-  keyColor?: boolean
-
-  /**
    * If true, all ListItem children without an icon will reserve space for an icon
    * for alignment purposes.
    */
   iconGutter?: boolean
+
+  fontFamily?: FontFamilies
+
+  /**
+   * Replace the normal uiN(1-5) color for selected and selected + hovered color with key colors
+   */
+  keyColor?: boolean
 
   /**
    * Use windowing for long lists (strongly recommended to also define a width on List or its container)
@@ -162,12 +165,17 @@ export const ListInternal = forwardRef(
 const ListStyle = styled.ul.withConfig({ shouldForwardProp })<
   HeightProps & WidthProps
 >`
+  ${fontFamily}
   ${reset}
   ${height}
   ${width}
 
   list-style: none;
   overflow: auto;
+
+  button {
+    ${fontFamily}
+  }
 `
 
 export const List = styled(ListInternal)``
