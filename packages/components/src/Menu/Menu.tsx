@@ -25,14 +25,15 @@
  */
 
 import React, { cloneElement, forwardRef, Ref, ReactElement } from 'react'
-import { useID } from '../utils'
+import { ListProps } from '../List'
 import {
   Popover,
   PopoverProps,
   UsePopoverResponseDom,
   popoverPropKeys,
 } from '../Popover'
-import { MenuList, MenuListProps } from './MenuList'
+import { useID } from '../utils'
+import { MenuList } from './MenuList'
 
 export interface MenuDomProps extends UsePopoverResponseDom {
   'aria-controls': string
@@ -40,7 +41,7 @@ export interface MenuDomProps extends UsePopoverResponseDom {
 
 export interface MenuProps
   extends Omit<PopoverProps, 'children'>,
-    Omit<MenuListProps, 'children' | 'content'> {
+    Omit<ListProps, 'children' | 'content'> {
   /**
    * A ReactElement that accepts dom props
    */
