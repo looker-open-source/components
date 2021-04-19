@@ -26,9 +26,17 @@
 
 import { css } from 'styled-components'
 
-import { FontFamilyProps } from 'styled-system'
+/**
+ * Provides a simple fallback to the `theme.reset` feature (also deprecated)
+ * @deprecated
+ */
+export const themeReset = css`
+  ${({ theme }) => theme.reset && theme.reset()}
+`
 
-export const reset = css<FontFamilyProps>`
+export const reset = css`
+  ${themeReset}
+
   font-family: inherit;
   margin: 0;
   padding: 0;
