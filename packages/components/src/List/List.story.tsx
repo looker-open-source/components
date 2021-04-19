@@ -24,6 +24,7 @@
 
  */
 
+/* istanbul ignore file */
 import React, { FC, useState } from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import { DateRange } from '@styled-icons/material-outlined/DateRange'
