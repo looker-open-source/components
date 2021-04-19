@@ -33,10 +33,13 @@ import React, {
   useMemo,
 } from 'react'
 import styled from 'styled-components'
+import { height, HeightProps } from 'styled-system'
 import {
   CompatibleHTMLProps,
   reset,
   shouldForwardProp,
+  width,
+  WidthProps,
 } from '@looker/design-tokens'
 import { useArrowKeyNav, useWindow } from '../utils'
 import { ListItemContext } from './ListItemContext'
@@ -44,7 +47,9 @@ import { listItemDimensions } from './utils'
 import { DensityRamp } from './types'
 
 export interface ListProps
-  extends Omit<CompatibleHTMLProps<HTMLUListElement>, 'label'> {
+  extends HeightProps,
+    WidthProps,
+    Omit<CompatibleHTMLProps<HTMLUListElement>, 'label'> {
   /**
    * Determines how dense a list should be by affecting child ListItem
    * size and spacing.
@@ -64,9 +69,9 @@ export interface ListProps
   iconGutter?: boolean
 
   /**
-   * Use windowing for long lists (strongly recommended to also define a width)
+   * Use windowing for long lists (strongly recommended to also define a width on List or its container)
    * 'none' - default with children are <= 100.
-   * 'fixed' - better performance, default when first child is a ListItem
+   * 'fixed' - better performance, default when first child is a ListItem (height will default to 100%)
    */
   windowing?: 'fixed' | 'none'
 }
@@ -84,6 +89,7 @@ export const ListInternal = forwardRef(
       children,
       density = 0,
       disabled,
+      height,
       iconGutter = false,
       keyColor,
       onBlur,
@@ -97,7 +103,9 @@ export const ListInternal = forwardRef(
   ) => {
     const childArray = useMemo(() => Children.toArray(children), [children])
 
-    const { height } = listItemDimensions(density !== undefined ? density : 0)
+    const itemDimensions = listItemDimensions(
+      density !== undefined ? density : 0
+    )
 
     if (windowing === undefined) {
       if (childArray.length > 100) {
@@ -107,9 +115,14 @@ export const ListInternal = forwardRef(
       }
     }
 
+    if (height === undefined && windowing !== 'none') {
+      // Need a height for windowing to work
+      height = '100%'
+    }
+
     const { content, ref } = useWindow({
       childHeight: childArray[0]
-        ? getListItemHeight(childArray[0] as ReactChild, height)
+        ? getListItemHeight(childArray[0] as ReactChild, itemDimensions.height)
         : 0,
       children: children as JSX.Element | JSX.Element[],
       enabled: windowing !== 'none',
@@ -135,7 +148,7 @@ export const ListInternal = forwardRef(
         <ListStyle
           tabIndex={-1}
           role={role || 'list'}
-          windowing={windowing}
+          height={height}
           {...props}
           {...navProps}
         >
@@ -147,11 +160,12 @@ export const ListInternal = forwardRef(
 )
 
 const ListStyle = styled.ul.withConfig({ shouldForwardProp })<
-  Pick<ListProps, 'windowing'>
+  HeightProps & WidthProps
 >`
   ${reset}
+  ${height}
+  ${width}
 
-  ${({ windowing }) => windowing !== 'none' && 'height: 100%;'}
   list-style: none;
   overflow: auto;
 `
