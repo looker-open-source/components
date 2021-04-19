@@ -58,6 +58,12 @@ Basic.args = {
   children: listItems,
 }
 
+export const FontFamily = Template.bind({})
+FontFamily.args = {
+  children: listItems,
+  fontFamily: 'code',
+}
+
 export const IconGutter = Template.bind({})
 IconGutter.args = {
   ...Basic.args,
