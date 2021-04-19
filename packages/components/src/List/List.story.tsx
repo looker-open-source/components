@@ -24,11 +24,12 @@
 
  */
 
+/* istanbul ignore file */
 import React, { FC, useState } from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import { DateRange } from '@styled-icons/material-outlined/DateRange'
 import { SubdirectoryArrowLeft } from '@styled-icons/material/SubdirectoryArrowLeft'
-import { Box, Grid, Space } from '../Layout'
+import { Flex, Grid, Space } from '../Layout'
 import { DensityRamp } from './types'
 import { List, ListProps } from './List'
 import { ListItem } from './ListItem'
@@ -64,16 +65,24 @@ IconGutter.args = {
   iconGutter: true,
 }
 
-const array3000 = Array.from(Array(3000), (_, i) => String(i + 1))
+const array3000 = Array.from(Array(3000), (_, i) => String(i))
 export const LongList = () => {
   return (
-    <Box height="500px">
-      <List>
+    <Flex height={500}>
+      <List width={200}>
         {array3000.map((item, i) => (
-          <ListItem key={i}>{item}</ListItem>
+          <ListItem key={i}>
+            {i > 0 && i % 30 === 0
+              ? 'Longlonglonglonglonglonglonglonglonglonglong'
+              : item}
+          </ListItem>
         ))}
       </List>
-    </Box>
+      <div>
+        Without width on List, windowing plus variable item widths causes the
+        layout to be unstable.
+      </div>
+    </Flex>
   )
 }
 
