@@ -124,6 +124,7 @@ export const NavigationList = styled.nav`
   ul,
   li {
     height: 100%;
+    list-style: none;
   }
 
   a {
