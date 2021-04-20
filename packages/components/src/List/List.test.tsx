@@ -104,27 +104,5 @@ describe('List', () => {
         'background: #FFF2F4;'
       )
     })
-    test('neutral', () => {
-      renderWithTheme(
-        <List statefulColor="neutral">
-          <ListItem selected>Mozzarella</ListItem>
-        </List>
-      )
-      expect(screen.getByText('Mozzarella')).toBeInTheDocument()
-      expect(screen.getByText('Mozzarella').closest('button')).toHaveStyle(
-        'background: #FBFBFC;'
-      )
-    })
-    test('key', () => {
-      renderWithTheme(
-        <List statefulColor="key">
-          <ListItem selected>Mozzarella</ListItem>
-        </List>
-      )
-      expect(screen.getByText('Mozzarella')).toBeInTheDocument()
-      expect(screen.getByText('Mozzarella').closest('button')).toHaveStyle(
-        'background: #F3F2FF;'
-      )
-    })
   })
 })
