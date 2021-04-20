@@ -41,14 +41,14 @@ export interface AsideProps extends SemanticLayoutBase, SemanticBorderProps {
   scrollWithin?: boolean
   /**
    * Specify width of aside
-   * @default 'xxsmall'
+   * @default '12rem'
    */
   width?: ResponsiveValue<DialogSizeRamp | string>
 }
 
 export const Aside = styled.aside
   .withConfig({ shouldForwardProp })
-  .attrs<AsideProps>(({ width = 'xxsmall' }) => ({
+  .attrs<AsideProps>(({ width = '12rem' }) => ({
     width,
   }))<AsideProps>`
   ${semanticLayoutCSS}
