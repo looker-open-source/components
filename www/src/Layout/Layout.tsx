@@ -53,6 +53,7 @@ const setThemeInStorage = (theme: ThemeCustomizations) =>
 const GatsbyOverrides = createGlobalStyle`
   body {
     height: 100vh;
+    margin: 0;
   }
 
   #___gatsby,
@@ -77,7 +78,7 @@ export const Layout: FC = ({ children }) => {
     <ComponentsProvider loadGoogleFonts themeCustomizations={customTheme}>
       <GatsbyOverrides />
       <MDXProvider components={MDXComponents}>
-        <Page>
+        <Page fixed>
           <Header height="4rem">
             <HeaderContent
               updateTheme={updateTheme}

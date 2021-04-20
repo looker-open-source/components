@@ -27,10 +27,12 @@
 import React, { FC } from 'react'
 import { Link } from 'gatsby'
 import { Badge } from '@looker/components'
+import styled from 'styled-components'
 
 export type StatusLabels = 'experimental' | 'deprecated' | 'stable'
 
 export interface StatusProps {
+  className?: string
   status: StatusLabels
 }
 
@@ -45,12 +47,16 @@ const mapStatusToIntent = (status: StatusLabels) => {
   }
 }
 
-export const Status: FC<StatusProps> = ({ status }) => {
+const StatusLayout: FC<StatusProps> = ({ className, status }) => {
   status = status || 'stable'
 
   return (
-    <Link to="/develop/support-levels">
+    <Link to="/develop/support-levels" className={className}>
       <Badge intent={mapStatusToIntent(status)}>{status.toUpperCase()}</Badge>
     </Link>
   )
 }
+
+export const Status = styled(StatusLayout)`
+  text-decoration: none;
+`

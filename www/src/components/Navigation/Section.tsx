@@ -77,4 +77,5 @@ export const Section: FC<SectionProps> = ({ section }) => {
 const PageList = styled.ul`
   font-size: ${({ theme }) => theme.fontSizes.small};
   list-style-type: none;
+  padding: 0;
 `

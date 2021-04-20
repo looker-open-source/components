@@ -46,6 +46,7 @@ export const AppLogo = styled(AppLogoLayout)`
   align-items: center;
   display: flex;
   height: 1.5rem;
+  text-decoration: none;
 
   img {
     height: 24px;
