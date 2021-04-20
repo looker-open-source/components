@@ -46,34 +46,7 @@ import { useID } from '../utils'
 import { accordionContextDefaults } from './AccordionContext'
 import { AccordionContent } from './AccordionContent'
 import { AccordionDisclosure } from './AccordionDisclosure'
-import { AccordionIndicatorProps } from './indicator'
-
-export interface AccordionControlProps {
-  /**
-   * Use this property if you wish to use the component in a `uncontrolled` manner and have it open when initially rendering.
-   * Component will hold internal state and open and close on disclosure click
-   **/
-  defaultOpen?: boolean
-  /**
-   * Use this property (alongside toggleOpen) if you wish to use the component in a `controlled` manner.
-   * isOpen determines whether the Accordion is currently open or closed
-   * @default false
-   **/
-  isOpen?: boolean
-  /**
-   * Use this property (alongside isOpen) if you wish to use the component in a `controlled` manner.
-   * toggleOpen is a function that should control the value / state of isOpen
-   */
-  toggleOpen?: (isOpen: boolean) => void
-  /**
-   * Callback that is triggered when closing the Accordion (i.e. when clicking on an open Accordion)
-   */
-  onClose?: () => void // called when the component is closed
-  /**
-   * Callback that is triggered when opening the Accordion (i.e. when clicking on a closed Accordion)
-   */
-  onOpen?: () => void // called when the component is opened
-}
+import { AccordionControlProps, AccordionIndicatorProps } from './types'
 
 /**
  * Keys below are used by Fieldset to omit Accordion related props so they can be spread onto the internal Accordion component

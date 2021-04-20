@@ -39,28 +39,16 @@ import {
 import { useWrapEvent } from '../utils'
 import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout/utils/simple'
 import { AccordionDisclosureLayout } from './AccordionDisclosureLayout'
-import { AccordionProps } from './Accordion'
-
-type RequiredAccordionProps = Required<
-  Pick<
-    AccordionProps,
-    | 'isOpen'
-    | 'toggleOpen'
-    | 'onClose'
-    | 'onOpen'
-    | 'indicatorPosition'
-    | 'indicatorSize'
-    | 'indicatorGap'
-    | 'indicatorIcons'
-  >
->
+import { AccordionControlProps, AccordionIndicatorProps } from './types'
+import { accordionContextDefaults } from './AccordionContext'
 
 export interface AccordionDisclosureProps
   extends TypographyProps,
     Omit<AccordionDisclosureStyleProps, 'focusVisible'>,
     CompatibleHTMLProps<HTMLElement>,
     SimpleLayoutProps,
-    RequiredAccordionProps {
+    AccordionControlProps,
+    AccordionIndicatorProps {
   className?: string
   focusVisible?: boolean
   ref?: Ref<HTMLDivElement>
@@ -85,6 +73,7 @@ const AccordionDisclosureInternal: FC<AccordionDisclosureProps> = forwardRef(
       onClick,
       onKeyDown,
       onKeyUp,
+      defaultOpen,
       isOpen,
       toggleOpen,
       onClose,
@@ -103,7 +92,7 @@ const AccordionDisclosureInternal: FC<AccordionDisclosureProps> = forwardRef(
     const handleClose = () => onClose && onClose()
     const handleToggle = () => {
       isOpen ? handleClose() : handleOpen()
-      toggleOpen(!isOpen)
+      toggleOpen && toggleOpen(!isOpen)
     }
 
     const handleKeyDown = useWrapEvent(
@@ -144,10 +133,16 @@ const AccordionDisclosureInternal: FC<AccordionDisclosureProps> = forwardRef(
         {...props}
       >
         <AccordionDisclosureLayout
-          indicatorPosition={indicatorPosition}
-          indicatorSize={indicatorSize}
-          indicatorGap={indicatorGap}
-          indicatorIcons={indicatorIcons}
+          indicatorPosition={
+            indicatorPosition || accordionContextDefaults.indicatorPosition
+          }
+          indicatorSize={
+            indicatorSize || accordionContextDefaults.indicatorSize
+          }
+          indicatorGap={indicatorGap || accordionContextDefaults.indicatorGap}
+          indicatorIcons={
+            indicatorIcons || accordionContextDefaults.indicatorIcons
+          }
           isOpen={isOpen}
         >
           {children}
