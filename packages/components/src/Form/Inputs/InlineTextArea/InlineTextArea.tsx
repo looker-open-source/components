@@ -96,6 +96,7 @@ const Input = styled.textarea<InlineTextAreaProps>`
   font: inherit;
   height: 100%;
   left: 0;
+  margin: 0; /* override browser default(s) */
   outline: none;
   padding: 0;
   position: absolute;
@@ -103,6 +104,7 @@ const Input = styled.textarea<InlineTextAreaProps>`
   text-align: inherit;
   text-transform: inherit;
   top: 0;
+  vertical-align: top; /* textarea is inline-block so this removes 4px generated below */
   width: 100%;
 `
 

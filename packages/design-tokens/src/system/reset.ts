@@ -26,18 +26,18 @@
 
 import { css } from 'styled-components'
 
-import { FontFamilyProps, fontFamily } from 'styled-system'
+/**
+ * Provides a simple fallback to the `theme.reset` feature (also deprecated)
+ * @deprecated
+ */
+export const themeReset = css`
+  ${({ theme }) => theme.reset && theme.reset()}
+`
 
-export const reset = css<FontFamilyProps>`
-  /**
-    * Global reset applied to prevent styling on top level tags outside of Looker
-    * UI Components from interfering with styles.
-    **/
-  ${({ theme: { reset } }) => reset && reset()}
-  /**
-   * Use fontFamily helper from styled-system if props.fontFamily value is specified.
-   * Otherwise fall back to theme.fonts.border-style
-   **/
-  ${({ theme, ...props }) =>
-    props.fontFamily ? fontFamily : `font-family: ${theme.fonts.body};`}
+export const reset = css`
+  ${themeReset}
+
+  font-family: inherit;
+  margin: 0;
+  padding: 0;
 `

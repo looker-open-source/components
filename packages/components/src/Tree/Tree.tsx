@@ -146,7 +146,9 @@ const TreeLayout: FC<TreeProps> = ({
         {label}
       </AccordionDisclosure>
       <AccordionContent>
-        <List density={density}>{children}</List>
+        <List density={density} windowing="none">
+          {children}
+        </List>
       </AccordionContent>
     </Accordion>
   )

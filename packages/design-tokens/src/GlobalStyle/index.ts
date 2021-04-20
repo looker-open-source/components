@@ -25,4 +25,3 @@
  */
 
 export { GlobalStyle } from './GlobalStyle'
-export { IEGlobalStyle } from './IE'

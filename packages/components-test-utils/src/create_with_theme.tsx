@@ -30,7 +30,7 @@ import 'jest-styled-components'
 import React, { ReactElement } from 'react'
 
 export const withThemeProvider = (Component: ReactElement<any>) => (
-  <ComponentsProvider globalStyle={false}>{Component}</ComponentsProvider>
+  <ComponentsProvider snapshotMode>{Component}</ComponentsProvider>
 )
 
 export const renderWithTheme = (

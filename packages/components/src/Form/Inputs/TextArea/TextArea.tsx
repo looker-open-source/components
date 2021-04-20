@@ -25,7 +25,7 @@
  */
 
 import React, { FC } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { CompatibleHTMLProps } from '@looker/design-tokens'
 import { ValidationType } from '../../ValidationMessage'
 import {
@@ -48,7 +48,8 @@ export interface TextAreaProps
   extends Omit<SimpleLayoutProps, 'size'>,
     CompatibleHTMLProps<HTMLTextAreaElement> {
   /**
-   * @default: vertical
+   * Allows the end-user to resize vertical height of textarea
+   * @default vertical
    */
   resize?: TextAreaResize
   validationType?: ValidationType
@@ -72,8 +73,17 @@ const TextAreaLayout: FC<TextAreaProps> = ({
   )
 }
 
-const textAreaResize = (resize?: TextAreaResize) =>
-  resize === false ? 'none' : resize === true ? 'vertical' : resize
+const textAreaResize = ({ resize }: TextAreaProps) => {
+  if (resize === false) {
+    resize = 'none'
+  } else if (resize === true) {
+    resize = 'vertical'
+  }
+
+  return css`
+    resize: ${resize};
+  `
+}
 
 export const TextArea = styled(TextAreaLayout).attrs<TextAreaProps>(
   ({ resize = 'vertical', minHeight = '6.25rem' }) => ({
@@ -92,11 +102,14 @@ export const TextArea = styled(TextAreaLayout).attrs<TextAreaProps>(
   }
 
   textarea {
+    font-family: inherit;
+    margin: 0; /* override browser default(s) */
     ${simpleLayoutCSS}
     ${inputCSS}
     padding: ${({ theme }) => `${theme.space.xsmall} ${theme.space.small}`};
     padding-right: ${(props) => props.theme.space.xlarge};
-    resize: ${(props) => textAreaResize(props.resize)};
+    ${textAreaResize}
+    vertical-align: top; /* textarea is inline-block so this removes 4px generated below */
     width: 100%;
 
     &:hover {

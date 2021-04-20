@@ -30,7 +30,6 @@ import {
   DisplayProps,
   layout,
   LayoutProps,
-  reset,
   space,
   SpaceProps,
   size,
@@ -39,14 +38,13 @@ import {
   OverflowProps,
   verticalAlign,
   VerticalAlignProps,
+  themeReset,
 } from '@looker/design-tokens'
-
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 
 export interface SimpleLayoutProps extends LayoutProps, SpaceProps {}
 
 export const simpleLayoutCSS = css`
-  ${reset}
+  ${themeReset}
   ${layout}
   ${space}
 `
@@ -59,7 +57,7 @@ export interface SizeSimpleLayoutProps
     VerticalAlignProps {}
 
 export const sizeSimpleLayoutCSS = css`
-  ${reset}
+  ${themeReset}
   ${size}
   ${space}
   ${overflow}
