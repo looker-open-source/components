@@ -62,7 +62,12 @@ const TreeItemLayout: FC<TreeItemProps> = ({
   const keyColor = undefinedCoalesce([propsKeyColor, contextKeyColor])
 
   return (
-    <ListItem density={density} keyColor={keyColor} {...restProps}>
+    <ListItem
+      density={density}
+      keyColor={keyColor}
+      onClickWhitespace={onClickWhitespace}
+      {...restProps}
+    >
       {children}
     </ListItem>
   )
