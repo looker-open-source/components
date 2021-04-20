@@ -35,6 +35,9 @@ jobs:
       - uses: codecov/codecov-action@v1.4.1
         with:
           fail_ci_if_error: false # optional (default = false)
+      - uses: paambaati/codeclimate-action@v2.7.5
+        env:
+          CC_TEST_REPORTER_ID: <code_climate_reporter_id>
     env:
       CI: true
   build:

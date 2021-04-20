@@ -34,7 +34,7 @@ module.exports = {
     '!packages/**/stories/*',
     '!packages/**/*.story.tsx',
   ],
-  coverageReporters: ['json', 'html'],
+  coverageReporters: ['json', 'html', 'lcov'],
   moduleDirectories: ['./node_modules', './packages'],
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json', 'node'],
   moduleNameMapper: {
