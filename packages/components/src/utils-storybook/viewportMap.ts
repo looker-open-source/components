@@ -24,6 +24,7 @@
 
  */
 
+/* istanbul ignore file */
 import toPairs from 'lodash/toPairs'
 import startCase from 'lodash/startCase'
 import {

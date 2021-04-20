@@ -24,7 +24,6 @@
 
  */
 
-/* istanbul ignore file */
 import { css } from 'styled-components'
 import { Theme } from '@looker/design-tokens'
 import { IconSize } from '../../Icon'
