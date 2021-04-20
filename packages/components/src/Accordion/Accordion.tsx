@@ -24,7 +24,14 @@
 
  */
 
-import React, { FC, useState, ReactNode } from 'react'
+import React, {
+  Children,
+  FC,
+  useState,
+  ReactElement,
+  ReactNode,
+  isValidElement,
+} from 'react'
 import styled from 'styled-components'
 import {
   color,
@@ -92,9 +99,21 @@ export interface AccordionProps
     SimpleLayoutProps,
     TextColorProps,
     TypographyProps {
+  /**
+   * We currently support two different compositions for Accordion:
+   * 1. Legacy: An <Accordion> wrapped around an <AccordionDisclosure> and <AccordionContent>
+   * 2. Modern: An <Accordion> with children that are NOT <AccordionDisclosure> or <AccordionContent> elements and a content prop
+   * @TODO Deprecate old format in 2.x
+   * @deprecated
+   */
   children: ReactNode
   className?: string
-  content: ReactNode
+  /**
+   * Determines the content shown or hidden by the <Accordion>'s open state.
+   * Note: If using the "Legacy" <Accordion> composition, provide an <AccordionContent> child instead of using the content prop.
+   * @TODO Going to be required in 2.x
+   */
+  content?: ReactNode
   /**
    * A unique ID primarily used to supply aria-controls and aria-labelledby to child AccordionDisclosure and child AccordionContent
    * Note: This will be auto-generated if left undefined
@@ -151,32 +170,82 @@ const AccordionLayout: FC<AccordionProps> = ({
   const toggleOpen =
     propsToggleOpen === undefined ? uncontrolled.setIsOpen : propsToggleOpen
 
-  return (
-    <div className={className} id={accordionId}>
-      <AccordionDisclosure
-        accordionContentId={accordionContentId}
-        accordionDisclosureId={accordionDisclosureId}
-        indicatorGap={indicatorGap}
-        indicatorIcons={indicatorIcons}
-        indicatorPosition={indicatorPosition}
-        indicatorSize={indicatorSize}
-        isOpen={isOpen}
-        onClose={onClose}
-        onOpen={onOpen}
-        toggleOpen={toggleOpen}
-        {...props}
-      >
-        {children}
-      </AccordionDisclosure>
-      <AccordionContent
-        accordionContentId={accordionContentId}
-        accordionDisclosureId={accordionDisclosureId}
-        isOpen={isOpen}
-      >
-        {content}
-      </AccordionContent>
-    </div>
-  )
+  const accordionStateAndStyle = {
+    indicatorGap,
+    indicatorIcons,
+    indicatorPosition,
+    indicatorSize,
+    isOpen,
+    onClose,
+    onOpen,
+    toggleOpen,
+  }
+
+  const accordionIds = {
+    accordionContentId,
+    accordionDisclosureId,
+  }
+
+  const accordionDisclosureProps = {
+    ...accordionStateAndStyle,
+    ...accordionIds,
+    ...props,
+  }
+
+  const accordionContentProps = { ...accordionIds, isOpen }
+
+  // TODO: Remove support for legacy composition in 2.x
+  if (Children.count(children) === 2) {
+    const accordionChildren = [] as ReactNode[]
+
+    Children.forEach(children, (child) => {
+      if (isValidElement(child)) {
+        const isAccordionDisclosure =
+          (child as ReactElement<unknown>).type === AccordionDisclosure
+        const isAccordionContent =
+          (child as ReactElement<unknown>).type === AccordionContent
+
+        if (isAccordionDisclosure) {
+          accordionChildren.push(
+            React.cloneElement(child, accordionDisclosureProps)
+          )
+        } else if (isAccordionContent) {
+          accordionChildren.push(
+            React.cloneElement(child, accordionContentProps)
+          )
+        }
+      }
+    })
+
+    const isLegacyComposition = accordionChildren.length === 2
+
+    if (isLegacyComposition) {
+      return (
+        <div className={className} id={accordionId}>
+          {accordionChildren}
+        </div>
+      )
+    }
+  }
+
+  if (children) {
+    return (
+      <div className={className} id={accordionId}>
+        <AccordionDisclosure {...accordionDisclosureProps}>
+          {children}
+        </AccordionDisclosure>
+        <AccordionContent {...accordionContentProps}>
+          {content}
+        </AccordionContent>
+      </div>
+    )
+  } else {
+    // eslint-disable-next-line no-console
+    console.warn(
+      "<Accordion>'s child is falsy (i.e. undefined, null, false, etc). Please give <Accordion> a valid ReactNode child."
+    )
+    return <>{children}</>
+  }
 }
 
 export const Accordion = styled(AccordionLayout)

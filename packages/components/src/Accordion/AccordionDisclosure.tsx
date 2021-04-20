@@ -67,11 +67,11 @@ export interface AccordionDisclosureProps
   /**
    * ID of the corresponding AccordionContent container
    */
-  accordionContentId: string
+  accordionContentId?: string
   /**
    * ID of the AccordionDisclosure
    */
-  accordionDisclosureId: string
+  accordionDisclosureId?: string
 }
 
 const AccordionDisclosureInternal: FC<AccordionDisclosureProps> = forwardRef(

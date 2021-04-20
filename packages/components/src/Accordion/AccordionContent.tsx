@@ -29,9 +29,9 @@ import styled from 'styled-components'
 
 export interface AccordionContentProps {
   className?: string
-  accordionContentId: string
-  accordionDisclosureId: string
-  isOpen: boolean
+  accordionContentId?: string
+  accordionDisclosureId?: string
+  isOpen?: boolean
 }
 
 const AccordionContentLayout: FC<AccordionContentProps> = ({
