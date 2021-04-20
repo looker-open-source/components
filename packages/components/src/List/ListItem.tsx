@@ -114,9 +114,8 @@ export interface ListItemProps
    */
   truncate?: boolean
   /**
-   * Callback that is triggered when clicking on the ListItem's outermost container (i.e. not a child element)
-   * Internally, this is used by `TreeItem`s to allow for indent padding clicks to register when `labelBackgroundOnly` is true on a parent `Tree`
-   * Note: onClickWhitespace should only be used if `labelBackgroundOnly` is enabled on a parent `Tree`
+   * Should only be passed via TreeItem
+   * @private
    */
   onClickWhitespace?: (event: React.MouseEvent<HTMLElement>) => void
 }
