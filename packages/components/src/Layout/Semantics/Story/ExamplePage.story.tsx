@@ -345,3 +345,85 @@ export const ScrollAllAreas = () => (
     </Page>
   </Highlighter>
 )
+
+export const AsideSizeXxsmallDefault = () => (
+  <Highlighter>
+    <Layout hasAside>
+      <Aside p="large">Aside</Aside>
+      <Section p="xxlarge" as="main">
+        <Heading>Page title</Heading>
+        <Tabs>
+          <TabList distribute>
+            <Tab>Blue</Tab>
+            <Tab>Green</Tab>
+            <Tab>Purple</Tab>
+            <Tab>Yellow</Tab>
+            <Tab>Orange</Tab>
+            <Tab>Red</Tab>
+            <Tab>White</Tab>
+            <Tab>Black</Tab>
+          </TabList>
+          <TabPanels>
+            <TabPanel>{longContent}</TabPanel>
+          </TabPanels>
+        </Tabs>
+      </Section>
+    </Layout>
+  </Highlighter>
+)
+
+export const AsideSizeSmall = () => (
+  <Highlighter>
+    <Layout hasAside>
+      <Aside p="large" width="small">
+        Aside
+      </Aside>
+      <Section p="xxlarge" as="main">
+        <Heading>Page title</Heading>
+        <Tabs>
+          <TabList distribute>
+            <Tab>Blue</Tab>
+            <Tab>Green</Tab>
+            <Tab>Purple</Tab>
+            <Tab>Yellow</Tab>
+            <Tab>Orange</Tab>
+            <Tab>Red</Tab>
+            <Tab>White</Tab>
+            <Tab>Black</Tab>
+          </TabList>
+          <TabPanels>
+            <TabPanel>{longContent}</TabPanel>
+          </TabPanels>
+        </Tabs>
+      </Section>
+    </Layout>
+  </Highlighter>
+)
+
+export const AsideSizeMedium = () => (
+  <Highlighter>
+    <Layout hasAside>
+      <Aside p="large" width="medium">
+        Aside
+      </Aside>
+      <Section p="xxlarge" as="main">
+        <Heading>Page title</Heading>
+        <Tabs>
+          <TabList distribute>
+            <Tab>Blue</Tab>
+            <Tab>Green</Tab>
+            <Tab>Purple</Tab>
+            <Tab>Yellow</Tab>
+            <Tab>Orange</Tab>
+            <Tab>Red</Tab>
+            <Tab>White</Tab>
+            <Tab>Black</Tab>
+          </TabList>
+          <TabPanels>
+            <TabPanel>{longContent}</TabPanel>
+          </TabPanels>
+        </Tabs>
+      </Section>
+    </Layout>
+  </Highlighter>
+)
