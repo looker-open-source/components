@@ -26,8 +26,8 @@
     "styled-system": "^5.1.5"
   },
   "devDependencies": {
-    "@storybook/addon-storyshots": "^6.1.15",
-    "@storybook/react": "^6.1.15",
+    "@storybook/addon-storyshots": "^6.2.8",
+    "@storybook/react": "^6.2.8",
     "@testing-library/react": "^11.2.2",
     "@types/lodash": "^4.14.168",
     "@types/styled-components": "^5.1.5",
