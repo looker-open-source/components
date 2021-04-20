@@ -113,6 +113,11 @@ export interface ListItemProps
    * If true, text children and description will be truncated if text overflows
    */
   truncate?: boolean
+  /**
+   * Callback to specify onClick handler on item's whitespace.
+   * @private May only be passed via TreeItem. This feature may be removed without a breaking change. We STRONGLY discourage the direct use of this property.
+   */
+  onClickWhitespace?: (event: React.MouseEvent<HTMLElement>) => void
 }
 
 const ListItemInternal = forwardRef(
@@ -132,6 +137,7 @@ const ListItemInternal = forwardRef(
       keyColor: propsKeyColor,
       onBlur,
       onClick,
+      onClickWhitespace,
       onKeyDown,
       onKeyUp,
       onMouseEnter,
@@ -166,7 +172,10 @@ const ListItemInternal = forwardRef(
 
     const handleOnClick = (event: React.MouseEvent<HTMLElement>) => {
       setFocusVisible(false)
-      onClick && onClick(event)
+
+      if (itemRole !== 'none' && onClick) {
+        onClick(event)
+      }
     }
 
     const handleOnKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
@@ -192,6 +201,13 @@ const ListItemInternal = forwardRef(
       // eslint-disable-next-line no-console
       console.warn(
         'itemRole="link" and disabled cannot be combined - use itemRole="button" if you need to offer a disabled ListItem'
+      )
+    }
+
+    if (itemRole === 'none' && onClick) {
+      // eslint-disable-next-line no-console
+      console.warn(
+        'itemRole="none" and onClick cannot be combined - if itemRole="none" is a necessity, assign click behavior directly to ListItem\'s children'
       )
     }
 
@@ -278,6 +294,13 @@ const ListItemInternal = forwardRef(
       </Layout>
     )
 
+    const handleOnClickWhitespace = (event: React.MouseEvent<HTMLElement>) => {
+      if (event.currentTarget === event.target) {
+        setFocusVisible(true)
+        onClickWhitespace && onClickWhitespace(event)
+      }
+    }
+
     return (
       <HoverDisclosureContext.Provider value={{ visible: hovered }}>
         <ListItemWrapper
@@ -285,6 +308,7 @@ const ListItemInternal = forwardRef(
           description={description}
           disabled={disabled}
           focusVisible={focusVisible}
+          onClick={handleOnClickWhitespace}
           onMouseEnter={handleOnMouseEnter}
           onMouseLeave={handleOnMouseLeave}
           ref={ref}
