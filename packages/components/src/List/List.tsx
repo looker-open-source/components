@@ -37,7 +37,6 @@ import { fontFamily, height, HeightProps } from 'styled-system'
 import {
   CompatibleHTMLProps,
   FontFamilies,
-  reset,
   shouldForwardProp,
   width,
   WidthProps,
@@ -65,7 +64,8 @@ export interface ListProps
   iconGutter?: boolean
 
   /**
-   * Use this prop to specify themed fonts for the List text.
+   * Specify font-family. Generally will end up inheriting `theme.fonts.body` but can be specified as `brand`, `code` or `body` to explicitly specify theme-controlled font-family
+   * @default inherit
    */
   fontFamily?: FontFamilies
 
@@ -165,20 +165,19 @@ export const ListInternal = forwardRef(
   }
 )
 
-const ListStyle = styled.ul.withConfig({ shouldForwardProp })<
-  HeightProps & WidthProps
->`
+const ListStyle = styled.ul
+  .withConfig({ shouldForwardProp })
+  .attrs<ListProps>(({ fontFamily = 'inherit' }) => ({
+    fontFamily,
+  }))<ListProps>`
   ${fontFamily}
-  ${reset}
   ${height}
   ${width}
 
   list-style: none;
+  margin: 0;
   overflow: auto;
-
-  * {
-    ${fontFamily}
-  }
+  padding: 0;
 `
 
 export const List = styled(ListInternal)``
