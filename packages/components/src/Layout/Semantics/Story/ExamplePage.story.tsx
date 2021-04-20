@@ -346,23 +346,10 @@ export const ScrollAllAreas = () => (
   </Highlighter>
 )
 
-export const AsideSizeXsmall = () => (
+export const AsideWidthSizeXsmall = () => (
   <Highlighter>
     <Layout hasAside>
       <Aside p="xxlarge" width="xsmall">
-        Aside content
-      </Aside>
-      <Section p="xxlarge" as="main">
-        {longContent}
-      </Section>
-    </Layout>
-  </Highlighter>
-)
-
-export const AsideSizeMedium = () => (
-  <Highlighter>
-    <Layout hasAside>
-      <Aside p="xxlarge" width="medium">
         Aside content
       </Aside>
       <Section p="xxlarge" as="main">

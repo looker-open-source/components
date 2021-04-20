@@ -152,4 +152,16 @@ describe('Semantics', () => {
       height: 'fit-content',
     })
   })
+
+  test('Aside can use t-shirt sized for its width.', () => {
+    renderWithTheme(
+      <Layout hasAside>
+        <Aside width="medium">Aside content</Aside>
+        <Section as="main">Main content</Section>
+      </Layout>
+    )
+    expect(screen.getByText('Aside content')).not.toHaveStyleRule(
+      'width: 40rem;'
+    )
+  })
 })
