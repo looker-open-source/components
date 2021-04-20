@@ -10,7 +10,7 @@ do
   # copy over filter packages
   cp -r ../helltool/packages/filter-$name packages/
   # update package.json
-  sed "s/@looker\/sdk\": \"*/@looker\/sdk\": \"$sdkVersion/g" packages/filter-$name/package.json
+  sed -i "s/@looker\/sdk\": \"\*/@looker\/sdk\": \"$sdkVersion/g" packages/filter-$name/package.json
 done
 
 # update package.json
