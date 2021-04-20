@@ -37,6 +37,7 @@ import { ListItemStatefulWithHoveredProps } from '../List/types'
 import { List, ListItem } from '../List'
 import { listItemLabelCSS } from '../List/ListItemLabel'
 import { IconPlaceholder, IconSize } from '../Icon'
+import { AccordionIndicator } from '../Accordion/AccordionDisclosureLayout'
 import { TreeItem } from './TreeItem'
 import { TreeBranch } from './TreeBranch'
 import { generateIndent, generateTreeBorder } from './utils'
@@ -47,9 +48,10 @@ interface TreeStyleProps extends ListItemStatefulWithHoveredProps {
   depth: number
   dividers?: boolean
   iconGap: SpacingSizes
-  indicatorSize: IconSize
   labelBackgroundOnly?: boolean
 }
+
+const indicatorContainerSize = 'medium'
 
 export const TreeItemInner = styled(TreeItem)`
   ${listItemLabelCSS(css`
@@ -113,11 +115,16 @@ export const TreeStyle = styled.div<TreeStyleProps>`
 
   > ${Accordion} {
     > ${AccordionContent} {
-      ${({ border, depth, indicatorSize, theme }) =>
-        border && generateTreeBorder(depth, indicatorSize, theme)}
+      ${({ border, depth, theme }) =>
+        border && generateTreeBorder(depth, indicatorContainerSize, theme)}
     }
 
     > ${AccordionDisclosureStyle} {
+      ${AccordionIndicator} {
+        height: ${({ theme }) => theme.sizes[indicatorContainerSize]};
+        width: ${({ theme }) => theme.sizes[indicatorContainerSize]};
+      }
+
       ${ListItem} {
         ${({ labelBackgroundOnly, ...restProps }) =>
           labelBackgroundOnly && listItemBackgroundColor(restProps)}
@@ -133,8 +140,8 @@ export const TreeStyle = styled.div<TreeStyleProps>`
         Tree's padding-right is handled by the internal item
        */
       padding-right: 0;
-      ${({ depth, indicatorSize, theme }) =>
-        generateIndent(depth, indicatorSize, theme)}
+      ${({ depth, theme }) =>
+        generateIndent(depth, indicatorContainerSize, theme)}
     }
   }
 
@@ -142,13 +149,18 @@ export const TreeStyle = styled.div<TreeStyleProps>`
 
   > ${Accordion} > ${AccordionContent} > ${List} {
     > ${ListItem} {
-      ${({ depth, indicatorSize, labelBackgroundOnly, theme }) =>
-        treeItemIndent(depth, indicatorSize, !!labelBackgroundOnly, theme)}
+      ${({ depth, labelBackgroundOnly, theme }) =>
+        treeItemIndent(
+          depth,
+          indicatorContainerSize,
+          !!labelBackgroundOnly,
+          theme
+        )}
     }
 
     > ${TreeBranch} {
-      ${({ depth, indicatorSize, theme }) =>
-        generateIndent(depth + 2, indicatorSize, theme)}
+      ${({ depth, theme }) =>
+        generateIndent(depth + 2, indicatorContainerSize, theme)}
     }
   }
 
@@ -157,13 +169,18 @@ export const TreeStyle = styled.div<TreeStyleProps>`
    */
   > ${List} {
     > ${ListItem} {
-      ${({ depth, indicatorSize, labelBackgroundOnly, theme }) =>
-        treeItemIndent(depth, indicatorSize, !!labelBackgroundOnly, theme)}
+      ${({ depth, labelBackgroundOnly, theme }) =>
+        treeItemIndent(
+          depth,
+          indicatorContainerSize,
+          !!labelBackgroundOnly,
+          theme
+        )}
     }
 
     > ${TreeBranch} {
-      ${({ depth, indicatorSize, theme }) =>
-        generateIndent(depth + 2, indicatorSize, theme)}
+      ${({ depth, theme }) =>
+        generateIndent(depth + 2, indicatorContainerSize, theme)}
     }
   }
 `

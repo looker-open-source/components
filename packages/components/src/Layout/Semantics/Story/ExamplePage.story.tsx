@@ -202,3 +202,146 @@ export const MultipleLayouts = Template2.bind({})
 MultipleLayouts.args = {
   fixed: true,
 }
+
+export const ScrollIndependentlyDefault = () => (
+  <Highlighter>
+    <Page fixed>
+      <Layout hasAside>
+        <Aside p="large" width="200px">
+          I'm baby man braid cold-pressed seitan sartorial, tumblr ennui selfies
+          chia twee subway tile af 90's celiac. Gochujang distillery tumeric
+          flannel lumbersexual gastropub fashion axe viral neutra. Pickled
+          narwhal everyday carry activated charcoal succulents occupy YOLO
+          yuccie forage seitan kitsch. Celiac bespoke cloud bread asymmetrical
+          bicycle rights XOXO cold-pressed hashtag listicle hell of migas.
+          Chillwave brooklyn fam occupy microdosing leggings. Poke af cornhole
+          hot chicken. Portland tattooed +1 chia ennui.
+        </Aside>
+        <Section p="xxlarge" as="main">
+          <Heading>Page title</Heading>
+          <Tabs>
+            <TabList distribute>
+              <Tab>Blue</Tab>
+              <Tab>Green</Tab>
+              <Tab>Purple</Tab>
+              <Tab>Yellow</Tab>
+              <Tab>Orange</Tab>
+              <Tab>Red</Tab>
+              <Tab>White</Tab>
+              <Tab>Black</Tab>
+            </TabList>
+            <TabPanels>
+              <TabPanel>{longContent}</TabPanel>
+            </TabPanels>
+          </Tabs>
+        </Section>
+        <AsideAlt p="xxlarge" width="10rem">
+          I'm baby man braid cold-pressed seitan sartorial, tumblr ennui selfies
+          chia twee subway tile af 90's celiac. Gochujang distillery tumeric
+          flannel lumbersexual gastropub fashion axe viral neutra. Pickled
+          narwhal everyday carry activated charcoal succulents occupy YOLO
+          yuccie forage seitan kitsch. Celiac bespoke cloud bread asymmetrical
+          bicycle rights XOXO cold-pressed hashtag listicle hell of migas.
+          Chillwave brooklyn fam occupy microdosing leggings. Poke af cornhole
+          hot chicken. Portland tattooed +1 chia ennui.
+        </AsideAlt>
+      </Layout>
+    </Page>
+  </Highlighter>
+)
+
+export const ScrollSelectedAreas = () => (
+  <Highlighter>
+    <Page fixed>
+      <Layout hasAside>
+        <Aside p="large" width="200px">
+          I'm baby man braid cold-pressed seitan sartorial, tumblr ennui selfies
+          chia twee subway tile af 90's celiac. Gochujang distillery tumeric
+          flannel lumbersexual gastropub fashion axe viral neutra. Pickled
+          narwhal everyday carry activated charcoal succulents occupy YOLO
+          yuccie forage seitan kitsch. Celiac bespoke cloud bread asymmetrical
+          bicycle rights XOXO cold-pressed hashtag listicle hell of migas.
+          Chillwave brooklyn fam occupy microdosing leggings. Poke af cornhole
+          hot chicken. Portland tattooed +1 chia ennui.
+        </Aside>
+        <Layout hasAside>
+          <Section scrollWithin p="xxlarge" as="main">
+            <Heading>Page title</Heading>
+            <Tabs>
+              <TabList distribute>
+                <Tab>Blue</Tab>
+                <Tab>Green</Tab>
+                <Tab>Purple</Tab>
+                <Tab>Yellow</Tab>
+                <Tab>Orange</Tab>
+                <Tab>Red</Tab>
+                <Tab>White</Tab>
+                <Tab>Black</Tab>
+              </TabList>
+              <TabPanels>
+                <TabPanel>{longContent}</TabPanel>
+              </TabPanels>
+            </Tabs>
+          </Section>
+          <AsideAlt scrollWithin p="xxlarge" width="10rem">
+            I'm baby man braid cold-pressed seitan sartorial, tumblr ennui
+            selfies chia twee subway tile af 90's celiac. Gochujang distillery
+            tumeric flannel lumbersexual gastropub fashion axe viral neutra.
+            Pickled narwhal everyday carry activated charcoal succulents occupy
+            YOLO yuccie forage seitan kitsch. Celiac bespoke cloud bread
+            asymmetrical bicycle rights XOXO cold-pressed hashtag listicle hell
+            of migas. Chillwave brooklyn fam occupy microdosing leggings. Poke
+            af cornhole hot chicken. Portland tattooed +1 chia ennui.
+          </AsideAlt>
+        </Layout>
+      </Layout>
+    </Page>
+  </Highlighter>
+)
+
+export const ScrollAllAreas = () => (
+  <Highlighter>
+    <Page fixed>
+      <Layout hasAside>
+        <Aside scrollWithin p="large" width="200px">
+          I'm baby man braid cold-pressed seitan sartorial, tumblr ennui selfies
+          chia twee subway tile af 90's celiac. Gochujang distillery tumeric
+          flannel lumbersexual gastropub fashion axe viral neutra. Pickled
+          narwhal everyday carry activated charcoal succulents occupy YOLO
+          yuccie forage seitan kitsch. Celiac bespoke cloud bread asymmetrical
+          bicycle rights XOXO cold-pressed hashtag listicle hell of migas.
+          Chillwave brooklyn fam occupy microdosing leggings. Poke af cornhole
+          hot chicken. Portland tattooed +1 chia ennui.
+        </Aside>
+        <Section scrollWithin p="xxlarge" as="main">
+          <Heading>Page title</Heading>
+          <Tabs>
+            <TabList distribute>
+              <Tab>Blue</Tab>
+              <Tab>Green</Tab>
+              <Tab>Purple</Tab>
+              <Tab>Yellow</Tab>
+              <Tab>Orange</Tab>
+              <Tab>Red</Tab>
+              <Tab>White</Tab>
+              <Tab>Black</Tab>
+            </TabList>
+            <TabPanels>
+              <TabPanel>{longContent}</TabPanel>
+            </TabPanels>
+          </Tabs>
+        </Section>
+        <AsideAlt scrollWithin p="xxlarge" width="10rem">
+          I'm baby man braid cold-pressed seitan sartorial, tumblr ennui selfies
+          chia twee subway tile af 90's celiac. Gochujang distillery tumeric
+          flannel lumbersexual gastropub fashion axe viral neutra. Pickled
+          narwhal everyday carry activated charcoal succulents occupy YOLO
+          yuccie forage seitan kitsch. Celiac bespoke cloud bread asymmetrical
+          bicycle rights XOXO cold-pressed hashtag listicle hell of migas.
+          Chillwave brooklyn fam occupy microdosing leggings. Poke af cornhole
+          hot chicken. Portland tattooed +1 chia ennui.
+        </AsideAlt>
+      </Layout>
+    </Page>
+  </Highlighter>
+)

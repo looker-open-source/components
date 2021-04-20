@@ -31,6 +31,7 @@ import {
   TypographyProps,
   omitStyledProps,
 } from '@looker/design-tokens'
+import { Launch } from '@styled-icons/material/Launch'
 import omit from 'lodash/omit'
 import styled from 'styled-components'
 import React, { forwardRef, Ref } from 'react'
@@ -50,35 +51,76 @@ export interface LinkProps
    * @default false
    */
   underline?: boolean
+
+  /**
+   * Display an icon indicating that the link is to an external resource
+   * Also sets `rel="external noreferrer" on generated link.
+   * @default false
+   */
+  isExternal?: boolean
 }
 
 /**
  * `target="_blank" can be used to reverse tab-nab
  * https://owasp.org/www-community/attacks/Reverse_Tabnabbing
  */
-const noTabNab = 'noopener noreferrer'
+
+const ExternalLinkIndicator = styled(Launch)`
+  height: ${({ theme }) => theme.sizes.xxsmall};
+  margin-left: ${({ theme }) => theme.space.xxsmall};
+  width: ${({ theme }) => theme.sizes.xxsmall};
+`
+
+/**
+ * Generate appropriate LinkType based on properties
+ *
+ * See https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types for context on
+ * proper usage.
+ */
+const generateLinkTypes = ({ isExternal, rel, target }: LinkProps) => {
+  const linkTypes = rel ? rel.split(' ') : []
+
+  if (target === '_blank') {
+    linkTypes.push('noopener', 'noreferrer')
+  } else if (isExternal) {
+    linkTypes.push('external', 'noreferrer')
+  }
+
+  return [...new Set(linkTypes)].join(' ')
+}
+
+const linkStyleProps = ['keyColor', 'underline']
 
 const LinkLayout = forwardRef(
-  ({ ...props }: LinkProps, ref: Ref<HTMLAnchorElement>) => {
-    const rel =
-      props.target === '_blank'
-        ? props.rel
-          ? `${props.rel} ${noTabNab}`
-          : noTabNab
-        : props.rel
+  (props: LinkProps, ref: Ref<HTMLAnchorElement>) => {
+    const { children, isExternal, ...restProps } = props
+    const enhancedRel = generateLinkTypes(props)
 
     return (
       <a
-        {...omit(omitStyledProps(props), 'keyColor', 'underline')}
+        {...omit(omitStyledProps(restProps), linkStyleProps)}
         ref={ref}
-        rel={rel}
-      />
+        rel={enhancedRel}
+      >
+        {children}
+        {isExternal && <ExternalLinkIndicator />}
+      </a>
     )
   }
 )
 
 LinkLayout.displayName = 'LinkLayout'
 
+/**
+ * The `<Link />` component renders an `<a>` tag that accepts an `href` property.
+ *
+ * You can also supply an optional `id` property if you want to give your anchor an id.
+ *
+ * Link provides built-in protection against "reverse tab-nab"
+ * (https://owasp.org/www-community/attacks/Reverse_Tabnabbing)
+ * by detecting `target="_blank" and adding the appropriate `rel` attributes to protect
+ * against bad behavior.
+ */
 export const Link = styled(LinkLayout)`
   ${reset}
   ${typography}

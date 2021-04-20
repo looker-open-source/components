@@ -78,7 +78,7 @@ const TreeLayout: FC<TreeProps> = ({
   const depth = treeContext.depth ? treeContext.depth : startingDepth
 
   const density = propsDensity || treeContext.density
-  const { iconGap, iconSize } = listItemDimensions(density)
+  const { iconGap } = listItemDimensions(density)
 
   const { accessory, content, hoverDisclosure } = getDetailOptions(propsDetail)
 
@@ -136,7 +136,7 @@ const TreeLayout: FC<TreeProps> = ({
 
   const indicatorColor = disabled ? 'text1' : color
   const innerAccordion = (
-    <Accordion {...indicatorDefaults} {...restProps} indicatorSize={iconSize}>
+    <Accordion {...indicatorDefaults} {...restProps}>
       <AccordionDisclosure
         color={indicatorColor}
         onMouseEnter={handleMouseEnter}
@@ -146,7 +146,9 @@ const TreeLayout: FC<TreeProps> = ({
         {label}
       </AccordionDisclosure>
       <AccordionContent>
-        <List density={density}>{children}</List>
+        <List density={density} windowing="none">
+          {children}
+        </List>
       </AccordionContent>
     </Accordion>
   )
@@ -170,7 +172,6 @@ const TreeLayout: FC<TreeProps> = ({
         dividers={dividers}
         hovered={hovered}
         iconGap={iconGap}
-        indicatorSize={iconSize}
         keyColor={useKeyColor}
         labelBackgroundOnly={hasLabelBackgroundOnly}
         selected={selected}

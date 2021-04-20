@@ -28,6 +28,12 @@ process.env.TZ = 'UTC'
 module.exports = {
   automock: false,
   collectCoverage: true,
+  collectCoverageFrom: [
+    'packages/**/*.(ts)?(x)',
+    '!packages/components-theme-editor/**/*',
+    '!packages/**/stories/*',
+    '!packages/**/*.story.tsx',
+  ],
   coverageReporters: ['json', 'html'],
   moduleDirectories: ['./node_modules', './packages'],
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json', 'node'],
@@ -39,4 +45,5 @@ module.exports = {
   },
   setupFilesAfterEnv: ['./jest.setup.js'],
   testMatch: ['**/?(*.)(spec|test).(ts|js)?(x)'],
+  // testPathIgnorePatterns: ['**/*.{!(story}.*'],
 }

@@ -35,6 +35,7 @@
     "clean:docs": "find docs -type f ! -name 'index.html' -delete",
     "clean:gatsby": "rm -Rf www/.cache www/public",
     "clean:coverage": "rm -rf coverage",
+
     "playground": "yarn workspace playground start",
     "gatsby": "yarn workspace www start",
     "fix": "yarn lint:es --fix",
@@ -48,15 +49,14 @@
     "test": "yarn jest",
 
     "storybook": "yarn workspace storybook develop",
-    "storybook-docs": "yarn workspace storybook develop-docs",
 
     "prestoryshots": "yarn prebuild",
-    "storyshots": "export storybookBuildMode=fast && yarn lerna run storybook-build --scope '@looker/*' --stream --parallel",
+    "storyshots": "export storybookBuildMode=fast && yarn workspace storybook build",
 
     "pretest:image-snapshots": "yarn storyshots",
     "test:image-snapshots": "yarn jest --config jest-image-snapshots.config.js",
     "pretest:image-snapshots-update": "yarn storyshots",
-    "test:image-snapshots-update": "rm -rf packages/*/snapshots && yarn jest -u --config jest-image-snapshots.config.js",
+    "test:image-snapshots-update": "yarn jest -u --config jest-image-snapshots.config.js",
 
     "pretest:a11y": "yarn storyshots",
     "test:a11y": "yarn jest --config jest-a11y.config.js",
@@ -65,7 +65,7 @@
     "website-latest": "./config/website-latest.sh"
   },
   "devDependencies": {
-    "@babel/cli": "^7.12.10",
+    "@babel/cli": "^7.13.14",
     "@babel/core": "^7.13.8",
     "@babel/plugin-proposal-class-properties": "^7.13.0",
     "@babel/plugin-proposal-nullish-coalescing-operator": "^7.13.8",
@@ -80,7 +80,7 @@
     "@types/jest-image-snapshot": "^4.1.3",
     "@types/node": "^14.14.22",
     "babel-plugin-styled-components": "1.12.0",
-    "core-js": "^3.9.1",
+    "core-js": "^3.10.0",
     "eslint": "^7.22.0",
     "jest": "^26.6.3",
     "jest-image-snapshot": "^4.3.0",

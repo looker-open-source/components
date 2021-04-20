@@ -103,6 +103,16 @@ LongList.parameters = {
   storyshots: false,
 }
 
+export const MenuHeadingComposition = () => (
+  <MenuList>
+    <MenuHeading>Mild Cheeses</MenuHeading>
+    <MenuItem>Cheddar</MenuItem>
+    <MenuDivider />
+    <MenuHeading>Spicy Cheeses</MenuHeading>
+    <MenuItem>Pepper Jack</MenuItem>
+  </MenuList>
+)
+
 const DensityExample: FC<{ density?: DensityRamp }> = ({ density }) => (
   <MenuList iconGutter density={density}>
     <MenuHeading>Cheeses of the World</MenuHeading>
@@ -179,6 +189,15 @@ export const MenuListSpacing = () => (
       </MenuList>
     </Box>
   </Space>
+)
+
+export const AdjacentDividers = () => (
+  <MenuList>
+    <MenuItem>There should only be one divider here...</MenuItem>
+    <MenuDivider />
+    <MenuDivider />
+    <MenuItem>even though there are technically two</MenuItem>
+  </MenuList>
 )
 
 export default {

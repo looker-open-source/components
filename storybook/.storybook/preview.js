@@ -7,7 +7,7 @@ import {
   Stories,
   PRIMARY_STORY,
 } from '@storybook/addon-docs/blocks'
-import { componentsDecorator } from '../../packages/storybook-config/src/componentsDecorator'
+import { componentsDecorator } from '../src/setup/componentsDecorator'
 
 // Supports parent page (in Gatsby) resizing the iframe dynamically
 // to avoid scrolling
