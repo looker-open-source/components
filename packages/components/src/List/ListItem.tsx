@@ -114,8 +114,8 @@ export interface ListItemProps
    */
   truncate?: boolean
   /**
-   * Should only be passed via TreeItem
-   * @private
+   * Callback to specify onClick handler on item's whitespace.
+   * @private May only be passed via TreeItem. This feature may be removed without a breaking change. We STRONGLY discourage the direct use of this property.
    */
   onClickWhitespace?: (event: React.MouseEvent<HTMLElement>) => void
 }
