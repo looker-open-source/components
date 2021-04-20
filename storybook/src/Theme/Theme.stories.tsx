@@ -59,5 +59,6 @@ export const CompareThemes: FC = () => (
 )
 
 export default {
+  storyshots: { disable: true },
   title: 'Theme',
 }
