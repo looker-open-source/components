@@ -64,6 +64,9 @@ export interface ListProps
    */
   iconGutter?: boolean
 
+  /**
+   * Use this prop to specify themed fonts for the List text.
+   */
   fontFamily?: FontFamilies
 
   /**
@@ -173,7 +176,7 @@ const ListStyle = styled.ul.withConfig({ shouldForwardProp })<
   list-style: none;
   overflow: auto;
 
-  button {
+  * {
     ${fontFamily}
   }
 `
