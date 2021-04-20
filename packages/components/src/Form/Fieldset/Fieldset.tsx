@@ -24,8 +24,6 @@
 
  */
 
-import omit from 'lodash/omit'
-import pick from 'lodash/pick'
 import React, { createContext, forwardRef, ReactNode, Ref } from 'react'
 import styled from 'styled-components'
 import {
@@ -42,7 +40,6 @@ import {
   Accordion,
   AccordionContent,
   AccordionControlProps,
-  AccordionControlPropKeys,
   AccordionDisclosure,
   AccordionIndicatorProps,
 } from '../../Accordion'
@@ -105,6 +102,7 @@ export const FieldsetContext = createContext<FieldsetContextProps>({})
 const FieldsetLayout = forwardRef(
   (props: FieldsetProps, ref: Ref<HTMLDivElement>) => {
     const {
+      // Fieldset-specific props
       accordion,
       className,
       inline,
@@ -113,11 +111,23 @@ const FieldsetLayout = forwardRef(
       fieldsHideLabel,
       children,
       wrap,
+
+      // Accordion Control-related props
+      defaultOpen,
+      isOpen,
+      toggleOpen,
+      onClose,
+      onOpen,
+
       ...restProps
-    } = omit(props, [...AccordionControlPropKeys])
+    } = props
 
     const accordionProps = {
-      ...pick(restProps, [...AccordionControlPropKeys]),
+      defaultOpen,
+      isOpen,
+      onClose,
+      onOpen,
+      toggleOpen,
       ...accordionIndicatorDefaults,
     }
 
