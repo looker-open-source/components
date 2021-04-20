@@ -30,21 +30,44 @@ import { undefinedCoalesce } from '../utils'
 import { ListItem, ListItemProps } from '../List'
 import { TreeContext } from './TreeContext'
 
-const TreeItemLayout: FC<ListItemProps> = ({
+export interface TreeItemProps extends ListItemProps {
+  /**
+   * Callback triggered only when clicking on the TreeItem's outermost container (i.e. not a child element)
+   * Used by `TreeItem`s to allow indent padding clicks to register when `labelBackgroundOnly` is true on a parent `Tree`
+   * Note: onClickWhitespace should only be used if `labelBackgroundOnly` is enabled on a parent `Tree`
+   */
+  onClickWhitespace?: (event: React.MouseEvent<HTMLElement>) => void
+}
+
+const TreeItemLayout: FC<TreeItemProps> = ({
   children,
   density: propsDensity,
   keyColor: propsKeyColor,
+  onClickWhitespace,
   ...restProps
 }) => {
-  const { density: contextDensity, keyColor: contextKeyColor } = useContext(
-    TreeContext
-  )
+  const {
+    density: contextDensity,
+    keyColor: contextKeyColor,
+    labelBackgroundOnly,
+  } = useContext(TreeContext)
+
+  if (onClickWhitespace && !labelBackgroundOnly)
+    // eslint-disable-next-line no-console
+    console.warn(
+      'onClickWhitespace is only necessary on <TreeItem> when labelBackgroundOnly is enabled; use onClick on <TreeItem> or to its children instead'
+    )
 
   const density = undefinedCoalesce([propsDensity, contextDensity])
   const keyColor = undefinedCoalesce([propsKeyColor, contextKeyColor])
 
   return (
-    <ListItem density={density} keyColor={keyColor} {...restProps}>
+    <ListItem
+      density={density}
+      keyColor={keyColor}
+      onClickWhitespace={onClickWhitespace}
+      {...restProps}
+    >
       {children}
     </ListItem>
   )

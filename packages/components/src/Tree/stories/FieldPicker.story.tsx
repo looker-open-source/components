@@ -86,6 +86,8 @@ const PickerItem: FC<{ color?: string; truncate?: boolean }> = ({
     </>
   )
 
+  const handleFieldClick = () => alert(`Clicked on ${children}`)
+
   return (
     <TreeItem
       color={color}
@@ -97,7 +99,7 @@ const PickerItem: FC<{ color?: string; truncate?: boolean }> = ({
         },
       }}
       itemRole="none"
-      onClick={() => alert(`Clicked on ${children}!`)}
+      onClickWhitespace={handleFieldClick}
       onKeyDown={(event) => {
         if (event.key === 'Enter' && event.metaKey) {
           alert(`CMD + Enter'ed on ${children}!`)
@@ -106,7 +108,9 @@ const PickerItem: FC<{ color?: string; truncate?: boolean }> = ({
       truncate={truncate}
     >
       <Flex alignItems="center" px="xxsmall">
-        <FlexItem flex={1}>{children}</FlexItem>
+        <FlexItem flex={1} onClick={handleFieldClick}>
+          {children}
+        </FlexItem>
         <HoverDisclosure>
           <IconButton
             icon={<SubdirectoryArrowLeft />}

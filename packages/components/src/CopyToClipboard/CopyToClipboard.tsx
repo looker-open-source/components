@@ -24,7 +24,13 @@
 
  */
 import { useTranslation } from 'react-i18next'
-import React, { useRef, useState, FC, cloneElement } from 'react'
+import React, {
+  useRef,
+  useState,
+  FC,
+  cloneElement,
+  isValidElement,
+} from 'react'
 import { Assignment } from '@styled-icons/material/Assignment'
 import { Done } from '@styled-icons/material/Done'
 import { ButtonOutline } from '../Button/ButtonOutline'
@@ -75,21 +81,20 @@ export const CopyToClipboard: FC<CopyToClipboardProps> = (props) => {
     }
   }
 
-  const copyButton =
-    typeof children === 'string' ? (
-      <ButtonOutline
-        iconBefore={<Assignment />}
-        onClick={clickCopyButton}
-        ref={buttonRef}
-      >
-        {children}
-      </ButtonOutline>
-    ) : (
-      cloneElement(children, {
-        onClick: clickCopyButton,
-        ref: buttonRef,
-      })
-    )
+  const copyButton = isValidElement(children) ? (
+    cloneElement(children, {
+      onClick: clickCopyButton,
+      ref: buttonRef,
+    })
+  ) : (
+    <ButtonOutline
+      iconBefore={<Assignment />}
+      onClick={clickCopyButton}
+      ref={buttonRef}
+    >
+      {children}
+    </ButtonOutline>
+  )
 
   const successButton =
     typeof success === 'string' ? (
