@@ -51,15 +51,15 @@
     "@types/lodash": "^4.14.168",
     "@types/react": "^16.9.56",
     "@types/react-dom": "^16.9.9",
-    "@types/styled-components": "^5.1.5",
+    "@types/styled-components": "^5.1.9",
     "@types/uuid": "^8.3.0",
     "csstype": "^3.0.7",
-    "jest-styled-components": "^7.0.3",
+    "jest-styled-components": "^7.0.4",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-is": "^16.13.1",
     "storybook": "^6.1.15",
-    "styled-components": "^5.2.1"
+    "styled-components": "^5.2.3"
   },
   "peerDependencies": {
     "react": "^16.11",

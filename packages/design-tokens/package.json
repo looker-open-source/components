@@ -30,13 +30,13 @@
     "@storybook/react": "^6.1.15",
     "@testing-library/react": "^11.2.2",
     "@types/lodash": "^4.14.168",
-    "@types/styled-components": "^5.1.5",
+    "@types/styled-components": "^5.1.9",
     "csstype": "^3.0.7",
     "lodash": "^4.17.20",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-is": "^16.13.1",
-    "styled-components": "^5.2.1"
+    "styled-components": "^5.2.3"
   },
   "peerDependencies": {
     "react": "^16.11",
