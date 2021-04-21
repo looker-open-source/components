@@ -53,11 +53,7 @@ export const LegacyComposition = () => (
   </Accordion>
 )
 
-export const Basic = () => (
-  <Fieldset legend="Legend" accordion defaultOpen>
-    "Hello World"
-  </Fieldset>
-)
+export const Basic = () => <Accordion content="World">Hello</Accordion>
 
 export const DefaultOpen = () => (
   <Accordion
