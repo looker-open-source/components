@@ -24,14 +24,7 @@
 
  */
 
-import React, {
-  FC,
-  KeyboardEvent,
-  useContext,
-  Ref,
-  forwardRef,
-  useState,
-} from 'react'
+import React, { FC, KeyboardEvent, Ref, forwardRef, useState } from 'react'
 import styled from 'styled-components'
 import {
   TypographyProps,
@@ -45,40 +38,64 @@ import {
 } from '@looker/design-tokens'
 import { useWrapEvent } from '../utils'
 import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout/utils/simple'
-import { AccordionContext } from './AccordionContext'
 import { AccordionDisclosureLayout } from './AccordionDisclosureLayout'
+import { AccordionControlProps, AccordionIndicatorProps } from './types'
+import { accordionContextDefaults } from './AccordionContext'
 
 export interface AccordionDisclosureProps
   extends TypographyProps,
     Omit<AccordionDisclosureStyleProps, 'focusVisible'>,
     CompatibleHTMLProps<HTMLElement>,
-    SimpleLayoutProps {
+    SimpleLayoutProps,
+    AccordionControlProps,
+    AccordionIndicatorProps {
   className?: string
   focusVisible?: boolean
   ref?: Ref<HTMLDivElement>
+  /**
+   * ID of the corresponding AccordionContent container
+   */
+  accordionContentId?: string
+  /**
+   * ID of the AccordionDisclosure
+   */
+  accordionDisclosureId?: string
 }
 
+/**
+ * @todo: Remove fallback values in <AccordionDisclosureLayout/> element in 2.x
+ */
 const AccordionDisclosureInternal: FC<AccordionDisclosureProps> = forwardRef(
   (
-    { children, className, onBlur, onClick, onKeyDown, onKeyUp, ...props },
-    ref
-  ) => {
-    const [isFocusVisible, setFocusVisible] = useState(false)
-    const {
+    {
       accordionContentId,
       accordionDisclosureId,
+      children,
+      className,
+      onBlur,
+      onClick,
+      onKeyDown,
+      onKeyUp,
+      defaultOpen,
       isOpen,
       toggleOpen,
       onClose,
       onOpen,
-      ...accordionProps
-    } = useContext(AccordionContext)
+      indicatorPosition,
+      indicatorSize,
+      indicatorGap,
+      indicatorIcons,
+      ...props
+    },
+    ref
+  ) => {
+    const [isFocusVisible, setFocusVisible] = useState(false)
 
     const handleOpen = () => onOpen && onOpen()
     const handleClose = () => onClose && onClose()
     const handleToggle = () => {
       isOpen ? handleClose() : handleOpen()
-      toggleOpen(!isOpen)
+      toggleOpen && toggleOpen(!isOpen)
     }
 
     const handleKeyDown = useWrapEvent(
@@ -118,7 +135,19 @@ const AccordionDisclosureInternal: FC<AccordionDisclosureProps> = forwardRef(
         tabIndex={0}
         {...props}
       >
-        <AccordionDisclosureLayout {...accordionProps} isOpen={isOpen}>
+        <AccordionDisclosureLayout
+          indicatorPosition={
+            indicatorPosition || accordionContextDefaults.indicatorPosition
+          }
+          indicatorSize={
+            indicatorSize || accordionContextDefaults.indicatorSize
+          }
+          indicatorGap={indicatorGap || accordionContextDefaults.indicatorGap}
+          indicatorIcons={
+            indicatorIcons || accordionContextDefaults.indicatorIcons
+          }
+          isOpen={isOpen}
+        >
           {children}
         </AccordionDisclosureLayout>
       </AccordionDisclosureStyle>

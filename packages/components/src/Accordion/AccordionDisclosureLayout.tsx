@@ -27,11 +27,11 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
 import { StyledIconBase } from '@styled-icons/styled-icon'
-import { AccordionIndicatorProps } from './indicator'
+import { AccordionIndicatorProps } from './types'
 
 interface AccordionDisclosureLayoutProps
   extends Required<AccordionIndicatorProps> {
-  isOpen: boolean
+  isOpen?: boolean
   className?: string
 }
 
