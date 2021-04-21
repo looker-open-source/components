@@ -38,9 +38,9 @@ import { TreeStyle } from './TreeStyle'
 export const TreeArtificial: FC<{
   density?: DensityRamp
 }> = ({ children, density = 0 }) => {
-  const { iconGap } = listItemDimensions(density)
+  const { iconGap, iconSize } = listItemDimensions(density)
   return (
-    <TreeStyle depth={-1} iconGap={iconGap} dividers>
+    <TreeStyle depth={-1} iconGap={iconGap} iconSize={iconSize} dividers>
       <TreeContext.Provider value={{ density, depth: 0 }}>
         <List>{children}</List>
       </TreeContext.Provider>
