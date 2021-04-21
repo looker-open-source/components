@@ -25,18 +25,33 @@
  */
 
 import { css } from 'styled-components'
-import { Theme } from '@looker/design-tokens'
+import { SpacingSizes, Theme } from '@looker/design-tokens'
 import { IconSize } from '../../Icon'
 
-export const generateIndent = (
-  depth: number,
-  indicatorSize: IconSize,
+export interface GenerateIndentProps {
+  depth: number
+  forceLabelPadding?: boolean
+  iconSize: IconSize
+  iconGap: SpacingSizes
+  indicatorSize: IconSize
   theme: Theme
-) => {
-  const { sizes } = theme
+}
+
+export const generateIndent = ({
+  depth,
+  forceLabelPadding,
+  iconGap,
+  iconSize,
+  indicatorSize,
+  theme,
+}: GenerateIndentProps) => {
+  const { space, sizes } = theme
 
   const indicatorIconSize = sizes[indicatorSize]
-  const indentCalculation = `(${indicatorIconSize}) * ${depth}`
+  const forceLabelPaddingSpacer = `(${sizes[iconSize]} + ${space[iconGap]} - 2px)`
+  const indentCalculation = `(${indicatorIconSize}) * ${
+    forceLabelPadding ? depth - 1 : depth
+  } + ${forceLabelPadding ? forceLabelPaddingSpacer : '0px'}`
 
   return css`
     padding-left: calc(${indentCalculation});

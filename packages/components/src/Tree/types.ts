@@ -55,6 +55,12 @@ export interface TreeProps
    */
   dividers?: boolean
   /**
+   * If true, child `TreeItem` elements will receive additional indent padding to align parent `Tree` and child `TreeItem` labels.
+   * Note: This should only be used when the parent `Tree` has an icon and the child `TreeItem`s do not.
+   * @default false
+   */
+  forceLabelPadding?: boolean
+  /**
    * Label text or element displayed within Tree's internal AccordionDisclosure
    */
   label: ReactNode
