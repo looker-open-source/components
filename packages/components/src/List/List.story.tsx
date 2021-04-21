@@ -70,6 +70,15 @@ StatefulColor.args = {
   statefulColor: 'key',
 }
 
+export const Test = Template.bind({})
+Test.args = {
+  ...Basic.args,
+  statefulColor: 'critical',
+}
+Test.parameters = {
+  storyshots: false,
+}
+
 export const IconGutter = Template.bind({})
 IconGutter.args = {
   ...Basic.args,

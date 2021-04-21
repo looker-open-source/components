@@ -46,7 +46,12 @@ import { ListItemContext } from './ListItemContext'
 import { listItemDimensions } from './utils'
 import { DensityRamp } from './types'
 
-export type ListColor = 'key' | 'calculation' | 'dimension' | 'measure'
+export type ListColor =
+  | 'key'
+  | 'calculation'
+  | 'dimension'
+  | 'measure'
+  | 'critical'
 
 export interface ListProps
   extends HeightProps,
@@ -60,14 +65,18 @@ export interface ListProps
   density?: DensityRamp
 
   /**
-   * Replace the default uiN(1-5) background-color, when ListItem is selected, with color label passed.
-   * not specifying statefulColor component will default to text-based theme.colors
+   * Specify font-family. Generally will end up inheriting `theme.fonts.body` but can be specified as `brand`, `code` or `body` to explicitly specify theme-controlled font-family
+   * @default inherit
    */
-  statefulColor?: ListColor
+  fontFamily?: FontFamilies
 
   /**
-<<<<<<< HEAD
-=======
+   * If true, all ListItem children without an icon will reserve space for an icon
+   * for alignment purposes.
+   */
+  iconGutter?: boolean
+
+  /**
    * Replace the normal uiN(1-5) color for selected and selected + hovered color with key colors
    * @todo - Remove in 2.x release
    * @deprecated Use `statefulColor="key"` instead
@@ -75,22 +84,10 @@ export interface ListProps
   keyColor?: boolean
 
   /**
->>>>>>> 6ffba68af (restructuring the statefulColor behavior)
-   * If true, all ListItem children without an icon will reserve space for an icon
-   * for alignment purposes.
+   * Replace the default uiN(1-5) background-color, when ListItem is selected, with color label passed.
+   * not specifying statefulColor component will default to text-based theme.colors
    */
-  iconGutter?: boolean
-
-  /**
-   * Specify font-family. Generally will end up inheriting `theme.fonts.body` but can be specified as `brand`, `code` or `body` to explicitly specify theme-controlled font-family
-   * @default inherit
-   */
-  fontFamily?: FontFamilies
-
-  /**
-   * Replace the normal uiN(1-5) color for selected and selected + hovered color with key colors
-   */
-  keyColor?: boolean
+  statefulColor?: ListColor
 
   /**
    * Use windowing for long lists (strongly recommended to also define a width on List or its container)

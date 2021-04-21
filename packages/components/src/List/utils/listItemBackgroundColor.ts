@@ -27,6 +27,7 @@
 import { itemSelectedColor, Theme } from '@looker/design-tokens'
 import { css } from 'styled-components'
 import { ListItemStatefulWithHoveredProps } from '../types'
+import { ListProps } from '../List'
 
 export const listItemBackgroundColor = ({
   statefulColor,
@@ -38,7 +39,8 @@ export const listItemBackgroundColor = ({
   theme: { colors },
 }: ListItemStatefulWithHoveredProps & { theme: Theme }) => {
   /* Provide fallback support for `keyColor` until we're able to deprecate it */
-  const intent = statefulColor || keyColor ? 'key' : undefined
+  const intent =
+    statefulColor || (keyColor && !statefulColor ? 'key' : undefined)
 
   const stateColors = intent
     ? {
@@ -60,7 +62,11 @@ export const listItemBackgroundColor = ({
   else if (hovered) renderedColor = stateColors.hovered
   else renderedColor = 'transparent'
 
-  return css`
+  return css<ListProps>`
     background: ${renderedColor};
+    color: ${({ statefulColor }) =>
+      statefulColor === 'critical' || statefulColor === 'calculation'
+        ? statefulColor
+        : 'text5'};
   `
 }
