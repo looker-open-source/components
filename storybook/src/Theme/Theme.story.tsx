@@ -25,16 +25,16 @@
  */
 
 import { Grid } from '@looker/components'
-import React, { FC } from 'react'
+import React from 'react'
 import { Editor, EditorProps } from './Editor'
 
-export const ThemeEditor: FC<EditorProps> = (props) => (
-  <>
-    <Editor {...props} />
-  </>
-)
+export const ThemeEditor = (props: EditorProps) => <Editor {...props} />
 
-export const CompareThemes: FC = () => (
+ThemeEditor.parameters = {
+  storyshots: { disable: true },
+}
+
+export const CompareThemes = () => (
   <Grid m="xlarge" gap="large" columns={4}>
     <Editor name="Default" />
     <Editor
@@ -57,6 +57,10 @@ export const CompareThemes: FC = () => (
     />
   </Grid>
 )
+
+CompareThemes.parameters = {
+  storyshots: { disable: true },
+}
 
 export default {
   title: 'Theme',

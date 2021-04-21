@@ -108,7 +108,7 @@ export function useDelayedState<T>(initialValue: T): UseDelayedStateReturn<T> {
   )
 
   useEffect(() => {
-    let t: number
+    let t: NodeJS.Timeout
     if (delay !== false) {
       t = setTimeout(() => {
         dispatch({ type: 'CHANGE' })
