@@ -62,6 +62,9 @@ export interface AccordionDisclosureProps
   accordionDisclosureId?: string
 }
 
+/**
+ * @todo: Remove fallback values in <AccordionDisclosureLayout/> element in 2.x
+ */
 const AccordionDisclosureInternal: FC<AccordionDisclosureProps> = forwardRef(
   (
     {

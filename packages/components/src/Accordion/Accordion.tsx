@@ -34,7 +34,7 @@ import React, {
 } from 'react'
 import styled from 'styled-components'
 import {
-  color,
+  textColor,
   shouldForwardProp,
   TextColorProps,
   TypographyProps,
@@ -74,10 +74,9 @@ export interface AccordionProps
     TypographyProps {
   /**
    * We currently support two different compositions for Accordion:
-   * 1. Legacy: An <Accordion> wrapped around an <AccordionDisclosure> and <AccordionContent>
-   * 2. Modern: An <Accordion> with children that are NOT <AccordionDisclosure> or <AccordionContent> elements and a content prop
-   * @TODO Deprecate old format in 2.x
-   * @deprecated
+   *  - `Accordion`'s children will act as the "trigger" element (i.e. children always visible, clicking children toggles whether content is visible or not)
+   *  - Legacy: <Accordion> wrapped around an <AccordionDisclosure> and <AccordionContent> (NOTE: This composition will be deprecated in a future MAJOR release)
+   * @TODO Deprecate legacy format in 2.x
    */
   children: ReactNode
   className?: string
@@ -244,7 +243,7 @@ export const Accordion = styled(AccordionLayout)
     })
   )<AccordionProps>`
   ${AccordionDisclosure}, ${AccordionContent} {
-    ${color}
+    ${textColor}
     ${simpleLayoutCSS}
     ${typography}
   }
