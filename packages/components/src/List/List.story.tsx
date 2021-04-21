@@ -64,28 +64,10 @@ FontFamily.args = {
   fontFamily: 'code',
 }
 
-export const KeyColor = Template.bind({})
-KeyColor.args = {
-  ...Basic.args,
-  keyColor: true,
-}
-
-export const Critical = Template.bind({})
-Critical.args = {
-  ...Basic.args,
-  statefulColor: 'critical',
-}
-
-export const Key = Template.bind({})
-Key.args = {
+export const StatefulColor = Template.bind({})
+StatefulColor.args = {
   ...Basic.args,
   statefulColor: 'key',
-}
-
-export const Neutral = Template.bind({})
-Neutral.args = {
-  ...Basic.args,
-  statefulColor: 'neutral',
 }
 
 export const IconGutter = Template.bind({})

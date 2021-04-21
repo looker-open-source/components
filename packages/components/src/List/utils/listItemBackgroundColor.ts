@@ -37,29 +37,24 @@ export const listItemBackgroundColor = ({
   selected,
   theme: { colors },
 }: ListItemStatefulWithHoveredProps & { theme: Theme }) => {
-  const keyColors = {
-    all: colors.keySubtle,
-    hovered: colors.ui1,
-    selected: colors.keySubtle,
-  }
+  /* Provide fallback support for `keyColor` until we're able to deprecate it */
+  const intent = statefulColor || keyColor ? 'key' : undefined
 
-  const uiColors = {
-    all: itemSelectedColor(colors.ui2),
-    hovered: colors.ui1,
-    selected: itemSelectedColor(colors.ui2),
-  }
+  const stateColors = intent
+    ? {
+        all: colors[`${intent}Subtle`],
+        hovered: colors.ui1,
+        selected: colors[`${intent}Subtle`],
+      }
+    : {
+        all: itemSelectedColor(colors.ui2),
+        hovered: colors.ui1,
+        selected: itemSelectedColor(colors.ui2),
+      }
 
-  const stateColors = keyColor ? keyColors : uiColors
-  const colorValue =
-    statefulColor === 'key'
-      ? colors.keySubtle
-      : statefulColor === 'critical'
-      ? colors.criticalSubtle
-      : colors.neutralSubtle
   let renderedColor
 
   if (disabled) renderedColor = 'transparent'
-  else if (selected && statefulColor) renderedColor = colorValue
   else if ((selected || current) && hovered) renderedColor = stateColors.all
   else if (selected || current) renderedColor = stateColors.selected
   else if (hovered) renderedColor = stateColors.hovered

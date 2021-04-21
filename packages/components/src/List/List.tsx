@@ -46,6 +46,8 @@ import { ListItemContext } from './ListItemContext'
 import { listItemDimensions } from './utils'
 import { DensityRamp } from './types'
 
+export type ListColor = 'key' | 'calculation' | 'dimension' | 'measure'
+
 export interface ListProps
   extends HeightProps,
     WidthProps,
@@ -58,11 +60,22 @@ export interface ListProps
   density?: DensityRamp
 
   /**
-   * Replace the normal uiN(1-5) color, when ListItem is selected, with color label passed.
+   * Replace the default uiN(1-5) background-color, when ListItem is selected, with color label passed.
+   * not specifying statefulColor component will default to text-based theme.colors
    */
-  statefulColor?: 'critical' | 'key' | 'neutral'
+  statefulColor?: ListColor
 
   /**
+<<<<<<< HEAD
+=======
+   * Replace the normal uiN(1-5) color for selected and selected + hovered color with key colors
+   * @todo - Remove in 2.x release
+   * @deprecated Use `statefulColor="key"` instead
+   */
+  keyColor?: boolean
+
+  /**
+>>>>>>> 6ffba68af (restructuring the statefulColor behavior)
    * If true, all ListItem children without an icon will reserve space for an icon
    * for alignment purposes.
    */
@@ -154,6 +167,11 @@ export const ListInternal = forwardRef(
       iconGutter,
       keyColor,
       statefulColor,
+    }
+
+    if (statefulColor && keyColor) {
+      // eslint-disable-next-line no-console
+      console.warn('keyColor is deprecated use statefulColor instead.')
     }
 
     return (

@@ -93,15 +93,34 @@ describe('List', () => {
     })
   })
   describe('statefulColor', () => {
-    test('critical', () => {
+    test('displays the correct background when selected', () => {
       renderWithTheme(
-        <List statefulColor="critical">
+        <List statefulColor="key">
           <ListItem selected>Mozzarella</ListItem>
         </List>
       )
       expect(screen.getByText('Mozzarella')).toBeInTheDocument()
       expect(screen.getByText('Mozzarella').closest('button')).toHaveStyle(
-        'background: #FFF2F4;'
+        'background: #F3F2FF;'
+      )
+    })
+
+    test('expects statefulColor="key" and keyColor have the same background-color value', () => {
+      renderWithTheme(
+        <>
+          <List statefulColor="key">
+            <ListItem selected>color</ListItem>
+          </List>
+          <List keyColor>
+            <ListItem selected>keyColor</ListItem>
+          </List>
+        </>
+      )
+      expect(screen.getByText('color').closest('button')).toHaveStyle(
+        'background: #F3F2FF;'
+      )
+      expect(screen.getByText('keyColor').closest('button')).toHaveStyle(
+        'background: #F3F2FF;'
       )
     })
   })
