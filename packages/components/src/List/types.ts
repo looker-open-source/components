@@ -27,6 +27,7 @@
 import { FontSizes, LineHeights, SpacingSizes } from '@looker/design-tokens'
 import { ReactNode } from 'react'
 import { IconSize } from '..'
+import { ListColor } from '../List'
 
 export type DensityRamp = -3 | -2 | -1 | 0 | 1
 
@@ -80,7 +81,7 @@ export interface ListItemStatefulProps {
   /**
    * Replace the normal uiN(1-5) color, when ListItem is selected, with color label passed.
    */
-  statefulColor?: 'critical' | 'key' | 'neutral'
+  statefulColor?: ListColor
 }
 
 export interface ListItemStatefulWithHoveredProps
