@@ -25,13 +25,15 @@
  */
 
 import { SpacingSizes } from '@looker/design-tokens'
+import { ArrowDropDown } from '@styled-icons/material/ArrowDropDown'
+import { ArrowRight } from '@styled-icons/material/ArrowRight'
 import { ExpandLess } from '@styled-icons/material-rounded/ExpandLess'
 import { ExpandMore } from '@styled-icons/material-rounded/ExpandMore'
-import React, { createContext } from 'react'
+import React from 'react'
 import { IconSize } from '../Icon'
 import { IndicatorIcons } from './types'
 
-export interface AccordionContextProps {
+export interface AccordionDefaultProps {
   accordionContentId: string
   accordionDisclosureId: string
   indicatorGap: SpacingSizes
@@ -44,7 +46,7 @@ export interface AccordionContextProps {
   onOpen?: () => void
 }
 
-export const accordionContextDefaults: AccordionContextProps = {
+export const accordionDefaults: AccordionDefaultProps = {
   accordionContentId: '',
   accordionDisclosureId: '',
   indicatorGap: 'xsmall',
@@ -58,6 +60,11 @@ export const accordionContextDefaults: AccordionContextProps = {
   toggleOpen: (_: boolean) => undefined,
 }
 
-export const AccordionContext = createContext<AccordionContextProps>({
-  ...accordionContextDefaults,
-})
+export const accordionLeftDefaults: AccordionDefaultProps = {
+  ...accordionDefaults,
+  indicatorIcons: {
+    close: <ArrowRight />,
+    open: <ArrowDropDown />,
+  },
+  indicatorPosition: 'left',
+}

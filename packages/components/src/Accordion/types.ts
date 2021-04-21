@@ -54,7 +54,10 @@ export interface AccordionIndicatorProps {
   indicatorGap?: SpacingSizes
 
   /**
-   * Icons for disclosure indicator
+   * Icons for disclosure indicator.
+   *
+   * indicatorPosition === default / 'right' will default to `ExpandMore` / `ExpandLess`
+   * indicatorPosition === 'left' will default to `ArrowRight` / `ArrowDropDown`
    */
   indicatorIcons?: IndicatorIcons
 }

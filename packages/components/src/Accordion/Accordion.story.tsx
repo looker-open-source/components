@@ -55,6 +55,12 @@ export const LegacyComposition = () => (
 
 export const Basic = () => <Accordion content="World">Hello</Accordion>
 
+export const Left = () => (
+  <Accordion indicatorPosition="left" content="World">
+    Hello
+  </Accordion>
+)
+
 export const DefaultOpen = () => (
   <Accordion
     defaultOpen
