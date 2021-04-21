@@ -37,6 +37,9 @@ export interface GenerateIndentProps {
   theme: Theme
 }
 
+// Used to tighten the gap between the optional icon and item label
+export const iconGapAdjuster = '2px'
+
 export const generateIndent = ({
   depth,
   forceLabelPadding,
@@ -48,7 +51,7 @@ export const generateIndent = ({
   const { space, sizes } = theme
 
   const indicatorIconSize = sizes[indicatorSize]
-  const forceLabelPaddingSpacer = `(${sizes[iconSize]} + ${space[iconGap]} - 2px)`
+  const forceLabelPaddingSpacer = `(${sizes[iconSize]} + ${space[iconGap]} - ${iconGapAdjuster})`
   const indentCalculation = `(${indicatorIconSize}) * ${
     forceLabelPadding ? depth - 1 : depth
   } + ${forceLabelPadding ? forceLabelPaddingSpacer : '0px'}`

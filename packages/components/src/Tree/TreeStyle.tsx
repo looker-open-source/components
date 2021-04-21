@@ -44,6 +44,7 @@ import {
   generateIndent,
   GenerateIndentProps,
   generateTreeBorder,
+  iconGapAdjuster,
 } from './utils'
 
 interface TreeStyleProps extends ListItemStatefulWithHoveredProps {
@@ -135,7 +136,7 @@ export const TreeStyle = styled.div<TreeStyleProps>`
         > svg,
         > ${StyledIconBase}, > ${IconPlaceholder} {
           /* The -2px gets the icon gap to match design specs */
-          margin-right: calc(${theme.space[iconGap]} - 2px);
+          margin-right: calc(${theme.space[iconGap]} - ${iconGapAdjuster});
         }
       `)}
   }
