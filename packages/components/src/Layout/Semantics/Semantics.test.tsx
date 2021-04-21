@@ -154,12 +154,7 @@ describe('Semantics', () => {
   })
 
   test('Aside can use t-shirt sized for its width.', () => {
-    renderWithTheme(
-      <Layout hasAside>
-        <Aside width="medium">Aside content</Aside>
-        <Section as="main">Main content</Section>
-      </Layout>
-    )
+    renderWithTheme(<Aside width="medium">Aside content</Aside>)
     expect(screen.getByText('Aside content')).not.toHaveStyleRule(
       'width: 40rem;'
     )

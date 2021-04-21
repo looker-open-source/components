@@ -35,8 +35,18 @@ import { SpaceVertical } from '../../Space'
 import { Heading, Paragraph } from '../../../Text'
 import { MenuItem } from '../../../Menu/MenuItem'
 import { Tab, Tabs, TabList, TabPanel, TabPanels } from '../../../Tabs'
+import { layoutSizes } from '../LayoutWidth'
 
 export default {
+  argTypes: {
+    width: {
+      control: {
+        options: Object.keys(layoutSizes),
+        type: 'select',
+      },
+    },
+  },
+  compoent: Layout,
   title: 'Layout',
 }
 
@@ -347,14 +357,11 @@ export const ScrollAllAreas = () => (
 )
 
 export const AsideWidthSizeXsmall = () => (
-  <Highlighter>
-    <Layout hasAside>
-      <Aside p="xxlarge" width="xsmall">
-        Aside content
-      </Aside>
-      <Section p="xxlarge" as="main">
-        {longContent}
-      </Section>
-    </Layout>
-  </Highlighter>
+  <AsideStyle width="xsmall">Aside content</AsideStyle>
 )
+
+const AsideStyle = styled(Aside)`
+  background-color: lightsalmon;
+  height: 40rem;
+  padding: 40px;
+`
