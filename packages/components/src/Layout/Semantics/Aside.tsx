@@ -27,7 +27,7 @@
 import { shouldForwardProp } from '@looker/design-tokens'
 import styled from 'styled-components'
 import { ResponsiveValue } from 'styled-system'
-import { DialogSizeRamp, dialogWidth } from '../../Dialog/dialogWidth'
+import { LayoutSizeRamp, layoutWidth } from './LayoutWidth'
 import { SemanticLayoutBase, semanticLayoutCSS } from './semanticStyledBase'
 import { borderHelper, SemanticBorderProps } from './semanticBorderHelper'
 
@@ -41,25 +41,23 @@ export interface AsideProps extends SemanticLayoutBase, SemanticBorderProps {
   scrollWithin?: boolean
   /**
    * Specify width of aside
-   * @default '12rem'
+   * @default 'xsmall'
    */
-  width?: ResponsiveValue<DialogSizeRamp | string>
+  width?: ResponsiveValue<LayoutSizeRamp | string>
 }
 
 export const Aside = styled.aside
   .withConfig({ shouldForwardProp })
-  .attrs<AsideProps>(({ width = '12rem' }) => ({
+  .attrs<AsideProps>(({ width = 'xsmall' }) => ({
     width,
   }))<AsideProps>`
   ${semanticLayoutCSS}
 
   flex: 0 0 ${({ width }) => width};
-  max-width: ${({ width }) => width};
-  min-width: ${({ width }) => width};
   overflow: auto;
   width: 0;
   ${({ scrollWithin }) => scrollWithin && 'height: fit-content;'}
 
   ${borderHelper}
-  ${dialogWidth}
+  ${layoutWidth}
 `
