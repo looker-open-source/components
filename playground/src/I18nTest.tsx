@@ -23,37 +23,21 @@
  SOFTWARE.
 
  */
+import React from 'react'
+import { Button, Chip, Space, useI18n } from '@looker/components'
 
-export * from './getNextFocus'
-export * from './getNextFocusTarget'
-export * from './getWindowedListBoundaries'
-export * from './HoverDisclosure'
-export * from './i18n'
-export * from './mergeHandlers'
-export * from './targetIsButton'
-export * from './undefinedCoalesce'
-export * from './useAnimationState'
-export * from './useClickable'
-export * from './useArrowKeyNav'
-export * from './useControlWarn'
-export * from './useReadOnlyWarn'
-export * from './useCallbackRef'
-export * from './useDelayedState'
-export * from './useFocusTrap'
-export * from './useForkedRef'
-export * from './useGlobalHotkeys'
-export * from './useHovered'
-export * from './useI18n'
-export * from './useID'
-export * from './useIsTruncated'
-export * from './useMouseDownClick'
-export * from './usePopper'
-export * from './useResize'
-export * from './useScrollLock'
-export * from './useScrollPosition'
-export * from './useToggle'
-export * from './useWrapEvent'
-export * from './useMeasuredElement'
-export * from './useMouseDragPosition'
-export * from './usePreviousValue'
-export * from './useWindow'
+const locales = ['es', 'en']
+
+export const I18nTest = () => {
+  const { locale, setLocale, t } = useI18n('TestComponent')
+  const otherLocale = locales[Math.abs(locales.indexOf(locale) - 1)]
+  const handleClick = () => {
+    setLocale(otherLocale)
+  }
+  return (
+    <Space>
+      <Chip onDelete={() => alert('Deleted!')}>{t('Hello World')}</Chip>
+      <Button onClick={handleClick}>Switch to {otherLocale}</Button>
+    </Space>
+  )
+}

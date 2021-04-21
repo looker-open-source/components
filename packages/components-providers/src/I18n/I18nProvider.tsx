@@ -23,34 +23,43 @@
  SOFTWARE.
 
  */
-import { ResourceLanguage } from 'i18next'
-import React from 'react'
-import { render } from 'react-dom'
-import { ComponentsProvider } from '@looker/components'
-import { I18nTest } from './I18nTest'
 
-export interface LocaleResourceModule {
-  default: ResourceLanguage
-}
+import React, { FC, useState, useEffect, useRef } from 'react'
+import { I18nContext } from './I18nContext'
+import { I18nOptions } from './types'
+import { i18nUpdateGetResources, i18nUpdateResources } from './utils'
 
-const getLocaleResource = async (locale: string) => {
-  return import(`./locales/${locale}.ts`)
-    .catch((error) => {
-      throw error
-    })
-    .then((module: LocaleResourceModule) => module.default)
-}
+export const I18nProvider: FC<I18nOptions> = ({
+  children,
+  locale: initialLocale,
+  resources,
+  getLocaleResource,
+}) => {
+  const [locale, setLocale] = useState(initialLocale || 'en')
+  const [ready, setReady] = useState(getLocaleResource === undefined)
 
-const App = () => {
+  const firstRenderRef = useRef(true)
+  if (!getLocaleResource && firstRenderRef.current) {
+    i18nUpdateResources({ lng: locale, resources })
+  }
+
+  useEffect(() => {
+    if (getLocaleResource) {
+      setReady(false)
+      i18nUpdateGetResources({ getLocaleResource, locale }).then(() => {
+        setReady(true)
+      })
+    } else if (!firstRenderRef.current) {
+      i18nUpdateResources({ lng: locale, resources })
+    }
+    firstRenderRef.current = false
+  }, [getLocaleResource, locale, resources])
+
+  if (!ready) return null
+
   return (
-    <ComponentsProvider
-      loadGoogleFonts
-      i18n={{ getLocaleResource, locale: 'es' }}
-    >
-      <I18nTest />
-    </ComponentsProvider>
+    <I18nContext.Provider value={{ locale, setLocale }}>
+      {children}
+    </I18nContext.Provider>
   )
 }
-document.addEventListener('DOMContentLoaded', () => {
-  render(<App />, document.getElementById('container'))
-})

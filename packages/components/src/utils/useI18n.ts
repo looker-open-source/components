@@ -24,28 +24,27 @@
 
  */
 
-import { render } from '@testing-library/react'
+import { I18nContext } from '@looker/components-providers'
 import i18next from 'i18next'
-import React from 'react'
-import { i18nResources } from './resources'
-import { useI18n, UseI18nProps } from './useI18n'
+import { useContext } from 'react'
+import { useTranslation } from 'react-i18next'
 
-const TestComponent = (props: UseI18nProps) => {
-  useI18n(props)
-  return null
+export interface NamespaceResources {
+  [locale: string]: {
+    [key: string]: string
+  }
 }
 
-describe('useI18n', () => {
-  test('initializes i18next', () => {
-    render(<TestComponent />)
-    expect(i18next.init).toHaveBeenCalledTimes(1)
-  })
+export const useI18n = (ns: string, resources?: NamespaceResources) => {
+  const { locale, setLocale } = useContext(I18nContext)
 
-  test('updates with new props', () => {
-    i18next.isInitialized = true
-    render(<TestComponent />)
-    expect(i18next.addResourceBundle).toHaveBeenCalledTimes(
-      Object.keys(i18nResources.en).length
-    )
-  })
-})
+  if (resources) {
+    Object.keys(resources).forEach((lng: string) => {
+      // options.resources could contain multiple languages, need to add them 1 by 1
+      i18next.addResourceBundle(lng, ns, resources[lng])
+    })
+  }
+
+  const { t } = useTranslation(ns)
+  return { locale, setLocale, t }
+}

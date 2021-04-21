@@ -24,10 +24,10 @@
 
  */
 
-import i18next, { InitOptions, Resource } from 'i18next'
+import i18next, { InitOptions } from 'i18next'
 import { initReactI18next } from 'react-i18next'
-import { useEffect } from 'react'
 import { i18nResources } from './resources'
+import { I18nOptions } from './types'
 
 export const i18nInitOptions: InitOptions = {
   fallbackLng: 'en',
@@ -49,21 +49,19 @@ export const i18nInitOptions: InitOptions = {
   saveMissing: true,
 }
 
-export const i18nInit = async (initOptions = i18nInitOptions) =>
+export const i18nInit = (initOptions: Partial<InitOptions>) => {
   i18next
     .use(initReactI18next) // passes i18n down to react-i18next
-    .init(initOptions)
-
-export interface UseI18nProps {
-  /**
-   * @default en
-   */
-  locale?: string
-  resources?: Resource
+    .init({ ...i18nInitOptions, ...initOptions })
 }
 
-export const i18nUpdate = ({ resources, locale }: UseI18nProps) => {
-  if (resources) {
+export const i18nUpdateResources = ({
+  lng,
+  resources = i18nResources,
+}: Pick<InitOptions, 'lng' | 'resources'>) => {
+  if (!i18next.isInitialized) {
+    i18nInit({ lng, resources })
+  } else if (resources) {
     Object.keys(resources).forEach((lng: string) => {
       const allNamespaces = resources[lng]
       Object.keys(allNamespaces).forEach((ns: string) => {
@@ -71,31 +69,24 @@ export const i18nUpdate = ({ resources, locale }: UseI18nProps) => {
       })
     })
   }
-  if (locale && locale !== i18next.language) {
-    i18next.changeLanguage(locale)
+  if (lng && lng !== i18next.language) {
+    i18next.changeLanguage(lng)
   }
 }
 
-export const useI18n = ({
+export const i18nUpdateGetResources = async ({
   locale = 'en',
-  resources = i18nResources,
-}: UseI18nProps) => {
-  if (!i18next.isInitialized) {
-    i18nInit({ ...i18nInitOptions, lng: locale, resources }).catch((err) =>
-      // eslint-disable-next-line no-console
-      console.error(err)
-    )
+  getLocaleResource,
+}: I18nOptions) => {
+  if (getLocaleResource) {
+    const localeResource = await getLocaleResource(locale)
+    const mergedResources = {
+      ...i18nResources,
+      [locale]: { ...i18nResources[locale], ...localeResource },
+    }
+    i18nUpdateResources({
+      lng: locale,
+      resources: mergedResources,
+    })
   }
-
-  useEffect(() => {
-    const update = () => i18nUpdate({ locale, resources })
-    if (i18next.isInitialized) {
-      update()
-    } else {
-      i18next.on('initialized', update)
-    }
-    return () => {
-      i18next.off('initialized', update)
-    }
-  }, [locale, resources])
 }

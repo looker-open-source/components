@@ -24,36 +24,35 @@
 
  */
 
-export * from './getNextFocus'
-export * from './getNextFocusTarget'
-export * from './getWindowedListBoundaries'
-export * from './HoverDisclosure'
-export * from './i18n'
-export * from './mergeHandlers'
-export * from './targetIsButton'
-export * from './undefinedCoalesce'
-export * from './useAnimationState'
-export * from './useClickable'
-export * from './useArrowKeyNav'
-export * from './useControlWarn'
-export * from './useReadOnlyWarn'
-export * from './useCallbackRef'
-export * from './useDelayedState'
-export * from './useFocusTrap'
-export * from './useForkedRef'
-export * from './useGlobalHotkeys'
-export * from './useHovered'
-export * from './useI18n'
-export * from './useID'
-export * from './useIsTruncated'
-export * from './useMouseDownClick'
-export * from './usePopper'
-export * from './useResize'
-export * from './useScrollLock'
-export * from './useScrollPosition'
-export * from './useToggle'
-export * from './useWrapEvent'
-export * from './useMeasuredElement'
-export * from './useMouseDragPosition'
-export * from './usePreviousValue'
-export * from './useWindow'
+import { render, screen } from '@testing-library/react'
+import i18next from 'i18next'
+import React from 'react'
+import { i18nResources } from './resources'
+import { I18nProvider } from './I18nProvider'
+
+describe('I18nProvider', () => {
+  test('initializes i18next', async () => {
+    render(
+      <I18nProvider>
+        <div>text</div>
+      </I18nProvider>
+    )
+    const text = await screen.findByText('text')
+    expect(text).toBeVisible()
+    expect(i18next.init).toHaveBeenCalledTimes(1)
+  })
+
+  test('updates with new props', async () => {
+    i18next.isInitialized = true
+    render(
+      <I18nProvider>
+        <div>text</div>
+      </I18nProvider>
+    )
+    const text = await screen.findByText('text')
+    expect(text).toBeVisible()
+    expect(i18next.addResourceBundle).toHaveBeenCalledTimes(
+      Object.keys(i18nResources.en).length
+    )
+  })
+})
