@@ -30,25 +30,21 @@ import { Story } from '@storybook/react/types-6-0'
 import { Home } from '@styled-icons/material/Home'
 import { PieChart } from '@styled-icons/material/PieChart'
 import { VerifiedUser } from '@styled-icons/material/VerifiedUser'
-import { Aside, Footer, Header, Layout, LayoutProps, Page, Section } from '..'
+import {
+  Aside,
+  AsideProps,
+  Footer,
+  Header,
+  Layout,
+  LayoutProps,
+  Page,
+  Section,
+} from '..'
 import { SpaceVertical } from '../../Space'
 import { Heading, Paragraph } from '../../../Text'
 import { MenuItem } from '../../../Menu/MenuItem'
 import { Tab, Tabs, TabList, TabPanel, TabPanels } from '../../../Tabs'
 import { layoutSizes } from '../LayoutWidth'
-
-export default {
-  argTypes: {
-    width: {
-      control: {
-        options: Object.keys(layoutSizes),
-        type: 'select',
-      },
-    },
-  },
-  compoent: Layout,
-  title: 'Layout',
-}
 
 const fillterParagraph = (
   <Paragraph fontSize="small">
@@ -356,8 +352,8 @@ export const ScrollAllAreas = () => (
   </Highlighter>
 )
 
-export const AsideWidthSizeXsmall = () => (
-  <AsideStyle width="xsmall">Aside content</AsideStyle>
+const WidthTemplate: Story<AsideProps> = (args) => (
+  <AsideStyle {...args}>Aside content</AsideStyle>
 )
 
 const AsideStyle = styled(Aside)`
@@ -365,3 +361,20 @@ const AsideStyle = styled(Aside)`
   height: 40rem;
   padding: 40px;
 `
+export const AsideWidthSizeXsmall = WidthTemplate.bind({})
+AsideWidthSizeXsmall.args = {
+  width: 'xsmall',
+}
+
+export default {
+  argTypes: {
+    width: {
+      control: {
+        options: Object.keys(layoutSizes),
+        type: 'radio',
+      },
+    },
+  },
+  component: Layout,
+  title: 'Layout',
+}
