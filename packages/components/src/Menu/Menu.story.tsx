@@ -250,7 +250,7 @@ export const Hover = () => {
   const close = () => setOpen(false)
 
   return (
-    <Card ref={hoverRef} p="large" raised height="auto">
+    <Card ref={hoverRef} p="large" raised height="auto" tabIndex={0}>
       <Space between>
         <Paragraph>
           Hovering in this card will show the button that triggers the menu.
