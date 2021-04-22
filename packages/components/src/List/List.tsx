@@ -52,6 +52,7 @@ export type ListColor =
   | 'dimension'
   | 'measure'
   | 'critical'
+  | undefined
 
 export interface ListProps
   extends HeightProps,
@@ -123,6 +124,13 @@ export const ListInternal = forwardRef(
     }: ListProps,
     forwardedRef: Ref<HTMLUListElement>
   ) => {
+    if (statefulColor && keyColor) {
+      // eslint-disable-next-line no-console
+      console.warn('keyColor is deprecated use statefulColor instead.')
+    } else if (keyColor) {
+      statefulColor = 'key'
+    }
+
     const childArray = useMemo(() => Children.toArray(children), [children])
 
     const itemDimensions = listItemDimensions(
@@ -162,13 +170,7 @@ export const ListInternal = forwardRef(
     const context = {
       density,
       iconGutter,
-      keyColor,
       statefulColor,
-    }
-
-    if (statefulColor && keyColor) {
-      // eslint-disable-next-line no-console
-      console.warn('keyColor is deprecated use statefulColor instead.')
     }
 
     return (

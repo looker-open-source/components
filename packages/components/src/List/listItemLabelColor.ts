@@ -24,40 +24,36 @@
 
  */
 
-import { itemSelectedColor, Theme } from '@looker/design-tokens'
-import { css } from 'styled-components'
-import { ListItemStatefulWithHoveredProps } from '../types'
-import { ListProps } from '../List'
+import { ListColor } from './List'
 
-export const listItemBackgroundColor = ({
-  statefulColor,
-  current,
-  disabled,
-  hovered,
-  selected,
-  theme: { colors },
-}: ListItemStatefulWithHoveredProps & { theme: Theme }) => {
-  const stateColors = statefulColor
-    ? {
-        all: colors[`${statefulColor}Subtle`],
-        hovered: colors.ui1,
-        selected: colors[`${statefulColor}Subtle`],
-      }
-    : {
-        all: itemSelectedColor(colors.ui2),
-        hovered: colors.ui1,
-        selected: itemSelectedColor(colors.ui2),
-      }
+const textColorStateful = ['critical', 'calculation', 'measure']
 
-  let renderedColor
+export const listItemLabelColor = (
+  color: string | ListColor,
+  disabled: boolean,
+  selected: boolean | undefined,
+  statefulColor: ListColor
+) => {
+  if (color && statefulColor) {
+    // eslint-disable-next-line no-console
+    console.warn('Please chose only one, between color and statefulColor')
+  }
 
-  if (disabled) renderedColor = 'transparent'
-  else if ((selected || current) && hovered) renderedColor = stateColors.all
-  else if (selected || current) renderedColor = stateColors.selected
-  else if (hovered) renderedColor = stateColors.hovered
-  else renderedColor = 'transparent'
-
-  return css<ListProps>`
-    background: ${renderedColor};
-  `
+  if (disabled) {
+    return 'text1'
+  } else if (statefulColor) {
+    if (
+      statefulColor &&
+      textColorStateful.includes(statefulColor) &&
+      selected
+    ) {
+      return `${statefulColor}`
+    } else {
+      return 'text5'
+    }
+  } else if (color) {
+    return `${color}`
+  } else {
+    return 'text5'
+  }
 }

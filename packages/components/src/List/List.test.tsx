@@ -123,5 +123,15 @@ describe('List', () => {
         'background: #F3F2FF;'
       )
     })
+
+    test('updates ListItem get its text color updated', () => {
+      renderWithTheme(
+        <List statefulColor="critical">
+          <ListItem selected>Mozzarella</ListItem>
+        </List>
+      )
+      expect(screen.getByText('Mozzarella')).toBeInTheDocument()
+      expect(screen.getByText('Mozzarella')).toHaveStyle('color: #CC1F36;')
+    })
   })
 })
