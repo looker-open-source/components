@@ -63,6 +63,7 @@ const AvatarLayout: FC<AvatarUserProps> = ({
       {user && user.avatar_url && (
         <AvatarPhoto
           aria-hidden
+          data-testid="avatar-photo"
           color={color}
           type="image/png"
           // eslint-disable-next-line i18next/no-literal-string

@@ -78,7 +78,7 @@ describe('FieldText', () => {
   test('description has proper aria setup', () => {
     const description = 'This is a description'
 
-    const { container } = renderWithTheme(
+    renderWithTheme(
       <FieldText id="test" defaultValue="example" description={description} />
     )
 
@@ -86,14 +86,15 @@ describe('FieldText', () => {
     const id = input.getAttribute('aria-describedby')
     expect(id).toBeDefined()
 
-    const describedBy = container.querySelector(`#${id}`)
-    expect(describedBy).toHaveTextContent(description)
+    const descriptionDom = screen.getByText(description)
+    expect(descriptionDom.parentElement).toBeInTheDocument()
+    expect(descriptionDom.parentElement?.id).toEqual(id)
   })
 
   test('error has proper aria setup', () => {
     const errorMessage = 'This is an error'
 
-    const { container } = renderWithTheme(
+    renderWithTheme(
       <FieldText
         id="test"
         defaultValue="example"
@@ -105,8 +106,9 @@ describe('FieldText', () => {
     const id = input.getAttribute('aria-describedby')
     expect(id).toBeDefined()
 
-    const describedBy = container.querySelector(`#${id}`)
-    expect(describedBy).toHaveTextContent(errorMessage)
+    const errorMessageDom = screen.getByText(errorMessage)
+    expect(errorMessageDom.parentElement).toBeInTheDocument()
+    expect(errorMessageDom.parentElement?.id).toEqual(id)
   })
 
   test('onChange handler', () => {

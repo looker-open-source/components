@@ -1163,7 +1163,7 @@ describe('Select', () => {
     fireEvent.change(input, { target: { value: '90' } })
     // Must delete filter before navigating for bug to show up
     fireEvent.change(input, { target: { value: '' } })
-    expect(screen.queryByText('No options')).toBe(null)
+    expect(screen.queryByText('No options')).not.toBeInTheDocument()
 
     fireEvent.click(document)
   })

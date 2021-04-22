@@ -166,14 +166,19 @@ const fieldLabelCSS = (inline?: boolean) =>
         padding-bottom: ${({ theme }) => theme.space.xxsmall};
       `
 
+const inlineTemplateAreas = css`
+  grid-template-areas: 'label input detail' '. messages messages';
+`
+
+const templateAreas = css`
+  grid-template-areas: 'label detail' 'input input' 'messages messages';
+`
+
 export const Field = styled(FieldLayout)<FieldPropsInternal>`
   align-items: left;
 
   display: ${({ autoResize }) => (autoResize ? 'inline-grid' : 'grid')};
-  grid-template-areas: ${({ inline }) =>
-    inline
-      ? '"label input detail" ". messages messages"'
-      : '"label detail" "input input" "messages messages"'};
+  ${({ inline }) => (inline ? inlineTemplateAreas : templateAreas)}
   grid-template-columns: ${({ inline }) => (inline ? '150px 1fr' : undefined)};
   height: fit-content;
   justify-content: space-between;
