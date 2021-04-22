@@ -26,33 +26,26 @@
 
 import { ListColor } from './List'
 
-const textColorStateful = ['critical', 'calculation', 'measure']
+const textColor = ['critical', 'calculation', 'measure']
 
 export const listItemLabelColor = (
   color: string | ListColor,
   disabled: boolean,
-  selected: boolean | undefined,
-  statefulColor: ListColor
+  selected: boolean | undefined
 ) => {
-  if (color && statefulColor) {
-    // eslint-disable-next-line no-console
-    console.warn('Please chose only one, between color and statefulColor')
-  }
+  // if (color && color) {
+  //   // eslint-disable-next-line no-console
+  //   console.warn('Please chose only one, between color and color')
+  // }
 
   if (disabled) {
     return 'text1'
-  } else if (statefulColor) {
-    if (
-      statefulColor &&
-      textColorStateful.includes(statefulColor) &&
-      selected
-    ) {
-      return `${statefulColor}`
+  } else if (color) {
+    if (color && textColor.includes(color) && selected) {
+      return color
     } else {
       return 'text5'
     }
-  } else if (color) {
-    return `${color}`
   } else {
     return 'text5'
   }

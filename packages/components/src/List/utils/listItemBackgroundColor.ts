@@ -30,18 +30,18 @@ import { ListItemStatefulWithHoveredProps } from '../types'
 import { ListProps } from '../List'
 
 export const listItemBackgroundColor = ({
-  statefulColor,
+  color,
   current,
   disabled,
   hovered,
   selected,
   theme: { colors },
 }: ListItemStatefulWithHoveredProps & { theme: Theme }) => {
-  const stateColors = statefulColor
+  const stateColors = color
     ? {
-        all: colors[`${statefulColor}Subtle`],
+        all: colors[`${color}Subtle`],
         hovered: colors.ui1,
-        selected: colors[`${statefulColor}Subtle`],
+        selected: colors[`${color}Subtle`],
       }
     : {
         all: itemSelectedColor(colors.ui2),

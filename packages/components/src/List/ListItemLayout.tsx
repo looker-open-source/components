@@ -83,11 +83,12 @@ export const listItemIconCSS = css<ListItemLayoutProps>`
     width: ${({ iconSize, theme }) => theme.sizes[iconSize]};
   }
 `
+const textColor = ['critical', 'calculation', 'measure']
 
 export const ListItemLayout = styled(ListItemLayoutInternal).attrs(
   ({ color = 'text2', disabled }) => ({
     // Determines icon color
-    color: disabled ? 'text1' : color,
+    color: disabled ? 'text1' : textColor.includes(color) ? color : 'text2',
   })
 )<ListItemLayoutProps>`
   ${(props) => listItemPadding({ ...props })}

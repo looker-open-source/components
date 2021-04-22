@@ -64,16 +64,16 @@ FontFamily.args = {
   fontFamily: 'code',
 }
 
-export const StatefulColor = Template.bind({})
-StatefulColor.args = {
+export const Color = Template.bind({})
+Color.args = {
   ...Basic.args,
-  statefulColor: 'key',
+  color: 'key',
 }
 
 export const Test = Template.bind({})
 Test.args = {
   ...Basic.args,
-  statefulColor: 'critical',
+  color: 'critical',
 }
 Test.parameters = {
   storyshots: false,

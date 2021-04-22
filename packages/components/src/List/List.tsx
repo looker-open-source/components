@@ -80,15 +80,15 @@ export interface ListProps
   /**
    * Replace the normal uiN(1-5) color for selected and selected + hovered color with key colors
    * @todo - Remove in 2.x release
-   * @deprecated Use `statefulColor="key"` instead
+   * @deprecated Use `color="key"` instead
    */
   keyColor?: boolean
 
   /**
    * Replace the default uiN(1-5) background-color, when ListItem is selected, with color label passed.
-   * not specifying statefulColor component will default to text-based theme.colors
+   * not specifying color component will default to text-based theme.colors
    */
-  statefulColor?: ListColor
+  color?: ListColor
 
   /**
    * Use windowing for long lists (strongly recommended to also define a width on List or its container)
@@ -109,7 +109,7 @@ export const ListInternal = forwardRef(
   (
     {
       children,
-      statefulColor,
+      color,
       density = 0,
       disabled,
       height,
@@ -124,11 +124,11 @@ export const ListInternal = forwardRef(
     }: ListProps,
     forwardedRef: Ref<HTMLUListElement>
   ) => {
-    if (statefulColor && keyColor) {
+    if (color && keyColor) {
       // eslint-disable-next-line no-console
-      console.warn('keyColor is deprecated use statefulColor instead.')
+      console.warn('keyColor is deprecated use color instead.')
     } else if (keyColor) {
-      statefulColor = 'key'
+      color = 'key'
     }
 
     const childArray = useMemo(() => Children.toArray(children), [children])
@@ -168,9 +168,9 @@ export const ListInternal = forwardRef(
     })
 
     const context = {
+      color,
       density,
       iconGutter,
-      statefulColor,
     }
 
     return (
