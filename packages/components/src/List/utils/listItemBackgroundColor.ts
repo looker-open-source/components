@@ -30,23 +30,18 @@ import { ListItemStatefulWithHoveredProps } from '../types'
 import { ListProps } from '../List'
 
 export const listItemBackgroundColor = ({
-  statefulColor,
-  keyColor,
+  color,
   current,
   disabled,
   hovered,
   selected,
   theme: { colors },
 }: ListItemStatefulWithHoveredProps & { theme: Theme }) => {
-  /* Provide fallback support for `keyColor` until we're able to deprecate it */
-  const intent =
-    statefulColor || (keyColor && !statefulColor ? 'key' : undefined)
-
-  const stateColors = intent
+  const stateColors = color
     ? {
-        all: colors[`${intent}Subtle`],
+        all: colors[`${color}Subtle`],
         hovered: colors.ui1,
-        selected: colors[`${intent}Subtle`],
+        selected: colors[`${color}Subtle`],
       }
     : {
         all: itemSelectedColor(colors.ui2),
@@ -64,9 +59,5 @@ export const listItemBackgroundColor = ({
 
   return css<ListProps>`
     background: ${renderedColor};
-    color: ${({ statefulColor }) =>
-      statefulColor === 'critical' || statefulColor === 'calculation'
-        ? statefulColor
-        : 'text5'};
   `
 }

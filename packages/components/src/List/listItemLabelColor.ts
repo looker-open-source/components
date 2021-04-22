@@ -24,19 +24,27 @@
 
  */
 
-import { createContext } from 'react'
-import { ListColor } from '../List'
-import { DensityRamp } from './types'
+import { ListColor } from './List'
 
-export interface ListItemContextProps {
-  density: DensityRamp
-  iconGutter: boolean
-  color?: ListColor
+const textColor = ['critical', 'calculation', 'measure']
+const listItemColor = ['key', 'calculation', 'dimension', 'measure', 'critical']
+
+export const listItemLabelColor = (
+  color: string | ListColor,
+  disabled: boolean,
+  selected: boolean | undefined
+) => {
+  if (disabled) {
+    return 'text1'
+  } else if (color) {
+    if (color && textColor.includes(color) && selected) {
+      return color
+    } else if (!listItemColor.includes(color)) {
+      return color
+    } else {
+      return 'text5'
+    }
+  } else {
+    return 'text5'
+  }
 }
-
-const listItemContext: ListItemContextProps = {
-  density: 0,
-  iconGutter: false,
-}
-
-export const ListItemContext = createContext(listItemContext)
