@@ -92,10 +92,10 @@ describe('List', () => {
       expect(screen.getByRole('list')).not.toHaveStyle('height: 100%')
     })
   })
-  describe('statefulColor', () => {
+  describe('color', () => {
     test('displays the correct background when selected', () => {
       renderWithTheme(
-        <List statefulColor="key">
+        <List color="key">
           <ListItem selected>Mozzarella</ListItem>
         </List>
       )
@@ -105,10 +105,10 @@ describe('List', () => {
       )
     })
 
-    test('expects statefulColor="key" and keyColor have the same background-color value', () => {
+    test('expects color="key" and keyColor have the same background-color value', () => {
       renderWithTheme(
         <>
-          <List statefulColor="key">
+          <List color="key">
             <ListItem selected>color</ListItem>
           </List>
           <List keyColor>
@@ -122,6 +122,16 @@ describe('List', () => {
       expect(screen.getByText('keyColor').closest('button')).toHaveStyle(
         'background: #F3F2FF;'
       )
+    })
+
+    test('updates ListItem get its text color updated', () => {
+      renderWithTheme(
+        <List color="critical">
+          <ListItem selected>Mozzarella</ListItem>
+        </List>
+      )
+      expect(screen.getByText('Mozzarella')).toBeInTheDocument()
+      expect(screen.getByText('Mozzarella')).toHaveStyle('color: #CC1F36;')
     })
   })
 })
