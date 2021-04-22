@@ -73,7 +73,7 @@ test('FieldDate should accept detail and description attributes', () => {
 })
 
 test('FieldDate should accept a disabled prop', () => {
-  const { getByLabelText } = renderWithTheme(
+  renderWithTheme(
     <FieldDate
       defaultValue={new Date(Date.now())}
       disabled
@@ -82,12 +82,12 @@ test('FieldDate should accept a disabled prop', () => {
     />
   )
 
-  const input = getByLabelText('Disabled Label')
+  const input = screen.getByLabelText('Disabled Label')
   expect(input).toBeDisabled()
 })
 
 test('FieldDate should accept required attributes', () => {
-  const { getByText } = renderWithTheme(
+  renderWithTheme(
     <FieldDate
       defaultValue={new Date(Date.now())}
       id="FieldDateID"
@@ -95,13 +95,13 @@ test('FieldDate should accept required attributes', () => {
       required
     />
   )
-  expect(getByText('required')).toBeVisible()
+  expect(screen.getByText('required')).toBeVisible()
 })
 
 test('FieldDate should display error message', () => {
   const errorMessage = 'This is an error'
 
-  const { getByText } = renderWithTheme(
+  renderWithTheme(
     <FieldDate
       defaultValue={new Date(Date.now())}
       id="FieldDateID"
@@ -110,5 +110,5 @@ test('FieldDate should display error message', () => {
     />
   )
 
-  expect(getByText('This is an error')).toBeVisible()
+  expect(screen.getByText('This is an error')).toBeVisible()
 })

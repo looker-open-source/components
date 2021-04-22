@@ -80,7 +80,7 @@ describe('Select / SelectMulti', () => {
 
     fireEvent.mouseDown(input)
 
-    // const foo = getByText('FOO')
+    // const foo = screen.getByText('FOO')
     const bar = screen.getByText('BAR')
 
     // Clicking on the options should fire onBlur on the input and

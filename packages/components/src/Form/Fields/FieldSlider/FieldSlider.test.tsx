@@ -47,17 +47,17 @@ test('FieldSlider should accept detail and description attributes', () => {
 })
 
 test('FieldSlider should accept a disabled prop', () => {
-  const { getByLabelText } = renderWithTheme(
+  renderWithTheme(
     <FieldSlider disabled id="test" label="Test Label" name="test" />
   )
 
-  const input = getByLabelText('Test Label')
+  const input = screen.getByLabelText('Test Label')
   expect(input).toBeDisabled()
 })
 
 test('FieldSlider should accept required attributes', () => {
-  const { getByText } = renderWithTheme(
+  renderWithTheme(
     <FieldSlider label="Label" name="fieldSlider" id="field-slider" required />
   )
-  expect(getByText('required')).toBeVisible()
+  expect(screen.getByText('required')).toBeVisible()
 })

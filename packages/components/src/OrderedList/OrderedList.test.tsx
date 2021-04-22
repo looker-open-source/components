@@ -25,6 +25,7 @@
  */
 
 import React from 'react'
+import { screen } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { OrderedList } from './OrderedList'
 
@@ -32,7 +33,7 @@ import 'jest-styled-components'
 
 describe('OrderedList', () => {
   test('Should display child li elements', () => {
-    const { getByText } = renderWithTheme(
+    renderWithTheme(
       <OrderedList>
         <li>Gouda</li>
         <li>Swiss</li>
@@ -40,13 +41,13 @@ describe('OrderedList', () => {
       </OrderedList>
     )
 
-    getByText('Gouda')
-    getByText('Swiss')
-    getByText('Pepper Jack')
+    screen.getByText('Gouda')
+    screen.getByText('Swiss')
+    screen.getByText('Pepper Jack')
   })
 
   test("Accepts 'number' type", () => {
-    const { getByText, getByRole } = renderWithTheme(
+    renderWithTheme(
       <OrderedList type="number">
         <li>Gouda</li>
         <li>Swiss</li>
@@ -54,15 +55,15 @@ describe('OrderedList', () => {
       </OrderedList>
     )
 
-    getByText('Gouda')
-    getByText('Swiss')
-    getByText('Pepper Jack')
+    screen.getByText('Gouda')
+    screen.getByText('Swiss')
+    screen.getByText('Pepper Jack')
 
-    expect(getByRole('list')).toHaveAttribute('type', 'number')
+    expect(screen.getByRole('list')).toHaveAttribute('type', 'number')
   })
 
   test("Accepts 'letter' type", () => {
-    const { getByText, getByRole } = renderWithTheme(
+    renderWithTheme(
       <OrderedList type="letter">
         <li>Gouda</li>
         <li>Swiss</li>
@@ -70,10 +71,10 @@ describe('OrderedList', () => {
       </OrderedList>
     )
 
-    getByText('Gouda')
-    getByText('Swiss')
-    getByText('Pepper Jack')
+    screen.getByText('Gouda')
+    screen.getByText('Swiss')
+    screen.getByText('Pepper Jack')
 
-    expect(getByRole('list')).toHaveAttribute('type', 'letter')
+    expect(screen.getByRole('list')).toHaveAttribute('type', 'letter')
   })
 })

@@ -31,13 +31,13 @@ import { Tree, TreeItem } from '.'
 
 describe('TreeItem', () => {
   test('Renders children', () => {
-    const { getByText } = renderWithTheme(<TreeItem>Dimension</TreeItem>)
-    getByText('Dimension')
+    renderWithTheme(<TreeItem>Dimension</TreeItem>)
+    screen.getByText('Dimension')
   })
 
   test('Does not trigger onClick on detail click when accessory === true', () => {
     const onClick = jest.fn()
-    const { getByText } = renderWithTheme(
+    renderWithTheme(
       <TreeItem
         detail={{ content: 'Detail', options: { accessory: true } }}
         onClick={onClick}
@@ -45,15 +45,15 @@ describe('TreeItem', () => {
         Dimension
       </TreeItem>
     )
-    fireEvent.click(getByText('Dimension'))
+    fireEvent.click(screen.getByText('Dimension'))
     expect(onClick).toHaveBeenCalledTimes(1)
-    fireEvent.click(getByText('Detail'))
+    fireEvent.click(screen.getByText('Detail'))
     expect(onClick).toHaveBeenCalledTimes(1)
   })
 
   test('Triggers onClick on detail click when accessory === false', () => {
     const onClick = jest.fn()
-    const { getByText } = renderWithTheme(
+    renderWithTheme(
       <TreeItem
         detail={{ content: 'Detail', options: { accessory: false } }}
         onClick={onClick}
@@ -61,9 +61,9 @@ describe('TreeItem', () => {
         Dimension
       </TreeItem>
     )
-    fireEvent.click(getByText('Dimension'))
+    fireEvent.click(screen.getByText('Dimension'))
     expect(onClick).toHaveBeenCalledTimes(1)
-    fireEvent.click(getByText('Detail'))
+    fireEvent.click(screen.getByText('Detail'))
     expect(onClick).toHaveBeenCalledTimes(2)
   })
 

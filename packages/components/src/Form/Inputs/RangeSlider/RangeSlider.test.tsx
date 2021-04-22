@@ -104,11 +104,9 @@ test('warns the developer if value prop falls outside of possible min/max range'
 
 test('fires onChange callback on mouseMove', () => {
   const handleChange = jest.fn()
-  const { getByTestId } = renderWithTheme(
-    <RangeSlider onChange={handleChange} />
-  )
+  renderWithTheme(<RangeSlider onChange={handleChange} />)
 
-  const wrapper = getByTestId('range-slider-wrapper')
+  const wrapper = screen.getByTestId('range-slider-wrapper')
   fireEvent.mouseDown(wrapper)
   fireEvent.mouseMove(wrapper, { clientX: 100, clientY: 10 })
   fireEvent.mouseUp(wrapper)
@@ -118,11 +116,9 @@ test('fires onChange callback on mouseMove', () => {
 
 test('fires onChange callback on touchMove', () => {
   const handleChange = jest.fn()
-  const { getByTestId } = renderWithTheme(
-    <RangeSlider onChange={handleChange} />
-  )
+  renderWithTheme(<RangeSlider onChange={handleChange} />)
 
-  const wrapper = getByTestId('range-slider-wrapper')
+  const wrapper = screen.getByTestId('range-slider-wrapper')
   fireEvent.touchStart(wrapper)
   fireEvent.touchMove(wrapper, { touches: [{ clientX: 100, clientY: 10 }] })
   fireEvent.touchEnd(wrapper)
@@ -132,12 +128,12 @@ test('fires onChange callback on touchMove', () => {
 
 test('increments point by STEP value during keyboard navigation', () => {
   const handleChange = jest.fn()
-  const { getByLabelText } = renderWithTheme(
+  renderWithTheme(
     <RangeSlider onChange={handleChange} min={0} max={100} step={10} />
   )
 
-  const minThumb = getByLabelText('Minimum Value')
-  const maxThumb = getByLabelText('Maximum Value')
+  const minThumb = screen.getByLabelText('Minimum Value')
+  const maxThumb = screen.getByLabelText('Maximum Value')
   expect(handleChange).toHaveBeenCalledWith([0, 100])
 
   minThumb.focus()
@@ -164,13 +160,11 @@ test('prevents value from going outside of min/max range', () => {
 describe('readOnly prop', () => {
   test('readOnly component does not respond to MOUSE input', () => {
     const handleChange = jest.fn()
-    const { getByTestId } = renderWithTheme(
-      <RangeSlider onChange={handleChange} readOnly />
-    )
+    renderWithTheme(<RangeSlider onChange={handleChange} readOnly />)
 
     expect(handleChange).toHaveBeenCalledWith([0, 10]) // initial render
 
-    const wrapper = getByTestId('range-slider-wrapper')
+    const wrapper = screen.getByTestId('range-slider-wrapper')
     fireEvent.mouseDown(wrapper)
     fireEvent.mouseMove(wrapper, { clientX: 100, clientY: 10 })
 
@@ -180,11 +174,11 @@ describe('readOnly prop', () => {
 
   test('readOnly component does not respond to KEYBOARD input', () => {
     const handleChange = jest.fn()
-    const { getByLabelText } = renderWithTheme(
+    renderWithTheme(
       <RangeSlider onChange={handleChange} min={0} max={10} readOnly />
     )
 
-    const minThumb = getByLabelText('Minimum Value')
+    const minThumb = screen.getByLabelText('Minimum Value')
     expect(handleChange).toHaveBeenCalledWith([0, 10]) // initial render
 
     minThumb.focus()
@@ -197,13 +191,11 @@ describe('readOnly prop', () => {
 describe('disabled prop', () => {
   test('disabled component does not respond to MOUSE input', () => {
     const handleChange = jest.fn()
-    const { getByTestId } = renderWithTheme(
-      <RangeSlider onChange={handleChange} disabled />
-    )
+    renderWithTheme(<RangeSlider onChange={handleChange} disabled />)
 
     expect(handleChange).toHaveBeenCalledWith([0, 10]) // initial render
 
-    const wrapper = getByTestId('range-slider-wrapper')
+    const wrapper = screen.getByTestId('range-slider-wrapper')
     fireEvent.mouseDown(wrapper)
     fireEvent.mouseMove(wrapper, { clientX: 100, clientY: 10 })
 
@@ -213,11 +205,11 @@ describe('disabled prop', () => {
 
   test('disabled component does not respond to KEYBOARD input', () => {
     const handleChange = jest.fn()
-    const { getByLabelText } = renderWithTheme(
+    renderWithTheme(
       <RangeSlider onChange={handleChange} min={0} max={10} disabled />
     )
 
-    const minThumb = getByLabelText('Minimum Value')
+    const minThumb = screen.getByLabelText('Minimum Value')
     expect(handleChange).toHaveBeenCalledWith([0, 10]) // initial render
 
     minThumb.focus()
@@ -228,13 +220,11 @@ describe('disabled prop', () => {
 
   test('disabled component does not respond to TOUCH input', () => {
     const handleChange = jest.fn()
-    const { getByTestId } = renderWithTheme(
-      <RangeSlider onChange={handleChange} disabled />
-    )
+    renderWithTheme(<RangeSlider onChange={handleChange} disabled />)
 
     expect(handleChange).toHaveBeenCalledWith([0, 10]) // initial render
 
-    const wrapper = getByTestId('range-slider-wrapper')
+    const wrapper = screen.getByTestId('range-slider-wrapper')
     fireEvent.touchStart(wrapper)
     fireEvent.touchMove(wrapper, { touches: [{ clientX: 100, clientY: 10 }] })
 

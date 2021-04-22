@@ -26,7 +26,7 @@
 
 import React, { useState } from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { fireEvent } from '@testing-library/react'
+import { fireEvent, screen } from '@testing-library/react'
 import { filters } from '../../../__mocks__/filters'
 import { FieldFilter, InputFilters } from './'
 
@@ -37,251 +37,228 @@ const ControlledComponent = () => {
 
 describe('InputFilters', () => {
   test('renders', () => {
-    const { getByPlaceholderText } = renderWithTheme(<ControlledComponent />)
-    expect(getByPlaceholderText('Filter List')).toBeInTheDocument()
+    renderWithTheme(<ControlledComponent />)
+    expect(screen.getByPlaceholderText('Filter List')).toBeInTheDocument()
   })
 
   test('Displays list of filters', () => {
-    const { getByPlaceholderText, getByText } = renderWithTheme(
-      <ControlledComponent />
-    )
+    renderWithTheme(<ControlledComponent />)
 
-    const input = getByPlaceholderText('Filter List')
+    const input = screen.getByPlaceholderText('Filter List')
     fireEvent.click(input)
-    expect(getByText('Color')).toBeInTheDocument()
-    expect(getByText('Name')).toBeInTheDocument()
-    expect(getByText('Origin')).toBeInTheDocument()
+    expect(screen.getByText('Color')).toBeInTheDocument()
+    expect(screen.getByText('Name')).toBeInTheDocument()
+    expect(screen.getByText('Origin')).toBeInTheDocument()
 
     // Close popover to silence act() warning
     fireEvent.click(document)
   })
   test('Clicking on a filter item will displays list of second layer filters ', () => {
-    const { getByPlaceholderText, getByText, queryByText } = renderWithTheme(
-      <ControlledComponent />
-    )
+    renderWithTheme(<ControlledComponent />)
 
-    const input = getByPlaceholderText('Filter List')
+    const input = screen.getByPlaceholderText('Filter List')
     fireEvent.click(input)
 
-    expect(getByText('Name')).toBeInTheDocument()
-    expect(getByText('Color')).toBeInTheDocument()
+    expect(screen.getByText('Name')).toBeInTheDocument()
+    expect(screen.getByText('Color')).toBeInTheDocument()
 
-    fireEvent.click(getByText('Name'))
+    fireEvent.click(screen.getByText('Name'))
 
-    expect(getByText('Name:')).toBeInTheDocument()
-    expect(queryByText('Color')).not.toBeInTheDocument()
+    expect(screen.getByText('Name:')).toBeInTheDocument()
+    expect(screen.queryByText('Color')).not.toBeInTheDocument()
 
     // Close popover to silence act() warning
     fireEvent.click(document)
   })
 
   test('Shows editing options ', () => {
-    const { getByPlaceholderText, getByText } = renderWithTheme(
-      <ControlledComponent />
-    )
+    renderWithTheme(<ControlledComponent />)
 
-    const input = getByPlaceholderText('Filter List')
+    const input = screen.getByPlaceholderText('Filter List')
     fireEvent.click(input)
 
-    expect(getByText('Name')).toBeInTheDocument()
+    expect(screen.getByText('Name')).toBeInTheDocument()
 
-    fireEvent.click(getByText('Name'))
+    fireEvent.click(screen.getByText('Name'))
 
-    expect(getByText('Cheddar')).toBeInTheDocument()
-    expect(getByText('Gouda')).toBeInTheDocument()
-    expect(getByText('Swiss')).toBeInTheDocument()
-    expect(getByText('Mozzarella')).toBeInTheDocument()
+    expect(screen.getByText('Cheddar')).toBeInTheDocument()
+    expect(screen.getByText('Gouda')).toBeInTheDocument()
+    expect(screen.getByText('Swiss')).toBeInTheDocument()
+    expect(screen.getByText('Mozzarella')).toBeInTheDocument()
 
     // Close popover to silence act() warning
     fireEvent.click(document)
   })
 
   test('Display full filter selected', () => {
-    const { getByPlaceholderText, getByText } = renderWithTheme(
-      <ControlledComponent />
-    )
+    renderWithTheme(<ControlledComponent />)
 
-    const input = getByPlaceholderText('Filter List')
+    const input = screen.getByPlaceholderText('Filter List')
     fireEvent.click(input)
 
-    expect(getByText('Name')).toBeInTheDocument()
+    expect(screen.getByText('Name')).toBeInTheDocument()
 
-    fireEvent.click(getByText('Name'))
+    fireEvent.click(screen.getByText('Name'))
 
-    fireEvent.click(getByText('Swiss'))
-    expect(getByText('name:')).toBeInTheDocument()
+    fireEvent.click(screen.getByText('Swiss'))
+    expect(screen.getByText('name:')).toBeInTheDocument()
 
     // Close popover to silence act() warning
     fireEvent.click(document)
   })
 
   test("Doesn't show filter displayed as chip", () => {
-    const { getByPlaceholderText, getByText, queryByText } = renderWithTheme(
-      <ControlledComponent />
-    )
+    renderWithTheme(<ControlledComponent />)
 
-    fireEvent.click(getByPlaceholderText('Filter List'))
+    fireEvent.click(screen.getByPlaceholderText('Filter List'))
 
-    expect(getByText('Name')).toBeInTheDocument()
+    expect(screen.getByText('Name')).toBeInTheDocument()
 
-    fireEvent.click(getByText('Name'))
+    fireEvent.click(screen.getByText('Name'))
 
-    fireEvent.click(getByText('Swiss'))
+    fireEvent.click(screen.getByText('Swiss'))
 
-    expect(getByText('name:')).toBeInTheDocument()
+    expect(screen.getByText('name:')).toBeInTheDocument()
 
     fireEvent.click(document)
 
-    fireEvent.click(getByPlaceholderText('Filter List'))
+    fireEvent.click(screen.getByPlaceholderText('Filter List'))
 
-    expect(queryByText('Name')).not.toBeInTheDocument()
+    expect(screen.queryByText('Name')).not.toBeInTheDocument()
 
     // Close popover to silence act() warning
     fireEvent.click(document)
   })
 
   test('Display a second filter as chip', () => {
-    const {
-      getByPlaceholderText,
-      getAllByText,
-      getByText,
-      queryByText,
-    } = renderWithTheme(<ControlledComponent />)
+    renderWithTheme(<ControlledComponent />)
 
-    fireEvent.click(getByPlaceholderText('Filter List'))
+    fireEvent.click(screen.getByPlaceholderText('Filter List'))
 
-    expect(getByText('Name')).toBeInTheDocument()
+    expect(screen.getByText('Name')).toBeInTheDocument()
 
-    fireEvent.click(getByText('Name'))
+    fireEvent.click(screen.getByText('Name'))
 
-    fireEvent.click(getByText('Swiss'))
+    fireEvent.click(screen.getByText('Swiss'))
 
-    expect(getByText('name:')).toBeInTheDocument()
-    expect(queryByText(/Swiss/)).toBeInTheDocument()
+    expect(screen.getByText('name:')).toBeInTheDocument()
+    expect(screen.queryByText(/Swiss/)).toBeInTheDocument()
 
     fireEvent.click(document)
 
-    fireEvent.click(getByPlaceholderText('Filter List'))
+    fireEvent.click(screen.getByPlaceholderText('Filter List'))
 
-    fireEvent.click(getByText('Color'))
-    fireEvent.click(getByText('blue'))
+    fireEvent.click(screen.getByText('Color'))
+    fireEvent.click(screen.getByText('blue'))
 
-    expect(getByText('color:')).toBeInTheDocument()
-    expect(getAllByText('blue').length).toEqual(2)
+    expect(screen.getByText('color:')).toBeInTheDocument()
+    expect(screen.getAllByText('blue').length).toEqual(2)
 
     // Close popover to silence act() warning
     fireEvent.click(document)
   })
 
   test('Change filter values when multiple = false', () => {
-    const { getByPlaceholderText, getByText, queryByText } = renderWithTheme(
-      <ControlledComponent />
-    )
+    renderWithTheme(<ControlledComponent />)
 
-    fireEvent.click(getByPlaceholderText('Filter List'))
+    fireEvent.click(screen.getByPlaceholderText('Filter List'))
 
-    expect(getByText('Name')).toBeInTheDocument()
+    expect(screen.getByText('Name')).toBeInTheDocument()
 
-    fireEvent.click(getByText('Name'))
+    fireEvent.click(screen.getByText('Name'))
 
-    fireEvent.click(getByText('Cheddar'))
+    fireEvent.click(screen.getByText('Cheddar'))
 
-    expect(queryByText('name:')).toBeInTheDocument()
-    expect(queryByText(/Cheddar/)).toBeInTheDocument()
+    expect(screen.queryByText('name:')).toBeInTheDocument()
+    expect(screen.queryByText(/Cheddar/)).toBeInTheDocument()
 
-    fireEvent.click(getByText('name:'))
-    fireEvent.click(getByText('Swiss'))
+    fireEvent.click(screen.getByText('name:'))
+    fireEvent.click(screen.getByText('Swiss'))
 
-    expect(queryByText(/Swiss/)).toBeInTheDocument()
+    expect(screen.queryByText(/Swiss/)).toBeInTheDocument()
 
     // Close popover to silence act() warning
     fireEvent.click(document)
   })
 
   test('Change filter values when multiple = true', () => {
-    const { getByPlaceholderText, getByText, queryByText } = renderWithTheme(
-      <ControlledComponent />
-    )
+    renderWithTheme(<ControlledComponent />)
 
-    fireEvent.click(getByPlaceholderText('Filter List'))
+    fireEvent.click(screen.getByPlaceholderText('Filter List'))
 
-    expect(getByText('Color')).toBeInTheDocument()
+    expect(screen.getByText('Color')).toBeInTheDocument()
 
-    fireEvent.click(getByText('Color'))
+    fireEvent.click(screen.getByText('Color'))
 
-    fireEvent.click(getByText('blue'))
-    fireEvent.click(getByText('white'))
+    fireEvent.click(screen.getByText('blue'))
+    fireEvent.click(screen.getByText('white'))
 
     fireEvent.click(document)
 
-    expect(queryByText('color:')).toBeInTheDocument()
-    expect(queryByText(/blue/)).toBeInTheDocument()
-    expect(queryByText(/white/)).toBeInTheDocument()
+    expect(screen.queryByText('color:')).toBeInTheDocument()
+    expect(screen.queryByText(/blue/)).toBeInTheDocument()
+    expect(screen.queryByText(/white/)).toBeInTheDocument()
 
     // Close popover to silence act() warning
     fireEvent.click(document)
   })
 
   test('Delete filter', () => {
-    const { getByPlaceholderText, getByText, queryByText } = renderWithTheme(
-      <ControlledComponent />
-    )
+    renderWithTheme(<ControlledComponent />)
 
-    fireEvent.click(getByPlaceholderText('Filter List'))
+    fireEvent.click(screen.getByPlaceholderText('Filter List'))
 
-    expect(getByText('Name')).toBeInTheDocument()
+    expect(screen.getByText('Name')).toBeInTheDocument()
 
-    fireEvent.click(getByText('Name'))
+    fireEvent.click(screen.getByText('Name'))
 
-    fireEvent.click(getByText('Gouda'))
+    fireEvent.click(screen.getByText('Gouda'))
 
-    expect(getByText('name:')).toBeInTheDocument()
+    expect(screen.getByText('name:')).toBeInTheDocument()
 
     fireEvent.click(document)
 
-    fireEvent.click(getByText('Delete'))
+    fireEvent.click(screen.getByText('Delete'))
 
-    expect(queryByText('name:')).not.toBeInTheDocument()
+    expect(screen.queryByText('name:')).not.toBeInTheDocument()
 
     // Close popover to silence act() warning
     fireEvent.click(document)
   })
 
   test('Delete multiple filter', () => {
-    const { getByPlaceholderText, getByText, queryByText } = renderWithTheme(
-      <ControlledComponent />
-    )
+    renderWithTheme(<ControlledComponent />)
 
-    fireEvent.click(getByPlaceholderText('Filter List'))
+    fireEvent.click(screen.getByPlaceholderText('Filter List'))
 
-    expect(getByText('Name')).toBeInTheDocument()
+    expect(screen.getByText('Name')).toBeInTheDocument()
 
-    fireEvent.click(getByText('Name'))
+    fireEvent.click(screen.getByText('Name'))
 
-    fireEvent.click(getByText('Gouda'))
+    fireEvent.click(screen.getByText('Gouda'))
 
-    expect(getByText('name:')).toBeInTheDocument()
+    expect(screen.getByText('name:')).toBeInTheDocument()
 
     fireEvent.click(document)
 
-    fireEvent.click(getByPlaceholderText('Filter List'))
+    fireEvent.click(screen.getByPlaceholderText('Filter List'))
 
-    fireEvent.click(getByText('Color'))
-    fireEvent.click(getByText('yellow'))
-    fireEvent.click(getByText('orange'))
+    fireEvent.click(screen.getByText('Color'))
+    fireEvent.click(screen.getByText('yellow'))
+    fireEvent.click(screen.getByText('orange'))
 
     fireEvent.click(document)
 
-    expect(queryByText('color:')).toBeInTheDocument()
-    expect(queryByText(/yellow/)).toBeInTheDocument()
-    expect(queryByText(/orange/)).toBeInTheDocument()
-    expect(getByText('name:')).toBeInTheDocument()
-    expect(queryByText(/Gouda/)).toBeInTheDocument()
+    expect(screen.queryByText('color:')).toBeInTheDocument()
+    expect(screen.queryByText(/yellow/)).toBeInTheDocument()
+    expect(screen.queryByText(/orange/)).toBeInTheDocument()
+    expect(screen.getByText('name:')).toBeInTheDocument()
+    expect(screen.queryByText(/Gouda/)).toBeInTheDocument()
 
-    fireEvent.click(getByText('Clear Filters'))
+    fireEvent.click(screen.getByText('Clear Filters'))
 
-    expect(queryByText('color:')).not.toBeInTheDocument()
-    expect(queryByText('name:')).not.toBeInTheDocument()
+    expect(screen.queryByText('color:')).not.toBeInTheDocument()
+    expect(screen.queryByText('name:')).not.toBeInTheDocument()
 
     // Close popover to silence act() warning
     fireEvent.click(document)
@@ -301,17 +278,15 @@ describe('InputFilters', () => {
       },
     ]
 
-    const { getByPlaceholderText, getByText } = renderWithTheme(
-      <InputFilters filters={editorFilter} onChange={onChange} />
-    )
+    renderWithTheme(<InputFilters filters={editorFilter} onChange={onChange} />)
 
-    fireEvent.click(getByPlaceholderText('Filter List'))
+    fireEvent.click(screen.getByPlaceholderText('Filter List'))
 
-    expect(getByText('Important')).toBeInTheDocument()
+    expect(screen.getByText('Important')).toBeInTheDocument()
 
-    fireEvent.click(getByText('Important'))
+    fireEvent.click(screen.getByText('Important'))
 
-    expect(getByText('hello world')).toBeInTheDocument()
+    expect(screen.getByText('hello world')).toBeInTheDocument()
     // Close popover to silence act() warning
     fireEvent.click(document)
   })

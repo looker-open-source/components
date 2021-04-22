@@ -25,7 +25,7 @@
  */
 
 import React from 'react'
-import { fireEvent } from '@testing-library/react'
+import { fireEvent, screen } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { InputTime, InputTimeProps } from './InputTime'
 
@@ -44,10 +44,10 @@ afterEach(() => {
 })
 
 const selectSubInputs = (mockProps: any) => {
-  const { getByTestId } = renderWithTheme(<InputTime {...mockProps} />)
-  const inputHour = getByTestId('input-hour')
-  const inputMinute = getByTestId('input-minute')
-  const inputPeriod = getByTestId('input-period')
+  renderWithTheme(<InputTime {...mockProps} />)
+  const inputHour = screen.getByTestId('input-hour')
+  const inputMinute = screen.getByTestId('input-minute')
+  const inputPeriod = screen.getByTestId('input-period')
 
   return {
     inputHour,
@@ -176,12 +176,10 @@ test('renders 24 hour formatted time', () => {
     value: '23:32',
   }
 
-  const { getByTestId, queryByTestId } = renderWithTheme(
-    <InputTime {...mockProps} />
-  )
-  const inputHour = getByTestId('input-hour')
-  const inputMinute = getByTestId('input-minute')
-  const inputPeriod = queryByTestId('input-period')
+  renderWithTheme(<InputTime {...mockProps} />)
+  const inputHour = screen.getByTestId('input-hour')
+  const inputMinute = screen.getByTestId('input-minute')
+  const inputPeriod = screen.queryByTestId('input-period')
 
   expect((inputHour as HTMLInputElement).value).toEqual('23')
   expect((inputMinute as HTMLInputElement).value).toEqual('32')

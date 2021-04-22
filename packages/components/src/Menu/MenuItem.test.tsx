@@ -28,7 +28,7 @@ import 'jest-styled-components'
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { Science } from '@styled-icons/material-outlined/Science'
-import { screen, fireEvent } from '@testing-library/react'
+import { fireEvent, screen } from '@testing-library/react'
 
 import { MenuItem } from './MenuItem'
 
@@ -110,13 +110,13 @@ describe('MenuItem', () => {
   })
 
   test('link with target="_blank" and no passed-in rel prop value uses rel="noopener noreferrer"', () => {
-    const { getByRole } = renderWithTheme(
+    renderWithTheme(
       <MenuItem itemRole="link" href="https://google.com" target="_blank">
         Link
       </MenuItem>
     )
 
-    const item = getByRole('menuitem')
+    const item = screen.getByRole('menuitem')
 
     expect(item.nodeName).toBe('A')
     expect(item).toHaveAttribute('target', '_blank')
@@ -125,7 +125,7 @@ describe('MenuItem', () => {
   })
 
   test('link with target="_blank" and passed-in rel prop value auto appends "noopener noreferrer" to rel prop value', () => {
-    const { getByRole } = renderWithTheme(
+    renderWithTheme(
       <MenuItem
         itemRole="link"
         href="https://google.com"
@@ -136,7 +136,7 @@ describe('MenuItem', () => {
       </MenuItem>
     )
 
-    const item = getByRole('menuitem')
+    const item = screen.getByRole('menuitem')
 
     expect(item.nodeName).toBe('A')
     expect(item).toHaveAttribute('target', '_blank')
@@ -145,13 +145,13 @@ describe('MenuItem', () => {
   })
 
   test('link without target="_blank" does not auto append "noopener noreferrer"', () => {
-    const { getByRole } = renderWithTheme(
+    renderWithTheme(
       <MenuItem itemRole="link" rel="nogouda" href="https://google.com">
         Link
       </MenuItem>
     )
 
-    const item = getByRole('menuitem')
+    const item = screen.getByRole('menuitem')
 
     expect(item.nodeName).toBe('A')
     expect(item).toHaveAttribute('href', 'https://google.com')

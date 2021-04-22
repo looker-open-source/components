@@ -24,7 +24,7 @@
 
  */
 import React, { useState } from 'react'
-import { fireEvent } from '@testing-library/react'
+import { fireEvent, screen } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { Label } from '../../Label'
 import { Checkbox, MixedBoolean } from './Checkbox'
@@ -93,9 +93,9 @@ const FormDemo = () => {
 }
 
 test('Parent element receives `checked="mixed"` state when some (but not all) children are checked', () => {
-  const { getByLabelText } = renderWithTheme(<FormDemo />)
-  const parent = getByLabelText('All Fruit') as HTMLInputElement
-  const child = getByLabelText('Apple') as HTMLInputElement
+  renderWithTheme(<FormDemo />)
+  const parent = screen.getByLabelText('All Fruit') as HTMLInputElement
+  const child = screen.getByLabelText('Apple') as HTMLInputElement
   const parentAttr = parent.attributes.getNamedItem('aria-checked') as Attr
   const childAttr = child.attributes.getNamedItem('aria-checked') as Attr
 
@@ -109,10 +109,10 @@ test('Parent element receives `checked="mixed"` state when some (but not all) ch
 })
 
 test('Parent element receives `checked="true"` state all children are checked', () => {
-  const { getByLabelText } = renderWithTheme(<FormDemo />)
-  const parent = getByLabelText('All Fruit') as HTMLInputElement
-  const child1 = getByLabelText('Apple') as HTMLInputElement
-  const child2 = getByLabelText('Banana') as HTMLInputElement
+  renderWithTheme(<FormDemo />)
+  const parent = screen.getByLabelText('All Fruit') as HTMLInputElement
+  const child1 = screen.getByLabelText('Apple') as HTMLInputElement
+  const child2 = screen.getByLabelText('Banana') as HTMLInputElement
   const parentAttr = parent.attributes.getNamedItem('aria-checked') as Attr
   const child1Attr = child1.attributes.getNamedItem('aria-checked') as Attr
   const child2Attr = child2.attributes.getNamedItem('aria-checked') as Attr
@@ -130,10 +130,10 @@ test('Parent element receives `checked="true"` state all children are checked', 
 })
 
 test('Clicking Parent element toggles all children', () => {
-  const { getByLabelText } = renderWithTheme(<FormDemo />)
-  const parent = getByLabelText('All Fruit') as HTMLInputElement
-  const child1 = getByLabelText('Apple') as HTMLInputElement
-  const child2 = getByLabelText('Banana') as HTMLInputElement
+  renderWithTheme(<FormDemo />)
+  const parent = screen.getByLabelText('All Fruit') as HTMLInputElement
+  const child1 = screen.getByLabelText('Apple') as HTMLInputElement
+  const child2 = screen.getByLabelText('Banana') as HTMLInputElement
   const parentAttr = parent.attributes.getNamedItem('aria-checked') as Attr
   const child1Attr = child1.attributes.getNamedItem('aria-checked') as Attr
   const child2Attr = child2.attributes.getNamedItem('aria-checked') as Attr

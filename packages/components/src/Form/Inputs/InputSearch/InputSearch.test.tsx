@@ -97,11 +97,9 @@ describe('InputSearch', () => {
     test('calls onChange', () => {
       const onChange = jest.fn()
 
-      const { getByRole } = renderWithTheme(
-        <InputSearch value="Search" onChange={onChange} />
-      )
+      renderWithTheme(<InputSearch value="Search" onChange={onChange} />)
 
-      const inputButton = getByRole('button')
+      const inputButton = screen.getByRole('button')
       inputButton && fireEvent.click(inputButton)
       expect(onChange).toHaveBeenCalledWith('')
     })

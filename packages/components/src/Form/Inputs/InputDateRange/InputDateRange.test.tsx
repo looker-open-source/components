@@ -186,10 +186,10 @@ test('selects a single day when clicking on one of the date endpoints', () => {
     },
     onChange: jest.fn(),
   }
-  const { getAllByText } = renderWithTheme(<InputDateRange {...mockProps} />)
+  renderWithTheme(<InputDateRange {...mockProps} />)
   expect(mockProps.onChange).not.toHaveBeenCalled()
 
-  const date = getAllByText('3')[0] // the 3rd day of the month (beggining of range)
+  const date = screen.getAllByText('3')[0] // the 3rd day of the month (beggining of range)
   fireEvent.click(date)
   // both from and to were set to June 3rd
   expect(mockProps.onChange).toHaveBeenCalledWith({
@@ -242,10 +242,10 @@ test('extends date range when clicking before current "from" endpoint', () => {
     },
     onChange: jest.fn(),
   }
-  const { getAllByText } = renderWithTheme(<InputDateRange {...mockProps} />)
+  renderWithTheme(<InputDateRange {...mockProps} />)
   expect(mockProps.onChange).not.toHaveBeenCalled()
 
-  const newDate = getAllByText('1')[0] // the 1st day of the month (before default date range)
+  const newDate = screen.getAllByText('1')[0] // the 1st day of the month (before default date range)
   fireEvent.click(newDate)
   // both from and to were set to June 3rd
   expect(mockProps.onChange).toHaveBeenCalledWith({
@@ -262,9 +262,11 @@ test('calls onChange prop when a TextInput is modified', () => {
     },
     onChange: jest.fn(),
   }
-  const { getByTestId } = renderWithTheme(<InputDateRange {...mockProps} />)
-  const toInput = getByTestId('date-to-text-input') as HTMLInputElement
-  const fromInput = getByTestId('date-from-text-input') as HTMLInputElement
+  renderWithTheme(<InputDateRange {...mockProps} />)
+  const toInput = screen.getByTestId('date-to-text-input') as HTMLInputElement
+  const fromInput = screen.getByTestId(
+    'date-from-text-input'
+  ) as HTMLInputElement
 
   expect(mockProps.onChange).not.toHaveBeenCalled()
 
@@ -289,14 +291,14 @@ test('updates text input value when day is clicked', () => {
   const mockProps = {
     onChange: jest.fn(),
   }
-  const { getAllByText, getByTestId } = renderWithTheme(
-    <InputDateRange {...mockProps} />
-  )
+  renderWithTheme(<InputDateRange {...mockProps} />)
 
-  const fromInput = getByTestId('date-from-text-input') as HTMLInputElement
-  const toInput = getByTestId('date-to-text-input') as HTMLInputElement
-  const startDate = getAllByText('2')[0] // the 2nd day of the month (left calendar)
-  const endDate = getAllByText('15')[1] // the 15th day of the month (right calendar)
+  const fromInput = screen.getByTestId(
+    'date-from-text-input'
+  ) as HTMLInputElement
+  const toInput = screen.getByTestId('date-to-text-input') as HTMLInputElement
+  const startDate = screen.getAllByText('2')[0] // the 2nd day of the month (left calendar)
+  const endDate = screen.getAllByText('15')[1] // the 15th day of the month (right calendar)
 
   expect(fromInput).toHaveValue('')
   expect(toInput).toHaveValue('')
@@ -320,9 +322,11 @@ test('defaultValue prop fills TextInputs with correct dates', () => {
     },
     onChange: jest.fn(),
   }
-  const { getByTestId } = renderWithTheme(<InputDateRange {...mockProps} />)
-  const fromInput = getByTestId('date-from-text-input') as HTMLInputElement
-  const toInput = getByTestId('date-to-text-input') as HTMLInputElement
+  renderWithTheme(<InputDateRange {...mockProps} />)
+  const fromInput = screen.getByTestId(
+    'date-from-text-input'
+  ) as HTMLInputElement
+  const toInput = screen.getByTestId('date-to-text-input') as HTMLInputElement
 
   expect(fromInput).toHaveValue('06/03/2019')
   expect(toInput).toHaveValue('06/09/2019')
@@ -336,14 +340,14 @@ test('defaultValue highlights the correct dates in the Calendar', () => {
     },
     onChange: jest.fn(),
   }
-  const { getByLabelText } = renderWithTheme(<InputDateRange {...mockProps} />)
+  renderWithTheme(<InputDateRange {...mockProps} />)
 
-  const dayOne = getByLabelText('Mon Jun 03 2019')
-  const dayTwo = getByLabelText('Tue Jun 04 2019')
-  const dayThree = getByLabelText('Wed Jun 05 2019')
+  const dayOne = screen.getByLabelText('Mon Jun 03 2019')
+  const dayTwo = screen.getByLabelText('Tue Jun 04 2019')
+  const dayThree = screen.getByLabelText('Wed Jun 05 2019')
 
-  const dayBefore = getByLabelText('Sun Jun 02 2019')
-  const dayAfter = getByLabelText('Thu Jun 06 2019')
+  const dayBefore = screen.getByLabelText('Sun Jun 02 2019')
+  const dayAfter = screen.getByLabelText('Thu Jun 06 2019')
 
   expect(dayOne).toHaveAttribute('aria-selected', 'true')
   expect(dayTwo).toHaveAttribute('aria-selected', 'true')
@@ -361,8 +365,10 @@ test('validates FROM text input to match localized date format', () => {
     },
     onValidationFail: jest.fn(),
   }
-  const { getByTestId } = renderWithTheme(<InputDateRange {...mockProps} />)
-  const fromInput = getByTestId('date-from-text-input') as HTMLInputElement
+  renderWithTheme(<InputDateRange {...mockProps} />)
+  const fromInput = screen.getByTestId(
+    'date-from-text-input'
+  ) as HTMLInputElement
 
   fireEvent.change(fromInput, { target: { value: '6/3/2019' } })
   fireEvent.blur(fromInput) // validate on blur
@@ -383,8 +389,8 @@ test('validates TO text input to match localized date format', () => {
     },
     onValidationFail: jest.fn(),
   }
-  const { getByTestId } = renderWithTheme(<InputDateRange {...mockProps} />)
-  const toInput = getByTestId('date-to-text-input') as HTMLInputElement
+  renderWithTheme(<InputDateRange {...mockProps} />)
+  const toInput = screen.getByTestId('date-to-text-input') as HTMLInputElement
 
   fireEvent.focus(toInput) // activate `date-to` input to ensure validation reads from correct value
   fireEvent.change(toInput, { target: { value: '6/15/2019' } })
@@ -417,11 +423,11 @@ test('localizes calendar', () => {
   const firstDayOfWeek = 1 // monday
   const localizationProps = { firstDayOfWeek, months, weekdaysShort }
 
-  const { getByText, container } = renderWithTheme(
+  const { container } = renderWithTheme(
     <InputDateRange localization={localizationProps} />
   )
 
-  expect(getByText('Febbraio 2020')).toBeInTheDocument()
+  expect(screen.getByText('Febbraio 2020')).toBeInTheDocument()
   expect(
     // eslint-disable-next-line testing-library/no-container
     (container.querySelector('.DayPicker-WeekdaysRow') as HTMLElement)
@@ -431,7 +437,7 @@ test('localizes calendar', () => {
 
 describe('localizes text input', () => {
   test('Korean', () => {
-    const { getByDisplayValue } = renderWithTheme(
+    renderWithTheme(
       <InputDateRange
         dateStringLocale={Locales.Korean}
         defaultValue={{
@@ -440,10 +446,10 @@ describe('localizes text input', () => {
         }}
       />
     )
-    expect(getByDisplayValue('2020.02.01')).toBeInTheDocument()
+    expect(screen.getByDisplayValue('2020.02.01')).toBeInTheDocument()
   })
   test('Italian', () => {
-    const { getByDisplayValue } = renderWithTheme(
+    renderWithTheme(
       <InputDateRange
         dateStringLocale={Locales.Italian}
         defaultValue={{
@@ -452,10 +458,10 @@ describe('localizes text input', () => {
         }}
       />
     )
-    expect(getByDisplayValue('01/02/2020')).toBeInTheDocument()
+    expect(screen.getByDisplayValue('01/02/2020')).toBeInTheDocument()
   })
   test('English', () => {
-    const { getByDisplayValue } = renderWithTheme(
+    renderWithTheme(
       <InputDateRange
         dateStringLocale={Locales.English}
         defaultValue={{
@@ -464,6 +470,6 @@ describe('localizes text input', () => {
         }}
       />
     )
-    expect(getByDisplayValue('02/01/2020')).toBeInTheDocument()
+    expect(screen.getByDisplayValue('02/01/2020')).toBeInTheDocument()
   })
 })

@@ -25,7 +25,7 @@
  */
 
 import '@testing-library/jest-dom/extend-expect'
-import { fireEvent } from '@testing-library/react'
+import { fireEvent, screen } from '@testing-library/react'
 import 'jest-styled-components'
 import React, { useRef } from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
@@ -45,78 +45,78 @@ describe('Popover', () => {
   })
 
   test('cloneElement style opens and closes', () => {
-    const { getByText, queryByText } = renderWithTheme(
+    renderWithTheme(
       <Popover content={SimpleContent}>
         <button>Test</button>
       </Popover>
     )
 
     // Verify hidden
-    expect(queryByText('simple content')).not.toBeInTheDocument()
+    expect(screen.queryByText('simple content')).not.toBeInTheDocument()
 
-    const trigger = getByText('Test')
+    const trigger = screen.getByText('Test')
     fireEvent.click(trigger)
 
     // Find content
-    expect(getByText('simple content')).toBeInTheDocument()
+    expect(screen.getByText('simple content')).toBeInTheDocument()
 
     fireEvent.click(trigger)
-    expect(queryByText('simple content')).not.toBeInTheDocument()
+    expect(screen.queryByText('simple content')).not.toBeInTheDocument()
   })
 
   test('renderProps style expanded opens and closes', () => {
-    const { getByText, queryByText } = renderWithTheme(
+    renderWithTheme(
       <Popover content={SimpleContent}>
         {(popoverProps) => <button {...popoverProps}>Test</button>}
       </Popover>
     )
 
     // Verify hidden
-    expect(queryByText('simple content')).not.toBeInTheDocument()
+    expect(screen.queryByText('simple content')).not.toBeInTheDocument()
 
-    const trigger = getByText('Test')
+    const trigger = screen.getByText('Test')
     fireEvent.click(trigger)
 
     // Find content
-    expect(getByText('simple content')).toBeInTheDocument()
+    expect(screen.getByText('simple content')).toBeInTheDocument()
 
     fireEvent.click(trigger)
-    expect(queryByText('simple content')).not.toBeInTheDocument()
+    expect(screen.queryByText('simple content')).not.toBeInTheDocument()
   })
 
   test('cloneElement style opens and closes', () => {
-    const { getByText, queryByText } = renderWithTheme(
+    renderWithTheme(
       <Popover content={SimpleContent}>
         <button>Test</button>
       </Popover>
     )
 
     // Verify hidden
-    expect(queryByText('simple content')).not.toBeInTheDocument()
+    expect(screen.queryByText('simple content')).not.toBeInTheDocument()
 
-    const trigger = getByText('Test')
+    const trigger = screen.getByText('Test')
     fireEvent.click(trigger)
 
     // Find content
-    expect(getByText('simple content')).toBeInTheDocument()
+    expect(screen.getByText('simple content')).toBeInTheDocument()
 
     fireEvent.click(trigger)
-    expect(queryByText('simple content')).not.toBeInTheDocument()
+    expect(screen.queryByText('simple content')).not.toBeInTheDocument()
   })
 
   test('stopPropagation works - event on container is not called', () => {
     const mockContainerOnClick = jest.fn()
 
-    const { getByText } = renderWithTheme(
+    renderWithTheme(
       <div onClick={mockContainerOnClick}>
         <Popover content={SimpleContent}>
           <button>Test</button>
         </Popover>
       </div>
     )
-    const trigger = getByText('Test')
+    const trigger = screen.getByText('Test')
     fireEvent.click(trigger)
-    expect(getByText('simple content')).toBeInTheDocument()
+    expect(screen.getByText('simple content')).toBeInTheDocument()
     expect(mockContainerOnClick).not.toHaveBeenCalled()
 
     fireEvent.click(document)
@@ -125,7 +125,7 @@ describe('Popover', () => {
   test('Open popover does not cancel event on "dismissal click"', () => {
     const doThing = jest.fn()
 
-    const { getByText, queryByText } = renderWithTheme(
+    renderWithTheme(
       <>
         <Popover content={SimpleContent}>
           <button>Instant Click</button>
@@ -134,19 +134,19 @@ describe('Popover', () => {
       </>
     )
 
-    const trigger = getByText('Instant Click')
+    const trigger = screen.getByText('Instant Click')
     fireEvent.click(trigger) // open Popover
 
-    const closer = getByText('Do thing...')
+    const closer = screen.getByText('Do thing...')
     fireEvent.click(closer)
-    expect(queryByText('simple content')).not.toBeInTheDocument()
+    expect(screen.queryByText('simple content')).not.toBeInTheDocument()
     expect(doThing).toBeCalledTimes(1)
   })
 
   test('With cancelClickOutside = true, open popover cancels 1st click event', () => {
     const doThing = jest.fn()
 
-    const { getByText, queryByText } = renderWithTheme(
+    renderWithTheme(
       <>
         <Popover content={SimpleContent} cancelClickOutside>
           <button>Instant Click</button>
@@ -155,12 +155,12 @@ describe('Popover', () => {
       </>
     )
 
-    const trigger = getByText('Instant Click')
+    const trigger = screen.getByText('Instant Click')
     fireEvent.click(trigger) // open Popover
 
-    const closer = getByText('Do thing...')
+    const closer = screen.getByText('Do thing...')
     fireEvent.click(closer)
-    expect(queryByText('simple content')).not.toBeInTheDocument()
+    expect(screen.queryByText('simple content')).not.toBeInTheDocument()
     expect(doThing).toBeCalledTimes(0)
   })
 
@@ -176,10 +176,10 @@ describe('Popover', () => {
         </div>
       )
     }
-    const { getByText, queryByText } = renderWithTheme(<Component />)
+    renderWithTheme(<Component />)
 
-    const trigger = queryByText('Instant Click')
-    const div = getByText('Some text in the div')
+    const trigger = screen.queryByText('Instant Click')
+    const div = screen.getByText('Some text in the div')
 
     expect(trigger).not.toBeInTheDocument()
 
@@ -190,10 +190,10 @@ describe('Popover', () => {
         cancelable: true,
       })
     )
-    const triggerNew = getByText('Instant Click')
-    expect(queryByText('simple content')).not.toBeInTheDocument()
+    const triggerNew = screen.getByText('Instant Click')
+    expect(screen.queryByText('simple content')).not.toBeInTheDocument()
     fireEvent.click(triggerNew) // open Popover
-    expect(queryByText('simple content')).toBeInTheDocument()
+    expect(screen.queryByText('simple content')).toBeInTheDocument()
 
     fireEvent.click(document)
   })

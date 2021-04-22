@@ -24,7 +24,11 @@
 
  */
 
-import { fireEvent, waitForElementToBeRemoved } from '@testing-library/react'
+import {
+  fireEvent,
+  screen,
+  waitForElementToBeRemoved,
+} from '@testing-library/react'
 import React from 'react'
 
 import { renderWithTheme } from '@looker/components-test-utils'
@@ -52,43 +56,43 @@ afterEach(() => {
 })
 
 test('<Confirm/> with defaults', async () => {
-  const { getByText, queryByText } = renderWithTheme(
+  renderWithTheme(
     <Confirm {...requiredProps}>
       {(open) => <Button onClick={open}>Do Something</Button>}
     </Confirm>
   )
 
-  const opener = getByText('Do Something')
+  const opener = screen.getByText('Do Something')
   fireEvent.click(opener)
 
-  const button = getByText('Confirm')
+  const button = screen.getByText('Confirm')
 
-  expect(getByText(requiredProps.title)).toBeVisible()
-  expect(getByText(requiredProps.message)).toBeVisible()
+  expect(screen.getByText(requiredProps.title)).toBeVisible()
+  expect(screen.getByText(requiredProps.message)).toBeVisible()
   expect(button).toHaveStyleRule(`background: ${theme.colors.key}`)
 
   fireEvent.click(button)
   expect(requiredProps.onConfirm).toHaveBeenCalledTimes(1)
 
-  fireEvent.click(getByText('Cancel'))
-  await waitForElementToBeRemoved(() => queryByText(requiredProps.title))
-  expect(queryByText(requiredProps.title)).not.toBeInTheDocument()
+  fireEvent.click(screen.getByText('Cancel'))
+  await waitForElementToBeRemoved(() => screen.queryByText(requiredProps.title))
+  expect(screen.queryByText(requiredProps.title)).not.toBeInTheDocument()
 })
 
 test('<Confirm/> with custom props', () => {
-  const { getByText } = renderWithTheme(
+  renderWithTheme(
     <Confirm {...requiredProps} {...optionalProps} buttonColor="critical">
       {(open) => <Button onClick={open}>Do Something</Button>}
     </Confirm>
   )
 
-  const opener = getByText('Do Something')
+  const opener = screen.getByText('Do Something')
   fireEvent.click(opener)
 
-  const button = getByText(optionalProps.confirmLabel || '')
+  const button = screen.getByText(optionalProps.confirmLabel || '')
   expect(button).toHaveStyleRule(`background: ${theme.colors.critical}`)
 
-  fireEvent.click(getByText(optionalProps.cancelLabel || ''))
+  fireEvent.click(screen.getByText(optionalProps.cancelLabel || ''))
   fireEvent.click(button)
 
   expect(requiredProps.onConfirm).toHaveBeenCalledTimes(1)

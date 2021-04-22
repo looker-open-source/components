@@ -25,7 +25,7 @@
  */
 import 'jest-styled-components'
 import React from 'react'
-import { fireEvent } from '@testing-library/react'
+import { fireEvent, screen } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import map from 'lodash/map'
 import { CheckboxGroup } from './CheckboxGroup'
@@ -65,10 +65,8 @@ test('FieldCheckboxGroup render a list of checkbox', () => {
   }
 
   const renderListContent = () => {
-    const { getByTestId } = renderWithTheme(
-      <CheckboxGroup {...checkboxProps} />
-    )
-    return getByTestId('checkbox-list')
+    renderWithTheme(<CheckboxGroup {...checkboxProps} />)
+    return screen.getByTestId('checkbox-list')
   }
 
   const view = renderListContent()
@@ -83,14 +81,14 @@ test('FieldCheckboxGroup render a list of checkbox', () => {
 test('CheckboxGroup can be checked and unchecked when user clicks', () => {
   const handleChange = jest.fn()
 
-  const { getByLabelText } = renderWithTheme(
+  renderWithTheme(
     <CheckboxGroup
       {...checkboxProps}
       defaultValue={[]}
       onChange={handleChange}
     />
   )
-  const checkbox = getByLabelText('Roquefort')
+  const checkbox = screen.getByLabelText('Roquefort')
 
   fireEvent.click(checkbox)
 
@@ -104,31 +102,27 @@ test('CheckboxGroup can be checked and unchecked when user clicks', () => {
 })
 
 test('CheckboxGroup render a list of checkbox with defaultValue checked', () => {
-  const { getByLabelText } = renderWithTheme(
+  renderWithTheme(
     <CheckboxGroup {...checkboxProps} defaultValue={['cheddar']} />
   )
-  expect(getByLabelText('Cheddar') as HTMLInputElement).toBeChecked()
-  expect(getByLabelText('Gouda') as HTMLInputElement).not.toBeChecked()
+  expect(screen.getByLabelText('Cheddar') as HTMLInputElement).toBeChecked()
+  expect(screen.getByLabelText('Gouda') as HTMLInputElement).not.toBeChecked()
 })
 
 test('CheckboxGroup render a list of checkbox all unchecked after user clicked on defaultValue', () => {
-  const { getByLabelText } = renderWithTheme(
-    <CheckboxGroup {...checkboxProps} />
-  )
-  const Cheddar = getByLabelText('Cheddar')
+  renderWithTheme(<CheckboxGroup {...checkboxProps} />)
+  const Cheddar = screen.getByLabelText('Cheddar')
   fireEvent.click(Cheddar)
-  expect(getByLabelText('Cheddar') as HTMLInputElement).not.toBeChecked()
+  expect(screen.getByLabelText('Cheddar') as HTMLInputElement).not.toBeChecked()
 })
 
 test('CheckboxGroup disabled all checkbox', () => {
-  const { getByLabelText } = renderWithTheme(
-    <CheckboxGroup {...checkboxProps} disabled />
-  )
+  renderWithTheme(<CheckboxGroup {...checkboxProps} disabled />)
 
-  expect(getByLabelText('Cheddar') as HTMLInputElement).toBeDisabled()
-  expect(getByLabelText('Gouda') as HTMLInputElement).toBeDisabled()
-  expect(getByLabelText('Swiss') as HTMLInputElement).toBeDisabled()
-  expect(getByLabelText('Roquefort') as HTMLInputElement).toBeDisabled()
+  expect(screen.getByLabelText('Cheddar') as HTMLInputElement).toBeDisabled()
+  expect(screen.getByLabelText('Gouda') as HTMLInputElement).toBeDisabled()
+  expect(screen.getByLabelText('Swiss') as HTMLInputElement).toBeDisabled()
+  expect(screen.getByLabelText('Roquefort') as HTMLInputElement).toBeDisabled()
 })
 
 test('CheckboxGroup disabled one specific checkbox', () => {
@@ -139,10 +133,8 @@ test('CheckboxGroup disabled one specific checkbox', () => {
     }
   })
 
-  const { getByLabelText } = renderWithTheme(
-    <CheckboxGroup {...checkboxProps} options={options} />
-  )
+  renderWithTheme(<CheckboxGroup {...checkboxProps} options={options} />)
 
-  expect(getByLabelText('Cheddar') as HTMLInputElement).toBeEnabled()
-  expect(getByLabelText('Roquefort') as HTMLInputElement).toBeDisabled()
+  expect(screen.getByLabelText('Cheddar') as HTMLInputElement).toBeEnabled()
+  expect(screen.getByLabelText('Roquefort') as HTMLInputElement).toBeDisabled()
 })

@@ -25,7 +25,7 @@
  */
 
 import React from 'react'
-import { fireEvent } from '@testing-library/react'
+import { fireEvent, screen } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import map from 'lodash/map'
 import { InputTimeSelect, InputTimeSelectProps } from './InputTimeSelect'
@@ -60,16 +60,14 @@ const extractTextFromDomList = (list: HTMLElement) => {
 }
 
 const renderListContent = (props: InputTimeSelectProps) => {
-  const { getByPlaceholderText, getByRole } = renderWithTheme(
-    <InputTimeSelect {...props} />
-  )
+  renderWithTheme(<InputTimeSelect {...props} />)
 
   // open list
-  const inputBox = getByPlaceholderText('Select time')
+  const inputBox = screen.getByPlaceholderText('Select time')
   fireEvent.click(inputBox)
 
   // select list container
-  const domList = getByRole('listbox')
+  const domList = screen.getByRole('listbox')
   return domList
 }
 
@@ -124,13 +122,11 @@ describe('prop: interval', () => {
 describe('text input', () => {
   test('converts shorthand input to 24h formatted string on change', () => {
     const handleChange = jest.fn()
-    const { getByPlaceholderText } = renderWithTheme(
-      <InputTimeSelect onChange={handleChange} />
-    )
+    renderWithTheme(<InputTimeSelect onChange={handleChange} />)
 
     expect(handleChange).not.toHaveBeenCalled()
 
-    const inputBox = getByPlaceholderText('Select time')
+    const inputBox = screen.getByPlaceholderText('Select time')
     fireEvent.click(inputBox)
 
     // Enter key input

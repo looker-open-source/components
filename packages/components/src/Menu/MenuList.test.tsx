@@ -26,7 +26,7 @@
 
 import { screen } from '@testing-library/react'
 import 'jest-styled-components'
-import * as React from 'react'
+import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { MenuItem } from './MenuItem'
 import { MenuList } from './MenuList'
@@ -92,7 +92,7 @@ describe('MenuList', () => {
 
   describe('composition', () => {
     test('renders a MenuHeading, MenuDivider and MenuItems together', () => {
-      const { getByTestId, getByText } = renderWithTheme(
+      renderWithTheme(
         <MenuList>
           <MenuHeading>My Menu List</MenuHeading>
           <MenuItem>First</MenuItem>
@@ -101,8 +101,8 @@ describe('MenuList', () => {
         </MenuList>
       )
 
-      expect(getByTestId('divider')).toBeVisible()
-      getByText('My Menu List')
+      expect(screen.getByTestId('divider')).toBeVisible()
+      screen.getByText('My Menu List')
     })
   })
 })

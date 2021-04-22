@@ -26,7 +26,7 @@
 
 import 'jest-styled-components'
 import React from 'react'
-import { fireEvent } from '@testing-library/react'
+import { fireEvent, screen } from '@testing-library/react'
 import { theme } from '@looker/design-tokens'
 import {
   renderWithTheme,
@@ -38,20 +38,20 @@ describe('MessageBar', () => {
   test('controlled component', () => {
     const handleDismiss = jest.fn()
 
-    const { getByText, queryByText, rerender } = renderWithTheme(
+    const { rerender } = renderWithTheme(
       <MessageBar onPrimaryClick={handleDismiss} visible>
         Message text
       </MessageBar>
     )
 
     // visible message bar
-    expect(getByText('Message text')).toBeInTheDocument()
+    expect(screen.getByText('Message text')).toBeInTheDocument()
 
     // dismiss callback
     expect(handleDismiss).not.toHaveBeenCalled()
 
     const dismissButton =
-      getByText('DismissIntent Inform').closest('button') ||
+      screen.getByText('DismissIntent Inform').closest('button') ||
       document.createElement('button') // suppress typescript warning about possible null button
 
     fireEvent.click(dismissButton)
@@ -59,7 +59,7 @@ describe('MessageBar', () => {
     expect(handleDismiss).toHaveBeenCalledTimes(1)
 
     // message bar remains visible until `visible` prop is toggled
-    expect(getByText('Message text')).toBeInTheDocument()
+    expect(screen.getByText('Message text')).toBeInTheDocument()
 
     // dismiss message bar through `visible` prop change
     rerender(
@@ -69,46 +69,44 @@ describe('MessageBar', () => {
         </MessageBar>
       )
     )
-    expect(queryByText('Message text')).not.toBeInTheDocument()
+    expect(screen.queryByText('Message text')).not.toBeInTheDocument()
   })
 
   describe('action buttons', () => {
     test('renders standard Dismiss button by default', () => {
-      const { getByText, queryByText } = renderWithTheme(
-        <MessageBar>Message text</MessageBar>
-      )
+      renderWithTheme(<MessageBar>Message text</MessageBar>)
 
       // visible message bar
-      expect(getByText('Message text')).toBeInTheDocument()
+      expect(screen.getByText('Message text')).toBeInTheDocument()
 
       // dismiss button
       const dismissButton =
-        getByText('DismissIntent Inform').closest('button') ||
+        screen.getByText('DismissIntent Inform').closest('button') ||
         document.createElement('button') // suppress typescript warning about possible null button
 
       fireEvent.click(dismissButton)
 
       // message bar dismissed
-      expect(queryByText('Message text')).not.toBeInTheDocument()
+      expect(screen.queryByText('Message text')).not.toBeInTheDocument()
     })
 
     test('hides the dismiss button', () => {
-      const { getByText, queryByText, rerender } = renderWithTheme(
+      const { rerender } = renderWithTheme(
         <MessageBar>Message text</MessageBar>
       )
 
-      expect(getByText('DismissIntent Inform')).toBeInTheDocument()
+      expect(screen.getByText('DismissIntent Inform')).toBeInTheDocument()
 
       rerender(
         withThemeProvider(<MessageBar noActions>Message text</MessageBar>)
       )
 
-      expect(queryByText('DismissIntent Inform')).not.toBeInTheDocument()
+      expect(screen.queryByText('DismissIntent Inform')).not.toBeInTheDocument()
     })
 
     test('accepts a text label to customize primaryAction', () => {
       const handlePrimaryClick = jest.fn()
-      const { getByText, queryByText } = renderWithTheme(
+      renderWithTheme(
         <MessageBar
           primaryAction="Take the red pill"
           onPrimaryClick={handlePrimaryClick}
@@ -117,26 +115,26 @@ describe('MessageBar', () => {
         </MessageBar>
       )
 
-      const primaryButton = getByText('Take the red pill')
+      const primaryButton = screen.getByText('Take the red pill')
 
       expect(primaryButton).toBeInTheDocument()
       expect(
-        getByText('Do you want to know what the matrix is?')
+        screen.getByText('Do you want to know what the matrix is?')
       ).toBeInTheDocument()
-      expect(queryByText('DismissIntent Inform')).not.toBeInTheDocument()
+      expect(screen.queryByText('DismissIntent Inform')).not.toBeInTheDocument()
 
       fireEvent.click(primaryButton)
 
       expect(handlePrimaryClick).toBeCalledTimes(1)
       // clears messageBar on primary action click
       expect(
-        queryByText('Do you want to know what the matrix is?')
+        screen.queryByText('Do you want to know what the matrix is?')
       ).not.toBeInTheDocument()
     })
 
     test('accepts a text label to customize secondaryAction', () => {
       const handleSecondaryClick = jest.fn()
-      const { getByText, queryByText } = renderWithTheme(
+      renderWithTheme(
         <MessageBar
           secondaryAction="Take the blue pill"
           onSecondaryClick={handleSecondaryClick}
@@ -145,11 +143,11 @@ describe('MessageBar', () => {
         </MessageBar>
       )
 
-      const secondaryButton = getByText('Take the blue pill')
+      const secondaryButton = screen.getByText('Take the blue pill')
 
       expect(secondaryButton).toBeInTheDocument()
       expect(
-        getByText('Do you want to know what the matrix is?')
+        screen.getByText('Do you want to know what the matrix is?')
       ).toBeInTheDocument()
 
       fireEvent.click(secondaryButton)
@@ -157,12 +155,12 @@ describe('MessageBar', () => {
       expect(handleSecondaryClick).toBeCalledTimes(1)
       // clears messageBar on secondary action click
       expect(
-        queryByText('Do you want to know what the matrix is?')
+        screen.queryByText('Do you want to know what the matrix is?')
       ).not.toBeInTheDocument()
     })
 
     test('renders custom JSX Button elements for primary and secondary actions', () => {
-      const { getByText, queryByText } = renderWithTheme(
+      renderWithTheme(
         <MessageBar
           intent="inform"
           primaryAction={<button>Take the red pill</button>}
@@ -172,13 +170,13 @@ describe('MessageBar', () => {
         </MessageBar>
       )
 
-      expect(getByText('Take the red pill')).toBeInTheDocument()
-      expect(getByText('Take the blue pill')).toBeInTheDocument()
-      expect(queryByText('DismissIntent Inform')).not.toBeInTheDocument()
+      expect(screen.getByText('Take the red pill')).toBeInTheDocument()
+      expect(screen.getByText('Take the blue pill')).toBeInTheDocument()
+      expect(screen.queryByText('DismissIntent Inform')).not.toBeInTheDocument()
     })
 
     test('renders secondaryButton next to default Dismiss button', () => {
-      const { getByText } = renderWithTheme(
+      renderWithTheme(
         <MessageBar
           intent="inform"
           secondaryAction={<button>secondary action</button>}
@@ -187,69 +185,67 @@ describe('MessageBar', () => {
         </MessageBar>
       )
 
-      expect(getByText('secondary action')).toBeInTheDocument()
-      expect(getByText('DismissIntent Inform')).toBeInTheDocument()
+      expect(screen.getByText('secondary action')).toBeInTheDocument()
+      expect(screen.getByText('DismissIntent Inform')).toBeInTheDocument()
     })
   })
 
   describe('intent styling', () => {
     test('Warn MessageBar', () => {
-      const { getByText, getByTitle } = renderWithTheme(
-        <MessageBar intent="warn">Warn</MessageBar>
-      )
+      renderWithTheme(<MessageBar intent="warn">Warn</MessageBar>)
       // dismiss button
-      expect(getByText('DismissIntent Warning')).toBeInTheDocument()
+      expect(screen.getByText('DismissIntent Warning')).toBeInTheDocument()
       // icon title and color
-      expect(getByTitle('Warning').closest('svg')).toHaveStyle(
+      expect(screen.getByTitle('Warning').closest('svg')).toHaveStyle(
         `color: ${theme.colors.warn}`
       )
     })
 
     test('Error MessageBar', () => {
-      const { getByText, getByTitle, getByRole } = renderWithTheme(
+      renderWithTheme(
         <MessageBar intent="critical" id="test-message-bar">
           Error
         </MessageBar>
       )
       // dismiss button
-      expect(getByText('DismissIntent Error')).toBeInTheDocument()
+      expect(screen.getByText('DismissIntent Error')).toBeInTheDocument()
       // icon title and color
-      expect(getByTitle('Error').closest('svg')).toHaveStyle(
+      expect(screen.getByTitle('Error').closest('svg')).toHaveStyle(
         `color: ${theme.colors.critical}`
       )
       // MessageBar background
-      expect(getByRole('status')).toHaveStyleRule(
+      expect(screen.getByRole('status')).toHaveStyleRule(
         'background-color',
         theme.colors.criticalAccent
       )
     })
 
     test('Info MessageBar', () => {
-      const { getByText, getByTitle } = renderWithTheme(
+      renderWithTheme(
         <MessageBar intent="inform" id="test-message-bar">
           Inform
         </MessageBar>
       )
 
       // dismiss button
-      expect(getByText('DismissIntent Inform')).toBeInTheDocument()
+      expect(screen.getByText('DismissIntent Inform')).toBeInTheDocument()
       // icon title and color
-      expect(getByTitle('Inform').closest('svg')).toHaveStyle(
+      expect(screen.getByTitle('Inform').closest('svg')).toHaveStyle(
         `color: ${theme.colors.inform}`
       )
     })
 
     test('Confirmation MessageBar', () => {
-      const { getByText, getByTitle } = renderWithTheme(
+      renderWithTheme(
         <MessageBar intent="positive" id="test-message-bar">
           Confirmation
         </MessageBar>
       )
       // dismiss button
-      expect(getByText('DismissIntent Success')).toBeInTheDocument()
+      expect(screen.getByText('DismissIntent Success')).toBeInTheDocument()
 
       // icon title and color
-      expect(getByTitle('Success').closest('svg')).toHaveStyle(
+      expect(screen.getByTitle('Success').closest('svg')).toHaveStyle(
         `color: ${theme.colors.positive}`
       )
     })

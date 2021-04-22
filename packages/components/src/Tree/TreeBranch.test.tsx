@@ -26,10 +26,11 @@
 
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
 import { TreeBranch } from '.'
 
 test('Renders children', () => {
-  const { getByText } = renderWithTheme(<TreeBranch>My Children</TreeBranch>)
+  renderWithTheme(<TreeBranch>My Children</TreeBranch>)
 
-  getByText('My Children')
+  screen.getByText('My Children')
 })

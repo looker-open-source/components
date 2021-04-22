@@ -35,23 +35,21 @@ import { InputColor } from './InputColor'
 
 describe('InputColor', () => {
   test('with hidden input', () => {
-    const { queryByDisplayValue } = renderWithTheme(
-      <InputColor value="yellow" hideInput />
-    )
-    expect(queryByDisplayValue('yellow')).not.toBeInTheDocument()
+    renderWithTheme(<InputColor value="yellow" hideInput />)
+    expect(screen.queryByDisplayValue('yellow')).not.toBeInTheDocument()
   })
 
   test('starts with a named color value', () => {
-    const { getByDisplayValue } = renderWithTheme(<InputColor value="green" />)
-    expect(getByDisplayValue('green')).toBeInTheDocument()
+    renderWithTheme(<InputColor value="green" />)
+    expect(screen.getByDisplayValue('green')).toBeInTheDocument()
   })
 
   test('responds to input value change', () => {
-    const { getByDisplayValue } = renderWithTheme(<InputColor value="green" />)
-    const input = getByDisplayValue('green')
+    renderWithTheme(<InputColor value="green" />)
+    const input = screen.getByDisplayValue('green')
     input.focus()
     fireEvent.change(input, { target: { value: 'blue' } })
-    expect(getByDisplayValue('blue')).toBeInTheDocument()
+    expect(screen.getByDisplayValue('blue')).toBeInTheDocument()
   })
 
   test('with controlled state', () => {
@@ -74,10 +72,10 @@ describe('InputColor', () => {
         </>
       )
     }
-    const { getByText, getByPlaceholderText } = renderWithTheme(<Wrapper />)
+    renderWithTheme(<Wrapper />)
 
-    const button = getByText('Turn yellow')
-    const input = getByPlaceholderText('Select a color')
+    const button = screen.getByText('Turn yellow')
+    const input = screen.getByPlaceholderText('Select a color')
     expect(input).toHaveValue('')
     fireEvent.click(button)
     expect(input).toHaveValue('yellow')

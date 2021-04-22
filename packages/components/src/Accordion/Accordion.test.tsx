@@ -26,37 +26,37 @@
 
 import React, { useState } from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { fireEvent } from '@testing-library/react'
+import { fireEvent, screen } from '@testing-library/react'
 import { Accordion } from '.'
 
 describe('Accordion', () => {
   test('Renders AccordionDisclosure and AccordionContent (on label click)', () => {
-    const { getByText, queryByText } = renderWithTheme(
+    renderWithTheme(
       <Accordion content="My Accordion Content">My Accordion Label</Accordion>
     )
-    const accordionLabel = getByText('My Accordion Label')
-    expect(queryByText('My Accordion Content')).not.toBeInTheDocument()
+    const accordionLabel = screen.getByText('My Accordion Label')
+    expect(screen.queryByText('My Accordion Content')).not.toBeInTheDocument()
     fireEvent.click(accordionLabel)
-    getByText('My Accordion Content')
+    screen.getByText('My Accordion Content')
     fireEvent.click(accordionLabel)
-    expect(queryByText('My Accordion Content')).not.toBeInTheDocument()
+    expect(screen.queryByText('My Accordion Content')).not.toBeInTheDocument()
   })
 
   test('Renders AccordionContent by default when defaultOpen === true', () => {
-    const { getByText } = renderWithTheme(
+    renderWithTheme(
       <Accordion defaultOpen content="My Accordion Content">
         My Accordion Label
       </Accordion>
     )
 
-    getByText('My Accordion Content')
+    screen.getByText('My Accordion Content')
   })
 
   test('Triggers onClose and onOpen callbacks on AccordionDisclosure click', () => {
     const onOpen = jest.fn()
     const onClose = jest.fn()
 
-    const { getByText } = renderWithTheme(
+    renderWithTheme(
       <Accordion
         onOpen={onOpen}
         onClose={onClose}
@@ -65,7 +65,7 @@ describe('Accordion', () => {
         My Accordion Label
       </Accordion>
     )
-    const accordionLabel = getByText('My Accordion Label')
+    const accordionLabel = screen.getByText('My Accordion Label')
     fireEvent.click(accordionLabel)
     expect(onOpen).toHaveBeenCalledTimes(1)
     fireEvent.click(accordionLabel)
@@ -87,13 +87,13 @@ describe('Accordion', () => {
       )
     }
 
-    const { getByText, queryByText } = renderWithTheme(<Wrapper />)
-    const accordionLabel = getByText('My Accordion Label')
-    getByText('My Accordion Content')
+    renderWithTheme(<Wrapper />)
+    const accordionLabel = screen.getByText('My Accordion Label')
+    screen.getByText('My Accordion Content')
     fireEvent.click(accordionLabel)
-    expect(queryByText('My Accordion Content')).not.toBeInTheDocument()
+    expect(screen.queryByText('My Accordion Content')).not.toBeInTheDocument()
     fireEvent.click(accordionLabel)
-    getByText('My Accordion Content')
+    screen.getByText('My Accordion Content')
   })
 
   // TODO: Move handler props to Accordion during AccordionDisclosure refactor PR
@@ -103,7 +103,7 @@ describe('Accordion', () => {
     const handleClick = jest.fn()
     const handleBlur = jest.fn()
 
-    const { getByText } = renderWithTheme(
+    renderWithTheme(
       <Accordion
         onKeyDown={handleKeyDown}
         onKeyUp={handleKeyUp}
@@ -115,7 +115,7 @@ describe('Accordion', () => {
       </Accordion>
     )
 
-    const accordionLabel = getByText('My Accordion Label')
+    const accordionLabel = screen.getByText('My Accordion Label')
     fireEvent.click(accordionLabel)
     expect(handleClick).toHaveBeenCalled()
     fireEvent.blur(accordionLabel)

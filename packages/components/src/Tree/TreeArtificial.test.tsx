@@ -26,16 +26,17 @@
 
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
 import { TreeArtificial, TreeItem } from '.'
 
 describe('TreeArtificial', () => {
   test('Renders children', () => {
-    const { getByText } = renderWithTheme(
+    renderWithTheme(
       <TreeArtificial density={-3}>
         <TreeItem>Tree Item</TreeItem>
       </TreeArtificial>
     )
 
-    expect(getByText('Tree Item')).toBeInTheDocument()
+    expect(screen.getByText('Tree Item')).toBeInTheDocument()
   })
 })

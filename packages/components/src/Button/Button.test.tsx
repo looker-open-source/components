@@ -38,18 +38,22 @@ describe('Button', () => {
   })
 
   test('focus-visible: renders outline when tabbing into focus, but not when clicking', () => {
-    const { getByText } = renderWithTheme(
+    renderWithTheme(
       <>
         <Button>button</Button>
         <Button>focus</Button>
       </>
     )
 
-    fireEvent.click(getByText('button'))
+    fireEvent.click(screen.getByText('button'))
     // eslint-disable-next-line jest-dom/prefer-to-have-style
     expect(screen.getByText('button').style.boxShadow).toEqual('')
 
-    fireEvent.keyUp(getByText('focus'), { charCode: 9, code: 9, key: 'Tab' })
+    fireEvent.keyUp(screen.getByText('focus'), {
+      charCode: 9,
+      code: 9,
+      key: 'Tab',
+    })
     expect(screen.getByText('focus')).toHaveStyle(
       'box-shadow: 0 0 0 0.15rem rgba(108,67,224,0.25);'
     )

@@ -47,7 +47,7 @@ describe('<Combobox/> with children', () => {
   test('Renders children, merges callbacks', () => {
     const handleChange = jest.fn()
     const handleClick = jest.fn()
-    const { getByText, getByPlaceholderText } = renderWithTheme(
+    renderWithTheme(
       <Combobox onChange={handleChange}>
         <ComboboxInput placeholder="Type here" />
         <ComboboxList>
@@ -57,12 +57,12 @@ describe('<Combobox/> with children', () => {
       </Combobox>
     )
 
-    const input = getByPlaceholderText('Type here')
+    const input = screen.getByPlaceholderText('Type here')
     fireEvent.mouseDown(input)
 
-    const foo = getByText('Foo')
-    expect(getByText('Foo')).toBeInTheDocument()
-    expect(getByText('Bar')).toBeInTheDocument()
+    const foo = screen.getByText('Foo')
+    expect(screen.getByText('Foo')).toBeInTheDocument()
+    expect(screen.getByText('Bar')).toBeInTheDocument()
     expect(handleClick).toHaveBeenCalledTimes(0)
     expect(handleChange).toHaveBeenCalledTimes(0)
 
@@ -96,17 +96,15 @@ describe('<Combobox/> with children', () => {
       </ComboboxMulti>,
     ],
   ])('Opens and closes on click (%s)', (_, jsx) => {
-    const { getByText, getByPlaceholderText, queryByText } = renderWithTheme(
-      jsx
-    )
-    expect(queryByText('Foo')).not.toBeInTheDocument()
+    renderWithTheme(jsx)
+    expect(screen.queryByText('Foo')).not.toBeInTheDocument()
 
-    const input = getByPlaceholderText('Type here')
+    const input = screen.getByPlaceholderText('Type here')
     fireEvent.click(input)
-    expect(getByText('Foo')).toBeInTheDocument()
+    expect(screen.getByText('Foo')).toBeInTheDocument()
 
     fireEvent.click(input)
-    expect(queryByText('Foo')).not.toBeInTheDocument()
+    expect(screen.queryByText('Foo')).not.toBeInTheDocument()
 
     // Close popover to silence act() warning
     fireEvent.click(document)
@@ -135,15 +133,15 @@ describe('<Combobox/> with children', () => {
       </ComboboxMulti>,
     ],
   ])('Highlights typed text', (_, jsx) => {
-    const { getByText, getByPlaceholderText } = renderWithTheme(jsx)
+    renderWithTheme(jsx)
 
-    const input = getByPlaceholderText('Type here')
+    const input = screen.getByPlaceholderText('Type here')
     fireEvent.focus(input)
     fireEvent.change(input, { target: { value: 'oo' } })
-    expect(getByText('oo')).toHaveStyleRule(
+    expect(screen.getByText('oo')).toHaveStyleRule(
       'font-weight: 600; text-decoration: underline'
     )
-    expect(getByText('Bar')).not.toHaveStyleRule(
+    expect(screen.getByText('Bar')).not.toHaveStyleRule(
       'font-weight: 600; text-decoration: underline'
     )
 
@@ -180,12 +178,12 @@ describe('<Combobox/> with children', () => {
       </ComboboxMulti>,
     ],
   ])('Sets the list layout styles (%s)', (_, jsx) => {
-    const { getByRole, getByPlaceholderText } = renderWithTheme(jsx)
+    renderWithTheme(jsx)
 
-    const input = getByPlaceholderText('Type here')
+    const input = screen.getByPlaceholderText('Type here')
     fireEvent.click(input)
 
-    const list = getByRole('listbox')
+    const list = screen.getByRole('listbox')
     expect(list).toHaveStyleRule('max-height', '400px')
     expect(list).toHaveStyleRule('max-width', '800px')
     expect(list).toHaveStyleRule('min-width', '300px')
@@ -251,11 +249,9 @@ describe('<Combobox/> with children', () => {
       .mockImplementation((cb: any) => cb())
 
     const indicator = jest.fn()
-    const { queryByTitle, getByText, getByPlaceholderText } = renderWithTheme(
-      getJSX(indicator)
-    )
+    renderWithTheme(getJSX(indicator))
 
-    const input = getByPlaceholderText('Type here')
+    const input = screen.getByPlaceholderText('Type here')
     fireEvent.click(input)
 
     expect(indicator).toHaveBeenCalledTimes(2)
@@ -272,12 +268,12 @@ describe('<Combobox/> with children', () => {
       value: '102',
     })
 
-    const check = queryByTitle('Check')
+    const check = screen.queryByTitle('Check')
     expect(check).not.toBeInTheDocument()
 
     indicator.mockClear()
 
-    const bar = getByText('Bar')
+    const bar = screen.getByText('Bar')
     fireEvent.mouseOver(bar)
 
     expect(indicator).toHaveBeenCalledTimes(1)
@@ -294,7 +290,7 @@ describe('<Combobox/> with children', () => {
   })
 
   test('Does not highlight current selected value', () => {
-    const { getByText, getByPlaceholderText } = renderWithTheme(
+    renderWithTheme(
       <Combobox key="combobox" value={{ label: 'Foo', value: '101' }}>
         <ComboboxInput placeholder="Type here" />
         <ComboboxList>
@@ -304,12 +300,12 @@ describe('<Combobox/> with children', () => {
       </Combobox>
     )
 
-    const input = getByPlaceholderText('Type here')
+    const input = screen.getByPlaceholderText('Type here')
     fireEvent.click(input)
-    expect(getByText('Foo')).not.toHaveStyleRule(
+    expect(screen.getByText('Foo')).not.toHaveStyleRule(
       'font-weight: 600; text-decoration: underline'
     )
-    expect(getByText('FooBar')).not.toHaveStyleRule(
+    expect(screen.getByText('FooBar')).not.toHaveStyleRule(
       'font-weight: 600; text-decoration: underline'
     )
 
@@ -339,14 +335,12 @@ describe('<Combobox/> with children', () => {
       </ComboboxMulti>,
     ],
   ])('with openOnFocus (%s)', (_, jsx) => {
-    const { getByRole, queryByRole, getByPlaceholderText } = renderWithTheme(
-      jsx
-    )
+    renderWithTheme(jsx)
 
-    expect(queryByRole('listbox')).not.toBeInTheDocument()
+    expect(screen.queryByRole('listbox')).not.toBeInTheDocument()
 
-    getByPlaceholderText('Type here').focus()
-    expect(getByRole('listbox')).toBeInTheDocument()
+    screen.getByPlaceholderText('Type here').focus()
+    expect(screen.getByRole('listbox')).toBeInTheDocument()
 
     // Close popover to silence act() warning
     fireEvent.click(document)
@@ -438,22 +432,16 @@ describe('Keyboard navigation', () => {
       </ComboboxMulti>,
     ],
   ])('arrows, enter and space (%s)', (name, jsx) => {
-    const {
-      getByText,
-      getAllByRole,
-      getByRole,
-      queryByRole,
-      getByPlaceholderText,
-    } = renderWithTheme(jsx)
+    renderWithTheme(jsx)
 
-    expect(queryByRole('listbox')).not.toBeInTheDocument()
+    expect(screen.queryByRole('listbox')).not.toBeInTheDocument()
 
-    const input = getByPlaceholderText('Type here')
+    const input = screen.getByPlaceholderText('Type here')
 
     fireEvent.keyDown(input, arrowDown)
-    expect(getByRole('listbox')).toBeInTheDocument()
+    expect(screen.getByRole('listbox')).toBeInTheDocument()
 
-    const items = getAllByRole('option')
+    const items = screen.getAllByRole('option')
     expect(input).toHaveValue('')
     expect(items[0]).toHaveAttribute('aria-selected', 'false')
     expect(items[1]).toHaveAttribute('aria-selected', 'false')
@@ -484,7 +472,7 @@ describe('Keyboard navigation', () => {
     expect(items[1]).toHaveAttribute('aria-selected', 'false')
 
     fireEvent.keyDown(input, enter)
-    expect(queryByRole('listbox')).not.toBeInTheDocument()
+    expect(screen.queryByRole('listbox')).not.toBeInTheDocument()
 
     expect(onChangeMock).toHaveBeenCalledTimes(1)
     const value = { label: 'Foo', value: '101' }
@@ -504,7 +492,7 @@ describe('Keyboard navigation', () => {
       expect(input).toHaveValue('Bar')
     } else {
       // Selected value is a chip
-      expect(getByText('Bar')).toBeInTheDocument()
+      expect(screen.getByText('Bar')).toBeInTheDocument()
     }
 
     // Close popover to silence act() warning
@@ -512,12 +500,7 @@ describe('Keyboard navigation', () => {
   })
 
   test('arrows, enter and space with autoComplete = false and no inputReadOnly', () => {
-    const {
-      getAllByRole,
-      getByRole,
-      queryByRole,
-      getByPlaceholderText,
-    } = renderWithTheme(
+    renderWithTheme(
       <Combobox id="with-options" openOnFocus>
         <ComboboxInput placeholder="Type here" autoComplete={false} />
         <ComboboxList>
@@ -527,14 +510,14 @@ describe('Keyboard navigation', () => {
       </Combobox>
     )
 
-    expect(queryByRole('listbox')).not.toBeInTheDocument()
+    expect(screen.queryByRole('listbox')).not.toBeInTheDocument()
 
-    const input = getByPlaceholderText('Type here')
+    const input = screen.getByPlaceholderText('Type here')
 
     fireEvent.keyDown(input, arrowDown)
-    expect(getByRole('listbox')).toBeInTheDocument()
+    expect(screen.getByRole('listbox')).toBeInTheDocument()
 
-    const items = getAllByRole('option')
+    const items = screen.getAllByRole('option')
     expect(input).toHaveValue('')
     expect(items[0]).toHaveAttribute('aria-selected', 'false')
     expect(items[1]).toHaveAttribute('aria-selected', 'false')
@@ -561,14 +544,14 @@ describe('Keyboard navigation', () => {
 
     fireEvent.keyDown(input, enter)
     expect(input).toHaveValue('Bar')
-    expect(queryByRole('listbox')).not.toBeInTheDocument()
+    expect(screen.queryByRole('listbox')).not.toBeInTheDocument()
 
     // Spacebar doesn't select the option without inputReadOnly
     fireEvent.keyDown(input, arrowDown)
     fireEvent.keyDown(input, arrowDown)
     fireEvent.keyDown(input, space)
     expect(input).toHaveValue('Bar')
-    expect(queryByRole('listbox')).toBeInTheDocument()
+    expect(screen.queryByRole('listbox')).toBeInTheDocument()
 
     // Close popover to silence act() warning
     fireEvent.click(document)

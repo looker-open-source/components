@@ -46,7 +46,7 @@ describe('SelectMulti', () => {
       { label: 'Baz', value: 'BAZ' },
       { label: 'Qux', value: 'QUX' },
     ]
-    const { getByText, getAllByRole } = renderWithTheme(
+    renderWithTheme(
       <SelectMulti
         options={options}
         placeholder="Search"
@@ -55,10 +55,10 @@ describe('SelectMulti', () => {
       />
     )
     // should already have the 2 chips
-    expect(getByText('Baz')).toBeVisible()
-    expect(getByText('Foo')).toBeVisible()
+    expect(screen.getByText('Baz')).toBeVisible()
+    expect(screen.getByText('Foo')).toBeVisible()
     // 2 chip remove buttons and 1 clear all button
-    expect(getAllByRole('button')).toHaveLength(3)
+    expect(screen.getAllByRole('button')).toHaveLength(3)
   })
 
   test('defaultValues', () => {
@@ -68,7 +68,7 @@ describe('SelectMulti', () => {
       { label: 'Baz', value: 'BAZ' },
       { label: 'Qux', value: 'QUX' },
     ]
-    const { getByText, getAllByRole } = renderWithTheme(
+    renderWithTheme(
       <SelectMulti
         options={options}
         placeholder="Search"
@@ -76,9 +76,9 @@ describe('SelectMulti', () => {
       />
     )
     // should already have the chip
-    expect(getByText('Bar')).toBeVisible()
+    expect(screen.getByText('Bar')).toBeVisible()
     // 1 chip remove button and 1 clear all button
-    expect(getAllByRole('button')).toHaveLength(2)
+    expect(screen.getAllByRole('button')).toHaveLength(2)
   })
 
   test('controlled value & context mismatch', () => {
@@ -161,51 +161,49 @@ describe('SelectMulti', () => {
 
 describe('closeOnSelect', () => {
   test('false by default', () => {
-    const { getByText, getAllByText, getByPlaceholderText } = renderWithTheme(
-      <SelectMulti options={basicOptions} placeholder="Search" />
-    )
+    renderWithTheme(<SelectMulti options={basicOptions} placeholder="Search" />)
 
-    const input = getByPlaceholderText('Search')
+    const input = screen.getByPlaceholderText('Search')
     fireEvent.mouseDown(input)
 
-    const bar = getByText('Bar')
+    const bar = screen.getByText('Bar')
 
-    expect(getByText('Foo')).toBeVisible()
+    expect(screen.getByText('Foo')).toBeVisible()
     expect(bar).toBeVisible()
 
     fireEvent.click(bar)
 
-    expect(getByText('Foo')).toBeVisible()
-    expect(getAllByText('Bar')).toHaveLength(2)
+    expect(screen.getByText('Foo')).toBeVisible()
+    expect(screen.getAllByText('Bar')).toHaveLength(2)
 
     fireEvent.click(document)
   })
 
   test('true', () => {
-    const { getByText, queryByText, getByPlaceholderText } = renderWithTheme(
+    renderWithTheme(
       <SelectMulti options={basicOptions} placeholder="Search" closeOnSelect />
     )
 
-    const input = getByPlaceholderText('Search')
+    const input = screen.getByPlaceholderText('Search')
     fireEvent.mouseDown(input)
 
-    const bar = getByText('Bar')
+    const bar = screen.getByText('Bar')
 
-    expect(getByText('Foo')).toBeVisible()
+    expect(screen.getByText('Foo')).toBeVisible()
     expect(bar).toBeVisible()
 
     fireEvent.click(bar)
     // Bar is now a chip
-    expect(getByText('Bar')).toBeVisible()
+    expect(screen.getByText('Bar')).toBeVisible()
     // list has closed
-    expect(queryByText('Foo')).not.toBeInTheDocument()
+    expect(screen.queryByText('Foo')).not.toBeInTheDocument()
 
     fireEvent.click(document)
   })
 
   describe('removeOnBackspace', () => {
     test('true by default', () => {
-      const { getByText, getByPlaceholderText, queryByText } = renderWithTheme(
+      renderWithTheme(
         <SelectMulti
           options={basicOptions}
           defaultValues={['FOO', 'BAR']}
@@ -213,21 +211,21 @@ describe('closeOnSelect', () => {
         />
       )
 
-      const input = getByPlaceholderText('Search')
+      const input = screen.getByPlaceholderText('Search')
 
-      expect(getByText('Foo')).toBeVisible()
-      expect(getByText('Bar')).toBeVisible()
+      expect(screen.getByText('Foo')).toBeVisible()
+      expect(screen.getByText('Bar')).toBeVisible()
 
       fireEvent.keyDown(input, {
         key: 'Backspace',
       })
 
-      expect(getByText('Foo')).toBeVisible()
-      expect(queryByText('Bar')).not.toBeInTheDocument()
+      expect(screen.getByText('Foo')).toBeVisible()
+      expect(screen.queryByText('Bar')).not.toBeInTheDocument()
     })
 
     test('false', () => {
-      const { getByText, getByPlaceholderText, queryByText } = renderWithTheme(
+      renderWithTheme(
         <SelectMulti
           options={basicOptions}
           defaultValues={['FOO', 'BAR']}
@@ -236,17 +234,17 @@ describe('closeOnSelect', () => {
         />
       )
 
-      const input = getByPlaceholderText('Search')
+      const input = screen.getByPlaceholderText('Search')
 
-      expect(getByText('Foo')).toBeVisible()
-      expect(getByText('Bar')).toBeVisible()
+      expect(screen.getByText('Foo')).toBeVisible()
+      expect(screen.getByText('Bar')).toBeVisible()
 
       fireEvent.keyDown(input, {
         key: 'Backspace',
       })
 
-      expect(getByText('Foo')).toBeVisible()
-      expect(queryByText('Bar')).toBeVisible()
+      expect(screen.getByText('Foo')).toBeVisible()
+      expect(screen.queryByText('Bar')).toBeVisible()
     })
   })
 
