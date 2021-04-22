@@ -34,21 +34,13 @@ import { IconSize } from '../Icon'
 import { IndicatorIcons } from './types'
 
 export interface AccordionDefaultProps {
-  accordionContentId: string
-  accordionDisclosureId: string
   indicatorGap: SpacingSizes
   indicatorIcons: IndicatorIcons
   indicatorSize: IconSize
   indicatorPosition: 'left' | 'right'
-  isOpen: boolean
-  toggleOpen: (isOpen: boolean) => void
-  onClose?: () => void
-  onOpen?: () => void
 }
 
 export const accordionDefaults: AccordionDefaultProps = {
-  accordionContentId: '',
-  accordionDisclosureId: '',
   indicatorGap: 'xsmall',
   indicatorIcons: {
     close: <ExpandMore />,
@@ -56,8 +48,6 @@ export const accordionDefaults: AccordionDefaultProps = {
   },
   indicatorPosition: 'right',
   indicatorSize: 'small',
-  isOpen: false,
-  toggleOpen: (_: boolean) => undefined,
 }
 
 export const accordionLeftDefaults: AccordionDefaultProps = {
