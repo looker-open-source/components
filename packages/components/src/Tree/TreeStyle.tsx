@@ -26,7 +26,7 @@
 
 import styled, { css } from 'styled-components'
 import { StyledIconBase } from '@styled-icons/styled-icon'
-import { SpacingSizes, Theme } from '@looker/design-tokens'
+import { SpacingSizes } from '@looker/design-tokens'
 import {
   Accordion,
   AccordionContent,
@@ -40,14 +40,21 @@ import { IconPlaceholder, IconSize } from '../Icon'
 import { AccordionIndicator } from '../Accordion/AccordionDisclosureLayout'
 import { TreeItem } from './TreeItem'
 import { TreeBranch } from './TreeBranch'
-import { generateIndent, generateTreeBorder } from './utils'
+import {
+  generateIndent,
+  GenerateIndentProps,
+  generateTreeBorder,
+  iconGapAdjuster,
+} from './utils'
 
 interface TreeStyleProps extends ListItemStatefulWithHoveredProps {
   border?: boolean
   branchFontWeight?: boolean
   depth: number
   dividers?: boolean
+  forceLabelPadding?: boolean
   iconGap: SpacingSizes
+  iconSize: IconSize
   labelBackgroundOnly?: boolean
 }
 
@@ -76,22 +83,43 @@ const dividersCSS = css`
   }
 `
 
-const treeItemIndent = (
-  depth: number,
-  indicatorSize: IconSize,
-  labelBackgroundOnly: boolean,
-  theme: Theme
-) => {
+interface TreeItemIndentProps extends GenerateIndentProps {
+  labelBackgroundOnly: boolean
+}
+
+const treeItemIndent = ({
+  depth,
+  forceLabelPadding,
+  iconGap,
+  iconSize,
+  indicatorSize,
+  labelBackgroundOnly,
+  theme,
+}: TreeItemIndentProps) => {
   const labelPaddingRemoval = css`
     padding: 0;
   `
   const wrapperIndent = css`
-    ${generateIndent(depth + 2, indicatorSize, theme)}
+    ${generateIndent({
+      depth: depth + 2,
+      forceLabelPadding,
+      iconGap,
+      iconSize,
+      indicatorSize,
+      theme,
+    })}
     ${listItemLabelCSS(labelPaddingRemoval)}
   `
 
   const labelIndent = listItemLabelCSS(
-    generateIndent(depth + 2, indicatorSize, theme)
+    generateIndent({
+      depth: depth + 2,
+      forceLabelPadding,
+      iconGap,
+      iconSize,
+      indicatorSize,
+      theme,
+    })
   )
 
   return labelBackgroundOnly ? wrapperIndent : labelIndent
@@ -108,7 +136,7 @@ export const TreeStyle = styled.div<TreeStyleProps>`
         > svg,
         > ${StyledIconBase}, > ${IconPlaceholder} {
           /* The -2px gets the icon gap to match design specs */
-          margin-right: calc(${theme.space[iconGap]} - 2px);
+          margin-right: calc(${theme.space[iconGap]} - ${iconGapAdjuster});
         }
       `)}
   }
@@ -140,8 +168,14 @@ export const TreeStyle = styled.div<TreeStyleProps>`
         Tree's padding-right is handled by the internal item
        */
       padding-right: 0;
-      ${({ depth, theme }) =>
-        generateIndent(depth, indicatorContainerSize, theme)}
+      ${({ depth, iconSize, theme }) =>
+        generateIndent({
+          depth,
+          iconGap: 'none',
+          iconSize,
+          indicatorSize: indicatorContainerSize,
+          theme,
+        })}
     }
   }
 
@@ -149,18 +183,35 @@ export const TreeStyle = styled.div<TreeStyleProps>`
 
   > ${Accordion} > ${AccordionContent} > ${List} {
     > ${ListItem} {
-      ${({ depth, labelBackgroundOnly, theme }) =>
-        treeItemIndent(
+      ${({
+        depth,
+        forceLabelPadding,
+        iconGap,
+        iconSize,
+        labelBackgroundOnly,
+        theme,
+      }) =>
+        treeItemIndent({
           depth,
-          indicatorContainerSize,
-          !!labelBackgroundOnly,
-          theme
-        )}
+          forceLabelPadding,
+          iconGap,
+          iconSize,
+          indicatorSize: indicatorContainerSize,
+          labelBackgroundOnly: !!labelBackgroundOnly,
+          theme,
+        })}
     }
 
     > ${TreeBranch} {
-      ${({ depth, theme }) =>
-        generateIndent(depth + 2, indicatorContainerSize, theme)}
+      ${({ depth, forceLabelPadding, iconGap, iconSize, theme }) =>
+        generateIndent({
+          depth: depth + 2,
+          forceLabelPadding,
+          iconGap,
+          iconSize,
+          indicatorSize: indicatorContainerSize,
+          theme,
+        })}
     }
   }
 
@@ -169,18 +220,35 @@ export const TreeStyle = styled.div<TreeStyleProps>`
    */
   > ${List} {
     > ${ListItem} {
-      ${({ depth, labelBackgroundOnly, theme }) =>
-        treeItemIndent(
+      ${({
+        depth,
+        forceLabelPadding,
+        iconGap,
+        iconSize,
+        labelBackgroundOnly,
+        theme,
+      }) =>
+        treeItemIndent({
           depth,
-          indicatorContainerSize,
-          !!labelBackgroundOnly,
-          theme
-        )}
+          forceLabelPadding,
+          iconGap,
+          iconSize,
+          indicatorSize: indicatorContainerSize,
+          labelBackgroundOnly: !!labelBackgroundOnly,
+          theme,
+        })}
     }
 
     > ${TreeBranch} {
-      ${({ depth, theme }) =>
-        generateIndent(depth + 2, indicatorContainerSize, theme)}
+      ${({ depth, forceLabelPadding, iconGap, iconSize, theme }) =>
+        generateIndent({
+          depth: depth + 2,
+          forceLabelPadding,
+          iconGap,
+          iconSize,
+          indicatorSize: indicatorContainerSize,
+          theme,
+        })}
     }
   }
 `

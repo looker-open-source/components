@@ -24,39 +24,16 @@
 
  */
 
-import { css } from 'styled-components'
-import { SpacingSizes, Theme } from '@looker/design-tokens'
-import { IconSize } from '../../Icon'
+import React from 'react'
+import { Folder } from '@styled-icons/material/Folder'
+import { Tree, TreeItem } from '..'
 
-export interface GenerateIndentProps {
-  depth: number
-  forceLabelPadding?: boolean
-  iconSize: IconSize
-  iconGap: SpacingSizes
-  indicatorSize: IconSize
-  theme: Theme
-}
-
-// Used to tighten the gap between the optional icon and item label
-export const iconGapAdjuster = '2px'
-
-export const generateIndent = ({
-  depth,
-  forceLabelPadding,
-  iconGap,
-  iconSize,
-  indicatorSize,
-  theme,
-}: GenerateIndentProps) => {
-  const { space, sizes } = theme
-
-  const indicatorIconSize = sizes[indicatorSize]
-  const forceLabelPaddingSpacer = `(${sizes[iconSize]} + ${space[iconGap]} - ${iconGapAdjuster})`
-  const indentCalculation = `(${indicatorIconSize}) * ${
-    forceLabelPadding ? depth - 1 : depth
-  } + ${forceLabelPadding ? forceLabelPaddingSpacer : '0px'}`
-
-  return css`
-    padding-left: calc(${indentCalculation});
-  `
-}
+export const ForceLabelPadding = () => (
+  <Tree icon={<Folder />} label="Folders" defaultOpen>
+    <Tree icon={<Folder />} label="Personal" defaultOpen forceLabelPadding>
+      <TreeItem>Performance</TreeItem>
+      <TreeItem>Sales</TreeItem>
+      <TreeItem>Metrics</TreeItem>
+    </Tree>
+  </Tree>
+)

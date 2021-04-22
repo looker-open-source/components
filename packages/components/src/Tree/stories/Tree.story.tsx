@@ -37,6 +37,7 @@ export * from './Density.story'
 export * from './DisabledAndSelected.story'
 export * from './FieldPicker.story'
 export * from './FileTree.story'
+export * from './ForceLabelPadding.story'
 export * from './LabelBackgroundOnly.story'
 export * from './LongLabels.story'
 

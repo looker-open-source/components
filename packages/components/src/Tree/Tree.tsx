@@ -52,6 +52,7 @@ const TreeLayout: FC<TreeProps> = ({
   detail: propsDetail,
   disabled,
   dividers,
+  forceLabelPadding,
   icon,
   keyColor: propsKeyColor,
   label: propsLabel,
@@ -78,7 +79,7 @@ const TreeLayout: FC<TreeProps> = ({
   const depth = treeContext.depth ? treeContext.depth : startingDepth
 
   const density = propsDensity || treeContext.density
-  const { iconGap } = listItemDimensions(density)
+  const { iconGap, iconSize } = listItemDimensions(density)
 
   const { accessory, content, hoverDisclosure } = getDetailOptions(propsDetail)
 
@@ -170,8 +171,10 @@ const TreeLayout: FC<TreeProps> = ({
         depth={depth}
         disabled={disabled}
         dividers={dividers}
+        forceLabelPadding={forceLabelPadding}
         hovered={hovered}
         iconGap={iconGap}
+        iconSize={iconSize}
         keyColor={useKeyColor}
         labelBackgroundOnly={hasLabelBackgroundOnly}
         selected={selected}
