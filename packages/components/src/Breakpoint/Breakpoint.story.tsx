@@ -112,7 +112,7 @@ const Template: Story<BreakpointProps> = () => {
         <NavHeader backgroundColor="ui1" p="small">
           <MobileHeaderGrid>
             <Box color="key">
-              <Home title="Home" />
+              <Home size="1.5rem" title="Home" />
             </Box>
             <IconButton icon={<Menu />} label="navigation" />
           </MobileHeaderGrid>
