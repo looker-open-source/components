@@ -55,12 +55,14 @@ export function useHovered<E extends HTMLElement = HTMLElement>(
     }
     function handleMouseLeave() {
       window.requestAnimationFrame(() => {
-        const node = getCurrentNode(element) as Node
+        const node = getCurrentNode(element)
 
-        const relationship = node.compareDocumentPosition(
-          document.activeElement as Node
-        )
+        const relationship =
+          document.activeElement && node
+            ? node.compareDocumentPosition(document.activeElement)
+            : Node.DOCUMENT_POSITION_DISCONNECTED
 
+        // Don't set isHovered to false if a child of the element is currently focused
         const activeElementIsChildOfNode =
           relationship ===
           Node.DOCUMENT_POSITION_FOLLOWING + Node.DOCUMENT_POSITION_CONTAINED_BY
