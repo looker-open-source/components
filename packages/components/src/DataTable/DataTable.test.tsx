@@ -833,8 +833,8 @@ describe('DataTable', () => {
     expect(screen.queryByText('Calories')).not.toBeInTheDocument()
   })
 
-  xtest('firstColumnStuck renders', () => {
-    const { container } = renderWithTheme(
+  test('firstColumnStuck renders', () => {
+    renderWithTheme(
       <DataTable
         caption="this is a table's caption"
         columns={columns}
@@ -844,9 +844,8 @@ describe('DataTable', () => {
       </DataTable>
     )
 
-    // eslint-disable-next-line testing-library/no-container
-    const secondColumn = container.querySelector('tbody tr td:nth-child(2)')
-    expect(secondColumn).not.toHaveStyleRule('position: sticky')
+    const secondColumn = screen.getByText('2') // id=2
+    expect(secondColumn).not.toHaveStyle('position: sticky;')
   })
 
   test('filters renders', () => {

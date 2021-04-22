@@ -117,7 +117,7 @@ describe('IconButton', () => {
 
   test('tooltipDisabled actually disables tooltip', () => {
     const label = 'Mark as my Favorite'
-    const { container } = renderWithTheme(
+    renderWithTheme(
       <IconButton
         id="test-iconButton"
         tooltipDisabled
@@ -129,9 +129,9 @@ describe('IconButton', () => {
     fireEvent.mouseOver(screen.getAllByText(label)[0])
     runTimers()
 
-    // eslint-disable-next-line testing-library/no-container
-    const notTooltip = container.querySelector('p') // Get Tooltip content
-    expect(notTooltip).toBeNull()
+    // Get Tooltip content
+    const notTooltip = screen.queryAllByText(label)
+    expect(notTooltip.length).toEqual(1)
   })
 
   test('built-in tooltip defers to outer tooltip', async () => {

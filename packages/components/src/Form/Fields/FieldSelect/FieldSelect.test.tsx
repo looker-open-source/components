@@ -69,7 +69,7 @@ describe('FieldSelect', () => {
   })
 
   test('With an validation message displayed', () => {
-    const { getAllByLabelText, getByText } = renderWithTheme(
+    renderWithTheme(
       <FieldSelect
         label="thumbs up"
         name="thumbsUp"
@@ -77,30 +77,30 @@ describe('FieldSelect', () => {
         validationMessage={{ message: 'This is an error', type: 'error' }}
       />
     )
-    expect(getAllByLabelText('thumbs up')[0]).toBeVisible()
-    expect(getByText('This is an error')).toBeVisible()
+    expect(screen.getAllByLabelText('thumbs up')[0]).toBeVisible()
+    expect(screen.getByText('This is an error')).toBeVisible()
   })
 
   test('With description has proper aria setup', () => {
     const description = 'This is a description'
 
-    const { container, getByDisplayValue } = renderWithTheme(
+    renderWithTheme(
       <FieldSelect id="test" defaultValue="example" description={description} />
     )
 
-    const input = getByDisplayValue('example')
+    const input = screen.getByDisplayValue('example')
     const id = input.getAttribute('aria-describedby')
     expect(id).toBeDefined()
 
-    // eslint-disable-next-line testing-library/no-container
-    const describedBy = container.querySelector(`#${id}`)
-    expect(describedBy).toHaveTextContent(description)
+    const descriptionDom = screen.getByText(description)
+    expect(descriptionDom.parentElement).toBeInTheDocument()
+    expect(descriptionDom.parentElement?.id).toEqual(id)
   })
 
   test('With error has proper aria setup', () => {
     const errorMessage = 'This is an error'
 
-    const { container, getByDisplayValue } = renderWithTheme(
+    renderWithTheme(
       <FieldSelect
         id="test"
         defaultValue="example"
@@ -108,12 +108,12 @@ describe('FieldSelect', () => {
       />
     )
 
-    const input = getByDisplayValue('example')
+    const input = screen.getByDisplayValue('example')
     const id = input.getAttribute('aria-describedby')
     expect(id).toBeDefined()
 
-    // eslint-disable-next-line testing-library/no-container
-    const describedBy = container.querySelector(`#${id}`)
-    expect(describedBy).toHaveTextContent(errorMessage)
+    const errorMessageDom = screen.getByText(errorMessage)
+    expect(errorMessageDom.parentElement).toBeInTheDocument()
+    expect(errorMessageDom.parentElement?.id).toEqual(id)
   })
 })

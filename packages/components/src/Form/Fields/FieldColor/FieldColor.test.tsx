@@ -27,7 +27,7 @@
 import 'jest-styled-components'
 import '@testing-library/jest-dom/extend-expect'
 import React, { FormEvent, useState } from 'react'
-import { fireEvent } from '@testing-library/react'
+import { fireEvent, screen } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
 
 import { Button } from '../../../Button'
@@ -41,30 +41,30 @@ describe('FieldColor', () => {
   }
 
   test('with a validation message', () => {
-    const { queryByText } = renderWithTheme(<FieldColorValidationMessage />)
-    expect(queryByText('Error!')).toBeInTheDocument()
+    renderWithTheme(<FieldColorValidationMessage />)
+    expect(screen.queryByText('Error!')).toBeInTheDocument()
   })
 
   test('A FieldColor with description has proper aria setup', () => {
     const description = 'This is a description'
 
-    const { container, getByDisplayValue } = renderWithTheme(
+    renderWithTheme(
       <FieldColor id="test" defaultValue="example" description={description} />
     )
 
-    const input = getByDisplayValue('example')
+    const input = screen.getByDisplayValue('example')
     const id = input.getAttribute('aria-describedby')
     expect(id).toBeDefined()
 
-    // eslint-disable-next-line testing-library/no-container
-    const describedBy = container.querySelector(`#${id}`)
-    expect(describedBy).toHaveTextContent(description)
+    const descriptionDom = screen.getByText(description)
+    expect(descriptionDom.parentElement).toBeInTheDocument()
+    expect(descriptionDom.parentElement?.id).toEqual(id)
   })
 
   test('A FieldColor with error has proper aria setup', () => {
     const errorMessage = 'This is an error'
 
-    const { container, getByDisplayValue } = renderWithTheme(
+    renderWithTheme(
       <FieldColor
         id="test"
         defaultValue="example"
@@ -72,21 +72,21 @@ describe('FieldColor', () => {
       />
     )
 
-    const input = getByDisplayValue('example')
+    const input = screen.getByDisplayValue('example')
     const id = input.getAttribute('aria-describedby')
     expect(id).toBeDefined()
 
-    // eslint-disable-next-line testing-library/no-container
-    const describedBy = container.querySelector(`#${id}`)
-    expect(describedBy).toHaveTextContent(errorMessage)
+    const errorMessageDom = screen.getByText(errorMessage)
+    expect(errorMessageDom.parentElement).toBeInTheDocument()
+    expect(errorMessageDom.parentElement?.id).toEqual(id)
   })
 
   test('with an onChange', () => {
     const onChangeMock = jest.fn()
-    const { getByLabelText } = renderWithTheme(
+    renderWithTheme(
       <FieldColor onChange={onChangeMock} label="Background Color" />
     )
-    const input = getByLabelText('Background Color')
+    const input = screen.getByLabelText('Background Color')
     fireEvent.change(input, { target: { value: '#FFFF00' } })
     expect(onChangeMock).toHaveBeenCalledWith({
       currentTarget: { value: '#FFFF00' },
@@ -94,11 +94,11 @@ describe('FieldColor', () => {
     })
   })
 
-  test('with a defaultValue', () => {
-    const { getByLabelText } = renderWithTheme(
+  test('with a defau1tValue', () => {
+    renderWithTheme(
       <FieldColor defaultValue="purple" label="Background Color" />
     )
-    const input = getByLabelText('Background Color')
+    const input = screen.getByLabelText('Background Color')
     expect(input).toHaveValue('purple')
   })
 
@@ -122,10 +122,10 @@ describe('FieldColor', () => {
         </>
       )
     }
-    const { getByText, getByPlaceholderText } = renderWithTheme(<Wrapper />)
+    renderWithTheme(<Wrapper />)
 
-    const button = getByText('Turn yellow')
-    const input = getByPlaceholderText('Select a color')
+    const button = screen.getByText('Turn yellow')
+    const input = screen.getByPlaceholderText('Select a color')
     expect(input).toHaveValue('')
     fireEvent.click(button)
     expect(input).toHaveValue('yellow')

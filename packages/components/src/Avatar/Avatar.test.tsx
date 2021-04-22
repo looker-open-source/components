@@ -97,9 +97,8 @@ describe('Avatar', () => {
         first_name: 'John',
         last_name: 'Smith',
       }
-      const { container } = renderWithTheme(<AvatarUser user={data} />)
-      // eslint-disable-next-line testing-library/no-container
-      const image = container.querySelector('object')
+      renderWithTheme(<AvatarUser user={data} />)
+      const image = screen.queryByTestId('avatar-photo')
       expect(image).toBeInTheDocument()
       expect(screen.getByLabelText('John Smith')).toBeInTheDocument()
     })
@@ -111,9 +110,8 @@ describe('Avatar', () => {
         last_name: 'Smith',
       }
 
-      const { container } = renderWithTheme(<AvatarUser user={data} />)
-      // eslint-disable-next-line testing-library/no-container
-      const image = container.querySelector('object')
+      renderWithTheme(<AvatarUser user={data} />)
+      const image = screen.queryByTestId('avatar-photo')
       expect(image).not.toBeInTheDocument()
     })
   })
