@@ -86,6 +86,7 @@ describe('FieldText', () => {
     const id = input.getAttribute('aria-describedby')
     expect(id).toBeDefined()
 
+    // eslint-disable-next-line testing-library/no-container
     const describedBy = container.querySelector(`#${id}`)
     expect(describedBy).toHaveTextContent(description)
   })
@@ -105,6 +106,7 @@ describe('FieldText', () => {
     const id = input.getAttribute('aria-describedby')
     expect(id).toBeDefined()
 
+    // eslint-disable-next-line testing-library/no-container
     const describedBy = container.querySelector(`#${id}`)
     expect(describedBy).toHaveTextContent(errorMessage)
   })

@@ -844,6 +844,7 @@ describe('DataTable', () => {
       </DataTable>
     )
 
+    // eslint-disable-next-line testing-library/no-container
     const secondColumn = container.querySelector('tbody tr td:nth-child(2)')
     expect(secondColumn).not.toHaveStyleRule('position: sticky')
   })

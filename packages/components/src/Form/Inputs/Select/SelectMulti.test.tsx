@@ -315,7 +315,7 @@ describe('closeOnSelect', () => {
       expect(onChangeMock).toHaveBeenCalledWith(['baz'])
       expect(input).toHaveValue('')
 
-      expect(screen.queryByRole('listbox')).toBe(null)
+      expect(screen.queryByRole('listbox')).not.toBeInTheDocument()
     })
 
     test('copy/paste', () => {

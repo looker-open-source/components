@@ -129,6 +129,7 @@ describe('IconButton', () => {
     fireEvent.mouseOver(screen.getAllByText(label)[0])
     runTimers()
 
+    // eslint-disable-next-line testing-library/no-container
     const notTooltip = container.querySelector('p') // Get Tooltip content
     expect(notTooltip).toBeNull()
   })

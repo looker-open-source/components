@@ -53,8 +53,8 @@ test('FieldCheckboxGroup render a list of checkbox', () => {
     return getByTestId('checkbox-list')
   }
 
-  const domList = renderListContent()
-  expect(extractCheckboxFromDomList(domList)).toEqual([
+  const view = renderListContent()
+  expect(extractCheckboxFromDomList(view)).toEqual([
     'Cheddar',
     'Gouda',
     'Swiss',

@@ -98,6 +98,7 @@ describe('Avatar', () => {
         last_name: 'Smith',
       }
       const { container } = renderWithTheme(<AvatarUser user={data} />)
+      // eslint-disable-next-line testing-library/no-container
       const image = container.querySelector('object')
       expect(image).toBeInTheDocument()
       expect(screen.getByLabelText('John Smith')).toBeInTheDocument()
@@ -111,6 +112,7 @@ describe('Avatar', () => {
       }
 
       const { container } = renderWithTheme(<AvatarUser user={data} />)
+      // eslint-disable-next-line testing-library/no-container
       const image = container.querySelector('object')
       expect(image).not.toBeInTheDocument()
     })

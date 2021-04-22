@@ -51,8 +51,8 @@ test('FieldRadioGroup render a radio list', () => {
     return getByTestId('radio-list')
   }
 
-  const domList = renderListContent()
-  expect(extractCheckboxFromDomList(domList)).toEqual([
+  const view = renderListContent()
+  expect(extractCheckboxFromDomList(view)).toEqual([
     'Cheddar',
     'Gouda',
     'Swiss',
