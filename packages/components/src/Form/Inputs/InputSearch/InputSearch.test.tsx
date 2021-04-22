@@ -151,7 +151,7 @@ describe('InputSearch', () => {
       // Close popover to silence act() warning
       fireEvent.click(document)
       // Value is cleared on list close by default
-      expect(input).toHaveDisplayValue('')
+      expect(input).toHaveDisplayValue(['F'])
     })
 
     test('calls onSelectOption', () => {
