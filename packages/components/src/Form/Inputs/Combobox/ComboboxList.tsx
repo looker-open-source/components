@@ -255,6 +255,7 @@ const ComboboxListInternal = forwardRef(
             if (isScrollingRef) isScrollingRef.current = false
           }, wait + 1)
         }
+        // eslint-disable-next-line testing-library/await-async-utils
       }, wait)
 
       if (contentContainer) {
