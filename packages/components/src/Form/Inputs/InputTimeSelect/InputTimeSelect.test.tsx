@@ -75,48 +75,48 @@ const renderListContent = (props: InputTimeSelectProps) => {
 
 describe('prop: format', () => {
   test('formats options in 12 hour time', () => {
-    const domList = renderListContent({ format: '12h' })
-    expect(extractTextFromDomList(domList)).toMatchSnapshot()
+    const view = renderListContent({ format: '12h' })
+    expect(extractTextFromDomList(view)).toMatchSnapshot()
     fireEvent.click(document)
   })
 
   test('formats options in 24 hour time', () => {
-    const domList = renderListContent({ format: '24h' })
-    expect(extractTextFromDomList(domList)).toMatchSnapshot()
+    const view = renderListContent({ format: '24h' })
+    expect(extractTextFromDomList(view)).toMatchSnapshot()
     fireEvent.click(document)
   })
 })
 
 describe('prop: interval', () => {
   test('renders 5-minute intervals', () => {
-    const domList = renderListContent({ interval: 5 })
-    expect(extractTextFromDomList(domList)).toMatchSnapshot()
+    const view = renderListContent({ interval: 5 })
+    expect(extractTextFromDomList(view)).toMatchSnapshot()
     fireEvent.click(document)
   })
 
   test('renders 10-minute intervals', () => {
-    const domList = renderListContent({ interval: 10 })
-    expect(extractTextFromDomList(domList)).toMatchSnapshot()
+    const view = renderListContent({ interval: 10 })
+    expect(extractTextFromDomList(view)).toMatchSnapshot()
     fireEvent.click(document)
   })
   test('renders 15-minute intervals', () => {
-    const domList = renderListContent({ interval: 15 })
-    expect(extractTextFromDomList(domList)).toMatchSnapshot()
+    const view = renderListContent({ interval: 15 })
+    expect(extractTextFromDomList(view)).toMatchSnapshot()
     fireEvent.click(document)
   })
   test('renders 20-minute intervals', () => {
-    const domList = renderListContent({ interval: 20 })
-    expect(extractTextFromDomList(domList)).toMatchSnapshot()
+    const view = renderListContent({ interval: 20 })
+    expect(extractTextFromDomList(view)).toMatchSnapshot()
     fireEvent.click(document)
   })
   test('renders 30-minute intervals', () => {
-    const domList = renderListContent({ interval: 30 })
-    expect(extractTextFromDomList(domList)).toMatchSnapshot()
+    const view = renderListContent({ interval: 30 })
+    expect(extractTextFromDomList(view)).toMatchSnapshot()
     fireEvent.click(document)
   })
   test('renders 60-minute intervals', () => {
-    const domList = renderListContent({ interval: 60 })
-    expect(extractTextFromDomList(domList)).toMatchSnapshot()
+    const view = renderListContent({ interval: 60 })
+    expect(extractTextFromDomList(view)).toMatchSnapshot()
     fireEvent.click(document)
   })
 })
@@ -150,8 +150,8 @@ describe('text input', () => {
 describe('keyboard nav ux', () => {
   test('highlights closest time to now when an unselected list is opened', () => {
     // NOTE: Date.now() mocked to 1580517818172 (Feb 01 2020 6:33 am)
-    const domList = renderListContent({})
-    const selected = domList.querySelector('[aria-selected="true"]')
+    const view = renderListContent({})
+    const selected = view.querySelector('[aria-selected="true"]')
     expect((selected as HTMLElement).textContent).toMatchInlineSnapshot(
       `"06:30 am"`
     )
@@ -159,11 +159,11 @@ describe('keyboard nav ux', () => {
   })
 
   test('highlights selected value when list is opened', () => {
-    const domList = renderListContent({
+    const view = renderListContent({
       onChange: jest.fn(),
       value: '14:15',
     })
-    const selected = domList.querySelector('[aria-selected="true"]')
+    const selected = view.querySelector('[aria-selected="true"]')
     expect((selected as HTMLElement).textContent).toMatchInlineSnapshot(
       `"02:15 pm"`
     )
@@ -171,8 +171,8 @@ describe('keyboard nav ux', () => {
   })
 
   test('highlights closest time to selected value when list is opened but value does not match provided options', () => {
-    const domList = renderListContent({ onChange: jest.fn(), value: '16:38' })
-    const selected = domList.querySelector('[aria-selected="true"]')
+    const view = renderListContent({ onChange: jest.fn(), value: '16:38' })
+    const selected = view.querySelector('[aria-selected="true"]')
     expect((selected as HTMLElement).textContent).toMatchInlineSnapshot(
       `"04:45 pm"`
     )

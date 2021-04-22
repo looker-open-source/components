@@ -38,7 +38,7 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:testing-library/react',
     'plugin:@typescript-eslint/recommended',
-    'prettier/@typescript-eslint',
+    'prettier',
   ],
   ignorePatterns: ['lib/', '*.d.ts', 'generated/', 'node_modules/'],
   overrides: [
@@ -106,6 +106,9 @@ module.exports = {
     'react/prop-types': 'off',
     'sort-keys': 'off',
     'sort-keys-fix/sort-keys-fix': 'error',
+    // Work to enable these soon-ish
+    'testing-library/no-node-access': 'off',
+    'testing-library/prefer-screen-queries': 'off',
   },
 
   settings: {

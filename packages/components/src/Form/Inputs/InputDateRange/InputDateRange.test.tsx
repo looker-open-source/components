@@ -423,6 +423,7 @@ test('localizes calendar', () => {
 
   expect(getByText('Febbraio 2020')).toBeInTheDocument()
   expect(
+    // eslint-disable-next-line testing-library/no-container
     (container.querySelector('.DayPicker-WeekdaysRow') as HTMLElement)
       .textContent
   ).toMatchInlineSnapshot(`"LuMaMeGiVeSaDo"`)

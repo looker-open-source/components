@@ -69,8 +69,8 @@ test('RadioGroup render a list of radio', () => {
     return getByTestId('radio-list')
   }
 
-  const domList = renderListContent()
-  expect(extractRadioFromDomList(domList)).toEqual([
+  const view = renderListContent()
+  expect(extractRadioFromDomList(view)).toEqual([
     'Cheddar',
     'Gouda',
     'Swiss',
