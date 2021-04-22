@@ -97,6 +97,34 @@ Use the `disabled` prop to present your `Tree` in a disabled state. Note that us
 </>
 ```
 
+## Changing Background Behavior
+
+By default, `Tree`s and `TreeItem`s background color from being hovered (or other state changes like the `selected` and `current` props) will start left of their indent padding.
+
+Use `Tree`'s `labelBackgroundOnly` prop to remove the indent padding from being included in the backgrounds of both `Tree` and `TreeItem`.
+
+Because of the layout changes from `labelBackgroundOnly`, a separate callback must be assigned to the indent spacing of child `TreeItem`s. Use `TreeItem`'s `onClickWhitespace` prop to assign a callback to the indent padding of a given item.
+
+**Note:** When `labelBackgroundOnly` is true, `TreeItem`s should use `itemRole="none"`.
+
+```jsx
+<Tree label="Cheeses" labelBackgroundOnly defaultOpen>
+  <TreeItem itemRole="none" onClickWhitespace={() => alert('Gouda time.')}>
+    Gouda
+  </TreeItem>
+  <TreeItem
+    itemRole="none"
+    onClickWhitespace={() => alert('Swiss time.')}
+    selected
+  >
+    Swiss
+  </TreeItem>
+  <TreeItem itemRole="none" onClickWhitespace={() => alert('Cheddar time.')}>
+    Cheddar
+  </TreeItem>
+</Tree>
+```
+
 ## Truncating Tree Items & Labels
 
 Occasionally tree item labels will wrap to a second line when the text content is very long, or the available space is very narrow. The text content will wrap by default, but if that is undesirable you can use the `truncate` prop to limit text content to a single line.
@@ -195,6 +223,18 @@ The `toggleOpen` prop should receive a function that has one parameter: a boolea
     </Tree>
   )
 }
+```
+
+## Aligning Trees with icons and TreeItems without icons
+
+Use the `forceLabelPadding` prop to align the labels of parent `Tree`s with optional icons and child `TreeItem`s without optional icons.
+
+```jsx
+<Tree label="Cheeses" icon={<Pivot />} defaultOpen forceLabelPadding>
+  <TreeItem>Gouda</TreeItem>
+  <TreeItem>Swiss</TreeItem>
+  <TreeItem>Cheddar</TreeItem>
+</Tree>
 ```
 
 ## TreeItem
