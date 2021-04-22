@@ -33,10 +33,10 @@ import React, {
   useMemo,
 } from 'react'
 import styled from 'styled-components'
-import { height, HeightProps } from 'styled-system'
+import { fontFamily, height, HeightProps } from 'styled-system'
 import {
   CompatibleHTMLProps,
-  reset,
+  FontFamilies,
   shouldForwardProp,
   width,
   WidthProps,
@@ -58,15 +58,21 @@ export interface ListProps
   density?: DensityRamp
 
   /**
-   * Replace the normal uiN(1-5) color for selected and selected + hovered color with key colors
-   */
-  keyColor?: boolean
-
-  /**
    * If true, all ListItem children without an icon will reserve space for an icon
    * for alignment purposes.
    */
   iconGutter?: boolean
+
+  /**
+   * Specify font-family. Generally will end up inheriting `theme.fonts.body` but can be specified as `brand`, `code` or `body` to explicitly specify theme-controlled font-family
+   * @default inherit
+   */
+  fontFamily?: FontFamilies
+
+  /**
+   * Replace the normal uiN(1-5) color for selected and selected + hovered color with key colors
+   */
+  keyColor?: boolean
 
   /**
    * Use windowing for long lists (strongly recommended to also define a width on List or its container)
@@ -159,15 +165,19 @@ export const ListInternal = forwardRef(
   }
 )
 
-const ListStyle = styled.ul.withConfig({ shouldForwardProp })<
-  HeightProps & WidthProps
->`
-  ${reset}
+const ListStyle = styled.ul
+  .withConfig({ shouldForwardProp })
+  .attrs<ListProps>(({ fontFamily = 'inherit' }) => ({
+    fontFamily,
+  }))<ListProps>`
+  ${fontFamily}
   ${height}
   ${width}
 
   list-style: none;
+  margin: 0;
   overflow: auto;
+  padding: 0;
 `
 
 export const List = styled(ListInternal)``

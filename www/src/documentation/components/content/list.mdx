@@ -24,6 +24,25 @@ import { ListItemPropTable } from './demos'
 </List>
 ```
 
+Use the `fontFamily` prop to change the font on all text elements in the `List`.
+
+```jsx
+<List fontFamily="code">
+  <ListItem icon={<DateRange />} description="Orange-y" detail="England">
+    Cheddar
+  </ListItem>
+  <ListItem icon={<Pivot />} detail="Netherlands">
+    Gouda
+  </ListItem>
+  <ListItem icon={<AnalyticsApp />} detail="Italy">
+    Mozzarella
+  </ListItem>
+  <ListItem icon={<LogoRings />} detail="Switzerland">
+    Swiss
+  </ListItem>
+</List>
+```
+
 Use the `density` prop to set the size and spacing of your `List`. As `density` decreases, so does the height and spacing of your `List`'s child `ListItem`s.
 
 `density` values range from -3 to 1.
