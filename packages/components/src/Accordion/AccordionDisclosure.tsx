@@ -40,7 +40,7 @@ import { useWrapEvent } from '../utils'
 import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout/utils/simple'
 import { AccordionDisclosureLayout } from './AccordionDisclosureLayout'
 import { AccordionControlProps, AccordionIndicatorProps } from './types'
-import { accordionContextDefaults } from './AccordionContext'
+import { accordionDefaults } from './accordionDefaults'
 
 export interface AccordionDisclosureProps
   extends TypographyProps,
@@ -137,15 +137,11 @@ const AccordionDisclosureInternal: FC<AccordionDisclosureProps> = forwardRef(
       >
         <AccordionDisclosureLayout
           indicatorPosition={
-            indicatorPosition || accordionContextDefaults.indicatorPosition
+            indicatorPosition || accordionDefaults.indicatorPosition
           }
-          indicatorSize={
-            indicatorSize || accordionContextDefaults.indicatorSize
-          }
-          indicatorGap={indicatorGap || accordionContextDefaults.indicatorGap}
-          indicatorIcons={
-            indicatorIcons || accordionContextDefaults.indicatorIcons
-          }
+          indicatorSize={indicatorSize || accordionDefaults.indicatorSize}
+          indicatorGap={indicatorGap || accordionDefaults.indicatorGap}
+          indicatorIcons={indicatorIcons || accordionDefaults.indicatorIcons}
           isOpen={isOpen}
         >
           {children}

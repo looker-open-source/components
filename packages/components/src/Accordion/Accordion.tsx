@@ -43,7 +43,7 @@ import {
 } from '@looker/design-tokens'
 import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout/utils/simple'
 import { useID } from '../utils'
-import { accordionContextDefaults } from './AccordionContext'
+import { accordionDefaults, accordionLeftDefaults } from './accordionDefaults'
 import { AccordionContent } from './AccordionContent'
 import { AccordionDisclosure } from './AccordionDisclosure'
 import { AccordionControlProps, AccordionIndicatorProps } from './types'
@@ -98,10 +98,12 @@ const AccordionLayout: FC<AccordionProps> = ({
   className,
   content,
   id,
-  indicatorGap: propsIndicatorGap,
-  indicatorSize: propsIndicatorSize,
-  indicatorIcons: propsIndicatorIcons,
-  indicatorPosition: propsIndicatorPosition,
+  indicatorGap = accordionDefaults.indicatorGap,
+  indicatorSize = accordionDefaults.indicatorSize,
+  indicatorPosition = accordionDefaults.indicatorPosition,
+  indicatorIcons = indicatorPosition === 'left'
+    ? accordionLeftDefaults.indicatorIcons
+    : accordionDefaults.indicatorIcons,
   defaultOpen,
   isOpen: propsIsOpen,
   onClose: propsOnClose,
@@ -128,14 +130,6 @@ const AccordionLayout: FC<AccordionProps> = ({
   const accordionContentId = `${accordionId}-content`
   const accordionDisclosureId = `${accordionId}-disclosure`
 
-  const indicatorGap =
-    propsIndicatorGap || accordionContextDefaults.indicatorGap
-  const indicatorIcons =
-    propsIndicatorIcons || accordionContextDefaults.indicatorIcons
-  const indicatorPosition =
-    propsIndicatorPosition || accordionContextDefaults.indicatorPosition
-  const indicatorSize =
-    propsIndicatorSize || accordionContextDefaults.indicatorSize
   const isOpen = propsIsOpen === undefined ? uncontrolled.isOpen : propsIsOpen
   const onClose = propsOnClose
   const onOpen = propsOnOpen
@@ -231,9 +225,9 @@ export const Accordion = styled(AccordionLayout)
   })
   .attrs<AccordionProps>(
     ({
-      indicatorGap = accordionContextDefaults.indicatorGap,
-      indicatorPosition = accordionContextDefaults.indicatorPosition,
-      indicatorSize = accordionContextDefaults.indicatorSize,
+      indicatorGap = accordionDefaults.indicatorGap,
+      indicatorPosition = accordionDefaults.indicatorPosition,
+      indicatorSize = accordionDefaults.indicatorSize,
       width = '100%',
     }) => ({
       indicatorGap,

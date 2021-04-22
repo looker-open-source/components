@@ -31,8 +31,6 @@ import {
   SpacingSizes,
   omitStyledProps,
 } from '@looker/design-tokens'
-import { ArrowDropDown } from '@styled-icons/material/ArrowDropDown'
-import { ArrowRight } from '@styled-icons/material/ArrowRight'
 import { Space, SpaceVertical } from '../../Layout'
 import { SimpleLayoutProps, simpleLayoutCSS } from '../../Layout/utils/simple'
 import { Legend } from '../Legend'
@@ -84,13 +82,7 @@ export interface FieldsetProps
 }
 
 const accordionIndicatorDefaults: AccordionIndicatorProps = {
-  indicatorGap: 'xsmall',
-  indicatorIcons: {
-    close: <ArrowRight />,
-    open: <ArrowDropDown />,
-  },
   indicatorPosition: 'left',
-  indicatorSize: 'medium',
 }
 
 export interface FieldsetContextProps {
