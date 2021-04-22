@@ -98,14 +98,14 @@ describe('InputText', () => {
     )
   })
   test('autoResize', () => {
-    const { container, getByPlaceholderText, getByText } = renderWithTheme(
+    const { container } = renderWithTheme(
       <InputText autoResize placeholder="resize me" />
     )
     expect(container.firstChild).toHaveStyleRule('width: auto')
-    expect(getByPlaceholderText('resize me')).toHaveStyleRule(
+    expect(screen.getByPlaceholderText('resize me')).toHaveStyleRule(
       'position: absolute'
     )
-    expect(getByText('resize me')).toBeVisible()
+    expect(screen.getByText('resize me')).toBeVisible()
   })
 
   test('with an error validation', () => {
@@ -115,37 +115,33 @@ describe('InputText', () => {
 
   describe('before & after', () => {
     test('ReactNode', () => {
-      const { getByText } = renderWithTheme(
-        <InputText before="before" after="after" />
-      )
+      renderWithTheme(<InputText before="before" after="after" />)
 
-      expect(getByText('before')).toBeVisible()
-      expect(getByText('after')).toBeVisible()
+      expect(screen.getByText('before')).toBeVisible()
+      expect(screen.getByText('after')).toBeVisible()
     })
 
     test('Simple string', () => {
-      const { getByText } = renderWithTheme(
-        <InputText before="before" after="after" />
-      )
+      renderWithTheme(<InputText before="before" after="after" />)
 
-      expect(getByText('before')).toBeVisible()
-      expect(getByText('after')).toBeVisible()
+      expect(screen.getByText('before')).toBeVisible()
+      expect(screen.getByText('after')).toBeVisible()
     })
 
     test('icons', () => {
-      const { getByTitle } = renderWithTheme(
+      renderWithTheme(
         <InputText
           iconBefore={<Favorite title="Before Title" />}
           iconAfter={<AccountCircle title="After Title" />}
         />
       )
 
-      expect(getByTitle('Before Title')).toBeInTheDocument()
-      expect(getByTitle('After Title')).toBeInTheDocument()
+      expect(screen.getByTitle('Before Title')).toBeInTheDocument()
+      expect(screen.getByTitle('After Title')).toBeInTheDocument()
     })
 
     test('redundant ones should not render', () => {
-      const { queryByPlaceholderText } = renderWithTheme(
+      renderWithTheme(
         <>
           <InputText placeholder="Hello" iconBefore={<Favorite />} before="$" />
           <InputText
@@ -156,8 +152,8 @@ describe('InputText', () => {
         </>
       )
 
-      expect(queryByPlaceholderText('Hello')).not.toBeInTheDocument()
-      expect(queryByPlaceholderText('Goodbye')).not.toBeInTheDocument()
+      expect(screen.queryByPlaceholderText('Hello')).not.toBeInTheDocument()
+      expect(screen.queryByPlaceholderText('Goodbye')).not.toBeInTheDocument()
       expect(warnMock.mock.calls).toMatchInlineSnapshot(`
         Array [
           Array [

@@ -57,36 +57,38 @@ const menu = (
 
 describe('<Menu />', () => {
   test('Menu Opens and Closes', () => {
-    const { getByText, queryByText } = renderWithTheme(menu)
+    renderWithTheme(menu)
 
-    const button = getByText('Cheese')
+    const button = screen.getByText('Cheese')
 
-    expect(queryByText('Swiss')).not.toBeInTheDocument()
+    expect(screen.queryByText('Swiss')).not.toBeInTheDocument()
 
     fireEvent.click(button)
 
-    expect(queryByText('Swiss')).toBeInTheDocument()
+    expect(screen.queryByText('Swiss')).toBeInTheDocument()
 
     fireEvent.click(document)
 
-    expect(queryByText('Swiss')).not.toBeInTheDocument()
+    expect(screen.queryByText('Swiss')).not.toBeInTheDocument()
   })
 
   test('Menu Button has the tooltip', async () => {
-    const { getByText, queryByText } = renderWithTheme(menu)
+    renderWithTheme(menu)
 
-    const button = getByText('Cheese')
+    const button = screen.getByText('Cheese')
 
-    expect(queryByText('Select your favorite kind')).not.toBeInTheDocument()
+    expect(
+      screen.queryByText('Select your favorite kind')
+    ).not.toBeInTheDocument()
 
     fireEvent.mouseOver(button)
 
-    expect(queryByText('Select your favorite kind')).toBeInTheDocument()
+    expect(screen.queryByText('Select your favorite kind')).toBeInTheDocument()
 
     fireEvent.mouseOut(button)
 
     await waitForElementToBeRemoved(() =>
-      queryByText('Select your favorite kind')
+      screen.queryByText('Select your favorite kind')
     )
   })
 
@@ -110,13 +112,13 @@ describe('<Menu />', () => {
         </Menu>
       )
     }
-    const { getByText } = renderWithTheme(<Closable />)
+    renderWithTheme(<Closable />)
 
-    const button = getByText('Cheese')
+    const button = screen.getByText('Cheese')
     fireEvent.click(button)
 
-    const defaultPreventedItem = getByText('Gouda')
-    const item = getByText('Swiss')
+    const defaultPreventedItem = screen.getByText('Gouda')
+    const item = screen.getByText('Swiss')
 
     fireEvent.click(defaultPreventedItem)
 
@@ -133,7 +135,7 @@ describe('<Menu />', () => {
 
   test('Disabled Menu does not open when clicked', () => {
     // Using div here to more clearly test disabled prop on Menu
-    const { getByText, queryByText } = renderWithTheme(
+    renderWithTheme(
       <Menu
         disabled={true}
         content={
@@ -147,19 +149,19 @@ describe('<Menu />', () => {
       </Menu>
     )
 
-    const trigger = getByText('Cheese')
+    const trigger = screen.getByText('Cheese')
 
-    expect(queryByText('Swiss')).not.toBeInTheDocument()
+    expect(screen.queryByText('Swiss')).not.toBeInTheDocument()
 
     fireEvent.click(trigger)
 
-    expect(queryByText('Swiss')).not.toBeInTheDocument()
+    expect(screen.queryByText('Swiss')).not.toBeInTheDocument()
 
     fireEvent.click(document)
   })
 
   test('Starting with Menu open', () => {
-    const { getByText } = renderWithTheme(
+    renderWithTheme(
       <Menu
         isOpen={true}
         content={
@@ -173,7 +175,7 @@ describe('<Menu />', () => {
       </Menu>
     )
 
-    expect(getByText('Swiss')).toBeInTheDocument()
+    expect(screen.getByText('Swiss')).toBeInTheDocument()
 
     fireEvent.click(document)
   })
@@ -198,10 +200,10 @@ describe('<Menu />', () => {
         </div>
       )
     }
-    const { getByText, queryByText } = renderWithTheme(<Component />)
+    renderWithTheme(<Component />)
 
-    const trigger = queryByText('Cheese')
-    const div = getByText('Some text in the div')
+    const trigger = screen.queryByText('Cheese')
+    const div = screen.getByText('Some text in the div')
 
     expect(trigger).not.toBeInTheDocument()
 
@@ -212,10 +214,10 @@ describe('<Menu />', () => {
         cancelable: true,
       })
     )
-    const triggerNew = getByText('Cheese')
-    expect(queryByText('Gouda')).not.toBeInTheDocument()
+    const triggerNew = screen.getByText('Cheese')
+    expect(screen.queryByText('Gouda')).not.toBeInTheDocument()
     fireEvent.click(triggerNew) // open Menu
-    expect(queryByText('Gouda')).toBeInTheDocument()
+    expect(screen.queryByText('Gouda')).toBeInTheDocument()
 
     fireEvent.click(document)
   })

@@ -25,6 +25,7 @@
  */
 import 'jest-styled-components'
 import React from 'react'
+import { screen } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import map from 'lodash/map'
 import { fieldOptions } from '../../../__mocks__/CheckboxRadio'
@@ -45,10 +46,8 @@ test('FieldRadioGroup render a radio list', () => {
   }
 
   const renderListContent = () => {
-    const { getByTestId } = renderWithTheme(
-      <FieldRadioGroup {...fieldRadioProps} required />
-    )
-    return getByTestId('radio-list')
+    renderWithTheme(<FieldRadioGroup {...fieldRadioProps} required />)
+    return screen.getByTestId('radio-list')
   }
 
   const view = renderListContent()

@@ -82,13 +82,11 @@ describe('Slider', () => {
 
   test('Slider passes change event to optional onChange handler', () => {
     const handleChange = jest.fn()
-    const { getByTestId } = renderWithTheme(
-      <Slider min={0} max={10} onChange={handleChange} />
-    )
+    renderWithTheme(<Slider min={0} max={10} onChange={handleChange} />)
 
     expect(handleChange).toHaveBeenCalledTimes(0)
 
-    fireEvent.change(getByTestId('slider-input'), {
+    fireEvent.change(screen.getByTestId('slider-input'), {
       target: { value: 10 },
     })
 

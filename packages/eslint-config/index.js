@@ -108,7 +108,6 @@ module.exports = {
     'sort-keys-fix/sort-keys-fix': 'error',
     // Work to enable these soon-ish
     'testing-library/no-node-access': 'off',
-    'testing-library/prefer-screen-queries': 'off',
   },
 
   settings: {

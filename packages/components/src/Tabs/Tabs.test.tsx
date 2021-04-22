@@ -90,13 +90,13 @@ const ChangingPanel = () => {
 }
 
 test('clicking on tab opens correct panel', () => {
-  const { getByText, queryByText } = renderWithTheme(<ChangingPanel />)
+  renderWithTheme(<ChangingPanel />)
 
-  expect(queryByText('this is tab1 content')).toBeInTheDocument()
-  expect(queryByText('this is tab2 content')).not.toBeInTheDocument()
-  fireEvent.click(getByText('tab2'))
-  expect(queryByText('this is tab1 content')).not.toBeInTheDocument()
-  expect(queryByText('this is tab2 content')).toBeInTheDocument()
+  expect(screen.queryByText('this is tab1 content')).toBeInTheDocument()
+  expect(screen.queryByText('this is tab2 content')).not.toBeInTheDocument()
+  fireEvent.click(screen.getByText('tab2'))
+  expect(screen.queryByText('this is tab1 content')).not.toBeInTheDocument()
+  expect(screen.queryByText('this is tab2 content')).toBeInTheDocument()
 })
 
 const DisableTab = () => {
@@ -117,13 +117,17 @@ const DisableTab = () => {
 }
 
 test('clicking on disable tab does not change panel', () => {
-  const { getByText, queryByText } = renderWithTheme(<DisableTab />)
+  renderWithTheme(<DisableTab />)
 
-  expect(queryByText('this is tab1 content')).toBeInTheDocument()
-  expect(queryByText('this is the disable tab-panel')).not.toBeInTheDocument()
-  fireEvent.click(getByText('tab3'))
-  expect(queryByText('this is tab1 content')).toBeInTheDocument()
-  expect(queryByText('this is the disable tab-panel')).not.toBeInTheDocument()
+  expect(screen.queryByText('this is tab1 content')).toBeInTheDocument()
+  expect(
+    screen.queryByText('this is the disable tab-panel')
+  ).not.toBeInTheDocument()
+  fireEvent.click(screen.getByText('tab3'))
+  expect(screen.queryByText('this is tab1 content')).toBeInTheDocument()
+  expect(
+    screen.queryByText('this is the disable tab-panel')
+  ).not.toBeInTheDocument()
 })
 
 const TabHooks = () => {
@@ -143,17 +147,21 @@ const TabHooks = () => {
 }
 
 test('hooks working', () => {
-  const { getByText, queryByText } = renderWithTheme(<TabHooks />)
+  renderWithTheme(<TabHooks />)
 
-  expect(queryByText('1 this is the panel of tab hook 1')).toBeInTheDocument()
   expect(
-    queryByText('2 this is the panel of tab hook 2')
-  ).not.toBeInTheDocument()
-  fireEvent.click(getByText('Tab Hook 2'))
+    screen.queryByText('1 this is the panel of tab hook 1')
+  ).toBeInTheDocument()
   expect(
-    queryByText('1 this is the panel of tab hook 1')
+    screen.queryByText('2 this is the panel of tab hook 2')
   ).not.toBeInTheDocument()
-  expect(queryByText('2 this is the panel of tab hook 2')).toBeInTheDocument()
+  fireEvent.click(screen.getByText('Tab Hook 2'))
+  expect(
+    screen.queryByText('1 this is the panel of tab hook 1')
+  ).not.toBeInTheDocument()
+  expect(
+    screen.queryByText('2 this is the panel of tab hook 2')
+  ).toBeInTheDocument()
 })
 
 describe('focus behavior', () => {

@@ -25,7 +25,7 @@
  */
 import 'jest-styled-components'
 import React from 'react'
-import { fireEvent } from '@testing-library/react'
+import { fireEvent, screen } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import map from 'lodash/map'
 import { fieldOptions } from '../../../__mocks__/CheckboxRadio'
@@ -47,10 +47,8 @@ test('FieldCheckboxGroup render a list of checkbox', () => {
   }
 
   const renderListContent = () => {
-    const { getByTestId } = renderWithTheme(
-      <FieldCheckboxGroup {...fieldCheckboxProps} />
-    )
-    return getByTestId('checkbox-list')
+    renderWithTheme(<FieldCheckboxGroup {...fieldCheckboxProps} />)
+    return screen.getByTestId('checkbox-list')
   }
 
   const view = renderListContent()
@@ -65,15 +63,15 @@ test('FieldCheckboxGroup render a list of checkbox', () => {
 test('FieldCheckboxGroup checkbox onChange is working as expected', () => {
   const handleChange = jest.fn()
 
-  const { getByLabelText } = renderWithTheme(
+  renderWithTheme(
     <FieldCheckboxGroup
       {...fieldCheckboxProps}
       defaultValue={[]}
       onChange={handleChange}
     />
   )
-  const Cheddar = getByLabelText('Cheddar')
-  const Gouda = getByLabelText('Gouda')
+  const Cheddar = screen.getByLabelText('Cheddar')
+  const Gouda = screen.getByLabelText('Gouda')
 
   fireEvent.click(Cheddar)
 

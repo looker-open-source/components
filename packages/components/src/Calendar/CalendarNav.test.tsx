@@ -25,7 +25,7 @@
  */
 
 import React from 'react'
-import { fireEvent } from '@testing-library/react'
+import { fireEvent, screen } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { NavbarElementProps, LocaleUtils } from 'react-day-picker'
 import { CalendarContext, CalendarContextValue } from './CalendarContext'
@@ -76,7 +76,7 @@ const mockContext: CalendarContextValue = {
 }
 
 test('clicking "previous month" calls context.onNavClick with props.previousMonth', () => {
-  const { getByText } = renderWithTheme(
+  renderWithTheme(
     <CalendarContext.Provider value={mockContext}>
       <CalendarNav {...mockProps} />
     </CalendarContext.Provider>
@@ -84,13 +84,13 @@ test('clicking "previous month" calls context.onNavClick with props.previousMont
 
   expect(mockContext.onPrevClick).toHaveBeenCalledTimes(0)
 
-  const prev = getByText('prev month')
+  const prev = screen.getByText('prev month')
   fireEvent.click(prev)
   expect(mockContext.onPrevClick).toHaveBeenCalledWith(mockProps.previousMonth)
 })
 
 test('clicking "next month" calls context.onNavClick with props.nextMonth', () => {
-  const { getByText } = renderWithTheme(
+  renderWithTheme(
     <CalendarContext.Provider value={mockContext}>
       <CalendarNav {...mockProps} />
     </CalendarContext.Provider>
@@ -98,14 +98,14 @@ test('clicking "next month" calls context.onNavClick with props.nextMonth', () =
 
   expect(mockContext.onNextClick).toHaveBeenCalledTimes(0)
 
-  const next = getByText('next month')
+  const next = screen.getByText('next month')
   fireEvent.click(next)
   expect(mockContext.onNextClick).toHaveBeenCalledWith(mockProps.nextMonth)
 })
 
 test('clicking label text calls context.onNavClick with Date.now()', () => {
   ;(mockProps.localeUtils.formatMonthTitle as any).mockReturnValue('June 2019')
-  const { getByText } = renderWithTheme(
+  renderWithTheme(
     <CalendarContext.Provider value={mockContext}>
       <CalendarNav {...mockProps} />
     </CalendarContext.Provider>
@@ -113,7 +113,7 @@ test('clicking label text calls context.onNavClick with Date.now()', () => {
 
   expect(mockContext.onNowClick).toHaveBeenCalledTimes(0)
 
-  const label = getByText('June 2019')
+  const label = screen.getByText('June 2019')
   fireEvent.click(label)
   expect(mockContext.onNowClick).toHaveBeenCalledWith(new Date(Date.now())) // mocked date.now value
 })

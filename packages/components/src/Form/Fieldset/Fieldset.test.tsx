@@ -27,7 +27,7 @@
 import 'jest-styled-components'
 import React, { useState } from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { screen, fireEvent } from '@testing-library/react'
+import { fireEvent, screen } from '@testing-library/react'
 import { FieldText } from '../Fields/FieldText'
 import { Fieldset } from './Fieldset'
 
@@ -92,44 +92,44 @@ describe('Fieldset', () => {
 
   describe('Accordion mode', () => {
     test('Renders legend and children (on legend click)', () => {
-      const { getByText, queryByText } = renderWithTheme(
+      renderWithTheme(
         <Fieldset legend="Legend" accordion>
           {fieldTexts}
         </Fieldset>
       )
 
-      expect(queryByText('one')).not.toBeInTheDocument()
-      expect(queryByText('two')).not.toBeInTheDocument()
-      expect(queryByText('three')).not.toBeInTheDocument()
-      fireEvent.click(getByText('Legend'))
-      getByText('one')
-      getByText('two')
-      getByText('three')
+      expect(screen.queryByText('one')).not.toBeInTheDocument()
+      expect(screen.queryByText('two')).not.toBeInTheDocument()
+      expect(screen.queryByText('three')).not.toBeInTheDocument()
+      fireEvent.click(screen.getByText('Legend'))
+      screen.getByText('one')
+      screen.getByText('two')
+      screen.getByText('three')
     })
 
     test('Renders children by default when defaultOpen === true', () => {
-      const { getByText } = renderWithTheme(
+      renderWithTheme(
         <Fieldset legend="Legend" accordion defaultOpen>
           {fieldTexts}
         </Fieldset>
       )
 
-      getByText('one')
-      getByText('two')
-      getByText('three')
+      screen.getByText('one')
+      screen.getByText('two')
+      screen.getByText('three')
     })
 
     test('Triggers onClose and onOpen callbacks on legend click', () => {
       const onClose = jest.fn()
       const onOpen = jest.fn()
 
-      const { getByText } = renderWithTheme(
+      renderWithTheme(
         <Fieldset legend="Legend" accordion onClose={onClose} onOpen={onOpen}>
           {fieldTexts}
         </Fieldset>
       )
 
-      const disclosure = getByText('Legend')
+      const disclosure = screen.getByText('Legend')
       fireEvent.click(disclosure)
       expect(onOpen).toHaveBeenCalled()
       fireEvent.click(disclosure)
@@ -151,15 +151,15 @@ describe('Fieldset', () => {
         )
       }
 
-      const { getByText, queryByText } = renderWithTheme(<Wrapper />)
+      renderWithTheme(<Wrapper />)
 
-      expect(queryByText('one')).not.toBeInTheDocument()
-      expect(queryByText('two')).not.toBeInTheDocument()
-      expect(queryByText('three')).not.toBeInTheDocument()
-      fireEvent.click(getByText('Legend'))
-      getByText('one')
-      getByText('two')
-      getByText('three')
+      expect(screen.queryByText('one')).not.toBeInTheDocument()
+      expect(screen.queryByText('two')).not.toBeInTheDocument()
+      expect(screen.queryByText('three')).not.toBeInTheDocument()
+      fireEvent.click(screen.getByText('Legend'))
+      screen.getByText('one')
+      screen.getByText('two')
+      screen.getByText('three')
     })
   })
 })

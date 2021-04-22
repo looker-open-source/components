@@ -34,8 +34,8 @@ import { ListItem } from './ListItem'
 
 describe('ListItem', () => {
   test('renders children', () => {
-    const { getByText } = renderWithTheme(<ListItem>who!</ListItem>)
-    expect(getByText('who!')).toBeVisible()
+    renderWithTheme(<ListItem>who!</ListItem>)
+    expect(screen.getByText('who!')).toBeVisible()
   })
 
   test('renders description', () => {
@@ -45,33 +45,29 @@ describe('ListItem', () => {
   })
 
   test('renders detail', () => {
-    const { getByText } = renderWithTheme(
-      <ListItem detail="Is an excellent question">who!</ListItem>
-    )
-    expect(getByText('Is an excellent question')).toBeVisible()
+    renderWithTheme(<ListItem detail="Is an excellent question">who!</ListItem>)
+    expect(screen.getByText('Is an excellent question')).toBeVisible()
     expect(screen.getByRole('listitem')).not.toHaveAttribute('detail')
   })
 
   test('truncate', () => {
-    const { getByText } = renderWithTheme(
+    renderWithTheme(
       <ListItem truncate>
         Some long text to truncate in my list item label
       </ListItem>
     )
     expect(
-      getByText('Some long text to truncate in my list item label')
+      screen.getByText('Some long text to truncate in my list item label')
     ).toBeVisible()
   })
 
   test('renders icon', () => {
-    const { getByText } = renderWithTheme(
-      <ListItem icon={<Science />}>Icon</ListItem>
-    )
-    expect(getByText('Icon')).toBeVisible()
+    renderWithTheme(<ListItem icon={<Science />}>Icon</ListItem>)
+    expect(screen.getByText('Icon')).toBeVisible()
   })
 
   test('renders artwork', () => {
-    const { getByTitle } = renderWithTheme(
+    renderWithTheme(
       <ListItem
         icon={
           <svg xmlns="http://www.w3.org/2000/svg">
@@ -82,14 +78,14 @@ describe('ListItem', () => {
         Artwork
       </ListItem>
     )
-    expect(getByTitle('SVG Title Here')).toBeInTheDocument()
+    expect(screen.getByTitle('SVG Title Here')).toBeInTheDocument()
   })
 
   // At the moment, JSDom doesn't support the pseudo-selector parameter in getComputedStyle
   xtest('has a key color border on key press', () => {
     configure({ computedStyleSupportsPseudoElements: true })
-    const { getByRole } = renderWithTheme(<ListItem>Item</ListItem>)
-    const item = getByRole('listitem')
+    renderWithTheme(<ListItem>Item</ListItem>)
+    const item = screen.getByRole('listitem')
     fireEvent.keyUp(item, {
       key: 'Enter',
     })
@@ -102,26 +98,26 @@ describe('ListItem', () => {
   test('is not clickable when disabled', () => {
     const callbackFn = jest.fn()
 
-    const { getByText } = renderWithTheme(
+    renderWithTheme(
       <ListItem itemRole="button" disabled onClick={callbackFn}>
         Item
       </ListItem>
     )
 
-    const item = getByText('Item')
+    const item = screen.getByText('Item')
     fireEvent.click(item)
 
     expect(callbackFn).toHaveBeenCalledTimes(0)
   })
 
   test('has rel="noopener noreferrer" when it has target="_blank" and no passed-in rel prop value', () => {
-    const { getByRole } = renderWithTheme(
+    renderWithTheme(
       <ListItem itemRole="link" href="https://google.com" target="_blank">
         Link
       </ListItem>
     )
 
-    const item = getByRole('listitem')
+    const item = screen.getByRole('listitem')
 
     expect(item.nodeName).toBe('A')
     expect(item).toHaveAttribute('target', '_blank')
@@ -130,7 +126,7 @@ describe('ListItem', () => {
   })
 
   test('auto appends "noopener noreferrer" to rel prop value when itemRole="link", target="_blank" and rel is not undefined', () => {
-    const { getByRole } = renderWithTheme(
+    renderWithTheme(
       <ListItem
         itemRole="link"
         href="https://google.com"
@@ -141,7 +137,7 @@ describe('ListItem', () => {
       </ListItem>
     )
 
-    const item = getByRole('listitem')
+    const item = screen.getByRole('listitem')
 
     expect(item.nodeName).toBe('A')
     expect(item).toHaveAttribute('target', '_blank')
@@ -150,13 +146,13 @@ describe('ListItem', () => {
   })
 
   test('does not auto append "noopener noreferrer" to link without target="_blank"', () => {
-    const { getByRole } = renderWithTheme(
+    renderWithTheme(
       <ListItem itemRole="link" rel="nogouda" href="https://google.com">
         Link
       </ListItem>
     )
 
-    const item = getByRole('listitem')
+    const item = screen.getByRole('listitem')
 
     expect(item.nodeName).toBe('A')
     expect(item).toHaveAttribute('href', 'https://google.com')
@@ -164,15 +160,13 @@ describe('ListItem', () => {
   })
 
   test('renders label container as <div> when itemRole="none"', () => {
-    const { getByRole } = renderWithTheme(
-      <ListItem itemRole="none">No Role</ListItem>
-    )
-    expect(getByRole('listitem').nodeName).toBe('DIV')
+    renderWithTheme(<ListItem itemRole="none">No Role</ListItem>)
+    expect(screen.getByRole('listitem').nodeName).toBe('DIV')
   })
 
   test('does not trigger onClick on detail click when accessory === true', () => {
     const onClick = jest.fn()
-    const { getByText } = renderWithTheme(
+    renderWithTheme(
       <ListItem
         detail={{ content: 'Detail', options: { accessory: true } }}
         onClick={onClick}
@@ -180,15 +174,15 @@ describe('ListItem', () => {
         Dimension
       </ListItem>
     )
-    fireEvent.click(getByText('Dimension'))
+    fireEvent.click(screen.getByText('Dimension'))
     expect(onClick).toHaveBeenCalledTimes(1)
-    fireEvent.click(getByText('Detail'))
+    fireEvent.click(screen.getByText('Detail'))
     expect(onClick).toHaveBeenCalledTimes(1)
   })
 
   test('triggers onClick on detail click when accessory === false', () => {
     const onClick = jest.fn()
-    const { getByText } = renderWithTheme(
+    renderWithTheme(
       <ListItem
         detail={{ content: 'Detail', options: { accessory: false } }}
         onClick={onClick}
@@ -196,14 +190,14 @@ describe('ListItem', () => {
         Dimension
       </ListItem>
     )
-    fireEvent.click(getByText('Dimension'))
+    fireEvent.click(screen.getByText('Dimension'))
     expect(onClick).toHaveBeenCalledTimes(1)
-    fireEvent.click(getByText('Detail'))
+    fireEvent.click(screen.getByText('Detail'))
     expect(onClick).toHaveBeenCalledTimes(2)
   })
 
   test('hides and shows detail when detailHoverDisclosure === true', () => {
-    const { getByText, queryByText } = renderWithTheme(
+    renderWithTheme(
       <ListItem
         detail={{ content: 'Detail', options: { hoverDisclosure: true } }}
       >
@@ -211,9 +205,9 @@ describe('ListItem', () => {
       </ListItem>
     )
 
-    expect(queryByText('Detail')).not.toBeInTheDocument()
-    fireEvent.mouseEnter(getByText('Label'), { bubbles: true })
-    expect(queryByText('Detail')).toBeInTheDocument()
+    expect(screen.queryByText('Detail')).not.toBeInTheDocument()
+    fireEvent.mouseEnter(screen.getByText('Label'), { bubbles: true })
+    expect(screen.queryByText('Detail')).toBeInTheDocument()
   })
 
   test('onKeyUp callback functions', () => {

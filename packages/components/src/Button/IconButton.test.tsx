@@ -137,26 +137,26 @@ describe('IconButton', () => {
   test('built-in tooltip defers to outer tooltip', async () => {
     const tooltip = 'Add to favorites'
     const label = 'Mark as my Favorite'
-    const { getByText, getByRole } = renderWithTheme(
+    renderWithTheme(
       <Tooltip content={tooltip}>
         <IconButton label={label} icon={<Favorite />} />
       </Tooltip>
     )
 
-    const button = getByRole('button')
+    const button = screen.getByRole('button')
     fireEvent.mouseOver(button)
     runTimers()
 
-    expect(getByText(tooltip)).toBeInTheDocument()
+    expect(screen.getByText(tooltip)).toBeInTheDocument()
 
-    const iconLabel = getByText(label)
+    const iconLabel = screen.getByText(label)
     expect(iconLabel).toBeInTheDocument()
 
-    const tooltipContents = getByText(tooltip) // Get all Tooltip contents
+    const tooltipContents = screen.getByText(tooltip) // Get all Tooltip contents
     expect(tooltipContents).toBeVisible()
 
     fireEvent.mouseOut(button)
-    await waitForElementToBeRemoved(() => getByText(tooltip))
+    await waitForElementToBeRemoved(() => screen.getByText(tooltip))
   })
 
   test('built-in tooltip respects text-align, width props', async () => {

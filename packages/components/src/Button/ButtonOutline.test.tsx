@@ -32,18 +32,22 @@ import { fireEvent, screen } from '@testing-library/react'
 import { ButtonOutline } from './ButtonOutline'
 
 test('ButtonOutline Focus: renders outline when tabbing into focus, but not when clicking', () => {
-  const { getByText } = renderWithTheme(
+  renderWithTheme(
     <>
       <ButtonOutline>ButtonOutline</ButtonOutline>
       <ButtonOutline>focus</ButtonOutline>
     </>
   )
 
-  fireEvent.click(getByText('ButtonOutline'))
+  fireEvent.click(screen.getByText('ButtonOutline'))
   // eslint-disable-next-line jest-dom/prefer-to-have-style
   expect(screen.getByText('ButtonOutline').style.boxShadow).toEqual('')
 
-  fireEvent.keyUp(getByText('focus'), { charCode: 9, code: 9, key: 'Tab' })
+  fireEvent.keyUp(screen.getByText('focus'), {
+    charCode: 9,
+    code: 9,
+    key: 'Tab',
+  })
   expect(screen.getByText('focus')).toHaveStyle(
     'box-shadow: 0 0 0 0.15rem rgba(108,67,224,0.25)'
   )

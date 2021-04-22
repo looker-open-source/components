@@ -59,7 +59,7 @@ test('FieldDateRange renders and displays label', () => {
 })
 
 test('FieldDateRange should accept a disabled prop', () => {
-  const { getAllByRole } = renderWithTheme(
+  renderWithTheme(
     <FieldDateRange
       defaultValue={{
         from: new Date('June 3, 2019'),
@@ -71,13 +71,13 @@ test('FieldDateRange should accept a disabled prop', () => {
     />
   )
 
-  const input = getAllByRole('textbox')
+  const input = screen.getAllByRole('textbox')
   expect(input[0]).toBeDisabled()
   expect(input[1]).toBeDisabled()
 })
 
 test('FieldDateRange should accept required attributes', () => {
-  const { getByText } = renderWithTheme(
+  renderWithTheme(
     <FieldDateRange
       defaultValue={{
         from: new Date('June 3, 2019'),
@@ -88,13 +88,13 @@ test('FieldDateRange should accept required attributes', () => {
       required
     />
   )
-  expect(getByText('required')).toBeVisible()
+  expect(screen.getByText('required')).toBeVisible()
 })
 
 test('FieldDateRange should display error message', () => {
   const errorMessage = 'This is an error'
 
-  const { getByText } = renderWithTheme(
+  renderWithTheme(
     <FieldDateRange
       defaultValue={{
         from: new Date('June 3, 2019'),
@@ -106,5 +106,5 @@ test('FieldDateRange should display error message', () => {
     />
   )
 
-  expect(getByText('This is an error')).toBeVisible()
+  expect(screen.getByText('This is an error')).toBeVisible()
 })

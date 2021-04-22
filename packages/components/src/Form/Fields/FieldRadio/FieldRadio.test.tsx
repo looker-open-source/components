@@ -38,7 +38,7 @@ describe('FieldRadio', () => {
   })
 
   test('FieldRadio renders description and detail props', () => {
-    const { getByText } = renderWithTheme(
+    renderWithTheme(
       <FieldRadio
         description="describe something here."
         detail="0/50"
@@ -47,15 +47,15 @@ describe('FieldRadio', () => {
         name="thumbsUp"
       />
     )
-    expect(getByText('describe something here.')).toBeInTheDocument()
-    expect(getByText('0/50')).toBeInTheDocument()
+    expect(screen.getByText('describe something here.')).toBeInTheDocument()
+    expect(screen.getByText('0/50')).toBeInTheDocument()
   })
 
   test('FieldRadio renders disabled', () => {
-    const { getByRole } = renderWithTheme(
+    renderWithTheme(
       <FieldRadio disabled id="FieldRadioID" label="FM" name="thumbsUp" />
     )
-    const RadioInput = getByRole('radio')
+    const RadioInput = screen.getByRole('radio')
 
     expect(RadioInput as HTMLInputElement).toBeDisabled()
   })
@@ -63,7 +63,7 @@ describe('FieldRadio', () => {
   test('FieldRadio renders with error message', () => {
     const errorMessage = 'This is an error'
 
-    const { getByText } = renderWithTheme(
+    renderWithTheme(
       <FieldRadio
         id="FieldRadioID"
         label="FM"
@@ -72,6 +72,6 @@ describe('FieldRadio', () => {
       />
     )
 
-    expect(getByText('This is an error')).toBeInTheDocument()
+    expect(screen.getByText('This is an error')).toBeInTheDocument()
   })
 })

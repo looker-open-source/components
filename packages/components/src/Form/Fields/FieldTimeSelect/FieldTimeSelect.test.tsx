@@ -31,18 +31,18 @@ import { FieldTimeSelect } from './FieldTimeSelect'
 
 describe('FieldTimeSelect', () => {
   test('should associate label and input field', () => {
-    const { getByLabelText } = renderWithTheme(
+    renderWithTheme(
       <FieldTimeSelect
         label="Field Time Label"
         id="field-time-select"
         interval={10}
       />
     )
-    expect(getByLabelText('Field Time Label').tagName).toEqual('INPUT')
+    expect(screen.getByLabelText('Field Time Label').tagName).toEqual('INPUT')
   })
 
   test('should accept required attributes', () => {
-    const { getByText } = renderWithTheme(
+    renderWithTheme(
       <FieldTimeSelect
         label="Label"
         id="field-time-select"
@@ -50,13 +50,13 @@ describe('FieldTimeSelect', () => {
         required
       />
     )
-    expect(getByText('required')).toBeVisible()
+    expect(screen.getByText('required')).toBeVisible()
   })
 
   test('should display error message', () => {
     const errorMessage = 'This is an error'
 
-    const { getByText } = renderWithTheme(
+    renderWithTheme(
       <FieldTimeSelect
         id="field-time-select"
         interval={10}
@@ -65,7 +65,7 @@ describe('FieldTimeSelect', () => {
       />
     )
 
-    expect(getByText('This is an error')).toBeVisible()
+    expect(screen.getByText('This is an error')).toBeVisible()
   })
 
   test('should trigger onChange handler', () => {
