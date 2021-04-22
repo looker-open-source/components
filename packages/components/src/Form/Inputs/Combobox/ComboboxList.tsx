@@ -239,7 +239,7 @@ const ComboboxListInternal = forwardRef(
         setListScrollPosition?.(containerElement.scrollTop)
       }
 
-      const wait = 50
+      const timeoutValue = 50
       let t: NodeJS.Timeout
       const scrollListener = throttle(() => {
         if (contentContainer) {
@@ -253,10 +253,9 @@ const ComboboxListInternal = forwardRef(
           clearTimeout(t)
           t = setTimeout(() => {
             if (isScrollingRef) isScrollingRef.current = false
-          }, wait + 1)
+          }, timeoutValue + 1)
         }
-        // eslint-disable-next-line testing-library/await-async-utils
-      }, wait)
+      }, timeoutValue)
 
       if (contentContainer) {
         contentContainer.addEventListener('scroll', scrollListener)
