@@ -25,7 +25,7 @@
  */
 
 import '@testing-library/jest-dom/extend-expect'
-import { fireEvent } from '@testing-library/react'
+import { fireEvent, screen } from '@testing-library/react'
 import 'jest-styled-components'
 import React, { useState } from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
@@ -139,79 +139,83 @@ describe('Panel', () => {
   )
 
   test('Panel works properly when direction is equal to right', () => {
-    const { getByText } = renderWithTheme(<UncontrolledPanel />)
+    renderWithTheme(<UncontrolledPanel />)
 
-    const right = getByText('Right')
+    const right = screen.getByText('Right')
     expect(right).toBeInTheDocument()
 
     fireEvent.click(right)
-    expect(getByText('content from the right edge...')).toBeInTheDocument()
+    expect(
+      screen.getByText('content from the right edge...')
+    ).toBeInTheDocument()
   })
 
   test('uncontrolled Panel displays content prop', () => {
-    const { getByText } = renderWithTheme(<UncontrolledPanel />)
+    renderWithTheme(<UncontrolledPanel />)
 
-    const left = getByText('Left')
+    const left = screen.getByText('Left')
     expect(left).toBeInTheDocument()
 
     fireEvent.click(left)
 
     // Find content
-    expect(getByText('content from the left edge...')).toBeInTheDocument()
+    expect(
+      screen.getByText('content from the left edge...')
+    ).toBeInTheDocument()
   })
 
   test('controlled Panel displays content', () => {
-    const { getByText } = renderWithTheme(<ControlledPanel />)
+    renderWithTheme(<ControlledPanel />)
 
-    const liElement = getByText('Option 1')
+    const liElement = screen.getByText('Option 1')
     expect(liElement).toBeInTheDocument()
 
     fireEvent.click(liElement)
 
     // Find content
-    expect(getByText('Panel 1')).toBeInTheDocument()
-    expect(getByText('Panel 3')).toBeInTheDocument()
+    expect(screen.getByText('Panel 1')).toBeInTheDocument()
+    expect(screen.getByText('Panel 3')).toBeInTheDocument()
   })
 
   test('returns to previous display if title prop is clicked', () => {
-    const { getByText } = renderWithTheme(<ControlledPanel />)
+    renderWithTheme(<ControlledPanel />)
 
-    const liElement = getByText('Option 1')
+    const liElement = screen.getByText('Option 1')
     expect(liElement).toBeInTheDocument()
 
     fireEvent.click(liElement)
 
     // Find content
-    expect(getByText('Panel 1')).toBeInTheDocument()
+    expect(screen.getByText('Panel 1')).toBeInTheDocument()
 
-    const returnToExplore = getByText('return to main option')
+    const returnToExplore = screen.getByText('return to main option')
 
     fireEvent.click(returnToExplore)
 
-    expect(getByText('Option 1')).toBeInTheDocument()
-    expect(getByText('Option 2')).toBeInTheDocument()
+    expect(screen.getByText('Option 1')).toBeInTheDocument()
+    expect(screen.getByText('Option 2')).toBeInTheDocument()
   })
 
   test('usePanel hook works as expected', () => {
-    const { getByText } = renderWithTheme(<UsePanelHook />)
+    renderWithTheme(<UsePanelHook />)
 
-    expect(getByText('Option A')).toBeInTheDocument()
-    expect(getByText('Option B')).toBeInTheDocument()
+    expect(screen.getByText('Option A')).toBeInTheDocument()
+    expect(screen.getByText('Option B')).toBeInTheDocument()
 
-    fireEvent.click(getByText('Option A'))
+    fireEvent.click(screen.getByText('Option A'))
 
-    expect(getByText('Panel content')).toBeInTheDocument()
+    expect(screen.getByText('Panel content')).toBeInTheDocument()
 
-    fireEvent.click(getByText('Close Panel Hook'))
+    fireEvent.click(screen.getByText('Close Panel Hook'))
 
-    expect(getByText('Option A')).toBeInTheDocument()
+    expect(screen.getByText('Option A')).toBeInTheDocument()
   })
 
   test('with no content fails', () => {
-    const { getByText } = renderWithTheme(<UncontrolledPanel />)
-    expect(getByText('render prop')).toBeInTheDocument()
-    fireEvent.click(getByText('render prop'))
-    expect(getByText('My neat dialog')).toBeInTheDocument()
+    renderWithTheme(<UncontrolledPanel />)
+    expect(screen.getByText('render prop')).toBeInTheDocument()
+    fireEvent.click(screen.getByText('render prop'))
+    expect(screen.getByText('My neat dialog')).toBeInTheDocument()
   })
 
   test('triggers console.warn if no children is passed', () => {

@@ -24,7 +24,7 @@
 
  */
 
-import { act, fireEvent } from '@testing-library/react'
+import { act, fireEvent, screen } from '@testing-library/react'
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { Button } from '../Button'
@@ -41,53 +41,53 @@ describe('CopyToClipboard', () => {
   })
 
   it('renders the CopyToClipboard', () => {
-    const { getByText } = renderWithTheme(<CopyToClipboardComponent />)
-    expect(getByText('Copy to Clipboard')).toBeVisible()
+    renderWithTheme(<CopyToClipboardComponent />)
+    expect(screen.getByText('Copy to Clipboard')).toBeVisible()
   })
 
   it('renders the CopyToClipboard with different string values as children and success', () => {
     const content = 'here is some text to be copied'
-    const { getByText } = renderWithTheme(
+    renderWithTheme(
       <CopyToClipboard content={content} success="it was copied">
         copy something
       </CopyToClipboard>
     )
-    const copyButton = getByText('copy something')
+    const copyButton = screen.getByText('copy something')
     expect(copyButton).toBeVisible()
     fireEvent.click(copyButton)
-    expect(getByText('it was copied')).toBeVisible()
+    expect(screen.getByText('it was copied')).toBeVisible()
   })
 
   it('renders the CopyToClipboard with different components as children and success', () => {
     const content = 'here is some text to be copied'
-    const { getByText } = renderWithTheme(
+    renderWithTheme(
       <CopyToClipboard content={content} success={<Button>Success</Button>}>
         <Button>Copy stuff</Button>
       </CopyToClipboard>
     )
-    const copyButton = getByText('Copy stuff')
+    const copyButton = screen.getByText('Copy stuff')
     expect(copyButton).toBeVisible()
     fireEvent.click(copyButton)
-    expect(getByText('Success')).toBeVisible()
+    expect(screen.getByText('Success')).toBeVisible()
   })
 
   it('transitions from copy to copied state and back when clicked', async () => {
     jest.useFakeTimers()
-    const { getByText } = renderWithTheme(<CopyToClipboardComponent />)
-    const button = getByText('Copy to Clipboard')
+    renderWithTheme(<CopyToClipboardComponent />)
+    const button = screen.getByText('Copy to Clipboard')
     fireEvent.click(button)
-    expect(getByText('Copied')).toBeVisible()
+    expect(screen.getByText('Copied')).toBeVisible()
     act(() => {
       jest.runOnlyPendingTimers()
     })
-    expect(getByText('Copy to Clipboard')).toBeVisible()
+    expect(screen.getByText('Copy to Clipboard')).toBeVisible()
     jest.useRealTimers()
   })
 
   it('copies the refs textarea content on copy click', () => {
     jest.spyOn(document, 'execCommand')
-    const { getByText } = renderWithTheme(<CopyToClipboardComponent />)
-    const button = getByText('Copy to Clipboard')
+    renderWithTheme(<CopyToClipboardComponent />)
+    const button = screen.getByText('Copy to Clipboard')
     fireEvent.click(button)
     expect(document.execCommand).toHaveBeenCalledWith('copy')
   })

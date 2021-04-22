@@ -26,7 +26,7 @@
 
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { fireEvent } from '@testing-library/react'
+import { fireEvent, screen } from '@testing-library/react'
 import { inputFilterEditor } from './inputFilterEditor'
 
 describe('inputFilterEditor', () => {
@@ -46,7 +46,7 @@ describe('inputFilterEditor', () => {
   const onChange = jest.fn()
 
   test('renders', () => {
-    const { queryByText } = renderWithTheme(
+    renderWithTheme(
       <>
         {inputFilterEditor({
           closeEditor,
@@ -56,11 +56,11 @@ describe('inputFilterEditor', () => {
         })}
       </>
     )
-    expect(queryByText('datagroup_trigger')).toBeInTheDocument()
+    expect(screen.queryByText('datagroup_trigger')).toBeInTheDocument()
   })
 
   test('onChange is called', () => {
-    const { queryByText } = renderWithTheme(
+    renderWithTheme(
       <>
         {inputFilterEditor({
           closeEditor,
@@ -70,13 +70,13 @@ describe('inputFilterEditor', () => {
         })}
       </>
     )
-    const selectingFilter = queryByText('datagroup_trigger')
+    const selectingFilter = screen.queryByText('datagroup_trigger')
     selectingFilter && fireEvent.click(selectingFilter)
     expect(onChange).toBeCalled()
   })
 
   test('closeEditor is called', () => {
-    const { queryByText } = renderWithTheme(
+    renderWithTheme(
       <>
         {inputFilterEditor({
           closeEditor,
@@ -86,13 +86,13 @@ describe('inputFilterEditor', () => {
         })}
       </>
     )
-    const selectingFilter = queryByText('Cheddar')
+    const selectingFilter = screen.queryByText('Cheddar')
     selectingFilter && fireEvent.click(selectingFilter)
     expect(closeEditor).toBeCalled()
   })
 
   test('displays CheckboxGroup when multiple = true', () => {
-    const { getByLabelText } = renderWithTheme(
+    renderWithTheme(
       <>
         {inputFilterEditor({
           closeEditor,
@@ -102,12 +102,12 @@ describe('inputFilterEditor', () => {
         })}
       </>
     )
-    const checkbox = getByLabelText('Gouda')
+    const checkbox = screen.getByLabelText('Gouda')
     expect(checkbox).toHaveAttribute('type', 'checkbox')
   })
 
   test('displays RadioGroup when multiple = false', () => {
-    const { getByLabelText } = renderWithTheme(
+    renderWithTheme(
       <>
         {inputFilterEditor({
           closeEditor,
@@ -117,7 +117,7 @@ describe('inputFilterEditor', () => {
         })}
       </>
     )
-    const radio = getByLabelText('Gouda')
+    const radio = screen.getByLabelText('Gouda')
     expect(radio).toHaveAttribute('type', 'radio')
   })
 })

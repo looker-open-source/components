@@ -25,7 +25,7 @@
  */
 import 'jest-styled-components'
 import React, { useState } from 'react'
-import { fireEvent } from '@testing-library/react'
+import { fireEvent, screen } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import map from 'lodash/map'
 import { RadioGroup } from './RadioGroup'
@@ -65,8 +65,8 @@ test('RadioGroup render a list of radio', () => {
   }
 
   const renderListContent = () => {
-    const { getByTestId } = renderWithTheme(<RadioGroup {...radioProps} />)
-    return getByTestId('radio-list')
+    renderWithTheme(<RadioGroup {...radioProps} />)
+    return screen.getByTestId('radio-list')
   }
 
   const view = renderListContent()
@@ -81,10 +81,8 @@ test('RadioGroup render a list of radio', () => {
 test('RadioGroup selects a radio on click', () => {
   const handleChange = jest.fn()
 
-  const { getByLabelText } = renderWithTheme(
-    <RadioGroup {...radioProps} onChange={handleChange} />
-  )
-  const radio = getByLabelText('Cheddar')
+  renderWithTheme(<RadioGroup {...radioProps} onChange={handleChange} />)
+  const radio = screen.getByLabelText('Cheddar')
 
   fireEvent.click(radio)
 
@@ -93,10 +91,8 @@ test('RadioGroup selects a radio on click', () => {
 })
 
 test('RadioGroup works with defaultValue', () => {
-  const { getByLabelText } = renderWithTheme(
-    <RadioGroup {...radioProps} defaultValue={'cheddar'} />
-  )
-  expect(getByLabelText('Cheddar')).toBeChecked()
+  renderWithTheme(<RadioGroup {...radioProps} defaultValue={'cheddar'} />)
+  expect(screen.getByLabelText('Cheddar')).toBeChecked()
 })
 
 test('RadioGroup works with value', () => {
@@ -111,10 +107,10 @@ test('RadioGroup works with value', () => {
       />
     )
   }
-  const { getByLabelText } = renderWithTheme(<ControlledTest />)
+  renderWithTheme(<ControlledTest />)
 
-  const cheddar = getByLabelText('Cheddar')
-  const swiss = getByLabelText('Swiss')
+  const cheddar = screen.getByLabelText('Cheddar')
+  const swiss = screen.getByLabelText('Swiss')
   expect(cheddar).toBeChecked()
   expect(swiss).not.toBeChecked()
 
@@ -124,14 +120,12 @@ test('RadioGroup works with value', () => {
 })
 
 test('RadioGroup disabled all Radios', () => {
-  const { getByLabelText } = renderWithTheme(
-    <RadioGroup {...radioProps} disabled />
-  )
+  renderWithTheme(<RadioGroup {...radioProps} disabled />)
 
-  expect(getByLabelText('Cheddar') as HTMLInputElement).toBeDisabled()
-  expect(getByLabelText('Gouda') as HTMLInputElement).toBeDisabled()
-  expect(getByLabelText('Swiss') as HTMLInputElement).toBeDisabled()
-  expect(getByLabelText('Roquefort') as HTMLInputElement).toBeDisabled()
+  expect(screen.getByLabelText('Cheddar') as HTMLInputElement).toBeDisabled()
+  expect(screen.getByLabelText('Gouda') as HTMLInputElement).toBeDisabled()
+  expect(screen.getByLabelText('Swiss') as HTMLInputElement).toBeDisabled()
+  expect(screen.getByLabelText('Roquefort') as HTMLInputElement).toBeDisabled()
 })
 
 test('RadioGroup disabled one specific Radio', () => {
@@ -142,10 +136,8 @@ test('RadioGroup disabled one specific Radio', () => {
     }
   })
 
-  const { getByLabelText } = renderWithTheme(
-    <RadioGroup {...radioProps} options={options} />
-  )
+  renderWithTheme(<RadioGroup {...radioProps} options={options} />)
 
-  expect(getByLabelText('Cheddar') as HTMLInputElement).toBeEnabled()
-  expect(getByLabelText('Swiss') as HTMLInputElement).toBeDisabled()
+  expect(screen.getByLabelText('Cheddar') as HTMLInputElement).toBeEnabled()
+  expect(screen.getByLabelText('Swiss') as HTMLInputElement).toBeDisabled()
 })

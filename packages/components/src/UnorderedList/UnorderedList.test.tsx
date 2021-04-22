@@ -26,13 +26,14 @@
 
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
 import { UnorderedList } from './UnorderedList'
 
 import 'jest-styled-components'
 
 describe('UnorderedList', () => {
   test('Should display child li elements', () => {
-    const { getByText } = renderWithTheme(
+    renderWithTheme(
       <UnorderedList>
         <li>Gouda</li>
         <li>Swiss</li>
@@ -40,13 +41,13 @@ describe('UnorderedList', () => {
       </UnorderedList>
     )
 
-    getByText('Gouda')
-    getByText('Swiss')
-    getByText('Pepper Jack')
+    screen.getByText('Gouda')
+    screen.getByText('Swiss')
+    screen.getByText('Pepper Jack')
   })
 
   test("Accepts 'bullet' type", () => {
-    const { getByText, getByRole } = renderWithTheme(
+    renderWithTheme(
       <UnorderedList type="bullet">
         <li>Gouda</li>
         <li>Swiss</li>
@@ -54,10 +55,10 @@ describe('UnorderedList', () => {
       </UnorderedList>
     )
 
-    getByText('Gouda')
-    getByText('Swiss')
-    getByText('Pepper Jack')
+    screen.getByText('Gouda')
+    screen.getByText('Swiss')
+    screen.getByText('Pepper Jack')
 
-    expect(getByRole('list')).toHaveAttribute('type', 'bullet')
+    expect(screen.getByRole('list')).toHaveAttribute('type', 'bullet')
   })
 })
