@@ -35,6 +35,9 @@ const ours = [
   'iconViewBox',
   'textDecoration',
   'windowing',
+  'layout',
+  'indexBy',
+  'indicatorPosition',
 ]
 const aria = [
   'aria-autocomplete',

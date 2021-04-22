@@ -134,11 +134,11 @@ export const ButtonItem = styled(ButtonLayout)`
 
   &[disabled] {
     color: ${(props) => props.theme.colors.text1};
+    cursor: default;
 
     &:hover {
       background: inherit;
     }
-    cursor: default;
   }
 
   &[aria-pressed='true'] {

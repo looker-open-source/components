@@ -82,7 +82,7 @@ export const useAnimationState = (
     if (!isOpen && state === 'exited') return
     if (isOpen && state === 'entered') return
 
-    let t: NodeJS.Timeout
+    let t: ReturnType<typeof setTimeout>
 
     if (isOpen) {
       if (!timingEnter) {

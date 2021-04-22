@@ -1,0 +1,50 @@
+{
+ "name": "@looker/visualizations-visx",
+ "main": "src/index.ts",
+ "version": "0.1.0",
+ "publishConfig": {
+  "access": "restricted"
+ },
+ "license": "MIT",
+ "module": "lib/index.js",
+ "sideEffects": false,
+ "dependencies": {
+  "@looker/visualizations": "*",
+  "@visx/point": "1.7.0",
+  "@visx/shape": "1.7.0"
+ },
+ "devDependencies": {
+  "@looker/components-test-utils": "*",
+  "@looker/eslint-config": "*",
+  "@looker/prettier-config": "*",
+  "@looker/stylelint-config": "*",
+  "@testing-library/react": "*",
+  "@types/react": "*",
+  "@types/react-dom": "*",
+  "@types/styled-components": "*",
+  "@types/styled-system": "*",
+  "eslint-plugin-header": "*",
+  "eslint-plugin-i18next": "*",
+  "eslint-plugin-mdx": "*",
+  "eslint-plugin-node": "*",
+  "eslint-plugin-prettier": "*",
+  "eslint-plugin-react-hooks": "*",
+  "eslint-plugin-sort-keys-fix": "*",
+  "eslint-plugin-testing-library": "*",
+  "react": "^16.14.0",
+  "react-dom": "^16.14.0",
+  "typescript": "4.2.4"
+ },
+ "peerDependencies": {
+  "@looker/components": "1.x",
+  "react": ">= 16.11.0",
+  "react-dom": ">= 16.11.0",
+  "styled-components": "^5.2.1"
+ },
+ "eslintConfig": {
+  "root": true,
+  "extends": [
+   "@looker/eslint-config/oss-compat"
+  ]
+ }
+}
