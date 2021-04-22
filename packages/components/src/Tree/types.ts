@@ -31,7 +31,11 @@ import { ListItemProps } from '../List'
 export interface TreeProps
   extends Omit<
       AccordionProps,
-      'children' | 'indicatorGap' | 'indicatorPosition' | 'indicatorSize'
+      | 'children'
+      | 'content'
+      | 'indicatorGap'
+      | 'indicatorPosition'
+      | 'indicatorSize'
     >,
     ListItemProps {
   /**
@@ -50,6 +54,12 @@ export interface TreeProps
    * @default false
    */
   dividers?: boolean
+  /**
+   * If true, child `TreeItem` elements will receive additional indent padding to align parent `Tree` and child `TreeItem` labels.
+   * Note: This should only be used when the parent `Tree` has an icon and the child `TreeItem`s do not.
+   * @default false
+   */
+  forceLabelPadding?: boolean
   /**
    * Label text or element displayed within Tree's internal AccordionDisclosure
    */

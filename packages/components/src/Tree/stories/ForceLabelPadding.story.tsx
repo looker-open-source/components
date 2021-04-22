@@ -24,40 +24,16 @@
 
  */
 
-import { Grid } from '@looker/components'
-import React, { FC } from 'react'
-import { Editor, EditorProps } from './Editor'
+import React from 'react'
+import { Folder } from '@styled-icons/material/Folder'
+import { Tree, TreeItem } from '..'
 
-export const ThemeEditor: FC<EditorProps> = (props) => (
-  <>
-    <Editor {...props} />
-  </>
+export const ForceLabelPadding = () => (
+  <Tree icon={<Folder />} label="Folders" defaultOpen>
+    <Tree icon={<Folder />} label="Personal" defaultOpen forceLabelPadding>
+      <TreeItem>Performance</TreeItem>
+      <TreeItem>Sales</TreeItem>
+      <TreeItem>Metrics</TreeItem>
+    </Tree>
+  </Tree>
 )
-
-export const CompareThemes: FC = () => (
-  <Grid m="xlarge" gap="large" columns={4}>
-    <Editor name="Default" />
-    <Editor
-      name="Generated"
-      themeCustomizations={{
-        colors: { key: '#6C43E0' },
-      }}
-    />
-    <Editor
-      name="Customer Blue"
-      themeCustomizations={{
-        colors: { key: '#116DFF' },
-      }}
-    />
-    <Editor
-      name="THUNDER Salmon"
-      themeCustomizations={{
-        colors: { background: '#000000', key: '#ff3ca0', text: '#FFFFFF' },
-      }}
-    />
-  </Grid>
-)
-
-export default {
-  title: 'Theme',
-}

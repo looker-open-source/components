@@ -24,37 +24,44 @@
 
  */
 
-import { SpacingSizes } from '@looker/design-tokens'
-import { IconSize, IconType } from '../Icon'
+import { Grid } from '@looker/components'
+import React from 'react'
+import { Editor, EditorProps } from './Editor'
 
-export type IndicatorIcons = {
-  close: IconType
-  open: IconType
+export const ThemeEditor = (props: EditorProps) => <Editor {...props} />
+
+ThemeEditor.parameters = {
+  storyshots: { disable: true },
 }
 
-export type AccordionIndicatorPosition = undefined | 'left' | 'right'
+export const CompareThemes = () => (
+  <Grid m="xlarge" gap="large" columns={4}>
+    <Editor name="Default" />
+    <Editor
+      name="Generated"
+      themeCustomizations={{
+        colors: { key: '#6C43E0' },
+      }}
+    />
+    <Editor
+      name="Customer Blue"
+      themeCustomizations={{
+        colors: { key: '#116DFF' },
+      }}
+    />
+    <Editor
+      name="THUNDER Salmon"
+      themeCustomizations={{
+        colors: { background: '#000000', key: '#ff3ca0', text: '#FFFFFF' },
+      }}
+    />
+  </Grid>
+)
 
-export interface AccordionIndicatorProps {
-  /**
-   * Determines where the disclosure indicator will sit on
-   * @default 'right'
-   */
-  indicatorPosition?: AccordionIndicatorPosition
+CompareThemes.parameters = {
+  storyshots: { disable: true },
+}
 
-  /**
-   * Size of icon on disclosure
-   * @default 'small'
-   */
-  indicatorSize?: IconSize
-
-  /**
-   * Space between label and indicator within disclosure
-   * @default 'xsmall'
-   */
-  indicatorGap?: SpacingSizes
-
-  /**
-   * Icons for disclosure indicator
-   */
-  indicatorIcons?: IndicatorIcons
+export default {
+  title: 'Theme',
 }

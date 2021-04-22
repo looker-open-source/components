@@ -27,15 +27,12 @@
 import React, { useState } from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { fireEvent } from '@testing-library/react'
-import { Accordion, AccordionContent, AccordionDisclosure } from '.'
+import { Accordion } from '.'
 
 describe('Accordion', () => {
   test('Renders AccordionDisclosure and AccordionContent (on label click)', () => {
     const { getByText, queryByText } = renderWithTheme(
-      <Accordion>
-        <AccordionDisclosure>My Accordion Label</AccordionDisclosure>
-        <AccordionContent>My Accordion Content</AccordionContent>
-      </Accordion>
+      <Accordion content="My Accordion Content">My Accordion Label</Accordion>
     )
     const accordionLabel = getByText('My Accordion Label')
     expect(queryByText('My Accordion Content')).not.toBeInTheDocument()
@@ -47,9 +44,8 @@ describe('Accordion', () => {
 
   test('Renders AccordionContent by default when defaultOpen === true', () => {
     const { getByText } = renderWithTheme(
-      <Accordion defaultOpen>
-        <AccordionDisclosure>My Accordion Label</AccordionDisclosure>
-        <AccordionContent>My Accordion Content</AccordionContent>
+      <Accordion defaultOpen content="My Accordion Content">
+        My Accordion Label
       </Accordion>
     )
 
@@ -61,9 +57,12 @@ describe('Accordion', () => {
     const onClose = jest.fn()
 
     const { getByText } = renderWithTheme(
-      <Accordion onOpen={onOpen} onClose={onClose}>
-        <AccordionDisclosure>My Accordion Label</AccordionDisclosure>
-        <AccordionContent>My Accordion Content</AccordionContent>
+      <Accordion
+        onOpen={onOpen}
+        onClose={onClose}
+        content="My Accordion Content"
+      >
+        My Accordion Label
       </Accordion>
     )
     const accordionLabel = getByText('My Accordion Label')
@@ -78,9 +77,12 @@ describe('Accordion', () => {
       const [isOpen, setIsOpen] = useState(true)
 
       return (
-        <Accordion isOpen={isOpen} toggleOpen={setIsOpen}>
-          <AccordionDisclosure>My Accordion Label</AccordionDisclosure>
-          <AccordionContent>My Accordion Content</AccordionContent>
+        <Accordion
+          isOpen={isOpen}
+          toggleOpen={setIsOpen}
+          content="My Accordion Content"
+        >
+          My Accordion Label
         </Accordion>
       )
     }
@@ -102,16 +104,14 @@ describe('Accordion', () => {
     const handleBlur = jest.fn()
 
     const { getByText } = renderWithTheme(
-      <Accordion>
-        <AccordionDisclosure
-          onKeyDown={handleKeyDown}
-          onKeyUp={handleKeyUp}
-          onClick={handleClick}
-          onBlur={handleBlur}
-        >
-          My Accordion Label
-        </AccordionDisclosure>
-        <AccordionContent>My Accordion Content</AccordionContent>
+      <Accordion
+        onKeyDown={handleKeyDown}
+        onKeyUp={handleKeyUp}
+        onClick={handleClick}
+        onBlur={handleBlur}
+        content="My Accordion Content"
+      >
+        My Accordion Label
       </Accordion>
     )
 

@@ -33,7 +33,7 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import { Accordion, AccordionContent, AccordionDisclosure } from '../Accordion'
+import { Accordion } from '../Accordion'
 import { undefinedCoalesce, useWrapEvent } from '../utils'
 import { List } from '../List'
 import { listItemDimensions, getDetailOptions } from '../List/utils'
@@ -52,6 +52,7 @@ const TreeLayout: FC<TreeProps> = ({
   detail: propsDetail,
   disabled,
   dividers,
+  forceLabelPadding,
   icon,
   keyColor: propsKeyColor,
   label: propsLabel,
@@ -78,7 +79,7 @@ const TreeLayout: FC<TreeProps> = ({
   const depth = treeContext.depth ? treeContext.depth : startingDepth
 
   const density = propsDensity || treeContext.density
-  const { iconGap } = listItemDimensions(density)
+  const { iconGap, iconSize } = listItemDimensions(density)
 
   const { accessory, content, hoverDisclosure } = getDetailOptions(propsDetail)
 
@@ -136,20 +137,20 @@ const TreeLayout: FC<TreeProps> = ({
 
   const indicatorColor = disabled ? 'text1' : color
   const innerAccordion = (
-    <Accordion {...indicatorDefaults} {...restProps}>
-      <AccordionDisclosure
-        color={indicatorColor}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        py="none"
-      >
-        {label}
-      </AccordionDisclosure>
-      <AccordionContent>
+    <Accordion
+      content={
         <List density={density} windowing="none">
           {children}
         </List>
-      </AccordionContent>
+      }
+      color={indicatorColor}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      py="none"
+      {...indicatorDefaults}
+      {...restProps}
+    >
+      {label}
     </Accordion>
   )
 
@@ -170,8 +171,10 @@ const TreeLayout: FC<TreeProps> = ({
         depth={depth}
         disabled={disabled}
         dividers={dividers}
+        forceLabelPadding={forceLabelPadding}
         hovered={hovered}
         iconGap={iconGap}
+        iconSize={iconSize}
         keyColor={useKeyColor}
         labelBackgroundOnly={hasLabelBackgroundOnly}
         selected={selected}

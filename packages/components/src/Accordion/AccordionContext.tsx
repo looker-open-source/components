@@ -29,7 +29,7 @@ import { ExpandLess } from '@styled-icons/material-rounded/ExpandLess'
 import { ExpandMore } from '@styled-icons/material-rounded/ExpandMore'
 import React, { createContext } from 'react'
 import { IconSize } from '../Icon'
-import { IndicatorIcons } from './indicator'
+import { IndicatorIcons } from './types'
 
 export interface AccordionContextProps {
   accordionContentId: string

@@ -24,40 +24,29 @@
 
  */
 
-import React, { FC, useState, ReactNode } from 'react'
+import React, {
+  Children,
+  FC,
+  useState,
+  ReactElement,
+  ReactNode,
+  isValidElement,
+} from 'react'
 import styled from 'styled-components'
+import {
+  textColor,
+  shouldForwardProp,
+  TextColorProps,
+  TypographyProps,
+  typography,
+  CompatibleHTMLProps,
+} from '@looker/design-tokens'
 import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout/utils/simple'
 import { useID } from '../utils'
-import { AccordionContext, accordionContextDefaults } from './AccordionContext'
+import { accordionContextDefaults } from './AccordionContext'
 import { AccordionContent } from './AccordionContent'
 import { AccordionDisclosure } from './AccordionDisclosure'
-import { AccordionIndicatorProps } from './indicator'
-export interface AccordionControlProps {
-  /**
-   * Use this property if you wish to use the component in a `uncontrolled` manner and have it open when initially rendering.
-   * Component will hold internal state and open and close on disclosure click
-   **/
-  defaultOpen?: boolean
-  /**
-   * Use this property (alongside toggleOpen) if you wish to use the component in a `controlled` manner.
-   * isOpen determines whether the Accordion is currently open or closed
-   * @default false
-   **/
-  isOpen?: boolean
-  /**
-   * Use this property (alongside isOpen) if you wish to use the component in a `controlled` manner.
-   * toggleOpen is a function that should control the value / state of isOpen
-   */
-  toggleOpen?: (isOpen: boolean) => void
-  /**
-   * Callback that is triggered when closing the Accordion (i.e. when clicking on an open Accordion)
-   */
-  onClose?: () => void // called when the component is closed
-  /**
-   * Callback that is triggered when opening the Accordion (i.e. when clicking on a closed Accordion)
-   */
-  onOpen?: () => void // called when the component is opened
-}
+import { AccordionControlProps, AccordionIndicatorProps } from './types'
 
 /**
  * Keys below are used by Fieldset to omit Accordion related props so they can be spread onto the internal Accordion component
@@ -79,9 +68,24 @@ export const AccordionControlPropKeys = [
 export interface AccordionProps
   extends AccordionControlProps,
     AccordionIndicatorProps,
-    SimpleLayoutProps {
+    Omit<CompatibleHTMLProps<HTMLElement>, 'content'>,
+    SimpleLayoutProps,
+    TextColorProps,
+    TypographyProps {
+  /**
+   * We currently support two different compositions for Accordion:
+   *  - `Accordion`'s children will act as the "trigger" element (i.e. children always visible, clicking children toggles whether content is visible or not)
+   *  - Legacy: <Accordion> wrapped around an <AccordionDisclosure> and <AccordionContent> (NOTE: This composition will be deprecated in a future MAJOR release)
+   * @TODO Deprecate legacy format in 2.x
+   */
   children: ReactNode
   className?: string
+  /**
+   * Determines the content shown or hidden by the <Accordion>'s open state.
+   * Note: If using the "Legacy" <Accordion> composition, provide an <AccordionContent> child instead of using the content prop.
+   * @TODO Going to be required in 2.x
+   */
+  content?: ReactNode
   /**
    * A unique ID primarily used to supply aria-controls and aria-labelledby to child AccordionDisclosure and child AccordionContent
    * Note: This will be auto-generated if left undefined
@@ -92,18 +96,28 @@ export interface AccordionProps
 const AccordionLayout: FC<AccordionProps> = ({
   children,
   className,
+  content,
   id,
-  indicatorGap,
-  indicatorSize,
-  indicatorIcons,
-  indicatorPosition,
+  indicatorGap: propsIndicatorGap,
+  indicatorSize: propsIndicatorSize,
+  indicatorIcons: propsIndicatorIcons,
+  indicatorPosition: propsIndicatorPosition,
+  defaultOpen,
+  isOpen: propsIsOpen,
+  onClose: propsOnClose,
+  onOpen: propsOnOpen,
+  toggleOpen: propsToggleOpen,
   ...props
 }) => {
-  const [isOpen, setIsOpen] = useState(!!props.defaultOpen)
+  const uncontrolledState = useState(!!defaultOpen)
+  const uncontrolled = {
+    isOpen: uncontrolledState[0],
+    setIsOpen: uncontrolledState[1],
+  }
 
   if (
-    (props.isOpen && props.toggleOpen === undefined) ||
-    (props.isOpen === undefined && props.toggleOpen)
+    (propsIsOpen && propsToggleOpen === undefined) ||
+    (propsIsOpen === undefined && propsToggleOpen)
   )
     // eslint-disable-next-line no-console
     console.warn(
@@ -111,45 +125,126 @@ const AccordionLayout: FC<AccordionProps> = ({
     )
 
   const accordionId = useID(id)
+  const accordionContentId = `${accordionId}-content`
+  const accordionDisclosureId = `${accordionId}-disclosure`
 
-  const context = {
-    ...accordionContextDefaults,
-    accordionContentId: `${accordionId}-content`,
-    accordionDisclosureId: `${accordionId}-disclosure`,
-    indicatorGap: indicatorGap || accordionContextDefaults.indicatorGap,
-    indicatorIcons: indicatorIcons || accordionContextDefaults.indicatorIcons,
-    indicatorPosition:
-      indicatorPosition || accordionContextDefaults.indicatorPosition,
-    indicatorSize: indicatorSize || accordionContextDefaults.indicatorSize,
-    isOpen: props.isOpen === undefined ? isOpen : props.isOpen,
-    onClose: props.onClose,
-    onOpen: props.onOpen,
-    toggleOpen: props.toggleOpen === undefined ? setIsOpen : props.toggleOpen,
-  }
+  const indicatorGap =
+    propsIndicatorGap || accordionContextDefaults.indicatorGap
+  const indicatorIcons =
+    propsIndicatorIcons || accordionContextDefaults.indicatorIcons
+  const indicatorPosition =
+    propsIndicatorPosition || accordionContextDefaults.indicatorPosition
+  const indicatorSize =
+    propsIndicatorSize || accordionContextDefaults.indicatorSize
+  const isOpen = propsIsOpen === undefined ? uncontrolled.isOpen : propsIsOpen
+  const onClose = propsOnClose
+  const onOpen = propsOnOpen
+  const toggleOpen =
+    propsToggleOpen === undefined ? uncontrolled.setIsOpen : propsToggleOpen
 
-  return (
-    <AccordionContext.Provider value={context}>
-      <div className={className} id={accordionId}>
-        {children}
-      </div>
-    </AccordionContext.Provider>
-  )
-}
-
-export const Accordion = styled(AccordionLayout).attrs<AccordionProps>(
-  ({
-    indicatorGap = accordionContextDefaults.indicatorGap,
-    indicatorPosition = accordionContextDefaults.indicatorPosition,
-    indicatorSize = accordionContextDefaults.indicatorSize,
-    width = '100%',
-  }) => ({
+  const accordionStateAndStyle = {
     indicatorGap,
+    indicatorIcons,
     indicatorPosition,
     indicatorSize,
-    width,
+    isOpen,
+    onClose,
+    onOpen,
+    toggleOpen,
+  }
+
+  const accordionIds = {
+    accordionContentId,
+    accordionDisclosureId,
+  }
+
+  const accordionDisclosureProps = {
+    ...accordionStateAndStyle,
+    ...accordionIds,
+    ...props,
+  }
+
+  const accordionContentProps = { ...accordionIds, isOpen }
+
+  // TODO: Remove support for legacy composition in 2.x
+  if (Children.count(children) === 2) {
+    const accordionChildren = [] as ReactNode[]
+
+    Children.forEach(children, (child) => {
+      if (isValidElement(child)) {
+        const isAccordionDisclosure =
+          (child as ReactElement<unknown>).type === AccordionDisclosure
+        const isAccordionContent =
+          (child as ReactElement<unknown>).type === AccordionContent
+
+        if (isAccordionDisclosure) {
+          accordionChildren.push(
+            React.cloneElement(child, accordionDisclosureProps)
+          )
+        } else if (isAccordionContent) {
+          accordionChildren.push(
+            React.cloneElement(child, accordionContentProps)
+          )
+        }
+      }
+    })
+
+    const isLegacyComposition = accordionChildren.length === 2
+
+    if (isLegacyComposition) {
+      return (
+        <div className={className} id={accordionId}>
+          {accordionChildren}
+        </div>
+      )
+    }
+  }
+
+  if (children) {
+    return (
+      <div className={className} id={accordionId}>
+        <AccordionDisclosure {...accordionDisclosureProps}>
+          {children}
+        </AccordionDisclosure>
+        <AccordionContent {...accordionContentProps}>
+          {content}
+        </AccordionContent>
+      </div>
+    )
+  } else {
+    // eslint-disable-next-line no-console
+    console.warn(
+      "<Accordion>'s child is falsy (i.e. undefined, null, false, etc). Please give <Accordion> a valid ReactNode child."
+    )
+    return <>{children}</>
+  }
+}
+
+export const Accordion = styled(AccordionLayout)
+  .withConfig({
+    shouldForwardProp: (prop) =>
+      [...AccordionIndicatorPropKeys, ...AccordionControlPropKeys].includes(
+        prop
+      )
+        ? true
+        : shouldForwardProp(prop),
   })
-)<AccordionProps>`
+  .attrs<AccordionProps>(
+    ({
+      indicatorGap = accordionContextDefaults.indicatorGap,
+      indicatorPosition = accordionContextDefaults.indicatorPosition,
+      indicatorSize = accordionContextDefaults.indicatorSize,
+      width = '100%',
+    }) => ({
+      indicatorGap,
+      indicatorPosition,
+      indicatorSize,
+      width,
+    })
+  )<AccordionProps>`
   ${AccordionDisclosure}, ${AccordionContent} {
+    ${textColor}
     ${simpleLayoutCSS}
+    ${typography}
   }
 `

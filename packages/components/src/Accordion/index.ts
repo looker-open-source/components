@@ -27,4 +27,4 @@
 export * from './Accordion'
 export * from './AccordionDisclosure'
 export * from './AccordionContent'
-export type { AccordionIndicatorProps } from './indicator'
+export type { AccordionControlProps, AccordionIndicatorProps } from './types'
