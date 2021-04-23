@@ -1,3 +1,4 @@
+<a href="https://codeclimate.com/github/looker-open-source/components/test_coverage"><img src="https://api.codeclimate.com/v1/badges/0e8fc40b90a494f80cc1/test_coverage" /></a>
 ![Test Suite](https://github.com/looker-open-source/components/workflows/Test/badge.svg?branch=main)
 
 This repository hosts the Looker UI Components library and the platform needed to generate our style guide. If you're looking for documentation for using Looker UI Components within your own application, you can view the documentation online on our web site.
