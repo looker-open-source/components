@@ -20,7 +20,7 @@
   "dependencies": {
     "@styled-system/props": "^5.1.5",
     "@styled-system/should-forward-prop": "5.1.5",
-    "@types/styled-system": "^5.1.10",
+    "@types/styled-system": "^5.1.11",
     "lodash": "^4.17.20",
     "polished": "^4.0.5",
     "styled-system": "^5.1.5"
@@ -28,7 +28,7 @@
   "devDependencies": {
     "@storybook/addon-storyshots": "^6.1.15",
     "@storybook/react": "^6.1.15",
-    "@testing-library/react": "^11.2.2",
+    "@testing-library/react": "^11.2.6",
     "@types/lodash": "^4.14.168",
     "@types/styled-components": "^5.1.9",
     "csstype": "^3.0.7",
