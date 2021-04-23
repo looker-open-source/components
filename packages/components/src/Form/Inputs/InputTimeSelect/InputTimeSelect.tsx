@@ -55,7 +55,7 @@ import {
   ComboboxOption,
   ComboboxOptionObject,
 } from '../Combobox'
-import { ComboboxCallback, MaybeComboboxOptionObject } from '../Combobox/types'
+import { MaybeComboboxOptionObject } from '../Combobox/types'
 import { ValidationType } from '../../ValidationMessage'
 import { useReadOnlyWarn } from '../../../utils'
 import { pickAriaAndValidationProps } from '../Select/utils/ariaProps'
