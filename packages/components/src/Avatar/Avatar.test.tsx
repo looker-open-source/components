@@ -33,7 +33,7 @@ import { AvatarCombo } from './AvatarCombo'
 import { AvatarIcon } from './AvatarIcon'
 import { AvatarUser } from './AvatarUser'
 
-/*  eslint-disable @typescript-eslint/camelcase */
+/* eslint-disable camelcase */
 
 describe('Avatar', () => {
   describe('AvatarCombo', () => {

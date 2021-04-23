@@ -30,14 +30,13 @@ import { AvatarCombo, AvatarComboProps } from './AvatarCombo'
 
 const Template: Story<AvatarComboProps> = (args) => <AvatarCombo {...args} />
 
-/* eslint-disable @typescript-eslint/camelcase */
 const user = {
   avatar_url:
     'https://github.com/looker-open-source/components/blob/1b708b472d974987e80c30bbbb286911a438542a/packages/components/test-assets/cheese.png?raw=true',
   first_name: 'Cheddar',
   last_name: 'Cheese',
 }
-/* eslint-enable @typescript-eslint/camelcase */
+/* eslint-disable camelcase */
 
 export const Primary = Template.bind({})
 Primary.args = {

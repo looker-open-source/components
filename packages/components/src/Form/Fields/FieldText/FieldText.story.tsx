@@ -154,7 +154,7 @@ AutoResize.parameters = {
 export const BeforeAfterValidation = () => {
   const { value, toggle } = useToggle(true)
   const validation = value
-    ? { validationMessage: { message: 'Oops!', type: 'error' as 'error' } }
+    ? { validationMessage: { message: 'Oops!', type: 'error' } }
     : {}
   return (
     <SpaceVertical align="start">

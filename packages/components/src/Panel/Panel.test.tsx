@@ -218,11 +218,11 @@ describe('Panel', () => {
     expect(screen.getByText('My neat dialog')).toBeInTheDocument()
   })
 
-  test('triggers console.warn if no children is passed', () => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+  test('triggers console.warn if no children are passed', () => {
+    /* eslint-disable-next-line @typescript-eslint/ban-ts-comment */
     // @ts-ignore
-    renderWithTheme(<Panel>{null}</Panel>)
-    // eslint-disable-next-line no-console
+    renderWithTheme(<Panel />)
+    /* eslint-disable no-console */
     expect(console.warn).toHaveBeenCalled()
   })
 })
