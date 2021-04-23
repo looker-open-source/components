@@ -41,9 +41,9 @@ jobs:
       - uses: c-hive/gha-yarn-cache@v1
       - run : yarn --silent
       - run: yarn test
-      - uses: codecov/codecov-action@v1.4.1
-        with:
-          fail_ci_if_error: false # optional (default = false)
+      - uses: paambaati/codeclimate-action@v2.7.5
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
     env:
       CI: true
   build:
