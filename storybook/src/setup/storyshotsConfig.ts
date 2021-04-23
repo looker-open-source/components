@@ -51,8 +51,9 @@ export const imageSnapshots = () => {
           })
           await page.waitForTimeout(500)
         } else if (
-          pageViewport.width !== STORYBOOK_DEFAULT_VIEWPORT.width ||
-          pageViewport.height !== STORYBOOK_DEFAULT_VIEWPORT.height
+          pageViewport &&
+          (pageViewport.width !== STORYBOOK_DEFAULT_VIEWPORT.width ||
+            pageViewport.height !== STORYBOOK_DEFAULT_VIEWPORT.height)
         ) {
           await page.setViewport(STORYBOOK_DEFAULT_VIEWPORT)
           await page.waitForTimeout(500)
