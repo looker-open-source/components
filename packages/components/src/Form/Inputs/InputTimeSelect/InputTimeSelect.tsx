@@ -310,26 +310,22 @@ const InputTimeSelectLayout = forwardRef(
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [value])
 
-    const handleChange: ComboboxCallback<MaybeComboboxOptionObject> = (
-      newSelectedOption: MaybeComboboxOptionObject
-    ) => {
-      setSelectedOption(newSelectedOption)
-      const newValue = newSelectedOption ? newSelectedOption.value : undefined
-      if (isFunction(onChange) && isValidTime(newValue)) {
-        onChange(newValue)
-      }
-    }
-
     const throttledHandleChange = useMemo(
       () =>
         throttle(
-          (v: MaybeComboboxOptionObject) => {
-            handleChange(v)
+          (newSelectedOption: MaybeComboboxOptionObject) => {
+            setSelectedOption(newSelectedOption)
+            const newValue = newSelectedOption
+              ? newSelectedOption.value
+              : undefined
+            if (isFunction(onChange) && isValidTime(newValue)) {
+              onChange(newValue)
+            }
           },
           50,
           { trailing: false }
         ),
-      [handleChange]
+      [onChange]
     )
 
     const handleTextInputChange = (e: SyntheticEvent) => {
