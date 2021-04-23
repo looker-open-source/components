@@ -21,7 +21,7 @@ do
   # remove filter packages
   rm -rf packages/filter-$name
   # copy over filter packages
-  cp -r ../helltool/packages/filter-$name packages/
+  cp -r ../$SOURCE_PATH/packages/filter-$name packages/
   # use version # for @looker/sdk in package.json
   sed -i "s/@looker\/sdk\": \"\*/@looker\/sdk\": \"$sdkVersion/g" packages/filter-$name/package.json
   # update main path, add module, files, types, etc
