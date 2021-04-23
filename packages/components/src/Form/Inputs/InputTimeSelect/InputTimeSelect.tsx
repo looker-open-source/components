@@ -25,7 +25,7 @@
  */
 import { useTranslation } from 'react-i18next'
 import React, {
-  useCallback,
+  useMemo,
   forwardRef,
   KeyboardEvent,
   useState,
@@ -320,15 +320,15 @@ const InputTimeSelectLayout = forwardRef(
       }
     }
 
-    /* eslint-disable-next-line @typescript-eslint/unbound-method */
-    const throttledHandleChange = useCallback(
-      throttle(
-        (v: MaybeComboboxOptionObject) => {
-          handleChange(v)
-        },
-        50,
-        { trailing: false }
-      ),
+    const throttledHandleChange = useMemo(
+      () =>
+        throttle(
+          (v: MaybeComboboxOptionObject) => {
+            handleChange(v)
+          },
+          50,
+          { trailing: false }
+        ),
       [handleChange]
     )
 
