@@ -45,7 +45,7 @@ export interface UseTrapStackBaseProps<
 
 export interface UseTrapStackProps<
   Element extends HTMLElement = HTMLElement,
-  Options extends {} = {}
+  Options extends unknown = unknown
 > extends UseTrapStackBaseProps<Element> {
   context: Context<TrapStackContextProps<Options>>
   options?: Options
@@ -58,7 +58,7 @@ export interface UseTrapStackProps<
  */
 export const useTrapStack = <
   E extends HTMLElement = HTMLElement,
-  O extends {} = {}
+  O extends unknown = unknown
 >({
   context,
   disabled = false,
