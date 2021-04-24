@@ -45,8 +45,10 @@ import {
   red500,
   white,
 } from '../legacy/palette'
+import { defaultSpecifiableColors } from './defaultSpecifiableColors'
 import { BlendColors, StatefulColors } from './types'
 import { generateInteractive, generatePressed } from './utils'
+import { generateExtendedStatefulColors } from './utils/generateStatefulColors'
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 
@@ -87,4 +89,6 @@ export const fallbackStateful: StatefulColors = {
   neutralPressed: generatePressed(charcoal500),
   neutralText: white,
   neutralBorder: charcoal400,
+
+  ...generateExtendedStatefulColors(defaultSpecifiableColors),
 }

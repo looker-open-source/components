@@ -36,6 +36,10 @@ import {
 } from '../legacy/palette'
 import { CoreColors, IntentColors } from './types'
 
+const calculation = '#319220'
+const dimension = '#31689E'
+const measure = '#C2772E'
+
 export const defaultCoreColors: CoreColors = {
   background: white,
   key: purple400,
@@ -43,9 +47,12 @@ export const defaultCoreColors: CoreColors = {
 }
 
 export const defaultIntentColors: IntentColors = {
+  calculation,
   critical: red500,
+  dimension,
   inform: blue500,
   link: blue600,
+  measure,
   positive: green500,
   warn: yellow500,
 }
