@@ -92,7 +92,25 @@ export interface IntentColors {
   inform: string
 }
 
-export type SpecifiableColors = CoreColors & IntentColors
+export interface SpecifiableTextColors {
+  /**
+   * Used by Heading
+   * @note This is generally identical to colors.text5
+   * @default charcoal800
+   */
+  title: string
+
+  /**
+   * Used by Paragraph, Ul/Ol
+   * @note This is generally identical to colors.text5
+   * @default charcoal800
+   */
+  body: string
+}
+
+export type SpecifiableColors = CoreColors &
+  IntentColors &
+  Partial<SpecifiableTextColors>
 export const specifiableColors: Array<keyof SpecifiableColors> = [
   ...coreColors,
   ...intentColors,
