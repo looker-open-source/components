@@ -24,19 +24,10 @@
 
  */
 
-import { generateColorAliases } from './utils/generateColorAliases'
-import { generateDerivativeColors } from './utils/generateDerivativeColors'
-import { fallbackBlends, fallbackStateful } from './fallbacks'
-import { Colors } from './types'
-import { defaultSpecifiableColors } from './defaultSpecifiableColors'
+import { SpecifiableColors } from './types'
+import { defaultCoreColors, defaultIntentColors } from './defaults'
 
-const derivedColors = generateDerivativeColors(defaultSpecifiableColors)
-const aliasColors = generateColorAliases(fallbackBlends)
-
-export const colors: Colors = {
-  ...defaultSpecifiableColors,
-  ...derivedColors,
-  ...fallbackBlends,
-  ...fallbackStateful,
-  ...aliasColors,
+export const defaultSpecifiableColors: SpecifiableColors = {
+  ...defaultCoreColors,
+  ...defaultIntentColors,
 }

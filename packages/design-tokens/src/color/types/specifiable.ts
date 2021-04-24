@@ -90,6 +90,24 @@ export interface IntentColors {
    * @default blue500
    */
   inform: string
+
+  /**
+   * Indicates a calculated value
+   * @default #319220
+   */
+  calculation: string
+
+  /**
+   * Indicates dimensionality
+   * @default #31689E
+   */
+  dimension: string
+
+  /**
+   * Indicates measure
+   * @default #C2772E
+   */
+  measure: string
 }
 
 export type SpecifiableColors = CoreColors & IntentColors

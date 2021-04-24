@@ -26,6 +26,12 @@
 
 export type StatefulColor = 'key' | 'critical' | 'neutral'
 
+export type ExtendedStatefulColor =
+  | StatefulColor
+  | 'calculation'
+  | 'dimension'
+  | 'measure'
+
 export interface StatefulColorChoices {
   subtle: string
   accent: string
@@ -36,8 +42,14 @@ export interface StatefulColorChoices {
   border: string
 }
 
+export interface ExtendedStateColors
+  extends CalculationStatefulColors,
+    DimensionStatefulColors,
+    MeasureStatefulColors {}
+
 export interface StatefulColors
   extends CriticalStatefulColors,
+    ExtendedStateColors,
     KeyStatefulColors,
     NeutralStatefulColors {}
 
@@ -59,6 +71,36 @@ interface NeutralStatefulColors {
   neutralPressed: string
   neutralText: string
   neutralBorder: string
+}
+
+interface CalculationStatefulColors {
+  calculationSubtle: string
+  calculationAccent: string
+  calculationFocus: string
+  calculationInteractive: string
+  calculationPressed: string
+  calculationText: string
+  calculationBorder: string
+}
+
+interface DimensionStatefulColors {
+  dimensionSubtle: string
+  dimensionAccent: string
+  dimensionFocus: string
+  dimensionInteractive: string
+  dimensionPressed: string
+  dimensionText: string
+  dimensionBorder: string
+}
+
+interface MeasureStatefulColors {
+  measureSubtle: string
+  measureAccent: string
+  measureFocus: string
+  measureInteractive: string
+  measurePressed: string
+  measureText: string
+  measureBorder: string
 }
 
 interface KeyStatefulColors {
