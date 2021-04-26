@@ -48,7 +48,7 @@ const lorem = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do e
 
 export const LegacyComposition = () => (
   <Accordion id="basic-accordion" px="large">
-    <AccordionDisclosure> See more...</AccordionDisclosure>
+    <AccordionDisclosure>See more...</AccordionDisclosure>
     <AccordionContent>{lorem}</AccordionContent>
   </Accordion>
 )
