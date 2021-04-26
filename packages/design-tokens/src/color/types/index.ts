@@ -28,7 +28,7 @@ import { BlendColors } from './blends'
 import { StatefulColors } from './stateful'
 import { SpecifiableColors, TextColor } from './specifiable'
 import { DerivativeColors } from './derivative'
-import { AliasColors, AliasTextColors } from './aliases'
+import { AliasColors } from './aliases'
 
 export type Colors = SpecifiableColors &
   DerivativeColors &
@@ -36,11 +36,11 @@ export type Colors = SpecifiableColors &
   StatefulColors &
   AliasColors
 
-export type TextColors = TextColor & AliasTextColors
+export type TextColors = TextColor
 
 export { coreColors, intentColors, specifiableColors } from './specifiable'
 
-export type { AliasColors, AliasTextColors } from './aliases'
+export type { AliasColors } from './aliases'
 export type { DerivativeColors } from './derivative'
 export type { CoreColors, IntentColors, SpecifiableColors } from './specifiable'
 export type { BlendColors } from './blends'

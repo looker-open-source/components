@@ -26,6 +26,7 @@
 
 import { colors } from '../colors'
 import { defaultCoreColors, defaultIntentColors } from '../defaults'
+import { fallbackBlends } from '../fallbacks'
 import { SpecifiableColors } from '../types'
 import { generateDerivativeColors } from './generateDerivativeColors'
 import {
@@ -38,10 +39,13 @@ const specifiableColors: SpecifiableColors = {
   ...defaultCoreColors,
   ...defaultIntentColors,
 }
-const derivedColors = generateDerivativeColors(specifiableColors)
+const derivedColors = generateDerivativeColors(
+  specifiableColors,
+  fallbackBlends
+)
 
 describe('generateStatefulColors', () => {
-  describe('enerateStatefulColor', () => {
+  describe('generateStatefulColor', () => {
     test('text1', () => {
       expect(generateStatefulColor(background, key)).toMatchInlineSnapshot(
         {},
