@@ -108,21 +108,44 @@ The layout changes from `labelBackgroundOnly` necessitate a separate callback be
 **Note:** When `labelBackgroundOnly` is true, `TreeItem`s should use `itemRole="none"`.
 
 ```jsx
-<Tree label="Cheeses" labelBackgroundOnly defaultOpen>
-  <TreeItem itemRole="none" onClickWhitespace={() => alert('Gouda time.')}>
-    <span onClick={() => alert('Gouda time.')}>Gouda</span>
-  </TreeItem>
-  <TreeItem
-    itemRole="none"
-    onClickWhitespace={() => alert('Swiss time.')}
-    selected
-  >
-    <span onClick={() => alert('Swiss time.')}>Swiss</span>
-  </TreeItem>
-  <TreeItem itemRole="none" onClickWhitespace={() => alert('Cheddar time.')}>
-    <span onClick={() => alert('Cheddar time.')}>Cheddar</span>
-  </TreeItem>
-</Tree>
+;() => {
+  const Label = ({ children, height, onClick }) => (
+    <Flex alignItems="center" height={height} onClick={onClick}>
+      {children}
+    </Flex>
+  )
+
+  // Use the listItemDimensions helper function to grab the dimensions of your Tree's density value
+  const density = -1
+  const { height: fieldHeight } = listItemDimensions(density)
+
+  return (
+    <Tree density={density} label="Cheeses" labelBackgroundOnly defaultOpen>
+      <TreeItem itemRole="none" onClickWhitespace={() => alert('Gouda time.')}>
+        <Label height={fieldHeight} onClick={() => alert('Gouda time.')}>
+          Gouda
+        </Label>
+      </TreeItem>
+      <TreeItem
+        itemRole="none"
+        onClickWhitespace={() => alert('Swiss time.')}
+        selected
+      >
+        <Label height={fieldHeight} onClick={() => alert('Swiss time.')}>
+          Swiss
+        </Label>
+      </TreeItem>
+      <TreeItem
+        itemRole="none"
+        onClickWhitespace={() => alert('Cheddar time.')}
+      >
+        <Label height={fieldHeight} onClick={() => alert('Cheddar time.')}>
+          Cheddar
+        </Label>
+      </TreeItem>
+    </Tree>
+  )
+}
 ```
 
 ## Truncating Tree Items & Labels

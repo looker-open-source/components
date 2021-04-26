@@ -39,11 +39,11 @@ import {
   Popover,
   Paragraph,
   Flex,
-  FlexItem,
 } from '../..'
 import { TreeItem, TreeBranch, Tree } from '..'
 import { HoverDisclosure } from '../../utils'
 import { generateBorderRadius } from '../utils/generateBorderRadius'
+import { listItemDimensions } from '../../List'
 
 const BorderRadiusOverrideTree = styled(Tree)`
   ${({ theme }) => generateBorderRadius('medium', theme)}
@@ -88,6 +88,8 @@ const PickerItem: FC<{ color?: string; truncate?: boolean }> = ({
 
   const handleFieldClick = () => alert(`Clicked on ${children}`)
 
+  const { height: fieldHeight } = listItemDimensions(-3)
+
   return (
     <TreeItem
       color={color}
@@ -108,9 +110,14 @@ const PickerItem: FC<{ color?: string; truncate?: boolean }> = ({
       truncate={truncate}
     >
       <Flex alignItems="center" px="xxsmall">
-        <FlexItem flex={1} onClick={handleFieldClick}>
+        <Flex
+          alignItems="center"
+          flex={1}
+          height={fieldHeight}
+          onClick={handleFieldClick}
+        >
           {children}
-        </FlexItem>
+        </Flex>
         <HoverDisclosure>
           <IconButton
             icon={<SubdirectoryArrowLeft />}
