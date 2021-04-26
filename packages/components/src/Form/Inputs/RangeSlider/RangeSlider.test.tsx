@@ -38,6 +38,8 @@ const globalRequestAnimationFrame = global.requestAnimationFrame
 /* eslint-disable-next-line @typescript-eslint/unbound-method */
 const globalGetBoundingClientRect = Element.prototype.getBoundingClientRect
 
+type VoidFN = () => void
+
 beforeEach(() => {
   global.console = {
     ...globalConsole,
@@ -46,7 +48,7 @@ beforeEach(() => {
   }
   global.requestAnimationFrame = jest
     .fn()
-    .mockImplementation((cb: Function) => cb())
+    .mockImplementation((cb: VoidFN) => cb())
   /* eslint-disable-next-line @typescript-eslint/unbound-method */
   Element.prototype.getBoundingClientRect = jest.fn(() => {
     return {

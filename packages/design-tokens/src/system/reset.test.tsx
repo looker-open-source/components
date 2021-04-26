@@ -32,7 +32,7 @@ import { reset } from './reset'
 
 describe('reset', () => {
   test('resetFn', () => {
-    const TestWrapper: FC<{}> = ({ children }) => {
+    const TestWrapper: FC = ({ children }) => {
       const theme = useContext(ThemeContext)
       const resetFn = jest.fn()
 

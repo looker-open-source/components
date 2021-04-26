@@ -69,6 +69,7 @@ module.exports = {
   ],
   rules: {
     '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-use-before-define': 'off',
     'import/default': 'off',
     'import/named': 'off',
@@ -99,6 +100,7 @@ module.exports = {
       },
     ],
     'no-undef': 'off', // Not needed with TS around
+    'no-use-before-define': 'off',
     'prettier/prettier': 'error',
     'react-hooks/exhaustive-deps': 'warn',
     'react-hooks/rules-of-hooks': 'error',

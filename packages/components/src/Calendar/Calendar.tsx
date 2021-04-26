@@ -38,15 +38,17 @@ import { CalendarNavDisabled } from './CalendarNavDisabled'
 import { formatMonthTitle } from './formatMonthTitle'
 import { CalendarLocalization } from './types'
 
+type NavCB = (date: Date) => void
+
 interface CalendarProps {
   className?: string
   disabled?: boolean
   localization?: CalendarLocalization
-  onDayClick?: (day: Date) => void
-  onMonthChange?: (month: Date) => void
-  onNextClick?: (date: Date) => void
-  onNowClick?: (date: Date) => void
-  onPrevClick?: (date: Date) => void
+  onDayClick?: NavCB
+  onMonthChange?: NavCB
+  onNextClick?: NavCB
+  onNowClick?: NavCB
+  onPrevClick?: NavCB
   readOnly?: boolean
   selectedDates?: Date | Date[] | RangeModifier
   showNextButton?: boolean
@@ -74,10 +76,10 @@ const InternalCalendar: FC<CalendarProps> = ({
   const renderDateRange = selectedDates && has(selectedDates, 'from')
   const modifiers = renderDateRange ? selectedDates : {}
 
-  const disableCallback = (cb: Function = noop) => {
+  const disableCallback = (cb: NavCB = noop) => {
     // allows provided callback to be circumvented by disabled prop
     // eslint-disable-next-line node/no-callback-literal
-    return (...args: any[]) => (disabled ? noop() : cb(...args))
+    return (date: Date) => (disabled ? noop() : cb(date))
   }
 
   return (

@@ -25,7 +25,9 @@
  */
 import { TrapMap } from './types'
 
-export const getActiveTrap = <O extends {} = {}>(trapMap: TrapMap<O>) => {
+export const getActiveTrap = <O extends unknown = unknown>(
+  trapMap: TrapMap<O>
+) => {
   // Sort the traps according to their element's dom position and return the last
   // which we assume to be stacked on top since all components using Portal
   // share a single zIndexFloor and use dom order to determine stacking
