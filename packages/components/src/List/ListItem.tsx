@@ -72,11 +72,6 @@ export interface ListItemProps
   extends CompatibleHTMLProps<HTMLElement>,
     ListItemStatefulProps {
   /**
-   * Determines color of child if child is a string
-  color?: string | ListColor
-  */
-
-  /**
    * Determines the sizing and spacing of the item
    * Notes:
    * - This prop is intended for internal components usage (density should be set on a parent List component for external use cases).
@@ -133,6 +128,7 @@ const ListItemInternal = forwardRef(
       description,
       detail,
       disabled = false,
+      hovered: propsHovered = false,
       href,
       icon,
       itemRole,
@@ -154,7 +150,9 @@ const ListItemInternal = forwardRef(
 
     if (propsColor && propsKeyColor) {
       // eslint-disable-next-line no-console
-      console.warn('keyColor is deprecated use color instead.')
+      console.warn(
+        'Please specify only color or keyColor, not both. keyColor is deprecated'
+      )
     } else if (propsKeyColor) {
       propsColor = 'key'
     }
@@ -169,7 +167,7 @@ const ListItemInternal = forwardRef(
     const color = undefinedCoalesce([propsColor, contextColor])
 
     const [focusVisible, setFocusVisible] = useState(false)
-    const [hovered, setHovered] = useState(false)
+    const [hovered, setHovered] = useState(propsHovered)
 
     const descriptionColor = disabled ? 'text1' : 'text2'
 
@@ -223,7 +221,7 @@ const ListItemInternal = forwardRef(
 
     const renderedChildren = (
       <Wrapper
-        color={listItemLabelColor(color, disabled, selected)}
+        color={listItemLabelColor(color, disabled)}
         fontSize={itemDimensions.labelFontSize}
         lineHeight={itemDimensions.labelLineHeight}
       >
@@ -284,10 +282,12 @@ const ListItemInternal = forwardRef(
       </ListItemLabel>
     )
 
+    const iconAndLabelColor = listItemLabelColor(color, disabled)
+
     const Layout = accessory ? ListItemLayoutAccessory : ListItemLayout
     const listItemContent = (
       <Layout
-        color={listItemLabelColor(color, disabled, selected)}
+        color={iconAndLabelColor}
         description={renderedDescription}
         detail={renderedDetail}
         disabled={disabled}
@@ -308,12 +308,11 @@ const ListItemInternal = forwardRef(
         onClickWhitespace && onClickWhitespace(event)
       }
     }
-
     return (
       <HoverDisclosureContext.Provider value={{ visible: hovered }}>
         <ListItemWrapper
           className={className}
-          color={listItemLabelColor(color, disabled, selected)}
+          color={iconAndLabelColor}
           description={description}
           disabled={disabled}
           focusVisible={focusVisible}

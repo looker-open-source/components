@@ -33,7 +33,7 @@ import {
   AccordionDisclosureStyle,
 } from '../Accordion'
 import { listItemBackgroundColor } from '../List/utils'
-import { ListItemStatefulWithHoveredProps } from '../List/types'
+import { ListItemStatefulProps } from '../List/types'
 import { List, ListItem } from '../List'
 import { listItemLabelCSS } from '../List/ListItemLabel'
 import { IconPlaceholder, IconSize } from '../Icon'
@@ -47,7 +47,8 @@ import {
   iconGapAdjuster,
 } from './utils'
 
-interface TreeStyleProps extends ListItemStatefulWithHoveredProps {
+// extends ListItemStatefulProps
+interface TreeStyleProps {
   border?: boolean
   branchFontWeight?: boolean
   depth: number

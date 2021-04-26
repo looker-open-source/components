@@ -82,17 +82,19 @@ export interface ListItemStatefulProps {
    * Replace the normal uiN(1-5) color, when ListItem is selected, with color label passed.
    */
   color?: ListColor
-}
 
-export interface ListItemStatefulWithHoveredProps
-  extends ListItemStatefulProps {
   /**
-   * If true, the ListItem will have a light background color
+   * Present ListItem in it's hovered state. Only for use in testing / image-snapshots.
+   * Not for real-world use. May be deprecated and removed without notice.
+   *
+   * NOTE: This will only change the _initial_ hover state. If a hover event triggers a change
+   * of hover state the ListItem will return to it's default state.
+   *
+   * @private
    * @default false
    */
   hovered?: boolean
 }
-
 interface DetailOptions {
   /**
    * If true, the detail will appear outside of the item's grey background on hover

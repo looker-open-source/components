@@ -30,10 +30,12 @@ import { PersonOutline } from '@styled-icons/material/PersonOutline'
 import { DateRange } from '@styled-icons/material-outlined/DateRange'
 import { SubdirectoryArrowLeft } from '@styled-icons/material/SubdirectoryArrowLeft'
 import { IconButton } from '../Button'
-import { Text } from '../Text'
+import { Heading, Text } from '../Text'
 import { Grid } from '../Layout/Grid'
+import { SpaceVertical } from '../Layout/Space/SpaceVertical'
 import { ListItem, ListItemProps } from './ListItem'
 import { ListItemRole } from './types'
+import { List } from './List'
 
 const Template: Story<ListItemProps> = (args) => <ListItem {...args} />
 
@@ -69,6 +71,45 @@ IconColorDisabled.args = {
   disabled: true,
   icon: <PersonOutline />,
 }
+
+const ExampleList: FC<ListItemProps> = ({ children, ...props }) => {
+  const args = {
+    icon: <PersonOutline />,
+    ...props,
+  }
+
+  return (
+    <SpaceVertical>
+      <Heading as="h3">{children}</Heading>
+      <List>
+        <ListItem {...args}>Default</ListItem>
+        <ListItem {...args} color="key">
+          Key
+        </ListItem>
+        <ListItem {...args} color="calculation">
+          Calculation
+        </ListItem>
+        <ListItem {...args} color="dimension">
+          Dimension
+        </ListItem>
+        <ListItem {...args} color="measure">
+          Measure
+        </ListItem>
+      </List>
+    </SpaceVertical>
+  )
+}
+
+export const SemanticColors = () => (
+  <Grid columns={4}>
+    <ExampleList>Default</ExampleList>
+    <ExampleList selected>Selected</ExampleList>
+    <ExampleList selected disabled>
+      Selected + Disabled
+    </ExampleList>
+    <ExampleList hovered>Hover</ExampleList>
+  </Grid>
+)
 
 export const Detail = Template.bind({})
 Detail.args = {

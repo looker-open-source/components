@@ -70,15 +70,6 @@ Color.args = {
   color: 'key',
 }
 
-export const Test = Template.bind({})
-Test.args = {
-  ...Basic.args,
-  color: 'critical',
-}
-Test.parameters = {
-  storyshots: false,
-}
-
 export const IconGutter = Template.bind({})
 IconGutter.args = {
   ...Basic.args,

@@ -51,7 +51,6 @@ export type ListColor =
   | 'calculation'
   | 'dimension'
   | 'measure'
-  | 'critical'
   | string
   | undefined
 
@@ -203,6 +202,7 @@ const ListStyle = styled.ul
   margin: 0;
   overflow: auto;
   padding: 0;
+  width: 100%;
 `
 
 export const List = styled(ListInternal)``

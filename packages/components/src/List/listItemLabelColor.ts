@@ -31,13 +31,12 @@ const listItemColor = ['key', 'calculation', 'dimension', 'measure', 'critical']
 
 export const listItemLabelColor = (
   color: string | ListColor,
-  disabled: boolean,
-  selected: boolean | undefined
+  disabled: boolean
 ) => {
   if (disabled) {
     return 'text1'
   } else if (color) {
-    if (color && textColor.includes(color) && selected) {
+    if (color && textColor.includes(color)) {
       return color
     } else if (!listItemColor.includes(color)) {
       return color
