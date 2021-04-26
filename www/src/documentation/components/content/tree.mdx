@@ -110,7 +110,7 @@ Because of the layout changes from `labelBackgroundOnly`, a separate callback mu
 ```jsx
 <Tree label="Cheeses" labelBackgroundOnly defaultOpen>
   <TreeItem itemRole="none" onClickWhitespace={() => alert('Gouda time.')}>
-    Gouda
+    <span onClick={() => alert('Gouda time.')}>Gouda</span>
   </TreeItem>
   <TreeItem
     itemRole="none"
