@@ -107,7 +107,7 @@ const dataUseDataTableSortManager = [
   },
 ]
 
-const Template: Story<{}> = () =>
+const Template: Story = () =>
   useDataTableSortManager(
     'Caption...',
     dataUseDataTableSortManager,

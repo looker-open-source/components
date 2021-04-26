@@ -25,7 +25,7 @@
  */
 import { useTranslation } from 'react-i18next'
 import React, {
-  useCallback,
+  useMemo,
   forwardRef,
   KeyboardEvent,
   useState,
@@ -55,7 +55,7 @@ import {
   ComboboxOption,
   ComboboxOptionObject,
 } from '../Combobox'
-import { ComboboxCallback, MaybeComboboxOptionObject } from '../Combobox/types'
+import { MaybeComboboxOptionObject } from '../Combobox/types'
 import { ValidationType } from '../../ValidationMessage'
 import { useReadOnlyWarn } from '../../../utils'
 import { pickAriaAndValidationProps } from '../Select/utils/ariaProps'
@@ -310,26 +310,22 @@ const InputTimeSelectLayout = forwardRef(
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [value])
 
-    const handleChange: ComboboxCallback<MaybeComboboxOptionObject> = (
-      newSelectedOption: MaybeComboboxOptionObject
-    ) => {
-      setSelectedOption(newSelectedOption)
-      const newValue = newSelectedOption ? newSelectedOption.value : undefined
-      if (isFunction(onChange) && isValidTime(newValue)) {
-        onChange(newValue)
-      }
-    }
-
-    /* eslint-disable-next-line @typescript-eslint/unbound-method */
-    const throttledHandleChange = useCallback(
-      throttle(
-        (v: MaybeComboboxOptionObject) => {
-          handleChange(v)
-        },
-        50,
-        { trailing: false }
-      ),
-      [handleChange]
+    const throttledHandleChange = useMemo(
+      () =>
+        throttle(
+          (newSelectedOption: MaybeComboboxOptionObject) => {
+            setSelectedOption(newSelectedOption)
+            const newValue = newSelectedOption
+              ? newSelectedOption.value
+              : undefined
+            if (isFunction(onChange) && isValidTime(newValue)) {
+              onChange(newValue)
+            }
+          },
+          50,
+          { trailing: false }
+        ),
+      [onChange]
     )
 
     const handleTextInputChange = (e: SyntheticEvent) => {

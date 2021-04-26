@@ -30,6 +30,7 @@ import styled from 'styled-components'
 import { omitStyledProps, shouldForwardProp } from '@looker/design-tokens'
 import { avatarCSS, AvatarProps } from './Avatar'
 
+/* eslint-disable camelcase */
 export interface AvatarUserProps extends AvatarProps {
   user?: {
     first_name: string | null

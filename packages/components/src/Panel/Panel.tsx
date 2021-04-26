@@ -35,9 +35,7 @@ const isRenderProp = (
 export const Panel: FC<PanelProps> = ({ children, content, ...props }) => {
   const { domProps, panel } = usePanel({ content, ...props })
 
-  if (children === undefined) {
-    return <>{panel}</>
-  } else if (isValidElement(children)) {
+  if (isValidElement(children)) {
     children = cloneElement(children, {
       ...domProps,
     })
