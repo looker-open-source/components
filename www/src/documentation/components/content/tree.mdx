@@ -103,7 +103,7 @@ By default, `Tree`s and `TreeItem`s background color from being hovered (or othe
 
 Use `Tree`'s `labelBackgroundOnly` prop to remove the indent padding from being included in the backgrounds of both `Tree` and `TreeItem`.
 
-The layout changes from `labelBackgroundOnly`, necessitate a separate callback be assigned to the indent spacing of child `TreeItem`s. Use `TreeItem`'s `onClickWhitespace` prop to assign a callback to the indent padding of a given item. Generally the callback specified on `onClickWhitespace` is the same as specified on the primary item within the `ListItem`.
+The layout changes from `labelBackgroundOnly` necessitate a separate callback be assigned to the indent spacing of child `TreeItem`s. Use `TreeItem`'s `onClickWhitespace` prop to assign a callback to the indent padding of a given item. Generally the callback specified on `onClickWhitespace` is the same as specified on the primary item within the `TreeItem`.
 
 **Note:** When `labelBackgroundOnly` is true, `TreeItem`s should use `itemRole="none"`.
 
