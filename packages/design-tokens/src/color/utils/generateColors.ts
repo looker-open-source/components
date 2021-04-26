@@ -38,8 +38,24 @@ export const generateColors = (
 ): Colors => {
   const specifiable = { ...themeColors, ...pickBy(customColors, identity) }
 
+  /**
+   * If a theme customization only specifies a `text` color the `body` and
+   * `title` colors of the previous theme will be passed through.
+   *
+   * Instead, it should inferred that the new `text` color should be applied
+   * to the `body` & `title` slots unless those have been explicitly specified.
+   */
+  if (customColors && customColors.text) {
+    if (!customColors.body) {
+      specifiable.body = undefined
+    }
+    if (!customColors.title) {
+      specifiable.title = undefined
+    }
+  }
+
   const blends = generateBlendColors(specifiable)
-  const derivatives = generateDerivativeColors(specifiable)
+  const derivatives = generateDerivativeColors(specifiable, blends)
   const statefulColors = generateStatefulColors(specifiable, derivatives)
   const aliases = generateColorAliases(blends)
 

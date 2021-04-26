@@ -24,6 +24,8 @@
 
  */
 
+import { SpecifiableTextColors } from './specifiable'
+
 interface HighlightColors {
   /**
    * Used to highlight / accent  content
@@ -39,7 +41,9 @@ interface HighlightColors {
   warnAccent: string
 }
 
-export interface DerivativeColors extends HighlightColors {
+export interface DerivativeColors
+  extends SpecifiableTextColors,
+    HighlightColors {
   /**
    * Default input background
    * Text input, select input

@@ -35,7 +35,10 @@ const specifiableColors: SpecifiableColors = {
   ...defaultIntentColors,
 }
 
-const derivedColors = generateDerivativeColors(specifiableColors)
+const derivedColors = generateDerivativeColors(
+  specifiableColors,
+  fallbackBlends
+)
 const aliasColors = generateColorAliases(fallbackBlends)
 
 export const colors: Colors = {
