@@ -117,7 +117,7 @@ Because of the layout changes from `labelBackgroundOnly`, a separate callback mu
     onClickWhitespace={() => alert('Swiss time.')}
     selected
   >
-    Swiss
+    <span onClick={() => alert('Swiss time.')}>Swiss</span>
   </TreeItem>
   <TreeItem itemRole="none" onClickWhitespace={() => alert('Cheddar time.')}>
     Cheddar
