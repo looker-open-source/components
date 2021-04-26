@@ -24,10 +24,7 @@
 
  */
 
-import { ListColor } from './List'
-
-const textColor = ['critical', 'calculation', 'measure']
-const listItemColor = ['key', 'calculation', 'dimension', 'measure', 'critical']
+import { ListColor, listItemColorAppliesToLabel, listItemColor } from './types'
 
 export const listItemLabelColor = (
   color: string | ListColor,
@@ -36,7 +33,7 @@ export const listItemLabelColor = (
   if (disabled) {
     return 'text1'
   } else if (color) {
-    if (color && textColor.includes(color)) {
+    if (listItemColorAppliesToLabel.includes(color)) {
       return color
     } else if (!listItemColor.includes(color)) {
       return color

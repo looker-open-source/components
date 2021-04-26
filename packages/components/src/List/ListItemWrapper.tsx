@@ -33,8 +33,7 @@ import { StyledIconBase } from '@styled-icons/styled-icon'
 import omit from 'lodash/omit'
 import React, { forwardRef, ReactNode, Ref } from 'react'
 import styled from 'styled-components'
-import { ListItemDimensions, listItemDimensionKeys } from './types'
-import { ListColor } from './List'
+import { ListColor, ListItemDimensions, listItemDimensionKeys } from './types'
 
 export interface ListItemWrapperProps
   extends CompatibleHTMLProps<HTMLLIElement>,

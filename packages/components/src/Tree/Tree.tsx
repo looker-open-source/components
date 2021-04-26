@@ -175,7 +175,6 @@ const TreeLayout: FC<TreeProps> = ({
         hovered={hovered}
         iconGap={iconGap}
         iconSize={iconSize}
-        keyColor={useKeyColor}
         labelBackgroundOnly={hasLabelBackgroundOnly}
         selected={selected}
       >

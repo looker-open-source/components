@@ -33,70 +33,12 @@ import React, {
   useMemo,
 } from 'react'
 import styled from 'styled-components'
-import { fontFamily, height, HeightProps } from 'styled-system'
-import {
-  CompatibleHTMLProps,
-  FontFamilies,
-  shouldForwardProp,
-  width,
-  WidthProps,
-} from '@looker/design-tokens'
+import { fontFamily, height } from 'styled-system'
+import { shouldForwardProp, width } from '@looker/design-tokens'
 import { useArrowKeyNav, useWindow } from '../utils'
 import { ListItemContext } from './ListItemContext'
+import { ListProps } from './types'
 import { listItemDimensions } from './utils'
-import { DensityRamp } from './types'
-
-export type ListColor =
-  | 'key'
-  | 'calculation'
-  | 'dimension'
-  | 'measure'
-  | string
-  | undefined
-
-export interface ListProps
-  extends HeightProps,
-    WidthProps,
-    Omit<CompatibleHTMLProps<HTMLUListElement>, 'label'> {
-  /**
-   * Determines how dense a list should be by affecting child ListItem
-   * size and spacing.
-   * @default 0
-   */
-  density?: DensityRamp
-
-  /**
-   * Specify font-family. Generally will end up inheriting `theme.fonts.body` but can be specified as `brand`, `code` or `body` to explicitly specify theme-controlled font-family
-   * @default inherit
-   */
-  fontFamily?: FontFamilies
-
-  /**
-   * If true, all ListItem children without an icon will reserve space for an icon
-   * for alignment purposes.
-   */
-  iconGutter?: boolean
-
-  /**
-   * Replace the normal uiN(1-5) color for selected and selected + hovered color with key colors
-   * @todo - Remove in 2.x release
-   * @deprecated Use `color="key"` instead
-   */
-  keyColor?: boolean
-
-  /**
-   * Replace the default uiN(1-5) background-color, when ListItem is selected, with color label passed.
-   * not specifying color component will default to text-based theme.colors
-   */
-  color?: ListColor
-
-  /**
-   * Use windowing for long lists (strongly recommended to also define a width on List or its container)
-   * 'none' - default with children are <= 100.
-   * 'fixed' - better performance, default when first child is a ListItem (height will default to 100%)
-   */
-  windowing?: 'fixed' | 'none'
-}
 
 const getListItemHeight = (child: ReactChild, height: number) => {
   if (isValidElement(child) && child.props.description) {
@@ -126,7 +68,9 @@ export const ListInternal = forwardRef(
   ) => {
     if (color && keyColor) {
       // eslint-disable-next-line no-console
-      console.warn('keyColor is deprecated use color instead.')
+      console.warn(
+        'Please specify only color or keyColor, not both. keyColor is deprecated'
+      )
     } else if (keyColor) {
       color = 'key'
     }
