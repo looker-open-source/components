@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0-alpha.0](https://github.com/looker-open-source/components/compare/v1.1.3...v1.2.0-alpha.0) (2021-04-26)
+
+
+### Bug Fixes
+
+* **Accordion:** Correctly infer icon style from indicatorPosition="left" ([#2235](https://github.com/looker-open-source/components/issues/2235)) ([f9208e4](https://github.com/looker-open-source/components/commit/f9208e4bfcbe7e038e61a32a5e7c0e5a7b899d67))
+
+
+### Features
+
+* **Accordion:** Refactored Accordion interface and composition ([#2199](https://github.com/looker-open-source/components/issues/2199)) ([8d6ef53](https://github.com/looker-open-source/components/commit/8d6ef530d85702efa354fa9a0f4b9064cb81ad12)), closes [#2231](https://github.com/looker-open-source/components/issues/2231)
+* **IconButton:** Support keyColor background with toggle ([#2118](https://github.com/looker-open-source/components/issues/2118)) ([27047b0](https://github.com/looker-open-source/components/commit/27047b0f99b1f518daa95645a9479472080c4579))
+* **List:** support fontFamily as prop ([#2216](https://github.com/looker-open-source/components/issues/2216)) ([8484f8a](https://github.com/looker-open-source/components/commit/8484f8a086e9bee2c07d3996968375b126e7374f)), closes [#2226](https://github.com/looker-open-source/components/issues/2226)
+* CSS Reset now uses a "defensive" rather than "offensive" strategy (no more GlobalStyles) ([#2120](https://github.com/looker-open-source/components/issues/2120)) ([266e2f2](https://github.com/looker-open-source/components/commit/266e2f25c3396eee5a5b2d2be234c7ccad608811))
+
+
+
+
+
 ## [1.1.3](https://github.com/looker-open-source/components/compare/v1.1.2...v1.1.3) (2021-03-31)
 
 
