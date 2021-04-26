@@ -126,12 +126,12 @@ describe('List', () => {
 
     test('updates ListItem get its text color updated', () => {
       renderWithTheme(
-        <List color="critical">
+        <List color="calculation">
           <ListItem selected>Mozzarella</ListItem>
         </List>
       )
       expect(screen.getByText('Mozzarella')).toBeInTheDocument()
-      expect(screen.getByText('Mozzarella')).toHaveStyle('color: #CC1F36;')
+      expect(screen.getByText('Mozzarella')).toHaveStyle('color: #319220;')
     })
   })
 })

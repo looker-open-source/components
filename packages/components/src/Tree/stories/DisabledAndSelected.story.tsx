@@ -24,32 +24,31 @@
 
  */
 
-import React from 'react'
-import { Divider } from '../../Divider'
+import React, { FC } from 'react'
 import { TreeItem, Tree } from '..'
+import { Grid } from '../../Layout/Grid'
+import { LimitedListColor } from '../../List/types'
+
+const Basic: FC<{ children: string; color?: LimitedListColor }> = ({
+  children,
+  ...props
+}) => (
+  <Tree label={children} defaultOpen {...props}>
+    <Tree disabled label="Disabled Tree" defaultOpen>
+      <TreeItem disabled>Disabled TreeItem</TreeItem>
+      <TreeItem selected>Selected TreeItem</TreeItem>
+    </Tree>
+    <Tree selected label="Selected Tree" defaultOpen>
+      <TreeItem disabled>Disabled TreeItem</TreeItem>
+      <TreeItem selected>Selected TreeItem</TreeItem>
+    </Tree>
+  </Tree>
+)
 
 export const DisabledAndSelected = () => (
-  <>
-    <Tree label="Default Colors" defaultOpen>
-      <Tree disabled label="Disabled Tree" defaultOpen>
-        <TreeItem disabled>Disabled TreeItem</TreeItem>
-        <TreeItem selected>Selected TreeItem</TreeItem>
-      </Tree>
-      <Tree selected label="Selected Tree" defaultOpen>
-        <TreeItem disabled>Disabled TreeItem</TreeItem>
-        <TreeItem selected>Selected TreeItem</TreeItem>
-      </Tree>
-    </Tree>
-    <Divider my="large" />
-    <Tree keyColor label="Brand Colors" defaultOpen>
-      <Tree disabled label="Disabled Tree" defaultOpen>
-        <TreeItem disabled>Disabled TreeItem</TreeItem>
-        <TreeItem selected>Selected TreeItem</TreeItem>
-      </Tree>
-      <Tree selected label="Selected Tree" defaultOpen>
-        <TreeItem disabled>Disabled TreeItem</TreeItem>
-        <TreeItem selected>Selected TreeItem</TreeItem>
-      </Tree>
-    </Tree>
-  </>
+  <Grid columns={3}>
+    <Basic>Default</Basic>
+    <Basic color="key">Key</Basic>
+    <Basic color="calculation">Dimension</Basic>
+  </Grid>
 )
