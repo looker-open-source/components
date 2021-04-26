@@ -32,6 +32,7 @@ import {
   SpecifiableColors,
   DerivativeColors,
 } from '../types'
+import { ExtendedStateColors } from '../types/stateful'
 import { mixScaledColors } from './mixScaledColors'
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
@@ -56,12 +57,50 @@ export const generateStatefulColor = (
   }
 }
 
+export const generateExtendedStatefulColors = (
+  specifiable: SpecifiableColors
+): ExtendedStateColors => {
+  const { background, calculation, dimension, measure } = specifiable
+
+  const calculationColors = generateStatefulColor(background, calculation)
+  const dimensionColors = generateStatefulColor(background, dimension)
+  const measureColors = generateStatefulColor(background, measure)
+
+  return {
+    calculationSubtle: calculationColors.subtle,
+    calculationAccent: calculationColors.accent,
+    calculationFocus: calculationColors.focus,
+    calculationInteractive: calculationColors.interactive,
+    calculationPressed: calculationColors.pressed,
+    calculationText: calculationColors.text,
+    calculationBorder: calculationColors.border,
+
+    dimensionSubtle: dimensionColors.subtle,
+    dimensionAccent: dimensionColors.accent,
+    dimensionFocus: dimensionColors.focus,
+    dimensionInteractive: dimensionColors.interactive,
+    dimensionPressed: dimensionColors.pressed,
+    dimensionText: dimensionColors.text,
+    dimensionBorder: dimensionColors.border,
+
+    measureSubtle: measureColors.subtle,
+    measureAccent: measureColors.accent,
+    measureFocus: measureColors.focus,
+    measureInteractive: measureColors.interactive,
+    measurePressed: measureColors.pressed,
+    measureText: measureColors.text,
+    measureBorder: measureColors.border,
+  }
+}
+
 export const generateStatefulColors = (
   specifiable: SpecifiableColors,
   derivatives: DerivativeColors
 ): StatefulColors => {
   const { background, key, critical } = specifiable
   const { neutral } = derivatives
+
+  const extendedStatefulColors = generateExtendedStatefulColors(specifiable)
 
   const keyColors = generateStatefulColor(background, key)
   const criticalColors = generateStatefulColor(background, critical)
@@ -91,5 +130,7 @@ export const generateStatefulColors = (
     neutralPressed: neutralColors.pressed,
     neutralText: neutralColors.text,
     neutralBorder: neutralColors.border,
+
+    ...extendedStatefulColors,
   }
 }
