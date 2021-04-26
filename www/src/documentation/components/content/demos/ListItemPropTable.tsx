@@ -107,18 +107,21 @@ export const ListItemPropTable = () => {
                 <li>
                   Use "none" if you need to multiple clickable elements within
                   the item's label container.
-                </li>
-                <li style={{ marginLeft: 16 }}>
-                  Using "none" will make <Code>ListItem</Code>`s "onClick" prop
-                  unusable. Any passed in "onClick" will be ignored.
-                </li>
-                <li style={{ marginLeft: 16 }}>
-                  In addition, an item with a description and itemRole="none"
-                  will not abide the @looker/components density scale.
-                </li>
-                <li style={{ marginLeft: 16 }}>
-                  Use "button" or "link" whenever possible to avoid space
-                  inconsistencies.
+                  <ul>
+                    <li style={{ marginLeft: 16 }}>
+                      Using "none" will make <Code>ListItem</Code>`s "onClick"
+                      prop unusable. Any passed in "onClick" will be ignored.
+                    </li>
+                    <li style={{ marginLeft: 16 }}>
+                      In addition, an item with a description and
+                      itemRole="none" will not abide the @looker/components
+                      density scale.
+                    </li>
+                    <li style={{ marginLeft: 16 }}>
+                      Use "button" or "link" whenever possible to avoid space
+                      inconsistencies.
+                    </li>
+                  </ul>
                 </li>
               </BlackTextUnorderedList>
             </TableDataCell>
