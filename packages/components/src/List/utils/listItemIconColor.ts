@@ -24,23 +24,19 @@
 
  */
 
-import { ListColor, listItemColorAppliesToLabel, listItemColor } from './types'
+import { ListColor, listItemColorAppliesToLabel, listItemColor } from '../types'
 
-export const listItemLabelColor = (
-  color: string | ListColor,
-  disabled: boolean
-) => {
+export const listItemIconColor = (color?: ListColor, disabled?: boolean) => {
   if (disabled) {
     return 'text1'
   } else if (color) {
     if (listItemColorAppliesToLabel.includes(color)) {
+      // Theme "slot" & color is applied to label
       return color
     } else if (!listItemColor.includes(color)) {
+      // HTML color
       return color
-    } else {
-      return 'text5'
     }
-  } else {
-    return 'text5'
   }
+  return 'text2'
 }

@@ -49,7 +49,8 @@ import { ListItemLabel } from './ListItemLabel'
 import { ListItemLayout } from './ListItemLayout'
 import { ListItemLayoutAccessory } from './ListItemLayoutAccessory'
 import { ListItemWrapper } from './ListItemWrapper'
-import { listItemLabelColor } from './listItemLabelColor'
+import { listItemIconColor } from './utils/listItemIconColor'
+import { listItemLabelColor } from './utils/listItemLabelColor'
 import {
   DensityRamp,
   Detail,
@@ -132,7 +133,7 @@ const ListItemInternal = forwardRef(
       href,
       icon,
       itemRole,
-      keyColor: propsKeyColor,
+      keyColor,
       onBlur,
       onClick,
       onClickWhitespace,
@@ -148,12 +149,12 @@ const ListItemInternal = forwardRef(
       ...restProps
     } = props
 
-    if (propsColor && propsKeyColor) {
+    if (propsColor && keyColor) {
       // eslint-disable-next-line no-console
       console.warn(
         'Please specify only color or keyColor, not both. keyColor is deprecated'
       )
-    } else if (propsKeyColor) {
+    } else if (keyColor) {
       propsColor = 'key'
     }
 
@@ -282,12 +283,13 @@ const ListItemInternal = forwardRef(
       </ListItemLabel>
     )
 
-    const iconAndLabelColor = listItemLabelColor(color, disabled)
+    const labelColor = listItemLabelColor(color, disabled)
+    const iconColor = listItemIconColor(color, disabled)
 
     const Layout = accessory ? ListItemLayoutAccessory : ListItemLayout
     const listItemContent = (
       <Layout
-        color={iconAndLabelColor}
+        color={iconColor}
         description={renderedDescription}
         detail={renderedDetail}
         disabled={disabled}
@@ -312,7 +314,7 @@ const ListItemInternal = forwardRef(
       <HoverDisclosureContext.Provider value={{ visible: hovered }}>
         <ListItemWrapper
           className={className}
-          color={iconAndLabelColor}
+          color={labelColor}
           description={description}
           disabled={disabled}
           focusVisible={focusVisible}

@@ -27,17 +27,20 @@
 import { ReactNode } from 'react'
 import { AccordionProps } from '../Accordion'
 import { ListItemProps } from '../List'
+import { ListColorProps } from '../List/types'
 
 export interface TreeProps
   extends Omit<
       AccordionProps,
       | 'children'
+      | 'color'
       | 'content'
       | 'indicatorGap'
       | 'indicatorPosition'
       | 'indicatorSize'
     >,
-    ListItemProps {
+    ListColorProps,
+    Omit<ListItemProps, 'color'> {
   /**
    * If true, vertical lines will extend from the Tree indicator (and all sub-Trees' indicators)
    * @default false

@@ -24,16 +24,8 @@
 
  */
 
-import {
-  CompatibleHTMLProps,
-  FontFamilies,
-  FontSizes,
-  LineHeights,
-  SpacingSizes,
-  WidthProps,
-} from '@looker/design-tokens'
+import { FontSizes, LineHeights, SpacingSizes } from '@looker/design-tokens'
 import { ReactNode } from 'react'
-import { HeightProps } from 'styled-system'
 import { IconSize } from '../Icon'
 
 export type DensityRamp = -3 | -2 | -1 | 0 | 1
@@ -63,55 +55,17 @@ export const listItemDimensionKeys = [
   'detailFontSize',
 ]
 
-export type ListColor =
-  | 'key'
-  | 'calculation'
-  | 'dimension'
-  | 'measure'
-  | string
-  | undefined
+export type LimitedListColor = 'key' | 'calculation' | 'dimension' | 'measure'
+export type ListColor = LimitedListColor | string
 
 export const listItemColorAppliesToLabel = ['calculation', 'measure']
 export const listItemColor = ['key', 'calculation', 'dimension', 'measure']
 
-export interface ListProps
-  extends HeightProps,
-    WidthProps,
-    ListColorProps,
-    Omit<CompatibleHTMLProps<HTMLUListElement>, 'label'> {
-  /**
-   * Determines how dense a list should be by affecting child ListItem
-   * size and spacing.
-   * @default 0
-   */
-  density?: DensityRamp
-
-  /**
-   * Specify font-family. Can be specified as `brand`, `code` or `body` to explicitly
-   * specify theme-controlled font-family.
-   * @default inherit
-   */
-  fontFamily?: FontFamilies
-
-  /**
-   * If true, all ListItem children without an icon will reserve space for an icon
-   * for alignment purposes.
-   */
-  iconGutter?: boolean
-
-  /**
-   * Use windowing for long lists (strongly recommended to also define a width on List or its container)
-   * 'none' - default with children are <= 100.
-   * 'fixed' - better performance, default when first child is a ListItem (height will default to 100%)
-   */
-  windowing?: 'fixed' | 'none'
-}
-
-interface ListColorProps {
+export interface ListColorProps {
   /**
    * Replace the normal uiN(1-5) color, when ListItem is selected, with color label passed.
    */
-  color?: ListColor
+  color?: LimitedListColor
   /**
    * Replace the normal uiN(1-5) color for selected and selected + hovered color with key colors
    * @todo - Remove in 2.x release
@@ -120,7 +74,15 @@ interface ListColorProps {
    */
   keyColor?: boolean
 }
-export interface ListItemStatefulProps extends ListColorProps {
+
+export interface ListItemColorProps extends Pick<ListColorProps, 'keyColor'> {
+  /**
+   * Replace the normal uiN(1-5) color, when ListItem is selected, with color label passed.
+   */
+  color?: ListColor
+}
+
+export interface ListItemStatefulProps extends ListItemColorProps {
   /**
    * If true, the ListItem will have a darker background color (same as selected)
    * Note: Using current and selected at the same time is not recommended

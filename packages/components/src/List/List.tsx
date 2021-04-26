@@ -32,13 +32,53 @@ import React, {
   Ref,
   useMemo,
 } from 'react'
+import {
+  CompatibleHTMLProps,
+  FontFamilies,
+  shouldForwardProp,
+  height,
+  width,
+  WidthProps,
+} from '@looker/design-tokens'
+import { HeightProps, fontFamily } from 'styled-system'
 import styled from 'styled-components'
-import { fontFamily, height } from 'styled-system'
-import { shouldForwardProp, width } from '@looker/design-tokens'
 import { useArrowKeyNav, useWindow } from '../utils'
 import { ListItemContext } from './ListItemContext'
-import { ListProps } from './types'
+import { DensityRamp, ListColorProps } from './types'
 import { listItemDimensions } from './utils'
+
+export interface ListProps
+  extends HeightProps,
+    WidthProps,
+    ListColorProps,
+    Omit<CompatibleHTMLProps<HTMLUListElement>, 'label'> {
+  /**
+   * Determines how dense a list should be by affecting child ListItem
+   * size and spacing.
+   * @default 0
+   */
+  density?: DensityRamp
+
+  /**
+   * Specify font-family. Can be specified as `brand`, `code` or `body` to explicitly
+   * specify theme-controlled font-family.
+   * @default inherit
+   */
+  fontFamily?: FontFamilies
+
+  /**
+   * If true, all ListItem children without an icon will reserve space for an icon
+   * for alignment purposes.
+   */
+  iconGutter?: boolean
+
+  /**
+   * Use windowing for long lists (strongly recommended to also define a width on List or its container)
+   * 'none' - default with children are <= 100.
+   * 'fixed' - better performance, default when first child is a ListItem (height will default to 100%)
+   */
+  windowing?: 'fixed' | 'none'
+}
 
 const getListItemHeight = (child: ReactChild, height: number) => {
   if (isValidElement(child) && child.props.description) {
