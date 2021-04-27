@@ -41,7 +41,6 @@ describe('StyleDefender', () => {
     expect(test).toHaveStyle(
       "font-family: Roboto,'Noto Sans','Noto Sans JP','Noto Sans CJK KR','Noto Sans Arabic UI','Noto Sans Devanagari UI','Noto Sans Hebrew','Noto Sans Thai UI',Helvetica,Arial,sans-serif"
     )
-    expect(test).toHaveStyle('font-size: 16px')
   })
 
   test('Computed', () => {
