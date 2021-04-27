@@ -384,7 +384,7 @@ completely) or a function accepting `OptionIndicatorProps` and returning a React
 <Select
   maxWidth={400}
   indicator={({ isActive, isSelected }) => (
-    <Icon icon={isSelected ? 'Favorite' : isActive ? 'Plus' : 'Minus'} />
+    <Icon icon={isSelected ? <Favorite /> : isActive ? <Add /> : <Remove />} />
   )}
   options={[
     { value: 'cheddar', label: 'Cheddar' },
