@@ -34,11 +34,13 @@ export default {
   title: 'ChipButton',
 }
 
-const Template: Story<ChipButtonProps> = (args) => (
-  <ChipButton {...args}>Chip Button</ChipButton>
-)
+const Template: Story<ChipButtonProps> = (args) => <ChipButton {...args} />
 
 export const Basic = Template.bind({})
+Basic.args = {
+  children: 'Chip Button',
+}
+
 export const Disabled = Template.bind({})
 Disabled.args = {
   ...Basic.args,
@@ -57,6 +59,12 @@ export const Prefix = Template.bind({})
 Prefix.args = {
   ...Basic.args,
   prefix: 'role',
+}
+
+export const MaxWidth = Template.bind({})
+MaxWidth.args = {
+  children: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+  maxWidth: 150,
 }
 
 export const ChipButtons = () => {
