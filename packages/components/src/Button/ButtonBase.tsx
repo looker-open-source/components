@@ -39,7 +39,7 @@ import { buttonSize, buttonIconSizeMap, buttonPadding } from './size'
 import { buttonIcon } from './icon'
 import { ButtonProps } from './types'
 
-export const buttonCSS = (color: StatefulColor, focusVisible?: boolean) => css`
+const buttonCSS = (color: StatefulColor, focusVisible?: boolean) => css`
   ${reset}
   ${maxWidth}
   ${minWidth}
