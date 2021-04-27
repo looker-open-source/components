@@ -37,7 +37,6 @@ import { Placement } from '@popperjs/core'
 import { Property } from 'csstype'
 import { IconProps } from '../Icon'
 import { ButtonBaseProps } from './types'
-
 interface IconButtonVariantProps {
   /**
    * Defines the variant or mapping of colors to style properties, like border of the button.

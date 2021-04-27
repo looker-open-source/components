@@ -27,29 +27,16 @@
 import some from 'lodash/some'
 import isFunction from 'lodash/isFunction'
 import styled, { css } from 'styled-components'
-import { reset, space, shouldForwardProp } from '@looker/design-tokens'
+import { reset, space } from '@looker/design-tokens'
 import React, { forwardRef, Ref } from 'react'
 import { Icon } from '../Icon'
 import { useTooltip } from '../Tooltip'
 import { useForkedRef, useWrapEvent } from '../utils'
 import { VisuallyHidden } from '../VisuallyHidden'
-import { GenericButtonBase, buttonCSS } from './ButtonBase'
-import { iconButtonColor } from './iconButtonColor'
+import { GenericButtonBase } from './ButtonBase'
+import { iconButtonColor, ICON_BUTTON_DEFAULT_COLOR } from './iconButtonColor'
 import { iconButtonIconSizeMap, buttonSizeMap } from './size'
 import { IconButtonProps } from './iconButtonTypes'
-
-export const ICON_BUTTON_DEFAULT_COLOR = 'key'
-
-const IconButtonStyle = styled.button
-  .withConfig({
-    shouldForwardProp,
-  })
-  .attrs(({ type = 'button' }) => ({
-    type,
-  }))<IconButtonProps>`
-  ${({ focusVisible }) => buttonCSS('neutral', focusVisible)}
-  height: auto;
-`
 
 const IconButtonComponent = forwardRef(
   (props: IconButtonProps, forwardRef: Ref<HTMLButtonElement>) => {
