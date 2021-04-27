@@ -27,5 +27,9 @@
 const main = require('../src/setup/main')
 module.exports = {
   ...main,
-  stories: ['../src/**/*.stories.tsx', '../../packages/**/*.story.tsx'],
+  stories: [
+    '../src/**/*.stories.tsx',
+    '../../packages/**/*.story.tsx',
+    '../../packages/**/*.stories.tsx',
+  ],
 }

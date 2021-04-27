@@ -12,6 +12,7 @@
     "**/*.a11y.tsx",
     "**/*.spec.ts",
     "**/*.spec.tsx",
+    "**/*.stories.tsx",
     "**/*.story.tsx",
     "**/stories/*",
     "**/*.test.ts",

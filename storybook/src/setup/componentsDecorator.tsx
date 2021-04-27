@@ -24,9 +24,23 @@
 
  */
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { ComponentsProvider } from '@looker/components-providers'
+import { i18nInit } from '@looker/filter-components'
 
-export const componentsDecorator = (storyFn: any) => (
-  <ComponentsProvider loadGoogleFonts>{storyFn()}</ComponentsProvider>
-)
+const i18nPromise = i18nInit()
+
+const Wrapper = ({ storyFn }: { storyFn: any }) => {
+  const [language, setLanguage] = useState<string>()
+  useEffect(() => {
+    i18nPromise.then((i18next) => {
+      setLanguage(i18next.language)
+    })
+  }, [])
+  if (!language) return null
+  return <ComponentsProvider loadGoogleFonts>{storyFn()}</ComponentsProvider>
+}
+
+export const componentsDecorator = (storyFn: any) => {
+  return <Wrapper storyFn={storyFn} />
+}

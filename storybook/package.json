@@ -9,9 +9,10 @@
     "build": "build-storybook -c .storybook"
   },
   "dependencies": {
-    "@looker/components": "^1.2.0-alpha.2",
-    "@looker/components-theme-editor": "^1.2.0-alpha.2",
-    "@looker/design-tokens": "^1.2.0-alpha.2",
+    "@looker/components": "^1.2.0-alpha.1",
+    "@looker/components-providers": "^1.2.0-alpha.1",
+    "@looker/components-theme-editor": "^1.2.0-alpha.1",
+    "@looker/design-tokens": "^1.2.0-alpha.1",
     "@storybook/react": "^6.1.15",
     "lodash": "^4.17.20",
     "react": "^16.14.0",

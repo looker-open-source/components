@@ -37,7 +37,7 @@ const addonEssentials = {
 
 const config = {
   addons: [addonEssentials, '@storybook/addon-a11y'],
-  stories: ['../**/*.story.tsx'],
+  stories: ['../**/*.stories.tsx', '../**/*.story.tsx'],
   webpackFinal: async (config) => {
     config.module.rules.push({
       test: /\.tsx?$/,
