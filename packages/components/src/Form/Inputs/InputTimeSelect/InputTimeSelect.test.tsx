@@ -40,7 +40,7 @@ beforeEach(() => {
   // eslint-disable-next-line @typescript-eslint/unbound-method
   window.HTMLElement.prototype.scrollIntoView = jest.fn()
   // eslint-disable-next-line @typescript-eslint/unbound-method
-  global.Date.now = jest.fn(() => 1580538819172)
+  global.Date.now = jest.fn(() => 1580567580000)
 })
 
 afterEach(() => {

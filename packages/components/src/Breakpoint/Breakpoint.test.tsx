@@ -38,6 +38,14 @@ import { Breakpoint } from './Breakpoint'
  */
 
 describe('Breakpoint', () => {
+  Object.defineProperty(HTMLElement.prototype, 'clientWidth', {
+    configurable: true,
+    value: 800,
+  })
+  Object.defineProperty(HTMLElement.prototype, 'clientHeight', {
+    configurable: true,
+    value: 600,
+  })
   test('all', () => {
     renderWithTheme(
       <Breakpoint show={['mobile', 'xl']}>

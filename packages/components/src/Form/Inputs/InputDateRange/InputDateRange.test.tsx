@@ -35,7 +35,7 @@ const realDateNow = Date.now.bind(global.Date)
 
 beforeEach(() => {
   /* eslint-disable-next-line @typescript-eslint/unbound-method */
-  global.Date.now = jest.fn(() => 1580517818172)
+  global.Date.now = jest.fn(() => 1580567580000)
 })
 
 afterEach(() => {
@@ -158,14 +158,14 @@ test('calls onChange prop when a day is clicked', () => {
     Array [
       Array [
         Object {
-          "from": 2019-06-04T12:00:00.000Z,
-          "to": 2019-06-09T00:00:00.000Z,
+          "from": 2019-06-04T19:00:00.000Z,
+          "to": 2019-06-09T07:00:00.000Z,
         },
       ],
       Array [
         Object {
-          "from": 2019-06-04T12:00:00.000Z,
-          "to": 2019-06-21T12:00:00.000Z,
+          "from": 2019-06-04T19:00:00.000Z,
+          "to": 2019-06-21T19:00:00.000Z,
         },
       ],
     ]
@@ -220,8 +220,8 @@ it('user can clear the selected date by deleting text input content', () => {
     Array [
       Array [
         Object {
-          "from": 2019-06-09T12:00:00.000Z,
-          "to": 2019-06-09T12:00:00.000Z,
+          "from": 2019-06-09T19:00:00.000Z,
+          "to": 2019-06-09T19:00:00.000Z,
         },
       ],
       Array [
