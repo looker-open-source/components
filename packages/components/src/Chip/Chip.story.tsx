@@ -63,6 +63,12 @@ Prefix.args = {
   text: 'admin',
 }
 
+export const MaxWidth = Template.bind({})
+MaxWidth.args = {
+  maxWidth: 150,
+  text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+}
+
 export const ClickAndDelete = () => {
   const handleClick = () => alert('Clicked!')
   const handleDelete = () => alert('Deleted!')
