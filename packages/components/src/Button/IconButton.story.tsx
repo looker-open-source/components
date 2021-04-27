@@ -111,6 +111,15 @@ ToggleBackground.args = {
   ...Basic.args,
   toggle: true,
   toggleBackground: true,
+  toggleColor: undefined,
+}
+
+export const ToggleColor = Template.bind({})
+ToggleColor.args = {
+  ...Basic.args,
+  toggle: true,
+  toggleBackground: true,
+  toggleColor: 'calculation',
 }
 
 export const ToggleBackgroundAndShapeRound = Template.bind({})

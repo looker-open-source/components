@@ -26,8 +26,12 @@
 
 import { css } from 'styled-components'
 import { iconButtonColorDerivation } from '@looker/design-tokens'
+import { ToggleColor } from './IconButton'
 
-export const iconButtonColor = css<{ toggle?: boolean }>`
+export const iconButtonColor = css<{
+  toggle?: boolean
+  toggleColor?: ToggleColor
+}>`
   ${iconButtonColorDerivation}
 
   &:hover,
@@ -44,6 +48,6 @@ export const iconButtonColor = css<{ toggle?: boolean }>`
   }
 
   &[aria-pressed='true'] {
-    color: ${({ theme }) => theme.colors.key};
+    color: ${({ theme, toggleColor }) => theme.colors[toggleColor || 'key']};
   }
 `

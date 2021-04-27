@@ -66,6 +66,7 @@ export type IconButtonSizes =
   | SizeMedium
   | SizeLarge
 
+export type ToggleColor = 'key' | 'calculation' | 'dimension' | 'measure'
 export interface IconButtonProps
   extends Omit<CompatibleHTMLProps<HTMLButtonElement>, 'children' | 'type'>,
     Omit<ButtonBaseProps, 'color'>,
@@ -73,10 +74,15 @@ export interface IconButtonProps
     Pick<IconProps, 'icon'>,
     SpaceProps {
   type?: 'button' | 'submit' | 'reset'
-  /*
-   * this props refer to the keyboard expected focus behavior
+  /**
+   * Refer to the keyboard expected focus behavior
+   * @private
    */
   focusVisible?: boolean
+  /**
+   * Display border
+   * @default false
+   */
   outline?: boolean
   /**
    *  A hidden text label for the IconButton that is accessible to assistive technology
@@ -97,14 +103,21 @@ export interface IconButtonProps
    */
   toggle?: boolean
   /**
-   * to improve toggle's behavior this prop will update the background-color to keySubtle when togle is true
+   * to improve toggle's behavior this prop will update the background-color to `${toggleColor}Accent` when toggle is true
    * @default false
    */
   toggleBackground?: boolean
   /**
+   * Change icon and background color when toggled
+   * Supports 'calculation', 'dimension', 'measure' and 'key'
+   * @default 'key'
+   */
+  toggleColor?: ToggleColor
+  /**
    * By default IconButton shows a Tooltip with the Button's label text. Setting disableTooltip will disable that behavior.
    * @default false
    */
+
   tooltipDisabled?: boolean
   /**
    * Placement of the built-in Tooltip.
@@ -142,6 +155,7 @@ const IconButtonComponent = forwardRef(
       label,
       toggle,
       toggleBackground,
+      toggleColor = 'key',
       tooltipDisabled,
       tooltipPlacement,
       tooltipTextAlign,
@@ -247,8 +261,12 @@ export const IconButton = styled(IconButtonComponent).attrs(
   ${space}
 
   background: none;
-  background-color: ${({ theme, toggle, toggleBackground }) =>
-    toggle && toggleBackground && theme.colors.keySubtle};
+  background-color: ${({
+    theme,
+    toggle,
+    toggleBackground,
+    toggleColor = 'key',
+  }) => toggle && toggleBackground && theme.colors[`${toggleColor}Subtle`]};
   border: none;
   border-radius: ${({ shape }) => shape === 'round' && '100%'};
   ${iconButtonColor}

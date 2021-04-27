@@ -96,6 +96,27 @@ Icon buttons have the `toggleBackground` prop which can be used to show a backgr
 </Space>
 ```
 
+### ToggleColor
+
+Icon buttons have the `toggleColor` prop which can be used to specify a theme-derived background color to the Icon. The `toggle` prop has to be explictly set to either `true` or `false`.
+
+```jsx
+<Space evenly>
+  <IconButton
+    icon={<Favorite />}
+    toggle
+    toggleBackground
+    toggleColor="calculation"
+  />
+  <IconButton
+    icon={<Favorite />}
+    toggle
+    toggleBackground
+    toggleColor="calculation"
+  />
+</Space>
+```
+
 ## IconButton & Tooltip
 
 You can also use your own `Tooltip` around `IconButton` (this will effectively remove the "built-in" `Tooltip`)
