@@ -173,11 +173,17 @@ const AccordionLayout: FC<AccordionProps> = ({
 
         if (isAccordionDisclosure) {
           accordionChildren.push(
-            React.cloneElement(child, accordionDisclosureProps)
+            React.cloneElement(child, {
+              ...accordionDisclosureProps,
+              key: 'accordion-disclosure',
+            })
           )
         } else if (isAccordionContent) {
           accordionChildren.push(
-            React.cloneElement(child, accordionContentProps)
+            React.cloneElement(child, {
+              ...accordionContentProps,
+              key: 'accordion-content',
+            })
           )
         }
       }
