@@ -25,7 +25,7 @@
  */
 
 import { useTranslation } from 'react-i18next'
-import { reset, shouldForwardProp } from '@looker/design-tokens'
+import { reset } from '@looker/design-tokens'
 import React, { forwardRef, KeyboardEvent, MouseEvent, Ref } from 'react'
 import styled from 'styled-components'
 import { maxWidth, MaxWidthProps } from 'styled-system'
@@ -59,9 +59,7 @@ export interface ChipProps
   readOnly?: boolean
 }
 
-const ChipStyle = styled.span.withConfig({
-  shouldForwardProp,
-})<FocusVisibleProps & MaxWidthProps>`
+const ChipStyle = styled.span<FocusVisibleProps & MaxWidthProps>`
   ${reset}
   ${maxWidth}
 
