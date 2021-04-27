@@ -58,6 +58,13 @@ const TreeItemLayout: FC<TreeItemProps> = ({
       'onClickWhitespace is only necessary on <TreeItem> when labelBackgroundOnly is enabled; use onClick on <TreeItem> or to its children instead'
     )
 
+  // Using labelBackgroundOnly with items with itemRole="button" or "link" leads to overly thin backgrounds
+  if (labelBackgroundOnly && restProps.itemRole !== 'none')
+    // eslint-disable-next-line no-console
+    console.warn(
+      'TreeItems should use itemRole="none" when a parent Tree has labelBackgroundOnly=true for visualize purposes.'
+    )
+
   const density = undefinedCoalesce([propsDensity, contextDensity])
   const keyColor = undefinedCoalesce([propsKeyColor, contextKeyColor])
 
