@@ -38,7 +38,9 @@ import { iconButtonColor } from './iconButtonColor'
 import { iconButtonIconSizeMap, buttonSizeMap } from './size'
 import { IconButtonProps } from './iconButtonTypes'
 
-export const IconButtonStyle = styled.button
+export const ICON_BUTTON_DEFAULT_COLOR = 'key'
+
+const IconButtonStyle = styled.button
   .withConfig({
     shouldForwardProp,
   })
@@ -60,7 +62,7 @@ const IconButtonComponent = forwardRef(
       label,
       toggle,
       toggleBackground,
-      toggleColor = 'key',
+      toggleColor = ICON_BUTTON_DEFAULT_COLOR,
       tooltipDisabled,
       tooltipPlacement,
       tooltipTextAlign,
@@ -158,7 +160,8 @@ const outlineCSS = () => {
 }
 
 export const IconButton = styled(IconButtonComponent).attrs(
-  ({ type = 'button' }) => ({
+  ({ type = 'button', toggleColor = ICON_BUTTON_DEFAULT_COLOR }) => ({
+    toggleColor,
     type,
   })
 )<IconButtonProps>`
@@ -166,12 +169,8 @@ export const IconButton = styled(IconButtonComponent).attrs(
   ${space}
 
   background: none;
-  background-color: ${({
-    theme,
-    toggle,
-    toggleBackground,
-    toggleColor = 'key',
-  }) => toggle && toggleBackground && theme.colors[`${toggleColor}Subtle`]};
+  background-color: ${({ theme, toggle, toggleBackground, toggleColor }) =>
+    toggle && toggleBackground && theme.colors[`${toggleColor}Subtle`]};
   border: none;
   border-radius: ${({ shape }) => shape === 'round' && '100%'};
   ${iconButtonColor}
