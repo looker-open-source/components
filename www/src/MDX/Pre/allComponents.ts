@@ -105,6 +105,7 @@ import {
   Link,
   List,
   ListItem,
+  listItemDimensions,
   Menu,
   MenuDivider,
   MenuHeading,
@@ -202,6 +203,7 @@ const otherLibraries = {
 
 const hooks = {
   doDataTableSort,
+  listItemDimensions,
   useConfirm,
   useDialog,
   useDrawer,

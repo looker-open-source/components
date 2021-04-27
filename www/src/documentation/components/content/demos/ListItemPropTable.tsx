@@ -93,16 +93,35 @@ export const ListItemPropTable = () => {
           <TableRow>
             <TableDataCell pr="large">itemRole</TableDataCell>
             <TableDataCell pr="large">
-              <Code>"link" | "button"</Code>
+              <Code>"button" | "link" | "none"</Code>
             </TableDataCell>
             <TableDataCell>
               <Code>itemRole</Code> sets the correct accessible role for the
               item. Below are its possible values:
               <BlackTextUnorderedList type="bullet">
-                <li>Use "link" for items that navigate to another page.</li>
                 <li>
                   Use "button" for items that trigger in-page interactions, like
                   displaying a dialog.
+                </li>
+                <li>Use "link" for items that navigate to another page.</li>
+                <li>
+                  Use "none" if you need to multiple clickable elements within
+                  the item's label container.
+                  <ul>
+                    <li style={{ marginLeft: 16 }}>
+                      Using "none" will make <Code>ListItem</Code>`s "onClick"
+                      prop unusable. Any passed in "onClick" will be ignored.
+                    </li>
+                    <li style={{ marginLeft: 16 }}>
+                      In addition, an item with a description and
+                      itemRole="none" will not abide the @looker/components
+                      density scale.
+                    </li>
+                    <li style={{ marginLeft: 16 }}>
+                      Use "button" or "link" whenever possible to avoid space
+                      inconsistencies.
+                    </li>
+                  </ul>
                 </li>
               </BlackTextUnorderedList>
             </TableDataCell>
