@@ -28,6 +28,7 @@ import { useTranslation } from 'react-i18next'
 import { reset } from '@looker/design-tokens'
 import React, { forwardRef, KeyboardEvent, MouseEvent, Ref } from 'react'
 import styled from 'styled-components'
+import { maxWidth, MaxWidthProps } from 'styled-system'
 import { Close } from '@styled-icons/material/Close'
 import {
   useClickable,
@@ -40,8 +41,9 @@ import { Span, SpanProps } from '../Text'
 import { TruncateProps, truncate } from '../Text/truncate'
 
 export interface ChipProps
-  extends GenericClickProps<HTMLSpanElement>,
-    TruncateProps {
+  extends MaxWidthProps,
+    TruncateProps,
+    GenericClickProps<HTMLSpanElement> {
   /**
    * customize the tooltip on the closing icon
    * @default 'Delete'
@@ -57,8 +59,9 @@ export interface ChipProps
   readOnly?: boolean
 }
 
-const ChipStyle = styled.span<FocusVisibleProps>`
+const ChipStyle = styled.span<FocusVisibleProps & MaxWidthProps>`
   ${reset}
+  ${maxWidth}
 
   align-items: center;
   background: ${({ theme }) => theme.colors.keySubtle};
