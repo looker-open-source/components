@@ -191,7 +191,7 @@ describe('IconButton', () => {
     expect(button).toHaveStyle('background-color: #F3F2FF;')
   })
 
-  test('toggleBackground with shape renders a  round background', () => {
+  test('toggleBackground with shape renders a round background', () => {
     renderWithTheme(
       <IconButton
         icon={<Favorite />}
@@ -204,5 +204,21 @@ describe('IconButton', () => {
     const button = screen.getByRole('button')
     expect(button).toHaveStyle('background-color: #F3F2FF;')
     expect(button).toHaveStyle('border-radius: 100%;')
+    expect(button).toHaveStyle('color: #6c43e0;')
+  })
+
+  test('toggleColor', () => {
+    renderWithTheme(
+      <IconButton
+        label="Test"
+        toggle
+        toggleBackground
+        toggleColor="calculation"
+        icon={<Favorite />}
+      />
+    )
+    const button = screen.getByRole('button')
+    expect(button).toHaveStyle('background-color: #eaf4e8;')
+    expect(button).toHaveStyle('color: #319220;')
   })
 })

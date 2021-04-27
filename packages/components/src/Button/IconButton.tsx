@@ -27,109 +27,16 @@
 import some from 'lodash/some'
 import isFunction from 'lodash/isFunction'
 import styled, { css } from 'styled-components'
-import {
-  CompatibleHTMLProps,
-  reset,
-  SpaceProps,
-  space,
-  shouldForwardProp,
-  SizeLarge,
-  SizeMedium,
-  SizeSmall,
-  SizeXSmall,
-  SizeXXSmall,
-} from '@looker/design-tokens'
-import { Property } from 'csstype'
+import { reset, space } from '@looker/design-tokens'
 import React, { forwardRef, Ref } from 'react'
-import { Placement } from '@popperjs/core'
-import { Icon, IconProps } from '../Icon'
+import { Icon } from '../Icon'
 import { useTooltip } from '../Tooltip'
 import { useForkedRef, useWrapEvent } from '../utils'
 import { VisuallyHidden } from '../VisuallyHidden'
-import { GenericButtonBase, buttonCSS } from './ButtonBase'
-import { ButtonBaseProps } from './types'
-import { iconButtonColor } from './iconButtonColor'
+import { GenericButtonBase } from './ButtonBase'
+import { iconButtonColor, ICON_BUTTON_DEFAULT_COLOR } from './iconButtonColor'
 import { iconButtonIconSizeMap, buttonSizeMap } from './size'
-
-interface IconButtonVariantProps {
-  /**
-   * Defines the variant or mapping of colors to style properties, like border of the button.
-   * @default false
-   */
-  outline?: boolean
-}
-
-export type IconButtonSizes =
-  | SizeXXSmall
-  | SizeXSmall
-  | SizeSmall
-  | SizeMedium
-  | SizeLarge
-
-export interface IconButtonProps
-  extends Omit<CompatibleHTMLProps<HTMLButtonElement>, 'children' | 'type'>,
-    Omit<ButtonBaseProps, 'color'>,
-    IconButtonVariantProps,
-    Pick<IconProps, 'icon'>,
-    SpaceProps {
-  type?: 'button' | 'submit' | 'reset'
-  /*
-   * this props refer to the keyboard expected focus behavior
-   */
-  focusVisible?: boolean
-  outline?: boolean
-  /**
-   *  A hidden text label for the IconButton that is accessible to assistive technology
-   */
-  label: string
-  /**
-   *  Sets the size of the button
-   * @default 'xsmall'
-   */
-  size?: IconButtonSizes
-  /**
-   *  Optional round icon button variant
-   * @default 'square'
-   */
-  shape?: 'round' | 'square'
-  /**
-   * If the IconButton is in the optional toggled on or toggled off state
-   */
-  toggle?: boolean
-  /**
-   * to improve toggle's behavior this prop will update the background-color to keySubtle when togle is true
-   * @default false
-   */
-  toggleBackground?: boolean
-  /**
-   * By default IconButton shows a Tooltip with the Button's label text. Setting disableTooltip will disable that behavior.
-   * @default false
-   */
-  tooltipDisabled?: boolean
-  /**
-   * Placement of the built-in Tooltip.
-   */
-  tooltipPlacement?: Placement
-  /**
-   * Width of the built-in Tooltip.
-   */
-  tooltipWidth?: string
-  /**
-   * Text alignment of the built-in Tooltip.
-   */
-  tooltipTextAlign?: Property.TextAlign
-}
-
-export const IconButtonStyle = styled.button
-  .withConfig({
-    shouldForwardProp,
-  })
-  .attrs(({ type = 'button' }) => ({
-    type,
-  }))<IconButtonProps>`
-  ${({ focusVisible }) => buttonCSS('neutral', focusVisible)}
-  height: auto;
-`
+import { IconButtonProps } from './iconButtonTypes'
 
 const IconButtonComponent = forwardRef(
   (props: IconButtonProps, forwardRef: Ref<HTMLButtonElement>) => {
@@ -142,6 +49,7 @@ const IconButtonComponent = forwardRef(
       label,
       toggle,
       toggleBackground,
+      toggleColor = ICON_BUTTON_DEFAULT_COLOR,
       tooltipDisabled,
       tooltipPlacement,
       tooltipTextAlign,
@@ -239,7 +147,8 @@ const outlineCSS = () => {
 }
 
 export const IconButton = styled(IconButtonComponent).attrs(
-  ({ type = 'button' }) => ({
+  ({ type = 'button', toggleColor = ICON_BUTTON_DEFAULT_COLOR }) => ({
+    toggleColor,
     type,
   })
 )<IconButtonProps>`
@@ -247,8 +156,8 @@ export const IconButton = styled(IconButtonComponent).attrs(
   ${space}
 
   background: none;
-  background-color: ${({ theme, toggle, toggleBackground }) =>
-    toggle && toggleBackground && theme.colors.keySubtle};
+  background-color: ${({ theme, toggle, toggleBackground, toggleColor }) =>
+    toggle && toggleBackground && theme.colors[`${toggleColor}Subtle`]};
   border: none;
   border-radius: ${({ shape }) => shape === 'round' && '100%'};
   ${iconButtonColor}
