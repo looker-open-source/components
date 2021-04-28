@@ -125,6 +125,7 @@ const treeItemIndent = ({
   return labelBackgroundOnly ? wrapperIndent : labelIndent
 }
 
+// Ideally, this would be an li, but the problem is the internal ListItem is also an li so we get an "li can't be a child of an li" error
 export const TreeStyle = styled.div<TreeStyleProps>`
   color: ${({ theme }) => theme.colors.text5};
   flex-shrink: 2;

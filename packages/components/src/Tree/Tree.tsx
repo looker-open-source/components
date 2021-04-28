@@ -139,11 +139,12 @@ const TreeLayout: FC<TreeProps> = ({
   const innerAccordion = (
     <Accordion
       content={
-        <List density={density} windowing="none">
+        <List density={density} role="group" windowing="none">
           {children}
         </List>
       }
       color={indicatorColor}
+      role="treeitem"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       py="none"
