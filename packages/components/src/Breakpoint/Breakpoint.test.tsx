@@ -38,14 +38,22 @@ import { Breakpoint } from './Breakpoint'
  */
 
 describe('Breakpoint', () => {
-  Object.defineProperty(HTMLElement.prototype, 'clientWidth', {
-    configurable: true,
-    value: 800,
+  let widthSpy: jest.SpyInstance<number, []>
+  let heightSpy: jest.SpyInstance<number, []>
+
+  beforeEach(() => {
+    widthSpy = jest
+      .spyOn(document.body, 'clientWidth', 'get')
+      .mockImplementation(() => 800)
+    heightSpy = jest
+      .spyOn(document.body, 'clientHeight', 'get')
+      .mockImplementation(() => 600)
   })
-  Object.defineProperty(HTMLElement.prototype, 'clientHeight', {
-    configurable: true,
-    value: 600,
+  afterEach(() => {
+    widthSpy.mockRestore()
+    heightSpy.mockRestore()
   })
+
   test('all', () => {
     renderWithTheme(
       <Breakpoint show={['mobile', 'xl']}>
