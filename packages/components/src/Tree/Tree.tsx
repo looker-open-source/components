@@ -71,14 +71,7 @@ const TreeLayout: FC<TreeProps> = ({
   const treeContext = useContext(TreeContext)
   const hasBorder = undefinedCoalesce([propsBorder, treeContext.border])
 
-  if (propsColor && keyColor) {
-    // eslint-disable-next-line no-console
-    console.warn(
-      'color and keyColor cannot be combined, specify only one. keyColor is deprecated'
-    )
-  } else if (keyColor) {
-    propsColor = 'key'
-  }
+  if (keyColor) propsColor = 'key'
   const color = undefinedCoalesce([propsColor, treeContext.color])
 
   const hasLabelBackgroundOnly = undefinedCoalesce([
@@ -195,4 +188,4 @@ const TreeLayout: FC<TreeProps> = ({
   )
 }
 
-export const Tree = styled(TreeLayout)``
+export const Tree = styled(TreeLayout)<TreeProps>``

@@ -134,31 +134,4 @@ describe('List', () => {
       expect(screen.getByText('Mozzarella')).toHaveStyle('color: #319220;')
     })
   })
-
-  test('warns on duplicate color props', () => {
-    const globalConsole = global.console
-    const warnMock = jest.fn()
-
-    global.console = ({
-      warn: warnMock,
-    } as unknown) as Console
-
-    renderWithTheme(
-      <List keyColor color="calculation">
-        <ListItem>Whatevs</ListItem>
-      </List>
-    )
-    expect(warnMock.mock.calls).toMatchInlineSnapshot(`
-      Array [
-        Array [
-          "color and keyColor cannot be combined, specify only one. keyColor is deprecated",
-        ],
-        Array [
-          "color and keyColor cannot be combined, specify only one. keyColor is deprecated",
-        ],
-      ]
-    `)
-
-    global.console = globalConsole
-  })
 })

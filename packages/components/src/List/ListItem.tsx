@@ -56,6 +56,7 @@ import {
   Detail,
   ListItemRole,
   ListItemStatefulProps,
+  ListItemColorProps,
 } from './types'
 import { createSafeRel, getDetailOptions, listItemDimensions } from './utils'
 
@@ -69,54 +70,54 @@ const TruncateWrapper: FC<{
   </Text>
 )
 
-export interface ListItemProps
-  extends CompatibleHTMLProps<HTMLElement>,
-    ListItemStatefulProps {
-  /**
-   * Determines the sizing and spacing of the item
-   * Notes:
-   * - This prop is intended for internal components usage (density should be set on a parent List component for external use cases).
-   * - If you choose to use this prop on a ListItem directly, it must be consistent across all items for windowing purposes.
-   * @private
-   */
-  density?: DensityRamp
-  /**
-   * optional extra description
-   * I18n recommended: content that is user visible should be treated for i18n
-   */
-  description?: ReactNode
-  /**
-   * Detail element placed right of the item children. Prop value can take one of two forms:
-   * 1. ReactNode
-   * 2. Object with content and options properties
-   *
-   * I18n recommended: content that is user visible should be treated for i18n
-   */
-  detail?: Detail
-  /**
-   * Optional icon placed left of the item children
-   */
-  icon?: IconType
-  /**
-   * Sets the correct accessible role for the ListItem:
-   * - Use **'link'** for items that navigation to another page
-   * - Use **'button'** for items that trigger in page interactions, like displaying a dialog
-   * - Use **'none'** when including buttons as children in the label container (i.e. the label container will be a <div>).
-   *     NOTE: Height when using an item with a description and role='none' does not auto abide the @looker/components
-   *     density scale. Use 'button' or 'link' whenever possible to avoid space inconsistencies.
-   * @default 'button'
-   */
-  itemRole?: ListItemRole
-  /**
-   * If true, text children and description will be truncated if text overflows
-   */
-  truncate?: boolean
-  /**
-   * Callback to specify onClick handler on item's whitespace.
-   * @private May only be passed via TreeItem. This feature may be removed without a breaking change. We STRONGLY discourage the direct use of this property.
-   */
-  onClickWhitespace?: (event: React.MouseEvent<HTMLElement>) => void
-}
+export type ListItemProps = CompatibleHTMLProps<HTMLElement> &
+  ListItemStatefulProps &
+  ListItemColorProps & {
+    /**
+     * Determines the sizing and spacing of the item
+     * Notes:
+     * - This prop is intended for internal components usage (density should be set on a parent List component for external use cases).
+     * - If you choose to use this prop on a ListItem directly, it must be consistent across all items for windowing purposes.
+     * @private
+     */
+    density?: DensityRamp
+    /**
+     * optional extra description
+     * I18n recommended: content that is user visible should be treated for i18n
+     */
+    description?: ReactNode
+    /**
+     * Detail element placed right of the item children. Prop value can take one of two forms:
+     * 1. ReactNode
+     * 2. Object with content and options properties
+     *
+     * I18n recommended: content that is user visible should be treated for i18n
+     */
+    detail?: Detail
+    /**
+     * Optional icon placed left of the item children
+     */
+    icon?: IconType
+    /**
+     * Sets the correct accessible role for the ListItem:
+     * - Use **'link'** for items that navigation to another page
+     * - Use **'button'** for items that trigger in page interactions, like displaying a dialog
+     * - Use **'none'** when including buttons as children in the label container (i.e. the label container will be a <div>).
+     *     NOTE: Height when using an item with a description and role='none' does not auto abide the @looker/components
+     *     density scale. Use 'button' or 'link' whenever possible to avoid space inconsistencies.
+     * @default 'button'
+     */
+    itemRole?: ListItemRole
+    /**
+     * If true, text children and description will be truncated if text overflows
+     */
+    truncate?: boolean
+    /**
+     * Callback to specify onClick handler on item's whitespace.
+     * @private May only be passed via TreeItem. This feature may be removed without a breaking change. We STRONGLY discourage the direct use of this property.
+     */
+    onClickWhitespace?: (event: React.MouseEvent<HTMLElement>) => void
+  }
 
 const ListItemInternal = forwardRef(
   (
@@ -150,15 +151,6 @@ const ListItemInternal = forwardRef(
     }: ListItemProps,
     ref: Ref<HTMLLIElement>
   ) => {
-    if (propsColor && keyColor) {
-      // eslint-disable-next-line no-console
-      console.warn(
-        'color and keyColor cannot be combined, specify only one. keyColor is deprecated'
-      )
-    } else if (keyColor) {
-      propsColor = 'key'
-    }
-
     const {
       density: contextDensity,
       iconGutter,
@@ -166,6 +158,8 @@ const ListItemInternal = forwardRef(
     } = useContext(ListItemContext)
 
     const itemDimensions = listItemDimensions(propsDensity || contextDensity)
+
+    if (keyColor) propsColor = 'key'
     const color = undefinedCoalesce([propsColor, contextColor])
 
     const [focusVisible, setFocusVisible] = useState(false)
@@ -332,4 +326,4 @@ const ListItemInternal = forwardRef(
 
 ListItemInternal.displayName = 'ListItemInternal'
 
-export const ListItem = styled(ListItemInternal)``
+export const ListItem = styled(ListItemInternal)<ListItemProps>``

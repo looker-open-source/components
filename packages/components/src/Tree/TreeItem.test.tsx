@@ -127,30 +127,6 @@ describe('TreeItem', () => {
     expect(onClickWhitespace).toHaveBeenCalledTimes(1)
   })
 
-  test('warns on duplicate color props', () => {
-    const globalConsole = global.console
-    const warnMock = jest.fn()
-
-    global.console = ({
-      warn: warnMock,
-    } as unknown) as Console
-
-    renderWithTheme(
-      <TreeItem keyColor color="calculation">
-        Whatever
-      </TreeItem>
-    )
-    expect(warnMock.mock.calls).toMatchInlineSnapshot(`
-      Array [
-        Array [
-          "color and keyColor cannot be combined, specify only one. keyColor is deprecated",
-        ],
-      ]
-    `)
-
-    global.console = globalConsole
-  })
-
   test('keyColor', () => {
     renderWithTheme(
       <TreeItem selected keyColor>

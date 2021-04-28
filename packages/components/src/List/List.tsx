@@ -47,38 +47,37 @@ import { ListItemContext } from './ListItemContext'
 import { DensityRamp, ListColorProps } from './types'
 import { listItemDimensions } from './utils'
 
-export interface ListProps
-  extends HeightProps,
-    WidthProps,
-    ListColorProps,
-    Omit<CompatibleHTMLProps<HTMLUListElement>, 'label'> {
-  /**
-   * Determines how dense a list should be by affecting child ListItem
-   * size and spacing.
-   * @default 0
-   */
-  density?: DensityRamp
+export type ListProps = ListColorProps &
+  HeightProps &
+  WidthProps &
+  Omit<CompatibleHTMLProps<HTMLUListElement>, 'label'> & {
+    /**
+     * Determines how dense a list should be by affecting child ListItem
+     * size and spacing.
+     * @default 0
+     */
+    density?: DensityRamp
 
-  /**
-   * If true, all ListItem children without an icon will reserve space for an icon
-   * for alignment purposes.
-   */
-  iconGutter?: boolean
+    /**
+     * If true, all ListItem children without an icon will reserve space for an icon
+     * for alignment purposes.
+     */
+    iconGutter?: boolean
 
-  /**
-   * Specify font-family. Can be specified as `brand`, `code` or `body` to explicitly
-   * specify theme-controlled font-family.
-   * @default inherit
-   */
-  fontFamily?: FontFamilies
+    /**
+     * Specify font-family. Can be specified as `brand`, `code` or `body` to explicitly
+     * specify theme-controlled font-family.
+     * @default inherit
+     */
+    fontFamily?: FontFamilies
 
-  /**
-   * Use windowing for long lists (strongly recommended to also define a width on List or its container)
-   * 'none' - default with children are <= 100.
-   * 'fixed' - better performance, default when first child is a ListItem (height will default to 100%)
-   */
-  windowing?: 'fixed' | 'none'
-}
+    /**
+     * Use windowing for long lists (strongly recommended to also define a width on List or its container)
+     * 'none' - default with children are <= 100.
+     * 'fixed' - better performance, default when first child is a ListItem (height will default to 100%)
+     */
+    windowing?: 'fixed' | 'none'
+  }
 
 const getListItemHeight = (child: ReactChild, height: number) => {
   if (isValidElement(child) && child.props.description) {
@@ -106,15 +105,6 @@ export const ListInternal = forwardRef(
     }: ListProps,
     forwardedRef: Ref<HTMLUListElement>
   ) => {
-    if (color && keyColor) {
-      // eslint-disable-next-line no-console
-      console.warn(
-        'color and keyColor cannot be combined, specify only one. keyColor is deprecated'
-      )
-    } else if (keyColor) {
-      color = 'key'
-    }
-
     const childArray = useMemo(() => Children.toArray(children), [children])
 
     const itemDimensions = listItemDimensions(
@@ -152,7 +142,7 @@ export const ListInternal = forwardRef(
     })
 
     const context = {
-      color,
+      color: keyColor ? 'key' : color,
       density,
       iconGutter,
     }
@@ -188,4 +178,4 @@ const ListStyle = styled.ul
   padding: 0;
 `
 
-export const List = styled(ListInternal)``
+export const List = styled(ListInternal)<ListProps>``

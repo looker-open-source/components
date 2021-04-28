@@ -33,7 +33,7 @@ import {
   AccordionContent,
   AccordionDisclosureStyle,
 } from '../Accordion'
-import { ListItemStatefulProps } from '../List/types'
+import { FlexibleColor, ListItemStatefulProps } from '../List/types'
 import { listItemBackgroundColor } from '../List/utils'
 import { List, ListItem } from '../List'
 import { listItemLabelCSS } from '../List/ListItemLabel'
@@ -48,17 +48,18 @@ import {
   iconGapAdjuster,
 } from './utils'
 
-interface TreeStyleProps extends ListItemStatefulProps {
-  border?: boolean
-  branchFontWeight?: boolean
-  className?: string
-  depth: number
-  dividers?: boolean
-  forceLabelPadding?: boolean
-  iconGap: SpacingSizes
-  iconSize: IconSize
-  labelBackgroundOnly?: boolean
-}
+type TreeStyleProps = ListItemStatefulProps &
+  FlexibleColor & {
+    border?: boolean
+    branchFontWeight?: boolean
+    className?: string
+    depth: number
+    dividers?: boolean
+    forceLabelPadding?: boolean
+    iconGap: SpacingSizes
+    iconSize: IconSize
+    labelBackgroundOnly?: boolean
+  }
 
 const indicatorContainerSize = 'medium'
 

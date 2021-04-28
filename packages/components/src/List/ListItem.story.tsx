@@ -40,39 +40,27 @@ import { List } from './List'
 const Template: Story<ListItemProps> = (args) => <ListItem {...args} />
 
 export const Basic = Template.bind({})
+const basicArgs = { children: 'List Item' }
 Basic.args = {
-  children: 'List Item',
+  ...basicArgs,
 }
 
 export const Icon = Template.bind({})
+const iconArgs = {
+  ...basicArgs,
+  icon: <PersonOutline />,
+}
 Icon.args = {
-  ...Basic.args,
-  icon: <PersonOutline />,
+  ...iconArgs,
 }
 
-export const IconColor = Template.bind({})
-IconColor.args = {
-  ...Basic.args,
-  color: 'calculation',
-  icon: <PersonOutline />,
-}
+export const IconColor = () => <ListItem {...iconArgs} color="calculation" />
+export const IconCustomColor = () => <ListItem {...iconArgs} color="#cc00cc" />
+export const IconColorDisabled = () => (
+  <ListItem {...iconArgs} color="warn" disabled />
+)
 
-export const IconCustomColor = Template.bind({})
-IconCustomColor.args = {
-  ...Basic.args,
-  color: '#cc00cc',
-  icon: <PersonOutline />,
-}
-
-export const IconColorDisabled = Template.bind({})
-IconColorDisabled.args = {
-  ...Basic.args,
-  color: 'warn',
-  disabled: true,
-  icon: <PersonOutline />,
-}
-
-const Example: FC<ListItemProps> = ({ children, ...props }) => {
+const Example: FC<ListItemProps> = ({ children, keyColor, ...props }) => {
   const args = {
     icon: <PersonOutline />,
     ...props,
@@ -192,11 +180,7 @@ Disabled.args = {
   disabled: true,
 }
 
-export const KeyColor = Template.bind({})
-KeyColor.args = {
-  ...Selected.args,
-  keyColor: true,
-}
+export const KeyColor = <ListItem selected keyColor {...basicArgs} />
 
 export const Link = () => {
   return (

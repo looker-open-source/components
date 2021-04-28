@@ -215,25 +215,5 @@ describe('Tree', () => {
       renderWithTheme(<Tree disabled label="Whatever" />)
       expect(screen.getByText('Whatever')).toHaveStyle('color: #939ba5')
     })
-
-    test('warns on duplicate color props', () => {
-      const globalConsole = global.console
-      const warnMock = jest.fn()
-
-      global.console = ({
-        warn: warnMock,
-      } as unknown) as Console
-
-      renderWithTheme(<Tree keyColor label="Whatevs" color="calculation" />)
-      expect(warnMock.mock.calls).toMatchInlineSnapshot(`
-        Array [
-          Array [
-            "color and keyColor cannot be combined, specify only one. keyColor is deprecated",
-          ],
-        ]
-      `)
-
-      global.console = globalConsole
-    })
   })
 })

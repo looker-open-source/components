@@ -56,12 +56,48 @@ export const listItemDimensionKeys = [
 ]
 
 export type LimitedListColor = 'key' | 'calculation' | 'dimension' | 'measure'
-export type ListColor = LimitedListColor | string
+export type StringColor = LimitedListColor | string
+export type ListColor = StringColor
 
 export const listItemColorAppliesToLabel = ['calculation', 'measure']
 export const listItemColor = ['key', 'calculation', 'dimension', 'measure']
 
-export interface ListColorProps {
+export type FlexibleColor = {
+  /**
+   * Replace the normal uiN(1-5) color, when ListItem is selected, with color label passed.
+   *
+   * List, ListItem, Tree & TreeItem now theme-based color assignments. Supported colors are:
+   *
+   *  - key
+   *  - calculation
+   *  - dimension
+   *  - measure
+   *
+   * The color is used a background color (using the `subtle` variant) when the item
+   * is `selected` or `current`. Items with `calculation` & `measure` will have a text
+   * color applied at all times unless they are `disabled`
+   */
+  color?: StringColor
+  /**
+   * Not combinable
+   */
+  keyColor?: never
+}
+
+export type KeyColor = {
+  /**
+   * Replace the normal uiN(1-5) color for selected and selected + hovered color with key colors
+   * @todo - Remove in 2.x release
+   * @deprecated Use `color="key"` instead
+   */
+  keyColor?: boolean
+  /**
+   * Not combinable
+   */
+  color?: never
+}
+
+export type LimitedColor = {
   /**
    * Replace the normal uiN(1-5) color, when ListItem is selected, with color label passed.
    *
@@ -78,22 +114,15 @@ export interface ListColorProps {
    */
   color?: LimitedListColor
   /**
-   * Replace the normal uiN(1-5) color for selected and selected + hovered color with key colors
-   * @todo - Remove in 2.x release
-   * @deprecated Use `color="key"` instead
-   * @default false
+   * Not combinable
    */
-  keyColor?: boolean
+  keyColor?: never
 }
 
-export interface ListItemColorProps extends Pick<ListColorProps, 'keyColor'> {
-  /**
-   * Replace the normal uiN(1-5) color, when ListItem is selected, with color label passed.
-   */
-  color?: ListColor
-}
+export type ListItemColorProps = FlexibleColor | KeyColor
+export type ListColorProps = LimitedColor | KeyColor
 
-export interface ListItemStatefulProps extends ListItemColorProps {
+export type ListItemStatefulProps = {
   /**
    * If true, the ListItem will have a darker background color (same as selected)
    * Note: Using current and selected at the same time is not recommended
@@ -121,6 +150,7 @@ export interface ListItemStatefulProps extends ListItemColorProps {
    */
   selected?: boolean
 }
+
 interface DetailOptions {
   /**
    * If true, the detail will appear outside of the item's grey background on hover

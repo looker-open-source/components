@@ -297,28 +297,4 @@ describe('ListItem', () => {
 
     global.console = globalConsole
   })
-
-  test('warns on duplicate color props', () => {
-    const globalConsole = global.console
-    const warnMock = jest.fn()
-
-    global.console = ({
-      warn: warnMock,
-    } as unknown) as Console
-
-    renderWithTheme(
-      <ListItem keyColor color="calculation">
-        Whatevs
-      </ListItem>
-    )
-    expect(warnMock.mock.calls).toMatchInlineSnapshot(`
-      Array [
-        Array [
-          "color and keyColor cannot be combined, specify only one. keyColor is deprecated",
-        ],
-      ]
-    `)
-
-    global.console = globalConsole
-  })
 })
