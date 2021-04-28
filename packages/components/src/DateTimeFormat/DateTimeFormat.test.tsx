@@ -57,7 +57,7 @@ describe('DateTimeFormat', () => {
     )
     expect(container).toMatchInlineSnapshot(`
       <div>
-        Jan 25, 1988, 5:28:03 PM GMT+5:30
+        Jan 26, 1988, 1:28:03 AM GMT+5:30
       </div>
     `)
   })
@@ -79,7 +79,7 @@ describe('DateTimeFormat', () => {
     )
     expect(container).toMatchInlineSnapshot(`
       <div>
-        January 25th, 1988 at 11:58:03 AM GMT+0
+        January 25th, 1988 at 11:58:03 AM GMT-8
       </div>
     `)
   })
@@ -90,7 +90,7 @@ describe('DateTimeFormat', () => {
     )
     expect(container).toMatchInlineSnapshot(`
       <div>
-        Monday, January 25th, 1988 at 11:58:03 AM GMT+00:00
+        Monday, January 25th, 1988 at 11:58:03 AM GMT-08:00
       </div>
     `)
   })

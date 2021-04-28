@@ -37,15 +37,19 @@ const TestComponent = (props: UseI18nProps) => {
 
 describe('useI18n', () => {
   test('initializes i18next', () => {
+    const spy = jest.spyOn(i18next, 'init')
     render(<TestComponent />)
     expect(i18next.init).toHaveBeenCalledTimes(1)
+    spy.mockRestore()
   })
 
   test('updates with new props', () => {
+    const spy = jest.spyOn(i18next, 'addResourceBundle')
     i18next.isInitialized = true
     render(<TestComponent />)
     expect(i18next.addResourceBundle).toHaveBeenCalledTimes(
       Object.keys(i18nResources.en).length
     )
+    spy.mockRestore()
   })
 })
