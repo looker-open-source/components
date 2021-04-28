@@ -343,8 +343,12 @@ export const InternalRangeSlider = forwardRef(
       if (!isEqual(value, boundedValue)) {
         setValue(sort(boundedValue))
       }
+      // Compares of the min & max values (or fallbacks) themselves to avoid
+      // unintentionally reverting state value due to shallow diffing
+      // a newly instantiated but stale valueProp, if [valueProp] were used
+      // (see RerenderRepro story)
       // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [valueProp])
+    }, valueProp || [min, max])
 
     /*
      * Fire onChange callback when internal value changes

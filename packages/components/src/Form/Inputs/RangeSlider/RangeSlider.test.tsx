@@ -25,12 +25,13 @@
  */
 
 import React from 'react'
-import { fireEvent } from '@testing-library/react'
+import { fireEvent, screen } from '@testing-library/react'
 import {
   renderWithTheme,
   withThemeProvider,
 } from '@looker/components-test-utils'
 import { RangeSlider } from './RangeSlider'
+import { RerenderRepro } from './RangeSlider.story'
 
 const globalConsole = global.console
 const globalRequestAnimationFrame = global.requestAnimationFrame
@@ -239,5 +240,21 @@ describe('disabled prop', () => {
 
     expect(handleChange).toHaveBeenLastCalledWith([0, 10]) // unchanged
     expect(handleChange).toHaveBeenCalledTimes(1)
+  })
+
+  test('intermediate re-render does not cause value to revert', () => {
+    renderWithTheme(<RerenderRepro />)
+
+    const minThumb = screen.getByLabelText('Minimum Value')
+    const maxThumb = screen.getByLabelText('Maximum Value')
+
+    expect(minThumb).toHaveAttribute('aria-valuenow', '0')
+    expect(maxThumb).toHaveAttribute('aria-valuenow', '10')
+
+    maxThumb.focus()
+    fireEvent.keyDown(maxThumb, { key: 'ArrowRight' })
+
+    expect(minThumb).toHaveAttribute('aria-valuenow', '0')
+    expect(maxThumb).toHaveAttribute('aria-valuenow', '11')
   })
 })

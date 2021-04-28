@@ -24,7 +24,13 @@
 
  */
 
-import React, { forwardRef, Ref, useEffect, useRef, ReactNode } from 'react'
+import React, {
+  forwardRef,
+  Ref,
+  useLayoutEffect,
+  useRef,
+  ReactNode,
+} from 'react'
 import { createPortal } from 'react-dom'
 import styled from 'styled-components'
 
@@ -66,7 +72,7 @@ export const Portal = forwardRef(
   (props: PortalProps, ref: Ref<HTMLDivElement>) => {
     const el = useRef(document.createElement('div'))
 
-    useEffect(() => {
+    useLayoutEffect(() => {
       const root = getPortalRoot()
       if (!root) return
 
