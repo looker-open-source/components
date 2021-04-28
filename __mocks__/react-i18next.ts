@@ -23,20 +23,24 @@
  SOFTWARE.
 
  */
-export const useTranslation = () => {
-  return {
-    t: (key: string, options: { [key: string]: string }) => {
-      return `${key} ${
-        options
-          ? Object.keys(options)
-              .map((optionsKey) =>
-                optionsKey === 'ns' ? '' : options[optionsKey]
-              )
-              .join(' ')
-          : ''
-      }`
-    },
-  }
-}
+export const useTranslation = () => ({
+  t: (key, options) =>
+    [
+      key,
+      ...(options
+        ? Object.keys(options).map((optionsKey) =>
+            optionsKey === 'ns' ? '' : options[optionsKey]
+          )
+        : []),
+    ]
+      .join(' ')
+      .trim()
+      .replace(/\s+/g, ' '),
+})
 
-export const initReactI18next = jest.fn()
+export const initReactI18next = {
+  init: () => {
+    //
+  },
+  type: '3rdParty',
+}
