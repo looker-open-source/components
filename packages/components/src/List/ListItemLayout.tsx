@@ -37,7 +37,7 @@ export interface ListItemLayoutProps
   extends Pick<ListItemDimensions, 'px' | 'py'> {
   className?: string
   color?: string
-  labelCreator: FC<{ children: ReactNode; className: string }>
+  labelCreator: FC<{ children: ReactNode; className?: string }>
   description?: ReactNode
   detail?: ReactNode
   disabled: boolean
@@ -48,7 +48,7 @@ export interface ListItemLayoutProps
 
 const ListItemLayoutInternal: FC<ListItemLayoutProps> = ({
   children,
-  className = '',
+  className,
   labelCreator,
   description,
   detail,

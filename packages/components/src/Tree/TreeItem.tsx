@@ -30,7 +30,7 @@ import { undefinedCoalesce } from '../utils'
 import { ListItem, ListItemProps } from '../List'
 import { TreeContext } from './TreeContext'
 
-export interface TreeItemProps extends ListItemProps {
+export type TreeItemProps = ListItemProps & {
   /**
    * Callback triggered only when clicking on the TreeItem's outermost container (i.e. not a child element)
    * Used by `TreeItem`s to allow indent padding clicks to register when `labelBackgroundOnly` is true on a parent `Tree`
@@ -42,15 +42,18 @@ export interface TreeItemProps extends ListItemProps {
 const TreeItemLayout: FC<TreeItemProps> = ({
   children,
   density: propsDensity,
-  keyColor: propsKeyColor,
+  color: propsColor,
+  keyColor,
   onClickWhitespace,
   ...restProps
 }) => {
   const {
     density: contextDensity,
-    keyColor: contextKeyColor,
+    color: contextColor,
     labelBackgroundOnly,
   } = useContext(TreeContext)
+
+  if (keyColor) propsColor = 'key'
 
   if (onClickWhitespace && !labelBackgroundOnly)
     // eslint-disable-next-line no-console
@@ -65,13 +68,10 @@ const TreeItemLayout: FC<TreeItemProps> = ({
       'TreeItems should use itemRole="none" when a parent Tree has labelBackgroundOnly=true for visualize purposes.'
     )
 
-  const density = undefinedCoalesce([propsDensity, contextDensity])
-  const keyColor = undefinedCoalesce([propsKeyColor, contextKeyColor])
-
   return (
     <ListItem
-      density={density}
-      keyColor={keyColor}
+      density={undefinedCoalesce([propsDensity, contextDensity])}
+      color={undefinedCoalesce([propsColor, contextColor])}
       onClickWhitespace={onClickWhitespace}
       {...restProps}
     >
@@ -80,4 +80,4 @@ const TreeItemLayout: FC<TreeItemProps> = ({
   )
 }
 
-export const TreeItem = styled(TreeItemLayout)``
+export const TreeItem = styled(TreeItemLayout)<TreeItemProps>``

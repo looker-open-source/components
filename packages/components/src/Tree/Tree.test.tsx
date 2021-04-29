@@ -26,6 +26,7 @@
 
 import React, { useState } from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
+import { Science } from '@styled-icons/material-outlined/Science'
 import { screen, fireEvent } from '@testing-library/react'
 import { Button } from '../Button'
 import { Tree } from '.'
@@ -198,5 +199,41 @@ describe('Tree', () => {
     expect(screen.queryByText('Tree Detail')).not.toBeInTheDocument()
     fireEvent.mouseEnter(screen.getByText('Tree Label'), { bubbles: true })
     expect(screen.queryByText('Tree Detail')).toBeInTheDocument()
+  })
+
+  describe('color', () => {
+    test('keyColor', () => {
+      renderWithTheme(
+        <Tree
+          keyColor
+          selected
+          label="Whatever"
+          icon={<Science data-testid="icon" />}
+        />
+      )
+      expect(screen.getByText('Whatever')).toHaveStyle('color: #262d33')
+      expect(screen.getByTestId('icon')).toHaveStyle('color: #707781')
+    })
+
+    test('calculation', () => {
+      renderWithTheme(
+        <Tree
+          color="calculation"
+          selected
+          label="Whatever"
+          icon={<Science data-testid="icon" />}
+        />
+      )
+      expect(screen.getByText('Whatever')).toHaveStyle('color: #319220')
+      expect(screen.getByTestId('icon')).toHaveStyle('color: #319220')
+    })
+
+    test('disabled', () => {
+      renderWithTheme(
+        <Tree disabled label="Whatever" icon={<Science data-testid="icon" />} />
+      )
+      expect(screen.getByText('Whatever')).toHaveStyle('color: #939ba5')
+      expect(screen.getByTestId('icon')).toHaveStyle('color: #939ba5')
+    })
   })
 })

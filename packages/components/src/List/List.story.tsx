@@ -64,6 +64,8 @@ FontFamily.args = {
   fontFamily: 'code',
 }
 
+export const Color = () => <List color="key">{listItems}</List>
+
 export const IconGutter = Template.bind({})
 IconGutter.args = {
   ...Basic.args,

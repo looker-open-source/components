@@ -36,7 +36,7 @@ import { listItemDimensions } from '../List/utils'
 import { useNestedMenu, UseNestedMenuProps } from './useNestedMenu'
 
 export interface MenuItemProps
-  extends ListItemProps,
+  extends Omit<ListItemProps, 'color' | 'keyColor'>,
     Pick<UseNestedMenuProps, 'nestedMenu'> {}
 
 const MenuItemInternal = forwardRef(

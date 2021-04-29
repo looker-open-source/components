@@ -29,25 +29,86 @@ import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { fireEvent, configure, screen } from '@testing-library/react'
 import { Science } from '@styled-icons/material-outlined/Science'
-
+import { List } from './List'
 import { ListItem } from './ListItem'
 
 describe('ListItem', () => {
-  test('renders children', () => {
+  test('children', () => {
     renderWithTheme(<ListItem>who!</ListItem>)
     expect(screen.getByText('who!')).toBeVisible()
   })
 
-  test('renders description', () => {
+  test('description', () => {
     renderWithTheme(<ListItem description="are you?">who!</ListItem>)
     expect(screen.getByText('are you?')).toBeVisible()
     expect(screen.getByRole('listitem')).not.toHaveAttribute('description')
   })
 
-  test('renders detail', () => {
+  test('detail', () => {
     renderWithTheme(<ListItem detail="Is an excellent question">who!</ListItem>)
     expect(screen.getByText('Is an excellent question')).toBeVisible()
     expect(screen.getByRole('listitem')).not.toHaveAttribute('detail')
+  })
+
+  test('iconGutter', () => {
+    renderWithTheme(
+      <List iconGutter>
+        <ListItem>who!</ListItem>
+      </List>
+    )
+    expect(screen.getByText('who!')).toBeVisible()
+  })
+
+  describe('color', () => {
+    test('keyColor', () => {
+      renderWithTheme(
+        <ListItem selected keyColor>
+          who!
+        </ListItem>
+      )
+      expect(screen.getByText('who!')).toHaveStyle('color: #262d33')
+      expect(screen.getByRole('listitem')).toHaveStyle('background: #f3f2ff')
+    })
+
+    test('theme', () => {
+      renderWithTheme(
+        <ListItem color="calculation" icon={<Science data-testid="icon" />}>
+          who!
+        </ListItem>
+      )
+      expect(screen.getByText('who!')).toHaveStyle('color: #319220')
+      expect(screen.getByTestId('icon')).toHaveStyle('color: #319220')
+    })
+
+    test('theme selected', () => {
+      renderWithTheme(
+        <ListItem selected color="calculation">
+          who!
+        </ListItem>
+      )
+      expect(screen.getByText('who!')).toHaveStyle('color: #319220')
+      expect(screen.getByRole('listitem')).toHaveStyle('background: #eaf4e8')
+    })
+
+    test('theme + selected + hover', () => {
+      renderWithTheme(
+        <ListItem hovered selected color="calculation">
+          who!
+        </ListItem>
+      )
+      expect(screen.getByText('who!')).toHaveStyle('color: #319220')
+      expect(screen.getByRole('listitem')).toHaveStyle('background: #eaf4e8')
+    })
+
+    test('custom', () => {
+      renderWithTheme(
+        <ListItem color="#cc0000" icon={<Science data-testid="icon" />}>
+          who!
+        </ListItem>
+      )
+      expect(screen.getByText('who!')).toHaveStyle('color: #cc0000')
+      expect(screen.getByTestId('icon')).toHaveStyle('color: #cc0000')
+    })
   })
 
   test('truncate', () => {
