@@ -26,27 +26,28 @@
 
 import { itemSelectedColor, Theme } from '@looker/design-tokens'
 import { css } from 'styled-components'
-import { ListItemStatefulWithHoveredProps } from '../types'
+import { FlexibleColor, ListItemStatefulProps } from '../types'
 
 export const listItemBackgroundColor = ({
-  keyColor,
+  color,
   current,
   disabled,
   hovered,
   selected,
   theme: { colors },
-}: ListItemStatefulWithHoveredProps & { theme: Theme }) => {
-  const keyColors = {
-    all: colors.keySubtle,
-    hovered: colors.ui1,
-    selected: colors.keySubtle,
-  }
-  const uiColors = {
-    all: itemSelectedColor(colors.ui2),
-    hovered: colors.ui1,
-    selected: itemSelectedColor(colors.ui2),
-  }
-  const stateColors = keyColor ? keyColors : uiColors
+}: ListItemStatefulProps & FlexibleColor & { theme: Theme }) => {
+  const stateColors = color
+    ? {
+        all: colors[`${color}Subtle`],
+        hovered: colors.ui1,
+        selected: colors[`${color}Subtle`],
+      }
+    : {
+        all: itemSelectedColor(colors.ui2),
+        hovered: colors.ui1,
+        selected: itemSelectedColor(colors.ui2),
+      }
+
   let renderedColor
 
   if (disabled) renderedColor = 'transparent'

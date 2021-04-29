@@ -47,14 +47,14 @@ const TreeLayout: FC<TreeProps> = ({
   border: propsBorder,
   children,
   className,
-  color,
   density: propsDensity,
   detail: propsDetail,
   disabled,
   dividers,
   forceLabelPadding,
   icon,
-  keyColor: propsKeyColor,
+  keyColor,
+  color: propsColor,
   label: propsLabel,
   labelBackgroundOnly: propsLabelBackgroundOnly,
   onClick,
@@ -70,7 +70,10 @@ const TreeLayout: FC<TreeProps> = ({
 
   const treeContext = useContext(TreeContext)
   const hasBorder = undefinedCoalesce([propsBorder, treeContext.border])
-  const useKeyColor = undefinedCoalesce([propsKeyColor, treeContext.keyColor])
+
+  if (keyColor) propsColor = 'key'
+  const color = undefinedCoalesce([propsColor, treeContext.color])
+
   const hasLabelBackgroundOnly = undefinedCoalesce([
     propsLabelBackgroundOnly,
     treeContext.labelBackgroundOnly,
@@ -135,7 +138,7 @@ const TreeLayout: FC<TreeProps> = ({
     </TreeItemInner>
   )
 
-  const indicatorColor = disabled ? 'text1' : color
+  const indicatorColor = disabled ? 'text1' : 'text5'
   const innerAccordion = (
     <Accordion
       content={
@@ -158,15 +161,16 @@ const TreeLayout: FC<TreeProps> = ({
     <TreeContext.Provider
       value={{
         border: hasBorder,
+        color,
         density,
         depth: depth + 1,
-        keyColor: useKeyColor,
         labelBackgroundOnly: hasLabelBackgroundOnly,
       }}
     >
       <TreeStyle
         border={hasBorder}
         branchFontWeight={branchFontWeight}
+        color={color}
         className={className}
         depth={depth}
         disabled={disabled}
@@ -175,7 +179,6 @@ const TreeLayout: FC<TreeProps> = ({
         hovered={hovered}
         iconGap={iconGap}
         iconSize={iconSize}
-        keyColor={useKeyColor}
         labelBackgroundOnly={hasLabelBackgroundOnly}
         selected={selected}
       >
@@ -185,4 +188,4 @@ const TreeLayout: FC<TreeProps> = ({
   )
 }
 
-export const Tree = styled(TreeLayout)``
+export const Tree = styled(TreeLayout)<TreeProps>``

@@ -24,6 +24,7 @@
 
  */
 
+import React, { FC } from 'react'
 import styled, { css } from 'styled-components'
 import { StyledIconBase } from '@styled-icons/styled-icon'
 import { SpacingSizes } from '@looker/design-tokens'
@@ -32,8 +33,8 @@ import {
   AccordionContent,
   AccordionDisclosureStyle,
 } from '../Accordion'
+import { FlexibleColor, ListItemStatefulProps } from '../List/types'
 import { listItemBackgroundColor } from '../List/utils'
-import { ListItemStatefulWithHoveredProps } from '../List/types'
 import { List, ListItem } from '../List'
 import { listItemLabelCSS } from '../List/ListItemLabel'
 import { IconPlaceholder, IconSize } from '../Icon'
@@ -47,16 +48,18 @@ import {
   iconGapAdjuster,
 } from './utils'
 
-interface TreeStyleProps extends ListItemStatefulWithHoveredProps {
-  border?: boolean
-  branchFontWeight?: boolean
-  depth: number
-  dividers?: boolean
-  forceLabelPadding?: boolean
-  iconGap: SpacingSizes
-  iconSize: IconSize
-  labelBackgroundOnly?: boolean
-}
+type TreeStyleProps = ListItemStatefulProps &
+  FlexibleColor & {
+    border?: boolean
+    branchFontWeight?: boolean
+    className?: string
+    depth: number
+    dividers?: boolean
+    forceLabelPadding?: boolean
+    iconGap: SpacingSizes
+    iconSize: IconSize
+    labelBackgroundOnly?: boolean
+  }
 
 const indicatorContainerSize = 'medium'
 
@@ -125,7 +128,11 @@ const treeItemIndent = ({
   return labelBackgroundOnly ? wrapperIndent : labelIndent
 }
 
-export const TreeStyle = styled.div<TreeStyleProps>`
+const TreeStyleLayout: FC<TreeStyleProps> = ({ className, children }) => (
+  <div className={className}>{children}</div>
+)
+
+export const TreeStyle = styled(TreeStyleLayout)`
   color: ${({ theme }) => theme.colors.text5};
   flex-shrink: 2;
   min-width: 0;

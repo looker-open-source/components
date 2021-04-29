@@ -29,11 +29,12 @@ import { StyledIconBase } from '@styled-icons/styled-icon'
 import omit from 'lodash/omit'
 import React, { forwardRef, ReactNode, Ref } from 'react'
 import styled from 'styled-components'
-import { ListItemDimensions, listItemDimensionKeys } from './types'
+import { ListColor, ListItemDimensions, listItemDimensionKeys } from './types'
 
 export interface ListItemWrapperProps
   extends CompatibleHTMLProps<HTMLLIElement>,
     ListItemDimensions {
+  color: ListColor
   description?: ReactNode // Should be eventually deleted because the CSS could be handled in layout pieces
   focusVisible?: boolean
 }
@@ -44,10 +45,10 @@ const ListItemWrapperInternal = forwardRef(
       <li
         {...omit(
           props,
+          'color',
           'current',
           'focusVisible',
           'hovered',
-          'keyColor',
           'selected',
           [...listItemDimensionKeys]
         )}
@@ -60,13 +61,12 @@ const ListItemWrapperInternal = forwardRef(
 
 ListItemWrapperInternal.displayName = 'ListItemWrapperInternal'
 
-export const ListItemWrapper = styled(
-  ListItemWrapperInternal
-).withConfig<ListItemWrapperProps>({
-  shouldForwardProp,
-})`
+export const ListItemWrapper = styled(ListItemWrapperInternal)
+  .withConfig<ListItemWrapperProps>({
+    shouldForwardProp,
+  })
+  .attrs(({ color = 'text5' }) => ({ color }))`
   align-items: center;
-  color: ${({ theme: { colors } }) => colors.text5};
   display: flex;
   font-size: ${({ theme: { fontSizes } }) => fontSizes.small};
   font-weight: ${({ theme: { fontWeights } }) => fontWeights.normal};
@@ -102,8 +102,6 @@ export const ListItemWrapper = styled(
   }
 
   &[disabled] {
-    color: ${({ theme: { colors } }) => colors.text1};
-
     & > * {
       cursor: not-allowed;
     }

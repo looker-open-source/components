@@ -49,11 +49,13 @@ import { ListItemLabel } from './ListItemLabel'
 import { ListItemLayout } from './ListItemLayout'
 import { ListItemLayoutAccessory } from './ListItemLayoutAccessory'
 import { ListItemWrapper } from './ListItemWrapper'
+import { listItemIconColor, listItemLabelColor } from './utils/listItemColor'
 import {
   DensityRamp,
   Detail,
   ListItemRole,
   ListItemStatefulProps,
+  ListItemColorProps,
 } from './types'
 import { createSafeRel, getDetailOptions, listItemDimensions } from './utils'
 
@@ -67,74 +69,71 @@ const TruncateWrapper: FC<{
   </Text>
 )
 
-export interface ListItemProps
-  extends CompatibleHTMLProps<HTMLElement>,
-    ListItemStatefulProps {
-  /**
-   * Determines color of child if child is a string
-   */
-  color?: string
-  /**
-   * Determines the sizing and spacing of the item
-   * Notes:
-   * - This prop is intended for internal components usage (density should be set on a parent List component for external use cases).
-   * - If you choose to use this prop on a ListItem directly, it must be consistent across all items for windowing purposes.
-   * @private
-   */
-  density?: DensityRamp
-  /**
-   * optional extra description
-   * I18n recommended: content that is user visible should be treated for i18n
-   */
-  description?: ReactNode
-  /**
-   * Detail element placed right of the item children. Prop value can take one of two forms:
-   * 1. ReactNode
-   * 2. Object with content and options properties
-   *
-   * I18n recommended: content that is user visible should be treated for i18n
-   */
-  detail?: Detail
-  /**
-   * Optional icon placed left of the item children
-   */
-  icon?: IconType
-  /**
-   * Sets the correct accessible role for the ListItem:
-   * - Use **'link'** for items that navigation to another page
-   * - Use **'button'** for items that trigger in page interactions, like displaying a dialog
-   * - Use **'none'** when including buttons as children in the label container (i.e. the label container will be a <div>).
-   *     NOTE: Height when using an item with a description and role='none' does not auto abide the @looker/components
-   *     density scale. Use 'button' or 'link' whenever possible to avoid space inconsistencies.
-   * @default 'button'
-   */
-  itemRole?: ListItemRole
-  /**
-   * If true, text children and description will be truncated if text overflows
-   */
-  truncate?: boolean
-  /**
-   * Callback to specify onClick handler on item's whitespace.
-   * @private May only be passed via TreeItem. This feature may be removed without a breaking change. We STRONGLY discourage the direct use of this property.
-   */
-  onClickWhitespace?: (event: React.MouseEvent<HTMLElement>) => void
-}
+export type ListItemProps = CompatibleHTMLProps<HTMLElement> &
+  ListItemStatefulProps &
+  ListItemColorProps & {
+    /**
+     * Determines the sizing and spacing of the item
+     * Notes:
+     * - This prop is intended for internal components usage (density should be set on a parent List component for external use cases).
+     * - If you choose to use this prop on a ListItem directly, it must be consistent across all items for windowing purposes.
+     * @private
+     */
+    density?: DensityRamp
+    /**
+     * optional extra description
+     * I18n recommended: content that is user visible should be treated for i18n
+     */
+    description?: ReactNode
+    /**
+     * Detail element placed right of the item children. Prop value can take one of two forms:
+     * 1. ReactNode
+     * 2. Object with content and options properties
+     *
+     * I18n recommended: content that is user visible should be treated for i18n
+     */
+    detail?: Detail
+    /**
+     * Optional icon placed left of the item children
+     */
+    icon?: IconType
+    /**
+     * Sets the correct accessible role for the ListItem:
+     * - Use **'link'** for items that navigation to another page
+     * - Use **'button'** for items that trigger in page interactions, like displaying a dialog
+     * - Use **'none'** when including buttons as children in the label container (i.e. the label container will be a <div>).
+     *     NOTE: Height when using an item with a description and role='none' does not auto abide the @looker/components
+     *     density scale. Use 'button' or 'link' whenever possible to avoid space inconsistencies.
+     * @default 'button'
+     */
+    itemRole?: ListItemRole
+    /**
+     * If true, text children and description will be truncated if text overflows
+     */
+    truncate?: boolean
+    /**
+     * Callback to specify onClick handler on item's whitespace.
+     * @private May only be passed via TreeItem. This feature may be removed without a breaking change. We STRONGLY discourage the direct use of this property.
+     */
+    onClickWhitespace?: (event: React.MouseEvent<HTMLElement>) => void
+  }
 
 const ListItemInternal = forwardRef(
-  (props: ListItemProps, ref: Ref<HTMLLIElement>) => {
-    const {
+  (
+    {
       children,
       className,
-      color,
+      color: propsColor,
       current,
       density: propsDensity,
       description,
       detail,
       disabled = false,
+      hovered: propsHovered = false,
       href,
       icon,
       itemRole,
-      keyColor: propsKeyColor,
+      keyColor,
       onBlur,
       onClick,
       onClickWhitespace,
@@ -148,21 +147,23 @@ const ListItemInternal = forwardRef(
       target,
       truncate,
       ...restProps
-    } = props
-
+    }: ListItemProps,
+    ref: Ref<HTMLLIElement>
+  ) => {
     const {
       density: contextDensity,
       iconGutter,
-      keyColor: contextKeyColor,
+      color: contextColor,
     } = useContext(ListItemContext)
 
     const itemDimensions = listItemDimensions(propsDensity || contextDensity)
-    const keyColor = undefinedCoalesce([propsKeyColor, contextKeyColor])
+
+    if (keyColor) propsColor = 'key'
+    const color = undefinedCoalesce([propsColor, contextColor])
 
     const [focusVisible, setFocusVisible] = useState(false)
-    const [hovered, setHovered] = useState(false)
+    const [hovered, setHovered] = useState(propsHovered)
 
-    const labelColor = disabled ? 'text1' : color
     const descriptionColor = disabled ? 'text1' : 'text2'
 
     const handleOnBlur = (event: React.FocusEvent<HTMLElement>) => {
@@ -215,7 +216,7 @@ const ListItemInternal = forwardRef(
 
     const renderedChildren = (
       <Wrapper
-        color={labelColor}
+        color={listItemLabelColor(color, disabled)}
         fontSize={itemDimensions.labelFontSize}
         lineHeight={itemDimensions.labelLineHeight}
       >
@@ -244,16 +245,16 @@ const ListItemInternal = forwardRef(
     )
 
     const statefulProps = {
+      color,
       current,
       disabled,
       hovered,
-      keyColor,
       selected,
     }
 
     const LabelCreator: FC<{
       children: ReactNode
-      className: string
+      className?: string
     }> = ({ children, className }) => (
       <ListItemLabel
         itemRole={itemRole}
@@ -279,7 +280,7 @@ const ListItemInternal = forwardRef(
     const Layout = accessory ? ListItemLayoutAccessory : ListItemLayout
     const listItemContent = (
       <Layout
-        color={color}
+        color={listItemIconColor(color, disabled)}
         description={renderedDescription}
         detail={renderedDetail}
         disabled={disabled}
@@ -300,11 +301,11 @@ const ListItemInternal = forwardRef(
         onClickWhitespace && onClickWhitespace(event)
       }
     }
-
     return (
       <HoverDisclosureContext.Provider value={{ visible: hovered }}>
         <ListItemWrapper
           className={className}
+          color={listItemLabelColor(color, disabled)}
           description={description}
           disabled={disabled}
           focusVisible={focusVisible}
@@ -324,4 +325,4 @@ const ListItemInternal = forwardRef(
 
 ListItemInternal.displayName = 'ListItemInternal'
 
-export const ListItem = styled(ListItemInternal)``
+export const ListItem = styled(ListItemInternal)<ListItemProps>``
