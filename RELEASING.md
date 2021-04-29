@@ -43,7 +43,7 @@ Major releases include change(s) that removes an existing component or reduces t
 
 Audit possible downstream impacts
 
-- Verify bundle size has erroneously changed
+- Verify bundle size has not erroneously changed
 - Audit for IE11 impacts
 - Audit for new dependencies
 - Obtain sign-off from contributors that their code is ready for release
