@@ -180,7 +180,7 @@ Disabled.args = {
   disabled: true,
 }
 
-export const KeyColor = <ListItem selected keyColor {...basicArgs} />
+export const KeyColor = () => <ListItem selected keyColor {...basicArgs} />
 
 export const Link = () => {
   return (
