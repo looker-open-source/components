@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.6](https://github.com/looker-open-source/components/compare/v1.1.5...v1.1.6) (2021-04-29)
+
+
+### Bug Fixes
+
+* **RangeSlider:** Value stays within bounds when min/max changes ([5997829](https://github.com/looker-open-source/components/commit/5997829a8fd6c678583de7d2ee5c4669036e3ed0))
+
+
+
+
+
+## [1.1.5](https://github.com/looker-open-source/components/compare/v1.1.4...v1.1.5) (2021-04-28)
+
+**Note:** Version bump only for package @looker/components
+
+
+
+
+
+## [1.1.4](https://github.com/looker-open-source/components/compare/v1.1.3...v1.1.4) (2021-04-28)
+
+
+### Bug Fixes
+
+* **List:** Only define height when windowing ([#2208](https://github.com/looker-open-source/components/issues/2208)) ([965a628](https://github.com/looker-open-source/components/commit/965a628859077e1594cfe17b70b6dc74b6eb7ee5))
+* **ListDivider:** Correct color for ListDivider, MenuDivider, SelectOptionsDivider ([#2218](https://github.com/looker-open-source/components/issues/2218)) ([524557d](https://github.com/looker-open-source/components/commit/524557da7d2bc4b5731aa8d9740ff139125aa689))
+* **MenuHeading:** Added spacing to MenuHeadings that follow MenuDividers ([#2172](https://github.com/looker-open-source/components/issues/2172)) ([7dd2dee](https://github.com/looker-open-source/components/commit/7dd2deef9d4ff1aa04bc4ae5213894cb1f74464e)), closes [#2173](https://github.com/looker-open-source/components/issues/2173) [#2176](https://github.com/looker-open-source/components/issues/2176)
+* **Portal:** Insert element earlier to support measured components ([#2185](https://github.com/looker-open-source/components/issues/2185)) ([bdabc45](https://github.com/looker-open-source/components/commit/bdabc453808a1d501a41787851f0f3e9caaf2757))
+* **RangeSlider:** Value state reverting if re-rendered before prop is updated ([#2174](https://github.com/looker-open-source/components/issues/2174)) ([6b1ae19](https://github.com/looker-open-source/components/commit/6b1ae1945f9c3951ceede4bb980ba778c95955cd))
+* **Truncate:** Prevent spurious scrollbar presentation due to browser settings ([#2175](https://github.com/looker-open-source/components/issues/2175)) ([23c403a](https://github.com/looker-open-source/components/commit/23c403a9504271002e60d6ea3c817568a2d4c333))
+
+
 # [1.2.0-alpha.2](https://github.com/looker-open-source/components/compare/v1.2.0-alpha.1...v1.2.0-alpha.2) (2021-04-28)
 
 
