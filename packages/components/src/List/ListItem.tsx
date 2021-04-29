@@ -49,8 +49,7 @@ import { ListItemLabel } from './ListItemLabel'
 import { ListItemLayout } from './ListItemLayout'
 import { ListItemLayoutAccessory } from './ListItemLayoutAccessory'
 import { ListItemWrapper } from './ListItemWrapper'
-import { listItemIconColor } from './utils/listItemIconColor'
-import { listItemLabelColor } from './utils/listItemLabelColor'
+import { listItemIconColor, listItemLabelColor } from './utils/listItemColor'
 import {
   DensityRamp,
   Detail,

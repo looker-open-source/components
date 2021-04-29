@@ -60,7 +60,12 @@ export type StringColor = LimitedListColor | string
 export type ListColor = StringColor
 
 export const listItemColorAppliesToLabel = ['calculation', 'measure']
-export const listItemColor = ['key', 'calculation', 'dimension', 'measure']
+export const listItemColorOptions = [
+  'key',
+  'calculation',
+  'dimension',
+  'measure',
+]
 
 export type FlexibleColor = {
   /**
