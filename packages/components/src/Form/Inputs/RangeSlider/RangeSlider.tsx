@@ -348,7 +348,7 @@ export const InternalRangeSlider = forwardRef(
       // a newly instantiated but stale valueProp, if [valueProp] were used
       // (see RerenderRepro story)
       // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, valueProp || [min, max])
+    }, [valueProp])
 
     /*
      * Fire onChange callback when internal value changes

@@ -24,7 +24,9 @@
 
  */
 
-import React from 'react'
+import React, { useState } from 'react'
+import { Button } from '../../../Button'
+import { Paragraph } from '../../../Text'
 import { RangeSlider } from './RangeSlider'
 
 export default {
@@ -44,9 +46,19 @@ const NumberFilter = ({
   AST: { value?: number[] }
   onChange: (value: number[]) => void
 }) => {
+  const [minMax, setMinMax] = useState([0, 100])
   const rangeValue = getRange(value)
   return (
-    <RangeSlider min={0} max={100} value={rangeValue} onChange={onChange} />
+    <>
+      <RangeSlider
+        min={minMax[0]}
+        max={minMax[1]}
+        value={rangeValue}
+        onChange={onChange}
+        width={200}
+      />
+      <Button onClick={() => setMinMax([0, 5])}>Min/max to 0 - 5</Button>
+    </>
   )
 }
 
@@ -81,7 +93,17 @@ export const RerenderRepro = () => {
   const handleChange = (newValue: string) => {
     setExpression(newValue)
   }
-  return <Filter expression={expression} onChange={handleChange} />
+  return (
+    <>
+      <Paragraph>
+        When updating the min/max, the value should move to stay within bounds.
+      </Paragraph>
+      <Paragraph>
+        When changing the value, it should not immediately reset.
+      </Paragraph>
+      <Filter expression={expression} onChange={handleChange} />
+    </>
+  )
 }
 
 RerenderRepro.parameters = {
