@@ -35,55 +35,71 @@ afterEach(() => {
   onChange.mockClear()
 })
 
-test('<PageSize/> with defaults', () => {
-  renderWithTheme(<PageSize value={10} total={1000} onChange={onChange} />)
+describe('PageSize', () => {
+  test('defaults', () => {
+    renderWithTheme(<PageSize value={10} total={1000} onChange={onChange} />)
 
-  const select = screen.getByDisplayValue('10')
+    const select = screen.getByDisplayValue('10')
 
-  fireEvent.click(select)
+    fireEvent.click(select)
 
-  expect(screen.getByText('10')).toBeInTheDocument()
-  expect(screen.getByText('25')).toBeInTheDocument()
-  expect(screen.getByText('50')).toBeInTheDocument()
-  expect(screen.getByText('100')).toBeInTheDocument()
+    expect(screen.getByText('10')).toBeInTheDocument()
+    expect(screen.getByText('25')).toBeInTheDocument()
+    expect(screen.getByText('50')).toBeInTheDocument()
+    expect(screen.getByText('100')).toBeInTheDocument()
 
-  fireEvent.click(screen.getByText('50'))
-  expect(onChange).toHaveBeenCalledTimes(1)
-})
+    fireEvent.click(screen.getByText('50'))
+    expect(onChange).toHaveBeenCalledTimes(1)
+  })
 
-test('<PageSize/> with custom options prop', () => {
-  renderWithTheme(
-    <PageSize
-      value={20}
-      total={1000}
-      options={[20, 40, 60]}
-      onChange={onChange}
-    />
-  )
+  test('custom options prop', () => {
+    renderWithTheme(
+      <PageSize
+        value={20}
+        total={1000}
+        options={[20, 40, 60]}
+        onChange={onChange}
+      />
+    )
 
-  const select = screen.getByDisplayValue('20')
+    const select = screen.getByDisplayValue('20')
 
-  fireEvent.click(select)
+    fireEvent.click(select)
 
-  expect(screen.getByText('20')).toBeInTheDocument()
-  expect(screen.getByText('40')).toBeInTheDocument()
-  expect(screen.getByText('60')).toBeInTheDocument()
+    expect(screen.getByText('20')).toBeInTheDocument()
+    expect(screen.getByText('40')).toBeInTheDocument()
+    expect(screen.getByText('60')).toBeInTheDocument()
 
-  fireEvent.click(screen.getByText('40'))
-  expect(onChange).toHaveBeenCalledTimes(1)
-})
+    fireEvent.click(screen.getByText('40'))
+    expect(onChange).toHaveBeenCalledTimes(1)
+  })
 
-test('<PageSize/> does not load when smallest option >= total', () => {
-  renderWithTheme(
-    <PageSize
-      value={100}
-      total={5}
-      options={[100, 200, 300]}
-      onChange={onChange}
-    />
-  )
+  test('does not load when smallest option >= total', () => {
+    renderWithTheme(
+      <PageSize
+        value={100}
+        total={5}
+        options={[100, 200, 300]}
+        onChange={jest.fn()}
+      />
+    )
 
-  expect(screen.queryByText('Display')).not.toBeInTheDocument()
-  expect(screen.queryByDisplayValue('100')).not.toBeInTheDocument()
-  expect(screen.queryByText('of 5')).not.toBeInTheDocument()
+    expect(screen.queryByText('Display')).not.toBeInTheDocument()
+    expect(screen.queryByDisplayValue('100')).not.toBeInTheDocument()
+    expect(screen.queryByText('of 5')).not.toBeInTheDocument()
+  })
+
+  test('alwaysVisible', () => {
+    renderWithTheme(
+      <PageSize
+        value={100}
+        total={5}
+        options={[100, 200, 300]}
+        onChange={jest.fn()}
+        alwaysVisible
+      />
+    )
+    expect(screen.getByDisplayValue('100')).toBeInTheDocument()
+    expect(screen.getByText('of 5')).not.toBeInTheDocument()
+  })
 })

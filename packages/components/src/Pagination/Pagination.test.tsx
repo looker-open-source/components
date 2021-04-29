@@ -29,85 +29,110 @@ import { renderWithTheme } from '@looker/components-test-utils'
 import { fireEvent, screen } from '@testing-library/react'
 import { Pagination } from './Pagination'
 
-const onPageChange = jest.fn()
+describe('Pagination', () => {
+  test('No pagination when no 1 or less pages', () => {
+    renderWithTheme(<Pagination current={5} pages={1} onChange={jest.fn()} />)
+    expect(screen.queryByRole('button')).not.toBeInTheDocument()
+  })
 
-afterEach(() => {
-  onPageChange.mockClear()
-})
+  test('alwaysVisible', () => {
+    renderWithTheme(
+      <Pagination current={5} pages={1} onChange={jest.fn()} alwaysVisible />
+    )
+    expect(screen.getAllByRole('button').length).toEqual(4)
+  })
 
-test('All pagination buttons enabled when current > 1 and current < pages', () => {
-  renderWithTheme(<Pagination current={5} pages={10} onChange={onPageChange} />)
-  fireEvent.click(screen.getByText('First page of results'))
-  expect(onPageChange).toHaveBeenCalledTimes(1)
+  test('All pagination buttons enabled when current > 1 and current < pages', () => {
+    const onPageChange = jest.fn()
 
-  fireEvent.click(screen.getByText('Previous page of results'))
-  expect(onPageChange).toHaveBeenCalledTimes(2)
+    renderWithTheme(
+      <Pagination current={5} pages={10} onChange={onPageChange} />
+    )
+    fireEvent.click(screen.getByText('First page of results'))
+    expect(onPageChange).toHaveBeenCalledTimes(1)
 
-  fireEvent.click(screen.getByText('Next page of results'))
-  expect(onPageChange).toHaveBeenCalledTimes(3)
+    fireEvent.click(screen.getByText('Previous page of results'))
+    expect(onPageChange).toHaveBeenCalledTimes(2)
 
-  fireEvent.click(screen.getByText('Last page of results'))
-  expect(onPageChange).toHaveBeenCalledTimes(4)
-})
+    fireEvent.click(screen.getByText('Next page of results'))
+    expect(onPageChange).toHaveBeenCalledTimes(3)
 
-test('First page and previous page buttons are disabled when current === 1', () => {
-  renderWithTheme(<Pagination current={1} pages={10} onChange={onPageChange} />)
-  fireEvent.click(screen.getByText('First page of results'))
-  expect(onPageChange).toHaveBeenCalledTimes(0)
+    fireEvent.click(screen.getByText('Last page of results'))
+    expect(onPageChange).toHaveBeenCalledTimes(4)
+  })
 
-  fireEvent.click(screen.getByText('Previous page of results'))
-  expect(onPageChange).toHaveBeenCalledTimes(0)
+  test('First page and previous page buttons are disabled when current === 1', () => {
+    const onPageChange = jest.fn()
+    renderWithTheme(
+      <Pagination current={1} pages={10} onChange={onPageChange} />
+    )
+    fireEvent.click(screen.getByText('First page of results'))
+    expect(onPageChange).toHaveBeenCalledTimes(0)
 
-  fireEvent.click(screen.getByText('Next page of results'))
-  expect(onPageChange).toHaveBeenCalledTimes(1)
+    fireEvent.click(screen.getByText('Previous page of results'))
+    expect(onPageChange).toHaveBeenCalledTimes(0)
 
-  fireEvent.click(screen.getByText('Last page of results'))
-  expect(onPageChange).toHaveBeenCalledTimes(2)
-})
+    fireEvent.click(screen.getByText('Next page of results'))
+    expect(onPageChange).toHaveBeenCalledTimes(1)
 
-test('First page button is enabled when current === 2', () => {
-  renderWithTheme(<Pagination current={2} pages={10} onChange={onPageChange} />)
-  fireEvent.click(screen.getByText('First page of results'))
-  expect(onPageChange).toHaveBeenCalledTimes(1)
+    fireEvent.click(screen.getByText('Last page of results'))
+    expect(onPageChange).toHaveBeenCalledTimes(2)
+  })
 
-  fireEvent.click(screen.getByText('Previous page of results'))
-  expect(onPageChange).toHaveBeenCalledTimes(2)
+  test('First page button is enabled when current === 2', () => {
+    const onPageChange = jest.fn()
 
-  fireEvent.click(screen.getByText('Next page of results'))
-  expect(onPageChange).toHaveBeenCalledTimes(3)
+    renderWithTheme(
+      <Pagination current={2} pages={10} onChange={onPageChange} />
+    )
+    fireEvent.click(screen.getByText('First page of results'))
+    expect(onPageChange).toHaveBeenCalledTimes(1)
 
-  fireEvent.click(screen.getByText('Last page of results'))
-  expect(onPageChange).toHaveBeenCalledTimes(4)
-})
+    fireEvent.click(screen.getByText('Previous page of results'))
+    expect(onPageChange).toHaveBeenCalledTimes(2)
 
-test('Last page button is enable when current === (pages - 1)', () => {
-  renderWithTheme(<Pagination current={9} pages={10} onChange={onPageChange} />)
-  fireEvent.click(screen.getByText('First page of results'))
-  expect(onPageChange).toHaveBeenCalledTimes(1)
+    fireEvent.click(screen.getByText('Next page of results'))
+    expect(onPageChange).toHaveBeenCalledTimes(3)
 
-  fireEvent.click(screen.getByText('Previous page of results'))
-  expect(onPageChange).toHaveBeenCalledTimes(2)
+    fireEvent.click(screen.getByText('Last page of results'))
+    expect(onPageChange).toHaveBeenCalledTimes(4)
+  })
 
-  fireEvent.click(screen.getByText('Next page of results'))
-  expect(onPageChange).toHaveBeenCalledTimes(3)
+  test('Last page button is enable when current === (pages - 1)', () => {
+    const onPageChange = jest.fn()
 
-  fireEvent.click(screen.getByText('Last page of results'))
-  expect(onPageChange).toHaveBeenCalledTimes(4)
-})
+    renderWithTheme(
+      <Pagination current={9} pages={10} onChange={onPageChange} />
+    )
+    fireEvent.click(screen.getByText('First page of results'))
+    expect(onPageChange).toHaveBeenCalledTimes(1)
 
-test('Last page and next page buttons are disabled when current === pages', () => {
-  renderWithTheme(
-    <Pagination current={10} pages={10} onChange={onPageChange} />
-  )
-  fireEvent.click(screen.getByText('First page of results'))
-  expect(onPageChange).toHaveBeenCalledTimes(1)
+    fireEvent.click(screen.getByText('Previous page of results'))
+    expect(onPageChange).toHaveBeenCalledTimes(2)
 
-  fireEvent.click(screen.getByText('Previous page of results'))
-  expect(onPageChange).toHaveBeenCalledTimes(2)
+    fireEvent.click(screen.getByText('Next page of results'))
+    expect(onPageChange).toHaveBeenCalledTimes(3)
 
-  fireEvent.click(screen.getByText('Next page of results'))
-  expect(onPageChange).toHaveBeenCalledTimes(2)
+    fireEvent.click(screen.getByText('Last page of results'))
+    expect(onPageChange).toHaveBeenCalledTimes(4)
+  })
 
-  fireEvent.click(screen.getByText('Last page of results'))
-  expect(onPageChange).toHaveBeenCalledTimes(2)
+  test('Last page and next page buttons are disabled when current === pages', () => {
+    const onPageChange = jest.fn()
+
+    renderWithTheme(
+      <Pagination current={10} pages={10} onChange={onPageChange} />
+    )
+    fireEvent.click(screen.getByText('First page of results'))
+    expect(onPageChange).toHaveBeenCalledTimes(1)
+
+    fireEvent.click(screen.getByText('Previous page of results'))
+    expect(onPageChange).toHaveBeenCalledTimes(2)
+
+    fireEvent.click(screen.getByText('Next page of results'))
+    expect(onPageChange).toHaveBeenCalledTimes(2)
+
+    fireEvent.click(screen.getByText('Last page of results'))
+    expect(onPageChange).toHaveBeenCalledTimes(2)
+  })
 })
