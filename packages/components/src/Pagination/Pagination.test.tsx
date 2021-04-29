@@ -30,8 +30,13 @@ import { fireEvent, screen } from '@testing-library/react'
 import { Pagination } from './Pagination'
 
 describe('Pagination', () => {
-  test('No pagination when no 1 or less pages', () => {
-    renderWithTheme(<Pagination current={5} pages={1} onChange={jest.fn()} />)
+  test('No pagination when there are 1 or less pages', () => {
+    renderWithTheme(
+      <>
+        <Pagination current={5} pages={1} onChange={jest.fn()} />
+        <Pagination current={5} pages={0} onChange={jest.fn()} />
+      </>
+    )
     expect(screen.queryByRole('button')).not.toBeInTheDocument()
   })
 
@@ -79,7 +84,7 @@ describe('Pagination', () => {
     expect(onPageChange).toHaveBeenCalledTimes(2)
   })
 
-  test('First page button is enabled when current === 2', () => {
+  test('First page and previous page buttons are enabled when current === 2', () => {
     const onPageChange = jest.fn()
 
     renderWithTheme(
@@ -98,7 +103,7 @@ describe('Pagination', () => {
     expect(onPageChange).toHaveBeenCalledTimes(4)
   })
 
-  test('Last page button is enable when current === (pages - 1)', () => {
+  test('Last page and next page buttons are enabled when current === (pages - 1)', () => {
     const onPageChange = jest.fn()
 
     renderWithTheme(
