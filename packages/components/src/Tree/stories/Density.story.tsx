@@ -26,20 +26,23 @@
 
 import React, { FC } from 'react'
 import { Tree } from '../Tree'
+import { TreeCollection } from '../TreeCollection'
 import { TreeItem } from '../TreeItem'
 import { DensityRamp } from '../../List/types'
 import { Grid } from '../../Layout'
 
 const DensityTree: FC<{ density: DensityRamp }> = ({ density }) => (
   <>
-    <Tree defaultOpen density={density} label="Tree of Cheese">
-      <Tree defaultOpen label="French Cheeses">
-        <TreeItem>Brie</TreeItem>
+    <TreeCollection>
+      <Tree defaultOpen density={density} label="Tree of Cheese">
+        <Tree defaultOpen label="French Cheeses">
+          <TreeItem>Brie</TreeItem>
+        </Tree>
+        <TreeItem>Cheddar</TreeItem>
+        <TreeItem>Gouda</TreeItem>
+        <TreeItem>Swiss</TreeItem>
       </Tree>
-      <TreeItem>Cheddar</TreeItem>
-      <TreeItem>Gouda</TreeItem>
-      <TreeItem>Swiss</TreeItem>
-    </Tree>
+    </TreeCollection>
   </>
 )
 

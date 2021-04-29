@@ -26,10 +26,10 @@
 
 import React from 'react'
 import { Divider } from '../../Divider'
-import { TreeItem, Tree } from '..'
+import { TreeCollection, TreeItem, Tree } from '..'
 
 export const DisabledAndSelected = () => (
-  <>
+  <TreeCollection>
     <Tree label="Default Colors" defaultOpen>
       <Tree disabled label="Disabled Tree" defaultOpen>
         <TreeItem disabled>Disabled TreeItem</TreeItem>
@@ -51,5 +51,5 @@ export const DisabledAndSelected = () => (
         <TreeItem selected>Selected TreeItem</TreeItem>
       </Tree>
     </Tree>
-  </>
+  </TreeCollection>
 )
