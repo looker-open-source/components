@@ -15,7 +15,7 @@ Please file issues on [Github Issues](https://github.com/looker-open-source/comp
 
 # Setting up
 
-### Install Yarn
+## Yarn
 
 This is a monorepo utilizing [Lerna](https://lerna.js.org) and [Yarn Workspaces](https://yarnpkg.com/lang/en/docs/workspaces/). It is composed of a collection of packages.
 
@@ -23,10 +23,11 @@ If you don't have [`yarn`](https://yarnpkg.com/en/) installed, have a look at ht
 
 We recommend using [Node Version Manager (NVM)](https://github.com/nvm-sh/nvm#installation-and-update) to manage multiple versions of Node. Once installed you can simply type `nvm use` in side the repository to get the appropriate version of Node installed. Then you'll need to install Yarn globally via NPM - `npm install --global yarn`
 
-### Clone this Repository & Setup
+## Clone Repository & Setup
 
 1. `git clone git@github.com:looker-open-source/components.git`
-1. `yarn`
+1. `yarn install`
+1. ✅
 
 ## Packages
 
@@ -46,6 +47,7 @@ We recommend using [Node Version Manager (NVM)](https://github.com/nvm-sh/nvm#in
 - **yarn develop** shortcut for booting up www, playground, and server packages for local development
 - **yarn playground** starts a bare-bones React app used for developing components
 - **yarn gatsby** starts the Gatsby server (powers our documentation site)
+- **yarn storybook** starts Storybook in "Docs" mode (includes stories from all packages)
 - **yarn build** runs build across all packages. This calls several subtasks
   - **yarn prebuild** run clean, then use lerna to do any pre-build tasks needed for packages
   - **yarn build** runs build:\* in parallel (see below)
@@ -59,38 +61,25 @@ We recommend using [Node Version Manager (NVM)](https://github.com/nvm-sh/nvm#in
 - **yarn clean** remove all build artifacts
 - **yarn test** runs Jest across all packages
 
-#### Storybook
-
-Storybook is a tool used to develop, demonstrate and document components in isolation.
-
-- **yarn storybook** starts Storybook (includes stories from all packages)
-- **yarn storybook docs** starts Storybook in "Docs" mode
-- **yarn workspace [workspace-package-name] storybook** starts a storybook with just stories within the specified package.
-
 ### Workspace Commands
 
 If you're working with a specific workspace you can run commands within that specific workspace (package) by pre-pending the yarn command like so:
 
 `yarn workspace [workspace-package-name] [command]`
 
-E.g.: `yarn workspace @looker/components build:es`
+E.g.: `yarn workspace playground develop`
 
 # Publishing Components
 
-We follow a [semantic versioning scheme](https://semver.org/). That means:
+See [RELEASING](./RELEASING.md)
 
-1.  API changes are only allowed in major version changes.
-1.  Backwards compatible API changes can occur in minor version changes.
-1.  Bug fixes occur in patch version changes.
-1.  Publishing and release processes are handled by our CI/CD workflows
+# Tooling
 
-### 4. Tooling
-
-### Automate code formatting and correctness whenever possible
+## Automate code formatting and correctness whenever possible
 
 This project takes the perspective that, as much as possible, code style (code formatting, alignment, interchangeable idioms, etc) should be dictated by automated tooling. This means tooling that can statically analyze code and actually rewrite it, either for the purpose of consistent formatting or correctness. This approach not only saves time by eliminating arguments about preferred code styles, it also reduces arbitrary diff noise for code reviewers, and decreases an engineer's overhead needed to keep code consistent with a code style or linter.
 
-#### Use lint rules to eliminate dangerous anti-patterns
+## Use lint rules to eliminate dangerous anti-patterns
 
 When automated tooling cannot reformat code without causing logical errors, this project employs linter rules to ensure it produces consistent, correct code. An example of one of these rules is the TSLint `no-namespace` rule. Namespacing, while a valid feature in Typescript, is the byproduct of Typescript evolving during a time when ES6 style modules did not exist (nor did the tooling around them). [Typescript itself calls out ES6 modules as the best approach to code organization moving forward](https://www.typescriptlang.org/docs/handbook/namespaces-and-modules.html#using-modules):
 
@@ -98,7 +87,7 @@ When automated tooling cannot reformat code without causing logical errors, this
 
 To ensure Typescript namespaces are never introduced into this project (because we use ES6 modules), our linter configuration disallows any use of them in code.
 
-#### Automated Tooling
+### Automated Tooling
 
 The monorepo leverages with a few code tools baked into the component authoring workflow:
 
@@ -106,7 +95,7 @@ The monorepo leverages with a few code tools baked into the component authoring 
 - [ESLint](https://eslint.org/) is the standard Javascript & Typescript linting tool. It comes with a `--fix` flag which can fix many of the errors it finds.
 - [Stylelint](https://stylelint.io/) lints the CSS code in the app.
 
-##### Using the tooling
+### Using the tooling
 
 The majority of the time, using these tools should be transparent as they are hooked into a fast pre-commit hook that is enabled for all developers. If one of the lint or prettier steps fail during the pre-commit hook you'll have to fix the error before committing.
 
@@ -119,53 +108,31 @@ You can also configure some editors to apply their formatting on save, this is d
 - **lint:css** Lint all of the CSS, including inlined CSS
 - **lint:ts** Run Typescript compiler to verify type-safety
 
-### 5. IDE Support & Configuration
+## IDE Support & Configuration
 
 Code in this project is written in Typescript and the core team uses VSCode as our IDE of choice. Please feel free to add your favorite editor's mechanism of support if you wish.
 
-#### VS Code
+### VS Code
 
 A [settings.json](https://github.com/looker-open-source/components/blob/main/.vscode/settings.json) file is checked into the repository, which contains some required settings for VS Code.
 
 Additionally a simplistic [launch.json](https://github.com/looker-open-source/components/blob/main/.vscode/launch.json) file is also included which should allow developers to quickly run and debug tests locally, through the Jest test runner. [This file is based off of the recommendations here](https://github.com/Microsoft/vscode-recipes/tree/main/debugging-jest-tests).
 
-##### Running Tests
+#### Running Tests
 
 1.  Go to the "Debug" panel in VS Code
 2.  In the top left choose either "Jest All" or "Jest Current File"
 3.  Click the Play button
 
-##### Strongly Recommended Plugins
+#### Recommended Plugins
 
 - [Styled Components](https://github.com/styled-components/vscode-styled-components) enables sytax highlighting and intellisense for inline CSS.
 - [ESLint](https://github.com/Microsoft/vscode-eslint) enables inline linting and fixing of code on save. If you have the older vscode-tslint plugin installed, uninstall it first.
 
-##### Very Helpful Plugins
+#### Useful Plugins
 
 - [Spell Check](https://github.com/Jason-Rev/vscode-spell-checker) enables spell checking in code
 - [Colorize](https://github.com/kamikillerto/vscode-colorize) displays known colors (string values, hex, rgb, etc) as their actual color value
 - [Prettier](https://github.com/prettier/prettier-vscode) enables Prettier code formatting on save
 - [Rewrap](https://github.com/stkb/Rewrap) wraps comments at the 80 character column mark automatically
 - [Sort Lines](https://github.com/Tyriar/vscode-sort-lines) quickly resort lines of code
-
-# Yarn Link
-
-Since Looker UI Components are often developed in tandem with another repo it can be useful to use Yarn's `link` functionality to develop new components and test the built output without having to commit and publish the changes.
-
-See Yarn's Link documentation (https://yarnpkg.com/lang/en/docs/cli/link/) for setting up the link between the `@looker/components` package and your project.
-
-To work properly you'll need to make this addition to your `webpack.config.js` file:
-
-```
-  resolve: {
-    alias: {
-      'styled-components': path.resolve(
-        __dirname,
-        'node_modules',
-        'styled-components',
-      ),
-    }
-  }
-```
-
-Finally, only changes that have been built will be reflected in the linked package so run `yarn build` when you want to refresh the locally-built version.
