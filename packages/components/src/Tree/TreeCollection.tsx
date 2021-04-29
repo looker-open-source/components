@@ -30,12 +30,15 @@ import styled from 'styled-components'
 
 type TreeCollectionProps = CompatibleHTMLProps<HTMLUListElement>
 
-const TreeCollectionLayout = styled.ul``
-
-export const TreeCollection = ({ children, ...props }: TreeCollectionProps) => {
+const TreeCollectionLayout = ({ children, ...props }: TreeCollectionProps) => {
   return (
-    <TreeCollectionLayout {...props} role="tree">
+    <ul {...props} role="tree">
       {children}
-    </TreeCollectionLayout>
+    </ul>
   )
 }
+
+export const TreeCollection = styled(TreeCollectionLayout)`
+  margin: 0;
+  padding: 0;
+`
