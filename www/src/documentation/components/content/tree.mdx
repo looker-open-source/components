@@ -12,30 +12,34 @@ Use the required `label` prop to set the text of the `Tree` disclosure. `label` 
 Use the `icon` prop to display an icon next to the `Tree` label.
 
 ```jsx
-<Tree label="Orders" icon={<TableChart />}>
-  <TreeItem icon={<Tag />}>Cost</TreeItem>
-  <TreeItem icon={<Place />}>Location</TreeItem>
-  <TreeItem icon={<FieldTier />}>Tier</TreeItem>
-  <TreeItem icon={<Check />}>Oui ou Non</TreeItem>
-</Tree>
+<TreeCollection>
+  <Tree label="Orders" icon={<TableChart />}>
+    <TreeItem icon={<Tag />}>Cost</TreeItem>
+    <TreeItem icon={<Place />}>Location</TreeItem>
+    <TreeItem icon={<FieldTier />}>Tier</TreeItem>
+    <TreeItem icon={<Check />}>Oui ou Non</TreeItem>
+  </Tree>
+</TreeCollection>
 ```
 
 Use `detail` to display an element in the negative space of the `Tree` label.
 
 ```jsx
-<Tree
-  label="Orders"
-  icon={<TableChart />}
-  detail={
-    <IconButton
-      icon={<Info />}
-      label="Get Info"
-      onClick={() => alert("You've got info!")}
-    />
-  }
->
-  <TreeItem icon={<Tag />}>Cost</TreeItem>
-</Tree>
+<TreeCollection>
+  <Tree
+    label="Orders"
+    icon={<TableChart />}
+    detail={
+      <IconButton
+        icon={<Info />}
+        label="Get Info"
+        onClick={() => alert("You've got info!")}
+      />
+    }
+  >
+    <TreeItem icon={<Tag />}>Cost</TreeItem>
+  </Tree>
+</TreeCollection>
 ```
 
 Use the `branchFontWeight` prop if you'd like your `Tree`'s disclosure text to have a "normal" font weight.
@@ -43,30 +47,34 @@ Use the `branchFontWeight` prop if you'd like your `Tree`'s disclosure text to h
 These is especially useful when you want a nested `Tree` to match its sibling `TreeItem`s
 
 ```jsx
-<Tree label="Orders" icon={<TableChart />} defaultOpen>
-  <Tree branchFontWeight label="Created" defaultOpen>
-    <TreeItem>Created Date</TreeItem>
-    <TreeItem>Created Month</TreeItem>
-    <TreeItem>Created Year</TreeItem>
-    <TreeItem>Created Quarter</TreeItem>
+<TreeCollection>
+  <Tree label="Orders" icon={<TableChart />} defaultOpen>
+    <Tree branchFontWeight label="Created" defaultOpen>
+      <TreeItem>Created Date</TreeItem>
+      <TreeItem>Created Month</TreeItem>
+      <TreeItem>Created Year</TreeItem>
+      <TreeItem>Created Quarter</TreeItem>
+    </Tree>
+    <TreeItem>Cost</TreeItem>
+    <TreeItem>Location</TreeItem>
+    <TreeItem>ID</TreeItem>
   </Tree>
-  <TreeItem>Cost</TreeItem>
-  <TreeItem>Location</TreeItem>
-  <TreeItem>ID</TreeItem>
-</Tree>
+</TreeCollection>
 ```
 
 Use the `border` prop if you would like to have vertical lines expand from your `Tree`'s indicator icon when open.
 
 ```jsx
-<Tree border label="Orders" icon={<TableChart />} defaultOpen>
-  <Tree label="Created" defaultOpen>
-    <TreeItem>Created Date</TreeItem>
-    <TreeItem>Created Month</TreeItem>
-    <TreeItem>Created Year</TreeItem>
-    <TreeItem>Created Quarter</TreeItem>
+<TreeCollection>
+  <Tree border label="Orders" icon={<TableChart />} defaultOpen>
+    <Tree label="Created" defaultOpen>
+      <TreeItem>Created Date</TreeItem>
+      <TreeItem>Created Month</TreeItem>
+      <TreeItem>Created Year</TreeItem>
+      <TreeItem>Created Quarter</TreeItem>
+    </Tree>
   </Tree>
-</Tree>
+</TreeCollection>
 ```
 
 Use the `selected` prop to display a light grey background on your `Tree`.
@@ -76,7 +84,7 @@ Use the `keyColor` prop to get more colorful backgrounds when your `Tree` (or it
 Use the `disabled` prop to present your `Tree` in a disabled state. Note that using `disabled` will not change any `Tree` behavior like opening and closing on click.
 
 ```jsx
-<>
+<TreeCollection>
   <Tree selected label="Orders" icon={<TableChart />} defaultOpen>
     <Tree disabled label="Created" defaultOpen>
       <TreeItem selected>Created Date</TreeItem>
@@ -85,7 +93,6 @@ Use the `disabled` prop to present your `Tree` in a disabled state. Note that us
       <TreeItem>Created Quarter</TreeItem>
     </Tree>
   </Tree>
-  <Divider my="large" />
   <Tree keyColor selected label="Orders" icon={<TableChart />} defaultOpen>
     <Tree disabled label="Created" defaultOpen>
       <TreeItem selected>Created Date</TreeItem>
@@ -94,7 +101,7 @@ Use the `disabled` prop to present your `Tree` in a disabled state. Note that us
       <TreeItem>Created Quarter</TreeItem>
     </Tree>
   </Tree>
-</>
+</TreeCollection>
 ```
 
 ## Changing Background Behavior
@@ -120,30 +127,35 @@ The layout changes from `labelBackgroundOnly` necessitate a separate callback be
   const { height: fieldHeight } = listItemDimensions(density)
 
   return (
-    <Tree density={density} label="Cheeses" labelBackgroundOnly defaultOpen>
-      <TreeItem itemRole="none" onClickWhitespace={() => alert('Gouda time.')}>
-        <Label height={fieldHeight} onClick={() => alert('Gouda time.')}>
-          Gouda
-        </Label>
-      </TreeItem>
-      <TreeItem
-        itemRole="none"
-        onClickWhitespace={() => alert('Swiss time.')}
-        selected
-      >
-        <Label height={fieldHeight} onClick={() => alert('Swiss time.')}>
-          Swiss
-        </Label>
-      </TreeItem>
-      <TreeItem
-        itemRole="none"
-        onClickWhitespace={() => alert('Cheddar time.')}
-      >
-        <Label height={fieldHeight} onClick={() => alert('Cheddar time.')}>
-          Cheddar
-        </Label>
-      </TreeItem>
-    </Tree>
+    <TreeCollection>
+      <Tree density={density} label="Cheeses" labelBackgroundOnly defaultOpen>
+        <TreeItem
+          itemRole="none"
+          onClickWhitespace={() => alert('Gouda time.')}
+        >
+          <Label height={fieldHeight} onClick={() => alert('Gouda time.')}>
+            Gouda
+          </Label>
+        </TreeItem>
+        <TreeItem
+          itemRole="none"
+          onClickWhitespace={() => alert('Swiss time.')}
+          selected
+        >
+          <Label height={fieldHeight} onClick={() => alert('Swiss time.')}>
+            Swiss
+          </Label>
+        </TreeItem>
+        <TreeItem
+          itemRole="none"
+          onClickWhitespace={() => alert('Cheddar time.')}
+        >
+          <Label height={fieldHeight} onClick={() => alert('Cheddar time.')}>
+            Cheddar
+          </Label>
+        </TreeItem>
+      </Tree>
+    </TreeCollection>
   )
 }
 ```
@@ -155,33 +167,47 @@ Occasionally tree item labels will wrap to a second line when the text content i
 When text content overflows, it will render a tooltip to view the entire content, which is consistent with the [Truncate](/components/text/truncate) component.
 
 ```jsx
-<Heading>Default Text Wrapping Layout</Heading>
-<Tree
-  border
-  label="A very long label that wraps to a second line. Both the label and the tree item will wrap to two or more lines because there is just too much text."
-  icon={<TableChart />}
-  defaultOpen
->
-  <TreeItem icon={<IdeDimension />}>
-    Cheese is a dairy product, derived from milk and produced in wide ranges of flavours, textures and forms by coagulation of the milk protein casein. It comprises proteins and fat from milk, usually the milk of cows, buffalo, goats, or sheep.
-  </TreeItem>
-
-</Tree>
+<>
+  <Heading>Default Text Wrapping Layout</Heading>
+  <TreeCollection>
+    <Tree
+      border
+      label="A very long label that wraps to a second line. Both the label and the tree item will wrap to two or more lines because there is just too much text."
+      icon={<TableChart />}
+      defaultOpen
+    >
+      <TreeItem icon={<IdeDimension />}>
+        Cheese is a dairy product, derived from milk and produced in wide ranges
+        of flavours, textures and forms by coagulation of the milk protein
+        casein. It comprises proteins and fat from milk, usually the milk of
+        cows, buffalo, goats, or sheep.
+      </TreeItem>
+    </Tree>
+  </TreeCollection>
+</>
 ```
 
 ```jsx
-<Heading>Truncated Text</Heading>
-<Tree
-  border
-  label="A very label that wraps to a second line. Sometimes you don't want to take up extra vertical space, and instead it will cut off the text."
-  truncate
-  icon={<TableChart />}
-  defaultOpen
->
-  <TreeItem icon={<IdeDimension />} truncate>
-    Hover over me for a tooltip of the full content. Cheese is a dairy product, derived from milk and produced in wide ranges of flavours, textures and forms by coagulation of the milk protein casein. It comprises proteins and fat from milk, usually the milk of cows, buffalo, goats, or sheep.
-  </TreeItem>
-</Tree>
+<>
+  <Heading>Truncated Text</Heading>
+  <TreeCollection>
+    <Tree
+      border
+      label="A very label that wraps to a second line. Sometimes you don't want to take up extra vertical space, and instead it will cut off the text."
+      truncate
+      icon={<TableChart />}
+      defaultOpen
+    >
+      <TreeItem icon={<IdeDimension />} truncate>
+        Hover over me for a tooltip of the full content. Cheese is a dairy
+        product, derived from milk and produced in wide ranges of flavours,
+        textures and forms by coagulation of the milk protein casein. It
+        comprises proteins and fat from milk, usually the milk of cows, buffalo,
+        goats, or sheep.
+      </TreeItem>
+    </Tree>
+  </TreeCollection>
+</>
 ```
 
 ## Nesting Trees
@@ -191,14 +217,16 @@ You can nest trees within each other by passing a `Tree` in as a child of anothe
 **Note:** `Tree` will automatically indent any child `Tree` and `TreeItem`s based on their depth in the hierarchy.
 
 ```jsx
-<Tree defaultOpen label="Orders" icon={<TableChart />}>
-  <Tree defaultOpen label="Created">
-    <TreeItem>Created Date</TreeItem>
-    <TreeItem>Created Month</TreeItem>
-    <TreeItem>Created Year</TreeItem>
-    <TreeItem>Created Quarter</TreeItem>
+<TreeCollection>
+  <Tree defaultOpen label="Orders" icon={<TableChart />}>
+    <Tree defaultOpen label="Created">
+      <TreeItem>Created Date</TreeItem>
+      <TreeItem>Created Month</TreeItem>
+      <TreeItem>Created Year</TreeItem>
+      <TreeItem>Created Quarter</TreeItem>
+    </Tree>
   </Tree>
-</Tree>
+</TreeCollection>
 ```
 
 ## Tree Callbacks
@@ -233,17 +261,19 @@ The `toggleOpen` prop should receive a function that has one parameter: a boolea
   const [isOpen, setIsOpen] = useState(true)
 
   return (
-    <Tree
-      label="Orders"
-      icon={<TableChart />}
-      isOpen={isOpen}
-      toggleOpen={setIsOpen}
-    >
-      <TreeItem icon={<Tag />}>Cost</TreeItem>
-      <TreeItem icon={<Place />}>Location</TreeItem>
-      <TreeItem icon={<FieldTier />}>Tier</TreeItem>
-      <TreeItem icon={<Check />}>Oui ou Non</TreeItem>
-    </Tree>
+    <TreeCollection>
+      <Tree
+        label="Orders"
+        icon={<TableChart />}
+        isOpen={isOpen}
+        toggleOpen={setIsOpen}
+      >
+        <TreeItem icon={<Tag />}>Cost</TreeItem>
+        <TreeItem icon={<Place />}>Location</TreeItem>
+        <TreeItem icon={<FieldTier />}>Tier</TreeItem>
+        <TreeItem icon={<Check />}>Oui ou Non</TreeItem>
+      </Tree>
+    </TreeCollection>
   )
 }
 ```
@@ -253,11 +283,27 @@ The `toggleOpen` prop should receive a function that has one parameter: a boolea
 Use the `forceLabelPadding` prop to align the labels of parent `Tree`s with optional icons and child `TreeItem`s without optional icons.
 
 ```jsx
-<Tree label="Cheeses" icon={<Pivot />} defaultOpen forceLabelPadding>
-  <TreeItem>Gouda</TreeItem>
-  <TreeItem>Swiss</TreeItem>
-  <TreeItem>Cheddar</TreeItem>
-</Tree>
+<TreeCollection>
+  <Tree label="Cheeses" icon={<Pivot />} defaultOpen forceLabelPadding>
+    <TreeItem>Gouda</TreeItem>
+    <TreeItem>Swiss</TreeItem>
+    <TreeItem>Cheddar</TreeItem>
+  </Tree>
+</TreeCollection>
+```
+
+## TreeCollection
+
+`TreeCollection` acts as a wrapper component to `Tree` and `TreeItem` elements. For accessibility purposes, all `Tree` and `TreeItem` compositions should have a `TreeCollection` at the top.
+
+```jsx
+<TreeCollection>
+  <Tree label="Cheeses" icon={<Pivot />} defaultOpen forceLabelPadding>
+    <TreeItem>Gouda</TreeItem>
+    <TreeItem>Swiss</TreeItem>
+    <TreeItem>Cheddar</TreeItem>
+  </Tree>
+</TreeCollection>
 ```
 
 ## TreeItem
@@ -271,16 +317,18 @@ The table below displays `TreeItem`'s prop names and descriptions.
 Note: In addition these custom props, `TreeItem` also accepts standard handlers like `onClick`, `onKeyDown`, etc.
 
 ```jsx
-<Tree label="Cheeses" defaultOpen>
-  <TreeItem
-    icon={<LogoRings />}
-    detail={<Text color="text2">is great</Text>}
-    onClick={() => alert('Clicked Swiss')}
-    selected
-  >
-    Swiss
-  </TreeItem>
-</Tree>
+<TreeCollection>
+  <Tree label="Cheeses" defaultOpen>
+    <TreeItem
+      icon={<LogoRings />}
+      detail={<Text color="text2">is great</Text>}
+      onClick={() => alert('Clicked Swiss')}
+      selected
+    >
+      Swiss
+    </TreeItem>
+  </Tree>
+</TreeCollection>
 ```
 
 ## Customizing Detail Elements on Tree and TreeItem
@@ -292,32 +340,17 @@ Enabling the `hoverDisclosure` option will hide and show the detail on hover on 
 Enabling the `accessory` option will render the detail element outside of the label container. This option is most commonly used when you'd like to have a button as your `detail` element.
 
 ```jsx
-<Tree
-  label="Orders"
-  icon={<TableChart />}
-  defaultOpen
-  detail={{
-    content: (
-      <IconButton
-        icon={<Info />}
-        label="Get Info"
-        onClick={() => alert("You've got info!")}
-      />
-    ),
-    options: {
-      accessory: true,
-      hoverDisclosure: true,
-    },
-  }}
->
-  <TreeItem
-    icon={<Tag />}
+<TreeCollection>
+  <Tree
+    label="Orders"
+    icon={<TableChart />}
+    defaultOpen
     detail={{
       content: (
         <IconButton
-          icon={<Pivot />}
-          label={<Pivot />}
-          onClick={() => alert("You've pivoted!")}
+          icon={<Info />}
+          label="Get Info"
+          onClick={() => alert("You've got info!")}
         />
       ),
       options: {
@@ -326,7 +359,24 @@ Enabling the `accessory` option will render the detail element outside of the la
       },
     }}
   >
-    Cost
-  </TreeItem>
-</Tree>
+    <TreeItem
+      icon={<Tag />}
+      detail={{
+        content: (
+          <IconButton
+            icon={<Pivot />}
+            label={<Pivot />}
+            onClick={() => alert("You've pivoted!")}
+          />
+        ),
+        options: {
+          accessory: true,
+          hoverDisclosure: true,
+        },
+      }}
+    >
+      Cost
+    </TreeItem>
+  </Tree>
+</TreeCollection>
 ```
