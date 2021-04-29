@@ -71,8 +71,13 @@ describe('ListItem', () => {
     })
 
     test('theme', () => {
-      renderWithTheme(<ListItem color="calculation">who!</ListItem>)
+      renderWithTheme(
+        <ListItem color="calculation" icon={<Science data-testid="icon" />}>
+          who!
+        </ListItem>
+      )
       expect(screen.getByText('who!')).toHaveStyle('color: #319220')
+      expect(screen.getByTestId('icon')).toHaveStyle('color: #319220')
     })
 
     test('theme selected', () => {
@@ -96,8 +101,13 @@ describe('ListItem', () => {
     })
 
     test('custom', () => {
-      renderWithTheme(<ListItem color="#cc0000">who!</ListItem>)
+      renderWithTheme(
+        <ListItem color="#cc0000" icon={<Science data-testid="icon" />}>
+          who!
+        </ListItem>
+      )
       expect(screen.getByText('who!')).toHaveStyle('color: #cc0000')
+      expect(screen.getByTestId('icon')).toHaveStyle('color: #cc0000')
     })
   })
 

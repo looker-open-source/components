@@ -24,11 +24,7 @@
 
  */
 
-import {
-  CompatibleHTMLProps,
-  shouldForwardProp,
-  textColor,
-} from '@looker/design-tokens'
+import { CompatibleHTMLProps, shouldForwardProp } from '@looker/design-tokens'
 import { StyledIconBase } from '@styled-icons/styled-icon'
 import omit from 'lodash/omit'
 import React, { forwardRef, ReactNode, Ref } from 'react'
@@ -71,7 +67,6 @@ export const ListItemWrapper = styled(ListItemWrapperInternal)
   })
   .attrs(({ color = 'text5' }) => ({ color }))`
   align-items: center;
-  ${textColor}
   display: flex;
   font-size: ${({ theme: { fontSizes } }) => fontSizes.small};
   font-weight: ${({ theme: { fontWeights } }) => fontWeights.normal};
@@ -107,8 +102,6 @@ export const ListItemWrapper = styled(ListItemWrapperInternal)
   }
 
   &[disabled] {
-    color: ${({ theme: { colors } }) => colors.text1};
-
     & > * {
       cursor: not-allowed;
     }
