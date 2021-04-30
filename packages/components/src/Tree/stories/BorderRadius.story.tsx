@@ -26,7 +26,7 @@
 
 import React from 'react'
 import styled from 'styled-components'
-import { TreeItem, Tree } from '..'
+import { TreeItem, Tree, TreeCollection } from '..'
 import { generateBorderRadius } from '../utils/generateBorderRadius'
 
 const BorderRadiusOverrideTree = styled(Tree)`
@@ -34,10 +34,12 @@ const BorderRadiusOverrideTree = styled(Tree)`
 `
 
 export const BorderRadiusOverride = () => (
-  <BorderRadiusOverrideTree selected label="Created" defaultOpen dividers>
-    <TreeItem selected>Created Date</TreeItem>
-    <TreeItem selected>Created Month</TreeItem>
-    <TreeItem selected>Created Year</TreeItem>
-    <TreeItem selected>Created Quarter</TreeItem>
-  </BorderRadiusOverrideTree>
+  <TreeCollection>
+    <BorderRadiusOverrideTree selected label="Created" defaultOpen dividers>
+      <TreeItem selected>Created Date</TreeItem>
+      <TreeItem selected>Created Month</TreeItem>
+      <TreeItem selected>Created Year</TreeItem>
+      <TreeItem selected>Created Quarter</TreeItem>
+    </BorderRadiusOverrideTree>
+  </TreeCollection>
 )
