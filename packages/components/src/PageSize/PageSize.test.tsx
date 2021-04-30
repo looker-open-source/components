@@ -40,6 +40,7 @@ describe('PageSize', () => {
     renderWithTheme(<PageSize value={10} total={1000} onChange={onChange} />)
 
     const select = screen.getByDisplayValue('10')
+    expect(screen.getByText('of 1000')).toBeInTheDocument()
 
     fireEvent.click(select)
 
@@ -63,6 +64,7 @@ describe('PageSize', () => {
     )
 
     const select = screen.getByDisplayValue('20')
+    expect(screen.getByText('of 1000')).toBeInTheDocument()
 
     fireEvent.click(select)
 
@@ -99,7 +101,7 @@ describe('PageSize', () => {
         alwaysVisible
       />
     )
-    expect(screen.getByDisplayValue('100')).toBeInTheDocument()
-    expect(screen.getByText('of 5')).not.toBeInTheDocument()
+    expect(screen.getByDisplayValue('5')).toBeInTheDocument()
+    expect(screen.getByText('of 5')).toBeInTheDocument()
   })
 })

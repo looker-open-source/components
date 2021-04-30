@@ -85,10 +85,12 @@ export const PageSizeLayout: FC<PageSizeProps> = ({
         width="5rem"
         mx="xsmall"
         options={arrayToSelectOptions(options)}
-        value={String(value)}
+        value={String(value > total ? total : value)}
         onChange={handleOnChange}
       />
-      {t('of')} {total}
+      <span>
+        {t('of')} {total}
+      </span>
     </div>
   ) : null
 }
