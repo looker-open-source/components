@@ -87,6 +87,7 @@ export const PageSizeLayout: FC<PageSizeProps> = ({
         options={arrayToSelectOptions(options)}
         value={String(value > total ? total : value)}
         onChange={handleOnChange}
+        disabled={options.every((option) => option > total)}
       />
       <span>
         {t('of')} {total}

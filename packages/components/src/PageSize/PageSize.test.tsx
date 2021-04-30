@@ -101,7 +101,16 @@ describe('PageSize', () => {
         alwaysVisible
       />
     )
-    expect(screen.getByDisplayValue('5')).toBeInTheDocument()
+
+    const select = screen.getByDisplayValue('5')
+    expect(select).toBeInTheDocument()
     expect(screen.getByText('of 5')).toBeInTheDocument()
+
+    // This select should be auto-disabled since all options are greater than the total
+    fireEvent.click(select)
+
+    expect(screen.queryByText('100')).not.toBeInTheDocument()
+    expect(screen.queryByText('200')).not.toBeInTheDocument()
+    expect(screen.queryByText('300')).not.toBeInTheDocument()
   })
 })
