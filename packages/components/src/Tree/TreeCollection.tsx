@@ -25,20 +25,13 @@
  */
 
 import { CompatibleHTMLProps } from '@looker/design-tokens'
-import React from 'react'
 import styled from 'styled-components'
 
 export type TreeCollectionProps = CompatibleHTMLProps<HTMLUListElement>
 
-const TreeCollectionLayout = ({ children, ...props }: TreeCollectionProps) => {
-  return (
-    <ul {...props} role="tree">
-      {children}
-    </ul>
-  )
-}
-
-export const TreeCollection = styled(TreeCollectionLayout)`
+export const TreeCollection = styled.ul.attrs(({ role = 'tree' }) => ({
+  role,
+}))<TreeCollectionProps>`
   margin: 0;
   padding: 0;
 `
