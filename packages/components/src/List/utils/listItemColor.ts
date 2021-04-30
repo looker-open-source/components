@@ -24,30 +24,33 @@
 
  */
 
-import React, { forwardRef, Ref } from 'react'
-import styled from 'styled-components'
-import { List, ListProps } from '../List'
-import { listPadding } from '../List/utils'
-import { NestedMenuProvider } from './NestedMenuProvider'
+import {
+  ListColor,
+  listItemColorAppliesToLabel,
+  listItemColorOptions,
+} from '../types'
 
-export const MenuListInternal = forwardRef(
-  (
-    { children, ...props }: Omit<ListProps, 'color' | 'keyColor'>,
-    forwardedRef: Ref<HTMLUListElement>
-  ) => {
-    return (
-      <NestedMenuProvider>
-        <List role="menu" ref={forwardedRef} {...props}>
-          {children}
-        </List>
-      </NestedMenuProvider>
-    )
+const listItemColor = (
+  color?: ListColor,
+  disabled?: boolean,
+  defaultColor?: string
+) => {
+  if (disabled) {
+    return 'text1'
+  } else if (color) {
+    if (listItemColorAppliesToLabel.includes(color)) {
+      // Theme "slot" & color is applied to label
+      return color
+    } else if (!listItemColorOptions.includes(color)) {
+      // HTML color
+      return color
+    }
   }
-)
-MenuListInternal.displayName = 'MenuListInternal'
+  return defaultColor
+}
 
-export const MenuList = styled(MenuListInternal)`
-  min-width: 12rem;
+export const listItemIconColor = (color?: ListColor, disabled?: boolean) =>
+  listItemColor(color, disabled)
 
-  ${listPadding}
-`
+export const listItemLabelColor = (color?: ListColor, disabled?: boolean) =>
+  listItemColor(color, disabled, 'text5')

@@ -24,30 +24,25 @@
 
  */
 
-import React, { forwardRef, Ref } from 'react'
-import styled from 'styled-components'
-import { List, ListProps } from '../List'
-import { listPadding } from '../List/utils'
-import { NestedMenuProvider } from './NestedMenuProvider'
+import React, { useState } from 'react'
+import { Story } from '@storybook/react/types-6-0'
+import { PageSizeProps, PageSize } from '.'
 
-export const MenuListInternal = forwardRef(
-  (
-    { children, ...props }: Omit<ListProps, 'color' | 'keyColor'>,
-    forwardedRef: Ref<HTMLUListElement>
-  ) => {
-    return (
-      <NestedMenuProvider>
-        <List role="menu" ref={forwardedRef} {...props}>
-          {children}
-        </List>
-      </NestedMenuProvider>
-    )
-  }
-)
-MenuListInternal.displayName = 'MenuListInternal'
+const Template: Story<PageSizeProps> = (args) => <PageSize {...args} />
 
-export const MenuList = styled(MenuListInternal)`
-  min-width: 12rem;
+export const Basic = Template.bind({})
+Basic.args = {
+  onChange: (value: number) => alert(`You chose ${value} per page`),
+  total: 100,
+  value: 100,
+}
 
-  ${listPadding}
-`
+export const AlwaysVisible = () => {
+  const [value, setValue] = useState(100)
+  return <PageSize alwaysVisible total={3} value={value} onChange={setValue} />
+}
+
+export default {
+  component: PageSize,
+  title: 'PageSize',
+}

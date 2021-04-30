@@ -39,4 +39,14 @@ describe('TreeArtificial', () => {
 
     expect(screen.getByText('Tree Item')).toBeInTheDocument()
   })
+
+  test('default density', () => {
+    renderWithTheme(
+      <TreeArtificial>
+        <TreeItem>Tree Item</TreeItem>
+      </TreeArtificial>
+    )
+
+    expect(screen.getByText('Tree Item')).toBeInTheDocument()
+  })
 })

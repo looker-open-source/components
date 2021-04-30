@@ -32,55 +32,52 @@ import React, {
   Ref,
   useMemo,
 } from 'react'
-import styled from 'styled-components'
-import { fontFamily, height, HeightProps } from 'styled-system'
 import {
   CompatibleHTMLProps,
   FontFamilies,
   shouldForwardProp,
+  height,
   width,
   WidthProps,
 } from '@looker/design-tokens'
+import { HeightProps, fontFamily } from 'styled-system'
+import styled from 'styled-components'
 import { useArrowKeyNav, useWindow } from '../utils'
 import { ListItemContext } from './ListItemContext'
+import { DensityRamp, ListColorProps } from './types'
 import { listItemDimensions } from './utils'
-import { DensityRamp } from './types'
 
-export interface ListProps
-  extends HeightProps,
-    WidthProps,
-    Omit<CompatibleHTMLProps<HTMLUListElement>, 'label'> {
-  /**
-   * Determines how dense a list should be by affecting child ListItem
-   * size and spacing.
-   * @default 0
-   */
-  density?: DensityRamp
+export type ListProps = ListColorProps &
+  HeightProps &
+  WidthProps &
+  Omit<CompatibleHTMLProps<HTMLUListElement>, 'label'> & {
+    /**
+     * Determines how dense a list should be by affecting child ListItem
+     * size and spacing.
+     * @default 0
+     */
+    density?: DensityRamp
 
-  /**
-   * If true, all ListItem children without an icon will reserve space for an icon
-   * for alignment purposes.
-   */
-  iconGutter?: boolean
+    /**
+     * If true, all ListItem children without an icon will reserve space for an icon
+     * for alignment purposes.
+     */
+    iconGutter?: boolean
 
-  /**
-   * Specify font-family. Generally will end up inheriting `theme.fonts.body` but can be specified as `brand`, `code` or `body` to explicitly specify theme-controlled font-family
-   * @default inherit
-   */
-  fontFamily?: FontFamilies
+    /**
+     * Specify font-family. Can be specified as `brand`, `code` or `body` to explicitly
+     * specify theme-controlled font-family.
+     * @default inherit
+     */
+    fontFamily?: FontFamilies
 
-  /**
-   * Replace the normal uiN(1-5) color for selected and selected + hovered color with key colors
-   */
-  keyColor?: boolean
-
-  /**
-   * Use windowing for long lists (strongly recommended to also define a width on List or its container)
-   * 'none' - default with children are <= 100.
-   * 'fixed' - better performance, default when first child is a ListItem (height will default to 100%)
-   */
-  windowing?: 'fixed' | 'none'
-}
+    /**
+     * Use windowing for long lists (strongly recommended to also define a width on List or its container)
+     * 'none' - default with children are <= 100.
+     * 'fixed' - better performance, default when first child is a ListItem (height will default to 100%)
+     */
+    windowing?: 'fixed' | 'none'
+  }
 
 const getListItemHeight = (child: ReactChild, height: number) => {
   if (isValidElement(child) && child.props.description) {
@@ -93,6 +90,7 @@ export const ListInternal = forwardRef(
   (
     {
       children,
+      color,
       density = 0,
       disabled,
       height,
@@ -144,9 +142,9 @@ export const ListInternal = forwardRef(
     })
 
     const context = {
+      color: keyColor ? 'key' : color,
       density,
       iconGutter,
-      keyColor,
     }
 
     return (
@@ -180,4 +178,4 @@ const ListStyle = styled.ul
   padding: 0;
 `
 
-export const List = styled(ListInternal)``
+export const List = styled(ListInternal)<ListProps>``
