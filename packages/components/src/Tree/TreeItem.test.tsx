@@ -134,7 +134,7 @@ describe('TreeItem', () => {
       </TreeItem>
     )
     expect(screen.getByText('Whatever')).toHaveStyle('color: #262d33')
-    expect(screen.getByRole('listitem')).toHaveStyle('background: #f3f2ff')
+    expect(screen.getByRole('treeitem')).toHaveStyle('background: #f3f2ff')
   })
 
   test('warns onClickWhitespace && !labelBackgroundOnly', () => {

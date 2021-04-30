@@ -28,7 +28,7 @@ import React from 'react'
 import { Alarm } from '@styled-icons/material/Alarm'
 import { Download } from '@styled-icons/material/Download'
 import { Story } from '@storybook/react/types-6-0'
-import { Tree, TreeProps, TreeItem } from '..'
+import { Tree, TreeProps, TreeCollection, TreeItem } from '..'
 import { Space } from '../../Layout'
 
 export * from './BorderRadius.story'
@@ -47,18 +47,20 @@ export default {
 }
 
 const Template: Story<TreeProps> = (args) => (
-  <Tree {...args} label="Orders">
-    <Tree label="Orders" defaultOpen>
-      <TreeItem>ID</TreeItem>
-      <TreeItem>Status</TreeItem>
-      <Tree label="Created" defaultOpen>
-        <TreeItem>Created Date</TreeItem>
-        <TreeItem>Created Month</TreeItem>
-        <TreeItem>Created Year</TreeItem>
-        <TreeItem>Created Quarter</TreeItem>
+  <TreeCollection>
+    <Tree {...args} label="Orders">
+      <Tree label="Orders" defaultOpen>
+        <TreeItem>ID</TreeItem>
+        <TreeItem>Status</TreeItem>
+        <Tree label="Created" defaultOpen>
+          <TreeItem>Created Date</TreeItem>
+          <TreeItem>Created Month</TreeItem>
+          <TreeItem>Created Year</TreeItem>
+          <TreeItem>Created Quarter</TreeItem>
+        </Tree>
       </Tree>
     </Tree>
-  </Tree>
+  </TreeCollection>
 )
 
 export const Basic = Template.bind({})

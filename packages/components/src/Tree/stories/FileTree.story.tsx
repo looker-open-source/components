@@ -32,24 +32,27 @@ import { TableChart } from '@styled-icons/material-outlined/TableChart'
 import { Visibility } from '@styled-icons/material-outlined/Visibility'
 
 import { Tree } from '../Tree'
+import { TreeCollection } from '../TreeCollection'
 import { TreeItem } from '../TreeItem'
 import { TreeProps } from '../types'
 
 const Template: Story<TreeProps> = (args) => (
-  <Tree {...args} label="thelook" icon={<Explore />}>
-    <Tree label="Users" icon={<Visibility />} defaultOpen branchFontWeight>
-      <Tree label="Orders" icon={<TableChart />} defaultOpen branchFontWeight>
-        <TreeItem icon={<TextSnippet />}>ID</TreeItem>
-        <TreeItem icon={<TextSnippet />}>Status</TreeItem>
-        <TreeItem icon={<TextSnippet />}>Created</TreeItem>
-      </Tree>
-      <Tree label="Users" icon={<TableChart />} defaultOpen branchFontWeight>
-        <TreeItem icon={<TextSnippet />}>ID</TreeItem>
-        <TreeItem icon={<TextSnippet />}>Name</TreeItem>
-        <TreeItem icon={<TextSnippet />}>Created</TreeItem>
+  <TreeCollection>
+    <Tree {...args} label="thelook" icon={<Explore />}>
+      <Tree label="Users" icon={<Visibility />} defaultOpen branchFontWeight>
+        <Tree label="Orders" icon={<TableChart />} defaultOpen branchFontWeight>
+          <TreeItem icon={<TextSnippet />}>ID</TreeItem>
+          <TreeItem icon={<TextSnippet />}>Status</TreeItem>
+          <TreeItem icon={<TextSnippet />}>Created</TreeItem>
+        </Tree>
+        <Tree label="Users" icon={<TableChart />} defaultOpen branchFontWeight>
+          <TreeItem icon={<TextSnippet />}>ID</TreeItem>
+          <TreeItem icon={<TextSnippet />}>Name</TreeItem>
+          <TreeItem icon={<TextSnippet />}>Created</TreeItem>
+        </Tree>
       </Tree>
     </Tree>
-  </Tree>
+  </TreeCollection>
 )
 
 export const FileTree = Template.bind({})

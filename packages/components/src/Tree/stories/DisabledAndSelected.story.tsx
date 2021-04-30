@@ -25,7 +25,7 @@
  */
 
 import React, { FC } from 'react'
-import { TreeItem, Tree } from '..'
+import { TreeCollection, TreeItem, Tree } from '..'
 import { Grid } from '../../Layout/Grid'
 import { LimitedListColor } from '../../List/types'
 
@@ -33,16 +33,18 @@ const Basic: FC<{ children: string; color?: LimitedListColor }> = ({
   children,
   ...props
 }) => (
-  <Tree label={children} defaultOpen {...props}>
-    <Tree disabled label="Disabled Tree" defaultOpen>
-      <TreeItem disabled>Disabled TreeItem</TreeItem>
-      <TreeItem selected>Selected TreeItem</TreeItem>
+  <TreeCollection>
+    <Tree label={children} defaultOpen {...props}>
+      <Tree disabled label="Disabled Tree" defaultOpen>
+        <TreeItem disabled>Disabled TreeItem</TreeItem>
+        <TreeItem selected>Selected TreeItem</TreeItem>
+      </Tree>
+      <Tree selected label="Selected Tree" defaultOpen>
+        <TreeItem disabled>Disabled TreeItem</TreeItem>
+        <TreeItem selected>Selected TreeItem</TreeItem>
+      </Tree>
     </Tree>
-    <Tree selected label="Selected Tree" defaultOpen>
-      <TreeItem disabled>Disabled TreeItem</TreeItem>
-      <TreeItem selected>Selected TreeItem</TreeItem>
-    </Tree>
-  </Tree>
+  </TreeCollection>
 )
 
 export const DisabledAndSelected = () => (
