@@ -31,10 +31,11 @@ import {
   TableHeaderCell,
   TableRow,
 } from '@looker/components'
-import { DateFormat } from '@looker/components/src/date'
+import { TimeFormat } from '@looker/components-date'
+
 import React from 'react'
 
-export const DateFormatTable = () => {
+export const TimeFormatTable = () => {
   return (
     <Table mb="large">
       <TableHead>
@@ -47,25 +48,25 @@ export const DateFormatTable = () => {
         <TableRow>
           <TableDataCell>Short</TableDataCell>
           <TableDataCell>
-            <DateFormat format="short" />
+            <TimeFormat format="short" />
           </TableDataCell>
         </TableRow>
         <TableRow>
           <TableDataCell>Medium *</TableDataCell>
           <TableDataCell>
-            <DateFormat />
+            <TimeFormat />
           </TableDataCell>
         </TableRow>
         <TableRow>
           <TableDataCell>Long</TableDataCell>
           <TableDataCell>
-            <DateFormat format="long" />
+            <TimeFormat format="long" />
           </TableDataCell>
         </TableRow>
         <TableRow>
           <TableDataCell>Full</TableDataCell>
           <TableDataCell>
-            <DateFormat format="full" />
+            <TimeFormat format="full" />
           </TableDataCell>
         </TableRow>
       </TableBody>
