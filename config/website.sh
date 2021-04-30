@@ -5,9 +5,6 @@ VERSION=$1
 # clean-up previous build if exists
 rm -rf docs/$VERSION
 
-# build icons
-yarn prebuild
-
 # Build Gatsby, then move contents to public folder for publishing
 sed -i -e "s/VERSION/$VERSION/g" www/gatsby-config.js
 yarn workspace www build
