@@ -40,7 +40,7 @@ import {
   Paragraph,
   Flex,
 } from '../..'
-import { TreeItem, TreeBranch, Tree } from '..'
+import { TreeCollection, TreeItem, TreeBranch, Tree } from '..'
 import { HoverDisclosure } from '../../utils'
 import { generateBorderRadius } from '../utils/generateBorderRadius'
 import { listItemDimensions } from '../../List'
@@ -191,7 +191,7 @@ const fields = (
 )
 
 export const FieldPicker = () => (
-  <>
+  <TreeCollection>
     <BorderRadiusOverrideTree
       density={-3}
       defaultOpen={true}
@@ -215,5 +215,5 @@ export const FieldPicker = () => (
     >
       {fields}
     </BorderRadiusOverrideTree>
-  </>
+  </TreeCollection>
 )

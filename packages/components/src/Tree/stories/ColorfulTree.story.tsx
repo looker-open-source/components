@@ -26,17 +26,19 @@
 
 import React from 'react'
 import { DateRange } from '@styled-icons/material-outlined/DateRange'
-import { Tree, TreeItem } from '../..'
+import { Tree, TreeCollection, TreeItem } from '..'
 
 export const ColorfulTree = () => (
-  <Tree defaultOpen label="Colorful Tree">
-    <TreeItem color="green" icon={<DateRange />}>
-      Green TreeItem
-    </TreeItem>
-    <Tree color="blue" defaultOpen icon={<DateRange />} label="Blue Tree">
-      <TreeItem color="purple" icon={<DateRange />}>
-        Purple TreeItem
+  <TreeCollection>
+    <Tree defaultOpen label="Colorful Tree">
+      <TreeItem color="green" icon={<DateRange />}>
+        Green TreeItem
       </TreeItem>
+      <Tree color="blue" defaultOpen icon={<DateRange />} label="Blue Tree">
+        <TreeItem color="purple" icon={<DateRange />}>
+          Purple TreeItem
+        </TreeItem>
+      </Tree>
     </Tree>
-  </Tree>
+  </TreeCollection>
 )

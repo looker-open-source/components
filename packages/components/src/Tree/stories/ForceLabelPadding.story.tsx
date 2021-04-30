@@ -26,14 +26,16 @@
 
 import React from 'react'
 import { Folder } from '@styled-icons/material/Folder'
-import { Tree, TreeItem } from '..'
+import { Tree, TreeCollection, TreeItem } from '..'
 
 export const ForceLabelPadding = () => (
-  <Tree icon={<Folder />} label="Folders" defaultOpen>
-    <Tree icon={<Folder />} label="Personal" defaultOpen forceLabelPadding>
-      <TreeItem>Performance</TreeItem>
-      <TreeItem>Sales</TreeItem>
-      <TreeItem>Metrics</TreeItem>
+  <TreeCollection>
+    <Tree icon={<Folder />} label="Folders" defaultOpen>
+      <Tree icon={<Folder />} label="Personal" defaultOpen forceLabelPadding>
+        <TreeItem>Performance</TreeItem>
+        <TreeItem>Sales</TreeItem>
+        <TreeItem>Metrics</TreeItem>
+      </Tree>
     </Tree>
-  </Tree>
+  </TreeCollection>
 )

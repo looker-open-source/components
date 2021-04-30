@@ -24,32 +24,18 @@
 
  */
 
-import React, { FC } from 'react'
-import { Tree } from '../Tree'
-import { TreeCollection } from '../TreeCollection'
-import { TreeItem } from '../TreeItem'
-import { DensityRamp } from '../../List/types'
-import { Grid } from '../../Layout'
+import { CompatibleHTMLProps } from '@looker/design-tokens'
+import styled from 'styled-components'
 
-const DensityTree: FC<{ density: DensityRamp }> = ({ density }) => (
-  <TreeCollection>
-    <Tree defaultOpen density={density} label="Tree of Cheese">
-      <Tree defaultOpen label="French Cheeses">
-        <TreeItem>Brie</TreeItem>
-      </Tree>
-      <TreeItem>Cheddar</TreeItem>
-      <TreeItem>Gouda</TreeItem>
-      <TreeItem>Swiss</TreeItem>
-    </Tree>
-  </TreeCollection>
-)
+export type TreeCollectionProps = CompatibleHTMLProps<HTMLUListElement>
 
-const densities: DensityRamp[] = [1, 0, -1, -2, -3]
-
-export const Density = () => (
-  <Grid columns={densities.length}>
-    {densities.map((density) => (
-      <DensityTree density={density} key={density} />
-    ))}
-  </Grid>
-)
+/**
+ * @todo refactor `div` to `ul` to match w3 spec
+ * This todo will follow the todo in TreeStyle of converting from `div` to `li`
+ **/
+export const TreeCollection = styled.div.attrs(({ role = 'tree' }) => ({
+  role,
+}))<TreeCollectionProps>`
+  margin: 0;
+  padding: 0;
+`

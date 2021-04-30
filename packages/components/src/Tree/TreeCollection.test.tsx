@@ -24,32 +24,26 @@
 
  */
 
-import React, { FC } from 'react'
-import { Tree } from '../Tree'
-import { TreeCollection } from '../TreeCollection'
-import { TreeItem } from '../TreeItem'
-import { DensityRamp } from '../../List/types'
-import { Grid } from '../../Layout'
+import React from 'react'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
+import { Tree } from './Tree'
+import { TreeCollection } from './TreeCollection'
+import { TreeItem } from './TreeItem'
 
-const DensityTree: FC<{ density: DensityRamp }> = ({ density }) => (
-  <TreeCollection>
-    <Tree defaultOpen density={density} label="Tree of Cheese">
-      <Tree defaultOpen label="French Cheeses">
-        <TreeItem>Brie</TreeItem>
+test('Renders children', () => {
+  renderWithTheme(
+    <TreeCollection>
+      <Tree defaultOpen label="Cheeses">
+        <TreeItem>Cheddar</TreeItem>
+        <TreeItem>Gouda</TreeItem>
+        <TreeItem>Swiss</TreeItem>
       </Tree>
-      <TreeItem>Cheddar</TreeItem>
-      <TreeItem>Gouda</TreeItem>
-      <TreeItem>Swiss</TreeItem>
-    </Tree>
-  </TreeCollection>
-)
+    </TreeCollection>
+  )
 
-const densities: DensityRamp[] = [1, 0, -1, -2, -3]
-
-export const Density = () => (
-  <Grid columns={densities.length}>
-    {densities.map((density) => (
-      <DensityTree density={density} key={density} />
-    ))}
-  </Grid>
-)
+  screen.getByText('Cheeses')
+  screen.getByText('Cheddar')
+  screen.getByText('Gouda')
+  screen.getByText('Swiss')
+})
