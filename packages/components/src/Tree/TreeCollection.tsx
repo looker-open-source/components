@@ -29,7 +29,11 @@ import styled from 'styled-components'
 
 export type TreeCollectionProps = CompatibleHTMLProps<HTMLUListElement>
 
-export const TreeCollection = styled.ul.attrs(({ role = 'tree' }) => ({
+/**
+ * @todo refactor `div` to `ul` to match w3 spec
+ * This todo will follow the todo in TreeStyle of converting from `div` to `li`
+ **/
+export const TreeCollection = styled.div.attrs(({ role = 'tree' }) => ({
   role,
 }))<TreeCollectionProps>`
   margin: 0;
