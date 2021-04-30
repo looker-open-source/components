@@ -40,6 +40,12 @@ export interface PaginationProps {
   current: number
   pages: number
   onChange: (page: number) => void
+  /**
+   * If enabled controls will always be shown regardless of whether or not
+   * there are any additional pages to be displayed.
+   * @default false
+   */
+  alwaysVisible?: boolean
 }
 
 const PaginationButton: FC<IconButtonProps> = (props) => (
@@ -47,13 +53,14 @@ const PaginationButton: FC<IconButtonProps> = (props) => (
 )
 
 const PaginationLayout: FC<PaginationProps> = ({
+  alwaysVisible = false,
   className,
   current,
   pages,
   onChange,
 }) => {
   const { t } = useTranslation('Pagination')
-  if (pages <= 1) return null
+  if (pages <= 1 && !alwaysVisible) return null
 
   const first = () => onChange(1)
   const previous = () => onChange(current - 1)

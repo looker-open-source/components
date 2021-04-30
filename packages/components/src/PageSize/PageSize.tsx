@@ -48,6 +48,12 @@ export interface PageSizeProps {
    * Callback that triggers when new value is selected
    */
   onChange: (value: number) => void
+  /**
+   * If enabled controls will always be shown regardless of whether or not
+   * there are any additional pages to be displayed.
+   * @default false
+   */
+  alwaysVisible?: boolean
 }
 
 const defaultPageSizes = [10, 25, 50, 100]
@@ -61,6 +67,7 @@ const arrayToSelectOptions = (options: Array<string | number>) =>
   options.map((option) => stringToSelectOption(String(option)))
 
 export const PageSizeLayout: FC<PageSizeProps> = ({
+  alwaysVisible = false,
   value,
   total,
   className,
@@ -71,17 +78,20 @@ export const PageSizeLayout: FC<PageSizeProps> = ({
 
   const handleOnChange = (newValue: string) => onChange(Number(newValue))
 
-  return Math.min(...options) < total ? (
+  return alwaysVisible || Math.min(...options) < total ? (
     <div className={className}>
       {t('Display')}
       <Select
         width="5rem"
         mx="xsmall"
         options={arrayToSelectOptions(options)}
-        value={String(value)}
+        value={String(value > total ? total : value)}
         onChange={handleOnChange}
+        disabled={options.every((option) => option > total)}
       />
-      {t('of')} {total}
+      <span>
+        {t('of')} {total}
+      </span>
     </div>
   ) : null
 }
