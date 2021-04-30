@@ -32,18 +32,16 @@ import { DensityRamp } from '../../List/types'
 import { Grid } from '../../Layout'
 
 const DensityTree: FC<{ density: DensityRamp }> = ({ density }) => (
-  <>
-    <TreeCollection>
-      <Tree defaultOpen density={density} label="Tree of Cheese">
-        <Tree defaultOpen label="French Cheeses">
-          <TreeItem>Brie</TreeItem>
-        </Tree>
-        <TreeItem>Cheddar</TreeItem>
-        <TreeItem>Gouda</TreeItem>
-        <TreeItem>Swiss</TreeItem>
+  <TreeCollection>
+    <Tree defaultOpen density={density} label="Tree of Cheese">
+      <Tree defaultOpen label="French Cheeses">
+        <TreeItem>Brie</TreeItem>
       </Tree>
-    </TreeCollection>
-  </>
+      <TreeItem>Cheddar</TreeItem>
+      <TreeItem>Gouda</TreeItem>
+      <TreeItem>Swiss</TreeItem>
+    </Tree>
+  </TreeCollection>
 )
 
 const densities: DensityRamp[] = [1, 0, -1, -2, -3]

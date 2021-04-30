@@ -24,9 +24,8 @@
 
  */
 
-
 import React, { FC } from 'react'
-import { TreeItem, Tree } from '..'
+import { TreeCollection, TreeItem, Tree } from '..'
 import { Grid } from '../../Layout/Grid'
 import { LimitedListColor } from '../../List/types'
 

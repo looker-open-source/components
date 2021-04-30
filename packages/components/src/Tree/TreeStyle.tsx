@@ -128,7 +128,10 @@ const treeItemIndent = ({
   return labelBackgroundOnly ? wrapperIndent : labelIndent
 }
 
-// Ideally, this would be an li, but the problem is the internal ListItem is also an li so we get an "li can't be a child of an li" error
+/**
+ * @todo refactor `div` to `li`
+ * Complex because nested ListItem is also an `li` breaking HTML nesting rules
+ **/
 const TreeStyleLayout: FC<TreeStyleProps> = ({ className, children }) => (
   <div className={className}>{children}</div>
 )

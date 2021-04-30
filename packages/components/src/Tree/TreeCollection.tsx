@@ -28,7 +28,7 @@ import { CompatibleHTMLProps } from '@looker/design-tokens'
 import React from 'react'
 import styled from 'styled-components'
 
-type TreeCollectionProps = CompatibleHTMLProps<HTMLUListElement>
+export type TreeCollectionProps = CompatibleHTMLProps<HTMLUListElement>
 
 const TreeCollectionLayout = ({ children, ...props }: TreeCollectionProps) => {
   return (
