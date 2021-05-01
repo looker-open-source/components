@@ -21,7 +21,7 @@ This is a monorepo utilizing [Lerna](https://lerna.js.org) and [Yarn Workspaces]
 
 If you don't have [`yarn`](https://yarnpkg.com/en/) installed, have a look at https://yarnpkg.com/en/docs/install and choose the appropriate installation for your environment.
 
-We recommend using [Node Version Manager (NVM)](https://github.com/nvm-sh/nvm#installation-and-update) to manage multiple versions of Node. Once installed you can simply type `nvm use` in side the repository to get the appropriate version of Node installed. Then you'll need to install Yarn globally via NPM - `npm install --global yarn`
+We recommend using [Node Version Manager (NVM)](https://github.com/nvm-sh/nvm#installation-and-update) to manage multiple versions of Node. Once installed you can simply type `nvm use` in side the repository to get the appropriate version of Node installed. Then you'll need to install Yarn globally via NPM - `npm install --global yarn --legacy-peer-deps`
 
 ## Clone Repository & Setup
 
