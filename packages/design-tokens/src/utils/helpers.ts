@@ -28,9 +28,9 @@ import rgba from 'polished/lib/color/rgba'
 import lighten from 'polished/lib/color/lighten'
 import mix from 'polished/lib/color/mix'
 import { css } from 'styled-components'
-import { StatefulColor } from '../color'
+import { ExtendedStatefulColor } from '../color/types/stateful'
 
-export const buttonShadow = (color: StatefulColor = 'key') =>
+export const buttonShadow = (color: ExtendedStatefulColor = 'key') =>
   css`
     box-shadow: 0 0 0 0.15rem ${({ theme }) => rgba(theme.colors[color], 0.25)};
   `

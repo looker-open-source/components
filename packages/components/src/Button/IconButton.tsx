@@ -107,6 +107,7 @@ const IconButtonComponent = forwardRef(
         size={size}
         width={buttonSizeMap[size]}
         className={`${className} ${tooltipClassName}`.trim()}
+        toggleColor={toggleColor}
         {...eventHandlers}
         {...rest}
       >
