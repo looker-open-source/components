@@ -79,6 +79,7 @@ const AccordionDisclosureInternal: FC<AccordionDisclosureProps> = forwardRef(
       onBlur,
       onClick: propsOnClick,
       onKeyUp,
+      role,
       defaultOpen,
       isOpen,
       toggleOpen,
@@ -100,12 +101,17 @@ const AccordionDisclosureInternal: FC<AccordionDisclosureProps> = forwardRef(
     }
     const onClick = useWrapEvent(handleToggle, propsOnClick)
 
-    const clickableProps = useClickable({ disabled, onBlur, onClick, onKeyUp })
+    const clickableProps = useClickable({
+      disabled,
+      onBlur,
+      onClick,
+      onKeyUp,
+      role,
+    })
 
     return (
       <AccordionDisclosureStyle
         className={className}
-        role="button"
         aria-controls={accordionContentId}
         aria-expanded={isOpen}
         id={accordionDisclosureId}
