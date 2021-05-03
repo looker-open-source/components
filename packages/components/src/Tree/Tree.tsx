@@ -149,6 +149,7 @@ const TreeLayout: FC<TreeProps> = ({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       py="none"
+      tabIndex={-1}
       {...indicatorDefaults}
       {...restProps}
     >
