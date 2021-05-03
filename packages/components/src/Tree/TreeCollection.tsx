@@ -24,18 +24,30 @@
 
  */
 
-import { CompatibleHTMLProps } from '@looker/design-tokens'
+import React, { FC, ReactNode } from 'react'
 import styled from 'styled-components'
 
-export type TreeCollectionProps = CompatibleHTMLProps<HTMLUListElement>
+export type TreeCollectionProps = {
+  children?: ReactNode
+  className?: string
+}
+
+const TreeCollectionLayout: FC<TreeCollectionProps> = ({
+  children,
+  className,
+}) => {
+  return (
+    <div className={className} role="tree">
+      {children}
+    </div>
+  )
+}
 
 /**
  * @todo refactor `div` to `ul` to match w3 spec
  * This todo will follow the todo in TreeStyle of converting from `div` to `li`
  **/
-export const TreeCollection = styled.div.attrs(({ role = 'tree' }) => ({
-  role,
-}))<TreeCollectionProps>`
+export const TreeCollection = styled(TreeCollectionLayout)`
   margin: 0;
   padding: 0;
 `
