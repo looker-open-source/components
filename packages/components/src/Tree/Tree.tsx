@@ -131,6 +131,7 @@ const TreeLayout: FC<TreeProps> = ({
       disabled={disabled}
       icon={icon}
       truncate={truncate}
+      tabIndex={-2} // Prevents tab stop behavior from reaching innner TreeItems
     >
       {propsLabel}
     </TreeItemInner>
@@ -140,7 +141,13 @@ const TreeLayout: FC<TreeProps> = ({
   const innerAccordion = (
     <Accordion
       content={
-        <List density={density} disableListNav role="group" windowing="none">
+        <List
+          density={density}
+          disableListNav
+          role="group"
+          tabIndex={-2} // Prevents tab stop behavior from reaching innner TreeItems
+          windowing="none"
+        >
           {children}
         </List>
       }

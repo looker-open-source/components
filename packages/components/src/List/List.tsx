@@ -107,6 +107,7 @@ export const ListInternal = forwardRef(
       onFocus,
       onKeyDown,
       role,
+      tabIndex = 0,
       windowing,
       ...props
     }: ListProps,
@@ -158,7 +159,7 @@ export const ListInternal = forwardRef(
     return (
       <ListItemContext.Provider value={context}>
         <ListStyle
-          tabIndex={-1}
+          tabIndex={tabIndex}
           role={role || 'list'}
           height={height}
           {...props}

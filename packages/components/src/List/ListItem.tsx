@@ -144,6 +144,7 @@ const ListItemInternal = forwardRef(
       rel,
       role,
       selected,
+      tabIndex = -1,
       target,
       truncate,
       ...restProps
@@ -270,7 +271,7 @@ const ListItemInternal = forwardRef(
         rel={createSafeRel(rel, target)}
         role={role || 'listitem'}
         target={target}
-        tabIndex={-1}
+        tabIndex={tabIndex}
         {...statefulProps}
       >
         {children}
