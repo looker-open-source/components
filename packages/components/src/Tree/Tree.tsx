@@ -140,7 +140,7 @@ const TreeLayout: FC<TreeProps> = ({
   const innerAccordion = (
     <Accordion
       content={
-        <List density={density} role="group" windowing="none">
+        <List density={density} disableListNav role="group" windowing="none">
           {children}
         </List>
       }

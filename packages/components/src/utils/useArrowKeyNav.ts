@@ -45,6 +45,12 @@ export interface UseArrowKeyNavProps<E extends HTMLElement> {
    */
   axis?: 'vertical' | 'horizontal' | 'both'
   /**
+   * If true, nothing is returned from the useArrowKeyNav call
+   * Note: Used internally by Tree's nested List
+   * @private
+   */
+  disabled?: boolean
+  /**
    * A custom getter for the next item to focus
    */
   getNextFocus?: (
@@ -76,6 +82,7 @@ export interface UseArrowKeyNavProps<E extends HTMLElement> {
  */
 export const useArrowKeyNav = <E extends HTMLElement = HTMLElement>({
   axis = 'vertical',
+  disabled,
   getNextFocus = getNextFocusDefault,
   ref,
   onBlur,
@@ -174,7 +181,7 @@ export const useArrowKeyNav = <E extends HTMLElement = HTMLElement>({
     }
   }, [focusInside, placeInitialFocus])
 
-  return {
+  const navProps = {
     onBlur: useWrapEvent(handleBlur, onBlur),
     onFocus: useWrapEvent(handleFocus, onFocus),
     onKeyDown: useWrapEvent(handleKeyDown, onKeyDown),
@@ -183,4 +190,6 @@ export const useArrowKeyNav = <E extends HTMLElement = HTMLElement>({
     // landing back on the container when shift-tabbing from the first item
     tabIndex: focusInside ? undefined : 0,
   }
+
+  return disabled ? null : navProps
 }
