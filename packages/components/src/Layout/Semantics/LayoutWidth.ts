@@ -34,6 +34,9 @@ import {
 } from '@looker/design-tokens/src/system'
 
 export type LayoutSizes =
+  | 'navigation'
+  | 'rail'
+  | 'sidebar'
   | SizeXXSmall
   | SizeXSmall
   | SizeSmall
@@ -41,15 +44,19 @@ export type LayoutSizes =
   | SizeLarge
 
 export type LayoutSizeRamp = Record<LayoutSizes, string>
+
 export type LayoutWidth = ResponsiveValue<LayoutSizeRamp | string>
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 export const layoutSizes: LayoutSizeRamp = {
-  xxsmall: '16rem',
-  xsmall: '12rem',
-  small: '28rem',
-  medium: '40rem',
   large: '50rem',
+  navigation: '16rem',
+  medium: '40rem',
+  rail: '3.5rem',
+  sidebar: '20rem',
+  small: '28rem',
+  xsmall: '21rem',
+  xxsmall: '16rem',
 }
 
 export const layoutWidth = system({

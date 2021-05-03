@@ -353,7 +353,7 @@ export const ScrollAllAreas = () => (
 )
 
 const WidthTemplate: Story<AsideProps> = (args) => (
-  <AsideStyle {...args}>Aside content</AsideStyle>
+  <AsideStyle {...args}>Aside</AsideStyle>
 )
 
 const AsideStyle = styled(Aside)`
@@ -361,9 +361,12 @@ const AsideStyle = styled(Aside)`
   height: 40rem;
   padding: 40px;
 `
-export const AsideWidthSizeXsmall = WidthTemplate.bind({})
-AsideWidthSizeXsmall.args = {
-  width: 'xsmall',
+export const AsideDefaultWidthSizeXsmall = WidthTemplate.bind({})
+AsideDefaultWidthSizeXsmall.args = {}
+
+export const AsideWidthSizeNavigation = WidthTemplate.bind({})
+AsideWidthSizeNavigation.args = {
+  width: 'navigation',
 }
 
 export default {
