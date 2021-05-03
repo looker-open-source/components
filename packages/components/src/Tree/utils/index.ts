@@ -26,4 +26,5 @@
 
 export * from './generateIndent'
 export * from './generateTreeBorder'
+export * from './getNextTreeFocus'
 export * from './indicatorDefaults'
