@@ -1,6 +1,6 @@
 
 names='expressions components'
-sdkVersion='21.4.0'
+sdkVersion='21.4.3'
 localPackages='components components-providers components-test-utils icons'
 packageAdd='"main": "lib\/cjs\/index.js",\
   "module": "lib\/index.js",\

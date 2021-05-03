@@ -7,6 +7,7 @@ import {
   Stories,
   PRIMARY_STORY,
 } from '@storybook/addon-docs/blocks'
+import { i18nInit } from '@looker/filter-components'
 import { componentsDecorator } from '../src/setup/componentsDecorator'
 
 // Supports parent page (in Gatsby) resizing the iframe dynamically
@@ -61,3 +62,9 @@ export const parameters = {
 }
 
 addDecorator(componentsDecorator)
+
+export const loaders = [
+  async () => ({
+    i18next: await i18nInit(),
+  }),
+]
