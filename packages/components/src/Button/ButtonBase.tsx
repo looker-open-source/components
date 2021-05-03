@@ -82,11 +82,10 @@ export const buttonIconSize = css<ButtonProps>`
 `
 
 type ButtonLayoutProps = ButtonProps & ToggleColorProps
-type ButtonOuterProps = ButtonLayoutProps & FocusVisibleProps
 
 const ButtonOuter = styled.button
   .withConfig({ shouldForwardProp })
-  .attrs(({ color = 'key' }) => ({ color }))<ButtonOuterProps>`
+  .attrs(({ color = 'key' }) => ({ color }))<ButtonLayoutProps>`
   ${buttonCSS}
   ${({ fullWidth }) => fullWidth && `width: 100%;`}
 `
@@ -100,10 +99,11 @@ const ButtonLayout = forwardRef(
       onBlur,
       onKeyUp,
       size = 'medium',
+      focusVisible,
       ...restProps
     } = props
 
-    const [isFocusVisible, setFocusVisible] = useState(false)
+    const [isFocusVisible, setFocusVisible] = useState(!!focusVisible)
 
     const handleOnKeyUp = (event: React.KeyboardEvent<HTMLButtonElement>) => {
       setFocusVisible(true)

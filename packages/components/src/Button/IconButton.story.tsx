@@ -115,9 +115,10 @@ ToggleBackground.args = {
   toggleColor: undefined,
 }
 
-export const ToggleColor = Template.bind({})
-ToggleColor.args = {
+export const ToggleColorFocused = Template.bind({})
+ToggleColorFocused.args = {
   ...Basic.args,
+  focusVisible: true,
   toggle: true,
   toggleBackground: true,
   toggleColor: 'calculation',

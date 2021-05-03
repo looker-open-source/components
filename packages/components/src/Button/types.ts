@@ -31,6 +31,7 @@ import {
   SpaceProps,
   WidthProps,
 } from 'styled-system'
+import { FocusVisibleProps } from '../utils'
 import { IconType } from '../Icon'
 import { ButtonSizeProps, ButtonSizes } from './size'
 
@@ -48,6 +49,7 @@ export interface ButtonColorProps {
 }
 export interface ButtonBaseProps
   extends Omit<CompatibleHTMLProps<HTMLButtonElement>, 'type'>,
+    FocusVisibleProps,
     ButtonSizeProps,
     ButtonColorProps,
     MaxWidthProps,
