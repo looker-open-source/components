@@ -26,6 +26,7 @@
 
 import React, { FC, ReactNode } from 'react'
 import styled from 'styled-components'
+import { useArrowKeyNav } from '../utils'
 
 export type TreeCollectionProps = {
   children?: ReactNode
@@ -36,8 +37,10 @@ const TreeCollectionLayout: FC<TreeCollectionProps> = ({
   children,
   className,
 }) => {
+  const navProps = useArrowKeyNav({ axis: 'vertical' })
+
   return (
-    <div className={className} role="tree">
+    <div className={className} role="tree" {...navProps}>
       {children}
     </div>
   )
