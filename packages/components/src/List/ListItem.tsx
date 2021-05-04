@@ -43,6 +43,7 @@ import {
   HoverDisclosure,
   undefinedCoalesce,
   useWrapEvent,
+  getNextFocusTarget,
 } from '../utils'
 import { ListItemContext } from './ListItemContext'
 import { ListItemLabel } from './ListItemLabel'
@@ -190,15 +191,6 @@ const ListItemInternal = forwardRef(
       setFocusVisible(true)
     }
 
-    const handleOnMouseEnter = useWrapEvent(
-      () => setHovered(true),
-      onMouseEnter
-    )
-    const handleOnMouseLeave = useWrapEvent(
-      () => setHovered(false),
-      onMouseLeave
-    )
-
     if (disabled && itemRole === 'link') {
       // eslint-disable-next-line no-console
       console.warn(
@@ -302,6 +294,32 @@ const ListItemInternal = forwardRef(
         onClickWhitespace && onClickWhitespace(event)
       }
     }
+
+    const handleWrapperFocus = () => {
+      setHovered(true)
+    }
+
+    const handleWrapperBlur = (event: React.FocusEvent<HTMLElement>) => {
+      const nextFocusTarget = getNextFocusTarget(event)
+
+      if (
+        nextFocusTarget &&
+        !event.currentTarget.contains(nextFocusTarget as Node)
+      ) {
+        setHovered(false)
+      }
+    }
+
+    const handleWrapperMouseEnter = useWrapEvent(
+      () => setHovered(true),
+      onMouseEnter
+    )
+
+    const handleWrapperMouseLeave = useWrapEvent(
+      () => setHovered(false),
+      onMouseLeave
+    )
+
     return (
       <HoverDisclosureContext.Provider value={{ visible: hovered }}>
         <ListItemWrapper
@@ -310,9 +328,11 @@ const ListItemInternal = forwardRef(
           description={description}
           disabled={disabled}
           focusVisible={focusVisible}
+          onBlur={handleWrapperBlur}
           onClick={handleOnClickWhitespace}
-          onMouseEnter={handleOnMouseEnter}
-          onMouseLeave={handleOnMouseLeave}
+          onFocus={handleWrapperFocus}
+          onMouseEnter={handleWrapperMouseEnter}
+          onMouseLeave={handleWrapperMouseLeave}
           ref={ref}
           {...itemDimensions}
           {...restProps}

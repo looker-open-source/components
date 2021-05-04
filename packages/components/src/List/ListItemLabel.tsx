@@ -85,6 +85,10 @@ export const ListItemLabel = styled(ListItemLabelLayout).withConfig({
   ${({ height, itemRole }) => itemRole === 'none' && `height: ${height}px;`}
   ${listItemBackgroundColor}
 
+  &:focus {
+    box-shadow: inset 0 0 0 2px ${({ theme }) => theme.colors.keyFocus};
+  }
+
   align-items: center;
   border: none;
   color: inherit;
