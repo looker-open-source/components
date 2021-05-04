@@ -123,6 +123,18 @@ ToggleColor.args = {
   toggleColor: 'calculation',
 }
 
+export const ToggleColorFocused = Template.bind({})
+ToggleColorFocused.args = {
+  ...ToggleColor.args,
+}
+
+ToggleColorFocused.parameters = {
+  beforeScreenshot: async (page: any) => {
+    const button = await page.$('button')
+    await button.type('a')
+  },
+}
+
 export const ToggleBackgroundAndShapeRound = Template.bind({})
 ToggleBackgroundAndShapeRound.args = {
   ...ToggleBackground.args,
