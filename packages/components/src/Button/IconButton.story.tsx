@@ -24,6 +24,7 @@
 
  */
 
+import { Page } from 'puppeteer'
 import React from 'react'
 import { Add } from '@styled-icons/material/Add'
 import { Story } from '@storybook/react/types-6-0'
@@ -121,6 +122,18 @@ ToggleColor.args = {
   toggle: true,
   toggleBackground: true,
   toggleColor: 'calculation',
+}
+
+export const ToggleColorFocused = Template.bind({})
+ToggleColorFocused.args = {
+  ...ToggleColor.args,
+}
+
+ToggleColorFocused.parameters = {
+  beforeScreenshot: async (page: Page) => {
+    const button = await page.$('button')
+    await button?.type(' ')
+  },
 }
 
 export const ToggleBackgroundAndShapeRound = Template.bind({})

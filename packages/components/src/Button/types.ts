@@ -39,22 +39,22 @@ export interface ButtonIconProps {
   iconAfter?: IconType
 }
 
-export interface ButtonBaseProps
-  extends Omit<CompatibleHTMLProps<HTMLButtonElement>, 'type'>,
-    ButtonSizeProps,
-    MaxWidthProps,
-    MinWidthProps,
-    WidthProps,
-    SpaceProps {
-  type?: 'button' | 'submit' | 'reset'
-
+export interface ButtonColorProps {
   /**
    * Defines the color of the button. Can be the string name of a color listed in the color theme, or a color object.
    * @default "key"
    */
   color?: StatefulColor
-
-  focusVisible?: boolean
+}
+export interface ButtonBaseProps
+  extends Omit<CompatibleHTMLProps<HTMLButtonElement>, 'type'>,
+    ButtonSizeProps,
+    ButtonColorProps,
+    MaxWidthProps,
+    MinWidthProps,
+    WidthProps,
+    SpaceProps {
+  type?: 'button' | 'submit' | 'reset'
 }
 
 export interface ButtonProps extends ButtonBaseProps, ButtonIconProps {
