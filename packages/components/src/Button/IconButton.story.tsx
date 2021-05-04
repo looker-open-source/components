@@ -24,6 +24,7 @@
 
  */
 
+import { Page } from 'puppeteer'
 import React from 'react'
 import { Add } from '@styled-icons/material/Add'
 import { Story } from '@storybook/react/types-6-0'
@@ -129,9 +130,9 @@ ToggleColorFocused.args = {
 }
 
 ToggleColorFocused.parameters = {
-  beforeScreenshot: async (page: any) => {
+  beforeScreenshot: async (page: Page) => {
     const button = await page.$('button')
-    await button.type('a')
+    await button?.type(' ')
   },
 }
 
