@@ -31,6 +31,11 @@ import { borderHelper, SemanticBorderProps } from './semanticBorderHelper'
 
 export interface AsideProps extends SemanticLayoutBase, SemanticBorderProps {
   /**
+   * To be used when desiring the Aside to be collapsible
+   * @default false
+   */
+  collapse?: boolean
+  /**
    * To be used within the context of <Page fixed> container.
    * When true, this removes the inner overflow-y scrolling
    * and allows content within a Layout group to scroll together.
@@ -51,6 +56,7 @@ export const Aside = styled.aside
   }))<AsideProps>`
   ${semanticLayoutCSS}
 
+  ${({ collapse }) => collapse && 'display: none;'}
   flex: 0 0 ${({ width }) => width};
   max-width: ${({ width }) => width};
   min-width: ${({ width }) => width};
@@ -58,4 +64,4 @@ export const Aside = styled.aside
   width: 0;
   ${borderHelper}
   ${({ scrollWithin }) => scrollWithin && 'height: fit-content;'}
-`
+  `

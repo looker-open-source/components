@@ -152,4 +152,8 @@ describe('Semantics', () => {
       height: 'fit-content',
     })
   })
+  test('Aside collapse will display none.', () => {
+    renderWithTheme(<Aside collapse>Aside content</Aside>)
+    expect(screen.getByText('Aside content')).toHaveStyleRule('display: none;')
+  })
 })
