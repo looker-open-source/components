@@ -24,5 +24,8 @@
 
  */
 
-export * from './useI18n'
+export * from './I18nContext'
+export * from './I18nProvider'
+export * from './utils'
 export * from './resources'
+export * from './types'
