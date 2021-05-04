@@ -24,16 +24,4 @@
 
  */
 
-export * from './Calendar'
-export * from './DateFormat'
-export * from './DateTimeFormat'
-export * from './FieldDate'
-export * from './FieldDateRange'
-export * from './FieldTime'
-export * from './FieldTimeSelect'
-export * from './InputDate'
-export * from './InputDateRange'
-export * from './InputTime'
-export * from './InputTimeSelect'
-export * from './TimeFormat'
-export * from './utils'
+export * from './i18n'
