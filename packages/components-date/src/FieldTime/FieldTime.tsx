@@ -24,9 +24,45 @@
 
  */
 
-export * from './Select'
-export * from './SelectInputIcon'
-export * from './SelectMulti'
-export * from './SelectOptions'
-export * from './types'
-export { pickAriaAndValidationProps } from './utils/ariaProps'
+import React, { forwardRef, Ref } from 'react'
+import styled from 'styled-components'
+import {
+  Field,
+  FieldProps,
+  omitFieldProps,
+  pickFieldProps,
+  useFormContext,
+  useID,
+} from '@looker/components'
+import { InputTime, InputTimeProps } from '../InputTime'
+
+export interface FieldTimeProps extends FieldProps, InputTimeProps {}
+
+const FieldTimeComponent = forwardRef(
+  (props: FieldTimeProps, ref: Ref<HTMLInputElement>) => {
+    const validationMessage = useFormContext(props)
+    const id = useID(props.id)
+    return (
+      <Field
+        {...pickFieldProps(props)}
+        id={id}
+        validationMessage={validationMessage}
+      >
+        <InputTime
+          {...omitFieldProps(props)}
+          aria-describedby={`describedby-${id}`}
+          aria-labelledby={`labelledby-${id}`}
+          id={id}
+          validationType={validationMessage && validationMessage.type}
+          ref={ref}
+        />
+      </Field>
+    )
+  }
+)
+
+FieldTimeComponent.displayName = 'FieldTimeComponent'
+
+export const FieldTime = styled(FieldTimeComponent)`
+  width: 100%;
+`

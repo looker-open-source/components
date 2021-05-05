@@ -1,5 +1,5 @@
 {
-  "name": "@looker/components",
+  "name": "@looker/components-date",
   "license": "MIT",
   "version": "1.2.0-alpha.2",
   "main": "lib/cjs/index.js",
@@ -11,46 +11,30 @@
   "sideEffects": false,
   "repository": {
     "type": "git",
-    "url": "https://github.com/looker-open-source/components",
-    "directory": "packages/components"
+    "url": "https://github.com/looker-open-source/components-date",
+    "directory": "packages/components-date"
   },
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@looker/components-providers": "^1.2.0-alpha.2",
+    "@looker/components": "^1.2.0-alpha.2",
     "@looker/design-tokens": "^1.2.0-alpha.2",
-    "@popperjs/core": "^2.6.0",
-    "@styled-icons/material": "^10.28.0",
-    "@styled-icons/material-outlined": "^10.28.0",
     "@styled-icons/material-rounded": "^10.28.0",
-    "@styled-icons/styled-icon": "^10.6.3",
-    "d3-color": "^2.0.0",
-    "d3-hsv": "^0.1.0",
-    "hotkeys-js": "^3.8.3",
+    "date-fns": "^2.21.1",
+    "date-fns-tz": "^1.0.12",
     "i18next": "19.9.1",
     "lodash": "^4.17.20",
-    "react-hotkeys-hook": "2.3.1",
+    "react-day-picker": "^7.4.8",
     "react-i18next": "11.8.8",
-    "resize-observer-polyfill": "^1.5.1",
-    "styled-system": "^5.1.5",
-    "uuid": "^8.3.2"
+    "styled-system": "^5.1.5"
   },
   "devDependencies": {
     "@looker/components-test-utils": "^1.2.0-alpha.2",
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^13.1.5",
-    "@types/d3-color": "^2.0.1",
-    "@types/d3-hsv": "^0.1.4",
-    "@types/lodash": "^4.14.168",
-    "@types/react": "^16.9.56",
-    "@types/react-dom": "^16.9.9",
-    "@types/styled-components": "^5.1.9",
-    "@types/uuid": "^8.3.0",
-    "csstype": "^3.0.8",
     "jest-styled-components": "^7.0.4",
-    "puppeteer": "^9.1.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-is": "^16.13.1",
