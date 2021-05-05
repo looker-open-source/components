@@ -36,7 +36,7 @@ import {
 import { FlexibleColor, ListItemStatefulProps } from '../List/types'
 import { listItemBackgroundColor } from '../List/utils'
 import { List, ListItem } from '../List'
-import { listItemLabelCSS } from '../List/ListItemLabel'
+import { ListItemLabel, listItemLabelCSS } from '../List/ListItemLabel'
 import { IconPlaceholder, IconSize } from '../Icon'
 import { AccordionIndicator } from '../Accordion/AccordionDisclosureLayout'
 import { TreeItem } from './TreeItem'
@@ -68,6 +68,10 @@ export const TreeItemInner = styled(TreeItem)`
     background-color: transparent;
     padding-left: 0;
   `)}
+
+  > ${ListItemLabel}:focus {
+    box-shadow: none;
+  }
 `
 
 export const TreeItemInnerDetail = styled.div``
