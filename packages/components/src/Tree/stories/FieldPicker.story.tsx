@@ -163,6 +163,7 @@ const fields = (
     </TreeBranch>
     <BorderRadiusOverrideTree
       branchFontWeight
+      itemRole="none"
       label={<Box px="xxsmall">Created</Box>}
     >
       <PickerItem>Created Date</PickerItem>
@@ -196,6 +197,7 @@ export const FieldPicker = () => (
       density={-3}
       defaultOpen={true}
       detail={3}
+      itemRole="none"
       label={<Box px="xxsmall">Orders</Box>}
       labelBackgroundOnly
     >
@@ -203,6 +205,7 @@ export const FieldPicker = () => (
     </BorderRadiusOverrideTree>
     <BorderRadiusOverrideTree
       density={-3}
+      itemRole="none"
       label={<Box px="xxsmall">Order Items</Box>}
       labelBackgroundOnly
     >
@@ -210,6 +213,7 @@ export const FieldPicker = () => (
     </BorderRadiusOverrideTree>
     <BorderRadiusOverrideTree
       density={-3}
+      itemRole="none"
       label={<Box px="xxsmall">Users</Box>}
       labelBackgroundOnly
     >

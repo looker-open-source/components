@@ -53,6 +53,7 @@ const TreeLayout: FC<TreeProps> = ({
   dividers,
   forceLabelPadding,
   icon,
+  itemRole,
   keyColor,
   color: propsColor,
   label: propsLabel,
@@ -130,6 +131,7 @@ const TreeLayout: FC<TreeProps> = ({
       detail={detail}
       disabled={disabled}
       icon={icon}
+      itemRole={itemRole}
       truncate={truncate}
       tabIndex={-2} // Prevents tab stop behavior from reaching innner TreeItems
     >
