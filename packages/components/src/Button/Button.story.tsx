@@ -42,6 +42,7 @@ Basic.args = {
 export const Focused = Template.bind({})
 Focused.args = {
   ...Basic.args,
+  margin: 'small',
 }
 
 const beforeScreenshot = async (page: Page) => {
@@ -61,6 +62,7 @@ Critical.args = {
 export const CriticalFocused = Template.bind({})
 CriticalFocused.args = {
   ...Critical.args,
+  margin: 'small',
 }
 
 CriticalFocused.parameters = {
@@ -76,6 +78,7 @@ Neutral.args = {
 export const NeutralFocused = Template.bind({})
 NeutralFocused.args = {
   ...Neutral.args,
+  margin: 'small',
 }
 
 NeutralFocused.parameters = {

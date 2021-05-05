@@ -57,6 +57,7 @@ Basic.args = {
 export const Focused = Template.bind({})
 Focused.args = {
   ...Basic.args,
+  margin: 'small',
 }
 
 Focused.parameters = {
