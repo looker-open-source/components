@@ -24,9 +24,43 @@
 
  */
 
-export * from './Select'
-export * from './SelectInputIcon'
-export * from './SelectMulti'
-export * from './SelectOptions'
-export * from './types'
-export { pickAriaAndValidationProps } from './utils/ariaProps'
+import React, { forwardRef, Ref } from 'react'
+import styled from 'styled-components'
+import {
+  Field,
+  FieldProps,
+  omitFieldProps,
+  pickFieldProps,
+  useFormContext,
+  useID,
+} from '@looker/components'
+import { InputDate, InputDateProps } from '../InputDate'
+
+export interface FieldDateProps extends FieldProps, InputDateProps {}
+
+const FieldDateComponent = forwardRef(
+  (props: FieldDateProps, ref: Ref<HTMLInputElement>) => {
+    const validationMessage = useFormContext(props)
+    const id = useID(props.id)
+    return (
+      <Field
+        {...pickFieldProps(props)}
+        id={id}
+        validationMessage={validationMessage}
+      >
+        <InputDate
+          {...omitFieldProps(props)}
+          aria-describedby={`describedby-${id}`}
+          aria-labelledby={`labelledby-${id}`}
+          id={id}
+          validationType={validationMessage && validationMessage.type}
+          ref={ref}
+        />
+      </Field>
+    )
+  }
+)
+
+FieldDateComponent.displayName = 'FieldDateComponent'
+
+export const FieldDate = styled(FieldDateComponent)``

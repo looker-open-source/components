@@ -24,9 +24,10 @@
 
  */
 
-export * from './Select'
-export * from './SelectInputIcon'
-export * from './SelectMulti'
-export * from './SelectOptions'
-export * from './types'
-export { pickAriaAndValidationProps } from './utils/ariaProps'
+module.exports = (api) => {
+  api.cache(true)
+
+  return {
+    extends: '../../babel.config.js',
+  }
+}

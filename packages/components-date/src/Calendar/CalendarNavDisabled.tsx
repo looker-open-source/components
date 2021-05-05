@@ -23,10 +23,31 @@
  SOFTWARE.
 
  */
+import React, { FC } from 'react'
+import { LocaleUtils } from 'react-day-picker'
+import { Heading } from '@looker/components'
+import { headingSizeMap } from './CalendarNav'
+import { CalendarSize } from './calendar-size'
 
-export * from './Select'
-export * from './SelectInputIcon'
-export * from './SelectMulti'
-export * from './SelectOptions'
-export * from './types'
-export { pickAriaAndValidationProps } from './utils/ariaProps'
+interface NavbarElementDisabledProps {
+  localeUtils: LocaleUtils
+  month: Date
+  size?: CalendarSize
+}
+export const CalendarNavDisabled: FC<NavbarElementDisabledProps> = ({
+  localeUtils,
+  month,
+  size,
+}) => (
+  <Heading
+    as={headingSizeMap(size)}
+    fontWeight="semiBold"
+    fontFamily="body"
+    textAlign="center"
+    py="xsmall"
+  >
+    {localeUtils.formatMonthTitle(month)}
+  </Heading>
+)
+
+CalendarNavDisabled.displayName = 'CalendarNavDisabled'
