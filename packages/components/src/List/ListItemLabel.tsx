@@ -62,6 +62,7 @@ const ListItemLabelLayout: FC<ListItemLabelProps> = ({
 
   return (
     <Component
+      className="tree-item-inner-label"
       disabled={disabled}
       type={itemRole === 'button' || disabled ? 'button' : undefined}
       {...props}
