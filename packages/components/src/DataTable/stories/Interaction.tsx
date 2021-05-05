@@ -169,7 +169,7 @@ Focused.args = {
 Focused.parameters = {
   beforeScreenshot: async (page: Page) => {
     const table = await page.$('table')
-    await table?.type('a')
+    await table?.type(' ')
   },
 }
 

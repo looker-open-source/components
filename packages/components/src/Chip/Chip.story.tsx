@@ -52,7 +52,7 @@ Focused.args = {
 Focused.parameters = {
   beforeScreenshot: async (page: Page) => {
     const chip = await page.$('span')
-    await chip?.type('a')
+    await chip?.type(' ')
   },
   sidebar: {
     disable: true,
