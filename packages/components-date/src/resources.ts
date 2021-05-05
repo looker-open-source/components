@@ -23,36 +23,17 @@
  SOFTWARE.
 
  */
-import { ResourceLanguage } from 'i18next'
-import React from 'react'
-import { render } from 'react-dom'
-import { ComponentsProvider } from '@looker/components'
-import { FieldDate } from '@looker/components-date'
-import { I18nTest } from './I18nTest'
 
-export interface LocaleResourceModule {
-  default: ResourceLanguage
-}
+import { Resource } from 'i18next'
 
-const getLocaleResource = async (locale: string) => {
-  return import(`./locales/${locale}.ts`)
-    .catch((error) => {
-      throw error
-    })
-    .then((module: LocaleResourceModule) => module.default)
+export const i18nResources: Resource = {
+  en: {
+    InputDate: {
+      Date: 'Date',
+    },
+    InputDateRange: {
+      'End date': 'End date',
+      'Start date': 'Start date',
+    },
+  },
 }
-
-const App = () => {
-  return (
-    <ComponentsProvider
-      loadGoogleFonts
-      i18n={{ getLocaleResource, locale: 'es' }}
-    >
-      <I18nTest />
-      <FieldDate />
-    </ComponentsProvider>
-  )
-}
-document.addEventListener('DOMContentLoaded', () => {
-  render(<App />, document.getElementById('container'))
-})

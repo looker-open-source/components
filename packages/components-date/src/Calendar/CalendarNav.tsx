@@ -23,7 +23,6 @@
  SOFTWARE.
 
  */
-import { useTranslation } from 'react-i18next'
 import React, { FC, useContext, SyntheticEvent } from 'react'
 import { NavbarElementProps } from 'react-day-picker'
 import styled from 'styled-components'
@@ -35,6 +34,7 @@ import {
   Heading,
   IconButton,
   Tooltip,
+  useI18n,
 } from '@looker/components'
 import { CalendarSize } from './calendar-size'
 import { CalendarContext } from './CalendarContext'
@@ -59,7 +59,7 @@ export const CalendarNav: FC<NavbarElementProps> = ({
   nextMonth,
   previousMonth,
 }) => {
-  const { t } = useTranslation('CalendarNav')
+  const { t } = useI18n('CalendarNav', {})
   const {
     size,
     onNowClick = noop,

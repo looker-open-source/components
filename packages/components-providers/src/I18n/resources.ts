@@ -83,13 +83,6 @@ export const i18nResources: Resource = {
       Success: 'Success',
       Warning: 'Warning',
     },
-    InputDate: {
-      Date: 'Date',
-    },
-    InputDateRange: {
-      'End date': 'End date',
-      'Start date': 'Start date',
-    },
     InputFilters: {
       'Clear Filters': 'Clear Filters',
       'Filter List': 'Filter List',

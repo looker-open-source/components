@@ -15,7 +15,9 @@
   },
   "dependencies": {
     "@looker/components": "^1.2.0-alpha.2",
+    "@looker/components-date": "^1.2.0-alpha.2",
     "core-js": "^3.11.0",
+    "i18next": "19.9.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-i18next": "11.8.8",
@@ -30,7 +32,7 @@
     "@babel/preset-env": "^7.13.15",
     "babel-loader": "^8.2.2",
     "babel-loader-exclude-node-modules-except": "^1.1.2",
-    "html-webpack-plugin": "^5.3.1",
+    "html-webpack-plugin": "^4.5.1",
     "tsconfig-paths-webpack-plugin": "^3.5.1",
     "webpack": "^4.44.2",
     "webpack-bundle-analyzer": "^4.4.1",
