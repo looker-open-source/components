@@ -58,6 +58,8 @@ const TreeLayout: FC<TreeProps> = ({
   color: propsColor,
   label: propsLabel,
   labelBackgroundOnly: propsLabelBackgroundOnly,
+  onBlur,
+  onFocus,
   onMouseEnter,
   onMouseLeave,
   selected,
@@ -107,6 +109,8 @@ const TreeLayout: FC<TreeProps> = ({
 
   const handleMouseEnter = useWrapEvent(() => setHovered(true), onMouseEnter)
   const handleMouseLeave = useWrapEvent(() => setHovered(false), onMouseLeave)
+  const handleBlur = useWrapEvent(() => setHovered(false), onBlur)
+  const handleFocus = useWrapEvent(() => setHovered(true), onFocus)
 
   const detail = {
     content: (
@@ -126,6 +130,7 @@ const TreeLayout: FC<TreeProps> = ({
 
   const label = (
     <TreeItemInner
+      className="tree-item-inner"
       color={color}
       density={density}
       detail={detail}
@@ -155,6 +160,8 @@ const TreeLayout: FC<TreeProps> = ({
       }
       color={indicatorColor}
       role="treeitem"
+      onBlur={handleBlur}
+      onFocus={handleFocus}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       py="none"
