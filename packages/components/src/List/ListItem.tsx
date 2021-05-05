@@ -32,6 +32,8 @@ import React, {
   ReactNode,
   Ref,
   useContext,
+  useEffect,
+  useRef,
   useState,
 } from 'react'
 import { ListItemDetail } from '../List/ListItemDetail'
@@ -44,6 +46,7 @@ import {
   undefinedCoalesce,
   useWrapEvent,
   getNextFocusTarget,
+  useForkedRef,
 } from '../utils'
 import { ListItemContext } from './ListItemContext'
 import { ListItemLabel } from './ListItemLabel'
@@ -229,6 +232,20 @@ const ListItemInternal = forwardRef(
 
     const { accessory, content, hoverDisclosure } = getDetailOptions(detail)
 
+    const wrapperRef = useRef<HTMLLIElement>(null)
+    const actualRef = useForkedRef(wrapperRef, ref)
+    useEffect(() => {
+      const focusableElements = wrapperRef?.current?.querySelectorAll(
+        'a, button, input'
+      )
+
+      if (focusableElements) {
+        focusableElements.forEach((activeElement) => {
+          activeElement.setAttribute('tabIndex', '-1')
+        })
+      }
+    })
+
     const renderedDetail = detail && (
       <HoverDisclosure visible={!hoverDisclosure}>
         <ListItemDetail pr={accessory ? itemDimensions.px : '0'}>
@@ -333,7 +350,7 @@ const ListItemInternal = forwardRef(
           onFocus={handleWrapperFocus}
           onMouseEnter={handleWrapperMouseEnter}
           onMouseLeave={handleWrapperMouseLeave}
-          ref={ref}
+          ref={actualRef}
           {...itemDimensions}
           {...restProps}
         >
