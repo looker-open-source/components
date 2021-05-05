@@ -400,3 +400,43 @@ AsideCollapse.parameters = {
     disable: true,
   },
 }
+export const testShadow = () => (
+  <Highlighter>
+    <Page fixed>
+      <Header shadow height="4rem" px="large">
+        Page Header
+      </Header>
+      <Layout hasAside>
+        <Aside width="200px">
+          <Header height="4rem" px="large">
+            Aside Header
+          </Header>
+          {menuItems}
+          {menuItems}
+        </Aside>
+        <Layout>
+          <Section p="xxlarge" as="main">
+            <Heading>Section title</Heading>
+            {longContent}
+          </Section>
+          <Footer height="3rem" px="large">
+            Section Footer
+          </Footer>
+        </Layout>
+        <AsideAlt width="20rem">
+          <Header height="4rem" px="large">
+            Alternate Aside Header
+          </Header>
+          {menuItems}
+          {menuItems}
+          <Footer height="3rem" px="large">
+            Alternate Aside Footer
+          </Footer>
+        </AsideAlt>
+      </Layout>
+      <Footer height="3rem" px="large">
+        Page Footer
+      </Footer>
+    </Page>
+  </Highlighter>
+)
