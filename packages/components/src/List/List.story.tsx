@@ -24,6 +24,7 @@
 
  */
 
+import { Page } from 'puppeteer'
 import React, { FC, useState } from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import { DateRange } from '@styled-icons/material-outlined/DateRange'
@@ -56,6 +57,18 @@ const Template: Story<ListProps> = (args) => <List {...args} />
 export const Basic = Template.bind({})
 Basic.args = {
   children: listItems,
+}
+
+export const Focused = Template.bind({})
+Focused.args = {
+  ...Basic.args,
+}
+
+Focused.parameters = {
+  beforeScreenshot: async (page: Page) => {
+    const button = await page.$('button')
+    await button?.type('a')
+  },
 }
 
 export const FontFamily = Template.bind({})

@@ -46,7 +46,7 @@ Focused.args = {
 
 const beforeScreenshot = async (page: Page) => {
   const button = await page.$('button')
-  await button?.type(' ')
+  await button?.type('a')
 }
 Focused.parameters = {
   beforeScreenshot,

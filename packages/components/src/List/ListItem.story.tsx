@@ -24,7 +24,6 @@
 
  */
 
-import { Page } from 'puppeteer'
 import React, { FC } from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import { PersonOutline } from '@styled-icons/material/PersonOutline'
@@ -44,18 +43,6 @@ export const Basic = Template.bind({})
 const basicArgs = { children: 'List Item' }
 Basic.args = {
   ...basicArgs,
-}
-
-export const Focused = Template.bind({})
-Focused.args = {
-  ...basicArgs,
-}
-
-Focused.parameters = {
-  beforeScreenshot: async (page: Page) => {
-    const button = await page.$('button')
-    await button?.type(' ')
-  },
 }
 
 export const Icon = Template.bind({})
