@@ -24,6 +24,7 @@
 
  */
 
+import { Page } from 'puppeteer'
 import React, { useState, FC } from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import { Space } from '../Layout/Space'
@@ -60,6 +61,18 @@ Basic.args = {
   distribute: true,
   tabCount: 20,
   tabPrefix: 'My Awesome Tab',
+}
+
+export const Focused = Template.bind({})
+Focused.args = {
+  ...Basic.args,
+}
+
+Focused.parameters = {
+  beforeScreenshot: async (page: Page) => {
+    const tabs = await page.$('[role="tablist"]')
+    await tabs?.type('a')
+  },
 }
 
 export const Controlled: FC = () => {

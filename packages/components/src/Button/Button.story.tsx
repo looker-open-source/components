@@ -26,6 +26,7 @@
 
 import { AddCircle } from '@styled-icons/material/AddCircle'
 import { Delete } from '@styled-icons/material/Delete'
+import { Page } from 'puppeteer'
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import { Button } from './Button'
@@ -38,16 +39,47 @@ Basic.args = {
   children: 'Button Text',
 }
 
+export const Focused = Template.bind({})
+Focused.args = {
+  ...Basic.args,
+}
+
+const beforeScreenshot = async (page: Page) => {
+  const button = await page.$('button')
+  await button?.type('a')
+}
+Focused.parameters = {
+  beforeScreenshot,
+}
+
 export const Critical = Template.bind({})
 Critical.args = {
   ...Basic.args,
   color: 'critical',
 }
 
+export const CriticalFocused = Template.bind({})
+CriticalFocused.args = {
+  ...Critical.args,
+}
+
+CriticalFocused.parameters = {
+  beforeScreenshot,
+}
+
 export const Neutral = Template.bind({})
 Neutral.args = {
   ...Basic.args,
   color: 'neutral',
+}
+
+export const NeutralFocused = Template.bind({})
+NeutralFocused.args = {
+  ...Neutral.args,
+}
+
+NeutralFocused.parameters = {
+  beforeScreenshot,
 }
 
 export const Disabled = Template.bind({})

@@ -24,6 +24,7 @@
 
  */
 import { Story } from '@storybook/react/types-6-0'
+import { Page } from 'puppeteer'
 import React, { useEffect, useState, FormEvent } from 'react'
 import { Divider } from '../Divider'
 import { Box, Space } from '../Layout'
@@ -54,6 +55,18 @@ Basic.args = {
       <ButtonItem value="UT">Utah</ButtonItem>
     </>
   ),
+}
+
+export const Focused = Template.bind({})
+Focused.args = {
+  ...Basic.args,
+}
+
+Focused.parameters = {
+  beforeScreenshot: async (page: Page) => {
+    const button = await page.$('button')
+    await button?.type('a')
+  },
 }
 
 export const InitialValues = Template.bind({})

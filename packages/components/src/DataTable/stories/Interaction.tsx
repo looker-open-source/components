@@ -25,6 +25,7 @@
  */
 
 import { Story } from '@storybook/react/types-6-0'
+import { Page } from 'puppeteer'
 import React, { useState } from 'react'
 import { InputFilters } from '../../Form/Inputs/InputFilters'
 import { filters as defaultFilters } from '../../__mocks__/filters'
@@ -158,6 +159,18 @@ Basic.args = {
   columns: mockColumns,
   headerRowId: 'headerId',
   sort: true,
+}
+
+export const Focused = Template.bind({})
+Focused.args = {
+  ...Basic.args,
+}
+
+Focused.parameters = {
+  beforeScreenshot: async (page: Page) => {
+    const table = await page.$('table')
+    await table?.type('a')
+  },
 }
 
 export const Filters = Template.bind({})

@@ -25,6 +25,7 @@
  */
 
 import { Story } from '@storybook/react/types-6-0'
+import { Page } from 'puppeteer'
 import React, { useState } from 'react'
 import { Space } from '../Layout'
 import { Chip, ChipProps } from './Chip'
@@ -41,6 +42,21 @@ const Template: Story<ChipProps & { text: string }> = ({ text, ...args }) => (
 export const Basic = Template.bind({})
 Basic.args = {
   text: 'Basic',
+}
+
+export const Focused = Template.bind({})
+Focused.args = {
+  text: 'Focused',
+}
+
+Focused.parameters = {
+  beforeScreenshot: async (page: Page) => {
+    const chip = await page.$('span')
+    await chip?.type('a')
+  },
+  sidebar: {
+    disable: true,
+  },
 }
 
 export const Disabled = Template.bind({})
