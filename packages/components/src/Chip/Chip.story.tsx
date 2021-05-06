@@ -53,7 +53,7 @@ Focused.parameters = {
   beforeScreenshot: async (page: Page) => {
     const chip = await page.$('span')
     await chip?.type(' ')
-    await page.waitForTimeout(200)
+    await page.waitForTimeout(50)
   },
   sidebar: {
     disable: true,

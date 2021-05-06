@@ -72,7 +72,7 @@ Focused.parameters = {
   beforeScreenshot: async (page: Page) => {
     const disclosure = await page.$('[role="button"]')
     await disclosure?.type(' ')
-    await page.waitForTimeout(200)
+    await page.waitForTimeout(50)
   },
 }
 
