@@ -127,6 +127,7 @@ ToggleColor.args = {
 export const ToggleColorFocused = Template.bind({})
 ToggleColorFocused.args = {
   ...ToggleColor.args,
+  margin: 'small',
 }
 
 ToggleColorFocused.parameters = {
