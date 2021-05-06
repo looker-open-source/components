@@ -349,7 +349,7 @@ export const ScrollAllAreas = () => (
 export const testShadow = () => (
   <Highlighter>
     <Page fixed>
-      <Header shadow height="4rem" px="large">
+      <Header height="4rem" px="large">
         Page Header
       </Header>
       <Layout hasAside>

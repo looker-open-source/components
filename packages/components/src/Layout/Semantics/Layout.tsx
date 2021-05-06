@@ -58,11 +58,17 @@ export const Layout = styled.div.withConfig({ shouldForwardProp })<LayoutProps>`
   flex: 1 1 auto;
   overflow: ${({ fixed }) => (fixed ? 'hidden' : 'auto')};
   ${({ hasAside }) => (hasAside ? hasAsideCSS : 'flex-direction: column;')}
-`
 
-// header {
-//   box-shadow: ${({ fixed }) => fixed && '0 15px 6px -6px #777'};
-// }
-// footer {
-//   box-shadow: ${({ fixed }) => fixed && '0 -15px 10px -6px #777'};
-// }
+  ${({ fixed, theme }) =>
+    fixed &&
+    css`
+      > header {
+        box-shadow: ${theme.shadows[1]};
+        position: relative;
+      }
+      > footer {
+        box-shadow: ${theme.shadows[1]};
+        position: relative;
+      }
+    `}
+`
