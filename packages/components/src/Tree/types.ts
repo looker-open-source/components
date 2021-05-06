@@ -44,7 +44,6 @@ export type TreeProps = Omit<
     | 'detail'
     | 'disabled'
     | 'icon'
-    | 'itemRole'
     | 'keyColor'
     | 'truncate'
   > & {

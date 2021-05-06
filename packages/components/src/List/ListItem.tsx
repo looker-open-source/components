@@ -236,7 +236,7 @@ const ListItemInternal = forwardRef(
     const actualRef = useForkedRef(wrapperRef, ref)
     useEffect(() => {
       const focusableElements = wrapperRef?.current?.querySelectorAll(
-        'a:not(.tree-item-inner-label),button:not(.tree-item-inner-label), input'
+        'a, button, input'
       )
 
       if (focusableElements) {
