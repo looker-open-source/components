@@ -136,6 +136,7 @@ const TreeLayout: FC<TreeProps> = ({
       disabled={disabled}
       icon={icon}
       itemRole={treeItemInnerRole}
+      role={treeItemInnerRole}
       truncate={truncate}
       tabIndex={-2} // Prevents tab stop behavior from reaching innner TreeItems
     >
