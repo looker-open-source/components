@@ -24,8 +24,8 @@
 
  */
 
-export const getTabStops = (ref: HTMLElement): HTMLElement[] =>
-  Array.from(ref.querySelectorAll('[tabindex="-1"]:not(:disabled)'))
+const getTreeItems = (ref: HTMLElement): HTMLElement[] =>
+  Array.from(ref.querySelectorAll('[role="treeitem"]:not(:disabled)'))
 
 // Returns a fallback element (called when the element with focus has been removed from the DOM)
 const getFallbackElement = (
@@ -54,25 +54,74 @@ const getFallbackElement = (
  * @param direction 1 for forward -1 for reverse
  * @param element the container element
  */
-export const getNextTreeFocus = (direction: 1 | -1, element: HTMLElement) => {
-  const tabStops = getTabStops(element)
+export const getNextTreeFocus = (
+  direction: 1 | -1,
+  element: HTMLElement,
+  vertical?: boolean
+) => {
+  const treeItems = getTreeItems(element)
 
-  if (tabStops.length > 0) {
-    if (
-      document.activeElement &&
-      tabStops.includes(document.activeElement as HTMLElement)
-    ) {
-      const next =
-        tabStops.findIndex((el) => el === document.activeElement) + direction
+  if (treeItems.length > 0) {
+    const focusedElement = document.activeElement
+    const isItemFocused =
+      focusedElement && treeItems.includes(focusedElement as HTMLElement)
+    const closestWrapper = focusedElement?.closest(
+      'li:not(:disabled)'
+    ) as HTMLElement
 
-      if (next === tabStops.length || !tabStops[next]) {
-        // Reached the end of tab stops for this direction
-        return getFallbackElement(direction, element, tabStops)
+    if (vertical) {
+      if (isItemFocused) {
+        const next =
+          treeItems.findIndex((el) => el === focusedElement) + direction
+
+        if (next === treeItems.length || !treeItems[next]) {
+          // Reached the end of tab stops for this direction
+          return getFallbackElement(direction, element, treeItems)
+        }
+
+        return treeItems[next]
+      } else {
+        if (closestWrapper) {
+          const closestTreeItem = closestWrapper.querySelector(
+            '[role="treeitem"]:not(:disabled)'
+          )
+
+          const next =
+            treeItems.findIndex((el) => el === closestTreeItem) + direction
+
+          if (next === treeItems.length || !treeItems[next]) {
+            // Reached the end of tab stops for this direction
+            return getFallbackElement(direction, element, treeItems)
+          }
+
+          return treeItems[next]
+        }
       }
+    } else if (vertical === false) {
+      const tabStops = Array.prototype.slice.call(
+        closestWrapper?.querySelectorAll('[tabindex="-1"]:not(:disabled)')
+      ) as HTMLElement[]
 
-      return tabStops[next]
+      if (isItemFocused) {
+        if (tabStops && tabStops.length > 0) {
+          return direction === 1 ? tabStops[1] : tabStops[tabStops.length - 1]
+        }
+      } else {
+        if (tabStops) {
+          const next =
+            tabStops.findIndex((child) => child === focusedElement) + direction
+
+          if ((next === tabStops.length || !tabStops[next]) && closestWrapper) {
+            // Reached the end of tab stops for this direction
+            return getFallbackElement(direction, closestWrapper, tabStops)
+          }
+
+          return tabStops[next]
+        }
+      }
     }
-    return getFallbackElement(direction, element, tabStops)
   }
-  return null
+
+  // Tabbing to a Tree should trigger this fallback condition
+  return getFallbackElement(direction, element, treeItems)
 }

@@ -39,7 +39,7 @@ const TreeCollectionLayout: FC<TreeCollectionProps> = ({
   className,
 }) => {
   const navProps = useArrowKeyNav({
-    axis: 'vertical',
+    axis: 'both',
     getNextFocus: getNextTreeFocus,
   })
 
