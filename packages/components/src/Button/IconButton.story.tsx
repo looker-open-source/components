@@ -134,6 +134,7 @@ ToggleColorFocused.parameters = {
   beforeScreenshot: async (page: Page) => {
     const button = await page.$('button')
     await button?.type(' ')
+    await page.waitForTimeout(100)
   },
 }
 

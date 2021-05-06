@@ -72,6 +72,7 @@ Focused.parameters = {
   beforeScreenshot: async (page: Page) => {
     const tabs = await page.$('[role="tablist"]')
     await tabs?.type(' ')
+    await page.waitForTimeout(100)
   },
 }
 

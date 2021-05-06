@@ -170,6 +170,7 @@ Focused.parameters = {
   beforeScreenshot: async (page: Page) => {
     const table = await page.$('table')
     await table?.type(' ')
+    await page.waitForTimeout(100)
   },
 }
 
