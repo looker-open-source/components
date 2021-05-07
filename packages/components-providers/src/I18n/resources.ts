@@ -94,9 +94,6 @@ export const i18nResources: Resource = {
     InputText: {
       'Validation Error': 'Validation Error',
     },
-    InputTimeSelect: {
-      'Select time': 'Select time',
-    },
     MessageBar: {
       DismissIntent: 'Dismiss {{intent}}',
     },

@@ -25,11 +25,17 @@
  */
 
 import React from 'react'
+import { Icon } from '../Icon'
+import { ErrorIcon } from '../Form'
+import { Tooltip } from '../Tooltip'
 import { DialogExampleLayout } from './DialogExampleLayout'
 import { Constitution } from './Constitution'
 
 export const DialogLongContent = () => (
   <DialogExampleLayout header="The Constitution of the United States">
+    <Tooltip content="Suggestions failed to load" width="small">
+      <Icon icon={<ErrorIcon />} />
+    </Tooltip>
     <Constitution />
   </DialogExampleLayout>
 )

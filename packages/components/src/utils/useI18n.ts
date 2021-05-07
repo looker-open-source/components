@@ -39,9 +39,12 @@ export const useI18n = (ns: string, resources?: NamespaceResources) => {
   const { locale, setLocale } = useContext(I18nContext)
 
   if (resources) {
+    // options.resources could contain multiple languages, need to add them 1 by 1
     Object.keys(resources).forEach((lng: string) => {
-      // options.resources could contain multiple languages, need to add them 1 by 1
-      i18next.addResourceBundle(lng, ns, resources[lng])
+      // check for existing resources for the namespace/language combo
+      if (!i18next.getResourceBundle(lng, ns)) {
+        i18next.addResourceBundle(lng, ns, resources[lng])
+      }
     })
   }
 

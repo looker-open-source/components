@@ -24,7 +24,6 @@
 
  */
 
-import { useTranslation } from 'react-i18next'
 import React, {
   FC,
   useState,
@@ -44,7 +43,12 @@ import {
   useReadOnlyWarn,
 } from '@looker/components'
 import { Calendar, CalendarLocalization, formatMonthTitle } from '../Calendar'
-import { Locales, formatDateString, parseDateFromString } from '../utils/i18n'
+import {
+  Locales,
+  formatDateString,
+  parseDateFromString,
+  useI18nDate,
+} from '../utils/i18n'
 
 export interface InputDateProps extends SpaceProps, BorderProps {
   'aria-describedby'?: string
@@ -91,7 +95,7 @@ export const InputDate: FC<InputDateProps> = forwardRef(
     },
     ref: Ref<HTMLInputElement>
   ) => {
-    const { t } = useTranslation('InputDate')
+    const { t } = useI18nDate()
     useReadOnlyWarn('InputDate', value, onChange)
 
     const [selectedDate, setSelectedDate] = useState(value || defaultValue)

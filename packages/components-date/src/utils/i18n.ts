@@ -24,6 +24,8 @@
 
  */
 
+import { useI18n } from '@looker/components'
+
 /* eslint-disable import/no-duplicates */
 import format from 'date-fns-tz/format'
 import utcToZonedTime from 'date-fns-tz/utcToZonedTime'
@@ -150,4 +152,20 @@ export const parseDateFromString = (
   parsedValue.setFullYear(formatYear(parsedValue))
 
   return isValid(parsedValue) && parsedValue
+}
+
+export const i18nResourcesDate = {
+  en: {
+    Date: 'Date!',
+    'End date': 'End date',
+    'Select time': 'Select time',
+    'Start date': 'Start date',
+  },
+  es: {
+    Date: 'Dato',
+  },
+}
+
+export const useI18nDate = () => {
+  return useI18n('@looker/components-date', i18nResourcesDate)
 }

@@ -40,7 +40,6 @@ import max from 'lodash/max'
 import isEmpty from 'lodash/isEmpty'
 import isEqual from 'lodash/isEqual'
 import values from 'lodash/values'
-import { useTranslation } from 'react-i18next'
 import {
   inputCSS,
   InlineInputTextBase,
@@ -55,7 +54,12 @@ import {
   useReadOnlyWarn,
 } from '@looker/components'
 import { Calendar, CalendarLocalization, formatMonthTitle } from '../Calendar'
-import { Locales, formatDateString, parseDateFromString } from '../utils/i18n'
+import {
+  Locales,
+  formatDateString,
+  parseDateFromString,
+  useI18nDate,
+} from '../utils/i18n'
 
 export interface InputDateRangeProps {
   'aria-labelledby'?: string
@@ -349,7 +353,7 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
       setViewMonth(transformMonth(month, viewMonthDiff))
     }
 
-    const { t } = useTranslation('InputDateRange')
+    const { t } = useI18nDate()
     const startDateLabelledby = `startDate-labelledby-${id}`
     const endDateLabelledby = `endDate-labelledby-${id}`
 

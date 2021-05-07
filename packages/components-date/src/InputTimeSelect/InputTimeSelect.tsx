@@ -23,7 +23,6 @@
  SOFTWARE.
 
  */
-import { useTranslation } from 'react-i18next'
 import React, {
   useMemo,
   forwardRef,
@@ -65,10 +64,11 @@ import {
   isValidTime,
   TimeFormats,
 } from '../InputTime/utils'
+import { useI18nDate } from '../utils/i18n'
 
 /*
  * We've limited allowed intervals to a few approved options rather than
- * accepting any number. This is to protect against uninteded use where an
+ * accepting any number. This is to protect against unintended use where an
  * engineer might specify 1-minute intervals and generate an unusable
  * select box with 1400 options. We also wouldn't want to support bizarre
  * instances of a random numbers like 37 or 152 minute intervals.
@@ -283,7 +283,7 @@ const InputTimeSelectLayout = forwardRef(
     }: InputTimeSelectProps,
     ref: Ref<HTMLDivElement>
   ) => {
-    const { t } = useTranslation('InputTimeSelect')
+    const { t } = useI18nDate()
     useReadOnlyWarn('InputTimeSelect', value, onChange)
     const valueProp = value || defaultValue
     if (!isValidTime(valueProp)) {

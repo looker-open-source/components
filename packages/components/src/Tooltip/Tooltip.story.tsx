@@ -28,7 +28,7 @@ import React, { FormEvent, SyntheticEvent, useState } from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import { Button } from '../Button'
 import { Card } from '../Card'
-import { FieldToggleSwitch } from '../Form'
+import { FieldToggleSwitch, ErrorIcon } from '../Form'
 import { Space, SpaceVertical } from '../Layout'
 import { Text } from '../Text'
 import { Popover, PopoverContent } from '../Popover'
@@ -110,6 +110,12 @@ export const RenderProp = () => (
         Open Tooltip
       </Button>
     )}
+  </Tooltip>
+)
+
+export const Icon = () => (
+  <Tooltip content="Suggestions failed to load" width="small">
+    <ErrorIcon />
   </Tooltip>
 )
 

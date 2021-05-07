@@ -62,7 +62,7 @@ export const i18nUpdateResources = ({
   if (!i18next.isInitialized) {
     i18nInit({ lng, resources })
   } else if (resources) {
-    Object.keys(resources).forEach((lng: string) => {
+    Object.keys({ ...resources }).forEach((lng: string) => {
       const allNamespaces = resources[lng]
       Object.keys(allNamespaces).forEach((ns: string) => {
         i18next.addResourceBundle(lng, ns, allNamespaces[ns])

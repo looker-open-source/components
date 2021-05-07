@@ -39,14 +39,20 @@ const getLocaleResource = async (locale: string) => {
     .catch((error) => {
       throw error
     })
-    .then((module: LocaleResourceModule) => module.default)
+    .then((module: LocaleResourceModule) => ({
+      ...module.default,
+      '@looker/components-date': { Date: 'Datesies' },
+    }))
 }
 
 const App = () => {
   return (
     <ComponentsProvider
       loadGoogleFonts
-      i18n={{ getLocaleResource, locale: 'es' }}
+      i18n={{
+        getLocaleResource,
+        locale: 'es',
+      }}
     >
       <I18nTest />
       <FieldDate />

@@ -40,6 +40,7 @@ export const I18nProvider: FC<I18nOptions> = ({
 
   const firstRenderRef = useRef(true)
   if (!getLocaleResource && firstRenderRef.current) {
+    console.log('resources', resources)
     i18nUpdateResources({ lng: locale, resources })
   }
 
