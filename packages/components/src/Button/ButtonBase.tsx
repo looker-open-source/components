@@ -31,10 +31,14 @@ import {
   shouldForwardProp,
 } from '@looker/design-tokens'
 import { StyledIconBase } from '@styled-icons/styled-icon'
-import React, { forwardRef, Ref, useState } from 'react'
+import React, { forwardRef, Ref } from 'react'
 import styled, { css } from 'styled-components'
 import { minWidth, maxWidth, width } from 'styled-system'
-import { FocusVisibleProps } from '../utils'
+import {
+  FocusVisibleProps,
+  useFocusVisible,
+  focusVisibleCSSWrapper,
+} from '../utils'
 import { buttonSize, buttonIconSizeMap, buttonPadding } from './size'
 import { buttonIcon } from './icon'
 import { ButtonColorProps, ButtonProps } from './types'
@@ -46,8 +50,9 @@ const buttonCSS = css<ButtonColorProps & ToggleColorProps & FocusVisibleProps>`
   ${minWidth}
   ${width}
 
-  ${({ focusVisible, color, toggleColor }) =>
-    focusVisible && buttonShadow(toggleColor || color)}
+  ${focusVisibleCSSWrapper(({ color, toggleColor }) =>
+    buttonShadow(toggleColor || color)
+  )}
 
   align-items: center;
   border-radius: ${({ theme }) => theme.radii.medium};
@@ -103,25 +108,13 @@ const ButtonLayout = forwardRef(
       ...restProps
     } = props
 
-    const [isFocusVisible, setFocusVisible] = useState(false)
-
-    const handleOnKeyUp = (event: React.KeyboardEvent<HTMLButtonElement>) => {
-      setFocusVisible(true)
-      onKeyUp && onKeyUp(event)
-    }
-
-    const handleOnBlur = (event: React.FocusEvent<HTMLButtonElement>) => {
-      setFocusVisible(false)
-      onBlur && onBlur(event)
-    }
+    const focusVisibleProps = useFocusVisible({ onBlur, onKeyUp })
 
     return (
       <ButtonOuter
+        {...focusVisibleProps}
         {...restProps}
         size={size}
-        focusVisible={isFocusVisible}
-        onKeyUp={handleOnKeyUp}
-        onBlur={handleOnBlur}
         ref={ref}
         px={buttonPadding(!!(iconBefore || iconAfter), size)}
       >

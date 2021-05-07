@@ -127,12 +127,14 @@ ToggleColor.args = {
 export const ToggleColorFocused = Template.bind({})
 ToggleColorFocused.args = {
   ...ToggleColor.args,
+  margin: 'small',
 }
 
 ToggleColorFocused.parameters = {
   beforeScreenshot: async (page: Page) => {
     const button = await page.$('button')
     await button?.type(' ')
+    await page.waitForTimeout(50)
   },
 }
 

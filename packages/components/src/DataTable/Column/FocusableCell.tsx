@@ -26,14 +26,10 @@
 
 import styled, { css } from 'styled-components'
 import { shouldForwardProp } from '@looker/design-tokens'
-import { FocusVisibleProps } from '../../utils'
+import { FocusVisibleProps, focusVisibleCSSWrapper } from '../../utils'
 
-const focusVisibleStyle = css<FocusVisibleProps>`
-  &:focus {
-    outline: ${({ focusVisible, theme: { colors } }) => {
-      return focusVisible ? `1px solid ${colors.key}` : 'none'
-    }};
-  }
+const focusVisibleStyle = () => css`
+  outline: 1px solid ${({ theme }) => theme.colors.key};
 `
 
 export interface FocusableCellProps extends FocusVisibleProps {
@@ -47,5 +43,6 @@ export const FocusableCell = styled.td
   .attrs<FocusableCellProps>(() => ({
     tabIndex: -1,
   }))<FocusableCellProps>`
-  ${focusVisibleStyle}
+  outline: none;
+  ${focusVisibleCSSWrapper(focusVisibleStyle)}
 `
