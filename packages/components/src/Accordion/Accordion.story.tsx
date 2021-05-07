@@ -24,6 +24,8 @@
 
  */
 
+import { Story } from '@storybook/react/types-6-0'
+import { Page } from 'puppeteer'
 import React, { FC, ReactNode, useState } from 'react'
 import styled from 'styled-components'
 import { ChevronLeft } from '@styled-icons/material-rounded/ChevronLeft'
@@ -35,7 +37,7 @@ import { Fieldset, FieldText } from '../Form'
 import { Icon } from '../Icon'
 import { UnorderedList } from '../UnorderedList'
 import { Paragraph, Text } from '../Text'
-import { Accordion } from './Accordion'
+import { Accordion, AccordionProps } from './Accordion'
 import { AccordionContent } from './AccordionContent'
 import { AccordionDisclosure } from './AccordionDisclosure'
 
@@ -53,7 +55,26 @@ export const LegacyComposition = () => (
   </Accordion>
 )
 
-export const Basic = () => <Accordion content="World">Hello</Accordion>
+const Template: Story<AccordionProps> = (args) => <Accordion {...args} />
+
+export const Basic = Template.bind({})
+Basic.args = {
+  children: 'Hello',
+  content: 'World',
+}
+
+export const Focused = Template.bind({})
+Focused.args = {
+  ...Basic.args,
+}
+
+Focused.parameters = {
+  beforeScreenshot: async (page: Page) => {
+    const disclosure = await page.$('[role="button"]')
+    await disclosure?.type(' ')
+    await page.waitForTimeout(50)
+  },
+}
 
 export const Left = () => (
   <Accordion indicatorPosition="left" content="World">
