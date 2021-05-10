@@ -22,7 +22,7 @@
     "@styled-system/should-forward-prop": "5.1.5",
     "@types/styled-system": "^5.1.11",
     "lodash": "^4.17.20",
-    "polished": "^4.0.5",
+    "polished": "^4.1.2",
     "styled-system": "^5.1.5"
   },
   "devDependencies": {
