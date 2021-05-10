@@ -32,9 +32,13 @@ import { borderHelper, SemanticBorderProps } from './semanticBorderHelper'
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface FooterProps extends HeaderProps, SemanticBorderProps {}
 
-export const Footer = styled.footer.withConfig({
-  shouldForwardProp,
-})<FooterProps>`
+export const Footer = styled.footer
+  .withConfig({
+    shouldForwardProp,
+  })
+  .attrs<FooterProps>(({ shadow }) => ({
+    className: `${shadow ? 'shadow ' : ''}`,
+  }))<FooterProps>`
   ${headerFooterCSS}
 
   width: 100%;

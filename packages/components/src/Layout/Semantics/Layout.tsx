@@ -52,7 +52,9 @@ const hasAsideCSS = css`
   }
 `
 
-export const Layout = styled.div.withConfig({ shouldForwardProp })<LayoutProps>`
+export const Layout = styled.div.withConfig({
+  shouldForwardProp,
+})<LayoutProps>`
   ${simpleLayoutCSS}
   display: flex;
   flex: 1 1 auto;
@@ -62,11 +64,11 @@ export const Layout = styled.div.withConfig({ shouldForwardProp })<LayoutProps>`
   ${({ fixed, theme }) =>
     fixed &&
     css`
-      > header {
+      > header.shadow {
         box-shadow: ${theme.shadows[1]};
         position: relative;
       }
-      > footer {
+      > footer.shadow {
         box-shadow: ${theme.shadows[1]};
         position: relative;
       }

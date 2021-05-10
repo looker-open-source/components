@@ -214,7 +214,7 @@ MultipleLayouts.args = {
   fixed: true,
 }
 
-export const ScrollIndependentlyDefault = () => (
+export const ScrollIndependently = () => (
   <Highlighter>
     <Page fixed>
       <Layout hasAside>
@@ -260,6 +260,9 @@ export const ScrollIndependentlyDefault = () => (
     </Page>
   </Highlighter>
 )
+ScrollIndependently.parameters = {
+  storyshots: { disable: true },
+}
 
 export const ScrollSelectedAreas = () => (
   <Highlighter>
@@ -309,12 +312,15 @@ export const ScrollSelectedAreas = () => (
     </Page>
   </Highlighter>
 )
+ScrollSelectedAreas.parameters = {
+  storyshots: { disable: true },
+}
 
-export const ScrollAllAreas = () => (
+export const ScrollAllAreasTogetherDefault = () => (
   <Highlighter>
-    <Page fixed>
+    <Page>
       <Layout hasAside>
-        <Aside scrollWithin p="large" width="200px">
+        <Aside p="large" width="200px">
           I'm baby man braid cold-pressed seitan sartorial, tumblr ennui selfies
           chia twee subway tile af 90's celiac. Gochujang distillery tumeric
           flannel lumbersexual gastropub fashion axe viral neutra. Pickled
@@ -324,7 +330,7 @@ export const ScrollAllAreas = () => (
           Chillwave brooklyn fam occupy microdosing leggings. Poke af cornhole
           hot chicken. Portland tattooed +1 chia ennui.
         </Aside>
-        <Section scrollWithin p="xxlarge" as="main">
+        <Section p="xxlarge" as="main">
           <Heading>Page title</Heading>
           <Tabs>
             <TabList distribute>
@@ -342,7 +348,7 @@ export const ScrollAllAreas = () => (
             </TabPanels>
           </Tabs>
         </Section>
-        <AsideAlt scrollWithin p="xxlarge" width="10rem">
+        <AsideAlt p="xxlarge" width="10rem">
           I'm baby man braid cold-pressed seitan sartorial, tumblr ennui selfies
           chia twee subway tile af 90's celiac. Gochujang distillery tumeric
           flannel lumbersexual gastropub fashion axe viral neutra. Pickled
@@ -356,6 +362,9 @@ export const ScrollAllAreas = () => (
     </Page>
   </Highlighter>
 )
+ScrollAllAreasTogetherDefault.parameters = {
+  storyshots: { disable: true },
+}
 
 const WidthTemplate: Story<AsideProps> = (args) => (
   <AsideStyle {...args}>Aside</AsideStyle>
@@ -400,19 +409,22 @@ AsideCollapse.parameters = {
     disable: true,
   },
 }
-export const testShadow = () => (
+
+export const FooterHeaderShadow = () => (
   <Highlighter>
     <Page fixed>
-      <Header height="4rem" px="large">
+      <Header shadow height="4rem" px="large">
         Page Header
       </Header>
       <Layout hasAside>
-        <Aside width="200px">
+        <Aside>
           <Header height="4rem" px="large">
             Aside Header
           </Header>
-          {menuItems}
-          {menuItems}
+          <Section>
+            {menuItems}
+            {menuItems}
+          </Section>
         </Aside>
         <Layout>
           <Section p="xxlarge" as="main">
@@ -434,7 +446,7 @@ export const testShadow = () => (
           </Footer>
         </AsideAlt>
       </Layout>
-      <Footer height="3rem" px="large">
+      <Footer shadow height="3rem" px="large">
         Page Footer
       </Footer>
     </Page>
