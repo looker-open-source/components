@@ -1,7 +1,7 @@
 {
   "name": "@looker/components-providers",
   "license": "MIT",
-  "version": "1.2.0-alpha.2",
+  "version": "1.2.0-alpha.3",
   "main": "lib/cjs/index.js",
   "module": "lib/index.js",
   "types": "lib/index.d.ts",

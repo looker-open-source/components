@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0-alpha.3](https://github.com/looker-open-source/components/compare/v1.2.0-alpha.2...v1.2.0-alpha.3) (2021-05-10)
+
+
+### Bug Fixes
+
+* **RangeSlider:** Value stays within bounds when min/max changes ([#2269](https://github.com/looker-open-source/components/issues/2269)) ([ec27334](https://github.com/looker-open-source/components/commit/ec273341f088e5899a3accd8c6268960dab87c7c))
+
+
+### Features
+
+* **Pagination:** and PageSize support alwaysVisible - visible even when there are no pages to paginate ([#2273](https://github.com/looker-open-source/components/issues/2273)) ([530848f](https://github.com/looker-open-source/components/commit/530848f403b6d5f20df9ad32bc45a0988f3601e5)), closes [#2275](https://github.com/looker-open-source/components/issues/2275)
+* **Tree:** ARIA-labeling ([#2271](https://github.com/looker-open-source/components/issues/2271)) ([0ffaa4b](https://github.com/looker-open-source/components/commit/0ffaa4b2edf9657446463aef4f085cbb9783ec66))
+
+
+
+
+
 ## [1.1.6](https://github.com/looker-open-source/components/compare/v1.1.5...v1.1.6) (2021-04-29)
 
 ### Bug Fixes
