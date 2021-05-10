@@ -29,7 +29,7 @@ import React from 'react'
 import { screen } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { Aside } from './Aside'
-import { Header, Layout, Page, Section } from './'
+import { Footer, Header, Layout, Page, Section } from './'
 
 describe('Semantics', () => {
   test('has Header and Footer scrolling with the page', () => {
@@ -152,8 +152,30 @@ describe('Semantics', () => {
       height: 'fit-content',
     })
   })
+
   test('Aside collapse will display none.', () => {
     renderWithTheme(<Aside collapse>Aside content</Aside>)
     expect(screen.queryByText('Aside content')).not.toBeInTheDocument()
+  })
+
+  test('using prop shadow will display shadow-box on Footer and Header', () => {
+    renderWithTheme(
+      <Page fixed>
+        <Header shadow height="4rem" px="large">
+          Page Header
+        </Header>
+        <Footer shadow height="3rem" px="large">
+          Page Footer
+        </Footer>
+      </Page>
+    )
+    expect(screen.getByText('Page Header')).toHaveStyle({
+      'box-shadow': '0px 1px 8px rgba(0,0,0,0.08),0px 1px 1px rgba(0,0,0,0.05)',
+      position: 'relative',
+    })
+    expect(screen.getByText('Page Footer')).toHaveStyle({
+      'box-shadow': '0px 1px 8px rgba(0,0,0,0.08),0px 1px 1px rgba(0,0,0,0.05)',
+      position: 'relative',
+    })
   })
 })
