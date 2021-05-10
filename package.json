@@ -109,12 +109,15 @@
     "is-svg": ">= 4.2.2",
     "node-fetch": ">= 2.6.1",
     "node-forge": ">= 0.10.0",
+    "postcss": ">= 8.2.10",
     "prismjs": ">= 1.23.0",
     "react": "16.14.0",
     "react-dom": "16.14.0",
     "react-dev-utils": ">= 11.0.4",
     "socket.io": ">= 2.4.0",
-    "ssri": ">= 8.0.1"
+    "ssri": ">= 8.0.1",
+    "trim": ">= 0.0.3",
+    "xmlhttprequest-ssl": ">= 1.6.2"
   },
   "lint-staged": {
     "**/*.ts?(x)": [
