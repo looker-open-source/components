@@ -41,9 +41,12 @@ jobs:
       - uses: c-hive/gha-yarn-cache@v1
       - run : yarn --silent
       - run: yarn test
-      - uses: paambaati/codeclimate-action@v2.7.5
-        env:
-          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+      # Disabled to allow dependabot PRs to run CI successfully /
+      #   generally not enthused about Code Climate funtionality
+      #   @TODO - Replace with Jest-based coverage reporting via Github Actions
+      # - uses: paambaati/codeclimate-action@v2.7.5
+      #   env:
+      #     CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
     env:
       CI: true
   build:
