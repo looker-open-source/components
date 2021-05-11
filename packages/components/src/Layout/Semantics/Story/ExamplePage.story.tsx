@@ -413,7 +413,7 @@ AsideCollapse.parameters = {
 export const FooterHeaderShadow = () => (
   <Highlighter>
     <Page fixed>
-      <Header shadow height="4rem" px="large">
+      <Header height="4rem" px="large">
         Page Header
       </Header>
       <Layout hasAside>
@@ -446,7 +446,7 @@ export const FooterHeaderShadow = () => (
           </Footer>
         </AsideAlt>
       </Layout>
-      <Footer shadow height="3rem" px="large">
+      <Footer height="3rem" px="large">
         Page Footer
       </Footer>
     </Page>
