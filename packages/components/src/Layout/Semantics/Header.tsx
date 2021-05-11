@@ -34,9 +34,7 @@ import { borderHelper, SemanticBorderProps } from './semanticBorderHelper'
 export interface HeaderProps
   extends HeightProps,
     SemanticLayoutBase,
-    SemanticBorderProps {
-  shadow?: boolean
-}
+    SemanticBorderProps {}
 
 export const headerFooterCSS = css`
   ${semanticLayoutCSS}
@@ -47,13 +45,9 @@ export const headerFooterCSS = css`
   flex: 0 0 auto;
 `
 
-export const Header = styled.header
-  .withConfig({
-    shouldForwardProp,
-  })
-  .attrs<HeaderProps>(({ shadow }) => ({
-    className: `${shadow ? 'shadow ' : ''}`,
-  }))<HeaderProps>`
+export const Header = styled.header.withConfig({
+  shouldForwardProp,
+})<HeaderProps>`
   ${headerFooterCSS}
   ${borderHelper}
   width: 100%;
