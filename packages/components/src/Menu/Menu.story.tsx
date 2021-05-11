@@ -90,15 +90,15 @@ const menuItems = (
 
     <MenuDivider />
 
+    <MenuHeading>Create</MenuHeading>
     <MenuItem>Gouda</MenuItem>
-    <MenuItem current> Swiss</MenuItem>
+    <MenuItem> Swiss</MenuItem>
     <MenuItem>Cheddar</MenuItem>
 
     <MenuDivider />
 
-    <MenuHeading>Create</MenuHeading>
     <MenuItem>Gouda</MenuItem>
-    <MenuItem> Swiss</MenuItem>
+    <MenuItem current> Swiss</MenuItem>
     <MenuItem>Cheddar</MenuItem>
 
     <MenuDivider />
