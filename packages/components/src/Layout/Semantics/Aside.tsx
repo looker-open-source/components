@@ -24,6 +24,7 @@
 
  */
 
+import React, { FC } from 'react'
 import { shouldForwardProp } from '@looker/design-tokens'
 import styled from 'styled-components'
 import { SemanticLayoutBase, semanticLayoutCSS } from './semanticStyledBase'
@@ -31,7 +32,7 @@ import { borderHelper, SemanticBorderProps } from './semanticBorderHelper'
 
 export interface AsideProps extends SemanticLayoutBase, SemanticBorderProps {
   /**
-   * To be used when desiring the Aside to be collapsible
+   * Prevent `Aside` from being rendered.
    * @default false
    */
   collapse?: boolean
@@ -49,14 +50,18 @@ export interface AsideProps extends SemanticLayoutBase, SemanticBorderProps {
   width?: string
 }
 
-export const Aside = styled.aside
+const AsideLayout: FC<AsideProps> = ({ collapse, ...props }) => {
+  console.log('collapse: ', collapse)
+  return collapse ? null : <aside {...props} />
+}
+
+export const Aside = styled(AsideLayout)
   .withConfig({ shouldForwardProp })
   .attrs<AsideProps>(({ width = '12rem' }) => ({
     width,
   }))<AsideProps>`
   ${semanticLayoutCSS}
 
-  ${({ collapse }) => collapse && 'display: none;'}
   flex: 0 0 ${({ width }) => width};
   max-width: ${({ width }) => width};
   min-width: ${({ width }) => width};
