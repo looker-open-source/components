@@ -24,7 +24,7 @@
 
  */
 
-import React, { FC, ReactNode } from 'react'
+import React, { FC, ReactChild, ReactNode } from 'react'
 import { Spinner } from '../../Spinner'
 import { DialogContent } from './DialogContent'
 import { DialogFooter } from './DialogFooter'
@@ -34,7 +34,7 @@ export interface DialogLayoutProps {
   /**
    * Content to be displayed in footer
    */
-  footer?: ReactNode
+  footer?: ReactChild
   /**
    * Secondary content to place in the footer
    * NOTE: `footer` property must be supplied for footer to be displayed. Supplying

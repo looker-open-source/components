@@ -24,12 +24,27 @@
 
  */
 
-import styled from 'styled-components'
-import { ModalFooter, ModalFooterProps } from '../../Modal/ModalFooter'
+import React from 'react'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
+import { ModalFooter } from './ModalFooter'
 
-export const DialogFooter = styled(ModalFooter).attrs(
-  ({ px = 'xlarge', py = 'large' }) => ({
-    px,
-    py,
+describe('ModalFooter', () => {
+  test('basic', () => {
+    renderWithTheme(
+      <ModalFooter>
+        <button>Cancel</button>
+      </ModalFooter>
+    )
+    expect(screen.getByRole('button')).toBeInTheDocument()
   })
-)<ModalFooterProps>``
+
+  test('secondary', () => {
+    renderWithTheme(
+      <ModalFooter secondary={<button>Done</button>}>
+        <button>Cancel</button>
+      </ModalFooter>
+    )
+    expect(screen.getByText('Done')).toBeInTheDocument()
+  })
+})

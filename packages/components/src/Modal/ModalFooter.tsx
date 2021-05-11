@@ -24,12 +24,37 @@
 
  */
 
+import React, { FC, ReactNode, ReactChild } from 'react'
 import styled from 'styled-components'
-import { ModalFooter, ModalFooterProps } from '../../Modal/ModalFooter'
+import { CompatibleHTMLProps } from '@looker/design-tokens'
+import { Space, SpaceHelperProps } from '../Layout/Space'
 
-export const DialogFooter = styled(ModalFooter).attrs(
-  ({ px = 'xlarge', py = 'large' }) => ({
-    px,
-    py,
-  })
-)<ModalFooterProps>``
+export interface ModalFooterProps
+  extends CompatibleHTMLProps<HTMLDivElement>,
+    SpaceHelperProps {
+  /**
+   *
+   */
+  children?: ReactChild
+  /**
+   * Secondary content to place in the footer
+   */
+  secondary?: ReactNode
+}
+
+const ModalFooterLayout: FC<ModalFooterProps> = ({
+  children,
+  secondary,
+  ...props
+}) => {
+  return (
+    <Space as="footer" reverse between {...props}>
+      <Space reverse>{children}</Space>
+      {secondary && <Space>{secondary}</Space>}
+    </Space>
+  )
+}
+
+export const ModalFooter = styled(ModalFooterLayout)<ModalFooterProps>`
+  flex-shrink: 0;
+`
