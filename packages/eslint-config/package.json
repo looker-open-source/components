@@ -15,7 +15,8 @@
   },
   "files": [
     "index.js",
-    "license-header.js"
+    "license-header.js",
+    "oss-compat.js"
   ],
   "sideEffects": false,
   "engines": {
