@@ -42,10 +42,7 @@ const Template: Story<DialogLayoutExampleProps> = ({
   length,
 }) => (
   <Box bg="ui1">
-    <DialogLayout
-      footer={footer && 'Footer text'}
-      header={header && 'Header text'}
-    >
+    <DialogLayout footer={footer} header={header}>
       {length === 'long' ? <Constitution /> : <ConstitutionShort />}
     </DialogLayout>
   </Box>
@@ -59,7 +56,7 @@ Basic.args = {
 export const Header = Template.bind({})
 Header.args = {
   ...Basic.args,
-  header: 'Dialog header text',
+  header: 'Header text',
 }
 
 export const Footer = Template.bind({})

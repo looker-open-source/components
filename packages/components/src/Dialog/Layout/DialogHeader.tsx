@@ -24,13 +24,8 @@
 
  */
 
-import { useTranslation } from 'react-i18next'
 import React, { FC, useContext } from 'react'
 import styled from 'styled-components'
-import { omitStyledProps, space, reset } from '@looker/design-tokens'
-import { Close } from '@styled-icons/material/Close'
-import { IconButton } from '../../Button'
-import { Heading } from '../../Text'
 import { DialogContext } from '../DialogContext'
 import { ModalHeader, ModalHeaderProps } from '../../Modal/ModalHeader'
 
@@ -46,53 +41,20 @@ const DialogHeaderLayout: FC<DialogHeaderProps> = ({
   children,
   hideClose,
   detail,
-  fontSize,
-  fontWeight = 'semiBold',
-  ...props
 }) => {
-  const { t } = useTranslation('DialogHeader')
   const { closeModal, id: dialogId } = useContext(DialogContext)
-  const { id } = props
   const headingId = dialogId ? `${dialogId}-heading` : undefined
 
   return (
-    <header aria-labelledby={headingId} {...omitStyledProps(props)}>
-      <Heading
-        id={headingId}
-        as="h3"
-        mr="xlarge"
-        fontSize={fontSize}
-        fontWeight={fontWeight}
-        style={{ gridArea: 'text' }}
-        truncate
-      >
-        {children}
-      </Heading>
-      {detail ? (
-        <Detail>{detail}</Detail>
-      ) : (
-        !hideClose && (
-          <Detail>
-            <IconButton
-              id={id ? `${id}-iconButton` : undefined}
-              tabIndex={-1}
-              size="medium"
-              onClick={closeModal}
-              label={t('Close')}
-              icon={<Close />}
-            />
-          </Detail>
-        )
-      )}
-    </header>
+    <ModalHeader
+      id={headingId}
+      detail={!hideClose && detail}
+      closeModal={closeModal}
+    >
+      {children}
+    </ModalHeader>
   )
 }
-
-const Detail = styled.div`
-  margin-bottom: -${({ theme }) => theme.space.xsmall};
-  margin-left: auto;
-  margin-top: -${({ theme }) => theme.space.xsmall};
-`
 
 export const DialogHeader = styled(DialogHeaderLayout).attrs(
   ({ p = ['medium', 'large'], pr = 'medium', px = ['medium', 'xlarge'] }) => ({
@@ -100,10 +62,4 @@ export const DialogHeader = styled(DialogHeaderLayout).attrs(
     pr,
     px,
   })
-)`
-  ${reset}
-  ${space}
-  align-items: center;
-  display: flex;
-  flex-shrink: 0;
-`
+)<DialogHeaderProps>``

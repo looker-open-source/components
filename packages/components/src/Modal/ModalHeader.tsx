@@ -24,6 +24,7 @@
 
  */
 
+import { useTranslation } from 'react-i18next'
 import React, { FC, ReactNode, ReactChild } from 'react'
 import styled from 'styled-components'
 import {
@@ -35,7 +36,9 @@ import {
   FontSizeProps,
   FontWeightProps,
 } from '@looker/design-tokens'
+import { Close } from '@styled-icons/material/Close/Close'
 import { Heading } from '../Text'
+import { IconButton } from '../Button/IconButton'
 
 export interface ModalHeaderProps
   extends SpaceProps,
@@ -43,33 +46,56 @@ export interface ModalHeaderProps
     FontSizeProps,
     FontWeightProps {
   children: ReactChild
+  closeModal?: () => void
   /**
    * Replaces the built-in `IconButton` (generally used for close) with an arbitrary ReactNode
-   * @default undefined
    */
-  detail?: ReactNode | undefined
+  detail?: ReactNode
+
+  /**
+   * use to support aria-labelledby
+   */
+  id?: string
 }
 
 const ModalHeaderLayout: FC<ModalHeaderProps> = ({
   children,
-  detail = undefined,
+  closeModal,
+  detail,
   fontSize,
   fontWeight = 'semiBold',
+  id = undefined,
   ...props
 }) => {
+  const { t } = useTranslation('ModalHeader')
+
   return (
-    <header {...omitStyledProps(props)}>
+    <header aria-labelledby={id} {...omitStyledProps(props)}>
       <Heading
         as="h3"
-        mr="xlarge"
         fontSize={fontSize}
         fontWeight={fontWeight}
+        id={id}
+        mr="xlarge"
         style={{ gridArea: 'text' }}
         truncate
       >
         {children}
       </Heading>
-      {detail && <Detail>{detail}</Detail>}
+      {detail ? (
+        <Detail>{detail}</Detail>
+      ) : (
+        <Detail>
+          <IconButton
+            id={id ? `${id}-iconButton` : undefined}
+            tabIndex={-1}
+            size="medium"
+            onClick={closeModal}
+            label={t('Close')}
+            icon={<Close />}
+          />
+        </Detail>
+      )}
     </header>
   )
 }
@@ -80,7 +106,7 @@ const Detail = styled.div`
   margin-top: -${({ theme }) => theme.space.xsmall};
 `
 
-export const ModalHeader = styled(ModalHeaderLayout)`
+export const ModalHeader = styled(ModalHeaderLayout)<ModalHeaderProps>`
   ${reset}
   ${space}
   align-items: center;

@@ -107,6 +107,9 @@ export const i18nResources: Resource = {
     MessageBar: {
       DismissIntent: 'Dismiss {{intent}}',
     },
+    ModalHeader: {
+      Close: 'Close',
+    },
     PageSize: {
       Display: 'Display',
       of: 'of',
