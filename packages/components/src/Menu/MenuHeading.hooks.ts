@@ -24,9 +24,14 @@
 
  */
 
-import { RefObject, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useCallbackRef } from '../utils'
 
-export const useElementVisibility = (ref: RefObject<HTMLElement>): boolean => {
+export const useElementVisibility = (): [
+  boolean,
+  (node: HTMLElement | null) => void
+] => {
+  const [element, ref] = useCallbackRef()
   const [isVisible, setIsVisible] = useState(true)
 
   useEffect(() => {
@@ -42,16 +47,15 @@ export const useElementVisibility = (ref: RefObject<HTMLElement>): boolean => {
             }
           )
 
-    const refCurrent = ref.current
-    if (refCurrent && observer) {
-      observer.observe && observer.observe(refCurrent)
+    if (element && observer) {
+      observer.observe && observer.observe(element)
     }
     return () => {
-      if (refCurrent && observer) {
-        observer.unobserve && observer.unobserve(refCurrent)
+      if (element && observer) {
+        observer.unobserve && observer.unobserve(element)
       }
     }
-  }, [setIsVisible, ref])
+  }, [element])
 
-  return isVisible
+  return [isVisible, ref]
 }
