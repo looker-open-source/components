@@ -55,11 +55,11 @@ export type TreeProps = Omit<
      */
     dividers?: boolean
     /**
-     * If true, child `TreeItem` elements will receive additional indent padding to align parent `Tree` and child `TreeItem` labels.
-     * Note: This should only be used when the parent `Tree` has an icon and the child `TreeItem`s do not.
+     * If true, child `TreeItem` elements will receive additional indent padding to align parent `Tree` (with an optional `icon` prop) and child `TreeItem` labels.
+     * If "noIcon", child `TreeItem` elements will receive additional indent padding to align parent `Tree` (without an optional `icon` prop) and child `TreeItem` labels.
      * @default false
      */
-    forceLabelPadding?: boolean
+    forceLabelPadding?: boolean | 'no-icon'
     /**
      * Label text or element displayed within Tree's internal AccordionDisclosure
      */

@@ -55,7 +55,7 @@ type TreeStyleProps = ListItemStatefulProps &
     className?: string
     depth: number
     dividers?: boolean
-    forceLabelPadding?: boolean
+    forceLabelPadding?: boolean | 'no-icon'
     iconGap: SpacingSizes
     iconSize: IconSize
     labelBackgroundOnly?: boolean

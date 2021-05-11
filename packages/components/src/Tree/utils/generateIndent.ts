@@ -30,7 +30,7 @@ import { IconSize } from '../../Icon'
 
 export interface GenerateIndentProps {
   depth: number
-  forceLabelPadding?: boolean
+  forceLabelPadding?: boolean | 'no-icon'
   iconSize: IconSize
   iconGap: SpacingSizes
   indicatorSize: IconSize
@@ -51,10 +51,21 @@ export const generateIndent = ({
   const { space, sizes } = theme
 
   const indicatorIconSize = sizes[indicatorSize]
-  const forceLabelPaddingSpacer = `(${sizes[iconSize]} + ${space[iconGap]} - ${iconGapAdjuster})`
-  const indentCalculation = `(${indicatorIconSize}) * ${
-    forceLabelPadding ? depth - 1 : depth
-  } + ${forceLabelPadding ? forceLabelPaddingSpacer : '0px'}`
+
+  let forceLabelPaddingSpacer, renderedDepth
+
+  if (forceLabelPadding === 'no-icon') {
+    renderedDepth = depth - 1
+    forceLabelPaddingSpacer = '0px'
+  } else if (forceLabelPadding === true) {
+    renderedDepth = depth - 1
+    forceLabelPaddingSpacer = `(${sizes[iconSize]} + ${space[iconGap]} - ${iconGapAdjuster})`
+  } else {
+    renderedDepth = depth
+    forceLabelPaddingSpacer = '0px'
+  }
+
+  const indentCalculation = `${indicatorIconSize} * ${renderedDepth} + ${forceLabelPaddingSpacer}`
 
   return css`
     padding-left: calc(${indentCalculation});
