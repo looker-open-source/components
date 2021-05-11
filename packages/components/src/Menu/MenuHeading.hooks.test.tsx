@@ -25,37 +25,18 @@
  */
 
 import { renderWithTheme } from '@looker/components-test-utils'
-import { act } from '@testing-library/react'
-import React, { RefObject } from 'react'
+import { screen } from '@testing-library/react'
+import React from 'react'
 import { useElementVisibility } from './MenuHeading.hooks'
 
-interface TestProps {
-  callback: (...args: any[]) => void
-  testRef: RefObject<any>
-}
-
-const TestHook = ({ callback, testRef }: TestProps) => {
-  callback(testRef)
-  return null
+const TestHook = () => {
+  const [isVisible, ref] = useElementVisibility()
+  return <div ref={ref}>{isVisible.toString()}</div>
 }
 
 describe('MenuHeading Hooks', () => {
-  let isVisible: boolean
-
-  const testRef = {
-    current: <div />,
-  }
-
-  /* eslint-disable react-hooks/rules-of-hooks */
-  const cb = (ref: RefObject<any>) => {
-    isVisible = useElementVisibility(ref)
-  }
-  /* eslint-enable react-hooks/rules-of-hooks */
-
   it('it returns true as the default visibility state', () => {
-    act(() => {
-      renderWithTheme(<TestHook callback={cb} testRef={testRef} />)
-    })
-    expect(isVisible).toEqual(true)
+    renderWithTheme(<TestHook />)
+    expect(screen.getByText('true')).toBeVisible()
   })
 })
