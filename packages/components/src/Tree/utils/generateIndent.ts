@@ -52,18 +52,11 @@ export const generateIndent = ({
 
   const indicatorIconSize = sizes[indicatorSize]
 
-  let forceLabelPaddingSpacer, renderedDepth
-
-  if (forceLabelPadding === 'no-icon') {
-    renderedDepth = depth - 1
-    forceLabelPaddingSpacer = '0px'
-  } else if (forceLabelPadding === true) {
-    renderedDepth = depth - 1
-    forceLabelPaddingSpacer = `(${sizes[iconSize]} + ${space[iconGap]} - ${iconGapAdjuster})`
-  } else {
-    renderedDepth = depth
-    forceLabelPaddingSpacer = '0px'
-  }
+  const renderedDepth = forceLabelPadding ? depth - 1 : depth
+  const forceLabelPaddingSpacer =
+    forceLabelPadding === true
+      ? `(${sizes[iconSize]} + ${space[iconGap]} - ${iconGapAdjuster})`
+      : '0px'
 
   const indentCalculation = `${indicatorIconSize} * ${renderedDepth} + ${forceLabelPaddingSpacer}`
 
