@@ -280,11 +280,18 @@ The `toggleOpen` prop should receive a function that has one parameter: a boolea
 
 ## Aligning Trees with icons and TreeItems without icons
 
-Use the `forceLabelPadding` prop to align the labels of parent `Tree`s with optional icons and child `TreeItem`s without optional icons.
+Use the `forceLabelPadding` prop to align the labels of parent `Tree`s with the labels of child `TreeItem`s without optional icons.
+
+If your `Tree` has an optional `icon`, set `forceLabelPadding` to `true`. If no `icon` prop, set `forceLabelPadding` to `"no-icon"`.
 
 ```jsx
 <TreeCollection>
   <Tree label="Cheeses" icon={<Pivot />} defaultOpen forceLabelPadding>
+    <TreeItem>Gouda</TreeItem>
+    <TreeItem>Swiss</TreeItem>
+    <TreeItem>Cheddar</TreeItem>
+  </Tree>
+  <Tree label="Cheeses" defaultOpen forceLabelPadding="no-icon">
     <TreeItem>Gouda</TreeItem>
     <TreeItem>Swiss</TreeItem>
     <TreeItem>Cheddar</TreeItem>
