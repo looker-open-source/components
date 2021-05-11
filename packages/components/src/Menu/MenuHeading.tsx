@@ -24,7 +24,7 @@
 
  */
 
-import React, { FC, useContext, useRef, ReactNode, RefObject } from 'react'
+import React, { FC, useContext, ReactNode } from 'react'
 import styled from 'styled-components'
 import {
   TextColorProps,
@@ -50,8 +50,7 @@ const MenuHeadingInternal: FC<MenuHeadingProps> = ({
   className,
   ...restProps
 }) => {
-  const labelShimRef: RefObject<any> = useRef()
-  const isLabelShimVisible = useElementVisibility(labelShimRef)
+  const [isLabelShimVisible, ref] = useElementVisibility()
 
   const { density } = useContext(ListItemContext)
   const { px } = listItemDimensions(density)
@@ -67,7 +66,7 @@ const MenuHeadingInternal: FC<MenuHeadingProps> = ({
         we detect when this 0-height element disappears from the page and then
         render the shadow.
       */}
-      <div ref={labelShimRef} style={{ height: '0' }} />
+      <div ref={ref} style={{ height: '0' }} />
       <Heading
         as="h2"
         color="text5"
