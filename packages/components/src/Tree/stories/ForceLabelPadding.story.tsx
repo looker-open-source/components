@@ -36,7 +36,7 @@ export const ForceLabelPadding = () => (
         <TreeItem>Sales</TreeItem>
         <TreeItem>Metrics</TreeItem>
       </Tree>
-      <Tree label="Without Icon" defaultOpen forceLabelPadding="no-icon">
+      <Tree label="Without Icon" defaultOpen forceLabelPadding>
         <TreeItem>Performance</TreeItem>
         <TreeItem>Sales</TreeItem>
         <TreeItem>Metrics</TreeItem>
