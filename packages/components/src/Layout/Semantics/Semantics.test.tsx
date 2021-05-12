@@ -154,6 +154,6 @@ describe('Semantics', () => {
   })
   test('Aside collapse will display none.', () => {
     renderWithTheme(<Aside collapse>Aside content</Aside>)
-    expect(screen.getByText('Aside content')).not.toBeInTheDocument()
+    expect(screen.queryByText('Aside content')).not.toBeInTheDocument()
   })
 })
