@@ -148,6 +148,7 @@ const TreeLayout: FC<TreeProps> = ({
   const indicatorColor = disabled ? 'text1' : 'text5'
   const innerAccordion = (
     <Accordion
+      renderAsLi
       content={
         <List
           density={density}

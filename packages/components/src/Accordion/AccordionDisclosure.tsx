@@ -53,6 +53,7 @@ export interface AccordionDisclosureProps
     SimpleLayoutProps,
     AccordionControlProps,
     AccordionIndicatorProps {
+  renderAsLi?: boolean
   className?: string
   ref?: Ref<HTMLDivElement>
   /**
@@ -89,6 +90,7 @@ const AccordionDisclosureInternal: FC<AccordionDisclosureProps> = forwardRef(
       indicatorSize,
       indicatorGap,
       indicatorIcons,
+      renderAsLi,
       ...props
     },
     ref
@@ -111,6 +113,7 @@ const AccordionDisclosureInternal: FC<AccordionDisclosureProps> = forwardRef(
 
     return (
       <AccordionDisclosureStyle
+        as={renderAsLi ? 'li' : 'div'}
         className={className}
         aria-controls={accordionContentId}
         aria-expanded={isOpen}

@@ -72,6 +72,12 @@ export interface AccordionProps
     TextColorProps,
     TypographyProps {
   /**
+   * Determines the type of the rendered AccordionDisclosure
+   * @default false
+   * @private This feature may be removed without a breaking change. We STRONGLY discourage the direct use of this property.
+   */
+  renderAsLi?: boolean
+  /**
    * We currently support two different compositions for Accordion:
    *  - `Accordion`'s children will act as the "trigger" element (i.e. children always visible, clicking children toggles whether content is visible or not)
    *  - Legacy: <Accordion> wrapped around an <AccordionDisclosure> and <AccordionContent> (NOTE: This composition will be deprecated in a future MAJOR release)
@@ -222,9 +228,11 @@ const AccordionLayout: FC<AccordionProps> = ({
 export const Accordion = styled(AccordionLayout)
   .withConfig({
     shouldForwardProp: (prop) =>
-      [...AccordionIndicatorPropKeys, ...AccordionControlPropKeys].includes(
-        prop
-      )
+      [
+        ...AccordionIndicatorPropKeys,
+        ...AccordionControlPropKeys,
+        'renderAsLi',
+      ].includes(prop)
         ? true
         : shouldForwardProp(prop),
   })
