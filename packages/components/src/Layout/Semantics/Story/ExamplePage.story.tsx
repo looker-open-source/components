@@ -32,8 +32,10 @@ import { PieChart } from '@styled-icons/material/PieChart'
 import { VerifiedUser } from '@styled-icons/material/VerifiedUser'
 import { Aside, Footer, Header, Layout, LayoutProps, Page, Section } from '..'
 import { SpaceVertical } from '../../Space'
+import { FieldToggleSwitch } from '../../../Form'
 import { Heading, Paragraph } from '../../../Text'
 import { MenuItem } from '../../../Menu/MenuItem'
+import { useToggle } from '../../../utils/useToggle'
 import { Tab, Tabs, TabList, TabPanel, TabPanels } from '../../../Tabs'
 
 export default {
@@ -346,9 +348,23 @@ export const ScrollAllAreas = () => (
   </Highlighter>
 )
 
-export const AsideCollapse = () => (
-  <>
-    <Aside collapse={true}>Aside</Aside>
-    <Section as="main">Section</Section>
-  </>
-)
+export const AsideCollapse = () => {
+  const { value, toggle } = useToggle(false)
+
+  return (
+    <Layout hasAside>
+      <Aside p="small" collapse={!value}>
+        Aside
+      </Aside>
+      <Section p="small">
+        <FieldToggleSwitch label="Show Aside" onChange={toggle} on={value} />
+      </Section>
+    </Layout>
+  )
+}
+
+AsideCollapse.parameters = {
+  storyshots: {
+    disable: true,
+  },
+}

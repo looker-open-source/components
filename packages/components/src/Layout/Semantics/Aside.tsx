@@ -50,13 +50,13 @@ export interface AsideProps extends SemanticLayoutBase, SemanticBorderProps {
   width?: string
 }
 
-const AsideLayout: FC<AsideProps> = ({ collapse, ...props }) => {
-  console.log('collapse: ', collapse)
-  return collapse ? null : <aside {...props} />
-}
+const AsideLayout: FC<AsideProps> = ({ collapse, ...props }) =>
+  collapse ? null : <aside {...props} />
 
 export const Aside = styled(AsideLayout)
-  .withConfig({ shouldForwardProp })
+  .withConfig({
+    shouldForwardProp: (prop) => prop === 'collapse' || shouldForwardProp(prop),
+  })
   .attrs<AsideProps>(({ width = '12rem' }) => ({
     width,
   }))<AsideProps>`
@@ -69,4 +69,4 @@ export const Aside = styled(AsideLayout)
   width: 0;
   ${borderHelper}
   ${({ scrollWithin }) => scrollWithin && 'height: fit-content;'}
-  `
+`
