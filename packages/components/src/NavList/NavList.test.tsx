@@ -25,36 +25,19 @@
  */
 
 import React from 'react'
-import { Home } from '@styled-icons/material/Home'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { screen } from '@testing-library/react'
-import { ListItem } from '../List/ListItem'
-import { NavList } from './NavList'
+import { Basic } from './NavList.story'
 
 describe('NavList', () => {
   test('display with keyColor', () => {
-    renderWithTheme(
-      <NavList>
-        <ListItem
-          description="Orange-y"
-          detail="Netherlands"
-          icon={<Home />}
-          selected
-        >
-          Explore
-        </ListItem>
-      </NavList>
-    )
+    renderWithTheme(<Basic />)
 
     const listItem = screen.getByText('Explore')
-
-    // NavList label
-    expect(listItem).toHaveStyle(`color: #6C43E0;`)
-
-    // NavList description
-    expect(screen.getByText('Orange-y')).toHaveStyle(`color: #6C43E0;`)
-
-    // NavList detail
-    expect(screen.getByText('Netherlands')).toHaveStyle(`color: #6C43E0;`)
+    expect(listItem).toHaveStyle('color: #6c43e0;')
+    expect(screen.getByText('Interesting details')).toHaveStyle(
+      'color: #6c43e0'
+    )
+    expect(screen.getByText('Description')).toHaveStyle('color: #6c43e0;')
   })
 })
