@@ -26,6 +26,8 @@
 
 import { shouldForwardProp } from '@looker/design-tokens'
 import styled from 'styled-components'
+import { ResponsiveValue } from 'styled-system'
+import { AsideSizeRamp, asideWidth } from './asideWidth'
 import { SemanticLayoutBase, semanticLayoutCSS } from './semanticStyledBase'
 import { borderHelper, SemanticBorderProps } from './semanticBorderHelper'
 
@@ -39,14 +41,14 @@ export interface AsideProps extends SemanticLayoutBase, SemanticBorderProps {
   scrollWithin?: boolean
   /**
    * Specify width of aside
-   * @default '12rem'
+   * @default 'sidebar'
    */
-  width?: string
+  width?: ResponsiveValue<AsideSizeRamp | string>
 }
 
 export const Aside = styled.aside
   .withConfig({ shouldForwardProp })
-  .attrs<AsideProps>(({ width = '12rem' }) => ({
+  .attrs<AsideProps>(({ width = 'sidebar' }) => ({
     width,
   }))<AsideProps>`
   ${semanticLayoutCSS}
@@ -56,6 +58,8 @@ export const Aside = styled.aside
   min-width: ${({ width }) => width};
   overflow: auto;
   width: 0;
-  ${borderHelper}
   ${({ scrollWithin }) => scrollWithin && 'height: fit-content;'}
+
+  ${borderHelper}
+  ${asideWidth}
 `
