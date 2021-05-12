@@ -47,6 +47,7 @@ const TreeLayout: FC<TreeProps> = ({
   border: propsBorder,
   children,
   className,
+  current,
   density: propsDensity,
   detail: propsDetail,
   disabled,
@@ -141,6 +142,8 @@ const TreeLayout: FC<TreeProps> = ({
   const indicatorColor = disabled ? 'text1' : 'text5'
   const innerAccordion = (
     <Accordion
+      aria-current={current}
+      aria-selected={selected}
       content={
         <List density={density} role="group" windowing="none">
           {children}
@@ -173,6 +176,7 @@ const TreeLayout: FC<TreeProps> = ({
         branchFontWeight={branchFontWeight}
         color={color}
         className={className}
+        current={current}
         depth={depth}
         disabled={disabled}
         dividers={dividers}
