@@ -59,7 +59,13 @@ export const Legend = styled.legend
     })
   )<LegendProps>`
   ${reset}
+  border: none;
   ${color}
   ${space}
   ${typography}
 `
+
+/**
+ * `border: none;` override is a product-targeted fix
+ * @TODO - Remove targeted fix when mitigated downstream
+ **/

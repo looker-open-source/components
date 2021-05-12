@@ -46,7 +46,9 @@ export const styleDefenderCSS = css`
   }
 `
 
-export const StyleDefender = styled.div`
+export const StyleDefender = styled.div.attrs(
+  ({ className = 'looker-components-reset' }) => ({ className })
+)`
   background: ${({ theme }) => theme.colors.background};
 
   ${styleDefenderCSS}

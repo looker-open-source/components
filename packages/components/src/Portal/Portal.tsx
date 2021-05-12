@@ -98,7 +98,9 @@ Portal.displayName = 'Portal'
  * DOM-output so it re-injects `styleDefenderCSS` to do a light-weight
  * "CSS reset"
  */
-const InvisiBox = styled.div<PortalPlacementProps>`
+const InvisiBox = styled.div.attrs(
+  ({ className = 'looker-components-reset' }) => ({ className })
+)<PortalPlacementProps>`
   ${styleDefenderCSS}
 
   align-items: ${({ vertical }) =>
