@@ -28,7 +28,7 @@ import styled, { css } from 'styled-components'
 import { AccordionDisclosureStyle } from '../Accordion/AccordionDisclosure'
 import { TextBase } from '../Text/TextBase'
 import { ListItemDetail } from '../List/ListItemDetail'
-import { List, ListItemLabel } from '../List'
+import { List, ListItem, ListItemLabel } from '../List'
 import { ListItemIconPlacement } from '../List/ListItemLayout'
 
 export const navStyles = css`
@@ -37,12 +37,10 @@ export const navStyles = css`
     border-top-right-radius: 5rem;
 
     &[aria-selected='true'] {
-      color: ${({ theme }) => theme.colors.key};
-
       ${ListItemDetail},
       ${TextBase},
       ${ListItemIconPlacement} svg {
-        color: currentColor;
+        color: ${({ theme }) => theme.colors.key};
       }
     }
   }
@@ -64,4 +62,10 @@ export const navStyles = css`
  */
 export const NavList = styled(List).attrs(({ color = 'key' }) => ({ color }))`
   ${navStyles}
+
+  & > ${ListItem} {
+    ${ListItemLabel} {
+      padding-left: ${({ theme }) => `${theme.sizes.medium}`};
+    }
+  }
 `

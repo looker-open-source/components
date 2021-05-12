@@ -110,7 +110,7 @@ const OptionLayout = ({ option, ...rest }: OptionLayoutProps) => {
   const { indicatorPropRef } = useContext(ComboboxContext)
   const iconPlaceholder = hasIcons ? (
     <IconPlaceholder
-      mr="small"
+      mr="xsmall"
       size="small"
       data-testid="option-icon-placeholder"
     />

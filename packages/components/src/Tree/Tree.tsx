@@ -36,6 +36,7 @@ import React, {
 import { Accordion } from '../Accordion'
 import { undefinedCoalesce, useWrapEvent } from '../utils'
 import { List } from '../List'
+import { ListItemContext } from '../List/ListItemContext'
 import { listItemDimensions, getDetailOptions } from '../List/utils'
 import { TreeContext } from './TreeContext'
 import { indicatorDefaults } from './utils'
@@ -69,11 +70,12 @@ const TreeLayout: FC<TreeProps> = ({
   const detailRef = useRef<HTMLDivElement>(null)
   const [hovered, setHovered] = useState(false)
 
+  const { color: listColor } = useContext(ListItemContext)
   const treeContext = useContext(TreeContext)
   const hasBorder = undefinedCoalesce([propsBorder, treeContext.border])
 
   if (keyColor) propsColor = 'key'
-  const color = undefinedCoalesce([propsColor, treeContext.color])
+  const color = undefinedCoalesce([propsColor, treeContext.color, listColor])
 
   const hasLabelBackgroundOnly = undefinedCoalesce([
     propsLabelBackgroundOnly,
