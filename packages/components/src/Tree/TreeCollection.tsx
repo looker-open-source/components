@@ -44,16 +44,12 @@ const TreeCollectionLayout: FC<TreeCollectionProps> = ({
   })
 
   return (
-    <div className={className} role="tree" {...navProps}>
+    <ul className={className} role="tree" {...navProps}>
       {children}
-    </div>
+    </ul>
   )
 }
 
-/**
- * @todo refactor `div` to `ul` to match w3 spec
- * This todo will follow the todo in TreeStyle of converting from `div` to `li`
- **/
 export const TreeCollection = styled(TreeCollectionLayout)`
   margin: 0;
   padding: 0;

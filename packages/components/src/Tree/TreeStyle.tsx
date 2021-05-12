@@ -132,10 +132,6 @@ const treeItemIndent = ({
   return labelBackgroundOnly ? wrapperIndent : labelIndent
 }
 
-/**
- * @todo refactor `div` to `li`
- * Complex because nested ListItem is also an `li` breaking HTML nesting rules
- **/
 const TreeStyleLayout: FC<TreeStyleProps> = ({ className, children }) => (
   <div className={className}>{children}</div>
 )

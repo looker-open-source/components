@@ -130,6 +130,7 @@ const TreeLayout: FC<TreeProps> = ({
   const treeItemInnerRole = 'none'
   const label = (
     <TreeItemInner
+      renderAsDiv
       color={color}
       density={density}
       detail={detail}

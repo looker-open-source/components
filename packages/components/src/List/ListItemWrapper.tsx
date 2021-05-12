@@ -32,19 +32,25 @@ import styled from 'styled-components'
 import { ListColor, ListItemDimensions, listItemDimensionKeys } from './types'
 
 export interface ListItemWrapperProps
-  extends CompatibleHTMLProps<HTMLLIElement>,
+  extends CompatibleHTMLProps<HTMLElement>,
     ListItemDimensions {
   color: ListColor
   description?: ReactNode // Should be eventually deleted because the CSS could be handled in layout pieces
   focusVisible?: boolean
+  renderAsDiv?: boolean
 }
 
 const ListItemWrapperInternal = forwardRef(
-  (props: ListItemWrapperProps, ref: Ref<HTMLLIElement>) => {
+  (
+    { renderAsDiv, ...restProps }: ListItemWrapperProps,
+    ref: Ref<HTMLElement>
+  ) => {
+    const Component = renderAsDiv ? 'div' : 'li'
+
     return (
-      <li
+      <Component
         {...omit(
-          props,
+          restProps,
           'color',
           'current',
           'focusVisible',
@@ -52,7 +58,7 @@ const ListItemWrapperInternal = forwardRef(
           'selected',
           [...listItemDimensionKeys]
         )}
-        ref={ref}
+        ref={ref as Ref<any>}
         role="none"
       />
     )
@@ -63,7 +69,8 @@ ListItemWrapperInternal.displayName = 'ListItemWrapperInternal'
 
 export const ListItemWrapper = styled(ListItemWrapperInternal)
   .withConfig<ListItemWrapperProps>({
-    shouldForwardProp,
+    shouldForwardProp: (prop) =>
+      ['renderAsDiv'].includes(prop) ? true : shouldForwardProp(prop),
   })
   .attrs(({ color = 'text5' }) => ({ color }))`
   align-items: center;

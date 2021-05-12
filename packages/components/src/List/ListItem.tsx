@@ -121,6 +121,12 @@ export type ListItemProps = CompatibleHTMLProps<HTMLElement> &
      * @private May only be passed via TreeItem. This feature may be removed without a breaking change. We STRONGLY discourage the direct use of this property.
      */
     onClickWhitespace?: (event: React.MouseEvent<HTMLElement>) => void
+    /**
+     * Determines the type of the rendered ListItemWrapper
+     * @default false
+     * @private Should only be passed when ListItem is wrapped by another component like Tree. This feature may be removed without a breaking change. We STRONGLY discourage the direct use of this property.
+     */
+    renderAsDiv?: boolean
   }
 
 const ListItemInternal = forwardRef(
@@ -147,6 +153,7 @@ const ListItemInternal = forwardRef(
       onMouseEnter,
       onMouseLeave,
       rel,
+      renderAsDiv = false,
       role,
       selected,
       tabIndex = -1,
@@ -154,7 +161,7 @@ const ListItemInternal = forwardRef(
       truncate,
       ...restProps
     }: ListItemProps,
-    ref: Ref<HTMLLIElement>
+    ref: Ref<HTMLLIElement | HTMLDivElement>
   ) => {
     const {
       density: contextDensity,
@@ -233,7 +240,7 @@ const ListItemInternal = forwardRef(
 
     const { accessory, content, hoverDisclosure } = getDetailOptions(detail)
 
-    const wrapperRef = useRef<HTMLLIElement>(null)
+    const wrapperRef = useRef<HTMLLIElement | HTMLDivElement>(null)
     const actualRef = useForkedRef(wrapperRef, ref)
     useEffect(() => {
       const focusableElements = wrapperRef?.current?.querySelectorAll(
@@ -352,6 +359,7 @@ const ListItemInternal = forwardRef(
           onMouseEnter={handleWrapperMouseEnter}
           onMouseLeave={handleWrapperMouseLeave}
           ref={actualRef}
+          renderAsDiv={renderAsDiv}
           {...itemDimensions}
           {...restProps}
         >
