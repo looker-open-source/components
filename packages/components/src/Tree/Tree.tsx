@@ -194,4 +194,4 @@ const TreeLayout: FC<TreeProps> = ({
   )
 }
 
-export const Tree = styled(TreeLayout)<TreeProps>``
+export const Tree = styled(TreeLayout)``
