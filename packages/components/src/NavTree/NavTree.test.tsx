@@ -24,50 +24,18 @@
 
  */
 
-import React, { FC } from 'react'
-import styled from 'styled-components'
-import { Flex } from '../Layout'
-import {
-  listItemIconCSS,
-  ListItemIconPlacement,
-  ListItemLayoutProps,
-} from './ListItemLayout'
-import { listItemPadding } from './utils'
+import React from 'react'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
+import { Basic } from './NavTree.story'
 
-export const ListItemLayoutAccessoryInternal: FC<ListItemLayoutProps> = ({
-  children,
-  className,
-  labelCreator,
-  description,
-  detail,
-  icon,
-}) => {
-  const content = (
-    <>
-      {icon && <ListItemIconPlacement>{icon}</ListItemIconPlacement>}
-      <Flex flexDirection="column" minWidth={0} flexGrow={1}>
-        {children}
-        {description}
-      </Flex>
-    </>
-  )
+describe('NavTree', () => {
+  test('colors', () => {
+    renderWithTheme(<Basic />)
 
-  return (
-    <>
-      {labelCreator({
-        children: content,
-        className: className || '',
-      })}
-      {detail}
-    </>
-  )
-}
-
-export const ListItemLayoutAccessory = styled(
-  ListItemLayoutAccessoryInternal
-).attrs(({ color = 'text2', disabled }) => ({
-  color: disabled ? 'text1' : color,
-}))`
-  ${(props) => listItemPadding({ ...props })}
-  ${listItemIconCSS}
-`
+    const item = screen.getByText('My Awesome Tree')
+    expect(item).toHaveStyle(`color: #6C43E0;`)
+    expect(screen.getByText('description')).toHaveStyle(`color: #6C43E0;`)
+    expect(screen.getByText('detail')).toHaveStyle(`color: #6C43E0;`)
+  })
+})

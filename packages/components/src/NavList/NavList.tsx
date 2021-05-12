@@ -24,12 +24,29 @@
 
  */
 
-import styled from 'styled-components'
-import { StyledIconBase } from '@styled-icons/styled-icon'
+import styled, { css } from 'styled-components'
 import { AccordionDisclosureStyle } from '../Accordion/AccordionDisclosure'
 import { TextBase } from '../Text/TextBase'
 import { ListItemDetail } from '../List/ListItemDetail'
 import { List, ListItemLabel } from '../List'
+import { ListItemIconPlacement } from '../List/ListItemLayout'
+
+export const navStyles = css`
+  ${AccordionDisclosureStyle}, ${ListItemLabel} {
+    border-bottom-right-radius: 5rem;
+    border-top-right-radius: 5rem;
+
+    &[aria-selected='true'] {
+      color: ${({ theme }) => theme.colors.key};
+
+      ${ListItemDetail},
+      ${TextBase},
+      ${ListItemIconPlacement} svg {
+        color: currentColor;
+      }
+    }
+  }
+`
 
 /**
  * `NavList` is a variation of `List`
@@ -45,18 +62,6 @@ import { List, ListItemLabel } from '../List'
  * SemVer major version change. _It is not recommended to use this component
  * at this time.
  */
-
-export const NavList = styled(List)`
-  ${AccordionDisclosureStyle}, ${ListItemLabel} {
-    border-bottom-right-radius: 5rem;
-    border-top-right-radius: 5rem;
-
-    &[aria-selected='true'] {
-      background-color: ${({ theme }) => theme.colors.keySubtle};
-      color: ${({ theme }) => theme.colors.key};
-      ${ListItemDetail}, ${StyledIconBase}, ${TextBase} {
-        color: ${({ theme }) => theme.colors.key};
-      }
-    }
-  }
+export const NavList = styled(List).attrs(({ color = 'key' }) => ({ color }))`
+  ${navStyles}
 `

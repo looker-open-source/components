@@ -24,50 +24,31 @@
 
  */
 
-import React, { FC } from 'react'
 import styled from 'styled-components'
-import { Flex } from '../Layout'
-import {
-  listItemIconCSS,
-  ListItemIconPlacement,
-  ListItemLayoutProps,
-} from './ListItemLayout'
-import { listItemPadding } from './utils'
+import { Tree } from '../Tree'
+import { navStyles } from '../NavList/NavList'
 
-export const ListItemLayoutAccessoryInternal: FC<ListItemLayoutProps> = ({
-  children,
-  className,
-  labelCreator,
-  description,
-  detail,
-  icon,
-}) => {
-  const content = (
-    <>
-      {icon && <ListItemIconPlacement>{icon}</ListItemIconPlacement>}
-      <Flex flexDirection="column" minWidth={0} flexGrow={1}>
-        {children}
-        {description}
-      </Flex>
-    </>
-  )
+/**
+ * `NavTree` is a variation of `List`
+ *   - `TreeItem`  border-radius circular on the right side
+ *   - `TreeItem` selected or "active"
+ *     - text color is `keyColor`
+ *     - background color is `keySubtle`
+ *
+ *
+ * @status: EXPERIMENTAL
+ * This component is in active development and may see significant change in
+ * it's behavior, interface & presentation. It may also be deprecated without
+ * SemVer major version change. _It is not recommended_ to use this component
+ * at this time.
+ *
+ * KNOWN ISSUES
+ *
+ * `Tree` w/ selected does not get text-color properly specified because
+ * `[aria-selected='true'] is not specified properly
+ *
+ */
 
-  return (
-    <>
-      {labelCreator({
-        children: content,
-        className: className || '',
-      })}
-      {detail}
-    </>
-  )
-}
-
-export const ListItemLayoutAccessory = styled(
-  ListItemLayoutAccessoryInternal
-).attrs(({ color = 'text2', disabled }) => ({
-  color: disabled ? 'text1' : color,
-}))`
-  ${(props) => listItemPadding({ ...props })}
-  ${listItemIconCSS}
+export const NavTree = styled(Tree).attrs(({ color = 'key' }) => ({ color }))`
+  ${navStyles}
 `
