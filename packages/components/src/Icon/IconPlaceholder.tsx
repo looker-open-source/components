@@ -38,12 +38,9 @@ export interface IconPlaceholderProps
     SizeProps,
     SpaceProps {}
 
-export const IconPlaceholder = styled.div.attrs<IconPlaceholderProps>(
-  ({ mr = 'xsmall' }) => ({
-    'aria-hidden': true,
-    mr,
-  })
-)<IconPlaceholderProps>`
+export const IconPlaceholder = styled.div.attrs<IconPlaceholderProps>(() => ({
+  'aria-hidden': true,
+}))<IconPlaceholderProps>`
   ${size}
   ${space}
 `

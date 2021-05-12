@@ -47,14 +47,8 @@ describe('NavList', () => {
     )
 
     const listItem = screen.getByText('Explore')
-
-    // NavList label
-    expect(listItem).toHaveStyle(`color: #6C43E0;`)
-
-    // NavList description
-    expect(screen.getByText('Orange-y')).toHaveStyle(`color: #6C43E0;`)
-
-    // NavList detail
-    expect(screen.getByText('Netherlands')).toHaveStyle(`color: #6C43E0;`)
+    expect(listItem).toHaveStyle('color: currentColor;')
+    expect(screen.getByText('Orange-y')).toHaveStyle('color: currentColor')
+    expect(screen.getByText('Netherlands')).toHaveStyle('color: currentColor;')
   })
 })

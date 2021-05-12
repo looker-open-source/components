@@ -33,9 +33,9 @@ describe('NavTree', () => {
   test('colors', () => {
     renderWithTheme(<Basic />)
 
-    const item = screen.getByText('My Awesome Tree')
-    expect(item).toHaveStyle(`color: #6C43E0;`)
-    expect(screen.getByText('description')).toHaveStyle(`color: #6C43E0;`)
-    expect(screen.getByText('detail')).toHaveStyle(`color: #6C43E0;`)
+    const item = screen.getByText('My Awesome Item')
+    expect(item).toHaveStyle(`color: currentColor;`)
+    expect(screen.getByText('description')).toHaveStyle(`color: currentColor;`)
+    expect(screen.getByText('detail')).toHaveStyle(`color: currentColor;`)
   })
 })

@@ -75,9 +75,9 @@ export const ListItemIconPlacement = styled.div``
 
 export const listItemIconCSS = css<ListItemLayoutProps>`
   ${ListItemIconPlacement} {
-    align-items: center;
+    /* align-items: center; */
+    align-self: center;
     display: flex;
-    justify-content: center;
     margin-right: ${({ iconGap, theme }) => theme.space[iconGap]};
 
     & > svg,
@@ -86,6 +86,7 @@ export const listItemIconCSS = css<ListItemLayoutProps>`
       flex-grow: 0;
       flex-shrink: 0;
       height: ${({ iconSize, theme }) => theme.sizes[iconSize]};
+      /* justify-content: center; */
       width: ${({ iconSize, theme }) => theme.sizes[iconSize]};
     }
   }

@@ -45,7 +45,7 @@ export const Basic = () => {
   const handleClick = () => setSelected(!selected)
 
   return (
-    <NavTree icon={<Info />} label="Tree" selected isOpen>
+    <NavTree icon={<Info />} label="Tree" selected defaultOpen>
       <TreeItem icon={<Info />}>Meh</TreeItem>
       <TreeItem
         description="description"
@@ -56,7 +56,7 @@ export const Basic = () => {
       >
         My Awesome Item
       </TreeItem>
-      <Tree forceLabelPadding isOpen label="Blah" icon={<Info />}>
+      <Tree forceLabelPadding defaultOpen label="Blah" icon={<Info />}>
         <TreeItem color="text2">
           <em>Not yet available</em>
         </TreeItem>
@@ -87,7 +87,7 @@ export const MixedNavigation = () => (
       <Tree
         forceLabelPadding
         branchFontWeight
-        isOpen
+        defaultOpen
         label="Blah"
         icon={<Info />}
       >

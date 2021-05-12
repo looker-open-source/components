@@ -42,11 +42,6 @@ import { navStyles } from '../NavList/NavList'
  * SemVer major version change. _It is not recommended_ to use this component
  * at this time.
  *
- * KNOWN ISSUES
- *
- * `Tree` w/ selected does not get text-color properly specified because
- * `[aria-selected='true'] is not specified properly
- *
  */
 
 export const NavTree = styled(Tree).attrs(({ color = 'key' }) => ({ color }))`
