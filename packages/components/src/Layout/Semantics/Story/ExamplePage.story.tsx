@@ -364,9 +364,14 @@ const AsideStyle = styled(Aside)`
 export const AsideDefaultWidthSizeXsmall = WidthTemplate.bind({})
 AsideDefaultWidthSizeXsmall.args = {}
 
-export const AsideWidthSizeNavigation = WidthTemplate.bind({})
-AsideWidthSizeNavigation.args = {
-  width: 'navigation',
+export const AsideWidthSizeSmall = WidthTemplate.bind({})
+AsideWidthSizeSmall.args = {
+  width: 'small',
+}
+
+export const AsideWidthSizeLarge = WidthTemplate.bind({})
+AsideWidthSizeLarge.args = {
+  width: 'large',
 }
 
 export default {
