@@ -174,7 +174,6 @@ const ListStyle = styled.ul
 
   list-style: none;
   margin: 0;
-  overflow: auto;
   padding: 0;
 `
 
