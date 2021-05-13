@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0-alpha.4](https://github.com/looker-open-source/components/compare/v1.2.0-alpha.3...v1.2.0-alpha.4) (2021-05-13)
+
+
+### Bug Fixes
+
+* **reset:** Refine reset for Legend and provide css classNames for downstream extension as-needed ([#2341](https://github.com/looker-open-source/components/issues/2341)) ([34c653b](https://github.com/looker-open-source/components/commit/34c653bf2d21dbc90efcf5b6cf8a7ac3a3fa9927))
+
+
+
+
+
 # [1.2.0-alpha.3](https://github.com/looker-open-source/components/compare/v1.2.0-alpha.2...v1.2.0-alpha.3) (2021-05-10)
 
 **Note:** Version bump only for package @looker/components-providers
