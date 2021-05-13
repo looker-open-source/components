@@ -59,12 +59,11 @@ export interface ComponentsProviderProps
    * StyledDefender is a utility component that attempts to ensure that a few common
    * styles are injected at any point where @looker/components are injected into the DOM.
    * When taking code-snapshots (a pattern we generally discourage) the `StyleDefender`
-   * may be visible in output. Enabling `snapshotMode` disables StyleDefender to narrow
-   * snapshot output.
+   * may be visible in output so we generally recommend disabling it for those use-cases.
    *
    * @default false
    */
-  snapshotMode?: boolean
+  disableStyleDefender?: boolean
 
   /**
    * Prevent automatic injection of a basic CSS-reset into the DOM
@@ -101,7 +100,7 @@ export const ComponentsProvider: FC<ComponentsProviderProps> = ({
   children,
   loadFontSources = true,
   loadGoogleFonts = false,
-  snapshotMode = false,
+  disableStyleDefender = false,
   locale,
   resources,
   themeCustomizations,
@@ -125,7 +124,9 @@ export const ComponentsProvider: FC<ComponentsProviderProps> = ({
 
   useI18n({ locale, resources })
 
-  const ConditionalStyleDefender = snapshotMode ? Fragment : StyleDefender
+  const ConditionalStyleDefender = disableStyleDefender
+    ? Fragment
+    : StyleDefender
 
   return (
     <HelmetProvider>
