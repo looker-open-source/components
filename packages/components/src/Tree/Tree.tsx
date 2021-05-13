@@ -139,7 +139,7 @@ const TreeLayout: FC<TreeProps> = ({
       itemRole={treeItemInnerRole}
       role={treeItemInnerRole}
       truncate={truncate}
-      tabIndex={-2} // Prevents tab stop behavior from reaching innner TreeItems
+      tabIndex={-2} // Prevents tab stop behavior from reaching inner TreeItems
     >
       {propsLabel}
     </TreeItemInner>
@@ -154,7 +154,7 @@ const TreeLayout: FC<TreeProps> = ({
           density={density}
           disableListNav
           role="group"
-          tabIndex={-2} // Prevents tab stop behavior from reaching innner TreeItems
+          tabIndex={-2} // Prevents tab stop behavior from reaching inner TreeItems
           windowing="none"
         >
           {children}
