@@ -378,6 +378,7 @@ AsideWidthSizeNavigation.args = {
 export const AsideWidthSizeRail = WidthTemplate.bind({})
 AsideWidthSizeRail.args = {
   width: 'rail',
+}
 
 export const AsideCollapse = () => {
   const { value, toggle } = useToggle(false)

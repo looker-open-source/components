@@ -156,8 +156,9 @@ describe('Semantics', () => {
   test('Aside can use t-shirt sized for its width.', () => {
     renderWithTheme(<Aside width="medium">Aside content</Aside>)
     expect(screen.getByText('Aside content')).toHaveStyleRule('width: 40rem;')
+  })
 
- test('Aside collapse will display none.', () => {
+  test('Aside collapse will display none.', () => {
     renderWithTheme(<Aside collapse>Aside content</Aside>)
     expect(screen.queryByText('Aside content')).not.toBeInTheDocument()
   })
