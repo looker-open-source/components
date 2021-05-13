@@ -24,4 +24,4 @@
 
  */
 
-export * from './NavList'
+export { NavList } from './NavList'

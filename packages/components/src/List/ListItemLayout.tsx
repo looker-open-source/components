@@ -56,7 +56,7 @@ const ListItemLayoutInternal: FC<ListItemLayoutProps> = ({
 }) => {
   const content = (
     <>
-      {icon}
+      {icon && <ListItemIconPlacement>{icon}</ListItemIconPlacement>}
       <Flex flexDirection="column" minWidth={0} flexGrow={1}>
         {children}
         {description}
@@ -71,16 +71,24 @@ const ListItemLayoutInternal: FC<ListItemLayoutProps> = ({
   })
 }
 
+export const ListItemIconPlacement = styled.div``
+
 export const listItemIconCSS = css<ListItemLayoutProps>`
-  & > svg,
-  & > ${StyledIconBase}, & > ${IconPlaceholder} {
-    ${colorHelper}
+  ${ListItemIconPlacement} {
+    /* align-items: center; */
     align-self: center;
-    flex-grow: 0;
-    flex-shrink: 0;
-    height: ${({ iconSize, theme }) => theme.sizes[iconSize]};
+    display: flex;
     margin-right: ${({ iconGap, theme }) => theme.space[iconGap]};
-    width: ${({ iconSize, theme }) => theme.sizes[iconSize]};
+
+    & > svg,
+    ${StyledIconBase}, ${IconPlaceholder} {
+      ${colorHelper}
+      flex-grow: 0;
+      flex-shrink: 0;
+      height: ${({ iconSize, theme }) => theme.sizes[iconSize]};
+      /* justify-content: center; */
+      width: ${({ iconSize, theme }) => theme.sizes[iconSize]};
+    }
   }
 `
 
