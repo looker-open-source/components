@@ -70,55 +70,51 @@ export const getNextTreeFocus = (
     ) as HTMLElement
 
     if (vertical) {
-      if (isItemFocused) {
-        const next =
-          treeItems.findIndex((el) => el === focusedElement) + direction
-
-        if (next === treeItems.length || !treeItems[next]) {
-          // Reached the end of tab stops for this direction
-          return getFallbackElement(direction, element, treeItems)
-        }
-
-        return treeItems[next]
-      } else {
-        if (closestWrapper) {
-          const closestTreeItem = closestWrapper.querySelector(
+      const target = isItemFocused
+        ? (focusedElement as HTMLElement)
+        : (closestWrapper.querySelector(
             '[role="treeitem"]:not(:disabled)'
-          )
+          ) as HTMLElement)
 
-          const next =
-            treeItems.findIndex((el) => el === closestTreeItem) + direction
+      const next = treeItems.findIndex((el) => el === target) + direction
 
-          if (next === treeItems.length || !treeItems[next]) {
-            // Reached the end of tab stops for this direction
-            return getFallbackElement(direction, element, treeItems)
-          }
-
-          return treeItems[next]
-        }
+      if (next === treeItems.length || !treeItems[next]) {
+        return getFallbackElement(direction, element, treeItems)
       }
+
+      return treeItems[next]
     } else if (vertical === false) {
-      const tabStops = Array.prototype.slice.call(
-        closestWrapper?.querySelectorAll('[tabindex="-1"]:not(:disabled)')
-      ) as HTMLElement[]
+      /**
+       * 1. Figure out what the closest wrapper is
+       *   a. If in a TreeItem, you roll up to li and find all -1 elements
+       *   b. If in a Tree, you roll up to the li and find all -1 elements + the element itself
+       *      - Additional note: You can find if this is a Tree by checking for aria-expanded
+       * 2. Find what's next
+       * 3. Go there
+       */
+      const accordionFocused =
+        (focusedElement?.hasAttribute('aria-expanded') &&
+          focusedElement.getAttribute('role') === 'treeitem') ||
+        closestWrapper.hasAttribute('aria-expanded')
+      const childTabStops = Array.from(
+        closestWrapper.querySelectorAll('[tabindex="-1"]:not(:disabled)')
+      )
 
-      if (isItemFocused) {
-        if (tabStops && tabStops.length > 0) {
-          return direction === 1 ? tabStops[1] : tabStops[tabStops.length - 1]
-        }
-      } else {
-        if (tabStops) {
-          const next =
-            tabStops.findIndex((child) => child === focusedElement) + direction
+      const tabStops = accordionFocused
+        ? [focusedElement, ...childTabStops]
+        : childTabStops
 
-          if ((next === tabStops.length || !tabStops[next]) && closestWrapper) {
-            // Reached the end of tab stops for this direction
-            return getFallbackElement(direction, closestWrapper, tabStops)
-          }
+      const next = tabStops.findIndex((el) => el === focusedElement) + direction
 
-          return tabStops[next]
-        }
+      if (next === tabStops.length || !tabStops[next]) {
+        return getFallbackElement(
+          direction,
+          focusedElement as HTMLElement,
+          tabStops as HTMLElement[]
+        )
       }
+
+      return tabStops[next]
     }
   }
 
