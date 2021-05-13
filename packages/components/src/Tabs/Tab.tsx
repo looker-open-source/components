@@ -24,7 +24,7 @@
 
  */
 
-import React, { forwardRef, Ref, useState } from 'react'
+import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
 import {
   CompatibleHTMLProps,
@@ -38,6 +38,12 @@ import {
   TypographyProps,
   tabShadowColor,
 } from '@looker/design-tokens'
+import {
+  FocusVisibleProps,
+  focusVisibleCSSWrapper,
+  useFocusVisible,
+  useWrapEvent,
+} from '../utils'
 
 export interface TabProps
   extends Omit<CompatibleHTMLProps<HTMLButtonElement>, 'type'>,
@@ -45,7 +51,6 @@ export interface TabProps
     PaddingProps,
     TypographyProps {
   disabled?: boolean
-  focusVisible?: boolean
   index?: number
   selected?: boolean
   onSelect?: () => void
@@ -55,7 +60,7 @@ const TabStyle = styled.button
   .withConfig({ shouldForwardProp })
   .attrs(({ type = 'button' }) => ({
     type,
-  }))<TabProps>`
+  }))<TabProps & FocusVisibleProps>`
   ${reset}
   ${layout}
   ${padding}
@@ -67,7 +72,7 @@ const TabStyle = styled.button
   border-bottom-color: ${({ selected, theme }) =>
     selected ? theme.colors.key : 'transparent'};
   border-radius: 0;
-  ${({ focusVisible }) => focusVisible && tabShadowColor}
+  ${focusVisibleCSSWrapper(tabShadowColor)}
   color: ${({ selected, theme }) =>
     selected ? theme.colors.text5 : theme.colors.text2};
   cursor: pointer;
@@ -107,30 +112,20 @@ const TabJSX = forwardRef((props: TabProps, ref: Ref<HTMLButtonElement>) => {
     disabled,
     index,
     onBlur,
+    onClick,
     onKeyUp,
     onSelect,
     selected,
     ...restProps
   } = props
 
-  const [isFocusVisible, setFocusVisible] = useState(false)
-
-  const handleOnKeyUp = (event: React.KeyboardEvent<HTMLButtonElement>) => {
-    setFocusVisible(true)
-    onKeyUp && onKeyUp(event)
-  }
-
-  const handleOnBlur = (event: React.FocusEvent<HTMLButtonElement>) => {
-    setFocusVisible(false)
-    onBlur && onBlur(event)
-  }
-
-  const onClick = () => {
+  const handleClick = useWrapEvent(() => {
     if (!disabled && onSelect) {
       onSelect()
     }
-    setFocusVisible(false)
-  }
+  }, onClick)
+
+  const focusVisibleProps = useFocusVisible({ onBlur, onKeyUp })
 
   return (
     <TabStyle
@@ -138,15 +133,13 @@ const TabJSX = forwardRef((props: TabProps, ref: Ref<HTMLButtonElement>) => {
       aria-orientation="horizontal"
       aria-selected={selected}
       disabled={disabled}
-      focusVisible={isFocusVisible}
       id={`tab-${index}`}
-      onBlur={handleOnBlur}
-      onClick={onClick}
-      onKeyUp={handleOnKeyUp}
+      onClick={handleClick}
       ref={ref}
       role="tab"
       selected={selected}
       tabIndex={-1}
+      {...focusVisibleProps}
       {...restProps}
     >
       {children}

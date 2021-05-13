@@ -27,14 +27,11 @@
     "@styled-icons/styled-icon": "^10.6.3",
     "d3-color": "^2.0.0",
     "d3-hsv": "^0.1.0",
-    "date-fns": "^2.21.1",
-    "date-fns-tz": "^1.0.12",
     "hotkeys-js": "^3.8.3",
-    "i18next": "19.9.1",
+    "i18next": "20.2.2",
     "lodash": "^4.17.20",
-    "react-day-picker": "^7.4.8",
     "react-hotkeys-hook": "2.3.1",
-    "react-i18next": "11.8.8",
+    "react-i18next": "11.8.15",
     "resize-observer-polyfill": "^1.5.1",
     "styled-system": "^5.1.5",
     "uuid": "^8.3.2"
@@ -53,10 +50,11 @@
     "@types/uuid": "^8.3.0",
     "csstype": "^3.0.8",
     "jest-styled-components": "^7.0.4",
+    "puppeteer": "^9.1.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-is": "^16.13.1",
-    "styled-components": "^5.2.3"
+    "styled-components": "^5.3.0"
   },
   "peerDependencies": {
     "react": "^16.11",

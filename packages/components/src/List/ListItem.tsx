@@ -44,6 +44,7 @@ import {
   HoverDisclosureContext,
   HoverDisclosure,
   undefinedCoalesce,
+  useFocusVisible,
   useWrapEvent,
   getNextFocusTarget,
   useForkedRef,
@@ -174,33 +175,28 @@ const ListItemInternal = forwardRef(
     if (keyColor) propsColor = 'key'
     const color = undefinedCoalesce([propsColor, contextColor])
 
-    const [focusVisible, setFocusVisible] = useState(false)
+    const { focusVisible, ...focusVisibleHandlers } = useFocusVisible({
+      onBlur,
+      onKeyUp,
+    })
     const [hovered, setHovered] = useState(propsHovered)
 
     const descriptionColor = disabled ? 'text1' : 'text2'
 
-    const handleOnBlur = (event: React.FocusEvent<HTMLElement>) => {
-      setFocusVisible(false)
-      onBlur && onBlur(event)
-    }
-
     const handleOnClick = (event: React.MouseEvent<HTMLElement>) => {
-      setFocusVisible(false)
-
       if (itemRole !== 'none' && onClick) {
         onClick(event)
       }
     }
 
-    const handleOnKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
-      onKeyDown && onKeyDown(event)
-      setFocusVisible(true)
-    }
-
-    const handleOnKeyUp = (event: React.KeyboardEvent<HTMLElement>) => {
-      onKeyUp && onKeyUp(event)
-      setFocusVisible(true)
-    }
+    const handleOnMouseEnter = useWrapEvent(
+      () => setHovered(true),
+      onMouseEnter
+    )
+    const handleOnMouseLeave = useWrapEvent(
+      () => setHovered(false),
+      onMouseLeave
+    )
 
     if (disabled && itemRole === 'link') {
       // eslint-disable-next-line no-console
@@ -281,14 +277,13 @@ const ListItemInternal = forwardRef(
         className={className}
         height={itemDimensions.height}
         href={href}
-        onBlur={handleOnBlur}
         onClick={disabled ? undefined : handleOnClick}
-        onKeyDown={handleOnKeyDown}
-        onKeyUp={handleOnKeyUp}
+        onKeyDown={onKeyDown}
         rel={createSafeRel(rel, target)}
         role={role || 'listitem'}
         target={target}
         tabIndex={tabIndex}
+        {...focusVisibleHandlers}
         {...statefulProps}
       >
         {children}
@@ -315,7 +310,6 @@ const ListItemInternal = forwardRef(
 
     const handleOnClickWhitespace = (event: React.MouseEvent<HTMLElement>) => {
       if (event.currentTarget === event.target) {
-        setFocusVisible(true)
         onClickWhitespace && onClickWhitespace(event)
       }
     }

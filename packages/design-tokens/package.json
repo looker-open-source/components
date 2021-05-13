@@ -22,7 +22,7 @@
     "@styled-system/should-forward-prop": "5.1.5",
     "@types/styled-system": "^5.1.11",
     "lodash": "^4.17.20",
-    "polished": "^4.0.5",
+    "polished": "^4.1.2",
     "styled-system": "^5.1.5"
   },
   "devDependencies": {
@@ -34,7 +34,7 @@
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-is": "^16.13.1",
-    "styled-components": "^5.2.3"
+    "styled-components": "^5.3.0"
   },
   "peerDependencies": {
     "react": "^16.11",

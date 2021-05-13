@@ -40,7 +40,7 @@ export const imageSnapshots = () => {
     test: imageSnapshot({
       beforeScreenshot: async (page, { context }) => {
         // override viewport for responsive design tests
-        const { viewport } = context.parameters
+        const { beforeScreenshot, viewport } = context.parameters
         const pageViewport = page.viewport()
 
         if (viewport) {
@@ -70,6 +70,9 @@ export const imageSnapshots = () => {
 
           return { height, width, x, y }
         })
+        if (beforeScreenshot) {
+          await beforeScreenshot(page)
+        }
       },
 
       getMatchOptions({ context: { kind, story } }) {

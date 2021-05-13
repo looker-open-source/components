@@ -24,14 +24,19 @@
 
  */
 
-import React, { forwardRef, MouseEvent, Ref, useContext, useState } from 'react'
-import styled from 'styled-components'
+import React, { forwardRef, MouseEvent, Ref, useContext } from 'react'
+import styled, { css } from 'styled-components'
 import {
   CompatibleHTMLProps,
   space,
   SpaceProps,
   omitStyledProps,
 } from '@looker/design-tokens'
+import {
+  focusVisibleCSSWrapper,
+  FocusVisibleProps,
+  useFocusVisible,
+} from '../utils'
 import { inputHeight } from '../Form/Inputs/height'
 import { ButtonSetContext } from './ButtonSetContext'
 
@@ -39,7 +44,6 @@ export interface ButtonItemProps
   extends SpaceProps,
     Omit<CompatibleHTMLProps<HTMLButtonElement>, 'type' | 'aria-pressed'> {
   value?: string
-  focusVisible?: boolean
 }
 
 const ButtonLayout = forwardRef(
@@ -51,17 +55,7 @@ const ButtonLayout = forwardRef(
       ButtonSetContext
     )
 
-    const [isFocusVisible, setFocusVisible] = useState(false)
-
-    const handleOnKeyUp = (event: React.KeyboardEvent<HTMLButtonElement>) => {
-      setFocusVisible(true)
-      onKeyUp && onKeyUp(event)
-    }
-
-    const handleOnBlur = (event: React.FocusEvent<HTMLButtonElement>) => {
-      setFocusVisible(false)
-      onBlur && onBlur(event)
-    }
+    const focusVisibleProps = useFocusVisible({ onBlur, onKeyUp })
 
     function handleClick(e: MouseEvent<HTMLButtonElement>) {
       onClick && onClick(e)
@@ -86,9 +80,7 @@ const ButtonLayout = forwardRef(
         onClick={handleClick}
         value={itemValue}
         disabled={disabled}
-        focusVisible={isFocusVisible}
-        onKeyUp={handleOnKeyUp}
-        onBlur={handleOnBlur}
+        {...focusVisibleProps}
         {...omitStyledProps(props)}
       >
         {children}
@@ -101,10 +93,12 @@ ButtonLayout.displayName = 'ButtonLayout'
 
 const ButtonOuter = styled.button.attrs(({ type = 'button' }) => ({
   type,
-}))<ButtonItemProps>`
-  ${(props) =>
-    props.focusVisible &&
-    `box-shadow: 0 0 0.5px 1px ${props.theme.colors.keyFocus}`}
+}))<ButtonItemProps & FocusVisibleProps>`
+  ${focusVisibleCSSWrapper(
+    ({ theme }) => css`
+      box-shadow: 0 0 0.5px 1px ${theme.colors.keyFocus};
+    `
+  )}
 `
 
 export const ButtonItem = styled(ButtonLayout)`

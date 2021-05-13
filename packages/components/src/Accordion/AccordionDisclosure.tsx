@@ -25,7 +25,7 @@
  */
 
 import React, { FC, Ref, forwardRef } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import {
   TypographyProps,
   typography,
@@ -40,6 +40,7 @@ import {
   GenericClickProps,
   useClickable,
   useWrapEvent,
+  focusVisibleCSSWrapper,
 } from '../utils'
 import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout/utils/simple'
 import { AccordionDisclosureLayout } from './AccordionDisclosureLayout'
@@ -163,13 +164,11 @@ export const AccordionDisclosureStyle = styled.div
   text-align: left;
   width: 100%;
 
-  ${({ focusVisible, theme }) =>
-    focusVisible &&
+  ${focusVisibleCSSWrapper(
+    ({ theme }) => css`
+      box-shadow: inset 0 0 0 2px ${theme.colors.keyFocus};
     `
-      &:focus {
-        box-shadow: inset 0 0 0 2px ${theme.colors.keyFocus};
-      }
-    `}
+  )}
   `
 
 export const AccordionDisclosure = styled(AccordionDisclosureInternal).attrs(

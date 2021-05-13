@@ -24,12 +24,18 @@
 
  */
 
+import React, { FC } from 'react'
 import { shouldForwardProp } from '@looker/design-tokens'
 import styled from 'styled-components'
 import { SemanticLayoutBase, semanticLayoutCSS } from './semanticStyledBase'
 import { borderHelper, SemanticBorderProps } from './semanticBorderHelper'
 
 export interface AsideProps extends SemanticLayoutBase, SemanticBorderProps {
+  /**
+   * Prevent `Aside` from being rendered.
+   * @default false
+   */
+  collapse?: boolean
   /**
    * To be used within the context of <Page fixed> container.
    * When true, this removes the inner overflow-y scrolling
@@ -44,8 +50,13 @@ export interface AsideProps extends SemanticLayoutBase, SemanticBorderProps {
   width?: string
 }
 
-export const Aside = styled.aside
-  .withConfig({ shouldForwardProp })
+const AsideLayout: FC<AsideProps> = ({ collapse, ...props }) =>
+  collapse ? null : <aside {...props} />
+
+export const Aside = styled(AsideLayout)
+  .withConfig({
+    shouldForwardProp: (prop) => prop === 'collapse' || shouldForwardProp(prop),
+  })
   .attrs<AsideProps>(({ width = '12rem' }) => ({
     width,
   }))<AsideProps>`

@@ -35,7 +35,6 @@
     "clean:docs": "find docs -type f ! -name 'index.html' -delete",
     "clean:gatsby": "rm -Rf www/.cache www/public",
     "clean:coverage": "rm -rf coverage",
-
     "playground": "yarn workspace playground start",
     "gatsby": "yarn workspace www start",
     "fix": "yarn lint:es --fix",
@@ -47,26 +46,21 @@
     "lint-staged": "yarn exec lint-staged",
     "pretest": "yarn prebuild",
     "test": "yarn jest",
-
     "storybook": "yarn workspace storybook develop",
-
     "prestoryshots": "yarn prebuild",
     "storyshots": "export storybookBuildMode=fast && yarn workspace storybook build",
-
     "pretest:image-snapshots": "yarn storyshots",
     "test:image-snapshots": "yarn jest --config jest-image-snapshots.config.js",
     "pretest:image-snapshots-update": "yarn storyshots",
     "test:image-snapshots-update": "yarn jest -u --config jest-image-snapshots.config.js",
-
     "pretest:a11y": "yarn storyshots",
     "test:a11y": "yarn jest --config jest-a11y.config.js",
-
     "website-canary": "./config/website-canary.sh",
     "website-latest": "./config/website-latest.sh"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.16",
-    "@babel/core": "^7.13.16",
+    "@babel/core": "^7.14.0",
     "@babel/plugin-proposal-class-properties": "^7.13.0",
     "@babel/plugin-proposal-nullish-coalescing-operator": "^7.13.8",
     "@babel/plugin-proposal-object-rest-spread": "^7.13.8",
@@ -81,7 +75,7 @@
     "@types/node": "^14.14.41",
     "babel-plugin-styled-components": "1.12.0",
     "core-js": "^3.11.0",
-    "eslint": "^7.24.0",
+    "eslint": "^7.26.0",
     "jest": "^26.6.3",
     "jest-image-snapshot": "^4.4.1",
     "jest-styled-components": "^7.0.4",
@@ -96,7 +90,7 @@
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-is": "^16.13.1",
-    "styled-components": "^5.2.3",
+    "styled-components": "^5.3.0",
     "typescript": "4.2.4",
     "webpack": "^4.44.2"
   },
@@ -113,8 +107,11 @@
     "react": "16.14.0",
     "react-dom": "16.14.0",
     "react-dev-utils": ">= 11.0.4",
+    "react-i18next": ">= 11.8.15",
     "socket.io": ">= 2.4.0",
-    "ssri": ">= 8.0.1"
+    "ssri": ">= 8.0.1",
+    "trim": ">= 0.0.3",
+    "xmlhttprequest-ssl": ">= 1.6.2"
   },
   "lint-staged": {
     "**/*.ts?(x)": [

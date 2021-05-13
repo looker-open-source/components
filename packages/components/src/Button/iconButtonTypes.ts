@@ -53,18 +53,23 @@ export type IconButtonSizes =
   | SizeLarge
 
 export type ToggleColor = 'key' | 'calculation' | 'dimension' | 'measure'
+
+export interface ToggleColorProps {
+  /**
+   * Change icon and background color when toggled
+   * Supports 'calculation', 'dimension', 'measure' and 'key'
+   * @default 'key'
+   */
+  toggleColor?: ToggleColor
+}
 export interface IconButtonProps
   extends Omit<CompatibleHTMLProps<HTMLButtonElement>, 'children' | 'type'>,
     Omit<ButtonBaseProps, 'color'>,
     IconButtonVariantProps,
+    ToggleColorProps,
     Pick<IconProps, 'icon'>,
     SpaceProps {
   type?: 'button' | 'submit' | 'reset'
-  /**
-   * Refer to the keyboard expected focus behavior
-   * @private
-   */
-  focusVisible?: boolean
   /**
    * Display border
    * @default false
@@ -93,12 +98,6 @@ export interface IconButtonProps
    * @default false
    */
   toggleBackground?: boolean
-  /**
-   * Change icon and background color when toggled
-   * Supports 'calculation', 'dimension', 'measure' and 'key'
-   * @default 'key'
-   */
-  toggleColor?: ToggleColor
   /**
    * By default IconButton shows a Tooltip with the Button's label text. Setting disableTooltip will disable that behavior.
    * @default false

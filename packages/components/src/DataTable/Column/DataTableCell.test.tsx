@@ -111,9 +111,7 @@ describe('DataTableCell', () => {
 
     const cell = screen.getByText('Cell content')
     const td = cell.closest('td')
-    expect(td).toHaveStyleRule('outline', 'none', {
-      modifier: ':focus',
-    })
+    expect(td).toHaveStyleRule('outline', 'none')
 
     fireEvent.keyUp(cell, {
       charCode: 13,
@@ -121,15 +119,11 @@ describe('DataTableCell', () => {
       key: 'Enter',
     })
 
-    expect(td).toHaveStyleRule('outline', '1px solid #6C43E0', {
-      modifier: ':focus',
-    })
+    expect(td).toHaveStyleRule('outline', '1px solid #6C43E0')
 
     fireEvent.blur(cell)
 
-    expect(td).toHaveStyleRule('outline', 'none', {
-      modifier: ':focus',
-    })
+    expect(td).toHaveStyleRule('outline', 'none')
   })
 
   test('onClick callback + unset :focus-visible', () => {
@@ -150,9 +144,7 @@ describe('DataTableCell', () => {
 
     // Apply focus to cell
     fireEvent.keyUp(cell, { key: 'Enter' })
-    expect(td).toHaveStyleRule('outline', '1px solid #6C43E0', {
-      modifier: ':focus',
-    })
+    expect(td).toHaveStyleRule('outline', '1px solid #6C43E0')
 
     userEvent.click(cell)
 

@@ -24,23 +24,13 @@
 
  */
 
-import React, {
-  forwardRef,
-  Ref,
-  ReactNode,
-  useEffect,
-  useRef,
-  useState,
-  FocusEvent,
-  KeyboardEvent,
-  MouseEvent,
-} from 'react'
+import React, { forwardRef, Ref, ReactNode, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import { CompatibleHTMLProps } from '@looker/design-tokens'
 import { Space, SpaceVertical } from '../../Layout'
 import { Paragraph } from '../../Text'
 import { Truncate } from '../../Truncate'
-import { useForkedRef } from '../../utils'
+import { useFocusVisible, useForkedRef } from '../../utils'
 import { columnSize, DataTableColumnSize } from './columnSize'
 import { FocusableCell } from './FocusableCell'
 
@@ -50,39 +40,24 @@ export interface DataTableCellProps
    * I18n recommended: content that is user visible should be treated for i18n
    */
   description?: ReactNode
-  focusVisible?: boolean
   indicator?: ReactNode
   size?: DataTableColumnSize
 }
 
 const DataTableCellLayout = forwardRef(
-  (props: DataTableCellProps, forwardedRef: Ref<HTMLElement>) => {
-    const {
+  (
+    {
       children,
       description,
       indicator,
       onBlur,
-      onClick,
       onKeyUp,
       size,
-    } = props
-
-    const [isFocusVisible, setFocusVisible] = useState(false)
-
-    const handleOnKeyUp = (event: KeyboardEvent<HTMLTableDataCellElement>) => {
-      setFocusVisible(true)
-      onKeyUp && onKeyUp(event)
-    }
-
-    const handleOnBlur = (event: FocusEvent<HTMLTableDataCellElement>) => {
-      setFocusVisible(false)
-      onBlur && onBlur(event)
-    }
-
-    const handleOnClick = (event: MouseEvent<HTMLTableDataCellElement>) => {
-      setFocusVisible(false)
-      onClick && onClick(event)
-    }
+      ...props
+    }: DataTableCellProps,
+    forwardedRef: Ref<HTMLElement>
+  ) => {
+    const focusVisibleProps = useFocusVisible({ onBlur, onKeyUp })
 
     let content =
       size && size !== 'nowrap' ? <Truncate>{children}</Truncate> : children
@@ -128,14 +103,7 @@ const DataTableCellLayout = forwardRef(
       )
     }
     return (
-      <FocusableCell
-        focusVisible={isFocusVisible}
-        onBlur={handleOnBlur}
-        onClick={handleOnClick}
-        onKeyUp={handleOnKeyUp}
-        ref={forkedRef}
-        {...props}
-      >
+      <FocusableCell ref={forkedRef} {...focusVisibleProps} {...props}>
         {content}
       </FocusableCell>
     )
