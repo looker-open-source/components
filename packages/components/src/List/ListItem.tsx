@@ -189,15 +189,6 @@ const ListItemInternal = forwardRef(
       }
     }
 
-    const handleOnMouseEnter = useWrapEvent(
-      () => setHovered(true),
-      onMouseEnter
-    )
-    const handleOnMouseLeave = useWrapEvent(
-      () => setHovered(false),
-      onMouseLeave
-    )
-
     if (disabled && itemRole === 'link') {
       // eslint-disable-next-line no-console
       console.warn(
