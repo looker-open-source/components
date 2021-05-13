@@ -24,7 +24,7 @@
 
  */
 
-const getTreeItems = (ref: HTMLElement): HTMLElement[] =>
+export const getTreeItems = (ref: HTMLElement): HTMLElement[] =>
   Array.from(ref.querySelectorAll('[role="treeitem"]:not(:disabled)'))
 
 // Returns a fallback element (called when the element with focus has been removed from the DOM)
@@ -84,14 +84,6 @@ export const getNextTreeFocus = (
 
       return treeItems[next]
     } else if (vertical === false) {
-      /**
-       * 1. Figure out what the closest wrapper is
-       *   a. If in a TreeItem, you roll up to li and find all -1 elements
-       *   b. If in a Tree, you roll up to the li and find all -1 elements + the element itself
-       *      - Additional note: You can find if this is a Tree by checking for aria-expanded
-       * 2. Find what's next
-       * 3. Go there
-       */
       const accordionFocused =
         (focusedElement?.hasAttribute('aria-expanded') &&
           focusedElement.getAttribute('role') === 'treeitem') ||
@@ -101,8 +93,8 @@ export const getNextTreeFocus = (
       )
 
       const tabStops = accordionFocused
-        ? [focusedElement, ...childTabStops]
-        : childTabStops
+        ? ([focusedElement, ...childTabStops] as HTMLElement[])
+        : (childTabStops as HTMLElement[])
 
       const next = tabStops.findIndex((el) => el === focusedElement) + direction
 

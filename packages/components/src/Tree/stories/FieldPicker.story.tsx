@@ -103,6 +103,9 @@ const PickerItem: FC<{ color?: string; truncate?: boolean }> = ({
       itemRole="none"
       onClickWhitespace={handleFieldClick}
       onKeyDown={(event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          alert(`Key downed on ${children}`)
+        }
         if (event.key === 'Enter' && event.metaKey) {
           alert(`CMD + Enter'ed on ${children}!`)
         }

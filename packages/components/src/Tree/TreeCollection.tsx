@@ -24,10 +24,10 @@
 
  */
 
-import React, { FC, ReactNode } from 'react'
+import React, { FC, KeyboardEvent, ReactNode, useRef } from 'react'
 import styled from 'styled-components'
 import { useArrowKeyNav } from '../utils'
-import { getNextTreeFocus } from './utils'
+import { getNextTreeFocus, getTreeItems } from './utils'
 
 export type TreeCollectionProps = {
   children?: ReactNode
@@ -38,9 +38,25 @@ const TreeCollectionLayout: FC<TreeCollectionProps> = ({
   children,
   className,
 }) => {
+  const ref = useRef<HTMLElement>(null)
+
+  // Additional key shortcuts
+  const handleKeyDown = (event: KeyboardEvent<HTMLElement>) => {
+    const treeItems = getTreeItems(ref.current as HTMLElement)
+    if (event.key === 'Home') {
+      const firstItem = treeItems[0]
+      firstItem && firstItem.focus()
+    } else if (event.key === 'End') {
+      const lastItem = treeItems[treeItems.length - 1]
+      lastItem && lastItem.focus()
+    }
+  }
+
   const navProps = useArrowKeyNav({
     axis: 'both',
     getNextFocus: getNextTreeFocus,
+    onKeyDown: handleKeyDown,
+    ref,
   })
 
   return (
