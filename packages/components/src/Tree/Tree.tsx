@@ -128,6 +128,7 @@ const TreeLayout: FC<TreeProps> = ({
     },
   }
 
+  const treeItemInnerRole = 'none'
   const label = (
     <TreeItemInner
       color={color}
@@ -136,6 +137,8 @@ const TreeLayout: FC<TreeProps> = ({
       disabled={disabled}
       icon={icon}
       truncate={truncate}
+      itemRole={treeItemInnerRole}
+      role={treeItemInnerRole}
     >
       {propsLabel}
     </TreeItemInner>
