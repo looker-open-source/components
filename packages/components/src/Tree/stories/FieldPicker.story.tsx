@@ -104,7 +104,9 @@ const PickerItem: FC<{ color?: string; truncate?: boolean }> = ({
       onClickWhitespace={handleFieldClick}
       onKeyDown={(event) => {
         if (event.key === 'Enter' || event.key === ' ') {
-          alert(`Key downed on ${children}`)
+          if (event.target === event.currentTarget) {
+            alert(`Key downed on ${children}`)
+          }
         }
         if (event.key === 'Enter' && event.metaKey) {
           alert(`CMD + Enter'ed on ${children}!`)
@@ -158,7 +160,7 @@ const fields = (
         fontWeight="semiBold"
         pt="xsmall"
         pb="xxsmall"
-        pr="xxsmall"
+        px="xxsmall"
         truncate={true}
       >
         DIMENSIONS
@@ -182,7 +184,7 @@ const fields = (
         fontWeight="semiBold"
         pt="xsmall"
         pb="xxsmall"
-        pr="xxsmall"
+        px="xxsmall"
         truncate={true}
       >
         MEASURES
