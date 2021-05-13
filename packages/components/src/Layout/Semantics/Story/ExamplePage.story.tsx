@@ -41,8 +41,10 @@ import {
   Section,
 } from '..'
 import { SpaceVertical } from '../../Space'
+import { FieldToggleSwitch } from '../../../Form'
 import { Heading, Paragraph } from '../../../Text'
 import { MenuItem } from '../../../Menu/MenuItem'
+import { useToggle } from '../../../utils/useToggle'
 import { Tab, Tabs, TabList, TabPanel, TabPanels } from '../../../Tabs'
 
 export default {
@@ -376,4 +378,24 @@ AsideWidthSizeNavigation.args = {
 export const AsideWidthSizeRail = WidthTemplate.bind({})
 AsideWidthSizeRail.args = {
   width: 'rail',
+
+export const AsideCollapse = () => {
+  const { value, toggle } = useToggle(false)
+
+  return (
+    <Layout hasAside>
+      <Aside p="small" collapse={!value}>
+        Aside
+      </Aside>
+      <Section p="small">
+        <FieldToggleSwitch label="Show Aside" onChange={toggle} on={value} />
+      </Section>
+    </Layout>
+  )
+}
+
+AsideCollapse.parameters = {
+  storyshots: {
+    disable: true,
+  },
 }
