@@ -82,6 +82,9 @@ describe('TreeItem', () => {
   })
 
   test('Triggers onClickWhitespace when indent padding is clicked, itemRole = "none", and labelBackgroundOnly = true', () => {
+    // eslint-disable-next-line no-console
+    console.warn = jest.fn()
+
     const onClickWhitespace = jest.fn()
 
     // This onClick should be ignored within ListItem since the item has itemRole="none"
@@ -106,9 +109,12 @@ describe('TreeItem', () => {
       </Tree>
     )
 
+    // eslint-disable-next-line no-console
+    expect(console.warn).toHaveBeenCalled()
+
     // Expect indent padding click to trigger TreeItem onClickWhitespace (i.e. non-TreeItem child click)
     // Note: This selector may need to change once Tree ARIA roles are implemented
-    fireEvent.click(screen.getAllByRole('none')[1])
+    fireEvent.click(screen.getAllByRole('none')[2])
     expect(onClickWhitespace).toHaveBeenCalledTimes(1)
 
     // Do not expect click on label to trigger click handlers
