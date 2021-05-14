@@ -72,7 +72,12 @@ export const Layout: FC<LayoutProps> = ({ children, fixed, hasAside }) => {
     }
   }, [height])
   return (
-    <InnerLayout fixed={fixed} hasAside={hasAside} hasOverflow={hasOverflow}>
+    <InnerLayout
+      fixed={fixed}
+      hasAside={hasAside}
+      hasOverflow={hasOverflow}
+      ref={internalRef}
+    >
       {children}
     </InnerLayout>
   )
