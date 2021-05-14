@@ -24,10 +24,11 @@
 
  */
 
-import React, { FC } from 'react'
+import React, { FC, useRef, useState, useEffect } from 'react'
 import { CompatibleHTMLProps, shouldForwardProp } from '@looker/design-tokens'
 import styled, { css } from 'styled-components'
 import { simpleLayoutCSS, SimpleLayoutProps } from '../utils/simple'
+import { useResize } from '../../utils'
 import { Section } from './Section'
 
 export interface LayoutProps
@@ -51,16 +52,52 @@ const hasAsideCSS = css`
     width: 0;
   }
 `
-export const Layout: FC<LayoutProps> = ({ children }) => (
-  <InnerLayout>{children}</InnerLayout>
-)
+export const Layout: FC<LayoutProps> = ({ children, fixed, hasAside }) => {
+  const internalRef = useRef<HTMLDivElement>(null)
+  const [hasOverflow, setHasOverflow] = useState(false)
+  const [height, setHeight] = useState(0)
 
-const InnerLayout = styled.div.withConfig({ shouldForwardProp })<LayoutProps>`
+  const handleResize = () => {
+    if (internalRef.current) {
+      setHeight(internalRef.current.offsetHeight)
+    }
+  }
+
+  useResize(internalRef.current, handleResize)
+
+  useEffect(() => {
+    const container = internalRef.current
+    if (container) {
+      setHasOverflow(container.offsetHeight < container.scrollHeight)
+    }
+  }, [height])
+  return (
+    <InnerLayout fixed={fixed} hasAside={hasAside} hasOverflow={hasOverflow}>
+      {children}
+    </InnerLayout>
+  )
+}
+
+interface InnerLayoutProps extends LayoutProps {
+  hasOverflow: boolean
+}
+
+const InnerLayout = styled.div.withConfig({
+  shouldForwardProp,
+})<InnerLayoutProps>`
   ${simpleLayoutCSS}
   display: flex;
   flex: 1 1 auto;
   overflow: ${({ fixed }) => (fixed ? 'hidden' : 'auto')};
   ${({ hasAside }) => (hasAside ? hasAsideCSS : 'flex-direction: column;')}
+
+  ${({ hasOverflow, theme }) =>
+    hasOverflow &&
+    css`
+      border-bottom: 1px solid ${theme.colors.ui2};
+      border-top: 1px solid ${theme.colors.ui2};
+      box-shadow: inset 0 -4px 4px -4px ${theme.colors.ui2};
+    `}
 `
 
 // export interface LayoutProps
