@@ -76,9 +76,9 @@ describe('TreeItem', () => {
       </TreeItem>
     )
 
-    expect(screen.queryByText('Detail')).not.toBeInTheDocument()
+    expect(screen.queryByText('Detail')).not.toBeVisible()
     fireEvent.mouseEnter(screen.getByText('Label'), { bubbles: true })
-    expect(screen.queryByText('Detail')).toBeInTheDocument()
+    expect(screen.queryByText('Detail')).toBeVisible()
   })
 
   test('Triggers onClickWhitespace when indent padding is clicked, itemRole = "none", and labelBackgroundOnly = true', () => {
