@@ -75,16 +75,18 @@ Border.args = {
 }
 
 export const Icon = () => (
-  <Tree
-    defaultOpen
-    icon={<Alarm />}
-    label={
-      <Space between>
-        "Alarm" icon has margin-right, but "Download" icon does not
-        <Download size={20} />
-      </Space>
-    }
-  >
-    <TreeItem>Don't mind me</TreeItem>
-  </Tree>
+  <TreeCollection>
+    <Tree
+      defaultOpen
+      icon={<Alarm />}
+      label={
+        <Space between>
+          "Alarm" icon has margin-right, but "Download" icon does not
+          <Download size={20} />
+        </Space>
+      }
+    >
+      <TreeItem>Don't mind me</TreeItem>
+    </Tree>
+  </TreeCollection>
 )
