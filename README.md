@@ -44,7 +44,6 @@ We recommend using [Node Version Manager (NVM)](https://github.com/nvm-sh/nvm#in
 
 ### Common Project Commands
 
-- **yarn develop** shortcut for booting up www, playground, and server packages for local development
 - **yarn playground** starts a bare-bones React app used for developing components
 - **yarn gatsby** starts the Gatsby server (powers our documentation site)
 - **yarn storybook** starts Storybook in "Docs" mode (includes stories from all packages)
