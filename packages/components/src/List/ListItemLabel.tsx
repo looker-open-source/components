@@ -75,6 +75,7 @@ type ListItemLabelProps = CompatibleHTMLProps<HTMLElement> &
   ListItemStatefulProps &
   FlexibleColor & {
     disabled?: boolean
+    focusVisible: boolean
     height?: number
     itemRole?: ListItemRole
   }
@@ -82,11 +83,12 @@ type ListItemLabelProps = CompatibleHTMLProps<HTMLElement> &
 export const ListItemLabel = styled(ListItemLabelLayout).withConfig({
   shouldForwardProp: (prop) => prop === 'itemRole' || shouldForwardProp(prop),
 })`
-  ${({ height, itemRole }) => itemRole === 'none' && `height: ${height}px;`}
+  ${({ height, itemRole }) => itemRole === 'none' && `min-height: ${height}px;`}
   ${listItemBackgroundColor}
 
   &:focus {
-    box-shadow: inset 0 0 0 2px ${({ theme }) => theme.colors.keyFocus};
+    ${({ focusVisible, theme }) =>
+      focusVisible && `box-shadow: inset 0 0 0 2px ${theme.colors.keyFocus};`}
   }
 
   align-items: center;

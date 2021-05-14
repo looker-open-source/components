@@ -266,6 +266,7 @@ const ListItemInternal = forwardRef(
         aria-current={current}
         aria-selected={selected}
         className={className}
+        focusVisible={focusVisible}
         height={itemDimensions.height}
         href={href}
         onClick={disabled ? undefined : handleOnClick}

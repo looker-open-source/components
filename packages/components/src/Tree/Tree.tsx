@@ -152,9 +152,8 @@ const TreeLayout: FC<TreeProps> = ({
       content={
         <List
           density={density}
-          disableListNav
+          disableKeyboardNav
           role="group"
-          tabIndex={-2} // Prevents tab stop behavior from reaching inner TreeItems
           windowing="none"
         >
           {children}

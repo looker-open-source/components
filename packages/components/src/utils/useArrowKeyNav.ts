@@ -76,6 +76,13 @@ export interface UseArrowKeyNavProps<E extends HTMLElement> {
   onKeyDown?: (e: KeyboardEvent<E>) => void
 }
 
+export type UseArrowKeyNavResult<E extends HTMLElement> = Pick<
+  UseArrowKeyNavProps<E>,
+  'ref' | 'onBlur' | 'onFocus' | 'onKeyDown'
+> & {
+  tabIndex?: number
+}
+
 /**
  * Returns props to spread onto container element for arrow key navigation.
  * Add tabIndex={-1} to child elements.
@@ -88,7 +95,7 @@ export const useArrowKeyNav = <E extends HTMLElement = HTMLElement>({
   onBlur,
   onFocus,
   onKeyDown,
-}: UseArrowKeyNavProps<E>) => {
+}: UseArrowKeyNavProps<E>): UseArrowKeyNavResult<E> => {
   const internalRef = useRef<E>(null)
   const focusedItemRef = useRef<HTMLElement>()
   const [focusInside, setFocusInside] = useState(false)
@@ -191,5 +198,5 @@ export const useArrowKeyNav = <E extends HTMLElement = HTMLElement>({
     tabIndex: focusInside ? undefined : 0,
   }
 
-  return disabled ? null : navProps
+  return disabled ? {} : navProps
 }
