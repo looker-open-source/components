@@ -82,7 +82,7 @@ type ListItemLabelProps = CompatibleHTMLProps<HTMLElement> &
 export const ListItemLabel = styled(ListItemLabelLayout).withConfig({
   shouldForwardProp: (prop) => prop === 'itemRole' || shouldForwardProp(prop),
 })`
-  ${({ height, itemRole }) => itemRole === 'none' && `height: ${height}px;`}
+  ${({ height, itemRole }) => itemRole === 'none' && `min-height: ${height}px;`}
   ${listItemBackgroundColor}
 
   align-items: center;
