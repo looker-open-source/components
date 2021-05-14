@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0-alpha.6](https://github.com/looker-open-source/components/compare/v1.2.0-alpha.5...v1.2.0-alpha.6) (2021-05-14)
+
+**Note:** Version bump only for package storybook
+
+
+
+
+
 # [1.2.0-alpha.5](https://github.com/looker-open-source/components/compare/v1.2.0-alpha.4...v1.2.0-alpha.5) (2021-05-13)
 
 **Note:** Version bump only for package storybook
