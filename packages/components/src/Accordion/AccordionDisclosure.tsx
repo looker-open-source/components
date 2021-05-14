@@ -161,6 +161,7 @@ export const AccordionDisclosureStyle = styled.div
   display: flex;
   ${padding}
   outline: none;
+  position: relative;
   text-align: left;
   width: 100%;
 

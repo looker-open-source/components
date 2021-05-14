@@ -41,6 +41,10 @@ export const generateBorderRadius = (
     ${AccordionDisclosureStyle} {
       border-radius: ${radii[borderRadius]};
 
+      &:focus::after {
+        border-radius: ${radii[borderRadius]};
+      }
+
       ${ListItem} {
         border-radius: ${radii[borderRadius]};
       }
