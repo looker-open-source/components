@@ -165,5 +165,87 @@ describe('TreeCollection', () => {
       userEvent.keyboard('{arrowright}')
       expect(cheddar).toHaveFocus()
     })
+
+    test('pressing arrow down from a detail element moves user to next item', () => {
+      renderWithTheme(
+        <>
+          <button>My Button</button>
+          {treeCollection}
+        </>
+      )
+
+      const treeItems = screen.getAllByRole('treeitem')
+      const cheeses = treeItems[0]
+      const cheddar = treeItems[1]
+      const gouda = treeItems[2]
+      const nestedButton = screen.getByText('Nested Button')
+
+      userEvent.click(screen.getByText('My Button'))
+      expect(screen.getByText('My Button')).toHaveFocus()
+
+      userEvent.tab()
+      expect(cheeses).toHaveFocus()
+
+      userEvent.keyboard('{arrowdown}')
+      expect(cheddar).toHaveFocus()
+
+      userEvent.keyboard('{arrowright}')
+      expect(nestedButton).toHaveFocus()
+
+      userEvent.keyboard('{arrowdown}')
+      expect(gouda).toHaveFocus()
+    })
+
+    test('home button moves user to first treeitem element', () => {
+      renderWithTheme(
+        <>
+          <button>My Button</button>
+          {treeCollection}
+        </>
+      )
+
+      const treeItems = screen.getAllByRole('treeitem')
+      const cheeses = treeItems[0]
+      const cheddar = treeItems[1]
+      const swiss = treeItems[3]
+
+      userEvent.click(screen.getByText('My Button'))
+      expect(screen.getByText('My Button')).toHaveFocus()
+
+      userEvent.tab()
+      expect(cheeses).toHaveFocus()
+
+      userEvent.keyboard('{arrowdown}')
+      expect(cheddar).toHaveFocus()
+
+      userEvent.keyboard('{arrowdown}')
+      userEvent.keyboard('{arrowdown}')
+      expect(swiss).toHaveFocus()
+
+      userEvent.keyboard('{Home}')
+      expect(cheeses).toHaveFocus()
+    })
+
+    test('end button moves user to last treeitem element', () => {
+      renderWithTheme(
+        <>
+          <button>My Button</button>
+          {treeCollection}
+        </>
+      )
+
+      const treeItems = screen.getAllByRole('treeitem')
+      const cheeses = treeItems[0]
+      const swiss = treeItems[3]
+
+      userEvent.click(screen.getByText('My Button'))
+      expect(screen.getByText('My Button')).toHaveFocus()
+
+      userEvent.tab()
+      expect(cheeses).toHaveFocus()
+
+      userEvent.keyboard('{End}')
+      expect(swiss).toHaveFocus()
+    })
   })
 })
