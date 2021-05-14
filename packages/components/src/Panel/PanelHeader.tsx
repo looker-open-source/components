@@ -27,7 +27,6 @@
 import React, { FC, useContext } from 'react'
 import { ThemeContext } from 'styled-components'
 import { ArrowBack } from '@styled-icons/material-rounded/ArrowBack'
-import { ArrowForward } from '@styled-icons/material-rounded/ArrowForward'
 import { Heading } from '../Text'
 import { Space } from '../Layout'
 import { IconButton } from '../Button'
@@ -36,8 +35,8 @@ import { PanelDirection } from './types'
 export interface PanelHeaderProps {
   className?: string
   /**
-   * defines the icon displayed and the direction that the panel will appear and disappear
-   * @default 'left'
+   * @TODO - Remove in 2.x
+   * @deprecated
    */
   direction?: PanelDirection
   /**
@@ -49,7 +48,6 @@ export interface PanelHeaderProps {
 
 export const PanelHeader: FC<PanelHeaderProps> = ({
   className,
-  direction,
   handleClose,
   title,
 }) => {
@@ -66,7 +64,7 @@ export const PanelHeader: FC<PanelHeaderProps> = ({
       mb="1.5rem"
     >
       <IconButton
-        icon={direction === 'left' ? <ArrowBack /> : <ArrowForward />}
+        icon={<ArrowBack />}
         label={`Close ${title}`}
         onClick={handleClose}
         toggle

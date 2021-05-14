@@ -80,11 +80,7 @@ export const usePanel = ({
       className={className}
       direction={direction}
     >
-      <PanelHeader
-        direction={direction}
-        handleClose={handleClose}
-        title={title}
-      />
+      <PanelHeader handleClose={handleClose} title={title} />
       <div>{content}</div>
     </PanelSurface>
   )
