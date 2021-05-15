@@ -52,7 +52,12 @@ const hasAsideCSS = css`
     width: 0;
   }
 `
-export const Layout: FC<LayoutProps> = ({ children, fixed, hasAside }) => {
+export const Layout: FC<LayoutProps> = ({
+  children,
+  fixed,
+  hasAside,
+  ...props
+}) => {
   const internalRef = useRef<HTMLDivElement>(null)
   const [hasOverflow, setHasOverflow] = useState(false)
   const [height, setHeight] = useState(0)
@@ -71,12 +76,14 @@ export const Layout: FC<LayoutProps> = ({ children, fixed, hasAside }) => {
       setHasOverflow(container.offsetHeight < container.scrollHeight)
     }
   }, [height])
+
   return (
     <InnerLayout
       fixed={fixed}
       hasAside={hasAside}
       hasOverflow={hasOverflow}
       ref={internalRef}
+      {...props}
     >
       {children}
     </InnerLayout>
@@ -104,87 +111,3 @@ const InnerLayout = styled.div.withConfig({
       box-shadow: inset 0 -4px 4px -4px ${theme.colors.ui2};
     `}
 `
-
-// export interface LayoutProps
-//   extends SimpleLayoutProps,
-//     CompatibleHTMLProps<HTMLElement> {
-//   /**
-//    * fixed position for header and footer
-//    * @default false
-//    */
-//   fixed?: boolean
-//   /**
-//    * Supports scroll
-//    * @default true
-//    */
-//   hasAside?: boolean
-// }
-
-// export const Layout: FC<LayoutProps> = ({ children }) => {
-//   const internalRef = useRef<HTMLDivElement>(null)
-//   const [hasOverflow, setHasOverflow] = useState(false)
-//   const [height, setHeight] = useState(0)
-
-//   const handleResize = () => {
-//     if (internalRef.current) {
-//       setHeight(internalRef.current.offsetHeight)
-//     }
-//   }
-
-//   useResize(internalRef.current, handleResize)
-
-//   useEffect(() => {
-//     const container = internalRef.current
-//     if (container) {
-//       setHasOverflow(container.offsetHeight < container.scrollHeight)
-//     }
-//   }, [height])
-
-//   return (
-//     <InnerLayout hasOverflow={hasOverflow} ref={internalRef}>
-//       {children}
-//     </InnerLayout>
-//   )
-// }
-
-// const hasAsideCSS = css`
-//   flex-direction: row;
-
-//   & > ${Section} {
-//     width: 0;
-//   }
-// `
-
-// interface InnerLayoutProps extends LayoutProps {
-//   hasOverflow: boolean
-// }
-// const InnerLayout = styled.div.withConfig({
-//   shouldForwardProp,
-// })<InnerLayoutProps>`
-//   ${simpleLayoutCSS}
-//   display: flex;
-//   flex: 1 1 auto;
-//   overflow: ${({ fixed }) => (fixed ? 'hidden' : 'auto')};
-//   ${({ hasAside }) => (hasAside ? hasAsideCSS : 'flex-direction: column;')}
-
-//   ${({ hasOverflow, theme }) =>
-//     hasOverflow &&
-//     css`
-//       border-bottom: 1px solid ${theme.colors.ui2};
-//       border-top: 1px solid ${theme.colors.ui2};
-//       box-shadow: inset 0 -4px 4px -4px ${theme.colors.ui2};
-//     `}
-// `
-
-// // ${({ fixed, theme }) =>
-// //   fixed &&
-// //   css`
-// //     > header.shadow {
-// //       box-shadow: ${theme.shadows[1]};
-// //       position: relative;
-// //     }
-// //     > footer.shadow {
-// //       box-shadow: ${theme.shadows[1]};
-// //       position: relative;
-// //     }
-// //   `}
