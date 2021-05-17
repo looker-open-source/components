@@ -24,19 +24,24 @@
 
  */
 
-import React, { FC, KeyboardEvent, Ref, forwardRef, useState } from 'react'
-import styled from 'styled-components'
+import React, { FC, Ref, forwardRef } from 'react'
+import styled, { css } from 'styled-components'
 import {
   TypographyProps,
   typography,
-  CompatibleHTMLProps,
   padding,
   PaddingProps,
   shouldForwardProp,
   TextColorProps,
   color as colorStyleFn,
 } from '@looker/design-tokens'
-import { useWrapEvent } from '../utils'
+import {
+  FocusVisibleProps,
+  GenericClickProps,
+  useClickable,
+  useWrapEvent,
+  focusVisibleCSSWrapper,
+} from '../utils'
 import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout/utils/simple'
 import { AccordionDisclosureLayout } from './AccordionDisclosureLayout'
 import { AccordionControlProps, AccordionIndicatorProps } from './types'
@@ -45,12 +50,11 @@ import { accordionDefaults } from './accordionDefaults'
 export interface AccordionDisclosureProps
   extends TypographyProps,
     Omit<AccordionDisclosureStyleProps, 'focusVisible'>,
-    CompatibleHTMLProps<HTMLElement>,
+    GenericClickProps<HTMLElement>,
     SimpleLayoutProps,
     AccordionControlProps,
     AccordionIndicatorProps {
   className?: string
-  focusVisible?: boolean
   ref?: Ref<HTMLDivElement>
   /**
    * ID of the corresponding AccordionContent container
@@ -72,10 +76,11 @@ const AccordionDisclosureInternal: FC<AccordionDisclosureProps> = forwardRef(
       accordionDisclosureId,
       children,
       className,
+      disabled,
       onBlur,
-      onClick,
-      onKeyDown,
+      onClick: propsOnClick,
       onKeyUp,
+      role,
       defaultOpen,
       isOpen,
       toggleOpen,
@@ -89,50 +94,31 @@ const AccordionDisclosureInternal: FC<AccordionDisclosureProps> = forwardRef(
     },
     ref
   ) => {
-    const [isFocusVisible, setFocusVisible] = useState(false)
-
     const handleOpen = () => onOpen && onOpen()
     const handleClose = () => onClose && onClose()
     const handleToggle = () => {
       isOpen ? handleClose() : handleOpen()
       toggleOpen && toggleOpen(!isOpen)
     }
+    const onClick = useWrapEvent(handleToggle, propsOnClick)
 
-    const handleKeyDown = useWrapEvent(
-      (event: KeyboardEvent<HTMLElement>) =>
-        event.key === 'Enter' && handleToggle(),
-      onKeyDown
-    )
-
-    const handleKeyUp = useWrapEvent(
-      (event: KeyboardEvent<HTMLElement>) =>
-        event.key === 'Tab' &&
-        event.currentTarget === event.target &&
-        setFocusVisible(true),
-      onKeyUp
-    )
-
-    const handleClick = useWrapEvent(() => {
-      setFocusVisible(false)
-      handleToggle()
-    }, onClick)
-
-    const handleBlur = useWrapEvent(() => setFocusVisible(false), onBlur)
+    const clickableProps = useClickable({
+      disabled,
+      onBlur,
+      onClick,
+      onKeyUp,
+      role,
+    })
 
     return (
       <AccordionDisclosureStyle
         className={className}
-        role="button"
         aria-controls={accordionContentId}
         aria-expanded={isOpen}
-        focusVisible={isFocusVisible}
         id={accordionDisclosureId}
-        onBlur={handleBlur}
-        onClick={handleClick}
-        onKeyDown={handleKeyDown}
-        onKeyUp={handleKeyUp}
         ref={ref}
         tabIndex={0}
+        {...clickableProps}
         {...props}
       >
         <AccordionDisclosureLayout
@@ -153,9 +139,10 @@ const AccordionDisclosureInternal: FC<AccordionDisclosureProps> = forwardRef(
 
 AccordionDisclosureInternal.displayName = 'AccordionDisclosureInternal'
 
-interface AccordionDisclosureStyleProps extends TextColorProps, PaddingProps {
-  focusVisible: boolean
-}
+interface AccordionDisclosureStyleProps
+  extends TextColorProps,
+    PaddingProps,
+    FocusVisibleProps {}
 
 export const AccordionDisclosureStyle = styled.div
   .withConfig({ shouldForwardProp })
@@ -174,13 +161,11 @@ export const AccordionDisclosureStyle = styled.div
   text-align: left;
   width: 100%;
 
-  ${({ focusVisible, theme }) =>
-    focusVisible &&
+  ${focusVisibleCSSWrapper(
+    ({ theme }) => css`
+      box-shadow: inset 0 0 0 2px ${theme.colors.keyFocus};
     `
-      &:focus {
-        box-shadow: inset 0 0 0 2px ${theme.colors.keyFocus};
-      }
-    `}
+  )}
   `
 
 export const AccordionDisclosure = styled(AccordionDisclosureInternal).attrs(

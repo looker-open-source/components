@@ -37,9 +37,6 @@ const excludeNodeModulesExcept = require('babel-loader-exclude-node-modules-exce
 module.exports = {
   devServer: {
     port: 3000,
-    // proxy: {
-    //   '/api': 'http://localhost:3001',
-    // },
   },
   devtool: 'source-map',
   entry: {
@@ -56,7 +53,6 @@ module.exports = {
         exclude: [
           excludeNodeModulesExcept([
             '@looker/*',
-            'merge-anything', // a transitive dependency of @looker/components
             'react-hotkeys-hook', // ditto
           ]),
         ],

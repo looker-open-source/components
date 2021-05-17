@@ -4,6 +4,7 @@
   "version": "1.2.0",
   "devDependencies": {
     "@looker/components": "^1.2.0",
+    "@looker/components-date": "^1.2.0-alpha.2",
     "@looker/components-theme-editor": "^1.2.0",
     "@looker/design-tokens": "^1.2.0",
     "@looker/icons": "^1.2.0",
@@ -28,13 +29,13 @@
     "lodash": "^4.17.20",
     "prism-react-renderer": "^1.1.1",
     "react": "^16.14.0",
-    "react-copy-to-clipboard": "^5.0.2",
+    "react-copy-to-clipboard": "^5.0.3",
     "react-dom": "^16.14.0",
     "react-helmet": "^6.1.0",
     "react-is": "^16.13.1",
     "react-live": "^2.2.3",
     "react-use-flexsearch": "^0.1.1",
-    "styled-components": "^5.2.3"
+    "styled-components": "^5.3.0"
   },
   "scripts": {
     "build": "gatsby build --prefix-paths",
@@ -44,5 +45,8 @@
     "@styled-icons/material": "^10.28.0",
     "@styled-icons/material-outlined": "^10.28.0",
     "@styled-icons/material-rounded": "^10.28.0"
+  },
+  "eslintConfig": {
+    "extends": ["@looker/eslint-config/oss-compat"]
   }
 }

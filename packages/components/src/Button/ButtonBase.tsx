@@ -28,24 +28,31 @@ import {
   buttonShadow,
   reset,
   space,
-  StatefulColor,
   shouldForwardProp,
 } from '@looker/design-tokens'
 import { StyledIconBase } from '@styled-icons/styled-icon'
-import React, { forwardRef, Ref, useState } from 'react'
+import React, { forwardRef, Ref } from 'react'
 import styled, { css } from 'styled-components'
 import { minWidth, maxWidth, width } from 'styled-system'
+import {
+  FocusVisibleProps,
+  useFocusVisible,
+  focusVisibleCSSWrapper,
+} from '../utils'
 import { buttonSize, buttonIconSizeMap, buttonPadding } from './size'
 import { buttonIcon } from './icon'
-import { ButtonProps } from './types'
+import { ButtonColorProps, ButtonProps } from './types'
+import { ToggleColorProps } from './iconButtonTypes'
 
-const buttonCSS = (color: StatefulColor, focusVisible?: boolean) => css`
+const buttonCSS = css<ButtonColorProps & ToggleColorProps & FocusVisibleProps>`
   ${reset}
   ${maxWidth}
   ${minWidth}
   ${width}
 
-  ${focusVisible && buttonShadow(color)}
+  ${focusVisibleCSSWrapper(({ color, toggleColor }) =>
+    buttonShadow(toggleColor || color)
+  )}
 
   align-items: center;
   border-radius: ${({ theme }) => theme.radii.medium};
@@ -79,15 +86,18 @@ export const buttonIconSize = css<ButtonProps>`
   }
 `
 
+type ButtonLayoutProps = ButtonProps & ToggleColorProps
+type ButtonOuterProps = ButtonLayoutProps & FocusVisibleProps
+
 const ButtonOuter = styled.button
   .withConfig({ shouldForwardProp })
-  .attrs(({ color = 'key' }) => ({ color }))<ButtonProps>`
-  ${({ color, focusVisible }) => buttonCSS(color, focusVisible)}
+  .attrs(({ color = 'key' }) => ({ color }))<ButtonOuterProps>`
+  ${buttonCSS}
   ${({ fullWidth }) => fullWidth && `width: 100%;`}
 `
 
-const ButtonJSX = forwardRef(
-  (props: ButtonProps, ref: Ref<HTMLButtonElement>) => {
+const ButtonLayout = forwardRef(
+  (props: ButtonLayoutProps, ref: Ref<HTMLButtonElement>) => {
     const {
       children,
       iconBefore,
@@ -98,25 +108,13 @@ const ButtonJSX = forwardRef(
       ...restProps
     } = props
 
-    const [isFocusVisible, setFocusVisible] = useState(false)
-
-    const handleOnKeyUp = (event: React.KeyboardEvent<HTMLButtonElement>) => {
-      setFocusVisible(true)
-      onKeyUp && onKeyUp(event)
-    }
-
-    const handleOnBlur = (event: React.FocusEvent<HTMLButtonElement>) => {
-      setFocusVisible(false)
-      onBlur && onBlur(event)
-    }
+    const focusVisibleProps = useFocusVisible({ onBlur, onKeyUp })
 
     return (
       <ButtonOuter
+        {...focusVisibleProps}
         {...restProps}
         size={size}
-        focusVisible={isFocusVisible}
-        onKeyUp={handleOnKeyUp}
-        onBlur={handleOnBlur}
         ref={ref}
         px={buttonPadding(!!(iconBefore || iconAfter), size)}
       >
@@ -128,11 +126,11 @@ const ButtonJSX = forwardRef(
   }
 )
 
-ButtonJSX.displayName = 'ButtonJSX'
+ButtonLayout.displayName = 'ButtonLayout'
 
-export const GenericButtonBase = styled(ButtonJSX)<ButtonProps>``
+export const GenericButtonBase = styled(ButtonLayout)``
 
-export const ButtonBase = styled(GenericButtonBase)<ButtonProps>`
+export const ButtonBase = styled(GenericButtonBase)`
   ${buttonIcon}
   ${buttonIconSize}
 `

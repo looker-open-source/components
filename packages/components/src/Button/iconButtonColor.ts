@@ -26,14 +26,15 @@
 
 import { css } from 'styled-components'
 import { iconButtonColorDerivation } from '@looker/design-tokens'
-import { ToggleColor } from './iconButtonTypes'
+import { ToggleColorProps } from './iconButtonTypes'
 
 export const ICON_BUTTON_DEFAULT_COLOR = 'key'
 
-export const iconButtonColor = css<{
-  toggle?: boolean
-  toggleColor?: ToggleColor
-}>`
+export const iconButtonColor = css<
+  ToggleColorProps & {
+    toggle?: boolean
+  }
+>`
   ${iconButtonColorDerivation}
 
   &:hover,

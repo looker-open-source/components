@@ -25,6 +25,7 @@
  */
 
 import { Story } from '@storybook/react/types-6-0'
+import { Page } from 'puppeteer'
 import React, { useState } from 'react'
 import { ButtonItem } from './ButtonItem'
 import { ButtonToggle, ButtonToggleProps } from './ButtonToggle'
@@ -51,6 +52,20 @@ Basic.args = {
       <ButtonItem>Python</ButtonItem>
     </>
   ),
+}
+
+export const Focused = Template.bind({})
+Focused.args = {
+  ...Basic.args,
+  margin: 'small',
+}
+
+Focused.parameters = {
+  beforeScreenshot: async (page: Page) => {
+    const button = await page.$('button')
+    await button?.type(' ')
+    await page.waitForTimeout(200)
+  },
 }
 
 export const InitialValue = Template.bind({})

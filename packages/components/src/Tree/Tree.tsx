@@ -59,8 +59,6 @@ const TreeLayout: FC<TreeProps> = ({
   color: propsColor,
   label: propsLabel,
   labelBackgroundOnly: propsLabelBackgroundOnly,
-  onClick,
-  onKeyUp,
   onMouseEnter,
   onMouseLeave,
   selected,

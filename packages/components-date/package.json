@@ -1,0 +1,50 @@
+{
+  "name": "@looker/components-date",
+  "license": "MIT",
+  "version": "1.2.0-alpha.2",
+  "main": "lib/cjs/index.js",
+  "module": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/looker-open-source/components-date",
+    "directory": "packages/components-date"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@looker/components": "^1.2.0-alpha.2",
+    "@looker/design-tokens": "^1.2.0-alpha.2",
+    "@styled-icons/material-rounded": "^10.28.0",
+    "date-fns": "^2.21.1",
+    "date-fns-tz": "^1.0.12",
+    "i18next": "20.2.2",
+    "lodash": "^4.17.20",
+    "react-day-picker": "^7.4.8",
+    "react-i18next": "11.8.15",
+    "styled-system": "^5.1.5"
+  },
+  "devDependencies": {
+    "@looker/components-test-utils": "^1.2.0-alpha.2",
+    "@testing-library/jest-dom": "^5.12.0",
+    "@testing-library/react": "^11.2.6",
+    "@testing-library/user-event": "^13.1.5",
+    "jest-styled-components": "^7.0.4",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "react-is": "^16.13.1",
+    "styled-components": "^5.3.0"
+  },
+  "peerDependencies": {
+    "react": "^16.11",
+    "react-dom": "^16.11",
+    "react-is": "^16.11",
+    "styled-components": "^5"
+  },
+  "gitHead": "62febc162e3e45124f403e2c84fc741f68fe6714"
+}
