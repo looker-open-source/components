@@ -3,8 +3,7 @@ title: Panel
 storybook: true
 ---
 
-`<Panel />` component displays content with directional animation by using prop `direction` - `left`, `right` currently. The elements to be displayed as the compoennt must be
-passed as the prop `content`. `<Panels />` should be the parent component grouping all the elements involved on the `Panel`. The `PanelHeader`can be defined as a string or a ReactNode and will be displayed above the main`content`.
+Use the `Panel` component to display content with a directional animation. All `Panel`s need to be wrapped in the `Panels` component to ensure proper animation.
 
 ```jsx
 ;() => {
