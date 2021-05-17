@@ -73,7 +73,7 @@ jobs:
           yarn website-latest
 
       - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@3.7.1
+        uses: JamesIves/github-pages-deploy-action@4.1.3
         with:
           BRANCH: docs # The branch the action should deploy to.
           CLEAN: false # Automatically remove deleted files from the deploy branch
