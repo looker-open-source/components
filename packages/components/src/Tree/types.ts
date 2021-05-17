@@ -40,6 +40,7 @@ export type TreeProps = Omit<
   Pick<
     ListItemProps,
     | 'color'
+    | 'current'
     | 'density'
     | 'detail'
     | 'disabled'
