@@ -29,6 +29,7 @@ import { StyledIconBase } from '@styled-icons/styled-icon'
 import omit from 'lodash/omit'
 import React, { forwardRef, ReactNode, Ref } from 'react'
 import styled from 'styled-components'
+import { ListItemIconPlacement } from './ListItemLayout'
 import { ListColor, ListItemDimensions, listItemDimensionKeys } from './types'
 
 export interface ListItemWrapperProps
@@ -82,10 +83,22 @@ export const ListItemWrapper = styled(ListItemWrapperInternal)
   outline: none;
   text-decoration: none;
 
-  ${StyledIconBase}, svg {
+  ${({ focusVisible, theme }) =>
+    focusVisible &&
+    `
+      &:focus-within > * {
+        box-shadow: inset 0 0 0 2px ${theme.colors.keyFocus};
+      }
+    `}
+
+  ${ListItemIconPlacement} {
     align-self: ${({ description }) => (description ? 'flex-start' : 'center')};
-    transition: color
-      ${({ theme }) => `${theme.transitions.quick}ms ${theme.easings.ease}`};
+
+    ${StyledIconBase},
+    svg {
+      transition: color ${({ theme }) =>
+        `${theme.transitions.quick}ms ${theme.easings.ease}`};
+    }
   }
 
   &[aria-current='true'] {

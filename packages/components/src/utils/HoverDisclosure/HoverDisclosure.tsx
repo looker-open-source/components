@@ -36,5 +36,10 @@ export const HoverDisclosure: FC<HoverDisclosureProps> = ({
   visible,
 }) => {
   const context = useContext(HoverDisclosureContext)
-  return visible || context.visible ? <>{children}</> : null
+  const isVisible = visible || context.visible
+  return (
+    <div style={{ visibility: isVisible ? 'visible' : 'hidden' }}>
+      {children}
+    </div>
+  )
 }

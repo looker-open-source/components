@@ -196,9 +196,9 @@ describe('Tree', () => {
       </Tree>
     )
 
-    expect(screen.queryByText('Tree Detail')).not.toBeInTheDocument()
+    expect(screen.queryByText('Tree Detail')).not.toBeVisible()
     fireEvent.mouseEnter(screen.getByText('Tree Label'), { bubbles: true })
-    expect(screen.queryByText('Tree Detail')).toBeInTheDocument()
+    expect(screen.queryByText('Tree Detail')).toBeVisible()
   })
 
   describe('color', () => {
@@ -234,6 +234,38 @@ describe('Tree', () => {
       )
       expect(screen.getByText('Whatever')).toHaveStyle('color: #939ba5')
       expect(screen.getByTestId('icon')).toHaveStyle('color: #939ba5')
+    })
+  })
+
+  describe('aria roles', () => {
+    test('selected Trees have aria-selected=true', () => {
+      renderWithTheme(
+        <Tree
+          color="calculation"
+          selected
+          label="Whatever"
+          icon={<Science data-testid="icon" />}
+        />
+      )
+      expect(screen.getAllByRole('treeitem')[0]).toHaveAttribute(
+        'aria-selected',
+        'true'
+      )
+    })
+
+    test('current Trees have aria-current=true', () => {
+      renderWithTheme(
+        <Tree
+          color="calculation"
+          current
+          label="Whatever"
+          icon={<Science data-testid="icon" />}
+        />
+      )
+      expect(screen.getAllByRole('treeitem')[0]).toHaveAttribute(
+        'aria-current',
+        'true'
+      )
     })
   })
 })

@@ -35,6 +35,7 @@ export const usePanel = ({
   content,
   defaultOpen = false,
   direction = 'left',
+  iconToggle,
   isOpen: controlledIsOpen,
   onClose,
   setOpen: controlledSetOpen,
@@ -81,7 +82,7 @@ export const usePanel = ({
       direction={direction}
     >
       <PanelHeader
-        direction={direction}
+        iconToggle={iconToggle}
         handleClose={handleClose}
         title={title}
       />

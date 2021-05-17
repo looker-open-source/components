@@ -56,7 +56,8 @@
     "pretest:a11y": "yarn storyshots",
     "test:a11y": "yarn jest --config jest-a11y.config.js",
     "website-canary": "./config/website-canary.sh",
-    "website-latest": "./config/website-latest.sh"
+    "website-latest": "./config/website-latest.sh",
+    "develop":"echo -e 'Use `yarn gatsby` to start Gatsby \nUse `yarn storybook` to start Storybook'"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.16",
@@ -68,13 +69,13 @@
     "@babel/preset-env": "^7.13.15",
     "@babel/preset-react": "7.13.13",
     "@babel/preset-typescript": "^7.13.0",
-    "@babel/runtime": "^7.13.17",
+    "@babel/runtime": "^7.14.0",
     "@babel/runtime-corejs3": "^7.13.17",
     "@testing-library/jest-dom": "^5.12.0",
     "@types/jest-image-snapshot": "^4.3.0",
     "@types/node": "^14.14.41",
     "babel-plugin-styled-components": "1.12.0",
-    "core-js": "^3.11.0",
+    "core-js": "^3.12.1",
     "eslint": "^7.26.0",
     "jest": "^26.6.3",
     "jest-image-snapshot": "^4.4.1",

@@ -26,13 +26,13 @@
 
 import React, { FC } from 'react'
 import styled, { css } from 'styled-components'
-import { StyledIconBase } from '@styled-icons/styled-icon'
 import { SpacingSizes } from '@looker/design-tokens'
 import {
   Accordion,
   AccordionContent,
   AccordionDisclosureStyle,
 } from '../Accordion'
+import { ListItemIconPlacement } from '../List/ListItemLayout'
 import { FlexibleColor, ListItemStatefulProps } from '../List/types'
 import { listItemBackgroundColor } from '../List/utils'
 import { List, ListItem } from '../List'
@@ -149,8 +149,7 @@ export const TreeStyle = styled(TreeStyleLayout)`
   ${ListItem} {
     ${({ iconGap, theme }) =>
       listItemLabelCSS(css`
-        > svg,
-        > ${StyledIconBase}, > ${IconPlaceholder} {
+        ${ListItemIconPlacement} {
           /* The -2px gets the icon gap to match design specs */
           margin-right: calc(${theme.space[iconGap]} - ${iconGapAdjuster});
         }

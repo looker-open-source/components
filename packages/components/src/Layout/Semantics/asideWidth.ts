@@ -24,50 +24,25 @@
 
  */
 
-import React, { FC } from 'react'
-import styled from 'styled-components'
-import { Flex } from '../Layout'
-import {
-  listItemIconCSS,
-  ListItemIconPlacement,
-  ListItemLayoutProps,
-} from './ListItemLayout'
-import { listItemPadding } from './utils'
+import { system, ResponsiveValue } from 'styled-system'
 
-export const ListItemLayoutAccessoryInternal: FC<ListItemLayoutProps> = ({
-  children,
-  className,
-  labelCreator,
-  description,
-  detail,
-  icon,
-}) => {
-  const content = (
-    <>
-      {icon && <ListItemIconPlacement>{icon}</ListItemIconPlacement>}
-      <Flex flexDirection="column" minWidth={0} flexGrow={1}>
-        {children}
-        {description}
-      </Flex>
-    </>
-  )
+export type AsideSizes = 'rail' | 'navigation' | 'sidebar'
 
-  return (
-    <>
-      {labelCreator({
-        children: content,
-        className: className || '',
-      })}
-      {detail}
-    </>
-  )
+export type AsideSizeRamp = Record<AsideSizes, string>
+
+export type AsideWidth = ResponsiveValue<AsideSizeRamp | string>
+
+/* eslint-disable sort-keys-fix/sort-keys-fix */
+export const asideSizes: AsideSizeRamp = {
+  rail: '3.5rem',
+  navigation: '16rem',
+  sidebar: '20rem',
 }
 
-export const ListItemLayoutAccessory = styled(
-  ListItemLayoutAccessoryInternal
-).attrs(({ color = 'text2', disabled }) => ({
-  color: disabled ? 'text1' : color,
-}))`
-  ${(props) => listItemPadding({ ...props })}
-  ${listItemIconCSS}
-`
+export const asideWidth = system({
+  width: {
+    property: 'width',
+    scale: 'asideSizes',
+    defaultScale: asideSizes,
+  },
+})

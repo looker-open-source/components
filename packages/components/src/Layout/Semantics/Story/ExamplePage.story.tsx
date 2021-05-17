@@ -30,7 +30,16 @@ import { Story } from '@storybook/react/types-6-0'
 import { Home } from '@styled-icons/material/Home'
 import { PieChart } from '@styled-icons/material/PieChart'
 import { VerifiedUser } from '@styled-icons/material/VerifiedUser'
-import { Aside, Footer, Header, Layout, LayoutProps, Page, Section } from '..'
+import {
+  Aside,
+  AsideProps,
+  Footer,
+  Header,
+  Layout,
+  LayoutProps,
+  Page,
+  Section,
+} from '..'
 import { SpaceVertical } from '../../Space'
 import { FieldToggleSwitch } from '../../../Form'
 import { Heading, Paragraph } from '../../../Text'
@@ -347,6 +356,29 @@ export const ScrollAllAreas = () => (
     </Page>
   </Highlighter>
 )
+
+const WidthTemplate: Story<AsideProps> = (args) => (
+  <AsideStyle {...args}>Aside</AsideStyle>
+)
+
+const AsideStyle = styled(Aside)`
+  background-color: lightsalmon;
+  height: 40rem;
+  padding-top: 3.5rem;
+  text-align: center;
+`
+export const AsideDefaultWidthSizeSidebar = WidthTemplate.bind({})
+AsideDefaultWidthSizeSidebar.args = {}
+
+export const AsideWidthSizeNavigation = WidthTemplate.bind({})
+AsideWidthSizeNavigation.args = {
+  width: 'navigation',
+}
+
+export const AsideWidthSizeRail = WidthTemplate.bind({})
+AsideWidthSizeRail.args = {
+  width: 'rail',
+}
 
 export const AsideCollapse = () => {
   const { value, toggle } = useToggle(false)

@@ -86,10 +86,10 @@ describe('List', () => {
       expect(screen.getByTestId('after')).toHaveStyle(`height: ${height}px;`)
     })
 
-    test('no height: 100% without windowing', () => {
+    test('no "overflow: auto" without windowing', () => {
       renderWithTheme(<Basic />)
 
-      expect(screen.getByRole('list')).not.toHaveStyle('height: 100%')
+      expect(screen.getByRole('list')).not.toHaveStyle('overflow: auto')
     })
   })
   describe('color', () => {

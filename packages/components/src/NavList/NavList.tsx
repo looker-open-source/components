@@ -25,11 +25,11 @@
  */
 
 import styled from 'styled-components'
-import { StyledIconBase } from '@styled-icons/styled-icon'
 import { AccordionDisclosureStyle } from '../Accordion/AccordionDisclosure'
 import { TextBase } from '../Text/TextBase'
 import { ListItemDetail } from '../List/ListItemDetail'
-import { List, ListItemLabel } from '../List'
+import { List, ListItem, ListItemLabel } from '../List'
+import { ListItemIconPlacement } from '../List/ListItemLayout'
 
 /**
  * `NavList` is a variation of `List`
@@ -37,6 +37,7 @@ import { List, ListItemLabel } from '../List'
  *   - `ListItem` selected or "active"
  *     - text color is `keyColor`
  *     - background color is `keySubtle`
+ *   - `ListItem` at the root are indented to align properly with `Tree`(s) at the root as well
  *
  *
  * @status: EXPERIMENTAL
@@ -45,18 +46,22 @@ import { List, ListItemLabel } from '../List'
  * SemVer major version change. _It is not recommended to use this component
  * at this time.
  */
-
-export const NavList = styled(List)`
+export const NavList = styled(List).attrs(({ color = 'key' }) => ({ color }))`
   ${AccordionDisclosureStyle}, ${ListItemLabel} {
     border-bottom-right-radius: 5rem;
     border-top-right-radius: 5rem;
 
     &[aria-selected='true'] {
-      background-color: ${({ theme }) => theme.colors.keySubtle};
-      color: ${({ theme }) => theme.colors.key};
-      ${ListItemDetail}, ${StyledIconBase}, ${TextBase} {
+      ${ListItemDetail},
+      ${TextBase},
+      ${ListItemIconPlacement} svg {
         color: ${({ theme }) => theme.colors.key};
       }
+    }
+  }
+  & > ${ListItem} {
+    ${ListItemLabel} {
+      padding-left: ${({ theme }) => `${theme.sizes.medium}`};
     }
   }
 `

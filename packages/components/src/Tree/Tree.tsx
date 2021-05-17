@@ -36,6 +36,7 @@ import React, {
 import { Accordion } from '../Accordion'
 import { undefinedCoalesce, useWrapEvent } from '../utils'
 import { List } from '../List'
+import { ListItemContext } from '../List/ListItemContext'
 import { listItemDimensions, getDetailOptions } from '../List/utils'
 import { TreeContext } from './TreeContext'
 import { indicatorDefaults } from './utils'
@@ -47,6 +48,7 @@ const TreeLayout: FC<TreeProps> = ({
   border: propsBorder,
   children,
   className,
+  current,
   density: propsDensity,
   detail: propsDetail,
   disabled,
@@ -68,11 +70,12 @@ const TreeLayout: FC<TreeProps> = ({
   const detailRef = useRef<HTMLDivElement>(null)
   const [hovered, setHovered] = useState(false)
 
+  const { color: listColor } = useContext(ListItemContext)
   const treeContext = useContext(TreeContext)
   const hasBorder = undefinedCoalesce([propsBorder, treeContext.border])
 
   if (keyColor) propsColor = 'key'
-  const color = undefinedCoalesce([propsColor, treeContext.color])
+  const color = undefinedCoalesce([propsColor, treeContext.color, listColor])
 
   const hasLabelBackgroundOnly = undefinedCoalesce([
     propsLabelBackgroundOnly,
@@ -149,6 +152,8 @@ const TreeLayout: FC<TreeProps> = ({
   const innerAccordion = (
     <Accordion
       renderAsLi
+      aria-current={current}
+      aria-selected={selected}
       content={
         <List
           density={density}
@@ -189,6 +194,7 @@ const TreeLayout: FC<TreeProps> = ({
         branchFontWeight={branchFontWeight}
         color={color}
         className={className}
+        current={current}
         depth={depth}
         disabled={disabled}
         dividers={dividers}
@@ -206,4 +212,4 @@ const TreeLayout: FC<TreeProps> = ({
   )
 }
 
-export const Tree = styled(TreeLayout)<TreeProps>``
+export const Tree = styled(TreeLayout)``

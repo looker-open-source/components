@@ -82,4 +82,4 @@ const TreeItemLayout: FC<TreeItemProps> = ({
   )
 }
 
-export const TreeItem = styled(TreeItemLayout)<TreeItemProps>``
+export const TreeItem = styled(TreeItemLayout)``

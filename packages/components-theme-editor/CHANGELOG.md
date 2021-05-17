@@ -3,28 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [1.2.0-alpha.2](https://github.com/looker-open-source/components/compare/v1.2.0-alpha.1...v1.2.0-alpha.2) (2021-04-28)
+# [1.2.0](https://github.com/looker-open-source/components/compare/v1.2.0...v1.1.3) (2021-05-17)
 
 **Note:** Version bump only for package @looker/components-theme-editor
 
-
-
-
-
-# [1.2.0-alpha.1](https://github.com/looker-open-source/components/compare/v1.2.0-alpha.0...v1.2.0-alpha.1) (2021-04-26)
-
-**Note:** Version bump only for package @looker/components-theme-editor
-
-
-
-
-
-# [1.2.0-alpha.0](https://github.com/looker-open-source/components/compare/v1.1.3...v1.2.0-alpha.0) (2021-04-26)
-
-
-### Features
-
-* CSS Reset now uses a "defensive" rather than "offensive" strategy (no more GlobalStyles) ([#2120](https://github.com/looker-open-source/components/issues/2120)) ([266e2f2](https://github.com/looker-open-source/components/commit/266e2f25c3396eee5a5b2d2be234c7ccad608811))
 
 
 

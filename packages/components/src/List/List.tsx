@@ -160,6 +160,7 @@ export const ListInternal = forwardRef(
         <ListStyle
           role={role || 'list'}
           height={height}
+          windowing={windowing}
           {...props}
           {...navProps}
         >
@@ -181,7 +182,7 @@ const ListStyle = styled.ul
 
   list-style: none;
   margin: 0;
-  overflow: auto;
+  ${({ windowing }) => windowing !== 'none' && 'overflow: auto;'}
   padding: 0;
 `
 

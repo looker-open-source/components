@@ -122,4 +122,13 @@ describe('Drawer', () => {
       screen.getByText('The Constitution of the United States')
     )
   })
+  test('renderProps form', async () => {
+    renderWithTheme(
+      <Drawer defaultOpen width="rail" content={<SimpleContent />}></Drawer>
+    )
+    expect(screen.getByText('Drawer content')).toHaveStyleRule(
+      'width',
+      '3.5rem'
+    )
+  })
 })

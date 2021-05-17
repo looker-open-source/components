@@ -78,6 +78,13 @@ export interface UsePanelProps {
   direction?: PanelDirection
 
   /**
+   * IconButton in PanelHeader will have toggled and background color
+   * based on theme's key color
+   * @default 'false'
+   */
+  iconToggle?: boolean
+
+  /**
    * Dialog will be displayed immediately when rendered.
    * @default undefined
    */
