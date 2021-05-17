@@ -25,11 +25,15 @@
  */
 
 import styled from 'styled-components'
-import { variant, ResponsiveValue } from 'styled-system'
+import { variant, ResponsiveValue, system } from 'styled-system'
 import { SurfaceBase, surfaceTransition } from '../Dialog/SurfaceBase'
-import { DialogSizeRamp, dialogWidth } from '../Dialog/dialogWidth'
+import { DialogSizeRamp, dialogSizes } from '../Dialog/dialogWidth'
+import { AsideSizeRamp, asideSizes } from '../Layout/Semantics/asideWidth'
 
 export type DrawerPlacements = 'left' | 'right'
+export type DialogDrawerWidth = ResponsiveValue<
+  DialogSizeRamp | AsideSizeRamp | string
+>
 
 export interface DrawerSurfaceProps {
   /**
@@ -43,7 +47,7 @@ export interface DrawerSurfaceProps {
    * the specified width or the viewport width.
    * @default 'medium'
    */
-  width?: ResponsiveValue<DialogSizeRamp | string>
+  width?: DialogDrawerWidth
 }
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
@@ -62,6 +66,20 @@ const placement = variant({
 })
 /* eslint-enable sort-keys-fix/sort-keys-fix */
 
+const drawerWidth = () => {
+  const drawerSizes = {
+    ...asideSizes,
+    ...dialogSizes,
+  }
+  return system({
+    width: {
+      defaultScale: drawerSizes,
+      property: 'width',
+      scale: 'drawerSizes',
+    },
+  })
+}
+
 export const DrawerSurface = styled(SurfaceBase).attrs<DrawerSurfaceProps>(
   ({ placement = 'right', width = 'small' }) => ({
     placement,
@@ -74,7 +92,7 @@ export const DrawerSurface = styled(SurfaceBase).attrs<DrawerSurfaceProps>(
   transition: transform ${surfaceTransition}, opacity ${surfaceTransition};
 
   ${placement}
-  ${dialogWidth}
+  ${drawerWidth}
 
   &.entering,
   &.exiting {
