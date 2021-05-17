@@ -169,6 +169,7 @@ import {
   VisuallyHidden,
   i18nResources,
 } from '@looker/components'
+
 import {
   Calendar,
   DateFormat,
@@ -182,7 +183,7 @@ import {
   InputTime,
   InputTimeSelect,
   TimeFormat,
-} from '@looker/components-date'
+} from '@looker/components/src/date'
 
 import { DialogSurface } from '@looker/components/src/Dialog/DialogSurface'
 

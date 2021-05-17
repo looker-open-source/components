@@ -23,14 +23,31 @@
  SOFTWARE.
 
  */
+import React, { FC } from 'react'
+import { LocaleUtils } from 'react-day-picker'
+import { Heading } from '../Text'
+import { headingSizeMap } from './CalendarNav'
+import { CalendarSize } from './calendar-size'
 
-export { Box } from './Box'
-export type { BoxProps } from './Box'
-export { Flex } from './Flex'
-export type { FlexProps } from './Flex'
-export { FlexItem } from './FlexItem'
-export type { FlexItemProps } from './FlexItem'
+interface NavbarElementDisabledProps {
+  localeUtils: LocaleUtils
+  month: Date
+  size?: CalendarSize
+}
+export const CalendarNavDisabled: FC<NavbarElementDisabledProps> = ({
+  localeUtils,
+  month,
+  size,
+}) => (
+  <Heading
+    as={headingSizeMap(size)}
+    fontWeight="semiBold"
+    fontFamily="body"
+    textAlign="center"
+    py="xsmall"
+  >
+    {localeUtils.formatMonthTitle(month)}
+  </Heading>
+)
 
-export * from './Grid'
-export * from './Semantics'
-export * from './Space'
+CalendarNavDisabled.displayName = 'CalendarNavDisabled'

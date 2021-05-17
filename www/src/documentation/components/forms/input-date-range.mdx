@@ -1,0 +1,176 @@
+---
+title: InputDateRange
+github: Form/Inputs/InputDateRange/InputDateRange.tsx
+storybook: true
+---
+
+`InputDateRange` provides an interface to select to a date range, either through the calendar interface or text input boxes.
+
+## Value
+
+`InputDateRange` can receive a value from an outside source and will update accordingly.
+
+```jsx
+;() => {
+  const [value, setValue] = useState()
+  const handleButtonClick = () => {
+    setValue({ from: new Date('Feb 1, 2020'), to: new Date('Feb 29, 2020') })
+  }
+  const handleChange = (dateRange) => {
+    setValue(dateRange)
+  }
+  return (
+    <>
+      <Box mb="medium">
+        <Button onClick={handleButtonClick}>Select February 2020</Button>
+      </Box>
+      <InputDateRange value={value} onChange={handleChange} />
+    </>
+  )
+}
+```
+
+## Default Value
+
+`InputDateRange` can be initialized with a default selected date range, for use in uncontrolled form.
+
+```jsx
+<InputDateRange
+  defaultValue={{
+    from: new Date('June 3, 2019'),
+    to: new Date('June 8, 2019'),
+  }}
+/>
+```
+
+## Change Event
+
+`InputDateRange` accepts a single event callback: `onChange`. The handler will receive a date range object.
+
+```jsx
+;() => {
+  const [selectedDate, setSelectedDate] = useState({
+    from: new Date(),
+    to: new Date(),
+  })
+  const handleChange = (dateRange) => {
+    setSelectedDate(dateRange)
+  }
+  return (
+    <>
+      <Box mb="medium" pb="small" borderBottom="1px solid #ccc">
+        <Heading>Selected:</Heading>{' '}
+        <Text color="secondary">
+          <DateFormat>{selectedDate.from}</DateFormat> &mdash;
+          <DateFormat>{selectedDate.to}</DateFormat>
+        </Text>
+      </Box>
+      <InputDateRange onChange={handleChange} defaultValue={selectedDate} />
+    </>
+  )
+}
+```
+
+## onValidationFail
+
+`InputDateRange` has built-in validation to verify that users enter a valid date string when manually typing into the provided textarea. If you wish to hook into this validation, you can pass an `onValidationFail` callback which will fire on blur if the text value does not match expected localized format.
+
+```jsx
+;() => {
+  const [isValid, setIsValid] = useState(true)
+  const handleChange = () => setIsValid(true)
+  const handleValidationFail = () => setIsValid(false)
+
+  const message = isValid ? 'Valid Input' : 'Invalid Input'
+  const color = isValid ? undefined : 'critical'
+
+  return (
+    <SpaceVertical>
+      <Text color="secondary">
+        INSTRUCTIONS: Try typing an invalid date string (ex: 'not/a/valid/date')
+        and clicking or tabbing away to trigger blur event.
+      </Text>
+      <Heading>Result:</Heading>
+      <Text color={color}>{message}</Text>
+      <Divider />
+      <InputDateRange
+        onChange={handleChange}
+        onValidationFail={handleValidationFail}
+      />
+    </SpaceVertical>
+  )
+}
+```
+
+## I18n
+
+`InputDateRange` acccepts two different props for use in localizing calendar output. The first is `dateStringLocale` accepts a country code and is used to format the rendered date string in the input box (i.e. `06/04/2020`). The second is `localization`, which is used to translate the calendar format and naming.
+
+### dateStringLocale
+
+```jsx
+<FieldDateRange
+  dateStringLocale="ko"
+  label="Korea (YYYY.MM.DD)"
+  value={{ from: new Date('June 2, 2020'), to: new Date('June 9, 2020') }}
+/>
+```
+
+### localization
+
+The `localization` prop can be used to provide translation strings for the names of the months, the days of the week, and what day the week starts on (usually `0` or `1`).
+
+```jsx
+;() => {
+  const months = [
+    'Gennaio',
+    'Febbraio',
+    'Marzo',
+    'Aprile',
+    'Maggio',
+    'Giugno',
+    'Luglio',
+    'Agosto',
+    'Settembre',
+    'Ottobre',
+    'Novembre',
+    'Dicembre',
+  ]
+  const weekdaysShort = ['Do', 'Lu', 'Ma', 'Me', 'Gi', 'Ve', 'Sa']
+  const firstDayOfWeek = 1 // monday
+  const localizationProps = { months, weekdaysShort, firstDayOfWeek }
+  return (
+    <InputDateRange localization={localizationProps} dateStringLocale="it" />
+  )
+}
+```
+
+## Composing InputDateRange in a Popover
+
+A common UI pattern is to combine `InputDateRange` with [Popover](/components/overlays/popover), [Button](/components/actions/button), and [DateFormat](/components/content/date-time-format). This enables the full calendar functionality without having to take up so much space on the page.
+
+```jsx
+;() => {
+  const [selectedDateRange, setSelectedDateRange] = useState({
+    from: new Date(),
+    to: new Date(),
+  })
+  return (
+    <Popover
+      content={
+        <Box p="small">
+          <InputDateRange
+            defaultValue={selectedDateRange}
+            onChange={setSelectedDateRange}
+          />
+        </Box>
+      }
+    >
+      <Button>
+        <DateFormat>{selectedDateRange.from}</DateFormat> &mdash;
+        <DateFormat>{selectedDateRange.to}</DateFormat>
+      </Button>
+    </Popover>
+  )
+}
+```
