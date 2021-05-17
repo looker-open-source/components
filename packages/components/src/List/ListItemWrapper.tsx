@@ -83,14 +83,6 @@ export const ListItemWrapper = styled(ListItemWrapperInternal)
   outline: none;
   text-decoration: none;
 
-  ${({ focusVisible, theme }) =>
-    focusVisible &&
-    `
-      &:focus-within > * {
-        box-shadow: inset 0 0 0 2px ${theme.colors.keyFocus};
-      }
-    `}
-
   ${ListItemIconPlacement} {
     align-self: ${({ description }) => (description ? 'flex-start' : 'center')};
 
