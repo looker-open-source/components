@@ -29,7 +29,7 @@
     "lodash": "^4.17.20",
     "prism-react-renderer": "^1.1.1",
     "react": "^16.14.0",
-    "react-copy-to-clipboard": "^5.0.2",
+    "react-copy-to-clipboard": "^5.0.3",
     "react-dom": "^16.14.0",
     "react-helmet": "^6.1.0",
     "react-is": "^16.13.1",
