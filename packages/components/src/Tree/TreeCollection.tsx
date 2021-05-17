@@ -38,7 +38,7 @@ const TreeCollectionLayout: FC<TreeCollectionProps> = ({
   children,
   className,
 }) => {
-  const ref = useRef<HTMLElement>(null)
+  const ref = useRef<HTMLUListElement>(null)
 
   // Additional key shortcuts
   const handleKeyDown = (event: KeyboardEvent<HTMLElement>) => {
@@ -52,7 +52,7 @@ const TreeCollectionLayout: FC<TreeCollectionProps> = ({
     }
   }
 
-  const navProps = useArrowKeyNav({
+  const navProps = useArrowKeyNav<HTMLUListElement>({
     axis: 'both',
     getNextFocus: getNextTreeFocus,
     onKeyDown: handleKeyDown,
