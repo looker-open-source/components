@@ -69,6 +69,12 @@ Open.args = {
   defaultOpen: true,
 }
 
+export const IconToggle = Template.bind({})
+IconToggle.args = {
+  ...Open.args,
+  iconToggle: true,
+}
+
 export const DirectionRight = Template.bind({})
 DirectionRight.args = {
   ...Basic.args,
