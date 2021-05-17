@@ -25,7 +25,7 @@
  */
 
 import React, { ReactNode, FC, useState } from 'react'
-import { DrawerPlacements, DrawerWidth } from '../Drawer/DrawerSurface'
+import { DrawerPlacements, DialogDrawerWidth } from '../Drawer/DrawerSurface'
 import { Portal } from '../Portal'
 import {
   useAnimationState,
@@ -99,7 +99,7 @@ export interface UseDialogProps extends UseDialogBaseProps, DialogSurfaceProps {
 export interface UseDialogPropsInternal
   extends Omit<UseDialogProps, 'placement' | 'width'> {
   placement?: DialogPlacements | DrawerPlacements
-  width?: DialogWidth | DrawerWidth
+  width?: DialogWidth | DialogDrawerWidth
 }
 
 export interface UseDialogResponseDom {

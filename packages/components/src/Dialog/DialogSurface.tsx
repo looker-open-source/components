@@ -28,7 +28,7 @@ import styled, { css } from 'styled-components'
 import { height, ResponsiveValue } from 'styled-system'
 import { theme } from '@looker/design-tokens'
 import { SurfaceBase, surfaceTransition } from '../Dialog/SurfaceBase'
-import { DrawerWidth } from '../Drawer/DrawerSurface'
+import { DialogDrawerWidth } from '../Drawer/DrawerSurface'
 import { dialogWidth } from './dialogWidth'
 
 export type DialogPlacementCenter = 'center'
@@ -64,7 +64,7 @@ export interface DialogSurfaceProps {
    * Explicitly specifying a width will set the Surface to be the lesser of
    * the specified width or the viewport width.
    */
-  width?: DrawerWidth
+  width?: DialogDrawerWidth
 
   /**
    * Explicitly specifying a height will set the Surface to be the

@@ -31,7 +31,7 @@ import { DialogSizeRamp, dialogSizes } from '../Dialog/dialogWidth'
 import { AsideSizeRamp, asideSizes } from '../Layout/Semantics/asideWidth'
 
 export type DrawerPlacements = 'left' | 'right'
-export type DrawerWidth = ResponsiveValue<
+export type DialogDrawerWidth = ResponsiveValue<
   DialogSizeRamp | AsideSizeRamp | string
 >
 
@@ -47,7 +47,7 @@ export interface DrawerSurfaceProps {
    * the specified width or the viewport width.
    * @default 'medium'
    */
-  width?: DrawerWidth
+  width?: DialogDrawerWidth
 }
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
