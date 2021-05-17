@@ -26,8 +26,10 @@
 
 import React, { useState } from 'react'
 import { Home } from '@styled-icons/material-outlined/Home'
-import { DateRange } from '@styled-icons/material-outlined/DateRange'
+import { Info } from '@styled-icons/material-outlined/Info'
 import { ListItem } from '../List/ListItem'
+import { ProgressCircular } from '../ProgressCircular'
+import { Tree, TreeItem } from '../Tree'
 import { NavList } from './NavList'
 
 export default {
@@ -35,7 +37,7 @@ export default {
   title: 'NavList',
 }
 
-export const NavListExample = () => {
+export const Basic = () => {
   const [selected, setSelected] = useState(false)
   const handleClick = () => {
     setSelected(!selected)
@@ -43,16 +45,50 @@ export const NavListExample = () => {
   return (
     <NavList>
       <ListItem
-        description="Orange-y"
-        detail="Netherlands"
+        description="Description"
+        detail="Interesting details"
         icon={<Home />}
         selected
       >
         Explore
       </ListItem>
-      <ListItem icon={<DateRange />} onClick={handleClick} selected={selected}>
+      <ListItem icon={<Info />} onClick={handleClick} selected={selected}>
         Develop
       </ListItem>
     </NavList>
   )
 }
+
+export const MixedNavigation = () => (
+  <NavList>
+    <ListItem icon={<Home />} selected>
+      Home
+    </ListItem>
+    <ListItem icon={<Home />}>Not really home</ListItem>
+    <Tree icon={<Info />} label="Tree" selected isOpen>
+      <TreeItem icon={<Info />}>Meh</TreeItem>
+      <TreeItem
+        description="description"
+        detail="detail"
+        icon={<Info />}
+        selected
+      >
+        My Awesome Item
+      </TreeItem>
+      <Tree
+        forceLabelPadding
+        branchFontWeight
+        defaultOpen
+        label="Blah"
+        icon={<Info />}
+      >
+        <TreeItem color="text2">
+          <em>Not yet available</em>
+        </TreeItem>
+        <TreeItem icon={<ProgressCircular size="xsmall" progress={0.75} />}>
+          Loading...
+        </TreeItem>
+      </Tree>
+    </Tree>
+  </NavList>
+)
