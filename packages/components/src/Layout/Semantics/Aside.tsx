@@ -92,6 +92,7 @@ export const InnerAside = styled.aside
     css`
       border-bottom: 1px solid ${theme.colors.ui2};
       border-top: 1px solid ${theme.colors.ui2};
-      box-shadow: inset 0 -4px 4px -4px ${theme.colors.ui2};
+      box-shadow: 0 -4px 4px -4px ${theme.colors.ui2},
+        inset 0 -4px 4px -4px ${theme.colors.ui2};
     `}
 `
