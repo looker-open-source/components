@@ -24,30 +24,10 @@
 
  */
 
+import { getFallbackElement } from '../../utils/getNextFocus'
+
 export const getTreeItems = (ref: HTMLElement): HTMLElement[] =>
   Array.from(ref.querySelectorAll('[role="treeitem"]:not(:disabled)'))
-
-// Returns a fallback element (called when the element with focus has been removed from the DOM)
-const getFallbackElement = (
-  direction: 1 | -1,
-  containerElement: HTMLElement,
-  tabStops: HTMLElement[]
-) => {
-  let fallback
-
-  if (direction === 1) {
-    const firstVisibleChild = tabStops.find((childElement) => {
-      return childElement.offsetTop >= containerElement.scrollTop
-    })
-
-    if (firstVisibleChild) fallback = firstVisibleChild
-    else fallback = tabStops[0]
-  } else {
-    fallback = tabStops[tabStops.length - 1]
-  }
-
-  return fallback
-}
 
 /**
  * Returns the next focusable inside an element in a given direction

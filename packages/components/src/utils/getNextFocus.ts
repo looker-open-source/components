@@ -32,7 +32,7 @@ export const getTabStops = (ref: HTMLElement): HTMLElement[] =>
   )
 
 // Returns a fallback element (called when the element with focus has been removed from the DOM)
-const getFallbackElement = (
+export const getFallbackElement = (
   direction: 1 | -1,
   containerElement: HTMLElement,
   tabStops: HTMLElement[]

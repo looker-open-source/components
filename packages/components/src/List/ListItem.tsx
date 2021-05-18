@@ -338,7 +338,6 @@ const ListItemInternal = forwardRef(
           color={listItemLabelColor(color, disabled)}
           description={description}
           disabled={disabled}
-          focusVisible={focusVisible}
           onBlur={handleWrapperBlur}
           onClick={handleOnClickWhitespace}
           onFocus={handleWrapperFocus}

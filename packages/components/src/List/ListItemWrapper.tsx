@@ -37,7 +37,6 @@ export interface ListItemWrapperProps
     ListItemDimensions {
   color: ListColor
   description?: ReactNode // Should be eventually deleted because the CSS could be handled in layout pieces
-  focusVisible?: boolean
   renderAsDiv?: boolean
 }
 
@@ -50,15 +49,9 @@ const ListItemWrapperInternal = forwardRef(
 
     return (
       <Component
-        {...omit(
-          restProps,
-          'color',
-          'current',
-          'focusVisible',
-          'hovered',
-          'selected',
-          [...listItemDimensionKeys]
-        )}
+        {...omit(restProps, 'color', 'current', 'hovered', 'selected', [
+          ...listItemDimensionKeys,
+        ])}
         ref={ref as Ref<any>}
         role="none"
       />
