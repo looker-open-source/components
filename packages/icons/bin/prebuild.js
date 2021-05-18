@@ -23,16 +23,18 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
 
- */
+*/
 
 /**
  * NOTE: This script is heavily inspired by:
  * https://github.com/styled-icons/styled-icons/blob/main/tools/builder/generate-icon-package.js
  */
 
+/* eslint-disable @typescript-eslint/no-var-requires */
+
+const path = require('path')
 const fg = require('fast-glob')
 const fs = require('fs-extra')
-const path = require('path')
 const h2x = require('./h2x')
 
 const getLicense = () =>

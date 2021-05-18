@@ -22,7 +22,8 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
 
- */
+*/
+
 import React, { Children, FC, ReactNode } from 'react'
 import isRegExp from 'lodash/isRegExp'
 import escapeRegExp from 'lodash/escapeRegExp'

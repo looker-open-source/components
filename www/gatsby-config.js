@@ -22,9 +22,9 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
 
- */
+*/
 
-/* eslint-disable sort-keys-fix/sort-keys-fix,@typescript-eslint/camelcase */
+/* eslint-disable sort-keys-fix/sort-keys-fix */
 
 module.exports = {
   pathPrefix: 'components/VERSION',
@@ -45,13 +45,13 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `documentation`,
-        path: `${__dirname}/src/documentation`,
+        path: path.join(__dirname, '/src/documentation'),
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/src/documentation`,
+        path: path.join(__dirname, '/src/documentation'),
       },
     },
     {

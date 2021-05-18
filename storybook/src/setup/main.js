@@ -22,7 +22,7 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
 
- */
+*/
 
 /* eslint-disable @typescript-eslint/no-var-requires */
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')

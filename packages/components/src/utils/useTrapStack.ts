@@ -22,7 +22,7 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
 
- */
+*/
 
 import { TrapStackContextProps } from '@looker/components-providers'
 import { Context, Ref, useContext, useEffect } from 'react'

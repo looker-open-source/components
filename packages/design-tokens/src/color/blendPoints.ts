@@ -22,7 +22,7 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
 
- */
+*/
 
 export type TextColorLevels = 0 | 1 | 2 | 3 | 4 | 5
 export const textBlends = [45, 65, 78, 88, 95, 99]

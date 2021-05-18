@@ -22,7 +22,8 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
 
- */
+*/
+
 import React, { FC } from 'react'
 import { theme as builtIn, Theme } from '@looker/design-tokens'
 import { ThemeProvider as ActualThemeProvider } from 'styled-components'

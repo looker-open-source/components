@@ -22,7 +22,7 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
 
- */
+*/
 
 import xor from 'lodash/xor'
 import React, { forwardRef, MouseEvent, Ref } from 'react'

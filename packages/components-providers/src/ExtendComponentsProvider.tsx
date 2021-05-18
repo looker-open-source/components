@@ -22,7 +22,7 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
 
- */
+*/
 
 import { generateTheme, ThemeCustomizations } from '@looker/design-tokens'
 import { ThemeContext, ThemeProvider } from 'styled-components'

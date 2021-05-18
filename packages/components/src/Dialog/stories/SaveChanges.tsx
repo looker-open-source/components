@@ -22,7 +22,7 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
 
- */
+*/
 
 import React, { FormEvent, useState } from 'react'
 import { useConfirm, Dialog, DialogLayout } from '..'

@@ -21,7 +21,8 @@
     "prebuild": "./bin/prebuild.js"
   },
   "dependencies": {
-    "@styled-icons/styled-icon": "^10.6.3"
+    "@styled-icons/styled-icon": "^10.6.3",
+    "h2x-types": "^1.1.0"
   },
   "devDependencies": {
     "fast-glob": "^3.2.5",

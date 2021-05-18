@@ -22,7 +22,7 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
 
- */
+*/
 
 // We don't want to track the active descendant with indexes because nothing is
 // more annoying in a select than having it change values RIGHT AS YOU HIT

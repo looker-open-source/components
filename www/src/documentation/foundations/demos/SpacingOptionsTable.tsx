@@ -22,7 +22,7 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
 
- */
+*/
 
 import React from 'react'
 import {
@@ -68,7 +68,7 @@ const TableLabel = (label: string, key: number) => {
 
 const SpacingRow = (px: string, rem: string, key: number, label: string) => {
   const divStyle = {
-    background: '#FD5AC9',
+    background: '#fd5ac9',
     height: `${px}px`,
     opacity: 0.5,
     width: `${px}px`,

@@ -22,7 +22,7 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
 
- */
+*/
 
 import { Flex, Spinner } from '@looker/components'
 import { height, HeightProps, omitStyledProps } from '@looker/design-tokens'

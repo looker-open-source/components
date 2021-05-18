@@ -22,7 +22,7 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
 
- */
+*/
 
 import { DefaultTheme, InterpolationValue } from 'styled-components'
 import { Colors, colors } from '../color'

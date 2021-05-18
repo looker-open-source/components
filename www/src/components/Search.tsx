@@ -22,7 +22,7 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
 
- */
+*/
 
 import { trackCustomEvent } from 'gatsby-plugin-google-analytics'
 import startCase from 'lodash/startCase'

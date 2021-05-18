@@ -22,7 +22,7 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
 
- */
+*/
 
 import path from 'path'
 import { axeTest, imageSnapshot } from '@storybook/addon-storyshots-puppeteer'

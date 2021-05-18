@@ -22,7 +22,7 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
 
- */
+*/
 
 import React, { FC, ReactNode, isValidElement, cloneElement } from 'react'
 import { UseDialogResponse, UseDialogResponseDom } from './useDialog'

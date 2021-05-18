@@ -22,7 +22,8 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
 
- */
+*/
+
 import { Story } from '@storybook/react/types-6-0'
 import { Page } from 'puppeteer'
 import React, { useEffect, useState, FormEvent } from 'react'

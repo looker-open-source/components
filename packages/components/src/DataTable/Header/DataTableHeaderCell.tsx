@@ -22,7 +22,8 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
 
- */
+*/
+
 import React, { useContext, forwardRef, Ref } from 'react'
 import styled from 'styled-components'
 import { ExpandLess } from '@styled-icons/material-rounded/ExpandLess'

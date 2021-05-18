@@ -22,7 +22,8 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
 
- */
+*/
+
 import React, { useState } from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import { ButtonToggle } from '../../../Button'

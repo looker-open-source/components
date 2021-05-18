@@ -22,7 +22,7 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
 
- */
+*/
 
 import { Reducer, useCallback, useEffect, useReducer } from 'react'
 import { undefinedCoalesce } from './undefinedCoalesce'

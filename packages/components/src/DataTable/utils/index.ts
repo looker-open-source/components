@@ -22,7 +22,7 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
 
- */
+*/
 
 export { doDataTableSort } from './sort_utils'
 export type { DataTableDatum, DataTableData } from './sort_utils'

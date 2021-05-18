@@ -22,7 +22,8 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
 
- */
+*/
+
 import React, { FC, useState, useCallback } from 'react'
 import styled from 'styled-components'
 import { width as widthHelper, WidthProps } from 'styled-system'

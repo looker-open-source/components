@@ -22,7 +22,7 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
 
- */
+*/
 
 import { Icon, IconButton, Tooltip } from '@looker/components'
 import { Assignment } from '@styled-icons/material/Assignment'

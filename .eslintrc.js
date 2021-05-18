@@ -22,7 +22,7 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
 
- */
+*/
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const ignoreProps = require('./config/i18nIgnoredProps.js')

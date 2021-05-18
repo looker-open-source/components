@@ -22,7 +22,8 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
 
- */
+*/
+
 import { useEffect, useRef } from 'react'
 
 // render a console warning if developers pass in a value without a change listener

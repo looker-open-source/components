@@ -22,7 +22,8 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
 
- */
+*/
+
 import { TrapMap } from './types'
 
 export const getActiveTrap = <O extends unknown = unknown>(

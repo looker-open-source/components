@@ -22,7 +22,7 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
 
- */
+*/
 
 import { useHotkeys } from 'react-hotkeys-hook'
 import type { HotkeysEvent } from 'hotkeys-js'

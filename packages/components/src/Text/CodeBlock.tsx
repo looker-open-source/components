@@ -22,7 +22,7 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
 
- */
+*/
 
 import { border, BorderProps } from '@looker/design-tokens'
 import React, { FC, ReactNode } from 'react'
