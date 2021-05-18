@@ -104,6 +104,7 @@ export const FieldItem: FC<FieldItemProps> = ({
         options: {
           accessory: true,
           hoverDisclosure: !isFieldMenuOpen,
+          padding: false,
         },
       }}
       onKeyDown={(event) => {
