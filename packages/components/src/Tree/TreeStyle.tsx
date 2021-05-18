@@ -173,7 +173,7 @@ export const TreeStyle = styled(TreeStyleLayout)`
       }
 
       /**
-        Disables AccordionDisclosure's inherent box-shadow
+        Disables AccordionDisclosure's innate box-shadow
        */
       > ${AccordionDisclosureStyle} {
         box-shadow: none;
