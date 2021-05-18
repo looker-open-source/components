@@ -4,7 +4,6 @@
   "version": "1.2.0",
   "devDependencies": {
     "@looker/components": "^1.2.0",
-    "@looker/components-date": "^1.2.0-alpha.2",
     "@looker/components-theme-editor": "^1.2.0",
     "@looker/design-tokens": "^1.2.0",
     "@looker/icons": "^1.2.0",

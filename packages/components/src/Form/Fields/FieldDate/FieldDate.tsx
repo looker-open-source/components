@@ -24,13 +24,38 @@
 
  */
 
-export { Box } from './Box'
-export type { BoxProps } from './Box'
-export { Flex } from './Flex'
-export type { FlexProps } from './Flex'
-export { FlexItem } from './FlexItem'
-export type { FlexItemProps } from './FlexItem'
+import React, { forwardRef, Ref } from 'react'
+import styled from 'styled-components'
+import { useID } from '../../../utils'
+import { useFormContext } from '../../Form'
+import { InputDate, InputDateProps } from '../../Inputs/InputDate'
+import { Field, FieldProps, omitFieldProps, pickFieldProps } from '../Field'
 
-export * from './Grid'
-export * from './Semantics'
-export * from './Space'
+export interface FieldDateProps extends FieldProps, InputDateProps {}
+
+const FieldDateComponent = forwardRef(
+  (props: FieldDateProps, ref: Ref<HTMLInputElement>) => {
+    const validationMessage = useFormContext(props)
+    const id = useID(props.id)
+    return (
+      <Field
+        {...pickFieldProps(props)}
+        id={id}
+        validationMessage={validationMessage}
+      >
+        <InputDate
+          {...omitFieldProps(props)}
+          aria-describedby={`describedby-${id}`}
+          aria-labelledby={`labelledby-${id}`}
+          id={id}
+          validationType={validationMessage && validationMessage.type}
+          ref={ref}
+        />
+      </Field>
+    )
+  }
+)
+
+FieldDateComponent.displayName = 'FieldDateComponent'
+
+export const FieldDate = styled(FieldDateComponent)``
