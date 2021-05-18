@@ -115,7 +115,9 @@ const AccordionDisclosureInternal: FC<AccordionDisclosureProps> = forwardRef(
     return (
       <AccordionDisclosureStyle
         as={renderAsLi ? 'li' : 'div'}
-        className={className}
+        className={`${
+          clickableProps.focusVisible ? 'focusVisible ' : ''
+        }${className}`}
         aria-controls={accordionContentId}
         aria-expanded={isOpen}
         id={accordionDisclosureId}

@@ -34,7 +34,7 @@ import React, {
   useState,
 } from 'react'
 import { Accordion } from '../Accordion'
-import { undefinedCoalesce, useFocusVisible, useWrapEvent } from '../utils'
+import { undefinedCoalesce, useWrapEvent } from '../utils'
 import { List } from '../List'
 import { ListItemContext } from '../List/ListItemContext'
 import { listItemDimensions, getDetailOptions } from '../List/utils'
@@ -60,7 +60,7 @@ const TreeLayout: FC<TreeProps> = ({
   label: propsLabel,
   labelBackgroundOnly: propsLabelBackgroundOnly,
   onBlur,
-  onKeyUp,
+  onFocus,
   onMouseEnter,
   onMouseLeave,
   selected,
@@ -72,7 +72,6 @@ const TreeLayout: FC<TreeProps> = ({
 
   const { color: listColor } = useContext(ListItemContext)
   const treeContext = useContext(TreeContext)
-  const focusVisibleProps = useFocusVisible({ onBlur, onKeyUp })
 
   const hasBorder = undefinedCoalesce([propsBorder, treeContext.border])
 
@@ -113,14 +112,8 @@ const TreeLayout: FC<TreeProps> = ({
 
   const handleMouseEnter = useWrapEvent(() => setHovered(true), onMouseEnter)
   const handleMouseLeave = useWrapEvent(() => setHovered(false), onMouseLeave)
-  const handleBlur = useWrapEvent((e) => {
-    setHovered(false)
-    focusVisibleProps.onBlur(e)
-  }, onBlur)
-  const handleKeyUp = useWrapEvent((e) => {
-    setHovered(true)
-    focusVisibleProps.onKeyUp(e)
-  }, onKeyUp)
+  const handleBlur = useWrapEvent(() => setHovered(false), onBlur)
+  const handleFocus = useWrapEvent(() => setHovered(true), onFocus)
 
   const detail = {
     content: (
@@ -175,7 +168,7 @@ const TreeLayout: FC<TreeProps> = ({
       color={indicatorColor}
       role="treeitem"
       onBlur={handleBlur}
-      onKeyUp={handleKeyUp}
+      onFocus={handleFocus}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       py="none"
@@ -201,11 +194,6 @@ const TreeLayout: FC<TreeProps> = ({
         border={hasBorder}
         branchFontWeight={branchFontWeight}
         color={color}
-        className={
-          focusVisibleProps.focusVisible
-            ? `focusVisible ${className}`
-            : className
-        }
         current={current}
         depth={depth}
         disabled={disabled}
