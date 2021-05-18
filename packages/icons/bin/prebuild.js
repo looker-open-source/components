@@ -62,7 +62,6 @@ const license = `/*
  SOFTWARE.
 
 */
-
 `
 const getTemplate = () =>
   new Promise((resolve, reject) =>
