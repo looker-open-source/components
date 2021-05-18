@@ -389,58 +389,78 @@ AsideWidthSizeRail.args = {
   width: 'rail',
 }
 
-export const AsideCollapse = () => {
+export const AsideCollapseShadow = () => {
   const { value, toggle } = useToggle(false)
 
   return (
-    <Layout hasAside>
-      <Aside p="small" collapse={!value}>
-        Aside
-      </Aside>
-      <Section p="small">
-        <FieldToggleSwitch label="Show Aside" onChange={toggle} on={value} />
-      </Section>
-    </Layout>
+    <Highlighter>
+      <Page fixed>
+        <Header height="4rem" px="large">
+          Page Header
+        </Header>
+        <Layout hasAside>
+          <Aside collapse={!value} scrollWithin width="20rem">
+            <Header height="4rem" px="large">
+              Alternate Aside Header
+            </Header>
+            {menuItems}
+            {menuItems}
+            {menuItems}
+            {menuItems}
+            {menuItems}
+            {menuItems}
+            <Footer height="8rem" px="large">
+              Alternate Aside Footer
+            </Footer>
+          </Aside>
+          <Section scrollWithin p="xxlarge">
+            <Heading>Section title</Heading>
+            <FieldToggleSwitch
+              label="Show Aside"
+              onChange={toggle}
+              on={value}
+            />
+            {longContent}
+            {longContent}
+            {longContent}
+          </Section>
+        </Layout>
+        <Footer height="3rem" px="large">
+          Page Footer
+        </Footer>
+      </Page>
+    </Highlighter>
   )
 }
 
-AsideCollapse.parameters = {
+AsideCollapseShadow.parameters = {
   storyshots: {
     disable: true,
   },
 }
 
 export const FooterHeaderShadow = () => (
-  <Highlighter>
-    <Page fixed>
-      <Header height="4rem" px="large">
-        Page Header
-      </Header>
-      <Layout hasAside>
-        <AsideAlt scrollWithin width="20rem">
-          <Header height="4rem" px="large">
-            Alternate Aside Header
-          </Header>
-          {menuItems}
-          {menuItems}
-          {menuItems}
-          {menuItems}
-          {menuItems}
-          {menuItems}
-          <Footer height="8rem" px="large">
-            Alternate Aside Footer
-          </Footer>
-        </AsideAlt>
-        <Section scrollWithin p="xxlarge">
-          <Heading>Section title</Heading>
-          {longContent}
-          {longContent}
-          {longContent}
-        </Section>
-      </Layout>
-      <Footer height="3rem" px="large">
-        Page Footer
-      </Footer>
-    </Page>
-  </Highlighter>
+  <Page fixed>
+    <Header height="4rem" px="large">
+      Page Header
+    </Header>
+    <Layout hasAside>
+      <Aside scrollWithin width="20rem">
+        {menuItems}
+        {menuItems}
+        {menuItems}
+        {menuItems}
+        {menuItems}
+        {menuItems}
+      </Aside>
+      <Section scrollWithin p="xxlarge">
+        {longContent}
+        {longContent}
+        {longContent}
+      </Section>
+    </Layout>
+    <Footer height="3rem" px="large">
+      Page Footer
+    </Footer>
+  </Page>
 )

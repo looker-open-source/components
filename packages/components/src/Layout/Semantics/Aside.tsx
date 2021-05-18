@@ -24,20 +24,16 @@
 
  */
 
-import React, { FC, useRef, useState, useEffect } from 'react'
+import React, { FC, useRef } from 'react'
 import { shouldForwardProp } from '@looker/design-tokens'
 import styled, { css } from 'styled-components'
 import { ResponsiveValue } from 'styled-system'
-import { useResize } from '../../utils'
+import { useOverflow } from '../../utils'
 import { AsideSizeRamp, asideWidth } from './asideWidth'
 import { SemanticLayoutBase, semanticLayoutCSS } from './semanticStyledBase'
 import { borderHelper, SemanticBorderProps } from './semanticBorderHelper'
-import { useOverflow, InnerUseOverflowProps } from './useOverflow'
 
-export interface AsideProps
-  extends InnerUseOverflowProps,
-    SemanticLayoutBase,
-    SemanticBorderProps {
+export interface AsideProps extends SemanticLayoutBase, SemanticBorderProps {
   /**
    * Prevent `Aside` from being rendered.
    * @default false
@@ -59,29 +55,8 @@ export interface AsideProps
 
 export const Aside: FC<AsideProps> = ({ collapse, children, ...props }) => {
   const internalRef = useRef<HTMLDivElement>(null)
-  const hasOverflow = useOverflow({
-    internalRef: internalRef.current,
-    offsetHeight: internalRef.current && internalRef.current.offsetHeight,
-    scrollHeight: internalRef.current && internalRef.current.scrollHeight,
-  })
-  console.log('Aside: ', hasOverflow)
-  // const [hasOverflow, setHasOverflow] = useState(false)
-  // const [height, setHeight] = useState(0)
+  const hasOverflow = useOverflow(internalRef)
 
-  // const handleResize = () => {
-  //   if (internalRef.current) {
-  //     setHeight(internalRef.current.offsetHeight)
-  //   }
-  // }
-
-  // useResize(internalRef.current, handleResize)
-
-  // useEffect(() => {
-  //   const container = internalRef.current
-  //   if (container) {
-  //     setHasOverflow(container.offsetHeight < container.scrollHeight)
-  //   }
-  // }, [height])
   return collapse ? null : (
     <InnerAside hasOverflow={hasOverflow} ref={internalRef} {...props}>
       {children}
@@ -89,17 +64,17 @@ export const Aside: FC<AsideProps> = ({ collapse, children, ...props }) => {
   )
 }
 
-// interface InnerAsideProps extends AsideProps {
-//   hasOverflow: boolean
-// }
+interface InnerAsideProps extends AsideProps {
+  hasOverflow: boolean
+}
 
 export const InnerAside = styled.aside
-  .withConfig({
+  .withConfig<AsideProps>({
     shouldForwardProp: (prop) => prop === 'collapse' || shouldForwardProp(prop),
   })
   .attrs<AsideProps>(({ width = 'sidebar' }) => ({
     width,
-  }))<AsideProps>`
+  }))<InnerAsideProps>`
   ${semanticLayoutCSS}
 
   flex: 0 0 ${({ width }) => width};

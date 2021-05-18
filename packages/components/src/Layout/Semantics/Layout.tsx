@@ -24,16 +24,14 @@
 
  */
 
-import React, { FC, useRef, useState, useEffect } from 'react'
+import React, { FC, useRef } from 'react'
 import { CompatibleHTMLProps, shouldForwardProp } from '@looker/design-tokens'
 import styled, { css } from 'styled-components'
 import { simpleLayoutCSS, SimpleLayoutProps } from '../utils/simple'
-import { useResize } from '../../utils'
-import { useOverflow, InnerUseOverflowProps } from './useOverflow'
+import { useOverflow } from '../../utils'
 
 export interface LayoutProps
-  extends InnerUseOverflowProps,
-    SimpleLayoutProps,
+  extends SimpleLayoutProps,
     CompatibleHTMLProps<HTMLElement> {
   /**
    * fixed position for header and footer
@@ -60,29 +58,7 @@ export const Layout: FC<LayoutProps> = ({
   ...props
 }) => {
   const internalRef = useRef<HTMLDivElement>(null)
-  const hasOverflow = useOverflow({
-    internalRef: internalRef.current,
-    offsetHeight: internalRef.current && internalRef.current.offsetHeight,
-    scrollHeight: internalRef.current && internalRef.current.scrollHeight,
-  })
-  console.log('Layout: ', hasOverflow)
-  // const [hasOverflow, setHasOverflow] = useState(false)
-  // const [height, setHeight] = useState(0)
-
-  // const handleResize = () => {
-  //   if (internalRef.current) {
-  //     setHeight(internalRef.current.offsetHeight)
-  //   }
-  // }
-
-  // useResize(internalRef.current, handleResize)
-
-  // useEffect(() => {
-  //   const container = internalRef.current
-  //   if (container) {
-  //     setHasOverflow(container.offsetHeight < container.scrollHeight)
-  //   }
-  // }, [height])
+  const hasOverflow = useOverflow(internalRef)
 
   return (
     <InnerLayout
@@ -97,13 +73,13 @@ export const Layout: FC<LayoutProps> = ({
   )
 }
 
-// interface InnerLayoutProps extends LayoutProps {
-//   hasOverflow: boolean
-// }
+interface InnerLayoutProps extends LayoutProps {
+  hasOverflow: boolean
+}
 
 const InnerLayout = styled.div.withConfig({
   shouldForwardProp,
-})<LayoutProps>`
+})<InnerLayoutProps>`
   ${simpleLayoutCSS}
   display: flex;
   flex: 1 1 auto;

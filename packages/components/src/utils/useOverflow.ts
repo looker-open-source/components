@@ -23,38 +23,28 @@
  SOFTWARE.
 
  */
-import { useState, useEffect } from 'react'
-import { useResize } from '../../utils'
 
-interface UseOverflowProps {
-  internalRef: HTMLDivElement | null
-  offsetHeight: number | null
-  scrollHeight: number | null
-}
+import { useEffect, useState, RefObject } from 'react'
+import { useResize } from './useResize'
 
-export interface InnerUseOverflowProps {
-  hasOverflow: boolean
-}
-
-export const useOverflow = ({
-  internalRef,
-  offsetHeight,
-  scrollHeight,
-}: UseOverflowProps) => {
+export const useOverflow = (ref: RefObject<HTMLElement | null>) => {
   const [hasOverflow, setHasOverflow] = useState(false)
   const [height, setHeight] = useState(0)
 
   const handleResize = () => {
-    if (offsetHeight) {
-      setHeight(offsetHeight)
+    if (ref.current) {
+      setHeight(ref.current.offsetHeight)
     }
   }
-  useResize(internalRef, handleResize)
+
+  useResize(ref.current, handleResize)
 
   useEffect(() => {
-    if (offsetHeight && scrollHeight) {
-      setHasOverflow(offsetHeight < scrollHeight)
+    const container = ref.current
+    if (container) {
+      setHasOverflow(container.offsetHeight < container.scrollHeight)
     }
-  }, [height, offsetHeight, scrollHeight])
+  }, [height, ref])
+
   return hasOverflow
 }

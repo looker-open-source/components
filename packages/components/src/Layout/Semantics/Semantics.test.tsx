@@ -31,6 +31,30 @@ import { renderWithTheme } from '@looker/components-test-utils'
 import { Aside } from './Aside'
 import { Footer, Header, Layout, Page, Section } from './'
 
+const content = (
+  <>
+    <p>
+      I'm baby man braid cold-pressed seitan sartorial, tumblr ennui selfies
+      chia twee subway tile af 90's celiac. Gochujang distillery tumeric flannel
+      lumbersexual gastropub fashion axe viral neutra. Pickled narwhal everyday
+      carry activated charcoal succulents occupy YOLO yuccie forage seitan
+      kitsch. Celiac bespoke cloud bread asymmetrical bicycle rights XOXO
+      cold-pressed hashtag listicle hell of migas. Chillwave brooklyn fam occupy
+      microdosing leggings. Poke af cornhole hot chicken. Portland tattooed +1
+      chia ennui.
+    </p>
+    <p>
+      Neutra franzen cardigan, semiotics tousled gochujang green juice activated
+      charcoal succulents flannel ramps palo santo. Kale chips williamsburg
+      hexagon, etsy cray 8-bit cornhole tilde neutra DIY snackwave whatever food
+      truck marfa fashion axe. Polaroid master cleanse twee DIY tbh pop-up
+      biodiesel austin hell of scenester woke man bun 3 wolf moon. Venmo
+      coloring book beard adaptogen four loko locavore wolf street art +1
+      kombucha marfa 90's unicorn everyday carry.
+    </p>
+  </>
+)
+
 describe('Semantics', () => {
   test('has Header and Footer scrolling with the page', () => {
     renderWithTheme(
@@ -39,29 +63,7 @@ describe('Semantics', () => {
           I'm the header
         </Header>
         <Layout hasAside>
-          <Section p="xxlarge" as="main">
-            <p>
-              I'm baby man braid cold-pressed seitan sartorial, tumblr ennui
-              selfies chia twee subway tile af 90's celiac. Gochujang distillery
-              tumeric flannel lumbersexual gastropub fashion axe viral neutra.
-              Pickled narwhal everyday carry activated charcoal succulents
-              occupy YOLO yuccie forage seitan kitsch. Celiac bespoke cloud
-              bread asymmetrical bicycle rights XOXO cold-pressed hashtag
-              listicle hell of migas. Chillwave brooklyn fam occupy microdosing
-              leggings. Poke af cornhole hot chicken. Portland tattooed +1 chia
-              ennui.
-            </p>
-            <p>
-              Neutra franzen cardigan, semiotics tousled gochujang green juice
-              activated charcoal succulents flannel ramps palo santo. Kale chips
-              williamsburg hexagon, etsy cray 8-bit cornhole tilde neutra DIY
-              snackwave whatever food truck marfa fashion axe. Polaroid master
-              cleanse twee DIY tbh pop-up biodiesel austin hell of scenester
-              woke man bun 3 wolf moon. Venmo coloring book beard adaptogen four
-              loko locavore wolf street art +1 kombucha marfa 90's unicorn
-              everyday carry.
-            </p>
-          </Section>
+          <Section p="xxlarge">{content}</Section>
         </Layout>
       </Page>
     )
@@ -78,29 +80,7 @@ describe('Semantics', () => {
           I'm the header
         </Header>
         <Layout hasAside>
-          <Section p="xxlarge" as="main">
-            <p>
-              I'm baby man braid cold-pressed seitan sartorial, tumblr ennui
-              selfies chia twee subway tile af 90's celiac. Gochujang distillery
-              tumeric flannel lumbersexual gastropub fashion axe viral neutra.
-              Pickled narwhal everyday carry activated charcoal succulents
-              occupy YOLO yuccie forage seitan kitsch. Celiac bespoke cloud
-              bread asymmetrical bicycle rights XOXO cold-pressed hashtag
-              listicle hell of migas. Chillwave brooklyn fam occupy microdosing
-              leggings. Poke af cornhole hot chicken. Portland tattooed +1 chia
-              ennui.
-            </p>
-            <p>
-              Neutra franzen cardigan, semiotics tousled gochujang green juice
-              activated charcoal succulents flannel ramps palo santo. Kale chips
-              williamsburg hexagon, etsy cray 8-bit cornhole tilde neutra DIY
-              snackwave whatever food truck marfa fashion axe. Polaroid master
-              cleanse twee DIY tbh pop-up biodiesel austin hell of scenester
-              woke man bun 3 wolf moon. Venmo coloring book beard adaptogen four
-              loko locavore wolf street art +1 kombucha marfa 90's unicorn
-              everyday carry.
-            </p>
-          </Section>
+          <Section p="xxlarge">{content}</Section>
         </Layout>
       </Page>
     )
@@ -166,21 +146,28 @@ describe('Semantics', () => {
   test('using prop shadow will display shadow-box on Footer and Header', () => {
     renderWithTheme(
       <Page fixed>
-        <Header shadow height="4rem" px="large">
+        <Header height="4rem" px="large">
           Page Header
         </Header>
-        <Footer shadow height="3rem" px="large">
+        <Layout hasAside>
+          Content...
+          <Aside scrollWithin width="20rem">
+            {content}
+            {content}
+          </Aside>
+          <Section scrollWithin p="xxlarge">
+            {content}
+            {content}
+            {content}
+          </Section>
+        </Layout>
+        <Footer height="3rem" px="large">
           Page Footer
         </Footer>
       </Page>
     )
-    expect(screen.getByText('Page Header')).toHaveStyle({
-      'box-shadow': '0px 1px 8px rgba(0,0,0,0.08),0px 1px 1px rgba(0,0,0,0.05)',
-      position: 'relative',
-    })
-    expect(screen.getByText('Page Footer')).toHaveStyle({
-      'box-shadow': '0px 1px 8px rgba(0,0,0,0.08),0px 1px 1px rgba(0,0,0,0.05)',
-      position: 'relative',
-    })
+    expect(screen.getByText('Content...')).toHaveStyleRule(
+      'box-shadow: inset 0 -4px 4px -4px #dee1e5;'
+    )
   })
 })
