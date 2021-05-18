@@ -76,7 +76,7 @@ export const TableLayout: FC<TableProps> = (props) => {
     </InterimState>
   )
 
-  const navProps = useArrowKeyNav({
+  const navProps = useArrowKeyNav<HTMLTableElement>({
     axis: 'both',
     getNextFocus: getNextFocus,
   })

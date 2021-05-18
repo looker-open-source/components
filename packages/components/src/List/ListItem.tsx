@@ -32,6 +32,8 @@ import React, {
   ReactNode,
   Ref,
   useContext,
+  useEffect,
+  useRef,
   useState,
 } from 'react'
 import { ListItemDetail } from '../List/ListItemDetail'
@@ -44,6 +46,8 @@ import {
   undefinedCoalesce,
   useFocusVisible,
   useWrapEvent,
+  getNextFocusTarget,
+  useForkedRef,
 } from '../utils'
 import { ListItemContext } from './ListItemContext'
 import { ListItemLabel } from './ListItemLabel'
@@ -103,8 +107,9 @@ export type ListItemProps = CompatibleHTMLProps<HTMLElement> &
      * - Use **'link'** for items that navigation to another page
      * - Use **'button'** for items that trigger in page interactions, like displaying a dialog
      * - Use **'none'** when including buttons as children in the label container (i.e. the label container will be a <div>).
-     *     NOTE: Height when using an item with a description and role='none' does not auto abide the @looker/components
+     *     - Height when using an item with a description and role='none' does not auto abide the @looker/components
      *     density scale. Use 'button' or 'link' whenever possible to avoid space inconsistencies.
+     *     - If supporting keyboard navigation, make sure to add key handlers to items
      * @default 'button'
      */
     itemRole?: ListItemRole
@@ -117,6 +122,12 @@ export type ListItemProps = CompatibleHTMLProps<HTMLElement> &
      * @private May only be passed via TreeItem. This feature may be removed without a breaking change. We STRONGLY discourage the direct use of this property.
      */
     onClickWhitespace?: (event: React.MouseEvent<HTMLElement>) => void
+    /**
+     * Determines the type of the rendered ListItemWrapper
+     * @default false
+     * @private Should only be passed when ListItem is wrapped by another component like Tree. This feature may be removed without a breaking change. We STRONGLY discourage the direct use of this property.
+     */
+    renderAsDiv?: boolean
   }
 
 const ListItemInternal = forwardRef(
@@ -138,17 +149,20 @@ const ListItemInternal = forwardRef(
       onBlur,
       onClick,
       onClickWhitespace,
+      onKeyDown,
       onKeyUp,
       onMouseEnter,
       onMouseLeave,
       rel,
+      renderAsDiv = false,
       role,
       selected,
+      tabIndex = -1,
       target,
       truncate,
       ...restProps
     }: ListItemProps,
-    ref: Ref<HTMLLIElement>
+    ref: Ref<HTMLLIElement | HTMLDivElement>
   ) => {
     const {
       density: contextDensity,
@@ -174,15 +188,6 @@ const ListItemInternal = forwardRef(
         onClick(event)
       }
     }
-
-    const handleOnMouseEnter = useWrapEvent(
-      () => setHovered(true),
-      onMouseEnter
-    )
-    const handleOnMouseLeave = useWrapEvent(
-      () => setHovered(false),
-      onMouseLeave
-    )
 
     if (disabled && itemRole === 'link') {
       // eslint-disable-next-line no-console
@@ -222,6 +227,20 @@ const ListItemInternal = forwardRef(
 
     const { accessory, content, hoverDisclosure } = getDetailOptions(detail)
 
+    const wrapperRef = useRef<HTMLLIElement | HTMLDivElement>(null)
+    const actualRef = useForkedRef(wrapperRef, ref)
+    useEffect(() => {
+      const focusableElements = wrapperRef?.current?.querySelectorAll(
+        'a, button, input'
+      )
+
+      if (focusableElements) {
+        focusableElements.forEach((activeElement) => {
+          activeElement.setAttribute('tabIndex', '-1')
+        })
+      }
+    })
+
     const renderedDetail = detail && (
       <HoverDisclosure visible={!hoverDisclosure}>
         <ListItemDetail pr={accessory ? itemDimensions.px : '0'}>
@@ -247,13 +266,15 @@ const ListItemInternal = forwardRef(
         aria-current={current}
         aria-selected={selected}
         className={className}
+        focusVisible={focusVisible}
         height={itemDimensions.height}
         href={href}
         onClick={disabled ? undefined : handleOnClick}
+        onKeyDown={onKeyDown}
         rel={createSafeRel(rel, target)}
         role={role || 'listitem'}
         target={target}
-        tabIndex={-1}
+        tabIndex={tabIndex}
         {...focusVisibleHandlers}
         {...statefulProps}
       >
@@ -284,6 +305,32 @@ const ListItemInternal = forwardRef(
         onClickWhitespace && onClickWhitespace(event)
       }
     }
+
+    const handleWrapperFocus = () => {
+      setHovered(true)
+    }
+
+    const handleWrapperBlur = (event: React.FocusEvent<HTMLElement>) => {
+      const nextFocusTarget = getNextFocusTarget(event)
+
+      if (
+        nextFocusTarget &&
+        !event.currentTarget.contains(nextFocusTarget as Node)
+      ) {
+        setHovered(false)
+      }
+    }
+
+    const handleWrapperMouseEnter = useWrapEvent(
+      () => setHovered(true),
+      onMouseEnter
+    )
+
+    const handleWrapperMouseLeave = useWrapEvent(
+      () => setHovered(false),
+      onMouseLeave
+    )
+
     return (
       <HoverDisclosureContext.Provider value={{ visible: hovered }}>
         <ListItemWrapper
@@ -291,11 +338,13 @@ const ListItemInternal = forwardRef(
           color={listItemLabelColor(color, disabled)}
           description={description}
           disabled={disabled}
-          focusVisible={focusVisible}
+          onBlur={handleWrapperBlur}
           onClick={handleOnClickWhitespace}
-          onMouseEnter={handleOnMouseEnter}
-          onMouseLeave={handleOnMouseLeave}
-          ref={ref}
+          onFocus={handleWrapperFocus}
+          onMouseEnter={handleWrapperMouseEnter}
+          onMouseLeave={handleWrapperMouseLeave}
+          ref={actualRef}
+          renderAsDiv={renderAsDiv}
           {...itemDimensions}
           {...restProps}
         >

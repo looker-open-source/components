@@ -36,7 +36,7 @@ import { ListItemIconPlacement } from '../List/ListItemLayout'
 import { FlexibleColor, ListItemStatefulProps } from '../List/types'
 import { listItemBackgroundColor } from '../List/utils'
 import { List, ListItem } from '../List'
-import { listItemLabelCSS } from '../List/ListItemLabel'
+import { ListItemLabel, listItemLabelCSS } from '../List/ListItemLabel'
 import { IconSize, IconType } from '../Icon'
 import { AccordionIndicator } from '../Accordion/AccordionDisclosureLayout'
 import { TreeItem } from './TreeItem'
@@ -69,6 +69,10 @@ export const TreeItemInner = styled(TreeItem)`
     background-color: transparent;
     padding-left: 0;
   `)}
+
+  > ${ListItemLabel}:focus {
+    box-shadow: none;
+  }
 `
 
 export const TreeItemInnerDetail = styled.div``
@@ -133,10 +137,6 @@ const treeItemIndent = ({
   return labelBackgroundOnly ? wrapperIndent : labelIndent
 }
 
-/**
- * @todo refactor `div` to `li`
- * Complex because nested ListItem is also an `li` breaking HTML nesting rules
- **/
 const TreeStyleLayout: FC<TreeStyleProps> = ({ className, children }) => (
   <div className={className}>{children}</div>
 )
@@ -157,6 +157,20 @@ export const TreeStyle = styled(TreeStyleLayout)`
   }
 
   > ${Accordion} {
+    /**
+        Gets the box-shadow to sit above the ListItem background
+       */
+    > ${AccordionDisclosureStyle}.focusVisible::after {
+      bottom: 0;
+      box-shadow: inset 0 0 0 2px ${({ theme }) => theme.colors.keyFocus};
+      content: '';
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: 1;
+    }
+
     > ${AccordionContent} {
       ${({ border, depth, theme }) =>
         border && generateTreeBorder(depth, indicatorContainerSize, theme)}
@@ -179,6 +193,10 @@ export const TreeStyle = styled(TreeStyleLayout)`
         !labelBackgroundOnly && listItemBackgroundColor(restProps)}
 
       background-clip: padding-box;
+      /**
+          Disables AccordionDisclosure's innate box-shadow
+         */
+      box-shadow: none;
       /**
         Tree's padding-right is handled by the internal item
        */

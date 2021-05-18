@@ -59,6 +59,12 @@ export type ListProps = ListColorProps &
     density?: DensityRamp
 
     /**
+     * Disables the nested List's keyboard nav capabilities
+     * @private
+     */
+    disableKeyboardNav?: boolean
+
+    /**
      * If true, all ListItem children without an icon will reserve space for an icon
      * for alignment purposes.
      */
@@ -93,6 +99,7 @@ export const ListInternal = forwardRef(
       color,
       density = 0,
       disabled,
+      disableKeyboardNav,
       height,
       iconGutter = false,
       keyColor,
@@ -135,6 +142,7 @@ export const ListInternal = forwardRef(
     })
 
     const navProps = useArrowKeyNav({
+      disabled: disableKeyboardNav,
       onBlur,
       onFocus,
       onKeyDown,
@@ -150,7 +158,6 @@ export const ListInternal = forwardRef(
     return (
       <ListItemContext.Provider value={context}>
         <ListStyle
-          tabIndex={-1}
           role={role || 'list'}
           height={height}
           windowing={windowing}

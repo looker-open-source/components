@@ -27,6 +27,7 @@
 import { CompatibleHTMLProps, shouldForwardProp } from '@looker/design-tokens'
 import React, { FC } from 'react'
 import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import { FocusVisibleProps } from '../utils'
 import { FlexibleColor, ListItemRole, ListItemStatefulProps } from './types'
 import { listItemBackgroundColor } from './utils'
 
@@ -73,7 +74,8 @@ const ListItemLabelLayout: FC<ListItemLabelProps> = ({
 
 type ListItemLabelProps = CompatibleHTMLProps<HTMLElement> &
   ListItemStatefulProps &
-  FlexibleColor & {
+  FlexibleColor &
+  FocusVisibleProps & {
     disabled?: boolean
     height?: number
     itemRole?: ListItemRole
@@ -84,6 +86,11 @@ export const ListItemLabel = styled(ListItemLabelLayout).withConfig({
 })`
   ${({ height, itemRole }) => itemRole === 'none' && `min-height: ${height}px;`}
   ${listItemBackgroundColor}
+
+  &:focus {
+    ${({ focusVisible, theme }) =>
+      focusVisible && `box-shadow: inset 0 0 0 2px ${theme.colors.keyFocus};`}
+  }
 
   align-items: center;
   border: none;
