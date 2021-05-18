@@ -156,32 +156,21 @@ export const TreeStyle = styled(TreeStyleLayout)`
       `)}
   }
 
-  &.focusVisible {
-    > ${Accordion} {
-      /**
+  > ${Accordion} {
+    /**
         Gets the box-shadow to sit above the ListItem background
        */
-      > ${AccordionDisclosureStyle}::after {
-        bottom: 0;
-        box-shadow: inset 0 0 0 2px ${({ theme }) => theme.colors.keyFocus};
-        content: '';
-        left: 0;
-        position: absolute;
-        right: 0;
-        top: 0;
-        z-index: 1;
-      }
-
-      /**
-        Disables AccordionDisclosure's innate box-shadow
-       */
-      > ${AccordionDisclosureStyle} {
-        box-shadow: none;
-      }
+    > ${AccordionDisclosureStyle}.focusVisible::after {
+      bottom: 0;
+      box-shadow: inset 0 0 0 2px ${({ theme }) => theme.colors.keyFocus};
+      content: '';
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: 1;
     }
-  }
 
-  > ${Accordion} {
     > ${AccordionContent} {
       ${({ border, depth, theme }) =>
         border && generateTreeBorder(depth, indicatorContainerSize, theme)}
@@ -204,6 +193,10 @@ export const TreeStyle = styled(TreeStyleLayout)`
         !labelBackgroundOnly && listItemBackgroundColor(restProps)}
 
       background-clip: padding-box;
+      /**
+          Disables AccordionDisclosure's innate box-shadow
+         */
+      box-shadow: none;
       /**
         Tree's padding-right is handled by the internal item
        */
