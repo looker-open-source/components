@@ -62,7 +62,9 @@ const fields = (
     </BorderRadiusOverrideTree>
     <FieldItem>City</FieldItem>
     <FieldItem selected filter>
-      This is a real long Field name that was country before
+      This is a really long field name to show that truncation is working as
+      desired. It's not a realistic example but it lets our tests know that
+      things are working as-desired
     </FieldItem>
     <FieldItem>ID</FieldItem>
     <TreeBranch>
