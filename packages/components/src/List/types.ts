@@ -164,6 +164,10 @@ interface DetailOptions {
    */
   accessory?: boolean
   /**
+   * If true, the innate left and and right padding on the detial container will be disabled
+   */
+  disablePadding?: boolean
+  /**
    * If true, the detail will only appear on hover
    * @default false
    */

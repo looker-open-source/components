@@ -97,6 +97,7 @@ const PickerItem: FC<{ color?: string; truncate?: boolean }> = ({
         content: detailContent,
         options: {
           accessory: true,
+          disablePadding: true,
           hoverDisclosure: !overlay,
         },
       }}
@@ -114,7 +115,7 @@ const PickerItem: FC<{ color?: string; truncate?: boolean }> = ({
       }}
       truncate={truncate}
     >
-      <Flex alignItems="center" px="xxsmall">
+      <Flex alignItems="center" pl="xxsmall">
         <Flex
           alignItems="center"
           flex={1}
@@ -160,7 +161,7 @@ const fields = (
         fontWeight="semiBold"
         pt="xsmall"
         pb="xxsmall"
-        px="xxsmall"
+        pl="xxsmall"
         truncate={true}
       >
         DIMENSIONS
@@ -168,7 +169,7 @@ const fields = (
     </TreeBranch>
     <BorderRadiusOverrideTree
       branchFontWeight
-      label={<Box px="xxsmall">Created</Box>}
+      label={<Box pl="xxsmall">Created</Box>}
     >
       <PickerItem>Created Date</PickerItem>
       <PickerItem>Created Month</PickerItem>
@@ -184,7 +185,7 @@ const fields = (
         fontWeight="semiBold"
         pt="xsmall"
         pb="xxsmall"
-        px="xxsmall"
+        pl="xxsmall"
         truncate={true}
       >
         MEASURES
@@ -201,21 +202,21 @@ export const FieldPicker = () => (
       density={-3}
       defaultOpen={true}
       detail={3}
-      label={<Box px="xxsmall">Orders</Box>}
+      label={<Box pl="xxsmall">Orders</Box>}
       labelBackgroundOnly
     >
       {fields}
     </BorderRadiusOverrideTree>
     <BorderRadiusOverrideTree
       density={-3}
-      label={<Box px="xxsmall">Order Items</Box>}
+      label={<Box pl="xxsmall">Order Items</Box>}
       labelBackgroundOnly
     >
       {fields}
     </BorderRadiusOverrideTree>
     <BorderRadiusOverrideTree
       density={-3}
-      label={<Box px="xxsmall">Users</Box>}
+      label={<Box pl="xxsmall">Users</Box>}
       labelBackgroundOnly
     >
       {fields}
