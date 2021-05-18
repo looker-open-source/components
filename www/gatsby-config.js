@@ -24,7 +24,9 @@
 
 */
 
-/* eslint-disable sort-keys-fix/sort-keys-fix */
+/* eslint-disable sort-keys-fix/sort-keys-fix, @typescript-eslint/no-var-requires */
+
+const path = require('path')
 
 module.exports = {
   pathPrefix: 'components/VERSION',
