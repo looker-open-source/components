@@ -29,9 +29,12 @@ import { shouldForwardProp } from '@looker/design-tokens'
 import styled, { css } from 'styled-components'
 import { useResize } from '../../utils'
 import { SemanticLayoutBase, semanticLayoutCSS } from './semanticStyledBase'
+import { useOverflow, InnerUseOverflowProps } from './useOverflow'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface SectionProps extends SemanticLayoutBase {
+export interface SectionProps
+  extends InnerUseOverflowProps,
+    SemanticLayoutBase {
   /**
    * To be used within the context of <Page fixed> container.
    * When true, this removes the inner overflow-y scrolling
@@ -43,23 +46,29 @@ export interface SectionProps extends SemanticLayoutBase {
 
 export const Section: FC<SectionProps> = ({ children, ...props }) => {
   const internalRef = useRef<HTMLDivElement>(null)
-  const [hasOverflow, setHasOverflow] = useState(false)
-  const [height, setHeight] = useState(0)
+  const hasOverflow = useOverflow({
+    internalRef: internalRef.current,
+    offsetHeight: internalRef.current && internalRef.current.offsetHeight,
+    scrollHeight: internalRef.current && internalRef.current.scrollHeight,
+  })
+  console.log('Section: ', hasOverflow)
+  // const [hasOverflow, setHasOverflow] = useState(false)
+  // const [height, setHeight] = useState(0)
 
-  const handleResize = () => {
-    if (internalRef.current) {
-      setHeight(internalRef.current.offsetHeight)
-    }
-  }
+  // const handleResize = () => {
+  //   if (internalRef.current) {
+  //     setHeight(internalRef.current.offsetHeight)
+  //   }
+  // }
 
-  useResize(internalRef.current, handleResize)
+  // useResize(internalRef.current, handleResize)
 
-  useEffect(() => {
-    const container = internalRef.current
-    if (container) {
-      setHasOverflow(container.offsetHeight < container.scrollHeight)
-    }
-  }, [height])
+  // useEffect(() => {
+  //   const container = internalRef.current
+  //   if (container) {
+  //     setHasOverflow(container.offsetHeight < container.scrollHeight)
+  //   }
+  // }, [height])
   return (
     <InnerSection hasOverflow={hasOverflow} ref={internalRef} {...props}>
       {children}
@@ -67,9 +76,9 @@ export const Section: FC<SectionProps> = ({ children, ...props }) => {
   )
 }
 
-interface InnerSectionProps extends SectionProps {
-  hasOverflow: boolean
-}
+// interface InnerSectionProps extends SectionProps {
+//   hasOverflow: boolean
+// }
 
 export const sectionCSS = css`
   ${semanticLayoutCSS}
@@ -78,7 +87,7 @@ export const sectionCSS = css`
 
 const InnerSection = styled.main.withConfig({
   shouldForwardProp,
-})<InnerSectionProps>`
+})<SectionProps>`
   ${sectionCSS}
   overflow: auto;
   ${({ scrollWithin }) => scrollWithin && 'height: fit-content;'}
