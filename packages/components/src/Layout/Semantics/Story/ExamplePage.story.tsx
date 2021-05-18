@@ -91,7 +91,7 @@ const Template: Story<LayoutProps> = (args) => (
         <Aside p="large" width="200px">
           Aside
         </Aside>
-        <Section p="xxlarge" as="main">
+        <Section p="xxlarge">
           <Heading>Page title</Heading>
           <Tabs>
             <TabList distribute>
@@ -153,7 +153,7 @@ const Template2: Story<LayoutProps> = (args) => (
           {menuItems}
         </Aside>
         <Layout>
-          <Section p="xxlarge" as="main">
+          <Section p="xxlarge">
             <Heading>Section title</Heading>
             {longContent}
           </Section>
@@ -188,7 +188,7 @@ const Highlighter = styled.div`
     background-color: lightcoral;
   }
 
-  ${Aside} {
+  aside {
     background-color: lightsalmon;
   }
 
@@ -196,7 +196,7 @@ const Highlighter = styled.div`
     background-color: lightskyblue;
   }
 
-  ${Section} {
+  main {
     background-color: lightgoldenrodyellow;
   }
 `
@@ -228,7 +228,7 @@ export const ScrollIndependently = () => (
           Chillwave brooklyn fam occupy microdosing leggings. Poke af cornhole
           hot chicken. Portland tattooed +1 chia ennui.
         </Aside>
-        <Section p="xxlarge" as="main">
+        <Section p="xxlarge">
           <Heading>Page title</Heading>
           <Tabs>
             <TabList distribute>
@@ -279,7 +279,7 @@ export const ScrollSelectedAreas = () => (
           hot chicken. Portland tattooed +1 chia ennui.
         </Aside>
         <Layout hasAside>
-          <Section scrollWithin p="xxlarge" as="main">
+          <Section scrollWithin p="xxlarge">
             <Heading>Page title</Heading>
             <Tabs>
               <TabList distribute>
@@ -330,7 +330,7 @@ export const ScrollAllAreasTogetherDefault = () => (
           Chillwave brooklyn fam occupy microdosing leggings. Poke af cornhole
           hot chicken. Portland tattooed +1 chia ennui.
         </Aside>
-        <Section p="xxlarge" as="main">
+        <Section p="xxlarge">
           <Heading>Page title</Heading>
           <Tabs>
             <TabList distribute>
@@ -417,34 +417,26 @@ export const FooterHeaderShadow = () => (
         Page Header
       </Header>
       <Layout hasAside>
-        <Aside>
-          <Header height="4rem" px="large">
-            Aside Header
-          </Header>
-          <Section>
-            {menuItems}
-            {menuItems}
-          </Section>
-        </Aside>
-        <Layout>
-          <Section p="xxlarge" as="main">
-            <Heading>Section title</Heading>
-            {longContent}
-          </Section>
-          <Footer height="3rem" px="large">
-            Section Footer
-          </Footer>
-        </Layout>
-        <AsideAlt width="20rem">
+        <AsideAlt scrollWithin width="20rem">
           <Header height="4rem" px="large">
             Alternate Aside Header
           </Header>
           {menuItems}
           {menuItems}
-          <Footer height="3rem" px="large">
+          {menuItems}
+          {menuItems}
+          {menuItems}
+          {menuItems}
+          <Footer height="8rem" px="large">
             Alternate Aside Footer
           </Footer>
         </AsideAlt>
+        <Section scrollWithin p="xxlarge">
+          <Heading>Section title</Heading>
+          {longContent}
+          {longContent}
+          {longContent}
+        </Section>
       </Layout>
       <Footer height="3rem" px="large">
         Page Footer

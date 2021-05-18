@@ -29,7 +29,6 @@ import { CompatibleHTMLProps, shouldForwardProp } from '@looker/design-tokens'
 import styled, { css } from 'styled-components'
 import { simpleLayoutCSS, SimpleLayoutProps } from '../utils/simple'
 import { useResize } from '../../utils'
-import { Section } from './Section'
 
 export interface LayoutProps
   extends SimpleLayoutProps,
@@ -48,7 +47,7 @@ export interface LayoutProps
 
 const hasAsideCSS = css`
   flex-direction: row;
-  & > ${Section} {
+  & > main {
     width: 0;
   }
 `

@@ -24,10 +24,11 @@
 
  */
 
-import React, { FC } from 'react'
+import React, { FC, useRef, useState, useEffect } from 'react'
 import { shouldForwardProp } from '@looker/design-tokens'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { ResponsiveValue } from 'styled-system'
+import { useResize } from '../../utils'
 import { AsideSizeRamp, asideWidth } from './asideWidth'
 import { SemanticLayoutBase, semanticLayoutCSS } from './semanticStyledBase'
 import { borderHelper, SemanticBorderProps } from './semanticBorderHelper'
@@ -52,16 +53,43 @@ export interface AsideProps extends SemanticLayoutBase, SemanticBorderProps {
   width?: ResponsiveValue<AsideSizeRamp | string>
 }
 
-const AsideLayout: FC<AsideProps> = ({ collapse, ...props }) =>
-  collapse ? null : <aside {...props} />
+export const Aside: FC<AsideProps> = ({ collapse, children, ...props }) => {
+  const internalRef = useRef<HTMLDivElement>(null)
+  const [hasOverflow, setHasOverflow] = useState(false)
+  const [height, setHeight] = useState(0)
 
-export const Aside = styled(AsideLayout)
+  const handleResize = () => {
+    if (internalRef.current) {
+      setHeight(internalRef.current.offsetHeight)
+    }
+  }
+
+  useResize(internalRef.current, handleResize)
+
+  useEffect(() => {
+    const container = internalRef.current
+    if (container) {
+      setHasOverflow(container.offsetHeight < container.scrollHeight)
+    }
+  }, [height])
+  return collapse ? null : (
+    <InnerAside hasOverflow={hasOverflow} ref={internalRef} {...props}>
+      {children}
+    </InnerAside>
+  )
+}
+
+interface InnerAsideProps extends AsideProps {
+  hasOverflow: boolean
+}
+
+export const InnerAside = styled.aside
   .withConfig({
     shouldForwardProp: (prop) => prop === 'collapse' || shouldForwardProp(prop),
   })
   .attrs<AsideProps>(({ width = 'sidebar' }) => ({
     width,
-  }))<AsideProps>`
+  }))<InnerAsideProps>`
   ${semanticLayoutCSS}
 
   flex: 0 0 ${({ width }) => width};
@@ -73,4 +101,12 @@ export const Aside = styled(AsideLayout)
 
   ${borderHelper}
   ${asideWidth}
+
+  ${({ hasOverflow, theme }) =>
+    hasOverflow &&
+    css`
+      border-bottom: 1px solid ${theme.colors.ui2};
+      border-top: 1px solid ${theme.colors.ui2};
+      box-shadow: inset 0 -4px 4px -4px ${theme.colors.ui2};
+    `}
 `
