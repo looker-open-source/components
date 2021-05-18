@@ -156,6 +156,31 @@ export const TreeStyle = styled(TreeStyleLayout)`
       `)}
   }
 
+  &.focusVisible {
+    > ${Accordion} {
+      /**
+        Gets the box-shadow to sit above the ListItem background
+       */
+      > ${AccordionDisclosureStyle}::after {
+        bottom: 0;
+        box-shadow: inset 0 0 0 2px ${({ theme }) => theme.colors.keyFocus};
+        content: '';
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 1;
+      }
+
+      /**
+        Disables AccordionDisclosure's inherent box-shadow
+       */
+      > ${AccordionDisclosureStyle} {
+        box-shadow: none;
+      }
+    }
+  }
+
   > ${Accordion} {
     > ${AccordionContent} {
       ${({ border, depth, theme }) =>
@@ -192,27 +217,6 @@ export const TreeStyle = styled(TreeStyleLayout)`
           indicatorSize: indicatorContainerSize,
           theme,
         })}
-
-      /**
-        Gets the box-shadow to sit above the ListItem background
-       */
-      &:focus::after {
-        bottom: 0;
-        box-shadow: inset 0 0 0 2px ${({ theme }) => theme.colors.keyFocus};
-        content: '';
-        left: 0;
-        position: absolute;
-        right: 0;
-        top: 0;
-        z-index: 1;
-      }
-
-      /**
-        Disables AccordionDisclosure's inherent box-shadow
-       */
-      &:focus-visible {
-        box-shadow: none;
-      }
     }
   }
 
