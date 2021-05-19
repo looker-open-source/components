@@ -193,6 +193,7 @@ const TreeLayout: FC<TreeProps> = ({
       <TreeStyle
         border={hasBorder}
         branchFontWeight={branchFontWeight}
+        className={className}
         color={color}
         current={current}
         depth={depth}

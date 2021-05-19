@@ -168,6 +168,12 @@ interface DetailOptions {
    * @default false
    */
   hoverDisclosure?: boolean
+  /**
+   * Padding is added to the left and and right of the detail container by default. You can
+   * optionally disable that behavior if you want to have fine-grained control.
+   * @default true
+   */
+  padding?: boolean
 }
 
 export type Detail = ReactNode | { content: ReactNode; options: DetailOptions }
