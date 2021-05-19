@@ -54,7 +54,7 @@ const fields = (
     </TreeBranch>
     <BorderRadiusOverrideTree
       branchFontWeight
-      label={<Box px="xxsmall">Created</Box>}
+      label={<Box pl="xxsmall">Created</Box>}
     >
       <FieldItem>Created Date</FieldItem>
       <FieldItem>Created Month</FieldItem>
@@ -91,21 +91,21 @@ export const FieldPicker = () => (
       density={-3}
       defaultOpen={true}
       detail={3}
-      label={<Box px="xxsmall">Orders</Box>}
+      label={<Box pl="xxsmall">Orders</Box>}
       labelBackgroundOnly
     >
       {fields}
     </BorderRadiusOverrideTree>
     <BorderRadiusOverrideTree
       density={-3}
-      label={<Box px="xxsmall">Order Items</Box>}
+      label={<Box pl="xxsmall">Order Items</Box>}
       labelBackgroundOnly
     >
       {fields}
     </BorderRadiusOverrideTree>
     <BorderRadiusOverrideTree
       density={-3}
-      label={<Box px="xxsmall">Users</Box>}
+      label={<Box pl="xxsmall">Users</Box>}
       labelBackgroundOnly
     >
       {fields}
