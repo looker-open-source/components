@@ -51,7 +51,11 @@ export interface ModalHeaderProps
    * Replaces the built-in `IconButton` (generally used for close) with an arbitrary ReactNode
    */
   detail?: ReactNode
-
+  /**
+   * Don't include the "Close" option
+   * @default false
+   */
+  hideClose?: boolean
   /**
    * use to support aria-labelledby
    */
@@ -64,6 +68,7 @@ const ModalHeaderLayout: FC<ModalHeaderProps> = ({
   detail,
   fontSize,
   fontWeight = 'semiBold',
+  hideClose = false,
   id = undefined,
   ...props
 }) => {
@@ -85,16 +90,18 @@ const ModalHeaderLayout: FC<ModalHeaderProps> = ({
       {detail ? (
         <Detail>{detail}</Detail>
       ) : (
-        <Detail>
-          <IconButton
-            id={id ? `${id}-iconButton` : undefined}
-            tabIndex={-1}
-            size="medium"
-            onClick={closeModal}
-            label={t('Close')}
-            icon={<Close />}
-          />
-        </Detail>
+        !hideClose && (
+          <Detail>
+            <IconButton
+              id={id ? `${id}-iconButton` : undefined}
+              tabIndex={-1}
+              size="medium"
+              onClick={closeModal}
+              label={t('Close')}
+              icon={<Close />}
+            />
+          </Detail>
+        )
       )}
     </header>
   )

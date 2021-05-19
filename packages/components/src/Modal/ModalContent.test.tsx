@@ -27,7 +27,7 @@
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { screen } from '@testing-library/react'
-import { DialogContent } from './DialogContent'
+import { ModalContent } from './ModalContent'
 
 const originalScrollHeight = Object.getOwnPropertyDescriptor(
   HTMLElement.prototype,
@@ -57,15 +57,15 @@ afterAll(() => {
 
 describe('DialogContent', () => {
   test('basic', () => {
-    renderWithTheme(<DialogContent>Stuff</DialogContent>)
+    renderWithTheme(<ModalContent>Stuff</ModalContent>)
     expect(screen.getByText('Stuff')).toBeInTheDocument()
   })
 
   test('hasHeader & hasFooter', () => {
     renderWithTheme(
-      <DialogContent hasHeader hasFooter>
+      <ModalContent hasHeader hasFooter>
         Stuff
-      </DialogContent>
+      </ModalContent>
     )
     expect(screen.getByText('Stuff')).toBeInTheDocument()
   })
@@ -80,9 +80,9 @@ describe('DialogContent', () => {
       value: 500,
     })
     renderWithTheme(
-      <DialogContent hasHeader hasFooter>
+      <ModalContent hasHeader hasFooter>
         Stuff
-      </DialogContent>
+      </ModalContent>
     )
 
     expect(
@@ -104,9 +104,9 @@ describe('DialogContent', () => {
     })
 
     renderWithTheme(
-      <DialogContent hasHeader hasFooter>
+      <ModalContent hasHeader hasFooter>
         Stuff
-      </DialogContent>
+      </ModalContent>
     )
 
     expect(

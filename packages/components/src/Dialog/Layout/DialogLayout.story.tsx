@@ -28,17 +28,17 @@ import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import { Constitution, ConstitutionShort } from '../../__mocks__/Constitution'
 import { Box } from '../../Layout'
-import { DialogContent, DialogLayout } from '.'
+import { DialogContent, DialogLayout, DialogHeader } from '.'
 
 export interface DialogLayoutExampleProps {
-  header?: string
   footer?: string
+  header?: string
   length?: 'short' | 'long'
 }
 
 const Template: Story<DialogLayoutExampleProps> = ({
-  header,
   footer,
+  header,
   length,
 }) => (
   <Box bg="ui1">
@@ -58,6 +58,10 @@ Header.args = {
   ...Basic.args,
   header: 'Header text',
 }
+
+export const HideClose = () => (
+  <DialogHeader hideClose={true}>Header text</DialogHeader>
+)
 
 export const Footer = Template.bind({})
 Footer.args = {
