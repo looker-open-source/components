@@ -24,18 +24,49 @@
 
  */
 
-import { CompatibleHTMLProps } from '@looker/design-tokens'
+import React, { FC, KeyboardEvent, ReactNode, useRef } from 'react'
 import styled from 'styled-components'
+import { useArrowKeyNav } from '../utils'
+import { getNextTreeFocus, getTreeItems } from './utils'
 
-export type TreeCollectionProps = CompatibleHTMLProps<HTMLUListElement>
+export type TreeCollectionProps = {
+  children?: ReactNode
+  className?: string
+}
 
-/**
- * @todo refactor `div` to `ul` to match w3 spec
- * This todo will follow the todo in TreeStyle of converting from `div` to `li`
- **/
-export const TreeCollection = styled.div.attrs(({ role = 'tree' }) => ({
-  role,
-}))<TreeCollectionProps>`
+const TreeCollectionLayout: FC<TreeCollectionProps> = ({
+  children,
+  className,
+}) => {
+  const ref = useRef<HTMLUListElement>(null)
+
+  // Additional key shortcuts
+  const handleKeyDown = (event: KeyboardEvent<HTMLElement>) => {
+    const treeItems = getTreeItems(ref.current as HTMLElement)
+    if (event.key === 'Home') {
+      const firstItem = treeItems[0]
+      firstItem && firstItem.focus()
+    } else if (event.key === 'End') {
+      const lastItem = treeItems[treeItems.length - 1]
+      lastItem && lastItem.focus()
+    }
+  }
+
+  const navProps = useArrowKeyNav<HTMLUListElement>({
+    axis: 'both',
+    getNextFocus: getNextTreeFocus,
+    onKeyDown: handleKeyDown,
+    ref,
+  })
+
+  return (
+    <ul className={className} role="tree" {...navProps}>
+      {children}
+    </ul>
+  )
+}
+
+export const TreeCollection = styled(TreeCollectionLayout)`
   margin: 0;
   padding: 0;
 `

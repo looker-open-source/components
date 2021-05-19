@@ -59,6 +59,8 @@ const TreeLayout: FC<TreeProps> = ({
   color: propsColor,
   label: propsLabel,
   labelBackgroundOnly: propsLabelBackgroundOnly,
+  onBlur,
+  onFocus,
   onMouseEnter,
   onMouseLeave,
   selected,
@@ -70,6 +72,7 @@ const TreeLayout: FC<TreeProps> = ({
 
   const { color: listColor } = useContext(ListItemContext)
   const treeContext = useContext(TreeContext)
+
   const hasBorder = undefinedCoalesce([propsBorder, treeContext.border])
 
   if (keyColor) propsColor = 'key'
@@ -109,6 +112,8 @@ const TreeLayout: FC<TreeProps> = ({
 
   const handleMouseEnter = useWrapEvent(() => setHovered(true), onMouseEnter)
   const handleMouseLeave = useWrapEvent(() => setHovered(false), onMouseLeave)
+  const handleBlur = useWrapEvent(() => setHovered(false), onBlur)
+  const handleFocus = useWrapEvent(() => setHovered(true), onFocus)
 
   const detail = {
     content: (
@@ -129,14 +134,16 @@ const TreeLayout: FC<TreeProps> = ({
   const treeItemInnerRole = 'none'
   const label = (
     <TreeItemInner
+      renderAsDiv
       color={color}
       density={density}
       detail={detail}
       disabled={disabled}
       icon={icon}
-      truncate={truncate}
       itemRole={treeItemInnerRole}
       role={treeItemInnerRole}
+      truncate={truncate}
+      tabIndex={-2} // Prevents tab stop behavior from reaching inner TreeItems
     >
       {propsLabel}
     </TreeItemInner>
@@ -145,18 +152,27 @@ const TreeLayout: FC<TreeProps> = ({
   const indicatorColor = disabled ? 'text1' : 'text5'
   const innerAccordion = (
     <Accordion
+      renderAsLi
       aria-current={current}
       aria-selected={selected}
       content={
-        <List density={density} role="group" windowing="none">
+        <List
+          density={density}
+          disableKeyboardNav
+          role="group"
+          windowing="none"
+        >
           {children}
         </List>
       }
       color={indicatorColor}
       role="treeitem"
+      onBlur={handleBlur}
+      onFocus={handleFocus}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       py="none"
+      tabIndex={-1}
       {...indicatorDefaults}
       {...restProps}
     >
@@ -178,7 +194,6 @@ const TreeLayout: FC<TreeProps> = ({
         border={hasBorder}
         branchFontWeight={branchFontWeight}
         color={color}
-        className={className}
         current={current}
         depth={depth}
         disabled={disabled}

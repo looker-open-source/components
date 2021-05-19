@@ -37,7 +37,17 @@ export type TreeProps = Omit<
   | 'indicatorPosition'
   | 'indicatorSize'
 > &
-  Omit<ListItemProps, 'onClick'> & {
+  Pick<
+    ListItemProps,
+    | 'color'
+    | 'current'
+    | 'density'
+    | 'detail'
+    | 'disabled'
+    | 'icon'
+    | 'keyColor'
+    | 'truncate'
+  > & {
     /**
      * If true, vertical lines will extend from the Tree indicator (and all sub-Trees' indicators)
      * @default false

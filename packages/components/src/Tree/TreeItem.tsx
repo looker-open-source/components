@@ -45,6 +45,7 @@ const TreeItemLayout: FC<TreeItemProps> = ({
   color: propsColor,
   keyColor,
   onClickWhitespace,
+  role = 'treeitem',
   ...restProps
 }) => {
   const {
@@ -72,7 +73,7 @@ const TreeItemLayout: FC<TreeItemProps> = ({
     <ListItem
       density={undefinedCoalesce([propsDensity, contextDensity])}
       color={undefinedCoalesce([propsColor, contextColor])}
-      role="treeitem"
+      role={role}
       onClickWhitespace={onClickWhitespace}
       {...restProps}
     >

@@ -33,27 +33,26 @@ import { ListItemIconPlacement } from './ListItemLayout'
 import { ListColor, ListItemDimensions, listItemDimensionKeys } from './types'
 
 export interface ListItemWrapperProps
-  extends CompatibleHTMLProps<HTMLLIElement>,
+  extends CompatibleHTMLProps<HTMLElement>,
     ListItemDimensions {
   color: ListColor
   description?: ReactNode // Should be eventually deleted because the CSS could be handled in layout pieces
-  focusVisible?: boolean
+  renderAsDiv?: boolean
 }
 
 const ListItemWrapperInternal = forwardRef(
-  (props: ListItemWrapperProps, ref: Ref<HTMLLIElement>) => {
+  (
+    { renderAsDiv, ...restProps }: ListItemWrapperProps,
+    ref: Ref<HTMLElement>
+  ) => {
+    const Component = renderAsDiv ? 'div' : 'li'
+
     return (
-      <li
-        {...omit(
-          props,
-          'color',
-          'current',
-          'focusVisible',
-          'hovered',
-          'selected',
-          [...listItemDimensionKeys]
-        )}
-        ref={ref}
+      <Component
+        {...omit(restProps, 'color', 'current', 'hovered', 'selected', [
+          ...listItemDimensionKeys,
+        ])}
+        ref={ref as Ref<any>}
         role="none"
       />
     )
@@ -64,7 +63,8 @@ ListItemWrapperInternal.displayName = 'ListItemWrapperInternal'
 
 export const ListItemWrapper = styled(ListItemWrapperInternal)
   .withConfig<ListItemWrapperProps>({
-    shouldForwardProp,
+    shouldForwardProp: (prop) =>
+      ['renderAsDiv'].includes(prop) ? true : shouldForwardProp(prop),
   })
   .attrs(({ color = 'text5' }) => ({ color }))`
   align-items: center;
@@ -75,14 +75,6 @@ export const ListItemWrapper = styled(ListItemWrapperInternal)
   min-height: ${({ height }) => height}px;
   outline: none;
   text-decoration: none;
-
-  ${({ focusVisible, theme }) =>
-    focusVisible &&
-    `
-      &:focus-within > * {
-        box-shadow: inset 0 0 0 2px ${theme.colors.keyFocus};
-      }
-    `}
 
   ${ListItemIconPlacement} {
     align-self: ${({ description }) => (description ? 'flex-start' : 'center')};

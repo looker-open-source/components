@@ -32,7 +32,7 @@ import { useArrowKeyNav, UseArrowKeyNavProps } from './useArrowKeyNav'
 const ArrowKeyNavComponent: FC<{
   axis?: UseArrowKeyNavProps<HTMLUListElement>['axis']
 }> = ({ axis, children }) => {
-  const navProps = useArrowKeyNav({ axis })
+  const navProps = useArrowKeyNav<HTMLUListElement>({ axis })
   return (
     <ul {...navProps}>
       {children}
