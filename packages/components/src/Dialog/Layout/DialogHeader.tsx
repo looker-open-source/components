@@ -29,15 +29,7 @@ import styled from 'styled-components'
 import { DialogContext } from '../DialogContext'
 import { ModalHeader, ModalHeaderProps } from '../../Modal/ModalHeader'
 
-export interface DialogHeaderProps extends ModalHeaderProps {
-  /**
-   * Don't include the "Close" option
-   * @default false
-   */
-  hideClose?: boolean
-}
-
-const DialogHeaderLayout: FC<DialogHeaderProps> = ({
+const DialogHeaderLayout: FC<ModalHeaderProps> = ({
   children,
   hideClose,
   detail,
@@ -47,9 +39,11 @@ const DialogHeaderLayout: FC<DialogHeaderProps> = ({
 
   return (
     <ModalHeader
-      id={headingId}
-      detail={!hideClose && detail}
       closeModal={closeModal}
+      detail={!hideClose && detail}
+      hideClose={hideClose}
+      id={headingId}
+      padding="1.25rem 2rem"
     >
       {children}
     </ModalHeader>

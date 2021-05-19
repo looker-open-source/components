@@ -24,96 +24,93 @@
 
  */
 
-import {
-  CompatibleHTMLProps,
-  PaddingProps,
-  padding,
-  reset,
-  LayoutProps,
-  layout,
-  pickStyledProps,
-} from '@looker/design-tokens'
-import React, { FC, useRef, useState, useEffect } from 'react'
-import styled, { css } from 'styled-components'
-import { useResize } from '../../utils'
+import styled from 'styled-components'
+import { ModalContent, ModalContentProps } from '../../Modal/ModalContent'
 
-interface DialogStyleProps
-  extends LayoutProps,
-    CompatibleHTMLProps<HTMLDivElement> {}
+export const DialogContent = styled(ModalContent).attrs(
+  ({ px = 'xlarge', py = 'large' }) => ({
+    px,
+    py,
+  })
+)<ModalContentProps>``
 
-export interface DialogContentProps extends DialogStyleProps {
-  /**
-   * If the Dialog does not have a footer use this property to manually render padding
-   * at the bottom of the DialogContent. (`hasFooter={false}`)
-   * @default true
-   */
-  hasFooter?: boolean
-  /**
-   * If the Dialog does not have a header use this property to manually render padding
-   * at the top of the DialogContent. (`hasHeader={false}`)
-   * @default true
-   */
-  hasHeader?: boolean
-}
+// interface DialogStyleProps
+//   extends LayoutProps,
+//     CompatibleHTMLProps<HTMLDivElement> {}
 
-export const DialogContent: FC<DialogContentProps> = ({
-  children,
-  className,
-  hasFooter,
-  hasHeader,
-  ...props
-}) => {
-  const internalRef = useRef<HTMLDivElement>(null)
-  const [hasOverflow, setHasOverflow] = useState(false)
-  const [height, setHeight] = useState(0)
+// export interface DialogContentProps extends DialogStyleProps {
+//   /**
+//    * If the Dialog does not have a footer use this property to manually render padding
+//    * at the bottom of the DialogContent. (`hasFooter={false}`)
+//    * @default true
+//    */
+//   hasFooter?: boolean
+//   /**
+//    * If the Dialog does not have a header use this property to manually render padding
+//    * at the top of the DialogContent. (`hasHeader={false}`)
+//    * @default true
+//    */
+//   hasHeader?: boolean
+// }
 
-  const handleResize = () => {
-    if (internalRef.current) {
-      setHeight(internalRef.current.offsetHeight)
-    }
-  }
+// export const DialogContent: FC<DialogContentProps> = ({
+//   children,
+//   className,
+//   hasFooter,
+//   hasHeader,
+//   ...props
+// }) => {
+//   const internalRef = useRef<HTMLDivElement>(null)
+//   const [hasOverflow, setHasOverflow] = useState(false)
+//   const [height, setHeight] = useState(0)
 
-  useResize(internalRef.current, handleResize)
+//   const handleResize = () => {
+//     if (internalRef.current) {
+//       setHeight(internalRef.current.offsetHeight)
+//     }
+//   }
 
-  useEffect(() => {
-    const container = internalRef.current
-    if (container) {
-      setHasOverflow(container.offsetHeight < container.scrollHeight)
-    }
-  }, [height])
+//   useResize(internalRef.current, handleResize)
 
-  return (
-    <InnerDialogContent
-      hasOverflow={hasOverflow}
-      ref={internalRef}
-      px={['medium', 'xlarge']}
-      pb={hasOverflow || !!hasFooter ? 'large' : 'xxxsmall'}
-      pt={hasOverflow || !!hasHeader ? 'large' : 'xxxsmall'}
-      {...pickStyledProps(props)}
-      data-testid="dialog-content"
-    >
-      {children}
-    </InnerDialogContent>
-  )
-}
+//   useEffect(() => {
+//     const container = internalRef.current
+//     if (container) {
+//       setHasOverflow(container.offsetHeight < container.scrollHeight)
+//     }
+//   }, [height])
 
-interface InnerDialogContentProps extends DialogStyleProps, PaddingProps {
-  hasOverflow: boolean
-}
+//   return (
+//     <InnerDialogContent
+//       hasOverflow={hasOverflow}
+//       ref={internalRef}
+//       px={['medium', 'xlarge']}
+//       pb={hasOverflow || !!hasFooter ? 'large' : 'xxxsmall'}
+//       pt={hasOverflow || !!hasHeader ? 'large' : 'xxxsmall'}
+//       {...pickStyledProps(props)}
+//       data-testid="dialog-content"
+//     >
+//       {children}
+//     </InnerDialogContent>
+//   )
+// }
 
-const InnerDialogContent = styled.div<InnerDialogContentProps>`
-  ${reset}
-  ${layout}
-  ${padding}
+// interface InnerDialogContentProps extends DialogStyleProps, PaddingProps {
+//   hasOverflow: boolean
+// }
 
-  flex: 1 1 auto;
-  overflow: auto;
+// const InnerDialogContent = styled.div<InnerDialogContentProps>`
+//   ${reset}
+//   ${layout}
+//   ${padding}
 
-  ${({ hasOverflow, theme }) =>
-    hasOverflow &&
-    css`
-      border-bottom: 1px solid ${theme.colors.ui2};
-      border-top: 1px solid ${theme.colors.ui2};
-      box-shadow: inset 0 -4px 4px -4px ${theme.colors.ui2};
-    `}
-`
+//   flex: 1 1 auto;
+//   overflow: auto;
+
+//   ${({ hasOverflow, theme }) =>
+//     hasOverflow &&
+//     css`
+//       border-bottom: 1px solid ${theme.colors.ui2};
+//       border-top: 1px solid ${theme.colors.ui2};
+//       box-shadow: inset 0 -4px 4px -4px ${theme.colors.ui2};
+//     `}
+// `

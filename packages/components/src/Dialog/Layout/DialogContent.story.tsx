@@ -27,11 +27,10 @@
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import { Box, Paragraph } from '../..'
-import { DialogContent, DialogContentProps } from './DialogContent'
+import { ModalContentProps } from '../../Modal/ModalContent'
+import { DialogContent } from './DialogContent'
 
-const Template: Story<DialogContentProps> = (args) => (
-  <DialogContent {...args} />
-)
+const Template: Story<ModalContentProps> = (args) => <DialogContent {...args} />
 
 export const Basic = Template.bind({})
 Basic.args = {

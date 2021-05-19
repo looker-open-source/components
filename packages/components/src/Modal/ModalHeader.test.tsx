@@ -46,9 +46,4 @@ describe('ModalHeader', () => {
     expect(await screen.findByText('Hello world')).toBeTruthy()
     expect(screen.queryByLabelText('Close')).not.toBeInTheDocument()
   })
-
-  test('hideClose', () => {
-    renderWithTheme(<ModalHeader hideClose>Heading</ModalHeader>)
-    expect(screen.queryByLabelText('Close')).not.toBeInTheDocument()
-  })
 })
