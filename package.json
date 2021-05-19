@@ -60,7 +60,7 @@
     "develop":"echo -e 'Use `yarn gatsby` to start Gatsby \nUse `yarn storybook` to start Storybook'"
   },
   "devDependencies": {
-    "@babel/cli": "^7.13.16",
+    "@babel/cli": "^7.14.3",
     "@babel/core": "^7.14.0",
     "@babel/plugin-proposal-class-properties": "^7.13.0",
     "@babel/plugin-proposal-nullish-coalescing-operator": "^7.13.8",
