@@ -44,7 +44,6 @@ import { listItemDimensions } from '../../List'
 
 type FieldItemProps = {
   color?: ToggleColor
-  truncate?: boolean
   filter?: boolean
   pivot?: boolean
   selected?: boolean
@@ -57,21 +56,22 @@ export const FieldItem: FC<FieldItemProps> = ({
   pivot = false,
   selected = false,
 }) => {
-  const [overlay, setOverlay] = useState<string | undefined>(undefined)
+  const [isFieldMenuOpen, setIsFieldMenuOpen] = useState<boolean>(false)
 
   const [isFilter, setIsFilter] = useState(filter)
   const [isPivot, setIsPivot] = useState(pivot)
   const [isSelected, setIsSelected] = useState(selected)
 
   const toggleMenu = () =>
-    overlay === 'menu' ? setOverlay(undefined) : setOverlay('menu')
+    isFieldMenuOpen ? setIsFieldMenuOpen(false) : setIsFieldMenuOpen(true)
+
   const detailContent = (
     <>
       <Tooltip placement="top" content="Some exciting info or something">
         <IconButton icon={<Info />} label="Info" />
       </Tooltip>
       <Menu
-        isOpen={overlay === 'menu'}
+        isOpen={isFieldMenuOpen}
         setOpen={toggleMenu}
         density={-1}
         content={
@@ -103,16 +103,18 @@ export const FieldItem: FC<FieldItemProps> = ({
         content: detailContent,
         options: {
           accessory: true,
-          hoverDisclosure: !overlay,
+          hoverDisclosure: !isFieldMenuOpen,
         },
       }}
-      itemRole="none"
-      onClickWhitespace={toggleField}
       onKeyDown={(event) => {
         if (event.key === 'Enter' && event.metaKey) {
           alert(`CMD + Enter'ed on ${children}!`)
+        } else if (event.key === 'Enter') {
+          toggleField()
         }
       }}
+      itemRole="none"
+      onClickWhitespace={toggleField}
     >
       <Flex alignItems="center" pl="xxsmall">
         <Flex
