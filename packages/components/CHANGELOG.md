@@ -2,47 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-# [1.3.0](https://github.com/looker-open-source/components/compare/v1.3.0-alpha.0...v1.3.0) (2021-05-19)
-
-
-### Features
-
-* **HoverDisclosure:** Support strategy to allow developer to use display or visibility control ([#2398](https://github.com/looker-open-source/components/issues/2398)) ([359ee9f](https://github.com/looker-open-source/components/commit/359ee9f3a261276a741c51dbc819112feb5f1dbe))
-* **Tree:** Keyboard Navigation ([#2397](https://github.com/looker-open-source/components/issues/2397)) ([1ad8fe4](https://github.com/looker-open-source/components/commit/1ad8fe428bbf25edb5dd9a10fc64cbb4f2c1a3b6))
-
-
-
-
-
-# [1.3.0-alpha.0](https://github.com/looker-open-source/components/compare/v1.2.0...v1.3.0-alpha.0) (2021-05-18)
-
-
 ### Bug Fixes
 
-* **HoverDisclosure:** Use CSS visibility instead of de-rendering ([#2359](https://github.com/looker-open-source/components/issues/2359)) ([4186c52](https://github.com/looker-open-source/components/commit/4186c5212ffa4f2545fc95984696ca8b52f3667c))
-* **IconButton:** Match focus ring to toggleColor ([#2282](https://github.com/looker-open-source/components/issues/2282)) ([31df370](https://github.com/looker-open-source/components/commit/31df37044b086f459cdd16a8c0d38fbdb04d1218))
-* **MenuHeading:** Hide shadow initially ([#2325](https://github.com/looker-open-source/components/issues/2325)) ([f9d4c87](https://github.com/looker-open-source/components/commit/f9d4c87820c55dd955c134624ba84a96e14858c7))
-* **Panel:** PanelHeader icon should always be `ArrowBack` ([#2360](https://github.com/looker-open-source/components/issues/2360)) ([f86b4e1](https://github.com/looker-open-source/components/commit/f86b4e17e2ac5665bf43feb464f36d3196d581f6))
-
+- **HoverDisclosure:** Use CSS visibility instead of de-rendering ([#2359](https://github.com/looker-open-source/components/issues/2359)) ([4186c52](https://github.com/looker-open-source/components/commit/4186c5212ffa4f2545fc95984696ca8b52f3667c))
+- **IconButton:** Match focus ring to toggleColor ([#2282](https://github.com/looker-open-source/components/issues/2282)) ([31df370](https://github.com/looker-open-source/components/commit/31df37044b086f459cdd16a8c0d38fbdb04d1218))
+- **Panel:** PanelHeader icon should always be `ArrowBack` ([#2360](https://github.com/looker-open-source/components/issues/2360)) ([f86b4e1](https://github.com/looker-open-source/components/commit/f86b4e17e2ac5665bf43feb464f36d3196d581f6))
 
 ### Features
 
-* Move @looker/components-date back into @looker/components ([#2368](https://github.com/looker-open-source/components/issues/2368)) ([8c8686e](https://github.com/looker-open-source/components/commit/8c8686eb2d650ab64fabc0dd4e4f827ec1135694))
-* **Accordion:** Toggle on spacebar key ([#2281](https://github.com/looker-open-source/components/issues/2281)) ([221c2e9](https://github.com/looker-open-source/components/commit/221c2e97cfcbb2d92507386800ec98f99ebc2ae5))
-* **Aside:** adding prop collapse ([#2288](https://github.com/looker-open-source/components/issues/2288)) ([c3f949a](https://github.com/looker-open-source/components/commit/c3f949a6f9a9441dbed36fa9248aa18436a11295))
-* **Aside:** standardized width size ([#2348](https://github.com/looker-open-source/components/issues/2348)) ([05676ab](https://github.com/looker-open-source/components/commit/05676abfd96eb03bfbbc9976a06935625f6c2ea9))
-* **Tree:** Added "no-icon" option to forceLabelPadding prop ([#2329](https://github.com/looker-open-source/components/issues/2329)) ([579eb9e](https://github.com/looker-open-source/components/commit/579eb9e5950e778dfb605a2319b118665b98e745)), closes [#2330](https://github.com/looker-open-source/components/issues/2330)
-* @looker/components-date package ([#2274](https://github.com/looker-open-source/components/issues/2274)) ([5aa01e0](https://github.com/looker-open-source/components/commit/5aa01e0b996647a60d251fc5cd00ba7af185356c))
-* useFocusVisible hook ([#2277](https://github.com/looker-open-source/components/issues/2277)) ([68d124e](https://github.com/looker-open-source/components/commit/68d124ef2b8981a33de48ef2caf228a49b290ea0))
-* **Tree:** ARIA-labeling ([#2271](https://github.com/looker-open-source/components/issues/2271)) ([#2280](https://github.com/looker-open-source/components/issues/2280)) ([99b28a5](https://github.com/looker-open-source/components/commit/99b28a5fb275476aa94409cd1f9de76e0edfa75f))
-
-
-
-
-
-- CSS Reset now uses a "defensive" rather than "offensive" strategy (no more GlobalStyles) ([#2120](https://github.com/looker-open-source/components/issues/2120)) ([266e2f2](https://github.com/looker-open-source/components/commit/266e2f25c3396eee5a5b2d2be234c7ccad608811))
-
+- **HoverDisclosure:** Support strategy to allow developer to use display or visibility control ([#2398](https://github.com/looker-open-source/components/issues/2398)) ([359ee9f](https://github.com/looker-open-source/components/commit/359ee9f3a261276a741c51dbc819112feb5f1dbe))
+- **Tree:** Keyboard Navigation ([#2397](https://github.com/looker-open-source/components/issues/2397)) ([1ad8fe4](https://github.com/looker-open-source/components/commit/1ad8fe428bbf25edb5dd9a10fc64cbb4f2c1a3b6))
+- **Accordion:** Toggle on spacebar key ([#2281](https://github.com/looker-open-source/components/issues/2281)) ([221c2e9](https://github.com/looker-open-source/components/commit/221c2e97cfcbb2d92507386800ec98f99ebc2ae5))
+- **Aside:** adding prop collapse ([#2288](https://github.com/looker-open-source/components/issues/2288)) ([c3f949a](https://github.com/looker-open-source/components/commit/c3f949a6f9a9441dbed36fa9248aa18436a11295))
+- **Aside:** standardized width size ([#2348](https://github.com/looker-open-source/components/issues/2348)) ([05676ab](https://github.com/looker-open-source/components/commit/05676abfd96eb03bfbbc9976a06935625f6c2ea9))
+- useFocusVisible hook ([#2277](https://github.com/looker-open-source/components/issues/2277)) ([68d124e](https://github.com/looker-open-source/components/commit/68d124ef2b8981a33de48ef2caf228a49b290ea0))
 
 # [1.2.0](https://github.com/looker-open-source/components/compare/v1.2.0..v1.1.6) (2021-05-17)
 

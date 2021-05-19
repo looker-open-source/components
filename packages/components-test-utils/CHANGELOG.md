@@ -11,12 +11,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [1.3.0-alpha.0](https://github.com/looker-open-source/components/compare/v1.2.0...v1.3.0-alpha.0) (2021-05-18)
-
-**Note:** Version bump only for package @looker/components-test-utils
-
-
-
 
 
 # [1.2.0](https://github.com/looker-open-source/components/compare/v1.2.0...v1.1.3) (2021-05-17)
