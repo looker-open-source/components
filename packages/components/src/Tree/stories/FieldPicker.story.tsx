@@ -24,175 +24,64 @@
 
  */
 
-import React, { FC, useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import { FilterList } from '@styled-icons/material/FilterList'
-import { MoreVert } from '@styled-icons/material/MoreVert'
-import { SubdirectoryArrowLeft } from '@styled-icons/material/SubdirectoryArrowLeft'
-import { Info } from '@styled-icons/material-outlined/Info'
-import {
-  Box,
-  IconButton,
-  Menu,
-  MenuItem,
-  Tooltip,
-  Popover,
-  Paragraph,
-  Flex,
-} from '../..'
-import { TreeCollection, TreeItem, TreeBranch, Tree } from '..'
-import { HoverDisclosure } from '../../utils'
+import { Box, Paragraph } from '../..'
+import { TreeCollection, TreeBranch, Tree } from '..'
 import { generateBorderRadius } from '../utils/generateBorderRadius'
-import { listItemDimensions } from '../../List'
+import { FieldItem } from './FieldItem'
 
 const BorderRadiusOverrideTree = styled(Tree)`
   ${({ theme }) => generateBorderRadius('medium', theme)}
 `
 
-const PickerItem: FC<{ color?: string; truncate?: boolean }> = ({
-  children = 'Cost',
+const FieldGroupHeading = styled(Paragraph).attrs(({ color = 'text1' }) => ({
   color,
-  truncate = false,
-}) => {
-  const [overlay, setOverlay] = useState<string | undefined>(undefined)
-
-  const toggleMenu = () =>
-    overlay === 'menu' ? setOverlay(undefined) : setOverlay('menu')
-  const togglePopover = () =>
-    overlay === 'popover' ? setOverlay(undefined) : setOverlay('popover')
-  const detailContent = (
-    <>
-      <Tooltip placement="top" content="Some exciting info or something">
-        <IconButton icon={<Info />} label="Info" />
-      </Tooltip>
-      <Menu
-        isOpen={overlay === 'menu'}
-        setOpen={toggleMenu}
-        density={-1}
-        content={
-          <>
-            <MenuItem>Brie</MenuItem>
-            <MenuItem>Cheddar</MenuItem>
-            <MenuItem>Gouda</MenuItem>
-          </>
-        }
-      >
-        <IconButton
-          icon={<MoreVert />}
-          label="Options"
-          tooltipPlacement="top"
-        />
-      </Menu>
-    </>
-  )
-
-  const handleFieldClick = () => alert(`Clicked on ${children}`)
-
-  const { height: fieldHeight } = listItemDimensions(-3)
-
-  return (
-    <TreeItem
-      color={color}
-      detail={{
-        content: detailContent,
-        options: {
-          accessory: true,
-          disablePadding: true,
-          hoverDisclosure: !overlay,
-        },
-      }}
-      itemRole="none"
-      onClickWhitespace={handleFieldClick}
-      onKeyDown={(event) => {
-        if (event.key === 'Enter' || event.key === ' ') {
-          if (event.target === event.currentTarget) {
-            alert(`Key downed on ${children}`)
-          }
-        }
-        if (event.key === 'Enter' && event.metaKey) {
-          alert(`CMD + Enter'ed on ${children}!`)
-        }
-      }}
-      truncate={truncate}
-    >
-      <Flex alignItems="center" pl="xxsmall">
-        <Flex
-          alignItems="center"
-          flex={1}
-          height={fieldHeight}
-          onClick={handleFieldClick}
-        >
-          {children}
-        </Flex>
-        <HoverDisclosure>
-          <IconButton
-            icon={<SubdirectoryArrowLeft />}
-            label="Pivot"
-            tooltipPlacement="top"
-            onClick={() => alert('Pivot')}
-          />
-          <Popover
-            content="hello world"
-            isOpen={overlay === 'popover'}
-            setOpen={togglePopover}
-          >
-            <IconButton
-              icon={<FilterList />}
-              label="Filter"
-              tooltipPlacement="top"
-            />
-          </Popover>
-        </HoverDisclosure>
-      </Flex>
-    </TreeItem>
-  )
-}
-
-const StyledParagraph = styled(Paragraph)`
+  fontSize: 'xxsmall',
+  fontWeight: 'semiBold',
+  pb: 'xxsmall',
+  pr: 'xxsmall',
+  pt: 'xsmall',
+  truncate: true,
+}))`
   line-height: 0.75rem;
 `
 
 const fields = (
   <>
     <TreeBranch>
-      <StyledParagraph
-        color="text1"
-        fontSize="xxsmall"
-        fontWeight="semiBold"
-        pt="xsmall"
-        pb="xxsmall"
-        pl="xxsmall"
-        truncate={true}
-      >
-        DIMENSIONS
-      </StyledParagraph>
+      <FieldGroupHeading>DIMENSIONS</FieldGroupHeading>
     </TreeBranch>
     <BorderRadiusOverrideTree
       branchFontWeight
       label={<Box pl="xxsmall">Created</Box>}
     >
-      <PickerItem>Created Date</PickerItem>
-      <PickerItem>Created Month</PickerItem>
-      <PickerItem>Created Year</PickerItem>
+      <FieldItem>Created Date</FieldItem>
+      <FieldItem>Created Month</FieldItem>
+      <FieldItem>Created Year</FieldItem>
     </BorderRadiusOverrideTree>
-    <PickerItem>City</PickerItem>
-    <PickerItem>Country</PickerItem>
-    <PickerItem>ID</PickerItem>
+    <FieldItem>City</FieldItem>
+    <FieldItem selected filter>
+      This is a really long field name to show that truncation is working as
+      desired. It's not a realistic example but it lets our tests know that
+      things are working as-desired
+    </FieldItem>
+    <FieldItem>ID</FieldItem>
     <TreeBranch>
-      <StyledParagraph
-        color="orange"
-        fontSize="xxsmall"
-        fontWeight="semiBold"
-        pt="xsmall"
-        pb="xxsmall"
-        pl="xxsmall"
-        truncate={true}
-      >
-        MEASURES
-      </StyledParagraph>
+      <FieldGroupHeading color="measure">MEASURES</FieldGroupHeading>
     </TreeBranch>
-    <PickerItem color="orange">Sum</PickerItem>
-    <PickerItem color="orange">Max</PickerItem>
+    <FieldItem color="measure" selected>
+      Sum
+    </FieldItem>
+    <FieldItem color="measure" filter>
+      Max
+    </FieldItem>
+    <TreeBranch>
+      <FieldGroupHeading color="calculation">CALCULATED</FieldGroupHeading>
+    </TreeBranch>
+    <FieldItem pivot color="calculation">
+      Calc
+    </FieldItem>
   </>
 )
 

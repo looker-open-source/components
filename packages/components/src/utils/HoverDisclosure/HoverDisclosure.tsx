@@ -24,22 +24,34 @@
 
  */
 
-import React, { FC, useContext } from 'react'
+import React, { CSSProperties, FC, useContext } from 'react'
 import { HoverDisclosureContext } from './HoverDisclosureContext'
 
 export interface HoverDisclosureProps {
   visible?: boolean
+  /**
+   * Specify strategy to use for hiding content. Visibility is preferred
+   * as it is generally more accessible but `display` will _not_ reserve
+   * visible space when hidden and may be required when attempt to achieve
+   * certain layouts.
+   *
+   * @default 'visibility'
+   */
+  strategy?: 'visibility' | 'display'
 }
 
 export const HoverDisclosure: FC<HoverDisclosureProps> = ({
   children,
+  strategy = 'visibility',
   visible,
 }) => {
   const context = useContext(HoverDisclosureContext)
   const isVisible = visible || context.visible
-  return (
-    <div style={{ visibility: isVisible ? 'visible' : 'hidden' }}>
-      {children}
-    </div>
-  )
+
+  const style: CSSProperties =
+    strategy === 'visibility'
+      ? { visibility: isVisible ? 'visible' : 'hidden' }
+      : { display: isVisible ? 'initial' : 'none' }
+
+  return <div style={style}>{children}</div>
 }
