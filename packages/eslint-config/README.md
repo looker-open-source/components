@@ -60,7 +60,7 @@ module.exports = {
 
 #### Enforce License Header
 
-If you need to have a consistent license header applied to your files you can include support for by extending `@looker/eslint-config/license-header` and including the content of the license in your repo in `config/license-header.js`
+If you need to have a consistent license header applied to your files you can include support for by extending `@looker/eslint-config/license-header`.
 
 ## LICENCE
 
