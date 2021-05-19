@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0-alpha.1](https://github.com/looker-open-source/components/compare/v1.3.0-alpha.0...v1.3.0-alpha.1) (2021-05-19)
+
+
+### Features
+
+* **HoverDisclosure:** Support strategy to allow developer to use display or visibility control ([09fafc0](https://github.com/looker-open-source/components/commit/09fafc0910cb9eeff9098de4775a0b1fbf3ede2f))
+
+
+
+
+
 # [1.3.0-alpha.0](https://github.com/looker-open-source/components/compare/v1.2.0...v1.3.0-alpha.0) (2021-05-18)
 
 
