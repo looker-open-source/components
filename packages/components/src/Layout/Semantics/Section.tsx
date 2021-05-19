@@ -24,10 +24,10 @@
 
  */
 
-import React, { FC, useRef } from 'react'
+import React, { forwardRef, Ref } from 'react'
 import { shouldForwardProp } from '@looker/design-tokens'
 import styled, { css } from 'styled-components'
-import { useOverflow } from '../../utils'
+import { OverflowShadow, useOverflow, UseOverflowProps } from '../../utils'
 import { SemanticLayoutBase, semanticLayoutCSS } from './semanticStyledBase'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -41,39 +41,34 @@ export interface SectionProps extends SemanticLayoutBase {
   scrollWithin?: boolean
 }
 
-export const Section: FC<SectionProps> = ({ children, ...props }) => {
-  const internalRef = useRef<HTMLDivElement>(null)
-  const hasOverflow = useOverflow(internalRef)
-
-  return (
-    <InnerSection hasOverflow={hasOverflow} ref={internalRef} {...props}>
-      {children}
-    </InnerSection>
-  )
-}
-
-interface InnerSectionProps extends SectionProps {
-  hasOverflow: boolean
-}
+interface OverflowProps extends SectionProps, UseOverflowProps {}
 
 export const sectionCSS = css`
   ${semanticLayoutCSS}
   flex: 1 0 auto;
 `
 
-const InnerSection = styled.main.withConfig({
+export const InnerSection = styled.section.withConfig({
   shouldForwardProp,
-})<InnerSectionProps>`
+})<OverflowProps>`
   ${sectionCSS}
   overflow: auto;
   ${({ scrollWithin }) => scrollWithin && 'height: fit-content;'}
-
-  ${({ hasOverflow, theme }) =>
-    hasOverflow &&
-    css`
-      border-bottom: 1px solid ${theme.colors.ui2};
-      border-top: 1px solid ${theme.colors.ui2};
-      box-shadow: 0 -4px 4px -4px ${theme.colors.ui2},
-        inset 0 -4px 4px -4px ${theme.colors.ui2};
-    `}
+  ${({ hasOverflow }) => hasOverflow && OverflowShadow}
 `
+
+const SectionLayout = forwardRef(
+  ({ children, ...props }: SectionProps, forwardedRef: Ref<HTMLDivElement>) => {
+    const [hasOverflow, ref] = useOverflow(forwardedRef)
+
+    return (
+      <InnerSection hasOverflow={hasOverflow} ref={ref} {...props}>
+        {children}
+      </InnerSection>
+    )
+  }
+)
+
+SectionLayout.displayName = 'SectionLayout'
+
+export const Section = styled(SectionLayout)``

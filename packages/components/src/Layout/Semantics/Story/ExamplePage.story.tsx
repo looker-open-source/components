@@ -51,7 +51,7 @@ export default {
   title: 'Layout',
 }
 
-const fillterParagraph = (
+const filterParagraph = (
   <Paragraph fontSize="small">
     Neutra franzen cardigan, semiotics tousled gochujang green juice activated
     charcoal succulents flannel ramps palo santo. Kale chips williamsburg
@@ -75,10 +75,28 @@ const longContent = (
       microdosing leggings. Poke af cornhole hot chicken. Portland tattooed +1
       chia ennui.
     </Paragraph>
-    {fillterParagraph}
-    {fillterParagraph}
-    {fillterParagraph}
+    {filterParagraph}
+    {filterParagraph}
+    {filterParagraph}
   </SpaceVertical>
+)
+
+const menuItems = (
+  <>
+    <MenuItem
+      detail="detail"
+      description="this is the description"
+      icon={<Home />}
+    >
+      Looker
+    </MenuItem>
+    <MenuItem description="this is the description" icon={<VerifiedUser />}>
+      Validate
+    </MenuItem>
+    <MenuItem detail="detail" icon={<PieChart />}>
+      Pizza
+    </MenuItem>
+  </>
 )
 
 const Template: Story<LayoutProps> = (args) => (
@@ -91,7 +109,7 @@ const Template: Story<LayoutProps> = (args) => (
         <Aside p="large" width="200px">
           Aside
         </Aside>
-        <Section p="xxlarge">
+        <Section as="main" p="xxlarge">
           <Heading>Page title</Heading>
           <Tabs>
             <TabList distribute>
@@ -120,24 +138,6 @@ const Template: Story<LayoutProps> = (args) => (
   </Highlighter>
 )
 
-const menuItems = (
-  <>
-    <MenuItem
-      detail="detail"
-      description="this is the description"
-      icon={<Home />}
-    >
-      Looker
-    </MenuItem>
-    <MenuItem description="this is the description" icon={<VerifiedUser />}>
-      Validate
-    </MenuItem>
-    <MenuItem detail="detail" icon={<PieChart />}>
-      Pizza
-    </MenuItem>
-  </>
-)
-
 const Template2: Story<LayoutProps> = (args) => (
   <Highlighter>
     <Page {...args}>
@@ -153,7 +153,7 @@ const Template2: Story<LayoutProps> = (args) => (
           {menuItems}
         </Aside>
         <Layout>
-          <Section p="xxlarge">
+          <Section as="main" p="xxlarge">
             <Heading>Section title</Heading>
             {longContent}
           </Section>
@@ -188,7 +188,7 @@ const Highlighter = styled.div`
     background-color: lightcoral;
   }
 
-  aside {
+  ${Aside} {
     background-color: lightsalmon;
   }
 
@@ -196,7 +196,7 @@ const Highlighter = styled.div`
     background-color: lightskyblue;
   }
 
-  main {
+  ${Section} {
     background-color: lightgoldenrodyellow;
   }
 `
@@ -228,7 +228,7 @@ export const ScrollIndependently = () => (
           Chillwave brooklyn fam occupy microdosing leggings. Poke af cornhole
           hot chicken. Portland tattooed +1 chia ennui.
         </Aside>
-        <Section p="xxlarge">
+        <Section as="main" p="xxlarge">
           <Heading>Page title</Heading>
           <Tabs>
             <TabList distribute>
@@ -279,7 +279,7 @@ export const ScrollSelectedAreas = () => (
           hot chicken. Portland tattooed +1 chia ennui.
         </Aside>
         <Layout hasAside>
-          <Section scrollWithin p="xxlarge">
+          <Section as="main" scrollWithin p="xxlarge">
             <Heading>Page title</Heading>
             <Tabs>
               <TabList distribute>
@@ -330,7 +330,7 @@ export const ScrollAllAreasTogetherDefault = () => (
           Chillwave brooklyn fam occupy microdosing leggings. Poke af cornhole
           hot chicken. Portland tattooed +1 chia ennui.
         </Aside>
-        <Section p="xxlarge">
+        <Section as="main" p="xxlarge">
           <Heading>Page title</Heading>
           <Tabs>
             <TabList distribute>
@@ -413,7 +413,7 @@ export const AsideCollapseShadow = () => {
               Alternate Aside Footer
             </Footer>
           </Aside>
-          <Section scrollWithin p="xxlarge">
+          <Section as="main" scrollWithin p="xxlarge">
             <Heading>Section title</Heading>
             <FieldToggleSwitch
               label="Show Aside"
@@ -453,7 +453,7 @@ export const FooterHeaderShadow = () => (
         {menuItems}
         {menuItems}
       </Aside>
-      <Section scrollWithin p="xxlarge">
+      <Section as="main" scrollWithin p="xxlarge">
         {longContent}
         {longContent}
         {longContent}

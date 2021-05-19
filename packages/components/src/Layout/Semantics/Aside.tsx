@@ -24,11 +24,11 @@
 
  */
 
-import React, { FC, useRef } from 'react'
+import React, { forwardRef, Ref } from 'react'
 import { shouldForwardProp } from '@looker/design-tokens'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { ResponsiveValue } from 'styled-system'
-import { useOverflow } from '../../utils'
+import { OverflowShadow, useOverflow, UseOverflowProps } from '../../utils'
 import { AsideSizeRamp, asideWidth } from './asideWidth'
 import { SemanticLayoutBase, semanticLayoutCSS } from './semanticStyledBase'
 import { borderHelper, SemanticBorderProps } from './semanticBorderHelper'
@@ -53,20 +53,7 @@ export interface AsideProps extends SemanticLayoutBase, SemanticBorderProps {
   width?: ResponsiveValue<AsideSizeRamp | string>
 }
 
-export const Aside: FC<AsideProps> = ({ collapse, children, ...props }) => {
-  const internalRef = useRef<HTMLDivElement>(null)
-  const hasOverflow = useOverflow(internalRef)
-
-  return collapse ? null : (
-    <InnerAside hasOverflow={hasOverflow} ref={internalRef} {...props}>
-      {children}
-    </InnerAside>
-  )
-}
-
-interface InnerAsideProps extends AsideProps {
-  hasOverflow: boolean
-}
+interface OverflowProps extends AsideProps, UseOverflowProps {}
 
 export const InnerAside = styled.aside
   .withConfig<AsideProps>({
@@ -74,7 +61,7 @@ export const InnerAside = styled.aside
   })
   .attrs<AsideProps>(({ width = 'sidebar' }) => ({
     width,
-  }))<InnerAsideProps>`
+  }))<OverflowProps>`
   ${semanticLayoutCSS}
 
   flex: 0 0 ${({ width }) => width};
@@ -86,13 +73,24 @@ export const InnerAside = styled.aside
 
   ${borderHelper}
   ${asideWidth}
-
-  ${({ hasOverflow, theme }) =>
-    hasOverflow &&
-    css`
-      border-bottom: 1px solid ${theme.colors.ui2};
-      border-top: 1px solid ${theme.colors.ui2};
-      box-shadow: 0 -4px 4px -4px ${theme.colors.ui2},
-        inset 0 -4px 4px -4px ${theme.colors.ui2};
-    `}
+  ${({ hasOverflow }) => hasOverflow && OverflowShadow}
 `
+
+const AsideLayout = forwardRef(
+  (
+    { collapse, children, ...props }: AsideProps,
+    forwardedRef: Ref<HTMLDivElement>
+  ) => {
+    const [hasOverflow, ref] = useOverflow(forwardedRef)
+
+    return collapse ? null : (
+      <InnerAside hasOverflow={hasOverflow} ref={ref} {...props}>
+        {children}
+      </InnerAside>
+    )
+  }
+)
+
+AsideLayout.displayName = 'AsideLayout'
+
+export const Aside = styled(AsideLayout)``

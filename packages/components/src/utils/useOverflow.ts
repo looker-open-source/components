@@ -24,27 +24,42 @@
 
  */
 
-import { useEffect, useState, RefObject } from 'react'
+import { useEffect, useState, Ref } from 'react'
+import { css } from 'styled-components'
 import { useResize } from './useResize'
+import { useCallbackRef } from './useCallbackRef'
 
-export const useOverflow = (ref: RefObject<HTMLElement | null>) => {
+export interface UseOverflowProps {
+  hasOverflow: boolean
+}
+
+export const OverflowShadow = css`
+  border-bottom: 1px solid ${({ theme }) => theme.colors.ui2};
+  border-top: 1px solid ${({ theme }) => theme.colors.ui2};
+  box-shadow: 0 -4px 4px -4px ${({ theme }) => theme.colors.ui2},
+    inset 0 -4px 4px -4px ${({ theme }) => theme.colors.ui2};
+`
+
+export const useOverflow = (
+  ref?: Ref<HTMLElement>
+): [boolean, (node: HTMLElement | null) => void] => {
+  const [element, callbackRef] = useCallbackRef(ref)
   const [hasOverflow, setHasOverflow] = useState(false)
   const [height, setHeight] = useState(0)
 
   const handleResize = () => {
-    if (ref.current) {
-      setHeight(ref.current.offsetHeight)
+    if (element) {
+      setHeight(element.offsetHeight)
     }
   }
 
-  useResize(ref.current, handleResize)
+  useResize(element, handleResize)
 
   useEffect(() => {
-    const container = ref.current
-    if (container) {
-      setHasOverflow(container.offsetHeight < container.scrollHeight)
+    if (element) {
+      setHasOverflow(element.offsetHeight < element.scrollHeight)
     }
-  }, [height, ref])
+  }, [height, element])
 
-  return hasOverflow
+  return [hasOverflow, callbackRef]
 }

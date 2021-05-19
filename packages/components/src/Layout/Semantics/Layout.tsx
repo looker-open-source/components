@@ -24,11 +24,12 @@
 
  */
 
-import React, { FC, useRef } from 'react'
+import React, { forwardRef, Ref } from 'react'
 import { CompatibleHTMLProps, shouldForwardProp } from '@looker/design-tokens'
 import styled, { css } from 'styled-components'
 import { simpleLayoutCSS, SimpleLayoutProps } from '../utils/simple'
-import { useOverflow } from '../../utils'
+import { OverflowShadow, useOverflow, UseOverflowProps } from '../../utils'
+import { Section } from './Section'
 
 export interface LayoutProps
   extends SimpleLayoutProps,
@@ -45,53 +46,38 @@ export interface LayoutProps
   hasAside?: boolean
 }
 
+interface OverflowProps extends LayoutProps, UseOverflowProps {}
+
 const hasAsideCSS = css`
   flex-direction: row;
-  & > main {
+  & > ${Section} {
     width: 0;
   }
 `
-export const Layout: FC<LayoutProps> = ({
-  children,
-  fixed,
-  hasAside,
-  ...props
-}) => {
-  const internalRef = useRef<HTMLDivElement>(null)
-  const hasOverflow = useOverflow(internalRef)
-
-  return (
-    <InnerLayout
-      fixed={fixed}
-      hasAside={hasAside}
-      hasOverflow={hasOverflow}
-      ref={internalRef}
-      {...props}
-    >
-      {children}
-    </InnerLayout>
-  )
-}
-
-interface InnerLayoutProps extends LayoutProps {
-  hasOverflow: boolean
-}
-
 const InnerLayout = styled.div.withConfig({
   shouldForwardProp,
-})<InnerLayoutProps>`
+})<OverflowProps>`
   ${simpleLayoutCSS}
   display: flex;
   flex: 1 1 auto;
   overflow: ${({ fixed }) => (fixed ? 'hidden' : 'auto')};
   ${({ hasAside }) => (hasAside ? hasAsideCSS : 'flex-direction: column;')}
 
-  ${({ hasOverflow, theme }) =>
-    hasOverflow &&
-    css`
-      border-bottom: 1px solid ${theme.colors.ui2};
-      border-top: 1px solid ${theme.colors.ui2};
-      box-shadow: 0 -4px 4px -4px ${theme.colors.ui2},
-        inset 0 -4px 4px -4px ${theme.colors.ui2};
-    `}
+  ${({ hasOverflow }) => hasOverflow && OverflowShadow}
 `
+
+const LayoutLayout = forwardRef(
+  ({ children, ...props }: LayoutProps, forwardedRef: Ref<HTMLDivElement>) => {
+    const [hasOverflow, ref] = useOverflow(forwardedRef)
+
+    return (
+      <InnerLayout hasOverflow={hasOverflow} ref={ref} {...props}>
+        {children}
+      </InnerLayout>
+    )
+  }
+)
+
+LayoutLayout.displayName = 'LayoutLayout'
+
+export const Layout = styled(LayoutLayout)``

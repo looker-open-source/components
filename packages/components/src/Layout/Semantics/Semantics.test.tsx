@@ -28,32 +28,9 @@ import 'jest-styled-components'
 import React from 'react'
 import { screen } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
+import { Constitution } from '../../__mocks__/Constitution'
 import { Aside } from './Aside'
 import { Footer, Header, Layout, Page, Section } from './'
-
-const content = (
-  <>
-    <p>
-      I'm baby man braid cold-pressed seitan sartorial, tumblr ennui selfies
-      chia twee subway tile af 90's celiac. Gochujang distillery tumeric flannel
-      lumbersexual gastropub fashion axe viral neutra. Pickled narwhal everyday
-      carry activated charcoal succulents occupy YOLO yuccie forage seitan
-      kitsch. Celiac bespoke cloud bread asymmetrical bicycle rights XOXO
-      cold-pressed hashtag listicle hell of migas. Chillwave brooklyn fam occupy
-      microdosing leggings. Poke af cornhole hot chicken. Portland tattooed +1
-      chia ennui.
-    </p>
-    <p>
-      Neutra franzen cardigan, semiotics tousled gochujang green juice activated
-      charcoal succulents flannel ramps palo santo. Kale chips williamsburg
-      hexagon, etsy cray 8-bit cornhole tilde neutra DIY snackwave whatever food
-      truck marfa fashion axe. Polaroid master cleanse twee DIY tbh pop-up
-      biodiesel austin hell of scenester woke man bun 3 wolf moon. Venmo
-      coloring book beard adaptogen four loko locavore wolf street art +1
-      kombucha marfa 90's unicorn everyday carry.
-    </p>
-  </>
-)
 
 describe('Semantics', () => {
   test('has Header and Footer scrolling with the page', () => {
@@ -63,7 +40,7 @@ describe('Semantics', () => {
           I'm the header
         </Header>
         <Layout hasAside>
-          <Section p="xxlarge">{content}</Section>
+          <Section p="xxlarge">{Constitution}</Section>
         </Layout>
       </Page>
     )
@@ -80,7 +57,7 @@ describe('Semantics', () => {
           I'm the header
         </Header>
         <Layout hasAside>
-          <Section p="xxlarge">{content}</Section>
+          <Section p="xxlarge">{Constitution}</Section>
         </Layout>
       </Page>
     )
@@ -152,13 +129,13 @@ describe('Semantics', () => {
         <Layout hasAside>
           Content...
           <Aside scrollWithin width="20rem">
-            {content}
-            {content}
+            {Constitution}
+            {Constitution}
           </Aside>
           <Section scrollWithin p="xxlarge">
-            {content}
-            {content}
-            {content}
+            {Constitution}
+            {Constitution}
+            {Constitution}
           </Section>
         </Layout>
         <Footer height="3rem" px="large">

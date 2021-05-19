@@ -175,6 +175,9 @@ const CustomGrid = styled(Grid)`
 const Highlighter = styled.div`
   /* Emulate Page behavior for demos */
   height: 100%;
+  & > ${Layout} {
+    height: 100%;
+  }
 
   /* stylelint-disable color-named */
 
@@ -182,11 +185,11 @@ const Highlighter = styled.div`
     background-color: lightskyblue;
   }
 
-  aside {
+  ${Aside} {
     background-color: lightsalmon;
   }
 
-  main {
+  ${Section} {
     background-color: lightseagreen;
   }
 `
