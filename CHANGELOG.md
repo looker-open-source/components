@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.1](https://github.com/looker-open-source/components/compare/v1.3.0...v1.3.1) (2021-05-19)
+
+
+### Bug Fixes
+
+* **Tree:** Detail padding is properly controllable ([#2401](https://github.com/looker-open-source/components/issues/2401)) ([9ba99fc](https://github.com/looker-open-source/components/commit/9ba99fcc8fbb7ab554adda10f01efa419278a40b))
+
+
+
+
+
 # [1.3.0](https://github.com/looker-open-source/components/compare/v1.3.0-alpha.0...v1.3.0) (2021-05-19)
 
 ### Bug Fixes

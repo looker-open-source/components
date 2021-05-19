@@ -2,7 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [1.3.1](https://github.com/looker-open-source/components/compare/v1.3.0...v1.3.1) (2021-05-19)
+
+
 ### Bug Fixes
+
+* **Tree:** Detail padding is properly controllable ([#2401](https://github.com/looker-open-source/components/issues/2401)) ([9ba99fc](https://github.com/looker-open-source/components/commit/9ba99fcc8fbb7ab554adda10f01efa419278a40b))
+
+
+
+
+
+## Bug Fixes
 
 - **HoverDisclosure:** Use CSS visibility instead of de-rendering ([#2359](https://github.com/looker-open-source/components/issues/2359)) ([4186c52](https://github.com/looker-open-source/components/commit/4186c5212ffa4f2545fc95984696ca8b52f3667c))
 - **IconButton:** Match focus ring to toggleColor ([#2282](https://github.com/looker-open-source/components/issues/2282)) ([31df370](https://github.com/looker-open-source/components/commit/31df37044b086f459cdd16a8c0d38fbdb04d1218))
