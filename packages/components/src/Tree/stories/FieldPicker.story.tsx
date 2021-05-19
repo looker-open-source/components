@@ -98,7 +98,7 @@ export const FieldPicker = () => (
     </BorderRadiusOverrideTree>
     <BorderRadiusOverrideTree
       density={-3}
-      label={<Box pl="xxsmall">Order Items</Box>}
+      label={<Box pl="xxsmall">Inventory Items</Box>}
       labelBackgroundOnly
     >
       {fields}
