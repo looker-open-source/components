@@ -33,7 +33,8 @@ export const getDetailOptions = (detail: Detail) => {
   if (typeof detail === 'object' && detail && 'options' in detail) {
     accessory = detail.options.accessory
     content = detail.content
-    padding = detail.options.padding
+    padding =
+      detail.options.padding === undefined || detail.options.padding === true
     hoverDisclosure = detail.options.hoverDisclosure
   } else {
     content = detail
