@@ -22,7 +22,7 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
 
-*/
+ */
 
 import '@testing-library/jest-dom/extend-expect'
 import { fireEvent, screen } from '@testing-library/react'

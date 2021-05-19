@@ -22,7 +22,7 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
 
-*/
+ */
 
 import noop from 'lodash/noop'
 import React, { forwardRef, Ref, useState, FormEvent, useEffect } from 'react'

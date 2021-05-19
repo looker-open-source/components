@@ -22,7 +22,7 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
 
-*/
+ */
 
 import React, { forwardRef, MouseEvent, Ref } from 'react'
 import styled from 'styled-components'

@@ -22,7 +22,7 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
 
-*/
+ */
 
 // This hook allows you to merge click and mousedown behavior to a single callback
 // which will trigger on mousedown or on click if mousedown has not already been triggered

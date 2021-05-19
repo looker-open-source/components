@@ -22,7 +22,7 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
 
-*/
+ */
 
 import React, { ReactNode, FC, useState } from 'react'
 import { DrawerPlacements, DialogDrawerWidth } from '../Drawer/DrawerSurface'

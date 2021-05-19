@@ -22,7 +22,7 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
 
-*/
+ */
 
 export const undefinedCoalesce = <T>(arr: T[]) => {
   return arr.find((element) => element !== undefined)

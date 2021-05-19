@@ -22,7 +22,7 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
 
-*/
+ */
 
 import findIndex from 'lodash/findIndex'
 import React, { useContext, useEffect, useMemo, useRef } from 'react'

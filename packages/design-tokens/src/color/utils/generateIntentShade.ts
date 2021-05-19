@@ -22,7 +22,7 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
 
-*/
+ */
 
 import darken from 'polished/lib/color/darken'
 import getLuminance from 'polished/lib/color/getLuminance'

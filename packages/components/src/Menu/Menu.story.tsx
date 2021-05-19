@@ -22,7 +22,7 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
 
-*/
+ */
 
 import { AddAlert } from '@styled-icons/material/AddAlert'
 import { Chat } from '@styled-icons/material/Chat'

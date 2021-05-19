@@ -22,7 +22,7 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
 
-*/
+ */
 
 import { useEffect, CSSProperties, useState } from 'react'
 import { Placement } from '@popperjs/core'

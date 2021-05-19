@@ -22,7 +22,7 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
 
-*/
+ */
 
 import Highlight, { defaultProps, Language } from 'prism-react-renderer'
 import styled from 'styled-components'

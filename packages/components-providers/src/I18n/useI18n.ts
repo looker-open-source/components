@@ -22,7 +22,7 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
 
-*/
+ */
 
 import i18next, { InitOptions, Resource } from 'i18next'
 import { initReactI18next } from 'react-i18next'

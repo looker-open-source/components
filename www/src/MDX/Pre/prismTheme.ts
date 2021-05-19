@@ -22,7 +22,7 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
 
-*/
+ */
 
 import { PrismTheme } from 'prism-react-renderer'
 import { palette, theme } from '@looker/design-tokens'

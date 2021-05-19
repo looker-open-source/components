@@ -22,7 +22,7 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
 
-*/
+ */
 
 import { Swatch, Theme, Heading, Card, SpaceVertical } from '@looker/components'
 import React, { useContext } from 'react'

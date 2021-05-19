@@ -22,7 +22,7 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
 
-*/
+ */
 
 import { DataTableColumns } from '../Column'
 import { stringComparator, doDataTableSort } from './sort_utils'

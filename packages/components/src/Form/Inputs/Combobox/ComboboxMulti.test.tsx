@@ -22,7 +22,7 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
 
-*/
+ */
 
 import { renderWithTheme } from '@looker/components-test-utils'
 import { cleanup, fireEvent, screen } from '@testing-library/react'
