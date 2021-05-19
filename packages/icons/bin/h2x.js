@@ -24,6 +24,8 @@
 
  */
 
+/* eslint-disable @typescript-eslint/no-var-requires */
+
 /**
  * NOTE: This is highly inspired by:
  * https://github.com/styled-icons/styled-icons/blob/main/tools/builder/transform
