@@ -156,12 +156,7 @@ const TreeLayout: FC<TreeProps> = ({
       aria-current={current}
       aria-selected={selected}
       content={
-        <List
-          density={density}
-          disableKeyboardNav
-          role="group"
-          windowing="none"
-        >
+        <List disableKeyboardNav role="group" windowing="none">
           {children}
         </List>
       }
