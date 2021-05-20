@@ -53,16 +53,16 @@ const PopoverFooterLayout: FC<PopoverFooterProp> = ({
   return (
     <ModalFooter {...props}>
       <Space reverse>
-        {children}
         <Detail>
           {typeof close === 'string' ? (
-            <ButtonTransparent size="small" onClick={closeModal}>
+            <ButtonTransparent color="key" size="small" onClick={closeModal}>
               {close}
             </ButtonTransparent>
           ) : (
             close
           )}
         </Detail>
+        {children}
       </Space>
     </ModalFooter>
   )
@@ -74,9 +74,13 @@ const Detail = styled.div`
 `
 
 export const PopoverFooter = styled(PopoverFooterLayout).attrs(
-  ({ color = (pl = 'large'), pr = 'medium', py = 'xsmall' }) => ({
+  ({ pl = 'large', pr = 'medium', py = 'xsmall' }) => ({
     pl,
     pr,
     py,
   })
-)<PopoverFooterProp>``
+)<PopoverFooterProp>`
+  color: ${({ theme }) => theme.colors.text3};
+  font-size: ${({ theme }) => theme.space.small};
+  margin-right: ${({ theme }) => theme.space.xsmall};
+`

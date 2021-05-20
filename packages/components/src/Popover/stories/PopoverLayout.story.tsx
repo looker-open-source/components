@@ -25,16 +25,24 @@
  */
 
 import React from 'react'
-import { Popover } from '..'
+import { Popover, PopoverContent, PopoverHeader, PopoverFooter } from '..'
 import { Button } from '../..'
-import { PopoverFooter } from '../PopoverFooter'
-
 export default {
-  component: PopoverFooter,
-  title: 'PopoverFooter',
+  title: 'PopoverLayout',
 }
 
-export const Basic = () => (
+export const BasicHeader = () => (
+  <Popover content={<PopoverHeader>Header</PopoverHeader>}>
+    <Button>Open</Button>
+  </Popover>
+)
+
+export const BasicContent = () => (
+  <Popover content={<PopoverContent>Content</PopoverContent>}>
+    <Button>Open</Button>
+  </Popover>
+)
+export const BasicFooter = () => (
   <Popover content={<PopoverFooter>Cancel</PopoverFooter>}>
     <Button>Open</Button>
   </Popover>

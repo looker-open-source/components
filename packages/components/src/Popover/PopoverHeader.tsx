@@ -24,8 +24,40 @@
 
  */
 
-export * from './Popover'
-export * from './PopoverContent'
-export * from './PopoverHeader'
-export * from './PopoverFooter'
-export * from './usePopover'
+import React, { FC, ReactChild } from 'react'
+import styled from 'styled-components'
+import { ModalHeader, ModalHeaderProps } from '../Modal/ModalHeader'
+
+export interface PopoverHeaderProp extends Omit<ModalHeaderProps, 'children'> {
+  children: ReactChild
+  hideClose?: boolean
+}
+
+const PopoverHeaderLayout: FC<PopoverHeaderProp> = ({
+  children,
+  hideClose = false,
+  ...props
+}) => {
+  return (
+    <ModalHeader
+      hideClose={hideClose}
+      fontSize="small"
+      fontWeight="medium"
+      {...props}
+    >
+      {children}
+    </ModalHeader>
+  )
+}
+
+export const PopoverHeader = styled(PopoverHeaderLayout).attrs(
+  ({ pl = 'large', pr = 'medium', py = 'small' }) => ({
+    pl,
+    pr,
+    py,
+  })
+)<PopoverHeaderProp>`
+  color: ${({ theme }) => theme.colors.text5};
+  font-size: ${({ theme }) => theme.space.small};
+  font-weight: ${({ theme }) => theme.fontWeights.medium};
+`

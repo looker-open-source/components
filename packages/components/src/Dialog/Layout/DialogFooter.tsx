@@ -29,7 +29,6 @@ import { ModalFooter, ModalFooterProps } from '../../Modal/ModalFooter'
 
 export const DialogFooter = styled(ModalFooter).attrs(
   ({ px = 'xlarge', py = 'large' }) => ({
-    color,
     px,
     py,
   })
