@@ -116,9 +116,9 @@ export type ListItemProps = CompatibleHTMLProps<HTMLElement> &
     itemRole?: ListItemRole
     /**
      * If true, text children and description will be truncated if text overflows
-     * Specifying `detail` will cause truncation tooltip for label to _always_ be presented
+     * Specifying `description` will cause the truncation tooltip for label to _always_ be presented
      *
-     * Text specified in `detail` property will be displayed below `label` in the tooltip
+     * Text specified in `description` property will be displayed below `label` in the tooltip
      */
     truncate?: TruncateProp
 
