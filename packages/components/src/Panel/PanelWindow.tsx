@@ -24,32 +24,21 @@
 
  */
 
-import { CompatibleHTMLProps } from '@looker/design-tokens'
-import React, { createContext, forwardRef, Ref } from 'react'
 import styled from 'styled-components'
-import { useCallbackRef, useMeasuredElement } from '../utils'
+import { height, position, width } from 'styled-system'
+import { PanelSurfaceProps } from './types'
 
-export const PanelsContext = createContext<ClientRect | null>(null)
-
-const PanelsLayout = forwardRef(
-  (
-    props: CompatibleHTMLProps<HTMLDivElement>,
-    forwardedRef: Ref<HTMLDivElement>
-  ) => {
-    const [element, ref] = useCallbackRef(forwardedRef)
-    const [rect] = useMeasuredElement(element)
-    return (
-      <PanelsContext.Provider value={rect}>
-        <div ref={ref} {...props} />
-      </PanelsContext.Provider>
-    )
-  }
-)
-
-PanelsLayout.displayName = 'PanelsLayout'
-
-export const Panels = styled(PanelsLayout)`
-  height: 100%;
-  position: relative;
-  width: 100%;
+export const PanelWindow = styled.div.attrs<PanelSurfaceProps>(
+  ({ height = '100%', left = 0, top = 0, width = '100%' }) => ({
+    height,
+    left,
+    top,
+    width,
+  })
+)<PanelSurfaceProps>`
+  ${height}
+  ${width}
+  ${position}
+  overflow: hidden;
+  position: absolute;
 `

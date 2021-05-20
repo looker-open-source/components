@@ -25,10 +25,13 @@
  */
 
 import React from 'react'
+import styled from 'styled-components'
 import { Story } from '@storybook/react/types-6-0'
 import { Done } from '@styled-icons/material/Done'
+import { Button } from '../Button'
 import { List, ListItem } from '../List'
-import { Aside, Page, Section } from '../Layout'
+import { Aside, Box, Layout, Page, Section } from '../Layout'
+import { TreeCollection, Tree, TreeItem } from '../Tree'
 import { Panel, Panels, PanelProps, usePanel } from './'
 
 export default {
@@ -101,5 +104,44 @@ export const Hook = () => {
   )
 }
 Hook.parameters = {
+  storyshots: { disable: true },
+}
+
+const AsideBG = styled(Aside)`
+  background: ${({ theme: { colors } }) => colors.ui1};
+`
+
+export const WithTree = () => (
+  <Page hasAside>
+    <AsideBG width="navigation">Left sidebar</AsideBG>
+    <Layout hasAside>
+      <Section>
+        <Panels>
+          <Panel
+            title="Some content"
+            content={<Box bg="key">Am I covered by the tree?</Box>}
+          >
+            <Button>Open Panel</Button>
+          </Panel>
+          <TreeCollection>
+            <Tree label="Orders" defaultOpen>
+              <TreeItem>ID</TreeItem>
+              <TreeItem>Status</TreeItem>
+              <Tree label="Created" defaultOpen>
+                <TreeItem>Created Date</TreeItem>
+                <TreeItem>Created Month</TreeItem>
+                <TreeItem>Created Year</TreeItem>
+                <TreeItem>Created Quarter</TreeItem>
+              </Tree>
+            </Tree>
+          </TreeCollection>
+        </Panels>
+      </Section>
+      <AsideBG width="sidebar">Right sidebar</AsideBG>
+    </Layout>
+  </Page>
+)
+
+WithTree.parameters = {
   storyshots: { disable: true },
 }

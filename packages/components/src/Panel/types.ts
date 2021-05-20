@@ -25,6 +25,7 @@
  */
 
 import { ReactNode } from 'react'
+import { HeightProps, PositionProps, WidthProps } from 'styled-system'
 
 export type PanelDirection = 'left' | 'right'
 
@@ -35,13 +36,15 @@ export interface PanelProps extends Omit<UsePanelProps, 'content'> {
   content: ReactNode
 }
 
-export interface PanelSurfaceProps {
-  /**
-   * Edge of the screen from which the panel will enter
-   * @default 'left'
-   */
-  direction?: PanelDirection
-}
+export type PanelSurfaceProps = HeightProps &
+  PositionProps &
+  WidthProps & {
+    /**
+     * Edge of the screen from which the panel will enter
+     * @default 'left'
+     */
+    direction?: PanelDirection
+  }
 
 export interface UsePanelResponse {
   isOpen: boolean
