@@ -50,6 +50,7 @@ const TreeLayout: FC<TreeProps> = ({
   className,
   dividers,
   forceLabelPadding,
+  itemRole,
   label: propsLabel,
   labelBackgroundOnly: propsLabelBackgroundOnly,
   onBlur,
@@ -72,7 +73,6 @@ const TreeLayout: FC<TreeProps> = ({
     detail: propsDetail,
     disabled,
     icon,
-    itemRole,
     keyColor,
     selected,
     ...restTreeItemInnerProps

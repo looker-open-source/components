@@ -40,7 +40,6 @@ export const treeItemInnerPropKeys = [
   'disabled',
   'hovered',
   'icon',
-  'itemRole',
   'keyColor',
   'selected',
   'truncate',
@@ -79,6 +78,12 @@ export type TreeProps = Omit<
      * @default false
      */
     forceLabelPadding?: boolean
+    /**
+     * Use itemRole to set the type of wrapper element for the label
+     * Note: Unlike TreeItem, 'button' is not an allowed value since click event handlers are passed to the nested <AccordionDisclosure> div
+     * @default 'none'
+     */
+    itemRole?: 'link' | 'none'
     /**
      * Label text or element displayed within Tree's internal AccordionDisclosure
      */

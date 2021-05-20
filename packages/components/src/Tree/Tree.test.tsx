@@ -268,4 +268,30 @@ describe('Tree', () => {
       )
     })
   })
+
+  describe('itemRole', () => {
+    test('renders inner <TreeItem> as <div> by default', () => {
+      renderWithTheme(<Tree label="Default Tree" />)
+
+      expect(screen.getByText('Default Tree').closest('button')).toBe(null)
+      expect(screen.getByText('Default Tree').closest('a')).toBe(null)
+    })
+
+    test('renders inner <TreeItem> as <a> and receives link-related props when itemRole="link"', () => {
+      renderWithTheme(
+        <Tree
+          href="https://google.com"
+          itemRole="link"
+          label="Link Tree"
+          target="_blank"
+        />
+      )
+
+      const treeItemLink = screen.getByText('Link Tree').closest('a')
+      expect(treeItemLink).toHaveAttribute('href', 'https://google.com')
+      expect(treeItemLink).toHaveAttribute('target', '_blank')
+      // Note: rel="noopener noreferrer" is auto added to the underlying <a> element when target="_blank"
+      expect(treeItemLink).toHaveAttribute('rel', 'noopener noreferrer')
+    })
+  })
 })
