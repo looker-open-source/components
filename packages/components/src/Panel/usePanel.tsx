@@ -25,6 +25,7 @@
  */
 
 import React, { useContext, useRef, useState } from 'react'
+import styled from 'styled-components'
 import { Portal } from '../Portal'
 import { useAnimationState, useControlWarn } from '../utils'
 import { PanelHeader } from './PanelHeader'
@@ -99,7 +100,7 @@ export const usePanel = ({
             handleClose={handleClose}
             title={title}
           />
-          <div>{content}</div>
+          <PanelContent>{content}</PanelContent>
         </PanelSurface>
       </PanelWindow>
     </Portal>
@@ -116,3 +117,8 @@ export const usePanel = ({
     setOpen,
   }
 }
+
+const PanelContent = styled.div`
+  flex: 1;
+  overflow: auto;
+`

@@ -45,6 +45,8 @@ export const PanelSurface = styled.div.attrs<PanelSurfaceProps>(
 )<PanelSurfaceProps>`
   background: ${({ theme }) => theme.colors.background};
   bottom: 0;
+  display: flex;
+  flex-direction: column;
   height: 100%;
   left: 0;
   position: absolute;

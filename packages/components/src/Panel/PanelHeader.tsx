@@ -72,6 +72,7 @@ export const PanelHeader: FC<PanelHeaderProps> = ({
       gap="small"
       mt="small"
       mb="1.5rem"
+      flexShrink={0}
     >
       <IconButton
         icon={<ArrowBack />}

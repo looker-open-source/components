@@ -30,7 +30,8 @@ import { Story } from '@storybook/react/types-6-0'
 import { Done } from '@styled-icons/material/Done'
 import { Button } from '../Button'
 import { List, ListItem } from '../List'
-import { Aside, Box, Layout, Page, Section } from '../Layout'
+import { Aside, Layout, Page, Section, SpaceVertical } from '../Layout'
+import { Paragraph } from '../Text'
 import { TreeCollection, Tree, TreeItem } from '../Tree'
 import { Panel, Panels, PanelProps, usePanel } from './'
 
@@ -119,7 +120,37 @@ export const WithTree = () => (
         <Panels>
           <Panel
             title="Some content"
-            content={<Box bg="key">Am I covered by the tree?</Box>}
+            content={
+              <SpaceVertical>
+                <Paragraph>Am I covered by the tree?</Paragraph>
+                <Paragraph>Some text</Paragraph>
+                <Paragraph>Some text</Paragraph>
+                <Paragraph>Some text</Paragraph>
+                <Paragraph>Some text</Paragraph>
+                <Paragraph>Some text</Paragraph>
+                <Paragraph>Some text</Paragraph>
+                <Paragraph>Some text</Paragraph>
+                <Paragraph>Some text</Paragraph>
+                <Paragraph>Some text</Paragraph>
+                <Paragraph>Some text</Paragraph>
+                <Paragraph>Some text</Paragraph>
+                <Paragraph>Some text</Paragraph>
+                <Paragraph>Some text</Paragraph>
+                <Paragraph>Some text</Paragraph>
+                <Paragraph>Some text</Paragraph>
+                <Paragraph>Some text</Paragraph>
+                <Paragraph>Some text</Paragraph>
+                <Paragraph>Some text</Paragraph>
+                <Paragraph>Some text</Paragraph>
+                <Paragraph>Some text</Paragraph>
+                <Paragraph>Some text</Paragraph>
+                <Paragraph>Some text</Paragraph>
+                <Paragraph>Some text</Paragraph>
+                <Paragraph>Some text</Paragraph>
+                <Paragraph>Some text</Paragraph>
+                <Paragraph>Some text</Paragraph>
+              </SpaceVertical>
+            }
           >
             <Button>Open Panel</Button>
           </Panel>
