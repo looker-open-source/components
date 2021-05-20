@@ -33,7 +33,7 @@ import { Aside } from './Aside'
 import { Footer, Header, Layout, Page, Section } from './'
 
 describe('Semantics', () => {
-  test('has Header and Footer scrolling with the page', () => {
+  xtest('has Header and Footer scrolling with the page', () => {
     renderWithTheme(
       <Page>
         <Header height="4rem" px="large">
@@ -50,7 +50,7 @@ describe('Semantics', () => {
     )
   })
 
-  test('has Header and Footer positions fixed when passing prop fixed', () => {
+  xtest('has Header and Footer positions fixed when passing prop fixed', () => {
     renderWithTheme(
       <Page fixed>
         <Header height="4rem" px="large">
@@ -120,7 +120,7 @@ describe('Semantics', () => {
     expect(screen.queryByText('Aside content')).not.toBeInTheDocument()
   })
 
-  test('using prop shadow will display shadow-box on Footer and Header', () => {
+  xtest('using prop shadow will display shadow-box on Footer and Header', () => {
     renderWithTheme(
       <Page fixed>
         <Header height="4rem" px="large">

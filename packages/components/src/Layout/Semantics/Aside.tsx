@@ -62,17 +62,17 @@ export const InnerAside = styled.aside
   .attrs<AsideProps>(({ width = 'sidebar' }) => ({
     width,
   }))<OverflowProps>`
-  ${semanticLayoutCSS}
+${semanticLayoutCSS}
 
-  flex: 0 0 ${({ width }) => width};
-  max-width: ${({ width }) => width};
-  min-width: ${({ width }) => width};
-  overflow: auto;
-  width: 0;
-  ${({ scrollWithin }) => scrollWithin && 'height: fit-content;'}
+flex: 0 0 ${({ width }) => width};
+max-width: ${({ width }) => width};
+min-width: ${({ width }) => width};
+overflow: auto;
+width: 0;
+${({ scrollWithin }) => scrollWithin && 'height: fit-content;'}
 
-  ${borderHelper}
-  ${asideWidth}
+${borderHelper}
+${asideWidth}
   ${({ hasOverflow }) => hasOverflow && OverflowShadow}
 `
 

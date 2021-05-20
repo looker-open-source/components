@@ -109,7 +109,7 @@ const Template: Story<LayoutProps> = (args) => (
         <Aside p="large" width="200px">
           Aside
         </Aside>
-        <Section as="main" p="xxlarge">
+        <Section main p="xxlarge">
           <Heading>Page title</Heading>
           <Tabs>
             <TabList distribute>
@@ -153,7 +153,7 @@ const Template2: Story<LayoutProps> = (args) => (
           {menuItems}
         </Aside>
         <Layout>
-          <Section as="main" p="xxlarge">
+          <Section main p="xxlarge">
             <Heading>Section title</Heading>
             {longContent}
           </Section>
@@ -228,7 +228,7 @@ export const ScrollIndependently = () => (
           Chillwave brooklyn fam occupy microdosing leggings. Poke af cornhole
           hot chicken. Portland tattooed +1 chia ennui.
         </Aside>
-        <Section as="main" p="xxlarge">
+        <Section main p="xxlarge">
           <Heading>Page title</Heading>
           <Tabs>
             <TabList distribute>
@@ -279,7 +279,7 @@ export const ScrollSelectedAreas = () => (
           hot chicken. Portland tattooed +1 chia ennui.
         </Aside>
         <Layout hasAside>
-          <Section as="main" scrollWithin p="xxlarge">
+          <Section main scrollWithin p="xxlarge">
             <Heading>Page title</Heading>
             <Tabs>
               <TabList distribute>
@@ -330,7 +330,7 @@ export const ScrollAllAreasTogetherDefault = () => (
           Chillwave brooklyn fam occupy microdosing leggings. Poke af cornhole
           hot chicken. Portland tattooed +1 chia ennui.
         </Aside>
-        <Section as="main" p="xxlarge">
+        <Section main p="xxlarge">
           <Heading>Page title</Heading>
           <Tabs>
             <TabList distribute>
@@ -413,7 +413,7 @@ export const AsideCollapseShadow = () => {
               Alternate Aside Footer
             </Footer>
           </Aside>
-          <Section as="main" scrollWithin p="xxlarge">
+          <Section main scrollWithin p="xxlarge">
             <Heading>Section title</Heading>
             <FieldToggleSwitch
               label="Show Aside"
@@ -453,7 +453,7 @@ export const FooterHeaderShadow = () => (
         {menuItems}
         {menuItems}
       </Aside>
-      <Section as="main" scrollWithin p="xxlarge">
+      <Section main scrollWithin p="xxlarge">
         {longContent}
         {longContent}
         {longContent}
