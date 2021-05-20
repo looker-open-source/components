@@ -32,6 +32,7 @@ import { SemanticLayoutBase, semanticLayoutCSS } from './semanticStyledBase'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface SectionProps extends SemanticLayoutBase {
+  as?: 'main'
   /**
    * To be used within the context of <Page fixed> container.
    * When true, this removes the inner overflow-y scrolling
@@ -58,11 +59,19 @@ export const InnerSection = styled.section.withConfig({
 `
 
 const SectionLayout = forwardRef(
-  ({ children, ...props }: SectionProps, forwardedRef: Ref<HTMLDivElement>) => {
+  (
+    { as, children, ...props }: SectionProps,
+    forwardedRef: Ref<HTMLDivElement>
+  ) => {
     const [hasOverflow, ref] = useOverflow(forwardedRef)
 
     return (
-      <InnerSection hasOverflow={hasOverflow} ref={ref} {...props}>
+      <InnerSection
+        forwardedAs={as}
+        hasOverflow={hasOverflow}
+        ref={ref}
+        {...props}
+      >
         {children}
       </InnerSection>
     )
