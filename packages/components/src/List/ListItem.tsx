@@ -39,7 +39,7 @@ import React, {
 import { ListItemDetail } from '../List/ListItemDetail'
 import { Text } from '../Text'
 import { IconPlaceholder, IconType } from '../Icon'
-import { Truncate } from '../Truncate'
+import { Truncate, TruncateProp } from '../Truncate'
 import {
   HoverDisclosureContext,
   HoverDisclosure,
@@ -68,9 +68,10 @@ const TruncateWrapper: FC<{
   color?: string
   fontSize?: FontSizes
   lineHeight?: FontSizes
-}> = ({ children, color, fontSize, lineHeight }) => (
+  truncateDescription?: string
+}> = ({ children, color, truncateDescription, fontSize, lineHeight }) => (
   <Text color={color} fontSize={fontSize} lineHeight={lineHeight}>
-    <Truncate>{children}</Truncate>
+    <Truncate description={truncateDescription}>{children}</Truncate>
   </Text>
 )
 
@@ -115,8 +116,12 @@ export type ListItemProps = CompatibleHTMLProps<HTMLElement> &
     itemRole?: ListItemRole
     /**
      * If true, text children and description will be truncated if text overflows
+     * Specifying `detail` will cause truncation tooltip for label to _always_ be presented
+     *
+     * Text specified in `detail` property will be displayed below `label` in the tooltip
      */
-    truncate?: boolean
+    truncate?: TruncateProp
+
     /**
      * Callback to specify onClick handler on item's whitespace.
      * @private May only be passed via TreeItem. This feature may be removed without a breaking change. We STRONGLY discourage the direct use of this property.
@@ -169,6 +174,8 @@ const ListItemInternal = forwardRef(
       iconGutter,
       color: contextColor,
     } = useContext(ListItemContext)
+    const truncateDescription =
+      typeof truncate === 'object' ? truncate.description : undefined
 
     const itemDimensions = listItemDimensions(propsDensity || contextDensity)
 
@@ -210,6 +217,7 @@ const ListItemInternal = forwardRef(
         color={listItemLabelColor(color, disabled)}
         fontSize={itemDimensions.labelFontSize}
         lineHeight={itemDimensions.labelLineHeight}
+        truncateDescription={truncateDescription}
       >
         {children}
       </Wrapper>

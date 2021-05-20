@@ -28,10 +28,18 @@ import styled from 'styled-components'
 import { width as widthHelper, WidthProps } from 'styled-system'
 import { useIsTruncated } from '../utils/useIsTruncated'
 import { useTooltip } from '../Tooltip'
+import { Span } from '../Text/Span'
 
 export interface TruncateProps extends WidthProps {
   className?: string
+  /**
+   * Specifying `description` will cause truncation tooltip to _always_ be presented
+   * Text specified in `description` property will be displayed below `children` supplied
+   */
+  description?: string
 }
+
+export type TruncateProp = undefined | boolean | { description: string }
 
 /**
  * Prevent text wrapping on long labels and instead render truncated text.
@@ -40,6 +48,7 @@ export interface TruncateProps extends WidthProps {
 const TruncateLayout: FC<TruncateProps> = ({
   children,
   className: propsClassName,
+  description,
   width = '100%',
 }) => {
   const [domNode, setDomNode] = useState<HTMLDivElement | null>(null)
@@ -53,8 +62,20 @@ const TruncateLayout: FC<TruncateProps> = ({
   /*
    * only render tooltip if text actually overflows
    */
+
   const { tooltip, domProps } = useTooltip({
-    content: isTruncated ? children : undefined,
+    content: (
+      <>
+        {children}
+        {description && (
+          <>
+            <br />
+            <Span color="text2">{description}</Span>
+          </>
+        )}
+      </>
+    ),
+    disabled: !description && !isTruncated,
     invert: false,
     placement: 'top-start',
     textAlign: 'left',

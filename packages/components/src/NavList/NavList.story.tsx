@@ -52,8 +52,20 @@ export const Basic = () => {
       >
         Explore
       </ListItem>
-      <ListItem icon={<Info />} onClick={handleClick} selected={selected}>
+      <ListItem
+        icon={<Info />}
+        onClick={handleClick}
+        selected={selected}
+        truncate={{ description: "It's an item" }}
+      >
         Develop
+      </ListItem>
+      <ListItem
+        icon={<Info />}
+        truncate={{ description: 'Word Document - Last update 3 days ago' }}
+      >
+        This is a really long navigation list item that should get truncated at
+        some point waaaayyyy out in the nether regions of a long line of text
       </ListItem>
     </NavList>
   )
