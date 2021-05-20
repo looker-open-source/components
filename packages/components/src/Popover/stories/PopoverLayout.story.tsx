@@ -24,13 +24,18 @@
 
  */
 
-import styled from 'styled-components'
-import { ModalFooter, ModalFooterProps } from '../../Modal/ModalFooter'
+import React from 'react'
+import { Popover } from '..'
+import { Button } from '../..'
+import { PopoverFooter } from '../PopoverFooter'
 
-export const DialogFooter = styled(ModalFooter).attrs(
-  ({ px = 'xlarge', py = 'large' }) => ({
-    color,
-    px,
-    py,
-  })
-)<ModalFooterProps>``
+export default {
+  component: PopoverFooter,
+  title: 'PopoverFooter',
+}
+
+export const Basic = () => (
+  <Popover content={<PopoverFooter>Cancel</PopoverFooter>}>
+    <Button>Open</Button>
+  </Popover>
+)

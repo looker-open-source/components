@@ -87,7 +87,6 @@ export const ModalContent: FC<ModalContentProps> = ({
     <InnerModalContent
       hasOverflow={hasOverflow}
       ref={internalRef}
-      // px={['medium', 'xlarge']}
       pb={hasOverflow || !!hasFooter ? 'large' : 'xxxsmall'}
       pt={hasOverflow || !!hasHeader ? 'large' : 'xxxsmall'}
       {...pickStyledProps(props)}
