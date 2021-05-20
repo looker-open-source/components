@@ -39,7 +39,7 @@ import React, {
 import { ListItemDetail } from '../List/ListItemDetail'
 import { Text } from '../Text'
 import { IconPlaceholder, IconType } from '../Icon'
-import { Truncate, TruncateProp } from '../Truncate'
+import { Truncate, TruncateConfigProp } from '../Truncate'
 import {
   HoverDisclosureContext,
   HoverDisclosure,
@@ -120,7 +120,7 @@ export type ListItemProps = CompatibleHTMLProps<HTMLElement> &
      *
      * Text specified in `description` property will be displayed below `label` in the tooltip
      */
-    truncate?: TruncateProp
+    truncate?: TruncateConfigProp
 
     /**
      * Callback to specify onClick handler on item's whitespace.

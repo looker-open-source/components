@@ -39,7 +39,7 @@ export interface TruncateProps extends WidthProps {
   description?: string
 }
 
-export type TruncateProp = undefined | boolean | { description: string }
+export type TruncateConfigProp = undefined | boolean | { description: string }
 
 /**
  * Prevent text wrapping on long labels and instead render truncated text.
