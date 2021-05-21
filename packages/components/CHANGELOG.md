@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0-alpha.0](https://github.com/looker-open-source/components/compare/v1.3.1...v1.4.0-alpha.0) (2021-05-21)
+
+
+### Bug Fixes
+
+* **Tree:** Properly disperse ListItem related props onto inner TreeItem ([#2406](https://github.com/looker-open-source/components/issues/2406)) ([9438bdd](https://github.com/looker-open-source/components/commit/9438bdd6c2a3c7381eca679634947dbed810beb0))
+
+
+### Features
+
+* **Truncate:** now supports an optional `description` property ([#2403](https://github.com/looker-open-source/components/issues/2403)) ([83dd55f](https://github.com/looker-open-source/components/commit/83dd55fb1cae543d8b620107da0c25c002f3f48c))
+
+
+
+
+
 ## [1.3.1](https://github.com/looker-open-source/components/compare/v1.3.0...v1.3.1) (2021-05-19)
 
 
