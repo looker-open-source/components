@@ -35,7 +35,7 @@ describe('generateTheme', () => {
     expect(generated.colors).toMatchInlineSnapshot(`
       Object {
         "background": "#FFFFFF",
-        "body": "#0c0c0c",
+        "body": "black",
         "calculation": "#319220",
         "calculationAccent": "#deeddb",
         "calculationBorder": "#319220",
@@ -100,8 +100,8 @@ describe('generateTheme', () => {
         "text2": "#595959",
         "text3": "#383838",
         "text4": "#1e1e1e",
-        "text5": "#0c0c0c",
-        "title": "#0c0c0c",
+        "text5": "black",
+        "title": "black",
         "ui1": "#f4f4f4",
         "ui2": "#e0e0e0",
         "ui3": "#c4c4c4",
@@ -120,7 +120,7 @@ describe('generateTheme', () => {
     expect(generated.colors).toMatchInlineSnapshot(`
       Object {
         "background": "black",
-        "body": "#f2f2f2",
+        "body": "white",
         "calculation": "#319220",
         "calculationAccent": "#0d2708",
         "calculationBorder": "#319220",
@@ -185,8 +185,8 @@ describe('generateTheme', () => {
         "text2": "#a5a5a5",
         "text3": "#c6c6c6",
         "text4": "#e0e0e0",
-        "text5": "#f2f2f2",
-        "title": "#f2f2f2",
+        "text5": "white",
+        "title": "white",
         "ui1": "#0f0f0f",
         "ui2": "#2d2d2d",
         "ui3": "#575757",

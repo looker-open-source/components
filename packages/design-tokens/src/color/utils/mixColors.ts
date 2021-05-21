@@ -30,4 +30,5 @@ export const mixColors = (
   mixAmount: number,
   foreground: string,
   background: string
-) => mix(mixAmount / 100, foreground, background)
+) =>
+  mixAmount === 100 ? foreground : mix(mixAmount / 100, foreground, background)
