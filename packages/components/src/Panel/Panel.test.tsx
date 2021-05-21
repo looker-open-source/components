@@ -206,7 +206,7 @@ describe('Panel', () => {
 
     expect(screen.getByText('Panel content')).toBeInTheDocument()
 
-    fireEvent.click(screen.getByText('Close Panel Hook'))
+    fireEvent.click(screen.getByText('CloseTitle Panel Hook'))
 
     expect(screen.getByText('Option A')).toBeInTheDocument()
   })
