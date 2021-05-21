@@ -98,7 +98,7 @@ export const CommonLayouts = () => (
 
 const HeaderLayoutAsideMain = () => (
   <Highlighter>
-    <Layout height="100%">
+    <Layout>
       <Header>Header</Header>
       <Layout hasAside>
         <Aside width="20%">Aside</Aside>
@@ -110,7 +110,7 @@ const HeaderLayoutAsideMain = () => (
 
 const HeaderLayoutAsideMainFooter = () => (
   <Highlighter>
-    <Layout height="100%">
+    <Layout>
       <Header>Header</Header>
       <Layout hasAside>
         <Aside width="20%">Aside</Aside>
@@ -123,7 +123,7 @@ const HeaderLayoutAsideMainFooter = () => (
 
 const AsideMainFooter = () => (
   <Highlighter>
-    <Layout height="100%">
+    <Layout>
       <Layout hasAside>
         <Aside width="20%">Aside</Aside>
         <Section>Section</Section>
@@ -135,7 +135,7 @@ const AsideMainFooter = () => (
 
 const AsideLayoutHeaderMainFooter = () => (
   <Highlighter>
-    <Layout height="100%">
+    <Layout>
       <Layout hasAside>
         <Aside width="20%">Aside</Aside>
         <Layout>
@@ -150,7 +150,7 @@ const AsideLayoutHeaderMainFooter = () => (
 
 const AsideLayoutHeaderLayoutLayoutMainAsideFooter = () => (
   <Highlighter>
-    <Layout height="100%">
+    <Layout>
       <Layout hasAside>
         <Aside width="20%">Aside</Aside>
         <Layout>

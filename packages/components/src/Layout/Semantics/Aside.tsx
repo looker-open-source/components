@@ -28,7 +28,7 @@ import React, { forwardRef, Ref } from 'react'
 import { shouldForwardProp } from '@looker/design-tokens'
 import styled from 'styled-components'
 import { ResponsiveValue } from 'styled-system'
-import { OverflowShadow, useOverflow, UseOverflowProps } from '../../utils'
+import { OverflowShadow, useOverflow } from '../../utils'
 import { AsideSizeRamp, asideWidth } from './asideWidth'
 import { SemanticLayoutBase, semanticLayoutCSS } from './semanticStyledBase'
 import { borderHelper, SemanticBorderProps } from './semanticBorderHelper'
@@ -53,15 +53,30 @@ export interface AsideProps extends SemanticLayoutBase, SemanticBorderProps {
   width?: ResponsiveValue<AsideSizeRamp | string>
 }
 
-interface OverflowProps extends AsideProps, UseOverflowProps {}
+const AsideLayout = forwardRef(
+  (
+    { collapse, children, ...props }: AsideProps,
+    forwardedRef: Ref<HTMLDivElement>
+  ) => {
+    const [hasOverflow, ref] = useOverflow(forwardedRef)
 
-export const InnerAside = styled.aside
+    return collapse ? null : (
+      <OverflowShadow as="aside" hasOverflow={hasOverflow} ref={ref} {...props}>
+        {children}
+      </OverflowShadow>
+    )
+  }
+)
+
+AsideLayout.displayName = 'AsideLayout'
+
+export const Aside = styled(AsideLayout)
   .withConfig<AsideProps>({
     shouldForwardProp: (prop) => prop === 'collapse' || shouldForwardProp(prop),
   })
   .attrs<AsideProps>(({ width = 'sidebar' }) => ({
     width,
-  }))<OverflowProps>`
+  }))<AsideProps>`
 ${semanticLayoutCSS}
 
 flex: 0 0 ${({ width }) => width};
@@ -72,25 +87,4 @@ width: 0;
 ${({ scrollWithin }) => scrollWithin && 'height: fit-content;'}
 
 ${borderHelper}
-${asideWidth}
-  ${({ hasOverflow }) => hasOverflow && OverflowShadow}
-`
-
-const AsideLayout = forwardRef(
-  (
-    { collapse, children, ...props }: AsideProps,
-    forwardedRef: Ref<HTMLDivElement>
-  ) => {
-    const [hasOverflow, ref] = useOverflow(forwardedRef)
-
-    return collapse ? null : (
-      <InnerAside hasOverflow={hasOverflow} ref={ref} {...props}>
-        {children}
-      </InnerAside>
-    )
-  }
-)
-
-AsideLayout.displayName = 'AsideLayout'
-
-export const Aside = styled(AsideLayout)``
+${asideWidth}`

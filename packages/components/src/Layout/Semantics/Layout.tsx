@@ -28,7 +28,7 @@ import React, { forwardRef, Ref } from 'react'
 import { CompatibleHTMLProps } from '@looker/design-tokens'
 import styled, { css } from 'styled-components'
 import { simpleLayoutCSS, SimpleLayoutProps } from '../utils/simple'
-import { OverflowShadow, useOverflow, UseOverflowProps } from '../../utils'
+import { OverflowShadow, useOverflow } from '../../utils'
 import { Section } from './Section'
 
 export interface LayoutProps
@@ -46,16 +46,11 @@ export interface LayoutProps
   hasAside?: boolean
 }
 
-interface OverflowProps extends LayoutProps, UseOverflowProps {}
-
 const hasAsideCSS = css`
   flex-direction: row;
   & > ${Section} {
     width: 0;
   }
-`
-const InnerLayout = styled.div<OverflowProps>`
-  ${({ hasOverflow }) => hasOverflow && OverflowShadow}
 `
 
 const LayoutLayout = forwardRef(
@@ -63,9 +58,9 @@ const LayoutLayout = forwardRef(
     const [hasOverflow, ref] = useOverflow(forwardedRef)
 
     return (
-      <InnerLayout hasOverflow={hasOverflow} ref={ref} {...props}>
+      <OverflowShadow hasOverflow={hasOverflow} ref={ref} {...props}>
         {children}
-      </InnerLayout>
+      </OverflowShadow>
     )
   }
 )

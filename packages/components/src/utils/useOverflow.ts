@@ -25,19 +25,23 @@
  */
 
 import { useEffect, useState, Ref } from 'react'
-import { css } from 'styled-components'
+import styled, { css } from 'styled-components'
 import { useResize } from './useResize'
 import { useCallbackRef } from './useCallbackRef'
 
-export interface UseOverflowProps {
+interface UseOverflowProps {
   hasOverflow: boolean
 }
 
-export const OverflowShadow = css`
+const OverflowShadowStyle = css`
   border-bottom: 1px solid ${({ theme }) => theme.colors.ui2};
   border-top: 1px solid ${({ theme }) => theme.colors.ui2};
   box-shadow: 0 -4px 4px -4px ${({ theme }) => theme.colors.ui2},
     inset 0 -4px 4px -4px ${({ theme }) => theme.colors.ui2};
+`
+
+export const OverflowShadow = styled.div<UseOverflowProps>`
+  ${({ hasOverflow }) => hasOverflow && OverflowShadowStyle}
 `
 
 export const useOverflow = (

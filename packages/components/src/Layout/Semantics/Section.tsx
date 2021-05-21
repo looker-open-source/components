@@ -26,7 +26,7 @@
 
 import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
-import { OverflowShadow, useOverflow, UseOverflowProps } from '../../utils'
+import { OverflowShadow, useOverflow } from '../../utils'
 import { SemanticLayoutBase, semanticLayoutCSS } from './semanticStyledBase'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -45,12 +45,6 @@ export interface SectionProps extends SemanticLayoutBase {
   scrollWithin?: boolean
 }
 
-interface OverflowProps extends SectionProps, UseOverflowProps {}
-
-export const InnerSection = styled.div<OverflowProps>`
-  ${({ hasOverflow }) => hasOverflow && OverflowShadow}
-`
-
 const SectionLayout = forwardRef(
   (
     { main, children, ...props }: SectionProps,
@@ -58,14 +52,14 @@ const SectionLayout = forwardRef(
   ) => {
     const [hasOverflow, ref] = useOverflow(forwardedRef)
     return (
-      <InnerSection
+      <OverflowShadow
         as={main ? 'main' : 'section'}
         hasOverflow={hasOverflow}
         ref={ref}
         {...props}
       >
         {children}
-      </InnerSection>
+      </OverflowShadow>
     )
   }
 )
