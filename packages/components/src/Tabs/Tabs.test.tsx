@@ -29,6 +29,7 @@ import '@testing-library/jest-dom/extend-expect'
 import { renderWithTheme } from '@looker/components-test-utils'
 import React from 'react'
 import { fireEvent, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import { Tab } from './Tab'
 import { TabList } from './TabList'
 import { TabPanel } from './TabPanel'
@@ -195,6 +196,28 @@ describe('focus behavior', () => {
     expect(screen.getByText('tab2')).toHaveStyle(
       'box-shadow: 0 0 0 0.15rem rgba(151,133,242,0.25);'
     )
+  })
+
+  test('Tab Focus: TabPanel can use tabIndex to exclude itself from tab flow', () => {
+    renderWithTheme(
+      <Tabs>
+        <TabList>
+          <Tab>tab1</Tab>
+          <Tab>tab2</Tab>
+        </TabList>
+        <TabPanels>
+          <TabPanel tabIndex={-1}>
+            <button>Some button</button>
+          </TabPanel>
+          <TabPanel>this is tab2 content</TabPanel>
+        </TabPanels>
+      </Tabs>
+    )
+    const tab1 = screen.getByText('tab1')
+    userEvent.tab()
+    expect(tab1).toHaveFocus()
+    userEvent.tab()
+    expect(screen.getByText('Some button')).toHaveFocus()
   })
 
   test('Tab keyboard navigation', () => {

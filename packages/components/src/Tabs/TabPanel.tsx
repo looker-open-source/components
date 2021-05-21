@@ -30,11 +30,17 @@ import styled from 'styled-components'
 export interface TabPanelProps {
   className?: string
   selected?: boolean
+  tabIndex?: number
 }
 
-const TabPanelLayout: FC<TabPanelProps> = ({ children, className, selected }) =>
+const TabPanelLayout: FC<TabPanelProps> = ({
+  children,
+  className,
+  selected,
+  tabIndex = 0,
+}) =>
   selected ? (
-    <div className={className} tabIndex={0}>
+    <div className={className} tabIndex={tabIndex}>
       {children}
     </div>
   ) : null
