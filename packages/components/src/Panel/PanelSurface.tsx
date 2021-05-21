@@ -29,7 +29,7 @@ import { variant } from 'styled-system'
 import { PanelSurfaceProps } from './types'
 
 const surfaceTransition = () => css`
-  ${({ theme }) => `${theme.transitions.moderate}ms ${theme.easings.ease}`}
+  ${({ theme }) => `${theme.transitions.moderate}ms ${theme.easings.easeOut}`}
 `
 
 const direction = variant({

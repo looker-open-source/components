@@ -25,7 +25,6 @@
  */
 
 import React from 'react'
-import styled from 'styled-components'
 import { Story } from '@storybook/react/types-6-0'
 import { Done } from '@styled-icons/material/Done'
 import { Button } from '../Button'
@@ -108,21 +107,52 @@ Hook.parameters = {
   storyshots: { disable: true },
 }
 
-const AsideBG = styled(Aside)`
-  background: ${({ theme: { colors } }) => colors.ui1};
-`
-
-export const WithTree = () => (
-  <Page hasAside>
-    <AsideBG width="navigation">Left sidebar</AsideBG>
+export const CenterPlacement = () => (
+  <Page hasAside height="100vh">
+    <Aside width="navigation">Left sidebar</Aside>
     <Layout hasAside>
       <Section>
         <Panels>
           <Panel
-            title="Some content"
+            title="Some title"
             content={
               <SpaceVertical>
-                <Paragraph>Am I covered by the tree?</Paragraph>
+                <Panel
+                  title="Another title"
+                  direction="right"
+                  content={
+                    <SpaceVertical>
+                      <Paragraph>Some other text</Paragraph>
+                      <Paragraph>Some other text</Paragraph>
+                      <Paragraph>Some other text</Paragraph>
+                      <Paragraph>Some other text</Paragraph>
+                      <Paragraph>Some other text</Paragraph>
+                      <Paragraph>Some other text</Paragraph>
+                      <Paragraph>Some other text</Paragraph>
+                      <Paragraph>Some other text</Paragraph>
+                      <Paragraph>Some other text</Paragraph>
+                      <Paragraph>Some other text</Paragraph>
+                      <Paragraph>Some other text</Paragraph>
+                      <Paragraph>Some other text</Paragraph>
+                      <Paragraph>Some other text</Paragraph>
+                      <Paragraph>Some other text</Paragraph>
+                      <Paragraph>Some other text</Paragraph>
+                      <Paragraph>Some other text</Paragraph>
+                      <Paragraph>Some other text</Paragraph>
+                      <Paragraph>Some other text</Paragraph>
+                      <Paragraph>Some other text</Paragraph>
+                      <Paragraph>Some other text</Paragraph>
+                      <Paragraph>Some other text</Paragraph>
+                      <Paragraph>Some other text</Paragraph>
+                      <Paragraph>Some other text</Paragraph>
+                      <Paragraph>Some other text</Paragraph>
+                      <Paragraph>Some other text</Paragraph>
+                      <Paragraph>Some other text</Paragraph>
+                    </SpaceVertical>
+                  }
+                >
+                  <Button>Open Another Panel</Button>
+                </Panel>
                 <Paragraph>Some text</Paragraph>
                 <Paragraph>Some text</Paragraph>
                 <Paragraph>Some text</Paragraph>
@@ -154,25 +184,46 @@ export const WithTree = () => (
           >
             <Button>Open Panel</Button>
           </Panel>
-          <TreeCollection>
-            <Tree label="Orders" defaultOpen>
-              <TreeItem>ID</TreeItem>
-              <TreeItem>Status</TreeItem>
-              <Tree label="Created" defaultOpen>
-                <TreeItem>Created Date</TreeItem>
-                <TreeItem>Created Month</TreeItem>
-                <TreeItem>Created Year</TreeItem>
-                <TreeItem>Created Quarter</TreeItem>
-              </Tree>
-            </Tree>
-          </TreeCollection>
+          <Paragraph>Content to be covered by the panel</Paragraph>
         </Panels>
       </Section>
-      <AsideBG width="sidebar">Right sidebar</AsideBG>
+      <Aside width="sidebar">Right sidebar</Aside>
     </Layout>
   </Page>
 )
 
-WithTree.parameters = {
+CenterPlacement.parameters = {
   storyshots: { disable: true },
 }
+
+export const WithTree = () => (
+  <Page hasAside>
+    <Aside width="navigation">
+      <Panels>
+        <Panel
+          title="Some title"
+          content={
+            <SpaceVertical>
+              <Paragraph>Tree should be hidden</Paragraph>
+            </SpaceVertical>
+          }
+        >
+          <Button>Open Panel</Button>
+        </Panel>
+        <TreeCollection>
+          <Tree label="Orders" defaultOpen>
+            <TreeItem>ID</TreeItem>
+            <TreeItem>Status</TreeItem>
+            <Tree label="Created" defaultOpen>
+              <TreeItem>Created Date</TreeItem>
+              <TreeItem>Created Month</TreeItem>
+              <TreeItem>Created Year</TreeItem>
+              <TreeItem>Created Quarter</TreeItem>
+            </Tree>
+          </Tree>
+        </TreeCollection>
+      </Panels>
+    </Aside>
+    <Section>Main content</Section>
+  </Page>
+)
