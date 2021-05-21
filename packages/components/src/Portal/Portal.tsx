@@ -63,6 +63,12 @@ interface PortalPlacementProps {
    * @default 'center
    */
   vertical?: 'center' | 'top' | 'bottom'
+
+  /**
+   * Should content scroll?
+   * @default true
+   */
+  fixed?: boolean
 }
 
 export interface PortalProps extends PortalPlacementProps {
@@ -119,7 +125,7 @@ const InvisiBox = styled.div.attrs(
       : 'center'};
   left: 0;
   pointer-events: none;
-  position: fixed;
+  position: ${({ fixed }) => (fixed === false ? 'absolute' : 'fixed')};
   right: 0;
   top: 0;
   z-index: ${({ theme: { zIndexFloor } }) => zIndexFloor};

@@ -30,34 +30,15 @@ import { ArrowBack } from '@styled-icons/material-rounded/ArrowBack'
 import { Heading } from '../Text'
 import { Space } from '../Layout'
 import { IconButton } from '../Button'
-import { PanelDirection } from './types'
+import { PanelBaseProps } from './types'
 
-export interface PanelHeaderProps {
+export type PanelHeaderProps = PanelBaseProps & {
   className?: string
-
-  /**
-   * @TODO - Remove in 2.x
-   * @deprecated
-   */
-  direction?: PanelDirection
-
-  /**
-   * IconButton in PanelHeader will have toggled and background color
-   * based on theme's key color
-   * @default 'false'
-   */
-  iconToggle?: boolean
-
-  /**
-   * callback to close Panel
-   */
-  handleClose?: () => void
-  title: string
 }
 
 export const PanelHeader: FC<PanelHeaderProps> = ({
   className,
-  handleClose,
+  onClose,
   iconToggle = false,
   title,
 }) => {
@@ -77,7 +58,7 @@ export const PanelHeader: FC<PanelHeaderProps> = ({
       <IconButton
         icon={<ArrowBack />}
         label={`Close ${title}`}
-        onClick={handleClose}
+        onClick={onClose}
         toggle={iconToggle}
         toggleBackground={iconToggle}
         // eslint-disable-next-line i18next/no-literal-string

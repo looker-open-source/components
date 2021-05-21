@@ -83,7 +83,7 @@ export const usePanel = ({
   }
 
   const panel = renderDOM && (
-    <Portal>
+    <Portal fixed={false}>
       <PanelWindow
         width={rect?.width}
         height={rect?.height}
@@ -97,7 +97,7 @@ export const usePanel = ({
         >
           <PanelHeader
             iconToggle={iconToggle}
-            handleClose={handleClose}
+            onClose={handleClose}
             title={title}
           />
           <PanelContent>{content}</PanelContent>
