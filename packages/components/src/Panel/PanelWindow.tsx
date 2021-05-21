@@ -25,17 +25,25 @@
  */
 
 import styled from 'styled-components'
-import { height, position, width } from 'styled-system'
-import { PanelSurfaceProps } from './types'
+import {
+  height,
+  HeightProps,
+  position,
+  PositionProps,
+  width,
+  WidthProps,
+} from 'styled-system'
 
-export const PanelWindow = styled.div.attrs<PanelSurfaceProps>(
+export type PanelWindowProps = HeightProps & PositionProps & WidthProps
+
+export const PanelWindow = styled.div.attrs<PanelWindowProps>(
   ({ height = '100%', left = 0, top = 0, width = '100%' }) => ({
     height,
     left,
     top,
     width,
   })
-)<PanelSurfaceProps>`
+)<PanelWindowProps>`
   ${height}
   ${width}
   ${position}

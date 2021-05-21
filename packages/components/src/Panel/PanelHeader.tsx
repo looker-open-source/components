@@ -25,6 +25,7 @@
  */
 
 import React, { FC, useContext } from 'react'
+import { useTranslation } from 'react-i18next'
 import { ThemeContext } from 'styled-components'
 import { ArrowBack } from '@styled-icons/material-rounded/ArrowBack'
 import { Heading } from '../Text'
@@ -32,22 +33,17 @@ import { Space } from '../Layout'
 import { IconButton } from '../Button'
 import { PanelBaseProps } from './types'
 
-export type PanelHeaderProps = PanelBaseProps & {
-  className?: string
-}
-
-export const PanelHeader: FC<PanelHeaderProps> = ({
-  className,
+export const PanelHeader: FC<PanelBaseProps> = ({
   onClose,
   iconToggle = false,
   title,
 }) => {
+  const { t } = useTranslation('PanelHeader')
   const { space } = useContext(ThemeContext)
 
   return (
     <Space
       as="header"
-      className={className}
       height={space.xxlarge}
       px="large"
       gap="small"
@@ -57,7 +53,7 @@ export const PanelHeader: FC<PanelHeaderProps> = ({
     >
       <IconButton
         icon={<ArrowBack />}
-        label={`Close ${title}`}
+        label={t('CloseTitle', { title })}
         onClick={onClose}
         toggle={iconToggle}
         toggleBackground={iconToggle}

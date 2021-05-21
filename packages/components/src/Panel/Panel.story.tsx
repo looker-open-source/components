@@ -200,14 +200,7 @@ export const WithTree = () => (
   <Page hasAside>
     <Aside width="navigation">
       <Panels>
-        <Panel
-          title="Some title"
-          content={
-            <SpaceVertical>
-              <Paragraph>Tree should be hidden</Paragraph>
-            </SpaceVertical>
-          }
-        >
+        <Panel title="Some title" content="Tree should be hidden">
           <Button>Open Panel</Button>
         </Panel>
         <TreeCollection>

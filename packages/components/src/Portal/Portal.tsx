@@ -65,7 +65,8 @@ interface PortalPlacementProps {
   vertical?: 'center' | 'top' | 'bottom'
 
   /**
-   * Should content scroll?
+   * Enables fixed positioning on the portal.
+   * Setting to false will allow content to scroll with the rest of the page.
    * @default true
    */
   fixed?: boolean
