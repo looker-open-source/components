@@ -270,6 +270,14 @@ const ListItemInternal = forwardRef(
       selected,
     }
 
+    const ariaProps = {}
+    const wrapperProps = {}
+    Object.entries(restProps).forEach(([propKey, propValue]) =>
+      propKey.startsWith('aria-')
+        ? (ariaProps[propKey] = propValue)
+        : (wrapperProps[propKey] = propValue)
+    )
+
     const LabelCreator: FC<{
       children: ReactNode
       className?: string
@@ -288,6 +296,7 @@ const ListItemInternal = forwardRef(
         role={role || 'listitem'}
         target={target}
         tabIndex={tabIndex}
+        {...ariaProps}
         {...focusVisibleHandlers}
         {...statefulProps}
       >
@@ -359,7 +368,7 @@ const ListItemInternal = forwardRef(
           ref={actualRef}
           renderAsDiv={renderAsDiv}
           {...itemDimensions}
-          {...restProps}
+          {...wrapperProps}
         >
           {listItemContent}
         </ListItemWrapper>

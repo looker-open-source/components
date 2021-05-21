@@ -307,4 +307,20 @@ describe('ListItem', () => {
 
     global.console = globalConsole
   })
+
+  test('properly passes aria related props to label container', () => {
+    renderWithTheme(
+      <ListItem aria-current="location" aria-describedby="something-else">
+        ListItem with aria props
+      </ListItem>
+    )
+
+    const label = screen.getByRole('listitem')
+    expect(label).toHaveAttribute('aria-current', 'location')
+    expect(label).toHaveAttribute('aria-describedby', 'something-else')
+
+    const wrapper = screen.getByRole('none')
+    expect(wrapper).not.toHaveAttribute('aria-current', 'location')
+    expect(wrapper).not.toHaveAttribute('aria-describedby', 'something-else')
+  })
 })
