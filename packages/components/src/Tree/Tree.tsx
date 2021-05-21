@@ -35,38 +35,49 @@ import React, {
 } from 'react'
 import { Accordion } from '../Accordion'
 import { undefinedCoalesce, useWrapEvent } from '../utils'
-import { List } from '../List'
+import { List, ListItemProps } from '../List'
 import { ListItemContext } from '../List/ListItemContext'
 import { listItemDimensions, getDetailOptions } from '../List/utils'
 import { TreeContext } from './TreeContext'
 import { indicatorDefaults } from './utils'
 import { TreeItemInner, TreeItemInnerDetail, TreeStyle } from './TreeStyle'
-import { TreeProps } from './types'
+import { treeItemInnerPropKeys, TreeProps } from './types'
 
 const TreeLayout: FC<TreeProps> = ({
   branchFontWeight,
   border: propsBorder,
   children,
   className,
-  current,
-  density: propsDensity,
-  detail: propsDetail,
-  disabled,
   dividers,
   forceLabelPadding,
-  icon,
-  keyColor,
-  color: propsColor,
+  itemRole,
   label: propsLabel,
   labelBackgroundOnly: propsLabelBackgroundOnly,
   onBlur,
   onFocus,
   onMouseEnter,
   onMouseLeave,
-  selected,
-  truncate,
   ...restProps
 }) => {
+  const treeItemInnerProps = treeItemInnerPropKeys.reduce((obj, key) => {
+    if (restProps && Object.prototype.hasOwnProperty.call(restProps, key)) {
+      obj[key] = restProps[key]
+    }
+    return obj
+  }, {} as Partial<ListItemProps>)
+
+  let {
+    color: propsColor,
+    current,
+    density: propsDensity,
+    detail: propsDetail,
+    disabled,
+    icon,
+    keyColor,
+    selected,
+    ...restTreeItemInnerProps
+  } = treeItemInnerProps
+
   const detailRef = useRef<HTMLDivElement>(null)
   const [hovered, setHovered] = useState(false)
 
@@ -131,7 +142,6 @@ const TreeLayout: FC<TreeProps> = ({
     },
   }
 
-  const treeItemInnerRole = 'none'
   const label = (
     <TreeItemInner
       renderAsDiv
@@ -140,10 +150,10 @@ const TreeLayout: FC<TreeProps> = ({
       detail={detail}
       disabled={disabled}
       icon={icon}
-      itemRole={treeItemInnerRole}
-      role={treeItemInnerRole}
-      truncate={truncate}
+      itemRole={itemRole || 'none'}
+      role="none"
       tabIndex={-2} // Prevents tab stop behavior from reaching inner TreeItems
+      {...restTreeItemInnerProps}
     >
       {propsLabel}
     </TreeItemInner>
@@ -156,12 +166,7 @@ const TreeLayout: FC<TreeProps> = ({
       aria-current={current}
       aria-selected={selected}
       content={
-        <List
-          density={density}
-          disableKeyboardNav
-          role="group"
-          windowing="none"
-        >
+        <List disableKeyboardNav role="group" windowing="none">
           {children}
         </List>
       }

@@ -28,6 +28,24 @@ import { ReactNode } from 'react'
 import { AccordionProps } from '../Accordion'
 import { ListItemProps } from '../List'
 
+// We need this array to pass link related props from Tree to the nested TreeItem (rather than the AccordionDisclosure)
+const linkPropKeys = ['download', 'href', 'rel', 'target'] as const
+
+export const treeItemInnerPropKeys = [
+  'color',
+  'current',
+  'density',
+  'description',
+  'detail',
+  'disabled',
+  'hovered',
+  'icon',
+  'keyColor',
+  'selected',
+  'truncate',
+  ...linkPropKeys,
+] as const
+
 export type TreeProps = Omit<
   AccordionProps,
   | 'children'
@@ -37,17 +55,7 @@ export type TreeProps = Omit<
   | 'indicatorPosition'
   | 'indicatorSize'
 > &
-  Pick<
-    ListItemProps,
-    | 'color'
-    | 'current'
-    | 'density'
-    | 'detail'
-    | 'disabled'
-    | 'icon'
-    | 'keyColor'
-    | 'truncate'
-  > & {
+  Pick<ListItemProps, typeof treeItemInnerPropKeys[number]> & {
     /**
      * If true, vertical lines will extend from the Tree indicator (and all sub-Trees' indicators)
      * @default false
@@ -70,6 +78,12 @@ export type TreeProps = Omit<
      * @default false
      */
     forceLabelPadding?: boolean
+    /**
+     * Use itemRole to set the type of wrapper element for the label
+     * Note: Unlike TreeItem, 'button' is not an allowed value since click event handlers are passed to the nested <AccordionDisclosure> div
+     * @default 'none'
+     */
+    itemRole?: 'link' | 'none'
     /**
      * Label text or element displayed within Tree's internal AccordionDisclosure
      */

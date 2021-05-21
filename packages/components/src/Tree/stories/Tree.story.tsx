@@ -48,7 +48,7 @@ export default {
 
 const Template: Story<TreeProps> = (args) => (
   <TreeCollection>
-    <Tree {...args} label="Orders">
+    <Tree label="Orders" {...args}>
       <Tree label="Orders" defaultOpen>
         <TreeItem>ID</TreeItem>
         <TreeItem>Status</TreeItem>
@@ -72,6 +72,16 @@ export const Border = Template.bind({})
 Border.args = {
   ...Basic.args,
   border: true,
+}
+
+export const Link = Template.bind({})
+Link.args = {
+  ...Basic.args,
+  href: 'https://google.com',
+  itemRole: 'link',
+  label: 'Click my label to go to Google',
+  rel: 'noopener noreferrer',
+  target: '_blank',
 }
 
 export const Icon = () => (
