@@ -51,7 +51,7 @@ export default {
   title: 'Layout',
 }
 
-const fillterParagraph = (
+const filterParagraph = (
   <Paragraph fontSize="small">
     Neutra franzen cardigan, semiotics tousled gochujang green juice activated
     charcoal succulents flannel ramps palo santo. Kale chips williamsburg
@@ -75,10 +75,28 @@ const longContent = (
       microdosing leggings. Poke af cornhole hot chicken. Portland tattooed +1
       chia ennui.
     </Paragraph>
-    {fillterParagraph}
-    {fillterParagraph}
-    {fillterParagraph}
+    {filterParagraph}
+    {filterParagraph}
+    {filterParagraph}
   </SpaceVertical>
+)
+
+const menuItems = (
+  <>
+    <MenuItem
+      detail="detail"
+      description="this is the description"
+      icon={<Home />}
+    >
+      Looker
+    </MenuItem>
+    <MenuItem description="this is the description" icon={<VerifiedUser />}>
+      Validate
+    </MenuItem>
+    <MenuItem detail="detail" icon={<PieChart />}>
+      Pizza
+    </MenuItem>
+  </>
 )
 
 const Template: Story<LayoutProps> = (args) => (
@@ -91,7 +109,7 @@ const Template: Story<LayoutProps> = (args) => (
         <Aside p="large" width="200px">
           Aside
         </Aside>
-        <Section p="xxlarge" as="main">
+        <Section main p="xxlarge">
           <Heading>Page title</Heading>
           <Tabs>
             <TabList distribute>
@@ -120,24 +138,6 @@ const Template: Story<LayoutProps> = (args) => (
   </Highlighter>
 )
 
-const menuItems = (
-  <>
-    <MenuItem
-      detail="detail"
-      description="this is the description"
-      icon={<Home />}
-    >
-      Looker
-    </MenuItem>
-    <MenuItem description="this is the description" icon={<VerifiedUser />}>
-      Validate
-    </MenuItem>
-    <MenuItem detail="detail" icon={<PieChart />}>
-      Pizza
-    </MenuItem>
-  </>
-)
-
 const Template2: Story<LayoutProps> = (args) => (
   <Highlighter>
     <Page {...args}>
@@ -153,7 +153,7 @@ const Template2: Story<LayoutProps> = (args) => (
           {menuItems}
         </Aside>
         <Layout>
-          <Section p="xxlarge" as="main">
+          <Section main p="xxlarge">
             <Heading>Section title</Heading>
             {longContent}
           </Section>
@@ -214,7 +214,7 @@ MultipleLayouts.args = {
   fixed: true,
 }
 
-export const ScrollIndependentlyDefault = () => (
+export const ScrollIndependently = () => (
   <Highlighter>
     <Page fixed>
       <Layout hasAside>
@@ -228,7 +228,7 @@ export const ScrollIndependentlyDefault = () => (
           Chillwave brooklyn fam occupy microdosing leggings. Poke af cornhole
           hot chicken. Portland tattooed +1 chia ennui.
         </Aside>
-        <Section p="xxlarge" as="main">
+        <Section main p="xxlarge">
           <Heading>Page title</Heading>
           <Tabs>
             <TabList distribute>
@@ -260,6 +260,9 @@ export const ScrollIndependentlyDefault = () => (
     </Page>
   </Highlighter>
 )
+ScrollIndependently.parameters = {
+  storyshots: { disable: true },
+}
 
 export const ScrollSelectedAreas = () => (
   <Highlighter>
@@ -276,7 +279,7 @@ export const ScrollSelectedAreas = () => (
           hot chicken. Portland tattooed +1 chia ennui.
         </Aside>
         <Layout hasAside>
-          <Section scrollWithin p="xxlarge" as="main">
+          <Section main scrollWithin p="xxlarge">
             <Heading>Page title</Heading>
             <Tabs>
               <TabList distribute>
@@ -309,12 +312,15 @@ export const ScrollSelectedAreas = () => (
     </Page>
   </Highlighter>
 )
+ScrollSelectedAreas.parameters = {
+  storyshots: { disable: true },
+}
 
-export const ScrollAllAreas = () => (
+export const ScrollAllAreasTogetherDefault = () => (
   <Highlighter>
-    <Page fixed>
+    <Page>
       <Layout hasAside>
-        <Aside scrollWithin p="large" width="200px">
+        <Aside p="large" width="200px">
           I'm baby man braid cold-pressed seitan sartorial, tumblr ennui selfies
           chia twee subway tile af 90's celiac. Gochujang distillery tumeric
           flannel lumbersexual gastropub fashion axe viral neutra. Pickled
@@ -324,7 +330,7 @@ export const ScrollAllAreas = () => (
           Chillwave brooklyn fam occupy microdosing leggings. Poke af cornhole
           hot chicken. Portland tattooed +1 chia ennui.
         </Aside>
-        <Section scrollWithin p="xxlarge" as="main">
+        <Section main p="xxlarge">
           <Heading>Page title</Heading>
           <Tabs>
             <TabList distribute>
@@ -342,7 +348,7 @@ export const ScrollAllAreas = () => (
             </TabPanels>
           </Tabs>
         </Section>
-        <AsideAlt scrollWithin p="xxlarge" width="10rem">
+        <AsideAlt p="xxlarge" width="10rem">
           I'm baby man braid cold-pressed seitan sartorial, tumblr ennui selfies
           chia twee subway tile af 90's celiac. Gochujang distillery tumeric
           flannel lumbersexual gastropub fashion axe viral neutra. Pickled
@@ -356,6 +362,9 @@ export const ScrollAllAreas = () => (
     </Page>
   </Highlighter>
 )
+ScrollAllAreasTogetherDefault.parameters = {
+  storyshots: { disable: true },
+}
 
 const WidthTemplate: Story<AsideProps> = (args) => (
   <AsideStyle {...args}>Aside</AsideStyle>
@@ -380,23 +389,78 @@ AsideWidthSizeRail.args = {
   width: 'rail',
 }
 
-export const AsideCollapse = () => {
+export const AsideCollapseShadow = () => {
   const { value, toggle } = useToggle(false)
 
   return (
-    <Layout hasAside>
-      <Aside p="small" collapse={!value}>
-        Aside
-      </Aside>
-      <Section p="small">
-        <FieldToggleSwitch label="Show Aside" onChange={toggle} on={value} />
-      </Section>
-    </Layout>
+    <Highlighter>
+      <Page fixed>
+        <Header height="4rem" px="large">
+          Page Header
+        </Header>
+        <Layout hasAside>
+          <Aside collapse={!value} scrollWithin width="20rem">
+            <Header height="4rem" px="large">
+              Alternate Aside Header
+            </Header>
+            {menuItems}
+            {menuItems}
+            {menuItems}
+            {menuItems}
+            {menuItems}
+            {menuItems}
+            <Footer height="8rem" px="large">
+              Alternate Aside Footer
+            </Footer>
+          </Aside>
+          <Section main scrollWithin p="xxlarge">
+            <Heading>Section title</Heading>
+            <FieldToggleSwitch
+              label="Show Aside"
+              onChange={toggle}
+              on={value}
+            />
+            {longContent}
+            {longContent}
+            {longContent}
+          </Section>
+        </Layout>
+        <Footer height="3rem" px="large">
+          Page Footer
+        </Footer>
+      </Page>
+    </Highlighter>
   )
 }
 
-AsideCollapse.parameters = {
+AsideCollapseShadow.parameters = {
   storyshots: {
     disable: true,
   },
 }
+
+export const FooterHeaderShadow = () => (
+  <Page fixed>
+    <Header height="4rem" px="large">
+      Page Header
+    </Header>
+    <Layout hasAside>
+      <Aside scrollWithin width="20rem">
+        {menuItems}
+        {menuItems}
+        {menuItems}
+        {menuItems}
+        {menuItems}
+        {menuItems}
+      </Aside>
+      <Section main scrollWithin p="xxlarge">
+        {longContent}
+        {longContent}
+        {longContent}
+      </Section>
+    </Layout>
+    <Footer height="3rem" px="large">
+      Page Footer
+    </Footer>
+  </Page>
+)

@@ -50,6 +50,5 @@ export const Header = styled.header.withConfig({
 })<HeaderProps>`
   ${headerFooterCSS}
   ${borderHelper}
-
   width: 100%;
 `

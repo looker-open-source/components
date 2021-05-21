@@ -24,12 +24,18 @@
 
  */
 
-import { shouldForwardProp } from '@looker/design-tokens'
-import styled, { css } from 'styled-components'
+import React, { forwardRef, Ref } from 'react'
+import styled from 'styled-components'
+import { OverflowShadow, useOverflow } from '../../utils'
 import { SemanticLayoutBase, semanticLayoutCSS } from './semanticStyledBase'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface SectionProps extends SemanticLayoutBase {
+  /**
+   * When true the DOM element transition from section to main.
+   * @default false
+   */
+  main?: boolean
   /**
    * To be used within the context of <Page fixed> container.
    * When true, this removes the inner overflow-y scrolling
@@ -39,15 +45,30 @@ export interface SectionProps extends SemanticLayoutBase {
   scrollWithin?: boolean
 }
 
-export const sectionCSS = css`
+const SectionLayout = forwardRef(
+  (
+    { main, children, ...props }: SectionProps,
+    forwardedRef: Ref<HTMLDivElement>
+  ) => {
+    const [hasOverflow, ref] = useOverflow(forwardedRef)
+    return (
+      <OverflowShadow
+        as={main ? 'main' : 'section'}
+        hasOverflow={hasOverflow}
+        ref={ref}
+        {...props}
+      >
+        {children}
+      </OverflowShadow>
+    )
+  }
+)
+
+SectionLayout.displayName = 'SectionLayout'
+
+export const Section = styled(SectionLayout)`
   ${semanticLayoutCSS}
   flex: 1 0 auto;
-`
-
-export const Section = styled.section.withConfig({
-  shouldForwardProp,
-})<SectionProps>`
-  ${sectionCSS}
   overflow: auto;
   ${({ scrollWithin }) => scrollWithin && 'height: fit-content;'}
 `

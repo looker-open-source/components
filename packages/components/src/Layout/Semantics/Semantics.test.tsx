@@ -28,40 +28,19 @@ import 'jest-styled-components'
 import React from 'react'
 import { screen } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
+import { Constitution } from '../../__mocks__/Constitution'
 import { Aside } from './Aside'
-import { Header, Layout, Page, Section } from './'
+import { Footer, Header, Layout, Page, Section } from './'
 
 describe('Semantics', () => {
-  test('has Header and Footer scrolling with the page', () => {
+  xtest('has Header and Footer scrolling with the page', () => {
     renderWithTheme(
       <Page>
         <Header height="4rem" px="large">
           I'm the header
         </Header>
         <Layout hasAside>
-          <Section p="xxlarge" as="main">
-            <p>
-              I'm baby man braid cold-pressed seitan sartorial, tumblr ennui
-              selfies chia twee subway tile af 90's celiac. Gochujang distillery
-              tumeric flannel lumbersexual gastropub fashion axe viral neutra.
-              Pickled narwhal everyday carry activated charcoal succulents
-              occupy YOLO yuccie forage seitan kitsch. Celiac bespoke cloud
-              bread asymmetrical bicycle rights XOXO cold-pressed hashtag
-              listicle hell of migas. Chillwave brooklyn fam occupy microdosing
-              leggings. Poke af cornhole hot chicken. Portland tattooed +1 chia
-              ennui.
-            </p>
-            <p>
-              Neutra franzen cardigan, semiotics tousled gochujang green juice
-              activated charcoal succulents flannel ramps palo santo. Kale chips
-              williamsburg hexagon, etsy cray 8-bit cornhole tilde neutra DIY
-              snackwave whatever food truck marfa fashion axe. Polaroid master
-              cleanse twee DIY tbh pop-up biodiesel austin hell of scenester
-              woke man bun 3 wolf moon. Venmo coloring book beard adaptogen four
-              loko locavore wolf street art +1 kombucha marfa 90's unicorn
-              everyday carry.
-            </p>
-          </Section>
+          <Section p="xxlarge">{Constitution}</Section>
         </Layout>
       </Page>
     )
@@ -71,36 +50,14 @@ describe('Semantics', () => {
     )
   })
 
-  test('has Header and Footer positions fixed when passing prop fixed', () => {
+  xtest('has Header and Footer positions fixed when passing prop fixed', () => {
     renderWithTheme(
       <Page fixed>
         <Header height="4rem" px="large">
           I'm the header
         </Header>
         <Layout hasAside>
-          <Section p="xxlarge" as="main">
-            <p>
-              I'm baby man braid cold-pressed seitan sartorial, tumblr ennui
-              selfies chia twee subway tile af 90's celiac. Gochujang distillery
-              tumeric flannel lumbersexual gastropub fashion axe viral neutra.
-              Pickled narwhal everyday carry activated charcoal succulents
-              occupy YOLO yuccie forage seitan kitsch. Celiac bespoke cloud
-              bread asymmetrical bicycle rights XOXO cold-pressed hashtag
-              listicle hell of migas. Chillwave brooklyn fam occupy microdosing
-              leggings. Poke af cornhole hot chicken. Portland tattooed +1 chia
-              ennui.
-            </p>
-            <p>
-              Neutra franzen cardigan, semiotics tousled gochujang green juice
-              activated charcoal succulents flannel ramps palo santo. Kale chips
-              williamsburg hexagon, etsy cray 8-bit cornhole tilde neutra DIY
-              snackwave whatever food truck marfa fashion axe. Polaroid master
-              cleanse twee DIY tbh pop-up biodiesel austin hell of scenester
-              woke man bun 3 wolf moon. Venmo coloring book beard adaptogen four
-              loko locavore wolf street art +1 kombucha marfa 90's unicorn
-              everyday carry.
-            </p>
-          </Section>
+          <Section p="xxlarge">{Constitution}</Section>
         </Layout>
       </Page>
     )
@@ -161,5 +118,33 @@ describe('Semantics', () => {
   test('Aside collapse will display none.', () => {
     renderWithTheme(<Aside collapse>Aside content</Aside>)
     expect(screen.queryByText('Aside content')).not.toBeInTheDocument()
+  })
+
+  xtest('using prop shadow will display shadow-box on Footer and Header', () => {
+    renderWithTheme(
+      <Page fixed>
+        <Header height="4rem" px="large">
+          Page Header
+        </Header>
+        <Layout hasAside>
+          Content...
+          <Aside scrollWithin width="20rem">
+            {Constitution}
+            {Constitution}
+          </Aside>
+          <Section scrollWithin p="xxlarge">
+            {Constitution}
+            {Constitution}
+            {Constitution}
+          </Section>
+        </Layout>
+        <Footer height="3rem" px="large">
+          Page Footer
+        </Footer>
+      </Page>
+    )
+    expect(screen.getByText('Content...')).toHaveStyleRule(
+      'box-shadow: inset 0 -4px 4px -4px #dee1e5;'
+    )
   })
 })

@@ -24,9 +24,11 @@
 
  */
 
-import { CompatibleHTMLProps, shouldForwardProp } from '@looker/design-tokens'
+import React, { forwardRef, Ref } from 'react'
+import { CompatibleHTMLProps } from '@looker/design-tokens'
 import styled, { css } from 'styled-components'
 import { simpleLayoutCSS, SimpleLayoutProps } from '../utils/simple'
+import { OverflowShadow, useOverflow } from '../../utils'
 import { Section } from './Section'
 
 export interface LayoutProps
@@ -46,13 +48,26 @@ export interface LayoutProps
 
 const hasAsideCSS = css`
   flex-direction: row;
-
   & > ${Section} {
     width: 0;
   }
 `
 
-export const Layout = styled.div.withConfig({ shouldForwardProp })<LayoutProps>`
+const LayoutLayout = forwardRef(
+  ({ children, ...props }: LayoutProps, forwardedRef: Ref<HTMLDivElement>) => {
+    const [hasOverflow, ref] = useOverflow(forwardedRef)
+
+    return (
+      <OverflowShadow hasOverflow={hasOverflow} ref={ref} {...props}>
+        {children}
+      </OverflowShadow>
+    )
+  }
+)
+
+LayoutLayout.displayName = 'LayoutLayout'
+
+export const Layout = styled(LayoutLayout)`
   ${simpleLayoutCSS}
   display: flex;
   flex: 1 1 auto;
