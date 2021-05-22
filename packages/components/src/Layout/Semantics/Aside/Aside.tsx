@@ -28,10 +28,10 @@ import React, { forwardRef, Ref } from 'react'
 import { shouldForwardProp } from '@looker/design-tokens'
 import styled from 'styled-components'
 import { ResponsiveValue } from 'styled-system'
-import { OverflowShadow, useOverflow } from '../../utils'
-import { AsideSizeRamp, asideWidth } from './asideWidth'
-import { SemanticLayoutBase, semanticLayoutCSS } from './semanticStyledBase'
+import { OverflowShadow, useOverflow } from '../../../utils'
+import { SemanticLayoutBase, semanticLayoutCSS } from '../semanticStyledBase'
 import { borderHelper, SemanticBorderProps } from './semanticBorderHelper'
+import { AsideSizeRamp, asideWidth } from './asideWidth'
 
 export interface AsideProps extends SemanticLayoutBase, SemanticBorderProps {
   /**
@@ -61,7 +61,13 @@ const AsideLayout = forwardRef(
     const [hasOverflow, ref] = useOverflow(forwardedRef)
 
     return collapse ? null : (
-      <OverflowShadow as="aside" hasOverflow={hasOverflow} ref={ref} {...props}>
+      <OverflowShadow
+        as="aside"
+        data-testid="aside-content"
+        hasOverflow={hasOverflow}
+        ref={ref}
+        {...props}
+      >
         {children}
       </OverflowShadow>
     )

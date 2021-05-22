@@ -28,7 +28,7 @@ import styled from 'styled-components'
 import { variant, ResponsiveValue, system } from 'styled-system'
 import { SurfaceBase, surfaceTransition } from '../Dialog/SurfaceBase'
 import { DialogSizeRamp, dialogSizes } from '../Dialog/dialogWidth'
-import { AsideSizeRamp, asideSizes } from '../Layout/Semantics/asideWidth'
+import { AsideSizeRamp, asideSizes } from '../Layout/Semantics/Aside/asideWidth'
 
 export type DrawerPlacements = 'left' | 'right'
 export type DialogDrawerWidth = ResponsiveValue<

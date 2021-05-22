@@ -26,8 +26,8 @@
 
 import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
-import { OverflowShadow, useOverflow } from '../../utils'
-import { SemanticLayoutBase, semanticLayoutCSS } from './semanticStyledBase'
+import { OverflowShadow, useOverflow } from '../../../utils'
+import { SemanticLayoutBase, semanticLayoutCSS } from '../semanticStyledBase'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface SectionProps extends SemanticLayoutBase {
@@ -54,6 +54,7 @@ const SectionLayout = forwardRef(
     return (
       <OverflowShadow
         as={main ? 'main' : 'section'}
+        data-testid="section-content"
         hasOverflow={hasOverflow}
         ref={ref}
         {...props}

@@ -23,13 +23,67 @@
  SOFTWARE.
 
  */
-import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { screen } from '@testing-library/react'
 
+import 'jest-styled-components'
+import React from 'react'
+import { screen } from '@testing-library/react'
+import { renderWithTheme } from '@looker/components-test-utils'
 import { Aside } from './Aside'
 
-describe('Layout has border', () => {
+describe('Aside', () => {
+  test('renders.', () => {
+    renderWithTheme(<Aside>Aside content</Aside>)
+    expect(screen.getByText('Aside content')).toBeInTheDocument()
+  })
+
+  test('Can use specific string to size its width.', () => {
+    renderWithTheme(<Aside width="rail">Aside content</Aside>)
+    expect(screen.getByText('Aside content')).toHaveStyleRule('width: 3.5rem;')
+  })
+
+  test('Collapse prop will not render the component.', () => {
+    renderWithTheme(<Aside collapse>Aside content</Aside>)
+    expect(screen.queryByText('Aside content')).not.toBeInTheDocument()
+  })
+
+  test('does not have a box shadow if content does not overflow', () => {
+    Object.defineProperty(HTMLElement.prototype, 'scrollHeight', {
+      configurable: true,
+      value: 0,
+    })
+    Object.defineProperty(HTMLElement.prototype, 'offsetHeight', {
+      configurable: true,
+      value: 500,
+    })
+    renderWithTheme(<Aside>Aside content</Aside>)
+
+    expect(
+      getComputedStyle(screen.getByTestId('aside-content')).getPropertyValue(
+        'box-shadow'
+      )
+    ).toEqual('')
+  })
+
+  test('has a box shadow when content overflows', () => {
+    Object.defineProperty(HTMLElement.prototype, 'scrollHeight', {
+      configurable: true,
+      value: 500,
+    })
+
+    Object.defineProperty(HTMLElement.prototype, 'offsetHeight', {
+      configurable: true,
+      value: 0,
+    })
+
+    renderWithTheme(<Aside>Stuff</Aside>)
+
+    expect(
+      getComputedStyle(screen.getByTestId('aside-content')).getPropertyValue(
+        'box-shadow'
+      )
+    ).toEqual('0 -4px 4px -4px #DEE1E5,inset 0 -4px 4px -4px #DEE1E5')
+  })
+
   test('render border properly', () => {
     renderWithTheme(<Aside border>Aside</Aside>)
     expect(screen.getByText('Aside')).toHaveStyle('border: 1px solid #DEE1E5;')

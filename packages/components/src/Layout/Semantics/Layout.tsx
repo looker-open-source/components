@@ -29,7 +29,7 @@ import { CompatibleHTMLProps } from '@looker/design-tokens'
 import styled, { css } from 'styled-components'
 import { simpleLayoutCSS, SimpleLayoutProps } from '../utils/simple'
 import { OverflowShadow, useOverflow } from '../../utils'
-import { Section } from './Section'
+import { Section } from './Section/Section'
 
 export interface LayoutProps
   extends SimpleLayoutProps,

@@ -28,44 +28,52 @@ import 'jest-styled-components'
 import React from 'react'
 import { screen } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { Constitution } from '../../__mocks__/Constitution'
-import { Aside } from './Aside'
+import { Aside } from './Aside/Aside'
 import { Footer, Header, Layout, Page, Section } from './'
 
 describe('Semantics', () => {
-  xtest('has Header and Footer scrolling with the page', () => {
+  test('whole page scroll together by default', () => {
     renderWithTheme(
       <Page>
         <Header height="4rem" px="large">
           I'm the header
         </Header>
         <Layout hasAside>
-          <Section p="xxlarge">{Constitution}</Section>
+          <Aside>I'm the Aside before</Aside>
+          <Section>I'm the main area</Section>
         </Layout>
+        <Footer height="4rem" px="large">
+          I'm the Footer
+        </Footer>
       </Page>
     )
-    expect(screen.getByText("I'm the header")).toBeInTheDocument()
+    expect(screen.getByText("I'm the Aside before")).toBeInTheDocument()
     expect(screen.getByText("I'm the header").closest('div')).toHaveStyle(
       'overflow: auto;'
     )
   })
 
-  xtest('has Header and Footer positions fixed when passing prop fixed', () => {
+  test('using prop fixed on page will have Header and Footer fixed while the rest of the page scrolls', () => {
     renderWithTheme(
       <Page fixed>
         <Header height="4rem" px="large">
           I'm the header
         </Header>
         <Layout hasAside>
-          <Section p="xxlarge">{Constitution}</Section>
+          <Aside>I'm the Aside before</Aside>
+          <Section>I'm the main area</Section>
         </Layout>
+        <Footer height="4rem" px="large">
+          I'm the Footer
+        </Footer>
       </Page>
     )
-    expect(screen.getByText("I'm the header")).toBeInTheDocument()
+    expect(screen.getByText("I'm the Aside before")).toBeInTheDocument()
     expect(screen.getByText("I'm the header").closest('div')).toHaveStyle(
       'overflow: hidden;'
     )
   })
+
   test('using prop scrollWithin will have areas scrolling together.', () => {
     renderWithTheme(
       <Page fixed>
@@ -108,43 +116,5 @@ describe('Semantics', () => {
     expect(screen.getByText("I'm the Aside after")).toHaveStyle({
       height: 'fit-content',
     })
-  })
-
-  test('Aside can use t-shirt sized for its width.', () => {
-    renderWithTheme(<Aside width="medium">Aside content</Aside>)
-    expect(screen.getByText('Aside content')).toHaveStyleRule('width: 40rem;')
-  })
-
-  test('Aside collapse will display none.', () => {
-    renderWithTheme(<Aside collapse>Aside content</Aside>)
-    expect(screen.queryByText('Aside content')).not.toBeInTheDocument()
-  })
-
-  xtest('using prop shadow will display shadow-box on Footer and Header', () => {
-    renderWithTheme(
-      <Page fixed>
-        <Header height="4rem" px="large">
-          Page Header
-        </Header>
-        <Layout hasAside>
-          Content...
-          <Aside scrollWithin width="20rem">
-            {Constitution}
-            {Constitution}
-          </Aside>
-          <Section scrollWithin p="xxlarge">
-            {Constitution}
-            {Constitution}
-            {Constitution}
-          </Section>
-        </Layout>
-        <Footer height="3rem" px="large">
-          Page Footer
-        </Footer>
-      </Page>
-    )
-    expect(screen.getByText('Content...')).toHaveStyleRule(
-      'box-shadow: inset 0 -4px 4px -4px #dee1e5;'
-    )
   })
 })

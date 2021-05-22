@@ -28,7 +28,7 @@ import { shouldForwardProp } from '@looker/design-tokens'
 import styled, { css } from 'styled-components'
 import { height, HeightProps } from 'styled-system'
 import { SemanticLayoutBase, semanticLayoutCSS } from './semanticStyledBase'
-import { borderHelper, SemanticBorderProps } from './semanticBorderHelper'
+import { borderHelper, SemanticBorderProps } from './Aside/semanticBorderHelper'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface HeaderProps

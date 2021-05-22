@@ -26,7 +26,27 @@
 
 import React from 'react'
 import styled from 'styled-components'
-import { Heading, Paragraph } from '..'
+import { Home } from '@styled-icons/material-outlined/Home/Home'
+import { VerifiedUser } from '@styled-icons/material/VerifiedUser/VerifiedUser'
+import { PieChart } from '@styled-icons/material/PieChart/PieChart'
+import { Favorite } from '@styled-icons/material/Favorite/Favorite'
+import { Delete } from '@styled-icons/material/Delete/Delete'
+import { TableChart } from '@styled-icons/material/TableChart/TableChart'
+import { DateRange } from '@styled-icons/material-outlined/DateRange/DateRange'
+import { MoreVert } from '@styled-icons/material/MoreVert/MoreVert'
+import { Warning } from '@styled-icons/material/Warning/Warning'
+import { ViewColumn } from '@styled-icons/material/ViewColumn/ViewColumn'
+import {
+  Heading,
+  Paragraph,
+  MenuItem,
+  Tabs,
+  TabList,
+  Tab,
+  TabPanels,
+  TabPanel,
+} from '../'
+import { Accessibility } from '../Icon/Icon.story'
 
 export const ConstitutionShort = () => (
   <Paragraph fontSize="medium">
@@ -99,3 +119,61 @@ const Format = styled.article`
     margin: ${({ theme }) => theme.space.small} 0;
   }
 `
+
+export const MenuItemsFillerShort = () => (
+  <>
+    <MenuItem description="this is the description" icon={<Home />}>
+      Looker
+    </MenuItem>
+    <MenuItem detail="detail" icon={<VerifiedUser />}>
+      Validate
+    </MenuItem>
+    <MenuItem detail="detail" icon={<PieChart />}>
+      graph
+    </MenuItem>
+    <MenuItem detail="detail" icon={<Favorite />}>
+      favorite
+    </MenuItem>
+    <MenuItem detail="detail" icon={<Delete />}>
+      Trash
+    </MenuItem>
+  </>
+)
+
+export const MenuItemsFiller = () => (
+  <>
+    <MenuItem description="this is the description" icon={<Home />}>
+      Looker
+    </MenuItem>
+    <MenuItem icon={<VerifiedUser />}>Validate</MenuItem>
+    <MenuItem icon={<PieChart />}>Graph</MenuItem>
+    <MenuItem icon={<Favorite />}>Favorite</MenuItem>
+    <MenuItem icon={<Delete />}>Delete</MenuItem>
+    <MenuItem icon={<DateRange />}>DateRange</MenuItem>
+    <MenuItem icon={<TableChart />}>TableChart</MenuItem>
+    <MenuItem icon={<MoreVert />}>MoreVert</MenuItem>
+    <MenuItem icon={<Warning />}>Warning</MenuItem>
+    <MenuItem icon={<Accessibility />}>Accessibility</MenuItem>
+    <MenuItem icon={<ViewColumn />}>ViewColumn</MenuItem>
+  </>
+)
+
+export const TabsFiller = () => (
+  <Tabs>
+    <TabList distribute>
+      <Tab>Blue</Tab>
+      <Tab>Green</Tab>
+      <Tab>Purple</Tab>
+      <Tab>Yellow</Tab>
+      <Tab>Orange</Tab>
+      <Tab>Red</Tab>
+      <Tab>White</Tab>
+      <Tab>Black</Tab>
+    </TabList>
+    <TabPanels>
+      <TabPanel>
+        <Constitution />
+      </TabPanel>
+    </TabPanels>
+  </Tabs>
+)
