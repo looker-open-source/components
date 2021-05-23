@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/looker-open-source/components/compare/v1.4.0-alpha.0...v1.4.0) (2021-05-23)
+
+
+### Features
+
+* **Layout:** Supports displaying shadow when content overflows container height ([#2300](https://github.com/looker-open-source/components/issues/2300)) ([b0231fe](https://github.com/looker-open-source/components/commit/b0231fec9795c1e2c8afd150e530d7ddb4a2a1db))
+
+
+
+
+
 # [1.4.0-alpha.0](https://github.com/looker-open-source/components/compare/v1.3.1...v1.4.0-alpha.0) (2021-05-21)
 
 
