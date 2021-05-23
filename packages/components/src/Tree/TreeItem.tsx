@@ -43,7 +43,6 @@ const TreeItemLayout: FC<TreeItemProps> = ({
   children,
   density: propsDensity,
   color: propsColor,
-  keyColor,
   onClickWhitespace,
   role = 'treeitem',
   ...restProps
@@ -53,8 +52,6 @@ const TreeItemLayout: FC<TreeItemProps> = ({
     color: contextColor,
     labelBackgroundOnly,
   } = useContext(TreeContext)
-
-  if (keyColor) propsColor = 'key'
 
   if (onClickWhitespace && !labelBackgroundOnly)
     // eslint-disable-next-line no-console

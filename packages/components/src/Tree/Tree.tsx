@@ -66,14 +66,13 @@ const TreeLayout: FC<TreeProps> = ({
     return obj
   }, {} as Partial<ListItemProps>)
 
-  let {
+  const {
     color: propsColor,
     current,
     density: propsDensity,
     detail: propsDetail,
     disabled,
     icon,
-    keyColor,
     selected,
     ...restTreeItemInnerProps
   } = treeItemInnerProps
@@ -85,8 +84,6 @@ const TreeLayout: FC<TreeProps> = ({
   const treeContext = useContext(TreeContext)
 
   const hasBorder = undefinedCoalesce([propsBorder, treeContext.border])
-
-  if (keyColor) propsColor = 'key'
   const color = undefinedCoalesce([propsColor, treeContext.color, listColor])
 
   const hasLabelBackgroundOnly = undefinedCoalesce([

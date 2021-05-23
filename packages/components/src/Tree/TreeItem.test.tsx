@@ -133,9 +133,9 @@ describe('TreeItem', () => {
     expect(onClickWhitespace).toHaveBeenCalledTimes(1)
   })
 
-  test('keyColor', () => {
+  test('theme.colors.key', () => {
     renderWithTheme(
-      <TreeItem selected keyColor>
+      <TreeItem selected color="key">
         Whatever
       </TreeItem>
     )

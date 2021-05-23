@@ -79,7 +79,7 @@ Use the `border` prop if you would like to have vertical lines expand from your 
 
 Use the `selected` prop to display a light grey background on your `Tree`.
 
-Use the `keyColor` prop to get more colorful backgrounds when your `Tree` (or its child `Tree`s and `TreeItem`s) is hovered or selected.
+Use the `color='key'` prop to get more colorful backgrounds when your `Tree` (or its child `Tree`s and `TreeItem`s) is hovered or selected.
 
 Use the `disabled` prop to present your `Tree` in a disabled state. Note that using `disabled` will not change any `Tree` behavior like opening and closing on click.
 
@@ -93,7 +93,7 @@ Use the `disabled` prop to present your `Tree` in a disabled state. Note that us
       <TreeItem>Created Quarter</TreeItem>
     </Tree>
   </Tree>
-  <Tree keyColor selected label="Orders" icon={<TableChart />} defaultOpen>
+  <Tree color="key" selected label="Orders" icon={<TableChart />} defaultOpen>
     <Tree disabled label="Created" defaultOpen>
       <TreeItem selected>Created Date</TreeItem>
       <TreeItem disabled>Created Month</TreeItem>

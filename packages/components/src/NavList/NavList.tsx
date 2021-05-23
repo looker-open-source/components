@@ -35,7 +35,7 @@ import { ListItemIconPlacement } from '../List/ListItemLayout'
  * `NavList` is a variation of `List`
  *   - `ListItem`  border-radius circular on the right side
  *   - `ListItem` selected or "active"
- *     - text color is `keyColor`
+ *     - text color is `theme.colors.key`
  *     - background color is `keySubtle`
  *   - `ListItem` at the root are indented to align properly with `Tree`(s) at the root as well
  *

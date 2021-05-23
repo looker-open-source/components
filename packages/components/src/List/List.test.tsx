@@ -105,25 +105,6 @@ describe('List', () => {
       )
     })
 
-    test('expects color="key" and keyColor have the same background-color value', () => {
-      renderWithTheme(
-        <>
-          <List color="key">
-            <ListItem selected>color</ListItem>
-          </List>
-          <List keyColor>
-            <ListItem selected>keyColor</ListItem>
-          </List>
-        </>
-      )
-      expect(screen.getByText('color').closest('button')).toHaveStyle(
-        'background: #F3F2FF;'
-      )
-      expect(screen.getByText('keyColor').closest('button')).toHaveStyle(
-        'background: #F3F2FF;'
-      )
-    })
-
     test('updates ListItem get its text color updated', () => {
       renderWithTheme(
         <List color="calculation">

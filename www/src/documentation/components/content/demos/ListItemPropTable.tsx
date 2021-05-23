@@ -137,16 +137,6 @@ export const ListItemPropTable = () => {
             </TableDataCell>
           </TableRow>
           <TableRow>
-            <TableDataCell pr="large">keyColor</TableDataCell>
-            <TableDataCell pr="large">
-              <Code>boolean</Code>
-            </TableDataCell>
-            <TableDataCell>
-              Using <Code>keyColor</Code> will replace the normal ui2 background
-              color for selected and selected + hovered items with key colors.
-            </TableDataCell>
-          </TableRow>
-          <TableRow>
             <TableDataCell pr="large">disabled</TableDataCell>
             <TableDataCell pr="large">
               <Code>boolean</Code>
