@@ -190,7 +190,7 @@ export const IconSpace = () => (
         icon={<AccountCircle />}
         detail={
           <>
-            <Text fontSize="small" mr="xsmall" color="secondary">
+            <Text fontSize="small" mr="xsmall" color="text2">
               Online
             </Text>
             <Icon
@@ -208,7 +208,7 @@ export const IconSpace = () => (
         icon={<AccountCircle />}
         detail={
           <>
-            <Text fontSize="small" mr="xsmall" color="secondary">
+            <Text fontSize="small" mr="xsmall" color="text2">
               Offline
             </Text>
             <Icon icon={<Chat />} verticalAlign="middle" size={16} />

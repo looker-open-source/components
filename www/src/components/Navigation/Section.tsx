@@ -55,7 +55,7 @@ export const Section: FC<SectionProps> = ({ section }) => {
           }
           px="large"
         >
-          <Heading variant="secondary" as="h4" fontFamily="body">
+          <Heading color="text2" as="h4" fontFamily="body">
             {child.title}
           </Heading>
         </Accordion>

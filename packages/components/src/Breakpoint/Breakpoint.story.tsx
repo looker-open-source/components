@@ -91,7 +91,7 @@ const NatureCard: FC<{ backgroundColor?: string }> = ({
         fontSize="xsmall"
         textTransform="uppercase"
         fontWeight="semiBold"
-        color="subdued"
+        color="text1"
       >
         Explore
       </Span>
@@ -109,7 +109,7 @@ const Template: Story<BreakpointProps> = () => {
   return (
     <>
       <Breakpoint show="mobile">
-        <NavHeader backgroundColor="ui1" p="small">
+        <NavHeader backgroundColor="text2" p="small">
           <MobileHeaderGrid>
             <Box color="key">
               <Home size="1.5rem" title="Home" />
@@ -120,7 +120,7 @@ const Template: Story<BreakpointProps> = () => {
         <Grid p="small" columns={1}>
           <NatureCard backgroundColor="criticalFocus" />
           <NatureCard backgroundColor="keyFocus" />
-          <NatureCard backgroundColor="secondary" />
+          <NatureCard backgroundColor="text2" />
           <NatureCard backgroundColor="inform" />
         </Grid>
       </Breakpoint>
@@ -153,7 +153,7 @@ const Template: Story<BreakpointProps> = () => {
             <Grid columns={2}>
               <NatureCard backgroundColor="criticalFocus" />
               <NatureCard backgroundColor="keyFocus" />
-              <NatureCard backgroundColor="secondary" />
+              <NatureCard backgroundColor="text2" />
               <NatureCard backgroundColor="inform" />
             </Grid>
           </Breakpoint>
@@ -162,7 +162,7 @@ const Template: Story<BreakpointProps> = () => {
               <NatureCard backgroundColor="criticalFocus" />
               <Grid columns={2}>
                 <NatureCard backgroundColor="keyFocus" />
-                <NatureCard backgroundColor="secondary" />
+                <NatureCard backgroundColor="text2" />
                 <NatureCard backgroundColor="inform" />
                 <NatureCard backgroundColor="warn" />
               </Grid>
