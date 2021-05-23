@@ -64,21 +64,6 @@ export interface ComponentsProviderProps
    * @default false
    */
   disableStyleDefender?: boolean
-
-  /**
-   * Prevent automatic injection of a basic CSS-reset into the DOM
-   * @deprecated - no longer has any actual effect. Global reset no longer in use.
-   * @todo - Remove for 2.x series
-   */
-  globalStyle?: boolean
-
-  /**
-   * Enable style support for IE11
-   * @deprecated - no longer has any actual effect, IE11 support no longer requires
-   *  specialized implementation with changes to reset implementation
-   * @todo - Remove for 2.x series
-   */
-  ie11Support?: boolean
 }
 
 /**
