@@ -24,7 +24,6 @@
 
  */
 
-import { generateColorAliases } from './utils/generateColorAliases'
 import { generateDerivativeColors } from './utils/generateDerivativeColors'
 import { fallbackBlends, fallbackStateful } from './fallbacks'
 import { Colors } from './types'
@@ -35,12 +34,9 @@ const derivedColors = generateDerivativeColors(
   fallbackBlends
 )
 
-const aliasColors = generateColorAliases(fallbackBlends)
-
 export const colors: Colors = {
   ...defaultSpecifiableColors,
   ...derivedColors,
   ...fallbackBlends,
   ...fallbackStateful,
-  ...aliasColors,
 }

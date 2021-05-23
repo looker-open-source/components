@@ -79,7 +79,7 @@ const DataTableCellLayout = forwardRef(
         <SpaceVertical gap="xxxsmall" align="stretch">
           <span>{content}</span>
           {description && (
-            <Paragraph fontSize="xsmall" color="subdued" truncate>
+            <Paragraph fontSize="xsmall" color="text1" truncate>
               <Truncate>{description}</Truncate>
             </Paragraph>
           )}

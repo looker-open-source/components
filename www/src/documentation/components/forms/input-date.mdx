@@ -30,7 +30,7 @@ storybook: true
       <InputDate onChange={handleChange} defaultValue={selectedDate} />
       <Box p="large" height="100%" borderLeft="1px solid #ccc">
         <Heading>Selected:</Heading>
-        <Text color="secondary">
+        <Text color="text2">
           <DateFormat>{selectedDate}</DateFormat>
         </Text>
       </Box>
@@ -69,7 +69,7 @@ If you handle form validation externally (such as treating this date field as re
         onValidationFail={handleValidationFail}
       />
       <SpaceVertical>
-        <Paragraph color="secondary">
+        <Paragraph color="text2">
           INSTRUCTIONS: Try typing an invalid date string (ex:
           'not/a/valid/date') and clicking or tabbing away to trigger blur
           event.
