@@ -24,7 +24,7 @@
 
  */
 
-import { DefaultTheme, InterpolationValue } from 'styled-components'
+import { DefaultTheme } from 'styled-components'
 import { Colors, colors } from '../color'
 import {
   Easings,
@@ -68,14 +68,6 @@ export interface Theme {
   fontWeights: FontWeightRamp
   lineHeights: LineHeightRamp
   radii: Radii
-  /**
-   * A function that can be overridden to return different reset css properties
-   * or null to remove all resets. Most base elements implement the reset.
-   *
-   * @todo - Remove in 2.x series
-   * @deprecated
-   */
-  reset?: () => InterpolationValue
   sizes: SizeRamp
   shadows: Shadows
   space: SpaceRamp

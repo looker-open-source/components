@@ -34,13 +34,7 @@ describe('reset', () => {
   test('resetFn', () => {
     const TestWrapper: FC = ({ children }) => {
       const theme = useContext(ThemeContext)
-      const resetFn = jest.fn()
-
-      return (
-        <ThemeProvider theme={{ ...theme, reset: resetFn }}>
-          {children}
-        </ThemeProvider>
-      )
+      return <ThemeProvider theme={{ ...theme }}>{children}</ThemeProvider>
     }
 
     const Test = styled.p`
