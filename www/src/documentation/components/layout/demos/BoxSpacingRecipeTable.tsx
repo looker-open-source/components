@@ -94,7 +94,7 @@ const ListRender = (
       <Box ml="small" as="span">
         <Text fontSize="small">{label}</Text>
         <Box as="span" ml="xsmall">
-          <Text fontSize="xsmall" color="subdued">
+          <Text fontSize="xsmall" color="text1">
             {defaultLabel}
           </Text>
         </Box>
@@ -118,7 +118,7 @@ export const BoxSpacingRecipeTable: FC<BoxSpacingRecipeTableProps> = ({
     <div>
       <Heading
         fontSize="medium"
-        color="secondary"
+        color="text2"
         textTransform="uppercase"
         fontWeight="semiBold"
       >
@@ -131,7 +131,7 @@ export const BoxSpacingRecipeTable: FC<BoxSpacingRecipeTableProps> = ({
     <div>
       <Heading
         fontSize="medium"
-        color="secondary"
+        color="text2"
         textTransform="uppercase"
         fontWeight="semiBold"
       >
@@ -146,7 +146,7 @@ export const BoxSpacingRecipeTable: FC<BoxSpacingRecipeTableProps> = ({
     <div>
       <Heading
         fontSize="medium"
-        color="secondary"
+        color="text2"
         textTransform="uppercase"
         fontWeight="semiBold"
       >

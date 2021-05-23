@@ -62,7 +62,7 @@ export const Controlled = () => {
       <InputDate defaultValue={selectedDate} onChange={handleChange} />
       <Box p="large" height="100%" borderLeft="1px solid #ccc">
         <Heading>Selected:</Heading>
-        <Text color="secondary">
+        <Text color="text2">
           <DateFormat>{selectedDate}</DateFormat>
         </Text>
       </Box>

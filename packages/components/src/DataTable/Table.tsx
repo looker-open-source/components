@@ -65,7 +65,7 @@ export const TableLayout: FC<TableProps> = (props) => {
 
   const noResultsContent =
     typeof noResultsDisplay === 'string' ? (
-      <Heading color="subdued">{noResultsDisplay}</Heading>
+      <Heading color="text1">{noResultsDisplay}</Heading>
     ) : (
       noResultsDisplay
     )
