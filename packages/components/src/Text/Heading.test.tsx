@@ -63,7 +63,7 @@ describe('Heading', () => {
   })
 
   test('variant color', () => {
-    renderWithTheme(<Heading color="subdued">🥑</Heading>)
+    renderWithTheme(<Heading color="text1">🥑</Heading>)
     expect(screen.getByText('🥑')).toHaveStyle('color: rgb(147, 155, 165)')
   })
 

@@ -77,7 +77,7 @@ export const FauxDashboard = () => (
 
       <SpaceVertical align="center" gap="xxsmall">
         <Heading as="h2">Some title here</Heading>
-        <Heading as="h3" color="secondary">
+        <Heading as="h3" color="text2">
           Some less important information
         </Heading>
       </SpaceVertical>

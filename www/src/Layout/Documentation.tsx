@@ -103,7 +103,7 @@ const DocumentationLayout = (props: DocQuery) => {
                 Storybook{' '}
                 <Span
                   fontSize="xsmall"
-                  variant="subdued"
+                  color="text1"
                   fontWeight="normal"
                   lineHeight="normal"
                 >

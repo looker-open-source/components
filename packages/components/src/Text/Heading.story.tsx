@@ -61,7 +61,7 @@ FontWeight.args = {
 export const Color = Template.bind({})
 Color.args = {
   ...Default.args,
-  color: 'subdued',
+  color: 'text1',
 }
 
 export const Truncate = Template.bind({})
