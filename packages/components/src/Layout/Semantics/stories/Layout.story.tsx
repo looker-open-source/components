@@ -26,7 +26,6 @@
 
 import React from 'react'
 import styled from 'styled-components'
-import { Story } from '@storybook/react/types-6-0'
 import { Heading } from '@looker/components/src'
 import {
   Constitution,
@@ -34,7 +33,7 @@ import {
   MenuItemsFiller,
   TabsFiller,
 } from 'packages/components/src/__mocks__/Constitution'
-import { Page, Header, Layout, LayoutProps, Aside, Section, Footer } from '..'
+import { Page, Header, Layout, Aside, Section, Footer } from '..'
 
 export default {
   component: Layout,

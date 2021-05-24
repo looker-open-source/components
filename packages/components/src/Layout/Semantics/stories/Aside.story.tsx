@@ -38,7 +38,9 @@ export default {
 const Template: Story<AsideProps> = (args) => (
   <AsideStyle p="large" text-align="center" {...args} />
 )
+
 const AsideStyle = styled(Aside)`
+  /* stylelint-disable color-named */
   background-color: lightsalmon;
   height: 40rem;
   padding-top: 3.5rem;
