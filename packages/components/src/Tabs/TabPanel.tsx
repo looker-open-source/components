@@ -30,6 +30,10 @@ import styled from 'styled-components'
 export interface TabPanelProps {
   className?: string
   selected?: boolean
+  /**
+   * Set tabIndex to 0 if you'd like the TabPanel to be reached via keyboard tabbing
+   * @default -1
+   */
   tabIndex?: number
 }
 
@@ -37,7 +41,7 @@ const TabPanelLayout: FC<TabPanelProps> = ({
   children,
   className,
   selected,
-  tabIndex = 0,
+  tabIndex = -1,
 }) =>
   selected ? (
     <div className={className} tabIndex={tabIndex}>
