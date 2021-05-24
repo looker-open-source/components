@@ -105,16 +105,6 @@ export type LimitedColor = {
 
 export type ListItemColorProps = FlexibleColor
 export type ListColorProps = LimitedColor
-type AriaCurrentValue =
-  | 'page'
-  | 'step'
-  | 'location'
-  | 'date'
-  | 'time'
-  | 'true'
-  | 'false'
-  | true
-  | false
 
 export type ListItemStatefulProps = {
   /**
@@ -124,7 +114,7 @@ export type ListItemStatefulProps = {
    * @deprecated use `selected` instead of `current` to get darker background color
    *
    */
-  current?: AriaCurrentValue
+  current?: boolean
   /**
    * If true, the ListItem will have a "disabled" presentation.
    * @default false
