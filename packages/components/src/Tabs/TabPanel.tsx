@@ -31,10 +31,11 @@ export interface TabPanelProps {
   className?: string
   selected?: boolean
   /**
-   * Set tabIndex to 0 if you'd like the TabPanel to be reached via keyboard tabbing
-   * @default -1
+   * Set to `true` if you would like TabPanel to be reached via tab-key.
+   * Generally this is _only_ the case when the TabPanel contains no tab-stopping items (a, button, etc.)
+   * @default false
    */
-  tabIndex?: number
+  tabStop?: boolean
 }
 
 const TabPanelLayout: FC<TabPanelProps> = ({
