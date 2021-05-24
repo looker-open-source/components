@@ -129,7 +129,7 @@ export type ListColorProps = LimitedColor | KeyColor
 
 export type ListItemStatefulProps = {
   /**
-   * If truthy, the ListItem will have a darker background color (same as selected)
+   * If true, the ListItem will have a darker background color (same as selected)
    * Note: Using current and selected at the same time is not recommended
    * @todo - remove prop in 2.x
    * @deprecated use `selected` instead of `current` to get darker background color
