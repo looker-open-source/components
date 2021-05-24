@@ -40,7 +40,6 @@ export const treeItemInnerPropKeys = [
   'disabled',
   'hovered',
   'icon',
-  'keyColor',
   'selected',
   'truncate',
   ...linkPropKeys,

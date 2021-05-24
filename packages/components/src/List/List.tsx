@@ -102,7 +102,6 @@ export const ListInternal = forwardRef(
       disableKeyboardNav,
       height,
       iconGutter = false,
-      keyColor,
       onBlur,
       onFocus,
       onKeyDown,
@@ -150,7 +149,7 @@ export const ListInternal = forwardRef(
     })
 
     const context = {
-      color: keyColor ? 'key' : color,
+      color,
       density,
       iconGutter,
     }

@@ -32,7 +32,7 @@ import { NestedMenuProvider } from './NestedMenuProvider'
 
 export const MenuListInternal = forwardRef(
   (
-    { children, ...props }: Omit<ListProps, 'color' | 'keyColor'>,
+    { children, ...props }: Omit<ListProps, 'color'>,
     forwardedRef: Ref<HTMLUListElement>
   ) => {
     return (

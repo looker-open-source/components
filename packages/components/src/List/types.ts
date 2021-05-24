@@ -83,23 +83,6 @@ export type FlexibleColor = {
    * color applied at all times unless they are `disabled`
    */
   color?: StringColor
-  /**
-   * Not combinable
-   */
-  keyColor?: never
-}
-
-export type KeyColor = {
-  /**
-   * Replace the normal uiN(1-5) color for selected and selected + hovered color with key colors
-   * @todo - Remove in 2.x release
-   * @deprecated Use `color="key"` instead
-   */
-  keyColor?: boolean
-  /**
-   * Not combinable
-   */
-  color?: never
 }
 
 export type LimitedColor = {
@@ -118,14 +101,10 @@ export type LimitedColor = {
    * color applied at all times unless they are `disabled`
    */
   color?: LimitedListColor
-  /**
-   * Not combinable
-   */
-  keyColor?: never
 }
 
-export type ListItemColorProps = FlexibleColor | KeyColor
-export type ListColorProps = LimitedColor | KeyColor
+export type ListItemColorProps = FlexibleColor
+export type ListColorProps = LimitedColor
 
 export type ListItemStatefulProps = {
   /**

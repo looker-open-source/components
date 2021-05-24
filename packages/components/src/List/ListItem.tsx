@@ -150,7 +150,6 @@ const ListItemInternal = forwardRef(
       href,
       icon,
       itemRole,
-      keyColor,
       onBlur,
       onClick,
       onClickWhitespace,
@@ -179,7 +178,6 @@ const ListItemInternal = forwardRef(
 
     const itemDimensions = listItemDimensions(propsDensity || contextDensity)
 
-    if (keyColor) propsColor = 'key'
     const color = undefinedCoalesce([propsColor, contextColor])
 
     const { focusVisible, ...focusVisibleHandlers } = useFocusVisible({

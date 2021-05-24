@@ -60,9 +60,9 @@ describe('ListItem', () => {
   })
 
   describe('color', () => {
-    test('keyColor', () => {
+    test('theme.colors.key', () => {
       renderWithTheme(
-        <ListItem selected keyColor>
+        <ListItem selected color="key">
           who!
         </ListItem>
       )

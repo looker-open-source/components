@@ -30,7 +30,7 @@ import { screen } from '@testing-library/react'
 import { Basic } from './NavList.story'
 
 describe('NavList', () => {
-  test('display with keyColor', () => {
+  test('display with theme.colors.key', () => {
     renderWithTheme(<Basic />)
 
     const listItem = screen.getByText('Explore')

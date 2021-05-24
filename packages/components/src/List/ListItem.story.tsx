@@ -60,7 +60,7 @@ export const IconColorDisabled = () => (
   <ListItem {...iconArgs} color="warn" disabled />
 )
 
-const Example: FC<ListItemProps> = ({ children, keyColor, ...props }) => {
+const Example: FC<ListItemProps> = ({ children, ...props }) => {
   const args = {
     icon: <PersonOutline />,
     ...props,
@@ -180,7 +180,7 @@ Disabled.args = {
   disabled: true,
 }
 
-export const KeyColor = () => <ListItem selected keyColor {...basicArgs} />
+export const KeyColor = () => <ListItem selected color="key" {...basicArgs} />
 
 export const Link = () => {
   return (

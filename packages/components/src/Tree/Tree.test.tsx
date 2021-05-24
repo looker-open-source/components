@@ -202,10 +202,10 @@ describe('Tree', () => {
   })
 
   describe('color', () => {
-    test('keyColor', () => {
+    test('theme.colors.key', () => {
       renderWithTheme(
         <Tree
-          keyColor
+          color="key"
           selected
           label="Whatever"
           icon={<Science data-testid="icon" />}
