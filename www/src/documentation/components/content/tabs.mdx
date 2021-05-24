@@ -132,3 +132,26 @@ Using the distribute prop on `TabList` will equally distributed each `Tab` in th
   )
 }
 ```
+
+## Keyboard Navigation
+
+When focused on a `Tab`, use the left and right arrow keys to navigate to sibling `Tab`s.
+
+If you'd like a `TabPanel` to be reachable via keyboard tabbing, set its `tabIndex` prop to 0. By default, this value is set to -1 to keep `TabPanel` out of the standard tab flow.
+
+```jsx
+;() => {
+  return (
+    <Tabs>
+      <TabList>
+        <Tab>tabIndex = 0</Tab>
+        <Tab>tabIndex = 1</Tab>
+      </TabList>
+      <TabPanels>
+        <TabPanel tabIndex={0}>I'm reachable by pressing the tab key</TabPanel>
+        <TabPanel>I'm not reachable by pressing the tab key</TabPanel>
+      </TabPanels>
+    </Tabs>
+  )
+}
+```
