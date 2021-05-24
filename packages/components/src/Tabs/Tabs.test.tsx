@@ -198,7 +198,7 @@ describe('focus behavior', () => {
     )
   })
 
-  test('Tab Focus: TabPanel can use tabIndex to exclude itself from tab flow', () => {
+  test('Tab Focus: By default, TabPanel is not tabbable', () => {
     renderWithTheme(
       <Tabs>
         <TabList>
@@ -206,18 +206,44 @@ describe('focus behavior', () => {
           <Tab>tab2</Tab>
         </TabList>
         <TabPanels>
-          <TabPanel tabIndex={-1}>
+          <TabPanel>
             <button>Some button</button>
           </TabPanel>
           <TabPanel>this is tab2 content</TabPanel>
         </TabPanels>
       </Tabs>
     )
-    const tab1 = screen.getByText('tab1')
     userEvent.tab()
-    expect(tab1).toHaveFocus()
+    expect(screen.getByText('tab1')).toHaveFocus()
+
     userEvent.tab()
     expect(screen.getByText('Some button')).toHaveFocus()
+  })
+
+  test('Tab Focus: TabPanel can use "tabStop" prop to become tabbable element', () => {
+    renderWithTheme(
+      <Tabs>
+        <TabList>
+          <Tab>tab1</Tab>
+          <Tab>tab2</Tab>
+        </TabList>
+        <TabPanels>
+          <TabPanel tabStop>
+            <button>Some button</button>
+          </TabPanel>
+          <TabPanel>this is tab2 content</TabPanel>
+        </TabPanels>
+      </Tabs>
+    )
+    userEvent.tab()
+    expect(screen.getByText('tab1')).toHaveFocus()
+
+    const button = screen.getByText('Some button')
+    userEvent.tab()
+    expect(button.closest('div'))
+
+    userEvent.tab()
+    expect(button).toHaveFocus()
   })
 
   test('Tab keyboard navigation', () => {

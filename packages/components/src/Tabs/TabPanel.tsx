@@ -42,10 +42,10 @@ const TabPanelLayout: FC<TabPanelProps> = ({
   children,
   className,
   selected,
-  tabIndex = -1,
+  tabStop = false,
 }) =>
   selected ? (
-    <div className={className} tabIndex={tabIndex}>
+    <div className={className} tabIndex={tabStop ? 0 : -1}>
       {children}
     </div>
   ) : null
