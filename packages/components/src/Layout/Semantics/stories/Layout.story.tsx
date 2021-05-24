@@ -36,6 +36,11 @@ import {
 } from 'packages/components/src/__mocks__/Constitution'
 import { Page, Header, Layout, LayoutProps, Aside, Section, Footer } from '..'
 
+export default {
+  component: Layout,
+  title: 'Layout',
+}
+
 const AsideAlt = styled(Aside)``
 
 const Highlighter = styled.div`
@@ -58,9 +63,9 @@ const Highlighter = styled.div`
   }
 `
 
-const Template: Story<LayoutProps> = (args) => (
+export const Basic = () => (
   <Highlighter>
-    <Page {...args}>
+    <Page>
       <Header height="4rem" px="large">
         I'm the header
       </Header>
@@ -81,15 +86,30 @@ const Template: Story<LayoutProps> = (args) => (
   </Highlighter>
 )
 
-export const BasicLayout = Template.bind({})
-BasicLayout.args = {}
+export const FixedWithFooterAndHeaderShadow = () => (
+  <Highlighter>
+    <Page fixed>
+      <Header height="4rem" px="large">
+        I'm the header
+      </Header>
+      <Layout hasAside>
+        <Aside p="large" width="200px">
+          <MenuItemsFiller />
+          <MenuItemsFiller />
+        </Aside>
+        <Section main p="xxlarge">
+          <Heading>Page title</Heading>
+          <TabsFiller />
+        </Section>
+      </Layout>
+      <Footer height="3rem" px="large">
+        I'm a footer
+      </Footer>
+    </Page>
+  </Highlighter>
+)
 
-export const LayoutFixedWithFooterAndHeaderShadow = Template.bind({})
-LayoutFixedWithFooterAndHeaderShadow.args = {
-  fixed: true,
-}
-
-export const LayoutScrollIndependently = () => (
+export const ScrollIndependently = () => (
   <Highlighter>
     <Page fixed>
       <Layout hasAside>
@@ -107,11 +127,11 @@ export const LayoutScrollIndependently = () => (
     </Page>
   </Highlighter>
 )
-LayoutScrollIndependently.parameters = {
+ScrollIndependently.parameters = {
   storyshots: { disable: true },
 }
 
-export const LayoutScrollSelectedAreas = () => (
+export const ScrollSelectedAreas = () => (
   <Highlighter>
     <Page fixed>
       <Layout hasAside>
@@ -131,11 +151,11 @@ export const LayoutScrollSelectedAreas = () => (
     </Page>
   </Highlighter>
 )
-LayoutScrollSelectedAreas.parameters = {
+ScrollSelectedAreas.parameters = {
   storyshots: { disable: true },
 }
 
-export const LayoutScrollAllAreasTogetherDefault = () => (
+export const ScrollAllAreasTogetherDefault = () => (
   <Highlighter>
     <Page>
       <Layout hasAside>
@@ -153,6 +173,6 @@ export const LayoutScrollAllAreasTogetherDefault = () => (
     </Page>
   </Highlighter>
 )
-LayoutScrollAllAreasTogetherDefault.parameters = {
+ScrollAllAreasTogetherDefault.parameters = {
   storyshots: { disable: true },
 }

@@ -31,7 +31,7 @@ import { renderWithTheme } from '@looker/components-test-utils'
 import { Aside } from './Aside'
 
 describe('Aside', () => {
-  test('renders.', () => {
+  test('default', () => {
     renderWithTheme(<Aside>Aside content</Aside>)
     expect(screen.getByText('Aside content')).toBeInTheDocument()
   })
@@ -58,7 +58,7 @@ describe('Aside', () => {
     renderWithTheme(<Aside>Aside content</Aside>)
 
     expect(
-      getComputedStyle(screen.getByTestId('aside-content')).getPropertyValue(
+      getComputedStyle(screen.getByText('Aside content')).getPropertyValue(
         'box-shadow'
       )
     ).toEqual('')
@@ -75,73 +75,77 @@ describe('Aside', () => {
       value: 0,
     })
 
-    renderWithTheme(<Aside>Stuff</Aside>)
+    renderWithTheme(<Aside>Aside content</Aside>)
 
     expect(
-      getComputedStyle(screen.getByTestId('aside-content')).getPropertyValue(
+      getComputedStyle(screen.getByText('Aside content')).getPropertyValue(
         'box-shadow'
       )
     ).toEqual('0 -4px 4px -4px #DEE1E5,inset 0 -4px 4px -4px #DEE1E5')
   })
 
   test('render border properly', () => {
-    renderWithTheme(<Aside border>Aside</Aside>)
-    expect(screen.getByText('Aside')).toHaveStyle('border: 1px solid #DEE1E5;')
+    renderWithTheme(<Aside border>Aside content</Aside>)
+    expect(screen.getByText('Aside content')).toHaveStyle(
+      'border: 1px solid #DEE1E5;'
+    )
   })
 
   test('render borderBottom properly', () => {
-    renderWithTheme(<Aside borderBottom>Aside</Aside>)
+    renderWithTheme(<Aside borderBottom>Aside content</Aside>)
 
-    expect(screen.getByText('Aside')).toHaveStyle(
+    expect(screen.getByText('Aside content')).toHaveStyle(
       'border-bottom: 1px solid #DEE1E5;'
     )
   })
 
   test('render borderLeft properly', () => {
-    renderWithTheme(<Aside borderLeft>Aside</Aside>)
+    renderWithTheme(<Aside borderLeft>Aside content</Aside>)
 
-    expect(screen.getByText('Aside')).toHaveStyle(
+    expect(screen.getByText('Aside content')).toHaveStyle(
       'border-left: 1px solid #DEE1E5;'
     )
   })
 
   test('render borderRight properly', () => {
-    renderWithTheme(<Aside borderRight>Aside</Aside>)
+    renderWithTheme(<Aside borderRight>Aside content</Aside>)
 
-    expect(screen.getByText('Aside')).toHaveStyle(
+    expect(screen.getByText('Aside content')).toHaveStyle(
       'border-right: 1px solid #DEE1E5;'
     )
   })
 
   test('render borderTop properly', () => {
-    renderWithTheme(<Aside borderTop>Aside</Aside>)
+    renderWithTheme(<Aside borderTop>Aside content</Aside>)
 
-    expect(screen.getByText('Aside')).toHaveStyle(
+    expect(screen.getByText('Aside content')).toHaveStyle(
       'border-top: 1px solid #DEE1E5;'
     )
   })
 
   test('render borderX properly', () => {
-    renderWithTheme(<Aside borderX>Aside</Aside>)
+    renderWithTheme(<Aside borderX>Aside content</Aside>)
 
-    const aside = screen.getByText('Aside')
+    const aside = screen.getByText('Aside content')
 
     expect(aside).toHaveStyle('border-left: 1px solid #DEE1E5;')
     expect(aside).toHaveStyle('border-right: 1px solid #DEE1E5;')
   })
 
   test('render borderY properly', () => {
-    renderWithTheme(<Aside borderY>Aside</Aside>)
+    renderWithTheme(<Aside borderY>Aside content</Aside>)
 
-    const aside = screen.getByText('Aside')
+    const aside = screen.getByText('Aside content')
 
     expect(aside).toHaveStyle('border-bottom: 1px solid #DEE1E5;')
     expect(aside).toHaveStyle('border-top: 1px solid #DEE1E5;')
   })
 
   test('render border color if passed', () => {
-    renderWithTheme(<Aside border="key">Aside</Aside>)
+    renderWithTheme(<Aside border="key">Aside content</Aside>)
 
-    expect(screen.getByText('Aside')).toHaveStyle('border: 1px solid #6C43E0;')
+    expect(screen.getByText('Aside content')).toHaveStyle(
+      'border: 1px solid #6C43E0;'
+    )
   })
 })

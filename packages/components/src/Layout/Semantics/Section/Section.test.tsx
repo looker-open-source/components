@@ -52,7 +52,7 @@ describe('Section', () => {
     renderWithTheme(<Section>Section content</Section>)
 
     expect(
-      getComputedStyle(screen.getByTestId('section-content')).getPropertyValue(
+      getComputedStyle(screen.getByText('Section content')).getPropertyValue(
         'box-shadow'
       )
     ).toEqual('')
@@ -69,10 +69,10 @@ describe('Section', () => {
       value: 0,
     })
 
-    renderWithTheme(<Section>Stuff</Section>)
+    renderWithTheme(<Section>Section content</Section>)
 
     expect(
-      getComputedStyle(screen.getByTestId('section-content')).getPropertyValue(
+      getComputedStyle(screen.getByText('Section content')).getPropertyValue(
         'box-shadow'
       )
     ).toEqual('0 -4px 4px -4px #DEE1E5,inset 0 -4px 4px -4px #DEE1E5')

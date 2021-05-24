@@ -30,6 +30,11 @@ import styled from 'styled-components'
 import { useToggle, FieldToggleSwitch, Flex } from '@looker/components/src'
 import { Aside, AsideProps } from '../Aside/Aside'
 
+export default {
+  component: Aside,
+  title: 'Aside',
+}
+
 const Template: Story<AsideProps> = (args) => (
   <AsideStyle p="large" text-align="center" {...args} />
 )

@@ -54,7 +54,6 @@ const SectionLayout = forwardRef(
     return (
       <OverflowShadow
         as={main ? 'main' : 'section'}
-        data-testid="section-content"
         hasOverflow={hasOverflow}
         ref={ref}
         {...props}

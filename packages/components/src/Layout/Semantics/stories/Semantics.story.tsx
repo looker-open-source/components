@@ -33,9 +33,6 @@ export default {
   title: 'Semantics',
 }
 
-export * from './Layout.story'
-export * from './Aside.story'
-
 export const CommonLayouts = () => (
   <CustomGrid columns={3}>
     <HeaderLayoutAsideMain />
