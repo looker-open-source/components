@@ -105,9 +105,6 @@ export const ListItemLabel = styled(ListItemLabelLayout).withConfig({
   outline: none;
   text-align: left;
   text-decoration: none;
-  transition: ${({ theme: { easings, transitions } }) =>
-    `background ${transitions.quick}ms ${easings.ease},
-  color ${transitions.quick}ms ${easings.ease}`};
   width: 100%;
 
   &:hover,
