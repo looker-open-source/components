@@ -29,7 +29,7 @@ import { ArrowDropDown } from '@styled-icons/material/ArrowDropDown'
 import { ButtonOutline } from '../../Button'
 import { Box } from '../../Layout'
 import { Popover } from '../Popover'
-import { PopoverContent } from '../PopoverContent'
+import { PopoverContent } from '../PopoverLayout/PopoverContent'
 
 interface Props {
   top?: number

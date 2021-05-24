@@ -48,7 +48,7 @@ import {
 } from '../..'
 import { Tooltip } from '../../Tooltip'
 import { Popover } from '../Popover'
-import { PopoverContent } from '../PopoverContent'
+import { PopoverContent } from '../PopoverLayout/PopoverContent'
 import { usePopover } from '../usePopover'
 
 export * from './OverflowExamples'

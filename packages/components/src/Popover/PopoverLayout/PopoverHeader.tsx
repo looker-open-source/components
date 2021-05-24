@@ -24,63 +24,35 @@
 
  */
 
-import React, { FC, ReactChild, ReactElement } from 'react'
+import React, { FC } from 'react'
 import styled from 'styled-components'
-import { ModalFooter, ModalFooterProps } from '../Modal/ModalFooter'
-import { ButtonTransparent } from '../Button'
-import { Space } from '../Layout/Space'
+import { ModalHeader, ModalHeaderProps } from '../../Modal/ModalHeader'
 
-export interface PopoverFooterProp
-  extends Omit<ModalFooterProps, 'children' | 'secondary'> {
-  children: ReactChild
-  /**
-   * Button to close popover
-   * @default 'Done'
-   */
-  close?: ReactElement | string
-  /**
-   * function to control close behavior
-   */
-  closeModal?: () => void
-}
-
-const PopoverFooterLayout: FC<PopoverFooterProp> = ({
+const PopoverHeaderLayout: FC<ModalHeaderProps> = ({
   children,
-  close = 'Done',
-  closeModal,
+  hideClose = false,
   ...props
 }) => {
   return (
-    <ModalFooter {...props}>
-      <Space reverse>
-        <Detail>
-          {typeof close === 'string' ? (
-            <ButtonTransparent color="key" size="small" onClick={closeModal}>
-              {close}
-            </ButtonTransparent>
-          ) : (
-            close
-          )}
-        </Detail>
-        {children}
-      </Space>
-    </ModalFooter>
+    <ModalHeader
+      hideClose={hideClose}
+      fontSize="small"
+      fontWeight="medium"
+      {...props}
+    >
+      {children}
+    </ModalHeader>
   )
 }
 
-const Detail = styled.div`
-  margin-left: auto;
-  margin-right: medium;
-`
-
-export const PopoverFooter = styled(PopoverFooterLayout).attrs(
-  ({ pl = 'large', pr = 'medium', py = 'xsmall' }) => ({
+export const PopoverHeader = styled(PopoverHeaderLayout).attrs(
+  ({ pl = 'large', pr = 'medium', py = 'small' }) => ({
     pl,
     pr,
     py,
   })
-)<PopoverFooterProp>`
-  color: ${({ theme }) => theme.colors.text3};
+)<ModalHeaderProps>`
+  color: ${({ theme }) => theme.colors.text5};
   font-size: ${({ theme }) => theme.space.small};
-  margin-right: ${({ theme }) => theme.space.xsmall};
+  font-weight: ${({ theme }) => theme.fontWeights.medium};
 `

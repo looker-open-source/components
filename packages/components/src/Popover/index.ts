@@ -25,7 +25,7 @@
  */
 
 export * from './Popover'
-export * from './PopoverContent'
-export * from './PopoverHeader'
-export * from './PopoverFooter'
+export * from './PopoverLayout/PopoverContent'
+export * from './PopoverLayout/PopoverHeader'
+export * from './PopoverLayout/PopoverFooter'
 export * from './usePopover'

@@ -24,40 +24,21 @@
 
  */
 
-import React, { FC, ReactChild } from 'react'
+import React, { FC } from 'react'
 import styled from 'styled-components'
-import { ModalHeader, ModalHeaderProps } from '../Modal/ModalHeader'
+import { ModalContent, ModalContentProps } from '../../Modal/ModalContent'
 
-export interface PopoverHeaderProp extends Omit<ModalHeaderProps, 'children'> {
-  children: ReactChild
-  hideClose?: boolean
-}
-
-const PopoverHeaderLayout: FC<PopoverHeaderProp> = ({
+const PopoverContentLayout: FC<ModalContentProps> = ({
   children,
-  hideClose = false,
   ...props
 }) => {
-  return (
-    <ModalHeader
-      hideClose={hideClose}
-      fontSize="small"
-      fontWeight="medium"
-      {...props}
-    >
-      {children}
-    </ModalHeader>
-  )
+  return <ModalContent {...props}>{children}</ModalContent>
 }
 
-export const PopoverHeader = styled(PopoverHeaderLayout).attrs(
-  ({ pl = 'large', pr = 'medium', py = 'small' }) => ({
-    pl,
-    pr,
-    py,
+export const PopoverContent = styled(PopoverContentLayout).attrs(
+  ({ pb = 'medium', pt = 'large', px = 'large' }) => ({
+    pb,
+    pt,
+    px,
   })
-)<PopoverHeaderProp>`
-  color: ${({ theme }) => theme.colors.text5};
-  font-size: ${({ theme }) => theme.space.small};
-  font-weight: ${({ theme }) => theme.fontWeights.medium};
-`
+)<ModalContentProps>``

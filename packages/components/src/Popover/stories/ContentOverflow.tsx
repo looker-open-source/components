@@ -30,7 +30,7 @@ import { ButtonOutline } from '../../Button'
 import { Box } from '../../Layout'
 import { Paragraph } from '../../Text'
 import { Popover } from '../Popover'
-import { PopoverContent } from '../PopoverContent'
+import { PopoverContent } from '../PopoverLayout/PopoverContent'
 
 export const ContentOverflow: FC = ({ children }) => (
   <Box position="absolute" top="40%" left="40%">
