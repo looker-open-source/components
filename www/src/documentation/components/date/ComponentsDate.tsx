@@ -24,9 +24,24 @@
 
  */
 
-export * from './Select'
-export * from './SelectInputIcon'
-export * from './SelectMulti'
-export * from './SelectOptions'
-export * from './types'
-export { pickAriaAndValidationProps } from './utils/ariaProps'
+import React, { FC } from 'react'
+import { Code, Link, MessageBar } from '@looker/components'
+
+export const Message: FC = ({ children }) => (
+  <MessageBar canDismiss={false} intent="inform" mb="medium">
+    Import{' '}
+    <Code fontWeight="bold" fontSize="inherit">
+      {children}
+    </Code>{' '}
+    from{' '}
+    <Code fontSize="inherit">
+      <Link
+        href="https://www.npmjs.com/package/@looker/components-date"
+        isExternal
+        target="_blank"
+      >
+        @looker/components-date
+      </Link>
+    </Code>{' '}
+  </MessageBar>
+)
