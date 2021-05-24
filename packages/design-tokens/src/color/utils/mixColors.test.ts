@@ -35,13 +35,15 @@ describe('mixColors', () => {
     test('text1', () =>
       expect(mixColors(textBlends[0], text, background)).toEqual('#9da0a3'))
     test('text5', () =>
-      expect(mixColors(textBlends[4], text, background)).toEqual('#30373d'))
+      expect(mixColors(textBlends[4], text, background)).toEqual(colors.text))
   })
 
   describe('dark-mode', () => {
     test('text1', () =>
       expect(mixColors(textBlends[0], background, text)).toEqual('#878b8e'))
     test('text5', () =>
-      expect(mixColors(textBlends[4], background, text)).toEqual('#f4f4f4'))
+      expect(mixColors(textBlends[4], background, text)).toEqual(
+        colors.background
+      ))
   })
 })
