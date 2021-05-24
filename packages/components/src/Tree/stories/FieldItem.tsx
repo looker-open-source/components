@@ -110,7 +110,10 @@ export const FieldItem: FC<FieldItemProps> = ({
       onKeyDown={(event) => {
         if (event.key === 'Enter' && event.metaKey) {
           alert(`CMD + Enter'ed on ${children}!`)
-        } else if (event.key === 'Enter') {
+        } else if (
+          event.key === 'Enter' &&
+          event.currentTarget === event.target
+        ) {
           toggleField()
         }
       }}

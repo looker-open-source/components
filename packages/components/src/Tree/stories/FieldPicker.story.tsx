@@ -26,7 +26,7 @@
 
 import React from 'react'
 import styled from 'styled-components'
-import { Box, Paragraph } from '../..'
+import { Box, Paragraph, ParagraphProps } from '../..'
 import { TreeCollection, TreeBranch, Tree } from '..'
 import { generateBorderRadius } from '../utils/generateBorderRadius'
 import { FieldItem } from './FieldItem'
@@ -35,17 +35,19 @@ const BorderRadiusOverrideTree = styled(Tree)`
   ${({ theme }) => generateBorderRadius('medium', theme)}
 `
 
-const FieldGroupHeading = styled(Paragraph).attrs(({ color = 'text1' }) => ({
-  color,
-  fontSize: 'xxsmall',
-  fontWeight: 'semiBold',
-  pb: 'xxsmall',
-  pr: 'xxsmall',
-  pt: 'xsmall',
-  truncate: true,
-}))`
-  line-height: 0.75rem;
-`
+const FieldGroupHeading = (props: ParagraphProps) => (
+  <Paragraph
+    color="text1"
+    fontSize="xxsmall"
+    fontWeight="semiBold"
+    pb="xxsmall"
+    pr="xxsmall"
+    pt="xsmall"
+    truncate
+    style={{ lineHeight: '0.75rem' }}
+    {...props}
+  />
+)
 
 const fields = (
   <>
