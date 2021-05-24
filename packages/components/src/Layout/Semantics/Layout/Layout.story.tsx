@@ -30,10 +30,9 @@ import { Heading } from '@looker/components/src'
 import {
   Constitution,
   ConstitutionShort,
-  MenuItemsFiller,
-  TabsFiller,
 } from 'packages/components/src/__mocks__/Constitution'
-import { Page, Header, Layout, Aside, Section, Footer } from '..'
+import { ItemsFiller } from 'packages/components/src/__mocks__/ListHelper'
+import { Page, Header, Layout, Aside, Section, Footer } from '../'
 
 export default {
   component: Layout,
@@ -70,12 +69,11 @@ export const Basic = () => (
       </Header>
       <Layout hasAside>
         <Aside p="large" width="200px">
-          <MenuItemsFiller />
-          <MenuItemsFiller />
+          <ItemsFiller count={20} />
         </Aside>
         <Section main p="xxlarge">
           <Heading>Page title</Heading>
-          <TabsFiller />
+          <Constitution />
         </Section>
       </Layout>
       <Footer height="3rem" px="large">
@@ -93,12 +91,11 @@ export const FixedWithFooterAndHeaderShadow = () => (
       </Header>
       <Layout hasAside>
         <Aside p="large" width="200px">
-          <MenuItemsFiller />
-          <MenuItemsFiller />
+          <ItemsFiller count={20} />
         </Aside>
         <Section main p="xxlarge">
           <Heading>Page title</Heading>
-          <TabsFiller />
+          <Constitution />
         </Section>
       </Layout>
       <Footer height="3rem" px="large">
@@ -117,7 +114,7 @@ export const ScrollIndependently = () => (
         </Aside>
         <Section main p="xxlarge">
           <Heading>Page title</Heading>
-          <TabsFiller />
+          <Constitution />
         </Section>
         <AsideAlt p="xxlarge" width="navigation">
           <ConstitutionShort />
@@ -140,7 +137,7 @@ export const ScrollSelectedAreas = () => (
         <Layout hasAside>
           <Section main scrollWithin p="xxlarge">
             <Heading>Page title</Heading>
-            <TabsFiller />
+            <Constitution />
           </Section>
           <AsideAlt scrollWithin p="xxlarge">
             <ConstitutionShort />
@@ -163,7 +160,7 @@ export const ScrollAllAreasTogetherDefault = () => (
         </Aside>
         <Section main p="xxlarge">
           <Heading>Page title</Heading>
-          <TabsFiller />
+          <Constitution />
         </Section>
         <AsideAlt p="xxlarge" width="10rem">
           <ConstitutionShort />

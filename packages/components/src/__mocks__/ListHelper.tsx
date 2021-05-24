@@ -24,9 +24,15 @@
 
  */
 
-export * from './Aside'
-export * from './Footer'
-export * from './Header'
-export * from './Layout'
-export * from './Page'
-export * from './Section'
+import React, { FC } from 'react'
+import { List, ListItem } from '../'
+
+const Item: FC = (props) => <ListItem {...props}>blah</ListItem>
+
+export const ItemsFiller: FC<{ count?: number }> = ({ count = 10 }) => (
+  <List>
+    {[...Array(count).keys()].map((key) => (
+      <Item key={key} />
+    ))}
+  </List>
+)

@@ -27,9 +27,9 @@
 import React, { forwardRef, Ref } from 'react'
 import { CompatibleHTMLProps } from '@looker/design-tokens'
 import styled, { css } from 'styled-components'
-import { simpleLayoutCSS, SimpleLayoutProps } from '../utils/simple'
-import { OverflowShadow, useOverflow } from '../../utils'
-import { Section } from './Section/Section'
+import { simpleLayoutCSS, SimpleLayoutProps } from '../../utils/simple'
+import { OverflowShadow, useOverflow } from '../../../utils'
+import { Section } from '../Section'
 
 export interface LayoutProps
   extends SimpleLayoutProps,

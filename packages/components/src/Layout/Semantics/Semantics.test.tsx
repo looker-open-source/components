@@ -32,7 +32,7 @@ import { Aside } from './Aside/Aside'
 import { Footer, Header, Layout, Page, Section } from './'
 
 describe('Semantics', () => {
-  test('whole page scroll together by default', () => {
+  test('whole page scrolls together by default', () => {
     renderWithTheme(
       <Page>
         <Header height="4rem" px="large">

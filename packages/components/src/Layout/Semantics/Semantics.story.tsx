@@ -26,11 +26,11 @@
 
 import React from 'react'
 import styled from 'styled-components'
-import { Layout, Header, Aside, Footer, Section } from '..'
-import { Grid } from '../../Grid'
+import { Grid } from '../Grid'
+import { Layout, Header, Aside, Footer, Section } from '.'
 
 export default {
-  title: 'Semantics',
+  title: 'Semantics Layout',
 }
 
 export const CommonLayouts = () => (
