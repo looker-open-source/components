@@ -220,7 +220,7 @@ describe('focus behavior', () => {
     expect(screen.getByText('Some button')).toHaveFocus()
   })
 
-  test('Tab Focus: TabPanel can use "tabStop" prop to become tabbable element', () => {
+  test('Tab Focus: TabPanel can use "isTabStop" prop to become tabbable element', () => {
     renderWithTheme(
       <Tabs>
         <TabList>
