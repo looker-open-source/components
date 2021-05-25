@@ -27,20 +27,24 @@
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { screen } from '@testing-library/react'
-import { DialogFooter } from './DialogFooter'
+import { ModalFooter } from './ModalFooter'
 
-describe('DialogFooter', () => {
-  test('basic ', () => {
-    renderWithTheme(<DialogFooter>Footer Text</DialogFooter>)
-    expect(screen.getByText('Footer Text')).toBeInTheDocument()
+describe('ModalFooter', () => {
+  test('basic', () => {
+    renderWithTheme(
+      <ModalFooter>
+        <button>Cancel</button>
+      </ModalFooter>
+    )
+    expect(screen.getByRole('button')).toBeInTheDocument()
   })
-  test('has correct padding ', () => {
-    renderWithTheme(<DialogFooter>Footer Text</DialogFooter>)
-    const footer = screen.getByText('Footer Text').closest('footer')
-    expect(footer).toBeInTheDocument()
-    expect(footer).toHaveStyle('padding-left: 2rem;')
-    expect(footer).toHaveStyle('padding-right: 2rem;')
-    expect(footer).toHaveStyle('padding-top: 1.25rem;')
-    expect(footer).toHaveStyle('padding-bottom: 1.25rem;')
+
+  test('secondary', () => {
+    renderWithTheme(
+      <ModalFooter secondary={<button>Done</button>}>
+        <button>Cancel</button>
+      </ModalFooter>
+    )
+    expect(screen.getByText('Done')).toBeInTheDocument()
   })
 })

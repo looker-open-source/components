@@ -25,22 +25,30 @@
  */
 
 import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { screen } from '@testing-library/react'
-import { DialogFooter } from './DialogFooter'
+import { Box } from '../../Layout'
+import { PopoverFooter } from './PopoverFooter'
 
-describe('DialogFooter', () => {
-  test('basic ', () => {
-    renderWithTheme(<DialogFooter>Footer Text</DialogFooter>)
-    expect(screen.getByText('Footer Text')).toBeInTheDocument()
-  })
-  test('has correct padding ', () => {
-    renderWithTheme(<DialogFooter>Footer Text</DialogFooter>)
-    const footer = screen.getByText('Footer Text').closest('footer')
-    expect(footer).toBeInTheDocument()
-    expect(footer).toHaveStyle('padding-left: 2rem;')
-    expect(footer).toHaveStyle('padding-right: 2rem;')
-    expect(footer).toHaveStyle('padding-top: 1.25rem;')
-    expect(footer).toHaveStyle('padding-bottom: 1.25rem;')
-  })
-})
+export default {
+  component: PopoverFooter,
+  title: 'PopoverFooter',
+}
+
+export const Basic = () => (
+  <Box bg="ui1" width="248px">
+    <PopoverFooter>Footer Text</PopoverFooter>
+  </Box>
+)
+
+export const CloseStringValue = () => (
+  <Box bg="ui1" width="248px">
+    <PopoverFooter close="Footer">Footer Text</PopoverFooter>
+  </Box>
+)
+
+const close = <button>close</button>
+
+export const CloseElementValue = () => (
+  <Box bg="ui1" width="248px">
+    <PopoverFooter close={close}>Footer Text</PopoverFooter>
+  </Box>
+)

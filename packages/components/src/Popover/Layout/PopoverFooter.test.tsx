@@ -27,20 +27,27 @@
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { screen } from '@testing-library/react'
-import { DialogFooter } from './DialogFooter'
+import { PopoverFooter } from './PopoverFooter'
 
-describe('DialogFooter', () => {
+describe('PopoverFooter', () => {
   test('basic ', () => {
-    renderWithTheme(<DialogFooter>Footer Text</DialogFooter>)
+    renderWithTheme(<PopoverFooter>Footer Text</PopoverFooter>)
     expect(screen.getByText('Footer Text')).toBeInTheDocument()
+    expect(screen.getByText('Done')).toBeInTheDocument()
   })
-  test('has correct padding ', () => {
-    renderWithTheme(<DialogFooter>Footer Text</DialogFooter>)
-    const footer = screen.getByText('Footer Text').closest('footer')
-    expect(footer).toBeInTheDocument()
-    expect(footer).toHaveStyle('padding-left: 2rem;')
-    expect(footer).toHaveStyle('padding-right: 2rem;')
-    expect(footer).toHaveStyle('padding-top: 1.25rem;')
-    expect(footer).toHaveStyle('padding-bottom: 1.25rem;')
+
+  test('close prop with specified string ', () => {
+    renderWithTheme(<PopoverFooter close="Footer">Footer Text</PopoverFooter>)
+    expect(screen.getByText('Footer Text')).toBeInTheDocument()
+    expect(screen.getByText('Footer')).toBeInTheDocument()
+  })
+
+  test('close prop with specified element ', () => {
+    const close = <button>close</button>
+
+    renderWithTheme(<PopoverFooter close={close}>Footer Text</PopoverFooter>)
+    expect(screen.getByText('Footer Text')).toBeInTheDocument()
+    expect(screen.getByText('close')).toBeInTheDocument()
+    expect(screen.getByRole('button')).toBeInTheDocument()
   })
 })

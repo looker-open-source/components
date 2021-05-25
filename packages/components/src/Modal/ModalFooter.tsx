@@ -24,23 +24,37 @@
 
  */
 
-import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { screen } from '@testing-library/react'
-import { DialogFooter } from './DialogFooter'
+import React, { FC, ReactNode, ReactChild } from 'react'
+import styled from 'styled-components'
+import { CompatibleHTMLProps } from '@looker/design-tokens'
+import { Space, SpaceHelperProps } from '../Layout/Space'
 
-describe('DialogFooter', () => {
-  test('basic ', () => {
-    renderWithTheme(<DialogFooter>Footer Text</DialogFooter>)
-    expect(screen.getByText('Footer Text')).toBeInTheDocument()
-  })
-  test('has correct padding ', () => {
-    renderWithTheme(<DialogFooter>Footer Text</DialogFooter>)
-    const footer = screen.getByText('Footer Text').closest('footer')
-    expect(footer).toBeInTheDocument()
-    expect(footer).toHaveStyle('padding-left: 2rem;')
-    expect(footer).toHaveStyle('padding-right: 2rem;')
-    expect(footer).toHaveStyle('padding-top: 1.25rem;')
-    expect(footer).toHaveStyle('padding-bottom: 1.25rem;')
-  })
-})
+export interface ModalFooterProps
+  extends CompatibleHTMLProps<HTMLDivElement>,
+    SpaceHelperProps {
+  /**
+   *
+   */
+  children?: ReactChild
+  /**
+   * Secondary content to place in the footer
+   */
+  secondary?: ReactNode
+}
+
+const ModalFooterLayout: FC<ModalFooterProps> = ({
+  children,
+  secondary,
+  ...props
+}) => {
+  return (
+    <Space as="footer" reverse between {...props}>
+      <Space reverse>{children}</Space>
+      {secondary && <Space>{secondary}</Space>}
+    </Space>
+  )
+}
+
+export const ModalFooter = styled(ModalFooterLayout)<ModalFooterProps>`
+  flex-shrink: 0;
+`
