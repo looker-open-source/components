@@ -53,6 +53,9 @@ export const i18nResources: Resource = {
     Chip: {
       Delete: 'Delete',
     },
+    CloseHeaderButton: {
+      Close: 'Close',
+    },
     ColumnSelector: {
       Apply: 'Apply',
       Cancel: 'Cancel',

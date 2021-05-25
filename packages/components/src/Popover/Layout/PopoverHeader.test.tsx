@@ -24,7 +24,25 @@
 
  */
 
-export * from './Layout'
-export * from './Popover'
-export * from './PopoverContent'
-export * from './usePopover'
+import 'jest-styled-components'
+import React from 'react'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
+import { PopoverHeader } from './PopoverHeader'
+
+describe('PopoverHeader', () => {
+  test('basic', () => {
+    renderWithTheme(<PopoverHeader>Heading</PopoverHeader>)
+    expect(screen.queryByText('Heading')).toBeInTheDocument()
+  })
+
+  test('Close visible by default', () => {
+    renderWithTheme(<PopoverHeader>Heading</PopoverHeader>)
+    expect(screen.queryByText('Close')).toBeInTheDocument()
+  })
+
+  test('hideClose', () => {
+    renderWithTheme(<PopoverHeader hideClose>Heading</PopoverHeader>)
+    expect(screen.queryByLabelText('Close')).not.toBeInTheDocument()
+  })
+})

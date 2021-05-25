@@ -24,7 +24,31 @@
 
  */
 
-export * from './Layout'
-export * from './Popover'
-export * from './PopoverContent'
-export * from './usePopover'
+import React from 'react'
+import { Box } from '../../Layout'
+import { PopoverHeader } from './PopoverHeader'
+
+export default {
+  component: PopoverHeader,
+  title: 'PopoverHeader',
+}
+
+export const Basic = () => (
+  <Box bg="ui1" width="248px">
+    <PopoverHeader>Header Text</PopoverHeader>
+  </Box>
+)
+
+export const HideClose = () => (
+  <Box bg="ui1" width="248px">
+    <PopoverHeader hideClose>Header Text</PopoverHeader>
+  </Box>
+)
+
+const close = <button>close</button>
+
+export const StyledDetail = () => (
+  <Box bg="ui1" width="248px">
+    <PopoverHeader detail={close}>Header Text</PopoverHeader>
+  </Box>
+)

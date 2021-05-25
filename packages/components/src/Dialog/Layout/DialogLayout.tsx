@@ -24,7 +24,7 @@
 
  */
 
-import React, { FC, ReactNode } from 'react'
+import React, { FC, ReactChild, ReactNode } from 'react'
 import { Spinner } from '../../Spinner'
 import { DialogContent } from './DialogContent'
 import { DialogFooter } from './DialogFooter'
@@ -45,7 +45,7 @@ export interface DialogLayoutProps {
   /**
    * Content in header. If a `string` is supplied the content will be placed in a <Header />
    */
-  header?: ReactNode
+  header?: ReactChild
   /**
    * Replaces the built-in `IconButton` (generally used for close) with an arbitrary ReactNode
    */

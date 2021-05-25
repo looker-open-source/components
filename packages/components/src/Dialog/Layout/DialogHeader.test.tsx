@@ -31,22 +31,14 @@ import { screen } from '@testing-library/react'
 import { DialogHeader } from './DialogHeader'
 
 describe('DialogHeader', () => {
-  test('Passes through DOM props', async () => {
-    renderWithTheme(
-      <DialogHeader aria-label="ARIA label">Heading</DialogHeader>
-    )
-    expect(await screen.findByLabelText('ARIA label')).toBeTruthy()
-  })
-
-  test('Close visible by default', async () => {
+  test('basic', () => {
     renderWithTheme(<DialogHeader>Heading</DialogHeader>)
-    expect(await screen.findByText('Close')).toBeTruthy()
+    expect(screen.queryByText('Heading')).toBeInTheDocument()
   })
 
-  test(`detail`, async () => {
-    renderWithTheme(<DialogHeader detail="Hello world">Header</DialogHeader>)
-    expect(await screen.findByText('Hello world')).toBeTruthy()
-    expect(screen.queryByLabelText('Close')).not.toBeInTheDocument()
+  test('Close visible by default', () => {
+    renderWithTheme(<DialogHeader>Heading</DialogHeader>)
+    expect(screen.queryByText('Close')).toBeInTheDocument()
   })
 
   test('hideClose', () => {

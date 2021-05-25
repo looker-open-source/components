@@ -24,7 +24,37 @@
 
  */
 
-export * from './Layout'
-export * from './Popover'
-export * from './PopoverContent'
-export * from './usePopover'
+import { useTranslation } from 'react-i18next'
+import React, { FC, useContext } from 'react'
+import { Close } from '@styled-icons/material/Close'
+import styled from 'styled-components'
+import { IconButton, IconButtonSizes } from '../Button'
+import { DialogContext } from '../Dialog'
+
+export interface CloseHeaderButtonProps {
+  /**
+   * this will define the size of the button
+   * @default 'medium'
+   */
+  size?: IconButtonSizes
+}
+
+const CloseHeaderButtonLayout: FC<CloseHeaderButtonProps> = ({
+  size = 'medium',
+}) => {
+  const { t } = useTranslation('CloseHeaderButton')
+  const { closeModal, id } = useContext(DialogContext)
+  return (
+    <IconButton
+      id={id ? `${id}-iconButton` : undefined}
+      size={size}
+      onClick={closeModal}
+      label={t('Close')}
+      icon={<Close />}
+    />
+  )
+}
+
+export const CloseHeaderButton = styled(
+  CloseHeaderButtonLayout
+)<CloseHeaderButtonProps>``
