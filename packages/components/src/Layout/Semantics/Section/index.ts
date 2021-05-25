@@ -24,19 +24,4 @@
 
  */
 
-import { shouldForwardProp } from '@looker/design-tokens'
-import styled from 'styled-components'
-import { borderHelper, SemanticBorderProps } from './utils/semanticBorderHelper'
-import { headerFooterCSS, HeaderProps } from './Header'
-
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface FooterProps extends HeaderProps, SemanticBorderProps {}
-
-export const Footer = styled.footer.withConfig({
-  shouldForwardProp,
-})<FooterProps>`
-  ${headerFooterCSS}
-
-  width: 100%;
-  ${borderHelper}
-`
+export * from './Section'

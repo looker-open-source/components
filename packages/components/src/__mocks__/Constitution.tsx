@@ -26,7 +26,7 @@
 
 import React from 'react'
 import styled from 'styled-components'
-import { Heading, Paragraph } from '..'
+import { Heading, Paragraph } from '../'
 
 export const ConstitutionShort = () => (
   <Paragraph fontSize="medium">

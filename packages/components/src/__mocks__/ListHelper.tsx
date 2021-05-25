@@ -24,19 +24,15 @@
 
  */
 
-import { shouldForwardProp } from '@looker/design-tokens'
-import styled from 'styled-components'
-import { borderHelper, SemanticBorderProps } from './utils/semanticBorderHelper'
-import { headerFooterCSS, HeaderProps } from './Header'
+import React, { FC } from 'react'
+import { List, ListItem } from '../'
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface FooterProps extends HeaderProps, SemanticBorderProps {}
+const Item: FC = (props) => <ListItem {...props}>blah</ListItem>
 
-export const Footer = styled.footer.withConfig({
-  shouldForwardProp,
-})<FooterProps>`
-  ${headerFooterCSS}
-
-  width: 100%;
-  ${borderHelper}
-`
+export const ItemsFiller: FC<{ count?: number }> = ({ count = 10 }) => (
+  <List>
+    {[...Array(count).keys()].map((key) => (
+      <Item key={key} />
+    ))}
+  </List>
+)

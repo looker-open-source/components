@@ -25,17 +25,23 @@
  */
 
 import React, { forwardRef, Ref } from 'react'
+import { shouldForwardProp } from '@looker/design-tokens'
 import styled from 'styled-components'
-import { OverflowShadow, useOverflow } from '../../utils'
-import { SemanticLayoutBase, semanticLayoutCSS } from './semanticStyledBase'
+import { ResponsiveValue } from 'styled-system'
+import { OverflowShadow, useOverflow } from '../../../utils'
+import { SemanticLayoutBase, semanticLayoutCSS } from '../semanticStyledBase'
+import {
+  borderHelper,
+  SemanticBorderProps,
+} from '../utils/semanticBorderHelper'
+import { AsideSizeRamp, asideWidth } from '../utils/asideWidth'
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface SectionProps extends SemanticLayoutBase {
+export interface AsideProps extends SemanticLayoutBase, SemanticBorderProps {
   /**
-   * When true the DOM element transition from section to main.
+   * Prevent `Aside` from being rendered.
    * @default false
    */
-  main?: boolean
+  collapse?: boolean
   /**
    * To be used within the context of <Page fixed> container.
    * When true, this removes the inner overflow-y scrolling
@@ -43,32 +49,45 @@ export interface SectionProps extends SemanticLayoutBase {
    * @default false
    */
   scrollWithin?: boolean
+  /**
+   * Specify width of aside
+   * @default 'sidebar'
+   */
+  width?: ResponsiveValue<AsideSizeRamp | string>
 }
 
-const SectionLayout = forwardRef(
+const AsideLayout = forwardRef(
   (
-    { main, children, ...props }: SectionProps,
+    { collapse, children, ...props }: AsideProps,
     forwardedRef: Ref<HTMLDivElement>
   ) => {
     const [hasOverflow, ref] = useOverflow(forwardedRef)
-    return (
-      <OverflowShadow
-        as={main ? 'main' : 'section'}
-        hasOverflow={hasOverflow}
-        ref={ref}
-        {...props}
-      >
+
+    return collapse ? null : (
+      <OverflowShadow as="aside" hasOverflow={hasOverflow} ref={ref} {...props}>
         {children}
       </OverflowShadow>
     )
   }
 )
 
-SectionLayout.displayName = 'SectionLayout'
+AsideLayout.displayName = 'AsideLayout'
 
-export const Section = styled(SectionLayout)`
-  ${semanticLayoutCSS}
-  flex: 1 0 auto;
-  overflow: auto;
-  ${({ scrollWithin }) => scrollWithin && 'height: fit-content;'}
-`
+export const Aside = styled(AsideLayout)
+  .withConfig<AsideProps>({
+    shouldForwardProp: (prop) => prop === 'collapse' || shouldForwardProp(prop),
+  })
+  .attrs<AsideProps>(({ width = 'sidebar' }) => ({
+    width,
+  }))<AsideProps>`
+${semanticLayoutCSS}
+
+flex: 0 0 ${({ width }) => width};
+max-width: ${({ width }) => width};
+min-width: ${({ width }) => width};
+overflow: auto;
+width: 0;
+${({ scrollWithin }) => scrollWithin && 'height: fit-content;'}
+
+${borderHelper}
+${asideWidth}`

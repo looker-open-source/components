@@ -25,52 +25,50 @@
  */
 
 import React, { forwardRef, Ref } from 'react'
-import { CompatibleHTMLProps } from '@looker/design-tokens'
-import styled, { css } from 'styled-components'
-import { simpleLayoutCSS, SimpleLayoutProps } from '../utils/simple'
-import { OverflowShadow, useOverflow } from '../../utils'
-import { Section } from './Section'
+import styled from 'styled-components'
+import { OverflowShadow, useOverflow } from '../../../utils'
+import { SemanticLayoutBase, semanticLayoutCSS } from '../semanticStyledBase'
 
-export interface LayoutProps
-  extends SimpleLayoutProps,
-    CompatibleHTMLProps<HTMLElement> {
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface SectionProps extends SemanticLayoutBase {
   /**
-   * fixed position for header and footer
+   * When true the DOM element transition from section to main.
    * @default false
    */
-  fixed?: boolean
+  main?: boolean
   /**
-   * Supports scroll
-   * @default true
+   * To be used within the context of <Page fixed> container.
+   * When true, this removes the inner overflow-y scrolling
+   * and allows content within a Layout group to scroll together.
+   * @default false
    */
-  hasAside?: boolean
+  scrollWithin?: boolean
 }
 
-const hasAsideCSS = css`
-  flex-direction: row;
-  & > ${Section} {
-    width: 0;
-  }
-`
-
-const LayoutLayout = forwardRef(
-  ({ children, ...props }: LayoutProps, forwardedRef: Ref<HTMLDivElement>) => {
+const SectionLayout = forwardRef(
+  (
+    { main, children, ...props }: SectionProps,
+    forwardedRef: Ref<HTMLDivElement>
+  ) => {
     const [hasOverflow, ref] = useOverflow(forwardedRef)
-
     return (
-      <OverflowShadow hasOverflow={hasOverflow} ref={ref} {...props}>
+      <OverflowShadow
+        as={main ? 'main' : 'section'}
+        hasOverflow={hasOverflow}
+        ref={ref}
+        {...props}
+      >
         {children}
       </OverflowShadow>
     )
   }
 )
 
-LayoutLayout.displayName = 'LayoutLayout'
+SectionLayout.displayName = 'SectionLayout'
 
-export const Layout = styled(LayoutLayout)`
-  ${simpleLayoutCSS}
-  display: flex;
-  flex: 1 1 auto;
-  overflow: ${({ fixed }) => (fixed ? 'hidden' : 'auto')};
-  ${({ hasAside }) => (hasAside ? hasAsideCSS : 'flex-direction: column;')}
+export const Section = styled(SectionLayout)`
+  ${semanticLayoutCSS}
+  flex: 1 0 auto;
+  overflow: auto;
+  ${({ scrollWithin }) => scrollWithin && 'height: fit-content;'}
 `
