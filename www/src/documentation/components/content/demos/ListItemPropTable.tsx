@@ -160,16 +160,6 @@ export const ListItemPropTable = () => {
               aria-selected will be "true" for this item.
             </TableDataCell>
           </TableRow>
-          <TableRow>
-            <TableDataCell pr="large">current</TableDataCell>
-            <TableDataCell pr="large">
-              <Code>boolean</Code>
-            </TableDataCell>
-            <TableDataCell>
-              If true, the item will have a ui2 background color. Also,
-              aria-current will be "true" for this item.
-            </TableDataCell>
-          </TableRow>
         </TableBody>
       </Table>
     </>

@@ -33,7 +33,6 @@ const linkPropKeys = ['download', 'href', 'rel', 'target'] as const
 
 export const treeItemInnerPropKeys = [
   'color',
-  'current',
   'density',
   'description',
   'detail',

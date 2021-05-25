@@ -86,11 +86,6 @@ export const ListItemWrapper = styled(ListItemWrapperInternal)
     }
   }
 
-  &[aria-current='true'] {
-    background: ${({ theme: { colors } }) => colors.ui2};
-    font-weight: ${({ theme: { fontWeights } }) => fontWeights.semiBold};
-  }
-
   /**
     Styling for items that have nested menus
    */

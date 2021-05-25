@@ -30,7 +30,6 @@ import { FlexibleColor, ListItemStatefulProps } from '../types'
 
 export const listItemBackgroundColor = ({
   color,
-  current,
   disabled,
   hovered,
   selected,
@@ -51,8 +50,8 @@ export const listItemBackgroundColor = ({
   let renderedColor
 
   if (disabled) renderedColor = 'transparent'
-  else if ((selected || current) && hovered) renderedColor = stateColors.all
-  else if (selected || current) renderedColor = stateColors.selected
+  else if (selected && hovered) renderedColor = stateColors.all
+  else if (selected) renderedColor = stateColors.selected
   else if (hovered) renderedColor = stateColors.hovered
   else renderedColor = 'transparent'
 
