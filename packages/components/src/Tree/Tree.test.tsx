@@ -253,11 +253,11 @@ describe('Tree', () => {
       )
     })
 
-    test('current Trees have aria-current=true', () => {
+    test('Trees can take aria-current=true', () => {
       renderWithTheme(
         <Tree
+          aria-current={true}
           color="calculation"
-          current
           label="Whatever"
           icon={<Science data-testid="icon" />}
         />

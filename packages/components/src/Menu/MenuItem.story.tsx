@@ -82,10 +82,10 @@ IconAndDetailAndDescription.args = {
   icon: <PersonOutline />,
 }
 
-export const Current = MenuItemTemplate.bind({})
-Current.args = {
+export const Selected = MenuItemTemplate.bind({})
+Selected.args = {
   ...Basic,
-  current: true,
+  selected: true,
 }
 
 export const Link = () => {

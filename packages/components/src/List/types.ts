@@ -108,12 +108,6 @@ export type ListColorProps = LimitedColor
 
 export type ListItemStatefulProps = {
   /**
-   * If true, the ListItem will have a darker background color (same as selected)
-   * Note: Using current and selected at the same time is not recommended
-   * @default false
-   */
-  current?: boolean
-  /**
    * If true, the ListItem will have a "disabled" presentation.
    * @default false
    */

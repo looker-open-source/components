@@ -141,7 +141,6 @@ const ListItemInternal = forwardRef(
       children,
       className,
       color: propsColor,
-      current,
       density: propsDensity,
       description,
       detail,
@@ -262,7 +261,6 @@ const ListItemInternal = forwardRef(
 
     const statefulProps = {
       color,
-      current,
       disabled,
       hovered,
       selected,
@@ -274,7 +272,6 @@ const ListItemInternal = forwardRef(
     }> = ({ children, className }) => (
       <ListItemLabel
         itemRole={itemRole}
-        aria-current={current}
         aria-selected={selected}
         className={className}
         focusVisible={focusVisible}

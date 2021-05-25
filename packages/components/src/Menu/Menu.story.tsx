@@ -91,7 +91,9 @@ const menuItems = (
     <MenuDivider />
 
     <MenuItem>Gouda</MenuItem>
-    <MenuItem current> Swiss</MenuItem>
+    <MenuItem aria-current={true} selected>
+      Swiss
+    </MenuItem>
     <MenuItem>Cheddar</MenuItem>
 
     <MenuDivider />
