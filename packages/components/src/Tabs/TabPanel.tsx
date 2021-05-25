@@ -35,17 +35,17 @@ export interface TabPanelProps {
    * Generally this is _only_ the case when the TabPanel contains no tab-stopping items (a, button, etc.)
    * @default false
    */
-  tabStop?: boolean
+  isTabStop?: boolean
 }
 
 const TabPanelLayout: FC<TabPanelProps> = ({
   children,
   className,
   selected,
-  tabStop = false,
+  isTabStop = false,
 }) =>
   selected ? (
-    <div className={className} tabIndex={tabStop ? 0 : -1}>
+    <div className={className} tabIndex={isTabStop ? 0 : -1}>
       {children}
     </div>
   ) : null
