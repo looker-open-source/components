@@ -228,7 +228,7 @@ describe('focus behavior', () => {
           <Tab>tab2</Tab>
         </TabList>
         <TabPanels>
-          <TabPanel tabStop>
+          <TabPanel isTabStop>
             <button>Some button</button>
           </TabPanel>
           <TabPanel>this is tab2 content</TabPanel>
