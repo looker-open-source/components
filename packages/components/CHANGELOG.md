@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.1](https://github.com/looker-open-source/components/compare/v1.4.0...v1.4.1) (2021-05-25)
+
+
+### Bug Fixes
+
+* **ListItem:** Removed background transition ([#2429](https://github.com/looker-open-source/components/issues/2429)) ([c6898f5](https://github.com/looker-open-source/components/commit/c6898f5ecd2d91d98b5ffae297184e8acb26b225))
+
+
+
+
+
 # [1.4.0](https://github.com/looker-open-source/components/compare/v1.4.0-alpha.0...v1.4.0) (2021-05-23)
 
 
