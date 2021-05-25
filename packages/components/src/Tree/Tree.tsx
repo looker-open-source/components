@@ -43,6 +43,10 @@ import { indicatorDefaults } from './utils'
 import { TreeItemInner, TreeItemInnerDetail, TreeStyle } from './TreeStyle'
 import { treeItemInnerPropKeys, TreeProps } from './types'
 
+/**
+ * TODO: When labelToggle is introduced the aria-* attributes should land on the nested ListItem's
+ * label container (i.e. the focusable element).
+ */
 const TreeLayout: FC<TreeProps> = ({
   branchFontWeight,
   border: propsBorder,
