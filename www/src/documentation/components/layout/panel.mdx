@@ -58,23 +58,23 @@ const PanelListItem = () => {
     title: 'Panel Hook',
   })
   return (
-    <ListItem onClick={open} icon={<Done />}>
-      Option A
-    </ListItem>
+    <>
+      <ListItem onClick={open} icon={<Done />}>
+        Option A
+      </ListItem>
+      {panel}
+    </>
   )
 }
 
-const PanelsArea () => {
-  return (
-    <Panels>
+const PanelsArea () => (
+  <Panels>
+    <List>
       <PanelListItem />
-      {panel}
-      <List>
-        <ListItem disabled icon={<Done />}>
-          Option B
-        </ListItem>
-      </List>
-    </Panels>
-  )
-}
+      <ListItem disabled icon={<Done />}>
+        Option B
+      </ListItem>
+    </List>
+  </Panels>
+)
 ```

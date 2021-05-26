@@ -51,6 +51,12 @@ export type UsePanelResponse = {
 
 export type PanelBaseProps = {
   /**
+   * Close icon button tooltip text
+   * I18n recommended: content that is user visible should be treated for i18n
+   */
+  closeLabel?: string
+
+  /**
    * IconButton in PanelHeader will have toggled and background color
    * based on theme's key color
    * @default false

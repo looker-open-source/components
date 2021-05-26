@@ -39,11 +39,10 @@ export const usePanel = ({
   content,
   defaultOpen = false,
   direction = 'left',
-  iconToggle,
   isOpen: controlledIsOpen,
   onClose,
   setOpen: controlledSetOpen,
-  title,
+  ...headerProps
 }: UsePanelProps): UsePanelResponse => {
   const rect = useContext(PanelsContext)
   const [uncontrolledIsOpen, setUncontrolledIsOpen] = useState(defaultOpen)
@@ -95,11 +94,7 @@ export const usePanel = ({
           className={className}
           direction={direction}
         >
-          <PanelHeader
-            iconToggle={iconToggle}
-            onClose={handleClose}
-            title={title}
-          />
+          <PanelHeader onClose={handleClose} {...headerProps} />
           <PanelContent>{content}</PanelContent>
         </PanelSurface>
       </PanelWindow>

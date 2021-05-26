@@ -50,6 +50,5 @@ PanelsLayout.displayName = 'PanelsLayout'
 
 export const Panels = styled(PanelsLayout)`
   height: 100%;
-  position: relative;
   width: 100%;
 `

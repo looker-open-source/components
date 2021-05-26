@@ -34,11 +34,14 @@ import { IconButton } from '../Button'
 import { PanelBaseProps } from './types'
 
 export const PanelHeader: FC<PanelBaseProps> = ({
+  closeLabel,
   onClose,
   iconToggle = false,
   title,
 }) => {
   const { t } = useTranslation('PanelHeader')
+  const defaultLabel = t('CloseTitle', { title })
+
   const { space } = useContext(ThemeContext)
 
   return (
@@ -53,7 +56,7 @@ export const PanelHeader: FC<PanelBaseProps> = ({
     >
       <IconButton
         icon={<ArrowBack />}
-        label={t('CloseTitle', { title })}
+        label={closeLabel || defaultLabel}
         onClick={onClose}
         toggle={iconToggle}
         toggleBackground={iconToggle}

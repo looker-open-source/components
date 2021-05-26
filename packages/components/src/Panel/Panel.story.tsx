@@ -85,22 +85,29 @@ DirectionRight.args = {
   direction: 'right',
 }
 
-export const Hook = () => {
+const HookInner = () => {
   const { panel, setOpen } = usePanel({
     content: 'Panel content',
     title: 'Panel Hook',
   })
-
   return (
     <>
-      <List>
-        <ListItem onClick={() => setOpen(true)} icon={<Done />}>
-          Option A
-        </ListItem>
-        <ListItem icon={<Done />}>Option B</ListItem>
-      </List>
+      <ListItem onClick={() => setOpen(true)} icon={<Done />}>
+        Option A
+      </ListItem>
       {panel}
     </>
+  )
+}
+
+export const Hook = () => {
+  return (
+    <Panels>
+      <HookInner />
+      <List>
+        <ListItem icon={<Done />}>Option B</ListItem>
+      </List>
+    </Panels>
   )
 }
 Hook.parameters = {
