@@ -24,27 +24,35 @@
 
  */
 
-import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { screen } from '@testing-library/react'
-import { ModalFooter } from './ModalFooter'
+import React, { FC, ReactNode } from 'react'
+import styled from 'styled-components'
+import { CompatibleHTMLProps } from '@looker/design-tokens'
+import { Space, SpaceHelperProps } from '../../Layout/Space'
 
-describe('ModalFooter', () => {
-  test('basic', () => {
-    renderWithTheme(
-      <ModalFooter>
-        <button>Cancel</button>
-      </ModalFooter>
-    )
-    expect(screen.getByRole('button')).toBeInTheDocument()
-  })
+export interface ModalFooterProps
+  extends CompatibleHTMLProps<HTMLDivElement>,
+    SpaceHelperProps {
+  /**
+   *
+   */
+  children: ReactNode
+  /**
+   * Secondary content to place in the footer
+   */
+  secondary?: ReactNode
+}
 
-  test('secondary', () => {
-    renderWithTheme(
-      <ModalFooter secondary={<button>Done</button>}>
-        <button>Cancel</button>
-      </ModalFooter>
-    )
-    expect(screen.getByText('Done')).toBeInTheDocument()
-  })
-})
+const ModalFooterLayout: FC<ModalFooterProps> = ({
+  children,
+  secondary,
+  ...props
+}) => (
+  <Space as="footer" reverse between {...props}>
+    <Space reverse>{children}</Space>
+    {secondary && <Space>{secondary}</Space>}
+  </Space>
+)
+
+export const ModalFooter = styled(ModalFooterLayout)`
+  flex-shrink: 0;
+`

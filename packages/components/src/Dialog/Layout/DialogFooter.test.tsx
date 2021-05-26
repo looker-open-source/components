@@ -34,13 +34,13 @@ describe('DialogFooter', () => {
     renderWithTheme(<DialogFooter>Footer Text</DialogFooter>)
     expect(screen.getByText('Footer Text')).toBeInTheDocument()
   })
-  test('has correct padding ', () => {
-    renderWithTheme(<DialogFooter>Footer Text</DialogFooter>)
-    const footer = screen.getByText('Footer Text').closest('footer')
-    expect(footer).toBeInTheDocument()
-    expect(footer).toHaveStyle('padding-left: 2rem;')
-    expect(footer).toHaveStyle('padding-right: 2rem;')
-    expect(footer).toHaveStyle('padding-top: 1.25rem;')
-    expect(footer).toHaveStyle('padding-bottom: 1.25rem;')
+
+  test('secondary', () => {
+    renderWithTheme(
+      <DialogFooter secondary={<button>Done</button>}>
+        <button>Cancel</button>
+      </DialogFooter>
+    )
+    expect(screen.getByText('Done')).toBeInTheDocument()
   })
 })

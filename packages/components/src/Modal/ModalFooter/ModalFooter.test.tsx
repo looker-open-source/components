@@ -24,37 +24,27 @@
 
  */
 
-import React, { FC, ReactNode, ReactChild } from 'react'
-import styled from 'styled-components'
-import { CompatibleHTMLProps } from '@looker/design-tokens'
-import { Space, SpaceHelperProps } from '../Layout/Space'
+import React from 'react'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
+import { ModalFooter } from '../ModalFooter/ModalFooter'
 
-export interface ModalFooterProps
-  extends CompatibleHTMLProps<HTMLDivElement>,
-    SpaceHelperProps {
-  /**
-   *
-   */
-  children?: ReactChild
-  /**
-   * Secondary content to place in the footer
-   */
-  secondary?: ReactNode
-}
+describe('ModalFooter', () => {
+  test('basic', () => {
+    renderWithTheme(
+      <ModalFooter>
+        <button>Cancel</button>
+      </ModalFooter>
+    )
+    expect(screen.getByRole('button')).toBeInTheDocument()
+  })
 
-const ModalFooterLayout: FC<ModalFooterProps> = ({
-  children,
-  secondary,
-  ...props
-}) => {
-  return (
-    <Space as="footer" reverse between {...props}>
-      <Space reverse>{children}</Space>
-      {secondary && <Space>{secondary}</Space>}
-    </Space>
-  )
-}
-
-export const ModalFooter = styled(ModalFooterLayout)<ModalFooterProps>`
-  flex-shrink: 0;
-`
+  test('secondary', () => {
+    renderWithTheme(
+      <ModalFooter secondary={<button>Done</button>}>
+        <button>Cancel</button>
+      </ModalFooter>
+    )
+    expect(screen.getByText('Done')).toBeInTheDocument()
+  })
+})

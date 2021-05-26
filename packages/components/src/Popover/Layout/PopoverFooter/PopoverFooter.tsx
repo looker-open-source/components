@@ -24,61 +24,48 @@
 
  */
 
-import React, { FC, ReactElement } from 'react'
+import { useTranslation } from 'react-i18next'
+import React, { FC, ReactElement, useContext } from 'react'
 import styled from 'styled-components'
-import { ModalFooter, ModalFooterProps } from '../../Modal/ModalFooter'
-import { ButtonTransparent } from '../../Button'
-import { Space } from '../../Layout/Space'
+import { DialogContext } from '../../../Dialog/DialogContext'
+import {
+  ModalFooter,
+  ModalFooterProps,
+} from '../../../Modal/ModalFooter/ModalFooter'
+import { ButtonTransparent } from '../../../Button'
 
-export interface PopoverFooterProp extends Omit<ModalFooterProps, 'secondary'> {
+export interface PopoverFooterProps
+  extends Omit<ModalFooterProps, 'secondary'> {
   /**
+   *
+   * I18n recommended: content that is user visible should be treated for i18n
    * Button to close popover
    * @default 'Done'
    */
   close?: ReactElement | string
-  /**
-   * function to control close behavior
-   */
-  closeModal?: () => void
 }
 
-const PopoverFooterLayout: FC<PopoverFooterProp> = ({
-  children,
-  close = 'Done',
-  closeModal,
-  ...props
-}) => {
+const PopoverFooterLayout: FC<PopoverFooterProps> = (props) => {
+  const { closeModal } = useContext(DialogContext)
+  const { t } = useTranslation('PopoverFooter')
+  const closeText = t('Done')
+  const { children, close = closeText } = props
+
   return (
-    <ModalFooter {...props}>
-      <Space gap="xsmall" reverse>
-        <Detail>
-          {typeof close === 'string' ? (
-            <ButtonTransparent color="key" size="small" onClick={closeModal}>
-              {close}
-            </ButtonTransparent>
-          ) : (
-            close
-          )}
-        </Detail>
-        <Space reverse>{children}</Space>
-      </Space>
+    <ModalFooter mr="xsmall" pl="large" pr="medium" py="xsmall" {...props}>
+      {typeof close === 'string' ? (
+        <ButtonTransparent color="key" size="small" onClick={closeModal}>
+          {close}
+        </ButtonTransparent>
+      ) : (
+        close
+      )}
+      <>{children}</>
     </ModalFooter>
   )
 }
 
-const Detail = styled.div`
-  margin-left: auto;
-  margin-right: medium;
-`
-
-export const PopoverFooter = styled(PopoverFooterLayout).attrs(
-  ({ pl = 'large', pr = 'medium', py = 'xsmall' }) => ({
-    pl,
-    pr,
-    py,
-  })
-)<PopoverFooterProp>`
+export const PopoverFooter = styled(PopoverFooterLayout)<PopoverFooterProps>`
   color: ${({ theme }) => theme.colors.text3};
   font-size: ${({ theme }) => theme.space.small};
-  margin-right: ${({ theme }) => theme.space.xsmall};
 `

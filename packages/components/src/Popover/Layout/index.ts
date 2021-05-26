@@ -24,4 +24,4 @@
 
  */
 
-export * from './PopoverFooter'
+export * from './PopoverFooter/PopoverFooter'

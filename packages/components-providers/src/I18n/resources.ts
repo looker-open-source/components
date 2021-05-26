@@ -120,6 +120,8 @@ export const i18nResources: Resource = {
     },
     PanelHeader: {
       CloseTitle: 'Close {{title}}',
+    PopoverFooter: {
+      Done: 'Done',
     },
     PromptDialog: {
       Cancel: 'Cancel',
