@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "develop": "start-storybook  -c .storybook -p 3333  --host 0.0.0.0",
-    "build": "build-storybook -c .storybook"
+    "build": "build-storybook --docs -c .storybook"
   },
   "dependencies": {
     "@looker/components": "^1.4.0",

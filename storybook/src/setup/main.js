@@ -28,15 +28,17 @@
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 const excludeNodeModulesExcept = require('babel-loader-exclude-node-modules-except')
 
-const addonEssentials = {
-  name: '@storybook/addon-essentials',
-  options: {
-    backgrounds: false,
-  },
-}
-
 const config = {
-  addons: [addonEssentials, '@storybook/addon-a11y'],
+  addons: [
+    {
+      name: '@storybook/addon-essentials',
+      options: {
+        backgrounds: false,
+        docs: true,
+      },
+    },
+    '@storybook/addon-a11y',
+  ],
   stories: ['../**/*.story.tsx'],
   webpackFinal: async (config) => {
     config.module.rules.push({
@@ -60,37 +62,6 @@ const config = {
     config.resolve.plugins = [new TsconfigPathsPlugin()]
     return config
   },
-}
-
-const mode = process.env.storybookBuildMode
-
-/**
- * `react-docgen-typescript` is slow because it has to parse _everything_.
- *
- * `fast` builds (used by image-snapshots)  turn off docgen as well as all addons since
- * neither will be needed for snapshots and it significantly improves Storybook performance.
- */
-
-if (mode === 'fast') {
-  config.typescript = { reactDocgen: false }
-  config.addons = []
-} else {
-  /**
-   *
-   * TODO: Explore `webpack-react-docgen-typescript` + to load types from a pre-compiled build
-   * of interface types. There may be complications due to our TS monorepo and the complexities
-   * of properly loading types.
-   *
-   * It appears Storybook 6.2 may incorporate this kind of functionality so it may make
-   * sense to wait for that.
-   *
-   * Background: https://github.com/storybookjs/storybook/issues/7942
-   *
-   */
-  addonEssentials.options = {
-    ...addonEssentials.options,
-    docs: true,
-  }
 }
 
 module.exports = config
