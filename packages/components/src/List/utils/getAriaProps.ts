@@ -24,10 +24,19 @@
 
  */
 
-export * from './createSafeRel'
-export * from './getAriaProps'
-export * from './getDetailOptions'
-export * from './listItemBackgroundColor'
-export * from './listItemDimensions'
-export * from './listItemPadding'
-export * from './listPadding'
+import { ListItemProps } from '../types'
+
+export const getAriaProps = (props: ListItemProps) => {
+  const ariaProps = {}
+  const restProps = {}
+  Object.entries(props).forEach(([propKey, propValue]) =>
+    propKey.startsWith('aria-')
+      ? (ariaProps[propKey] = propValue)
+      : (restProps[propKey] = propValue)
+  )
+
+  return {
+    ariaProps,
+    restProps,
+  }
+}

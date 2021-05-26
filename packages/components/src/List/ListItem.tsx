@@ -55,7 +55,12 @@ import { ListItemLayout } from './ListItemLayout'
 import { ListItemLayoutAccessory } from './ListItemLayoutAccessory'
 import { ListItemWrapper } from './ListItemWrapper'
 import { listItemIconColor, listItemLabelColor } from './utils/listItemColor'
-import { createSafeRel, getDetailOptions, listItemDimensions } from './utils'
+import {
+  createSafeRel,
+  getAriaProps,
+  getDetailOptions,
+  listItemDimensions,
+} from './utils'
 import { ListItemProps } from './types'
 
 const TruncateWrapper: FC<{
@@ -200,13 +205,7 @@ const ListItemInternal = forwardRef(
       selected,
     }
 
-    const ariaProps = {}
-    const wrapperProps = {}
-    Object.entries(restProps).forEach(([propKey, propValue]) =>
-      propKey.startsWith('aria-')
-        ? (ariaProps[propKey] = propValue)
-        : (wrapperProps[propKey] = propValue)
-    )
+    const { ariaProps, restProps: wrapperProps } = getAriaProps(restProps)
 
     const LabelCreator: FC<{
       children: ReactNode
