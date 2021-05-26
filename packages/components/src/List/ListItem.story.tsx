@@ -33,8 +33,8 @@ import { IconButton } from '../Button'
 import { Heading, Text } from '../Text'
 import { Grid } from '../Layout/Grid'
 import { SpaceVertical } from '../Layout/Space/SpaceVertical'
-import { ListItem, ListItemProps } from './ListItem'
-import { ListItemRole } from './types'
+import { ListItem } from './ListItem'
+import { ListItemProps, ListItemRole } from './types'
 import { List } from './List'
 
 const Template: Story<ListItemProps> = (args) => <ListItem {...args} />
