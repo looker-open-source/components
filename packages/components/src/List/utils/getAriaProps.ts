@@ -24,9 +24,14 @@
 
  */
 
-import { ListItemProps } from '../types'
-
-export const getAriaProps = (props: ListItemProps) => {
+/**
+ * Paritions an object into 2 objects, the first containing all aria related prop keys and their respective values
+ * and the second containing all other prop keys and their respective values
+ *
+ * @param {Record<string, unknown>} props
+ * @returns {Array} A tuple where the first object contains all aria related props and the second object contains the remaining props
+ */
+export const getAriaProps = (props: Record<string, unknown>) => {
   const ariaProps = {}
   const restProps = {}
   Object.entries(props).forEach(([propKey, propValue]) =>
