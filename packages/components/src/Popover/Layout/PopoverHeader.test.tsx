@@ -28,21 +28,16 @@ import 'jest-styled-components'
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { screen } from '@testing-library/react'
-import { PopoverHeader } from './PopoverHeader'
+import { Basic, HideClose } from './PopoverHeader.story'
 
 describe('PopoverHeader', () => {
-  test('basic', () => {
-    renderWithTheme(<PopoverHeader>Heading</PopoverHeader>)
-    expect(screen.queryByText('Heading')).toBeInTheDocument()
-  })
-
   test('Close visible by default', () => {
-    renderWithTheme(<PopoverHeader>Heading</PopoverHeader>)
+    renderWithTheme(<Basic />)
+    expect(screen.queryByText('Header Text')).toBeInTheDocument()
     expect(screen.queryByText('Close')).toBeInTheDocument()
   })
-
   test('hideClose', () => {
-    renderWithTheme(<PopoverHeader hideClose>Heading</PopoverHeader>)
+    renderWithTheme(<HideClose />)
     expect(screen.queryByLabelText('Close')).not.toBeInTheDocument()
   })
 })

@@ -25,7 +25,6 @@
  */
 
 import React from 'react'
-import { Box } from '../../Layout'
 import { PopoverHeader } from './PopoverHeader'
 
 export default {
@@ -33,22 +32,27 @@ export default {
   title: 'PopoverHeader',
 }
 
-export const Basic = () => (
-  <Box bg="ui1" width="248px">
-    <PopoverHeader>Header Text</PopoverHeader>
-  </Box>
-)
+export const Basic = () => <PopoverHeader>Header Text</PopoverHeader>
+Basic.parameters = {
+  storyshots: {
+    disable: true,
+  },
+}
 
 export const HideClose = () => (
-  <Box bg="ui1" width="248px">
-    <PopoverHeader hideClose>Header Text</PopoverHeader>
-  </Box>
+  <PopoverHeader hideClose>Header Text</PopoverHeader>
 )
+HideClose.parameters = {
+  storyshots: {
+    disable: true,
+  },
+}
 
-const close = <button>close</button>
-
-export const StyledDetail = () => (
-  <Box bg="ui1" width="248px">
-    <PopoverHeader detail={close}>Header Text</PopoverHeader>
-  </Box>
+export const Detail = () => (
+  <PopoverHeader detail={<button>close</button>}>Header Text</PopoverHeader>
 )
+Detail.parameters = {
+  storyshots: {
+    disable: true,
+  },
+}

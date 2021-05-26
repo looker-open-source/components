@@ -24,7 +24,7 @@
 
  */
 
-import React, { FC, ReactNode, ReactChild } from 'react'
+import React, { FC, ReactNode } from 'react'
 import styled from 'styled-components'
 import {
   CompatibleHTMLProps,
@@ -42,7 +42,7 @@ export interface ModalHeaderProps
     CompatibleHTMLProps<HTMLElement>,
     FontSizeProps,
     FontWeightProps {
-  children: ReactChild
+  children: ReactNode
   /**
    * Usually used as a closing button this element is displayed on the right side of the component
    */
@@ -69,7 +69,6 @@ const ModalHeaderLayout: FC<ModalHeaderProps> = ({
         fontWeight={fontWeight}
         id={id}
         mr="xlarge"
-        style={{ gridArea: 'text' }}
         truncate
       >
         {children}

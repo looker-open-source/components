@@ -29,13 +29,21 @@ import styled from 'styled-components'
 import { ModalHeader, ModalHeaderProps } from '../../Modal/ModalHeader'
 import { CloseHeaderButton } from '../../Modal/CloseHeaderButton'
 
-export interface PopoverHeaderProps extends ModalHeaderProps {
+type WithDetail = {
+  detail?: ModalHeaderProps['detail']
+  hideClose?: never
+}
+
+type WithHideClose = {
+  detail?: never
   /**
    * Don't include the "Close" option
    * @default false
    */
   hideClose?: boolean
 }
+
+export type PopoverHeaderProps = WithDetail | WithHideClose
 
 const PopoverHeaderLayout: FC<PopoverHeaderProps> = ({
   children,
@@ -49,6 +57,9 @@ const PopoverHeaderLayout: FC<PopoverHeaderProps> = ({
       detail={!hideClose && finalDetail}
       fontSize="small"
       fontWeight="medium"
+      pl="large"
+      pr="medium"
+      py="small"
       {...props}
     >
       {children}
@@ -56,14 +67,4 @@ const PopoverHeaderLayout: FC<PopoverHeaderProps> = ({
   )
 }
 
-export const PopoverHeader = styled(PopoverHeaderLayout).attrs(
-  ({ pl = 'large', pr = 'medium', py = 'small' }) => ({
-    pl,
-    pr,
-    py,
-  })
-)<ModalHeaderProps>`
-  color: ${({ theme }) => theme.colors.text5};
-  font-size: ${({ theme }) => theme.space.small};
-  font-weight: ${({ theme }) => theme.fontWeights.medium};
-`
+export const PopoverHeader = styled(PopoverHeaderLayout)<ModalHeaderProps>``

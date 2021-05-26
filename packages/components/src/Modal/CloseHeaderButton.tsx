@@ -28,7 +28,7 @@ import { useTranslation } from 'react-i18next'
 import React, { FC, useContext } from 'react'
 import { Close } from '@styled-icons/material/Close'
 import styled from 'styled-components'
-import { IconButton, IconButtonSizes } from '../Button'
+import { IconButton, IconButtonProps } from '../Button'
 import { DialogContext } from '../Dialog'
 
 export interface CloseHeaderButtonProps {
@@ -36,7 +36,7 @@ export interface CloseHeaderButtonProps {
    * this will define the size of the button
    * @default 'medium'
    */
-  size?: IconButtonSizes
+  size?: IconButtonProps['size']
 }
 
 const CloseHeaderButtonLayout: FC<CloseHeaderButtonProps> = ({
