@@ -85,6 +85,15 @@ DirectionRight.args = {
   direction: 'right',
 }
 
+export const CloseLabel = Template.bind({})
+CloseLabel.args = {
+  ...Basic.args,
+  closeLabel: 'Back to the last thing',
+}
+CloseLabel.parameters = {
+  storyshots: { disable: true },
+}
+
 const HookInner = () => {
   const { panel, setOpen } = usePanel({
     content: 'Panel content',
