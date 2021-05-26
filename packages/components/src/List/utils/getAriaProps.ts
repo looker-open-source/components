@@ -25,20 +25,18 @@
  */
 
 /**
- * Paritions an object into 2 objects, the first containing all aria related prop keys and their respective values
+ * Partitions an object into 2 objects, the first containing all aria related prop keys and their respective values
  * and the second containing all other prop keys and their respective values
  *
  * @param {Record<string, unknown>} props
  * @returns {Array} A tuple where the first object contains all aria related props and the second object contains the remaining props
  */
 export const getAriaProps = (props: Record<string, unknown>) => {
-  const ariaProps = {}
-  const restProps = {}
-  Object.entries(props).forEach(([propKey, propValue]) =>
-    propKey.startsWith('aria-')
-      ? (ariaProps[propKey] = propValue)
-      : (restProps[propKey] = propValue)
+  const aria = {}
+  const remainder = {}
+  Object.entries(props).forEach(([key, value]) =>
+    key.startsWith('aria-') ? (aria[key] = value) : (remainder[key] = value)
   )
 
-  return [ariaProps, restProps]
+  return [aria, remainder]
 }
