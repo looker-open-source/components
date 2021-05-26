@@ -205,11 +205,7 @@ const ListItemInternal = forwardRef(
       selected,
     }
 
-    /**
-     * Passing restProps directly into getAriaProps leads to a "Index signature is missing in type" TS error
-     * Spreading the props gets around this, but hopefully we can find the right typing to avoid this error
-     *  */
-    const [ariaProps, wrapperProps] = getAriaProps({ ...restProps })
+    const [ariaProps, wrapperProps] = getAriaProps(restProps)
 
     const LabelCreator: FC<{
       children: ReactNode
