@@ -1,0 +1,132 @@
+0 silly argv {
+0 silly argv   _: [ 'version' ],
+0 silly argv   'conventional-commits': true,
+0 silly argv   conventionalCommits: true,
+0 silly argv   'conventional-graduate': true,
+0 silly argv   conventionalGraduate: true,
+0 silly argv   lernaVersion: '4.0.0',
+0 silly argv   '$0': '/usr/local/google/home/lukebowerman/components/node_modules/.bin/lerna'
+0 silly argv }
+1 notice cli v4.0.0
+2 verbose rootPath /usr/local/google/home/lukebowerman/components
+3 info current version 1.4.0
+4 silly isAnythingCommitted
+5 verbose isAnythingCommitted 1
+6 silly getCurrentBranch
+7 verbose currentBranch release-1.4
+8 silly remoteBranchExists
+9 silly isBehindUpstream
+10 silly isBehindUpstream release-1.4 is behind origin/release-1.4 by 0 commit(s) and ahead by 0
+11 silly hasTags
+12 verbose hasTags true
+13 silly git-describe.sync "v1.4.0-3-gc6898f5ec" => {"lastTagName":"v1.4.0","lastVersion":"v1.4.0","refCount":"3","sha":"c6898f5ec","isDirty":false}
+14 warn conventional-graduate all packages
+15 info Graduating all prereleased packages
+16 info Looking for changed packages since v1.4.0
+17 silly checking diff packages/components-providers
+18 silly no diff found in @looker/components-providers
+19 silly checking diff packages/components-test-utils
+20 silly no diff found in @looker/components-test-utils
+21 silly checking diff packages/components-theme-editor
+22 silly no diff found in @looker/components-theme-editor
+23 silly checking diff packages/components
+24 silly found diff in packages/components/src/List/ListItemLabel.tsx
+24 silly found diff in packages/components/src/List/types.ts
+24 silly found diff in packages/components/src/Tree/stories/FieldItem.tsx
+24 silly found diff in packages/components/src/Tree/stories/FieldPicker.story.tsx
+25 verbose filtered diff [
+25 verbose filtered diff   'packages/components/src/List/ListItemLabel.tsx',
+25 verbose filtered diff   'packages/components/src/List/types.ts',
+25 verbose filtered diff   'packages/components/src/Tree/stories/FieldItem.tsx',
+25 verbose filtered diff   'packages/components/src/Tree/stories/FieldPicker.story.tsx'
+25 verbose filtered diff ]
+26 silly checking diff packages/design-tokens
+27 silly no diff found in @looker/design-tokens
+28 silly checking diff packages/eslint-config
+29 silly no diff found in @looker/eslint-config
+30 silly checking diff packages/icons
+31 silly no diff found in @looker/icons
+32 silly checking diff packages/prettier
+33 silly no diff found in @looker/prettier-config
+34 silly checking diff packages/stylelint-config
+35 silly no diff found in @looker/stylelint-config
+36 silly checking diff playground
+37 silly no diff found in playground
+38 silly checking diff storybook
+39 silly no diff found in storybook
+40 silly checking diff www
+41 silly no diff found in www
+42 verbose updated @looker/components-theme-editor
+43 verbose updated @looker/components
+44 verbose updated playground
+45 verbose updated storybook
+46 verbose updated www
+47 silly fixed for @looker/components-theme-editor at /usr/local/google/home/lukebowerman/components/packages/components-theme-editor
+48 verbose getChangelogConfig using preset "conventional-changelog-angular"
+49 silly npa Result {
+49 silly npa   type: 'tag',
+49 silly npa   registry: true,
+49 silly npa   where: undefined,
+49 silly npa   raw: 'conventional-changelog-angular',
+49 silly npa   name: 'conventional-changelog-angular',
+49 silly npa   escapedName: 'conventional-changelog-angular',
+49 silly npa   scope: undefined,
+49 silly npa   rawSpec: '',
+49 silly npa   saveSpec: null,
+49 silly npa   fetchSpec: 'latest',
+49 silly npa   gitRange: undefined,
+49 silly npa   gitCommittish: undefined,
+49 silly npa   hosted: undefined
+49 silly npa }
+50 verbose getChangelogConfig Attempting to resolve preset "conventional-changelog-angular"
+51 info getChangelogConfig Successfully resolved preset "conventional-changelog-angular"
+52 verbose fixed increment 1.4.0 by patch
+53 silly fixed for @looker/components at /usr/local/google/home/lukebowerman/components/packages/components
+54 verbose fixed increment 1.4.0 by patch
+55 silly fixed for playground at /usr/local/google/home/lukebowerman/components/playground
+56 verbose fixed increment 1.4.0 by patch
+57 silly fixed for storybook at /usr/local/google/home/lukebowerman/components/storybook
+58 verbose fixed increment 1.4.0 by patch
+59 silly fixed for www at /usr/local/google/home/lukebowerman/components/www
+60 verbose fixed increment 1.4.0 by patch
+61 info execute Skipping releases
+62 silly lifecycle No script for "preversion" in "monorepo", continuing
+63 silly lifecycle No script for "preversion" in "@looker/components", continuing
+64 silly lifecycle No script for "version" in "@looker/components", continuing
+65 silly fixed for @looker/components at /usr/local/google/home/lukebowerman/components/packages/components
+66 silly fixed writing new entry: "## [1.4.1](https://github.com/looker-open-source/components/compare/v1.4.0...v1.4.1) (2021-05-25)\n\n\n### Bug Fixes\n\n* **ListItem:** Removed background transition ([#2429](https://github.com/looker-open-source/components/issues/2429)) ([c6898f5](https://github.com/looker-open-source/components/commit/c6898f5ecd2d91d98b5ffae297184e8acb26b225))\n\n\n\n"
+67 verbose fixed wrote /usr/local/google/home/lukebowerman/components/packages/components/CHANGELOG.md
+68 silly lifecycle No script for "preversion" in "@looker/components-theme-editor", continuing
+69 silly lifecycle No script for "preversion" in "playground", continuing
+70 silly lifecycle No script for "version" in "playground", continuing
+71 silly fixed for playground at /usr/local/google/home/lukebowerman/components/playground
+72 silly lifecycle No script for "version" in "@looker/components-theme-editor", continuing
+73 silly fixed for @looker/components-theme-editor at /usr/local/google/home/lukebowerman/components/packages/components-theme-editor
+74 silly fixed writing new entry: "## [1.4.1](https://github.com/looker-open-source/components/compare/v1.4.0...v1.4.1) (2021-05-25)\n\n**Note:** Version bump only for package playground\n\n\n\n"
+75 verbose fixed wrote /usr/local/google/home/lukebowerman/components/playground/CHANGELOG.md
+76 silly fixed writing new entry: "## [1.4.1](https://github.com/looker-open-source/components/compare/v1.4.0...v1.4.1) (2021-05-25)\n\n**Note:** Version bump only for package @looker/components-theme-editor\n\n\n\n"
+77 verbose fixed wrote /usr/local/google/home/lukebowerman/components/packages/components-theme-editor/CHANGELOG.md
+78 silly lifecycle No script for "preversion" in "storybook", continuing
+79 silly lifecycle No script for "preversion" in "www", continuing
+80 silly lifecycle No script for "version" in "www", continuing
+81 silly fixed for www at /usr/local/google/home/lukebowerman/components/www
+82 silly lifecycle No script for "version" in "storybook", continuing
+83 silly fixed for storybook at /usr/local/google/home/lukebowerman/components/storybook
+84 silly fixed writing new entry: "## [1.4.1](https://github.com/looker-open-source/components/compare/v1.4.0...v1.4.1) (2021-05-25)\n\n**Note:** Version bump only for package www\n\n\n\n"
+85 verbose fixed wrote /usr/local/google/home/lukebowerman/components/www/CHANGELOG.md
+86 silly fixed writing new entry: "## [1.4.1](https://github.com/looker-open-source/components/compare/v1.4.0...v1.4.1) (2021-05-25)\n\n**Note:** Version bump only for package storybook\n\n\n\n"
+87 verbose fixed wrote /usr/local/google/home/lukebowerman/components/storybook/CHANGELOG.md
+88 silly root for monorepo at /usr/local/google/home/lukebowerman/components
+89 error Error: Error in git-raw-commits: fatal: ambiguous argument 'v1.4.0': both revision and filename
+89 error Use '--' to separate paths from revisions, like this:
+89 error 'git <command> [<revision>...] -- [<file>...]'
+89 error
+89 error     at Transform._transform (/usr/local/google/home/lukebowerman/components/node_modules/git-raw-commits/index.js:83:30)
+89 error     at Transform._read (/usr/local/google/home/lukebowerman/components/node_modules/through2/node_modules/readable-stream/lib/_stream_transform.js:177:10)
+89 error     at Transform._write (/usr/local/google/home/lukebowerman/components/node_modules/through2/node_modules/readable-stream/lib/_stream_transform.js:164:83)
+89 error     at doWrite (/usr/local/google/home/lukebowerman/components/node_modules/through2/node_modules/readable-stream/lib/_stream_writable.js:409:139)
+89 error     at writeOrBuffer (/usr/local/google/home/lukebowerman/components/node_modules/through2/node_modules/readable-stream/lib/_stream_writable.js:398:5)
+89 error     at Transform.Writable.write (/usr/local/google/home/lukebowerman/components/node_modules/through2/node_modules/readable-stream/lib/_stream_writable.js:307:11)
+89 error     at Socket.ondata (_stream_readable.js:726:22)
+89 error     at Socket.emit (events.js:215:7)
+89 error     at addChunk (_stream_readable.js:308:12)
