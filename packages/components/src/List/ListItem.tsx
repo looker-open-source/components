@@ -205,7 +205,7 @@ const ListItemInternal = forwardRef(
       selected,
     }
 
-    const { ariaProps, restProps: wrapperProps } = getAriaProps(restProps)
+    const [ariaProps, wrapperProps] = getAriaProps(restProps)
 
     const LabelCreator: FC<{
       children: ReactNode

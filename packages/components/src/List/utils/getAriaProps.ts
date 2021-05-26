@@ -35,8 +35,5 @@ export const getAriaProps = (props: ListItemProps) => {
       : (restProps[propKey] = propValue)
   )
 
-  return {
-    ariaProps,
-    restProps,
-  }
+  return [ariaProps, restProps]
 }
