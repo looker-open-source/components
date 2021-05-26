@@ -24,7 +24,7 @@
 
  */
 
-import { CompatibleHTMLProps, FontSizes } from '@looker/design-tokens'
+import { FontSizes } from '@looker/design-tokens'
 import styled from 'styled-components'
 import React, {
   FC,
@@ -38,8 +38,8 @@ import React, {
 } from 'react'
 import { ListItemDetail } from '../List/ListItemDetail'
 import { Text } from '../Text'
-import { IconPlaceholder, IconType } from '../Icon'
-import { Truncate, TruncateConfigProp } from '../Truncate'
+import { IconPlaceholder } from '../Icon'
+import { Truncate } from '../Truncate'
 import {
   HoverDisclosureContext,
   HoverDisclosure,
@@ -55,14 +55,8 @@ import { ListItemLayout } from './ListItemLayout'
 import { ListItemLayoutAccessory } from './ListItemLayoutAccessory'
 import { ListItemWrapper } from './ListItemWrapper'
 import { listItemIconColor, listItemLabelColor } from './utils/listItemColor'
-import {
-  DensityRamp,
-  Detail,
-  ListItemRole,
-  ListItemStatefulProps,
-  ListItemColorProps,
-} from './types'
 import { createSafeRel, getDetailOptions, listItemDimensions } from './utils'
+import { ListItemProps } from './types'
 
 const TruncateWrapper: FC<{
   color?: string
@@ -74,66 +68,6 @@ const TruncateWrapper: FC<{
     <Truncate description={truncateDescription}>{children}</Truncate>
   </Text>
 )
-
-export type ListItemProps = CompatibleHTMLProps<HTMLElement> &
-  ListItemStatefulProps &
-  ListItemColorProps & {
-    /**
-     * Determines the sizing and spacing of the item
-     * Notes:
-     * - This prop is intended for internal components usage (density should be set on a parent List component for external use cases).
-     * - If you choose to use this prop on a ListItem directly, it must be consistent across all items for windowing purposes.
-     * @private
-     */
-    density?: DensityRamp
-    /**
-     * optional extra description
-     * I18n recommended: content that is user visible should be treated for i18n
-     */
-    description?: ReactNode
-    /**
-     * Detail element placed right of the item children. Prop value can take one of two forms:
-     * 1. ReactNode
-     * 2. Object with content and options properties
-     *
-     * I18n recommended: content that is user visible should be treated for i18n
-     */
-    detail?: Detail
-    /**
-     * Optional icon placed left of the item children
-     */
-    icon?: IconType
-    /**
-     * Sets the correct accessible role for the ListItem:
-     * - Use **'link'** for items that navigation to another page
-     * - Use **'button'** for items that trigger in page interactions, like displaying a dialog
-     * - Use **'none'** when including buttons as children in the label container (i.e. the label container will be a <div>).
-     *     - Height when using an item with a description and role='none' does not auto abide the @looker/components
-     *     density scale. Use 'button' or 'link' whenever possible to avoid space inconsistencies.
-     *     - If supporting keyboard navigation, make sure to add key handlers to items
-     * @default 'button'
-     */
-    itemRole?: ListItemRole
-    /**
-     * If true, text children and description will be truncated if text overflows
-     * Specifying `description` will cause the truncation tooltip for label to _always_ be presented
-     *
-     * Text specified in `description` property will be displayed below `label` in the tooltip
-     */
-    truncate?: TruncateConfigProp
-
-    /**
-     * Callback to specify onClick handler on item's whitespace.
-     * @private May only be passed via TreeItem. This feature may be removed without a breaking change. We STRONGLY discourage the direct use of this property.
-     */
-    onClickWhitespace?: (event: React.MouseEvent<HTMLElement>) => void
-    /**
-     * Determines the type of the rendered ListItemWrapper
-     * @default false
-     * @private Should only be passed when ListItem is wrapped by another component like Tree. This feature may be removed without a breaking change. We STRONGLY discourage the direct use of this property.
-     */
-    renderAsDiv?: boolean
-  }
 
 const ListItemInternal = forwardRef(
   (
