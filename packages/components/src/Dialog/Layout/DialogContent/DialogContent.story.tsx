@@ -24,38 +24,30 @@
 
  */
 
-import React, { FC } from 'react'
-import { ArrowDropDown } from '@styled-icons/material/ArrowDropDown'
-import { ButtonOutline } from '../../Button'
-import { Box } from '../../Layout'
-import { Popover } from '../Popover'
-import { PopoverContent } from '../Layout/PopoverContent/PopoverContent'
+import React from 'react'
+import { Story } from '@storybook/react/types-6-0'
+import { Box, Paragraph } from '../../..'
+import { DialogContent, DialogContentProps } from './DialogContent'
 
-interface Props {
-  top?: number
-  left?: number
-  bottom?: number
-  right?: number
+const Template: Story<DialogContentProps> = (args) => (
+  <DialogContent {...args} />
+)
+
+export const Basic = Template.bind({})
+Basic.args = {
+  children: <Box height="2rem" bg="rebeccapurple" />,
 }
 
-export const EdgeOverflow: FC<Props> = ({
-  children,
-  top,
-  left,
-  bottom,
-  right,
-}) => (
-  <Box position="absolute" top={top} left={left} bottom={bottom} right={right}>
-    <Popover
-      content={
-        <PopoverContent width="18rem" height="5rem">
-          There's stuff here... it hits the edge{' '}
-        </PopoverContent>
-      }
-    >
-      <ButtonOutline iconAfter={<ArrowDropDown />} m="xxlarge">
-        {children}
-      </ButtonOutline>
-    </Popover>
+export const Overflow = () => (
+  <Box height="10rem" display="flex" bg="white" p="large">
+    <DialogContent>
+      <Paragraph>Scroll down here...</Paragraph>
+      <Box height="12rem" bg="rebeccapurple" />
+    </DialogContent>
   </Box>
 )
+
+export default {
+  component: DialogContent,
+  title: 'DialogContent',
+}

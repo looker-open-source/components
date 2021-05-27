@@ -35,8 +35,8 @@ import {
 } from '@looker/design-tokens'
 import React, { FC, useRef, useState, useEffect } from 'react'
 import styled, { css } from 'styled-components'
-import { useResize } from '../utils'
-import { SpaceHelperProps } from '../Layout/Space'
+import { useResize } from '../../utils'
+import { SpaceHelperProps } from '../../Layout/Space'
 
 interface ModalStyleProps
   extends LayoutProps,
@@ -60,8 +60,8 @@ export interface ModalContentProps extends ModalStyleProps, SpaceHelperProps {
 export const ModalContent: FC<ModalContentProps> = ({
   children,
   className,
-  hasFooter,
-  hasHeader,
+  hasFooter = true,
+  hasHeader = true,
   ...props
 }) => {
   const internalRef = useRef<HTMLDivElement>(null)
@@ -82,7 +82,6 @@ export const ModalContent: FC<ModalContentProps> = ({
       setHasOverflow(container.offsetHeight < container.scrollHeight)
     }
   }, [height])
-
   return (
     <InnerModalContent
       hasOverflow={hasOverflow}

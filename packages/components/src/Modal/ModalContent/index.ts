@@ -24,15 +24,4 @@
 
  */
 
-import styled from 'styled-components'
-import { ModalContent, ModalContentProps } from '../../Modal/ModalContent'
-
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface DialogContentProps extends ModalContentProps {}
-
-export const DialogContent = styled(ModalContent).attrs(
-  ({ px = 'xlarge', py = 'large' }) => ({
-    px,
-    py,
-  })
-)<DialogContentProps>``
+export * from './ModalContent'

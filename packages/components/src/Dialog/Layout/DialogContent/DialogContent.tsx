@@ -24,30 +24,14 @@
 
  */
 
-import React from 'react'
-import { Story } from '@storybook/react/types-6-0'
-import { Box, Paragraph } from '../..'
-import { DialogContent, DialogContentProps } from './DialogContent'
+import styled from 'styled-components'
+import { ModalContent, ModalContentProps } from '../../../Modal/ModalContent'
 
-const Template: Story<DialogContentProps> = (args) => (
-  <DialogContent {...args} />
-)
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface DialogContentProps extends ModalContentProps {}
 
-export const Basic = Template.bind({})
-Basic.args = {
-  children: <Box height="2rem" bg="rebeccapurple" />,
-}
-
-export const Overflow = () => (
-  <Box height="10rem" display="flex" bg="white" p="large">
-    <DialogContent>
-      <Paragraph>Scroll down here...</Paragraph>
-      <Box height="12rem" bg="rebeccapurple" />
-    </DialogContent>
-  </Box>
-)
-
-export default {
-  component: DialogContent,
-  title: 'DialogContent',
-}
+export const DialogContent = styled(ModalContent).attrs(
+  ({ px = 'xlarge' }) => ({
+    px,
+  })
+)<DialogContentProps>``

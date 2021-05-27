@@ -26,7 +26,7 @@
 
 import React, { FC } from 'react'
 import styled from 'styled-components'
-import { ModalContent, ModalContentProps } from '../../Modal/ModalContent'
+import { ModalContent, ModalContentProps } from '../../../Modal/ModalContent'
 
 const PopoverContentLayout: FC<ModalContentProps> = ({
   children,
