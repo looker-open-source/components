@@ -64,7 +64,4 @@ const PopoverFooterLayout: FC<PopoverFooterProps> = (props) => {
   )
 }
 
-export const PopoverFooter = styled(PopoverFooterLayout)<PopoverFooterProps>`
-  color: ${({ theme }) => theme.colors.text3};
-  font-size: ${({ theme }) => theme.space.xsmall};
-`
+export const PopoverFooter = styled(PopoverFooterLayout)<PopoverFooterProps>``
