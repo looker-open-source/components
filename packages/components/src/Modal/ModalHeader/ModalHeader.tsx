@@ -35,23 +35,22 @@ import {
   FontSizeProps,
   FontWeightProps,
 } from '@looker/design-tokens'
-import { Heading } from '../Text'
+import { Heading } from '../../Text'
 
-export interface ModalHeaderProps
-  extends SpaceProps,
-    CompatibleHTMLProps<HTMLElement>,
-    FontSizeProps,
-    FontWeightProps {
-  children: ReactNode
-  /**
-   * Usually used as a closing button this element is displayed on the right side of the component
-   */
-  detail?: ReactNode | string
-  /**
-   * use to support aria-labelledby
-   */
-  id?: string
-}
+export type ModalHeaderProps = SpaceProps &
+  CompatibleHTMLProps<HTMLElement> &
+  FontSizeProps &
+  FontWeightProps & {
+    children: ReactNode
+    /**
+     * Usually used as a closing button this element is displayed on the right side of the component
+     */
+    detail?: ReactNode | string
+    /**
+     * use to support aria-labelledby
+     */
+    id?: string
+  }
 
 const ModalHeaderLayout: FC<ModalHeaderProps> = ({
   children,

@@ -24,5 +24,4 @@
 
  */
 
-export * from './CloseHeaderButton'
-export * from './ModalHeader'
+export * from './DialogHeader'

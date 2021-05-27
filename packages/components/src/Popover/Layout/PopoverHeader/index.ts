@@ -24,25 +24,4 @@
 
  */
 
-import 'jest-styled-components'
-import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { screen } from '@testing-library/react'
-import { DialogHeader } from './DialogHeader'
-
-describe('DialogHeader', () => {
-  test('basic', () => {
-    renderWithTheme(<DialogHeader>Heading</DialogHeader>)
-    expect(screen.queryByText('Heading')).toBeInTheDocument()
-  })
-
-  test('Close visible by default', () => {
-    renderWithTheme(<DialogHeader>Heading</DialogHeader>)
-    expect(screen.queryByText('Close')).toBeInTheDocument()
-  })
-
-  test('hideClose', () => {
-    renderWithTheme(<DialogHeader hideClose>Heading</DialogHeader>)
-    expect(screen.queryByLabelText('Close')).not.toBeInTheDocument()
-  })
-})
+export * from './PopoverHeader'

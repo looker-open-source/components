@@ -24,47 +24,25 @@
 
  */
 
-import React, { FC } from 'react'
-import styled from 'styled-components'
-import { ModalHeader, ModalHeaderProps } from '../../Modal/ModalHeader'
-import { CloseHeaderButton } from '../../Modal/CloseHeaderButton'
+import 'jest-styled-components'
+import React from 'react'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
+import { Basic, HideClose } from './DialogHeader.story'
 
-type WithDetail = {
-  detail?: ModalHeaderProps['detail']
-  hideClose?: never
-}
+describe('DialogHeader', () => {
+  test('basic', () => {
+    renderWithTheme(<Basic />)
+    expect(screen.queryByText('Heading')).toBeInTheDocument()
+  })
 
-type WithHideClose = {
-  detail?: never
-  /**
-   * Don't include the "Close" option
-   * @default false
-   */
-  hideClose?: boolean
-}
+  test('Close visible by default', () => {
+    renderWithTheme(<Basic />)
+    expect(screen.queryByText('Close')).toBeInTheDocument()
+  })
 
-export type PopoverHeaderProps = WithDetail | WithHideClose
-
-const PopoverHeaderLayout: FC<PopoverHeaderProps> = ({
-  children,
-  hideClose = false,
-  detail,
-  ...props
-}) => {
-  const finalDetail = detail || <CloseHeaderButton size="small" />
-  return (
-    <ModalHeader
-      detail={!hideClose && finalDetail}
-      fontSize="small"
-      fontWeight="medium"
-      pl="large"
-      pr="medium"
-      py="small"
-      {...props}
-    >
-      {children}
-    </ModalHeader>
-  )
-}
-
-export const PopoverHeader = styled(PopoverHeaderLayout)<ModalHeaderProps>``
+  test('hideClose', () => {
+    renderWithTheme(<HideClose />)
+    expect(screen.queryByLabelText('Close')).not.toBeInTheDocument()
+  })
+})

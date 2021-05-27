@@ -24,46 +24,14 @@
 
  */
 
-import React, { FC, useContext } from 'react'
-import styled from 'styled-components'
-import { DialogContext } from '../DialogContext'
-import { ModalHeader, ModalHeaderProps } from '../../Modal/ModalHeader'
-import { CloseHeaderButton } from '../../Modal/CloseHeaderButton'
+import React from 'react'
+import { DialogHeader } from '@looker/components/src'
 
-type WithDetail = {
-  detail?: ModalHeaderProps['detail']
-  hideClose?: never
+export default {
+  component: DialogHeader,
+  title: 'DialogHeader',
 }
 
-type WithHideClose = {
-  detail?: never
-  /**
-   * Don't include the "Close" option
-   * @default false
-   */
-  hideClose?: boolean
-}
+export const Basic = () => <DialogHeader>Heading</DialogHeader>
 
-export type DialogHeaderProps = WithDetail | WithHideClose
-
-const DialogHeaderLayout: FC<DialogHeaderProps> = ({
-  children,
-  hideClose = false,
-  detail,
-}) => {
-  const { id: dialogId } = useContext(DialogContext)
-  const headingId = dialogId ? `${dialogId}-heading` : undefined
-
-  return (
-    <ModalHeader
-      detail={hideClose ? detail : <CloseHeaderButton />}
-      id={headingId}
-      px="xlarge"
-      py="large"
-    >
-      {children}
-    </ModalHeader>
-  )
-}
-
-export const DialogHeader = styled(DialogHeaderLayout)<DialogHeaderProps>``
+export const HideClose = () => <DialogHeader hideClose>Heading</DialogHeader>
