@@ -37,9 +37,8 @@ import { ButtonTransparent } from '../../../Button'
 export interface PopoverFooterProps
   extends Omit<ModalFooterProps, 'secondary'> {
   /**
-   *
-   * I18n recommended: content that is user visible should be treated for i18n
    * Button to close popover
+   * I18n recommended: content that is user visible should be treated for i18n
    * @default 'Done'
    */
   close?: ReactElement | string
@@ -67,5 +66,5 @@ const PopoverFooterLayout: FC<PopoverFooterProps> = (props) => {
 
 export const PopoverFooter = styled(PopoverFooterLayout)<PopoverFooterProps>`
   color: ${({ theme }) => theme.colors.text3};
-  font-size: ${({ theme }) => theme.space.small};
+  font-size: ${({ theme }) => theme.space.xsmall};
 `

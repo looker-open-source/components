@@ -24,18 +24,26 @@
 
  */
 
-import styled from 'styled-components'
-import {
-  ModalFooter,
-  ModalFooterProps,
-} from '../../Modal/ModalFooter/ModalFooter'
+import React from 'react'
+import { DialogFooter } from './DialogFooter'
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface DialogFooterProps extends ModalFooterProps {}
+export default {
+  component: DialogFooter,
+  title: 'DialogFooter',
+}
 
-export const DialogFooter = styled(ModalFooter).attrs(
-  ({ px = 'xlarge', py = 'large' }) => ({
-    px,
-    py,
-  })
-)<DialogFooterProps>``
+export const Basic = () => <DialogFooter>Footer Text</DialogFooter>
+Basic.parameters = {
+  storyshots: {
+    disable: true,
+  },
+}
+
+export const Secondary = () => (
+  <DialogFooter secondary={<button>Done</button>}>Footer Text</DialogFooter>
+)
+Secondary.parameters = {
+  storyshots: {
+    disable: true,
+  },
+}

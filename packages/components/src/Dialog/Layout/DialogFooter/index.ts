@@ -24,4 +24,4 @@
 
  */
 
-export * from './ModalFooter'
+export * from './DialogFooter'

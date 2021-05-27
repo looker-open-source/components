@@ -27,25 +27,27 @@
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { screen } from '@testing-library/react'
-import { PopoverFooter } from './PopoverFooter'
+import {
+  Basic,
+  CloseElementValue,
+  CloseStringValue,
+} from './PopoverFooter.story'
 
 describe('PopoverFooter', () => {
   test('basic ', () => {
-    renderWithTheme(<PopoverFooter>Footer Text</PopoverFooter>)
+    renderWithTheme(<Basic />)
     expect(screen.getByText('Footer Text')).toBeInTheDocument()
     expect(screen.getByText('Done')).toBeInTheDocument()
   })
 
   test('close prop with specified string ', () => {
-    renderWithTheme(<PopoverFooter close="Footer">Footer Text</PopoverFooter>)
+    renderWithTheme(<CloseStringValue />)
     expect(screen.getByText('Footer Text')).toBeInTheDocument()
     expect(screen.getByText('Footer')).toBeInTheDocument()
   })
 
   test('close prop with specified element ', () => {
-    const close = <button>close</button>
-
-    renderWithTheme(<PopoverFooter close={close}>Footer Text</PopoverFooter>)
+    renderWithTheme(<CloseElementValue />)
     expect(screen.getByText('Footer Text')).toBeInTheDocument()
     expect(screen.getByText('close')).toBeInTheDocument()
     expect(screen.getByRole('button')).toBeInTheDocument()

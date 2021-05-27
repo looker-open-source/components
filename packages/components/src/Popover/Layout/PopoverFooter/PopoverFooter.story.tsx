@@ -25,7 +25,6 @@
  */
 
 import React from 'react'
-import { Box } from '../../../Layout'
 import { PopoverFooter } from './PopoverFooter'
 
 export default {
@@ -33,11 +32,7 @@ export default {
   title: 'PopoverFooter',
 }
 
-export const Basic = () => (
-  <Box bg="ui1" width="248px">
-    <PopoverFooter>Footer Text</PopoverFooter>
-  </Box>
-)
+export const Basic = () => <PopoverFooter>Footer Text</PopoverFooter>
 Basic.parameters = {
   storyshots: {
     disable: true,
@@ -45,9 +40,7 @@ Basic.parameters = {
 }
 
 export const CloseStringValue = () => (
-  <Box bg="ui1" width="248px">
-    <PopoverFooter close="Footer">Footer Text</PopoverFooter>
-  </Box>
+  <PopoverFooter close="Footer">Footer Text</PopoverFooter>
 )
 CloseStringValue.parameters = {
   storyshots: {
@@ -55,12 +48,8 @@ CloseStringValue.parameters = {
   },
 }
 
-const close = <button>close</button>
-
 export const CloseElementValue = () => (
-  <Box bg="ui1" width="248px">
-    <PopoverFooter close={close}>Footer Text</PopoverFooter>
-  </Box>
+  <PopoverFooter close={<button>close</button>}>Footer Text</PopoverFooter>
 )
 CloseElementValue.parameters = {
   storyshots: {
