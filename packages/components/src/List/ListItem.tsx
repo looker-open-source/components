@@ -57,9 +57,9 @@ import { ListItemWrapper } from './ListItemWrapper'
 import { listItemIconColor, listItemLabelColor } from './utils/listItemColor'
 import {
   createSafeRel,
-  getAriaProps,
   getDetailOptions,
   listItemDimensions,
+  partitionAriaProps,
 } from './utils'
 import { ListItemProps } from './types'
 
@@ -205,7 +205,7 @@ const ListItemInternal = forwardRef(
       selected,
     }
 
-    const [ariaProps, wrapperProps] = getAriaProps(restProps)
+    const [ariaProps, wrapperProps] = partitionAriaProps(restProps)
 
     const LabelCreator: FC<{
       children: ReactNode

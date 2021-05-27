@@ -31,7 +31,9 @@
  * @param {Record<string, any>} props
  * @returns {Array} A tuple where the first object contains all aria related props and the second object contains the remaining props
  */
-export const getAriaProps = (props: Record<string, any>) => {
+export const partitionAriaProps = <T extends React.AriaAttributes>(
+  props: T
+) => {
   const aria = {}
   const remainder = {}
   Object.entries(props).forEach(([key, value]) =>
