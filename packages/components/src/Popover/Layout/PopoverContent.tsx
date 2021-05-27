@@ -24,14 +24,19 @@
 
  */
 
-import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { screen } from '@testing-library/react'
-import { DialogContent } from './DialogContent'
+import React, { FC } from 'react'
+import styled from 'styled-components'
+import { ModalContent, ModalContentProps } from '../../Modal/ModalContent'
 
-describe('DialogContent', () => {
-  test('basic', () => {
-    renderWithTheme(<DialogContent>Stuff</DialogContent>)
-    expect(screen.getByText('Stuff')).toBeInTheDocument()
-  })
-})
+const PopoverContentLayout: FC<ModalContentProps> = ({
+  children,
+  ...props
+}) => {
+  return (
+    <ModalContent pb="medium" pt="large" px="large" {...props}>
+      {children}
+    </ModalContent>
+  )
+}
+
+export const PopoverContent = styled(PopoverContentLayout)<ModalContentProps>``

@@ -25,13 +25,16 @@
  */
 
 import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { screen } from '@testing-library/react'
-import { DialogContent } from './DialogContent'
+import { PopoverContent } from './PopoverContent'
 
-describe('DialogContent', () => {
-  test('basic', () => {
-    renderWithTheme(<DialogContent>Stuff</DialogContent>)
-    expect(screen.getByText('Stuff')).toBeInTheDocument()
-  })
-})
+export default {
+  component: PopoverContent,
+  title: 'PopoverContent',
+}
+
+export const Basic = () => <PopoverContent>Content Text</PopoverContent>
+Basic.parameters = {
+  storyshots: {
+    disable: true,
+  },
+}

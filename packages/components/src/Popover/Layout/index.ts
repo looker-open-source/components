@@ -24,14 +24,4 @@
 
  */
 
-import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { screen } from '@testing-library/react'
-import { DialogContent } from './DialogContent'
-
-describe('DialogContent', () => {
-  test('basic', () => {
-    renderWithTheme(<DialogContent>Stuff</DialogContent>)
-    expect(screen.getByText('Stuff')).toBeInTheDocument()
-  })
-})
+export * from './PopoverContent'

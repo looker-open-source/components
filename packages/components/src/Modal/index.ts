@@ -24,26 +24,4 @@
 
  */
 
-import styled from 'styled-components'
-import {
-  FlexboxProps,
-  flexbox,
-  reset,
-  space,
-  SpaceProps,
-  shouldForwardProp,
-} from '@looker/design-tokens'
-import { layout, LayoutProps } from 'styled-system'
-
-interface PopoverContentProps extends SpaceProps, LayoutProps, FlexboxProps {}
-
-export const PopoverContent = styled.div
-  .withConfig({ shouldForwardProp })
-  .attrs<PopoverContentProps>(({ p = 'small' }) => ({
-    p,
-  }))<PopoverContentProps>`
- ${reset}
-  ${space}
-  ${layout}
-  ${flexbox}
-`
+export * from './ModalContent'
