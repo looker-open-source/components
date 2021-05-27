@@ -36,6 +36,14 @@ import { TruncateConfigProp } from '../Truncate'
 
 export type DensityRamp = -3 | -2 | -1 | 0 | 1
 
+export type DensityProps = {
+  /**
+   * Determines how dense a list should be by affecting child item size and spacing.
+   * @default 0
+   */
+  density?: DensityRamp
+}
+
 export interface ListItemDimensions {
   descriptionFontSize: FontSizes
   descriptionLineHeight: LineHeights

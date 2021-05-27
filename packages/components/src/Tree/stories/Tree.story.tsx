@@ -41,6 +41,7 @@ export * from './FileTree.story'
 export * from './ForceLabelPadding.story'
 export * from './LabelBackgroundOnly.story'
 export * from './LongLabels.story'
+export * from './Windowing.story'
 
 export default {
   component: Tree,

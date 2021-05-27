@@ -112,3 +112,31 @@ export type TreeProps = Omit<
      */
     labelBackgroundOnly?: boolean
   }
+
+export type WindowedTreeNodeProps = {
+  /**
+   * The JSX to render for the current node.
+   * If this node is a tree, use `items` instead of children.
+   */
+  content: JSX.Element
+  /**
+   * Use to control the opened / closed state of the tree instead of
+   * props on the Tree component itself (necessary for windowing)
+   */
+  isOpen?: boolean
+  /**
+   * An array of objects representing the tree items and nested trees
+   * to be rendered as children of the element in `content`
+   */
+  items?: WindowedTreeNodeProps[]
+}
+
+export type WindowedTreeNodeIDProps = Omit<WindowedTreeNodeProps, 'items'> & {
+  content: JSX.Element
+  id: number
+  items?: WindowedTreeNodeIDProps[]
+}
+
+export type ToggleStateMap = {
+  [id: number]: { isOpen: boolean; length: number }
+}

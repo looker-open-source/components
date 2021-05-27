@@ -50,6 +50,7 @@ export type {
   BoxShadowProps,
   DisplayProps,
   FlexboxProps,
+  HeightProps,
   LayoutProps,
   OverflowProps,
   PaddingProps,

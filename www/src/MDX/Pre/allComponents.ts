@@ -167,6 +167,7 @@ import {
   useTabs,
   useToggle,
   VisuallyHidden,
+  WindowedTreeCollection,
   i18nResources,
 } from '@looker/components'
 import {
@@ -362,5 +363,6 @@ export const allComponents = {
   Truncate,
   UnorderedList,
   VisuallyHidden,
+  WindowedTreeCollection,
   i18nResources,
 }

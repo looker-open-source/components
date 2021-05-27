@@ -40,6 +40,7 @@ import { ListItemContext } from '../List/ListItemContext'
 import { listItemDimensions, getDetailOptions } from '../List/utils'
 import { TreeContext } from './TreeContext'
 import { indicatorDefaults } from './utils'
+import { WindowedTreeContext } from './WindowedTreeNode'
 import { TreeItemInner, TreeItemInnerDetail, TreeStyle } from './TreeStyle'
 import { treeItemInnerPropKeys, TreeProps } from './types'
 
@@ -62,6 +63,8 @@ const TreeLayout: FC<TreeProps> = ({
   onFocus,
   onMouseEnter,
   onMouseLeave,
+  isOpen: propsIsOpen,
+  toggleOpen: propsToggleOpen,
   ...restProps
 }) => {
   const treeItemInnerProps = treeItemInnerPropKeys.reduce((obj, key) => {
@@ -87,6 +90,20 @@ const TreeLayout: FC<TreeProps> = ({
   const { color: listColor } = useContext(ListItemContext)
   const treeContext = useContext(TreeContext)
 
+  // Context for supporting windowing
+  // - density must be defined at the collection level for consistent child height
+  // - opened / closed state must be managed at the collection level for accurate item count
+  // - partialRender to hide the accordion disclosure if it's above the window
+  const {
+    density: collectionDensity,
+    isOpen: contextIsOpen,
+    toggleNode,
+    partialRender,
+  } = useContext(WindowedTreeContext)
+
+  const isOpen = contextIsOpen ?? propsIsOpen
+  const toggleOpen = toggleNode ?? propsToggleOpen
+
   const hasBorder = undefinedCoalesce([propsBorder, treeContext.border])
   const color = undefinedCoalesce([propsColor, treeContext.color, listColor])
 
@@ -97,7 +114,7 @@ const TreeLayout: FC<TreeProps> = ({
   const startingDepth = 0
   const depth = treeContext.depth ? treeContext.depth : startingDepth
 
-  const density = propsDensity || treeContext.density
+  const density = collectionDensity || propsDensity || treeContext.density || 0
   const { iconGap, iconSize } = listItemDimensions(density)
 
   const { accessory, content, hoverDisclosure } = getDetailOptions(propsDetail)
@@ -187,6 +204,9 @@ const TreeLayout: FC<TreeProps> = ({
       py="none"
       role="treeitem"
       tabIndex={-1}
+      hideDisclosure={partialRender}
+      isOpen={isOpen}
+      toggleOpen={toggleOpen}
       {...restProps}
     >
       {label}
