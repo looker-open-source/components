@@ -24,5 +24,5 @@
 
  */
 
-export * from './CloseHeaderButton'
+export * from './ModalHeaderCloseButton'
 export * from './ModalHeader'

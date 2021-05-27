@@ -31,7 +31,7 @@ import styled from 'styled-components'
 import { IconButton, IconButtonProps } from '../Button'
 import { DialogContext } from '../Dialog'
 
-export interface CloseHeaderButtonProps {
+export interface ModalHeaderCloseButtonProps {
   /**
    * this will define the size of the button
    * @default 'medium'
@@ -39,10 +39,10 @@ export interface CloseHeaderButtonProps {
   size?: IconButtonProps['size']
 }
 
-const CloseHeaderButtonLayout: FC<CloseHeaderButtonProps> = ({
+const ModalHeaderCloseButtonLayout: FC<ModalHeaderCloseButtonProps> = ({
   size = 'medium',
 }) => {
-  const { t } = useTranslation('CloseHeaderButton')
+  const { t } = useTranslation('ModalHeaderCloseButton')
   const { closeModal, id } = useContext(DialogContext)
   return (
     <IconButton
@@ -55,6 +55,4 @@ const CloseHeaderButtonLayout: FC<CloseHeaderButtonProps> = ({
   )
 }
 
-export const CloseHeaderButton = styled(
-  CloseHeaderButtonLayout
-)<CloseHeaderButtonProps>``
+export const ModalHeaderCloseButton = styled(ModalHeaderCloseButtonLayout)``

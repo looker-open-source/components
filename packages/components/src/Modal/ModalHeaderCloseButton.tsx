@@ -24,47 +24,37 @@
 
  */
 
+import { useTranslation } from 'react-i18next'
 import React, { FC, useContext } from 'react'
+import { Close } from '@styled-icons/material/Close'
 import styled from 'styled-components'
-import { DialogContext } from '../../DialogContext'
-import { ModalHeader, ModalHeaderProps } from '../../../Modal/ModalHeader'
-import { ModalHeaderCloseButton } from '../../../Modal/ModalHeaderCloseButton'
+import { IconButton, IconButtonProps } from '../Button'
+import { DialogContext } from '../Dialog'
 
-type WithDetail = {
-  detail?: ModalHeaderProps['detail']
-  hideClose?: never
-}
-
-type WithHideClose = {
-  detail?: never
+export interface ModalHeaderCloseButtonProps {
   /**
-   * Don't include the "Close" option
-   * @default false
+   * this will define the size of the button
+   * @default 'medium'
    */
-  hideClose?: boolean
+  size?: IconButtonProps['size']
 }
 
-export type DetailOptions = WithDetail | WithHideClose
-export type DialogHeaderProps = DetailOptions & Omit<ModalHeaderProps, 'detail'>
-
-const DialogHeaderLayout: FC<DialogHeaderProps> = ({
-  children,
-  hideClose = false,
-  detail,
+const ModalHeaderCloseButtonLayout: FC<ModalHeaderCloseButtonProps> = ({
+  size = 'medium',
 }) => {
-  const { id: dialogId } = useContext(DialogContext)
-  const headingId = dialogId ? `${dialogId}-heading` : undefined
-
+  const { t } = useTranslation('ModalHeaderCloseButton')
+  const { closeModal, id } = useContext(DialogContext)
   return (
-    <ModalHeader
-      detail={hideClose ? detail : <ModalHeaderCloseButton />}
-      id={headingId}
-      px="xlarge"
-      py="large"
-    >
-      {children}
-    </ModalHeader>
+    <IconButton
+      id={id ? `${id}-iconButton` : undefined}
+      size={size}
+      onClick={closeModal}
+      label={t('Close')}
+      icon={<Close />}
+    />
   )
 }
 
-export const DialogHeader = styled(DialogHeaderLayout)<DialogHeaderProps>``
+export const ModalHeaderCloseButton = styled(
+  ModalHeaderCloseButtonLayout
+)<ModalHeaderCloseButtonProps>``

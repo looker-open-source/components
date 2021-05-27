@@ -42,8 +42,9 @@ describe('ModalHeader', () => {
   })
 
   test(`detail as ReactNode`, () => {
-    const button = <button>x</button>
-    renderWithTheme(<ModalHeader detail={button}>Header</ModalHeader>)
+    renderWithTheme(
+      <ModalHeader detail={<button>x</button>}>Header</ModalHeader>
+    )
     expect(screen.queryByText('x')).toBeTruthy()
   })
 })

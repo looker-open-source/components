@@ -33,12 +33,12 @@ import { Basic, HideClose } from './DialogHeader.story'
 describe('DialogHeader', () => {
   test('basic', () => {
     renderWithTheme(<Basic />)
-    expect(screen.queryByText('Heading')).toBeInTheDocument()
+    expect(screen.getByText('Heading')).toBeInTheDocument()
   })
 
   test('Close visible by default', () => {
     renderWithTheme(<Basic />)
-    expect(screen.queryByText('Close')).toBeInTheDocument()
+    expect(screen.getByText('Close')).toBeInTheDocument()
   })
 
   test('hideClose', () => {

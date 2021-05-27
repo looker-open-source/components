@@ -27,7 +27,7 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
 import {
-  CloseHeaderButton,
+  ModalHeaderCloseButton,
   ModalHeader,
   ModalHeaderProps,
 } from '../../../Modal'
@@ -54,10 +54,9 @@ const PopoverHeaderLayout: FC<PopoverHeaderProps> = ({
   detail,
   ...props
 }) => {
-  const finalDetail = detail || <CloseHeaderButton size="small" />
   return (
     <ModalHeader
-      detail={!hideClose && finalDetail}
+      detail={detail || (!hideClose && <ModalHeaderCloseButton size="small" />)}
       fontSize="small"
       fontWeight="medium"
       pl="large"

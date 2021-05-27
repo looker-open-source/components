@@ -38,7 +38,7 @@ import {
 import { Heading } from '../../Text'
 
 export type ModalHeaderProps = SpaceProps &
-  CompatibleHTMLProps<HTMLElement> &
+  CompatibleHTMLProps<HTMLDivElement> &
   FontSizeProps &
   FontWeightProps & {
     children: ReactNode
@@ -46,10 +46,10 @@ export type ModalHeaderProps = SpaceProps &
      * Usually used as a closing button this element is displayed on the right side of the component
      */
     detail?: ReactNode | string
-    /**
-     * use to support aria-labelledby
-     */
-    id?: string
+    // /**
+    //  * use to support aria-labelledby
+    //  */
+    // id?: string
   }
 
 const ModalHeaderLayout: FC<ModalHeaderProps> = ({
@@ -57,7 +57,7 @@ const ModalHeaderLayout: FC<ModalHeaderProps> = ({
   detail,
   fontSize,
   fontWeight = 'semiBold',
-  id = undefined,
+  id,
   ...props
 }) => {
   return (
