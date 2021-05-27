@@ -24,38 +24,26 @@
 
  */
 
-import React, { FC, ReactNode } from 'react'
-import styled from 'styled-components'
-import { CompatibleHTMLProps } from '@looker/design-tokens'
-import { Space, SpaceHelperProps } from '../../Layout/Space'
+import React from 'react'
+import { DialogFooter } from './DialogFooter'
 
-export interface DialogFooterProps
-  extends CompatibleHTMLProps<HTMLDivElement>,
-    SpaceHelperProps {
-  /**
-   * Secondary content to place in the footer
-   */
-  secondary?: ReactNode
+export default {
+  component: DialogFooter,
+  title: 'DialogFooter',
 }
 
-const DialogFooterLayout: FC<DialogFooterProps> = ({
-  children,
-  secondary,
-  ...props
-}) => {
-  return (
-    <Space as="footer" reverse between {...props}>
-      <Space reverse>{children}</Space>
-      {secondary && <Space>{secondary}</Space>}
-    </Space>
-  )
+export const Basic = () => <DialogFooter>Footer Text</DialogFooter>
+Basic.parameters = {
+  storyshots: {
+    disable: true,
+  },
 }
 
-export const DialogFooter = styled(DialogFooterLayout).attrs(
-  ({ px = 'xlarge', py = 'large' }) => ({
-    px,
-    py,
-  })
-)<DialogFooterProps>`
-  flex-shrink: 0;
-`
+export const Secondary = () => (
+  <DialogFooter secondary={<button>Done</button>}>Footer Text</DialogFooter>
+)
+Secondary.parameters = {
+  storyshots: {
+    disable: true,
+  },
+}

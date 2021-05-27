@@ -24,7 +24,35 @@
 
  */
 
-export * from './Layout'
-export * from './Popover'
-export * from './PopoverContent'
-export * from './usePopover'
+import React, { FC, ReactNode } from 'react'
+import styled from 'styled-components'
+import { CompatibleHTMLProps } from '@looker/design-tokens'
+import { Space, SpaceHelperProps } from '../../Layout/Space'
+
+export interface ModalFooterProps
+  extends CompatibleHTMLProps<HTMLDivElement>,
+    SpaceHelperProps {
+  /**
+   *
+   */
+  children: ReactNode
+  /**
+   * Secondary content to place in the footer
+   */
+  secondary?: ReactNode
+}
+
+const ModalFooterLayout: FC<ModalFooterProps> = ({
+  children,
+  secondary,
+  ...props
+}) => (
+  <Space as="footer" reverse between {...props}>
+    <Space reverse>{children}</Space>
+    {secondary && <Space>{secondary}</Space>}
+  </Space>
+)
+
+export const ModalFooter = styled(ModalFooterLayout)`
+  flex-shrink: 0;
+`

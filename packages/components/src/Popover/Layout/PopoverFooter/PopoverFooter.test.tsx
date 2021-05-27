@@ -24,7 +24,32 @@
 
  */
 
-export * from './Layout'
-export * from './Popover'
-export * from './PopoverContent'
-export * from './usePopover'
+import React from 'react'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
+import {
+  Basic,
+  CloseElementValue,
+  CloseStringValue,
+} from './PopoverFooter.story'
+
+describe('PopoverFooter', () => {
+  test('basic ', () => {
+    renderWithTheme(<Basic />)
+    expect(screen.getByText('Footer Text')).toBeInTheDocument()
+    expect(screen.getByText('Done')).toBeInTheDocument()
+  })
+
+  test('close prop with specified string ', () => {
+    renderWithTheme(<CloseStringValue />)
+    expect(screen.getByText('Footer Text')).toBeInTheDocument()
+    expect(screen.getByText('Footer')).toBeInTheDocument()
+  })
+
+  test('close prop with specified element ', () => {
+    renderWithTheme(<CloseElementValue />)
+    expect(screen.getByText('Footer Text')).toBeInTheDocument()
+    expect(screen.getByText('close')).toBeInTheDocument()
+    expect(screen.getByRole('button')).toBeInTheDocument()
+  })
+})

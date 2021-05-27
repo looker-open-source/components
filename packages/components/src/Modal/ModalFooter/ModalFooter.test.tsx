@@ -24,7 +24,27 @@
 
  */
 
-export * from './Layout'
-export * from './Popover'
-export * from './PopoverContent'
-export * from './usePopover'
+import React from 'react'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
+import { ModalFooter } from '../ModalFooter/ModalFooter'
+
+describe('ModalFooter', () => {
+  test('basic', () => {
+    renderWithTheme(
+      <ModalFooter>
+        <button>Cancel</button>
+      </ModalFooter>
+    )
+    expect(screen.getByRole('button')).toBeInTheDocument()
+  })
+
+  test('secondary', () => {
+    renderWithTheme(
+      <ModalFooter secondary={<button>Done</button>}>
+        <button>Cancel</button>
+      </ModalFooter>
+    )
+    expect(screen.getByText('Done')).toBeInTheDocument()
+  })
+})
