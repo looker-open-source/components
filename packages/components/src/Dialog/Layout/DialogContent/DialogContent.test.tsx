@@ -31,7 +31,7 @@ import { DialogContent } from './DialogContent'
 
 describe('DialogContent', () => {
   test('basic', () => {
-    renderWithTheme(<DialogContent>Stuff</DialogContent>)
-    expect(screen.getByText('Stuff')).toBeInTheDocument()
+    renderWithTheme(<DialogContent>Dialog Content</DialogContent>)
+    expect(screen.getByText('Dialog Content')).toBeInTheDocument()
   })
 })
