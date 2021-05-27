@@ -24,11 +24,13 @@
 
  */
 
+import React from 'react'
+
 /**
  * Partitions an object into 2 objects, the first containing all aria related prop keys and their respective values
  * and the second containing all other prop keys and their respective values
  *
- * @param {Record<string, any>} props
+ * @param {T extends React.AriaAttribute} props
  * @returns {Array} A tuple where the first object contains all aria related props and the second object contains the remaining props
  */
 export const partitionAriaProps = <T extends React.AriaAttributes>(
