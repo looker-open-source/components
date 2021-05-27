@@ -56,7 +56,8 @@ const Layout: FC<TabPanelsProps> = ({
     children,
     (child: JSX.Element, index: number) => {
       return cloneElement(child, {
-        selected: index === selectedIndex,
+        index, // this is just in case we're in uncontrolled mode
+        selectedIndex,
       })
     }
   )

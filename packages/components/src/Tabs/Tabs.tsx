@@ -27,9 +27,9 @@
 import React, { Children, cloneElement, FC, useRef, useState } from 'react'
 
 export interface UseTabsProps {
-  controlledIndex?: number
+  controlledIndex?: number | string
   defaultIndex?: number
-  index?: number
+  index?: number | string
   isControlled?: boolean
   onChange?: (index: number) => void
 }

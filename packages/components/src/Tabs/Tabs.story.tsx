@@ -56,6 +56,29 @@ const Template: Story<DemoProps> = ({ tabCount, tabPrefix, ...args }) => {
   )
 }
 
+export const Test = () => {
+  const [currentTabIndex, setTab] = useState(0)
+
+  return (
+    <>
+      <Space>
+        <button onClick={() => setTab(0)}>Go to A</button>
+        <button onClick={() => setTab(1)}>Go to B</button>
+      </Space>
+      <Tabs index={currentTabIndex} onChange={setTab}>
+        <TabList>
+          <Tab>Gouda</Tab>
+          <Tab>Swiss</Tab>
+        </TabList>
+        <TabPanels>
+          <TabPanel value="Gouda">It's probably French?</TabPanel>
+          <TabPanel>It's probably Swiss?</TabPanel>
+        </TabPanels>
+      </Tabs>
+    </>
+  )
+}
+
 export const Basic = Template.bind({})
 Basic.args = {
   distribute: true,
