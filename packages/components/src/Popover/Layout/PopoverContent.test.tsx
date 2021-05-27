@@ -24,14 +24,15 @@
 
  */
 
+import 'jest-styled-components'
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { screen } from '@testing-library/react'
-import { DialogContent } from './DialogContent'
+import { Basic } from './PopoverContent.story'
 
-describe('DialogContent', () => {
-  test('basic', () => {
-    renderWithTheme(<DialogContent>Stuff</DialogContent>)
-    expect(screen.getByText('Stuff')).toBeInTheDocument()
+describe('PopoverHeader', () => {
+  test('Close visible by default', () => {
+    renderWithTheme(<Basic />)
+    expect(screen.queryByText('Content Text')).toBeInTheDocument()
   })
 })

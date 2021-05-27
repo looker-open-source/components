@@ -27,3 +27,4 @@
 export * from './ModalHeaderCloseButton'
 export * from './ModalHeader'
 export * from './ModalFooter'
+export * from './ModalContent'

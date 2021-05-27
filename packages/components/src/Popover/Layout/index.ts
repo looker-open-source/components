@@ -26,3 +26,4 @@
 
 export * from './PopoverHeader'
 export * from './PopoverFooter'
+export * from './PopoverContent'

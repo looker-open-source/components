@@ -24,26 +24,19 @@
 
  */
 
+import React, { FC } from 'react'
 import styled from 'styled-components'
-import {
-  FlexboxProps,
-  flexbox,
-  reset,
-  space,
-  SpaceProps,
-  shouldForwardProp,
-} from '@looker/design-tokens'
-import { layout, LayoutProps } from 'styled-system'
+import { ModalContent, ModalContentProps } from '../../Modal/ModalContent'
 
-interface PopoverContentProps extends SpaceProps, LayoutProps, FlexboxProps {}
+const PopoverContentLayout: FC<ModalContentProps> = ({
+  children,
+  ...props
+}) => {
+  return (
+    <ModalContent pb="medium" pt="large" px="large" {...props}>
+      {children}
+    </ModalContent>
+  )
+}
 
-export const PopoverContent = styled.div
-  .withConfig({ shouldForwardProp })
-  .attrs<PopoverContentProps>(({ p = 'small' }) => ({
-    p,
-  }))<PopoverContentProps>`
- ${reset}
-  ${space}
-  ${layout}
-  ${flexbox}
-`
+export const PopoverContent = styled(PopoverContentLayout)<ModalContentProps>``
