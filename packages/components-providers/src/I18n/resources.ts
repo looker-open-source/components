@@ -118,6 +118,9 @@ export const i18nResources: Resource = {
       'Previous page of results': 'Previous page of results',
       of: 'of',
     },
+    PanelHeader: {
+      CloseTitle: 'Close {{title}}',
+    },
     PromptDialog: {
       Cancel: 'Cancel',
       Save: 'Save',

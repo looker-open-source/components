@@ -27,8 +27,11 @@
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import { Done } from '@styled-icons/material/Done'
+import { Button } from '../Button'
 import { List, ListItem } from '../List'
-import { Aside, Page, Section } from '../Layout'
+import { Aside, Layout, Page, Section, SpaceVertical } from '../Layout'
+import { Paragraph } from '../Text'
+import { TreeCollection, Tree, TreeItem } from '../Tree'
 import { Panel, Panels, PanelProps, usePanel } from './'
 
 export default {
@@ -82,24 +85,154 @@ DirectionRight.args = {
   direction: 'right',
 }
 
-export const Hook = () => {
+export const CloseLabel = Template.bind({})
+CloseLabel.args = {
+  ...Basic.args,
+  closeLabel: 'Back to the last thing',
+}
+CloseLabel.parameters = {
+  storyshots: { disable: true },
+}
+
+const HookInner = () => {
   const { panel, setOpen } = usePanel({
     content: 'Panel content',
     title: 'Panel Hook',
   })
-
   return (
     <>
-      <List>
-        <ListItem onClick={() => setOpen(true)} icon={<Done />}>
-          Option A
-        </ListItem>
-        <ListItem icon={<Done />}>Option B</ListItem>
-      </List>
+      <ListItem onClick={() => setOpen(true)} icon={<Done />}>
+        Option A
+      </ListItem>
       {panel}
     </>
+  )
+}
+
+export const Hook = () => {
+  return (
+    <Panels>
+      <HookInner />
+      <List>
+        <ListItem icon={<Done />}>Option B</ListItem>
+      </List>
+    </Panels>
   )
 }
 Hook.parameters = {
   storyshots: { disable: true },
 }
+
+export const CenterPlacement = () => (
+  <Page hasAside height="100vh">
+    <Aside width="navigation">Left sidebar</Aside>
+    <Layout hasAside>
+      <Section>
+        <Panels>
+          <Panel
+            title="Some title"
+            content={
+              <SpaceVertical>
+                <Panel
+                  title="Another title"
+                  direction="right"
+                  content={
+                    <SpaceVertical>
+                      <Paragraph>Some other text</Paragraph>
+                      <Paragraph>Some other text</Paragraph>
+                      <Paragraph>Some other text</Paragraph>
+                      <Paragraph>Some other text</Paragraph>
+                      <Paragraph>Some other text</Paragraph>
+                      <Paragraph>Some other text</Paragraph>
+                      <Paragraph>Some other text</Paragraph>
+                      <Paragraph>Some other text</Paragraph>
+                      <Paragraph>Some other text</Paragraph>
+                      <Paragraph>Some other text</Paragraph>
+                      <Paragraph>Some other text</Paragraph>
+                      <Paragraph>Some other text</Paragraph>
+                      <Paragraph>Some other text</Paragraph>
+                      <Paragraph>Some other text</Paragraph>
+                      <Paragraph>Some other text</Paragraph>
+                      <Paragraph>Some other text</Paragraph>
+                      <Paragraph>Some other text</Paragraph>
+                      <Paragraph>Some other text</Paragraph>
+                      <Paragraph>Some other text</Paragraph>
+                      <Paragraph>Some other text</Paragraph>
+                      <Paragraph>Some other text</Paragraph>
+                      <Paragraph>Some other text</Paragraph>
+                      <Paragraph>Some other text</Paragraph>
+                      <Paragraph>Some other text</Paragraph>
+                      <Paragraph>Some other text</Paragraph>
+                      <Paragraph>Some other text</Paragraph>
+                    </SpaceVertical>
+                  }
+                >
+                  <Button>Open Another Panel</Button>
+                </Panel>
+                <Paragraph>Some text</Paragraph>
+                <Paragraph>Some text</Paragraph>
+                <Paragraph>Some text</Paragraph>
+                <Paragraph>Some text</Paragraph>
+                <Paragraph>Some text</Paragraph>
+                <Paragraph>Some text</Paragraph>
+                <Paragraph>Some text</Paragraph>
+                <Paragraph>Some text</Paragraph>
+                <Paragraph>Some text</Paragraph>
+                <Paragraph>Some text</Paragraph>
+                <Paragraph>Some text</Paragraph>
+                <Paragraph>Some text</Paragraph>
+                <Paragraph>Some text</Paragraph>
+                <Paragraph>Some text</Paragraph>
+                <Paragraph>Some text</Paragraph>
+                <Paragraph>Some text</Paragraph>
+                <Paragraph>Some text</Paragraph>
+                <Paragraph>Some text</Paragraph>
+                <Paragraph>Some text</Paragraph>
+                <Paragraph>Some text</Paragraph>
+                <Paragraph>Some text</Paragraph>
+                <Paragraph>Some text</Paragraph>
+                <Paragraph>Some text</Paragraph>
+                <Paragraph>Some text</Paragraph>
+                <Paragraph>Some text</Paragraph>
+                <Paragraph>Some text</Paragraph>
+              </SpaceVertical>
+            }
+          >
+            <Button>Open Panel</Button>
+          </Panel>
+          <Paragraph>Content to be covered by the panel</Paragraph>
+        </Panels>
+      </Section>
+      <Aside width="sidebar">Right sidebar</Aside>
+    </Layout>
+  </Page>
+)
+
+CenterPlacement.parameters = {
+  storyshots: { disable: true },
+}
+
+export const WithTree = () => (
+  <Page hasAside>
+    <Aside width="navigation">
+      <Panels>
+        <Panel title="Some title" content="Tree should be hidden">
+          <Button>Open Panel</Button>
+        </Panel>
+        <TreeCollection>
+          <Tree label="Orders" defaultOpen>
+            <TreeItem>ID</TreeItem>
+            <TreeItem>Status</TreeItem>
+            <Tree label="Created" defaultOpen>
+              <TreeItem>Created Date</TreeItem>
+              <TreeItem>Created Month</TreeItem>
+              <TreeItem>Created Year</TreeItem>
+              <TreeItem>Created Quarter</TreeItem>
+            </Tree>
+          </Tree>
+        </TreeCollection>
+      </Panels>
+    </Aside>
+    <Section>Main content</Section>
+  </Page>
+)

@@ -25,58 +25,39 @@
  */
 
 import React, { FC, useContext } from 'react'
+import { useTranslation } from 'react-i18next'
 import { ThemeContext } from 'styled-components'
 import { ArrowBack } from '@styled-icons/material-rounded/ArrowBack'
 import { Heading } from '../Text'
 import { Space } from '../Layout'
 import { IconButton } from '../Button'
-import { PanelDirection } from './types'
+import { PanelBaseProps } from './types'
 
-export interface PanelHeaderProps {
-  className?: string
-
-  /**
-   * @TODO - Remove in 2.x
-   * @deprecated
-   */
-  direction?: PanelDirection
-
-  /**
-   * IconButton in PanelHeader will have toggled and background color
-   * based on theme's key color
-   * @default 'false'
-   */
-  iconToggle?: boolean
-
-  /**
-   * callback to close Panel
-   */
-  handleClose?: () => void
-  title: string
-}
-
-export const PanelHeader: FC<PanelHeaderProps> = ({
-  className,
-  handleClose,
+export const PanelHeader: FC<PanelBaseProps> = ({
+  closeLabel,
+  onClose,
   iconToggle = false,
   title,
 }) => {
+  const { t } = useTranslation('PanelHeader')
+  const defaultLabel = t('CloseTitle', { title })
+
   const { space } = useContext(ThemeContext)
 
   return (
     <Space
       as="header"
-      className={className}
       height={space.xxlarge}
       px="large"
       gap="small"
       mt="small"
       mb="1.5rem"
+      flexShrink={0}
     >
       <IconButton
         icon={<ArrowBack />}
-        label={`Close ${title}`}
-        onClick={handleClose}
+        label={closeLabel || defaultLabel}
+        onClick={onClose}
         toggle={iconToggle}
         toggleBackground={iconToggle}
         // eslint-disable-next-line i18next/no-literal-string

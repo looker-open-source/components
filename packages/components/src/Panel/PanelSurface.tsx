@@ -29,7 +29,7 @@ import { variant } from 'styled-system'
 import { PanelSurfaceProps } from './types'
 
 const surfaceTransition = () => css`
-  ${({ theme }) => `${theme.transitions.moderate}ms ${theme.easings.ease}`}
+  ${({ theme }) => `${theme.transitions.moderate}ms ${theme.easings.easeOut}`}
 `
 
 const direction = variant({
@@ -45,6 +45,8 @@ export const PanelSurface = styled.div.attrs<PanelSurfaceProps>(
 )<PanelSurfaceProps>`
   background: ${({ theme }) => theme.colors.background};
   bottom: 0;
+  display: flex;
+  flex-direction: column;
   height: 100%;
   left: 0;
   position: absolute;

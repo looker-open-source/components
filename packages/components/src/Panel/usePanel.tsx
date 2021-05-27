@@ -24,10 +24,14 @@
 
  */
 
-import React, { useState } from 'react'
+import React, { useContext, useRef, useState } from 'react'
+import styled from 'styled-components'
+import { Portal } from '../Portal'
 import { useAnimationState, useControlWarn } from '../utils'
 import { PanelHeader } from './PanelHeader'
+import { PanelsContext } from './Panels'
 import { PanelSurface } from './PanelSurface'
+import { PanelWindow } from './PanelWindow'
 import { UsePanelProps, UsePanelResponse } from './types'
 
 export const usePanel = ({
@@ -35,12 +39,12 @@ export const usePanel = ({
   content,
   defaultOpen = false,
   direction = 'left',
-  iconToggle,
   isOpen: controlledIsOpen,
   onClose,
   setOpen: controlledSetOpen,
-  title,
+  ...headerProps
 }: UsePanelProps): UsePanelResponse => {
+  const rect = useContext(PanelsContext)
   const [uncontrolledIsOpen, setUncontrolledIsOpen] = useState(defaultOpen)
   const isControlled = useControlWarn({
     controllingProps: ['setOpen'],
@@ -57,10 +61,12 @@ export const usePanel = ({
 
   const isOpen = isControlled ? controlledIsOpen || false : uncontrolledIsOpen
 
+  const firstRender = useRef(true)
   const { busy, className, renderDOM } = useAnimationState(
     isOpen,
-    defaultOpen ? 'none' : undefined
+    isOpen && firstRender.current ? 'none' : undefined
   )
+  firstRender.current = false
 
   const setOpen =
     isControlled && controlledSetOpen
@@ -76,18 +82,23 @@ export const usePanel = ({
   }
 
   const panel = renderDOM && (
-    <PanelSurface
-      aria-busy={busy ? true : undefined}
-      className={className}
-      direction={direction}
-    >
-      <PanelHeader
-        iconToggle={iconToggle}
-        handleClose={handleClose}
-        title={title}
-      />
-      <div>{content}</div>
-    </PanelSurface>
+    <Portal fixed={false}>
+      <PanelWindow
+        width={rect?.width}
+        height={rect?.height}
+        left={rect?.left}
+        top={rect?.top}
+      >
+        <PanelSurface
+          aria-busy={busy ? true : undefined}
+          className={className}
+          direction={direction}
+        >
+          <PanelHeader onClose={handleClose} {...headerProps} />
+          <PanelContent>{content}</PanelContent>
+        </PanelSurface>
+      </PanelWindow>
+    </Portal>
   )
 
   return {
@@ -101,3 +112,8 @@ export const usePanel = ({
     setOpen,
   }
 }
+
+const PanelContent = styled.div`
+  flex: 1;
+  overflow: auto;
+`
