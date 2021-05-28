@@ -27,24 +27,17 @@
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { screen } from '@testing-library/react'
-import { DialogFooter } from './DialogFooter'
+import { Basic, Secondary } from './DialogFooter.story'
 
 describe('DialogFooter', () => {
-  test('basic', () => {
-    renderWithTheme(
-      <DialogFooter>
-        <button>Cancel</button>
-      </DialogFooter>
-    )
-    expect(screen.getByRole('button')).toBeInTheDocument()
+  test('basic ', () => {
+    renderWithTheme(<Basic />)
+    expect(screen.getByText('Footer Text')).toBeInTheDocument()
   })
 
   test('secondary', () => {
-    renderWithTheme(
-      <DialogFooter secondary={<button>Nevermind</button>}>
-        <button>Cancel</button>
-      </DialogFooter>
-    )
-    expect(screen.getByText('Nevermind')).toBeInTheDocument()
+    renderWithTheme(<Secondary />)
+    expect(screen.getByText('Done')).toBeInTheDocument()
+    expect(screen.getByText('Footer Text')).toBeInTheDocument()
   })
 })

@@ -25,22 +25,31 @@
  */
 
 import React from 'react'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
+import {
+  Basic,
+  CloseElementValue,
+  CloseStringValue,
+} from './PopoverFooter.story'
 
-/**
- * Partitions an object into 2 objects, the first containing all aria related prop keys and their respective values
- * and the second containing all other prop keys and their respective values
- *
- * @param {T extends React.AriaAttribute} props
- * @returns {Array} A tuple where the first object contains all aria related props and the second object contains the remaining props
- */
-export const partitionAriaProps = <T extends React.AriaAttributes>(
-  props: T
-) => {
-  const aria = {}
-  const remainder = {}
-  Object.entries(props).forEach(([key, value]) =>
-    key.startsWith('aria-') ? (aria[key] = value) : (remainder[key] = value)
-  )
+describe('PopoverFooter', () => {
+  test('basic ', () => {
+    renderWithTheme(<Basic />)
+    expect(screen.getByText('Footer Text')).toBeInTheDocument()
+    expect(screen.getByText('Done')).toBeInTheDocument()
+  })
 
-  return [aria, remainder]
-}
+  test('close prop with specified string ', () => {
+    renderWithTheme(<CloseStringValue />)
+    expect(screen.getByText('Footer Text')).toBeInTheDocument()
+    expect(screen.getByText('Footer')).toBeInTheDocument()
+  })
+
+  test('close prop with specified element ', () => {
+    renderWithTheme(<CloseElementValue />)
+    expect(screen.getByText('Footer Text')).toBeInTheDocument()
+    expect(screen.getByText('close')).toBeInTheDocument()
+    expect(screen.getByRole('button')).toBeInTheDocument()
+  })
+})

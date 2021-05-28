@@ -34,7 +34,7 @@ export interface DialogLayoutProps {
   /**
    * Content to be displayed in footer
    */
-  footer?: ReactNode
+  footer?: ReactChild
   /**
    * Secondary content to place in the footer
    * NOTE: `footer` property must be supplied for footer to be displayed. Supplying

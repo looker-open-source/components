@@ -25,3 +25,4 @@
  */
 
 export * from './PopoverHeader'
+export * from './PopoverFooter'

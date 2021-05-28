@@ -25,22 +25,34 @@
  */
 
 import React from 'react'
+import { PopoverFooter } from './PopoverFooter'
 
-/**
- * Partitions an object into 2 objects, the first containing all aria related prop keys and their respective values
- * and the second containing all other prop keys and their respective values
- *
- * @param {T extends React.AriaAttribute} props
- * @returns {Array} A tuple where the first object contains all aria related props and the second object contains the remaining props
- */
-export const partitionAriaProps = <T extends React.AriaAttributes>(
-  props: T
-) => {
-  const aria = {}
-  const remainder = {}
-  Object.entries(props).forEach(([key, value]) =>
-    key.startsWith('aria-') ? (aria[key] = value) : (remainder[key] = value)
-  )
+export default {
+  component: PopoverFooter,
+  title: 'PopoverFooter',
+}
 
-  return [aria, remainder]
+export const Basic = () => <PopoverFooter>Footer Text</PopoverFooter>
+Basic.parameters = {
+  storyshots: {
+    disable: true,
+  },
+}
+
+export const CloseStringValue = () => (
+  <PopoverFooter close="Footer">Footer Text</PopoverFooter>
+)
+CloseStringValue.parameters = {
+  storyshots: {
+    disable: true,
+  },
+}
+
+export const CloseElementValue = () => (
+  <PopoverFooter close={<button>close</button>}>Footer Text</PopoverFooter>
+)
+CloseElementValue.parameters = {
+  storyshots: {
+    disable: true,
+  },
 }

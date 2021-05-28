@@ -24,23 +24,35 @@
 
  */
 
-import React from 'react'
+import React, { FC, ReactNode } from 'react'
+import styled from 'styled-components'
+import { CompatibleHTMLProps } from '@looker/design-tokens'
+import { Space, SpaceHelperProps } from '../../Layout/Space'
 
-/**
- * Partitions an object into 2 objects, the first containing all aria related prop keys and their respective values
- * and the second containing all other prop keys and their respective values
- *
- * @param {T extends React.AriaAttribute} props
- * @returns {Array} A tuple where the first object contains all aria related props and the second object contains the remaining props
- */
-export const partitionAriaProps = <T extends React.AriaAttributes>(
-  props: T
-) => {
-  const aria = {}
-  const remainder = {}
-  Object.entries(props).forEach(([key, value]) =>
-    key.startsWith('aria-') ? (aria[key] = value) : (remainder[key] = value)
-  )
-
-  return [aria, remainder]
+export interface ModalFooterProps
+  extends CompatibleHTMLProps<HTMLDivElement>,
+    SpaceHelperProps {
+  /**
+   *
+   */
+  children: ReactNode
+  /**
+   * Secondary content to place in the footer
+   */
+  secondary?: ReactNode
 }
+
+const ModalFooterLayout: FC<ModalFooterProps> = ({
+  children,
+  secondary,
+  ...props
+}) => (
+  <Space as="footer" reverse between {...props}>
+    <Space reverse>{children}</Space>
+    {secondary && <Space>{secondary}</Space>}
+  </Space>
+)
+
+export const ModalFooter = styled(ModalFooterLayout)`
+  flex-shrink: 0;
+`
