@@ -35,9 +35,6 @@ export * from './color'
 export * from './theme'
 export * from './system'
 
-// Provided for legacy color implementations
-export { palette } from './legacy'
-
 // Useful external utilities
 export { transitions } from './tokens/transitions'
 export * from './tokens/breakpoints'
