@@ -38,14 +38,12 @@ import { listItemBackgroundColor } from '../List/utils'
 import { List, ListItem } from '../List'
 import { ListItemLabel, listItemLabelCSS } from '../List/ListItemLabel'
 import { IconSize, IconType } from '../Icon'
-import { AccordionIndicator } from '../Accordion/AccordionDisclosureLayout'
 import { TreeItem } from './TreeItem'
 import { TreeBranch } from './TreeBranch'
 import {
   generateIndent,
   GenerateIndentProps,
   generateTreeBorder,
-  iconGapAdjuster,
 } from './utils'
 
 type TreeStyleProps = ListItemStatefulProps &
@@ -61,8 +59,6 @@ type TreeStyleProps = ListItemStatefulProps &
     iconSize: IconSize
     labelBackgroundOnly?: boolean
   }
-
-const indicatorContainerSize = 'medium'
 
 export const TreeItemInner = styled(TreeItem)`
   ${listItemLabelCSS(css`
@@ -102,13 +98,13 @@ const treeItemIndent = ({
   icon,
   iconGap,
   iconSize,
-  indicatorSize,
   labelBackgroundOnly,
   theme,
 }: TreeItemIndentProps) => {
   const labelPaddingRemoval = css`
     padding: 0;
   `
+
   const wrapperIndent = css`
     ${generateIndent({
       depth: depth + 2,
@@ -116,7 +112,6 @@ const treeItemIndent = ({
       icon,
       iconGap,
       iconSize,
-      indicatorSize,
       theme,
     })}
     ${listItemLabelCSS(labelPaddingRemoval)}
@@ -129,7 +124,6 @@ const treeItemIndent = ({
       icon,
       iconGap,
       iconSize,
-      indicatorSize,
       theme,
     })
   )
@@ -150,8 +144,7 @@ export const TreeStyle = styled(TreeStyleLayout)`
     ${({ iconGap, theme }) =>
       listItemLabelCSS(css`
         ${ListItemIconPlacement} {
-          /* The -2px gets the icon gap to match design specs */
-          margin-right: calc(${theme.space[iconGap]} - ${iconGapAdjuster});
+          margin-right: ${theme.space[iconGap]};
         }
       `)}
   }
@@ -172,16 +165,11 @@ export const TreeStyle = styled(TreeStyleLayout)`
     }
 
     > ${AccordionContent} {
-      ${({ border, depth, theme }) =>
-        border && generateTreeBorder(depth, indicatorContainerSize, theme)}
+      ${({ border, depth, iconSize, theme }) =>
+        border && generateTreeBorder(depth, iconSize, theme)}
     }
 
     > ${AccordionDisclosureStyle} {
-      ${AccordionIndicator} {
-        height: ${({ theme }) => theme.sizes[indicatorContainerSize]};
-        width: ${({ theme }) => theme.sizes[indicatorContainerSize]};
-      }
-
       ${ListItem} {
         ${({ labelBackgroundOnly, ...restProps }) =>
           labelBackgroundOnly && listItemBackgroundColor(restProps)}
@@ -201,13 +189,12 @@ export const TreeStyle = styled(TreeStyleLayout)`
         Tree's padding-right is handled by the internal item
        */
       padding-right: 0;
-      ${({ depth, icon, iconSize, theme }) =>
+      ${({ depth, icon, iconGap, iconSize, theme }) =>
         generateIndent({
           depth,
           icon,
-          iconGap: 'none',
+          iconGap,
           iconSize,
-          indicatorSize: indicatorContainerSize,
           theme,
         })}
     }
@@ -232,7 +219,6 @@ export const TreeStyle = styled(TreeStyleLayout)`
           icon,
           iconGap,
           iconSize,
-          indicatorSize: indicatorContainerSize,
           labelBackgroundOnly: !!labelBackgroundOnly,
           theme,
         })}
@@ -246,7 +232,6 @@ export const TreeStyle = styled(TreeStyleLayout)`
           icon,
           iconGap,
           iconSize,
-          indicatorSize: indicatorContainerSize,
           theme,
         })}
     }
@@ -272,7 +257,6 @@ export const TreeStyle = styled(TreeStyleLayout)`
           icon,
           iconGap,
           iconSize,
-          indicatorSize: indicatorContainerSize,
           labelBackgroundOnly: !!labelBackgroundOnly,
           theme,
         })}
@@ -286,7 +270,6 @@ export const TreeStyle = styled(TreeStyleLayout)`
           icon,
           iconGap,
           iconSize,
-          indicatorSize: indicatorContainerSize,
           theme,
         })}
     }

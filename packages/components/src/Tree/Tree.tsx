@@ -170,12 +170,13 @@ const TreeLayout: FC<TreeProps> = ({
         </List>
       }
       color={indicatorColor}
-      role="treeitem"
+      indicatorSize={iconSize}
       onBlur={handleBlur}
       onFocus={handleFocus}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       py="none"
+      role="treeitem"
       tabIndex={-1}
       {...indicatorDefaults}
       {...restProps}
