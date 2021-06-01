@@ -185,6 +185,8 @@ const TreeLayout: FC<TreeProps> = ({
     </Accordion>
   )
 
+  const treeIndicatorGap = 'xxsmall'
+
   return (
     <TreeContext.Provider
       value={{
@@ -207,7 +209,8 @@ const TreeLayout: FC<TreeProps> = ({
         hovered={hovered}
         icon={icon}
         iconGap={iconGap}
-        iconSize={iconSize}
+        indicatorGap={treeIndicatorGap}
+        indicatorSize={iconSize}
         labelBackgroundOnly={hasLabelBackgroundOnly}
         selected={selected}
       >
