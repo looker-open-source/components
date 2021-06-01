@@ -28,7 +28,7 @@ import React, { useState } from 'react'
 import { Add } from '@styled-icons/material/Add'
 import { Check } from '@styled-icons/material/Check'
 import { MultiFunctionButton } from './MultiFunctionButton'
-import { Button, ButtonTransparent, IconButton } from '.'
+import { Button, ButtonOutline, ButtonTransparent } from '.'
 
 export default {
   component: MultiFunctionButton,
@@ -65,14 +65,12 @@ export const ComponentSize = () => {
   }
   return (
     <MultiFunctionButton
-      alternate={
-        <Button color="critical" size="large">
-          This is a very large button
-        </Button>
-      }
+      alternate={<Button size="large">This is a very large button</Button>}
       swap={change}
     >
-      <IconButton onClick={handleSwap} icon={<Add />} label="label" />
+      <ButtonOutline onClick={handleSwap} iconBefore={<Add />}>
+        Test
+      </ButtonOutline>
     </MultiFunctionButton>
   )
 }
