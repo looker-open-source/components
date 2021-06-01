@@ -24,7 +24,13 @@
 
  */
 
-export * from './ModalHeaderCloseButton'
-export * from './ModalContent'
-export * from './ModalHeader'
-export * from './ModalFooter'
+import styled from 'styled-components'
+import { ModalContent, ModalContentProps } from '../../../Modal/ModalContent'
+
+export type DialogContentProps = ModalContentProps
+
+export const DialogContent = styled(ModalContent).attrs(
+  ({ px = 'xlarge' }) => ({
+    px,
+  })
+)<DialogContentProps>``

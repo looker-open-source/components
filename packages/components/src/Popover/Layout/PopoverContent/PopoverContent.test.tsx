@@ -24,7 +24,15 @@
 
  */
 
-export * from './ModalHeaderCloseButton'
-export * from './ModalContent'
-export * from './ModalHeader'
-export * from './ModalFooter'
+import 'jest-styled-components'
+import React from 'react'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
+import { Basic } from './PopoverContent.story'
+
+describe('PopoverHeader', () => {
+  test('Close visible by default', () => {
+    renderWithTheme(<Basic />)
+    expect(screen.queryByText('Content Text')).toBeInTheDocument()
+  })
+})

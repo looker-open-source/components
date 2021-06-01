@@ -24,7 +24,30 @@
 
  */
 
-export * from './ModalHeaderCloseButton'
-export * from './ModalContent'
-export * from './ModalHeader'
-export * from './ModalFooter'
+import React from 'react'
+import { Story } from '@storybook/react/types-6-0'
+import { Box, Paragraph } from '../../..'
+import { DialogContent, DialogContentProps } from './DialogContent'
+
+const Template: Story<DialogContentProps> = (args) => (
+  <DialogContent {...args} />
+)
+
+export const Basic = Template.bind({})
+Basic.args = {
+  children: <Box height="2rem" bg="rebeccapurple" />,
+}
+
+export const Overflow = () => (
+  <Box height="10rem" display="flex" bg="white" p="large">
+    <DialogContent>
+      <Paragraph>Scroll down here...</Paragraph>
+      <Box height="12rem" bg="rebeccapurple" />
+    </DialogContent>
+  </Box>
+)
+
+export default {
+  component: DialogContent,
+  title: 'DialogContent',
+}

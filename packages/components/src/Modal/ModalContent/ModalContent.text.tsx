@@ -24,10 +24,12 @@
 
  */
 
+/* eslint-disable i18next/no-literal-string */
+
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { screen } from '@testing-library/react'
-import { DialogContent } from './DialogContent'
+import { ModalContent } from './ModalContent'
 
 const originalScrollHeight = Object.getOwnPropertyDescriptor(
   HTMLElement.prototype,
@@ -57,20 +59,20 @@ afterAll(() => {
 
 describe('DialogContent', () => {
   test('basic', () => {
-    renderWithTheme(<DialogContent>Stuff</DialogContent>)
+    renderWithTheme(<ModalContent>Stuff</ModalContent>)
     expect(screen.getByText('Stuff')).toBeInTheDocument()
   })
 
   test('hasHeader & hasFooter', () => {
     renderWithTheme(
-      <DialogContent hasHeader hasFooter>
+      <ModalContent hasHeader hasFooter>
         Stuff
-      </DialogContent>
+      </ModalContent>
     )
     expect(screen.getByText('Stuff')).toBeInTheDocument()
   })
 
-  test('content does not have a box shadow when content does not overflow', () => {
+  test('has no box shadow when it does not overflow', () => {
     Object.defineProperty(HTMLElement.prototype, 'scrollHeight', {
       configurable: true,
       value: 0,
@@ -80,19 +82,17 @@ describe('DialogContent', () => {
       value: 500,
     })
     renderWithTheme(
-      <DialogContent hasHeader hasFooter>
+      <ModalContent hasHeader hasFooter>
         Stuff
-      </DialogContent>
+      </ModalContent>
     )
 
     expect(
-      getComputedStyle(screen.getByTestId('dialog-content')).getPropertyValue(
-        'box-shadow'
-      )
+      getComputedStyle(screen.getByText('Stuff')).getPropertyValue('box-shadow')
     ).toEqual('')
   })
 
-  test('content has a box shadow when content overflows', () => {
+  test('has a box shadow when it overflows', () => {
     Object.defineProperty(HTMLElement.prototype, 'scrollHeight', {
       configurable: true,
       value: 500,
@@ -104,15 +104,13 @@ describe('DialogContent', () => {
     })
 
     renderWithTheme(
-      <DialogContent hasHeader hasFooter>
+      <ModalContent hasHeader hasFooter>
         Stuff
-      </DialogContent>
+      </ModalContent>
     )
 
     expect(
-      getComputedStyle(screen.getByTestId('dialog-content')).getPropertyValue(
-        'box-shadow'
-      )
+      getComputedStyle(screen.getByText('Stuff')).getPropertyValue('box-shadow')
     ).toEqual('inset 0 -4px 4px -4px #DEE1E5')
   })
 })

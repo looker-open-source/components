@@ -36,27 +36,28 @@ import {
 import React, { FC, useRef, useState, useEffect } from 'react'
 import styled, { css } from 'styled-components'
 import { useResize } from '../../utils'
+import { SpaceHelperProps } from '../../Layout/Space'
 
-interface DialogStyleProps
+interface ModalStyleProps
   extends LayoutProps,
     CompatibleHTMLProps<HTMLDivElement> {}
 
-export interface DialogContentProps extends DialogStyleProps {
+export interface ModalContentProps extends ModalStyleProps, SpaceHelperProps {
   /**
-   * If the Dialog does not have a footer use this property to manually render padding
-   * at the bottom of the DialogContent. (`hasFooter={false}`)
+   * If the Modal does not have a footer use this property to manually render padding
+   * at the bottom of the ModalContent. (`hasFooter={false}`)
    * @default true
    */
   hasFooter?: boolean
   /**
-   * If the Dialog does not have a header use this property to manually render padding
-   * at the top of the DialogContent. (`hasHeader={false}`)
+   * If the Modal does not have a header use this property to manually render padding
+   * at the top of the ModalContent. (`hasHeader={false}`)
    * @default true
    */
   hasHeader?: boolean
 }
 
-export const DialogContent: FC<DialogContentProps> = ({
+export const ModalContent: FC<ModalContentProps> = ({
   children,
   className,
   hasFooter,
@@ -81,34 +82,29 @@ export const DialogContent: FC<DialogContentProps> = ({
       setHasOverflow(container.offsetHeight < container.scrollHeight)
     }
   }, [height])
-
   return (
-    <InnerDialogContent
+    <InnerModalContent
       hasOverflow={hasOverflow}
       ref={internalRef}
-      px={['medium', 'xlarge']}
       pb={hasOverflow || !!hasFooter ? 'large' : 'xxxsmall'}
       pt={hasOverflow || !!hasHeader ? 'large' : 'xxxsmall'}
       {...pickStyledProps(props)}
-      data-testid="dialog-content"
     >
       {children}
-    </InnerDialogContent>
+    </InnerModalContent>
   )
 }
 
-interface InnerDialogContentProps extends DialogStyleProps, PaddingProps {
+interface InnerModalContentProps extends ModalStyleProps, PaddingProps {
   hasOverflow: boolean
 }
 
-const InnerDialogContent = styled.div<InnerDialogContentProps>`
+const InnerModalContent = styled.div<InnerModalContentProps>`
   ${reset}
   ${layout}
   ${padding}
-
   flex: 1 1 auto;
   overflow: auto;
-
   ${({ hasOverflow, theme }) =>
     hasOverflow &&
     css`

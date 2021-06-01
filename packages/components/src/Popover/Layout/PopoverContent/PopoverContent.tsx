@@ -24,7 +24,19 @@
 
  */
 
-export * from './ModalHeaderCloseButton'
-export * from './ModalContent'
-export * from './ModalHeader'
-export * from './ModalFooter'
+import React, { FC } from 'react'
+import styled from 'styled-components'
+import { ModalContent, ModalContentProps } from '../../../Modal/ModalContent'
+
+const PopoverContentLayout: FC<ModalContentProps> = ({
+  children,
+  ...props
+}) => {
+  return (
+    <ModalContent pb="medium" pt="xsmall" px="large" {...props}>
+      {children}
+    </ModalContent>
+  )
+}
+
+export const PopoverContent = styled(PopoverContentLayout)<ModalContentProps>``
