@@ -24,33 +24,31 @@
 
  */
 
-import 'jest-styled-components'
-import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { screen } from '@testing-library/react'
-import { DialogHeader } from './DialogHeader'
+import { useTranslation } from 'react-i18next'
+import React, { FC, useContext } from 'react'
+import { Close } from '@styled-icons/material/Close'
+import styled from 'styled-components'
+import { IconButton, IconButtonProps } from '../Button'
+import { DialogContext } from '../Dialog'
 
-describe('DialogHeader', () => {
-  test('Passes through DOM props', async () => {
-    renderWithTheme(
-      <DialogHeader aria-label="ARIA label">Heading</DialogHeader>
-    )
-    expect(await screen.findByLabelText('ARIA label')).toBeTruthy()
-  })
+export type ModalHeaderCloseButtonProps = Pick<IconButtonProps, 'size'>
 
-  test('Close visible by default', async () => {
-    renderWithTheme(<DialogHeader>Heading</DialogHeader>)
-    expect(await screen.findByText('Close')).toBeTruthy()
-  })
+const ModalHeaderCloseButtonLayout: FC<ModalHeaderCloseButtonProps> = ({
+  size = 'medium',
+}) => {
+  const { t } = useTranslation('ModalHeaderCloseButton')
+  const { closeModal, id } = useContext(DialogContext)
+  return (
+    <IconButton
+      id={id ? `${id}-iconButton` : undefined}
+      size={size}
+      onClick={closeModal}
+      label={t('Close')}
+      icon={<Close />}
+    />
+  )
+}
 
-  test(`detail`, async () => {
-    renderWithTheme(<DialogHeader detail="Hello world">Header</DialogHeader>)
-    expect(await screen.findByText('Hello world')).toBeTruthy()
-    expect(screen.queryByLabelText('Close')).not.toBeInTheDocument()
-  })
-
-  test('hideClose', () => {
-    renderWithTheme(<DialogHeader hideClose>Heading</DialogHeader>)
-    expect(screen.queryByLabelText('Close')).not.toBeInTheDocument()
-  })
-})
+export const ModalHeaderCloseButton = styled(
+  ModalHeaderCloseButtonLayout
+)<ModalHeaderCloseButtonProps>``

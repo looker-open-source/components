@@ -24,5 +24,53 @@
 
  */
 
-export * from './PopoverHeader'
-export * from './PopoverFooter'
+import React, { FC, ReactChild } from 'react'
+import styled from 'styled-components'
+import {
+  ModalHeaderCloseButton,
+  ModalHeader,
+  ModalHeaderProps,
+} from '../../../Modal'
+
+type WithDetail = {
+  detail?: ModalHeaderProps['detail']
+  hideClose?: never
+}
+
+type WithHideClose = {
+  detail?: never
+  /**
+   * Don't include the "Close" option
+   * @default false
+   */
+  hideClose?: boolean
+}
+
+type DetailOptions = WithDetail | WithHideClose
+
+export type PopoverHeaderProps = DetailOptions & {
+  children: ReactChild
+}
+
+const PopoverHeaderLayout: FC<PopoverHeaderProps> = ({
+  children,
+  hideClose = false,
+  detail,
+  ...props
+}) => {
+  return (
+    <ModalHeader
+      detail={detail || (!hideClose && <ModalHeaderCloseButton size="small" />)}
+      fontSize="small"
+      fontWeight="medium"
+      pl="large"
+      pr="medium"
+      py="small"
+      {...props}
+    >
+      {children}
+    </ModalHeader>
+  )
+}
+
+export const PopoverHeader = styled(PopoverHeaderLayout)<ModalHeaderProps>``

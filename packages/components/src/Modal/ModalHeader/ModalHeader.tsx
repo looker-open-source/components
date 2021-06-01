@@ -24,8 +24,7 @@
 
  */
 
-import { useTranslation } from 'react-i18next'
-import React, { FC, ReactNode, useContext } from 'react'
+import React, { FC, ReactChild, ReactNode } from 'react'
 import styled from 'styled-components'
 import {
   CompatibleHTMLProps,
@@ -36,70 +35,40 @@ import {
   FontSizeProps,
   FontWeightProps,
 } from '@looker/design-tokens'
-import { Close } from '@styled-icons/material/Close'
-import { IconButton } from '../../Button'
 import { Heading } from '../../Text'
-import { DialogContext } from '../DialogContext'
 
-export interface DialogHeaderProps
-  extends SpaceProps,
-    CompatibleHTMLProps<HTMLElement>,
-    FontSizeProps,
-    FontWeightProps {
-  children: ReactNode
-  /**
-   * Don't include the "Close" option
-   * @default false
-   */
-  hideClose?: boolean
-  /**
-   * Replaces the built-in `IconButton` (generally used for close) with an arbitrary ReactNode
-   */
-  detail?: ReactNode
-}
+export type ModalHeaderProps = SpaceProps &
+  CompatibleHTMLProps<HTMLDivElement> &
+  FontSizeProps &
+  FontWeightProps & {
+    children: ReactChild
+    /**
+     * Usually used as a closing button this element is displayed on the right side of the component
+     */
+    detail?: ReactNode | string
+  }
 
-const DialogHeaderLayout: FC<DialogHeaderProps> = ({
+const ModalHeaderLayout: FC<ModalHeaderProps> = ({
   children,
-  hideClose,
   detail,
   fontSize,
   fontWeight = 'semiBold',
+  id,
   ...props
 }) => {
-  const { t } = useTranslation('DialogHeader')
-  const { closeModal, id: dialogId } = useContext(DialogContext)
-  const { id } = props
-  const headingId = dialogId ? `${dialogId}-heading` : undefined
-
   return (
-    <header aria-labelledby={headingId} {...omitStyledProps(props)}>
+    <header aria-labelledby={id} {...omitStyledProps(props)}>
       <Heading
-        id={headingId}
         as="h3"
-        mr="xlarge"
         fontSize={fontSize}
         fontWeight={fontWeight}
-        style={{ gridArea: 'text' }}
+        id={id}
+        mr="xlarge"
         truncate
       >
         {children}
       </Heading>
-      {detail ? (
-        <Detail>{detail}</Detail>
-      ) : (
-        !hideClose && (
-          <Detail>
-            <IconButton
-              id={id ? `${id}-iconButton` : undefined}
-              tabIndex={-1}
-              size="medium"
-              onClick={closeModal}
-              label={t('Close')}
-              icon={<Close />}
-            />
-          </Detail>
-        )
-      )}
+      {detail && <Detail>{detail}</Detail>}
     </header>
   )
 }
@@ -110,13 +79,7 @@ const Detail = styled.div`
   margin-top: -${({ theme }) => theme.space.xsmall};
 `
 
-export const DialogHeader = styled(DialogHeaderLayout).attrs(
-  ({ p = ['medium', 'large'], pr = 'medium', px = ['medium', 'xlarge'] }) => ({
-    p,
-    pr,
-    px,
-  })
-)`
+export const ModalHeader = styled(ModalHeaderLayout)<ModalHeaderProps>`
   ${reset}
   ${space}
   align-items: center;

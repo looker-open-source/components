@@ -24,4 +24,6 @@
 
  */
 
+export * from './ModalHeaderCloseButton'
+export * from './ModalHeader'
 export * from './ModalFooter'

@@ -24,5 +24,14 @@
 
  */
 
-export * from './PopoverHeader'
-export * from './PopoverFooter'
+import React from 'react'
+import { DialogHeader } from '@looker/components/src'
+
+export default {
+  component: DialogHeader,
+  title: 'DialogHeader',
+}
+
+export const Basic = () => <DialogHeader>Heading</DialogHeader>
+
+export const HideClose = () => <DialogHeader hideClose>Heading</DialogHeader>

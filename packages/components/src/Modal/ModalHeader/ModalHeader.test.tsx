@@ -24,5 +24,27 @@
 
  */
 
-export * from './PopoverHeader'
-export * from './PopoverFooter'
+import 'jest-styled-components'
+import React from 'react'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
+import { ModalHeader } from './ModalHeader'
+
+describe('ModalHeader', () => {
+  test('basic', () => {
+    renderWithTheme(<ModalHeader>Heading</ModalHeader>)
+    expect(screen.queryByText('Heading')).toBeInTheDocument()
+  })
+
+  test('has aria-label', async () => {
+    renderWithTheme(<ModalHeader aria-label="ARIA label">Heading</ModalHeader>)
+    expect(await screen.findByLabelText('ARIA label')).toBeTruthy()
+  })
+
+  test(`detail as ReactNode`, () => {
+    renderWithTheme(
+      <ModalHeader detail={<button>x</button>}>Header</ModalHeader>
+    )
+    expect(screen.queryByText('x')).toBeTruthy()
+  })
+})

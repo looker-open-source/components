@@ -24,5 +24,35 @@
 
  */
 
-export * from './PopoverHeader'
-export * from './PopoverFooter'
+import React from 'react'
+import { PopoverHeader } from './PopoverHeader'
+
+export default {
+  component: PopoverHeader,
+  title: 'PopoverHeader',
+}
+
+export const Basic = () => <PopoverHeader>Header Text</PopoverHeader>
+Basic.parameters = {
+  storyshots: {
+    disable: true,
+  },
+}
+
+export const HideClose = () => (
+  <PopoverHeader hideClose>Header Text</PopoverHeader>
+)
+HideClose.parameters = {
+  storyshots: {
+    disable: true,
+  },
+}
+
+export const Detail = () => (
+  <PopoverHeader detail={<button>close</button>}>Header Text</PopoverHeader>
+)
+Detail.parameters = {
+  storyshots: {
+    disable: true,
+  },
+}
