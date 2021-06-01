@@ -25,9 +25,8 @@
  */
 
 import { PrismTheme } from 'prism-react-renderer'
-import { palette, theme } from '@looker/design-tokens'
-
-const {
+import { theme } from '@looker/design-tokens'
+import {
   blue200,
   blue400,
   green300,
@@ -35,7 +34,8 @@ const {
   red300,
   yellow200,
   yellow300,
-} = palette
+} from '@looker/design-tokens/src/legacy/palette'
+
 const { inverse, text1 } = theme.colors
 
 export const prismTheme: PrismTheme = {
