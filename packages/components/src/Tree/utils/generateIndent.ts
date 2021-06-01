@@ -32,6 +32,7 @@ export interface GenerateIndentProps {
   depth: number
   forceLabelPadding?: boolean
   icon?: IconType
+  iconGap: SpacingSizes
   indicatorGap: SpacingSizes
   indicatorSize: IconSize
   theme: Theme
@@ -41,6 +42,7 @@ export const generateIndent = ({
   depth,
   forceLabelPadding,
   icon,
+  iconGap,
   indicatorGap,
   indicatorSize,
   theme,
@@ -50,7 +52,7 @@ export const generateIndent = ({
   const renderedDepth = forceLabelPadding ? depth - 1 : depth
   const forceLabelPaddingSpacer =
     forceLabelPadding && icon
-      ? `(${sizes[indicatorSize]} + ${space[indicatorGap]})`
+      ? `(${sizes[indicatorSize]} + ${space[iconGap]})`
       : '0px'
 
   const indentCalculation = `(${sizes[indicatorSize]} + ${space[indicatorGap]}) * ${renderedDepth} + ${forceLabelPaddingSpacer}`
