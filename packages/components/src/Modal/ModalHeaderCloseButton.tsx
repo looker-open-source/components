@@ -31,13 +31,7 @@ import styled from 'styled-components'
 import { IconButton, IconButtonProps } from '../Button'
 import { DialogContext } from '../Dialog'
 
-export interface ModalHeaderCloseButtonProps {
-  /**
-   * this will define the size of the button
-   * @default 'medium'
-   */
-  size?: IconButtonProps['size']
-}
+export type ModalHeaderCloseButtonProps = Pick<IconButtonProps, 'size'>
 
 const ModalHeaderCloseButtonLayout: FC<ModalHeaderCloseButtonProps> = ({
   size = 'medium',

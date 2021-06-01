@@ -24,7 +24,7 @@
 
  */
 
-import React, { FC } from 'react'
+import React, { FC, ReactChild } from 'react'
 import styled from 'styled-components'
 import {
   ModalHeaderCloseButton,
@@ -46,7 +46,11 @@ type WithHideClose = {
   hideClose?: boolean
 }
 
-export type PopoverHeaderProps = WithDetail | WithHideClose
+type DetailOptions = WithDetail | WithHideClose
+
+export type PopoverHeaderProps = DetailOptions & {
+  children: ReactChild
+}
 
 const PopoverHeaderLayout: FC<PopoverHeaderProps> = ({
   children,

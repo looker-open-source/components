@@ -63,10 +63,16 @@ export interface DialogLayoutProps {
   isLoading?: boolean
 }
 
-const DialogLayoutHeader: FC<{
-  hideClose: boolean
-  detail: DialogHeaderProps['detail']
-}> = ({ detail, hideClose, children }) => {
+type DialogLayoutHeaderProps = Pick<
+  DialogHeaderProps,
+  'children' | 'detail' | 'hideClose'
+>
+
+const DialogLayoutHeader: FC<DialogLayoutHeaderProps> = ({
+  children,
+  detail,
+  hideClose,
+}) => {
   if (hideClose) {
     return <DialogHeader hideClose>{children}</DialogHeader>
   } else if (detail) {
