@@ -60,8 +60,8 @@ export interface ModalContentProps extends ModalStyleProps, SpaceHelperProps {
 export const ModalContent: FC<ModalContentProps> = ({
   children,
   className,
-  hasFooter = true,
-  hasHeader = true,
+  hasFooter,
+  hasHeader,
   ...props
 }) => {
   const internalRef = useRef<HTMLDivElement>(null)
