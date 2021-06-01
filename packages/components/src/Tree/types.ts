@@ -74,8 +74,16 @@ export type TreeProps = Omit<
      * If true, child `TreeItem` elements will receive additional indent padding to align parent `Tree` (with an optional `icon` prop) and child `TreeItem` labels.
      * If "no-icon", child `TreeItem` elements will receive additional indent padding to align parent `Tree` (without an optional `icon` prop) and child `TreeItem` labels.
      * @default false
+     * @todo - Remove in 2.x release
+     * @deprecated Use `iconSpacing` prop instead
      */
     forceLabelPadding?: boolean
+    /**
+     * If true, the `Tree`'s label will align itself with a parent Tree's label
+     * This should only be used when a parent `Tree` has an icon
+     * @default false
+     */
+    iconSpacing?: boolean
     /**
      * Use itemRole to set the type of wrapper element for the label
      * Note: Unlike TreeItem, 'button' is not an allowed value since click event handlers are passed to the nested <AccordionDisclosure> div

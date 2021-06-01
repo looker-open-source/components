@@ -24,32 +24,18 @@
 
  */
 
-import React, { FC } from 'react'
-import { List } from '../List'
-import { DensityRamp } from '../List/types'
-import { listItemDimensions } from '../List/utils'
-import { TreeContext } from './TreeContext'
-import { TreeStyle } from './TreeStyle'
+import React from 'react'
+import { Folder } from '@styled-icons/material/Folder'
+import { Tree, TreeCollection, TreeItem } from '..'
 
-/**
- *  Wrapper component for Tree and TreeItem elements that doesn't render an actual Tree
- *  Note: Used specifically for the Field Picker UI, which uses Accordions at the top-level
- * */
-export const TreeArtificial: FC<{
-  density?: DensityRamp
-}> = ({ children, density = 0 }) => {
-  const { iconGap, iconSize } = listItemDimensions(density)
-  return (
-    <TreeStyle
-      depth={-1}
-      iconGap={iconGap}
-      indicatorGap={iconGap}
-      indicatorSize={iconSize}
-      dividers
-    >
-      <TreeContext.Provider value={{ density, depth: 0 }}>
-        <List>{children}</List>
-      </TreeContext.Provider>
-    </TreeStyle>
-  )
-}
+export const IconSpacing = () => (
+  <TreeCollection>
+    <Tree icon={<Folder />} label="Folders" defaultOpen>
+      <Tree label="With Icon" defaultOpen iconSpacing>
+        <TreeItem>Performance</TreeItem>
+        <TreeItem>Sales</TreeItem>
+        <TreeItem>Metrics</TreeItem>
+      </Tree>
+    </Tree>
+  </TreeCollection>
+)

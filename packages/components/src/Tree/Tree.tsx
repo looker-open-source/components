@@ -53,6 +53,7 @@ const TreeLayout: FC<TreeProps> = ({
   children,
   className,
   dividers,
+  iconSpacing,
   forceLabelPadding,
   itemRole,
   label: propsLabel,
@@ -162,6 +163,8 @@ const TreeLayout: FC<TreeProps> = ({
   const indicatorColor = disabled ? 'text1' : 'text5'
   const innerAccordion = (
     <Accordion
+      {...indicatorDefaults}
+      {...restProps}
       renderAsLi
       aria-selected={selected}
       content={
@@ -170,6 +173,7 @@ const TreeLayout: FC<TreeProps> = ({
         </List>
       }
       color={indicatorColor}
+      indicatorGap={iconSpacing ? iconGap : indicatorDefaults.indicatorGap}
       indicatorSize={iconSize}
       onBlur={handleBlur}
       onFocus={handleFocus}
@@ -178,8 +182,6 @@ const TreeLayout: FC<TreeProps> = ({
       py="none"
       role="treeitem"
       tabIndex={-1}
-      {...indicatorDefaults}
-      {...restProps}
     >
       {label}
     </Accordion>
@@ -205,6 +207,7 @@ const TreeLayout: FC<TreeProps> = ({
         depth={depth}
         disabled={disabled}
         dividers={dividers}
+        iconSpacing={iconSpacing}
         forceLabelPadding={forceLabelPadding}
         hovered={hovered}
         icon={icon}

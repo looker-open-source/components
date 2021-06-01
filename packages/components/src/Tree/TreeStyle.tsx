@@ -53,6 +53,7 @@ type TreeStyleProps = ListItemStatefulProps &
     className?: string
     depth: number
     dividers?: boolean
+    iconSpacing?: boolean
     forceLabelPadding?: boolean
     icon?: IconType
     iconGap: SpacingSizes
@@ -95,6 +96,7 @@ interface TreeItemIndentProps extends GenerateIndentProps {
 
 const treeItemIndent = ({
   depth,
+  iconSpacing,
   forceLabelPadding,
   icon,
   iconGap,
@@ -113,6 +115,7 @@ const treeItemIndent = ({
       forceLabelPadding,
       icon,
       iconGap,
+      iconSpacing,
       indicatorGap,
       indicatorSize,
       theme,
@@ -126,6 +129,7 @@ const treeItemIndent = ({
       forceLabelPadding,
       icon,
       iconGap,
+      iconSpacing,
       indicatorGap,
       indicatorSize,
       theme,
@@ -211,6 +215,7 @@ export const TreeStyle = styled(TreeStyleLayout)`
     > ${ListItem} {
       ${({
         depth,
+        iconSpacing,
         forceLabelPadding,
         icon,
         iconGap,
@@ -224,6 +229,7 @@ export const TreeStyle = styled(TreeStyleLayout)`
           forceLabelPadding,
           icon,
           iconGap,
+          iconSpacing,
           indicatorGap,
           indicatorSize,
           labelBackgroundOnly: !!labelBackgroundOnly,
@@ -234,6 +240,7 @@ export const TreeStyle = styled(TreeStyleLayout)`
     > ${TreeBranch} {
       ${({
         depth,
+        iconSpacing,
         forceLabelPadding,
         icon,
         iconGap,
@@ -246,6 +253,7 @@ export const TreeStyle = styled(TreeStyleLayout)`
           forceLabelPadding,
           icon,
           iconGap,
+          iconSpacing,
           indicatorGap,
           indicatorSize,
           theme,
@@ -260,6 +268,7 @@ export const TreeStyle = styled(TreeStyleLayout)`
     > ${ListItem} {
       ${({
         depth,
+        iconSpacing,
         forceLabelPadding,
         icon,
         iconGap,
@@ -273,6 +282,7 @@ export const TreeStyle = styled(TreeStyleLayout)`
           forceLabelPadding,
           icon,
           iconGap,
+          iconSpacing,
           indicatorGap,
           indicatorSize,
           labelBackgroundOnly: !!labelBackgroundOnly,
@@ -283,6 +293,7 @@ export const TreeStyle = styled(TreeStyleLayout)`
     > ${TreeBranch} {
       ${({
         depth,
+        iconSpacing,
         forceLabelPadding,
         icon,
         iconGap,
@@ -295,6 +306,7 @@ export const TreeStyle = styled(TreeStyleLayout)`
           forceLabelPadding,
           icon,
           iconGap,
+          iconSpacing,
           indicatorGap,
           indicatorSize,
           theme,
