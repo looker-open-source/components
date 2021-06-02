@@ -26,16 +26,15 @@
 
 import {
   CompatibleHTMLProps,
-  PaddingProps,
   padding,
   reset,
   LayoutProps,
   layout,
   pickStyledProps,
 } from '@looker/design-tokens'
-import React, { FC, useRef, useState, useEffect } from 'react'
-import styled, { css } from 'styled-components'
-import { useResize } from '../../utils'
+import React, { forwardRef, Ref } from 'react'
+import styled from 'styled-components'
+import { OverflowShadow, useOverflow } from '../../utils'
 import { SpaceHelperProps } from '../../Layout/Space'
 
 interface ModalStyleProps
@@ -57,59 +56,33 @@ export interface ModalContentProps extends ModalStyleProps, SpaceHelperProps {
   hasHeader?: boolean
 }
 
-export const ModalContent: FC<ModalContentProps> = ({
-  children,
-  className,
-  hasFooter,
-  hasHeader,
-  ...props
-}) => {
-  const internalRef = useRef<HTMLDivElement>(null)
-  const [hasOverflow, setHasOverflow] = useState(false)
-  const [height, setHeight] = useState(0)
+const ModalContentLayout = forwardRef(
+  (
+    { children, hasFooter, hasHeader, ...props }: ModalContentProps,
+    forwardedRef: Ref<HTMLDivElement>
+  ) => {
+    const [hasOverflow, ref] = useOverflow(forwardedRef)
 
-  const handleResize = () => {
-    if (internalRef.current) {
-      setHeight(internalRef.current.offsetHeight)
-    }
+    return (
+      <OverflowShadow
+        hasOverflow={hasOverflow}
+        ref={ref}
+        pt={hasOverflow || !!hasHeader ? 'large' : 'xxxsmall'}
+        pb={hasOverflow || !!hasHeader ? 'large' : 'xxxsmall'}
+        {...pickStyledProps(props)}
+      >
+        {children}
+      </OverflowShadow>
+    )
   }
+)
 
-  useResize(internalRef.current, handleResize)
+ModalContentLayout.displayName = 'ModalContentLayout'
 
-  useEffect(() => {
-    const container = internalRef.current
-    if (container) {
-      setHasOverflow(container.offsetHeight < container.scrollHeight)
-    }
-  }, [height])
-  return (
-    <InnerModalContent
-      hasOverflow={hasOverflow}
-      ref={internalRef}
-      pb={hasOverflow || !!hasFooter ? 'large' : 'xxxsmall'}
-      pt={hasOverflow || !!hasHeader ? 'large' : 'xxxsmall'}
-      {...pickStyledProps(props)}
-    >
-      {children}
-    </InnerModalContent>
-  )
-}
-
-interface InnerModalContentProps extends ModalStyleProps, PaddingProps {
-  hasOverflow: boolean
-}
-
-const InnerModalContent = styled.div<InnerModalContentProps>`
+export const ModalContent = styled(ModalContentLayout)`
   ${reset}
   ${layout}
   ${padding}
   flex: 1 1 auto;
   overflow: auto;
-  ${({ hasOverflow, theme }) =>
-    hasOverflow &&
-    css`
-      border-bottom: 1px solid ${theme.colors.ui2};
-      border-top: 1px solid ${theme.colors.ui2};
-      box-shadow: inset 0 -4px 4px -4px ${theme.colors.ui2};
-    `}
 `

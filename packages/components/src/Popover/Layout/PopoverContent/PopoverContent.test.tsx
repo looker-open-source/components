@@ -30,8 +30,8 @@ import { renderWithTheme } from '@looker/components-test-utils'
 import { screen } from '@testing-library/react'
 import { Basic } from './PopoverContent.story'
 
-describe('PopoverHeader', () => {
-  test('Close visible by default', () => {
+describe('PopoverContent', () => {
+  test('Basic', () => {
     renderWithTheme(<Basic />)
     expect(screen.queryByText('Content Text')).toBeInTheDocument()
   })

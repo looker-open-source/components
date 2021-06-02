@@ -26,10 +26,11 @@
 
 import { useEffect, useState, Ref } from 'react'
 import styled, { css } from 'styled-components'
+import { PaddingProps } from '@looker/design-tokens'
 import { useResize } from './useResize'
 import { useCallbackRef } from './useCallbackRef'
 
-interface UseOverflowProps {
+interface UseOverflowProps extends PaddingProps {
   hasOverflow: boolean
 }
 

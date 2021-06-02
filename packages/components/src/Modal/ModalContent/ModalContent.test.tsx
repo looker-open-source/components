@@ -57,7 +57,7 @@ afterAll(() => {
     )
 })
 
-describe('DialogContent', () => {
+describe('ModalContent', () => {
   test('basic', () => {
     renderWithTheme(<ModalContent>Stuff</ModalContent>)
     expect(screen.getByText('Stuff')).toBeInTheDocument()
@@ -111,6 +111,6 @@ describe('DialogContent', () => {
 
     expect(
       getComputedStyle(screen.getByText('Stuff')).getPropertyValue('box-shadow')
-    ).toEqual('inset 0 -4px 4px -4px #DEE1E5')
+    ).toEqual('0 -4px 4px -4px #DEE1E5,inset 0 -4px 4px -4px #DEE1E5')
   })
 })

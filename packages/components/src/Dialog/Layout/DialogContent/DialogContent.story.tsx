@@ -25,18 +25,14 @@
  */
 
 import React from 'react'
-import { Story } from '@storybook/react/types-6-0'
 import { Box, Paragraph } from '../../..'
-import { DialogContent, DialogContentProps } from './DialogContent'
+import { DialogContent } from './DialogContent'
 
-const Template: Story<DialogContentProps> = (args) => (
-  <DialogContent {...args} />
+export const Basic = () => (
+  <DialogContent>
+    <Box height="2rem" bg="rebeccapurple" />
+  </DialogContent>
 )
-
-export const Basic = Template.bind({})
-Basic.args = {
-  children: <Box height="2rem" bg="rebeccapurple" />,
-}
 
 export const Overflow = () => (
   <Box height="10rem" display="flex" bg="white" p="large">
