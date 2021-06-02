@@ -25,7 +25,6 @@
  */
 
 export * from './Tree'
-export * from './TreeArtificial'
 export * from './TreeItem'
 export * from './TreeBranch'
 export * from './TreeCollection'

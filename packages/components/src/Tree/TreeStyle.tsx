@@ -243,49 +243,4 @@ export const TreeStyle = styled(TreeStyleLayout)`
         })}
     }
   }
-
-  /**
-    These selectors are to support TreeArtificial
-   */
-  > ${List} {
-    > ${ListItem} {
-      ${({
-        assumeIconAlignment,
-        depth,
-        iconGap,
-        indicatorGap,
-        indicatorSize,
-        labelBackgroundOnly,
-        theme,
-      }) =>
-        treeItemIndent({
-          assumeIconAlignment,
-          depth,
-          iconGap,
-          indicatorGap,
-          indicatorSize,
-          labelBackgroundOnly: !!labelBackgroundOnly,
-          theme,
-        })}
-    }
-
-    > ${TreeBranch} {
-      ${({
-        assumeIconAlignment,
-        depth,
-        iconGap,
-        indicatorGap,
-        indicatorSize,
-        theme,
-      }) =>
-        generateIndent({
-          assumeIconAlignment,
-          depth: depth + 2,
-          iconGap,
-          indicatorGap,
-          indicatorSize,
-          theme,
-        })}
-    }
-  }
 `
