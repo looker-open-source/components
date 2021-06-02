@@ -72,15 +72,38 @@ describe('ModalContent', () => {
     expect(screen.getByText('Stuff')).toBeInTheDocument()
   })
 
+  xtest('display correct padding if hasHeader & hasFooter are true', () => {
+    renderWithTheme(
+      <ModalContent hasHeader={true} hasFooter={true}>
+        Stuff
+      </ModalContent>
+    )
+
+    expect(screen.getByText('Stuff')).toHaveStyle('padding-bottom: 1.25rem;')
+    expect(screen.getByText('Stuff')).toHaveStyle('padding-top: 1.25rem;')
+  })
+
+  xtest('display correct padding if hasHeader & hasFooter are false', () => {
+    renderWithTheme(
+      <ModalContent hasHeader={false} hasFooter={false}>
+        Stuff
+      </ModalContent>
+    )
+    expect(screen.getByText('Stuff')).toHaveStyle('padding-bottom: 0.125rem;')
+    expect(screen.getByText('Stuff')).toHaveStyle('padding-top: 0.125rem;')
+  })
+
   test('has no box shadow when it does not overflow', () => {
     Object.defineProperty(HTMLElement.prototype, 'scrollHeight', {
       configurable: true,
       value: 0,
     })
+
     Object.defineProperty(HTMLElement.prototype, 'offsetHeight', {
       configurable: true,
       value: 500,
     })
+
     renderWithTheme(
       <ModalContent hasHeader hasFooter>
         Stuff

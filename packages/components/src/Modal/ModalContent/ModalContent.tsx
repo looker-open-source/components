@@ -54,21 +54,34 @@ export interface ModalContentProps extends ModalStyleProps, SpaceHelperProps {
    * @default true
    */
   hasHeader?: boolean
+  /**
+   * this is an internal prop to display correct padding numbers.
+   */
+  isPopover?: boolean
 }
 
 const ModalContentLayout = forwardRef(
   (
-    { children, hasFooter, hasHeader, ...props }: ModalContentProps,
+    {
+      children,
+      className,
+      hasFooter,
+      hasHeader,
+      isPopover = false,
+      ...props
+    }: ModalContentProps,
     forwardedRef: Ref<HTMLDivElement>
   ) => {
     const [hasOverflow, ref] = useOverflow(forwardedRef)
+    const pbValue = isPopover ? 'medium' : 'large'
+    const ptValue = isPopover ? 'xsmall' : 'xsmall'
 
     return (
       <OverflowShadow
         hasOverflow={hasOverflow}
         ref={ref}
-        pt={hasOverflow || !!hasHeader ? 'large' : 'xxxsmall'}
-        pb={hasOverflow || !!hasHeader ? 'large' : 'xxxsmall'}
+        pb={hasOverflow || !!hasHeader ? pbValue : 'xxxsmall'}
+        pt={hasOverflow || !!hasHeader ? ptValue : 'xxxsmall'}
         {...pickStyledProps(props)}
       >
         {children}
@@ -79,7 +92,7 @@ const ModalContentLayout = forwardRef(
 
 ModalContentLayout.displayName = 'ModalContentLayout'
 
-export const ModalContent = styled(ModalContentLayout)`
+export const ModalContent = styled(ModalContentLayout)<ModalContentProps>`
   ${reset}
   ${layout}
   ${padding}

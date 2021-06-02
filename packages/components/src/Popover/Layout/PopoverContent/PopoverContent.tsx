@@ -33,7 +33,13 @@ const PopoverContentLayout: FC<ModalContentProps> = ({
   ...props
 }) => {
   return (
-    <ModalContent pb="medium" pt="xsmall" px="large" {...props}>
+    <ModalContent
+      pb="medium"
+      pt="xsmall"
+      px="large"
+      isPopover={true}
+      {...props}
+    >
       {children}
     </ModalContent>
   )
