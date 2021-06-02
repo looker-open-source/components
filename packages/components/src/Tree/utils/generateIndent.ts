@@ -26,24 +26,23 @@
 
 import { css } from 'styled-components'
 import { SpacingSizes, Theme } from '@looker/design-tokens'
-import { IconSize, IconType } from '../../Icon'
+import { IconSize } from '../../Icon'
 
 export interface GenerateIndentProps {
   depth: number
   iconSpacing?: boolean
   forceLabelPadding?: boolean
-  icon?: IconType
   iconGap: SpacingSizes
   indicatorGap: SpacingSizes
   indicatorSize: IconSize
   theme: Theme
 }
 
+// TODO 3.x: Deprecate forceLabelPadding as input
 export const generateIndent = ({
   depth,
   iconSpacing,
   forceLabelPadding,
-  icon,
   iconGap,
   indicatorGap,
   indicatorSize,
@@ -52,15 +51,12 @@ export const generateIndent = ({
   const { space, sizes } = theme
 
   const renderedDepth = forceLabelPadding || iconSpacing ? depth - 1 : depth
-  const forceLabelPaddingSpacer =
-    forceLabelPadding && icon
-      ? `(${sizes[indicatorSize]} + ${space[iconGap]})`
+  const iconSpacingSpacer =
+    forceLabelPadding || iconSpacing
+      ? `(${space[iconGap]} - ${space[indicatorGap]})`
       : '0px'
-  const iconSpacingSpacer = iconSpacing
-    ? `(${space[iconGap]} - ${space[indicatorGap]})`
-    : '0px'
 
-  const indentCalculation = `(${sizes[indicatorSize]} + ${space[indicatorGap]}) * ${renderedDepth} + ${forceLabelPaddingSpacer} + ${iconSpacingSpacer}`
+  const indentCalculation = `(${sizes[indicatorSize]} + ${space[indicatorGap]}) * ${renderedDepth} + ${iconSpacingSpacer}`
 
   return css`
     padding-left: calc(${indentCalculation});

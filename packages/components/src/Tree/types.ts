@@ -71,16 +71,18 @@ export type TreeProps = Omit<
      */
     dividers?: boolean
     /**
-     * If true, child `TreeItem` elements will receive additional indent padding to align parent `Tree` (with an optional `icon` prop) and child `TreeItem` labels.
-     * If "no-icon", child `TreeItem` elements will receive additional indent padding to align parent `Tree` (without an optional `icon` prop) and child `TreeItem` labels.
+     * If true, alignment will change in two ways:
+     * 1) The `Tree`'s label will align itself with a parent `Tree`'s label (Note: the parent should have an icon and the child should not)
+     * 2) The `Tree`'s child items will align their labels with the `Tree`'s label
      * @default false
-     * @todo - Remove in 2.x release
+     * @todo - Remove in 3.x release
      * @deprecated Use `iconSpacing` prop instead
      */
     forceLabelPadding?: boolean
     /**
-     * If true, the `Tree`'s label will align itself with a parent Tree's label
-     * This should only be used when a parent `Tree` has an icon
+     * If true, alignment will change in two ways:
+     * 1) The `Tree`'s label will align itself with a parent `Tree`'s label (Note: the parent should have an icon and the child should not)
+     * 2) The `Tree`'s child items will align their labels with the `Tree`'s label
      * @default false
      */
     iconSpacing?: boolean

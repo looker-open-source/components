@@ -24,23 +24,6 @@
 
  */
 
-import React from 'react'
-import { Folder } from '@styled-icons/material/Folder'
-import { Tree, TreeCollection, TreeItem } from '..'
+import { IconSpacing } from './IconSpacing.story'
 
-export const ForceLabelPadding = () => (
-  <TreeCollection>
-    <Tree icon={<Folder />} label="Folders" defaultOpen>
-      <Tree icon={<Folder />} label="With Icon" defaultOpen forceLabelPadding>
-        <TreeItem>Performance</TreeItem>
-        <TreeItem>Sales</TreeItem>
-        <TreeItem>Metrics</TreeItem>
-      </Tree>
-      <Tree label="Without Icon" defaultOpen forceLabelPadding>
-        <TreeItem>Performance</TreeItem>
-        <TreeItem>Sales</TreeItem>
-        <TreeItem>Metrics</TreeItem>
-      </Tree>
-    </Tree>
-  </TreeCollection>
-)
+export const ForceLabelPadding = IconSpacing

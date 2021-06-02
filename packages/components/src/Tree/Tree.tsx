@@ -214,7 +214,6 @@ const TreeLayout: FC<TreeProps> = ({
         iconSpacing={iconSpacing}
         forceLabelPadding={forceLabelPadding}
         hovered={hovered}
-        icon={icon}
         iconGap={iconGap}
         indicatorGap={defaultGap}
         indicatorSize={iconSize}
