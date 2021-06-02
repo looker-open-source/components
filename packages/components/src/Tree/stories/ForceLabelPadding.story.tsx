@@ -28,7 +28,7 @@ import React from 'react'
 import { Folder } from '@styled-icons/material/Folder'
 import { Tree, TreeCollection, TreeItem } from '..'
 
-export const ForceLabelPadding = (
+export const ForceLabelPadding = () => (
   <TreeCollection>
     <Tree icon={<Folder />} label="Folders" defaultOpen>
       <Tree label="With Icon" defaultOpen forceLabelPadding>
