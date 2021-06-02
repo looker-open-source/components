@@ -29,8 +29,8 @@ import { SpacingSizes, Theme } from '@looker/design-tokens'
 import { IconSize } from '../../Icon'
 
 export interface GenerateIndentProps {
+  assumeIconAlignment?: boolean
   depth: number
-  iconSpacing?: boolean
   forceLabelPadding?: boolean
   iconGap: SpacingSizes
   indicatorGap: SpacingSizes
@@ -40,8 +40,8 @@ export interface GenerateIndentProps {
 
 // TODO 3.x: Deprecate forceLabelPadding as input
 export const generateIndent = ({
+  assumeIconAlignment,
   depth,
-  iconSpacing,
   forceLabelPadding,
   iconGap,
   indicatorGap,
@@ -50,9 +50,10 @@ export const generateIndent = ({
 }: GenerateIndentProps) => {
   const { space, sizes } = theme
 
-  const renderedDepth = forceLabelPadding || iconSpacing ? depth - 1 : depth
+  const renderedDepth =
+    forceLabelPadding || assumeIconAlignment ? depth - 1 : depth
   const iconSpacingSpacer =
-    forceLabelPadding || iconSpacing
+    forceLabelPadding || assumeIconAlignment
       ? `(${space[iconGap]} - ${space[indicatorGap]})`
       : '0px'
 

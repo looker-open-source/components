@@ -24,6 +24,6 @@
 
  */
 
-import { IconSpacing } from './IconSpacing.story'
+import { AssumeIconAlignment } from './AssumeIconAlignment.story'
 
-export const ForceLabelPadding = IconSpacing
+export const ForceLabelPadding = AssumeIconAlignment

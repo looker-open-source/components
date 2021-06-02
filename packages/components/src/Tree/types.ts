@@ -76,7 +76,7 @@ export type TreeProps = Omit<
      * 2) The `Tree`'s child items will align their labels with the `Tree`'s label
      * @default false
      * @todo - Remove in 3.x release
-     * @deprecated Use `iconSpacing` prop instead
+     * @deprecated Use `assumeIconAlignment` prop instead
      */
     forceLabelPadding?: boolean
     /**
@@ -85,7 +85,7 @@ export type TreeProps = Omit<
      * 2) The `Tree`'s child items will align their labels with the `Tree`'s label
      * @default false
      */
-    iconSpacing?: boolean
+    assumeIconAlignment?: boolean
     /**
      * Use itemRole to set the type of wrapper element for the label
      * Note: Unlike TreeItem, 'button' is not an allowed value since click event handlers are passed to the nested <AccordionDisclosure> div

@@ -28,10 +28,10 @@ import React from 'react'
 import { Folder } from '@styled-icons/material/Folder'
 import { Tree, TreeCollection, TreeItem } from '..'
 
-export const IconSpacing = () => (
+export const AssumeIconAlignment = () => (
   <TreeCollection>
     <Tree icon={<Folder />} label="Folders" defaultOpen>
-      <Tree label="With Icon" defaultOpen iconSpacing>
+      <Tree label="With Icon" defaultOpen assumeIconAlignment>
         <TreeItem>Performance</TreeItem>
         <TreeItem>Sales</TreeItem>
         <TreeItem>Metrics</TreeItem>

@@ -48,12 +48,12 @@ import { treeItemInnerPropKeys, TreeProps } from './types'
  * label container (i.e. the focusable element).
  */
 const TreeLayout: FC<TreeProps> = ({
+  assumeIconAlignment,
   branchFontWeight,
   border: propsBorder,
   children,
   className,
   dividers,
-  iconSpacing,
   forceLabelPadding,
   itemRole,
   label: propsLabel,
@@ -176,7 +176,7 @@ const TreeLayout: FC<TreeProps> = ({
         </List>
       }
       color={indicatorColor}
-      indicatorGap={iconSpacing ? iconGap : defaultGap}
+      indicatorGap={assumeIconAlignment ? iconGap : defaultGap}
       indicatorIcons={indicatorIcons}
       indicatorPosition={indicatorPosition}
       indicatorSize={iconSize}
@@ -204,6 +204,7 @@ const TreeLayout: FC<TreeProps> = ({
       }}
     >
       <TreeStyle
+        assumeIconAlignment={assumeIconAlignment}
         border={hasBorder}
         branchFontWeight={branchFontWeight}
         className={className}
@@ -211,7 +212,6 @@ const TreeLayout: FC<TreeProps> = ({
         depth={depth}
         disabled={disabled}
         dividers={dividers}
-        iconSpacing={iconSpacing}
         forceLabelPadding={forceLabelPadding}
         hovered={hovered}
         iconGap={iconGap}
