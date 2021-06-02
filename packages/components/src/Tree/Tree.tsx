@@ -204,7 +204,7 @@ const TreeLayout: FC<TreeProps> = ({
       }}
     >
       <TreeStyle
-        assumeIconAlignment={assumeIconAlignment}
+        assumeIconAlignment={assumeIconAlignment || forceLabelPadding} // TODO 3.x: Deprecate forceLabelPadding as input
         border={hasBorder}
         branchFontWeight={branchFontWeight}
         className={className}
@@ -212,7 +212,6 @@ const TreeLayout: FC<TreeProps> = ({
         depth={depth}
         disabled={disabled}
         dividers={dividers}
-        forceLabelPadding={forceLabelPadding}
         hovered={hovered}
         iconGap={iconGap}
         indicatorGap={defaultGap}
@@ -226,4 +225,4 @@ const TreeLayout: FC<TreeProps> = ({
   )
 }
 
-export const Tree = styled(TreeLayout)``
+export const Tree = styled(TreeLayout)<TreeProps>``

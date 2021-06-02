@@ -31,18 +31,15 @@ import { IconSize } from '../../Icon'
 export interface GenerateIndentProps {
   assumeIconAlignment?: boolean
   depth: number
-  forceLabelPadding?: boolean
   iconGap: SpacingSizes
   indicatorGap: SpacingSizes
   indicatorSize: IconSize
   theme: Theme
 }
 
-// TODO 3.x: Deprecate forceLabelPadding as input
 export const generateIndent = ({
   assumeIconAlignment,
   depth,
-  forceLabelPadding,
   iconGap,
   indicatorGap,
   indicatorSize,
@@ -50,12 +47,10 @@ export const generateIndent = ({
 }: GenerateIndentProps) => {
   const { space, sizes } = theme
 
-  const renderedDepth =
-    forceLabelPadding || assumeIconAlignment ? depth - 1 : depth
-  const iconSpacingSpacer =
-    forceLabelPadding || assumeIconAlignment
-      ? `(${space[iconGap]} - ${space[indicatorGap]})`
-      : '0px'
+  const renderedDepth = assumeIconAlignment ? depth - 1 : depth
+  const iconSpacingSpacer = assumeIconAlignment
+    ? `(${space[iconGap]} - ${space[indicatorGap]})`
+    : '0px'
 
   const indentCalculation = `(${sizes[indicatorSize]} + ${space[indicatorGap]}) * ${renderedDepth} + ${iconSpacingSpacer}`
 
