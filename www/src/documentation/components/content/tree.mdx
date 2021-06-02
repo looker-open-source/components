@@ -278,21 +278,20 @@ The `toggleOpen` prop should receive a function that has one parameter: a boolea
 }
 ```
 
-## Aligning Trees with icons and TreeItems without icons
+## Aligning Trees with icons and without icons
 
-Use the `forceLabelPadding` prop to align the labels of parent `Tree`s with the labels of child `TreeItem`s without optional icons.
+Use the `assumeIconAlignment` prop to align the label of a `Tree` without an icon with the label of a parent `Tree`s with an icon.
+
+**Note:** `assumeIconAlignment` will also align the labels of the child `TreeItem` with the `Tree`'s label.
 
 ```jsx
 <TreeCollection>
-  <Tree label="Cheeses" icon={<Pivot />} defaultOpen forceLabelPadding>
-    <TreeItem>Gouda</TreeItem>
-    <TreeItem>Swiss</TreeItem>
-    <TreeItem>Cheddar</TreeItem>
-  </Tree>
-  <Tree label="Cheeses" defaultOpen forceLabelPadding>
-    <TreeItem>Gouda</TreeItem>
-    <TreeItem>Swiss</TreeItem>
-    <TreeItem>Cheddar</TreeItem>
+  <Tree label="Parent Tree" icon={<Pivot />} defaultOpen>
+    <Tree label="Tree with assumeIconAlignment" defaultOpen assumeIconAlignment>
+      <TreeItem>Gouda</TreeItem>
+      <TreeItem>Swiss</TreeItem>
+      <TreeItem>Cheddar</TreeItem>
+    </Tree>
   </Tree>
 </TreeCollection>
 ```
@@ -303,7 +302,7 @@ Use the `forceLabelPadding` prop to align the labels of parent `Tree`s with the 
 
 ```jsx
 <TreeCollection>
-  <Tree label="Cheeses" icon={<Pivot />} defaultOpen forceLabelPadding>
+  <Tree label="Cheeses" icon={<Pivot />} defaultOpen>
     <TreeItem>Gouda</TreeItem>
     <TreeItem>Swiss</TreeItem>
     <TreeItem>Cheddar</TreeItem>

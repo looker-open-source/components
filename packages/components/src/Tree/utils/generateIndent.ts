@@ -26,41 +26,33 @@
 
 import { css } from 'styled-components'
 import { SpacingSizes, Theme } from '@looker/design-tokens'
-import { IconSize, IconType } from '../../Icon'
+import { IconSize } from '../../Icon'
 
 export interface GenerateIndentProps {
+  assumeIconAlignment?: boolean
   depth: number
-  forceLabelPadding?: boolean
-  icon?: IconType
-  iconSize: IconSize
   iconGap: SpacingSizes
+  indicatorGap: SpacingSizes
   indicatorSize: IconSize
   theme: Theme
 }
 
-// Used to tighten the gap between the optional icon and item label
-export const iconGapAdjuster = '2px'
-
 export const generateIndent = ({
+  assumeIconAlignment,
   depth,
-  forceLabelPadding,
-  icon,
   iconGap,
-  iconSize,
+  indicatorGap,
   indicatorSize,
   theme,
 }: GenerateIndentProps) => {
   const { space, sizes } = theme
 
-  const indicatorIconSize = sizes[indicatorSize]
+  const renderedDepth = assumeIconAlignment ? depth - 1 : depth
+  const iconSpacingSpacer = assumeIconAlignment
+    ? `(${space[iconGap]} - ${space[indicatorGap]})`
+    : '0px'
 
-  const renderedDepth = forceLabelPadding ? depth - 1 : depth
-  const forceLabelPaddingSpacer =
-    forceLabelPadding && icon
-      ? `(${sizes[iconSize]} + ${space[iconGap]} - ${iconGapAdjuster})`
-      : '0px'
-
-  const indentCalculation = `${indicatorIconSize} * ${renderedDepth} + ${forceLabelPaddingSpacer}`
+  const indentCalculation = `(${sizes[indicatorSize]} + ${space[indicatorGap]}) * ${renderedDepth} + ${iconSpacingSpacer}`
 
   return css`
     padding-left: calc(${indentCalculation});

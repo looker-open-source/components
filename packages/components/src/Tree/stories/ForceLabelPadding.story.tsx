@@ -31,12 +31,7 @@ import { Tree, TreeCollection, TreeItem } from '..'
 export const ForceLabelPadding = () => (
   <TreeCollection>
     <Tree icon={<Folder />} label="Folders" defaultOpen>
-      <Tree icon={<Folder />} label="With Icon" defaultOpen forceLabelPadding>
-        <TreeItem>Performance</TreeItem>
-        <TreeItem>Sales</TreeItem>
-        <TreeItem>Metrics</TreeItem>
-      </Tree>
-      <Tree label="Without Icon" defaultOpen forceLabelPadding>
+      <Tree label="With Icon" defaultOpen forceLabelPadding>
         <TreeItem>Performance</TreeItem>
         <TreeItem>Sales</TreeItem>
         <TreeItem>Metrics</TreeItem>

@@ -24,10 +24,18 @@
 
  */
 
-export * from './createSafeRel'
-export * from './partitionAriaProps'
-export * from './getDetailOptions'
-export * from './listItemBackgroundColor'
-export * from './listItemDimensions'
-export * from './listItemPadding'
-export * from './listPadding'
+import React from 'react'
+import { Folder } from '@styled-icons/material/Folder'
+import { Tree, TreeCollection, TreeItem } from '..'
+
+export const AssumeIconAlignment = () => (
+  <TreeCollection>
+    <Tree icon={<Folder />} label="Folders" defaultOpen>
+      <Tree label="With Icon" defaultOpen assumeIconAlignment>
+        <TreeItem>Performance</TreeItem>
+        <TreeItem>Sales</TreeItem>
+        <TreeItem>Metrics</TreeItem>
+      </Tree>
+    </Tree>
+  </TreeCollection>
+)

@@ -40,7 +40,13 @@ export const TreeArtificial: FC<{
 }> = ({ children, density = 0 }) => {
   const { iconGap, iconSize } = listItemDimensions(density)
   return (
-    <TreeStyle depth={-1} iconGap={iconGap} iconSize={iconSize} dividers>
+    <TreeStyle
+      depth={-1}
+      iconGap={iconGap}
+      indicatorGap={iconGap}
+      indicatorSize={iconSize}
+      dividers
+    >
       <TreeContext.Provider value={{ density, depth: 0 }}>
         <List>{children}</List>
       </TreeContext.Provider>

@@ -32,7 +32,7 @@ import { AccordionIndicatorProps } from '../../Accordion'
 export const indicatorDefaults: Required<
   Omit<AccordionIndicatorProps, 'indicatorSize'>
 > = {
-  indicatorGap: 'none',
+  indicatorGap: 'xxsmall',
   indicatorIcons: {
     close: <ArrowRight />,
     open: <ArrowDropDown />,
