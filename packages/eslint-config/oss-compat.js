@@ -29,5 +29,6 @@ module.exports = {
   rules: {
     camelcase: 'off',
     'import/order': 'off',
+    'sort-keys-fix/sort-keys-fix': 'off',
   },
 }
