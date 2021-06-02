@@ -35,6 +35,8 @@
     "clean:docs": "find docs -type f ! -name 'index.html' -delete",
     "clean:gatsby": "rm -Rf www/.cache www/public",
     "clean:coverage": "rm -rf coverage",
+    "develop":"echo -e 'Use `yarn gatsby` to start Gatsby \nUse `yarn storybook` to start Storybook'",
+    "deduplicate": "npx yarn-deduplicate -s fewer yarn.lock && yarn",
     "playground": "yarn workspace playground start",
     "gatsby": "yarn workspace www start",
     "fix": "yarn lint:es --fix",
@@ -56,8 +58,7 @@
     "pretest:a11y": "yarn storyshots",
     "test:a11y": "yarn jest --config jest-a11y.config.js",
     "website-canary": "./config/website-canary.sh",
-    "website-latest": "./config/website-latest.sh",
-    "develop":"echo -e 'Use `yarn gatsby` to start Gatsby \nUse `yarn storybook` to start Storybook'"
+    "website-latest": "./config/website-latest.sh"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.16",
