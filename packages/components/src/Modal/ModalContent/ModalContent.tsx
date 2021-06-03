@@ -24,65 +24,41 @@
 
  */
 
-import {
-  CompatibleHTMLProps,
-  padding,
-  reset,
-  LayoutProps,
-  layout,
-  pickStyledProps,
-} from '@looker/design-tokens'
+import { CompatibleHTMLProps, PaddingProps } from '@looker/design-tokens'
 import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
 import { OverflowShadow, useOverflow } from '../../utils'
-import { SpaceHelperProps } from '../../Layout/Space'
 
-interface ModalStyleProps
-  extends LayoutProps,
-    CompatibleHTMLProps<HTMLDivElement> {}
-
-export interface ModalContentProps extends ModalStyleProps, SpaceHelperProps {
-  /**
-   * If the Modal does not have a footer use this property to manually render padding
-   * at the bottom of the ModalContent. (`hasFooter={false}`)
-   * @default true
-   */
-  hasFooter?: boolean
-  /**
-   * If the Modal does not have a header use this property to manually render padding
-   * at the top of the ModalContent. (`hasHeader={false}`)
-   * @default true
-   */
-  hasHeader?: boolean
-  /**
-   * this is an internal prop to display correct padding numbers.
-   */
-  isPopover?: boolean
-}
+export type ModalContentProps = CompatibleHTMLProps<HTMLDivElement> &
+  PaddingProps & {
+    /**
+     * If the Modal does not have a footer use this property to manually render padding
+     * at the bottom of the ModalContent. (`hasFooter={false}`)
+     * @default true
+     */
+    hasFooter?: boolean
+    /**
+     * If the Modal does not have a header use this property to manually render padding
+     * at the top of the ModalContent. (`hasHeader={false}`)
+     * @default true
+     */
+    hasHeader?: boolean
+  }
 
 const ModalContentLayout = forwardRef(
   (
-    {
-      children,
-      className,
-      hasFooter,
-      hasHeader,
-      isPopover = false,
-      ...props
-    }: ModalContentProps,
+    { children, hasFooter, hasHeader, pb, pt, ...props }: ModalContentProps,
     forwardedRef: Ref<HTMLDivElement>
   ) => {
     const [hasOverflow, ref] = useOverflow(forwardedRef)
-    const pbValue = isPopover ? 'medium' : 'large'
-    const ptValue = isPopover ? 'xsmall' : 'xsmall'
 
     return (
       <OverflowShadow
         hasOverflow={hasOverflow}
         ref={ref}
-        pb={hasOverflow || !!hasHeader ? pbValue : 'xxxsmall'}
-        pt={hasOverflow || !!hasHeader ? ptValue : 'xxxsmall'}
-        {...pickStyledProps(props)}
+        pb={hasOverflow || !!hasFooter ? pb : 'xxxsmall'}
+        pt={hasOverflow || !!hasHeader ? pt : 'xxxsmall'}
+        {...props}
       >
         {children}
       </OverflowShadow>
@@ -93,9 +69,6 @@ const ModalContentLayout = forwardRef(
 ModalContentLayout.displayName = 'ModalContentLayout'
 
 export const ModalContent = styled(ModalContentLayout)<ModalContentProps>`
-  ${reset}
-  ${layout}
-  ${padding}
   flex: 1 1 auto;
   overflow: auto;
 `

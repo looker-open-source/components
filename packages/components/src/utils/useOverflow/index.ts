@@ -24,18 +24,7 @@
 
  */
 
-import styled from 'styled-components'
-import { LayoutProps, layout } from '@looker/design-tokens'
-import { ModalContent, ModalContentProps } from '../../../Modal/ModalContent'
-
-export type DialogContentProps = ModalContentProps & LayoutProps
-
-export const DialogContent = styled(ModalContent).attrs(
-  ({ pb = 'large', pt = 'large', px = 'xlarge' }) => ({
-    pb,
-    pt,
-    px,
-  })
-)<DialogContentProps>`
-  ${layout}
-`
+export { OverflowShadow } from './OverflowShadow'
+export type { OverflowShadowProps } from './OverflowShadow'
+export { useOverflow } from './useOverflow'
+export type { UseOverflowProps } from './useOverflow'

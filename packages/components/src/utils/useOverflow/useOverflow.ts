@@ -25,25 +25,12 @@
  */
 
 import { useEffect, useState, Ref } from 'react'
-import styled, { css } from 'styled-components'
-import { PaddingProps } from '@looker/design-tokens'
-import { useResize } from './useResize'
-import { useCallbackRef } from './useCallbackRef'
+import { useResize } from '../useResize'
+import { useCallbackRef } from '../useCallbackRef'
 
-interface UseOverflowProps extends PaddingProps {
+export type UseOverflowProps = {
   hasOverflow: boolean
 }
-
-const OverflowShadowStyle = css`
-  border-bottom: 1px solid ${({ theme }) => theme.colors.ui2};
-  border-top: 1px solid ${({ theme }) => theme.colors.ui2};
-  box-shadow: 0 -4px 4px -4px ${({ theme }) => theme.colors.ui2},
-    inset 0 -4px 4px -4px ${({ theme }) => theme.colors.ui2};
-`
-
-export const OverflowShadow = styled.div<UseOverflowProps>`
-  ${({ hasOverflow }) => hasOverflow && OverflowShadowStyle}
-`
 
 export const useOverflow = (
   ref?: Ref<HTMLElement>

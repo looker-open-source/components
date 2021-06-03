@@ -24,18 +24,21 @@
 
  */
 
-import styled from 'styled-components'
-import { LayoutProps, layout } from '@looker/design-tokens'
-import { ModalContent, ModalContentProps } from '../../../Modal/ModalContent'
+import styled, { css } from 'styled-components'
+import { padding, PaddingProps, reset } from '@looker/design-tokens'
+import { UseOverflowProps } from './useOverflow'
 
-export type DialogContentProps = ModalContentProps & LayoutProps
+export type OverflowShadowProps = PaddingProps & UseOverflowProps
 
-export const DialogContent = styled(ModalContent).attrs(
-  ({ pb = 'large', pt = 'large', px = 'xlarge' }) => ({
-    pb,
-    pt,
-    px,
-  })
-)<DialogContentProps>`
-  ${layout}
+const OverflowShadowStyle = css`
+  border-bottom: 1px solid ${({ theme }) => theme.colors.ui2};
+  border-top: 1px solid ${({ theme }) => theme.colors.ui2};
+  box-shadow: 0 -4px 4px -4px ${({ theme }) => theme.colors.ui2},
+    inset 0 -4px 4px -4px ${({ theme }) => theme.colors.ui2};
+`
+
+export const OverflowShadow = styled.div<OverflowShadowProps>`
+  ${reset}
+  ${({ hasOverflow }) => hasOverflow && OverflowShadowStyle}
+  ${padding}
 `

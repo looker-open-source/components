@@ -72,25 +72,102 @@ describe('ModalContent', () => {
     expect(screen.getByText('Stuff')).toBeInTheDocument()
   })
 
-  xtest('display correct padding if hasHeader & hasFooter are true', () => {
+  xtest('display correct padding if hasFooter', () => {
+    Object.defineProperty(HTMLElement.prototype, 'scrollHeight', {
+      configurable: true,
+      value: 500,
+    })
+
+    Object.defineProperty(HTMLElement.prototype, 'offsetHeight', {
+      configurable: true,
+      value: 0,
+    })
+
+    renderWithTheme(<ModalContent hasFooter>Stuff</ModalContent>)
+
+    expect(
+      getComputedStyle(screen.getByText('Stuff')).getPropertyValue(
+        'padding-bottom'
+      )
+    ).toEqual('1.25rem')
+  })
+
+  xtest('display correct padding if hasHeader', () => {
+    Object.defineProperty(HTMLElement.prototype, 'scrollHeight', {
+      configurable: true,
+      value: 500,
+    })
+
+    Object.defineProperty(HTMLElement.prototype, 'offsetHeight', {
+      configurable: true,
+      value: 0,
+    })
+
+    renderWithTheme(<ModalContent hasHeader>Stuff</ModalContent>)
+
+    expect(
+      getComputedStyle(screen.getByText('Stuff')).getPropertyValue(
+        'padding-top'
+      )
+    ).toEqual('1.25rem')
+  })
+
+  xtest('display correct padding if both hasHeader & hasFooter', () => {
+    Object.defineProperty(HTMLElement.prototype, 'scrollHeight', {
+      configurable: true,
+      value: 500,
+    })
+
+    Object.defineProperty(HTMLElement.prototype, 'offsetHeight', {
+      configurable: true,
+      value: 0,
+    })
+
     renderWithTheme(
-      <ModalContent hasHeader={true} hasFooter={true}>
+      <ModalContent hasHeader hasFooter>
         Stuff
       </ModalContent>
     )
 
-    expect(screen.getByText('Stuff')).toHaveStyle('padding-bottom: 1.25rem;')
-    expect(screen.getByText('Stuff')).toHaveStyle('padding-top: 1.25rem;')
+    expect(
+      getComputedStyle(screen.getByText('Stuff')).getPropertyValue(
+        'padding-bottom'
+      )
+    ).toEqual('1.25rem')
+    expect(
+      getComputedStyle(screen.getByText('Stuff')).getPropertyValue(
+        'padding-top'
+      )
+    ).toEqual('1.25rem')
   })
 
   xtest('display correct padding if hasHeader & hasFooter are false', () => {
+    Object.defineProperty(HTMLElement.prototype, 'scrollHeight', {
+      configurable: true,
+      value: 0,
+    })
+
+    Object.defineProperty(HTMLElement.prototype, 'offsetHeight', {
+      configurable: true,
+      value: 500,
+    })
+
     renderWithTheme(
-      <ModalContent hasHeader={false} hasFooter={false}>
+      <ModalContent hasHeader hasFooter>
         Stuff
       </ModalContent>
     )
-    expect(screen.getByText('Stuff')).toHaveStyle('padding-bottom: 0.125rem;')
-    expect(screen.getByText('Stuff')).toHaveStyle('padding-top: 0.125rem;')
+
+    expect(
+      getComputedStyle(screen.getByText('Stuff')).getPropertyValue(
+        'padding-bottom'
+      )
+    ).toEqual('0.125rem')
+    expect(
+      getComputedStyle(screen.getByText('Stuff')).getPropertyValue(
+        'padding-top'
+      )
+    ).toEqual('0.125rem')
   })
 
   test('has no box shadow when it does not overflow', () => {
