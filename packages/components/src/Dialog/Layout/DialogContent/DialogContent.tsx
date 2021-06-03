@@ -24,7 +24,18 @@
 
  */
 
-export * from './ModalHeaderCloseButton'
-export * from './ModalContent'
-export * from './ModalHeader'
-export * from './ModalFooter'
+import styled from 'styled-components'
+import { LayoutProps, layout } from '@looker/design-tokens'
+import { ModalContent, ModalContentProps } from '../../../Modal/ModalContent'
+
+export type DialogContentProps = ModalContentProps & LayoutProps
+
+export const DialogContent = styled(ModalContent).attrs(
+  ({ pb = 'large', pt = 'large', px = 'xlarge' }) => ({
+    pb,
+    pt,
+    px,
+  })
+)<DialogContentProps>`
+  ${layout}
+`

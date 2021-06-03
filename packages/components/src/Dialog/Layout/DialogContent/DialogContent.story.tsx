@@ -24,7 +24,26 @@
 
  */
 
-export * from './ModalHeaderCloseButton'
-export * from './ModalContent'
-export * from './ModalHeader'
-export * from './ModalFooter'
+import React from 'react'
+import { Box, Paragraph } from '../../..'
+import { DialogContent } from './DialogContent'
+
+export const Basic = () => (
+  <DialogContent>
+    <Box height="2rem" bg="rebeccapurple" />
+  </DialogContent>
+)
+
+export const Overflow = () => (
+  <Box height="10rem" display="flex" bg="white" p="large">
+    <DialogContent>
+      <Paragraph>Scroll down here...</Paragraph>
+      <Box height="12rem" bg="rebeccapurple" />
+    </DialogContent>
+  </Box>
+)
+
+export default {
+  component: DialogContent,
+  title: 'DialogContent',
+}

@@ -24,7 +24,17 @@
 
  */
 
-export * from './ModalHeaderCloseButton'
-export * from './ModalContent'
-export * from './ModalHeader'
-export * from './ModalFooter'
+import React from 'react'
+import { PopoverContent } from './PopoverContent'
+
+export default {
+  component: PopoverContent,
+  title: 'PopoverContent',
+}
+
+export const Basic = () => <PopoverContent>Content Text</PopoverContent>
+Basic.parameters = {
+  storyshots: {
+    disable: true,
+  },
+}

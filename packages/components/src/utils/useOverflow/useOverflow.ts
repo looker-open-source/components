@@ -24,7 +24,34 @@
 
  */
 
-export * from './ModalHeaderCloseButton'
-export * from './ModalContent'
-export * from './ModalHeader'
-export * from './ModalFooter'
+import { useEffect, useState, Ref } from 'react'
+import { useResize } from '../useResize'
+import { useCallbackRef } from '../useCallbackRef'
+
+export type UseOverflowProps = {
+  hasOverflow: boolean
+}
+
+export const useOverflow = (
+  ref?: Ref<HTMLElement>
+): [boolean, (node: HTMLElement | null) => void] => {
+  const [element, callbackRef] = useCallbackRef(ref)
+  const [hasOverflow, setHasOverflow] = useState(false)
+  const [height, setHeight] = useState(0)
+
+  const handleResize = () => {
+    if (element) {
+      setHeight(element.offsetHeight)
+    }
+  }
+
+  useResize(element, handleResize)
+
+  useEffect(() => {
+    if (element) {
+      setHasOverflow(element.offsetHeight < element.scrollHeight)
+    }
+  }, [height, element])
+
+  return [hasOverflow, callbackRef]
+}

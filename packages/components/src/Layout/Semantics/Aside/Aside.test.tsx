@@ -81,7 +81,7 @@ describe('Aside', () => {
       getComputedStyle(screen.getByText('Aside content')).getPropertyValue(
         'box-shadow'
       )
-    ).toEqual('0 -4px 4px -4px #DEE1E5,inset 0 -4px 4px -4px #DEE1E5')
+    ).toEqual('inset 0 -4px 4px -4px #DEE1E5')
   })
 
   test('render border properly', () => {

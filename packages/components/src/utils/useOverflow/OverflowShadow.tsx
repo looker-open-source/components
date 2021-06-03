@@ -24,46 +24,20 @@
 
  */
 
-import { useEffect, useState, Ref } from 'react'
 import styled, { css } from 'styled-components'
-import { useResize } from './useResize'
-import { useCallbackRef } from './useCallbackRef'
+import { padding, PaddingProps, reset } from '@looker/design-tokens'
+import { UseOverflowProps } from './useOverflow'
 
-interface UseOverflowProps {
-  hasOverflow: boolean
-}
+export type OverflowShadowProps = PaddingProps & UseOverflowProps
 
 const OverflowShadowStyle = css`
   border-bottom: 1px solid ${({ theme }) => theme.colors.ui2};
   border-top: 1px solid ${({ theme }) => theme.colors.ui2};
-  box-shadow: 0 -4px 4px -4px ${({ theme }) => theme.colors.ui2},
-    inset 0 -4px 4px -4px ${({ theme }) => theme.colors.ui2};
+  box-shadow: inset 0 -4px 4px -4px ${({ theme }) => theme.colors.ui2};
 `
 
-export const OverflowShadow = styled.div<UseOverflowProps>`
+export const OverflowShadow = styled.div<OverflowShadowProps>`
+  ${reset}
   ${({ hasOverflow }) => hasOverflow && OverflowShadowStyle}
+  ${padding}
 `
-
-export const useOverflow = (
-  ref?: Ref<HTMLElement>
-): [boolean, (node: HTMLElement | null) => void] => {
-  const [element, callbackRef] = useCallbackRef(ref)
-  const [hasOverflow, setHasOverflow] = useState(false)
-  const [height, setHeight] = useState(0)
-
-  const handleResize = () => {
-    if (element) {
-      setHeight(element.offsetHeight)
-    }
-  }
-
-  useResize(element, handleResize)
-
-  useEffect(() => {
-    if (element) {
-      setHasOverflow(element.offsetHeight < element.scrollHeight)
-    }
-  }, [height, element])
-
-  return [hasOverflow, callbackRef]
-}

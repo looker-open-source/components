@@ -26,5 +26,4 @@
 
 export * from './Layout'
 export * from './Popover'
-export * from './PopoverContent'
 export * from './usePopover'
