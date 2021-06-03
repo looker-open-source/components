@@ -57,7 +57,7 @@
     "test:a11y": "yarn jest --config jest-a11y.config.js",
     "website-canary": "./config/website-canary.sh",
     "website-latest": "./config/website-latest.sh",
-    "develop":"echo -e 'Use `yarn gatsby` to start Gatsby \nUse `yarn storybook` to start Storybook'"
+    "develop": "echo -e 'Use `yarn gatsby` to start Gatsby \nUse `yarn storybook` to start Storybook'"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.16",
@@ -129,5 +129,6 @@
   "pre-commit": [
     "lint-staged"
   ],
-  "prettier": "@looker/prettier-config"
+  "prettier": "@looker/prettier-config",
+  "dependencies": {}
 }
