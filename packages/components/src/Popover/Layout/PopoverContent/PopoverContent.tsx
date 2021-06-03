@@ -26,9 +26,12 @@
 
 import React, { FC } from 'react'
 import styled from 'styled-components'
+import { LayoutProps } from 'styled-system'
 import { ModalContent, ModalContentProps } from '../../../Modal/ModalContent'
 
-const PopoverContentLayout: FC<ModalContentProps> = ({
+type PopoverContentProps = ModalContentProps & LayoutProps
+
+const PopoverContentLayout: FC<PopoverContentProps> = ({
   children,
   ...props
 }) => {
@@ -39,4 +42,6 @@ const PopoverContentLayout: FC<ModalContentProps> = ({
   )
 }
 
-export const PopoverContent = styled(PopoverContentLayout)<ModalContentProps>``
+export const PopoverContent = styled(
+  PopoverContentLayout
+)<PopoverContentProps>``

@@ -34,4 +34,30 @@ describe('DialogContent', () => {
     renderWithTheme(<DialogContent>Dialog Content</DialogContent>)
     expect(screen.getByText('Dialog Content')).toBeInTheDocument()
   })
+  test('display correct padding if hasFooter', () => {
+    renderWithTheme(<DialogContent hasFooter>Stuff</DialogContent>)
+
+    expect(screen.getByText('Stuff')).toHaveStyleRule(
+      'padding-bottom',
+      '1.25rem'
+    )
+  })
+  test('display correct padding if hasHeader', () => {
+    renderWithTheme(<DialogContent hasHeader>Stuff</DialogContent>)
+
+    expect(screen.getByText('Stuff')).toHaveStyleRule('padding-top', '1.25rem')
+  })
+  test('display correct padding if both  hasFooter & hasHeader', () => {
+    renderWithTheme(
+      <DialogContent hasFooter hasHeader>
+        Stuff
+      </DialogContent>
+    )
+
+    expect(screen.getByText('Stuff')).toHaveStyleRule(
+      'padding-bottom',
+      '1.25rem'
+    )
+    expect(screen.getByText('Stuff')).toHaveStyleRule('padding-top', '1.25rem')
+  })
 })
