@@ -40,8 +40,9 @@ export const generateTreeBorder = (
   const { sizes } = theme
 
   const itemBorderSize = '1px'
+  const itemGutter = '0.25rem'
   const indicatorIconSize = sizes[indicatorSize]
-  const depthSize = `${indicatorIconSize} * ${depth}`
+  const depthSize = `(${indicatorIconSize} + ${itemGutter}) * ${depth}`
   const borderSpacer = `(${indicatorIconSize} + ${itemBorderSize}) / 2 + ${depthSize}`
 
   const preBorderStop = `calc(${borderSpacer} - ${itemBorderSize})`
