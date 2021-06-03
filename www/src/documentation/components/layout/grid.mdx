@@ -4,6 +4,18 @@ github: Layout/Grid
 storybook: true
 ---
 
+import { Paragraph, MessageBar, Code, Link } from '@looker/components'
+
+<MessageBar intent="warn" noActions mb="large">
+  <Paragraph>
+    <strong>CAUTION:</strong> Grid component does not render correctly on IE11,
+    and all grid styles will be discarded. If a consistent layout on legacy
+    browsers is important, we recommend <Link href="flex">Flex</Link> for
+    horizontal layouts and <Link href="space">SpaceVertical</Link> to render a
+    single width grid.
+  </Paragraph>
+</MessageBar>
+
 `<Grid />` provides a simple implementation of the CSS Grid.
 
 ## Default
