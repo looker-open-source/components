@@ -34,6 +34,7 @@ export type ListItemDetailProps = PaddingProps & {
 export const ListItemDetail = styled.div.attrs<ListItemDetailProps>(
   (props) => ({
     ...props,
+    cursor: props.cursor || 'default',
     pl: props.pl || 'xsmall',
   })
 )<ListItemDetailProps>`
