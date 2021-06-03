@@ -122,6 +122,6 @@ describe('ModalContent', () => {
 
     expect(
       getComputedStyle(screen.getByText('Stuff')).getPropertyValue('box-shadow')
-    ).toEqual('0 -4px 4px -4px #DEE1E5,inset 0 -4px 4px -4px #DEE1E5')
+    ).toEqual('inset 0 -4px 4px -4px #DEE1E5')
   })
 })
