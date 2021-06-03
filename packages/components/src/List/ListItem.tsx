@@ -190,6 +190,7 @@ const ListItemInternal = forwardRef(
     const renderedDetail = detail && (
       <HoverDisclosure visible={!hoverDisclosure}>
         <ListItemDetail
+          cursor={accessory ? 'default' : 'pointer'}
           pl={padding ? 'xsmall' : '0'}
           pr={accessory && padding ? itemDimensions.px : '0'}
         >

@@ -68,6 +68,7 @@ export const ListItemWrapper = styled(ListItemWrapperInternal)
   })
   .attrs(({ color = 'text5' }) => ({ color }))`
   align-items: center;
+  cursor: pointer;
   display: flex;
   font-size: ${({ theme: { fontSizes } }) => fontSizes.small};
   font-weight: ${({ theme: { fontWeights } }) => fontWeights.normal};

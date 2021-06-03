@@ -95,7 +95,6 @@ export const ListItemLabel = styled(ListItemLabelLayout).withConfig({
   align-items: center;
   border: none;
   color: inherit;
-  cursor: pointer;
   display: flex;
   flex: 1;
   font-size: inherit;
