@@ -28,20 +28,19 @@ import { padding, PaddingProps } from '@looker/design-tokens'
 import styled from 'styled-components'
 
 export type ListItemDetailProps = PaddingProps & {
-  cursor?: string
+  cursorPointer?: boolean
 }
 
 export const ListItemDetail = styled.div.attrs<ListItemDetailProps>(
   (props) => ({
     ...props,
-    cursor: props.cursor || 'default',
     pl: props.pl || 'xsmall',
   })
 )<ListItemDetailProps>`
   ${padding}
   align-items: center;
   color: ${({ theme: { colors } }) => colors.text2};
-  cursor: ${({ cursor }) => cursor};
+  cursor: ${({ cursorPointer }) => (cursorPointer ? 'pointer' : undefined)};
   display: flex;
   font-size: ${({ theme }) => theme.fontSizes.xsmall};
   margin-left: auto;

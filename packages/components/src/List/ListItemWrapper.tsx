@@ -36,6 +36,7 @@ export interface ListItemWrapperProps
   extends CompatibleHTMLProps<HTMLElement>,
     ListItemDimensions {
   color: ListColor
+  cursorPointer?: boolean
   description?: ReactNode // Should be eventually deleted because the CSS could be handled in layout pieces
   renderAsDiv?: boolean
 }
@@ -68,7 +69,7 @@ export const ListItemWrapper = styled(ListItemWrapperInternal)
   })
   .attrs(({ color = 'text5' }) => ({ color }))`
   align-items: center;
-  cursor: pointer;
+  cursor: ${({ cursorPointer }) => (cursorPointer ? 'pointer' : undefined)};
   display: flex;
   font-size: ${({ theme: { fontSizes } }) => fontSizes.small};
   font-weight: ${({ theme: { fontWeights } }) => fontWeights.normal};

@@ -190,7 +190,7 @@ const ListItemInternal = forwardRef(
     const renderedDetail = detail && (
       <HoverDisclosure visible={!hoverDisclosure}>
         <ListItemDetail
-          cursor={accessory ? 'default' : 'pointer'}
+          cursorPointer={!accessory}
           pl={padding ? 'xsmall' : '0'}
           pr={accessory && padding ? itemDimensions.px : '0'}
         >
@@ -216,6 +216,7 @@ const ListItemInternal = forwardRef(
         itemRole={itemRole}
         aria-selected={selected}
         className={className}
+        cursorPointer={!!(href || onClick)}
         focusVisible={focusVisible}
         height={itemDimensions.height}
         href={href}
@@ -287,6 +288,7 @@ const ListItemInternal = forwardRef(
         <ListItemWrapper
           className={className}
           color={listItemLabelColor(color, disabled)}
+          cursorPointer={!!onClickWhitespace}
           description={description}
           disabled={disabled}
           onBlur={handleWrapperBlur}
