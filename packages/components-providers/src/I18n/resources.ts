@@ -107,6 +107,9 @@ export const i18nResources: Resource = {
     MessageBar: {
       DismissIntent: 'Dismiss {{intent}}',
     },
+    ModalHeaderCloseButton: {
+      Close: 'Close',
+    },
     PageSize: {
       Display: 'Display',
       of: 'of',
@@ -120,6 +123,9 @@ export const i18nResources: Resource = {
     },
     PanelHeader: {
       CloseTitle: 'Close {{title}}',
+    },
+    PopoverFooter: {
+      Done: 'Done',
     },
     PromptDialog: {
       Cancel: 'Cancel',

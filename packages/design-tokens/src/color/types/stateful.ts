@@ -107,43 +107,43 @@ interface KeyStatefulColors {
   /**
    * TBD
    * Used for TBD
-   * @default `purple000`
+   * @default purple000
    */
   keySubtle: string
   /**
    * TBD
    * Used for TBD
-   * @default `purple100`
+   * @default purple100
    */
   keyAccent: string
   /**
    * TBD
    * Used for focus states for interactive components
-   * @default `purple300`
+   * @default purple300
    */
   keyFocus: string
   /**
    * Interaction state color - often `:hover` & `:focus`
    * Used for TBD
-   * @default `purple500`
+   * @default purple500
    */
   keyInteractive: string
   /**
    * Pressed state color - often `:active`
    * Used to TBD
-   * @default `purple600`
+   * @default purple600
    */
   keyPressed: string
   /**
    * TBD
    * Used for text on top of `key` color
-   * @default `white`
+   * @default white
    */
   keyText: string
   /**
    * TBD
    * TBD too
-   * @default `purple400`
+   * @default purple400
    */
   keyBorder: string
 }

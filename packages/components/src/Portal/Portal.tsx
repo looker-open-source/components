@@ -54,13 +54,13 @@ export const getPortalRoot = () => {
 interface PortalPlacementProps {
   /**
    * How should content be positioned on screen horizontally
-   * @default 'center
+   * @default center
    */
   horizontal?: 'center' | 'left' | 'right'
 
   /**
    * How should content be positioned on screen horizontally
-   * @default 'center
+   * center
    */
   vertical?: 'center' | 'top' | 'bottom'
 

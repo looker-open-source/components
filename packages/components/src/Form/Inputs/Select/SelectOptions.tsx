@@ -177,7 +177,7 @@ export interface SelectOptionsBaseProps {
   isFilterable?: boolean
   /**
    * Text to show when there are no available options
-   * @default 'No options'
+   * @default "No options"
    */
   noOptionsLabel?: string
   /**
@@ -191,7 +191,6 @@ export interface SelectOptionsBaseProps {
   showCreate?: boolean
   /**
    * Format the label of the on-the-fly create option (use with canCreate)
-   * @default `Create ${inputText}`
    */
   formatCreateLabel?: (inputText: string) => ReactNode
   /**

@@ -75,6 +75,6 @@ describe('Section', () => {
       getComputedStyle(screen.getByText('Section content')).getPropertyValue(
         'box-shadow'
       )
-    ).toEqual('0 -4px 4px -4px #DEE1E5,inset 0 -4px 4px -4px #DEE1E5')
+    ).toEqual('inset 0 -4px 4px -4px #DEE1E5')
   })
 })

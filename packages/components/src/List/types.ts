@@ -195,7 +195,7 @@ export type ListItemProps = CompatibleHTMLProps<HTMLElement> &
      *     - Height when using an item with a description and role='none' does not auto abide the @looker/components
      *     density scale. Use 'button' or 'link' whenever possible to avoid space inconsistencies.
      *     - If supporting keyboard navigation, make sure to add key handlers to items
-     * @default 'button'
+     * @default button
      */
     itemRole?: ListItemRole
     /**

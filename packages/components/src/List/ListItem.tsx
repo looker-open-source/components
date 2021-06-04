@@ -57,9 +57,9 @@ import { ListItemWrapper } from './ListItemWrapper'
 import { listItemIconColor, listItemLabelColor } from './utils/listItemColor'
 import {
   createSafeRel,
-  getAriaProps,
   getDetailOptions,
   listItemDimensions,
+  partitionAriaProps,
 } from './utils'
 import { ListItemProps } from './types'
 
@@ -190,6 +190,7 @@ const ListItemInternal = forwardRef(
     const renderedDetail = detail && (
       <HoverDisclosure visible={!hoverDisclosure}>
         <ListItemDetail
+          cursorPointer={!accessory}
           pl={padding ? 'xsmall' : '0'}
           pr={accessory && padding ? itemDimensions.px : '0'}
         >
@@ -205,11 +206,7 @@ const ListItemInternal = forwardRef(
       selected,
     }
 
-    /**
-     * Passing restProps directly into getAriaProps leads to a "Index signature is missing in type" TS error
-     * Spreading the props gets around this, but hopefully we can find the right typing to avoid this error
-     *  */
-    const [ariaProps, wrapperProps] = getAriaProps({ ...restProps })
+    const [ariaProps, wrapperProps] = partitionAriaProps(restProps)
 
     const LabelCreator: FC<{
       children: ReactNode
@@ -219,6 +216,7 @@ const ListItemInternal = forwardRef(
         itemRole={itemRole}
         aria-selected={selected}
         className={className}
+        cursorPointer={!!(href || onClick)}
         focusVisible={focusVisible}
         height={itemDimensions.height}
         href={href}
@@ -290,6 +288,7 @@ const ListItemInternal = forwardRef(
         <ListItemWrapper
           className={className}
           color={listItemLabelColor(color, disabled)}
+          cursorPointer={!!onClickWhitespace}
           description={description}
           disabled={disabled}
           onBlur={handleWrapperBlur}

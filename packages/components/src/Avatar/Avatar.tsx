@@ -52,18 +52,18 @@ export interface AvatarProps
     CompatibleHTMLProps<HTMLElement> {
   className?: string
   /**
-   *  @default `key`
+   *  @default key
    **/
   color?: string
   /**
    * Defines the size of the Avatar
-   * @default 'small'
+   * @default small
    */
   size?: AvatarSizes | string
 
   /**
    * Render as a button instead of a div
-   * @default 'div'
+   * @default div
    */
   role?: 'button' | 'div'
 }

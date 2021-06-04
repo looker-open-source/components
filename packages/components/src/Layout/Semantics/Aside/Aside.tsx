@@ -51,7 +51,7 @@ export interface AsideProps extends SemanticLayoutBase, SemanticBorderProps {
   scrollWithin?: boolean
   /**
    * Specify width of aside
-   * @default 'sidebar'
+   * @default sidebar
    */
   width?: ResponsiveValue<AsideSizeRamp | string>
 }

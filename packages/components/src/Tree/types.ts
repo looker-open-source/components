@@ -44,6 +44,30 @@ export const treeItemInnerPropKeys = [
   ...linkPropKeys,
 ] as const
 
+type AssumeIconAlignment = {
+  /**
+   * If true, alignment will change in two ways:
+   * 1) The `Tree`'s label will align itself with a parent `Tree`'s label (Note: the parent should have an icon and the child should not)
+   * 2) The `Tree`'s child items will align their labels with the `Tree`'s label
+   * @default false
+   */
+  assumeIconAlignment?: boolean
+  forceLabelPadding?: never
+}
+
+type ForceLabelPadding = {
+  /**
+   * If true, alignment will change in two ways:
+   * 1) The `Tree`'s label will align itself with a parent `Tree`'s label (Note: the parent should have an icon and the child should not)
+   * 2) The `Tree`'s child items will align their labels with the `Tree`'s label
+   * @default false
+   * @todo - Remove in 3.x release
+   * @deprecated Use `assumeIconAlignment` prop instead
+   */
+  forceLabelPadding?: boolean
+  assumeIconAlignment?: never
+}
+
 export type TreeProps = Omit<
   AccordionProps,
   | 'children'
@@ -53,7 +77,8 @@ export type TreeProps = Omit<
   | 'indicatorPosition'
   | 'indicatorSize'
 > &
-  Pick<ListItemProps, typeof treeItemInnerPropKeys[number]> & {
+  Pick<ListItemProps, typeof treeItemInnerPropKeys[number]> &
+  (AssumeIconAlignment | ForceLabelPadding) & {
     /**
      * If true, vertical lines will extend from the Tree indicator (and all sub-Trees' indicators)
      * @default false
@@ -71,15 +96,9 @@ export type TreeProps = Omit<
      */
     dividers?: boolean
     /**
-     * If true, child `TreeItem` elements will receive additional indent padding to align parent `Tree` (with an optional `icon` prop) and child `TreeItem` labels.
-     * If "no-icon", child `TreeItem` elements will receive additional indent padding to align parent `Tree` (without an optional `icon` prop) and child `TreeItem` labels.
-     * @default false
-     */
-    forceLabelPadding?: boolean
-    /**
      * Use itemRole to set the type of wrapper element for the label
      * Note: Unlike TreeItem, 'button' is not an allowed value since click event handlers are passed to the nested <AccordionDisclosure> div
-     * @default 'none'
+     * @default none
      */
     itemRole?: 'link' | 'none'
     /**

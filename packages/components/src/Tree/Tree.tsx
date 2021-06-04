@@ -48,6 +48,7 @@ import { treeItemInnerPropKeys, TreeProps } from './types'
  * label container (i.e. the focusable element).
  */
 const TreeLayout: FC<TreeProps> = ({
+  assumeIconAlignment,
   branchFontWeight,
   border: propsBorder,
   children,
@@ -160,6 +161,11 @@ const TreeLayout: FC<TreeProps> = ({
   )
 
   const indicatorColor = disabled ? 'text1' : 'text5'
+  const {
+    indicatorGap: defaultGap,
+    indicatorIcons,
+    indicatorPosition,
+  } = indicatorDefaults
   const innerAccordion = (
     <Accordion
       renderAsLi
@@ -170,14 +176,17 @@ const TreeLayout: FC<TreeProps> = ({
         </List>
       }
       color={indicatorColor}
-      role="treeitem"
+      indicatorGap={assumeIconAlignment ? iconGap : defaultGap}
+      indicatorIcons={indicatorIcons}
+      indicatorPosition={indicatorPosition}
+      indicatorSize={iconSize}
       onBlur={handleBlur}
       onFocus={handleFocus}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       py="none"
+      role="treeitem"
       tabIndex={-1}
-      {...indicatorDefaults}
       {...restProps}
     >
       {label}
@@ -195,6 +204,7 @@ const TreeLayout: FC<TreeProps> = ({
       }}
     >
       <TreeStyle
+        assumeIconAlignment={assumeIconAlignment || forceLabelPadding} // TODO 3.x: Deprecate forceLabelPadding as input
         border={hasBorder}
         branchFontWeight={branchFontWeight}
         className={className}
@@ -202,11 +212,10 @@ const TreeLayout: FC<TreeProps> = ({
         depth={depth}
         disabled={disabled}
         dividers={dividers}
-        forceLabelPadding={forceLabelPadding}
         hovered={hovered}
-        icon={icon}
         iconGap={iconGap}
-        iconSize={iconSize}
+        indicatorGap={defaultGap}
+        indicatorSize={iconSize}
         labelBackgroundOnly={hasLabelBackgroundOnly}
         selected={selected}
       >
@@ -216,4 +225,4 @@ const TreeLayout: FC<TreeProps> = ({
   )
 }
 
-export const Tree = styled(TreeLayout)``
+export const Tree = styled(TreeLayout)<TreeProps>``

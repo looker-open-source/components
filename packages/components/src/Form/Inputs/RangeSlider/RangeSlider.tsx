@@ -138,7 +138,7 @@ const roundToStep = (
  */
 const calculatePointValue = (
   mouseX: number,
-  containerRect: ClientRect,
+  containerRect: DOMRect,
   min: number,
   max: number,
   step: number

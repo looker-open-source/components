@@ -76,6 +76,7 @@ type ListItemLabelProps = CompatibleHTMLProps<HTMLElement> &
   ListItemStatefulProps &
   FlexibleColor &
   FocusVisibleProps & {
+    cursorPointer?: boolean
     disabled?: boolean
     height?: number
     itemRole?: ListItemRole
@@ -95,7 +96,7 @@ export const ListItemLabel = styled(ListItemLabelLayout).withConfig({
   align-items: center;
   border: none;
   color: inherit;
-  cursor: pointer;
+  cursor: ${({ cursorPointer }) => (cursorPointer ? 'pointer' : undefined)};
   display: flex;
   flex: 1;
   font-size: inherit;

@@ -39,12 +39,12 @@ export interface AvatarComboProps
   secondaryIcon: IconType
   /**
    * Icon & border color for secondary AvatarIcon
-   * @default 'keyFocus'
+   * @default keyFocus
    **/
   secondaryColor?: string
   /**
    * Background for secondary AvatarIcon
-   * @default 'background'
+   * @default background
    **/
   secondaryBg?: string
 }
