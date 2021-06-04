@@ -69,3 +69,18 @@ ReadOnly.args = {
 ReadOnly.parameters = {
   storyshots: { disable: true },
 }
+
+export const OverflowHiddenInlineInputText = () => (
+  <div
+    style={{
+      border: '1px solid',
+      overflow: 'hidden',
+      width: '100px',
+    }}
+  >
+    <InlineInputText value="Long example value that should require scrolling to reach" />
+  </div>
+)
+OverflowHiddenInlineInputText.parameters = {
+  storyshots: { disable: true },
+}

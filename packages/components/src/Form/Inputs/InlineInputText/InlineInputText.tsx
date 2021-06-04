@@ -138,6 +138,8 @@ export const InlineInputText = styled(InlineInputTextBase)`
       : theme.colors.ui3};
   color: inherit;
   flex-direction: column;
+  max-width: 100%;
+  overflow: hidden;
   text-align: inherit;
 
   :focus,
