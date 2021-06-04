@@ -24,8 +24,42 @@
 
  */
 
-const main = require('../src/setup/main')
+/* eslint-disable @typescript-eslint/no-var-requires */
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
+const excludeNodeModulesExcept = require('babel-loader-exclude-node-modules-except')
+
 module.exports = {
-  ...main,
+  addons: [
+    {
+      name: '@storybook/addon-essentials',
+      options: {
+        backgrounds: false,
+        docs: true,
+      },
+    },
+    '@storybook/addon-a11y',
+  ],
   stories: ['../src/**/*.stories.tsx', '../../packages/**/*.story.tsx'],
+  webpackFinal: async (config) => {
+    config.module.rules.push({
+      test: /\.tsx?$/,
+      use: [
+        {
+          loader: require.resolve('babel-loader'),
+        },
+      ],
+    })
+    config.module.rules.push({
+      exclude: [
+        excludeNodeModulesExcept([
+          'react-hotkeys-hook', // ditto
+        ]),
+      ],
+      loader: 'babel-loader',
+      test: /\.js$/,
+    })
+    config.resolve.extensions.push('.ts', '.tsx')
+    config.resolve.plugins = [new TsconfigPathsPlugin()]
+    return config
+  },
 }

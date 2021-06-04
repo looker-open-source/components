@@ -24,44 +24,39 @@
 
  */
 
-/* eslint-disable @typescript-eslint/no-var-requires */
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
-const excludeNodeModulesExcept = require('babel-loader-exclude-node-modules-except')
+import {
+  Card,
+  CardContent,
+  Tabs,
+  TabList,
+  Tab,
+  TabPanels,
+  TabPanel,
+} from '@looker/components'
+import React from 'react'
+import { ComponentSuite, ColorSwatches, FauxDashboard } from '../'
 
-const config = {
-  addons: [
-    {
-      name: '@storybook/addon-essentials',
-      options: {
-        backgrounds: false,
-        docs: true,
-      },
-    },
-    '@storybook/addon-a11y',
-  ],
-  stories: ['../**/*.story.tsx'],
-  webpackFinal: async (config) => {
-    config.module.rules.push({
-      test: /\.tsx?$/,
-      use: [
-        {
-          loader: require.resolve('babel-loader'),
-        },
-      ],
-    })
-    config.module.rules.push({
-      exclude: [
-        excludeNodeModulesExcept([
-          'react-hotkeys-hook', // ditto
-        ]),
-      ],
-      loader: 'babel-loader',
-      test: /\.js$/,
-    })
-    config.resolve.extensions.push('.ts', '.tsx')
-    config.resolve.plugins = [new TsconfigPathsPlugin()]
-    return config
-  },
-}
-
-module.exports = config
+export const Examples = () => (
+  <Card width="100%">
+    <CardContent>
+      <Tabs>
+        <TabList>
+          <Tab>Colors</Tab>
+          <Tab>Components</Tab>
+          <Tab>Faux Dashboard</Tab>
+        </TabList>
+        <TabPanels>
+          <TabPanel>
+            <ColorSwatches />
+          </TabPanel>
+          <TabPanel>
+            <ComponentSuite />
+          </TabPanel>
+          <TabPanel>
+            <FauxDashboard />
+          </TabPanel>
+        </TabPanels>
+      </Tabs>
+    </CardContent>
+  </Card>
+)
