@@ -193,50 +193,50 @@ describe('<Combobox/> with children', () => {
     fireEvent.click(document)
   })
 
-  /* eslint-disable-next-line react/display-name */
-  const GetIndicatorJSX = (listLevel: boolean) => (
-    indicator: ComboboxOptionIndicatorFunction
-  ) => (
-    <Combobox key="combobox" value={{ label: 'Foo', value: '101' }}>
-      <ComboboxInput placeholder="Type here" />
-      <ComboboxList indicator={listLevel ? indicator : undefined}>
-        <ComboboxOption
-          label="Foo"
-          value="101"
-          indicator={listLevel ? undefined : indicator}
-        />
-        <ComboboxOption
-          label="Bar"
-          value="102"
-          indicator={listLevel ? undefined : indicator}
-        />
-      </ComboboxList>
-    </Combobox>
-  )
+  /* eslint-disable react/display-name */
+  const GetIndicatorJSX =
+    (listLevel: boolean) => (indicator: ComboboxOptionIndicatorFunction) =>
+      (
+        <Combobox key="combobox" value={{ label: 'Foo', value: '101' }}>
+          <ComboboxInput placeholder="Type here" />
+          <ComboboxList indicator={listLevel ? indicator : undefined}>
+            <ComboboxOption
+              label="Foo"
+              value="101"
+              indicator={listLevel ? undefined : indicator}
+            />
+            <ComboboxOption
+              label="Bar"
+              value="102"
+              indicator={listLevel ? undefined : indicator}
+            />
+          </ComboboxList>
+        </Combobox>
+      )
 
-  /* eslint-disable-next-line react/display-name */
-  const GetIndicatorJSXMulti = (listLevel: boolean) => (
-    indicator: ComboboxOptionIndicatorFunction
-  ) => (
-    <ComboboxMulti
-      key="combobox-multi"
-      values={[{ label: 'Foo', value: '101' }]}
-    >
-      <ComboboxMultiInput placeholder="Type here" />
-      <ComboboxMultiList indicator={listLevel ? indicator : undefined}>
-        <ComboboxMultiOption
-          label="Foo"
-          value="101"
-          indicator={listLevel ? undefined : indicator}
-        />
-        <ComboboxMultiOption
-          label="Bar"
-          value="102"
-          indicator={listLevel ? undefined : indicator}
-        />
-      </ComboboxMultiList>
-    </ComboboxMulti>
-  )
+  const GetIndicatorJSXMulti =
+    (listLevel: boolean) => (indicator: ComboboxOptionIndicatorFunction) =>
+      (
+        <ComboboxMulti
+          key="combobox-multi"
+          values={[{ label: 'Foo', value: '101' }]}
+        >
+          <ComboboxMultiInput placeholder="Type here" />
+          <ComboboxMultiList indicator={listLevel ? indicator : undefined}>
+            <ComboboxMultiOption
+              label="Foo"
+              value="101"
+              indicator={listLevel ? undefined : indicator}
+            />
+            <ComboboxMultiOption
+              label="Bar"
+              value="102"
+              indicator={listLevel ? undefined : indicator}
+            />
+          </ComboboxMultiList>
+        </ComboboxMulti>
+      )
+  /* eslint-enable react/display-name */
 
   test.each([
     ['list level (Combobox)', GetIndicatorJSX(true)],

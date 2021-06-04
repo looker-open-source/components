@@ -296,37 +296,37 @@ describe('Select / SelectMulti', () => {
     fireEvent.click(document)
   })
 
-  /* eslint-disable-next-line react/display-name */
-  const GetIndicatorJSX = (listLevel: boolean) => (
-    indicator: ComboboxOptionIndicatorFunction
-  ) => (
-    <Select
-      options={options.map((opt) => ({
-        ...opt,
-        ...(listLevel ? {} : { indicator }),
-      }))}
-      value="FOO"
-      placeholder="Search"
-      indicator={listLevel ? indicator : undefined}
-      key="select"
-    />
-  )
+  /* eslint-disable react/display-name */
+  const GetIndicatorJSX =
+    (listLevel: boolean) => (indicator: ComboboxOptionIndicatorFunction) =>
+      (
+        <Select
+          options={options.map((opt) => ({
+            ...opt,
+            ...(listLevel ? {} : { indicator }),
+          }))}
+          value="FOO"
+          placeholder="Search"
+          indicator={listLevel ? indicator : undefined}
+          key="select"
+        />
+      )
 
-  /* eslint-disable-next-line react/display-name */
-  const GetIndicatorJSXMulti = (listLevel: boolean) => (
-    indicator: ComboboxOptionIndicatorFunction
-  ) => (
-    <SelectMulti
-      options={options.map((opt) => ({
-        ...opt,
-        ...(listLevel ? {} : { indicator }),
-      }))}
-      values={['FOO']}
-      placeholder="Search"
-      indicator={listLevel ? indicator : undefined}
-      key="select-multi"
-    />
-  )
+  const GetIndicatorJSXMulti =
+    (listLevel: boolean) => (indicator: ComboboxOptionIndicatorFunction) =>
+      (
+        <SelectMulti
+          options={options.map((opt) => ({
+            ...opt,
+            ...(listLevel ? {} : { indicator }),
+          }))}
+          values={['FOO']}
+          placeholder="Search"
+          indicator={listLevel ? indicator : undefined}
+          key="select-multi"
+        />
+      )
+  /* eslint-enable react/display-name */
 
   test.each([
     ['list level (Select)', GetIndicatorJSX(true)],
@@ -793,9 +793,9 @@ describe('Select', () => {
   const warnMock = jest.fn()
 
   beforeEach(() => {
-    global.console = ({
+    global.console = {
       warn: warnMock,
-    } as unknown) as Console
+    } as unknown as Console
   })
 
   afterEach(() => {

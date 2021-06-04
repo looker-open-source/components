@@ -64,9 +64,8 @@ describe('useSelectManager', () => {
   const Test = () => {
     const allSelectableItems = data.map(({ id }) => String(id))
 
-    const { onSelect, onSelectAll, selections } = useSelectManager(
-      allSelectableItems
-    )
+    const { onSelect, onSelectAll, selections } =
+      useSelectManager(allSelectableItems)
 
     const items = data.map(({ id, name }) => (
       <DataTableItem

@@ -99,9 +99,8 @@ export const TimeframeFilter = () => {
   const endDate = new Date()
   endDate.setDate(15)
 
-  const [controlledDateRange, setControlledDateRange] = useState<
-    Partial<RangeModifier>
-  >()
+  const [controlledDateRange, setControlledDateRange] =
+    useState<Partial<RangeModifier>>()
 
   return (
     <Popover

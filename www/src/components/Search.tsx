@@ -56,8 +56,8 @@ export const Search = () => {
 }
 
 interface FauxSearchProps {
-  index: any
-  store: any
+  index: unknown
+  store: unknown
 }
 
 const iconMap: { [key: string]: JSX.Element } = {

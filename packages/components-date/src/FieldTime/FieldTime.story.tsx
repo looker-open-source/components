@@ -63,9 +63,8 @@ MilitaryTime.args = {
 }
 
 export const Controlled = () => {
-  const [controlledTime, setControlledTime] = useState<string | undefined>(
-    '12:00'
-  )
+  const [controlledTime, setControlledTime] =
+    useState<string | undefined>('12:00')
   return (
     <SpaceVertical>
       <Paragraph>Selected: {controlledTime}</Paragraph>

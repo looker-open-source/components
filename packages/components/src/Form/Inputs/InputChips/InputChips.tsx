@@ -170,12 +170,8 @@ export const InputChipsInternal = forwardRef(
 
     function updateValues(newInputValue?: string) {
       const inputValues = parseInputValue(newInputValue || inputValue)
-      const {
-        duplicateValues,
-        invalidValues,
-        unusedValues,
-        validValues,
-      } = validateValues(inputValues, values, validate)
+      const { duplicateValues, invalidValues, unusedValues, validValues } =
+        validateValues(inputValues, values, validate)
 
       // Save valid values and keep invalid ones in the input
       const updatedInputValue = unusedValues.join(', ')

@@ -42,13 +42,8 @@ export function useOptionEvents<
   CProps extends ComboboxContextProps | ComboboxMultiContextProps
 >(props: ComboboxOptionProps, context: Context<CProps>) {
   const { label, value, onClick, onMouseEnter } = props
-  const {
-    data,
-    onChange,
-    transition,
-    closeOnSelectPropRef,
-    isScrollingRef,
-  } = useContext(context)
+  const { data, onChange, transition, closeOnSelectPropRef, isScrollingRef } =
+    useContext(context)
   const { options } = data as ComboboxMultiData
 
   function handleClick() {

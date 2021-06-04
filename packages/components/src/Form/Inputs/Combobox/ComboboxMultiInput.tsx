@@ -277,9 +277,9 @@ export const ComboboxMultiInputInternal = forwardRef(
 
 ComboboxMultiInputInternal.displayName = 'ComboboxMultiInputInternal'
 
-export const ComboboxMultiInput = styled(
-  ComboboxMultiInputInternal
-).attrs(({ width = '100%' }) => ({ width }))`
+export const ComboboxMultiInput = styled(ComboboxMultiInputInternal).attrs(
+  ({ width = '100%' }) => ({ width })
+)`
   ${comboboxStyles}
   padding-right: 0;
 `

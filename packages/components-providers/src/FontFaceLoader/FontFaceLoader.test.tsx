@@ -73,7 +73,7 @@ describe('FontFaceLoader', () => {
 
     render(
       <HelmetProvider context={context}>
-        <ThemeProvider theme={({} as unknown) as DefaultTheme}>
+        <ThemeProvider theme={{} as unknown as DefaultTheme}>
           <FontFaceLoader />
         </ThemeProvider>
       </HelmetProvider>
@@ -86,9 +86,7 @@ describe('FontFaceLoader', () => {
 
     render(
       <HelmetProvider context={context}>
-        <ThemeProvider
-          theme={({ themeSources: [] } as unknown) as DefaultTheme}
-        >
+        <ThemeProvider theme={{ themeSources: [] } as unknown as DefaultTheme}>
           <FontFaceLoader />
         </ThemeProvider>
       </HelmetProvider>
@@ -104,9 +102,9 @@ describe('FontFaceLoader', () => {
       <HelmetProvider context={context}>
         <ThemeProvider
           theme={
-            ({
+            {
               fontSources,
-            } as unknown) as DefaultTheme
+            } as unknown as DefaultTheme
           }
         >
           <FontFaceLoader />

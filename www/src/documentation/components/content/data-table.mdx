@@ -428,9 +428,8 @@ The `useSelectManager` hook can be used to quickly create the standard building 
 
   const allSelectableItems = data.map(({ id }) => String(id))
 
-  const { onSelect, onSelectAll, selections, setSelections } = useSelectManager(
-    allSelectableItems
-  )
+  const { onSelect, onSelectAll, selections, setSelections } =
+    useSelectManager(allSelectableItems)
 
   const items = data.map(({ id, name }) => (
     <DataTableItem
@@ -538,9 +537,8 @@ The `bulk` prop is used to configure a `DataTable`'s control bar. The object pas
     </DataTableItem>
   ))
 
-  const { onSelect, onSelectAll, selections, setSelections } = useSelectManager(
-    pageItemIds
-  )
+  const { onSelect, onSelectAll, selections, setSelections } =
+    useSelectManager(pageItemIds)
 
   const allItems = [...data].map(({ id }) => String(id))
   const onTotalSelectAll = () => setSelections(allItems)

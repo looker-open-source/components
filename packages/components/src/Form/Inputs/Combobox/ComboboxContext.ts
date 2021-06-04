@@ -111,6 +111,5 @@ export const ComboboxMultiContext = createContext<ComboboxMultiContextProps>({
 // Allows us to put the option's value on context so that ComboboxOptionText
 // can work it's highlight text magic no matter what else is rendered around
 // it.
-export const OptionContext = createContext<ComboboxOptionObject | undefined>(
-  undefined
-)
+export const OptionContext =
+  createContext<ComboboxOptionObject | undefined>(undefined)
