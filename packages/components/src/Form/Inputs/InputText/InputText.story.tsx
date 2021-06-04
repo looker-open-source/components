@@ -83,17 +83,3 @@ export const Error = Template.bind({})
 Error.args = {
   validationType: 'error',
 }
-
-export const OverflowHiddenInputText = () => (
-  <div
-    style={{
-      border: '1px solid',
-      width: '100px',
-    }}
-  >
-    <InputText />
-  </div>
-)
-OverflowHiddenInputText.parameters = {
-  storyshots: { disable: true },
-}
