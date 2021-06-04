@@ -113,6 +113,7 @@
     "socket.io": ">= 2.4.0",
     "ssri": ">= 8.0.1",
     "trim": ">= 0.0.3",
+    "ws": ">= 6.2.2",
     "xmlhttprequest-ssl": ">= 1.6.2"
   },
   "lint-staged": {
