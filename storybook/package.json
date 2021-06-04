@@ -8,21 +8,17 @@
     "develop": "start-storybook  -c .storybook -p 3333  --host 0.0.0.0",
     "build": "build-storybook -c .storybook",
 
-    "storyshots-build": "export storybookBuildMode=fast && yarn storybook build",
-    "storyshots-preview-backup": "mv ./storybook/preview.js ./storybook/preview.js.bu",
-    "storyshots-preview-restore": "mv ./storybook/preview.js.bu ./storybook/preview.js",
+    "storyshots-build": "export storybookBuildMode=fast && yarn build",
+    "storyshots-preview-backup": "mv .storybook/preview.js .storybook/preview.js.bu",
+    "storyshots-preview-restore": "mv .storybook/preview.js.bu .storybook/preview.js",
 
-    "presnapshots": "yarn storyshots-build && yarn storyshots-preview-backup",
-    "snapshots-only": "yarn jest --config jest-image-snapshots.config.js",
-    "snapshots": "yarn image-only",
-    "postsnapshots": "yarn storyshots-preview-restore",
+    "prestoryshots-task": "yarn storyshots-build && yarn storyshots-preview-backup",
+    "storyshots-task": "yarn jest",
+    "posttoryshots-task": "yarn storyshots-preview-restore",
 
-    "presnapshots-update": "yarn presnapshots",
-    "snapshots-update": "yarn image-only -u",
-    "postsnapshots-update": "postsnapshots-update",
-
-    "prea11y": "yarn storyshots",
-    "a11y": "yarn jest --config jest-a11y.config.js"
+    "snapshots": "yarn storyshots-task --config ./jest-image-snapshots.config.js",
+    "snapshots-update": "yarn snapshots -u",
+    "a11y": "yarn storyshots-task --config ./jest-a11y.config.js"
   },
   "dependencies": {
     "@looker/components": "^1.4.0",
