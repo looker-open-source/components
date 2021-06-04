@@ -26,7 +26,7 @@
 
 import path from 'path'
 import { axeTest, imageSnapshot } from '@storybook/addon-storyshots-puppeteer'
-import { StoryshotsOptions } from '@storybook/addon-storyshots/dist/api/StoryshotsOptions'
+import { StoryshotsOptions } from '@storybook/addon-storyshots/dist/ts3.9/api/StoryshotsOptions'
 
 const STORYBOOK_DEFAULT_VIEWPORT = { height: 600, width: 800 }
 

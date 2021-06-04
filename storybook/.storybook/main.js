@@ -24,8 +24,60 @@
 
  */
 
-const main = require('../src/setup/main')
-module.exports = {
-  ...main,
+/* eslint-disable @typescript-eslint/no-var-requires */
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
+const excludeNodeModulesExcept = require('babel-loader-exclude-node-modules-except')
+
+const config = {
+  addons: [
+    {
+      name: '@storybook/addon-essentials',
+      options: {
+        backgrounds: false,
+        docs: true,
+      },
+    },
+    '@storybook/addon-a11y',
+  ],
+  features: {
+    postcss: false,
+  },
   stories: ['../src/**/*.stories.tsx', '../../packages/**/*.story.tsx'],
+  webpackFinal: async (config) => {
+    config.module.rules.push({
+      test: /\.tsx?$/,
+      use: [
+        {
+          loader: require.resolve('babel-loader'),
+        },
+      ],
+    })
+    config.module.rules.push({
+      exclude: [
+        excludeNodeModulesExcept([
+          'react-hotkeys-hook', // ditto
+        ]),
+      ],
+      loader: 'babel-loader',
+      test: /\.js$/,
+    })
+    config.resolve.extensions.push('.ts', '.tsx')
+    config.resolve.plugins = [new TsconfigPathsPlugin()]
+    return config
+  },
 }
+
+/**
+ * `react-docgen-typescript` is slow because it has to parse _everything_.
+ *
+ * `fast` builds (used by image-snapshots)  turn off docgen as well as all addons since
+ * neither will be needed for snapshots and it significantly improves Storybook performance.
+ */
+const mode = process.env.storybookBuildMode
+
+if (mode === 'fast') {
+  config.typescript = { check: false, reactDocgen: false }
+  config.addons = []
+}
+
+module.exports = config

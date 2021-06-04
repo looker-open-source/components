@@ -30,8 +30,8 @@ import { Heading } from '@looker/components/src'
 import {
   Constitution,
   ConstitutionShort,
-} from 'packages/components/src/__mocks__/Constitution'
-import { ItemsFiller } from 'packages/components/src/__mocks__/ListHelper'
+} from '../../../__mocks__/Constitution'
+import { ItemsFiller } from '../../../__mocks__/ListHelper'
 import { Page, Header, Layout, Aside, Section, Footer } from '../'
 
 export default {

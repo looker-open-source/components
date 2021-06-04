@@ -1,4 +1,4 @@
 {
   "extends": "../tsconfig.json",
-  "include": ["src/**/*", "src/setup/componentsDecorator.tsx", "utils"]
+  "include": ["src/**/*", ".storybook/componentsDecorator.tsx"]
 }

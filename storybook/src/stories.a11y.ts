@@ -25,6 +25,6 @@
  */
 
 import initStoryshots from '@storybook/addon-storyshots'
-import { a11y } from './setup/storyshotsConfig'
+import { a11y } from './storyshotsConfig'
 
 initStoryshots(a11y())
