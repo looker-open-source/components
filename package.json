@@ -58,7 +58,7 @@
     "pretest:a11y": "yarn storyshots",
     "test:a11y": "yarn jest --config jest-a11y.config.js",
     "website-canary": "./config/website-canary.sh",
-    "website-latest": "./config/website-latest.sh",
+    "website-latest": "./config/website-latest.sh"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.16",
