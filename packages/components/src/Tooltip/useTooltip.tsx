@@ -147,10 +147,16 @@ export function useTooltip({
       </Portal>
     ) : null
 
+  const enabledDomProps = disabled
+    ? undefined
+    : {
+        'aria-describedby': guaranteedId,
+        className: renderDOM ? 'hover' : undefined,
+      }
+
   return {
     domProps: {
-      'aria-describedby': guaranteedId,
-      className: renderDOM ? 'hover' : '',
+      ...enabledDomProps,
       onBlur: handleClose,
       onFocus: handleOpen,
       onMouseOut: handleMouseOut,

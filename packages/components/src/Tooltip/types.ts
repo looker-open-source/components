@@ -100,8 +100,8 @@ export interface UseTooltipProps {
 }
 
 export interface UseTooltipResponseDom {
-  'aria-describedby': string
-  className: string
+  'aria-describedby'?: string
+  className?: string
   onBlur: () => void
   onFocus: () => void
   onMouseOut: (event: MouseEvent<HTMLElement>) => void
