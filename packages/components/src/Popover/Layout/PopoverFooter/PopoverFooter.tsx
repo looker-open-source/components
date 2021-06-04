@@ -39,7 +39,7 @@ export interface PopoverFooterProps
   /**
    * Button to close popover
    * I18n recommended: content that is user visible should be treated for i18n
-   * @default 'Done'
+   * @default Done
    */
   close?: ReactElement | string
 }

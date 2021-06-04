@@ -38,14 +38,14 @@ export type DialogDrawerWidth = ResponsiveValue<
 export interface DrawerSurfaceProps {
   /**
    * Specify the edge to attach the Drawer surface to - `left` or `right`
-   * @default 'right'
+   * @default right
    */
   placement?: DrawerPlacements
 
   /**
    * Explicitly specifying a width will set the Surface to be the lesser of
    * the specified width or the viewport width.
-   * @default 'medium'
+   * @default medium
    */
   width?: DialogDrawerWidth
 }

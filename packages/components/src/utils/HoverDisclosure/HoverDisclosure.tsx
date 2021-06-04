@@ -35,7 +35,7 @@ export interface HoverDisclosureProps {
    * visible space when hidden and may be required when attempt to achieve
    * certain layouts.
    *
-   * @default 'visibility'
+   * @default visibility
    */
   strategy?: 'visibility' | 'display'
 }

@@ -37,7 +37,7 @@ import { simpleLayoutCSS, SimpleLayoutProps } from '../utils/simple'
 export interface SpaceHelperProps extends SimpleLayoutProps, FlexboxProps {
   /**
    * Amount of space between grid cells
-   * @default 'medium'
+   * @default medium
    */
   gap?: SpacingSizes
 
@@ -73,7 +73,7 @@ export interface SpaceHelperProps extends SimpleLayoutProps, FlexboxProps {
   /**
    * Align items vertically within `Space`
    * NOTE: This will by overridden if `stretch=true`
-   * @default 'center'
+   * @default center
    */
   align?: 'start' | 'center' | 'end'
 
@@ -81,7 +81,7 @@ export interface SpaceHelperProps extends SimpleLayoutProps, FlexboxProps {
    * Justify items horizontally within `Space`
    * NOTE: This will by overridden by any of stretch, evenly, reverse or between
    * NOTE: Justification is based on flex-direction so if `reverse=true` this will be "backwards"
-   * @default 'start'
+   * @default start
    */
   justify?: 'start' | 'center' | 'end'
 

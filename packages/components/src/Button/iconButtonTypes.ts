@@ -58,7 +58,7 @@ export interface ToggleColorProps {
   /**
    * Change icon and background color when toggled
    * Supports 'calculation', 'dimension', 'measure' and 'key'
-   * @default 'key'
+   * @default key
    */
   toggleColor?: ToggleColor
 }
@@ -81,12 +81,12 @@ export interface IconButtonProps
   label: string
   /**
    *  Sets the size of the button
-   * @default 'xsmall'
+   * @default xsmall
    */
   size?: IconButtonSizes
   /**
    *  Optional round icon button variant
-   * @default 'square'
+   * @default square
    */
   shape?: 'round' | 'square'
   /**

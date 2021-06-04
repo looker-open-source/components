@@ -41,13 +41,13 @@ export interface AvatarIconProps extends AvatarProps {
 
   /**
    * Icon fill & border color
-   * @default 'keyFocus'
+   * @default keyFocus
    */
   color?: string
 
   /**
    * Background color
-   * @default 'background'
+   * @default background
    */
   bg?: string
 }
@@ -90,6 +90,9 @@ const AvatarLayout: FC<AvatarIconProps> = ({
   return <BaseElement {...omitStyledProps(props)}>{icon}</BaseElement>
 }
 
+/**
+ * Display an Avatar with the specified Icon
+ */
 export const AvatarIcon = styled(AvatarLayout).attrs(
   ({ bg = 'background', color = 'keyFocus', size = 'small' }) => ({
     bg,

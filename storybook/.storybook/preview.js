@@ -3,11 +3,12 @@ import { addDecorator } from '@storybook/react'
 import React from 'react'
 import {
   ArgsTable,
+  Description,
   Primary,
   Stories,
   PRIMARY_STORY,
-} from '@storybook/addon-docs/blocks'
-import { componentsDecorator } from '../src/setup/componentsDecorator'
+} from '@storybook/addon-docs/dist/cjs/blocks'
+import { componentsDecorator } from './componentsDecorator'
 
 // Supports parent page (in Gatsby) resizing the iframe dynamically
 // to avoid scrolling
@@ -51,12 +52,19 @@ export const parameters = {
 
       return (
         <div ref={ref}>
+          <Description />
           <Primary />
           <ArgsTable story={PRIMARY_STORY} />
           <Stories />
         </div>
       )
     },
+  },
+  options: {
+    storySort: (a, b) =>
+      a[1].kind === b[1].kind
+        ? 0
+        : a[1].id.localeCompare(b[1].id, undefined, { numeric: true }),
   },
 }
 

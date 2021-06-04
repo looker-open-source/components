@@ -29,9 +29,9 @@ import {
   ThemeCustomizations,
   pickSpecifiableColors,
 } from '@looker/design-tokens'
-import { ThemeEditorForm } from '@looker/components-theme-editor'
 import React, { FC, useState, useContext } from 'react'
 import { ThemeContext } from 'styled-components'
+import { ThemeEditorForm } from '../ThemeEditorForm'
 import { Examples } from './Examples'
 
 export interface EditorProps {

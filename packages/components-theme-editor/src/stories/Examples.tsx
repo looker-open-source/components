@@ -33,12 +33,8 @@ import {
   TabPanels,
   TabPanel,
 } from '@looker/components'
-import {
-  ComponentSuite,
-  ColorSwatches,
-  FauxDashboard,
-} from '@looker/components-theme-editor'
 import React from 'react'
+import { ComponentSuite, ColorSwatches, FauxDashboard } from '../'
 
 export const Examples = () => (
   <Card width="100%">

@@ -37,7 +37,7 @@ export interface InputProps extends CompatibleHTMLProps<HTMLInputElement> {
 export interface InputTextTypeProps {
   /**
    *
-   * @default 'text'
+   * @default text
    */
   type?:
     | 'email'

@@ -45,7 +45,7 @@ export interface DataTableItemProps
    *  Sets the tooltip text and a hidden text label for the actions button (accessible to assistive technology)
    *  If unprovided by the user, a default string will be used instead
    * I18n recommended: content that is user visible should be treated for i18n
-   *  @default 'Options'
+   *  @default Options
    */
   actionsTooltip?: string
   /**

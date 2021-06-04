@@ -47,7 +47,7 @@ export interface ChipProps
     GenericClickProps<HTMLSpanElement> {
   /**
    * customize the tooltip on the closing icon
-   * @default 'Delete'
+   * @default Delete
    */
   iconLabel?: string
   onDelete?: (

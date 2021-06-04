@@ -37,19 +37,19 @@ export type AccordionIndicatorPosition = undefined | 'left' | 'right'
 export interface AccordionIndicatorProps {
   /**
    * Determines where the disclosure indicator will sit on
-   * @default 'right'
+   * @default right
    */
   indicatorPosition?: AccordionIndicatorPosition
 
   /**
    * Size of icon on disclosure
-   * @default 'small'
+   * @default small
    */
   indicatorSize?: IconSize
 
   /**
    * Space between label and indicator within disclosure
-   * @default 'xsmall'
+   * @default xsmall
    */
   indicatorGap?: SpacingSizes
 
