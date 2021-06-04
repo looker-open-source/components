@@ -66,6 +66,7 @@ Focused.parameters = {
     await button?.type(' ')
     await page.waitForTimeout(200)
   },
+  docs: { disable: true },
 }
 
 export const InitialValue = Template.bind({})

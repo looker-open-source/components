@@ -177,7 +177,6 @@ export interface SelectOptionsBaseProps {
   isFilterable?: boolean
   /**
    * Text to show when there are no available options
-   * @default "No options"
    */
   noOptionsLabel?: string
   /**

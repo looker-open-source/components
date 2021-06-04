@@ -55,9 +55,7 @@ Focused.parameters = {
     await chip?.type(' ')
     await page.waitForTimeout(50)
   },
-  sidebar: {
-    disable: true,
-  },
+  docs: { disable: true },
 }
 
 export const Disabled = Template.bind({})

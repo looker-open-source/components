@@ -50,7 +50,7 @@ export interface PromptBaseProps {
   cancelLabel?: string
   /**
    * Defines the color of the cancel button. Can be the string name of a color listed in the color theme, or a color object.
-   * @default "neutral"
+   * @default neutral
    */
   cancelColor?: StatefulColor
   /**

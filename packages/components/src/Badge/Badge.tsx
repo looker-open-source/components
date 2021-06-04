@@ -64,7 +64,7 @@ export interface BadgeProps
 
   /**
    * Defines the size of Badge diameter.
-   * @default "medium"
+   * @default medium
    */
   size?: BadgeSizes
 }

@@ -28,5 +28,5 @@ import React from 'react'
 import { ComponentsProvider } from '@looker/components-providers'
 
 export const componentsDecorator = (storyFn: any) => (
-  <ComponentsProvider loadGoogleFonts>{storyFn()}</ComponentsProvider>
+  <ComponentsProvider>{storyFn()}</ComponentsProvider>
 )

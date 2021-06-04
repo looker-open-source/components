@@ -74,6 +74,7 @@ Focused.parameters = {
     await disclosure?.type(' ')
     await page.waitForTimeout(50)
   },
+  docs: { disable: true },
 }
 
 export const Left = () => (
