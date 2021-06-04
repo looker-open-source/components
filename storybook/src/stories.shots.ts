@@ -24,7 +24,75 @@
 
  */
 
+import path from 'path'
 import initStoryshots from '@storybook/addon-storyshots'
-import { imageSnapshots } from './storyshotsConfig'
+import { imageSnapshot } from '@storybook/addon-storyshots-puppeteer'
+import { StoryshotsOptions } from '@storybook/addon-storyshots/dist/ts3.9/api/StoryshotsOptions'
+
+const STORYBOOK_DEFAULT_VIEWPORT = { height: 600, width: 800 }
+
+const storybookUrl = `file://${path.resolve('storybook/storybook-static')}`
+
+const imageSnapshots = () => {
+  return {
+    configPath: `storybook/.storybook`,
+    framework: 'react',
+    suite: 'Image Snapshots',
+    test: imageSnapshot({
+      beforeScreenshot: async (page, { context }) => {
+        // override viewport for responsive design tests
+        const { beforeScreenshot, viewport } = context.parameters
+        const pageViewport = page.viewport()
+
+        if (viewport) {
+          const defaultViewport = viewport.viewports[viewport.defaultViewport]
+          await page.setViewport({
+            height: parseInt(defaultViewport.styles.height, 10),
+            width: parseInt(defaultViewport.styles.width, 10),
+          })
+          await page.waitForTimeout(500)
+        } else if (
+          pageViewport &&
+          (pageViewport.width !== STORYBOOK_DEFAULT_VIEWPORT.width ||
+            pageViewport.height !== STORYBOOK_DEFAULT_VIEWPORT.height)
+        ) {
+          await page.setViewport(STORYBOOK_DEFAULT_VIEWPORT)
+          await page.waitForTimeout(500)
+        }
+
+        ;(context as any).clip = await page.evaluate(() => {
+          const backdrop = document.querySelector(
+            '#modal-root [data-testid="backdrop"]'
+          )
+
+          const { height, width, left: x, top: y } = (
+            backdrop || document.body
+          ).getBoundingClientRect()
+
+          return { height, width, x, y }
+        })
+        if (beforeScreenshot) {
+          await beforeScreenshot(page)
+        }
+      },
+
+      getMatchOptions({ context: { kind, story } }) {
+        return {
+          customSnapshotIdentifier: story,
+          customSnapshotsDir: path.join('snapshots', ...kind.split('/')),
+          failureThreshold: 0.005,
+          failureThresholdType: 'percent',
+        }
+      },
+      getScreenshotOptions: ({ context }) => {
+        const { clip } = context as any
+
+        return { clip, encoding: 'base64', fullPage: false }
+      },
+
+      storybookUrl,
+    }),
+  } as StoryshotsOptions
+}
 
 initStoryshots(imageSnapshots())
