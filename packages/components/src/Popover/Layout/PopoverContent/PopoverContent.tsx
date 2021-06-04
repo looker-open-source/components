@@ -42,6 +42,12 @@ const PopoverContentLayout: FC<PopoverContentProps> = ({
   )
 }
 
+<<<<<<< HEAD
 export const PopoverContent = styled(PopoverContentLayout)<PopoverContentProps>`
   ${layout}
 `
+=======
+export const PopoverContent = styled(
+  PopoverContentLayout
+)<PopoverContentProps>``
+>>>>>>> 55efb3005 (Update PopoverContent.tsx)
