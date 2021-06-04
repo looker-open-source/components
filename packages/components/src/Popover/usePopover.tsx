@@ -215,9 +215,8 @@ export const usePopover = ({
     }),
     [element, pin, propsPlacement]
   )
-  const { placement, popperInstanceRef, style, targetRef } = usePopper(
-    usePopperProps
-  )
+  const { placement, popperInstanceRef, style, targetRef } =
+    usePopper(usePopperProps)
 
   const verticalSpace = useVerticalSpace(
     element,

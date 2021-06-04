@@ -32,10 +32,10 @@ import { InputTime, InputTimeProps } from './InputTime'
 const globalConsole = global.console
 
 beforeEach(() => {
-  global.console = ({
+  global.console = {
     error: jest.fn(),
     warn: jest.fn(),
-  } as unknown) as Console
+  } as unknown as Console
 })
 
 afterEach(() => {

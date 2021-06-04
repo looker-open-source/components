@@ -286,9 +286,9 @@ describe('Dialog', () => {
       const globalConsole = global.console
       const errorMock = jest.fn()
 
-      global.console = ({
+      global.console = {
         error: errorMock,
-      } as unknown) as Console
+      } as unknown as Console
 
       renderWithTheme(<Dialog />)
       expect(errorMock.mock.calls).toMatchInlineSnapshot(`

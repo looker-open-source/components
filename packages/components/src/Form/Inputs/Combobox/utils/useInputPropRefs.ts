@@ -41,11 +41,8 @@ export function useInputPropRefs<
   { autoComplete = true, freeInput = false, inputReadOnly = false }: TProps,
   context: Context<TContext>
 ) {
-  const {
-    autoCompletePropRef,
-    freeInputPropRef,
-    inputReadOnlyPropRef,
-  } = useContext(context)
+  const { autoCompletePropRef, freeInputPropRef, inputReadOnlyPropRef } =
+    useContext(context)
 
   useLayoutEffect(() => {
     if (autoCompletePropRef) autoCompletePropRef.current = autoComplete

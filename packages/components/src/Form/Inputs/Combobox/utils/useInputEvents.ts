@@ -166,10 +166,8 @@ export function useInputEvents<
     [inputElement, selectText]
   )
 
-  const {
-    onMouseDown: handleMouseDown,
-    onClick: handleClick,
-  } = useMouseDownClick(handleMouseDownClick, handleMouseUp)
+  const { onMouseDown: handleMouseDown, onClick: handleClick } =
+    useMouseDownClick(handleMouseDownClick, handleMouseUp)
 
   const wrappedOnBlur = useWrapEvent(handleBlur, onBlur)
   const wrappedOnClick = useWrapEvent(handleClick, onClick)

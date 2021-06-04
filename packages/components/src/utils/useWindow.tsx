@@ -82,12 +82,8 @@ const reducer: Reducer<WindowHeightState, WindowHeightAction> = (
   action
 ) => {
   let { beforeHeight, afterHeight, start, end } = state
-  const {
-    scrollPosition,
-    height,
-    totalHeight,
-    childHeightLadder,
-  } = action.payload
+  const { scrollPosition, height, totalHeight, childHeightLadder } =
+    action.payload
 
   const scrollTop = scrollPosition
   const scrollBottom = scrollPosition + height

@@ -85,9 +85,8 @@ export const usePopoverToggle = (
   triggerElement: HTMLElement | null
 ): [boolean, (value: boolean) => void] => {
   const [uncontrolledIsOpen, uncontrolledSetOpen] = useState(controlledIsOpen)
-  const [mouseDownTarget, setMouseDownTarget] = useState<EventTarget | null>(
-    null
-  )
+  const [mouseDownTarget, setMouseDownTarget] =
+    useState<EventTarget | null>(null)
   const isControlled = useControlWarn({
     controllingProps: ['setOpen'],
     isControlledCheck: () => controlledSetOpen !== undefined,

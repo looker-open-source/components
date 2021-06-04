@@ -67,12 +67,8 @@ export const useTrapStack = <
 }: UseTrapStackProps<E, O>): [E | null, (node: E | null) => void] => {
   const id = useID()
   const [element, callbackRef] = useCallbackRef(ref)
-  const {
-    addTrap,
-    removeTrap,
-    disableCurrentTrap,
-    enableCurrentTrap,
-  } = useContext(context)
+  const { addTrap, removeTrap, disableCurrentTrap, enableCurrentTrap } =
+    useContext(context)
 
   useEffect(() => {
     if (!addTrap) {

@@ -169,16 +169,14 @@ const ListItemInternal = forwardRef(
       </Wrapper>
     )
 
-    const { accessory, content, hoverDisclosure, padding } = getDetailOptions(
-      detail
-    )
+    const { accessory, content, hoverDisclosure, padding } =
+      getDetailOptions(detail)
 
     const wrapperRef = useRef<HTMLLIElement | HTMLDivElement>(null)
     const actualRef = useForkedRef(wrapperRef, ref)
     useEffect(() => {
-      const focusableElements = wrapperRef?.current?.querySelectorAll(
-        'a, button, input'
-      )
+      const focusableElements =
+        wrapperRef?.current?.querySelectorAll('a, button, input')
 
       if (focusableElements) {
         focusableElements.forEach((activeElement) => {

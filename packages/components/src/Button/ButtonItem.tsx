@@ -51,9 +51,11 @@ const ButtonLayout = forwardRef(
     { children, onClick, value, onBlur, onKeyUp, ...props }: ButtonItemProps,
     ref: Ref<HTMLButtonElement>
   ) => {
-    const { disabled, value: contextValue, onItemClick } = useContext(
-      ButtonSetContext
-    )
+    const {
+      disabled,
+      value: contextValue,
+      onItemClick,
+    } = useContext(ButtonSetContext)
 
     const focusVisibleProps = useFocusVisible({ onBlur, onKeyUp })
 

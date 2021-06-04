@@ -147,9 +147,9 @@ describe('TreeItem', () => {
     const globalConsole = global.console
     const warnMock = jest.fn()
 
-    global.console = ({
+    global.console = {
       warn: warnMock,
-    } as unknown) as Console
+    } as unknown as Console
 
     renderWithTheme(<TreeItem onClickWhitespace={jest.fn()}>Whatever</TreeItem>)
     expect(warnMock.mock.calls).toMatchInlineSnapshot(`

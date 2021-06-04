@@ -37,9 +37,9 @@ const warnMock = jest.fn()
 
 beforeEach(() => {
   jest.useFakeTimers()
-  global.console = ({
+  global.console = {
     warn: warnMock,
-  } as unknown) as Console
+  } as unknown as Console
 })
 
 afterEach(() => {
@@ -161,9 +161,9 @@ describe('MenuItem', () => {
   test('warns on nested menu item w/ detail', () => {
     const warnMock = jest.fn()
 
-    global.console = ({
+    global.console = {
       warn: warnMock,
-    } as unknown) as Console
+    } as unknown as Console
 
     renderWithTheme(
       <MenuItem detail="Something" nestedMenu>

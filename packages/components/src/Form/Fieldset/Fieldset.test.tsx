@@ -44,9 +44,9 @@ const warnMock = jest.fn()
 
 beforeEach(() => {
   jest.useFakeTimers()
-  global.console = ({
+  global.console = {
     warn: warnMock,
-  } as unknown) as Console
+  } as unknown as Console
 })
 
 afterEach(() => {

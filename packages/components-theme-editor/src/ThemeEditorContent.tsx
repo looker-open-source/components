@@ -57,13 +57,11 @@ export const ThemeEditorContent: FC<ThemeEditorContentProps> = ({
   const { closeModal } = useContext(DialogContext)
   const { colors, fonts } = useContext(ThemeContext)
 
-  const [
-    themeCustomizations,
-    setThemeCustomizations,
-  ] = useState<ThemeCustomizations>({
-    colors: pickSpecifiableColors(colors),
-    fontFamilies: { ...fonts },
-  })
+  const [themeCustomizations, setThemeCustomizations] =
+    useState<ThemeCustomizations>({
+      colors: pickSpecifiableColors(colors),
+      fontFamilies: { ...fonts },
+    })
 
   const saveChanges = () => {
     closeModal()
