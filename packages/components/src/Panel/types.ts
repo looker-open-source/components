@@ -37,7 +37,7 @@ export interface PanelProps extends UsePanelProps {
 export type PanelSurfaceProps = {
   /**
    * Edge of the screen from which the panel will enter
-   * @default 'left'
+   * @default left
    */
   direction?: PanelDirection
 }
@@ -97,7 +97,7 @@ export type UsePanelProps = PanelBaseProps & {
 
   /**
    * Edge of the screen from which the panel will enter
-   * @default 'left'
+   * @default left
    */
   direction?: PanelDirection
   /**

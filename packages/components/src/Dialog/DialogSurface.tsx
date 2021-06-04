@@ -56,7 +56,7 @@ export interface DialogSurfaceProps {
    *    height: grows to fit content. Total height will keep surface a small amount from top and bottom
    *      of viewport
    *    width: default `medium` above mobile breakpoint
-   * @default 'center'
+   * @default center
    */
   placement?: DialogPlacements
 

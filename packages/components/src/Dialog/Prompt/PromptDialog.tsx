@@ -45,7 +45,7 @@ export type PromptCallback = (close: () => void) => void
 export interface PromptBaseProps {
   /**
    * Cancel button text
-   * @default 'Cancel'
+   * @default Cancel
    */
   cancelLabel?: string
   /**

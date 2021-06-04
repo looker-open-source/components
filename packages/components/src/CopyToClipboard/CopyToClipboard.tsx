@@ -47,13 +47,13 @@ export interface CopyToClipboardProps {
   /**
    * button's label | a JSX element to replace the button
    * I18n recommended: content that is user visible should be treated for i18n
-   * @default 'Copy to Clipboard'
+   * @default "Copy to Clipboard"
    */
   children?: string | JSX.Element
   /**
    * button's successfully copied label | a JSX element to replace the button
    * I18n recommended: content that is user visible should be treated for i18n
-   * @default 'Copied'
+   * @default Copied
    */
   success?: string | JSX.Element
 }

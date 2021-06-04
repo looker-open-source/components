@@ -33,7 +33,7 @@ export interface SpaceVerticalProps extends Omit<SpaceHelperProps, 'align'> {
    * Align items vertically within `Space`.
    * `stretch` will cause items to stretch the full-width the `SpaceVertical`
    * `start` & `end` will apply a `flex-start` and `flex-end` behavior respectively
-   * @default 'start'
+   * @default start
    */
   align?: 'start' | 'center' | 'end' | 'stretch'
 }

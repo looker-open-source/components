@@ -147,7 +147,7 @@ export interface ComboboxInputCommonProps {
   autoComplete?: boolean
   /**
    * customize the tooltip on the clear icon
-   * @default 'Clear Field'
+   * @default "Clear Field"
    */
   clearIconLabel?: string
   isClearable?: boolean

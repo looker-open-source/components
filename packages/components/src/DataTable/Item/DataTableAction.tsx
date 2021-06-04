@@ -38,7 +38,7 @@ export interface DataTableActionProps extends CompatibleHTMLProps<HTMLElement> {
   /**
    * Determines if the DataTableAction is an <a/> or <button/> element
    * Note: The value passed into this prop is passed into the underlying MenuItem's itemRole prop
-   * @default 'button'
+   * @default button
    */
   itemRole?: 'link' | 'button'
 }

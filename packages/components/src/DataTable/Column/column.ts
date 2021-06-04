@@ -47,7 +47,7 @@ export interface DataTableColumn {
   id: string
   /**
    * In some locales, we may change horizontal alignment of 'number'
-   * @default 'string'
+   * @default string
    */
   type?: DataTableColumnType
   /**
@@ -66,7 +66,7 @@ export interface DataTableColumn {
    *    may be somewhat unpredictable as well (browser table column calculations vary widely
    *    in these scenarios)
    *
-   * @default `auto`
+   * @default auto
    */
   size?: DataTableColumnSize
   /**

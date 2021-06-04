@@ -37,24 +37,24 @@ export interface ConfirmationProps extends DialogProps {
   /**
    * Cancel button text
    * I18n recommended: content that is user visible should be treated for i18n
-   * @default 'Cancel'
+   * @default Cancel
    */
   cancelLabel?: string
   /**
    * Defines the color of the confirm button. Can be the string name of a color listed in the color theme, or a color object.
-   * @default 'key'
+   * @default key
    */
   buttonColor?: StatefulColor
   /**
    * Defines the color of the confirm button. Can be the string name of a color listed in the color theme, or a color object.
-   * @default "neutral"
+   * @default neutral
    */
   cancelColor?: StatefulColor
   /**
    * Confirmation button text
    *
    * I18n recommended: content that is user visible should be treated for i18n
-   * @default 'Confirm'
+   * @default Confirm
    */
   confirmLabel?: string
   /**

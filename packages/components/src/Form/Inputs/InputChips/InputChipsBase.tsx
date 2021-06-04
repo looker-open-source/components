@@ -89,13 +89,13 @@ export interface InputChipsCommonProps
   formatChip?: (value: string) => string
   /**
    * customize the tooltip on the closing icon
-   * @default 'Delete'
+   * @default Delete
    */
   chipIconLabel?: string
 
   /**
    * customize the tooltip on the closing icon
-   * @default 'Clear Field'
+   * @default "Clear Field"
    */
   clearIconLabel?: string
 

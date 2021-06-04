@@ -34,7 +34,7 @@ import { DialogContext } from '../Dialog'
 export interface ModalHeaderCloseButtonProps {
   /**
    * this will define the size of the button
-   * @default 'medium'
+   * @default medium
    */
   size?: IconButtonProps['size']
 }

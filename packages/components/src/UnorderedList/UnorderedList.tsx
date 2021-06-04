@@ -52,7 +52,7 @@ export interface UnorderedListProps
   /**
    * Specify the type of marker to place next to list items.
    *
-   * @default 'none'
+   * @default none
    */
   type?: 'none' | 'bullet'
 }

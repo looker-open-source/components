@@ -98,7 +98,7 @@ export type TreeProps = Omit<
     /**
      * Use itemRole to set the type of wrapper element for the label
      * Note: Unlike TreeItem, 'button' is not an allowed value since click event handlers are passed to the nested <AccordionDisclosure> div
-     * @default 'none'
+     * @default none
      */
     itemRole?: 'link' | 'none'
     /**
