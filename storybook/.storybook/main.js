@@ -28,7 +28,7 @@
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 const excludeNodeModulesExcept = require('babel-loader-exclude-node-modules-except')
 
-module.exports = {
+const config = {
   addons: [
     {
       name: '@storybook/addon-essentials',
@@ -39,6 +39,9 @@ module.exports = {
     },
     '@storybook/addon-a11y',
   ],
+  features: {
+    postcss: false,
+  },
   stories: ['../src/**/*.stories.tsx', '../../packages/**/*.story.tsx'],
   webpackFinal: async (config) => {
     config.module.rules.push({
@@ -63,3 +66,18 @@ module.exports = {
     return config
   },
 }
+
+/**
+ * `react-docgen-typescript` is slow because it has to parse _everything_.
+ *
+ * `fast` builds (used by image-snapshots)  turn off docgen as well as all addons since
+ * neither will be needed for snapshots and it significantly improves Storybook performance.
+ */
+const mode = process.env.storybookBuildMode
+
+if (mode === 'fast') {
+  config.typescript = { check: false, reactDocgen: false }
+  config.addons = []
+}
+
+module.exports = config

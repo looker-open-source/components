@@ -6,7 +6,7 @@ import {
   Primary,
   Stories,
   PRIMARY_STORY,
-} from '@storybook/addon-docs/blocks'
+} from '@storybook/addon-docs'
 import { componentsDecorator } from './componentsDecorator'
 
 // Supports parent page (in Gatsby) resizing the iframe dynamically
