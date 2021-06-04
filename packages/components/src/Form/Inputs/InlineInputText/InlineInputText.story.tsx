@@ -78,7 +78,7 @@ export const OverflowHiddenInlineInputText = () => (
       width: '100px',
     }}
   >
-    <InlineInputText />
+    <InlineInputText value="Long example value that should require scrolling to reach" />
   </div>
 )
 OverflowHiddenInlineInputText.parameters = {
