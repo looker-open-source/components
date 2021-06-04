@@ -14,7 +14,7 @@
 
     "prestoryshots-task": "yarn storyshots-build && yarn storyshots-preview-backup",
     "storyshots-task": "yarn jest",
-    "posttoryshots-task": "yarn storyshots-preview-restore",
+    "poststoryshots-task": "yarn storyshots-preview-restore",
 
     "snapshots": "yarn storyshots-task --config ./jest-image-snapshots.config.js",
     "snapshots-update": "yarn snapshots -u",

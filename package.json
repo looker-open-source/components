@@ -52,7 +52,6 @@
     "test:image-snapshots": "yarn workspace storybook snapshots",
     "test:image-snapshots-update": "yarn workspace storybook snapshots-update",
     "storybook": "yarn workspace storybook develop",
-    "presnapshots": "yarn prebuild",
     "website-canary": "./config/website-canary.sh",
     "website-latest": "./config/website-latest.sh"
   },
