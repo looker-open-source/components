@@ -172,6 +172,7 @@ Focused.parameters = {
     await table?.type(' ')
     await page.waitForTimeout(50)
   },
+  docs: { disable: true },
 }
 
 export const Filters = Template.bind({})

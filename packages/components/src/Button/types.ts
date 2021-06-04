@@ -42,7 +42,7 @@ export interface ButtonIconProps {
 export interface ButtonColorProps {
   /**
    * Defines the color of the button. Can be the string name of a color listed in the color theme, or a color object.
-   * @default "key"
+   * @default key
    */
   color?: StatefulColor
 }

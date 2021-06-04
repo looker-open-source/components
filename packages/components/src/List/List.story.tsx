@@ -70,6 +70,7 @@ Focused.parameters = {
     await button?.type(' ')
     await page.waitForTimeout(50)
   },
+  docs: { disable: true },
 }
 
 export const FontFamily = Template.bind({})

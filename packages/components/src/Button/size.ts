@@ -50,7 +50,7 @@ export type ButtonSizes =
 export interface ButtonSizeProps {
   /**
    * Defines the size of the button.
-   * @default "medium"
+   * @default medium
    */
   size?: ButtonBaseSizes
 }

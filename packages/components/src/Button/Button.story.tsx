@@ -52,6 +52,7 @@ const beforeScreenshot = async (page: Page) => {
 }
 Focused.parameters = {
   beforeScreenshot,
+  docs: { disable: true },
 }
 
 export const Critical = Template.bind({})

@@ -95,7 +95,6 @@ export interface InputChipsCommonProps
 
   /**
    * customize the tooltip on the closing icon
-   * @default "Clear Field"
    */
   clearIconLabel?: string
 

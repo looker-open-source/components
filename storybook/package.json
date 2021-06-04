@@ -6,7 +6,19 @@
   "private": true,
   "scripts": {
     "develop": "start-storybook  -c .storybook -p 3333  --host 0.0.0.0",
-    "build": "build-storybook -c .storybook"
+    "build": "build-storybook -c .storybook",
+
+    "storyshots-build": "export storybookBuildMode=fast && yarn build",
+    "storyshots-preview-backup": "mv .storybook/preview.js .storybook/preview.js.bu",
+    "storyshots-preview-restore": "mv .storybook/preview.js.bu .storybook/preview.js",
+
+    "prestoryshots-task": "yarn storyshots-build && yarn storyshots-preview-backup",
+    "storyshots-task": "yarn jest",
+    "poststoryshots-task": "yarn storyshots-preview-restore",
+
+    "snapshots": "yarn storyshots-task --config ./jest-image-snapshots.config.js",
+    "snapshots-update": "yarn snapshots -u",
+    "a11y": "yarn storyshots-task --config ./jest-a11y.config.js"
   },
   "dependencies": {
     "@looker/components": "^1.4.0",

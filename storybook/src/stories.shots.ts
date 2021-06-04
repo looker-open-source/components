@@ -31,11 +31,10 @@ import { StoryshotsOptions } from '@storybook/addon-storyshots/dist/ts3.9/api/St
 
 const STORYBOOK_DEFAULT_VIEWPORT = { height: 600, width: 800 }
 
-const storybookUrl = `file://${path.resolve('storybook/storybook-static')}`
+const storybookUrl = `file://${path.resolve('storybook-static')}`
 
 const imageSnapshots = () => {
   return {
-    configPath: `storybook/.storybook`,
     framework: 'react',
     suite: 'Image Snapshots',
     test: imageSnapshot({
@@ -82,7 +81,7 @@ const imageSnapshots = () => {
       getMatchOptions({ context: { kind, story } }) {
         return {
           customSnapshotIdentifier: story,
-          customSnapshotsDir: path.join('snapshots', ...kind.split('/')),
+          customSnapshotsDir: path.join('../snapshots', ...kind.split('/')),
           failureThreshold: 0.005,
           failureThresholdType: 'percent',
         }

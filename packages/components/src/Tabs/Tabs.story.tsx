@@ -74,6 +74,7 @@ Focused.parameters = {
     await tabs?.type(' ')
     await page.waitForTimeout(50)
   },
+  docs: { disable: true },
 }
 
 export const Controlled: FC = () => {

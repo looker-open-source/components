@@ -24,15 +24,15 @@
 
  */
 
+import path from 'path'
 import initStoryshots from '@storybook/addon-storyshots'
 import { axeTest } from '@storybook/addon-storyshots-puppeteer'
 import { StoryshotsOptions } from '@storybook/addon-storyshots/dist/ts3.9/api/StoryshotsOptions'
 
 const a11y = () => {
-  const storybookUrl = 'storybook/storybook-static'
+  const storybookUrl = `file://${path.resolve('storybook-static')}`
 
   return {
-    configPath: `storybook/.storybook`,
     framework: 'react',
     suite: 'a11y suite',
     test: axeTest({ storybookUrl }),
