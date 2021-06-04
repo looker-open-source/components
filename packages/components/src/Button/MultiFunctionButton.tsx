@@ -38,7 +38,7 @@ import styled from 'styled-components'
 import { useForkedRef } from '../utils'
 import { ButtonProps, IconButtonProps } from '.'
 
-export interface MultiFunctionButtonProps {
+export type MultiFunctionButtonProps = {
   alternate: ReactElement<
     (ButtonProps | IconButtonProps) & RefAttributes<HTMLButtonElement>
   >
@@ -49,6 +49,14 @@ export interface MultiFunctionButtonProps {
   swap?: boolean
 }
 
+/**
+ * MultiFunctionButton "swaps" the button shown generally with the "alternate"
+ * button specified. This component is generally intended for showing a button with
+ * a cancelable "loading" state or similar.
+ *
+ * The smaller of the two buttons will automatically be resized to match the width of
+ * the larger to prevent layout "jitter" when the component swaps between states.
+ */
 export const MultiFunctionButton = forwardRef(
   (
     {
@@ -85,33 +93,39 @@ export const MultiFunctionButton = forwardRef(
       }
     }, [swap])
 
+    const style = containerWidth > 0 ? { width: containerWidth } : undefined
+
     return (
-      <MultiFunctionButtonLayout
+      <MultiFunctionButtonStyle
         swap={swap}
         height={containerHeight}
         width={containerWidth}
       >
         {cloneElement(children, {
           'aria-hidden': !!swap,
+          disabled: swap === true ? true : undefined,
           ref: useForkedRef(aRef, forwardedRef),
+          style,
         })}
         {cloneElement(alternate, {
           'aria-hidden': !swap,
+          disabled: swap === false ? true : undefined,
           ref: useForkedRef(bRef, alternateRef),
+          style,
         })}
-      </MultiFunctionButtonLayout>
+      </MultiFunctionButtonStyle>
     )
   }
 )
 MultiFunctionButton.displayName = 'MultiFunctionButton'
 
-export interface MultiFunctionButtonLayoutProp {
+type MultiFunctionButtonStyleProps = {
   swap?: boolean
   height: number
   width: number
 }
 
-const MultiFunctionButtonLayout = styled.div<MultiFunctionButtonLayoutProp>`
+const MultiFunctionButtonStyle = styled.div<MultiFunctionButtonStyleProps>`
   align-items: center;
   display: flex;
   height: ${({ height }) => height}px;
