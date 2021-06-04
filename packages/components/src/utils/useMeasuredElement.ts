@@ -29,7 +29,20 @@ import { useResize } from './useResize'
 
 function measureElement(element?: HTMLElement | null) {
   if (!element) {
-    return new DOMRect()
+    return typeof DOMRect === 'function'
+      ? new DOMRect()
+      : {
+          bottom: 0,
+          height: 0,
+          left: 0,
+          rect: {},
+          right: 0,
+          toJSON: () => null,
+          top: 0,
+          width: 0,
+          x: 0,
+          y: 0,
+        }
   }
 
   return element.getBoundingClientRect()
