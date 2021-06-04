@@ -70,7 +70,7 @@ const IconButtonComponent = forwardRef(
     const {
       domProps: {
         'aria-describedby': ariaDescribedBy,
-        className: tooltipClassName,
+        className: tooltipClassName = '',
         ref,
         onFocus,
         onBlur,
