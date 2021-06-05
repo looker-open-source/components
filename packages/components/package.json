@@ -25,7 +25,7 @@
     "@styled-icons/material-outlined": "^10.28.0",
     "@styled-icons/material-rounded": "^10.28.0",
     "@styled-icons/styled-icon": "^10.6.3",
-    "d3-color": "^2.0.0",
+    "d3-color": "^3.0.0",
     "d3-hsv": "^0.1.0",
     "hotkeys-js": "^3.8.3",
     "i18next": "20.3.1",
