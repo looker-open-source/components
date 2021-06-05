@@ -21,7 +21,7 @@
     "@looker/components-providers": "^1.3.1",
     "@looker/design-tokens": "^1.3.1",
     "@popperjs/core": "^2.6.0",
-    "@styled-icons/material": "^10.28.0",
+    "@styled-icons/material": "^10.34.0",
     "@styled-icons/material-outlined": "^10.28.0",
     "@styled-icons/material-rounded": "^10.28.0",
     "@styled-icons/styled-icon": "^10.6.3",
