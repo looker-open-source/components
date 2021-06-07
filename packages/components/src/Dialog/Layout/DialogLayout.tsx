@@ -43,7 +43,7 @@ export interface DialogLayoutProps {
   footerSecondary?: ReactNode
 
   /**
-   * Content in header. If a `string` is supplied the content will be placed in a <Header />
+   * Content in header. If a `string` is supplied the content will be placed in a `<Header />`
    */
   header?: ReactChild
   /**

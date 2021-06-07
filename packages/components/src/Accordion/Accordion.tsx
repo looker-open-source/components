@@ -80,14 +80,14 @@ export interface AccordionProps
   /**
    * We currently support two different compositions for Accordion:
    *  - `Accordion`'s children will act as the "trigger" element (i.e. children always visible, clicking children toggles whether content is visible or not)
-   *  - Legacy: <Accordion> wrapped around an <AccordionDisclosure> and <AccordionContent> (NOTE: This composition will be deprecated in a future MAJOR release)
+   *  - Legacy: `<Accordion>` wrapped around an `<AccordionDisclosure>` and `<AccordionContent>` (NOTE: This composition will be deprecated in a future MAJOR release)
    * @TODO Deprecate legacy format in 2.x
    */
   children: ReactNode
   className?: string
   /**
-   * Determines the content shown or hidden by the <Accordion>'s open state.
-   * Note: If using the "Legacy" <Accordion> composition, provide an <AccordionContent> child instead of using the content prop.
+   * Determines the content shown or hidden by the Accordion's open state.
+   * Note: If using the "Legacy" Accordion composition, provide an `<AccordionContent>` child instead of using the content prop.
    * @TODO Going to be required in 2.x
    */
   content?: ReactNode

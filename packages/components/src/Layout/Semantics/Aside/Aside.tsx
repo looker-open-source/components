@@ -43,7 +43,7 @@ export interface AsideProps extends SemanticLayoutBase, SemanticBorderProps {
    */
   collapse?: boolean
   /**
-   * To be used within the context of <Page fixed> container.
+   * To be used within the context of `<Page fixed>` container.
    * When true, this removes the inner overflow-y scrolling
    * and allows content within a Layout group to scroll together.
    * @default false
