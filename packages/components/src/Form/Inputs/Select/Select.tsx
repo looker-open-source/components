@@ -75,7 +75,7 @@ export interface SelectBaseProps
    * Render only the options visible in the scroll window
    * defaults to false for <100 options, true for >=100 options
    */
-  windowedOptions?: boolean
+  windowing?: boolean
 }
 
 export interface SelectProps
@@ -118,7 +118,7 @@ const SelectComponent = forwardRef(
       indicator,
       listLayout,
       autoResize,
-      windowedOptions: windowedOptionsProp,
+      windowing: windowingProp,
       showCreate = false,
       formatCreateLabel,
       isLoading,
@@ -151,10 +151,7 @@ const SelectComponent = forwardRef(
 
     const ariaProps = pickAriaAndValidationProps(props)
 
-    const windowedOptions = useShouldWindowOptions(
-      flatOptions,
-      windowedOptionsProp
-    )
+    const windowing = useShouldWindowOptions(flatOptions, windowingProp)
 
     return (
       <Combobox
@@ -185,7 +182,7 @@ const SelectComponent = forwardRef(
         {!disabled && (
           <ComboboxList
             persistSelection
-            windowedOptions={windowedOptions}
+            windowing={windowing}
             indicator={indicator}
             width={autoResize ? 'auto' : undefined}
             aria-busy={isLoading}
@@ -195,7 +192,7 @@ const SelectComponent = forwardRef(
             <SelectOptions
               flatOptions={flatOptions}
               navigationOptions={navigationOptions}
-              windowedOptions={windowedOptions}
+              windowing={windowing}
               isFilterable={isFilterable}
               noOptionsLabel={noOptionsLabel}
               showCreate={showCreate}

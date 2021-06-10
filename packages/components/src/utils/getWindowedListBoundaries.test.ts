@@ -31,8 +31,8 @@ describe('getWindowedListBoundaries', () => {
     const result = getWindowedListBoundaries({
       enabled: false,
       height: 446,
+      itemCount: 129,
       itemHeight: 57,
-      length: 129,
       scrollPosition: 0,
     })
 
@@ -42,8 +42,8 @@ describe('getWindowedListBoundaries', () => {
 
   test('returns 0 0 if height and scrollPosition are missing', () => {
     const result = getWindowedListBoundaries({
+      itemCount: 98,
       itemHeight: 31,
-      length: 98,
     })
 
     expect(result.start).toEqual(0)
@@ -53,8 +53,8 @@ describe('getWindowedListBoundaries', () => {
   test('top of list', () => {
     const result = getWindowedListBoundaries({
       height: 1002,
+      itemCount: 873,
       itemHeight: 16,
-      length: 873,
       scrollPosition: 0,
     })
 
@@ -65,8 +65,8 @@ describe('getWindowedListBoundaries', () => {
   test('middle of list', () => {
     const result = getWindowedListBoundaries({
       height: 775,
+      itemCount: 1109,
       itemHeight: 26,
-      length: 1109,
       scrollPosition: 922,
     })
 
@@ -77,8 +77,8 @@ describe('getWindowedListBoundaries', () => {
   test('end of list', () => {
     const result = getWindowedListBoundaries({
       height: 300,
+      itemCount: 50,
       itemHeight: 30,
-      length: 50,
       scrollPosition: 1200,
     })
 
@@ -90,8 +90,8 @@ describe('getWindowedListBoundaries', () => {
     const result = getWindowedListBoundaries({
       buffer: 11,
       height: 1002,
+      itemCount: 873,
       itemHeight: 16,
-      length: 873,
       scrollPosition: 0,
     })
 
@@ -103,8 +103,8 @@ describe('getWindowedListBoundaries', () => {
     const result = getWindowedListBoundaries({
       buffer: 11,
       height: 775,
+      itemCount: 1109,
       itemHeight: 26,
-      length: 1109,
       scrollPosition: 922,
     })
 
@@ -116,8 +116,8 @@ describe('getWindowedListBoundaries', () => {
     const result = getWindowedListBoundaries({
       buffer: 11,
       height: 300,
+      itemCount: 50,
       itemHeight: 30,
-      length: 50,
       scrollPosition: 1200,
     })
 

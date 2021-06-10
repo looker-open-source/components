@@ -79,10 +79,9 @@ export type ListProps = ListColorProps &
 
     /**
      * Use windowing for long lists (strongly recommended to also define a width on List or its container)
-     * 'none' - default with children are <= 100.
-     * 'fixed' - better performance, default when first child is a ListItem (height will default to 100%)
+     * Defaults to false with children <= 100 and true for > 100
      */
-    windowing?: 'fixed' | 'none'
+    windowing?: boolean
   }
 
 const getListItemHeight = (child: ReactChild, height: number) => {
@@ -118,27 +117,32 @@ export const ListInternal = forwardRef(
     )
 
     if (windowing === undefined) {
-      if (childArray.length > 100) {
-        windowing = 'fixed'
-      } else {
-        windowing = 'none'
-      }
+      windowing = childArray.length > 100
     }
 
-    if (height === undefined && windowing !== 'none') {
+    if (height === undefined && windowing) {
       // Need a height for windowing to work
       height = '100%'
     }
 
-    const { content, ref } = useWindow({
-      childHeight: childArray[0]
+    const { after, before, end, start, ref } = useWindow({
+      enabled: windowing,
+      itemCount: childArray.length,
+      itemHeight: childArray[0]
         ? getListItemHeight(childArray[0] as ReactChild, itemDimensions.height)
         : 0,
-      children: children as JSX.Element | JSX.Element[],
-      enabled: windowing !== 'none',
       ref: forwardedRef,
       spacerTag: 'li',
     })
+    const content = windowing ? (
+      <>
+        {before}
+        {childArray.slice(start, end + 1)}
+        {after}
+      </>
+    ) : (
+      childArray
+    )
 
     const navProps = useArrowKeyNav({
       disabled: disableKeyboardNav,
@@ -181,7 +185,7 @@ const ListStyle = styled.ul
 
   list-style: none;
   margin: 0;
-  ${({ windowing }) => windowing !== 'none' && 'overflow: auto;'}
+  ${({ windowing }) => windowing && 'overflow: auto;'}
   padding: 0;
 `
 

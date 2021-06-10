@@ -39,7 +39,6 @@ const globalGetBoundingClientRect = Element.prototype.getBoundingClientRect
 describe('MenuList', () => {
   describe('windowing', () => {
     beforeEach(() => {
-      jest.useFakeTimers()
       /* eslint-disable-next-line @typescript-eslint/unbound-method */
       Element.prototype.getBoundingClientRect = jest.fn(() => {
         return {
@@ -57,14 +56,12 @@ describe('MenuList', () => {
     })
 
     afterEach(() => {
-      jest.runOnlyPendingTimers()
-      jest.useRealTimers()
       jest.resetAllMocks()
       /* eslint-disable-next-line @typescript-eslint/unbound-method */
       Element.prototype.getBoundingClientRect = globalGetBoundingClientRect
     })
 
-    test('fixed', () => {
+    test('windows a long list', () => {
       const arr3000 = Array.from(Array(3000), (_, i) => i)
       renderWithTheme(
         <MenuList>

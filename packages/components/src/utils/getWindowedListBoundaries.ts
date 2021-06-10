@@ -31,9 +31,9 @@ export interface GetWindowedListBoundaryProps {
    */
   enabled?: boolean
   /**
-   * The length of items in the list
+   * The total number of items in the list
    */
-  length: number
+  itemCount: number
   /**
    * The height of an individual item
    */
@@ -60,10 +60,10 @@ export function getWindowedListBoundaries({
   height,
   scrollPosition,
   enabled = true,
+  itemCount,
   itemHeight,
-  length,
 }: GetWindowedListBoundaryProps) {
-  if (!enabled) return { ...initialResult, end: length - 1 }
+  if (!enabled) return { ...initialResult, end: itemCount - 1 }
 
   if (scrollPosition === undefined || height === undefined)
     // scroll position and height probably undefined on initial render
@@ -74,8 +74,8 @@ export function getWindowedListBoundaries({
   const bottom = Math.ceil((height + scrollPosition) / itemHeight)
 
   const start = top - buffer < 0 ? 0 : top - buffer
-  const end = bottom + buffer > length - 1 ? length - 1 : bottom + buffer
-  const afterLength = length - 1 - end
+  const end = bottom + buffer > itemCount - 1 ? itemCount - 1 : bottom + buffer
+  const afterLength = itemCount - 1 - end
 
   return {
     afterHeight: afterLength * itemHeight,

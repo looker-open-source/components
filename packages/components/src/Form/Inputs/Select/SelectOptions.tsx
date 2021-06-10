@@ -182,7 +182,7 @@ export interface SelectOptionsBaseProps {
   /**
    * Render only the options visible in the scroll window
    */
-  windowedOptions?: boolean
+  windowing?: boolean
   /**
    * Add an on-the-fly option mirroring the typed text (use when isFilterable = true)
    * When `true`, notInOptions is used to show/hide and can be included in a custom function
@@ -217,12 +217,12 @@ export const SelectOptions = (props: SelectOptionsProps) => {
     formatCreateLabel,
     isMulti,
     noOptionsLabel = noOptionsLabelText,
-    windowedOptions,
+    windowing,
     isLoading,
   } = props
 
   const { start, end, before, after, scrollToFirst, scrollToLast } =
-    useWindowedOptions(windowedOptions, flatOptions, navigationOptions, isMulti)
+    useWindowedOptions(windowing, flatOptions, navigationOptions, isMulti)
   const keyPrefix = useID(flatOptions?.length.toString())
 
   const hasIcons = useMemo(

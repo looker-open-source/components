@@ -39,14 +39,14 @@ export function useShouldWindowOptions(
   return useMemo(() => {
     if (!flatOptions) return false
     if (propsWindowedOptions === false) return false
-    // Without windowedOptions prop, default is to turn it on at 100 options
+    // Without windowing prop, default is to turn it on at 100 options
     if (flatOptions.length < 100 && !propsWindowedOptions) return false
     return true
   }, [flatOptions, propsWindowedOptions])
 }
 
 export function useWindowedOptions(
-  windowedOptions?: boolean,
+  windowing?: boolean,
   flatOptions?: FlatOption[],
   navigationOptions?: SelectOptionObject[],
   isMulti?: boolean
@@ -62,12 +62,12 @@ export function useWindowedOptions(
     optionsRef,
   } = contextToUse
 
-  // windowedOptions prop on ComboboxList disables useAddOptionToContext,
+  // windowing prop on ComboboxList disables useAddOptionToContext,
   // so we need to add it here to support keyboard nav
 
   // add options to ComboboxContext.optionsRef
   useEffect(() => {
-    // optionsToWindow will be empty if windowedOptions is false, so no need to check windowedOptions as well
+    // optionsToWindow will be empty if windowing is false, so no need to check windowing as well
     if (navigationOptions?.length && optionsRef) {
       optionsRef.current = navigationOptions
     }
@@ -78,14 +78,13 @@ export function useWindowedOptions(
   let { start, end } = useMemo(
     () =>
       getWindowedListBoundaries({
-        enabled: windowedOptions,
+        enabled: windowing,
         height: containerHeight,
+        itemCount: flatOptions ? flatOptions.length : 0,
         itemHeight: optionHeight,
-        // For groups, add 2 for divider & header
-        length: flatOptions ? flatOptions.length : 0,
         scrollPosition: listScrollPosition,
       }),
-    [flatOptions, containerHeight, listScrollPosition, windowedOptions]
+    [flatOptions, containerHeight, listScrollPosition, windowing]
   )
 
   // The current value is highlighted when the menu first opens
@@ -94,7 +93,7 @@ export function useWindowedOptions(
   // also need to do this when the menu goes from un-windowed to windowed
   // (e.g. due to deleting characters when filtering)
   const previouslyWindowedRef = useRef<boolean>()
-  if (windowedOptions && !previouslyWindowedRef.current) {
+  if (windowing && !previouslyWindowedRef.current) {
     if (navigationOption) {
       const selectedIndex = findIndex(flatOptions, [
         'value',
@@ -106,7 +105,7 @@ export function useWindowedOptions(
       }
     }
   }
-  previouslyWindowedRef.current = windowedOptions
+  previouslyWindowedRef.current = windowing
 
   // If the user keyboard navigates "down" from the last option or "up" from the first option
   // we need to render the top or bottom of the list (which are outside our "window") and scroll there

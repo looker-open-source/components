@@ -52,7 +52,7 @@ export function useComboboxRefs(forwardedRef: Ref<HTMLDivElement>) {
 
   const persistSelectionPropRef = useRef(false)
   const closeOnSelectPropRef = useRef(true)
-  const windowedOptionsPropRef = useRef(false)
+  const windowingPropRef = useRef(false)
   const isScrollingRef = useRef(false)
   const indicatorPropRef = useRef(false)
   const freeInputPropRef = useRef(false)
@@ -68,7 +68,7 @@ export function useComboboxRefs(forwardedRef: Ref<HTMLDivElement>) {
     optionsRef,
     persistSelectionPropRef,
     ref,
-    windowedOptionsPropRef,
+    windowingPropRef,
     wrapperElement,
   }
 }

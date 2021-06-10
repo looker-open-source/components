@@ -26,7 +26,7 @@
 
 import { fireEvent, render, screen } from '@testing-library/react'
 import React from 'react'
-import { ChildHeightFunction, useWindow, useToggle } from './'
+import { useWindow, useToggle } from './'
 
 /* eslint-disable-next-line @typescript-eslint/unbound-method */
 const globalGetBoundingClientRect = Element.prototype.getBoundingClientRect
@@ -59,26 +59,21 @@ afterEach(() => {
 })
 
 const arr3000 = Array.from(Array(3000), (_, i) => i)
-const getChildHeight: ChildHeightFunction = (_, index) => 20 + (index % 200)
 
-const WindowedComponent = ({
-  children,
-  variable,
-}: {
-  children: JSX.Element[]
-  variable?: boolean
-}) => {
+const WindowedComponent = ({ children }: { children: JSX.Element[] }) => {
   const { value, toggle } = useToggle(true)
-  const { content, ref } = useWindow({
-    childHeight: variable ? getChildHeight : 87,
-    children,
+  const { after, before, end, start, ref } = useWindow({
     enabled: value,
+    itemCount: 3000,
+    itemHeight: 87,
     spacerTag: 'li',
   })
   return (
     <>
       <ul ref={ref} data-testid="list">
-        {content}
+        {before}
+        {children.slice(start, end + 1)}
+        {after}
       </ul>
       <button onClick={toggle}>toggle</button>
     </>
@@ -86,210 +81,101 @@ const WindowedComponent = ({
 }
 
 describe('useWindow', () => {
-  describe('fixed', () => {
-    test('returns placeholders and children in "window"', () => {
-      render(
-        <WindowedComponent>
-          {arr3000.map((num) => (
-            <li key={num}>{num}</li>
-          ))}
-        </WindowedComponent>
-      )
-      expect(screen.getByText('0')).toBeVisible()
-      expect(screen.getByText('9')).toBeVisible()
-      expect(screen.queryByText('10')).not.toBeInTheDocument()
+  test('returns placeholders and children in "window"', () => {
+    render(
+      <WindowedComponent>
+        {arr3000.map((num) => (
+          <li key={num}>{num}</li>
+        ))}
+      </WindowedComponent>
+    )
+    expect(screen.getByText('0')).toBeVisible()
+    expect(screen.getByText('9')).toBeVisible()
+    expect(screen.queryByText('10')).not.toBeInTheDocument()
 
-      expect(screen.queryByTestId('before')).not.toBeInTheDocument()
-      expect(screen.getByTestId('after')).toHaveStyle('height: 260130px;')
-    })
-
-    test('updates window on scroll', () => {
-      render(
-        <WindowedComponent>
-          {arr3000.map((num) => (
-            <li key={num}>{num}</li>
-          ))}
-        </WindowedComponent>
-      )
-      const list = screen.getByTestId('list')
-      // fireEvent.scroll won't update the scrollTop value, need to change it manually
-      Object.defineProperty(list, 'scrollTop', { value: 1514, writable: true })
-      // Needed do to throttle on scroll handler
-      jest.runAllTimers()
-      fireEvent.scroll(list)
-
-      expect(screen.queryByText('11')).not.toBeInTheDocument()
-      expect(screen.getByText('12')).toBeVisible()
-      expect(screen.getByText('27')).toBeVisible()
-      expect(screen.queryByText('28')).not.toBeInTheDocument()
-
-      expect(screen.getByTestId('before')).toHaveStyle('height: 1044px;')
-      expect(screen.getByTestId('after')).toHaveStyle('height: 258564px;')
-    })
-
-    test('updates window on scroll (to end)', () => {
-      render(
-        <WindowedComponent>
-          {arr3000.map((num) => (
-            <li key={num}>{num}</li>
-          ))}
-        </WindowedComponent>
-      )
-      const list = screen.getByTestId('list')
-      // fireEvent.scroll won't update the scrollTop value, need to change it manually
-      Object.defineProperty(list, 'scrollTop', {
-        value: 260658,
-        writable: true,
-      })
-      // Needed do to throttle on scroll handler
-      jest.runAllTimers()
-      fireEvent.scroll(list)
-
-      expect(screen.queryByText('2990')).not.toBeInTheDocument()
-      expect(screen.getByText('2991')).toBeVisible()
-      expect(screen.getByText('2999')).toBeVisible()
-
-      expect(screen.getByTestId('before')).toHaveStyle('height: 260217px;')
-      expect(screen.queryByTestId('after')).not.toBeInTheDocument()
-    })
-
-    test('updates window on resize', () => {
-      render(
-        <WindowedComponent>
-          {arr3000.map((num) => (
-            <li key={num}>{num}</li>
-          ))}
-        </WindowedComponent>
-      )
-      /* eslint-disable-next-line @typescript-eslint/unbound-method */
-      Element.prototype.getBoundingClientRect = jest.fn(() => {
-        return {
-          bottom: 0,
-          height: 873,
-          left: 0,
-          right: 0,
-          toJSON: jest.fn(),
-          top: 0,
-          width: 260,
-          x: 0,
-          y: 0,
-        }
-      })
-      fireEvent(window, new Event('resize'))
-
-      expect(screen.getByText('0')).toBeVisible()
-      expect(screen.getByText('16')).toBeVisible()
-      expect(screen.queryByText('17')).not.toBeInTheDocument()
-
-      expect(screen.queryByTestId('before')).not.toBeInTheDocument()
-      expect(screen.getByTestId('after')).toHaveStyle('height: 259521px;')
-    })
+    expect(screen.queryByTestId('before')).not.toBeInTheDocument()
+    expect(screen.getByTestId('after')).toHaveStyle('height: 260130px;')
   })
 
-  describe('variable', () => {
-    test('returns placeholders and children in "window"', () => {
-      const mockRef = jest.fn()
-      render(
-        <WindowedComponent variable>
-          {arr3000.map((num) => (
-            <li key={num} ref={mockRef}>
-              {num}
-            </li>
-          ))}
-        </WindowedComponent>
-      )
-      expect(screen.getByText('0')).toBeVisible()
-      expect(screen.getByText('35')).toBeVisible()
-      expect(screen.queryByText('36')).not.toBeInTheDocument()
+  test('updates window on scroll', () => {
+    render(
+      <WindowedComponent>
+        {arr3000.map((num) => (
+          <li key={num}>{num}</li>
+        ))}
+      </WindowedComponent>
+    )
+    const list = screen.getByTestId('list')
+    // fireEvent.scroll won't update the scrollTop value, need to change it manually
+    Object.defineProperty(list, 'scrollTop', { value: 1514, writable: true })
+    // Needed do to throttle on scroll handler
+    jest.runAllTimers()
+    fireEvent.scroll(list)
 
-      expect(screen.queryByTestId('before')).not.toBeInTheDocument()
-      expect(screen.getByTestId('after')).toHaveStyle('height: 357150px;')
+    expect(screen.queryByText('11')).not.toBeInTheDocument()
+    expect(screen.getByText('12')).toBeVisible()
+    expect(screen.getByText('27')).toBeVisible()
+    expect(screen.queryByText('28')).not.toBeInTheDocument()
 
-      // Tests for a bug where all list items are initially rendered
-      // before the container is measured and then only the necessary items are rendered
-      expect(mockRef).toHaveBeenCalledTimes(36)
+    expect(screen.getByTestId('before')).toHaveStyle('height: 1044px;')
+    expect(screen.getByTestId('after')).toHaveStyle('height: 258564px;')
+  })
+
+  test('updates window on scroll (to end)', () => {
+    render(
+      <WindowedComponent>
+        {arr3000.map((num) => (
+          <li key={num}>{num}</li>
+        ))}
+      </WindowedComponent>
+    )
+    const list = screen.getByTestId('list')
+    // fireEvent.scroll won't update the scrollTop value, need to change it manually
+    Object.defineProperty(list, 'scrollTop', {
+      value: 260658,
+      writable: true,
     })
+    // Needed do to throttle on scroll handler
+    jest.runAllTimers()
+    fireEvent.scroll(list)
 
-    test('updates window on scroll', () => {
-      render(
-        <WindowedComponent variable>
-          {arr3000.map((num) => (
-            <li key={num}>{num}</li>
-          ))}
-        </WindowedComponent>
-      )
-      const list = screen.getByTestId('list')
-      // fireEvent.scroll won't update the scrollTop value, need to change it manually
-      Object.defineProperty(list, 'scrollTop', { value: 1514, writable: true })
-      // Needed do to throttle on scroll handler
-      jest.runAllTimers()
-      fireEvent.scroll(list)
+    expect(screen.queryByText('2990')).not.toBeInTheDocument()
+    expect(screen.getByText('2991')).toBeVisible()
+    expect(screen.getByText('2999')).toBeVisible()
 
-      expect(screen.queryByText('17')).not.toBeInTheDocument()
-      expect(screen.getByText('18')).toBeVisible()
-      expect(screen.getByText('58')).toBeVisible()
-      expect(screen.queryByText('59')).not.toBeInTheDocument()
+    expect(screen.getByTestId('before')).toHaveStyle('height: 260217px;')
+    expect(screen.queryByTestId('after')).not.toBeInTheDocument()
+  })
 
-      expect(screen.getByTestId('before')).toHaveStyle('height: 513px;')
-      expect(screen.getByTestId('after')).toHaveStyle('height: 355609px;')
+  test('updates window on resize', () => {
+    render(
+      <WindowedComponent>
+        {arr3000.map((num) => (
+          <li key={num}>{num}</li>
+        ))}
+      </WindowedComponent>
+    )
+    /* eslint-disable-next-line @typescript-eslint/unbound-method */
+    Element.prototype.getBoundingClientRect = jest.fn(() => {
+      return {
+        bottom: 0,
+        height: 873,
+        left: 0,
+        right: 0,
+        toJSON: jest.fn(),
+        top: 0,
+        width: 260,
+        x: 0,
+        y: 0,
+      }
     })
+    fireEvent(window, new Event('resize'))
 
-    test('updates window on scroll (to end)', () => {
-      render(
-        <WindowedComponent variable>
-          {arr3000.map((num) => (
-            <li key={num}>{num}</li>
-          ))}
-        </WindowedComponent>
-      )
-      const list = screen.getByTestId('list')
-      // fireEvent.scroll won't update the scrollTop value, need to change it manually
-      Object.defineProperty(list, 'scrollTop', {
-        value: 358158,
-        writable: true,
-      })
-      // Needed do to throttle on scroll handler
-      jest.runAllTimers()
-      fireEvent.scroll(list)
+    expect(screen.getByText('0')).toBeVisible()
+    expect(screen.getByText('16')).toBeVisible()
+    expect(screen.queryByText('17')).not.toBeInTheDocument()
 
-      expect(screen.queryByText('2992')).not.toBeInTheDocument()
-      expect(screen.getByText('2993')).toBeVisible()
-      expect(screen.getByText('2999')).toBeVisible()
-
-      expect(screen.getByTestId('before')).toHaveStyle('height: 356988px;')
-      expect(screen.queryByTestId('after')).not.toBeInTheDocument()
-    })
-
-    test('updates window on resize', () => {
-      render(
-        <WindowedComponent variable>
-          {arr3000.map((num) => (
-            <li key={num}>{num}</li>
-          ))}
-        </WindowedComponent>
-      )
-      /* eslint-disable-next-line @typescript-eslint/unbound-method */
-      Element.prototype.getBoundingClientRect = jest.fn(() => {
-        return {
-          bottom: 0,
-          height: 873,
-          left: 0,
-          right: 0,
-          toJSON: jest.fn(),
-          top: 0,
-          width: 260,
-          x: 0,
-          y: 0,
-        }
-      })
-      fireEvent(window, new Event('resize'))
-
-      expect(screen.getByText('0')).toBeVisible()
-      expect(screen.getByText('44')).toBeVisible()
-      expect(screen.queryByText('45')).not.toBeInTheDocument()
-
-      expect(screen.queryByTestId('before')).not.toBeInTheDocument()
-      expect(screen.getByTestId('after')).toHaveStyle('height: 356610px;')
-    })
+    expect(screen.queryByTestId('before')).not.toBeInTheDocument()
+    expect(screen.getByTestId('after')).toHaveStyle('height: 259521px;')
   })
 })
