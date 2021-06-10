@@ -34,7 +34,7 @@ import { DialogHeader } from './DialogHeader'
 describe('DialogHeader', () => {
   test('basic', () => {
     renderWithTheme(<Basic />)
-    expect(screen.getByText('Heading')).toBeInTheDocument()
+    expect(screen.getByText('Header')).toBeInTheDocument()
   })
 
   test('Close visible by default', () => {
@@ -62,5 +62,10 @@ describe('DialogHeader', () => {
   test('detail = null, no close option', () => {
     renderWithTheme(<DialogHeader detail={null}>Hello World</DialogHeader>)
     expect(screen.queryByText('Close')).not.toBeInTheDocument()
+  })
+
+  test('Detail', () => {
+    renderWithTheme(<Detail />)
+    expect(screen.getByText('detail')).toBeInTheDocument()
   })
 })
