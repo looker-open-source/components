@@ -88,7 +88,7 @@ export interface ComboboxListProps
    * list of options in order for keyboard navigation to work properly
    * @default false
    */
-  windowedOptions?: boolean
+  windowing?: boolean
   /**
    * Whether to honor the first click outside the popover
    * @default false
@@ -109,7 +109,7 @@ const ComboboxListInternal = forwardRef(
       // closes the list after an option is selected
       closeOnSelect = true,
       // disables the optionsRef behavior, to be handled externally (support keyboard nav in long lists)
-      windowedOptions = false,
+      windowing = false,
       // passed to usePopover – when false, allows first outside click to be honored
       // generally should be false except for when closely mimicking native browser select
       cancelClickOutside = false,
@@ -129,7 +129,7 @@ const ComboboxListInternal = forwardRef(
     const {
       persistSelectionPropRef,
       closeOnSelectPropRef,
-      windowedOptionsPropRef,
+      windowingPropRef,
       indicatorPropRef,
       wrapperElement,
       isVisible,
@@ -152,15 +152,14 @@ const ComboboxListInternal = forwardRef(
     // effect to schedule this effect before the ComboboxOptions push into
     // the array
     useLayoutEffect(() => {
-      if (windowedOptionsPropRef)
-        windowedOptionsPropRef.current = windowedOptions
+      if (windowingPropRef) windowingPropRef.current = windowing
       if (optionsRef) optionsRef.current = []
       return () => {
         if (optionsRef) optionsRef.current = []
       }
       // Without isVisible in the dependency array,
       // updated options won't go into the optionsRef array
-    }, [optionsRef, isVisible, windowedOptions, windowedOptionsPropRef])
+    }, [optionsRef, isVisible, windowing, windowingPropRef])
 
     const handleKeyDown = useKeyDown()
     const useBlurSingle = useBlur(ComboboxContext)

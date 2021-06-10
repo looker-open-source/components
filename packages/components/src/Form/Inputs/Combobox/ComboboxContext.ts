@@ -65,7 +65,7 @@ export interface ComboboxContextProps<
   persistSelectionPropRef?: MutableRefObject<boolean>
   closeOnSelectPropRef?: MutableRefObject<boolean>
   inputReadOnlyPropRef?: MutableRefObject<boolean>
-  windowedOptionsPropRef?: MutableRefObject<boolean>
+  windowingPropRef?: MutableRefObject<boolean>
   freeInputPropRef?: MutableRefObject<boolean>
   isScrollingRef?: MutableRefObject<boolean>
   indicatorPropRef?: MutableRefObject<ComboboxOptionIndicatorProps['indicator']>

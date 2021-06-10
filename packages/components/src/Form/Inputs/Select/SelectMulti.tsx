@@ -102,7 +102,7 @@ const SelectMultiComponent = forwardRef(
       showCreate = false,
       validate,
       values,
-      windowedOptions: windowedOptionsProp,
+      windowing: windowingProp,
       ...props
     }: SelectMultiProps,
     ref: Ref<HTMLInputElement>
@@ -122,10 +122,7 @@ const SelectMultiComponent = forwardRef(
 
     const ariaProps = pickAriaAndValidationProps(props)
 
-    const windowedOptions = useShouldWindowOptions(
-      flatOptions,
-      windowedOptionsProp
-    )
+    const windowing = useShouldWindowOptions(flatOptions, windowingProp)
 
     return (
       <ComboboxMulti
@@ -157,7 +154,7 @@ const SelectMultiComponent = forwardRef(
           <ComboboxMultiList
             persistSelection
             closeOnSelect={closeOnSelect}
-            windowedOptions={windowedOptions}
+            windowing={windowing}
             indicator={indicator}
             aria-busy={isLoading}
             {...ariaProps}
@@ -167,7 +164,7 @@ const SelectMultiComponent = forwardRef(
               isMulti
               flatOptions={flatOptions}
               navigationOptions={navigationOptions}
-              windowedOptions={windowedOptions}
+              windowing={windowing}
               isFilterable={isFilterable}
               noOptionsLabel={noOptionsLabel}
               showCreate={showCreate}

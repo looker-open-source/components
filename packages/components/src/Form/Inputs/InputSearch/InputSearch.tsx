@@ -116,7 +116,7 @@ const InputSearchLayout = forwardRef(
       readOnly,
       summary,
       value: controlledValue,
-      windowedOptions: windowedOptionsProp,
+      windowing: windowingProp,
       ...props
     }: InputSearchProps,
     ref: Ref<HTMLInputElement>
@@ -162,10 +162,7 @@ const InputSearchLayout = forwardRef(
 
     const ariaProps = pickAriaAndValidationProps(props)
 
-    const windowedOptions = useShouldWindowOptions(
-      flatOptions,
-      windowedOptionsProp
-    )
+    const windowing = useShouldWindowOptions(flatOptions, windowingProp)
 
     return (
       <Combobox
@@ -201,7 +198,7 @@ const InputSearchLayout = forwardRef(
         {!disabled && (options?.length || noOptionsLabel) && (
           <ComboboxList
             persistSelection
-            windowedOptions={windowedOptions}
+            windowing={windowing}
             indicator={indicator}
             width={autoResize ? 'auto' : undefined}
             aria-busy={isLoading}
@@ -211,7 +208,7 @@ const InputSearchLayout = forwardRef(
             <SelectOptions
               flatOptions={flatOptions}
               navigationOptions={navigationOptions}
-              windowedOptions={windowedOptions}
+              windowing={windowing}
               isFilterable
               noOptionsLabel={noOptionsLabel}
               isLoading={isLoading}

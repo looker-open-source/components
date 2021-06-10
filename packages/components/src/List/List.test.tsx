@@ -38,7 +38,6 @@ const globalGetBoundingClientRect = Element.prototype.getBoundingClientRect
 describe('List', () => {
   describe('windowing', () => {
     beforeEach(() => {
-      jest.useFakeTimers()
       /* eslint-disable-next-line @typescript-eslint/unbound-method */
       Element.prototype.getBoundingClientRect = jest.fn(() => {
         return {
@@ -56,14 +55,12 @@ describe('List', () => {
     })
 
     afterEach(() => {
-      jest.runOnlyPendingTimers()
-      jest.useRealTimers()
       jest.resetAllMocks()
       /* eslint-disable-next-line @typescript-eslint/unbound-method */
       Element.prototype.getBoundingClientRect = globalGetBoundingClientRect
     })
 
-    test('fixed', () => {
+    test('windows a long list', () => {
       renderWithTheme(<LongList />)
 
       expect(screen.getByRole('list')).toHaveStyle('height: 100%')

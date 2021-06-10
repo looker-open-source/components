@@ -171,7 +171,7 @@ const TreeLayout: FC<TreeProps> = ({
       renderAsLi
       aria-selected={selected}
       content={
-        <List disableKeyboardNav role="group" windowing="none">
+        <List disableKeyboardNav role="group" windowing={false}>
           {children}
         </List>
       }
