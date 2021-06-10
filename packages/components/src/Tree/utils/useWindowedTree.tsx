@@ -27,7 +27,7 @@
 import React, { Ref, useCallback, useEffect, useReducer } from 'react'
 import { listItemDimensions } from '../../List'
 import { DensityProps } from '../../List/types'
-import { useWindowBase } from '../../utils'
+import { useWindow } from '../../utils'
 import { WindowedTreeNodeProps, WindowedTreeNodeIDProps } from '../types'
 import { WindowedTreeNode } from '../WindowedTreeNode'
 import { windowedTreeReducer } from './windowedTreeReducer'
@@ -70,10 +70,10 @@ export const useWindowedTree = ({
   const { height } = listItemDimensions(density || 0)
 
   // Get the windowing properties
-  const { after, before, end, ref, start } = useWindowBase({
-    childHeight: height,
+  const { after, before, end, ref, start } = useWindow({
     enabled: shownIDs.length > 100,
-    length: shownIDs.length,
+    itemCount: shownIDs.length,
+    itemHeight: height,
   })
 
   let content = null
