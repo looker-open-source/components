@@ -25,16 +25,17 @@
  */
 
 import React, { FC, ReactNode } from 'react'
-import { Spinner } from '../../Spinner'
+import { ModalHeaderProps } from '../../Modal/ModalHeader'
+import {
+  ModalLayout,
+  ModalLayoutProps,
+  ModalLoading,
+} from '../../Modal/ModalLayout'
 import { DialogContent } from './DialogContent'
 import { DialogFooter } from './DialogFooter'
-import { DialogHeader, DialogHeaderProps } from './DialogHeader'
+import { DialogHeader } from './DialogHeader'
 
-export interface DialogLayoutProps {
-  /**
-   * Content to be displayed in footer
-   */
-  footer?: ReactNode
+export interface DialogLayoutProps extends ModalLayoutProps {
   /**
    * Secondary content to place in the footer
    * NOTE: `footer` property must be supplied for footer to be displayed. Supplying
@@ -43,43 +44,9 @@ export interface DialogLayoutProps {
   footerSecondary?: ReactNode
 
   /**
-   * Content in header. If a `string` is supplied the content will be placed in a `<Header />`
-   */
-  header?: ReactNode
-  /**
    * Replaces the built-in `IconButton` (generally used for close) with an arbitrary ReactNode
    */
-  headerDetail?: ReactNode
-  /**
-   * Display "Close" IconButton in the DialogHeader.
-   * NOTE: `true` if no footer is supplied and `headerClose` is not explicitly specified.
-   * @default false
-   */
-  headerCloseButton?: boolean
-
-  /**
-   * Display loading spinner instead of the DialogContent
-   */
-  isLoading?: boolean
-}
-
-type DialogLayoutHeaderProps = Pick<
-  DialogHeaderProps,
-  'children' | 'detail' | 'hideClose'
->
-
-const DialogLayoutHeader: FC<DialogLayoutHeaderProps> = ({
-  children,
-  detail,
-  hideClose,
-}) => {
-  if (hideClose) {
-    return <DialogHeader hideClose>{children}</DialogHeader>
-  } else if (detail) {
-    return <DialogHeader detail={detail}>{children}</DialogHeader>
-  } else {
-    return <DialogHeader>{children}</DialogHeader>
-  }
+  headerDetail?: ModalHeaderProps['detail']
 }
 
 export const DialogLayout: FC<DialogLayoutProps> = ({
@@ -94,23 +61,19 @@ export const DialogLayout: FC<DialogLayoutProps> = ({
   const dialogFooter = (footer || footerSecondary) && (
     <DialogFooter secondary={footerSecondary}>{footer}</DialogFooter>
   )
+  const dialogHeader =
+    header &&
+    (!headerDetail ? (
+      <DialogHeader hideClose={!headerCloseButton}>{header}</DialogHeader>
+    ) : (
+      <DialogHeader detail={headerDetail}>{header}</DialogHeader>
+    ))
 
   return (
-    <>
-      {header && (
-        <DialogLayoutHeader
-          hideClose={!headerCloseButton}
-          detail={headerDetail}
-        >
-          {header}
-        </DialogLayoutHeader>
-      )}
-      <DialogContent hasFooter={!!dialogFooter} hasHeader={!!header}>
-        {isLoading ? <DialogLoading /> : children}
+    <ModalLayout footer={dialogFooter} header={dialogHeader}>
+      <DialogContent hasFooter={!footer} hasHeader={!header}>
+        {isLoading ? <ModalLoading /> : children}
       </DialogContent>
-      {dialogFooter}
-    </>
+    </ModalLayout>
   )
 }
-
-const DialogLoading = () => <Spinner mx="auto" my="xxlarge" />
