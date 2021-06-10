@@ -125,15 +125,24 @@ export const ListInternal = forwardRef(
       height = '100%'
     }
 
-    const { content, ref } = useWindow({
-      childHeight: childArray[0]
+    const { after, before, end, start, ref } = useWindow({
+      enabled: windowing,
+      itemCount: childArray.length,
+      itemHeight: childArray[0]
         ? getListItemHeight(childArray[0] as ReactChild, itemDimensions.height)
         : 0,
-      children: children as JSX.Element | JSX.Element[],
-      enabled: windowing,
       ref: forwardedRef,
       spacerTag: 'li',
     })
+    const content = windowing ? (
+      <>
+        {before}
+        {childArray.slice(start, end + 1)}
+        {after}
+      </>
+    ) : (
+      childArray
+    )
 
     const navProps = useArrowKeyNav({
       disabled: disableKeyboardNav,

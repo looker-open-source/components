@@ -62,16 +62,18 @@ const arr3000 = Array.from(Array(3000), (_, i) => i)
 
 const WindowedComponent = ({ children }: { children: JSX.Element[] }) => {
   const { value, toggle } = useToggle(true)
-  const { content, ref } = useWindow({
-    childHeight: 87,
-    children,
+  const { after, before, end, start, ref } = useWindow({
     enabled: value,
+    itemCount: 3000,
+    itemHeight: 87,
     spacerTag: 'li',
   })
   return (
     <>
       <ul ref={ref} data-testid="list">
-        {content}
+        {before}
+        {children.slice(start, end + 1)}
+        {after}
       </ul>
       <button onClick={toggle}>toggle</button>
     </>

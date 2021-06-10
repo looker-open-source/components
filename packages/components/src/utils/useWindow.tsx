@@ -24,21 +24,21 @@
 
  */
 
-import React, { Children, Ref, useMemo } from 'react'
-import { getWindowedListBoundaries } from './getWindowedListBoundaries'
+import React, { Ref, useMemo } from 'react'
+import {
+  GetWindowedListBoundaryProps,
+  getWindowedListBoundaries,
+} from './getWindowedListBoundaries'
 import { useCallbackRef } from './useCallbackRef'
 import { useMeasuredElement } from './useMeasuredElement'
 import { useScrollPosition } from './useScrollPosition'
 
 export type WindowSpacerTag = 'div' | 'li' | 'tr'
 
-export type UseWindowBaseProps<E extends HTMLElement> = {
-  enabled?: boolean
-  length: number
-  /**
-   * For windowing to work, all items must be assumed to have the same height
-   */
-  childHeight: number
+export type UseWindowProps<E extends HTMLElement> = Omit<
+  GetWindowedListBoundaryProps,
+  'height' | 'scrollPosition'
+> & {
   /**
    * Tag to use for the spacers above and below the window
    */
@@ -46,20 +46,13 @@ export type UseWindowBaseProps<E extends HTMLElement> = {
   ref?: Ref<E>
 }
 
-export type UseWindowProps<E extends HTMLElement> = Omit<
-  UseWindowBaseProps<E>,
-  'length'
-> & {
-  children?: JSX.Element | JSX.Element[]
-}
-
-export const useWindowBase = <E extends HTMLElement = HTMLElement>({
-  length,
+export const useWindow = <E extends HTMLElement = HTMLElement>({
+  itemCount,
   enabled,
-  childHeight,
+  itemHeight,
   ref,
   spacerTag = 'div',
-}: UseWindowBaseProps<E>) => {
+}: UseWindowProps<E>) => {
   const [containerElement, callbackRef] = useCallbackRef<E>(ref)
   const [{ height }] = useMeasuredElement(enabled ? containerElement : null)
   const scrollPosition = useScrollPosition(enabled ? containerElement : null)
@@ -68,11 +61,11 @@ export const useWindowBase = <E extends HTMLElement = HTMLElement>({
     return getWindowedListBoundaries({
       enabled,
       height,
-      itemHeight: childHeight,
-      length,
+      itemCount,
+      itemHeight,
       scrollPosition,
     })
-  }, [enabled, length, height, childHeight, scrollPosition])
+  }, [enabled, itemCount, height, itemHeight, scrollPosition])
 
   const Spacer = spacerTag
   // after & before are spacers to make scrolling smooth
@@ -92,32 +85,5 @@ export const useWindowBase = <E extends HTMLElement = HTMLElement>({
     end,
     ref: callbackRef,
     start,
-  }
-}
-
-export const useWindow = <E extends HTMLElement = HTMLElement>({
-  children,
-  enabled,
-  ...props
-}: UseWindowProps<E>) => {
-  const childArray = useMemo(() => Children.toArray(children), [children])
-
-  const { after, before, end, start, ...rest } = useWindowBase({
-    enabled,
-    length: childArray.length,
-    ...props,
-  })
-
-  return {
-    ...rest,
-    content: enabled ? (
-      <>
-        {before}
-        {childArray.slice(start, end + 1)}
-        {after}
-      </>
-    ) : (
-      childArray
-    ),
   }
 }

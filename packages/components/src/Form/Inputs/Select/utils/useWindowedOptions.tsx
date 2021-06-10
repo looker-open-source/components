@@ -80,9 +80,8 @@ export function useWindowedOptions(
       getWindowedListBoundaries({
         enabled: windowing,
         height: containerHeight,
+        itemCount: flatOptions ? flatOptions.length : 0,
         itemHeight: optionHeight,
-        // For groups, add 2 for divider & header
-        length: flatOptions ? flatOptions.length : 0,
         scrollPosition: listScrollPosition,
       }),
     [flatOptions, containerHeight, listScrollPosition, windowing]
