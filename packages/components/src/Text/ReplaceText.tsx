@@ -23,7 +23,7 @@
  SOFTWARE.
 
  */
-import React, { Children, FC, ReactNode } from 'react'
+import React, { Children, FC, ReactNode, useMemo } from 'react'
 import isRegExp from 'lodash/isRegExp'
 import escapeRegExp from 'lodash/escapeRegExp'
 import isString from 'lodash/isString'
@@ -74,13 +74,13 @@ export const ReplaceText: FC<ReplaceTextProps> = ({
   match,
   replace,
 }) => {
-  return (
-    <>
-      {flatten(
-        Children.map(children, (child: ReactNode) => {
-          return isString(child) ? replaceString(child, match, replace) : child
-        })
-      )}
-    </>
-  )
+  const content = useMemo(() => {
+    return flatten(
+      Children.map(children, (child: ReactNode) => {
+        return isString(child) ? replaceString(child, match, replace) : child
+      })
+    )
+  }, [children, match, replace])
+
+  return <>{content}</>
 }
