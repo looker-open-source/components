@@ -43,7 +43,7 @@ export const useWindowedTree = ({
   trees,
 }: UseWindowedTreeNodeProps) => {
   // Keep track of the sub-trees opened / closed state by ID and
-  // the total number of SHOWN items(i.e.no ancestor is closed)
+  // the total number of SHOWN items (i.e. no ancestor is closed)
   const [{ map, shownIDs, treesWithIDs }, dispatch] = useReducer(
     windowedTreeReducer,
     {
