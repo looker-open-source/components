@@ -25,80 +25,74 @@
  */
 
 import React, { FC, ReactChild, ReactNode } from 'react'
-import { DialogFooter } from './DialogFooter'
-import { DialogHeader, DialogHeaderProps } from './DialogHeader'
+import { DialogLayoutProps, DialogHeaderProps } from '../../Dialog'
+import { Spinner } from '../../Spinner'
+import { PopoverContent } from './PopoverContent'
+import { PopoverFooter } from './PopoverFooter'
+import { PopoverHeader, PopoverHeaderProps } from './PopoverHeader'
 
-export interface DialogLayoutProps {
-  /**
-   * Content to be displayed in footer
-   */
-  footer?: ReactChild
-  /**
-   * Secondary content to place in the footer
-   * NOTE: `footer` property must be supplied for footer to be displayed. Supplying
-   * only `footerSecondary` will prevent `DialogFooter` from being displayed.
-   */
-  footerSecondary?: ReactNode
-
-  /**
-   * Content in header. If a `string` is supplied the content will be placed in a <Header />
-   */
-  header?: ReactChild
-  /**
-   * Replaces the built-in `IconButton` (generally used for close) with an arbitrary ReactNode
-   */
-  headerDetail?: ReactNode
-  /**
-   * Display "Close" IconButton in the DialogHeader.
-   * NOTE: `true` if no footer is supplied and `headerClose` is not explicitly specified.
-   * @default false
-   */
-  headerCloseButton?: boolean
+export interface PopoverLayoutProps
+  extends Omit<DialogLayoutProps, 'footerSecondary' | `headerDetails`> {
+  hideHeading?: boolean
 }
 
-type DialogLayoutHeaderProps = Pick<
+type HeadingHeader = {
+  header?: DialogLayoutProps['headerDetail']
+  hideHeading?: never
+}
+
+type HeadingHideHeading = {
+  header?: string
+  hideHeading?: boolean
+}
+
+type HeadingOptions = HeadingHeader | HeadingHideHeading
+
+type PopoverLayoutHeaderProps = Pick<
   DialogHeaderProps,
   'children' | 'detail' | 'hideClose'
 >
 
-const DialogLayoutHeader: FC<DialogLayoutHeaderProps> = ({
+const PopoverLayoutHeader: FC<PopoverLayoutHeaderProps> = ({
   children,
   detail,
   hideClose,
 }) => {
   if (hideClose) {
-    return <DialogHeader hideClose>{children}</DialogHeader>
+    return <PopoverHeader hideClose>{children}</PopoverHeader>
   } else if (detail) {
-    return <DialogHeader detail={detail}>{children}</DialogHeader>
+    return <PopoverHeader detail={detail}>{children}</PopoverHeader>
   } else {
-    return <DialogHeader>{children}</DialogHeader>
+    return <PopoverHeader>{children}</PopoverHeader>
   }
 }
 
-export const DialogLayout: FC<DialogLayoutProps> = ({
+export const PopoverLayout: FC<PopoverLayoutProps> = ({
   children,
   footer,
-  footerSecondary,
   header,
   headerCloseButton = !footer && true,
   headerDetail,
+  isLoading,
 }) => {
-  const dialogFooter = (footer || footerSecondary) && (
-    <DialogFooter secondary={footerSecondary}>{footer}</DialogFooter>
-  )
+  const popoverFooter = footer && <PopoverFooter>{footer}</PopoverFooter>
 
   return (
     <>
       {header && (
-        <DialogLayoutHeader
+        <PopoverLayoutHeader
           hideClose={!headerCloseButton}
           detail={headerDetail}
         >
           {header}
-        </DialogLayoutHeader>
+        </PopoverLayoutHeader>
       )}
-      {children}
-      {dialogFooter}
+      <PopoverContent hasFooter={!PopoverFooter} hasHeader={!header}>
+        {isLoading ? <PopoverLoading /> : children}
+      </PopoverContent>
+      {popoverFooter}
     </>
   )
 }
+
+const PopoverLoading = () => <Spinner mx="auto" my="xxlarge" />

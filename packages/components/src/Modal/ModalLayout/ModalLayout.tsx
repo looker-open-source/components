@@ -24,7 +24,40 @@
 
  */
 
-export * from './PopoverContent'
-export * from './PopoverHeader'
-export * from './PopoverFooter'
-export * from './PopoverLayout'
+import React, { FC, ReactChild } from 'react'
+import { Spinner } from '../../Spinner'
+import { ModalContent } from '../'
+
+export interface ModalLayoutProps {
+  /**
+   * Content to be displayed as footer
+   */
+  footer?: ReactChild
+
+  /**
+   * Content to be displayed as header
+   */
+  header?: ReactChild
+
+  /**
+   * Display loading spinner instead of the ModalContent
+   */
+  isLoading?: boolean
+}
+
+export const ModalLayout: FC<ModalLayoutProps> = ({
+  children,
+  footer,
+  header,
+  isLoading,
+}) => (
+  <>
+    {header}
+    <ModalContent hasFooter={!footer} hasHeader={!header}>
+      {isLoading ? <ModalLoading /> : children}
+    </ModalContent>
+    {footer}
+  </>
+)
+
+const ModalLoading = () => <Spinner mx="auto" my="xxlarge" />

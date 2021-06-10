@@ -32,6 +32,12 @@ export default {
   title: 'DialogHeader',
 }
 
-export const Basic = () => <DialogHeader>Heading</DialogHeader>
+export const Basic = () => <DialogHeader>Header</DialogHeader>
 
-export const HideClose = () => <DialogHeader hideClose>Heading</DialogHeader>
+export const HideClose = () => (
+  <DialogHeader hideClose>Header with no closing Icon</DialogHeader>
+)
+
+export const Detail = () => (
+  <DialogHeader detail="detail">Header with details</DialogHeader>
+)
