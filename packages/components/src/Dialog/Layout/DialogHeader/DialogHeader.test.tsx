@@ -28,12 +28,12 @@ import 'jest-styled-components'
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { screen } from '@testing-library/react'
-import { Basic, HideClose } from './DialogHeader.story'
+import { Basic, HideClose, Detail } from './DialogHeader.story'
 
 describe('DialogHeader', () => {
   test('basic', () => {
     renderWithTheme(<Basic />)
-    expect(screen.getByText('Heading')).toBeInTheDocument()
+    expect(screen.getByText('Header')).toBeInTheDocument()
   })
 
   test('Close visible by default', () => {
@@ -44,5 +44,10 @@ describe('DialogHeader', () => {
   test('hideClose', () => {
     renderWithTheme(<HideClose />)
     expect(screen.queryByLabelText('Close')).not.toBeInTheDocument()
+  })
+
+  test('Detail', () => {
+    renderWithTheme(<Detail />)
+    expect(screen.getByText('detail')).toBeInTheDocument()
   })
 })
