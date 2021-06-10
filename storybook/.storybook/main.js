@@ -42,7 +42,11 @@ const config = {
   features: {
     postcss: false,
   },
-  stories: ['../src/**/*.stories.tsx', '../../packages/**/*.story.tsx'],
+  stories: [
+    '../src/**/*.stories.tsx',
+    '../../packages/**/*.story.tsx',
+    '../../packages/**/*.stories.tsx',
+  ],
   webpackFinal: async (config) => {
     config.module.rules.push({
       test: /\.tsx?$/,
