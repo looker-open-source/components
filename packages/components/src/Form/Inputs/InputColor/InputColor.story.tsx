@@ -24,8 +24,11 @@
 
  */
 
-import React from 'react'
+import React, { useState } from 'react'
 import { Story } from '@storybook/react/types-6-0'
+import { Select } from '../Select'
+import { Space } from '../../../Layout'
+import { Text } from '../../../Text'
 import { InputColor, InputColorProps } from './InputColor'
 
 const Template: Story<InputColorProps> = (args) => <InputColor {...args} />
@@ -55,29 +58,31 @@ ReadOnly.args = {
   readOnly: true,
 }
 
-// import React, { useState } from 'react'
+export const ControlledColor = () => {
+  const [color, setColor] = useState('red')
 
-// export default { title: 'Forms/Color' }
+  function handleChange(value: string) {
+    setColor(value)
+  }
 
-// export const ControlledColor = () => {
-//   const [color, setColor] = useState('red')
+  function handleColorChange(e: React.FormEvent<HTMLInputElement>) {
+    setColor(e.currentTarget.value)
+  }
 
-//   function handleChange(value: string) {
-//     setColor(value)
-//   }
+  return (
+    <Space>
+      <Select
+        options={[{ value: 'green' }, { value: 'purple' }, { value: 'red' }]}
+        value={color}
+        onChange={handleChange}
+        autoResize
+      />
+      <InputColor value={color} onChange={handleColorChange} />
+      <Text>{color}</Text>
+    </Space>
+  )
+}
 
-//   function handleColorChange(e: React.FormEvent<HTMLInputElement>) {
-//     setColor(e.currentTarget.value)
-//   }
-
-//   return (
-//     <>
-//       <FieldSelect
-//         options={[{ value: 'green' }, { value: 'purple' }, { value: 'red' }]}
-//         value={color}
-//         onChange={handleChange}
-//       />
-//       <FieldColor value={color} onChange={handleColorChange} />
-//     </>
-//   )
-// }
+ControlledColor.parameters = {
+  storyshots: { disable: true },
+}
