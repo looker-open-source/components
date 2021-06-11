@@ -29,31 +29,40 @@ import { WindowedTreeNodeIDProps } from '../types'
 const getTreeWindowIntersection = (
   list: WindowedTreeNodeIDProps[],
   index: number,
-  firstID: number,
-  lastID: number
+  firstIDinWindow: number,
+  lastIDinWindow: number
 ) => {
   const tree = list[index]
-  if (tree.id > lastID) return 'after'
+  if (tree.id > lastIDinWindow) return 'after'
 
   const nextTree = list[index + 1]
-  if (tree.id < firstID) {
-    if (nextTree && nextTree.id > firstID) {
+  if (tree.id < firstIDinWindow) {
+    if (nextTree && nextTree.id > firstIDinWindow) {
       return 'intersects'
     }
-  } else if (tree.id <= lastID) {
+  } else if (tree.id <= lastIDinWindow) {
     return 'intersects'
   }
   return 'before'
 }
 
 export const getWindowedTreeNodeFilterer =
-  (filteredList: WindowedTreeNodeIDProps[], firstID: number, lastID: number) =>
+  (
+    filteredList: WindowedTreeNodeIDProps[],
+    firstIDinWindow: number,
+    lastIDinWindow: number
+  ) =>
   (
     node: WindowedTreeNodeIDProps,
     index: number,
     list: WindowedTreeNodeIDProps[]
   ) => {
-    const intersection = getTreeWindowIntersection(list, index, firstID, lastID)
+    const intersection = getTreeWindowIntersection(
+      list,
+      index,
+      firstIDinWindow,
+      lastIDinWindow
+    )
     // If the node is after the window, stop looping
     if (intersection === 'after') return false
 
@@ -63,7 +72,11 @@ export const getWindowedTreeNodeFilterer =
         // Recursively filter the tree's items
         const filteredItems: WindowedTreeNodeIDProps[] = []
         treeItems.every(
-          getWindowedTreeNodeFilterer(filteredItems, firstID, lastID)
+          getWindowedTreeNodeFilterer(
+            filteredItems,
+            firstIDinWindow,
+            lastIDinWindow
+          )
         )
         const treeWithFilteredItems = { ...node, items: filteredItems }
         filteredList.push(treeWithFilteredItems)

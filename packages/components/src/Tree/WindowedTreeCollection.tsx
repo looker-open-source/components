@@ -58,13 +58,13 @@ const WindowedTreeCollectionInternal = ({
   trees,
   ...props
 }: WindowedTreeCollectionProps) => {
-  const { value, content, ref } = useWindowedTree({
+  const { content, contextValue, ref } = useWindowedTree({
     density,
     trees,
   })
 
   return (
-    <TreeCollectionContext.Provider value={value}>
+    <TreeCollectionContext.Provider value={contextValue}>
       <TreeCollection {...omitStyledProps(props)} ref={ref}>
         {content}
       </TreeCollection>

@@ -47,11 +47,11 @@ export const WindowedTreeContext = createContext<WindowedTreeContextProps>({
 
 export const WindowedTreeNode = ({
   content,
-  firstID,
+  firstIDinWindow,
   id,
   items,
 }: WindowedTreeNodeIDProps & {
-  firstID?: number
+  firstIDinWindow?: number
 }) => {
   // Update state for which tree nodes are opened / closed
   const context = useContext(TreeCollectionContext)
@@ -66,7 +66,11 @@ export const WindowedTreeNode = ({
     // insert the items as children
     const props = {
       children: items.map((item) => (
-        <WindowedTreeNode firstID={firstID} {...item} key={item.id} />
+        <WindowedTreeNode
+          firstIDinWindow={firstIDinWindow}
+          {...item}
+          key={item.id}
+        />
       )),
     }
     const isOpen = context.toggleStateMap?.[id]?.isOpen
@@ -76,7 +80,7 @@ export const WindowedTreeNode = ({
         value={{
           density: context.density,
           isOpen,
-          partialRender: firstID ? id < firstID : false,
+          partialRender: firstIDinWindow ? id < firstIDinWindow : false,
           toggleNode,
         }}
       >

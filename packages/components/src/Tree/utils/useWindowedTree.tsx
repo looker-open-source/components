@@ -80,18 +80,26 @@ export const useWindowedTree = ({
 
   if (treesWithIDs) {
     // Find the tree nodes that are within the window
-    const firstID = shownIDs[start]
-    const lastID = shownIDs[end]
+    const firstIDinWindow = shownIDs[start]
+    const lastIDinWindow = shownIDs[end]
     const nodesInWindow: WindowedTreeNodeIDProps[] = []
     treesWithIDs.every(
-      getWindowedTreeNodeFilterer(nodesInWindow, firstID, lastID)
+      getWindowedTreeNodeFilterer(
+        nodesInWindow,
+        firstIDinWindow,
+        lastIDinWindow
+      )
     )
 
     content = (
       <>
         {before}
         {nodesInWindow.map((tree) => (
-          <WindowedTreeNode {...tree} firstID={firstID} key={tree.id} />
+          <WindowedTreeNode
+            {...tree}
+            firstIDinWindow={firstIDinWindow}
+            key={tree.id}
+          />
         ))}
         {after}
       </>
@@ -100,8 +108,7 @@ export const useWindowedTree = ({
 
   return {
     content,
+    contextValue: { density, toggleNode, toggleStateMap: map },
     ref,
-    shownIDs,
-    value: { density, toggleNode, toggleStateMap: map },
   }
 }

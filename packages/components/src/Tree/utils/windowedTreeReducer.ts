@@ -44,23 +44,19 @@ type WindowedTreeAction = {
 const updateCount = (state: WindowedTreeState, id: number, isOpen: boolean) => {
   // Get the updated count after a tree has been toggled
   const shownIDs: number[] = []
+  const map = { ...state.map, [id]: { ...state.map[id], isOpen } }
 
-  const { map, treesWithIDs } = state
-  const node = map[id]
-  node.isOpen = isOpen
-
-  const countTree =
-    (parentOpen?: boolean) => (tree: WindowedTreeNodeIDProps) => {
-      if (parentOpen) {
-        shownIDs.push(tree.id)
-      }
-      if (tree.items) {
-        const treeIsOpen = map[tree.id].isOpen
-        tree.items.forEach(countTree(parentOpen ? treeIsOpen : false))
+  const countTree = (tree: WindowedTreeNodeIDProps) => {
+    shownIDs.push(tree.id)
+    if (tree.items) {
+      const treeIsOpen = map[tree.id].isOpen
+      if (treeIsOpen) {
+        tree.items.forEach(countTree)
       }
     }
-  treesWithIDs?.forEach(countTree(true))
-  return { ...state, shownIDs }
+  }
+  state.treesWithIDs?.forEach(countTree)
+  return { ...state, map, shownIDs }
 }
 
 export const windowedTreeReducer: Reducer<
