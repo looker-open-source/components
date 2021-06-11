@@ -77,7 +77,7 @@ function getColorFromText(text?: string) {
   return text && isValidColor(text) ? stringToSimpleHsv(text) : undefined
 }
 
-export const InputColorComponent = forwardRef(
+export const InputColorInternal = forwardRef(
   (
     {
       className,
@@ -176,9 +176,9 @@ export const InputColorComponent = forwardRef(
   }
 )
 
-InputColorComponent.displayName = 'InputColorComponent'
+InputColorInternal.displayName = 'InputColorInternal'
 
-export const InputColor = styled(InputColorComponent)`
+export const InputColor = styled(InputColorInternal)`
   display: flex;
 
   ${Swatch} {
