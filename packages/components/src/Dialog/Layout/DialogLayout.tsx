@@ -24,7 +24,7 @@
 
  */
 
-import React, { FC, ReactNode } from 'react'
+import React, { FC, ReactNode, ReactChild } from 'react'
 import { ModalHeaderProps } from '../../Modal/ModalHeader'
 import {
   ModalLayout,
@@ -33,7 +33,7 @@ import {
 } from '../../Modal/ModalLayout'
 import { DialogContent } from './DialogContent'
 import { DialogFooter } from './DialogFooter'
-import { DialogHeader } from './DialogHeader'
+import { DialogHeader, DialogHeaderProps } from './DialogHeader'
 
 export interface DialogLayoutProps extends ModalLayoutProps {
   /**
@@ -47,6 +47,17 @@ export interface DialogLayoutProps extends ModalLayoutProps {
    * Replaces the built-in `IconButton` (generally used for close) with an arbitrary ReactNode
    */
   headerDetail?: ModalHeaderProps['detail']
+  /*
+   * Content in header. If a `string` is supplied the content will be placed in a `<Header />`
+   */
+  header?: ReactChild
+
+  /**
+   * Display "Close" IconButton in the DialogHeader.
+   * NOTE: `true` if no footer is supplied and `headerClose` is not explicitly specified.
+   * @default false
+   */
+  headerCloseButton?: boolean
 }
 
 export const DialogLayout: FC<DialogLayoutProps> = ({

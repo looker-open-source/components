@@ -26,13 +26,12 @@
 
 import React, { FC, ReactChild } from 'react'
 import { Spinner } from '../../Spinner'
-import { ModalContent } from '../'
 
 export interface ModalLayoutProps {
   /**
    * Content to be displayed as footer
    */
-  footer?: ReactChild
+  footer?: ReactChild | null
 
   /**
    * Content to be displayed as header
@@ -45,19 +44,16 @@ export interface ModalLayoutProps {
   isLoading?: boolean
 }
 
+export const ModalLoading = () => <Spinner mx="auto" my="xxlarge" />
+
 export const ModalLayout: FC<ModalLayoutProps> = ({
   children,
   footer,
   header,
-  isLoading,
 }) => (
   <>
     {header}
-    <ModalContent hasFooter={!footer} hasHeader={!header}>
-      {isLoading ? <ModalLoading /> : children}
-    </ModalContent>
+    {children}
     {footer}
   </>
 )
-
-const ModalLoading = () => <Spinner mx="auto" my="xxlarge" />

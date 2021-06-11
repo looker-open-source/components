@@ -24,15 +24,15 @@
 
  */
 
-import React from 'react'
+import React, { ReactChild } from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import { Constitution, ConstitutionShort } from '../../__mocks__/Constitution'
 import { Box } from '../../Layout'
-import { DialogContent, DialogLayout } from '.'
+import { DialogContent, DialogHeader, DialogFooter, DialogLayout } from '.'
 
 export interface DialogLayoutExampleProps {
   header?: string
-  footer?: string
+  footer?: ReactChild | string
   length?: 'short' | 'long'
 }
 
@@ -73,6 +73,45 @@ Full.args = {
   ...Footer.args,
   ...Header.args,
 }
+
+export const HeaderHideClose = () => (
+  <Box bg="ui1">
+    <DialogLayout
+      header={<DialogHeader hideClose>Header Text</DialogHeader>}
+      footer="Footer"
+    >
+      <ConstitutionShort />
+    </DialogLayout>
+  </Box>
+)
+
+export const HeaderDetail = () => (
+  <Box bg="ui1">
+    <DialogLayout
+      header={
+        <DialogHeader detail={<button>Done</button>}>Header Text</DialogHeader>
+      }
+      footer="Footer"
+    >
+      <ConstitutionShort />
+    </DialogLayout>
+  </Box>
+)
+
+export const FooterSecondary = () => (
+  <Box bg="ui1">
+    <DialogLayout
+      header="Header"
+      footer={
+        <DialogFooter secondary={<button>Done</button>}>
+          Footer Text
+        </DialogFooter>
+      }
+    >
+      <ConstitutionShort />
+    </DialogLayout>
+  </Box>
+)
 
 const NoPaddingTemplate: Story<DialogLayoutExampleProps> = () => (
   <Box bg="ui1">
