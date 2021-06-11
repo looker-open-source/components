@@ -3,6 +3,327 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.4.0-alpha.0 (2021-06-11)
+
+
+
+# 1.3.0 (2021-05-19)
+
+
+
+# 1.3.0-alpha.0 (2021-05-18)
+
+
+
+# 1.2.0 (2021-05-17)
+
+
+
+# 1.2.0-alpha.1 (2021-04-26)
+
+
+
+# 1.2.0-alpha.0 (2021-04-26)
+
+
+
+## 1.1.3 (2021-03-31)
+
+
+### Bug Fixes
+
+* Remove all internal references from @looker/components to [@looke](https://github.com/looke)… ([#2149](https://github.com/looker-open-source/components/issues/2149)) ([9c368a6](https://github.com/looker-open-source/components/commit/9c368a6777dee2e5556002c8d2673647e6fec915))
+
+
+
+## 1.1.2 (2021-03-31)
+
+
+
+## 1.1.1 (2021-03-31)
+
+
+### Bug Fixes
+
+* Use /lib in deep-import for Icons to correct build portability ([#2143](https://github.com/looker-open-source/components/issues/2143)) ([ef2b299](https://github.com/looker-open-source/components/commit/ef2b2995c602989c25c6925d061844e308a91e2e))
+
+
+
+# 1.1.0 (2021-03-31)
+
+
+
+# 1.0.0 (2021-03-22)
+
+
+
+# 0.18.0 (2021-03-22)
+
+
+
+# 0.17.0 (2021-03-18)
+
+
+
+## 0.16.2 (2021-03-17)
+
+
+
+## 0.16.1 (2021-03-17)
+
+
+
+# 0.16.0 (2021-03-11)
+
+
+
+## 0.15.1 (2021-03-01)
+
+
+
+# 0.15.0 (2021-03-01)
+
+
+
+## 0.14.1 (2021-02-23)
+
+
+
+# 0.14.0 (2021-02-20)
+
+
+
+# 0.13.0 (2021-02-17)
+
+
+### Features
+
+* i18n support ([#1881](https://github.com/looker-open-source/components/issues/1881)) ([8377f95](https://github.com/looker-open-source/components/commit/8377f95c143c317f3defae1fa9154c9b9377f831))
+
+
+
+# 0.12.0 (2021-02-13)
+
+
+
+# 0.11.0 (2021-02-04)
+
+
+
+## 0.10.4 (2021-01-25)
+
+
+
+## 0.10.3 (2021-01-25)
+
+
+
+## 0.10.2 (2021-01-22)
+
+
+### Bug Fixes
+
+* On build properly set package.json "files" key ([#1806](https://github.com/looker-open-source/components/issues/1806)) ([c81c4bb](https://github.com/looker-open-source/components/commit/c81c4bb625c58ede49957aad90ac8d9d7b2c4b79))
+
+
+
+## 0.10.1 (2021-01-22)
+
+
+### Bug Fixes
+
+* Properly build ems/cjs/ts for easy deep-imports ([#1804](https://github.com/looker-open-source/components/issues/1804)) ([2a523cd](https://github.com/looker-open-source/components/commit/2a523cd70b079944376c6dc87c18202e05a97b01))
+
+
+
+# 0.10.0 (2021-01-20)
+
+
+### Bug Fixes
+
+* Properly configure build for tree-shaking support ([9202b72](https://github.com/looker-open-source/components/commit/9202b72bc5fb99eb3e1af7d9e56f3dc15b1df2a4))
+
+
+
+## 0.9.26 (2020-12-12)
+
+
+
+## 0.9.23 (2020-11-06)
+
+
+
+## 0.9.21 (2020-10-24)
+
+
+
+## 0.9.20 (2020-10-23)
+
+
+### Reverts
+
+* Revert "v0.9.20" ([40024e8](https://github.com/looker-open-source/components/commit/40024e828dd4a6e1614a584a9c25dc2c4c5e8f96))
+* Revert "v0.9.20" ([fcf5a83](https://github.com/looker-open-source/components/commit/fcf5a83711274a6b6ab43e915dfba1d04bbbcc2c))
+
+
+
+## 0.9.17 (2020-10-12)
+
+
+
+## 0.9.14 (2020-09-18)
+
+
+
+## 0.9.12 (2020-08-24)
+
+
+
+## 0.9.7 (2020-07-27)
+
+
+
+## 0.9.6 (2020-07-15)
+
+
+
+## 0.9.2 (2020-06-25)
+
+
+
+## 0.9.1 (2020-06-25)
+
+
+
+# 0.9.0 (2020-06-24)
+
+
+
+## 0.8.7 (2020-06-12)
+
+
+
+## 0.8.5 (2020-06-09)
+
+
+
+# 0.8.0 (2020-06-02)
+
+
+
+## 0.7.36 (2020-05-20)
+
+
+
+## 0.7.34 (2020-05-20)
+
+
+
+## 0.7.33 (2020-05-20)
+
+
+
+## 0.7.32 (2020-05-19)
+
+
+### Reverts
+
+* Revert "v0.7.32" ([b70706c](https://github.com/looker-open-source/components/commit/b70706cee3faf4c0e1fc0ecc168a41cdff67381c))
+* Revert "v0.7.32" ([b8a3bb7](https://github.com/looker-open-source/components/commit/b8a3bb76ca00c9c088890b4f37345d5801200471))
+* Revert "v0.7.32" ([d72d689](https://github.com/looker-open-source/components/commit/d72d689061e69785f168065654bdc35677322226))
+
+
+
+## 0.7.30 (2020-05-07)
+
+
+
+## 0.7.29 (2020-04-27)
+
+
+
+## 0.7.28 (2020-04-21)
+
+
+
+## 0.7.27 (2020-04-15)
+
+
+
+## 0.7.26 (2020-04-15)
+
+
+
+## 0.7.25 (2020-03-24)
+
+
+
+## 0.7.23 (2020-03-09)
+
+
+
+## 0.7.19 (2020-02-24)
+
+
+
+## 0.7.15 (2020-01-29)
+
+
+
+## 0.7.14 (2020-01-27)
+
+
+
+## 0.7.11 (2020-01-09)
+
+
+
+## 0.7.10 (2019-12-20)
+
+
+
+## 0.7.7 (2019-12-13)
+
+
+
+## 0.7.6 (2019-11-18)
+
+
+
+## 0.7.4 (2019-11-14)
+
+
+
+## 0.7.3 (2019-11-13)
+
+
+
+## 0.7.2 (2019-11-11)
+
+
+
+## 0.7.1-alpha.0 (2019-11-06)
+
+
+
+# 0.7.0 (2019-11-05)
+
+
+
+## 0.6.3-alpha.0 (2019-11-04)
+
+
+
+## 0.6.2-alpha.0 (2019-11-04)
+
+
+
+## 0.6.1-alpha.0 (2019-11-04)
+
+
+
+
+
 # [1.3.0](https://github.com/looker-open-source/components/compare/v1.3.0-alpha.0...v1.3.0) (2021-05-19)
 
 **Note:** Version bump only for package @looker/icons

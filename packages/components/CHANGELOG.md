@@ -3,6 +3,828 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 2.0.0-alpha.0 (2021-06-11)
+
+
+### Bug Fixes
+
+* **InlineInputText:** Correct issue where long values couldn't be scrolled ([#2469](https://github.com/looker-open-source/components/issues/2469)) ([9ed95ab](https://github.com/looker-open-source/components/commit/9ed95ab09fc61dc58b5327c958a46c1ef9384422))
+* **InputColor:** Call onChange if input value is cleared ([#2489](https://github.com/looker-open-source/components/issues/2489)) ([2d12d4e](https://github.com/looker-open-source/components/commit/2d12d4e60c93b998a6ae67856ebc93e25abb6d31))
+* **Listitem:** Correct type export for ListItemProps ([#2463](https://github.com/looker-open-source/components/issues/2463)) ([3a04dc3](https://github.com/looker-open-source/components/commit/3a04dc303df4aefa107af1776b3f45ceef143ee6))
+* **ListItem:** Moved cursor styling up to ListItemWrapper ([#2459](https://github.com/looker-open-source/components/issues/2459)) ([ead039e](https://github.com/looker-open-source/components/commit/ead039ec9ea168a2b764ef972efba17198d1025b))
+* **ListItem:** Properly disperse ARIA props onto ListItem's label container ([#2433](https://github.com/looker-open-source/components/issues/2433)) ([4566246](https://github.com/looker-open-source/components/commit/45662462b38a875346fbd6ed00c4638e45c521fa))
+* **ListItem:** Removed background transition ([#2426](https://github.com/looker-open-source/components/issues/2426)) ([d538d03](https://github.com/looker-open-source/components/commit/d538d0311d8d17664e108699f6d258ed3b4d275c))
+* **MultiFunctionButton:** Properly set width of smaller button, properly hide in-active button from screen-readers ([#2447](https://github.com/looker-open-source/components/issues/2447)) ([3f53094](https://github.com/looker-open-source/components/commit/3f5309470e19324f701f5e47e5f1440a7e3ba3fe))
+* **Panel:** always stack on top ([#2408](https://github.com/looker-open-source/components/issues/2408)) ([35ddd3f](https://github.com/looker-open-source/components/commit/35ddd3fc9eb95f3d5f4385daed76c792488b55b9))
+* **RangeSlider:** use DOMRect in lieu of ClientRect ([#2202](https://github.com/looker-open-source/components/issues/2202)) ([dade533](https://github.com/looker-open-source/components/commit/dade533775f71cce773fdee388b29c131499e5b8))
+* **ReplaceText:** Performance improvement ([#2486](https://github.com/looker-open-source/components/issues/2486)) ([7c2bbec](https://github.com/looker-open-source/components/commit/7c2bbec286b02387d4ecffd1796b06c968952720))
+* **Tree:** Fix border alignment ([#2462](https://github.com/looker-open-source/components/issues/2462)) ([259cb36](https://github.com/looker-open-source/components/commit/259cb368e3016f1708f82f141ded788b6b9987a2))
+* **Tree:** Updated Tree icon / indicator alignment ([#2449](https://github.com/looker-open-source/components/issues/2449)) ([8892598](https://github.com/looker-open-source/components/commit/8892598bb1cb6c5673f53a6f65d9f834d01e31c1)), closes [#2450](https://github.com/looker-open-source/components/issues/2450) [#2455](https://github.com/looker-open-source/components/issues/2455) [#2456](https://github.com/looker-open-source/components/issues/2456)
+* **useTooltip:** Don't include `aria-describedby` on target when Tooltip disabled ([#2464](https://github.com/looker-open-source/components/issues/2464)) ([ddda539](https://github.com/looker-open-source/components/commit/ddda539b52d163e55792ffe1c5aa54836226e99f))
+* **useWindow:** Simplify windowing for long lists ([#2485](https://github.com/looker-open-source/components/issues/2485)) ([d6b2699](https://github.com/looker-open-source/components/commit/d6b2699d8065a1209a512876057036496c267627))
+
+
+### Features
+
+* **ListItem:** Remove "current" prop ([#2431](https://github.com/looker-open-source/components/issues/2431)) ([c8a1770](https://github.com/looker-open-source/components/commit/c8a1770f1086af031d2bdd75afe519473838c3ee))
+* **PopoverContent:** new component to enhance Popover layout ([#2448](https://github.com/looker-open-source/components/issues/2448)) ([c1f0fa0](https://github.com/looker-open-source/components/commit/c1f0fa0076f2ce6eda7c8c66df4a1b21528dc6c6))
+* **PopoverFooter:** new component to enhance Popover layout ([#2430](https://github.com/looker-open-source/components/issues/2430)) ([7838a9e](https://github.com/looker-open-source/components/commit/7838a9ed08ce1ea0b46ef535a7d6050485412485))
+* **PopoverHeader:** new component for improved Popover layouts ([#2434](https://github.com/looker-open-source/components/issues/2434)) ([cf82bfc](https://github.com/looker-open-source/components/commit/cf82bfc30054da378671f0b354216fc63be76776))
+* **TabPanel:** Added tabStop boolean prop to TabPanel ([#2413](https://github.com/looker-open-source/components/issues/2413)) ([70d6e1f](https://github.com/looker-open-source/components/commit/70d6e1f5740e0706e4a8f7d5f21ae73edaae68cb))
+
+
+### BREAKING CHANGES
+
+* **useWindow:** windowing prop changed on List and Select
+* **ListItem:** removed the current prop from ListItem's interface
+
+
+
+# 1.4.0 (2021-05-23)
+
+
+### Features
+
+* **Layout:** Supports displaying shadow when content overflows container height ([#2300](https://github.com/looker-open-source/components/issues/2300)) ([b0231fe](https://github.com/looker-open-source/components/commit/b0231fec9795c1e2c8afd150e530d7ddb4a2a1db))
+
+
+
+# 1.4.0-alpha.0 (2021-05-21)
+
+
+### Bug Fixes
+
+* **Tree:** Properly disperse ListItem related props onto inner TreeItem ([#2406](https://github.com/looker-open-source/components/issues/2406)) ([9438bdd](https://github.com/looker-open-source/components/commit/9438bdd6c2a3c7381eca679634947dbed810beb0))
+
+
+### Features
+
+* **Truncate:** now supports an optional `description` property ([#2403](https://github.com/looker-open-source/components/issues/2403)) ([83dd55f](https://github.com/looker-open-source/components/commit/83dd55fb1cae543d8b620107da0c25c002f3f48c))
+
+
+
+## 1.3.1 (2021-05-19)
+
+
+### Bug Fixes
+
+* **Tree:** Detail padding is properly controllable ([#2401](https://github.com/looker-open-source/components/issues/2401)) ([9ba99fc](https://github.com/looker-open-source/components/commit/9ba99fcc8fbb7ab554adda10f01efa419278a40b))
+
+
+
+# 1.3.0 (2021-05-19)
+
+
+### Features
+
+* **HoverDisclosure:** Support strategy to allow developer to use display or visibility control ([#2398](https://github.com/looker-open-source/components/issues/2398)) ([359ee9f](https://github.com/looker-open-source/components/commit/359ee9f3a261276a741c51dbc819112feb5f1dbe))
+* **Tree:** Keyboard Navigation ([#2397](https://github.com/looker-open-source/components/issues/2397)) ([1ad8fe4](https://github.com/looker-open-source/components/commit/1ad8fe428bbf25edb5dd9a10fc64cbb4f2c1a3b6))
+
+
+
+# 1.3.0-alpha.0 (2021-05-18)
+
+
+### Features
+
+* Move @looker/components-date back into @looker/components ([#2368](https://github.com/looker-open-source/components/issues/2368)) ([8c8686e](https://github.com/looker-open-source/components/commit/8c8686eb2d650ab64fabc0dd4e4f827ec1135694))
+* **Aside:** standardized width size ([#2348](https://github.com/looker-open-source/components/issues/2348)) ([05676ab](https://github.com/looker-open-source/components/commit/05676abfd96eb03bfbbc9976a06935625f6c2ea9))
+
+
+
+# 1.2.0 (2021-05-17)
+
+
+### Bug Fixes
+
+* **HoverDisclosure:** Use CSS visibility instead of de-rendering ([#2359](https://github.com/looker-open-source/components/issues/2359)) ([4186c52](https://github.com/looker-open-source/components/commit/4186c5212ffa4f2545fc95984696ca8b52f3667c))
+* **Panel:** PanelHeader icon should always be `ArrowBack` ([#2360](https://github.com/looker-open-source/components/issues/2360)) ([f86b4e1](https://github.com/looker-open-source/components/commit/f86b4e17e2ac5665bf43feb464f36d3196d581f6))
+
+
+
+# 1.2.0-alpha.6 (2021-05-14)
+
+
+
+# 1.2.0-alpha.5 (2021-05-13)
+
+
+### Features
+
+* **Aside:** adding prop collapse ([#2288](https://github.com/looker-open-source/components/issues/2288)) ([c3f949a](https://github.com/looker-open-source/components/commit/c3f949a6f9a9441dbed36fa9248aa18436a11295))
+
+
+
+# 1.2.0-alpha.4 (2021-05-13)
+
+
+### Bug Fixes
+
+* **NavList:** Properly style Trees within NavList ([#2338](https://github.com/looker-open-source/components/issues/2338)) ([594038d](https://github.com/looker-open-source/components/commit/594038dc5d71f1815114d73a5a32607c66518ff1))
+* **reset:** Refine reset for Legend and provide css classNames for downstream extension as-needed ([#2341](https://github.com/looker-open-source/components/issues/2341)) ([34c653b](https://github.com/looker-open-source/components/commit/34c653bf2d21dbc90efcf5b6cf8a7ac3a3fa9927))
+* Correct List overflow & Tree color typing ([#2337](https://github.com/looker-open-source/components/issues/2337)) ([c777721](https://github.com/looker-open-source/components/commit/c777721d83304f43a06e8af9f3662c32e204d64c))
+* **MenuHeading:** Hide shadow initially ([#2325](https://github.com/looker-open-source/components/issues/2325)) ([f9d4c87](https://github.com/looker-open-source/components/commit/f9d4c87820c55dd955c134624ba84a96e14858c7))
+* **MenuHeading:** Hide shadow initially ([#2326](https://github.com/looker-open-source/components/issues/2326)) ([a68ef47](https://github.com/looker-open-source/components/commit/a68ef4756843726d244eb58cccb34d5d1b4fcb79))
+
+
+### Features
+
+* **Tree:** Added "no-icon" option to forceLabelPadding prop ([#2329](https://github.com/looker-open-source/components/issues/2329)) ([579eb9e](https://github.com/looker-open-source/components/commit/579eb9e5950e778dfb605a2319b118665b98e745)), closes [#2330](https://github.com/looker-open-source/components/issues/2330)
+* **Tree:** Added "no-icon" option to forceLabelPadding prop ([#2329](https://github.com/looker-open-source/components/issues/2329)) ([b33d361](https://github.com/looker-open-source/components/commit/b33d361ab60e09b0e54998d563a341fbe4522f13)), closes [#2330](https://github.com/looker-open-source/components/issues/2330)
+
+
+
+# 1.2.0-alpha.3 (2021-05-10)
+
+
+### Bug Fixes
+
+* **IconButton:** Match focus ring to toggleColor ([#2282](https://github.com/looker-open-source/components/issues/2282)) ([31df370](https://github.com/looker-open-source/components/commit/31df37044b086f459cdd16a8c0d38fbdb04d1218))
+* **RangeSlider:** Value stays within bounds when min/max changes ([#2269](https://github.com/looker-open-source/components/issues/2269)) ([ec27334](https://github.com/looker-open-source/components/commit/ec273341f088e5899a3accd8c6268960dab87c7c))
+
+
+### Features
+
+* @looker/components-date package ([#2274](https://github.com/looker-open-source/components/issues/2274)) ([5aa01e0](https://github.com/looker-open-source/components/commit/5aa01e0b996647a60d251fc5cd00ba7af185356c))
+* useFocusVisible hook ([#2277](https://github.com/looker-open-source/components/issues/2277)) ([68d124e](https://github.com/looker-open-source/components/commit/68d124ef2b8981a33de48ef2caf228a49b290ea0))
+* **Accordion:** Toggle on spacebar key ([#2281](https://github.com/looker-open-source/components/issues/2281)) ([221c2e9](https://github.com/looker-open-source/components/commit/221c2e97cfcbb2d92507386800ec98f99ebc2ae5))
+* **Pagination:** and PageSize support alwaysVisible - visible even when there are no pages to paginate ([#2273](https://github.com/looker-open-source/components/issues/2273)) ([530848f](https://github.com/looker-open-source/components/commit/530848f403b6d5f20df9ad32bc45a0988f3601e5)), closes [#2275](https://github.com/looker-open-source/components/issues/2275)
+* **Tree:** ARIA-labeling ([#2271](https://github.com/looker-open-source/components/issues/2271)) ([0ffaa4b](https://github.com/looker-open-source/components/commit/0ffaa4b2edf9657446463aef4f085cbb9783ec66))
+* **Tree:** ARIA-labeling ([#2271](https://github.com/looker-open-source/components/issues/2271)) ([#2280](https://github.com/looker-open-source/components/issues/2280)) ([99b28a5](https://github.com/looker-open-source/components/commit/99b28a5fb275476aa94409cd1f9de76e0edfa75f))
+
+
+
+# 1.2.0-alpha.2 (2021-04-28)
+
+
+### Features
+
+* **Chip:** Support maxWidth ([#2260](https://github.com/looker-open-source/components/issues/2260)) ([5e32aea](https://github.com/looker-open-source/components/commit/5e32aeae055c4f8e4fcd51f98375f1795cb4fe3c))
+* **IconButton:** Support for toggleColor ([28a0b5a](https://github.com/looker-open-source/components/commit/28a0b5aace052cc088f29b6a14798319cfc91b94))
+
+
+
+# 1.2.0-alpha.1 (2021-04-26)
+
+
+
+# 1.2.0-alpha.0 (2021-04-26)
+
+
+### Bug Fixes
+
+* **Accordion:** Correctly infer icon style from indicatorPosition="left" ([#2235](https://github.com/looker-open-source/components/issues/2235)) ([f9208e4](https://github.com/looker-open-source/components/commit/f9208e4bfcbe7e038e61a32a5e7c0e5a7b899d67))
+* **List:** Only define height when windowing ([#2208](https://github.com/looker-open-source/components/issues/2208)) ([2518b36](https://github.com/looker-open-source/components/commit/2518b365e89e01d9f4ec72d7af9ac1952b8b3a1a))
+* **ListDivider:** Correct color for ListDivider, MenuDivider, SelectOptionsDivider ([#2218](https://github.com/looker-open-source/components/issues/2218)) ([6a0e692](https://github.com/looker-open-source/components/commit/6a0e692f1ad8b4eb6e507a50b6f0dce27697f024))
+* **MenuHeading:** Added spacing to MenuHeadings that follow MenuDividers ([#2172](https://github.com/looker-open-source/components/issues/2172)) ([270df45](https://github.com/looker-open-source/components/commit/270df456482021b9542177568b9b7498fa5f0971)), closes [#2173](https://github.com/looker-open-source/components/issues/2173) [#2176](https://github.com/looker-open-source/components/issues/2176)
+* **Portal:** Insert element earlier to support measured components ([#2185](https://github.com/looker-open-source/components/issues/2185)) ([36151b8](https://github.com/looker-open-source/components/commit/36151b8092bebc7507e37d2351e9a9659bd627a7))
+* **RangeSlider:** Value state reverting if re-rendered before prop is updated ([#2174](https://github.com/looker-open-source/components/issues/2174)) ([9d0b66f](https://github.com/looker-open-source/components/commit/9d0b66f20d5ac066fab1bc2ee20b84c3f2847645))
+* **Slider:** Correct default margin on input[type="slider"] ([#2197](https://github.com/looker-open-source/components/issues/2197)) ([b68eda9](https://github.com/looker-open-source/components/commit/b68eda9685aac5947e98300ade429fb0a0e29f21))
+* **Textarea:** Prevent browser-default margin on bottom of textarea ([#2201](https://github.com/looker-open-source/components/issues/2201)) ([8d997ac](https://github.com/looker-open-source/components/commit/8d997acea390b8ea4f79452543fd182e589d89e6))
+* **TreeItem:** Clicks on padding trigger onClick when parent Tree labelBackgroundColor is true ([#2189](https://github.com/looker-open-source/components/issues/2189)) ([7a960a2](https://github.com/looker-open-source/components/commit/7a960a2141081a673836c4c902de4fec1bdb8847))
+* **Truncate:** Prevent spurious scrollbar presentation due to browser settings ([#2175](https://github.com/looker-open-source/components/issues/2175)) ([f92ecd2](https://github.com/looker-open-source/components/commit/f92ecd2bbe4cce7c25b1a200a05a1562f8bae7e0))
+* **useHovered:** Invalid argument error ([#2238](https://github.com/looker-open-source/components/issues/2238)) ([6daf576](https://github.com/looker-open-source/components/commit/6daf57662a65251061878f3f90dbba3f2dbeadbe))
+
+
+### Features
+
+* **Accordion:** Refactored Accordion interface and composition ([#2199](https://github.com/looker-open-source/components/issues/2199)) ([8d6ef53](https://github.com/looker-open-source/components/commit/8d6ef530d85702efa354fa9a0f4b9064cb81ad12)), closes [#2231](https://github.com/looker-open-source/components/issues/2231)
+* **IconButton:** Support keyColor background with toggle ([#2118](https://github.com/looker-open-source/components/issues/2118)) ([27047b0](https://github.com/looker-open-source/components/commit/27047b0f99b1f518daa95645a9479472080c4579))
+* **Layout:** scroll use cases ([#2186](https://github.com/looker-open-source/components/issues/2186)) ([36ba0f8](https://github.com/looker-open-source/components/commit/36ba0f8bfbc6ed2894ec23c08025662987fda3e0))
+* **Link:** Support prop that displays icon indicating link is "external" ([#2156](https://github.com/looker-open-source/components/issues/2156)) ([19b9e27](https://github.com/looker-open-source/components/commit/19b9e27c801daadb7109562a0fb41c5dd5644bc6))
+* **List:** NavList ([#2115](https://github.com/looker-open-source/components/issues/2115)) ([a701e6f](https://github.com/looker-open-source/components/commit/a701e6f8010fc02038ac3410a198d218ed6a557a))
+* **List:** support fontFamily as prop ([#2216](https://github.com/looker-open-source/components/issues/2216)) ([8484f8a](https://github.com/looker-open-source/components/commit/8484f8a086e9bee2c07d3996968375b126e7374f)), closes [#2226](https://github.com/looker-open-source/components/issues/2226)
+* **Tree:** forceLabelPadding prop ([#2233](https://github.com/looker-open-source/components/issues/2233)) ([a8a7707](https://github.com/looker-open-source/components/commit/a8a7707bcc0e435dee66fef2e02284f44adccf4c)), closes [#2234](https://github.com/looker-open-source/components/issues/2234)
+* CSS Reset now uses a "defensive" rather than "offensive" strategy (no more GlobalStyles) ([#2120](https://github.com/looker-open-source/components/issues/2120)) ([266e2f2](https://github.com/looker-open-source/components/commit/266e2f25c3396eee5a5b2d2be234c7ccad608811))
+* **Tree:** Added labelBackgroundOnly prop ([#2154](https://github.com/looker-open-source/components/issues/2154)) ([13fb624](https://github.com/looker-open-source/components/commit/13fb624937d6a250c211f9c3821c6e5685944ab2)), closes [#2155](https://github.com/looker-open-source/components/issues/2155)
+
+
+
+## 1.1.3 (2021-03-31)
+
+
+### Bug Fixes
+
+* Remove all internal references from @looker/components to [@looke](https://github.com/looke)… ([#2149](https://github.com/looker-open-source/components/issues/2149)) ([9c368a6](https://github.com/looker-open-source/components/commit/9c368a6777dee2e5556002c8d2673647e6fec915))
+* **SelectOptions:** Render an option, not a header, when option value is an empty string ([#2148](https://github.com/looker-open-source/components/issues/2148)) ([ad06185](https://github.com/looker-open-source/components/commit/ad06185e58eb4a7a941631a4a8d64ccba5c49780))
+
+
+
+## 1.1.2 (2021-03-31)
+
+
+### Bug Fixes
+
+* **ToggleSwitch:** Remove verticalAlign / inline-block to improve layout ([#2128](https://github.com/looker-open-source/components/issues/2128)) ([47ea669](https://github.com/looker-open-source/components/commit/47ea6690e75a6d3e9dc11f3bd5fc37635b97a46f))
+
+
+
+## 1.1.1 (2021-03-31)
+
+
+### Bug Fixes
+
+* Use /lib in deep-import for Icons to correct build portability ([#2143](https://github.com/looker-open-source/components/issues/2143)) ([ef2b299](https://github.com/looker-open-source/components/commit/ef2b2995c602989c25c6925d061844e308a91e2e))
+
+
+
+# 1.1.0 (2021-03-31)
+
+
+### Features
+
+* **Select:** Support windowing for grouped options ([#2071](https://github.com/looker-open-source/components/issues/2071)) ([440c0b2](https://github.com/looker-open-source/components/commit/440c0b2c1744711a3c0f5b2fe6b5098ca9e443f1))
+
+
+
+# 1.0.0 (2021-03-22)
+
+
+
+# 0.18.0 (2021-03-22)
+
+
+### Bug Fixes
+
+* **ListItem:** Prevent props from being spuriously emitted to DOM output ([#2086](https://github.com/looker-open-source/components/issues/2086)) ([b1da0c7](https://github.com/looker-open-source/components/commit/b1da0c7f9a7802a14db15b8e6e90e5d1ae4f5611))
+* Correct issue where components that output DOM button w/o type="button" inadvetedly submit HTML forms ([#2096](https://github.com/looker-open-source/components/issues/2096)) ([ae5bc1b](https://github.com/looker-open-source/components/commit/ae5bc1ba3e46da7c387e4125ce88d49cb2798973))
+
+
+### Features
+
+* **Layout:** add position fixed to Header and Footer ([#2028](https://github.com/looker-open-source/components/issues/2028)) ([6dc9f9a](https://github.com/looker-open-source/components/commit/6dc9f9a6f8b7559a8d6e62081f05d60f9746419a))
+
+
+
+# 0.17.0 (2021-03-18)
+
+
+### Bug Fixes
+
+* **DataTable:** remove reset to update font-size in Helltool ([#2067](https://github.com/looker-open-source/components/issues/2067)) ([fe30da9](https://github.com/looker-open-source/components/commit/fe30da90c629b8a3c13f4b076ecceea9cfc47807))
+* **DataTable:** update gap space between content and indicator ([#2065](https://github.com/looker-open-source/components/issues/2065)) ([7a2975a](https://github.com/looker-open-source/components/commit/7a2975aaf44b2702f6c7c2cef31fb587b89dd400))
+* **Grid:** Default to 100% width ([eb9e360](https://github.com/looker-open-source/components/commit/eb9e360496daeec5fd76c01fc705700a531a299a))
+* **Listitem:** Improved strategy for :focus-visible CSS (remove z-index from MenuHeading) ([bcbf47c](https://github.com/looker-open-source/components/commit/bcbf47c298d4e935be2cddaf8f9ec33856f21cc8))
+* **MenuList:** Deal with MenuDividers in unexpected places ([#2079](https://github.com/looker-open-source/components/issues/2079)) ([ea6e028](https://github.com/looker-open-source/components/commit/ea6e028f75503f16884cafc1ec9acd0e0ae4b5ae))
+
+
+### Features
+
+* **InputColor:** New ColorPicker base component, major overhaul of InputColor ([#2013](https://github.com/looker-open-source/components/issues/2013)) ([a4d625e](https://github.com/looker-open-source/components/commit/a4d625e9d71250c3654a6646cc018c47397a34f9))
+* **Layout:** Aside, Footer & Header now support border* props ([#2016](https://github.com/looker-open-source/components/issues/2016)) ([c5652ca](https://github.com/looker-open-source/components/commit/c5652ca92e51998be3d27c2b819d15dc76553fa2))
+
+
+
+## 0.16.2 (2021-03-17)
+
+
+
+## 0.16.1 (2021-03-17)
+
+
+### Bug Fixes
+
+* **MenuItem:** Remove unnecessary aria attributes when there is no nested menu ([#2049](https://github.com/looker-open-source/components/issues/2049)) ([2c6c784](https://github.com/looker-open-source/components/commit/2c6c784837746fdb539cfb9949f1dacbdde3ccb0))
+* **Space:** Remove snapshot tests, add justify support, default DataTable to 100% width ([#2050](https://github.com/looker-open-source/components/issues/2050)) ([fe50f4d](https://github.com/looker-open-source/components/commit/fe50f4d61104f8dee34e48214a25f8d912991584))
+* Icon refactor pre-patches ([#2030](https://github.com/looker-open-source/components/issues/2030)) ([776216b](https://github.com/looker-open-source/components/commit/776216b2eed5d922b81bcf585f79de66cfd55811)), closes [#2031](https://github.com/looker-open-source/components/issues/2031)
+
+
+
+# 0.16.0 (2021-03-11)
+
+
+### Bug Fixes
+
+* Export all Date & Time-related components from a sub-location to prevent bundle-size impacts ([#2025](https://github.com/looker-open-source/components/issues/2025)) ([158f3b4](https://github.com/looker-open-source/components/commit/158f3b460302acfa8407023a4ebfe89859e04bc1))
+* **Divider:** Remove default vertical margin ([#2014](https://github.com/looker-open-source/components/issues/2014)) ([f64e975](https://github.com/looker-open-source/components/commit/f64e975e972da9e15487bf2a9891119f96d31920))
+* **List:** Fixed List / Menu windowing ([#1997](https://github.com/looker-open-source/components/issues/1997)) ([82e726d](https://github.com/looker-open-source/components/commit/82e726d73f110a7055db99523e2b727528d88783))
+* **MenuHeading:** Fix MenuHeading style overrides ([#2002](https://github.com/looker-open-source/components/issues/2002)) ([bb293d9](https://github.com/looker-open-source/components/commit/bb293d9a9963b833b452a03b59d15616539c4521)), closes [#2003](https://github.com/looker-open-source/components/issues/2003) [#2004](https://github.com/looker-open-source/components/issues/2004) [#2005](https://github.com/looker-open-source/components/issues/2005)
+* **SpaceVertical:** Don't stretch SpaceVertical children by default ([#2017](https://github.com/looker-open-source/components/issues/2017)) ([998a673](https://github.com/looker-open-source/components/commit/998a673a95970e66360629074e77532184614cc3))
+* **useClickable:** Improve and export onClick type ([#1985](https://github.com/looker-open-source/components/issues/1985)) ([5eca0a6](https://github.com/looker-open-source/components/commit/5eca0a60cffb02147a073db01ace34b4722d6e1b))
+
+
+### Features
+
+* **Select:** Caret icon always has default cursor icon ([#2019](https://github.com/looker-open-source/components/issues/2019)) ([64d3b12](https://github.com/looker-open-source/components/commit/64d3b1251c2c2019d3f454138b04351cc38d2700))
+* Export i18n strings and utilities ([#2006](https://github.com/looker-open-source/components/issues/2006)) ([75f750b](https://github.com/looker-open-source/components/commit/75f750b5da86f1a04ccab7a3d277d3699afd9318))
+* **MultiFunctionButton:** component ([#1955](https://github.com/looker-open-source/components/issues/1955)) ([e602575](https://github.com/looker-open-source/components/commit/e6025755265e9e30d06ec9e4bc5d6925aea8da8b)), closes [#1991](https://github.com/looker-open-source/components/issues/1991)
+
+
+
+## 0.15.1 (2021-03-01)
+
+
+### Bug Fixes
+
+* Slider & RangeSlider properly support floating step value ([#1974](https://github.com/looker-open-source/components/issues/1974)) ([797211c](https://github.com/looker-open-source/components/commit/797211c1442e7cdc422a9fe4eb6e411543a526b3))
+
+
+
+# 0.15.0 (2021-03-01)
+
+
+### Bug Fixes
+
+* **useArrowKeyNav:** Focus lost when item is removed ([#1971](https://github.com/looker-open-source/components/issues/1971)) ([dd02e5e](https://github.com/looker-open-source/components/commit/dd02e5ed9b436edf138bcabea93c78848ec83738))
+* Range Slider Dashboard Integration Fixes ([#1963](https://github.com/looker-open-source/components/issues/1963)) ([a0e35c2](https://github.com/looker-open-source/components/commit/a0e35c237f83a3a30c7f4e2de8e9e59089862aea))
+* **DataTable:** firefox border-bottom bug ([#1961](https://github.com/looker-open-source/components/issues/1961)) ([7f5f1e0](https://github.com/looker-open-source/components/commit/7f5f1e05fa64f21df52fd83828dffa6f7b186146))
+* **FocusTrap:** Overly aggressive return focus behavior ([#1959](https://github.com/looker-open-source/components/issues/1959)) ([bbea788](https://github.com/looker-open-source/components/commit/bbea788c25e26a1e81d95c4968c3004684eef464))
+* **MenuList:** Windowing ([#1966](https://github.com/looker-open-source/components/issues/1966)) ([8ebaa8d](https://github.com/looker-open-source/components/commit/8ebaa8dc6528f7e1fd1026101cbb5e9814567eb9))
+* Combobox aria-owns targets ul instead of input ([#1956](https://github.com/looker-open-source/components/issues/1956)) ([55598a6](https://github.com/looker-open-source/components/commit/55598a611280fcd1208a9ce5628483c4a18a5de5))
+* InputDate & InputDateRange accessibility improvements ([#1964](https://github.com/looker-open-source/components/issues/1964)) ([3257127](https://github.com/looker-open-source/components/commit/325712776610fea1d4d77fb23414f84ff083ebe0))
+* **DataTable:** Safari stick cell bug ([#1965](https://github.com/looker-open-source/components/issues/1965)) ([67d0bc1](https://github.com/looker-open-source/components/commit/67d0bc1589a64105eb98b2130109b5a6debc73ff))
+
+
+### Features
+
+* **DataTable:** Allow filters to be specified by composition rather than complex prop object ([#1950](https://github.com/looker-open-source/components/issues/1950)) ([a6765e2](https://github.com/looker-open-source/components/commit/a6765e2dde2fcda5c4894d3ea5a0c7f02ae95b42))
+* customize icon label for localization ([#1932](https://github.com/looker-open-source/components/issues/1932)) ([2f59ccb](https://github.com/looker-open-source/components/commit/2f59ccb83e95cdd94cf66958d34b922f09641bb9))
+* MenuHeading and MenuDivider ([#1948](https://github.com/looker-open-source/components/issues/1948)) ([985e6bd](https://github.com/looker-open-source/components/commit/985e6bd0da010129a83b81623e3788b48bc4256d)), closes [#1958](https://github.com/looker-open-source/components/issues/1958) [#1960](https://github.com/looker-open-source/components/issues/1960)
+
+
+
+## 0.14.1 (2021-02-23)
+
+
+### Bug Fixes
+
+* Focusing hidden input element ([#1952](https://github.com/looker-open-source/components/issues/1952)) ([edd2267](https://github.com/looker-open-source/components/commit/edd22673710cd471f90816f2ebf46740e8ec1d87))
+
+
+
+# 0.14.0 (2021-02-20)
+
+
+### Bug Fixes
+
+* **ListItem:** Removed reset from ListItemWrapper ([#1933](https://github.com/looker-open-source/components/issues/1933)) ([1fe9ee1](https://github.com/looker-open-source/components/commit/1fe9ee11875826936a8a937bd77b22258bd08550))
+* **ListItem:** Set background of disabled ListItemWrapper to transparent ([#1938](https://github.com/looker-open-source/components/issues/1938)) ([2e258cf](https://github.com/looker-open-source/components/commit/2e258cf6c82a85a75e425e25e7385e8b9d66c321))
+* Removed 'label' from CompatibleHTMLProps interface ([#1930](https://github.com/looker-open-source/components/issues/1930)) ([0f43673](https://github.com/looker-open-source/components/commit/0f43673e04e9a596d479b6e40d7b4ad5f385a659))
+* Select text highlighted when focused via keyboard ([#1929](https://github.com/looker-open-source/components/issues/1929)) ([d3a5ae4](https://github.com/looker-open-source/components/commit/d3a5ae4d900337c9555a3c06b93626380b8df79e))
+
+
+### Features
+
+* Add label to Dialog ([#1924](https://github.com/looker-open-source/components/issues/1924)) ([15ec7be](https://github.com/looker-open-source/components/commit/15ec7bee23012bca958028b656847b7e97e4e105))
+* Focus on first tabbable node when Dialog opens ([#1927](https://github.com/looker-open-source/components/issues/1927)) ([1aac687](https://github.com/looker-open-source/components/commit/1aac6870eb276963d6b089d670f367eba70fc79f)), closes [#1941](https://github.com/looker-open-source/components/issues/1941)
+* **Menu:** Menu Refactor ([#1906](https://github.com/looker-open-source/components/issues/1906)) ([2ee6809](https://github.com/looker-open-source/components/commit/2ee68096ffcf863558cd02f0e5e21dbf298a0774)), closes [#1907](https://github.com/looker-open-source/components/issues/1907)
+
+
+
+# 0.13.0 (2021-02-17)
+
+
+### Bug Fixes
+
+* **design-tokens:** generateTheme now tolerates poorly encoded font stack ([#1915](https://github.com/looker-open-source/components/issues/1915)) ([dfac189](https://github.com/looker-open-source/components/commit/dfac189ca421f6a55906f4ae3395bcabdd110c9b))
+* Range Slider Mobile UX ([#1909](https://github.com/looker-open-source/components/issues/1909)) ([464f055](https://github.com/looker-open-source/components/commit/464f0552c8402afc98d2796c99b9201744ec68f8))
+* **MessageBar:** Use intent accent colors for MessageBar background ([#1901](https://github.com/looker-open-source/components/issues/1901)) ([c4ea665](https://github.com/looker-open-source/components/commit/c4ea665884e901ecfa5145b12b08ad0dce8fe4f0))
+
+
+### Features
+
+* i18n support ([#1881](https://github.com/looker-open-source/components/issues/1881)) ([8377f95](https://github.com/looker-open-source/components/commit/8377f95c143c317f3defae1fa9154c9b9377f831))
+
+
+
+# 0.12.0 (2021-02-13)
+
+
+### Bug Fixes
+
+* **FocusTrap:** Return focus behavior on nested focus traps ([#1886](https://github.com/looker-open-source/components/issues/1886)) ([78bfd87](https://github.com/looker-open-source/components/commit/78bfd87532c65cf33bc8fc00941387a3249a139e))
+* **theme:** Enable sanitizeFontFace to properly quote font-faces in font-family ([#1893](https://github.com/looker-open-source/components/issues/1893)) ([4aed07e](https://github.com/looker-open-source/components/commit/4aed07ea1c8278e5fd0188de7123111319f7e0f7))
+* **Tree:** Removed default value on Tree density prop ([#1910](https://github.com/looker-open-source/components/issues/1910)) ([9ba8779](https://github.com/looker-open-source/components/commit/9ba877930768370aa0fa2d198bceb2edee609536)), closes [#1911](https://github.com/looker-open-source/components/issues/1911)
+* DataTable Simplify onClick behavior ([#1865](https://github.com/looker-open-source/components/issues/1865)) ([1c17444](https://github.com/looker-open-source/components/commit/1c174442a0e731f0b60e8573077b41ff1d5a2c61))
+* InlineInputText updated test coverage ([#1878](https://github.com/looker-open-source/components/issues/1878)) ([c6e7b5d](https://github.com/looker-open-source/components/commit/c6e7b5d98b128c49dc61a1e30a6d93ba44dc9743))
+* Radio validation error ([#1850](https://github.com/looker-open-source/components/issues/1850)) ([9b06e39](https://github.com/looker-open-source/components/commit/9b06e3918b7564241d83117814b45a0337580a64)), closes [#1859](https://github.com/looker-open-source/components/issues/1859)
+* Unable to filter SelectMulti with 1 or more controlled values ([#1873](https://github.com/looker-open-source/components/issues/1873)) ([4c8f214](https://github.com/looker-open-source/components/commit/4c8f214dc51b43e90f50668a9be7315ceb51d209))
+* **Label:** typography props now actually work ([#1871](https://github.com/looker-open-source/components/issues/1871)) ([fd8793a](https://github.com/looker-open-source/components/commit/fd8793abf5d2e055221421bafd9c2aa22ea8a3c5))
+
+
+### Features
+
+* Panel component ([#1815](https://github.com/looker-open-source/components/issues/1815)) ([62cafc5](https://github.com/looker-open-source/components/commit/62cafc5343062cfda69c6147be7641677df15e04))
+* Tree refactor with List pieces ([#1846](https://github.com/looker-open-source/components/issues/1846)) ([8940f68](https://github.com/looker-open-source/components/commit/8940f68f6cab0723404a50269c48fc6238aad14b)), closes [#1861](https://github.com/looker-open-source/components/issues/1861) [#1866](https://github.com/looker-open-source/components/issues/1866) [#1874](https://github.com/looker-open-source/components/issues/1874)
+
+
+
+# 0.11.0 (2021-02-04)
+
+
+### Bug Fixes
+
+* `RangeSlider` & `Slider` properly display on inverted themes ([#1853](https://github.com/looker-open-source/components/issues/1853)) ([54c4ab0](https://github.com/looker-open-source/components/commit/54c4ab01291e68227104cd567467d95f7a145954))
+* **Accordion:** indicator will now follow theme color changes properly ([#1854](https://github.com/looker-open-source/components/issues/1854)) ([bc2a747](https://github.com/looker-open-source/components/commit/bc2a747afcd8392f693b0365a7e8ae6de540f732))
+* **DataTable:** "sticky" cell border-bottom now presents properly in Safari ([#1830](https://github.com/looker-open-source/components/issues/1830)) ([cc8fe1d](https://github.com/looker-open-source/components/commit/cc8fe1df7b6f182d057313a8b85102235ded91e3))
+* **DataTable:** Link color should be derived from theme.colors.link ([#1848](https://github.com/looker-open-source/components/issues/1848)) ([d17540a](https://github.com/looker-open-source/components/commit/d17540a8f366ac6c909af583387bfaf4cee81d73))
+* Tab no longer spuriously accepts MarginProps ([#1844](https://github.com/looker-open-source/components/issues/1844)) ([a23c50b](https://github.com/looker-open-source/components/commit/a23c50ba4009fc6670d5e6b91359a23701a1866a))
+* **deps:** Downgrade react-hotkeys-hook to resolve hotkey breakages ([#1825](https://github.com/looker-open-source/components/issues/1825)) ([0fe9851](https://github.com/looker-open-source/components/commit/0fe9851cf6558b61f903836db74daf29b1ba8972))
+
+
+### Features
+
+* Add aliases for text color to allow for upstream flexibility ([#1862](https://github.com/looker-open-source/components/issues/1862)) ([4c2b399](https://github.com/looker-open-source/components/commit/4c2b399e19407cd07fc394f1193988817e349621))
+* **components:** Select option preface ([#1823](https://github.com/looker-open-source/components/issues/1823)) ([3016432](https://github.com/looker-open-source/components/commit/30164321fdff15e069367352ff59a264736368b0))
+* List & ListItem detail props ([#1800](https://github.com/looker-open-source/components/issues/1800)) ([afe3f41](https://github.com/looker-open-source/components/commit/afe3f41c9503509045f93a9a32adce63680679ab))
+* **components:** nestedMenu on MenuItem ([#1780](https://github.com/looker-open-source/components/issues/1780)) ([7a1fada](https://github.com/looker-open-source/components/commit/7a1fada4523dd0805279baed974dc27836f32207))
+* **DataTable:** Accessibility keyboard navigation ([#1776](https://github.com/looker-open-source/components/issues/1776)) ([3ff103c](https://github.com/looker-open-source/components/commit/3ff103c1975435c5227c62e18020a036a2e8bfa4)), closes [#1793](https://github.com/looker-open-source/components/issues/1793) [#1798](https://github.com/looker-open-source/components/issues/1798) [#1781](https://github.com/looker-open-source/components/issues/1781) [#1783](https://github.com/looker-open-source/components/issues/1783) [#1773](https://github.com/looker-open-source/components/issues/1773) [#1785](https://github.com/looker-open-source/components/issues/1785) [#1782](https://github.com/looker-open-source/components/issues/1782) [#1790](https://github.com/looker-open-source/components/issues/1790) [#1789](https://github.com/looker-open-source/components/issues/1789) [#1788](https://github.com/looker-open-source/components/issues/1788) [#1791](https://github.com/looker-open-source/components/issues/1791) [#1787](https://github.com/looker-open-source/components/issues/1787) [#1786](https://github.com/looker-open-source/components/issues/1786) [#1796](https://github.com/looker-open-source/components/issues/1796) [#1799](https://github.com/looker-open-source/components/issues/1799)
+
+
+
+## 0.10.4 (2021-01-25)
+
+
+### Bug Fixes
+
+* Select group heading styles ([#1817](https://github.com/looker-open-source/components/issues/1817)) ([e4cae00](https://github.com/looker-open-source/components/commit/e4cae00da1535ef6e7d71bbe1592c6cff45230c0))
+
+
+
+## 0.10.3 (2021-01-25)
+
+
+### Bug Fixes
+
+* **Text:** `Text` should not have default `color` and lineHeight based on fontSize ([#1813](https://github.com/looker-open-source/components/issues/1813)) ([226dfa9](https://github.com/looker-open-source/components/commit/226dfa9067d8326f87ce842badfa16c0be29cedd))
+
+
+
+## 0.10.2 (2021-01-22)
+
+
+### Bug Fixes
+
+* Export `List` component family ([#1807](https://github.com/looker-open-source/components/issues/1807)) ([c50360c](https://github.com/looker-open-source/components/commit/c50360cd2e9926949cc5489b18794969524416a9))
+* On build properly set package.json "files" key ([#1806](https://github.com/looker-open-source/components/issues/1806)) ([c81c4bb](https://github.com/looker-open-source/components/commit/c81c4bb625c58ede49957aad90ac8d9d7b2c4b79))
+
+
+
+## 0.10.1 (2021-01-22)
+
+
+### Bug Fixes
+
+* Properly build ems/cjs/ts for easy deep-imports ([#1804](https://github.com/looker-open-source/components/issues/1804)) ([2a523cd](https://github.com/looker-open-source/components/commit/2a523cd70b079944376c6dc87c18202e05a97b01))
+
+
+
+# 0.10.0 (2021-01-20)
+
+
+### Bug Fixes
+
+* Correct import path issues DialogLayout interface name conflict ([88f099e](https://github.com/looker-open-source/components/commit/88f099eacf361a83be9149e0ac541b9184d03547))
+* MenuList windowing initial render performance ([a56ac29](https://github.com/looker-open-source/components/commit/a56ac29067cd25ef31a64d63c9bd742de927fb32))
+* Pagination component now enables first and last page of results at same thresholds for previous and next ([#1781](https://github.com/looker-open-source/components/issues/1781)) ([f7d666a](https://github.com/looker-open-source/components/commit/f7d666a01fa42a992c0368c7f56e0311293d5cc8))
+* Properly configure build for tree-shaking support ([9202b72](https://github.com/looker-open-source/components/commit/9202b72bc5fb99eb3e1af7d9e56f3dc15b1df2a4))
+
+
+### Features
+
+* Add DialogLayout component to manage dialog setup ([bfa94b3](https://github.com/looker-open-source/components/commit/bfa94b3ea75603caf47d184f63b356e666af57c0))
+* Arrow key navigation persists selected item (Menu, Tabs) ([#1761](https://github.com/looker-open-source/components/issues/1761)) ([dc2400f](https://github.com/looker-open-source/components/commit/dc2400f6c4237e326f7ccd4a1eb4c93d962d900b))
+* DialogContent hasFooter & hasHeader support ([8039da2](https://github.com/looker-open-source/components/commit/8039da25d1646e8d50ee900e6243a3e3e44ea6ca))
+* DialogHeader no longer supports `closeIcon` ([bca25d3](https://github.com/looker-open-source/components/commit/bca25d38959c7af27a6019063a9b7e7ee9294d8d))
+* List and ListItem ([#1773](https://github.com/looker-open-source/components/issues/1773)) ([ee1e14b](https://github.com/looker-open-source/components/commit/ee1e14b122b5db1716c2d3b2ae6ad6abc1507192))
+
+
+### BREAKING CHANGES
+
+* `DialogHeader` no longer supports `closeIcon` (always "Close")
+
+
+
+## 0.9.29 (2020-12-21)
+
+
+
+## 0.9.28 (2020-12-17)
+
+
+### Reverts
+
+* Revert "Range Slider Touch Support" (#1715) ([712491f](https://github.com/looker-open-source/components/commit/712491ff462d5b881b4a02b93059a095b2ea8a01)), closes [#1715](https://github.com/looker-open-source/components/issues/1715)
+
+
+
+## 0.9.27 (2020-12-15)
+
+
+### Reverts
+
+* Revert "Fix Tooltip for autoFocus input" ([34e24a6](https://github.com/looker-open-source/components/commit/34e24a64ad88f426df80adfb939a54d5433f0de1))
+
+
+
+## 0.9.26 (2020-12-12)
+
+
+
+## 0.9.25 (2020-11-16)
+
+
+
+## 0.9.24 (2020-11-11)
+
+
+
+## 0.9.23 (2020-11-06)
+
+
+
+## 0.9.22 (2020-10-24)
+
+
+
+## 0.9.21 (2020-10-24)
+
+
+
+## 0.9.20 (2020-10-23)
+
+
+### Reverts
+
+* Revert "v0.9.20" ([40024e8](https://github.com/looker-open-source/components/commit/40024e828dd4a6e1614a584a9c25dc2c4c5e8f96))
+* Revert "v0.9.20" ([fcf5a83](https://github.com/looker-open-source/components/commit/fcf5a83711274a6b6ab43e915dfba1d04bbbcc2c))
+
+
+
+## 0.9.19 (2020-10-15)
+
+
+
+## 0.9.18 (2020-10-14)
+
+
+### Reverts
+
+* Revert "toggle css visibility in HoverDisclosure" (#1561) ([6e9abf9](https://github.com/looker-open-source/components/commit/6e9abf986399775a666e8960c7e2a98f75944932)), closes [#1561](https://github.com/looker-open-source/components/issues/1561)
+
+
+
+## 0.9.17 (2020-10-12)
+
+
+
+## 0.9.16 (2020-10-02)
+
+
+
+## 0.9.15 (2020-09-21)
+
+
+
+## 0.9.14 (2020-09-18)
+
+
+
+## 0.9.13 (2020-08-24)
+
+
+
+## 0.9.12 (2020-08-24)
+
+
+
+## 0.9.11 (2020-08-08)
+
+
+
+## 0.9.10 (2020-08-07)
+
+
+
+## 0.9.7 (2020-07-27)
+
+
+
+## 0.9.6 (2020-07-15)
+
+
+
+## 0.9.5 (2020-07-01)
+
+
+
+## 0.9.4 (2020-06-29)
+
+
+
+## 0.9.3 (2020-06-26)
+
+
+
+## 0.9.2 (2020-06-25)
+
+
+
+## 0.9.1 (2020-06-25)
+
+
+
+# 0.9.0 (2020-06-24)
+
+
+
+## 0.8.7 (2020-06-12)
+
+
+
+## 0.8.6 (2020-06-09)
+
+
+
+## 0.8.5 (2020-06-09)
+
+
+
+## 0.8.4 (2020-06-06)
+
+
+
+## 0.8.3 (2020-06-05)
+
+
+
+## 0.8.2 (2020-06-03)
+
+
+
+## 0.8.1 (2020-06-03)
+
+
+
+# 0.8.0 (2020-06-02)
+
+
+
+## 0.7.37 (2020-05-21)
+
+
+
+## 0.7.36 (2020-05-20)
+
+
+
+## 0.7.34 (2020-05-20)
+
+
+
+## 0.7.33 (2020-05-20)
+
+
+
+## 0.7.32 (2020-05-19)
+
+
+### Reverts
+
+* Revert "v0.7.32" ([b70706c](https://github.com/looker-open-source/components/commit/b70706cee3faf4c0e1fc0ecc168a41cdff67381c))
+* Revert "v0.7.32" ([b8a3bb7](https://github.com/looker-open-source/components/commit/b8a3bb76ca00c9c088890b4f37345d5801200471))
+* Revert "v0.7.32" ([d72d689](https://github.com/looker-open-source/components/commit/d72d689061e69785f168065654bdc35677322226))
+
+
+
+## 0.7.31 (2020-05-12)
+
+
+
+## 0.7.30 (2020-05-07)
+
+
+
+## 0.7.29 (2020-04-27)
+
+
+
+## 0.7.28 (2020-04-21)
+
+
+
+## 0.7.27 (2020-04-15)
+
+
+
+## 0.7.26 (2020-04-15)
+
+
+
+## 0.7.25 (2020-03-24)
+
+
+
+## 0.7.24 (2020-03-12)
+
+
+
+## 0.7.23 (2020-03-09)
+
+
+
+## 0.7.22 (2020-02-27)
+
+
+
+## 0.7.21 (2020-02-26)
+
+
+
+## 0.7.20 (2020-02-25)
+
+
+
+## 0.7.19 (2020-02-24)
+
+
+
+## 0.7.17 (2020-01-31)
+
+
+
+## 0.7.16 (2020-01-30)
+
+
+
+## 0.7.15 (2020-01-29)
+
+
+
+## 0.7.14 (2020-01-27)
+
+
+
+## 0.7.13 (2020-01-16)
+
+
+
+## 0.7.12 (2020-01-13)
+
+
+
+## 0.7.11 (2020-01-09)
+
+
+
+## 0.7.10 (2019-12-20)
+
+
+
+## 0.7.8 (2019-12-16)
+
+
+
+## 0.7.7 (2019-12-13)
+
+
+
+## 0.7.6 (2019-11-18)
+
+
+
+## 0.7.5 (2019-11-14)
+
+
+
+## 0.7.4 (2019-11-14)
+
+
+
+## 0.7.3 (2019-11-13)
+
+
+
+## 0.7.2 (2019-11-11)
+
+
+
+## 0.7.1 (2019-11-11)
+
+
+
+## 0.7.1-alpha.0 (2019-11-06)
+
+
+
+# 0.7.0 (2019-11-05)
+
+
+
+## 0.6.3-alpha.0 (2019-11-04)
+
+
+
+## 0.6.2-alpha.0 (2019-11-04)
+
+
+
+## 0.6.1-alpha.0 (2019-11-04)
+
+
+
+
+
 # [1.4.0](https://github.com/looker-open-source/components/compare/v1.4.0-alpha.0...v1.4.0) (2021-05-23)
 
 
