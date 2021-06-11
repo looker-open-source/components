@@ -114,9 +114,8 @@ export const InputColorComponent = forwardRef(
       }
     }, [isFocused, value, inputTextValue])
 
-    const callOnChange = (newColor?: SimpleHSV | string) => {
-      if (!onChange || !newColor) return
-      onChange(createEventWithHSVValue(newColor, props.name))
+    const callOnChange = (newColor: SimpleHSV | string) => {
+      onChange?.(createEventWithHSVValue(newColor, props.name))
     }
 
     const setColorState = (newColor: SimpleHSV) => {
@@ -129,8 +128,10 @@ export const InputColorComponent = forwardRef(
       const newValue = event.currentTarget.value
       setInputTextValue(newValue)
 
-      const isValid = isValidColor(newValue)
-      callOnChange(isValid ? newValue : undefined)
+      const isValid = isValidColor(newValue) || newValue === ''
+      if (isValid) {
+        callOnChange(newValue)
+      }
       setColor(getColorFromText(event.currentTarget.value))
     }
 

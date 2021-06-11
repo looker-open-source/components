@@ -193,4 +193,26 @@ describe('InputColor', () => {
     fireEvent.click(screen.getByTestId('swatch'))
     expect(screen.queryByTestId('color-picker')).not.toBeInTheDocument()
   })
+
+  test('clear value', () => {
+    const onChangeMock = jest.fn()
+    renderWithTheme(<InputColor value="green" onChange={onChangeMock} />)
+    fireEvent.change(screen.getByRole('textbox'), { target: { value: '' } })
+    expect(onChangeMock.mock.calls).toMatchInlineSnapshot(`
+      Array [
+        Array [
+          Object {
+            "currentTarget": Object {
+              "name": undefined,
+              "value": "",
+            },
+            "target": Object {
+              "name": undefined,
+              "value": "",
+            },
+          },
+        ],
+      ]
+    `)
+  })
 })
