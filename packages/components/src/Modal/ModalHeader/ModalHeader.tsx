@@ -24,7 +24,7 @@
 
  */
 
-import React, { FC, ReactChild, ReactNode } from 'react'
+import React, { FC, ReactNode } from 'react'
 import styled from 'styled-components'
 import {
   CompatibleHTMLProps,
@@ -41,7 +41,7 @@ export type ModalHeaderProps = SpaceProps &
   CompatibleHTMLProps<HTMLDivElement> &
   FontSizeProps &
   FontWeightProps & {
-    children: ReactChild
+    children: ReactNode
     /**
      * Usually used as a closing button this element is displayed on the right side of the component
      */
