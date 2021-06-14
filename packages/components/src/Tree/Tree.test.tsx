@@ -212,7 +212,9 @@ describe('Tree', () => {
         />
       )
       expect(screen.getByText('Whatever')).toHaveStyle('color: #262d33')
-      expect(screen.getByTestId('icon')).toHaveStyle('color: #707781')
+      expect(screen.getByTestId('icon').parentNode).toHaveStyle(
+        'color: #707781'
+      )
     })
 
     test('calculation', () => {
@@ -225,7 +227,9 @@ describe('Tree', () => {
         />
       )
       expect(screen.getByText('Whatever')).toHaveStyle('color: #319220')
-      expect(screen.getByTestId('icon')).toHaveStyle('color: #319220')
+      expect(screen.getByTestId('icon').parentNode).toHaveStyle(
+        'color: #319220'
+      )
     })
 
     test('disabled', () => {
@@ -233,7 +237,9 @@ describe('Tree', () => {
         <Tree disabled label="Whatever" icon={<Science data-testid="icon" />} />
       )
       expect(screen.getByText('Whatever')).toHaveStyle('color: #939ba5')
-      expect(screen.getByTestId('icon')).toHaveStyle('color: #939ba5')
+      expect(screen.getByTestId('icon').parentNode).toHaveStyle(
+        'color: #939ba5'
+      )
     })
   })
 
