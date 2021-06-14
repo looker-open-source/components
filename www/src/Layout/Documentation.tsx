@@ -47,7 +47,7 @@ import { Layout } from './Layout'
 import { PropsExamples } from './PropsExamples'
 
 const githubBase =
-  'https://github.com/looker-open-source/components/blob/main/packages/components/src/'
+  'https://github.com/looker-open-source/components/blob/main/packages/'
 
 interface DocQuery {
   data: {
@@ -79,7 +79,7 @@ const DocumentationLayout = (props: DocQuery) => {
     storybookPath,
     title,
   } = mdx.frontmatter
-  const githubPath = github || `${title}/${title}.tsx`
+  const githubPath = github || `components/src/${title}/${title}.tsx`
 
   const tab = useTabs()
   const body = <MDXRenderer>{mdx.body}</MDXRenderer>
