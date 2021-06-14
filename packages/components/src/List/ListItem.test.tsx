@@ -76,8 +76,10 @@ describe('ListItem', () => {
           who!
         </ListItem>
       )
-      expect(screen.getByText('who!')).toHaveStyle('color: #319220')
-      expect(screen.getByTestId('icon')).toHaveStyle('color: #319220')
+      expect(screen.getByText('who!').parentNode).toHaveStyle('color: #319220')
+      expect(screen.getByTestId('icon').parentNode).toHaveStyle(
+        'color: #319220'
+      )
     })
 
     test('theme selected', () => {
@@ -106,8 +108,10 @@ describe('ListItem', () => {
           who!
         </ListItem>
       )
-      expect(screen.getByText('who!')).toHaveStyle('color: #cc0000')
-      expect(screen.getByTestId('icon')).toHaveStyle('color: #cc0000')
+      expect(screen.getByText('who!').parentNode).toHaveStyle('color: #cc0000')
+      expect(screen.getByTestId('icon').parentNode).toHaveStyle(
+        'color: #cc0000'
+      )
     })
   })
 

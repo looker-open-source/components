@@ -79,10 +79,10 @@ export const listItemIconCSS = css<ListItemLayoutProps>`
     align-self: center;
     display: flex;
     margin-right: ${({ iconGap, theme }) => theme.space[iconGap]};
+    ${colorHelper}
 
     & > svg,
     ${StyledIconBase}, ${IconPlaceholder} {
-      ${colorHelper}
       flex-grow: 0;
       flex-shrink: 0;
       height: ${({ iconSize, theme }) => theme.sizes[iconSize]};
