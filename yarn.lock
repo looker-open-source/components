@@ -2385,6 +2385,11 @@
     react-i18next "11.8.15"
     tabbable "^5.2.0"
 
+"@looker/components-test-utils@*":
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/@looker/components-test-utils/-/components-test-utils-1.3.1.tgz#493c87bd42c8f9b841029ffa5fa3fbcb065607a3"
+  integrity sha512-1bSSA+ZGLLYV4f2yImwNZwYefmWo5S27cB2LyT7uuSBQIezIYD93N2ypkEJA4MkLm4hE1JQzfyNpZOnnS1b1YQ==
+
 "@looker/components@*":
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/@looker/components/-/components-1.4.1.tgz#1f5d86b29e65d09e7a668d0f7a0cfd97a4c560ff"
@@ -2422,12 +2427,48 @@
     polished "^4.1.2"
     styled-system "^5.1.5"
 
+"@looker/eslint-config@*":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@looker/eslint-config/-/eslint-config-1.4.0.tgz#2fef391a5717c1106e6dd99e489b79d60e82c0c1"
+  integrity sha512-vvQIjq4JSW9rYHBKcD6us5veoqOz4G2xEwxjEuj0eahvvPVTx0frSJNJxi2JzQI3LY1VGbYFbQJvTrFHN/fXjQ==
+  dependencies:
+    "@types/vfile-message" "^2.0.0"
+    "@typescript-eslint/eslint-plugin" "^4.22.0"
+    "@typescript-eslint/parser" "^4.23.0"
+    eslint "^7.27.0"
+    eslint-config-prettier "8.2.0"
+    eslint-config-standard "16.0.2"
+    eslint-import-resolver-typescript "^2.4.0"
+    eslint-import-resolver-webpack "^0.13.0"
+    eslint-plugin-header "^3.1.1"
+    eslint-plugin-i18next "^5.1.1"
+    eslint-plugin-import "^2.22.1"
+    eslint-plugin-jest-dom "3.8.0"
+    eslint-plugin-mdx "^1.12.0"
+    eslint-plugin-node "^11.1.0"
+    eslint-plugin-prettier "3.4.0"
+    eslint-plugin-promise "^5.1.0"
+    eslint-plugin-react "^7.23.2"
+    eslint-plugin-react-hooks "^4.2.0"
+    eslint-plugin-sort-keys-fix "^1.1.1"
+    eslint-plugin-standard "5.0.0"
+    eslint-plugin-testing-library "4.1.1"
+    prettier "^2.2.1"
+    typescript "4.2.4"
+
 "@looker/icons@*":
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/@looker/icons/-/icons-1.3.0.tgz#60dd6213f5784e9e5160458934913c31e483d0a1"
   integrity sha512-YFshUK+JQB/Vz+Fi7imX/9QAz9SMN12G1cjrs5IbFTRrlRV4JmPjJIMTO7JNxFiP11xDxSO71z3KO6qRyda96A==
   dependencies:
     "@styled-icons/styled-icon" "^10.6.3"
+
+"@looker/prettier-config@*":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@looker/prettier-config/-/prettier-config-1.3.0.tgz#22178b6186436856608c48e9408391694bd0d4e5"
+  integrity sha512-IEqBf6OwmVGfJEPlJQR6fPaAE67XWKZOVpX/q47ddHXnCGKuzJXa44ceRXyIvhV+SgSqXQzseD5HN1NV92ht+Q==
+  dependencies:
+    prettier ">=2.2.1"
 
 "@looker/sdk-rtl@^21.0.13":
   version "21.0.13"
@@ -2449,6 +2490,19 @@
     readable-stream "^3.4.0"
     request "^2.88.0"
     request-promise-native "^1.0.8"
+
+"@looker/stylelint-config@*":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@looker/stylelint-config/-/stylelint-config-1.3.0.tgz#a65337b8f76b32bf39323d3f1794885fd4cb9279"
+  integrity sha512-Z3MHVVT7vptyi2W6OmcDpwS4mZuzZ2C0olV523+Hp81WCW6gammBUcrlZIRKtN+XfNuiM1K/YxZXKUvzFdVEog==
+  dependencies:
+    prettier "2.2.1"
+    stylelint "^13.13.1"
+    stylelint-config-prettier "^8.0.2"
+    stylelint-config-recommended "^5.0.0"
+    stylelint-config-styled-components "^0.1.1"
+    stylelint-order "^4.1.0"
+    stylelint-prettier "^1.2.0"
 
 "@mdx-js/loader@^1.6.22":
   version "1.6.22"
@@ -3748,10 +3802,10 @@
     lodash "^4.17.15"
     redent "^3.0.0"
 
-"@testing-library/react@^11.2.6":
-  version "11.2.6"
-  resolved "https://registry.yarnpkg.com/@testing-library/react/-/react-11.2.6.tgz#586a23adc63615985d85be0c903f374dab19200b"
-  integrity sha512-TXMCg0jT8xmuU8BkKMtp8l7Z50Ykew5WNX8UoIKTaLFwKkP2+1YDhOLA2Ga3wY4x29jyntk7EWfum0kjlYiSjQ==
+"@testing-library/react@*", "@testing-library/react@^11.2.6":
+  version "11.2.7"
+  resolved "https://registry.yarnpkg.com/@testing-library/react/-/react-11.2.7.tgz#b29e2e95c6765c815786c0bc1d5aed9cb2bf7818"
+  integrity sha512-tzRNp7pzd5QmbtXNG/mhdcl7Awfu/Iz1RaVHY75zTdOkmHCuzMhRL83gWHSgOAcjS3CCbyfwUHMZgRJb4kAfpA==
   dependencies:
     "@babel/runtime" "^7.12.5"
     "@testing-library/dom" "^7.28.1"
@@ -8914,7 +8968,7 @@ eslint-plugin-i18next@^5.1.1:
   dependencies:
     requireindex "~1.1.0"
 
-eslint-plugin-import@^2.22.0, eslint-plugin-import@^2.23.4:
+eslint-plugin-import@^2.22.0, eslint-plugin-import@^2.22.1, eslint-plugin-import@^2.23.4:
   version "2.23.4"
   resolved "https://registry.yarnpkg.com/eslint-plugin-import/-/eslint-plugin-import-2.23.4.tgz#8dceb1ed6b73e46e50ec9a5bb2411b645e7d3d97"
   integrity sha512-6/wP8zZRsnQFiR3iaPFgh5ImVRM1WN5NUWfTIRqwOdeiGJlBcSk82o1FEVq8yXmy4lkIzTo7YhHCIxlU/2HyEQ==
@@ -16746,15 +16800,15 @@ prettier-linter-helpers@^1.0.0:
   dependencies:
     fast-diff "^1.1.2"
 
-prettier@2.3.0, prettier@>=2.3.0, prettier@^2.0.5, prettier@^2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.3.0.tgz#b6a5bf1284026ae640f17f7ff5658a7567fc0d18"
-  integrity sha512-kXtO4s0Lz/DW/IJ9QdWhAf7/NmPWQXkFr/r/WkR3vyI+0v8amTDxiaQSLzs8NBlytfLWX/7uQUMIW677yLKl4w==
-
-prettier@~2.2.1:
+prettier@2.2.1, prettier@~2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.2.1.tgz#795a1a78dd52f073da0cd42b21f9c91381923ff5"
   integrity sha512-PqyhM2yCjg/oKkFPtTGUojv7gnZAoG80ttl45O6x2Ug/rMJw4wcc9k6aaf2hibP7BGVCCM33gZoGjyvt9mm16Q==
+
+prettier@2.3.0, prettier@>=2.2.1, prettier@>=2.3.0, prettier@^2.0.5, prettier@^2.2.1, prettier@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.3.0.tgz#b6a5bf1284026ae640f17f7ff5658a7567fc0d18"
+  integrity sha512-kXtO4s0Lz/DW/IJ9QdWhAf7/NmPWQXkFr/r/WkR3vyI+0v8amTDxiaQSLzs8NBlytfLWX/7uQUMIW677yLKl4w==
 
 pretty-bytes@^5.3.0, pretty-bytes@^5.4.1:
   version "5.4.1"

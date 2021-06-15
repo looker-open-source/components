@@ -15,6 +15,11 @@
     "lodash": "^4.17.20"
   },
   "devDependencies": {
+    "@looker/components-test-utils": "*",
+    "@looker/eslint-config": "*",
+    "@looker/prettier-config": "*",
+    "@looker/stylelint-config": "*",
+    "@testing-library/react": "*",
     "@types/react": "*",
     "@types/react-dom": "*"
   },
