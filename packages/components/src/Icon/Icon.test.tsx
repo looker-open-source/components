@@ -67,16 +67,16 @@ describe('Icon', () => {
 
   test('DOM attribute support', () => {
     renderWithTheme(<Icon icon={<Add />} aria-label="Add" />)
-    expect(screen.getByLabelText('Add')).toBeTruthy()
+    expect(screen.getByLabelText('Add')).toBeInTheDocument()
   })
 
   test(`No title by default`, () => {
     renderWithTheme(<Icon icon={<Delete />} />)
-    expect(screen.queryByLabelText("Oscar's House")).toBeFalsy()
+    expect(screen.queryByLabelText("Oscar's House")).not.toBeInTheDocument()
   })
 
   test(`Title is assigned properly to SVG art`, () => {
     renderWithTheme(<Icon icon={<Delete />} title="Oscar's House" />)
-    expect(screen.getByTitle("Oscar's House")).toBeTruthy()
+    expect(screen.getByTitle("Oscar's House")).toBeInTheDocument()
   })
 })

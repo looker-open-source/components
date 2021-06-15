@@ -239,7 +239,7 @@ const ComboboxListInternal = forwardRef(
       }
 
       const timeoutValue = 50
-      let t: NodeJS.Timeout
+      let t: ReturnType<typeof setTimeout>
       const scrollListener = throttle(() => {
         if (contentContainer) {
           updateScrollState(contentContainer)

@@ -67,6 +67,7 @@
     "@babel/preset-typescript": "^7.13.0",
     "@babel/runtime": "^7.14.0",
     "@babel/runtime-corejs3": "^7.13.17",
+    "@looker/sdk": "^21.6.0",
     "@testing-library/jest-dom": "^5.12.0",
     "@types/jest-image-snapshot": "^4.3.0",
     "@types/node": "^15.12.1",

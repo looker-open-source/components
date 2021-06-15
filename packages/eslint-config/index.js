@@ -70,6 +70,7 @@ module.exports = {
   rules: {
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/no-redeclare': ['error'],
     '@typescript-eslint/no-use-before-define': 'off',
     'import/default': 'off',
     'import/named': 'off',
@@ -77,6 +78,7 @@ module.exports = {
     'import/order': 'error',
     indentation: 'off',
     'no-console': 'warn',
+    'no-redeclare': 'off', // prefer TS version of `no-redeclare` to support function overload syntax
     'no-restricted-imports': [
       'error',
       {
@@ -110,6 +112,7 @@ module.exports = {
     'sort-keys-fix/sort-keys-fix': 'error',
     // Work to enable these soon-ish
     'testing-library/no-node-access': 'off',
+    'testing-library/prefer-screen-queries': 'off',
   },
 
   settings: {
