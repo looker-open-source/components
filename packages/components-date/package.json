@@ -1,7 +1,7 @@
 {
   "name": "@looker/components-date",
   "license": "MIT",
-  "version": "2.0.0-alpha.1",
+  "version": "2.0.0-alpha.2",
   "main": "lib/cjs/index.js",
   "module": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -18,7 +18,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@looker/components": "^2.0.0-alpha.1",
+    "@looker/components": "^2.0.0-alpha.2",
     "@looker/design-tokens": "^2.0.0-alpha.0",
     "@styled-icons/material-rounded": "^10.28.0",
     "date-fns": "^2.21.1",

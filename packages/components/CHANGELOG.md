@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.2](https://github.com/looker-open-source/components/compare/@looker/components@2.0.0-alpha.1...@looker/components@2.0.0-alpha.2) (2021-06-15)
+
+
+### Bug Fixes
+
+* **DialogHeader:** Restore previous behavior for DialogHeader detail property ([#2497](https://github.com/looker-open-source/components/issues/2497)) ([9102410](https://github.com/looker-open-source/components/commit/910241013484462db66a366a12fccacf8b70121d))
+* **Tooltip:** Don't included spurious `undefined` className on disable Tooltip target ([#2496](https://github.com/looker-open-source/components/issues/2496)) ([3356f0b](https://github.com/looker-open-source/components/commit/3356f0b092ec1670594e405c22edf149d12c4fcd))
+
+
+
+
+
 # [2.0.0-alpha.1](https://github.com/looker-open-source/components/compare/@looker/components@2.0.0-alpha.0...@looker/components@2.0.0-alpha.1) (2021-06-15)
 
 
