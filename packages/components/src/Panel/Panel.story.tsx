@@ -273,3 +273,7 @@ export const WithDrawer = () => (
     <Button>Open Drawer</Button>
   </Drawer>
 )
+
+WithDrawer.parameters = {
+  storyshots: { disable: true },
+}
