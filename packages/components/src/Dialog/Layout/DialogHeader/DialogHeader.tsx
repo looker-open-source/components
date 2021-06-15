@@ -57,7 +57,7 @@ const DialogHeaderLayout: FC<DialogHeaderProps> = ({
 
   return (
     <ModalHeader
-      detail={hideClose ? detail : <ModalHeaderCloseButton />}
+      detail={detail || (!hideClose && <ModalHeaderCloseButton />)}
       id={headingId}
       px="xlarge"
       py="large"
