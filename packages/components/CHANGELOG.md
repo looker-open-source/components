@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.1](https://github.com/looker-open-source/components/compare/@looker/components@2.0.0-alpha.0...@looker/components@2.0.0-alpha.1) (2021-06-15)
+
+
+### Bug Fixes
+
+* **ListItem:** Allow icon to have more specific color than ListItem ([#2492](https://github.com/looker-open-source/components/issues/2492)) ([978d444](https://github.com/looker-open-source/components/commit/978d444781623e2e2d4d45c61ff88bb0b39024ff))
+* **Modal:** Loosen children types to reduce upgrade complexity ([#2490](https://github.com/looker-open-source/components/issues/2490)) ([0dbcf62](https://github.com/looker-open-source/components/commit/0dbcf623226bdd183507d78b204666483fdc9969))
+
+
+
+
+
 # 2.0.0-alpha.0 (2021-06-11)
 
 
