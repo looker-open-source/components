@@ -14,7 +14,9 @@
     "@looker/sdk-rtl": "^21.0.13",
     "lodash": "^4.17.20"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@types/react": "*"
+  },
   "eslintConfig": {
     "root": true,
     "extends": [
