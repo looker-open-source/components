@@ -56,8 +56,8 @@ const ModalContentLayout = forwardRef(
       <OverflowShadow
         hasOverflow={hasOverflow}
         ref={ref}
-        pb={hasOverflow || !!hasFooter ? pb : 'xxxsmall'}
-        pt={hasOverflow || !!hasHeader ? pt : 'xxxsmall'}
+        pb={hasOverflow || !!hasFooter ? pb || props.p : 'xxxsmall'}
+        pt={hasOverflow || !!hasHeader ? pt || props.p : 'xxxsmall'}
         {...props}
       >
         {children}
