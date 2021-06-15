@@ -34,7 +34,10 @@ import { PopoverContent } from './PopoverContent'
 describe('PopoverContent', () => {
   test('Basic', () => {
     renderWithTheme(<Basic />)
-    expect(screen.queryByText('Content Text')).toBeInTheDocument()
+    expect(screen.getByText('Content Text')).toHaveStyleRule(
+      'padding-bottom',
+      '0.75rem'
+    )
   })
 
   test('Custom padding', () => {

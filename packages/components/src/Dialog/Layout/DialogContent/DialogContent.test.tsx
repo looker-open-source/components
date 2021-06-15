@@ -32,20 +32,23 @@ import { DialogContent } from './DialogContent'
 describe('DialogContent', () => {
   test('basic', () => {
     renderWithTheme(<DialogContent>Dialog Content</DialogContent>)
-    expect(screen.getByText('Dialog Content')).toBeInTheDocument()
+    expect(screen.getByText('Dialog Content')).toHaveStyleRule(
+      'padding-bottom',
+      '1.25rem'
+    )
   })
   test('display correct padding if hasFooter', () => {
     renderWithTheme(<DialogContent hasFooter>Stuff</DialogContent>)
 
     expect(screen.getByText('Stuff')).toHaveStyleRule(
       'padding-bottom',
-      '1.25rem'
+      '0.125rem'
     )
   })
   test('display correct padding if hasHeader', () => {
     renderWithTheme(<DialogContent hasHeader>Stuff</DialogContent>)
 
-    expect(screen.getByText('Stuff')).toHaveStyleRule('padding-top', '1.25rem')
+    expect(screen.getByText('Stuff')).toHaveStyleRule('padding-top', '0.125rem')
   })
   test('display correct padding if both  hasFooter & hasHeader', () => {
     renderWithTheme(
@@ -56,8 +59,8 @@ describe('DialogContent', () => {
 
     expect(screen.getByText('Stuff')).toHaveStyleRule(
       'padding-bottom',
-      '1.25rem'
+      '0.125rem'
     )
-    expect(screen.getByText('Stuff')).toHaveStyleRule('padding-top', '1.25rem')
+    expect(screen.getByText('Stuff')).toHaveStyleRule('padding-top', '0.125rem')
   })
 })
