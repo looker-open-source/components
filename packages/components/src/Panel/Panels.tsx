@@ -24,9 +24,16 @@
 
  */
 
-import { CompatibleHTMLProps } from '@looker/design-tokens'
-import React, { createContext, forwardRef, Ref } from 'react'
+import { CompatibleHTMLProps, transitions } from '@looker/design-tokens'
+import React, {
+  createContext,
+  forwardRef,
+  Ref,
+  useContext,
+  useEffect,
+} from 'react'
 import styled from 'styled-components'
+import { DialogContext } from '../Dialog'
 import { useCallbackRef, useMeasuredElement } from '../utils'
 
 export const PanelsContext = createContext<ClientRect | null>(null)
@@ -37,7 +44,28 @@ const PanelsLayout = forwardRef(
     forwardedRef: Ref<HTMLDivElement>
   ) => {
     const [element, ref] = useCallbackRef(forwardedRef)
-    const [rect] = useMeasuredElement(element)
+    const [rect, refreshDomRect] = useMeasuredElement(element)
+
+    const dialogContext = useContext(DialogContext)
+    const hasAnimation = dialogContext.id !== ''
+
+    // Changes to position aren't captured by useMeasuredElement(ResizeObserver)
+    // so if Panels is rendered in a Drawer or Dialog, we need to update the dom rect
+    // once the animation is done
+    useEffect(() => {
+      let t: NodeJS.Timeout
+      if (hasAnimation) {
+        t = setTimeout(() => {
+          refreshDomRect()
+          // moderate is the transition duration for Drawer/Dialog
+        }, transitions.moderate + 20)
+      }
+      return () => {
+        clearTimeout(t)
+      }
+      // Any change to left or top could indicate mid-animation, so we check again
+    }, [hasAnimation, rect.left, rect.top, refreshDomRect])
+
     return (
       <PanelsContext.Provider value={rect}>
         <div ref={ref} {...props} />
