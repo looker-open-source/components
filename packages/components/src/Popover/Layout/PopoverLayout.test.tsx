@@ -57,8 +57,9 @@ describe('PopoverLayout', () => {
     expect(screen.getByText('Close')).toBeInTheDocument()
   })
 
-  test('FooterClose ', () => {
+  test('FooterExtraValue ', () => {
     renderWithTheme(<FooterExtraValue />)
-    expect(screen.getByText('cancel')).toBeInTheDocument()
+    expect(screen.getByText('Cancel')).toBeInTheDocument()
+    expect(screen.getByText('Done')).toBeInTheDocument()
   })
 })

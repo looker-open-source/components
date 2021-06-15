@@ -256,7 +256,7 @@ const DialogInner = () => {
       enableCurrentLock?.()
     }
   }
-  const { activeTrapRef, disableCurrentTrap, enableCurrentTrap } = 
+  const { activeTrapRef, disableCurrentTrap, enableCurrentTrap } =
     useContext(FocusTrapContext)
   const toggleFocusTrap = () => {
     if (activeTrapRef && activeTrapRef.current) {

@@ -65,4 +65,6 @@ const PopoverFooterLayout: FC<PopoverFooterProps> = (props) => {
   )
 }
 
-export const PopoverFooter = styled(PopoverFooterLayout)<PopoverFooterProps>``
+export const PopoverFooter = styled(PopoverFooterLayout)<PopoverFooterProps>`
+  align-items: center;
+`
