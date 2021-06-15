@@ -10,5 +10,11 @@
   "sideEffects": false,
   "dependencies": {},
   "devDependencies": {},
-  "peerDependencies": {}
+  "peerDependencies": {},
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "@looker/eslint-config/oss-compat"
+    ]
+  }
 }
