@@ -33,6 +33,7 @@ import { IconButton } from '../Button'
 import { Heading, Text } from '../Text'
 import { Grid } from '../Layout/Grid'
 import { SpaceVertical } from '../Layout/Space/SpaceVertical'
+import { Status } from '../Status'
 import { ListItem } from './ListItem'
 import { ListItemProps, ListItemRole } from './types'
 import { List } from './List'
@@ -55,6 +56,9 @@ Icon.args = {
 }
 
 export const IconColor = () => <ListItem {...iconArgs} color="calculation" />
+export const IconStatus = () => (
+  <ListItem {...iconArgs} icon={<Status intent="warn" />} />
+)
 export const IconCustomColor = () => <ListItem {...iconArgs} color="#cc00cc" />
 export const IconColorDisabled = () => (
   <ListItem {...iconArgs} color="warn" disabled />
