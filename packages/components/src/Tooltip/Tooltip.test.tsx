@@ -241,4 +241,14 @@ describe('Tooltip', () => {
 
     fireEvent.blur(screen.getByRole('textbox'))
   })
+
+  test('disabled, no undefined className', () => {
+    renderWithTheme(
+      <Tooltip disabled content="Hello world">
+        <Button>Test</Button>
+      </Tooltip>
+    )
+    const button = screen.getByRole('button')
+    expect(button).not.toHaveClass('undefined')
+  })
 })

@@ -147,7 +147,7 @@ export function useTooltip({
     ) : null
 
   const enabledDomProps = disabled
-    ? undefined
+    ? {}
     : {
         'aria-describedby': guaranteedId,
         className: renderDOM ? 'hover' : undefined,
