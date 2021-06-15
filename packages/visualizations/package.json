@@ -8,7 +8,12 @@
   "license": "MIT",
   "module": "lib/index.js",
   "sideEffects": false,
-  "dependencies": {},
+  "dependencies": {
+    "@looker/design-tokens": "*",
+    "@looker/sdk": "^21.6.0",
+    "@looker/sdk-rtl": "^21.0.13",
+    "lodash": "^4.17.20"
+  },
   "devDependencies": {},
   "peerDependencies": {},
   "eslintConfig": {
