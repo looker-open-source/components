@@ -21,7 +21,9 @@
     "@looker/stylelint-config": "*",
     "@testing-library/react": "*",
     "@types/react": "*",
-    "@types/react-dom": "*"
+    "@types/react-dom": "*",
+    "@types/styled-components": "*",
+    "@types/styled-system": "*"
   },
   "eslintConfig": {
     "root": true,
