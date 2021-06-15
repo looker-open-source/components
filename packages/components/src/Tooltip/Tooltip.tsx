@@ -106,8 +106,9 @@ export const Tooltip = forwardRef(
         'aria-expanded': ariaExpanded,
         'aria-haspopup': ariaHaspopup,
         // Tooltip
-        className:
-          `${children.props.className || ''} ${className}`.trim() || undefined,
+        className: className
+          ? `${children.props.className || ''} ${className}`.trim()
+          : children.props.className,
         ref,
       })
     } else if (isRenderProp(children)) {
