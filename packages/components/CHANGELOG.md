@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.3](https://github.com/looker-open-source/components/compare/@looker/components@2.0.0-alpha.2...@looker/components@2.0.0-alpha.3) (2021-06-15)
+
+
+### Bug Fixes
+
+* Include @types/styled-system in devDependencies to simplify installation ([#2495](https://github.com/looker-open-source/components/issues/2495)) ([00a841e](https://github.com/looker-open-source/components/commit/00a841e7731464e07acb152bee0eeb345a8a6732))
+* **DialogHeader:** Properly emit `aria-label` to DOM ([#2499](https://github.com/looker-open-source/components/issues/2499)) ([23c46b5](https://github.com/looker-open-source/components/commit/23c46b5abff1931f0720fbd07c11f4760113a245))
+
+
+
+
+
 # [2.0.0-alpha.2](https://github.com/looker-open-source/components/compare/@looker/components@2.0.0-alpha.1...@looker/components@2.0.0-alpha.2) (2021-06-15)
 
 
