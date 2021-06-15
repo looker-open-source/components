@@ -34,7 +34,6 @@ const globalGetBoundingClientRect = Element.prototype.getBoundingClientRect
 
 describe('WindowedTreeCollection', () => {
   beforeEach(() => {
-    jest.useFakeTimers()
     /* eslint-disable-next-line @typescript-eslint/unbound-method */
     Element.prototype.getBoundingClientRect = jest.fn(() => {
       return {
@@ -52,9 +51,6 @@ describe('WindowedTreeCollection', () => {
   })
 
   afterEach(() => {
-    jest.runOnlyPendingTimers()
-    jest.useRealTimers()
-    jest.resetAllMocks()
     /* eslint-disable-next-line @typescript-eslint/unbound-method */
     Element.prototype.getBoundingClientRect = globalGetBoundingClientRect
   })
@@ -67,10 +63,8 @@ describe('WindowedTreeCollection', () => {
 
   test('windowing for over 100 visible items', () => {
     renderWithTheme(<Windowing noText />)
-    const button = screen.getByRole('button')
-    fireEvent.click(button)
-
-    jest.runOnlyPendingTimers()
+    const openAllButton = screen.getByText('Toggle all open')
+    fireEvent.click(openAllButton)
 
     expect(screen.getByText('0')).toBeVisible()
     // Visible nested tree item
