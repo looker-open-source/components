@@ -49,16 +49,19 @@ export type DialogHeaderProps = DetailOptions & Omit<ModalHeaderProps, 'detail'>
 
 const DialogHeaderLayout: FC<DialogHeaderProps> = ({
   children,
-  hideClose = false,
+  hideClose,
   detail,
   ...props
 }) => {
   const { id: dialogId } = useContext(DialogContext)
   const headingId = dialogId ? `${dialogId}-heading` : undefined
 
+  const detailContent =
+    detail || (detail === undefined && !hideClose && <ModalHeaderCloseButton />)
+
   return (
     <ModalHeader
-      detail={detail || (!hideClose && <ModalHeaderCloseButton />)}
+      detail={detailContent}
       id={headingId}
       px="xlarge"
       py="large"
