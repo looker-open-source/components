@@ -49,7 +49,7 @@ describe('DialogHeader', () => {
 
   test('hideClose', () => {
     renderWithTheme(<HideClose />)
-    expect(screen.queryByLabelText('Close')).not.toBeInTheDocument()
+    expect(screen.queryByText('Close')).not.toBeInTheDocument()
   })
 
   test('aria-label', () => {
@@ -57,5 +57,10 @@ describe('DialogHeader', () => {
       <DialogHeader aria-label="label test">Hello World</DialogHeader>
     )
     expect(screen.getByLabelText('label test')).toBeInTheDocument()
+  })
+
+  test('detail = null, no close option', () => {
+    renderWithTheme(<DialogHeader detail={null}>Hello World</DialogHeader>)
+    expect(screen.queryByText('Close')).not.toBeInTheDocument()
   })
 })
