@@ -29,6 +29,7 @@ import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { screen } from '@testing-library/react'
 import { Basic, Detail, HideClose } from './DialogHeader.story'
+import { DialogHeader } from './DialogHeader'
 
 describe('DialogHeader', () => {
   test('basic', () => {
@@ -49,5 +50,12 @@ describe('DialogHeader', () => {
   test('hideClose', () => {
     renderWithTheme(<HideClose />)
     expect(screen.queryByLabelText('Close')).not.toBeInTheDocument()
+  })
+
+  test('aria-label', () => {
+    renderWithTheme(
+      <DialogHeader aria-label="label test">Hello World</DialogHeader>
+    )
+    expect(screen.getByLabelText('label test')).toBeInTheDocument()
   })
 })

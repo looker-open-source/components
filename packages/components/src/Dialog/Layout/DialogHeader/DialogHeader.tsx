@@ -51,6 +51,7 @@ const DialogHeaderLayout: FC<DialogHeaderProps> = ({
   children,
   hideClose = false,
   detail,
+  ...props
 }) => {
   const { id: dialogId } = useContext(DialogContext)
   const headingId = dialogId ? `${dialogId}-heading` : undefined
@@ -61,6 +62,7 @@ const DialogHeaderLayout: FC<DialogHeaderProps> = ({
       id={headingId}
       px="xlarge"
       py="large"
+      {...props}
     >
       {children}
     </ModalHeader>
