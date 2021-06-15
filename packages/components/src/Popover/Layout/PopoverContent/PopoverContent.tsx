@@ -26,7 +26,7 @@
 
 import React, { FC } from 'react'
 import styled from 'styled-components'
-import { LayoutProps } from 'styled-system'
+import { LayoutProps, layout } from '@looker/design-tokens'
 import { ModalContent, ModalContentProps } from '../../../Modal/ModalContent'
 
 type PopoverContentProps = ModalContentProps & LayoutProps
@@ -42,6 +42,6 @@ const PopoverContentLayout: FC<PopoverContentProps> = ({
   )
 }
 
-export const PopoverContent = styled(
-  PopoverContentLayout
-)<PopoverContentProps>``
+export const PopoverContent = styled(PopoverContentLayout)<PopoverContentProps>`
+  ${layout}
+`
