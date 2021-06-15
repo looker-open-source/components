@@ -15,7 +15,8 @@
     "lodash": "^4.17.20"
   },
   "devDependencies": {
-    "@types/react": "*"
+    "@types/react": "*",
+    "@types/react-dom": "*"
   },
   "eslintConfig": {
     "root": true,
