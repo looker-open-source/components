@@ -32,8 +32,6 @@ import { renderWithTheme } from '@looker/components-test-utils'
 import { Panel, Panels, usePanel } from './'
 
 const globalConsole = global.console
-/* eslint-disable-next-line @typescript-eslint/unbound-method */
-const globalGetBoundingClientRect = Element.prototype.getBoundingClientRect
 
 beforeEach(() => {
   global.console = {
@@ -41,27 +39,11 @@ beforeEach(() => {
     error: jest.fn(),
     warn: jest.fn(),
   }
-  /* eslint-disable-next-line @typescript-eslint/unbound-method */
-  Element.prototype.getBoundingClientRect = jest.fn(() => {
-    return {
-      bottom: 0,
-      height: 30,
-      left: 0,
-      right: 0,
-      toJSON: jest.fn(),
-      top: 0,
-      width: 360,
-      x: 0,
-      y: 0,
-    }
-  })
 })
 
 afterEach(() => {
   jest.resetAllMocks()
   global.console = globalConsole
-  /* eslint-disable-next-line @typescript-eslint/unbound-method */
-  Element.prototype.getBoundingClientRect = globalGetBoundingClientRect
 })
 
 describe('Panel', () => {
