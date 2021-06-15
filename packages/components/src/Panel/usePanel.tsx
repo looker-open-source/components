@@ -24,12 +24,10 @@
 
  */
 
-import React, { useContext, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import styled from 'styled-components'
-import { Portal } from '../Portal'
 import { useAnimationState, useControlWarn } from '../utils'
 import { PanelHeader } from './PanelHeader'
-import { PanelsContext } from './Panels'
 import { PanelSurface } from './PanelSurface'
 import { PanelWindow } from './PanelWindow'
 import { UsePanelProps, UsePanelResponse } from './types'
@@ -44,7 +42,6 @@ export const usePanel = ({
   setOpen: controlledSetOpen,
   ...headerProps
 }: UsePanelProps): UsePanelResponse => {
-  const rect = useContext(PanelsContext)
   const [uncontrolledIsOpen, setUncontrolledIsOpen] = useState(defaultOpen)
   const isControlled = useControlWarn({
     controllingProps: ['setOpen'],
@@ -82,23 +79,16 @@ export const usePanel = ({
   }
 
   const panel = renderDOM && (
-    <Portal fixed={false}>
-      <PanelWindow
-        width={rect?.width}
-        height={rect?.height}
-        left={rect?.left}
-        top={rect?.top}
+    <PanelWindow>
+      <PanelSurface
+        aria-busy={busy ? true : undefined}
+        className={className}
+        direction={direction}
       >
-        <PanelSurface
-          aria-busy={busy ? true : undefined}
-          className={className}
-          direction={direction}
-        >
-          <PanelHeader onClose={handleClose} {...headerProps} />
-          <PanelContent>{content}</PanelContent>
-        </PanelSurface>
-      </PanelWindow>
-    </Portal>
+        <PanelHeader onClose={handleClose} {...headerProps} />
+        <PanelContent>{content}</PanelContent>
+      </PanelSurface>
+    </PanelWindow>
   )
 
   return {

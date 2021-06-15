@@ -24,31 +24,10 @@
 
  */
 
-import { CompatibleHTMLProps } from '@looker/design-tokens'
-import React, { createContext, forwardRef, Ref } from 'react'
 import styled from 'styled-components'
-import { useCallbackRef, useMeasuredElement } from '../utils'
 
-export const PanelsContext = createContext<ClientRect | null>(null)
-
-const PanelsLayout = forwardRef(
-  (
-    props: CompatibleHTMLProps<HTMLDivElement>,
-    forwardedRef: Ref<HTMLDivElement>
-  ) => {
-    const [element, ref] = useCallbackRef(forwardedRef)
-    const [rect] = useMeasuredElement(element)
-    return (
-      <PanelsContext.Provider value={rect}>
-        <div ref={ref} {...props} />
-      </PanelsContext.Provider>
-    )
-  }
-)
-
-PanelsLayout.displayName = 'PanelsLayout'
-
-export const Panels = styled(PanelsLayout)`
+export const Panels = styled.div`
   height: 100%;
+  position: relative;
   width: 100%;
 `

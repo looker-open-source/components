@@ -25,28 +25,14 @@
  */
 
 import styled from 'styled-components'
-import {
-  height,
-  HeightProps,
-  position,
-  PositionProps,
-  width,
-  WidthProps,
-} from 'styled-system'
 
-export type PanelWindowProps = HeightProps & PositionProps & WidthProps
-
-export const PanelWindow = styled.div.attrs<PanelWindowProps>(
-  ({ height = '100%', left = 0, top = 0, width = '100%' }) => ({
-    height,
-    left,
-    top,
-    width,
-  })
-)<PanelWindowProps>`
-  ${height}
-  ${width}
-  ${position}
+export const PanelWindow = styled.div`
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  margin-top: 0;
   overflow: hidden;
   position: absolute;
+  width: 100%;
+  z-index: ${({ theme: { zIndexFloor } }) => zIndexFloor};
 `
