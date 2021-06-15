@@ -34,7 +34,7 @@ import { DialogHeader } from './DialogHeader'
 describe('DialogHeader', () => {
   test('basic', () => {
     renderWithTheme(<Basic />)
-    expect(screen.getByText('Header')).toBeInTheDocument()
+    expect(screen.getByText('Heading')).toBeInTheDocument()
   })
 
   test('Close visible by default', () => {

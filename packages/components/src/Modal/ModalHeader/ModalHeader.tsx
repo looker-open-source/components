@@ -85,4 +85,5 @@ export const ModalHeader = styled(ModalHeaderLayout)<ModalHeaderProps>`
   align-items: center;
   display: flex;
   flex-shrink: 0;
+  width: 100%;
 `

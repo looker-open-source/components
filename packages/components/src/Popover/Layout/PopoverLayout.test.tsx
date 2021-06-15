@@ -24,7 +24,41 @@
 
  */
 
-xdescribe('PopoverLayout', () => {
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  test('basic ', () => {})
+import React from 'react'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
+import {
+  Basic,
+  HeaderHideHeading,
+  HeaderCloseButton,
+  FooterExtraValue,
+} from './PopoverLayout.story'
+
+describe('PopoverLayout', () => {
+  test('basic ', () => {
+    renderWithTheme(<Basic />)
+    expect(screen.getByText('Header Text')).toBeInTheDocument()
+    expect(
+      screen.getByText(/We the People of the United States/)
+    ).toBeInTheDocument()
+    expect(screen.getByText('Done')).toBeInTheDocument()
+  })
+
+  test('hideHeading prop - Heading will not be visually available but it will still properly announced in screen reader scenarios ', () => {
+    renderWithTheme(<HeaderHideHeading />)
+    expect(screen.queryByText('Header Text')).not.toBeInTheDocument()
+    expect(
+      screen.getByText(/We the People of the United States/)
+    ).toBeInTheDocument()
+  })
+
+  test('HeaderCloseButton ', () => {
+    renderWithTheme(<HeaderCloseButton />)
+    expect(screen.getByText('Close')).toBeInTheDocument()
+  })
+
+  test('FooterClose ', () => {
+    renderWithTheme(<FooterExtraValue />)
+    expect(screen.getByText('cancel')).toBeInTheDocument()
+  })
 })

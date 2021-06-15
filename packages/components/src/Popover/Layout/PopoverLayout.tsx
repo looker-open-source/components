@@ -24,75 +24,49 @@
 
  */
 
-import React, { FC, ReactChild, ReactNode } from 'react'
-import { DialogLayoutProps, DialogHeaderProps } from '../../Dialog'
-import { Spinner } from '../../Spinner'
+import React, { FC } from 'react'
+import { ModalLayoutProps, ModalLoading } from '../../Modal/ModalLayout'
 import { PopoverContent } from './PopoverContent'
 import { PopoverFooter } from './PopoverFooter'
-import { PopoverHeader, PopoverHeaderProps } from './PopoverHeader'
+import { PopoverHeader } from './PopoverHeader'
 
-export interface PopoverLayoutProps
-  extends Omit<DialogLayoutProps, 'footerSecondary' | `headerDetails`> {
-  hideHeading?: boolean
-}
-
-type HeadingHeader = {
-  header?: DialogLayoutProps['headerDetail']
+type WithHeader = {
+  header?: ModalLayoutProps['header']
   hideHeading?: never
 }
 
-type HeadingHideHeading = {
-  header?: string
+type WithoutHeader = {
+  header?: never
+  /**
+   * Heading will not be visually available but it will still properly announced in screen reader scenarios
+   * @default false
+   */
   hideHeading?: boolean
 }
 
-type HeadingOptions = HeadingHeader | HeadingHideHeading
-
-type PopoverLayoutHeaderProps = Pick<
-  DialogHeaderProps,
-  'children' | 'detail' | 'hideClose'
->
-
-const PopoverLayoutHeader: FC<PopoverLayoutHeaderProps> = ({
-  children,
-  detail,
-  hideClose,
-}) => {
-  if (hideClose) {
-    return <PopoverHeader hideClose>{children}</PopoverHeader>
-  } else if (detail) {
-    return <PopoverHeader detail={detail}>{children}</PopoverHeader>
-  } else {
-    return <PopoverHeader>{children}</PopoverHeader>
-  }
-}
+type HeaderOptions = WithHeader | WithoutHeader
+export type PopoverLayoutProps = HeaderOptions & ModalLayoutProps
 
 export const PopoverLayout: FC<PopoverLayoutProps> = ({
   children,
   footer,
   header,
   headerCloseButton = !footer && true,
-  headerDetail,
+  hideHeading = false,
   isLoading,
 }) => {
-  const popoverFooter = footer && <PopoverFooter>{footer}</PopoverFooter>
-
+  const internalFooter = typeof footer === 'boolean' ? null : footer
   return (
     <>
-      {header && (
-        <PopoverLayoutHeader
-          hideClose={!headerCloseButton}
-          detail={headerDetail}
-        >
-          {header}
-        </PopoverLayoutHeader>
+      {header && !hideHeading ? (
+        <PopoverHeader hideClose={!headerCloseButton}>{header}</PopoverHeader>
+      ) : (
+        <PopoverHeader hideClose={!headerCloseButton}> </PopoverHeader>
       )}
-      <PopoverContent hasFooter={!PopoverFooter} hasHeader={!header}>
-        {isLoading ? <PopoverLoading /> : children}
+      <PopoverContent hasFooter={!footer} hasHeader={!header}>
+        {isLoading ? <ModalLoading /> : children}
       </PopoverContent>
-      {popoverFooter}
+      {footer && <PopoverFooter>{internalFooter}</PopoverFooter>}
     </>
   )
 }
-
-const PopoverLoading = () => <Spinner mx="auto" my="xxlarge" />

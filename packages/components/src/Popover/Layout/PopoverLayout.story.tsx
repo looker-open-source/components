@@ -23,3 +23,52 @@
  SOFTWARE.
 
  */
+
+import React from 'react'
+import { ConstitutionShort } from '../../__mocks__/Constitution'
+import { Box } from '../../Layout'
+import { ButtonTransparent } from '../../Button/ButtonTransparent'
+import { PopoverLayout } from '.'
+
+const extraButton = (
+  <ButtonTransparent color="neutral" size="medium">
+    Cancel
+  </ButtonTransparent>
+)
+
+export const Basic = () => (
+  <Box bg="ui1">
+    <PopoverLayout header="Header Text" footer>
+      <ConstitutionShort />
+    </PopoverLayout>
+  </Box>
+)
+
+export const HeaderHideHeading = () => (
+  <Box bg="ui1">
+    <PopoverLayout hideHeading footer>
+      <ConstitutionShort />
+    </PopoverLayout>
+  </Box>
+)
+
+export const HeaderCloseButton = () => (
+  <Box bg="ui1">
+    <PopoverLayout headerCloseButton header="Header Text" footer={extraButton}>
+      <ConstitutionShort />
+    </PopoverLayout>
+  </Box>
+)
+
+export const FooterExtraValue = () => (
+  <Box bg="ui1">
+    <PopoverLayout header="Header Text" footer={extraButton}>
+      <ConstitutionShort />
+    </PopoverLayout>
+  </Box>
+)
+
+export default {
+  component: PopoverLayout,
+  title: 'PopoverLayout',
+}

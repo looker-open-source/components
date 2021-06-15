@@ -33,7 +33,7 @@ import {
 } from '../../Modal/ModalLayout'
 import { DialogContent } from './DialogContent'
 import { DialogFooter } from './DialogFooter'
-import { DialogHeader, DialogHeaderProps } from './DialogHeader'
+import { DialogHeader } from './DialogHeader'
 
 export interface DialogLayoutProps extends ModalLayoutProps {
   /**

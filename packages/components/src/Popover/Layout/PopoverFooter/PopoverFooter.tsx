@@ -25,7 +25,7 @@
  */
 
 import { useTranslation } from 'react-i18next'
-import React, { FC, ReactElement, useContext } from 'react'
+import React, { FC, ReactChild, ReactElement, useContext } from 'react'
 import styled from 'styled-components'
 import { DialogContext } from '../../../Dialog/DialogContext'
 import {
@@ -35,7 +35,8 @@ import {
 import { ButtonTransparent } from '../../../Button'
 
 export interface PopoverFooterProps
-  extends Omit<ModalFooterProps, 'secondary'> {
+  extends Omit<ModalFooterProps, 'secondary' | 'children'> {
+  children?: ReactChild | string | null
   /**
    * Button to close popover
    * I18n recommended: content that is user visible should be treated for i18n
@@ -52,14 +53,14 @@ const PopoverFooterLayout: FC<PopoverFooterProps> = (props) => {
 
   return (
     <ModalFooter mr="xsmall" pl="large" pr="medium" py="xsmall" {...props}>
+      {children}
       {typeof close === 'string' ? (
-        <ButtonTransparent color="key" size="small" onClick={closeModal}>
+        <ButtonTransparent size="small" ml="xsmall" onClick={closeModal}>
           {close}
         </ButtonTransparent>
       ) : (
         close
       )}
-      <>{children}</>
     </ModalFooter>
   )
 }

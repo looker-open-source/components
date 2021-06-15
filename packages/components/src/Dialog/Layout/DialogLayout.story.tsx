@@ -24,62 +24,21 @@
 
  */
 
-import React, { ReactChild } from 'react'
-import { Story } from '@storybook/react/types-6-0'
-import { Constitution, ConstitutionShort } from '../../__mocks__/Constitution'
+import React from 'react'
+import { ConstitutionShort } from '../../__mocks__/Constitution'
 import { Box } from '../../Layout'
-import { DialogContent, DialogHeader, DialogFooter, DialogLayout } from '.'
+import { Button, ButtonTransparent } from '../../Button'
+import { DialogContent, DialogFooter, DialogLayout } from '.'
 
-export interface DialogLayoutExampleProps {
-  header?: string
-  footer?: ReactChild | string
-  length?: 'short' | 'long'
-}
-
-const Template: Story<DialogLayoutExampleProps> = ({
-  header,
-  footer,
-  length,
-}) => (
-  <Box bg="ui1">
-    <DialogLayout
-      footer={footer && 'Footer text'}
-      header={header && 'Header text'}
-    >
-      {length === 'long' ? <Constitution /> : <ConstitutionShort />}
-    </DialogLayout>
-  </Box>
+const extraButton = (
+  <ButtonTransparent color="neutral" size="medium">
+    Cancel
+  </ButtonTransparent>
 )
 
-export const Basic = Template.bind({})
-Basic.args = {
-  length: 'short',
-}
-
-export const Header = Template.bind({})
-Header.args = {
-  ...Basic.args,
-  header: 'Dialog header text',
-}
-
-export const Footer = Template.bind({})
-Footer.args = {
-  ...Basic.args,
-  footer: 'Footer text',
-}
-
-export const Full = Template.bind({})
-Full.args = {
-  ...Footer.args,
-  ...Header.args,
-}
-
-export const HeaderHideClose = () => (
+export const Basic = () => (
   <Box bg="ui1">
-    <DialogLayout
-      header={<DialogHeader hideClose>Header Text</DialogHeader>}
-      footer="Footer"
-    >
+    <DialogLayout header="Header" footer="Footer">
       <ConstitutionShort />
     </DialogLayout>
   </Box>
@@ -87,12 +46,15 @@ export const HeaderHideClose = () => (
 
 export const HeaderDetail = () => (
   <Box bg="ui1">
-    <DialogLayout
-      header={
-        <DialogHeader detail={<button>Done</button>}>Header Text</DialogHeader>
-      }
-      footer="Footer"
-    >
+    <DialogLayout header="Header" headerDetail={extraButton} footer="Footer">
+      <ConstitutionShort />
+    </DialogLayout>
+  </Box>
+)
+
+export const HeaderCloseButton = () => (
+  <Box bg="ui1">
+    <DialogLayout header="Header" headerCloseButton={true} footer="Footer">
       <ConstitutionShort />
     </DialogLayout>
   </Box>
@@ -103,8 +65,8 @@ export const FooterSecondary = () => (
     <DialogLayout
       header="Header"
       footer={
-        <DialogFooter secondary={<button>Done</button>}>
-          Footer Text
+        <DialogFooter secondary={extraButton}>
+          <Button>Primary</Button>
         </DialogFooter>
       }
     >
@@ -113,15 +75,13 @@ export const FooterSecondary = () => (
   </Box>
 )
 
-const NoPaddingTemplate: Story<DialogLayoutExampleProps> = () => (
+export const NoPadding = () => (
   <Box bg="ui1">
     <DialogContent hasFooter={false} hasHeader={false}>
       <ConstitutionShort />
     </DialogContent>
   </Box>
 )
-
-export const NoPadding = NoPaddingTemplate.bind({})
 
 export default {
   component: DialogLayout,

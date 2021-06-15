@@ -25,6 +25,7 @@
  */
 
 import React from 'react'
+import { ButtonTransparent } from '../../../Button/ButtonTransparent'
 import { PopoverFooter } from './PopoverFooter'
 
 export default {
@@ -32,26 +33,18 @@ export default {
   title: 'PopoverFooter',
 }
 
-export const Basic = () => <PopoverFooter>Footer Text</PopoverFooter>
-Basic.parameters = {
-  storyshots: {
-    disable: true,
-  },
-}
+export const Basic = () => <PopoverFooter />
 
-export const CloseStringValue = () => (
-  <PopoverFooter close="Footer">Footer Text</PopoverFooter>
+export const FooterWithChildren = () => (
+  <PopoverFooter>
+    <ButtonTransparent color="neutral" size="small">
+      cancel
+    </ButtonTransparent>
+  </PopoverFooter>
 )
-CloseStringValue.parameters = {
-  storyshots: {
-    disable: true,
-  },
-}
 
-export const CloseElementValue = () => (
-  <PopoverFooter close={<button>close</button>}>Footer Text</PopoverFooter>
-)
-CloseElementValue.parameters = {
+export const FooterClose = () => <PopoverFooter close="Close" />
+FooterClose.parameters = {
   storyshots: {
     disable: true,
   },

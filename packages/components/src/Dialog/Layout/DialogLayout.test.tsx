@@ -27,22 +27,37 @@
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { screen } from '@testing-library/react'
-import { Basic, FooterClose, FooterWithChildren } from './PopoverFooter.story'
+import {
+  Basic,
+  HeaderDetail,
+  HeaderCloseButton,
+  FooterSecondary,
+} from './DialogLayout.story'
 
-describe('PopoverFooter', () => {
-  test('basic ', () => {
+describe('DialogLayout', () => {
+  test('Basic ', () => {
     renderWithTheme(<Basic />)
-    expect(screen.getByText('Done')).toBeInTheDocument()
+    expect(screen.getByText('Header')).toBeInTheDocument()
+    expect(
+      screen.getByText(/We the People of the United States/)
+    ).toBeInTheDocument()
+    expect(screen.getByText('Footer')).toBeInTheDocument()
   })
 
-  test('with using prop close ', () => {
-    renderWithTheme(<FooterClose />)
+  test('Replaces the built-in `IconButton` with an arbitrary ReactNode', () => {
+    renderWithTheme(<HeaderDetail />)
+    expect(screen.queryByText('Header')).toBeInTheDocument()
+    expect(screen.getByText('Cancel')).toBeInTheDocument()
+  })
+
+  test('HeaderCloseButton ', () => {
+    renderWithTheme(<HeaderCloseButton />)
     expect(screen.getByText('Close')).toBeInTheDocument()
   })
 
-  test('with children', () => {
-    renderWithTheme(<FooterWithChildren />)
-    expect(screen.getByText('Done')).toBeInTheDocument()
-    expect(screen.getByText('cancel')).toBeInTheDocument()
+  test('FooterClose ', () => {
+    renderWithTheme(<FooterSecondary />)
+    expect(screen.getByText('Primary')).toBeInTheDocument()
+    expect(screen.getByText('Cancel')).toBeInTheDocument()
   })
 })

@@ -31,12 +31,19 @@ export interface ModalLayoutProps {
   /**
    * Content to be displayed as footer
    */
-  footer?: ReactChild | null
+  footer?: ReactChild | boolean | null
 
   /**
    * Content to be displayed as header
    */
   header?: ReactChild
+
+  /**
+   * Display "Close" IconButton in the DialogHeader.
+   * NOTE: `true` if no footer is supplied and `headerClose` is not explicitly specified.
+   * @default false
+   */
+  headerCloseButton?: boolean
 
   /**
    * Display loading spinner instead of the ModalContent

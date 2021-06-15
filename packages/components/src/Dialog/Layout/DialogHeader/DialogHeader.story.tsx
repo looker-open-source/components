@@ -32,7 +32,7 @@ export default {
   title: 'DialogHeader',
 }
 
-export const Basic = () => <DialogHeader>Header</DialogHeader>
+export const Basic = () => <DialogHeader>Heading</DialogHeader>
 
 export const HideClose = () => <DialogHeader hideClose>Heading</DialogHeader>
 
