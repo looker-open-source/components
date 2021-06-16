@@ -29,10 +29,27 @@ import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { screen } from '@testing-library/react'
 import { Basic } from './PopoverContent.story'
+import { PopoverContent } from './PopoverContent'
 
 describe('PopoverContent', () => {
   test('Basic', () => {
     renderWithTheme(<Basic />)
-    expect(screen.queryByText('Content Text')).toBeInTheDocument()
+    expect(screen.getByText('Content Text')).toHaveStyleRule(
+      'padding-bottom',
+      '0.75rem'
+    )
+  })
+
+  test('Custom padding', () => {
+    renderWithTheme(
+      <PopoverContent pl="none" pt="xlarge" pb="small">
+        Hello world
+      </PopoverContent>
+    )
+    const item = screen.getByText('Hello world')
+    expect(item).toHaveStyleRule('padding-left', '0rem')
+    expect(item).toHaveStyleRule('padding-top', '2rem')
+    expect(item).toHaveStyleRule('padding-bottom', '0.75rem')
+    expect(item).toHaveStyleRule('padding', '0.75rem') // default value
   })
 })

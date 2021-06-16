@@ -63,11 +63,11 @@ describe('ModalContent', () => {
     const modalContent = screen.getByText('Stuff')
 
     expect(modalContent).toBeInTheDocument()
-    expect(modalContent).toHaveStyleRule('padding-top', '0.125rem')
-    expect(modalContent).toHaveStyleRule('padding-bottom', '0.125rem')
+    expect(modalContent).toHaveStyleRule('padding-top')
+    expect(modalContent).toHaveStyleRule('padding-bottom')
   })
 
-  test('display undefined padding if both hasHeader & hasFooter', () => {
+  test('display xxxsmall padding if both hasHeader & hasFooter', () => {
     renderWithTheme(
       <ModalContent hasHeader hasFooter>
         Stuff
@@ -76,9 +76,9 @@ describe('ModalContent', () => {
 
     expect(screen.getByText('Stuff')).toHaveStyleRule(
       'padding-bottom',
-      undefined
+      '0.125rem'
     )
-    expect(screen.getByText('Stuff')).toHaveStyleRule('padding-top', undefined)
+    expect(screen.getByText('Stuff')).toHaveStyleRule('padding-top', '0.125rem')
   })
 
   test('has no box shadow when it does not overflow', () => {
