@@ -27,8 +27,7 @@
 import React, { FC, ReactNode } from 'react'
 import styled from 'styled-components'
 import { CompatibleHTMLProps } from '@looker/design-tokens'
-import { SpaceHelperProps } from '../../Layout/Space'
-import { Flex } from '../../Layout/Flex'
+import { Space, SpaceHelperProps } from '../../Layout/Space'
 
 export interface ModalFooterProps
   extends CompatibleHTMLProps<HTMLDivElement>,
@@ -48,15 +47,11 @@ const ModalFooterLayout: FC<ModalFooterProps> = ({
   secondary,
   ...props
 }) => (
-  <Flex as="footer" justifyContent="flex-end" {...props}>
-    {secondary && <FooterLayout>{secondary}</FooterLayout>}
-    {children}
-  </Flex>
+  <Space as="footer" reverse between {...props}>
+    <Space reverse>{children}</Space>
+    {secondary && <Space>{secondary}</Space>}
+  </Space>
 )
-
-export const FooterLayout = styled.div`
-  margin-right: 0.5rem;
-`
 
 export const ModalFooter = styled(ModalFooterLayout)`
   flex-shrink: 0;

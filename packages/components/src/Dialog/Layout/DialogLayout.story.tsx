@@ -25,23 +25,53 @@
  */
 
 import React from 'react'
+import { Story } from '@storybook/react/types-6-0'
 import { ConstitutionShort } from '../../__mocks__/Constitution'
 import { Box } from '../../Layout'
 import { Button, ButtonTransparent } from '../../Button'
-import { DialogContent, DialogFooter, DialogLayout } from '.'
+import { DialogContent, DialogLayout } from '.'
+
+export interface DialogLayoutExampleProps {
+  header?: string
+  footer?: string
+}
+
+const Template: Story<DialogLayoutExampleProps> = ({ header, footer }) => (
+  <Box bg="ui1">
+    <DialogLayout
+      footer={footer && 'Footer text'}
+      header={header && 'Header text'}
+    >
+      <ConstitutionShort />
+    </DialogLayout>
+  </Box>
+)
+
+export const Content = Template.bind({})
+Content.args = {}
+
+export const Header = Template.bind({})
+Header.args = {
+  ...Content.args,
+  header: 'Dialog header text',
+}
+
+export const Footer = Template.bind({})
+Footer.args = {
+  ...Content.args,
+  footer: 'Footer text',
+}
+
+export const Full = Template.bind({})
+Full.args = {
+  ...Footer.args,
+  ...Header.args,
+}
 
 const extraButton = (
   <ButtonTransparent color="neutral" size="medium">
     Cancel
   </ButtonTransparent>
-)
-
-export const Basic = () => (
-  <Box bg="ui1">
-    <DialogLayout header="Header" footer="Footer">
-      <ConstitutionShort />
-    </DialogLayout>
-  </Box>
 )
 
 export const HeaderDetail = () => (
@@ -54,7 +84,7 @@ export const HeaderDetail = () => (
 
 export const HeaderCloseButton = () => (
   <Box bg="ui1">
-    <DialogLayout header="Header" headerCloseButton={true} footer="Footer">
+    <DialogLayout header="Header" headerCloseButton footer="Footer">
       <ConstitutionShort />
     </DialogLayout>
   </Box>
@@ -64,11 +94,8 @@ export const FooterSecondary = () => (
   <Box bg="ui1">
     <DialogLayout
       header="Header"
-      footer={
-        <DialogFooter secondary={extraButton}>
-          <Button>Primary</Button>
-        </DialogFooter>
-      }
+      footer={<Button>Primary</Button>}
+      footerSecondary={extraButton}
     >
       <ConstitutionShort />
     </DialogLayout>

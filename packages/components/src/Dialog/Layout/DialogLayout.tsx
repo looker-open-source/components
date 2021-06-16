@@ -82,7 +82,7 @@ export const DialogLayout: FC<DialogLayoutProps> = ({
 
   return (
     <ModalLayout footer={dialogFooter} header={dialogHeader}>
-      <DialogContent hasFooter={!footer} hasHeader={!header}>
+      <DialogContent hasFooter={!!footer} hasHeader={!!header}>
         {isLoading ? <ModalLoading /> : children}
       </DialogContent>
     </ModalLayout>

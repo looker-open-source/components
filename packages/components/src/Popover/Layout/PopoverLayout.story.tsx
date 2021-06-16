@@ -31,7 +31,7 @@ import { ButtonTransparent } from '../../Button/ButtonTransparent'
 import { PopoverLayout } from '.'
 
 const extraButton = (
-  <ButtonTransparent color="neutral" size="medium">
+  <ButtonTransparent color="neutral" size="small">
     Cancel
   </ButtonTransparent>
 )
@@ -54,7 +54,7 @@ export const HeaderHideHeading = () => (
 
 export const HeaderCloseButton = () => (
   <Box bg="ui1">
-    <PopoverLayout headerCloseButton header="Header Text" footer={extraButton}>
+    <PopoverLayout headerCloseButton header="Header Text" footer>
       <ConstitutionShort />
     </PopoverLayout>
   </Box>

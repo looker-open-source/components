@@ -36,7 +36,9 @@ export const Basic = () => <DialogHeader>Heading</DialogHeader>
 
 export const HideClose = () => <DialogHeader hideClose>Heading</DialogHeader>
 
-export const Detail = () => <DialogHeader detail="detail">Heading</DialogHeader>
+export const Detail = () => (
+  <DialogHeader detail="Detail text">Heading</DialogHeader>
+)
 Detail.parameters = {
   storyshots: { disable: true },
 }

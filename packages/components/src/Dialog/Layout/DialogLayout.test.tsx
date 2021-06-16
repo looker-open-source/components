@@ -28,7 +28,7 @@ import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { screen } from '@testing-library/react'
 import {
-  Basic,
+  Content,
   HeaderDetail,
   HeaderCloseButton,
   FooterSecondary,
@@ -36,12 +36,10 @@ import {
 
 describe('DialogLayout', () => {
   test('Basic ', () => {
-    renderWithTheme(<Basic />)
-    expect(screen.getByText('Header')).toBeInTheDocument()
+    renderWithTheme(<Content />)
     expect(
       screen.getByText(/We the People of the United States/)
     ).toBeInTheDocument()
-    expect(screen.getByText('Footer')).toBeInTheDocument()
   })
 
   test('Replaces the built-in `IconButton` with an arbitrary ReactNode', () => {

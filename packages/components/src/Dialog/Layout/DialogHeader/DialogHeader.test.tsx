@@ -61,6 +61,7 @@ describe('DialogHeader', () => {
 
   test('Detail', () => {
     renderWithTheme(<Detail />)
-    expect(screen.getByText('detail')).toBeInTheDocument()
+    expect(screen.queryByText('Detail text')).toBeInTheDocument()
+    expect(screen.getByText('Heading')).toBeInTheDocument()
   })
 })
