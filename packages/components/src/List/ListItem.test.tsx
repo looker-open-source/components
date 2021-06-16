@@ -128,7 +128,7 @@ describe('ListItem', () => {
 
   test('renders icon', () => {
     renderWithTheme(<ListItem icon={<Science />}>Icon</ListItem>)
-    expect(screen.getByText('Icon')).toBeVisible()
+    expect(screen.getByText('Icon')).toBeInTheDocument()
   })
 
   test('renders artwork', () => {
@@ -270,9 +270,9 @@ describe('ListItem', () => {
       </ListItem>
     )
 
-    expect(screen.queryByText('Detail')).not.toBeVisible()
+    expect(screen.queryByText('Detail')).not.toBeInTheDocument()
     fireEvent.mouseEnter(screen.getByText('Label'), { bubbles: true })
-    expect(screen.queryByText('Detail')).toBeVisible()
+    expect(screen.queryByText('Detail')).toBeInTheDocument()
   })
 
   test('onKeyUp callback functions', () => {
