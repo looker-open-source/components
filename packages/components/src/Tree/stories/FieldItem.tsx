@@ -105,6 +105,7 @@ export const FieldItem: FC<FieldItemProps> = ({
           accessory: true,
           hoverDisclosure: !isFieldMenuOpen,
           padding: false,
+          width: 48,
         },
       }}
       onKeyDown={(event) => {
@@ -130,7 +131,7 @@ export const FieldItem: FC<FieldItemProps> = ({
         >
           <Truncate>{children}</Truncate>
         </Flex>
-        <HoverDisclosure visible={isPivot} strategy="display">
+        <HoverDisclosure visible={isPivot}>
           <IconButton
             icon={<SubdirectoryArrowLeft />}
             onClick={() => setIsPivot(!isPivot)}
@@ -141,10 +142,7 @@ export const FieldItem: FC<FieldItemProps> = ({
             tooltipPlacement="top"
           />
         </HoverDisclosure>
-        <HoverDisclosure
-          visible={isFilter}
-          strategy={isPivot ? 'visibility' : 'display'}
-        >
+        <HoverDisclosure visible={isFilter}>
           <IconButton
             onClick={() => setIsFilter(!isFilter)}
             toggle={isFilter}

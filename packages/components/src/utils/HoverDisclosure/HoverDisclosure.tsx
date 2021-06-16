@@ -30,28 +30,22 @@ import { HoverDisclosureContext } from './HoverDisclosureContext'
 export interface HoverDisclosureProps {
   visible?: boolean
   /**
-   * Specify strategy to use for hiding content. Visibility is preferred
-   * as it is generally more accessible but `display` will _not_ reserve
-   * visible space when hidden and may be required when attempt to achieve
-   * certain layouts.
-   *
-   * @default 'visibility'
+   * In some circumstances it's required to reserve space for the hidden content
+   * before it is revealed. Specifying this will reserve a space of the specified
+   * width (in pixels)
    */
-  strategy?: 'visibility' | 'display'
+  width?: number
 }
 
 export const HoverDisclosure: FC<HoverDisclosureProps> = ({
   children,
-  strategy = 'visibility',
+  width,
   visible,
 }) => {
   const context = useContext(HoverDisclosureContext)
   const isVisible = visible || context.visible
 
-  const style: CSSProperties =
-    strategy === 'visibility'
-      ? { visibility: isVisible ? 'visible' : 'hidden' }
-      : { display: isVisible ? 'initial' : 'none' }
+  const style: CSSProperties = { width }
 
-  return <div style={style}>{children}</div>
+  return <div style={style}>{isVisible ? children : null}</div>
 }
