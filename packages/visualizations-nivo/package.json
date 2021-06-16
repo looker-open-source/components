@@ -2,9 +2,7 @@
  "name": "@looker/visualizations-nivo",
  "main": "src/index.ts",
  "version": "0.1.0",
- "publishConfig": {
-  "access": "restricted"
- },
+ "private": true,
  "license": "MIT",
  "module": "lib/index.js",
  "sideEffects": false,
