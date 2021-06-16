@@ -61,9 +61,9 @@ export const paddingDefaultsHelper = (
 
   const response = {
     pb: py ? undefined : pb,
-    pt: py ? undefined : pt,
     pl: px ? undefined : pl,
     pr: px ? undefined : pr,
+    pt: py ? undefined : pt,
     px,
     py,
   }
