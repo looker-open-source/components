@@ -36,13 +36,11 @@ export const DialogExampleLayout: FC<{ header: string }> = ({
   return (
     <DialogLayout
       header={header}
-      footer={
-        <>
-          <Button onClick={closeModal}>Done Reading</Button>
-          <ButtonTransparent color="neutral" onClick={closeModal}>
-            Finish Later
-          </ButtonTransparent>
-        </>
+      footer={<Button onClick={closeModal}>Done Reading</Button>}
+      footerSecondary={
+        <ButtonTransparent color="neutral" onClick={closeModal}>
+          Finish Later
+        </ButtonTransparent>
       }
     >
       {children}

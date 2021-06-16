@@ -42,11 +42,6 @@ describe('DialogHeader', () => {
     expect(screen.getByText('Close')).toBeInTheDocument()
   })
 
-  test('Detail text visible', () => {
-    renderWithTheme(<Detail />)
-    expect(screen.getByText('Detail text')).toBeInTheDocument()
-  })
-
   test('hideClose', () => {
     renderWithTheme(<HideClose />)
     expect(screen.queryByText('Close')).not.toBeInTheDocument()
