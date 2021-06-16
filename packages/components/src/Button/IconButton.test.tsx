@@ -221,4 +221,18 @@ describe('IconButton', () => {
     expect(button).toHaveStyle('background-color: #eaf4e8;')
     expect(button).toHaveStyle('color: #319220;')
   })
+
+  test('toggleColor + :active', () => {
+    renderWithTheme(
+      <IconButton
+        className="active"
+        icon={<Favorite />}
+        label="Test"
+        toggle
+        toggleColor="calculation"
+      />
+    )
+    const button = screen.getByRole('button')
+    expect(button).toHaveStyle('color: #319220')
+  })
 })

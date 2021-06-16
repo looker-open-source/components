@@ -46,8 +46,10 @@ export const iconButtonColor = css<
   &[aria-expanded='true'],
   &:active,
   &.active {
-    color: ${({ theme, toggle }) =>
-      toggle !== undefined ? theme.colors.key : theme.colors.neutralPressed};
+    color: ${({ theme, toggle, toggleColor }) =>
+      toggle !== undefined
+        ? theme.colors[toggleColor || ICON_BUTTON_DEFAULT_COLOR]
+        : theme.colors.neutralPressed};
   }
 
   &[aria-pressed='true'] {
