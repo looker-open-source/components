@@ -55,21 +55,18 @@ export const paddingDefaultsHelper = (
 
   p = px && px === py ? px : undefined
 
-  if (py) {
-    pt = undefined
-    pb = undefined
-  }
-
-  if (px) {
-    pr = undefined
-    pl = undefined
-  }
-
   if (p) {
     return { p }
   }
 
-  const response = { p, pb, pl, pr, pt, px, py }
+  const response = {
+    pb: py ? undefined : pb,
+    pt: py ? undefined : pt,
+    pl: px ? undefined : pl,
+    pr: px ? undefined : pr,
+    px,
+    py,
+  }
 
   /* Remove undefined values */
   Object.keys(response).forEach((key) => {
