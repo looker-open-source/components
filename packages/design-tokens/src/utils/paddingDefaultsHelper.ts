@@ -53,10 +53,10 @@ export const paddingDefaultsHelper = (
   pl = pl || px || p
   px = pr === pl ? pr : undefined
 
-  p = px && px === py ? px : undefined
-
-  if (p) {
+  if (px === py) {
     return { p }
+  } else {
+    p = undefined
   }
 
   const response = {
