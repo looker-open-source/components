@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.4](https://github.com/looker-open-source/components/compare/@looker/components@2.0.0-alpha.3...@looker/components@2.0.0-alpha.4) (2021-06-16)
+
+
+### Bug Fixes
+
+* **DialogHeader:** Properly interpret `detail={null}` (still don't show close option) ([#2504](https://github.com/looker-open-source/components/issues/2504)) ([ca4f07d](https://github.com/looker-open-source/components/commit/ca4f07d57a5d87dd30e06e6fa94233c1814ea63b))
+* **ModalContent:** Correct padding application to DialogContent & PopoverContent & PopoverContent should accept custom padding values ([#2507](https://github.com/looker-open-source/components/issues/2507)) ([573e518](https://github.com/looker-open-source/components/commit/573e518fd30c3a45e1b3fe33cb48ce7fe453d4dd))
+* **Panel:** Render properly in Drawer or Dialog ([#2508](https://github.com/looker-open-source/components/issues/2508)) ([3202fe2](https://github.com/looker-open-source/components/commit/3202fe2f7d20d048a91f575ef7c1dd7f3717c1c5))
+* **PopoverContent:** Restore previous defaults and remove duplicate compnent ([#2503](https://github.com/looker-open-source/components/issues/2503)) ([b0e45bf](https://github.com/looker-open-source/components/commit/b0e45bf4988aa5435fc03d564bb9a7725fa12e07))
+
+
+### Features
+
+* **visualizations:** Vis Component prerelease infrastructure ([#2286](https://github.com/looker-open-source/components/issues/2286)) ([dbb54dd](https://github.com/looker-open-source/components/commit/dbb54dde7a0276fecd1a228818bb48fa406236d9))
+
+
+
+
+
 # [2.0.0-alpha.3](https://github.com/looker-open-source/components/compare/@looker/components@2.0.0-alpha.2...@looker/components@2.0.0-alpha.3) (2021-06-15)
 
 

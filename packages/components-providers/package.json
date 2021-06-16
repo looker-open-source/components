@@ -1,7 +1,7 @@
 {
   "name": "@looker/components-providers",
   "license": "MIT",
-  "version": "1.4.0-alpha.0",
+  "version": "1.4.0-alpha.1",
   "main": "lib/cjs/index.js",
   "module": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -18,7 +18,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@looker/design-tokens": "^2.0.0-alpha.0",
+    "@looker/design-tokens": "^2.0.0-alpha.1",
     "i18next": "20.3.1",
     "lodash": "^4.17.20",
     "react-helmet-async": "^1.0.9",
