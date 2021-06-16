@@ -58,8 +58,6 @@ const getItems = (
   labelLength: number,
   canNest = false
 ): WindowedTreeNodeProps[] => {
-  // const num = getRandomInteger(8)
-  // const itemsLength = Math.pow(num, 2)
   return Array.from(Array(10), (_, i) => {
     if (canNest && i % 3 === 2) {
       const labelText = labelLength ? `: ${getString()}` : ''
@@ -86,7 +84,7 @@ const getItems = (
   })
 }
 
-const getGroups = (labelLength: number): WindowedTreeNodeProps[] =>
+const getTrees = (labelLength: number): WindowedTreeNodeProps[] =>
   Array.from(Array(100), (_, i) => {
     const labelText = labelLength ? `: ${getString()}` : ''
     return {
@@ -101,8 +99,8 @@ const getGroups = (labelLength: number): WindowedTreeNodeProps[] =>
     }
   })
 
-const groupsRandomText = getGroups(50)
-const groupsNoText = getGroups(0)
+const treesRandomText = getTrees(50)
+const treesNoText = getTrees(0)
 
 const getUpdater =
   (isOpen: boolean) =>
@@ -123,8 +121,8 @@ export const Windowing = ({ noText }: { noText?: boolean }) => {
     }
   }
   const treesUpdated = useMemo(() => {
-    const groups = noText ? groupsNoText : groupsRandomText
-    return groups.map(getUpdater(value))
+    const trees = noText ? treesNoText : treesRandomText
+    return trees.map(getUpdater(value))
   }, [noText, value])
 
   return (
