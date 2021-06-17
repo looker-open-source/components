@@ -27,6 +27,7 @@
 import { FontSizes, LineHeights, SpacingSizes } from '@looker/design-tokens'
 import { ReactNode } from 'react'
 import { IconSize } from '../Icon'
+import { HoverDisclosureProps } from '../utils/HoverDisclosure'
 
 export type DensityRamp = -3 | -2 | -1 | 0 | 1
 
@@ -158,7 +159,7 @@ export type ListItemStatefulProps = {
   selected?: boolean
 }
 
-interface DetailOptions {
+interface DetailOptions extends Pick<HoverDisclosureProps, 'width'> {
   /**
    * If true, the detail will appear outside of the item's grey background on hover
    * In addition, if true, events originating from the detail will not bubble to the item's handlers
