@@ -196,9 +196,9 @@ describe('Tree', () => {
       </Tree>
     )
 
-    expect(screen.queryByText('Tree Detail')).not.toBeVisible()
+    expect(screen.queryByText('Tree Detail')).not.toBeInTheDocument()
     fireEvent.mouseEnter(screen.getByText('Tree Label'), { bubbles: true })
-    expect(screen.queryByText('Tree Detail')).toBeVisible()
+    expect(screen.queryByText('Tree Detail')).toBeInTheDocument()
   })
 
   describe('color', () => {

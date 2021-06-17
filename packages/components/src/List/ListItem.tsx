@@ -169,7 +169,7 @@ const ListItemInternal = forwardRef(
       </Wrapper>
     )
 
-    const { accessory, content, hoverDisclosure, padding } =
+    const { accessory, content, hoverDisclosure, padding, width } =
       getDetailOptions(detail)
 
     const wrapperRef = useRef<HTMLLIElement | HTMLDivElement>(null)
@@ -186,7 +186,7 @@ const ListItemInternal = forwardRef(
     })
 
     const renderedDetail = detail && (
-      <HoverDisclosure visible={!hoverDisclosure}>
+      <HoverDisclosure width={width} visible={!hoverDisclosure}>
         <ListItemDetail
           cursorPointer={!accessory}
           pl={padding ? 'xsmall' : '0'}
