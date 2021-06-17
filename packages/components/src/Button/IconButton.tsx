@@ -31,7 +31,7 @@ import { reset, space } from '@looker/design-tokens'
 import React, { forwardRef, Ref } from 'react'
 import { Icon } from '../Icon'
 import { useTooltip } from '../Tooltip'
-import { mergeClassNames, useForkedRef, useWrapEvent } from '../utils'
+import { mergeClassNames, useWrapEvent } from '../utils'
 import { VisuallyHidden } from '../VisuallyHidden'
 import { GenericButtonBase } from './ButtonBase'
 import { iconButtonColor, ICON_BUTTON_DEFAULT_COLOR } from './iconButtonColor'
@@ -39,7 +39,7 @@ import { iconButtonIconSizeMap, buttonSizeMap } from './size'
 import { IconButtonProps } from './iconButtonTypes'
 
 const IconButtonComponent = forwardRef(
-  (props: IconButtonProps, forwardRef: Ref<HTMLButtonElement>) => {
+  (props: IconButtonProps, ref: Ref<HTMLButtonElement>) => {
     const {
       'aria-expanded': ariaExpanded,
       className,
@@ -71,7 +71,6 @@ const IconButtonComponent = forwardRef(
       domProps: {
         'aria-describedby': ariaDescribedBy,
         className: tooltipClassName = '',
-        ref,
         onFocus,
         onBlur,
         onMouseOver,
@@ -95,14 +94,12 @@ const IconButtonComponent = forwardRef(
       onMouseOver: useWrapEvent(onMouseOver, propsOnMouseOver),
     }
 
-    const actualRef = useForkedRef<HTMLButtonElement>(forwardRef, ref)
-
     return (
       <GenericButtonBase
         aria-describedby={ariaDescribedBy}
         aria-expanded={ariaExpanded}
         aria-pressed={toggle ? true : undefined}
-        ref={actualRef}
+        ref={ref}
         p="none"
         size={size}
         width={buttonSizeMap[size]}

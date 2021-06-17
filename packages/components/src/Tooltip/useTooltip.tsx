@@ -24,7 +24,7 @@
 
  */
 
-import React, { MouseEvent, useMemo, useState } from 'react'
+import React, { MouseEvent, useCallback, useMemo, useState } from 'react'
 import {
   useAnimationState,
   useCallbackRef,
@@ -36,9 +36,9 @@ import {
 import { Portal } from '../Portal'
 import { TooltipContent } from './TooltipContent'
 import { TooltipSurface } from './TooltipSurface'
-import { UseTooltipProps } from './types'
+import { UseTooltipProps, UseTooltipResponseDom } from './types'
 
-export function useTooltip({
+export const useTooltip = ({
   canClose,
   content,
   isOpen: initializeOpen = false,
@@ -51,7 +51,7 @@ export function useTooltip({
   triggerElement,
   placement: propsPlacement = 'bottom',
   delay = 'intricate',
-}: UseTooltipProps) {
+}: UseTooltipProps) => {
   const [isOpen, setIsOpen] = useState(initializeOpen)
   const { busy, className, renderDOM } = useAnimationState(
     isOpen,
@@ -60,41 +60,54 @@ export function useTooltip({
   )
 
   const [surfaceElement, surfaceCallbackRef] = useCallbackRef()
-  const [newTriggerElement, callbackRef] = useCallbackRef()
+  const [newTriggerElement, setTriggerElement] = useState<HTMLElement | null>(
+    null
+  )
   // If the triggerElement is passed in props, use that instead of the new element
   const element =
     typeof triggerElement === 'undefined' ? newTriggerElement : triggerElement
 
-  const handleOpen = () => {
-    if (!disabled && (!element || !element.dataset.notooltip)) {
-      setIsOpen(true)
-    }
-  }
-  const handleClose = () => {
+  const handleOpen = useCallback(
+    (e: { currentTarget: HTMLElement }) => {
+      setTriggerElement(e.currentTarget)
+      if (!disabled && (!element || !element.dataset.notooltip)) {
+        setIsOpen(true)
+      }
+    },
+    [disabled, element]
+  )
+
+  const handleClose = useCallback(() => {
     if (canClose && !canClose()) return
     setIsOpen(false)
-  }
+  }, [canClose])
 
-  const handleMouseOut = (event: MouseEvent<HTMLElement>) => {
-    if (!isOpen) return
+  const handleMouseOut = useCallback(
+    (event: MouseEvent<HTMLElement>) => {
+      if (!isOpen) return
 
-    const related = event.relatedTarget
+      const related = event.relatedTarget
 
-    if (element && (element === related || element.contains(related as Node))) {
-      return
-    }
+      if (
+        element &&
+        (element === related || element.contains(related as Node))
+      ) {
+        return
+      }
 
-    if (
-      surfaceElement &&
-      (surfaceElement === related || surfaceElement.contains(related as Node))
-    ) {
-      return
-    }
+      if (
+        surfaceElement &&
+        (surfaceElement === related || surfaceElement.contains(related as Node))
+      ) {
+        return
+      }
 
-    window.requestAnimationFrame(() => {
-      handleClose()
-    })
-  }
+      window.requestAnimationFrame(() => {
+        handleClose()
+      })
+    },
+    [element, surfaceElement, isOpen, handleClose]
+  )
 
   const usePopperProps: UsePopperProps = useMemo(
     () => ({
@@ -114,8 +127,9 @@ export function useTooltip({
     }),
     [element, propsPlacement]
   )
-  const { placement, popperInstanceRef, style, targetRef } =
-    usePopper(usePopperProps)
+  const { placement, popperInstanceRef, style, targetRef } = usePopper(
+    usePopperProps
+  )
 
   const ref = useForkedRef(targetRef, surfaceCallbackRef)
 
@@ -153,15 +167,16 @@ export function useTooltip({
         className: renderDOM ? 'hover' : undefined,
       }
 
+  const domProps: UseTooltipResponseDom = {
+    ...enabledDomProps,
+    onBlur: handleClose,
+    onFocus: handleOpen,
+    onMouseOut: handleMouseOut,
+    onMouseOver: handleOpen,
+  }
+
   return {
-    domProps: {
-      ...enabledDomProps,
-      onBlur: handleClose,
-      onFocus: handleOpen,
-      onMouseOut: handleMouseOut,
-      onMouseOver: handleOpen,
-      ref: callbackRef,
-    },
+    domProps,
     popperInstanceRef,
     tooltip: popper,
   }
