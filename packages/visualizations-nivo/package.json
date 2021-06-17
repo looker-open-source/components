@@ -36,7 +36,7 @@
   "react-dom": "^16.14.0"
  },
  "peerDependencies": {
-  "@looker/components": "2.x",
+  "@looker/components": "*",
   "react": ">= 16.11.0",
   "react-dom": ">= 16.11.0",
   "styled-components": "^5.2.1"

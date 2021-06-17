@@ -34,14 +34,14 @@
   "eslint-plugin-sort-keys-fix": "*",
   "eslint-plugin-testing-library": "*",
   "react": "^16.14.0",
-  "react-dom": "^16.14.0"
+  "react-dom": "^16.14.0",
+  "styled-system": "5.1.5"
  },
  "peerDependencies": {
-  "@looker/components": "2.x",
+  "@looker/components": "*",
   "react": ">= 16.11.0",
   "react-dom": ">= 16.11.0",
-  "styled-components": "^5.2.1",
-  "styled-system": "5.1.5"
+  "styled-components": "^5.2.1"
  },
  "eslintConfig": {
   "root": true,
