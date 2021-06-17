@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.2-alpha.0](https://github.com/looker-open-source/components/compare/v1.4.1...v1.4.2-alpha.0) (2021-06-17)
+
+
+### Bug Fixes
+
+* **HoverDisclosure:** Remove strategy prop, add placeholderWidth ([#2510](https://github.com/looker-open-source/components/issues/2510)) ([dfce57d](https://github.com/looker-open-source/components/commit/dfce57df51a4d3791af752f5d5fa0f450eea05cb))
+
+
+
+
+
 ## [1.4.1](https://github.com/looker-open-source/components/compare/v1.4.0...v1.4.1) (2021-05-25)
 
 
