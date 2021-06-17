@@ -31,7 +31,6 @@ import React, {
   ReactNode,
   Ref,
 } from 'react'
-import { useForkedRef } from '../utils'
 import { mergeHandlers } from '../utils/mergeHandlers'
 import { TooltipProps, TooltipRenderProp } from './types'
 import { useTooltip } from './useTooltip'
@@ -70,11 +69,8 @@ export const Tooltip = forwardRef(
       onFocus,
       onMouseOut,
       onMouseOver,
-      ref: tooltipRef,
       ...restDomProps
     } = domProps
-
-    const ref = useForkedRef(tooltipRef, forwardedRef)
 
     let target: ReactNode = children
 
@@ -109,7 +105,7 @@ export const Tooltip = forwardRef(
         className: className
           ? `${children.props.className || ''} ${className}`.trim()
           : children.props.className,
-        ref,
+        ref: forwardedRef,
       })
     } else if (isRenderProp(children)) {
       target = children(domProps)
