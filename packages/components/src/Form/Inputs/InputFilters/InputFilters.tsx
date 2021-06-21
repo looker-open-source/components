@@ -48,8 +48,9 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
   onChange,
 }) => {
   const { t } = useTranslation('InputFilters')
-  const [fieldEditing, setFieldEditing] =
-    useState<undefined | string>(undefined)
+  const [fieldEditing, setFieldEditing] = useState<undefined | string>(
+    undefined
+  )
   const assignedFilters = filters
     .filter((filter) => filter.value || filter.field === fieldEditing)
     .sort((a, b) =>
