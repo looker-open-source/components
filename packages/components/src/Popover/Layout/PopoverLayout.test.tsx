@@ -29,7 +29,6 @@ import { renderWithTheme } from '@looker/components-test-utils'
 import { screen } from '@testing-library/react'
 import {
   Basic,
-  Full,
   HeaderHideHeading,
   HeaderCloseButton,
   FooterExtraValue,
