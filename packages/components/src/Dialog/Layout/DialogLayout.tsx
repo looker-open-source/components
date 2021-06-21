@@ -43,7 +43,7 @@ export interface DialogLayoutProps extends ModalLayoutProps {
    */
   footerSecondary?: ReactNode
 
-  /**
+  /*
    * Content in header. If a `string` is supplied the content will be placed in a `<Header />`
    */
   header?: ReactNode
