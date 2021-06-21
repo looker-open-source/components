@@ -43,6 +43,6 @@ describe('PopoverFooter', () => {
   test('with children', () => {
     renderWithTheme(<FooterWithChildren />)
     expect(screen.getByText('Done')).toBeInTheDocument()
-    expect(screen.getByText('cancel')).toBeInTheDocument()
+    expect(screen.getByText('Cancel')).toBeInTheDocument()
   })
 })

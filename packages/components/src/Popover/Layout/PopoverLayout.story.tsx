@@ -25,10 +25,10 @@
  */
 
 import React from 'react'
+import { Story } from '@storybook/react/types-6-0'
 import { ConstitutionShort } from '../../__mocks__/Constitution'
-import { Box } from '../../Layout'
 import { ButtonTransparent } from '../../Button/ButtonTransparent'
-import { PopoverLayout } from '.'
+import { PopoverLayout, PopoverLayoutProps } from '.'
 
 const extraButton = (
   <ButtonTransparent color="neutral" size="small">
@@ -36,37 +36,50 @@ const extraButton = (
   </ButtonTransparent>
 )
 
-export const Basic = () => (
-  <Box bg="ui1">
-    <PopoverLayout header="Header Text" footer>
-      <ConstitutionShort />
-    </PopoverLayout>
-  </Box>
+const Template: Story<Partial<PopoverLayoutProps>> = (args) => (
+  <PopoverLayout {...args}>
+    <ConstitutionShort />
+  </PopoverLayout>
 )
 
-export const HeaderHideHeading = () => (
-  <Box bg="ui1">
-    <PopoverLayout hideHeading footer>
-      <ConstitutionShort />
-    </PopoverLayout>
-  </Box>
-)
+export const Basic = Template.bind({})
+Basic.args = {}
 
-export const HeaderCloseButton = () => (
-  <Box bg="ui1">
-    <PopoverLayout headerCloseButton header="Header Text" footer>
-      <ConstitutionShort />
-    </PopoverLayout>
-  </Box>
-)
+export const Header = Template.bind({})
+Header.args = {
+  header: 'Header text',
+}
 
-export const FooterExtraValue = () => (
-  <Box bg="ui1">
-    <PopoverLayout header="Header Text" footer={extraButton}>
-      <ConstitutionShort />
-    </PopoverLayout>
-  </Box>
-)
+export const Footer = Template.bind({})
+Footer.args = {
+  footer: true,
+}
+
+export const Full = Template.bind({})
+Full.args = {
+  footer: true,
+  header: 'Header text',
+}
+
+export const HeaderHideHeading = Template.bind({})
+HeaderHideHeading.args = {
+  footer: true,
+  header: 'Header text',
+  hideHeading: true,
+}
+
+export const HeaderCloseButton = Template.bind({})
+HeaderCloseButton.args = {
+  footer: true,
+  header: 'Header text',
+  headerCloseButton: true,
+}
+
+export const FooterExtraValue = Template.bind({})
+FooterExtraValue.args = {
+  footer: extraButton,
+  header: 'Header text',
+}
 
 export default {
   component: PopoverLayout,

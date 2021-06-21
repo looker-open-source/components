@@ -24,19 +24,19 @@
 
  */
 
-import React, { FC } from 'react'
+import React, { FC, ReactNode } from 'react'
 import { ModalLayoutProps, ModalLoading } from '../../Modal/ModalLayout'
 import { PopoverContent } from './PopoverContent'
 import { PopoverFooter } from './PopoverFooter'
-import { PopoverHeader } from './PopoverHeader'
+import { PopoverHeader, PopoverHeaderProps } from './PopoverHeader'
 
 type WithHeader = {
   header?: ModalLayoutProps['header']
   hideHeading?: never
 }
 
-type WithoutHeader = {
-  header?: never
+type WithHiddenHeader = {
+  header?: string
   /**
    * Heading will not be visually available but it will still properly announced in screen reader scenarios
    * @default false
@@ -44,8 +44,28 @@ type WithoutHeader = {
   hideHeading?: boolean
 }
 
-type HeaderOptions = WithHeader | WithoutHeader
+type HeaderOptions = WithHeader | WithHiddenHeader
 export type PopoverLayoutProps = HeaderOptions & ModalLayoutProps
+
+const constructPopoverHeader = (
+  children?: ReactNode,
+  headerCloseButton?: boolean,
+  hideHeading?: boolean
+) => {
+  if (!children) return null
+
+  const props: PopoverHeaderProps = { children }
+
+  if (typeof children === 'string' && hideHeading) {
+    props.children = null
+    props.hideClose = !headerCloseButton
+  } else if (children && !hideHeading) {
+    props.children = children
+    props.hideClose = !headerCloseButton
+  }
+
+  return <PopoverHeader {...props} />
+}
 
 export const PopoverLayout: FC<PopoverLayoutProps> = ({
   children,
@@ -56,13 +76,14 @@ export const PopoverLayout: FC<PopoverLayoutProps> = ({
   isLoading,
 }) => {
   const internalFooter = typeof footer === 'boolean' ? null : footer
+  const popoverHeader = constructPopoverHeader(
+    header,
+    headerCloseButton,
+    hideHeading
+  )
   return (
     <>
-      {header && !hideHeading ? (
-        <PopoverHeader hideClose={!headerCloseButton}>{header}</PopoverHeader>
-      ) : (
-        <PopoverHeader hideClose={!headerCloseButton}> </PopoverHeader>
-      )}
+      {popoverHeader}
       <PopoverContent hasFooter={!footer} hasHeader={!header}>
         {isLoading ? <ModalLoading /> : children}
       </PopoverContent>

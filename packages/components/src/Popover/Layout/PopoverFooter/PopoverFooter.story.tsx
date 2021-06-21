@@ -38,7 +38,7 @@ export const Basic = () => <PopoverFooter />
 export const FooterWithChildren = () => (
   <PopoverFooter>
     <ButtonTransparent color="neutral" size="small">
-      cancel
+      Cancel
     </ButtonTransparent>
   </PopoverFooter>
 )

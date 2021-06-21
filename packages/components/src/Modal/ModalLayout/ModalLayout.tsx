@@ -39,7 +39,7 @@ export interface ModalLayoutProps {
   header?: ReactNode
 
   /**
-   * Display "Close" IconButton in the DialogHeader.
+   * Display "Close" IconButton.
    * NOTE: `true` if no footer is supplied and `headerClose` is not explicitly specified.
    * @default false
    */

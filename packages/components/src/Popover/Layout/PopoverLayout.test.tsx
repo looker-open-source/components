@@ -29,6 +29,7 @@ import { renderWithTheme } from '@looker/components-test-utils'
 import { screen } from '@testing-library/react'
 import {
   Basic,
+  Full,
   HeaderHideHeading,
   HeaderCloseButton,
   FooterExtraValue,
@@ -36,16 +37,14 @@ import {
 
 describe('PopoverLayout', () => {
   test('basic ', () => {
-    renderWithTheme(<Basic />)
-    expect(screen.getByText('Header Text')).toBeInTheDocument()
+    renderWithTheme(<Basic {...Basic.args} />)
     expect(
       screen.getByText(/We the People of the United States/)
     ).toBeInTheDocument()
-    expect(screen.getByText('Done')).toBeInTheDocument()
   })
 
   test('hideHeading prop - Heading will not be visually available but it will still properly announced in screen reader scenarios ', () => {
-    renderWithTheme(<HeaderHideHeading />)
+    renderWithTheme(<HeaderHideHeading {...HeaderHideHeading.args} />)
     expect(screen.queryByText('Header Text')).not.toBeInTheDocument()
     expect(
       screen.getByText(/We the People of the United States/)
@@ -53,12 +52,12 @@ describe('PopoverLayout', () => {
   })
 
   test('HeaderCloseButton ', () => {
-    renderWithTheme(<HeaderCloseButton />)
+    renderWithTheme(<HeaderCloseButton {...HeaderCloseButton.args} />)
     expect(screen.getByText('Close')).toBeInTheDocument()
   })
 
   test('FooterExtraValue ', () => {
-    renderWithTheme(<FooterExtraValue />)
+    renderWithTheme(<FooterExtraValue {...FooterExtraValue.args} />)
     expect(screen.getByText('Cancel')).toBeInTheDocument()
     expect(screen.getByText('Done')).toBeInTheDocument()
   })
