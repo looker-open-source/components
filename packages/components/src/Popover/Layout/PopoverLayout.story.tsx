@@ -25,24 +25,50 @@
  */
 
 import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { screen } from '@testing-library/react'
-import { Basic, FooterClose, FooterWithChildren } from './PopoverFooter.story'
+import { ConstitutionShort } from '../../__mocks__/Constitution'
+import { Box } from '../../Layout'
+import { ButtonTransparent } from '../../Button/ButtonTransparent'
+import { PopoverLayout } from '.'
 
-describe('PopoverFooter', () => {
-  test('basic ', () => {
-    renderWithTheme(<Basic />)
-    expect(screen.getByText('Done')).toBeInTheDocument()
-  })
+const extraButton = (
+  <ButtonTransparent color="neutral" size="small">
+    Cancel
+  </ButtonTransparent>
+)
 
-  test('with using prop close ', () => {
-    renderWithTheme(<FooterClose />)
-    expect(screen.getByText('Close')).toBeInTheDocument()
-  })
+export const Basic = () => (
+  <Box bg="ui1">
+    <PopoverLayout header="Header Text" footer>
+      <ConstitutionShort />
+    </PopoverLayout>
+  </Box>
+)
 
-  test('with children', () => {
-    renderWithTheme(<FooterWithChildren />)
-    expect(screen.getByText('Done')).toBeInTheDocument()
-    expect(screen.getByText('cancel')).toBeInTheDocument()
-  })
-})
+export const HeaderHideHeading = () => (
+  <Box bg="ui1">
+    <PopoverLayout hideHeading footer>
+      <ConstitutionShort />
+    </PopoverLayout>
+  </Box>
+)
+
+export const HeaderCloseButton = () => (
+  <Box bg="ui1">
+    <PopoverLayout headerCloseButton header="Header Text" footer>
+      <ConstitutionShort />
+    </PopoverLayout>
+  </Box>
+)
+
+export const FooterExtraValue = () => (
+  <Box bg="ui1">
+    <PopoverLayout header="Header Text" footer={extraButton}>
+      <ConstitutionShort />
+    </PopoverLayout>
+  </Box>
+)
+
+export default {
+  component: PopoverLayout,
+  title: 'PopoverLayout',
+}
