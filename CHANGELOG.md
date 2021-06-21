@@ -3,6 +3,99 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 2.0.0
+
+## @looker/components
+
+### BREAKING CHANGES
+
+- **`@looker/components-date`** package introduced
+  - `Calendar`, `Locales`, `InputDate`, `InputTime`, and other [date-related components](https://github.com/looker-open-source/components/tree/main/packages/components-date/src) are now exported from this separate, specialized package. This is intended to reduce the package size for downstream consumers that don't support tree-shaking.
+- `List`, `ListItem`, `Tree`, `TreeItem` & `MenuItem` no longer support `keyColor` (use `color="key"` to accomplish the same visual presentation)
+- `ListItem` (and therefore `MenuItem` & `TreeItem`) no longer support `current` property. `selected` property offers the same visual presentation and properly emits `aria-selected="true"` to the DOM
+- `ComponentsProvider`
+  - No longers supports `ieSupport` prop (IE11 functions properly without any special support since `v1.2`
+  - No longer supports `globalStyle` props (previously deprecated and non-functional)
+- `TreeArtificial` deprecated and removed
+- `useWindow`'s `windowedOptions` prop was renamed to `windowing`
+  - `List` (and derivatives) `windowProp` is now `boolean`
+  - `Combobox`' (and derivatives including `Select`) `windowedOptions` is now `windowing`
+
+### Features
+
+- **PopoverContent:** new component to enhance Popover layout ([#2448](https://github.com/looker-open-source/components/issues/2448)) ([c1f0fa0](https://github.com/looker-open-source/components/commit/c1f0fa0076f2ce6eda7c8c66df4a1b21528dc6c6))
+- **PopoverFooter:** new component to enhance Popover layout ([#2430](https://github.com/looker-open-source/components/issues/2430)) ([7838a9e](https://github.com/looker-open-source/components/commit/7838a9ed08ce1ea0b46ef535a7d6050485412485))
+- **PopoverHeader:** new component for improved Popover layouts ([#2434](https://github.com/looker-open-source/components/issues/2434)) ([cf82bfc](https://github.com/looker-open-source/components/commit/cf82bfc30054da378671f0b354216fc63be76776))
+- **TabPanel:** Added tabStop boolean prop to TabPanel ([#2413](https://github.com/looker-open-source/components/issues/2413)) ([70d6e1f](https://github.com/looker-open-source/components/commit/70d6e1f5740e0706e4a8f7d5f21ae73edaae68cb))
+
+### Bug Fixes
+
+- **Panel:**
+  - Render properly in Drawer or Dialog ([#2508](https://github.com/looker-open-source/components/issues/2508)) ([3202fe2](https://github.com/looker-open-source/components/commit/3202fe2f7d20d048a91f575ef7c1dd7f3717c1c5))
+  - always stack on top ([#2408](https://github.com/looker-open-source/components/issues/2408)) ([35ddd3f](https://github.com/looker-open-source/components/commit/35ddd3fc9eb95f3d5f4385daed76c792488b55b9))
+- **InlineInputText:** Correct issue where long values couldn't be scrolled ([#2469](https://github.com/looker-open-source/components/issues/2469)) ([9ed95ab](https://github.com/looker-open-source/components/commit/9ed95ab09fc61dc58b5327c958a46c1ef9384422))
+- **InputColor:** Call onChange if input value is cleared ([#2489](https://github.com/looker-open-source/components/issues/2489)) ([2d12d4e](https://github.com/looker-open-source/components/commit/2d12d4e60c93b998a6ae67856ebc93e25abb6d31))
+- **Listitem:**
+  - Correct type export for ListItemProps ([#2463](https://github.com/looker-open-source/components/issues/2463)) ([3a04dc3](https://github.com/looker-open-source/components/commit/3a04dc303df4aefa107af1776b3f45ceef143ee6))
+  - Moved cursor styling to ListItemWrapper ([#2459](https://github.com/looker-open-source/components/issues/2459)) ([ead039e](https://github.com/looker-open-source/components/commit/ead039ec9ea168a2b764ef972efba17198d1025b))
+  - Properly disperse ARIA props onto ListItem's label container ([#2433](https://github.com/looker-open-source/components/issues/2433)) ([4566246](https://github.com/looker-open-source/components/commit/45662462b38a875346fbd6ed00c4638e45c521fa))
+  - Allow icon to have more specific color than ListItem ([#2492](https://github.com/looker-open-source/components/issues/2492)) ([978d444](https://github.com/looker-open-source/components/commit/978d444781623e2e2d4d45c61ff88bb0b39024ff))
+- **MultiFunctionButton:** Properly set width of smaller button, properly hide in-active button from screen-readers ([#2447](https://github.com/looker-open-source/components/issues/2447)) ([3f53094](https://github.com/looker-open-source/components/commit/3f5309470e19324f701f5e47e5f1440a7e3ba3fe))
+- **RangeSlider:** use DOMRect in lieu of ClientRect ([#2202](https://github.com/looker-open-source/components/issues/2202)) ([dade533](https://github.com/looker-open-source/components/commit/dade533775f71cce773fdee388b29c131499e5b8))
+- **ReplaceText:** Performance improvement ([#2486](https://github.com/looker-open-source/components/issues/2486)) ([7c2bbec](https://github.com/looker-open-source/components/commit/7c2bbec286b02387d4ecffd1796b06c968952720))
+- **Tooltip:** no longer includes spurious `undefined` className on disable Tooltip target ([#2496](https://github.com/looker-open-source/components/issues/2496)) ([3356f0b](https://github.com/looker-open-source/components/commit/3356f0b092ec1670594e405c22edf149d12c4fcd))
+- **Tree:**
+  - Fix border alignment ([#2462](https://github.com/looker-open-source/components/issues/2462)) ([259cb36](https://github.com/looker-open-source/components/commit/259cb368e3016f1708f82f141ded788b6b9987a2))
+  - Updated Tree icon / indicator alignment ([#2449](https://github.com/looker-open-source/components/issues/2449)) ([8892598](https://github.com/looker-open-source/components/commit/8892598bb1cb6c5673f53a6f65d9f834d01e31c1)), closes [#2450](https://github.com/looker-open-source/components/issues/2450) [#2455](https://github.com/looker-open-source/components/issues/2455) [#2456](https://github.com/looker-open-source/components/issues/2456)
+- **useTooltip:** Don't include `aria-describedby` on target when Tooltip disabled ([#2464](https://github.com/looker-open-source/components/issues/2464)) ([ddda539](https://github.com/looker-open-source/components/commit/ddda539b52d163e55792ffe1c5aa54836226e99f))
+- **useWindow:** Simplify windowing for long lists ([#2485](https://github.com/looker-open-source/components/issues/2485)) ([d6b2699](https://github.com/looker-open-source/components/commit/d6b2699d8065a1209a512876057036496c267627))
+- Include @types/styled-system in devDependencies to simplify installation ([#2495](https://github.com/looker-open-source/components/issues/2495)) ([00a841e](https://github.com/looker-open-source/components/commit/00a841e7731464e07acb152bee0eeb345a8a6732))
+
+## @looker/components-date
+
+### Features
+
+- Introduced @looker/components-date package ([#2274](https://github.com/looker-open-source/components-date/issues/2274)) ([5aa01e0](https://github.com/looker-open-source/components-date/commit/5aa01e0b996647a60d251fc5cd00ba7af185356c))
+
+## @looker/design-tokens
+
+### BREAKING CHANGES
+
+- **`theme.reset`** removed (previously deprecated and non-functional)
+- Removed color "aliases" from theme
+  - `theme.colors.subdued` (use `theme.colors.text1` instead)
+  - `theme.colors.secondary` (use `theme.colors.text2` instead)
+- **palette:** is no longer exported from root, deprecated for 3.x
+
+### Features
+
+- **visualizations:** Vis Component prerelease infrastructure ([#2286](https://github.com/looker-open-source/components/issues/2286)) ([dbb54dd](https://github.com/looker-open-source/components/commit/dbb54dde7a0276fecd1a228818bb48fa406236d9))
+- **palette:** No longer export palette, mark all as deprecated ([#2445](https://github.com/looker-open-source/components/issues/2445)) ([04587a0](https://github.com/looker-open-source/components/commit/04587a0a6148c84ec113d90d90b93eacb5b5d29c))
+
+### Bug Fixes
+
+- text5 color is now identical to text (blend=100%) ([#2410](https://github.com/looker-open-source/components/issues/2410)) ([50e5272](https://github.com/looker-open-source/components/commit/50e52721e5ec4a9177dc21dc36ed6d0146d2fa4d))
+
+# 1.5.0
+
+## @looker/eslint-config
+
+### Bug Fixes
+
+- Remove `sort-keys-fix` from `oss-compat` ESLint ruleset ([#2454](https://github.com/looker-open-source/eslint-config/issues/2454)) ([b5283f1](https://github.com/looker-open-source/eslint-config/commit/b5283f18b11c214d2407c37a1764e5c1ee42bd7e))
+
+## [1.4.2](https://github.com/looker-open-source/components/compare/v1.4.1...v1.4.2) (2021-06-17)
+
+### Bug Fixes
+
+- **HoverDisclosure:** Remove strategy prop, add placeholderWidth ([#2510](https://github.com/looker-open-source/components/issues/2510)) ([dfce57d](https://github.com/looker-open-source/components/commit/dfce57df51a4d3791af752f5d5fa0f450eea05cb))
+
+## [1.4.1](https://github.com/looker-open-source/components/compare/v1.4.0...v1.4.1) (2021-05-25)
+
+### Bug Fixes
+
+- **ListItem:** Removed background transition ([#2429](https://github.com/looker-open-source/components/issues/2429)) ([c6898f5](https://github.com/looker-open-source/components/commit/c6898f5ecd2d91d98b5ffae297184e8acb26b225))
+
 # [1.4.0](https://github.com/looker-open-source/components/compare/v1.4.0-alpha.0...v1.4.0) (2021-05-23)
 
 ### Bug Fixes
