@@ -24,8 +24,28 @@
 
  */
 
-export * from './ModalHeaderCloseButton'
-export * from './ModalContent'
-export * from './ModalFooter'
-export * from './ModalHeader'
-export * from './ModalLayout'
+import React from 'react'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
+import { ModalLayout } from './ModalLayout'
+
+describe('ModalLayout', () => {
+  test('basic ', () => {
+    renderWithTheme(
+      <ModalLayout header="Header" footer="Footer">
+        Modal Layout
+      </ModalLayout>
+    )
+    expect(screen.getByText(/Modal Layout/)).toBeInTheDocument()
+  })
+
+  test('renders Header', () => {
+    renderWithTheme(
+      <ModalLayout footer="Footer" header="Header">
+        Modal Layout
+      </ModalLayout>
+    )
+    expect(screen.getByText(/Header/)).toBeInTheDocument()
+    expect(screen.getByText(/Footer/)).toBeInTheDocument()
+  })
+})

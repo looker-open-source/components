@@ -24,8 +24,43 @@
 
  */
 
-export * from './ModalHeaderCloseButton'
-export * from './ModalContent'
-export * from './ModalFooter'
-export * from './ModalHeader'
-export * from './ModalLayout'
+import React, { FC, ReactNode } from 'react'
+import { Spinner } from '../../Spinner'
+
+export interface ModalLayoutProps {
+  /**
+   * Content to be displayed as footer
+   */
+  footer?: ReactNode
+
+  /**
+   * Content to be displayed as header
+   */
+  header?: ReactNode
+
+  /**
+   * Display "Close" IconButton in the DialogHeader.
+   * NOTE: `true` if no footer is supplied and `headerClose` is not explicitly specified.
+   * @default false
+   */
+  headerCloseButton?: boolean
+
+  /**
+   * Display loading spinner instead of the ModalContent
+   */
+  isLoading?: boolean
+}
+
+export const ModalLoading = () => <Spinner mx="auto" my="xxlarge" />
+
+export const ModalLayout: FC<ModalLayoutProps> = ({
+  children,
+  footer,
+  header,
+}) => (
+  <>
+    {header}
+    {children}
+    {footer}
+  </>
+)
