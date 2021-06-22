@@ -32,7 +32,7 @@ import {
   AccordionContent,
   AccordionDisclosureStyle,
 } from '../Accordion'
-import { ListItemIconPlacement } from '../List/ListItemLayout'
+import { ListItemIcon } from '../List/ListItemIcon'
 import { FlexibleColor, ListItemStatefulProps } from '../List/types'
 import { listItemBackgroundColor } from '../List/utils'
 import { List, ListItem } from '../List'
@@ -143,7 +143,7 @@ export const TreeStyle = styled(TreeStyleLayout)`
   ${ListItem} {
     ${({ iconGap, theme }) =>
       listItemLabelCSS(css`
-        ${ListItemIconPlacement} {
+        ${ListItemIcon} {
           margin-right: ${theme.space[iconGap]};
         }
       `)}
