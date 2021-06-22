@@ -28,6 +28,8 @@ import React, { FC, ReactNode } from 'react'
 import { Spinner } from '../../Spinner'
 
 export interface ModalLayoutProps {
+  children: ReactNode
+
   /**
    * Content to be displayed as footer
    */
@@ -37,13 +39,6 @@ export interface ModalLayoutProps {
    * Content to be displayed as header
    */
   header?: ReactNode
-
-  /**
-   * Display "Close" IconButton.
-   * NOTE: `true` if no footer is supplied and `headerClose` is not explicitly specified.
-   * @default false
-   */
-  headerCloseButton?: boolean
 
   /**
    * Display loading spinner instead of the ModalContent

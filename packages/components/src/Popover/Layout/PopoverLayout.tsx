@@ -26,61 +26,42 @@
 
 import React, { FC, ReactNode } from 'react'
 import { ModalLayoutProps, ModalLoading } from '../../Modal/ModalLayout'
+import { VisuallyHidden } from '../../VisuallyHidden'
 import { PopoverContent } from './PopoverContent'
 import { PopoverFooter } from './PopoverFooter'
-import { PopoverHeader, PopoverHeaderProps } from './PopoverHeader'
+import { PopoverHeader } from './PopoverHeader'
 
-type WithHeader = {
-  header?: ModalLayoutProps['header']
-  hideHeading?: never
-}
-
-type WithHiddenHeader = {
-  header?: string
+export type PopoverLayoutProps = ModalLayoutProps & {
   /**
-   * Heading will not be visually available but it will still properly announced in screen reader scenarios
+   * Header will not be visually available but it will still properly announced in screen reader scenarios
    * @default false
    */
-  hideHeading?: boolean
+  hideHeader?: boolean
 }
-
-type HeaderOptions = WithHeader | WithHiddenHeader
-
-export type PopoverLayoutProps = HeaderOptions & ModalLayoutProps
 
 const constructPopoverHeader = (
   children?: ReactNode,
-  hideHeading?: boolean,
+  hideHeader?: boolean,
   footer?: boolean
 ) => {
-  if (!children) return null
-
-  const props: PopoverHeaderProps = { children }
-
-  if (typeof children === 'string' && hideHeading) {
-    props.children = null
-    props.hideClose = true
-  } else if (children && !hideHeading && !footer) {
-    props.children = children
-    props.hideClose = false
+  if (!children) {
+    return null
+  } else if (hideHeader) {
+    return <VisuallyHidden>{children}</VisuallyHidden>
+  } else {
+    return <PopoverHeader hideClose={footer}>{children}</PopoverHeader>
   }
-
-  if (footer) {
-    props.hideClose = true
-  }
-
-  return <PopoverHeader {...props} />
 }
 
 export const PopoverLayout: FC<PopoverLayoutProps> = ({
   children,
   footer = true,
   header,
-  hideHeading = false,
+  hideHeader = false,
   isLoading,
 }) => {
   const internalFooter = typeof footer === 'boolean' ? null : footer
-  const popoverHeader = constructPopoverHeader(header, hideHeading, !!footer)
+  const popoverHeader = constructPopoverHeader(header, hideHeader, !!footer)
   return (
     <>
       {popoverHeader}

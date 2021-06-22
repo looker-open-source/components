@@ -30,48 +30,51 @@ import { ConstitutionShort } from '../../__mocks__/Constitution'
 import { ButtonTransparent } from '../../Button/ButtonTransparent'
 import { PopoverLayout, PopoverLayoutProps } from '.'
 
-const extraButton = (
-  <ButtonTransparent color="neutral" size="small">
-    Cancel
-  </ButtonTransparent>
-)
-
-const Template: Story<Partial<PopoverLayoutProps>> = (args) => (
-  <PopoverLayout {...args} />
-)
+const Template: Story<Partial<PopoverLayoutProps>> = ({
+  children,
+  ...args
+}) => <PopoverLayout {...args}>{children}</PopoverLayout>
 
 export const Basic = Template.bind({})
-Basic.args = {}
+Basic.args = {
+  children: <ConstitutionShort fontSize="small" />,
+}
 
 export const Header = Template.bind({})
 Header.args = {
-  children: <ConstitutionShort />,
+  ...Basic.args,
   footer: false,
   header: 'Header text',
 }
 
-export const Footer = Template.bind({})
-Footer.args = {
-  children: <ConstitutionShort />,
+/**
+ * @TODO - Make this impossible with types
+ * User should not be able to do `footer=false + header=undefined`
+ */
+export const NoFooter = Template.bind({})
+NoFooter.args = {
+  footer: false,
+  ...Basic.args,
+}
+NoFooter.parameters = {
+  storyshots: { disable: true },
 }
 
 export const Full = Template.bind({})
 Full.args = {
-  ...Footer.args,
+  ...Basic.args,
+  footer: (
+    <ButtonTransparent color="neutral" size="small">
+      Cancel
+    </ButtonTransparent>
+  ),
   header: 'Header text',
 }
 
 export const HeaderHideHeading = Template.bind({})
 HeaderHideHeading.args = {
   ...Full.args,
-  hideHeading: true,
-}
-
-export const FooterExtraValue = Template.bind({})
-FooterExtraValue.args = {
-  children: <ConstitutionShort />,
-  footer: extraButton,
-  header: 'Header text',
+  hideHeader: true,
 }
 
 export default {
