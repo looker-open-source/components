@@ -30,37 +30,32 @@ import { screen } from '@testing-library/react'
 import { Basic, Full, Header, HeaderHideHeading } from './PopoverLayout.story'
 
 describe('PopoverLayout', () => {
-  test('basic ', () => {
+  test('basic display has footer ', () => {
     renderWithTheme(<Basic {...Basic.args} />)
     expect(
       screen.getByText(/We the People of the United States/)
     ).toBeInTheDocument()
+    expect(screen.getByText('Done')).toBeInTheDocument()
   })
 
-  test('hideHeading prop - Heading will not be visually available but it will still properly announced in screen reader scenarios ', () => {
+  test('hideHeading prop hides Header', () => {
     renderWithTheme(<HeaderHideHeading {...HeaderHideHeading.args} />)
-    expect(screen.queryByText('Header Text')).not.toBeInTheDocument()
-    expect(
-      screen.getByText(/We the People of the United States/)
-    ).toBeInTheDocument()
+    const hiddenHeader = screen.getByText('Header text')
+    expect(hiddenHeader).toBeInTheDocument()
+    expect(hiddenHeader).toHaveStyle('clip: rect(1px, 1px, 1px, 1px)')
   })
 
-  test('HeaderCloseButton ', () => {
+  test('Header and no Footer ', () => {
     renderWithTheme(<Header {...Header.args} />)
     expect(screen.getByText('Close')).toBeInTheDocument()
+    expect(screen.queryByText('Done')).not.toBeInTheDocument()
   })
 
-  /**
-   * Test that with footer there's no header "x"
-   */
-
-  /**
-   * Test that with header "x" there's no footer
-   */
-
-  /**
-   * Test for "headerHidden"
-   */
+  test('With header & footer display only "Done" button', () => {
+    renderWithTheme(<Full {...Full.args} />)
+    expect(screen.queryByText('Close')).not.toBeInTheDocument()
+    expect(screen.getByText('Done')).toBeInTheDocument()
+  })
 
   test('FooterExtraValue ', () => {
     renderWithTheme(<Full {...Full.args} />)
