@@ -30,7 +30,7 @@ import { SpacingSizes } from '@looker/design-tokens'
 import { Accordion2 } from '../Accordion2'
 import { Accordion2Disclosure } from '../Accordion2/Accordion2Disclosure'
 import { Accordion2Content } from '../Accordion2/Accordion2Content'
-import { ListItemIconPlacement } from '../List/ListItemLayout'
+import { ListItemIcon } from '../List/ListItemIcon'
 import { FlexibleColor, ListItemStatefulProps } from '../List/types'
 import { listItemBackgroundColor } from '../List/utils'
 import { List, ListItem } from '../List'
@@ -141,7 +141,7 @@ export const TreeStyle = styled(TreeStyleLayout)`
   ${ListItem} {
     ${({ iconGap, theme }) =>
       listItemLabelCSS(css`
-        ${ListItemIconPlacement} {
+        ${ListItemIcon} {
           margin-right: ${theme.space[iconGap]};
         }
       `)}
