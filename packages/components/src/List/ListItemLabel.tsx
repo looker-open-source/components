@@ -28,8 +28,13 @@ import { CompatibleHTMLProps, shouldForwardProp } from '@looker/design-tokens'
 import React, { FC } from 'react'
 import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
 import { FocusVisibleProps } from '../utils'
-import { FlexibleColor, ListItemRole, ListItemStatefulProps } from './types'
-import { listItemBackgroundColor } from './utils'
+import {
+  FlexibleColor,
+  ListItemDimensions,
+  ListItemRole,
+  ListItemStatefulProps,
+} from './types'
+import { listItemBackgroundColor, listItemPadding } from './utils'
 
 export const ListItemLabelButton = styled.button`
   font-family: inherit;
@@ -75,7 +80,8 @@ const ListItemLabelLayout: FC<ListItemLabelProps> = ({
 type ListItemLabelProps = CompatibleHTMLProps<HTMLElement> &
   ListItemStatefulProps &
   FlexibleColor &
-  FocusVisibleProps & {
+  FocusVisibleProps &
+  Pick<ListItemDimensions, 'px' | 'py'> & {
     cursorPointer?: boolean
     disabled?: boolean
     height?: number
@@ -87,6 +93,7 @@ export const ListItemLabel = styled(ListItemLabelLayout).withConfig({
 })`
   ${({ height, itemRole }) => itemRole === 'none' && `min-height: ${height}px;`}
   ${listItemBackgroundColor}
+  ${(props) => listItemPadding({ ...props })}
 
   &:focus {
     ${({ focusVisible, theme }) =>
