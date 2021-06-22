@@ -11,22 +11,24 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **`@looker/components-date`** package introduced
   - `Calendar`, `Locales`, `InputDate`, `InputTime`, and other [date-related components](https://github.com/looker-open-source/components/tree/main/packages/components-date/src) are now exported from this separate, specialized package. This is intended to reduce the package size for downstream consumers that don't support tree-shaking.
-- `List`, `ListItem`, `Tree`, `TreeItem` & `MenuItem` no longer support `keyColor` (use `color="key"` to accomplish the same visual presentation)
-- `ListItem` (and therefore `MenuItem` & `TreeItem`) no longer support `current` property. `selected` property offers the same visual presentation and properly emits `aria-selected="true"` to the DOM
+    - For affected components import from `@looker/components-date` instead of `@looker/components`
+- `List`, `ListItem`, `Tree`, `TreeItem` & `MenuItem` no longer support `keyColor`
+  - Use `color="key"` to accomplish the same visual presentation.
+- `ListItem` (and therefore `MenuItem` & `TreeItem`) no longer support `current` property.
+  - Use `selected` property offers the same visual presentation and properly emits `aria-selected="true"` to the DOM
 - `ComponentsProvider`
-  - No longers supports `ieSupport` prop (IE11 functions properly without any special support since `v1.2`
-  - No longer supports `globalStyle` props (previously deprecated and non-functional)
-- `TreeArtificial` deprecated and removed
+  - Removed `ieSupport` prop (IE11 works fine without it since `v1.2`)
+  - Removed `globalStyle` prop (no longer needed, remove prop usage)
 - `useWindow`'s `windowedOptions` prop was renamed to `windowing`
-  - `List` (and derivatives) `windowProp` is now `boolean`
+  - `List` (and derivatives) `windowing` prop is now `boolean`
   - `Combobox`' (and derivatives including `Select`) `windowedOptions` is now `windowing`
 
 ### Features
 
-- **PopoverContent:** new component to enhance Popover layout ([#2448](https://github.com/looker-open-source/components/issues/2448)) ([c1f0fa0](https://github.com/looker-open-source/components/commit/c1f0fa0076f2ce6eda7c8c66df4a1b21528dc6c6))
-- **PopoverFooter:** new component to enhance Popover layout ([#2430](https://github.com/looker-open-source/components/issues/2430)) ([7838a9e](https://github.com/looker-open-source/components/commit/7838a9ed08ce1ea0b46ef535a7d6050485412485))
-- **PopoverHeader:** new component for improved Popover layouts ([#2434](https://github.com/looker-open-source/components/issues/2434)) ([cf82bfc](https://github.com/looker-open-source/components/commit/cf82bfc30054da378671f0b354216fc63be76776))
-- **TabPanel:** Added tabStop boolean prop to TabPanel ([#2413](https://github.com/looker-open-source/components/issues/2413)) ([70d6e1f](https://github.com/looker-open-source/components/commit/70d6e1f5740e0706e4a8f7d5f21ae73edaae68cb))
+- **PopoverContent:** new component for improved `Popover` layout ([#2448](https://github.com/looker-open-source/components/issues/2448)) ([c1f0fa0](https://github.com/looker-open-source/components/commit/c1f0fa0076f2ce6eda7c8c66df4a1b21528dc6c6))
+- **PopoverFooter:** new component for improved `Popover` layout ([#2430](https://github.com/looker-open-source/components/issues/2430)) ([7838a9e](https://github.com/looker-open-source/components/commit/7838a9ed08ce1ea0b46ef535a7d6050485412485))
+- **PopoverHeader:** new component for improved `Popover` layout ([#2434](https://github.com/looker-open-source/components/issues/2434)) ([cf82bfc](https://github.com/looker-open-source/components/commit/cf82bfc30054da378671f0b354216fc63be76776))
+- **TabPanel:** Added `tabStop` boolean prop ([#2413](https://github.com/looker-open-source/components/issues/2413)) ([70d6e1f](https://github.com/looker-open-source/components/commit/70d6e1f5740e0706e4a8f7d5f21ae73edaae68cb))
 
 ### Bug Fixes
 
