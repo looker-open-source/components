@@ -23,48 +23,30 @@
  SOFTWARE.
 
  */
-
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
-import { Constitution, ConstitutionShort } from '../../__mocks__/Constitution'
+import { ConstitutionShort } from '../../__mocks__/Constitution'
 import { Box } from '../../Layout'
-import { DialogContent, DialogLayout } from '.'
+import { DialogContent, DialogLayout, DialogLayoutProps } from '.'
 
-export interface DialogLayoutExampleProps {
-  header?: string
-  footer?: string
-  length?: 'short' | 'long'
-}
-
-const Template: Story<DialogLayoutExampleProps> = ({
-  header,
-  footer,
-  length,
-}) => (
+const Template: Story<Partial<DialogLayoutProps>> = (args) => (
   <Box bg="ui1">
-    <DialogLayout
-      footer={footer && 'Footer text'}
-      header={header && 'Header text'}
-    >
-      {length === 'long' ? <Constitution /> : <ConstitutionShort />}
+    <DialogLayout {...args}>
+      <ConstitutionShort />
     </DialogLayout>
   </Box>
 )
 
 export const Basic = Template.bind({})
-Basic.args = {
-  length: 'short',
-}
+Basic.args = {}
 
 export const Header = Template.bind({})
 Header.args = {
-  ...Basic.args,
-  header: 'Dialog header text',
+  header: 'Header text',
 }
 
 export const Footer = Template.bind({})
 Footer.args = {
-  ...Basic.args,
   footer: 'Footer text',
 }
 
@@ -74,15 +56,31 @@ Full.args = {
   ...Header.args,
 }
 
-const NoPaddingTemplate: Story<DialogLayoutExampleProps> = () => (
+export const HeaderDetail = Template.bind({})
+HeaderDetail.args = {
+  ...Full.args,
+  headerDetail: 'Cancel',
+}
+
+export const HeaderCloseButton = Template.bind({})
+HeaderCloseButton.args = {
+  ...Full.args,
+  headerCloseButton: true,
+}
+
+export const FooterSecondary = Template.bind({})
+FooterSecondary.args = {
+  ...Full.args,
+  footerSecondary: 'Cancel',
+}
+
+export const NoPadding = () => (
   <Box bg="ui1">
     <DialogContent hasFooter={false} hasHeader={false}>
       <ConstitutionShort />
     </DialogContent>
   </Box>
 )
-
-export const NoPadding = NoPaddingTemplate.bind({})
 
 export default {
   component: DialogLayout,
