@@ -37,9 +37,7 @@ const extraButton = (
 )
 
 const Template: Story<Partial<PopoverLayoutProps>> = (args) => (
-  <PopoverLayout {...args}>
-    <ConstitutionShort />
-  </PopoverLayout>
+  <PopoverLayout {...args} />
 )
 
 export const Basic = Template.bind({})
@@ -47,36 +45,31 @@ Basic.args = {}
 
 export const Header = Template.bind({})
 Header.args = {
+  children: <ConstitutionShort />,
+  footer: false,
   header: 'Header text',
 }
 
 export const Footer = Template.bind({})
 Footer.args = {
-  footer: true,
+  children: <ConstitutionShort />,
 }
 
 export const Full = Template.bind({})
 Full.args = {
-  footer: true,
+  ...Footer.args,
   header: 'Header text',
 }
 
 export const HeaderHideHeading = Template.bind({})
 HeaderHideHeading.args = {
-  footer: true,
-  header: 'Header text',
+  ...Full.args,
   hideHeading: true,
-}
-
-export const HeaderCloseButton = Template.bind({})
-HeaderCloseButton.args = {
-  footer: true,
-  header: 'Header text',
-  headerCloseButton: true,
 }
 
 export const FooterExtraValue = Template.bind({})
 FooterExtraValue.args = {
+  children: <ConstitutionShort />,
   footer: extraButton,
   header: 'Header text',
 }

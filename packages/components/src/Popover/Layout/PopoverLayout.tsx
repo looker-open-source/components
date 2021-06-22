@@ -45,12 +45,13 @@ type WithHiddenHeader = {
 }
 
 type HeaderOptions = WithHeader | WithHiddenHeader
+
 export type PopoverLayoutProps = HeaderOptions & ModalLayoutProps
 
 const constructPopoverHeader = (
   children?: ReactNode,
-  headerCloseButton?: boolean,
-  hideHeading?: boolean
+  hideHeading?: boolean,
+  footer?: boolean
 ) => {
   if (!children) return null
 
@@ -58,10 +59,14 @@ const constructPopoverHeader = (
 
   if (typeof children === 'string' && hideHeading) {
     props.children = null
-    props.hideClose = !headerCloseButton
-  } else if (children && !hideHeading) {
+    props.hideClose = true
+  } else if (children && !hideHeading && !footer) {
     props.children = children
-    props.hideClose = !headerCloseButton
+    props.hideClose = false
+  }
+
+  if (footer) {
+    props.hideClose = true
   }
 
   return <PopoverHeader {...props} />
@@ -69,18 +74,13 @@ const constructPopoverHeader = (
 
 export const PopoverLayout: FC<PopoverLayoutProps> = ({
   children,
-  footer,
+  footer = true,
   header,
-  headerCloseButton = !footer && true,
   hideHeading = false,
   isLoading,
 }) => {
   const internalFooter = typeof footer === 'boolean' ? null : footer
-  const popoverHeader = constructPopoverHeader(
-    header,
-    headerCloseButton,
-    hideHeading
-  )
+  const popoverHeader = constructPopoverHeader(header, hideHeading, !!footer)
   return (
     <>
       {popoverHeader}

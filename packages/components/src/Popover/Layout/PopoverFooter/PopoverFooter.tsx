@@ -54,7 +54,7 @@ const PopoverFooterLayout: FC<PopoverFooterProps> = (props) => {
   return (
     <ModalFooter mr="xsmall" pl="large" pr="medium" py="xsmall" {...props}>
       {typeof close === 'string' ? (
-        <ButtonTransparent size="small" ml="xsmall" onClick={closeModal}>
+        <ButtonTransparent size="small" onClick={closeModal}>
           {close}
         </ButtonTransparent>
       ) : (
