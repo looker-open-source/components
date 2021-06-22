@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/looker-open-source/components/compare/@looker/components@2.0.0-alpha.4...@looker/components@2.0.0) (2021-06-22)
+
+
+### Bug Fixes
+
+* **HoverDisclosure:** Remove strategy prop, add placeholderWidth ([#2512](https://github.com/looker-open-source/components/issues/2512)) ([84260cc](https://github.com/looker-open-source/components/commit/84260cc1dc0abfd27b37d98ee2c0faf2e72845b7))
+* **IconButton:** Properly use toggleColor for :active psuedo states ([#2509](https://github.com/looker-open-source/components/issues/2509)) ([596bcfa](https://github.com/looker-open-source/components/commit/596bcfa3d0821b842ef83c0a9b5fa69b82b27d02))
+
+
+### BREAKING CHANGES
+
+* **HoverDisclosure:** strategy prop is no longer supported. `width` may be used to workaround.
+
+
+
+
+
 # [2.0.0-alpha.4](https://github.com/looker-open-source/components/compare/@looker/components@2.0.0-alpha.3...@looker/components@2.0.0-alpha.4) (2021-06-16)
 
 
