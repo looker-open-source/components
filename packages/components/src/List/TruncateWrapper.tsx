@@ -24,10 +24,18 @@
 
  */
 
-export * from './createSafeRel'
-export * from './getDetailOptions'
-export * from './listItemBackgroundColor'
-export * from './listItemDimensions'
-export * from './listItemPadding'
-export * from './listPadding'
-export * from './useListItemPartitions'
+import { FontSizes } from '@looker/design-tokens'
+import React, { FC } from 'react'
+import { Text } from '../Text'
+import { Truncate } from '../Truncate'
+
+export const TruncateWrapper: FC<{
+  color?: string
+  fontSize?: FontSizes
+  lineHeight?: FontSizes
+  truncateDescription?: string
+}> = ({ children, color, truncateDescription, fontSize, lineHeight }) => (
+  <Text color={color} fontSize={fontSize} lineHeight={lineHeight}>
+    <Truncate description={truncateDescription}>{children}</Truncate>
+  </Text>
+)

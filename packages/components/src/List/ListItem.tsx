@@ -24,55 +24,39 @@
 
  */
 
-import { FontSizes } from '@looker/design-tokens'
 import styled from 'styled-components'
 import React, {
-  FC,
   forwardRef,
-  ReactNode,
   Ref,
   useContext,
   useEffect,
   useRef,
   useState,
 } from 'react'
-import { ListItemDetail } from '../List/ListItemDetail'
-import { Text } from '../Text'
-import { IconPlaceholder } from '../Icon'
-import { Truncate } from '../Truncate'
 import {
   getNextFocusTarget,
   HoverDisclosureContext,
-  HoverDisclosure,
   partitionAriaProps,
   undefinedCoalesce,
   useFocusVisible,
   useWrapEvent,
   useForkedRef,
 } from '../utils'
+import { IconPlaceholder } from '../Icon'
 import { ListItemContext } from './ListItemContext'
 import { ListItemLabel } from './ListItemLabel'
-import { ListItemLayout } from './ListItemLayout'
-import { ListItemLayoutAccessory } from './ListItemLayoutAccessory'
 import { ListItemWrapper } from './ListItemWrapper'
-import { listItemIconColor, listItemLabelColor } from './utils/listItemColor'
-import { createSafeRel, getDetailOptions, listItemDimensions } from './utils'
+import { listItemLabelColor } from './utils/listItemColor'
+import {
+  createSafeRel,
+  listItemDimensions,
+  useListItemPartitions,
+} from './utils'
 import { ListItemProps } from './types'
 
-const TruncateWrapper: FC<{
-  color?: string
-  fontSize?: FontSizes
-  lineHeight?: FontSizes
-  truncateDescription?: string
-}> = ({ children, color, truncateDescription, fontSize, lineHeight }) => (
-  <Text color={color} fontSize={fontSize} lineHeight={lineHeight}>
-    <Truncate description={truncateDescription}>{children}</Truncate>
-  </Text>
-)
-
 const ListItemInternal = forwardRef(
-  (
-    {
+  (props: ListItemProps, ref: Ref<HTMLLIElement | HTMLDivElement>) => {
+    const {
       children,
       className,
       color: propsColor,
@@ -99,16 +83,13 @@ const ListItemInternal = forwardRef(
       target,
       truncate,
       ...restProps
-    }: ListItemProps,
-    ref: Ref<HTMLLIElement | HTMLDivElement>
-  ) => {
+    } = props
+
     const {
       density: contextDensity,
       iconGutter,
       color: contextColor,
     } = useContext(ListItemContext)
-    const truncateDescription =
-      typeof truncate === 'object' ? truncate.description : undefined
 
     const itemDimensions = listItemDimensions(propsDensity || contextDensity)
 
@@ -120,14 +101,11 @@ const ListItemInternal = forwardRef(
     })
     const [hovered, setHovered] = useState(propsHovered)
 
-    const descriptionColor = disabled ? 'text1' : 'text2'
-
     const handleOnClick = (event: React.MouseEvent<HTMLElement>) => {
       if (itemRole !== 'none' && onClick) {
         onClick(event)
       }
     }
-
     if (disabled && itemRole === 'link') {
       // eslint-disable-next-line no-console
       console.warn(
@@ -142,32 +120,6 @@ const ListItemInternal = forwardRef(
       )
     }
 
-    const Wrapper = truncate ? TruncateWrapper : Text
-
-    const renderedChildren = (
-      <Wrapper
-        color={listItemLabelColor(color, disabled)}
-        fontSize={itemDimensions.labelFontSize}
-        lineHeight={itemDimensions.labelLineHeight}
-        truncateDescription={truncateDescription}
-      >
-        {children}
-      </Wrapper>
-    )
-
-    const renderedDescription = (
-      <Wrapper
-        color={descriptionColor}
-        fontSize={itemDimensions.descriptionFontSize}
-        lineHeight={itemDimensions.descriptionLineHeight}
-      >
-        {description}
-      </Wrapper>
-    )
-
-    const { accessory, content, hoverDisclosure, padding, width } =
-      getDetailOptions(detail)
-
     const wrapperRef = useRef<HTMLLIElement | HTMLDivElement>(null)
     const actualRef = useForkedRef(wrapperRef, ref)
     useEffect(() => {
@@ -181,17 +133,12 @@ const ListItemInternal = forwardRef(
       }
     })
 
-    const renderedDetail = detail && (
-      <HoverDisclosure width={width} visible={!hoverDisclosure}>
-        <ListItemDetail
-          cursorPointer={!accessory}
-          pl={padding ? 'xsmall' : '0'}
-          pr={accessory && padding ? itemDimensions.px : '0'}
-        >
-          {content}
-        </ListItemDetail>
-      </HoverDisclosure>
-    )
+    const [ariaProps, wrapperProps] = partitionAriaProps(restProps)
+    const [insideElements, outsideElements] = useListItemPartitions({
+      ...props,
+      color,
+      icon: icon || (iconGutter ? <IconPlaceholder /> : undefined),
+    })
 
     const statefulProps = {
       color,
@@ -199,52 +146,6 @@ const ListItemInternal = forwardRef(
       hovered,
       selected,
     }
-
-    const [ariaProps, wrapperProps] = partitionAriaProps(restProps)
-
-    const LabelCreator: FC<{
-      children: ReactNode
-      className?: string
-    }> = ({ children, className }) => (
-      <ListItemLabel
-        itemRole={itemRole}
-        aria-selected={selected}
-        className={className}
-        cursorPointer={!!(href || onClick)}
-        focusVisible={focusVisible}
-        height={itemDimensions.height}
-        href={href}
-        onClick={disabled ? undefined : handleOnClick}
-        onKeyDown={onKeyDown}
-        rel={createSafeRel(rel, target)}
-        role={role || 'listitem'}
-        target={target}
-        tabIndex={tabIndex}
-        {...ariaProps}
-        {...focusVisibleHandlers}
-        {...statefulProps}
-      >
-        {children}
-      </ListItemLabel>
-    )
-
-    const Layout = accessory ? ListItemLayoutAccessory : ListItemLayout
-    const listItemContent = (
-      <Layout
-        color={listItemIconColor(color, disabled)}
-        description={renderedDescription}
-        detail={renderedDetail}
-        disabled={disabled}
-        icon={icon || (iconGutter && <IconPlaceholder />)}
-        iconGap={itemDimensions.iconGap}
-        iconSize={itemDimensions.iconSize}
-        labelCreator={LabelCreator}
-        px={itemDimensions.px}
-        py={itemRole === 'none' ? 'none' : itemDimensions.py}
-      >
-        {renderedChildren}
-      </Layout>
-    )
 
     const handleOnClickWhitespace = (event: React.MouseEvent<HTMLElement>) => {
       if (event.currentTarget === event.target) {
@@ -295,7 +196,29 @@ const ListItemInternal = forwardRef(
           {...itemDimensions}
           {...wrapperProps}
         >
-          {listItemContent}
+          <ListItemLabel
+            itemRole={itemRole}
+            aria-selected={selected}
+            className={className}
+            cursorPointer={!!(href || onClick)}
+            focusVisible={focusVisible}
+            height={itemDimensions.height}
+            href={href}
+            onClick={disabled ? undefined : handleOnClick}
+            onKeyDown={onKeyDown}
+            px={itemDimensions.px}
+            py={itemRole === 'none' ? 'none' : itemDimensions.py}
+            rel={createSafeRel(rel, target)}
+            role={role || 'listitem'}
+            target={target}
+            tabIndex={tabIndex}
+            {...ariaProps}
+            {...focusVisibleHandlers}
+            {...statefulProps}
+          >
+            {insideElements}
+          </ListItemLabel>
+          {outsideElements}
         </ListItemWrapper>
       </HoverDisclosureContext.Provider>
     )

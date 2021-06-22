@@ -24,10 +24,32 @@
 
  */
 
-export * from './createSafeRel'
-export * from './getDetailOptions'
-export * from './listItemBackgroundColor'
-export * from './listItemDimensions'
-export * from './listItemPadding'
-export * from './listPadding'
-export * from './useListItemPartitions'
+import styled from 'styled-components'
+import { color as colorHelper, SpacingSizes } from '@looker/design-tokens'
+import { StyledIconBase } from '@styled-icons/styled-icon'
+import { IconPlaceholder, IconSize } from '../Icon'
+
+export type ListItemIconProps = {
+  color?: string
+  disabled?: boolean
+  iconGap: SpacingSizes
+  iconSize: IconSize
+}
+
+export const ListItemIcon = styled.div.attrs<ListItemIconProps>(
+  ({ color = 'text2', disabled }) => ({ color: disabled ? 'text1' : color })
+)<ListItemIconProps>`
+  align-self: center;
+  display: flex;
+  margin-right: ${({ iconGap, theme }) => theme.space[iconGap]};
+  ${colorHelper}
+
+  & > svg,
+  ${StyledIconBase}, ${IconPlaceholder} {
+    flex-grow: 0;
+    flex-shrink: 0;
+    height: ${({ iconSize, theme }) => theme.sizes[iconSize]};
+    /* justify-content: center; */
+    width: ${({ iconSize, theme }) => theme.sizes[iconSize]};
+  }
+`
