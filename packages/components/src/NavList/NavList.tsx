@@ -28,8 +28,8 @@ import styled from 'styled-components'
 import { TextBase } from '../Text/TextBase'
 import { ListItemDetail } from '../List/ListItemDetail'
 import { List, ListItem, ListItemLabel } from '../List'
-import { ListItemIconPlacement } from '../List/ListItemLayout'
 import { Accordion2Disclosure } from '../Accordion2/Accordion2Disclosure'
+import { ListItemIcon } from '../List/ListItemIcon'
 
 /**
  * `NavList` is a variation of `List`
@@ -47,7 +47,7 @@ export const NavList = styled(List).attrs(({ color = 'key' }) => ({ color }))`
     &[aria-selected='true'] {
       ${ListItemDetail},
       ${TextBase},
-      ${ListItemIconPlacement} svg {
+      ${ListItemIcon} svg {
         color: ${({ theme }) => theme.colors.key};
       }
     }
