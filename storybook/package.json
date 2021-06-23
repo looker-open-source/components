@@ -13,7 +13,7 @@
     "storyshots-task": "yarn jest",
     "poststoryshots-task": "yarn storyshots-preview-restore",
     "snapshots": "yarn storyshots-task --config ./jest-image-snapshots.config.js",
-    "snapshots-update": "yarn snapshots -u",
+    "snapshots-update": "yarn storyshots-preview-restore && yarn snapshots -u",
     "a11y": "yarn storyshots-task --config ./jest-a11y.config.js"
   },
   "dependencies": {
