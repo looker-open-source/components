@@ -91,7 +91,8 @@ const ListItemInternal = forwardRef(
       color: contextColor,
     } = useContext(ListItemContext)
 
-    const itemDimensions = listItemDimensions(propsDensity || contextDensity)
+    const density = propsDensity || contextDensity
+    const itemDimensions = listItemDimensions(density)
 
     const color = undefinedCoalesce([propsColor, contextColor])
 
@@ -137,6 +138,7 @@ const ListItemInternal = forwardRef(
     const [insideElements, outsideElements] = useListItemPartitions({
       ...props,
       color,
+      density,
       icon: icon || (iconGutter ? <IconPlaceholder /> : undefined),
     })
 
@@ -199,7 +201,6 @@ const ListItemInternal = forwardRef(
           <ListItemLabel
             itemRole={itemRole}
             aria-selected={selected}
-            className={className}
             cursorPointer={!!(href || onClick)}
             focusVisible={focusVisible}
             height={itemDimensions.height}
