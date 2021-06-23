@@ -29,7 +29,7 @@ import { ConstitutionShort } from '../../__mocks__/Constitution'
 import { Box } from '../../Layout'
 import { DialogContent, DialogLayout, DialogLayoutProps } from '.'
 
-const Template: Story<Partial<DialogLayoutProps>> = (args) => (
+const Template: Story<DialogLayoutProps> = (args) => (
   <Box bg="ui1">
     <DialogLayout {...args}>
       <ConstitutionShort />

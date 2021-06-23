@@ -27,35 +27,49 @@
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { render, screen } from '@testing-library/react'
-import {
-  Basic,
-  HeaderDetail,
-  HeaderCloseButton,
-  FooterSecondary,
-} from './DialogLayout.story'
+import { ConstitutionShort } from '../../__mocks__/Constitution'
+import { Basic, HeaderDetail, HeaderCloseButton } from './DialogLayout.story'
+import { DialogLayout, DialogLayoutProps } from './DialogLayout'
+
+const removeFooterSecondary = (
+  props?: Partial<DialogLayoutProps>
+): DialogLayoutProps => ({ ...props, children: '', footerSecondary: undefined })
 
 describe('DialogLayout', () => {
   test('Basic ', () => {
-    render(<Basic {...Basic.args} />)
+    render(<Basic {...removeFooterSecondary(Basic.args)} />)
     expect(
       screen.getByText(/We the People of the United States/)
     ).toBeInTheDocument()
   })
 
   test('Replaces the built-in `IconButton` with an arbitrary ReactNode', () => {
-    renderWithTheme(<HeaderDetail {...HeaderDetail.args} />)
+    renderWithTheme(
+      <HeaderDetail {...removeFooterSecondary(HeaderDetail.args)} />
+    )
     expect(screen.queryByText('Header text')).toBeInTheDocument()
     expect(screen.getByText('Cancel')).toBeInTheDocument()
   })
 
   test('HeaderCloseButton ', () => {
-    renderWithTheme(<HeaderCloseButton {...HeaderCloseButton.args} />)
+    renderWithTheme(
+      <HeaderCloseButton {...removeFooterSecondary(HeaderCloseButton.args)} />
+    )
     expect(screen.getByText('Close')).toBeInTheDocument()
   })
 
   test('FooterSecondary ', () => {
-    renderWithTheme(<FooterSecondary {...FooterSecondary.args} />)
+    renderWithTheme(
+      <DialogLayout footerSecondary="Cancel" footer="Footer text">
+        <ConstitutionShort />
+      </DialogLayout>
+    )
     expect(screen.getByText('Footer text')).toBeInTheDocument()
     expect(screen.getByText('Cancel')).toBeInTheDocument()
+  })
+
+  test('FooterSecondary without footer causes TS Exception', () => {
+    // @ts-expect-error footerSecondary must be paired with footer
+    renderWithTheme(<DialogLayout footerSecondary="problem" />)
   })
 })
