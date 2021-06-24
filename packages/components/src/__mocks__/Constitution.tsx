@@ -24,12 +24,15 @@
 
  */
 
-import React from 'react'
+import { FontSizes } from '@looker/design-tokens'
+import React, { FC } from 'react'
 import styled from 'styled-components'
 import { Heading, Paragraph } from '../'
 
-export const ConstitutionShort = () => (
-  <Paragraph fontSize="medium">
+export const ConstitutionShort: FC<{ fontSize?: FontSizes }> = ({
+  fontSize = 'medium',
+}) => (
+  <Paragraph fontSize={fontSize}>
     We the People of the United States, in Order to form a more perfect Union,
     establish Justice, insure domestic Tranquility, provide for the common
     defense, promote the general Welfare, and secure the Blessings of Liberty to

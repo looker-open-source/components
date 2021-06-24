@@ -25,27 +25,59 @@
  */
 
 import React from 'react'
-import { ButtonTransparent } from '../../../Button/ButtonTransparent'
-import { PopoverFooter } from './PopoverFooter'
+import { Story } from '@storybook/react/types-6-0'
+import { ConstitutionShort } from '../../__mocks__/Constitution'
+import { ButtonTransparent } from '../../Button/ButtonTransparent'
+import { PopoverLayout, PopoverLayoutProps } from '.'
 
-export default {
-  component: PopoverFooter,
-  title: 'PopoverFooter',
+const Template: Story<Partial<PopoverLayoutProps>> = ({
+  children,
+  ...args
+}) => <PopoverLayout {...args}>{children}</PopoverLayout>
+
+export const Basic = Template.bind({})
+Basic.args = {
+  children: <ConstitutionShort fontSize="small" />,
 }
 
-export const Basic = () => <PopoverFooter />
+export const Header = Template.bind({})
+Header.args = {
+  ...Basic.args,
+  footer: false,
+  header: 'Header text',
+}
 
-export const FooterWithChildren = () => (
-  <PopoverFooter>
+/**
+ * @TODO - Make this impossible with types
+ * User should not be able to do `footer=false + header=undefined`
+ */
+export const NoFooter = Template.bind({})
+NoFooter.args = {
+  footer: false,
+  ...Basic.args,
+}
+NoFooter.parameters = {
+  storyshots: { disable: true },
+}
+
+export const Full = Template.bind({})
+Full.args = {
+  ...Basic.args,
+  footer: (
     <ButtonTransparent color="neutral" size="small">
       Cancel
     </ButtonTransparent>
-  </PopoverFooter>
-)
+  ),
+  header: 'Header text',
+}
 
-export const FooterClose = () => <PopoverFooter close="Close" />
-FooterClose.parameters = {
-  storyshots: {
-    disable: true,
-  },
+export const HeaderHideHeading = Template.bind({})
+HeaderHideHeading.args = {
+  ...Full.args,
+  hideHeader: true,
+}
+
+export default {
+  component: PopoverLayout,
+  title: 'PopoverLayout',
 }
