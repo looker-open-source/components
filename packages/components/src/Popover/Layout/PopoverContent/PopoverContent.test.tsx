@@ -34,22 +34,20 @@ import { PopoverContent } from './PopoverContent'
 describe('PopoverContent', () => {
   test('Basic', () => {
     renderWithTheme(<Basic />)
-    expect(screen.getByText('Content Text')).toHaveStyleRule(
-      'padding-bottom',
-      '0.75rem'
-    )
+    const content = screen.getByText(/We the People of the United States, /)
+    expect(content).toBeInTheDocument()
   })
 
   test('Custom padding', () => {
     renderWithTheme(
-      <PopoverContent pl="none" pt="xlarge" pb="small">
+      <PopoverContent pb="small" pt="xlarge" px="small">
         Hello world
       </PopoverContent>
     )
     const item = screen.getByText('Hello world')
-    expect(item).toHaveStyleRule('padding-left', '0rem')
+    expect(item).toHaveStyleRule('padding-left', '0.75rem')
+    expect(item).toHaveStyleRule('padding-right', '0.75rem')
     expect(item).toHaveStyleRule('padding-top', '2rem')
     expect(item).toHaveStyleRule('padding-bottom', '0.75rem')
-    expect(item).toHaveStyleRule('padding', '0.75rem') // default value
   })
 })

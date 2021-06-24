@@ -29,14 +29,14 @@ import styled from 'styled-components'
 import { LayoutProps, layout } from '@looker/design-tokens'
 import { ModalContent, ModalContentProps } from '../../../Modal/ModalContent'
 
-type PopoverContentProps = ModalContentProps & LayoutProps
+export type PopoverContentProps = ModalContentProps & LayoutProps
 
 const PopoverContentLayout: FC<PopoverContentProps> = ({
   children,
   ...props
 }) => {
   return (
-    <ModalContent p="small" {...props}>
+    <ModalContent pb="medium" pt="xsmall" px="large" {...props}>
       {children}
     </ModalContent>
   )

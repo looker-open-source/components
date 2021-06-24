@@ -25,16 +25,33 @@
  */
 
 import React from 'react'
-import { PopoverContent } from './PopoverContent'
+import { Story } from '@storybook/react/types-6-0'
+import { ConstitutionShort } from '../../../__mocks__/Constitution'
+import { PopoverContent, PopoverContentProps } from './PopoverContent'
 
 export default {
   component: PopoverContent,
   title: 'PopoverContent',
 }
 
-export const Basic = () => <PopoverContent>Content Text</PopoverContent>
+const Template: Story<PopoverContentProps> = ({ ...args }) => (
+  <PopoverContent {...args}>
+    <ConstitutionShort fontSize="small" />
+  </PopoverContent>
+)
+
+export const Basic = Template.bind({})
+Basic.args = {}
+
 Basic.parameters = {
   storyshots: {
     disable: true,
   },
+}
+
+export const CustomPadding = Template.bind({})
+CustomPadding.args = {
+  pb: 'small',
+  pt: 'xlarge',
+  px: 'small',
 }
