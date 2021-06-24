@@ -58,6 +58,7 @@ type FooterOptions = WithFooter | WithoutFooter
 
 export type DialogLayoutProps = FooterOptions &
   ModalLayoutProps & {
+    children?: ReactNode
     /**
      * Content in header. If a `string` is supplied the content will be placed in a `<Header />`
      */

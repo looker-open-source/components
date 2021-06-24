@@ -33,7 +33,11 @@ import { DialogLayout, DialogLayoutProps } from './DialogLayout'
 
 const removeFooterSecondary = (
   props?: Partial<DialogLayoutProps>
-): DialogLayoutProps => ({ ...props, children: '', footerSecondary: undefined })
+): DialogLayoutProps => ({
+  children: '',
+  ...props,
+  footerSecondary: undefined,
+})
 
 describe('DialogLayout', () => {
   test('Basic ', () => {
