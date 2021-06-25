@@ -27,10 +27,10 @@
 import React from 'react'
 import { ArrowDropDown } from '@styled-icons/material/ArrowDropDown'
 import { ArrowRight } from '@styled-icons/material/ArrowRight'
-import { AccordionIndicatorProps } from '../../Accordion'
+import { AccordionIndicatorProps } from '../../Accordion2/types'
 
 export const indicatorDefaults: Required<
-  Omit<AccordionIndicatorProps, 'indicatorSize'>
+  Omit<AccordionIndicatorProps, 'disabled' | 'indicatorSize'>
 > = {
   indicatorGap: 'xxsmall',
   indicatorIcons: {

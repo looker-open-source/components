@@ -25,8 +25,9 @@
  */
 
 import { ReactNode } from 'react'
-import { AccordionProps } from '../Accordion'
+import { ControlledLoosely } from '../Accordion2/controlTypes'
 import { ListItemProps } from '../List'
+import { GenericClickProps } from '../utils/useClickable'
 
 // We need this array to pass link related props from Tree to the nested TreeItem (rather than the AccordionDisclosure)
 const linkPropKeys = ['download', 'href', 'rel', 'target'] as const
@@ -68,15 +69,8 @@ type ForceLabelPadding = {
   assumeIconAlignment?: never
 }
 
-export type TreeProps = Omit<
-  AccordionProps,
-  | 'children'
-  | 'color'
-  | 'content'
-  | 'indicatorGap'
-  | 'indicatorPosition'
-  | 'indicatorSize'
-> &
+export type TreeProps = ControlledLoosely &
+  GenericClickProps<HTMLElement> &
   Pick<ListItemProps, typeof treeItemInnerPropKeys[number]> &
   (AssumeIconAlignment | ForceLabelPadding) & {
     /**

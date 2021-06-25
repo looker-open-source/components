@@ -25,11 +25,11 @@
  */
 
 import styled from 'styled-components'
-import { AccordionDisclosureStyle } from '../Accordion/AccordionDisclosure'
 import { TextBase } from '../Text/TextBase'
 import { ListItemDetail } from '../List/ListItemDetail'
 import { List, ListItem, ListItemLabel } from '../List'
 import { ListItemIconPlacement } from '../List/ListItemLayout'
+import { Accordion2Disclosure } from '../Accordion2/Accordion2Disclosure'
 
 /**
  * `NavList` is a variation of `List`
@@ -38,16 +38,9 @@ import { ListItemIconPlacement } from '../List/ListItemLayout'
  *     - text color is `theme.colors.key`
  *     - background color is `keySubtle`
  *   - `ListItem` at the root are indented to align properly with `Tree`(s) at the root as well
- *
- *
- * @status: EXPERIMENTAL
- * This component is in active development and may see significant change in
- * it's behavior, interface & presentation. It may also be deprecated without
- * SemVer major version change. _It is not recommended to use this component
- * at this time.
  */
 export const NavList = styled(List).attrs(({ color = 'key' }) => ({ color }))`
-  ${AccordionDisclosureStyle}, ${ListItemLabel} {
+  ${Accordion2Disclosure}, ${ListItemLabel} {
     border-bottom-right-radius: 5rem;
     border-top-right-radius: 5rem;
 

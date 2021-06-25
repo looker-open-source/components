@@ -25,7 +25,6 @@
  */
 
 export * from './createSafeRel'
-export * from './partitionAriaProps'
 export * from './getDetailOptions'
 export * from './listItemBackgroundColor'
 export * from './listItemDimensions'

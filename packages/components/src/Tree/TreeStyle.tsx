@@ -27,11 +27,9 @@
 import React, { FC } from 'react'
 import styled, { css } from 'styled-components'
 import { SpacingSizes } from '@looker/design-tokens'
-import {
-  Accordion,
-  AccordionContent,
-  AccordionDisclosureStyle,
-} from '../Accordion'
+import { Accordion2 } from '../Accordion2'
+import { Accordion2Disclosure } from '../Accordion2/Accordion2Disclosure'
+import { Accordion2Content } from '../Accordion2/Accordion2Content'
 import { ListItemIconPlacement } from '../List/ListItemLayout'
 import { FlexibleColor, ListItemStatefulProps } from '../List/types'
 import { listItemBackgroundColor } from '../List/utils'
@@ -78,7 +76,7 @@ const dividersCSS = css`
     margin-top: 1px;
   }
 
-  ${AccordionDisclosureStyle} {
+  ${Accordion2Disclosure} {
     margin-top: 1px;
 
     ${TreeItemInner} {
@@ -149,11 +147,11 @@ export const TreeStyle = styled(TreeStyleLayout)`
       `)}
   }
 
-  > ${Accordion} {
+  > ${Accordion2} {
     /**
         Gets the box-shadow to sit above the ListItem background
        */
-    > ${AccordionDisclosureStyle}.focusVisible::after {
+    > ${Accordion2Disclosure}.focusVisible::after {
       bottom: 0;
       box-shadow: inset 0 0 0 2px ${({ theme }) => theme.colors.keyFocus};
       content: '';
@@ -164,12 +162,12 @@ export const TreeStyle = styled(TreeStyleLayout)`
       z-index: 1;
     }
 
-    > ${AccordionContent} {
+    > ${Accordion2Content} {
       ${({ border, depth, indicatorSize, theme }) =>
         border && generateTreeBorder(depth, indicatorSize, theme)}
     }
 
-    > ${AccordionDisclosureStyle} {
+    > ${Accordion2Disclosure} {
       ${ListItem} {
         ${({ labelBackgroundOnly, ...restProps }) =>
           labelBackgroundOnly && listItemBackgroundColor(restProps)}
@@ -202,7 +200,7 @@ export const TreeStyle = styled(TreeStyleLayout)`
 
   ${({ dividers }) => dividers && dividersCSS}
 
-  > ${Accordion} > ${AccordionContent} > ${List} {
+  > ${Accordion2} > ${Accordion2Content} > ${List} {
     > ${ListItem} {
       ${({
         assumeIconAlignment,

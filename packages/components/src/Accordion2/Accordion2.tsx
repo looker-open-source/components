@@ -30,12 +30,12 @@ import { Accordion2Disclosure } from './Accordion2Disclosure'
 import { Accordion2Props } from './types'
 import { useAccordion2 } from './useAccordion2'
 
-const Accordion2Internal = (props: Accordion2Props) => {
+const Accordion2Internal = ({ hideDisclosure, ...props }: Accordion2Props) => {
   const { content, domProps, disclosureProps } = useAccordion2(props)
 
   return (
     <div {...domProps}>
-      <Accordion2Disclosure {...disclosureProps} />
+      {!hideDisclosure && <Accordion2Disclosure {...disclosureProps} />}
       {content}
     </div>
   )
