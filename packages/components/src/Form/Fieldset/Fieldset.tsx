@@ -33,57 +33,47 @@ import {
 } from '@looker/design-tokens'
 import { Space, SpaceVertical } from '../../Layout'
 import { SimpleLayoutProps, simpleLayoutCSS } from '../../Layout/utils/simple'
-import { Legend } from '../Legend'
-import {
-  Accordion,
-  AccordionContent,
-  AccordionControlProps,
-  AccordionDisclosure,
-  AccordionIndicatorProps,
-} from '../../Accordion'
+import { Legend, LegendProps } from '../Legend'
+import { accordionLeftDefaults } from '../../Accordion2/accordionDefaults'
+import { Accordion2, Accordion2Props } from '../../Accordion2'
+import { ControlledLoosely } from '../../Accordion2/controlTypes'
 
-export interface FieldsetProps
-  extends Omit<CompatibleHTMLProps<HTMLDivElement>, 'wrap'>,
-    SimpleLayoutProps,
-    AccordionControlProps {
-  /**
-   * If true, the Fieldset will be wrapped by an Accordion structure (i.e. a collapsible section)
-   * @default false
-   */
-  accordion?: boolean
-  ariaLabeledby?: string
-  /**
-   * Determines where to place the label in relation to the input.
-   * @default false
-   */
-  inline?: boolean
+export type FieldsetProps = Omit<CompatibleHTMLProps<HTMLDivElement>, 'wrap'> &
+  SimpleLayoutProps &
+  ControlledLoosely & {
+    /**
+     * If true, the Fieldset will be wrapped by an Accordion structure (i.e. a collapsible section)
+     * @default false
+     */
+    accordion?: boolean
+    /**
+     * Determines where to place the label in relation to the input.
+     * @default false
+     */
+    inline?: boolean
 
-  /**
-   * Allowed fields to wrap if they exceed the container width
-   * @default false
-   */
-  wrap?: boolean
+    /**
+     * Allowed fields to wrap if they exceed the container width
+     * @default false
+     */
+    wrap?: boolean
 
-  /**
-   * Displayed above the children of Fieldset
-   * I18n recommended: content that is user visible should be treated for i18n
-   */
-  legend?: ReactNode
-  /*
-   * Hide labels on Fields within this Fieldset
-   * @default false
-   */
-  fieldsHideLabel?: boolean
-  /**
-   * Amount of space between fields
-   * @default medium
-   */
-  gap?: SpacingSizes
-}
-
-const accordionIndicatorDefaults: AccordionIndicatorProps = {
-  indicatorPosition: 'left',
-}
+    /**
+     * Displayed above the children of Fieldset
+     * I18n recommended: content that is user visible should be treated for i18n
+     */
+    legend?: ReactNode
+    /*
+     * Hide labels on Fields within this Fieldset
+     * @default false
+     */
+    fieldsHideLabel?: boolean
+    /**
+     * Amount of space between fields
+     * @default medium
+     */
+    gap?: SpacingSizes
+  }
 
 export interface FieldsetContextProps {
   fieldsHideLabel?: boolean
@@ -113,15 +103,6 @@ const FieldsetLayout = forwardRef(
 
       ...restProps
     } = props
-
-    const accordionProps = {
-      defaultOpen,
-      isOpen,
-      onClose,
-      onOpen,
-      toggleOpen,
-      ...accordionIndicatorDefaults,
-    }
 
     const LayoutComponent = inline ? Space : SpaceVertical
 
@@ -153,14 +134,39 @@ const FieldsetLayout = forwardRef(
         'Please provide a value for the "legend" prop if using accordion mode'
       )
 
+    const LegendComponent = accordion ? FieldsetAccordionLegend : Legend
+
+    const legendRender =
+      typeof legend === 'string' ? (
+        <LegendComponent>{legend}</LegendComponent>
+      ) : (
+        legend
+      )
+
+    let accordionProps: Accordion2Props = {
+      defaultOpen,
+      indicatorPosition: 'left',
+      label: legendRender,
+      onClose,
+      onOpen,
+    }
+
+    if (isOpen && toggleOpen) {
+      accordionProps = {
+        ...accordionProps,
+        isOpen,
+        toggleOpen,
+      }
+    }
+
     const renderedFieldset = legend ? (
       accordion ? (
-        <Accordion {...accordionProps} content={content}>
-          {legend}
-        </Accordion>
+        <Accordion2 {...accordionProps}>
+          <FieldsetAccordionContent>{content}</FieldsetAccordionContent>
+        </Accordion2>
       ) : (
         <SpaceVertical>
-          {typeof legend === 'string' ? <Legend>{legend}</Legend> : legend}
+          {legendRender}
           {content}
         </SpaceVertical>
       )
@@ -180,28 +186,22 @@ const FieldsetLayout = forwardRef(
   }
 )
 
+const FieldsetAccordionLegend = (props: LegendProps) => (
+  <Legend py="xxsmall" fontSize="small" {...props} />
+)
+
 FieldsetLayout.displayName = 'FieldsetLayout'
+
+const FieldsetAccordionContent = styled.div`
+  padding-left: ${({ theme }) =>
+    `calc(${theme.sizes[accordionLeftDefaults.indicatorSize]} + ${
+      theme.space[accordionLeftDefaults.indicatorGap]
+    })`};
+  padding-top: ${({ theme }) => theme.space.medium};
+`
 
 export const Fieldset = styled(FieldsetLayout).attrs(({ width = '100%' }) => ({
   width,
-}))`
+}))<FieldsetProps>`
   ${simpleLayoutCSS}
-
-  ${AccordionContent} {
-    padding-left: ${({ theme }) => {
-      const borderWidth = '1px'
-      const defaultIndicatorSize = theme.space.medium
-      const defaultIndicatorGap = theme.space.xsmall
-
-      return `calc(${borderWidth} + ${defaultIndicatorSize} + ${defaultIndicatorGap})`
-    }};
-    padding-top: ${({ theme }) => theme.space.medium};
-  }
-
-  ${AccordionDisclosure} {
-    font-size: ${({ theme }) => theme.fontSizes.small};
-    font-weight: ${({ theme }) => theme.fontWeights.semiBold};
-    height: 24px;
-    padding: ${({ theme: { space } }) => space.xxsmall} 0;
-  }
 `
