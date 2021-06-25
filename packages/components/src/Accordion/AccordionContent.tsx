@@ -24,33 +24,9 @@
 
  */
 
-import React, { FC } from 'react'
 import styled from 'styled-components'
 
-export interface AccordionContentProps {
-  className?: string
-  accordionContentId?: string
-  accordionDisclosureId?: string
-  isOpen?: boolean
-}
-
-const AccordionContentLayout: FC<AccordionContentProps> = ({
-  children,
-  className,
-  accordionContentId,
-  accordionDisclosureId,
-  isOpen,
-}) => {
-  return isOpen ? (
-    <div
-      aria-labelledby={accordionDisclosureId}
-      className={className}
-      id={accordionContentId}
-      role="region"
-    >
-      {children}
-    </div>
-  ) : null
-}
-
-export const AccordionContent = styled(AccordionContentLayout)``
+/**
+ * @deprecated Use `Accordion2` instead
+ */
+export const AccordionContent = styled.div``

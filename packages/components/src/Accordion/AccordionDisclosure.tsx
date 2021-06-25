@@ -24,161 +24,30 @@
 
  */
 
-import React, { FC, Ref, forwardRef } from 'react'
-import styled, { css } from 'styled-components'
-import {
-  TypographyProps,
-  typography,
-  padding,
-  PaddingProps,
-  shouldForwardProp,
-  TextColorProps,
-  color as colorStyleFn,
-} from '@looker/design-tokens'
-import {
-  FocusVisibleProps,
-  GenericClickProps,
-  useClickable,
-  useWrapEvent,
-  focusVisibleCSSWrapper,
-} from '../utils'
+import React, { FC } from 'react'
+import styled from 'styled-components'
+import { TypographyProps, typography } from '@looker/design-tokens'
 import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout/utils/simple'
-import { AccordionDisclosureLayout } from './AccordionDisclosureLayout'
-import { AccordionControlProps, AccordionIndicatorProps } from './types'
-import { accordionDefaults } from './accordionDefaults'
+import { Accordion2Disclosure } from '../Accordion2/Accordion2Disclosure'
 
-export interface AccordionDisclosureProps
-  extends TypographyProps,
-    Omit<AccordionDisclosureStyleProps, 'focusVisible'>,
-    GenericClickProps<HTMLElement>,
-    SimpleLayoutProps,
-    AccordionControlProps,
-    AccordionIndicatorProps {
-  renderAsLi?: boolean
-  className?: string
-  ref?: Ref<HTMLDivElement>
-  /**
-   * ID of the corresponding AccordionContent container
-   */
-  accordionContentId?: string
-  /**
-   * ID of the AccordionDisclosure
-   */
-  accordionDisclosureId?: string
-}
+export type AccordionDisclosureProps = SimpleLayoutProps & TypographyProps
 
 /**
- * @todo: Remove fallback values in <AccordionDisclosureLayout/> element in 2.x
+ * NOTE: `focusVisible` & `indicator` props are overwritten within `AccordionLegacy`
+ * & `Accordion` but are supplied here to meet type requirements of
+ * `Accordion2Disclosure`
  */
-const AccordionDisclosureInternal: FC<AccordionDisclosureProps> = forwardRef(
-  (
-    {
-      accordionContentId,
-      accordionDisclosureId,
-      children,
-      className,
-      disabled,
-      onBlur,
-      onClick: propsOnClick,
-      onKeyUp,
-      role,
-      defaultOpen,
-      isOpen,
-      toggleOpen,
-      onClose,
-      onOpen,
-      indicatorPosition,
-      indicatorSize,
-      indicatorGap,
-      indicatorIcons,
-      renderAsLi,
-      ...props
-    },
-    ref
-  ) => {
-    const handleOpen = () => onOpen && onOpen()
-    const handleClose = () => onClose && onClose()
-    const handleToggle = () => {
-      isOpen ? handleClose() : handleOpen()
-      toggleOpen && toggleOpen(!isOpen)
-    }
-    const onClick = useWrapEvent(handleToggle, propsOnClick)
-
-    const clickableProps = useClickable({
-      disabled,
-      onBlur,
-      onClick,
-      onKeyUp,
-      role,
-    })
-
-    return (
-      <AccordionDisclosureStyle
-        as={renderAsLi ? 'li' : 'div'}
-        className={`${
-          clickableProps.focusVisible ? 'focusVisible ' : ''
-        }${className}`}
-        aria-controls={accordionContentId}
-        aria-expanded={isOpen}
-        id={accordionDisclosureId}
-        ref={ref}
-        tabIndex={0}
-        {...clickableProps}
-        {...props}
-      >
-        <AccordionDisclosureLayout
-          indicatorPosition={
-            indicatorPosition || accordionDefaults.indicatorPosition
-          }
-          indicatorSize={indicatorSize || accordionDefaults.indicatorSize}
-          indicatorGap={indicatorGap || accordionDefaults.indicatorGap}
-          indicatorIcons={indicatorIcons || accordionDefaults.indicatorIcons}
-          isOpen={isOpen}
-        >
-          {children}
-        </AccordionDisclosureLayout>
-      </AccordionDisclosureStyle>
-    )
-  }
+const AccordionDisclosureInternal: FC<AccordionDisclosureProps> = (props) => (
+  <Accordion2Disclosure focusVisible={false} indicator={null} {...props} />
 )
 
-AccordionDisclosureInternal.displayName = 'AccordionDisclosureInternal'
-
-interface AccordionDisclosureStyleProps
-  extends TextColorProps,
-    PaddingProps,
-    FocusVisibleProps {}
-
-export const AccordionDisclosureStyle = styled.div
-  .withConfig({ shouldForwardProp })
-  .attrs<AccordionDisclosureProps>(({ px = 'none', py = 'xsmall' }) => ({
+/**
+ * @deprecated Use `Accordion2` instead
+ */
+export const AccordionDisclosure = styled(AccordionDisclosureInternal).attrs(
+  ({ px = 'none', py = 'xsmall' }) => ({
     px,
     py,
-  }))<AccordionDisclosureStyleProps>`
-  align-items: center;
-  background-color: transparent;
-  ${({ color, theme }) =>
-    color ? colorStyleFn : `color: ${theme.colors.ui5};`}
-  cursor: pointer;
-  display: flex;
-  ${padding}
-  outline: none;
-  position: relative;
-  text-align: left;
-  width: 100%;
-
-  ${focusVisibleCSSWrapper(
-    ({ theme }) => css`
-      box-shadow: inset 0 0 0 2px ${theme.colors.keyFocus};
-    `
-  )}
-  `
-
-export const AccordionDisclosure = styled(AccordionDisclosureInternal).attrs(
-  (props) => ({
-    fontSize: 'small',
-    fontWeight: 'semiBold',
-    ...props,
   })
 )`
   ${typography}
