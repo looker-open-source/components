@@ -32,6 +32,10 @@ import { AccordionIndicator } from './AccordionIndicator'
 import { Accordion2Props } from './types'
 import { useAriaLabelObjectRelationship } from './useAriaLabelObjectRelationship'
 
+/**
+ * `useAccordion2` hook returns the internal pieces of an `Accordion2` component
+ * to allow developers to build artisanal accordion compositions.
+ */
 export const useAccordion2 = ({
   children,
   className,
