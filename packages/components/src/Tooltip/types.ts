@@ -24,10 +24,10 @@
 
  */
 
-import { Transitions } from '@looker/design-tokens'
+import { CompatibleHTMLProps, Transitions } from '@looker/design-tokens'
 import { Placement } from '@popperjs/core'
 import { Property } from 'csstype'
-import { MouseEvent, ReactElement, ReactNode } from 'react'
+import { ReactElement, ReactNode } from 'react'
 import { MenuDomProps } from '../Menu'
 
 // import { UsePopoverResponseDom } from '../Popover'
@@ -99,18 +99,15 @@ export interface UseTooltipProps {
   delay?: Transitions
 }
 
-export interface UseTooltipResponseDom {
-  'aria-describedby'?: string
-  className?: string
-  onBlur: () => void
-  onFocus: () => void
-  onMouseOut: (event: MouseEvent<HTMLElement>) => void
-  onMouseOver: () => void
-  /**
-   * Used by popper.js to position the OverlaySurface relative to the trigger
-   */
-  ref: (node: HTMLElement | null) => void
-}
+type UseTooltipCallbacks = Required<
+  Pick<
+    CompatibleHTMLProps<HTMLElement>,
+    'onBlur' | 'onFocus' | 'onMouseOut' | 'onMouseOver'
+  >
+>
+
+export type UseTooltipResponseDom = UseTooltipCallbacks &
+  Pick<CompatibleHTMLProps<HTMLElement>, 'aria-describedby' | 'className'>
 export interface TooltipProps extends UseTooltipProps, Partial<MenuDomProps> {
   content: ReactNode
   /**
