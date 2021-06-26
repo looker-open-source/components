@@ -29,8 +29,8 @@
 const path = require('path')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
-  .BundleAnalyzerPlugin
+const BundleAnalyzerPlugin =
+  require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 const excludeNodeModulesExcept = require('babel-loader-exclude-node-modules-except')
 
