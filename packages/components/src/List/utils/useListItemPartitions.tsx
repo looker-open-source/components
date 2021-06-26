@@ -29,9 +29,8 @@ import { ListItemDetail } from '../ListItemDetail'
 import { ListItemIcon } from '../ListItemIcon'
 import { ListItemProps } from '../types'
 import { HoverDisclosure } from '../../utils/HoverDisclosure'
-import { Text } from '../../Text'
-import { TruncateWrapper } from '../TruncateWrapper'
 import { Flex } from '../../Layout'
+import { TruncateOptionally } from '../../Truncate'
 import { listItemDimensions } from './listItemDimensions'
 import { listItemIconColor, listItemLabelColor } from './listItemColor'
 import { getDetailOptions } from '.'
@@ -67,32 +66,28 @@ export const useListItemPartitions = ({
     </ListItemIcon>
   )
 
-  /// ////////////// Create the label /////////////////
-  const Wrapper = truncate ? TruncateWrapper : Text
-  const truncateDescription =
-    typeof truncate === 'object' ? truncate.description : undefined
-
   const labelElement = (
-    <Wrapper
+    <TruncateOptionally
+      truncate={truncate}
       color={listItemLabelColor(color, disabled)}
       fontSize={itemDimensions.labelFontSize}
       lineHeight={itemDimensions.labelLineHeight}
-      truncateDescription={truncateDescription}
     >
       {label}
-    </Wrapper>
+    </TruncateOptionally>
   )
 
   const descriptionColor = disabled ? 'text1' : 'text2'
 
   const descriptionElement = (
-    <Wrapper
+    <TruncateOptionally
+      truncate={truncate}
       color={descriptionColor}
       fontSize={itemDimensions.descriptionFontSize}
       lineHeight={itemDimensions.descriptionLineHeight}
     >
       {description}
-    </Wrapper>
+    </TruncateOptionally>
   )
 
   const renderedContent = (

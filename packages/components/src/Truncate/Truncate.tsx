@@ -25,21 +25,50 @@
  */
 import React, { FC, useState, useCallback } from 'react'
 import styled from 'styled-components'
+import {
+  textColor,
+  TextColorProps,
+  typography,
+  TypographyProps,
+} from '@looker/design-tokens/src'
 import { width as widthHelper, WidthProps } from 'styled-system'
-import { useIsTruncated } from '../utils/useIsTruncated'
-import { useTooltip } from '../Tooltip'
 import { Span } from '../Text/Span'
+import { useTooltip } from '../Tooltip'
+import { useIsTruncated } from '../utils/useIsTruncated'
 
-export interface TruncateProps extends WidthProps {
-  className?: string
-  /**
-   * Specifying `description` will cause truncation tooltip to _always_ be presented
-   * Text specified in `description` property will be displayed below `children` supplied
-   */
-  description?: string
-}
+export type TruncateProps = TextColorProps &
+  TypographyProps &
+  WidthProps & {
+    className?: string
+    /**
+     * Specifying `description` will cause truncation tooltip to _always_ be presented
+     * Text specified in `description` property will be displayed below `children` supplied
+     */
+    description?: string
+  }
 
-export type TruncateConfigProp = undefined | boolean | { description: string }
+export type TruncateConfigProp =
+  | undefined
+  | boolean
+  | { description: TruncateProps['description'] }
+
+const getTruncateDescription = (truncate: TruncateConfigProp) =>
+  typeof truncate === 'object' ? truncate.description : undefined
+
+/**
+ * If `truncate` is truthy will output a `Truncate` component.
+ * If `truncate` is falsy returns a `Span`
+ */
+export const TruncateOptionally: FC<
+  TruncateProps & {
+    truncate?: TruncateConfigProp
+  }
+> = ({ truncate, ...props }) =>
+  truncate ? (
+    <Truncate description={getTruncateDescription(truncate)} {...props} />
+  ) : (
+    <Span {...props} />
+  )
 
 /**
  * Prevent text wrapping on long labels and instead render truncated text.
@@ -49,7 +78,6 @@ const TruncateLayout: FC<TruncateProps> = ({
   children,
   className: propsClassName,
   description,
-  width = '100%',
 }) => {
   const [domNode, setDomNode] = useState<HTMLDivElement | null>(null)
 
@@ -89,14 +117,9 @@ const TruncateLayout: FC<TruncateProps> = ({
   return (
     <>
       {tooltip}
-      <TextStyle
-        {...otherDomProps}
-        className={className}
-        ref={textRef}
-        width={width}
-      >
+      <span {...otherDomProps} className={className} ref={textRef}>
         {children}
-      </TextStyle>
+      </span>
     </>
   )
 }
@@ -105,13 +128,17 @@ const TruncateLayout: FC<TruncateProps> = ({
  * @a11y-TODO we should support :focus-visible emulation here if focus can be drawn by an anchor/link within
  * the truncate children.
  **/
-
-const TextStyle = styled.span<WidthProps>`
+export const Truncate = styled(TruncateLayout).attrs(({ width = '100%' }) => ({
+  width,
+}))`
   display: block;
   overflow: hidden;
   text-overflow: ellipsis;
-  ${widthHelper}
   white-space: nowrap;
+
+  ${textColor}
+  ${typography}
+  ${widthHelper}
 
   :focus-within {
     a {
@@ -119,5 +146,3 @@ const TextStyle = styled.span<WidthProps>`
     }
   }
 `
-
-export const Truncate = styled(TruncateLayout)``
