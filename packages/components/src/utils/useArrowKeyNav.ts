@@ -139,7 +139,11 @@ export const useArrowKeyNav = <E extends HTMLElement = HTMLElement>({
     if (internalRef.current) {
       const toFocus = getNextFocus(1, internalRef.current)
       if (toFocus) {
-        toFocus.focus()
+        // Since this is called when the user is scrolling a windowed list and
+        // the focused element is removed because it leaves the window,
+        // we preventScroll to avoid jumpiness
+        // (getNextFocus should return an element that is inside the visible window)
+        toFocus.focus({ preventScroll: true })
       }
     }
   }, [getNextFocus])

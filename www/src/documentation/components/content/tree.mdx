@@ -384,3 +384,61 @@ Enabling the `accessory` option will render the detail element outside of the la
   </Tree>
 </TreeCollection>
 ```
+
+## Windowing
+
+If a `TreeCollection` contains more than 100 visible descendants (trees, items, and nested trees) at a given time, performance will begin to degrade.
+Use `WindowedTreeCollection` instead, with the following differences:
+
+- The `trees` prop replaces `children`
+- `trees` accepts an array of nestable objects where:
+  - `content` is a `<Tree>`, `<TreeItem>`, or other JSX element that renders either
+  - `items` are any nested tree/items (replaces `Tree` children)
+  - `isOpen` (optional) controls the state of each tree, rather than the
+    `isOpen` or `defaultOpen` props on the `Tree` component itself
+
+**Note:** `WindowedTreeCollection` should be rendered inside an element with a specified height
+or add a `height` prop to the component directly.
+
+```jsx
+;() => {
+  const { value, toggle } = useToggle()
+
+  const trees = React.useMemo(
+    () =>
+      Array.from(Array(200), (_, treeIndex) => ({
+        content: <Tree label={`Tree ${treeIndex}`} />,
+        isOpen: value,
+        items: Array.from(Array(10), (_, itemIndex) => {
+          if (itemIndex === 2) {
+            return {
+              content: <Tree label={`Nested Tree ${treeIndex}-${itemIndex}`} />,
+              isOpen: value,
+              items: Array.from(Array(4), (_, nestedItemIdex) => ({
+                content: (
+                  <TreeItem>
+                    Nested TreeItem {treeIndex}-{itemIndex}-{nestedItemIdex}
+                  </TreeItem>
+                ),
+              })),
+            }
+          }
+          return {
+            content: (
+              <TreeItem>
+                TreeItem {treeIndex}-{itemIndex}
+              </TreeItem>
+            ),
+          }
+        }),
+      })),
+    [value]
+  )
+  return (
+    <SpaceVertical>
+      <Button onClick={toggle}>Toggle all {value ? 'closed' : 'open'}</Button>
+      <WindowedTreeCollection height={300} width={500} trees={trees} />
+    </SpaceVertical>
+  )
+}
+```

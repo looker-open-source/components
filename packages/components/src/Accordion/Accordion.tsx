@@ -78,6 +78,12 @@ export interface AccordionProps
    */
   renderAsLi?: boolean
   /**
+   * Used for virtualization when the disclosure is above the window
+   * @default false
+   * @private This feature may be removed without a breaking change. We STRONGLY discourage the direct use of this property.
+   */
+  hideDisclosure?: boolean
+  /**
    * We currently support two different compositions for Accordion:
    *  - `Accordion`'s children will act as the "trigger" element (i.e. children always visible, clicking children toggles whether content is visible or not)
    *  - Legacy: `<Accordion>` wrapped around an `<AccordionDisclosure>` and `<AccordionContent>` (NOTE: This composition will be deprecated in a future MAJOR release)
@@ -102,6 +108,7 @@ const AccordionLayout: FC<AccordionProps> = ({
   children,
   className,
   content,
+  hideDisclosure,
   id,
   indicatorGap = accordionDefaults.indicatorGap,
   indicatorSize = accordionDefaults.indicatorSize,
@@ -208,9 +215,11 @@ const AccordionLayout: FC<AccordionProps> = ({
   if (children) {
     return (
       <div className={className} id={accordionId}>
-        <AccordionDisclosure {...accordionDisclosureProps}>
-          {children}
-        </AccordionDisclosure>
+        {!hideDisclosure && (
+          <AccordionDisclosure {...accordionDisclosureProps}>
+            {children}
+          </AccordionDisclosure>
+        )}
         <AccordionContent {...accordionContentProps}>
           {content}
         </AccordionContent>
@@ -231,6 +240,7 @@ export const Accordion = styled(AccordionLayout)
       [
         ...AccordionIndicatorPropKeys,
         ...AccordionControlPropKeys,
+        'hideDisclosure',
         'renderAsLi',
       ].includes(prop)
         ? true

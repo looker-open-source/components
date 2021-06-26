@@ -44,20 +44,14 @@ import { HeightProps, fontFamily } from 'styled-system'
 import styled from 'styled-components'
 import { useArrowKeyNav, useWindow } from '../utils'
 import { ListItemContext } from './ListItemContext'
-import { DensityRamp, ListColorProps } from './types'
+import { DensityProps, ListColorProps } from './types'
 import { listItemDimensions } from './utils'
 
 export type ListProps = ListColorProps &
   HeightProps &
   WidthProps &
-  Omit<CompatibleHTMLProps<HTMLUListElement>, 'label'> & {
-    /**
-     * Determines how dense a list should be by affecting child ListItem
-     * size and spacing.
-     * @default 0
-     */
-    density?: DensityRamp
-
+  Omit<CompatibleHTMLProps<HTMLUListElement>, 'label'> &
+  DensityProps & {
     /**
      * Disables the nested List's keyboard nav capabilities
      * @private

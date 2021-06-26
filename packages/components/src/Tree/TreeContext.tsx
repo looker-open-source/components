@@ -25,12 +25,11 @@
  */
 
 import { createContext } from 'react'
-import { DensityRamp, ListColor } from '../List/types'
+import { DensityProps, ListColor } from '../List/types'
 
-export interface TreeContextProps {
+export type TreeContextProps = DensityProps & {
   border?: boolean
   color?: ListColor
-  density: DensityRamp
   depth?: number
   labelBackgroundOnly?: boolean
 }

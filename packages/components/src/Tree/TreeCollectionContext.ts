@@ -24,10 +24,20 @@
 
  */
 
-export * from './Tree'
-export * from './TreeItem'
-export * from './TreeBranch'
-export * from './TreeCollection'
-export * from './WindowedTreeCollection'
-export * from './types'
-export { generateBorderRadius } from './utils'
+import { createContext } from 'react'
+import { DensityProps } from '../List/types'
+import { ToggleStateMap } from './types'
+
+export type TreeCollectionContextProps = DensityProps & {
+  /** @private */
+  toggleNode?: (id: number, isOpen: boolean) => void
+  /** @private */
+  toggleStateMap?: ToggleStateMap
+}
+
+/**
+ * Manage the opened / closed state of sub-trees for windowing purposes
+ */
+export const TreeCollectionContext = createContext<TreeCollectionContextProps>(
+  {}
+)

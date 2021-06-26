@@ -71,7 +71,6 @@ export interface AccordionControlProps {
   /**
    * Use this property (alongside toggleOpen) if you wish to use the component in a `controlled` manner.
    * isOpen determines whether the Accordion is currently open or closed
-   * @default false
    **/
   isOpen?: boolean
   /**

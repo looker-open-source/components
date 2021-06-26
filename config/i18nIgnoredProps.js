@@ -34,7 +34,6 @@ const ours = [
   'iconVerticalAlign',
   'iconViewBox',
   'textDecoration',
-  'windowing',
   'layout',
   'indexBy',
   'indicatorPosition',

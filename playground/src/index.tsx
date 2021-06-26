@@ -26,12 +26,12 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { ComponentsProvider } from '@looker/components'
-import { LongMenus } from '@looker/components/src/Menu/Menu.story'
+import { Windowing } from '@looker/components/src/Tree/stories/Windowing.story'
 
 const App = () => {
   return (
     <ComponentsProvider loadGoogleFonts>
-      <LongMenus />
+      <Windowing />
     </ComponentsProvider>
   )
 }

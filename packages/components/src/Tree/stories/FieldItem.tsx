@@ -24,7 +24,7 @@
 
  */
 
-import React, { FC, useState } from 'react'
+import React, { createContext, FC, useContext, useState } from 'react'
 import { FilterList } from '@styled-icons/material/FilterList'
 import { MoreVert } from '@styled-icons/material/MoreVert'
 import { SubdirectoryArrowLeft } from '@styled-icons/material/SubdirectoryArrowLeft'
@@ -41,6 +41,9 @@ import {
 import { TreeItem } from '..'
 import { HoverDisclosure } from '../../utils'
 import { listItemDimensions } from '../../List'
+import { ReplaceText, Span } from '../../Text'
+
+export const HighlightContext = createContext({ term: '' })
 
 type FieldItemProps = {
   color?: ToggleColor
@@ -57,6 +60,7 @@ export const FieldItem: FC<FieldItemProps> = ({
   selected = false,
 }) => {
   const [isFieldMenuOpen, setIsFieldMenuOpen] = useState<boolean>(false)
+  const { term } = useContext(HighlightContext)
 
   const [isFilter, setIsFilter] = useState(filter)
   const [isPivot, setIsPivot] = useState(pivot)
@@ -129,7 +133,22 @@ export const FieldItem: FC<FieldItemProps> = ({
           overflow="hidden"
           width="100%"
         >
-          <Truncate>{children}</Truncate>
+          <Truncate>
+            <ReplaceText
+              match={term}
+              replace={(str, index) => (
+                <Span
+                  fontWeight="semiBold"
+                  textDecoration="underline"
+                  key={index}
+                >
+                  {str}
+                </Span>
+              )}
+            >
+              {children}
+            </ReplaceText>
+          </Truncate>
         </Flex>
         <HoverDisclosure visible={isPivot}>
           <IconButton

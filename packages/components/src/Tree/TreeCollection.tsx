@@ -24,49 +24,43 @@
 
  */
 
-import React, { FC, KeyboardEvent, ReactNode, useRef } from 'react'
+import { CompatibleHTMLProps } from '@looker/design-tokens'
+import React, { forwardRef, KeyboardEvent, Ref, useRef } from 'react'
 import styled from 'styled-components'
-import { useArrowKeyNav } from '../utils'
+import { useArrowKeyNav, useForkedRef } from '../utils'
 import { getNextTreeFocus, getTreeItems } from './utils'
 
-export type TreeCollectionProps = {
-  children?: ReactNode
-  className?: string
-}
+export type TreeCollectionProps = CompatibleHTMLProps<HTMLUListElement>
 
-const TreeCollectionLayout: FC<TreeCollectionProps> = ({
-  children,
-  className,
-}) => {
-  const ref = useRef<HTMLUListElement>(null)
+const TreeCollectionInternal = forwardRef(
+  (props: TreeCollectionProps, forwardedRef: Ref<HTMLUListElement>) => {
+    const internalRef = useRef<HTMLUListElement>(null)
 
-  // Additional key shortcuts
-  const handleKeyDown = (event: KeyboardEvent<HTMLElement>) => {
-    const treeItems = getTreeItems(ref.current as HTMLElement)
-    if (event.key === 'Home') {
-      const firstItem = treeItems[0]
-      firstItem && firstItem.focus()
-    } else if (event.key === 'End') {
-      const lastItem = treeItems[treeItems.length - 1]
-      lastItem && lastItem.focus()
+    // Additional key shortcuts
+    const handleKeyDown = (event: KeyboardEvent<HTMLElement>) => {
+      const treeItems = getTreeItems(internalRef.current as HTMLElement)
+      if (event.key === 'Home') {
+        const firstItem = treeItems[0]
+        firstItem && firstItem.focus()
+      } else if (event.key === 'End') {
+        const lastItem = treeItems[treeItems.length - 1]
+        lastItem && lastItem.focus()
+      }
     }
+
+    const navProps = useArrowKeyNav<HTMLUListElement>({
+      axis: 'both',
+      getNextFocus: getNextTreeFocus,
+      onKeyDown: handleKeyDown,
+      ref: useForkedRef(internalRef, forwardedRef),
+    })
+
+    return <ul role="tree" {...props} {...navProps} />
   }
+)
 
-  const navProps = useArrowKeyNav<HTMLUListElement>({
-    axis: 'both',
-    getNextFocus: getNextTreeFocus,
-    onKeyDown: handleKeyDown,
-    ref,
-  })
-
-  return (
-    <ul className={className} role="tree" {...navProps}>
-      {children}
-    </ul>
-  )
-}
-
-export const TreeCollection = styled(TreeCollectionLayout)`
+export const TreeCollection = styled(TreeCollectionInternal)`
+  list-style-type: none;
   margin: 0;
   padding: 0;
 `
