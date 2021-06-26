@@ -31,8 +31,7 @@ import React, {
   ReactNode,
   Ref,
 } from 'react'
-import { useForkedRef } from '../utils'
-import { mergeHandlers } from '../utils/mergeHandlers'
+import { useForkedRef, mergeClassNames, mergeHandlers } from '../utils'
 import { TooltipProps, TooltipRenderProp } from './types'
 import { useTooltip } from './useTooltip'
 
@@ -106,9 +105,7 @@ export const Tooltip = forwardRef(
         'aria-expanded': ariaExpanded,
         'aria-haspopup': ariaHaspopup,
         // Tooltip
-        className: className
-          ? `${children.props.className || ''} ${className}`.trim()
-          : children.props.className,
+        className: mergeClassNames([className, children.props.className]),
         ref,
       })
     } else if (isRenderProp(children)) {

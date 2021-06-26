@@ -32,6 +32,7 @@ import React, {
   ReactNode,
   isValidElement,
 } from 'react'
+import { mergeClassNames } from '../utils'
 import { AccordionContent } from './AccordionContent'
 import { AccordionDisclosure } from './AccordionDisclosure'
 
@@ -67,11 +68,10 @@ export const AccordionLegacy: FC<AccordionLegacyProps> = ({
         accordionChildren.push(
           React.cloneElement(child, {
             ...disclosureProps,
-            className: disclosureProps.className
-              ? `${child.props.className || ''} ${
-                  disclosureProps.className
-                }`.trim()
-              : child.props.className,
+            className: mergeClassNames([
+              disclosureProps.className,
+              child.props.className,
+            ]),
             key: 'accordion-disclosure',
           })
         )
@@ -79,11 +79,10 @@ export const AccordionLegacy: FC<AccordionLegacyProps> = ({
         accordionChildren.push(
           React.cloneElement(child, {
             ...contentDomProps,
-            className: contentDomProps.className
-              ? `${child.props.className || ''} ${
-                  contentDomProps.className
-                }`.trim()
-              : child.props.className,
+            className: mergeClassNames([
+              child.props.className,
+              contentDomProps.className,
+            ]),
             key: 'accordion-content',
           })
         )
