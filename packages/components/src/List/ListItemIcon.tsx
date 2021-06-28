@@ -36,9 +36,7 @@ export type ListItemIconProps = {
   iconSize: IconSize
 }
 
-export const ListItemIcon = styled.div.attrs<ListItemIconProps>(
-  ({ color = 'text2', disabled }) => ({ color: disabled ? 'text1' : color })
-)<ListItemIconProps>`
+export const ListItemIcon = styled.div<ListItemIconProps>`
   align-self: center;
   display: flex;
   margin-right: ${({ iconGap, theme }) => theme.space[iconGap]};

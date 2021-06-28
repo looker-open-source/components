@@ -48,9 +48,9 @@ import { ListItemLabel } from './ListItemLabel'
 import { ListItemWrapper } from './ListItemWrapper'
 import { listItemLabelColor } from './utils/listItemColor'
 import {
+  createListItemPartitions,
   createSafeRel,
   listItemDimensions,
-  useListItemPartitions,
 } from './utils'
 import { ListItemProps } from './types'
 
@@ -135,7 +135,7 @@ const ListItemInternal = forwardRef(
     })
 
     const [ariaProps, wrapperProps] = partitionAriaProps(restProps)
-    const [insideElements, outsideElements] = useListItemPartitions({
+    const [insideElements, outsideElements] = createListItemPartitions({
       ...props,
       color,
       density,
