@@ -31,7 +31,7 @@ import { reset, space } from '@looker/design-tokens'
 import React, { forwardRef, Ref } from 'react'
 import { Icon } from '../Icon'
 import { useTooltip } from '../Tooltip'
-import { useForkedRef, useWrapEvent } from '../utils'
+import { mergeClassNames, useForkedRef, useWrapEvent } from '../utils'
 import { VisuallyHidden } from '../VisuallyHidden'
 import { GenericButtonBase } from './ButtonBase'
 import { iconButtonColor, ICON_BUTTON_DEFAULT_COLOR } from './iconButtonColor'
@@ -106,7 +106,7 @@ const IconButtonComponent = forwardRef(
         p="none"
         size={size}
         width={buttonSizeMap[size]}
-        className={`${className} ${tooltipClassName}`.trim()}
+        className={mergeClassNames([className, tooltipClassName])}
         toggleColor={toggleColor}
         {...eventHandlers}
         {...rest}

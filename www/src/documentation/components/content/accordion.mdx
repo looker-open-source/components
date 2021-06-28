@@ -1,43 +1,58 @@
 ---
-title: Accordion
+title: Accordion2
 storybook: true
 ---
 
-`<Accordion>` hides and shows content on click like a collapsible section.
+import { Code, MessageBar } from '@looker/components'
 
-The child of `<Accordion>` is rendered as a label on the disclosure, and can be either be a `string` or a `ReactNode`.
+<MessageBar canDismiss={false} intent="inform" mb="medium">
+  Accordion has been deprecated and replaced with
+  <Code fontWeight="bold" fontSize="inherit">
+    Accordion2
+  </Code> please update any existing instances to use the new improved version. Deprecation
+  of `Accordion` is planned for @looker/components 3.0
+</MessageBar>
 
-The `content` prop determines what content is hidden or shownby the `<Accordion>`.
+`<Accordion2>` hides and shows `children` on click like a collapsible section.
 
-Use the `id` prop to set the ID of the `<Accordion>`. In addition, IDs will be auto-generated for the underlying disclosure element and content container element based on `<Accordion>`'s ID.
+The `label` of `<Accordion2>` is always visible and acts as the trigger to toggle the accordion. `label` can be either be a `string` or a `ReactNode`.
 
-Use the `onClose` and `onOpen` props if you would like to trigger callbacks on `<Accordion>` open or close.
+The `children` determines what content is hidden or shown by the accordion.
 
-If you want your `<Accordion>` open by default, use the `defaultOpen` prop.
+Use the `id` prop to set the ID of the `<Accordion2>`. In addition, IDs will be auto-generated for the underlying disclosure element and content container element based on `<Accordion2>`'s ID.
 
-**Note:** `defaultOpen` should only be used when using an uncontrolled `<Accordion>`. For more details on controlled `<Accordion>`s, see the "Controlling an Accordion" section.
+Use the `onClose` and `onOpen` props if you would like to trigger callbacks on `<Accordion2>` open or close.
+
+If you want your `<Accordion2>` open by default, use the `defaultOpen` prop.
+
+**Note:** `defaultOpen` should only be used when using an uncontrolled `<Accordion2>`. For more details on controlled `<Accordion2>`s, see the "Controlling an Accordion" section.
 
 ```jsx
-<Accordion content="Cheddar">
-  Show me the cheese!
-</Accordion>
+<Accordion2 label="Show me the cheese!">
+  Cheddar
+</Accordion2>
 
-<Accordion defaultOpen onClose={() => alert('Closing doors')} onOpen={() => alert('Opening doors')} content="Swiss">
-  Show me some other cheese!
-</Accordion>
+<Accordion2 defaultOpen onClose={() => alert('Closing doors')} onOpen={() => alert('Opening doors')} label="Show me some other cheese!">
+  Swiss
+</Accordion2>
 ```
 
 ## Basic Accordion behavior
 
-Clicking on an `<Accordion>`'s disclosure controls the appearance of its content.
+Clicking on an `<Accordion2>`'s label controls the appearance of its content.
 
 ```jsx
-<Accordion indicatorPosition="left" content="pretty great">
-  <Space between align="center">
-    <span>Cheese is...</span>
-    <Icon color="neutral" icon={<Help />} size={20} />
-  </Space>
-</Accordion>
+<Accordion2
+  indicatorPosition="left"
+  label={
+    <Space between align="center">
+      <span>Cheese is...</span>
+      <Icon color="neutral" icon={<Help />} size={20} />
+    </Space>
+  }
+>
+  pretty great
+</Accordion2>
 ```
 
 ## Styling an Accordion's indicator
@@ -49,47 +64,39 @@ Use the `indicatorPosition` prop to set the indicator's position on either the l
 NOTE: `indicatorPosition="left"` will also change the default `indicatorIcons` as shown below.
 
 ```jsx
-<Accordion indicatorPosition="left" content="Cheddar">
-  Show me the cheese!
-</Accordion>
+<Accordion2 indicatorPosition="left" label="Show me the cheese!">
+  Cheddar
+</Accordion2>
 ```
 
 Use the `indicatorSize` prop to set the size of your indicator.
 
 ```jsx
-<Accordion indicatorSize="xxlarge" content="Cheddar">
-  Show me the cheese!
-</Accordion>
+<Accordion2 indicatorSize="xxlarge" label="Show me the cheese!">
+  Cheddar
+</Accordion2>
 ```
 
-Use the `color` prop to customize the color of the indicator and any text.
-
-```jsx
-<Accordion color="key" content="Cheddar">
-  Show me the cheese!
-</Accordion>
-```
-
-Use the `indicatorIcons` prop to customize which icons represent an open or closed `<Accordion>`.
+Use the `indicatorIcons` prop to customize which icons represent an open or closed `<Accordion2>`.
 
 By default, the `CaretDown` and `CaretUp` `<Icon>`s are used.
 
 ```jsx
-<Accordion
+<Accordion2
   indicatorIcons={{ close: 'Close', open: 'FieldYesNo' }}
-  content="Cheddar"
+  label="Show me the cheese!"
 >
-  Show me the cheese!
-</Accordion>
+  Cheddar
+</Accordion2>
 ```
 
 ## Controlling an Accordion
 
-By default, the `<Accordion>` is an uncontrolled component and maintains its own opened/closed state.
+By default, the `<Accordion2>` is an uncontrolled component and maintains its own opened/closed state.
 
-However, you can use the `isOpen` and `toggleOpen` props to explicitly control the state of your `<Accordion>`.
+However, you can use the `isOpen` and `toggleOpen` props to explicitly control the state of your `<Accordion2>`.
 
-When the `isOpen` prop receives `true`, your `<Accordion>` will reveal its content. When `false`, your content will be hidden.
+When the `isOpen` prop receives `true`, your `<Accordion2>` will reveal its content. When `false`, your content will be hidden.
 
 The `toggleOpen` prop should receive a function that has one parameter: a boolean. When the disclosure is clicked, the `toggleOpen` callback will be triggered and passed the opposite boolean of the current `isOpen` prop value.
 
@@ -98,9 +105,13 @@ The `toggleOpen` prop should receive a function that has one parameter: a boolea
   const [isOpen, setIsOpen] = useState(true)
 
   return (
-    <Accordion isOpen={isOpen} toggleOpen={setIsOpen} content="Cheddar">
-      Show me the cheese!
-    </Accordion>
+    <Accordion2
+      isOpen={isOpen}
+      toggleOpen={setIsOpen}
+      label="Show me the cheese!"
+    >
+      Cheddar
+    </Accordion2>
   )
 }
 ```

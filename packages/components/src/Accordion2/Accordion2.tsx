@@ -24,37 +24,34 @@
 
  */
 
+import React from 'react'
 import styled from 'styled-components'
-import { TextBase } from '../Text/TextBase'
-import { ListItemDetail } from '../List/ListItemDetail'
-import { List, ListItem, ListItemLabel } from '../List'
-import { ListItemIconPlacement } from '../List/ListItemLayout'
-import { Accordion2Disclosure } from '../Accordion2/Accordion2Disclosure'
+import { Accordion2Disclosure } from './Accordion2Disclosure'
+import { Accordion2Props } from './types'
+import { useAccordion2 } from './useAccordion2'
+
+const Accordion2Internal = ({ hideDisclosure, ...props }: Accordion2Props) => {
+  const { content, domProps, disclosureProps } = useAccordion2(props)
+
+  return (
+    <div {...domProps}>
+      {!hideDisclosure && <Accordion2Disclosure {...disclosureProps} />}
+      {content}
+    </div>
+  )
+}
 
 /**
- * `NavList` is a variation of `List`
- *   - `ListItem`  border-radius circular on the right side
- *   - `ListItem` selected or "active"
- *     - text color is `theme.colors.key`
- *     - background color is `keySubtle`
- *   - `ListItem` at the root are indented to align properly with `Tree`(s) at the root as well
+ * `Accordion2` manages the relationship between a `label` and the `children` within.
+ * Links the the label and children using ARIA features and supports either controlled
+ * or uncontrolled usage patterns.
+ *
+ * See `useAccordion2` hook to meet more complex compositional requirements
+ *
+ * Accordion2 is a modernized version of the `Accordion` component with an improved
+ * interface that removes confusing props and offers a more opinionated approach to
+ * styling.
  */
-export const NavList = styled(List).attrs(({ color = 'key' }) => ({ color }))`
-  ${Accordion2Disclosure}, ${ListItemLabel} {
-    border-bottom-right-radius: 5rem;
-    border-top-right-radius: 5rem;
-
-    &[aria-selected='true'] {
-      ${ListItemDetail},
-      ${TextBase},
-      ${ListItemIconPlacement} svg {
-        color: ${({ theme }) => theme.colors.key};
-      }
-    }
-  }
-  & > ${ListItem} {
-    ${ListItemLabel} {
-      padding-left: ${({ theme }) => `${theme.sizes.medium}`};
-    }
-  }
+export const Accordion2 = styled(Accordion2Internal)<Accordion2Props>`
+  width: 100%;
 `

@@ -41,12 +41,13 @@ import { Text } from '../Text'
 import { IconPlaceholder } from '../Icon'
 import { Truncate } from '../Truncate'
 import {
+  getNextFocusTarget,
   HoverDisclosureContext,
   HoverDisclosure,
+  partitionAriaProps,
   undefinedCoalesce,
   useFocusVisible,
   useWrapEvent,
-  getNextFocusTarget,
   useForkedRef,
 } from '../utils'
 import { ListItemContext } from './ListItemContext'
@@ -55,12 +56,7 @@ import { ListItemLayout } from './ListItemLayout'
 import { ListItemLayoutAccessory } from './ListItemLayoutAccessory'
 import { ListItemWrapper } from './ListItemWrapper'
 import { listItemIconColor, listItemLabelColor } from './utils/listItemColor'
-import {
-  createSafeRel,
-  getDetailOptions,
-  listItemDimensions,
-  partitionAriaProps,
-} from './utils'
+import { createSafeRel, getDetailOptions, listItemDimensions } from './utils'
 import { ListItemProps } from './types'
 
 const TruncateWrapper: FC<{

@@ -49,13 +49,11 @@ export const Legend = styled.legend
       fontFamily = 'brand',
       fontSize = 'medium',
       fontWeight = 'semiBold',
-      p = 'none',
     }) => ({
       color,
       fontFamily,
       fontSize,
       fontWeight,
-      p,
     })
   )<LegendProps>`
   ${reset}

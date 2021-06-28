@@ -31,11 +31,11 @@ import { ExpandLess } from '@styled-icons/material-rounded/ExpandLess'
 import { ExpandMore } from '@styled-icons/material-rounded/ExpandMore'
 import React from 'react'
 import { IconSize } from '../Icon'
-import { IndicatorIcons } from './types'
+import { AccordionIndicatorIcons } from './types'
 
-export interface AccordionDefaultProps {
+export type AccordionDefaultProps = {
   indicatorGap: SpacingSizes
-  indicatorIcons: IndicatorIcons
+  indicatorIcons: AccordionIndicatorIcons
   indicatorSize: IconSize
   indicatorPosition: 'left' | 'right'
 }

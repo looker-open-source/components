@@ -24,9 +24,5 @@
 
  */
 
-import styled from 'styled-components'
-
-/**
- * @deprecated Use `Accordion2` instead
- */
-export const AccordionContent = styled.div``
+export { Accordion2 } from './Accordion2'
+export type { Accordion2Props } from './types'

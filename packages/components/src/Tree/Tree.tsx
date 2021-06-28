@@ -26,15 +26,15 @@
 
 import styled from 'styled-components'
 import React, {
-  FC,
   KeyboardEvent,
   MouseEvent,
   useContext,
   useRef,
   useState,
 } from 'react'
-import { Accordion } from '../Accordion'
-import { undefinedCoalesce, useWrapEvent } from '../utils'
+import { Accordion2 } from '../Accordion2'
+import { ControlledOrUncontrolled } from '../Accordion2/controlTypes'
+import { partitionAriaProps, undefinedCoalesce, useWrapEvent } from '../utils'
 import { List, ListItemProps } from '../List'
 import { ListItemContext } from '../List/ListItemContext'
 import { listItemDimensions, getDetailOptions } from '../List/utils'
@@ -48,7 +48,7 @@ import { treeItemInnerPropKeys, TreeProps } from './types'
  * TODO: When labelToggle is introduced the aria-* attributes should land on the nested ListItem's
  * label container (i.e. the focusable element).
  */
-const TreeLayout: FC<TreeProps> = ({
+const TreeLayout = ({
   assumeIconAlignment,
   branchFontWeight,
   border: propsBorder,
@@ -59,14 +59,17 @@ const TreeLayout: FC<TreeProps> = ({
   itemRole,
   label: propsLabel,
   labelBackgroundOnly: propsLabelBackgroundOnly,
+  defaultOpen,
   onBlur,
+  onClose,
   onFocus,
+  onOpen,
   onMouseEnter,
   onMouseLeave,
   isOpen: propsIsOpen,
   toggleOpen: propsToggleOpen,
   ...restProps
-}) => {
+}: TreeProps) => {
   const treeItemInnerProps = treeItemInnerPropKeys.reduce((obj, key) => {
     if (restProps && Object.prototype.hasOwnProperty.call(restProps, key)) {
       obj[key] = restProps[key]
@@ -83,6 +86,7 @@ const TreeLayout: FC<TreeProps> = ({
     selected,
     ...restTreeItemInnerProps
   } = treeItemInnerProps
+  const [ariaProps] = partitionAriaProps(restProps)
 
   const detailRef = useRef<HTMLDivElement>(null)
   const [hovered, setHovered] = useState(false)
@@ -172,45 +176,50 @@ const TreeLayout: FC<TreeProps> = ({
       role="none"
       tabIndex={-2} // Prevents tab stop behavior from reaching inner TreeItems
       {...restTreeItemInnerProps}
+      {...ariaProps}
     >
       {propsLabel}
     </TreeItemInner>
   )
 
-  const indicatorColor = disabled ? 'text1' : 'text5'
   const {
     indicatorGap: defaultGap,
     indicatorIcons,
     indicatorPosition,
   } = indicatorDefaults
+
+  let accordionProps: ControlledOrUncontrolled = {
+    defaultOpen,
+    onClose,
+    onOpen,
+  }
+  if (isOpen && toggleOpen) {
+    accordionProps = { ...accordionProps, isOpen, toggleOpen }
+  }
+
   const innerAccordion = (
-    <Accordion
-      renderAsLi
+    <Accordion2
       aria-selected={selected}
-      content={
-        <List disableKeyboardNav role="group" windowing={false}>
-          {children}
-        </List>
-      }
-      color={indicatorColor}
+      disabled={disabled}
       indicatorGap={assumeIconAlignment ? iconGap : defaultGap}
       indicatorIcons={indicatorIcons}
       indicatorPosition={indicatorPosition}
       indicatorSize={iconSize}
+      label={label}
       onBlur={handleBlur}
       onFocus={handleFocus}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      py="none"
       role="treeitem"
       tabIndex={-1}
       hideDisclosure={partialRender}
-      isOpen={isOpen}
-      toggleOpen={toggleOpen}
       {...restProps}
+      {...accordionProps}
     >
-      {label}
-    </Accordion>
+      <List disableKeyboardNav role="group" windowing={false} {...ariaProps}>
+        {children}
+      </List>
+    </Accordion2>
   )
 
   return (

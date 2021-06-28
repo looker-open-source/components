@@ -24,60 +24,30 @@
 
  */
 
-import { SpacingSizes } from '@looker/design-tokens'
-import { IconSize, IconType } from '../Icon'
-
-export type IndicatorIcons = {
-  close: IconType
-  open: IconType
+type Controlled = {
+  /**
+   * Use this property (alongside toggleOpen) if you wish to use the component in a `controlled` manner.
+   * isOpen determines whether the Accordion is currently open or closed
+   **/
+  isOpen: boolean
+  /**
+   * Use this property (alongside isOpen) if you wish to use the component in a `controlled` manner.
+   * toggleOpen is a function that should control the value / state of isOpen
+   */
+  toggleOpen: (isOpen: boolean) => void
 }
 
-export type AccordionIndicatorPosition = undefined | 'left' | 'right'
-
-export interface AccordionIndicatorProps {
-  /**
-   * Determines where the disclosure indicator will sit on
-   * @default right
-   */
-  indicatorPosition?: AccordionIndicatorPosition
-
-  /**
-   * Size of icon on disclosure
-   * @default small
-   */
-  indicatorSize?: IconSize
-
-  /**
-   * Space between label and indicator within disclosure
-   * @default xsmall
-   */
-  indicatorGap?: SpacingSizes
-
-  /**
-   * Icons for disclosure indicator.
-   *
-   * indicatorPosition === default / 'right' will default to `ExpandMore` / `ExpandLess`
-   * indicatorPosition === 'left' will default to `ArrowRight` / `ArrowDropDown`
-   */
-  indicatorIcons?: IndicatorIcons
+type Uncontrolled = {
+  isOpen?: never
+  toggleOpen?: never
 }
 
-export interface AccordionControlProps {
+type Others = {
   /**
    * Use this property if you wish to use the component in a `uncontrolled` manner and have it open when initially rendering.
    * Component will hold internal state and open and close on disclosure click
    **/
   defaultOpen?: boolean
-  /**
-   * Use this property (alongside toggleOpen) if you wish to use the component in a `controlled` manner.
-   * isOpen determines whether the Accordion is currently open or closed
-   **/
-  isOpen?: boolean
-  /**
-   * Use this property (alongside isOpen) if you wish to use the component in a `controlled` manner.
-   * toggleOpen is a function that should control the value / state of isOpen
-   */
-  toggleOpen?: (isOpen: boolean) => void
   /**
    * Callback that is triggered when closing the Accordion (i.e. when clicking on an open Accordion)
    */
@@ -87,3 +57,17 @@ export interface AccordionControlProps {
    */
   onOpen?: () => void // called when the component is opened
 }
+
+/**
+ * @deprecated Use  `Accordion2ControlProps` instead
+ */
+export type ControlledLoosely = Partial<Controlled> & Others
+
+/**
+ * Prevents the creation of a "semi-controlled" component. Prevents consumers
+ * from mixing controlled vs uncontrolled properties
+ *
+ * Specifically this type checks toggleOpen & isOpen are both specified or
+ * both undefined.
+ */
+export type ControlledOrUncontrolled = (Controlled | Uncontrolled) & Others

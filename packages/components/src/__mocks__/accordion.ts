@@ -24,9 +24,7 @@
 
  */
 
-import styled from 'styled-components'
+import { constitutionShort } from './Constitution'
 
-/**
- * @deprecated Use `Accordion2` instead
- */
-export const AccordionContent = styled.div``
+export const children = constitutionShort
+export const label = 'Constitution Preamble'

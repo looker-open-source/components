@@ -26,7 +26,7 @@
 
 import React, { FC } from 'react'
 import { useLocation } from '@reach/router'
-import { Accordion, Heading } from '@looker/components'
+import { Accordion2, Heading } from '@looker/components'
 import styled from 'styled-components'
 import { NavigationSection } from './types'
 import { Page } from './Page'
@@ -44,21 +44,19 @@ export const Section: FC<SectionProps> = ({ section }) => {
 
     if ((child as NavigationSection).children) {
       return (
-        <Accordion
+        <Accordion2
           key={child.path}
-          indicatorColor="text1"
           defaultOpen={currentPath.includes(`/components/${uri}`)}
           content={
-            <PageList>
-              <Section section={child as NavigationSection} />
-            </PageList>
+            <Heading px="large" color="text2" as="h4" fontFamily="body">
+              {child.title}
+            </Heading>
           }
-          px="large"
         >
-          <Heading color="text2" as="h4" fontFamily="body">
-            {child.title}
-          </Heading>
-        </Accordion>
+          <PageList>
+            <Section section={child as NavigationSection} />
+          </PageList>
+        </Accordion2>
       )
     } else {
       return <Page key={uri} page={child} />

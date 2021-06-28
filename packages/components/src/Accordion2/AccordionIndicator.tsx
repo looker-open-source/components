@@ -24,68 +24,28 @@
 
  */
 
-import React, { FC } from 'react'
 import styled from 'styled-components'
+import { SpacingSizes } from '@looker/design-tokens'
 import { StyledIconBase } from '@styled-icons/styled-icon'
+import { IconSize } from '../Icon'
+import { accordionDefaults } from './accordionDefaults'
 import { AccordionIndicatorProps } from './types'
 
-interface AccordionDisclosureLayoutProps
-  extends Required<AccordionIndicatorProps> {
-  isOpen?: boolean
-  className?: string
-}
+const size = (size?: IconSize) => size || accordionDefaults.indicatorSize
+const gap = (gap?: SpacingSizes) => gap || accordionDefaults.indicatorGap
 
-const Layout: FC<AccordionDisclosureLayoutProps> = ({
-  children,
-  className,
-  isOpen,
-  indicatorIcons,
-  indicatorPosition,
-}) => {
-  const indicator = (
-    <AccordionIndicator>
-      {isOpen ? indicatorIcons.open : indicatorIcons.close}
-    </AccordionIndicator>
-  )
-
-  return (
-    <div className={className}>
-      {indicatorPosition === 'left' && indicator}
-      <Label>{children}</Label>
-      {indicatorPosition !== 'left' && indicator}
-    </div>
-  )
-}
-
-export const AccordionIndicator = styled.div`
+export const AccordionIndicator = styled.div<AccordionIndicatorProps>`
   align-items: center;
   display: flex;
   justify-content: center;
-`
 
-const Label = styled.div`
-  overflow: hidden;
-  width: 100%;
-`
+  ${({ indicatorGap, indicatorPosition, theme: { space } }) =>
+    indicatorPosition === 'left'
+      ? `margin-right: ${space[gap(indicatorGap)]};`
+      : `margin-left: ${space[gap(indicatorGap)]};`}
 
-export const AccordionDisclosureLayout = styled(Layout)`
-  align-items: center;
-  display: flex;
-  width: 100%;
-
-  & > ${Label} {
-    flex: 1;
-  }
-
-  & > ${AccordionIndicator} {
-    ${({ indicatorGap, indicatorPosition, theme: { space } }) =>
-      indicatorPosition === 'left'
-        ? `margin-right: ${space[indicatorGap]};`
-        : `margin-left: ${space[indicatorGap]};`}
-
-    ${StyledIconBase} {
-      height: ${({ indicatorSize, theme }) => theme.sizes[indicatorSize]};
-      width: ${({ indicatorSize, theme }) => theme.sizes[indicatorSize]};
-    }
+  ${StyledIconBase} {
+    height: ${({ indicatorSize, theme }) => theme.sizes[size(indicatorSize)]};
+    width: ${({ indicatorSize, theme }) => theme.sizes[size(indicatorSize)]};
   }
 `

@@ -25,36 +25,12 @@
  */
 
 import styled from 'styled-components'
-import { TextBase } from '../Text/TextBase'
-import { ListItemDetail } from '../List/ListItemDetail'
-import { List, ListItem, ListItemLabel } from '../List'
-import { ListItemIconPlacement } from '../List/ListItemLayout'
-import { Accordion2Disclosure } from '../Accordion2/Accordion2Disclosure'
 
 /**
- * `NavList` is a variation of `List`
- *   - `ListItem`  border-radius circular on the right side
- *   - `ListItem` selected or "active"
- *     - text color is `theme.colors.key`
- *     - background color is `keySubtle`
- *   - `ListItem` at the root are indented to align properly with `Tree`(s) at the root as well
+ * This is provided for legacy implementation support within `Tree`
+ * The component will be removed without triggering a MAJOR release. Use with caution
+ *
+ * @private
+ * @deprecated Use `useAccordion2` if you need to control styling within an Accordion2
  */
-export const NavList = styled(List).attrs(({ color = 'key' }) => ({ color }))`
-  ${Accordion2Disclosure}, ${ListItemLabel} {
-    border-bottom-right-radius: 5rem;
-    border-top-right-radius: 5rem;
-
-    &[aria-selected='true'] {
-      ${ListItemDetail},
-      ${TextBase},
-      ${ListItemIconPlacement} svg {
-        color: ${({ theme }) => theme.colors.key};
-      }
-    }
-  }
-  & > ${ListItem} {
-    ${ListItemLabel} {
-      padding-left: ${({ theme }) => `${theme.sizes.medium}`};
-    }
-  }
-`
+export const Accordion2Content = styled.div``

@@ -25,9 +25,7 @@
  */
 
 import {
-  Accordion,
-  AccordionContent,
-  AccordionDisclosure,
+  Accordion2,
   Aside,
   Breakpoint,
   DataTable,
@@ -220,9 +218,7 @@ export const allComponents = {
   ...icons,
   ...otherLibraries,
   ...hooks,
-  Accordion,
-  AccordionContent,
-  AccordionDisclosure,
+  Accordion2,
   Aside,
   AvatarCombo,
   AvatarIcon,

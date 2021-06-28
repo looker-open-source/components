@@ -24,9 +24,8 @@
 
  */
 
-import styled from 'styled-components'
-
 /**
- * @deprecated Use `Accordion2` instead
+ * Merges an array of classNames into a single className with properly applied white space rules
  */
-export const AccordionContent = styled.div``
+export const mergeClassNames = (classNames: Array<string | undefined>) =>
+  classNames.join(' ').trim().replace(/\s\s+/g, ' ')

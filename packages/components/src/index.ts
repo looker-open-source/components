@@ -25,6 +25,7 @@
  */
 
 export * from './Accordion'
+export * from './Accordion2'
 export * from './Animate'
 export * from './Avatar'
 export * from './Badge'

@@ -26,7 +26,7 @@
 
 import { RadiusSizes, Theme } from '@looker/design-tokens'
 import { css } from 'styled-components'
-import { AccordionDisclosureStyle } from '../../Accordion'
+import { Accordion2Disclosure } from '../../Accordion2/Accordion2Disclosure'
 import { ListItem } from '../../List/ListItem'
 import { ListItemLabel } from '../../List/ListItemLabel'
 
@@ -38,7 +38,7 @@ export const generateBorderRadius = (
   const { radii } = theme
 
   return css`
-    ${AccordionDisclosureStyle} {
+    ${Accordion2Disclosure} {
       border-radius: ${radii[borderRadius]};
 
       &:focus::after {

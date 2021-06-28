@@ -77,7 +77,7 @@ export const MixedNavigation = () => (
       Home
     </ListItem>
     <ListItem icon={<Home />}>Not really home</ListItem>
-    <Tree icon={<Info />} label="Tree" selected isOpen>
+    <Tree icon={<Info />} label="Tree" selected defaultOpen>
       <TreeItem icon={<Info />}>Meh</TreeItem>
       <TreeItem
         description="description"
