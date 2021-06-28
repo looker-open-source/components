@@ -24,33 +24,22 @@
 
  */
 
-import {
-  ListColor,
-  listItemColorAppliesToLabel,
-  listItemColorOptions,
-} from '../types'
+import React, { ReactElement } from 'react'
+import { IconPlaceholderProps, IconType } from '../../Icon'
+import { ListItemIcon, ListItemIconProps } from '../ListItemIcon'
+import { listItemIconColor } from './listItemColor'
 
-const listItemColor = (
-  color?: ListColor,
-  disabled?: boolean,
-  defaultColor?: string
-) => {
-  if (disabled) {
-    return 'text1'
-  } else if (color) {
-    if (listItemColorAppliesToLabel.includes(color)) {
-      // Theme "slot" & color is applied to label
-      return color
-    } else if (!listItemColorOptions.includes(color)) {
-      // HTML color
-      return color
-    }
-  }
-  return defaultColor
-}
+export type CreateListItemPartitionsProps = {
+  icon?: IconType | ReactElement<IconPlaceholderProps>
+} & ListItemIconProps
 
-export const listItemIconColor = (color?: ListColor, disabled?: boolean) =>
-  listItemColor(color, disabled, 'text2')
-
-export const listItemLabelColor = (color?: ListColor, disabled?: boolean) =>
-  listItemColor(color, disabled, 'text5')
+export const createListItemIcon = ({
+  color,
+  disabled,
+  icon,
+  ...restProps
+}: CreateListItemPartitionsProps) => (
+  <ListItemIcon color={listItemIconColor(color, disabled)} {...restProps}>
+    {icon}
+  </ListItemIcon>
+)

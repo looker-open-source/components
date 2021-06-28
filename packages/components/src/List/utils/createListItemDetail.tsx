@@ -24,33 +24,32 @@
 
  */
 
-import {
-  ListColor,
-  listItemColorAppliesToLabel,
-  listItemColorOptions,
-} from '../types'
+import { SpaceRamp } from '@looker/design-tokens'
+import React, { ReactNode } from 'react'
+import { HoverDisclosure } from '../../utils/HoverDisclosure'
+import { ListItemDetail } from '../ListItemDetail'
+import { DetailOptions } from '../types'
 
-const listItemColor = (
-  color?: ListColor,
-  disabled?: boolean,
-  defaultColor?: string
-) => {
-  if (disabled) {
-    return 'text1'
-  } else if (color) {
-    if (listItemColorAppliesToLabel.includes(color)) {
-      // Theme "slot" & color is applied to label
-      return color
-    } else if (!listItemColorOptions.includes(color)) {
-      // HTML color
-      return color
-    }
-  }
-  return defaultColor
-}
+export type CreateListItemDetailProps = {
+  detail: ReactNode
+  px: SpaceRamp
+} & DetailOptions
 
-export const listItemIconColor = (color?: ListColor, disabled?: boolean) =>
-  listItemColor(color, disabled, 'text2')
-
-export const listItemLabelColor = (color?: ListColor, disabled?: boolean) =>
-  listItemColor(color, disabled, 'text5')
+export const createListItemDetail = ({
+  accessory,
+  detail,
+  hoverDisclosure,
+  padding,
+  px,
+  width,
+}: CreateListItemDetailProps) => (
+  <HoverDisclosure width={width} visible={!hoverDisclosure}>
+    <ListItemDetail
+      cursorPointer={!accessory}
+      pl={padding ? 'xsmall' : '0'}
+      pr={accessory && padding ? px : '0'}
+    >
+      {detail}
+    </ListItemDetail>
+  </HoverDisclosure>
+)
