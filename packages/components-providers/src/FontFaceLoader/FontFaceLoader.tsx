@@ -24,7 +24,7 @@
 
  */
 
-import React, { useContext } from 'react'
+import React, { useContext, useMemo } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { ThemeContext } from 'styled-components'
 import { FontSources } from '@looker/design-tokens'
@@ -40,7 +40,7 @@ export const importFont = (url: string) => `
 export const fontFace = (face: string, url: string) => `
 @font-face {
   font-family: ${face};
-  src: url(${url});
+  src: url('${url}');
 }`
 
 /**
@@ -50,11 +50,15 @@ export const fontFace = (face: string, url: string) => `
 export const FontFaceLoader = () => {
   const { fontSources } = useContext(ThemeContext)
 
-  if (!fontSources || fontSources.length === 0) return null
+  const css = useMemo(() => {
+    if (fontSources && fontSources.length > 0) {
+      return fontFacesCSS(fontSources)
+    } else {
+      return null
+    }
+  }, [fontSources])
 
-  const css = fontFacesCSS(fontSources)
-
-  return (
+  return css === null ? null : (
     <Helmet>
       <style type="text/css">{css}</style>
     </Helmet>

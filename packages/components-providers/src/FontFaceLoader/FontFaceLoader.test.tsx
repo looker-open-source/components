@@ -44,7 +44,7 @@ describe('FontFaceLoader', () => {
       "
       @font-face {
         font-family: Curly;
-        src: url(http//moe.com/curly.ttf);
+        src: url('http//moe.com/curly.ttf');
       }"
     `)
   })
@@ -63,7 +63,7 @@ describe('FontFaceLoader', () => {
 
       @font-face {
         font-family: Curly;
-        src: url(http//moe.com/curly.ttf);
+        src: url('http//moe.com/curly.ttf');
       }"
     `)
   })
@@ -118,7 +118,7 @@ describe('FontFaceLoader', () => {
 
       @font-face {
         font-family: Curly;
-        src: url(http//moe.com/curly.ttf);
+        src: url('http//moe.com/curly.ttf');
       }</style>"
     `)
   })
