@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@looker/components": "*",
-    "@looker/components-date": "^2.0.0-alpha",
+    "@looker/components-date": "*",
     "@looker/components-providers": "*",
     "@looker/components-theme-editor": "*",
     "@looker/design-tokens": "*",
@@ -26,7 +26,7 @@
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-is": "^16.13.1",
-    "storybook": "^6.2.9",
+    "storybook": "^6.3.0",
     "styled-components": "*"
   },
   "devDependencies": {
