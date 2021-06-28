@@ -30,7 +30,7 @@ import { ArrowRight } from '@styled-icons/material/ArrowRight'
 import { AccordionIndicatorProps } from '../../Accordion2/types'
 
 export const indicatorDefaults: Required<
-  Omit<AccordionIndicatorProps, 'disabled' | 'indicatorSize'>
+  Omit<AccordionIndicatorProps, 'indicatorSize'>
 > = {
   indicatorGap: 'xxsmall',
   indicatorIcons: {

@@ -81,7 +81,6 @@ export const useAccordion2 = ({
 
   const indicator = (
     <AccordionIndicator
-      disabled={disabled}
       indicatorGap={indicatorGap}
       indicatorPosition={indicatorPosition}
       indicatorSize={indicatorSize}

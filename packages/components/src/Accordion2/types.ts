@@ -61,7 +61,6 @@ export type Accordion2Props = ControlledOrUncontrolled &
  * @TODO: Replace indicatorSize & indicatorGap with density
  */
 export interface AccordionIndicatorProps {
-  disabled?: boolean
   /**
    * Space between label and indicator within disclosure
    * @default xsmall

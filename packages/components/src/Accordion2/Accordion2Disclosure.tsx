@@ -53,7 +53,6 @@ Accordion2DisclosureInternal.displayName = 'Accordion2DisclosureInternal'
 
 const AccordionLabel = styled.div`
   flex: 1;
-  width: 100%;
 `
 
 /**

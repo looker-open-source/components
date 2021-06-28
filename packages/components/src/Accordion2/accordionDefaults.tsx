@@ -33,7 +33,7 @@ import React from 'react'
 import { IconSize } from '../Icon'
 import { AccordionIndicatorIcons } from './types'
 
-export interface AccordionDefaultProps {
+export type AccordionDefaultProps = {
   indicatorGap: SpacingSizes
   indicatorIcons: AccordionIndicatorIcons
   indicatorSize: IconSize
