@@ -2,24 +2,23 @@
  "name": "@looker/visualizations",
  "main": "src/index.ts",
  "version": "0.1.0",
- "private": true,
+ "publishConfig": {
+  "access": "restricted"
+ },
  "license": "MIT",
  "module": "lib/index.js",
  "sideEffects": false,
  "dependencies": {
-  "@looker/design-tokens": "*",
+  "@looker/design-tokens": "2.0.0",
   "@looker/sdk": "^21.6.0",
   "@looker/sdk-rtl": "^21.0.13",
-  "@looker/visualizations-nivo": "*",
-  "@looker/visualizations-table": "*",
-  "@looker/visualizations-visx": "*",
   "lodash": "^4.17.20"
  },
  "devDependencies": {
-  "@looker/components-test-utils": "*",
-  "@looker/eslint-config": "*",
-  "@looker/prettier-config": "*",
-  "@looker/stylelint-config": "*",
+  "@looker/components-test-utils": "1.4.0",
+  "@looker/eslint-config": "1.5.0",
+  "@looker/prettier-config": "1.4.0",
+  "@looker/stylelint-config": "1.4.0",
   "@testing-library/react": "*",
   "@types/react": "*",
   "@types/react-dom": "*",
@@ -34,11 +33,10 @@
   "eslint-plugin-sort-keys-fix": "*",
   "eslint-plugin-testing-library": "*",
   "react": "^16.14.0",
-  "react-dom": "^16.14.0",
-  "styled-system": "5.1.5"
+  "react-dom": "^16.14.0"
  },
  "peerDependencies": {
-  "@looker/components": "*",
+  "@looker/components": "1.4 - 2",
   "react": ">= 16.11.0",
   "react-dom": ">= 16.11.0",
   "styled-components": "^5.2.1"
