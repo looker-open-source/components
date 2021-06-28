@@ -18,7 +18,7 @@ docs/v*
 docs/latest
 docs/canary
 packages/icons/src
-playground/dist
+/apps/*/dist
 storybook-static
 www/public
 

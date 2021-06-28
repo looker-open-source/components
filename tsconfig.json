@@ -5,12 +5,8 @@
     "pretty": true,
     "baseUrl": ".",
     "paths": {
-      "@looker/*": ["packages/*/src"],
+      "@looker/*": ["packages/*/src"]
     }
   },
-  "include": [
-    "packages/*/src",
-    "playground/*/src",
-    "storybook/*/src"
-  ]
+  "include": ["apps/*/src", "packages/*/src", "storybook/*/src"]
 }
