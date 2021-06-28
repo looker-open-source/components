@@ -9,9 +9,6 @@
  "module": "lib/index.js",
  "sideEffects": false,
  "dependencies": {
-  "@looker/design-tokens": "2.0.0",
-  "@looker/sdk": "^21.6.0",
-  "@looker/sdk-rtl": "^21.0.13",
   "@looker/visualizations": "0.1.0",
   "@looker/visualizations-nivo": "0.1.0",
   "@looker/visualizations-table": "0.1.0",
@@ -35,9 +32,7 @@
   "eslint-plugin-prettier": "*",
   "eslint-plugin-react-hooks": "*",
   "eslint-plugin-sort-keys-fix": "*",
-  "eslint-plugin-testing-library": "*",
-  "react": "^16.14.0",
-  "react-dom": "^16.14.0"
+  "eslint-plugin-testing-library": "*"
  },
  "peerDependencies": {
   "@looker/components": "1.4 - 2",
