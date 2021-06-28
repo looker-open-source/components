@@ -24,13 +24,11 @@
 
  */
 
-import { reset, fadeIn } from '@looker/design-tokens'
+import { reset, fadeIn, CompatibleHTMLProps } from '@looker/design-tokens'
 import { Placement } from '@popperjs/core'
 import React, {
-  CSSProperties,
   DOMAttributes,
   forwardRef,
-  ReactNode,
   Ref,
   useContext,
   useRef,
@@ -39,12 +37,9 @@ import styled from 'styled-components'
 import { useGlobalHotkeys, useForkedRef } from '../utils'
 import { DialogContext } from '../Dialog'
 
-export interface OverlaySurfaceProps {
-  children: ReactNode
-  className?: string
+export interface OverlaySurfaceProps extends CompatibleHTMLProps<HTMLElement> {
   eventHandlers?: DOMAttributes<HTMLElement>
   placement: Placement
-  style?: CSSProperties
   zIndex?: number
   maxWidth?: string
 }

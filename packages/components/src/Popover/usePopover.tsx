@@ -242,7 +242,14 @@ export const usePopover = ({
       }}
     >
       <Portal ref={scrollRef}>
-        <SurfaceComponent placement={placement} ref={ref} style={style}>
+        <SurfaceComponent
+          aria-labelledby={dialogId}
+          id={dialogId}
+          placement={placement}
+          ref={ref}
+          role="dialog"
+          style={style}
+        >
           <Flex
             flexDirection="column"
             alignItems="flex-start"
