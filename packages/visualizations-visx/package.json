@@ -14,10 +14,10 @@
   "@visx/shape": "1.7.0"
  },
  "devDependencies": {
-  "@looker/components-test-utils": "1.4.0",
-  "@looker/eslint-config": "1.5.0",
-  "@looker/prettier-config": "1.4.0",
-  "@looker/stylelint-config": "1.4.0",
+  "@looker/components-test-utils": "^1.4.0",
+  "@looker/eslint-config": "^1.5.0",
+  "@looker/prettier-config": "^1.4.0",
+  "@looker/stylelint-config": "^1.4.0",
   "@testing-library/react": "*",
   "@types/react": "*",
   "@types/react-dom": "*",
