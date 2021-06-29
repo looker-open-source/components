@@ -232,32 +232,27 @@ export const usePopover = ({
 
   const SurfaceComponent = surface || OverlaySurface
 
-  const dialogId = useID(id)
+  id = useID(id)
 
   const popover = content && !openWithoutElem && isOpen && !disabled && (
     <DialogContext.Provider
       value={{
         closeModal: handleClose,
-        id: dialogId,
+        id,
       }}
     >
       <Portal ref={scrollRef}>
-        <SurfaceComponent
-          aria-labelledby={dialogId}
-          id={dialogId}
-          placement={placement}
-          ref={ref}
-          role="dialog"
-          style={style}
-        >
+        <SurfaceComponent placement={placement} ref={ref} style={style}>
           <Flex
-            flexDirection="column"
             alignItems="flex-start"
+            aria-labelledby={`${id}-heading`}
+            borderRadius="inherit"
+            flexDirection="column"
+            id={id}
             maxHeight={`calc(${verticalSpace - 10}px - 1rem)`}
             overflowY="auto"
-            borderRadius="inherit"
             ref={contentContainerRef}
-            data-testid="content-container"
+            role="dialog"
           >
             {content}
           </Flex>

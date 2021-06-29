@@ -189,7 +189,6 @@ export const useDialog = ({
         <Backdrop className={className} onClick={handleClose} />
         <RenderSurface
           id={dialogId}
-          role="dialog"
           aria-labelledby={`${dialogId}-heading`}
           aria-busy={busy ? true : undefined}
           className={className}

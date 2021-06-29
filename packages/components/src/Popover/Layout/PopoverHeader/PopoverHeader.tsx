@@ -52,20 +52,24 @@ type DetailOptions = WithDetail | WithHideClose
 
 export type PopoverHeaderProps = DetailOptions & {
   children: ReactNode
-  headerVisuallyHidden?: boolean
+  /**
+   * Make PopoverHeader visually hidden.
+   * @default false
+   */
+  hidden?: boolean
 }
 
 const PopoverHeaderLayout: FC<PopoverHeaderProps> = ({
   children,
   hideClose = false,
   detail,
-  headerVisuallyHidden = false,
+  hidden = false,
   ...props
 }) => {
-  const { id: dialogId } = useContext(DialogContext)
-  const headingId = dialogId || undefined
+  const { id } = useContext(DialogContext)
+  const headingId = id ? `${id}-heading` : undefined
 
-  return headerVisuallyHidden ? (
+  return hidden ? (
     <VisuallyHidden id={headingId}>{children}</VisuallyHidden>
   ) : (
     <ModalHeader

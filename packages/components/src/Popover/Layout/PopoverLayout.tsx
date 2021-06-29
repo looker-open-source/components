@@ -46,15 +46,14 @@ export const PopoverLayout: FC<PopoverLayoutProps> = ({
   isLoading,
 }) => {
   const internalFooter = typeof footer === 'boolean' ? null : footer
-  const popoverHeader = hideHeader ? (
-    <PopoverHeader headerVisuallyHidden>{header}</PopoverHeader>
-  ) : (
-    <PopoverHeader hideClose={!!footer}>{header}</PopoverHeader>
-  )
 
   return (
     <>
-      {header && popoverHeader}
+      {header && (
+        <PopoverHeader hidden={hideHeader} hideClose={!!footer}>
+          {header}
+        </PopoverHeader>
+      )}
       <PopoverContent hasFooter={!footer} hasHeader={!header}>
         {isLoading ? <ModalLoading /> : children}
       </PopoverContent>

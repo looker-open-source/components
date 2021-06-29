@@ -573,7 +573,7 @@ describe('Select / SelectMulti', () => {
         fireEvent.mouseDown(input)
 
         // hover will not trigger navigate during & right after scroll
-        const container = screen.getByTestId('content-container')
+        const container = screen.getByRole('dialog')
         fireEvent.scroll(container)
 
         const bar = screen.getByText('BAR')
