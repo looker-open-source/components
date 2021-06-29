@@ -27,7 +27,10 @@
 import React, { FC } from 'react'
 import { Code, Link, MessageBar } from '@looker/components'
 
-export const Message: FC = ({ children }) => (
+export const ImportMessage: FC<{ packageName: string }> = ({
+  children,
+  packageName,
+}) => (
   <MessageBar canDismiss={false} intent="inform" mb="medium">
     Import{' '}
     <Code fontWeight="bold" fontSize="inherit">
@@ -36,11 +39,11 @@ export const Message: FC = ({ children }) => (
     from{' '}
     <Code fontSize="inherit">
       <Link
-        href="https://www.npmjs.com/package/@looker/components-date"
+        href={`https://www.npmjs.com/package/@looker/${packageName}`}
         isExternal
         target="_blank"
       >
-        @looker/components-date
+        @looker/{packageName}
       </Link>
     </Code>{' '}
   </MessageBar>
