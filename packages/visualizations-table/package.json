@@ -9,7 +9,6 @@
  "module": "lib/index.js",
  "sideEffects": false,
  "dependencies": {
-  "@looker/design-tokens": "2.0.0",
   "@looker/visualizations": "0.1.0",
   "lodash": "4.17.21"
  },
