@@ -24,7 +24,7 @@
 
  */
 
-import { SpaceRamp } from '@looker/design-tokens'
+import { SpacingSizes } from '@looker/design-tokens'
 import React, { ReactNode } from 'react'
 import { HoverDisclosure } from '../../utils/HoverDisclosure'
 import { ListItemDetail } from '../ListItemDetail'
@@ -32,7 +32,7 @@ import { DetailOptions } from '../types'
 
 export type CreateListItemDetailProps = {
   detail: ReactNode
-  px: SpaceRamp
+  px: SpacingSizes
 } & DetailOptions
 
 export const createListItemDetail = ({
