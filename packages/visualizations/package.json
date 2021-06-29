@@ -15,6 +15,7 @@
   "lodash": "^4.17.20"
  },
  "devDependencies": {
+  "@looker/components": "2.0.0",
   "@looker/components-test-utils": "1.4.0",
   "@looker/eslint-config": "1.5.0",
   "@looker/prettier-config": "1.4.0",
@@ -34,7 +35,6 @@
   "eslint-plugin-testing-library": "*"
  },
  "peerDependencies": {
-  "@looker/components": "1.4 - 2",
   "react": ">= 16.11.0",
   "react-dom": ">= 16.11.0",
   "styled-components": "^5.2.1"
