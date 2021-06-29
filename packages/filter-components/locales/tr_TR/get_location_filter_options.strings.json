@@ -1,0 +1,32 @@
+{
+  "Location": {
+    "value": "Konum"
+  },
+  "Circle": {
+    "value": "Daire"
+  },
+  "Box": {
+    "value": "Kutu"
+  },
+  "is anywhere": {
+    "value": "her yerde"
+  },
+  "is null": {
+    "value": "değer içermiyor"
+  },
+  "is not null": {
+    "value": "değer içeriyor"
+  },
+  "feet": {
+    "value": "feet"
+  },
+  "kilometers": {
+    "value": "kilometre"
+  },
+  "meters": {
+    "value": "metre"
+  },
+  "miles": {
+    "value": "mil"
+  }
+}

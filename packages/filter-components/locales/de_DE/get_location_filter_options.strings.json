@@ -1,0 +1,32 @@
+{
+  "Location": {
+    "value": "Standort"
+  },
+  "Circle": {
+    "value": "Kreis"
+  },
+  "Box": {
+    "value": "Feld"
+  },
+  "is anywhere": {
+    "value": "ist überall"
+  },
+  "is null": {
+    "value": "ist null"
+  },
+  "is not null": {
+    "value": "ist nicht null"
+  },
+  "feet": {
+    "value": "Fuß"
+  },
+  "kilometers": {
+    "value": "Kilometer"
+  },
+  "meters": {
+    "value": "Meter"
+  },
+  "miles": {
+    "value": "Meilen"
+  }
+}

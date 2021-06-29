@@ -1,0 +1,32 @@
+{
+  "Location": {
+    "value": "Posizione"
+  },
+  "Circle": {
+    "value": "Cerchio"
+  },
+  "Box": {
+    "value": "Riquadro"
+  },
+  "is anywhere": {
+    "value": "è ovunque"
+  },
+  "is null": {
+    "value": "è zero"
+  },
+  "is not null": {
+    "value": "non è zero"
+  },
+  "feet": {
+    "value": "piedi"
+  },
+  "kilometers": {
+    "value": "chilometri"
+  },
+  "meters": {
+    "value": "metri"
+  },
+  "miles": {
+    "value": "miglia"
+  }
+}

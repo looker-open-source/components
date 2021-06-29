@@ -1,0 +1,62 @@
+{
+  "fiscal years": {
+    "value": "Geschäftsjahre"
+  },
+  "years": {
+    "value": "Jahre"
+  },
+  "fiscal quarters": {
+    "value": "Geschäftsquartale"
+  },
+  "quarters": {
+    "value": "Quartale"
+  },
+  "months": {
+    "value": "Monate"
+  },
+  "weeks": {
+    "value": "Wochen"
+  },
+  "days": {
+    "value": "Tage"
+  },
+  "hours": {
+    "value": "Stunden"
+  },
+  "minutes": {
+    "value": "Minuten"
+  },
+  "seconds": {
+    "value": "Sekunden"
+  },
+  "complete fiscal years": {
+    "value": "vollständige Geschäftsjahre"
+  },
+  "complete years": {
+    "value": "vollständige Jahre"
+  },
+  "complete fiscal quarters": {
+    "value": "vollständige Geschäftsquartale"
+  },
+  "complete quarters": {
+    "value": "vollständige Quartale"
+  },
+  "complete months": {
+    "value": "vollständige Monate"
+  },
+  "complete weeks": {
+    "value": "vollständige Wochen"
+  },
+  "complete days": {
+    "value": "vollständige Tage"
+  },
+  "complete hours": {
+    "value": "vollständige Stunden"
+  },
+  "complete minutes": {
+    "value": "vollständige Minuten"
+  },
+  "complete seconds": {
+    "value": "vollständige Sekunden"
+  }
+}

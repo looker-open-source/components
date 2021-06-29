@@ -1,0 +1,84 @@
+{
+  "January": {
+    "value": "Januari"
+  },
+  "February": {
+    "value": "Februari"
+  },
+  "March": {
+    "value": "Maart"
+  },
+  "April": {
+    "value": "April"
+  },
+  "May": {
+    "value": "Mei"
+  },
+  "June": {
+    "value": "Juni"
+  },
+  "July": {
+    "value": "Juli"
+  },
+  "August": {
+    "value": "Augustus"
+  },
+  "September": {
+    "value": "September"
+  },
+  "October": {
+    "value": "Oktober"
+  },
+  "November": {
+    "value": "November"
+  },
+  "December": {
+    "value": "December"
+  },
+  "Sunday": {
+    "value": "Zondag"
+  },
+  "Monday": {
+    "value": "Maandag"
+  },
+  "Tuesday": {
+    "value": "Dinsdag"
+  },
+  "Wednesday": {
+    "value": "Woensdag"
+  },
+  "Thursday": {
+    "value": "Donderdag"
+  },
+  "Friday": {
+    "value": "Vrijdag"
+  },
+  "Saturday": {
+    "value": "Zaterdag"
+  },
+  "Su": {
+    "value": "Zo"
+  },
+  "Mo": {
+    "value": "Ma"
+  },
+  "Tu": {
+    "value": "Di"
+  },
+  "We": {
+    "value": "Woe"
+  },
+  "Th": {
+    "value": "Do"
+  },
+  "Fr": {
+    "value": "Vr"
+  },
+  "Sa": {
+    "value": "Za"
+  },
+  "firstDayOfWeek": {
+    "value": "0",
+    "note": "0 is zondag, 1 is maandag, enzovoorts"
+  }
+}

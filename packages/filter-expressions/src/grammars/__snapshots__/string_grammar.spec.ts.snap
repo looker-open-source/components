@@ -1,0 +1,446 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`String grammar can parse   hello   1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "match",
+  "value": Array [
+    "  hello  ",
+  ],
+}
+`;
+
+exports[`String grammar can parse  1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "type": "match",
+  "value": Array [],
+}
+`;
+
+exports[`String grammar can parse "\\"DANCE\\" Tube Socks,T1418,multi-co..." 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "match",
+  "value": Array [
+    "\\"DANCE\\" Tube Socks,T1418,multi-co...",
+  ],
+}
+`;
+
+exports[`String grammar can parse "100% Silk Camisole \\"Angelina Jolie's Favorite\\" By Mary Green" 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "match",
+  "value": Array [
+    "100% Silk Camisole \\"Angelina Jolie's Favorite\\" By Mary Green",
+  ],
+}
+`;
+
+exports[`String grammar can parse "quoted_underscore" 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "match",
+  "value": Array [
+    "quoted_underscore",
+  ],
+}
+`;
+
+exports[`String grammar can parse "t-shirt \\"new\\" style" 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "match",
+  "value": Array [
+    "t-shirt \\"new\\" style",
+  ],
+}
+`;
+
+exports[`String grammar can parse %100^%^_^^ FOO 100^%^_^^% 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "contains",
+  "value": Array [
+    "100%_^ FOO 100%_^",
+  ],
+}
+`;
+
+exports[`String grammar can parse %FOO 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "endsWith",
+  "value": Array [
+    "FOO",
+  ],
+}
+`;
+
+exports[`String grammar can parse %FOO 100^%^_^^ 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "endsWith",
+  "value": Array [
+    "FOO 100%_^",
+  ],
+}
+`;
+
+exports[`String grammar can parse %FOO% 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "contains",
+  "value": Array [
+    "FOO",
+  ],
+}
+`;
+
+exports[`String grammar can parse %FOO% 2`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "contains",
+  "value": Array [
+    "FOO",
+  ],
+}
+`;
+
+exports[`String grammar can parse _UF 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "other",
+  "value": Array [
+    "_UF",
+  ],
+}
+`;
+
+exports[`String grammar can parse {{ _user_attributes['id'] }} 1`] = `
+Object {
+  "attributeName": "id",
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "user_attribute",
+}
+`;
+
+exports[`String grammar can parse -%FOO 1`] = `
+Object {
+  "id": 1,
+  "is": false,
+  "left": undefined,
+  "right": undefined,
+  "type": "endsWith",
+  "value": Array [
+    "FOO",
+  ],
+}
+`;
+
+exports[`String grammar can parse -%FOO% 1`] = `
+Object {
+  "id": 1,
+  "is": false,
+  "left": undefined,
+  "right": undefined,
+  "type": "contains",
+  "value": Array [
+    "FOO",
+  ],
+}
+`;
+
+exports[`String grammar can parse -EMPTY 1`] = `
+Object {
+  "id": 1,
+  "is": false,
+  "left": undefined,
+  "right": undefined,
+  "type": "blank",
+}
+`;
+
+exports[`String grammar can parse -FOO 1`] = `
+Object {
+  "id": 1,
+  "is": false,
+  "left": undefined,
+  "right": undefined,
+  "type": "match",
+  "value": Array [
+    "FOO",
+  ],
+}
+`;
+
+exports[`String grammar can parse -FOO% 1`] = `
+Object {
+  "id": 1,
+  "is": false,
+  "left": undefined,
+  "right": undefined,
+  "type": "startsWith",
+  "value": Array [
+    "FOO",
+  ],
+}
+`;
+
+exports[`String grammar can parse -FOO,-BAR 1`] = `
+Object {
+  "id": 1,
+  "is": false,
+  "left": undefined,
+  "right": undefined,
+  "type": "match",
+  "value": Array [
+    "FOO",
+    "BAR",
+  ],
+}
+`;
+
+exports[`String grammar can parse -empty 1`] = `
+Object {
+  "id": 1,
+  "is": false,
+  "left": undefined,
+  "right": undefined,
+  "type": "blank",
+}
+`;
+
+exports[`String grammar can parse -null 1`] = `
+Object {
+  "id": 1,
+  "is": false,
+  "left": undefined,
+  "right": undefined,
+  "type": "null",
+}
+`;
+
+exports[`String grammar can parse 100^%^_^^ FOO% 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "startsWith",
+  "value": Array [
+    "100%_^ FOO",
+  ],
+}
+`;
+
+exports[`String grammar can parse EMPTY 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "blank",
+}
+`;
+
+exports[`String grammar can parse F%OD 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "other",
+  "value": Array [
+    "F%OD",
+  ],
+}
+`;
+
+exports[`String grammar can parse FOO 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "match",
+  "value": Array [
+    "FOO",
+  ],
+}
+`;
+
+exports[`String grammar can parse FOO% 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "startsWith",
+  "value": Array [
+    "FOO",
+  ],
+}
+`;
+
+exports[`String grammar can parse FOO%,-FOOD 1`] = `
+Object {
+  "id": 2,
+  "left": Object {
+    "id": 1,
+    "is": true,
+    "left": undefined,
+    "right": undefined,
+    "type": "startsWith",
+    "value": Array [
+      "FOO",
+    ],
+  },
+  "right": Object {
+    "id": 3,
+    "is": false,
+    "left": undefined,
+    "right": undefined,
+    "type": "match",
+    "value": Array [
+      "FOOD",
+    ],
+  },
+  "type": ",",
+}
+`;
+
+exports[`String grammar can parse FOO%,BAR 1`] = `
+Object {
+  "id": 2,
+  "left": Object {
+    "id": 1,
+    "is": true,
+    "left": undefined,
+    "right": undefined,
+    "type": "startsWith",
+    "value": Array [
+      "FOO",
+    ],
+  },
+  "right": Object {
+    "id": 3,
+    "is": true,
+    "left": undefined,
+    "right": undefined,
+    "type": "match",
+    "value": Array [
+      "BAR",
+    ],
+  },
+  "type": ",",
+}
+`;
+
+exports[`String grammar can parse FOO,BAR 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "match",
+  "value": Array [
+    "FOO",
+    "BAR",
+  ],
+}
+`;
+
+exports[`String grammar can parse NULL 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "null",
+}
+`;
+
+exports[`String grammar can parse empty 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "blank",
+}
+`;
+
+exports[`String grammar can parse null 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "null",
+}
+`;
+
+exports[`String grammar can parse sub^_region 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "match",
+  "value": Array [
+    "sub_region",
+  ],
+}
+`;
+
+exports[`String grammar can parse t-shirt 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "match",
+  "value": Array [
+    "t-shirt",
+  ],
+}
+`;

@@ -1,0 +1,32 @@
+{
+  "Location": {
+    "value": "場所"
+  },
+  "Circle": {
+    "value": "円"
+  },
+  "Box": {
+    "value": "ボックス"
+  },
+  "is anywhere": {
+    "value": "がいずれかの場所にある"
+  },
+  "is null": {
+    "value": "がNullである"
+  },
+  "is not null": {
+    "value": "がNullでない"
+  },
+  "feet": {
+    "value": "feet"
+  },
+  "kilometers": {
+    "value": "キロメートル"
+  },
+  "meters": {
+    "value": "メートル"
+  },
+  "miles": {
+    "value": "マイル"
+  }
+}

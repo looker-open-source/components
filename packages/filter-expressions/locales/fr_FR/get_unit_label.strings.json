@@ -1,0 +1,62 @@
+{
+  "fiscal years": {
+    "value": "années fiscales"
+  },
+  "years": {
+    "value": "années"
+  },
+  "fiscal quarters": {
+    "value": "trimestres fiscaux"
+  },
+  "quarters": {
+    "value": "trimestres"
+  },
+  "months": {
+    "value": "mois"
+  },
+  "weeks": {
+    "value": "semaines"
+  },
+  "days": {
+    "value": "jours"
+  },
+  "hours": {
+    "value": "heures"
+  },
+  "minutes": {
+    "value": "minutes"
+  },
+  "seconds": {
+    "value": "secondes"
+  },
+  "complete fiscal years": {
+    "value": "années fiscales complètes"
+  },
+  "complete years": {
+    "value": "années complètes"
+  },
+  "complete fiscal quarters": {
+    "value": "trimestres fiscaux complets"
+  },
+  "complete quarters": {
+    "value": "trimestres complets"
+  },
+  "complete months": {
+    "value": "mois complets"
+  },
+  "complete weeks": {
+    "value": "semaines complètes"
+  },
+  "complete days": {
+    "value": "jours complets"
+  },
+  "complete hours": {
+    "value": "heures complètes"
+  },
+  "complete minutes": {
+    "value": "minutes complètes"
+  },
+  "complete seconds": {
+    "value": "secondes complètes"
+  }
+}
