@@ -47,11 +47,7 @@ import { ListItemContext } from './ListItemContext'
 import { ListItemContent } from './ListItemContent'
 import { ListItemWrapper } from './ListItemWrapper'
 import { listItemLabelColor } from './utils/listItemColor'
-import {
-  createListItemPartitions,
-  createSafeRel,
-  listItemDimensions,
-} from './utils'
+import { createListItemPartitions, createSafeRel } from './utils'
 import { ListItemProps } from './types'
 
 const ListItemInternal = forwardRef(

@@ -25,7 +25,7 @@
  */
 
 import styled from 'styled-components'
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { HoverDisclosure } from '../utils/HoverDisclosure'
 import { DetailOptions } from './types'
 
@@ -33,6 +33,7 @@ export type ListItemDetailProps = Omit<
   DetailOptions,
   'accessory' | 'padding'
 > & {
+  children?: ReactNode
   className?: string
 }
 
