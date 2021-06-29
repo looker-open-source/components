@@ -24,27 +24,24 @@
 
  */
 
-import { SpaceRamp } from '@looker/design-tokens'
+import { SpaceRamp } from 'packages/design-tokens/src/system'
 import { css } from 'styled-components'
-import { ListItemDimensions } from '../types'
+import { DensityRamp } from '../types'
+import { listItemDimensions } from './listItemDimensions'
 
-export const listItemPadding = ({
-  px: propsPx,
-  py: propsPy,
-  theme: { space },
-}: {
-  theme: { space: SpaceRamp }
-} & Pick<ListItemDimensions, 'px' | 'py'>) => {
+const calculatePadding = (density: DensityRamp, space: SpaceRamp) => {
+  const { px, py } = listItemDimensions(density)
+
   /**
    * The check for 0.375rem gets density = -1 ListItems to the desired 48px min height.
    * Without it, density = -1 ListItems would be at 44px.
    */
-  const pt = propsPy === '0.375rem' ? propsPy : space[propsPy]
-  const pb = pt
-  const pr = space[propsPx]
-  const pl = space[propsPx]
 
   return css`
-    padding: ${pt} ${pr} ${pb} ${pl};
+    padding: ${py === '0.375rem' ? py : space[py]} ${space[px]};
   `
 }
+
+export const listItemPadding = (density: DensityRamp = 0) => css`
+  ${({ theme }) => calculatePadding(density, theme.space)}
+`

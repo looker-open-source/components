@@ -24,20 +24,42 @@
 
  */
 
-import styled from 'styled-components'
+import styled, { DefaultTheme, StyledComponent } from 'styled-components'
 import { color as colorHelper, SpacingSizes } from '@looker/design-tokens'
 import { StyledIconBase } from '@styled-icons/styled-icon'
 import { IconPlaceholder, IconSize } from '../Icon'
+import { listItemDimensions, listItemIconColor } from './utils'
+import { DensityRamp } from './types'
 
 export type ListItemIconProps = {
   color?: string
   disabled?: boolean
+  alignStart?: boolean
+  density?: DensityRamp
+}
+
+type ListItemIconInternalProps = Omit<ListItemIconProps, 'density'> & {
   iconGap: SpacingSizes
   iconSize: IconSize
 }
 
-export const ListItemIcon = styled.div<ListItemIconProps>`
-  align-self: center;
+export const ListItemIcon: StyledComponent<
+  'div',
+  DefaultTheme,
+  ListItemIconProps
+> = styled.div.attrs<ListItemIconProps>(
+  ({ color, disabled, density = 0, ...props }) => {
+    const { iconGap, iconSize } = listItemDimensions(density)
+
+    return {
+      ...props,
+      color: listItemIconColor(color, disabled),
+      iconGap,
+      iconSize,
+    }
+  }
+)<ListItemIconInternalProps>`
+  align-self: ${({ alignStart }) => (alignStart ? 'flex-start' : 'center')};
   display: flex;
   margin-right: ${({ iconGap, theme }) => theme.space[iconGap]};
   ${colorHelper}

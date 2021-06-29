@@ -34,7 +34,7 @@ import { ListItemIcon } from '../List/ListItemIcon'
 import { FlexibleColor, ListItemStatefulProps } from '../List/types'
 import { listItemBackgroundColor } from '../List/utils'
 import { List, ListItem } from '../List'
-import { ListItemLabel, listItemLabelCSS } from '../List/ListItemLabel'
+import { ListItemContent, listItemContentCSS } from '../List/ListItemContent'
 import { IconSize, IconType } from '../Icon'
 import { TreeItem } from './TreeItem'
 import { TreeBranch } from './TreeBranch'
@@ -59,12 +59,12 @@ type TreeStyleProps = ListItemStatefulProps &
   }
 
 export const TreeItemInner = styled(TreeItem)`
-  ${listItemLabelCSS(css`
+  ${listItemContentCSS(css`
     background-color: transparent;
     padding-left: 0;
   `)}
 
-  > ${ListItemLabel}:focus {
+  > ${ListItemContent}:focus {
     box-shadow: none;
   }
 `
@@ -112,10 +112,10 @@ const treeItemIndent = ({
       indicatorSize,
       theme,
     })}
-    ${listItemLabelCSS(labelPaddingRemoval)}
+    ${listItemContentCSS(labelPaddingRemoval)}
   `
 
-  const labelIndent = listItemLabelCSS(
+  const labelIndent = listItemContentCSS(
     generateIndent({
       assumeIconAlignment,
       depth: depth + 2,
@@ -140,7 +140,7 @@ export const TreeStyle = styled(TreeStyleLayout)`
 
   ${ListItem} {
     ${({ iconGap, theme }) =>
-      listItemLabelCSS(css`
+      listItemContentCSS(css`
         ${ListItemIcon} {
           margin-right: ${theme.space[iconGap]};
         }

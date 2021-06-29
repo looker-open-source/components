@@ -27,68 +27,54 @@
 import React, { ReactElement } from 'react'
 import { ListItemProps } from '../types'
 import { IconPlaceholderProps, IconType } from '../../Icon'
-import { listItemDimensions } from './listItemDimensions'
-import { createListItemDetail } from './createListItemDetail'
-import { createListItemIcon } from './createListItemIcon'
-import { createListItemLabel } from './createListItemLabel'
-import { getDetailOptions } from '.'
+import { ListItemDetail } from '../ListItemDetail'
+import { ListItemIcon } from '../ListItemIcon'
+import { ListItemLabel } from '../ListItemLabel'
+import { getDetailOptions } from './getDetailOptions'
 
 export type CreateListItemPartitionsProps = {
   icon?: IconType | ReactElement<IconPlaceholderProps>
 } & ListItemProps
 
 export const createListItemPartitions = ({
-  children: label,
   color,
   density = 0,
   description,
-  detail,
   disabled,
   icon,
+  children,
   truncate,
+  ...props
 }: CreateListItemPartitionsProps) => {
-  const itemDimensions = listItemDimensions(density)
-
   const iconProps = {
+    alignStart: Boolean(description),
+    children: icon,
     color,
+    density,
     disabled,
-    icon,
-    iconGap: itemDimensions.iconGap,
-    iconSize: itemDimensions.iconSize,
   }
 
   const labelProps = {
+    children,
     color,
+    density,
     description,
-    descriptionFontSize: itemDimensions.descriptionFontSize,
-    descriptionLineHeight: itemDimensions.descriptionLineHeight,
     disabled,
-    label,
-    labelFontSize: itemDimensions.labelFontSize,
-    labelLineHeight: itemDimensions.labelLineHeight,
     truncate,
   }
 
-  const { content, ...options } = getDetailOptions(detail)
-  const detailProps = {
-    detail: content,
-    px: itemDimensions.px,
-    ...options,
-  }
-
-  const renderedIcon = icon && createListItemIcon(iconProps)
-  const renderedLabel = createListItemLabel(labelProps)
-  const renderedDetail = detail && createListItemDetail(detailProps)
+  const { content, ...options } = getDetailOptions(props.detail)
+  const detail = props.detail && (
+    <ListItemDetail {...options}>{content}</ListItemDetail>
+  )
 
   const inside = (
     <>
-      {renderedIcon}
-      {renderedLabel}
-      {!options.accessory && renderedDetail}
+      {icon && <ListItemIcon {...iconProps} />}
+      {<ListItemLabel {...labelProps} />}
+      {!options.accessory && detail}
     </>
   )
 
-  const outside = options.accessory && renderedDetail
-
-  return [inside, outside]
+  return [inside, options.accessory && detail]
 }

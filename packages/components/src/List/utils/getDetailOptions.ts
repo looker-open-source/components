@@ -28,18 +28,16 @@ import { Detail } from '../types'
 
 // Simplifies the type check when dealing with ListItem and related components
 export const getDetailOptions = (detail: Detail) => {
-  let accessory, padding, hoverDisclosure, content, width
+  let accessory, hoverDisclosure, content, width
 
   if (typeof detail === 'object' && detail && 'options' in detail) {
     accessory = detail.options.accessory
     content = detail.content
-    padding =
-      detail.options.padding === undefined || detail.options.padding === true
     hoverDisclosure = detail.options.hoverDisclosure
     width = detail.options.width
   } else {
     content = detail
   }
 
-  return { accessory, content, hoverDisclosure, padding, width }
+  return { accessory, content, hoverDisclosure, width }
 }

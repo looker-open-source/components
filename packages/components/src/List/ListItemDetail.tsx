@@ -24,23 +24,18 @@
 
  */
 
-import { padding, PaddingProps } from '@looker/design-tokens'
 import styled from 'styled-components'
+import React from 'react'
+import { HoverDisclosure } from '../utils/HoverDisclosure'
+import { DetailOptions } from './types'
 
-export type ListItemDetailProps = PaddingProps & {
-  cursorPointer?: boolean
-}
-
-export const ListItemDetail = styled.div.attrs<ListItemDetailProps>(
-  (props) => ({
-    ...props,
-    pl: props.pl || 'xsmall',
-  })
-)<ListItemDetailProps>`
-  ${padding}
+export const ListItemDetail = styled(({ hoverDisclosure, width, ...props }) => (
+  <HoverDisclosure width={width} visible={!hoverDisclosure}>
+    <div {...props} />
+  </HoverDisclosure>
+))<DetailOptions>`
   align-items: center;
-  color: ${({ theme: { colors } }) => colors.text2};
-  cursor: ${({ cursorPointer }) => (cursorPointer ? 'pointer' : undefined)};
+  color: ${({ theme }) => theme.colors.text2};
   display: flex;
   font-size: ${({ theme }) => theme.fontSizes.xsmall};
   margin-left: auto;

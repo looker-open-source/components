@@ -44,7 +44,7 @@ import {
 } from '../utils'
 import { IconPlaceholder } from '../Icon'
 import { ListItemContext } from './ListItemContext'
-import { ListItemLabel } from './ListItemLabel'
+import { ListItemContent } from './ListItemContent'
 import { ListItemWrapper } from './ListItemWrapper'
 import { listItemLabelColor } from './utils/listItemColor'
 import {
@@ -92,7 +92,6 @@ const ListItemInternal = forwardRef(
     } = useContext(ListItemContext)
 
     const density = propsDensity || contextDensity
-    const itemDimensions = listItemDimensions(density)
 
     const color = undefinedCoalesce([propsColor, contextColor])
 
@@ -195,20 +194,17 @@ const ListItemInternal = forwardRef(
           onMouseLeave={handleWrapperMouseLeave}
           ref={actualRef}
           renderAsDiv={renderAsDiv}
-          {...itemDimensions}
           {...wrapperProps}
         >
-          <ListItemLabel
+          <ListItemContent
             itemRole={itemRole}
             aria-selected={selected}
             cursorPointer={!!(href || onClick)}
             focusVisible={focusVisible}
-            height={itemDimensions.height}
             href={href}
             onClick={disabled ? undefined : handleOnClick}
             onKeyDown={onKeyDown}
-            px={itemDimensions.px}
-            py={itemRole === 'none' ? 'none' : itemDimensions.py}
+            density={density}
             rel={createSafeRel(rel, target)}
             role={role || 'listitem'}
             target={target}
@@ -218,7 +214,7 @@ const ListItemInternal = forwardRef(
             {...statefulProps}
           >
             {insideElements}
-          </ListItemLabel>
+          </ListItemContent>
           {outsideElements}
         </ListItemWrapper>
       </HoverDisclosureContext.Provider>

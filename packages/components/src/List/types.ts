@@ -157,9 +157,7 @@ export interface DetailOptions extends Pick<HoverDisclosureProps, 'width'> {
    */
   hoverDisclosure?: boolean
   /**
-   * Padding is added to the left and and right of the detail container by default. You can
-   * optionally disable that behavior if you want to have fine-grained control.
-   * @default true
+   * @deprecated No padding applied always. Prop to be removed soon
    */
   padding?: boolean
 }

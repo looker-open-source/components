@@ -27,8 +27,8 @@
 import styled from 'styled-components'
 import { TextBase } from '../Text/TextBase'
 import { ListItemDetail } from '../List/ListItemDetail'
-import { List, ListItem, ListItemLabel } from '../List'
 import { Accordion2Disclosure } from '../Accordion2/Accordion2Disclosure'
+import { List, ListItem, ListItemContent } from '../List'
 import { ListItemIcon } from '../List/ListItemIcon'
 
 /**
@@ -40,7 +40,7 @@ import { ListItemIcon } from '../List/ListItemIcon'
  *   - `ListItem` at the root are indented to align properly with `Tree`(s) at the root as well
  */
 export const NavList = styled(List).attrs(({ color = 'key' }) => ({ color }))`
-  ${Accordion2Disclosure}, ${ListItemLabel} {
+  ${Accordion2Disclosure}, ${ListItemContent} {
     border-bottom-right-radius: 5rem;
     border-top-right-radius: 5rem;
 
@@ -52,8 +52,16 @@ export const NavList = styled(List).attrs(({ color = 'key' }) => ({ color }))`
       }
     }
   }
+
+  ${ListItemIcon} {
+    svg {
+      transition: color
+        ${({ theme }) => `${theme.transitions.quick}ms ${theme.easings.ease}`};
+    }
+  }
+
   & > ${ListItem} {
-    ${ListItemLabel} {
+    ${ListItemContent} {
       padding-left: ${({ theme }) => `${theme.sizes.medium}`};
     }
   }
