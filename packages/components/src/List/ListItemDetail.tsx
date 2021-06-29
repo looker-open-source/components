@@ -29,11 +29,20 @@ import React from 'react'
 import { HoverDisclosure } from '../utils/HoverDisclosure'
 import { DetailOptions } from './types'
 
-export const ListItemDetail = styled(({ hoverDisclosure, width, ...props }) => (
-  <HoverDisclosure width={width} visible={!hoverDisclosure}>
-    <div {...props} />
-  </HoverDisclosure>
-))<DetailOptions>`
+export type ListItemDetailProps = Omit<
+  DetailOptions,
+  'accessory' | 'padding'
+> & {
+  className?: string
+}
+
+export const ListItemDetail = styled(
+  ({ hoverDisclosure, width, ...props }: ListItemDetailProps) => (
+    <HoverDisclosure width={width} visible={!hoverDisclosure}>
+      <div {...props} />
+    </HoverDisclosure>
+  )
+)`
   align-items: center;
   color: ${({ theme }) => theme.colors.text2};
   display: flex;

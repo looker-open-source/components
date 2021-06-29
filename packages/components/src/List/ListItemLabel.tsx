@@ -81,4 +81,8 @@ export const ListItemLabel = styled(
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  /**
+   * min-width needed so truncates are aware of container width
+   */
+  min-width: 0;
 `

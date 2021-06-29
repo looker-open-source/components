@@ -63,7 +63,7 @@ export const createListItemPartitions = ({
     truncate,
   }
 
-  const { content, ...options } = getDetailOptions(props.detail)
+  const { accessory, content, ...options } = getDetailOptions(props.detail)
   const detail = props.detail && (
     <ListItemDetail {...options}>{content}</ListItemDetail>
   )
@@ -72,9 +72,9 @@ export const createListItemPartitions = ({
     <>
       {icon && <ListItemIcon {...iconProps} />}
       {<ListItemLabel {...labelProps} />}
-      {!options.accessory && detail}
+      {!accessory && detail}
     </>
   )
 
-  return [inside, options.accessory && detail]
+  return [inside, accessory && detail]
 }
