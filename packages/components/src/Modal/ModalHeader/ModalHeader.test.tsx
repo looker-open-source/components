@@ -38,13 +38,13 @@ describe('ModalHeader', () => {
 
   test('has aria-label', async () => {
     renderWithTheme(<ModalHeader aria-label="ARIA label">Heading</ModalHeader>)
-    expect(await screen.findByLabelText('ARIA label')).toBeTruthy()
+    expect(await screen.findByLabelText('ARIA label')).toBeInTheDocument()
   })
 
   test(`detail as ReactNode`, () => {
     renderWithTheme(
       <ModalHeader detail={<button>x</button>}>Header</ModalHeader>
     )
-    expect(screen.queryByText('x')).toBeTruthy()
+    expect(screen.queryByText('x')).toBeInTheDocument()
   })
 })
