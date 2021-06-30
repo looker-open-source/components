@@ -9,7 +9,7 @@
  "module": "lib/index.js",
  "sideEffects": false,
  "dependencies": {
-  "@looker/visualizations": "0.1.0",
+  "@looker/visualizations-adapters": "0.1.0",
   "@nivo/axes": "0.67.0",
   "@nivo/bar": "0.67.0",
   "@nivo/core": "0.67.0",
@@ -17,7 +17,7 @@
   "lodash": "4.17.21"
  },
  "devDependencies": {
-  "@looker/components-test-utils": "^1.4.0",
+  "@looker/components-test-utils": "^1.3.1",
   "@looker/eslint-config": "^1.5.0",
   "@looker/prettier-config": "^1.4.0",
   "@looker/stylelint-config": "^1.4.0",
