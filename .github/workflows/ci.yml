@@ -41,8 +41,23 @@ jobs:
       - uses: c-hive/gha-yarn-cache@v1
       - run : yarn --silent
       - run: yarn test
-    env:
-      CI: true
+      - uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: coverage
+          path: coverage
+          retention-days: 5
+  coverage:
+    name: "Coverage"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: c-hive/gha-yarn-cache@v1
+      - uses: artiomtr/jest-coverage-report-action@v2.0-rc.1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          package-manager: yarn
+          threshold: 80
   build:
     name: "Build: ES & Typescript"
     runs-on: ubuntu-latest
@@ -54,7 +69,6 @@ jobs:
   gatsby:
     name: "Gatsby"
     runs-on: ubuntu-latest
-    if: github.event.pull_request.draft == false
     steps:
       - uses: actions/checkout@v2
       - uses: c-hive/gha-yarn-cache@v1
@@ -64,7 +78,6 @@ jobs:
   image-snapshots:
     name: "Image Snapshots"
     runs-on: ubuntu-latest
-    if: github.event.pull_request.draft == false
     steps:
       - uses: actions/checkout@v2
         with:

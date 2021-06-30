@@ -38,7 +38,7 @@ module.exports = {
     '!packages/**/index.ts',
     '!packages/**/types.ts',
   ],
-  coverageReporters: ['json', 'html', 'lcov'],
+  coverageReporters: ['json', 'html', 'lcov', 'text', 'text-summary'],
   moduleDirectories: ['./node_modules', './packages'],
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json', 'node'],
   moduleNameMapper: {
