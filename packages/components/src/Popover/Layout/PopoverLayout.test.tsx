@@ -27,7 +27,13 @@
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { screen } from '@testing-library/react'
-import { Basic, Full, Header, HeaderHideHeading } from './PopoverLayout.story'
+import {
+  Basic,
+  FooterCloseButton,
+  Full,
+  Header,
+  HeaderHideHeading,
+} from './PopoverLayout.story'
 
 describe('PopoverLayout', () => {
   test('basic display has footer ', () => {
@@ -47,6 +53,12 @@ describe('PopoverLayout', () => {
 
   test('Header and no Footer ', () => {
     renderWithTheme(<Header {...Header.args} />)
+    expect(screen.getByText('Close')).toBeInTheDocument()
+    expect(screen.queryByText('Done')).not.toBeInTheDocument()
+  })
+
+  test('Footer with CloseButton', () => {
+    renderWithTheme(<FooterCloseButton {...FooterCloseButton.args} />)
     expect(screen.getByText('Close')).toBeInTheDocument()
     expect(screen.queryByText('Done')).not.toBeInTheDocument()
   })

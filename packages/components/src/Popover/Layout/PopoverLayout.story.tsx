@@ -47,6 +47,17 @@ Header.args = {
   header: 'Header text',
 }
 
+export const FooterCloseButton = Template.bind({})
+FooterCloseButton.args = {
+  ...Basic.args,
+  closeButton: (
+    <ButtonTransparent color="neutral" size="small">
+      Close
+    </ButtonTransparent>
+  ),
+  header: 'Header text',
+}
+
 /**
  * @TODO - Make this impossible with types
  * User should not be able to do `footer=false + header=undefined`

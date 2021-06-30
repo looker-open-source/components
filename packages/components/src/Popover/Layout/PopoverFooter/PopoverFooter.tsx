@@ -61,7 +61,7 @@ const PopoverFooterLayout: FC<PopoverFooterProps> = ({
           {closeButton}
         </ButtonTransparent>
       ) : (
-        close
+        closeButton
       )}
       {children}
     </ModalFooter>
