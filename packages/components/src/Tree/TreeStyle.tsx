@@ -27,7 +27,6 @@
 import React, { FC } from 'react'
 import styled, { css } from 'styled-components'
 import { SpacingSizes } from '@looker/design-tokens'
-import { Accordion2 } from '../Accordion2'
 import { Accordion2Disclosure } from '../Accordion2/Accordion2Disclosure'
 import { Accordion2Content } from '../Accordion2/Accordion2Content'
 import { ListItemIcon } from '../List/ListItemIcon'
@@ -36,6 +35,7 @@ import { listItemBackgroundColor } from '../List/utils'
 import { List, ListItem } from '../List'
 import { ListItemContent, listItemContentCSS } from '../List/ListItemContent'
 import { IconSize, IconType } from '../Icon'
+import { TreeAccordion } from './TreeAccordion'
 import { TreeItem } from './TreeItem'
 import { TreeBranch } from './TreeBranch'
 import {
@@ -147,7 +147,7 @@ export const TreeStyle = styled(TreeStyleLayout)`
       `)}
   }
 
-  > ${Accordion2} {
+  > ${TreeAccordion} {
     /**
         Gets the box-shadow to sit above the ListItem background
        */
@@ -200,7 +200,7 @@ export const TreeStyle = styled(TreeStyleLayout)`
 
   ${({ dividers }) => dividers && dividersCSS}
 
-  > ${Accordion2} > ${Accordion2Content} > ${List} {
+  > ${TreeAccordion} > ${Accordion2Content} > ${List} {
     > ${ListItem} {
       ${({
         assumeIconAlignment,

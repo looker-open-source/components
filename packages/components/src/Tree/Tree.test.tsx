@@ -243,7 +243,7 @@ describe('Tree', () => {
     })
   })
 
-  xdescribe('aria roles', () => {
+  describe('aria roles', () => {
     test('selected Trees have aria-selected=true', () => {
       renderWithTheme(
         <Tree
@@ -259,7 +259,7 @@ describe('Tree', () => {
       )
     })
 
-    xtest('Trees can take aria-current=true', () => {
+    test('Trees can take aria-current=true', () => {
       renderWithTheme(
         <Tree
           aria-current={true}

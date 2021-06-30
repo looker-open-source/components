@@ -32,7 +32,8 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import { Accordion2 } from '../Accordion2'
+import { useAccordion2 } from '../Accordion2/useAccordion2'
+import { Accordion2Disclosure } from '../Accordion2/Accordion2Disclosure'
 import { ControlledOrUncontrolled } from '../Accordion2/controlTypes'
 import { partitionAriaProps, undefinedCoalesce, useWrapEvent } from '../utils'
 import { List, ListItemProps } from '../List'
@@ -43,6 +44,7 @@ import { indicatorDefaults } from './utils'
 import { WindowedTreeContext } from './WindowedTreeNode'
 import { TreeItemInner, TreeItemInnerDetail, TreeStyle } from './TreeStyle'
 import { treeItemInnerPropKeys, TreeProps } from './types'
+import { TreeAccordion } from './TreeAccordion'
 
 /**
  * TODO: When labelToggle is introduced the aria-* attributes should land on the nested ListItem's
@@ -197,29 +199,40 @@ const TreeLayout = ({
     accordionProps = { ...accordionProps, isOpen, toggleOpen }
   }
 
-  const innerAccordion = (
-    <Accordion2
-      aria-selected={selected}
-      disabled={disabled}
-      indicatorGap={assumeIconAlignment ? iconGap : defaultGap}
-      indicatorIcons={indicatorIcons}
-      indicatorPosition={indicatorPosition}
-      indicatorSize={iconSize}
-      label={label}
-      onBlur={handleBlur}
-      onFocus={handleFocus}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      role="treeitem"
-      tabIndex={-1}
-      hideDisclosure={partialRender}
-      {...restProps}
-      {...accordionProps}
-    >
-      <List disableKeyboardNav role="group" windowing={false} {...ariaProps}>
+  const {
+    content: treeContent,
+    domProps,
+    disclosureProps,
+  } = useAccordion2({
+    'aria-selected': selected,
+    children: (
+      <List disableKeyboardNav role="group" windowing={false}>
         {children}
       </List>
-    </Accordion2>
+    ),
+    disabled,
+    indicatorGap: assumeIconAlignment ? iconGap : defaultGap,
+    indicatorIcons,
+    indicatorPosition,
+    indicatorSize: iconSize,
+    label,
+    onBlur: handleBlur,
+    onFocus: handleFocus,
+    onMouseEnter: handleMouseEnter,
+    onMouseLeave: handleMouseLeave,
+    role: 'treeitem',
+    tabIndex: -1,
+    ...restProps,
+    ...accordionProps,
+  })
+
+  const innerAccordion = (
+    <TreeAccordion className="tree-accordion-disclosure">
+      {!partialRender && (
+        <Accordion2Disclosure {...domProps} {...disclosureProps} />
+      )}
+      {treeContent}
+    </TreeAccordion>
   )
 
   return (
