@@ -41,6 +41,12 @@ jobs:
       - uses: c-hive/gha-yarn-cache@v1
       - run : yarn --silent
       - run: yarn test
+      - uses: mattallty/jest-github-action@v1
+        name: Coverage
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          test-command: "yarn test"
     env:
       CI: true
   build:
@@ -54,7 +60,6 @@ jobs:
   gatsby:
     name: "Gatsby"
     runs-on: ubuntu-latest
-    if: github.event.pull_request.draft == false
     steps:
       - uses: actions/checkout@v2
       - uses: c-hive/gha-yarn-cache@v1
@@ -64,7 +69,6 @@ jobs:
   image-snapshots:
     name: "Image Snapshots"
     runs-on: ubuntu-latest
-    if: github.event.pull_request.draft == false
     steps:
       - uses: actions/checkout@v2
         with:
