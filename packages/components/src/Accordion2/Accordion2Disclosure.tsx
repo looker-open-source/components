@@ -53,6 +53,10 @@ Accordion2DisclosureInternal.displayName = 'Accordion2DisclosureInternal'
 
 const AccordionLabel = styled.div`
   flex: 1;
+  /*
+    min-width prevent truncate text from growing AccordionLabel past the disclosure's 100% width
+   */
+  min-width: 0;
 `
 
 /**
