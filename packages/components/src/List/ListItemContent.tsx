@@ -73,16 +73,17 @@ const ListItemContentInternal: FC<ListItemContentProps> = ({
   itemRole = 'button',
   ...props
 }) => {
-  let Component = (p: CompatibleHTMLProps<HTMLElement>) => (
-    <Button {...p} type="button" />
-  )
   if (!props.disabled && itemRole === 'link') {
-    Component = Link
+    return <Link {...props}>{children}</Link>
   } else if (itemRole === 'none') {
-    Component = Div
+    return <Div {...props}>{children}</Div>
   }
 
-  return <Component {...props}>{children}</Component>
+  return (
+    <Button {...props} type="button">
+      {children}
+    </Button>
+  )
 }
 
 const itemRoleNoneHeight = (density: DensityRamp = 0) => {
