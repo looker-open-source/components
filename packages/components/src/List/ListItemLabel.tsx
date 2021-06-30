@@ -66,14 +66,16 @@ export const ListItemLabel = styled(
         >
           {children}
         </TruncateOptionally>
-        <TruncateOptionally
-          truncate={truncate}
-          color={disabled ? 'text1' : 'text2'}
-          fontSize={descriptionFontSize}
-          lineHeight={descriptionLineHeight}
-        >
-          {description}
-        </TruncateOptionally>
+        {description && (
+          <TruncateOptionally
+            truncate={truncate}
+            color={disabled ? 'text1' : 'text2'}
+            fontSize={descriptionFontSize}
+            lineHeight={descriptionLineHeight}
+          >
+            {description}
+          </TruncateOptionally>
+        )}
       </div>
     )
   }
