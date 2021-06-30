@@ -28,16 +28,17 @@ import React, { FC, ReactNode } from 'react'
 import { ModalLayoutProps, ModalLoading } from '../../Modal/ModalLayout'
 import { VisuallyHidden } from '../../VisuallyHidden'
 import { PopoverContent } from './PopoverContent'
-import { PopoverFooter } from './PopoverFooter'
+import { PopoverFooter, PopoverFooterProps } from './PopoverFooter'
 import { PopoverHeader } from './PopoverHeader'
 
-export type PopoverLayoutProps = ModalLayoutProps & {
-  /**
-   * Header will not be visually available but it will still properly announced in screen reader scenarios
-   * @default false
-   */
-  hideHeader?: boolean
-}
+export type PopoverLayoutProps = ModalLayoutProps &
+  Pick<PopoverFooterProps, 'closeButton'> & {
+    /**
+     * Header will not be visually available but it will still properly announced in screen reader scenarios
+     * @default false
+     */
+    hideHeader?: boolean
+  }
 
 const constructPopoverHeader = (
   children?: ReactNode,
@@ -55,6 +56,7 @@ const constructPopoverHeader = (
 
 export const PopoverLayout: FC<PopoverLayoutProps> = ({
   children,
+  closeButton,
   footer = true,
   header,
   hideHeader = false,
@@ -68,7 +70,11 @@ export const PopoverLayout: FC<PopoverLayoutProps> = ({
       <PopoverContent hasFooter={!footer} hasHeader={!header}>
         {isLoading ? <ModalLoading /> : children}
       </PopoverContent>
-      {footer && <PopoverFooter>{internalFooter}</PopoverFooter>}
+      {footer && (
+        <PopoverFooter closeButton={closeButton}>
+          {internalFooter}
+        </PopoverFooter>
+      )}
     </>
   )
 }
