@@ -24,12 +24,12 @@
 
  */
 
-export * from './List'
-export * from './ListDivider'
-export * from './ListItem'
-export * from './ListItemContext'
-export * from './ListItemContent'
-export * from './ListItemIcon'
-export * from './ListItemLabel'
-export { listItemDimensions } from './utils'
-export type { ListItemProps } from './types'
+import styled from 'styled-components'
+
+export const AccordionLabel = styled.div`
+  flex: 1;
+  /*
+    min-width prevent truncate text from growing AccordionLabel past the disclosure's 100% width
+   */
+  min-width: 0;
+`

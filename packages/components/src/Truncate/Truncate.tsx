@@ -34,7 +34,7 @@ import {
 import { width as widthHelper, WidthProps } from 'styled-system'
 import { Span } from '../Text/Span'
 import { useTooltip } from '../Tooltip'
-import { useIsTruncated } from '../utils/useIsTruncated'
+import { mergeClassNames, useIsTruncated } from '../utils'
 
 export type TruncateProps = TextColorProps &
   TypographyProps &
@@ -111,13 +111,14 @@ const TruncateLayout: FC<TruncateProps> = ({
     width: 'auto',
   })
 
-  const { className: tooltipClassName, ...otherDomProps } = domProps
-  const className = [tooltipClassName, propsClassName].join(' ')
-
   return (
     <>
       {tooltip}
-      <span {...otherDomProps} className={className} ref={textRef}>
+      <span
+        {...domProps}
+        className={mergeClassNames([domProps.className, propsClassName])}
+        ref={textRef}
+      >
         {children}
       </span>
     </>

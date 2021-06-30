@@ -28,6 +28,7 @@ import React, { FC, Ref, ReactNode, forwardRef } from 'react'
 import styled, { css } from 'styled-components'
 import { CompatibleHTMLProps, shouldForwardProp } from '@looker/design-tokens'
 import { FocusVisibleProps, focusVisibleCSSWrapper } from '../utils'
+import { AccordionLabel } from './AccordionLabel'
 import { AccordionIndicatorPosition } from './types'
 
 export type Accordion2DisclosureProps = CompatibleHTMLProps<HTMLElement> &
@@ -50,14 +51,6 @@ const Accordion2DisclosureInternal: FC<Accordion2DisclosureProps> = forwardRef(
 )
 
 Accordion2DisclosureInternal.displayName = 'Accordion2DisclosureInternal'
-
-const AccordionLabel = styled.div`
-  flex: 1;
-  /*
-    min-width prevent truncate text from growing AccordionLabel past the disclosure's 100% width
-   */
-  min-width: 0;
-`
 
 /**
  * Default AccordionLabel typography styles.

@@ -32,7 +32,7 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import { useAccordion2 } from '../Accordion2/useAccordion2'
+import { useAccordion2 } from '../Accordion2'
 import { Accordion2Disclosure } from '../Accordion2/Accordion2Disclosure'
 import { ControlledOrUncontrolled } from '../Accordion2/controlTypes'
 import { partitionAriaProps, undefinedCoalesce, useWrapEvent } from '../utils'

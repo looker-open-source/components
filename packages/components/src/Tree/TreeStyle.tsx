@@ -29,11 +29,15 @@ import styled, { css } from 'styled-components'
 import { SpacingSizes } from '@looker/design-tokens'
 import { Accordion2Disclosure } from '../Accordion2/Accordion2Disclosure'
 import { Accordion2Content } from '../Accordion2/Accordion2Content'
-import { ListItemIcon } from '../List/ListItemIcon'
 import { FlexibleColor, ListItemStatefulProps } from '../List/types'
 import { listItemBackgroundColor } from '../List/utils'
-import { List, ListItem } from '../List'
-import { ListItemContent, listItemContentCSS } from '../List/ListItemContent'
+import {
+  List,
+  ListItem,
+  ListItemContent,
+  listItemContentCSS,
+  ListItemIcon,
+} from '../List'
 import { IconSize, IconType } from '../Icon'
 import { TreeAccordion } from './TreeAccordion'
 import { TreeItem } from './TreeItem'
