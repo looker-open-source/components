@@ -33,6 +33,6 @@ test('VisuallyHiddenText default', () => {
   renderWithTheme(<VisuallyHidden>I am hidden</VisuallyHidden>)
   expect(screen.getByText('I am hidden')).toBeInTheDocument()
   expect(screen.getByText('I am hidden')).toHaveStyle(
-    'clip: rect(1px, 1px, 1px, 0px)'
+    'clip: rect(1px, 1px, 1px, 1px)'
   )
 })
