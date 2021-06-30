@@ -86,6 +86,9 @@ const FieldDetail = styled(Paragraph)`
 const FieldDescription = styled(Paragraph)`
   color: ${({ theme }) => theme.colors.text2};
   font-size: ${({ theme }) => theme.fontSizes.xsmall};
+  line-height: ${({ theme }) => theme.lineHeights.xsmall};
+  padding-bottom: ${({ theme }) => theme.space.xxxsmall};
+  padding-top: ${({ theme }) => theme.space.xxxsmall};
 `
 
 const InputArea = styled.div`
