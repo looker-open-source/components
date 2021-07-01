@@ -17,5 +17,6 @@
     "**/stories/*",
     "**/*.test.ts",
     "**/*.test.tsx"
-  ]
+  ],
+  "include": ["types"]
 }

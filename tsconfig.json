@@ -8,5 +8,5 @@
       "@looker/*": ["packages/*/src"]
     }
   },
-  "include": ["apps/*/src", "packages/*/src", "storybook/*/src"]
+  "include": ["apps/*/src", "packages/*/src", "storybook/*/src",  "types", ]
 }
