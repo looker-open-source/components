@@ -32,6 +32,7 @@ import {
 } from '@looker/design-tokens'
 import { ReactNode } from 'react'
 import { IconSize, IconType } from '../Icon'
+import { ListColor } from '../List'
 import { TruncateConfigProp } from '../Truncate'
 import { HoverDisclosureProps } from '../utils/HoverDisclosure'
 
@@ -70,9 +71,6 @@ export const listItemDimensionKeys = [
   'detailFontSize',
 ]
 
-export type LimitedListColor = 'key' | 'calculation' | 'dimension' | 'measure'
-export type StringColor = LimitedListColor | string
-
 export const listItemColorAppliesToLabel = ['calculation', 'measure']
 export const listItemColorOptions = [
   'key',
@@ -81,7 +79,8 @@ export const listItemColorOptions = [
   'measure',
 ]
 
-export type FlexibleColor = {
+export type ListItemColor = ListColor | string
+export type ListItemColorProp = {
   /**
    * Replace the normal uiN(1-5) color, when ListItem is selected, with color label passed.
    *
@@ -96,28 +95,8 @@ export type FlexibleColor = {
    * is `selected` or `current`. Items with `calculation` & `measure` will have a text
    * color applied at all times unless they are `disabled`
    */
-  color?: StringColor
+  color?: ListItemColor
 }
-
-export type LimitedColor = {
-  /**
-   * Replace the normal uiN(1-5) color, when ListItem is selected, with color label passed.
-   *
-   * List, ListItem, Tree & TreeItem now theme-based color assignments. Supported colors are:
-   *
-   *  - key
-   *  - calculation
-   *  - dimension
-   *  - measure
-   *
-   * The color is used a background color (using the `subtle` variant) when the item
-   * is `selected` or `current`. Items with `calculation` & `measure` will have a text
-   * color applied at all times unless they are `disabled`
-   */
-  color?: LimitedListColor
-}
-
-export type ListItemColorProps = FlexibleColor
 
 export type ListItemStatefulProps = {
   /**
@@ -142,6 +121,9 @@ export type ListItemStatefulProps = {
   selected?: boolean
 }
 
+export type ListItemDetailConfig =
+  | ReactNode
+  | { content: ReactNode; options: ListItemDetailOptions }
 export interface ListItemDetailOptions
   extends Pick<HoverDisclosureProps, 'width'> {
   /**
@@ -161,15 +143,11 @@ export interface ListItemDetailOptions
   padding?: boolean
 }
 
-export type Detail =
-  | ReactNode
-  | { content: ReactNode; options: ListItemDetailOptions }
-
 export type ListItemRole = 'button' | 'link' | 'none'
 
 export type ListItemProps = CompatibleHTMLProps<HTMLElement> &
-  ListItemStatefulProps &
-  ListItemColorProps & {
+  ListItemColorProp &
+  ListItemStatefulProps & {
     /**
      * Determines the sizing and spacing of the item
      * Notes:
@@ -190,7 +168,7 @@ export type ListItemProps = CompatibleHTMLProps<HTMLElement> &
      *
      * I18n recommended: content that is user visible should be treated for i18n
      */
-    detail?: Detail
+    detail?: ListItemDetailConfig
     /**
      * Optional icon placed left of the item children
      */

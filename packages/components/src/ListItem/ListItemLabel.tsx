@@ -28,11 +28,11 @@ import { CompatibleHTMLProps } from '@looker/design-tokens'
 import React, { ReactNode } from 'react'
 import styled from 'styled-components'
 import { TruncateConfigProp, TruncateOptionally } from '../Truncate'
-import { DensityRamp, FlexibleColor } from './types'
+import { DensityRamp, ListItemColorProp } from './types'
 import { listItemDimensions, listItemLabelColor } from './utils'
 
 type ListItemLabelProps = CompatibleHTMLProps<HTMLElement> &
-  FlexibleColor & {
+  ListItemColorProp & {
     disabled?: boolean
     description?: ReactNode
     density?: DensityRamp

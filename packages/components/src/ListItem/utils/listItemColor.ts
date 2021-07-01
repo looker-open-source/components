@@ -24,11 +24,14 @@
 
  */
 
-import { listItemColorAppliesToLabel, listItemColorOptions } from '../types'
-import { ListColor } from '../../List'
+import {
+  listItemColorAppliesToLabel,
+  ListItemColor,
+  listItemColorOptions,
+} from '../types'
 
 const listItemColor = (
-  color?: ListColor,
+  color?: ListItemColor,
   disabled?: boolean,
   defaultColor?: string
 ) => {
@@ -46,8 +49,8 @@ const listItemColor = (
   return defaultColor
 }
 
-export const listItemIconColor = (color?: ListColor, disabled?: boolean) =>
+export const listItemIconColor = (color?: ListItemColor, disabled?: boolean) =>
   listItemColor(color, disabled, 'text2')
 
-export const listItemLabelColor = (color?: ListColor, disabled?: boolean) =>
+export const listItemLabelColor = (color?: ListItemColor, disabled?: boolean) =>
   listItemColor(color, disabled, 'text5')
