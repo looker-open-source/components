@@ -47,17 +47,6 @@ jobs:
           name: coverage
           path: coverage
           retention-days: 5
-  coverage:
-    name: "Coverage"
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: c-hive/gha-yarn-cache@v1
-      - uses: artiomtr/jest-coverage-report-action@v2.0-rc.1
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          package-manager: yarn
-          threshold: 80
   build:
     name: "Build: ES & Typescript"
     runs-on: ubuntu-latest
@@ -86,10 +75,12 @@ jobs:
       - run : yarn --silent
       - run: yarn test:image-snapshots
         id: snapshots
-    # If snapshots failed, build fresh ones and open a PR to help out our friends
+      # If snapshots failed, build fresh ones and open a PR to help out our friends
       - name: Fresh snapshots
         if: ${{ always() && (steps.snapshots.outcome == 'failure') }}
-        run: yarn test:image-snapshots-update
+        # This command assumes Storybook has already been built
+        # It's built above in the `yarn test:image-snapshots` so that's a safe assumption
+        run: yarn workspace storybook snapshots-update
         id: snapshots-update
       - name: Create Pull Request
         if: ${{ always() && (steps.snapshots-update.outcome == 'success') }}

@@ -1,0 +1,17 @@
+name: Coverage
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: c-hive/gha-yarn-cache@v1
+      - uses: artiomtr/jest-coverage-report-action@v2.0-rc.1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          package-manager: yarn
+          threshold: 85
