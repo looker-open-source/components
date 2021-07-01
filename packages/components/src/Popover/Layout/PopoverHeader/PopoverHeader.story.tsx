@@ -39,6 +39,13 @@ Basic.parameters = {
   },
 }
 
+export const Hidden = () => <PopoverHeader hidden>Header Text</PopoverHeader>
+Hidden.parameters = {
+  storyshots: {
+    disable: true,
+  },
+}
+
 export const HideClose = () => (
   <PopoverHeader hideClose>Header Text</PopoverHeader>
 )

@@ -31,6 +31,7 @@ import React, { useRef } from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { Button } from '../Button'
 import { Popover } from './Popover'
+import { PopoverLayout } from './Layout'
 
 const SimpleContent = <div>simple content</div>
 
@@ -42,6 +43,35 @@ describe('Popover', () => {
       // won't misleadingly fail since render adds the output to the end of the body
       document.body.removeChild(root)
     }
+  })
+
+  test('Accessibility', () => {
+    renderWithTheme(
+      <Popover
+        id="a11y"
+        content={
+          <PopoverLayout header="Header text" footer>
+            content
+          </PopoverLayout>
+        }
+      >
+        <Button>Open</Button>
+      </Popover>
+    )
+
+    const openPopover = screen.getByText('Open')
+    fireEvent.click(openPopover)
+
+    expect(screen.queryByText('Header text')).toBeInTheDocument()
+    expect(screen.getByRole('dialog')).toBeInTheDocument()
+    expect(screen.getByRole('dialog')).toHaveAttribute(
+      'aria-labelledby',
+      'a11y-heading'
+    )
+    expect(screen.getByText('Header text')).toHaveAttribute(
+      'id',
+      'a11y-heading'
+    )
   })
 
   test('cloneElement style opens and closes', () => {

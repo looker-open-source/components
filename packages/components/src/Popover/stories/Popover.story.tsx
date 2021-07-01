@@ -45,11 +45,13 @@ import {
   Space,
   SpaceVertical,
   useToggle,
+  PopoverLayout,
 } from '../..'
 import { Tooltip } from '../../Tooltip'
 import { Popover } from '../Popover'
 import { PopoverContent } from '../Layout/PopoverContent'
 import { usePopover } from '../usePopover'
+import { ConstitutionShort } from '../../__mocks__/Constitution'
 
 export * from './OverflowExamples'
 
@@ -66,6 +68,23 @@ export const Basic = () => (
 
 Basic.parameters = {
   storyshots: { disable: true },
+}
+
+export const PopoverPopoverLayout = () => (
+  <Popover
+    content={
+      <PopoverLayout header="Header text" footer>
+        <ConstitutionShort fontSize="small" />
+      </PopoverLayout>
+    }
+  >
+    <Button>Open</Button>
+  </Popover>
+)
+PopoverPopoverLayout.parameters = {
+  storyshots: {
+    disable: true,
+  },
 }
 
 const options = [

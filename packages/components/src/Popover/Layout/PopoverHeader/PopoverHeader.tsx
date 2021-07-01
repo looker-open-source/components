@@ -24,8 +24,10 @@
 
  */
 
-import React, { FC, ReactNode } from 'react'
+import React, { FC, ReactNode, useContext } from 'react'
 import styled from 'styled-components'
+import { DialogContext } from '../../../Dialog/DialogContext'
+import { VisuallyHidden } from '../../../VisuallyHidden'
 import {
   ModalHeaderCloseButton,
   ModalHeader,
@@ -50,19 +52,31 @@ type DetailOptions = WithDetail | WithHideClose
 
 export type PopoverHeaderProps = DetailOptions & {
   children: ReactNode
+  /**
+   * Make PopoverHeader visually hidden.
+   * @default false
+   */
+  hidden?: boolean
 }
 
 const PopoverHeaderLayout: FC<PopoverHeaderProps> = ({
   children,
   hideClose = false,
   detail,
+  hidden = false,
   ...props
 }) => {
-  return (
+  const { id } = useContext(DialogContext)
+  const headingId = id ? `${id}-heading` : undefined
+
+  return hidden ? (
+    <VisuallyHidden id={headingId}>{children}</VisuallyHidden>
+  ) : (
     <ModalHeader
       detail={detail || (!hideClose && <ModalHeaderCloseButton size="small" />)}
       fontSize="small"
       fontWeight="medium"
+      id={headingId}
       pl="large"
       pr="medium"
       py="small"

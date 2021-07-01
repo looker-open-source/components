@@ -24,9 +24,8 @@
 
  */
 
-import React, { FC, ReactNode } from 'react'
+import React, { FC } from 'react'
 import { ModalLayoutProps, ModalLoading } from '../../Modal/ModalLayout'
-import { VisuallyHidden } from '../../VisuallyHidden'
 import { PopoverContent } from './PopoverContent'
 import { PopoverFooter } from './PopoverFooter'
 import { PopoverHeader } from './PopoverHeader'
@@ -39,20 +38,6 @@ export type PopoverLayoutProps = ModalLayoutProps & {
   hideHeader?: boolean
 }
 
-const constructPopoverHeader = (
-  children?: ReactNode,
-  hideHeader?: boolean,
-  footer?: boolean
-) => {
-  if (!children) {
-    return null
-  } else if (hideHeader) {
-    return <VisuallyHidden>{children}</VisuallyHidden>
-  } else {
-    return <PopoverHeader hideClose={footer}>{children}</PopoverHeader>
-  }
-}
-
 export const PopoverLayout: FC<PopoverLayoutProps> = ({
   children,
   footer = true,
@@ -61,10 +46,14 @@ export const PopoverLayout: FC<PopoverLayoutProps> = ({
   isLoading,
 }) => {
   const internalFooter = typeof footer === 'boolean' ? null : footer
-  const popoverHeader = constructPopoverHeader(header, hideHeader, !!footer)
+
   return (
     <>
-      {popoverHeader}
+      {header && (
+        <PopoverHeader hidden={hideHeader} hideClose={!!footer}>
+          {header}
+        </PopoverHeader>
+      )}
       <PopoverContent hasFooter={!footer} hasHeader={!header}>
         {isLoading ? <ModalLoading /> : children}
       </PopoverContent>
