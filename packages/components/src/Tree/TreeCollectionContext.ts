@@ -25,7 +25,7 @@
  */
 
 import { createContext } from 'react'
-import { DensityProps } from '../List/types'
+import { DensityProps } from '../ListItem/types'
 import { ToggleStateMap } from './types'
 
 export type TreeCollectionContextProps = DensityProps & {

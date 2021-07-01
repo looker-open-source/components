@@ -24,33 +24,38 @@
 
  */
 
-import { RadiusSizes, Theme } from '@looker/design-tokens'
+import { itemSelectedColor, Theme } from '@looker/design-tokens'
 import { css } from 'styled-components'
-import { Accordion2Disclosure } from '../../Accordion2/Accordion2Disclosure'
-import { ListItem, ListItemContent } from '../../ListItem'
+import { FlexibleColor, ListItemStatefulProps } from '../../ListItem/types'
 
-// Creates CSS for generating border radius on Tree and sub-Tree components
-export const generateBorderRadius = (
-  borderRadius: RadiusSizes,
-  theme: Theme
-) => {
-  const { radii } = theme
+export const listItemBackgroundColor = ({
+  color,
+  disabled,
+  hovered,
+  selected,
+  theme: { colors },
+}: ListItemStatefulProps & FlexibleColor & { theme: Theme }) => {
+  const stateColors = color
+    ? {
+        all: colors[`${color}Subtle`],
+        hovered: colors.ui1,
+        selected: colors[`${color}Subtle`],
+      }
+    : {
+        all: itemSelectedColor(colors.ui2),
+        hovered: colors.ui1,
+        selected: itemSelectedColor(colors.ui2),
+      }
+
+  let renderedColor
+
+  if (disabled) renderedColor = 'transparent'
+  else if (selected && hovered) renderedColor = stateColors.all
+  else if (selected) renderedColor = stateColors.selected
+  else if (hovered) renderedColor = stateColors.hovered
+  else renderedColor = 'transparent'
 
   return css`
-    ${Accordion2Disclosure} {
-      border-radius: ${radii[borderRadius]};
-
-      &:focus::after {
-        border-radius: ${radii[borderRadius]};
-      }
-
-      ${ListItem} {
-        border-radius: ${radii[borderRadius]};
-      }
-    }
-
-    ${ListItemContent} {
-      border-radius: ${radii[borderRadius]};
-    }
+    background: ${renderedColor};
   `
 }

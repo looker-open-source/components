@@ -24,6 +24,7 @@
 
  */
 
+export * from './createSafeRel'
 export * from './getNextFocus'
 export * from './getNextFocusTarget'
 export * from './getWindowedListBoundaries'

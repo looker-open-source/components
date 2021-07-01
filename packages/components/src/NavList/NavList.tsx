@@ -26,10 +26,14 @@
 
 import styled from 'styled-components'
 import { TextBase } from '../Text/TextBase'
-import { ListItemDetail } from '../List/ListItemDetail'
 import { Accordion2Disclosure } from '../Accordion2/Accordion2Disclosure'
-import { List, ListItem, ListItemContent } from '../List'
-import { ListItemIcon } from '../List/ListItemIcon'
+import { List } from '../List'
+import {
+  ListItem,
+  ListItemContent,
+  ListItemDetail,
+  ListItemIcon,
+} from '../ListItem'
 
 /**
  * `NavList` is a variation of `List`

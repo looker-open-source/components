@@ -24,11 +24,4 @@
 
  */
 
-export * from './createSafeRel'
-export * from './getDetailOptions'
-export * from './listItemBackgroundColor'
-export * from './listItemColor'
-export * from './listItemDimensions'
-export * from './listItemPadding'
 export * from './listPadding'
-export * from './createListItemPartitions'

@@ -26,7 +26,7 @@
 
 import { ReactNode } from 'react'
 import { ControlledLoosely } from '../Accordion2/controlTypes'
-import { ListItemProps } from '../List'
+import { ListItemProps } from '../ListItem'
 import { GenericClickProps } from '../utils/useClickable'
 
 // We need this array to pass link related props from Tree to the nested TreeItem (rather than the AccordionDisclosure)

@@ -27,7 +27,7 @@
 import React, { useState } from 'react'
 import { Home } from '@styled-icons/material-outlined/Home'
 import { Info } from '@styled-icons/material-outlined/Info'
-import { ListItem } from '../List/ListItem'
+import { ListItem } from '../ListItem'
 import { ProgressCircular } from '../ProgressCircular'
 import { Tree, TreeItem } from '../Tree'
 import { NavList } from './NavList'

@@ -24,7 +24,7 @@
 
  */
 
-import { DensityRamp, ListItemDimensions } from '../types'
+import { DensityRamp, ListItemDimensions } from '../../ListItem/types'
 
 export const density0: ListItemDimensions = {
   descriptionFontSize: 'xsmall',

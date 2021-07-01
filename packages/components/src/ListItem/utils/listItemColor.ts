@@ -24,20 +24,33 @@
 
  */
 
-import { Detail } from '../types'
+import {
+  ListColor,
+  listItemColorAppliesToLabel,
+  listItemColorOptions,
+} from '../../ListItem/types'
 
-// Simplifies the type check when dealing with ListItem and related components
-export const getDetailOptions = (detail: Detail) => {
-  let accessory, hoverDisclosure, content, width
-
-  if (typeof detail === 'object' && detail && 'options' in detail) {
-    accessory = detail.options.accessory
-    content = detail.content
-    hoverDisclosure = detail.options.hoverDisclosure
-    width = detail.options.width
-  } else {
-    content = detail
+const listItemColor = (
+  color?: ListColor,
+  disabled?: boolean,
+  defaultColor?: string
+) => {
+  if (disabled) {
+    return 'text1'
+  } else if (color) {
+    if (listItemColorAppliesToLabel.includes(color)) {
+      // Theme "slot" & color is applied to label
+      return color
+    } else if (!listItemColorOptions.includes(color)) {
+      // HTML color
+      return color
+    }
   }
-
-  return { accessory, content, hoverDisclosure, width }
+  return defaultColor
 }
+
+export const listItemIconColor = (color?: ListColor, disabled?: boolean) =>
+  listItemColor(color, disabled, 'text2')
+
+export const listItemLabelColor = (color?: ListColor, disabled?: boolean) =>
+  listItemColor(color, disabled, 'text5')

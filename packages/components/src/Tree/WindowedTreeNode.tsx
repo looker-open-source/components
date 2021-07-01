@@ -31,7 +31,7 @@ import React, {
   useCallback,
   useContext,
 } from 'react'
-import { DensityProps } from '../List/types'
+import { DensityProps } from '../ListItem/types'
 import { TreeCollectionContext } from './TreeCollectionContext'
 import { WindowedTreeNodeIDProps } from './types'
 

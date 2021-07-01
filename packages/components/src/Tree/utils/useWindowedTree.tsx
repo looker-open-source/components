@@ -25,8 +25,8 @@
  */
 
 import React, { Ref, useCallback, useEffect, useReducer } from 'react'
-import { listItemDimensions } from '../../List'
-import { DensityProps } from '../../List/types'
+import { listItemDimensions } from '../../ListItem'
+import { DensityProps } from '../../ListItem/types'
 import { useWindow } from '../../utils'
 import { WindowedTreeNodeProps, WindowedTreeNodeIDProps } from '../types'
 import { WindowedTreeNode } from '../WindowedTreeNode'

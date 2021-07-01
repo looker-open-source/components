@@ -26,7 +26,7 @@
 
 import { SpaceRamp } from '@looker/design-tokens'
 import { css } from 'styled-components'
-import { DensityRamp } from '../types'
+import { DensityRamp } from '../../ListItem/types'
 import { listItemDimensions } from './listItemDimensions'
 
 const calculatePadding = (density: DensityRamp, space: SpaceRamp) => {

@@ -40,7 +40,7 @@ import {
 } from '../..'
 import { TreeItem } from '..'
 import { HoverDisclosure } from '../../utils'
-import { listItemDimensions } from '../../List'
+import { listItemDimensions } from '../../ListItem'
 import { ReplaceText, Span } from '../../Text'
 
 export const HighlightContext = createContext({ term: '' })
