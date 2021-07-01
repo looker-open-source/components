@@ -72,7 +72,6 @@ export const listItemDimensionKeys = [
 
 export type LimitedListColor = 'key' | 'calculation' | 'dimension' | 'measure'
 export type StringColor = LimitedListColor | string
-export type ListColor = StringColor
 
 export const listItemColorAppliesToLabel = ['calculation', 'measure']
 export const listItemColorOptions = [
@@ -119,7 +118,6 @@ export type LimitedColor = {
 }
 
 export type ListItemColorProps = FlexibleColor
-export type ListColorProps = LimitedColor
 
 export type ListItemStatefulProps = {
   /**
@@ -144,7 +142,8 @@ export type ListItemStatefulProps = {
   selected?: boolean
 }
 
-export interface DetailOptions extends Pick<HoverDisclosureProps, 'width'> {
+export interface ListItemDetailOptions
+  extends Pick<HoverDisclosureProps, 'width'> {
   /**
    * If true, the detail will appear outside of the item's grey background on hover
    * In addition, if true, events originating from the detail will not bubble to the item's handlers
@@ -162,7 +161,9 @@ export interface DetailOptions extends Pick<HoverDisclosureProps, 'width'> {
   padding?: boolean
 }
 
-export type Detail = ReactNode | { content: ReactNode; options: DetailOptions }
+export type Detail =
+  | ReactNode
+  | { content: ReactNode; options: ListItemDetailOptions }
 
 export type ListItemRole = 'button' | 'link' | 'none'
 

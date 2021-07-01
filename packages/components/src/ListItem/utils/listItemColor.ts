@@ -24,11 +24,8 @@
 
  */
 
-import {
-  ListColor,
-  listItemColorAppliesToLabel,
-  listItemColorOptions,
-} from '../../ListItem/types'
+import { listItemColorAppliesToLabel, listItemColorOptions } from '../types'
+import { ListColor } from '../../List'
 
 const listItemColor = (
   color?: ListColor,

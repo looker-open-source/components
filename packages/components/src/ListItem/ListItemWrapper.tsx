@@ -28,7 +28,7 @@ import { CompatibleHTMLProps, shouldForwardProp } from '@looker/design-tokens'
 import omit from 'lodash/omit'
 import React, { forwardRef, ReactNode, Ref } from 'react'
 import styled from 'styled-components'
-import { ListColor } from './types'
+import { ListColor } from '../List'
 
 export interface ListItemWrapperProps extends CompatibleHTMLProps<HTMLElement> {
   color: ListColor

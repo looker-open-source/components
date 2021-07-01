@@ -27,10 +27,10 @@
 import styled from 'styled-components'
 import React, { ReactNode } from 'react'
 import { HoverDisclosure } from '../utils/HoverDisclosure'
-import { DetailOptions } from './types'
+import { ListItemDetailOptions } from './types'
 
 export type ListItemDetailProps = Omit<
-  DetailOptions,
+  ListItemDetailOptions,
   'accessory' | 'padding'
 > & {
   children?: ReactNode

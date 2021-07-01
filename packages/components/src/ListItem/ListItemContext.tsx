@@ -25,7 +25,8 @@
  */
 
 import { createContext } from 'react'
-import { DensityRamp, ListColor } from './types'
+import { ListColor } from '../List'
+import { DensityRamp } from './types'
 
 export interface ListItemContextProps {
   density: DensityRamp

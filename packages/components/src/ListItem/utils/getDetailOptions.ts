@@ -24,7 +24,7 @@
 
  */
 
-import { Detail } from '../../ListItem/types'
+import { Detail } from '../types'
 
 // Simplifies the type check when dealing with ListItem and related components
 export const getDetailOptions = (detail: Detail) => {

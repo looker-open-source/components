@@ -43,8 +43,8 @@ import {
 import { HeightProps, fontFamily } from 'styled-system'
 import styled from 'styled-components'
 import { useArrowKeyNav, useWindow } from '../utils'
-import { DensityProps, ListColorProps } from '../ListItem/types'
-import { ListItemContext, listItemDimensions } from '../ListItem'
+import { DensityProps, ListItemContext, listItemDimensions } from '../ListItem'
+import { ListColorProps } from './types'
 
 export type ListProps = ListColorProps &
   HeightProps &

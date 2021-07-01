@@ -25,7 +25,8 @@
  */
 
 import { createContext } from 'react'
-import { DensityProps, ListColor } from '../ListItem/types'
+import { DensityProps } from '../ListItem/types'
+import { ListColor } from '../List'
 
 export type TreeContextProps = DensityProps & {
   border?: boolean

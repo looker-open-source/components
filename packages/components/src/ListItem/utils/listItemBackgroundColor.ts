@@ -26,7 +26,7 @@
 
 import { itemSelectedColor, Theme } from '@looker/design-tokens'
 import { css } from 'styled-components'
-import { FlexibleColor, ListItemStatefulProps } from '../../ListItem/types'
+import { FlexibleColor, ListItemStatefulProps } from '../types'
 
 export const listItemBackgroundColor = ({
   color,
