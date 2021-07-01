@@ -33,8 +33,7 @@ import {
   pickStyledProps,
 } from '@looker/design-tokens'
 import { Heading } from '../Text/Heading'
-import { listItemDimensions } from '../List'
-import { ListItemContext } from '../List/ListItemContext'
+import { ListItemContext, listItemDimensions } from '../ListItem'
 import { useElementVisibility } from './MenuHeading.hooks'
 
 interface MenuHeadingProps

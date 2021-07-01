@@ -29,15 +29,16 @@ import styled, { css } from 'styled-components'
 import { SpacingSizes } from '@looker/design-tokens'
 import { Accordion2Disclosure } from '../Accordion2/Accordion2Disclosure'
 import { Accordion2Content } from '../Accordion2/Accordion2Content'
-import { FlexibleColor, ListItemStatefulProps } from '../List/types'
-import { listItemBackgroundColor } from '../List/utils'
+import { List } from '../List'
 import {
-  List,
   ListItem,
+  ListItemColorProp,
   ListItemContent,
   listItemContentCSS,
   ListItemIcon,
-} from '../List'
+  ListItemStatefulProps,
+} from '../ListItem'
+import { listItemBackgroundColor } from '../ListItem/utils'
 import { IconSize, IconType } from '../Icon'
 import { TreeAccordion } from './TreeAccordion'
 import { TreeItem } from './TreeItem'
@@ -49,7 +50,7 @@ import {
 } from './utils'
 
 type TreeStyleProps = ListItemStatefulProps &
-  FlexibleColor & {
+  ListItemColorProp & {
     assumeIconAlignment?: boolean
     border?: boolean
     branchFontWeight?: boolean

@@ -30,7 +30,7 @@ import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
 import { FocusVisibleProps } from '../utils'
 import {
   DensityRamp,
-  FlexibleColor,
+  ListItemColorProp,
   ListItemRole,
   ListItemStatefulProps,
 } from './types'
@@ -60,7 +60,7 @@ export const listItemLabelCSS = listItemContentCSS
 
 type ListItemContentProps = CompatibleHTMLProps<HTMLElement> &
   ListItemStatefulProps &
-  FlexibleColor &
+  ListItemColorProp &
   FocusVisibleProps & {
     cursorPointer?: boolean
     density?: DensityRamp

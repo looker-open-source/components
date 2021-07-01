@@ -36,9 +36,9 @@ import { useAccordion2 } from '../Accordion2'
 import { Accordion2Disclosure } from '../Accordion2/Accordion2Disclosure'
 import { ControlledOrUncontrolled } from '../Accordion2/controlTypes'
 import { partitionAriaProps, undefinedCoalesce, useWrapEvent } from '../utils'
-import { List, ListItemProps } from '../List'
-import { ListItemContext } from '../List/ListItemContext'
-import { listItemDimensions, getDetailOptions } from '../List/utils'
+import { List } from '../List'
+import { ListItemContext, ListItemProps } from '../ListItem'
+import { listItemDimensions, getDetailOptions } from '../ListItem/utils'
 import { TreeContext } from './TreeContext'
 import { indicatorDefaults } from './utils'
 import { WindowedTreeContext } from './WindowedTreeNode'
@@ -56,6 +56,7 @@ const TreeLayout = ({
   border: propsBorder,
   children,
   className,
+  disabled,
   dividers,
   forceLabelPadding,
   itemRole,
@@ -83,7 +84,6 @@ const TreeLayout = ({
     color: propsColor,
     density: propsDensity,
     detail: propsDetail,
-    disabled,
     icon,
     selected,
     ...restTreeItemInnerProps

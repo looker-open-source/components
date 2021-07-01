@@ -27,9 +27,9 @@
 import React, { FC } from 'react'
 import { TreeCollection, TreeItem, Tree } from '..'
 import { Grid } from '../../Layout/Grid'
-import { LimitedListColor } from '../../List/types'
+import { ListItemColor } from '../../ListItem'
 
-const Basic: FC<{ children: string; color?: LimitedListColor }> = ({
+const Basic: FC<{ children: string; color?: ListItemColor }> = ({
   children,
   ...props
 }) => (

@@ -24,20 +24,29 @@
 
  */
 
-import { Detail } from '../types'
+import styled from 'styled-components'
+import React, { ReactNode } from 'react'
+import { HoverDisclosure } from '../utils/HoverDisclosure'
+import { ListItemDetailOptions } from './types'
 
-// Simplifies the type check when dealing with ListItem and related components
-export const getDetailOptions = (detail: Detail) => {
-  let accessory, hoverDisclosure, content, width
-
-  if (typeof detail === 'object' && detail && 'options' in detail) {
-    accessory = detail.options.accessory
-    content = detail.content
-    hoverDisclosure = detail.options.hoverDisclosure
-    width = detail.options.width
-  } else {
-    content = detail
-  }
-
-  return { accessory, content, hoverDisclosure, width }
+export type ListItemDetailProps = Omit<
+  ListItemDetailOptions,
+  'accessory' | 'padding'
+> & {
+  children?: ReactNode
+  className?: string
 }
+
+export const ListItemDetail = styled(
+  ({ hoverDisclosure, width, ...props }: ListItemDetailProps) => (
+    <HoverDisclosure width={width} visible={!hoverDisclosure}>
+      <div {...props} />
+    </HoverDisclosure>
+  )
+)`
+  align-items: center;
+  color: ${({ theme }) => theme.colors.text2};
+  display: flex;
+  font-size: ${({ theme }) => theme.fontSizes.xsmall};
+  margin-left: auto;
+`

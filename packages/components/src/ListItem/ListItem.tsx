@@ -34,6 +34,7 @@ import React, {
   useState,
 } from 'react'
 import {
+  createSafeRel,
   getNextFocusTarget,
   HoverDisclosureContext,
   partitionAriaProps,
@@ -46,8 +47,7 @@ import { IconPlaceholder } from '../Icon'
 import { ListItemContext } from './ListItemContext'
 import { ListItemContent } from './ListItemContent'
 import { ListItemWrapper } from './ListItemWrapper'
-import { listItemLabelColor } from './utils/listItemColor'
-import { createListItemPartitions, createSafeRel } from './utils'
+import { createListItemPartitions, listItemLabelColor } from './utils'
 import { ListItemProps } from './types'
 
 const ListItemInternal = forwardRef(

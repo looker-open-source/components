@@ -28,8 +28,8 @@ import 'jest-styled-components'
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { screen } from '@testing-library/react'
+import { ListItem } from '../ListItem'
 import { Basic, LongList } from './List.story'
-import { ListItem } from './ListItem'
 import { List } from './List'
 
 /* eslint-disable-next-line @typescript-eslint/unbound-method */

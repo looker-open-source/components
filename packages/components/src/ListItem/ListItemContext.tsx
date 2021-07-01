@@ -24,38 +24,19 @@
 
  */
 
-import { itemSelectedColor, Theme } from '@looker/design-tokens'
-import { css } from 'styled-components'
-import { FlexibleColor, ListItemStatefulProps } from '../types'
+import { createContext } from 'react'
+import { ListColor } from '../List'
+import { DensityRamp } from './types'
 
-export const listItemBackgroundColor = ({
-  color,
-  disabled,
-  hovered,
-  selected,
-  theme: { colors },
-}: ListItemStatefulProps & FlexibleColor & { theme: Theme }) => {
-  const stateColors = color
-    ? {
-        all: colors[`${color}Subtle`],
-        hovered: colors.ui1,
-        selected: colors[`${color}Subtle`],
-      }
-    : {
-        all: itemSelectedColor(colors.ui2),
-        hovered: colors.ui1,
-        selected: itemSelectedColor(colors.ui2),
-      }
-
-  let renderedColor
-
-  if (disabled) renderedColor = 'transparent'
-  else if (selected && hovered) renderedColor = stateColors.all
-  else if (selected) renderedColor = stateColors.selected
-  else if (hovered) renderedColor = stateColors.hovered
-  else renderedColor = 'transparent'
-
-  return css`
-    background: ${renderedColor};
-  `
+export interface ListItemContextProps {
+  density: DensityRamp
+  iconGutter: boolean
+  color?: ListColor
 }
+
+const listItemContext: ListItemContextProps = {
+  density: 0,
+  iconGutter: false,
+}
+
+export const ListItemContext = createContext(listItemContext)

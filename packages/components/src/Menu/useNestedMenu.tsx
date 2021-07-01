@@ -38,7 +38,7 @@ import React, {
 import { DialogContext } from '../Dialog'
 import { usePopover } from '../Popover'
 import { useWrapEvent } from '../utils'
-import { ListItemContext } from '../List/ListItemContext'
+import { ListItemContext } from '../ListItem'
 import { NestedMenuContext } from './NestedMenuProvider'
 import { NestedMenuSurface } from './NestedMenuSurface'
 import { MenuList } from './'

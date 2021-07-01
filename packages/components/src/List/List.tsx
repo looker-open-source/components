@@ -43,15 +43,30 @@ import {
 import { HeightProps, fontFamily } from 'styled-system'
 import styled from 'styled-components'
 import { useArrowKeyNav, useWindow } from '../utils'
-import { ListItemContext } from './ListItemContext'
-import { DensityProps, ListColorProps } from './types'
-import { listItemDimensions } from './utils'
+import { DensityProps, ListItemContext, listItemDimensions } from '../ListItem'
 
-export type ListProps = ListColorProps &
-  HeightProps &
+export type ListColor = 'key' | 'calculation' | 'dimension' | 'measure'
+
+export type ListProps = HeightProps &
   WidthProps &
   Omit<CompatibleHTMLProps<HTMLUListElement>, 'label'> &
   DensityProps & {
+    /**
+     * Replace the normal uiN(1-5) color, when ListItem is selected, with color label passed.
+     *
+     * List, ListItem, Tree & TreeItem now theme-based color assignments. Supported colors are:
+     *
+     *  - key
+     *  - calculation
+     *  - dimension
+     *  - measure
+     *
+     * The color is used a background color (using the `subtle` variant) when the item
+     * is `selected` or `current`. Items with `calculation` & `measure` will have a text
+     * color applied at all times unless they are `disabled`
+     */
+    color?: ListColor
+
     /**
      * Disables the nested List's keyboard nav capabilities
      * @private

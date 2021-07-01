@@ -30,9 +30,9 @@ import { Story } from '@storybook/react/types-6-0'
 import { DateRange } from '@styled-icons/material-outlined/DateRange'
 import { SubdirectoryArrowLeft } from '@styled-icons/material/SubdirectoryArrowLeft'
 import { Flex, Grid, Space } from '../Layout'
-import { DensityRamp } from './types'
+import { DensityRamp } from '../ListItem/types'
+import { ListItem } from '../ListItem'
 import { List, ListProps } from './List'
-import { ListItem } from './ListItem'
 
 export default {
   component: List,

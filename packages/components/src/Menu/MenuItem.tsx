@@ -29,10 +29,13 @@ import React, { forwardRef, Ref, useContext } from 'react'
 import { size } from '@looker/design-tokens'
 import { ArrowRight } from '@styled-icons/material/ArrowRight'
 import { DialogContext } from '../Dialog'
-import { ListItem, ListItemProps } from '../List'
+import {
+  ListItem,
+  ListItemContext,
+  ListItemProps,
+  listItemDimensions,
+} from '../ListItem'
 import { useForkedRef, useID } from '../utils'
-import { ListItemContext } from '../List/ListItemContext'
-import { listItemDimensions } from '../List/utils'
 import { useNestedMenu, UseNestedMenuProps } from './useNestedMenu'
 
 export interface MenuItemProps

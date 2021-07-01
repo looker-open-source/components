@@ -34,9 +34,9 @@ import { Heading, Text } from '../Text'
 import { Grid } from '../Layout/Grid'
 import { SpaceVertical } from '../Layout/Space/SpaceVertical'
 import { Status } from '../Status'
+import { List } from '../List'
 import { ListItem } from './ListItem'
 import { ListItemProps, ListItemRole } from './types'
-import { List } from './List'
 
 const Template: Story<ListItemProps> = (args) => <ListItem {...args} />
 

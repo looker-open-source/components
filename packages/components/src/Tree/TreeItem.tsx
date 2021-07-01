@@ -27,7 +27,7 @@
 import React, { FC, useContext } from 'react'
 import styled from 'styled-components'
 import { undefinedCoalesce } from '../utils'
-import { ListItem, ListItemProps } from '../List'
+import { ListItem, ListItemProps } from '../ListItem'
 import { TreeContext } from './TreeContext'
 
 export type TreeItemProps = ListItemProps & {

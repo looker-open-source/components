@@ -24,29 +24,38 @@
 
  */
 
-import styled from 'styled-components'
-import React, { ReactNode } from 'react'
-import { HoverDisclosure } from '../utils/HoverDisclosure'
-import { DetailOptions } from './types'
+import { itemSelectedColor, Theme } from '@looker/design-tokens'
+import { css } from 'styled-components'
+import { ListItemColorProp, ListItemStatefulProps } from '../types'
 
-export type ListItemDetailProps = Omit<
-  DetailOptions,
-  'accessory' | 'padding'
-> & {
-  children?: ReactNode
-  className?: string
+export const listItemBackgroundColor = ({
+  color,
+  disabled,
+  hovered,
+  selected,
+  theme: { colors },
+}: ListItemStatefulProps & ListItemColorProp & { theme: Theme }) => {
+  const stateColors = color
+    ? {
+        all: colors[`${color}Subtle`],
+        hovered: colors.ui1,
+        selected: colors[`${color}Subtle`],
+      }
+    : {
+        all: itemSelectedColor(colors.ui2),
+        hovered: colors.ui1,
+        selected: itemSelectedColor(colors.ui2),
+      }
+
+  let renderedColor
+
+  if (disabled) renderedColor = 'transparent'
+  else if (selected && hovered) renderedColor = stateColors.all
+  else if (selected) renderedColor = stateColors.selected
+  else if (hovered) renderedColor = stateColors.hovered
+  else renderedColor = 'transparent'
+
+  return css`
+    background: ${renderedColor};
+  `
 }
-
-export const ListItemDetail = styled(
-  ({ hoverDisclosure, width, ...props }: ListItemDetailProps) => (
-    <HoverDisclosure width={width} visible={!hoverDisclosure}>
-      <div {...props} />
-    </HoverDisclosure>
-  )
-)`
-  align-items: center;
-  color: ${({ theme }) => theme.colors.text2};
-  display: flex;
-  font-size: ${({ theme }) => theme.fontSizes.xsmall};
-  margin-left: auto;
-`

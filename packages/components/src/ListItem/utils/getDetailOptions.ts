@@ -24,18 +24,20 @@
 
  */
 
-import { createContext } from 'react'
-import { DensityProps } from '../ListItem/types'
-import { ListItemColor } from '../ListItem'
+import { ListItemDetailConfig } from '../types'
 
-export type TreeContextProps = DensityProps & {
-  border?: boolean
-  color?: ListItemColor
-  depth?: number
-  labelBackgroundOnly?: boolean
+// Simplifies the type check when dealing with ListItem and related components
+export const getDetailOptions = (detail: ListItemDetailConfig) => {
+  let accessory, hoverDisclosure, content, width
+
+  if (typeof detail === 'object' && detail && 'options' in detail) {
+    accessory = detail.options.accessory
+    content = detail.content
+    hoverDisclosure = detail.options.hoverDisclosure
+    width = detail.options.width
+  } else {
+    content = detail
+  }
+
+  return { accessory, content, hoverDisclosure, width }
 }
-
-export const TreeContext = createContext<TreeContextProps>({
-  density: 0,
-  depth: 0,
-})

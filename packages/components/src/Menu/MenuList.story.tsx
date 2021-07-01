@@ -30,7 +30,7 @@ import { Create } from '@styled-icons/material-outlined/Create'
 import { DateRange } from '@styled-icons/material-outlined/DateRange'
 import { Undo } from '@styled-icons/material-outlined/Undo'
 import { Box, Grid, Space } from '../Layout'
-import { DensityRamp } from '../List/types'
+import { DensityRamp } from '../ListItem/types'
 import { MenuHeading, MenuList, MenuItem, MenuItemProps, MenuDivider } from '.'
 
 const groups: { label?: string; items: MenuItemProps[] }[] = [

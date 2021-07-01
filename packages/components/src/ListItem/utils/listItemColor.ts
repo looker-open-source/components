@@ -24,18 +24,33 @@
 
  */
 
-import { createContext } from 'react'
-import { DensityRamp, ListColor } from './types'
+import {
+  listItemColorAppliesToLabel,
+  ListItemColor,
+  listItemColorOptions,
+} from '../types'
 
-export interface ListItemContextProps {
-  density: DensityRamp
-  iconGutter: boolean
-  color?: ListColor
+const listItemColor = (
+  color?: ListItemColor,
+  disabled?: boolean,
+  defaultColor?: string
+) => {
+  if (disabled) {
+    return 'text1'
+  } else if (color) {
+    if (listItemColorAppliesToLabel.includes(color)) {
+      // Theme "slot" & color is applied to label
+      return color
+    } else if (!listItemColorOptions.includes(color)) {
+      // HTML color
+      return color
+    }
+  }
+  return defaultColor
 }
 
-const listItemContext: ListItemContextProps = {
-  density: 0,
-  iconGutter: false,
-}
+export const listItemIconColor = (color?: ListItemColor, disabled?: boolean) =>
+  listItemColor(color, disabled, 'text2')
 
-export const ListItemContext = createContext(listItemContext)
+export const listItemLabelColor = (color?: ListItemColor, disabled?: boolean) =>
+  listItemColor(color, disabled, 'text5')
