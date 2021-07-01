@@ -36,25 +36,23 @@ import { TreeCollection } from './TreeCollection'
 import { TreeItem } from './TreeItem'
 
 describe('TreeCollection', () => {
+  const detail = {
+    content: (
+      <>
+        <Button>Nested Button</Button>
+        <Link href="https://google.com">Nested Link</Link>
+        <InputText>Nested InputText</InputText>
+      </>
+    ),
+    options: {
+      accessory: true,
+    },
+  }
+
   const treeCollection = (
     <TreeCollection>
       <Tree defaultOpen label="Cheeses">
-        <TreeItem
-          detail={{
-            content: (
-              <>
-                <Button>Nested Button</Button>
-                <Link>Nested Link</Link>
-                <InputText>Nested InputText</InputText>
-              </>
-            ),
-            options: {
-              accessory: true,
-            },
-          }}
-        >
-          Cheddar
-        </TreeItem>
+        <TreeItem detail={detail}>Cheddar</TreeItem>
         <TreeItem>Gouda</TreeItem>
         <TreeItem>Swiss</TreeItem>
       </Tree>
@@ -130,7 +128,43 @@ describe('TreeCollection', () => {
       expect(cheeses).toHaveFocus()
     })
 
-    test('left and righw arrow keys move user from item to buttons/links/inputs within item', () => {
+    test('left and right arrow keys move user from accordion to buttons/links/inputs within accordion', () => {
+      renderWithTheme(
+        <>
+          <button>My Button</button>
+          <TreeCollection>
+            <Tree defaultOpen label="Cheeses" detail={detail}>
+              <TreeItem>Cheddar</TreeItem>
+            </Tree>
+          </TreeCollection>
+        </>
+      )
+
+      const treeItems = screen.getAllByRole('treeitem')
+      const cheeses = treeItems[0]
+      const nestedButton = screen.getByText('Nested Button')
+      const nestedLink = screen.getByText('Nested Link')
+
+      userEvent.click(screen.getByText('My Button'))
+      expect(screen.getByText('My Button')).toHaveFocus()
+
+      userEvent.tab()
+      expect(cheeses).toHaveFocus()
+
+      userEvent.keyboard('{arrowright}')
+      expect(nestedButton).toHaveFocus()
+
+      userEvent.keyboard('{arrowright}')
+      expect(nestedLink).toHaveFocus()
+
+      userEvent.keyboard('{arrowright}')
+      expect(screen.getByRole('textbox')).toHaveFocus()
+
+      userEvent.keyboard('{arrowright}')
+      expect(cheeses).toHaveFocus()
+    })
+
+    test('left and right arrow keys move user from item to buttons/links/inputs within item', () => {
       renderWithTheme(
         <>
           <button>My Button</button>

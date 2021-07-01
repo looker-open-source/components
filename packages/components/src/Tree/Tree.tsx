@@ -25,26 +25,34 @@
  */
 
 import styled from 'styled-components'
-import React, {
-  KeyboardEvent,
-  MouseEvent,
-  useContext,
-  useRef,
-  useState,
-} from 'react'
+import React, { FocusEvent, useContext, useState } from 'react'
 import { useAccordion2 } from '../Accordion2'
-import { Accordion2Disclosure } from '../Accordion2/Accordion2Disclosure'
 import { ControlledOrUncontrolled } from '../Accordion2/controlTypes'
-import { partitionAriaProps, undefinedCoalesce, useWrapEvent } from '../utils'
+import { Flex } from '../Layout'
+import {
+  createSafeRel,
+  getNextFocusTarget,
+  HoverDisclosureContext,
+  partitionAriaProps,
+  undefinedCoalesce,
+  useWrapEvent,
+} from '../utils'
 import { List } from '../List'
-import { ListItemContext, ListItemProps } from '../ListItem'
-import { listItemDimensions, getDetailOptions } from '../ListItem/utils'
+import {
+  ListItemContent,
+  ListItemContentProps,
+  ListItemContext,
+  ListItemProps,
+} from '../ListItem'
+import {
+  createListItemPartitions,
+  listItemBackgroundColor,
+  ListItemBackgroundColorProps,
+} from '../ListItem/utils'
 import { TreeContext } from './TreeContext'
-import { indicatorDefaults } from './utils'
+import { generateIndent, GenerateIndentProps, indicatorDefaults } from './utils'
 import { WindowedTreeContext } from './WindowedTreeNode'
-import { TreeItemInner, TreeItemInnerDetail, TreeStyle } from './TreeStyle'
 import { treeItemInnerPropKeys, TreeProps } from './types'
-import { TreeAccordion } from './TreeAccordion'
 
 /**
  * TODO: When labelToggle is introduced the aria-* attributes should land on the nested ListItem's
@@ -56,20 +64,19 @@ const TreeLayout = ({
   border: propsBorder,
   children,
   className,
-  disabled,
   dividers,
   forceLabelPadding,
-  itemRole,
-  label: propsLabel,
+  isOpen: propsIsOpen,
+  itemRole = 'none', // By default, Tree's content container should be a 'div'
+  label,
   labelBackgroundOnly: propsLabelBackgroundOnly,
   defaultOpen,
   onBlur,
   onClose,
-  onFocus,
+  onFocus: propsOnFocus,
   onOpen,
   onMouseEnter,
   onMouseLeave,
-  isOpen: propsIsOpen,
   toggleOpen: propsToggleOpen,
   ...restProps
 }: TreeProps) => {
@@ -83,15 +90,24 @@ const TreeLayout = ({
   const {
     color: propsColor,
     density: propsDensity,
-    detail: propsDetail,
+    disabled,
+    href,
     icon,
+    rel,
     selected,
-    ...restTreeItemInnerProps
+    target,
   } = treeItemInnerProps
   const [ariaProps] = partitionAriaProps(restProps)
 
-  const detailRef = useRef<HTMLDivElement>(null)
   const [hovered, setHovered] = useState(false)
+  const handleWrapperMouseEnter = useWrapEvent(
+    () => setHovered(true),
+    onMouseEnter
+  )
+  const handleWrapperMouseLeave = useWrapEvent(
+    () => setHovered(false),
+    onMouseLeave
+  )
 
   const { color: listColor } = useContext(ListItemContext)
   const treeContext = useContext(TreeContext)
@@ -121,71 +137,15 @@ const TreeLayout = ({
   const depth = treeContext.depth ? treeContext.depth : startingDepth
 
   const density = collectionDensity || propsDensity || treeContext.density || 0
-  const { iconGap, iconSize } = listItemDimensions(density)
-
-  const { accessory, content, hoverDisclosure } = getDetailOptions(propsDetail)
-
-  const handleDetailClick = (event: MouseEvent<HTMLElement>) => {
-    if (
-      accessory &&
-      detailRef.current &&
-      detailRef.current.contains(event.target as Node)
-    ) {
-      event.stopPropagation()
-    }
-  }
-
-  const handleDetailKeyDown = (event: KeyboardEvent<HTMLElement>) => {
-    if (
-      accessory &&
-      detailRef.current &&
-      detailRef.current.contains(event.target as Node)
-    ) {
-      event.stopPropagation()
-    }
-  }
-
-  const handleMouseEnter = useWrapEvent(() => setHovered(true), onMouseEnter)
-  const handleMouseLeave = useWrapEvent(() => setHovered(false), onMouseLeave)
-  const handleBlur = useWrapEvent(() => setHovered(false), onBlur)
-  const handleFocus = useWrapEvent(() => setHovered(true), onFocus)
-
-  const detail = {
-    content: (
-      <TreeItemInnerDetail
-        onClick={handleDetailClick}
-        onKeyDown={handleDetailKeyDown}
-        ref={detailRef}
-      >
-        {content}
-      </TreeItemInnerDetail>
-    ),
-    options: {
-      accessory,
-      hoverDisclosure,
-    },
-  }
-
-  const label = (
-    <TreeItemInner
-      renderAsDiv
-      color={color}
-      density={density}
-      detail={detail}
-      disabled={disabled}
-      icon={icon}
-      itemRole={itemRole || 'none'}
-      role="none"
-      tabIndex={-2} // Prevents tab stop behavior from reaching inner TreeItems
-      {...restTreeItemInnerProps}
-      {...ariaProps}
-    >
-      {propsLabel}
-    </TreeItemInner>
-  )
 
   const { indicatorIcons, indicatorPosition } = indicatorDefaults
 
+  const [inside, outside] = createListItemPartitions({
+    children: label,
+    density,
+    icon,
+    ...treeItemInnerProps,
+  })
   let accordionProps: ControlledOrUncontrolled = {
     defaultOpen,
     onClose,
@@ -196,9 +156,11 @@ const TreeLayout = ({
   }
 
   const {
-    content: treeContent,
-    domProps,
+    contentDomProps,
+    domProps: { onFocus, ...restDomProps },
     disclosureProps,
+
+    isOpen: accordionIsOpen,
   } = useAccordion2({
     'aria-selected': selected,
     children: (
@@ -210,56 +172,122 @@ const TreeLayout = ({
     disabled,
     indicatorIcons,
     indicatorPosition,
-    label,
-    onBlur: handleBlur,
-    onFocus: handleFocus,
-    onMouseEnter: handleMouseEnter,
-    onMouseLeave: handleMouseLeave,
+    label: inside,
+    onBlur,
+    onFocus: useWrapEvent(() => setHovered(true), propsOnFocus),
     role: 'treeitem',
     tabIndex: -1,
     ...restProps,
     ...accordionProps,
   })
 
-  const innerAccordion = (
-    <TreeAccordion className="tree-accordion-disclosure">
-      {!partialRender && (
-        <Accordion2Disclosure {...domProps} {...disclosureProps} />
-      )}
-      {treeContent}
-    </TreeAccordion>
-  )
+  // This is needed so that hover disclosed elements don't get lost during keyboard nav
+  const handleWrapperBlur = (event: FocusEvent<HTMLElement>) => {
+    const nextFocusTarget = getNextFocusTarget(event)
+
+    if (
+      nextFocusTarget &&
+      !event.currentTarget.contains(nextFocusTarget as Node)
+    ) {
+      setHovered(false)
+    }
+  }
+
+  const {
+    indicator,
+    children: disclosureLabel,
+    ...disclosureDomProps
+  } = disclosureProps
+
+  const statefulProps = {
+    color,
+    disabled,
+    hovered,
+    selected,
+  }
 
   return (
-    <TreeContext.Provider
-      value={{
-        border: hasBorder,
-        color,
-        density,
-        depth: depth + 1,
-        labelBackgroundOnly: hasLabelBackgroundOnly,
-      }}
-    >
-      <TreeStyle
-        assumeIconAlignment={assumeIconAlignment || forceLabelPadding} // TODO 3.x: Deprecate forceLabelPadding as input
-        border={hasBorder}
-        branchFontWeight={branchFontWeight}
-        className={className}
-        color={color}
-        depth={depth}
-        density={density}
-        disabled={disabled}
-        dividers={dividers}
-        hovered={hovered}
-        iconGap={iconGap}
-        indicatorSize={iconSize}
-        labelBackgroundOnly={hasLabelBackgroundOnly}
-        selected={selected}
+    <HoverDisclosureContext.Provider value={{ visible: hovered }}>
+      <TreeContext.Provider
+        value={{
+          border: hasBorder,
+          color,
+          density,
+          depth: depth + 1,
+          labelBackgroundOnly: hasLabelBackgroundOnly,
+        }}
       >
-        {innerAccordion}
-      </TreeStyle>
-    </TreeContext.Provider>
+        <div {...restDomProps}>
+          {!partialRender && (
+            <Flex
+              as="li"
+              onBlur={handleWrapperBlur}
+              onMouseEnter={handleWrapperMouseEnter}
+              onMouseLeave={handleWrapperMouseLeave}
+            >
+              <TreeItem2Content
+                aria-selected={selected}
+                depth={depth}
+                href={href}
+                itemRole={itemRole}
+                labelBackgroundOnly={hasLabelBackgroundOnly}
+                onFocus={onFocus}
+                rel={createSafeRel(rel, target)}
+                target={target}
+                {...ariaProps}
+                {...disclosureDomProps}
+                {...statefulProps}
+              >
+                {indicator}
+                {/**
+                 * @TODO: Delete labelBackgroundOnly behavior once FieldItem component is completed
+                 */}
+                {hasLabelBackgroundOnly ? (
+                  <TreeItem2Label {...statefulProps}>
+                    {disclosureLabel}
+                  </TreeItem2Label>
+                ) : (
+                  disclosureLabel
+                )}
+              </TreeItem2Content>
+              {outside}
+            </Flex>
+          )}
+          {accordionIsOpen && <div {...contentDomProps} />}
+        </div>
+      </TreeContext.Provider>
+    </HoverDisclosureContext.Provider>
   )
 }
 
 export const Tree = styled(TreeLayout)<TreeProps>``
+
+type TreeItem2ContentProps = ListItemContentProps &
+  GenerateIndentProps & {
+    labelBackgroundOnly?: boolean
+  }
+
+/**
+ * @TODO: Delete labelBackgroundOnly behavior once FieldItem component is completed
+ */
+export const TreeItem2Content = styled(
+  ListItemContent
+).attrs<TreeItem2ContentProps>(({ role = 'treeitem' }) => ({
+  role,
+}))<TreeItem2ContentProps>`
+  ${generateIndent}
+  ${({ labelBackgroundOnly }) => labelBackgroundOnly && 'background: none;'}
+  display: flex;
+  flex: 1;
+`
+
+/**
+ * @TODO: Delete TreeItem2Label once FieldItem component is completed
+ */
+export const TreeItem2Label = styled.div<ListItemBackgroundColorProps>`
+  ${listItemBackgroundColor}
+  align-items: center;
+  display: flex;
+  height: 100%;
+  width: 100%;
+`

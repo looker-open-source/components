@@ -27,7 +27,7 @@
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { fireEvent, screen } from '@testing-library/react'
-import { Tree, TreeItem } from '.'
+import { TreeItem } from '.'
 
 describe('TreeItem', () => {
   test('Renders children', () => {
@@ -81,58 +81,6 @@ describe('TreeItem', () => {
     expect(screen.queryByText('Detail')).toBeInTheDocument()
   })
 
-  test('Triggers onClickWhitespace when indent padding is clicked, itemRole = "none", and labelBackgroundOnly = true', () => {
-    // eslint-disable-next-line no-console
-    console.warn = jest.fn()
-
-    const onClickWhitespace = jest.fn()
-
-    // This onClick should be ignored within ListItem since the item has itemRole="none"
-    const onClick = jest.fn()
-
-    renderWithTheme(
-      <Tree defaultOpen label="Parent Tree" labelBackgroundOnly>
-        <TreeItem
-          onClick={onClick}
-          onClickWhitespace={onClickWhitespace}
-          itemRole="none"
-          detail={{
-            content: <button>Detail Button</button>,
-            options: { accessory: true },
-          }}
-        >
-          <div>
-            <p>Item Label</p>
-            <button>Item Button</button>
-          </div>
-        </TreeItem>
-      </Tree>
-    )
-
-    // eslint-disable-next-line no-console
-    expect(console.warn).toHaveBeenCalled()
-
-    // Expect indent padding click to trigger TreeItem onClickWhitespace (i.e. non-TreeItem child click)
-    // Note: This selector may need to change once Tree ARIA roles are implemented
-    fireEvent.click(screen.getAllByRole('none')[2])
-    expect(onClickWhitespace).toHaveBeenCalledTimes(1)
-
-    // Do not expect click on label to trigger click handlers
-    fireEvent.click(screen.getByText('Item Label'))
-    expect(onClick).not.toHaveBeenCalled()
-    expect(onClickWhitespace).toHaveBeenCalledTimes(1)
-
-    // Do not expect click on child button to trigger click handlers
-    fireEvent.click(screen.getByText('Item Button'))
-    expect(onClick).not.toHaveBeenCalled()
-    expect(onClickWhitespace).toHaveBeenCalledTimes(1)
-
-    // Do not expect detail click to trigger click handlers
-    fireEvent.click(screen.getByText('Detail Button'))
-    expect(onClick).not.toHaveBeenCalled()
-    expect(onClickWhitespace).toHaveBeenCalledTimes(1)
-  })
-
   test('theme.colors.key', () => {
     renderWithTheme(
       <TreeItem selected color="key">
@@ -141,25 +89,5 @@ describe('TreeItem', () => {
     )
     expect(screen.getByText('Whatever')).toHaveStyle('color: #262d33')
     expect(screen.getByRole('treeitem')).toHaveStyle('background: #f3f2ff')
-  })
-
-  test('warns onClickWhitespace && !labelBackgroundOnly', () => {
-    const globalConsole = global.console
-    const warnMock = jest.fn()
-
-    global.console = {
-      warn: warnMock,
-    } as unknown as Console
-
-    renderWithTheme(<TreeItem onClickWhitespace={jest.fn()}>Whatever</TreeItem>)
-    expect(warnMock.mock.calls).toMatchInlineSnapshot(`
-      Array [
-        Array [
-          "onClickWhitespace is only necessary on <TreeItem> when labelBackgroundOnly is enabled; use onClick on <TreeItem> or to its children instead",
-        ],
-      ]
-    `)
-
-    global.console = globalConsole
   })
 })

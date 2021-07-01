@@ -59,7 +59,7 @@ export const listItemContentCSS = (
  */
 export const listItemLabelCSS = listItemContentCSS
 
-type ListItemContentProps = CompatibleHTMLProps<HTMLElement> &
+export type ListItemContentProps = CompatibleHTMLProps<HTMLElement> &
   ListItemStatefulProps &
   ListItemColorProp &
   FocusVisibleProps & {
@@ -115,6 +115,9 @@ export const ListItemContent = styled(ListItemContentInternal)`
   min-width: 0;
   outline: none;
   ${({ density }) => listItemPadding(density)}
+  /*
+    Remove itemRole-specific space CSS when FieldItem is completed
+  */
   padding-bottom: ${({ itemRole }) => (itemRole === 'none' ? 0 : undefined)};
   padding-top: ${({ itemRole }) => (itemRole === 'none' ? 0 : undefined)};
   ${({ density, itemRole }) =>
