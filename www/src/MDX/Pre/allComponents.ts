@@ -182,6 +182,13 @@ import {
   InputTimeSelect,
   TimeFormat,
 } from '@looker/components-date'
+import {
+  DashboardFilter,
+  Filter,
+  summary,
+  useExpressionState,
+  useSuggestable,
+} from '@looker/filter-components'
 
 import { DialogSurface } from '@looker/components/src/Dialog/DialogSurface'
 
@@ -203,13 +210,16 @@ const otherLibraries = {
 const hooks = {
   doDataTableSort,
   listItemDimensions,
+  summary,
   useConfirm,
   useDialog,
   useDrawer,
+  useExpressionState,
   useMixedStateCheckbox,
   usePanel,
   usePreviousValue,
   useSelectManager,
+  useSuggestable,
   useTabs,
   useToggle,
 }
@@ -245,6 +255,7 @@ export const allComponents = {
   Confirm,
   ConfirmLayout,
   CopyToClipboard,
+  DashboardFilter,
   DataTable,
   DataTableAction,
   DataTableCell,
@@ -281,6 +292,7 @@ export const allComponents = {
   FieldTimeSelect,
   FieldToggleSwitch,
   Fieldset,
+  Filter,
   Flex,
   FlexItem,
   Footer,

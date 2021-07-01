@@ -1,0 +1,44 @@
+{
+  "is": {
+    "value": "является"
+  },
+  "is greater": {
+    "value": ">"
+  },
+  "is greater equal": {
+    "value": ">="
+  },
+  "is less": {
+    "value": "<"
+  },
+  "is less equal": {
+    "value": "<="
+  },
+  "is between": {
+    "value": "между"
+  },
+  "is null": {
+    "value": "является нулевым значением"
+  },
+  "is not": {
+    "value": "не является"
+  },
+  "is not between": {
+    "value": "не между"
+  },
+  "is not null": {
+    "value": "не является нулевым значением"
+  },
+  "inclusive": {
+    "value": "[включая значения]"
+  },
+  "exclusive": {
+    "value": "(не включая значения)"
+  },
+  "right exclusive": {
+    "value": "[не включая значение справа)"
+  },
+  "left exclusive": {
+    "value": "(не включая значение слева]"
+  }
+}

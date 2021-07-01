@@ -1,0 +1,62 @@
+{
+  "fiscal years": {
+    "value": "회계 연수"
+  },
+  "years": {
+    "value": "년"
+  },
+  "fiscal quarters": {
+    "value": "회계 분기"
+  },
+  "quarters": {
+    "value": "분기"
+  },
+  "months": {
+    "value": "월"
+  },
+  "weeks": {
+    "value": "주"
+  },
+  "days": {
+    "value": "일"
+  },
+  "hours": {
+    "value": "시간"
+  },
+  "minutes": {
+    "value": "분"
+  },
+  "seconds": {
+    "value": "초"
+  },
+  "complete fiscal years": {
+    "value": "전체 회계 연수"
+  },
+  "complete years": {
+    "value": "전체 년"
+  },
+  "complete fiscal quarters": {
+    "value": "전체 회계 분기"
+  },
+  "complete quarters": {
+    "value": "전체 분기"
+  },
+  "complete months": {
+    "value": "전체 월"
+  },
+  "complete weeks": {
+    "value": "전체 주"
+  },
+  "complete days": {
+    "value": "전체 일"
+  },
+  "complete hours": {
+    "value": "전체 시간"
+  },
+  "complete minutes": {
+    "value": "전체 분"
+  },
+  "complete seconds": {
+    "value": "전체 초"
+  }
+}

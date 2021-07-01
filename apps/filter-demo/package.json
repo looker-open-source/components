@@ -1,0 +1,77 @@
+{
+  "name": "filter-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/bundle.js",
+  "scripts": {
+    "build": "export BABEL_ENV=build && webpack --config webpack.prod.js",
+    "clean": "rm -rf dist",
+    "develop": "webpack serve --hot --port 8080 --disable-host-check --config webpack.develop.js",
+    "fix": "yarn lint --fix",
+    "lint": "sh -c 'yarn lint:css ${0} && yarn lint:es ${0}'",
+    "lint:css": "stylelint './src/**/*.ts{,x}'",
+    "lint:es": "yarn eslint . --cache",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Looker",
+  "license": "MIT",
+  "engines": {
+    "node": ">=10"
+  },
+  "dependencies": {
+    "@looker/components": "2.0.0",
+    "@looker/embed-sdk": "^1.4.0",
+    "@looker/extension-sdk": "21.4.0",
+    "@looker/extension-sdk-react": "21.4.0",
+    "@looker/filter-components": "*",
+    "@looker/sdk": "*",
+    "@styled-icons/material": "10.28.0",
+    "@styled-icons/material-outlined": "10.28.0",
+    "react": "16.14.0",
+    "react-dom": "16.14.0",
+    "react-router-dom": "^5.1.2",
+    "styled-components": "5.2.1"
+  },
+  "devDependencies": {
+    "@looker/eslint-config": "1.5.0",
+    "@looker/prettier-config": "1.4.0",
+    "@looker/stylelint-config": "1.4.0",
+    "@types/react-router-dom": "^5.1.2",
+    "@typescript-eslint/eslint-plugin": "*",
+    "@typescript-eslint/parser": "*",
+    "babel-loader": "*",
+    "babel-loader-exclude-node-modules-except": "^1.2.1",
+    "eslint-config-prettier": "*",
+    "eslint-config-standard": "*",
+    "eslint-plugin-header": "*",
+    "eslint-plugin-i18next": "*",
+    "eslint-plugin-import": "*",
+    "eslint-plugin-jest-dom": "*",
+    "eslint-plugin-mdx": "*",
+    "eslint-plugin-node": "*",
+    "eslint-plugin-prettier": "*",
+    "eslint-plugin-promise": "*",
+    "eslint-plugin-react": "*",
+    "eslint-plugin-react-hooks": "*",
+    "eslint-plugin-sort-keys-fix": "*",
+    "eslint-plugin-standard": "*",
+    "eslint-plugin-testing-library": "*",
+    "react-hot-loader": "^4.12.20",
+    "tsconfig-paths-webpack-plugin": "^3.5.1",
+    "typescript": "*",
+    "webpack": "*",
+    "webpack-bundle-analyzer": "*",
+    "webpack-cli": "*",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "@looker/eslint-config/oss-compat"
+    ]
+  },
+  "prettier": "@looker/prettier-config",
+  "stylelint": {
+    "extends": "@looker/stylelint-config"
+  }
+}

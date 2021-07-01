@@ -1,0 +1,84 @@
+{
+  "January": {
+    "value": "一月"
+  },
+  "February": {
+    "value": "二月"
+  },
+  "March": {
+    "value": "三月"
+  },
+  "April": {
+    "value": "四月"
+  },
+  "May": {
+    "value": "五月"
+  },
+  "June": {
+    "value": "六月"
+  },
+  "July": {
+    "value": "七月"
+  },
+  "August": {
+    "value": "八月"
+  },
+  "September": {
+    "value": "九月"
+  },
+  "October": {
+    "value": "十月"
+  },
+  "November": {
+    "value": "十一月"
+  },
+  "December": {
+    "value": "十二月"
+  },
+  "Sunday": {
+    "value": "星期日"
+  },
+  "Monday": {
+    "value": "星期一"
+  },
+  "Tuesday": {
+    "value": "星期二"
+  },
+  "Wednesday": {
+    "value": "星期三"
+  },
+  "Thursday": {
+    "value": "星期四"
+  },
+  "Friday": {
+    "value": "星期五"
+  },
+  "Saturday": {
+    "value": "星期六"
+  },
+  "Su": {
+    "value": "日"
+  },
+  "Mo": {
+    "value": "一"
+  },
+  "Tu": {
+    "value": "二"
+  },
+  "We": {
+    "value": "三"
+  },
+  "Th": {
+    "value": "四"
+  },
+  "Fr": {
+    "value": "五"
+  },
+  "Sa": {
+    "value": "六"
+  },
+  "firstDayOfWeek": {
+    "value": "0",
+    "note": "0 是星期日，1 是星期一，以此類推"
+  }
+}

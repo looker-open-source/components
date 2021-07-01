@@ -1,0 +1,84 @@
+{
+  "January": {
+    "value": "1월"
+  },
+  "February": {
+    "value": "2월"
+  },
+  "March": {
+    "value": "3월"
+  },
+  "April": {
+    "value": "4월"
+  },
+  "May": {
+    "value": "5월"
+  },
+  "June": {
+    "value": "6월"
+  },
+  "July": {
+    "value": "7월"
+  },
+  "August": {
+    "value": "8월"
+  },
+  "September": {
+    "value": "9월"
+  },
+  "October": {
+    "value": "10월"
+  },
+  "November": {
+    "value": "11월"
+  },
+  "December": {
+    "value": "12월"
+  },
+  "Sunday": {
+    "value": "일요일"
+  },
+  "Monday": {
+    "value": "월요일"
+  },
+  "Tuesday": {
+    "value": "화요일"
+  },
+  "Wednesday": {
+    "value": "수요일"
+  },
+  "Thursday": {
+    "value": "목요일"
+  },
+  "Friday": {
+    "value": "금요일"
+  },
+  "Saturday": {
+    "value": "토요일"
+  },
+  "Su": {
+    "value": "일"
+  },
+  "Mo": {
+    "value": "월"
+  },
+  "Tu": {
+    "value": "화"
+  },
+  "We": {
+    "value": "수"
+  },
+  "Th": {
+    "value": "목"
+  },
+  "Fr": {
+    "value": "금"
+  },
+  "Sa": {
+    "value": "토"
+  },
+  "firstDayOfWeek": {
+    "value": "0",
+    "note": "예: 0이 일요일, 1이 월요일 등"
+  }
+}

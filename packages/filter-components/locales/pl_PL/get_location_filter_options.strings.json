@@ -1,0 +1,32 @@
+{
+  "Location": {
+    "value": "Lokalizacja"
+  },
+  "Circle": {
+    "value": "Koło"
+  },
+  "Box": {
+    "value": "Pole"
+  },
+  "is anywhere": {
+    "value": "ma dowolną wartość"
+  },
+  "is null": {
+    "value": "ma wartość null"
+  },
+  "is not null": {
+    "value": "nie ma wartości null"
+  },
+  "feet": {
+    "value": "ft"
+  },
+  "kilometers": {
+    "value": "km"
+  },
+  "meters": {
+    "value": "m"
+  },
+  "miles": {
+    "value": "mi"
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "January": {
+    "value": "Gennaio"
+  },
+  "February": {
+    "value": "Febbraio"
+  },
+  "March": {
+    "value": "Marzo"
+  },
+  "April": {
+    "value": "Aprile"
+  },
+  "May": {
+    "value": "Mag"
+  },
+  "June": {
+    "value": "Giugno"
+  },
+  "July": {
+    "value": "Luglio"
+  },
+  "August": {
+    "value": "Agosto"
+  },
+  "September": {
+    "value": "Settembre"
+  },
+  "October": {
+    "value": "Ottobre"
+  },
+  "November": {
+    "value": "Novembre"
+  },
+  "December": {
+    "value": "Dicembre"
+  },
+  "Sunday": {
+    "value": "Domenica"
+  },
+  "Monday": {
+    "value": "Lunedì"
+  },
+  "Tuesday": {
+    "value": "Martedì"
+  },
+  "Wednesday": {
+    "value": "Mercoledì"
+  },
+  "Thursday": {
+    "value": "Giovedì"
+  },
+  "Friday": {
+    "value": "Venerdì"
+  },
+  "Saturday": {
+    "value": "Sabato"
+  },
+  "Su": {
+    "value": "Do"
+  },
+  "Mo": {
+    "value": "Lu"
+  },
+  "Tu": {
+    "value": "Ma"
+  },
+  "We": {
+    "value": "Me"
+  },
+  "Th": {
+    "value": "Gi"
+  },
+  "Fr": {
+    "value": "Ve"
+  },
+  "Sa": {
+    "value": "Sa"
+  },
+  "firstDayOfWeek": {
+    "value": "0",
+    "note": "0 è domenica, 1 è lunedì, ecc."
+  }
+}

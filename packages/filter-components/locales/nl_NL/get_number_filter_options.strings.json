@@ -1,0 +1,44 @@
+{
+  "is": {
+    "value": "is"
+  },
+  "is greater": {
+    "value": "is >"
+  },
+  "is greater equal": {
+    "value": "is >="
+  },
+  "is less": {
+    "value": "is <"
+  },
+  "is less equal": {
+    "value": "is <="
+  },
+  "is between": {
+    "value": "ligt tussen"
+  },
+  "is null": {
+    "value": "is ongeldig"
+  },
+  "is not": {
+    "value": "is niet"
+  },
+  "is not between": {
+    "value": "ligt niet tussen"
+  },
+  "is not null": {
+    "value": "is geldig"
+  },
+  "inclusive": {
+    "value": "[inclusief]"
+  },
+  "exclusive": {
+    "value": "(exclusief)"
+  },
+  "right exclusive": {
+    "value": "[rechts-exclusief]"
+  },
+  "left exclusive": {
+    "value": "(links-exclusief)"
+  }
+}

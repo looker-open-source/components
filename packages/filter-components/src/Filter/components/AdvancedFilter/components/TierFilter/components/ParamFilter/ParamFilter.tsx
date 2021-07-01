@@ -23,25 +23,37 @@
  SOFTWARE.
 
  */
+import type { ValidationMessageProps } from '@looker/components'
+import type { FilterModel } from '@looker/filter-expressions'
+import type { FC } from 'react'
+import React from 'react'
+import type { Option } from '../../../../../../types/option'
+import { GroupSelect } from '../../../GroupSelect'
 
-import React, { FC } from 'react'
-import { Code, Link, MessageBar } from '@looker/components'
+interface ParamFilterProps {
+  item: FilterModel
+  onChange?: (id?: string, props?: any) => void
+  enumerations?: Option[]
+  validationMessage?: ValidationMessageProps
+}
 
-export const Message: FC = ({ children }) => (
-  <MessageBar canDismiss={false} intent="inform" mb="medium">
-    Import{' '}
-    <Code fontWeight="bold" fontSize="inherit">
-      {children}
-    </Code>{' '}
-    from{' '}
-    <Code fontSize="inherit">
-      <Link
-        href="https://www.npmjs.com/package/@looker/components-date"
-        isExternal
-        target="_blank"
-      >
-        @looker/components-date
-      </Link>
-    </Code>{' '}
-  </MessageBar>
-)
+export const ParamFilter: FC<ParamFilterProps> = ({
+  item,
+  onChange,
+  enumerations,
+  validationMessage,
+}) => {
+  const handleChange = (value: string) => {
+    onChange?.(item.id, { value: [value] })
+  }
+
+  return (
+    <GroupSelect
+      placement="right"
+      value={item.value && item.value[0]}
+      onChange={handleChange}
+      options={enumerations || []}
+      validationMessage={validationMessage}
+    />
+  )
+}

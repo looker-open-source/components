@@ -1,0 +1,62 @@
+{
+  "fiscal years": {
+    "value": "финанс. год(а)/лет"
+  },
+  "years": {
+    "value": "год(а)/лет"
+  },
+  "fiscal quarters": {
+    "value": "финанс. кварт."
+  },
+  "quarters": {
+    "value": "кварт."
+  },
+  "months": {
+    "value": "мес."
+  },
+  "weeks": {
+    "value": "нед."
+  },
+  "days": {
+    "value": "дн."
+  },
+  "hours": {
+    "value": "ч"
+  },
+  "minutes": {
+    "value": "мин"
+  },
+  "seconds": {
+    "value": "сек"
+  },
+  "complete fiscal years": {
+    "value": "полн. финанс. год(а)/лет"
+  },
+  "complete years": {
+    "value": "полн. год(а)/лет"
+  },
+  "complete fiscal quarters": {
+    "value": "полн. финанс. кварт."
+  },
+  "complete quarters": {
+    "value": "полн. кварт."
+  },
+  "complete months": {
+    "value": "полн. мес."
+  },
+  "complete weeks": {
+    "value": "полн. нед."
+  },
+  "complete days": {
+    "value": "полн. дн."
+  },
+  "complete hours": {
+    "value": "полн. ч"
+  },
+  "complete minutes": {
+    "value": "полн. мин"
+  },
+  "complete seconds": {
+    "value": "полн. сек"
+  }
+}

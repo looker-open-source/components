@@ -1,0 +1,84 @@
+{
+  "January": {
+    "value": "Ocak"
+  },
+  "February": {
+    "value": "Şubat"
+  },
+  "March": {
+    "value": "Mart"
+  },
+  "April": {
+    "value": "Nisan"
+  },
+  "May": {
+    "value": "May"
+  },
+  "June": {
+    "value": "Haziran"
+  },
+  "July": {
+    "value": "Temmuz"
+  },
+  "August": {
+    "value": "Ağustos"
+  },
+  "September": {
+    "value": "Eylül"
+  },
+  "October": {
+    "value": "Ekim"
+  },
+  "November": {
+    "value": "Kasım"
+  },
+  "December": {
+    "value": "Aralık"
+  },
+  "Sunday": {
+    "value": "Pazar"
+  },
+  "Monday": {
+    "value": "Pazartesi"
+  },
+  "Tuesday": {
+    "value": "Salı"
+  },
+  "Wednesday": {
+    "value": "Çarşamba"
+  },
+  "Thursday": {
+    "value": "Perşembe"
+  },
+  "Friday": {
+    "value": "Cuma"
+  },
+  "Saturday": {
+    "value": "Cumartesi"
+  },
+  "Su": {
+    "value": "Paz"
+  },
+  "Mo": {
+    "value": "Pzt"
+  },
+  "Tu": {
+    "value": "Sal"
+  },
+  "We": {
+    "value": "Çar"
+  },
+  "Th": {
+    "value": "Per"
+  },
+  "Fr": {
+    "value": "Cum"
+  },
+  "Sa": {
+    "value": "Cmt"
+  },
+  "firstDayOfWeek": {
+    "value": "0",
+    "note": "0 = Pazar, 1 = Pazartesi, vb."
+  }
+}

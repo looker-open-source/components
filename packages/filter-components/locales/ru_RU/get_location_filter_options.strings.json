@@ -1,0 +1,32 @@
+{
+  "Location": {
+    "value": "Расположение"
+  },
+  "Circle": {
+    "value": "Круг"
+  },
+  "Box": {
+    "value": "Прямоугольник"
+  },
+  "is anywhere": {
+    "value": "находится где-либо"
+  },
+  "is null": {
+    "value": "является нулевым значением"
+  },
+  "is not null": {
+    "value": "не является нулевым значением"
+  },
+  "feet": {
+    "value": "фут(а/ов)"
+  },
+  "kilometers": {
+    "value": "км"
+  },
+  "meters": {
+    "value": "м"
+  },
+  "miles": {
+    "value": "миль(и)"
+  }
+}
