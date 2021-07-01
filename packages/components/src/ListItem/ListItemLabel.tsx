@@ -24,11 +24,11 @@
 
  */
 
-import { CompatibleHTMLProps } from '@looker/design-tokens'
+import { CompatibleHTMLProps, DensityRamp } from '@looker/design-tokens'
 import React, { ReactNode } from 'react'
 import styled from 'styled-components'
 import { TruncateConfigProp, TruncateOptionally } from '../Truncate'
-import { DensityRamp, ListItemColorProp } from './types'
+import { ListItemColorProp } from './types'
 import { listItemDimensions, listItemLabelColor } from './utils'
 
 type ListItemLabelProps = CompatibleHTMLProps<HTMLElement> &

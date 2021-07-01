@@ -25,7 +25,7 @@
  */
 
 import { createContext } from 'react'
-import { DensityProps } from '../ListItem/types'
+import { DensityProps } from '@looker/design-tokens'
 import { ListItemColor } from '../ListItem'
 
 export type TreeContextProps = DensityProps & {

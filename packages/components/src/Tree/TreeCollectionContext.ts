@@ -25,7 +25,7 @@
  */
 
 import { createContext } from 'react'
-import { DensityProps } from '../ListItem/types'
+import { DensityProps } from '@looker/design-tokens'
 import { ToggleStateMap } from './types'
 
 export type TreeCollectionContextProps = DensityProps & {

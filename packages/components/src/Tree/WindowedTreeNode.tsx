@@ -31,7 +31,7 @@ import React, {
   useCallback,
   useContext,
 } from 'react'
-import { DensityProps } from '../ListItem/types'
+import { DensityProps } from '@looker/design-tokens'
 import { TreeCollectionContext } from './TreeCollectionContext'
 import { WindowedTreeNodeIDProps } from './types'
 

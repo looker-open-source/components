@@ -25,6 +25,7 @@
  */
 
 import {
+  DensityProps,
   height,
   HeightProps,
   omitStyledProps,
@@ -33,7 +34,6 @@ import {
 } from '@looker/design-tokens'
 import React from 'react'
 import styled from 'styled-components'
-import { DensityProps } from '../ListItem/types'
 import { useWindowedTree } from './utils/useWindowedTree'
 import { WindowedTreeNodeProps } from './types'
 import { TreeCollectionContext } from './TreeCollectionContext'

@@ -25,8 +25,8 @@
  */
 
 import React, { Ref, useCallback, useEffect, useReducer } from 'react'
+import { DensityProps } from '@looker/design-tokens'
 import { listItemDimensions } from '../../ListItem'
-import { DensityProps } from '../../ListItem/types'
 import { useWindow } from '../../utils'
 import { WindowedTreeNodeProps, WindowedTreeNodeIDProps } from '../types'
 import { WindowedTreeNode } from '../WindowedTreeNode'

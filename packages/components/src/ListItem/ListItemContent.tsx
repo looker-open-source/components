@@ -24,16 +24,11 @@
 
  */
 
-import { CompatibleHTMLProps } from '@looker/design-tokens'
+import { CompatibleHTMLProps, DensityRamp } from '@looker/design-tokens'
 import React, { FC } from 'react'
 import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
 import { FocusVisibleProps } from '../utils'
-import {
-  DensityRamp,
-  ListItemColorProp,
-  ListItemRole,
-  ListItemStatefulProps,
-} from './types'
+import { ListItemColorProp, ListItemRole, ListItemStatefulProps } from './types'
 import {
   listItemBackgroundColor,
   listItemDimensions,

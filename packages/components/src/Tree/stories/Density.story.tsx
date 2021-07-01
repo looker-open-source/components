@@ -25,10 +25,10 @@
  */
 
 import React, { FC } from 'react'
+import { DensityRamp } from '@looker/design-tokens'
 import { Tree } from '../Tree'
 import { TreeCollection } from '../TreeCollection'
 import { TreeItem } from '../TreeItem'
-import { DensityRamp } from '../../ListItem/types'
 import { Grid } from '../../Layout'
 
 const DensityTree: FC<{ density: DensityRamp }> = ({ density }) => (

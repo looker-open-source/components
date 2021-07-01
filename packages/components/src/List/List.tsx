@@ -34,6 +34,7 @@ import React, {
 } from 'react'
 import {
   CompatibleHTMLProps,
+  DensityProps,
   FontFamilies,
   shouldForwardProp,
   height,
@@ -43,7 +44,7 @@ import {
 import { HeightProps, fontFamily } from 'styled-system'
 import styled from 'styled-components'
 import { useArrowKeyNav, useWindow } from '../utils'
-import { DensityProps, ListItemContext, listItemDimensions } from '../ListItem'
+import { ListItemContext, listItemDimensions } from '../ListItem'
 
 export type ListColor = 'key' | 'calculation' | 'dimension' | 'measure'
 

@@ -25,11 +25,14 @@
  */
 
 import styled, { DefaultTheme, StyledComponent } from 'styled-components'
-import { color as colorHelper, SpacingSizes } from '@looker/design-tokens'
+import {
+  color as colorHelper,
+  DensityRamp,
+  SpacingSizes,
+} from '@looker/design-tokens'
 import { StyledIconBase } from '@styled-icons/styled-icon'
 import { IconPlaceholder, IconSize } from '../Icon'
 import { listItemDimensions, listItemIconColor } from './utils'
-import { DensityRamp } from './types'
 
 export type ListItemIconProps = {
   color?: string
