@@ -47,8 +47,8 @@ export const Section: FC<SectionProps> = ({ section }) => {
         <Accordion2
           key={child.path}
           defaultOpen={currentPath.includes(`/components/${uri}`)}
-          content={
-            <Heading px="large" color="text2" as="h4" fontFamily="body">
+          label={
+            <Heading py="xsmall" px="large" as="h4" fontFamily="body">
               {child.title}
             </Heading>
           }
