@@ -42,23 +42,26 @@ export interface PopoverFooterProps
    * I18n recommended: content that is user visible should be treated for i18n
    * @default Done
    */
-  close?: ReactElement | string
+  closeButton?: ReactElement | string
 }
 
-const PopoverFooterLayout: FC<PopoverFooterProps> = (props) => {
+const PopoverFooterLayout: FC<PopoverFooterProps> = ({
+  children,
+  closeButton,
+  ...props
+}) => {
   const { closeModal } = useContext(DialogContext)
   const { t } = useTranslation('PopoverFooter')
-  const closeText = t('Done')
-  const { children, close = closeText } = props
+  closeButton = closeButton || t('Done')
 
   return (
     <ModalFooter mr="xsmall" pl="large" pr="medium" py="xsmall" {...props}>
-      {typeof close === 'string' ? (
+      {typeof closeButton === 'string' ? (
         <ButtonTransparent size="small" onClick={closeModal}>
-          {close}
+          {closeButton}
         </ButtonTransparent>
       ) : (
-        close
+        closeButton
       )}
       {children}
     </ModalFooter>

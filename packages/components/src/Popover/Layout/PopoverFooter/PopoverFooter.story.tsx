@@ -43,7 +43,7 @@ export const FooterWithChildren = () => (
   </PopoverFooter>
 )
 
-export const FooterClose = () => <PopoverFooter close="Close" />
+export const FooterClose = () => <PopoverFooter closeButton="Close" />
 FooterClose.parameters = {
   storyshots: {
     disable: true,
