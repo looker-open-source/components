@@ -27,15 +27,19 @@
 import React, { FC } from 'react'
 import styled, { css } from 'styled-components'
 import { SpacingSizes } from '@looker/design-tokens'
-import { Accordion2 } from '../Accordion2'
 import { Accordion2Disclosure } from '../Accordion2/Accordion2Disclosure'
 import { Accordion2Content } from '../Accordion2/Accordion2Content'
-import { ListItemIconPlacement } from '../List/ListItemLayout'
 import { FlexibleColor, ListItemStatefulProps } from '../List/types'
 import { listItemBackgroundColor } from '../List/utils'
-import { List, ListItem } from '../List'
-import { ListItemLabel, listItemLabelCSS } from '../List/ListItemLabel'
+import {
+  List,
+  ListItem,
+  ListItemContent,
+  listItemContentCSS,
+  ListItemIcon,
+} from '../List'
 import { IconSize, IconType } from '../Icon'
+import { TreeAccordion } from './TreeAccordion'
 import { TreeItem } from './TreeItem'
 import { TreeBranch } from './TreeBranch'
 import {
@@ -59,12 +63,12 @@ type TreeStyleProps = ListItemStatefulProps &
   }
 
 export const TreeItemInner = styled(TreeItem)`
-  ${listItemLabelCSS(css`
+  ${listItemContentCSS(css`
     background-color: transparent;
     padding-left: 0;
   `)}
 
-  > ${ListItemLabel}:focus {
+  > ${ListItemContent}:focus {
     box-shadow: none;
   }
 `
@@ -112,10 +116,10 @@ const treeItemIndent = ({
       indicatorSize,
       theme,
     })}
-    ${listItemLabelCSS(labelPaddingRemoval)}
+    ${listItemContentCSS(labelPaddingRemoval)}
   `
 
-  const labelIndent = listItemLabelCSS(
+  const labelIndent = listItemContentCSS(
     generateIndent({
       assumeIconAlignment,
       depth: depth + 2,
@@ -140,14 +144,14 @@ export const TreeStyle = styled(TreeStyleLayout)`
 
   ${ListItem} {
     ${({ iconGap, theme }) =>
-      listItemLabelCSS(css`
-        ${ListItemIconPlacement} {
+      listItemContentCSS(css`
+        ${ListItemIcon} {
           margin-right: ${theme.space[iconGap]};
         }
       `)}
   }
 
-  > ${Accordion2} {
+  > ${TreeAccordion} {
     /**
         Gets the box-shadow to sit above the ListItem background
        */
@@ -200,7 +204,7 @@ export const TreeStyle = styled(TreeStyleLayout)`
 
   ${({ dividers }) => dividers && dividersCSS}
 
-  > ${Accordion2} > ${Accordion2Content} > ${List} {
+  > ${TreeAccordion} > ${Accordion2Content} > ${List} {
     > ${ListItem} {
       ${({
         assumeIconAlignment,

@@ -24,93 +24,67 @@
 
  */
 
-import { CompatibleHTMLProps, shouldForwardProp } from '@looker/design-tokens'
-import React, { FC } from 'react'
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
-import { FocusVisibleProps } from '../utils'
-import { FlexibleColor, ListItemRole, ListItemStatefulProps } from './types'
-import { listItemBackgroundColor } from './utils'
-
-export const ListItemLabelButton = styled.button`
-  font-family: inherit;
-`
-export const ListItemLabelLink = styled.a``
-export const ListItemLabelDiv = styled.div``
-
-// Use listItemLabelCSS to target the internal button / link / div CSS of ListItem
-export const listItemLabelCSS = (style: FlattenSimpleInterpolation) => css`
-  > ${ListItemLabelButton}, > ${ListItemLabelLink}, > ${ListItemLabelDiv} {
-    ${style}
-  }
-`
-
-const listItemLabelElement = (itemRole: ListItemRole, disabled?: boolean) => {
-  if (!disabled && itemRole === 'link') return ListItemLabelLink
-  if (itemRole === 'none') return ListItemLabelDiv
-  return ListItemLabelButton
-}
-
-const ListItemLabelLayout: FC<ListItemLabelProps> = ({
-  children,
-  disabled,
-  itemRole = 'button',
-  ...props
-}) => {
-  const Component = listItemLabelElement(
-    itemRole,
-    disabled
-  ) as FC<ListItemLabelProps>
-
-  return (
-    <Component
-      disabled={disabled}
-      type={itemRole === 'button' || disabled ? 'button' : undefined}
-      {...props}
-    >
-      {children}
-    </Component>
-  )
-}
+import { CompatibleHTMLProps } from '@looker/design-tokens'
+import React, { ReactNode } from 'react'
+import styled from 'styled-components'
+import { TruncateConfigProp, TruncateOptionally } from '../Truncate'
+import { DensityRamp, FlexibleColor } from './types'
+import { listItemDimensions, listItemLabelColor } from './utils'
 
 type ListItemLabelProps = CompatibleHTMLProps<HTMLElement> &
-  ListItemStatefulProps &
-  FlexibleColor &
-  FocusVisibleProps & {
-    cursorPointer?: boolean
+  FlexibleColor & {
     disabled?: boolean
-    height?: number
-    itemRole?: ListItemRole
+    description?: ReactNode
+    density?: DensityRamp
+    truncate?: TruncateConfigProp
   }
 
-export const ListItemLabel = styled(ListItemLabelLayout).withConfig({
-  shouldForwardProp: (prop) => prop === 'itemRole' || shouldForwardProp(prop),
-})`
-  ${({ height, itemRole }) => itemRole === 'none' && `min-height: ${height}px;`}
-  ${listItemBackgroundColor}
+export const ListItemLabel = styled(
+  ({
+    color,
+    children,
+    disabled,
+    density = 0,
+    description,
+    truncate,
+    ...props
+  }: ListItemLabelProps) => {
+    const {
+      descriptionFontSize,
+      descriptionLineHeight,
+      labelFontSize,
+      labelLineHeight,
+    } = listItemDimensions(density)
 
-  &:focus {
-    ${({ focusVisible, theme }) =>
-      focusVisible && `box-shadow: inset 0 0 0 2px ${theme.colors.keyFocus};`}
+    return (
+      <div {...props}>
+        <TruncateOptionally
+          truncate={truncate}
+          color={listItemLabelColor(color, disabled)}
+          fontSize={labelFontSize}
+          lineHeight={labelLineHeight}
+        >
+          {children}
+        </TruncateOptionally>
+        {description && (
+          <TruncateOptionally
+            truncate={truncate}
+            color={disabled ? 'text1' : 'text2'}
+            fontSize={descriptionFontSize}
+            lineHeight={descriptionLineHeight}
+          >
+            {description}
+          </TruncateOptionally>
+        )}
+      </div>
+    )
   }
-
-  align-items: center;
-  border: none;
-  color: inherit;
-  cursor: ${({ cursorPointer }) => (cursorPointer ? 'pointer' : undefined)};
+)`
   display: flex;
-  flex: 1;
-  font-size: inherit;
-  font-weight: inherit;
-  margin: 0; /* safari has default margin */
+  flex-direction: column;
+  flex-grow: 1;
+  /**
+   * min-width needed so truncates are aware of container width
+   */
   min-width: 0;
-  outline: none;
-  text-align: left;
-  text-decoration: none;
-  width: 100%;
-
-  &:hover,
-  &:focus {
-    color: inherit;
-    text-decoration: none;
-  }
 `

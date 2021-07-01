@@ -28,7 +28,7 @@ import { RadiusSizes, Theme } from '@looker/design-tokens'
 import { css } from 'styled-components'
 import { Accordion2Disclosure } from '../../Accordion2/Accordion2Disclosure'
 import { ListItem } from '../../List/ListItem'
-import { ListItemLabel } from '../../List/ListItemLabel'
+import { ListItemContent } from '../../List/ListItemContent'
 
 // Creates CSS for generating border radius on Tree and sub-Tree components
 export const generateBorderRadius = (
@@ -50,7 +50,7 @@ export const generateBorderRadius = (
       }
     }
 
-    ${ListItemLabel} {
+    ${ListItemContent} {
       border-radius: ${radii[borderRadius]};
     }
   `

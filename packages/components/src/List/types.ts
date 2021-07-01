@@ -144,7 +144,7 @@ export type ListItemStatefulProps = {
   selected?: boolean
 }
 
-interface DetailOptions extends Pick<HoverDisclosureProps, 'width'> {
+export interface DetailOptions extends Pick<HoverDisclosureProps, 'width'> {
   /**
    * If true, the detail will appear outside of the item's grey background on hover
    * In addition, if true, events originating from the detail will not bubble to the item's handlers
@@ -157,9 +157,7 @@ interface DetailOptions extends Pick<HoverDisclosureProps, 'width'> {
    */
   hoverDisclosure?: boolean
   /**
-   * Padding is added to the left and and right of the detail container by default. You can
-   * optionally disable that behavior if you want to have fine-grained control.
-   * @default true
+   * @deprecated No padding applied always. Prop to be removed soon
    */
   padding?: boolean
 }

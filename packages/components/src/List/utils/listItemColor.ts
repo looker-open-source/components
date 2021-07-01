@@ -50,7 +50,7 @@ const listItemColor = (
 }
 
 export const listItemIconColor = (color?: ListColor, disabled?: boolean) =>
-  listItemColor(color, disabled)
+  listItemColor(color, disabled, 'text2')
 
 export const listItemLabelColor = (color?: ListColor, disabled?: boolean) =>
   listItemColor(color, disabled, 'text5')

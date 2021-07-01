@@ -25,16 +25,12 @@
  */
 
 import { CompatibleHTMLProps, shouldForwardProp } from '@looker/design-tokens'
-import { StyledIconBase } from '@styled-icons/styled-icon'
 import omit from 'lodash/omit'
 import React, { forwardRef, ReactNode, Ref } from 'react'
 import styled from 'styled-components'
-import { ListItemIconPlacement } from './ListItemLayout'
-import { ListColor, ListItemDimensions, listItemDimensionKeys } from './types'
+import { ListColor } from './types'
 
-export interface ListItemWrapperProps
-  extends CompatibleHTMLProps<HTMLElement>,
-    ListItemDimensions {
+export interface ListItemWrapperProps extends CompatibleHTMLProps<HTMLElement> {
   color: ListColor
   cursorPointer?: boolean
   description?: ReactNode // Should be eventually deleted because the CSS could be handled in layout pieces
@@ -50,9 +46,7 @@ const ListItemWrapperInternal = forwardRef(
 
     return (
       <Component
-        {...omit(restProps, 'color', 'current', 'hovered', 'selected', [
-          ...listItemDimensionKeys,
-        ])}
+        {...omit(restProps, 'color', 'current', 'hovered', 'selected')}
         ref={ref as Ref<any>}
         role="none"
       />
@@ -74,19 +68,8 @@ export const ListItemWrapper = styled(ListItemWrapperInternal)
   font-size: ${({ theme: { fontSizes } }) => fontSizes.small};
   font-weight: ${({ theme: { fontWeights } }) => fontWeights.normal};
   list-style-type: none;
-  min-height: ${({ height }) => height}px;
   outline: none;
   text-decoration: none;
-
-  ${ListItemIconPlacement} {
-    align-self: ${({ description }) => (description ? 'flex-start' : 'center')};
-
-    ${StyledIconBase},
-    svg {
-      transition: color ${({ theme }) =>
-        `${theme.transitions.quick}ms ${theme.easings.ease}`};
-    }
-  }
 
   /**
     Styling for items that have nested menus
