@@ -26,12 +26,18 @@
 
 import React, { FC, Ref, ReactNode, forwardRef } from 'react'
 import styled, { css } from 'styled-components'
-import { CompatibleHTMLProps, shouldForwardProp } from '@looker/design-tokens'
+import {
+  CompatibleHTMLProps,
+  DensityProp,
+  shouldForwardProp,
+} from '@looker/design-tokens'
 import { FocusVisibleProps, focusVisibleCSSWrapper } from '../utils'
+import { accordionDimensions } from './accordionDimensions'
 import { AccordionLabel } from './AccordionLabel'
 import { AccordionIndicatorPosition } from './types'
 
 export type Accordion2DisclosureProps = CompatibleHTMLProps<HTMLElement> &
+  DensityProp &
   FocusVisibleProps & {
     ref?: Ref<HTMLDivElement>
     indicator: ReactNode
@@ -61,8 +67,9 @@ Accordion2DisclosureInternal.displayName = 'Accordion2DisclosureInternal'
  *
  * @TODO 3.x / Accordion removal
  */
-const labelTypographyDefaults = css`
-  font-size: ${({ theme }) => theme.fontSizes.small};
+const labelTypographyDefaults = css<Accordion2DisclosureProps>`
+  font-size: ${({ theme, density = 0 }) =>
+    theme.fontSizes[accordionDimensions(density).fontSize]};
   font-weight: ${({ theme }) => theme.fontWeights.semiBold};
   text-align: left;
 `

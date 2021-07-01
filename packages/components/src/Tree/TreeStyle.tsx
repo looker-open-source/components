@@ -228,21 +228,11 @@ export const TreeStyle = styled(TreeStyleLayout)`
     }
 
     > ${TreeBranch} {
-      ${({
-        assumeIconAlignment,
-        depth,
-        iconGap,
-        indicatorGap,
-        indicatorSize,
-        theme,
-      }) =>
+      ${({ assumeIconAlignment, depth, density }) =>
         generateIndent({
           assumeIconAlignment,
           depth: depth + 2,
-          iconGap,
-          indicatorGap,
-          indicatorSize,
-          theme,
+          density,
         })}
     }
   }

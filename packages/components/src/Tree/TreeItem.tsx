@@ -26,38 +26,25 @@
 
 import React, { FC, useContext } from 'react'
 import styled from 'styled-components'
+import { ListItemProps } from '../ListItem'
+import { createListItemPartitions } from '../ListItem/utils'
 import { undefinedCoalesce } from '../utils'
-import { ListItem, ListItemProps } from '../ListItem'
 import { TreeContext } from './TreeContext'
+import { TreeItem2Content } from './Tree'
 
-export type TreeItemProps = ListItemProps & {
-  /**
-   * Callback triggered only when clicking on the TreeItem's outermost container (i.e. not a child element)
-   * Used by `TreeItem`s to allow indent padding clicks to register when `labelBackgroundOnly` is true on a parent `Tree`
-   * Note: onClickWhitespace should only be used if `labelBackgroundOnly` is enabled on a parent `Tree`
-   */
-  onClickWhitespace?: (event: React.MouseEvent<HTMLElement>) => void
-}
+export type TreeItemProps = ListItemProps
 
 const TreeItemLayout: FC<TreeItemProps> = ({
-  children,
   density: propsDensity,
   color: propsColor,
-  onClickWhitespace,
-  role = 'treeitem',
   ...restProps
 }) => {
   const {
     density: contextDensity,
+    depth,
     color: contextColor,
     labelBackgroundOnly,
   } = useContext(TreeContext)
-
-  if (onClickWhitespace && !labelBackgroundOnly)
-    // eslint-disable-next-line no-console
-    console.warn(
-      'onClickWhitespace is only necessary on <TreeItem> when labelBackgroundOnly is enabled; use onClick on <TreeItem> or to its children instead'
-    )
 
   // Using labelBackgroundOnly with items with itemRole="button" or "link" leads to overly thin backgrounds
   if (labelBackgroundOnly && restProps.itemRole !== 'none')
@@ -66,17 +53,27 @@ const TreeItemLayout: FC<TreeItemProps> = ({
       'TreeItems should use itemRole="none" when a parent Tree has labelBackgroundOnly=true for visualize purposes.'
     )
 
+  const density = undefinedCoalesce([propsDensity, contextDensity])
+  const color = undefinedCoalesce([propsColor, contextColor])
+
+  const [inside, outside] = createListItemPartitions({
+    color,
+    density,
+    ...restProps,
+  })
+
   return (
-    <ListItem
-      density={undefinedCoalesce([propsDensity, contextDensity])}
-      color={undefinedCoalesce([propsColor, contextColor])}
-      role={role}
-      onClickWhitespace={onClickWhitespace}
-      {...restProps}
-    >
-      {children}
-    </ListItem>
+    <Wrapper>
+      <TreeItem2Content depth={depth} density={density} tabIndex={-1}>
+        {inside}
+      </TreeItem2Content>
+      {outside}
+    </Wrapper>
   )
 }
 
 export const TreeItem = styled(TreeItemLayout)``
+
+const Wrapper = styled.li`
+  display: flex;
+`

@@ -25,27 +25,28 @@
  */
 
 import styled from 'styled-components'
-import { SpacingSizes } from '@looker/design-tokens'
+import { DensityRamp } from '@looker/design-tokens'
 import { StyledIconBase } from '@styled-icons/styled-icon'
-import { IconSize } from '../Icon'
-import { accordionDefaults } from './accordionDefaults'
 import { AccordionIndicatorProps } from './types'
+import { accordionDimensions } from './accordionDimensions'
 
-const size = (size?: IconSize) => size || accordionDefaults.indicatorSize
-const gap = (gap?: SpacingSizes) => gap || accordionDefaults.indicatorGap
+const size = (density: DensityRamp = 0) =>
+  accordionDimensions(density).indicatorSize
+const gap = (density: DensityRamp = 0) =>
+  accordionDimensions(density).indicatorGap
 
 export const AccordionIndicator = styled.div<AccordionIndicatorProps>`
   align-items: center;
   display: flex;
   justify-content: center;
 
-  ${({ indicatorGap, indicatorPosition, theme: { space } }) =>
+  ${({ density, indicatorPosition, theme: { space } }) =>
     indicatorPosition === 'left'
-      ? `margin-right: ${space[gap(indicatorGap)]};`
-      : `margin-left: ${space[gap(indicatorGap)]};`}
+      ? `margin-right: ${space[gap(density)]};`
+      : `margin-left: ${space[gap(density)]};`}
 
   ${StyledIconBase} {
-    height: ${({ indicatorSize, theme }) => theme.sizes[size(indicatorSize)]};
-    width: ${({ indicatorSize, theme }) => theme.sizes[size(indicatorSize)]};
+    height: ${({ density, theme }) => theme.sizes[size(density)]};
+    width: ${({ density, theme }) => theme.sizes[size(density)]};
   }
 `

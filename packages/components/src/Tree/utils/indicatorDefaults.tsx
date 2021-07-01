@@ -29,10 +29,8 @@ import { ArrowDropDown } from '@styled-icons/material/ArrowDropDown'
 import { ArrowRight } from '@styled-icons/material/ArrowRight'
 import { AccordionIndicatorProps } from '../../Accordion2/types'
 
-export const indicatorDefaults: Required<
-  Omit<AccordionIndicatorProps, 'indicatorSize'>
-> = {
-  indicatorGap: 'xxsmall',
+export const indicatorDefaults: Required<AccordionIndicatorProps> = {
+  density: 0,
   indicatorIcons: {
     close: <ArrowRight />,
     open: <ArrowDropDown />,

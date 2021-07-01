@@ -66,13 +66,11 @@ const ListItemInternal = forwardRef(
       itemRole,
       onBlur,
       onClick,
-      onClickWhitespace,
       onKeyDown,
       onKeyUp,
       onMouseEnter,
       onMouseLeave,
       rel,
-      renderAsDiv = false,
       role,
       selected,
       tabIndex = -1,
@@ -118,6 +116,12 @@ const ListItemInternal = forwardRef(
 
     const wrapperRef = useRef<HTMLLIElement | HTMLDivElement>(null)
     const actualRef = useForkedRef(wrapperRef, ref)
+
+    /**
+     * @TODO: We should probably delete this since TreeItem
+     * no longer uses ListItem and this useEffect was
+     * added for Tree keyboard navigation.
+     */
     useEffect(() => {
       const focusableElements =
         wrapperRef?.current?.querySelectorAll('a, button, input')
@@ -142,12 +146,6 @@ const ListItemInternal = forwardRef(
       disabled,
       hovered,
       selected,
-    }
-
-    const handleOnClickWhitespace = (event: React.MouseEvent<HTMLElement>) => {
-      if (event.currentTarget === event.target) {
-        onClickWhitespace && onClickWhitespace(event)
-      }
     }
 
     const handleWrapperFocus = () => {
@@ -180,16 +178,12 @@ const ListItemInternal = forwardRef(
         <ListItemWrapper
           className={className}
           color={listItemLabelColor(color, disabled)}
-          cursorPointer={!!onClickWhitespace}
-          description={description}
           disabled={disabled}
           onBlur={handleWrapperBlur}
-          onClick={handleOnClickWhitespace}
           onFocus={handleWrapperFocus}
           onMouseEnter={handleWrapperMouseEnter}
           onMouseLeave={handleWrapperMouseLeave}
           ref={actualRef}
-          renderAsDiv={renderAsDiv}
           {...wrapperProps}
         >
           <ListItemContent

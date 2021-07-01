@@ -33,18 +33,15 @@ import React, {
   useState,
 } from 'react'
 import { useAccordion2 } from '../Accordion2'
-import { Accordion2Disclosure } from '../Accordion2/Accordion2Disclosure'
 import { ControlledOrUncontrolled } from '../Accordion2/controlTypes'
 import { partitionAriaProps, undefinedCoalesce, useWrapEvent } from '../utils'
 import { List } from '../List'
 import { ListItemContext, ListItemProps } from '../ListItem'
-import { listItemDimensions, getDetailOptions } from '../ListItem/utils'
+import { getDetailOptions, createListItemPartitions } from '../ListItem/utils'
 import { TreeContext } from './TreeContext'
-import { indicatorDefaults } from './utils'
+import { generateIndent, GenerateIndentProps, indicatorDefaults } from './utils'
 import { WindowedTreeContext } from './WindowedTreeNode'
-import { TreeItemInner, TreeItemInnerDetail, TreeStyle } from './TreeStyle'
 import { treeItemInnerPropKeys, TreeProps } from './types'
-import { TreeAccordion } from './TreeAccordion'
 
 /**
  * TODO: When labelToggle is introduced the aria-* attributes should land on the nested ListItem's
@@ -60,7 +57,7 @@ const TreeLayout = ({
   dividers,
   forceLabelPadding,
   itemRole,
-  label: propsLabel,
+  label,
   labelBackgroundOnly: propsLabelBackgroundOnly,
   defaultOpen,
   onBlur,
@@ -121,7 +118,7 @@ const TreeLayout = ({
   const depth = treeContext.depth ? treeContext.depth : startingDepth
 
   const density = collectionDensity || propsDensity || treeContext.density || 0
-  const { iconGap, iconSize } = listItemDimensions(density)
+  // const { iconGap, iconSize } = listItemDimensions(density)
 
   const { accessory, content, hoverDisclosure } = getDetailOptions(propsDetail)
 
@@ -145,47 +142,8 @@ const TreeLayout = ({
     }
   }
 
-  const handleMouseEnter = useWrapEvent(() => setHovered(true), onMouseEnter)
-  const handleMouseLeave = useWrapEvent(() => setHovered(false), onMouseLeave)
-  const handleBlur = useWrapEvent(() => setHovered(false), onBlur)
-  const handleFocus = useWrapEvent(() => setHovered(true), onFocus)
-
-  const detail = {
-    content: (
-      <TreeItemInnerDetail
-        onClick={handleDetailClick}
-        onKeyDown={handleDetailKeyDown}
-        ref={detailRef}
-      >
-        {content}
-      </TreeItemInnerDetail>
-    ),
-    options: {
-      accessory,
-      hoverDisclosure,
-    },
-  }
-
-  const label = (
-    <TreeItemInner
-      renderAsDiv
-      color={color}
-      density={density}
-      detail={detail}
-      disabled={disabled}
-      icon={icon}
-      itemRole={itemRole || 'none'}
-      role="none"
-      tabIndex={-2} // Prevents tab stop behavior from reaching inner TreeItems
-      {...restTreeItemInnerProps}
-      {...ariaProps}
-    >
-      {propsLabel}
-    </TreeItemInner>
-  )
-
   const {
-    indicatorGap: defaultGap,
+    // indicatorGap: defaultGap,
     indicatorIcons,
     indicatorPosition,
   } = indicatorDefaults
@@ -199,10 +157,15 @@ const TreeLayout = ({
     accordionProps = { ...accordionProps, isOpen, toggleOpen }
   }
 
+  const [inside, outside] = createListItemPartitions({
+    children: label,
+    ...treeItemInnerProps,
+  })
   const {
-    content: treeContent,
+    contentDomProps,
     domProps,
     disclosureProps,
+    isOpen: accordionIsOpen,
   } = useAccordion2({
     'aria-selected': selected,
     children: (
@@ -210,30 +173,29 @@ const TreeLayout = ({
         {children}
       </List>
     ),
+    density,
     disabled,
-    indicatorGap: assumeIconAlignment ? iconGap : defaultGap,
+    // indicatorGap: assumeIconAlignment ? iconGap : defaultGap,
+    // indicatorSize: iconSize,
     indicatorIcons,
     indicatorPosition,
-    indicatorSize: iconSize,
-    label,
-    onBlur: handleBlur,
-    onFocus: handleFocus,
-    onMouseEnter: handleMouseEnter,
-    onMouseLeave: handleMouseLeave,
+    label: inside,
+    onBlur: useWrapEvent(() => setHovered(false), onBlur),
+    onFocus: useWrapEvent(() => setHovered(true), onFocus),
+    onMouseEnter: useWrapEvent(() => setHovered(true), onMouseEnter),
+    onMouseLeave: useWrapEvent(() => setHovered(false), onMouseLeave),
+
     role: 'treeitem',
     tabIndex: -1,
     ...restProps,
     ...accordionProps,
   })
 
-  const innerAccordion = (
-    <TreeAccordion className="tree-accordion-disclosure">
-      {!partialRender && (
-        <Accordion2Disclosure {...domProps} {...disclosureProps} />
-      )}
-      {treeContent}
-    </TreeAccordion>
-  )
+  const {
+    indicator,
+    children: disclosureLabel,
+    ...disclosureDomProps
+  } = disclosureProps
 
   return (
     <TreeContext.Provider
@@ -245,26 +207,55 @@ const TreeLayout = ({
         labelBackgroundOnly: hasLabelBackgroundOnly,
       }}
     >
-      <TreeStyle
-        assumeIconAlignment={assumeIconAlignment || forceLabelPadding} // TODO 3.x: Deprecate forceLabelPadding as input
-        border={hasBorder}
-        branchFontWeight={branchFontWeight}
-        className={className}
-        color={color}
-        depth={depth}
-        disabled={disabled}
-        dividers={dividers}
-        hovered={hovered}
-        iconGap={iconGap}
-        indicatorGap={defaultGap}
-        indicatorSize={iconSize}
-        labelBackgroundOnly={hasLabelBackgroundOnly}
-        selected={selected}
-      >
-        {innerAccordion}
-      </TreeStyle>
+      <div {...domProps}>
+        {!partialRender && (
+          <Wrapper>
+            <TreeItem2Content
+              depth={depth}
+              density={density}
+              {...disclosureDomProps}
+            >
+              {indicator}
+              {disclosureLabel}
+            </TreeItem2Content>
+            {outside}
+          </Wrapper>
+        )}
+        {accordionIsOpen && <div {...contentDomProps} />}
+      </div>
+
+      {/* <TreeStyle
+          assumeIconAlignment={assumeIconAlignment || forceLabelPadding} // TODO 3.x: Deprecate forceLabelPadding as input
+          border={hasBorder}
+          branchFontWeight={branchFontWeight}
+          // className={className}
+          color={color}
+          depth={depth}
+          disabled={disabled}
+          dividers={dividers}
+          hovered={hovered}
+          iconGap={iconGap}
+          indicatorGap={defaultGap}
+          indicatorSize={iconSize}
+          labelBackgroundOnly={hasLabelBackgroundOnly}
+          selected={selected}
+        /> */}
     </TreeContext.Provider>
   )
 }
 
 export const Tree = styled(TreeLayout)<TreeProps>``
+
+const Wrapper = styled.li`
+  display: flex;
+`
+
+export const TreeItem2Content = styled.div.attrs<GenerateIndentProps>(
+  ({ role = 'treeitem' }) => ({
+    role,
+  })
+)<GenerateIndentProps>`
+  ${generateIndent}
+  display: flex;
+  flex: 1;
+`
