@@ -24,20 +24,32 @@
 
  */
 
-import { RadiusSizes, Theme } from '@looker/design-tokens'
-import { css } from 'styled-components'
-import { TreeItem2Content, TreeItem2Label } from '../Tree'
+import React from 'react'
+import { Folder } from '@styled-icons/material/Folder'
+import { TreeCollection } from '../Tree'
+import { NavTree } from './NavTree'
+import { NavTreeItem } from './NavTreeItem'
 
-// Creates CSS for generating border radius on Tree and sub-Tree components
-export const generateBorderRadius = (
-  borderRadius: RadiusSizes,
-  theme: Theme
-) => {
-  const { radii } = theme
+export default {
+  component: NavTree,
+  title: 'NavTree',
+}
 
-  return css`
-    ${TreeItem2Content}, ${TreeItem2Label} {
-      border-radius: ${radii[borderRadius]};
-    }
-  `
+export const ParentIcon = () => {
+  return (
+    <TreeCollection>
+      <NavTree defaultOpen label="Parent Tree with Icon" icon={<Folder />}>
+        <NavTreeItem parentIcon>Cheddar</NavTreeItem>
+        <NavTreeItem parentIcon>Cheddar 2</NavTreeItem>
+        <NavTreeItem parentIcon>Cheddar 3</NavTreeItem>
+      </NavTree>
+      <NavTree defaultOpen label="Grandparent Tree with Icon" icon={<Folder />}>
+        <NavTree defaultOpen label="Parent Tree with No Icon">
+          <NavTreeItem>Swiss</NavTreeItem>
+          <NavTreeItem>Swiss 2</NavTreeItem>
+          <NavTreeItem>Swiss 3</NavTreeItem>
+        </NavTree>
+      </NavTree>
+    </TreeCollection>
+  )
 }

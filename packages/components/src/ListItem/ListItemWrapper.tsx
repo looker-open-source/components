@@ -24,49 +24,21 @@
 
  */
 
-import { CompatibleHTMLProps, shouldForwardProp } from '@looker/design-tokens'
-import omit from 'lodash/omit'
-import React, { forwardRef, ReactNode, Ref } from 'react'
+import { CompatibleHTMLProps } from '@looker/design-tokens'
 import styled from 'styled-components'
 import { ListColor } from '../List'
 
 export interface ListItemWrapperProps extends CompatibleHTMLProps<HTMLElement> {
   color: ListColor
-  cursorPointer?: boolean
-  description?: ReactNode // Should be eventually deleted because the CSS could be handled in layout pieces
-  renderAsDiv?: boolean
 }
 
-const ListItemWrapperInternal = forwardRef(
-  (
-    { renderAsDiv, ...restProps }: ListItemWrapperProps,
-    ref: Ref<HTMLElement>
-  ) => {
-    const Component = renderAsDiv ? 'div' : 'li'
-
-    return (
-      <Component
-        {...omit(restProps, 'color', 'current', 'hovered', 'selected')}
-        ref={ref as Ref<any>}
-        role="none"
-      />
-    )
-  }
-)
-
-ListItemWrapperInternal.displayName = 'ListItemWrapperInternal'
-
-export const ListItemWrapper = styled(ListItemWrapperInternal)
-  .withConfig<ListItemWrapperProps>({
-    shouldForwardProp: (prop) =>
-      ['renderAsDiv'].includes(prop) ? true : shouldForwardProp(prop),
-  })
-  .attrs(({ color = 'text5' }) => ({ color }))`
+export const ListItemWrapper = styled.li.attrs(
+  ({ role = 'none', color = 'text5' }) => ({ color, role })
+)`
   align-items: center;
-  cursor: ${({ cursorPointer }) => (cursorPointer ? 'pointer' : undefined)};
   display: flex;
-  font-size: ${({ theme: { fontSizes } }) => fontSizes.small};
-  font-weight: ${({ theme: { fontWeights } }) => fontWeights.normal};
+  font-size: ${({ theme }) => theme.fontSizes.small};
+  font-weight: ${({ theme }) => theme.fontWeights.normal};
   list-style-type: none;
   outline: none;
   text-decoration: none;

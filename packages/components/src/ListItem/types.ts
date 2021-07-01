@@ -182,16 +182,4 @@ export type ListItemProps = CompatibleHTMLProps<HTMLElement> &
      * Text specified in `description` property will be displayed below `label` in the tooltip
      */
     truncate?: TruncateConfigProp
-
-    /**
-     * Callback to specify onClick handler on item's whitespace.
-     * @private May only be passed via TreeItem. This feature may be removed without a breaking change. We STRONGLY discourage the direct use of this property.
-     */
-    onClickWhitespace?: (event: React.MouseEvent<HTMLElement>) => void
-    /**
-     * Determines the type of the rendered ListItemWrapper
-     * @default false
-     * @private Should only be passed when ListItem is wrapped by another component like Tree. This feature may be removed without a breaking change. We STRONGLY discourage the direct use of this property.
-     */
-    renderAsDiv?: boolean
   }
