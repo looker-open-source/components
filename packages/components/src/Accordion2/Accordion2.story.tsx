@@ -30,6 +30,7 @@ import React from 'react'
 import { ChevronLeft } from '@styled-icons/material-rounded/ChevronLeft'
 import { ExpandMore } from '@styled-icons/material-rounded/ExpandMore'
 import { children, label } from '../__mocks__/accordion'
+import { Grid, SpaceVertical } from '../Layout'
 import { useToggle } from '../utils/useToggle'
 import { Accordion2 } from './Accordion2'
 import { Accordion2Props } from './types'
@@ -75,12 +76,34 @@ DefaultOpen.parameters = {
   storyshots: { disable: true },
 }
 
+const DensityExample = (
+  props: Pick<Accordion2Props, 'indicatorPosition' | 'density'>
+) => (
+  <Accordion2
+    defaultOpen
+    label={`Density Example: ${props.density}`}
+    {...props}
+  >
+    Content within accordion.
+  </Accordion2>
+)
+
+export const Density = () => (
+  <SpaceVertical>
+    <Grid columns={5}>
+      <DensityExample density={1} />
+      <DensityExample density={0} />
+      <DensityExample density={-1} />
+      <DensityExample density={-2} />
+      <DensityExample density={-3} />
+    </Grid>
+  </SpaceVertical>
+)
+
 export const CustomizedIndicator = Template.bind({})
 CustomizedIndicator.args = {
   ...Basic.args,
   indicatorIcons: { close: <ChevronLeft />, open: <ExpandMore /> },
-  indicatorPosition: 'left',
-  indicatorSize: 'large',
 }
 
 export const Controlled = () => {

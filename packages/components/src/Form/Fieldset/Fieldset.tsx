@@ -34,9 +34,9 @@ import {
 import { Space, SpaceVertical } from '../../Layout'
 import { SimpleLayoutProps, simpleLayoutCSS } from '../../Layout/utils/simple'
 import { Legend, LegendProps } from '../Legend'
-import { accordionLeftDefaults } from '../../Accordion2/accordionDefaults'
 import { Accordion2, Accordion2Props } from '../../Accordion2'
 import { ControlledLoosely } from '../../Accordion2/controlTypes'
+import { accordionDimensions } from '../../Accordion2/accordionDimensions'
 
 export type FieldsetProps = Omit<CompatibleHTMLProps<HTMLDivElement>, 'wrap'> &
   SimpleLayoutProps &
@@ -194,8 +194,8 @@ FieldsetLayout.displayName = 'FieldsetLayout'
 
 const FieldsetAccordionContent = styled.div`
   padding-left: ${({ theme }) =>
-    `calc(${theme.sizes[accordionLeftDefaults.indicatorSize]} + ${
-      theme.space[accordionLeftDefaults.indicatorGap]
+    `calc(${theme.sizes[accordionDimensions().indicatorSize]} + ${
+      theme.space[accordionDimensions().indicatorGap]
     })`};
   padding-top: ${({ theme }) => theme.space.medium};
 `

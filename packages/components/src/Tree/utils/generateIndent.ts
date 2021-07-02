@@ -24,37 +24,42 @@
 
  */
 
+import { DensityProp, DensityRamp, Theme } from '@looker/design-tokens'
 import { css } from 'styled-components'
-import { SpacingSizes, Theme } from '@looker/design-tokens'
-import { IconSize } from '../../Icon'
+import { accordionDimensions } from '../../Accordion2/accordionDimensions'
+import { listItemDimensions } from '../../ListItem'
 
-export interface GenerateIndentProps {
+export type GenerateIndentProps = DensityProp & {
   assumeIconAlignment?: boolean
-  depth: number
-  iconGap: SpacingSizes
-  indicatorGap: SpacingSizes
-  indicatorSize: IconSize
-  theme: Theme
+  depth?: number
 }
 
-export const generateIndent = ({
-  assumeIconAlignment,
-  depth,
-  iconGap,
-  indicatorGap,
-  indicatorSize,
-  theme,
-}: GenerateIndentProps) => {
+const generateIndentCalculation = (
+  depth: number,
+  density: DensityRamp,
+  assumeIconAlignment: boolean,
+  theme: Theme
+) => {
   const { space, sizes } = theme
+  const { iconGap } = listItemDimensions(density)
+  const { indicatorGap, indicatorSize } = accordionDimensions(density)
 
   const renderedDepth = assumeIconAlignment ? depth - 1 : depth
   const iconSpacingSpacer = assumeIconAlignment
     ? `(${space[iconGap]} - ${space[indicatorGap]})`
     : '0px'
 
-  const indentCalculation = `(${sizes[indicatorSize]} + ${space[indicatorGap]}) * ${renderedDepth} + ${iconSpacingSpacer}`
-
-  return css`
-    padding-left: calc(${indentCalculation});
-  `
+  return `calc((${sizes[indicatorSize]} + ${space[indicatorGap]}) * ${renderedDepth} + ${iconSpacingSpacer})`
 }
+
+/**
+ * Generates an indent for a TreeItem
+ */
+export const generateIndent = ({
+  assumeIconAlignment = false,
+  depth = 0,
+  density = 0,
+}: GenerateIndentProps) => css`
+  padding-left: ${({ theme }) =>
+    generateIndentCalculation(depth, density, assumeIconAlignment, theme)};
+`

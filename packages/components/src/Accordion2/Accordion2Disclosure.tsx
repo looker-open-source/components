@@ -26,12 +26,17 @@
 
 import React, { FC, Ref, ReactNode, forwardRef } from 'react'
 import styled, { css } from 'styled-components'
-import { CompatibleHTMLProps, shouldForwardProp } from '@looker/design-tokens'
+import {
+  CompatibleHTMLProps,
+  DensityProp,
+  shouldForwardProp,
+} from '@looker/design-tokens'
 import { FocusVisibleProps, focusVisibleCSSWrapper } from '../utils'
 import { AccordionLabel } from './AccordionLabel'
 import { AccordionIndicatorPosition } from './types'
 
 export type Accordion2DisclosureProps = CompatibleHTMLProps<HTMLElement> &
+  DensityProp &
   FocusVisibleProps & {
     ref?: Ref<HTMLDivElement>
     indicator: ReactNode
@@ -39,15 +44,13 @@ export type Accordion2DisclosureProps = CompatibleHTMLProps<HTMLElement> &
   }
 
 const Accordion2DisclosureInternal: FC<Accordion2DisclosureProps> = forwardRef(
-  ({ children, indicator, indicatorPosition, ...props }, ref) => {
-    return (
-      <div ref={ref} {...props}>
-        {indicatorPosition === 'left' && indicator}
-        <AccordionLabel>{children}</AccordionLabel>
-        {indicatorPosition !== 'left' && indicator}
-      </div>
-    )
-  }
+  ({ children, indicator, indicatorPosition, ...props }, ref) => (
+    <div ref={ref} {...props}>
+      {indicatorPosition === 'left' && indicator}
+      <AccordionLabel>{children}</AccordionLabel>
+      {indicatorPosition !== 'left' && indicator}
+    </div>
+  )
 )
 
 Accordion2DisclosureInternal.displayName = 'Accordion2DisclosureInternal'
@@ -61,8 +64,7 @@ Accordion2DisclosureInternal.displayName = 'Accordion2DisclosureInternal'
  *
  * @TODO 3.x / Accordion removal
  */
-const labelTypographyDefaults = css`
-  font-size: ${({ theme }) => theme.fontSizes.small};
+const labelTypographyDefaults = css<Accordion2DisclosureProps>`
   font-weight: ${({ theme }) => theme.fontWeights.semiBold};
   text-align: left;
 `
