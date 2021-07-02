@@ -24,14 +24,14 @@
 
  */
 
+import { DensityProp, DensityRamp } from '@looker/design-tokens'
 import React, { FC } from 'react'
 import { Tree } from '../Tree'
 import { TreeCollection } from '../TreeCollection'
 import { TreeItem } from '../TreeItem'
-import { DensityRamp } from '../../ListItem/types'
 import { Grid } from '../../Layout'
 
-const DensityTree: FC<{ density: DensityRamp }> = ({ density }) => (
+const DensityTree: FC<DensityProp> = ({ density }) => (
   <TreeCollection>
     <Tree defaultOpen density={density} label="Tree of Cheese">
       <Tree defaultOpen label="French Cheeses">

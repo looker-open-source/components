@@ -67,6 +67,9 @@ export type CompatibleHTMLProps<T> = Omit<
 
 export { userSelect } from './userSelect'
 export type { UserSelectProps } from './userSelect'
+
+export type { DensityProp, DensityRamp } from './density'
+
 export { cursor } from './cursor'
 export type { CursorProps } from './cursor'
 export { Easings } from './easings'

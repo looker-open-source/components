@@ -34,6 +34,7 @@ import React, {
 } from 'react'
 import {
   CompatibleHTMLProps,
+  DensityProp,
   FontFamilies,
   shouldForwardProp,
   height,
@@ -43,14 +44,14 @@ import {
 import { HeightProps, fontFamily } from 'styled-system'
 import styled from 'styled-components'
 import { useArrowKeyNav, useWindow } from '../utils'
-import { DensityProps, ListItemContext, listItemDimensions } from '../ListItem'
+import { ListItemContext, listItemDimensions } from '../ListItem'
 
 export type ListColor = 'key' | 'calculation' | 'dimension' | 'measure'
 
 export type ListProps = HeightProps &
   WidthProps &
   Omit<CompatibleHTMLProps<HTMLUListElement>, 'label'> &
-  DensityProps & {
+  DensityProp & {
     /**
      * Replace the normal uiN(1-5) color, when ListItem is selected, with color label passed.
      *
