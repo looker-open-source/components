@@ -24,6 +24,7 @@
 
  */
 
+import { DensityProp } from '@looker/design-tokens'
 import React, {
   cloneElement,
   createContext,
@@ -31,11 +32,10 @@ import React, {
   useCallback,
   useContext,
 } from 'react'
-import { DensityProps } from '../ListItem/types'
 import { TreeCollectionContext } from './TreeCollectionContext'
 import { WindowedTreeNodeIDProps } from './types'
 
-export type WindowedTreeContextProps = DensityProps & {
+export type WindowedTreeContextProps = DensityProp & {
   isOpen?: boolean
   partialRender: boolean
   toggleNode?: (isOpen: boolean) => void

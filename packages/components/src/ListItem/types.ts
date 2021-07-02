@@ -26,6 +26,7 @@
 
 import {
   CompatibleHTMLProps,
+  DensityRamp,
   FontSizes,
   LineHeights,
   SpacingSizes,
@@ -35,16 +36,6 @@ import { IconSize, IconType } from '../Icon'
 import { ListColor } from '../List'
 import { TruncateConfigProp } from '../Truncate'
 import { HoverDisclosureProps } from '../utils/HoverDisclosure'
-
-export type DensityRamp = -3 | -2 | -1 | 0 | 1
-
-export type DensityProps = {
-  /**
-   * Determines how dense a list should be by affecting child item size and spacing.
-   * @default 0
-   */
-  density?: DensityRamp
-}
 
 export interface ListItemDimensions {
   descriptionFontSize: FontSizes

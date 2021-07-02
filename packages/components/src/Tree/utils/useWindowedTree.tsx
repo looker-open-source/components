@@ -24,16 +24,16 @@
 
  */
 
+import { DensityProp } from '@looker/design-tokens'
 import React, { Ref, useCallback, useEffect, useReducer } from 'react'
 import { listItemDimensions } from '../../ListItem'
-import { DensityProps } from '../../ListItem/types'
 import { useWindow } from '../../utils'
 import { WindowedTreeNodeProps, WindowedTreeNodeIDProps } from '../types'
 import { WindowedTreeNode } from '../WindowedTreeNode'
 import { windowedTreeReducer } from './windowedTreeReducer'
 import { getWindowedTreeNodeFilterer } from './getWindowedTreeNodeFilterer'
 
-export type UseWindowedTreeNodeProps = DensityProps & {
+export type UseWindowedTreeNodeProps = DensityProp & {
   ref?: Ref<HTMLUListElement>
   trees: WindowedTreeNodeProps[]
 }

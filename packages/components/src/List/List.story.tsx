@@ -24,13 +24,13 @@
 
  */
 
-import { Page } from 'puppeteer'
-import React, { FC, useState } from 'react'
+import { DensityRamp } from '@looker/design-tokens'
 import { Story } from '@storybook/react/types-6-0'
 import { DateRange } from '@styled-icons/material-outlined/DateRange'
 import { SubdirectoryArrowLeft } from '@styled-icons/material/SubdirectoryArrowLeft'
+import { Page } from 'puppeteer'
+import React, { FC, useState } from 'react'
 import { Flex, Grid, Space } from '../Layout'
-import { DensityRamp } from '../ListItem/types'
 import { ListItem } from '../ListItem'
 import { List, ListProps } from './List'
 

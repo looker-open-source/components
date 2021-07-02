@@ -24,11 +24,11 @@
 
  */
 
+import { DensityProp } from '@looker/design-tokens'
 import { createContext } from 'react'
-import { DensityProps } from '../ListItem/types'
 import { ListItemColor } from '../ListItem'
 
-export type TreeContextProps = DensityProps & {
+export type TreeContextProps = DensityProp & {
   border?: boolean
   color?: ListItemColor
   depth?: number

@@ -24,7 +24,8 @@
 
  */
 
-import { DensityRamp, ListItemDimensions } from '../types'
+import { DensityRamp } from '@looker/design-tokens'
+import { ListItemDimensions } from '../types'
 
 export const density0: ListItemDimensions = {
   descriptionFontSize: 'xsmall',
@@ -84,5 +85,6 @@ export const densities = {
  * Returns an object with size and spacing scaled to "density" parameter value
  * @param density Accepts values from -3 (smallest) to 1 (largest)
  */
-export const listItemDimensions = (density: DensityRamp): ListItemDimensions =>
-  densities[density]
+export const listItemDimensions = (
+  density: DensityRamp = 0
+): ListItemDimensions => densities[density]
