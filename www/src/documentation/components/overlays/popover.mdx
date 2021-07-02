@@ -12,9 +12,7 @@ Popovers are assembled of two pieces: an overlay and a surface. Unlike [Dialogs]
 ```jsx
 <Popover
   content={
-    <PopoverContent p="large" width="360px">
-      <Heading>Wildebeest</Heading>
-
+    <PopoverLayout header="Wildebeest">
       <Text fontSize="small">
         The blue wildebeest, also called the common wildebeest, white-bearded
         wildebeest or brindled gnu, is a large antelope and one of the two
@@ -27,7 +25,7 @@ Popovers are assembled of two pieces: an overlay and a surface. Unlike [Dialogs]
         The adults' hues range from a deep slate or bluish gray to light gray or
         even grayish brown. Both sexes possess a pair of large curved horns.
       </Text>
-    </PopoverContent>
+    </PopoverLayout>
   }
 >
   <Button>A Wikipedia article about Wildebeests</Button>
@@ -41,11 +39,11 @@ Placement can be adjusted with the `placement` prop. Valid positions are `top`, 
 ```jsx
 ;() => {
   const popoverContent = (
-    <PopoverContent>
+    <PopoverLayout>
       <Paragraph width={300} p="xxlarge">
         👋 Hello, I am a popover!
       </Paragraph>
-    </PopoverContent>
+    </PopoverLayout>
   )
 
   return (
@@ -82,7 +80,7 @@ Placement can be adjusted with the `placement` prop. Valid positions are `top`, 
 ```jsx
 ;() => {
   const hoverRef = React.useRef()
-  const content = <PopoverContent p="large">I'm in the popover</PopoverContent>
+  const content = <PopoverLayout>I'm in the popover</PopoverLayout>
   return (
     <Card ref={hoverRef} raised>
       <CardContent>
