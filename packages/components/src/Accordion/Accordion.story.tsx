@@ -108,7 +108,7 @@ DefaultOpen.parameters = {
 
 export const CustomizedIndicator = () => (
   <Accordion
-    indicatorSize="large"
+    density={1}
     indicatorPosition="left"
     indicatorIcons={{ close: <ChevronLeft />, open: <ExpandMore /> }}
     content={lorem}

@@ -25,8 +25,8 @@
  */
 
 import { ReactNode } from 'react'
-import { SpacingSizes } from '@looker/design-tokens'
-import { IconSize, IconType } from '../Icon'
+import { DensityProp } from '@looker/design-tokens'
+import { IconType } from '../Icon'
 import { GenericClickProps } from '../utils'
 import { ControlledOrUncontrolled } from './controlTypes'
 
@@ -57,16 +57,7 @@ export type Accordion2Props = ControlledOrUncontrolled &
     hideDisclosure?: boolean
   }
 
-/**
- * @TODO: Replace indicatorSize & indicatorGap with density
- */
-export interface AccordionIndicatorProps {
-  /**
-   * Space between label and indicator within disclosure
-   * @default xsmall
-   */
-  indicatorGap?: SpacingSizes
-
+export type AccordionIndicatorProps = DensityProp & {
   /**
    * Icons for disclosure indicator.
    *
@@ -80,10 +71,4 @@ export interface AccordionIndicatorProps {
    * @default right
    */
   indicatorPosition?: AccordionIndicatorPosition
-
-  /**
-   * Size of icon on disclosure
-   * @default small
-   */
-  indicatorSize?: IconSize
 }

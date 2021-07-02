@@ -27,6 +27,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Accordion2Disclosure } from './Accordion2Disclosure'
+import { accordionDimensions } from './accordionDimensions'
 import { Accordion2Props } from './types'
 import { useAccordion2 } from './useAccordion2'
 
@@ -53,5 +54,7 @@ const Accordion2Internal = ({ hideDisclosure, ...props }: Accordion2Props) => {
  * styling.
  */
 export const Accordion2 = styled(Accordion2Internal)<Accordion2Props>`
+  font-size: ${({ theme, density = 0 }) =>
+    theme.fontSizes[accordionDimensions(density).fontSize]};
   width: 100%;
 `
