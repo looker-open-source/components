@@ -64,13 +64,11 @@ export const getNextTreeFocus = (
 
       return treeItems[next]
     } else if (vertical === false) {
-      const childTabStops = Array.from(
+      const tabStops = Array.from(
         closestWrapper.querySelectorAll(
           'a,input,button:not(:disabled),[tabindex="0"],[tabindex="-1"]:not(:disabled)'
         )
-      )
-
-      const tabStops = childTabStops as HTMLElement[]
+      ) as HTMLElement[]
 
       const next = tabStops.findIndex((el) => el === focusedElement) + direction
 
