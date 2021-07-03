@@ -9,7 +9,7 @@
  "dependencies": {
   "@looker/visualizations": "*",
   "@visx/point": "1.7.0",
-  "@visx/shape": "1.7.0"
+  "@visx/shape": "1.16.0"
  },
  "devDependencies": {
   "@looker/components-test-utils": "*",
