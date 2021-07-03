@@ -68,7 +68,6 @@ const TreeLayout = ({
   className,
   dividers,
   forceLabelPadding,
-  href,
   isOpen: propsIsOpen,
   itemRole = 'none', // By default, Tree's content container should be a 'div'
   label,
@@ -80,8 +79,6 @@ const TreeLayout = ({
   onOpen,
   onMouseEnter,
   onMouseLeave,
-  rel,
-  target,
   toggleOpen: propsToggleOpen,
   ...restProps
 }: TreeProps) => {
@@ -97,8 +94,11 @@ const TreeLayout = ({
     density: propsDensity,
     detail: propsDetail,
     disabled,
+    href,
     icon,
+    rel,
     selected,
+    target,
     ...restTreeItemInnerProps
   } = treeItemInnerProps
   const [ariaProps] = partitionAriaProps(restProps)
