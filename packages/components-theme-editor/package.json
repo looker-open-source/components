@@ -19,15 +19,16 @@
     "@looker/components": "*",
     "@looker/design-tokens": "*",
     "@styled-icons/material": "^10.34.0",
-    "@styled-icons/material-outlined": "^10.28.0",
-    "lodash": "*"
+    "@styled-icons/material-outlined": "^10.28.0"
   },
   "devDependencies": {
+    "lodash": "*",
     "react": "^16.14.0",
     "react-is": "^16.13.1",
     "styled-components": ">=5.3"
   },
   "peerDependencies": {
+    "lodash": "*",
     "react": "^16.11",
     "react-is": "^16.11",
     "styled-components": "^5"

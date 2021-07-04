@@ -29,7 +29,6 @@
     "d3-hsv": "^0.1.0",
     "hotkeys-js": "^3.8.3",
     "i18next": "20.3.1",
-    "lodash": "^4.17.20",
     "react-hotkeys-hook": "2.3.1",
     "react-i18next": "11.8.15",
     "resize-observer-polyfill": "^1.5.1",
@@ -52,12 +51,14 @@
     "csstype": "^3.0.8",
     "jest-styled-components": "^7.0.4",
     "puppeteer": "^9.1.0",
+    "lodash": "^4.17.20",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-is": "^16.13.1",
     "styled-components": "^5.3.0"
   },
   "peerDependencies": {
+    "lodash": "^4.17.20",
     "react": "^16.11",
     "react-dom": "^16.11",
     "react-is": "^16.11",
