@@ -36,13 +36,13 @@ type AccordionDensityDimensions = {
 // Positive density values
 export const densityPositive1: AccordionDensityDimensions = {
   fontSize: 'medium',
-  indicatorGap: 'medium',
+  indicatorGap: 'xxsmall',
   indicatorSize: 'medium',
 }
 
 export const density0: AccordionDensityDimensions = {
+  ...densityPositive1,
   fontSize: 'small',
-  indicatorGap: 'xsmall',
   indicatorSize: 'small',
 }
 
