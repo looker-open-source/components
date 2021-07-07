@@ -35,6 +35,7 @@ import {
 } from '@looker/design-tokens'
 import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout/utils/simple'
 import { useAccordion2 } from '../Accordion2/useAccordion2'
+import { accordionDimensions } from '../Accordion2/accordionDimensions'
 import { AccordionIndicatorProps } from '../Accordion2/types'
 import { ControlledLoosely } from '../Accordion2/controlTypes'
 import { GenericClickProps } from '../utils'
@@ -133,6 +134,8 @@ const AccordionInternal: FC<AccordionProps> = ({
  * @deprecated Use `Accordion2` instead
  */
 export const Accordion = styled(AccordionInternal)`
+  font-size: ${({ theme, density = 0 }) =>
+    theme.fontSizes[accordionDimensions(density).fontSize]};
   width: 100%;
 
   ${AccordionDisclosure}, ${AccordionContent} {
