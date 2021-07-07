@@ -196,9 +196,10 @@ export const TreeStyle = styled(TreeStyleLayout)`
 
   > ${TreeAccordion} > ${Accordion2Content} > ${List} {
     > ${ListItem} {
-      ${({ assumeIconAlignment, depth, labelBackgroundOnly }) =>
+      ${({ assumeIconAlignment, density, depth, labelBackgroundOnly }) =>
         treeItemIndent({
           assumeIconAlignment,
+          density,
           depth,
           labelBackgroundOnly: !!labelBackgroundOnly,
         })}
