@@ -59,7 +59,6 @@ type TreeStyleProps = DensityProp &
     depth: number
     dividers?: boolean
     iconGap: SpacingSizes
-    indicatorGap: SpacingSizes
     indicatorSize: IconSize
     labelBackgroundOnly?: boolean
   }

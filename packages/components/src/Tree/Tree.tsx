@@ -252,8 +252,6 @@ const TreeLayout = ({
         dividers={dividers}
         hovered={hovered}
         iconGap={iconGap}
-        // eslint-disable-next-line i18next/no-literal-string
-        indicatorGap="xsmall"
         indicatorSize={iconSize}
         labelBackgroundOnly={hasLabelBackgroundOnly}
         selected={selected}
