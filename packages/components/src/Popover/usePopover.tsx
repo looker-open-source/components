@@ -32,6 +32,7 @@ import React, {
   SyntheticEvent,
   useState,
   Ref,
+  AriaAttributes,
 } from 'react'
 import { Flex } from '../Layout'
 import { Portal } from '../Portal'
@@ -49,11 +50,27 @@ import {
 import { usePopoverToggle, UsePopoverToggleProps } from './usePopoverToggle'
 import { useVerticalSpace } from './useVerticalSpace'
 
+type AriaHaspopupProps = Pick<AriaAttributes, 'aria-haspopup'>
 export interface UsePopoverProps extends UsePopoverToggleProps {
   /**
    * Content to render within the Popover surface.
    */
   content: ReactNode
+
+  /**
+   * Use this prop to specify aria-haspopup value
+   * menu - listbox - tree - grid are used to identify the component popover is.
+
+   */
+  ariaHaspopup?:
+    | boolean
+    | 'false'
+    | 'true'
+    | 'menu'
+    | 'listbox'
+    | 'tree'
+    | 'grid'
+    | 'dialog'
 
   /**
    * Specify a callback to be called each time this Popover is closed
@@ -132,7 +149,15 @@ export interface UsePopoverResponseDom {
    */
   ref: Ref<any>
   'aria-expanded': boolean
-  'aria-haspopup': boolean
+  'aria-haspopup':
+    | boolean
+    | 'false'
+    | 'true'
+    | 'menu'
+    | 'listbox'
+    | 'tree'
+    | 'grid'
+    | 'dialog'
 }
 
 export const usePopover = ({
@@ -140,6 +165,7 @@ export const usePopover = ({
   content,
   disabled,
   pin = false,
+  ariaHaspopup,
   isOpen: controlledIsOpen = false,
   onClose,
   placement: propsPlacement = 'bottom',
@@ -264,7 +290,7 @@ export const usePopover = ({
     contentContainer: containerElement,
     domProps: {
       'aria-expanded': isOpen,
-      'aria-haspopup': content ? !disabled : false,
+      'aria-haspopup': content && !disabled ? ariaHaspopup : false,
       onClick: handleOpen,
       ref: callbackRef,
     },
