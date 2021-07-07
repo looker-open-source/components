@@ -39,6 +39,7 @@ export * from './DisabledAndSelected.story'
 export * from './FieldPicker.story'
 export * from './FileTree.story'
 export * from './ForceLabelPadding.story'
+export * from './HoverDisclosure.story'
 export * from './LabelBackgroundOnly.story'
 export * from './LongLabels.story'
 export * from './Windowing.story'
@@ -50,11 +51,7 @@ export default {
 
 const Template: Story<TreeProps> = (args) => (
   <TreeCollection>
-    <Tree
-      label="Orders"
-      {...args}
-      detail={{ content: 'blah', options: { accessory: true } }}
-    >
+    <Tree label="Orders" {...args}>
       <Tree label="Orders" defaultOpen>
         <TreeItem>ID</TreeItem>
         <TreeItem>Status</TreeItem>

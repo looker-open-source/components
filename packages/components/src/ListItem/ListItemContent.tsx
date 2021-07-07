@@ -53,7 +53,7 @@ export const listItemContentCSS = (style: FlattenSimpleInterpolation) => css`
  */
 export const listItemLabelCSS = listItemContentCSS
 
-type ListItemContentProps = CompatibleHTMLProps<HTMLElement> &
+export type ListItemContentProps = CompatibleHTMLProps<HTMLElement> &
   ListItemStatefulProps &
   ListItemColorProp &
   FocusVisibleProps & {

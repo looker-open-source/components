@@ -24,19 +24,33 @@
 
  */
 
-import React, { FC, useContext } from 'react'
+import React, { FC, FocusEvent, useContext, useState } from 'react'
 import styled from 'styled-components'
 import { ListItemProps } from '../ListItem'
 import { createListItemPartitions } from '../ListItem/utils'
-import { undefinedCoalesce } from '../utils'
+import {
+  getNextFocusTarget,
+  HoverDisclosureContext,
+  undefinedCoalesce,
+  useFocusVisible,
+  useWrapEvent,
+} from '../utils'
 import { TreeContext } from './TreeContext'
 import { TreeItem2Content } from './Tree'
 
 export type TreeItemProps = ListItemProps
 
 const TreeItemLayout: FC<TreeItemProps> = ({
-  density: propsDensity,
   color: propsColor,
+  density: propsDensity,
+  disabled,
+  onBlur,
+  onClick,
+  onFocus,
+  onKeyUp,
+  onMouseEnter,
+  onMouseLeave,
+  selected,
   ...restProps
 }) => {
   const {
@@ -45,6 +59,33 @@ const TreeItemLayout: FC<TreeItemProps> = ({
     color: contextColor,
     labelBackgroundOnly,
   } = useContext(TreeContext)
+
+  const [hovered, setHovered] = useState(false)
+  const handleWrapperMouseEnter = useWrapEvent(
+    () => setHovered(true),
+    onMouseEnter
+  )
+  const handleWrapperMouseLeave = useWrapEvent(
+    () => setHovered(false),
+    onMouseLeave
+  )
+
+  const handleWrapperFocus = useWrapEvent(() => setHovered(true), onFocus)
+  // This is needed so that hover disclosed elements don't get lost during keyboard nav
+  const handleWrapperBlur = (event: FocusEvent<HTMLLIElement>) => {
+    const nextFocusTarget = getNextFocusTarget(event)
+
+    if (
+      nextFocusTarget &&
+      !event.currentTarget.contains(nextFocusTarget as Node)
+    ) {
+      setHovered(false)
+    }
+  }
+  const { focusVisible, ...focusVisibleHandlers } = useFocusVisible({
+    onBlur,
+    onKeyUp,
+  })
 
   // Using labelBackgroundOnly with items with itemRole="button" or "link" leads to overly thin backgrounds
   if (labelBackgroundOnly && restProps.itemRole !== 'none')
@@ -62,13 +103,35 @@ const TreeItemLayout: FC<TreeItemProps> = ({
     ...restProps,
   })
 
+  const statefulProps = {
+    color,
+    disabled,
+    hovered,
+    selected,
+  }
+
   return (
-    <Wrapper>
-      <TreeItem2Content depth={depth} density={density} tabIndex={-1}>
-        {inside}
-      </TreeItem2Content>
-      {outside}
-    </Wrapper>
+    <HoverDisclosureContext.Provider value={{ visible: hovered }}>
+      <Wrapper
+        onBlur={handleWrapperBlur}
+        onFocus={handleWrapperFocus}
+        onMouseEnter={handleWrapperMouseEnter}
+        onMouseLeave={handleWrapperMouseLeave}
+      >
+        <TreeItem2Content
+          onClick={onClick}
+          density={density}
+          depth={depth}
+          focusVisible={focusVisible}
+          tabIndex={-1}
+          {...focusVisibleHandlers}
+          {...statefulProps}
+        >
+          {inside}
+        </TreeItem2Content>
+        {outside}
+      </Wrapper>
+    </HoverDisclosureContext.Provider>
   )
 }
 

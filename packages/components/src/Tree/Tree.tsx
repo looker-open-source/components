@@ -26,6 +26,7 @@
 
 import styled from 'styled-components'
 import React, {
+  FocusEvent,
   KeyboardEvent,
   MouseEvent,
   useContext,
@@ -34,9 +35,21 @@ import React, {
 } from 'react'
 import { useAccordion2 } from '../Accordion2'
 import { ControlledOrUncontrolled } from '../Accordion2/controlTypes'
-import { partitionAriaProps, undefinedCoalesce, useWrapEvent } from '../utils'
+import {
+  createSafeRel,
+  getNextFocusTarget,
+  HoverDisclosureContext,
+  partitionAriaProps,
+  undefinedCoalesce,
+  useWrapEvent,
+} from '../utils'
 import { List } from '../List'
-import { ListItemContext, ListItemProps } from '../ListItem'
+import {
+  ListItemContent,
+  ListItemContentProps,
+  ListItemContext,
+  ListItemProps,
+} from '../ListItem'
 import { getDetailOptions, createListItemPartitions } from '../ListItem/utils'
 import { TreeContext } from './TreeContext'
 import { generateIndent, GenerateIndentProps, indicatorDefaults } from './utils'
@@ -53,20 +66,19 @@ const TreeLayout = ({
   border: propsBorder,
   children,
   className,
-  disabled,
   dividers,
   forceLabelPadding,
-  itemRole,
+  isOpen: propsIsOpen,
+  itemRole = 'none', // By default, Tree's content container should be a 'div'
   label,
   labelBackgroundOnly: propsLabelBackgroundOnly,
   defaultOpen,
   onBlur,
   onClose,
-  onFocus,
+  onFocus: propsOnFocus,
   onOpen,
   onMouseEnter,
   onMouseLeave,
-  isOpen: propsIsOpen,
   toggleOpen: propsToggleOpen,
   ...restProps
 }: TreeProps) => {
@@ -81,14 +93,27 @@ const TreeLayout = ({
     color: propsColor,
     density: propsDensity,
     detail: propsDetail,
+    disabled,
+    href,
     icon,
+    rel,
     selected,
+    target,
     ...restTreeItemInnerProps
   } = treeItemInnerProps
   const [ariaProps] = partitionAriaProps(restProps)
 
   const detailRef = useRef<HTMLDivElement>(null)
+
   const [hovered, setHovered] = useState(false)
+  const handleWrapperMouseEnter = useWrapEvent(
+    () => setHovered(true),
+    onMouseEnter
+  )
+  const handleWrapperMouseLeave = useWrapEvent(
+    () => setHovered(false),
+    onMouseLeave
+  )
 
   const { color: listColor } = useContext(ListItemContext)
   const treeContext = useContext(TreeContext)
@@ -163,7 +188,7 @@ const TreeLayout = ({
   })
   const {
     contentDomProps,
-    domProps,
+    domProps: { onFocus, ...restDomProps },
     disclosureProps,
     isOpen: accordionIsOpen,
   } = useAccordion2({
@@ -180,10 +205,8 @@ const TreeLayout = ({
     indicatorIcons,
     indicatorPosition,
     label: inside,
-    onBlur: useWrapEvent(() => setHovered(false), onBlur),
-    onFocus: useWrapEvent(() => setHovered(true), onFocus),
-    onMouseEnter: useWrapEvent(() => setHovered(true), onMouseEnter),
-    onMouseLeave: useWrapEvent(() => setHovered(false), onMouseLeave),
+    onBlur,
+    onFocus: useWrapEvent(() => setHovered(true), propsOnFocus),
 
     role: 'treeitem',
     tabIndex: -1,
@@ -191,40 +214,72 @@ const TreeLayout = ({
     ...accordionProps,
   })
 
+  // This is needed so that hover disclosed elements don't get lost during keyboard nav
+  const handleWrapperBlur = (event: FocusEvent<HTMLLIElement>) => {
+    const nextFocusTarget = getNextFocusTarget(event)
+
+    if (
+      nextFocusTarget &&
+      !event.currentTarget.contains(nextFocusTarget as Node)
+    ) {
+      setHovered(false)
+    }
+  }
+
   const {
     indicator,
     children: disclosureLabel,
     ...disclosureDomProps
   } = disclosureProps
 
-  return (
-    <TreeContext.Provider
-      value={{
-        border: hasBorder,
-        color,
-        density,
-        depth: depth + 1,
-        labelBackgroundOnly: hasLabelBackgroundOnly,
-      }}
-    >
-      <div {...domProps}>
-        {!partialRender && (
-          <Wrapper>
-            <TreeItem2Content
-              depth={depth}
-              density={density}
-              {...disclosureDomProps}
-            >
-              {indicator}
-              {disclosureLabel}
-            </TreeItem2Content>
-            {outside}
-          </Wrapper>
-        )}
-        {accordionIsOpen && <div {...contentDomProps} />}
-      </div>
+  const statefulProps = {
+    color,
+    disabled,
+    hovered,
+    selected,
+  }
 
-      {/* <TreeStyle
+  return (
+    <HoverDisclosureContext.Provider value={{ visible: hovered }}>
+      <TreeContext.Provider
+        value={{
+          border: hasBorder,
+          color,
+          density,
+          depth: depth + 1,
+          labelBackgroundOnly: hasLabelBackgroundOnly,
+        }}
+      >
+        <div {...restDomProps}>
+          {!partialRender && (
+            <Wrapper
+              onBlur={handleWrapperBlur}
+              onMouseEnter={handleWrapperMouseEnter}
+              onMouseLeave={handleWrapperMouseLeave}
+            >
+              <TreeItem2Content
+                aria-selected={selected}
+                depth={depth}
+                density={density}
+                href={href}
+                itemRole={itemRole}
+                onFocus={onFocus}
+                rel={createSafeRel(rel, target)}
+                target={target}
+                {...ariaProps}
+                {...disclosureDomProps}
+                {...statefulProps}
+              >
+                {indicator}
+                {disclosureLabel}
+              </TreeItem2Content>
+              {outside}
+            </Wrapper>
+          )}
+          {accordionIsOpen && <div {...contentDomProps} />}
+        </div>
+
+        {/* <TreeStyle
           assumeIconAlignment={assumeIconAlignment || forceLabelPadding} // TODO 3.x: Deprecate forceLabelPadding as input
           border={hasBorder}
           branchFontWeight={branchFontWeight}
@@ -240,7 +295,8 @@ const TreeLayout = ({
           labelBackgroundOnly={hasLabelBackgroundOnly}
           selected={selected}
         /> */}
-    </TreeContext.Provider>
+      </TreeContext.Provider>
+    </HoverDisclosureContext.Provider>
   )
 }
 
@@ -250,11 +306,11 @@ const Wrapper = styled.li`
   display: flex;
 `
 
-export const TreeItem2Content = styled.div.attrs<GenerateIndentProps>(
-  ({ role = 'treeitem' }) => ({
-    role,
-  })
-)<GenerateIndentProps>`
+export const TreeItem2Content = styled(ListItemContent).attrs<
+  ListItemContentProps & GenerateIndentProps
+>(({ role = 'treeitem' }) => ({
+  role,
+}))<ListItemContentProps & GenerateIndentProps>`
   ${generateIndent}
   display: flex;
   flex: 1;
