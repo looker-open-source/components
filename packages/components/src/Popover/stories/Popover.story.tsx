@@ -83,6 +83,23 @@ PopoverAriaHasPopup.parameters = {
   storyshots: { disable: true },
 }
 
+export const PopoverPopoverLayoutWithCloseButton = () => (
+  <Popover
+    content={
+      <PopoverLayout header="Header text" footer={false}>
+        <ConstitutionShort fontSize="small" />
+      </PopoverLayout>
+    }
+  >
+    <Button>Open Popover</Button>
+  </Popover>
+)
+PopoverPopoverLayoutWithCloseButton.parameters = {
+  storyshots: {
+    disable: true,
+  },
+}
+
 export const PopoverPopoverLayout = () => (
   <Popover
     content={

@@ -87,4 +87,6 @@ const PopoverHeaderLayout: FC<PopoverHeaderProps> = ({
   )
 }
 
-export const PopoverHeader = styled(PopoverHeaderLayout)<ModalHeaderProps>``
+export const PopoverHeader = styled(PopoverHeaderLayout)<ModalHeaderProps>`
+  width: 100%;
+`

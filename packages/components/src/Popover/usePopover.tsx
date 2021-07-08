@@ -59,18 +59,8 @@ export interface UsePopoverProps extends UsePopoverToggleProps {
 
   /**
    * Use this prop to specify aria-haspopup value
-   * menu - listbox - tree - grid are used to identify the component popover is.
-
    */
-  ariaHaspopup?:
-    | boolean
-    | 'false'
-    | 'true'
-    | 'menu'
-    | 'listbox'
-    | 'tree'
-    | 'grid'
-    | 'dialog'
+  ariaHaspopup?: AriaHaspopupProps
 
   /**
    * Specify a callback to be called each time this Popover is closed
@@ -149,15 +139,7 @@ export interface UsePopoverResponseDom {
    */
   ref: Ref<any>
   'aria-expanded': boolean
-  'aria-haspopup':
-    | boolean
-    | 'false'
-    | 'true'
-    | 'menu'
-    | 'listbox'
-    | 'tree'
-    | 'grid'
-    | 'dialog'
+  'aria-haspopup': AriaHaspopupProps
 }
 
 export const usePopover = ({
