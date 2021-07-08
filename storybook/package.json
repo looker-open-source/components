@@ -9,11 +9,11 @@
     "storyshots-build": "export storybookBuildMode=fast && yarn build",
     "storyshots-preview-backup": "mv .storybook/preview.js .storybook/preview.js.bu",
     "storyshots-preview-restore": "mv .storybook/preview.js.bu .storybook/preview.js",
-    "prestoryshots-task": "yarn storyshots-build && yarn storyshots-preview-backup",
-    "storyshots-task": "yarn jest",
-    "poststoryshots-task": "yarn storyshots-preview-restore",
-    "snapshots": "yarn storyshots-task --config ./jest-image-snapshots.config.js",
-    "snapshots-update": "yarn snapshots -u",
+    "presnapshots": "yarn storyshots-build",
+    "snapshots": "yarn storyshots-preview-backup; yarn jest --config ./jest-image-snapshots.config.js; yarn storyshots-preview-restore",
+    "snapshots-update-only": "yarn storyshots-preview-backup; yarn jest -u --config ./jest-image-snapshots.config.js; yarn storyshots-preview-restore",
+    "presnapshots-update": "yarn storyshots-build",
+    "snapshots-update": "yarn snapshots-update-only",
     "a11y": "yarn storyshots-task --config ./jest-a11y.config.js"
   },
   "dependencies": {

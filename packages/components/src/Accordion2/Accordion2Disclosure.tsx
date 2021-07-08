@@ -64,7 +64,7 @@ Accordion2DisclosureInternal.displayName = 'Accordion2DisclosureInternal'
  *
  * @TODO 3.x / Accordion removal
  */
-const labelTypographyDefaults = css<Accordion2DisclosureProps>`
+const labelTypographyDefaults = css`
   font-weight: ${({ theme }) => theme.fontWeights.semiBold};
   text-align: left;
 `
