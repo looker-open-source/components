@@ -33,6 +33,7 @@ import {
   ComboboxMultiContext,
   ComboboxUl,
 } from '../../Combobox'
+import { Icon } from '../../../../Icon'
 import { SelectOptions, SelectOptionsProps } from '../SelectOptions'
 import { SelectOptionProps } from '../types'
 import { useFlatOptions } from '../utils/useFlatOptions'
@@ -75,7 +76,13 @@ Icons.args = {
 export const Detail = Template.bind({})
 const detailOptions = cheeseOptions.map((option) => ({
   ...option,
-  detail: '0/50',
+  detail: (
+    <>
+      <Icon icon={<Favorite />} />
+      <Icon icon={<Favorite />} />
+      <Icon icon={<Favorite />} />
+    </>
+  ),
 }))
 Detail.args = {
   options: detailOptions,
