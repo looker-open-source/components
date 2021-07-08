@@ -31,10 +31,8 @@ import {
   Grid,
   Heading,
   Paragraph,
-  Swatch,
   Space,
   SpaceVertical,
-  Text,
   theme
 } from '@looker/components'
 import {coreColors, DerivativeColors, IntentColors } from '@looker/design-tokens'
