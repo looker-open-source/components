@@ -24,9 +24,11 @@
 
  */
 
-import React, { useState } from 'react'
+import React from 'react'
+import { Space } from '../../../Layout'
 import { Button } from '../../../Button'
 import { Paragraph } from '../../../Text'
+import { useToggle } from '../../../utils'
 import { RangeSlider } from './RangeSlider'
 
 export default {
@@ -40,25 +42,28 @@ const getRange = (value?: number[]) => [
 ]
 
 const NumberFilter = ({
-  AST: { value },
+  AST,
   onChange,
 }: {
   AST: { value?: number[] }
   onChange: (value: number[]) => void
 }) => {
-  const [minMax, setMinMax] = useState([0, 100])
-  const rangeValue = getRange(value)
+  const { value, toggle } = useToggle()
+  const rangeValue = getRange(AST.value)
   return (
-    <>
+    <Space>
       <RangeSlider
-        min={minMax[0]}
-        max={minMax[1]}
+        min={0}
+        max={value ? 5 : 100}
         value={rangeValue}
         onChange={onChange}
-        width={200}
+        width={400}
       />
-      <Button onClick={() => setMinMax([0, 5])}>Min/max to 0 - 5</Button>
-    </>
+      <Button onClick={toggle}>
+        Change min/max to 0 - {value ? '100' : '5'}
+      </Button>
+      <Paragraph>Current Value: {rangeValue.join(',')}</Paragraph>
+    </Space>
   )
 }
 
