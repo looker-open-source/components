@@ -30,15 +30,15 @@ import {
   CompatibleHTMLProps,
   omitStyledProps,
   SpaceProps,
-  space,
-  reset,
   FontSizeProps,
   FontWeightProps,
 } from '@looker/design-tokens'
+import { Space, SpaceHelperProps } from '../../Layout/Space'
 import { Heading } from '../../Text'
 
 export type ModalHeaderProps = SpaceProps &
   CompatibleHTMLProps<HTMLDivElement> &
+  SpaceHelperProps &
   FontSizeProps &
   FontWeightProps & {
     children: ReactNode
@@ -57,7 +57,7 @@ const ModalHeaderLayout: FC<ModalHeaderProps> = ({
   ...props
 }) => {
   return (
-    <header aria-labelledby={id} {...omitStyledProps(props)}>
+    <Space as="header" between aria-labelledby={id} {...omitStyledProps(props)}>
       <Heading
         as="h3"
         fontSize={fontSize}
@@ -69,20 +69,15 @@ const ModalHeaderLayout: FC<ModalHeaderProps> = ({
         {children}
       </Heading>
       {detail && <Detail>{detail}</Detail>}
-    </header>
+    </Space>
   )
 }
 
 const Detail = styled.div`
   margin-bottom: -${({ theme }) => theme.space.xsmall};
-  margin-left: auto;
   margin-top: -${({ theme }) => theme.space.xsmall};
 `
 
 export const ModalHeader = styled(ModalHeaderLayout)<ModalHeaderProps>`
-  ${reset}
-  ${space}
-  align-items: center;
-  display: flex;
   flex-shrink: 0;
 `
