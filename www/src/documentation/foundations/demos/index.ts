@@ -26,5 +26,6 @@
 
 export * from './BorderRender'
 export * from './BreakpointTable'
+export * from './Color'
 export * from './SpacingOptionsTable'
 export * from './Typography'
