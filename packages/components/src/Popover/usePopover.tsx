@@ -26,12 +26,13 @@
 
 import { Placement } from '@popperjs/core'
 import React, {
+  AriaAttributes,
   useEffect,
   useMemo,
   ReactNode,
+  Ref,
   SyntheticEvent,
   useState,
-  Ref,
 } from 'react'
 import { Flex } from '../Layout'
 import { Portal } from '../Portal'
@@ -49,7 +50,11 @@ import {
 import { usePopoverToggle, UsePopoverToggleProps } from './usePopoverToggle'
 import { useVerticalSpace } from './useVerticalSpace'
 
-export interface UsePopoverProps extends UsePopoverToggleProps {
+type AriaHaspopupProps = Pick<AriaAttributes, 'aria-haspopup'>
+
+export interface UsePopoverProps
+  extends AriaHaspopupProps,
+    UsePopoverToggleProps {
   /**
    * Content to render within the Popover surface.
    */
@@ -125,17 +130,17 @@ const useOpenWithoutElement = (
   return openWithoutElem
 }
 
-export interface UsePopoverResponseDom {
+export interface UsePopoverResponseDom extends AriaHaspopupProps {
   onClick: (event: SyntheticEvent) => void
   /**
    * Used by popper.js to position the OverlaySurface relative to the trigger
    */
   ref: Ref<any>
   'aria-expanded': boolean
-  'aria-haspopup': boolean
 }
 
 export const usePopover = ({
+  'aria-haspopup': ariaHaspopup,
   canClose,
   content,
   disabled,
@@ -264,7 +269,7 @@ export const usePopover = ({
     contentContainer: containerElement,
     domProps: {
       'aria-expanded': isOpen,
-      'aria-haspopup': content ? !disabled : false,
+      'aria-haspopup': content && !disabled ? ariaHaspopup : false,
       onClick: handleOpen,
       ref: callbackRef,
     },

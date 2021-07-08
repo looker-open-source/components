@@ -70,6 +70,19 @@ Basic.parameters = {
   storyshots: { disable: true },
 }
 
+export const PopoverAriaHaspopup = () => (
+  <Popover
+    aria-haspopup="tree"
+    content={<PopoverContent>Some content</PopoverContent>}
+  >
+    <Button>Open</Button>
+  </Popover>
+)
+
+PopoverAriaHaspopup.parameters = {
+  storyshots: { disable: true },
+}
+
 export const PopoverPopoverLayoutWithCloseButton = () => (
   <Popover
     content={
