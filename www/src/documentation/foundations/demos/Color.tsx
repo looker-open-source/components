@@ -41,9 +41,6 @@ import {coreColors, DerivativeColors, IntentColors } from '@looker/design-tokens
 import styled from 'styled-components'
 import { chunk } from 'lodash'
 
-
-
-
 const derivativeColorKeys: Array<keyof DerivativeColors> = [
   'field',
   'inverse',
@@ -129,7 +126,6 @@ const BlendList = ({color, ...props}) => {
     </BlendListStyle >
   )
 }
-
 
 const ColorSwatch = ({color, ...props}) => {
   return (
@@ -238,11 +234,9 @@ export function ColorDocs() {
             message or indication of a critical destructive action.
           </ColorDescription>
 
-
           <SwatchBackground>
             <ColorList color={colorList.intent} />
           </SwatchBackground>
-
 
           <ColorDescription heading="Derivative Colors">
             Derivative colors are generated from core and intent colors. They represent
@@ -275,13 +269,11 @@ export function ColorDocs() {
             <ColorList color={colorList.text} />
           </SwatchBackground>
 
-
           <ColorDescription heading="Stateful Colors">
             Stateful colors are generated based on the core and intent colors.
             Their purpose is to create a set of colors that can be applied to
             interactive elements, like buttons, lists, and options.
           </ColorDescription>
-
 
           <SwatchBackground>
             <Grid columns="4">
