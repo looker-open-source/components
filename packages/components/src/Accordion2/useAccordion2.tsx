@@ -39,15 +39,14 @@ import { useAriaLabelObjectRelationship } from './useAriaLabelObjectRelationship
 export const useAccordion2 = ({
   children,
   className,
+  density = accordionDefaults.density,
   disabled,
   label,
   id,
-  indicatorGap,
   indicatorPosition,
   indicatorIcons = indicatorPosition === 'left'
     ? accordionLeftDefaults.indicatorIcons
     : accordionDefaults.indicatorIcons,
-  indicatorSize,
   defaultOpen,
   isOpen: propsIsOpen,
   onBlur,
@@ -80,11 +79,7 @@ export const useAccordion2 = ({
   const domProps = { ...props, className, id }
 
   const indicator = (
-    <AccordionIndicator
-      indicatorGap={indicatorGap}
-      indicatorPosition={indicatorPosition}
-      indicatorSize={indicatorSize}
-    >
+    <AccordionIndicator density={density} indicatorPosition={indicatorPosition}>
       {isOpen ? indicatorIcons.open : indicatorIcons.close}
     </AccordionIndicator>
   )
@@ -94,6 +89,7 @@ export const useAccordion2 = ({
     'aria-expanded': isOpen,
     children: label,
     className: clickableProps.focusVisible ? 'focusVisible ' : undefined,
+    density,
     indicator,
     indicatorPosition,
     tabIndex: 0,

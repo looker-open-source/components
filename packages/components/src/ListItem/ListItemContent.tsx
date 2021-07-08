@@ -26,7 +26,11 @@
 
 import { CompatibleHTMLProps, DensityRamp } from '@looker/design-tokens'
 import React, { FC } from 'react'
-import styled, { css, FlattenSimpleInterpolation } from 'styled-components'
+import styled, {
+  css,
+  FlattenSimpleInterpolation,
+  Interpolation,
+} from 'styled-components'
 import { FocusVisibleProps } from '../utils'
 import { ListItemColorProp, ListItemRole, ListItemStatefulProps } from './types'
 import {
@@ -42,7 +46,9 @@ const Link = styled.a``
 const Div = styled.div``
 
 // Use listItemLabelCSS to target the internal button / link / div CSS of ListItem
-export const listItemContentCSS = (style: FlattenSimpleInterpolation) => css`
+export const listItemContentCSS = (
+  style: FlattenSimpleInterpolation | Interpolation<any>
+) => css`
   > ${Button}, > ${Link}, > ${Div} {
     ${style}
   }

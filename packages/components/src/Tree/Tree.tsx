@@ -184,11 +184,7 @@ const TreeLayout = ({
     </TreeItemInner>
   )
 
-  const {
-    indicatorGap: defaultGap,
-    indicatorIcons,
-    indicatorPosition,
-  } = indicatorDefaults
+  const { indicatorIcons, indicatorPosition } = indicatorDefaults
 
   let accordionProps: ControlledOrUncontrolled = {
     defaultOpen,
@@ -210,11 +206,10 @@ const TreeLayout = ({
         {children}
       </List>
     ),
+    density,
     disabled,
-    indicatorGap: assumeIconAlignment ? iconGap : defaultGap,
     indicatorIcons,
     indicatorPosition,
-    indicatorSize: iconSize,
     label,
     onBlur: handleBlur,
     onFocus: handleFocus,
@@ -252,11 +247,11 @@ const TreeLayout = ({
         className={className}
         color={color}
         depth={depth}
+        density={density}
         disabled={disabled}
         dividers={dividers}
         hovered={hovered}
         iconGap={iconGap}
-        indicatorGap={defaultGap}
         indicatorSize={iconSize}
         labelBackgroundOnly={hasLabelBackgroundOnly}
         selected={selected}
