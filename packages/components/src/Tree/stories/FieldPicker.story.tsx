@@ -26,7 +26,7 @@
 
 import React from 'react'
 import styled from 'styled-components'
-import { Box, Paragraph, ParagraphProps } from '../..'
+import { Aside, Box, Paragraph, ParagraphProps } from '../..'
 import { TreeCollection, TreeBranch, Tree } from '..'
 import { generateBorderRadius } from '../utils/generateBorderRadius'
 import { FieldItem } from './FieldItem'
@@ -50,16 +50,18 @@ const FieldGroupHeading = (props: ParagraphProps) => (
 )
 
 const fields = (
-  <>
+  <Aside>
     <TreeBranch>
       <FieldGroupHeading>DIMENSIONS</FieldGroupHeading>
     </TreeBranch>
     <BorderRadiusOverrideTree
       branchFontWeight
+      color="dimension"
+      selected
       label={<Box pl="xxsmall">Created</Box>}
     >
       <FieldItem>Created Date</FieldItem>
-      <FieldItem>Created Month</FieldItem>
+      <FieldItem selected>Created Month</FieldItem>
       <FieldItem>Created Year</FieldItem>
     </BorderRadiusOverrideTree>
     <FieldItem>City</FieldItem>
@@ -84,7 +86,7 @@ const fields = (
     <FieldItem pivot color="calculation">
       Calc
     </FieldItem>
-  </>
+  </Aside>
 )
 
 export const FieldPicker = () => (

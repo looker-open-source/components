@@ -27,7 +27,8 @@
 import React, { useState } from 'react'
 import { Home } from '@styled-icons/material-outlined/Home'
 import { Info } from '@styled-icons/material-outlined/Info'
-import { ListItem } from '../ListItem'
+import { ListItem } from '../List/ListItem'
+import { Aside } from '../Layout'
 import { ProgressCircular } from '../ProgressCircular'
 import { Tree, TreeItem } from '../Tree'
 import { NavList } from './NavList'
@@ -72,35 +73,49 @@ export const Basic = () => {
 }
 
 export const MixedNavigation = () => (
-  <NavList>
-    <ListItem icon={<Home />} selected>
-      Home
-    </ListItem>
-    <ListItem icon={<Home />}>Not really home</ListItem>
-    <Tree icon={<Info />} label="Tree" selected defaultOpen>
-      <TreeItem icon={<Info />}>Meh</TreeItem>
-      <TreeItem
-        description="description"
-        detail="detail"
-        icon={<Info />}
-        selected
-      >
-        My Awesome Item
-      </TreeItem>
-      <Tree
-        forceLabelPadding
-        branchFontWeight
-        defaultOpen
-        label="Blah"
-        icon={<Info />}
-      >
-        <TreeItem color="text2">
-          <em>Not yet available</em>
+  <Aside width="navigation">
+    <NavList>
+      <ListItem icon={<Home />} selected>
+        Home
+      </ListItem>
+      <Tree icon={<Info />} label="Tree" selected defaultOpen>
+        <TreeItem icon={<Info />}>Meh</TreeItem>
+        <TreeItem
+          description="description"
+          detail="detail"
+          icon={<Info />}
+          selected
+        >
+          My Awesome Item
         </TreeItem>
-        <TreeItem icon={<ProgressCircular size="xsmall" progress={0.75} />}>
-          Loading...
+        <Tree
+          forceLabelPadding
+          branchFontWeight
+          defaultOpen
+          label="Blah"
+          icon={<Info />}
+        >
+          <TreeItem color="text2">
+            <em>Not yet available</em>
+          </TreeItem>
+          <TreeItem icon={<ProgressCircular size="xsmall" progress={0.75} />}>
+            Loading...
+          </TreeItem>
+        </Tree>
+      </Tree>
+      <Tree
+        icon={<Info />}
+        truncate
+        label="Tree w icon-free TreeItems and long title"
+        defaultOpen
+      >
+        <TreeItem truncate>
+          Truncate example with long text running off screen
+        </TreeItem>
+        <TreeItem truncate description="description" detail="detail">
+          Truncate example with long text running off screen
         </TreeItem>
       </Tree>
-    </Tree>
-  </NavList>
+    </NavList>
+  </Aside>
 )
