@@ -26,13 +26,13 @@
 
 import { Placement } from '@popperjs/core'
 import React, {
+  AriaAttributes,
   useEffect,
   useMemo,
   ReactNode,
+  Ref,
   SyntheticEvent,
   useState,
-  Ref,
-  AriaAttributes,
 } from 'react'
 import { Flex } from '../Layout'
 import { Portal } from '../Portal'
@@ -51,26 +51,14 @@ import { usePopoverToggle, UsePopoverToggleProps } from './usePopoverToggle'
 import { useVerticalSpace } from './useVerticalSpace'
 
 type AriaHaspopupProps = Pick<AriaAttributes, 'aria-haspopup'>
-export interface UsePopoverProps extends UsePopoverToggleProps {
+
+export interface UsePopoverProps
+  extends AriaHaspopupProps,
+    UsePopoverToggleProps {
   /**
    * Content to render within the Popover surface.
    */
   content: ReactNode
-
-  /**
-   * Use this prop to specify aria-haspopup value
-   * menu - listbox - tree - grid are used to identify the component popover is.
-
-   */
-  ariaHaspopup?:
-    | boolean
-    | 'false'
-    | 'true'
-    | 'menu'
-    | 'listbox'
-    | 'tree'
-    | 'grid'
-    | 'dialog'
 
   /**
    * Specify a callback to be called each time this Popover is closed
@@ -142,30 +130,21 @@ const useOpenWithoutElement = (
   return openWithoutElem
 }
 
-export interface UsePopoverResponseDom {
+export interface UsePopoverResponseDom extends AriaHaspopupProps {
   onClick: (event: SyntheticEvent) => void
   /**
    * Used by popper.js to position the OverlaySurface relative to the trigger
    */
   ref: Ref<any>
   'aria-expanded': boolean
-  'aria-haspopup':
-    | boolean
-    | 'false'
-    | 'true'
-    | 'menu'
-    | 'listbox'
-    | 'tree'
-    | 'grid'
-    | 'dialog'
 }
 
 export const usePopover = ({
+  'aria-haspopup': ariaHaspopup,
   canClose,
   content,
   disabled,
   pin = false,
-  ariaHaspopup,
   isOpen: controlledIsOpen = false,
   onClose,
   placement: propsPlacement = 'bottom',
