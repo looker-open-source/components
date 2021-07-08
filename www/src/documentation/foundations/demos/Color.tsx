@@ -277,7 +277,7 @@ export function ColorDocs() {
 
 
           <ColorDescription heading="Stateful Colors">
-            Stateful Colors are generated based on the core and intent colors.
+            Stateful colors are generated based on the core and intent colors.
             Their purpose is to create a set of colors that can be applied to
             interactive elements, like buttons, lists, and options.
           </ColorDescription>
