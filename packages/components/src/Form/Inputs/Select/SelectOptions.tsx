@@ -37,7 +37,6 @@ import styled from 'styled-components'
 import { Icon, IconPlaceholder } from '../../../Icon'
 import { Spinner } from '../../../Spinner'
 import { ListDivider } from '../../../List/ListDivider'
-import { ListItemDetail } from '../../../ListItem/ListItemDetail'
 import { ListItemPreface } from '../../../ListItem/ListItemPreface'
 import { Heading, HeadingProps, Paragraph, Text } from '../../../Text'
 import { useID } from '../../../utils'
@@ -53,6 +52,7 @@ import {
 import { FlatOption, SelectOptionObject } from './types'
 import { optionsHaveIcons, notInOptions } from './utils/options'
 import { useWindowedOptions } from './utils/useWindowedOptions'
+import { SelectOptionDetail } from './SelectOptionDetail'
 
 export const SelectOptionsContext = createContext({ hasIcons: false })
 interface OptionLayoutProps
@@ -85,7 +85,7 @@ const OptionLayoutBase = ({
           preface={preface}
           {...rest}
         />
-        {detail && <ListItemDetail>{detail}</ListItemDetail>}
+        {detail && <SelectOptionDetail>{detail}</SelectOptionDetail>}
       </Component>
     )
   }
