@@ -47,15 +47,17 @@ export type ModalContentProps = CompatibleHTMLProps<HTMLDivElement> &
      * @default true
      */
     hasHeader?: boolean
-
-    /**
-     * Used for vertical `y` padding when content does not have overflow and does have
-     * an adjacent footer or header.
-     * @private
-     * @default 'xxxsmall'
-     */
-    overflowVerticalPadding?: SpacingSizes
   }
+
+type ModalContentPropsInternal = ModalContentProps & {
+  /**
+   * Used for vertical `y` padding when content does not have overflow and does have
+   * an adjacent footer or header.
+   * @private
+   * @default 'xxxsmall'
+   */
+  overflowVerticalPadding?: SpacingSizes
+}
 
 const ModalContentLayout = forwardRef(
   (
@@ -69,7 +71,7 @@ const ModalContentLayout = forwardRef(
       p,
       overflowVerticalPadding = 'xxxsmall',
       ...props
-    }: ModalContentProps,
+    }: ModalContentPropsInternal,
     forwardedRef: Ref<HTMLDivElement>
   ) => {
     const [hasOverflow, ref] = useOverflow(forwardedRef)
@@ -91,7 +93,9 @@ const ModalContentLayout = forwardRef(
 
 ModalContentLayout.displayName = 'ModalContentLayout'
 
-export const ModalContent = styled(ModalContentLayout)<ModalContentProps>`
+export const ModalContent = styled(
+  ModalContentLayout
+)<ModalContentPropsInternal>`
   flex: 1 1 auto;
   overflow: auto;
 `
