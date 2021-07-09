@@ -251,6 +251,7 @@ const TreeLayout = ({
         disabled={disabled}
         dividers={dividers}
         hovered={hovered}
+        icon={!!icon}
         iconGap={iconGap}
         indicatorSize={iconSize}
         labelBackgroundOnly={hasLabelBackgroundOnly}

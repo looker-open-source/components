@@ -40,6 +40,7 @@ import {
 } from '../ListItem'
 import { listItemBackgroundColor } from '../ListItem/utils'
 import { IconSize, IconType } from '../Icon'
+import { AccordionIndicator } from '../Accordion2/AccordionIndicator'
 import { TreeAccordion } from './TreeAccordion'
 import { TreeItem } from './TreeItem'
 import { TreeBranch } from './TreeBranch'
@@ -58,6 +59,7 @@ type TreeStyleProps = DensityProp &
     className?: string
     depth: number
     dividers?: boolean
+    icon: boolean
     iconGap: SpacingSizes
     indicatorSize: IconSize
     labelBackgroundOnly?: boolean
@@ -92,13 +94,14 @@ const dividersCSS = css`
 
 interface TreeItemIndentProps extends GenerateIndentProps {
   labelBackgroundOnly: boolean
-  icon?: IconType
+  icon: boolean
 }
 
 const treeItemIndent = ({
   assumeIconAlignment,
   depth = 0,
   density,
+  icon,
   labelBackgroundOnly,
 }: TreeItemIndentProps) => {
   const labelPaddingRemoval = css`
@@ -110,6 +113,7 @@ const treeItemIndent = ({
       assumeIconAlignment,
       density,
       depth: depth + 2,
+      icon,
     })}
     ${listItemContentCSS(labelPaddingRemoval)}
   `
@@ -119,6 +123,7 @@ const treeItemIndent = ({
       assumeIconAlignment,
       density,
       depth: depth + 2,
+      icon,
     })
   )
 
@@ -164,6 +169,11 @@ export const TreeStyle = styled(TreeStyleLayout)`
     }
 
     > ${Accordion2Disclosure} {
+      ${AccordionIndicator} {
+        margin-right: ${({ assumeIconAlignment, icon, iconGap, theme }) =>
+          assumeIconAlignment && !icon && theme.space[iconGap]};
+      }
+
       ${ListItem} {
         ${({ labelBackgroundOnly, ...restProps }) =>
           labelBackgroundOnly && listItemBackgroundColor(restProps)}
@@ -183,6 +193,10 @@ export const TreeStyle = styled(TreeStyleLayout)`
         Tree's padding-right is handled by the internal item
        */
       padding-right: 0;
+      /**
+        Note we do NOT pass assumeIconAlignment here since only child items should have
+        alignment shifted by assumeIconAlignment prop
+       */
       ${({ depth, density }) =>
         generateIndent({
           density,
@@ -195,21 +209,23 @@ export const TreeStyle = styled(TreeStyleLayout)`
 
   > ${TreeAccordion} > ${Accordion2Content} > ${List} {
     > ${ListItem} {
-      ${({ assumeIconAlignment, density, depth, labelBackgroundOnly }) =>
+      ${({ assumeIconAlignment, density, depth, icon, labelBackgroundOnly }) =>
         treeItemIndent({
           assumeIconAlignment,
           density,
           depth,
+          icon,
           labelBackgroundOnly: !!labelBackgroundOnly,
         })}
     }
 
     > ${TreeBranch} {
-      ${({ assumeIconAlignment, density, depth }) =>
+      ${({ assumeIconAlignment, density, depth, icon }) =>
         generateIndent({
           assumeIconAlignment,
           density,
           depth: depth + 2,
+          icon,
         })}
     }
   }

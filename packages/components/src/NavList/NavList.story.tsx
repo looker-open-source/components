@@ -27,7 +27,7 @@
 import React, { useState } from 'react'
 import { Home } from '@styled-icons/material-outlined/Home'
 import { Info } from '@styled-icons/material-outlined/Info'
-import { ListItem } from '../List/ListItem'
+import { ListItem } from '../ListItem'
 import { Aside } from '../Layout'
 import { ProgressCircular } from '../ProgressCircular'
 import { Tree, TreeItem } from '../Tree'
@@ -109,12 +109,14 @@ export const MixedNavigation = () => (
         label="Tree w icon-free TreeItems and long title"
         defaultOpen
       >
-        <TreeItem truncate>
-          Truncate example with long text running off screen
-        </TreeItem>
-        <TreeItem truncate description="description" detail="detail">
-          Truncate example with long text running off screen
-        </TreeItem>
+        <Tree label="Folders" defaultOpen assumeIconAlignment>
+          <TreeItem truncate>
+            Truncate example with long text running off screen
+          </TreeItem>
+          <TreeItem truncate description="description" detail="detail">
+            Truncate example with long text running off screen
+          </TreeItem>
+        </Tree>
       </Tree>
     </NavList>
   </Aside>
