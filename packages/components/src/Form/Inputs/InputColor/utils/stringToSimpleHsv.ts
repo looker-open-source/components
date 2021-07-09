@@ -28,7 +28,6 @@ import { hsv } from 'd3-hsv'
 import { SimpleHSV } from '../types'
 
 export const stringToSimpleHsv = (color: string): SimpleHSV => {
-  const hsvColor = hsv(color)
   let { h, s, v } = hsv(color)
   /**
    * The hsv helper function returns NaN for hueless and saturation-less values
@@ -38,8 +37,8 @@ export const stringToSimpleHsv = (color: string): SimpleHSV => {
    * 0 is used as a fallback value to mirror MDN's handling of hueless and saturation-less values:
    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/color
    */
-  if(isNaN(h)) h = 0
-  if(isNaN(s)) s = 0
+  if (isNaN(h)) h = 0
+  if (isNaN(s)) s = 0
 
   return { h, s, v }
 }
