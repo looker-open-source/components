@@ -10,7 +10,7 @@
   },
   "private": true,
   "scripts": {
-    "start": "webpack serve --host=0.0.0.0 --disable-host-check",
+    "develop": "webpack serve --hot --host=0.0.0.0 --port 3000 --disable-host-check --config webpack.config.js",
     "analyze": "webpack --mode=production --profile"
   },
   "dependencies": {
@@ -31,9 +31,9 @@
     "babel-loader": "^8.2.2",
     "babel-loader-exclude-node-modules-except": "^1.2.1",
     "core-js": "^3.12.1",
-    "html-webpack-plugin": "^5.3.1",
+    "html-webpack-plugin": "^4.5.2",
     "tsconfig-paths-webpack-plugin": "^3.5.1",
-    "webpack": "5.37.0",
+    "webpack": "4.46.0",
     "webpack-bundle-analyzer": "^4.4.1",
     "webpack-cli": "^4.6.0",
     "webpack-dev-server": "^3.11.2"
