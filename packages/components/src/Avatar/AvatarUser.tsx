@@ -67,8 +67,6 @@ const AvatarLayout: FC<AvatarUserProps> = ({
           data-testid="avatar-photo"
           color={color}
           type="image/png"
-          // eslint-disable-next-line i18next/no-literal-string
-          data-test-id="avatar-photo"
           data={user.avatar_url}
         />
       )}

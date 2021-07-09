@@ -60,7 +60,6 @@ export const PanelHeader: FC<PanelBaseProps> = ({
         onClick={onClose}
         toggle={iconToggle}
         toggleBackground={iconToggle}
-        // eslint-disable-next-line i18next/no-literal-string
         shape="round"
         size="small"
       />

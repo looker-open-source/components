@@ -55,6 +55,7 @@ type AriaHaspopupProps = Pick<AriaAttributes, 'aria-haspopup'>
 
 export interface UsePopoverProps
   extends AriaHaspopupProps,
+    WidthProps,
     UsePopoverToggleProps {
   /**
    * Content to render within the Popover surface.

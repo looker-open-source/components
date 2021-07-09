@@ -24,7 +24,11 @@
 
  */
 
-import { CompatibleHTMLProps, PaddingProps } from '@looker/design-tokens'
+import {
+  CompatibleHTMLProps,
+  PaddingProps,
+  SpacingSizes,
+} from '@looker/design-tokens'
 import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
 import { OverflowShadow, useOverflow } from '../../utils'
@@ -43,6 +47,14 @@ export type ModalContentProps = CompatibleHTMLProps<HTMLDivElement> &
      * @default true
      */
     hasHeader?: boolean
+
+    /**
+     * Used for vertical `y` padding when content does not have overflow and does have
+     * an adjacent footer or header.
+     * @private
+     * @default 'xxxsmall'
+     */
+    overflowVerticalPadding?: SpacingSizes
   }
 
 const ModalContentLayout = forwardRef(
@@ -55,6 +67,7 @@ const ModalContentLayout = forwardRef(
       pt,
       py,
       p,
+      overflowVerticalPadding = 'xxxsmall',
       ...props
     }: ModalContentProps,
     forwardedRef: Ref<HTMLDivElement>
@@ -66,8 +79,8 @@ const ModalContentLayout = forwardRef(
         hasOverflow={hasOverflow}
         ref={ref}
         p={p}
-        pb={hasFooter && !hasOverflow ? 'xxsmall' : pb || py || p}
-        pt={hasHeader && !hasOverflow ? 'xxsmall' : pt || py || p}
+        pb={hasFooter && !hasOverflow ? overflowVerticalPadding : pb || py || p}
+        pt={hasHeader && !hasOverflow ? overflowVerticalPadding : pt || py || p}
         {...props}
       >
         {children}
