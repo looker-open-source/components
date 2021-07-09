@@ -51,7 +51,7 @@ import { Tooltip } from '../../Tooltip'
 import { Popover } from '../Popover'
 import { PopoverContent } from '../Layout/PopoverContent'
 import { usePopover } from '../usePopover'
-import { ConstitutionShort } from '../../__mocks__/Constitution'
+import { Constitution, ConstitutionShort } from '../../__mocks__/Constitution'
 
 export * from './OverflowExamples'
 
@@ -85,6 +85,7 @@ PopoverAriaHasPopup.parameters = {
 
 export const PopoverPopoverLayoutWithCloseButton = () => (
   <Popover
+    width={640}
     content={
       <PopoverLayout header="Header text" footer={false}>
         <ConstitutionShort fontSize="small" />
@@ -102,9 +103,10 @@ PopoverPopoverLayoutWithCloseButton.parameters = {
 
 export const PopoverPopoverLayout = () => (
   <Popover
+    width={640}
     content={
       <PopoverLayout header="Header text" footer>
-        <ConstitutionShort fontSize="small" />
+        <Constitution />
       </PopoverLayout>
     }
   >

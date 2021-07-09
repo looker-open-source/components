@@ -24,6 +24,7 @@
 
  */
 
+import { WidthProps } from '@looker/design-tokens'
 import { Placement } from '@popperjs/core'
 import React, {
   AriaAttributes,
@@ -155,6 +156,7 @@ export const usePopover = ({
   scrollLock = true,
   cancelClickOutside,
   surface,
+  width,
   id,
 }: UsePopoverProps) => {
   const [scrollElement, scrollRef] = useScrollLock({ disabled: !scrollLock })
@@ -247,7 +249,12 @@ export const usePopover = ({
       }}
     >
       <Portal ref={scrollRef}>
-        <SurfaceComponent placement={placement} ref={ref} style={style}>
+        <SurfaceComponent
+          maxWidth={width}
+          placement={placement}
+          ref={ref}
+          style={style}
+        >
           <Flex
             alignItems="flex-start"
             aria-labelledby={`${id}-heading`}

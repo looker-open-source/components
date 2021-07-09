@@ -47,7 +47,16 @@ export type ModalContentProps = CompatibleHTMLProps<HTMLDivElement> &
 
 const ModalContentLayout = forwardRef(
   (
-    { children, hasFooter, hasHeader, pb, pt, p, ...props }: ModalContentProps,
+    {
+      children,
+      hasFooter,
+      hasHeader,
+      pb,
+      pt,
+      py,
+      p,
+      ...props
+    }: ModalContentProps,
     forwardedRef: Ref<HTMLDivElement>
   ) => {
     const [hasOverflow, ref] = useOverflow(forwardedRef)
@@ -57,8 +66,8 @@ const ModalContentLayout = forwardRef(
         hasOverflow={hasOverflow}
         ref={ref}
         p={p}
-        pb={hasFooter && !hasOverflow ? 'xxxsmall' : pb || p}
-        pt={hasHeader && !hasOverflow ? 'xxxsmall' : pt || p}
+        pb={hasFooter && !hasOverflow ? 'xxxsmall' : pb || py || p}
+        pt={hasHeader && !hasOverflow ? 'xxxsmall' : pt || py || p}
         {...props}
       >
         {children}

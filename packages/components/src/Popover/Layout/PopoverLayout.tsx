@@ -56,7 +56,7 @@ export const PopoverLayout: FC<PopoverLayoutProps> = ({
           {header}
         </PopoverHeader>
       )}
-      <PopoverContent hasFooter={!footer} hasHeader={!header}>
+      <PopoverContent hasFooter={!!footer} hasHeader={!!header}>
         {isLoading ? <ModalLoading /> : children}
       </PopoverContent>
       {footer && (
