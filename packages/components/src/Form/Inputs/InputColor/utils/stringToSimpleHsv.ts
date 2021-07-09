@@ -29,5 +29,13 @@ import { SimpleHSV } from '../types'
 
 export const stringToSimpleHsv = (color: string): SimpleHSV => {
   const hsvColor = hsv(color)
-  return { h: hsvColor.h, s: hsvColor.s, v: hsvColor.v }
+  /**
+   * The hsv helper function returns NaN for hueless and saturationless values
+   * like black, white, grey. We will instead send 0 if either value is NaN for use
+   * when calculating handle positioning and coloring on the hue slider and saturation preview.
+   */
+  const hue = isNaN(hsvColor.h) ? 0 : hsvColor.h
+  const saturation = isNaN(hsvColor.s) ? 0 : hsvColor.s
+
+  return { h: hue, s: saturation, v: hsvColor.v }
 }
