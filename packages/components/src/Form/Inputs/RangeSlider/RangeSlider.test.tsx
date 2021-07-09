@@ -85,25 +85,20 @@ test('it selects the entire range by default', () => {
 test('warns the developer if value prop falls outside of possible min/max range', () => {
   // eslint-disable-next-line no-console
   expect(console.warn).not.toHaveBeenCalled()
+  const handleChange = jest.fn()
   const { rerender } = renderWithTheme(
-    <RangeSlider defaultValue={[0, 1000]} min={10} max={20} />
+    <RangeSlider value={[0, 1000]} min={10} max={20} onChange={handleChange} />
   )
   // eslint-disable-next-line no-console
   expect(console.warn).toHaveBeenCalled()
-
-  const minThumb = screen.getByLabelText('Minimum Value')
-  const maxThumb = screen.getByLabelText('Maximum Value')
-  expect(minThumb).toHaveAttribute('aria-valuenow', '10')
-  expect(maxThumb).toHaveAttribute('aria-valuenow', '20')
+  expect(handleChange).toHaveBeenCalledWith([10, 20])
 
   rerender(
     withThemeProvider(
-      <RangeSlider min={10} max={20} value={[-1, 1]} onChange={jest.fn()} />
+      <RangeSlider min={10} max={20} value={[-1, 1]} onChange={handleChange} />
     )
   )
-
-  expect(minThumb).toHaveAttribute('aria-valuenow', '10')
-  expect(maxThumb).toHaveAttribute('aria-valuenow', '10')
+  expect(handleChange).toHaveBeenCalledWith([10, 10])
 })
 
 test('fires onChange callback on mouseMove', () => {
