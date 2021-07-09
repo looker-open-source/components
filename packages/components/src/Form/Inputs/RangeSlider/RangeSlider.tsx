@@ -30,10 +30,10 @@ import React, {
   Ref,
   useState,
   KeyboardEvent,
-  useRef,
-  useEffect,
   useCallback,
+  useEffect,
   useMemo,
+  useRef,
 } from 'react'
 import {
   SpaceProps,
@@ -41,9 +41,8 @@ import {
   space,
   typography,
   TypographyProps,
-  width,
-  WidthProps,
 } from '@looker/design-tokens'
+import { WidthProps } from 'styled-system'
 import styled from 'styled-components'
 import sortBy from 'lodash/sortBy'
 import indexOf from 'lodash/indexOf'
@@ -252,7 +251,11 @@ export const InternalRangeSlider = forwardRef(
     const maxPos = ((maxValue - min) / (max - min)) * containerRect.width
     const fillWidth = maxPos - minPos
 
-    // Behavioral callbacks
+    /*
+     * Behavioral callbacks
+     * ------------------------------------------------------
+     */
+
     const roundSliderValue = partial(roundToStep, min, max, step)
 
     const focusChangedPoint = useCallback(
@@ -356,9 +359,11 @@ export const InternalRangeSlider = forwardRef(
       [handleMouseEvent]
     )
 
-    // Mouse down event (and re-measure the client rectangle values before calculating value).
-    // This ensures accurate calculation when slider has moved to new location on page due
-    // to asynchronous dom changes.
+    /*
+     * Mouse down event (and re-measure the client rectangle values before calculating value).
+     * This ensures accurate calculation when slider has moved to new location on page due
+     * to asynchronous dom changes.
+     */
     useEffect(() => {
       if (isMouseDown) {
         refreshDomRect() // re-measure rectangle when isMouseDown changes from false to true
@@ -371,14 +376,18 @@ export const InternalRangeSlider = forwardRef(
       }
     }, [isMouseDown, handleMouseDown, containerRect])
 
-    // Only fire mouse drag event when mouse moves AFTER initial click
+    /*
+     * Only fire mouse drag event when mouse moves AFTER initial click
+     */
     useEffect(() => {
       if (isMouseDown && previousIsMouseDown) {
         handleMouseDrag()
       }
     }, [isMouseDown, previousIsMouseDown, handleMouseDrag, mousePos])
 
-    // Controlled Component: update value state when external value prop changes
+    /*
+     * Controlled Component: update value state when external value prop changes
+     */
     const previousValueProp = usePreviousValue(valueProp)
     useEffect(() => {
       const boundedValueProp = boundValueProp(min, max, valueProp)
@@ -391,7 +400,9 @@ export const InternalRangeSlider = forwardRef(
       }
     }, [valueProp, previousValueProp, value, min, max])
 
-    // Call onChange if min/max update and valueProp is not within them
+    /*
+     * Call onChange if min/max update and valueProp is not within them
+     */
     useEffect(() => {
       const boundedValueProp = boundValueProp(min, max, valueProp)
       if (valueProp && !isEqual(valueProp, boundedValueProp)) {
@@ -399,7 +410,11 @@ export const InternalRangeSlider = forwardRef(
       }
     }, [valueProp, onChange, min, max])
 
-    // Render markup!
+    /*
+     * Render markup!
+     * -------------------------------------------
+     */
+
     return (
       <div
         data-testid="range-slider-wrapper"
@@ -479,7 +494,6 @@ export const RangeSlider = styled(InternalRangeSlider).attrs<RangeSliderProps>(
   ${reset}
   ${space}
   ${typography}
-  ${width}
   padding: 1.5rem 0 0.5rem;
   touch-action: none;
   user-select: none;

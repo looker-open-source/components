@@ -25,8 +25,9 @@
  */
 
 import React from 'react'
-import { Space } from '../../../Layout'
 import { Button } from '../../../Button'
+import { Space, SpaceVertical } from '../../../Layout'
+import { OrderedList } from '../../../OrderedList'
 import { Paragraph } from '../../../Text'
 import { useToggle } from '../../../utils'
 import { RangeSlider } from './RangeSlider'
@@ -51,19 +52,20 @@ const NumberFilter = ({
   const { value, toggle } = useToggle()
   const rangeValue = getRange(AST.value)
   return (
-    <Space>
+    <>
       <RangeSlider
         min={0}
         max={value ? 5 : 100}
         value={rangeValue}
         onChange={onChange}
-        width={400}
       />
-      <Button onClick={toggle}>
-        Change min/max to 0 - {value ? '100' : '5'}
-      </Button>
-      <Paragraph>Current Value: {rangeValue.join(',')}</Paragraph>
-    </Space>
+      <Space>
+        <Button onClick={toggle}>
+          Change min/max to 0 - {value ? '100' : '5'}
+        </Button>
+        <Paragraph>Current Value: {rangeValue.join(',')}</Paragraph>
+      </Space>
+    </>
   )
 }
 
@@ -88,7 +90,7 @@ const Filter = ({
     }
   }, [expression])
   const handleChange = (newValue: number[]) => {
-    onChange(newValue.join(','))
+    onChange(newValue.join(', '))
   }
   return <NumberFilter AST={AST} onChange={handleChange} />
 }
@@ -99,15 +101,16 @@ export const RerenderRepro = () => {
     setExpression(newValue)
   }
   return (
-    <>
-      <Paragraph>
-        When updating the min/max, the value should move to stay within bounds.
-      </Paragraph>
-      <Paragraph>
-        When changing the value, it should not immediately reset.
-      </Paragraph>
+    <SpaceVertical p="medium" align="stretch">
+      <OrderedList type="number">
+        <li>
+          When updating the min/max, the value should move to stay within
+          bounds.
+        </li>
+        <li>When changing the value, it should not immediately reset.</li>
+      </OrderedList>
       <Filter expression={expression} onChange={handleChange} />
-    </>
+    </SpaceVertical>
   )
 }
 
