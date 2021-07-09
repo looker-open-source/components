@@ -70,6 +70,19 @@ Basic.parameters = {
   storyshots: { disable: true },
 }
 
+export const PopoverAriaHasPopup = () => (
+  <Popover
+    aria-haspopup="dialog"
+    content={<PopoverContent>Some content</PopoverContent>}
+  >
+    <Button>Open</Button>
+  </Popover>
+)
+
+PopoverAriaHasPopup.parameters = {
+  storyshots: { disable: true },
+}
+
 export const PopoverPopoverLayoutWithCloseButton = () => (
   <Popover
     content={
@@ -389,7 +402,6 @@ Placement.parameters = {
 // as ComponentsProvider and can't access FocusTrapContext or ScrollLockContext
 const MovingTargetInner = () => {
   const { value, toggle } = useToggle()
-
   const { popover, popperInstanceRef, open, ref, isOpen } = usePopover({
     content: (
       <PopoverContent p="large" width="360px">
