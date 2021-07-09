@@ -6,10 +6,8 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/looker-open-source/components.git"
-  },
-  "bugs": {
-    "url": "https://github.com/looker-open-source/components/issues"
+    "url": "https://github.com/looker-open-source/components",
+    "directory": "packages/prettier"
   },
   "publishConfig": {
     "access": "public"

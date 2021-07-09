@@ -35,9 +35,6 @@ const BundleAnalyzerPlugin =
 const excludeNodeModulesExcept = require('babel-loader-exclude-node-modules-except')
 
 module.exports = {
-  devServer: {
-    port: 3000,
-  },
   devtool: 'source-map',
   entry: {
     app: ['core-js/stable', './src/index.tsx'],
@@ -67,8 +64,7 @@ module.exports = {
   },
   plugins: [
     new BundleAnalyzerPlugin({
-      analyzerMode: 'static',
-      reportFilename: './analyze.html',
+      analyzerMode: process.env.ANALYZE_MODE || 'disabled',
     }),
     new HtmlWebPackPlugin({ template: 'src/template.html' }),
   ],
