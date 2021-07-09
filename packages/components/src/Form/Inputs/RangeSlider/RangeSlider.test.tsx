@@ -95,9 +95,10 @@ test('warns the developer if value prop falls outside of possible min/max range'
 
   rerender(
     withThemeProvider(
-      <RangeSlider min={10} max={20} value={[-1, 1]} onChange={handleChange} />
+      <RangeSlider onChange={handleChange} min={10} max={20} value={[-1, 1]} />
     )
   )
+
   expect(handleChange).toHaveBeenCalledWith([10, 10])
 })
 
@@ -154,10 +155,7 @@ test('prevents value from going outside of min/max range', () => {
   renderWithTheme(
     <RangeSlider onChange={handleChange} min={9} max={10} value={[0, 100]} />
   )
-  const minThumb = screen.getByLabelText('Minimum Value')
-  const maxThumb = screen.getByLabelText('Maximum Value')
-  expect(minThumb).toHaveAttribute('aria-valuenow', '9')
-  expect(maxThumb).toHaveAttribute('aria-valuenow', '10')
+  expect(handleChange).toHaveBeenCalledWith([9, 10])
 })
 
 describe('readOnly prop', () => {
