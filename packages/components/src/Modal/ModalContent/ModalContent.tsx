@@ -66,8 +66,8 @@ const ModalContentLayout = forwardRef(
         hasOverflow={hasOverflow}
         ref={ref}
         p={p}
-        pb={hasFooter && !hasOverflow ? 'xxxsmall' : pb || py || p}
-        pt={hasHeader && !hasOverflow ? 'xxxsmall' : pt || py || p}
+        pb={hasFooter && !hasOverflow ? 'xxsmall' : pb || py || p}
+        pt={hasHeader && !hasOverflow ? 'xxsmall' : pt || py || p}
         {...props}
       >
         {children}
