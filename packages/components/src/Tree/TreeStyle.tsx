@@ -39,7 +39,7 @@ import {
   ListItemStatefulProps,
 } from '../ListItem'
 import { listItemBackgroundColor } from '../ListItem/utils'
-import { IconSize, IconType } from '../Icon'
+import { IconSize } from '../Icon'
 import { AccordionIndicator } from '../Accordion2/AccordionIndicator'
 import { TreeAccordion } from './TreeAccordion'
 import { TreeItem } from './TreeItem'
@@ -94,7 +94,6 @@ const dividersCSS = css`
 
 interface TreeItemIndentProps extends GenerateIndentProps {
   labelBackgroundOnly: boolean
-  icon: boolean
 }
 
 const treeItemIndent = ({

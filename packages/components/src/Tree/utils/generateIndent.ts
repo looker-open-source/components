@@ -56,6 +56,8 @@ const generateIndentCalculation = (
 
 /**
  * Generates an indent for a TreeItem
+ * @TODO Once this is rebased onto the `Tree refactor` branch, we need to rethink how assumeIconAlignment
+ * handles the "parent Tree with Icon" and "parent Tree without Icon" branching paths
  */
 export const generateIndent = ({
   assumeIconAlignment = false,
