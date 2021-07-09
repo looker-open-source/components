@@ -235,27 +235,6 @@ export const InternalRangeSlider = forwardRef(
       return [valueMin, valueMax]
     }, [valueMin, valueMax])
 
-    // Controlled Component: update value state when external value prop changes
-    const previousValueProp = usePreviousValue(valueProp)
-    useEffect(() => {
-      const boundedValueProp = boundValueProp(min, max, valueProp)
-      if (
-        valueProp &&
-        !isEqual(value, boundedValueProp) &&
-        !isEqual(valueProp, previousValueProp)
-      ) {
-        setValue(sort(boundedValueProp))
-      }
-    }, [valueProp, previousValueProp, value, min, max])
-
-    // Call onChange if min/max update and valueProp is not within them
-    useEffect(() => {
-      const boundedValueProp = boundValueProp(min, max, valueProp)
-      if (valueProp && !isEqual(valueProp, boundedValueProp)) {
-        onChange?.(sort(boundedValueProp))
-      }
-    }, [valueProp, onChange, min, max])
-
     const [containerRef, setContainerRef] = useState<HTMLElement | null>(null)
     const [focusedThumb, setFocusedThumb] = useState<ThumbIndices>()
 
@@ -398,6 +377,27 @@ export const InternalRangeSlider = forwardRef(
         handleMouseDrag()
       }
     }, [isMouseDown, previousIsMouseDown, handleMouseDrag, mousePos])
+
+    // Controlled Component: update value state when external value prop changes
+    const previousValueProp = usePreviousValue(valueProp)
+    useEffect(() => {
+      const boundedValueProp = boundValueProp(min, max, valueProp)
+      if (
+        valueProp &&
+        !isEqual(value, boundedValueProp) &&
+        !isEqual(valueProp, previousValueProp)
+      ) {
+        setValue(sort(boundedValueProp))
+      }
+    }, [valueProp, previousValueProp, value, min, max])
+
+    // Call onChange if min/max update and valueProp is not within them
+    useEffect(() => {
+      const boundedValueProp = boundValueProp(min, max, valueProp)
+      if (valueProp && !isEqual(valueProp, boundedValueProp)) {
+        onChange?.(sort(boundedValueProp))
+      }
+    }, [valueProp, onChange, min, max])
 
     // Render markup!
     return (
