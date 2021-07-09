@@ -32,19 +32,21 @@ import { listItemDimensions } from '../../ListItem'
 export type GenerateIndentProps = DensityProp & {
   assumeIconAlignment?: boolean
   depth?: number
+  icon?: boolean
 }
 
 const generateIndentCalculation = (
   depth: number,
   density: DensityRamp,
   assumeIconAlignment: boolean,
+  icon: boolean,
   theme: Theme
 ) => {
   const { space, sizes } = theme
   const { iconGap } = listItemDimensions(density)
   const { indicatorGap, indicatorSize } = accordionDimensions(density)
 
-  const renderedDepth = assumeIconAlignment ? depth - 1 : depth
+  const renderedDepth = assumeIconAlignment && !icon ? depth - 1 : depth
   const iconSpacingSpacer = assumeIconAlignment
     ? `(${space[iconGap]} - ${space[indicatorGap]})`
     : '0px'
@@ -54,12 +56,21 @@ const generateIndentCalculation = (
 
 /**
  * Generates an indent for a TreeItem
+ * @TODO Once this is rebased onto the `Tree refactor` branch, we need to rethink how assumeIconAlignment
+ * handles the "parent Tree with Icon" and "parent Tree without Icon" branching paths
  */
 export const generateIndent = ({
   assumeIconAlignment = false,
   depth = 0,
   density = 0,
+  icon = false,
 }: GenerateIndentProps) => css`
   padding-left: ${({ theme }) =>
-    generateIndentCalculation(depth, density, assumeIconAlignment, theme)};
+    generateIndentCalculation(
+      depth,
+      density,
+      assumeIconAlignment,
+      icon,
+      theme
+    )};
 `
