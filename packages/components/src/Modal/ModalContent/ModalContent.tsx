@@ -47,14 +47,6 @@ export type ModalContentProps = CompatibleHTMLProps<HTMLDivElement> &
      * @default true
      */
     hasHeader?: boolean
-
-    /**
-     * Used for vertical `y` padding when content does not have overflow and does have
-     * an adjacent footer or header.
-     * @private
-     * @default 'xxxsmall'
-     */
-    overflowVerticalPadding?: SpacingSizes
   }
 
 type ModalContentPropsInternal = ModalContentProps & {
