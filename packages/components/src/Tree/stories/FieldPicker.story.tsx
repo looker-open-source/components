@@ -50,7 +50,7 @@ const FieldGroupHeading = (props: ParagraphProps) => (
 )
 
 const fields = (
-  <Aside>
+  <>
     <TreeBranch>
       <FieldGroupHeading>DIMENSIONS</FieldGroupHeading>
     </TreeBranch>
@@ -86,33 +86,35 @@ const fields = (
     <FieldItem pivot color="calculation">
       Calc
     </FieldItem>
-  </Aside>
+  </>
 )
 
 export const FieldPicker = () => (
-  <TreeCollection>
-    <BorderRadiusOverrideTree
-      density={-3}
-      defaultOpen={true}
-      detail={3}
-      label={<Box pl="xxsmall">Orders</Box>}
-      labelBackgroundOnly
-    >
-      {fields}
-    </BorderRadiusOverrideTree>
-    <BorderRadiusOverrideTree
-      density={-3}
-      label={<Box pl="xxsmall">Order Items</Box>}
-      labelBackgroundOnly
-    >
-      {fields}
-    </BorderRadiusOverrideTree>
-    <BorderRadiusOverrideTree
-      density={-3}
-      label={<Box pl="xxsmall">Users</Box>}
-      labelBackgroundOnly
-    >
-      {fields}
-    </BorderRadiusOverrideTree>
-  </TreeCollection>
+  <Aside>
+    <TreeCollection>
+      <BorderRadiusOverrideTree
+        density={-3}
+        defaultOpen={true}
+        detail={3}
+        label={<Box pl="xxsmall">Orders</Box>}
+        labelBackgroundOnly
+      >
+        {fields}
+      </BorderRadiusOverrideTree>
+      <BorderRadiusOverrideTree
+        density={-3}
+        label={<Box pl="xxsmall">Order Items</Box>}
+        labelBackgroundOnly
+      >
+        {fields}
+      </BorderRadiusOverrideTree>
+      <BorderRadiusOverrideTree
+        density={-3}
+        label={<Box pl="xxsmall">Users</Box>}
+        labelBackgroundOnly
+      >
+        {fields}
+      </BorderRadiusOverrideTree>
+    </TreeCollection>
+  </Aside>
 )
