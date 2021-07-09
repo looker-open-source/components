@@ -24,19 +24,29 @@
 
  */
 
-import {
-  CompatibleHTMLProps,
-  padding,
-  PaddingProps,
-  reset,
-} from '@looker/design-tokens'
+import { color, ColorProps } from '@looker/design-tokens'
 import { css } from 'styled-components'
+import { borderHelper, SemanticBorderProps } from './semanticBorderHelper'
+import { simpleLayoutCSS, SimpleLayoutProps } from './simple'
 
-export interface SemanticLayoutBase
-  extends PaddingProps,
-    CompatibleHTMLProps<HTMLElement> {}
+export type CommonLayoutProps = SimpleLayoutProps &
+  SemanticBorderProps &
+  ColorProps & {
+    /**
+     * Workaround for Styled Components merge with DOM `color` prop merge issue
+     */
+    color?: any
+  }
 
-export const semanticLayoutCSS = css`
-  ${reset}
-  ${padding}
+export const commonLayoutCSS = css`
+  /**
+   * Rules here should provide convenience styling for Box derived components.
+   * Generally anything here could be overwritten by explicit values set via
+   * Box's prop values. For example a function here that sets 'cursor: pointer'
+   * would be overwritten by an explicit <Box cursor='copy'/>.
+   */
+  ${simpleLayoutCSS}
+
+  ${color}
+  ${borderHelper}
 `

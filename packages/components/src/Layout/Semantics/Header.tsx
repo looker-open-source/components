@@ -26,20 +26,11 @@
 
 import { shouldForwardProp } from '@looker/design-tokens'
 import styled, { css } from 'styled-components'
-import { height, HeightProps } from 'styled-system'
-import { SemanticLayoutBase, semanticLayoutCSS } from './semanticStyledBase'
-import { borderHelper, SemanticBorderProps } from './utils/semanticBorderHelper'
+import { commonLayoutCSS, CommonLayoutProps } from '../utils/common'
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface HeaderProps
-  extends HeightProps,
-    SemanticLayoutBase,
-    SemanticBorderProps {}
+export type HeaderProps = CommonLayoutProps
 
 export const headerFooterCSS = css`
-  ${semanticLayoutCSS}
-  ${height}
-
   align-items: center;
   display: flex;
   flex: 0 0 auto;
@@ -48,7 +39,7 @@ export const headerFooterCSS = css`
 export const Header = styled.header.withConfig({
   shouldForwardProp,
 })<HeaderProps>`
+  ${commonLayoutCSS}
   ${headerFooterCSS}
-  ${borderHelper}
   width: 100%;
 `

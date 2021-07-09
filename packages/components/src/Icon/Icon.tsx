@@ -37,10 +37,7 @@ import {
 import { StyledIconProps } from '@styled-icons/styled-icon'
 import React, { forwardRef, ReactElement, Ref } from 'react'
 import styled from 'styled-components'
-import {
-  sizeSimpleLayoutCSS,
-  SizeSimpleLayoutProps,
-} from '../Layout/utils/simple'
+import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout/utils/simple'
 
 export type IconSize =
   | SizeXXSmall
@@ -53,7 +50,7 @@ export type IconType = ReactElement<StyledIconProps>
 
 export interface IconProps
   extends Omit<CompatibleHTMLProps<HTMLDivElement>, 'onClick'>,
-    SizeSimpleLayoutProps {
+    SimpleLayoutProps {
   color?: string
   /**
    * Specify the JSX.Element (often SVG) to place.
@@ -89,7 +86,7 @@ export const Icon = styled(IconLayout).attrs<IconProps>(
     size,
   })
 )<IconProps>`
-  ${sizeSimpleLayoutCSS}
+  ${simpleLayoutCSS}
   ${color}
     flex-shrink: 0;
   justify-content: center;

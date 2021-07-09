@@ -32,9 +32,9 @@ import {
   SpacingSizes,
   shouldForwardProp,
 } from '@looker/design-tokens'
-import { simpleLayoutCSS, SimpleLayoutProps } from '../utils/simple'
+import { commonLayoutCSS, CommonLayoutProps } from '../utils/common'
 
-export interface SpaceHelperProps extends SimpleLayoutProps, FlexboxProps {
+export interface SpaceHelperProps extends CommonLayoutProps, FlexboxProps {
   /**
    * Amount of space between grid cells
    * @default medium
@@ -95,7 +95,7 @@ export interface SpaceHelperProps extends SimpleLayoutProps, FlexboxProps {
 export const defaultGap = 'medium'
 
 export const spaceCSS = css`
-  ${simpleLayoutCSS}
+  ${commonLayoutCSS}
   ${flexbox}
 
   display: flex;

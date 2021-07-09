@@ -25,36 +25,33 @@
  */
 
 import React, { forwardRef, Ref } from 'react'
-import { shouldForwardProp } from '@looker/design-tokens'
+import { CompatibleHTMLProps, shouldForwardProp } from '@looker/design-tokens'
 import styled from 'styled-components'
 import { ResponsiveValue } from 'styled-system'
 import { OverflowShadow, useOverflow } from '../../../utils'
-import { SemanticLayoutBase, semanticLayoutCSS } from '../semanticStyledBase'
-import {
-  borderHelper,
-  SemanticBorderProps,
-} from '../utils/semanticBorderHelper'
-import { AsideSizeRamp, asideWidth } from '../utils/asideWidth'
+import { commonLayoutCSS, CommonLayoutProps } from '../../utils/common'
+import { AsideSizeRamp, asideWidth } from './asideWidth'
 
-export interface AsideProps extends SemanticLayoutBase, SemanticBorderProps {
-  /**
-   * Prevent `Aside` from being rendered.
-   * @default false
-   */
-  collapse?: boolean
-  /**
-   * To be used within the context of `<Page fixed>` container.
-   * When true, this removes the inner overflow-y scrolling
-   * and allows content within a Layout group to scroll together.
-   * @default false
-   */
-  scrollWithin?: boolean
-  /**
-   * Specify width of aside
-   * @default sidebar
-   */
-  width?: ResponsiveValue<AsideSizeRamp | string>
-}
+export type AsideProps = CommonLayoutProps &
+  CompatibleHTMLProps<HTMLElement> & {
+    /**
+     * Prevent `Aside` from being rendered.
+     * @default false
+     */
+    collapse?: boolean
+    /**
+     * To be used within the context of `<Page fixed>` container.
+     * When true, this removes the inner overflow-y scrolling
+     * and allows content within a Layout group to scroll together.
+     * @default false
+     */
+    scrollWithin?: boolean
+    /**
+     * Specify width of aside
+     * @default sidebar
+     */
+    width?: ResponsiveValue<AsideSizeRamp | string>
+  }
 
 const AsideLayout = forwardRef(
   (
@@ -80,7 +77,7 @@ export const Aside = styled(AsideLayout)
   .attrs<AsideProps>(({ width = 'sidebar' }) => ({
     width,
   }))<AsideProps>`
-${semanticLayoutCSS}
+${commonLayoutCSS}
 
 flex: 0 0 ${({ width }) => width};
 max-width: ${({ width }) => width};
@@ -89,5 +86,4 @@ overflow: auto;
 width: 0;
 ${({ scrollWithin }) => scrollWithin && 'height: fit-content;'}
 
-${borderHelper}
 ${asideWidth}`
