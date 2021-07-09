@@ -72,6 +72,7 @@ export const ComboboxInputInternal = forwardRef(
       data: { navigationOption, option, inputValue: contextInputValue },
       onChange: contextOnChange,
       inputCallbackRef,
+      inputElement,
       state,
       transition,
       id,
@@ -87,6 +88,7 @@ export const ComboboxInputInternal = forwardRef(
     function handleClear() {
       contextOnChange && contextOnChange(undefined)
       transition && transition(ComboboxActionType.CLEAR)
+      inputElement?.focus()
     }
 
     function handleValueChange(value: string) {

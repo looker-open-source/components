@@ -92,6 +92,8 @@ describe('InputSearch', () => {
       fireEvent.click(button)
       expect(screen.getByPlaceholderText('type here')).toHaveDisplayValue('')
       expect(screen.queryByRole('button')).not.toBeInTheDocument()
+      const input = screen.getByRole('textbox')
+      expect(input).toHaveFocus()
     })
 
     test('calls onChange', () => {
