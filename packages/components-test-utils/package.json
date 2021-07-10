@@ -20,7 +20,7 @@
   "devDependencies": {
     "@looker/components-providers": "^1.4.0",
     "@testing-library/react": "^11.2.6",
-    "@types/jest": "^26.0.22",
+    "@types/jest": "^26.0.24",
     "@types/react": "^16.9.56",
     "jest-styled-components": "^7.0.4",
     "react": "^16.14.0",
