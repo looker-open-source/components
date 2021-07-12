@@ -28,6 +28,7 @@ import {
   color,
   CompatibleHTMLProps,
   generateIntentShade,
+  intentUIBlend,
   reset,
   SizeLarge,
   SizeMedium,
@@ -35,11 +36,10 @@ import {
   space,
   SpaceProps,
   typography,
-  intentUIBlend,
+  variant,
 } from '@looker/design-tokens'
 import React, { forwardRef, ReactNode, Ref } from 'react'
 import styled, { css } from 'styled-components'
-import { variant } from 'styled-system'
 
 export type BadgeSizes = SizeSmall | SizeMedium | SizeLarge
 type BadgeIntent =

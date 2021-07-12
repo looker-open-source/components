@@ -24,12 +24,12 @@
 
  */
 
-import { variant } from 'styled-system'
 import {
   SizeLarge,
   SizeMedium,
   SizeSmall,
   SizeXSmall,
+  variant,
 } from '@looker/design-tokens'
 
 export type ProgressCircularSizes =

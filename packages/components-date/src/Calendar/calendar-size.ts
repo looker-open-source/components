@@ -24,8 +24,12 @@
 
  */
 
-import { SizeLarge, SizeMedium, SizeSmall } from '@looker/design-tokens'
-import { variant } from 'styled-system'
+import {
+  SizeLarge,
+  SizeMedium,
+  SizeSmall,
+  variant,
+} from '@looker/design-tokens'
 
 export type CalendarSize = SizeSmall | SizeMedium | SizeLarge
 

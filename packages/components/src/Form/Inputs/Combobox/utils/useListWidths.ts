@@ -25,7 +25,7 @@
  */
 
 import { useEffect, useState } from 'react'
-import { WidthProps, MinWidthProps } from 'styled-system'
+import { WidthProps, MinWidthProps } from '@looker/design-tokens'
 
 export interface UseListWidthProps extends MinWidthProps, WidthProps {
   isVisible?: boolean

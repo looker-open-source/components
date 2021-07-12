@@ -26,21 +26,21 @@
 
 import {
   CompatibleHTMLProps,
+  LayoutProps,
+  layout,
+  position,
+  PositionProps,
   reset,
   space,
   SpaceProps,
   shouldForwardProp,
+  textColor,
   TextColorProps,
   typography,
   TypographyProps,
-  PositionProps,
-  LayoutProps,
-  position,
-  layout,
-  textColor,
+  variant,
 } from '@looker/design-tokens'
 import styled from 'styled-components'
-import { variant } from 'styled-system'
 
 export interface UnorderedListProps
   extends CompatibleHTMLProps<HTMLUListElement>,

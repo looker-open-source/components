@@ -24,35 +24,17 @@
 
  */
 
-import { shouldForwardProp } from '@looker/design-tokens'
+import { flexbox, FlexboxProps, shouldForwardProp } from '@looker/design-tokens'
 import styled from 'styled-components'
-import {
-  alignSelf,
-  flexBasis,
-  flex,
-  order,
-  AlignSelfProps,
-  FlexBasisProps,
-  FlexProps,
-  OrderProps,
-} from 'styled-system'
 import { complexLayoutCSS, ComplexLayoutProps } from '../utils/complex'
 
-export interface FlexItemProps
-  extends ComplexLayoutProps,
-    AlignSelfProps,
-    FlexBasisProps,
-    FlexProps,
-    OrderProps {}
+export interface FlexItemProps extends ComplexLayoutProps, FlexboxProps {}
 
 export const FlexItem = styled.div.withConfig({
   shouldForwardProp,
 })<FlexItemProps>`
   ${complexLayoutCSS}
-  ${alignSelf}
-  ${flexBasis}
-  ${flex}
-  ${order}
+  ${flexbox}
   /*
    * A min-width must be set here to resolve a firefox bug where any children
    * with style of text-overflow: ellipsis; will otherwise not truncate the
