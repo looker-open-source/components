@@ -28,32 +28,39 @@ import {
   border,
   boxShadow,
   color,
-  position,
-  layout,
   reset,
-  space,
   typography,
   BorderProps,
   BoxShadowProps,
   ColorProps,
-  PositionProps,
-  LayoutProps,
-  SpaceProps,
   TypographyProps,
 } from '@looker/design-tokens'
 import { css } from 'styled-components'
+import { simpleLayoutCSS, SimpleLayoutProps } from './simple'
 
-export interface ComplexLayoutProps
-  extends BorderProps,
-    BoxShadowProps,
-    ColorProps,
-    LayoutProps,
-    PositionProps,
-    SpaceProps,
-    TypographyProps {
-  color?: any
-}
+/**
+ * @deprecated - use `CommonLayoutProps` instead.
+ */
+export type ComplexLayoutProps = SimpleLayoutProps &
+  BorderProps &
+  BoxShadowProps &
+  ColorProps &
+  TypographyProps & {
+    /**
+     * Workaround for Styled Components merge with DOM `color` prop merge issue
+     */
+    color?: any
+  }
 
+/**
+ * Used as a common styled-system helper for `Box`& `Flex` & `FlexItem`
+ *
+ * Newer components leverage `commonLayoutCSS` which introduces an improved set of
+ * properties for managing borders as well as excluding support for boxShadow.
+ *
+ * @TODO - Remove in 3.x series
+ * @deprecated - use `commonLayoutCSS` instead.
+ */
 export const complexLayoutCSS = css`
   /**
    * Rules here should provide convenience styling for Box derived components.
@@ -62,6 +69,7 @@ export const complexLayoutCSS = css`
    * would be overwritten by an explicit <Box cursor='copy'/>.
    */
   ${reset}
+  ${simpleLayoutCSS}
 
   /**
    * Style Utilities that extend Box's props. Most of these come from
@@ -72,8 +80,5 @@ export const complexLayoutCSS = css`
   ${border}
   ${boxShadow}
   ${color}
-  ${layout}
-  ${position}
-  ${space}
   ${typography}
 `

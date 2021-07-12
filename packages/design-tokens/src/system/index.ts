@@ -27,6 +27,7 @@
 import { HTMLProps } from 'react'
 export {
   border,
+  borderRadius,
   boxShadow,
   color,
   display,

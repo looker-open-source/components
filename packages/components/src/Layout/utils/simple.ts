@@ -26,38 +26,25 @@
 
 import { css } from 'styled-components'
 import {
-  display,
-  DisplayProps,
   layout,
   LayoutProps,
   space,
   SpaceProps,
-  size,
-  SizeProps,
-  overflow,
-  OverflowProps,
-  verticalAlign,
-  VerticalAlignProps,
+  position,
+  PositionProps,
 } from '@looker/design-tokens'
 
-export interface SimpleLayoutProps extends LayoutProps, SpaceProps {}
+export interface SimpleLayoutProps
+  extends LayoutProps,
+    PositionProps,
+    SpaceProps {}
 
+/**
+ * Used as a common styled-system helper simple layout
+ * See also: `commonLayoutCSS` for more complex scenarios.
+ */
 export const simpleLayoutCSS = css`
   ${layout}
   ${space}
-`
-
-export interface SizeSimpleLayoutProps
-  extends SpaceProps,
-    DisplayProps,
-    OverflowProps,
-    SizeProps,
-    VerticalAlignProps {}
-
-export const sizeSimpleLayoutCSS = css`
-  ${size}
-  ${space}
-  ${overflow}
-  ${verticalAlign}
-  ${display}
+  ${position}
 `

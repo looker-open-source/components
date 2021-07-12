@@ -32,10 +32,10 @@ import {
   paddingDefaultsHelper,
   shouldForwardProp,
 } from '@looker/design-tokens'
-import { ComplexLayoutProps, complexLayoutCSS } from '../Layout/utils/complex'
+import { CommonLayoutProps, commonLayoutCSS } from '../Layout/utils/common'
 
 export interface CardContentProps
-  extends ComplexLayoutProps,
+  extends CommonLayoutProps,
     FlexboxProps,
     CompatibleHTMLProps<HTMLElement> {}
 
@@ -44,6 +44,6 @@ export const CardContent = styled.div
   .attrs<CardContentProps>((p) => ({
     ...paddingDefaultsHelper(p, { p: 'medium' }),
   }))<CardContentProps>`
-  ${complexLayoutCSS}
+  ${commonLayoutCSS}
   ${flexbox}
 `

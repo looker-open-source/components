@@ -31,12 +31,12 @@ import {
   shouldForwardProp,
 } from '@looker/design-tokens'
 import styled, { css } from 'styled-components'
-import { ComplexLayoutProps, complexLayoutCSS } from '../Layout/utils/complex'
+import { CommonLayoutProps, commonLayoutCSS } from '../Layout/utils/common'
 
 export interface CardProps
   extends CompatibleHTMLProps<HTMLElement>,
     FlexboxProps,
-    ComplexLayoutProps {
+    CommonLayoutProps {
   /**
    * Show card with a BoxShadow applied
    * @default false
@@ -63,8 +63,7 @@ export const Card = styled.div
   .attrs<CardProps>(
     ({
       bg = 'background',
-      border = '1px solid',
-      borderColor = 'ui3',
+      border = 'ui3',
       borderRadius = 'medium',
       display = 'flex',
       flexDirection = 'column',
@@ -74,7 +73,6 @@ export const Card = styled.div
     }) => ({
       bg,
       border,
-      borderColor,
       borderRadius,
       display,
       flexDirection,
@@ -83,7 +81,7 @@ export const Card = styled.div
       overflow,
     })
   )<CardProps>`
-  ${complexLayoutCSS}
+  ${commonLayoutCSS}
   ${flexbox}
 
   transition: border ${cardTransition}, box-shadow ${cardTransition};
