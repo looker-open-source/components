@@ -29,7 +29,6 @@ import styled from 'styled-components'
 import { SpaceProps, space } from '@looker/design-tokens'
 import { Divider } from '../Divider'
 
-/* eslint-disable i18next/no-literal-string */
 const ListDividerLayout: FC = (props) => (
   <li {...props} aria-hidden="true">
     <Divider appearance="light" />

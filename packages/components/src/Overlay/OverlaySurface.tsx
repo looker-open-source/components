@@ -34,14 +34,16 @@ import React, {
   useRef,
 } from 'react'
 import styled from 'styled-components'
+import { maxWidth, MaxWidthProps } from 'styled-system'
 import { useGlobalHotkeys, useForkedRef } from '../utils'
 import { DialogContext } from '../Dialog'
 
-export interface OverlaySurfaceProps extends CompatibleHTMLProps<HTMLElement> {
+export interface OverlaySurfaceProps
+  extends CompatibleHTMLProps<HTMLElement>,
+    MaxWidthProps {
   eventHandlers?: DOMAttributes<HTMLElement>
   placement: Placement
   zIndex?: number
-  maxWidth?: string
 }
 
 const OverlaySurfaceLayout = forwardRef(
@@ -75,9 +77,10 @@ OverlaySurfaceLayout.displayName = 'OverlaySurfaceLayout'
 
 export const OverlaySurface = styled(OverlaySurfaceLayout)`
   ${reset}
+
   animation: ${fadeIn} ease-in;
   animation-duration: ${({ theme }) => `${theme.transitions.quick}ms`};
-  max-width: ${({ maxWidth }) => maxWidth};
+  ${maxWidth}
   overflow: visible;
   z-index: ${({ theme: { zIndexFloor } }) => zIndexFloor || undefined};
 

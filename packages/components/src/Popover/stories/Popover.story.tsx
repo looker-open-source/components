@@ -51,7 +51,7 @@ import { Tooltip } from '../../Tooltip'
 import { Popover } from '../Popover'
 import { PopoverContent } from '../Layout/PopoverContent'
 import { usePopover } from '../usePopover'
-import { ConstitutionShort } from '../../__mocks__/Constitution'
+import { Constitution, ConstitutionShort } from '../../__mocks__/Constitution'
 
 export * from './OverflowExamples'
 
@@ -70,21 +70,27 @@ Basic.parameters = {
   storyshots: { disable: true },
 }
 
-export const PopoverAriaHasPopup = () => (
+export const PopoverWithLayout = () => (
   <Popover
-    aria-haspopup="dialog"
-    content={<PopoverContent>Some content</PopoverContent>}
+    width={640}
+    content={
+      <PopoverLayout header="Header text" footer>
+        <Constitution />
+      </PopoverLayout>
+    }
   >
     <Button>Open</Button>
   </Popover>
 )
-
-PopoverAriaHasPopup.parameters = {
-  storyshots: { disable: true },
+PopoverWithLayout.parameters = {
+  storyshots: {
+    disable: true,
+  },
 }
 
-export const PopoverPopoverLayoutWithCloseButton = () => (
+export const PopoverWithLayoutBasic = () => (
   <Popover
+    width={640}
     content={
       <PopoverLayout header="Header text" footer={false}>
         <ConstitutionShort fontSize="small" />
@@ -94,24 +100,7 @@ export const PopoverPopoverLayoutWithCloseButton = () => (
     <Button>Open Popover</Button>
   </Popover>
 )
-PopoverPopoverLayoutWithCloseButton.parameters = {
-  storyshots: {
-    disable: true,
-  },
-}
-
-export const PopoverPopoverLayout = () => (
-  <Popover
-    content={
-      <PopoverLayout header="Header text" footer>
-        <ConstitutionShort fontSize="small" />
-      </PopoverLayout>
-    }
-  >
-    <Button>Open</Button>
-  </Popover>
-)
-PopoverPopoverLayout.parameters = {
+PopoverWithLayoutBasic.parameters = {
   storyshots: {
     disable: true,
   },

@@ -24,8 +24,6 @@
 
  */
 
-/* eslint-disable i18next/no-literal-string */
-
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { screen } from '@testing-library/react'

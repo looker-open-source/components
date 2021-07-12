@@ -26,6 +26,7 @@
 
 const ours = [
   'align',
+  'appearance',
   'gap',
   'grid-area',
   'icon',
@@ -37,6 +38,8 @@ const ours = [
   'layout',
   'indexBy',
   'indicatorPosition',
+  'overflowVerticalPadding',
+  'shape',
 ]
 const aria = [
   'aria-autocomplete',
