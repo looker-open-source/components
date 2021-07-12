@@ -27,6 +27,7 @@
 import React, { useState } from 'react'
 import { Home } from '@styled-icons/material-outlined/Home'
 import { Info } from '@styled-icons/material-outlined/Info'
+import { Aside } from '../Layout'
 import { ListItem } from '../ListItem'
 import { ProgressCircular } from '../ProgressCircular'
 import { Tree, TreeItem } from '../Tree'
@@ -72,35 +73,37 @@ export const Basic = () => {
 }
 
 export const MixedNavigation = () => (
-  <NavList>
-    <ListItem icon={<Home />} selected>
-      Home
-    </ListItem>
-    <ListItem icon={<Home />}>Not really home</ListItem>
-    <Tree icon={<Info />} label="Tree" selected defaultOpen>
-      <TreeItem icon={<Info />}>Meh</TreeItem>
-      <TreeItem
-        description="description"
-        detail="detail"
-        icon={<Info />}
-        selected
-      >
-        My Awesome Item
-      </TreeItem>
-      <Tree
-        forceLabelPadding
-        branchFontWeight
-        defaultOpen
-        label="Blah"
-        icon={<Info />}
-      >
-        <TreeItem color="text2">
-          <em>Not yet available</em>
+  <Aside width="navigation">
+    <NavList>
+      <ListItem icon={<Home />} selected>
+        Home
+      </ListItem>
+      <ListItem icon={<Home />}>Not really home</ListItem>
+      <Tree icon={<Info />} label="Tree" selected defaultOpen>
+        <TreeItem icon={<Info />}>Meh</TreeItem>
+        <TreeItem
+          description="description"
+          detail="detail"
+          icon={<Info />}
+          selected
+        >
+          My Awesome Item
         </TreeItem>
-        <TreeItem icon={<ProgressCircular size="xsmall" progress={0.75} />}>
-          Loading...
-        </TreeItem>
+        <Tree
+          forceLabelPadding
+          branchFontWeight
+          defaultOpen
+          label="Blah"
+          icon={<Info />}
+        >
+          <TreeItem color="text2">
+            <em>Not yet available</em>
+          </TreeItem>
+          <TreeItem icon={<ProgressCircular size="xsmall" progress={0.75} />}>
+            Loading...
+          </TreeItem>
+        </Tree>
       </Tree>
-    </Tree>
-  </NavList>
+    </NavList>
+  </Aside>
 )

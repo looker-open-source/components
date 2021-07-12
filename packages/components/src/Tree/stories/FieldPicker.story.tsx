@@ -26,7 +26,7 @@
 
 import React from 'react'
 import styled from 'styled-components'
-import { Box, Paragraph, ParagraphProps } from '../..'
+import { Aside, Box, Paragraph, ParagraphProps } from '../..'
 import { TreeCollection, TreeBranch, Tree } from '..'
 import { generateBorderRadius } from '../utils/generateBorderRadius'
 import { FieldItem } from './FieldItem'
@@ -88,29 +88,31 @@ const fields = (
 )
 
 export const FieldPicker = () => (
-  <TreeCollection>
-    <BorderRadiusOverrideTree
-      density={-3}
-      defaultOpen={true}
-      detail={3}
-      label={<Box pl="xxsmall">Orders</Box>}
-      labelBackgroundOnly
-    >
-      {fields}
-    </BorderRadiusOverrideTree>
-    <BorderRadiusOverrideTree
-      density={-3}
-      label={<Box pl="xxsmall">Order Items</Box>}
-      labelBackgroundOnly
-    >
-      {fields}
-    </BorderRadiusOverrideTree>
-    <BorderRadiusOverrideTree
-      density={-3}
-      label={<Box pl="xxsmall">Users</Box>}
-      labelBackgroundOnly
-    >
-      {fields}
-    </BorderRadiusOverrideTree>
-  </TreeCollection>
+  <Aside>
+    <TreeCollection>
+      <BorderRadiusOverrideTree
+        density={-3}
+        defaultOpen={true}
+        detail={3}
+        label={<Box pl="xxsmall">Orders</Box>}
+        labelBackgroundOnly
+      >
+        {fields}
+      </BorderRadiusOverrideTree>
+      <BorderRadiusOverrideTree
+        density={-3}
+        label={<Box pl="xxsmall">Order Items</Box>}
+        labelBackgroundOnly
+      >
+        {fields}
+      </BorderRadiusOverrideTree>
+      <BorderRadiusOverrideTree
+        density={-3}
+        label={<Box pl="xxsmall">Users</Box>}
+        labelBackgroundOnly
+      >
+        {fields}
+      </BorderRadiusOverrideTree>
+    </TreeCollection>
+  </Aside>
 )
