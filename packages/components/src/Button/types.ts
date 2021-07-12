@@ -24,13 +24,14 @@
 
  */
 
-import { CompatibleHTMLProps, StatefulColor } from '@looker/design-tokens'
 import {
+  CompatibleHTMLProps,
+  StatefulColor,
   MaxWidthProps,
   MinWidthProps,
   SpaceProps,
   WidthProps,
-} from 'styled-system'
+} from '@looker/design-tokens'
 import { IconType } from '../Icon'
 import { ButtonSizeProps, ButtonSizes } from './size'
 

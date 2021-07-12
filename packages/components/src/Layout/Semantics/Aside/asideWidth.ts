@@ -24,7 +24,7 @@
 
  */
 
-import { system, ResponsiveValue } from 'styled-system'
+import { system, ResponsiveValue } from '@looker/design-tokens'
 
 export type AsideSizes = 'rail' | 'navigation' | 'sidebar'
 

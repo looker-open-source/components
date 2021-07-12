@@ -25,7 +25,7 @@
  */
 
 import styled from 'styled-components'
-import { variant, ResponsiveValue, system } from 'styled-system'
+import { variant, ResponsiveValue, system } from '@looker/design-tokens'
 import { SurfaceBase, surfaceTransition } from '../Dialog/SurfaceBase'
 import { DialogSizeRamp, dialogSizes } from '../Dialog/dialogWidth'
 import { AsideSizeRamp, asideSizes } from '../Layout/Semantics/Aside/asideWidth'

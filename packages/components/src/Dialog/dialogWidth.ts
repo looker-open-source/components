@@ -24,14 +24,15 @@
 
  */
 
-import { system, ResponsiveValue } from 'styled-system'
 import {
   SizeXSmall,
   SizeXXSmall,
   SizeSmall,
   SizeMedium,
   SizeLarge,
-} from '@looker/design-tokens/src/system'
+  system,
+  ResponsiveValue,
+} from '@looker/design-tokens'
 
 export type DialogSizes =
   | SizeXXSmall

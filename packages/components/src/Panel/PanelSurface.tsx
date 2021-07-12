@@ -25,7 +25,7 @@
  */
 
 import styled, { css } from 'styled-components'
-import { variant } from 'styled-system'
+import { variant } from '@looker/design-tokens'
 import { PanelSurfaceProps } from './types'
 
 const surfaceTransition = () => css`

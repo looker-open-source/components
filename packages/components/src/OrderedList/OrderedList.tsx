@@ -38,9 +38,9 @@ import {
   LayoutProps,
   position,
   layout,
+  variant,
 } from '@looker/design-tokens'
 import styled from 'styled-components'
-import { variant } from 'styled-system'
 
 export interface OrderedListProps
   extends CompatibleHTMLProps<HTMLElement>,

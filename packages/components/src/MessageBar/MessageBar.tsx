@@ -29,6 +29,7 @@ import {
   CompatibleHTMLProps,
   omitStyledProps,
   TypographyProps,
+  variant,
 } from '@looker/design-tokens'
 import { Close } from '@styled-icons/material/Close'
 import noop from 'lodash/noop'
@@ -42,7 +43,6 @@ import React, {
 } from 'react'
 import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
-import { variant } from 'styled-system'
 import { IconButton, ButtonProps, ButtonTransparent } from '../Button'
 import { Space } from '../Layout/Space'
 import { SimpleLayoutProps, simpleLayoutCSS } from '../Layout/utils/simple'
