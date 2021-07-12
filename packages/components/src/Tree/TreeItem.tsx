@@ -44,9 +44,11 @@ export type TreeItemProps = ListItemProps & {
 }
 
 const TreeItemLayout: FC<TreeItemProps> = ({
+  className,
   color: propsColor,
   density: propsDensity,
   disabled,
+  itemRole,
   labelBackgroundOnly: propsLabelBackgroundOnly,
   onBlur,
   onClick,
@@ -95,7 +97,7 @@ const TreeItemLayout: FC<TreeItemProps> = ({
   })
 
   // Using labelBackgroundOnly with items with itemRole="button" or "link" leads to overly thin backgrounds
-  if (hasLabelBackgroundOnly && restProps.itemRole !== 'none')
+  if (hasLabelBackgroundOnly && itemRole !== 'none')
     // eslint-disable-next-line no-console
     console.warn(
       'TreeItems should use itemRole="none" when a parent Tree has labelBackgroundOnly=true for visualize purposes.'
@@ -121,6 +123,7 @@ const TreeItemLayout: FC<TreeItemProps> = ({
     <HoverDisclosureContext.Provider value={{ visible: hovered }}>
       <Flex
         as="li"
+        className={className}
         onBlur={handleWrapperBlur}
         onFocus={handleWrapperFocus}
         onMouseEnter={handleWrapperMouseEnter}
@@ -135,11 +138,11 @@ const TreeItemLayout: FC<TreeItemProps> = ({
            */
           depth={depth + 1}
           focusVisible={focusVisible}
+          itemRole={itemRole}
           labelBackgroundOnly={hasLabelBackgroundOnly}
           tabIndex={-1}
           {...focusVisibleHandlers}
           {...statefulProps}
-          {...restProps}
         >
           {/**
            * @TODO: Delete labelBackgroundOnly behavior once FieldItem component is completed

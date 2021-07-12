@@ -159,7 +159,6 @@ const TreeLayout = ({
     contentDomProps,
     domProps: { onFocus, ...restDomProps },
     disclosureProps,
-
     isOpen: accordionIsOpen,
   } = useAccordion2({
     'aria-selected': selected,
@@ -217,7 +216,10 @@ const TreeLayout = ({
           labelBackgroundOnly: hasLabelBackgroundOnly,
         }}
       >
-        <div {...restDomProps}>
+        <div
+          {...restDomProps}
+          className={`${restDomProps.className} ${className}`}
+        >
           {!partialRender && (
             <Flex
               as="li"

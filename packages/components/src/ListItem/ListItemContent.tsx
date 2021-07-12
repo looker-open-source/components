@@ -98,10 +98,26 @@ const itemRoleNoneHeight = (density: DensityRamp = 0) => {
 export const ListItemContent = styled(ListItemContentInternal)`
   ${listItemBackgroundColor}
 
-  &:focus {
-    ${({ focusVisible, theme }) =>
-      focusVisible && `box-shadow: inset 0 0 0 2px ${theme.colors.keyFocus};`}
-  }
+  /*
+  IconButtons with hovered / selected backgrounds sit above
+  a non-absolutely positioned box-shadow. Absolute positioning
+  and a z-index gets the box-shadow to sit above ListItem children
+  with background colors.
+ */
+  ${({ focusVisible, theme }) =>
+    focusVisible &&
+    `
+    &::after {
+      bottom: 0;
+      box-shadow: inset 0 0 0 2px ${theme.colors.keyFocus};
+      content: '';
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: 1;
+    }
+  `}
 
   align-items: center;
   border: none;
@@ -122,6 +138,10 @@ export const ListItemContent = styled(ListItemContentInternal)`
   padding-top: ${({ itemRole }) => (itemRole === 'none' ? 0 : undefined)};
   ${({ density, itemRole }) =>
     itemRole === 'none' && itemRoleNoneHeight(density)}
+  /*
+    Supports absolutely positioned box-shadow
+  */
+  position: relative;
 
   text-align: left;
   text-decoration: none;
