@@ -75,6 +75,4 @@ const Detail = styled.div`
   margin-top: -${({ theme }) => theme.space.xsmall};
 `
 
-export const ModalHeader = styled(ModalHeaderLayout)<ModalHeaderProps>`
-  flex-shrink: 0;
-`
+export const ModalHeader = styled(ModalHeaderLayout)<ModalHeaderProps>``

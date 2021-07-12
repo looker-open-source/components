@@ -70,38 +70,7 @@ Basic.parameters = {
   storyshots: { disable: true },
 }
 
-export const PopoverAriaHasPopup = () => (
-  <Popover
-    aria-haspopup="dialog"
-    content={<PopoverContent>Some content</PopoverContent>}
-  >
-    <Button>Open</Button>
-  </Popover>
-)
-
-PopoverAriaHasPopup.parameters = {
-  storyshots: { disable: true },
-}
-
-export const PopoverPopoverLayoutWithCloseButton = () => (
-  <Popover
-    width={640}
-    content={
-      <PopoverLayout header="Header text" footer={false}>
-        <ConstitutionShort fontSize="small" />
-      </PopoverLayout>
-    }
-  >
-    <Button>Open Popover</Button>
-  </Popover>
-)
-PopoverPopoverLayoutWithCloseButton.parameters = {
-  storyshots: {
-    disable: true,
-  },
-}
-
-export const PopoverPopoverLayout = () => (
+export const PopoverWithLayout = () => (
   <Popover
     width={640}
     content={
@@ -113,7 +82,25 @@ export const PopoverPopoverLayout = () => (
     <Button>Open</Button>
   </Popover>
 )
-PopoverPopoverLayout.parameters = {
+PopoverWithLayout.parameters = {
+  storyshots: {
+    disable: true,
+  },
+}
+
+export const PopoverWithLayoutBasic = () => (
+  <Popover
+    width={640}
+    content={
+      <PopoverLayout header="Header text" footer={false}>
+        <ConstitutionShort fontSize="small" />
+      </PopoverLayout>
+    }
+  >
+    <Button>Open Popover</Button>
+  </Popover>
+)
+PopoverWithLayoutBasic.parameters = {
   storyshots: {
     disable: true,
   },
