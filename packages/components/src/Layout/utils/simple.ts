@@ -39,6 +39,10 @@ export interface SimpleLayoutProps
     PositionProps,
     SpaceProps {}
 
+/**
+ * Used as a common styled-system helper simple layout
+ * See also: `commonLayoutCSS` for more complex scenarios.
+ */
 export const simpleLayoutCSS = css`
   ${layout}
   ${space}

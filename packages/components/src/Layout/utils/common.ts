@@ -44,6 +44,10 @@ export type CommonLayoutProps = SimpleLayoutProps &
     color?: any
   }
 
+/**
+ * Used as a common styled-system helper components. Builds on top of `simpleLayoutCSS`
+ * to add border, color and typography properties.
+ */
 export const commonLayoutCSS = css`
   /**
    * Rules here should provide convenience styling for Box derived components.
