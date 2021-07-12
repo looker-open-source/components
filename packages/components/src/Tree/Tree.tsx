@@ -281,6 +281,7 @@ export const TreeItem2Content = styled(
   ${({ labelBackgroundOnly }) => labelBackgroundOnly && 'background: none;'}
   display: flex;
   flex: 1;
+  padding-right: 0;
 `
 
 /**
