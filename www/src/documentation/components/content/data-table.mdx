@@ -15,6 +15,42 @@ The `<DataTable>` component acts as the main wrapper to other `<DataTable>`-rela
 
 For accessibility `caption` must be specified to describe the table's contents.
 
+## Columns
+
+`DataTableColumn`s are defined as an array of objects that confirm the the `DataTableColumn` interface:
+
+### **title** (required)
+
+- `title` for the column
+- `titleIcon` is an `Icon` specified instead of the title text in the header row.
+  - NOTE: `title` will still be used in column selector and will be added as a tooltip to the icon displayed in the header row.
+
+### **id** (required)
+
+A unique identifier for a given column. NOTE: A column object's id should match a key in your data object template, see example below.
+
+### **type**
+
+Defaults to `string`. In some locales, we may change horizontal alignment of 'number'
+
+- `string`
+- `number`
+- `date`
+
+### **size**
+
+Specify a size to have the column consume a fixed width. Defaults to `auto`
+
+For content that is not expected to wrap `auto` is often the best choice as the column will only consume the horizontal room needed to contain its content.
+
+- `auto` columns will use browser-native table column behavior.
+- `small`, `medium`, & `large` are the predefined sizes and will truncate
+- `nowrap` - column will not truncate and content will not wrap. Use with caution.
+- `0-100` (number) - width is a percentage of the table's width.
+  - Columns sized as a percentage do not support truncation.
+  - Mixing percentage columns with other sizing formats is not supported and yields unpredictable behavior.
+  - If percentages of all columns do not total 100% column widths may be somewhat unpredictable as well (browser table column calculations vary widely in these scenarios)
+
 ```jsx
 ;() => {
   const data = [

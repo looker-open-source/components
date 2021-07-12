@@ -10,7 +10,7 @@
   "devDependencies": {
     "@looker/components": "*",
     "@looker/components-theme-editor": "*",
-    "@looker/components-date": "^2.0.0-alpha",
+    "@looker/components-date": "*",
     "@looker/filter-components": "*",
     "@looker/design-tokens": "*",
     "@looker/icons": "*",

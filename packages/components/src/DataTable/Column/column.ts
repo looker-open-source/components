@@ -59,10 +59,10 @@ export interface DataTableColumn {
    * `auto` columns will use browser-native table column behavior.
    * `small`, `medium`, & `large` are the predefined sizes and will truncate
    * `nowrap` - column will not truncate and content will not wrap. Use with caution.
-   * 0-100 (number) - width is a percentage of the table's width.
+   * `0-100` (number) - width is a percentage of the table's width.
    *    Columns sized as a percentage do not support truncation.
    *    Mixing percentage columns with other sizing formats is not supported and yields
-   *    unpredictable behavior. If percentages of all columns to not total 100 column widths
+   *    unpredictable behavior. If percentages of all columns do not total 100% column widths
    *    may be somewhat unpredictable as well (browser table column calculations vary widely
    *    in these scenarios)
    *

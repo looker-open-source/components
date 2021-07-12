@@ -30,7 +30,7 @@ import styled from 'styled-components'
 import { maxTextWidth } from './styles'
 
 const generateHeadingAnchor = (children?: ReactNode) => {
-  return (children as string).toLowerCase().replace(/\s/g, '-')
+  return String(children).toLowerCase().replace(/\s/g, '-')
 }
 
 const StyledHeading = styled(Heading).attrs<HeadingProps>(
