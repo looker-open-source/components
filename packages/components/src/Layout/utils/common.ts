@@ -24,13 +24,19 @@
 
  */
 
-import { color, ColorProps } from '@looker/design-tokens'
+import {
+  color,
+  ColorProps,
+  typography,
+  TypographyProps,
+} from '@looker/design-tokens'
 import { css } from 'styled-components'
 import { borderHelper, SemanticBorderProps } from './semanticBorderHelper'
 import { simpleLayoutCSS, SimpleLayoutProps } from './simple'
 
 export type CommonLayoutProps = SimpleLayoutProps &
   SemanticBorderProps &
+  TypographyProps &
   ColorProps & {
     /**
      * Workaround for Styled Components merge with DOM `color` prop merge issue
@@ -47,6 +53,7 @@ export const commonLayoutCSS = css`
    */
   ${simpleLayoutCSS}
 
-  ${color}
   ${borderHelper}
+  ${color}
+  ${typography}
 `

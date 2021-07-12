@@ -25,21 +25,52 @@
  */
 
 import { css } from 'styled-components'
-import { Colors } from '@looker/design-tokens'
-
-export interface SemanticBorderProps {
-  border?: BorderProp
-  borderBottom?: BorderProp
-  borderLeft?: BorderProp
-  borderRight?: BorderProp
-  borderTop?: BorderProp
-  borderX?: BorderProp
-  borderY?: BorderProp
-}
+import { borderRadius, BorderRadiusProps, Colors } from '@looker/design-tokens'
 
 type BorderProp = boolean | keyof Colors
-
 type BorderPosition = 'bottom' | 'left' | 'right' | 'top' | 'x' | 'y'
+
+export type SemanticBorderProps = BorderRadiusProps & {
+  /**
+   * Border can be specified as a boolean or a key of the theme colors object.
+   * 1px border is applied to all four sides.
+   *
+   * `true` - will use theme's `ui2` color
+   * `false` - will not apply any border
+   * `keyof Colors` - will use the color of the key
+   */
+  border?: BorderProp
+  /**
+   * A 1px border is applied to the bottom.
+   * See `border` property for specifics values that can be specified..
+   */
+  borderBottom?: BorderProp
+  /**
+   * A 1px border is applied to the left.
+   * See `border` property for specifics values that can be specified..
+   */
+  borderLeft?: BorderProp
+  /**
+   * A 1px border is applied to the right.
+   * See `border` property for specifics values that can be specified..
+   */
+  borderRight?: BorderProp
+  /**
+   * A 1px border is applied to the top.
+   * See `border` property for specifics values that can be specified..
+   */
+  borderTop?: BorderProp
+  /**
+   * A 1px border is applied to the left & right.
+   * See `border` property for specifics values that can be specified..
+   */
+  borderX?: BorderProp
+  /**
+   * A 1px border is applied to the top & bottom.
+   * See `border` property for specifics values that can be specified..
+   */
+  borderY?: BorderProp
+}
 
 const borderPropertyHelper = (color: keyof Colors, property: string) =>
   css`
@@ -90,4 +121,5 @@ export const borderHelper = ({
   ${borderTop && borderPositionHelper(borderTop, 'top')}
   ${borderX && borderPositionHelper(borderX, 'x')}
   ${borderY && borderPositionHelper(borderY, 'y')}
+  ${borderRadius}
 `

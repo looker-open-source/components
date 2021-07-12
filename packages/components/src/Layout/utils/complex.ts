@@ -38,6 +38,9 @@ import {
 import { css } from 'styled-components'
 import { simpleLayoutCSS, SimpleLayoutProps } from './simple'
 
+/**
+ * @deprecated - use `CommonLayoutProps` instead.
+ */
 export type ComplexLayoutProps = SimpleLayoutProps &
   BorderProps &
   BoxShadowProps &
@@ -49,6 +52,15 @@ export type ComplexLayoutProps = SimpleLayoutProps &
     color?: any
   }
 
+/**
+ * Used as a common styled-system helper for `Box`& `Flex` & `FlexItem`
+ *
+ * Newer components leverage `commonLayoutCSS` which introduces an improved set of
+ * properties for managing borders as well as excluding support for boxShadow.
+ *
+ * @TODO - Remove in 3.x series
+ * @deprecated - use `commonLayoutCSS` instead.
+ */
 export const complexLayoutCSS = css`
   /**
    * Rules here should provide convenience styling for Box derived components.
