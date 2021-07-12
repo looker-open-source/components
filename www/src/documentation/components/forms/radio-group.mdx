@@ -32,13 +32,8 @@ Groups of radio can be displayed with `RadioGroup`. `Disabled` can be used on ea
 
   return (
     <Grid m="xxlarge">
-      <RadioGroup defaultValue={['cheddar']} name="group1" options={options} />
-      <RadioGroup
-        defaultValue={['cheddar']}
-        inline
-        name="group1"
-        options={options}
-      />
+      <RadioGroup defaultValue={'cheddar'} name="group1" options={options} />
+      <RadioGroup inline name="group1" options={options} />
       <RadioGroup name="group1" options={optionsDisabled} />
       <RadioGroup inline name="group1" options={optionsDisabled} />
       <RadioGroup disabled name="group1" options={options} />
