@@ -38,7 +38,11 @@ const TreeBranchLayout: FC<TreeBranchProps> = ({ children, className }) => {
   return (
     <TreeBranchIndentSpacer
       className={className}
-      depth={depth}
+      /**
+       * Child items should be +1 depth more than their parents so that their label
+       * aligns with the label of the parent as opposed to the indicator
+       */
+      depth={depth + 1}
       density={density}
     >
       {children}
