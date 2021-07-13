@@ -51,6 +51,7 @@ type AssumeIconAlignment = {
    * 1) The `Tree`'s label will align itself with a parent `Tree`'s label (Note: the parent should have an icon and the child should not)
    * 2) The `Tree`'s child items will align their labels with the `Tree`'s label
    * @default false
+   * @deprecated Use NavTree instead
    */
   assumeIconAlignment?: boolean
   forceLabelPadding?: never
@@ -63,7 +64,7 @@ type ForceLabelPadding = {
    * 2) The `Tree`'s child items will align their labels with the `Tree`'s label
    * @default false
    * @todo - Remove in 3.x release
-   * @deprecated Use `assumeIconAlignment` prop instead
+   * @deprecated Use NavTree instead
    */
   forceLabelPadding?: boolean
   assumeIconAlignment?: never
