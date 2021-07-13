@@ -45,18 +45,24 @@ export const treeItemInnerPropKeys = [
   ...linkPropKeys,
 ] as const
 
+/**
+ * @deprecated
+ */
 type AssumeIconAlignment = {
   /**
    * If true, alignment will change in two ways:
    * 1) The `Tree`'s label will align itself with a parent `Tree`'s label (Note: the parent should have an icon and the child should not)
    * 2) The `Tree`'s child items will align their labels with the `Tree`'s label
    * @default false
-   * @deprecated Use NavTree instead
+   * @deprecated Use NavTree and NavTreeItem instead
    */
   assumeIconAlignment?: boolean
   forceLabelPadding?: never
 }
 
+/**
+ * @deprecated
+ */
 type ForceLabelPadding = {
   /**
    * If true, alignment will change in two ways:
@@ -64,7 +70,7 @@ type ForceLabelPadding = {
    * 2) The `Tree`'s child items will align their labels with the `Tree`'s label
    * @default false
    * @todo - Remove in 3.x release
-   * @deprecated Use NavTree instead
+   * @deprecated Use NavTree and NavTreeItem instead
    */
   forceLabelPadding?: boolean
   assumeIconAlignment?: never

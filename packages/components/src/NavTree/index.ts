@@ -24,32 +24,5 @@
 
  */
 
-import { DensityProp, DensityRamp, Theme } from '@looker/design-tokens'
-import { css } from 'styled-components'
-import { accordionDimensions } from '../../Accordion2/accordionDimensions'
-
-export type GenerateIndentProps = DensityProp & {
-  depth?: number
-}
-
-export const generateIndentCalculation = (
-  depth: number,
-  density: DensityRamp,
-  theme: Theme
-) => {
-  const { space, sizes } = theme
-  const { indicatorGap, indicatorSize } = accordionDimensions(density)
-
-  return `calc((${sizes[indicatorSize]} + ${space[indicatorGap]}) * ${depth})`
-}
-
-/**
- * Generates an indent for a TreeItem
- */
-export const generateIndent = ({
-  depth = 0,
-  density = 0,
-}: GenerateIndentProps) => css`
-  padding-left: ${({ theme }) =>
-    generateIndentCalculation(depth, density, theme)};
-`
+export * from './NavTree'
+export * from './NavTreeItem'

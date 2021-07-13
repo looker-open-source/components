@@ -24,32 +24,32 @@
 
  */
 
-import { DensityProp, DensityRamp, Theme } from '@looker/design-tokens'
-import { css } from 'styled-components'
-import { accordionDimensions } from '../../Accordion2/accordionDimensions'
+import React from 'react'
+import { Folder } from '@styled-icons/material/Folder'
+import { TreeCollection } from '../Tree'
+import { NavTree } from './NavTree'
+import { NavTreeItem } from './NavTreeItem'
 
-export type GenerateIndentProps = DensityProp & {
-  depth?: number
+export default {
+  component: NavTree,
+  title: 'NavTree',
 }
 
-export const generateIndentCalculation = (
-  depth: number,
-  density: DensityRamp,
-  theme: Theme
-) => {
-  const { space, sizes } = theme
-  const { indicatorGap, indicatorSize } = accordionDimensions(density)
-
-  return `calc((${sizes[indicatorSize]} + ${space[indicatorGap]}) * ${depth})`
+export const ParentIcon = () => {
+  return (
+    <TreeCollection>
+      <NavTree defaultOpen label="Parent Tree with Icon" icon={<Folder />}>
+        <NavTreeItem parentIcon>Cheddar</NavTreeItem>
+        <NavTreeItem parentIcon>Cheddar 2</NavTreeItem>
+        <NavTreeItem parentIcon>Cheddar 3</NavTreeItem>
+      </NavTree>
+      <NavTree defaultOpen label="Grandparent Tree with Icon" icon={<Folder />}>
+        <NavTree defaultOpen label="Parent Tree with No Icon">
+          <NavTreeItem>Swiss</NavTreeItem>
+          <NavTreeItem>Swiss 2</NavTreeItem>
+          <NavTreeItem>Swiss 3</NavTreeItem>
+        </NavTree>
+      </NavTree>
+    </TreeCollection>
+  )
 }
-
-/**
- * Generates an indent for a TreeItem
- */
-export const generateIndent = ({
-  depth = 0,
-  density = 0,
-}: GenerateIndentProps) => css`
-  padding-left: ${({ theme }) =>
-    generateIndentCalculation(depth, density, theme)};
-`

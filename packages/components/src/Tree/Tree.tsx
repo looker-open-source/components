@@ -79,12 +79,23 @@ const TreeLayout = ({
   toggleOpen: propsToggleOpen,
   ...restProps
 }: TreeProps) => {
-  const treeItemInnerProps = treeItemInnerPropKeys.reduce((obj, key) => {
-    if (restProps && Object.prototype.hasOwnProperty.call(restProps, key)) {
-      obj[key] = restProps[key]
+  const treeItemInnerProps = {}
+  const accordionInnerProps = {}
+  Object.entries(restProps).forEach((prop) => {
+    const [propKey, propValue] = prop
+    /**
+     * treeItemInnerPropKeys const assertion doesn't like checking against a string type;
+     * using "as ReadonlyArray<string>" to make the types happy
+     */
+    if (
+      restProps &&
+      (treeItemInnerPropKeys as ReadonlyArray<string>).includes(propKey)
+    ) {
+      treeItemInnerProps[propKey] = propValue
+    } else {
+      accordionInnerProps[propKey] = propValue
     }
-    return obj
-  }, {} as Partial<ListItemProps>)
+  })
 
   const {
     color: propsColor,
@@ -95,7 +106,7 @@ const TreeLayout = ({
     rel,
     selected,
     target,
-  } = treeItemInnerProps
+  } = treeItemInnerProps as Partial<ListItemProps>
   const [ariaProps] = partitionAriaProps(restProps)
 
   const [hovered, setHovered] = useState(false)
@@ -149,6 +160,7 @@ const TreeLayout = ({
     defaultOpen,
     onClose,
     onOpen,
+    ...accordionInnerProps,
   }
   if (isOpen && toggleOpen) {
     accordionProps = { ...accordionProps, isOpen, toggleOpen }
@@ -175,7 +187,6 @@ const TreeLayout = ({
     onFocus: useWrapEvent(() => setHovered(true), propsOnFocus),
     role: 'treeitem',
     tabIndex: -1,
-    ...restProps,
     ...accordionProps,
   })
 

@@ -24,32 +24,27 @@
 
  */
 
-import { DensityProp, DensityRamp, Theme } from '@looker/design-tokens'
-import { css } from 'styled-components'
-import { accordionDimensions } from '../../Accordion2/accordionDimensions'
+import React from 'react'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { fireEvent, screen } from '@testing-library/react'
+import { ParentIcon } from './NavTree.story'
 
-export type GenerateIndentProps = DensityProp & {
-  depth?: number
-}
+describe('NavTree', () => {
+  test('Renders string disclosure label and detail', () => {
+    renderWithTheme(<ParentIcon />)
 
-export const generateIndentCalculation = (
-  depth: number,
-  density: DensityRamp,
-  theme: Theme
-) => {
-  const { space, sizes } = theme
-  const { indicatorGap, indicatorSize } = accordionDimensions(density)
+    screen.getByText('Parent Tree with Icon')
+    screen.getByText('Cheddar')
+  })
 
-  return `calc((${sizes[indicatorSize]} + ${space[indicatorGap]}) * ${depth})`
-}
+  test('Renders and hides children on disclosure click', () => {
+    renderWithTheme(<ParentIcon />)
 
-/**
- * Generates an indent for a TreeItem
- */
-export const generateIndent = ({
-  depth = 0,
-  density = 0,
-}: GenerateIndentProps) => css`
-  padding-left: ${({ theme }) =>
-    generateIndentCalculation(depth, density, theme)};
-`
+    const treeLabel = screen.getByText('Parent Tree with Icon')
+    screen.getByText('Cheddar')
+    fireEvent.click(treeLabel)
+    expect(screen.queryByText('Cheddar')).not.toBeInTheDocument()
+    fireEvent.click(treeLabel)
+    screen.getByText('Cheddar')
+  })
+})
