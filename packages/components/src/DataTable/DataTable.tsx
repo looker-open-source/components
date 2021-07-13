@@ -26,12 +26,12 @@
 
 import styled from 'styled-components'
 import React, { FC, useState } from 'react'
-import { MixedBoolean } from '../Form'
 import { BulkActions } from './BulkActions'
 import { DataTableContext } from './DataTableContext'
 import { DataTableFilters } from './Filters/DataTableFilters'
 import { Table } from './Table'
 import { DataTableProps } from './types'
+import { allItemsSelected } from './utils/allItemsSelected'
 
 export const DataTableLayout: FC<DataTableProps> = (props) => {
   const {
@@ -80,16 +80,8 @@ export const DataTableLayout: FC<DataTableProps> = (props) => {
       ? explicitFirstColumnStuck
       : Boolean(select)
 
-  const allSelected: MixedBoolean =
-    select && select.pageItems.every((id) => select.selectedItems.includes(id))
-      ? true
-      : select &&
-        select.pageItems.some((id) => select.selectedItems.includes(id))
-      ? 'mixed'
-      : false
-
   const context = {
-    allSelected,
+    allSelected: allItemsSelected(select),
     columns,
     columnsDisplayState,
     onSort,
