@@ -352,5 +352,32 @@ describe('<Menu />', () => {
       expect(onClick).toHaveBeenCalledTimes(1)
       expect(screen.queryByRole('menu')).not.toBeInTheDocument()
     })
+
+    test('clicking an item in the nested menu closes the parent menu', () => {
+      const onClick = jest.fn()
+      renderWithTheme(
+        <Menu
+          content={
+            <MenuItem
+              nestedMenu={<MenuItem onClick={onClick}>Camembert</MenuItem>}
+            >
+              French
+            </MenuItem>
+          }
+        >
+          <Button>Cheese</Button>
+        </Menu>
+      )
+
+      // Open menu and nested menu
+      userEvent.click(screen.getByText('Cheese'))
+      fireEvent.keyDown(screen.getByText('French'), { key: 'ArrowRight' })
+
+      // Click an item in the nested menu
+      userEvent.click(screen.getByText('Camembert'))
+
+      expect(onClick).toHaveBeenCalledTimes(1)
+      expect(screen.queryByRole('menu')).not.toBeInTheDocument()
+    })
   })
 })

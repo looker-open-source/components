@@ -25,7 +25,7 @@
  */
 
 import styled from 'styled-components'
-import React, { forwardRef, Ref, useContext } from 'react'
+import React, { forwardRef, MouseEvent, Ref, useContext } from 'react'
 import { shouldForwardProp, size } from '@looker/design-tokens'
 import { ArrowRight } from '@styled-icons/material/ArrowRight'
 import { DialogContext } from '../Dialog'
@@ -36,6 +36,7 @@ import {
   listItemDimensions,
 } from '../ListItem'
 import { useForkedRef, useID } from '../utils'
+import { NestedMenuContext } from './NestedMenuProvider'
 import { useNestedMenu, UseNestedMenuProps } from './useNestedMenu'
 
 export interface MenuItemProps
@@ -86,13 +87,15 @@ const MenuItemInternal = forwardRef(
     detail = nestedMenu ? <NestedMenuIndicator size={iconSize} /> : detail
 
     const { closeModal } = useContext(DialogContext)
+    const { closeParentMenu } = useContext(NestedMenuContext)
 
-    const handleOnClick = (event: React.MouseEvent<HTMLLIElement>) => {
+    const handleOnClick = (event: MouseEvent<HTMLLIElement>) => {
       // nestedMenuOnClick wraps onClick from props
       nestedMenuOnClick(event)
       // Close the Menu unless event has preventDefault
-      if (closeModal && !event.defaultPrevented) {
-        closeModal()
+      if (!event.defaultPrevented) {
+        closeModal?.()
+        closeParentMenu?.()
       }
     }
 

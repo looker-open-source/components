@@ -27,7 +27,14 @@
 import React, { FC, createContext } from 'react'
 import { useDelayedState, UseDelayedStateReturn } from '../utils'
 
-const nestedMenuContext: UseDelayedStateReturn<string> = {
+export type CloseParentMenuProps = {
+  closeParentMenu?: () => void
+}
+
+export type NestedMenuContextProps = UseDelayedStateReturn<string> &
+  CloseParentMenuProps
+
+const nestedMenuContext: NestedMenuContextProps = {
   change: () => undefined,
   delayChange: () => undefined,
   value: '',
@@ -38,10 +45,15 @@ export const NestedMenuContext = createContext(nestedMenuContext)
 
 // Stores the id for the current nestedMenu to prevent them
 // from competing with each other (e.g. from hover vs arrow key)
-export const NestedMenuProvider: FC = ({ children }) => {
-  const nestedMenuProps = useDelayedState<string>('')
+export const NestedMenuProvider: FC<CloseParentMenuProps> = ({
+  children,
+  closeParentMenu,
+}) => {
+  const delayedStateProps = useDelayedState<string>('')
   return (
-    <NestedMenuContext.Provider value={nestedMenuProps}>
+    <NestedMenuContext.Provider
+      value={{ ...delayedStateProps, closeParentMenu }}
+    >
       {children}
     </NestedMenuContext.Provider>
   )
