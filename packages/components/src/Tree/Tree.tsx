@@ -60,7 +60,6 @@ import { treeItemInnerPropKeys, TreeProps } from './types'
  */
 const TreeLayout = ({
   assumeIconAlignment,
-  branchFontWeight,
   border: propsBorder,
   children,
   className,

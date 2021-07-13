@@ -81,6 +81,7 @@ export type TreeProps = ControlledLoosely &
     /**
      * If true, the internal AccordionDisclosure will have fontWeight = 'Normal'
      * @default false
+     * @deprecated Tree `label` prop text will be normal font weight by default. Use a <strong> tag in the `label` prop to bold text for better accessibility.
      */
     branchFontWeight?: boolean
     /**
