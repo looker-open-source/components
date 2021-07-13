@@ -78,7 +78,6 @@ export const MixedNavigation = () => (
       <ListItem icon={<Home />} selected>
         Home
       </ListItem>
-      <ListItem icon={<Home />}>Not really home</ListItem>
       <Tree icon={<Info />} label="Tree" selected defaultOpen>
         <TreeItem icon={<Info />}>Meh</TreeItem>
         <TreeItem
@@ -101,6 +100,21 @@ export const MixedNavigation = () => (
           </TreeItem>
           <TreeItem icon={<ProgressCircular size="xsmall" progress={0.75} />}>
             Loading...
+          </TreeItem>
+        </Tree>
+      </Tree>
+      <Tree
+        icon={<Info />}
+        truncate
+        label="Tree w icon-free TreeItems and long title"
+        defaultOpen
+      >
+        <Tree label="Folders" defaultOpen assumeIconAlignment>
+          <TreeItem truncate>
+            Truncate example with long text running off screen
+          </TreeItem>
+          <TreeItem truncate description="description" detail="detail">
+            Truncate example with long text running off screen
           </TreeItem>
         </Tree>
       </Tree>

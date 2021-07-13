@@ -31,7 +31,12 @@ import { Tree, TreeCollection, TreeItem } from '..'
 export const AssumeIconAlignment = () => (
   <TreeCollection>
     <Tree icon={<Folder />} label="Folders" defaultOpen>
-      <Tree label="With Icon" defaultOpen assumeIconAlignment>
+      <Tree icon={<Folder />} label="With Icon" defaultOpen assumeIconAlignment>
+        <TreeItem>Performance</TreeItem>
+        <TreeItem>Sales</TreeItem>
+        <TreeItem>Metrics</TreeItem>
+      </Tree>
+      <Tree label="Without Icon" defaultOpen assumeIconAlignment>
         <TreeItem>Performance</TreeItem>
         <TreeItem>Sales</TreeItem>
         <TreeItem>Metrics</TreeItem>
