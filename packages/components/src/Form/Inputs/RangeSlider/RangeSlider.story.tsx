@@ -24,9 +24,12 @@
 
  */
 
-import React, { useState } from 'react'
+import React from 'react'
 import { Button } from '../../../Button'
+import { Space, SpaceVertical } from '../../../Layout'
+import { OrderedList } from '../../../OrderedList'
 import { Paragraph } from '../../../Text'
+import { useToggle } from '../../../utils'
 import { RangeSlider } from './RangeSlider'
 
 export default {
@@ -40,24 +43,28 @@ const getRange = (value?: number[]) => [
 ]
 
 const NumberFilter = ({
-  AST: { value },
+  AST,
   onChange,
 }: {
   AST: { value?: number[] }
   onChange: (value: number[]) => void
 }) => {
-  const [minMax, setMinMax] = useState([0, 100])
-  const rangeValue = getRange(value)
+  const { value, toggle } = useToggle()
+  const rangeValue = getRange(AST.value)
   return (
     <>
       <RangeSlider
-        min={minMax[0]}
-        max={minMax[1]}
+        min={0}
+        max={value ? 5 : 100}
         value={rangeValue}
         onChange={onChange}
-        width={200}
       />
-      <Button onClick={() => setMinMax([0, 5])}>Min/max to 0 - 5</Button>
+      <Space>
+        <Button onClick={toggle}>
+          Change min/max to 0 - {value ? '100' : '5'}
+        </Button>
+        <Paragraph>Current Value: {rangeValue.join(',')}</Paragraph>
+      </Space>
     </>
   )
 }
@@ -83,7 +90,7 @@ const Filter = ({
     }
   }, [expression])
   const handleChange = (newValue: number[]) => {
-    onChange(newValue.join(','))
+    onChange(newValue.join(', '))
   }
   return <NumberFilter AST={AST} onChange={handleChange} />
 }
@@ -94,15 +101,16 @@ export const RerenderRepro = () => {
     setExpression(newValue)
   }
   return (
-    <>
-      <Paragraph>
-        When updating the min/max, the value should move to stay within bounds.
-      </Paragraph>
-      <Paragraph>
-        When changing the value, it should not immediately reset.
-      </Paragraph>
+    <SpaceVertical p="medium" align="stretch">
+      <OrderedList type="number">
+        <li>
+          When updating the min/max, the value should move to stay within
+          bounds.
+        </li>
+        <li>When changing the value, it should not immediately reset.</li>
+      </OrderedList>
       <Filter expression={expression} onChange={handleChange} />
-    </>
+    </SpaceVertical>
   )
 }
 

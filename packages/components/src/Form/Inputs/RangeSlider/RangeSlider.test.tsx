@@ -43,7 +43,6 @@ type VoidFN = () => void
 beforeEach(() => {
   global.console = {
     ...globalConsole,
-    error: jest.fn(),
     warn: jest.fn(),
   }
   global.requestAnimationFrame = jest
@@ -76,7 +75,11 @@ afterEach(() => {
 test('it selects the entire range by default', () => {
   const handleChange = jest.fn()
   renderWithTheme(<RangeSlider onChange={handleChange} min={5} max={100} />)
-  expect(handleChange).toHaveBeenCalledWith([5, 100])
+
+  const minThumb = screen.getByLabelText('Minimum Value')
+  const maxThumb = screen.getByLabelText('Maximum Value')
+  expect(minThumb).toHaveAttribute('aria-valuenow', '5')
+  expect(maxThumb).toHaveAttribute('aria-valuenow', '100')
 })
 
 test('warns the developer if value prop falls outside of possible min/max range', () => {
@@ -84,12 +87,7 @@ test('warns the developer if value prop falls outside of possible min/max range'
   expect(console.warn).not.toHaveBeenCalled()
   const handleChange = jest.fn()
   const { rerender } = renderWithTheme(
-    <RangeSlider
-      defaultValue={[0, 1000]}
-      min={10}
-      max={20}
-      onChange={handleChange}
-    />
+    <RangeSlider value={[0, 1000]} min={10} max={20} onChange={handleChange} />
   )
   // eslint-disable-next-line no-console
   expect(console.warn).toHaveBeenCalled()
@@ -136,7 +134,8 @@ test('increments point by STEP value during keyboard navigation', () => {
 
   const minThumb = screen.getByLabelText('Minimum Value')
   const maxThumb = screen.getByLabelText('Maximum Value')
-  expect(handleChange).toHaveBeenCalledWith([0, 100])
+  expect(minThumb).toHaveAttribute('aria-valuenow', '0')
+  expect(maxThumb).toHaveAttribute('aria-valuenow', '100')
 
   minThumb.focus()
   fireEvent.keyDown(document.activeElement as Element, { key: 'ArrowUp' })
@@ -164,14 +163,10 @@ describe('readOnly prop', () => {
     const handleChange = jest.fn()
     renderWithTheme(<RangeSlider onChange={handleChange} readOnly />)
 
-    expect(handleChange).toHaveBeenCalledWith([0, 10]) // initial render
-
     const wrapper = screen.getByTestId('range-slider-wrapper')
     fireEvent.mouseDown(wrapper)
     fireEvent.mouseMove(wrapper, { clientX: 100, clientY: 10 })
-
-    expect(handleChange).toHaveBeenLastCalledWith([0, 10]) // unchanged
-    expect(handleChange).toHaveBeenCalledTimes(1)
+    expect(handleChange).not.toHaveBeenCalled()
   })
 
   test('readOnly component does not respond to KEYBOARD input', () => {
@@ -181,12 +176,10 @@ describe('readOnly prop', () => {
     )
 
     const minThumb = screen.getByLabelText('Minimum Value')
-    expect(handleChange).toHaveBeenCalledWith([0, 10]) // initial render
 
     minThumb.focus()
     fireEvent.keyDown(document.activeElement as Element, { key: 'ArrowUp' })
-    expect(handleChange).toHaveBeenLastCalledWith([0, 10]) // unchanged
-    expect(handleChange).toHaveBeenCalledTimes(1)
+    expect(handleChange).not.toHaveBeenCalled()
   })
 })
 
@@ -195,14 +188,10 @@ describe('disabled prop', () => {
     const handleChange = jest.fn()
     renderWithTheme(<RangeSlider onChange={handleChange} disabled />)
 
-    expect(handleChange).toHaveBeenCalledWith([0, 10]) // initial render
-
     const wrapper = screen.getByTestId('range-slider-wrapper')
     fireEvent.mouseDown(wrapper)
     fireEvent.mouseMove(wrapper, { clientX: 100, clientY: 10 })
-
-    expect(handleChange).toHaveBeenLastCalledWith([0, 10]) // unchanged
-    expect(handleChange).toHaveBeenCalledTimes(1)
+    expect(handleChange).not.toHaveBeenCalled()
   })
 
   test('disabled component does not respond to KEYBOARD input', () => {
@@ -212,30 +201,24 @@ describe('disabled prop', () => {
     )
 
     const minThumb = screen.getByLabelText('Minimum Value')
-    expect(handleChange).toHaveBeenCalledWith([0, 10]) // initial render
 
     minThumb.focus()
     fireEvent.keyDown(document.activeElement as Element, { key: 'ArrowUp' })
-    expect(handleChange).toHaveBeenLastCalledWith([0, 10]) // unchanged
-    expect(handleChange).toHaveBeenCalledTimes(1)
+    expect(handleChange).not.toHaveBeenCalled()
   })
 
   test('disabled component does not respond to TOUCH input', () => {
     const handleChange = jest.fn()
     renderWithTheme(<RangeSlider onChange={handleChange} disabled />)
 
-    expect(handleChange).toHaveBeenCalledWith([0, 10]) // initial render
-
     const wrapper = screen.getByTestId('range-slider-wrapper')
     fireEvent.touchStart(wrapper)
     fireEvent.touchMove(wrapper, { touches: [{ clientX: 100, clientY: 10 }] })
-
-    expect(handleChange).toHaveBeenLastCalledWith([0, 10]) // unchanged
-    expect(handleChange).toHaveBeenCalledTimes(1)
+    expect(handleChange).not.toHaveBeenCalled()
   })
 
   // TODO un-skip this test after fixing useEffect re-render issue (properly)
-  xtest('intermediate re-render does not cause value to revert', () => {
+  test('intermediate re-render does not cause value to revert', () => {
     renderWithTheme(<RerenderRepro />)
 
     const minThumb = screen.getByLabelText('Minimum Value')

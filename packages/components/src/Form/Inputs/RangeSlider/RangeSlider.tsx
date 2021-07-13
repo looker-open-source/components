@@ -30,8 +30,10 @@ import React, {
   Ref,
   useState,
   KeyboardEvent,
-  useRef,
+  useCallback,
   useEffect,
+  useMemo,
+  useRef,
 } from 'react'
 import {
   SpaceProps,
@@ -176,7 +178,7 @@ export const InternalRangeSlider = forwardRef(
       min = 0,
       max = 10,
       step = 1,
-      value: valueProp,
+      value: valueFromProps,
       defaultValue: defaultValueProp,
       onChange,
       disabled = false,
@@ -187,6 +189,18 @@ export const InternalRangeSlider = forwardRef(
     ref: Ref<HTMLDivElement>
   ) => {
     const { t } = useTranslation('RangeSlider')
+
+    // Create a more stable value prop
+    // (an array may be "new" even if the numbers haven't changed)
+    const valuePropMin = valueFromProps?.[0]
+    const valuePropMax = valueFromProps?.[1]
+    const valueProp = useMemo(() => {
+      if (valuePropMin === undefined || valuePropMax === undefined) {
+        return undefined
+      }
+      return [valuePropMin, valuePropMax]
+    }, [valuePropMin, valuePropMax])
+
     /*
      * Validate props and render any necessary warnings
      * ------------------------------------------------------
@@ -197,14 +211,29 @@ export const InternalRangeSlider = forwardRef(
       onChange
     )
     const readOnly = readOnlyProp || unintentionalReadOnly
-    // make sure value array doesn't extend past min/max bounds
-    const boundedValue = boundValueProp(min, max, valueProp || defaultValueProp)
 
     /*
      * Internal component state and refs
      * ------------------------------------------------------
      */
-    const [value, setValue] = useState(sort(boundedValue))
+    const [valueState, setValue] = useState(() => {
+      // make sure value array doesn't extend past min/max bounds
+      const boundedValue = boundValueProp(
+        min,
+        max,
+        valueProp || defaultValueProp
+      )
+      return sort(boundedValue)
+    })
+
+    // Create a more stable value state
+    // (an array may be "new" even if the numbers haven't changed)
+    const valueMin = valueState[0]
+    const valueMax = valueState[1]
+    const value = useMemo(() => {
+      return [valueMin, valueMax]
+    }, [valueMin, valueMax])
+
     const [containerRef, setContainerRef] = useState<HTMLElement | null>(null)
     const [focusedThumb, setFocusedThumb] = useState<ThumbIndices>()
 
@@ -222,8 +251,6 @@ export const InternalRangeSlider = forwardRef(
     const maxPos = ((maxValue - min) / (max - min)) * containerRect.width
     const fillWidth = maxPos - minPos
 
-    const thumbRefs = [minThumbRef, maxThumbRef]
-
     /*
      * Behavioral callbacks
      * ------------------------------------------------------
@@ -231,13 +258,17 @@ export const InternalRangeSlider = forwardRef(
 
     const roundSliderValue = partial(roundToStep, min, max, step)
 
-    const focusChangedPoint = (newValue: number[], newPoint: number) => {
-      // focus/highlight the thumb that moved on click
-      const indexToFocus = indexOf(newValue, newPoint) as 0 | 1
-      const refToFocus = thumbRefs[indexToFocus]
-      setFocusedThumb(indexToFocus)
-      refToFocus.current && refToFocus.current.focus()
-    }
+    const focusChangedPoint = useCallback(
+      (newValue: number[], newPoint: number) => {
+        // focus/highlight the thumb that moved on click
+        const indexToFocus = indexOf(newValue, newPoint) as 0 | 1
+        const thumbRefs = [minThumbRef, maxThumbRef]
+        const refToFocus = thumbRefs[indexToFocus]
+        setFocusedThumb(indexToFocus)
+        refToFocus.current && refToFocus.current.focus()
+      },
+      []
+    )
 
     const incrementPoint = (point: number, stepMultiplier = 1) =>
       point + step * stepMultiplier
@@ -260,6 +291,7 @@ export const InternalRangeSlider = forwardRef(
           const newValue = sort([newPoint, value[unfocusedThumb]])
           focusChangedPoint(newValue, newPoint)
           setValue(newValue)
+          onChange?.(newValue)
         }
       }
     }
@@ -280,28 +312,52 @@ export const InternalRangeSlider = forwardRef(
       setFocusedThumb(undefined)
     }
 
-    const handleMouseEvent = (maintainFocus: boolean) => {
-      if (!disabled && !readOnly) {
-        const newPoint = calculatePointValue(
-          mousePos.x,
-          containerRect,
-          min,
-          max,
-          step
-        )
-        const newValue = createNewValue(
-          value,
-          newPoint,
-          maintainFocus ? focusedThumb : undefined
-        )
+    const handleMouseEvent = useCallback(
+      (maintainFocus: boolean) => {
+        if (!disabled && !readOnly && mousePos.x) {
+          const newPoint = calculatePointValue(
+            mousePos.x,
+            containerRect,
+            min,
+            max,
+            step
+          )
+          const newValue = createNewValue(
+            value,
+            newPoint,
+            maintainFocus ? focusedThumb : undefined
+          )
 
-        focusChangedPoint(newValue, newPoint)
-        setValue(newValue)
-      }
-    }
+          focusChangedPoint(newValue, newPoint)
+          if (!isEqual(value, newValue)) {
+            setValue(newValue)
+            onChange?.(newValue)
+          }
+        }
+      },
+      [
+        containerRect,
+        disabled,
+        focusChangedPoint,
+        focusedThumb,
+        max,
+        min,
+        mousePos.x,
+        onChange,
+        readOnly,
+        step,
+        value,
+      ]
+    )
 
-    const handleMouseDown = partial(handleMouseEvent, false)
-    const handleMouseDrag = partial(handleMouseEvent, true)
+    const handleMouseDown = useMemo(
+      () => partial(handleMouseEvent, false),
+      [handleMouseEvent]
+    )
+    const handleMouseDrag = useMemo(
+      () => partial(handleMouseEvent, true),
+      [handleMouseEvent]
+    )
 
     /*
      * Mouse down event (and re-measure the client rectangle values before calculating value).
@@ -312,53 +368,47 @@ export const InternalRangeSlider = forwardRef(
       if (isMouseDown) {
         refreshDomRect() // re-measure rectangle when isMouseDown changes from false to true
       }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isMouseDown])
+    }, [isMouseDown, refreshDomRect])
 
     useEffect(() => {
       if (isMouseDown) {
         handleMouseDown() // fire mouseDown event after containerRect measurements are refreshed
       }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [containerRect])
+    }, [isMouseDown, handleMouseDown, containerRect])
 
     /*
      * Only fire mouse drag event when mouse moves AFTER initial click
      */
-    useEffect(
-      () => {
-        if (isMouseDown && previousIsMouseDown) {
-          handleMouseDrag()
-        }
-      },
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      [mousePos]
-    )
+    useEffect(() => {
+      if (isMouseDown && previousIsMouseDown) {
+        handleMouseDrag()
+      }
+    }, [isMouseDown, previousIsMouseDown, handleMouseDrag, mousePos])
 
     /*
      * Controlled Component: update value state when external value prop changes
      */
+    const previousValueProp = usePreviousValue(valueProp)
     useEffect(() => {
-      const boundedValue = boundValueProp(min, max, valueProp)
-      if (!isEqual(value, boundedValue)) {
-        setValue(sort(boundedValue))
+      const boundedValueProp = boundValueProp(min, max, valueProp)
+      if (
+        valueProp &&
+        !isEqual(value, boundedValueProp) &&
+        !isEqual(valueProp, previousValueProp)
+      ) {
+        setValue(sort(boundedValueProp))
       }
-      // Compares of the min & max values (or fallbacks) themselves to avoid
-      // unintentionally reverting state value due to shallow diffing
-      // a newly instantiated but stale valueProp, if [valueProp] were used
-      // (see RerenderRepro story)
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [valueProp])
+    }, [valueProp, previousValueProp, value, min, max])
 
     /*
-     * Fire onChange callback when internal value changes
+     * Call onChange if min/max update and valueProp is not within them
      */
     useEffect(() => {
-      if (!isEqual(value, valueProp)) {
-        onChange && onChange(value)
+      const boundedValueProp = boundValueProp(min, max, valueProp)
+      if (valueProp && !isEqual(valueProp, boundedValueProp)) {
+        onChange?.(sort(boundedValueProp))
       }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [value])
+    }, [valueProp, onChange, min, max])
 
     /*
      * Render markup!
