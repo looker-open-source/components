@@ -26,7 +26,7 @@
 
 import styled from 'styled-components'
 import React, { forwardRef, Ref, useContext } from 'react'
-import { size } from '@looker/design-tokens'
+import { shouldForwardProp, size } from '@looker/design-tokens'
 import { ArrowRight } from '@styled-icons/material/ArrowRight'
 import { DialogContext } from '../Dialog'
 import {
@@ -120,7 +120,9 @@ MenuItemInternal.displayName = 'MenuItemInternal'
 
 export const MenuItem = styled(MenuItemInternal)``
 
-const NestedMenuIndicator = styled(ArrowRight)`
+const NestedMenuIndicator = styled(ArrowRight).withConfig({
+  shouldForwardProp,
+})`
   color: ${({ theme }) => theme.colors.text1};
   ${size}
 `
