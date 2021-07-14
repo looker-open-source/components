@@ -27,10 +27,10 @@
 import React, { useState } from 'react'
 import { Home } from '@styled-icons/material-outlined/Home'
 import { Info } from '@styled-icons/material-outlined/Info'
-import { ListItem } from '../ListItem'
 import { Aside } from '../Layout'
+import { ListItem } from '../ListItem'
 import { ProgressCircular } from '../ProgressCircular'
-import { Tree, TreeItem } from '../Tree'
+import { NavTree, NavTreeItem } from '../NavTree'
 import { NavList } from './NavList'
 
 export default {
@@ -78,46 +78,36 @@ export const MixedNavigation = () => (
       <ListItem icon={<Home />} selected>
         Home
       </ListItem>
-      <Tree icon={<Info />} label="Tree" selected defaultOpen>
-        <TreeItem icon={<Info />}>Meh</TreeItem>
-        <TreeItem
-          description="description"
-          detail="detail"
-          icon={<Info />}
-          selected
-        >
-          My Awesome Item
-        </TreeItem>
-        <Tree
-          forceLabelPadding
-          branchFontWeight
-          defaultOpen
-          label="Blah"
-          icon={<Info />}
-        >
-          <TreeItem color="text2">
+      <NavTree icon={<Info />} label="NavTree" selected defaultOpen>
+        <NavTree defaultOpen label="Blah" icon={<Info />}>
+          <NavTreeItem parentIcon color="text2">
             <em>Not yet available</em>
-          </TreeItem>
-          <TreeItem icon={<ProgressCircular size="xsmall" progress={0.75} />}>
+          </NavTreeItem>
+          <NavTreeItem
+            parentIcon
+            icon={<ProgressCircular size="xsmall" progress={0.75} />}
+          >
             Loading...
-          </TreeItem>
-        </Tree>
-      </Tree>
-      <Tree
+          </NavTreeItem>
+        </NavTree>
+      </NavTree>
+      <NavTree
         icon={<Info />}
-        truncate
-        label="Tree w icon-free TreeItems and long title"
+        label="NavTree w icon-free NavTreeItems and long title"
         defaultOpen
       >
-        <Tree label="Folders" defaultOpen assumeIconAlignment>
-          <TreeItem truncate>
+        <NavTree label="Folders" defaultOpen>
+          <NavTreeItem description="description" detail="detail" selected>
+            My Awesome Item
+          </NavTreeItem>
+          <NavTreeItem>
             Truncate example with long text running off screen
-          </TreeItem>
-          <TreeItem truncate description="description" detail="detail">
+          </NavTreeItem>
+          <NavTreeItem description="description" detail="detail">
             Truncate example with long text running off screen
-          </TreeItem>
-        </Tree>
-      </Tree>
+          </NavTreeItem>
+        </NavTree>
+      </NavTree>
     </NavList>
   </Aside>
 )

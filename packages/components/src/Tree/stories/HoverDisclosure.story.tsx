@@ -25,17 +25,19 @@
  */
 
 import React from 'react'
-import { Folder } from '@styled-icons/material/Folder'
-import { Tree, TreeCollection, TreeItem } from '..'
+import { TreeCollection, Tree, TreeItem } from '../'
+import { Button } from '../../Button'
 
-export const ForceLabelPadding = () => (
+export const HoverDisclosure = () => (
   <TreeCollection>
-    <Tree icon={<Folder />} label="Folders" defaultOpen>
-      <Tree label="With Icon" defaultOpen forceLabelPadding>
-        <TreeItem>Performance</TreeItem>
-        <TreeItem>Sales</TreeItem>
-        <TreeItem>Metrics</TreeItem>
-      </Tree>
+    <Tree
+      label="Cheeses"
+      detail={{
+        content: <Button>Button</Button>,
+        options: { accessory: true, hoverDisclosure: true },
+      }}
+    >
+      <TreeItem>Cheddar</TreeItem>
     </Tree>
   </TreeCollection>
 )

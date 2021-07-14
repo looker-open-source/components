@@ -123,7 +123,6 @@ export const FieldItem: FC<FieldItemProps> = ({
         }
       }}
       itemRole="none"
-      onClickWhitespace={toggleField}
     >
       <Flex alignItems="center" pl="xxsmall">
         <Flex

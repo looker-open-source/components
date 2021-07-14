@@ -24,15 +24,34 @@
 
  */
 
-import React, { FC } from 'react'
+import React, { FC, useContext } from 'react'
 import styled from 'styled-components'
+import { TreeContext } from './TreeContext'
+import { generateIndent } from './utils'
 
 export interface TreeBranchProps {
   className?: string
 }
 
 const TreeBranchLayout: FC<TreeBranchProps> = ({ children, className }) => {
-  return <li className={className}>{children}</li>
+  const { depth, density } = useContext(TreeContext)
+  return (
+    <TreeBranchIndentSpacer
+      className={className}
+      /**
+       * Child items should be +1 depth more than their parents so that their label
+       * aligns with the label of the parent as opposed to the indicator
+       */
+      depth={depth + 1}
+      density={density}
+    >
+      {children}
+    </TreeBranchIndentSpacer>
+  )
 }
+
+const TreeBranchIndentSpacer = styled.li`
+  ${generateIndent}
+`
 
 export const TreeBranch = styled(TreeBranchLayout)``

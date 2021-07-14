@@ -31,12 +31,12 @@ import { accordionDimensions } from './accordionDimensions'
 import { Accordion2Props } from './types'
 import { useAccordion2 } from './useAccordion2'
 
-const Accordion2Internal = ({ hideDisclosure, ...props }: Accordion2Props) => {
+const Accordion2Internal = (props: Accordion2Props) => {
   const { content, domProps, disclosureProps } = useAccordion2(props)
 
   return (
     <div {...domProps}>
-      {!hideDisclosure && <Accordion2Disclosure {...disclosureProps} />}
+      <Accordion2Disclosure {...disclosureProps} />
       {content}
     </div>
   )

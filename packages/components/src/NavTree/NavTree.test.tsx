@@ -24,20 +24,27 @@
 
  */
 
-import { RadiusSizes, Theme } from '@looker/design-tokens'
-import { css } from 'styled-components'
-import { TreeItem2Content, TreeItem2Label } from '../Tree'
+import React from 'react'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { fireEvent, screen } from '@testing-library/react'
+import { ParentIcon } from './NavTree.story'
 
-// Creates CSS for generating border radius on Tree and sub-Tree components
-export const generateBorderRadius = (
-  borderRadius: RadiusSizes,
-  theme: Theme
-) => {
-  const { radii } = theme
+describe('NavTree', () => {
+  test('Renders string disclosure label and detail', () => {
+    renderWithTheme(<ParentIcon />)
 
-  return css`
-    ${TreeItem2Content}, ${TreeItem2Label} {
-      border-radius: ${radii[borderRadius]};
-    }
-  `
-}
+    screen.getByText('Parent Tree with Icon')
+    screen.getByText('Cheddar')
+  })
+
+  test('Renders and hides children on disclosure click', () => {
+    renderWithTheme(<ParentIcon />)
+
+    const treeLabel = screen.getByText('Parent Tree with Icon')
+    screen.getByText('Cheddar')
+    fireEvent.click(treeLabel)
+    expect(screen.queryByText('Cheddar')).not.toBeInTheDocument()
+    fireEvent.click(treeLabel)
+    screen.getByText('Cheddar')
+  })
+})
