@@ -1,7 +1,7 @@
 {
   "name": "@looker/components-theme-editor",
   "license": "MIT",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "main": "lib/cjs/index.js",
   "module": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -16,8 +16,8 @@
     "directory": "packages/theme-editor"
   },
   "dependencies": {
-    "@looker/components": "*",
-    "@looker/design-tokens": "*",
+    "@looker/components": "^2.1.0",
+    "@looker/design-tokens": "^2.1.0",
     "@styled-icons/material": "^10.34.0",
     "@styled-icons/material-outlined": "^10.28.0"
   },

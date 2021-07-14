@@ -1,6 +1,6 @@
 {
   "name": "playground",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "license": "MIT",
   "author": "Looker",
   "repository": {
@@ -14,9 +14,9 @@
     "analyze": "webpack --mode=production --profile"
   },
   "dependencies": {
-    "@looker/components": "*",
-    "@looker/components-providers": "*",
-    "@looker/design-tokens": "*",
+    "@looker/components": "^2.1.0",
+    "@looker/components-providers": "^1.4.1",
+    "@looker/design-tokens": "^2.1.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-is": "^16.13.1",

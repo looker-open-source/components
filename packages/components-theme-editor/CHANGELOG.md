@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.4.1 (2021-07-14)
+
+
+### Bug Fixes
+
+* move lodash to peer dependencies ([#2580](https://github.com/looker-open-source/components/issues/2580)) ([a1a94a3](https://github.com/looker-open-source/components/commit/a1a94a3f501b481aaf73ec5305123965853cc508)), closes [/github.com/looker-open-source/components/blame/12658bddd81bf4dc1625865de424cc674ea07e1c/packages/components/README.md#L15](https://github.com//github.com/looker-open-source/components/blame/12658bddd81bf4dc1625865de424cc674ea07e1c/packages/components/README.md/issues/L15)
+
+
+
+
+
 # [1.4.0](https://github.com/looker-open-source/components/compare/v1.4.0-alpha.0...v1.4.0) (2021-05-23)
 
 **Note:** Version bump only for package @looker/components-theme-editor
