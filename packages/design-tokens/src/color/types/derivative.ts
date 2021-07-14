@@ -75,3 +75,14 @@ export interface DerivativeColors
    */
   linkInteractive: string
 }
+
+export const derivativeColors: Array<keyof DerivativeColors> = [
+  'field',
+  'inverse',
+  'inverseOn',
+  'neutral',
+  'linkInteractive',
+  'informAccent',
+  'positiveAccent',
+  'warnAccent',
+]

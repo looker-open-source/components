@@ -24,7 +24,39 @@
 
  */
 
-export * from './BorderRender'
-export * from './BreakpointTable'
-export * from './SpacingOptionsTable'
-export * from './Typography'
+import styled from 'styled-components'
+import React from 'react'
+import { Code, Grid } from '@looker/components'
+
+type ColorSwatchProps = {
+  name: string
+  color: string
+}
+
+const ColorSwatch = styled(({ name, color, ...props }: ColorSwatchProps) => (
+  <Code fontSize="xsmall" {...props}>
+    {name}
+  </Code>
+))`
+  &::before {
+    background: ${({ color }) => color};
+    border: 1px solid ${({ theme }) => theme.colors.ui3};
+    border-radius: ${({ theme }) => theme.radii[3]};
+    content: ' ';
+    display: block;
+    height: 4rem;
+    width: 7.5rem;
+  }
+`
+
+type ColorListProps = {
+  colors: { [key: string]: string }
+}
+
+export const ColorList = ({ colors }: ColorListProps) => (
+  <Grid columns={4} gap="large" maxWidth={600} pt="medium" pb="xxlarge">
+    {Object.entries(colors).map(([title, color], key) => (
+      <ColorSwatch name={title} color={color} key={key} />
+    ))}
+  </Grid>
+)
