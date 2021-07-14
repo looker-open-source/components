@@ -130,6 +130,7 @@ const TreeItemLayout: FC<TreeItemProps> = ({
         onMouseLeave={handleWrapperMouseLeave}
       >
         <TreeItem2Content
+          aria-selected={selected}
           onClick={onClick}
           density={density}
           /**

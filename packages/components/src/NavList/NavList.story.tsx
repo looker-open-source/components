@@ -79,15 +79,6 @@ export const MixedNavigation = () => (
         Home
       </ListItem>
       <NavTree icon={<Info />} label="NavTree" selected defaultOpen>
-        <NavTreeItem icon={<Info />}>Meh</NavTreeItem>
-        <NavTreeItem
-          description="description"
-          detail="detail"
-          icon={<Info />}
-          selected
-        >
-          My Awesome Item
-        </NavTreeItem>
         <NavTree defaultOpen label="Blah" icon={<Info />}>
           <NavTreeItem parentIcon color="text2">
             <em>Not yet available</em>
@@ -106,6 +97,9 @@ export const MixedNavigation = () => (
         defaultOpen
       >
         <NavTree label="Folders" defaultOpen>
+          <NavTreeItem description="description" detail="detail" selected>
+            My Awesome Item
+          </NavTreeItem>
           <NavTreeItem>
             Truncate example with long text running off screen
           </NavTreeItem>

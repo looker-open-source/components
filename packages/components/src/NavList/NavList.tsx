@@ -26,6 +26,7 @@
 
 import styled from 'styled-components'
 import { TextBase } from '../Text/TextBase'
+import { Truncate } from '../Truncate'
 import { Accordion2Disclosure } from '../Accordion2/Accordion2Disclosure'
 import { List } from '../List'
 import {
@@ -51,6 +52,7 @@ export const NavList = styled(List).attrs(({ color = 'key' }) => ({ color }))`
     &[aria-selected='true'] {
       ${ListItemDetail},
       ${TextBase},
+      ${Truncate},
       ${ListItemIcon} svg {
         color: ${({ theme }) => theme.colors.key};
       }
