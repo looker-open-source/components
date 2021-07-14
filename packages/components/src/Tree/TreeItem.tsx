@@ -105,19 +105,18 @@ const TreeItemLayout: FC<TreeItemProps> = ({
 
   const density = undefinedCoalesce([propsDensity, contextDensity])
   const color = undefinedCoalesce([propsColor, contextColor])
-
-  const [inside, outside] = createListItemPartitions({
-    color,
-    density,
-    ...restProps,
-  })
-
   const statefulProps = {
     color,
     disabled,
     hovered,
     selected,
   }
+  const [inside, outside] = createListItemPartitions({
+    color,
+    density,
+    ...restProps,
+    ...statefulProps,
+  })
 
   return (
     <HoverDisclosureContext.Provider value={{ visible: hovered }}>

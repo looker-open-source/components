@@ -292,6 +292,11 @@ export const TreeItem2Content = styled(
   display: flex;
   flex: 1;
   padding-right: 0;
+
+  &[disabled] {
+    color: ${({ theme }) => theme.colors.text1};
+    cursor: not-allowed;
+  }
 `
 
 /**
