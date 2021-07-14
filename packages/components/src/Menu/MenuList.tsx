@@ -28,15 +28,17 @@ import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
 import { List, ListProps } from '../List'
 import { listPadding } from '../List/utils'
-import { NestedMenuProvider } from './NestedMenuProvider'
+import { CloseParentMenuProps, NestedMenuProvider } from './NestedMenuProvider'
+
+export type MenuListProps = Omit<ListProps, 'color'> & CloseParentMenuProps
 
 export const MenuListInternal = forwardRef(
   (
-    { children, ...props }: Omit<ListProps, 'color'>,
+    { children, closeParentMenu, ...props }: MenuListProps,
     forwardedRef: Ref<HTMLUListElement>
   ) => {
     return (
-      <NestedMenuProvider>
+      <NestedMenuProvider closeParentMenu={closeParentMenu}>
         <List role="menu" ref={forwardedRef} {...props}>
           {children}
         </List>

@@ -617,8 +617,11 @@ ArrowKeyNavigation.parameters = {
 }
 
 export const NestedMenu = () => {
-  const getOnClick = (text: string) => () => {
+  const getOnClick = (text: string) => (e: MouseEvent<HTMLLIElement>) => {
     alert(`You clicked ${text}`)
+    if (text === 'preventDefault') {
+      e.preventDefault()
+    }
   }
 
   const nestedMenu = (
@@ -630,6 +633,7 @@ export const NestedMenu = () => {
       <MenuItem onClick={getOnClick('Third Sub Item')}>Third Sub Item</MenuItem>
       <MenuItem onClick={getOnClick('4th Sub Item')}>4th Sub Item</MenuItem>
       <MenuItem onClick={getOnClick('Fifth Sub Item')}>Fifth Sub Item</MenuItem>
+      <MenuItem onClick={getOnClick('preventDefault')}>preventDefault</MenuItem>
     </>
   )
   const content = (

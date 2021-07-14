@@ -33,7 +33,7 @@ import {
   waitFor,
 } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import React, { useRef } from 'react'
+import React, { MouseEvent as ReactMouseEvent, useRef } from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { Favorite } from '@styled-icons/material-outlined/Favorite'
 import { Button } from '../Button'
@@ -94,7 +94,7 @@ describe('<Menu />', () => {
 
   test('closes on MenuItem click', () => {
     const Closable = () => {
-      function handleClick(e: React.MouseEvent<HTMLLIElement>) {
+      function handleClick(e: ReactMouseEvent<HTMLLIElement>) {
         e.preventDefault()
       }
       return (
@@ -351,6 +351,67 @@ describe('<Menu />', () => {
       fireEvent.click(screen.getByText('Dutch'))
       expect(onClick).toHaveBeenCalledTimes(1)
       expect(screen.queryByRole('menu')).not.toBeInTheDocument()
+    })
+
+    test('clicking an item in the nested menu closes the parent menu', () => {
+      const onClick = jest.fn()
+      renderWithTheme(
+        <Menu
+          content={
+            <MenuItem
+              nestedMenu={<MenuItem onClick={onClick}>Camembert</MenuItem>}
+            >
+              French
+            </MenuItem>
+          }
+        >
+          <Button>Cheese</Button>
+        </Menu>
+      )
+
+      // Open menu and nested menu
+      userEvent.click(screen.getByText('Cheese'))
+      fireEvent.keyDown(screen.getByText('French'), { key: 'ArrowRight' })
+
+      // Click an item in the nested menu
+      userEvent.click(screen.getByText('Camembert'))
+
+      expect(onClick).toHaveBeenCalledTimes(1)
+      expect(screen.queryByRole('menu')).not.toBeInTheDocument()
+    })
+
+    test('item with preventDefault', () => {
+      const onClickMock = jest.fn()
+      const handleClick = (e: ReactMouseEvent<HTMLLIElement>) => {
+        onClickMock()
+        e.preventDefault()
+      }
+      renderWithTheme(
+        <Menu
+          content={
+            <MenuItem
+              nestedMenu={<MenuItem onClick={handleClick}>Camembert</MenuItem>}
+            >
+              French
+            </MenuItem>
+          }
+        >
+          <Button>Cheese</Button>
+        </Menu>
+      )
+
+      // Open menu and nested menu
+      userEvent.click(screen.getByText('Cheese'))
+      const parent = screen.getByText('French')
+      fireEvent.keyDown(parent, { key: 'ArrowRight' })
+
+      // Click an item in the nested menu
+      const child = screen.getByText('Camembert')
+      userEvent.click(screen.getByText('Camembert'))
+
+      expect(onClickMock).toHaveBeenCalledTimes(1)
+      expect(child).toBeVisible()
+      expect(parent).toBeVisible()
     })
   })
 })

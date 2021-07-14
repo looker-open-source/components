@@ -192,7 +192,12 @@ export const useNestedMenu = ({
 
   const { popover, popperInstanceRef, domProps } = usePopover({
     content: (
-      <MenuList data-autofocus="true" density={density} {...listHandlers}>
+      <MenuList
+        data-autofocus="true"
+        density={density}
+        {...listHandlers}
+        closeParentMenu={closeModal}
+      >
         {nestedMenu}
       </MenuList>
     ),
