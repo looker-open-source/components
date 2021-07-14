@@ -34,10 +34,13 @@ describe('pickSpecifiableColors', () => {
       `
       Object {
         "background": "#FFFFFF",
+        "calculation": "#319220",
         "critical": "#CC1F36",
+        "dimension": "#31689E",
         "inform": "#0087e1",
         "key": "#6C43E0",
         "link": "#0059b2",
+        "measure": "#C2772E",
         "positive": "#24b25f",
         "text": "#262D33",
         "warn": "#FFA800",
