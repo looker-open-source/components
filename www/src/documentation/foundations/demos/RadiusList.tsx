@@ -24,45 +24,48 @@
 
  */
 
-import styled from 'styled-components'
 import React from 'react'
-import { Code, Grid } from '@looker/components'
+import {
+  Box,
+  Code,
+  TableBody,
+  TableDataCell,
+  TableHead,
+  TableHeaderCell,
+  TableRow,
+} from '@looker/components'
+import { theme } from '@looker/design-tokens'
+import styled from 'styled-components'
+import { DocTable } from '../../../components'
 
-type ColorSwatchProps = {
-  name: string
-  color: string
-}
-
-const ColorSwatch = styled(({ name, color, ...props }: ColorSwatchProps) => (
-  <Code fontSize="xsmall" {...props}>
-    {name}
-  </Code>
-))`
-  &::before {
-    background: ${({ color }) => color};
-    border: 1px solid ${({ theme }) => theme.colors.ui3};
-    border-radius: ${({ theme }) => theme.radii.medium};
-    content: '';
-    display: block;
-    height: 4rem;
-    margin-bottom: ${({ theme }) => theme.space.xsmall};
-    width: 100%;
-  }
+const ExampleBox = styled(Box)`
+  height: 40px;
+  width: 60px;
 `
 
-const ColorListGrid = styled(Grid)`
- grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+export const RadiusList = () => {
 
-`
-
-type ColorListProps = {
-  colors: { [key: string]: string }
+  const radii = Object.entries(theme.radii)
+  return (
+    <Box py="large">
+    <DocTable>
+      <TableHead>
+        <TableHeaderCell>Example</TableHeaderCell>
+        <TableHeaderCell>Rem Value</TableHeaderCell>
+        <TableHeaderCell>Reference</TableHeaderCell>
+      </TableHead>
+      <TableBody>
+      {radii.map((r,index) => {
+        return(
+          <TableRow key={r[0]}>
+            <TableDataCell><ExampleBox bg="ui1" border="solid 1px" borderColor="ui3" borderRadius={r[0]}/></TableDataCell>
+            <TableDataCell>{r[1]}</TableDataCell>
+            <TableDataCell><Code fontSize="xsmall">theme.radii.{r[0]}</Code></TableDataCell>
+          </TableRow>
+        )
+     })}
+      </TableBody>
+    </DocTable>
+    </Box>
+  )
 }
-
-export const ColorList = ({ colors }: ColorListProps) => (
-  <ColorListGrid gap="large" maxWidth={600} pt="medium" pb="xxlarge">
-    {Object.entries(colors).map(([title, color], key) => (
-      <ColorSwatch name={title} color={color} key={key} />
-    ))}
-  </ColorListGrid>
-)

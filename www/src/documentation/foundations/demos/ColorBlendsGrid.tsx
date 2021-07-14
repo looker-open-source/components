@@ -79,14 +79,19 @@ const BlendList = styled(({ colors, ...props }: BlendListProps) => (
   }
 `
 
+const BlendGrid = styled(Grid)`
+  grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
+  max-width: 1000px;
+`
+
 export const ColorBlendsGrid = ({
   statefulColorGroups,
 }: {
   statefulColorGroups: StatefulColorGroups
 }) => (
-  <Grid columns={3} gap="large">
+  <BlendGrid gap="large">
     {statefulColorGroups.map((group, index) => (
       <BlendList colors={group} key={index} />
     ))}
-  </Grid>
+  </BlendGrid>
 )
