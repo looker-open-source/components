@@ -49,6 +49,8 @@ export type {
 export type { ColorProps } from 'styled-system'
 
 export type { TextColorProps } from './textColor'
-export { textColor } from './textColor'
-
 export { backgroundColor } from './backgroundColor'
+export { uiColors, textColors } from './blends'
+export { derivativeColors } from './derivative'
+export { textColor } from './textColor'
+export { specifiableTextColors } from './specifiable'
