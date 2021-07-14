@@ -26,7 +26,7 @@
 
 import React from 'react'
 import styled from 'styled-components'
-import { Heading } from '@looker/components/src'
+import { Heading } from '@looker/components'
 import {
   Constitution,
   ConstitutionShort,

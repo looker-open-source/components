@@ -41,8 +41,8 @@ import {
   space,
   typography,
   TypographyProps,
+  WidthProps,
 } from '@looker/design-tokens'
-import { WidthProps } from 'styled-system'
 import styled from 'styled-components'
 import sortBy from 'lodash/sortBy'
 import indexOf from 'lodash/indexOf'

@@ -38,7 +38,7 @@ import React, {
   useState,
 } from 'react'
 import styled, { css } from 'styled-components'
-import { MaxHeightProps } from 'styled-system'
+import { MaxHeightProps } from '@looker/design-tokens'
 import { Chip } from '../../../Chip'
 import { inputHeight } from '../height'
 import { InputTextContent, InputText, InputTextBaseProps } from '../InputText'

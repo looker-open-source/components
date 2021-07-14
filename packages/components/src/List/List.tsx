@@ -35,13 +35,14 @@ import React, {
 import {
   CompatibleHTMLProps,
   DensityProp,
+  fontFamily,
   FontFamilies,
-  shouldForwardProp,
   height,
+  HeightProps,
+  shouldForwardProp,
   width,
   WidthProps,
 } from '@looker/design-tokens'
-import { HeightProps, fontFamily } from 'styled-system'
 import styled from 'styled-components'
 import { useArrowKeyNav, useWindow } from '../utils'
 import { ListItemContext, listItemDimensions } from '../ListItem'

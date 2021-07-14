@@ -26,14 +26,16 @@
 
 import {
   buttonShadow,
+  maxWidth,
+  minWidth,
   reset,
   space,
   shouldForwardProp,
+  width,
 } from '@looker/design-tokens'
 import { StyledIconBase } from '@styled-icons/styled-icon'
 import React, { forwardRef, Ref } from 'react'
 import styled, { css } from 'styled-components'
-import { minWidth, maxWidth, width } from 'styled-system'
 import {
   FocusVisibleProps,
   useFocusVisible,

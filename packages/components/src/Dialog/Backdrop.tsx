@@ -25,11 +25,13 @@
  */
 
 import {
+  BackgroundColorProps,
   CompatibleHTMLProps,
+  color,
+  OpacityProps,
   reset,
   shouldForwardProp,
 } from '@looker/design-tokens'
-import { OpacityProps, BackgroundColorProps, color } from 'styled-system'
 import styled, { CSSObject } from 'styled-components'
 
 export interface BackdropProps

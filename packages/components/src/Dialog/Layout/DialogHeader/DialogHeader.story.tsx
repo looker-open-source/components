@@ -25,7 +25,7 @@
  */
 
 import React from 'react'
-import { DialogHeader } from '@looker/components/src'
+import { DialogHeader } from '@looker/components'
 
 export default {
   component: DialogHeader,

@@ -27,7 +27,7 @@
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import styled from 'styled-components'
-import { useToggle, FieldToggleSwitch, Flex } from '@looker/components/src'
+import { useToggle, FieldToggleSwitch, Flex } from '@looker/components'
 import { Aside, AsideProps } from '../Aside/Aside'
 
 export default {

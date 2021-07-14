@@ -25,8 +25,7 @@
  */
 
 import styled, { css } from 'styled-components'
-import { height, ResponsiveValue } from 'styled-system'
-import { theme } from '@looker/design-tokens'
+import { height, ResponsiveValue, theme } from '@looker/design-tokens'
 import { SurfaceBase, surfaceTransition } from '../Dialog/SurfaceBase'
 import { DialogDrawerWidth } from '../Drawer/DrawerSurface'
 import { dialogWidth } from './dialogWidth'
