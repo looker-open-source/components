@@ -1,0 +1,14 @@
+---
+title: Radius
+---
+
+import {theme} from '@looker/design-tokens'
+import { RadiusList } from './demos/RadiusList'
+
+export const radiiCount = Object.entries(theme.radii).length
+
+<p>&nbsp;</p>
+
+<p>Radius values are used to apply border radius to components. They use our t-shirt size naming pattern with {radiiCount} levels of radii.</p>
+
+<RadiusList />
