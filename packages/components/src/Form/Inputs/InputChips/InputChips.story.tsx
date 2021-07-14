@@ -81,6 +81,14 @@ DisabledWithOutValues.args = {
   disabled: true,
 }
 
+export const HeightUndefined = Template.bind({})
+HeightUndefined.args = {
+  ...Basic.args,
+  height: undefined,
+  values: [...chipValues, 'Alphabet'],
+  width: 300,
+}
+
 export const ReadOnly = Template.bind({})
 ReadOnly.args = {
   ...Values.args,
