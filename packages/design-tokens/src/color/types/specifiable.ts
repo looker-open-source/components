@@ -57,6 +57,9 @@ export const intentColors: Array<keyof IntentColors> = [
   'warn',
   'positive',
   'inform',
+  'calculation',
+  'dimension',
+  'measure',
 ]
 
 export interface IntentColors {
@@ -125,6 +128,8 @@ export interface SpecifiableTextColors {
    */
   body: string
 }
+
+export const specifiableTextColors = ['title', 'body']
 
 export type SpecifiableColors = CoreColors &
   IntentColors &

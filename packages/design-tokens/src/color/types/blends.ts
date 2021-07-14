@@ -59,6 +59,13 @@ export interface UIColors {
   ui5: string
 }
 
+export const uiColors: Array<keyof UIColors> = [
+  'ui1',
+  'ui2',
+  'ui3',
+  'ui4',
+  'ui5',
+]
 export interface TextColors {
   /**
    * Lowest contrast text in UI, disabled states, placeholder text, for non-essential text only
@@ -90,3 +97,11 @@ export interface TextColors {
    */
   text5: string
 }
+
+export const textColors: Array<keyof TextColors> = [
+  'text1',
+  'text2',
+  'text3',
+  'text4',
+  'text5',
+]
