@@ -112,8 +112,8 @@ const Template: Story<DemoProps> = ({
   const selectConfig: SelectConfig = {
     onSelect,
     onSelectAll,
-    pageItems: allPageItems,
-    selectedItems: selections,
+    pageItems: [],
+    selectedItems: [],
   }
 
   const bulkActionsConfig: BulkActionsConfig = {
