@@ -44,6 +44,7 @@ export default {
 const Template: Story<PanelProps> = (args) => (
   <Page hasAside>
     <Aside width="12rem">
+      <Button>Before</Button>
       <Panels>
         <List>
           <Panel {...args}>
@@ -55,7 +56,10 @@ const Template: Story<PanelProps> = (args) => (
         </List>
       </Panels>
     </Aside>
-    <Section>Main stuff here...</Section>
+    <Section>
+      <Paragraph>Main stuff here...</Paragraph>
+      <Button>After</Button>
+    </Section>
   </Page>
 )
 

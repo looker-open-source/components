@@ -55,6 +55,63 @@ const checkFocusLost = () => {
     : true
 }
 
+const getInitialFocusNodeByPriority = (element: HTMLElement) => {
+  // Return the already focused node within element
+  if (element.contains(document.activeElement)) {
+    return document.activeElement as HTMLElement
+  }
+
+  // Look for data-autofocus b/c React strips autofocus from dom
+  // https://github.com/facebook/react/issues/11851
+  const autoFocusElement = element.querySelector('[data-autofocus="true"]')
+  if (autoFocusElement) {
+    return autoFocusElement
+  }
+
+  // Without autofocus, fallback to a tabbable node by priority, if one exists.
+  const inputElements = Array.from(
+    element.querySelectorAll('input, textarea, select')
+  )
+  const tabbableInputElement = inputElements.find((inputElement) =>
+    isTabbable(inputElement)
+  )
+  if (tabbableInputElement) {
+    return tabbableInputElement
+  }
+
+  const footerElement = element.querySelector('footer')
+  const firstTabbableFooterElement = footerElement
+    ? tabbable(footerElement)[0]
+    : null
+  if (firstTabbableFooterElement) {
+    return firstTabbableFooterElement
+  }
+
+  const firstTabbableElement = tabbable(element)[0]
+  if (firstTabbableElement) {
+    return firstTabbableElement
+  }
+
+  // In the absence of autofocus and any tabbable element, the surface will have initial focus.
+  const surfaceElement = element.querySelector('[data-overlay-surface="true"]')
+  if (surfaceElement) {
+    return surfaceElement
+  }
+
+  // default to element
+  return element
+}
+
+export const getInitialFocusNode = (element: HTMLElement) => {
+  const node = getInitialFocusNodeByPriority(element)
+  if (!node || !isFocusable(node)) {
+    throw new Error(
+      'Your focus trap needs to have at least one focusable element'
+    )
+  }
+  return node as FocusableElement
+}
+
 export const activateFocusTrap = ({
   element,
   options,
@@ -70,76 +127,17 @@ export const activateFocusTrap = ({
   let lastTabbableNode: FocusableElement = element
   let mostRecentlyFocusedNode: FocusableElement | null = null
 
-  const getInitialFocusNodeByPriority = () => {
-    // Return the already focused node within element
-    if (element.contains(document.activeElement)) {
-      return document.activeElement as HTMLElement
-    }
-
-    // Look for data-autofocus b/c React strips autofocus from dom
-    // https://github.com/facebook/react/issues/11851
-    const autoFocusElement = element.querySelector('[data-autofocus="true"]')
-    if (autoFocusElement) {
-      return autoFocusElement
-    }
-
-    // Without autofocus, fallback to a tabbable node by priority, if one exists.
-    const inputElements = Array.from(
-      element.querySelectorAll('input, textarea, select')
-    )
-    const tabbableInputElement = inputElements.find((inputElement) =>
-      isTabbable(inputElement)
-    )
-    if (tabbableInputElement) {
-      return tabbableInputElement
-    }
-
-    const footerElement = element.querySelector('footer')
-    const firstTabbableFooterElement = footerElement
-      ? tabbable(footerElement)[0]
-      : null
-    if (firstTabbableFooterElement) {
-      return firstTabbableFooterElement
-    }
-
-    const firstTabbableElement = tabbable(element)[0]
-    if (firstTabbableElement) {
-      return firstTabbableElement
-    }
-
-    // In the absence of autofocus and any tabbable element, the surface will have initial focus.
-    const surfaceElement = element.querySelector(
-      '[data-overlay-surface="true"]'
-    )
-    if (surfaceElement) {
-      return surfaceElement
-    }
-
-    // default to element
-    return element
-  }
-
-  const getInitialFocusNode = () => {
-    const node = getInitialFocusNodeByPriority()
-    if (!node || !isFocusable(node)) {
-      throw new Error(
-        'Your focus trap needs to have at least one focusable element'
-      )
-    }
-    return node as FocusableElement
-  }
-
   const updateTabbableNodes = () => {
     const tabbableNodes = tabbable(element)
-    firstTabbableNode = tabbableNodes[0] || getInitialFocusNode()
+    firstTabbableNode = tabbableNodes[0] || getInitialFocusNode(element)
     lastTabbableNode =
-      tabbableNodes[tabbableNodes.length - 1] || getInitialFocusNode()
+      tabbableNodes[tabbableNodes.length - 1] || getInitialFocusNode(element)
   }
 
   const tryFocus = (node: FocusableElement) => {
     if (node === document.activeElement) return
     if (!node || !node.focus) {
-      tryFocus(getInitialFocusNode())
+      tryFocus(getInitialFocusNode(element))
       return
     }
     node.focus()
@@ -168,7 +166,7 @@ export const activateFocusTrap = ({
       return
     }
     e.stopImmediatePropagation()
-    tryFocus(mostRecentlyFocusedNode || getInitialFocusNode())
+    tryFocus(mostRecentlyFocusedNode || getInitialFocusNode(element))
   }
 
   const checkKey = (e: KeyboardEvent) => {
@@ -205,7 +203,7 @@ export const activateFocusTrap = ({
   })
 
   const t = setTimeout(() => {
-    tryFocus(getInitialFocusNode())
+    tryFocus(getInitialFocusNode(element))
   }, 0)
 
   // Deactivate function
