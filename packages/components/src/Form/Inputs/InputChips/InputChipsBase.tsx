@@ -144,6 +144,7 @@ export const InputChipsBaseInternal = forwardRef(
       summary,
       removeOnBackspace = true,
       formatChip,
+      height = 'auto',
       ...props
     }: InputChipsBaseProps & InputChipsInputControlProps,
     forwardedRef: Ref<HTMLInputElement>
@@ -381,7 +382,7 @@ export const InputChipsBaseInternal = forwardRef(
             validationType={validationType}
           />
         }
-        height="auto"
+        height={height}
         onChange={handleInputChange}
         onFocus={wrappedOnFocus}
         onKeyDown={wrappedOnKeyDown}
