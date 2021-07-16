@@ -24,7 +24,6 @@
 
  */
 
-import { getInitialFocusNode } from '@looker/components-providers'
 import React, { useCallback, useRef, useState } from 'react'
 import styled from 'styled-components'
 import { useAnimationState, useControlWarn } from '../utils'
@@ -80,18 +79,18 @@ export const usePanel = ({
   }
 
   const setInitialFocus = useCallback((element: HTMLDivElement | null) => {
-    if (element) {
-      const moveFocusTo = getInitialFocusNode(element)
-      moveFocusTo.focus()
-    }
+    element?.focus({ preventScroll: true })
   }, [])
 
   const panel = renderDOM && (
-    <PanelWindow role="tabpanel" ref={setInitialFocus}>
+    <PanelWindow>
       <PanelSurface
         aria-busy={busy ? true : undefined}
         className={className}
         direction={direction}
+        data-panel
+        tabIndex={-1}
+        ref={setInitialFocus}
       >
         <PanelHeader onClose={handleClose} {...headerProps} />
         <PanelContent>{content}</PanelContent>

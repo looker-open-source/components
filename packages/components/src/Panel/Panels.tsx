@@ -25,17 +25,22 @@
  */
 
 import { CompatibleHTMLProps } from '@looker/design-tokens'
-import {
-  getTopElement,
-  getInitialFocusNode,
-} from '@looker/components-providers'
 import React, { FocusEvent, forwardRef, Ref, useRef } from 'react'
 import styled from 'styled-components'
 import { tabbable } from 'tabbable'
-import { useForkedRef, useWrapEvent } from '../utils'
+import { getNextFocusTarget, useForkedRef, useWrapEvent } from '../utils'
+
+const getTopElement = (elements: HTMLElement[]) => {
+  if (elements.length === 0) return
+  const sortedElements = elements.sort((elementA, elementB) => {
+    const relationship = elementA.compareDocumentPosition(elementB)
+    return relationship > 3 ? 1 : -1
+  })
+  return sortedElements[0]
+}
 
 const getPanels = (element: HTMLElement): HTMLElement[] =>
-  Array.from(element.querySelectorAll('[role="tabpanel"]'))
+  Array.from(element.querySelectorAll('[data-panel]'))
 
 const isElementAfter = (elementA: Node, elementB: Node) =>
   elementB.compareDocumentPosition(elementA) & Node.DOCUMENT_POSITION_FOLLOWING
@@ -73,7 +78,9 @@ const PanelsInternal = forwardRef(
     const focusInTopPanel = useRef(false)
 
     const handleBlur = (e: FocusEvent<HTMLDivElement>) => {
-      if (!internalRef.current?.contains(e.target)) {
+      const nextFocusTarget = getNextFocusTarget(e)
+
+      if (!internalRef.current?.contains(nextFocusTarget as Node)) {
         // Focus left the Panels area entirely, set tracker ref to false
         focusInTopPanel.current = false
       }
@@ -98,9 +105,8 @@ const PanelsInternal = forwardRef(
           }
         } else {
           // Focus landed on an element hidden underneath topPanel
-          // so we move it inside topPanel
-          const moveFocusTo = getInitialFocusNode(topPanel)
-          moveFocusTo.focus()
+          // so we move it to topPanel
+          topPanel.focus()
         }
       } else {
         // If there's no panel open, no need to do anything further
