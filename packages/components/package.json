@@ -30,7 +30,7 @@
     "hotkeys-js": "^3.8.3",
     "i18next": "20.3.1",
     "react-hotkeys-hook": "2.3.1",
-    "react-i18next": "11.8.15",
+    "react-i18next": "11.11.3",
     "resize-observer-polyfill": "^1.5.1",
     "styled-system": "^5.1.5",
     "uuid": "^8.3.2"
