@@ -1,6 +1,7 @@
 {
  "name": "@looker/filter-expressions",
- "main": "src/index.ts",
+ "main": "lib/cjs/index.js",
+ "module": "lib/index.js",
  "license": "MIT",
  "version": "0.5.0",
  "publishConfig": {
