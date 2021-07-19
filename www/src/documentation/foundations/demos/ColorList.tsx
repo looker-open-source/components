@@ -24,28 +24,44 @@
 
  */
 
-import { theme } from '../../theme'
-import { pickSpecifiableColors } from './pickSpecifiableColors'
+import styled from 'styled-components'
+import React from 'react'
+import { Code, Grid } from '@looker/components'
 
-describe('pickSpecifiableColors', () => {
-  test('theme', () => {
-    expect(pickSpecifiableColors(theme.colors)).toMatchInlineSnapshot(
-      {},
-      `
-      Object {
-        "background": "#FFFFFF",
-        "calculation": "#319220",
-        "critical": "#CC1F36",
-        "dimension": "#31689E",
-        "inform": "#0087e1",
-        "key": "#6C43E0",
-        "link": "#0059b2",
-        "measure": "#C2772E",
-        "positive": "#24b25f",
-        "text": "#262D33",
-        "warn": "#FFA800",
-      }
-    `
-    )
-  })
-})
+type ColorSwatchProps = {
+  name: string
+  color: string
+}
+
+const ColorSwatch = styled(({ name, color, ...props }: ColorSwatchProps) => (
+  <Code fontSize="xsmall" {...props}>
+    {name}
+  </Code>
+))`
+  &::before {
+    background: ${({ color }) => color};
+    border: 1px solid ${({ theme }) => theme.colors.ui3};
+    border-radius: ${({ theme }) => theme.radii.medium};
+    content: '';
+    display: block;
+    height: 4rem;
+    margin-bottom: ${({ theme }) => theme.space.xsmall};
+    width: 100%;
+  }
+`
+
+const ColorListGrid = styled(Grid)`
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+`
+
+type ColorListProps = {
+  colors: { [key: string]: string }
+}
+
+export const ColorList = ({ colors }: ColorListProps) => (
+  <ColorListGrid gap="large" maxWidth={600} pt="medium" pb="xxlarge">
+    {Object.entries(colors).map(([title, color], key) => (
+      <ColorSwatch name={title} color={color} key={key} />
+    ))}
+  </ColorListGrid>
+)
