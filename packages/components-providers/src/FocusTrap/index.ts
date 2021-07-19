@@ -26,4 +26,3 @@
 
 export * from './FocusTrapProvider'
 export * from './types'
-export * from './utils'

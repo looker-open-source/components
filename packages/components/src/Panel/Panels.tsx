@@ -68,7 +68,7 @@ const focusOneBefore = (element: HTMLElement) => {
 
 const PanelsInternal = forwardRef(
   (
-    { onFocus, ...props }: CompatibleHTMLProps<HTMLDivElement>,
+    { onBlur, onFocus, ...props }: CompatibleHTMLProps<HTMLDivElement>,
     forwardedRef: Ref<HTMLDivElement>
   ) => {
     const internalRef = useRef<HTMLDivElement | null>(null)
@@ -114,10 +114,17 @@ const PanelsInternal = forwardRef(
         focusInTopPanel.current = false
       }
     }
+
+    const wrappedOnBlur = useWrapEvent(handleBlur, onBlur)
     const wrappedOnFocus = useWrapEvent(handleFocus, onFocus)
 
     return (
-      <div onBlur={handleBlur} onFocus={wrappedOnFocus} {...props} ref={ref} />
+      <div
+        onBlur={wrappedOnBlur}
+        onFocus={wrappedOnFocus}
+        {...props}
+        ref={ref}
+      />
     )
   }
 )

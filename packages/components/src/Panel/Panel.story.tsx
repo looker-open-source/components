@@ -118,8 +118,8 @@ const HookInner = () => {
 export const Hook = () => {
   return (
     <Panels>
-      <HookInner />
       <List>
+        <HookInner />
         <ListItem icon={<Done />}>Option B</ListItem>
       </List>
     </Panels>
