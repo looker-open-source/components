@@ -386,6 +386,25 @@ describe('DataTable', () => {
       const checkbox = screen.getAllByRole('checkbox')[4]
       expect(checkbox as HTMLInputElement).not.toBeChecked()
     })
+
+    test('Selection - no pageItems & no selectedItems', () => {
+      renderWithTheme(
+        <DataTable
+          caption="this is a table's caption"
+          columns={columns}
+          select={{
+            ...defaultSelectConfig,
+            pageItems: [],
+            selectedItems: [],
+          }}
+        >
+          {items}
+        </DataTable>
+      )
+
+      const checkbox = screen.getAllByRole('checkbox')[0]
+      expect(checkbox as HTMLInputElement).not.toBeChecked()
+    })
   })
 
   describe('Selecting All', () => {

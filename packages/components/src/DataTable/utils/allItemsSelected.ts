@@ -23,30 +23,17 @@
  SOFTWARE.
 
  */
-process.env.TZ = 'PST8PDT'
 
-module.exports = {
-  automock: false,
-  collectCoverage: true,
-  collectCoverageFrom: [
-    'packages/**/*.(ts)?(x)',
-    '!packages/components-theme-editor/**/*',
-    '!packages/**/stories/*',
-    '!packages/**/*.stories.tsx',
-    '!packages/**/*.story.tsx',
-    '!packages/icons/src/**/*',
-    '!packages/**/index.ts',
-    '!packages/**/types.ts',
-  ],
-  coverageReporters: ['json', 'html', 'lcov', 'text-summary'],
-  moduleDirectories: ['./node_modules', './packages'],
-  moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json', 'node'],
-  moduleNameMapper: {
-    '@looker\\/((?!sdk)[^\\/]+)': '<rootDir>/packages/$1/src',
-    '\\.(css)$': '<rootDir>/config/jest/styleMock.js',
-    '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
-      '<rootDir>/config/jest/fileMock.js',
-  },
-  setupFilesAfterEnv: ['./jest.setup.js'],
-  testMatch: ['**/?(*.)(spec|test).(ts|js)?(x)'],
+import { MixedBoolean } from '../../Form/Inputs/Checkbox'
+import { SelectConfig } from '../types'
+
+export const allItemsSelected = (select?: SelectConfig): MixedBoolean => {
+  if (!select) return false
+
+  const { selectedItems, pageItems } = select
+
+  if (selectedItems.length === 0) return false
+  else if (pageItems.every((id) => selectedItems.includes(id))) return true
+  else if (pageItems.some((id) => selectedItems.includes(id))) return 'mixed'
+  else return false
 }
