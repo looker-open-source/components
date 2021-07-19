@@ -44,10 +44,8 @@ const ExampleBox = styled(Box)`
 `
 
 export const RadiusList = () => {
-
   const radii = Object.entries(theme.radii)
   return (
-    <Box py="large">
     <DocTable>
       <TableHead>
         <TableHeaderCell>Example</TableHeaderCell>
@@ -55,17 +53,25 @@ export const RadiusList = () => {
         <TableHeaderCell>Reference</TableHeaderCell>
       </TableHead>
       <TableBody>
-      {radii.map((r,index) => {
-        return(
-          <TableRow key={r[0]}>
-            <TableDataCell><ExampleBox bg="ui1" border="solid 1px" borderColor="ui3" borderRadius={r[0]}/></TableDataCell>
-            <TableDataCell>{r[1]}</TableDataCell>
-            <TableDataCell><Code fontSize="xsmall">theme.radii.{r[0]}</Code></TableDataCell>
-          </TableRow>
-        )
-     })}
+        {radii.map((r, index) => {
+          return (
+            <TableRow key={r[0]}>
+              <TableDataCell>
+                <ExampleBox
+                  bg="ui1"
+                  border="solid 1px"
+                  borderColor="ui3"
+                  borderRadius={r[0]}
+                />
+              </TableDataCell>
+              <TableDataCell>{r[1]}</TableDataCell>
+              <TableDataCell>
+                <Code fontSize="xsmall">theme.radii.{r[0]}</Code>
+              </TableDataCell>
+            </TableRow>
+          )
+        })}
       </TableBody>
     </DocTable>
-    </Box>
   )
 }

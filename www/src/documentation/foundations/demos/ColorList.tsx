@@ -51,8 +51,7 @@ const ColorSwatch = styled(({ name, color, ...props }: ColorSwatchProps) => (
 `
 
 const ColorListGrid = styled(Grid)`
- grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
 `
 
 type ColorListProps = {
