@@ -1,6 +1,8 @@
 {
  "name": "@looker/filter-components",
- "main": "src/index.ts",
+ "main": "lib/cjs/index.js",
+ "module": "lib/index.js",
+ "types": "lib/index.d.ts",
  "license": "MIT",
  "version": "0.5.0",
  "publishConfig": {
