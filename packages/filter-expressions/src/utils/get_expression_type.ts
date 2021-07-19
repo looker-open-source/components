@@ -23,8 +23,8 @@
  SOFTWARE.
 
  */
-import type { FilterExpressionType } from '@looker/filter-expressions'
 import type { IDashboardFilter, ILookmlModelExploreField } from '@looker/sdk'
+import type { FilterExpressionType } from '../types/filter_type'
 
 interface FilterExpressionTypeMap {
   [type: string]: FilterExpressionType
