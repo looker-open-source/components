@@ -77,14 +77,14 @@ export const ComponentSize = () => {
   }
   return (
     <MultiFunctionButton
-      alternate={<Button size="large">This is a very large button</Button>}
+      alternate={
+        <Button size="large" width={400}>
+          This is a very large button
+        </Button>
+      }
       swap={change}
     >
-      <CustomButtonOutline
-        onClick={handleSwap}
-        width={400}
-        iconBefore={<Add />}
-      >
+      <CustomButtonOutline onClick={handleSwap} iconBefore={<Add />}>
         Test
       </CustomButtonOutline>
     </MultiFunctionButton>
