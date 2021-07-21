@@ -37,6 +37,9 @@ export const Basic = Template.bind({})
 Basic.args = {
   content: 'here is some text to be copied',
 }
+Basic.parameters = {
+  storyshots: { disable: true },
+}
 
 export const LabelStyled = Template.bind({})
 LabelStyled.args = {

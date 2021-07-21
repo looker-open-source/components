@@ -25,6 +25,7 @@
  */
 
 import React, { useState } from 'react'
+import styled from 'styled-components'
 import { Add } from '@styled-icons/material/Add'
 import { Check } from '@styled-icons/material/Check'
 import { MultiFunctionButton } from './MultiFunctionButton'
@@ -35,6 +36,13 @@ export default {
   title: 'MultiFunctionButton',
 }
 
+const CustomButtonTransparent = styled(ButtonTransparent)`
+  height: 60px;
+`
+const CustomButtonOutline = styled(ButtonOutline)`
+  height: 60px;
+`
+
 export const CopyToClipboard = () => {
   const [change, setChange] = useState(false)
 
@@ -44,9 +52,13 @@ export const CopyToClipboard = () => {
   }
 
   const alternateCopyButton = (
-    <ButtonTransparent iconBefore={<Check />} size="large">
+    <CustomButtonTransparent
+      iconBefore={<Check />}
+      size="large"
+      width={300} // arbitrary size to prevent image snapshot "jitter"
+    >
       Copied!
-    </ButtonTransparent>
+    </CustomButtonTransparent>
   )
 
   return (
@@ -65,12 +77,16 @@ export const ComponentSize = () => {
   }
   return (
     <MultiFunctionButton
-      alternate={<Button size="large">This is a very large button</Button>}
+      alternate={
+        <Button size="large" width={400}>
+          This is a very large button
+        </Button>
+      }
       swap={change}
     >
-      <ButtonOutline onClick={handleSwap} iconBefore={<Add />}>
+      <CustomButtonOutline onClick={handleSwap} iconBefore={<Add />}>
         Test
-      </ButtonOutline>
+      </CustomButtonOutline>
     </MultiFunctionButton>
   )
 }
