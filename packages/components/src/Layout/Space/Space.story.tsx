@@ -26,9 +26,8 @@
 
 import { Story } from '@storybook/react/types-6-0'
 import { AccountCircle } from '@styled-icons/material-outlined/AccountCircle'
-import { Delete } from '@styled-icons/material/Delete'
 import React from 'react'
-import { Button, IconButton } from '../../Button'
+import { Button } from '../../Button'
 import { Icon } from '../../Icon'
 import { Status } from '../../Status'
 import { Paragraph } from '../../Text'

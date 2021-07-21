@@ -9,7 +9,7 @@
     "snapshots": "yarn loki --port 3333",
     "snapshots-update": "yarn snapshots update",
 
-    "xpretest": "export storybookBuildMode=fast && yarn build",
+    "pretest": "export storybookBuildMode=fast && yarn build",
     "test": "yarn loki --requireReference --reactUri file:./storybook-static",
     "test-update": "yarn loki update --reactUri file:./storybook-static"
   },
