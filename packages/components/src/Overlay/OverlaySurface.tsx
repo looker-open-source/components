@@ -24,7 +24,12 @@
 
  */
 
-import { reset, fadeIn, CompatibleHTMLProps } from '@looker/design-tokens'
+import {
+  CompatibleHTMLProps,
+  fadeIn,
+  omitStyledProps,
+  reset,
+} from '@looker/design-tokens'
 import { Placement } from '@popperjs/core'
 import React, {
   DOMAttributes,
@@ -47,8 +52,18 @@ export interface OverlaySurfaceProps
 }
 
 const OverlaySurfaceLayout = forwardRef(
-  (props: OverlaySurfaceProps, forwardedRef: Ref<HTMLDivElement>) => {
-    const { children, className, eventHandlers, placement, style } = props
+  (
+    {
+      children,
+      className,
+      eventHandlers,
+      placement,
+      style,
+      ...props
+    }: OverlaySurfaceProps,
+    forwardedRef: Ref<HTMLDivElement>
+  ) => {
+    // const { children, className, eventHandlers, placement, style } = props
     const { closeModal } = useContext(DialogContext)
 
     const innerRef = useRef<null | HTMLElement>(null)
@@ -58,12 +73,13 @@ const OverlaySurfaceLayout = forwardRef(
 
     return (
       <div
+        className={className}
+        data-placement={placement}
+        {...eventHandlers}
         ref={ref}
         style={style}
-        className={className}
-        {...eventHandlers}
         tabIndex={-1}
-        data-placement={placement}
+        {...omitStyledProps(props)}
       >
         <OverlaySurfaceContentArea tabIndex={-1} data-overlay-surface={true}>
           {children}
@@ -75,7 +91,10 @@ const OverlaySurfaceLayout = forwardRef(
 
 OverlaySurfaceLayout.displayName = 'OverlaySurfaceLayout'
 
-export const OverlaySurface = styled(OverlaySurfaceLayout)`
+export const OverlaySurface = styled(OverlaySurfaceLayout).attrs(() => ({
+  'aria-modal': true,
+  role: 'dialog',
+}))`
   ${reset}
 
   animation: ${fadeIn} ease-in;

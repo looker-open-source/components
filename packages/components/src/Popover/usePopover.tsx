@@ -265,7 +265,6 @@ export const usePopover = ({
             maxHeight={`calc(${verticalSpace - 10}px - 1rem)`}
             overflowY="auto"
             ref={contentContainerRef}
-            role="dialog"
           >
             {content}
           </Flex>
