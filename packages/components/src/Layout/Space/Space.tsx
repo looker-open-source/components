@@ -25,12 +25,12 @@
  */
 
 import styled, { css } from 'styled-components'
-import { variant } from 'styled-system'
 import {
   flexbox,
   FlexboxProps,
   SpacingSizes,
   shouldForwardProp,
+  variant,
 } from '@looker/design-tokens'
 import { commonLayoutCSS, CommonLayoutProps } from '../utils/common'
 

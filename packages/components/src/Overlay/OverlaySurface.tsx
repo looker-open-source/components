@@ -24,7 +24,13 @@
 
  */
 
-import { reset, fadeIn, CompatibleHTMLProps } from '@looker/design-tokens'
+import {
+  CompatibleHTMLProps,
+  fadeIn,
+  maxWidth,
+  MaxWidthProps,
+  reset,
+} from '@looker/design-tokens'
 import { Placement } from '@popperjs/core'
 import React, {
   DOMAttributes,
@@ -34,7 +40,6 @@ import React, {
   useRef,
 } from 'react'
 import styled from 'styled-components'
-import { maxWidth, MaxWidthProps } from 'styled-system'
 import { useGlobalHotkeys, useForkedRef } from '../utils'
 import { DialogContext } from '../Dialog'
 

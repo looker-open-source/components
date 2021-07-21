@@ -30,8 +30,9 @@ import {
   TextColorProps,
   typography,
   TypographyProps,
+  width as widthHelper,
+  WidthProps,
 } from '@looker/design-tokens'
-import { width as widthHelper, WidthProps } from 'styled-system'
 import { Span } from '../Text/Span'
 import { useTooltip } from '../Tooltip'
 import { mergeClassNames, useIsTruncated } from '../utils'

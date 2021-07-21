@@ -28,10 +28,13 @@ import styled from 'styled-components'
 import {
   CompatibleHTMLProps,
   disabledSwatchColor,
+  height,
+  HeightProps,
   reset,
   shouldForwardProp,
+  width,
+  WidthProps,
 } from '@looker/design-tokens'
-import { height, HeightProps, width, WidthProps } from 'styled-system'
 import {
   inputCSS,
   inputTextHover,

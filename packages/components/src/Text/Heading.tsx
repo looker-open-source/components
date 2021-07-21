@@ -25,10 +25,10 @@
  */
 
 import styled from 'styled-components'
-import { ResponsiveValue } from 'styled-system'
 import {
   CompatibleHTMLProps,
   FontSizes,
+  ResponsiveValue,
   textTransform,
   TextTransformProps,
 } from '@looker/design-tokens'

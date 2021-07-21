@@ -25,8 +25,9 @@
  */
 
 import styled from 'styled-components'
-import { backgroundPosition, BackgroundPositionProps } from 'styled-system'
 import {
+  backgroundPosition,
+  BackgroundPositionProps,
   CompatibleHTMLProps,
   shouldForwardProp,
   BackgroundColorProps,

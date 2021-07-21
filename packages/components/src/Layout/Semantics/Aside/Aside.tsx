@@ -25,9 +25,12 @@
  */
 
 import React, { forwardRef, Ref } from 'react'
-import { CompatibleHTMLProps, shouldForwardProp } from '@looker/design-tokens'
+import {
+  CompatibleHTMLProps,
+  ResponsiveValue,
+  shouldForwardProp,
+} from '@looker/design-tokens'
 import styled from 'styled-components'
-import { ResponsiveValue } from 'styled-system'
 import { OverflowShadow, useOverflow } from '../../../utils'
 import { commonLayoutCSS, CommonLayoutProps } from '../../utils/common'
 import { AsideSizeRamp, asideWidth } from './asideWidth'

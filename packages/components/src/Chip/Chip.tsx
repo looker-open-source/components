@@ -25,10 +25,9 @@
  */
 
 import { useTranslation } from 'react-i18next'
-import { reset } from '@looker/design-tokens'
+import { maxWidth, MaxWidthProps, reset } from '@looker/design-tokens'
 import React, { forwardRef, KeyboardEvent, MouseEvent, Ref } from 'react'
 import styled, { css } from 'styled-components'
-import { maxWidth, MaxWidthProps } from 'styled-system'
 import { Close } from '@styled-icons/material/Close'
 import {
   useClickable,

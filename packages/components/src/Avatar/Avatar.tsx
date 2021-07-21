@@ -26,6 +26,7 @@
 
 import {
   color,
+  CompatibleHTMLProps,
   reset,
   space,
   SpaceProps,
@@ -35,10 +36,9 @@ import {
   SizeSmall,
   SizeXSmall,
   SizeXXSmall,
-  CompatibleHTMLProps,
+  variant,
 } from '@looker/design-tokens'
 import { css } from 'styled-components'
-import { variant } from 'styled-system'
 
 export type AvatarSizes =
   | SizeXXSmall

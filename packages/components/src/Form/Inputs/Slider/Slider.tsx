@@ -33,8 +33,9 @@ import {
   SpaceProps,
   typography,
   TypographyProps,
+  WidthProps,
+  width,
 } from '@looker/design-tokens'
-import { WidthProps, width } from 'styled-system'
 
 import { InputProps } from '../InputProps'
 
