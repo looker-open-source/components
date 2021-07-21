@@ -87,7 +87,7 @@ jobs:
         if: ${{ always() && (steps.snapshots.outcome == 'failure') }}
         # This command assumes Storybook has already been built
         # It's built above in the `yarn test:image-snapshots` so that's a safe assumption
-      - run: yarn workspace storybook test-update
+        run: yarn workspace storybook test-update
         id: snapshots-update
       - name: Create Pull Request
         if: ${{ always() && (steps.snapshots-update.outcome == 'success') }}
