@@ -4,8 +4,9 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "develop": "start-storybook  -c .storybook -p 3333  --host 0.0.0.0",
-    "build": "build-storybook -c .storybook",
+    "develop": "start-storybook -p 3333 --host 0.0.0.0",
+    "build": "build-storybook --quiet",
+
     "storyshots-build": "export storybookBuildMode=fast && yarn build",
     "storyshots-preview-backup": "mv .storybook/preview.js .storybook/preview.js.bu",
     "storyshots-preview-restore": "mv .storybook/preview.js.bu .storybook/preview.js",
