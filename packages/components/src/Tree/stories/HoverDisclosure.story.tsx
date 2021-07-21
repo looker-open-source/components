@@ -24,32 +24,23 @@
 
  */
 
-import { DensityProp, DensityRamp } from '@looker/design-tokens'
-import React, { FC } from 'react'
-import { Tree } from '../Tree'
-import { TreeCollection } from '../TreeCollection'
-import { TreeItem } from '../TreeItem'
-import { Grid } from '../../Layout'
+import React from 'react'
+import { TreeCollection, Tree, TreeItem } from '../'
+import { Button } from '../../Button'
 
-const DensityTree: FC<DensityProp> = ({ density }) => (
+export const HoverDisclosure = () => (
   <TreeCollection>
-    <Tree defaultOpen density={density} label={<strong>Tree of Cheese</strong>}>
-      <Tree defaultOpen label={<strong>French Cheeses</strong>}>
-        <TreeItem>Brie</TreeItem>
-      </Tree>
+    <Tree
+      label="Cheeses"
+      detail={{
+        content: <Button>Button</Button>,
+        options: { accessory: true, hoverDisclosure: true },
+      }}
+    >
       <TreeItem>Cheddar</TreeItem>
-      <TreeItem>Gouda</TreeItem>
-      <TreeItem>Swiss</TreeItem>
     </Tree>
   </TreeCollection>
 )
-
-const densities: DensityRamp[] = [1, 0, -1, -2, -3]
-
-export const Density = () => (
-  <Grid columns={densities.length}>
-    {densities.map((density) => (
-      <DensityTree density={density} key={density} />
-    ))}
-  </Grid>
-)
+HoverDisclosure.parameters = {
+  storyshots: { disable: true },
+}

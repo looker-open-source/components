@@ -24,32 +24,32 @@
 
  */
 
-import { DensityProp, DensityRamp } from '@looker/design-tokens'
-import React, { FC } from 'react'
-import { Tree } from '../Tree'
-import { TreeCollection } from '../TreeCollection'
-import { TreeItem } from '../TreeItem'
-import { Grid } from '../../Layout'
+import React from 'react'
+import { Folder } from '@styled-icons/material/Folder'
+import { TreeCollection } from '../Tree'
+import { NavTree } from './NavTree'
+import { NavTreeItem } from './NavTreeItem'
 
-const DensityTree: FC<DensityProp> = ({ density }) => (
-  <TreeCollection>
-    <Tree defaultOpen density={density} label={<strong>Tree of Cheese</strong>}>
-      <Tree defaultOpen label={<strong>French Cheeses</strong>}>
-        <TreeItem>Brie</TreeItem>
-      </Tree>
-      <TreeItem>Cheddar</TreeItem>
-      <TreeItem>Gouda</TreeItem>
-      <TreeItem>Swiss</TreeItem>
-    </Tree>
-  </TreeCollection>
-)
+export default {
+  component: NavTree,
+  title: 'NavTree',
+}
 
-const densities: DensityRamp[] = [1, 0, -1, -2, -3]
-
-export const Density = () => (
-  <Grid columns={densities.length}>
-    {densities.map((density) => (
-      <DensityTree density={density} key={density} />
-    ))}
-  </Grid>
-)
+export const ParentIcon = () => {
+  return (
+    <TreeCollection>
+      <NavTree defaultOpen label="Parent Tree with Icon" icon={<Folder />}>
+        <NavTreeItem parentIcon>Cheddar</NavTreeItem>
+        <NavTreeItem parentIcon>Cheddar 2</NavTreeItem>
+        <NavTreeItem parentIcon>Cheddar 3</NavTreeItem>
+      </NavTree>
+      <NavTree defaultOpen label="Grandparent Tree with Icon" icon={<Folder />}>
+        <NavTree defaultOpen label="Parent Tree with No Icon">
+          <NavTreeItem>Swiss</NavTreeItem>
+          <NavTreeItem>Swiss 2</NavTreeItem>
+          <NavTreeItem>Swiss 3</NavTreeItem>
+        </NavTree>
+      </NavTree>
+    </TreeCollection>
+  )
+}

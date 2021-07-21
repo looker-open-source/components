@@ -31,14 +31,13 @@ import { Story } from '@storybook/react/types-6-0'
 import { Tree, TreeProps, TreeCollection, TreeItem } from '..'
 import { Space } from '../../Layout'
 
-export * from './AssumeIconAlignment.story'
 export * from './BorderRadius.story'
 export * from './ColorfulTree.story'
 export * from './Density.story'
 export * from './DisabledAndSelected.story'
 export * from './FieldPicker.story'
 export * from './FileTree.story'
-export * from './ForceLabelPadding.story'
+export * from './HoverDisclosure.story'
 export * from './LabelBackgroundOnly.story'
 export * from './LongLabels.story'
 export * from './Windowing.story'
@@ -50,11 +49,11 @@ export default {
 
 const Template: Story<TreeProps> = (args) => (
   <TreeCollection>
-    <Tree label="Orders" {...args}>
-      <Tree label="Orders" defaultOpen>
+    <Tree label={<strong>Orders</strong>} {...args}>
+      <Tree label={<strong>Orders</strong>} defaultOpen>
         <TreeItem>ID</TreeItem>
         <TreeItem>Status</TreeItem>
-        <Tree label="Created" defaultOpen>
+        <Tree label={<strong>Created</strong>} defaultOpen>
           <TreeItem>Created Date</TreeItem>
           <TreeItem>Created Month</TreeItem>
           <TreeItem>Created Year</TreeItem>
@@ -81,7 +80,7 @@ Link.args = {
   ...Basic.args,
   href: 'https://google.com',
   itemRole: 'link',
-  label: 'Click my label to go to Google',
+  label: <strong>Click my label to go to Google</strong>,
   rel: 'noopener noreferrer',
   target: '_blank',
 }
@@ -92,10 +91,12 @@ export const Icon = () => (
       defaultOpen
       icon={<Alarm />}
       label={
-        <Space between>
-          "Alarm" icon has margin-right, but "Download" icon does not
-          <Download size={20} />
-        </Space>
+        <strong>
+          <Space between>
+            "Alarm" icon has margin-right, but "Download" icon does not
+            <Download size={20} />
+          </Space>
+        </strong>
       }
     >
       <TreeItem>Don't mind me</TreeItem>

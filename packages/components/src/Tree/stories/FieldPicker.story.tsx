@@ -55,7 +55,6 @@ const fields = (
       <FieldGroupHeading>DIMENSIONS</FieldGroupHeading>
     </TreeBranch>
     <BorderRadiusOverrideTree
-      branchFontWeight
       color="dimension"
       selected
       label={<Box pl="xxsmall">Created</Box>}
@@ -96,21 +95,33 @@ export const FieldPicker = () => (
         density={-3}
         defaultOpen={true}
         detail={3}
-        label={<Box pl="xxsmall">Orders</Box>}
+        label={
+          <Box pl="xxsmall" fontWeight="bold">
+            Orders
+          </Box>
+        }
         labelBackgroundOnly
       >
         {fields}
       </BorderRadiusOverrideTree>
       <BorderRadiusOverrideTree
         density={-3}
-        label={<Box pl="xxsmall">Order Items</Box>}
+        label={
+          <Box pl="xxsmall" fontWeight="bold">
+            Order Items
+          </Box>
+        }
         labelBackgroundOnly
       >
         {fields}
       </BorderRadiusOverrideTree>
       <BorderRadiusOverrideTree
         density={-3}
-        label={<Box pl="xxsmall">Users</Box>}
+        label={
+          <Box pl="xxsmall" fontWeight="bold">
+            Users
+          </Box>
+        }
         labelBackgroundOnly
       >
         {fields}

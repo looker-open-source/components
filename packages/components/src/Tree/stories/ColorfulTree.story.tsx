@@ -30,11 +30,16 @@ import { Tree, TreeCollection, TreeItem } from '..'
 
 export const ColorfulTree = () => (
   <TreeCollection>
-    <Tree defaultOpen label="Colorful Tree">
+    <Tree defaultOpen label={<strong>Colorful Tree</strong>}>
       <TreeItem color="green" icon={<DateRange />}>
         Green TreeItem
       </TreeItem>
-      <Tree color="blue" defaultOpen icon={<DateRange />} label="Blue Tree">
+      <Tree
+        color="blue"
+        defaultOpen
+        icon={<DateRange />}
+        label={<strong>Blue Tree</strong>}
+      >
         <TreeItem color="purple" icon={<DateRange />}>
           Purple TreeItem
         </TreeItem>
