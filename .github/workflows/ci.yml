@@ -75,6 +75,13 @@ jobs:
       - run : yarn --silent
       - run: yarn test:image-snapshots
         id: snapshots
+      # Upload snapshot diffs
+      - uses: actions/upload-artifact@v2
+        if: ${{ always() && (steps.snapshots.outcome == 'failure') }}
+        with:
+          name: snapshot-diffs
+          path: '**/*-.diff.png'
+          retention-days: 5
       # If snapshots failed, build fresh ones and open a PR to help out our friends
       - name: Fresh snapshots
         if: ${{ always() && (steps.snapshots.outcome == 'failure') }}
