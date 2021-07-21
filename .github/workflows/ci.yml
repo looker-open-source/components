@@ -73,14 +73,21 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
       - uses: c-hive/gha-yarn-cache@v1
       - run : yarn --silent
-      - run: yarn test:image-snapshots
+      - run: yarn workspace storybook test
         id: snapshots
+      # Upload snapshot diffs
+      - uses: actions/upload-artifact@v2
+        if: ${{ always() && (steps.snapshots.outcome == 'failure') }}
+        with:
+          name: snapshot-diffs
+          path: '.loki/difference'
+          retention-days: 5
       # If snapshots failed, build fresh ones and open a PR to help out our friends
       - name: Fresh snapshots
         if: ${{ always() && (steps.snapshots.outcome == 'failure') }}
         # This command assumes Storybook has already been built
         # It's built above in the `yarn test:image-snapshots` so that's a safe assumption
-        run: yarn workspace storybook snapshots-update-only
+      - run: yarn workspace storybook test-update
         id: snapshots-update
       - name: Create Pull Request
         if: ${{ always() && (steps.snapshots-update.outcome == 'success') }}

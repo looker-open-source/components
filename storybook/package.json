@@ -4,13 +4,14 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "develop": "start-storybook  -c .storybook -p 3333  --host 0.0.0.0",
-    "build": "build-storybook -c .storybook",
+    "develop": "start-storybook -p 3333 --host 0.0.0.0",
+    "build": "build-storybook --quiet",
     "snapshots": "yarn loki --port 3333",
     "snapshots-update": "yarn snapshots update",
 
-    "ci-build": "export storybookBuildMode=fast && yarn build"
-
+    "xpretest": "export storybookBuildMode=fast && yarn build",
+    "test": "yarn loki --requireReference --reactUri file:./storybook-static",
+    "test-update": "yarn loki update --reactUri file:./storybook-static"
   },
   "dependencies": {
     "@looker/components": "*",
