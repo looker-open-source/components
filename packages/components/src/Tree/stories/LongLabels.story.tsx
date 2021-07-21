@@ -34,10 +34,26 @@ import { Tree, TreeCollection, TreeItem, IconButton } from '../..'
 
 export const LongLabels = () => (
   <TreeCollection>
-    <Tree label="Tree with long labels " icon={<Explore />} defaultOpen>
-      <Tree label="Wrapping next" icon={<Visibility />} defaultOpen>
+    <Tree
+      label={<strong>Tree with long labels</strong>}
+      icon={<Explore />}
+      defaultOpen
+    >
+      <Tree
+        label={<strong>Wrapping next</strong>}
+        icon={<Visibility />}
+        defaultOpen
+      >
         <Tree
-          label="Orders Lorem ipsum dolor sit amet, consectetur adipiscing elit. Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc."
+          label={
+            <strong>
+              Orders Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Latin words, combined with a handful of model sentence structures,
+              to generate Lorem Ipsum which looks reasonable. The generated
+              Lorem Ipsum is therefore always free from repetition, injected
+              humour, or non-characteristic words etc.
+            </strong>
+          }
           icon={<TableChart />}
           defaultOpen
         >
@@ -72,9 +88,21 @@ export const LongLabels = () => (
           </TreeItem>
         </Tree>
       </Tree>
-      <Tree label="Truncated text" icon={<Visibility />} defaultOpen>
+      <Tree
+        label={<strong>Truncated text</strong>}
+        icon={<Visibility />}
+        defaultOpen
+      >
         <Tree
-          label="Users Lorem ipsum dolor sit amet, consectetur adipiscing elit. There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. "
+          label={
+            <strong>
+              Users Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              There are many variations of passages of Lorem Ipsum available,
+              but the majority have suffered alteration in some form, by
+              injected humour, or randomised words which don't look even
+              slightly believable.
+            </strong>
+          }
           icon={<TableChart />}
           truncate
           defaultOpen

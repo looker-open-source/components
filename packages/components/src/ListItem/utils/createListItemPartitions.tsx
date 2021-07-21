@@ -34,17 +34,26 @@ import { getDetailOptions } from './getDetailOptions'
 
 export type CreateListItemPartitionsProps = {
   icon?: IconType | ReactElement<IconPlaceholderProps>
-} & ListItemProps
+} & Pick<
+  ListItemProps,
+  | 'color'
+  | 'density'
+  | 'description'
+  | 'detail'
+  | 'disabled'
+  | 'children'
+  | 'truncate'
+>
 
 export const createListItemPartitions = ({
   color,
   density = 0,
   description,
+  detail,
   disabled,
   icon,
   children,
   truncate,
-  ...props
 }: CreateListItemPartitionsProps) => {
   const iconProps = {
     alignStart: Boolean(description),
@@ -63,8 +72,8 @@ export const createListItemPartitions = ({
     truncate,
   }
 
-  const { accessory, content, ...options } = getDetailOptions(props.detail)
-  const detail = props.detail && (
+  const { accessory, content, ...options } = getDetailOptions(detail)
+  const renderedDetail = detail && (
     <ListItemDetail {...options}>{content}</ListItemDetail>
   )
 
@@ -72,9 +81,9 @@ export const createListItemPartitions = ({
     <>
       {icon && <ListItemIcon {...iconProps} />}
       {<ListItemLabel {...labelProps} />}
-      {!accessory && detail}
+      {!accessory && renderedDetail}
     </>
   )
 
-  return [inside, accessory && detail]
+  return [inside, accessory && renderedDetail]
 }

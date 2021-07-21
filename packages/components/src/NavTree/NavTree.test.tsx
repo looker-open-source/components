@@ -25,17 +25,26 @@
  */
 
 import React from 'react'
-import { Folder } from '@styled-icons/material/Folder'
-import { Tree, TreeCollection, TreeItem } from '..'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { fireEvent, screen } from '@testing-library/react'
+import { ParentIcon } from './NavTree.story'
 
-export const AssumeIconAlignment = () => (
-  <TreeCollection>
-    <Tree icon={<Folder />} label="Folders" defaultOpen>
-      <Tree label="With Icon" defaultOpen assumeIconAlignment>
-        <TreeItem>Performance</TreeItem>
-        <TreeItem>Sales</TreeItem>
-        <TreeItem>Metrics</TreeItem>
-      </Tree>
-    </Tree>
-  </TreeCollection>
-)
+describe('NavTree', () => {
+  test('Renders string disclosure label and detail', () => {
+    renderWithTheme(<ParentIcon />)
+
+    screen.getByText('Parent Tree with Icon')
+    screen.getByText('Cheddar')
+  })
+
+  test('Renders and hides children on disclosure click', () => {
+    renderWithTheme(<ParentIcon />)
+
+    const treeLabel = screen.getByText('Parent Tree with Icon')
+    screen.getByText('Cheddar')
+    fireEvent.click(treeLabel)
+    expect(screen.queryByText('Cheddar')).not.toBeInTheDocument()
+    fireEvent.click(treeLabel)
+    screen.getByText('Cheddar')
+  })
+})

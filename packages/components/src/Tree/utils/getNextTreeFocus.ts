@@ -64,17 +64,11 @@ export const getNextTreeFocus = (
 
       return treeItems[next]
     } else if (vertical === false) {
-      const accordionFocused =
-        (focusedElement?.hasAttribute('aria-expanded') &&
-          focusedElement.getAttribute('role') === 'treeitem') ||
-        closestWrapper.hasAttribute('aria-expanded')
-      const childTabStops = Array.from(
-        closestWrapper.querySelectorAll('[tabindex="-1"]:not(:disabled)')
-      )
-
-      const tabStops = accordionFocused
-        ? ([focusedElement, ...childTabStops] as HTMLElement[])
-        : (childTabStops as HTMLElement[])
+      const tabStops = Array.from(
+        closestWrapper.querySelectorAll(
+          'a,input,button:not(:disabled),[tabindex="0"],[tabindex="-1"]:not(:disabled)'
+        )
+      ) as HTMLElement[]
 
       const next = tabStops.findIndex((el) => el === focusedElement) + direction
 

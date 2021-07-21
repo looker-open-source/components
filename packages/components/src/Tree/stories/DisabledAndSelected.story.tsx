@@ -24,22 +24,22 @@
 
  */
 
-import React, { FC } from 'react'
+import React, { FC, ReactNode } from 'react'
 import { TreeCollection, TreeItem, Tree } from '..'
 import { Grid } from '../../Layout/Grid'
 import { ListItemColor } from '../../ListItem'
 
-const Basic: FC<{ children: string; color?: ListItemColor }> = ({
+const Basic: FC<{ children: ReactNode; color?: ListItemColor }> = ({
   children,
   ...props
 }) => (
   <TreeCollection>
     <Tree label={children} defaultOpen {...props}>
-      <Tree disabled label="Disabled Tree" defaultOpen>
+      <Tree disabled label={<strong>Disabled Tree</strong>} defaultOpen>
         <TreeItem disabled>Disabled TreeItem</TreeItem>
         <TreeItem selected>Selected TreeItem</TreeItem>
       </Tree>
-      <Tree selected label="Selected Tree" defaultOpen>
+      <Tree selected label={<strong>Selected Tree</strong>} defaultOpen>
         <TreeItem disabled>Disabled TreeItem</TreeItem>
         <TreeItem selected>Selected TreeItem</TreeItem>
       </Tree>
@@ -49,8 +49,14 @@ const Basic: FC<{ children: string; color?: ListItemColor }> = ({
 
 export const DisabledAndSelected = () => (
   <Grid columns={3}>
-    <Basic>Default</Basic>
-    <Basic color="key">Key</Basic>
-    <Basic color="calculation">Dimension</Basic>
+    <Basic>
+      <strong>Default</strong>
+    </Basic>
+    <Basic color="key">
+      <strong>Key</strong>
+    </Basic>
+    <Basic color="calculation">
+      <strong>Dimension</strong>
+    </Basic>
   </Grid>
 )

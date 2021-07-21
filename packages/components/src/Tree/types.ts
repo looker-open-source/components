@@ -45,17 +45,24 @@ export const treeItemInnerPropKeys = [
   ...linkPropKeys,
 ] as const
 
+/**
+ * @deprecated
+ */
 type AssumeIconAlignment = {
   /**
    * If true, alignment will change in two ways:
    * 1) The `Tree`'s label will align itself with a parent `Tree`'s label (Note: the parent should have an icon and the child should not)
    * 2) The `Tree`'s child items will align their labels with the `Tree`'s label
    * @default false
+   * @deprecated Use NavTree and NavTreeItem instead
    */
   assumeIconAlignment?: boolean
   forceLabelPadding?: never
 }
 
+/**
+ * @deprecated
+ */
 type ForceLabelPadding = {
   /**
    * If true, alignment will change in two ways:
@@ -63,7 +70,7 @@ type ForceLabelPadding = {
    * 2) The `Tree`'s child items will align their labels with the `Tree`'s label
    * @default false
    * @todo - Remove in 3.x release
-   * @deprecated Use `assumeIconAlignment` prop instead
+   * @deprecated Use NavTree and NavTreeItem instead
    */
   forceLabelPadding?: boolean
   assumeIconAlignment?: never
@@ -76,11 +83,13 @@ export type TreeProps = ControlledLoosely &
     /**
      * If true, vertical lines will extend from the Tree indicator (and all sub-Trees' indicators)
      * @default false
+     * @deprecated Remove in 3.x
      */
     border?: boolean
     /**
      * If true, the internal AccordionDisclosure will have fontWeight = 'Normal'
      * @default false
+     * @deprecated Tree `label` prop text will be normal font weight by default. Use a <strong> tag in the `label` prop to bold text for better accessibility.
      */
     branchFontWeight?: boolean
     /**

@@ -48,13 +48,6 @@ export type Accordion2Props = ControlledOrUncontrolled &
      * Note: This will be auto-generated if left undefined
      */
     id?: string
-
-    /**
-     * Used for virtualization when the disclosure is above the window
-     * @default false
-     * @private This feature may be removed without a breaking change. We STRONGLY discourage the direct use of this property.
-     */
-    hideDisclosure?: boolean
   }
 
 export type AccordionIndicatorProps = DensityProp & {

@@ -38,14 +38,14 @@ import { TreeProps } from '../types'
 
 const Template: Story<TreeProps> = (args) => (
   <TreeCollection>
-    <Tree {...args} label="thelook" icon={<Explore />}>
-      <Tree label="Users" icon={<Visibility />} defaultOpen branchFontWeight>
-        <Tree label="Orders" icon={<TableChart />} defaultOpen branchFontWeight>
+    <Tree {...args} label={<strong>thelook</strong>} icon={<Explore />}>
+      <Tree label="Users" icon={<Visibility />} defaultOpen>
+        <Tree label="Orders" icon={<TableChart />} defaultOpen>
           <TreeItem icon={<TextSnippet />}>ID</TreeItem>
           <TreeItem icon={<TextSnippet />}>Status</TreeItem>
           <TreeItem icon={<TextSnippet />}>Created</TreeItem>
         </Tree>
-        <Tree label="Users" icon={<TableChart />} defaultOpen branchFontWeight>
+        <Tree label="Users" icon={<TableChart />} defaultOpen>
           <TreeItem icon={<TextSnippet />}>ID</TreeItem>
           <TreeItem icon={<TextSnippet />}>Name</TreeItem>
           <TreeItem icon={<TextSnippet />}>Created</TreeItem>
