@@ -33,8 +33,9 @@ import {
 } from '../Tree/utils/generateIndent'
 import { TreeContext } from '../Tree/TreeContext'
 import { ListItemDetail, ListItemProps, listItemDimensions } from '../ListItem'
-import { TreeItem, TreeItem2Content } from '../Tree'
+import { TreeItem } from '../Tree'
 import { accordionDimensions } from '../Accordion2/accordionDimensions'
+import { TreeItem2Content } from '../Tree/TreeItem2Content'
 
 const IndentOverrideTreeItem = styled(TreeItem).withConfig<
   {

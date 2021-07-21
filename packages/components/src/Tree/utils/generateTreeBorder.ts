@@ -28,7 +28,7 @@ import { css } from 'styled-components'
 import { DensityRamp, Theme } from '@looker/design-tokens'
 import { listItemDimensions } from '../../ListItem'
 
-export type GenerateTreeBorderProps = {
+export type TreeBorderProps = {
   border?: boolean
   density: DensityRamp
   depth: number
@@ -44,28 +44,26 @@ export const generateTreeBorder = ({
   density,
   depth,
   theme,
-}: GenerateTreeBorderProps) => {
-  if (border) {
-    const { iconSize } = listItemDimensions(density)
+}: TreeBorderProps) => {
+  if (!border) return false
 
-    const itemBorderSize = '1px'
-    const itemGutter = '0.25rem'
-    const indicatorIconSize = theme.sizes[iconSize]
-    const depthSize = `(${indicatorIconSize} + ${itemGutter}) * ${depth}`
-    const borderSpacer = `(${indicatorIconSize} + ${itemBorderSize}) / 2 + ${depthSize}`
+  const { iconSize } = listItemDimensions(density)
 
-    const preBorderStop = `calc(${borderSpacer} - ${itemBorderSize})`
-    const postBorderStop = `calc(${borderSpacer})`
+  const itemBorderSize = '1px'
+  const itemGutter = '0.25rem'
+  const indicatorIconSize = theme.sizes[iconSize]
+  const depthSize = `(${indicatorIconSize} + ${itemGutter}) * ${depth}`
+  const borderSpacer = `(${indicatorIconSize} + ${itemBorderSize}) / 2 + ${depthSize}`
 
-    return css`
-      background: linear-gradient(
-        90deg,
-        transparent ${preBorderStop},
-        ${theme.colors.ui2} ${preBorderStop} ${postBorderStop},
-        transparent ${postBorderStop}
-      );
-    `
-  }
+  const preBorderStop = `calc(${borderSpacer} - ${itemBorderSize})`
+  const postBorderStop = `calc(${borderSpacer})`
 
-  return false
+  return css`
+    background: linear-gradient(
+      90deg,
+      transparent ${preBorderStop},
+      ${theme.colors.ui2} ${preBorderStop} ${postBorderStop},
+      transparent ${postBorderStop}
+    );
+  `
 }

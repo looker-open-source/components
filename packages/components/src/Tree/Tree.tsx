@@ -41,18 +41,12 @@ import { List } from '../List'
 import { ListItemContext, ListItemProps } from '../ListItem'
 import { createListItemPartitions } from '../ListItem/utils'
 import { TreeContext } from './TreeContext'
-import {
-  generateTreeBorder,
-  GenerateTreeBorderProps,
-  indicatorDefaults,
-} from './utils'
+import { generateTreeBorder, TreeBorderProps, indicatorDefaults } from './utils'
 import { WindowedTreeContext } from './WindowedTreeNode'
 import { treeItemInnerPropKeys, TreeProps } from './types'
-import {
-  TreeItem,
-  TreeItem2Content as TreeDisclosureLabel,
-  TreeItem2Label,
-} from './TreeItem'
+import { TreeItem } from './TreeItem'
+import { TreeItem2Content } from './TreeItem2Content'
+import { TreeItem2Label } from './TreeItem2Label'
 
 /**
  * TODO: When labelToggle is introduced the aria-* attributes should land on the nested ListItem's
@@ -119,8 +113,7 @@ const TreeLayout = ({
     onMouseLeave
   )
 
-  const { color: listColor } = useContext(ListItemContext)
-
+  const listContext = useContext(ListItemContext)
   const treeContext = useContext(TreeContext)
 
   // Context for supporting windowing
@@ -138,7 +131,11 @@ const TreeLayout = ({
   const toggleOpen = toggleNode ?? propsToggleOpen
 
   const border = undefinedCoalesce([propsBorder, treeContext.border])
-  const color = undefinedCoalesce([propsColor, treeContext.color, listColor])
+  const color = undefinedCoalesce([
+    propsColor,
+    treeContext.color,
+    listContext.color,
+  ])
 
   const hasLabelBackgroundOnly = undefinedCoalesce([
     propsLabelBackgroundOnly,
@@ -240,7 +237,7 @@ const TreeLayout = ({
               onMouseEnter={handleWrapperMouseEnter}
               onMouseLeave={handleWrapperMouseLeave}
             >
-              <TreeDisclosureLabel
+              <TreeItem2Content
                 aria-selected={selected}
                 depth={depth}
                 href={href}
@@ -264,7 +261,7 @@ const TreeLayout = ({
                 ) : (
                   disclosureLabel
                 )}
-              </TreeDisclosureLabel>
+              </TreeItem2Content>
               {outside}
             </Flex>
           )}
@@ -282,7 +279,7 @@ const TreeLayout = ({
   )
 }
 
-const TreeContent = styled.div<GenerateTreeBorderProps>`
+const TreeContent = styled.div<TreeBorderProps>`
   ${generateTreeBorder}
 `
 
