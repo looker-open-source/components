@@ -31,7 +31,7 @@ import { Editor, EditorProps } from './Editor'
 export const ThemeEditor = (props: EditorProps) => <Editor {...props} />
 
 ThemeEditor.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const CompareThemes = () => (
@@ -59,7 +59,7 @@ export const CompareThemes = () => (
 )
 
 CompareThemes.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export default {

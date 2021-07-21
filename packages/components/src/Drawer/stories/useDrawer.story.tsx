@@ -49,5 +49,5 @@ export const UseDrawerHook = () => {
 }
 
 UseDrawerHook.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }

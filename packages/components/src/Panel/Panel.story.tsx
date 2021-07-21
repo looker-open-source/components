@@ -65,7 +65,7 @@ Basic.args = {
   title: 'Panel Title',
 }
 Basic.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const Open = Template.bind({})
@@ -93,7 +93,7 @@ CloseLabel.args = {
   closeLabel: 'Back to the last thing',
 }
 CloseLabel.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 const HookInner = () => {
@@ -122,7 +122,7 @@ export const Hook = () => {
   )
 }
 Hook.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const CenterPlacement = () => (
@@ -211,7 +211,7 @@ export const CenterPlacement = () => (
 )
 
 CenterPlacement.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const WithTree = () => (
@@ -277,5 +277,5 @@ export const WithDrawer = () => (
 )
 
 WithDrawer.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }

@@ -39,5 +39,5 @@ const Template: Story<DividerVerticalProps> = (args) => (
 
 export const Basic = Template.bind({})
 Basic.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }

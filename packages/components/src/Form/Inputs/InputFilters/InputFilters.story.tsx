@@ -107,7 +107,7 @@ CustomEditor.args = {
   filters: customFilters,
 }
 CustomEditor.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export default {

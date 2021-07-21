@@ -48,7 +48,7 @@ Loading.args = {
 }
 /* Spinner animation timing may not be consistent */
 Loading.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const NoResults = Template.bind({})
@@ -63,7 +63,7 @@ NoResultsDisplay.args = {
   noResultsDisplay: 'No faux items were found',
 }
 NoResultsDisplay.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const NoResultsDisplayFancy = Template.bind({})
@@ -77,5 +77,5 @@ NoResultsDisplayFancy.args = {
   ),
 }
 NoResultsDisplayFancy.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }

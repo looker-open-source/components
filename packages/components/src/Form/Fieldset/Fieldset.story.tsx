@@ -174,7 +174,7 @@ export const AccordionAlt = () => {
 }
 
 AccordionAlt.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const Nesting = () => (
@@ -198,7 +198,7 @@ export const Nesting = () => (
 )
 
 Nesting.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const FieldsHideLabel = () => (

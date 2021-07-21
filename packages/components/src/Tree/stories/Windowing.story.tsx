@@ -145,5 +145,5 @@ export const Windowing = ({ noText }: { noText?: boolean }) => {
 
 Windowing.parameters = {
   docs: { disable: true },
-  storyshots: { disable: true },
+  loki: { skip: true },
 }

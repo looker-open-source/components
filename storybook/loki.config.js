@@ -24,21 +24,18 @@
 
  */
 
-process.env.TZ = 'UTC'
-
 module.exports = {
-  moduleDirectories: ['./node_modules', './packages', './storybook'],
-  moduleFileExtensions: ['js', 'json', 'ts', 'tsx'],
-  moduleNameMapper: {
-    '@looker\\/((?!sdk)[^\\/]+)': '<rootDir>/../packages/$1/src',
-    '\\.(css)$': '<rootDir>/../config/jest/styleMock.js',
-    '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)$':
-      '<rootDir>/../config/jest/fileMock.js',
+  chromeSelector: '.looker-components-reset > *',
+  configurations: {
+    'chrome.laptop': {
+      deviceScaleFactor: 1,
+      height: 600,
+      mobile: false,
+      target: 'chrome.app',
+      width: 800,
+    },
   },
-  roots: ['<rootDir>'],
-  testEnvironment: 'jsdom',
-  testMatch: ['**/*.shots.ts'],
-  transform: {
-    '^.+\\.(js|jsx|ts|tsx)$': 'babel-jest',
-  },
+  fileNameFormatter: ({ configurationName, kind, story }) =>
+    `${configurationName}/${kind}/${story}`,
+  port: 3333,
 }

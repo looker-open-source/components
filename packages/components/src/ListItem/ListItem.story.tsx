@@ -128,7 +128,7 @@ HoverDisclosure.args = {
 }
 
 HoverDisclosure.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const IconAndDetail = Template.bind({})

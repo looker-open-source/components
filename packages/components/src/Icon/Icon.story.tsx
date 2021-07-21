@@ -69,7 +69,7 @@ export const Accessibility = () => (
 )
 
 Accessibility.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const Sizes = () => (
@@ -86,7 +86,7 @@ export const Sizes = () => (
 )
 
 Sizes.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const Artwork = () => (
@@ -125,7 +125,7 @@ export const Artwork = () => (
 )
 
 Artwork.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const IconsInsideComponents = () => (
@@ -166,7 +166,7 @@ export const IconsInsideComponents = () => (
 )
 
 IconsInsideComponents.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const IconsPairedWithText = () => (
@@ -244,5 +244,5 @@ export const IconsPairedWithText = () => (
 )
 
 IconsPairedWithText.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }

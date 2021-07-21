@@ -109,7 +109,7 @@ export const LongList = () => {
 }
 
 LongList.parameters = {
-  storyshots: false,
+  loki: { skip: true },
 }
 
 export const ExpandingList = () => {
@@ -175,7 +175,7 @@ export const ExpandingList = () => {
 }
 
 ExpandingList.parameters = {
-  storyshots: false,
+  loki: { skip: true },
 }
 
 const DensityExample: FC<{ density?: DensityRamp }> = ({

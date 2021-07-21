@@ -95,7 +95,7 @@ ReadOnly.args = {
   readOnly: true,
 }
 ReadOnly.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export default {

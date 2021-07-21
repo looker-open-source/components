@@ -148,5 +148,5 @@ export const TimeframeFilter = () => {
 }
 
 TimeframeFilter.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }

@@ -146,7 +146,7 @@ Loading.args = {
 }
 // Animation would make the image snapshot unstable
 Loading.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const NoOptions = Template.bind({})

@@ -279,7 +279,7 @@ export const SelectContent = () => {
 }
 
 SelectContent.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 // Can't have usePopover at the top level of a story because it ends up at the same level
@@ -343,7 +343,7 @@ const SelectDemoInner = () => {
 export const SelectDemo = () => <SelectDemoInner />
 
 SelectDemo.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const UpdateOptions = () => {
@@ -371,7 +371,7 @@ export const UpdateOptions = () => {
 }
 
 UpdateOptions.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const EmptyValue = () => {
@@ -410,7 +410,7 @@ export const EmptyValue = () => {
 }
 
 EmptyValue.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const OptionIcons = () => {
@@ -505,7 +505,7 @@ export const OptionIcons = () => {
 }
 
 OptionIcons.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const CreateOption = () => {
@@ -533,7 +533,7 @@ export const CreateOption = () => {
 }
 
 CreateOption.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const DelayUpdate = () => {
@@ -565,7 +565,7 @@ export const DelayUpdate = () => {
 }
 
 DelayUpdate.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export default {

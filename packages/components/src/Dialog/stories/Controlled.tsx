@@ -39,7 +39,7 @@ export const Controlled = () => {
 }
 
 Controlled.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const ControlledNoChildren = () => {
@@ -58,7 +58,7 @@ export const ControlledNoChildren = () => {
 }
 
 ControlledNoChildren.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 /**
@@ -83,5 +83,5 @@ export const ControlledLegacy = () => {
 }
 
 ControlledLegacy.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }

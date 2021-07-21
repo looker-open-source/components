@@ -40,5 +40,5 @@ export const Detail = () => (
   <DialogHeader detail="Detail text">Heading</DialogHeader>
 )
 Detail.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }

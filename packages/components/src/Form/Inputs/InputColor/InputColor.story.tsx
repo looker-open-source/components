@@ -84,5 +84,5 @@ export const ControlledColor = () => {
 }
 
 ControlledColor.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }

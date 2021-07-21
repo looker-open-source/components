@@ -34,32 +34,24 @@ export default {
 
 export const Basic = () => <PopoverHeader>Header Text</PopoverHeader>
 Basic.parameters = {
-  storyshots: {
-    disable: true,
-  },
+  loki: { skip: true },
 }
 
 export const Hidden = () => <PopoverHeader hidden>Header Text</PopoverHeader>
 Hidden.parameters = {
-  storyshots: {
-    disable: true,
-  },
+  loki: { skip: true },
 }
 
 export const HideClose = () => (
   <PopoverHeader hideClose>Header Text</PopoverHeader>
 )
 HideClose.parameters = {
-  storyshots: {
-    disable: true,
-  },
+  loki: { skip: true },
 }
 
 export const Detail = () => (
   <PopoverHeader detail={<button>close</button>}>Header Text</PopoverHeader>
 )
 Detail.parameters = {
-  storyshots: {
-    disable: true,
-  },
+  loki: { skip: true },
 }

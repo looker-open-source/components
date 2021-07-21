@@ -123,7 +123,7 @@ export const Toggles = () => (
 )
 
 Toggles.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const AutoResize = () => {
@@ -148,7 +148,7 @@ export const AutoResize = () => {
 }
 
 AutoResize.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const BeforeAfterValidation = () => {
@@ -196,5 +196,5 @@ export const BeforeAfterValidation = () => {
 }
 
 BeforeAfterValidation.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }

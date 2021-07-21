@@ -111,7 +111,7 @@ export const FieldChipOptions = () => {
 }
 
 FieldChipOptions.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const Controlled = () => {
@@ -132,7 +132,7 @@ export const Controlled = () => {
 }
 
 Controlled.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 const emailValidator =
@@ -173,5 +173,5 @@ export const ValidationDuplicate = () => {
 }
 
 ValidationDuplicate.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }

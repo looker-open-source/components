@@ -160,7 +160,7 @@ export const CopyPaste = () => {
 }
 
 CopyPaste.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 const selectGroups = [
@@ -405,7 +405,7 @@ export const SelectMultiDemo = () => {
 }
 
 SelectMultiDemo.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export default {

@@ -73,7 +73,7 @@ DefaultOpen.args = {
   defaultOpen: true,
 }
 DefaultOpen.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 const DensityExample = (
@@ -120,5 +120,5 @@ export const Controlled = () => {
   )
 }
 Controlled.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }

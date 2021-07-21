@@ -6,15 +6,11 @@
   "scripts": {
     "develop": "start-storybook  -c .storybook -p 3333  --host 0.0.0.0",
     "build": "build-storybook -c .storybook",
-    "storyshots-build": "export storybookBuildMode=fast && yarn build",
-    "storyshots-preview-backup": "mv .storybook/preview.js .storybook/preview.js.bu",
-    "storyshots-preview-restore": "mv .storybook/preview.js.bu .storybook/preview.js",
-    "presnapshots": "yarn storyshots-build",
-    "snapshots": "yarn storyshots-preview-backup; yarn jest --config ./jest-image-snapshots.config.js; yarn storyshots-preview-restore",
-    "snapshots-update-only": "yarn storyshots-preview-backup; yarn jest -u --config ./jest-image-snapshots.config.js; yarn storyshots-preview-restore",
-    "presnapshots-update": "yarn storyshots-build",
-    "snapshots-update": "yarn snapshots-update-only",
-    "a11y": "yarn storyshots-task --config ./jest-a11y.config.js"
+    "snapshots": "yarn loki --port 3333",
+    "snapshots-update": "yarn snapshots update",
+
+    "ci-build": "export storybookBuildMode=fast && yarn build"
+
   },
   "dependencies": {
     "@looker/components": "*",
@@ -33,9 +29,9 @@
     "@storybook/addon-a11y": "^6.2.9",
     "@storybook/addon-essentials": "^6.2.9",
     "@storybook/addon-storyshots": "^6.2.9",
-    "@storybook/addon-storyshots-puppeteer": "^6.2.9",
     "@storybook/react": "^6.2.9",
     "babel-loader-exclude-node-modules-except": "^1.2.1",
+    "loki": "^0.28.1",
     "tsconfig-paths-webpack-plugin": "^3.5.1"
   }
 }

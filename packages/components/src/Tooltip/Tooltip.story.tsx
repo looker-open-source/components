@@ -45,7 +45,7 @@ Basic.args = {
   content: 'Simple Content',
 }
 Basic.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const Open = Template.bind({})
@@ -54,7 +54,7 @@ Open.args = {
   isOpen: true,
 }
 Open.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const PlacemenTop = Template.bind({})
@@ -63,7 +63,7 @@ PlacemenTop.args = {
   placement: 'top',
 }
 PlacemenTop.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const PlacementRight = Template.bind({})
@@ -72,7 +72,7 @@ PlacementRight.args = {
   placement: 'right',
 }
 PlacementRight.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const PlacementLeft = Template.bind({})
@@ -82,7 +82,7 @@ PlacementLeft.args = {
   placement: 'left',
 }
 PlacementLeft.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const DelayNone = Template.bind({})
@@ -91,7 +91,7 @@ DelayNone.args = {
   delay: 'none',
 }
 DelayNone.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const OpenDelayNone = Template.bind({})
@@ -100,7 +100,7 @@ OpenDelayNone.args = {
   isOpen: true,
 }
 OpenDelayNone.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const RenderProp = () => (
@@ -114,7 +114,7 @@ export const RenderProp = () => (
 )
 
 RenderProp.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const LargeTrigger = () => (
@@ -126,7 +126,7 @@ export const LargeTrigger = () => (
 )
 
 LargeTrigger.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const NestedInPopover = () => {
@@ -171,7 +171,7 @@ export const NestedInPopover = () => {
 }
 
 NestedInPopover.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export default {

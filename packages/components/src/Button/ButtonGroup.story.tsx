@@ -219,5 +219,5 @@ export const Wrapping = () => {
 }
 
 Wrapping.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }

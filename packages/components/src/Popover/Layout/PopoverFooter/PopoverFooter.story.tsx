@@ -45,7 +45,5 @@ export const FooterWithChildren = () => (
 
 export const FooterClose = () => <PopoverFooter closeButton="Close" />
 FooterClose.parameters = {
-  storyshots: {
-    disable: true,
-  },
+  loki: { skip: true },
 }

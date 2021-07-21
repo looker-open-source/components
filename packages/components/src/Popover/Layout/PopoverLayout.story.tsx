@@ -68,7 +68,7 @@ NoFooter.args = {
   ...Basic.args,
 }
 NoFooter.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const Full = Template.bind({})

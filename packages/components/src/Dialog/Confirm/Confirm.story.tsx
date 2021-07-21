@@ -55,7 +55,7 @@ export const Basic = () => {
 }
 
 Basic.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const Critical = () => {
@@ -80,7 +80,7 @@ export const Critical = () => {
 }
 
 Critical.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const Rich = () => {
@@ -122,5 +122,5 @@ export const Rich = () => {
 }
 
 Rich.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }

@@ -87,5 +87,5 @@ export const ChipButtons = () => {
 }
 
 ChipButtons.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }

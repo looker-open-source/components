@@ -124,7 +124,7 @@ export const ScrollIndependently = () => (
   </Highlighter>
 )
 ScrollIndependently.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const ScrollSelectedAreas = () => (
@@ -148,7 +148,7 @@ export const ScrollSelectedAreas = () => (
   </Highlighter>
 )
 ScrollSelectedAreas.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const ScrollAllAreasTogetherDefault = () => (
@@ -170,5 +170,5 @@ export const ScrollAllAreasTogetherDefault = () => (
   </Highlighter>
 )
 ScrollAllAreasTogetherDefault.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }

@@ -81,7 +81,7 @@ ReadOnly.args = {
   value: 'Only read',
 }
 ReadOnly.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const GroupedWindowing = Template.bind({})
@@ -92,7 +92,7 @@ GroupedWindowing.args = {
 }
 
 GroupedWindowing.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const Advanced = () => {

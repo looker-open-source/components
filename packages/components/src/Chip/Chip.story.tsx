@@ -104,7 +104,7 @@ export const ClickAndDelete = () => {
 }
 
 ClickAndDelete.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const Removable = () => {
@@ -127,5 +127,5 @@ export const Removable = () => {
 }
 
 Removable.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }

@@ -51,7 +51,7 @@ Basic.args = {
   content: 'Simple Content',
 }
 Basic.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const Open = Template.bind({})
@@ -110,7 +110,7 @@ withCheckbox.args = {
 }
 withCheckbox.parameters = {
   docs: { disable: true },
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const ClickOutside = () => {
@@ -141,7 +141,7 @@ export const ClickOutside = () => {
 
 ClickOutside.parameters = {
   docs: { disable: true },
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const MultiFunctionButton = () => {
@@ -163,7 +163,7 @@ export const MultiFunctionButton = () => {
 }
 MultiFunctionButton.parameters = {
   docs: { disable: true },
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export default {

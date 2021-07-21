@@ -127,5 +127,5 @@ export const Localized = () => {
 }
 
 Localized.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }

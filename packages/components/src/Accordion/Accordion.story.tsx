@@ -103,7 +103,7 @@ export const DefaultOpen = () => (
 )
 
 DefaultOpen.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const CustomizedIndicator = () => (
@@ -138,7 +138,7 @@ export const Controlled = () => {
 }
 
 Controlled.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 const Branch: FC<{ children?: ReactNode }> = ({ children }) => (
@@ -170,7 +170,7 @@ export const Nested = () => (
 )
 
 Nested.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const ApiExplorer = () => {
@@ -216,7 +216,7 @@ export const ApiExplorer = () => {
 }
 
 ApiExplorer.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 const Customized = styled.div`

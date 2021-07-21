@@ -84,7 +84,7 @@ export const GroupedByOutput = () => {
 }
 
 GroupedByOutput.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export default {

@@ -106,5 +106,5 @@ export const Controlled = () => {
 }
 
 Controlled.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }

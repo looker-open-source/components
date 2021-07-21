@@ -67,7 +67,7 @@ export const Basic = () => (
 )
 
 Basic.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const PopoverWithLayout = () => (
@@ -83,9 +83,7 @@ export const PopoverWithLayout = () => (
   </Popover>
 )
 PopoverWithLayout.parameters = {
-  storyshots: {
-    disable: true,
-  },
+  loki: { skip: true },
 }
 
 export const PopoverWithLayoutBasic = () => (
@@ -101,9 +99,7 @@ export const PopoverWithLayoutBasic = () => (
   </Popover>
 )
 PopoverWithLayoutBasic.parameters = {
-  storyshots: {
-    disable: true,
-  },
+  loki: { skip: true },
 }
 
 const options = [
@@ -239,7 +235,7 @@ export const PopoverFocusTrap = () => {
 }
 
 PopoverFocusTrap.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const OverlayOpenDialog = () => {
@@ -278,7 +274,7 @@ export const OverlayOpenDialog = () => {
 }
 
 OverlayOpenDialog.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 const DialogInner = () => {
@@ -345,7 +341,7 @@ export const RenderProps = () => (
 )
 
 RenderProps.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const RenderPropsSpread = () => (
@@ -355,7 +351,7 @@ export const RenderPropsSpread = () => (
 )
 
 RenderPropsSpread.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const Placement = () => {
@@ -384,7 +380,7 @@ export const Placement = () => {
 }
 
 Placement.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 // Can't have usePopover at the top level of a story because it ends up at the same level
@@ -439,7 +435,7 @@ const MovingTargetInner = () => {
 export const MovingTarget = () => <MovingTargetInner />
 
 MovingTarget.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const MouseUp = () => {
@@ -473,7 +469,7 @@ export const MouseUp = () => {
 }
 
 MouseUp.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const MultiFunctionButton = () => {
@@ -493,5 +489,5 @@ export const MultiFunctionButton = () => {
 }
 MultiFunctionButton.parameters = {
   docs: { disable: true },
-  storyshots: { disable: true },
+  loki: { skip: true },
 }

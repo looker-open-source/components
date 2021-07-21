@@ -34,16 +34,12 @@ export default {
 
 export const Basic = () => <DialogFooter>Footer Text</DialogFooter>
 Basic.parameters = {
-  storyshots: {
-    disable: true,
-  },
+  loki: { skip: true },
 }
 
 export const Secondary = () => (
   <DialogFooter secondary={<button>Done</button>}>Footer Text</DialogFooter>
 )
 Secondary.parameters = {
-  storyshots: {
-    disable: true,
-  },
+  loki: { skip: true },
 }

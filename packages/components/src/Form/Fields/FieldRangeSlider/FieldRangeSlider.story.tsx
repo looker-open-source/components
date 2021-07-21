@@ -50,21 +50,21 @@ export const Steps = Template.bind({})
 Steps.args = { max: 1000, min: 100, step: 50 }
 
 Steps.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const Floating = Template.bind({})
 Floating.args = { max: 3.7, min: 0.1, step: 0.1 }
 
 Floating.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const ReadOnly = Template.bind({})
 ReadOnly.args = { defaultValue: [3, 7], readOnly: true }
 
 ReadOnly.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const Controlled = () => {
@@ -92,7 +92,7 @@ export const Controlled = () => {
 }
 
 Controlled.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const DashboardFilters = () => {
@@ -121,7 +121,7 @@ export const DashboardFilters = () => {
 }
 
 DashboardFilters.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 const FilterGrid = styled.div`

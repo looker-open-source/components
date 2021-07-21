@@ -95,7 +95,7 @@ export const Controlled = () => {
 }
 
 Controlled.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const Localized = () => {
@@ -233,5 +233,5 @@ export const Localized = () => {
 }
 
 Localized.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }

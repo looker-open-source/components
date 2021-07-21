@@ -118,7 +118,7 @@ export const Basic = () => (
 )
 
 Basic.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const Controlled = () => {
@@ -131,7 +131,7 @@ export const Controlled = () => {
 }
 
 Controlled.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const IconSpace = () => (
@@ -224,7 +224,7 @@ export const IconSpace = () => (
 )
 
 IconSpace.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 const MenuIcons = forwardRef(
@@ -273,7 +273,7 @@ export const Hover = () => {
 }
 
 Hover.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const RealisticMenus = () => {
@@ -403,7 +403,7 @@ export const RealisticMenus = () => {
 }
 
 RealisticMenus.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 const getRandomInteger = (limit: number) => Math.floor(Math.random() * limit)
@@ -529,7 +529,7 @@ export const LongMenus = () => {
 }
 
 LongMenus.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const WithDialog = () => {
@@ -565,7 +565,7 @@ export const WithDialog = () => {
 }
 
 WithDialog.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const WithTooltip = () => {
@@ -583,7 +583,7 @@ export const WithTooltip = () => {
 }
 
 WithTooltip.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const ArrowKeyNavigation = () => (
@@ -613,7 +613,7 @@ export const ArrowKeyNavigation = () => (
 )
 
 ArrowKeyNavigation.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const NestedMenu = () => {
@@ -681,5 +681,5 @@ export const NestedMenu = () => {
 }
 
 NestedMenu.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }

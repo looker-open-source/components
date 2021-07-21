@@ -67,5 +67,5 @@ ReadOnly.args = {
   value: "You can't change me.",
 }
 ReadOnly.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }

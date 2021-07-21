@@ -113,5 +113,5 @@ export const SaveChanges = () => {
 }
 
 SaveChanges.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }

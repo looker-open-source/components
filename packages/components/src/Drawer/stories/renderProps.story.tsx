@@ -35,5 +35,5 @@ export const RenderProps = () => (
 )
 
 RenderProps.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }

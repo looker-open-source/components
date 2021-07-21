@@ -38,7 +38,7 @@ Basic.args = {
   content: 'here is some text to be copied',
 }
 Basic.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const LabelStyled = Template.bind({})
@@ -48,7 +48,7 @@ LabelStyled.args = {
   success: 'it was copied',
 }
 LabelStyled.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const ComponentStyled = Template.bind({})
@@ -58,7 +58,7 @@ ComponentStyled.args = {
   success: <Button>Success</Button>,
 }
 ComponentStyled.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export default {

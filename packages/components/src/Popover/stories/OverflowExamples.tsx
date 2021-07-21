@@ -100,5 +100,5 @@ export const OverflowExamples = () => {
 }
 
 OverflowExamples.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }

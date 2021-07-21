@@ -100,7 +100,7 @@ export const LongList = () => {
 }
 
 LongList.parameters = {
-  storyshots: false,
+  loki: { skip: true },
 }
 
 export const MenuHeadingComposition = () => (

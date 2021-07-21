@@ -60,7 +60,7 @@ export const Basic = () => {
 }
 
 Basic.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const Hook = () => {
@@ -88,5 +88,5 @@ export const Hook = () => {
 }
 
 Hook.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }

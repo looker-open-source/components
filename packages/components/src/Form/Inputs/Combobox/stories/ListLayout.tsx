@@ -148,5 +148,5 @@ export const ListLayoutDemo = () => {
 }
 
 ListLayoutDemo.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }

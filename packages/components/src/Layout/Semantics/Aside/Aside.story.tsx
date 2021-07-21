@@ -80,9 +80,7 @@ export const AsideCollapse = () => {
 }
 
 AsideCollapse.parameters = {
-  storyshots: {
-    disable: true,
-  },
+  loki: { skip: true },
 }
 
 const TemplateBorder: Story<AsideProps> = (args) => (

@@ -116,5 +116,5 @@ export const RerenderRepro = () => {
 
 RerenderRepro.parameters = {
   docs: { disable: true },
-  storyshots: { disable: true },
+  loki: { skip: true },
 }

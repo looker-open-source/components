@@ -178,7 +178,7 @@ export const ComboboxDemo = () => {
 }
 
 ComboboxDemo.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const ControlledInputValue = () => {
@@ -209,7 +209,7 @@ export const ControlledInputValue = () => {
 }
 
 ControlledInputValue.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export default {

@@ -42,7 +42,7 @@ const Template: Story<DrawerProps> = (args) => (
 export const Basic = Template.bind({})
 Basic.args = {}
 Basic.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export const Open = Template.bind({})

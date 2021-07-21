@@ -110,7 +110,7 @@ GroupedWindowing.args = {
 }
 
 GroupedWindowing.parameters = {
-  storyshots: { disable: true },
+  loki: { skip: true },
 }
 
 export default {
