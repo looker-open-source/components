@@ -25,7 +25,7 @@
  */
 
 module.exports = {
-  chromeSelector: '.looker-components-reset > *',
+  chromeSelector: '#modal-root, .looker-components-reset > *',
   configurations: {
     'chrome.laptop': {
       deviceScaleFactor: 1,

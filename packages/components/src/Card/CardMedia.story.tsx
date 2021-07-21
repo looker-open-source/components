@@ -39,6 +39,7 @@ export const Default = Template.bind({})
 Default.args = {
   image: 'faux-image.jpg',
 }
+Default.parameters = { loki: { skip: true } }
 
 export const Color = Template.bind({})
 Color.args = {
