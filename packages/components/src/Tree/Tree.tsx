@@ -41,10 +41,18 @@ import { List } from '../List'
 import { ListItemContext, ListItemProps } from '../ListItem'
 import { createListItemPartitions } from '../ListItem/utils'
 import { TreeContext } from './TreeContext'
-import { indicatorDefaults } from './utils'
+import {
+  generateTreeBorder,
+  GenerateTreeBorderProps,
+  indicatorDefaults,
+} from './utils'
 import { WindowedTreeContext } from './WindowedTreeNode'
 import { treeItemInnerPropKeys, TreeProps } from './types'
-import { TreeItem, TreeItem2Content, TreeItem2Label } from './TreeItem'
+import {
+  TreeItem,
+  TreeItem2Content as TreeDisclosureLabel,
+  TreeItem2Label,
+} from './TreeItem'
 
 /**
  * TODO: When labelToggle is introduced the aria-* attributes should land on the nested ListItem's
@@ -129,7 +137,7 @@ const TreeLayout = ({
   const isOpen = contextIsOpen ?? propsIsOpen
   const toggleOpen = toggleNode ?? propsToggleOpen
 
-  const hasBorder = undefinedCoalesce([propsBorder, treeContext.border])
+  const border = undefinedCoalesce([propsBorder, treeContext.border])
   const color = undefinedCoalesce([propsColor, treeContext.color, listColor])
 
   const hasLabelBackgroundOnly = undefinedCoalesce([
@@ -213,7 +221,7 @@ const TreeLayout = ({
     <HoverDisclosureContext.Provider value={{ visible: hovered }}>
       <TreeContext.Provider
         value={{
-          border: hasBorder,
+          border,
           color,
           density,
           depth: depth + 1,
@@ -232,7 +240,7 @@ const TreeLayout = ({
               onMouseEnter={handleWrapperMouseEnter}
               onMouseLeave={handleWrapperMouseLeave}
             >
-              <TreeItem2Content
+              <TreeDisclosureLabel
                 aria-selected={selected}
                 depth={depth}
                 href={href}
@@ -256,16 +264,27 @@ const TreeLayout = ({
                 ) : (
                   disclosureLabel
                 )}
-              </TreeItem2Content>
+              </TreeDisclosureLabel>
               {outside}
             </Flex>
           )}
-          {accordionIsOpen && <div {...contentDomProps} />}
+          {accordionIsOpen && (
+            <TreeContent
+              border={border}
+              density={density}
+              depth={depth}
+              {...contentDomProps}
+            />
+          )}
         </div>
       </TreeContext.Provider>
     </HoverDisclosureContext.Provider>
   )
 }
+
+const TreeContent = styled.div<GenerateTreeBorderProps>`
+  ${generateTreeBorder}
+`
 
 const dividersCSS = css`
   ${TreeItem} {
