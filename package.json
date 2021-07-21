@@ -104,7 +104,7 @@
     "is-svg": ">= 4.2.2",
     "node-fetch": ">= 2.6.1",
     "node-forge": ">= 0.10.0",
-    "normalize-url": ">=4.5.1",
+    "normalize-url": "=6.1.0",
     "prismjs": ">= 1.23.0",
     "postcss": "7.0.36",
     "react-dev-utils": ">= 11.0.4",
