@@ -26,6 +26,7 @@
 
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
+import { Page } from 'puppeteer'
 import { DialogLongContent } from '../../__mocks__/DialogLongContent'
 import { dialogSizes } from '../../Dialog/dialogWidth'
 import { Drawer, DrawerProps } from '../Drawer'
@@ -45,25 +46,39 @@ Basic.parameters = {
   storyshots: { disable: true },
 }
 
+const beforeScreenshot = async (page: Page) => {
+  // Delay fixes threshold issue with focus ring
+  await page.waitForTimeout(50)
+}
+
 export const Open = Template.bind({})
 Open.args = {
   defaultOpen: true,
 }
-Open.parameters = { docs: { disable: true } }
+Open.parameters = {
+  beforeScreenshot,
+  docs: { disable: true },
+}
 
 export const PlacementLeft = Template.bind({})
 PlacementLeft.args = {
   defaultOpen: true,
   placement: 'left',
 }
-PlacementLeft.parameters = { docs: { disable: true } }
+PlacementLeft.parameters = {
+  beforeScreenshot,
+  docs: { disable: true },
+}
 
 export const Width = Template.bind({})
 Width.args = {
   ...Open.args,
   width: '50rem',
 }
-Width.parameters = { docs: { disable: true } }
+Width.parameters = {
+  beforeScreenshot,
+  docs: { disable: true },
+}
 
 export default {
   argTypes: {

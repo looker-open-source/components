@@ -99,16 +99,6 @@ if (mode === 'fast') {
   config.previewHead = (head) => `
   ${head}
   ${defaultPreviewHead}
-  <style>
-    /**
-     * This is workaround for the situation where
-     * Dialog & Drawer primary buttons spuriously display :focus-visible when opened
-     * initially via defaultOpen=true
-     */
-    *:focus-visible {
-      box-shadow: none !important;
-    }
-  </style>
     `
 }
 
