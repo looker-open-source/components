@@ -28,6 +28,16 @@
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 const excludeNodeModulesExcept = require('babel-loader-exclude-node-modules-except')
 
+const defaultPreviewHead = `
+<style>
+  .sb-show-main {
+    padding: 0 !important; /* stylelint-disable-line declaration-no-important */
+  }
+</style>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
+ `
+
 const config = {
   addons: [
     {
@@ -42,6 +52,10 @@ const config = {
   features: {
     postcss: false,
   },
+  previewHead: (head) => `
+${head}
+${defaultPreviewHead}
+  `,
   stories: [
     '../src/**/*.stories.tsx',
     '../../packages/**/*.story.tsx',
@@ -82,6 +96,20 @@ const mode = process.env.storybookBuildMode
 if (mode === 'fast') {
   config.typescript = { check: false, reactDocgen: false }
   config.addons = []
+  config.previewHead = (head) => `
+  ${head}
+  ${defaultPreviewHead}
+  <style>
+    /**
+     * This is workaround for the situation where
+     * Dialog & Drawer primary buttons spuriously display :focus-visible when opened
+     * initially via defaultOpen=true
+     */
+    *:focus-visible {
+      box-shadow: none !important;
+    }
+  </style>
+    `
 }
 
 module.exports = config
