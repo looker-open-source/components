@@ -80,7 +80,7 @@ jobs:
         if: ${{ always() && (steps.snapshots.outcome == 'failure') }}
         with:
           name: snapshot-diffs
-          path: '**/*-.diff.png'
+          path: snapshots/**/*-diff.png
           retention-days: 5
       # If snapshots failed, build fresh ones and open a PR to help out our friends
       - name: Fresh snapshots
