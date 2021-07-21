@@ -33,9 +33,9 @@ import {
   space,
   SpaceProps,
   shouldForwardProp,
+  variant,
 } from '@looker/design-tokens'
 import styled from 'styled-components'
-import { variant } from 'styled-system'
 
 export interface DividerProps
   extends CompatibleHTMLProps<HTMLHRElement>,

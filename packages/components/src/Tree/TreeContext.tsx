@@ -31,7 +31,7 @@ import { ListItemColor } from '../ListItem'
 export type TreeContextProps = DensityProp & {
   border?: boolean
   color?: ListItemColor
-  depth?: number
+  depth: number
   labelBackgroundOnly?: boolean
 }
 

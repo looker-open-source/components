@@ -27,24 +27,22 @@
 import styled from 'styled-components'
 
 import {
-  reset,
-  space,
-  SpaceProps,
-  shouldForwardProp,
-  textColor,
-  textDecoration,
-  TextDecorationProps,
-  TypographyProps,
-} from '@looker/design-tokens'
-import {
   fontFamily,
   fontSize,
   fontWeight,
   lineHeight,
   letterSpacing,
   fontStyle,
+  reset,
+  space,
+  SpaceProps,
+  shouldForwardProp,
   textAlign,
-} from 'styled-system'
+  textColor,
+  textDecoration,
+  TextDecorationProps,
+  TypographyProps,
+} from '@looker/design-tokens'
 
 export interface TextBaseProps
   extends SpaceProps,

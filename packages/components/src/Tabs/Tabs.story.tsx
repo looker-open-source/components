@@ -27,6 +27,7 @@
 import { Page } from 'puppeteer'
 import React, { useState, FC } from 'react'
 import { Story } from '@storybook/react/types-6-0'
+import { Button } from '../Button'
 import { Space } from '../Layout/Space'
 import { Tab, Tabs, TabList, TabListProps, TabPanel, TabPanels } from './'
 
@@ -83,8 +84,8 @@ export const Controlled: FC = () => {
   return (
     <>
       <Space>
-        <button onClick={() => setTab(0)}>Go to A</button>
-        <button onClick={() => setTab(1)}>Go to B</button>
+        <Button onClick={() => setTab(0)}>Go to A</Button>
+        <Button onClick={() => setTab(1)}>Go to B</Button>
       </Space>
       <Tabs index={currentTabIndex} onChange={setTab}>
         <TabList>

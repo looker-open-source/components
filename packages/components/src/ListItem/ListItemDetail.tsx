@@ -48,5 +48,6 @@ export const ListItemDetail = styled(
   color: ${({ theme }) => theme.colors.text2};
   display: flex;
   font-size: ${({ theme }) => theme.fontSizes.xsmall};
+  height: 100%;
   margin-left: auto;
 `

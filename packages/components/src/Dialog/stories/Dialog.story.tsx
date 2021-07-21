@@ -26,11 +26,12 @@
 
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
+import { Page } from 'puppeteer'
 import { DialogLongContent } from '../../__mocks__/DialogLongContent'
 import { DialogMediumContent } from '../../__mocks__/DialogMediumContent'
 import { SpaceVertical } from '../../Layout/Space/SpaceVertical'
 import { CopyToClipboard } from '../../CopyToClipboard'
-import { Button } from '../../Button'
+import { Button, ButtonOutline } from '../../Button'
 import { Dialog, DialogProps } from '../Dialog'
 import { dialogSizes } from '../dialogWidth'
 import { dialogPlacements } from '../DialogSurface'
@@ -42,7 +43,7 @@ export * from './SaveChanges'
 
 const Template: Story<DialogProps> = (args) => (
   <Dialog {...args}>
-    <button>Open Dialog</button>
+    <ButtonOutline>Open Dialog</ButtonOutline>
   </Dialog>
 )
 
@@ -54,12 +55,20 @@ Basic.parameters = {
   storyshots: { disable: true },
 }
 
+const beforeScreenshot = async (page: Page) => {
+  // Delay fixes threshold issue with focus ring
+  await page.waitForTimeout(50)
+}
+
 export const Open = Template.bind({})
 Open.args = {
   ...Basic.args,
   defaultOpen: true,
 }
-Open.parameters = { docs: { disable: true } }
+Open.parameters = {
+  beforeScreenshot,
+  docs: { disable: true },
+}
 
 export const MediumContent = Template.bind({})
 MediumContent.args = {
@@ -67,14 +76,20 @@ MediumContent.args = {
   defaultOpen: true,
   id: 'CustomDialogId',
 }
-MediumContent.parameters = { docs: { disable: true } }
+MediumContent.parameters = {
+  beforeScreenshot,
+  docs: { disable: true },
+}
 
 export const Height = Template.bind({})
 Height.args = {
   ...MediumContent.args,
   height: '1000rem',
 }
-Height.parameters = { docs: { disable: true } }
+Height.parameters = {
+  beforeScreenshot,
+  docs: { disable: true },
+}
 
 export const PlacementTop = Template.bind({})
 PlacementTop.args = {
@@ -82,7 +97,10 @@ PlacementTop.args = {
   defaultOpen: true,
   placement: 'top',
 }
-PlacementTop.parameters = { docs: { disable: true } }
+PlacementTop.parameters = {
+  beforeScreenshot,
+  docs: { disable: true },
+}
 
 export const PlacementCover = Template.bind({})
 PlacementCover.args = {
@@ -90,14 +108,20 @@ PlacementCover.args = {
   defaultOpen: true,
   placement: 'cover',
 }
-PlacementCover.parameters = { docs: { disable: true } }
+PlacementCover.parameters = {
+  beforeScreenshot,
+  docs: { disable: true },
+}
 
 export const LongContent = Template.bind({})
 LongContent.args = {
   content: <DialogLongContent />,
   defaultOpen: true,
 }
-LongContent.parameters = { docs: { disable: true } }
+LongContent.parameters = {
+  beforeScreenshot,
+  docs: { disable: true },
+}
 
 export const withCheckbox = Template.bind({})
 withCheckbox.args = {

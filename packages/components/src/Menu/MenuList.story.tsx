@@ -38,7 +38,7 @@ const groups: { label?: string; items: MenuItemProps[] }[] = [
     items: [
       {
         children: 'Edit Dashboard',
-        detail: '⌘⇧E',
+        detail: 'cmd+shift+E',
         icon: <Create />,
       },
       {

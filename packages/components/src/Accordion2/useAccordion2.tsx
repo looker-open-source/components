@@ -55,6 +55,7 @@ export const useAccordion2 = ({
   onOpen,
   onKeyUp,
   role,
+  tabIndex = 0,
   toggleOpen: propsToggleOpen,
   ...props
 }: Accordion2Props) => {
@@ -92,7 +93,7 @@ export const useAccordion2 = ({
     density,
     indicator,
     indicatorPosition,
-    tabIndex: 0,
+    tabIndex,
     ...clickableProps,
   }
 

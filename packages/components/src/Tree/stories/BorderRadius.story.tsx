@@ -35,7 +35,12 @@ const BorderRadiusOverrideTree = styled(Tree)`
 
 export const BorderRadiusOverride = () => (
   <TreeCollection>
-    <BorderRadiusOverrideTree selected label="Created" defaultOpen dividers>
+    <BorderRadiusOverrideTree
+      selected
+      label={<strong>Created</strong>}
+      defaultOpen
+      dividers
+    >
       <TreeItem selected>Created Date</TreeItem>
       <TreeItem selected>Created Month</TreeItem>
       <TreeItem selected>Created Year</TreeItem>

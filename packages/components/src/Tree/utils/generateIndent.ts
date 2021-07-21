@@ -27,31 +27,20 @@
 import { DensityProp, DensityRamp, Theme } from '@looker/design-tokens'
 import { css } from 'styled-components'
 import { accordionDimensions } from '../../Accordion2/accordionDimensions'
-import { listItemDimensions } from '../../ListItem'
 
 export type GenerateIndentProps = DensityProp & {
-  assumeIconAlignment?: boolean
   depth?: number
-  icon?: boolean
 }
 
-const generateIndentCalculation = (
+export const generateIndentCalculation = (
   depth: number,
   density: DensityRamp,
-  assumeIconAlignment: boolean,
-  icon: boolean,
   theme: Theme
 ) => {
   const { space, sizes } = theme
-  const { iconGap } = listItemDimensions(density)
   const { indicatorGap, indicatorSize } = accordionDimensions(density)
 
-  const renderedDepth = assumeIconAlignment && !icon ? depth - 1 : depth
-  const iconSpacingSpacer = assumeIconAlignment
-    ? `(${space[iconGap]} - ${space[indicatorGap]})`
-    : '0px'
-
-  return `calc((${sizes[indicatorSize]} + ${space[indicatorGap]}) * ${renderedDepth} + ${iconSpacingSpacer})`
+  return `calc((${sizes[indicatorSize]} + ${space[indicatorGap]}) * ${depth})`
 }
 
 /**
@@ -60,17 +49,9 @@ const generateIndentCalculation = (
  * handles the "parent Tree with Icon" and "parent Tree without Icon" branching paths
  */
 export const generateIndent = ({
-  assumeIconAlignment = false,
   depth = 0,
   density = 0,
-  icon = false,
 }: GenerateIndentProps) => css`
   padding-left: ${({ theme }) =>
-    generateIndentCalculation(
-      depth,
-      density,
-      assumeIconAlignment,
-      icon,
-      theme
-    )};
+    generateIndentCalculation(depth, density, theme)};
 `

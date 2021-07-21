@@ -82,8 +82,7 @@ const imageSnapshots = () => {
         return {
           customSnapshotIdentifier: story,
           customSnapshotsDir: path.join('../snapshots', ...kind.split('/')),
-          failureThreshold: 0.005,
-          failureThresholdType: 'percent',
+          // failureThreshold: 0, // default value
         }
       },
       getScreenshotOptions: ({ context }) => {

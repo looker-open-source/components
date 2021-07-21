@@ -42,41 +42,6 @@ Use `detail` to display an element in the negative space of the `Tree` label.
 </TreeCollection>
 ```
 
-Use the `branchFontWeight` prop if you'd like your `Tree`'s disclosure text to have a "normal" font weight.
-
-These is especially useful when you want a nested `Tree` to match its sibling `TreeItem`s
-
-```jsx
-<TreeCollection>
-  <Tree label="Orders" icon={<TableChart />} defaultOpen>
-    <Tree branchFontWeight label="Created" defaultOpen>
-      <TreeItem>Created Date</TreeItem>
-      <TreeItem>Created Month</TreeItem>
-      <TreeItem>Created Year</TreeItem>
-      <TreeItem>Created Quarter</TreeItem>
-    </Tree>
-    <TreeItem>Cost</TreeItem>
-    <TreeItem>Location</TreeItem>
-    <TreeItem>ID</TreeItem>
-  </Tree>
-</TreeCollection>
-```
-
-Use the `border` prop if you would like to have vertical lines expand from your `Tree`'s indicator icon when open.
-
-```jsx
-<TreeCollection>
-  <Tree border label="Orders" icon={<TableChart />} defaultOpen>
-    <Tree label="Created" defaultOpen>
-      <TreeItem>Created Date</TreeItem>
-      <TreeItem>Created Month</TreeItem>
-      <TreeItem>Created Year</TreeItem>
-      <TreeItem>Created Quarter</TreeItem>
-    </Tree>
-  </Tree>
-</TreeCollection>
-```
-
 Use the `selected` prop to display a light grey background on your `Tree`.
 
 Use the `color='key'` prop to get more colorful backgrounds when your `Tree` (or its child `Tree`s and `TreeItem`s) is hovered or selected.

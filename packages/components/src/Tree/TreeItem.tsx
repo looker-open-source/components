@@ -24,59 +24,190 @@
 
  */
 
-import React, { FC, useContext } from 'react'
+import React, { FC, FocusEvent, useContext, useState } from 'react'
 import styled from 'styled-components'
-import { undefinedCoalesce } from '../utils'
-import { ListItem, ListItemProps } from '../ListItem'
+import { Flex } from '../Layout'
+import {
+  ListItemContent,
+  ListItemContentProps,
+  ListItemProps,
+} from '../ListItem'
+import {
+  createListItemPartitions,
+  listItemBackgroundColor,
+  ListItemBackgroundColorProps,
+} from '../ListItem/utils'
+import {
+  getNextFocusTarget,
+  HoverDisclosureContext,
+  partitionAriaProps,
+  undefinedCoalesce,
+  useFocusVisible,
+  useWrapEvent,
+} from '../utils'
 import { TreeContext } from './TreeContext'
+import { generateIndent, GenerateIndentProps } from './utils'
 
 export type TreeItemProps = ListItemProps & {
-  /**
-   * Callback triggered only when clicking on the TreeItem's outermost container (i.e. not a child element)
-   * Used by `TreeItem`s to allow indent padding clicks to register when `labelBackgroundOnly` is true on a parent `Tree`
-   * Note: onClickWhitespace should only be used if `labelBackgroundOnly` is enabled on a parent `Tree`
-   */
-  onClickWhitespace?: (event: React.MouseEvent<HTMLElement>) => void
+  labelBackgroundOnly?: boolean
 }
 
 const TreeItemLayout: FC<TreeItemProps> = ({
-  children,
-  density: propsDensity,
+  className,
   color: propsColor,
-  onClickWhitespace,
-  role = 'treeitem',
+  density: propsDensity,
+  disabled,
+  itemRole,
+  labelBackgroundOnly: propsLabelBackgroundOnly,
+  onBlur,
+  onClick,
+  onFocus,
+  onKeyDown,
+  onKeyUp,
+  onMouseEnter,
+  onMouseLeave,
+  selected,
   ...restProps
 }) => {
   const {
     density: contextDensity,
+    depth,
     color: contextColor,
-    labelBackgroundOnly,
+    labelBackgroundOnly: contextLabelBackgroundOnly,
   } = useContext(TreeContext)
 
-  if (onClickWhitespace && !labelBackgroundOnly)
-    // eslint-disable-next-line no-console
-    console.warn(
-      'onClickWhitespace is only necessary on <TreeItem> when labelBackgroundOnly is enabled; use onClick on <TreeItem> or to its children instead'
-    )
+  const hasLabelBackgroundOnly =
+    contextLabelBackgroundOnly || propsLabelBackgroundOnly
+
+  const [hovered, setHovered] = useState(false)
+  const handleWrapperMouseEnter = useWrapEvent(
+    () => setHovered(true),
+    onMouseEnter
+  )
+  const handleWrapperMouseLeave = useWrapEvent(
+    () => setHovered(false),
+    onMouseLeave
+  )
+
+  const handleWrapperFocus = () => setHovered(true)
+  // This is needed so that hover disclosed elements don't get lost during keyboard nav
+  const handleWrapperBlur = (event: FocusEvent<HTMLElement>) => {
+    const nextFocusTarget = getNextFocusTarget(event)
+
+    if (
+      nextFocusTarget &&
+      !event.currentTarget.contains(nextFocusTarget as Node)
+    ) {
+      setHovered(false)
+    }
+  }
+  const { focusVisible, ...focusVisibleHandlers } = useFocusVisible({
+    onBlur,
+    onKeyUp,
+  })
 
   // Using labelBackgroundOnly with items with itemRole="button" or "link" leads to overly thin backgrounds
-  if (labelBackgroundOnly && restProps.itemRole !== 'none')
+  if (hasLabelBackgroundOnly && itemRole !== 'none')
     // eslint-disable-next-line no-console
     console.warn(
       'TreeItems should use itemRole="none" when a parent Tree has labelBackgroundOnly=true for visualize purposes.'
     )
 
+  const density = undefinedCoalesce([propsDensity, contextDensity])
+  const color = undefinedCoalesce([propsColor, contextColor])
+  const statefulProps = {
+    color,
+    disabled,
+    hovered,
+    selected,
+  }
+  const [ariaProps, wrapperProps] = partitionAriaProps(restProps)
+  const [inside, outside] = createListItemPartitions({
+    color,
+    density,
+    ...restProps,
+    ...statefulProps,
+  })
+
   return (
-    <ListItem
-      density={undefinedCoalesce([propsDensity, contextDensity])}
-      color={undefinedCoalesce([propsColor, contextColor])}
-      role={role}
-      onClickWhitespace={onClickWhitespace}
-      {...restProps}
-    >
-      {children}
-    </ListItem>
+    <HoverDisclosureContext.Provider value={{ visible: hovered }}>
+      <Flex
+        as="li"
+        className={className}
+        onBlur={handleWrapperBlur}
+        onFocus={handleWrapperFocus}
+        onMouseEnter={handleWrapperMouseEnter}
+        onMouseLeave={handleWrapperMouseLeave}
+        {...wrapperProps}
+      >
+        <TreeItem2Content
+          aria-selected={selected}
+          density={density}
+          /**
+           * Child items should be +1 depth more than their parents so that their label
+           * aligns with the label of the parent as opposed to the indicator
+           */
+          depth={depth + 1}
+          focusVisible={focusVisible}
+          itemRole={itemRole}
+          labelBackgroundOnly={hasLabelBackgroundOnly}
+          onClick={onClick}
+          onFocus={onFocus}
+          onKeyDown={onKeyDown}
+          tabIndex={-1}
+          {...ariaProps}
+          {...focusVisibleHandlers}
+          {...statefulProps}
+        >
+          {/**
+           * @TODO: Delete labelBackgroundOnly behavior once FieldItem component is completed
+           */}
+          {hasLabelBackgroundOnly ? (
+            <TreeItem2Label {...statefulProps}>{inside}</TreeItem2Label>
+          ) : (
+            inside
+          )}
+        </TreeItem2Content>
+        {outside}
+      </Flex>
+    </HoverDisclosureContext.Provider>
   )
 }
+
+type TreeItem2ContentProps = ListItemContentProps &
+  GenerateIndentProps & {
+    labelBackgroundOnly?: boolean
+  }
+
+/**
+ * @TODO: Delete labelBackgroundOnly behavior once FieldItem component is completed
+ */
+export const TreeItem2Content = styled(
+  ListItemContent
+).attrs<TreeItem2ContentProps>(({ role = 'treeitem' }) => ({
+  role,
+}))<TreeItem2ContentProps>`
+  ${generateIndent}
+  ${({ labelBackgroundOnly }) => labelBackgroundOnly && 'background: none;'}
+  display: flex;
+  flex: 1;
+  padding-right: 0;
+
+  &[disabled] {
+    color: ${({ theme }) => theme.colors.text1};
+    cursor: not-allowed;
+  }
+`
+
+/**
+ * @TODO: Delete TreeItem2Label once FieldItem component is completed
+ */
+export const TreeItem2Label = styled.div<ListItemBackgroundColorProps>`
+  ${listItemBackgroundColor}
+  align-items: center;
+  display: flex;
+  height: 100%;
+  width: 100%;
+`
 
 export const TreeItem = styled(TreeItemLayout)``

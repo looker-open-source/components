@@ -49,6 +49,7 @@ interface DemoProps
   caption: string
   columns: DataTableColumns
   filters: boolean
+  pageItems?: string[]
   select: boolean
   sort: boolean
   selectedItems?: string[]
@@ -59,6 +60,7 @@ const Template: Story<DemoProps> = ({
   caption,
   columns,
   filters,
+  pageItems,
   select,
   selectedItems,
   sort,
@@ -71,7 +73,7 @@ const Template: Story<DemoProps> = ({
    */
   const cleanColumns = columns.map((c) => ({ ...c }))
 
-  const allPageItems = data.map(({ id }) => id)
+  const allPageItems = pageItems || data.map(({ id }) => id)
   const [cheeseData, setCheeseData] = useState(data)
   const [cheeseColumns, setCheeseColumns] = useState(cleanColumns)
   const items = itemBuilder(cheeseData, actions)
@@ -112,8 +114,8 @@ const Template: Story<DemoProps> = ({
   const selectConfig: SelectConfig = {
     onSelect,
     onSelectAll,
-    pageItems: [],
-    selectedItems: [],
+    pageItems: allPageItems,
+    selectedItems: selections,
   }
 
   const bulkActionsConfig: BulkActionsConfig = {
@@ -207,6 +209,18 @@ SelectBulkActiveItems.args = {
   ...Select.args,
   bulk: true,
   selectedItems: ['cheddar', 'gouda'],
+}
+
+/**
+ * This story is meant to imitate a DataTable still in a loading state
+ * where the selectedItems and pageItems arrays are both empty. If working properly,
+ * the select all checkbox should be empty.
+ */
+export const SelectNoSelectedItemsOrPageItems = Template.bind({})
+SelectNoSelectedItemsOrPageItems.args = {
+  ...Select.args,
+  pageItems: [],
+  selectedItems: [],
 }
 
 export const ActionsAndPrimaryAction = TemplateAction.bind({})
