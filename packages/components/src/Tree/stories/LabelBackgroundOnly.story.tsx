@@ -29,12 +29,16 @@ import { Tree, TreeCollection, TreeItem } from '..'
 
 export const LabelBackgroundOnly = () => (
   <TreeCollection>
-    <Tree defaultOpen labelBackgroundOnly label="Unselected Tree">
+    <Tree
+      defaultOpen
+      labelBackgroundOnly
+      label={<strong>Unselected Tree</strong>}
+    >
       <TreeItem itemRole="none" selected>
         Selected Item
       </TreeItem>
       <TreeItem itemRole="none">Unselected Item</TreeItem>
-      <Tree defaultOpen label="Selected Tree" selected>
+      <Tree defaultOpen label={<strong>Selected Tree</strong>} selected>
         <TreeItem itemRole="none" selected>
           Selected Item
         </TreeItem>

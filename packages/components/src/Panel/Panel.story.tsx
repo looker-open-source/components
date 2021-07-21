@@ -222,10 +222,10 @@ export const WithTree = () => (
           <Button>Open Panel</Button>
         </Panel>
         <TreeCollection>
-          <Tree label="Orders" defaultOpen>
+          <Tree label={<strong>Orders</strong>} defaultOpen>
             <TreeItem>ID</TreeItem>
             <TreeItem>Status</TreeItem>
-            <Tree label="Created" defaultOpen>
+            <Tree label={<strong>Created</strong>} defaultOpen>
               <TreeItem>Created Date</TreeItem>
               <TreeItem>Created Month</TreeItem>
               <TreeItem>Created Year</TreeItem>

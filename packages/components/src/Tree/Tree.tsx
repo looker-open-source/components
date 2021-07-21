@@ -112,6 +112,7 @@ const TreeLayout = ({
   )
 
   const { color: listColor } = useContext(ListItemContext)
+
   const treeContext = useContext(TreeContext)
 
   // Context for supporting windowing
@@ -143,10 +144,11 @@ const TreeLayout = ({
   const { indicatorIcons, indicatorPosition } = indicatorDefaults
 
   const [inside, outside] = createListItemPartitions({
+    ...treeItemInnerProps,
     children: label,
+    color,
     density,
     icon,
-    ...treeItemInnerProps,
   })
   let accordionProps: ControlledOrUncontrolled = {
     defaultOpen,
@@ -225,6 +227,7 @@ const TreeLayout = ({
           {!partialRender && (
             <Flex
               as="li"
+              color="text5"
               onBlur={handleWrapperBlur}
               onMouseEnter={handleWrapperMouseEnter}
               onMouseLeave={handleWrapperMouseLeave}
