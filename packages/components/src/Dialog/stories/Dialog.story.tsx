@@ -31,7 +31,7 @@ import { DialogLongContent } from '../../__mocks__/DialogLongContent'
 import { DialogMediumContent } from '../../__mocks__/DialogMediumContent'
 import { SpaceVertical } from '../../Layout/Space/SpaceVertical'
 import { CopyToClipboard } from '../../CopyToClipboard'
-import { Button } from '../../Button'
+import { Button, ButtonOutline } from '../../Button'
 import { Dialog, DialogProps } from '../Dialog'
 import { dialogSizes } from '../dialogWidth'
 import { dialogPlacements } from '../DialogSurface'
@@ -43,7 +43,7 @@ export * from './SaveChanges'
 
 const Template: Story<DialogProps> = (args) => (
   <Dialog {...args}>
-    <button>Open Dialog</button>
+    <ButtonOutline>Open Dialog</ButtonOutline>
   </Dialog>
 )
 

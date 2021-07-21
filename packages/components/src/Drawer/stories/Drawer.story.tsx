@@ -30,13 +30,14 @@ import { Page } from 'puppeteer'
 import { DialogLongContent } from '../../__mocks__/DialogLongContent'
 import { dialogSizes } from '../../Dialog/dialogWidth'
 import { Drawer, DrawerProps } from '../Drawer'
+import { ButtonOutline } from '../../Button'
 
 export * from './useDrawer.story'
 export * from './renderProps.story'
 
 const Template: Story<DrawerProps> = (args) => (
   <Drawer {...args} content={<DialogLongContent />}>
-    <button>Open Drawer</button>
+    <ButtonOutline>Open Drawer</ButtonOutline>
   </Drawer>
 )
 
