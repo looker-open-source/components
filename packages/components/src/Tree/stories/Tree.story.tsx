@@ -119,16 +119,3 @@ Accessory.args = {
     },
   },
 }
-
-export const Test = () => (
-  <Tree
-    defaultOpen
-    label="Cheeses"
-    detail={{
-      content: <button>Accessory Button</button>,
-      options: { accessory: true },
-    }}
-  >
-    <TreeItem>Cheddar</TreeItem>
-  </Tree>
-)
