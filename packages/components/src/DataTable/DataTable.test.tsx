@@ -61,6 +61,7 @@ export const defaultFilters: FieldFilter[] = [
 ]
 const columns: DataTableColumns = [
   {
+    canSort: true,
     hide: true,
     id: 'calories',
     title: 'Calories',
@@ -784,6 +785,12 @@ describe('DataTable', () => {
       const nameColumnHeader = screen.getByText('Name')
       fireEvent.click(nameColumnHeader)
       expect(onSort.mock.calls.length).toBe(0)
+    })
+
+    test('Clicking first column calls onSort with correct columnID', () => {
+      renderWithTheme(dataTableWithSort)
+      fireEvent.click(screen.getByText('ID'))
+      expect(onSort).toBeCalledWith('id', 'asc')
     })
   })
 

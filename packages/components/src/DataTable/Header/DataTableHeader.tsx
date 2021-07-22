@@ -40,7 +40,9 @@ export const DataTableHeader: FC<CompatibleHTMLProps<HTMLDivElement>> = ({
 
   const headerColumns =
     columns &&
-    columns.map((column) => <DataTableHeaderCell {...column} key={column.id} />)
+    columns.map(({ id, ...column }) => (
+      <DataTableHeaderCell {...column} columnId={id} key={id} />
+    ))
 
   return (
     <DataTableRow

@@ -37,8 +37,16 @@ import { columnSize, sizeInfersTruncate } from '../Column/columnSize'
 import { DataTableColumn } from '../Column'
 import { FocusableCell } from '../Column/FocusableCell'
 
-export interface DataTableHeaderCellProps extends DataTableColumn {
+export interface DataTableHeaderCellProps extends Omit<DataTableColumn, 'id'> {
   className?: string
+  /**
+   * Used for sorting column assignment
+   */
+  columnId: DataTableColumn['id']
+  /**
+   * Used for injecting `id` into `th` DOM element
+   */
+  id?: string
 }
 
 const DataTableHeaderCellLayout = forwardRef(
@@ -48,7 +56,7 @@ const DataTableHeaderCellLayout = forwardRef(
       className,
       title,
       titleIcon,
-      id,
+      columnId,
       size,
       sortDirection,
       type,
@@ -59,7 +67,7 @@ const DataTableHeaderCellLayout = forwardRef(
 
     const onClick = () => {
       if (onSort && canSort) {
-        onSort(id, sortDirection === 'asc' ? 'desc' : 'asc')
+        onSort(columnId, sortDirection === 'asc' ? 'desc' : 'asc')
       }
     }
     const { role, ...clickableProps } = useClickable({ onClick })
