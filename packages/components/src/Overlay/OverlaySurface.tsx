@@ -51,22 +51,6 @@ export interface OverlaySurfaceProps
   zIndex?: number
 }
 
-/**
-```
-    const {
-      children,
-      className,
-      eventHandlers,
-      placement,
-      style,
-      role,
-      ...otherProps
-    } = props
-
-    const [ariaProps] = partitionAriaProps(otherProps)
-```
- */
-
 const OverlaySurfaceLayout = forwardRef(
   (props: OverlaySurfaceProps, forwardedRef: Ref<HTMLDivElement>) => {
     const {
