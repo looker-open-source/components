@@ -64,6 +64,11 @@ describe('Popover', () => {
 
     expect(screen.queryByText('Header text')).toBeInTheDocument()
     expect(screen.getByRole('dialog')).toBeInTheDocument()
+    expect(screen.queryByText('content')).toBeInTheDocument()
+    expect(screen.queryByText('content').closest('div')).toHaveAttribute(
+      'aria-labelledby',
+      'a11y-heading'
+    )
     expect(screen.getByText('Header text')).toHaveAttribute(
       'id',
       'a11y-heading'
