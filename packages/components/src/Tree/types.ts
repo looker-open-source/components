@@ -82,8 +82,6 @@ export type TreeProps = ControlledLoosely &
   (AssumeIconAlignment | ForceLabelPadding) & {
     /**
      * If true, vertical lines will extend from the Tree indicator (and all sub-Trees' indicators)
-     * @default false
-     * @deprecated Remove in 3.x
      */
     border?: boolean
     /**

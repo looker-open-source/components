@@ -24,21 +24,19 @@
 
  */
 
-import { RadiusSizes, Theme } from '@looker/design-tokens'
-import { css } from 'styled-components'
-import { TreeItem2Content } from '../TreeItem2Content'
-import { TreeItem2Label } from '../TreeItem2Label'
+import styled from 'styled-components'
+import {
+  listItemBackgroundColor,
+  ListItemBackgroundColorProps,
+} from '../ListItem/utils'
 
-// Creates CSS for generating border radius on Tree and sub-Tree components
-export const generateBorderRadius = (
-  borderRadius: RadiusSizes,
-  theme: Theme
-) => {
-  const { radii } = theme
-
-  return css`
-    ${TreeItem2Content}, ${TreeItem2Label} {
-      border-radius: ${radii[borderRadius]};
-    }
-  `
-}
+/**
+ * @TODO: Delete TreeItem2Label once FieldItem component is completed
+ */
+export const TreeItem2Label = styled.div<ListItemBackgroundColorProps>`
+  ${listItemBackgroundColor}
+  align-items: center;
+  display: flex;
+  height: 100%;
+  width: 100%;
+`

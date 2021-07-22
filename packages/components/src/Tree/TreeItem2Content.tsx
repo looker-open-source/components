@@ -24,21 +24,31 @@
 
  */
 
-import { RadiusSizes, Theme } from '@looker/design-tokens'
-import { css } from 'styled-components'
-import { TreeItem2Content } from '../TreeItem2Content'
-import { TreeItem2Label } from '../TreeItem2Label'
+import styled from 'styled-components'
+import { ListItemContent, ListItemContentProps } from '../ListItem'
+import { generateIndent, GenerateIndentProps } from './utils'
 
-// Creates CSS for generating border radius on Tree and sub-Tree components
-export const generateBorderRadius = (
-  borderRadius: RadiusSizes,
-  theme: Theme
-) => {
-  const { radii } = theme
+type TreeItem2ContentProps = ListItemContentProps &
+  GenerateIndentProps & {
+    labelBackgroundOnly?: boolean
+  }
 
-  return css`
-    ${TreeItem2Content}, ${TreeItem2Label} {
-      border-radius: ${radii[borderRadius]};
-    }
-  `
-}
+/**
+ * @TODO: Delete labelBackgroundOnly behavior once FieldItem component is completed
+ */
+export const TreeItem2Content = styled(
+  ListItemContent
+).attrs<TreeItem2ContentProps>(({ role = 'treeitem' }) => ({
+  role,
+}))<TreeItem2ContentProps>`
+  ${generateIndent}
+  ${({ labelBackgroundOnly }) => labelBackgroundOnly && 'background: none;'}
+  display: flex;
+  flex: 1;
+  padding-right: 0;
+
+  &[disabled] {
+    color: ${({ theme }) => theme.colors.text1};
+    cursor: not-allowed;
+  }
+`
