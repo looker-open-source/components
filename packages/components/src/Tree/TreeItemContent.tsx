@@ -25,18 +25,30 @@
  */
 
 import styled from 'styled-components'
-import {
-  listItemBackgroundColor,
-  ListItemBackgroundColorProps,
-} from '../ListItem/utils'
+import { ListItemContent, ListItemContentProps } from '../ListItem'
+import { generateIndent, GenerateIndentProps } from './utils'
+
+type TreeItemContentProps = ListItemContentProps &
+  GenerateIndentProps & {
+    labelBackgroundOnly?: boolean
+  }
 
 /**
- * @TODO: Delete TreeItem2Label once FieldItem component is completed
+ * @TODO: Delete labelBackgroundOnly behavior once FieldItem component is completed
  */
-export const TreeItem2Label = styled.div<ListItemBackgroundColorProps>`
-  ${listItemBackgroundColor}
-  align-items: center;
+export const TreeItemContent = styled(
+  ListItemContent
+).attrs<TreeItemContentProps>(({ role = 'treeitem' }) => ({
+  role,
+}))<TreeItemContentProps>`
+  ${generateIndent}
+  ${({ labelBackgroundOnly }) => labelBackgroundOnly && 'background: none;'}
   display: flex;
-  height: 100%;
-  width: 100%;
+  flex: 1;
+  padding-right: 0;
+
+  &[disabled] {
+    color: ${({ theme }) => theme.colors.text1};
+    cursor: not-allowed;
+  }
 `

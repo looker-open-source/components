@@ -45,8 +45,8 @@ import { generateTreeBorder, TreeBorderProps, indicatorDefaults } from './utils'
 import { WindowedTreeContext } from './WindowedTreeNode'
 import { treeItemInnerPropKeys, TreeProps } from './types'
 import { TreeItem } from './TreeItem'
-import { TreeItem2Content } from './TreeItem2Content'
-import { TreeItem2Label } from './TreeItem2Label'
+import { TreeItemContent } from './TreeItemContent'
+import { TreeItemLabel } from './TreeItemLabel'
 
 /**
  * TODO: When labelToggle is introduced the aria-* attributes should land on the nested ListItem's
@@ -237,7 +237,7 @@ const TreeLayout = ({
               onMouseEnter={handleWrapperMouseEnter}
               onMouseLeave={handleWrapperMouseLeave}
             >
-              <TreeItem2Content
+              <TreeItemContent
                 aria-selected={selected}
                 depth={depth}
                 href={href}
@@ -255,18 +255,18 @@ const TreeLayout = ({
                  * @TODO: Delete labelBackgroundOnly behavior once FieldItem component is completed
                  */}
                 {hasLabelBackgroundOnly ? (
-                  <TreeItem2Label {...statefulProps}>
+                  <TreeItemLabel {...statefulProps}>
                     {disclosureLabel}
-                  </TreeItem2Label>
+                  </TreeItemLabel>
                 ) : (
                   disclosureLabel
                 )}
-              </TreeItem2Content>
+              </TreeItemContent>
               {outside}
             </Flex>
           )}
           {accordionIsOpen && (
-            <TreeContent
+            <TreeAccordionContent
               border={border}
               density={density}
               depth={depth}
@@ -279,7 +279,10 @@ const TreeLayout = ({
   )
 }
 
-const TreeContent = styled.div<TreeBorderProps>`
+/**
+ * Container for hidden / revealed content based on Tree open state
+ */
+const TreeAccordionContent = styled.div<TreeBorderProps>`
   ${generateTreeBorder}
 `
 
