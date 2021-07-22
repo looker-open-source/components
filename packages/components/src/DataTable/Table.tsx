@@ -226,8 +226,4 @@ const InterimState = styled.div`
 
 export const TableScroll = styled.div`
   overflow-x: auto;
-  scrollbar-width: none; /* Firefox */
-  ::-webkit-scrollbar {
-    display: none; /* Safari and Chrome */
-  }
 `
