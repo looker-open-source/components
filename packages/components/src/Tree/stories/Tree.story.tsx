@@ -29,6 +29,7 @@ import { Alarm } from '@styled-icons/material/Alarm'
 import { Download } from '@styled-icons/material/Download'
 import { Story } from '@storybook/react/types-6-0'
 import { Tree, TreeProps, TreeCollection, TreeItem } from '..'
+import { Button } from '../../Button'
 import { Space } from '../../Layout'
 
 export * from './BorderRadius.story'
@@ -102,4 +103,32 @@ export const Icon = () => (
       <TreeItem>Don't mind me</TreeItem>
     </Tree>
   </TreeCollection>
+)
+
+export const Accessory = Template.bind({})
+Accessory.args = {
+  ...Basic.args,
+  detail: {
+    content: (
+      <Button ml="large" onClick={() => alert('Accessory Button')}>
+        Accessory Button
+      </Button>
+    ),
+    options: {
+      accessory: true,
+    },
+  },
+}
+
+export const Test = () => (
+  <Tree
+    defaultOpen
+    label="Cheeses"
+    detail={{
+      content: <button>Accessory Button</button>,
+      options: { accessory: true },
+    }}
+  >
+    <TreeItem>Cheddar</TreeItem>
+  </Tree>
 )

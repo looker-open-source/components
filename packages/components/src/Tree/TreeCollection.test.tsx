@@ -230,6 +230,43 @@ describe('TreeCollection', () => {
       expect(gouda).toHaveFocus()
     })
 
+    test('pressing arrow down from a detail element with accessory enabled moves user to next item', () => {
+      renderWithTheme(
+        <>
+          <button>My Button</button>
+          <TreeCollection>
+            <Tree
+              defaultOpen
+              label="Cheeses"
+              detail={{
+                content: <button>Accessory Button</button>,
+                options: { accessory: true },
+              }}
+            >
+              <TreeItem>Cheddar</TreeItem>
+            </Tree>
+          </TreeCollection>
+        </>
+      )
+
+      const treeItems = screen.getAllByRole('treeitem')
+      const cheeses = treeItems[0]
+      const cheddar = treeItems[1]
+      const accessoryButton = screen.getByText('Accessory Button')
+
+      userEvent.click(screen.getByText('My Button'))
+      expect(screen.getByText('My Button')).toHaveFocus()
+
+      userEvent.tab()
+      expect(cheeses).toHaveFocus()
+
+      userEvent.keyboard('{arrowright}')
+      expect(accessoryButton).toHaveFocus()
+
+      userEvent.keyboard('{arrowdown}')
+      expect(cheddar).toHaveFocus()
+    })
+
     test('home button moves user to first treeitem element', () => {
       renderWithTheme(
         <>
