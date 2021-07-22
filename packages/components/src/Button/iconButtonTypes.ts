@@ -36,6 +36,7 @@ import {
 import { Placement } from '@popperjs/core'
 import { Property } from 'csstype'
 import { IconProps } from '../Icon'
+import { TooltipProps } from '../Tooltip'
 import { ButtonBaseProps } from './types'
 interface IconButtonVariantProps {
   /**
@@ -78,7 +79,7 @@ export interface IconButtonProps
   /**
    *  A hidden text label for the IconButton that is accessible to assistive technology
    */
-  label: string
+  label: TooltipProps['content']
   /**
    *  Sets the size of the button
    * @default xsmall
