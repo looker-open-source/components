@@ -38,8 +38,8 @@ import {
   useWrapEvent,
 } from '../utils'
 import { TreeContext } from './TreeContext'
-import { TreeItem2Content } from './TreeItem2Content'
-import { TreeItem2Label } from './TreeItem2Label'
+import { TreeItemContent } from './TreeItemContent'
+import { TreeItemLabel } from './TreeItemLabel'
 
 export type TreeItemProps = ListItemProps & {
   labelBackgroundOnly?: boolean
@@ -137,7 +137,7 @@ export const TreeItem = styled(
           onMouseLeave={handleWrapperMouseLeave}
           {...wrapperProps}
         >
-          <TreeItem2Content
+          <TreeItemContent
             aria-selected={selected}
             density={density}
             /**
@@ -160,11 +160,11 @@ export const TreeItem = styled(
              * @TODO: Delete labelBackgroundOnly behavior once FieldItem component is completed
              */}
             {hasLabelBackgroundOnly ? (
-              <TreeItem2Label {...statefulProps}>{inside}</TreeItem2Label>
+              <TreeItemLabel {...statefulProps}>{inside}</TreeItemLabel>
             ) : (
               inside
             )}
-          </TreeItem2Content>
+          </TreeItemContent>
           {outside}
         </Flex>
       </HoverDisclosureContext.Provider>

@@ -35,7 +35,7 @@ import { TreeContext } from '../Tree/TreeContext'
 import { ListItemDetail, ListItemProps, listItemDimensions } from '../ListItem'
 import { TreeItem } from '../Tree'
 import { accordionDimensions } from '../Accordion2/accordionDimensions'
-import { TreeItem2Content } from '../Tree/TreeItem2Content'
+import { TreeItemContent } from '../Tree/TreeItemContent'
 
 const IndentOverrideTreeItem = styled(TreeItem).withConfig<
   {
@@ -55,7 +55,7 @@ const IndentOverrideTreeItem = styled(TreeItem).withConfig<
       'px',
     ].includes(prop),
 })`
-  ${TreeItem2Content} {
+  ${TreeItemContent} {
     ${({ depth = 0, density = 0, iconGap, indicatorGap, parentIcon, theme }) =>
       `padding-left: calc(${generateIndentCalculation(
         parentIcon ? depth + 1 : depth,

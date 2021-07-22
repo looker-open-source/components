@@ -26,8 +26,8 @@
 
 import { RadiusSizes, Theme } from '@looker/design-tokens'
 import { css } from 'styled-components'
-import { TreeItem2Content } from '../TreeItem2Content'
-import { TreeItem2Label } from '../TreeItem2Label'
+import { TreeItemContent } from '../TreeItemContent'
+import { TreeItemLabel } from '../TreeItemLabel'
 
 // Creates CSS for generating border radius on Tree and sub-Tree components
 export const generateBorderRadius = (
@@ -37,7 +37,7 @@ export const generateBorderRadius = (
   const { radii } = theme
 
   return css`
-    ${TreeItem2Content}, ${TreeItem2Label} {
+    ${TreeItemContent}, ${TreeItemLabel} {
       border-radius: ${radii[borderRadius]};
     }
   `

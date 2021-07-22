@@ -25,5 +25,18 @@
  */
 
 import styled from 'styled-components'
+import {
+  listItemBackgroundColor,
+  ListItemBackgroundColorProps,
+} from '../ListItem/utils'
 
-export const TreeAccordion = styled.div``
+/**
+ * @TODO: Delete TreeItemLabel once FieldItem component is completed
+ */
+export const TreeItemLabel = styled.div<ListItemBackgroundColorProps>`
+  ${listItemBackgroundColor}
+  align-items: center;
+  display: flex;
+  height: 100%;
+  width: 100%;
+`
