@@ -26,6 +26,8 @@
 
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
+import { Delete } from '@styled-icons/material/Delete'
+import { IconButton } from '../../../Button'
 import { FieldToggleSwitch, FieldToggleSwitchProps } from './FieldToggleSwitch'
 
 const Template: Story<FieldToggleSwitchProps> = (args) => (
@@ -45,6 +47,21 @@ DetailDescription.args = {
   description: 'describe something here.',
   detail: '4/20',
 }
+
+export const Tabstops = Template.bind({})
+Tabstops.args = {
+  ...Basic.args,
+  description: (
+    <>
+      describe something here. <a href="somewhere">Link</a>
+    </>
+  ),
+  detail: <IconButton icon={<Delete />} label="Hello world" />,
+}
+Tabstops.parameters = {
+  storyshots: { disable: true },
+}
+
 export const Checked = Template.bind({})
 Checked.args = {
   ...Basic.args,

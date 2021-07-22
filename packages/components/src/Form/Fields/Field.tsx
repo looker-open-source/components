@@ -130,8 +130,8 @@ const FieldLayout: FunctionComponent<FieldPropsInternal> = ({
       ) : (
         labelComponent
       )}
-      {detail && <FieldDetail>{detail}</FieldDetail>}
       <InputArea>{children}</InputArea>
+      {detail && <FieldDetail>{detail}</FieldDetail>}
       <MessageArea id={`describedby-${id}`}>
         {fieldDescription}
         {fieldValidation}
