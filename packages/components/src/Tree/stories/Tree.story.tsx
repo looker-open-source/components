@@ -119,3 +119,6 @@ Accessory.args = {
     },
   },
 }
+Accessory.parameters = {
+  storyshots: { disable: true },
+}
