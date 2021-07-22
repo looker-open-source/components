@@ -54,12 +54,12 @@ const FieldInlineLayout: FC<FieldInlinePropsInternal> = ({
 }) => {
   return (
     <label className={className} htmlFor={id}>
-      {detail && <FieldDetail>{detail}</FieldDetail>}
       <InputArea>{children}</InputArea>
       <Label as="span">
         <Truncate>{label}</Truncate>
         {required && <RequiredStar />}
       </Label>
+      {detail && <FieldDetail>{detail}</FieldDetail>}
       <MessageArea id={`${id}-describedby`}>
         {description && <FieldDescription>{description}</FieldDescription>}
         {validationMessage ? (
