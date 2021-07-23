@@ -30,6 +30,8 @@ const ignore = [
   '**/*.test.jsx',
   '**/*.test.ts',
   '**/*.test.tsx',
+  '**/*.spec.ts',
+  '**/*.spec.tsx',
   '**/*.stories.tsx',
   '**/*.story.tsx',
   '**/stories/*',
