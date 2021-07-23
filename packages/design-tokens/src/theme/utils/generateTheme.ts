@@ -38,6 +38,8 @@ export const generateTheme = (
     return theme
   }
 
+  const { fontSources } = customizations
+
   const fonts = customizations.fontFamilies
     ? generateFontFamilies(
         theme.fonts,
@@ -53,6 +55,7 @@ export const generateTheme = (
   return {
     ...theme,
     colors,
+    fontSources,
     fonts,
   }
 }

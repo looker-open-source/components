@@ -317,4 +317,30 @@ describe('generateTheme', () => {
       }
     `)
   })
+
+  describe('fontSources', () => {
+    const generated = generateTheme(theme, {
+      fontSources: [
+        {
+          url: 'http://not-really-a.font.com',
+        },
+        {
+          face: 'Faux Font',
+          url: 'http://faux-font.com',
+        },
+      ],
+    })
+
+    expect(generated.fontSources).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "url": "http://not-really-a.font.com",
+        },
+        Object {
+          "face": "Faux Font",
+          "url": "http://faux-font.com",
+        },
+      ]
+    `)
+  })
 })
