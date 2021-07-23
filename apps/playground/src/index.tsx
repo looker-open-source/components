@@ -23,54 +23,134 @@
  SOFTWARE.
 
  */
-import React from 'react'
-import { render } from 'react-dom'
+
 import {
-  Box,
+  Divider,
+  Tabs,
+  TabList,
+  Tab,
+  TabPanels,
+  TabPanel,
   ComponentsProvider,
-  FieldToggleSwitch,
-  Heading,
-  SpaceVertical,
-  useToggle,
 } from '@looker/components'
-import { FontFaceLoader } from '@looker/components-providers'
-import { theme, Theme } from '@looker/design-tokens'
+import React, {
+  Children,
+  ReactChild,
+  FC,
+  ReactNode,
+  useEffect,
+  useState,
+} from 'react'
+import { render } from 'react-dom'
 
-const App = () => {
-  const { toggle, value } = useToggle(false)
+type Tabs2Props = {
+  /* Which tab to show on load */
+  defaultTabId?: string
 
-  const { key, background } = theme.colors
+  /* Controlled: which tab to show now */
+  tabId?: string
+  /* Callback called when tabId changes */
+  onTabChange?: (tabId: string) => void
+}
 
-  const customTheme: Theme = {
-    ...theme,
-    colors: {
-      ...theme.colors,
-      background: value ? key : background,
-      key: value ? background : key,
-    },
-    fontSources: [
-      {
-        url: 'https://fonts.googleapis.com/css2?family=Grandstander:wght@200;300;400;500&display=swap',
-      },
-    ],
-    fonts: {
-      ...theme.fonts,
-      brand: 'Grandstander',
-    },
-  }
+const TabList2: FC = ({ children, ...props }) => (
+  <div aria-label="Tabs" role="tablist" {...props}>
+    {children}
+  </div>
+)
+
+type TabHolder = {
+  id: string
+  label: string
+  child: ReactNode
+}
+
+const Tabs2: FC<Tabs2Props> = ({
+  children,
+  onTabChange,
+  defaultTabId,
+  ...props
+}) => {
+  const [tabs, setTabs] = useState<TabHolder[]>([])
+  const [stateTabId, setCurrentTabId] = useState(defaultTabId || '')
+  const tabId = props.tabId || stateTabId
+
+  useEffect(() => {
+    const draftTabs: TabHolder[] = Children.map(
+      children,
+      (child: JSX.Element, index) => ({
+        child,
+        id: child.props.id || String(index),
+        label: child.props.label,
+      })
+    )
+
+    setTabs(draftTabs)
+
+    if (
+      defaultTabId &&
+      draftTabs.length > 0 &&
+      !draftTabs.find((tab) => tab.id === defaultTabId)
+    ) {
+      setCurrentTabId(draftTabs[0].id)
+    }
+  }, [children, defaultTabId, setTabs, setCurrentTabId])
+
+  const handleTabChange = (draftId: string) =>
+    onTabChange ? onTabChange(draftId) : setCurrentTabId(draftId)
+
+  const labels = tabs.map(({ label, id }, index) => (
+    <Tab
+      key={index}
+      selected={id === tabId}
+      onClick={() => handleTabChange(id)}
+    >
+      {label}
+    </Tab>
+  ))
+
+  const currentTab = tabs.find((tab) => tab.id === tabId)
 
   return (
-    <ComponentsProvider theme={customTheme}>
-      <Box p="medium">
-        <SpaceVertical>
-          <FontFaceLoader />
-          <FieldToggleSwitch on={value} onChange={toggle} label="Toggle me" />
-          <Heading color="key">Some text here</Heading>
-        </SpaceVertical>
-      </Box>
-    </ComponentsProvider>
+    <>
+      <TabList2>{labels}</TabList2>
+      {currentTab && <TabPanels>{currentTab.child}</TabPanels>}
+    </>
   )
 }
-document.addEventListener('DOMContentLoaded', () => {
-  render(<App />, document.getElementById('container'))
-})
+
+const Tab2: FC<{ id?: string; label: ReactNode }> = ({ children }) => {
+  return <div>{children}</div>
+}
+
+const App = () => (
+  <ComponentsProvider>
+    <>
+      <Tabs>
+        <TabList>
+          <Tab id="cat">A</Tab>
+          <Tab>B</Tab>
+        </TabList>
+        <TabPanels>
+          <TabPanel id="cat">A</TabPanel>
+          <TabPanel>B</TabPanel>
+        </TabPanels>
+      </Tabs>
+
+      <Divider m="xxxlarge" />
+
+      <Tabs2 defaultTabId="dogs">
+        <Tab2 id="cats" label="Cats">
+          Here's awesome story about cats
+        </Tab2>
+        <Tab2 id="dogs" label="Dogs">
+          Cats are way better than dogs. Go to other tab
+        </Tab2>
+        <Tab2 label="Fish">Are kinda smelly</Tab2>
+      </Tabs2>
+    </>
+  </ComponentsProvider>
+)
+
+const rootElement = document.getElementById('container')
+render(<App />, rootElement)
