@@ -24,10 +24,12 @@
 
  */
 
-import React, { useCallback, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import styled from 'styled-components'
-import { useAnimationState, useControlWarn } from '../utils'
+import { VisuallyHidden } from '../VisuallyHidden'
+import { useAnimationState, useControlWarn, useTrapStack } from '../utils'
 import { PanelHeader } from './PanelHeader'
+import { PanelsContext } from './Panels'
 import { PanelSurface } from './PanelSurface'
 import { PanelWindow } from './PanelWindow'
 import { UsePanelProps, UsePanelResponse } from './types'
@@ -61,7 +63,7 @@ export const usePanel = ({
   const firstRender = useRef(true)
   const { busy, className, renderDOM } = useAnimationState(
     isOpen,
-    isOpen && firstRender.current ? 'none' : undefined
+    isOpen && firstRender.current ? 'none' : 'intricate'
   )
   firstRender.current = false
 
@@ -78,9 +80,14 @@ export const usePanel = ({
     onClose && onClose()
   }
 
-  const setInitialFocus = useCallback((element: HTMLDivElement | null) => {
-    element?.focus({ preventScroll: true })
-  }, [])
+  // The visibilityTrigger uses TrapStackContext to toggle visibility: visible
+  // on the topmost panel and visibility: hidden on the container to avoid
+  // focusing on content underneath the panel
+  // Sync with 'entered' so that content underneath doesn't disappear during animation
+  const [, ref] = useTrapStack({ context: PanelsContext })
+  const visibilityTrigger = className === 'entered' && (
+    <VisuallyHidden ref={ref} />
+  )
 
   const panel = renderDOM && (
     <PanelWindow>
@@ -90,8 +97,8 @@ export const usePanel = ({
         direction={direction}
         data-panel
         tabIndex={-1}
-        ref={setInitialFocus}
       >
+        {visibilityTrigger}
         <PanelHeader onClose={handleClose} {...headerProps} />
         <PanelContent>{content}</PanelContent>
       </PanelSurface>

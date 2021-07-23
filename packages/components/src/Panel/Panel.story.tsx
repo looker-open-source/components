@@ -72,6 +72,19 @@ Basic.parameters = {
   storyshots: { disable: true },
 }
 
+export const Nested = Template.bind({})
+Nested.args = {
+  content: (
+    <Panel content="Nested Panel content" title="Nested">
+      <Button>Open nested panel</Button>
+    </Panel>
+  ),
+  title: 'Panel Title',
+}
+Basic.parameters = {
+  storyshots: { disable: true },
+}
+
 export const Open = Template.bind({})
 Open.args = {
   ...Basic.args,

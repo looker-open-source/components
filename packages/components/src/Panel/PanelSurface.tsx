@@ -24,39 +24,41 @@
 
  */
 
-import styled, { css } from 'styled-components'
-import { variant } from '@looker/design-tokens'
+import styled, { Keyframes, keyframes } from 'styled-components'
 import { PanelSurfaceProps } from './types'
 
-const surfaceTransition = () => css`
-  ${({ theme }) => `${theme.transitions.moderate}ms ${theme.easings.easeOut}`}
+const slideIn: Keyframes = keyframes`
+  0% {transform: translate(var(--direction-translate, 0), 0);}
+  100% {transform: translate(0);}
+`
+const slideOut: Keyframes = keyframes`
+  0% {transform: translate(0);}
+  100% {transform: translate(var(--direction-translate, 0), 0);}
 `
 
-const direction = variant({
-  prop: 'direction',
-  variants: {
-    left: { transform: 'translate(-100%, 0);' },
-    right: { transform: 'translate(100%, 0);' },
-  },
-})
-
 export const PanelSurface = styled.div.attrs<PanelSurfaceProps>(
-  ({ direction = 'left' }) => ({ direction })
+  ({ direction = 'left' }) => ({ 'data-panel': true, direction })
 )<PanelSurfaceProps>`
+  --direction-translate: ${({ direction }) =>
+    direction === 'left' ? '-100%' : '100%'};
+
+  animation-duration: ${({ theme: { transitions } }) => transitions.moderate}ms;
   background: ${({ theme }) => theme.colors.background};
   bottom: 0;
   display: flex;
   flex-direction: column;
   height: 100%;
   left: 0;
+  outline: none;
   position: absolute;
   right: 0;
   top: 0;
-  transition: transform ${surfaceTransition}, opacity ${surfaceTransition};
   width: 100%;
 
-  &.entering,
+  &.entering {
+    animation-name: ${slideIn};
+  }
   &.exiting {
-    ${direction}
+    animation-name: ${slideOut};
   }
 `
