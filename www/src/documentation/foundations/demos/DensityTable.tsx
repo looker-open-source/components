@@ -24,51 +24,57 @@
 
  */
 
-import React from 'react'
-import {
-  Box,
-  Code,
-  TableBody,
-  TableDataCell,
-  TableHead,
-  TableHeaderCell,
-  TableRow,
-} from '@looker/components'
-import { theme } from '@looker/design-tokens'
+ import React from 'react'
+ import {
+   Box,
+   Code,
+   TableBody,
+   TableDataCell,
+   TableHead,
+   TableHeaderCell,
+   TableRow,
+   List,
+   ListItem,
+   listItemDimensions
+ } from '@looker/components'
+import { DensityRamp } from '@looker/design-tokens'
 import styled from 'styled-components'
 import { DocTable } from '../../../components'
 
-const ExampleBox = styled(Box)`
-  height: 40px;
-  width: 60px;
-`
 
-export const RadiusList = () => {
-  const radii = Object.entries(theme.radii)
+export const DensityTable = () => {
+  const densityList: DensityRamp[] = [1, 0, -1, -2, -3]
+  console.log("densitiues is", listItemDimensions(-1))
   return (
-    <DocTable>
+    <DocTable maxWidth="1200px">
       <TableHead>
         <TableRow>
           <TableHeaderCell>Example</TableHeaderCell>
-          <TableHeaderCell>Rem Value</TableHeaderCell>
-          <TableHeaderCell>Reference</TableHeaderCell>
+          <TableHeaderCell>Usage</TableHeaderCell>
+          <TableHeaderCell>Density</TableHeaderCell>
+          <TableHeaderCell>Height</TableHeaderCell>
         </TableRow>
       </TableHead>
       <TableBody>
-        {radii.map((r, index) => {
+        {densityList.map((d, index) => {
           return (
-            <TableRow key={r[0]}>
+            <TableRow key={index}>
               <TableDataCell>
-                <ExampleBox
-                  bg="ui1"
-                  border="solid 1px"
-                  borderColor="ui3"
-                  borderRadius={r[0]}
-                />
+                <Box bg="ui2" p="small" mr="large" borderRadius="medium">
+                  <Box bg="background">
+                    <List density={d}>
+                      <ListItem>Item 1</ListItem>
+                      <ListItem>Item 2</ListItem>
+                      <ListItem>Item 3</ListItem>
+                    </List>
+                  </Box>
+                </Box>
               </TableDataCell>
-              <TableDataCell>{r[1]}</TableDataCell>
+              <TableDataCell><Code fontSize="xsmall">{`<List density="${d}" />`}</Code></TableDataCell>
+              <TableDataCell>{d}</TableDataCell>
+              <TableDataCell>{listItemDimensions(d).height}px</TableDataCell>
               <TableDataCell>
-                <Code fontSize="xsmall">theme.radii.{r[0]}</Code>
+
               </TableDataCell>
             </TableRow>
           )
