@@ -31,7 +31,7 @@ import React, { useState } from 'react'
 import userEvent from '@testing-library/user-event'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { Nested } from './Panel.story'
-import { Panel, PanelProps, Panels, usePanel } from './'
+import { Panel, Panels, usePanel } from './'
 
 const globalConsole = global.console
 
@@ -219,7 +219,7 @@ describe('Panel', () => {
   })
 
   test('hidden content under panel is not reachable via keyboard nav', () => {
-    renderWithTheme(<Nested {...(Nested.args as PanelProps)} />)
+    renderWithTheme(<Nested />)
 
     const listItem = screen.getByText('option A')
 
