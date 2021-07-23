@@ -51,7 +51,7 @@ interface DemoProps
   filters: boolean
   pageItems?: string[]
   select: boolean
-  sort: boolean
+  canSort: boolean
   selectedItems?: string[]
 }
 
@@ -63,7 +63,7 @@ const Template: Story<DemoProps> = ({
   pageItems,
   select,
   selectedItems,
-  sort,
+  canSort,
   ...args
 }) => {
   /**
@@ -144,7 +144,7 @@ const Template: Story<DemoProps> = ({
         ) : undefined
       }
       select={select ? selectConfig : undefined}
-      onSort={sort ? onSort : undefined}
+      onSort={canSort ? onSort : undefined}
       {...args}
     >
       {items}
@@ -158,9 +158,9 @@ const TemplateAction: Story<DataTableProps> = ({ ...args }) => {
 
 export const Basic = Template.bind({})
 Basic.args = {
+  canSort: true,
   columns: mockColumns,
   headerRowId: 'headerId',
-  sort: true,
 }
 
 export const Focused = Template.bind({})
