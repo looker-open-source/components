@@ -63,7 +63,7 @@ export const usePanel = ({
   const firstRender = useRef(true)
   const { busy, className, renderDOM } = useAnimationState(
     isOpen,
-    isOpen && firstRender.current ? 'none' : 'intricate'
+    isOpen && firstRender.current ? 'none' : undefined
   )
   firstRender.current = false
 
