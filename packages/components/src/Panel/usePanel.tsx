@@ -24,7 +24,7 @@
 
  */
 
-import React, { useRef, useState } from 'react'
+import React, { useCallback, useRef, useState } from 'react'
 import styled from 'styled-components'
 import { VisuallyHidden } from '../VisuallyHidden'
 import { useAnimationState, useControlWarn, useTrapStack } from '../utils'
@@ -80,6 +80,10 @@ export const usePanel = ({
     onClose && onClose()
   }
 
+  const setInitialFocus = useCallback((element: HTMLDivElement | null) => {
+    element?.focus({ preventScroll: true })
+  }, [])
+
   // The visibilityTrigger uses TrapStackContext to toggle visibility: visible
   // on the topmost panel and visibility: hidden on the container to avoid
   // focusing on content underneath the panel
@@ -97,6 +101,7 @@ export const usePanel = ({
         direction={direction}
         data-panel
         tabIndex={-1}
+        ref={setInitialFocus}
       >
         {visibilityTrigger}
         <PanelHeader onClose={handleClose} {...headerProps} />
