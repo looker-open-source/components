@@ -24,29 +24,29 @@
 
  */
 
-import {
-  Divider,
-  Tabs,
-  TabList,
-  Tab,
-  TabPanels,
-  TabPanel,
-  ComponentsProvider,
-} from '@looker/components'
+import { Tab, TabPanels, ComponentsProvider } from '@looker/components'
 import React, {
   Children,
-  ReactChild,
   FC,
+  ReactElement,
   ReactNode,
   useEffect,
   useState,
 } from 'react'
 import { render } from 'react-dom'
 
+type Tab2Props = {
+  id?: string
+  label: string
+  children: ReactNode
+}
+const Tab2 = ({ children }: Tab2Props) => <>{children}</>
+
 type Tabs2Props = {
+  children: ReactElement<Tab2Props> | ReactElement<Tab2Props>[]
+
   /* Which tab to show on load */
   defaultTabId?: string
-
   /* Controlled: which tab to show now */
   tabId?: string
   /* Callback called when tabId changes */
@@ -59,27 +59,23 @@ const TabList2: FC = ({ children, ...props }) => (
   </div>
 )
 
-type TabHolder = {
-  id: string
-  label: string
-  child: ReactNode
-}
+type Tabs2TabStack = Required<Tab2Props>[]
 
-const Tabs2: FC<Tabs2Props> = ({
+const Tabs2 = ({
   children,
   onTabChange,
   defaultTabId,
   ...props
-}) => {
-  const [tabs, setTabs] = useState<TabHolder[]>([])
+}: Tabs2Props) => {
+  const [tabs, setTabs] = useState<Tabs2TabStack>([])
   const [stateTabId, setCurrentTabId] = useState(defaultTabId || '')
   const tabId = props.tabId || stateTabId
 
   useEffect(() => {
-    const draftTabs: TabHolder[] = Children.map(
+    const draftTabs: Tabs2TabStack = Children.map(
       children,
       (child: JSX.Element, index) => ({
-        child,
+        children: child,
         id: child.props.id || String(index),
         label: child.props.label,
       })
@@ -114,41 +110,25 @@ const Tabs2: FC<Tabs2Props> = ({
   return (
     <>
       <TabList2>{labels}</TabList2>
-      {currentTab && <TabPanels>{currentTab.child}</TabPanels>}
+      {/* NOTE: `as any as JSX.Element` on line 115 should be removed by extracting `TabPanels2` from `TabPanels` */}
+      {currentTab && (
+        <TabPanels>{currentTab.children as any as JSX.Element}</TabPanels>
+      )}
     </>
   )
 }
 
-const Tab2: FC<{ id?: string; label: ReactNode }> = ({ children }) => {
-  return <div>{children}</div>
-}
-
 const App = () => (
   <ComponentsProvider>
-    <>
-      <Tabs>
-        <TabList>
-          <Tab id="cat">A</Tab>
-          <Tab>B</Tab>
-        </TabList>
-        <TabPanels>
-          <TabPanel id="cat">A</TabPanel>
-          <TabPanel>B</TabPanel>
-        </TabPanels>
-      </Tabs>
-
-      <Divider m="xxxlarge" />
-
-      <Tabs2 defaultTabId="dogs">
-        <Tab2 id="cats" label="Cats">
-          Here's awesome story about cats
-        </Tab2>
-        <Tab2 id="dogs" label="Dogs">
-          Cats are way better than dogs. Go to other tab
-        </Tab2>
-        <Tab2 label="Fish">Are kinda smelly</Tab2>
-      </Tabs2>
-    </>
+    <Tabs2 defaultTabId="dogs">
+      <Tab2 id="cats" label="Cats">
+        Here's awesome story about cats
+      </Tab2>
+      <Tab2 id="dogs" label="Dogs">
+        Cats are way better than dogs. Go to other tab
+      </Tab2>
+      <Tab2 label="Fish">Are kinda smelly</Tab2>
+    </Tabs2>
   </ComponentsProvider>
 )
 
