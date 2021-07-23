@@ -43,10 +43,6 @@ export interface DataTableHeaderCellProps extends Omit<DataTableColumn, 'id'> {
    * Used for sorting column assignment
    */
   columnId: DataTableColumn['id']
-  /**
-   * Used for injecting `id` into `th` DOM element
-   */
-  id?: string
 }
 
 const DataTableHeaderCellLayout = forwardRef(
