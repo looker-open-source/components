@@ -52,8 +52,8 @@ const activatePanel = ({ element }: Trap) => {
   // Deactivation, remove visibility styles
   return () => {
     if (panel && container) {
-      panel.style.visibility = 'hidden'
-      container.style.visibility = 'visible'
+      panel.style.visibility = ''
+      container.style.visibility = ''
     }
   }
 }

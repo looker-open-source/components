@@ -44,7 +44,6 @@ export default {
 const Template: Story<PanelProps> = (args) => (
   <Page hasAside>
     <Aside width="12rem">
-      <Button>Before</Button>
       <Panels>
         <List>
           <Panel {...args}>
@@ -56,10 +55,7 @@ const Template: Story<PanelProps> = (args) => (
         </List>
       </Panels>
     </Aside>
-    <Section>
-      <Paragraph>Main stuff here...</Paragraph>
-      <Button>After</Button>
-    </Section>
+    <Section>Main stuff here...</Section>
   </Page>
 )
 
@@ -69,20 +65,6 @@ Basic.args = {
   title: 'Panel Title',
 }
 Basic.parameters = {
-  storyshots: { disable: true },
-}
-
-export const Nested = Template.bind({})
-Nested.args = {
-  content: (
-    <Panel content="Nested Panel content" title="Nested">
-      <Button>Open nested panel</Button>
-    </Panel>
-  ),
-  title: 'Panel Title',
-}
-
-Nested.parameters = {
   storyshots: { disable: true },
 }
 
@@ -111,6 +93,39 @@ CloseLabel.args = {
   closeLabel: 'Back to the last thing',
 }
 CloseLabel.parameters = {
+  storyshots: { disable: true },
+}
+
+export const Nested = () => (
+  <Page hasAside>
+    <Aside width="12rem">
+      <Button>Before</Button>
+      <Panels>
+        <List>
+          <Panel
+            title="Panel Title"
+            content={
+              <Panel content="Nested Panel content" title="Nested">
+                <Button>Open nested panel</Button>
+              </Panel>
+            }
+          >
+            <ListItem>option A</ListItem>
+          </Panel>
+          <ListItem>option B</ListItem>
+          <ListItem>option C</ListItem>
+          <ListItem>option D</ListItem>
+        </List>
+      </Panels>
+    </Aside>
+    <Section>
+      <Paragraph>Main stuff here...</Paragraph>
+      <Button>After</Button>
+    </Section>
+  </Page>
+)
+
+Nested.parameters = {
   storyshots: { disable: true },
 }
 
