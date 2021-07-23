@@ -222,28 +222,31 @@ describe('Panel', () => {
     renderWithTheme(<Nested {...(Nested.args as PanelProps)} />)
 
     const listItem = screen.getByText('option A')
-    const beforeButton = screen.getByText('Before')
-    const afterButton = screen.getByText('After')
 
     userEvent.click(listItem)
     runTimers()
-    userEvent.tab()
-    expect(
-      screen.getByRole('button', { name: 'CloseTitle Panel Title' })
-    ).toHaveFocus()
-    userEvent.tab({ shift: true })
-    expect(beforeButton).toHaveFocus()
+    expect(listItem).not.toBeVisible()
 
-    userEvent.click(screen.getByText('Open nested panel'))
+    const nestedPanelButton = screen.getByText('Open nested panel')
+    // Workaround: toBeVisible doesn't account for visibility being override-able
+    // https://github.com/testing-library/jest-dom/issues/209
+    // same issue with userEvent.tab
+    expect(nestedPanelButton.closest('[data-panel]')).toHaveStyle(
+      'visibility: visible;'
+    )
+
+    userEvent.click(nestedPanelButton)
     runTimers()
-    userEvent.tab()
-    expect(
-      screen.getByRole('button', { name: 'CloseTitle Nested' })
-    ).toHaveFocus()
-    userEvent.tab({ shift: true })
-    expect(beforeButton).toHaveFocus()
-    userEvent.tab()
-    userEvent.tab()
-    expect(afterButton).toHaveFocus()
+    expect(listItem).not.toBeVisible()
+    expect(nestedPanelButton).not.toBeVisible()
+    const closeButton = screen.getByRole('button', {
+      name: 'CloseTitle Nested',
+    })
+    // Workaround: toBeVisible doesn't account for visibility being override-able
+    // https://github.com/testing-library/jest-dom/issues/209
+    // same issue with userEvent.tab
+    expect(closeButton.closest('[data-panel]')).toHaveStyle(
+      'visibility: visible;'
+    )
   })
 })
