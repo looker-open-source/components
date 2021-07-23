@@ -1,7 +1,7 @@
 {
   "name": "@looker/components",
   "license": "MIT",
-  "version": "2.0.0",
+  "version": "2.1.0-alpha.0",
   "main": "lib/cjs/index.js",
   "module": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -18,8 +18,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@looker/components-providers": "^1.4.0",
-    "@looker/design-tokens": "^2.0.0",
+    "@looker/components-providers": "^1.4.1-alpha.0",
+    "@looker/design-tokens": "^2.1.0-alpha.0",
     "@popperjs/core": "^2.6.0",
     "@styled-icons/material": "^10.34.0",
     "@styled-icons/material-outlined": "^10.28.0",
@@ -35,7 +35,7 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "@looker/components-test-utils": "^1.4.0",
+    "@looker/components-test-utils": "^1.4.1-alpha.0",
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^13.1.5",
@@ -49,8 +49,8 @@
     "@types/uuid": "^8.3.0",
     "csstype": "^3.0.8",
     "jest-styled-components": "^7.0.4",
-    "puppeteer": "^9.1.0",
     "lodash": "^4.17.20",
+    "puppeteer": "^9.1.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-is": "^16.13.1",

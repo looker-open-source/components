@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0-alpha.0](https://github.com/looker-open-source/components/compare/@looker/design-tokens@2.0.0...@looker/design-tokens@2.1.0-alpha.0) (2021-07-23)
+
+
+### Bug Fixes
+
+* move lodash to peer dependencies ([#2580](https://github.com/looker-open-source/components/issues/2580)) ([a1a94a3](https://github.com/looker-open-source/components/commit/a1a94a3f501b481aaf73ec5305123965853cc508)), closes [/github.com/looker-open-source/components/blame/12658bddd81bf4dc1625865de424cc674ea07e1c/packages/components/README.md#L15](https://github.com//github.com/looker-open-source/components/blame/12658bddd81bf4dc1625865de424cc674ea07e1c/packages/components/README.md/issues/L15)
+* **CardContent:** Properly absorb padding (pN) values ([#2494](https://github.com/looker-open-source/components/issues/2494)) ([148cd49](https://github.com/looker-open-source/components/commit/148cd4945be2bf4dffb91458a2f1761d6c54d6cd))
+
+
+### Features
+
+* **ComponentsProvider:** ThemeCustomizations should support overloading fontSources ([#2641](https://github.com/looker-open-source/components/issues/2641)) ([9dd88e7](https://github.com/looker-open-source/components/commit/9dd88e733af0ac726b924827934457c62ad2ecac))
+* Consistently support props across "Semantic Layout" components as well as `Grid` ([#2596](https://github.com/looker-open-source/components/issues/2596)) ([227eda3](https://github.com/looker-open-source/components/commit/227eda35b5977abb398dc1be3822a6ed76ecad49))
+* **Tree:** Add virtualization support ([#2481](https://github.com/looker-open-source/components/issues/2481)) ([dc2619d](https://github.com/looker-open-source/components/commit/dc2619d0fb541925cd1d5312ea4d04979e34edf6))
+
+
+
+
+
 # [2.0.0](https://github.com/looker-open-source/components/compare/@looker/design-tokens@2.0.0-alpha.1...@looker/design-tokens@2.0.0) (2021-06-22)
 
 **Note:** Version bump only for package @looker/design-tokens
