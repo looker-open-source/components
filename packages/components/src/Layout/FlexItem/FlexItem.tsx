@@ -32,6 +32,11 @@ import { complexLayoutCSS } from '../utils/complex'
 
 export interface FlexItemProps extends ComplexLayoutProps, FlexboxProps {}
 
+/**
+ * NOTE: It's quite possible you don't need `FlexItem` at all
+ *
+ * @deprecated - Use `Box` or `div` instead.
+ */
 export const FlexItem = styled.div.withConfig({
   shouldForwardProp,
 })<FlexItemProps>`

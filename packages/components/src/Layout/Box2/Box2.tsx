@@ -24,25 +24,28 @@
 
  */
 
-import type { CompatibleHTMLProps, FlexboxProps } from '@looker/design-tokens'
-import { flexbox, shouldForwardProp } from '@looker/design-tokens'
 import styled from 'styled-components'
-import type { ComplexLayoutProps } from '../utils/complex'
-import { complexLayoutCSS } from '../utils/complex'
+import {
+  CompatibleHTMLProps,
+  cursor,
+  CursorProps,
+  flexbox,
+  FlexboxProps,
+  shouldForwardProp,
+  userSelect,
+  UserSelectProps,
+} from '@looker/design-tokens'
+import { commonLayoutCSS, CommonLayoutProps } from '../utils/common'
 
-/**
- * styled-system has its own FlexBoxProps, so we call this one FlexProps to disambiguate.
- */
-export interface FlexProps
-  extends CompatibleHTMLProps<HTMLDivElement>,
-    Omit<ComplexLayoutProps, 'display'>,
-    FlexboxProps {}
+export type Box2Props = CompatibleHTMLProps<HTMLElement> &
+  CommonLayoutProps &
+  FlexboxProps &
+  CursorProps &
+  UserSelectProps
 
-/**
- * @deprecated - Use a more specific layout helper such as `Space` or `SpaceVertical`, alternatively `<Box display="flex" />` fully replicates previous `Box` behavior
- */
-export const Flex = styled.div.withConfig({ shouldForwardProp })<FlexProps>`
-  ${complexLayoutCSS}
+export const Box2 = styled.div.withConfig({ shouldForwardProp })<Box2Props>`
+  ${commonLayoutCSS}
+  ${userSelect}
   ${flexbox}
-  display: flex;
+  ${cursor}
 `
