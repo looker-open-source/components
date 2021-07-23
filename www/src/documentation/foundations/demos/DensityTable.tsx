@@ -44,7 +44,7 @@ import { DocTable } from '../../../components'
 
 export const DensityTable = () => {
   const densityList: DensityRamp[] = [1, 0, -1, -2, -3]
-  console.log("densitiues is", listItemDimensions(-1))
+
   return (
     <DocTable maxWidth="1200px">
       <TableHead>
