@@ -25,7 +25,7 @@
  */
 
 import { SpecifiableColors } from '../color'
-import { FontFamilyChoices } from '../system'
+import { FontFamilyChoices, FontSources } from '../system'
 
 export interface ThemeCustomizations {
   /**
@@ -38,4 +38,8 @@ export interface ThemeCustomizations {
    * support and fallbacks for browsers that can't load web fonts.
    */
   fontFamilies?: Partial<FontFamilyChoices>
+  /**
+   * Specify font sources
+   */
+  fontSources?: FontSources
 }
