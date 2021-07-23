@@ -25,15 +25,23 @@
  */
 
 import '@testing-library/jest-dom/extend-expect'
-import { fireEvent, screen } from '@testing-library/react'
+import { act, fireEvent, screen } from '@testing-library/react'
 import 'jest-styled-components'
 import React, { useState } from 'react'
+import userEvent from '@testing-library/user-event'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { Panel, Panels, usePanel } from './'
+import { Nested } from './Panel.story'
+import { Panel, PanelProps, Panels, usePanel } from './'
 
 const globalConsole = global.console
 
+const runTimers = () =>
+  act(() => {
+    jest.runOnlyPendingTimers()
+  })
+
 beforeEach(() => {
+  jest.useFakeTimers()
   global.console = {
     ...globalConsole,
     error: jest.fn(),
@@ -42,6 +50,8 @@ beforeEach(() => {
 })
 
 afterEach(() => {
+  jest.runOnlyPendingTimers()
+  jest.useRealTimers()
   jest.resetAllMocks()
   global.console = globalConsole
 })
@@ -206,5 +216,34 @@ describe('Panel', () => {
     renderWithTheme(<Panel />)
     /* eslint-disable no-console */
     expect(console.warn).toHaveBeenCalled()
+  })
+
+  test('hidden content under panel is not reachable via keyboard nav', () => {
+    renderWithTheme(<Nested {...(Nested.args as PanelProps)} />)
+
+    const listItem = screen.getByText('option A')
+    const beforeButton = screen.getByText('Before')
+    const afterButton = screen.getByText('After')
+
+    userEvent.click(listItem)
+    runTimers()
+    userEvent.tab()
+    expect(
+      screen.getByRole('button', { name: 'CloseTitle Panel Title' })
+    ).toHaveFocus()
+    userEvent.tab({ shift: true })
+    expect(beforeButton).toHaveFocus()
+
+    userEvent.click(screen.getByText('Open nested panel'))
+    runTimers()
+    userEvent.tab()
+    expect(
+      screen.getByRole('button', { name: 'CloseTitle Nested' })
+    ).toHaveFocus()
+    userEvent.tab({ shift: true })
+    expect(beforeButton).toHaveFocus()
+    userEvent.tab()
+    userEvent.tab()
+    expect(afterButton).toHaveFocus()
   })
 })

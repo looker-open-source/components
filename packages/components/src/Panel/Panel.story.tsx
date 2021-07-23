@@ -81,7 +81,8 @@ Nested.args = {
   ),
   title: 'Panel Title',
 }
-Basic.parameters = {
+
+Nested.parameters = {
   storyshots: { disable: true },
 }
 
