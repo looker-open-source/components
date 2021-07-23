@@ -61,13 +61,17 @@ describe('Popover', () => {
 
     const openPopover = screen.getByText('Open')
     fireEvent.click(openPopover)
-    const header = screen.queryByText('Header text')
-    expect(header).toBeInTheDocument()
-    expect(header?.closest('div')).toHaveAttribute(
+
+    expect(screen.queryByText('Header text')).toBeInTheDocument()
+    expect(screen.getByRole('dialog')).toBeInTheDocument()
+    expect(screen.getByRole('dialog')).toHaveAttribute(
       'aria-labelledby',
       'a11y-heading'
     )
-    expect(header).toHaveAttribute('id', 'a11y-heading')
+    expect(screen.getByText('Header text')).toHaveAttribute(
+      'id',
+      'a11y-heading'
+    )
   })
 
   test('cloneElement style opens and closes', () => {

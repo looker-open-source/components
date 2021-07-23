@@ -251,16 +251,16 @@ export const usePopover = ({
     >
       <Portal ref={scrollRef}>
         <SurfaceComponent
-          role="dialog"
+          aria-labelledby={`${id}-heading`}
           aria-modal={true}
           maxWidth={width}
           placement={placement}
           ref={ref}
+          role="dialog"
           style={style}
         >
           <Flex
             alignItems="flex-start"
-            aria-labelledby={`${id}-heading`}
             borderRadius="inherit"
             flexDirection="column"
             id={id}
