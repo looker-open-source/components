@@ -573,8 +573,13 @@ describe('Select / SelectMulti', () => {
         fireEvent.mouseDown(input)
 
         // hover will not trigger navigate during & right after scroll
-        const container = screen.getByRole('dialog')
-        fireEvent.scroll(container)
+        const surface = screen.getByRole('dialog')
+        expect(surface).toBeInTheDocument()
+        const surfaceInner = surface && surface.firstChild
+        expect(surfaceInner).toBeInTheDocument()
+        const surfaceInnerFlex = surfaceInner && surfaceInner.firstChild
+        expect(surfaceInnerFlex).toBeInTheDocument()
+        surfaceInnerFlex && fireEvent.scroll(surfaceInnerFlex)
 
         const bar = screen.getByText('BAR')
         fireEvent.mouseOver(bar)

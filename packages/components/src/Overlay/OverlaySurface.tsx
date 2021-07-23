@@ -40,7 +40,7 @@ import React, {
   useRef,
 } from 'react'
 import styled from 'styled-components'
-import { useGlobalHotkeys, useForkedRef } from '../utils'
+import { useGlobalHotkeys, useForkedRef, partitionAriaProps } from '../utils'
 import { DialogContext } from '../Dialog'
 
 export interface OverlaySurfaceProps
@@ -53,9 +53,18 @@ export interface OverlaySurfaceProps
 
 const OverlaySurfaceLayout = forwardRef(
   (props: OverlaySurfaceProps, forwardedRef: Ref<HTMLDivElement>) => {
-    const { children, className, eventHandlers, placement, style } = props
+    const {
+      children,
+      className,
+      eventHandlers,
+      placement,
+      style,
+      role,
+      ...otherProps
+    } = props
     const { closeModal } = useContext(DialogContext)
 
+    const [ariaProps] = partitionAriaProps(otherProps)
     const innerRef = useRef<null | HTMLElement>(null)
     const ref = useForkedRef(forwardedRef, innerRef)
 
@@ -63,6 +72,8 @@ const OverlaySurfaceLayout = forwardRef(
 
     return (
       <div
+        role={role}
+        {...ariaProps}
         ref={ref}
         style={style}
         className={className}
