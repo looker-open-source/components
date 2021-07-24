@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.1-alpha.1](https://github.com/looker-open-source/components/compare/@looker/components-providers@1.4.0...@looker/components-providers@1.4.1-alpha.1) (2021-07-24)
+
+
+### Bug Fixes
+
+* move lodash to peer dependencies ([#2580](https://github.com/looker-open-source/components/issues/2580)) ([a1a94a3](https://github.com/looker-open-source/components/commit/a1a94a3f501b481aaf73ec5305123965853cc508)), closes [/github.com/looker-open-source/components/blame/12658bddd81bf4dc1625865de424cc674ea07e1c/packages/components/README.md#L15](https://github.com//github.com/looker-open-source/components/blame/12658bddd81bf4dc1625865de424cc674ea07e1c/packages/components/README.md/issues/L15)
+* **FontFaceLoader:** Memoize font-import to prevent font-loading flash ([#2541](https://github.com/looker-open-source/components/issues/2541)) ([dff393b](https://github.com/looker-open-source/components/commit/dff393b8b19a10e2e2cb5ac90e44d5da9f809fbd))
+
+
+
+
+
 ## [1.4.1-alpha.0](https://github.com/looker-open-source/components/compare/@looker/components-providers@1.4.0...@looker/components-providers@1.4.1-alpha.0) (2021-07-23)
 
 
