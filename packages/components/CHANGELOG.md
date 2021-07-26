@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0-alpha.2](https://github.com/looker-open-source/components/compare/@looker/components@2.1.0-alpha.1...@looker/components@2.1.0-alpha.2) (2021-07-26)
+
+
+### Bug Fixes
+
+* **SemanticBorder:** Support border="none" and border="customColor" ([#2649](https://github.com/looker-open-source/components/issues/2649)) ([eb3e8ee](https://github.com/looker-open-source/components/commit/eb3e8ee78a0334a860bd28a3c9f956f2e7621d35))
+* **Tree:** Fixed Tree indent bug ([#2651](https://github.com/looker-open-source/components/issues/2651)) ([33f5e06](https://github.com/looker-open-source/components/commit/33f5e06c027729e6aa824a54f188f885c18ffb50))
+
+
+
+
+
 # [2.1.0-alpha.1](https://github.com/looker-open-source/components/compare/@looker/components@2.0.0...@looker/components@2.1.0-alpha.1) (2021-07-24)
 
 
