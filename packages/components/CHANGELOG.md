@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/looker-open-source/components/compare/@looker/components@2.1.0-alpha.2...@looker/components@2.1.0) (2021-07-26)
+
+
+### Bug Fixes
+
+* **Tree:** Controlled isOpen ([#2652](https://github.com/looker-open-source/components/issues/2652)) ([bf32714](https://github.com/looker-open-source/components/commit/bf32714cfb47968da9eec9af489aa7030e9887fd))
+
+
+
+
+
 # [2.1.0-alpha.2](https://github.com/looker-open-source/components/compare/@looker/components@2.1.0-alpha.1...@looker/components@2.1.0-alpha.2) (2021-07-26)
 
 
