@@ -2516,22 +2516,6 @@
     request-promise-native "^1.0.8"
     semver "^7.3.4"
 
-"@looker/filter-components@*":
-  version "0.6.0-alpha.0"
-  dependencies:
-    "@looker/components" "^2.1.0-alpha.0"
-    "@looker/components-date" "^2.0.1-alpha.0"
-    "@looker/filter-expressions" "^0.6.0-alpha.0"
-    "@looker/icons" "^1.4.1-alpha.0"
-    "@looker/sdk" "^21.8.0"
-    "@looker/sdk-rtl" "^21.0.12"
-    "@styled-icons/material" "10.28.0"
-    "@styled-icons/material-outlined" "10.28.0"
-    "@styled-icons/material-rounded" "10.28.0"
-    lodash "^4.17.20"
-    polished "3.4.1"
-    use-debounce "5.2.1"
-
 "@looker/icons@*":
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@looker/icons/-/icons-1.4.0.tgz#155591c3e6b4ade0bff078a6827da6453d2f7d74"
