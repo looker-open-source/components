@@ -161,7 +161,7 @@ const TreeLayout = ({
     onOpen,
     ...accordionInnerProps,
   }
-  if (isOpen && toggleOpen) {
+  if (isOpen !== undefined && toggleOpen) {
     accordionProps = { ...accordionProps, isOpen, toggleOpen }
   }
 
