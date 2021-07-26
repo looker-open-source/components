@@ -27,7 +27,8 @@
 import { css } from 'styled-components'
 import { borderRadius, BorderRadiusProps, Colors } from '@looker/design-tokens'
 
-type BorderProp = boolean | keyof Colors
+type BorderBaseProp = keyof Colors | string
+type BorderProp = BorderBaseProp | boolean | 'none'
 type BorderPosition = 'bottom' | 'left' | 'right' | 'top' | 'x' | 'y'
 
 export type SemanticBorderProps = BorderRadiusProps & {
@@ -72,18 +73,18 @@ export type SemanticBorderProps = BorderRadiusProps & {
   borderY?: BorderProp
 }
 
-const borderPropertyHelper = (color: keyof Colors, property: string) =>
-  css`
-    ${property}: 1px solid
-    ${({ theme }) => theme.colors[color]};
-  `
+const borderPropertyHelper = (color: BorderBaseProp, property: string) => css`
+  ${property}: 1px solid
+    ${({ theme }) => theme.colors[color] || color};
+`
 
 const borderPositionHelper = (
   border: BorderProp,
   position?: BorderPosition
 ) => {
-  if (!border) return null
   const color = border === true ? 'ui2' : border
+  if (color === 'none' || !color) return null
+
   let properties: string[] = []
   switch (position) {
     case 'x':
