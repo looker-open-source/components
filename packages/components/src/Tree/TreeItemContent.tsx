@@ -41,7 +41,7 @@ export const TreeItemContent = styled(
 ).attrs<TreeItemContentProps>(({ role = 'treeitem' }) => ({
   role,
 }))<TreeItemContentProps>`
-  ${generateIndent}
+  ${({ density, depth }) => generateIndent({ density, depth })}
   ${({ labelBackgroundOnly }) => labelBackgroundOnly && 'background: none;'}
   display: flex;
   flex: 1;
