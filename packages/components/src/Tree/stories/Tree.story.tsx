@@ -31,6 +31,8 @@ import { Story } from '@storybook/react/types-6-0'
 import { Tree, TreeProps, TreeCollection, TreeItem } from '..'
 import { Button } from '../../Button'
 import { Space } from '../../Layout'
+import { FieldToggleSwitch } from '../../Form'
+import { useToggle } from '../../utils'
 
 export * from './BorderRadius.story'
 export * from './ColorfulTree.story'
@@ -120,5 +122,21 @@ Accessory.args = {
   },
 }
 Accessory.parameters = {
+  storyshots: { disable: true },
+}
+
+export const Controlled = () => {
+  const { value, change, toggle } = useToggle(true)
+
+  return (
+    <>
+      <FieldToggleSwitch on={value} onChange={toggle} label="Toggle" />
+      <Tree isOpen={value} toggleOpen={change} label="Controlled Tree">
+        Stuff here
+      </Tree>
+    </>
+  )
+}
+Controlled.parameters = {
   storyshots: { disable: true },
 }

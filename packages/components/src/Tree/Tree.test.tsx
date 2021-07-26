@@ -24,11 +24,12 @@
 
  */
 
-import React, { useState } from 'react'
+import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { Science } from '@styled-icons/material-outlined/Science'
 import { screen, fireEvent } from '@testing-library/react'
 import { Button } from '../Button'
+import { Controlled } from './stories/Tree.story'
 import { Tree } from '.'
 
 describe('Tree', () => {
@@ -74,22 +75,19 @@ describe('Tree', () => {
   })
 
   test('Handles controlled open state via isOpen and toggleOpen props', () => {
-    const Wrapper = () => {
-      const [isOpen, setIsOpen] = useState(true)
+    renderWithTheme(<Controlled />)
 
-      return (
-        <Tree label="Tree Label" isOpen={isOpen} toggleOpen={setIsOpen}>
-          Hello World
-        </Tree>
-      )
-    }
-
-    renderWithTheme(<Wrapper />)
-
-    const treeLabel = screen.getByText('Tree Label')
-    screen.getByText('Hello World')
+    const treeLabel = screen.getByText('Controlled Tree')
+    screen.getByText('Stuff here')
     fireEvent.click(treeLabel)
-    expect(screen.queryByText('Hello World')).not.toBeInTheDocument()
+    expect(screen.queryByText('Stuff here')).not.toBeInTheDocument()
+
+    fireEvent.click(treeLabel)
+    screen.getByText('Stuff here')
+
+    const toggleSwitch = screen.getByRole('switch')
+    fireEvent.click(toggleSwitch)
+    expect(screen.queryByText('Stuff here')).not.toBeInTheDocument()
   })
 
   test('Triggers onClose and onOpen callbacks when provided via props', () => {
