@@ -28,6 +28,8 @@ import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { fireEvent, screen } from '@testing-library/react'
 import { ParentIcon } from './NavTree.story'
+import { NavTreeItem } from './NavTreeItem'
+import { NavTree } from './NavTree'
 
 describe('NavTree', () => {
   test('Renders string disclosure label and detail', () => {
@@ -46,5 +48,21 @@ describe('NavTree', () => {
     expect(screen.queryByText('Cheddar')).not.toBeInTheDocument()
     fireEvent.click(treeLabel)
     screen.getByText('Cheddar')
+  })
+
+  test('Renders and hides children on disclosure click', () => {
+    const parentClick = jest.fn()
+    const childClick = jest.fn()
+
+    renderWithTheme(
+      <NavTree onClick={parentClick} label="Parent">
+        <NavTreeItem onClick={childClick}>Child</NavTreeItem>
+      </NavTree>
+    )
+
+    fireEvent.click(screen.getByText('Parent'))
+    expect(parentClick).toHaveBeenCalled()
+    fireEvent.click(screen.getByText('Child'))
+    expect(childClick).toHaveBeenCalled()
   })
 })
