@@ -37,6 +37,22 @@ const Template: Story<CardProps> = (args) => <Card {...args}>A basic card</Card>
 
 export const Default = Template.bind({})
 
+export const NoBorder = Template.bind({})
+NoBorder.args = {
+  border: 'none',
+}
+NoBorder.parameters = {
+  storyshots: { disable: true },
+}
+
+export const CustomBorderColor = Template.bind({})
+CustomBorderColor.args = {
+  border: 'red',
+}
+CustomBorderColor.parameters = {
+  storyshots: { disable: true },
+}
+
 export const Raised = Template.bind({})
 Raised.args = {
   raised: true,
