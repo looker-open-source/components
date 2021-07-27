@@ -24,8 +24,11 @@
 
  */
 
-import { SpaceRamp } from '../system'
+import { SpaceRamp, SpacingRamp } from '../system'
 
+/**
+ * @deprecated Use `spacing` instead
+ */
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 export const space: SpaceRamp = {
   none: '0rem',
@@ -39,4 +42,25 @@ export const space: SpaceRamp = {
   xxlarge: '2.5rem',
   xxxlarge: '3.75rem',
   xxxxlarge: '5rem',
+}
+
+export const spacing: SpacingRamp = {
+  none: '0rem',
+  'size0.5': '0.125rem',
+  size1: '0.25rem',
+  size2: '0.5rem',
+  size3: '0.75rem',
+  size4: '1rem',
+  size5: '1.25rem',
+  size6: '1.5rem',
+  size7: '1.75rem',
+  size8: '2rem',
+  size9: '2.25rem',
+  size10: '2.5rem',
+  size11: '2.75rem',
+  size12: '3rem',
+  size13: '3.25rem',
+  size14: '3.5rem',
+  size15: '3.75rem',
+  size16: '4em',
 }

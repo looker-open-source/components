@@ -36,6 +36,7 @@ import {
   SizeRamp,
   Shadows,
   SpaceRamp,
+  SpacingRamp,
   TransitionRamp,
   FontSources,
 } from '../system'
@@ -55,6 +56,7 @@ import {
   sizes,
   shadows,
   space,
+  spacing,
   transitions,
 } from '../tokens'
 
@@ -71,6 +73,7 @@ export interface Theme {
   sizes: SizeRamp
   shadows: Shadows
   space: SpaceRamp
+  spacing: SpacingRamp
   transitions: TransitionRamp
   zIndexFloor: number
 }
@@ -87,6 +90,7 @@ export const theme: DefaultTheme = {
   shadows,
   sizes,
   space,
+  spacing,
   transitions,
   zIndexFloor: 1,
 }
