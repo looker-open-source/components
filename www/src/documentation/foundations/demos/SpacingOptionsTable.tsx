@@ -103,7 +103,6 @@ const SpacingRow = (px: string, rem: string, key: number, label: string) => {
       </TableDataCell>
       <TableDataCell>{px}px</TableDataCell>
       <TableDataCell>{rem}</TableDataCell>
-
     </TableRow>
   )
 }
@@ -137,14 +136,14 @@ export const LegacySpaceTable = () => {
       </TableRow>
     </TableHead>
     <TableBody>
-      {spacingValues.map((size, index) => {
+      {spacingValues.map((size) => {
         return(
           <TableRow key={`${size[0]}-legacy`}>
             <TableDataCell><Code fontSize="small">{size[0]}</Code></TableDataCell>
             <TableDataCell>{lookupLegacyValue(size[1])}</TableDataCell>
-        </TableRow>
-      )
-     })}
+          </TableRow>
+        )
+      })}
       </TableBody>
     </DocTable>
   )
