@@ -26,14 +26,14 @@
 
 import { css } from 'styled-components'
 
-export interface TruncateProps {
+export interface TruncateCSSProps {
   /** Truncate text */
   truncate?: boolean
   /** Truncate at a specified number of lines (whole number) */
   truncateLines?: number
 }
 
-const textTruncate = (props: TruncateProps) => {
+const textTruncate = (props: TruncateCSSProps) => {
   const { truncateLines } = props
 
   if (truncateLines && truncateLines > 1) {
@@ -54,7 +54,12 @@ const textTruncate = (props: TruncateProps) => {
   `
 }
 
-export const truncate = (props: TruncateProps) =>
+/**
+ * Helper function that allows external developers
+ * to leverage `textTruncate` behavior as a CSS interpolated
+ * string
+ */
+export const truncateCSS = (props: TruncateCSSProps) =>
   css`
     ${props.truncate || props.truncateLines ? textTruncate : null}
   `

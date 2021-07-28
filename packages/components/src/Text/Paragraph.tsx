@@ -32,14 +32,14 @@ import {
   textTransform,
   TextTransformProps,
 } from '@looker/design-tokens'
-import { TruncateProps, truncate } from '../Text/truncate'
+import { TruncateCSSProps, truncateCSS } from '../Text/truncate'
 import { TextBase, TextBaseProps } from './TextBase'
 
 export interface ParagraphProps
   extends TextBaseProps,
     LayoutProps,
     TextTransformProps,
-    TruncateProps,
+    TruncateCSSProps,
     Omit<CompatibleHTMLProps<HTMLParagraphElement>, 'wrap'> {}
 
 export const Paragraph = styled(TextBase).attrs<ParagraphProps>(
@@ -52,5 +52,5 @@ export const Paragraph = styled(TextBase).attrs<ParagraphProps>(
 )<ParagraphProps>`
   ${layout}
   ${textTransform}
-  ${truncate}
+  ${truncateCSS}
 `
