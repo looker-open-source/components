@@ -54,7 +54,12 @@ const textTruncate = (props: TruncateProps) => {
   `
 }
 
-export const truncate = (props: TruncateProps) =>
+/**
+ * Helper function that allows external developers
+ * to leverage `textTruncate` behavior as a CSS interpolated
+ * string
+ */
+export const truncateCSS = (props: TruncateProps) =>
   css`
     ${props.truncate || props.truncateLines ? textTruncate : null}
   `

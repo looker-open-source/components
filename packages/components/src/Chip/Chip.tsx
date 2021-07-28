@@ -39,7 +39,7 @@ import {
 } from '../utils'
 import { IconButton } from '../Button/IconButton'
 import { Span, SpanProps } from '../Text'
-import { TruncateProps, truncate } from '../Text/truncate'
+import { TruncateProps, truncateCSS } from '../Text/truncate'
 
 export interface ChipProps
   extends MaxWidthProps,
@@ -110,7 +110,7 @@ const ChipStyle = styled.span<FocusVisibleProps & MaxWidthProps>`
 `
 
 const ChipLabel = styled(Span)<SpanProps & TruncateProps>`
-  ${truncate}
+  ${truncateCSS}
 `
 
 const ChipJSX = forwardRef((props: ChipProps, ref: Ref<HTMLSpanElement>) => {
