@@ -39,11 +39,11 @@ import {
 } from '../utils'
 import { IconButton } from '../Button/IconButton'
 import { Span, SpanProps } from '../Text'
-import { TruncateProps, truncateCSS } from '../Text/truncate'
+import { TruncateCSSProps, truncateCSS } from '../Text/truncate'
 
 export interface ChipProps
   extends MaxWidthProps,
-    TruncateProps,
+    TruncateCSSProps,
     GenericClickProps<HTMLSpanElement> {
   /**
    * customize the tooltip on the closing icon
@@ -109,7 +109,7 @@ const ChipStyle = styled.span<FocusVisibleProps & MaxWidthProps>`
   }
 `
 
-const ChipLabel = styled(Span)<SpanProps & TruncateProps>`
+const ChipLabel = styled(Span)<SpanProps & TruncateCSSProps>`
   ${truncateCSS}
 `
 
