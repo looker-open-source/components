@@ -37,4 +37,5 @@ export * from './iconButtonTypes'
 export * from './MultiFunctionButton'
 export * from './types'
 
+export { buttonSizeMap } from './size'
 export type { ButtonSizes } from './size'
