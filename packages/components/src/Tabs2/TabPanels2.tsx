@@ -24,4 +24,41 @@
 
  */
 
-export * from './Tab2'
+import React, { FC } from 'react'
+import styled from 'styled-components'
+import {
+  FlexboxProps,
+  LayoutProps,
+  SpaceProps,
+  flexbox,
+  layout,
+  space,
+  reset,
+} from '@looker/design-tokens'
+
+export interface TabPanels2Props extends FlexboxProps, LayoutProps, SpaceProps {
+  children: JSX.Element
+  className?: string
+}
+
+const TabPanels2Layout: FC<TabPanels2Props> = ({ children, className }) => (
+  <div
+    aria-labelledby={`tab-${children.props.id}`}
+    className={className}
+    id={`panel-${children.props.id}`}
+    role="tabpanel"
+  >
+    {children}
+  </div>
+)
+
+export const TabPanels2 = styled(TabPanels2Layout).attrs(
+  ({ pt = 'large' }) => ({
+    pt,
+  })
+)`
+  ${reset}
+  ${flexbox}
+  ${layout}
+  ${space}
+`
