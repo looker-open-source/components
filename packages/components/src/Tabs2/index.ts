@@ -23,3 +23,5 @@
  SOFTWARE.
 
  */
+
+export * from './Tabs2'

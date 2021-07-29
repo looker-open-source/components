@@ -78,6 +78,21 @@ Focused.parameters = {
   docs: { disable: true },
 }
 
+export const Disabled = () => (
+  <Tabs>
+    <TabList>
+      <Tab>Foo</Tab>
+      <Tab disabled>Bar</Tab>
+      <Tab>FooBar</Tab>
+    </TabList>
+    <TabPanels>
+      <TabPanel>Foo</TabPanel>
+      <TabPanel>Bar</TabPanel>
+      <TabPanel>FooBar</TabPanel>
+    </TabPanels>
+  </Tabs>
+)
+
 export const Controlled: FC = () => {
   const [currentTabIndex, setTab] = useState(0)
 
