@@ -40,6 +40,7 @@ export const usePanel = ({
   isOpen: controlledIsOpen,
   onClose,
   setOpen: controlledSetOpen,
+  disableAnimation,
   ...headerProps
 }: UsePanelProps): UsePanelResponse => {
   const [uncontrolledIsOpen, setUncontrolledIsOpen] = useState(defaultOpen)
@@ -61,7 +62,8 @@ export const usePanel = ({
   const firstRender = useRef(true)
   const { busy, className, renderDOM } = useAnimationState(
     isOpen,
-    isOpen && firstRender.current ? 'none' : undefined
+    disableAnimation || (isOpen && firstRender.current) ? 'none' : undefined,
+    disableAnimation ? 'none' : undefined
   )
   firstRender.current = false
 

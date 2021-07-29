@@ -72,6 +72,11 @@ export type PanelBaseProps = {
    * Value displayed as Panel header clickable to close Panel
    */
   title: string
+
+  /**
+   * Disable Panel open / close animations
+   */
+  disableAnimation?: boolean
 }
 
 export type UsePanelProps = PanelBaseProps & {
