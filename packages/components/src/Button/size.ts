@@ -33,6 +33,8 @@ import {
   variant,
 } from '@looker/design-tokens'
 
+/* eslint-disable sort-keys-fix/sort-keys-fix */
+
 export type ButtonBaseSizes =
   | SizeXXSmall
   | SizeXSmall
@@ -55,7 +57,11 @@ export interface ButtonSizeProps {
   size?: ButtonBaseSizes
 }
 
-/* eslint-disable sort-keys-fix/sort-keys-fix */
+/**
+ * Defines known heights of `Button*` and height/width of `IconButton`
+ *
+ * @private - External use is discouraged
+ */
 export const buttonSizeMap = {
   xxsmall: 20,
   xsmall: 24,
@@ -65,7 +71,6 @@ export const buttonSizeMap = {
 }
 
 /* The size of an icon relative to the Button size inside an IconButton */
-/* eslint-disable sort-keys-fix/sort-keys-fix */
 export const iconButtonIconSizeMap = {
   xxsmall: 'xxsmall',
   xsmall: 'xsmall',
@@ -75,7 +80,6 @@ export const iconButtonIconSizeMap = {
 }
 
 /* The size of an icon relative to the Button size inside a Button, ButtonOutline and ButtonTransparent */
-/* eslint-disable sort-keys-fix/sort-keys-fix */
 export const buttonIconSizeMap = {
   xxsmall: 'xxxsmall',
   xsmall: 'xxxsmall',

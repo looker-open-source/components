@@ -40,6 +40,11 @@ const direction = variant({
   },
 })
 
+/**
+ * Produces the interior "surface" of an active `Panel`
+ *
+ * @private - Don't leverage this directly (it may be removed without notice)
+ */
 export const PanelSurface = styled.div.attrs<PanelSurfaceProps>(
   ({ direction = 'left' }) => ({ direction })
 )<PanelSurfaceProps>`
