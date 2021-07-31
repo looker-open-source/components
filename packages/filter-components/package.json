@@ -32,7 +32,7 @@
   "@types/i18next": "13.0.0",
   "@types/lodash": "4.14.106",
   "@types/react": "*",
-  "@types/react-test-renderer": "16.9.1",
+  "@types/react-test-renderer": "17.0.1",
   "@types/styled-components": "*",
   "@types/styled-system": "*",
   "@typescript-eslint/eslint-plugin": "*",
