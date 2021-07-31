@@ -27,7 +27,7 @@
     "@styled-icons/styled-icon": "^10.6.3",
     "d3-color": "^2.0.0",
     "d3-hsv": "^0.1.0",
-    "hotkeys-js": "^3.8.3",
+    "hotkeys-js": "^3.8.7",
     "i18next": "20.3.1",
     "react-hotkeys-hook": "2.3.1",
     "react-i18next": "11.8.15",
