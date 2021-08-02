@@ -357,6 +357,15 @@ describe('DataTable', () => {
       expect(onSelect).toHaveBeenCalled()
     })
 
+    test('Checkbox keyboard entry calls onSelect', () => {
+      renderWithTheme(dataTableWithSelect)
+      fireEvent.keyDown(screen.getAllByRole('checkbox')[1], {
+        key: 'Enter',
+        code: 'Enter',
+      })
+      expect(onSelect).toHaveBeenCalled()
+    })
+
     test('selectedItems determines if a checkbox is checked', () => {
       renderWithTheme(dataTableWithSelectedItems)
       const checkbox = screen.getAllByRole('checkbox')[1]
