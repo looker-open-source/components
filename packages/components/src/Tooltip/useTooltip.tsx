@@ -66,17 +66,6 @@ export const useTooltip = ({
   // If the triggerElement is passed in props, use that instead of the new element
   const element = triggerElement ?? newTriggerElement
 
-  const handleOpen = useCallback(
-    (e: { currentTarget: HTMLElement }) => {
-      setTriggerElement(e.currentTarget)
-      const currentElement = triggerElement ?? e.currentTarget
-      if (!disabled && (!currentElement || !currentElement.dataset.notooltip)) {
-        setIsOpen(true)
-      }
-    },
-    [disabled, triggerElement]
-  )
-
   const handleClose = useCallback(() => {
     if (canClose && !canClose()) return
     setIsOpen(false)
@@ -133,50 +122,75 @@ export const useTooltip = ({
   const ref = useForkedRef(targetRef, surfaceCallbackRef)
 
   const guaranteedId = useID(id)
-
-  const popper =
-    renderDOM && content && !disabled ? (
-      <Portal>
-        <TooltipSurface
-          aria-busy={busy ? true : undefined}
-          className={className}
-          eventHandlers={{ onMouseOut: handleMouseOut }}
-          placement={placement}
-          ref={ref}
-          style={style}
-          maxWidth={maxWidth}
-          invert={invert}
-        >
-          <TooltipContent
-            role="tooltip"
-            id={guaranteedId}
-            width={width}
-            textAlign={textAlign}
+  return useMemo(() => {
+    const popper =
+      renderDOM && content && !disabled ? (
+        <Portal>
+          <TooltipSurface
+            aria-busy={busy ? true : undefined}
+            className={className}
+            eventHandlers={{ onMouseOut: handleMouseOut }}
+            placement={placement}
+            ref={ref}
+            style={style}
+            maxWidth={maxWidth}
+            invert={invert}
           >
-            {content}
-          </TooltipContent>
-        </TooltipSurface>
-      </Portal>
-    ) : null
+            <TooltipContent
+              role="tooltip"
+              id={guaranteedId}
+              width={width}
+              textAlign={textAlign}
+            >
+              {content}
+            </TooltipContent>
+          </TooltipSurface>
+        </Portal>
+      ) : null
 
-  const enabledDomProps = disabled
-    ? {}
-    : {
-        'aria-describedby': guaranteedId,
-        className: renderDOM ? 'hover' : undefined,
+    const handleOpen = (e: { currentTarget: HTMLElement }) => {
+      setTriggerElement(e.currentTarget)
+      const currentElement = triggerElement ?? e.currentTarget
+      if (!disabled && (!currentElement || !currentElement.dataset.notooltip)) {
+        setIsOpen(true)
       }
+    }
 
-  const domProps: UseTooltipResponseDom = {
-    ...enabledDomProps,
-    onBlur: handleClose,
-    onFocus: handleOpen,
-    onMouseOut: handleMouseOut,
-    onMouseOver: handleOpen,
-  }
-
-  return {
-    domProps,
+    const enabledDomProps = disabled
+      ? {}
+      : {
+          'aria-describedby': guaranteedId,
+          className: renderDOM ? 'hover' : undefined,
+        }
+    const domProps: UseTooltipResponseDom = {
+      ...enabledDomProps,
+      onBlur: handleClose,
+      onFocus: handleOpen,
+      onMouseOut: handleMouseOut,
+      onMouseOver: handleOpen,
+    }
+    return {
+      domProps,
+      popperInstanceRef,
+      tooltip: popper,
+    }
+  }, [
+    busy,
+    className,
+    content,
+    disabled,
+    guaranteedId,
+    handleClose,
+    handleMouseOut,
+    invert,
+    maxWidth,
+    placement,
     popperInstanceRef,
-    tooltip: popper,
-  }
+    ref,
+    renderDOM,
+    style,
+    textAlign,
+    triggerElement,
+    width,
+  ])
 }

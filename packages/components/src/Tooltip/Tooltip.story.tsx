@@ -130,64 +130,6 @@ LargeTrigger.parameters = {
   storyshots: { disable: true },
 }
 
-const TestButton = ({
-  index,
-  text,
-  ...rest
-}: {
-  index: number
-  text: string
-}) => (
-  <Button {...rest}>
-    {index} - {text}
-  </Button>
-)
-
-export const PerformanceTest = () => {
-  const [buttonText, setButtonText] = useState('hover me')
-  const handleChange = (e: FormEvent<HTMLInputElement>) => {
-    setButtonText(e.currentTarget.value)
-  }
-
-  const { value, toggle } = useToggle(true)
-
-  return (
-    <SpaceVertical>
-      <Paragraph>
-        Try deleting all the button text by holding down the delete key
-      </Paragraph>
-      <Space>
-        <FieldText
-          label="Button text"
-          value={buttonText}
-          onChange={handleChange}
-          width={150}
-        />
-        <FieldToggleSwitch
-          label="Enable tooltips"
-          on={value}
-          onChange={toggle}
-        />
-      </Space>
-      {Array.from(Array(100), (_, i) => {
-        if (value) {
-          return (
-            <Tooltip content="Some content" placement="right" key={i}>
-              <TestButton index={i} text={buttonText} />
-            </Tooltip>
-          )
-        } else {
-          return <TestButton index={i} text={buttonText} key={i} />
-        }
-      })}
-    </SpaceVertical>
-  )
-}
-
-PerformanceTest.parameters = {
-  storyshots: { disable: true },
-}
-
 export const NestedInPopover = () => {
   const [prevent, setPrevent] = useState(false)
   function handleChange(e: FormEvent<HTMLInputElement>) {
@@ -230,6 +172,64 @@ export const NestedInPopover = () => {
 }
 
 NestedInPopover.parameters = {
+  storyshots: { disable: true },
+}
+
+const TestButton = ({
+  index,
+  text,
+  ...rest
+}: {
+  index: number
+  text: string
+}) => (
+  <Button {...rest}>
+    {index} - {text}
+  </Button>
+)
+
+export const PerformanceTest = () => {
+  const [buttonText, setButtonText] = useState('hover me')
+  const handleChange = (e: FormEvent<HTMLInputElement>) => {
+    setButtonText(e.currentTarget.value)
+  }
+
+  const { value, toggle } = useToggle(true)
+
+  return (
+    <SpaceVertical>
+      <Paragraph>
+        Try deleting all the button text by holding down the delete key
+      </Paragraph>
+      <Space>
+        <FieldText
+          label="Button text"
+          value={buttonText}
+          onChange={handleChange}
+          width={150}
+        />
+        <FieldToggleSwitch
+          label="Enable tooltips"
+          on={value}
+          onChange={toggle}
+        />
+      </Space>
+      {Array.from(Array(500), (_, i) => {
+        if (value) {
+          return (
+            <Tooltip content="Some content" placement="right" key={i}>
+              <TestButton index={i} text={buttonText} />
+            </Tooltip>
+          )
+        } else {
+          return <TestButton index={i} text={buttonText} key={i} />
+        }
+      })}
+    </SpaceVertical>
+  )
+}
+
+PerformanceTest.parameters = {
   storyshots: { disable: true },
 }
 
