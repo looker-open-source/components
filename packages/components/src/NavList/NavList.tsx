@@ -27,7 +27,6 @@
 import styled from 'styled-components'
 import { TextBase } from '../Text/TextBase'
 import { Truncate } from '../Truncate'
-import { Accordion2Disclosure } from '../Accordion2/Accordion2Disclosure'
 import { List } from '../List'
 import {
   ListItem,
@@ -35,7 +34,7 @@ import {
   ListItemDetail,
   ListItemIcon,
 } from '../ListItem'
-import { INDICATOR_SPACER } from '../NavTree'
+import { INDICATOR_SPACER, NavTreeDisclosure } from '../NavTree'
 
 /**
  * `NavList` is a variation of `List`
@@ -46,7 +45,7 @@ import { INDICATOR_SPACER } from '../NavTree'
  *   - `ListItem` at the root are indented to align properly with `Tree`(s) at the root as well
  */
 export const NavList = styled(List).attrs(({ color = 'key' }) => ({ color }))`
-  ${Accordion2Disclosure}, ${ListItemContent} {
+  ${NavTreeDisclosure}, ${ListItemContent} {
     border-bottom-right-radius: 5rem;
     border-top-right-radius: 5rem;
 
