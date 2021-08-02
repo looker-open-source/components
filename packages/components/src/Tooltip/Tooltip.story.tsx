@@ -30,8 +30,9 @@ import { Button } from '../Button'
 import { Card } from '../Card'
 import { FieldText, FieldToggleSwitch } from '../Form'
 import { Space, SpaceVertical } from '../Layout'
-import { Text } from '../Text'
+import { Paragraph, Text } from '../Text'
 import { Popover, PopoverContent } from '../Popover'
+import { useToggle } from '../utils'
 import { Tooltip, TooltipProps } from './'
 
 const Template: Story<TooltipProps> = (args) => (
@@ -129,21 +130,56 @@ LargeTrigger.parameters = {
   storyshots: { disable: true },
 }
 
+const TestButton = ({
+  index,
+  text,
+  ...rest
+}: {
+  index: number
+  text: string
+}) => (
+  <Button {...rest}>
+    {index} - {text}
+  </Button>
+)
+
 export const PerformanceTest = () => {
-  const [value, setValue] = useState('hover me')
+  const [buttonText, setButtonText] = useState('hover me')
   const handleChange = (e: FormEvent<HTMLInputElement>) => {
-    setValue(e.currentTarget.value)
+    setButtonText(e.currentTarget.value)
   }
+
+  const { value, toggle } = useToggle(true)
+
   return (
     <SpaceVertical>
-      <FieldText label="Button text" value={value} onChange={handleChange} />
-      {Array.from(Array(100), (_, i) => (
-        <Tooltip content="See what happens when you scroll" placement="right">
-          <Button>
-            {i}: {value}
-          </Button>
-        </Tooltip>
-      ))}
+      <Paragraph>
+        Try deleting all the button text by holding down the delete key
+      </Paragraph>
+      <Space>
+        <FieldText
+          label="Button text"
+          value={buttonText}
+          onChange={handleChange}
+          width={150}
+        />
+        <FieldToggleSwitch
+          label="Enable tooltips"
+          on={value}
+          onChange={toggle}
+        />
+      </Space>
+      {Array.from(Array(100), (_, i) => {
+        if (value) {
+          return (
+            <Tooltip content="Some content" placement="right" key={i}>
+              <TestButton index={i} text={buttonText} />
+            </Tooltip>
+          )
+        } else {
+          return <TestButton index={i} text={buttonText} key={i} />
+        }
+      })}
     </SpaceVertical>
   )
 }

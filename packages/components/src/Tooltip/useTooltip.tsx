@@ -64,17 +64,17 @@ export const useTooltip = ({
     null
   )
   // If the triggerElement is passed in props, use that instead of the new element
-  const element =
-    typeof triggerElement === 'undefined' ? newTriggerElement : triggerElement
+  const element = triggerElement ?? newTriggerElement
 
   const handleOpen = useCallback(
     (e: { currentTarget: HTMLElement }) => {
       setTriggerElement(e.currentTarget)
-      if (!disabled && (!element || !element.dataset.notooltip)) {
+      const currentElement = triggerElement ?? e.currentTarget
+      if (!disabled && (!currentElement || !currentElement.dataset.notooltip)) {
         setIsOpen(true)
       }
     },
-    [disabled, element]
+    [disabled, triggerElement]
   )
 
   const handleClose = useCallback(() => {
@@ -127,9 +127,8 @@ export const useTooltip = ({
     }),
     [element, propsPlacement]
   )
-  const { placement, popperInstanceRef, style, targetRef } = usePopper(
-    usePopperProps
-  )
+  const { placement, popperInstanceRef, style, targetRef } =
+    usePopper(usePopperProps)
 
   const ref = useForkedRef(targetRef, surfaceCallbackRef)
 

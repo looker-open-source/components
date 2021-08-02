@@ -24,6 +24,7 @@
 
  */
 
+import noop from 'lodash/noop'
 import React, {
   cloneElement,
   forwardRef,
@@ -31,7 +32,7 @@ import React, {
   ReactNode,
   Ref,
 } from 'react'
-import { mergeClassNames, mergeHandlers } from '../utils'
+import { mergeClassNames, useWrapEvent } from '../utils'
 import { TooltipProps, TooltipRenderProp } from './types'
 import { useTooltip } from './useTooltip'
 
@@ -74,27 +75,19 @@ export const Tooltip = forwardRef(
 
     let target: ReactNode = children
 
+    const childProps = isValidElement(children) ? children.props : undefined
+
+    const wrappedHandlers = {
+      onBlur: useWrapEvent(onBlur, childProps?.onBlur),
+      onClick: useWrapEvent(onClick || noop, childProps?.onClick),
+      onFocus: useWrapEvent(onFocus, childProps?.onFocus),
+      onMouseOut: useWrapEvent(onMouseOut, childProps?.onMouseOut),
+      onMouseOver: useWrapEvent(onMouseOver, childProps?.onMouseOver),
+    }
+
     if (isValidElement(children)) {
-      const handlers = {
-        onBlur,
-        onClick,
-        onFocus,
-        onMouseOut,
-        onMouseOver,
-      }
-
-      const mergedHandlers = Object.keys(handlers).reduce(
-        (acc: Partial<typeof handlers>, key) => {
-          return {
-            ...acc,
-            [key]: mergeHandlers(handlers[key], children.props[key]),
-          }
-        },
-        {}
-      )
-
       target = cloneElement(children, {
-        ...mergedHandlers,
+        ...wrappedHandlers,
         ...restDomProps,
         // Menu
         'aria-controls': ariaControls,
