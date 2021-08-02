@@ -39,6 +39,7 @@ import {
   listItemDimensions,
   ListItemContext,
   ListItemProps,
+  ListItemContent,
 } from '../ListItem'
 import { TreeContext } from '../Tree/TreeContext'
 import { useAccordion2 } from '../Accordion2'
@@ -52,10 +53,12 @@ import {
   useWrapEvent,
 } from '../utils'
 import { List } from '../List'
-import { createListItemPartitions } from '../ListItem/utils'
-import { indicatorDefaults } from '../Tree/utils'
+import {
+  createListItemPartitions,
+  listItemBackgroundColor,
+} from '../ListItem/utils'
+import { generateIndent, indicatorDefaults } from '../Tree/utils'
 import { WindowedTreeContext } from '../Tree/WindowedTreeNode'
-import { TreeItemContent } from '../Tree/TreeItemContent'
 import { TreeItemLabel } from '../Tree/TreeItemLabel'
 import { NavTreeItemProps } from './types'
 
@@ -83,8 +86,10 @@ const NavTreeLayout = ({
   labelBackgroundOnly: propsLabelBackgroundOnly,
   defaultOpen,
   onBlur,
+  onClick,
   onClose,
   onFocus: propsOnFocus,
+  onKeyUp,
   onOpen,
   onMouseEnter,
   onMouseLeave,
@@ -202,7 +207,6 @@ const NavTreeLayout = ({
     label: inside,
     onBlur,
     onFocus: useWrapEvent(() => setHovered(true), propsOnFocus),
-    role: 'treeitem',
     tabIndex: -1,
     ...accordionProps,
   })
@@ -260,27 +264,35 @@ const NavTreeLayout = ({
           className={`${restDomProps.className} ${className}`}
         >
           {!partialRender && (
-            <Flex
+            <NavTreeDisclosure
               as="li"
-              color="text5"
+              depth={depth}
+              density={density}
               onBlur={handleWrapperBlur}
               onMouseEnter={handleWrapperMouseEnter}
               onMouseLeave={handleWrapperMouseLeave}
+              role="treeitem"
+              {...statefulProps}
             >
-              <TreeItemContent
+              {renderedIndicator}
+              <NavTreeItemContent
                 aria-selected={selected}
-                depth={depth}
                 href={href}
                 itemRole={itemRole}
-                labelBackgroundOnly={hasLabelBackgroundOnly}
+                /**
+                 * useAccordion2 would normally just wrap props' onClick and onKeyup
+                 * with open state toggling, but because we only want the indicator to handle
+                 * open state toggling, we do not pass onClick and onKeyUp
+                 * into useAccordion2 and receive them via disclosureProps, so intead we directly assign them here
+                 */
+                onClick={onClick}
                 onFocus={onFocus}
+                onKeyUp={onKeyUp}
                 rel={createSafeRel(rel, target)}
                 target={target}
                 {...ariaProps}
                 {...disclosureDomProps}
-                {...statefulProps}
               >
-                {renderedIndicator}
                 {/**
                  * @TODO: Delete labelBackgroundOnly behavior once FieldItem component is completed
                  */}
@@ -291,9 +303,9 @@ const NavTreeLayout = ({
                 ) : (
                   disclosureLabel
                 )}
-              </TreeItemContent>
+              </NavTreeItemContent>
               {outside}
-            </Flex>
+            </NavTreeDisclosure>
           )}
           {accordionIsOpen && <div {...contentDomProps} />}
         </div>
@@ -301,6 +313,17 @@ const NavTreeLayout = ({
     </HoverDisclosureContext.Provider>
   )
 }
+
+const NavTreeItemContent = styled(ListItemContent)`
+  background: transparent;
+  padding-left: 0;
+`
+
+export const NavTreeDisclosure = styled(Flex)`
+  ${generateIndent}
+  ${listItemBackgroundColor}
+  color: ${({ theme }) => theme.colors.text5};
+`
 
 /**
  * NavTree style overrides

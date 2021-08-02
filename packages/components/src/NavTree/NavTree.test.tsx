@@ -39,30 +39,34 @@ describe('NavTree', () => {
     screen.getByText('Cheddar')
   })
 
-  test('Renders and hides children on disclosure click', () => {
+  test('Changes accordion open state on indicator click', () => {
+    renderWithTheme(<ParentIcon />)
+
+    const indicator = screen.getAllByTestId('accordion-indicator')[0]
+    screen.getByText('Cheddar')
+    fireEvent.click(indicator)
+    expect(screen.queryByText('Cheddar')).not.toBeInTheDocument()
+  })
+
+  test('Does not change accordion open state on label click', () => {
     renderWithTheme(<ParentIcon />)
 
     const treeLabel = screen.getByText('Parent Tree with Icon')
     screen.getByText('Cheddar')
     fireEvent.click(treeLabel)
-    expect(screen.queryByText('Cheddar')).not.toBeInTheDocument()
-    fireEvent.click(treeLabel)
     screen.getByText('Cheddar')
   })
 
-  test('Renders and hides children on disclosure click', () => {
-    const parentClick = jest.fn()
-    const childClick = jest.fn()
+  test('Triggers onClick on label click', () => {
+    const labelClick = jest.fn()
 
     renderWithTheme(
-      <NavTree onClick={parentClick} label="Parent">
-        <NavTreeItem onClick={childClick}>Child</NavTreeItem>
+      <NavTree onClick={labelClick} label="Parent">
+        <NavTreeItem>Child</NavTreeItem>
       </NavTree>
     )
 
     fireEvent.click(screen.getByText('Parent'))
-    expect(parentClick).toHaveBeenCalled()
-    fireEvent.click(screen.getByText('Child'))
-    expect(childClick).toHaveBeenCalled()
+    expect(labelClick).toHaveBeenCalled()
   })
 })
