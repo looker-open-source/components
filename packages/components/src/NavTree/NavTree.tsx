@@ -57,7 +57,7 @@ import { indicatorDefaults } from '../Tree/utils'
 import { WindowedTreeContext } from '../Tree/WindowedTreeNode'
 import { TreeItemContent } from '../Tree/TreeItemContent'
 import { TreeItemLabel } from '../Tree/TreeItemLabel'
-import { NavTreeItemProps } from './NavTreeItem'
+import { NavTreeItemProps } from './types'
 
 /**
  * Used to give extra padding to the indicator
