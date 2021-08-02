@@ -28,8 +28,8 @@ import { renderWithTheme } from '@looker/components-test-utils'
 import { screen } from '@testing-library/react'
 import { Badge } from './Badge'
 
-describe('Defaults', () => {
-  test('Badge', () => {
+describe('Badge', () => {
+  test('Defaults', () => {
     renderWithTheme(<Badge>Good!</Badge>)
     const badge = screen.getByText('Good!')
     expect(badge).toHaveStyle('background: rgb(237, 232, 251)')
