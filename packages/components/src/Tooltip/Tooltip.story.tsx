@@ -28,7 +28,7 @@ import React, { FormEvent, SyntheticEvent, useState } from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import { Button } from '../Button'
 import { Card } from '../Card'
-import { FieldToggleSwitch } from '../Form'
+import { FieldText, FieldToggleSwitch } from '../Form'
 import { Space, SpaceVertical } from '../Layout'
 import { Text } from '../Text'
 import { Popover, PopoverContent } from '../Popover'
@@ -126,6 +126,29 @@ export const LargeTrigger = () => (
 )
 
 LargeTrigger.parameters = {
+  storyshots: { disable: true },
+}
+
+export const PerformanceTest = () => {
+  const [value, setValue] = useState('hover me')
+  const handleChange = (e: FormEvent<HTMLInputElement>) => {
+    setValue(e.currentTarget.value)
+  }
+  return (
+    <SpaceVertical>
+      <FieldText label="Button text" value={value} onChange={handleChange} />
+      {Array.from(Array(100), (_, i) => (
+        <Tooltip content="See what happens when you scroll" placement="right">
+          <Button>
+            {i}: {value}
+          </Button>
+        </Tooltip>
+      ))}
+    </SpaceVertical>
+  )
+}
+
+PerformanceTest.parameters = {
   storyshots: { disable: true },
 }
 
