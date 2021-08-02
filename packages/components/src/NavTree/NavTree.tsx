@@ -60,6 +60,12 @@ import { TreeItemLabel } from '../Tree/TreeItemLabel'
 import { NavTreeItemProps } from './NavTreeItem'
 
 /**
+ * Used to give extra padding to the indicator
+ * Note: This is exported so we can properly realign NavTreeItems
+ */
+export const INDICATOR_SPACER = '8px'
+
+/**
  * Replicated Tree code
  * TODO: When labelToggle is introduced the aria-* attributes should land on the nested ListItem's
  * label container (i.e. the focusable element).
@@ -225,6 +231,9 @@ const NavTreeLayout = ({
   const renderedIndicator = cloneElement(indicator, {
     onClick: onIndicatorClick,
     onKeyUp: onIndicatorKeyUp,
+    style: {
+      paddingLeft: INDICATOR_SPACER,
+    },
     tabIndex: -1,
   })
 
