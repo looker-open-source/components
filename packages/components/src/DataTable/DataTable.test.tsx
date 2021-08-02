@@ -87,6 +87,7 @@ const columns: DataTableColumns = [
   },
   {
     id: 'role',
+    size: 100,
     title: 'Role',
     type: 'string',
   },
