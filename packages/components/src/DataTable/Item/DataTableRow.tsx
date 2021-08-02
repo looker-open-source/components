@@ -79,16 +79,14 @@ const DataTableRowLayout = forwardRef(
     const sizedChildren = Children.map(children, (child, index) => {
       if (columnsDisplayState && !columnsDisplayState[index]) {
         return null
-      } else if (isValidElement(child)) {
-        const size = getColumnSize(index)
-        const cellProps =
-          index === 0
-            ? { id: `rowheader-${id}`, role: 'rowheader', size }
-            : { size }
-        return cloneElement(child, cellProps)
-      } else {
-        return child
       }
+
+      const size = getColumnSize(index)
+      const cellProps =
+        index === 0
+          ? { id: `rowheader-${id}`, role: 'rowheader', size }
+          : { size }
+      return isValidElement(child) && cloneElement(child, cellProps)
     })
 
     const handleOnClick = (event: React.MouseEvent<HTMLElement>) => {
