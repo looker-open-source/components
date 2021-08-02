@@ -128,9 +128,9 @@ const getRowHoverColor = (
   isHeader: boolean,
   isSelected: boolean
 ) => {
-  if (isHeader || !hasOnClick) return undefined
-  if (isSelected && hasOnClick) return theme.colors.keyAccent
-  if (hasOnClick) return theme.colors.ui1
+  if (!isHeader && hasOnClick) {
+    return isSelected ? theme.colors.keyAccent : theme.colors.ui1
+  }
   return undefined
 }
 
