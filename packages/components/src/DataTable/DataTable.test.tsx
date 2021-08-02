@@ -548,6 +548,23 @@ describe('DataTable', () => {
       expect(screen.queryByText('Bulk Actions')).not.toBeInTheDocument()
     })
 
+    test('Control bar message reflects when all items are selected', () => {
+      renderWithTheme(
+        <DataTable
+          caption="this is a table's caption"
+          columns={columns}
+          bulk={bulk}
+          select={{ ...defaultSelectConfig, selectedItems: ['0', '1'] }}
+        >
+          {items}
+        </DataTable>
+      )
+
+      expect(
+        screen.getByText('AllPageCountDisplayedSelected 2')
+      ).toBeInTheDocument()
+    })
+
     test('Clicking the "Bulk Actions" button reveals elements passed via bulk prop', () => {
       renderWithTheme(
         <DataTable
