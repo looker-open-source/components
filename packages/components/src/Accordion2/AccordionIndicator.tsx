@@ -38,6 +38,7 @@ const gap = (density: DensityRamp = 0) =>
 export const AccordionIndicator = styled.div<AccordionIndicatorProps>`
   align-items: center;
   display: flex;
+  height: 100%;
   justify-content: center;
 
   ${({ density, indicatorPosition, theme: { space } }) =>
