@@ -30,7 +30,6 @@ import { Spinner } from '../../Spinner'
 export interface ModalLayoutProps {
   /**
    * Content to be displayed within Modal
-   *
    */
   children?: ReactNode
 
