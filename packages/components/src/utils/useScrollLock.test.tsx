@@ -51,7 +51,7 @@ const ScrollLockComponent = () => {
   const { value, toggle } = useToggle()
   return (
     <>
-      {value && <div ref={ref} />}
+      {value && <div ref={ref} data-testid="scroll-lock-element" />}
       <button onClick={toggle}>toggle</button>
     </>
   )
@@ -95,12 +95,12 @@ describe('useScrollLock', () => {
       expect(document.body).toHaveStyle({ overflow: 'hidden' })
       // haven't found a better way to test scrollbar offset style
       expect(paddingSpy.mock.calls).toMatchInlineSnapshot(`
-      Array [
-        Array [
-          "calc( + 0px)",
-        ],
-      ]
-    `)
+              Array [
+                Array [
+                  "calc( + 0px)",
+                ],
+              ]
+          `)
       fireEvent.click(toggle)
       expect(document.body).toHaveStyle({ overflow: 'scroll' })
       document.body.style.overflow = ''
@@ -135,26 +135,73 @@ describe('useScrollLock', () => {
     `)
   })
 
-  test('stop scroll', () => {
-    render(
-      <ScrollLockProvider>
-        <ScrollLockComponent />
-        <div data-testid="scroll me" />
-      </ScrollLockProvider>
-    )
-    const toggle = screen.getByText('toggle')
-    fireEvent.click(toggle)
+  describe('scroll handler', () => {
+    test('stops scroll in other elements', () => {
+      render(
+        <ScrollLockProvider>
+          <ScrollLockComponent />
+          <div data-testid="scrollable-element" />
+        </ScrollLockProvider>
+      )
+      const toggle = screen.getByText('toggle')
+      fireEvent.click(toggle)
 
-    const scrollDiv = screen.getByTestId('scroll me')
-    const scrollSpy = jest.spyOn(scrollDiv, 'scrollTop', 'set')
-    fireEvent.scroll(scrollDiv)
-    expect(scrollSpy.mock.calls).toMatchInlineSnapshot(`
-      Array [
+      const scrollDiv = screen.getByTestId('scrollable-element')
+      const scrollSpy = jest.spyOn(scrollDiv, 'scrollTop', 'set')
+      fireEvent.scroll(scrollDiv)
+      expect(scrollSpy.mock.calls).toMatchInlineSnapshot(`
+              Array [
+                Array [
+                  0,
+                ],
+              ]
+          `)
+      scrollSpy.mockRestore()
+    })
+
+    test('does not stop scroll in scroll lock element', () => {
+      render(
+        <ScrollLockProvider>
+          <ScrollLockComponent />
+          <div data-testid="scroll me" />
+        </ScrollLockProvider>
+      )
+      const toggle = screen.getByText('toggle')
+      fireEvent.click(toggle)
+
+      const scrollDiv = screen.getByTestId('scroll-lock-element')
+      const scrollSpy = jest.spyOn(scrollDiv, 'scrollTop', 'set')
+      fireEvent.scroll(scrollDiv)
+      expect(scrollSpy).not.toHaveBeenCalled()
+      scrollSpy.mockRestore()
+    })
+
+    test('stops scroll on document', () => {
+      render(
+        <ScrollLockProvider>
+          <ScrollLockComponent />
+          <div data-testid="scroll me" />
+        </ScrollLockProvider>
+      )
+      const toggle = screen.getByText('toggle')
+      fireEvent.click(toggle)
+
+      const scrollSpy = jest
+        .spyOn(window, 'scrollTo')
+        .mockImplementation(() => {
+          // do nothing, just need an implementation b/c jsdom doesn't have one
+        })
+      fireEvent.scroll(document)
+      expect(scrollSpy.mock.calls).toMatchInlineSnapshot(`
         Array [
-          0,
-        ],
-      ]
-    `)
-    scrollSpy.mockRestore()
+          Array [
+            Object {
+              "top": 0,
+            },
+          ],
+        ]
+      `)
+      scrollSpy.mockRestore()
+    })
   })
 })
