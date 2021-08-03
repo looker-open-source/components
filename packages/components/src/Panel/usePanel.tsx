@@ -80,6 +80,7 @@ export const usePanel = ({
     onClose && onClose()
   }
 
+  // Place focus on the surface when the panel opens
   const setInitialFocus = useCallback((element: HTMLDivElement | null) => {
     element?.focus({ preventScroll: true })
   }, [])

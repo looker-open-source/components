@@ -27,6 +27,9 @@
 import styled, { Keyframes, keyframes } from 'styled-components'
 import { PanelSurfaceProps } from './types'
 
+// We have to use animation/keyframes here instead of transition
+// transition starts after the class changes from entering to entered
+// but animation/keyframes starts as soon as the element is rendered
 const slideIn: Keyframes = keyframes`
   0% {transform: translate(var(--direction-translate, 0), 0);}
   100% {transform: translate(0);}

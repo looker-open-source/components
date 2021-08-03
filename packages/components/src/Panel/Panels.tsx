@@ -38,6 +38,8 @@ PanelsContext.displayName = 'PanelsContext'
 
 const activatePanel = ({ element }: Trap) => {
   // The element is a hidden div inside the panel
+  // NOTE: data-panel & data-panels are used as a quick way to find these elemens
+  // in the absence of an appropriate aria role
   const panel = element.closest<HTMLDivElement>('[data-panel]')
   const container = element.closest<HTMLDivElement>('[data-panels]')
   if (panel && container) {
