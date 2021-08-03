@@ -34,7 +34,7 @@ import {
   ListItemDetail,
   ListItemIcon,
 } from '../ListItem'
-import { INDICATOR_SPACER, NavTreeDisclosure } from '../NavTree'
+import { NavTreeDisclosure } from '../NavTree'
 
 /**
  * `NavList` is a variation of `List`
@@ -68,10 +68,7 @@ export const NavList = styled(List).attrs(({ color = 'key' }) => ({ color }))`
 
   & > ${ListItem} {
     ${ListItemContent} {
-      padding-left: ${({ theme }) => {
-        const iconGutterSize = theme.sizes.medium
-        return `calc(${iconGutterSize} + ${INDICATOR_SPACER})`
-      }};
+      padding-left: ${({ theme }) => `${theme.sizes.medium}`};
     }
   }
 `
