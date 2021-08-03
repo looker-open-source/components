@@ -27,7 +27,9 @@
 import React, { useState } from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { fireEvent, screen } from '@testing-library/react'
-import { Accordion } from '.'
+import { Accordion, AccordionContent, AccordionDisclosure } from '.'
+
+const globalConsole = global.console
 
 describe('Accordion', () => {
   test('Renders AccordionDisclosure and AccordionContent (on label click)', () => {
@@ -128,5 +130,44 @@ describe('Accordion', () => {
       key: 'Enter',
     })
     expect(handleKeyUp).toHaveBeenCalled()
+  })
+
+  describe('warnings', () => {
+    beforeEach(() => {
+      global.console = {
+        ...globalConsole,
+        warn: jest.fn(),
+      }
+    })
+
+    test('warns if isOpen is provided without toggleOpen prop', () => {
+      global.console = {
+        ...globalConsole,
+        warn: jest.fn(),
+      }
+
+      renderWithTheme(
+        <Accordion isOpen={true} content="My Accordion Content">
+          My Accordion Label
+        </Accordion>
+      )
+
+      // eslint-disable-next-line no-console
+      expect(console.warn).toHaveBeenCalled()
+    })
+  })
+
+  describe('legacy composition', () => {
+    test('renders Accordion when using AccordionDisclosure and AccordionContent children', () => {
+      renderWithTheme(
+        <Accordion defaultOpen>
+          <AccordionDisclosure>Disclosure</AccordionDisclosure>
+          <AccordionContent>Content</AccordionContent>
+        </Accordion>
+      )
+
+      screen.getByText('Disclosure')
+      screen.getByText('Content')
+    })
   })
 })
