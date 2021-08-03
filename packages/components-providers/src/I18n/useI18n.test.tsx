@@ -26,19 +26,20 @@
 
 import { render } from '@testing-library/react'
 import i18next from 'i18next'
-import React from 'react'
+import React, { FC } from 'react'
 import { i18nResources } from './resources'
-import { useI18n, UseI18nProps } from './useI18n'
+import { i18nInit, i18nInitOptions, useI18n, UseI18nProps } from './useI18n'
 
-const TestComponent = (props: UseI18nProps) => {
+const TestComponent: FC<UseI18nProps> = ({ children, ...props }) => {
   useI18n(props)
-  return null
+  return <>{children}</>
 }
 
 describe('useI18n', () => {
   test('initializes i18next', () => {
     const spy = jest.spyOn(i18next, 'init')
     render(<TestComponent />)
+
     expect(i18next.init).toHaveBeenCalledTimes(1)
     spy.mockRestore()
   })
@@ -47,9 +48,30 @@ describe('useI18n', () => {
     const spy = jest.spyOn(i18next, 'addResourceBundle')
     i18next.isInitialized = true
     render(<TestComponent />)
-    expect(i18next.addResourceBundle).toHaveBeenCalledTimes(
-      Object.keys(i18nResources.en).length
-    )
+    expect(spy).toHaveBeenCalledTimes(Object.keys(i18nResources.en).length)
+    spy.mockRestore()
+  })
+
+  test('updates with new locale', () => {
+    const spy = jest.spyOn(i18next, 'changeLanguage')
+    i18next.isInitialized = true
+    render(<TestComponent locale="de-DE" />)
+    expect(spy.mock.calls).toMatchInlineSnapshot(`
+      Array [
+        Array [
+          "de-DE",
+        ],
+      ]
+    `)
+    spy.mockRestore()
+  })
+})
+
+describe('i18nInit', () => {
+  test('calls init with default options', () => {
+    const spy = jest.spyOn(i18next, 'init')
+    i18nInit()
+    expect(i18next.init).toHaveBeenCalledWith(i18nInitOptions)
     spy.mockRestore()
   })
 })
