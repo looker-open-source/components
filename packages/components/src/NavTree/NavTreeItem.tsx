@@ -36,7 +36,6 @@ import { ListItemDetail, listItemDimensions } from '../ListItem'
 import { TreeItem } from '../Tree'
 import { accordionDimensions } from '../Accordion2/accordionDimensions'
 import { TreeItemContent } from '../Tree/TreeItemContent'
-import { INDICATOR_SPACER } from './NavTree'
 import { NavTreeItemProps } from './types'
 
 const IndentOverrideTreeItem = styled(TreeItem).withConfig<
@@ -63,9 +62,7 @@ const IndentOverrideTreeItem = styled(TreeItem).withConfig<
         parentIcon ? depth + 1 : depth,
         density,
         theme
-      )} + ${theme.space[iconGap]} - ${
-        theme.space[indicatorGap]
-      } + ${INDICATOR_SPACER});`}
+      )} + ${theme.space[iconGap]} - ${theme.space[indicatorGap]});`}
   }
 
   ${ListItemDetail} {
