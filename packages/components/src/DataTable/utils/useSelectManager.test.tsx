@@ -24,7 +24,7 @@
 
  */
 
-import React from 'react'
+import React, { FC } from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { screen, fireEvent } from '@testing-library/react'
 import { DataTableAction, DataTableItem } from '../Item'
@@ -61,11 +61,15 @@ describe('useSelectManager', () => {
     },
   ]
 
-  const Test = () => {
+  type TestProps = { defaultSelected?: string[] }
+
+  const Test: FC<TestProps> = ({ defaultSelected }) => {
     const allSelectableItems = data.map(({ id }) => String(id))
 
-    const { onSelect, onSelectAll, selections } =
-      useSelectManager(allSelectableItems)
+    const { onSelect, onSelectAll, selections } = useSelectManager(
+      allSelectableItems,
+      defaultSelected
+    )
 
     const items = data.map(({ id, name }) => (
       <DataTableItem
@@ -121,6 +125,34 @@ describe('useSelectManager', () => {
     expect(checkbox[1]).toHaveAttribute('aria-checked', 'true')
   })
 
+  test('clicking the header deselects all when a mixed selection exists', () => {
+    renderWithTheme(<Test defaultSelected={['2', '3']} />)
+    const checkbox = screen.getAllByRole('checkbox')
+    expect(checkbox[0]).toHaveAttribute('aria-checked', 'mixed') // header
+    expect(checkbox[1]).toHaveAttribute('aria-checked', 'false')
+    expect(checkbox[2]).toHaveAttribute('aria-checked', 'true')
+    expect(checkbox[3]).toHaveAttribute('aria-checked', 'true')
+
+    fireEvent.click(checkbox[0]) // unselect all
+    expect(checkbox[0]).toHaveAttribute('aria-checked', 'false')
+    expect(checkbox[1]).toHaveAttribute('aria-checked', 'false')
+    expect(checkbox[2]).toHaveAttribute('aria-checked', 'false')
+    expect(checkbox[3]).toHaveAttribute('aria-checked', 'false')
+  })
+
+  test('toggles mixed checkbox state in header', () => {
+    renderWithTheme(<Test defaultSelected={['2']} />)
+    const checkbox = screen.getAllByRole('checkbox')
+    expect(checkbox[0]).toHaveAttribute('aria-checked', 'mixed') // header
+    expect(checkbox[1]).toHaveAttribute('aria-checked', 'false')
+    expect(checkbox[2]).toHaveAttribute('aria-checked', 'true') // default selected
+    expect(checkbox[3]).toHaveAttribute('aria-checked', 'false')
+
+    fireEvent.click(checkbox[2]) // unselect default option
+    expect(checkbox[0]).toHaveAttribute('aria-checked', 'false') // header
+    expect(checkbox[2]).toHaveAttribute('aria-checked', 'false')
+  })
+
   test('selects individual checkbox', () => {
     renderWithTheme(<Test />)
     const checkbox = screen.getAllByRole('checkbox')
@@ -129,5 +161,6 @@ describe('useSelectManager', () => {
     fireEvent.click(checkbox[1])
     expect(checkbox[1]).toHaveAttribute('aria-checked', 'true')
     expect(checkbox[2]).toHaveAttribute('aria-checked', 'false')
+    expect(checkbox[3]).toHaveAttribute('aria-checked', 'false')
   })
 })
