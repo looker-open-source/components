@@ -31,9 +31,11 @@ import { useScrollLock, useToggle } from './'
 
 const globalConsole = global.console
 const warnMock = jest.fn()
+const paddingSpy = jest.spyOn(document.body.style, 'paddingRight', 'set')
 
 beforeEach(() => {
   global.console = {
+    ...globalConsole,
     warn: warnMock,
   } as unknown as Console
 })
@@ -41,6 +43,7 @@ beforeEach(() => {
 afterEach(() => {
   jest.resetAllMocks()
   global.console = globalConsole
+  paddingSpy.mockClear()
 })
 
 const ScrollLockComponent = () => {
@@ -65,8 +68,15 @@ describe('useScrollLock', () => {
       expect(document.body).not.toHaveStyle({ overflow: 'hidden' })
       const toggle = screen.getByText('toggle')
       fireEvent.click(toggle)
-      // haven't found a way to test scrollbar offset style
       expect(document.body).toHaveStyle({ overflow: 'hidden' })
+      // haven't found a better way to test scrollbar offset style
+      expect(paddingSpy.mock.calls).toMatchInlineSnapshot(`
+        Array [
+          Array [
+            "calc( + 0px)",
+          ],
+        ]
+      `)
       fireEvent.click(toggle)
       expect(document.body).not.toHaveStyle({ overflow: 'hidden' })
     })
@@ -82,11 +92,29 @@ describe('useScrollLock', () => {
       expect(document.body).toHaveStyle({ overflow: 'scroll' })
       const toggle = screen.getByText('toggle')
       fireEvent.click(toggle)
-      // haven't found a way to test scrollbar offset style
       expect(document.body).toHaveStyle({ overflow: 'hidden' })
+      // haven't found a better way to test scrollbar offset style
+      expect(paddingSpy).toHaveBeenCalledWith('calc( + 0px)')
       fireEvent.click(toggle)
       expect(document.body).toHaveStyle({ overflow: 'scroll' })
       document.body.style.overflow = ''
+    })
+
+    test('no scrollbar detected', () => {
+      const widthSpy = jest
+        .spyOn(document.documentElement, 'clientWidth', 'get')
+        // Make it bigger than jest default for innerWidth: 1024
+        .mockImplementation(() => 1025)
+      render(
+        <ScrollLockProvider>
+          <ScrollLockComponent />
+        </ScrollLockProvider>
+      )
+      const toggle = screen.getByText('toggle')
+      fireEvent.click(toggle)
+      // no scrollbar offset
+      expect(paddingSpy).not.toHaveBeenCalled()
+      widthSpy.mockRestore()
     })
   })
 
@@ -99,5 +127,28 @@ describe('useScrollLock', () => {
         ],
       ]
     `)
+  })
+
+  test('stop scroll event', () => {
+    render(
+      <ScrollLockProvider>
+        <ScrollLockComponent />
+        <div data-testid="scroll me" />
+      </ScrollLockProvider>
+    )
+    const toggle = screen.getByText('toggle')
+    fireEvent.click(toggle)
+
+    const scrollDiv = screen.getByTestId('scroll me')
+    const scrollSpy = jest.spyOn(scrollDiv, 'scrollTop', 'set')
+    fireEvent.scroll(scrollDiv)
+    expect(scrollSpy.mock.calls).toMatchInlineSnapshot(`
+      Array [
+        Array [
+          0,
+        ],
+      ]
+    `)
+    scrollSpy.mockRestore()
   })
 })
