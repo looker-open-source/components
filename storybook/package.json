@@ -6,20 +6,8 @@
   "scripts": {
     "develop": "start-storybook -p 3333 --host 0.0.0.0",
     "build": "build-storybook --quiet",
-
-    "storyshots-build": "export storybookBuildMode=fast && yarn build",
-    "storyshots-preview-backup": "mv .storybook/preview.js .storybook/preview.js.bu",
-    "storyshots-preview-restore": "mv .storybook/preview.js.bu .storybook/preview.js",
-
-    "presnapshots": "yarn storyshots-build; yarn storyshots-preview-backup;",
+    "presnapshots": "export storybookBuildMode=fast && yarn build",
     "snapshots": "yarn jest --config ./jest-image-snapshots.config.js",
-    "postsnapshots": "yarn storyshots-preview-restore",
-
-    "snapshots-update-only": "yarn jest -u --config ./jest-image-snapshots.config.js",
-    "presnapshots-update": "yarn storyshots-build; yarn storyshots-preview-backup;",
-    "snapshots-update": "yarn snapshots-update-only",
-    "postsnapshots-update": "yarn storyshots-preview-restore",
-
     "a11y": "yarn storyshots-task --config ./jest-a11y.config.js"
   },
   "dependencies": {
@@ -41,6 +29,7 @@
     "@storybook/addon-storyshots": "^6.2.9",
     "@storybook/addon-storyshots-puppeteer": "^6.2.9",
     "@storybook/react": "^6.2.9",
+    "@storybook/testing-react": "^0.0.21",
     "babel-loader-exclude-node-modules-except": "^1.2.1",
     "tsconfig-paths-webpack-plugin": "^3.5.1"
   }

@@ -24,39 +24,20 @@
 
  */
 
-import { format } from 'util'
-import { setGlobalConfig } from '@storybook/testing-react'
-import * as globalStorybookConfig from './storybook/.storybook/preview'
-
-require('@testing-library/jest-dom/extend-expect')
-require('jest-styled-components')
-
-const observeMock = function (cb, config) {
-  this.observeCallback = cb
-  this.observeConfig = config
-  this.disconnect = jest.fn()
-  this.observe = jest.fn()
-}
-
-const globalAny = global
-globalAny.IntersectionObserver = observeMock
-
-// js-dom doesn't do scrollIntoView
-Element.prototype.scrollIntoView = jest.fn()
-
 /**
- * Throw a hard-error if an underlying library (e.g.: React) is throwing console.error
- * Inspired by: https://github.com/facebook/jest/issues/6121#issuecomment-529591574
+ * These argTypes should be excluded from all stories
  */
-const error = global.console.error
-
-global.console.error = function (...args) {
-  error(...args)
-  throw new Error(format(...args))
+export const disableArgTypes = {
+  as: {
+    table: { disable: true },
+  },
+  forwardedAs: {
+    table: { disable: true },
+  },
+  ref: {
+    table: { disable: true },
+  },
+  theme: {
+    table: { disable: true },
+  },
 }
-
-setGlobalConfig(globalStorybookConfig)
-
-beforeAll(() => {
-  jest.resetAllMocks()
-})
