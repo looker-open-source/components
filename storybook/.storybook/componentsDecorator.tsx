@@ -26,9 +26,6 @@
 
 import React from 'react'
 import { ComponentsProvider } from '@looker/components-providers'
-import { i18nInit } from '@looker/filter-components'
-
-i18nInit()
 
 export const componentsDecorator = (storyFn: any) => (
   <ComponentsProvider>{storyFn()}</ComponentsProvider>
