@@ -94,7 +94,13 @@ describe('useScrollLock', () => {
       fireEvent.click(toggle)
       expect(document.body).toHaveStyle({ overflow: 'hidden' })
       // haven't found a better way to test scrollbar offset style
-      expect(paddingSpy).toHaveBeenCalledWith('calc( + 0px)')
+      expect(paddingSpy.mock.calls).toMatchInlineSnapshot(`
+      Array [
+        Array [
+          "calc( + 0px)",
+        ],
+      ]
+    `)
       fireEvent.click(toggle)
       expect(document.body).toHaveStyle({ overflow: 'scroll' })
       document.body.style.overflow = ''
@@ -129,7 +135,7 @@ describe('useScrollLock', () => {
     `)
   })
 
-  test('stop scroll event', () => {
+  test('stop scroll', () => {
     render(
       <ScrollLockProvider>
         <ScrollLockComponent />
