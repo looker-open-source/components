@@ -55,19 +55,19 @@ describe('DataTable Sort Utils', () => {
 
   const data = [
     {
+      birthday: new Date('March 6, 1972'),
       id: 1,
       name: 'Shaq',
-      birthday: new Date('March 6, 1972'),
     },
     {
+      birthday: new Date('August 23, 1978'),
       id: 2,
       name: 'Kobe',
-      birthday: new Date('August 23, 1978'),
     },
     {
+      birthday: new Date('August 23, 1978'), // testing two identical dates
       id: 3,
       name: 'Andrew Rannells',
-      birthday: new Date('August 23, 1978'), // testing two identical dates
     },
   ]
   const columns: DataTableColumns = [

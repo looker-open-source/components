@@ -360,8 +360,8 @@ describe('DataTable', () => {
     test('Checkbox keyboard entry calls onSelect', () => {
       renderWithTheme(dataTableWithSelect)
       fireEvent.keyDown(screen.getAllByRole('checkbox')[1], {
-        key: 'Enter',
         code: 'Enter',
+        key: 'Enter',
       })
       expect(onSelect).toHaveBeenCalled()
     })
