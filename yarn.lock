@@ -2389,35 +2389,7 @@
     debug "^2.2.0"
     es6-promise "^4.2.8"
 
-"@looker/components-date@*":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@looker/components-date/-/components-date-2.0.0.tgz#436ee40122ccb5ac91cec7130ffe7e9310d1e1d3"
-  integrity sha512-JJUpLUKAdZWJCqtKEj4C1SkSBsOTcV0TKvEoCtdtCewPLVg1y5cya9t6Lw7/c3kEZ2Dhrr0zzzEbnQZWzW4vdA==
-  dependencies:
-    "@looker/components" "^2.0.0"
-    "@looker/design-tokens" "^2.0.0"
-    "@styled-icons/material-rounded" "^10.28.0"
-    date-fns "^2.21.1"
-    date-fns-tz "^1.0.12"
-    i18next "20.3.1"
-    lodash "^4.17.20"
-    react-day-picker "^7.4.8"
-    react-i18next "11.8.15"
-    styled-system "^5.1.5"
-
-"@looker/components-providers@*", "@looker/components-providers@^1.4.0":
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@looker/components-providers/-/components-providers-1.4.0.tgz#d9754a1eb2d5141e1b875957d1532ae5014d839e"
-  integrity sha512-9zOiw8KjM9u/CsT9HrThb2Hixuj1xNVY+OF3nzVRkmEi8IZhMh6w9fVfLyimhk4ebg86OE2ZNSVfyI1r84/6pA==
-  dependencies:
-    "@looker/design-tokens" "^2.0.0"
-    i18next "20.3.1"
-    lodash "^4.17.20"
-    react-helmet-async "^1.0.9"
-    react-i18next "11.8.15"
-    tabbable "^5.2.0"
-
-"@looker/components@*", "@looker/components@2.0.0", "@looker/components@^2.0.0":
+"@looker/components@2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@looker/components/-/components-2.0.0.tgz#579e5c0823a8799e2806abc0a73369d19c4442ba"
   integrity sha512-+o8Cgw2MPy7FRS1lVqNoGrWNsSyBtCN70KRWkLyl1QXwX/k6K9IqvDq5RbMa5seeumD9dm/L0xKTmwpE0YlXyA==
@@ -2439,17 +2411,6 @@
     resize-observer-polyfill "^1.5.1"
     styled-system "^5.1.5"
     uuid "^8.3.2"
-
-"@looker/design-tokens@*", "@looker/design-tokens@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@looker/design-tokens/-/design-tokens-2.0.0.tgz#f697ee86640ee5fde743878bdcabe562c6dfb58e"
-  integrity sha512-p8rTB8auSR94Qld2eVdWnEVJ5ZzBZHfpE0+3p5QsWBqsL204KTC+ygdWfrns3jG0PDaEUGkGwPyfshyQEf2FLg==
-  dependencies:
-    "@styled-system/props" "^5.1.5"
-    "@styled-system/should-forward-prop" "5.1.5"
-    lodash "^4.17.20"
-    polished "^4.1.2"
-    styled-system "^5.1.5"
 
 "@looker/embed-sdk@^1.4.0":
   version "1.6.0"
@@ -2516,12 +2477,23 @@
     request-promise-native "^1.0.8"
     semver "^7.3.4"
 
-"@looker/icons@*":
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@looker/icons/-/icons-1.4.0.tgz#155591c3e6b4ade0bff078a6827da6453d2f7d74"
-  integrity sha512-0nXfxcXBkQJ3+/WzUE0F9nK9IGCMP83qHJdv/zTsmGqzY1dH0trQm8wkrJI1fB8mR4xicGf9CPLgXrWYnGB3mQ==
+"@looker/filter-components@0.6.0-alpha.1":
+  version "0.6.0-alpha.1"
+  resolved "https://registry.yarnpkg.com/@looker/filter-components/-/filter-components-0.6.0-alpha.1.tgz#7ddf228df1de11554948fe9d6acb56d6bd14a63d"
+  integrity sha512-yoi2fS+D0lQmtHFM0yMLGki70BGmiQWdAQ1DC8eqE4GLcrPU442oIVj85lDq3aa97r/wO1TmkpfSmGWpWQSLcA==
   dependencies:
-    "@styled-icons/styled-icon" "^10.6.3"
+    "@looker/components" "^2.1.0-alpha.1"
+    "@looker/components-date" "^2.0.1-alpha.1"
+    "@looker/filter-expressions" "^0.6.0-alpha.1"
+    "@looker/icons" "^1.4.1-alpha.1"
+    "@looker/sdk" "^21.8.0"
+    "@looker/sdk-rtl" "^21.0.12"
+    "@styled-icons/material" "10.28.0"
+    "@styled-icons/material-outlined" "10.28.0"
+    "@styled-icons/material-rounded" "10.28.0"
+    lodash "^4.17.20"
+    polished "3.4.1"
+    use-debounce "5.2.1"
 
 "@looker/prettier-config@1.4.0":
   version "1.4.0"
@@ -3693,6 +3665,11 @@
     lodash "^4.17.20"
     prettier "~2.2.1"
     regenerator-runtime "^0.13.7"
+
+"@storybook/testing-react@^0.0.21":
+  version "0.0.21"
+  resolved "https://registry.yarnpkg.com/@storybook/testing-react/-/testing-react-0.0.21.tgz#b6007dba9143135bf7a24cf1fe7e0c8b62c3fdbb"
+  integrity sha512-SIE1gNWhqCz0LSjwUiQb7JPgPUY3amT0EGMXdTq/qpV0gC9WR7+aBM/uInx3XstE6t4gx+H8euDT98ZKH1Twow==
 
 "@storybook/theming@6.3.0":
   version "6.3.0"
@@ -7869,10 +7846,10 @@ debug@2.6.9, debug@^2.2.0, debug@^2.3.3, debug@^2.6.0, debug@^2.6.9:
   dependencies:
     ms "2.0.0"
 
-debug@4, debug@^4.0.0, debug@^4.0.1, debug@^4.1.0, debug@^4.1.1, debug@^4.2.0, debug@^4.3.1:
-  version "4.3.1"
-  resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.1.tgz#f0d229c505e0c6d8c49ac553d1b13dc183f6b2ee"
-  integrity sha512-doEwdvm4PCeK4K3RQN2ZC2BYUBaxwLARCqZmMjtF8a51J2Rb0xpVloFRnCODwqjpwnAoao4pelN8l3RJdv3gRQ==
+debug@4, debug@^4.0.0, debug@^4.0.1, debug@^4.1.0, debug@^4.1.1, debug@^4.2.0, debug@^4.3.1, debug@~4.3.1:
+  version "4.3.2"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.2.tgz#f0a49c18ac8779e31d4a0c6029dfb76873c7428b"
+  integrity sha512-mOp8wKcvj7XxC78zLgw/ZA+6TSgkoE2C/ienthhRD298T7UNwAg9diBpLRxC0mOezLl4B0xV7M0cCO6P/O0Xhw==
   dependencies:
     ms "2.1.2"
 
@@ -7896,13 +7873,6 @@ debug@~4.1.0:
   integrity sha512-pYAIzeRo8J6KPEaJ0VWOh5Pzkbw/RetuzehGM7QRRX5he4fPHx2rdKMB256ehJCkX+XRQm16eZLqLNS8RSZXZw==
   dependencies:
     ms "^2.1.1"
-
-debug@~4.3.1:
-  version "4.3.2"
-  resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.2.tgz#f0a49c18ac8779e31d4a0c6029dfb76873c7428b"
-  integrity sha512-mOp8wKcvj7XxC78zLgw/ZA+6TSgkoE2C/ienthhRD298T7UNwAg9diBpLRxC0mOezLl4B0xV7M0cCO6P/O0Xhw==
-  dependencies:
-    ms "2.1.2"
 
 debuglog@^1.0.1:
   version "1.0.1"
