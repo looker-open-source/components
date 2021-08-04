@@ -42,6 +42,9 @@ export const Primary = Template.bind({})
 Primary.args = {
   user,
 }
+Primary.parameters = {
+  storyshots: { disable: true },
+}
 
 export const Initials = Template.bind({})
 Initials.args = {
