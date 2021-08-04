@@ -933,7 +933,7 @@ describe('DataTable', () => {
       const tableCells = chunk(screen.getAllByRole('cell'), columns)
       const headerCells = screen.getAllByRole('columnheader')
 
-      return { tableCells, headerCells }
+      return { headerCells, tableCells }
     }
 
     test('Down arrow jumps to the next row', () => {
