@@ -25,16 +25,10 @@
  */
 
 import React from 'react'
-import { Page } from 'puppeteer'
 import { Story } from '@storybook/react/types-6-0'
 import { AvatarCombo, AvatarComboProps } from './AvatarCombo'
 
 const Template: Story<AvatarComboProps> = (args) => <AvatarCombo {...args} />
-
-const beforeScreenshot = async (page: Page) => {
-  // Delay fixes threshold issue with image + border-radius raster
-  await page.waitForTimeout(50)
-}
 
 const user = {
   avatar_url:
@@ -50,7 +44,7 @@ Primary.args = {
   user,
 }
 Primary.parameters = {
-  beforeScreenshot,
+  storyshots: { disable: true },
 }
 
 export default {
