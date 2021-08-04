@@ -24,35 +24,15 @@
 
  */
 
-import { useTranslation } from 'react-i18next'
-import React, { FC, useContext } from 'react'
-import { Close } from '@styled-icons/material/Close'
-import styled from 'styled-components'
-import { IconButton, IconButtonProps } from '../Button'
-import { DialogContext } from '../Dialog'
+import React from 'react'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
+import { ModalHeaderCloseButton } from './ModalHeaderCloseButton'
 
-export interface ModalHeaderCloseButtonProps {
-  /**
-   * this will define the size of the button
-   * @default medium
-   */
-  size?: IconButtonProps['size']
-}
-
-const ModalHeaderCloseButtonLayout: FC<ModalHeaderCloseButtonProps> = ({
-  size = 'medium',
-}) => {
-  const { t } = useTranslation('ModalHeaderCloseButton')
-  const { closeModal, id } = useContext(DialogContext)
-  return (
-    <IconButton
-      id={id ? `${id}-iconButton` : undefined}
-      size={size}
-      onClick={closeModal}
-      label={t('Close')}
-      icon={<Close />}
-    />
-  )
-}
-
-export const ModalHeaderCloseButton = styled(ModalHeaderCloseButtonLayout)``
+describe('ModalHeaderCloseButton', () => {
+  test('render ', () => {
+    renderWithTheme(<ModalHeaderCloseButton />)
+    expect(screen.getByRole('button')).toBeInTheDocument()
+    expect(screen.getByText('Close')).toBeInTheDocument()
+  })
+})
