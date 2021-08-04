@@ -2477,24 +2477,6 @@
     request-promise-native "^1.0.8"
     semver "^7.3.4"
 
-"@looker/filter-components@0.6.0-alpha.1":
-  version "0.6.0-alpha.1"
-  resolved "https://registry.yarnpkg.com/@looker/filter-components/-/filter-components-0.6.0-alpha.1.tgz#7ddf228df1de11554948fe9d6acb56d6bd14a63d"
-  integrity sha512-yoi2fS+D0lQmtHFM0yMLGki70BGmiQWdAQ1DC8eqE4GLcrPU442oIVj85lDq3aa97r/wO1TmkpfSmGWpWQSLcA==
-  dependencies:
-    "@looker/components" "^2.1.0-alpha.1"
-    "@looker/components-date" "^2.0.1-alpha.1"
-    "@looker/filter-expressions" "^0.6.0-alpha.1"
-    "@looker/icons" "^1.4.1-alpha.1"
-    "@looker/sdk" "^21.8.0"
-    "@looker/sdk-rtl" "^21.0.12"
-    "@styled-icons/material" "10.28.0"
-    "@styled-icons/material-outlined" "10.28.0"
-    "@styled-icons/material-rounded" "10.28.0"
-    lodash "^4.17.20"
-    polished "3.4.1"
-    use-debounce "5.2.1"
-
 "@looker/prettier-config@1.4.0":
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@looker/prettier-config/-/prettier-config-1.4.0.tgz#795c3e1546697d8a56bd4aab5d8f5a209fc59f29"
