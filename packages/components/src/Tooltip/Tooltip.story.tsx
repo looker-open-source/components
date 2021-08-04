@@ -31,9 +31,8 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import { Settings } from '@styled-icons/material-outlined/Settings'
 import { Story } from '@storybook/react/types-6-0'
-import { Button, IconButton } from '../Button'
+import { Button } from '../Button'
 import { Card } from '../Card'
 import { FieldText, FieldToggleSwitch } from '../Form'
 import { Space, SpaceVertical } from '../Layout'
@@ -202,7 +201,9 @@ export const PerformanceTest = () => {
       />
       <div>
         {Array.from(Array(500), (_, i) => (
-          <IconButton key={i} icon={<Settings />} label="Tooltip content" />
+          <Tooltip key={i} content="Something">
+            <button>foo</button>
+          </Tooltip>
         ))}
       </div>
     </SpaceVertical>
