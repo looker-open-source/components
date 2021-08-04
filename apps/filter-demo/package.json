@@ -24,7 +24,7 @@
     "@looker/embed-sdk": "^1.4.0",
     "@looker/extension-sdk": "21.4.0",
     "@looker/extension-sdk-react": "21.4.0",
-    "@looker/filter-components": "0.6.0-alpha.1",
+    "@looker/filter-components": "*",
     "@looker/sdk": "*",
     "@styled-icons/material": "10.28.0",
     "@styled-icons/material-outlined": "10.28.0",

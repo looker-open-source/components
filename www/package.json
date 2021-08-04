@@ -11,7 +11,7 @@
     "@looker/components": "*",
     "@looker/components-theme-editor": "*",
     "@looker/components-date": "*",
-    "@looker/filter-components": "0.6.0-alpha.1",
+    "@looker/filter-components": "*",
     "@looker/design-tokens": "*",
     "@looker/icons": "*",
     "@mdx-js/mdx": "^1.6.22",
