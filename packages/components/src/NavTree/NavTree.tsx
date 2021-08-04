@@ -43,7 +43,6 @@ import {
 } from '../ListItem'
 import { TreeContext } from '../Tree/TreeContext'
 import { useAccordion2 } from '../Accordion2'
-import { Flex } from '../Layout'
 import {
   createSafeRel,
   getNextFocusTarget,
@@ -306,14 +305,17 @@ const NavTreeLayout = ({
 }
 
 const NavTreeItemContent = styled(ListItemContent)`
-  background: transparent;
+  display: flex;
   padding-left: 0;
+  padding-right: 0;
 `
 
-export const NavTreeDisclosure = styled(Flex)`
+export const NavTreeDisclosure = styled.div`
   ${generateIndent}
   ${listItemBackgroundColor}
+
   color: ${({ theme }) => theme.colors.text5};
+  display: flex;
 `
 
 /**
