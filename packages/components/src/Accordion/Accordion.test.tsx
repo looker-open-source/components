@@ -140,6 +140,10 @@ describe('Accordion', () => {
       }
     })
 
+    afterEach(() => {
+      global.console = globalConsole
+    })
+
     test('warns if isOpen is provided without toggleOpen prop', () => {
       renderWithTheme(
         <Accordion isOpen={true} content="My Accordion Content">
@@ -149,7 +153,6 @@ describe('Accordion', () => {
 
       // eslint-disable-next-line no-console
       expect(console.warn).toHaveBeenCalled()
-      global.console = globalConsole
     })
 
     test('warns if children is a falsy value', () => {
@@ -159,7 +162,6 @@ describe('Accordion', () => {
 
       // eslint-disable-next-line no-console
       expect(console.warn).toHaveBeenCalled()
-      global.console = globalConsole
     })
   })
 
