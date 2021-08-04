@@ -936,7 +936,7 @@ describe('DataTable', () => {
       return { tableCells, headerCells }
     }
 
-    test('down arrow jumps to the next row', () => {
+    test('Down arrow jumps to the next row', () => {
       const { tableCells } = renderAndSelectCells()
       const startingCell = tableCells[0][1]
       startingCell.focus()
@@ -947,7 +947,7 @@ describe('DataTable', () => {
       expect(tableCells[1][1]).toHaveFocus()
     })
 
-    test('right arrow jumps to the next column', () => {
+    test('Right arrow jumps to the next column', () => {
       const { tableCells } = renderAndSelectCells()
       const startingCell = tableCells[0][1]
       startingCell.focus()
@@ -958,7 +958,7 @@ describe('DataTable', () => {
       expect(tableCells[0][2]).toHaveFocus()
     })
 
-    test('up arrow jumps to the previous column', () => {
+    test('Up arrow jumps to the previous column', () => {
       const { tableCells } = renderAndSelectCells()
       const startingCell = tableCells[1][1]
       startingCell.focus()
@@ -969,7 +969,7 @@ describe('DataTable', () => {
       expect(tableCells[0][1]).toHaveFocus()
     })
 
-    test('left arrow jumps to the previous column', () => {
+    test('Left arrow jumps to the previous column', () => {
       const { tableCells } = renderAndSelectCells()
       const startingCell = tableCells[0][2]
       startingCell.focus()
@@ -980,7 +980,7 @@ describe('DataTable', () => {
       expect(tableCells[0][1]).toHaveFocus()
     })
 
-    test('navigates between checkboxes', () => {
+    test('Navigates between checkboxes', () => {
       renderWithTheme(dataTableWithSelect)
       const checkboxes = screen.getAllByRole('checkbox')
       checkboxes[0].focus()
@@ -992,7 +992,7 @@ describe('DataTable', () => {
       expect(checkboxes[1]).toHaveFocus()
     })
 
-    test('navigates from thead to tbody', () => {
+    test('Navigates from thead to tbody', () => {
       const { tableCells, headerCells } = renderAndSelectCells()
 
       const startingCell = headerCells[1]
@@ -1006,7 +1006,7 @@ describe('DataTable', () => {
       expect(tableCells[0][1]).toHaveFocus()
     })
 
-    test('navigates from tbody to thead', () => {
+    test('Navigates from tbody to thead', () => {
       const { tableCells, headerCells } = renderAndSelectCells()
 
       const startingCell = tableCells[0][1]
@@ -1020,7 +1020,7 @@ describe('DataTable', () => {
       expect(headerCells[1]).toHaveFocus()
     })
 
-    test('will not navigate up from the thead row', () => {
+    test('Will not navigate up from the thead row', () => {
       const { headerCells } = renderAndSelectCells()
 
       const startingCell = headerCells[0]
@@ -1034,7 +1034,7 @@ describe('DataTable', () => {
       expect(startingCell).toHaveFocus()
     })
 
-    test('will not navigate down from the last row', () => {
+    test('Will not navigate down from the last row', () => {
       const { tableCells } = renderAndSelectCells()
 
       const startingCell = tableCells[tableCells.length - 1][1]
