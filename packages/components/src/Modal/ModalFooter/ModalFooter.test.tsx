@@ -39,6 +39,17 @@ describe('ModalFooter', () => {
     expect(screen.getByRole('button')).toBeInTheDocument()
   })
 
+  test('has correct flex style', () => {
+    renderWithTheme(
+      <ModalFooter>
+        <button>Cancel</button>
+      </ModalFooter>
+    )
+    expect(screen.getByRole('button')?.closest('footer')).toHaveStyle(
+      'flex-direction: row-reverse'
+    )
+  })
+
   test('secondary', () => {
     renderWithTheme(
       <ModalFooter secondary={<button>Done</button>}>

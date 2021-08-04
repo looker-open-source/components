@@ -47,4 +47,16 @@ describe('ModalHeader', () => {
     )
     expect(screen.queryByText('x')).toBeInTheDocument()
   })
+
+  test(`detail has marginY`, () => {
+    renderWithTheme(
+      <ModalHeader detail={<button>x</button>}>Header</ModalHeader>
+    )
+    expect(screen.queryByText('x')?.closest('div')).toHaveStyle(
+      'margin-top: -0.5rem'
+    )
+    expect(screen.queryByText('x')?.closest('div')).toHaveStyle(
+      'margin-bottom: -0.5rem'
+    )
+  })
 })

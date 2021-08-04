@@ -27,7 +27,7 @@
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { screen } from '@testing-library/react'
-import { ModalLayout } from './ModalLayout'
+import { ModalLayout, ModalLoading } from './ModalLayout'
 
 describe('ModalLayout', () => {
   test('basic ', () => {
@@ -47,5 +47,10 @@ describe('ModalLayout', () => {
     )
     expect(screen.getByText(/Header/)).toBeInTheDocument()
     expect(screen.getByText(/Footer/)).toBeInTheDocument()
+  })
+
+  test('renders ModalLoading', () => {
+    renderWithTheme(<ModalLoading />)
+    expect(screen.getAllByTestId('loading-spinner')[0]).toBeInTheDocument()
   })
 })
