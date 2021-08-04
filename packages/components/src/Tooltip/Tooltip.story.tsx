@@ -200,7 +200,7 @@ export const PerformanceTest = () => {
         onChange={handleChange}
       />
       <div>
-        {Array.from(Array(500), (_, i) => (
+        {Array.from(Array(1000), (_, i) => (
           <Tooltip key={i} content="Something">
             <button>foo</button>
           </Tooltip>
