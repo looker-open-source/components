@@ -133,16 +133,28 @@ describe('Accordion', () => {
   })
 
   describe('warnings', () => {
-    test('warns if isOpen is provided without toggleOpen prop', () => {
+    beforeEach(() => {
       global.console = {
         ...globalConsole,
         warn: jest.fn(),
       }
+    })
 
+    test('warns if isOpen is provided without toggleOpen prop', () => {
       renderWithTheme(
         <Accordion isOpen={true} content="My Accordion Content">
           My Accordion Label
         </Accordion>
+      )
+
+      // eslint-disable-next-line no-console
+      expect(console.warn).toHaveBeenCalled()
+      global.console = globalConsole
+    })
+
+    test('warns if children is a falsy value', () => {
+      renderWithTheme(
+        <Accordion content="My Accordion Content">{false}</Accordion>
       )
 
       // eslint-disable-next-line no-console

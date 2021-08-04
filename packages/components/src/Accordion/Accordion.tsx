@@ -87,6 +87,13 @@ const AccordionInternal: FC<AccordionProps> = ({
     )
   }
 
+  if (!label) {
+    // eslint-disable-next-line no-console
+    console.warn(
+      "<Accordion>'s child is falsy (i.e. undefined, null, false, etc). Please give <Accordion> a valid ReactNode child."
+    )
+  }
+
   const controlledProps =
     propsIsOpen && propsToggleOpen
       ? {
