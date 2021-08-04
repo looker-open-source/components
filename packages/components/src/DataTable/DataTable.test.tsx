@@ -25,6 +25,7 @@
  */
 
 import React, { useState } from 'react'
+import chunk from 'lodash/chunk'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { Delete } from '@styled-icons/material/Delete'
 import { Link as LinkIcon } from '@styled-icons/material/Link'
@@ -32,6 +33,7 @@ import { fireEvent, screen } from '@testing-library/react'
 import { IconButton } from '../Button'
 import { FieldFilter, InputFilters } from '../Form'
 import { Link } from '../Link'
+import { getTabStops } from '../utils'
 import {
   DataTable,
   DataTableAction,
@@ -251,6 +253,29 @@ const defaultSelectConfig = {
   selectedItems: [],
 }
 
+const dataTableWithSelect = (
+  <DataTable
+    caption="this is a table's caption"
+    columns={columns}
+    select={defaultSelectConfig}
+  >
+    {items}
+  </DataTable>
+)
+
+const dataTableWithSelectedItems = (
+  <DataTable
+    caption="this is a table's caption"
+    columns={columns}
+    select={{
+      ...defaultSelectConfig,
+      selectedItems: ['1'],
+    }}
+  >
+    {items}
+  </DataTable>
+)
+
 describe('DataTable', () => {
   let rafSpy: jest.SpyInstance<number, [FrameRequestCallback]>
 
@@ -328,29 +353,6 @@ describe('DataTable', () => {
   })
 
   describe('Selecting', () => {
-    const dataTableWithSelect = (
-      <DataTable
-        caption="this is a table's caption"
-        columns={columns}
-        select={defaultSelectConfig}
-      >
-        {items}
-      </DataTable>
-    )
-
-    const dataTableWithSelectedItems = (
-      <DataTable
-        caption="this is a table's caption"
-        columns={columns}
-        select={{
-          ...defaultSelectConfig,
-          selectedItems: ['1'],
-        }}
-      >
-        {items}
-      </DataTable>
-    )
-
     test('Checkbox click calls onSelect', () => {
       renderWithTheme(dataTableWithSelect)
       fireEvent.click(screen.getAllByRole('checkbox')[1])
@@ -922,5 +924,141 @@ describe('DataTable', () => {
 
     renderWithTheme(<FilterDataTable />)
     expect(screen.getByText('Filter List')).toBeInTheDocument()
+  })
+
+  describe('Keyboard Navigation', () => {
+    const renderAndSelectCells = () => {
+      renderWithTheme(dataTableWithGeneratedHeader)
+      const columns = Object.keys(data[0]).length + 1 // add one for the hidden unfocusable table cell prefacing each row
+      const tableCells = chunk(screen.getAllByRole('cell'), columns)
+      const headerCells = screen.getAllByRole('columnheader')
+
+      return { tableCells, headerCells }
+    }
+
+    test('down arrow jumps to the next row', () => {
+      const { tableCells } = renderAndSelectCells()
+      const startingCell = tableCells[0][1]
+      startingCell.focus()
+      fireEvent.keyDown(startingCell, {
+        code: 'ArrowDown',
+        key: 'ArrowDown',
+      })
+      expect(tableCells[1][1]).toHaveFocus()
+    })
+
+    test('right arrow jumps to the next column', () => {
+      const { tableCells } = renderAndSelectCells()
+      const startingCell = tableCells[0][1]
+      startingCell.focus()
+      fireEvent.keyDown(startingCell, {
+        code: 'ArrowRight',
+        key: 'ArrowRight',
+      })
+      expect(tableCells[0][2]).toHaveFocus()
+    })
+
+    test('up arrow jumps to the previous column', () => {
+      const { tableCells } = renderAndSelectCells()
+      const startingCell = tableCells[1][1]
+      startingCell.focus()
+      fireEvent.keyDown(startingCell, {
+        code: 'ArrowUp',
+        key: 'ArrowUp',
+      })
+      expect(tableCells[0][1]).toHaveFocus()
+    })
+
+    test('left arrow jumps to the previous column', () => {
+      const { tableCells } = renderAndSelectCells()
+      const startingCell = tableCells[0][2]
+      startingCell.focus()
+      fireEvent.keyDown(startingCell, {
+        code: 'ArrowLeft',
+        key: 'ArrowLeft',
+      })
+      expect(tableCells[0][1]).toHaveFocus()
+    })
+
+    test('navigates between checkboxes', () => {
+      renderWithTheme(dataTableWithSelect)
+      const checkboxes = screen.getAllByRole('checkbox')
+      checkboxes[0].focus()
+
+      fireEvent.keyDown(checkboxes[0], {
+        code: 'ArrowDown',
+        key: 'ArrowDown',
+      })
+      expect(checkboxes[1]).toHaveFocus()
+    })
+
+    test('navigates from thead to tbody', () => {
+      const { tableCells, headerCells } = renderAndSelectCells()
+
+      const startingCell = headerCells[1]
+
+      startingCell.focus()
+      fireEvent.keyDown(startingCell, {
+        code: 'ArrowDown',
+        key: 'ArrowDown',
+      })
+
+      expect(tableCells[0][1]).toHaveFocus()
+    })
+
+    test('navigates from tbody to thead', () => {
+      const { tableCells, headerCells } = renderAndSelectCells()
+
+      const startingCell = tableCells[0][1]
+
+      startingCell.focus()
+      fireEvent.keyDown(startingCell, {
+        code: 'ArrowUp',
+        key: 'ArrowUp',
+      })
+
+      expect(headerCells[1]).toHaveFocus()
+    })
+
+    test('will not navigate up from the thead row', () => {
+      const { headerCells } = renderAndSelectCells()
+
+      const startingCell = headerCells[0]
+
+      startingCell.focus()
+      fireEvent.keyDown(startingCell, {
+        code: 'ArrowUp',
+        key: 'ArrowUp',
+      })
+      // no change to focus:
+      expect(startingCell).toHaveFocus()
+    })
+
+    test('will not navigate down from the last row', () => {
+      const { tableCells } = renderAndSelectCells()
+
+      const startingCell = tableCells[tableCells.length - 1][1]
+
+      startingCell.focus()
+      fireEvent.keyDown(startingCell, {
+        code: 'ArrowDown',
+        key: 'ArrowDown',
+      })
+      // no change to focus:
+      expect(startingCell).toHaveFocus()
+    })
+
+    test('Tabbing from outside selects the first thead cell ', () => {
+      const { headerCells } = renderAndSelectCells()
+      const tabStops = getTabStops(document.body)
+
+      tabStops[0].focus()
+      fireEvent.keyDown(tabStops[0], {
+        code: 'Tab',
+        key: 'Tab',
+      })
+      // no change to focus:
+      expect(headerCells[0]).toHaveFocus()
+    })
   })
 })
