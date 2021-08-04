@@ -24,15 +24,21 @@
 
  */
 
-import React, { FormEvent, SyntheticEvent, useState } from 'react'
+import React, {
+  FormEvent,
+  SyntheticEvent,
+  useEffect,
+  useRef,
+  useState,
+} from 'react'
+import { Settings } from '@styled-icons/material-outlined/Settings'
 import { Story } from '@storybook/react/types-6-0'
-import { Button } from '../Button'
+import { Button, IconButton } from '../Button'
 import { Card } from '../Card'
 import { FieldText, FieldToggleSwitch } from '../Form'
 import { Space, SpaceVertical } from '../Layout'
-import { Paragraph, Text } from '../Text'
+import { Text } from '../Text'
 import { Popover, PopoverContent } from '../Popover'
-import { useToggle } from '../utils'
 import { Tooltip, TooltipProps } from './'
 
 const Template: Story<TooltipProps> = (args) => (
@@ -175,56 +181,30 @@ NestedInPopover.parameters = {
   storyshots: { disable: true },
 }
 
-const TestButton = ({
-  index,
-  text,
-  ...rest
-}: {
-  index: number
-  text: string
-}) => (
-  <Button {...rest}>
-    {index} - {text}
-  </Button>
-)
-
 export const PerformanceTest = () => {
-  const [buttonText, setButtonText] = useState('hover me')
-  const handleChange = (e: FormEvent<HTMLInputElement>) => {
-    setButtonText(e.currentTarget.value)
-  }
-
-  const { value, toggle } = useToggle(true)
-
+  const [value, setValue] = useState('')
+  const handleChange = (e: FormEvent<HTMLInputElement>) =>
+    setValue(e.currentTarget.value)
+  const lastRenderRef = useRef(Date.now())
+  useEffect(() => {
+    const now = Date.now()
+    const diff = now - lastRenderRef.current
+    // eslint-disable-next-line no-console
+    console.log(diff)
+    lastRenderRef.current = now
+  })
   return (
-    <SpaceVertical>
-      <Paragraph>
-        Try deleting all the button text by holding down the delete key
-      </Paragraph>
-      <Space>
-        <FieldText
-          label="Button text"
-          value={buttonText}
-          onChange={handleChange}
-          width={150}
-        />
-        <FieldToggleSwitch
-          label="Enable tooltips"
-          on={value}
-          onChange={toggle}
-        />
-      </Space>
-      {Array.from(Array(500), (_, i) => {
-        if (value) {
-          return (
-            <Tooltip content="Some content" placement="right" key={i}>
-              <TestButton index={i} text={buttonText} />
-            </Tooltip>
-          )
-        } else {
-          return <TestButton index={i} text={buttonText} key={i} />
-        }
-      })}
+    <SpaceVertical p="large">
+      <FieldText
+        label="Type to trigger rerender"
+        value={value}
+        onChange={handleChange}
+      />
+      <div>
+        {Array.from(Array(500), (_, i) => (
+          <IconButton key={i} icon={<Settings />} label="Tooltip content" />
+        ))}
+      </div>
     </SpaceVertical>
   )
 }
