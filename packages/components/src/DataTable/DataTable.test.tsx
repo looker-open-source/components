@@ -1057,7 +1057,7 @@ describe('DataTable', () => {
         code: 'Tab',
         key: 'Tab',
       })
-      // no change to focus:
+
       expect(headerCells[0]).toHaveFocus()
     })
   })
