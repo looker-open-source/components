@@ -41,7 +41,7 @@ export const useSelectManager = (
     setSelections(
       selections.includes(selectionId)
         ? selections.filter(
-            (itemId) => itemId !== selectionId && possibilities.includes(itemId)
+            (itemId) => possibilities.includes(itemId) && itemId !== selectionId
           )
         : [...selections, selectionId]
     )

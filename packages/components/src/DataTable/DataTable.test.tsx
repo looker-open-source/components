@@ -87,6 +87,7 @@ const columns: DataTableColumns = [
   },
   {
     id: 'role',
+    size: 100,
     title: 'Role',
     type: 'string',
   },
@@ -356,6 +357,15 @@ describe('DataTable', () => {
       expect(onSelect).toHaveBeenCalled()
     })
 
+    test('Checkbox keyboard entry calls onSelect', () => {
+      renderWithTheme(dataTableWithSelect)
+      fireEvent.keyDown(screen.getAllByRole('checkbox')[1], {
+        code: 'Enter',
+        key: 'Enter',
+      })
+      expect(onSelect).toHaveBeenCalled()
+    })
+
     test('selectedItems determines if a checkbox is checked', () => {
       renderWithTheme(dataTableWithSelectedItems)
       const checkbox = screen.getAllByRole('checkbox')[1]
@@ -546,6 +556,23 @@ describe('DataTable', () => {
       )
 
       expect(screen.queryByText('Bulk Actions')).not.toBeInTheDocument()
+    })
+
+    test('Control bar message reflects when all items are selected', () => {
+      renderWithTheme(
+        <DataTable
+          caption="this is a table's caption"
+          columns={columns}
+          bulk={bulk}
+          select={{ ...defaultSelectConfig, selectedItems: ['0', '1'] }}
+        >
+          {items}
+        </DataTable>
+      )
+
+      expect(
+        screen.getByText('AllPageCountDisplayedSelected 2')
+      ).toBeInTheDocument()
     })
 
     test('Clicking the "Bulk Actions" button reveals elements passed via bulk prop', () => {

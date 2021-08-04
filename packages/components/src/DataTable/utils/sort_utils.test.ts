@@ -48,172 +48,99 @@ describe('DataTable Sort Utils', () => {
     `)
   })
 
-  test('Default sort', () => {
-    const data = [
-      {
-        id: 1,
-        name: 'Shaq',
-      },
-      {
-        id: 2,
-        name: 'Kobe',
-      },
-    ]
-    const columns: DataTableColumns = [
-      {
-        canSort: true,
-        id: 'id',
-        title: 'ID',
-        type: 'number',
-      },
-      {
-        canSort: true,
-        id: 'name',
-        title: 'Name',
-        type: 'string',
-      },
-    ]
+  interface ExampleArgumentSet {
+    id: string
+    sortDirection: 'asc' | 'desc'
+  }
 
-    interface ExampleArgumentSet {
-      id: string
-      sortDirection: 'asc' | 'desc'
-    }
-    const sets: ExampleArgumentSet[] = [
+  const data = [
+    {
+      birthday: new Date('March 6, 1972'),
+      id: 1,
+      name: 'Shaq',
+    },
+    {
+      birthday: new Date('August 23, 1978'),
+      id: 2,
+      name: 'Kobe',
+    },
+    {
+      birthday: new Date('August 23, 1978'), // testing two identical dates
+      id: 3,
+      name: 'Andrew Rannells',
+    },
+  ]
+  const columns: DataTableColumns = [
+    {
+      canSort: true,
+      id: 'id',
+      title: 'ID',
+      type: 'number',
+    },
+    {
+      canSort: true,
+      id: 'name',
+      title: 'Name',
+      type: 'string',
+    },
+    {
+      canSort: true,
+      id: 'birthday',
+      title: 'Birthday',
+      type: 'date',
+    },
+  ]
+
+  type TestTuple = [string, ExampleArgumentSet]
+
+  const testConditions: TestTuple[] = [
+    [
+      'Sort ID Ascending',
       {
         id: 'id',
         sortDirection: 'asc',
       },
+    ],
+    [
+      'Sort ID Descending',
       {
         id: 'id',
         sortDirection: 'desc',
       },
+    ],
+    [
+      'Sort Name Ascending',
       {
         id: 'name',
         sortDirection: 'asc',
       },
+    ],
+    [
+      'Sort Name Ascending',
       {
         id: 'name',
         sortDirection: 'desc',
       },
-    ]
+    ],
+    [
+      'Sort Date Ascending',
+      {
+        id: 'birthday',
+        sortDirection: 'asc',
+      },
+    ],
+    [
+      'Sort Date Descending',
+      {
+        id: 'birthday',
+        sortDirection: 'desc',
+      },
+    ],
+  ]
 
-    const defaultSort = sets.map(({ id, sortDirection }) =>
-      doDataTableSort(data, columns, id, sortDirection)
-    )
-
-    expect(defaultSort).toMatchInlineSnapshot(
-      `
-      Array [
-        Object {
-          "columns": Array [
-            Object {
-              "canSort": true,
-              "id": "id",
-              "title": "ID",
-              "type": "number",
-            },
-            Object {
-              "canSort": true,
-              "id": "name",
-              "sortDirection": "desc",
-              "title": "Name",
-              "type": "string",
-            },
-          ],
-          "data": Array [
-            Object {
-              "id": 1,
-              "name": "Shaq",
-            },
-            Object {
-              "id": 2,
-              "name": "Kobe",
-            },
-          ],
-        },
-        Object {
-          "columns": Array [
-            Object {
-              "canSort": true,
-              "id": "id",
-              "title": "ID",
-              "type": "number",
-            },
-            Object {
-              "canSort": true,
-              "id": "name",
-              "sortDirection": "desc",
-              "title": "Name",
-              "type": "string",
-            },
-          ],
-          "data": Array [
-            Object {
-              "id": 2,
-              "name": "Kobe",
-            },
-            Object {
-              "id": 1,
-              "name": "Shaq",
-            },
-          ],
-        },
-        Object {
-          "columns": Array [
-            Object {
-              "canSort": true,
-              "id": "id",
-              "title": "ID",
-              "type": "number",
-            },
-            Object {
-              "canSort": true,
-              "id": "name",
-              "sortDirection": "desc",
-              "title": "Name",
-              "type": "string",
-            },
-          ],
-          "data": Array [
-            Object {
-              "id": 2,
-              "name": "Kobe",
-            },
-            Object {
-              "id": 1,
-              "name": "Shaq",
-            },
-          ],
-        },
-        Object {
-          "columns": Array [
-            Object {
-              "canSort": true,
-              "id": "id",
-              "title": "ID",
-              "type": "number",
-            },
-            Object {
-              "canSort": true,
-              "id": "name",
-              "sortDirection": "desc",
-              "title": "Name",
-              "type": "string",
-            },
-          ],
-          "data": Array [
-            Object {
-              "id": 1,
-              "name": "Shaq",
-            },
-            Object {
-              "id": 2,
-              "name": "Kobe",
-            },
-          ],
-        },
-      ]
-    `
-    )
+  test.each(testConditions)('%s', (_, { id, sortDirection }) => {
+    expect(
+      doDataTableSort(data, columns, id, sortDirection).data
+    ).toMatchSnapshot()
   })
 })

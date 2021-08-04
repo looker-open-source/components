@@ -84,13 +84,6 @@ const DataTableItemLayout: FC<DataTableItemProps> = (props) => {
 
   const handleClick = disabled ? undefined : onClick || undefined
 
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
-    const isEventFromChild = event.currentTarget !== event.target
-    if (event.keyCode === 13 && !isEventFromChild) {
-      event.currentTarget.click()
-    }
-  }
-
   const ItemActions = (actionPrimary || actions) && (
     <ItemTargetGroup>
       {actionPrimary && <ItemTarget>{actionPrimary}</ItemTarget>}
@@ -121,7 +114,6 @@ const DataTableItemLayout: FC<DataTableItemProps> = (props) => {
       id={id}
       onChange={onChange}
       onClick={handleClick}
-      onKeyDown={handleKeyDown}
       ref={ref}
       secondary={ItemActions}
       tabIndex={0}

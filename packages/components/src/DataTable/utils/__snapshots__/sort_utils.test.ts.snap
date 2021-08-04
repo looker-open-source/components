@@ -1,0 +1,121 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DataTable Sort Utils Sort Date Ascending 1`] = `
+Array [
+  Object {
+    "birthday": 1972-03-06T08:00:00.000Z,
+    "id": 1,
+    "name": "Shaq",
+  },
+  Object {
+    "birthday": 1978-08-23T07:00:00.000Z,
+    "id": 2,
+    "name": "Kobe",
+  },
+  Object {
+    "birthday": 1978-08-23T07:00:00.000Z,
+    "id": 3,
+    "name": "Andrew Rannells",
+  },
+]
+`;
+
+exports[`DataTable Sort Utils Sort Date Descending 1`] = `
+Array [
+  Object {
+    "birthday": 1978-08-23T07:00:00.000Z,
+    "id": 2,
+    "name": "Kobe",
+  },
+  Object {
+    "birthday": 1978-08-23T07:00:00.000Z,
+    "id": 3,
+    "name": "Andrew Rannells",
+  },
+  Object {
+    "birthday": 1972-03-06T08:00:00.000Z,
+    "id": 1,
+    "name": "Shaq",
+  },
+]
+`;
+
+exports[`DataTable Sort Utils Sort ID Ascending 1`] = `
+Array [
+  Object {
+    "birthday": 1972-03-06T08:00:00.000Z,
+    "id": 1,
+    "name": "Shaq",
+  },
+  Object {
+    "birthday": 1978-08-23T07:00:00.000Z,
+    "id": 2,
+    "name": "Kobe",
+  },
+  Object {
+    "birthday": 1978-08-23T07:00:00.000Z,
+    "id": 3,
+    "name": "Andrew Rannells",
+  },
+]
+`;
+
+exports[`DataTable Sort Utils Sort ID Descending 1`] = `
+Array [
+  Object {
+    "birthday": 1978-08-23T07:00:00.000Z,
+    "id": 3,
+    "name": "Andrew Rannells",
+  },
+  Object {
+    "birthday": 1978-08-23T07:00:00.000Z,
+    "id": 2,
+    "name": "Kobe",
+  },
+  Object {
+    "birthday": 1972-03-06T08:00:00.000Z,
+    "id": 1,
+    "name": "Shaq",
+  },
+]
+`;
+
+exports[`DataTable Sort Utils Sort Name Ascending 1`] = `
+Array [
+  Object {
+    "birthday": 1978-08-23T07:00:00.000Z,
+    "id": 3,
+    "name": "Andrew Rannells",
+  },
+  Object {
+    "birthday": 1978-08-23T07:00:00.000Z,
+    "id": 2,
+    "name": "Kobe",
+  },
+  Object {
+    "birthday": 1972-03-06T08:00:00.000Z,
+    "id": 1,
+    "name": "Shaq",
+  },
+]
+`;
+
+exports[`DataTable Sort Utils Sort Name Ascending 2`] = `
+Array [
+  Object {
+    "birthday": 1972-03-06T08:00:00.000Z,
+    "id": 1,
+    "name": "Shaq",
+  },
+  Object {
+    "birthday": 1978-08-23T07:00:00.000Z,
+    "id": 2,
+    "name": "Kobe",
+  },
+  Object {
+    "birthday": 1978-08-23T07:00:00.000Z,
+    "id": 3,
+    "name": "Andrew Rannells",
+  },
+]
+`;
