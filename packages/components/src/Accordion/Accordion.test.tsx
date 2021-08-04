@@ -133,13 +133,6 @@ describe('Accordion', () => {
   })
 
   describe('warnings', () => {
-    beforeEach(() => {
-      global.console = {
-        ...globalConsole,
-        warn: jest.fn(),
-      }
-    })
-
     test('warns if isOpen is provided without toggleOpen prop', () => {
       global.console = {
         ...globalConsole,
@@ -154,6 +147,7 @@ describe('Accordion', () => {
 
       // eslint-disable-next-line no-console
       expect(console.warn).toHaveBeenCalled()
+      global.console = globalConsole
     })
   })
 
