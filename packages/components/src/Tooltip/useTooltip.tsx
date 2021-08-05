@@ -36,7 +36,7 @@ import {
 import { Portal } from '../Portal'
 import { TooltipContent } from './TooltipContent'
 import { TooltipSurface } from './TooltipSurface'
-import { UseTooltipProps, UseTooltipResponseDom } from './types'
+import { UseTooltipProps } from './types'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 const noop = () => {}
@@ -169,16 +169,15 @@ export const useTooltip = ({
           className: renderDOM ? 'hover' : undefined,
         }
 
-    const domProps: UseTooltipResponseDom = {
-      ...enabledDomProps,
-      onBlur: handleClose,
-      onFocus: handleOpen,
-      onMouseOut: handleMouseOut,
-      onMouseOver: handleOpen,
-      ref: noop,
-    }
     return {
-      domProps,
+      domProps: {
+        ...enabledDomProps,
+        onBlur: handleClose,
+        onFocus: handleOpen,
+        onMouseOut: handleMouseOut,
+        onMouseOver: handleOpen,
+        ref: noop,
+      },
       popperInstanceRef,
       tooltip: popper,
     }
