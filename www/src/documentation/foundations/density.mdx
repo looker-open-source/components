@@ -11,12 +11,12 @@ In general Looker Components that support density adjustments start at a medium 
 A couple key things to keep in mind when using density are:
 
 - Density should be adjusted at the top most level component and should not be mixed, for example:
-  - Adjust density on the `<List />` component, not it’s `<ListItem />` children.
+  - Adjust density on the `List` component, not it’s `ListItem` children.
   - Do not combine a high density and low density `MenuItem`s, in the same `Menu`
 - High density components will not pass accessibility requirements, so use it judiciously and only where high density improves the experience
 
 ## Components that support density
 
-Currently only list like components support density, this includes `<List />`, `<Menu />`, and `<Tree />`
+Currently only list like components support density, this includes `List`, `Menu`, and `Tree`
 
 <DensityTable />

@@ -24,62 +24,57 @@
 
  */
 
- import React from 'react'
- import {
-   Box,
-   Code,
-   TableBody,
-   TableDataCell,
-   TableHead,
-   TableHeaderCell,
-   TableRow,
-   List,
-   ListItem,
-   listItemDimensions
- } from '@looker/components'
+import React from 'react'
+import {
+  Box,
+  Code,
+  TableBody,
+  TableDataCell,
+  TableHead,
+  TableHeaderCell,
+  TableRow,
+  List,
+  ListItem,
+  listItemDimensions,
+} from '@looker/components'
 import { DensityRamp } from '@looker/design-tokens'
-import styled from 'styled-components'
 import { DocTable } from '../../../components'
 
+const DensityRow = ({ density }: { density: DensityRamp }) => (
+  <TableRow>
+    <TableDataCell>
+      <Box bg="ui2" p="small" mr="large" borderRadius="medium">
+        <Box bg="background">
+          <List density={density}>
+            <ListItem>Item 1</ListItem>
+            <ListItem>Item 2</ListItem>
+            <ListItem>Item 3</ListItem>
+          </List>
+        </Box>
+      </Box>
+    </TableDataCell>
+    <TableDataCell>{density}</TableDataCell>
+    <TableDataCell>
+      <Code fontSize="xsmall">{`<List density="${density}" />`}</Code>
+    </TableDataCell>
+    <TableDataCell>{listItemDimensions(density).height}px</TableDataCell>
+  </TableRow>
+)
 
-export const DensityTable = () => {
-  const densityList: DensityRamp[] = [1, 0, -1, -2, -3]
-
-  return (
-    <DocTable maxWidth="1200px">
-      <TableHead>
-        <TableRow>
-          <TableHeaderCell>Example</TableHeaderCell>
-          <TableHeaderCell>Usage</TableHeaderCell>
-          <TableHeaderCell>Density</TableHeaderCell>
-          <TableHeaderCell>Height</TableHeaderCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        {densityList.map((d, index) => {
-          return (
-            <TableRow key={index}>
-              <TableDataCell>
-                <Box bg="ui2" p="small" mr="large" borderRadius="medium">
-                  <Box bg="background">
-                    <List density={d}>
-                      <ListItem>Item 1</ListItem>
-                      <ListItem>Item 2</ListItem>
-                      <ListItem>Item 3</ListItem>
-                    </List>
-                  </Box>
-                </Box>
-              </TableDataCell>
-              <TableDataCell><Code fontSize="xsmall">{`<List density="${d}" />`}</Code></TableDataCell>
-              <TableDataCell>{d}</TableDataCell>
-              <TableDataCell>{listItemDimensions(d).height}px</TableDataCell>
-              <TableDataCell>
-
-              </TableDataCell>
-            </TableRow>
-          )
-        })}
-      </TableBody>
-    </DocTable>
-  )
-}
+export const DensityTable = () => (
+  <DocTable maxWidth="1200px">
+    <TableHead>
+      <TableRow>
+        <TableHeaderCell>Example</TableHeaderCell>
+        <TableHeaderCell>Usage</TableHeaderCell>
+        <TableHeaderCell>Density</TableHeaderCell>
+        <TableHeaderCell>Height</TableHeaderCell>
+      </TableRow>
+    </TableHead>
+    <TableBody>
+      {[1, 0, -1, -2, -3].map((d) => (
+        <DensityRow key={d} density={d} />
+      ))}
+    </TableBody>
+  </DocTable>
+)
