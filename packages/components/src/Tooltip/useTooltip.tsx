@@ -129,14 +129,6 @@ export const useTooltip = ({
 
   // Memo all the things!
   return useMemo(() => {
-    const handleOpen = (e: { currentTarget: HTMLElement }) => {
-      setTriggerElement(e.currentTarget)
-      const currentElement = triggerElement ?? e.currentTarget
-      if (!disabled && (!currentElement || !currentElement.dataset.notooltip)) {
-        setIsOpen(true)
-      }
-    }
-
     const popper =
       renderDOM && content && !disabled ? (
         <Portal>
@@ -162,12 +154,21 @@ export const useTooltip = ({
         </Portal>
       ) : null
 
+    const handleOpen = (e: { currentTarget: HTMLElement }) => {
+      setTriggerElement(e.currentTarget)
+      const currentElement = triggerElement ?? e.currentTarget
+      if (!disabled && (!currentElement || !currentElement.dataset.notooltip)) {
+        setIsOpen(true)
+      }
+    }
+
     const enabledDomProps = disabled
       ? {}
       : {
           'aria-describedby': guaranteedId,
           className: renderDOM ? 'hover' : undefined,
         }
+
     const domProps: UseTooltipResponseDom = {
       ...enabledDomProps,
       onBlur: handleClose,
