@@ -80,11 +80,7 @@ export const useAccordion2 = ({
   const domProps = { ...props, className, id }
 
   const indicator = (
-    <AccordionIndicator
-      data-testid="accordion-indicator"
-      density={density}
-      indicatorPosition={indicatorPosition}
-    >
+    <AccordionIndicator density={density} indicatorPosition={indicatorPosition}>
       {isOpen ? indicatorIcons.open : indicatorIcons.close}
     </AccordionIndicator>
   )

@@ -56,9 +56,10 @@ describe('NavTree', () => {
     test('Changes accordion open state on indicator click', () => {
       renderWithTheme(<Link />)
 
-      const indicator = screen.getAllByTestId('accordion-indicator')[0]
+      const indicator = screen.getByLabelText('Google Link Indicator Open')
       screen.getByText('Some Item')
       fireEvent.click(indicator)
+      screen.getByLabelText('Google Link Indicator Close')
       expect(screen.queryByText('Some Item')).not.toBeInTheDocument()
     })
 
@@ -76,9 +77,10 @@ describe('NavTree', () => {
     test('Changes accordion open state on indicator click', () => {
       renderWithTheme(<Basic />)
 
-      const indicator = screen.getAllByTestId('accordion-indicator')[0]
+      const indicator = screen.getByLabelText('Cheeses Tree Indicator Open')
       screen.getByText('Cheddar')
       fireEvent.click(indicator)
+      screen.getByLabelText('Cheeses Tree Indicator Close')
       expect(screen.queryByText('Cheddar')).not.toBeInTheDocument()
     })
 

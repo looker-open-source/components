@@ -23,8 +23,9 @@
  SOFTWARE.
 
  */
-
 import { SpacingSizes } from '@looker/design-tokens'
+import { ArrowDropDown } from '@styled-icons/material/ArrowDropDown'
+import { ArrowRight } from '@styled-icons/material/ArrowRight'
 import styled from 'styled-components'
 import React, {
   cloneElement,
@@ -61,23 +62,17 @@ import {
   createListItemPartitions,
   listItemBackgroundColor,
 } from '../ListItem/utils'
-import { generateIndent, indicatorDefaults } from '../Tree/utils'
+import { generateIndent } from '../Tree/utils'
 import { WindowedTreeContext } from '../Tree/WindowedTreeNode'
 import { NavTreeItemProps } from './types'
 
-/**
- * Replicated Tree code
- * TODO: When labelToggle is introduced the aria-* attributes should land on the nested ListItem's
- * label container (i.e. the focusable element).
- */
 const NavTreeLayout = ({
-  assumeIconAlignment,
   children,
   className,
-  dividers,
+  defaultOpen,
+  indicatorLabel,
   isOpen: propsIsOpen,
   label,
-  defaultOpen,
   onBlur,
   onClick,
   onClose,
@@ -88,7 +83,7 @@ const NavTreeLayout = ({
   onMouseLeave,
   toggleOpen: propsToggleOpen,
   ...restProps
-}: TreeProps) => {
+}: NavTreeProps) => {
   const isIndicatorToggleOnly = !!restProps.href
   const treeItemInnerProps = {}
   const accordionInnerProps = {}
@@ -161,8 +156,6 @@ const NavTreeLayout = ({
 
   const density = collectionDensity || propsDensity || treeContext.density || 0
 
-  const { indicatorIcons, indicatorPosition } = indicatorDefaults
-
   const [inside, outside] = createListItemPartitions({
     ...treeItemInnerProps,
     children: label,
@@ -193,8 +186,11 @@ const NavTreeLayout = ({
     ),
     density,
     disabled,
-    indicatorIcons,
-    indicatorPosition,
+    indicatorIcons: {
+      close: <ArrowRight aria-label={`${indicatorLabel} Close`} />,
+      open: <ArrowDropDown aria-label={`${indicatorLabel} Open`} />,
+    },
+    indicatorPosition: 'left',
     label: inside,
     onBlur,
     onFocus: useWrapEvent(() => setHovered(true), propsOnFocus),
@@ -331,10 +327,23 @@ const NavTreeStyle = styled(NavTreeLayout).withConfig<
   }
 `
 
-export type NavTreeProps = Omit<NavTreeItemProps, 'parentIcon'> &
+type IndicatorToggleModeProps = {
+  href: string
+  /**
+   * Passed down to the indicator icon's label prop
+   */
+  indicatorLabel: string
+}
+type DisclosureToggleModeProps = {
+  href?: never
+  indicatorLabel?: never
+}
+
+export type NavTreeProps = Omit<NavTreeItemProps, 'itemRole' | 'parentIcon'> &
   ControlledLoosely &
   GenericClickProps<HTMLElement> &
-  Pick<TreeProps, 'itemRole' | 'label'>
+  Pick<TreeProps, 'label'> &
+  (IndicatorToggleModeProps | DisclosureToggleModeProps)
 
 export const NavTree = styled((props: NavTreeProps) => {
   const { density: contextDensity } = useContext(TreeContext)
