@@ -34,7 +34,7 @@ import React, {
 import { Story } from '@storybook/react/types-6-0'
 import { Button } from '../Button'
 import { Card } from '../Card'
-import { FieldText, FieldToggleSwitch } from '../Form'
+import { FieldToggleSwitch } from '../Form'
 import { Space, SpaceVertical } from '../Layout'
 import { Text } from '../Text'
 import { Popover, PopoverContent } from '../Popover'
@@ -193,20 +193,18 @@ export const PerformanceTest = () => {
     lastRenderRef.current = now
   })
   return (
-    <SpaceVertical p="large">
-      <FieldText
-        label="Type to trigger rerender"
-        value={value}
-        onChange={handleChange}
-      />
+    <div>
+      <p>Type fast then hold down delete:</p>
+      <input type="text" value={value} onChange={handleChange} />
+      <p>The text shouldn't freeze due to main thread being blocked.</p>
       <div>
         {Array.from(Array(1000), (_, i) => (
-          <Tooltip key={i} content="Something">
-            <button>foo</button>
+          <Tooltip key={i} content="I'm a tooltip">
+            <button>Hover me</button>
           </Tooltip>
         ))}
       </div>
-    </SpaceVertical>
+    </div>
   )
 }
 
