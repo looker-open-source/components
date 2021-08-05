@@ -55,14 +55,16 @@ export const ParentIcon = () => {
 }
 
 export const Link = () => (
-  <NavTree
-    defaultOpen
-    label="Click me to go to Google"
-    icon={<Folder />}
-    itemRole="link"
-    href="https://google.com"
-    target="_blank"
-  >
-    <NavTreeItem parentIcon>Cheddar</NavTreeItem>
-  </NavTree>
+  <TreeCollection>
+    <NavTree
+      defaultOpen
+      label="Click me to go to Google"
+      icon={<Folder />}
+      itemRole="link"
+      href="https://google.com"
+      target="_blank"
+    >
+      <NavTreeItem parentIcon>Cheddar</NavTreeItem>
+    </NavTree>
+  </TreeCollection>
 )
