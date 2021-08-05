@@ -89,7 +89,7 @@ const NavTreeLayout = ({
   toggleOpen: propsToggleOpen,
   ...restProps
 }: TreeProps) => {
-  const isLabelToggleMode = !!restProps.href
+  const isIndicatorToggleOnly = !!restProps.href
   const treeItemInnerProps = {}
   const accordionInnerProps = {}
   Object.entries(restProps).forEach((prop) => {
@@ -210,20 +210,23 @@ const NavTreeLayout = ({
     ...disclosureDomProps
   } = disclosureProps
 
-  const renderedIndicator = cloneElement(indicator, {
-    onClick: isLabelToggleMode ? onClickDisclosureToggle : undefined,
-    onKeyUp: isLabelToggleMode ? onKeyUpDisclosureToggle : undefined,
+  const indicatorToggleOnlyProps = {
+    onClick: onClickDisclosureToggle,
+    onKeyUp: onKeyUpDisclosureToggle,
     tabIndex: -1,
+  }
+  const renderedIndicator = cloneElement(indicator, {
+    ...(isIndicatorToggleOnly ? indicatorToggleOnlyProps : undefined),
   })
 
   const handleContentClick = useWrapEvent((event: MouseEvent<HTMLElement>) => {
-    !isLabelToggleMode &&
+    !isIndicatorToggleOnly &&
       onClickDisclosureToggle &&
       onClickDisclosureToggle(event)
   }, onClick)
   const handleContentKeyUp = useWrapEvent(
     (event: KeyboardEvent<HTMLElement>) => {
-      !isLabelToggleMode &&
+      !isIndicatorToggleOnly &&
         onKeyUpDisclosureToggle &&
         onKeyUpDisclosureToggle(event)
     },
@@ -258,14 +261,13 @@ const NavTreeLayout = ({
               onBlur={handleWrapperBlur}
               onMouseEnter={handleWrapperMouseEnter}
               onMouseLeave={handleWrapperMouseLeave}
-              role="treeitem"
               {...statefulProps}
             >
-              {isLabelToggleMode && renderedIndicator}
+              {isIndicatorToggleOnly && renderedIndicator}
               <NavTreeItemContent
                 aria-selected={selected}
                 href={href}
-                itemRole={isLabelToggleMode ? 'link' : 'none'}
+                itemRole={isIndicatorToggleOnly ? 'link' : 'none'}
                 /**
                  * useAccordion2 would normally just wrap props' onClick and onKeyup
                  * with open state toggling, but because we only want the indicator to handle
@@ -276,11 +278,12 @@ const NavTreeLayout = ({
                 onFocus={onFocus}
                 onKeyUp={handleContentKeyUp}
                 rel={createSafeRel(rel, target)}
+                role="treeitem"
                 target={target}
                 {...ariaProps}
                 {...disclosureDomProps}
               >
-                {!isLabelToggleMode && renderedIndicator}
+                {!isIndicatorToggleOnly && renderedIndicator}
                 {disclosureLabel}
               </NavTreeItemContent>
               {outside}
