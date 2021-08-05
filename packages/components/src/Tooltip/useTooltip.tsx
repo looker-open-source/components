@@ -38,6 +38,9 @@ import { TooltipContent } from './TooltipContent'
 import { TooltipSurface } from './TooltipSurface'
 import { UseTooltipProps, UseTooltipResponseDom } from './types'
 
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+const noop = () => {}
+
 export const useTooltip = ({
   canClose,
   content,
@@ -116,13 +119,24 @@ export const useTooltip = ({
     }),
     [element, propsPlacement]
   )
+
   const { placement, popperInstanceRef, style, targetRef } =
     usePopper(usePopperProps)
 
   const ref = useForkedRef(targetRef, surfaceCallbackRef)
 
   const guaranteedId = useID(id)
+
+  // Memo all the things!
   return useMemo(() => {
+    const handleOpen = (e: { currentTarget: HTMLElement }) => {
+      setTriggerElement(e.currentTarget)
+      const currentElement = triggerElement ?? e.currentTarget
+      if (!disabled && (!currentElement || !currentElement.dataset.notooltip)) {
+        setIsOpen(true)
+      }
+    }
+
     const popper =
       renderDOM && content && !disabled ? (
         <Portal>
@@ -148,14 +162,6 @@ export const useTooltip = ({
         </Portal>
       ) : null
 
-    const handleOpen = (e: { currentTarget: HTMLElement }) => {
-      setTriggerElement(e.currentTarget)
-      const currentElement = triggerElement ?? e.currentTarget
-      if (!disabled && (!currentElement || !currentElement.dataset.notooltip)) {
-        setIsOpen(true)
-      }
-    }
-
     const enabledDomProps = disabled
       ? {}
       : {
@@ -168,6 +174,7 @@ export const useTooltip = ({
       onFocus: handleOpen,
       onMouseOut: handleMouseOut,
       onMouseOver: handleOpen,
+      ref: noop,
     }
     return {
       domProps,

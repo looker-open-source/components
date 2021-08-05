@@ -27,7 +27,7 @@
 import { CompatibleHTMLProps, Transitions } from '@looker/design-tokens'
 import { Placement } from '@popperjs/core'
 import { Property } from 'csstype'
-import { ReactElement, ReactNode } from 'react'
+import { ReactElement, ReactNode, Ref } from 'react'
 import { MenuDomProps } from '../Menu'
 
 // import { UsePopoverResponseDom } from '../Popover'
@@ -107,7 +107,12 @@ type UseTooltipCallbacks = Required<
 >
 
 export type UseTooltipResponseDom = UseTooltipCallbacks &
-  Pick<CompatibleHTMLProps<HTMLElement>, 'aria-describedby' | 'className'>
+  Pick<CompatibleHTMLProps<HTMLElement>, 'aria-describedby' | 'className'> & {
+    /**
+     * @deprecated returns a no-op function, to be removed soon
+     */
+    ref: Ref<any>
+  }
 export interface TooltipProps extends UseTooltipProps, Partial<MenuDomProps> {
   content: ReactNode
   /**
