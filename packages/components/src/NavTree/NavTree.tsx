@@ -37,7 +37,6 @@ import { TreeProps, treeItemInnerPropKeys } from '../Tree'
 import {
   ListItemDetail,
   listItemDimensions,
-  ListItemContext,
   ListItemProps,
   ListItemContent,
 } from '../ListItem'
@@ -48,7 +47,6 @@ import {
   getNextFocusTarget,
   HoverDisclosureContext,
   partitionAriaProps,
-  undefinedCoalesce,
   useWrapEvent,
 } from '../utils'
 import { List } from '../List'
@@ -58,7 +56,6 @@ import {
 } from '../ListItem/utils'
 import { generateIndent, indicatorDefaults } from '../Tree/utils'
 import { WindowedTreeContext } from '../Tree/WindowedTreeNode'
-import { TreeItemLabel } from '../Tree/TreeItemLabel'
 import { NavTreeItemProps } from './types'
 
 /**
@@ -68,15 +65,11 @@ import { NavTreeItemProps } from './types'
  */
 const NavTreeLayout = ({
   assumeIconAlignment,
-  border: propsBorder,
   children,
   className,
   dividers,
-  forceLabelPadding,
   isOpen: propsIsOpen,
-  itemRole = 'none', // By default, Tree's content container should be a 'div'
   label,
-  labelBackgroundOnly: propsLabelBackgroundOnly,
   defaultOpen,
   onBlur,
   onClick,
@@ -108,7 +101,6 @@ const NavTreeLayout = ({
   })
 
   const {
-    color: propsColor,
     density: propsDensity,
     disabled,
     href,
@@ -129,7 +121,6 @@ const NavTreeLayout = ({
     onMouseLeave
   )
 
-  const listContext = useContext(ListItemContext)
   const treeContext = useContext(TreeContext)
 
   // Context for supporting windowing
@@ -146,17 +137,6 @@ const NavTreeLayout = ({
   const isOpen = contextIsOpen ?? propsIsOpen
   const toggleOpen = toggleNode ?? propsToggleOpen
 
-  const border = undefinedCoalesce([propsBorder, treeContext.border])
-  const color = undefinedCoalesce([
-    propsColor,
-    treeContext.color,
-    listContext.color,
-  ])
-
-  const hasLabelBackgroundOnly = undefinedCoalesce([
-    propsLabelBackgroundOnly,
-    treeContext.labelBackgroundOnly,
-  ])
   const startingDepth = 0
   const depth = treeContext.depth ? treeContext.depth : startingDepth
 
@@ -167,7 +147,6 @@ const NavTreeLayout = ({
   const [inside, outside] = createListItemPartitions({
     ...treeItemInnerProps,
     children: label,
-    color,
     density,
     icon,
   })
@@ -232,7 +211,7 @@ const NavTreeLayout = ({
   })
 
   const statefulProps = {
-    color,
+    color: 'key',
     disabled,
     hovered,
     selected,
@@ -242,11 +221,9 @@ const NavTreeLayout = ({
     <HoverDisclosureContext.Provider value={{ visible: hovered }}>
       <TreeContext.Provider
         value={{
-          border,
-          color,
+          color: statefulProps.color,
           density,
           depth: depth + 1,
-          labelBackgroundOnly: hasLabelBackgroundOnly,
         }}
       >
         <div
@@ -268,7 +245,7 @@ const NavTreeLayout = ({
               <NavTreeItemContent
                 aria-selected={selected}
                 href={href}
-                itemRole={itemRole}
+                itemRole={restProps.href ? 'link' : 'none'}
                 /**
                  * useAccordion2 would normally just wrap props' onClick and onKeyup
                  * with open state toggling, but because we only want the indicator to handle
@@ -283,16 +260,7 @@ const NavTreeLayout = ({
                 {...ariaProps}
                 {...disclosureDomProps}
               >
-                {/**
-                 * @TODO: Delete labelBackgroundOnly behavior once FieldItem component is completed
-                 */}
-                {hasLabelBackgroundOnly ? (
-                  <TreeItemLabel {...statefulProps}>
-                    {disclosureLabel}
-                  </TreeItemLabel>
-                ) : (
-                  disclosureLabel
-                )}
+                {disclosureLabel}
               </NavTreeItemContent>
               {outside}
             </NavTreeDisclosure>
