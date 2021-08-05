@@ -40,7 +40,7 @@ interface UseAnimationStateReturn {
   /**
    * className will transition from 'entering` => `entered` => `exiting` => `exited`
    */
-  className: string
+  className: 'entering' | 'entered' | 'exiting' | 'exited'
   /**
    * renderDOM indicates whether or not the DOM elements to be associated should
    * be rendered.

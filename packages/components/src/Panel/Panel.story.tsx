@@ -96,6 +96,39 @@ CloseLabel.parameters = {
   storyshots: { disable: true },
 }
 
+export const Nested = () => (
+  <Page hasAside>
+    <Aside width="12rem">
+      <Button>Before</Button>
+      <Panels>
+        <List>
+          <Panel
+            title="Panel Title"
+            content={
+              <Panel content="Nested Panel content" title="Nested">
+                <Button>Open nested panel</Button>
+              </Panel>
+            }
+          >
+            <ListItem>option A</ListItem>
+          </Panel>
+          <ListItem>option B</ListItem>
+          <ListItem>option C</ListItem>
+          <ListItem>option D</ListItem>
+        </List>
+      </Panels>
+    </Aside>
+    <Section>
+      <Paragraph>Main stuff here...</Paragraph>
+      <Button>After</Button>
+    </Section>
+  </Page>
+)
+
+Nested.parameters = {
+  storyshots: { disable: true },
+}
+
 const HookInner = () => {
   const { panel, setOpen } = usePanel({
     content: 'Panel content',
@@ -114,8 +147,8 @@ const HookInner = () => {
 export const Hook = () => {
   return (
     <Panels>
-      <HookInner />
       <List>
+        <HookInner />
         <ListItem icon={<Done />}>Option B</ListItem>
       </List>
     </Panels>

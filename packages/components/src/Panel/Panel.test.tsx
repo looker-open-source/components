@@ -25,15 +25,23 @@
  */
 
 import '@testing-library/jest-dom/extend-expect'
-import { fireEvent, screen } from '@testing-library/react'
+import { act, fireEvent, screen } from '@testing-library/react'
 import 'jest-styled-components'
 import React, { useState } from 'react'
+import userEvent from '@testing-library/user-event'
 import { renderWithTheme } from '@looker/components-test-utils'
+import { Nested } from './Panel.story'
 import { Panel, Panels, usePanel } from './'
 
 const globalConsole = global.console
 
+const runTimers = () =>
+  act(() => {
+    jest.runOnlyPendingTimers()
+  })
+
 beforeEach(() => {
+  jest.useFakeTimers()
   global.console = {
     ...globalConsole,
     error: jest.fn(),
@@ -42,6 +50,8 @@ beforeEach(() => {
 })
 
 afterEach(() => {
+  jest.runOnlyPendingTimers()
+  jest.useRealTimers()
   jest.resetAllMocks()
   global.console = globalConsole
 })
@@ -206,5 +216,37 @@ describe('Panel', () => {
     renderWithTheme(<Panel />)
     /* eslint-disable no-console */
     expect(console.warn).toHaveBeenCalled()
+  })
+
+  test('hidden content under panel is not reachable via keyboard nav', () => {
+    renderWithTheme(<Nested />)
+
+    const listItem = screen.getByText('option A')
+
+    userEvent.click(listItem)
+    runTimers()
+    expect(listItem).not.toBeVisible()
+
+    const nestedPanelButton = screen.getByText('Open nested panel')
+    // Workaround: toBeVisible doesn't account for visibility being override-able
+    // https://github.com/testing-library/jest-dom/issues/209
+    // same issue with userEvent.tab
+    expect(nestedPanelButton.closest('[data-panel]')).toHaveStyle(
+      'visibility: visible;'
+    )
+
+    userEvent.click(nestedPanelButton)
+    runTimers()
+    expect(listItem).not.toBeVisible()
+    expect(nestedPanelButton).not.toBeVisible()
+    const closeButton = screen.getByRole('button', {
+      name: 'CloseTitle Nested',
+    })
+    // Workaround: toBeVisible doesn't account for visibility being override-able
+    // https://github.com/testing-library/jest-dom/issues/209
+    // same issue with userEvent.tab
+    expect(closeButton.closest('[data-panel]')).toHaveStyle(
+      'visibility: visible;'
+    )
   })
 })
