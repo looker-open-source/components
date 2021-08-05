@@ -27,33 +27,15 @@
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { fireEvent, screen } from '@testing-library/react'
-import { ParentIcon } from './NavTree.story'
+import { Basic, Link } from './NavTree.story'
 import { NavTreeItem } from './NavTreeItem'
 import { NavTree } from './NavTree'
 
 describe('NavTree', () => {
   test('Renders string disclosure label and detail', () => {
-    renderWithTheme(<ParentIcon />)
+    renderWithTheme(<Basic />)
 
-    screen.getByText('Parent Tree with Icon')
-    screen.getByText('Cheddar')
-  })
-
-  test('Changes accordion open state on indicator click', () => {
-    renderWithTheme(<ParentIcon />)
-
-    const indicator = screen.getAllByTestId('accordion-indicator')[0]
-    screen.getByText('Cheddar')
-    fireEvent.click(indicator)
-    expect(screen.queryByText('Cheddar')).not.toBeInTheDocument()
-  })
-
-  test('Does not change accordion open state on label click', () => {
-    renderWithTheme(<ParentIcon />)
-
-    const treeLabel = screen.getByText('Parent Tree with Icon')
-    screen.getByText('Cheddar')
-    fireEvent.click(treeLabel)
+    screen.getByText('Cheeses')
     screen.getByText('Cheddar')
   })
 
@@ -68,5 +50,45 @@ describe('NavTree', () => {
 
     fireEvent.click(screen.getByText('Parent'))
     expect(labelClick).toHaveBeenCalled()
+  })
+
+  describe('href provided', () => {
+    test('Changes accordion open state on indicator click', () => {
+      renderWithTheme(<Link />)
+
+      const indicator = screen.getAllByTestId('accordion-indicator')[0]
+      screen.getByText('Some Item')
+      fireEvent.click(indicator)
+      expect(screen.queryByText('Some Item')).not.toBeInTheDocument()
+    })
+
+    test('Does not change accordion open state on label click', () => {
+      renderWithTheme(<Link />)
+
+      const treeLabel = screen.getByText('Click me to go to Google')
+      screen.getByText('Some Item')
+      fireEvent.click(treeLabel)
+      screen.getByText('Some Item')
+    })
+  })
+
+  describe('href not provided', () => {
+    test('Changes accordion open state on indicator click', () => {
+      renderWithTheme(<Basic />)
+
+      const indicator = screen.getAllByTestId('accordion-indicator')[0]
+      screen.getByText('Cheddar')
+      fireEvent.click(indicator)
+      expect(screen.queryByText('Cheddar')).not.toBeInTheDocument()
+    })
+
+    test('Changes accordion open state on label click', () => {
+      renderWithTheme(<Basic />)
+
+      const treeLabel = screen.getByText('Cheeses')
+      screen.getByText('Cheddar')
+      fireEvent.click(treeLabel)
+      expect(screen.queryByText('Cheddar')).not.toBeInTheDocument()
+    })
   })
 })

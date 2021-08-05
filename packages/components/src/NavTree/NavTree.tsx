@@ -26,7 +26,14 @@
 
 import { SpacingSizes } from '@looker/design-tokens'
 import styled from 'styled-components'
-import React, { cloneElement, FocusEvent, useContext, useState } from 'react'
+import React, {
+  cloneElement,
+  FocusEvent,
+  KeyboardEvent,
+  MouseEvent,
+  useContext,
+  useState,
+} from 'react'
 import { GenericClickProps } from '../utils/useClickable'
 import {
   ControlledLoosely,
@@ -82,6 +89,7 @@ const NavTreeLayout = ({
   toggleOpen: propsToggleOpen,
   ...restProps
 }: TreeProps) => {
+  const isLabelToggleMode = !!restProps.href
   const treeItemInnerProps = {}
   const accordionInnerProps = {}
   Object.entries(restProps).forEach((prop) => {
@@ -120,6 +128,17 @@ const NavTreeLayout = ({
     () => setHovered(false),
     onMouseLeave
   )
+  // This is needed so that hover disclosed elements don't get lost during keyboard nav
+  const handleWrapperBlur = (event: FocusEvent<HTMLElement>) => {
+    const nextFocusTarget = getNextFocusTarget(event)
+
+    if (
+      nextFocusTarget &&
+      !event.currentTarget.contains(nextFocusTarget as Node)
+    ) {
+      setHovered(false)
+    }
+  }
 
   const treeContext = useContext(TreeContext)
 
@@ -183,32 +202,33 @@ const NavTreeLayout = ({
     ...accordionProps,
   })
 
-  // This is needed so that hover disclosed elements don't get lost during keyboard nav
-  const handleWrapperBlur = (event: FocusEvent<HTMLElement>) => {
-    const nextFocusTarget = getNextFocusTarget(event)
-
-    if (
-      nextFocusTarget &&
-      !event.currentTarget.contains(nextFocusTarget as Node)
-    ) {
-      setHovered(false)
-    }
-  }
-
   const {
     indicator,
     children: disclosureLabel,
-    onClick: onIndicatorClick,
-    onKeyUp: onIndicatorKeyUp,
+    onClick: onClickDisclosureToggle,
+    onKeyUp: onKeyUpDisclosureToggle,
     ...disclosureDomProps
   } = disclosureProps
 
-  // These additional props on indicator produce the "indicator toggle only" behavior
   const renderedIndicator = cloneElement(indicator, {
-    onClick: onIndicatorClick,
-    onKeyUp: onIndicatorKeyUp,
+    onClick: isLabelToggleMode ? onClickDisclosureToggle : undefined,
+    onKeyUp: isLabelToggleMode ? onKeyUpDisclosureToggle : undefined,
     tabIndex: -1,
   })
+
+  const handleContentClick = useWrapEvent((event: MouseEvent<HTMLElement>) => {
+    !isLabelToggleMode &&
+      onClickDisclosureToggle &&
+      onClickDisclosureToggle(event)
+  }, onClick)
+  const handleContentKeyUp = useWrapEvent(
+    (event: KeyboardEvent<HTMLElement>) => {
+      !isLabelToggleMode &&
+        onKeyUpDisclosureToggle &&
+        onKeyUpDisclosureToggle(event)
+    },
+    onKeyUp
+  )
 
   const statefulProps = {
     color: 'key',
@@ -241,25 +261,26 @@ const NavTreeLayout = ({
               role="treeitem"
               {...statefulProps}
             >
-              {renderedIndicator}
+              {isLabelToggleMode && renderedIndicator}
               <NavTreeItemContent
                 aria-selected={selected}
                 href={href}
-                itemRole={restProps.href ? 'link' : 'none'}
+                itemRole={isLabelToggleMode ? 'link' : 'none'}
                 /**
                  * useAccordion2 would normally just wrap props' onClick and onKeyup
                  * with open state toggling, but because we only want the indicator to handle
                  * open state toggling, we do not pass onClick and onKeyUp
-                 * into useAccordion2 and receive them via disclosureProps, so intead we directly assign them here
+                 * into useAccordion2 and receive them via disclosureProps, so instead we directly assign them here
                  */
-                onClick={onClick}
+                onClick={handleContentClick}
                 onFocus={onFocus}
-                onKeyUp={onKeyUp}
+                onKeyUp={handleContentKeyUp}
                 rel={createSafeRel(rel, target)}
                 target={target}
                 {...ariaProps}
                 {...disclosureDomProps}
               >
+                {!isLabelToggleMode && renderedIndicator}
                 {disclosureLabel}
               </NavTreeItemContent>
               {outside}

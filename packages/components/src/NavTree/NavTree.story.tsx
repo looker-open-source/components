@@ -35,6 +35,28 @@ export default {
   title: 'NavTree',
 }
 
+export const Basic = () => (
+  <TreeCollection>
+    <NavTree defaultOpen label="Cheeses" icon={<Folder />}>
+      <NavTreeItem parentIcon>Cheddar</NavTreeItem>
+    </NavTree>
+  </TreeCollection>
+)
+
+export const Link = () => (
+  <TreeCollection>
+    <NavTree
+      defaultOpen
+      label="Click me to go to Google"
+      icon={<Folder />}
+      href="https://google.com"
+      target="_blank"
+    >
+      <NavTreeItem parentIcon>Some Item</NavTreeItem>
+    </NavTree>
+  </TreeCollection>
+)
+
 export const ParentIcon = () => {
   return (
     <TreeCollection>
@@ -53,18 +75,3 @@ export const ParentIcon = () => {
     </TreeCollection>
   )
 }
-
-export const Link = () => (
-  <TreeCollection>
-    <NavTree
-      defaultOpen
-      label="Click me to go to Google"
-      icon={<Folder />}
-      itemRole="link"
-      href="https://google.com"
-      target="_blank"
-    >
-      <NavTreeItem parentIcon>Cheddar</NavTreeItem>
-    </NavTree>
-  </TreeCollection>
-)
