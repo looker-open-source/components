@@ -23,51 +23,16 @@
  SOFTWARE.
 
  */
+
 import React from 'react'
 import { render } from 'react-dom'
-import {
-  Box,
-  ComponentsProvider,
-  FieldToggleSwitch,
-  Heading,
-  SpaceVertical,
-  useToggle,
-} from '@looker/components'
-import { FontFaceLoader } from '@looker/components-providers'
-import { theme, Theme } from '@looker/design-tokens'
+import { ComponentsProvider } from '@looker/components'
+import { PerformanceTest } from '@looker/components/src/Tooltip/Tooltip.story'
 
 const App = () => {
-  const { toggle, value } = useToggle(false)
-
-  const { key, background } = theme.colors
-
-  const customTheme: Theme = {
-    ...theme,
-    colors: {
-      ...theme.colors,
-      background: value ? key : background,
-      key: value ? background : key,
-    },
-    fontSources: [
-      {
-        url: 'https://fonts.googleapis.com/css2?family=Grandstander:wght@200;300;400;500&display=swap',
-      },
-    ],
-    fonts: {
-      ...theme.fonts,
-      brand: 'Grandstander',
-    },
-  }
-
   return (
-    <ComponentsProvider theme={customTheme}>
-      <Box p="medium">
-        <SpaceVertical>
-          <FontFaceLoader />
-          <FieldToggleSwitch on={value} onChange={toggle} label="Toggle me" />
-          <Heading color="key">Some text here</Heading>
-        </SpaceVertical>
-      </Box>
+    <ComponentsProvider>
+      <PerformanceTest />
     </ComponentsProvider>
   )
 }

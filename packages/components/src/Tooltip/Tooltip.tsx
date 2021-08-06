@@ -27,11 +27,13 @@
 import React, {
   cloneElement,
   forwardRef,
+  ForwardRefExoticComponent,
   isValidElement,
+  PropsWithoutRef,
   ReactNode,
   Ref,
 } from 'react'
-import { useForkedRef, mergeClassNames, mergeHandlers } from '../utils'
+import { mergeClassNames, useWrapEvent } from '../utils'
 import { TooltipProps, TooltipRenderProp } from './types'
 import { useTooltip } from './useTooltip'
 
@@ -41,7 +43,19 @@ function isRenderProp(
   return typeof children === 'function'
 }
 
-export const Tooltip = forwardRef(
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+const noop = () => {}
+
+type RefAttributes = {
+  /**
+   * @deprecated not actually forwarded, will be removed in 3.x release
+   */
+  ref?: Ref<any>
+}
+
+export const Tooltip: ForwardRefExoticComponent<
+  PropsWithoutRef<TooltipProps> & RefAttributes
+> = forwardRef(
   (
     {
       // Props from Popover or Menu
@@ -54,9 +68,7 @@ export const Tooltip = forwardRef(
       children,
       ...props
     }: TooltipProps,
-
-    // ref from Popover
-    forwardedRef: Ref<any>
+    _: Ref<any>
   ) => {
     const { domProps, tooltip } = useTooltip({
       // ariaExpanded=true indicates an open Popover – disable the tooltip
@@ -69,35 +81,24 @@ export const Tooltip = forwardRef(
       onFocus,
       onMouseOut,
       onMouseOver,
-      ref: tooltipRef,
       ...restDomProps
     } = domProps
 
-    const ref = useForkedRef(tooltipRef, forwardedRef)
-
     let target: ReactNode = children
 
+    const childProps = isValidElement(children) ? children.props : undefined
+
+    const wrappedHandlers = {
+      onBlur: useWrapEvent(onBlur, childProps?.onBlur),
+      onClick: useWrapEvent(onClick || noop, childProps?.onClick),
+      onFocus: useWrapEvent(onFocus, childProps?.onFocus),
+      onMouseOut: useWrapEvent(onMouseOut, childProps?.onMouseOut),
+      onMouseOver: useWrapEvent(onMouseOver, childProps?.onMouseOver),
+    }
+
     if (isValidElement(children)) {
-      const handlers = {
-        onBlur,
-        onClick,
-        onFocus,
-        onMouseOut,
-        onMouseOver,
-      }
-
-      const mergedHandlers = Object.keys(handlers).reduce(
-        (acc: Partial<typeof handlers>, key) => {
-          return {
-            ...acc,
-            [key]: mergeHandlers(handlers[key], children.props[key]),
-          }
-        },
-        {}
-      )
-
       target = cloneElement(children, {
-        ...mergedHandlers,
+        ...wrappedHandlers,
         ...restDomProps,
         // Menu
         'aria-controls': ariaControls,
@@ -106,7 +107,6 @@ export const Tooltip = forwardRef(
         'aria-haspopup': ariaHaspopup,
         // Tooltip
         className: mergeClassNames([className, children.props.className]),
-        ref,
       })
     } else if (isRenderProp(children)) {
       target = children(domProps)

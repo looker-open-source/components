@@ -24,7 +24,7 @@
 
  */
 
-import React, { MouseEvent, useMemo, useState } from 'react'
+import React, { MouseEvent, useCallback, useMemo, useState } from 'react'
 import {
   useAnimationState,
   useCallbackRef,
@@ -38,7 +38,10 @@ import { TooltipContent } from './TooltipContent'
 import { TooltipSurface } from './TooltipSurface'
 import { UseTooltipProps } from './types'
 
-export function useTooltip({
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+const noop = () => {}
+
+export const useTooltip = ({
   canClose,
   content,
   isOpen: initializeOpen = false,
@@ -51,7 +54,7 @@ export function useTooltip({
   triggerElement,
   placement: propsPlacement = 'bottom',
   delay = 'intricate',
-}: UseTooltipProps) {
+}: UseTooltipProps) => {
   const [isOpen, setIsOpen] = useState(initializeOpen)
   const { busy, className, renderDOM } = useAnimationState(
     isOpen,
@@ -60,41 +63,43 @@ export function useTooltip({
   )
 
   const [surfaceElement, surfaceCallbackRef] = useCallbackRef()
-  const [newTriggerElement, callbackRef] = useCallbackRef()
+  const [newTriggerElement, setTriggerElement] = useState<HTMLElement | null>(
+    null
+  )
   // If the triggerElement is passed in props, use that instead of the new element
-  const element =
-    typeof triggerElement === 'undefined' ? newTriggerElement : triggerElement
+  const element = triggerElement ?? newTriggerElement
 
-  const handleOpen = () => {
-    if (!disabled && (!element || !element.dataset.notooltip)) {
-      setIsOpen(true)
-    }
-  }
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     if (canClose && !canClose()) return
     setIsOpen(false)
-  }
+  }, [canClose])
 
-  const handleMouseOut = (event: MouseEvent<HTMLElement>) => {
-    if (!isOpen) return
+  const handleMouseOut = useCallback(
+    (event: MouseEvent<HTMLElement>) => {
+      if (!isOpen) return
 
-    const related = event.relatedTarget
+      const related = event.relatedTarget
 
-    if (element && (element === related || element.contains(related as Node))) {
-      return
-    }
+      if (
+        element &&
+        (element === related || element.contains(related as Node))
+      ) {
+        return
+      }
 
-    if (
-      surfaceElement &&
-      (surfaceElement === related || surfaceElement.contains(related as Node))
-    ) {
-      return
-    }
+      if (
+        surfaceElement &&
+        (surfaceElement === related || surfaceElement.contains(related as Node))
+      ) {
+        return
+      }
 
-    window.requestAnimationFrame(() => {
-      handleClose()
-    })
-  }
+      window.requestAnimationFrame(() => {
+        handleClose()
+      })
+    },
+    [element, surfaceElement, isOpen, handleClose]
+  )
 
   const usePopperProps: UsePopperProps = useMemo(
     () => ({
@@ -114,6 +119,7 @@ export function useTooltip({
     }),
     [element, propsPlacement]
   )
+
   const { placement, popperInstanceRef, style, targetRef } =
     usePopper(usePopperProps)
 
@@ -121,48 +127,77 @@ export function useTooltip({
 
   const guaranteedId = useID(id)
 
-  const popper =
-    renderDOM && content && !disabled ? (
-      <Portal>
-        <TooltipSurface
-          aria-busy={busy ? true : undefined}
-          className={className}
-          eventHandlers={{ onMouseOut: handleMouseOut }}
-          placement={placement}
-          ref={ref}
-          style={style}
-          maxWidth={maxWidth}
-          invert={invert}
-        >
-          <TooltipContent
-            role="tooltip"
-            id={guaranteedId}
-            width={width}
-            textAlign={textAlign}
+  // Memo all the things!
+  return useMemo(() => {
+    const popper =
+      renderDOM && content && !disabled ? (
+        <Portal>
+          <TooltipSurface
+            aria-busy={busy ? true : undefined}
+            className={className}
+            eventHandlers={{ onMouseOut: handleMouseOut }}
+            placement={placement}
+            ref={ref}
+            style={style}
+            maxWidth={maxWidth}
+            invert={invert}
           >
-            {content}
-          </TooltipContent>
-        </TooltipSurface>
-      </Portal>
-    ) : null
+            <TooltipContent
+              role="tooltip"
+              id={guaranteedId}
+              width={width}
+              textAlign={textAlign}
+            >
+              {content}
+            </TooltipContent>
+          </TooltipSurface>
+        </Portal>
+      ) : null
 
-  const enabledDomProps = disabled
-    ? {}
-    : {
-        'aria-describedby': guaranteedId,
-        className: renderDOM ? 'hover' : undefined,
+    const handleOpen = (e: { currentTarget: HTMLElement }) => {
+      setTriggerElement(e.currentTarget)
+      const currentElement = triggerElement ?? e.currentTarget
+      if (!disabled && (!currentElement || !currentElement.dataset.notooltip)) {
+        setIsOpen(true)
       }
+    }
 
-  return {
-    domProps: {
-      ...enabledDomProps,
-      onBlur: handleClose,
-      onFocus: handleOpen,
-      onMouseOut: handleMouseOut,
-      onMouseOver: handleOpen,
-      ref: callbackRef,
-    },
+    const enabledDomProps = disabled
+      ? {}
+      : {
+          'aria-describedby': guaranteedId,
+          className: renderDOM ? 'hover' : undefined,
+        }
+
+    return {
+      domProps: {
+        ...enabledDomProps,
+        onBlur: handleClose,
+        onFocus: handleOpen,
+        onMouseOut: handleMouseOut,
+        onMouseOver: handleOpen,
+        ref: noop,
+      },
+      popperInstanceRef,
+      tooltip: popper,
+    }
+  }, [
+    busy,
+    className,
+    content,
+    disabled,
+    guaranteedId,
+    handleClose,
+    handleMouseOut,
+    invert,
+    maxWidth,
+    placement,
     popperInstanceRef,
-    tooltip: popper,
-  }
+    ref,
+    renderDOM,
+    style,
+    textAlign,
+    triggerElement,
+    width,
+  ])
 }
