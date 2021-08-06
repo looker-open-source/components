@@ -45,9 +45,11 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
   className,
   filters,
   hideFilterIcon = false,
+  placeholder,
   onChange,
 }) => {
   const { t } = useTranslation('InputFilters')
+  placeholder ||= t('Filter List')
   const [fieldEditing, setFieldEditing] = useState<undefined | string>(
     undefined
   )
@@ -191,7 +193,7 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
             isFilterable
             onChange={handleFilterLookupChange}
             options={options}
-            placeholder={t('Filter List')}
+            placeholder={placeholder}
             ref={inputRef}
           />
         )}

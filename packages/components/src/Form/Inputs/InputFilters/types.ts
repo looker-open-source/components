@@ -62,5 +62,13 @@ export interface InputFiltersProps {
   className?: string
   filters: FieldFilter[]
   hideFilterIcon?: boolean
+  /**
+   * Placeholder text for input when empty
+   *
+   * I18n recommended: content that is user visible should be treated for i18n
+   *
+   * Defaults to internationalized "Filter List"
+   */
+  placeholder?: string
   onChange: (filters: FieldFilter[]) => void
 }
