@@ -50,7 +50,7 @@ type RefAttributes = {
   /**
    * @deprecated not actually forwarded, will be removed in 3.x release
    */
-  ref: Ref<any>
+  ref?: Ref<any>
 }
 
 export const Tooltip: ForwardRefExoticComponent<
