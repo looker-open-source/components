@@ -24,32 +24,14 @@
 
  */
 
-import { ListItemProps } from '../ListItem'
-import { GenericClickProps } from '../utils/useClickable'
-import { TreeProps } from '../Tree'
-import { ControlledLoosely } from '../Accordion2/controlTypes'
+import styled from 'styled-components'
+import { listItemBackgroundColor } from '../ListItem/utils'
+import { generateIndent } from '../Tree/utils'
 
-export type NavTreeItemProps = {
-  /**
-   * Aligns item label based on parent Tree's icon prop
-   */
-  parentIcon?: boolean
-} & Omit<ListItemProps, 'density' | 'truncate'>
+export const NavTreeDisclosure = styled.div`
+  ${generateIndent}
+  ${listItemBackgroundColor}
 
-type IndicatorToggleModeProps = {
-  href: string
-  /**
-   * Passed down to the indicator icon's label prop
-   */
-  indicatorLabel: string
-}
-type DisclosureToggleModeProps = {
-  href?: never
-  indicatorLabel?: never
-}
-
-export type NavTreeProps = Omit<NavTreeItemProps, 'itemRole' | 'parentIcon'> &
-  ControlledLoosely &
-  GenericClickProps<HTMLElement> &
-  Pick<TreeProps, 'label'> &
-  (IndicatorToggleModeProps | DisclosureToggleModeProps)
+  color: ${({ theme }) => theme.colors.text5};
+  display: flex;
+`

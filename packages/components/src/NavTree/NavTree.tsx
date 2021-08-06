@@ -23,7 +23,6 @@
  SOFTWARE.
 
  */
-import { SpacingSizes } from '@looker/design-tokens'
 import { ArrowDropDown } from '@styled-icons/material/ArrowDropDown'
 import { ArrowRight } from '@styled-icons/material/ArrowRight'
 import styled from 'styled-components'
@@ -35,36 +34,26 @@ import React, {
   useContext,
   useState,
 } from 'react'
-import { GenericClickProps } from '../utils/useClickable'
-import {
-  ControlledLoosely,
-  ControlledOrUncontrolled,
-} from '../Accordion2/controlTypes'
-import { AccordionIndicator } from '../Accordion2/AccordionIndicator'
-import { TreeProps, treeItemInnerPropKeys } from '../Tree'
-import {
-  ListItemDetail,
-  listItemDimensions,
-  ListItemProps,
-  ListItemContent,
-} from '../ListItem'
+import { ControlledOrUncontrolled } from '../Accordion2/controlTypes'
+import { treeItemInnerPropKeys } from '../Tree'
+import { ListItemDetail, listItemDimensions, ListItemProps } from '../ListItem'
 import { TreeContext } from '../Tree/TreeContext'
 import { useAccordion2 } from '../Accordion2'
 import {
   createSafeRel,
   getNextFocusTarget,
   HoverDisclosureContext,
+  mergeClassNames,
   partitionAriaProps,
   useWrapEvent,
 } from '../utils'
 import { List } from '../List'
-import {
-  createListItemPartitions,
-  listItemBackgroundColor,
-} from '../ListItem/utils'
-import { generateIndent } from '../Tree/utils'
+import { AccordionIndicator } from '../Accordion2/AccordionIndicator'
+import { createListItemPartitions } from '../ListItem/utils'
 import { WindowedTreeContext } from '../Tree/WindowedTreeNode'
-import { NavTreeItemProps } from './types'
+import { NavTreeProps } from './types'
+import { NavTreeDisclosure } from './NavTreeDisclosure'
+import { NavTreeItemContent } from './NavTreeItemContent'
 
 const NavTreeLayout = ({
   children,
@@ -84,7 +73,12 @@ const NavTreeLayout = ({
   toggleOpen: propsToggleOpen,
   ...restProps
 }: NavTreeProps) => {
+  /**
+   * If `href` is supplied the clicking the label will NOT trigger
+   * the underlying accordion. Only the indicator will trigger toggle
+   */
   const isIndicatorToggleOnly = !!restProps.href
+
   const treeItemInnerProps = {}
   const accordionInnerProps = {}
   Object.entries(restProps).forEach((prop) => {
@@ -103,15 +97,8 @@ const NavTreeLayout = ({
     }
   })
 
-  const {
-    density: propsDensity,
-    disabled,
-    href,
-    icon,
-    rel,
-    selected,
-    target,
-  } = treeItemInnerProps as Partial<ListItemProps>
+  const { disabled, href, icon, rel, selected, target } =
+    treeItemInnerProps as Partial<ListItemProps>
   const [ariaProps] = partitionAriaProps(restProps)
 
   const [hovered, setHovered] = useState(false)
@@ -142,7 +129,6 @@ const NavTreeLayout = ({
   // - opened / closed state must be managed at the collection level for accurate item count
   // - partialRender to hide the accordion disclosure if it's above the window
   const {
-    density: collectionDensity,
     isOpen: contextIsOpen,
     toggleNode,
     partialRender,
@@ -154,12 +140,9 @@ const NavTreeLayout = ({
   const startingDepth = 0
   const depth = treeContext.depth ? treeContext.depth : startingDepth
 
-  const density = collectionDensity || propsDensity || treeContext.density || 0
-
   const [inside, outside] = createListItemPartitions({
     ...treeItemInnerProps,
     children: label,
-    density,
     icon,
   })
   let accordionProps: ControlledOrUncontrolled = {
@@ -184,7 +167,6 @@ const NavTreeLayout = ({
         {children}
       </List>
     ),
-    density,
     disabled,
     indicatorIcons: {
       close: <ArrowRight aria-label={`${indicatorLabel} Close`} />,
@@ -236,52 +218,56 @@ const NavTreeLayout = ({
     selected,
   }
 
+  const insideContent = (
+    <>
+      {isIndicatorToggleOnly && renderedIndicator}
+      <NavTreeItemContent
+        aria-selected={selected}
+        href={href}
+        itemRole={isIndicatorToggleOnly ? 'link' : 'none'}
+        /**
+         * useAccordion2 would normally just wrap props' onClick and onKeyup
+         * with open state toggling, but because we only want the indicator to handle
+         * open state toggling, we do not pass onClick and onKeyUp
+         * into useAccordion2 and receive them via disclosureProps, so instead we directly assign them here
+         */
+        onClick={handleContentClick}
+        onFocus={onFocus}
+        onKeyUp={handleContentKeyUp}
+        rel={createSafeRel(rel, target)}
+        role="treeitem"
+        target={target}
+        {...ariaProps}
+        {...disclosureDomProps}
+      >
+        {!isIndicatorToggleOnly && renderedIndicator}
+        {disclosureLabel}
+      </NavTreeItemContent>
+    </>
+  )
+
   return (
     <HoverDisclosureContext.Provider value={{ visible: hovered }}>
       <TreeContext.Provider
         value={{
           color: statefulProps.color,
-          density,
           depth: depth + 1,
         }}
       >
         <div
           {...restDomProps}
-          className={`${restDomProps.className} ${className}`}
+          className={mergeClassNames([restDomProps.className, className])}
         >
           {!partialRender && (
             <NavTreeDisclosure
               as="li"
               depth={depth}
-              density={density}
               onBlur={handleWrapperBlur}
               onMouseEnter={handleWrapperMouseEnter}
               onMouseLeave={handleWrapperMouseLeave}
               {...statefulProps}
             >
-              {isIndicatorToggleOnly && renderedIndicator}
-              <NavTreeItemContent
-                aria-selected={selected}
-                href={href}
-                itemRole={isIndicatorToggleOnly ? 'link' : 'none'}
-                /**
-                 * useAccordion2 would normally just wrap props' onClick and onKeyup
-                 * with open state toggling, but because we only want the indicator to handle
-                 * open state toggling, we do not pass onClick and onKeyUp
-                 * into useAccordion2 and receive them via disclosureProps, so instead we directly assign them here
-                 */
-                onClick={handleContentClick}
-                onFocus={onFocus}
-                onKeyUp={handleContentKeyUp}
-                rel={createSafeRel(rel, target)}
-                role="treeitem"
-                target={target}
-                {...ariaProps}
-                {...disclosureDomProps}
-              >
-                {!isIndicatorToggleOnly && renderedIndicator}
-                {disclosureLabel}
-              </NavTreeItemContent>
+              {insideContent}
               {outside}
             </NavTreeDisclosure>
           )}
@@ -292,63 +278,13 @@ const NavTreeLayout = ({
   )
 }
 
-const NavTreeItemContent = styled(ListItemContent)`
-  display: flex;
-  padding-left: 0;
-  padding-right: 0;
-`
-
-export const NavTreeDisclosure = styled.div`
-  ${generateIndent}
-  ${listItemBackgroundColor}
-
-  color: ${({ theme }) => theme.colors.text5};
-  display: flex;
-`
-
-/**
- * NavTree style overrides
- */
-const NavTreeStyle = styled(NavTreeLayout).withConfig<
-  {
-    iconGap: SpacingSizes
-    px: SpacingSizes
-  } & TreeProps
->({
-  shouldForwardProp: (prop) => !['iconGap', 'px'].includes(prop),
-})`
+export const NavTree = styled(NavTreeLayout)`
   ${AccordionIndicator} {
-    ${({ icon, iconGap, theme }) =>
-      !icon && `margin-right: ${theme.space[iconGap]}`}
+    ${({ icon, theme }) =>
+      !icon && `margin-right: ${theme.space[listItemDimensions().iconGap]}`}
   }
 
   ${ListItemDetail} {
-    padding-right: ${({ px, theme }) => theme.space[px]};
+    padding-right: ${({ theme }) => theme.space[listItemDimensions().px]};
   }
 `
-
-type IndicatorToggleModeProps = {
-  href: string
-  /**
-   * Passed down to the indicator icon's label prop
-   */
-  indicatorLabel: string
-}
-type DisclosureToggleModeProps = {
-  href?: never
-  indicatorLabel?: never
-}
-
-export type NavTreeProps = Omit<NavTreeItemProps, 'itemRole' | 'parentIcon'> &
-  ControlledLoosely &
-  GenericClickProps<HTMLElement> &
-  Pick<TreeProps, 'label'> &
-  (IndicatorToggleModeProps | DisclosureToggleModeProps)
-
-export const NavTree = styled((props: NavTreeProps) => {
-  const { density: contextDensity } = useContext(TreeContext)
-  const density = props.density || contextDensity
-  const { iconGap, px } = listItemDimensions(density)
-
-  return <NavTreeStyle {...props} iconGap={iconGap} px={px} truncate />
-})``
