@@ -27,42 +27,70 @@
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { fireEvent, screen } from '@testing-library/react'
-import { ParentIcon } from './NavTree.story'
+import { Basic, Link } from './NavTree.story'
 import { NavTreeItem } from './NavTreeItem'
 import { NavTree } from './NavTree'
 
 describe('NavTree', () => {
   test('Renders string disclosure label and detail', () => {
-    renderWithTheme(<ParentIcon />)
+    renderWithTheme(<Basic />)
 
-    screen.getByText('Parent Tree with Icon')
+    screen.getByText('Cheeses')
     screen.getByText('Cheddar')
   })
 
-  test('Renders and hides children on disclosure click', () => {
-    renderWithTheme(<ParentIcon />)
-
-    const treeLabel = screen.getByText('Parent Tree with Icon')
-    screen.getByText('Cheddar')
-    fireEvent.click(treeLabel)
-    expect(screen.queryByText('Cheddar')).not.toBeInTheDocument()
-    fireEvent.click(treeLabel)
-    screen.getByText('Cheddar')
-  })
-
-  test('Renders and hides children on disclosure click', () => {
-    const parentClick = jest.fn()
-    const childClick = jest.fn()
+  test('Triggers onClick on label click', () => {
+    const labelClick = jest.fn()
 
     renderWithTheme(
-      <NavTree onClick={parentClick} label="Parent">
-        <NavTreeItem onClick={childClick}>Child</NavTreeItem>
+      <NavTree onClick={labelClick} label="Parent">
+        <NavTreeItem>Child</NavTreeItem>
       </NavTree>
     )
 
     fireEvent.click(screen.getByText('Parent'))
-    expect(parentClick).toHaveBeenCalled()
-    fireEvent.click(screen.getByText('Child'))
-    expect(childClick).toHaveBeenCalled()
+    expect(labelClick).toHaveBeenCalled()
+  })
+
+  describe('href provided', () => {
+    test('Changes accordion open state on indicator click', () => {
+      renderWithTheme(<Link />)
+
+      const indicator = screen.getByLabelText('Google Link Indicator Open')
+      screen.getByText('Some Item')
+      fireEvent.click(indicator)
+      screen.getByLabelText('Google Link Indicator Close')
+      expect(screen.queryByText('Some Item')).not.toBeInTheDocument()
+    })
+
+    test('Does not change accordion open state on label click', () => {
+      renderWithTheme(<Link />)
+
+      const treeLabel = screen.getByText('Click me to go to Google')
+      screen.getByText('Some Item')
+      fireEvent.click(treeLabel)
+      screen.getByText('Some Item')
+    })
+  })
+
+  describe('href not provided', () => {
+    test('Changes accordion open state on indicator click', () => {
+      renderWithTheme(<Basic />)
+
+      const indicator = screen.getByLabelText('Cheeses Tree Indicator Open')
+      screen.getByText('Cheddar')
+      fireEvent.click(indicator)
+      screen.getByLabelText('Cheeses Tree Indicator Close')
+      expect(screen.queryByText('Cheddar')).not.toBeInTheDocument()
+    })
+
+    test('Changes accordion open state on label click', () => {
+      renderWithTheme(<Basic />)
+
+      const treeLabel = screen.getByText('Cheeses')
+      screen.getByText('Cheddar')
+      fireEvent.click(treeLabel)
+      expect(screen.queryByText('Cheddar')).not.toBeInTheDocument()
+    })
   })
 })

@@ -26,7 +26,7 @@
 
 import React from 'react'
 import { Folder } from '@styled-icons/material/Folder'
-import { TreeCollection } from '../Tree'
+import { NavList } from '../NavList'
 import { NavTree } from './NavTree'
 import { NavTreeItem } from './NavTreeItem'
 
@@ -35,9 +35,37 @@ export default {
   title: 'NavTree',
 }
 
+export const Basic = () => (
+  <NavList>
+    <NavTree
+      defaultOpen
+      label="Cheeses"
+      icon={<Folder />}
+      indicatorLabel="Cheeses Tree Indicator"
+    >
+      <NavTreeItem parentIcon>Cheddar</NavTreeItem>
+    </NavTree>
+  </NavList>
+)
+
+export const Link = () => (
+  <NavList>
+    <NavTree
+      defaultOpen
+      label="Click me to go to Google"
+      icon={<Folder />}
+      href="https://google.com"
+      target="_blank"
+      indicatorLabel="Google Link Indicator"
+    >
+      <NavTreeItem parentIcon>Some Item</NavTreeItem>
+    </NavTree>
+  </NavList>
+)
+
 export const ParentIcon = () => {
   return (
-    <TreeCollection>
+    <NavList>
       <NavTree defaultOpen label="Parent Tree with Icon" icon={<Folder />}>
         <NavTreeItem parentIcon>Cheddar</NavTreeItem>
         <NavTreeItem parentIcon>Cheddar 2</NavTreeItem>
@@ -50,6 +78,6 @@ export const ParentIcon = () => {
           <NavTreeItem>Swiss 3</NavTreeItem>
         </NavTree>
       </NavTree>
-    </TreeCollection>
+    </NavList>
   )
 }

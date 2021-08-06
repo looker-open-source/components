@@ -32,10 +32,11 @@ import {
   GenerateIndentProps,
 } from '../Tree/utils/generateIndent'
 import { TreeContext } from '../Tree/TreeContext'
-import { ListItemDetail, ListItemProps, listItemDimensions } from '../ListItem'
+import { ListItemDetail, listItemDimensions } from '../ListItem'
 import { TreeItem } from '../Tree'
 import { accordionDimensions } from '../Accordion2/accordionDimensions'
 import { TreeItemContent } from '../Tree/TreeItemContent'
+import { NavTreeItemProps } from './types'
 
 const IndentOverrideTreeItem = styled(TreeItem).withConfig<
   {
@@ -69,22 +70,13 @@ const IndentOverrideTreeItem = styled(TreeItem).withConfig<
   }
 `
 
-export type NavTreeItemProps = {
-  /**
-   * Aligns item label based on parent Tree's icon prop
-   */
-  parentIcon?: boolean
-} & Omit<ListItemProps, 'truncate'>
-
 export const NavTreeItem = styled((props: NavTreeItemProps) => {
-  const { density: contextDensity, depth } = useContext(TreeContext)
-  const density = props.density || contextDensity
-  const { iconGap, px } = listItemDimensions(density)
-  const { indicatorGap } = accordionDimensions(density)
+  const { depth } = useContext(TreeContext)
+  const { iconGap, px } = listItemDimensions()
+  const { indicatorGap } = accordionDimensions()
 
   return (
     <IndentOverrideTreeItem
-      density={density}
       depth={depth}
       iconGap={iconGap}
       indicatorGap={indicatorGap}

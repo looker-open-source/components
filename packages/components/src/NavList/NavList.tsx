@@ -27,7 +27,6 @@
 import styled from 'styled-components'
 import { TextBase } from '../Text/TextBase'
 import { Truncate } from '../Truncate'
-import { Accordion2Disclosure } from '../Accordion2/Accordion2Disclosure'
 import { List } from '../List'
 import {
   ListItem,
@@ -35,17 +34,18 @@ import {
   ListItemDetail,
   ListItemIcon,
 } from '../ListItem'
+import { NavTreeDisclosure } from '../NavTree/NavTreeDisclosure'
 
 /**
- * `NavList` is a variation of `List`
- *   - `ListItem`  border-radius circular on the right side
- *   - `ListItem` selected or "active"
+ * `NavList` is a variation of `List` that expects to wrap around a composition of `ListItem`s, `NavTree`s and `NavTreeItem`s
+ *   - `ListItem`, `NavTree` and `NavTreeItem`  border-radius circular on the right side
+ *   - `ListItem`, `NavTree` and `NavTreeItem` selected or "active"
  *     - text color is `theme.colors.key`
  *     - background color is `keySubtle`
  *   - `ListItem` at the root are indented to align properly with `Tree`(s) at the root as well
  */
 export const NavList = styled(List).attrs(({ color = 'key' }) => ({ color }))`
-  ${Accordion2Disclosure}, ${ListItemContent} {
+  ${NavTreeDisclosure}, ${ListItemContent} {
     border-bottom-right-radius: 5rem;
     border-top-right-radius: 5rem;
 
