@@ -24,7 +24,7 @@
 
  */
 
-import { CompatibleHTMLProps } from 'packages/design-tokens/src/system'
+import { CompatibleHTMLProps } from '@looker/design-tokens'
 import { useState, FocusEvent } from 'react'
 import { getNextFocusTarget, useWrapEvent } from '../../utils'
 
@@ -34,7 +34,7 @@ export const useTreeHandlers = ({
   onMouseLeave,
 }: Pick<
   CompatibleHTMLProps<HTMLElement>,
-  'onBlur' | 'onFocus' | 'onMouseEnter' | 'onMouseLeave'
+  'onFocus' | 'onMouseEnter' | 'onMouseLeave'
 >) => {
   const [hovered, setHovered] = useState(false)
 
