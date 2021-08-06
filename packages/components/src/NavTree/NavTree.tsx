@@ -28,20 +28,17 @@ import { ArrowRight } from '@styled-icons/material/ArrowRight'
 import styled from 'styled-components'
 import React, {
   cloneElement,
-  FocusEvent,
   KeyboardEvent,
   MouseEvent,
   useContext,
-  useState,
 } from 'react'
 import { ControlledOrUncontrolled } from '../Accordion2/controlTypes'
-import { partitionTreeProps } from '../Tree/utils'
+import { partitionTreeProps, useTreeHandlers } from '../Tree/utils'
 import { ListItemDetail, listItemDimensions, ListItemProps } from '../ListItem'
 import { TreeContext } from '../Tree/TreeContext'
 import { useAccordion2 } from '../Accordion2'
 import {
   createSafeRel,
-  getNextFocusTarget,
   HoverDisclosureContext,
   mergeClassNames,
   partitionAriaProps,
@@ -65,7 +62,7 @@ const NavTreeLayout = ({
   onBlur,
   onClick,
   onClose,
-  onFocus: propsOnFocus,
+  onFocus,
   onKeyUp,
   onOpen,
   onMouseEnter,
@@ -82,30 +79,17 @@ const NavTreeLayout = ({
   const [treeItemInnerProps, accordionInnerProps] =
     partitionTreeProps(restProps)
 
+  const {
+    handleItemBlur,
+    handleItemFocus,
+    handleItemMouseEnter,
+    handleItemMouseLeave,
+    hovered,
+  } = useTreeHandlers({ onFocus, onMouseEnter, onMouseLeave })
+
   const { disabled, href, icon, rel, selected, target } =
     treeItemInnerProps as Partial<ListItemProps>
   const [ariaProps] = partitionAriaProps(restProps)
-
-  const [hovered, setHovered] = useState(false)
-  const handleWrapperMouseEnter = useWrapEvent(
-    () => setHovered(true),
-    onMouseEnter
-  )
-  const handleWrapperMouseLeave = useWrapEvent(
-    () => setHovered(false),
-    onMouseLeave
-  )
-  // This is needed so that hover disclosed elements don't get lost during keyboard nav
-  const handleWrapperBlur = (event: FocusEvent<HTMLElement>) => {
-    const nextFocusTarget = getNextFocusTarget(event)
-
-    if (
-      nextFocusTarget &&
-      !event.currentTarget.contains(nextFocusTarget as Node)
-    ) {
-      setHovered(false)
-    }
-  }
 
   const treeContext = useContext(TreeContext)
 
@@ -143,7 +127,7 @@ const NavTreeLayout = ({
 
   const {
     contentDomProps,
-    domProps: { onFocus, ...restDomProps },
+    domProps,
     disclosureProps,
     isOpen: accordionIsOpen,
   } = useAccordion2({
@@ -161,7 +145,6 @@ const NavTreeLayout = ({
     indicatorPosition: 'left',
     label: inside,
     onBlur,
-    onFocus: useWrapEvent(() => setHovered(true), propsOnFocus),
     tabIndex: -1,
     ...accordionProps,
   })
@@ -218,7 +201,7 @@ const NavTreeLayout = ({
          * into useAccordion2 and receive them via disclosureProps, so instead we directly assign them here
          */
         onClick={handleContentClick}
-        onFocus={onFocus}
+        onFocus={handleItemFocus}
         onKeyUp={handleContentKeyUp}
         rel={createSafeRel(rel, target)}
         role="treeitem"
@@ -241,16 +224,16 @@ const NavTreeLayout = ({
         }}
       >
         <div
-          {...restDomProps}
-          className={mergeClassNames([restDomProps.className, className])}
+          {...domProps}
+          className={mergeClassNames([domProps.className, className])}
         >
           {!partialRender && (
             <NavTreeDisclosure
               as="li"
               depth={depth}
-              onBlur={handleWrapperBlur}
-              onMouseEnter={handleWrapperMouseEnter}
-              onMouseLeave={handleWrapperMouseLeave}
+              onBlur={handleItemBlur}
+              onMouseEnter={handleItemMouseEnter}
+              onMouseLeave={handleItemMouseLeave}
               {...statefulProps}
             >
               {insideContent}

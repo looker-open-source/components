@@ -24,10 +24,26 @@
 
  */
 
-export * from './generateBorderRadius'
-export * from './generateIndent'
-export * from './generateTreeBorder'
-export * from './getNextTreeFocus'
-export * from './indicatorDefaults'
-export * from './partitionTreeProps'
-export * from './useTreeHandlers'
+import { treeItemInnerPropKeys } from '../types'
+
+export const partitionTreeProps = (props: Record<string, any>) => {
+  const treeItemInnerProps = {}
+  const accordionInnerProps = {}
+  Object.entries(props).forEach((prop) => {
+    const [propKey, propValue] = prop
+    /**
+     * treeItemInnerPropKeys const assertion doesn't like checking against a string type;
+     * using "as ReadonlyArray<string>" to make the types happy
+     */
+    if (
+      props &&
+      (treeItemInnerPropKeys as ReadonlyArray<string>).includes(propKey)
+    ) {
+      treeItemInnerProps[propKey] = propValue
+    } else {
+      accordionInnerProps[propKey] = propValue
+    }
+  })
+
+  return [treeItemInnerProps, accordionInnerProps]
+}
