@@ -43,10 +43,11 @@ import { createListItemPartitions } from '../ListItem/utils'
 import { TreeContext } from './TreeContext'
 import { generateTreeBorder, TreeBorderProps, indicatorDefaults } from './utils'
 import { WindowedTreeContext } from './WindowedTreeNode'
-import { treeItemInnerPropKeys, TreeProps } from './types'
+import { TreeProps } from './types'
 import { TreeItem } from './TreeItem'
 import { TreeItemContent } from './TreeItemContent'
 import { TreeItemLabel } from './TreeItemLabel'
+import { partitionTreeProps } from './utils/partitionTreeProps'
 
 /**
  * TODO: When labelToggle is introduced the aria-* attributes should land on the nested ListItem's
@@ -73,23 +74,8 @@ const TreeLayout = ({
   toggleOpen: propsToggleOpen,
   ...restProps
 }: TreeProps) => {
-  const treeItemInnerProps = {}
-  const accordionInnerProps = {}
-  Object.entries(restProps).forEach((prop) => {
-    const [propKey, propValue] = prop
-    /**
-     * treeItemInnerPropKeys const assertion doesn't like checking against a string type;
-     * using "as ReadonlyArray<string>" to make the types happy
-     */
-    if (
-      restProps &&
-      (treeItemInnerPropKeys as ReadonlyArray<string>).includes(propKey)
-    ) {
-      treeItemInnerProps[propKey] = propValue
-    } else {
-      accordionInnerProps[propKey] = propValue
-    }
-  })
+  const [treeItemInnerProps, accordionInnerProps] =
+    partitionTreeProps(restProps)
 
   const {
     color: propsColor,

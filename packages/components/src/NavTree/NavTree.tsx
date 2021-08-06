@@ -35,7 +35,7 @@ import React, {
   useState,
 } from 'react'
 import { ControlledOrUncontrolled } from '../Accordion2/controlTypes'
-import { treeItemInnerPropKeys } from '../Tree'
+import { partitionTreeProps } from '../Tree/utils'
 import { ListItemDetail, listItemDimensions, ListItemProps } from '../ListItem'
 import { TreeContext } from '../Tree/TreeContext'
 import { useAccordion2 } from '../Accordion2'
@@ -79,23 +79,8 @@ const NavTreeLayout = ({
    */
   const isIndicatorToggleOnly = !!restProps.href
 
-  const treeItemInnerProps = {}
-  const accordionInnerProps = {}
-  Object.entries(restProps).forEach((prop) => {
-    const [propKey, propValue] = prop
-    /**
-     * treeItemInnerPropKeys const assertion doesn't like checking against a string type;
-     * using "as ReadonlyArray<string>" to make the types happy
-     */
-    if (
-      restProps &&
-      (treeItemInnerPropKeys as ReadonlyArray<string>).includes(propKey)
-    ) {
-      treeItemInnerProps[propKey] = propValue
-    } else {
-      accordionInnerProps[propKey] = propValue
-    }
-  })
+  const [treeItemInnerProps, accordionInnerProps] =
+    partitionTreeProps(restProps)
 
   const { disabled, href, icon, rel, selected, target } =
     treeItemInnerProps as Partial<ListItemProps>
