@@ -144,6 +144,7 @@ const NavTreeLayout = ({
     ...treeItemInnerProps,
     children: label,
     icon,
+    truncate: true,
   })
   let accordionProps: ControlledOrUncontrolled = {
     defaultOpen,
