@@ -109,7 +109,7 @@ type UseTooltipCallbacks = Required<
 export type UseTooltipResponseDom = UseTooltipCallbacks &
   Pick<CompatibleHTMLProps<HTMLElement>, 'aria-describedby' | 'className'> & {
     /**
-     * @deprecated returns a no-op function, to be removed soon
+     * @deprecated returns a no-op function, will be removed in 3.x release
      */
     ref: Ref<any>
   }

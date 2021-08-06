@@ -27,7 +27,9 @@
 import React, {
   cloneElement,
   forwardRef,
+  ForwardRefExoticComponent,
   isValidElement,
+  PropsWithoutRef,
   ReactNode,
   Ref,
 } from 'react'
@@ -44,7 +46,16 @@ function isRenderProp(
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 const noop = () => {}
 
-export const Tooltip = forwardRef(
+type RefAttributes = {
+  /**
+   * @deprecated not actually forwarded, will be removed in 3.x release
+   */
+  ref: Ref<any>
+}
+
+export const Tooltip: ForwardRefExoticComponent<
+  PropsWithoutRef<TooltipProps> & RefAttributes
+> = forwardRef(
   (
     {
       // Props from Popover or Menu
@@ -57,9 +68,7 @@ export const Tooltip = forwardRef(
       children,
       ...props
     }: TooltipProps,
-
-    // ref from Popover
-    forwardedRef: Ref<any>
+    _: Ref<any>
   ) => {
     const { domProps, tooltip } = useTooltip({
       // ariaExpanded=true indicates an open Popover – disable the tooltip
@@ -98,7 +107,6 @@ export const Tooltip = forwardRef(
         'aria-haspopup': ariaHaspopup,
         // Tooltip
         className: mergeClassNames([className, children.props.className]),
-        ref: forwardedRef,
       })
     } else if (isRenderProp(children)) {
       target = children(domProps)
