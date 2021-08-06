@@ -71,14 +71,12 @@ const IndentOverrideTreeItem = styled(TreeItem).withConfig<
 `
 
 export const NavTreeItem = styled((props: NavTreeItemProps) => {
-  const { density: contextDensity, depth } = useContext(TreeContext)
-  const density = props.density || contextDensity
-  const { iconGap, px } = listItemDimensions(density)
-  const { indicatorGap } = accordionDimensions(density)
+  const { depth } = useContext(TreeContext)
+  const { iconGap, px } = listItemDimensions()
+  const { indicatorGap } = accordionDimensions()
 
   return (
     <IndentOverrideTreeItem
-      density={density}
       depth={depth}
       iconGap={iconGap}
       indicatorGap={indicatorGap}

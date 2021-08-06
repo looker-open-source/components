@@ -34,7 +34,7 @@ import {
   ListItemDetail,
   ListItemIcon,
 } from '../ListItem'
-import { NavTreeDisclosure } from '../NavTree'
+import { NavTreeDisclosure } from '../NavTree/NavTreeDisclosure'
 
 /**
  * `NavList` is a variation of `List` that expects to wrap around a composition of `ListItem`s, `NavTree`s and `NavTreeItem`s
