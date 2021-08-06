@@ -79,13 +79,11 @@ const NavTreeLayout = ({
   const [treeItemInnerProps, accordionInnerProps] =
     partitionTreeProps(restProps)
 
-  const {
-    handleItemBlur,
-    handleItemFocus,
-    handleItemMouseEnter,
-    handleItemMouseLeave,
-    hovered,
-  } = useTreeHandlers({ onFocus, onMouseEnter, onMouseLeave })
+  const { hovered, contentHandlers, wrapperHandlers } = useTreeHandlers({
+    onFocus,
+    onMouseEnter,
+    onMouseLeave,
+  })
 
   const { disabled, href, icon, rel, selected, target } =
     treeItemInnerProps as Partial<ListItemProps>
@@ -187,7 +185,7 @@ const NavTreeLayout = ({
     selected,
   }
 
-  const insideContent = (
+  const content = (
     <>
       {isIndicatorToggleOnly && renderedIndicator}
       <NavTreeItemContent
@@ -201,7 +199,7 @@ const NavTreeLayout = ({
          * into useAccordion2 and receive them via disclosureProps, so instead we directly assign them here
          */
         onClick={handleContentClick}
-        onFocus={handleItemFocus}
+        {...contentHandlers}
         onKeyUp={handleContentKeyUp}
         rel={createSafeRel(rel, target)}
         role="treeitem"
@@ -231,12 +229,10 @@ const NavTreeLayout = ({
             <NavTreeDisclosure
               as="li"
               depth={depth}
-              onBlur={handleItemBlur}
-              onMouseEnter={handleItemMouseEnter}
-              onMouseLeave={handleItemMouseLeave}
+              {...wrapperHandlers}
               {...statefulProps}
             >
-              {insideContent}
+              {content}
               {outside}
             </NavTreeDisclosure>
           )}

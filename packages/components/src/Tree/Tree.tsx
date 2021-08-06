@@ -80,13 +80,11 @@ const TreeLayout = ({
   const [treeItemInnerProps, accordionInnerProps] =
     partitionTreeProps(restProps)
 
-  const {
-    handleItemBlur,
-    handleItemFocus,
-    handleItemMouseEnter,
-    handleItemMouseLeave,
-    hovered,
-  } = useTreeHandlers({ onFocus, onMouseEnter, onMouseLeave })
+  const { hovered, contentHandlers, wrapperHandlers } = useTreeHandlers({
+    onFocus,
+    onMouseEnter,
+    onMouseLeave,
+  })
 
   const {
     color: propsColor,
@@ -188,6 +186,30 @@ const TreeLayout = ({
     selected,
   }
 
+  const content = (
+    <TreeItemContent
+      aria-selected={selected}
+      depth={depth}
+      href={href}
+      itemRole={itemRole}
+      labelBackgroundOnly={hasLabelBackgroundOnly}
+      {...contentHandlers}
+      rel={createSafeRel(rel, target)}
+      target={target}
+      {...ariaProps}
+      {...disclosureDomProps}
+      {...statefulProps}
+    >
+      {indicator}
+      {/* @TODO: Delete labelBackgroundOnly behavior once FieldItem component is completed */}
+      {hasLabelBackgroundOnly ? (
+        <TreeItemLabel {...statefulProps}>{disclosureLabel}</TreeItemLabel>
+      ) : (
+        disclosureLabel
+      )}
+    </TreeItemContent>
+  )
+
   return (
     <HoverDisclosureContext.Provider value={{ visible: hovered }}>
       <TreeContext.Provider
@@ -201,38 +223,8 @@ const TreeLayout = ({
       >
         <div {...domProps} className={`${domProps.className} ${className}`}>
           {!partialRender && (
-            <Flex
-              as="li"
-              color="text5"
-              onBlur={handleItemBlur}
-              onMouseEnter={handleItemMouseEnter}
-              onMouseLeave={handleItemMouseLeave}
-            >
-              <TreeItemContent
-                aria-selected={selected}
-                depth={depth}
-                href={href}
-                itemRole={itemRole}
-                labelBackgroundOnly={hasLabelBackgroundOnly}
-                onFocus={handleItemFocus}
-                rel={createSafeRel(rel, target)}
-                target={target}
-                {...ariaProps}
-                {...disclosureDomProps}
-                {...statefulProps}
-              >
-                {indicator}
-                {/**
-                 * @TODO: Delete labelBackgroundOnly behavior once FieldItem component is completed
-                 */}
-                {hasLabelBackgroundOnly ? (
-                  <TreeItemLabel {...statefulProps}>
-                    {disclosureLabel}
-                  </TreeItemLabel>
-                ) : (
-                  disclosureLabel
-                )}
-              </TreeItemContent>
+            <Flex as="li" color="text5" {...wrapperHandlers}>
+              {content}
               {outside}
             </Flex>
           )}

@@ -28,18 +28,16 @@ import { CompatibleHTMLProps } from '@looker/design-tokens'
 import { useState, FocusEvent } from 'react'
 import { getNextFocusTarget, useWrapEvent } from '../../utils'
 
-export const useTreeHandlers = ({
-  onFocus,
-  onMouseEnter,
-  onMouseLeave,
-}: Pick<
-  CompatibleHTMLProps<HTMLElement>,
-  'onFocus' | 'onMouseEnter' | 'onMouseLeave'
->) => {
+export const useTreeHandlers = (
+  props: Pick<
+    CompatibleHTMLProps<HTMLElement>,
+    'onFocus' | 'onMouseEnter' | 'onMouseLeave'
+  >
+) => {
   const [hovered, setHovered] = useState(false)
 
   // This is needed so that hover disclosed elements don't get lost during keyboard nav
-  const handleItemBlur = (event: FocusEvent<HTMLElement>) => {
+  const onBlur = (event: FocusEvent<HTMLElement>) => {
     const nextFocusTarget = getNextFocusTarget(event)
 
     if (
@@ -49,24 +47,22 @@ export const useTreeHandlers = ({
       setHovered(false)
     }
   }
-  const handleItemFocus = useWrapEvent(
-    useWrapEvent(() => setHovered(true), onFocus)
+  const onFocus = useWrapEvent(
+    useWrapEvent(() => setHovered(true), props.onFocus)
   )
 
-  const handleItemMouseEnter = useWrapEvent(
-    () => setHovered(true),
-    onMouseEnter
-  )
-  const handleItemMouseLeave = useWrapEvent(
-    () => setHovered(false),
-    onMouseLeave
-  )
+  const onMouseEnter = useWrapEvent(() => setHovered(true), props.onMouseEnter)
+  const onMouseLeave = useWrapEvent(() => setHovered(false), props.onMouseLeave)
 
   return {
-    handleItemBlur,
-    handleItemFocus,
-    handleItemMouseEnter,
-    handleItemMouseLeave,
+    contentHandlers: {
+      onFocus,
+    },
     hovered,
+    wrapperHandlers: {
+      onBlur,
+      onMouseEnter,
+      onMouseLeave,
+    },
   }
 }
