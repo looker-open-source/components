@@ -94,36 +94,7 @@ export type UnitSizes =
   | Unit15
   | Unit16
 
-export type SpacingSizes =
-  | SizeNone
-  | SizeXXXSmall
-  | SizeXXSmall
-  | SizeXSmall
-  | SizeSmall
-  | SizeMedium
-  | SizeLarge
-  | SizeXLarge
-  | SizeXXLarge
-  | SizeXXXLarge
-  | SizeXXXXLarge
-  | Unit0
-  | Unit05
-  | Unit1
-  | Unit2
-  | Unit3
-  | Unit4
-  | Unit5
-  | Unit6
-  | Unit7
-  | Unit8
-  | Unit9
-  | Unit10
-  | Unit11
-  | Unit12
-  | Unit13
-  | Unit14
-  | Unit15
-  | Unit16
+export type SpacingSizes = LegacySpacingSizes | UnitSizes
 
 /**
  * @deprecated Use `spacing` instead
@@ -131,8 +102,3 @@ export type SpacingSizes =
 export type LegacySpaceRamp = Record<LegacySpacingSizes, string>
 export type UnitRamp = Record<UnitSizes, string>
 export type SpaceRamp = Record<SpacingSizes, string>
-
-export const Test: Partial<SpaceRamp> = {
-  small: '12',
-  u1: 'blah',
-}
