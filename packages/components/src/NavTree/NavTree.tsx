@@ -243,8 +243,16 @@ const NavTreeLayout = ({
   )
 }
 
+/**
+ * Adds additional padding to left side of all NavTree-related elements
+ * to allow for better click targeting when NavTree composition bumps against
+ * left page edge.
+ */
+export const INDICATOR_SPACER = '8px'
+
 export const NavTree = styled(NavTreeLayout)`
   ${AccordionIndicator} {
+    padding-left: ${INDICATOR_SPACER};
     ${({ icon, theme }) =>
       !icon && `margin-right: ${theme.space[listItemDimensions().iconGap]}`}
   }
