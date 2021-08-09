@@ -30,6 +30,8 @@ import { i18nInit } from '@looker/filter-components'
 
 i18nInit()
 
-export const componentsDecorator = (storyFn: any) => (
-  <ComponentsProvider>{storyFn()}</ComponentsProvider>
+export const componentsDecorator = (Story: any) => (
+  <ComponentsProvider>
+    <Story />
+  </ComponentsProvider>
 )

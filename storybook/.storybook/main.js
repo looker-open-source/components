@@ -30,7 +30,7 @@ const excludeNodeModulesExcept = require('babel-loader-exclude-node-modules-exce
 
 const defaultPreviewHead = `
 <style>
-  .sb-show-main {
+  .sb-show-main, .sbdocs-wrapper {
     padding: 0 !important; /* stylelint-disable-line declaration-no-important */
   }
 </style>

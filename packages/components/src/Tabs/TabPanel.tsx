@@ -51,5 +51,6 @@ const TabPanelLayout: FC<TabPanelProps> = ({
   ) : null
 
 export const TabPanel = styled(TabPanelLayout)`
+  height: 100%;
   outline: none;
 `
