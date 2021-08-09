@@ -41,6 +41,17 @@ describe('InputFilters', () => {
     expect(screen.getByPlaceholderText('Filter List')).toBeInTheDocument()
   })
 
+  test('placeholder', () => {
+    renderWithTheme(
+      <InputFilters
+        onChange={() => null}
+        filters={[]}
+        placeholder="Hello world"
+      />
+    )
+    expect(screen.getByPlaceholderText('Hello world')).toBeInTheDocument()
+  })
+
   test('Displays list of filters', () => {
     renderWithTheme(<ControlledComponent />)
 
