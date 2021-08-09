@@ -33,47 +33,48 @@ import {
   TableHead,
   TableHeaderCell,
   TableRow,
+  List,
+  ListItem,
+  listItemDimensions,
 } from '@looker/components'
-import { theme } from '@looker/design-tokens'
-import styled from 'styled-components'
+import { DensityRamp } from '@looker/design-tokens'
 import { DocTable } from '../../../components'
 
-const ExampleBox = styled(Box)`
-  height: 40px;
-  width: 60px;
-`
+const DensityRow = ({ density }: { density: DensityRamp }) => (
+  <TableRow>
+    <TableDataCell>
+      <Box bg="ui2" p="small" mr="large" borderRadius="medium">
+        <Box bg="background">
+          <List density={density}>
+            <ListItem>Item 1</ListItem>
+            <ListItem>Item 2</ListItem>
+            <ListItem>Item 3</ListItem>
+          </List>
+        </Box>
+      </Box>
+    </TableDataCell>
+    <TableDataCell>{density}</TableDataCell>
+    <TableDataCell>
+      <Code fontSize="xsmall">{`<List density="${density}" />`}</Code>
+    </TableDataCell>
+    <TableDataCell>{listItemDimensions(density).height}px</TableDataCell>
+  </TableRow>
+)
 
-export const RadiusList = () => {
-  const radii = Object.entries(theme.radii)
-  return (
-    <DocTable>
-      <TableHead>
-        <TableRow>
-          <TableHeaderCell>Example</TableHeaderCell>
-          <TableHeaderCell>Rem Value</TableHeaderCell>
-          <TableHeaderCell>Reference</TableHeaderCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        {radii.map((r, index) => {
-          return (
-            <TableRow key={r[0]}>
-              <TableDataCell>
-                <ExampleBox
-                  bg="ui1"
-                  border="solid 1px"
-                  borderColor="ui3"
-                  borderRadius={r[0]}
-                />
-              </TableDataCell>
-              <TableDataCell>{r[1]}</TableDataCell>
-              <TableDataCell>
-                <Code fontSize="xsmall">theme.radii.{r[0]}</Code>
-              </TableDataCell>
-            </TableRow>
-          )
-        })}
-      </TableBody>
-    </DocTable>
-  )
-}
+export const DensityTable = () => (
+  <DocTable maxWidth="1200px">
+    <TableHead>
+      <TableRow>
+        <TableHeaderCell>Example</TableHeaderCell>
+        <TableHeaderCell>Usage</TableHeaderCell>
+        <TableHeaderCell>Density</TableHeaderCell>
+        <TableHeaderCell>Height</TableHeaderCell>
+      </TableRow>
+    </TableHead>
+    <TableBody>
+      {[1, 0, -1, -2, -3].map((d) => (
+        <DensityRow key={d} density={d} />
+      ))}
+    </TableBody>
+  </DocTable>
+)
