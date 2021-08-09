@@ -32,7 +32,15 @@ import {
 export const shouldForwardProp = createShouldForwardProp([...props])
 
 export * from './color'
-export * from './space'
+export type {
+  LegacySpaceRamp,
+  SpaceRamp,
+  SpacingSizes,
+  SpaceProps,
+  UnitRamp,
+  UnitSizes,
+} from './space'
+export { units } from './space'
 export * from './theme'
 export * from './system'
 

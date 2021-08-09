@@ -26,7 +26,7 @@
 
 import { DefaultTheme } from 'styled-components'
 import { Colors, colors } from '../color'
-import { unitsAndSpacing, SpaceRamp } from '../space'
+import { space, SpaceRamp } from '../space'
 import {
   Easings,
   FontFamilyChoices,
@@ -54,7 +54,6 @@ import {
   radii,
   sizes,
   shadows,
-  // space: UnifiedSpaceRamp,
   transitions,
 } from '../tokens'
 
@@ -86,7 +85,7 @@ export const theme: DefaultTheme = {
   radii,
   shadows,
   sizes,
-  space: unitsAndSpacing,
+  space,
   transitions,
   zIndexFloor: 1,
 }

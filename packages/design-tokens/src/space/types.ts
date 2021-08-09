@@ -37,8 +37,31 @@ import {
   SizeXXXLarge,
   SizeXXXXLarge,
 } from '../system/size'
+import {
+  Unit0,
+  Unit05,
+  Unit1,
+  Unit10,
+  Unit11,
+  Unit12,
+  Unit13,
+  Unit14,
+  Unit15,
+  Unit16,
+  Unit2,
+  Unit3,
+  Unit4,
+  Unit5,
+  Unit6,
+  Unit7,
+  Unit8,
+  Unit9,
+} from './units'
 
-export type SpacingSizes =
+/**
+ * @deprecated - Use `UnitSizes` instead
+ */
+export type LegacySpacingSizes =
   | SizeNone
   | SizeXXXSmall
   | SizeXXSmall
@@ -52,30 +75,64 @@ export type SpacingSizes =
   | SizeXXXXLarge
 
 export type UnitSizes =
-  | 'none'
-  | 'u0.5'
-  | 'u1'
-  | 'u2'
-  | 'u3'
-  | 'u4'
-  | 'u5'
-  | 'u6'
-  | 'u7'
-  | 'u8'
-  | 'u9'
-  | 'u10'
-  | 'u11'
-  | 'u12'
-  | 'u13'
-  | 'u14'
-  | 'u15'
-  | 'u16'
+  | Unit0
+  | Unit05
+  | Unit1
+  | Unit2
+  | Unit3
+  | Unit4
+  | Unit5
+  | Unit6
+  | Unit7
+  | Unit8
+  | Unit9
+  | Unit10
+  | Unit11
+  | Unit12
+  | Unit13
+  | Unit14
+  | Unit15
+  | Unit16
+
+export type SpacingSizes =
+  | SizeNone
+  | SizeXXXSmall
+  | SizeXXSmall
+  | SizeXSmall
+  | SizeSmall
+  | SizeMedium
+  | SizeLarge
+  | SizeXLarge
+  | SizeXXLarge
+  | SizeXXXLarge
+  | SizeXXXXLarge
+  | Unit0
+  | Unit05
+  | Unit1
+  | Unit2
+  | Unit3
+  | Unit4
+  | Unit5
+  | Unit6
+  | Unit7
+  | Unit8
+  | Unit9
+  | Unit10
+  | Unit11
+  | Unit12
+  | Unit13
+  | Unit14
+  | Unit15
+  | Unit16
 
 /**
  * @deprecated Use `spacing` instead
  */
-export type ClassicSpaceRamp = Record<SpacingSizes, string>
+export type LegacySpaceRamp = Record<LegacySpacingSizes, string>
 export type UnitRamp = Record<UnitSizes, string>
-export type SpaceRamp = ClassicSpaceRamp & UnitRamp
+export type SpaceRamp = Record<SpacingSizes, string>
 
-export type { SpaceProps } from 'styled-system'
+export const Test: Partial<SpaceRamp> = {
+  small: '12',
+  u1: 'blah',
+}
