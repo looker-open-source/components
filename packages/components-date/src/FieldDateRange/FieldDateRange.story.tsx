@@ -26,6 +26,7 @@
 import React, { useState } from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import { FieldSelect, Paragraph } from '@looker/components'
+import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
 import { DateFormat } from '../DateFormat'
 import { Locales } from '../utils/i18n'
 import { FieldDateRange, FieldInputDateRangeProps } from './FieldDateRange'
@@ -36,8 +37,9 @@ interface DateRange {
 }
 
 export default {
+  argTypes,
   component: FieldDateRange,
-  title: 'FieldDateRange',
+  title: 'Date / FieldDateRange',
 }
 
 const Template: Story<FieldInputDateRangeProps> = (args) => (

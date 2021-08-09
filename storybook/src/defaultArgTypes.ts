@@ -24,46 +24,17 @@
 
  */
 
-import { Grid } from '@looker/components'
-import React from 'react'
-import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
-import { Editor, EditorProps } from './Editor'
-
-export const ThemeEditor = (props: EditorProps) => <Editor {...props} />
-
-ThemeEditor.parameters = {
-  storyshots: { disable: true },
-}
-
-export const CompareThemes = () => (
-  <Grid m="xlarge" gap="large" columns={4}>
-    <Editor name="Default" />
-    <Editor
-      name="Generated"
-      themeCustomizations={{
-        colors: { key: '#6C43E0' },
-      }}
-    />
-    <Editor
-      name="Customer Blue"
-      themeCustomizations={{
-        colors: { key: '#116DFF' },
-      }}
-    />
-    <Editor
-      name="THUNDER Salmon"
-      themeCustomizations={{
-        colors: { background: '#000000', key: '#ff3ca0', text: '#FFFFFF' },
-      }}
-    />
-  </Grid>
-)
-
-CompareThemes.parameters = {
-  storyshots: { disable: true },
-}
-
-export default {
-  argTypes,
-  title: 'Theme Editor / Theme',
+export const defaultArgTypes = {
+  as: {
+    table: { disable: true },
+  },
+  forwardedAs: {
+    table: { disable: true },
+  },
+  ref: {
+    table: { disable: true },
+  },
+  theme: {
+    table: { disable: true },
+  },
 }

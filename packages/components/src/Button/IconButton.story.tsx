@@ -28,10 +28,12 @@ import { Page } from 'puppeteer'
 import React from 'react'
 import { Add } from '@styled-icons/material/Add'
 import { Story } from '@storybook/react/types-6-0'
+import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
 import { IconButton } from './IconButton'
 import { IconButtonProps } from './iconButtonTypes'
 
 export default {
+  argTypes,
   component: IconButton,
   title: 'IconButton',
 }

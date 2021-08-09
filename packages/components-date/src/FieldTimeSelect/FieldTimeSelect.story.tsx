@@ -26,11 +26,13 @@
 import React, { useState } from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import { ButtonToggle, Fieldset } from '@looker/components'
+import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
 import { FieldTimeSelect, FieldTimeSelectProps } from './'
 
 export default {
+  argTypes,
   component: FieldTimeSelect,
-  title: 'FieldTimeSelect',
+  title: 'Date / FieldTimeSelect',
 }
 
 const Template: Story<FieldTimeSelectProps> = (args) => (

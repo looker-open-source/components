@@ -37,13 +37,15 @@ import {
   Popover,
   PopoverContent,
 } from '@looker/components'
+import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
 import { Locales, LocaleCodes } from '../utils/i18n'
 import { DateFormat } from '../DateFormat'
 import { FieldDate, FieldDateProps } from './FieldDate'
 
 export default {
+  argTypes,
   component: FieldDate,
-  title: 'FieldDate',
+  title: `${base}/FieldDate`,
 }
 
 const Template: Story<FieldDateProps> = (args) => <FieldDate {...args} />
