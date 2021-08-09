@@ -37,6 +37,12 @@ export interface SpanProps
     TextTransformProps,
     Omit<CompatibleHTMLProps<HTMLSpanElement>, 'wrap'> {}
 
+/**
+ * Outputs a `span` HTML element with specified props.
+ *
+ * NOTE: Component will inherit all styling from the parent DOM element unless otherwise
+ * specified. `line-height` will match the `font-size` if expliclity specified.
+ */
 export const Span = styled(TextBase).attrs<SpanProps>(
   ({ fontSize, lineHeight }) => ({
     lineHeight: lineHeight || fontSize,
