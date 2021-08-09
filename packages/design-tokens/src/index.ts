@@ -32,6 +32,7 @@ import {
 export const shouldForwardProp = createShouldForwardProp([...props])
 
 export * from './color'
+export * from './space'
 export * from './theme'
 export * from './system'
 

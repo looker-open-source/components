@@ -36,7 +36,7 @@ import {
   SizeXXLarge,
   SizeXXXLarge,
   SizeXXXXLarge,
-} from './size'
+} from '../system/size'
 
 export type SpacingSizes =
   | SizeNone
@@ -51,28 +51,31 @@ export type SpacingSizes =
   | SizeXXXLarge
   | SizeXXXXLarge
 
-export type SpacingValues =
+export type UnitSizes =
   | 'none'
-  | 'size0.5'
-  | 'size1'
-  | 'size2'
-  | 'size3'
-  | 'size4'
-  | 'size5'
-  | 'size6'
-  | 'size7'
-  | 'size8'
-  | 'size9'
-  | 'size10'
-  | 'size11'
-  | 'size12'
-  | 'size13'
-  | 'size14'
-  | 'size15'
-  | 'size16'
+  | 'u0.5'
+  | 'u1'
+  | 'u2'
+  | 'u3'
+  | 'u4'
+  | 'u5'
+  | 'u6'
+  | 'u7'
+  | 'u8'
+  | 'u9'
+  | 'u10'
+  | 'u11'
+  | 'u12'
+  | 'u13'
+  | 'u14'
+  | 'u15'
+  | 'u16'
 
-export type SpaceRamp = Record<SpacingSizes, string>
-
-export type SpacingRamp = Record<SpacingValues, string>
+/**
+ * @deprecated Use `spacing` instead
+ */
+export type ClassicSpaceRamp = Record<SpacingSizes, string>
+export type UnitRamp = Record<UnitSizes, string>
+export type SpaceRamp = ClassicSpaceRamp & UnitRamp
 
 export type { SpaceProps } from 'styled-system'

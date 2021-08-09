@@ -24,43 +24,83 @@
 
  */
 
-import { SpaceRamp, SpacingRamp } from '../system'
+import { ClassicSpaceRamp, SpaceRamp, UnitRamp } from './types'
+export { SpaceRamp, UnitRamp } from './types'
+
+/* eslint-disable sort-keys-fix/sort-keys-fix */
 
 /**
- * @deprecated Use `spacing` instead
+ * @deprecated Use `unit` instead
  */
-/* eslint-disable sort-keys-fix/sort-keys-fix */
-export const space: SpaceRamp = {
+const spacing: ClassicSpaceRamp = {
+  /**
+   * @deprecated Use UnitSizes instead
+   */
   none: '0rem',
+  /**
+   * @deprecated Use UnitSizes instead
+   */
   xxxsmall: '0.125rem',
+  /**
+   * @deprecated Use UnitSizes instead
+   */
   xxsmall: '0.25rem',
+  /**
+   * @deprecated Use UnitSizes instead
+   */
   xsmall: '0.5rem',
+  /**
+   * @deprecated Use UnitSizes instead
+   */
   small: '0.75rem',
+  /**
+   * @deprecated Use UnitSizes instead
+   */
   medium: '1rem',
+  /**
+   * @deprecated Use UnitSizes instead
+   */
   large: '1.25rem',
+  /**
+   * @deprecated Use UnitSizes instead
+   */
   xlarge: '2rem',
+  /**
+   * @deprecated Use UnitSizes instead
+   */
   xxlarge: '2.5rem',
+  /**
+   * @deprecated Use UnitSizes instead
+   */
   xxxlarge: '3.75rem',
+  /**
+   * @deprecated Use UnitSizes instead
+   */
   xxxxlarge: '5rem',
 }
 
-export const spacing: SpacingRamp = {
+const units: UnitRamp = {
   none: '0rem',
-  'size0.5': '0.125rem',
-  size1: '0.25rem',
-  size2: '0.5rem',
-  size3: '0.75rem',
-  size4: '1rem',
-  size5: '1.25rem',
-  size6: '1.5rem',
-  size7: '1.75rem',
-  size8: '2rem',
-  size9: '2.25rem',
-  size10: '2.5rem',
-  size11: '2.75rem',
-  size12: '3rem',
-  size13: '3.25rem',
-  size14: '3.5rem',
-  size15: '3.75rem',
-  size16: '4em',
+  'u0.5': '0.125rem',
+  u1: '0.25rem',
+  u2: '0.5rem',
+  u3: '0.75rem',
+  u4: '1rem',
+  u5: '1.25rem',
+  u6: '1.5rem',
+  u7: '1.75rem',
+  u8: '2rem',
+  u9: '2.25rem',
+  u10: '2.5rem',
+  u11: '2.75rem',
+  u12: '3rem',
+  u13: '3.25rem',
+  u14: '3.5rem',
+  u15: '3.75rem',
+  u16: '4em',
+}
+
+export const unitsAndSpacing: SpaceRamp = {
+  ...spacing,
+  ...units,
 }

@@ -95,7 +95,6 @@ export { RadiusSizes, Radii } from './radii'
 export { Shadows } from './shadows'
 export * from './transitions'
 export * from './size'
-export * from './space'
 export * from './typography'
 
 // Custom Extensions
