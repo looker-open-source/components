@@ -26,6 +26,7 @@
 
 import React, { useState } from 'react'
 import { Paragraph } from '../Text'
+import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
 import { Pagination } from './Pagination'
 
 export const Basic = () => {
@@ -40,6 +41,7 @@ export const Basic = () => {
 }
 
 export default {
+  argTypes,
   component: Pagination,
   title: 'Pagination',
 }

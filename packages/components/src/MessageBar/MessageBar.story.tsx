@@ -29,6 +29,7 @@ import { Story } from '@storybook/react/types-6-0'
 import { Delete } from '@styled-icons/material/Delete'
 import { GridView } from '@styled-icons/material/GridView'
 import { Button } from '../Button'
+import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
 import { MessageBar, MessageBarProps } from './MessageBar'
 
 const Template: Story<MessageBarProps> = (args) => <MessageBar {...args} />
@@ -98,6 +99,7 @@ CustomActionsDeux.args = {
 }
 
 export default {
+  argTypes,
   component: MessageBar,
   title: 'MessageBar',
 }

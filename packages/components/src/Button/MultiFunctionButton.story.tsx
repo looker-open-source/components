@@ -28,10 +28,12 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Add } from '@styled-icons/material/Add'
 import { Check } from '@styled-icons/material/Check'
+import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
 import { MultiFunctionButton } from './MultiFunctionButton'
 import { Button, ButtonOutline, ButtonTransparent } from '.'
 
 export default {
+  argTypes,
   component: MultiFunctionButton,
   title: 'MultiFunctionButton',
 }

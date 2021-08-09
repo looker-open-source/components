@@ -37,6 +37,8 @@ import {
   ComboboxInput,
 } from '..'
 import { Button, Heading, Paragraph, Space, SpaceVertical } from '../../../..'
+
+import { defaultArgTypes as argTypes } from '../../../../../../../storybook/src/defaultArgTypes'
 export { ListLayoutDemo } from './ListLayout'
 
 const CustomIndicator: FC<OptionIndicatorProps> = ({
@@ -213,6 +215,7 @@ ControlledInputValue.parameters = {
 }
 
 export default {
+  argTypes,
   component: Combobox,
   title: 'Combobox',
 }

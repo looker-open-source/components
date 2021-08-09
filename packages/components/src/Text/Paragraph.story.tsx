@@ -26,9 +26,11 @@
 
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
+import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
 import { Paragraph, ParagraphProps } from './Paragraph'
 
 export default {
+  argTypes,
   component: Paragraph,
   title: 'Paragraph',
 }

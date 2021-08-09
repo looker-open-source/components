@@ -28,9 +28,11 @@ import { Story } from '@storybook/react/types-6-0'
 import React, { useState } from 'react'
 import { Grid, SpaceVertical } from '../../../Layout'
 import { Paragraph } from '../../../Text'
+import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
 import { FieldChips, FieldChipsProps } from './FieldChips'
 
 export default {
+  argTypes,
   component: FieldChips,
   title: 'FieldChips',
 }

@@ -26,6 +26,7 @@
 
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
+import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
 import { ButtonProps } from './types'
 import { ButtonTransparent } from './ButtonTransparent'
 
@@ -67,6 +68,7 @@ Large.args = {
 }
 
 export default {
+  argTypes,
   component: ButtonTransparent,
   title: 'ButtonTransparent',
 }

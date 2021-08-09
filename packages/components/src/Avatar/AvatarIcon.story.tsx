@@ -26,6 +26,7 @@
 
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
+import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
 import { AvatarIconProps, AvatarIcon } from './AvatarIcon'
 
 const Template: Story<AvatarIconProps> = (args) => <AvatarIcon {...args} />
@@ -36,6 +37,7 @@ Primary.args = {
 }
 
 export default {
+  argTypes,
   component: AvatarIcon,
   title: 'AvatarIcon',
 }

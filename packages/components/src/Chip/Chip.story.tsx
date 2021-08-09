@@ -28,9 +28,11 @@ import { Story } from '@storybook/react/types-6-0'
 import { Page } from 'puppeteer'
 import React, { useState } from 'react'
 import { Space } from '../Layout'
+import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
 import { Chip, ChipProps } from './Chip'
 
 export default {
+  argTypes,
   component: Chip,
   title: 'Chip',
 }

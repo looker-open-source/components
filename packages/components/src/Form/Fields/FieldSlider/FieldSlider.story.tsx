@@ -31,9 +31,11 @@ import React, {
   Dispatch,
   SetStateAction,
 } from 'react'
+import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
 import { FieldSlider, FieldSliderProps } from './FieldSlider'
 
 export default {
+  argTypes,
   component: FieldSlider,
   title: 'FieldSlider',
 }

@@ -65,9 +65,11 @@ import { Tab, TabList, TabPanel, TabPanels, Tabs } from '../Tabs'
 import { Heading, Text, Paragraph } from '../Text'
 import { Tooltip } from '../Tooltip'
 import { useToggle } from '../utils'
+import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
 import { Menu, MenuDivider, MenuItem, MenuList, MenuHeading } from '.'
 
 export default {
+  argTypes,
   component: Menu,
   title: 'Menu',
 }

@@ -27,6 +27,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Heading } from '@looker/components'
+import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
 import {
   Constitution,
   ConstitutionShort,
@@ -35,6 +36,7 @@ import { ItemsFiller } from '../../../__mocks__/ListHelper'
 import { Page, Header, Layout, Aside, Section, Footer } from '../'
 
 export default {
+  argTypes,
   component: Layout,
   title: 'Layout',
 }

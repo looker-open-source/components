@@ -32,10 +32,12 @@ import { ExpandMore } from '@styled-icons/material-rounded/ExpandMore'
 import { children, label } from '../__mocks__/accordion'
 import { Grid, SpaceVertical } from '../Layout'
 import { useToggle } from '../utils/useToggle'
+import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
 import { Accordion2 } from './Accordion2'
 import { Accordion2Props } from './types'
 
 export default {
+  argTypes,
   component: Accordion2,
   title: 'Accordion2',
 }

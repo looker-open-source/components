@@ -26,6 +26,7 @@
 
 import React from 'react'
 import { Box, Paragraph } from '../../..'
+import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
 import { DialogContent } from './DialogContent'
 
 export const Basic = () => (
@@ -44,6 +45,7 @@ export const Overflow = () => (
 )
 
 export default {
+  argTypes,
   component: DialogContent,
   title: 'DialogContent',
 }

@@ -29,6 +29,7 @@ import {
   ScrollLockContext,
   FocusTrapContext,
 } from '@looker/components-providers'
+import { defaultArgTypes as argTypes } from '../../../../../storybook/src/defaultArgTypes'
 import {
   Box,
   Button,
@@ -56,6 +57,7 @@ import { Constitution, ConstitutionShort } from '../../__mocks__/Constitution'
 export * from './OverflowExamples'
 
 export default {
+  argTypes,
   component: Popover,
   title: 'Popover',
 }

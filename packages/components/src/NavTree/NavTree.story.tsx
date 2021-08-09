@@ -27,10 +27,12 @@
 import React from 'react'
 import { Folder } from '@styled-icons/material/Folder'
 import { NavList } from '../NavList'
+import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
 import { NavTree } from './NavTree'
 import { NavTreeItem } from './NavTreeItem'
 
 export default {
+  argTypes,
   component: NavTree,
   title: 'NavTree',
 }

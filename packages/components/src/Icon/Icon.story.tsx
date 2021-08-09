@@ -35,9 +35,11 @@ import { Settings } from '@styled-icons/material/Settings'
 import { Button, IconButton } from '../Button'
 import { Space, SpaceVertical } from '../Layout'
 import { Heading } from '../Text'
+import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
 import { Icon, IconProps } from './Icon'
 
 export default {
+  argTypes,
   component: Icon,
   title: 'Icon',
 }

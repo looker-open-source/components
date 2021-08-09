@@ -30,9 +30,11 @@ import { Space, SpaceVertical } from '../../../Layout'
 import { OrderedList } from '../../../OrderedList'
 import { Paragraph } from '../../../Text'
 import { useToggle } from '../../../utils'
+import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
 import { RangeSlider } from './RangeSlider'
 
 export default {
+  argTypes,
   component: RangeSlider,
   title: 'RangeSlider',
 }

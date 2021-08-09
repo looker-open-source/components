@@ -45,7 +45,7 @@ import { FieldDate, FieldDateProps } from './FieldDate'
 export default {
   argTypes,
   component: FieldDate,
-  title: `${base}/FieldDate`,
+  title: `Date/FieldDate`,
 }
 
 const Template: Story<FieldDateProps> = (args) => <FieldDate {...args} />

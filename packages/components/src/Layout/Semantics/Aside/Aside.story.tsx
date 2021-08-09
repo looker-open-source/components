@@ -28,9 +28,11 @@ import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import styled from 'styled-components'
 import { useToggle, FieldToggleSwitch, Flex } from '@looker/components'
+import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
 import { Aside, AsideProps } from '../Aside/Aside'
 
 export default {
+  argTypes,
   component: Aside,
   title: 'Aside',
 }

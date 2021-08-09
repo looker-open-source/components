@@ -26,6 +26,7 @@
 
 import React, { useState } from 'react'
 import { Story } from '@storybook/react/types-6-0'
+import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
 import { InputChips, InputChipsProps } from './InputChips'
 
 const chipValues = ['Looker', 'Google']
@@ -99,6 +100,7 @@ ReadOnly.parameters = {
 }
 
 export default {
+  argTypes,
   component: InputChips,
   title: 'InputChips',
 }

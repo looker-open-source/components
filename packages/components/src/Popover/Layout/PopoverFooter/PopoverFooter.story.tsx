@@ -25,10 +25,12 @@
  */
 
 import React from 'react'
+import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
 import { ButtonTransparent } from '../../../Button/ButtonTransparent'
 import { PopoverFooter } from './PopoverFooter'
 
 export default {
+  argTypes,
   component: PopoverFooter,
   title: 'PopoverFooter',
 }

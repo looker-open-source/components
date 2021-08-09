@@ -31,9 +31,11 @@ import { Aside } from '../Layout'
 import { ListItem } from '../ListItem'
 import { ProgressCircular } from '../ProgressCircular'
 import { NavTree, NavTreeItem } from '../NavTree'
+import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
 import { NavList } from './NavList'
 
 export default {
+  argTypes,
   component: NavList,
   title: 'NavList',
 }

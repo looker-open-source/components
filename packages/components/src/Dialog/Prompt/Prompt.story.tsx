@@ -25,9 +25,11 @@
  */
 import React, { useState } from 'react'
 import { Button } from '../../Button'
+import { defaultArgTypes as argTypes } from '../../../../../storybook/src/defaultArgTypes'
 import { Prompt, usePrompt } from './Prompt'
 
 export default {
+  argTypes,
   component: Prompt,
   title: 'Prompt',
 }

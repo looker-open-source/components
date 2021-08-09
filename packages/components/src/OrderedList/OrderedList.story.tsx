@@ -26,9 +26,11 @@
 
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
+import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
 import { OrderedList, OrderedListProps } from '.'
 
 export default {
+  argTypes,
   component: OrderedList,
   title: 'OrderedList',
 }
