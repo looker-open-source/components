@@ -123,7 +123,7 @@ const DocumentationLayout = (props: DocQuery) => {
           </Tooltip>
         </CustomTabs>
         {storybook ? (
-          <TabPanels {...tab} pt="none">
+          <TabPanels height="100%" {...tab} pt="none">
             <TabPanel>{body}</TabPanel>
             {storybook && (
               <TabPanel>

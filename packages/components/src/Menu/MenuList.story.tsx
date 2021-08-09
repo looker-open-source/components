@@ -31,6 +31,7 @@ import { DateRange } from '@styled-icons/material-outlined/DateRange'
 import { Undo } from '@styled-icons/material-outlined/Undo'
 import React, { FC, Fragment } from 'react'
 import { Box, Grid, Space } from '../Layout'
+import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
 import { MenuHeading, MenuList, MenuItem, MenuItemProps, MenuDivider } from '.'
 
 const groups: { label?: string; items: MenuItemProps[] }[] = [
@@ -201,6 +202,7 @@ export const AdjacentDividers = () => (
 )
 
 export default {
+  argTypes,
   component: MenuList,
   title: 'MenuList',
 }

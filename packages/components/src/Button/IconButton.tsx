@@ -144,6 +144,11 @@ const outlineCSS = () => {
   `
 }
 
+/**
+ * Appears as just an `Icon` but with proper HTML semantics to produce a `button`
+ * DOM element that is properly announced to screen-readers as well as providing
+ * keyboard tooltip support.
+ */
 export const IconButton = styled(IconButtonComponent).attrs(
   ({ type = 'button', toggleColor = ICON_BUTTON_DEFAULT_COLOR }) => ({
     toggleColor,

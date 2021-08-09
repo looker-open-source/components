@@ -39,9 +39,11 @@ import { useToggle } from '../../../utils'
 import { FieldCheckbox } from '../FieldCheckbox'
 import { FieldRadio } from '../FieldRadio'
 import { FieldToggleSwitch } from '../FieldToggleSwitch'
+import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
 import { FieldText, FieldTextProps } from './FieldText'
 
 export default {
+  argTypes,
   component: FieldText,
   title: 'FieldText',
 }

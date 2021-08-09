@@ -35,6 +35,7 @@ import { Grid } from '../Layout/Grid'
 import { SpaceVertical } from '../Layout/Space/SpaceVertical'
 import { Status } from '../Status'
 import { List } from '../List'
+import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
 import { ListItem } from './ListItem'
 import { ListItemProps, ListItemRole } from './types'
 
@@ -258,6 +259,7 @@ export const RoleVariants = () => (
 )
 
 export default {
+  argTypes,
   component: ListItem,
   title: 'ListItem',
 }

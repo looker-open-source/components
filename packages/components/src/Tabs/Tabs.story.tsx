@@ -29,6 +29,7 @@ import React, { useState, FC } from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import { Button } from '../Button'
 import { Space } from '../Layout/Space'
+import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
 import { Tab, Tabs, TabList, TabListProps, TabPanel, TabPanels } from './'
 
 interface DemoProps extends TabListProps {
@@ -102,6 +103,7 @@ export const Controlled: FC = () => {
 }
 
 export default {
+  argTypes,
   component: Tabs,
   title: 'Tabs',
 }

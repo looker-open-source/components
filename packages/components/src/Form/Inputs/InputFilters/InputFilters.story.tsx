@@ -28,6 +28,7 @@ import React, { useState, FormEvent } from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import { filters } from '../../../__mocks__/filters'
 import { InputText } from '../InputText'
+import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
 import { InputFilterEditorRenderProp } from './types'
 import { InputFilters, InputFiltersProps, FieldFilter } from './'
 
@@ -111,6 +112,7 @@ CustomEditor.parameters = {
 }
 
 export default {
+  argTypes,
   component: InputFilters,
   title: 'InputFilters',
 }

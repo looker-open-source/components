@@ -38,9 +38,11 @@ import {
   FieldText,
 } from '../Fields'
 import { Form } from '../Form'
+import { defaultArgTypes as argTypes } from '../../../../../storybook/src/defaultArgTypes'
 import { Fieldset, FieldsetProps } from './Fieldset'
 
 export default {
+  argTypes,
   component: Fieldset,
   title: 'Fieldset',
 }

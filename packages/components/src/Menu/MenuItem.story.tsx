@@ -27,6 +27,7 @@
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import { PersonOutline } from '@styled-icons/material-outlined/PersonOutline'
+import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
 import { MenuItem, MenuItemProps } from './MenuItem'
 
 const MenuItemTemplate: Story<MenuItemProps> = (args) => (
@@ -97,6 +98,7 @@ export const Link = () => {
 }
 
 export default {
+  argTypes,
   component: MenuItem,
   title: 'MenuItem',
 }

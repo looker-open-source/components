@@ -37,6 +37,7 @@ import { Icon } from '../../../../Icon'
 import { SelectOptions, SelectOptionsProps } from '../SelectOptions'
 import { SelectOptionProps } from '../types'
 import { useFlatOptions } from '../utils/useFlatOptions'
+import { defaultArgTypes as argTypes } from '../../../../../../../storybook/src/defaultArgTypes'
 import { cheeseOptions, iconOptions, optionsWithGroups } from './options'
 
 interface StoryProps extends SelectOptionsProps {
@@ -208,6 +209,7 @@ NoIndicatorMulti.args = {
 }
 
 export default {
+  argTypes,
   component: SelectOptions,
   title: 'SelectOptions',
 }

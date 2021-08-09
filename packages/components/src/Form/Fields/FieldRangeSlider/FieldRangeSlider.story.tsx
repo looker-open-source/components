@@ -29,9 +29,11 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { Button, ButtonGroup, ButtonItem } from '../../../Button'
 import { Space } from '../../../Layout'
+import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
 import { FieldRangeSlider, FieldRangeSliderProps } from './FieldRangeSlider'
 
 export default {
+  argTypes,
   component: FieldRangeSlider,
   title: 'FieldRangeSlider',
 }

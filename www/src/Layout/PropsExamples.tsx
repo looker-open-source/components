@@ -24,9 +24,7 @@
 
  */
 
-import { Flex, Spinner } from '@looker/components'
-import { height, HeightProps, omitStyledProps } from '@looker/design-tokens'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { withPrefix } from 'gatsby'
 
@@ -42,38 +40,12 @@ export interface PropsExamplesProps {
   component: string
 }
 
-export const PropsExamples = ({ component }: PropsExamplesProps) => {
-  const [height, setHeight] = useState('0')
-
-  useEffect(() => {
-    // Receive the height message from the storybook docs iframe
-    const handleMessage = (e: { data: { key: string; height: number } }) => {
-      if (e.data.key === 'height') {
-        setHeight(`${e.data.height}px`)
-      }
-    }
-    window.addEventListener('message', handleMessage, false)
-    return () => {
-      window.removeEventListener('message', handleMessage, false)
-    }
-  }, [])
-
-  return (
-    <>
-      <Iframe height={height} src={storybookLink(component)} />
-      {height === '0' && (
-        <Flex alignItems="center" justifyContent="center" padding="xlarge">
-          <Spinner aria-label="Loading" />
-        </Flex>
-      )}
-    </>
+export const PropsExamples = styled(
+  ({ component, ...props }: PropsExamplesProps) => (
+    <iframe {...props} src={storybookLink(component)} />
   )
-}
-
-const Iframe = styled((props: HeightProps) => (
-  <iframe {...omitStyledProps(props)} />
-))`
-  ${height}
+)`
   border: none;
+  height: 100%;
   width: 100%;
 `

@@ -27,6 +27,7 @@
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import { Page } from 'puppeteer'
+import { defaultArgTypes } from '../../../../../storybook/src/defaultArgTypes'
 import { DialogLongContent } from '../../__mocks__/DialogLongContent'
 import { DialogMediumContent } from '../../__mocks__/DialogMediumContent'
 import { SpaceVertical } from '../../Layout/Space/SpaceVertical'
@@ -192,6 +193,7 @@ MultiFunctionButton.parameters = {
 
 export default {
   argTypes: {
+    ...defaultArgTypes,
     placement: {
       control: {
         options: dialogPlacements,

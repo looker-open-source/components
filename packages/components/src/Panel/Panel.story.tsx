@@ -34,9 +34,11 @@ import { ListItem } from '../ListItem'
 import { Aside, Layout, Page, Section, SpaceVertical } from '../Layout'
 import { Paragraph } from '../Text'
 import { TreeCollection, Tree, TreeItem } from '../Tree'
+import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
 import { Panel, Panels, PanelProps, usePanel } from './'
 
 export default {
+  argTypes,
   component: Panel,
   title: 'Panel',
 }

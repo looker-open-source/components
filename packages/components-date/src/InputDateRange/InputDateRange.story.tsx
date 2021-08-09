@@ -38,13 +38,15 @@ import {
   TabPanels,
   TabPanel,
 } from '@looker/components'
+import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
 import { VIEWPORT_MAP } from '../../../components/src/utils-storybook/viewportMap'
 import { DateFormat } from '../DateFormat'
 import { InputDateRange, InputDateRangeProps } from './InputDateRange'
 
 export default {
+  argTypes,
   component: InputDateRange,
-  title: 'InputDateRange',
+  title: 'Date / InputDateRange',
 }
 
 const Template: Story<InputDateRangeProps> = (args) => (

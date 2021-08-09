@@ -25,6 +25,7 @@
  */
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
+import { defaultArgTypes as argTypes } from '../../../../../storybook/src/defaultArgTypes'
 import { ConstitutionShort } from '../../__mocks__/Constitution'
 import { Box } from '../../Layout'
 import { DialogContent, DialogLayout, DialogLayoutProps } from '.'
@@ -83,6 +84,7 @@ export const NoPadding = () => (
 )
 
 export default {
+  argTypes,
   component: DialogLayout,
   title: 'DialogLayout',
 }

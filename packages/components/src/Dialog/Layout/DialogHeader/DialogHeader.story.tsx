@@ -26,8 +26,10 @@
 
 import React from 'react'
 import { DialogHeader } from '@looker/components'
+import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
 
 export default {
+  argTypes,
   component: DialogHeader,
   title: 'DialogHeader',
 }

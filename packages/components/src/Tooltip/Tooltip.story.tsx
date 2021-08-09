@@ -38,6 +38,7 @@ import { FieldToggleSwitch } from '../Form'
 import { Space, SpaceVertical } from '../Layout'
 import { Text } from '../Text'
 import { Popover, PopoverContent } from '../Popover'
+import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
 import { Tooltip, TooltipProps } from './'
 
 const Template: Story<TooltipProps> = (args) => (
@@ -213,6 +214,7 @@ PerformanceTest.parameters = {
 }
 
 export default {
+  argTypes,
   component: Tooltip,
   title: 'Tooltip',
 }

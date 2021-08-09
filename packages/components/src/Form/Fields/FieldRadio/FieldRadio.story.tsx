@@ -26,6 +26,7 @@
 
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
+import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
 import { FieldRadio, FieldRadioProps } from './FieldRadio'
 
 const Template: Story<FieldRadioProps> = (args) => <FieldRadio {...args} />
@@ -75,6 +76,7 @@ DetailDescriptionError.args = {
 }
 
 export default {
+  argTypes,
   component: FieldRadio,
   title: 'FieldRadio',
 }

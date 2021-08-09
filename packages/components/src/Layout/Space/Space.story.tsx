@@ -27,6 +27,7 @@
 import { Story } from '@storybook/react/types-6-0'
 import { AccountCircle } from '@styled-icons/material-outlined/AccountCircle'
 import React from 'react'
+import { defaultArgTypes as argTypes } from '../../../../../storybook/src/defaultArgTypes'
 import { Button } from '../../Button'
 import { Icon } from '../../Icon'
 import { Status } from '../../Status'
@@ -34,6 +35,7 @@ import { Paragraph } from '../../Text'
 import { Space, SpaceHelperProps } from './Space'
 
 export default {
+  argTypes,
   component: Space,
   title: 'Space',
 }

@@ -50,7 +50,7 @@
     "test": "yarn jest",
     "test:a11y": "yarn workspace storybook a11y",
     "test:image-snapshots": "yarn workspace storybook snapshots",
-    "test:image-snapshots-update": "yarn workspace storybook snapshots-update",
+    "test:image-snapshots-update": "yarn workspace storybook snapshots -u",
     "storybook": "yarn workspace storybook develop",
     "website-canary": "./config/website-canary.sh",
     "website-latest": "./config/website-latest.sh"

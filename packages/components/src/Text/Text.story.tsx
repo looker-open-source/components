@@ -26,6 +26,7 @@
 
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
+import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
 import { Text, TextProps } from './Text'
 
 const Template: Story<TextProps> = (args) => <Text {...args} />
@@ -48,6 +49,7 @@ export const LineHeight = () => (
 )
 
 export default {
+  argTypes,
   component: Text,
   title: 'Text',
 }

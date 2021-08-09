@@ -32,9 +32,11 @@ import { Page } from 'puppeteer'
 import React, { FC, useState } from 'react'
 import { Flex, Grid, Space } from '../Layout'
 import { ListItem } from '../ListItem'
+import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
 import { List, ListProps } from './List'
 
 export default {
+  argTypes,
   component: List,
   title: 'List',
 }

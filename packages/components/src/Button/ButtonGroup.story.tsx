@@ -29,12 +29,14 @@ import React, { useEffect, useState, FormEvent } from 'react'
 import { Divider } from '../Divider'
 import { Box, Space } from '../Layout'
 import { FieldToggleSwitch } from '../Form'
+import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
 import { ButtonGroupOrToggleBaseProps } from './ButtonSet'
 import { ButtonGroup } from './ButtonGroup'
 import { ButtonItem } from './ButtonItem'
 import { ButtonToggle } from './ButtonToggle'
 
 export default {
+  argTypes,
   component: ButtonGroup,
   title: 'ButtonGroup',
 }

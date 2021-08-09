@@ -26,6 +26,7 @@
 
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
+import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
 import { Span, SpanProps } from './Span'
 
 const Template: Story<SpanProps> = (args) => <Span {...args} />
@@ -72,6 +73,7 @@ TextDecoration.args = {
 }
 
 export default {
+  argTypes,
   component: Span,
   title: 'Span',
 }

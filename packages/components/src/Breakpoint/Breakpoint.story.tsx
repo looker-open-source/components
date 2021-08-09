@@ -42,9 +42,11 @@ import { Heading, Paragraph, Span } from '../Text'
 import { Grid, Box } from '../Layout'
 import { IconButton } from '../Button'
 import { InputSearch } from '../Form'
+import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
 import { Breakpoint, BreakpointProps } from './Breakpoint'
 
 export default {
+  argTypes,
   component: Breakpoint,
   title: 'Breakpoint',
 }

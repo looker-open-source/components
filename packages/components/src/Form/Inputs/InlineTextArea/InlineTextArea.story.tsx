@@ -26,9 +26,11 @@
 
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
+import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
 import { InlineTextArea, InlineTextAreaProps } from './InlineTextArea'
 
 export default {
+  argTypes,
   component: InlineTextArea,
   title: 'InlineTextArea',
 }

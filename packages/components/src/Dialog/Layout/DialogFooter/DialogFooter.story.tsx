@@ -25,9 +25,11 @@
  */
 
 import React from 'react'
+import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
 import { DialogFooter } from './DialogFooter'
 
 export default {
+  argTypes,
   component: DialogFooter,
   title: 'DialogFooter',
 }

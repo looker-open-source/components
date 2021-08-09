@@ -29,11 +29,13 @@ import { Story } from '@storybook/react/types-6-0'
 import { Select } from '../Select'
 import { Space } from '../../../Layout'
 import { Text } from '../../../Text'
+import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
 import { InputColor, InputColorProps } from './InputColor'
 
 const Template: Story<InputColorProps> = (args) => <InputColor {...args} />
 
 export default {
+  argTypes,
   component: InputColor,
   title: 'InputColor',
 }

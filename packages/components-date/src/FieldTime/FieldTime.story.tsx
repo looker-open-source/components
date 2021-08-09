@@ -28,11 +28,13 @@ import { Story } from '@storybook/react/types-6-0'
 import partial from 'lodash/partial'
 import React, { useState } from 'react'
 import { Button, Paragraph, Space, SpaceVertical } from '@looker/components'
+import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
 import { FieldTime, FieldTimeProps } from './FieldTime'
 
 export default {
+  argTypes,
   component: FieldTime,
-  title: 'FieldTime',
+  title: 'Date / FieldTime',
 }
 
 const Template: Story<FieldTimeProps> = (args) => <FieldTime {...args} />

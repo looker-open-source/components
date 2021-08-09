@@ -26,9 +26,11 @@
 
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
+import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
 import { Heading, HeadingProps } from './Heading'
 
 export default {
+  argTypes,
   component: Heading,
   title: 'Heading',
 }

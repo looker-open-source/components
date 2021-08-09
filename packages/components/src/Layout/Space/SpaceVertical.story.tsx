@@ -26,21 +26,12 @@
 
 import { Story } from '@storybook/react/types-6-0'
 import React from 'react'
+import { defaultArgTypes as argTypes } from '../../../../../storybook/src/defaultArgTypes'
 import { Button } from '../../Button'
 import { SpaceVertical, SpaceVerticalProps } from './SpaceVertical'
 
 export default {
-  argTypes: {
-    forwardedAs: {
-      disable: true,
-    },
-    ref: {
-      disable: true,
-    },
-    theme: {
-      disable: true,
-    },
-  },
+  argTypes,
   component: SpaceVertical,
   title: 'SpaceVertical',
 }

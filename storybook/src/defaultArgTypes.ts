@@ -24,26 +24,17 @@
 
  */
 
-import { Story } from '@storybook/react/types-6-0'
-import React from 'react'
-import { defaultArgTypes as argTypes } from '../../../../../storybook/src/defaultArgTypes'
-import { Label, LabelProps } from './Label'
-
-export default {
-  argTypes,
-  component: Label,
-  title: 'Label',
-}
-
-const Template: Story<LabelProps> = (args) => <Label {...args} />
-
-export const Basic = Template.bind({})
-Basic.args = { children: "It's a label!" }
-
-export const Typography = Template.bind({})
-Typography.args = {
-  ...Basic.args,
-  color: 'key',
-  fontSize: 'xlarge',
-  fontWeight: 'normal',
+export const defaultArgTypes = {
+  as: {
+    table: { disable: true },
+  },
+  forwardedAs: {
+    table: { disable: true },
+  },
+  ref: {
+    table: { disable: true },
+  },
+  theme: {
+    table: { disable: true },
+  },
 }

@@ -55,6 +55,7 @@ import {
   optionsWithGroups,
 } from '../../Inputs/Select/stories/options'
 import { options1k } from '../../Inputs/Select/stories/options1k'
+import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
 import { FieldSelect, FieldSelectProps } from './FieldSelect'
 
 const Template: Story<FieldSelectProps> = (args) => <FieldSelect {...args} />
@@ -569,6 +570,7 @@ DelayUpdate.parameters = {
 }
 
 export default {
+  argTypes,
   component: FieldSelect,
   title: 'FieldSelect',
 }

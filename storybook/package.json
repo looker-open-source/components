@@ -6,20 +6,8 @@
   "scripts": {
     "develop": "start-storybook -p 3333 --host 0.0.0.0",
     "build": "build-storybook --quiet",
-
-    "storyshots-build": "export storybookBuildMode=fast && yarn build",
-    "storyshots-preview-backup": "mv .storybook/preview.js .storybook/preview.js.bu",
-    "storyshots-preview-restore": "mv .storybook/preview.js.bu .storybook/preview.js",
-
-    "presnapshots": "yarn storyshots-build; yarn storyshots-preview-backup;",
+    "presnapshots": "export storybookBuildMode=fast && yarn build",
     "snapshots": "yarn jest --config ./jest-image-snapshots.config.js",
-    "postsnapshots": "yarn storyshots-preview-restore",
-
-    "snapshots-update-only": "yarn jest -u --config ./jest-image-snapshots.config.js",
-    "presnapshots-update": "yarn storyshots-build; yarn storyshots-preview-backup;",
-    "snapshots-update": "yarn snapshots-update-only",
-    "postsnapshots-update": "yarn storyshots-preview-restore",
-
     "a11y": "yarn storyshots-task --config ./jest-a11y.config.js"
   },
   "dependencies": {

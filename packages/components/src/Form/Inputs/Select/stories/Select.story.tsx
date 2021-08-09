@@ -30,6 +30,7 @@ import { PieChart } from '@styled-icons/material/PieChart'
 import { TableChart } from '@styled-icons/material/TableChart'
 import React from 'react'
 import { Select, SelectProps } from '../Select'
+import { defaultArgTypes as argTypes } from '../../../../../../../storybook/src/defaultArgTypes'
 import { options1kGrouped } from './options1k'
 
 const Template: Story<SelectProps> = (args) => <Select {...args} />
@@ -143,6 +144,7 @@ GroupedWindowing.parameters = {
 }
 
 export default {
+  argTypes,
   component: Select,
   title: 'Select',
 }

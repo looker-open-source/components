@@ -28,6 +28,7 @@ import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import { Delete } from '@styled-icons/material/Delete'
 import { IconButton } from '../../../Button'
+import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
 import { FieldToggleSwitch, FieldToggleSwitchProps } from './FieldToggleSwitch'
 
 const Template: Story<FieldToggleSwitchProps> = (args) => (
@@ -100,6 +101,7 @@ DetailDescriptionError.args = {
 }
 
 export default {
+  argTypes,
   component: FieldToggleSwitch,
   title: 'FieldToggleSwitch',
 }

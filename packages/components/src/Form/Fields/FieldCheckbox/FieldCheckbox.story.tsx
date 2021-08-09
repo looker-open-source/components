@@ -32,6 +32,7 @@ import {
   MixedBoolean,
   useMixedStateCheckbox,
 } from '../../Inputs/Checkbox'
+import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
 import { FieldCheckbox, FieldCheckboxProps } from './FieldCheckbox'
 
 const Template: Story<FieldCheckboxProps> = (args) => (
@@ -167,6 +168,7 @@ export const MixedState = () => {
 }
 
 export default {
+  argTypes,
   component: FieldCheckbox,
   title: 'FieldCheckbox',
 }

@@ -26,6 +26,7 @@
 
 import React, { useState } from 'react'
 import { Story } from '@storybook/react/types-6-0'
+import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
 import { PageSizeProps, PageSize } from '.'
 
 const Template: Story<PageSizeProps> = (args) => <PageSize {...args} />
@@ -43,6 +44,7 @@ export const AlwaysVisible = () => {
 }
 
 export default {
+  argTypes,
   component: PageSize,
   title: 'PageSize',
 }

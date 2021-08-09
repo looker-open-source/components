@@ -28,6 +28,7 @@ import React from 'react'
 import { Alarm } from '@styled-icons/material/Alarm'
 import { Download } from '@styled-icons/material/Download'
 import { Story } from '@storybook/react/types-6-0'
+import { defaultArgTypes as argTypes } from '../../../../../storybook/src/defaultArgTypes'
 import { Tree, TreeProps, TreeCollection, TreeItem } from '..'
 import { Button } from '../../Button'
 import { Space } from '../../Layout'
@@ -46,6 +47,7 @@ export * from './LongLabels.story'
 export * from './Windowing.story'
 
 export default {
+  argTypes,
   component: Tree,
   title: 'Tree',
 }

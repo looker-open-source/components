@@ -25,9 +25,11 @@
  */
 
 import React from 'react'
+import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
 import { PopoverHeader } from './PopoverHeader'
 
 export default {
+  argTypes,
   component: PopoverHeader,
   title: 'PopoverHeader',
 }

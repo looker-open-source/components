@@ -26,9 +26,11 @@
 
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
+import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
 import { Link, LinkProps } from './Link'
 
 export default {
+  argTypes,
   component: Link,
   title: 'Link',
 }

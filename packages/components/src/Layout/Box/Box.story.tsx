@@ -29,9 +29,11 @@ import { Home } from '@styled-icons/material-outlined/Home'
 import React from 'react'
 import { VIEWPORT_MAP } from '../../utils-storybook'
 import { Icon } from '../../Icon'
+import { defaultArgTypes as argTypes } from '../../../../../storybook/src/defaultArgTypes'
 import { Box, BoxProps } from '.'
 
 export default {
+  argTypes,
   component: Box,
   title: 'Box',
 }

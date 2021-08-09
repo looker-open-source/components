@@ -27,10 +27,12 @@
 import { Story } from '@storybook/react/types-6-0'
 import { Page } from 'puppeteer'
 import React, { useState } from 'react'
+import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
 import { ButtonItem } from './ButtonItem'
 import { ButtonToggle, ButtonToggleProps } from './ButtonToggle'
 
 export default {
+  argTypes,
   component: ButtonToggle,
   title: 'ButtonToggle',
 }

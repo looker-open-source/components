@@ -26,6 +26,7 @@
 
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
+import { defaultArgTypes } from '../../../../storybook/src/defaultArgTypes'
 import { ProgressCircular, ProgressCircularProps } from './ProgressCircular'
 
 const Template: Story<ProgressCircularProps> = (args) => (
@@ -57,6 +58,7 @@ export default {
   component: ProgressCircular,
   title: 'ProgressCircular',
   argTypes: {
+    ...defaultArgTypes,
     size: {
       control: {
         type: 'select',

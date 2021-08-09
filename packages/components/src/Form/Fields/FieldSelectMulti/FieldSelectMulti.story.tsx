@@ -29,6 +29,7 @@ import React, { useMemo, useState, useEffect } from 'react'
 import { Favorite } from '@styled-icons/material/Favorite'
 import { ChevronRight } from '@styled-icons/material-rounded/ChevronRight'
 import { ExpandMore } from '@styled-icons/material-rounded/ExpandMore'
+import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
 import { Button } from '../../../Button'
 import { Dialog, DialogLayout } from '../../../Dialog'
 import { Icon } from '../../../Icon'
@@ -409,6 +410,7 @@ SelectMultiDemo.parameters = {
 }
 
 export default {
+  argTypes,
   component: FieldSelectMulti,
   title: 'FieldSelectMulti',
 }

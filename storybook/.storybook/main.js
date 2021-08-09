@@ -30,8 +30,11 @@ const excludeNodeModulesExcept = require('babel-loader-exclude-node-modules-exce
 
 const defaultPreviewHead = `
 <style>
-  .sb-show-main {
+  .sb-show-main, .sbdocs-wrapper {
     padding: 0 !important; /* stylelint-disable-line declaration-no-important */
+  }
+  .sbdocs-title {
+    display: none;
   }
 </style>
 <link rel="preconnect" href="https://fonts.gstatic.com">

@@ -27,6 +27,7 @@
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
 import { Button } from '../Button/Button'
+import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
 import { CopyToClipboard, CopyToClipboardProps } from './CopyToClipboard'
 
 const Template: Story<CopyToClipboardProps> = (args) => (
@@ -62,6 +63,7 @@ ComponentStyled.parameters = {
 }
 
 export default {
+  argTypes,
   component: CopyToClipboard,
   title: 'CopyToClipboard',
 }

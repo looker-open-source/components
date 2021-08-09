@@ -26,6 +26,7 @@
 
 import { Grid } from '@looker/components'
 import React from 'react'
+import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
 import { Editor, EditorProps } from './Editor'
 
 export const ThemeEditor = (props: EditorProps) => <Editor {...props} />
@@ -63,5 +64,6 @@ CompareThemes.parameters = {
 }
 
 export default {
-  title: 'Theme',
+  argTypes,
+  title: 'Theme Editor / Theme',
 }
