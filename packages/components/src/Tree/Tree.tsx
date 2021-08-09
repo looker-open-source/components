@@ -25,25 +25,29 @@
  */
 
 import styled, { css } from 'styled-components'
-import React, { FocusEvent, useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { useAccordion2 } from '../Accordion2'
 import { ControlledOrUncontrolled } from '../Accordion2/controlTypes'
 import { Flex } from '../Layout'
 import {
   createSafeRel,
-  getNextFocusTarget,
   HoverDisclosureContext,
   partitionAriaProps,
   undefinedCoalesce,
-  useWrapEvent,
 } from '../utils'
 import { List } from '../List'
 import { ListItemContext, ListItemProps } from '../ListItem'
 import { createListItemPartitions } from '../ListItem/utils'
 import { TreeContext } from './TreeContext'
-import { generateTreeBorder, TreeBorderProps, indicatorDefaults } from './utils'
+import {
+  generateTreeBorder,
+  TreeBorderProps,
+  indicatorDefaults,
+  partitionTreeProps,
+  useTreeHandlers,
+} from './utils'
 import { WindowedTreeContext } from './WindowedTreeNode'
-import { treeItemInnerPropKeys, TreeProps } from './types'
+import { TreeProps } from './types'
 import { TreeItem } from './TreeItem'
 import { TreeItemContent } from './TreeItemContent'
 import { TreeItemLabel } from './TreeItemLabel'
@@ -66,29 +70,20 @@ const TreeLayout = ({
   defaultOpen,
   onBlur,
   onClose,
-  onFocus: propsOnFocus,
+  onFocus,
   onOpen,
   onMouseEnter,
   onMouseLeave,
   toggleOpen: propsToggleOpen,
   ...restProps
 }: TreeProps) => {
-  const treeItemInnerProps = {}
-  const accordionInnerProps = {}
-  Object.entries(restProps).forEach((prop) => {
-    const [propKey, propValue] = prop
-    /**
-     * treeItemInnerPropKeys const assertion doesn't like checking against a string type;
-     * using "as ReadonlyArray<string>" to make the types happy
-     */
-    if (
-      restProps &&
-      (treeItemInnerPropKeys as ReadonlyArray<string>).includes(propKey)
-    ) {
-      treeItemInnerProps[propKey] = propValue
-    } else {
-      accordionInnerProps[propKey] = propValue
-    }
+  const [treeItemInnerProps, accordionInnerProps] =
+    partitionTreeProps(restProps)
+
+  const { hovered, contentHandlers, wrapperHandlers } = useTreeHandlers({
+    onFocus,
+    onMouseEnter,
+    onMouseLeave,
   })
 
   const {
@@ -102,16 +97,6 @@ const TreeLayout = ({
     target,
   } = treeItemInnerProps as Partial<ListItemProps>
   const [ariaProps] = partitionAriaProps(restProps)
-
-  const [hovered, setHovered] = useState(false)
-  const handleWrapperMouseEnter = useWrapEvent(
-    () => setHovered(true),
-    onMouseEnter
-  )
-  const handleWrapperMouseLeave = useWrapEvent(
-    () => setHovered(false),
-    onMouseLeave
-  )
 
   const listContext = useContext(ListItemContext)
   const treeContext = useContext(TreeContext)
@@ -167,7 +152,7 @@ const TreeLayout = ({
 
   const {
     contentDomProps,
-    domProps: { onFocus, ...restDomProps },
+    domProps,
     disclosureProps,
     isOpen: accordionIsOpen,
   } = useAccordion2({
@@ -183,23 +168,10 @@ const TreeLayout = ({
     indicatorPosition,
     label: inside,
     onBlur,
-    onFocus: useWrapEvent(() => setHovered(true), propsOnFocus),
     role: 'treeitem',
     tabIndex: -1,
     ...accordionProps,
   })
-
-  // This is needed so that hover disclosed elements don't get lost during keyboard nav
-  const handleWrapperBlur = (event: FocusEvent<HTMLElement>) => {
-    const nextFocusTarget = getNextFocusTarget(event)
-
-    if (
-      nextFocusTarget &&
-      !event.currentTarget.contains(nextFocusTarget as Node)
-    ) {
-      setHovered(false)
-    }
-  }
 
   const {
     indicator,
@@ -214,6 +186,30 @@ const TreeLayout = ({
     selected,
   }
 
+  const content = (
+    <TreeItemContent
+      aria-selected={selected}
+      depth={depth}
+      href={href}
+      itemRole={itemRole}
+      labelBackgroundOnly={hasLabelBackgroundOnly}
+      {...contentHandlers}
+      rel={createSafeRel(rel, target)}
+      target={target}
+      {...ariaProps}
+      {...disclosureDomProps}
+      {...statefulProps}
+    >
+      {indicator}
+      {/* @TODO: Delete labelBackgroundOnly behavior once FieldItem component is completed */}
+      {hasLabelBackgroundOnly ? (
+        <TreeItemLabel {...statefulProps}>{disclosureLabel}</TreeItemLabel>
+      ) : (
+        disclosureLabel
+      )}
+    </TreeItemContent>
+  )
+
   return (
     <HoverDisclosureContext.Provider value={{ visible: hovered }}>
       <TreeContext.Provider
@@ -225,43 +221,10 @@ const TreeLayout = ({
           labelBackgroundOnly: hasLabelBackgroundOnly,
         }}
       >
-        <div
-          {...restDomProps}
-          className={`${restDomProps.className} ${className}`}
-        >
+        <div {...domProps} className={`${domProps.className} ${className}`}>
           {!partialRender && (
-            <Flex
-              as="li"
-              color="text5"
-              onBlur={handleWrapperBlur}
-              onMouseEnter={handleWrapperMouseEnter}
-              onMouseLeave={handleWrapperMouseLeave}
-            >
-              <TreeItemContent
-                aria-selected={selected}
-                depth={depth}
-                href={href}
-                itemRole={itemRole}
-                labelBackgroundOnly={hasLabelBackgroundOnly}
-                onFocus={onFocus}
-                rel={createSafeRel(rel, target)}
-                target={target}
-                {...ariaProps}
-                {...disclosureDomProps}
-                {...statefulProps}
-              >
-                {indicator}
-                {/**
-                 * @TODO: Delete labelBackgroundOnly behavior once FieldItem component is completed
-                 */}
-                {hasLabelBackgroundOnly ? (
-                  <TreeItemLabel {...statefulProps}>
-                    {disclosureLabel}
-                  </TreeItemLabel>
-                ) : (
-                  disclosureLabel
-                )}
-              </TreeItemContent>
+            <Flex as="li" color="text5" {...wrapperHandlers}>
+              {content}
               {outside}
             </Flex>
           )}

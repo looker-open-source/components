@@ -28,20 +28,17 @@ import { ArrowRight } from '@styled-icons/material/ArrowRight'
 import styled from 'styled-components'
 import React, {
   cloneElement,
-  FocusEvent,
   KeyboardEvent,
   MouseEvent,
   useContext,
-  useState,
 } from 'react'
 import { ControlledOrUncontrolled } from '../Accordion2/controlTypes'
-import { treeItemInnerPropKeys } from '../Tree'
+import { partitionTreeProps, useTreeHandlers } from '../Tree/utils'
 import { ListItemDetail, listItemDimensions, ListItemProps } from '../ListItem'
 import { TreeContext } from '../Tree/TreeContext'
 import { useAccordion2 } from '../Accordion2'
 import {
   createSafeRel,
-  getNextFocusTarget,
   HoverDisclosureContext,
   mergeClassNames,
   partitionAriaProps,
@@ -65,7 +62,7 @@ const NavTreeLayout = ({
   onBlur,
   onClick,
   onClose,
-  onFocus: propsOnFocus,
+  onFocus,
   onKeyUp,
   onOpen,
   onMouseEnter,
@@ -79,48 +76,18 @@ const NavTreeLayout = ({
    */
   const isIndicatorToggleOnly = !!restProps.href
 
-  const treeItemInnerProps = {}
-  const accordionInnerProps = {}
-  Object.entries(restProps).forEach((prop) => {
-    const [propKey, propValue] = prop
-    /**
-     * treeItemInnerPropKeys const assertion doesn't like checking against a string type;
-     * using "as ReadonlyArray<string>" to make the types happy
-     */
-    if (
-      restProps &&
-      (treeItemInnerPropKeys as ReadonlyArray<string>).includes(propKey)
-    ) {
-      treeItemInnerProps[propKey] = propValue
-    } else {
-      accordionInnerProps[propKey] = propValue
-    }
+  const [treeItemInnerProps, accordionInnerProps] =
+    partitionTreeProps(restProps)
+
+  const { hovered, contentHandlers, wrapperHandlers } = useTreeHandlers({
+    onFocus,
+    onMouseEnter,
+    onMouseLeave,
   })
 
   const { disabled, href, icon, rel, selected, target } =
     treeItemInnerProps as Partial<ListItemProps>
   const [ariaProps] = partitionAriaProps(restProps)
-
-  const [hovered, setHovered] = useState(false)
-  const handleWrapperMouseEnter = useWrapEvent(
-    () => setHovered(true),
-    onMouseEnter
-  )
-  const handleWrapperMouseLeave = useWrapEvent(
-    () => setHovered(false),
-    onMouseLeave
-  )
-  // This is needed so that hover disclosed elements don't get lost during keyboard nav
-  const handleWrapperBlur = (event: FocusEvent<HTMLElement>) => {
-    const nextFocusTarget = getNextFocusTarget(event)
-
-    if (
-      nextFocusTarget &&
-      !event.currentTarget.contains(nextFocusTarget as Node)
-    ) {
-      setHovered(false)
-    }
-  }
 
   const treeContext = useContext(TreeContext)
 
@@ -158,7 +125,7 @@ const NavTreeLayout = ({
 
   const {
     contentDomProps,
-    domProps: { onFocus, ...restDomProps },
+    domProps,
     disclosureProps,
     isOpen: accordionIsOpen,
   } = useAccordion2({
@@ -176,7 +143,6 @@ const NavTreeLayout = ({
     indicatorPosition: 'left',
     label: inside,
     onBlur,
-    onFocus: useWrapEvent(() => setHovered(true), propsOnFocus),
     tabIndex: -1,
     ...accordionProps,
   })
@@ -219,7 +185,7 @@ const NavTreeLayout = ({
     selected,
   }
 
-  const insideContent = (
+  const content = (
     <>
       {isIndicatorToggleOnly && renderedIndicator}
       <NavTreeItemContent
@@ -233,7 +199,7 @@ const NavTreeLayout = ({
          * into useAccordion2 and receive them via disclosureProps, so instead we directly assign them here
          */
         onClick={handleContentClick}
-        onFocus={onFocus}
+        {...contentHandlers}
         onKeyUp={handleContentKeyUp}
         rel={createSafeRel(rel, target)}
         role="treeitem"
@@ -256,19 +222,17 @@ const NavTreeLayout = ({
         }}
       >
         <div
-          {...restDomProps}
-          className={mergeClassNames([restDomProps.className, className])}
+          {...domProps}
+          className={mergeClassNames([domProps.className, className])}
         >
           {!partialRender && (
             <NavTreeDisclosure
               as="li"
               depth={depth}
-              onBlur={handleWrapperBlur}
-              onMouseEnter={handleWrapperMouseEnter}
-              onMouseLeave={handleWrapperMouseLeave}
+              {...wrapperHandlers}
               {...statefulProps}
             >
-              {insideContent}
+              {content}
               {outside}
             </NavTreeDisclosure>
           )}
