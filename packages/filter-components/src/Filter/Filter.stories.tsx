@@ -25,9 +25,11 @@
  */
 import React, { useState } from 'react'
 import type { Story } from '@storybook/react/types-6-0'
-
+import { i18nInit } from '../utils/i18n'
 import type { FilterProps, FilterChangeProps } from './types/filter_props'
 import { Filter } from './Filter'
+
+i18nInit()
 
 const Template: Story<FilterProps> = (args) => {
   const [expression, setExpression] = useState(args.expression)

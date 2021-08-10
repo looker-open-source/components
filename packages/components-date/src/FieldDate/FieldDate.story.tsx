@@ -38,9 +38,11 @@ import {
   PopoverContent,
 } from '@looker/components'
 import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
-import { Locales, LocaleCodes } from '../utils/i18n'
+import { i18nInit, Locales, LocaleCodes } from '../utils/i18n'
 import { DateFormat } from '../DateFormat'
 import { FieldDate, FieldDateProps } from './FieldDate'
+
+i18nInit()
 
 export default {
   argTypes,
