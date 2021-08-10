@@ -31,6 +31,7 @@ import React, {
   ReactNode,
   Ref,
   useCallback,
+  useRef,
   useState,
 } from 'react'
 import styled from 'styled-components'
@@ -101,19 +102,31 @@ export const ButtonSetLayout = forwardRef(
     }
 
     const [isWrapping, setIsWrapping] = useState(false)
+
+    const timeoutRef = useRef<ReturnType<typeof setTimeout>>()
     const measureRef = useCallback(
       (node: HTMLElement | null) => {
         if (node) {
           const { height } = node.getBoundingClientRect()
-          const firstItem = node.childNodes[0] as HTMLElement
-          const rowHeight = firstItem
-            ? firstItem.getBoundingClientRect().height
-            : inputHeightNumber
-          if (height >= rowHeight * 2) {
-            setIsWrapping(true)
-          } else {
-            setIsWrapping(false)
+          const getIsWrapping = () => {
+            const firstItem = node.childNodes[0] as HTMLElement
+            const rowHeight = firstItem
+              ? firstItem.getBoundingClientRect().height
+              : inputHeightNumber
+            if (height >= rowHeight * 2) {
+              setIsWrapping(true)
+            } else {
+              setIsWrapping(false)
+            }
           }
+
+          if (height > 0) {
+            getIsWrapping()
+          } else {
+            timeoutRef.current = setTimeout(getIsWrapping, 10)
+          }
+        } else if (timeoutRef.current) {
+          clearTimeout(timeoutRef.current)
         }
       },
       // eslint-disable-next-line react-hooks/exhaustive-deps
