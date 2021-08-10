@@ -33,12 +33,13 @@ import {
   FieldSlider,
   FieldText,
   Grid,
+  i18nInit,
   Paragraph,
   Popover,
   PopoverContent,
 } from '@looker/components'
 import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
-import { i18nInit, Locales, LocaleCodes } from '../utils/i18n'
+import { Locales, LocaleCodes } from '../utils/i18n'
 import { DateFormat } from '../DateFormat'
 import { FieldDate, FieldDateProps } from './FieldDate'
 
