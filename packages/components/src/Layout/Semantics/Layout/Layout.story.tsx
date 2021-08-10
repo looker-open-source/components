@@ -24,15 +24,17 @@
 
  */
 
+import { Info } from '@styled-icons/material/Info'
 import React from 'react'
 import styled from 'styled-components'
-import { Heading } from '@looker/components'
 import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
 import {
   Constitution,
   ConstitutionShort,
 } from '../../../__mocks__/Constitution'
 import { ItemsFiller } from '../../../__mocks__/ListHelper'
+import { IconButton } from '../../../Button'
+import { Heading } from '../../../Text'
 import { Page, Header, Layout, Aside, Section, Footer } from '../'
 
 export default {
@@ -172,5 +174,28 @@ export const ScrollAllAreasTogetherDefault = () => (
   </Highlighter>
 )
 ScrollAllAreasTogetherDefault.parameters = {
+  storyshots: { disable: true },
+}
+
+export const WhitespaceRepro = () => (
+  <Highlighter>
+    <Page fixed>
+      <Header height="4rem" px="large">
+        I'm the header
+      </Header>
+      <Layout hasAside>
+        <Aside p="large" width="200px">
+          <ItemsFiller count={20} />
+        </Aside>
+        <Section main p="xxlarge">
+          <Heading>Page title</Heading>
+          <Constitution />
+          <IconButton icon={<Info />} label="Info" />
+        </Section>
+      </Layout>
+    </Page>
+  </Highlighter>
+)
+WhitespaceRepro.parameters = {
   storyshots: { disable: true },
 }
