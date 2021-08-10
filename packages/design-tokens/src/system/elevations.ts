@@ -24,11 +24,6 @@
 
  */
 
-export * from './breakpoints'
-export * from './easings'
-export * from './elevations'
-export * from './radii'
-export * from './shadows'
-export * from './size'
-export * from './transitions'
-export * from './typography'
+export type ElevationRamp = 'plus1' | 'plus2' | 'plus3' | 'plus4' | 'plus5'
+
+export type Elevations = { [K in ElevationRamp]: string }

@@ -24,11 +24,36 @@
 
  */
 
-export * from './breakpoints'
-export * from './easings'
-export * from './elevations'
-export * from './radii'
-export * from './shadows'
-export * from './size'
-export * from './transitions'
-export * from './typography'
+ import React from 'react'
+ import {
+    Code,
+    Flex,
+    Space,
+    Text
+ } from '@looker/components'
+import styled from 'styled-components'
+
+
+ const ElevatedBox = styled(Flex)<{level}>`
+    border-radius: ${(props) => props.theme.radii.medium};
+    box-shadow: ${(props) => props.theme.elevations[props.level]};
+    height: 125px;
+    width: 124px;
+ `
+
+ export const ElevationList = () => (
+   <Space gap="u6">
+   {["plus1", "plus2", "plus3", "plus4", "plus5"].map(e => {
+     return(
+      <ElevatedBox
+        key={e}
+        level={e}
+        alignItems="center"
+        justifyContent="center"
+      >
+        <Code fontSize="xsmall" color="text3">{e}</Code>
+      </ElevatedBox>
+    )
+   })}
+    </Space>
+)

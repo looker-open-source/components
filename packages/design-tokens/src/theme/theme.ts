@@ -29,6 +29,7 @@ import { Colors, colors } from '../color'
 import { space, SpaceRamp } from '../space'
 import {
   Easings,
+  Elevations,
   FontFamilyChoices,
   FontSizeRamp,
   FontWeightRamp,
@@ -54,6 +55,7 @@ import {
   radii,
   sizes,
   shadows,
+  elevations,
   transitions,
 } from '../tokens'
 
@@ -61,6 +63,7 @@ export interface Theme {
   breakpoints: string[]
   colors: Colors
   easings: Easings
+  elevations: Elevations
   fontSizes: FontSizeRamp
   fonts: FontFamilyChoices
   fontSources?: FontSources
@@ -78,6 +81,7 @@ export const theme: DefaultTheme = {
   breakpoints,
   colors,
   easings,
+  elevations,
   fontSizes,
   fontWeights,
   fonts: fontFamilies,

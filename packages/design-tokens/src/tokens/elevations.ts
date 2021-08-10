@@ -24,11 +24,17 @@
 
  */
 
-export * from './breakpoints'
-export * from './easings'
-export * from './elevations'
-export * from './radii'
-export * from './shadows'
-export * from './size'
-export * from './transitions'
-export * from './typography'
+import { Elevations } from '../system'
+
+export const elevations: Elevations = {
+  plus1:
+    '0px 1px 2px 0px rgba(60, 64, 67, .30),0px 1px 3px 1px rgba(60, 64, 67, .15)',
+  plus2:
+    '0px 1px 2px 0px rgba(60, 64, 67, .30),0px 2px 6px 2px rgba(60, 64, 67, .15)',
+  plus3:
+    '0px 1px 3px 0px rgba(60, 64, 67, .30),0px 4px 8px 3px rgba(60, 64, 67, .15)',
+  plus4:
+    '0px 2px 3px 0px rgba(60, 64, 67, .30),0px 6px 10px 4px rgba(60, 64, 67, .15)',
+  plus5:
+    '0px 4px 4px 0px rgba(60, 64, 67, .30),0px 8px 12px 6px rgba(60, 64, 67, .15)',
+}
