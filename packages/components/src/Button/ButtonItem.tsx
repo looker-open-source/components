@@ -98,6 +98,7 @@ const ButtonOuter = styled.button.attrs(({ type = 'button' }) => ({
 }))<ButtonItemProps & FocusVisibleProps>`
   ${focusVisibleCSSWrapper(
     ({ theme }) => css`
+      background: ${({ theme }) => theme.colors.neutralSubtle};
       box-shadow: 0 0 0.5px 1px ${theme.colors.keyFocus};
     `
   )}
@@ -122,7 +123,6 @@ export const ButtonItem = styled(ButtonLayout)`
   ${space}
 
   &:active,
-  &:focus,
   &:hover {
     background: ${({ theme }) => theme.colors.neutralSubtle};
     color: ${({ theme }) => theme.colors.text5};

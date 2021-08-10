@@ -28,7 +28,9 @@ import { Story } from '@storybook/react/types-6-0'
 import { Page } from 'puppeteer'
 import React, { useState } from 'react'
 import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
+import { Popover } from '../Popover'
 import { ButtonItem } from './ButtonItem'
+import { Button } from './Button'
 import { ButtonToggle, ButtonToggleProps } from './ButtonToggle'
 
 export default {
@@ -103,4 +105,29 @@ Options.args = {
     { value: 'Cheddar' },
     { disabled: true, value: 'Swiss' },
   ],
+}
+
+export const PopoverFocus = () => {
+  const [toggle, setToggle] = useState('Swiss')
+  return (
+    <Popover
+      content={
+        <ButtonToggle
+          margin="large"
+          value={toggle}
+          onChange={setToggle}
+          options={[
+            { label: 'Smoked Gouda', value: 'Gouda' },
+            { value: 'Cheddar' },
+            { value: 'Swiss' },
+          ]}
+        />
+      }
+    >
+      <Button>Open Popover</Button>
+    </Popover>
+  )
+}
+PopoverFocus.parameters = {
+  storyshots: { disable: true },
 }
