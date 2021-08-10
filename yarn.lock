@@ -3648,6 +3648,11 @@
     prettier "~2.2.1"
     regenerator-runtime "^0.13.7"
 
+"@storybook/testing-react@^0.0.21":
+  version "0.0.21"
+  resolved "https://registry.yarnpkg.com/@storybook/testing-react/-/testing-react-0.0.21.tgz#b6007dba9143135bf7a24cf1fe7e0c8b62c3fdbb"
+  integrity sha512-SIE1gNWhqCz0LSjwUiQb7JPgPUY3amT0EGMXdTq/qpV0gC9WR7+aBM/uInx3XstE6t4gx+H8euDT98ZKH1Twow==
+
 "@storybook/theming@6.3.0":
   version "6.3.0"
   resolved "https://registry.yarnpkg.com/@storybook/theming/-/theming-6.3.0.tgz#4b6ef023631663d8e50f1348469b9a9641244cd0"

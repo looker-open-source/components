@@ -26,39 +26,30 @@
 
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
+import { composeStories } from '@storybook/testing-react'
 import { render, screen } from '@testing-library/react'
 import { ConstitutionShort } from '../../__mocks__/Constitution'
-import { Basic, HeaderDetail, HeaderCloseButton } from './DialogLayout.story'
-import { DialogLayout, DialogLayoutProps } from './DialogLayout'
+import * as stories from './DialogLayout.story'
+import { DialogLayout } from './DialogLayout'
 
-const removeFooterSecondary = (
-  props?: Partial<DialogLayoutProps>
-): DialogLayoutProps => ({
-  children: '',
-  ...props,
-  footerSecondary: undefined,
-})
+const { Basic, HeaderDetail, HeaderCloseButton } = composeStories(stories)
 
 describe('DialogLayout', () => {
   test('Basic ', () => {
-    render(<Basic {...removeFooterSecondary(Basic.args)} />)
+    render(<Basic />)
     expect(
       screen.getByText(/We the People of the United States/)
     ).toBeInTheDocument()
   })
 
   test('Replaces the built-in `IconButton` with an arbitrary ReactNode', () => {
-    renderWithTheme(
-      <HeaderDetail {...removeFooterSecondary(HeaderDetail.args)} />
-    )
+    renderWithTheme(<HeaderDetail />)
     expect(screen.queryByText('Header text')).toBeInTheDocument()
     expect(screen.getByText('Cancel')).toBeInTheDocument()
   })
 
   test('HeaderCloseButton ', () => {
-    renderWithTheme(
-      <HeaderCloseButton {...removeFooterSecondary(HeaderCloseButton.args)} />
-    )
+    renderWithTheme(<HeaderCloseButton />)
     expect(screen.getByText('Close')).toBeInTheDocument()
   })
 
