@@ -26,6 +26,7 @@
 
 import { DefaultTheme } from 'styled-components'
 import { Colors, colors } from '../color'
+import { space, SpaceRamp } from '../space'
 import {
   Easings,
   FontFamilyChoices,
@@ -35,7 +36,6 @@ import {
   Radii,
   SizeRamp,
   Shadows,
-  SpaceRamp,
   TransitionRamp,
   FontSources,
 } from '../system'
@@ -54,7 +54,6 @@ import {
   radii,
   sizes,
   shadows,
-  space,
   transitions,
 } from '../tokens'
 

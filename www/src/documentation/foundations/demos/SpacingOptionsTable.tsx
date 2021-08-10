@@ -33,8 +33,10 @@ import {
   TableHead,
   TableHeaderCell,
   TableRow,
+  theme,
 } from '@looker/components'
 import { DocTable } from '../../../components'
+import { convertRemToPx } from '@looker/design-tokens'
 
 const spacingExamples = [
   { label: 'xxsmall', px: '4', rem: '0.25rem' },
@@ -48,7 +50,25 @@ const spacingExamples = [
   { label: 'xxxxlarge', px: '80', rem: '5rem' },
 ]
 
-const spacingLabels = ['Size', 'PX Value', 'Rem Value', 'Reference']
+const spacingLabels = ['Size', 'Theme Value', 'PX Value', 'Rem Value']
+
+const unitValues: Array<string[]> = Object.entries(theme.space).filter(
+  ([key]) => key.startsWith('u')
+)
+
+const lookupLegacyValue = (remValue) => {
+  const validSpace = spacingExamples.find((item) => item.rem === remValue)
+
+  if (validSpace) {
+    return <Code fontSize="small">{validSpace.label}</Code>
+  } else {
+    return (
+      <Text fontSize="small" color="text2">
+        ---
+      </Text>
+    )
+  }
+}
 
 export interface SpaceExample {
   label: string
@@ -59,14 +79,12 @@ export interface SpaceExample {
 const TableLabel = (label: string, key: number) => {
   return (
     <TableHeaderCell key={key}>
-      <Text fontSize="medium" fontWeight="semiBold">
-        {label}
-      </Text>
+      <Text>{label}</Text>
     </TableHeaderCell>
   )
 }
 
-const SpacingRow = (px: string, rem: string, key: number, label: string) => {
+const SpacingRow = (px: number, rem: string, key: number, label: string) => {
   const divStyle = {
     background: '#fd5ac9',
     height: `${px}px`,
@@ -79,28 +97,60 @@ const SpacingRow = (px: string, rem: string, key: number, label: string) => {
       <TableDataCell>
         <div style={divStyle} />
       </TableDataCell>
+      <TableDataCell>
+        <Code fontSize="xsmall">theme.spacing.{label}</Code>
+      </TableDataCell>
       <TableDataCell>{px}px</TableDataCell>
       <TableDataCell>{rem}</TableDataCell>
-      <TableDataCell>
-        <Code>{label}</Code>
-      </TableDataCell>
     </TableRow>
   )
 }
 
-export const SpacingOptionsTable = () => (
-  <DocTable>
-    <TableHead>
-      <TableRow>
-        {spacingLabels.map((label, i) => {
-          return TableLabel(label, i)
+export const SpacingOptionsTable = () => {
+  return (
+    <DocTable>
+      <TableHead>
+        <TableRow>
+          {spacingLabels.map((label, i) => {
+            return TableLabel(label, i)
+          })}
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {unitValues.map((size, index) => {
+          return SpacingRow(
+            convertRemToPx(parseFloat(size[1])),
+            size[1],
+            index,
+            size[0]
+          )
         })}
-      </TableRow>
-    </TableHead>
-    <TableBody>
-      {spacingExamples.map((space, i) => {
-        return SpacingRow(space.px, space.rem, i, space.label)
-      })}
-    </TableBody>
-  </DocTable>
-)
+      </TableBody>
+    </DocTable>
+  )
+}
+
+export const LegacySpaceTable = () => {
+  return (
+    <DocTable>
+      <TableHead>
+        <TableRow>
+          <TableHeaderCell>New Value</TableHeaderCell>
+          <TableHeaderCell>Legacy name</TableHeaderCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {unitValues.map((size) => {
+          return (
+            <TableRow key={`${size[0]}-legacy`}>
+              <TableDataCell>
+                <Code fontSize="small">{size[0]}</Code>
+              </TableDataCell>
+              <TableDataCell>{lookupLegacyValue(size[1])}</TableDataCell>
+            </TableRow>
+          )
+        })}
+      </TableBody>
+    </DocTable>
+  )
+}
