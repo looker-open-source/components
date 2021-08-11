@@ -43,5 +43,5 @@ export const ColorSwatches = () => {
     </Card>
   ))
 
-  return <SpaceVertical gap="xxsmall">{swatches}</SpaceVertical>
+  return <SpaceVertical gap="u1">{swatches}</SpaceVertical>
 }

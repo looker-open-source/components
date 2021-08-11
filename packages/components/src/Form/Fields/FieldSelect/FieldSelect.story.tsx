@@ -386,7 +386,7 @@ export const EmptyValue = () => {
   const options = [{ value: 'Option A' }, { value: 'Option B' }]
 
   return (
-    <Space p="large">
+    <Space p="u5">
       <FieldToggleSwitch
         label="Use empty value"
         on={value}

@@ -90,10 +90,10 @@ export const Constitution = () => (
 const Format = styled.article`
   ${Heading} {
     font-weight: ${({ theme }) => theme.fontWeights.semiBold};
-    margin-bottom: ${({ theme }) => theme.space.small};
+    margin-bottom: ${({ theme }) => theme.space.u3};
   }
 
   ${Paragraph} {
-    margin: ${({ theme }) => theme.space.small} 0;
+    margin: ${({ theme }) => theme.space.u3} 0;
   }
 `

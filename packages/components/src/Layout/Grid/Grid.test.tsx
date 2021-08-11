@@ -47,7 +47,7 @@ describe('Grid', () => {
 
   test('specified gap', () => {
     renderWithTheme(
-      <Grid data-testid="grid" gap="xlarge">
+      <Grid data-testid="grid" gap="u8">
         {content}
       </Grid>
     )

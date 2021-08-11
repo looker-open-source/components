@@ -73,7 +73,7 @@ const ChipStyle = styled.span<FocusVisibleProps & MaxWidthProps>`
   font-weight: ${({ theme }) => theme.fontWeights.semiBold};
   height: 28px;
   min-width: 44px;
-  padding: ${({ theme: { space } }) => `${space.xxsmall} ${space.xsmall}`};
+  padding: ${({ theme: { space } }) => `${space.u1} ${space.u2}`};
 
   &:hover,
   &:active,

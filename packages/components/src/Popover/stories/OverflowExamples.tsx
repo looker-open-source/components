@@ -32,7 +32,7 @@ import { EdgeOverflow } from './EdgeOverflow'
 
 export const OverflowExamples = () => {
   return (
-    <Box p="xxlarge" width="100%" position="relative" height="100%">
+    <Box p="u10" width="100%" position="relative" height="100%">
       <EdgeOverflow top={0} left={0}>
         Top Left
       </EdgeOverflow>

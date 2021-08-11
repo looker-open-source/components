@@ -158,12 +158,12 @@ const fieldLabelCSS = (inline?: boolean) =>
         height: ${inputHeight};
         justify-self: end;
         line-height: ${inputHeight};
-        padding-right: ${({ theme }) => theme.space.small};
+        padding-right: ${({ theme }) => theme.space.u3};
         text-align: right;
       `
     : css`
         line-height: ${({ theme }) => theme.lineHeights.xsmall};
-        padding-bottom: ${({ theme }) => theme.space.xxsmall};
+        padding-bottom: ${({ theme }) => theme.space.u1};
       `
 
 const inlineTemplateAreas = css`
@@ -209,7 +209,7 @@ export const Field = styled(FieldLayout)<FieldPropsInternal>`
   ${FieldDetail} {
     grid-area: detail;
     justify-self: end;
-    padding-left: ${({ theme: { space } }) => space.small};
+    padding-left: ${({ theme: { space } }) => space.u3};
 
     ${({ inline }) =>
       inline &&
@@ -219,6 +219,6 @@ export const Field = styled(FieldLayout)<FieldPropsInternal>`
   }
 
   ${ValidationMessage} {
-    margin-top: ${({ theme }) => theme.space.xsmall};
+    margin-top: ${({ theme }) => theme.space.u2};
   }
 `

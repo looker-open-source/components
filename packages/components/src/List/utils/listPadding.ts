@@ -35,7 +35,7 @@ import { Divider } from '../../Divider'
  */
 export const listPadding = css`
   > :first-child {
-    margin-top: ${({ theme }) => theme.space.xsmall};
+    margin-top: ${({ theme }) => theme.space.u2};
 
     ${Divider} {
       display: none;
@@ -43,7 +43,7 @@ export const listPadding = css`
   }
 
   > :last-child {
-    margin-bottom: ${({ theme }) => theme.space.xsmall};
+    margin-bottom: ${({ theme }) => theme.space.u2};
 
     ${Divider} {
       display: none;

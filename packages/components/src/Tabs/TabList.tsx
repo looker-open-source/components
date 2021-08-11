@@ -87,7 +87,7 @@ const defaultLayoutCSS = css`
   }
 
   ${Tab} + ${Tab} {
-    margin-left: ${(props) => props.theme.space.xlarge};
+    margin-left: ${(props) => props.theme.space.u8};
   }
 `
 
@@ -97,7 +97,7 @@ const distributeCSS = css`
   grid-auto-flow: column;
 
   ${Tab} {
-    padding: ${({ theme: { space } }) => `${space.xsmall} ${space.medium}`};
+    padding: ${({ theme: { space } }) => `${space.u2} ${space.u4}`};
   }
 `
 

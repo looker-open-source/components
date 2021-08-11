@@ -88,7 +88,7 @@ const FieldsetLayout = forwardRef(
       accordion,
       className,
       inline,
-      gap = 'medium',
+      gap = 'u4',
       legend,
       fieldsHideLabel,
       children,
@@ -197,7 +197,7 @@ const FieldsetAccordionContent = styled.div`
     `calc(${theme.sizes[accordionDimensions().indicatorSize]} + ${
       theme.space[accordionDimensions().indicatorGap]
     })`};
-  padding-top: ${({ theme }) => theme.space.medium};
+  padding-top: ${({ theme }) => theme.space.u4};
 `
 
 export const Fieldset = styled(FieldsetLayout).attrs(({ width = '100%' }) => ({

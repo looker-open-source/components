@@ -167,7 +167,7 @@ const SelectOptionGroupTitle = styled(Heading).attrs<HeadingProps>(() => ({
   py: 'xxsmall',
 }))<{ isMulti?: boolean }>`
   display: flex;
-  padding-top: ${({ theme }) => theme.space.xxsmall};
+  padding-top: ${({ theme }) => theme.space.u1};
 `
 
 export interface SelectOptionsBaseProps {
@@ -355,5 +355,5 @@ const SelectCreateOption = ({
 const EmptyListItem = styled.li`
   display: flex;
   justify-content: center;
-  padding: ${({ theme }) => `${theme.space.xlarge} ${theme.space.medium}`};
+  padding: ${({ theme }) => `${theme.space.u8} ${theme.space.u4}`};
 `

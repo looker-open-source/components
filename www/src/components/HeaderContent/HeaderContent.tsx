@@ -91,7 +91,7 @@ export const HeaderContentLayout: FC<HeaderProps> = ({
       </Space>
       <Search />
       <NavigationList>
-        <Space as="ul" gap="xlarge" pr="large">
+        <Space as="ul" gap="u8" pr="large">
           {data.allMdx.edges.map(({ node: { slug } }) => {
             return (
               <li key={slug}>

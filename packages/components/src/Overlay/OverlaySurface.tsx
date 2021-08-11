@@ -101,19 +101,19 @@ export const OverlaySurface = styled(OverlaySurfaceLayout)`
   z-index: ${({ theme: { zIndexFloor } }) => zIndexFloor || undefined};
 
   &[data-placement*='top'] {
-    padding-bottom: ${({ theme: { space } }) => space.xsmall};
+    padding-bottom: ${({ theme: { space } }) => space.u2};
   }
 
   &[data-placement*='right'] {
-    padding-left: ${({ theme: { space } }) => space.xsmall};
+    padding-left: ${({ theme: { space } }) => space.u2};
   }
 
   &[data-placement*='bottom'] {
-    padding-top: ${({ theme: { space } }) => space.xsmall};
+    padding-top: ${({ theme: { space } }) => space.u2};
   }
 
   &[data-placement*='left'] {
-    padding-right: ${({ theme: { space } }) => space.xsmall};
+    padding-right: ${({ theme: { space } }) => space.u2};
   }
 
   &:focus {

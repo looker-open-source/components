@@ -149,12 +149,12 @@ const CustomTabs = styled(Space)`
   border-bottom: 1px solid ${({ theme }) => theme.colors.ui2};
   border-top: 1px solid ${({ theme }) => theme.colors.ui2};
   display: flex;
-  margin: ${({ theme: { space } }) => `${space.small} 0 ${space.large}`};
-  min-height: ${({ theme }) => theme.space.large};
+  margin: ${({ theme: { space } }) => `${space.u3} 0 ${space.u5}`};
+  min-height: ${({ theme }) => theme.space.u5};
 
   ${TabList} {
     margin-bottom: -1px;
-    margin-top: ${({ theme }) => theme.space.xsmall};
+    margin-top: ${({ theme }) => theme.space.u2};
   }
 `
 

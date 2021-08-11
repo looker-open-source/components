@@ -87,7 +87,7 @@ const BorderExample = styled(Box)`
   border-color: ${({ theme }) => theme.colors.ui3};
   display: flex;
   justify-content: space-between;
-  padding: ${({ theme }) => theme.space.large};
+  padding: ${({ theme }) => theme.space.u5};
 
   &:not(:last-child) {
     border-bottom: none;

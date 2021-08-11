@@ -132,33 +132,33 @@ Artwork.parameters = {
 
 export const IconsInsideComponents = () => (
   <SpaceVertical>
-    <Space gap="xsmall">
+    <Space gap="u2">
       <Button size="large" iconAfter={<Refresh />}>
         Add
       </Button>
       <IconButton size="large" icon={<FilterList />} label="Filter" />
     </Space>
 
-    <Space gap="xsmall">
+    <Space gap="u2">
       <Button iconAfter={<Refresh />}>Add</Button>
       <IconButton size="medium" icon={<FilterList />} label="Filter" />
     </Space>
 
-    <Space gap="xsmall">
+    <Space gap="u2">
       <Button size="small" iconAfter={<Refresh />}>
         Add
       </Button>
       <IconButton size="small" icon={<FilterList />} label="Filter" />
     </Space>
 
-    <Space gap="xsmall">
+    <Space gap="u2">
       <Button size="xsmall" iconAfter={<Refresh />}>
         Add
       </Button>
       <IconButton size="xsmall" icon={<FilterList />} label="Filter" />
     </Space>
 
-    <Space gap="xsmall">
+    <Space gap="u2">
       <Button size="xxsmall" iconAfter={<Refresh />}>
         Add
       </Button>
@@ -173,70 +173,70 @@ IconsInsideComponents.parameters = {
 
 export const IconsPairedWithText = () => (
   <SpaceVertical>
-    <Space gap="xsmall">
+    <Space gap="u2">
       <Heading fontSize="xxsmall">
         This is to compare icons size with a Heading
       </Heading>
       <Icon size="xxxsmall" icon={<Create />} />
     </Space>
 
-    <Space gap="xsmall">
+    <Space gap="u2">
       <Heading fontSize="xsmall">
         This is to compare icons size with a Heading
       </Heading>
       <Icon size="xxxsmall" icon={<Create />} />
     </Space>
 
-    <Space gap="xsmall">
+    <Space gap="u2">
       <Heading fontSize="small">
         This is to compare icons size with a Heading
       </Heading>
       <Icon size="xxsmall" icon={<Create />} />
     </Space>
 
-    <Space gap="xsmall">
+    <Space gap="u2">
       <Heading fontSize="medium">
         This is to compare icons size with a Heading
       </Heading>
       <Icon size="xxsmall" icon={<Create />} />
     </Space>
 
-    <Space gap="xsmall">
+    <Space gap="u2">
       <Heading fontSize="large">
         This is to compare icons size with a Heading
       </Heading>
       <Icon size="xsmall" icon={<Create />} />
     </Space>
 
-    <Space gap="xsmall">
+    <Space gap="u2">
       <Heading fontSize="xlarge">
         This is to compare icons size with a Heading
       </Heading>
       <Icon size="small" icon={<Create />} />
     </Space>
 
-    <Space gap="xsmall">
+    <Space gap="u2">
       <Heading fontSize="xxlarge">
         This is to compare icons size with a Heading
       </Heading>
       <Icon size="small" icon={<Create />} />
     </Space>
 
-    <Space gap="xsmall">
+    <Space gap="u2">
       <Heading fontSize="xxxlarge">
         This is to compare icons size with a Heading
       </Heading>
       <Icon size="medium" icon={<Create />} />
     </Space>
 
-    <Space gap="xsmall">
+    <Space gap="u2">
       <Heading fontSize="xxxxlarge">
         This is to compare icons size with a Heading
       </Heading>
       <Icon size="medium" icon={<Create />} />
     </Space>
 
-    <Space gap="xsmall">
+    <Space gap="u2">
       <Heading fontSize="xxxxxlarge">
         This is to compare icons size with a Heading
       </Heading>

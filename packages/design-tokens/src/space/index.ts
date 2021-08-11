@@ -88,7 +88,7 @@ const legacySpacing: LegacySpaceRamp = {
 
 export const units: UnitRamp = {
   none: '0rem',
-  'u0.5': '0.125rem',
+  u05: '0.125rem',
   u1: '0.25rem',
   u2: '0.5rem',
   u3: '0.75rem',

@@ -114,7 +114,7 @@ const selectColumn = css<TableProps>`
             width: ${densityTarget};
           }
           &:nth-child(2) {
-            padding-left: ${({ theme }) => theme.space.xsmall};
+            padding-left: ${({ theme }) => theme.space.u2};
           }
         `
       : css`
@@ -188,7 +188,7 @@ export const Table = styled(TableLayout)`
   td,
   th {
     height: ${densityTarget}; /* acts like min-height */
-    padding: ${({ theme: { space } }) => `${space.xsmall}  ${space.medium}`};
+    padding: ${({ theme: { space } }) => `${space.u2}  ${space.u4}`};
 
     :first-child,
     :last-child {
@@ -221,7 +221,7 @@ const InterimState = styled.div`
   align-items: center;
   display: flex;
   justify-content: center;
-  padding: ${({ theme }) => theme.space.xlarge};
+  padding: ${({ theme }) => theme.space.u8};
 `
 
 export const TableScroll = styled.div`

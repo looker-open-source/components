@@ -67,7 +67,7 @@ export interface LinkProps
 
 const ExternalLinkIndicator = styled(Launch)`
   height: ${({ theme }) => theme.sizes.xxsmall};
-  margin-left: ${({ theme }) => theme.space.xxsmall};
+  margin-left: ${({ theme }) => theme.space.u1};
   width: ${({ theme }) => theme.sizes.xxsmall};
 `
 

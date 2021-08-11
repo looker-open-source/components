@@ -36,7 +36,7 @@ export const Basic = () => (
 )
 
 export const Overflow = () => (
-  <Box height="10rem" display="flex" bg="white" p="large">
+  <Box height="10rem" display="flex" bg="white" p="u5">
     <DialogContent>
       <Paragraph>Scroll down here...</Paragraph>
       <Box height="12rem" bg="rebeccapurple" />

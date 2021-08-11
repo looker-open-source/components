@@ -31,7 +31,7 @@ import { LightSaturationPreview, HueSlider } from '..'
 import { ColorPickerProps } from '../types'
 
 const ColorPickerInternal: FC<ColorPickerProps> = ({ hsv, setHsv, width }) => (
-  <SpaceVertical gap="medium" data-testid="color-picker">
+  <SpaceVertical gap="u4" data-testid="color-picker">
     <LightSaturationPreview hsv={hsv} setHsv={setHsv} width={width} />
     <HueSlider hsv={hsv} setHsv={setHsv} width={width} />
   </SpaceVertical>

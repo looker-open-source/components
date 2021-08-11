@@ -116,7 +116,7 @@ export const ButtonItem = styled(ButtonLayout)`
   height: ${inputHeight};
   justify-content: center;
   margin: 0;
-  padding: 0 ${({ theme }) => theme.space.small};
+  padding: 0 ${({ theme }) => theme.space.u3};
   transition: background ${({ theme }) => theme.transitions.quick}ms ease;
   user-select: none;
 

@@ -556,7 +556,7 @@ export const InputTime = styled(InputTimeInternal)`
   display: inline-grid;
   grid-gap: 0.15rem;
   grid-template-columns: auto auto auto auto 1fr;
-  padding: 0 ${({ theme }) => theme.space.xsmall};
+  padding: 0 ${({ theme }) => theme.space.u2};
 
   ${ErrorIcon} {
     justify-self: end;

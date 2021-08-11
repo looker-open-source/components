@@ -80,21 +80,21 @@ const FieldDetail = styled(Paragraph)`
   -ms-grid-column-span: 2;
   -ms-grid-row: 1;
   /* stylelint-enable */
-  padding-left: ${({ theme }) => theme.space.xsmall};
+  padding-left: ${({ theme }) => theme.space.u2};
 `
 
 const FieldDescription = styled(Paragraph)`
   color: ${({ theme }) => theme.colors.text2};
   font-size: ${({ theme }) => theme.fontSizes.xsmall};
   line-height: ${({ theme }) => theme.lineHeights.xsmall};
-  padding-bottom: ${({ theme }) => theme.space.xxxsmall};
-  padding-top: ${({ theme }) => theme.space.xxxsmall};
+  padding-bottom: ${({ theme }) => theme.space.u05};
+  padding-top: ${({ theme }) => theme.space.u05};
 `
 
 const InputArea = styled.div`
   grid-column: 1;
   grid-row: 1;
-  padding-right: ${({ theme: { space } }) => space.xsmall};
+  padding-right: ${({ theme: { space } }) => space.u2};
   /* stylelint-disable */
   -ms-grid-column: 1;
   -ms-grid-column-span: 1;

@@ -115,7 +115,7 @@ const HueSliderTrack = styled.div<HueSliderTrackProps>`
 
   border-radius: ${({ theme }) => theme.radii.large};
   cursor: ${({ isMouseDown }) => (isMouseDown ? 'grabbing' : 'default')};
-  height: ${({ theme }) => theme.space.small};
+  height: ${({ theme }) => theme.space.u3};
   width: ${({ width }) => width}px;
 `
 
