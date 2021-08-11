@@ -24,34 +24,25 @@
 
  */
 
-import { BlendColors } from './blends'
-import { StatefulColors } from './stateful'
-import { SpecifiableColors, TextColor } from './specifiable'
-import { DerivativeColors } from './derivative'
+import { ExtendedStatefulColor } from '@looker/design-tokens'
 
-export type Colors = SpecifiableColors &
-  DerivativeColors &
-  BlendColors &
-  StatefulColors
+export type RippleCallbacks = {
+  endBG: () => void
+  endFG: () => void
+  startBG: () => void
+  startFG: () => void
+}
 
-export type TextColors = TextColor
+export type RippleAnimationValues = {
+  rippleSize: string
+  rippleScaleRange: [number, number]
+  rippleOffset: string
+}
 
-export { coreColors, intentColors, specifiableColors } from './specifiable'
-
-export type { DerivativeColors } from './derivative'
-export type { CoreColors, IntentColors, SpecifiableColors } from './specifiable'
-export type { BlendColors } from './blends'
-export type {
-  ExtendedStatefulColor,
-  StatefulColor,
-  StatefulColors,
-  StatefulColorChoices,
-} from './stateful'
-export type { ColorProps } from 'styled-system'
-
-export type { TextColorProps } from './textColor'
-export { backgroundColor } from './backgroundColor'
-export { uiColors, textColors } from './blends'
-export { derivativeColors } from './derivative'
-export { textColor } from './textColor'
-export { specifiableTextColors } from './specifiable'
+export type RippleColorProps = {
+  /**
+   * Change the color of the ripple background and foreground
+   * @default neutral
+   */
+  color?: ExtendedStatefulColor
+}

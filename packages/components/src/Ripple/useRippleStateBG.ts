@@ -24,34 +24,32 @@
 
  */
 
-import { BlendColors } from './blends'
-import { StatefulColors } from './stateful'
-import { SpecifiableColors, TextColor } from './specifiable'
-import { DerivativeColors } from './derivative'
+import { Reducer, useCallback, useReducer } from 'react'
 
-export type Colors = SpecifiableColors &
-  DerivativeColors &
-  BlendColors &
-  StatefulColors
+export interface RippleActionBG {
+  type: 'START' | 'END'
+}
 
-export type TextColors = TextColor
+export type RippleStateBG = 'ON' | 'DOUBLE_ON' | 'OFF'
 
-export { coreColors, intentColors, specifiableColors } from './specifiable'
+const reducer: Reducer<RippleStateBG, RippleActionBG> = (state, action) => {
+  switch (action.type) {
+    case 'START':
+      return state === 'ON' ? 'DOUBLE_ON' : 'ON'
+    case 'END':
+      return state === 'DOUBLE_ON' ? 'ON' : 'OFF'
+  }
+}
 
-export type { DerivativeColors } from './derivative'
-export type { CoreColors, IntentColors, SpecifiableColors } from './specifiable'
-export type { BlendColors } from './blends'
-export type {
-  ExtendedStatefulColor,
-  StatefulColor,
-  StatefulColors,
-  StatefulColorChoices,
-} from './stateful'
-export type { ColorProps } from 'styled-system'
-
-export type { TextColorProps } from './textColor'
-export { backgroundColor } from './backgroundColor'
-export { uiColors, textColors } from './blends'
-export { derivativeColors } from './derivative'
-export { textColor } from './textColor'
-export { specifiableTextColors } from './specifiable'
+export const useRippleStateBG = () => {
+  const [state, dispatch] = useReducer(reducer, 'OFF')
+  return {
+    className: state === 'OFF' ? '' : 'bg-on',
+    end: useCallback(() => {
+      dispatch({ type: 'END' })
+    }, []),
+    start: useCallback(() => {
+      dispatch({ type: 'START' })
+    }, []),
+  }
+}
