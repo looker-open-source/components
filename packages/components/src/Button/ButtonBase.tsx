@@ -44,17 +44,12 @@ import {
 import { buttonSize, buttonIconSizeMap, buttonPadding } from './size'
 import { buttonIcon } from './icon'
 import { ButtonColorProps, ButtonProps } from './types'
-import { ToggleColorProps } from './iconButtonTypes'
 
-const buttonCSS = css<ButtonColorProps & ToggleColorProps & FocusVisibleProps>`
+const buttonCSS = css<ButtonColorProps>`
   ${reset}
   ${maxWidth}
   ${minWidth}
   ${width}
-
-  ${focusVisibleCSSWrapper(({ color, toggleColor }) =>
-    buttonShadow(toggleColor || color)
-  )}
 
   align-items: center;
   border-radius: ${({ theme }) => theme.radii.medium};
@@ -88,18 +83,21 @@ export const buttonIconSize = css<ButtonProps>`
   }
 `
 
-type ButtonLayoutProps = ButtonProps & ToggleColorProps
-type ButtonOuterProps = ButtonLayoutProps & FocusVisibleProps
-
-const ButtonOuter = styled.button
+export const ButtonOuter = styled.button
   .withConfig({ shouldForwardProp })
-  .attrs(({ color = 'key' }) => ({ color }))<ButtonOuterProps>`
+  .attrs(({ color = 'key' }) => ({ color }))<ButtonProps>`
   ${buttonCSS}
   ${({ fullWidth }) => fullWidth && `width: 100%;`}
 `
 
-const ButtonLayout = forwardRef(
-  (props: ButtonLayoutProps, ref: Ref<HTMLButtonElement>) => {
+const ButtonOuterFocusVisible = styled(ButtonOuter)<
+  ButtonProps & FocusVisibleProps
+>`
+  ${focusVisibleCSSWrapper(({ color }) => buttonShadow(color))}
+`
+
+export const ButtonBase = styled(
+  forwardRef((props: ButtonProps, ref: Ref<HTMLButtonElement>) => {
     const {
       children,
       iconBefore,
@@ -113,7 +111,7 @@ const ButtonLayout = forwardRef(
     const focusVisibleProps = useFocusVisible({ onBlur, onKeyUp })
 
     return (
-      <ButtonOuter
+      <ButtonOuterFocusVisible
         {...focusVisibleProps}
         {...restProps}
         size={size}
@@ -123,16 +121,10 @@ const ButtonLayout = forwardRef(
         {iconBefore}
         {children}
         {iconAfter}
-      </ButtonOuter>
+      </ButtonOuterFocusVisible>
     )
-  }
-)
-
-ButtonLayout.displayName = 'ButtonLayout'
-
-export const GenericButtonBase = styled(ButtonLayout)``
-
-export const ButtonBase = styled(GenericButtonBase)`
+  })
+)`
   ${buttonIcon}
   ${buttonIconSize}
 `

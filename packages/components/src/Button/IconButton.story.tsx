@@ -108,6 +108,7 @@ export const ToggleOff = Template.bind({})
 ToggleOff.args = {
   ...Basic.args,
   toggle: false,
+  toggleColor: 'calculation',
 }
 
 export const ToggleBackground = Template.bind({})
