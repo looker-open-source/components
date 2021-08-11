@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0-alpha.0](https://github.com/looker-open-source/components/compare/@looker/components@2.1.0...@looker/components@2.2.0-alpha.0) (2021-08-11)
+
+
+### Bug Fixes
+
+* **ButtonToggle:** Remove background color for focus via click ([#2715](https://github.com/looker-open-source/components/issues/2715)) ([a074edf](https://github.com/looker-open-source/components/commit/a074edf26bec883a6d8db00e78e51f0f4569d1e5))
+* **InputFilters:** Should support placeholder attribute ([#2702](https://github.com/looker-open-source/components/issues/2702)) ([10524dd](https://github.com/looker-open-source/components/commit/10524dd35c6ae65910bc196ba29330187c4811b6))
+* **Layout:** test coverege ([#2680](https://github.com/looker-open-source/components/issues/2680)) ([b1945ea](https://github.com/looker-open-source/components/commit/b1945eacc8dd59a448c4eaaf49cffa062c362f1d))
+* **Panel:** `disableAnimation` prop to disable Panel open/close animation ([#2654](https://github.com/looker-open-source/components/issues/2654)) ([b8b755e](https://github.com/looker-open-source/components/commit/b8b755e0c7970521976a1c0ab3785b7409936be9))
+* **Panel:** Avoid focusing elements underneath ([#2611](https://github.com/looker-open-source/components/issues/2611)) ([751e757](https://github.com/looker-open-source/components/commit/751e757d331ea2864cc684378c3e87995d13ee6c))
+* **Text:** Clarify behavior, mark as deprecated and recommend `Span` instead ([#2711](https://github.com/looker-open-source/components/issues/2711)) ([dea5903](https://github.com/looker-open-source/components/commit/dea59036683df4274eb3970a93c75461a6e5db48))
+* **Tooltip:** Reduce re-renders to improve performance ([#2697](https://github.com/looker-open-source/components/issues/2697)) ([74b861b](https://github.com/looker-open-source/components/commit/74b861bd6a90e882bf7803a78ef2e29f731dbd41))
+* **VisuallyHidden:** Position causing whitespace issue with Page ([#2714](https://github.com/looker-open-source/components/issues/2714)) ([2804b00](https://github.com/looker-open-source/components/commit/2804b00d962d8a7f8fdf8ca9e42d5823dcd40205))
+* Export a few private items to allow downstream consumers to leverage without breaking tree-shaking ([#2655](https://github.com/looker-open-source/components/issues/2655)) ([71a5168](https://github.com/looker-open-source/components/commit/71a51689f7c8afc30c961b9b382d2771ab857247))
+
+
+### Features
+
+* Leverage new theme.elevations instead of theme.shadows ([#2723](https://github.com/looker-open-source/components/issues/2723)) ([33eff32](https://github.com/looker-open-source/components/commit/33eff32a08892e3cc60e725a3604b500bf631672))
+* Leverage uX theme.space unit notation within library ([#2724](https://github.com/looker-open-source/components/issues/2724)) ([e1bcefb](https://github.com/looker-open-source/components/commit/e1bcefbc5ceb0bc7129a1a86a16f432210c0f15a))
+* **NavTree:** Added indicator toggle only behavior ([#2676](https://github.com/looker-open-source/components/issues/2676)) ([25437ce](https://github.com/looker-open-source/components/commit/25437ce0f24dc6c8c7a70ff4786b0ce7a0eaf9d4)), closes [#2681](https://github.com/looker-open-source/components/issues/2681) [#2696](https://github.com/looker-open-source/components/issues/2696) [#2698](https://github.com/looker-open-source/components/issues/2698)
+* **NavTree:** Added left padding to indicator icon to improve click targeting ([#2712](https://github.com/looker-open-source/components/issues/2712)) ([b98ce02](https://github.com/looker-open-source/components/commit/b98ce0266d646a926f1815c08fb5de071fee8373)), closes [#2713](https://github.com/looker-open-source/components/issues/2713)
+
+
+
+
+
 # [2.1.0](https://github.com/looker-open-source/components/compare/@looker/components@2.1.0-alpha.2...@looker/components@2.1.0) (2021-07-26)
 
 

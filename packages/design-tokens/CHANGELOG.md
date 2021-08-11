@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0-alpha.0](https://github.com/looker-open-source/components/compare/@looker/design-tokens@2.1.0...@looker/design-tokens@2.2.0-alpha.0) (2021-08-11)
+
+
+### Features
+
+* Add new elevation values ([#2716](https://github.com/looker-open-source/components/issues/2716)) ([7ee921e](https://github.com/looker-open-source/components/commit/7ee921ec520da10972224807e63374e28395d01b))
+* Leverage new theme.elevations instead of theme.shadows ([#2723](https://github.com/looker-open-source/components/issues/2723)) ([33eff32](https://github.com/looker-open-source/components/commit/33eff32a08892e3cc60e725a3604b500bf631672))
+* Leverage uX theme.space unit notation within library ([#2724](https://github.com/looker-open-source/components/issues/2724)) ([e1bcefb](https://github.com/looker-open-source/components/commit/e1bcefbc5ceb0bc7129a1a86a16f432210c0f15a))
+* **design-tokens:** Create new unit-based spacing tokens to represent new design system values ([#2661](https://github.com/looker-open-source/components/issues/2661)) ([9ae1a20](https://github.com/looker-open-source/components/commit/9ae1a20d9bd47f268a37066e8a1303dce88b3769))
+
+
+
+
+
 # [2.1.0](https://github.com/looker-open-source/components/compare/@looker/design-tokens@2.1.0-alpha.1...@looker/design-tokens@2.1.0) (2021-07-26)
 
 **Note:** Version bump only for package @looker/design-tokens

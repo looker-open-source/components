@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0-alpha.0](https://github.com/looker-open-source/components-date/compare/@looker/components-date@2.0.1...@looker/components-date@2.1.0-alpha.0) (2021-08-11)
+
+
+### Features
+
+* Leverage uX theme.space unit notation within library ([#2724](https://github.com/looker-open-source/components-date/issues/2724)) ([e1bcefb](https://github.com/looker-open-source/components-date/commit/e1bcefbc5ceb0bc7129a1a86a16f432210c0f15a))
+
+
+
+
+
 ## [2.0.1](https://github.com/looker-open-source/components-date/compare/@looker/components-date@2.0.1-alpha.2...@looker/components-date@2.0.1) (2021-07-26)
 
 **Note:** Version bump only for package @looker/components-date
