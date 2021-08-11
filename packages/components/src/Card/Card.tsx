@@ -51,10 +51,10 @@ const cardTransition = () => css`
 const raised = (props: CardProps) =>
   props.raised &&
   css`
-    box-shadow: ${(props) => props.theme.shadows[1]};
+    box-shadow: ${({ theme }) => theme.elevations.plus1};
 
     &:hover {
-      box-shadow: ${(props) => props.theme.shadows[2]};
+      box-shadow: ${({ theme }) => theme.elevations.plus2};
     }
   `
 
