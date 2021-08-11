@@ -26,10 +26,10 @@
 
 import { DefaultTheme } from 'styled-components'
 import { Colors, colors } from '../color'
+import { elevations, Elevations } from '../elevation'
 import { space, SpaceRamp } from '../space'
 import {
   Easings,
-  Elevations,
   FontFamilyChoices,
   FontSizeRamp,
   FontWeightRamp,
@@ -55,7 +55,6 @@ import {
   radii,
   sizes,
   shadows,
-  elevations,
   transitions,
 } from '../tokens'
 

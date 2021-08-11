@@ -26,7 +26,6 @@
 
 export * from './breakpoints'
 export * from './easings'
-export * from './elevations'
 export * from './radii'
 export * from './shadows'
 export * from './size'

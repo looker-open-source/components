@@ -24,17 +24,17 @@
 
  */
 
-import { Elevations } from '../system'
+import { Elevations } from './types'
+export { Elevations } from './types'
+
+const colorBase = '60, 64, 67'
+const color1 = `rgba(${colorBase}, .30)`
+const color2 = `rgba(${colorBase}, .15)`
 
 export const elevations: Elevations = {
-  plus1:
-    '0px 1px 2px 0px rgba(60, 64, 67, .30),0px 1px 3px 1px rgba(60, 64, 67, .15)',
-  plus2:
-    '0px 1px 2px 0px rgba(60, 64, 67, .30),0px 2px 6px 2px rgba(60, 64, 67, .15)',
-  plus3:
-    '0px 1px 3px 0px rgba(60, 64, 67, .30),0px 4px 8px 3px rgba(60, 64, 67, .15)',
-  plus4:
-    '0px 2px 3px 0px rgba(60, 64, 67, .30),0px 6px 10px 4px rgba(60, 64, 67, .15)',
-  plus5:
-    '0px 4px 4px 0px rgba(60, 64, 67, .30),0px 8px 12px 6px rgba(60, 64, 67, .15)',
+  plus1: `0px 1px 2px 0px ${color1},0px 1px 3px 1px ${color2}`,
+  plus2: `0px 1px 2px 0px ${color1},0px 2px 6px 2px ${color2}`,
+  plus3: `0px 1px 3px 0px  ${color1},0px 4px 8px 3px ${color2}`,
+  plus4: `0px 2px 3px 0px  ${color1},0px 6px 10px 4px ${color2}`,
+  plus5: `0px 4px 4px 0px  ${color1},0px 8px 12px 6px ${color2}`,
 }
