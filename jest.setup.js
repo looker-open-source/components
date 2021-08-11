@@ -25,6 +25,8 @@
  */
 
 import { format } from 'util'
+import { setGlobalConfig } from '@storybook/testing-react'
+import * as globalStorybookConfig from './storybook/.storybook/preview'
 
 require('@testing-library/jest-dom/extend-expect')
 require('jest-styled-components')
@@ -52,6 +54,8 @@ global.console.error = function (...args) {
   error(...args)
   throw new Error(format(...args))
 }
+
+setGlobalConfig(globalStorybookConfig)
 
 beforeAll(() => {
   jest.resetAllMocks()

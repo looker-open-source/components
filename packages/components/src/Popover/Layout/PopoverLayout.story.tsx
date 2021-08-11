@@ -31,10 +31,15 @@ import { ConstitutionShort } from '../../__mocks__/Constitution'
 import { ButtonTransparent } from '../../Button/ButtonTransparent'
 import { PopoverLayout, PopoverLayoutProps } from './PopoverLayout'
 
-const Template: Story<Partial<PopoverLayoutProps>> = ({
-  children,
-  ...args
-}) => <PopoverLayout {...args}>{children}</PopoverLayout>
+export default {
+  argTypes,
+  component: PopoverLayout,
+  title: 'PopoverLayout',
+}
+
+const Template: Story<Partial<PopoverLayoutProps>> = (args) => (
+  <PopoverLayout {...args} />
+)
 
 export const Basic = Template.bind({})
 Basic.args = {
@@ -87,10 +92,4 @@ export const HeaderHideHeading = Template.bind({})
 HeaderHideHeading.args = {
   ...Full.args,
   hideHeader: true,
-}
-
-export default {
-  argTypes,
-  component: PopoverLayout,
-  title: 'PopoverLayout',
 }

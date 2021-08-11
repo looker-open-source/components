@@ -28,7 +28,10 @@ import React, { FC, ReactNode } from 'react'
 import { Spinner } from '../../Spinner'
 
 export interface ModalLayoutProps {
-  children: ReactNode
+  /**
+   * Content to be displayed within Modal
+   */
+  children?: ReactNode
 
   /**
    * Content to be displayed as footer

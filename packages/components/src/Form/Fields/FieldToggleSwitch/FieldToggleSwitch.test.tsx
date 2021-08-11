@@ -26,11 +26,14 @@
 
 import 'jest-styled-components'
 import React from 'react'
+import { composeStories } from '@storybook/testing-react'
 import userEvent from '@testing-library/user-event'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { screen } from '@testing-library/react'
 import { FieldToggleSwitch } from './FieldToggleSwitch'
-import { Tabstops } from './FieldToggleSwitch.story'
+import * as stories from './FieldToggleSwitch.story'
+
+const { Tabstops } = composeStories(stories)
 
 describe('FieldToggleSwitch', () => {
   test('error has proper aria setup', () => {
@@ -76,7 +79,7 @@ describe('FieldToggleSwitch', () => {
   })
 
   test('tabStops', () => {
-    renderWithTheme(<Tabstops {...Tabstops.args} />)
+    renderWithTheme(<Tabstops />)
 
     const input = screen.getByRole('switch')
     const detail = screen.getByRole('button')

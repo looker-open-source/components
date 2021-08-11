@@ -33,6 +33,7 @@ import {
   FieldSlider,
   FieldText,
   Grid,
+  i18nInit,
   Paragraph,
   Popover,
   PopoverContent,
@@ -41,6 +42,8 @@ import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultAr
 import { Locales, LocaleCodes } from '../utils/i18n'
 import { DateFormat } from '../DateFormat'
 import { FieldDate, FieldDateProps } from './FieldDate'
+
+i18nInit()
 
 export default {
   argTypes,

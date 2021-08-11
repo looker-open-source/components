@@ -26,18 +26,16 @@
 
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
+import { composeStories } from '@storybook/testing-react'
 import { screen } from '@testing-library/react'
-import {
-  Basic,
-  FooterCloseButton,
-  Full,
-  Header,
-  HeaderHideHeading,
-} from './PopoverLayout.story'
+import * as stories from './PopoverLayout.story'
+
+const { Basic, FooterCloseButton, Full, Header, HeaderHideHeading } =
+  composeStories(stories)
 
 describe('PopoverLayout', () => {
   test('basic display has footer ', () => {
-    renderWithTheme(<Basic {...Basic.args} />)
+    renderWithTheme(<Basic />)
     expect(
       screen.getByText(/We the People of the United States/)
     ).toBeInTheDocument()
@@ -45,32 +43,32 @@ describe('PopoverLayout', () => {
   })
 
   test('hideHeading prop hides Header', () => {
-    renderWithTheme(<HeaderHideHeading {...HeaderHideHeading.args} />)
+    renderWithTheme(<HeaderHideHeading />)
     const hiddenHeader = screen.getByText('Header text')
     expect(hiddenHeader).toBeInTheDocument()
     expect(hiddenHeader).toHaveStyle('clip: rect(1px, 1px, 1px, 1px)')
   })
 
   test('Header and no Footer ', () => {
-    renderWithTheme(<Header {...Header.args} />)
+    renderWithTheme(<Header />)
     expect(screen.getByText('Close')).toBeInTheDocument()
     expect(screen.queryByText('Done')).not.toBeInTheDocument()
   })
 
   test('Footer with CloseButton', () => {
-    renderWithTheme(<FooterCloseButton {...FooterCloseButton.args} />)
+    renderWithTheme(<FooterCloseButton />)
     expect(screen.getByText('Close')).toBeInTheDocument()
     expect(screen.queryByText('Done')).not.toBeInTheDocument()
   })
 
   test('With header & footer display only "Done" button', () => {
-    renderWithTheme(<Full {...Full.args} />)
+    renderWithTheme(<Full />)
     expect(screen.queryByText('Close')).not.toBeInTheDocument()
     expect(screen.getByText('Done')).toBeInTheDocument()
   })
 
   test('FooterExtraValue ', () => {
-    renderWithTheme(<Full {...Full.args} />)
+    renderWithTheme(<Full />)
     expect(screen.getByText('Cancel')).toBeInTheDocument()
     expect(screen.getByText('Done')).toBeInTheDocument()
   })
