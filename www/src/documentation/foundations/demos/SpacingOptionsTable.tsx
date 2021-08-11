@@ -65,7 +65,7 @@ const lookupLegacyValue = (remValue) => {
   } else {
     return (
       <Text fontSize="small" color="text2">
-        --- {remValue}
+        ---
       </Text>
     )
   }

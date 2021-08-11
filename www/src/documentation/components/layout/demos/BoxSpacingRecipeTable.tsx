@@ -44,14 +44,14 @@ const spacingSides = [
 ]
 
 const spacingSizes = [
-  { label: '4px', value: 'xxsmall' },
-  { label: '8px', value: 'xsmall' },
-  { label: '12px', value: 'small' },
-  { label: '16px', value: 'medium' },
-  { label: '20px', value: 'large' },
-  { label: '32px', value: 'xlarge' },
-  { label: '40px', value: 'xxlarge' },
-  { label: '60px', value: 'xxxlarge' },
+  { label: '4px', value: 'u1' },
+  { label: '8px', value: 'u2' },
+  { label: '12px', value: 'u3' },
+  { label: '16px', value: 'u4' },
+  { label: '20px', value: 'u5' },
+  { label: '32px', value: 'u8' },
+  { label: '40px', value: 'u10' },
+  { label: '64px', value: 'u16' },
 ]
 
 export interface ColumnExample {
