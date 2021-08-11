@@ -24,28 +24,36 @@
 
  */
 
-import {
-  createShouldForwardProp,
-  props,
-} from '@styled-system/should-forward-prop'
+ import React from 'react'
+ import {
+    Code,
+    Flex,
+    Space,
+    Text
+ } from '@looker/components'
+import styled from 'styled-components'
 
-export const shouldForwardProp = createShouldForwardProp([...props])
 
-export * from './color'
-export * from './elevation'
-export type {
-  LegacySpaceRamp,
-  SpaceRamp,
-  SpacingSizes,
-  SpaceProps,
-  UnitRamp,
-  UnitSizes,
-} from './space'
-export { units } from './space'
-export * from './theme'
-export * from './system'
+ const ElevatedBox = styled(Flex)<{level}>`
+    border-radius: ${(props) => props.theme.radii.medium};
+    box-shadow: ${(props) => props.theme.elevations[props.level]};
+    height: 125px;
+    width: 124px;
+ `
 
-// Useful external utilities
-export { transitions } from './tokens/transitions'
-export * from './tokens/breakpoints'
-export * from './utils'
+ export const ElevationList = () => (
+   <Space gap="u6">
+   {["plus1", "plus2", "plus3", "plus4", "plus5"].map(e => {
+     return(
+      <ElevatedBox
+        key={e}
+        level={e}
+        alignItems="center"
+        justifyContent="center"
+      >
+        <Code fontSize="xsmall" color="text3">{e}</Code>
+      </ElevatedBox>
+    )
+   })}
+    </Space>
+)

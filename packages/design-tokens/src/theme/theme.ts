@@ -26,6 +26,7 @@
 
 import { DefaultTheme } from 'styled-components'
 import { Colors, colors } from '../color'
+import { elevations, Elevations } from '../elevation'
 import { space, SpaceRamp } from '../space'
 import {
   Easings,
@@ -61,6 +62,7 @@ export interface Theme {
   breakpoints: string[]
   colors: Colors
   easings: Easings
+  elevations: Elevations
   fontSizes: FontSizeRamp
   fonts: FontFamilyChoices
   fontSources?: FontSources
@@ -78,6 +80,7 @@ export const theme: DefaultTheme = {
   breakpoints,
   colors,
   easings,
+  elevations,
   fontSizes,
   fontWeights,
   fonts: fontFamilies,
