@@ -59,6 +59,10 @@ const handlerMocks = {
   onMouseUp: jest.fn(),
 }
 
+afterEach(() => {
+  jest.clearAllMocks()
+})
+
 describe('useRippleHandlers', () => {
   test('maps handlers', () => {
     render(
@@ -97,7 +101,7 @@ describe('useRippleHandlers', () => {
 
     fireEvent.keyDown(button, { key: ' ' })
     expect(callbackMocks.startFG).toHaveBeenCalledTimes(3)
-    expect(handlerMocks.onKeyDown).toHaveBeenCalledTimes(1)
+    expect(handlerMocks.onKeyDown).toHaveBeenCalledTimes(2)
 
     fireEvent.keyUp(button)
     expect(callbackMocks.endFG).toHaveBeenCalledTimes(3)
