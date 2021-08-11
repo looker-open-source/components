@@ -94,7 +94,7 @@ export type UnitSizes =
   | Unit15
   | Unit16
 
-export type SpacingSizes = LegacySpacingSizes | UnitSizes
+export type SpacingSizes = UnitSizes
 
 /**
  * @deprecated Use `spacing` instead

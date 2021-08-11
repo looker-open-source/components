@@ -36,56 +36,6 @@ export type { SpaceProps } from 'styled-system'
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 
-/**
- * @deprecated Use `unit` instead
- */
-const legacySpacing: LegacySpaceRamp = {
-  /**
-   * @deprecated Use UnitSizes instead
-   */
-  none: '0rem',
-  /**
-   * @deprecated Use UnitSizes instead
-   */
-  xxxsmall: '0.125rem',
-  /**
-   * @deprecated Use UnitSizes instead
-   */
-  xxsmall: '0.25rem',
-  /**
-   * @deprecated Use UnitSizes instead
-   */
-  xsmall: '0.5rem',
-  /**
-   * @deprecated Use UnitSizes instead
-   */
-  small: '0.75rem',
-  /**
-   * @deprecated Use UnitSizes instead
-   */
-  medium: '1rem',
-  /**
-   * @deprecated Use UnitSizes instead
-   */
-  large: '1.25rem',
-  /**
-   * @deprecated Use UnitSizes instead
-   */
-  xlarge: '2rem',
-  /**
-   * @deprecated Use UnitSizes instead
-   */
-  xxlarge: '2.5rem',
-  /**
-   * @deprecated Use UnitSizes instead
-   */
-  xxxlarge: '3.75rem',
-  /**
-   * @deprecated Use UnitSizes instead
-   */
-  xxxxlarge: '5rem',
-}
-
 export const units: UnitRamp = {
   none: '0rem',
   u05: '0.125rem',
@@ -108,6 +58,5 @@ export const units: UnitRamp = {
 }
 
 export const space: SpaceRamp = {
-  ...legacySpacing,
   ...units,
 }
