@@ -121,7 +121,7 @@ export const DialogSurface = styled(SurfaceBase).attrs<DialogSurfaceProps>(
     width,
   })
 )<DialogSurfaceProps>`
-  box-shadow: ${({ theme }) => theme.elevations.plus5};
+  box-shadow: ${({ theme }) => theme.elevations.plus3};
   position: relative;
   transition: transform ${surfaceTransition}, opacity ${surfaceTransition};
 

@@ -35,6 +35,6 @@ export const NestedMenuSurface = styled(OverlaySurface)`
     padding: 0;
   }
   ${OverlaySurfaceContentArea} {
-    box-shadow: ${({ theme }) => theme.elevations.plus1};
+    box-shadow: ${({ theme }) => theme.elevations.plus2};
   }
 `
