@@ -116,7 +116,7 @@ export const BulkActions = styled(BulkActionsLayout)`
   position: relative;
 
   ${Button} {
-    left: ${({ theme }) => theme.space.small};
+    left: ${({ theme }) => theme.space.u3};
     position: absolute;
   }
 `

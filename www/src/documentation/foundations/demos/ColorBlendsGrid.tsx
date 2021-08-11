@@ -50,7 +50,7 @@ const BlendColor = styled(
     display: block;
     flex-shrink: 0;
     height: 2.5rem;
-    margin-right: ${({ theme }) => theme.space.medium};
+    margin-right: ${({ theme }) => theme.space.u4};
     width: 5rem;
   }
 `

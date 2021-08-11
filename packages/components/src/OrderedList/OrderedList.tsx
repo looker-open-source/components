@@ -99,6 +99,6 @@ export const OrderedList = styled.div
   ${layout}
 
   li {
-    margin-bottom: ${({ theme }) => theme.space.xxsmall};
+    margin-bottom: ${({ theme }) => theme.space.u1};
   }
 `

@@ -53,7 +53,7 @@ export const Page = styled(PageLayout)`
   a {
     color: ${({ theme }) => theme.colors.link};
     display: block;
-    padding: ${({ theme: { space } }) => `${space.xsmall} ${space.xlarge}`};
+    padding: ${({ theme: { space } }) => `${space.u2} ${space.u8}`};
     text-decoration: none;
 
     &:hover {

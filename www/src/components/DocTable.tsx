@@ -29,7 +29,7 @@ import { Code, Table } from '@looker/components'
 
 export const DocTable = styled(Table)`
   font-size: ${({ theme }) => theme.fontSizes.small};
-  margin-bottom: ${({ theme }) => theme.space.xlarge};
+  margin-bottom: ${({ theme }) => theme.space.u8};
 
   ${Code} {
     color: ${(props) => props.theme.colors.key};

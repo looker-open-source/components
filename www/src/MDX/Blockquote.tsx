@@ -34,7 +34,7 @@ export const Blockquote = styled.blockquote`
     font-size: ${fontSizes.large};
     line-height: ${lineHeights.medium};
     margin: 0 0 ${lineHeights.medium} ${lineHeights.medium};
-    padding: 0 0 0 ${space.medium};
+    padding: 0 0 0 ${space.u4};
     border-left: 5px solid ${colors.key};
     color: ${colors.keyInteractive};
     border-radius: ${radii.medium};

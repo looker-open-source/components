@@ -119,7 +119,7 @@ const SearchControlGrid = styled.div`
   align-items: center;
   display: grid;
   grid-auto-flow: column dense;
-  grid-gap: ${({ theme }) => theme.space.xxsmall};
+  grid-gap: ${({ theme }) => theme.space.u1};
   justify-items: center;
   max-height: 1.9rem;
 `

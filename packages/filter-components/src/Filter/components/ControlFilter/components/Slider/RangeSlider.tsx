@@ -58,6 +58,6 @@ export const RangeSlider: FC<RangeSliderProps> = ({
 const RangeSliderWrapper = styled.div`
   font-size: ${({ theme }) => theme.fontSizes.small};
   min-width: 150px;
-  padding: 0 ${({ theme }) => theme.space.small};
+  padding: 0 ${({ theme }) => theme.space.u3};
   width: 100%;
 `

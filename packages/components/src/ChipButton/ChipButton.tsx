@@ -46,7 +46,7 @@ export const ChipButton = styled(Chip).attrs(() => ({
   font-size: ${({ theme }) => theme.fontSizes.small};
   font-weight: ${({ theme }) => theme.fontWeights.normal};
   height: ${inputHeight};
-  padding: 0 ${({ theme }) => theme.space.medium};
+  padding: 0 ${({ theme }) => theme.space.u4};
 
   &:active,
   &[aria-pressed='true'] {

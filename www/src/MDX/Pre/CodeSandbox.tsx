@@ -218,7 +218,7 @@ const ActionLayout = styled.div<ActionProps>`
   display: grid;
   grid-template-rows: auto auto 1fr;
   justify-content: right;
-  padding: ${({ theme }) => `${theme.space.xsmall}`};
+  padding: ${({ theme }) => `${theme.space.u2}`};
   transition: background 350ms;
   width: auto;
 `
@@ -235,7 +235,7 @@ const SandboxWrapper = styled.div`
 
 const PreviewWrapper = styled.div`
   color: ${({ theme }) => theme.colors.text};
-  padding: ${({ theme }) => theme.space.small};
+  padding: ${({ theme }) => theme.space.u3};
 `
 
 const EditorWrapper = styled.div`
@@ -246,7 +246,7 @@ const EditorWrapper = styled.div`
   textarea,
   pre {
     ${({ theme: { space } }) => `
-      padding: ${space.small} !important;
+      padding: ${space.u3} !important;
     `}
   }
 `
@@ -255,9 +255,9 @@ const ErrorWrapper = styled.div`
   display: grid;
   grid-template-columns: auto 1fr;
   ${({ theme: { colors, space } }) => `
-    grid-column-gap: ${space.small};
+    grid-column-gap: ${space.u3};
     color: ${colors.criticalInteractive};
-    padding: ${space.small};
+    padding: ${space.u3};
     background: ${colors.criticalAccent};
   `}
   pre {

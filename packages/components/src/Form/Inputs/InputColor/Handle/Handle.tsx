@@ -56,5 +56,5 @@ export const Handle = styled.div.attrs<HandleProps>(({ color, x }) => ({
   ${handleCSS}
 
   /* Vertically centers slider */
-  top: ${({ theme }) => `calc(${theme.space.small} / 2 - ${HANDLE_SIZE} / 2)`};
+  top: ${({ theme }) => `calc(${theme.space.u3} / 2 - ${HANDLE_SIZE} / 2)`};
 `

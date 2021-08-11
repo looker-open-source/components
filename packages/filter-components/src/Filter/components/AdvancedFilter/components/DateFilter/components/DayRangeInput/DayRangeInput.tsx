@@ -79,7 +79,7 @@ export const DayRangeInput = ({ value, onChange }: DayRangePickerProps) => {
 }
 
 const InputWrapper = styled.div`
-  padding: ${({ theme }) => theme.space.small};
+  padding: ${({ theme }) => theme.space.u3};
   & > div {
     display: flex;
     flex-direction: column;

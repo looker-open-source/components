@@ -45,7 +45,7 @@ const ColorSwatch = styled(({ name, color, ...props }: ColorSwatchProps) => (
     content: '';
     display: block;
     height: 4rem;
-    margin-bottom: ${({ theme }) => theme.space.xsmall};
+    margin-bottom: ${({ theme }) => theme.space.u2};
     width: 100%;
   }
 `

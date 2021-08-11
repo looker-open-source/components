@@ -42,7 +42,7 @@ const ListDividerLayout: FC = (props) => (
 export const ListDivider = styled(ListDividerLayout)<SpaceProps>`
   ${space}
 
-  margin: ${({ theme }) => theme.space.xsmall} 0;
+  margin: ${({ theme }) => theme.space.u2} 0;
 
   /* CSS for hiding second divider when 2 ListDividers are adjacent */
   & + & {

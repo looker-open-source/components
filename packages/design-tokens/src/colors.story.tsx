@@ -113,7 +113,7 @@ const CircleSwatch = styled.div<SwatchProps>`
   display: flex;
   height: 3rem;
   justify-content: space-between;
-  padding: ${({ theme }) => theme.space.xxsmall};
+  padding: ${({ theme }) => theme.space.u1};
   width: 3rem;
 `
 
