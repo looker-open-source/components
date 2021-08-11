@@ -25,7 +25,7 @@
  */
 
 export type Unit0 = 'none'
-export type Unit05 = 'u0.5'
+export type Unit05 = 'u05'
 export type Unit1 = 'u1'
 export type Unit2 = 'u2'
 export type Unit3 = 'u3'
