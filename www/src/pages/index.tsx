@@ -62,7 +62,7 @@ const Intro = () => {
     <>
       <Helmet title={title} />
       <Layout>
-        <Section as="main" p="xxlarge">
+        <Section as="main" p="u10">
           <Heading as="h1" fontWeight="semiBold" textAlign="center" mb="large">
             Looker UI Components
           </Heading>

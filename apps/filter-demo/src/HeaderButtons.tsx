@@ -63,7 +63,7 @@ export const HeaderButtons: FC<HeaderButtonProps> = ({
   }, [needsUpdate])
 
   return (
-    <Space gap="xsmall">
+    <Space gap="u2">
       {needsUpdate ? (
         <Button
           iconBefore={<Refresh />}

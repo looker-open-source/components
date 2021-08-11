@@ -64,7 +64,7 @@ export const DateInputInternal: FC<DateInputProps> = ({
   return (
     <Popover
       content={
-        <Box p="small">
+        <Box p="u3">
           <InputDate
             localization={dateLocalization}
             defaultValue={date}

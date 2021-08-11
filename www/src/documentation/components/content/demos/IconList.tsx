@@ -41,13 +41,7 @@ export const IconList = () => (
         onCopy={() => alert(`Copied icon "${name}" to clipboard.`)}
         key={name}
       >
-        <IconGridItem
-          p="small"
-          gap="xsmall"
-          align="center"
-          tabIndex={0}
-          role="button"
-        >
+        <IconGridItem p="u3" gap="u2" align="center" tabIndex={0} role="button">
           <Icon
             display="inline-flex"
             icon={AllIcons[name].render()}

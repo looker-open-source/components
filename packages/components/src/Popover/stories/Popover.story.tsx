@@ -154,7 +154,7 @@ export const PopoverFocusTrap = () => {
         <Popover
           cancelClickOutside={value}
           content={
-            <PopoverContent p="large" width="360px">
+            <PopoverContent p="u5" width="360px">
               <Paragraph>
                 Does tabbing focus only loop through these 3 buttons &amp;
                 Select?
@@ -255,7 +255,7 @@ export const OverlayOpenDialog = () => {
       <Heading>Popover Opening a Dialog</Heading>
       <Popover
         content={
-          <SpaceVertical p="large">
+          <SpaceVertical p="u5">
             <Button onClick={setOn}>Open Dialog</Button>
             <Box height={500} />
           </SpaceVertical>
@@ -335,7 +335,7 @@ const DialogInner = () => {
 
 const popoverContent = (
   <PopoverContent>
-    <Paragraph width={300} p="xxlarge">
+    <Paragraph width={300} p="u10">
       👋 Hello, I am a popover!
     </Paragraph>
   </PopoverContent>
@@ -363,7 +363,7 @@ RenderPropsSpread.parameters = {
 export const Placement = () => {
   const popoverContent = (
     <PopoverContent>
-      <Paragraph width={300} p="xxlarge">
+      <Paragraph width={300} p="u10">
         👋 Hello, I am a popover!
       </Paragraph>
     </PopoverContent>
@@ -395,7 +395,7 @@ const MovingTargetInner = () => {
   const { value, toggle } = useToggle()
   const { popover, popperInstanceRef, open, ref, isOpen } = usePopover({
     content: (
-      <PopoverContent p="large" width="360px">
+      <PopoverContent p="u5" width="360px">
         <Paragraph>
           The anchor is moving around so the Popover position must be updated
           via popperInstanceRef.current.update.
@@ -425,7 +425,7 @@ const MovingTargetInner = () => {
         mt={value ? 'xxxlarge' : 'medium'}
         border="2px solid"
         width={150}
-        p="small"
+        p="u3"
         cursor="pointer"
         height={value ? 80 : undefined}
         onClick={open}

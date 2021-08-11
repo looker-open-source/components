@@ -59,7 +59,7 @@ type ColorListProps = {
 }
 
 export const ColorList = ({ colors }: ColorListProps) => (
-  <ColorListGrid gap="large" maxWidth={600} pt="medium" pb="xxlarge">
+  <ColorListGrid gap="u5" maxWidth={600} pt="medium" pb="xxlarge">
     {Object.entries(colors).map(([title, color], key) => (
       <ColorSwatch name={title} color={color} key={key} />
     ))}

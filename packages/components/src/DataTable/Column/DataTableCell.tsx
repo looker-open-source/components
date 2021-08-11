@@ -76,7 +76,7 @@ const DataTableCellLayout = forwardRef(
 
     if (description) {
       content = (
-        <SpaceVertical gap="xxxsmall" align="stretch">
+        <SpaceVertical gap="u05" align="stretch">
           <span>{content}</span>
           {description && (
             <Paragraph fontSize="xsmall" color="text1" truncate>
@@ -88,7 +88,7 @@ const DataTableCellLayout = forwardRef(
 
       if (indicator) {
         content = (
-          <Space gap="medium">
+          <Space gap="u4">
             {indicator}
             {content}
           </Space>
@@ -96,7 +96,7 @@ const DataTableCellLayout = forwardRef(
       }
     } else if (indicator) {
       content = (
-        <Space gap="medium">
+        <Space gap="u4">
           {indicator}
           <span>{content}</span>
         </Space>

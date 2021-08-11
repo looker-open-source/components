@@ -126,7 +126,7 @@ RenderProp.parameters = {
 
 export const LargeTrigger = () => (
   <Tooltip content="See what happens when you scroll" placement="right">
-    <Card width={500} height={800} raised p="large">
+    <Card width={500} height={800} raised p="u5">
       Very large trigger
     </Card>
   </Tooltip>
@@ -159,7 +159,7 @@ export const NestedInPopover = () => {
   }
 
   return (
-    <SpaceVertical p="large">
+    <SpaceVertical p="u5">
       <Text>Last event: {lastEvent}</Text>
       <Space>
         <Popover content={<PopoverContent>Some content</PopoverContent>}>

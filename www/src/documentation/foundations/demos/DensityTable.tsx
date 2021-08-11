@@ -43,7 +43,7 @@ import { DocTable } from '../../../components'
 const DensityRow = ({ density }: { density: DensityRamp }) => (
   <TableRow>
     <TableDataCell>
-      <Box bg="ui2" p="small" mr="large" borderRadius="medium">
+      <Box bg="ui2" p="u3" mr="large" borderRadius="medium">
         <Box bg="background">
           <List density={density}>
             <ListItem>Item 1</ListItem>

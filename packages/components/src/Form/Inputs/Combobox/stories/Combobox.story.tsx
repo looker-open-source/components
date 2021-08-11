@@ -69,7 +69,7 @@ export const ComboboxDemo = () => {
   }
 
   return (
-    <Space p="large" align="start">
+    <Space p="u5" align="start">
       <SpaceVertical>
         <Heading>Controlled</Heading>
         <Combobox width={300} value={option} onChange={handleChange}>

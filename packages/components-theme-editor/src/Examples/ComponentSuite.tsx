@@ -55,7 +55,7 @@ export const ComponentSuite = () => {
   const [value, setValue] = useState(['One'])
 
   return (
-    <SpaceVertical gap="xsmall">
+    <SpaceVertical gap="u2">
       <Button>My neat button</Button>
       <Button color="neutral">My neat button</Button>
       <Button color="critical">My neat button</Button>

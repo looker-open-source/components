@@ -88,7 +88,7 @@ export const ColorBlendsGrid = ({
 }: {
   statefulColorGroups: StatefulColorGroups
 }) => (
-  <BlendGrid gap="large" maxWidth={1000}>
+  <BlendGrid gap="u5" maxWidth={1000}>
     {statefulColorGroups.map((group, index) => (
       <BlendList colors={group} key={index} />
     ))}

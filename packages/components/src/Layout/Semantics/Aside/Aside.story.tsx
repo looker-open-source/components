@@ -38,7 +38,7 @@ export default {
 }
 
 const Template: Story<AsideProps> = (args) => (
-  <AsideStyle p="large" text-align="center" {...args} />
+  <AsideStyle p="u5" text-align="center" {...args} />
 )
 
 const AsideStyle = styled(Aside)`
@@ -88,7 +88,7 @@ AsideCollapse.parameters = {
 }
 
 const TemplateBorder: Story<AsideProps> = (args) => (
-  <Aside p="large" text-align="center" {...args} />
+  <Aside p="u5" text-align="center" {...args} />
 )
 
 export const AsideDefaultBorderAndColor = TemplateBorder.bind({})

@@ -53,7 +53,7 @@ describe('Space', () => {
 
   test('around + gap (all you get is around)', () => {
     renderWithTheme(
-      <Space around gap="xxlarge" data-testid="space">
+      <Space around gap="u10" data-testid="space">
         {content}
       </Space>
     )

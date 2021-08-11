@@ -98,7 +98,7 @@ const BulkActionsLayout: FC<BulkActionsProps> = ({
           {t('Bulk Actions')}
         </Button>
       </Menu>
-      <Space gap="small" justifyContent="center">
+      <Space gap="u3" justifyContent="center">
         {selectedItemsText}
         {selectTotalResultsButton}
       </Space>

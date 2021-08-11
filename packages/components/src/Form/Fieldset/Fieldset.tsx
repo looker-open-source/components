@@ -88,7 +88,7 @@ const FieldsetLayout = forwardRef(
       accordion,
       className,
       inline,
-      gap = 'medium',
+      gap = 'u4',
       legend,
       fieldsHideLabel,
       children,

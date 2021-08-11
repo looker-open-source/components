@@ -254,7 +254,7 @@ export const Hover = () => {
   const close = () => setOpen(false)
 
   return (
-    <Card ref={hoverRef} p="large" raised height="auto" tabIndex={0}>
+    <Card ref={hoverRef} p="u5" raised height="auto" tabIndex={0}>
       <Space between>
         <Paragraph>
           Hovering in this card will show the button that triggers the menu.
@@ -280,7 +280,7 @@ Hover.parameters = {
 
 export const RealisticMenus = () => {
   return (
-    <Space gap="xxlarge">
+    <Space gap="u10">
       <Menu
         iconGutter
         content={
@@ -453,7 +453,7 @@ export const LongMenus = () => {
     return getGroups(longLabels ? 120 : 30)
   }, [longLabels])
   return (
-    <SpaceVertical align="start" p="xlarge">
+    <SpaceVertical align="start" p="u8">
       <Space>
         <Menu
           content={array95.map((item, i) => (

@@ -92,7 +92,7 @@ const DataTableHeaderCellLayout = forwardRef(
         style={{ cursor: canSort ? 'pointer' : undefined }}
         {...clickableProps}
       >
-        <Space gap="xxsmall" reverse={type === 'number'}>
+        <Space gap="u1" reverse={type === 'number'}>
           {label}
           {sortDirection && (
             <Icon

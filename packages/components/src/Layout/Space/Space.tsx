@@ -92,7 +92,7 @@ export interface SpaceHelperProps extends CommonLayoutProps, FlexboxProps {
   stretch?: boolean
 }
 
-export const defaultGap = 'medium'
+export const defaultGap = 'u4'
 
 export const spaceCSS = css`
   ${commonLayoutCSS}

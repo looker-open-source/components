@@ -32,7 +32,7 @@ import logo from './logo.png'
 
 const AppLogoLayout: FC<{ className?: string }> = (props) => (
   <Link to="/" {...props}>
-    <Space gap="small">
+    <Space gap="u3">
       <img src={logo} alt="Looker" />
       <DividerVertical stretch my="none" mx="none" />
       <Heading fontSize="large" fontWeight="medium" color="text3" as="h1">

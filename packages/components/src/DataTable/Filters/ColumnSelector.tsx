@@ -73,7 +73,7 @@ export const ColumnSelector: FC<ColumnSelectorProps> = ({
   const content = (
     <PopoverContent width="12rem" overflow="hidden">
       <SpaceVertical>
-        <Space gap="xxsmall">
+        <Space gap="u1">
           <ButtonTransparent size="xsmall" onClick={all}>
             {t('Select All')}
           </ButtonTransparent>
