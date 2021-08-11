@@ -36,7 +36,7 @@ const PopoverContentLayout: FC<PopoverContentProps> = ({
   ...props
 }) => {
   return (
-    <ModalContent overflowVerticalPadding="u10" py="u4" px="u5" {...props}>
+    <ModalContent overflowVerticalPadding="u1" py="u4" px="u5" {...props}>
       {children}
     </ModalContent>
   )
