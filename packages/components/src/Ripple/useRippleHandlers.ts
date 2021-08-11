@@ -45,6 +45,13 @@ export type RippleHandlers<E extends HTMLElement> = Pick<
   typeof rippleHandlerKeys[number]
 >
 
+/**
+ *
+ * @param callbacks from useRipple, start and end functions for foreground and background
+ * @param currentHandlers existing event handlers for the element will be wrapped
+ * @param disabled
+ * @returns wrapped event handlers
+ */
 export const useRippleHandlers = <E extends HTMLElement>(
   { startBG, endBG, startFG, endFG }: RippleCallbacks,
   currentHandlers: RippleHandlers<E>,
@@ -53,6 +60,7 @@ export const useRippleHandlers = <E extends HTMLElement>(
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
       switch (e.key) {
+        // Only start the ripple for enter or space key
         case 'Enter':
         case ' ':
           startFG()
@@ -62,6 +70,12 @@ export const useRippleHandlers = <E extends HTMLElement>(
     [startFG]
   )
 
+  const handleMouseLeave = useCallback(() => {
+    endBG()
+    // If the user hovers off of the element while pressing, end the ripple
+    endFG()
+  }, [endFG, endBG])
+
   const wrappedCallbacks = {
     onBlur: useWrapEvent(endBG, currentHandlers.onBlur),
     onFocus: useWrapEvent(startBG, currentHandlers.onFocus),
@@ -69,7 +83,7 @@ export const useRippleHandlers = <E extends HTMLElement>(
     onKeyUp: useWrapEvent(endFG, currentHandlers.onKeyUp),
     onMouseDown: useWrapEvent(startFG, currentHandlers.onMouseDown),
     onMouseEnter: useWrapEvent(startBG, currentHandlers.onMouseEnter),
-    onMouseLeave: useWrapEvent(endBG, currentHandlers.onMouseLeave),
+    onMouseLeave: useWrapEvent(handleMouseLeave, currentHandlers.onMouseLeave),
     onMouseUp: useWrapEvent(endFG, currentHandlers.onMouseUp),
   }
 

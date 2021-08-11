@@ -33,11 +33,12 @@ import {
   useRipple,
   useRippleHandlers,
   UseRippleProps,
+  RippleColorProps,
   rippleStyle,
   RippleStyleProps,
 } from './'
 
-type RippleProps = SimpleLayoutProps & UseRippleProps
+type RippleProps = SimpleLayoutProps & UseRippleProps & RippleColorProps
 
 const Ripple = ({ bounded, ...props }: RippleProps) => {
   const {

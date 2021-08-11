@@ -25,15 +25,11 @@
  */
 
 import { useMeasuredElement, useCallbackRef } from '../utils'
-import {
-  RippleAnimationValues,
-  RippleCallbacks,
-  RippleColorProps,
-} from './types'
+import { RippleAnimationValues, RippleCallbacks } from './types'
 import { useRippleState } from './useRippleState'
 import { useRippleStateBG } from './useRippleStateBG'
 
-export type UseRippleProps = RippleColorProps & {
+export type UseRippleProps = {
   /**
    * Use for elements where the ripple disappears at the edges of
    * a visible rectangle, e.g. a default Button
@@ -42,8 +38,17 @@ export type UseRippleProps = RippleColorProps & {
 }
 
 export type UseRippleResponse = RippleAnimationValues & {
+  /**
+   * The start and end functions for the background and foreground
+   */
   callbacks: RippleCallbacks
+  /**
+   * The class names used in rippleStyle to trigger the animations
+   */
   className: string
+  /**
+   * ref is only used for bounded ripple, to detect element dimensions
+   */
   ref?: (node: HTMLElement | null) => void
 }
 
@@ -83,6 +88,10 @@ const getRippleOffset = (min: number, max: number, bounded?: boolean) => {
   return `${offset}px, 0`
 }
 
+/**
+ * @returns callbacks should be mapped to DOM event handlers (see useRippleHandlers)
+ * and remaining props should be passed to an internal element that includes rippleStyle
+ */
 export const useRipple = ({ bounded }: UseRippleProps): UseRippleResponse => {
   // ref is actually only used for bounded, when dimensions are needed
   // otherwise ref is wasteful since it triggers a state update & re-render

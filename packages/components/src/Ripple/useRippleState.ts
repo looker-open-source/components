@@ -24,7 +24,15 @@
 
  */
 
-import { Reducer, useCallback, useEffect, useReducer, useRef } from 'react'
+import {
+  Reducer,
+  useCallback,
+  useContext,
+  useEffect,
+  useReducer,
+  useRef,
+} from 'react'
+import { ThemeContext } from 'styled-components'
 
 export interface RippleAction {
   type: 'START' | 'END' | 'DONE'
@@ -37,6 +45,8 @@ const reducer: Reducer<RippleState, RippleAction> = (state, action) => {
     case 'START':
       return 'IN'
     case 'END':
+      // Tabbing onto the element would give us keyup without keydown
+      // this ensures we don't see the ripple fade-out without rippling-in
       return state === 'IN' ? 'OUT' : state
     case 'DONE':
       return 'OFF'
@@ -54,8 +64,15 @@ const getRippleClassName = (rippling: RippleState) => {
 
 export const useRippleState = () => {
   const [rippling, dispatch] = useReducer(reducer, 'OFF')
+  // Tracks the "in" (i.e. pressed) status to determine if ripple-out should fire
   const isInRef = useRef(false)
+  // Tracks "lock" status for the ripple
+  // which ensures the ripple-in gets enough time to fully animate
   const isLockedRef = useRef(false)
+  // Get the transitions to match the ripple-in & -out animation durations
+  const {
+    transitions: { quick, simple },
+  } = useContext(ThemeContext)
 
   const start = useCallback(() => {
     dispatch({ type: 'START' })
@@ -78,17 +95,17 @@ export const useRippleState = () => {
         if (!isInRef.current) {
           dispatch({ type: 'END' })
         }
-      }, 200)
+      }, simple)
     }
     if (rippling === 'OUT') {
       t = setTimeout(() => {
         dispatch({ type: 'DONE' })
-      }, 200)
+      }, quick)
     }
     return () => {
       clearTimeout(t)
     }
-  }, [rippling])
+  }, [rippling, quick, simple])
 
   return { className: getRippleClassName(rippling), end, start }
 }

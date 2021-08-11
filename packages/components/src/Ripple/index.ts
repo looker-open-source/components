@@ -25,5 +25,6 @@
  */
 
 export * from './rippleStyle'
+export * from './types'
 export * from './useRipple'
 export * from './useRippleHandlers'

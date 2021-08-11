@@ -34,6 +34,8 @@ export type RippleStateBG = 'ON' | 'DOUBLE_ON' | 'OFF'
 
 const reducer: Reducer<RippleStateBG, RippleActionBG> = (state, action) => {
   switch (action.type) {
+    // 'DOUBLE_ON' allows detection of "hover & focus" state
+    // background should only turn off when hovered out AND blurred
     case 'START':
       return state === 'ON' ? 'DOUBLE_ON' : 'ON'
     case 'END':

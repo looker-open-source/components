@@ -60,6 +60,9 @@ to {
 
 export type RippleStyleProps = RippleAnimationValues & RippleColorProps
 
+/**
+ * Uses :before as fade-in overlay "background" and :after as rippling overlay
+ */
 export const rippleStyle = ({
   color = 'neutral',
   rippleOffset,
@@ -91,10 +94,9 @@ export const rippleStyle = ({
   }
 
   &::before {
-    /* Background shouldn't ripple, only fade */
     transform: translate(var(--ripple-translate, 0))
       scale(var(--ripple-scale-end, 1));
-    transition: opacity 75ms linear;
+    transition: opacity 15ms linear;
   }
 
   &::after {
@@ -103,14 +105,20 @@ export const rippleStyle = ({
 
   &.bg-on::before {
     opacity: 0.12;
-    transition: opacity 150ms linear;
   }
+
   &.fg-in::after {
-    animation: ${rippleRadiusIn} 225ms forwards,
-      ${rippleOpacityIn} 75ms forwards;
+    animation-duration: ${({
+      theme: {
+        transitions: { rapid, simple },
+      },
+    }) => `${simple}ms, ${rapid}ms`};
+    animation-fill-mode: forwards, forwards;
+    animation-name: ${rippleRadiusIn}, ${rippleOpacityIn};
   }
   &.fg-out::after {
-    animation: ${rippleOpacityOut} 150ms;
+    animation: ${rippleOpacityOut};
+    animation-duration: ${({ theme: { transitions } }) => transitions.quick}ms;
     transform: translate(var(--ripple-translate, 0))
       scale(var(--ripple-scale-end, 1));
   }
