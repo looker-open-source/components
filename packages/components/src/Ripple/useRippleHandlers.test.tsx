@@ -97,10 +97,45 @@ describe('useRippleHandlers', () => {
 
     fireEvent.keyDown(button, { key: ' ' })
     expect(callbackMocks.startFG).toHaveBeenCalledTimes(3)
-    expect(handlerMocks.onMouseDown).toHaveBeenCalledTimes(1)
+    expect(handlerMocks.onKeyDown).toHaveBeenCalledTimes(1)
 
     fireEvent.keyUp(button)
     expect(callbackMocks.endFG).toHaveBeenCalledTimes(3)
-    expect(handlerMocks.onMouseUp).toHaveBeenCalledTimes(1)
+    expect(handlerMocks.onKeyUp).toHaveBeenCalledTimes(1)
+  })
+
+  test('disabled', () => {
+    render(
+      <RippleHandlersComponent
+        callbacks={callbackMocks}
+        currentHandlers={handlerMocks}
+        disabled
+      />
+    )
+    const button = screen.getByRole('button')
+
+    fireEvent.mouseEnter(button)
+    fireEvent.mouseLeave(button)
+    fireEvent.focus(button)
+    fireEvent.blur(button)
+    fireEvent.mouseDown(button)
+    fireEvent.mouseUp(button)
+    fireEvent.keyDown(button, { key: 'Enter' })
+    fireEvent.keyDown(button, { key: ' ' })
+    fireEvent.keyUp(button)
+
+    expect(callbackMocks.startBG).not.toHaveBeenCalled()
+    expect(callbackMocks.endBG).not.toHaveBeenCalled()
+    expect(callbackMocks.startFG).not.toHaveBeenCalled()
+    expect(callbackMocks.endFG).not.toHaveBeenCalled()
+
+    expect(handlerMocks.onMouseEnter).not.toHaveBeenCalled()
+    expect(handlerMocks.onMouseLeave).not.toHaveBeenCalled()
+    expect(handlerMocks.onFocus).not.toHaveBeenCalled()
+    expect(handlerMocks.onBlur).not.toHaveBeenCalled()
+    expect(handlerMocks.onMouseDown).not.toHaveBeenCalled()
+    expect(handlerMocks.onMouseUp).not.toHaveBeenCalled()
+    expect(handlerMocks.onKeyDown).not.toHaveBeenCalled()
+    expect(handlerMocks.onKeyUp).not.toHaveBeenCalled()
   })
 })
