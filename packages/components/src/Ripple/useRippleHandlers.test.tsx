@@ -75,6 +75,7 @@ describe('useRippleHandlers', () => {
     expect(handlerMocks.onMouseEnter).toHaveBeenCalledTimes(1)
     fireEvent.mouseLeave(button)
     expect(callbackMocks.endBG).toHaveBeenCalledTimes(1)
+    expect(callbackMocks.endFG).toHaveBeenCalledTimes(1)
     expect(handlerMocks.onMouseLeave).toHaveBeenCalledTimes(1)
 
     fireEvent.focus(button)
@@ -88,7 +89,7 @@ describe('useRippleHandlers', () => {
     expect(callbackMocks.startFG).toHaveBeenCalledTimes(1)
     expect(handlerMocks.onMouseDown).toHaveBeenCalledTimes(1)
     fireEvent.mouseUp(button)
-    expect(callbackMocks.endFG).toHaveBeenCalledTimes(1)
+    expect(callbackMocks.endFG).toHaveBeenCalledTimes(2)
     expect(handlerMocks.onMouseUp).toHaveBeenCalledTimes(1)
 
     fireEvent.keyDown(button, { key: 'Enter' })
@@ -99,7 +100,7 @@ describe('useRippleHandlers', () => {
     expect(handlerMocks.onMouseDown).toHaveBeenCalledTimes(1)
 
     fireEvent.keyUp(button)
-    expect(callbackMocks.endFG).toHaveBeenCalledTimes(2)
+    expect(callbackMocks.endFG).toHaveBeenCalledTimes(3)
     expect(handlerMocks.onMouseUp).toHaveBeenCalledTimes(1)
   })
 })

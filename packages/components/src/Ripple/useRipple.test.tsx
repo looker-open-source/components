@@ -24,7 +24,8 @@
 
  */
 
-import { act, fireEvent, render, screen } from '@testing-library/react'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { act, fireEvent, screen } from '@testing-library/react'
 import React from 'react'
 import { useRipple, UseRippleProps } from './useRipple'
 
@@ -87,14 +88,14 @@ const runTimers = () =>
 
 describe('useRipple', () => {
   test('animation values', () => {
-    render(<RippleComponent />)
+    renderWithTheme(<RippleComponent />)
     expect(screen.getByTestId('rippleOffset')).toHaveTextContent('0, 0')
     expect(screen.getByTestId('rippleScaleRange')).toHaveTextContent('0.1-1')
     expect(screen.getByTestId('rippleSize')).toHaveTextContent('100%')
   })
 
   test('bounded animation values', () => {
-    render(<RippleComponent bounded />)
+    renderWithTheme(<RippleComponent bounded />)
     expect(screen.getByTestId('rippleOffset')).toHaveTextContent('165px, 0')
     expect(screen.getByTestId('rippleScaleRange')).toHaveTextContent(
       '1-12.041594578792294'
@@ -103,7 +104,7 @@ describe('useRipple', () => {
   })
 
   test('callbacks control className', () => {
-    render(<RippleComponent />)
+    renderWithTheme(<RippleComponent />)
     expect(screen.getByTestId('className')).toHaveTextContent('')
 
     fireEvent.click(screen.getByTestId('startBG'))
@@ -125,7 +126,7 @@ describe('useRipple', () => {
   })
 
   test('long press', () => {
-    render(<RippleComponent />)
+    renderWithTheme(<RippleComponent />)
     expect(screen.getByTestId('className')).toHaveTextContent('')
 
     fireEvent.click(screen.getByTestId('startBG'))
@@ -141,7 +142,7 @@ describe('useRipple', () => {
   test('tab keyup', () => {
     // Key up triggers endFG but shouldn't ripple out unless ripple is already in
     // e.g. when tabbing onto a ripple element
-    render(<RippleComponent />)
+    renderWithTheme(<RippleComponent />)
     fireEvent.click(screen.getByTestId('startBG'))
     fireEvent.click(screen.getByTestId('endFG'))
     expect(screen.getByTestId('className')).toHaveTextContent('bg-on')
@@ -150,7 +151,7 @@ describe('useRipple', () => {
   test('"double on" background behavior', () => {
     // The "double on" behavior tracks when the background has been activated by
     // both hover and focus and needs both hover out and blur to de-activate
-    render(<RippleComponent />)
+    renderWithTheme(<RippleComponent />)
     expect(screen.getByTestId('className')).toHaveTextContent('')
 
     fireEvent.click(screen.getByTestId('startBG'))
