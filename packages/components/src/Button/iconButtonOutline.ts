@@ -25,31 +25,27 @@
  */
 
 import { css } from 'styled-components'
-import { iconButtonColorDerivation } from '@looker/design-tokens'
-import { ToggleColorProps } from './iconButtonTypes'
 
-export const ICON_BUTTON_DEFAULT_COLOR = 'key'
-
-export const iconButtonColor = css<ToggleColorProps>`
-  ${iconButtonColorDerivation}
+export const iconButtonOutline = css`
+  border: 1px solid ${({ theme: { colors } }) => colors.ui3};
 
   &:hover,
   &:focus,
   &.hover {
-    color: ${({ theme }) => theme.colors.neutralInteractive};
+    border-color: ${({ theme: { colors } }) => colors.neutral};
   }
 
   &[aria-expanded='true'],
   &:active,
   &.active {
-    color: ${({ theme, toggle, toggleColor }) =>
-      toggle !== undefined
-        ? theme.colors[toggleColor || ICON_BUTTON_DEFAULT_COLOR]
-        : theme.colors.neutralPressed};
+    border-color: ${({ theme: { colors } }) => colors.neutralInteractive};
   }
 
-  &[aria-pressed='true'] {
-    color: ${({ theme, toggleColor }) =>
-      theme.colors[toggleColor || ICON_BUTTON_DEFAULT_COLOR]};
+  &[disabled] {
+    &:hover,
+    &:active,
+    &:focus {
+      border-color: ${({ theme: { colors } }) => colors.ui3};
+    }
   }
 `

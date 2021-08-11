@@ -57,6 +57,10 @@ export type ToggleColor = 'key' | 'calculation' | 'dimension' | 'measure'
 
 export interface ToggleColorProps {
   /**
+   * If the IconButton is in the optional toggled on or toggled off state
+   */
+  toggle?: boolean
+  /**
    * Change icon and background color when toggled
    * Supports 'calculation', 'dimension', 'measure' and 'key'
    * @default key
@@ -90,10 +94,6 @@ export interface IconButtonProps
    * @default square
    */
   shape?: 'round' | 'square'
-  /**
-   * If the IconButton is in the optional toggled on or toggled off state
-   */
-  toggle?: boolean
   /**
    * to improve toggle's behavior this prop will update the background-color to `${toggleColor}Accent` when toggle is true
    * @default false
