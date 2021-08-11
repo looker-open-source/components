@@ -471,8 +471,8 @@ const InputDateRangeWrapper = styled.div`
 
 const MultiCalendarLayout = styled.div`
   display: inline-grid;
-  grid-column-gap: ${({ theme }) => theme.space.large};
-  grid-row-gap: ${({ theme }) => theme.space.medium};
+  grid-column-gap: ${({ theme }) => theme.space.u5};
+  grid-row-gap: ${({ theme }) => theme.space.u4};
   grid-template-columns: 1fr 1fr;
   @media screen and (max-width: ${({ theme }) => theme.breakpoints[1]}) {
     grid-template-columns: 1fr;
@@ -491,9 +491,9 @@ const InputTextGroupWrapper = styled.div<InputTextGroupWrapperProps>`
   align-items: center;
   display: grid;
   font-family: ${({ theme }) => theme.fonts.body};
-  grid-gap: ${({ theme }) => theme.space.xsmall};
+  grid-gap: ${({ theme }) => theme.space.u2};
   grid-template-columns: auto auto auto 1fr;
-  padding: 0 ${({ theme: { space } }) => space.small};
+  padding: 0 ${({ theme: { space } }) => space.u3};
   width: 100%;
   &:hover {
     ${inputTextHover}
@@ -509,12 +509,12 @@ const InputTextGroupWrapper = styled.div<InputTextGroupWrapperProps>`
 
   ${ErrorIcon} {
     justify-self: right;
-    margin-right: ${({ theme }) => theme.space.xxsmall};
+    margin-right: ${({ theme }) => theme.space.u1};
   }
 `
 
 const InputTextWrapper = styled.div<{ inputLength: number }>`
-  padding: ${({ theme: { space } }) => space.xxsmall} 0;
+  padding: ${({ theme: { space } }) => space.u1} 0;
   ${InlineInputTextBase} {
     align-self: center;
     height: ${({ theme }) => theme.lineHeights.large};

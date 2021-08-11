@@ -180,7 +180,7 @@ AccordionAlt.parameters = {
 }
 
 export const Nesting = () => (
-  <Fieldset gap="xxlarge">
+  <Fieldset gap="u10">
     <Button fullWidth>Button A</Button>
     <Button fullWidth>Button B</Button>
     <Button fullWidth>Button C</Button>
@@ -190,7 +190,7 @@ export const Nesting = () => (
       <Button fullWidth>Button B</Button>
       <Button fullWidth>Button C</Button>
 
-      <Fieldset gap="medium">
+      <Fieldset gap="u4">
         <Button fullWidth>Button A</Button>
         <Button fullWidth>Button B</Button>
         <Button fullWidth>Button C</Button>

@@ -72,10 +72,10 @@ export const Basic = () => (
         I'm the header
       </Header>
       <Layout hasAside>
-        <Aside p="large" width="200px">
+        <Aside p="u5" width="200px">
           <ItemsFiller count={20} />
         </Aside>
-        <Section main p="xxlarge">
+        <Section main p="u10">
           <Heading>Page title</Heading>
           <Constitution />
         </Section>
@@ -94,10 +94,10 @@ export const FixedWithFooterAndHeaderShadow = () => (
         I'm the header
       </Header>
       <Layout hasAside>
-        <Aside p="large" width="200px">
+        <Aside p="u5" width="200px">
           <ItemsFiller count={20} />
         </Aside>
-        <Section main p="xxlarge">
+        <Section main p="u10">
           <Heading>Page title</Heading>
           <Constitution />
         </Section>
@@ -113,14 +113,14 @@ export const ScrollIndependently = () => (
   <Highlighter>
     <Page fixed>
       <Layout hasAside>
-        <Aside p="large">
+        <Aside p="u5">
           <Constitution />
         </Aside>
-        <Section main p="xxlarge">
+        <Section main p="u10">
           <Heading>Page title</Heading>
           <Constitution />
         </Section>
-        <AsideAlt p="xxlarge" width="navigation">
+        <AsideAlt p="u10" width="navigation">
           <ConstitutionShort />
         </AsideAlt>
       </Layout>
@@ -135,15 +135,15 @@ export const ScrollSelectedAreas = () => (
   <Highlighter>
     <Page fixed>
       <Layout hasAside>
-        <Aside p="large" width="200px">
+        <Aside p="u5" width="200px">
           <ConstitutionShort />
         </Aside>
         <Layout hasAside>
-          <Section main scrollWithin p="xxlarge">
+          <Section main scrollWithin p="u10">
             <Heading>Page title</Heading>
             <Constitution />
           </Section>
-          <AsideAlt scrollWithin p="xxlarge">
+          <AsideAlt scrollWithin p="u10">
             <ConstitutionShort />
           </AsideAlt>
         </Layout>
@@ -159,14 +159,14 @@ export const ScrollAllAreasTogetherDefault = () => (
   <Highlighter>
     <Page>
       <Layout hasAside>
-        <Aside p="large" width="200px">
+        <Aside p="u5" width="200px">
           <ConstitutionShort />
         </Aside>
-        <Section main p="xxlarge">
+        <Section main p="u10">
           <Heading>Page title</Heading>
           <Constitution />
         </Section>
-        <AsideAlt p="xxlarge" width="10rem">
+        <AsideAlt p="u10" width="10rem">
           <ConstitutionShort />
         </AsideAlt>
       </Layout>
@@ -184,10 +184,10 @@ export const WhitespaceRepro = () => (
         I'm the header
       </Header>
       <Layout hasAside>
-        <Aside p="large" width="200px">
+        <Aside p="u5" width="200px">
           <ItemsFiller count={20} />
         </Aside>
-        <Section main p="xxlarge">
+        <Section main p="u10">
           <Heading>Page title</Heading>
           <Constitution />
           <IconButton icon={<Info />} label="Info" />

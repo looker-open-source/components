@@ -103,7 +103,7 @@ export const RerenderRepro = () => {
     setExpression(newValue)
   }
   return (
-    <SpaceVertical p="medium" align="stretch">
+    <SpaceVertical p="u4" align="stretch">
       <OrderedList type="number">
         <li>
           When updating the min/max, the value should move to stay within

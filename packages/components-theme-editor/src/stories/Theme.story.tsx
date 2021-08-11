@@ -36,7 +36,7 @@ ThemeEditor.parameters = {
 }
 
 export const CompareThemes = () => (
-  <Grid m="xlarge" gap="large" columns={4}>
+  <Grid m="xlarge" gap="u5" columns={4}>
     <Editor name="Default" />
     <Editor
       name="Generated"

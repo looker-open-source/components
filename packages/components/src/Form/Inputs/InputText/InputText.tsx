@@ -234,7 +234,7 @@ const StyledInput = styled.input`
   font-size: ${(props) => props.theme.fontSizes.small};
   max-width: 100%;
   min-width: 2rem;
-  padding: 0 ${({ theme: { space } }) => space.xsmall};
+  padding: 0 ${({ theme: { space } }) => space.u2};
 `
 
 export const inputTextHover = css`
@@ -321,7 +321,7 @@ export const InputText = styled(InputTextLayout).attrs<InputTextProps>(
   cursor: text;
   display: inline-flex;
   justify-content: space-evenly;
-  padding: ${({ theme: { space } }) => `${space.xxxsmall} ${space.xxsmall}`};
+  padding: ${({ theme: { space } }) => `${space.u05} ${space.u1}`};
   width: ${({ autoResize }) => (autoResize ? 'auto' : '100%')};
 
   ${layout}
@@ -338,7 +338,7 @@ export const InputText = styled(InputTextLayout).attrs<InputTextProps>(
     width: 100%;
     input,
     span {
-      padding: 0 ${({ theme: { space } }) => space.xsmall};
+      padding: 0 ${({ theme: { space } }) => space.u2};
     }
   }
 

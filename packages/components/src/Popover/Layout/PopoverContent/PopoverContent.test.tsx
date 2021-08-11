@@ -40,7 +40,7 @@ describe('PopoverContent', () => {
 
   test('Custom padding', () => {
     renderWithTheme(
-      <PopoverContent pb="small" pt="xlarge" px="small">
+      <PopoverContent pb="u3" pt="u8" px="u3">
         Hello world
       </PopoverContent>
     )

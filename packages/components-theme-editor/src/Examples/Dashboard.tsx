@@ -48,10 +48,10 @@ import { FauxPieChart, FauxBarChart } from './Charts'
 
 export const FauxDashboard = () => (
   <Box bg="background">
-    <SpaceVertical p="xlarge" gap="xlarge">
+    <SpaceVertical p="u8" gap="u8">
       <Space between>
         <Heading fontSize="xxxlarge">Title</Heading>
-        <Space width="auto" gap="small">
+        <Space width="auto" gap="u3">
           <IconButton size="medium" label="Refresh" icon={<Refresh />} />
           <IconButton size="medium" label="Options" icon={<MoreVert />} />
         </Space>
@@ -75,7 +75,7 @@ export const FauxDashboard = () => (
         </Field>
       </Space>
 
-      <SpaceVertical align="center" gap="xxsmall">
+      <SpaceVertical align="center" gap="u1">
         <Heading as="h2">Some title here</Heading>
         <Heading as="h3" color="text2">
           Some less important information

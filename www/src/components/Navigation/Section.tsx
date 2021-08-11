@@ -69,5 +69,5 @@ export const Section: FC<SectionProps> = ({ section }) => {
 const PageList = styled.ul`
   font-size: ${({ theme }) => theme.fontSizes.small};
   list-style-type: none;
-  padding: 0 ${({ theme }) => theme.space.xsmall} 0 0;
+  padding: 0 ${({ theme }) => theme.space.u2} 0 0;
 `

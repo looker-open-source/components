@@ -69,7 +69,7 @@ const ModalContentLayout = forwardRef(
       pt,
       py,
       p,
-      overflowVerticalPadding = 'xxxsmall',
+      overflowVerticalPadding = 'u05',
       ...props
     }: ModalContentPropsInternal,
     forwardedRef: Ref<HTMLDivElement>

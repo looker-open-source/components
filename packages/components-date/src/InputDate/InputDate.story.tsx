@@ -60,9 +60,9 @@ export const Controlled = () => {
     setSelectedDate(date)
   }
   return (
-    <Space gap="xxlarge">
+    <Space gap="u10">
       <InputDate defaultValue={selectedDate} onChange={handleChange} />
-      <Box p="large" height="100%" borderLeft="1px solid #ccc">
+      <Box p="u5" height="100%" borderLeft="1px solid #ccc">
         <Heading>Selected:</Heading>
         <Text color="text2">
           <DateFormat>{selectedDate}</DateFormat>

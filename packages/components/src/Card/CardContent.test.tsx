@@ -36,7 +36,7 @@ describe('CardContent', () => {
   })
 
   test('custom padding', () => {
-    renderWithTheme(<CardContent p="xlarge">🥑</CardContent>)
+    renderWithTheme(<CardContent p="u8">🥑</CardContent>)
     expect(screen.getByText('🥑')).toHaveStyle('padding: 2rem')
   })
 })

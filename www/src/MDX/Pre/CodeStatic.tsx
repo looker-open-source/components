@@ -68,5 +68,5 @@ const PreWrapper = styled.pre`
   border-radius: ${({ theme }) => theme.radii.medium};
   line-height: ${({ theme }) => theme.lineHeights.medium};
   margin: ${({ theme }) => theme.lineHeights.medium} 0;
-  padding: ${({ theme }) => theme.space.medium};
+  padding: ${({ theme }) => theme.space.u4};
 `

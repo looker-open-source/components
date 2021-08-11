@@ -71,8 +71,8 @@ const ModalHeaderLayout: FC<ModalHeaderProps> = ({
 }
 
 const Detail = styled.div`
-  margin-bottom: -${({ theme }) => theme.space.xsmall};
-  margin-top: -${({ theme }) => theme.space.xsmall};
+  margin-bottom: -${({ theme }) => theme.space.u2};
+  margin-top: -${({ theme }) => theme.space.u2};
 `
 
 export const ModalHeader = styled(ModalHeaderLayout)<ModalHeaderProps>``

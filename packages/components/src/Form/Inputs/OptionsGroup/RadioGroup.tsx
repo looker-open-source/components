@@ -101,7 +101,7 @@ const RadioGroupLayout = forwardRef(
         data-testid="radio-list"
         inline={inline}
         wrap={inline}
-        gap={!inline ? 'xxsmall' : undefined}
+        gap={!inline ? 'u1' : undefined}
         width={inline ? 'auto' : undefined}
         ref={ref}
         {...rest}

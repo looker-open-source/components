@@ -55,7 +55,7 @@ export const ListLayoutDemo = () => {
   }
 
   return (
-    <SpaceVertical p="large">
+    <SpaceVertical p="u5">
       <Heading>ComboboxList width override</Heading>
       <Label>Move slider to adjust container width:</Label>
       <Slider

@@ -157,7 +157,7 @@ export const MenuHeadingOverride = () => (
  * and space below the last item is maintained even with extraneous dividers.
  */
 export const MenuListSpacing = () => (
-  <Space p="medium" style={{ background: '#ff8c69' }}>
+  <Space p="u4" style={{ background: '#ff8c69' }}>
     <Box bg="background">
       <MenuList>
         <MenuDivider />

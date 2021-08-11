@@ -280,7 +280,7 @@ export const SelectMultiDemo = () => {
   }
 
   return (
-    <SpaceVertical p="large" width={400}>
+    <SpaceVertical p="u5" width={400}>
       <Dialog isOpen={isOpen} onClose={handleClose}>
         <DialogLayout header="SelectMulti in a Dialog">
           <FieldSelectMulti

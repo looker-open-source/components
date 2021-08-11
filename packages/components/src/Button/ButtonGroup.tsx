@@ -59,7 +59,7 @@ export const ButtonGroup = styled(ButtonGroupLayout)`
   ${ButtonItem} {
     border: 1px solid ${({ theme }) => theme.colors.ui2};
     border-radius: ${({ theme }) => theme.radii.medium};
-    margin-right: ${({ theme }) => theme.space.xxsmall};
+    margin-right: ${({ theme }) => theme.space.u1};
     &:last-child {
       margin-right: 0;
     }
@@ -69,9 +69,9 @@ export const ButtonGroup = styled(ButtonGroupLayout)`
     }
   }
   &.wrapping {
-    margin: -${({ theme }) => theme.space.xxxsmall};
+    margin: -${({ theme }) => theme.space.u05};
     ${ButtonItem} {
-      margin: ${({ theme }) => theme.space.xxxsmall};
+      margin: ${({ theme }) => theme.space.u05};
     }
   }
 `

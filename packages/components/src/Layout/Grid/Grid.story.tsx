@@ -78,12 +78,12 @@ GapSize.args = {
       <Placeholder>D</Placeholder>
     </>
   ),
-  gap: 'xxlarge',
+  gap: 'u10',
 }
 
 export const VerticalGrid = () => (
   <Grid columns={4}>
-    <Grid columns={1} gap="xxlarge">
+    <Grid columns={1} gap="u10">
       <Placeholder minHeight="5rem">A</Placeholder>
       <Placeholder>B</Placeholder>
       <Placeholder>C</Placeholder>

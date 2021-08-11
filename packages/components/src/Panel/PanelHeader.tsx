@@ -47,9 +47,9 @@ export const PanelHeader: FC<PanelBaseProps> = ({
   return (
     <Space
       as="header"
-      height={space.xxlarge}
+      height={space.u10}
       px="large"
-      gap="small"
+      gap="u3"
       mt="small"
       mb="1.5rem"
       flexShrink={0}

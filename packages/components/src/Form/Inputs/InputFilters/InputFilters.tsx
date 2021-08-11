@@ -45,11 +45,11 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
   className,
   filters,
   hideFilterIcon = false,
-  placeholder,
   onChange,
+  ...props
 }) => {
   const { t } = useTranslation('InputFilters')
-  placeholder ||= t('Filter List')
+  const placeholder = props.placeholder || t('Filter List')
   const [fieldEditing, setFieldEditing] = useState<undefined | string>(
     undefined
   )
@@ -219,7 +219,7 @@ const ChipWrapper = styled.div`
   flex-wrap: wrap;
 
   @supports (gap: 4px) {
-    gap: ${({ theme }) => theme.space.xxsmall};
+    gap: ${({ theme }) => theme.space.u1};
     ${Chip} {
       margin: 0;
     }
@@ -232,13 +232,13 @@ export const InputFilters = styled(InputFiltersLayout)`
   border-radius: ${({ theme: { radii } }) => radii.medium};
   display: flex;
   flex-wrap: wrap;
-  padding: ${({ theme: { space } }) => space.xxxsmall} 0;
-  padding-left: ${({ theme: { space } }) => space.xsmall};
+  padding: ${({ theme: { space } }) => space.u05} 0;
+  padding-left: ${({ theme: { space } }) => space.u2};
 
   width: 100%;
 
   ${Select} {
-    margin-left: ${({ theme: { space } }) => space.xxsmall};
+    margin-left: ${({ theme: { space } }) => space.u1};
   }
 
   ${Select} ${Icon} {

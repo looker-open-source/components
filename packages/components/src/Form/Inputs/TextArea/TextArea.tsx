@@ -106,8 +106,8 @@ export const TextArea = styled(TextAreaLayout).attrs<TextAreaProps>(
     margin: 0; /* override browser default(s) */
     ${simpleLayoutCSS}
     ${inputCSS}
-    padding: ${({ theme }) => `${theme.space.xsmall} ${theme.space.small}`};
-    padding-right: ${(props) => props.theme.space.xlarge};
+    padding: ${({ theme }) => `${theme.space.u2} ${theme.space.u3}`};
+    padding-right: ${(props) => props.theme.space.u8};
     ${textAreaResize}
     vertical-align: top; /* textarea is inline-block so this removes 4px generated below */
     width: 100%;

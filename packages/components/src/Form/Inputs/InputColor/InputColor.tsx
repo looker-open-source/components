@@ -136,7 +136,7 @@ export const InputColorInternal = forwardRef(
     }
 
     const content = (
-      <PopoverContent p="medium">
+      <PopoverContent p="u4">
         <ColorPicker
           hsv={color || { h: 0, s: 1, v: 1 }}
           setHsv={setColorState}

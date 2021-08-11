@@ -50,7 +50,7 @@ const BlendColor = styled(
     display: block;
     flex-shrink: 0;
     height: 2.5rem;
-    margin-right: ${({ theme }) => theme.space.medium};
+    margin-right: ${({ theme }) => theme.space.u4};
     width: 5rem;
   }
 `
@@ -88,7 +88,7 @@ export const ColorBlendsGrid = ({
 }: {
   statefulColorGroups: StatefulColorGroups
 }) => (
-  <BlendGrid gap="large" maxWidth={1000}>
+  <BlendGrid gap="u5" maxWidth={1000}>
     {statefulColorGroups.map((group, index) => (
       <BlendList colors={group} key={index} />
     ))}

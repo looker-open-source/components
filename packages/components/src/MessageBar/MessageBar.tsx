@@ -242,7 +242,7 @@ MessageBarLayout.displayName = 'MessageBarLayout'
 
 const MessageBarContent = styled.div`
   flex-grow: 1;
-  padding: 0 ${({ theme: { space } }) => space.large};
+  padding: 0 ${({ theme: { space } }) => space.u5};
 `
 
 const backgroundColor = variant({

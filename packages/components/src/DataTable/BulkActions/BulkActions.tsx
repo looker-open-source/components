@@ -98,7 +98,7 @@ const BulkActionsLayout: FC<BulkActionsProps> = ({
           {t('Bulk Actions')}
         </Button>
       </Menu>
-      <Space gap="small" justifyContent="center">
+      <Space gap="u3" justifyContent="center">
         {selectedItemsText}
         {selectTotalResultsButton}
       </Space>
@@ -116,7 +116,7 @@ export const BulkActions = styled(BulkActionsLayout)`
   position: relative;
 
   ${Button} {
-    left: ${({ theme }) => theme.space.small};
+    left: ${({ theme }) => theme.space.u3};
     position: absolute;
   }
 `

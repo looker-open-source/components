@@ -424,7 +424,7 @@ export const InputChipsBase = styled(InputChipsBaseInternal)`
 
   ${Chip} {
     margin: 1px 0;
-    margin-right: ${({ theme: { space } }) => space.xxsmall};
+    margin-right: ${({ theme: { space } }) => space.u1};
   }
 
   .inner {

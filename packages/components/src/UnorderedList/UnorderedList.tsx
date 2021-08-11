@@ -88,6 +88,6 @@ export const UnorderedList = styled.ul
   ${layout}
 
   li {
-    margin-bottom: ${({ theme }) => theme.space.xxsmall};
+    margin-bottom: ${({ theme }) => theme.space.u1};
   }
 `

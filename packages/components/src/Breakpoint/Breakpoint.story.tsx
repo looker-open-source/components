@@ -111,7 +111,7 @@ const Template: Story<BreakpointProps> = () => {
   return (
     <>
       <Breakpoint show="mobile">
-        <NavHeader backgroundColor="ui1" p="small">
+        <NavHeader backgroundColor="ui1" p="u3">
           <MobileHeaderGrid>
             <Box color="key">
               <Home size="1.5rem" title="Home" />
@@ -119,7 +119,7 @@ const Template: Story<BreakpointProps> = () => {
             <IconButton icon={<Menu />} label="navigation" />
           </MobileHeaderGrid>
         </NavHeader>
-        <Grid p="small" columns={1}>
+        <Grid p="u3" columns={1}>
           <NatureCard backgroundColor="criticalFocus" />
           <NatureCard backgroundColor="keyFocus" />
           <NatureCard backgroundColor="text2" />
@@ -128,7 +128,7 @@ const Template: Story<BreakpointProps> = () => {
       </Breakpoint>
 
       <Breakpoint show={['tablet', undefined]}>
-        <NavHeader backgroundColor="inverse" p="medium">
+        <NavHeader backgroundColor="inverse" p="u4">
           <LargeHeaderGrid>
             <Box color="text1">My logo here!</Box>
             <nav>
@@ -150,7 +150,7 @@ const Template: Story<BreakpointProps> = () => {
             <InputSearch placeholder="Search" />
           </LargeHeaderGrid>
         </NavHeader>
-        <Box p="medium">
+        <Box p="u4">
           <Breakpoint show={['tablet', 'laptop']}>
             <Grid columns={2}>
               <NatureCard backgroundColor="criticalFocus" />
