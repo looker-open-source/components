@@ -32,7 +32,7 @@ export const HANDLE_SIZE = theme.sizes.small
 export const handleCSS = css<HandleProps>`
   border: 2px solid ${({ theme: { colors } }) => colors.background};
   border-radius: 100%;
-  box-shadow: ${({ theme }) => theme.shadows[1]};
+  box-shadow: ${({ theme }) => theme.elevations.plus1};
   cursor: ${({ isMouseDown }) => (isMouseDown ? 'grabbing' : 'pointer')};
   height: ${HANDLE_SIZE};
   left: 0;

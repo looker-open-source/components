@@ -86,7 +86,7 @@ export const DrawerSurface = styled(SurfaceBase).attrs<DrawerSurfaceProps>(
     width,
   })
 )<DrawerSurfaceProps>`
-  /* Shadow designed to match theme.shadows[3] but with a single left-side shadow */
+  /* Shadow designed to match theme.elevations.plus3 but with a single left-side shadow */
   height: 100%;
   position: absolute;
   transition: transform ${surfaceTransition}, opacity ${surfaceTransition};

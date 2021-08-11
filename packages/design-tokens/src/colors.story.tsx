@@ -88,7 +88,7 @@ GroupedByOutput.parameters = {
 }
 
 export default {
-  title: 'Colors',
+  title: 'Design Tokens / Colors',
 }
 
 const GridLayout = styled.div`
@@ -109,7 +109,7 @@ interface SwatchProps {
 const CircleSwatch = styled.div<SwatchProps>`
   background: ${({ color }) => color};
   border-radius: 50%;
-  box-shadow: ${({ theme }) => theme.shadows[3]};
+  box-shadow: ${({ theme }) => theme.elevations.plus3};
   display: flex;
   height: 3rem;
   justify-content: space-between;
