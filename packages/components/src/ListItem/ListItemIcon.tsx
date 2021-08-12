@@ -24,7 +24,12 @@
 
  */
 
-import styled, { DefaultTheme, StyledComponent } from 'styled-components'
+import { useContext } from 'react'
+import styled, {
+  DefaultTheme,
+  StyledComponent,
+  ThemeContext,
+} from 'styled-components'
 import {
   color as colorHelper,
   DensityProp,
@@ -50,8 +55,11 @@ export const ListItemIcon: StyledComponent<
   DefaultTheme,
   ListItemIconProps
 > = styled.div.attrs<ListItemIconProps>(
-  ({ color, disabled, density = 0, ...props }) => {
-    const { iconGap, iconSize } = listItemDimensions(density)
+  ({ color, disabled, density, ...props }) => {
+    const theme = useContext(ThemeContext)
+    const { iconGap, iconSize } = listItemDimensions(
+      density || theme.defaults.density
+    )
 
     return {
       ...props,

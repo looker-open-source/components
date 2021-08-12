@@ -254,10 +254,14 @@ export const NavTree = styled(NavTreeLayout)`
   ${AccordionIndicator} {
     padding-left: ${INDICATOR_SPACER};
     ${({ icon, theme }) =>
-      !icon && `margin-right: ${theme.space[listItemDimensions().iconGap]}`}
+      !icon &&
+      `margin-right: ${
+        theme.space[listItemDimensions(theme.defaults.density).iconGap]
+      }`}
   }
 
   ${ListItemDetail} {
-    padding-right: ${({ theme }) => theme.space[listItemDimensions().px]};
+    padding-right: ${({ theme }) =>
+      theme.space[listItemDimensions(theme.defaults.density).px]};
   }
 `

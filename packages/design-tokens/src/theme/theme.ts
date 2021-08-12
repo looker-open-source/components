@@ -39,6 +39,7 @@ import {
   Shadows,
   TransitionRamp,
   FontSources,
+  DensityRamp,
 } from '../system'
 
 /**
@@ -74,11 +75,15 @@ export interface Theme {
   space: SpaceRamp
   transitions: TransitionRamp
   zIndexFloor: number
+  defaults: {
+    density: DensityRamp
+  }
 }
 
 export const theme: DefaultTheme = {
   breakpoints,
   colors,
+  defaults: { density: 0 },
   easings,
   elevations,
   fontSizes,

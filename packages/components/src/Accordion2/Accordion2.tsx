@@ -54,7 +54,9 @@ const Accordion2Internal = (props: Accordion2Props) => {
  * styling.
  */
 export const Accordion2 = styled(Accordion2Internal)<Accordion2Props>`
-  font-size: ${({ theme, density = 0 }) =>
-    theme.fontSizes[accordionDimensions(density).fontSize]};
+  font-size: ${({ theme, density }) =>
+    theme.fontSizes[
+      accordionDimensions(density || theme.defaults.density).fontSize
+    ]};
   width: 100%;
 `

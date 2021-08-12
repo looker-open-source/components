@@ -25,7 +25,7 @@
  */
 
 import React, { FC, useContext, ReactNode } from 'react'
-import styled from 'styled-components'
+import styled, { ThemeContext } from 'styled-components'
 import {
   TextColorProps,
   TypographyProps,
@@ -49,10 +49,11 @@ const MenuHeadingInternal: FC<MenuHeadingProps> = ({
   className,
   ...restProps
 }) => {
+  const theme = useContext(ThemeContext)
   const [isLabelShimVisible, ref] = useElementVisibility()
 
   const { density } = useContext(ListItemContext)
-  const { px } = listItemDimensions(density)
+  const { px } = listItemDimensions(density || theme.defaults.density)
 
   return (
     <MenuHeadingWrapper

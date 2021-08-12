@@ -25,8 +25,8 @@
  */
 
 import { CompatibleHTMLProps, DensityProp } from '@looker/design-tokens'
-import React, { ReactNode } from 'react'
-import styled from 'styled-components'
+import React, { ReactNode, useContext } from 'react'
+import styled, { ThemeContext } from 'styled-components'
 import { TruncateConfigProp, TruncateOptionally } from '../Truncate'
 import { ListItemColorProp } from './types'
 import { listItemDimensions, listItemLabelColor } from './utils'
@@ -44,17 +44,18 @@ export const ListItemLabel = styled(
     color,
     children,
     disabled,
-    density = 0,
+    density,
     description,
     truncate,
     ...props
   }: ListItemLabelProps) => {
+    const theme = useContext(ThemeContext)
     const {
       descriptionFontSize,
       descriptionLineHeight,
       labelFontSize,
       labelLineHeight,
-    } = listItemDimensions(density)
+    } = listItemDimensions(density || theme.defaults.density)
 
     return (
       <div {...props}>

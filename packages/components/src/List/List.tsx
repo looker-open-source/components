@@ -30,6 +30,7 @@ import React, {
   isValidElement,
   ReactChild,
   Ref,
+  useContext,
   useMemo,
 } from 'react'
 import {
@@ -43,7 +44,7 @@ import {
   width,
   WidthProps,
 } from '@looker/design-tokens'
-import styled from 'styled-components'
+import styled, { ThemeContext } from 'styled-components'
 import { useArrowKeyNav, useWindow } from '../utils'
 import { ListItemContext, listItemDimensions } from '../ListItem'
 
@@ -107,7 +108,7 @@ export const ListInternal = forwardRef(
     {
       children,
       color,
-      density = 0,
+      density,
       disabled,
       disableKeyboardNav,
       height,
@@ -122,10 +123,8 @@ export const ListInternal = forwardRef(
     forwardedRef: Ref<HTMLUListElement>
   ) => {
     const childArray = useMemo(() => Children.toArray(children), [children])
-
-    const itemDimensions = listItemDimensions(
-      density !== undefined ? density : 0
-    )
+    const theme = useContext(ThemeContext)
+    const itemDimensions = listItemDimensions(density || theme.defaults.density)
 
     if (windowing === undefined) {
       windowing = childArray.length > 100

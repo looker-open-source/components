@@ -47,7 +47,7 @@ export type CreateListItemPartitionsProps = {
 
 export const createListItemPartitions = ({
   color,
-  density = 0,
+  density,
   description,
   detail,
   disabled,

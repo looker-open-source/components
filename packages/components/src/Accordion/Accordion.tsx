@@ -134,8 +134,10 @@ const AccordionInternal: FC<AccordionProps> = ({
  * @deprecated Use `Accordion2` instead
  */
 export const Accordion = styled(AccordionInternal)`
-  font-size: ${({ theme, density = 0 }) =>
-    theme.fontSizes[accordionDimensions(density).fontSize]};
+  font-size: ${({ theme, density }) =>
+    theme.fontSizes[
+      accordionDimensions(density || theme.defaults.density).fontSize
+    ]};
   width: 100%;
 
   ${AccordionDisclosure}, ${AccordionContent} {

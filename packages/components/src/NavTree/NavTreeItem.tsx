@@ -25,7 +25,7 @@
  */
 
 import React, { useContext } from 'react'
-import styled from 'styled-components'
+import styled, { ThemeContext } from 'styled-components'
 import { SpacingSizes } from '@looker/design-tokens'
 import {
   generateIndentCalculation,
@@ -58,10 +58,10 @@ const IndentOverrideTreeItem = styled(TreeItem).withConfig<
     ].includes(prop),
 })`
   ${TreeItemContent} {
-    ${({ depth = 0, density = 0, iconGap, indicatorGap, parentIcon, theme }) =>
+    ${({ depth = 0, density, iconGap, indicatorGap, parentIcon, theme }) =>
       `padding-left: calc(${generateIndentCalculation(
         parentIcon ? depth + 1 : depth,
-        density,
+        density || theme.defaults.density,
         theme
       )} + ${theme.space[iconGap]} - ${
         theme.space[indicatorGap]
@@ -74,8 +74,9 @@ const IndentOverrideTreeItem = styled(TreeItem).withConfig<
 `
 
 export const NavTreeItem = styled((props: NavTreeItemProps) => {
+  const theme = useContext(ThemeContext)
   const { depth } = useContext(TreeContext)
-  const { iconGap, px } = listItemDimensions()
+  const { iconGap, px } = listItemDimensions(theme.defaults.density)
   const { indicatorGap } = accordionDimensions()
 
   return (
