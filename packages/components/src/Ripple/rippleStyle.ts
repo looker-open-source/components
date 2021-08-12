@@ -25,7 +25,6 @@
  */
 
 import { css, keyframes, Keyframes } from 'styled-components'
-import { RippleAnimationValues, RippleColorProps } from './types'
 
 const rippleRadiusIn: Keyframes = keyframes`
 from {
@@ -58,21 +57,10 @@ to {
 }
 `
 
-export type RippleStyleProps = RippleAnimationValues & RippleColorProps
-
 /**
  * Uses :before as fade-in overlay "background" and :after as rippling overlay
  */
-export const rippleStyle = ({
-  color = 'neutral',
-  rippleOffset,
-  rippleScaleRange,
-  rippleSize,
-}: RippleStyleProps) => css`
-  --ripple-scale-start: ${rippleScaleRange[0] || 1};
-  --ripple-scale-end: ${rippleScaleRange[1] || 1};
-  --ripple-translate: ${rippleOffset};
-
+export const rippleStyle = css`
   outline: none;
   overflow: hidden;
   position: relative;
@@ -80,17 +68,17 @@ export const rippleStyle = ({
 
   &::before,
   &::after {
-    background-color: ${({ theme }) => theme.colors[color]};
+    background-color: var(--ripple-color, #000000);
     border-radius: 50%;
     content: '';
-    height: ${rippleSize};
+    height: var(--ripple-size, 100%);
     left: 0;
     opacity: 0;
     pointer-events: none;
     position: absolute;
     top: 0;
     transform-origin: center center;
-    width: ${rippleSize};
+    width: var(--ripple-size, 100%);
   }
 
   &::before {

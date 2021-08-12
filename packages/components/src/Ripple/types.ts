@@ -24,25 +24,9 @@
 
  */
 
-import { ExtendedStatefulColor } from '@looker/design-tokens'
-
 export type RippleCallbacks = {
   endBG: () => void
   endFG: () => void
   startBG: () => void
   startFG: () => void
-}
-
-export type RippleAnimationValues = {
-  rippleSize: string
-  rippleScaleRange: [number, number]
-  rippleOffset: string
-}
-
-export type RippleColorProps = {
-  /**
-   * Change the color of the ripple background and foreground
-   * @default neutral
-   */
-  color?: ExtendedStatefulColor
 }
