@@ -55,9 +55,9 @@ const reducer: Reducer<RippleState, RippleAction> = (state, action) => {
 
 const getRippleClassName = (rippling: RippleState) => {
   if (rippling === 'IN') {
-    return `fg-in`
+    return 'fg-in'
   } else if (rippling === 'OUT') {
-    return `fg-out`
+    return 'fg-out'
   }
   return ''
 }
