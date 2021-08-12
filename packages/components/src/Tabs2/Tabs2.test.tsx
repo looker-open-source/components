@@ -28,11 +28,14 @@ import 'jest-styled-components'
 import '@testing-library/jest-dom/extend-expect'
 import { renderWithTheme } from '@looker/components-test-utils'
 import React from 'react'
+import { composeStories } from '@storybook/testing-react'
 import { fireEvent, screen } from '@testing-library/react'
-import { Basic, Controlled, DefaultTab } from './Tabs2.story'
+import * as stories from './Tabs2.story'
+
+const { Basic, Controlled, DefaultTab } = composeStories(stories)
 
 describe('Tabs2', () => {
-  test('renders the correct number of navigation tabs with the Tab at index 0', () => {
+  test('basic', () => {
     renderWithTheme(<Basic />)
     expect(screen.getAllByRole('tab')).toHaveLength(5)
     expect(
@@ -40,7 +43,7 @@ describe('Tabs2', () => {
     ).toBeInTheDocument()
   })
 
-  test('starts with Tab passed as defaultTabId', () => {
+  test('defaultTabId', () => {
     renderWithTheme(<DefaultTab />)
 
     expect(
@@ -62,7 +65,7 @@ describe('Tabs2', () => {
     expect(screen.queryByText('Are kinda smelly')).toBeInTheDocument()
   })
 
-  test('clicking on disabled tab does not change panel', () => {
+  test('disabled', () => {
     renderWithTheme(<Basic />)
 
     expect(
@@ -76,7 +79,7 @@ describe('Tabs2', () => {
     expect(screen.queryByText('not available')).not.toBeInTheDocument()
   })
 
-  test('controlled environment', () => {
+  test('controlled', () => {
     renderWithTheme(<Controlled />)
 
     expect(

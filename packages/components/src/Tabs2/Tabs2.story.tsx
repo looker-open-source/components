@@ -25,13 +25,19 @@
  */
 
 import React, { FC, useState } from 'react'
+import { Story } from '@storybook/react/types-6-0'
 import { Button } from '../Button'
 import { Divider } from '../Divider'
 import { Space } from '../Layout/Space'
-import { Tab2, Tabs2 } from './'
+import { Tab2, Tabs2, Tabs2Props } from './'
 
-export const Basic = () => (
-  <Tabs2>
+export default {
+  component: Tabs2,
+  title: 'Tabs2',
+}
+
+const Template: Story<Partial<Tabs2Props>> = (args) => (
+  <Tabs2 {...args}>
     <Tab2 id="cats" label="Cats">
       Here's awesome story about cats
     </Tab2>
@@ -45,35 +51,13 @@ export const Basic = () => (
   </Tabs2>
 )
 
-export const Distributed = () => (
-  <Tabs2 distributed>
-    <Tab2 id="cats" label="Cats">
-      Here's awesome story about cats
-    </Tab2>
-    <Tab2 id="dogs" label="Dogs">
-      Cats are way better than dogs. Go to other tab
-    </Tab2>
-    <Tab2 label="Fish">Are kinda smelly</Tab2>
-    <Tab2 disabled label="Human">
-      not available
-    </Tab2>
-  </Tabs2>
-)
+export const Basic = Template.bind({})
 
-export const DefaultTab = () => (
-  <Tabs2 defaultTabId="dogs">
-    <Tab2 id="cats" label="Cats">
-      Here's awesome story about cats
-    </Tab2>
-    <Tab2 id="dogs" label="Dogs">
-      Cats are way better than dogs. Go to other tab
-    </Tab2>
-    <Tab2 label="Fish">Are kinda smelly</Tab2>
-    <Tab2 disabled label="Human">
-      not available
-    </Tab2>
-  </Tabs2>
-)
+export const Distributed = Template.bind({})
+Distributed.args = { distributed: true }
+
+export const DefaultTab = Template.bind({})
+DefaultTab.args = { defaultTabId: 'dogs' }
 
 export const Controlled: FC = () => {
   const [currentTabIndex, setTab] = useState('cats')
@@ -95,9 +79,4 @@ export const Controlled: FC = () => {
       </Tabs2>
     </>
   )
-}
-
-export default {
-  component: Tabs2,
-  title: 'Tabs2',
 }

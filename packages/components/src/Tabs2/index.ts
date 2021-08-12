@@ -25,6 +25,5 @@
  */
 
 export * from './Tab2'
-export * from './TabList2'
-export * from './TabPanels2'
 export * from './Tabs2'
+export * from './types'

@@ -24,18 +24,13 @@
 
  */
 
-import React, { forwardRef, ReactNode, Ref } from 'react'
+import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
 import {
-  CompatibleHTMLProps,
   layout,
-  LayoutProps,
   reset,
   padding,
-  PaddingProps,
-  shouldForwardProp,
   typography,
-  TypographyProps,
   tabShadowColor,
 } from '@looker/design-tokens'
 import {
@@ -44,29 +39,28 @@ import {
   useFocusVisible,
   useWrapEvent,
 } from '../utils'
+import { Tab2Props } from './types'
 
-export interface Tab2Props
-  extends Omit<CompatibleHTMLProps<HTMLButtonElement>, 'type'>,
-    LayoutProps,
-    PaddingProps,
-    TypographyProps {
-  children: ReactNode
-  disabled?: boolean
-  id?: string
-  label: string
-  onSelect?: () => void
-  selected?: boolean
-}
+type Tab2StyleProps = Omit<Tab2Props, 'label'> & FocusVisibleProps
 
-const Tab2Style = styled.button
-  .withConfig({ shouldForwardProp })
-  .attrs(({ type = 'button' }) => ({
-    type,
-  }))<Tab2Props & FocusVisibleProps>`
+export const Tab2Style = styled.button.attrs<Tab2StyleProps>(
+  ({
+    fontSize = 'small',
+    fontWeight = 'medium',
+    pb = 'small',
+    pt = 'xsmall',
+  }) => ({
+    fontSize,
+    fontWeight,
+    pb,
+    pt,
+  })
+)<Tab2StyleProps>`
   ${reset}
   ${layout}
   ${padding}
   ${typography}
+
   background: transparent;
   border: none;
   border-bottom: 3px solid;
@@ -80,21 +74,26 @@ const Tab2Style = styled.button
   font-family: ${({ theme }) => theme.fonts.brand};
   /* Remove default margin button in Safari */
   margin: 0;
+
   &:active {
     border-bottom-color: ${({ selected, theme }) =>
       selected ? theme.colors.key : theme.colors.text2};
   }
+
   &:active,
   &:hover {
     border-bottom-color: transparent;
   }
+
   &:focus {
     outline: none;
   }
+
   &:hover {
     border-bottom-color: ${({ selected, theme }) =>
       selected ? theme.colors.key : theme.colors.ui3};
   }
+
   &:disabled {
     border-bottom-color: transparent;
     color: ${({ theme }) => theme.colors.text1};
@@ -102,61 +101,35 @@ const Tab2Style = styled.button
   }
 `
 
-const Tab2Layout = forwardRef(
-  (props: Tab2Props, ref: Ref<HTMLButtonElement>) => {
-    const {
-      children,
-      disabled,
-      id,
-      onBlur,
-      onClick,
-      onKeyUp,
-      onSelect,
-      selected,
-      ...restProps
-    } = props
+export const Tab2 = styled(
+  forwardRef(
+    (
+      { id, onBlur, onClick, onKeyUp, onSelect, ...restProps }: Tab2Props,
+      ref: Ref<HTMLButtonElement>
+    ) => {
+      const handleClick = useWrapEvent(() => {
+        if (!restProps.disabled && onSelect) {
+          onSelect()
+        }
+      }, onClick)
 
-    const handleClick = useWrapEvent(() => {
-      if (!disabled && onSelect) {
-        onSelect()
-      }
-    }, onClick)
+      const focusVisibleProps = useFocusVisible({ onBlur, onKeyUp })
 
-    const focusVisibleProps = useFocusVisible({ onBlur, onKeyUp })
-
-    return (
-      <Tab2Style
-        aria-controls={`panel-${id}`}
-        aria-orientation="horizontal"
-        aria-selected={selected}
-        disabled={disabled}
-        id={`tab-${id}`}
-        onClick={handleClick}
-        ref={ref}
-        role="tab"
-        selected={selected}
-        tabIndex={-1}
-        {...focusVisibleProps}
-        {...restProps}
-      >
-        {children}
-      </Tab2Style>
-    )
-  }
-)
-
-Tab2Layout.displayName = 'TabJSX'
-
-export const Tab2 = styled(Tab2Layout).attrs(
-  ({
-    fontSize = 'small',
-    fontWeight = 'medium',
-    pb = 'small',
-    pt = 'xsmall',
-  }) => ({
-    fontSize,
-    fontWeight,
-    pb,
-    pt,
-  })
+      return (
+        <Tab2Style
+          aria-controls={`panel-${id}`}
+          aria-orientation="horizontal"
+          aria-selected={restProps.selected}
+          id={`tab-${id}`}
+          onClick={handleClick}
+          ref={ref}
+          role="tab"
+          tabIndex={-1}
+          type="button"
+          {...focusVisibleProps}
+          {...restProps}
+        />
+      )
+    }
+  )
 )``

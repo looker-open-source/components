@@ -24,45 +24,49 @@
 
  */
 
-import React, { FC } from 'react'
-import styled from 'styled-components'
+import { ReactElement } from 'react'
 import {
-  FlexboxProps,
+  CompatibleHTMLProps,
   LayoutProps,
-  SpaceProps,
-  flexbox,
-  layout,
-  space,
-  reset,
+  PaddingProps,
+  TypographyProps,
 } from '@looker/design-tokens'
 
-export type TabPanels2Props = FlexboxProps &
+export type Tab2Props = Omit<CompatibleHTMLProps<HTMLButtonElement>, 'type'> &
   LayoutProps &
-  SpaceProps & {
-    children: JSX.Element
-    className?: string
-    id: string
+  PaddingProps &
+  TypographyProps & {
+    label: string
+    onSelect?: () => void
+    selected?: boolean
   }
 
-const TabPanels2Layout: FC<TabPanels2Props> = ({ children, className, id }) => (
-  <div
-    aria-labelledby={`tab-${id}`}
-    className={className}
-    id={`panel-${id}`}
-    role="tabpanel"
-  >
-    {children}
-  </div>
-)
+type TabStackMember = Tab2Props & {
+  id: string
+}
 
-export const TabPanels2 = styled(TabPanels2Layout).attrs(
-  ({ height = '100%', pt = 'large' }) => ({
-    height,
-    pt,
-  })
-)`
-  ${reset}
-  ${flexbox}
-  ${layout}
-  ${space}
-`
+export type TabStack = TabStackMember[]
+
+export type Tabs2Props = {
+  children: ReactElement<Tab2Props> | ReactElement<Tab2Props>[]
+
+  /**
+   * Which tab to show on load
+   */
+  defaultTabId?: string
+
+  /**
+   * Callback called when tabId changes
+   */
+  onTabChange?: (tabId: string) => void
+
+  /**
+   * Controlled: which tab to show now
+   */
+  tabId?: string
+
+  /**
+   * Spread the Tab between all the space available
+   */
+  distributed?: boolean
+}

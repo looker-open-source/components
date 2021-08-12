@@ -24,28 +24,11 @@
 
  */
 
-import React, { Children, ReactElement, useEffect, useState } from 'react'
-import { Tab2, Tab2Props } from './Tab2'
+import React, { Children, useEffect, useState } from 'react'
+import { Tab2 } from './Tab2'
 import { TabList2 } from './TabList2'
 import { TabPanels2 } from './TabPanels2'
-
-type Tabs2Props = {
-  children: ReactElement<Tab2Props> | ReactElement<Tab2Props>[]
-
-  /* Which tab to show on load */
-  defaultTabId?: string
-
-  /* Callback called when tabId changes */
-  onTabChange?: (tabId: string) => void
-
-  /* Controlled: which tab to show now */
-  tabId?: string
-
-  /* spread the Tab between all the space available */
-  distributed?: boolean
-}
-
-type TabStack = Tab2Props[]
+import { Tabs2Props, TabStack } from './types'
 
 export const Tabs2 = ({
   children,
@@ -62,7 +45,7 @@ export const Tabs2 = ({
     const draftTabs: TabStack = Children.map(
       children,
       (child: JSX.Element) => ({
-        children: child,
+        children: child.props.children,
         disabled: child.props.disabled,
         id: child.props.id || child.props.label,
         label: child.props.label,
@@ -83,19 +66,17 @@ export const Tabs2 = ({
   const handleTabChange = (draftId: string) =>
     onTabChange ? onTabChange(draftId) : setCurrentTabId(draftId)
 
-  const labels = tabs.map(({ disabled, label, id }, index) => {
-    return (
-      <Tab2
-        disabled={disabled}
-        label={label}
-        key={index}
-        selected={id === tabId}
-        onSelect={() => handleTabChange(id || label)}
-      >
-        {label}
-      </Tab2>
-    )
-  })
+  const labels = tabs.map(({ disabled, label, id }, index) => (
+    <Tab2
+      disabled={disabled}
+      label={label}
+      key={index}
+      selected={id === tabId}
+      onSelect={() => handleTabChange(id || label)}
+    >
+      {label}
+    </Tab2>
+  ))
 
   const currentTab = tabs.find((tab) => tab.id === tabId)
 
@@ -103,7 +84,9 @@ export const Tabs2 = ({
     <>
       <TabList2 distribute={distributed}>{labels}</TabList2>
       {currentTab && (
-        <TabPanels2>{currentTab.children as any as JSX.Element}</TabPanels2>
+        <TabPanels2 id={currentTab.id}>
+          {currentTab.children as any as JSX.Element}
+        </TabPanels2>
       )}
     </>
   )
