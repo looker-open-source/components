@@ -109,7 +109,7 @@ export const useRipple = ({
   // otherwise ref is wasteful since it triggers a state update & re-render
   const [element, ref] = useCallbackRef()
   const [{ width, height }] = useMeasuredElement(element)
-  // Get the transitions to match the ripple-in & -out animation durations
+  // Get the theme colors to apply the right value for the color prop
   const { colors } = useContext(ThemeContext)
 
   // Get values for animation – bounded uses dimensions, otherwise they're static
