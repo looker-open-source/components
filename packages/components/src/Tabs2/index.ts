@@ -25,6 +25,5 @@
  */
 
 export * from './Tab2'
-export { TabList2CSS } from './TabList2'
 export * from './Tabs2'
 export * from './types'

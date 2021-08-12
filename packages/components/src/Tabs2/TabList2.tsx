@@ -29,8 +29,8 @@ import React, { forwardRef, Ref } from 'react'
 import { fontSize, padding, reset } from '@looker/design-tokens'
 import styled, { css } from 'styled-components'
 import { useArrowKeyNav } from '../utils'
-import { Tab2 } from './Tab2'
 import { TabList2Props } from './types'
+import { Tab2 } from './Tab2'
 
 const defaultLayoutCSS = css`
   ${Tab2} {
@@ -50,7 +50,7 @@ const distributeCSS = css`
   }
 `
 
-export const TabList2CSS = css<TabList2Props>`
+const TabList2CSS = css<TabList2Props>`
   ${reset}
   ${padding}
   ${fontSize}
