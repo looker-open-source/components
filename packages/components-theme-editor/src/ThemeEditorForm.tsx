@@ -84,7 +84,7 @@ export const ThemeEditorForm: FC<ThemeEditorFormProps> = ({
             options={arrayToSelectOptions(fontOptions)}
             value={theme.fontFamilies && theme.fontFamilies[family]}
             isClearable
-            onChange={(newFont) => handleFontChange(family, newFont)}
+            onChange={(newFont: string) => handleFontChange(family, newFont)}
           />
         ))}
       </Fieldset>

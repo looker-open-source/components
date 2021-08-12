@@ -31,16 +31,16 @@ import styled from 'styled-components'
 const FauxChartLayout: FC<{ className?: string }> = ({ className }) => (
   <ul className={className}>
     <li>
-      <Box mx="large" height="20%" title="Gouda" bg="inform"></Box>
+      <Box mx="u5" height="20%" title="Gouda" bg="inform"></Box>
     </li>
     <li>
-      <Box mx="large" height="60%" title="Cheddar" bg="positive"></Box>
+      <Box mx="u5" height="60%" title="Cheddar" bg="positive"></Box>
     </li>
     <li>
-      <Box mx="large" height="90%" title="Swiss" bg="warn"></Box>
+      <Box mx="u5" height="90%" title="Swiss" bg="warn"></Box>
     </li>
     <li>
-      <Box mx="large" height="40%" title="Blue" bg="critical"></Box>
+      <Box mx="u5" height="40%" title="Blue" bg="critical"></Box>
     </li>
   </ul>
 )
