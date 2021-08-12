@@ -24,34 +24,7 @@
 
  */
 
-import { BlendColors } from './blends'
-import { StatefulColors } from './stateful'
-import { SpecifiableColors, TextColor } from './specifiable'
-import { DerivativeColors } from './derivative'
-
-export type Colors = SpecifiableColors &
-  DerivativeColors &
-  BlendColors &
-  StatefulColors
-
-export type TextColors = TextColor
-
-export { coreColors, intentColors, specifiableColors } from './specifiable'
-
-export type { DerivativeColors } from './derivative'
-export type { CoreColors, IntentColors, SpecifiableColors } from './specifiable'
-export type { BlendColors } from './blends'
-export type {
-  ExtendedStatefulColor,
-  StatefulColor,
-  StatefulColors,
-  StatefulColorChoices,
-} from './stateful'
-export type { ColorProps } from 'styled-system'
-
-export type { TextColorProps } from './textColor'
-export { backgroundColor } from './backgroundColor'
-export { uiColors, textColors } from './blends'
-export { derivativeColors } from './derivative'
-export { textColor } from './textColor'
-export { specifiableTextColors } from './specifiable'
+export * from './rippleStyle'
+export * from './types'
+export * from './useRipple'
+export * from './useRippleHandlers'
