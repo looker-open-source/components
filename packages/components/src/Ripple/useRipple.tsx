@@ -127,7 +127,7 @@ export const useRipple = ({
   const style = {
     ['--ripple-color' as any]: colors[color],
     ['--ripple-scale-end' as any]: rippleScaleRange[1] || 1,
-    ['--ripple-scale-start' as any]: rippleScaleRange[0] || 1,
+    ['--ripple-scale-start' as any]: rippleScaleRange[0],
     ['--ripple-size' as any]: bounded ? `${min}px` : '100%',
     ['--ripple-translate' as any]: rippleOffset,
   }
