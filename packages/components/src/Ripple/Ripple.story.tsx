@@ -26,58 +26,45 @@
 
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
-import { shouldForwardProp } from '@looker/design-tokens'
 import styled from 'styled-components'
 import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout'
-import {
-  useRipple,
-  useRippleHandlers,
-  UseRippleProps,
-  RippleColorProps,
-  rippleStyle,
-  RippleStyleProps,
-} from './'
+import { useRipple, useRippleHandlers, UseRippleProps, rippleStyle } from './'
 
-type RippleProps = SimpleLayoutProps & UseRippleProps & RippleColorProps
+type RippleProps = SimpleLayoutProps & UseRippleProps & { className: string }
 
-const Ripple = ({ bounded, ...props }: RippleProps) => {
-  const {
-    callbacks,
-    className: rippleClassName,
-    ...rippleProps
-  } = useRipple({
-    bounded,
-  })
+const Ripple = styled(
+  ({ className, bounded, color, ...props }: RippleProps) => {
+    const {
+      callbacks,
+      className: rippleClassName,
+      ...rippleProps
+    } = useRipple({
+      bounded,
+      color,
+    })
 
-  const rippleHandlers = useRippleHandlers(callbacks, {})
+    const rippleHandlers = useRippleHandlers(callbacks, {})
 
-  return (
-    <RippleStyle
-      className={rippleClassName}
-      tabIndex={0}
-      {...rippleProps}
-      {...rippleHandlers}
-      {...props}
-    >
-      click me
-    </RippleStyle>
-  )
-}
+    return (
+      <div
+        className={`${className} ${rippleClassName}`}
+        tabIndex={0}
+        {...rippleProps}
+        {...rippleHandlers}
+        {...props}
+      >
+        click me
+      </div>
+    )
+  }
+)<SimpleLayoutProps>`
+  ${simpleLayoutCSS}
+  ${rippleStyle}
 
-const RippleStyle = styled.div
-  .withConfig({
-    shouldForwardProp,
-  })
-  .attrs(({ color = 'neutral' }) => ({ color }))<
-  RippleStyleProps & SimpleLayoutProps
->`
-   ${simpleLayoutCSS}
-   ${rippleStyle}
-
-   align-items: center;
-   display: flex;
-   justify-content: center;
- `
+  align-items: center;
+  display: flex;
+  justify-content: center;
+`
 
 const Template: Story<RippleProps> = (args) => <Ripple {...args} />
 

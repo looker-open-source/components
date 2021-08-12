@@ -34,9 +34,7 @@ const RippleComponent = (props: UseRippleProps) => {
     callbacks: { startBG, endBG, startFG, endFG },
     className,
     ref,
-    rippleOffset,
-    rippleScaleRange,
-    rippleSize,
+    style,
   } = useRipple(props)
   return (
     <div ref={ref}>
@@ -45,9 +43,7 @@ const RippleComponent = (props: UseRippleProps) => {
       <div data-testid="startFG" onClick={startFG} />
       <div data-testid="endFG" onClick={endFG} />
       <div data-testid="className">{className}</div>
-      <div data-testid="rippleOffset">{rippleOffset}</div>
-      <div data-testid="rippleScaleRange">{rippleScaleRange.join('-')}</div>
-      <div data-testid="rippleSize">{rippleSize}</div>
+      <div style={style}>style</div>
     </div>
   )
 }
@@ -89,18 +85,35 @@ const runTimers = () =>
 describe('useRipple', () => {
   test('animation values', () => {
     renderWithTheme(<RippleComponent />)
-    expect(screen.getByTestId('rippleOffset')).toHaveTextContent('0, 0')
-    expect(screen.getByTestId('rippleScaleRange')).toHaveTextContent('0.1-1')
-    expect(screen.getByTestId('rippleSize')).toHaveTextContent('100%')
+    expect(screen.getByText('style')).toHaveStyle({
+      '--ripple-color': '#71767a',
+      '--ripple-scale-end': '1',
+      '--ripple-scale-start': '0.1',
+      '--ripple-size': '100%',
+      '--ripple-translate': '0, 0',
+    })
   })
 
   test('bounded animation values', () => {
     renderWithTheme(<RippleComponent bounded />)
-    expect(screen.getByTestId('rippleOffset')).toHaveTextContent('165px, 0')
-    expect(screen.getByTestId('rippleScaleRange')).toHaveTextContent(
-      '1-12.041594578792294'
-    )
-    expect(screen.getByTestId('rippleSize')).toHaveTextContent('30px')
+    expect(screen.getByText('style')).toHaveStyle({
+      '--ripple-color': '#71767a',
+      '--ripple-scale-end': '12.041594578792294',
+      '--ripple-scale-start': '1',
+      '--ripple-size': '30px',
+      '--ripple-translate': '165px, 0',
+    })
+  })
+
+  test('color animation values', () => {
+    renderWithTheme(<RippleComponent color="key" />)
+    expect(screen.getByText('style')).toHaveStyle({
+      '--ripple-color': '#6C43E0',
+      '--ripple-scale-end': '1',
+      '--ripple-scale-start': '0.1',
+      '--ripple-size': '100%',
+      '--ripple-translate': '0, 0',
+    })
   })
 
   test('callbacks control className', () => {

@@ -24,8 +24,11 @@
 
  */
 
+import { ExtendedStatefulColor } from '@looker/design-tokens'
+import { CSSProperties, useContext } from 'react'
+import { ThemeContext } from 'styled-components'
 import { useMeasuredElement, useCallbackRef } from '../utils'
-import { RippleAnimationValues, RippleCallbacks } from './types'
+import { RippleCallbacks } from './types'
 import { useRippleState } from './useRippleState'
 import { useRippleStateBG } from './useRippleStateBG'
 
@@ -35,9 +38,14 @@ export type UseRippleProps = {
    * a visible rectangle, e.g. a default Button
    */
   bounded?: boolean
+  /**
+   * Change the color of the ripple background and foreground
+   * @default neutral
+   */
+  color?: ExtendedStatefulColor
 }
 
-export type UseRippleResponse = RippleAnimationValues & {
+export type UseRippleResponse = {
   /**
    * The start and end functions for the background and foreground
    */
@@ -50,6 +58,7 @@ export type UseRippleResponse = RippleAnimationValues & {
    * ref is only used for bounded ripple, to detect element dimensions
    */
   ref?: (node: HTMLElement | null) => void
+  style: CSSProperties
 }
 
 const getMinMaxDimensions = (width: number, height: number) => {
@@ -92,11 +101,16 @@ const getRippleOffset = (min: number, max: number, bounded?: boolean) => {
  * @returns callbacks should be mapped to DOM event handlers (see useRippleHandlers)
  * and remaining props should be passed to an internal element that includes rippleStyle
  */
-export const useRipple = ({ bounded }: UseRippleProps): UseRippleResponse => {
+export const useRipple = ({
+  bounded,
+  color = 'neutral',
+}: UseRippleProps): UseRippleResponse => {
   // ref is actually only used for bounded, when dimensions are needed
   // otherwise ref is wasteful since it triggers a state update & re-render
   const [element, ref] = useCallbackRef()
   const [{ width, height }] = useMeasuredElement(element)
+  // Get the theme colors to apply the right value for the color prop
+  const { colors } = useContext(ThemeContext)
 
   // Get values for animation – bounded uses dimensions, otherwise they're static
   const [min, max] = getMinMaxDimensions(width, height)
@@ -106,6 +120,17 @@ export const useRipple = ({ bounded }: UseRippleProps): UseRippleResponse => {
   // Background (hover, focus) and foreground (press) ripple states
   const { start: startBG, end: endBG, className: bgClass } = useRippleStateBG()
   const { start: startFG, end: endFG, className: fgClass } = useRippleState()
+  // bounded needs an explicit size, otherwise just fill the whole area
+
+  // Limitations of style/CSSProperties type
+  // https://github.com/frenic/csstype#what-should-i-do-when-i-get-type-errors
+  const style = {
+    ['--ripple-color' as any]: colors[color],
+    ['--ripple-scale-end' as any]: rippleScaleRange[1] || 1,
+    ['--ripple-scale-start' as any]: rippleScaleRange[0],
+    ['--ripple-size' as any]: bounded ? `${min}px` : '100%',
+    ['--ripple-translate' as any]: rippleOffset,
+  }
 
   return {
     // Functions to be called from event handlers
@@ -120,9 +145,6 @@ export const useRipple = ({ bounded }: UseRippleProps): UseRippleResponse => {
     className: `${bgClass} ${fgClass}`,
     // bounded needs to get the element size
     ref: bounded ? ref : undefined,
-    rippleOffset,
-    rippleScaleRange,
-    // bounded needs an explicit size, otherwise just fill the whole area
-    rippleSize: bounded ? `${min}px` : '100%',
+    style,
   }
 }
