@@ -24,7 +24,7 @@
 
  */
 
-import { DensityRamp } from 'packages/design-tokens/src/system'
+import { DensityRamp } from '@looker/design-tokens'
 import styled, { css } from 'styled-components'
 import { listItemDimensions } from '..'
 import { generateIndent } from '../Tree/utils'
