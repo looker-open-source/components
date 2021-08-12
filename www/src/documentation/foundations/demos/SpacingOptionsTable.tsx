@@ -99,7 +99,7 @@ const SpacingRow = (px: number, rem: string, key: number, label: string) => {
         <div style={divStyle} />
       </TableDataCell>
       <TableDataCell>
-        <Code fontSize="xsmall">theme.spacing.{label}</Code>
+        <Code fontSize="xsmall">theme.space.{label}</Code>
       </TableDataCell>
       <TableDataCell>{px}px</TableDataCell>
       <TableDataCell>{rem}</TableDataCell>
