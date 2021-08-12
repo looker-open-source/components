@@ -14,7 +14,7 @@
     "@looker/components": "*",
     "@looker/components-date": "*",
     "@looker/components-providers": "*",
-    "@looker/components-theme-editor": "*",
+    "components-theme-editor": "*",
     "@looker/design-tokens": "*",
     "lodash": "*",
     "react": "^16.14.0",

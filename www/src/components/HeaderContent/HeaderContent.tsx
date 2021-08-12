@@ -27,7 +27,6 @@
 import { useStaticQuery, graphql, Link } from 'gatsby'
 import startCase from 'lodash/startCase'
 import { IconButton, Space, Grid } from '@looker/components'
-import { ThemeEditor, ThemeEditorProps } from '@looker/components-theme-editor'
 import { useLocation } from '@reach/router'
 import { Menu } from '@styled-icons/material/Menu'
 import React, { FC } from 'react'
@@ -35,7 +34,7 @@ import styled from 'styled-components'
 import { Search } from '../Search'
 import { AppLogo } from './AppLogo'
 
-interface HeaderProps extends ThemeEditorProps {
+interface HeaderProps {
   className?: string
   toggleNavigation: () => void
 }
@@ -45,8 +44,6 @@ const isDev = process.env.NODE_ENV === 'development'
 export const HeaderContentLayout: FC<HeaderProps> = ({
   className,
   toggleNavigation,
-  updateTheme,
-  hasCustomTheme,
 }) => {
   const { pathname } = useLocation()
   const showHamburger =
@@ -102,10 +99,6 @@ export const HeaderContentLayout: FC<HeaderProps> = ({
             )
           })}
         </Space>
-        <ThemeEditor
-          updateTheme={updateTheme}
-          hasCustomTheme={hasCustomTheme}
-        />
       </NavigationList>
     </Grid>
   )
