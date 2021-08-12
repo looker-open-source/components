@@ -108,7 +108,6 @@ export const FieldPicker = () => (
             Orders
           </Box>
         }
-        labelBackgroundOnly
       >
         {fields}
       </BorderRadiusOverrideTree>
@@ -119,7 +118,6 @@ export const FieldPicker = () => (
             Order Items
           </Box>
         }
-        labelBackgroundOnly
       >
         {fields}
       </BorderRadiusOverrideTree>
@@ -130,7 +128,6 @@ export const FieldPicker = () => (
             Users
           </Box>
         }
-        labelBackgroundOnly
       >
         {fields}
       </BorderRadiusOverrideTree>

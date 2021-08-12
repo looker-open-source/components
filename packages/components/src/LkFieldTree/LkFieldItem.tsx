@@ -53,7 +53,6 @@
 import React, { FocusEvent, useContext, useState } from 'react'
 import styled, { ThemeContext } from 'styled-components'
 import { Flex } from '../Layout'
-import { ListItemProps } from '../ListItem'
 import { createListItemPartitions } from '../ListItem/utils'
 import {
   getNextFocusTarget,
@@ -66,6 +65,7 @@ import {
 import { TreeContext } from '../Tree/TreeContext'
 import { LkFieldItemContent } from './LkFieldItemContent'
 import { LkFieldItemLabel } from './LkFieldItemLabel'
+import { LkFieldItemProps } from './types'
 
 export const LkFieldItem = styled(
   ({
@@ -82,7 +82,7 @@ export const LkFieldItem = styled(
     onMouseLeave,
     selected,
     ...restProps
-  }: ListItemProps) => {
+  }: LkFieldItemProps) => {
     const {
       density: contextDensity,
       depth,

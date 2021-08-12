@@ -122,7 +122,6 @@ export const FieldItem: FC<FieldItemProps> = ({
           toggleField()
         }
       }}
-      itemRole="none"
     >
       <Flex alignItems="center" pl="xxsmall">
         <Flex

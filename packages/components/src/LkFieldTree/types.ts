@@ -24,6 +24,24 @@
 
  */
 
-export * from './LkFieldTree'
-export * from './LkFieldItem'
-export * from './types'
+import { GenericClickProps, ListItemProps, TreeProps } from '..'
+import { ControlledLoosely } from '../Accordion2/controlTypes'
+
+export type LkFieldTreeProps = ControlledLoosely &
+  GenericClickProps<HTMLElement> &
+  Pick<
+    TreeProps,
+    | 'color'
+    | 'density'
+    | 'detail'
+    | 'disabled'
+    | 'hovered'
+    | 'icon'
+    | 'selected'
+    | 'label'
+  >
+
+export type LkFieldItemProps = Omit<
+  ListItemProps,
+  'description' | 'itemRole' | 'truncate'
+>

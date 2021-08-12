@@ -44,10 +44,10 @@ import {
   useTreeHandlers,
 } from '../Tree/utils'
 import { WindowedTreeContext } from '../Tree/WindowedTreeNode'
-import { TreeProps } from '../Tree'
 import { LkFieldItem } from './LkFieldItem'
 import { LkFieldItemContent } from './LkFieldItemContent'
 import { LkFieldItemLabel } from './LkFieldItemLabel'
+import { LkFieldTreeProps } from './types'
 
 const LkFieldTreeLayout = ({
   children,
@@ -63,7 +63,7 @@ const LkFieldTreeLayout = ({
   onMouseLeave,
   toggleOpen: propsToggleOpen,
   ...restProps
-}: TreeProps) => {
+}: LkFieldTreeProps) => {
   const theme = useContext(ThemeContext)
 
   const [treeItemInnerProps, accordionInnerProps] =
@@ -124,6 +124,7 @@ const LkFieldTreeLayout = ({
     color,
     density,
     icon,
+    truncate: true,
   })
   let accordionProps: ControlledOrUncontrolled = {
     defaultOpen,

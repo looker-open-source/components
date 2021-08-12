@@ -97,9 +97,8 @@ export type TreeProps = ControlledLoosely &
      */
     dividers?: boolean
     /**
-     * Use itemRole to set the type of wrapper element for the label
+     * Use itemRole to set the type of wrapper element for the label. By default the label's wrapper element is a <button>.
      * Note: Unlike TreeItem, 'button' is not an allowed value since click event handlers are passed to the nested <AccordionDisclosure> div
-     * @default none
      */
     itemRole?: 'link' | 'none'
     /**
@@ -110,6 +109,7 @@ export type TreeProps = ControlledLoosely &
      * If true, the following visual changes occur:
      * - TreeItem: Indent padding is not included in background color
      * - Tree: Indicator and indent padding is not included in background color
+     * @deprecated Use LkFieldTree and LkFieldItem for label background only behavior
      */
     labelBackgroundOnly?: boolean
   }
