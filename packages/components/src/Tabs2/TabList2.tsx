@@ -26,42 +26,11 @@
 
 import { useTranslation } from 'react-i18next'
 import React, { forwardRef, Ref } from 'react'
-import {
-  fontSize,
-  FontSizeProps,
-  PaddingProps,
-  padding,
-  reset,
-} from '@looker/design-tokens'
+import { fontSize, padding, reset } from '@looker/design-tokens'
 import styled, { css } from 'styled-components'
 import { useArrowKeyNav } from '../utils'
 import { Tab2 } from './Tab2'
-
-export interface TabList2Props extends PaddingProps, FontSizeProps {
-  children: JSX.Element[]
-  className?: string
-  distribute?: boolean
-}
-
-const TabList2Layout = forwardRef(
-  ({ children, className }: TabList2Props, ref: Ref<HTMLDivElement>) => {
-    const { t } = useTranslation('TabList')
-    const navProps = useArrowKeyNav({ axis: 'horizontal', ref })
-
-    return (
-      <div
-        aria-label={t('Tabs')}
-        className={className}
-        role="tablist"
-        {...navProps}
-      >
-        {children}
-      </div>
-    )
-  }
-)
-
-TabList2Layout.displayName = 'TabList2Layout'
+import { TabList2Props } from './types'
 
 const defaultLayoutCSS = css`
   ${Tab2} {
@@ -81,11 +50,7 @@ const distributeCSS = css`
   }
 `
 
-export const TabList2 = styled(TabList2Layout).attrs(
-  ({ fontSize = 'small' }) => ({
-    fontSize,
-  })
-)`
+export const TabList2CSS = css<TabList2Props>`
   ${reset}
   ${padding}
   ${fontSize}
@@ -98,4 +63,28 @@ export const TabList2 = styled(TabList2Layout).attrs(
     display: none; /* Safari and Chrome */
   }
   ${({ distribute }) => (distribute ? distributeCSS : defaultLayoutCSS)}
+`
+
+export const TabList2 = styled(
+  forwardRef(
+    ({ children, className }: TabList2Props, ref: Ref<HTMLDivElement>) => {
+      const { t } = useTranslation('TabList')
+      const navProps = useArrowKeyNav({ axis: 'horizontal', ref })
+
+      return (
+        <div
+          aria-label={t('Tabs')}
+          className={className}
+          role="tablist"
+          {...navProps}
+        >
+          {children}
+        </div>
+      )
+    }
+  )
+).attrs(({ fontSize = 'small' }) => ({
+  fontSize,
+}))`
+  ${TabList2CSS}
 `

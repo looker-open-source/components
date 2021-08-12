@@ -45,11 +45,13 @@ type Tab2StyleProps = Omit<Tab2Props, 'label'> & FocusVisibleProps
 
 export const Tab2Style = styled.button.attrs<Tab2StyleProps>(
   ({
+    fontFamily = 'brand',
     fontSize = 'small',
     fontWeight = 'medium',
     pb = 'small',
     pt = 'xsmall',
   }) => ({
+    fontFamily,
     fontSize,
     fontWeight,
     pb,
@@ -63,16 +65,14 @@ export const Tab2Style = styled.button.attrs<Tab2StyleProps>(
 
   background: transparent;
   border: none;
-  border-bottom: 3px solid;
-  border-bottom-color: ${({ selected, theme }) =>
-    selected ? theme.colors.key : 'transparent'};
+  border-bottom: 3px solid
+    ${({ selected, theme }) => (selected ? theme.colors.key : 'transparent')};
   border-radius: 0;
   ${focusVisibleCSSWrapper(tabShadowColor)}
   color: ${({ selected, theme }) =>
     selected ? theme.colors.text5 : theme.colors.text2};
   cursor: pointer;
-  font-family: ${({ theme }) => theme.fonts.brand};
-  /* Remove default margin button in Safari */
+  /* this is here to remove default margin button in Safari */
   margin: 0;
 
   &:active {

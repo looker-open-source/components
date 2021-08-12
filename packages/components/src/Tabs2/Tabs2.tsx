@@ -30,6 +30,14 @@ import { TabList2 } from './TabList2'
 import { TabPanels2 } from './TabPanels2'
 import { Tabs2Props, TabStack } from './types'
 
+/**
+ * `Tabs2` are a clickable areas (Tab2) that organizes content across different pages or areas.
+ * When a Tab2 is clicked, its contents are displayed and others are hidden.
+ *
+ * Tabs2 is a modernized version of the `Tabs` component with an simplified
+ * interface to follow conventions in other components libraries and to more closely match the controlled and uncontrolled models of our other components.
+ */
+
 export const Tabs2 = ({
   children,
   onTabChange,
@@ -37,11 +45,14 @@ export const Tabs2 = ({
   distributed = false,
   ...props
 }: Tabs2Props) => {
+  // list of all elements to be displayed as Tab and its content.
   const [tabs, setTabs] = useState<TabStack>([])
-  const [stateTabId, setCurrentTabId] = useState(defaultTabId)
-  const tabId = props.tabId || stateTabId
+  // The identifier for connecting the `Tab` with its content
+  const [currentTabId, setCurrentTabId] = useState(defaultTabId)
+  const tabId = props.tabId || currentTabId
 
   useEffect(() => {
+    // structuring the data that comes in to be in the correct shape to create each individual `Tab` and its content.
     const draftTabs: TabStack = Children.map(
       children,
       (child: JSX.Element) => ({
@@ -55,11 +66,15 @@ export const Tabs2 = ({
     setTabs(draftTabs)
 
     if (
+      // check if the defaultTabId is passed and if not set to display the first Tab available.
       !defaultTabId &&
       draftTabs.length > 0 &&
       !draftTabs.find((tab) => tab.id === defaultTabId)
     ) {
-      setCurrentTabId(draftTabs[0].id)
+      // select the first `Tab` that is not disabled
+      setCurrentTabId(
+        draftTabs[draftTabs.findIndex((tab) => !tab.disabled === true)].id
+      )
     }
   }, [children, defaultTabId, setTabs, setCurrentTabId])
 
@@ -78,6 +93,7 @@ export const Tabs2 = ({
     </Tab2>
   ))
 
+  // associate the correct `Tab` to its content.
   const currentTab = tabs.find((tab) => tab.id === tabId)
 
   return (

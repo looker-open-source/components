@@ -38,7 +38,7 @@ export default {
 
 const Template: Story<Partial<Tabs2Props>> = (args) => (
   <Tabs2 {...args}>
-    <Tab2 id="cats" label="Cats">
+    <Tab2 disabled id="cats" label="Cats">
       Here's awesome story about cats
     </Tab2>
     <Tab2 id="dogs" label="Dogs">

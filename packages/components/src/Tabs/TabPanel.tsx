@@ -38,6 +38,9 @@ export interface TabPanelProps {
   isTabStop?: boolean
 }
 
+/**
+ * @deprecated Use `Tabs2` and `Tab2` instead
+ */
 const TabPanelLayout: FC<TabPanelProps> = ({
   children,
   className,

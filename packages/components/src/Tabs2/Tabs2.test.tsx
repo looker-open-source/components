@@ -31,23 +31,15 @@ import React from 'react'
 import { composeStories } from '@storybook/testing-react'
 import { fireEvent, screen } from '@testing-library/react'
 import * as stories from './Tabs2.story'
-
-const { Basic, Controlled, DefaultTab } = composeStories(stories)
+import { Controlled } from './Tabs2.story'
+const { Basic, DefaultTab, Distributed } = composeStories(stories)
 
 describe('Tabs2', () => {
   test('basic', () => {
     renderWithTheme(<Basic />)
-    expect(screen.getAllByRole('tab')).toHaveLength(5)
+    expect(screen.getAllByRole('tab')).toHaveLength(4)
     expect(
       screen.getByText("Here's awesome story about cats")
-    ).toBeInTheDocument()
-  })
-
-  test('defaultTabId', () => {
-    renderWithTheme(<DefaultTab />)
-
-    expect(
-      screen.getByText('Cats are way better than dogs. Go to other tab')
     ).toBeInTheDocument()
   })
 
@@ -77,6 +69,22 @@ describe('Tabs2', () => {
       screen.queryByText("Here's awesome story about cats")
     ).toBeInTheDocument()
     expect(screen.queryByText('not available')).not.toBeInTheDocument()
+  })
+
+  test('defaultTabId', () => {
+    renderWithTheme(<DefaultTab />)
+
+    expect(
+      screen.getByText('Cats are way better than dogs. Go to other tab')
+    ).toBeInTheDocument()
+  })
+
+  test('Distributed', () => {
+    renderWithTheme(<Distributed />)
+
+    expect(screen.getByText('Cats').closest('div')).toHaveStyle(
+      'grid-auto-columns: 1fr'
+    )
   })
 
   test('controlled', () => {

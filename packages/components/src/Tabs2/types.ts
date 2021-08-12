@@ -27,6 +27,7 @@
 import { ReactElement } from 'react'
 import {
   CompatibleHTMLProps,
+  FontSizeProps,
   LayoutProps,
   PaddingProps,
   TypographyProps,
@@ -36,9 +37,31 @@ export type Tab2Props = Omit<CompatibleHTMLProps<HTMLButtonElement>, 'type'> &
   LayoutProps &
   PaddingProps &
   TypographyProps & {
+    /**
+     * displays as the `Tab`'s value
+     */
     label: string
+    /**
+     * callback to manage when `Tab` is clicked
+     */
     onSelect?: () => void
+    /**
+     * specific `Tab` that is selected.
+     */
     selected?: boolean
+  }
+
+export type TabList2Props = PaddingProps &
+  FontSizeProps & {
+    /**
+     * element that will be displayed as the `Tab` value
+     */
+    children: JSX.Element[]
+    className?: string
+    /**
+     * spread the collection of `Tab` on its full width.
+     */
+    distribute?: boolean
   }
 
 type TabStackMember = Tab2Props & {
@@ -48,6 +71,9 @@ type TabStackMember = Tab2Props & {
 export type TabStack = TabStackMember[]
 
 export type Tabs2Props = {
+  /**
+   * The list of `Tab`
+   */
   children: ReactElement<Tab2Props> | ReactElement<Tab2Props>[]
 
   /**
