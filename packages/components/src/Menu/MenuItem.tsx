@@ -24,7 +24,7 @@
 
  */
 
-import styled from 'styled-components'
+import styled, { ThemeContext } from 'styled-components'
 import React, { forwardRef, MouseEvent, Ref, useContext } from 'react'
 import { shouldForwardProp, size } from '@looker/design-tokens'
 import { ArrowRight } from '@styled-icons/material/ArrowRight'
@@ -77,8 +77,9 @@ const MenuItemInternal = forwardRef(
 
     const ref = useForkedRef<HTMLLIElement>(nestedMenuRef, forwardedRef)
 
+    const theme = useContext(ThemeContext)
     const { density } = useContext(ListItemContext)
-    const { iconSize } = listItemDimensions(density)
+    const { iconSize } = listItemDimensions(density || theme.defaults.density)
 
     if (detail && nestedMenu) {
       // eslint-disable-next-line no-console

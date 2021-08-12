@@ -50,8 +50,8 @@ export const generateIndentCalculation = (
  */
 export const generateIndent = ({
   depth = 0,
-  density = 0,
+  density,
 }: GenerateIndentProps) => css`
   padding-left: ${({ theme }) =>
-    generateIndentCalculation(depth, density, theme)};
+    generateIndentCalculation(depth, density || theme.defaults.density, theme)};
 `
