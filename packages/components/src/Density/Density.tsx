@@ -29,7 +29,7 @@ import { DensityRamp } from '@looker/design-tokens'
 import { ThemeContext, ThemeProvider } from 'styled-components'
 
 export type DensityProps = {
-  density: DensityRamp
+  scale: DensityRamp
 }
 
 /**
@@ -40,15 +40,30 @@ export type DensityProps = {
  * NOTE: If `density` is explicitly specified on a component within `Density`
  * the explicitly specified value will be used instead.
  */
-export const Density: FC<DensityProps> = ({ density, children }) => {
+export const Density: FC<DensityProps> = ({ scale, children }) => {
   const theme = useContext(ThemeContext)
-  theme.defaults.density = density
+  theme.defaults.density = scale
 
   return <ThemeProvider theme={theme}>{children}</ThemeProvider>
 }
 
-export const Density1: FC = (props) => <Density density={1} {...props} />
-export const Density0: FC = (props) => <Density density={0} {...props} />
-export const DensityN1: FC = (props) => <Density density={-1} {...props} />
-export const DensityN2: FC = (props) => <Density density={-2} {...props} />
-export const DensityN3: FC = (props) => <Density density={-3} {...props} />
+/**
+ * Shortcut to `<Density scale={1} />`
+ */
+export const Density1: FC = (props) => <Density scale={1} {...props} />
+/**
+ * Shortcut to `<Density scale={0} />`
+ */
+export const Density0: FC = (props) => <Density scale={0} {...props} />
+/**
+ * Shortcut to `<Density scale={-1} />`
+ */
+export const DensityNegative1: FC = (props) => <Density scale={-1} {...props} />
+/**
+ * Shortcut to `<Density scale={-2} />`
+ */
+export const DensityNegative2: FC = (props) => <Density scale={-2} {...props} />
+/**
+ * Shortcut to `<Density scale={-3} />`
+ */
+export const DensityNegative3: FC = (props) => <Density scale={-3} {...props} />

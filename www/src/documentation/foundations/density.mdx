@@ -23,15 +23,15 @@ Currently only list like components support density, this includes `List`, `Menu
 
 ## Helpers
 
-Looker Compnents ships a small collection of density "helpers". The `Density` component takes a `density` value.
+Looker Compnents ships a small collection of density "helpers". The `Density` component takes a `scale` value to specify which key of the density scale to apply to children.
 
 ```
-<Density density={-3}>
+<Density scale={-3}>
   <ListItem>This ListItem is using -3 density</ListItem>
 </Density>
 ```
 
-Also included are a set of helpers for each specific density size: `Density1`, `Density0`, `DensityN1`, `DensityN2`, `DensityN3` (where `N` denotes "negative")
+Also included are a set of helpers for each specific density size: `Density1`, `Density0`, `DensityNegative1`, `DensityNegative2`, `DensityNegative3`
 
 ```
 <Density1>
@@ -40,7 +40,7 @@ Also included are a set of helpers for each specific density size: `Density1`, `
 <Density0>
   <ListItem>0 density (default)</ListItem>
 </Density0>
-<DensityN3>
+<DensityNegative3>
   <ListItem>-3 Density</ListItem>
-</DensityN3>
+</DensityNegative3>
 ```

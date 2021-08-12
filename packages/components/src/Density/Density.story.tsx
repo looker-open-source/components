@@ -49,25 +49,25 @@ const Template: Story<DensityProps> = (args) => (
 
 export const Plus1 = Template.bind({})
 Plus1.args = {
-  density: 1,
+  scale: 1,
 }
 
 export const Basic = Template.bind({})
 Basic.args = {
-  density: 0,
+  scale: 0,
 }
 
 export const Minus1 = Template.bind({})
 Minus1.args = {
-  density: -1,
+  scale: -1,
 }
 
 export const Minus2 = Template.bind({})
 Minus2.args = {
-  density: -2,
+  scale: -2,
 }
 
 export const Minus3 = Template.bind({})
 Minus3.args = {
-  density: -3,
+  scale: -3,
 }
