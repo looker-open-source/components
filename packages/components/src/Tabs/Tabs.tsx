@@ -23,7 +23,6 @@
  SOFTWARE.
 
  */
-
 import React, { Children, cloneElement, FC, useRef, useState } from 'react'
 
 export interface UseTabsProps {
@@ -38,6 +37,9 @@ export interface TabsProps extends UseTabsProps {
   children: JSX.Element[]
 }
 
+/**
+ * @deprecated Use `Tabs2` and `Tab2` instead
+ */
 export function useTabs(props?: UseTabsProps) {
   const defaultIndex = (props && props.defaultIndex) || 0
   const onChange = props && props.onChange
@@ -57,6 +59,9 @@ export function useTabs(props?: UseTabsProps) {
   }
 }
 
+/**
+ * @deprecated Use `Tabs2` and `Tab2` instead
+ */
 export const Tabs: FC<TabsProps> = ({
   children,
   index: controlledIndex,

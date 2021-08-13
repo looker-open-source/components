@@ -45,47 +45,10 @@ export interface TabListProps extends PaddingProps, FontSizeProps {
   distribute?: boolean
 }
 
-const TabListLayout = forwardRef(
-  (
-    { children, selectedIndex, onSelectTab, className }: TabListProps,
-    ref: Ref<HTMLDivElement>
-  ) => {
-    const { t } = useTranslation('TabList')
-
-    const clonedChildren = Children.map(
-      children,
-      (child: JSX.Element, index: number) => {
-        return cloneElement(child, {
-          index,
-          onSelect: () => onSelectTab && onSelectTab(index),
-          selected: index === selectedIndex,
-          selectedIndex,
-        })
-      }
-    )
-
-    const navProps = useArrowKeyNav({ axis: 'horizontal', ref })
-
-    return (
-      <div
-        aria-label={t('Tabs')}
-        className={className}
-        role="tablist"
-        {...navProps}
-      >
-        {clonedChildren}
-      </div>
-    )
-  }
-)
-
-TabListLayout.displayName = 'TabListLayout'
-
 const defaultLayoutCSS = css`
   ${Tab} {
     min-width: 3rem;
   }
-
   ${Tab} + ${Tab} {
     margin-left: ${(props) => props.theme.space.u8};
   }
@@ -95,30 +58,61 @@ const distributeCSS = css`
   display: grid;
   grid-auto-columns: 1fr;
   grid-auto-flow: column;
-
   ${Tab} {
     padding: ${({ theme: { space } }) => `${space.u2} ${space.u4}`};
   }
 `
 
-export const TabList = styled(TabListLayout).attrs(
-  ({ fontSize = 'small' }) => ({
-    fontSize,
-  })
-)`
+/**
+ * @deprecated Use `Tabs2` & `Tab2` instead
+ */
+export const TabList = styled(
+  forwardRef(
+    (
+      { children, selectedIndex, onSelectTab, className }: TabListProps,
+      ref: Ref<HTMLDivElement>
+    ) => {
+      const { t } = useTranslation('TabList')
+
+      const clonedChildren = Children.map(
+        children,
+        (child: JSX.Element, index: number) => {
+          return cloneElement(child, {
+            index,
+            onSelect: () => onSelectTab && onSelectTab(index),
+            selected: index === selectedIndex,
+            selectedIndex,
+          })
+        }
+      )
+
+      const navProps = useArrowKeyNav({ axis: 'horizontal', ref })
+
+      return (
+        <div
+          aria-label={t('Tabs')}
+          className={className}
+          role="tablist"
+          {...navProps}
+        >
+          {clonedChildren}
+        </div>
+      )
+    }
+  )
+).attrs(({ fontSize = 'small' }) => ({
+  fontSize,
+}))`
   ${reset}
   ${padding}
   ${fontSize}
-
   border-bottom: 1px solid ${(props) => props.theme.colors.ui2};
   -ms-overflow-style: none; /* Internet Explorer 10+ */
   overflow-x: auto;
   scrollbar-width: none; /* Firefox */
   white-space: nowrap;
-
   &::-webkit-scrollbar {
     display: none; /* Safari and Chrome */
   }
-
   ${({ distribute }) => (distribute ? distributeCSS : defaultLayoutCSS)}
 `

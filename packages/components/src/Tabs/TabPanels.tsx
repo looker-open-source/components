@@ -23,7 +23,6 @@
  SOFTWARE.
 
  */
-
 import React, { Children, cloneElement, FC } from 'react'
 import styled from 'styled-components'
 import {
@@ -74,6 +73,9 @@ const Layout: FC<TabPanelsProps> = ({
   )
 }
 
+/**
+ * @deprecated Use `Tabs2` and `Tab2` instead
+ */
 export const TabPanels = styled(Layout).attrs(({ pt = 'large' }) => ({
   pt,
 }))`

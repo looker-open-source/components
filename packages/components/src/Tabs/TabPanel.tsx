@@ -50,6 +50,9 @@ const TabPanelLayout: FC<TabPanelProps> = ({
     </div>
   ) : null
 
+/**
+ * @deprecated Use `Tabs2` & `Tab2` instead
+ */
 export const TabPanel = styled(TabPanelLayout)`
   height: 100%;
   outline: none;
