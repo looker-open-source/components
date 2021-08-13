@@ -26,6 +26,7 @@
 
 import { renderWithTheme } from '@looker/components-test-utils'
 import { act, fireEvent, screen } from '@testing-library/react'
+import { ThemeProvider } from 'styled-components'
 import React from 'react'
 import { useRipple, UseRippleProps } from './useRipple'
 
@@ -111,6 +112,26 @@ describe('useRipple', () => {
       '--ripple-color': '#6C43E0',
       '--ripple-scale-end': '1',
       '--ripple-scale-start': '0.1',
+      '--ripple-size': '100%',
+      '--ripple-translate': '0, 0',
+    })
+  })
+
+  test('theme setting brandAnimation false', () => {
+    renderWithTheme(
+      <ThemeProvider
+        theme={(theme) => ({
+          ...theme,
+          defaults: { ...theme.defaults, brandAnimation: false },
+        })}
+      >
+        <RippleComponent color="key" />
+      </ThemeProvider>
+    )
+    expect(screen.getByText('style')).toHaveStyle({
+      '--ripple-color': '#6C43E0',
+      '--ripple-scale-end': '1',
+      '--ripple-scale-start': '1',
       '--ripple-size': '100%',
       '--ripple-translate': '0, 0',
     })

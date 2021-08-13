@@ -34,7 +34,6 @@ import { Icon } from '../Icon'
 import {
   rippleHandlerKeys,
   rippleStyle,
-  RippleStyleProps,
   useRipple,
   useRippleHandlers,
 } from '../Ripple'
@@ -45,12 +44,7 @@ import { ButtonOuter } from './ButtonBase'
 import { iconButtonColor, ICON_BUTTON_DEFAULT_COLOR } from './iconButtonColor'
 import { iconButtonOutline } from './iconButtonOutline'
 import { iconButtonIconSizeMap, buttonSizeMap } from './size'
-import { IconButtonProps, ToggleColorProps } from './iconButtonTypes'
-
-const ButtonRipple = styled(ButtonOuter)<RippleStyleProps & ToggleColorProps>`
-  ${({ color, toggle, toggleColor, ...props }) =>
-    rippleStyle({ color: toggle ? toggleColor : undefined, ...props })}
-`
+import { IconButtonProps } from './iconButtonTypes'
 
 /**
  * Appears as just an `Icon` but with proper HTML semantics to produce a `button`
@@ -77,16 +71,17 @@ export const IconButton = styled(
       onBlur: propsOnBlur,
       onMouseOver: propsOnMouseOver,
       onMouseOut: propsOnMouseOut,
+      style,
       ...rest
     } = props
 
     const bounded = rest.shape !== 'round' && (toggleBackground || rest.outline)
     const {
+      callbacks,
       className: rippleClassName,
       ref: rippleRef,
-      callbacks,
-      ...rippleProps
-    } = useRipple({ bounded })
+      style: rippleStyle,
+    } = useRipple({ bounded, color: toggle ? toggleColor : undefined })
 
     const ref = useForkedRef(forwardedRef, rippleRef)
 
@@ -132,7 +127,7 @@ export const IconButton = styled(
     }
 
     return (
-      <ButtonRipple
+      <ButtonOuter
         aria-describedby={ariaDescribedBy}
         aria-expanded={ariaExpanded}
         aria-pressed={toggle ? true : undefined}
@@ -145,9 +140,7 @@ export const IconButton = styled(
           tooltipClassName,
           rippleClassName,
         ])}
-        toggle={toggle}
-        toggleColor={toggleColor}
-        {...rippleProps}
+        style={{ ...style, ...rippleStyle }}
         {...rippleHandlers}
         {...otherHandlers}
         {...rest}
@@ -155,7 +148,7 @@ export const IconButton = styled(
         <VisuallyHidden>{label}</VisuallyHidden>
         <Icon icon={icon} size={iconButtonIconSizeMap[size]} />
         {tooltip}
-      </ButtonRipple>
+      </ButtonOuter>
     )
   })
 ).attrs(({ type = 'button', toggleColor = ICON_BUTTON_DEFAULT_COLOR }) => ({
@@ -164,6 +157,7 @@ export const IconButton = styled(
 }))<IconButtonProps>`
   ${reset}
   ${space}
+  ${rippleStyle}
 
   background: none;
   background-color: ${({ theme, toggle, toggleBackground, toggleColor }) =>

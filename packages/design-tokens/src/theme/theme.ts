@@ -76,6 +76,7 @@ export interface Theme {
   transitions: TransitionRamp
   zIndexFloor: number
   defaults: {
+    brandAnimation: boolean
     density: DensityRamp
   }
 }
@@ -83,7 +84,7 @@ export interface Theme {
 export const theme: DefaultTheme = {
   breakpoints,
   colors,
-  defaults: { density: 0 },
+  defaults: { brandAnimation: true, density: 0 },
   easings,
   elevations,
   fontSizes,
