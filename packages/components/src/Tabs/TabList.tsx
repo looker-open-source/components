@@ -45,10 +45,6 @@ export interface TabListProps extends PaddingProps, FontSizeProps {
   distribute?: boolean
 }
 
-/**
- * @deprecated Use `Tabs2` and `Tab2` instead
- */
-
 const defaultLayoutCSS = css`
   ${Tab} {
     min-width: 3rem;
@@ -66,6 +62,10 @@ const distributeCSS = css`
     padding: ${({ theme: { space } }) => `${space.u2} ${space.u4}`};
   }
 `
+
+/**
+ * @deprecated Use `Tabs2` & `Tab2` instead
+ */
 export const TabList = styled(
   forwardRef(
     (
@@ -105,8 +105,8 @@ export const TabList = styled(
 }))`
   ${reset}
   ${padding}
-${fontSize}
-border-bottom: 1px solid ${(props) => props.theme.colors.ui2};
+  ${fontSize}
+  border-bottom: 1px solid ${(props) => props.theme.colors.ui2};
   -ms-overflow-style: none; /* Internet Explorer 10+ */
   overflow-x: auto;
   scrollbar-width: none; /* Firefox */

@@ -38,6 +38,9 @@ export default {
 
 const Template: Story<Partial<Tabs2Props>> = (args) => (
   <Tabs2 {...args}>
+    <Tab2 disabled label="Human">
+      not available
+    </Tab2>
     <Tab2 id="cats" label="Cats">
       Here's awesome story about cats
     </Tab2>
@@ -45,9 +48,6 @@ const Template: Story<Partial<Tabs2Props>> = (args) => (
       Cats are way better than dogs. Go to other tab
     </Tab2>
     <Tab2 label="Fish">Are kinda smelly</Tab2>
-    <Tab2 disabled label="Human">
-      not available
-    </Tab2>
   </Tabs2>
 )
 

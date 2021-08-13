@@ -44,9 +44,6 @@ export interface TabPanelsProps extends FlexboxProps, LayoutProps, SpaceProps {
   onSelectTab?: (index: number) => void
 }
 
-/**
- * @deprecated Use `Tabs2` and `Tab2` instead
- */
 const Layout: FC<TabPanelsProps> = ({
   children,
   className,
@@ -77,6 +74,9 @@ const Layout: FC<TabPanelsProps> = ({
   )
 }
 
+/**
+ * @deprecated Use `Tabs2` and `Tab2` instead
+ */
 export const TabPanels = styled(Layout).attrs(({ pt = 'large' }) => ({
   pt,
 }))`

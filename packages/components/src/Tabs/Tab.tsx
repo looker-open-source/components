@@ -46,6 +46,9 @@ export interface TabProps
   onSelect?: () => void
 }
 
+/**
+ * @deprecated Use `Tabs2` & `Tab2` instead
+ */
 export const Tab = styled(
   forwardRef((props: TabProps, ref: Ref<HTMLButtonElement>) => {
     const {

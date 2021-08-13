@@ -60,6 +60,9 @@ export function useTabs(props?: UseTabsProps) {
   }
 }
 
+/**
+ * @deprecated Use `Tabs2` and `Tab2` instead
+ */
 export const Tabs: FC<TabsProps> = ({
   children,
   index: controlledIndex,

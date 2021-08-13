@@ -57,6 +57,14 @@ describe('Tabs2', () => {
     expect(screen.queryByText('Are kinda smelly')).toBeInTheDocument()
   })
 
+  test('defaultTabId', () => {
+    renderWithTheme(<DefaultTab />)
+
+    expect(
+      screen.getByText('Cats are way better than dogs. Go to other tab')
+    ).toBeInTheDocument()
+  })
+
   test('disabled', () => {
     renderWithTheme(<Basic />)
 
@@ -71,12 +79,13 @@ describe('Tabs2', () => {
     expect(screen.queryByText('not available')).not.toBeInTheDocument()
   })
 
-  test('defaultTabId', () => {
-    renderWithTheme(<DefaultTab />)
+  test('no defaultTabId should display first tab that is not disabled', () => {
+    renderWithTheme(<Basic />)
 
     expect(
-      screen.getByText('Cats are way better than dogs. Go to other tab')
+      screen.getByText("Here's awesome story about cats")
     ).toBeInTheDocument()
+    expect(screen.queryByText('not available')).not.toBeInTheDocument()
   })
 
   test('Distributed', () => {

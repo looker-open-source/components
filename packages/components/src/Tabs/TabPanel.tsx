@@ -38,9 +38,6 @@ export interface TabPanelProps {
   isTabStop?: boolean
 }
 
-/**
- * @deprecated Use `Tabs2` and `Tab2` instead
- */
 const TabPanelLayout: FC<TabPanelProps> = ({
   children,
   className,
@@ -53,6 +50,9 @@ const TabPanelLayout: FC<TabPanelProps> = ({
     </div>
   ) : null
 
+/**
+ * @deprecated Use `Tabs2` & `Tab2` instead
+ */
 export const TabPanel = styled(TabPanelLayout)`
   height: 100%;
   outline: none;

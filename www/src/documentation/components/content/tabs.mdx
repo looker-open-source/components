@@ -13,9 +13,9 @@ import { Code, MessageBar } from '@looker/components'
   of `Tabs` is planned for @looker/components 3.0
 </MessageBar>
 
-`<Tabs2>` expects to receive one or more `Tab2` components. `Tabs2` manages the visibility of the single `content` based on its internal `Tab2` content.
+`Tabs2` contains one or more `Tab2` components. `Tabs2`, when left uncontrolled, manages the visible tab as well as switching between tabs.
 
-`Tab2` expects to have `label` that will be the value displayed on the `Tab` itself. The value passed as children will be displayed as its content area.
+Each `Tab2` must have a `label`. The value passed as children will be displayed as its content area. `id` is optional (`label` will be used in its place if not supplied) but `id` is highly recommended when using `Tabs2` in a controlled state.
 
 ```jsx
 <Tabs2>
@@ -35,22 +35,30 @@ import { Code, MessageBar } from '@looker/components'
 
 ```jsx
 <Tabs2>
-  <Tab2 label="1">
+  <Tab2 label="Really long tab title that should help demonstrate side-scroll">
     Really long tab title that should help demonstrate side-scroll
   </Tab2>
-  <Tab2 label="2">Yet-another-tab-title to get things width enough</Tab2>
-  <Tab2 label="3">
+  <Tab2 label="Yet-another-tab-title to get things width enough">
+    Yet-another-tab-title to get things width enough
+  </Tab2>
+  <Tab2 label="Really, you must be obsessed with these long tab titles?">
     Really, you must be obsessed with these long tab titles?
   </Tab2>
-  <Tab2 label="4">
+  <Tab2 label="Okay, okay, we get it you want to see scrolling in action...">
     Okay, okay, we get it you want to see scrolling in action...
+  </Tab2>
+  <Tab2 label="Repeat really long tab title that should help demonstrate side-scroll">
+    Repeat really long tab title that should help demonstrate side-scroll
+  </Tab2>
+  <Tab2 label="Repeat yet-another-tab-title to get things width enough">
+    Repeat yet-another-tab-title to get things width enough
   </Tab2>
 </Tabs2>
 ```
 
 ## Disabled Tab(s)
 
-To create a disabled Tab add the `disabled` prop to each individual `Tab2`.
+To display a tab that can't be activated add the `disabled` prop.
 
 ```jsx
 <Tabs2>
@@ -74,7 +82,7 @@ Using the distribute prop on `Tabs2` will equally distribute each `Tab` in the c
 ```jsx
 <Tabs2 distribute>
   <Tab2 label="Rebecca Purple">
-    Rebecca Purple{' '}
+    Rebecca Purple
     <div
       style={{
         backgroundColor: 'RebeccaPurple',
@@ -83,7 +91,6 @@ Using the distribute prop on `Tabs2` will equally distribute each `Tab` in the c
     />
   </Tab2>
   <Tab2 label="Coral">
-    {' '}
     <div
       style={{
         backgroundColor: 'coral',
@@ -92,7 +99,6 @@ Using the distribute prop on `Tabs2` will equally distribute each `Tab` in the c
     />
   </Tab2>
   <Tab2 label="Forest Green">
-    {' '}
     <div
       style={{
         backgroundColor: 'ForestGreen',
@@ -101,7 +107,6 @@ Using the distribute prop on `Tabs2` will equally distribute each `Tab` in the c
     />
   </Tab2>
   <Tab2 label="Cornflower Blue">
-    {' '}
     <div
       style={{
         backgroundColor: 'CornflowerBlue',
@@ -116,16 +121,12 @@ Using the distribute prop on `Tabs2` will equally distribute each `Tab` in the c
 
 ```jsx
 ;() => {
-  const [currentTabIndex, setTab] = useState(0)
-
+  const [tabId, setTabId] = useState(0)
   return (
     <>
-      <Space my="small">
-        <Button onClick={() => setTab('cats')}>check out cats</Button>
-        <Button onClick={() => setTab('dogs')}>check out dogs</Button>
-      </Space>
-      <Divider />
-      <Tabs2 tabId={currentTabIndex} onTabChange={setTab}>
+      <button onClick={() => setTab(0)}>Go to A</button>
+      <button onClick={() => setTab(1)}>Go to B</button>
+      <Tabs2 tabId={tabId} onTabChange={setTabId}>
         <Tab2 id="cats" label="Cats">
           Here's awesome story about cats
         </Tab2>

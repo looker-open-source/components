@@ -97,13 +97,13 @@ export const Tabs2 = ({
   const currentTab = tabs.find((tab) => tab.id === tabId)
 
   return (
-    <>
+    <div>
       <TabList2 distribute={distributed}>{labels}</TabList2>
       {currentTab && (
         <TabPanels2 id={currentTab.id}>
           {currentTab.children as any as JSX.Element}
         </TabPanels2>
       )}
-    </>
+    </div>
   )
 }
