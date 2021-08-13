@@ -40,7 +40,6 @@ import { useAccordion2 } from '../Accordion2'
 import {
   createSafeRel,
   HoverDisclosureContext,
-  mergeClassNames,
   partitionAriaProps,
   useWrapEvent,
 } from '../utils'
@@ -54,7 +53,6 @@ import { NavTreeItemContent } from './NavTreeItemContent'
 
 const NavTreeLayout = ({
   children,
-  className,
   defaultOpen,
   indicatorLabel,
   isOpen: propsIsOpen,
@@ -143,6 +141,7 @@ const NavTreeLayout = ({
     indicatorPosition: 'left',
     label: inside,
     onBlur,
+    role: 'treeitem',
     tabIndex: -1,
     ...accordionProps,
   })
@@ -202,7 +201,6 @@ const NavTreeLayout = ({
         {...contentHandlers}
         onKeyUp={handleContentKeyUp}
         rel={createSafeRel(rel, target)}
-        role="treeitem"
         target={target}
         {...ariaProps}
         {...disclosureDomProps}
@@ -221,10 +219,7 @@ const NavTreeLayout = ({
           depth: depth + 1,
         }}
       >
-        <div
-          {...domProps}
-          className={mergeClassNames([domProps.className, className])}
-        >
+        <div {...domProps}>
           {!partialRender && (
             <NavTreeDisclosure
               as="li"
