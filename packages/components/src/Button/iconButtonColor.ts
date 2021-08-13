@@ -30,7 +30,11 @@ import { ToggleColorProps } from './iconButtonTypes'
 
 export const ICON_BUTTON_DEFAULT_COLOR = 'key'
 
-export const iconButtonColor = css<ToggleColorProps>`
+export const iconButtonColor = css<
+  ToggleColorProps & {
+    toggle?: boolean
+  }
+>`
   ${iconButtonColorDerivation}
 
   &:hover,
