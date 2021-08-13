@@ -71,6 +71,13 @@ describe('NavTree', () => {
       fireEvent.click(treeLabel)
       screen.getByText('Some Item')
     })
+
+    test("Uses role 'treeitem' for main content container", () => {
+      renderWithTheme(<Link />)
+
+      // We expect both the NavTree and NavTreeItem child to both have role="treeitem"
+      expect(screen.getAllByRole('treeitem').length).toBe(2)
+    })
   })
 
   describe('href not provided', () => {
@@ -91,6 +98,13 @@ describe('NavTree', () => {
       screen.getByText('Cheddar')
       fireEvent.click(treeLabel)
       expect(screen.queryByText('Cheddar')).not.toBeInTheDocument()
+    })
+
+    test("Uses role 'treeitem' for main content container", () => {
+      renderWithTheme(<Basic />)
+
+      // We expect both the NavTree and NavTreeItem child to both have role="treeitem"
+      expect(screen.getAllByRole('treeitem').length).toBe(2)
     })
   })
 })
