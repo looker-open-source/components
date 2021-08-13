@@ -143,6 +143,7 @@ const NavTreeLayout = ({
     indicatorPosition: 'left',
     label: inside,
     onBlur,
+    role: 'treeitem',
     tabIndex: -1,
     ...accordionProps,
   })
@@ -202,7 +203,6 @@ const NavTreeLayout = ({
         {...contentHandlers}
         onKeyUp={handleContentKeyUp}
         rel={createSafeRel(rel, target)}
-        role="treeitem"
         target={target}
         {...ariaProps}
         {...disclosureDomProps}
