@@ -60,7 +60,6 @@ const TreeLayout = ({
   assumeIconAlignment,
   border: propsBorder,
   children,
-  className,
   dividers,
   forceLabelPadding,
   isOpen: propsIsOpen,
@@ -221,7 +220,7 @@ const TreeLayout = ({
           labelBackgroundOnly: hasLabelBackgroundOnly,
         }}
       >
-        <div {...domProps} className={`${domProps.className} ${className}`}>
+        <div {...domProps}>
           {!partialRender && (
             <Flex as="li" color="text5" {...wrapperHandlers}>
               {content}
