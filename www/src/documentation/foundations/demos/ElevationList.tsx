@@ -43,7 +43,7 @@ import styled from 'styled-components'
 
  export const ElevationList = () => (
    <Space gap="u6">
-   {["plus1", "plus2", "plus3", "plus4", "plus5"].map(e => {
+   {["plus0", "plus1", "plus2", "plus3", "plus4", "plus5"].map(e => {
      return(
       <ElevatedBox
         key={e}
