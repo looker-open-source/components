@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.4.1 (2021-08-13)
+
+
+### Bug Fixes
+
+* Replace usage of t-shirt size space with units ([#2727](https://github.com/looker-open-source/components/issues/2727)) ([106c400](https://github.com/looker-open-source/components/commit/106c4006f385797a29c04161eff5460fda8ea9b1))
+
+
+
+
+
 # [1.4.0](https://github.com/looker-open-source/components/compare/v1.4.0-alpha.0...v1.4.0) (2021-05-23)
 
 **Note:** Version bump only for package @looker/components-theme-editor

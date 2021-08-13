@@ -1,6 +1,6 @@
 {
   "name": "storybook",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "private": true,
   "scripts": {
@@ -14,8 +14,8 @@
     "@looker/components": "*",
     "@looker/components-date": "*",
     "@looker/components-providers": "*",
-    "components-theme-editor": "*",
     "@looker/design-tokens": "*",
+    "components-theme-editor": "^1.4.1",
     "lodash": "*",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
