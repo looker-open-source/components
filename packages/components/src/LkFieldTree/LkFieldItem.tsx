@@ -25,14 +25,13 @@
  */
 
 import React, { FocusEvent, useContext, useState } from 'react'
-import styled, { ThemeContext } from 'styled-components'
+import styled from 'styled-components'
 import { Flex } from '../Layout'
 import { createListItemPartitions } from '../ListItem/utils'
 import {
   getNextFocusTarget,
   HoverDisclosureContext,
   partitionAriaProps,
-  undefinedCoalesce,
   useFocusVisible,
   useWrapEvent,
 } from '../utils'
@@ -41,11 +40,12 @@ import { LkFieldItemContent } from './LkFieldItemContent'
 import { LkFieldItemLabel } from './LkFieldItemLabel'
 import { LkFieldItemProps } from './types'
 
+export const lkFieldItemDensity = -3
+
 export const LkFieldItem = styled(
   ({
     className,
-    color: propsColor,
-    density: propsDensity,
+    color,
     disabled,
     onBlur,
     onClick,
@@ -57,12 +57,7 @@ export const LkFieldItem = styled(
     selected,
     ...restProps
   }: LkFieldItemProps) => {
-    const {
-      density: contextDensity,
-      depth,
-      color: contextColor,
-    } = useContext(TreeContext)
-    const theme = useContext(ThemeContext)
+    const { depth } = useContext(TreeContext)
 
     const [hovered, setHovered] = useState(false)
     const handleWrapperMouseEnter = useWrapEvent(
@@ -91,10 +86,6 @@ export const LkFieldItem = styled(
       onKeyUp,
     })
 
-    const density =
-      undefinedCoalesce([propsDensity, contextDensity]) ||
-      theme.defaults.density
-    const color = undefinedCoalesce([propsColor, contextColor])
     const statefulProps = {
       color,
       disabled,
@@ -104,7 +95,7 @@ export const LkFieldItem = styled(
     const [ariaProps, wrapperProps] = partitionAriaProps(restProps)
     const [inside, outside] = createListItemPartitions({
       color,
-      density,
+      density: lkFieldItemDensity,
       ...restProps,
       ...statefulProps,
     })
@@ -122,7 +113,6 @@ export const LkFieldItem = styled(
         >
           <LkFieldItemContent
             aria-selected={selected}
-            density={density}
             /**
              * Child items should be +1 depth more than their parents so that their label
              * aligns with the label of the parent as opposed to the indicator

@@ -249,6 +249,9 @@ const TreeAccordionContent = styled.div<TreeBorderProps>`
   ${generateTreeBorder}
 `
 
+/**
+ * @deprecated
+ */
 const dividersCSS = css`
   ${TreeItem} {
     margin-top: 1px;

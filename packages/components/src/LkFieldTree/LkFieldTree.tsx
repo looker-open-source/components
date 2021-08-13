@@ -24,18 +24,14 @@
 
  */
 
-import styled, { css, ThemeContext } from 'styled-components'
+import styled from 'styled-components'
 import React, { useContext } from 'react'
 import { useAccordion2 } from '../Accordion2'
 import { ControlledOrUncontrolled } from '../Accordion2/controlTypes'
 import { Flex } from '../Layout'
-import {
-  HoverDisclosureContext,
-  partitionAriaProps,
-  undefinedCoalesce,
-} from '../utils'
+import { HoverDisclosureContext, partitionAriaProps } from '../utils'
 import { List } from '../List'
-import { ListItemContext, ListItemProps } from '../ListItem'
+import { ListItemProps } from '../ListItem'
 import { createListItemPartitions } from '../ListItem/utils'
 import { TreeContext } from '../Tree/TreeContext'
 import {
@@ -44,7 +40,7 @@ import {
   useTreeHandlers,
 } from '../Tree/utils'
 import { WindowedTreeContext } from '../Tree/WindowedTreeNode'
-import { LkFieldItem } from './LkFieldItem'
+import { LkFieldItem, lkFieldItemDensity } from './LkFieldItem'
 import { LkFieldItemContent } from './LkFieldItemContent'
 import { LkFieldItemLabel } from './LkFieldItemLabel'
 import { LkFieldTreeProps } from './types'
@@ -64,8 +60,7 @@ const LkFieldTreeLayout = ({
   toggleOpen: propsToggleOpen,
   ...restProps
 }: LkFieldTreeProps) => {
-  const theme = useContext(ThemeContext)
-
+  const density = lkFieldItemDensity
   const [treeItemInnerProps, accordionInnerProps] =
     partitionTreeProps(restProps)
 
@@ -75,24 +70,15 @@ const LkFieldTreeLayout = ({
     onMouseLeave,
   })
 
-  const {
-    color: propsColor,
-    density: propsDensity,
-    disabled,
-    icon,
-    selected,
-  } = treeItemInnerProps as Partial<ListItemProps>
+  const { color, disabled, icon, selected } =
+    treeItemInnerProps as Partial<ListItemProps>
   const [ariaProps] = partitionAriaProps(restProps)
-
-  const listContext = useContext(ListItemContext)
   const treeContext = useContext(TreeContext)
 
   // Context for supporting windowing
-  // - density must be defined at the collection level for consistent child height
   // - opened / closed state must be managed at the collection level for accurate item count
   // - partialRender to hide the accordion disclosure if it's above the window
   const {
-    density: collectionDensity,
     isOpen: contextIsOpen,
     toggleNode,
     partialRender,
@@ -101,20 +87,8 @@ const LkFieldTreeLayout = ({
   const isOpen = contextIsOpen ?? propsIsOpen
   const toggleOpen = toggleNode ?? propsToggleOpen
 
-  const color = undefinedCoalesce([
-    propsColor,
-    treeContext.color,
-    listContext.color,
-  ])
-
   const startingDepth = 0
   const depth = treeContext.depth ? treeContext.depth : startingDepth
-
-  const density =
-    collectionDensity ||
-    propsDensity ||
-    treeContext.density ||
-    theme.defaults.density
 
   const { indicatorIcons, indicatorPosition } = indicatorDefaults
 
@@ -190,7 +164,6 @@ const LkFieldTreeLayout = ({
     <HoverDisclosureContext.Provider value={{ visible: hovered }}>
       <TreeContext.Provider
         value={{
-          color,
           density,
           depth: depth + 1,
         }}
@@ -209,7 +182,7 @@ const LkFieldTreeLayout = ({
   )
 }
 
-const dividersCSS = css`
+export const LkFieldTree = styled(LkFieldTreeLayout)`
   ${LkFieldItem} {
     margin-top: 1px;
   }
@@ -217,8 +190,4 @@ const dividersCSS = css`
   & & {
     margin-top: 1px;
   }
-`
-
-export const LkFieldTree = styled(LkFieldTreeLayout)`
-  ${dividersCSS}
 `

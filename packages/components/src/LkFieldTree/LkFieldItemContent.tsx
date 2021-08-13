@@ -24,20 +24,19 @@
 
  */
 
-import { DensityRamp } from '@looker/design-tokens'
 import styled, { css } from 'styled-components'
 import { listItemDimensions } from '..'
 import { generateIndent } from '../Tree/utils'
+import { lkFieldItemDensity } from './LkFieldItem'
 
 export type LkFieldItemContentProps = {
   cursorPointer?: boolean
-  density: DensityRamp
   depth: number
   focusVisible: boolean
 }
 
-const itemRoleNoneHeight = (density: DensityRamp) => {
-  const { height } = listItemDimensions(density)
+const itemRoleNoneHeight = () => {
+  const { height } = listItemDimensions(lkFieldItemDensity)
 
   return css`
     min-height: ${height}px;
@@ -49,8 +48,8 @@ export const LkFieldItemContent = styled.div.attrs<LkFieldItemContentProps>(
     role,
   })
 )<LkFieldItemContentProps>`
-  ${({ density, depth }) => generateIndent({ density, depth })}
-  ${({ density }) => itemRoleNoneHeight(density)}
+  ${({ depth }) => generateIndent({ density: lkFieldItemDensity, depth })}
+  ${itemRoleNoneHeight()}
 
   /*
   IconButtons with hovered / selected backgrounds sit above

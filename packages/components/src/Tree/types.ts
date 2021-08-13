@@ -94,6 +94,7 @@ export type TreeProps = ControlledLoosely &
      * Produce a small visual space between each `TreeItem` displayed in the list so adjacent
      * items that are in a "selected" or active state have visual separation.
      * @default false
+     * @deprecated Use `LKFieldTree` & `LKFieldItem` for dividers support
      */
     dividers?: boolean
     /**

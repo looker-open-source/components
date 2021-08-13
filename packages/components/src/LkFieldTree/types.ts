@@ -43,5 +43,5 @@ export type LkFieldTreeProps = ControlledLoosely &
 
 export type LkFieldItemProps = Omit<
   ListItemProps,
-  'description' | 'itemRole' | 'truncate'
+  'density' | 'description' | 'itemRole' | 'truncate'
 >
