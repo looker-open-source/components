@@ -32,7 +32,10 @@ import { Space, SpaceVertical } from '../../Layout'
 import { useToggle } from '../../utils'
 import { WindowedTreeNodeProps, WindowedTreeCollection, Tree } from '..'
 import { generateBorderRadius } from '../utils/generateBorderRadius'
-import { FieldItem, HighlightContext } from './FieldItem'
+import {
+  FieldItem,
+  HighlightContext,
+} from '../../LkFieldTree/stories/FieldItem'
 
 const BorderRadiusOverrideTree = styled(Tree)`
   ${({ theme }) => generateBorderRadius('medium', theme)}

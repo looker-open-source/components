@@ -27,7 +27,7 @@
 import styled, { css } from 'styled-components'
 import { listItemDimensions } from '..'
 import { generateIndent } from '../Tree/utils'
-import { lkFieldItemDensity } from './LkFieldItem'
+import { lkFieldItemDensity } from './defaults'
 
 export type LkFieldItemContentProps = {
   cursorPointer?: boolean

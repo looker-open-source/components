@@ -39,8 +39,7 @@ import { TreeContext } from '../Tree/TreeContext'
 import { LkFieldItemContent } from './LkFieldItemContent'
 import { LkFieldItemLabel } from './LkFieldItemLabel'
 import { LkFieldItemProps } from './types'
-
-export const lkFieldItemDensity = -3
+import { lkFieldItemDensity } from './defaults'
 
 export const LkFieldItem = styled(
   ({

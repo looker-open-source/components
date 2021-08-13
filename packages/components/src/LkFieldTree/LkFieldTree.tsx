@@ -40,7 +40,8 @@ import {
   useTreeHandlers,
 } from '../Tree/utils'
 import { WindowedTreeContext } from '../Tree/WindowedTreeNode'
-import { LkFieldItem, lkFieldItemDensity } from './LkFieldItem'
+import { lkFieldItemDensity } from './defaults'
+import { LkFieldItem } from './LkFieldItem'
 import { LkFieldItemContent } from './LkFieldItemContent'
 import { LkFieldItemLabel } from './LkFieldItemLabel'
 import { LkFieldTreeProps } from './types'
