@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0-alpha.1](https://github.com/looker-open-source/components/compare/@looker/components@2.2.0-alpha.0...@looker/components@2.2.0-alpha.1) (2021-08-13)
+
+
+### Bug Fixes
+
+* **NavTree:** Made sure NavTree had role="treeitem" ([#2736](https://github.com/looker-open-source/components/issues/2736)) ([e9ca121](https://github.com/looker-open-source/components/commit/e9ca121217516dd2ee1e1d4a979e112f1f19cdc8))
+
+
+### Features
+
+* Ripple effect ([#2720](https://github.com/looker-open-source/components/issues/2720)) ([2e4dc3c](https://github.com/looker-open-source/components/commit/2e4dc3c85c81902a2573a023b5c85f8d5409fff1))
+* **Density:** Add new helpers for changing density default ([#2729](https://github.com/looker-open-source/components/issues/2729)) ([98f330d](https://github.com/looker-open-source/components/commit/98f330d4709d69697988cc3e988ee3251792a508))
+
+
+
+
+
 # [2.2.0-alpha.0](https://github.com/looker-open-source/components/compare/@looker/components@2.1.0...@looker/components@2.2.0-alpha.0) (2021-08-11)
 
 
