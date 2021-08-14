@@ -21,7 +21,7 @@
     "@looker/design-tokens": "^2.2.0-alpha.1",
     "i18next": "20.3.1",
     "react-helmet-async": "^1.0.9",
-    "react-i18next": "11.8.15",
+    "react-i18next": "11.11.4",
     "tabbable": "^5.2.0"
   },
   "devDependencies": {
