@@ -23,7 +23,7 @@
     "@styled-icons/material-rounded": "^10.28.0",
     "date-fns": "^2.21.1",
     "date-fns-tz": "^1.0.12",
-    "i18next": "20.3.1",
+    "i18next": "20.4.0",
     "lodash": "^4.17.20",
     "react-day-picker": "^7.4.8",
     "react-i18next": "11.8.15"
