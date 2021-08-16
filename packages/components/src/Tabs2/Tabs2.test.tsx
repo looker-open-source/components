@@ -39,7 +39,7 @@ const { Basic, DefaultTab, Distributed } = composeStories(stories)
 describe('Tabs2', () => {
   test('basic', () => {
     renderWithTheme(<Basic />)
-    expect(screen.getAllByRole('tab')).toHaveLength(4)
+    expect(screen.getAllByRole('tab')).toHaveLength(3)
     expect(
       screen.getByText("Here's awesome story about cats")
     ).toBeInTheDocument()
@@ -68,17 +68,21 @@ describe('Tabs2', () => {
   })
 
   test('disabled', () => {
-    renderWithTheme(<Basic />)
+    renderWithTheme(
+      <Tabs2>
+        <Tab2 label="First">1</Tab2>
+        <Tab2 disabled label="Second">
+          2
+        </Tab2>
+      </Tabs2>
+    )
+    expect(screen.getByText('Second')).toBeInTheDocument()
+    expect(screen.getByText('1')).toBeInTheDocument()
+    expect(screen.queryByText('2')).not.toBeInTheDocument()
 
-    expect(
-      screen.queryByText("Here's awesome story about cats")
-    ).toBeInTheDocument()
-    expect(screen.queryByText('not available')).not.toBeInTheDocument()
-    fireEvent.click(screen.getByText('Human'))
-    expect(
-      screen.queryByText("Here's awesome story about cats")
-    ).toBeInTheDocument()
-    expect(screen.queryByText('not available')).not.toBeInTheDocument()
+    fireEvent.click(screen.getByText('Second'))
+    expect(screen.getByText('1')).toBeInTheDocument()
+    expect(screen.queryByText('2')).not.toBeInTheDocument()
   })
 
   test('first item disabled, not default selected', () => {
@@ -87,9 +91,7 @@ describe('Tabs2', () => {
         <Tab2 disabled label="First">
           1
         </Tab2>
-        <Tab2 disabled label="Second">
-          2
-        </Tab2>
+        <Tab2 label="Second">2</Tab2>
       </Tabs2>
     )
     expect(screen.queryByText('1')).not.toBeInTheDocument()
@@ -120,7 +122,7 @@ describe('Tabs2', () => {
       screen.queryByText("Here's awesome story about cats")
     ).toBeInTheDocument()
 
-    fireEvent.click(screen.getByText('check out dogs'))
+    fireEvent.click(screen.getByText('Switch to Dogs'))
 
     expect(
       screen.queryByText('Cats are way better than dogs. Go to other tab')

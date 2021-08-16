@@ -59,7 +59,7 @@ export const Controlled = () => {
   return (
     <>
       <button onClick={() => setTabId('cats')}>Switch to Cats</button>
-      <button onClick={() => setTabId('dogs')}>Switch to dogs</button>
+      <button onClick={() => setTabId('dogs')}>Switch to Dogs</button>
       <Tabs2 tabId={currentTabId} onTabChange={setTabId}>
         <Tab2 id="cats" label="Cats">
           Here's awesome story about cats
