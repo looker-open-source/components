@@ -25,20 +25,22 @@
  */
 
 import React, { useState } from 'react'
-import { Home } from '@styled-icons/material-outlined/Home'
 import { Info } from '@styled-icons/material-outlined/Info'
-import { Aside } from '../Layout'
-import { ListItem } from '../ListItem'
-import { ProgressCircular } from '../ProgressCircular'
-import { NavTree, NavTreeItem } from '../NavTree'
-import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
-import { NavList } from './NavList'
+import { Home } from '@styled-icons/material-outlined/Home'
+import { Aside } from '../../Layout'
+import { ListItem } from '../../ListItem'
+import { ProgressCircular } from '../../ProgressCircular'
+import { NavTree, NavTreeItem } from '../../NavTree'
+import { defaultArgTypes as argTypes } from '../../../../../storybook/src/defaultArgTypes'
+import { NavList } from '../NavList'
 
 export default {
   argTypes,
   component: NavList,
   title: 'NavList',
 }
+
+export * from './LeftNav.story'
 
 export const Basic = () => {
   const [selected, setSelected] = useState(false)
