@@ -30,6 +30,7 @@ import styled, { ThemeContext } from 'styled-components'
 import { TruncateConfigProp, TruncateOptionally } from '../Truncate'
 import { ListItemColorProp } from './types'
 import { listItemDimensions, listItemLabelColor } from './utils'
+import { listItemPaddingY } from './utils/listItemPaddingY'
 
 type ListItemLabelProps = CompatibleHTMLProps<HTMLElement> &
   ListItemColorProp &
@@ -84,8 +85,12 @@ export const ListItemLabel = styled(
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  justify-content: center;
+  min-height: ${({ density = 0 }) => listItemDimensions(density).height}px;
   /**
    * min-width needed so truncates are aware of container width
    */
   min-width: 0;
+
+  ${({ density = 0 }) => listItemPaddingY(density)}
 `

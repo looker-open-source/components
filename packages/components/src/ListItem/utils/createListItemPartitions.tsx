@@ -60,6 +60,7 @@ export const createListItemPartitions = ({
     children: icon,
     color,
     density,
+    description, // description is passed to icon because the icon determines the item height, which is calculated based on description
     disabled,
   }
 
