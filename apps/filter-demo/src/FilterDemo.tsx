@@ -67,7 +67,7 @@ const FilterDemoInternal: FC = () => {
         // Take up to the first 10 dashboards
         setDashboards(
           result
-            .slice(0, 100)
+            .slice(0, 99)
             .sort(({ title: aTitle = '' }, { title: bTitle = '' }) =>
               aTitle.localeCompare(bTitle)
             )
