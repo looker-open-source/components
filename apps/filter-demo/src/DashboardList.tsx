@@ -24,7 +24,7 @@
 
  */
 
-import React, { useMemo } from 'react'
+import React, { useMemo, useState } from 'react'
 import type { IDashboard } from '@looker/sdk'
 import type { SelectOptionObject } from '@looker/components'
 import { FieldSelect } from '@looker/components'
@@ -42,29 +42,31 @@ export const DashboardList: React.FC<DashboardListProps> = ({
   dashboards,
   selectDashboard,
 }) => {
+  const [filter, setFilter] = useState('')
   const options = useMemo(
     () =>
       dashboards.reduce(
         (acc: SelectOptionObject[], { id, title }: IDashboard) => {
-          if (id) {
+          if (id && title?.toUpperCase().includes(filter.toUpperCase())) {
             acc = [...acc, { label: title, value: id }]
           }
           return acc
         },
         []
       ),
-    [dashboards]
+    [dashboards, filter]
   )
 
   return (
     <FieldSelect
       label="Select a Dashboard"
       inline={window.innerWidth > 768}
-      autoResize
       isLoading={loading}
       options={options}
       value={current}
       onChange={selectDashboard}
+      isFilterable
+      onFilter={setFilter}
     />
   )
 }
