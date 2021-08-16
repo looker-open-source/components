@@ -5,80 +5,21 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [2.2.0](https://github.com/looker-open-source/components/compare/@looker/design-tokens@2.2.0-alpha.1...@looker/design-tokens@2.2.0) (2021-08-16)
 
-**Note:** Version bump only for package @looker/design-tokens
-
-
-
-
-
-# [2.2.0-alpha.1](https://github.com/looker-open-source/components/compare/@looker/design-tokens@2.2.0-alpha.0...@looker/design-tokens@2.2.0-alpha.1) (2021-08-13)
-
 
 ### Features
 
 * Ripple effect ([#2720](https://github.com/looker-open-source/components/issues/2720)) ([2e4dc3c](https://github.com/looker-open-source/components/commit/2e4dc3c85c81902a2573a023b5c85f8d5409fff1))
-
-
-
-
-
-# [2.2.0-alpha.0](https://github.com/looker-open-source/components/compare/@looker/design-tokens@2.1.0...@looker/design-tokens@2.2.0-alpha.0) (2021-08-11)
-
-
-### Features
-
 * Add new elevation values ([#2716](https://github.com/looker-open-source/components/issues/2716)) ([7ee921e](https://github.com/looker-open-source/components/commit/7ee921ec520da10972224807e63374e28395d01b))
 * Leverage new theme.elevations instead of theme.shadows ([#2723](https://github.com/looker-open-source/components/issues/2723)) ([33eff32](https://github.com/looker-open-source/components/commit/33eff32a08892e3cc60e725a3604b500bf631672))
 * Leverage uX theme.space unit notation within library ([#2724](https://github.com/looker-open-source/components/issues/2724)) ([e1bcefb](https://github.com/looker-open-source/components/commit/e1bcefbc5ceb0bc7129a1a86a16f432210c0f15a))
-* **design-tokens:** Create new unit-based spacing tokens to represent new design system values ([#2661](https://github.com/looker-open-source/components/issues/2661)) ([9ae1a20](https://github.com/looker-open-source/components/commit/9ae1a20d9bd47f268a37066e8a1303dce88b3769))
-
-
-
+* Create new unit-based spacing tokens to represent new design system values ([#2661](https://github.com/looker-open-source/components/issues/2661)) ([9ae1a20](https://github.com/looker-open-source/components/commit/9ae1a20d9bd47f268a37066e8a1303dce88b3769))
 
 
 # [2.1.0](https://github.com/looker-open-source/components/compare/@looker/design-tokens@2.1.0-alpha.1...@looker/design-tokens@2.1.0) (2021-07-26)
 
-**Note:** Version bump only for package @looker/design-tokens
-
-
-
-
-
-# [2.1.0-alpha.1](https://github.com/looker-open-source/components/compare/@looker/design-tokens@2.0.0...@looker/design-tokens@2.1.0-alpha.1) (2021-07-24)
-
-
 ### Bug Fixes
 
 * move lodash to peer dependencies ([#2580](https://github.com/looker-open-source/components/issues/2580)) ([a1a94a3](https://github.com/looker-open-source/components/commit/a1a94a3f501b481aaf73ec5305123965853cc508)), closes [/github.com/looker-open-source/components/blame/12658bddd81bf4dc1625865de424cc674ea07e1c/packages/components/README.md#L15](https://github.com//github.com/looker-open-source/components/blame/12658bddd81bf4dc1625865de424cc674ea07e1c/packages/components/README.md/issues/L15)
-* **CardContent:** Properly absorb padding (pN) values ([#2494](https://github.com/looker-open-source/components/issues/2494)) ([148cd49](https://github.com/looker-open-source/components/commit/148cd4945be2bf4dffb91458a2f1761d6c54d6cd))
-
-
-### Features
-
-* **ComponentsProvider:** ThemeCustomizations should support overloading fontSources ([#2641](https://github.com/looker-open-source/components/issues/2641)) ([9dd88e7](https://github.com/looker-open-source/components/commit/9dd88e733af0ac726b924827934457c62ad2ecac))
-* Consistently support props across "Semantic Layout" components as well as `Grid` ([#2596](https://github.com/looker-open-source/components/issues/2596)) ([227eda3](https://github.com/looker-open-source/components/commit/227eda35b5977abb398dc1be3822a6ed76ecad49))
-* **Tree:** Add virtualization support ([#2481](https://github.com/looker-open-source/components/issues/2481)) ([dc2619d](https://github.com/looker-open-source/components/commit/dc2619d0fb541925cd1d5312ea4d04979e34edf6))
-
-
-
-
-
-# [2.1.0-alpha.0](https://github.com/looker-open-source/components/compare/@looker/design-tokens@2.0.0...@looker/design-tokens@2.1.0-alpha.0) (2021-07-23)
-
-
-### Bug Fixes
-
-* move lodash to peer dependencies ([#2580](https://github.com/looker-open-source/components/issues/2580)) ([a1a94a3](https://github.com/looker-open-source/components/commit/a1a94a3f501b481aaf73ec5305123965853cc508)), closes [/github.com/looker-open-source/components/blame/12658bddd81bf4dc1625865de424cc674ea07e1c/packages/components/README.md#L15](https://github.com//github.com/looker-open-source/components/blame/12658bddd81bf4dc1625865de424cc674ea07e1c/packages/components/README.md/issues/L15)
-* **CardContent:** Properly absorb padding (pN) values ([#2494](https://github.com/looker-open-source/components/issues/2494)) ([148cd49](https://github.com/looker-open-source/components/commit/148cd4945be2bf4dffb91458a2f1761d6c54d6cd))
-
-
-### Features
-
-* **ComponentsProvider:** ThemeCustomizations should support overloading fontSources ([#2641](https://github.com/looker-open-source/components/issues/2641)) ([9dd88e7](https://github.com/looker-open-source/components/commit/9dd88e733af0ac726b924827934457c62ad2ecac))
-* Consistently support props across "Semantic Layout" components as well as `Grid` ([#2596](https://github.com/looker-open-source/components/issues/2596)) ([227eda3](https://github.com/looker-open-source/components/commit/227eda35b5977abb398dc1be3822a6ed76ecad49))
-* **Tree:** Add virtualization support ([#2481](https://github.com/looker-open-source/components/issues/2481)) ([dc2619d](https://github.com/looker-open-source/components/commit/dc2619d0fb541925cd1d5312ea4d04979e34edf6))
-
-
 
 
 
