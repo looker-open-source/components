@@ -30,9 +30,6 @@ import {
   ListItemBackgroundColorProps,
 } from '../ListItem/utils'
 
-/**
- * @TODO: Delete TreeItemLabel once FieldItem component is completed
- */
 export const LkFieldItemLabel = styled.div<ListItemBackgroundColorProps>`
   ${listItemBackgroundColor}
   align-items: center;

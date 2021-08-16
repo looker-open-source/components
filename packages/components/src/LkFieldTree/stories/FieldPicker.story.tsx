@@ -100,8 +100,7 @@ export const FieldPicker = () => (
   <Aside>
     <TreeCollection>
       <BorderRadiusOverrideTree
-        density={-3}
-        defaultOpen={true}
+        defaultOpen
         detail={3}
         label={
           <Box pl="xxsmall" fontWeight="bold">
@@ -112,7 +111,6 @@ export const FieldPicker = () => (
         {fields}
       </BorderRadiusOverrideTree>
       <BorderRadiusOverrideTree
-        density={-3}
         label={
           <Box pl="xxsmall" fontWeight="bold">
             Order Items
@@ -122,7 +120,6 @@ export const FieldPicker = () => (
         {fields}
       </BorderRadiusOverrideTree>
       <BorderRadiusOverrideTree
-        density={-3}
         label={
           <Box pl="xxsmall" fontWeight="bold">
             Users

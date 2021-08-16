@@ -24,22 +24,21 @@
 
  */
 
-import { GenericClickProps, ListItemProps, TreeProps } from '..'
-import { ControlledLoosely } from '../Accordion2/controlTypes'
+import { ListItemProps, TreeProps } from '..'
 
-export type LkFieldTreeProps = ControlledLoosely &
-  GenericClickProps<HTMLElement> &
-  Pick<
-    TreeProps,
-    | 'color'
-    | 'density'
-    | 'detail'
-    | 'disabled'
-    | 'hovered'
-    | 'icon'
-    | 'selected'
-    | 'label'
-  >
+export type LkFieldTreeProps = Omit<
+  TreeProps,
+  | 'assumeIconAlignment'
+  | 'border'
+  | 'branchFontWeight'
+  | 'density'
+  | 'description'
+  | 'dividers'
+  | 'forceLabelPadding'
+  | 'itemRole'
+  | 'labelBackgroundOnly'
+  | 'truncate'
+>
 
 export type LkFieldItemProps = Omit<
   ListItemProps,
