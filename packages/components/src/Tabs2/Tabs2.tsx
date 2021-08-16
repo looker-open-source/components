@@ -37,19 +37,19 @@ import { Tabs2Props, TabStack } from './types'
  * Tabs2 is a modernized version of the `Tabs` component with an simplified
  * interface to follow conventions in other components libraries and to more closely match the controlled and uncontrolled models of our other components.
  */
-
 export const Tabs2 = ({
   children,
   onTabChange,
   defaultTabId,
   distributed = false,
+  tabId: propsTabId,
   ...props
 }: Tabs2Props) => {
   // list of all elements to be displayed as Tab and its content.
   const [tabs, setTabs] = useState<TabStack>([])
   // The identifier for connecting the `Tab` with its content
   const [currentTabId, setCurrentTabId] = useState(defaultTabId)
-  const tabId = props.tabId || currentTabId
+  const tabId = propsTabId || currentTabId
 
   useEffect(() => {
     // structuring the data that comes in to be in the correct shape to create each individual `Tab` and its content.
@@ -97,13 +97,13 @@ export const Tabs2 = ({
   const currentTab = tabs.find((tab) => tab.id === tabId)
 
   return (
-    <>
+    <div {...props}>
       <TabList2 distribute={distributed}>{labels}</TabList2>
       {currentTab && (
         <TabPanels2 id={currentTab.id}>
           {currentTab.children as any as JSX.Element}
         </TabPanels2>
       )}
-    </>
+    </div>
   )
 }
