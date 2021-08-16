@@ -30,13 +30,12 @@ import { fontSize, padding, reset } from '@looker/design-tokens'
 import styled, { css } from 'styled-components'
 import { useArrowKeyNav } from '../utils'
 import { TabList2Props } from './types'
-import { Tab2 } from './Tab2'
 
 const defaultLayoutCSS = css`
-  ${Tab2} {
+  button {
     min-width: 3rem;
   }
-  ${Tab2} + ${Tab2} {
+  button + button {
     margin-left: ${(props) => props.theme.space.xlarge};
   }
 `
@@ -45,16 +44,16 @@ const distributeCSS = css`
   display: grid;
   grid-auto-columns: 1fr;
   grid-auto-flow: column;
-  ${Tab2} {
+  button {
     padding: ${({ theme: { space } }) => `${space.xsmall} ${space.medium}`};
   }
 `
 
-const TabList2CSS = css<TabList2Props>`
+export const tabListCSS = css<TabList2Props>`
   ${reset}
   ${padding}
   ${fontSize}
-  border-bottom: 1px solid ${(props) => props.theme.colors.ui2};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.ui2};
   -ms-overflow-style: none; /* Internet Explorer 10+ */
   overflow-x: auto;
   scrollbar-width: none; /* Firefox */
@@ -86,5 +85,5 @@ export const TabList2 = styled(
 ).attrs(({ fontSize = 'small' }) => ({
   fontSize,
 }))`
-  ${TabList2CSS}
+  ${tabListCSS}
 `

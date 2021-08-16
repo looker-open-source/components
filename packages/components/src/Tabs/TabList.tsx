@@ -26,16 +26,10 @@
 
 import { useTranslation } from 'react-i18next'
 import React, { Children, cloneElement, forwardRef, Ref } from 'react'
-import {
-  fontSize,
-  FontSizeProps,
-  PaddingProps,
-  padding,
-  reset,
-} from '@looker/design-tokens'
-import styled, { css } from 'styled-components'
+import { FontSizeProps, PaddingProps } from '@looker/design-tokens'
+import styled from 'styled-components'
 import { useArrowKeyNav } from '../utils'
-import { Tab } from '.'
+import { tabListCSS } from '../Tabs2/TabList2'
 
 export interface TabListProps extends PaddingProps, FontSizeProps {
   children: JSX.Element[]
@@ -44,24 +38,6 @@ export interface TabListProps extends PaddingProps, FontSizeProps {
   className?: string
   distribute?: boolean
 }
-
-const defaultLayoutCSS = css`
-  ${Tab} {
-    min-width: 3rem;
-  }
-  ${Tab} + ${Tab} {
-    margin-left: ${(props) => props.theme.space.u8};
-  }
-`
-
-const distributeCSS = css`
-  display: grid;
-  grid-auto-columns: 1fr;
-  grid-auto-flow: column;
-  ${Tab} {
-    padding: ${({ theme: { space } }) => `${space.u2} ${space.u4}`};
-  }
-`
 
 /**
  * @deprecated Use `Tabs2` & `Tab2` instead
@@ -103,16 +79,5 @@ export const TabList = styled(
 ).attrs(({ fontSize = 'small' }) => ({
   fontSize,
 }))`
-  ${reset}
-  ${padding}
-  ${fontSize}
-  border-bottom: 1px solid ${(props) => props.theme.colors.ui2};
-  -ms-overflow-style: none; /* Internet Explorer 10+ */
-  overflow-x: auto;
-  scrollbar-width: none; /* Firefox */
-  white-space: nowrap;
-  &::-webkit-scrollbar {
-    display: none; /* Safari and Chrome */
-  }
-  ${({ distribute }) => (distribute ? distributeCSS : defaultLayoutCSS)}
+  ${tabListCSS}
 `

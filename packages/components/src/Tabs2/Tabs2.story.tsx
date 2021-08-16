@@ -24,11 +24,8 @@
 
  */
 
-import React, { FC, useState } from 'react'
+import React, { useState } from 'react'
 import { Story } from '@storybook/react/types-6-0'
-import { Button } from '../Button'
-import { Divider } from '../Divider'
-import { Space } from '../Layout/Space'
 import { Tab2, Tabs2, Tabs2Props } from './'
 
 export default {
@@ -38,9 +35,6 @@ export default {
 
 const Template: Story<Partial<Tabs2Props>> = (args) => (
   <Tabs2 {...args}>
-    <Tab2 disabled label="Human">
-      not available
-    </Tab2>
     <Tab2 id="cats" label="Cats">
       Here's awesome story about cats
     </Tab2>
@@ -59,17 +53,14 @@ Distributed.args = { distributed: true }
 export const DefaultTab = Template.bind({})
 DefaultTab.args = { defaultTabId: 'dogs' }
 
-export const Controlled: FC = () => {
-  const [currentTabIndex, setTab] = useState('cats')
+export const Controlled = () => {
+  const [currentTabId, setTabId] = useState('cats')
 
   return (
     <>
-      <Space my="small">
-        <Button onClick={() => setTab('cats')}>check out cats</Button>
-        <Button onClick={() => setTab('dogs')}>check out dogs</Button>
-      </Space>
-      <Divider />
-      <Tabs2 tabId={currentTabIndex} onTabChange={setTab}>
+      <button onClick={() => setTabId('cats')}>Switch to Cats</button>
+      <button onClick={() => setTabId('dogs')}>Switch to dogs</button>
+      <Tabs2 tabId={currentTabId} onTabChange={setTabId}>
         <Tab2 id="cats" label="Cats">
           Here's awesome story about cats
         </Tab2>
@@ -79,4 +70,7 @@ export const Controlled: FC = () => {
       </Tabs2>
     </>
   )
+}
+Controlled.parameters = {
+  storyshots: { disable: true },
 }

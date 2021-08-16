@@ -32,6 +32,8 @@ import { composeStories } from '@storybook/testing-react'
 import { fireEvent, screen } from '@testing-library/react'
 import * as stories from './Tabs2.story'
 import { Controlled } from './Tabs2.story'
+import { Tabs2 } from './Tabs2'
+import { Tab2 } from './Tab2'
 const { Basic, DefaultTab, Distributed } = composeStories(stories)
 
 describe('Tabs2', () => {
@@ -77,6 +79,21 @@ describe('Tabs2', () => {
       screen.queryByText("Here's awesome story about cats")
     ).toBeInTheDocument()
     expect(screen.queryByText('not available')).not.toBeInTheDocument()
+  })
+
+  test('first item disabled, not default selected', () => {
+    renderWithTheme(
+      <Tabs2>
+        <Tab2 disabled label="First">
+          1
+        </Tab2>
+        <Tab2 disabled label="Second">
+          2
+        </Tab2>
+      </Tabs2>
+    )
+    expect(screen.queryByText('1')).not.toBeInTheDocument()
+    expect(screen.getByText('2')).toBeInTheDocument()
   })
 
   test('no defaultTabId should display first tab that is not disabled', () => {
