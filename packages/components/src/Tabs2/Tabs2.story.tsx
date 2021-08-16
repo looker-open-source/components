@@ -26,7 +26,7 @@
 
 import React, { useState } from 'react'
 import { Story } from '@storybook/react/types-6-0'
-import { Paragraph } from '../Text'
+import { Box } from '../Layout'
 import { Tab2, Tabs2, Tabs2Props } from './'
 
 export default {
@@ -35,18 +35,17 @@ export default {
 }
 
 const Template: Story<Partial<Tabs2Props>> = (args) => (
-  <Tabs2 {...args}>
-    <Tab2 id="cats" label="Lots of Cats">
-      <Paragraph>Here's awesome story about cats</Paragraph>
-      <Paragraph>It could really go on and on</Paragraph>
-    </Tab2>
-    <Tab2 id="dogs" label="A few Dogs">
-      <Paragraph>Cats are way better than dogs. Go to other tab</Paragraph>
-    </Tab2>
-    <Tab2 label="Fish">
-      <Paragraph>Are kinda smelly</Paragraph>
-    </Tab2>
-  </Tabs2>
+  <Box height="8rem">
+    <Tabs2 {...args}>
+      <Tab2 id="cats" label="Cats">
+        Here's awesome story about cats
+      </Tab2>
+      <Tab2 id="dogs" label="Dogs">
+        Cats are way better than dogs. Go to other tab
+      </Tab2>
+      <Tab2 label="Fish">Are kinda smelly</Tab2>
+    </Tabs2>
+  </Box>
 )
 
 export const Basic = Template.bind({})
