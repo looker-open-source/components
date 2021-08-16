@@ -27,7 +27,7 @@
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { screen } from '@testing-library/react'
-import { Basic } from './NavList.story'
+import { Basic } from './stories/NavList.story'
 
 describe('NavList', () => {
   test('display with theme.colors.key', () => {
