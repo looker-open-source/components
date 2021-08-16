@@ -45,3 +45,6 @@ yarn-debug.log*
 yarn-error.log*
 /lerna-debug.log
 
+# nix
+cache-*
+drv
