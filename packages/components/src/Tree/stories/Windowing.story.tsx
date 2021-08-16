@@ -33,9 +33,9 @@ import { useToggle } from '../../utils'
 import { WindowedTreeNodeProps, WindowedTreeCollection, Tree } from '..'
 import { generateBorderRadius } from '../utils/generateBorderRadius'
 import {
-  FieldItem,
+  FieldPickerItem,
   HighlightContext,
-} from '../../LkFieldTree/stories/FieldItem'
+} from '../../LkFieldTree/stories/FieldPickerItem'
 
 const BorderRadiusOverrideTree = styled(Tree)`
   ${({ theme }) => generateBorderRadius('medium', theme)}
@@ -78,10 +78,10 @@ const getItems = (
     const itemText = labelLength ? `: ${getString(labelLength)}` : ''
     return {
       content: (
-        <FieldItem>
+        <FieldPickerItem>
           {prefix}-{i}
           {itemText}
-        </FieldItem>
+        </FieldPickerItem>
       ),
     }
   })

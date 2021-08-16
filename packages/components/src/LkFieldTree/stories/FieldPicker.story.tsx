@@ -31,7 +31,7 @@ import { Aside, Box, Paragraph, ParagraphProps } from '../..'
 import { TreeBranch, TreeCollection } from '../../Tree'
 import { generateBorderRadius } from '../../Tree/utils/generateBorderRadius'
 import { LkFieldTree } from '..'
-import { FieldItem } from './FieldItem'
+import { FieldPickerItem } from './FieldPickerItem'
 
 export default {
   argTypes,
@@ -67,32 +67,32 @@ const fields = (
       selected
       label={<Box pl="xxsmall">Created</Box>}
     >
-      <FieldItem>Created Date</FieldItem>
-      <FieldItem selected>Created Month</FieldItem>
-      <FieldItem>Created Year</FieldItem>
+      <FieldPickerItem>Created Date</FieldPickerItem>
+      <FieldPickerItem selected>Created Month</FieldPickerItem>
+      <FieldPickerItem>Created Year</FieldPickerItem>
     </BorderRadiusOverrideTree>
-    <FieldItem>City</FieldItem>
-    <FieldItem selected filter>
+    <FieldPickerItem>City</FieldPickerItem>
+    <FieldPickerItem selected filter>
       This is a really long field name to show that truncation is working as
       desired. It's not a realistic example but it lets our tests know that
       things are working as-desired
-    </FieldItem>
-    <FieldItem>ID</FieldItem>
+    </FieldPickerItem>
+    <FieldPickerItem>ID</FieldPickerItem>
     <TreeBranch>
       <FieldGroupHeading color="measure">MEASURES</FieldGroupHeading>
     </TreeBranch>
-    <FieldItem color="measure" selected>
+    <FieldPickerItem color="measure" selected>
       Sum
-    </FieldItem>
-    <FieldItem color="measure" filter>
+    </FieldPickerItem>
+    <FieldPickerItem color="measure" filter>
       Max
-    </FieldItem>
+    </FieldPickerItem>
     <TreeBranch>
       <FieldGroupHeading color="calculation">CALCULATED</FieldGroupHeading>
     </TreeBranch>
-    <FieldItem pivot color="calculation">
+    <FieldPickerItem pivot color="calculation">
       Calc
-    </FieldItem>
+    </FieldPickerItem>
   </>
 )
 

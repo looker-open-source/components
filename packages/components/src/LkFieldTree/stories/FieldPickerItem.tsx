@@ -45,14 +45,14 @@ import { ReplaceText, Span } from '../../Text'
 
 export const HighlightContext = createContext({ term: '' })
 
-type FieldItemProps = {
+type FieldPickerItemProps = {
   color?: ToggleColor
   filter?: boolean
   pivot?: boolean
   selected?: boolean
 }
 
-export const FieldItem: FC<FieldItemProps> = ({
+export const FieldPickerItem: FC<FieldPickerItemProps> = ({
   children = 'Cost',
   color = 'dimension',
   filter = false,
