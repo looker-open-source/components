@@ -57,7 +57,7 @@ export const DashboardEmbed: React.FC<DashboardEmbedProps> = ({
     if (el && hostUrl && dashboardId) {
       el.innerHTML = ''
       LookerEmbedSDK.init(hostUrl)
-      LookerEmbedSDK.createDashboardWithId(parseInt(dashboardId, 10))
+      LookerEmbedSDK.createDashboardWithId(dashboardId)
         .withNext()
         // This can be removed if using a theme that has this setting
         .withParams({ _theme: '{"show_filters_bar": false}' })

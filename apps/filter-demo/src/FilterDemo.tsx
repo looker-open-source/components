@@ -65,7 +65,13 @@ const FilterDemoInternal: FC = () => {
       try {
         const result = await core40SDK.ok(core40SDK.all_dashboards())
         // Take up to the first 10 dashboards
-        setDashboards(result.slice(0, 9))
+        setDashboards(
+          result
+            .slice(0, 99)
+            .sort(({ title: aTitle = '' }, { title: bTitle = '' }) =>
+              aTitle.localeCompare(bTitle)
+            )
+        )
         setLoadingDashboards(false)
       } catch (error) {
         setDashboards([])
@@ -163,11 +169,7 @@ const FilterDemoInternal: FC = () => {
           <Space>
             <Heading>@looker/filter-components Demo</Heading>
           </Space>
-          <Space
-            between={!horizontal}
-            justify={horizontal ? 'end' : undefined}
-            align="end"
-          >
+          <Space justify={horizontal ? 'end' : undefined} align="end">
             <DashboardList
               dashboards={dashboards}
               loading={loadingDashboards}
