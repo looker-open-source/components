@@ -43,7 +43,6 @@ export const Tabs2 = ({
   defaultTabId,
   distributed = false,
   tabId: propsTabId,
-  ...props
 }: Tabs2Props) => {
   // list of all elements to be displayed as Tab and its content.
   const [tabs, setTabs] = useState<TabStack>([])
@@ -97,13 +96,13 @@ export const Tabs2 = ({
   const currentTab = tabs.find((tab) => tab.id === tabId)
 
   return (
-    <div {...props}>
+    <>
       <TabList2 distribute={distributed}>{labels}</TabList2>
       {currentTab && (
         <TabPanels2 id={currentTab.id}>
           {currentTab.children as any as JSX.Element}
         </TabPanels2>
       )}
-    </div>
+    </>
   )
 }

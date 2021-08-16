@@ -56,8 +56,7 @@ const TabPanels2Layout: FC<TabPanels2Props> = ({ children, className, id }) => (
 )
 
 export const TabPanels2 = styled(TabPanels2Layout).attrs(
-  ({ height = '100%', pt = 'large' }) => ({
-    height,
+  ({ pt = 'large' }) => ({
     pt,
   })
 )`
