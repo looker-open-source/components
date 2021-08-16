@@ -25,43 +25,49 @@
  */
 
 import { useTranslation } from 'react-i18next'
-import React, { Children, cloneElement, forwardRef, Ref } from 'react'
-import { FontSizeProps, PaddingProps } from '@looker/design-tokens'
-import styled from 'styled-components'
+import React, { forwardRef, Ref } from 'react'
+import { fontSize, padding, reset } from '@looker/design-tokens'
+import styled, { css } from 'styled-components'
 import { useArrowKeyNav } from '../utils'
-import { tabListCSS } from '../Tabs2/TabList2'
+import { TabList2Props } from './types'
 
-export interface TabListProps extends PaddingProps, FontSizeProps {
-  children: JSX.Element[]
-  selectedIndex?: number
-  onSelectTab?: (index: any) => void
-  className?: string
-  distribute?: boolean
-}
+const defaultLayoutCSS = css`
+  button {
+    min-width: 3rem;
+  }
+  button + button {
+    margin-left: ${(props) => props.theme.space.xlarge};
+  }
+`
 
-/**
- * @deprecated Use `Tabs2` & `Tab2` instead
- */
-export const TabList = styled(
+const distributeCSS = css`
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-auto-flow: column;
+  button {
+    padding: ${({ theme: { space } }) => `${space.xsmall} ${space.medium}`};
+  }
+`
+
+export const tabListCSS = css<TabList2Props>`
+  ${reset}
+  ${padding}
+  ${fontSize}
+  border-bottom: 1px solid ${({ theme }) => theme.colors.ui2};
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  overflow-x: auto;
+  scrollbar-width: none; /* Firefox */
+  white-space: nowrap;
+  &::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
+  ${({ distribute }) => (distribute ? distributeCSS : defaultLayoutCSS)}
+`
+
+export const TabList2 = styled(
   forwardRef(
-    (
-      { children, selectedIndex, onSelectTab, className }: TabListProps,
-      ref: Ref<HTMLDivElement>
-    ) => {
+    ({ children, className }: TabList2Props, ref: Ref<HTMLDivElement>) => {
       const { t } = useTranslation('TabList')
-
-      const clonedChildren = Children.map(
-        children,
-        (child: JSX.Element, index: number) => {
-          return cloneElement(child, {
-            index,
-            onSelect: () => onSelectTab && onSelectTab(index),
-            selected: index === selectedIndex,
-            selectedIndex,
-          })
-        }
-      )
-
       const navProps = useArrowKeyNav({ axis: 'horizontal', ref })
 
       return (
@@ -71,7 +77,7 @@ export const TabList = styled(
           role="tablist"
           {...navProps}
         >
-          {clonedChildren}
+          {children}
         </div>
       )
     }

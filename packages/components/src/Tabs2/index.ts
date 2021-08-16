@@ -24,36 +24,6 @@
 
  */
 
-import React, { FC } from 'react'
-import styled from 'styled-components'
-
-export interface TabPanelProps {
-  className?: string
-  selected?: boolean
-  /**
-   * Set to `true` if you would like TabPanel to be reached via tab-key.
-   * Generally this is _only_ the case when the TabPanel contains no tab-stopping items (a, button, etc.)
-   * @default false
-   */
-  isTabStop?: boolean
-}
-
-const TabPanelLayout: FC<TabPanelProps> = ({
-  children,
-  className,
-  selected,
-  isTabStop = false,
-}) =>
-  selected ? (
-    <div className={className} tabIndex={isTabStop ? 0 : -1}>
-      {children}
-    </div>
-  ) : null
-
-/**
- * @deprecated Use `Tabs2` & `Tab2` instead
- */
-export const TabPanel = styled(TabPanelLayout)`
-  height: 100%;
-  outline: none;
-`
+export * from './Tab2'
+export * from './Tabs2'
+export * from './types'

@@ -1,23 +1,32 @@
 ---
-title: Tabs
+title: Tabs2
 storybook: true
 ---
 
-`Tabs` expects to receive a `TabList` with one or more `Tab` components. `TabPanels` expects `TabPanel`(s). `Tabs` manages the visibility of a single `TabPanel` based on its internal state.
+import { Code, MessageBar } from '@looker/components'
 
-The order in which elements are placed inside `TabList` and `TabPanels` defines the relationship between them. The first `Tab` is related to the first `TabPanel` and so on.
+<MessageBar canDismiss={false} intent="inform" mb="medium">
+  Tabs has been deprecated and replaced with
+  <Code fontWeight="bold" fontSize="inherit">
+    Tabs2
+  </Code> please update any existing instances to use the new improved version. Deprecation
+  of `Tabs` is planned for @looker/components 3.0
+</MessageBar>
+
+`Tabs2` contains one or more `Tab2` components. `Tabs2`, when left uncontrolled, manages the visible tab as well as switching between tabs.
+
+Each `Tab2` must have a `label`. The value passed as children will be displayed as its content area. `id` is optional (`label` will be used in its place if not supplied) but `id` is highly recommended when using `Tabs2` in a controlled state.
 
 ```jsx
-<Tabs>
-  <TabList>
-    <Tab>Dog</Tab>
-    <Tab>Cat</Tab>
-  </TabList>
-  <TabPanels>
-    <TabPanel>🐶 Dog</TabPanel>
-    <TabPanel>🐱 Cat</TabPanel>
-  </TabPanels>
-</Tabs>
+<Tabs2>
+  <Tab2 id="cats" label="Cats">
+    Here's awesome story about cats
+  </Tab2>
+  <Tab2 id="dogs" label="Dogs">
+    Cats are way better than dogs. Go to other tab
+  </Tab2>
+  <Tab2 label="Fish">Are kinda smelly</Tab2>
+</Tabs2>
 ```
 
 ## Horizonal Scroll
@@ -25,133 +34,107 @@ The order in which elements are placed inside `TabList` and `TabPanels` defines 
 `Tabs` supports scrolling when the tabs' combined width cannot be accomdated within the viewport width. - Try scrolling left-right.
 
 ```jsx
-<Tabs>
-  <TabList>
-    <Tab>Really long tab title that should help demonstrate side-scroll</Tab>
-    <Tab>Yet-another-tab-title to get things width enough</Tab>
-    <Tab>Really, you must be obsessed with these long tab titles?</Tab>
-    <Tab>Okay, okay, we get it you want to see scrolling in action...</Tab>
-  </TabList>
-  <TabPanels>
-    <TabPanel>Tab Content 1</TabPanel>
-    <TabPanel>Tab Content 2</TabPanel>
-    <TabPanel>Tab Content 3</TabPanel>
-    <TabPanel>Tab Content 4</TabPanel>
-  </TabPanels>
-</Tabs>
+<Tabs2>
+  <Tab2 label="Really long tab title that should help demonstrate side-scroll">
+    Really long tab title that should help demonstrate side-scroll
+  </Tab2>
+  <Tab2 label="Yet-another-tab-title to get things width enough">
+    Yet-another-tab-title to get things width enough
+  </Tab2>
+  <Tab2 label="Really, you must be obsessed with these long tab titles?">
+    Really, you must be obsessed with these long tab titles?
+  </Tab2>
+  <Tab2 label="Okay, okay, we get it you want to see scrolling in action...">
+    Okay, okay, we get it you want to see scrolling in action...
+  </Tab2>
+  <Tab2 label="Repeat really long tab title that should help demonstrate side-scroll">
+    Repeat really long tab title that should help demonstrate side-scroll
+  </Tab2>
+  <Tab2 label="Repeat yet-another-tab-title to get things width enough">
+    Repeat yet-another-tab-title to get things width enough
+  </Tab2>
+</Tabs2>
 ```
 
 ## Disabled Tab(s)
 
-To create a disabled Tab add the `disabled` prop. NOTE: A `TabPanel` must still exist for disabled tabs to allow for tabs to keep the index positions in sync.
+To display a tab that can't be activated add the `disabled` prop.
 
 ```jsx
-<Tabs>
-  <TabList>
-    <Tab>Cat</Tab>
-    <Tab disabled>Dog</Tab>
-  </TabList>
-  <TabPanels>
-    <TabPanel>🐱 Cat</TabPanel>
-    <TabPanel>🐶 Dog</TabPanel>
-  </TabPanels>
-</Tabs>
+<Tabs2>
+  <Tab2 id="cats" label="Cats">
+    Here's awesome story about cats
+  </Tab2>
+  <Tab2 id="dogs" label="Dogs">
+    Cats are way better than dogs. Go to other tab
+  </Tab2>
+  <Tab2 label="Fish">Are kinda smelly</Tab2>
+  <Tab2 disabled label="Human">
+    not available
+  </Tab2>
+</Tabs2>
 ```
 
 ## Distribute Attribute
 
-Using the distribute prop on `TabList` will equally distributed each `Tab` in the container.
+Using the distribute prop on `Tabs2` will equally distribute each `Tab` in the container.
 
 ```jsx
-<Tabs>
-  <TabList distribute>
-    <Tab>Rebecca Purple</Tab>
-    <Tab>Coral</Tab>
-    <Tab>Forest Green</Tab>
-    <Tab>Cornflower Blue</Tab>
-  </TabList>
-  <TabPanels>
-    <TabPanel>
-      <div
-        style={{
-          backgroundColor: 'RebeccaPurple',
-          height: '350px',
-        }}
-      />
-    </TabPanel>
-    <TabPanel>
-      <div
-        style={{
-          backgroundColor: 'coral',
-          height: '350px',
-        }}
-      />
-    </TabPanel>
-    <TabPanel>
-      <div
-        style={{
-          backgroundColor: 'ForestGreen',
-          height: '350px',
-        }}
-      />
-    </TabPanel>
-    <TabPanel>
-      <div
-        style={{
-          backgroundColor: 'CornflowerBlue',
-          height: '350px',
-        }}
-      />
-    </TabPanel>
-  </TabPanels>
-</Tabs>
+<Tabs2 distribute>
+  <Tab2 label="Rebecca Purple">
+    Rebecca Purple
+    <div
+      style={{
+        backgroundColor: 'RebeccaPurple',
+        height: '350px',
+      }}
+    />
+  </Tab2>
+  <Tab2 label="Coral">
+    <div
+      style={{
+        backgroundColor: 'coral',
+        height: '350px',
+      }}
+    />
+  </Tab2>
+  <Tab2 label="Forest Green">
+    <div
+      style={{
+        backgroundColor: 'ForestGreen',
+        height: '350px',
+      }}
+    />
+  </Tab2>
+  <Tab2 label="Cornflower Blue">
+    <div
+      style={{
+        backgroundColor: 'CornflowerBlue',
+        height: '350px',
+      }}
+    />
+  </Tab2>
+</Tabs2>
 ```
 
 ## Controlled Tab
 
 ```jsx
 ;() => {
-  const [currentTabIndex, setTab] = useState(0)
-
+  const [tabId, setTabId] = useState(0)
   return (
     <>
       <button onClick={() => setTab(0)}>Go to A</button>
       <button onClick={() => setTab(1)}>Go to B</button>
-
-      <Tabs index={currentTabIndex} onChange={setTab}>
-        <TabList>
-          <Tab>A</Tab>
-          <Tab>B</Tab>
-        </TabList>
-        <TabPanels>
-          <TabPanel>A</TabPanel>
-          <TabPanel>B</TabPanel>
-        </TabPanels>
-      </Tabs>
+      <Tabs2 tabId={tabId} onTabChange={setTabId}>
+        <Tab2 id="cats" label="Cats">
+          Here's awesome story about cats
+        </Tab2>
+        <Tab2 id="dogs" label="Dogs">
+          Cats are way better than dogs. Go to other tab
+        </Tab2>
+      </Tabs2>
     </>
-  )
-}
-```
-
-## Keyboard Navigation
-
-When focused on a `Tab`, use the left and right arrow keys to navigate to sibling `Tab`s.
-
-By default, `TabPanel` is not reachable via the "Tab" key. If you'd like `TabPanel` to be reachable via the "Tab" key, set the `isTabStop` prop to `true`.
-
-```jsx
-;() => {
-  return (
-    <Tabs>
-      <TabList>
-        <Tab>isTabStop = true</Tab>
-        <Tab>isTabStop = false (Default)</Tab>
-      </TabList>
-      <TabPanels>
-        <TabPanel isTabStop>I'm reachable by pressing the tab key</TabPanel>
-        <TabPanel>I'm not reachable by pressing the tab key</TabPanel>
-      </TabPanels>
-    </Tabs>
   )
 }
 ```

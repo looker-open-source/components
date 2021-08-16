@@ -24,7 +24,7 @@
 
  */
 
-import React, { Children, cloneElement, FC } from 'react'
+import React, { FC } from 'react'
 import styled from 'styled-components'
 import {
   FlexboxProps,
@@ -35,51 +35,32 @@ import {
   space,
   reset,
 } from '@looker/design-tokens'
-import omit from 'lodash/omit'
 
-export interface TabPanelsProps extends FlexboxProps, LayoutProps, SpaceProps {
-  children: JSX.Element | JSX.Element[]
-  className?: string
-  selectedIndex?: number
-  onSelectTab?: (index: number) => void
-}
+export type TabPanels2Props = FlexboxProps &
+  LayoutProps &
+  SpaceProps & {
+    children: JSX.Element
+    className?: string
+    id: string
+  }
 
-const Layout: FC<TabPanelsProps> = ({
-  children,
-  className,
-  selectedIndex,
-  ...props
-}) => {
-  const tabPanelsLayoutProps = omit(props, 'onSelectTab')
+const TabPanels2Layout: FC<TabPanels2Props> = ({ children, className, id }) => (
+  <div
+    aria-labelledby={`tab-${id}`}
+    className={className}
+    id={`panel-${id}`}
+    role="tabpanel"
+  >
+    {children}
+  </div>
+)
 
-  const clonedChildren = Children.map(
-    children,
-    (child: JSX.Element, index: number) => {
-      return cloneElement(child, {
-        selected: index === selectedIndex,
-      })
-    }
-  )
-
-  return (
-    <div
-      aria-labelledby={`tab-${selectedIndex}`}
-      className={className}
-      id={`panel-${selectedIndex}`}
-      role="tabpanel"
-      {...tabPanelsLayoutProps}
-    >
-      {clonedChildren}
-    </div>
-  )
-}
-
-/**
- * @deprecated Use `Tabs2` and `Tab2` instead
- */
-export const TabPanels = styled(Layout).attrs(({ pt = 'large' }) => ({
-  pt,
-}))`
+export const TabPanels2 = styled(TabPanels2Layout).attrs(
+  ({ height = '100%', pt = 'large' }) => ({
+    height,
+    pt,
+  })
+)`
   ${reset}
   ${flexbox}
   ${layout}

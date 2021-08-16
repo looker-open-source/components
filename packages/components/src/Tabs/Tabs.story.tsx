@@ -60,6 +60,19 @@ const Template: Story<DemoProps> = ({ tabCount, tabPrefix, ...args }) => {
 
 export const Basic = Template.bind({})
 Basic.args = {
+  tabCount: 3,
+  tabPrefix: 'My Awesome Tab',
+}
+
+export const Distributed = Template.bind({})
+Distributed.args = {
+  distribute: true,
+  tabCount: 3,
+  tabPrefix: 'My Awesome Tab',
+}
+
+export const Scrolling = Template.bind({})
+Scrolling.args = {
   distribute: true,
   tabCount: 20,
   tabPrefix: 'My Awesome Tab',
