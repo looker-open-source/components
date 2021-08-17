@@ -44,6 +44,9 @@ const Template: Story<Partial<Tabs2Props>> = (args) => (
         Cats are way better than dogs. Go to other tab
       </Tab2>
       <Tab2 label="Fish">Are kinda smelly</Tab2>
+      <Tab2 disabled id="human" label="Human">
+        Humans tab is disabled
+      </Tab2>
     </Tabs2>
   </Box>
 )
@@ -75,5 +78,22 @@ export const Controlled = () => {
   )
 }
 Controlled.parameters = {
+  storyshots: { disable: true },
+}
+
+export const Scrolling = () => {
+  const tabs = new Array(20).fill('Tab2')
+  return (
+    <Tabs2 distributed>
+      {tabs.map((value, index) => (
+        <Tab2 label={`Hello World ${index}`} key={index}>
+          This is {value} {index}
+        </Tab2>
+      ))}
+    </Tabs2>
+  )
+}
+
+Scrolling.parameters = {
   storyshots: { disable: true },
 }
