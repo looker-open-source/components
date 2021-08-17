@@ -120,6 +120,7 @@ export interface ListItemDetailOptions
   /**
    * If true, the detail will appear outside of the item's grey background on hover
    * In addition, if true, events originating from the detail will not bubble to the item's handlers
+   * @deprecated
    * @default false
    */
   accessory?: boolean

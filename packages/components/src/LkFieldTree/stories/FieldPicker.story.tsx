@@ -26,12 +26,20 @@
 
 import React from 'react'
 import styled from 'styled-components'
+import { defaultArgTypes as argTypes } from '../../../../../storybook/src/defaultArgTypes'
 import { Aside, Box, Paragraph, ParagraphProps } from '../..'
-import { TreeCollection, TreeBranch, Tree } from '..'
-import { generateBorderRadius } from '../utils/generateBorderRadius'
-import { FieldItem } from './FieldItem'
+import { TreeBranch, TreeCollection } from '../../Tree'
+import { generateBorderRadius } from '../../Tree/utils/generateBorderRadius'
+import { LkFieldTree } from '..'
+import { FieldPickerItem } from './FieldPickerItem'
 
-const BorderRadiusOverrideTree = styled(Tree)`
+export default {
+  argTypes,
+  component: LkFieldTree,
+  title: 'LkFieldTree',
+}
+
+const BorderRadiusOverrideTree = styled(LkFieldTree)`
   ${({ theme }) => generateBorderRadius('medium', theme)}
 `
 
@@ -59,32 +67,32 @@ const fields = (
       selected
       label={<Box pl="xxsmall">Created</Box>}
     >
-      <FieldItem>Created Date</FieldItem>
-      <FieldItem selected>Created Month</FieldItem>
-      <FieldItem>Created Year</FieldItem>
+      <FieldPickerItem>Created Date</FieldPickerItem>
+      <FieldPickerItem selected>Created Month</FieldPickerItem>
+      <FieldPickerItem>Created Year</FieldPickerItem>
     </BorderRadiusOverrideTree>
-    <FieldItem>City</FieldItem>
-    <FieldItem selected filter>
+    <FieldPickerItem>City</FieldPickerItem>
+    <FieldPickerItem selected filter>
       This is a really long field name to show that truncation is working as
       desired. It's not a realistic example but it lets our tests know that
       things are working as-desired
-    </FieldItem>
-    <FieldItem>ID</FieldItem>
+    </FieldPickerItem>
+    <FieldPickerItem>ID</FieldPickerItem>
     <TreeBranch>
       <FieldGroupHeading color="measure">MEASURES</FieldGroupHeading>
     </TreeBranch>
-    <FieldItem color="measure" selected>
+    <FieldPickerItem color="measure" selected>
       Sum
-    </FieldItem>
-    <FieldItem color="measure" filter>
+    </FieldPickerItem>
+    <FieldPickerItem color="measure" filter>
       Max
-    </FieldItem>
+    </FieldPickerItem>
     <TreeBranch>
       <FieldGroupHeading color="calculation">CALCULATED</FieldGroupHeading>
     </TreeBranch>
-    <FieldItem pivot color="calculation">
+    <FieldPickerItem pivot color="calculation">
       Calc
-    </FieldItem>
+    </FieldPickerItem>
   </>
 )
 
@@ -92,37 +100,31 @@ export const FieldPicker = () => (
   <Aside>
     <TreeCollection>
       <BorderRadiusOverrideTree
-        density={-3}
-        defaultOpen={true}
+        defaultOpen
         detail={3}
         label={
           <Box pl="xxsmall" fontWeight="bold">
             Orders
           </Box>
         }
-        labelBackgroundOnly
       >
         {fields}
       </BorderRadiusOverrideTree>
       <BorderRadiusOverrideTree
-        density={-3}
         label={
           <Box pl="xxsmall" fontWeight="bold">
             Order Items
           </Box>
         }
-        labelBackgroundOnly
       >
         {fields}
       </BorderRadiusOverrideTree>
       <BorderRadiusOverrideTree
-        density={-3}
         label={
           <Box pl="xxsmall" fontWeight="bold">
             Users
           </Box>
         }
-        labelBackgroundOnly
       >
         {fields}
       </BorderRadiusOverrideTree>

@@ -38,21 +38,21 @@ import {
   Truncate,
   ToggleColor,
 } from '../..'
-import { TreeItem } from '..'
+import { LkFieldItem } from '..'
 import { HoverDisclosure } from '../../utils'
 import { listItemDimensions } from '../../ListItem'
 import { ReplaceText, Span } from '../../Text'
 
 export const HighlightContext = createContext({ term: '' })
 
-type FieldItemProps = {
+type FieldPickerItemProps = {
   color?: ToggleColor
   filter?: boolean
   pivot?: boolean
   selected?: boolean
 }
 
-export const FieldItem: FC<FieldItemProps> = ({
+export const FieldPickerItem: FC<FieldPickerItemProps> = ({
   children = 'Cost',
   color = 'dimension',
   filter = false,
@@ -100,7 +100,7 @@ export const FieldItem: FC<FieldItemProps> = ({
   const { height } = listItemDimensions(-3)
 
   return (
-    <TreeItem
+    <LkFieldItem
       color={color}
       selected={isSelected}
       detail={{
@@ -122,7 +122,6 @@ export const FieldItem: FC<FieldItemProps> = ({
           toggleField()
         }
       }}
-      itemRole="none"
     >
       <Flex alignItems="center" pl="xxsmall">
         <Flex
@@ -172,6 +171,6 @@ export const FieldItem: FC<FieldItemProps> = ({
           />
         </HoverDisclosure>
       </Flex>
-    </TreeItem>
+    </LkFieldItem>
   )
 }

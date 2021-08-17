@@ -24,48 +24,33 @@
 
  */
 
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import React, { useContext } from 'react'
 import { useAccordion2 } from '../Accordion2'
 import { ControlledOrUncontrolled } from '../Accordion2/controlTypes'
 import { Flex } from '../Layout'
-import {
-  createSafeRel,
-  HoverDisclosureContext,
-  partitionAriaProps,
-  undefinedCoalesce,
-} from '../utils'
+import { HoverDisclosureContext, partitionAriaProps } from '../utils'
 import { List } from '../List'
-import { ListItemContext, ListItemProps } from '../ListItem'
+import { ListItemProps } from '../ListItem'
 import { createListItemPartitions } from '../ListItem/utils'
-import { TreeContext } from './TreeContext'
+import { TreeContext } from '../Tree/TreeContext'
 import {
-  generateTreeBorder,
-  TreeBorderProps,
   indicatorDefaults,
   partitionTreeProps,
   useTreeHandlers,
-} from './utils'
-import { WindowedTreeContext } from './WindowedTreeNode'
-import { TreeProps } from './types'
-import { TreeItem } from './TreeItem'
-import { TreeItemContent } from './TreeItemContent'
-import { TreeItemLabel } from './TreeItemLabel'
+} from '../Tree/utils'
+import { WindowedTreeContext } from '../Tree/WindowedTreeNode'
+import { lkFieldItemDensity } from './defaults'
+import { LkFieldItem } from './LkFieldItem'
+import { LkFieldItemContent } from './LkFieldItemContent'
+import { LkFieldItemLabel } from './LkFieldItemLabel'
+import { LkFieldTreeProps } from './types'
 
-/**
- * TODO: When labelToggle is introduced the aria-* attributes should land on the nested ListItem's
- * label container (i.e. the focusable element).
- */
-const TreeLayout = ({
-  assumeIconAlignment,
-  border: propsBorder,
+const LkFieldTreeLayout = ({
   children,
-  dividers,
-  forceLabelPadding,
+  className,
   isOpen: propsIsOpen,
-  itemRole = 'none', // By default, Tree's content container should be a 'div'
   label,
-  labelBackgroundOnly: propsLabelBackgroundOnly,
   defaultOpen,
   onBlur,
   onClose,
@@ -75,7 +60,8 @@ const TreeLayout = ({
   onMouseLeave,
   toggleOpen: propsToggleOpen,
   ...restProps
-}: TreeProps) => {
+}: LkFieldTreeProps) => {
+  const density = lkFieldItemDensity
   const [treeItemInnerProps, accordionInnerProps] =
     partitionTreeProps(restProps)
 
@@ -85,27 +71,15 @@ const TreeLayout = ({
     onMouseLeave,
   })
 
-  const {
-    color: propsColor,
-    density: propsDensity,
-    disabled,
-    href,
-    icon,
-    rel,
-    selected,
-    target,
-  } = treeItemInnerProps as Partial<ListItemProps>
+  const { color, disabled, icon, selected } =
+    treeItemInnerProps as Partial<ListItemProps>
   const [ariaProps] = partitionAriaProps(restProps)
-
-  const listContext = useContext(ListItemContext)
   const treeContext = useContext(TreeContext)
 
   // Context for supporting windowing
-  // - density must be defined at the collection level for consistent child height
   // - opened / closed state must be managed at the collection level for accurate item count
   // - partialRender to hide the accordion disclosure if it's above the window
   const {
-    density: collectionDensity,
     isOpen: contextIsOpen,
     toggleNode,
     partialRender,
@@ -114,21 +88,8 @@ const TreeLayout = ({
   const isOpen = contextIsOpen ?? propsIsOpen
   const toggleOpen = toggleNode ?? propsToggleOpen
 
-  const border = undefinedCoalesce([propsBorder, treeContext.border])
-  const color = undefinedCoalesce([
-    propsColor,
-    treeContext.color,
-    listContext.color,
-  ])
-
-  const hasLabelBackgroundOnly = undefinedCoalesce([
-    propsLabelBackgroundOnly,
-    treeContext.labelBackgroundOnly,
-  ])
   const startingDepth = 0
   const depth = treeContext.depth ? treeContext.depth : startingDepth
-
-  const density = collectionDensity || propsDensity || treeContext.density || 0
 
   const { indicatorIcons, indicatorPosition } = indicatorDefaults
 
@@ -138,6 +99,7 @@ const TreeLayout = ({
     color,
     density,
     icon,
+    truncate: true,
   })
   let accordionProps: ControlledOrUncontrolled = {
     defaultOpen,
@@ -186,81 +148,47 @@ const TreeLayout = ({
   }
 
   const content = (
-    <TreeItemContent
+    <LkFieldItemContent
       aria-selected={selected}
       depth={depth}
-      href={href}
-      itemRole={itemRole}
-      labelBackgroundOnly={hasLabelBackgroundOnly}
-      {...contentHandlers}
-      rel={createSafeRel(rel, target)}
-      target={target}
       {...ariaProps}
+      {...contentHandlers}
       {...disclosureDomProps}
       {...statefulProps}
     >
       {indicator}
-      {/* @TODO: Delete labelBackgroundOnly behavior once FieldItem component is completed */}
-      {hasLabelBackgroundOnly ? (
-        <TreeItemLabel {...statefulProps}>{disclosureLabel}</TreeItemLabel>
-      ) : (
-        disclosureLabel
-      )}
-    </TreeItemContent>
+      <LkFieldItemLabel {...statefulProps}>{disclosureLabel}</LkFieldItemLabel>
+    </LkFieldItemContent>
   )
 
   return (
     <HoverDisclosureContext.Provider value={{ visible: hovered }}>
       <TreeContext.Provider
         value={{
-          border,
-          color,
           density,
           depth: depth + 1,
-          labelBackgroundOnly: hasLabelBackgroundOnly,
         }}
       >
-        <div {...domProps}>
+        <div {...domProps} className={`${domProps.className} ${className}`}>
           {!partialRender && (
             <Flex as="li" color="text5" {...wrapperHandlers}>
               {content}
               {outside}
             </Flex>
           )}
-          {accordionIsOpen && (
-            <TreeAccordionContent
-              border={border}
-              density={density}
-              depth={depth}
-              {...contentDomProps}
-            />
-          )}
+          {accordionIsOpen && <div {...contentDomProps} />}
         </div>
       </TreeContext.Provider>
     </HoverDisclosureContext.Provider>
   )
 }
 
-/**
- * Container for hidden / revealed content based on Tree open state
- */
-const TreeAccordionContent = styled.div<TreeBorderProps>`
-  ${generateTreeBorder}
-`
-
-/**
- * @deprecated
- */
-const dividersCSS = css`
-  ${TreeItem} {
+export const LkFieldTree = styled(LkFieldTreeLayout)`
+  ${LkFieldItem} {
     margin-top: 1px;
   }
 
   & & {
     margin-top: 1px;
   }
-`
-
-export const Tree = styled(TreeLayout)<TreeProps>`
-  ${({ dividers }) => dividers && dividersCSS}
 `

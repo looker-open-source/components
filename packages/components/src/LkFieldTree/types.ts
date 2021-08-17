@@ -24,23 +24,23 @@
 
  */
 
-import { RadiusSizes, Theme } from '@looker/design-tokens'
-import { css } from 'styled-components'
-import { LkFieldItemLabel } from '../../LkFieldTree/LkFieldItemLabel'
-import { TreeItemContent } from '../TreeItemContent'
-import { TreeItemLabel } from '../TreeItemLabel'
+import { ListItemProps, TreeProps } from '..'
 
-// Creates CSS for generating border radius on Tree and sub-Tree components
-export const generateBorderRadius = (
-  borderRadius: RadiusSizes,
-  theme: Theme
-) => {
-  const { radii } = theme
+export type LkFieldTreeProps = Omit<
+  TreeProps,
+  | 'assumeIconAlignment'
+  | 'border'
+  | 'branchFontWeight'
+  | 'density'
+  | 'description'
+  | 'dividers'
+  | 'forceLabelPadding'
+  | 'itemRole'
+  | 'labelBackgroundOnly'
+  | 'truncate'
+>
 
-  // @TODO: Remove TreeItemContent and TreeItemLabel selectors when labelBackgroundOnly is deprecated from Tree
-  return css`
-    ${TreeItemContent}, ${TreeItemLabel}, ${LkFieldItemLabel} {
-      border-radius: ${radii[borderRadius]};
-    }
-  `
-}
+export type LkFieldItemProps = Omit<
+  ListItemProps,
+  'density' | 'description' | 'itemRole' | 'truncate'
+>
