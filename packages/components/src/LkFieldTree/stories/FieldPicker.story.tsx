@@ -26,18 +26,11 @@
 
 import React from 'react'
 import styled from 'styled-components'
-import { defaultArgTypes as argTypes } from '../../../../../storybook/src/defaultArgTypes'
 import { Aside, Box, Paragraph, ParagraphProps } from '../..'
 import { TreeBranch, TreeCollection } from '../../Tree'
 import { generateBorderRadius } from '../../Tree/utils/generateBorderRadius'
 import { LkFieldTree } from '..'
 import { FieldPickerItem } from './FieldPickerItem'
-
-export default {
-  argTypes,
-  component: LkFieldTree,
-  title: 'LkFieldTree',
-}
 
 const BorderRadiusOverrideTree = styled(LkFieldTree)`
   ${({ theme }) => generateBorderRadius('medium', theme)}
