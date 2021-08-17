@@ -86,18 +86,12 @@ type Uncontrolled = {
   /**
    * Which tab to show on load
    */
-  defaultTabId: string
+  defaultTabId?: string
   tabId?: never
   onTabChange?: never
 }
 
-type Default = {
-  defaultTabId?: never
-  tabId?: never
-  onTabChange?: never
-}
-
-export type Tabs2Props = (Controlled | Uncontrolled | Default) & {
+export type Tabs2Props = (Controlled | Uncontrolled) & {
   /**
    * The list of `Tab`
    */

@@ -31,13 +31,15 @@ import React from 'react'
 import { composeStories } from '@storybook/testing-react'
 import { fireEvent, screen } from '@testing-library/react'
 import * as stories from './Tabs2.story'
-import { Controlled } from './Tabs2.story'
+import { Controlled, Disabled } from './Tabs2.story'
+import { Tab2, Tabs2 } from './'
+
 const { Basic, DefaultTab, Distributed } = composeStories(stories)
 
 describe('Tabs2', () => {
   test('basic', () => {
     renderWithTheme(<Basic />)
-    expect(screen.getAllByRole('tab')).toHaveLength(4)
+    expect(screen.getAllByRole('tab')).toHaveLength(3)
     expect(
       screen.getByText("Here's awesome story about cats")
     ).toBeInTheDocument()
@@ -66,7 +68,7 @@ describe('Tabs2', () => {
   })
 
   test('disabled', () => {
-    renderWithTheme(<Basic />)
+    renderWithTheme(<Disabled />)
     expect(
       screen.queryByText("Here's awesome story about cats")
     ).toBeInTheDocument()
@@ -107,5 +109,34 @@ describe('Tabs2', () => {
     expect(
       screen.queryByText('Cats are way better than dogs. Go to other tab')
     ).toBeInTheDocument()
+  })
+
+  test('validates controlled vs uncontrolled prop combinations', () => {
+    renderWithTheme(
+      // @ts-expect-error: onTabChange required when tabId is set
+      <Tabs2 tabId="3">
+        <Tab2 id="tab" label="Tab">
+          A single Tab
+        </Tab2>
+      </Tabs2>
+    )
+
+    renderWithTheme(
+      // @ts-expect-error: tabId required when onTabChange is set
+      <Tabs2 onTabChange="3">
+        <Tab2 id="tab" label="Tab">
+          A single Tab
+        </Tab2>
+      </Tabs2>
+    )
+
+    renderWithTheme(
+      // @ts-expect-error: you can't set both tabId and defaultTabId simultaneously
+      <Tabs2 tabId="3" defaultTabId="5">
+        <Tab2 id="tab" label="Tab">
+          A single Tab
+        </Tab2>
+      </Tabs2>
+    )
   })
 })
