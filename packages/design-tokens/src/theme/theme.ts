@@ -84,7 +84,7 @@ export interface Theme {
 export const theme: DefaultTheme = {
   breakpoints,
   colors,
-  defaults: { brandAnimation: true, density: 0 },
+  defaults: { brandAnimation: false, density: 0 },
   easings,
   elevations,
   fontSizes,

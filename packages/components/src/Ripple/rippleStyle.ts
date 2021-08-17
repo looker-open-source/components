@@ -98,9 +98,10 @@ export const rippleStyle = css`
   &.fg-in::after {
     animation-duration: ${({
       theme: {
+        defaults: { brandAnimation },
         transitions: { rapid, simple },
       },
-    }) => `${simple}ms, ${rapid}ms`};
+    }) => `${simple}ms, ${brandAnimation ? rapid : '15'}ms`};
     animation-fill-mode: forwards, forwards;
     animation-name: ${rippleRadiusIn}, ${rippleOpacityIn};
   }

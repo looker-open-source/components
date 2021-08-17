@@ -245,7 +245,8 @@ describe('IconButton', () => {
       expect(button).toHaveStyle({
         '--ripple-color': '#71767a',
         '--ripple-scale-end': '1',
-        '--ripple-scale-start': '0.1',
+        // This should change to 0.1 when brandAnimation default becomes true
+        '--ripple-scale-start': '1',
         '--ripple-size': '100%',
         '--ripple-translate': '0, 0',
       })
