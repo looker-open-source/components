@@ -101,4 +101,54 @@ describe('TreeItem', () => {
     expect(screen.getByText('Whatever')).toHaveStyle('color: #262d33')
     expect(screen.getByRole('treeitem')).toHaveStyle('background: #f3f2ff')
   })
+
+  describe('link behavior', () => {
+    test('renders as a link when itemRole="link" and disperses link-related props onto nested <a>', () => {
+      renderWithTheme(
+        <TreeItem
+          itemRole="link"
+          href="https://google.com"
+          target="_blank"
+          rel="hello"
+        >
+          Link
+        </TreeItem>
+      )
+
+      const nestedLink = screen.getByRole('treeitem')
+      expect(nestedLink.nodeName).toBe('A')
+      expect(nestedLink).toHaveAttribute('href', 'https://google.com')
+      expect(nestedLink).toHaveAttribute('target', '_blank')
+
+      // Note: We expect links with target="_blank" to have "noopener noreferrer" autoappended to their rel prop
+      expect(nestedLink).toHaveAttribute('rel', 'hello noopener noreferrer')
+    })
+
+    test('has rel="noopener noreferrer" when it has target="_blank" and no passed-in rel prop value', () => {
+      renderWithTheme(
+        <TreeItem itemRole="link" href="https://google.com" target="_blank">
+          Link
+        </TreeItem>
+      )
+
+      const nestedLink = screen.getByRole('treeitem')
+
+      expect(nestedLink).toHaveAttribute('target', '_blank')
+      expect(nestedLink).toHaveAttribute('href', 'https://google.com')
+      expect(nestedLink).toHaveAttribute('rel', 'noopener noreferrer')
+    })
+
+    test('does not auto append "noopener noreferrer" to link without target="_blank"', () => {
+      renderWithTheme(
+        <TreeItem itemRole="link" rel="nogouda" href="https://google.com">
+          Link
+        </TreeItem>
+      )
+
+      const nestedLink = screen.getByRole('treeitem')
+
+      expect(nestedLink).toHaveAttribute('href', 'https://google.com')
+      expect(nestedLink).toHaveAttribute('rel', 'nogouda')
+    })
+  })
 })

@@ -30,6 +30,7 @@ import { Flex } from '../Layout'
 import { ListItemProps } from '../ListItem'
 import { createListItemPartitions } from '../ListItem/utils'
 import {
+  createSafeRel,
   getNextFocusTarget,
   HoverDisclosureContext,
   partitionAriaProps,
@@ -51,6 +52,7 @@ export const TreeItem = styled(
     color: propsColor,
     density: propsDensity,
     disabled,
+    href,
     itemRole,
     labelBackgroundOnly: propsLabelBackgroundOnly,
     onBlur,
@@ -60,7 +62,9 @@ export const TreeItem = styled(
     onKeyUp,
     onMouseEnter,
     onMouseLeave,
+    rel,
     selected,
+    target,
     ...restProps
   }: TreeItemProps) => {
     const {
@@ -146,12 +150,15 @@ export const TreeItem = styled(
              */
             depth={depth + 1}
             focusVisible={focusVisible}
+            href={href}
             itemRole={itemRole}
             labelBackgroundOnly={hasLabelBackgroundOnly}
             onClick={onClick}
             onFocus={onFocus}
             onKeyDown={onKeyDown}
+            rel={createSafeRel(rel, target)}
             tabIndex={-1}
+            target={target}
             {...ariaProps}
             {...focusVisibleHandlers}
             {...statefulProps}
