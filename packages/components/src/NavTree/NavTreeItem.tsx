@@ -84,6 +84,7 @@ export const NavTreeItem = styled((props: NavTreeItemProps) => {
       depth={depth}
       iconGap={iconGap}
       indicatorGap={indicatorGap}
+      itemRole={props.href ? 'link' : props.itemRole}
       px={px}
       truncate
       {...props}

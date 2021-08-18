@@ -60,7 +60,9 @@ export const Link = () => (
       target="_blank"
       indicatorLabel="Google Link Indicator"
     >
-      <NavTreeItem parentIcon>Some Item</NavTreeItem>
+      <NavTreeItem href="https://google.com" target="_blank" parentIcon>
+        Some Item
+      </NavTreeItem>
     </NavTree>
   </NavList>
 )
