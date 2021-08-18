@@ -26,12 +26,23 @@
 
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { fireEvent, screen } from '@testing-library/react'
+import { act, fireEvent, screen } from '@testing-library/react'
 import { Checkbox, CheckboxProps } from './Checkbox'
+
+beforeEach(() => {
+  jest.useFakeTimers()
+})
 
 afterEach(() => {
   jest.resetAllMocks()
+  jest.runOnlyPendingTimers()
+  jest.useRealTimers()
 })
+
+const runTimers = () =>
+  act(() => {
+    jest.runOnlyPendingTimers()
+  })
 
 describe('Checkbox', () => {
   test('Accepts defaultChecked prop, and toggles value without change handler', () => {
@@ -94,5 +105,37 @@ describe('Checkbox', () => {
       'aria-describedby',
       'some-id'
     )
+  })
+  describe('ripple effect', () => {
+    test('default', () => {
+      renderWithTheme(<Checkbox />)
+
+      const checkbox = screen.getByRole('checkbox')
+      expect(checkbox).not.toHaveClass('bg-on fg-in')
+      expect(checkbox).toHaveStyle({
+        '--ripple-color': '#71767a',
+        '--ripple-scale-end': '1',
+        // This should change to 0.1 when brandAnimation default becomes true
+        '--ripple-scale-start': '1',
+        '--ripple-size': '100%',
+        '--ripple-translate': '0, 0',
+      })
+
+      fireEvent.focus(checkbox)
+      expect(checkbox).toHaveClass('bg-on')
+
+      fireEvent.mouseDown(checkbox)
+      expect(checkbox).toHaveClass('bg-on fg-in')
+
+      // foreground is locked for a minimum time to animate the ripple
+      fireEvent.mouseUp(checkbox)
+      runTimers()
+      expect(checkbox).toHaveClass('bg-on fg-out')
+      runTimers()
+      expect(checkbox).toHaveClass('bg-on')
+
+      fireEvent.blur(checkbox)
+      expect(checkbox).not.toHaveClass('bg-on fg-in')
+    })
   })
 })

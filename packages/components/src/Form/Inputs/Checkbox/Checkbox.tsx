@@ -23,16 +23,22 @@
  SOFTWARE.
 
  */
-
+import pick from 'lodash/pick'
 import noop from 'lodash/noop'
+import isUndefined from 'lodash/isUndefined'
 import React, { forwardRef, Ref, useState, FormEvent, useEffect } from 'react'
 import styled from 'styled-components'
 import { reset, space, SpaceProps } from '@looker/design-tokens'
-import isUndefined from 'lodash/isUndefined'
+import { mergeClassNames } from '../../../utils'
+import {
+  rippleHandlerKeys,
+  rippleStyle,
+  useRipple,
+  useRippleHandlers,
+} from '../../../Ripple'
 import { InputProps, pickInputProps } from '../InputProps'
 import { ValidationType } from '../../ValidationMessage'
 import { inputTextValidation } from '../InputText'
-
 import { CheckMark } from './CheckMark'
 import { CheckMarkMixed } from './CheckMarkMixed'
 import { FauxCheckbox } from './FauxCheckbox'
@@ -46,18 +52,34 @@ export interface CheckboxProps
   validationType?: ValidationType
 }
 
-const CheckboxLayout = forwardRef(
-  (props: CheckboxProps, ref: Ref<HTMLInputElement>) => {
+export const Checkbox = styled(
+  forwardRef((props: CheckboxProps, ref: Ref<HTMLInputElement>) => {
     const {
       className,
       checked,
       defaultChecked,
       onChange,
       readOnly,
+      style,
       validationType,
       ...restProps
     } = props
+
+    const {
+      callbacks,
+      className: rippleClassName,
+      style: rippleStyle,
+    } = useRipple({ color: checked ? 'key' : 'neutral' })
+
     const [isChecked, setIsChecked] = useState<MixedBoolean>(!!defaultChecked)
+
+    const rippleHandlers = useRippleHandlers(
+      callbacks,
+      {
+        ...pick(restProps, rippleHandlerKeys),
+      },
+      restProps.disabled
+    )
 
     const handleClick = readOnly
       ? undefined
@@ -78,7 +100,11 @@ const CheckboxLayout = forwardRef(
     }, [checked])
 
     return (
-      <div className={className}>
+      <div
+        className={mergeClassNames([className, rippleClassName])}
+        style={{ ...style, ...rippleStyle }}
+        {...rippleHandlers}
+      >
         <input
           type="checkbox"
           {...pickInputProps(restProps)}
@@ -94,14 +120,11 @@ const CheckboxLayout = forwardRef(
         </FauxCheckbox>
       </div>
     )
-  }
-)
-
-CheckboxLayout.displayName = 'CheckboxLayout'
-
-export const Checkbox = styled(CheckboxLayout)`
+  })
+)<CheckboxProps>`
   ${reset}
   ${space}
+  ${rippleStyle}
   height: 1rem;
   position: relative;
   width: 1rem;
