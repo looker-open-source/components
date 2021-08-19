@@ -72,23 +72,23 @@ export type TabStack = TabStackMember[]
 
 type Controlled = {
   /**
-   * Which tab to show on load
-   */
-  defaultTabId?: string
-  /**
    * Controlled: which tab to show now
    */
-  tabId?: string
+  tabId: string
   /**
    * Callback called when tabId changes
    */
-  onTabChange?: (tabId: string) => void
+  onTabChange: (tabId: string) => void
+  defaultTabId?: never
 }
 
 type Uncontrolled = {
-  defaultTabId?: never
+  /**
+   * Which tab to show on load
+   */
+  defaultTabId?: string
+  tabId?: never
   onTabChange?: never
-  tabId?: string
 }
 
 export type Tabs2Props = (Controlled | Uncontrolled) & {
@@ -96,6 +96,7 @@ export type Tabs2Props = (Controlled | Uncontrolled) & {
    * The list of `Tab`
    */
   children: ReactElement<Tab2Props> | ReactElement<Tab2Props>[]
+
   /**
    * Spread the Tab between all the space available
    */

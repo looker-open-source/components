@@ -34,7 +34,7 @@ export default {
   title: 'Tabs2',
 }
 
-const Template: Story<Partial<Tabs2Props>> = (args) => (
+const Template: Story<Tabs2Props> = (args) => (
   <Box height="8rem">
     <Tabs2 {...args}>
       <Tab2 id="cats" label="Cats">
@@ -58,9 +58,9 @@ DefaultTab.args = { defaultTabId: 'dogs' }
 
 export const Controlled = () => {
   const [currentTabId, setTabId] = useState('cats')
-
   return (
     <>
+      <p>The current selected tab is: {currentTabId}</p>
       <button onClick={() => setTabId('cats')}>Switch to Cats</button>
       <button onClick={() => setTabId('dogs')}>Switch to Dogs</button>
       <Tabs2 tabId={currentTabId} onTabChange={setTabId}>
@@ -76,4 +76,40 @@ export const Controlled = () => {
 }
 Controlled.parameters = {
   storyshots: { disable: true },
+}
+
+export const Scrolling = () => {
+  const tabs = new Array(20).fill('Tab2')
+  return (
+    <Tabs2 distributed>
+      {tabs.map((value, index) => (
+        <Tab2 label={`Hello World ${index}`} key={index}>
+          This is {value} {index}
+        </Tab2>
+      ))}
+    </Tabs2>
+  )
+}
+
+Scrolling.parameters = {
+  storyshots: { disable: true },
+}
+
+export const Disabled = () => {
+  return (
+    <Box height="8rem">
+      <Tabs2>
+        <Tab2 id="cats" label="Cats">
+          Here's awesome story about cats
+        </Tab2>
+        <Tab2 id="dogs" label="Dogs">
+          Cats are way better than dogs. Go to other tab
+        </Tab2>
+        <Tab2 label="Fish">Are kinda smelly</Tab2>
+        <Tab2 disabled id="human" label="Human">
+          Humans tab is disabled
+        </Tab2>
+      </Tabs2>
+    </Box>
+  )
 }

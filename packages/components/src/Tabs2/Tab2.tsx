@@ -80,11 +80,6 @@ export const Tab2Style = styled.button.attrs<Tab2StyleProps>(
       selected ? theme.colors.key : theme.colors.text2};
   }
 
-  &:active,
-  &:hover {
-    border-bottom-color: transparent;
-  }
-
   &:focus {
     outline: none;
   }

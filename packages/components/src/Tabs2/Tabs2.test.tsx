@@ -31,9 +31,9 @@ import React from 'react'
 import { composeStories } from '@storybook/testing-react'
 import { fireEvent, screen } from '@testing-library/react'
 import * as stories from './Tabs2.story'
-import { Controlled } from './Tabs2.story'
-import { Tabs2 } from './Tabs2'
-import { Tab2 } from './Tab2'
+import { Controlled, Disabled } from './Tabs2.story'
+import { Tab2, Tabs2 } from './'
+
 const { Basic, DefaultTab, Distributed } = composeStories(stories)
 
 describe('Tabs2', () => {
@@ -68,34 +68,16 @@ describe('Tabs2', () => {
   })
 
   test('disabled', () => {
-    renderWithTheme(
-      <Tabs2>
-        <Tab2 label="First">1</Tab2>
-        <Tab2 disabled label="Second">
-          2
-        </Tab2>
-      </Tabs2>
-    )
-    expect(screen.getByText('Second')).toBeInTheDocument()
-    expect(screen.getByText('1')).toBeInTheDocument()
-    expect(screen.queryByText('2')).not.toBeInTheDocument()
-
-    fireEvent.click(screen.getByText('Second'))
-    expect(screen.getByText('1')).toBeInTheDocument()
-    expect(screen.queryByText('2')).not.toBeInTheDocument()
-  })
-
-  test('first item disabled, not default selected', () => {
-    renderWithTheme(
-      <Tabs2>
-        <Tab2 disabled label="First">
-          1
-        </Tab2>
-        <Tab2 label="Second">2</Tab2>
-      </Tabs2>
-    )
-    expect(screen.queryByText('1')).not.toBeInTheDocument()
-    expect(screen.getByText('2')).toBeInTheDocument()
+    renderWithTheme(<Disabled />)
+    expect(
+      screen.queryByText("Here's awesome story about cats")
+    ).toBeInTheDocument()
+    expect(screen.queryByText('Humans tab is disabled')).not.toBeInTheDocument()
+    fireEvent.click(screen.getByText('Human'))
+    expect(
+      screen.queryByText("Here's awesome story about cats")
+    ).toBeInTheDocument()
+    expect(screen.queryByText('Humans tab is disabled')).not.toBeInTheDocument()
   })
 
   test('no defaultTabId should display first tab that is not disabled', () => {
@@ -127,5 +109,34 @@ describe('Tabs2', () => {
     expect(
       screen.queryByText('Cats are way better than dogs. Go to other tab')
     ).toBeInTheDocument()
+  })
+
+  test('validates controlled vs uncontrolled prop combinations', () => {
+    renderWithTheme(
+      // @ts-expect-error: onTabChange required when tabId is set
+      <Tabs2 tabId="3">
+        <Tab2 id="tab" label="Tab">
+          A single Tab
+        </Tab2>
+      </Tabs2>
+    )
+
+    renderWithTheme(
+      // @ts-expect-error: tabId required when onTabChange is set
+      <Tabs2 onTabChange="3">
+        <Tab2 id="tab" label="Tab">
+          A single Tab
+        </Tab2>
+      </Tabs2>
+    )
+
+    renderWithTheme(
+      // @ts-expect-error: you can't set both tabId and defaultTabId simultaneously
+      <Tabs2 tabId="3" defaultTabId="5">
+        <Tab2 id="tab" label="Tab">
+          A single Tab
+        </Tab2>
+      </Tabs2>
+    )
   })
 })

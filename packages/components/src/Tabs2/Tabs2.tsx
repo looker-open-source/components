@@ -34,7 +34,7 @@ import { Tabs2Props, TabStack } from './types'
  * `Tabs2` are a clickable areas (Tab2) that organizes content across different pages or areas.
  * When a Tab2 is clicked, its contents are displayed and others are hidden.
  *
- * Tabs2 is a modernized version of the `Tabs` component with an simplified
+ * Tabs2 is a modernized version of the `Tabs` component with a simplified
  * interface to follow conventions in other components libraries and to more closely match the controlled and uncontrolled models of our other components.
  */
 export const Tabs2 = ({
