@@ -190,6 +190,23 @@ tag2`
     expect(input).toHaveValue('')
   })
 
+  test('trimInputValues false', () => {
+    const onChangeMock = jest.fn()
+
+    renderWithTheme(
+      <InputChips
+        onChange={onChangeMock}
+        values={[]}
+        placeholder="type here"
+        trimInputValues={false}
+      />
+    )
+    const input = screen.getByPlaceholderText('type here')
+    fireEvent.change(input, { target: { value: '  no trim  ,' } })
+    expect(onChangeMock).toHaveBeenCalledWith(['  no trim  '])
+    expect(input).toHaveValue('')
+  })
+
   test('duplicate values are not added', () => {
     const onChangeMock = jest.fn()
     const onDuplicateMock = jest.fn()

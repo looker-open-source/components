@@ -47,6 +47,11 @@ export interface InputChipsValidationProps {
    */
   validate?: (value: string) => boolean
   /**
+   * Trim whitespace from entered values (before validation)
+   * @default true
+   */
+  trimInputValues?: boolean
+  /**
    * callback when values fail validation
    */
   onValidationFail?: (values: string[]) => void
@@ -86,18 +91,19 @@ export interface InputChipsProps
   parseInputValue?: (value: string) => string[]
 }
 
-export function validateValues(
+export const validateValues = (
   newValues: string[],
   currentValues: string[],
-  validate?: (value: string) => boolean
-) {
+  validate?: (value: string) => boolean,
+  trimInputValues?: boolean
+) => {
   const duplicateValues: string[] = []
   const invalidValues: string[] = []
   const unusedValues: string[] = []
   const validValues: string[] = []
 
   newValues.forEach((val: string) => {
-    const trimmedValue = val.trim()
+    const trimmedValue = trimInputValues ? val.trim() : val
     if (trimmedValue === '') return
     // Make sure each value is valid and doesn't already exist
     if (validate && !validate(trimmedValue)) {
@@ -125,6 +131,7 @@ export const InputChipsInternal = forwardRef(
       onInputChange,
       parseInputValue = splitInputValue,
       validate,
+      trimInputValues = true,
       onValidationFail,
       onDuplicate,
 
@@ -164,7 +171,7 @@ export const InputChipsInternal = forwardRef(
     function updateValues(newInputValue?: string) {
       const inputValues = parseInputValue(newInputValue || inputValue)
       const { duplicateValues, invalidValues, unusedValues, validValues } =
-        validateValues(inputValues, values, validate)
+        validateValues(inputValues, values, validate, trimInputValues)
 
       // Save valid values and keep invalid ones in the input
       const updatedInputValue = unusedValues.join(', ')

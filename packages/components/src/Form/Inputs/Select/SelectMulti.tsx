@@ -100,6 +100,7 @@ const SelectMultiComponent = forwardRef(
       placeholder,
       removeOnBackspace = true,
       showCreate = false,
+      trimInputValues,
       validate,
       values,
       windowing: windowingProp,
@@ -146,6 +147,7 @@ const SelectMultiComponent = forwardRef(
           selectOnClick={isFilterable}
           freeInput={freeInput}
           validate={validate}
+          trimInputValues={trimInputValues}
           onValidationFail={onValidationFail}
           onDuplicate={onDuplicate}
           ref={ref}

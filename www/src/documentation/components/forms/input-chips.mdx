@@ -143,6 +143,29 @@ invalid and duplicate values are entered.
 }
 ```
 
+## trimInputValues
+
+By default, any leading or trailing whitespace will be trimmed from
+entered values, before validation. To avoid this, use `trimInputValues={false}`.
+
+```jsx
+;() => {
+  const [values, setValues] = React.useState([])
+  return (
+    <Space>
+      <InputChips
+        placeholder="Values are not trimmed"
+        values={values}
+        onChange={setValues}
+        trimInputValues={false}
+        width="50%"
+      />
+      <pre>{JSON.stringify(values)}</pre>
+    </Space>
+  )
+}
+```
+
 ## removeOnBackspace
 
 The `removeOnBackspace` prop defaults to true.

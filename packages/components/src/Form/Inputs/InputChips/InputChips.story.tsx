@@ -27,6 +27,7 @@
 import React, { useState } from 'react'
 import type { Story } from '@storybook/react/types-6-0'
 import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
+import { Space } from '../../../Layout'
 import type { InputChipsProps } from './InputChips'
 import { InputChips } from './InputChips'
 
@@ -97,6 +98,24 @@ ReadOnly.args = {
   readOnly: true,
 }
 ReadOnly.parameters = {
+  storyshots: { disable: true },
+}
+
+export const TrimInputValuesFalse = () => {
+  const [chips, setChips] = useState(['initial', 'values'])
+  return (
+    <Space>
+      <InputChips
+        values={chips}
+        onChange={setChips}
+        trimInputValues={false}
+        width={400}
+      />
+      <pre data-testid="pre">{JSON.stringify(chips)}</pre>
+    </Space>
+  )
+}
+TrimInputValuesFalse.parameters = {
   storyshots: { disable: true },
 }
 
