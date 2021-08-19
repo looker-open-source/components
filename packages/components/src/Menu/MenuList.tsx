@@ -37,9 +37,15 @@ export const MenuListInternal = forwardRef(
     { children, closeParentMenu, ...props }: MenuListProps,
     forwardedRef: Ref<HTMLUListElement>
   ) => {
+    /**
+     * List uses both axes for arrow key navigation by default, but we want to suppress the horizontal
+     * movement so that we don't break the left / right nested menu arrow key functionality.
+     */
+    const arrowKeyAxis = 'vertical'
+
     return (
       <NestedMenuProvider closeParentMenu={closeParentMenu}>
-        <List role="menu" ref={forwardedRef} {...props}>
+        <List axis={arrowKeyAxis} role="menu" ref={forwardedRef} {...props}>
           {children}
         </List>
       </NestedMenuProvider>

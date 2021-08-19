@@ -30,6 +30,7 @@ import { DateRange } from '@styled-icons/material-outlined/DateRange'
 import { SubdirectoryArrowLeft } from '@styled-icons/material/SubdirectoryArrowLeft'
 import { Page } from 'puppeteer'
 import React, { FC, useState } from 'react'
+import { IconButton } from '../Button'
 import { Flex, Grid, Space } from '../Layout'
 import { ListItem } from '../ListItem'
 import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
@@ -231,3 +232,22 @@ export const DensityWithNonstringChildren = () => (
     <DensityExample density={-3}>{listItemsNonstringChildren}</DensityExample>
   </Grid>
 )
+
+export const KeyboardNav = () => (
+  <List>
+    <ListItem
+      detail={{
+        content: <IconButton label="button" icon={<DateRange />} />,
+        options: { hoverDisclosure: true },
+      }}
+    >
+      Cheddar
+    </ListItem>
+    <ListItem detail={<IconButton label="button" icon={<DateRange />} />}>
+      Gouda
+    </ListItem>
+  </List>
+)
+KeyboardNav.parameters = {
+  storyshots: { disable: true },
+}

@@ -45,15 +45,17 @@ import {
   WidthProps,
 } from '@looker/design-tokens'
 import styled, { ThemeContext } from 'styled-components'
-import { useArrowKeyNav, useWindow } from '../utils'
+import { useArrowKeyNav, UseArrowKeyNavProps, useWindow } from '../utils'
 import { ListItemContext, listItemDimensions } from '../ListItem'
+import { getNextItemFocus } from './utils'
 
 export type ListColor = 'key' | 'calculation' | 'dimension' | 'measure'
 
 export type ListProps = HeightProps &
   WidthProps &
   Omit<CompatibleHTMLProps<HTMLUListElement>, 'label'> &
-  DensityProp & {
+  DensityProp &
+  Pick<UseArrowKeyNavProps<HTMLUListElement>, 'axis'> & {
     /**
      * Replace the normal uiN(1-5) color, when ListItem is selected, with color label passed.
      *
@@ -106,6 +108,7 @@ const getListItemHeight = (child: ReactChild, height: number) => {
 export const ListInternal = forwardRef(
   (
     {
+      axis = 'both', // Note: List accepts the "axis" prop because MenuList needs to suppress horizontal key movement to avoid clobbering nested menus
       children,
       color,
       density,
@@ -155,7 +158,9 @@ export const ListInternal = forwardRef(
     )
 
     const navProps = useArrowKeyNav({
+      axis,
       disabled: disableKeyboardNav,
+      getNextFocus: getNextItemFocus,
       onBlur,
       onFocus,
       onKeyDown,
