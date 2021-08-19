@@ -50,7 +50,9 @@ const Template: Story<CheckboxProps & { ripple: boolean }> = ({
   </ThemeProvider>
 )
 
-export const Basic = Template.bind({})
+export const Basic = Template.bind({
+  ripple: false,
+})
 
 export const Checked = Template.bind({})
 Checked.args = {

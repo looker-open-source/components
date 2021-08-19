@@ -65,13 +65,13 @@ export const Checkbox = styled(
       ...restProps
     } = props
 
+    const [isChecked, setIsChecked] = useState<MixedBoolean>(!!defaultChecked)
+
     const {
       callbacks,
       className: rippleClassName,
       style: rippleStyle,
-    } = useRipple({ color: checked ? 'key' : 'neutral' })
-
-    const [isChecked, setIsChecked] = useState<MixedBoolean>(!!defaultChecked)
+    } = useRipple({ color: isChecked ? 'key' : 'neutral' })
 
     const rippleHandlers = useRippleHandlers(
       callbacks,
@@ -125,9 +125,10 @@ export const Checkbox = styled(
   ${reset}
   ${space}
   ${rippleStyle}
-  height: 1rem;
+  height: ${({ theme: { space } }) => space.u6};
+  padding: ${({ theme: { space } }) => space.u1};
   position: relative;
-  width: 1rem;
+  width: ${({ theme: { space } }) => space.u6};
 
   input {
     cursor: ${({ readOnly, disabled }) =>
