@@ -115,6 +115,9 @@ describe('Checkbox', () => {
     )
   })
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 0517f28f2 (feat(Checkbox): update component to have ripple animation)
 
   test('ripple effect', () => {
     renderWithTheme(<Basic />)
@@ -128,6 +131,7 @@ describe('Checkbox', () => {
       '--ripple-scale-start': '1',
       '--ripple-size': '100%',
       '--ripple-translate': '0, 0',
+<<<<<<< HEAD
     })
 
     fireEvent.focus(checkbox)
@@ -178,5 +182,24 @@ describe('Checkbox', () => {
       expect(checkbox).not.toHaveClass('bg-on fg-in')
     })
 >>>>>>> 91a107ecf (first commit)
+=======
+    })
+
+    fireEvent.focus(checkbox)
+    expect(checkbox).toHaveClass('bg-on')
+
+    fireEvent.mouseDown(checkbox)
+    expect(checkbox).toHaveClass('bg-on fg-in')
+
+    // foreground is locked for a minimum time to animate the ripple
+    fireEvent.mouseUp(checkbox)
+    runTimers()
+    expect(checkbox).toHaveClass('bg-on fg-out')
+    runTimers()
+    expect(checkbox).toHaveClass('bg-on')
+
+    fireEvent.blur(checkbox)
+    expect(checkbox).not.toHaveClass('bg-on fg-in')
+>>>>>>> 0517f28f2 (feat(Checkbox): update component to have ripple animation)
   })
 })
