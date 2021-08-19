@@ -24,7 +24,7 @@
 
  */
 
-import { ReactNode, useContext } from 'react'
+import { useContext } from 'react'
 import styled, {
   DefaultTheme,
   StyledComponent,
@@ -42,7 +42,6 @@ import { ListItemDimensions } from './types'
 
 export type ListItemIconProps = DensityProp & {
   color?: string
-  description?: ReactNode
   disabled?: boolean
   alignStart?: boolean
 }
@@ -77,8 +76,9 @@ export const ListItemIcon: StyledComponent<
   margin-right: ${({ iconGap, theme }) => theme.space[iconGap]};
   ${({ density }) => listItemPaddingY(density)}
 
-  ${colorHelper} & > svg,
-    ${StyledIconBase}, ${IconPlaceholder} {
+  ${colorHelper}
+
+  & > svg, ${StyledIconBase}, ${IconPlaceholder} {
     flex-grow: 0;
     flex-shrink: 0;
     height: ${({ iconSize, theme }) => theme.sizes[iconSize]};
