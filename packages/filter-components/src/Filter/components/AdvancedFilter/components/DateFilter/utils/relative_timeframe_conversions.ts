@@ -35,7 +35,7 @@ import { AllPresetTimeframes } from '../types/relative_timeframe_types'
 
 export const filterModelToRelativeTimeframeModel = (
   filterModel: FilterModel
-): RelativeTimeframeModel => {
+): RelativeTimeframeModel | undefined => {
   const {
     day,
     end,
@@ -95,10 +95,7 @@ export const filterModelToRelativeTimeframeModel = (
     }
   }
 
-  return {
-    from: new Date(),
-    to: new Date(),
-  }
+  return undefined
 }
 
 export const relativeTimeframeModelToFilterModel = (

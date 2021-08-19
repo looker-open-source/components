@@ -24,7 +24,7 @@
 
  */
 import { getFilterTokenItem } from './get_filter_token_item'
-import { parseFilterExpression } from './parse_filter_expression'
+import { parseFilterExpression } from '@looker/filter-expressions'
 
 describe('get_filter_token_item', () => {
   describe('gets number item', () => {
@@ -88,6 +88,48 @@ describe('get_filter_token_item', () => {
         }
       `
       )
+    })
+
+    it('works for relative_timeframes for a day value', () => {
+      const ast = parseFilterExpression(type, '2019/03/03')
+      const item = getFilterTokenItem(ast, type, 'relative_timeframes')
+      expect(item.type).toEqual('range')
+      expect(item.start).toMatchInlineSnapshot(`
+        Object {
+          "day": "03",
+          "month": "03",
+          "year": "2019",
+        }
+      `)
+      expect(item.end).toMatchInlineSnapshot(
+        { day: 11, hour: 0, minute: 0, month: 3, second: 0, year: 2019 },
+        `
+        Object {
+          "day": 11,
+          "hour": 0,
+          "minute": 0,
+          "month": 3,
+          "second": 0,
+          "year": 2019,
+        }
+      `
+      )
+    })
+
+    it('works for relative_timeframes when provided a relative timeframes value', () => {
+      const ast = parseFilterExpression(type, '14 day')
+      const item = getFilterTokenItem(ast, type, 'relative_timeframes')
+      expect(item.type).toEqual('past')
+      expect(item.unit).toEqual('day')
+      expect(item.value).toEqual(14)
+    })
+
+    it('works for relative_timeframes when provided a non relative timeframes value', () => {
+      const ast = parseFilterExpression(type, '2018,2019')
+      const item = getFilterTokenItem(ast, type, 'relative_timeframes')
+      expect(item.type).toEqual('past')
+      expect(item.unit).toEqual('day')
+      expect(item.value).toEqual(7)
     })
   })
 })

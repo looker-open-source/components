@@ -28,7 +28,7 @@ import type { FilterASTNode } from '../types'
 export const getMatchesAdvancedNode = (
   expression: string,
   ast?: FilterASTNode
-) => {
+): FilterASTNode => {
   if (ast) {
     return {
       id: ast.id,

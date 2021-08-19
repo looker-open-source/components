@@ -25,7 +25,7 @@
  */
 import React, { useState } from 'react'
 import type { Story } from '@storybook/react/types-6-0'
-import { defaultArgTypes } from '../../../../../../../../storybook/src/defaultArgTypes'
+
 import type { TagListProps } from './TagList'
 import { TagList } from './TagList'
 
@@ -92,5 +92,5 @@ WithValues.args = {
 export default {
   title: 'Filters / Tag List Filter',
   component: TagList,
-  argTypes: { ...defaultArgTypes, onChange: { action: 'onChange' } },
+  argTypes: { onChange: { action: 'onChange' } },
 }

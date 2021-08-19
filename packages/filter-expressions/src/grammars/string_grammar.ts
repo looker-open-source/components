@@ -159,16 +159,17 @@ char "character"
    / unescaped
    / NOT_SYMBOL
 
-ESCAPE_CARET = CARET symbol:(PCT_SYMBOL / UNDERSCORE / COMMA_SYMBOL / CARET / NOT_SYMBOL) {
+ESCAPE_CARET = CARET symbol:(PCT_SYMBOL / UNDERSCORE / COMMA_SYMBOL / CARET / NOT_SYMBOL / SPACE_SYMBOL) {
 			return symbol
 		}
 
 SYMBOLS = PCT_SYMBOL / COMMA_SYMBOL / NOT_SYMBOL / UNDERSCORE / CARET
-PCT_SYMBOL 		          = '%'
-UNDERSCORE 		          = '_'
+PCT_SYMBOL 		        = '%'
+UNDERSCORE 		        = '_'
 COMMA_SYMBOL   	        = ","
 NOT_SYMBOL	  	        = "-"
-CARET 	   		          = "^"
+SPACE_SYMBOL            = " "
+CARET 	   		        = "^"
 escape         	        = "\\\\"
 escaped_quotation_mark  = '\\\\"'
 quotation_mark 	        = '"'

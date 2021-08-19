@@ -23,11 +23,18 @@
  SOFTWARE.
 
  */
-import type { FilterASTNode, FilterModel, FilterExpressionType } from '../types'
 
-import { addDays, dateToFilterDateTimeModel, sanitizeDate } from './date'
-import { sanitizeNumber } from './number'
-import { sanitizeString } from './string'
+import {
+  FilterASTNode,
+  FilterExpressionType,
+  FilterModel,
+  sanitizeString,
+  sanitizeNumber,
+  sanitizeDate,
+  dateToFilterDateTimeModel,
+  addDays,
+} from '@looker/filter-expressions'
+import { filterModelToRelativeTimeframeModel } from '../components/AdvancedFilter/components/DateFilter/utils'
 
 // transforms the AST for user with filter tokens
 export const getFilterTokenItem = (
@@ -78,6 +85,24 @@ const getNumberFilterTokenItem = (
   }
 }
 
+const getRelativeTimeframesTokenItem = (item: FilterModel) => {
+  if (item.type === 'on') {
+    // convert to range if it's single day
+    const dateItem =
+      item.date || dateToFilterDateTimeModel(new Date(Date.now()))
+    const {
+      start = dateItem,
+      end = dateToFilterDateTimeModel(addDays(new Date(Date.now()), 1)),
+    } = item
+    return sanitizeDate({ ...item, type: 'range', start, end })
+  }
+  // if it doesn't match relativeTimeframes presets default to 'last 7 days'
+  if (!filterModelToRelativeTimeframeModel(item)) {
+    return sanitizeDate({ ...item, type: 'past', unit: 'day', value: 7 })
+  }
+  return sanitizeDate(item)
+}
+
 const getDateFilterTokenItem = (
   item: FilterModel,
   configType: string
@@ -95,6 +120,8 @@ const getDateFilterTokenItem = (
       } = item
       return sanitizeDate({ ...item, type: 'range', start, end })
     }
+    case 'relative_timeframes':
+      return getRelativeTimeframesTokenItem(item)
     default:
       return sanitizeDate(item)
   }
