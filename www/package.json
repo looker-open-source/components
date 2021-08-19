@@ -46,7 +46,7 @@
   },
   "eslintConfig": {
     "extends": [
-      "@looker/eslint-config/oss-compat"
+      "@looker/eslint-config-oss/oss-compat"
     ]
   }
 }

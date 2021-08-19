@@ -1,4 +1,4 @@
-# @looker/eslint-config
+# @looker/eslint-config-oss
 
 ## looker-open-source Typescript / Javascript Configuration
 
@@ -21,7 +21,7 @@ well.
 Install the package with
 
 ```sh
-yarn add @looker/eslint-config eslint -D
+yarn add @looker/eslint-config-oss eslint -D
 ```
 
 ## Usage
@@ -33,7 +33,7 @@ Add the config to either your `package.json`:
 ```json
 {
   "eslintConfig": {
-    "extends": ["@looker/eslint-config"]
+    "extends": ["@looker/eslint-config-oss"]
   }
 }
 ```
@@ -42,7 +42,7 @@ to your `eslint.config.js` (or `.eslintrc.js`):
 
 ```js
 module.exports = {
-  extends: ['@looker/eslint-config', '@looker/eslint-config/license-header'],
+  extends: ['@looker/eslint-config-oss', '@looker/eslint-config-oss/license-header'],
 }
 ```
 
@@ -50,7 +50,7 @@ NOTE: Adding an `eslint.config.js` file will allow you to add your own rules to 
 
 ```js
 module.exports = {
-  extends: ['@looker/eslint-config'],
+  extends: ['@looker/eslint-config-oss'],
   rules: {
     /* @TODO - To level-up our code quality we shouldn't ever use `any` */
     '@typescript-eslint/no-explicit-any': 'off',
