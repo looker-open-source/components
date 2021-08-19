@@ -33,8 +33,8 @@ import { Grid } from '../../Layout'
 
 const DensityTree: FC<DensityProp> = ({ density }) => (
   <TreeCollection>
-    <Tree defaultOpen density={density} label={<strong>Tree of Cheese</strong>}>
-      <Tree defaultOpen label={<strong>French Cheeses</strong>}>
+    <Tree defaultOpen density={density} label={<strong>Cheeses</strong>}>
+      <Tree defaultOpen label={<strong>French</strong>}>
         <TreeItem>Brie</TreeItem>
       </Tree>
       <TreeItem>Cheddar</TreeItem>
