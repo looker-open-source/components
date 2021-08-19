@@ -26,11 +26,11 @@
 
 import React from 'react'
 import { Story } from '@storybook/react/types-6-0'
-import styled from 'styled-components'
+import styled, { ThemeProvider } from 'styled-components'
 import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout'
 import { useRipple, useRippleHandlers, UseRippleProps, rippleStyle } from './'
 
-type RippleProps = SimpleLayoutProps & UseRippleProps & { className: string }
+type RippleProps = SimpleLayoutProps & UseRippleProps & { className?: string }
 
 const Ripple = styled(
   ({ className, bounded, color, ...props }: RippleProps) => {
@@ -66,7 +66,16 @@ const Ripple = styled(
   justify-content: center;
 `
 
-const Template: Story<RippleProps> = (args) => <Ripple {...args} />
+const Template: Story<RippleProps> = (args) => (
+  <ThemeProvider
+    theme={(theme) => ({
+      ...theme,
+      defaults: { ...theme.defaults, brandAnimation: true },
+    })}
+  >
+    <Ripple {...args} />
+  </ThemeProvider>
+)
 
 export const Basic = Template.bind({})
 Basic.args = { height: 80, width: 80 }
@@ -95,6 +104,9 @@ Dimension.parameters = { storyshots: { disable: true } }
 export const Measure = Template.bind({})
 Measure.args = { ...Basic.args, color: 'measure' }
 Measure.parameters = { storyshots: { disable: true } }
+
+export const NoAnimation = () => <Ripple height={80} width={80} />
+NoAnimation.parameters = { storyshots: { disable: true } }
 
 export default {
   component: Ripple,

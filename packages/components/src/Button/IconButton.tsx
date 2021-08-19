@@ -24,22 +24,35 @@
 
  */
 
+import pick from 'lodash/pick'
 import some from 'lodash/some'
 import isFunction from 'lodash/isFunction'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { reset, space } from '@looker/design-tokens'
 import React, { forwardRef, Ref } from 'react'
 import { Icon } from '../Icon'
+import {
+  rippleHandlerKeys,
+  rippleStyle,
+  useRipple,
+  useRippleHandlers,
+} from '../Ripple'
 import { useTooltip } from '../Tooltip'
-import { mergeClassNames, useWrapEvent } from '../utils'
+import { mergeClassNames, useForkedRef, useWrapEvent } from '../utils'
 import { VisuallyHidden } from '../VisuallyHidden'
-import { GenericButtonBase } from './ButtonBase'
+import { ButtonOuter } from './ButtonBase'
 import { iconButtonColor, ICON_BUTTON_DEFAULT_COLOR } from './iconButtonColor'
+import { iconButtonOutline } from './iconButtonOutline'
 import { iconButtonIconSizeMap, buttonSizeMap } from './size'
 import { IconButtonProps } from './iconButtonTypes'
 
-const IconButtonComponent = forwardRef(
-  (props: IconButtonProps, ref: Ref<HTMLButtonElement>) => {
+/**
+ * Appears as just an `Icon` but with proper HTML semantics to produce a `button`
+ * DOM element that is properly announced to screen-readers as well as providing
+ * keyboard tooltip support.
+ */
+export const IconButton = styled(
+  forwardRef((props: IconButtonProps, forwardedRef: Ref<HTMLButtonElement>) => {
     const {
       'aria-expanded': ariaExpanded,
       className,
@@ -58,8 +71,19 @@ const IconButtonComponent = forwardRef(
       onBlur: propsOnBlur,
       onMouseOver: propsOnMouseOver,
       onMouseOut: propsOnMouseOut,
+      style,
       ...rest
     } = props
+
+    const bounded = rest.shape !== 'round' && (toggleBackground || rest.outline)
+    const {
+      callbacks,
+      className: rippleClassName,
+      ref: rippleRef,
+      style: rippleStyle,
+    } = useRipple({ bounded, color: toggle ? toggleColor : undefined })
+
+    const ref = useForkedRef(forwardedRef, rippleRef)
 
     // any of the hover/focus handlers being present disables built-in tooltip
     const hasOuterTooltip = some(
@@ -87,15 +111,23 @@ const IconButtonComponent = forwardRef(
       width: tooltipWidth,
     })
 
-    const eventHandlers = {
-      onBlur: useWrapEvent(onBlur, propsOnBlur),
-      onFocus: useWrapEvent(onFocus, propsOnFocus),
+    const rippleHandlers = useRippleHandlers(
+      callbacks,
+      {
+        onBlur: useWrapEvent(onBlur, propsOnBlur),
+        onFocus: useWrapEvent(onFocus, propsOnFocus),
+        ...pick(rest, rippleHandlerKeys),
+      },
+      rest.disabled
+    )
+
+    const otherHandlers = {
       onMouseOut: useWrapEvent(onMouseOut, propsOnMouseOut),
       onMouseOver: useWrapEvent(onMouseOver, propsOnMouseOver),
     }
 
     return (
-      <GenericButtonBase
+      <ButtonOuter
         aria-describedby={ariaDescribedBy}
         aria-expanded={ariaExpanded}
         aria-pressed={toggle ? true : undefined}
@@ -103,60 +135,29 @@ const IconButtonComponent = forwardRef(
         p="none"
         size={size}
         width={buttonSizeMap[size]}
-        className={mergeClassNames([className, tooltipClassName])}
-        toggleColor={toggleColor}
-        {...eventHandlers}
+        className={mergeClassNames([
+          className,
+          tooltipClassName,
+          rippleClassName,
+        ])}
+        style={{ ...style, ...rippleStyle }}
+        {...rippleHandlers}
+        {...otherHandlers}
         {...rest}
       >
         <VisuallyHidden>{label}</VisuallyHidden>
         <Icon icon={icon} size={iconButtonIconSizeMap[size]} />
         {tooltip}
-      </GenericButtonBase>
+      </ButtonOuter>
     )
-  }
-)
-
-IconButtonComponent.displayName = 'IconButtonComponent'
-
-const outlineCSS = () => {
-  return css`
-    border: 1px solid ${({ theme: { colors } }) => colors.ui3};
-
-    &:hover,
-    &:focus,
-    &.hover {
-      border-color: ${({ theme: { colors } }) => colors.neutral};
-    }
-
-    &[aria-expanded='true'],
-    &:active,
-    &.active {
-      border-color: ${({ theme: { colors } }) => colors.neutralInteractive};
-    }
-
-    &[disabled] {
-      &:hover,
-      &:active,
-      &:focus {
-        border-color: ${({ theme: { colors } }) => colors.ui3};
-      }
-    }
-  `
-}
-
-/**
- * Appears as just an `Icon` but with proper HTML semantics to produce a `button`
- * DOM element that is properly announced to screen-readers as well as providing
- * keyboard tooltip support.
- */
-export const IconButton = styled(IconButtonComponent).attrs(
-  ({ type = 'button', toggleColor = ICON_BUTTON_DEFAULT_COLOR }) => ({
-    toggleColor,
-    type,
   })
-)<IconButtonProps>`
+).attrs(({ type = 'button', toggleColor = ICON_BUTTON_DEFAULT_COLOR }) => ({
+  toggleColor,
+  type,
+}))<IconButtonProps>`
   ${reset}
   ${space}
+  ${rippleStyle}
 
   background: none;
   background-color: ${({ theme, toggle, toggleBackground, toggleColor }) =>
@@ -166,5 +167,5 @@ export const IconButton = styled(IconButtonComponent).attrs(
   ${iconButtonColor}
   padding: 0;
 
-  ${({ outline }) => outline && outlineCSS}
+  ${({ outline }) => outline && iconButtonOutline}
 `

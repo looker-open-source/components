@@ -26,6 +26,7 @@
 
 import { Page } from 'puppeteer'
 import React from 'react'
+import { ThemeProvider } from 'styled-components'
 import { Add } from '@styled-icons/material/Add'
 import { Story } from '@storybook/react/types-6-0'
 import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
@@ -38,12 +39,26 @@ export default {
   title: 'IconButton',
 }
 
-const Template: Story<IconButtonProps> = (args) => <IconButton {...args} />
+const Template: Story<IconButtonProps & { ripple: boolean }> = ({
+  ripple,
+  ...args
+  // ripple prop and ThemeProvider allow you to toggle the animation via controls
+}) => (
+  <ThemeProvider
+    theme={(theme) => ({
+      ...theme,
+      defaults: { ...theme.defaults, brandAnimation: ripple },
+    })}
+  >
+    <IconButton {...args} />
+  </ThemeProvider>
+)
 
 export const Basic = Template.bind({})
 Basic.args = {
   icon: <Add />,
   label: 'Add',
+  ripple: false,
 }
 
 export const XXSmall = Template.bind({})
@@ -108,6 +123,7 @@ export const ToggleOff = Template.bind({})
 ToggleOff.args = {
   ...Basic.args,
   toggle: false,
+  toggleColor: 'calculation',
 }
 
 export const ToggleBackground = Template.bind({})
@@ -129,13 +145,12 @@ ToggleColor.args = {
 export const ToggleColorFocused = Template.bind({})
 ToggleColorFocused.args = {
   ...ToggleColor.args,
-  margin: 'small',
 }
 
 ToggleColorFocused.parameters = {
   beforeScreenshot: async (page: Page) => {
     const button = await page.$('button')
-    await button?.type(' ')
+    await button?.focus()
     await page.waitForTimeout(50)
   },
   docs: { disable: true },

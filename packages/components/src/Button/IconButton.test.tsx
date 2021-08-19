@@ -235,4 +235,57 @@ describe('IconButton', () => {
     const button = screen.getByRole('button')
     expect(button).toHaveStyle('color: #319220')
   })
+
+  describe('ripple effect', () => {
+    test('default', () => {
+      renderWithTheme(<IconButton icon={<Favorite />} label="Test" />)
+
+      const button = screen.getByRole('button')
+      expect(button).not.toHaveClass('bg-on fg-in')
+      expect(button).toHaveStyle({
+        '--ripple-color': '#71767a',
+        '--ripple-scale-end': '1',
+        // This should change to 0.1 when brandAnimation default becomes true
+        '--ripple-scale-start': '1',
+        '--ripple-size': '100%',
+        '--ripple-translate': '0, 0',
+      })
+
+      fireEvent.focus(button)
+      expect(button).toHaveClass('bg-on')
+
+      fireEvent.mouseDown(button)
+      expect(button).toHaveClass('bg-on fg-in')
+
+      // foreground is locked for a minimum time to animate the ripple
+      fireEvent.mouseUp(button)
+      runTimers()
+      expect(button).toHaveClass('bg-on fg-out')
+      runTimers()
+      expect(button).toHaveClass('bg-on')
+
+      fireEvent.blur(button)
+      expect(button).not.toHaveClass('bg-on fg-in')
+    })
+    test('toggle', () => {
+      renderWithTheme(<IconButton icon={<Favorite />} label="Test" toggle />)
+
+      const button = screen.getByRole('button')
+      expect(button).toHaveStyle({ '--ripple-color': '#6C43E0' })
+    })
+
+    test('toggleColor', () => {
+      renderWithTheme(
+        <IconButton
+          icon={<Favorite />}
+          label="Test"
+          toggle
+          toggleColor="measure"
+        />
+      )
+
+      const button = screen.getByRole('button')
+      expect(button).toHaveStyle({ '--ripple-color': '#C2772E' })
+    })
+  })
 })

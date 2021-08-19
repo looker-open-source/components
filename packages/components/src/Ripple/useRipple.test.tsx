@@ -26,10 +26,11 @@
 
 import { renderWithTheme } from '@looker/components-test-utils'
 import { act, fireEvent, screen } from '@testing-library/react'
+import { ThemeProvider } from 'styled-components'
 import React from 'react'
 import { useRipple, UseRippleProps } from './useRipple'
 
-const RippleComponent = (props: UseRippleProps) => {
+const RippleInner = (props: UseRippleProps) => {
   const {
     callbacks: { startBG, endBG, startFG, endFG },
     className,
@@ -47,6 +48,19 @@ const RippleComponent = (props: UseRippleProps) => {
     </div>
   )
 }
+
+// TODO: Remove this when we change brandAnimation default to true
+// (then just change the value below to use this for the brandAnimation: false scenario)
+const RippleComponent = (props: UseRippleProps) => (
+  <ThemeProvider
+    theme={(theme) => ({
+      ...theme,
+      defaults: { ...theme.defaults, brandAnimation: true },
+    })}
+  >
+    <RippleInner {...props} />
+  </ThemeProvider>
+)
 
 /* eslint-disable-next-line @typescript-eslint/unbound-method */
 const globalGetBoundingClientRect = Element.prototype.getBoundingClientRect
@@ -111,6 +125,17 @@ describe('useRipple', () => {
       '--ripple-color': '#6C43E0',
       '--ripple-scale-end': '1',
       '--ripple-scale-start': '0.1',
+      '--ripple-size': '100%',
+      '--ripple-translate': '0, 0',
+    })
+  })
+
+  test('theme setting brandAnimation false', () => {
+    renderWithTheme(<RippleInner color="key" />)
+    expect(screen.getByText('style')).toHaveStyle({
+      '--ripple-color': '#6C43E0',
+      '--ripple-scale-end': '1',
+      '--ripple-scale-start': '1',
       '--ripple-size': '100%',
       '--ripple-translate': '0, 0',
     })

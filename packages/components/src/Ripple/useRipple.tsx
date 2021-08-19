@@ -58,6 +58,9 @@ export type UseRippleResponse = {
    * ref is only used for bounded ripple, to detect element dimensions
    */
   ref?: (node: HTMLElement | null) => void
+  /**
+   * style contains CSS variables to control the animation
+   */
   style: CSSProperties
 }
 
@@ -70,7 +73,8 @@ const getMinMaxDimensions = (width: number, height: number) => {
 const getRippleScaleRange = (
   min: number,
   max: number,
-  bounded?: boolean
+  bounded?: boolean,
+  noScale?: boolean
 ): [number, number] => {
   // For squares it looks best to start the ripple very small
   const start = 0.1
@@ -80,7 +84,16 @@ const getRippleScaleRange = (
     const startBounded = min === max ? start : 1
     // The ripple needs to spread past all corners, use hypotenuse as the
     // final diameter, and start at 1 to make the animation less jarring
-    return [startBounded, Math.hypot(min, max) / min]
+    const end = Math.hypot(min, max) / min
+
+    if (noScale) {
+      return [end, end]
+    }
+    return [startBounded, end]
+  }
+
+  if (noScale) {
+    return [1, 1]
   }
   // Start small and expand to the full size
   return [start, 1]
@@ -110,11 +123,20 @@ export const useRipple = ({
   const [element, ref] = useCallbackRef()
   const [{ width, height }] = useMeasuredElement(element)
   // Get the theme colors to apply the right value for the color prop
-  const { colors } = useContext(ThemeContext)
+  // brandAnimation toggles the animation
+  const {
+    colors,
+    defaults: { brandAnimation },
+  } = useContext(ThemeContext)
 
   // Get values for animation – bounded uses dimensions, otherwise they're static
   const [min, max] = getMinMaxDimensions(width, height)
-  const rippleScaleRange = getRippleScaleRange(min, max, bounded)
+  const rippleScaleRange = getRippleScaleRange(
+    min,
+    max,
+    bounded,
+    !brandAnimation
+  )
   const rippleOffset = getRippleOffset(min, max, bounded)
 
   // Background (hover, focus) and foreground (press) ripple states
