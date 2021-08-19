@@ -191,14 +191,18 @@ export const Link = () => {
 
 export const NoRole = () => {
   return (
-    <ListItem itemRole="none">
+    <ListItem
+      itemRole="none"
+      detail={
+        <IconButton
+          onClick={() => alert('Show me calendar')}
+          icon={<PersonOutline />}
+          label="Person"
+          ml="large"
+        />
+      }
+    >
       ListItem
-      <IconButton
-        onClick={() => alert('Show me calendar')}
-        icon={<PersonOutline />}
-        label="Person"
-        ml="large"
-      />
     </ListItem>
   )
 }
