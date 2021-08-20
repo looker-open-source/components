@@ -143,10 +143,10 @@ invalid and duplicate values are entered.
 }
 ```
 
-## trimInputValues
+## formatInputValue
 
 By default, any leading or trailing whitespace will be trimmed from
-entered values, before validation. To avoid this, use `trimInputValues={false}`.
+entered values, before validation. To avoid this, use `formatInputValue={false}`.
 
 ```jsx
 ;() => {
@@ -157,7 +157,7 @@ entered values, before validation. To avoid this, use `trimInputValues={false}`.
         placeholder="Values are not trimmed"
         values={values}
         onChange={setValues}
-        trimInputValues={false}
+        formatInputValue={false}
         width="50%"
       />
       <pre>{JSON.stringify(values)}</pre>

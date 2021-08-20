@@ -41,16 +41,17 @@ import { InputChipsBase } from './InputChipsBase'
  * but also allows (validated) user inputs to be stored as 'chips' (see the Chip element)
  */
 
+export type FormatInputValue = ((value: string) => string) | false
 export interface InputChipsValidationProps {
   /**
    * for checking each value before converting to a chip
    */
   validate?: (value: string) => boolean
   /**
-   * Trim whitespace from entered values (before validation)
-   * @default true
+   * Format each value entered, before validation, defaults to `value.trim()`,
+   * set to `false` to avoid trimming whitespace
    */
-  trimInputValues?: boolean
+  formatInputValue?: FormatInputValue
   /**
    * callback when values fail validation
    */
@@ -95,7 +96,7 @@ export const validateValues = (
   newValues: string[],
   currentValues: string[],
   validate?: (value: string) => boolean,
-  trimInputValues?: boolean
+  formatInputValue?: FormatInputValue
 ) => {
   const duplicateValues: string[] = []
   const invalidValues: string[] = []
@@ -103,22 +104,24 @@ export const validateValues = (
   const validValues: string[] = []
 
   newValues.forEach((val: string) => {
-    const trimmedValue = trimInputValues ? val.trim() : val
-    if (trimmedValue === '') return
+    const formattedValue = formatInputValue ? formatInputValue(val) : val
+    if (formattedValue === '') return
     // Make sure each value is valid and doesn't already exist
-    if (validate && !validate(trimmedValue)) {
-      unusedValues.push(trimmedValue)
-      return invalidValues.push(trimmedValue)
-    } else if (currentValues && currentValues.includes(trimmedValue)) {
-      unusedValues.push(trimmedValue)
-      return duplicateValues.push(trimmedValue)
+    if (validate && !validate(formattedValue)) {
+      unusedValues.push(formattedValue)
+      return invalidValues.push(formattedValue)
+    } else if (currentValues && currentValues.includes(formattedValue)) {
+      unusedValues.push(formattedValue)
+      return duplicateValues.push(formattedValue)
     } else {
-      return validValues.push(trimmedValue)
+      return validValues.push(formattedValue)
     }
   })
 
   return { duplicateValues, invalidValues, unusedValues, validValues }
 }
+
+const trimValue = (value: string) => value.trim()
 
 export const InputChips = styled(
   forwardRef(
@@ -132,7 +135,7 @@ export const InputChips = styled(
         onInputChange,
         parseInputValue = splitInputValue,
         validate,
-        trimInputValues = true,
+        formatInputValue = trimValue,
         onValidationFail,
         onDuplicate,
 
@@ -172,7 +175,7 @@ export const InputChips = styled(
       const updateValues = (newInputValue?: string) => {
         const inputValues = parseInputValue(newInputValue || inputValue)
         const { duplicateValues, invalidValues, unusedValues, validValues } =
-          validateValues(inputValues, values, validate, trimInputValues)
+          validateValues(inputValues, values, validate, formatInputValue)
 
         // Save valid values and keep invalid ones in the input
         const updatedInputValue = unusedValues.join(', ')

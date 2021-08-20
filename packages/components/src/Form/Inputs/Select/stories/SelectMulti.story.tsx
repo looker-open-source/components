@@ -127,7 +127,7 @@ export const TrimInputValuesFalse = () => {
         onChange={setValues}
         options={cheeses}
         freeInput
-        trimInputValues={false}
+        formatInputValue={false}
         placeholder="Free input values are not trimmed"
         width={400}
       />

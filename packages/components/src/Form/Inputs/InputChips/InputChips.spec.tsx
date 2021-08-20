@@ -190,7 +190,7 @@ tag2`
     expect(input).toHaveValue('')
   })
 
-  test('trimInputValues false', () => {
+  test('formatInputValue false', () => {
     const onChangeMock = jest.fn()
 
     renderWithTheme(
@@ -198,7 +198,7 @@ tag2`
         onChange={onChangeMock}
         values={[]}
         placeholder="type here"
-        trimInputValues={false}
+        formatInputValue={false}
       />
     )
     const input = screen.getByPlaceholderText('type here')

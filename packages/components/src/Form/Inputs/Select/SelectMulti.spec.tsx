@@ -292,7 +292,7 @@ describe('closeOnSelect', () => {
       fireEvent.click(document)
     })
 
-    test('trimInputValues false', () => {
+    test('formatInputValue false', () => {
       const onChangeMock = jest.fn()
       renderWithTheme(
         <SelectMulti
@@ -301,7 +301,7 @@ describe('closeOnSelect', () => {
           placeholder="Search"
           onChange={onChangeMock}
           freeInput
-          trimInputValues={false}
+          formatInputValue={false}
         />
       )
 

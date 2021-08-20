@@ -108,7 +108,7 @@ export const ComboboxMultiInputInternal = forwardRef(
       // free form input
       freeInput = false,
       validate,
-      trimInputValues,
+      formatInputValue,
       onValidationFail,
       onDuplicate,
 
@@ -264,7 +264,7 @@ export const ComboboxMultiInputInternal = forwardRef(
       <InputChips
         {...commonProps}
         validate={validate}
-        trimInputValues={trimInputValues}
+        formatInputValue={formatInputValue}
         onValidationFail={onValidationFail}
         onDuplicate={onDuplicate}
         parseInputValue={parseInputValue}

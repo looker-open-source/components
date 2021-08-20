@@ -108,7 +108,7 @@ export const TrimInputValuesFalse = () => {
       <InputChips
         values={chips}
         onChange={setChips}
-        trimInputValues={false}
+        formatInputValue={false}
         width={400}
       />
       <pre data-testid="pre">{JSON.stringify(chips)}</pre>
