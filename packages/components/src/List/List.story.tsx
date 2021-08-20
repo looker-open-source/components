@@ -234,21 +234,33 @@ export const DensityWithNonstringChildren = () => (
   </Grid>
 )
 
-export const KeyboardNav = () => (
+export const KeyboardNavigation = () => (
   <List>
     <ListItem
+      itemRole="none"
       detail={{
-        content: <IconButton label="button" icon={<DateRange />} />,
+        content: (
+          <IconButton
+            label="cheddar-button"
+            icon={<DateRange />}
+            tooltipDisabled
+          />
+        ),
         options: { hoverDisclosure: true },
       }}
     >
       Cheddar
     </ListItem>
-    <ListItem detail={<IconButton label="button" icon={<DateRange />} />}>
+    <ListItem
+      itemRole="none"
+      detail={
+        <IconButton label="gouda-button" icon={<DateRange />} tooltipDisabled />
+      }
+    >
       Gouda
     </ListItem>
   </List>
 )
-KeyboardNav.parameters = {
+KeyboardNavigation.parameters = {
   storyshots: { disable: true },
 }
