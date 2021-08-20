@@ -24,20 +24,21 @@
 
  */
 
-import {
-  color,
+import type {
   CompatibleHTMLProps,
   SizeXXSmall,
   SizeXSmall,
   SizeSmall,
   SizeMedium,
   SizeLarge,
-  omitStyledProps,
 } from '@looker/design-tokens'
-import { StyledIconProps } from '@styled-icons/styled-icon'
-import React, { forwardRef, ReactElement, Ref } from 'react'
+import { color, omitStyledProps } from '@looker/design-tokens'
+import type { StyledIconProps } from '@styled-icons/styled-icon'
+import type { ReactElement, Ref } from 'react'
+import React, { forwardRef } from 'react'
 import styled from 'styled-components'
-import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout/utils/simple'
+import type { SimpleLayoutProps } from '../Layout/utils/simple'
+import { simpleLayoutCSS } from '../Layout/utils/simple'
 
 export type IconSize =
   | SizeXXSmall

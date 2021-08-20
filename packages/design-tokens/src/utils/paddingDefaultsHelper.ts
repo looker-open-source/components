@@ -24,7 +24,7 @@
 
  */
 
-import { PaddingProps } from '../system'
+import type { PaddingProps } from '../system'
 
 /**
  * This function should repeat values specified in "defaults"  from the least

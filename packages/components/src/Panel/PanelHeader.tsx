@@ -24,14 +24,15 @@
 
  */
 
-import React, { FC, useContext } from 'react'
+import type { FC } from 'react'
+import React, { useContext } from 'react'
 import { useTranslation } from 'react-i18next'
 import { ThemeContext } from 'styled-components'
 import { ArrowBack } from '@styled-icons/material-rounded/ArrowBack'
 import { Heading } from '../Text'
 import { Space } from '../Layout'
 import { IconButton } from '../Button'
-import { PanelBaseProps } from './types'
+import type { PanelBaseProps } from './types'
 
 export const PanelHeader: FC<PanelBaseProps> = ({
   closeLabel,

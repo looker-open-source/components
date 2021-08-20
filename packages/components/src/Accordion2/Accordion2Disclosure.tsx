@@ -24,16 +24,15 @@
 
  */
 
-import React, { FC, Ref, ReactNode, forwardRef } from 'react'
+import type { FC, Ref, ReactNode } from 'react'
+import React, { forwardRef } from 'react'
 import styled, { css } from 'styled-components'
-import {
-  CompatibleHTMLProps,
-  DensityProp,
-  shouldForwardProp,
-} from '@looker/design-tokens'
-import { FocusVisibleProps, focusVisibleCSSWrapper } from '../utils'
+import type { CompatibleHTMLProps, DensityProp } from '@looker/design-tokens'
+import { shouldForwardProp } from '@looker/design-tokens'
+import type { FocusVisibleProps } from '../utils'
+import { focusVisibleCSSWrapper } from '../utils'
 import { AccordionLabel } from './AccordionLabel'
-import { AccordionIndicatorPosition } from './types'
+import type { AccordionIndicatorPosition } from './types'
 
 export type Accordion2DisclosureProps = CompatibleHTMLProps<HTMLElement> &
   DensityProp &

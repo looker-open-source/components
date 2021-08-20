@@ -25,18 +25,20 @@
  */
 
 import xorWith from 'lodash/xorWith'
-import { Context, useContext } from 'react'
+import type { Context } from 'react'
+import { useContext } from 'react'
 import { useWrapEvent } from '../../../../utils'
-import {
+import type {
   ComboboxContextProps,
   ComboboxMultiContextProps,
 } from '../ComboboxContext'
-import {
+import type {
   ComboboxCallback,
   ComboboxMultiCallback,
   ComboboxOptionProps,
 } from '../types'
-import { ComboboxActionType, ComboboxMultiData } from './state'
+import type { ComboboxMultiData } from './state'
+import { ComboboxActionType } from './state'
 
 export function useOptionEvents<
   CProps extends ComboboxContextProps | ComboboxMultiContextProps

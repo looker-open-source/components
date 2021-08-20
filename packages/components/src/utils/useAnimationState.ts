@@ -24,7 +24,8 @@
 
  */
 
-import { transitions, Transitions } from '@looker/design-tokens'
+import type { Transitions } from '@looker/design-tokens'
+import { transitions } from '@looker/design-tokens'
 import { useEffect, useState } from 'react'
 
 type Entering = 'entering'

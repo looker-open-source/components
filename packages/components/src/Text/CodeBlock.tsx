@@ -24,10 +24,13 @@
 
  */
 
-import { border, BorderProps } from '@looker/design-tokens'
-import React, { FC, ReactNode } from 'react'
+import type { BorderProps } from '@looker/design-tokens'
+import { border } from '@looker/design-tokens'
+import type { FC, ReactNode } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import { TextBase, TextBaseProps } from './TextBase'
+import type { TextBaseProps } from './TextBase'
+import { TextBase } from './TextBase'
 
 export interface CodeBlockProps extends TextBaseProps, BorderProps {
   className?: string

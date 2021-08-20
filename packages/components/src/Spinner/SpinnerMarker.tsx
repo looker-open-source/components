@@ -24,12 +24,8 @@
 
  */
 
-import {
-  color,
-  ColorProps,
-  quarterFade,
-  shouldForwardProp,
-} from '@looker/design-tokens'
+import type { ColorProps } from '@looker/design-tokens'
+import { color, quarterFade, shouldForwardProp } from '@looker/design-tokens'
 import styled, { css } from 'styled-components'
 
 interface SpinnerMarkerProps extends ColorProps {

@@ -24,7 +24,7 @@
 
  */
 
-import {
+import type {
   CompatibleHTMLProps,
   StatefulColor,
   MaxWidthProps,
@@ -32,8 +32,8 @@ import {
   SpaceProps,
   WidthProps,
 } from '@looker/design-tokens'
-import { IconType } from '../Icon'
-import { ButtonSizeProps, ButtonSizes } from './size'
+import type { IconType } from '../Icon'
+import type { ButtonSizeProps, ButtonSizes } from './size'
 
 export interface ButtonIconProps {
   iconBefore?: IconType

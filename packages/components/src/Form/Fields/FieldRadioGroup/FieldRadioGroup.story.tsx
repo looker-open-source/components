@@ -25,10 +25,11 @@
  */
 
 import React from 'react'
-import { Story } from '@storybook/react/types-6-0'
+import type { Story } from '@storybook/react/types-6-0'
 import { options } from '../../../__mocks__/CheckboxRadio'
 import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
-import { FieldRadioGroup, FieldRadioGroupProps } from './FieldRadioGroup'
+import type { FieldRadioGroupProps } from './FieldRadioGroup'
+import { FieldRadioGroup } from './FieldRadioGroup'
 
 export default {
   argTypes,

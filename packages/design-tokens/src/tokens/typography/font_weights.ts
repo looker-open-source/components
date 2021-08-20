@@ -24,7 +24,7 @@
 
  */
 
-import { FontWeightRamp } from '../../system'
+import type { FontWeightRamp } from '../../system'
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 

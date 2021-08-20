@@ -24,7 +24,7 @@
 
  */
 
-import { SizeRamp } from '../system'
+import type { SizeRamp } from '../system'
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 export const sizes: SizeRamp = {

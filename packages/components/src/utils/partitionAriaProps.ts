@@ -24,7 +24,7 @@
 
  */
 
-import React from 'react'
+import type React from 'react'
 
 /**
  * Partitions an object into 2 objects, the first containing all aria related prop keys and their respective values

@@ -24,9 +24,11 @@
 
  */
 
-import { flexbox, FlexboxProps, shouldForwardProp } from '@looker/design-tokens'
+import type { FlexboxProps } from '@looker/design-tokens'
+import { flexbox, shouldForwardProp } from '@looker/design-tokens'
 import styled from 'styled-components'
-import { complexLayoutCSS, ComplexLayoutProps } from '../utils/complex'
+import type { ComplexLayoutProps } from '../utils/complex'
+import { complexLayoutCSS } from '../utils/complex'
 
 export interface FlexItemProps extends ComplexLayoutProps, FlexboxProps {}
 

@@ -24,7 +24,7 @@
 
  */
 
-import { DensityRamp, SpaceRamp } from '@looker/design-tokens'
+import type { DensityRamp, SpaceRamp } from '@looker/design-tokens'
 import { css } from 'styled-components'
 import { listItemDimensions } from './listItemDimensions'
 

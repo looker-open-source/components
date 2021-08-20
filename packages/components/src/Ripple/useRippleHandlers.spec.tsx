@@ -26,8 +26,9 @@
 
 import { fireEvent, render, screen } from '@testing-library/react'
 import React from 'react'
-import { RippleCallbacks } from './types'
-import { RippleHandlers, useRippleHandlers } from './useRippleHandlers'
+import type { RippleCallbacks } from './types'
+import type { RippleHandlers } from './useRippleHandlers'
+import { useRippleHandlers } from './useRippleHandlers'
 
 const RippleHandlersComponent = ({
   callbacks,

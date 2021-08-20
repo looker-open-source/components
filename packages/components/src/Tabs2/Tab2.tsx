@@ -24,7 +24,8 @@
 
  */
 
-import React, { forwardRef, Ref } from 'react'
+import type { Ref } from 'react'
+import React, { forwardRef } from 'react'
 import styled from 'styled-components'
 import {
   layout,
@@ -33,13 +34,9 @@ import {
   typography,
   tabShadowColor,
 } from '@looker/design-tokens'
-import {
-  FocusVisibleProps,
-  focusVisibleCSSWrapper,
-  useFocusVisible,
-  useWrapEvent,
-} from '../utils'
-import { Tab2Props } from './types'
+import type { FocusVisibleProps } from '../utils'
+import { focusVisibleCSSWrapper, useFocusVisible, useWrapEvent } from '../utils'
+import type { Tab2Props } from './types'
 
 type Tab2StyleProps = Omit<Tab2Props, 'label'> & FocusVisibleProps
 

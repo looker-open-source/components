@@ -24,20 +24,18 @@
 
  */
 
-import React, { forwardRef, Ref, SyntheticEvent, useState } from 'react'
+import type { Ref, SyntheticEvent } from 'react'
+import React, { forwardRef, useState } from 'react'
 import isFunction from 'lodash/isFunction'
 import styled, { css } from 'styled-components'
-import {
-  reset,
-  space,
+import type {
   SpaceProps,
-  typography,
   TypographyProps,
   WidthProps,
-  width,
 } from '@looker/design-tokens'
+import { reset, space, typography, width } from '@looker/design-tokens'
 
-import { InputProps } from '../InputProps'
+import type { InputProps } from '../InputProps'
 
 export interface SliderProps
   extends SpaceProps,

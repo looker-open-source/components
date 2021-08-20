@@ -24,11 +24,12 @@
 
  */
 
-import React, { FC } from 'react'
+import type { FC } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { SpaceVertical } from '../../../../Layout'
 import { LightSaturationPreview, HueSlider } from '..'
-import { ColorPickerProps } from '../types'
+import type { ColorPickerProps } from '../types'
 
 const ColorPickerInternal: FC<ColorPickerProps> = ({ hsv, setHsv, width }) => (
   <SpaceVertical gap="u4" data-testid="color-picker">

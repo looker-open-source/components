@@ -24,14 +24,16 @@
 
  */
 
-import {
+import type {
   CompatibleHTMLProps,
+  PositionProps,
+  SpaceProps,
+} from '@looker/design-tokens'
+import {
   color,
   position,
-  PositionProps,
   reset,
   space,
-  SpaceProps,
   shouldForwardProp,
   variant,
 } from '@looker/design-tokens'

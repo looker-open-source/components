@@ -24,7 +24,7 @@
 
  */
 
-import { Theme } from '../../theme'
+import type { Theme } from '../../theme'
 interface GoogleFontSpecification {
   family: string
   /**

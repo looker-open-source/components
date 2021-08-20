@@ -25,9 +25,10 @@
  */
 
 import React, { useState } from 'react'
-import { Story } from '@storybook/react/types-6-0'
+import type { Story } from '@storybook/react/types-6-0'
 import { Box } from '../Layout'
-import { Tab2, Tabs2, Tabs2Props } from './'
+import type { Tabs2Props } from './'
+import { Tab2, Tabs2 } from './'
 
 export default {
   component: Tabs2,

@@ -34,16 +34,14 @@ import {
   width,
 } from '@looker/design-tokens'
 import { StyledIconBase } from '@styled-icons/styled-icon'
-import React, { forwardRef, Ref } from 'react'
+import type { Ref } from 'react'
+import React, { forwardRef } from 'react'
 import styled, { css } from 'styled-components'
-import {
-  FocusVisibleProps,
-  useFocusVisible,
-  focusVisibleCSSWrapper,
-} from '../utils'
+import type { FocusVisibleProps } from '../utils'
+import { useFocusVisible, focusVisibleCSSWrapper } from '../utils'
 import { buttonSize, buttonIconSizeMap, buttonPadding } from './size'
 import { buttonIcon } from './icon'
-import { ButtonColorProps, ButtonProps } from './types'
+import type { ButtonColorProps, ButtonProps } from './types'
 
 const buttonCSS = css<ButtonColorProps>`
   ${reset}

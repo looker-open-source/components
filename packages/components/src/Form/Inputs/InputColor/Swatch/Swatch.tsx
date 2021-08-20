@@ -25,15 +25,17 @@
  */
 
 import styled from 'styled-components'
-import {
+import type {
   CompatibleHTMLProps,
+  HeightProps,
+  WidthProps,
+} from '@looker/design-tokens'
+import {
   disabledSwatchColor,
   height,
-  HeightProps,
   reset,
   shouldForwardProp,
   width,
-  WidthProps,
 } from '@looker/design-tokens'
 import {
   inputCSS,

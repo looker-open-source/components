@@ -23,7 +23,8 @@
  SOFTWARE.
 
  */
-import React, { useContext, forwardRef, Ref } from 'react'
+import type { Ref } from 'react'
+import React, { useContext, forwardRef } from 'react'
 import styled from 'styled-components'
 import { ExpandLess } from '@styled-icons/material-rounded/ExpandLess'
 import { ExpandMore } from '@styled-icons/material-rounded/ExpandMore'
@@ -34,7 +35,7 @@ import { Tooltip } from '../../Tooltip'
 import { Truncate } from '../../Truncate'
 import { useClickable } from '../../utils'
 import { columnSize, sizeInfersTruncate } from '../Column/columnSize'
-import { DataTableColumn } from '../Column'
+import type { DataTableColumn } from '../Column'
 import { FocusableCell } from '../Column/FocusableCell'
 
 export interface DataTableHeaderCellProps extends Omit<DataTableColumn, 'id'> {

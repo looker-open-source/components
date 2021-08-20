@@ -24,9 +24,11 @@
 
  */
 
-import Highlight, { defaultProps, Language } from 'prism-react-renderer'
+import type { Language } from 'prism-react-renderer';
+import Highlight, { defaultProps } from 'prism-react-renderer'
 import styled from 'styled-components'
-import React, { FC } from 'react'
+import type { FC } from 'react';
+import React from 'react'
 import { prismTheme } from './prismTheme'
 
 interface CodeStaticProps {

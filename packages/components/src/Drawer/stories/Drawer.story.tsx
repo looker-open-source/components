@@ -25,12 +25,13 @@
  */
 
 import React from 'react'
-import { Story } from '@storybook/react/types-6-0'
-import { Page } from 'puppeteer'
+import type { Story } from '@storybook/react/types-6-0'
+import type { Page } from 'puppeteer'
 import { defaultArgTypes } from '../../../../../storybook/src/defaultArgTypes'
 import { DialogLongContent } from '../../__mocks__/DialogLongContent'
 import { dialogSizes } from '../../Dialog/dialogWidth'
-import { Drawer, DrawerProps } from '../Drawer'
+import type { DrawerProps } from '../Drawer'
+import { Drawer } from '../Drawer'
 import { ButtonOutline } from '../../Button'
 
 export * from './useDrawer.story'

@@ -24,11 +24,12 @@
 
  */
 
-import { DensityProp } from '@looker/design-tokens'
-import React, { Ref, useCallback, useEffect, useReducer } from 'react'
+import type { DensityProp } from '@looker/design-tokens'
+import type { Ref } from 'react'
+import React, { useCallback, useEffect, useReducer } from 'react'
 import { listItemDimensions } from '../../ListItem'
 import { useWindow } from '../../utils'
-import { WindowedTreeNodeProps, WindowedTreeNodeIDProps } from '../types'
+import type { WindowedTreeNodeProps, WindowedTreeNodeIDProps } from '../types'
 import { WindowedTreeNode } from '../WindowedTreeNode'
 import { windowedTreeReducer } from './windowedTreeReducer'
 import { getWindowedTreeNodeFilterer } from './getWindowedTreeNodeFilterer'

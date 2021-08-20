@@ -29,7 +29,8 @@ import some from 'lodash/some'
 import isFunction from 'lodash/isFunction'
 import styled from 'styled-components'
 import { reset, space } from '@looker/design-tokens'
-import React, { forwardRef, Ref } from 'react'
+import type { Ref } from 'react'
+import React, { forwardRef } from 'react'
 import { Icon } from '../Icon'
 import {
   rippleHandlerKeys,
@@ -44,7 +45,7 @@ import { ButtonOuter } from './ButtonBase'
 import { iconButtonColor, ICON_BUTTON_DEFAULT_COLOR } from './iconButtonColor'
 import { iconButtonOutline } from './iconButtonOutline'
 import { iconButtonIconSizeMap, buttonSizeMap } from './size'
-import { IconButtonProps } from './iconButtonTypes'
+import type { IconButtonProps } from './iconButtonTypes'
 
 /**
  * Appears as just an `Icon` but with proper HTML semantics to produce a `button`

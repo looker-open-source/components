@@ -46,7 +46,7 @@ import {
   white,
 } from '../legacy/palette'
 import { defaultSpecifiableColors } from './defaultSpecifiableColors'
-import { BlendColors, StatefulColors } from './types'
+import type { BlendColors, StatefulColors } from './types'
 import { generateInteractive, generatePressed } from './utils'
 import { generateExtendedStatefulColors } from './utils/generateStatefulColors'
 

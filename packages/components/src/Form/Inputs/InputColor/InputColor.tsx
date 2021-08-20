@@ -24,18 +24,13 @@
 
  */
 
-import React, {
-  useState,
-  ChangeEvent,
-  FormEvent,
-  forwardRef,
-  Ref,
-  useEffect,
-} from 'react'
+import type { ChangeEvent, FormEvent, Ref } from 'react'
+import React, { useState, forwardRef, useEffect } from 'react'
 import styled from 'styled-components'
 import { useID, useWrapEvent } from '../../../utils'
 import { usePopover, PopoverContent } from '../../../Popover'
-import { InputText, InputTextProps } from '../InputText'
+import type { InputTextProps } from '../InputText'
+import { InputText } from '../InputText'
 import { useFormContext } from '../../Form'
 import { Swatch } from './Swatch'
 import {
@@ -44,7 +39,7 @@ import {
   simpleHsvToHex,
   stringToSimpleHsv,
 } from './utils'
-import { SimpleHSV } from './types'
+import type { SimpleHSV } from './types'
 import { ColorPicker } from './ColorPicker'
 import { DEFAULT_INPUT_COLOR_WIDTH } from './dimensions'
 

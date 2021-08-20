@@ -24,7 +24,8 @@
 
  */
 
-import { Reducer, useCallback, useReducer } from 'react'
+import type { Reducer } from 'react'
+import { useCallback, useReducer } from 'react'
 
 export interface RippleActionBG {
   type: 'START' | 'END'

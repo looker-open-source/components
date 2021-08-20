@@ -24,14 +24,14 @@
 
  */
 
-import { Page } from 'puppeteer'
+import type { Page } from 'puppeteer'
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
 import { Add } from '@styled-icons/material/Add'
-import { Story } from '@storybook/react/types-6-0'
+import type { Story } from '@storybook/react/types-6-0'
 import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
 import { IconButton } from './IconButton'
-import { IconButtonProps } from './iconButtonTypes'
+import type { IconButtonProps } from './iconButtonTypes'
 
 export default {
   argTypes,

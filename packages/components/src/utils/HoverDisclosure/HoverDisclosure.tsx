@@ -24,7 +24,8 @@
 
  */
 
-import React, { CSSProperties, FC, useContext } from 'react'
+import type { CSSProperties, FC } from 'react'
+import React, { useContext } from 'react'
 import { HoverDisclosureContext } from './HoverDisclosureContext'
 
 export interface HoverDisclosureProps {

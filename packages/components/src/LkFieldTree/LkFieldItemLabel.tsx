@@ -25,10 +25,8 @@
  */
 
 import styled from 'styled-components'
-import {
-  listItemBackgroundColor,
-  ListItemBackgroundColorProps,
-} from '../ListItem/utils'
+import type { ListItemBackgroundColorProps } from '../ListItem/utils'
+import { listItemBackgroundColor } from '../ListItem/utils'
 
 export const LkFieldItemLabel = styled.div<ListItemBackgroundColorProps>`
   ${listItemBackgroundColor}

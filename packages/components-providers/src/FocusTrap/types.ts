@@ -24,7 +24,7 @@
 
  */
 
-import { MutableRefObject } from 'react'
+import type { MutableRefObject } from 'react'
 
 export interface FocusTrapOptions {
   /**

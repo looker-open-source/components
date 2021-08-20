@@ -26,7 +26,8 @@
 
 import styled from 'styled-components'
 import { space } from '@looker/design-tokens'
-import { DividerBase, DividerProps } from './Divider'
+import type { DividerProps } from './Divider'
+import { DividerBase } from './Divider'
 
 export interface DividerVerticalProps extends DividerProps {
   height?: number | string

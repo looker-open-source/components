@@ -24,31 +24,25 @@
 
  */
 
-import { WidthProps } from '@looker/design-tokens'
-import { Placement } from '@popperjs/core'
-import React, {
-  AriaAttributes,
-  useEffect,
-  useMemo,
-  ReactNode,
-  Ref,
-  SyntheticEvent,
-  useState,
-} from 'react'
+import type { WidthProps } from '@looker/design-tokens'
+import type { Placement } from '@popperjs/core'
+import type { AriaAttributes, ReactNode, Ref, SyntheticEvent } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { Flex } from '../Layout'
 import { Portal } from '../Portal'
 import { DialogContext } from '../Dialog'
 import { OverlaySurface } from '../Overlay/OverlaySurface'
+import type { UsePopperProps } from '../utils'
 import {
   useCallbackRef,
   useFocusTrap,
   usePopper,
-  UsePopperProps,
   useScrollLock,
   useForkedRef,
   useID,
 } from '../utils'
-import { usePopoverToggle, UsePopoverToggleProps } from './usePopoverToggle'
+import type { UsePopoverToggleProps } from './usePopoverToggle'
+import { usePopoverToggle } from './usePopoverToggle'
 import { useVerticalSpace } from './useVerticalSpace'
 
 type AriaHaspopupProps = Pick<AriaAttributes, 'aria-haspopup'>

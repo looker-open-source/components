@@ -26,7 +26,8 @@
 
 import styled, { css } from 'styled-components'
 import { shouldForwardProp } from '@looker/design-tokens'
-import { FocusVisibleProps, focusVisibleCSSWrapper } from '../../utils'
+import type { FocusVisibleProps } from '../../utils'
+import { focusVisibleCSSWrapper } from '../../utils'
 
 const focusVisibleStyle = () => css`
   outline: 1px solid ${({ theme }) => theme.colors.key};

@@ -29,10 +29,12 @@ import map from 'lodash/map'
 import startCase from 'lodash/startCase'
 import { useLocation } from '@reach/router'
 import styled from 'styled-components'
-import React, { FC } from 'react'
+import type { FC } from 'react';
+import React from 'react'
+import type {
+  AsideProps} from '@looker/components';
 import {
   Aside,
-  AsideProps,
   Heading,
   Tab,
   TabList,
@@ -42,7 +44,7 @@ import {
 } from '@looker/components'
 import { Section } from './Section'
 import { useSitemap } from './useSitemap'
-import { NavigationPage } from './types'
+import type { NavigationPage } from './types'
 
 interface NavigationProps extends AsideProps {
   className?: string

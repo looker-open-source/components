@@ -29,7 +29,7 @@ import { useClickable, useToggle, useWrapEvent } from '../utils'
 import { Accordion2Content } from './Accordion2Content'
 import { accordionDefaults, accordionLeftDefaults } from './accordionDefaults'
 import { AccordionIndicator } from './AccordionIndicator'
-import { Accordion2Props } from './types'
+import type { Accordion2Props } from './types'
 import { useAriaLabelObjectRelationship } from './useAriaLabelObjectRelationship'
 
 /**

@@ -24,7 +24,7 @@
 
  */
 
-import { TransitionRamp } from '../system'
+import type { TransitionRamp } from '../system'
 
 const none = 0
 const rapid = 100

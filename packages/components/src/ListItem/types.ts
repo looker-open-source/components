@@ -24,18 +24,18 @@
 
  */
 
-import {
+import type {
   CompatibleHTMLProps,
   DensityRamp,
   FontSizes,
   LineHeights,
   SpacingSizes,
 } from '@looker/design-tokens'
-import { ReactNode } from 'react'
-import { IconSize, IconType } from '../Icon'
-import { ListColor } from '../List'
-import { TruncateConfigProp } from '../Truncate'
-import { HoverDisclosureProps } from '../utils/HoverDisclosure'
+import type { ReactNode } from 'react'
+import type { IconSize, IconType } from '../Icon'
+import type { ListColor } from '../List'
+import type { TruncateConfigProp } from '../Truncate'
+import type { HoverDisclosureProps } from '../utils/HoverDisclosure'
 
 export interface ListItemDimensions {
   descriptionFontSize: FontSizes

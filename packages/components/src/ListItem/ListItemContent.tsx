@@ -24,15 +24,20 @@
 
  */
 
-import { CompatibleHTMLProps, DensityRamp } from '@looker/design-tokens'
-import React, { FC } from 'react'
-import styled, {
-  css,
+import type { CompatibleHTMLProps, DensityRamp } from '@looker/design-tokens'
+import type { FC } from 'react'
+import React from 'react'
+import type {
   FlattenSimpleInterpolation,
   Interpolation,
 } from 'styled-components'
-import { FocusVisibleProps } from '../utils'
-import { ListItemColorProp, ListItemRole, ListItemStatefulProps } from './types'
+import styled, { css } from 'styled-components'
+import type { FocusVisibleProps } from '../utils'
+import type {
+  ListItemColorProp,
+  ListItemRole,
+  ListItemStatefulProps,
+} from './types'
 import { listItemBackgroundColor, listItemPaddingX } from './utils'
 
 const Button = styled.button`

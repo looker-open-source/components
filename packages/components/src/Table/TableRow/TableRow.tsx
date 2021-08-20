@@ -24,13 +24,15 @@
 
  */
 
+import type {
+  CompatibleHTMLProps,
+  BorderProps,
+  TypographyProps,
+} from '@looker/design-tokens'
 import {
   reset,
-  CompatibleHTMLProps,
   border,
-  BorderProps,
   typography,
-  TypographyProps,
   shouldForwardProp,
 } from '@looker/design-tokens'
 import styled from 'styled-components'

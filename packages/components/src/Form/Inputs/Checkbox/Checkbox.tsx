@@ -25,12 +25,15 @@
  */
 
 import noop from 'lodash/noop'
-import React, { forwardRef, Ref, useState, FormEvent, useEffect } from 'react'
+import type { Ref, FormEvent } from 'react'
+import React, { forwardRef, useState, useEffect } from 'react'
 import styled from 'styled-components'
-import { reset, space, SpaceProps } from '@looker/design-tokens'
+import type { SpaceProps } from '@looker/design-tokens'
+import { reset, space } from '@looker/design-tokens'
 import isUndefined from 'lodash/isUndefined'
-import { InputProps, pickInputProps } from '../InputProps'
-import { ValidationType } from '../../ValidationMessage'
+import type { InputProps } from '../InputProps'
+import { pickInputProps } from '../InputProps'
+import type { ValidationType } from '../../ValidationMessage'
 import { inputTextValidation } from '../InputText'
 
 import { CheckMark } from './CheckMark'

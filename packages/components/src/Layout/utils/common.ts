@@ -24,15 +24,13 @@
 
  */
 
-import {
-  color,
-  ColorProps,
-  typography,
-  TypographyProps,
-} from '@looker/design-tokens'
+import type { ColorProps, TypographyProps } from '@looker/design-tokens'
+import { color, typography } from '@looker/design-tokens'
 import { css } from 'styled-components'
-import { borderHelper, SemanticBorderProps } from './semanticBorderHelper'
-import { simpleLayoutCSS, SimpleLayoutProps } from './simple'
+import type { SemanticBorderProps } from './semanticBorderHelper'
+import { borderHelper } from './semanticBorderHelper'
+import type { SimpleLayoutProps } from './simple'
+import { simpleLayoutCSS } from './simple'
 
 export type CommonLayoutProps = SimpleLayoutProps &
   SemanticBorderProps &

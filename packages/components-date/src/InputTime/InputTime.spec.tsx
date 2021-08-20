@@ -27,7 +27,8 @@
 import React from 'react'
 import { fireEvent, screen } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { InputTime, InputTimeProps } from './InputTime'
+import type { InputTimeProps } from './InputTime'
+import { InputTime } from './InputTime'
 
 const globalConsole = global.console
 

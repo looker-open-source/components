@@ -36,13 +36,12 @@ import {
   Box,
   ExtendComponentsThemeProvider,
 } from '@looker/components'
-import {
-  pickSpecifiableColors,
-  ThemeCustomizations,
-} from '@looker/design-tokens'
-import React, { FC, useContext, useState } from 'react'
+import type { ThemeCustomizations } from '@looker/design-tokens'
+import { pickSpecifiableColors } from '@looker/design-tokens'
+import type { FC } from 'react'
+import React, { useContext, useState } from 'react'
 import { ThemeContext } from 'styled-components'
-import { ThemeEditableProps } from './types'
+import type { ThemeEditableProps } from './types'
 import { FauxDashboard } from './Examples/Dashboard'
 import { ThemeEditorForm } from './ThemeEditorForm'
 

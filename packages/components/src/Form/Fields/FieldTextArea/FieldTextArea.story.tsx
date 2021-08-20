@@ -24,10 +24,11 @@
 
  */
 
-import { Story } from '@storybook/react/types-6-0'
+import type { Story } from '@storybook/react/types-6-0'
 import React from 'react'
 import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
-import { FieldTextArea, FieldTextAreaProps } from './FieldTextArea'
+import type { FieldTextAreaProps } from './FieldTextArea'
+import { FieldTextArea } from './FieldTextArea'
 
 export default {
   argTypes,

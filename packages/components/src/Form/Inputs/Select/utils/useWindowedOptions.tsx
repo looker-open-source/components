@@ -28,7 +28,7 @@ import findIndex from 'lodash/findIndex'
 import React, { useContext, useEffect, useMemo, useRef } from 'react'
 import { getWindowedListBoundaries } from '../../../../utils/getWindowedListBoundaries'
 import { ComboboxContext, ComboboxMultiContext } from '../../Combobox'
-import { FlatOption, SelectOptionObject } from '../types'
+import type { FlatOption, SelectOptionObject } from '../types'
 
 export const optionHeight = 28
 

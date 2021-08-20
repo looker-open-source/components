@@ -24,12 +24,15 @@
 
  */
 
-import React, { forwardRef, Ref } from 'react'
+import type { Ref } from 'react'
+import React, { forwardRef } from 'react'
 import styled from 'styled-components'
 import { useID } from '../../../utils'
 import { useFormContext } from '../../Form'
-import { InputColor, InputColorProps } from '../../Inputs/InputColor/InputColor'
-import { Field, FieldProps, omitFieldProps, pickFieldProps } from '../Field'
+import type { InputColorProps } from '../../Inputs/InputColor/InputColor'
+import { InputColor } from '../../Inputs/InputColor/InputColor'
+import type { FieldProps } from '../Field'
+import { Field, omitFieldProps, pickFieldProps } from '../Field'
 
 export interface FieldColorProps extends FieldProps, InputColorProps {}
 

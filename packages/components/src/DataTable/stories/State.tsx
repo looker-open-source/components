@@ -25,14 +25,14 @@
  */
 
 import { Science } from '@styled-icons/material-outlined/Science'
-import { Story } from '@storybook/react/types-6-0'
+import type { Story } from '@storybook/react/types-6-0'
 import React from 'react'
 import { Icon } from '../../Icon'
 import { SpaceVertical } from '../../Layout'
 import { Heading } from '../../Text'
 import { DataTable } from '../DataTable'
 import { columns } from '../../__mocks__/DataTable/columns'
-import { DataTableProps } from '../types'
+import type { DataTableProps } from '../types'
 
 const Template: Story<DataTableProps> = ({ ...args }) => (
   <DataTable {...args}>

@@ -27,7 +27,7 @@
 import styled, { css } from 'styled-components'
 import React, { useContext } from 'react'
 import { useAccordion2 } from '../Accordion2'
-import { ControlledOrUncontrolled } from '../Accordion2/controlTypes'
+import type { ControlledOrUncontrolled } from '../Accordion2/controlTypes'
 import { Flex } from '../Layout'
 import {
   createSafeRel,
@@ -36,18 +36,19 @@ import {
   undefinedCoalesce,
 } from '../utils'
 import { List } from '../List'
-import { ListItemContext, ListItemProps } from '../ListItem'
+import type { ListItemProps } from '../ListItem'
+import { ListItemContext } from '../ListItem'
 import { createListItemPartitions } from '../ListItem/utils'
 import { TreeContext } from './TreeContext'
+import type { TreeBorderProps } from './utils'
 import {
   generateTreeBorder,
-  TreeBorderProps,
   indicatorDefaults,
   partitionTreeProps,
   useTreeHandlers,
 } from './utils'
 import { WindowedTreeContext } from './WindowedTreeNode'
-import { TreeProps } from './types'
+import type { TreeProps } from './types'
 import { TreeItem } from './TreeItem'
 import { TreeItemContent } from './TreeItemContent'
 import { TreeItemLabel } from './TreeItemLabel'

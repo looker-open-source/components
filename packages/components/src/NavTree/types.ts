@@ -24,10 +24,10 @@
 
  */
 
-import { ListItemProps } from '../ListItem'
-import { GenericClickProps } from '../utils/useClickable'
-import { TreeProps } from '../Tree'
-import { ControlledLoosely } from '../Accordion2/controlTypes'
+import type { ListItemProps } from '../ListItem'
+import type { GenericClickProps } from '../utils/useClickable'
+import type { TreeProps } from '../Tree'
+import type { ControlledLoosely } from '../Accordion2/controlTypes'
 
 export type NavTreeItemProps = {
   /**

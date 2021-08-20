@@ -24,18 +24,19 @@
 
  */
 
-import React, { createContext, forwardRef, ReactNode, Ref } from 'react'
+import type { ReactNode, Ref } from 'react'
+import React, { createContext, forwardRef } from 'react'
 import styled from 'styled-components'
-import {
-  CompatibleHTMLProps,
-  SpacingSizes,
-  omitStyledProps,
-} from '@looker/design-tokens'
+import type { CompatibleHTMLProps, SpacingSizes } from '@looker/design-tokens'
+import { omitStyledProps } from '@looker/design-tokens'
 import { Space, SpaceVertical } from '../../Layout'
-import { SimpleLayoutProps, simpleLayoutCSS } from '../../Layout/utils/simple'
-import { Legend, LegendProps } from '../Legend'
-import { Accordion2, Accordion2Props } from '../../Accordion2'
-import { ControlledLoosely } from '../../Accordion2/controlTypes'
+import type { SimpleLayoutProps } from '../../Layout/utils/simple'
+import { simpleLayoutCSS } from '../../Layout/utils/simple'
+import type { LegendProps } from '../Legend'
+import { Legend } from '../Legend'
+import type { Accordion2Props } from '../../Accordion2'
+import { Accordion2 } from '../../Accordion2'
+import type { ControlledLoosely } from '../../Accordion2/controlTypes'
 import { accordionDimensions } from '../../Accordion2/accordionDimensions'
 
 export type FieldsetProps = Omit<CompatibleHTMLProps<HTMLDivElement>, 'wrap'> &

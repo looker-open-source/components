@@ -24,18 +24,20 @@
 
  */
 
-import {
+import type {
   CompatibleHTMLProps,
-  reset,
-  space,
   SpaceProps,
-  shouldForwardProp,
-  textColor,
   TextColorProps,
-  typography,
   TypographyProps,
   PositionProps,
   LayoutProps,
+} from '@looker/design-tokens'
+import {
+  reset,
+  space,
+  shouldForwardProp,
+  textColor,
+  typography,
   position,
   layout,
   variant,

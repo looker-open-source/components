@@ -24,10 +24,12 @@
 
  */
 
-import React, { FC } from 'react'
+import type { FC } from 'react'
+import React from 'react'
 import repeat from 'lodash/repeat'
 import trim from 'lodash/trim'
-import { LocaleCodes, Locales, formatDateString } from '../utils/i18n'
+import type { LocaleCodes } from '../utils/i18n'
+import { Locales, formatDateString } from '../utils/i18n'
 
 type DateFormats = 'short' | 'medium' | 'long' | 'full'
 

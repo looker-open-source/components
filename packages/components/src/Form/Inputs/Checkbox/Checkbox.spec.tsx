@@ -27,7 +27,8 @@
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { fireEvent, screen } from '@testing-library/react'
-import { Checkbox, CheckboxProps } from './Checkbox'
+import type { CheckboxProps } from './Checkbox'
+import { Checkbox } from './Checkbox'
 
 afterEach(() => {
   jest.resetAllMocks()

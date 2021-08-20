@@ -25,11 +25,10 @@
  */
 
 import { ComponentsProvider, SpaceVertical, Heading } from '@looker/components'
-import {
-  ThemeCustomizations,
-  pickSpecifiableColors,
-} from '@looker/design-tokens'
-import React, { FC, useState, useContext } from 'react'
+import type { ThemeCustomizations } from '@looker/design-tokens'
+import { pickSpecifiableColors } from '@looker/design-tokens'
+import type { FC } from 'react'
+import React, { useState, useContext } from 'react'
 import { ThemeContext } from 'styled-components'
 import { ThemeEditorForm } from '../ThemeEditorForm'
 import { Examples } from './Examples'

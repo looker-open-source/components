@@ -24,11 +24,11 @@
 
  */
 
-import { ReactNode } from 'react'
-import { DensityProp } from '@looker/design-tokens'
-import { IconType } from '../Icon'
-import { GenericClickProps } from '../utils'
-import { ControlledOrUncontrolled } from './controlTypes'
+import type { ReactNode } from 'react'
+import type { DensityProp } from '@looker/design-tokens'
+import type { IconType } from '../Icon'
+import type { GenericClickProps } from '../utils'
+import type { ControlledOrUncontrolled } from './controlTypes'
 
 export type AccordionIndicatorIcons = {
   close: IconType

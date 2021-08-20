@@ -24,15 +24,17 @@
 
  */
 
-import { DensityRamp } from '@looker/design-tokens'
-import { Story } from '@storybook/react/types-6-0'
+import type { DensityRamp } from '@looker/design-tokens'
+import type { Story } from '@storybook/react/types-6-0'
 import { Create } from '@styled-icons/material-outlined/Create'
 import { DateRange } from '@styled-icons/material-outlined/DateRange'
 import { Undo } from '@styled-icons/material-outlined/Undo'
-import React, { FC, Fragment } from 'react'
+import type { FC } from 'react'
+import React, { Fragment } from 'react'
 import { Box, Grid, Space } from '../Layout'
 import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
-import { MenuHeading, MenuList, MenuItem, MenuItemProps, MenuDivider } from '.'
+import type { MenuItemProps } from '.'
+import { MenuHeading, MenuList, MenuItem, MenuDivider } from '.'
 
 const groups: { label?: string; items: MenuItemProps[] }[] = [
   {

@@ -24,11 +24,13 @@
 
  */
 
-import React, { FC } from 'react'
+import type { FC } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { IndeterminateProgress } from './IndeterminateProgress'
 import { DeterminateProgress } from './DeterminateProgress'
-import { progressCircularSize, ProgressCircularSizes } from './size'
+import type { ProgressCircularSizes } from './size'
+import { progressCircularSize } from './size'
 
 export interface ProgressCircularProps {
   /**

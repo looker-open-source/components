@@ -24,10 +24,12 @@
 
  */
 
-import React, { forwardRef, Ref } from 'react'
-import { CompatibleHTMLProps } from '@looker/design-tokens'
+import type { Ref } from 'react'
+import React, { forwardRef } from 'react'
+import type { CompatibleHTMLProps } from '@looker/design-tokens'
 import styled, { css } from 'styled-components'
-import { commonLayoutCSS, CommonLayoutProps } from '../../utils/common'
+import type { CommonLayoutProps } from '../../utils/common'
+import { commonLayoutCSS } from '../../utils/common'
 import { OverflowShadow, useOverflow } from '../../../utils'
 import { Section } from '../Section'
 

@@ -26,8 +26,8 @@
 
 import pickBy from 'lodash/pickBy'
 import identity from 'lodash/identity'
-import { FontFamilyChoices } from '../../system'
-import { FontFamilyFallbacks } from '../../system/typography/font_families'
+import type { FontFamilyChoices } from '../../system'
+import type { FontFamilyFallbacks } from '../../system/typography/font_families'
 import { fontFacesToFamily } from './fontFacesToFamily'
 
 export const generateFontFamilies = (

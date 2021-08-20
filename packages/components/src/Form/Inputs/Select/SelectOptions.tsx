@@ -25,31 +25,26 @@
  */
 
 import { useTranslation } from 'react-i18next'
-import React, {
-  createContext,
-  FC,
-  ReactNode,
-  useContext,
-  useEffect,
-  useMemo,
-} from 'react'
+import type { FC, ReactNode } from 'react'
+import React, { createContext, useContext, useEffect, useMemo } from 'react'
 import styled from 'styled-components'
 import { Icon, IconPlaceholder } from '../../../Icon'
 import { Spinner } from '../../../Spinner'
 import { ListDivider } from '../../../List/ListDivider'
 import { ListItemPreface } from '../../../ListItem/ListItemPreface'
-import { Heading, HeadingProps, Paragraph, Text } from '../../../Text'
+import type { HeadingProps } from '../../../Text'
+import { Heading, Paragraph, Text } from '../../../Text'
 import { useID } from '../../../utils'
+import type { ComboboxOptionIndicatorProps } from '../Combobox'
 import {
   ComboboxContext,
   ComboboxMultiContext,
   ComboboxMultiOption,
   ComboboxOption,
   ComboboxOptionIndicator,
-  ComboboxOptionIndicatorProps,
   ComboboxOptionText,
 } from '../Combobox'
-import { FlatOption, SelectOptionObject } from './types'
+import type { FlatOption, SelectOptionObject } from './types'
 import { optionsHaveIcons, notInOptions } from './utils/options'
 import { useWindowedOptions } from './utils/useWindowedOptions'
 import { SelectOptionDetail } from './SelectOptionDetail'

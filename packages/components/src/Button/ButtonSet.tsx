@@ -24,22 +24,21 @@
 
  */
 
-import React, {
-  forwardRef,
+import type {
   ForwardRefExoticComponent,
   MouseEvent,
   ReactNode,
   Ref,
-  useCallback,
-  useRef,
-  useState,
 } from 'react'
+import React, { forwardRef, useCallback, useRef, useState } from 'react'
 import styled from 'styled-components'
-import { CompatibleHTMLProps } from '@looker/design-tokens'
+import type { CompatibleHTMLProps } from '@looker/design-tokens'
 import { inputHeightNumber } from '../Form/Inputs/height'
-import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout/utils/simple'
+import type { SimpleLayoutProps } from '../Layout/utils/simple'
+import { simpleLayoutCSS } from '../Layout/utils/simple'
 import { useForkedRef } from '../utils'
-import { ButtonSetCallback, ButtonSetContext } from './ButtonSetContext'
+import type { ButtonSetCallback } from './ButtonSetContext'
+import { ButtonSetContext } from './ButtonSetContext'
 import { ButtonItem } from './ButtonItem'
 
 export interface ButtonSetOption {

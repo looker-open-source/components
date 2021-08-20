@@ -24,8 +24,9 @@
 
  */
 
-import { ComboboxOptionObject, getComboboxText } from '../../Combobox'
-import {
+import type { ComboboxOptionObject } from '../../Combobox'
+import { getComboboxText } from '../../Combobox'
+import type {
   SelectOptionGroupProps,
   SelectOptionObject,
   SelectOptionProps,

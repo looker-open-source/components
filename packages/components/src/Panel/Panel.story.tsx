@@ -25,7 +25,7 @@
  */
 
 import React from 'react'
-import { Story } from '@storybook/react/types-6-0'
+import type { Story } from '@storybook/react/types-6-0'
 import { Done } from '@styled-icons/material/Done'
 import { Button } from '../Button'
 import { Drawer } from '../Drawer'
@@ -35,7 +35,8 @@ import { Aside, Layout, Page, Section, SpaceVertical } from '../Layout'
 import { Paragraph } from '../Text'
 import { TreeCollection, Tree, TreeItem } from '../Tree'
 import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
-import { Panel, Panels, PanelProps, usePanel } from './'
+import type { PanelProps } from './'
+import { Panel, Panels, usePanel } from './'
 
 export default {
   argTypes,

@@ -24,9 +24,11 @@
 
  */
 
-import React, { FC } from 'react'
+import type { FC } from 'react'
+import React from 'react'
 import styled, { css, keyframes } from 'styled-components'
-import { progressCircularSVG, ProgressCircularSizes } from './size'
+import type { ProgressCircularSizes } from './size'
+import { progressCircularSVG } from './size'
 import { progressCircularConstants } from './constants'
 import { CircleContainer } from './ProgressSvg'
 

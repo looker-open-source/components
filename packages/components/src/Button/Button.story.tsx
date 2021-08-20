@@ -26,12 +26,12 @@
 
 import { AddCircle } from '@styled-icons/material/AddCircle'
 import { Delete } from '@styled-icons/material/Delete'
-import { Page } from 'puppeteer'
+import type { Page } from 'puppeteer'
 import React from 'react'
-import { Story } from '@storybook/react/types-6-0'
+import type { Story } from '@storybook/react/types-6-0'
 import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
 import { Button } from './Button'
-import { ButtonProps } from './types'
+import type { ButtonProps } from './types'
 
 const Template: Story<ButtonProps> = (args) => <Button {...args} />
 

@@ -25,9 +25,9 @@
  */
 
 import { generateColors } from '../../color'
-import { Theme } from '../theme'
+import type { Theme } from '../theme'
 import { defaultFontFallbacks } from '../../tokens'
-import { ThemeCustomizations } from '../ThemeCustomizations'
+import type { ThemeCustomizations } from '../ThemeCustomizations'
 import { generateFontFamilies } from '../../utils/typography'
 
 export const generateTheme = (

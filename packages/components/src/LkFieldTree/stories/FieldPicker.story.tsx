@@ -26,7 +26,8 @@
 
 import React from 'react'
 import styled from 'styled-components'
-import { Aside, Box, Paragraph, ParagraphProps } from '../..'
+import type { ParagraphProps } from '../..'
+import { Aside, Box, Paragraph } from '../..'
 import { TreeBranch, TreeCollection } from '../../Tree'
 import { generateBorderRadius } from '../../Tree/utils/generateBorderRadius'
 import { LkFieldTree } from '..'

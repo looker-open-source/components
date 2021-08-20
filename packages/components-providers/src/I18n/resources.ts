@@ -24,7 +24,7 @@
 
  */
 
-import { Resource } from 'i18next'
+import type { Resource } from 'i18next'
 
 export const i18nResources: Resource = {
   en: {

@@ -24,13 +24,8 @@
 
  */
 import { useTranslation } from 'react-i18next'
-import React, {
-  useRef,
-  useState,
-  FC,
-  cloneElement,
-  isValidElement,
-} from 'react'
+import type { FC } from 'react'
+import React, { useRef, useState, cloneElement, isValidElement } from 'react'
 import { Assignment } from '@styled-icons/material/Assignment'
 import { Done } from '@styled-icons/material/Done'
 import { ButtonOutline } from '../Button/ButtonOutline'

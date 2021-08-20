@@ -25,13 +25,16 @@
  */
 
 import styled from 'styled-components'
-import React, { FC, ReactElement } from 'react'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
 import { densityTarget } from '@looker/design-tokens'
 import { DividerVertical } from '../../Divider'
-import { InputFilters, InputFiltersProps } from '../../Form/Inputs/InputFilters'
-import { DataTableColumns } from '../Column'
+import type { InputFiltersProps } from '../../Form/Inputs/InputFilters'
+import { InputFilters } from '../../Form/Inputs/InputFilters'
+import type { DataTableColumns } from '../Column'
 import { ItemTarget } from '../Item/ItemTarget'
-import { ColumnSelector, ColumnSelectorProps } from './ColumnSelector'
+import type { ColumnSelectorProps } from './ColumnSelector'
+import { ColumnSelector } from './ColumnSelector'
 
 export interface DataTableFiltersProps extends ColumnSelectorProps {
   className?: string

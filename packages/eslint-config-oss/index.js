@@ -68,6 +68,7 @@ module.exports = {
     'testing-library',
   ],
   rules: {
+    '@typescript-eslint/consistent-type-imports': 'error',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-redeclare': ['error'],

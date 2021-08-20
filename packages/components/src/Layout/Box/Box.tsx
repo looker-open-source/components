@@ -25,17 +25,20 @@
  */
 
 import styled from 'styled-components'
-import {
+import type {
   CompatibleHTMLProps,
-  cursor,
   CursorProps,
-  flexbox,
   FlexboxProps,
-  shouldForwardProp,
-  userSelect,
   UserSelectProps,
 } from '@looker/design-tokens'
-import { complexLayoutCSS, ComplexLayoutProps } from '../utils/complex'
+import {
+  cursor,
+  flexbox,
+  shouldForwardProp,
+  userSelect,
+} from '@looker/design-tokens'
+import type { ComplexLayoutProps } from '../utils/complex'
+import { complexLayoutCSS } from '../utils/complex'
 
 export interface BoxProps
   extends CompatibleHTMLProps<HTMLElement>,

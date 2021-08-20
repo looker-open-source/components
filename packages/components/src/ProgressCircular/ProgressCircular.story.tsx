@@ -25,9 +25,10 @@
  */
 
 import React from 'react'
-import { Story } from '@storybook/react/types-6-0'
+import type { Story } from '@storybook/react/types-6-0'
 import { defaultArgTypes } from '../../../../storybook/src/defaultArgTypes'
-import { ProgressCircular, ProgressCircularProps } from './ProgressCircular'
+import type { ProgressCircularProps } from './ProgressCircular'
+import { ProgressCircular } from './ProgressCircular'
 
 const Template: Story<ProgressCircularProps> = (args) => (
   <ProgressCircular {...args} />

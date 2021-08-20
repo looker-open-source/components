@@ -24,19 +24,13 @@
 
  */
 
-import React, { forwardRef, MouseEvent, Ref, useContext } from 'react'
+import type { MouseEvent, Ref } from 'react'
+import React, { forwardRef, useContext } from 'react'
 import styled, { css } from 'styled-components'
-import {
-  CompatibleHTMLProps,
-  space,
-  SpaceProps,
-  omitStyledProps,
-} from '@looker/design-tokens'
-import {
-  focusVisibleCSSWrapper,
-  FocusVisibleProps,
-  useFocusVisible,
-} from '../utils'
+import type { CompatibleHTMLProps, SpaceProps } from '@looker/design-tokens'
+import { space, omitStyledProps } from '@looker/design-tokens'
+import type { FocusVisibleProps } from '../utils'
+import { focusVisibleCSSWrapper, useFocusVisible } from '../utils'
 import { inputHeight } from '../Form/Inputs/height'
 import { ButtonSetContext } from './ButtonSetContext'
 

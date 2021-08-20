@@ -26,7 +26,8 @@
 
 import { screen } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import React, { FC, useContext } from 'react'
+import type { FC } from 'react'
+import React, { useContext } from 'react'
 import styled, { ThemeContext, ThemeProvider } from 'styled-components'
 import { reset } from './reset'
 

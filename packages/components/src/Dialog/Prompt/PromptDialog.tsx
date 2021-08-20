@@ -25,16 +25,9 @@
  */
 
 import { useTranslation } from 'react-i18next'
-import React, {
-  FC,
-  FormEvent,
-  KeyboardEvent,
-  ReactNode,
-  useState,
-  useCallback,
-  useEffect,
-} from 'react'
-import { StatefulColor } from '@looker/design-tokens'
+import type { FC, FormEvent, KeyboardEvent, ReactNode } from 'react'
+import React, { useState, useCallback, useEffect } from 'react'
+import type { StatefulColor } from '@looker/design-tokens'
 import { Button, ButtonTransparent } from '../../Button'
 import { Label, InputText } from '../../Form'
 import { VisuallyHidden } from '../../VisuallyHidden'

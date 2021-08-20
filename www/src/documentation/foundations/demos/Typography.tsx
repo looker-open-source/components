@@ -34,7 +34,7 @@ import {
   TableRow,
   Text,
 } from '@looker/components'
-import { FontWeights, FontSizes } from '@looker/design-tokens'
+import type { FontWeights, FontSizes } from '@looker/design-tokens'
 import { DocTable } from '../../../components'
 
 const specimen =

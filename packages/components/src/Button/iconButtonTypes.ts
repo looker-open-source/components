@@ -24,7 +24,7 @@
 
  */
 
-import {
+import type {
   CompatibleHTMLProps,
   SpaceProps,
   SizeLarge,
@@ -33,11 +33,11 @@ import {
   SizeXSmall,
   SizeXXSmall,
 } from '@looker/design-tokens'
-import { Placement } from '@popperjs/core'
-import { Property } from 'csstype'
-import { IconProps } from '../Icon'
-import { TooltipProps } from '../Tooltip'
-import { ButtonBaseProps } from './types'
+import type { Placement } from '@popperjs/core'
+import type { Property } from 'csstype'
+import type { IconProps } from '../Icon'
+import type { TooltipProps } from '../Tooltip'
+import type { ButtonBaseProps } from './types'
 interface IconButtonVariantProps {
   /**
    * Defines the variant or mapping of colors to style properties, like border of the button.

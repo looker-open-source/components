@@ -24,24 +24,20 @@
 
  */
 
-import { CompatibleHTMLProps, Theme } from '@looker/design-tokens'
+import type { CompatibleHTMLProps, Theme } from '@looker/design-tokens'
 import pick from 'lodash/pick'
+import type { ReactNode, Ref } from 'react'
 import React, {
   Children,
   cloneElement,
   forwardRef,
   isValidElement,
-  ReactNode,
-  Ref,
   useContext,
 } from 'react'
 import styled from 'styled-components'
 import { DataTableContext } from '../DataTableContext'
-import {
-  DataTableCheckbox,
-  DataTableCheckboxProps,
-  checkListProps,
-} from './DataTableCheckbox'
+import type { DataTableCheckboxProps } from './DataTableCheckbox'
+import { DataTableCheckbox, checkListProps } from './DataTableCheckbox'
 
 export interface DataTableRowProps
   extends DataTableCheckboxProps,

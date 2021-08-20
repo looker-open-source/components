@@ -24,14 +24,15 @@
 
  */
 
-import React, { FC, useContext, ReactNode } from 'react'
+import type { FC, ReactNode } from 'react'
+import React, { useContext } from 'react'
 import styled, { ThemeContext } from 'styled-components'
-import {
+import type {
   TextColorProps,
   TypographyProps,
   PaddingProps,
-  pickStyledProps,
 } from '@looker/design-tokens'
+import { pickStyledProps } from '@looker/design-tokens'
 import { Heading } from '../Text/Heading'
 import { ListItemContext, listItemDimensions } from '../ListItem'
 import { useElementVisibility } from './MenuHeading.hooks'

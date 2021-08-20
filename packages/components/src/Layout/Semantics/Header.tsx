@@ -26,7 +26,8 @@
 
 import { shouldForwardProp } from '@looker/design-tokens'
 import styled, { css } from 'styled-components'
-import { commonLayoutCSS, CommonLayoutProps } from '../utils/common'
+import type { CommonLayoutProps } from '../utils/common'
+import { commonLayoutCSS } from '../utils/common'
 
 export type HeaderProps = CommonLayoutProps
 

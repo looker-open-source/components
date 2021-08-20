@@ -25,11 +25,12 @@
  */
 
 import React from 'react'
-import { Story } from '@storybook/react/types-6-0'
+import type { Story } from '@storybook/react/types-6-0'
 import { defaultArgTypes as argTypes } from '../../../../../storybook/src/defaultArgTypes'
 import { ConstitutionShort } from '../../__mocks__/Constitution'
 import { ButtonTransparent } from '../../Button/ButtonTransparent'
-import { PopoverLayout, PopoverLayoutProps } from './PopoverLayout'
+import type { PopoverLayoutProps } from './PopoverLayout'
+import { PopoverLayout } from './PopoverLayout'
 
 export default {
   argTypes,

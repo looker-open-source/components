@@ -27,10 +27,12 @@
 import { useTranslation } from 'react-i18next'
 import omit from 'lodash/omit'
 import styled from 'styled-components'
-import React, { FC, useMemo, useState, useRef } from 'react'
+import type { FC } from 'react'
+import React, { useMemo, useState, useRef } from 'react'
 import { Close } from '@styled-icons/material/Close'
 import { FilterList } from '@styled-icons/material/FilterList'
-import { Select, SelectOptionObject } from '../Select'
+import type { SelectOptionObject } from '../Select'
+import { Select } from '../Select'
 import { InputText } from '../InputText'
 import { Icon } from '../../../Icon'
 import { IconButton } from '../../../Button'
@@ -39,7 +41,7 @@ import { Text } from '../../../Text'
 import { Popover, PopoverContent } from '../../../Popover'
 import { InputFiltersChip } from './InputFiltersChip'
 import { inputFilterEditor } from './inputFilterEditor'
-import { InputFiltersProps } from './types'
+import type { InputFiltersProps } from './types'
 
 const InputFiltersLayout: FC<InputFiltersProps> = ({
   className,

@@ -45,15 +45,8 @@ import { Create as CreateOutline } from '@styled-icons/material-outlined/Create'
 import { CreateNewFolder } from '@styled-icons/material-outlined/CreateNewFolder'
 import { Explore as ExploreOutline } from '@styled-icons/material-outlined/Explore'
 import { Home } from '@styled-icons/material-outlined/Home'
-import React, {
-  forwardRef,
-  Fragment,
-  MouseEvent,
-  Ref,
-  useMemo,
-  useRef,
-  useState,
-} from 'react'
+import type { MouseEvent, Ref } from 'react'
+import React, { forwardRef, Fragment, useMemo, useRef, useState } from 'react'
 import { Button, IconButton } from '../Button'
 import { Card } from '../Card'
 import { Dialog, DialogLayout } from '../Dialog'

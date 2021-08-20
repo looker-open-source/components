@@ -25,7 +25,7 @@
  */
 
 import { textBlends, uiBlends } from '../blendPoints'
-import { BlendColors, SpecifiableColors } from '../types'
+import type { BlendColors, SpecifiableColors } from '../types'
 import { mixColors } from './mixColors'
 import { tintOrShadeUiColor } from './tintOrShadeUiColor'
 

@@ -24,10 +24,11 @@
 
  */
 
-import { Story } from '@storybook/react/types-6-0'
+import type { Story } from '@storybook/react/types-6-0'
 import React from 'react'
 import { defaultArgTypes as argTypes } from '../../../../../storybook/src/defaultArgTypes'
-import { Label, LabelProps } from './Label'
+import type { LabelProps } from './Label'
+import { Label } from './Label'
 
 export default {
   argTypes,

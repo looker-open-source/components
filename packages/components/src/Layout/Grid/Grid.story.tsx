@@ -24,11 +24,14 @@
 
  */
 
-import { Story } from '@storybook/react/types-6-0'
-import React, { FC } from 'react'
-import { Box, BoxProps } from '../Box'
+import type { Story } from '@storybook/react/types-6-0'
+import type { FC } from 'react'
+import React from 'react'
+import type { BoxProps } from '../Box'
+import { Box } from '../Box'
 import { defaultArgTypes as argTypes } from '../../../../../storybook/src/defaultArgTypes'
-import { Grid, GridProps } from './Grid'
+import type { GridProps } from './Grid'
+import { Grid } from './Grid'
 
 export default {
   argTypes,

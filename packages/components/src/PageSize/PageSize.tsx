@@ -25,7 +25,8 @@
  */
 
 import { useTranslation } from 'react-i18next'
-import React, { FC } from 'react'
+import type { FC } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { Select } from '../Form'
 

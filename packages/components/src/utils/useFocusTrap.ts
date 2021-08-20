@@ -25,11 +25,10 @@
  */
 
 import { useMemo, useRef } from 'react'
-import {
-  FocusTrapContext,
-  FocusTrapOptions,
-} from '@looker/components-providers'
-import { useTrapStack, UseTrapStackBaseProps } from './useTrapStack'
+import type { FocusTrapOptions } from '@looker/components-providers'
+import { FocusTrapContext } from '@looker/components-providers'
+import type { UseTrapStackBaseProps } from './useTrapStack'
+import { useTrapStack } from './useTrapStack'
 
 export const useFocusTrap = <E extends HTMLElement = HTMLElement>({
   clickOutsideDeactivates,

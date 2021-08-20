@@ -27,20 +27,22 @@
 // Much of the following is pulled from https://github.com/reach/reach-ui
 // because their work is fantastic (but is not in TypeScript)
 
-import {
+import type {
   CompatibleHTMLProps,
-  layout,
   LayoutProps,
-  reset,
-  space,
   SpaceProps,
-  shouldForwardProp,
-  typography,
   TypographyProps,
 } from '@looker/design-tokens'
+import {
+  layout,
+  reset,
+  space,
+  shouldForwardProp,
+  typography,
+} from '@looker/design-tokens'
+import type { Ref } from 'react'
 import React, {
   forwardRef,
-  Ref,
   useCallback,
   useContext,
   useLayoutEffect,
@@ -52,7 +54,7 @@ import throttle from 'lodash/throttle'
 import { usePopover } from '../../../Popover'
 import { listPadding } from '../../../List/utils'
 import { useResize } from '../../../utils'
-import { ComboboxOptionIndicatorProps } from './types'
+import type { ComboboxOptionIndicatorProps } from './types'
 import { ComboboxContext, ComboboxMultiContext } from './ComboboxContext'
 import { useBlur } from './utils/useBlur'
 import { useKeyDown } from './utils/useKeyDown'

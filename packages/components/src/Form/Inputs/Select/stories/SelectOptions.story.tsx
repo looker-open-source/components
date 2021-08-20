@@ -24,7 +24,7 @@
 
  */
 
-import { Story } from '@storybook/react/types-6-0'
+import type { Story } from '@storybook/react/types-6-0'
 import { Create } from '@styled-icons/material/Create'
 import { Favorite } from '@styled-icons/material/Favorite'
 import React from 'react'
@@ -34,8 +34,9 @@ import {
   ComboboxUl,
 } from '../../Combobox'
 import { Icon } from '../../../../Icon'
-import { SelectOptions, SelectOptionsProps } from '../SelectOptions'
-import { SelectOptionProps } from '../types'
+import type { SelectOptionsProps } from '../SelectOptions'
+import { SelectOptions } from '../SelectOptions'
+import type { SelectOptionProps } from '../types'
 import { useFlatOptions } from '../utils/useFlatOptions'
 import { defaultArgTypes as argTypes } from '../../../../../../../storybook/src/defaultArgTypes'
 import { cheeseOptions, iconOptions, optionsWithGroups } from './options'

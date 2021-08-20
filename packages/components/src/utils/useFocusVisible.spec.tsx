@@ -24,10 +24,11 @@
 
  */
 
-import { CompatibleHTMLProps } from '@looker/design-tokens'
+import type { CompatibleHTMLProps } from '@looker/design-tokens'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import React, { FC } from 'react'
+import type { FC } from 'react'
+import React from 'react'
 import { useFocusVisible } from './useFocusVisible'
 
 const FocusVisibleComponent: FC<CompatibleHTMLProps<HTMLButtonElement>> = ({

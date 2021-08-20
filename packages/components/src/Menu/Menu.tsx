@@ -24,14 +24,11 @@
 
  */
 
-import React, { cloneElement, forwardRef, Ref, ReactElement } from 'react'
-import { ListProps } from '../List'
-import {
-  Popover,
-  PopoverProps,
-  UsePopoverResponseDom,
-  popoverPropKeys,
-} from '../Popover'
+import type { Ref, ReactElement } from 'react'
+import React, { cloneElement, forwardRef } from 'react'
+import type { ListProps } from '../List'
+import type { PopoverProps, UsePopoverResponseDom } from '../Popover'
+import { Popover, popoverPropKeys } from '../Popover'
 import { useID } from '../utils'
 import { MenuList } from './MenuList'
 

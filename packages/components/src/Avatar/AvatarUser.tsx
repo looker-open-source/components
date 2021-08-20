@@ -25,10 +25,12 @@
  */
 
 import { useTranslation } from 'react-i18next'
-import React, { FC } from 'react'
+import type { FC } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { omitStyledProps, shouldForwardProp } from '@looker/design-tokens'
-import { avatarCSS, AvatarProps } from './Avatar'
+import type { AvatarProps } from './Avatar'
+import { avatarCSS } from './Avatar'
 
 /* eslint-disable camelcase */
 export interface AvatarUserProps extends AvatarProps {

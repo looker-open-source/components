@@ -24,8 +24,8 @@
 
  */
 
-import { ResponsiveValue } from 'styled-system'
-import {
+import type { ResponsiveValue } from 'styled-system'
+import type {
   SizeLarge,
   SizeMedium,
   SizeSmall,

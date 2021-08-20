@@ -24,23 +24,21 @@
 
  */
 
-import React, {
-  forwardRef,
+import type {
   KeyboardEvent,
-  useReducer,
   Reducer,
-  useEffect,
-  useRef,
   Ref,
   RefObject,
   SyntheticEvent,
 } from 'react'
+import React, { forwardRef, useReducer, useEffect, useRef } from 'react'
 import { shouldForwardProp } from '@looker/design-tokens'
 import styled from 'styled-components'
 import noop from 'lodash/noop'
 import add from 'lodash/add'
 import subtract from 'lodash/subtract'
 
+import type { SimpleLayoutProps, ValidationType } from '@looker/components'
 import {
   ErrorIcon,
   getAutoFocusProps,
@@ -51,15 +49,9 @@ import {
   inputTextDisabled,
   inputTextValidation,
   simpleLayoutCSS,
-  SimpleLayoutProps,
-  ValidationType,
 } from '@looker/components'
-import {
-  formatTimeString,
-  TimeFormats,
-  parseBase10Int,
-  isValidTime,
-} from './utils'
+import type { TimeFormats } from './utils'
+import { formatTimeString, parseBase10Int, isValidTime } from './utils'
 
 export interface InputTimeProps extends Omit<SimpleLayoutProps, 'size'> {
   'aria-describedby'?: string

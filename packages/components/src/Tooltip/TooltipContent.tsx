@@ -24,8 +24,9 @@
 
  */
 import styled from 'styled-components'
-import { Paragraph, ParagraphProps } from '../Text'
-import { TooltipProps } from './types'
+import type { ParagraphProps } from '../Text'
+import { Paragraph } from '../Text'
+import type { TooltipProps } from './types'
 
 export const TooltipContent = styled(Paragraph).attrs<TooltipProps>(
   ({ textAlign = 'center', width }) => ({

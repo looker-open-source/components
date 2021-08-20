@@ -24,9 +24,11 @@
 
  */
 
-import React, { FC } from 'react'
-import { ButtonProps, ButtonTransparent } from '@looker/components'
-import { ThemeEditableProps } from './types'
+import type { FC } from 'react'
+import React from 'react'
+import type { ButtonProps } from '@looker/components'
+import { ButtonTransparent } from '@looker/components'
+import type { ThemeEditableProps } from './types'
 
 export const thunderSalmon: ThemeEditableProps = {
   colors: {

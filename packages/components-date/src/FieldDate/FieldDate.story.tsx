@@ -23,9 +23,10 @@
  SOFTWARE.
 
  */
-import { Story } from '@storybook/react/types-6-0'
+import type { Story } from '@storybook/react/types-6-0'
 import partial from 'lodash/partial'
-import React, { useState, SyntheticEvent } from 'react'
+import type { SyntheticEvent } from 'react'
+import React, { useState } from 'react'
 import {
   Button,
   Fieldset,
@@ -39,9 +40,11 @@ import {
   PopoverContent,
 } from '@looker/components'
 import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
-import { Locales, LocaleCodes } from '../utils/i18n'
+import type { LocaleCodes } from '../utils/i18n'
+import { Locales } from '../utils/i18n'
 import { DateFormat } from '../DateFormat'
-import { FieldDate, FieldDateProps } from './FieldDate'
+import type { FieldDateProps } from './FieldDate'
+import { FieldDate } from './FieldDate'
 
 i18nInit()
 

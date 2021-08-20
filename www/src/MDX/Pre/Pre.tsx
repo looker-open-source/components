@@ -24,7 +24,7 @@
 
  */
 
-import { Language } from 'prism-react-renderer'
+import type { Language } from 'prism-react-renderer'
 import React from 'react'
 
 import { CodeSandbox } from './CodeSandbox'

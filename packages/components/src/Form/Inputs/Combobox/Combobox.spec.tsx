@@ -29,12 +29,12 @@ import { cleanup, fireEvent, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import React from 'react'
 
+import type { ComboboxOptionIndicatorFunction } from '.'
 import {
   Combobox,
   ComboboxInput,
   ComboboxList,
   ComboboxOption,
-  ComboboxOptionIndicatorFunction,
   ComboboxMulti,
   ComboboxMultiInput,
   ComboboxMultiList,

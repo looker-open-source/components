@@ -24,15 +24,8 @@
 
  */
 import { useTranslation } from 'react-i18next'
-import React, {
-  useMemo,
-  forwardRef,
-  KeyboardEvent,
-  useState,
-  useEffect,
-  Ref,
-  SyntheticEvent,
-} from 'react'
+import type { KeyboardEvent, Ref, SyntheticEvent } from 'react'
+import React, { useMemo, forwardRef, useState, useEffect } from 'react'
 import styled from 'styled-components'
 import reduce from 'lodash/reduce'
 import map from 'lodash/map'
@@ -43,27 +36,29 @@ import last from 'lodash/last'
 import head from 'lodash/head'
 import sortedIndex from 'lodash/sortedIndex'
 import throttle from 'lodash/throttle'
-import {
+import type {
   BorderProps,
   SpaceProps,
   CompatibleHTMLProps,
 } from '@looker/design-tokens'
+import type {
+  ComboboxOptionObject,
+  MaybeComboboxOptionObject,
+  ValidationType,
+} from '@looker/components'
 import {
   Combobox,
   ComboboxInput,
   ComboboxList,
   ComboboxOption,
-  ComboboxOptionObject,
-  MaybeComboboxOptionObject,
   pickAriaAndValidationProps,
-  ValidationType,
   useReadOnlyWarn,
 } from '@looker/components'
+import type { TimeFormats } from '../InputTime/utils'
 import {
   formatTimeString,
   parseBase10Int,
   isValidTime,
-  TimeFormats,
 } from '../InputTime/utils'
 
 /*

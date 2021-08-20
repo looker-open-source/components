@@ -25,10 +25,12 @@
  */
 
 import { useTranslation } from 'react-i18next'
-import React, { FC, useContext } from 'react'
+import type { FC } from 'react'
+import React, { useContext } from 'react'
 import { Close } from '@styled-icons/material/Close'
 import styled from 'styled-components'
-import { IconButton, IconButtonProps } from '../Button'
+import type { IconButtonProps } from '../Button'
+import { IconButton } from '../Button'
 import { DialogContext } from '../Dialog'
 
 export type ModalHeaderCloseButtonProps = Pick<IconButtonProps, 'size'>

@@ -25,10 +25,12 @@
  */
 
 import React from 'react'
-import { Story } from '@storybook/react/types-6-0'
+import type { Story } from '@storybook/react/types-6-0'
 import styled, { ThemeProvider } from 'styled-components'
-import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout'
-import { useRipple, useRippleHandlers, UseRippleProps, rippleStyle } from './'
+import type { SimpleLayoutProps } from '../Layout'
+import { simpleLayoutCSS } from '../Layout'
+import type { UseRippleProps } from './'
+import { useRipple, useRippleHandlers, rippleStyle } from './'
 
 type RippleProps = SimpleLayoutProps & UseRippleProps & { className?: string }
 

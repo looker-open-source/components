@@ -25,9 +25,10 @@
  */
 
 import React from 'react'
-import { Story } from '@storybook/react/types-6-0'
+import type { Story } from '@storybook/react/types-6-0'
 import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
-import { DividerVertical, DividerVerticalProps } from './DividerVertical'
+import type { DividerVerticalProps } from './DividerVertical'
+import { DividerVertical } from './DividerVertical'
 
 export default {
   argTypes,

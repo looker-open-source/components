@@ -25,7 +25,8 @@
  */
 
 import styled from 'styled-components'
-import React, { forwardRef, Ref, useContext, useRef, useState } from 'react'
+import type { Ref } from 'react'
+import React, { forwardRef, useContext, useRef, useState } from 'react'
 import {
   createSafeRel,
   getNextFocusTarget,
@@ -41,7 +42,7 @@ import { ListItemContext } from './ListItemContext'
 import { ListItemContent } from './ListItemContent'
 import { ListItemWrapper } from './ListItemWrapper'
 import { createListItemPartitions, listItemLabelColor } from './utils'
-import { ListItemProps } from './types'
+import type { ListItemProps } from './types'
 
 const ListItemInternal = forwardRef(
   (props: ListItemProps, ref: Ref<HTMLLIElement | HTMLDivElement>) => {

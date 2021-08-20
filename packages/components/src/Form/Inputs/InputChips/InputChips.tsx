@@ -24,24 +24,17 @@
 
  */
 
-import React, {
-  forwardRef,
-  ClipboardEvent,
-  KeyboardEvent,
-  Ref,
-  useRef,
-  useState,
-  FormEvent,
-} from 'react'
+import type { ClipboardEvent, KeyboardEvent, Ref, FormEvent } from 'react'
+import React, { forwardRef, useRef, useState } from 'react'
 import styled from 'styled-components'
 
 import { useControlWarn, useWrapEvent } from '../../../utils'
-import {
-  InputChipsBase,
+import type {
   InputChipsCommonProps,
   InputChipsControlProps,
   InputChipsInputControlProps,
 } from './InputChipsBase'
+import { InputChipsBase } from './InputChipsBase'
 
 /**
  * InputChips is a component that appears to be a regular text input,

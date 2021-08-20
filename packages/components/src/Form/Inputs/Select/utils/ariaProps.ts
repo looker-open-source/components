@@ -26,8 +26,8 @@
 
 import omit from 'lodash/omit'
 import pick from 'lodash/pick'
-import { AriaAttributes } from 'react'
-import { ValidationType } from '../../../ValidationMessage'
+import type { AriaAttributes } from 'react'
+import type { ValidationType } from '../../../ValidationMessage'
 
 const ariaKeys = [
   'aria-describedby',

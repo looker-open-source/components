@@ -24,9 +24,11 @@
 
  */
 
-import React, { FC, ReactNode } from 'react'
+import type { FC, ReactNode } from 'react'
+import React from 'react'
 import { useToggle } from '../../utils/useToggle'
-import { ConfirmationDialog, ConfirmationProps } from './ConfirmationDialog'
+import type { ConfirmationProps } from './ConfirmationDialog'
+import { ConfirmationDialog } from './ConfirmationDialog'
 
 export interface ConfirmProps extends ConfirmationProps {
   /**

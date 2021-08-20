@@ -25,7 +25,8 @@
  */
 
 import pick from 'lodash/pick'
-import { Colors, specifiableColors } from '../types'
+import type { Colors } from '../types'
+import { specifiableColors } from '../types'
 
 export const pickSpecifiableColors = (colors: Colors) =>
   pick(colors, specifiableColors)

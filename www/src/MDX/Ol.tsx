@@ -24,7 +24,8 @@
 
  */
 
-import React, { FC } from 'react'
+import type { FC } from 'react';
+import React from 'react'
 import { OrderedList } from '@looker/components'
 import { maxTextWidth } from './styles'
 

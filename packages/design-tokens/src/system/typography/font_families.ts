@@ -24,7 +24,7 @@
 
  */
 
-import { ResponsiveValue } from 'styled-system'
+import type { ResponsiveValue } from 'styled-system'
 
 type Body = 'body'
 type Brand = 'brand'
