@@ -25,14 +25,10 @@
  */
 
 import styled, { css } from 'styled-components'
-import {
-  flexbox,
-  FlexboxProps,
-  SpacingSizes,
-  shouldForwardProp,
-  variant,
-} from '@looker/design-tokens'
-import { commonLayoutCSS, CommonLayoutProps } from '../utils/common'
+import type { FlexboxProps, SpacingSizes } from '@looker/design-tokens'
+import { flexbox, shouldForwardProp, variant } from '@looker/design-tokens'
+import type { CommonLayoutProps } from '../utils/common'
+import { commonLayoutCSS } from '../utils/common'
 
 export interface SpaceHelperProps extends CommonLayoutProps, FlexboxProps {
   /**

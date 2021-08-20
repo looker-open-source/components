@@ -23,7 +23,7 @@
  SOFTWARE.
 
  */
-import { TrapMap } from './types'
+import type { TrapMap } from './types'
 
 export const getActiveTrap = <O extends unknown = unknown>(
   trapMap: TrapMap<O>

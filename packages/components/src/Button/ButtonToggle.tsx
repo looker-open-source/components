@@ -24,15 +24,13 @@
 
  */
 
-import React, { forwardRef, MouseEvent, Ref } from 'react'
+import type { MouseEvent, Ref } from 'react'
+import React, { forwardRef } from 'react'
 import styled from 'styled-components'
 import { inputHeight } from '../Form/Inputs/height'
 import { ButtonItem } from './ButtonItem'
-import {
-  ButtonGroupOrToggleBaseProps,
-  ButtonSet,
-  ButtonSetType,
-} from './ButtonSet'
+import type { ButtonGroupOrToggleBaseProps, ButtonSetType } from './ButtonSet'
+import { ButtonSet } from './ButtonSet'
 
 export interface ButtonToggleProps
   extends ButtonGroupOrToggleBaseProps<string> {

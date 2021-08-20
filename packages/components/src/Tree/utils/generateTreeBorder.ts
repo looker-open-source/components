@@ -25,7 +25,7 @@
  */
 
 import { css } from 'styled-components'
-import { DensityRamp, Theme } from '@looker/design-tokens'
+import type { DensityRamp, Theme } from '@looker/design-tokens'
 import { listItemDimensions } from '../../ListItem'
 
 export type TreeBorderProps = {

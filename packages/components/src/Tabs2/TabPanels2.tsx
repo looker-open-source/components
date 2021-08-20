@@ -24,17 +24,15 @@
 
  */
 
-import React, { FC } from 'react'
+import type { FC } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import {
+import type {
   FlexboxProps,
   LayoutProps,
   SpaceProps,
-  flexbox,
-  layout,
-  space,
-  reset,
 } from '@looker/design-tokens'
+import { flexbox, layout, space, reset } from '@looker/design-tokens'
 
 export type TabPanels2Props = FlexboxProps &
   LayoutProps &

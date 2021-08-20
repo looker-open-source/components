@@ -24,17 +24,13 @@
 
  */
 
-import React, {
-  forwardRef,
-  Ref,
-  useContext,
-  FormEventHandler,
-  createContext,
-} from 'react'
+import type { Ref, FormEventHandler } from 'react'
+import React, { forwardRef, useContext, createContext } from 'react'
 import omit from 'lodash/omit'
-import { CompatibleHTMLProps } from '@looker/design-tokens'
-import { SpaceVertical, SpaceHelperProps } from '../Layout'
-import { ValidationMessageProps } from './ValidationMessage'
+import type { CompatibleHTMLProps } from '@looker/design-tokens'
+import type { SpaceHelperProps } from '../Layout'
+import { SpaceVertical } from '../Layout'
+import type { ValidationMessageProps } from './ValidationMessage'
 
 export type ValidationMessages = Record<string, ValidationMessageProps>
 

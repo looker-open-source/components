@@ -25,7 +25,7 @@
  */
 
 import { AccountCircle } from '@styled-icons/material-outlined/AccountCircle'
-import { Story } from '@storybook/react/types-6-0'
+import type { Story } from '@storybook/react/types-6-0'
 import { AddAlert } from '@styled-icons/material/AddAlert'
 import { Favorite } from '@styled-icons/material/Favorite'
 import { Settings } from '@styled-icons/material-outlined/Settings'
@@ -40,7 +40,8 @@ import { FieldCheckbox } from '../FieldCheckbox'
 import { FieldRadio } from '../FieldRadio'
 import { FieldToggleSwitch } from '../FieldToggleSwitch'
 import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
-import { FieldText, FieldTextProps } from './FieldText'
+import type { FieldTextProps } from './FieldText'
+import { FieldText } from './FieldText'
 
 export default {
   argTypes,

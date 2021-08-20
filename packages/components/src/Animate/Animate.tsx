@@ -24,11 +24,13 @@
 
  */
 
-import { CompatibleHTMLProps, fadeIn, Transitions } from '@looker/design-tokens'
+import type { CompatibleHTMLProps, Transitions } from '@looker/design-tokens'
+import { fadeIn } from '@looker/design-tokens'
 import omit from 'lodash/omit'
 import React from 'react'
 import styled, { css } from 'styled-components'
-import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout/utils/simple'
+import type { SimpleLayoutProps } from '../Layout/utils/simple'
+import { simpleLayoutCSS } from '../Layout/utils/simple'
 
 export type AnimationProps = {
   /**

@@ -25,10 +25,11 @@
  */
 
 import React, { useState, useMemo } from 'react'
-import { Story } from '@storybook/react/types-6-0'
+import type { Story } from '@storybook/react/types-6-0'
 import { options1kGrouped } from '../Select/stories/options1k'
 import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
-import { InputSearch, InputSearchProps } from './InputSearch'
+import type { InputSearchProps } from './InputSearch'
+import { InputSearch } from './InputSearch'
 
 const Template: Story<InputSearchProps> = (args) => <InputSearch {...args} />
 

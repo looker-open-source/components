@@ -27,21 +27,20 @@
 // Much of the following is pulled from https://github.com/reach/reach-ui
 // because their work is fantastic (but is not in TypeScript)
 
-import React, { forwardRef, Ref } from 'react'
+import type { Ref } from 'react'
+import React, { forwardRef } from 'react'
 import styled from 'styled-components'
 import { useForkedRef } from '../../../utils'
 import { Checkbox } from '../Checkbox'
-import {
-  ComboboxMultiContext,
-  ComboboxMultiContextProps,
-} from './ComboboxContext'
+import type { ComboboxMultiContextProps } from './ComboboxContext'
+import { ComboboxMultiContext } from './ComboboxContext'
 import {
   comboboxOptionStyle,
   ComboboxOptionWrapper,
   ComboboxOptionText,
 } from './ComboboxOption'
 import { ComboboxOptionIndicator } from './ComboboxOptionIndicator'
-import { ComboboxOptionProps } from './types'
+import type { ComboboxOptionProps } from './types'
 import { useAddOptionToContext } from './utils/useAddOptionToContext'
 import { useOptionEvents } from './utils/useOptionEvents'
 import { useOptionStatus } from './utils/useOptionStatus'

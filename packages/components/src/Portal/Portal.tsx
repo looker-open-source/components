@@ -24,13 +24,8 @@
 
  */
 
-import React, {
-  forwardRef,
-  Ref,
-  useLayoutEffect,
-  useRef,
-  ReactNode,
-} from 'react'
+import type { Ref, ReactNode } from 'react'
+import React, { forwardRef, useLayoutEffect, useRef } from 'react'
 import { styleDefenderCSS } from '@looker/components-providers'
 import { createPortal } from 'react-dom'
 import styled from 'styled-components'

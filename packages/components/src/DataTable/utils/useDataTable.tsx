@@ -27,8 +27,9 @@
 import React from 'react'
 import { DataTable } from '../DataTable'
 import { DataTableItem } from '../Item'
-import { DataTableCell, DataTableColumns } from '../Column'
-import { DataTableData } from '.'
+import type { DataTableColumns } from '../Column'
+import { DataTableCell } from '../Column'
+import type { DataTableData } from '.'
 
 export const useDataTable = (
   data: DataTableData,

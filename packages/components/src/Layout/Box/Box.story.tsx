@@ -24,13 +24,14 @@
 
  */
 
-import { Story } from '@storybook/react/types-6-0'
+import type { Story } from '@storybook/react/types-6-0'
 import { Home } from '@styled-icons/material-outlined/Home'
 import React from 'react'
 import { VIEWPORT_MAP } from '../../utils-storybook'
 import { Icon } from '../../Icon'
 import { defaultArgTypes as argTypes } from '../../../../../storybook/src/defaultArgTypes'
-import { Box, BoxProps } from '.'
+import type { BoxProps } from '.'
+import { Box } from '.'
 
 export default {
   argTypes,

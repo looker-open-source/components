@@ -24,17 +24,15 @@
 
  */
 
-import React, {
-  cloneElement,
-  forwardRef,
+import type {
   ForwardRefExoticComponent,
-  isValidElement,
   PropsWithoutRef,
   ReactNode,
   Ref,
 } from 'react'
+import React, { cloneElement, forwardRef, isValidElement } from 'react'
 import { mergeClassNames, useWrapEvent } from '../utils'
-import { TooltipProps, TooltipRenderProp } from './types'
+import type { TooltipProps, TooltipRenderProp } from './types'
 import { useTooltip } from './useTooltip'
 
 function isRenderProp(

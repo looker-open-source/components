@@ -24,7 +24,7 @@
 
  */
 
-import { MouseEvent as ReactMouseEvent } from 'react'
+import type { MouseEvent as ReactMouseEvent } from 'react'
 
 const checkForButton = (
   element: Element,

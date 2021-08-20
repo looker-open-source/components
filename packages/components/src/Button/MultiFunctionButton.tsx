@@ -24,19 +24,17 @@
 
  */
 
+import type { ReactElement, RefAttributes, Ref } from 'react'
 import React, {
-  ReactElement,
   useRef,
   cloneElement,
   useEffect,
   useState,
   forwardRef,
-  RefAttributes,
-  Ref,
 } from 'react'
 import styled from 'styled-components'
 import { useForkedRef } from '../utils'
-import { ButtonProps, IconButtonProps } from '.'
+import type { ButtonProps, IconButtonProps } from '.'
 
 export type MultiFunctionButtonProps = {
   alternate: ReactElement<

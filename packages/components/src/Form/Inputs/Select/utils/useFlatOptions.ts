@@ -25,7 +25,7 @@
  */
 
 import { useMemo } from 'react'
-import {
+import type {
   FlatOption,
   SelectOptionGroupProps,
   SelectOptionObject,

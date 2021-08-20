@@ -24,11 +24,12 @@
 
  */
 
-import { ExtendedStatefulColor } from '@looker/design-tokens'
-import { CSSProperties, useContext } from 'react'
+import type { ExtendedStatefulColor } from '@looker/design-tokens'
+import type { CSSProperties } from 'react'
+import { useContext } from 'react'
 import { ThemeContext } from 'styled-components'
 import { useMeasuredElement, useCallbackRef } from '../utils'
-import { RippleCallbacks } from './types'
+import type { RippleCallbacks } from './types'
 import { useRippleState } from './useRippleState'
 import { useRippleStateBG } from './useRippleStateBG'
 

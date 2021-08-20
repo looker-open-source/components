@@ -24,12 +24,8 @@
 
  */
 
-import {
-  SizeSmall,
-  SizeMedium,
-  SizeLarge,
-  variant,
-} from '@looker/design-tokens'
+import type { SizeSmall, SizeMedium, SizeLarge } from '@looker/design-tokens'
+import { variant } from '@looker/design-tokens'
 import { css } from 'styled-components'
 
 export type DataTableColumnSize =

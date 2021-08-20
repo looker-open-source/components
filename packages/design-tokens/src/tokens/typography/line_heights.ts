@@ -24,7 +24,7 @@
 
  */
 
-import { LineHeightRamp } from '../../system'
+import type { LineHeightRamp } from '../../system'
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 export const lineHeights: LineHeightRamp = {

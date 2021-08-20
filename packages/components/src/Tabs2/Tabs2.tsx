@@ -28,7 +28,7 @@ import React, { Children, useEffect, useState } from 'react'
 import { Tab2 } from './Tab2'
 import { TabList2 } from './TabList2'
 import { TabPanels2 } from './TabPanels2'
-import { Tabs2Props, TabStack } from './types'
+import type { Tabs2Props, TabStack } from './types'
 
 /**
  * `Tabs2` are a clickable areas (Tab2) that organizes content across different pages or areas.

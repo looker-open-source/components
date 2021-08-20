@@ -27,8 +27,8 @@
 // Much of the following is pulled from https://github.com/reach/reach-ui
 // because their work is fantastic (but is not in TypeScript)
 
+import type { CompatibleHTMLProps } from '@looker/design-tokens'
 import {
-  CompatibleHTMLProps,
   color,
   flexbox,
   layout,
@@ -37,21 +37,22 @@ import {
   typography,
   omitStyledProps,
 } from '@looker/design-tokens'
-import React, { forwardRef, useContext, Ref } from 'react'
+import type { Ref } from 'react'
+import React, { forwardRef, useContext } from 'react'
 import styled, { css } from 'styled-components'
 import omit from 'lodash/omit'
 import { ReplaceText, Span } from '../../../Text'
 import { useForkedRef } from '../../../utils'
 import { makeHash } from './utils/makeHash'
+import type { ComboboxContextProps } from './ComboboxContext'
 import {
   OptionContext,
   ComboboxContext,
-  ComboboxContextProps,
   ComboboxMultiContext,
 } from './ComboboxContext'
 import { ComboboxOptionIndicator } from './ComboboxOptionIndicator'
-import { ComboboxOptionProps, HighlightTextProps } from './types'
-import { ComboboxData } from './utils/state'
+import type { ComboboxOptionProps, HighlightTextProps } from './types'
+import type { ComboboxData } from './utils/state'
 import { getComboboxText } from './utils/getComboboxText'
 import { useOptionEvents } from './utils/useOptionEvents'
 import { useOptionStatus } from './utils/useOptionStatus'

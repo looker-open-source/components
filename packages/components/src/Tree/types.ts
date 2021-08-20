@@ -24,10 +24,10 @@
 
  */
 
-import { ReactNode } from 'react'
-import { ControlledLoosely } from '../Accordion2/controlTypes'
-import { ListItemProps } from '../ListItem'
-import { GenericClickProps } from '../utils/useClickable'
+import type { ReactNode } from 'react'
+import type { ControlledLoosely } from '../Accordion2/controlTypes'
+import type { ListItemProps } from '../ListItem'
+import type { GenericClickProps } from '../utils/useClickable'
 
 // We need this array to pass link related props from Tree to the nested TreeItem (rather than the AccordionDisclosure)
 const linkPropKeys = ['download', 'href', 'rel', 'target'] as const

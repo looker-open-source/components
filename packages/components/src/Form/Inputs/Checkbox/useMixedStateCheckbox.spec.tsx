@@ -27,8 +27,10 @@ import React, { useState } from 'react'
 import { fireEvent, screen } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { Label } from '../../Label'
-import { Checkbox, MixedBoolean } from './Checkbox'
-import { useMixedStateCheckbox, CheckboxTree } from './useMixedStateCheckbox'
+import type { MixedBoolean } from './Checkbox'
+import { Checkbox } from './Checkbox'
+import type { CheckboxTree } from './useMixedStateCheckbox'
+import { useMixedStateCheckbox } from './useMixedStateCheckbox'
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 

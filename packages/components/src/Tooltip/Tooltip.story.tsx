@@ -24,14 +24,9 @@
 
  */
 
-import React, {
-  FormEvent,
-  SyntheticEvent,
-  useEffect,
-  useRef,
-  useState,
-} from 'react'
-import { Story } from '@storybook/react/types-6-0'
+import type { FormEvent, SyntheticEvent } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
+import type { Story } from '@storybook/react/types-6-0'
 import { Button } from '../Button'
 import { Card } from '../Card'
 import { FieldToggleSwitch } from '../Form'
@@ -39,7 +34,8 @@ import { Space, SpaceVertical } from '../Layout'
 import { Text } from '../Text'
 import { Popover, PopoverContent } from '../Popover'
 import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
-import { Tooltip, TooltipProps } from './'
+import type { TooltipProps } from './'
+import { Tooltip } from './'
 
 const Template: Story<TooltipProps> = (args) => (
   <Tooltip {...args}>

@@ -24,11 +24,14 @@
 
  */
 
-import React, { forwardRef, Ref } from 'react'
+import type { Ref } from 'react'
+import React, { forwardRef } from 'react'
 import styled from 'styled-components'
-import { reset, space, SpaceProps } from '@looker/design-tokens'
-import { InputProps, pickInputProps } from '../InputProps'
-import { ValidationType } from '../../ValidationMessage'
+import type { SpaceProps } from '@looker/design-tokens'
+import { reset, space } from '@looker/design-tokens'
+import type { InputProps } from '../InputProps'
+import { pickInputProps } from '../InputProps'
+import type { ValidationType } from '../../ValidationMessage'
 import { FauxRadio } from './FauxRadio'
 
 export interface RadioProps

@@ -25,14 +25,16 @@
  */
 
 import styled from 'styled-components'
-import {
+import type {
   CompatibleHTMLProps,
+  TextColorProps,
+  TypographyProps,
+} from '@looker/design-tokens'
+import {
   reset,
   shouldForwardProp,
   textColor,
-  TextColorProps,
   typography,
-  TypographyProps,
 } from '@looker/design-tokens'
 
 export interface LabelProps

@@ -25,12 +25,13 @@
  */
 
 import styled from 'styled-components'
-import {
+import type {
   CompatibleHTMLProps,
-  textTransform,
   TextTransformProps,
 } from '@looker/design-tokens'
-import { TextBase, TextBaseProps } from './TextBase'
+import { textTransform } from '@looker/design-tokens'
+import type { TextBaseProps } from './TextBase'
+import { TextBase } from './TextBase'
 
 export interface SpanProps
   extends TextBaseProps,

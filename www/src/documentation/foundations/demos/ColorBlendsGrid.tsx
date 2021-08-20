@@ -27,7 +27,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Code, Grid } from '@looker/components'
-import {
+import type {
   ColorKey,
   StatefulColorGroups,
 } from '@looker/design-tokens/src/color/utils/colorBreakdown'

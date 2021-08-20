@@ -25,11 +25,12 @@
  */
 
 import { useTranslation } from 'react-i18next'
-import React, { forwardRef, Ref } from 'react'
+import type { Ref } from 'react'
+import React, { forwardRef } from 'react'
 import { fontSize, padding, reset } from '@looker/design-tokens'
 import styled, { css } from 'styled-components'
 import { useArrowKeyNav } from '../utils'
-import { TabList2Props } from './types'
+import type { TabList2Props } from './types'
 
 const defaultLayoutCSS = css`
   button {

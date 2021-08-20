@@ -28,7 +28,8 @@ import React, { useState } from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { fireEvent, screen } from '@testing-library/react'
 import { filters } from '../../../__mocks__/filters'
-import { FieldFilter, InputFilters } from './'
+import type { FieldFilter } from './'
+import { InputFilters } from './'
 
 const ControlledComponent = () => {
   const [controlledFilters, onChange] = useState<FieldFilter[]>(filters)

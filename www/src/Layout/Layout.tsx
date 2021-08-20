@@ -24,7 +24,8 @@
 
  */
 
-import React, { FC, useEffect, useState } from 'react'
+import type { FC} from 'react';
+import React, { useEffect, useState } from 'react'
 import {
   ComponentsProvider,
   Page,
@@ -32,7 +33,7 @@ import {
   Header,
   Layout as ComponentsLayout,
 } from '@looker/components'
-import { ThemeCustomizations } from '@looker/design-tokens'
+import type { ThemeCustomizations } from '@looker/design-tokens'
 import { createGlobalStyle } from 'styled-components'
 import { MDXProvider } from '@mdx-js/react'
 import { MDXComponents } from '../MDX'

@@ -26,7 +26,7 @@
 
 import React from 'react'
 import { Info } from '@styled-icons/material/Info'
-import { DataTableColumns } from '../../DataTable/Column'
+import type { DataTableColumns } from '../../DataTable/Column'
 
 export const columns: DataTableColumns = [
   {

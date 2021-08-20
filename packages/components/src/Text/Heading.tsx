@@ -25,15 +25,17 @@
  */
 
 import styled from 'styled-components'
-import {
+import type {
   CompatibleHTMLProps,
   FontSizes,
   ResponsiveValue,
-  textTransform,
   TextTransformProps,
 } from '@looker/design-tokens'
-import { TextBase, TextBaseProps } from './TextBase'
-import { TruncateCSSProps, truncateCSS } from './truncate'
+import { textTransform } from '@looker/design-tokens'
+import type { TextBaseProps } from './TextBase'
+import { TextBase } from './TextBase'
+import type { TruncateCSSProps } from './truncate'
+import { truncateCSS } from './truncate'
 
 type HeadingLevels = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 

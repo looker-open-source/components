@@ -25,9 +25,9 @@
  */
 
 import { createContext } from 'react'
-import { MixedBoolean } from '../Form'
-import { SelectConfig } from './types'
-import { DataTableColumns } from './Column'
+import type { MixedBoolean } from '../Form'
+import type { SelectConfig } from './types'
+import type { DataTableColumns } from './Column'
 
 export interface DataTableContextProps {
   allSelected?: MixedBoolean

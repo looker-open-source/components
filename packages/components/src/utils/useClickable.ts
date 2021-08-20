@@ -24,9 +24,11 @@
 
  */
 
-import { CompatibleHTMLProps } from '@looker/design-tokens'
-import { KeyboardEvent, MouseEvent as ReactMouseEvent, useMemo } from 'react'
-import { FocusVisibleProps, useFocusVisible } from './useFocusVisible'
+import type { CompatibleHTMLProps } from '@looker/design-tokens'
+import type { KeyboardEvent, MouseEvent as ReactMouseEvent } from 'react'
+import { useMemo } from 'react'
+import type { FocusVisibleProps } from './useFocusVisible'
+import { useFocusVisible } from './useFocusVisible'
 
 // Helper interfaces for components using this hook
 export type GenericOnClick<E extends HTMLElement> = (

@@ -24,14 +24,17 @@
 
  */
 
-import React, { FC } from 'react'
+import type { FC } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { omitStyledProps } from '@looker/design-tokens'
 import { PersonOutline } from '@styled-icons/material/PersonOutline'
 import { StyledIconBase } from '@styled-icons/styled-icon'
-import { IconType } from '../Icon'
-import { AvatarUser, AvatarUserProps } from './AvatarUser'
-import { AvatarIcon, AvatarIconProps } from './AvatarIcon'
+import type { IconType } from '../Icon'
+import type { AvatarUserProps } from './AvatarUser'
+import { AvatarUser } from './AvatarUser'
+import type { AvatarIconProps } from './AvatarIcon'
+import { AvatarIcon } from './AvatarIcon'
 import { avatarButtonOverrides } from './Avatar'
 
 export interface AvatarComboProps

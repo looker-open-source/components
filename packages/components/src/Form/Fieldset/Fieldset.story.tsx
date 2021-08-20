@@ -24,8 +24,9 @@
 
  */
 
-import { Story } from '@storybook/react/types-6-0'
-import React, { FC } from 'react'
+import type { Story } from '@storybook/react/types-6-0'
+import type { FC } from 'react'
+import React from 'react'
 import { Button } from '../../Button'
 import { Divider } from '../../Divider'
 import { Link } from '../../Link'
@@ -39,7 +40,8 @@ import {
 } from '../Fields'
 import { Form } from '../Form'
 import { defaultArgTypes as argTypes } from '../../../../../storybook/src/defaultArgTypes'
-import { Fieldset, FieldsetProps } from './Fieldset'
+import type { FieldsetProps } from './Fieldset'
+import { Fieldset } from './Fieldset'
 
 export default {
   argTypes,

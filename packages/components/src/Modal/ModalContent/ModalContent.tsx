@@ -24,12 +24,13 @@
 
  */
 
-import {
+import type {
   CompatibleHTMLProps,
   PaddingProps,
   SpacingSizes,
 } from '@looker/design-tokens'
-import React, { forwardRef, Ref } from 'react'
+import type { Ref } from 'react'
+import React, { forwardRef } from 'react'
 import styled from 'styled-components'
 import { OverflowShadow, useOverflow } from '../../utils'
 

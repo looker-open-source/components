@@ -25,12 +25,13 @@
  */
 
 import { useTranslation } from 'react-i18next'
-import { CompatibleHTMLProps } from '@looker/design-tokens'
+import type { CompatibleHTMLProps } from '@looker/design-tokens'
 import { Close } from '@styled-icons/material/Close'
 import { Error } from '@styled-icons/material/Error'
 import { ExpandLess } from '@styled-icons/material-rounded/ExpandLess'
 import { ExpandMore } from '@styled-icons/material-rounded/ExpandMore'
-import React, { FC, MouseEvent, ReactElement } from 'react'
+import type { FC, MouseEvent, ReactElement } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import compact from 'lodash/compact'
 import { IconButton } from '../../Button'

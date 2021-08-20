@@ -24,7 +24,8 @@
 
  */
 
-import React, { FC, useContext } from 'react'
+import type { FC } from 'react'
+import React, { useContext } from 'react'
 import { DialogContext, DialogLayout, Button, ButtonTransparent } from '..'
 
 export const DialogExampleLayout: FC<{ header: string }> = ({

@@ -24,11 +24,12 @@
 
  */
 
-import { Story } from '@storybook/react/types-6-0'
+import type { Story } from '@storybook/react/types-6-0'
 import { PersonOutline } from '@styled-icons/material/PersonOutline'
 import React from 'react'
 import { AvatarIcon } from '../../Avatar'
-import { DataTable, DataTableProps, DataTableCell, DataTableItem } from '..'
+import type { DataTableProps } from '..'
+import { DataTable, DataTableCell, DataTableItem } from '..'
 
 const data = [
   {

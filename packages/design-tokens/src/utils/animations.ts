@@ -24,7 +24,8 @@
 
  */
 
-import { keyframes, Keyframes } from 'styled-components'
+import type { Keyframes } from 'styled-components'
+import { keyframes } from 'styled-components'
 
 export const fadeIn: Keyframes = keyframes`
   0% {opacity: 0;}

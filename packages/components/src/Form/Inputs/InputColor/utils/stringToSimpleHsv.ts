@@ -25,7 +25,7 @@
  */
 
 import { hsv } from 'd3-hsv'
-import { SimpleHSV } from '../types'
+import type { SimpleHSV } from '../types'
 
 export const stringToSimpleHsv = (color: string): SimpleHSV => {
   let { h, s, v } = hsv(color)

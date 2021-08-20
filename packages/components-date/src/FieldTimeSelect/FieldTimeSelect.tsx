@@ -24,17 +24,19 @@
 
  */
 
-import React, { forwardRef, Ref } from 'react'
+import type { Ref } from 'react'
+import React, { forwardRef } from 'react'
 import styled from 'styled-components'
+import type { FieldProps } from '@looker/components'
 import {
   Field,
-  FieldProps,
   omitFieldProps,
   pickFieldProps,
   useFormContext,
   useID,
 } from '@looker/components'
-import { InputTimeSelect, InputTimeSelectProps } from '../InputTimeSelect'
+import type { InputTimeSelectProps } from '../InputTimeSelect'
+import { InputTimeSelect } from '../InputTimeSelect'
 
 export interface FieldTimeSelectProps
   extends FieldProps,

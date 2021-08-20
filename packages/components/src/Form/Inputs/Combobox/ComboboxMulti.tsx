@@ -29,23 +29,21 @@
 
 import every from 'lodash/every'
 import isMatch from 'lodash/isMatch'
-import React, { forwardRef, Ref } from 'react'
+import type { Ref } from 'react'
+import React, { forwardRef } from 'react'
 import styled from 'styled-components'
 import { useID } from '../../../utils'
 import { useFocusManagement } from './utils/useFocusManagement'
-import { ComboboxMultiCallback, ComboboxOptionObject } from './types'
+import type { ComboboxMultiCallback, ComboboxOptionObject } from './types'
+import type { ComboboxMultiData } from './utils/state'
 import {
   reducerMulti,
   useReducerMachine,
   ComboboxActionType,
-  ComboboxMultiData,
 } from './utils/state'
 import { ComboboxMultiContext, defaultMultiData } from './ComboboxContext'
-import {
-  ComboboxBaseProps,
-  ComboboxCommonProps,
-  ComboboxWrapper,
-} from './Combobox'
+import type { ComboboxBaseProps, ComboboxCommonProps } from './Combobox'
+import { ComboboxWrapper } from './Combobox'
 import { useComboboxRefs } from './utils/useComboboxRefs'
 import { useComboboxToggle } from './utils/useComboboxToggle'
 import { useScrollState } from './utils/useScrollState'

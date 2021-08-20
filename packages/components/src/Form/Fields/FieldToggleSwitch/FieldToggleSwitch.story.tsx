@@ -25,11 +25,12 @@
  */
 
 import React from 'react'
-import { Story } from '@storybook/react/types-6-0'
+import type { Story } from '@storybook/react/types-6-0'
 import { Delete } from '@styled-icons/material/Delete'
 import { IconButton } from '../../../Button'
 import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
-import { FieldToggleSwitch, FieldToggleSwitchProps } from './FieldToggleSwitch'
+import type { FieldToggleSwitchProps } from './FieldToggleSwitch'
+import { FieldToggleSwitch } from './FieldToggleSwitch'
 
 const Template: Story<FieldToggleSwitchProps> = (args) => (
   <FieldToggleSwitch {...args} />

@@ -24,15 +24,8 @@
 
  */
 
-import {
-  FocusEvent,
-  KeyboardEvent,
-  Ref,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from 'react'
+import type { FocusEvent, KeyboardEvent, Ref } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { checkElementRemoved } from './checkElementRemoved'
 import { getNextFocus as getNextFocusDefault } from './getNextFocus'
 import { useForkedRef } from './useForkedRef'

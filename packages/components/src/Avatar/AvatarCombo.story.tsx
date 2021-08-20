@@ -25,9 +25,10 @@
  */
 
 import React from 'react'
-import { Story } from '@storybook/react/types-6-0'
+import type { Story } from '@storybook/react/types-6-0'
 import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
-import { AvatarCombo, AvatarComboProps } from './AvatarCombo'
+import type { AvatarComboProps } from './AvatarCombo'
+import { AvatarCombo } from './AvatarCombo'
 
 const Template: Story<AvatarComboProps> = (args) => <AvatarCombo {...args} />
 

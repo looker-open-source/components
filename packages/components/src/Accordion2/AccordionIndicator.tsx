@@ -25,9 +25,9 @@
  */
 
 import styled from 'styled-components'
-import { DensityRamp } from '@looker/design-tokens'
+import type { DensityRamp } from '@looker/design-tokens'
 import { StyledIconBase } from '@styled-icons/styled-icon'
-import { AccordionIndicatorProps } from './types'
+import type { AccordionIndicatorProps } from './types'
 import { accordionDimensions } from './accordionDimensions'
 
 const size = (density: DensityRamp = 0) =>

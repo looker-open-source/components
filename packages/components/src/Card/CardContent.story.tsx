@@ -25,9 +25,10 @@
  */
 
 import React from 'react'
-import { Story } from '@storybook/react/types-6-0'
+import type { Story } from '@storybook/react/types-6-0'
 import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
-import { CardContent, CardContentProps } from './CardContent'
+import type { CardContentProps } from './CardContent'
+import { CardContent } from './CardContent'
 
 export default {
   argTypes,

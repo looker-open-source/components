@@ -24,10 +24,13 @@
 
  */
 
-import React, { FC } from 'react'
+import type { FC } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import { TypographyProps, typography } from '@looker/design-tokens'
-import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout/utils/simple'
+import type { TypographyProps } from '@looker/design-tokens'
+import { typography } from '@looker/design-tokens'
+import type { SimpleLayoutProps } from '../Layout/utils/simple'
+import { simpleLayoutCSS } from '../Layout/utils/simple'
 import { Accordion2Disclosure } from '../Accordion2/Accordion2Disclosure'
 
 export type AccordionDisclosureProps = SimpleLayoutProps & TypographyProps

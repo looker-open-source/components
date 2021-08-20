@@ -24,8 +24,8 @@
 
  */
 
-import { ResponsiveValue } from 'styled-system'
-import { FontSizes } from './font_sizes'
+import type { ResponsiveValue } from 'styled-system'
+import type { FontSizes } from './font_sizes'
 
 export type LineHeights = FontSizes
 export type LineHeightRamp = Record<LineHeights, string>

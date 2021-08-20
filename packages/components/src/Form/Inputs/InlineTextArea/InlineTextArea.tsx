@@ -24,16 +24,17 @@
 
  */
 
-import React, { ChangeEvent, forwardRef, Ref, useState } from 'react'
+import type { ChangeEvent, Ref } from 'react'
+import React, { forwardRef, useState } from 'react'
 import isFunction from 'lodash/isFunction'
 import styled from 'styled-components'
-import {
-  typography,
+import type {
   TypographyProps,
   SpaceProps,
   CompatibleHTMLProps,
   LayoutProps,
 } from '@looker/design-tokens'
+import { typography } from '@looker/design-tokens'
 import { pickInputProps } from '../InputProps'
 
 export interface InlineTextAreaProps

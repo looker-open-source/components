@@ -25,7 +25,7 @@
  */
 import { createContext } from 'react'
 import noop from 'lodash/noop'
-import { CalendarSize } from './calendar-size'
+import type { CalendarSize } from './calendar-size'
 
 export interface CalendarContextValue {
   size?: CalendarSize

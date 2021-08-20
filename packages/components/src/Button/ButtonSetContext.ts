@@ -24,7 +24,8 @@
 
  */
 
-import { createContext, MouseEvent } from 'react'
+import type { MouseEvent } from 'react'
+import { createContext } from 'react'
 
 export type ButtonSetCallback<TValue extends string | string[] = string[]> = (
   option: TValue,

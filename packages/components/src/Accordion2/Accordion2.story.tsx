@@ -24,8 +24,8 @@
 
  */
 
-import { Story } from '@storybook/react/types-6-0'
-import { Page } from 'puppeteer'
+import type { Story } from '@storybook/react/types-6-0'
+import type { Page } from 'puppeteer'
 import React from 'react'
 import { ChevronLeft } from '@styled-icons/material-rounded/ChevronLeft'
 import { ExpandMore } from '@styled-icons/material-rounded/ExpandMore'
@@ -34,7 +34,7 @@ import { Grid, SpaceVertical } from '../Layout'
 import { useToggle } from '../utils/useToggle'
 import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
 import { Accordion2 } from './Accordion2'
-import { Accordion2Props } from './types'
+import type { Accordion2Props } from './types'
 
 export default {
   argTypes,

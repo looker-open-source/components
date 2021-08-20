@@ -25,7 +25,8 @@
  */
 
 import { css } from 'styled-components'
-import { borderRadius, BorderRadiusProps, Colors } from '@looker/design-tokens'
+import type { BorderRadiusProps, Colors } from '@looker/design-tokens'
+import { borderRadius } from '@looker/design-tokens'
 
 type BorderBaseProp = keyof Colors | string
 type BorderProp = BorderBaseProp | boolean | 'none'

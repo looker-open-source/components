@@ -24,12 +24,9 @@
 
  */
 
-import {
-  TrapStackContextProps,
-  TrapStackProvider,
-  Trap,
-} from '@looker/components-providers'
-import { CompatibleHTMLProps } from '@looker/design-tokens'
+import type { TrapStackContextProps, Trap } from '@looker/components-providers'
+import { TrapStackProvider } from '@looker/components-providers'
+import type { CompatibleHTMLProps } from '@looker/design-tokens'
 import React, { createContext } from 'react'
 import styled from 'styled-components'
 

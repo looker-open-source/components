@@ -24,7 +24,7 @@
 
  */
 
-import { DataTableColumns } from '../Column'
+import type { DataTableColumns } from '../Column'
 
 export const stringComparator = (stringA: string, stringB: string) => {
   const upperCasedStringA = stringA.toUpperCase()

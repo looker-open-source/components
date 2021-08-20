@@ -26,7 +26,8 @@
 
 import { DividerVertical, Heading, Space } from '@looker/components'
 import { Link } from 'gatsby'
-import React, { FC } from 'react'
+import type { FC } from 'react';
+import React from 'react'
 import styled from 'styled-components'
 import logo from './logo.png'
 

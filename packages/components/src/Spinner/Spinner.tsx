@@ -24,18 +24,21 @@
 
  */
 
-import {
+import type {
   CompatibleHTMLProps,
   PositionProps,
-  position,
   SpaceProps,
+} from '@looker/design-tokens'
+import {
+  position,
   space,
   reset,
   shouldForwardProp,
 } from '@looker/design-tokens'
 import omit from 'lodash/omit'
 import range from 'lodash/range'
-import React, { FC } from 'react'
+import type { FC } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { SpinnerMarker } from './SpinnerMarker'
 

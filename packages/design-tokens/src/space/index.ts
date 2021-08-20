@@ -24,7 +24,7 @@
 
  */
 
-import { LegacySpaceRamp, SpaceRamp, UnitRamp } from './types'
+import type { LegacySpaceRamp, SpaceRamp, UnitRamp } from './types'
 export {
   LegacySpaceRamp,
   SpaceRamp,

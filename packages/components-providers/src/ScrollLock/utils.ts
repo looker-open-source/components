@@ -25,7 +25,7 @@
  */
 
 import pick from 'lodash/pick'
-import { Trap } from '../TrapStack/types'
+import type { Trap } from '../TrapStack/types'
 
 export interface ScrollLockMap {
   [key: string]: HTMLElement

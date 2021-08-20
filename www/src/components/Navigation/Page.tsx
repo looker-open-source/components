@@ -27,8 +27,9 @@
 import { Badge } from '@looker/components'
 import styled from 'styled-components'
 import { Link, withPrefix } from 'gatsby'
-import React, { FC } from 'react'
-import { NavigationPage } from './types'
+import type { FC } from 'react';
+import React from 'react'
+import type { NavigationPage } from './types'
 
 interface PageProps {
   className?: string

@@ -25,12 +25,13 @@
  */
 
 import React from 'react'
-import { Story } from '@storybook/react/types-6-0'
+import type { Story } from '@storybook/react/types-6-0'
 import { Delete } from '@styled-icons/material/Delete'
 import { GridView } from '@styled-icons/material/GridView'
 import { Button } from '../Button'
 import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
-import { MessageBar, MessageBarProps } from './MessageBar'
+import type { MessageBarProps } from './MessageBar'
+import { MessageBar } from './MessageBar'
 
 const Template: Story<MessageBarProps> = (args) => <MessageBar {...args} />
 

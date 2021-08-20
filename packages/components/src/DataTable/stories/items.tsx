@@ -24,9 +24,11 @@
 
  */
 
-import React, { ReactNode } from 'react'
+import type { ReactNode } from 'react'
+import React from 'react'
 import { Delete } from '@styled-icons/material/Delete'
-import { data as mockData, CheeseData } from '../../__mocks__/DataTable/data'
+import type { CheeseData } from '../../__mocks__/DataTable/data'
+import { data as mockData } from '../../__mocks__/DataTable/data'
 import { Link } from '../../Link'
 import { Status } from '../../Status'
 import { Tooltip } from '../../Tooltip'

@@ -24,10 +24,10 @@
 
  */
 
-import { BlendColors } from './blends'
-import { StatefulColors } from './stateful'
-import { SpecifiableColors, TextColor } from './specifiable'
-import { DerivativeColors } from './derivative'
+import type { BlendColors } from './blends'
+import type { StatefulColors } from './stateful'
+import type { SpecifiableColors, TextColor } from './specifiable'
+import type { DerivativeColors } from './derivative'
 
 export type Colors = SpecifiableColors &
   DerivativeColors &

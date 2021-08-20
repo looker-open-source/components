@@ -25,8 +25,8 @@
  */
 
 import chunk from 'lodash/chunk'
+import type { Colors } from '../'
 import {
-  Colors,
   coreColors,
   derivativeColors,
   intentColors,

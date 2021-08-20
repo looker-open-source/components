@@ -25,9 +25,10 @@
  */
 
 import React from 'react'
-import { Story } from '@storybook/react/types-6-0'
+import type { Story } from '@storybook/react/types-6-0'
 import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
-import { FieldRadio, FieldRadioProps } from './FieldRadio'
+import type { FieldRadioProps } from './FieldRadio'
+import { FieldRadio } from './FieldRadio'
 
 const Template: Story<FieldRadioProps> = (args) => <FieldRadio {...args} />
 

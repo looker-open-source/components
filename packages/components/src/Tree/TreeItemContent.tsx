@@ -25,8 +25,10 @@
  */
 
 import styled from 'styled-components'
-import { ListItemContent, ListItemContentProps } from '../ListItem'
-import { generateIndent, GenerateIndentProps } from './utils'
+import type { ListItemContentProps } from '../ListItem'
+import { ListItemContent } from '../ListItem'
+import type { GenerateIndentProps } from './utils'
+import { generateIndent } from './utils'
 
 type TreeItemContentProps = ListItemContentProps &
   GenerateIndentProps & {

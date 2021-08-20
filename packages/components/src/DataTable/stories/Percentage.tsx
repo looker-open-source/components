@@ -24,7 +24,7 @@
 
  */
 
-import { DataTableColumns } from '../Column'
+import type { DataTableColumns } from '../Column'
 import { useDataTable } from '../utils/useDataTable'
 import { data } from '../../__mocks__/DataTable/data'
 

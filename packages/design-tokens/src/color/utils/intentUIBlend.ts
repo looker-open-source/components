@@ -25,8 +25,9 @@
  */
 
 import { css } from 'styled-components'
-import { uiBlends, UIColorLevels } from '../blendPoints'
-import { IntentColors } from '../types'
+import type { UIColorLevels } from '../blendPoints'
+import { uiBlends } from '../blendPoints'
+import type { IntentColors } from '../types'
 import { mixScaledColors } from './mixScaledColors'
 
 /**

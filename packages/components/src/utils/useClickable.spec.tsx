@@ -26,7 +26,8 @@
 
 import { fireEvent, render, screen } from '@testing-library/react'
 import React from 'react'
-import { useClickable, UseClickableProps } from './useClickable'
+import type { UseClickableProps } from './useClickable'
+import { useClickable } from './useClickable'
 
 const ClickableComponent = (props: UseClickableProps<HTMLDivElement>) => {
   const { focusVisible, ...clickableProps } = useClickable(props)

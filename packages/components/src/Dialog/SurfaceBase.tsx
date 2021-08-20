@@ -25,7 +25,8 @@
  */
 
 import { reset, omitStyledProps } from '@looker/design-tokens'
-import React, { FC, useContext, useRef } from 'react'
+import type { FC } from 'react'
+import React, { useContext, useRef } from 'react'
 import styled, { css } from 'styled-components'
 import { useGlobalHotkeys } from '../utils'
 import { DialogContext } from './DialogContext'

@@ -24,15 +24,15 @@
 
  */
 
-import {
+import type {
   LetterSpacingProps,
   FontStyleProps,
   TextAlignProps,
 } from 'styled-system'
-import { FontFamilyProps } from './font_families'
-import { FontSizeProps } from './font_sizes'
-import { FontWeightProps } from './font_weights'
-import { LineHeightProps } from './line_heights'
+import type { FontFamilyProps } from './font_families'
+import type { FontSizeProps } from './font_sizes'
+import type { FontWeightProps } from './font_weights'
+import type { LineHeightProps } from './line_heights'
 
 export const densityTarget = '2.25rem' // 36px
 

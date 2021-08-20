@@ -23,7 +23,7 @@
  SOFTWARE.
 
  */
-import { FocusEvent } from 'react'
+import type { FocusEvent } from 'react'
 
 /**
  * ONLY use for blur events, returns the “next focused element” – event.relatedTarget if available

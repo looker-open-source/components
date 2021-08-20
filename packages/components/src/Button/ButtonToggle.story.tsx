@@ -24,14 +24,15 @@
 
  */
 
-import { Story } from '@storybook/react/types-6-0'
-import { Page } from 'puppeteer'
+import type { Story } from '@storybook/react/types-6-0'
+import type { Page } from 'puppeteer'
 import React, { useState } from 'react'
 import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
 import { Popover } from '../Popover'
 import { ButtonItem } from './ButtonItem'
 import { Button } from './Button'
-import { ButtonToggle, ButtonToggleProps } from './ButtonToggle'
+import type { ButtonToggleProps } from './ButtonToggle'
+import { ButtonToggle } from './ButtonToggle'
 
 export default {
   argTypes,

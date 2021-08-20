@@ -24,7 +24,7 @@
 
  */
 
-import { Story } from '@storybook/react/types-6-0'
+import type { Story } from '@storybook/react/types-6-0'
 import React from 'react'
 import { Create } from '@styled-icons/material/Create'
 import { Delete } from '@styled-icons/material/Delete'
@@ -36,7 +36,8 @@ import { Button, IconButton } from '../Button'
 import { Space, SpaceVertical } from '../Layout'
 import { Heading } from '../Text'
 import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
-import { Icon, IconProps } from './Icon'
+import type { IconProps } from './Icon'
+import { Icon } from './Icon'
 
 export default {
   argTypes,

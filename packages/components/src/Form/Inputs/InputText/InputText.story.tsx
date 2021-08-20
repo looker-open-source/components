@@ -25,11 +25,12 @@
  */
 
 import React from 'react'
-import { Story } from '@storybook/react/types-6-0'
+import type { Story } from '@storybook/react/types-6-0'
 import { Close } from '@styled-icons/material-rounded/Close'
 import { Info } from '@styled-icons/material-rounded/Info'
 import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
-import { InputText, InputTextProps } from './InputText'
+import type { InputTextProps } from './InputText'
+import { InputText } from './InputText'
 
 export default {
   argTypes,

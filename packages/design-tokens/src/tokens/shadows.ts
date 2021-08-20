@@ -24,7 +24,7 @@
 
  */
 
-import { Shadows } from '../system'
+import type { Shadows } from '../system'
 
 /**
  * @deprecated - Use `elevations` instead

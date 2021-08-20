@@ -24,10 +24,11 @@
 
  */
 
-import React, { FC } from 'react'
+import type { FC } from 'react'
+import React from 'react'
 import styled, { css } from 'styled-components'
-import { CompatibleHTMLProps } from '@looker/design-tokens'
-import { ValidationType } from '../../ValidationMessage'
+import type { CompatibleHTMLProps } from '@looker/design-tokens'
+import type { ValidationType } from '../../ValidationMessage'
 import {
   inputTextHover,
   inputTextFocus,
@@ -36,10 +37,8 @@ import {
   inputCSS,
   ErrorIcon,
 } from '../InputText'
-import {
-  simpleLayoutCSS,
-  SimpleLayoutProps,
-} from '../../../Layout/utils/simple'
+import type { SimpleLayoutProps } from '../../../Layout/utils/simple'
+import { simpleLayoutCSS } from '../../../Layout/utils/simple'
 import { pickInputProps } from '../InputProps'
 
 type TextAreaResize = 'vertical' | 'none' | boolean

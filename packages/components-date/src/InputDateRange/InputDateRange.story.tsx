@@ -24,8 +24,8 @@
 
  */
 import React, { useState } from 'react'
-import { Story } from '@storybook/react/types-6-0'
-import { RangeModifier } from 'react-day-picker'
+import type { Story } from '@storybook/react/types-6-0'
+import type { RangeModifier } from 'react-day-picker'
 import {
   Button,
   MenuList,
@@ -41,7 +41,8 @@ import {
 import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
 import { VIEWPORT_MAP } from '../../../components/src/utils-storybook/viewportMap'
 import { DateFormat } from '../DateFormat'
-import { InputDateRange, InputDateRangeProps } from './InputDateRange'
+import type { InputDateRangeProps } from './InputDateRange'
+import { InputDateRange } from './InputDateRange'
 
 export default {
   argTypes,

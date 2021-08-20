@@ -24,20 +24,22 @@
 
  */
 
-import {
+import type {
   CompatibleHTMLProps,
   LayoutProps,
+  PositionProps,
+  SpaceProps,
+  TextColorProps,
+  TypographyProps,
+} from '@looker/design-tokens'
+import {
   layout,
   position,
-  PositionProps,
   reset,
   space,
-  SpaceProps,
   shouldForwardProp,
   textColor,
-  TextColorProps,
   typography,
-  TypographyProps,
   variant,
 } from '@looker/design-tokens'
 import styled from 'styled-components'

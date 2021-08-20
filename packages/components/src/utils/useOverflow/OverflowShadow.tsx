@@ -25,8 +25,9 @@
  */
 
 import styled, { css } from 'styled-components'
-import { padding, PaddingProps, reset } from '@looker/design-tokens'
-import { UseOverflowProps } from './useOverflow'
+import type { PaddingProps } from '@looker/design-tokens'
+import { padding, reset } from '@looker/design-tokens'
+import type { UseOverflowProps } from './useOverflow'
 
 export type OverflowShadowProps = PaddingProps & UseOverflowProps
 

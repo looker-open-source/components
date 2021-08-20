@@ -26,7 +26,8 @@
 
 import { useTranslation } from 'react-i18next'
 import { densityTarget } from '@looker/design-tokens'
-import React, { FC } from 'react'
+import type { FC } from 'react'
+import React from 'react'
 import styled, { css } from 'styled-components'
 import { Spinner } from '../Spinner'
 import { Heading } from '../Text'
@@ -35,7 +36,7 @@ import {
   getNumericColumnIndices,
   numericColumnCSS,
 } from './utils/dataTableFormatting'
-import { DataTableProps } from './types'
+import type { DataTableProps } from './types'
 import { DataTableHeader } from './Header/DataTableHeader'
 import { edgeShadow } from './utils/edgeShadow'
 import { getNextFocus } from './getNextFocus'

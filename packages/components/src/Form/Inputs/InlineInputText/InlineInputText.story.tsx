@@ -25,9 +25,10 @@
  */
 
 import React from 'react'
-import { Story } from '@storybook/react/types-6-0'
+import type { Story } from '@storybook/react/types-6-0'
 import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
-import { InlineInputText, InlineInputTextProps } from './InlineInputText'
+import type { InlineInputTextProps } from './InlineInputText'
+import { InlineInputText } from './InlineInputText'
 
 export default {
   argTypes,

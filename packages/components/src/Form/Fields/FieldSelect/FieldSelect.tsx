@@ -24,12 +24,15 @@
 
  */
 
-import React, { forwardRef, Ref } from 'react'
+import type { Ref } from 'react'
+import React, { forwardRef } from 'react'
 import styled from 'styled-components'
 import { useID } from '../../../utils'
 import { useFormContext } from '../../Form'
-import { Select, SelectProps } from '../../Inputs/Select/Select'
-import { Field, FieldProps, omitFieldProps, pickFieldProps } from '../Field'
+import type { SelectProps } from '../../Inputs/Select/Select'
+import { Select } from '../../Inputs/Select/Select'
+import type { FieldProps } from '../Field'
+import { Field, omitFieldProps, pickFieldProps } from '../Field'
 
 export interface FieldSelectProps extends FieldProps, SelectProps {}
 

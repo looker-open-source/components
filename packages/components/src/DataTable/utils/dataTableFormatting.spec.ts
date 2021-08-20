@@ -24,7 +24,7 @@
 
  */
 
-import { DataTableColumns } from '../Column'
+import type { DataTableColumns } from '../Column'
 import { getNumericColumnIndices } from './dataTableFormatting'
 
 describe('DataTable CSS Utils', () => {

@@ -25,9 +25,11 @@
  */
 
 import { ComponentsProvider } from '@looker/components-providers'
-import { render, RenderOptions } from '@testing-library/react'
+import type { RenderOptions } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import 'jest-styled-components'
-import React, { ReactElement } from 'react'
+import type { ReactElement } from 'react'
+import React from 'react'
 
 export const withThemeProvider = (Component: ReactElement<any>) => (
   <ComponentsProvider disableStyleDefender>{Component}</ComponentsProvider>

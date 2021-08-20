@@ -24,15 +24,14 @@
 
  */
 
-import {
+import type {
   BackgroundColorProps,
   CompatibleHTMLProps,
-  color,
   OpacityProps,
-  reset,
-  shouldForwardProp,
 } from '@looker/design-tokens'
-import styled, { CSSObject } from 'styled-components'
+import { color, reset, shouldForwardProp } from '@looker/design-tokens'
+import type { CSSObject } from 'styled-components'
+import styled from 'styled-components'
 
 export interface BackdropProps
   extends CompatibleHTMLProps<HTMLDivElement>,

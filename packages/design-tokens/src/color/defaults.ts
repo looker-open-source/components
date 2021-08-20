@@ -34,7 +34,7 @@ import {
   yellow500,
   white,
 } from '../legacy/palette'
-import { CoreColors, IntentColors } from './types'
+import type { CoreColors, IntentColors } from './types'
 
 const calculation = '#319220'
 const dimension = '#31689E'

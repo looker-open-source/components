@@ -24,19 +24,20 @@
 
  */
 
-import React, { MouseEvent, useCallback, useMemo, useState } from 'react'
+import type { MouseEvent } from 'react'
+import React, { useCallback, useMemo, useState } from 'react'
+import type { UsePopperProps } from '../utils'
 import {
   useAnimationState,
   useCallbackRef,
   useID,
   usePopper,
-  UsePopperProps,
   useForkedRef,
 } from '../utils'
 import { Portal } from '../Portal'
 import { TooltipContent } from './TooltipContent'
 import { TooltipSurface } from './TooltipSurface'
-import { UseTooltipProps } from './types'
+import type { UseTooltipProps } from './types'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 const noop = () => {}

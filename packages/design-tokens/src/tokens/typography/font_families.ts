@@ -24,7 +24,7 @@
 
  */
 
-import { FontFamilyChoices, FontFamilyFallbacks } from '../../system'
+import type { FontFamilyChoices, FontFamilyFallbacks } from '../../system'
 import { generateFontFamilies } from '../../utils/typography'
 
 const sansSerifFontFallbacks = [

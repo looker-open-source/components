@@ -25,9 +25,10 @@
  */
 
 import React from 'react'
-import { Story } from '@storybook/react/types-6-0'
+import type { Story } from '@storybook/react/types-6-0'
 import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
-import { Status, StatusProps } from './Status'
+import type { StatusProps } from './Status'
+import { Status } from './Status'
 
 const Template: Story<StatusProps> = (args) => <Status {...args} />
 

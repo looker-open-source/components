@@ -24,7 +24,8 @@
 
  */
 
-import { useEffect, useState, Ref } from 'react'
+import type { Ref } from 'react'
+import { useEffect, useState } from 'react'
 import { useResize } from '../useResize'
 import { useCallbackRef } from '../useCallbackRef'
 

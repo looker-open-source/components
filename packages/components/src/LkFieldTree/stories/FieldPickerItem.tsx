@@ -24,20 +24,14 @@
 
  */
 
-import React, { createContext, FC, useContext, useState } from 'react'
+import type { FC } from 'react'
+import React, { createContext, useContext, useState } from 'react'
 import { FilterList } from '@styled-icons/material/FilterList'
 import { MoreVert } from '@styled-icons/material/MoreVert'
 import { SubdirectoryArrowLeft } from '@styled-icons/material/SubdirectoryArrowLeft'
 import { Info } from '@styled-icons/material-outlined/Info'
-import {
-  IconButton,
-  Menu,
-  MenuItem,
-  Tooltip,
-  Flex,
-  Truncate,
-  ToggleColor,
-} from '../..'
+import type { ToggleColor } from '../..'
+import { IconButton, Menu, MenuItem, Tooltip, Flex, Truncate } from '../..'
 import { LkFieldItem } from '..'
 import { HoverDisclosure } from '../../utils'
 import { listItemDimensions } from '../../ListItem'

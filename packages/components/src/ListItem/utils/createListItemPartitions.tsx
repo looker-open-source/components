@@ -24,9 +24,10 @@
 
  */
 
-import React, { ReactElement } from 'react'
-import { ListItemProps } from '../types'
-import { IconPlaceholderProps, IconType } from '../../Icon'
+import type { ReactElement } from 'react'
+import React from 'react'
+import type { ListItemProps } from '../types'
+import type { IconPlaceholderProps, IconType } from '../../Icon'
 import { ListItemDetail } from '../ListItemDetail'
 import { ListItemIcon } from '../ListItemIcon'
 import { ListItemLabel } from '../ListItemLabel'

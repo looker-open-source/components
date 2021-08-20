@@ -26,7 +26,7 @@
 
 import { generateDerivativeColors } from './utils/generateDerivativeColors'
 import { fallbackBlends, fallbackStateful } from './fallbacks'
-import { Colors } from './types'
+import type { Colors } from './types'
 import { defaultSpecifiableColors } from './defaultSpecifiableColors'
 
 const derivedColors = generateDerivativeColors(

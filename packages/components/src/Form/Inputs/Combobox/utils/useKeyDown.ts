@@ -29,10 +29,12 @@
 import findIndex from 'lodash/findIndex'
 import throttle from 'lodash/throttle'
 import xorWith from 'lodash/xorWith'
-import { KeyboardEvent, useContext } from 'react'
+import type { KeyboardEvent } from 'react'
+import { useContext } from 'react'
 import { ComboboxContext, ComboboxMultiContext } from '../ComboboxContext'
-import { ComboboxMultiCallback, ComboboxCallback } from '../types'
-import { ComboboxActionType, ComboboxState, ComboboxMultiData } from './state'
+import type { ComboboxMultiCallback, ComboboxCallback } from '../types'
+import type { ComboboxMultiData } from './state'
+import { ComboboxActionType, ComboboxState } from './state'
 
 // We want the same events when the input or the popup have focus (HOW COOL ARE
 // HOOKS BTW?) This is probably the hairiest piece but it's not bad.

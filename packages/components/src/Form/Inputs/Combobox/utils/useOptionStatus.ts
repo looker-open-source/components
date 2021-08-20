@@ -24,13 +24,14 @@
 
  */
 
-import { Context, useContext } from 'react'
-import {
+import type { Context } from 'react'
+import { useContext } from 'react'
+import type {
   ComboboxContextProps,
   ComboboxMultiContextProps,
 } from '../ComboboxContext'
-import { ComboboxOptionStatuses } from '../types'
-import { ComboboxData, ComboboxMultiData } from './state'
+import type { ComboboxOptionStatuses } from '../types'
+import type { ComboboxData, ComboboxMultiData } from './state'
 
 export function useOptionStatus<
   CProps extends ComboboxContextProps | ComboboxMultiContextProps

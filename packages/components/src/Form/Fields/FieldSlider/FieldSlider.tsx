@@ -24,12 +24,15 @@
 
  */
 
-import React, { forwardRef, Ref } from 'react'
+import type { Ref } from 'react'
+import React, { forwardRef } from 'react'
 import styled from 'styled-components'
 import omit from 'lodash/omit'
 import { useID } from '../../../utils'
-import { Slider, SliderProps } from '../../Inputs/Slider'
-import { Field, FieldProps, omitFieldProps, pickFieldProps } from '../Field'
+import type { SliderProps } from '../../Inputs/Slider'
+import { Slider } from '../../Inputs/Slider'
+import type { FieldProps } from '../Field'
+import { Field, omitFieldProps, pickFieldProps } from '../Field'
 
 export interface FieldSliderProps
   extends SliderProps,

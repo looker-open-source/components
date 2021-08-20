@@ -24,9 +24,10 @@
 
  */
 
-import { useRef, Ref } from 'react'
+import type { Ref } from 'react'
+import { useRef } from 'react'
 import { useCallbackRef } from '../../../../utils'
-import { ComboboxOptionObject } from '../types'
+import type { ComboboxOptionObject } from '../types'
 
 export function useComboboxRefs(forwardedRef: Ref<HTMLDivElement>) {
   // Need this to get the menu width

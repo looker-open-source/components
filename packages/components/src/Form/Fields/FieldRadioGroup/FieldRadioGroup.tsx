@@ -24,12 +24,15 @@
 
  */
 
-import React, { FC } from 'react'
+import type { FC } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { useID } from '../../../utils'
 import { useFormContext } from '../../Form'
-import { Field, FieldProps, omitFieldProps, pickFieldProps } from '../Field'
-import { RadioGroup, RadioGroupProps } from '../../Inputs/OptionsGroup'
+import type { FieldProps } from '../Field'
+import { Field, omitFieldProps, pickFieldProps } from '../Field'
+import type { RadioGroupProps } from '../../Inputs/OptionsGroup'
+import { RadioGroup } from '../../Inputs/OptionsGroup'
 
 export interface FieldRadioGroupProps
   extends RadioGroupProps,

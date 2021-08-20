@@ -24,8 +24,9 @@
 
  */
 
-import React, { FC, useContext } from 'react'
-import { DensityRamp } from '@looker/design-tokens'
+import type { FC } from 'react'
+import React, { useContext } from 'react'
+import type { DensityRamp } from '@looker/design-tokens'
 import { ThemeContext, ThemeProvider } from 'styled-components'
 
 export type DensityProps = {

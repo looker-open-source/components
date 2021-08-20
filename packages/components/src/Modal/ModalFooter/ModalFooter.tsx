@@ -24,10 +24,12 @@
 
  */
 
-import React, { FC, ReactNode } from 'react'
+import type { FC, ReactNode } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import { CompatibleHTMLProps } from '@looker/design-tokens'
-import { Space, SpaceHelperProps } from '../../Layout/Space'
+import type { CompatibleHTMLProps } from '@looker/design-tokens'
+import type { SpaceHelperProps } from '../../Layout/Space'
+import { Space } from '../../Layout/Space'
 
 export interface ModalFooterProps
   extends CompatibleHTMLProps<HTMLDivElement>,

@@ -25,7 +25,7 @@
  */
 
 import React from 'react'
-import { Story } from '@storybook/react/types-6-0'
+import type { Story } from '@storybook/react/types-6-0'
 import { TextSnippet } from '@styled-icons/material/TextSnippet'
 import { Explore } from '@styled-icons/material-outlined/Explore'
 import { TableChart } from '@styled-icons/material-outlined/TableChart'
@@ -34,7 +34,7 @@ import { Visibility } from '@styled-icons/material-outlined/Visibility'
 import { Tree } from '../Tree'
 import { TreeCollection } from '../TreeCollection'
 import { TreeItem } from '../TreeItem'
-import { TreeProps } from '../types'
+import type { TreeProps } from '../types'
 
 const Template: Story<TreeProps> = (args) => (
   <TreeCollection>

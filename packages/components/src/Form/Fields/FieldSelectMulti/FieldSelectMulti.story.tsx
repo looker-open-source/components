@@ -24,7 +24,7 @@
 
  */
 
-import { Story } from '@storybook/react/types-6-0'
+import type { Story } from '@storybook/react/types-6-0'
 import React, { useMemo, useState, useEffect } from 'react'
 import { Favorite } from '@styled-icons/material/Favorite'
 import { ChevronRight } from '@styled-icons/material-rounded/ChevronRight'
@@ -37,10 +37,11 @@ import { Space, SpaceVertical } from '../../../Layout'
 import { UnorderedList } from '../../../UnorderedList'
 import { Heading, Text } from '../../../Text'
 import { parseOption } from '../../Inputs/Combobox'
-import { SelectOptionProps, SelectOptionObject } from '../../Inputs/Select'
+import type { SelectOptionProps, SelectOptionObject } from '../../Inputs/Select'
 import { cheeseOptions } from '../../Inputs/Select/stories/options'
 import { options1k } from '../../Inputs/Select/stories/options1k'
-import { FieldSelectMulti, FieldSelectMultiProps } from './FieldSelectMulti'
+import type { FieldSelectMultiProps } from './FieldSelectMulti'
+import { FieldSelectMulti } from './FieldSelectMulti'
 
 const Template: Story<FieldSelectMultiProps> = (args) => (
   <FieldSelectMulti {...args} />

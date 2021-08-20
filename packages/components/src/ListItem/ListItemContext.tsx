@@ -25,8 +25,8 @@
  */
 
 import { createContext } from 'react'
-import { DensityProp } from '@looker/design-tokens'
-import { ListColor } from '../List'
+import type { DensityProp } from '@looker/design-tokens'
+import type { ListColor } from '../List'
 
 export type ListItemContextProps = DensityProp & {
   iconGutter: boolean

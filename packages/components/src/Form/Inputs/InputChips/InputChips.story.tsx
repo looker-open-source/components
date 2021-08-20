@@ -25,9 +25,10 @@
  */
 
 import React, { useState } from 'react'
-import { Story } from '@storybook/react/types-6-0'
+import type { Story } from '@storybook/react/types-6-0'
 import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
-import { InputChips, InputChipsProps } from './InputChips'
+import type { InputChipsProps } from './InputChips'
+import { InputChips } from './InputChips'
 
 const chipValues = ['Looker', 'Google']
 

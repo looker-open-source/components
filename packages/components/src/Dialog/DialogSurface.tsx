@@ -25,9 +25,10 @@
  */
 
 import styled, { css } from 'styled-components'
-import { height, ResponsiveValue, theme } from '@looker/design-tokens'
+import type { ResponsiveValue } from '@looker/design-tokens'
+import { height, theme } from '@looker/design-tokens'
 import { SurfaceBase, surfaceTransition } from '../Dialog/SurfaceBase'
-import { DialogDrawerWidth } from '../Drawer/DrawerSurface'
+import type { DialogDrawerWidth } from '../Drawer/DrawerSurface'
 import { dialogWidth } from './dialogWidth'
 
 export type DialogPlacementCenter = 'center'

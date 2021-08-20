@@ -24,8 +24,10 @@
 
  */
 
-import { width, WidthProps } from '@looker/design-tokens'
-import React, { FunctionComponent, useContext } from 'react'
+import type { WidthProps } from '@looker/design-tokens'
+import { width } from '@looker/design-tokens'
+import type { FunctionComponent } from 'react'
+import React, { useContext } from 'react'
 import styled, { css } from 'styled-components'
 import omit from 'lodash/omit'
 import pick from 'lodash/pick'
@@ -35,7 +37,7 @@ import { inputHeight } from '../Inputs/height'
 import { Label } from '../Label'
 import { VisuallyHidden } from '../../VisuallyHidden'
 import { ValidationMessage } from '../ValidationMessage'
-import { FieldBaseProps } from './FieldBase'
+import type { FieldBaseProps } from './FieldBase'
 import { RequiredStar } from './RequiredStar'
 
 export interface FieldProps extends FieldBaseProps, WidthProps {

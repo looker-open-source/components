@@ -24,9 +24,12 @@
 
  */
 
-import { ReactNode } from 'react'
-import { ComboboxOptionObject, ComboboxOptionIndicatorProps } from '../Combobox'
-import { IconType } from '../../../Icon'
+import type { ReactNode } from 'react'
+import type {
+  ComboboxOptionObject,
+  ComboboxOptionIndicatorProps,
+} from '../Combobox'
+import type { IconType } from '../../../Icon'
 
 export interface SelectOptionObject
   extends ComboboxOptionObject,

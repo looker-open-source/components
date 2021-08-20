@@ -24,7 +24,8 @@
 
  */
 
-import React, { FC, ReactNode } from 'react'
+import type { FC, ReactNode } from 'react'
+import React from 'react'
 import { Spinner } from '../../Spinner'
 
 export interface ModalLayoutProps {

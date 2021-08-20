@@ -24,11 +24,14 @@
 
  */
 
-import React, { forwardRef, Ref } from 'react'
+import type { Ref } from 'react'
+import React, { forwardRef } from 'react'
 import styled from 'styled-components'
-import { List, ListProps } from '../List'
+import type { ListProps } from '../List'
+import { List } from '../List'
 import { listPadding } from '../List/utils'
-import { CloseParentMenuProps, NestedMenuProvider } from './NestedMenuProvider'
+import type { CloseParentMenuProps } from './NestedMenuProvider'
+import { NestedMenuProvider } from './NestedMenuProvider'
 
 export type MenuListProps = Omit<ListProps, 'color'> & CloseParentMenuProps
 

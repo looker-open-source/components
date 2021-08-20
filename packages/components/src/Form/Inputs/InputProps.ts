@@ -25,8 +25,8 @@
  */
 
 import pick from 'lodash/pick'
-import { CompatibleHTMLProps } from '@looker/design-tokens'
-import { ValidationType } from '../ValidationMessage'
+import type { CompatibleHTMLProps } from '@looker/design-tokens'
+import type { ValidationType } from '../ValidationMessage'
 
 export interface InputProps extends CompatibleHTMLProps<HTMLInputElement> {
   validationType?: ValidationType

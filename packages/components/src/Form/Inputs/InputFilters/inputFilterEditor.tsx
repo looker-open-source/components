@@ -26,7 +26,7 @@
 
 import React from 'react'
 import { CheckboxGroup, RadioGroup } from '../OptionsGroup'
-import { InputFilterEditorRenderProp } from './types'
+import type { InputFilterEditorRenderProp } from './types'
 
 export const inputFilterEditor: InputFilterEditorRenderProp = ({
   closeEditor,

@@ -25,13 +25,10 @@
  */
 
 import { Fieldset, FieldSelect } from '@looker/components'
-import {
-  coreColors,
-  fontFamilies,
-  intentColors,
-  ThemeCustomizations,
-} from '@looker/design-tokens'
-import React, { FC, FormEvent } from 'react'
+import type { ThemeCustomizations } from '@looker/design-tokens'
+import { coreColors, fontFamilies, intentColors } from '@looker/design-tokens'
+import type { FC, FormEvent } from 'react'
+import React from 'react'
 import { fontOptions } from './defaults'
 import { ThemeFieldColor } from './ThemeFieldColor'
 import { arrayToSelectOptions } from './utils'

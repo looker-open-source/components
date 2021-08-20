@@ -24,8 +24,9 @@
 
  */
 
-import React, { FC } from 'react'
-import { Story } from '@storybook/react/types-6-0'
+import type { FC } from 'react'
+import React from 'react'
+import type { Story } from '@storybook/react/types-6-0'
 import { PersonOutline } from '@styled-icons/material/PersonOutline'
 import { DateRange } from '@styled-icons/material-outlined/DateRange'
 import { SubdirectoryArrowLeft } from '@styled-icons/material/SubdirectoryArrowLeft'
@@ -37,7 +38,7 @@ import { Status } from '../Status'
 import { List } from '../List'
 import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
 import { ListItem } from './ListItem'
-import { ListItemProps, ListItemRole } from './types'
+import type { ListItemProps, ListItemRole } from './types'
 
 const Template: Story<ListItemProps> = (args) => <ListItem {...args} />
 
