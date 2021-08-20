@@ -121,6 +121,7 @@ export const useNestedMenu = ({
         ? (e: KeyboardEvent<HTMLLIElement>) => {
             if (e.key === 'ArrowRight') {
               openNestedMenu()
+              e.preventDefault()
             }
           }
         : noop,
@@ -175,6 +176,7 @@ export const useNestedMenu = ({
           switch (e.key) {
             case 'ArrowLeft':
               closeNestedMenu()
+              e.preventDefault()
               break
             case 'Escape':
               closeModal()
