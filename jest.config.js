@@ -48,5 +48,5 @@ module.exports = {
       '<rootDir>/config/jest/fileMock.js',
   },
   setupFilesAfterEnv: ['./jest.setup.js'],
-  testMatch: ['**/?(*.)(spec|test).(ts|js)?(x)'],
+  testMatch: ['**/?(*.)spec.(ts|js)?(x)'],
 }
