@@ -24,17 +24,16 @@
 
  */
 
-import {
+import type {
   CompatibleHTMLProps,
-  reset,
-  typography,
   TypographyProps,
-  omitStyledProps,
 } from '@looker/design-tokens'
+import { reset, typography, omitStyledProps } from '@looker/design-tokens'
 import { Launch } from '@styled-icons/material/Launch'
 import omit from 'lodash/omit'
 import styled from 'styled-components'
-import React, { forwardRef, Ref } from 'react'
+import type { Ref } from 'react'
+import React, { forwardRef } from 'react'
 
 export interface LinkProps
   extends CompatibleHTMLProps<HTMLAnchorElement>,

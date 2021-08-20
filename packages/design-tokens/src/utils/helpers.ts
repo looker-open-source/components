@@ -28,7 +28,7 @@ import rgba from 'polished/lib/color/rgba'
 import lighten from 'polished/lib/color/lighten'
 import mix from 'polished/lib/color/mix'
 import { css } from 'styled-components'
-import { ExtendedStatefulColor } from '../color/types/stateful'
+import type { ExtendedStatefulColor } from '../color/types/stateful'
 
 export const buttonShadow = (color: ExtendedStatefulColor = 'key') =>
   css`

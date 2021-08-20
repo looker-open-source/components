@@ -27,8 +27,9 @@
 import React from 'react'
 import { fireEvent, screen } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { NavbarElementProps, LocaleUtils } from 'react-day-picker'
-import { CalendarContext, CalendarContextValue } from './CalendarContext'
+import type { NavbarElementProps, LocaleUtils } from 'react-day-picker'
+import type { CalendarContextValue } from './CalendarContext'
+import { CalendarContext } from './CalendarContext'
 
 import { CalendarNav } from './CalendarNav'
 

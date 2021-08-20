@@ -24,8 +24,10 @@
 
  */
 
-import React, { createContext, FC } from 'react'
-import { TrapStackContextProps, TrapStackProvider } from '../TrapStack'
+import type { FC } from 'react'
+import React, { createContext } from 'react'
+import type { TrapStackContextProps } from '../TrapStack'
+import { TrapStackProvider } from '../TrapStack'
 import { activateScrollLock } from './utils'
 
 export const ScrollLockContext = createContext<TrapStackContextProps>({})

@@ -26,7 +26,8 @@
 
 import { shouldForwardProp } from '@looker/design-tokens'
 import styled, { css } from 'styled-components'
-import { defaultGap, spaceCSS, SpaceHelperProps } from './Space'
+import type { SpaceHelperProps } from './Space'
+import { defaultGap, spaceCSS } from './Space'
 
 export interface SpaceVerticalProps extends Omit<SpaceHelperProps, 'align'> {
   /**

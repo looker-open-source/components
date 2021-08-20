@@ -24,9 +24,10 @@
 
  */
 
-import { Story } from '@storybook/react/types-6-0'
+import type { Story } from '@storybook/react/types-6-0'
 import React from 'react'
-import { SelectMulti, SelectMultiProps } from '../SelectMulti'
+import type { SelectMultiProps } from '../SelectMulti'
+import { SelectMulti } from '../SelectMulti'
 import { defaultArgTypes as argTypes } from '../../../../../../../storybook/src/defaultArgTypes'
 import { options1kGrouped } from './options1k'
 

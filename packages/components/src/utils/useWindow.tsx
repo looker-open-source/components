@@ -24,11 +24,10 @@
 
  */
 
-import React, { Ref, useMemo } from 'react'
-import {
-  GetWindowedListBoundaryProps,
-  getWindowedListBoundaries,
-} from './getWindowedListBoundaries'
+import type { Ref } from 'react'
+import React, { useMemo } from 'react'
+import type { GetWindowedListBoundaryProps } from './getWindowedListBoundaries'
+import { getWindowedListBoundaries } from './getWindowedListBoundaries'
 import { useCallbackRef } from './useCallbackRef'
 import { useMeasuredElement } from './useMeasuredElement'
 import { useScrollPosition } from './useScrollPosition'

@@ -24,12 +24,10 @@
 
  */
 
-import React, { useContext, FC, useState } from 'react'
-import {
-  convertRemToPx,
-  NamedBreakpoints,
-  BreakpointRamp,
-} from '@looker/design-tokens'
+import type { FC } from 'react'
+import React, { useContext, useState } from 'react'
+import type { NamedBreakpoints } from '@looker/design-tokens'
+import { convertRemToPx, BreakpointRamp } from '@looker/design-tokens'
 import isArray from 'lodash/isArray'
 import { ThemeContext } from 'styled-components'
 import { useResize } from '../utils'

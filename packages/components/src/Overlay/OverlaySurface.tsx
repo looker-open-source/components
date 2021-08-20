@@ -24,21 +24,11 @@
 
  */
 
-import {
-  CompatibleHTMLProps,
-  fadeIn,
-  maxWidth,
-  MaxWidthProps,
-  reset,
-} from '@looker/design-tokens'
-import { Placement } from '@popperjs/core'
-import React, {
-  DOMAttributes,
-  forwardRef,
-  Ref,
-  useContext,
-  useRef,
-} from 'react'
+import type { CompatibleHTMLProps, MaxWidthProps } from '@looker/design-tokens'
+import { fadeIn, maxWidth, reset } from '@looker/design-tokens'
+import type { Placement } from '@popperjs/core'
+import type { DOMAttributes, Ref } from 'react'
+import React, { forwardRef, useContext, useRef } from 'react'
 import styled from 'styled-components'
 import { useGlobalHotkeys, useForkedRef, partitionAriaProps } from '../utils'
 import { DialogContext } from '../Dialog'

@@ -24,28 +24,24 @@
 
  */
 
-import { TFunction } from 'i18next'
-import {
+import type { TFunction } from 'i18next'
+import type {
   CompatibleHTMLProps,
-  omitStyledProps,
   TypographyProps,
-  variant,
 } from '@looker/design-tokens'
+import { omitStyledProps, variant } from '@looker/design-tokens'
 import { Close } from '@styled-icons/material/Close'
 import noop from 'lodash/noop'
 import isUndefined from 'lodash/isUndefined'
-import React, {
-  forwardRef,
-  Ref,
-  useState,
-  useEffect,
-  ReactElement,
-} from 'react'
+import type { Ref, ReactElement } from 'react'
+import React, { forwardRef, useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
-import { IconButton, ButtonProps, ButtonTransparent } from '../Button'
+import type { ButtonProps } from '../Button'
+import { IconButton, ButtonTransparent } from '../Button'
 import { Space } from '../Layout/Space'
-import { SimpleLayoutProps, simpleLayoutCSS } from '../Layout/utils/simple'
+import type { SimpleLayoutProps } from '../Layout/utils/simple'
+import { simpleLayoutCSS } from '../Layout/utils/simple'
 import { useReadOnlyWarn } from '../utils'
 import { getIntentLabel, Status } from '../Status'
 

@@ -24,14 +24,9 @@
 
  */
 
-import { CompatibleHTMLProps } from '@looker/design-tokens'
-import React, {
-  Children,
-  FC,
-  ReactElement,
-  ReactNode,
-  isValidElement,
-} from 'react'
+import type { CompatibleHTMLProps } from '@looker/design-tokens'
+import type { FC, ReactElement, ReactNode } from 'react'
+import React, { Children, isValidElement } from 'react'
 import { mergeClassNames } from '../utils'
 import { AccordionContent } from './AccordionContent'
 import { AccordionDisclosure } from './AccordionDisclosure'

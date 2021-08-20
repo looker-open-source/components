@@ -24,8 +24,9 @@
 
  */
 
-import { useEffect, CSSProperties, useState } from 'react'
-import { Placement } from '@popperjs/core'
+import type { CSSProperties } from 'react'
+import { useEffect, useState } from 'react'
+import type { Placement } from '@popperjs/core'
 
 const topPlacements: Placement[] = [
   'top',

@@ -24,7 +24,8 @@
 
  */
 
-import React, { FC } from 'react'
+import type { FC } from 'react'
+import React from 'react'
 import { reset } from '@looker/design-tokens'
 import styled from 'styled-components'
 

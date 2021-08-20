@@ -24,12 +24,13 @@
 
  */
 
-import { Story } from '@storybook/react/types-6-0'
+import type { Story } from '@storybook/react/types-6-0'
 import { AutoGraph } from '@styled-icons/material/AutoGraph'
 import { PieChart } from '@styled-icons/material/PieChart'
 import { TableChart } from '@styled-icons/material/TableChart'
 import React from 'react'
-import { Select, SelectProps } from '../Select'
+import type { SelectProps } from '../Select'
+import { Select } from '../Select'
 import { defaultArgTypes as argTypes } from '../../../../../../../storybook/src/defaultArgTypes'
 import { options1kGrouped } from './options1k'
 

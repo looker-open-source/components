@@ -24,7 +24,8 @@
 
  */
 
-import React, { FC } from 'react'
+import type { FC } from 'react'
+import React from 'react'
 import { List, ListItem } from '../'
 
 const Item: FC = (props) => <ListItem {...props}>blah</ListItem>

@@ -24,11 +24,14 @@
 
  */
 
-import { DefaultTheme } from 'styled-components'
-import { Colors, colors } from '../color'
-import { elevations, Elevations } from '../elevation'
-import { space, SpaceRamp } from '../space'
-import {
+import type { DefaultTheme } from 'styled-components'
+import type { Colors } from '../color'
+import { colors } from '../color'
+import type { Elevations } from '../elevation'
+import { elevations } from '../elevation'
+import type { SpaceRamp } from '../space'
+import { space } from '../space'
+import type {
   Easings,
   FontFamilyChoices,
   FontSizeRamp,

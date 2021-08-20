@@ -25,15 +25,16 @@
  */
 
 import styled from 'styled-components'
-import {
-  layout,
+import type {
   CompatibleHTMLProps,
   LayoutProps,
-  textTransform,
   TextTransformProps,
 } from '@looker/design-tokens'
-import { TruncateCSSProps, truncateCSS } from '../Text/truncate'
-import { TextBase, TextBaseProps } from './TextBase'
+import { layout, textTransform } from '@looker/design-tokens'
+import type { TruncateCSSProps } from '../Text/truncate'
+import { truncateCSS } from '../Text/truncate'
+import type { TextBaseProps } from './TextBase'
+import { TextBase } from './TextBase'
 
 export interface ParagraphProps
   extends TextBaseProps,

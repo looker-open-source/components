@@ -28,7 +28,8 @@ import { screen } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import React from 'react'
 import styled from 'styled-components'
-import { userSelect, UserSelectProps } from './userSelect'
+import type { UserSelectProps } from './userSelect'
+import { userSelect } from './userSelect'
 
 test('userSelect', () => {
   const Test = styled.p<UserSelectProps>`

@@ -25,9 +25,10 @@
  */
 
 import React, { useState } from 'react'
-import { Story } from '@storybook/react/types-6-0'
+import type { Story } from '@storybook/react/types-6-0'
 import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
-import { PageSizeProps, PageSize } from '.'
+import type { PageSizeProps } from '.'
+import { PageSize } from '.'
 
 const Template: Story<PageSizeProps> = (args) => <PageSize {...args} />
 

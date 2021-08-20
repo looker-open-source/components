@@ -24,7 +24,8 @@
 
  */
 
-import { RefObject, useEffect, useState } from 'react'
+import type { RefObject } from 'react'
+import { useEffect, useState } from 'react'
 import { getCurrentNode } from './getCurrentNode'
 import { useCallbackRef } from './useCallbackRef'
 

@@ -24,7 +24,7 @@
 
  */
 
-import { SyntheticEvent } from 'react'
+import type { SyntheticEvent } from 'react'
 
 /**
  * Merges 2 optional event handlers

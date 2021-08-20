@@ -24,17 +24,16 @@
 
  */
 
-import React, { forwardRef, Ref } from 'react'
+import type { Ref } from 'react'
+import React, { forwardRef } from 'react'
 import styled from 'styled-components'
 import { useID } from '../../../utils'
 import { useFormContext } from '../../Form'
-import {
-  ToggleSwitch,
-  ToggleSwitchProps,
-} from '../../Inputs/ToggleSwitch/ToggleSwitch'
+import type { ToggleSwitchProps } from '../../Inputs/ToggleSwitch/ToggleSwitch'
+import { ToggleSwitch } from '../../Inputs/ToggleSwitch/ToggleSwitch'
 import { omitFieldProps, pickFieldProps } from '../Field'
 import { FieldInline } from '../FieldInline'
-import { FieldBaseProps } from '../FieldBase'
+import type { FieldBaseProps } from '../FieldBase'
 
 export interface FieldToggleSwitchProps
   extends FieldBaseProps,

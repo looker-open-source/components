@@ -24,10 +24,11 @@
 
  */
 
-import React, { FC, ReactNode, useContext, useRef } from 'react'
+import type { FC, ReactNode } from 'react'
+import React, { useContext, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
-import { CompatibleHTMLProps } from '@looker/design-tokens'
+import type { CompatibleHTMLProps } from '@looker/design-tokens'
 import { MoreVert } from '@styled-icons/material/MoreVert'
 import { IconButton } from '../../Button'
 import { Menu } from '../../Menu'

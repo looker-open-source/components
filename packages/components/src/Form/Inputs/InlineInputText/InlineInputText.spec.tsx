@@ -26,7 +26,8 @@
 
 import { renderWithTheme } from '@looker/components-test-utils'
 import { screen, fireEvent } from '@testing-library/react'
-import React, { useState, ChangeEvent } from 'react'
+import type { ChangeEvent } from 'react'
+import React, { useState } from 'react'
 import { Button } from '../../../Button'
 import { InlineInputText, InlineInputTextBase } from './InlineInputText'
 

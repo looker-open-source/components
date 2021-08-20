@@ -24,10 +24,11 @@
 
  */
 
-import { KeyboardEvent, useCallback } from 'react'
-import { CompatibleHTMLProps } from '@looker/design-tokens'
+import type { KeyboardEvent } from 'react'
+import { useCallback } from 'react'
+import type { CompatibleHTMLProps } from '@looker/design-tokens'
 import { useWrapEvent } from '../utils'
-import { RippleCallbacks } from './types'
+import type { RippleCallbacks } from './types'
 
 export const rippleHandlerKeys = [
   'onBlur',

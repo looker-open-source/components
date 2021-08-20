@@ -27,7 +27,7 @@
 import React, { useContext, useMemo } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { ThemeContext } from 'styled-components'
-import { FontSources } from '@looker/design-tokens'
+import type { FontSources } from '@looker/design-tokens'
 
 export const fontFacesCSS = (fontSources: FontSources) =>
   fontSources

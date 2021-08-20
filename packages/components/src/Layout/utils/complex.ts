@@ -24,19 +24,22 @@
 
  */
 
+import type {
+  BorderProps,
+  BoxShadowProps,
+  ColorProps,
+  TypographyProps,
+} from '@looker/design-tokens'
 import {
   border,
   boxShadow,
   color,
   reset,
   typography,
-  BorderProps,
-  BoxShadowProps,
-  ColorProps,
-  TypographyProps,
 } from '@looker/design-tokens'
 import { css } from 'styled-components'
-import { simpleLayoutCSS, SimpleLayoutProps } from './simple'
+import type { SimpleLayoutProps } from './simple'
+import { simpleLayoutCSS } from './simple'
 
 /**
  * @deprecated - use `CommonLayoutProps` instead.

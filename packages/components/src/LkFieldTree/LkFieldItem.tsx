@@ -24,7 +24,8 @@
 
  */
 
-import React, { FocusEvent, useContext, useState } from 'react'
+import type { FocusEvent } from 'react'
+import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
 import { Flex } from '../Layout'
 import { createListItemPartitions } from '../ListItem/utils'
@@ -38,7 +39,7 @@ import {
 import { TreeContext } from '../Tree/TreeContext'
 import { LkFieldItemContent } from './LkFieldItemContent'
 import { LkFieldItemLabel } from './LkFieldItemLabel'
-import { LkFieldItemProps } from './types'
+import type { LkFieldItemProps } from './types'
 import { lkFieldItemDensity } from './defaults'
 
 export const LkFieldItem = styled(

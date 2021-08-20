@@ -31,9 +31,10 @@
 // 2. No need for most of the configurable features
 // 3. The text of an input should not be selected on focus if it is readonly
 
-import { tabbable, isFocusable, FocusableElement, isTabbable } from 'tabbable'
-import { Trap } from '../TrapStack/types'
-import { FocusTrapOptions } from './types'
+import type { FocusableElement } from 'tabbable'
+import { tabbable, isFocusable, isTabbable } from 'tabbable'
+import type { Trap } from '../TrapStack/types'
+import type { FocusTrapOptions } from './types'
 
 const isSelectableInput = (
   node: FocusableElement

@@ -27,7 +27,7 @@
 // Much of the following is pulled from https://github.com/reach/reach-ui
 // because their work is fantastic (but is not in TypeScript)
 
-import {
+import type {
   CompatibleHTMLProps,
   FlexboxProps,
   LayoutProps,
@@ -35,12 +35,13 @@ import {
   SpaceProps,
 } from '@looker/design-tokens'
 import isMatch from 'lodash/isMatch'
-import React, { forwardRef, Ref } from 'react'
+import type { Ref } from 'react'
+import React, { forwardRef } from 'react'
 import styled from 'styled-components'
 import { useID } from '../../../utils'
 import { Box } from '../../../Layout'
 import { useFocusManagement } from './utils/useFocusManagement'
-import {
+import type {
   ComboboxCallback,
   ComboboxMultiCallback,
   ComboboxOptionObject,

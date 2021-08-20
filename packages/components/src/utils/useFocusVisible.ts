@@ -24,14 +24,15 @@
 
  */
 
-import { CompatibleHTMLProps } from '@looker/design-tokens'
-import { FocusEvent, KeyboardEvent, useMemo, useState } from 'react'
-import {
-  css,
+import type { CompatibleHTMLProps } from '@looker/design-tokens'
+import type { FocusEvent, KeyboardEvent } from 'react'
+import { useMemo, useState } from 'react'
+import type {
   DefaultTheme,
   FlattenInterpolation,
   ThemedStyledProps,
 } from 'styled-components'
+import { css } from 'styled-components'
 
 export interface FocusVisibleProps {
   focusVisible: boolean

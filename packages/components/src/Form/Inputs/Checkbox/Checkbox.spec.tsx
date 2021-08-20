@@ -28,7 +28,7 @@ import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { act, fireEvent, screen } from '@testing-library/react'
 import { composeStories } from '@storybook/testing-react'
-import { CheckboxProps } from './Checkbox'
+import type { CheckboxProps } from './Checkbox'
 import * as stories from './Checkbox.story'
 
 const { Basic, Checked, ReadOnly } = composeStories(stories)

@@ -25,7 +25,8 @@
  */
 
 import { ScrollLockContext } from '@looker/components-providers'
-import { useTrapStack, UseTrapStackProps } from './useTrapStack'
+import type { UseTrapStackProps } from './useTrapStack'
+import { useTrapStack } from './useTrapStack'
 
 export const useScrollLock = <T extends HTMLElement = HTMLElement>(
   props: Omit<UseTrapStackProps<T>, 'context'> = {}

@@ -30,9 +30,12 @@
 import cloneDeep from 'lodash/cloneDeep'
 import concat from 'lodash/concat'
 import merge from 'lodash/merge'
-import { useEffect, useMemo, useRef, useState, CSSProperties } from 'react'
-import { createPopper, Instance, Options, State } from '@popperjs/core'
-import { ElementOrRef, getCurrentNode } from './getCurrentNode'
+import type { CSSProperties } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import type { Instance, Options, State } from '@popperjs/core'
+import { createPopper } from '@popperjs/core'
+import type { ElementOrRef } from './getCurrentNode'
+import { getCurrentNode } from './getCurrentNode'
 import { useCallbackRef } from './useCallbackRef'
 
 export interface UsePopperProps {

@@ -24,9 +24,10 @@
 
  */
 
-import { CompatibleHTMLProps } from '@looker/design-tokens'
-import React, { ReactNode } from 'react'
-import { IconType } from '../../Icon'
+import type { CompatibleHTMLProps } from '@looker/design-tokens'
+import type { ReactNode } from 'react'
+import React from 'react'
+import type { IconType } from '../../Icon'
 import { MenuItem } from '../../Menu'
 
 export interface DataTableActionProps extends CompatibleHTMLProps<HTMLElement> {

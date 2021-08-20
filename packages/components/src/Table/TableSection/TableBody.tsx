@@ -26,7 +26,8 @@
 
 import { shouldForwardProp } from '@looker/design-tokens'
 import styled from 'styled-components'
-import { tableSectionCSS, TableSectionProps } from './tableSection'
+import type { TableSectionProps } from './tableSection'
+import { tableSectionCSS } from './tableSection'
 
 export const TableBody = styled.tbody
   .withConfig({ shouldForwardProp })

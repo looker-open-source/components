@@ -25,12 +25,14 @@
  */
 
 import styled from 'styled-components'
-import {
-  backgroundPosition,
+import type {
   BackgroundPositionProps,
   CompatibleHTMLProps,
-  shouldForwardProp,
   BackgroundColorProps,
+} from '@looker/design-tokens'
+import {
+  backgroundPosition,
+  shouldForwardProp,
   backgroundColor,
 } from '@looker/design-tokens'
 

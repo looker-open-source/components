@@ -24,13 +24,15 @@
 
  */
 
-import React, { forwardRef, Ref } from 'react'
+import type { Ref } from 'react'
+import React, { forwardRef } from 'react'
 import styled from 'styled-components'
 import { useID } from '../../../utils'
 import { useFormContext } from '../../Form'
-import { Radio, RadioProps } from '../../Inputs/Radio/Radio'
+import type { RadioProps } from '../../Inputs/Radio/Radio'
+import { Radio } from '../../Inputs/Radio/Radio'
 import { omitFieldProps, pickFieldProps } from '../Field'
-import { FieldBaseProps } from '../FieldBase'
+import type { FieldBaseProps } from '../FieldBase'
 import { FieldInline } from '../FieldInline'
 
 export interface FieldRadioProps extends RadioProps, FieldBaseProps {}

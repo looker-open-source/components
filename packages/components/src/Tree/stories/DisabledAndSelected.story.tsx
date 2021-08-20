@@ -24,10 +24,11 @@
 
  */
 
-import React, { FC, ReactNode } from 'react'
+import type { FC, ReactNode } from 'react'
+import React from 'react'
 import { TreeCollection, TreeItem, Tree } from '..'
 import { Grid } from '../../Layout/Grid'
-import { ListItemColor } from '../../ListItem'
+import type { ListItemColor } from '../../ListItem'
 
 const Basic: FC<{ children: ReactNode; color?: ListItemColor }> = ({
   children,

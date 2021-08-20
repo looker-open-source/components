@@ -23,21 +23,15 @@
  SOFTWARE.
 
  */
-import React, {
-  cloneElement,
-  FC,
-  isValidElement,
-  ReactNode,
-  useContext,
-  useMemo,
-} from 'react'
+import type { FC, ReactNode } from 'react'
+import React, { cloneElement, isValidElement, useContext, useMemo } from 'react'
 import { Flex } from '../../../Layout'
 import {
   ComboboxContext,
   ComboboxMultiContext,
   OptionContext,
 } from './ComboboxContext'
-import {
+import type {
   ComboboxOptionIndicatorFunction,
   ComboboxOptionIndicatorProps,
 } from './types'

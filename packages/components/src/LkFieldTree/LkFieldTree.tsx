@@ -27,11 +27,11 @@
 import styled from 'styled-components'
 import React, { useContext } from 'react'
 import { useAccordion2 } from '../Accordion2'
-import { ControlledOrUncontrolled } from '../Accordion2/controlTypes'
+import type { ControlledOrUncontrolled } from '../Accordion2/controlTypes'
 import { Flex } from '../Layout'
 import { HoverDisclosureContext, partitionAriaProps } from '../utils'
 import { List } from '../List'
-import { ListItemProps } from '../ListItem'
+import type { ListItemProps } from '../ListItem'
 import { createListItemPartitions } from '../ListItem/utils'
 import { TreeContext } from '../Tree/TreeContext'
 import {
@@ -44,7 +44,7 @@ import { lkFieldItemDensity } from './defaults'
 import { LkFieldItem } from './LkFieldItem'
 import { LkFieldItemContent } from './LkFieldItemContent'
 import { LkFieldItemLabel } from './LkFieldItemLabel'
-import { LkFieldTreeProps } from './types'
+import type { LkFieldTreeProps } from './types'
 
 const LkFieldTreeLayout = ({
   children,

@@ -24,12 +24,14 @@
 
  */
 
-import React, { forwardRef, Ref, FormEvent, useState } from 'react'
+import type { Ref, FormEvent } from 'react'
+import React, { forwardRef, useState } from 'react'
 import styled from 'styled-components'
 import { Search } from '@styled-icons/material-outlined/Search'
 import { useControlWarn } from '../../../utils'
 import { Combobox, ComboboxInput, ComboboxList } from '../Combobox'
-import { SelectProps, SelectOptionObject, SelectOptions } from '../Select'
+import type { SelectProps, SelectOptionObject } from '../Select'
+import { SelectOptions } from '../Select'
 import {
   omitAriaAndValidationProps,
   pickAriaAndValidationProps,

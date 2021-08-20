@@ -24,21 +24,24 @@
 
  */
 
-import {
-  color,
+import type {
   CompatibleHTMLProps,
-  generateIntentShade,
-  intentUIBlend,
-  reset,
   SizeLarge,
   SizeMedium,
   SizeSmall,
-  space,
   SpaceProps,
+} from '@looker/design-tokens'
+import {
+  color,
+  generateIntentShade,
+  intentUIBlend,
+  reset,
+  space,
   typography,
   variant,
 } from '@looker/design-tokens'
-import React, { forwardRef, ReactNode, Ref } from 'react'
+import type { ReactNode, Ref } from 'react'
+import React, { forwardRef } from 'react'
 import styled, { css } from 'styled-components'
 
 export type BadgeSizes = SizeSmall | SizeMedium | SizeLarge

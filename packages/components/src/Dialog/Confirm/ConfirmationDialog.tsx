@@ -25,10 +25,12 @@
  */
 
 import { useTranslation } from 'react-i18next'
-import React, { FC, useCallback, ReactElement } from 'react'
-import { StatefulColor } from '@looker/design-tokens'
+import type { FC, ReactElement } from 'react'
+import React, { useCallback } from 'react'
+import type { StatefulColor } from '@looker/design-tokens'
 import { Button, ButtonTransparent } from '../../Button'
-import { Dialog, DialogProps } from '../Dialog'
+import type { DialogProps } from '../Dialog'
+import { Dialog } from '../Dialog'
 import { ConfirmLayout } from './ConfirmLayout'
 
 export type ConfirmationCallback = (close: () => void) => void

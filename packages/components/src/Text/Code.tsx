@@ -24,9 +24,10 @@
 
  */
 
-import { ReactNode } from 'react'
+import type { ReactNode } from 'react'
 import styled from 'styled-components'
-import { TextBase, TextBaseProps } from './TextBase'
+import type { TextBaseProps } from './TextBase'
+import { TextBase } from './TextBase'
 
 export interface CodeProps extends TextBaseProps {
   children?: ReactNode

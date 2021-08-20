@@ -24,7 +24,7 @@
 
  */
 
-import { Elevations } from './types'
+import type { Elevations } from './types'
 export { Elevations } from './types'
 
 const colorBase = '60, 64, 67'

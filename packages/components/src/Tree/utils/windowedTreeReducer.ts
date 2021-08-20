@@ -24,8 +24,8 @@
 
  */
 
-import { Reducer } from 'react'
-import {
+import type { Reducer } from 'react'
+import type {
   ToggleStateMap,
   WindowedTreeNodeProps,
   WindowedTreeNodeIDProps,

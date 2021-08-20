@@ -24,8 +24,10 @@
 
  */
 
-import React, { FC, createContext } from 'react'
-import { useDelayedState, UseDelayedStateReturn } from '../utils'
+import type { FC } from 'react'
+import React, { createContext } from 'react'
+import type { UseDelayedStateReturn } from '../utils'
+import { useDelayedState } from '../utils'
 
 export type CloseParentMenuProps = {
   closeParentMenu?: () => void

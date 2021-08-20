@@ -24,9 +24,10 @@
 
  */
 
-import { Story } from '@storybook/react/types-6-0'
-import { Page } from 'puppeteer'
-import React, { FC, ReactNode, useState } from 'react'
+import type { Story } from '@storybook/react/types-6-0'
+import type { Page } from 'puppeteer'
+import type { FC, ReactNode } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { ChevronLeft } from '@styled-icons/material-rounded/ChevronLeft'
 import { ExpandMore } from '@styled-icons/material-rounded/ExpandMore'
@@ -38,7 +39,8 @@ import { Icon } from '../Icon'
 import { UnorderedList } from '../UnorderedList'
 import { Paragraph, Text } from '../Text'
 import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
-import { Accordion, AccordionProps } from './Accordion'
+import type { AccordionProps } from './Accordion'
+import { Accordion } from './Accordion'
 import { AccordionContent } from './AccordionContent'
 import { AccordionDisclosure } from './AccordionDisclosure'
 

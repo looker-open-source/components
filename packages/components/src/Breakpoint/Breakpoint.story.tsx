@@ -23,17 +23,16 @@
  SOFTWARE.
 
  */
-import React, { FC } from 'react'
+import type { FC } from 'react'
+import React from 'react'
 import { Home } from '@styled-icons/material-outlined/Home'
-import { Story } from '@storybook/react/types-6-0'
-import {
+import type { Story } from '@storybook/react/types-6-0'
+import type {
   SpaceProps,
-  space,
   BackgroundColorProps,
-  backgroundColor,
   TextColorProps,
-  textColor,
 } from '@looker/design-tokens'
+import { space, backgroundColor, textColor } from '@looker/design-tokens'
 import { Menu } from '@styled-icons/material/Menu'
 import styled from 'styled-components'
 import { VIEWPORT_MAP } from '../utils-storybook'
@@ -43,7 +42,8 @@ import { Grid, Box } from '../Layout'
 import { IconButton } from '../Button'
 import { InputSearch } from '../Form'
 import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
-import { Breakpoint, BreakpointProps } from './Breakpoint'
+import type { BreakpointProps } from './Breakpoint'
+import { Breakpoint } from './Breakpoint'
 
 export default {
   argTypes,

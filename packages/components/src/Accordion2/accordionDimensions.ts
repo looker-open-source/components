@@ -24,8 +24,12 @@
 
  */
 
-import { DensityRamp, FontSizes, SpacingSizes } from '@looker/design-tokens'
-import { IconSize } from '../Icon'
+import type {
+  DensityRamp,
+  FontSizes,
+  SpacingSizes,
+} from '@looker/design-tokens'
+import type { IconSize } from '../Icon'
 
 type AccordionDensityDimensions = {
   indicatorGap: SpacingSizes

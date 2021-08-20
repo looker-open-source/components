@@ -23,11 +23,12 @@
  SOFTWARE.
 
  */
-import React, { FC } from 'react'
-import { LocaleUtils } from 'react-day-picker'
+import type { FC } from 'react'
+import React from 'react'
+import type { LocaleUtils } from 'react-day-picker'
 import { Heading } from '@looker/components'
 import { headingSizeMap } from './CalendarNav'
-import { CalendarSize } from './calendar-size'
+import type { CalendarSize } from './calendar-size'
 
 interface NavbarElementDisabledProps {
   localeUtils: LocaleUtils

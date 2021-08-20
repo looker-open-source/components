@@ -25,13 +25,14 @@
  */
 
 import xor from 'lodash/xor'
-import React, { forwardRef, useCallback, useRef, Ref } from 'react'
+import type { Ref } from 'react'
+import React, { forwardRef, useCallback, useRef } from 'react'
 import styled from 'styled-components'
 import { useID } from '../../../utils'
 import { Fieldset } from '../../Fieldset'
 import { FieldCheckbox } from '../../Fields/FieldCheckbox'
 import { inputHeight } from '../height'
-import { OptionsGroupProps } from './OptionsGroup'
+import type { OptionsGroupProps } from './OptionsGroup'
 
 export type CheckboxGroupProps = OptionsGroupProps<string[]>
 

@@ -27,7 +27,8 @@
 import { Grid } from '@looker/components'
 import React from 'react'
 import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
-import { Editor, EditorProps } from './Editor'
+import type { EditorProps } from './Editor'
+import { Editor } from './Editor'
 
 export const ThemeEditor = (props: EditorProps) => <Editor {...props} />
 

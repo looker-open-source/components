@@ -24,13 +24,13 @@
 
  */
 
-import {
+import type {
   SizeLarge,
   SizeMedium,
   SizeSmall,
   SizeXSmall,
-  variant,
 } from '@looker/design-tokens'
+import { variant } from '@looker/design-tokens'
 
 export type ProgressCircularSizes =
   | SizeXSmall

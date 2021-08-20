@@ -25,7 +25,8 @@
  */
 
 import { useTranslation } from 'react-i18next'
-import React, { ReactNode, FC, useContext } from 'react'
+import type { ReactNode, FC } from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { ArrowDropDown } from '@styled-icons/material/ArrowDropDown'
 import { Button, ButtonTransparent } from '../../Button'

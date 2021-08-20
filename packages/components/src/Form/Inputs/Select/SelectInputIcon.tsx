@@ -27,7 +27,7 @@
 import React, { useContext } from 'react'
 import { Icon } from '../../../Icon'
 import { ComboboxContext } from '../Combobox'
-import { SelectOptionObject } from './types'
+import type { SelectOptionObject } from './types'
 
 export function getOptionIcon(value: string, options: SelectOptionObject[]) {
   if (value && options) {

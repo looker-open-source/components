@@ -24,7 +24,7 @@
 
  */
 
-import { RadiusSizes, Theme } from '@looker/design-tokens'
+import type { RadiusSizes, Theme } from '@looker/design-tokens'
 import { css } from 'styled-components'
 import { LkFieldItemLabel } from '../../LkFieldTree/LkFieldItemLabel'
 import { TreeItemContent } from '../TreeItemContent'

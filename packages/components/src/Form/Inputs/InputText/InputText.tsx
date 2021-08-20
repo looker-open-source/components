@@ -25,26 +25,18 @@
  */
 
 import omit from 'lodash/omit'
-import {
-  omitStyledProps,
-  space,
-  SpaceProps,
-  reset,
-  layout,
-} from '@looker/design-tokens'
+import type { SpaceProps } from '@looker/design-tokens'
+import { omitStyledProps, space, reset, layout } from '@looker/design-tokens'
 import { StyledIconBase } from '@styled-icons/styled-icon'
 import { Error } from '@styled-icons/material/Error'
-import React, { forwardRef, MouseEvent, ReactNode, Ref, useRef } from 'react'
+import type { MouseEvent, ReactNode, Ref } from 'react'
+import React, { forwardRef, useRef } from 'react'
 import styled, { css } from 'styled-components'
-import {
-  InputProps,
-  inputPropKeys,
-  InputTextTypeProps,
-  pickInputProps,
-} from '../InputProps'
+import type { InputProps, InputTextTypeProps } from '../InputProps'
+import { inputPropKeys, pickInputProps } from '../InputProps'
 import { innerInputStyle } from '../innerInputStyle'
-import { SimpleLayoutProps } from '../../../Layout/utils/simple'
-import { IconType } from '../../../Icon'
+import type { SimpleLayoutProps } from '../../../Layout/utils/simple'
+import type { IconType } from '../../../Icon'
 import { Span } from '../../../Text'
 import { targetIsButton, useForkedRef, useWrapEvent } from '../../../utils'
 import { InlineInputTextBase } from '../InlineInputText'

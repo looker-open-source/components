@@ -25,19 +25,17 @@
  */
 
 import styled, { ThemeContext } from 'styled-components'
-import React, { forwardRef, MouseEvent, Ref, useContext } from 'react'
+import type { MouseEvent, Ref } from 'react'
+import React, { forwardRef, useContext } from 'react'
 import { shouldForwardProp, size } from '@looker/design-tokens'
 import { ArrowRight } from '@styled-icons/material/ArrowRight'
 import { DialogContext } from '../Dialog'
-import {
-  ListItem,
-  ListItemContext,
-  ListItemProps,
-  listItemDimensions,
-} from '../ListItem'
+import type { ListItemProps } from '../ListItem'
+import { ListItem, ListItemContext, listItemDimensions } from '../ListItem'
 import { useForkedRef, useID } from '../utils'
 import { NestedMenuContext } from './NestedMenuProvider'
-import { useNestedMenu, UseNestedMenuProps } from './useNestedMenu'
+import type { UseNestedMenuProps } from './useNestedMenu'
+import { useNestedMenu } from './useNestedMenu'
 
 export interface MenuItemProps
   extends Omit<ListItemProps, 'color'>,

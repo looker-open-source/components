@@ -24,7 +24,7 @@
 
  */
 
-import { Property } from 'csstype'
+import type { Property } from 'csstype'
 import { css } from 'styled-components'
 
 export interface UserSelectProps {

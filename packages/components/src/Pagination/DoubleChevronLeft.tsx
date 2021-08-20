@@ -25,11 +25,8 @@
  */
 
 import React from 'react'
-import {
-  StyledIcon,
-  StyledIconBase,
-  StyledIconProps,
-} from '@styled-icons/styled-icon'
+import type { StyledIcon, StyledIconProps } from '@styled-icons/styled-icon'
+import { StyledIconBase } from '@styled-icons/styled-icon'
 
 export const DoubleChevronLeft: StyledIcon = React.forwardRef<
   SVGSVGElement,

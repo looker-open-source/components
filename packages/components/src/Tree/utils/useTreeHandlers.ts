@@ -24,8 +24,9 @@
 
  */
 
-import { CompatibleHTMLProps } from '@looker/design-tokens'
-import { useState, FocusEvent } from 'react'
+import type { CompatibleHTMLProps } from '@looker/design-tokens'
+import type { FocusEvent } from 'react'
+import { useState } from 'react'
 import { getNextFocusTarget, useWrapEvent } from '../../utils'
 
 export const useTreeHandlers = (

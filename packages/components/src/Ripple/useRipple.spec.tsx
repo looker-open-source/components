@@ -28,7 +28,8 @@ import { renderWithTheme } from '@looker/components-test-utils'
 import { act, fireEvent, screen } from '@testing-library/react'
 import { ThemeProvider } from 'styled-components'
 import React from 'react'
-import { useRipple, UseRippleProps } from './useRipple'
+import type { UseRippleProps } from './useRipple'
+import { useRipple } from './useRipple'
 
 const RippleInner = (props: UseRippleProps) => {
   const {

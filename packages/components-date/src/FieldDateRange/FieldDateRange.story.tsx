@@ -24,12 +24,13 @@
 
  */
 import React, { useState } from 'react'
-import { Story } from '@storybook/react/types-6-0'
+import type { Story } from '@storybook/react/types-6-0'
 import { FieldSelect, Paragraph } from '@looker/components'
 import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
 import { DateFormat } from '../DateFormat'
 import { Locales } from '../utils/i18n'
-import { FieldDateRange, FieldInputDateRangeProps } from './FieldDateRange'
+import type { FieldInputDateRangeProps } from './FieldDateRange'
+import { FieldDateRange } from './FieldDateRange'
 
 interface DateRange {
   from?: Date

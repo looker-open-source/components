@@ -24,15 +24,12 @@
 
  */
 
-import { Story } from '@storybook/react/types-6-0'
-import React, {
-  useState,
-  SyntheticEvent,
-  Dispatch,
-  SetStateAction,
-} from 'react'
+import type { Story } from '@storybook/react/types-6-0'
+import type { SyntheticEvent, Dispatch, SetStateAction } from 'react'
+import React, { useState } from 'react'
 import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
-import { FieldSlider, FieldSliderProps } from './FieldSlider'
+import type { FieldSliderProps } from './FieldSlider'
+import { FieldSlider } from './FieldSlider'
 
 export default {
   argTypes,

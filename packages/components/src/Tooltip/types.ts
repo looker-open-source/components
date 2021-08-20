@@ -24,11 +24,11 @@
 
  */
 
-import { CompatibleHTMLProps, Transitions } from '@looker/design-tokens'
-import { Placement } from '@popperjs/core'
-import { Property } from 'csstype'
-import { ReactElement, ReactNode, Ref } from 'react'
-import { MenuDomProps } from '../Menu'
+import type { CompatibleHTMLProps, Transitions } from '@looker/design-tokens'
+import type { Placement } from '@popperjs/core'
+import type { Property } from 'csstype'
+import type { ReactElement, ReactNode, Ref } from 'react'
+import type { MenuDomProps } from '../Menu'
 
 // import { UsePopoverResponseDom } from '../Popover'
 

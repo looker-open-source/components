@@ -24,8 +24,9 @@
 
  */
 
-import { CompatibleHTMLProps } from '@looker/design-tokens'
-import React, { FC, useContext } from 'react'
+import type { CompatibleHTMLProps } from '@looker/design-tokens'
+import type { FC } from 'react'
+import React, { useContext } from 'react'
 import { useID } from '../../utils/useID'
 import { DataTableRow } from '../Item/DataTableRow'
 import { DataTableContext } from '../DataTableContext'

@@ -23,10 +23,11 @@
  SOFTWARE.
 
  */
-import { useEffect, Dispatch, SetStateAction } from 'react'
+import type { Dispatch, SetStateAction } from 'react'
+import { useEffect } from 'react'
 import some from 'lodash/some'
 import every from 'lodash/every'
-import { MixedBoolean } from './Checkbox'
+import type { MixedBoolean } from './Checkbox'
 
 export interface CheckboxTreeAction {
   state: MixedBoolean

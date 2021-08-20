@@ -24,8 +24,9 @@
 
  */
 
-import React, { Context, ReactNode, useRef, useMemo } from 'react'
-import { Trap, TrapStackContextProps, TrapMap } from './types'
+import type { Context, ReactNode } from 'react'
+import React, { useRef, useMemo } from 'react'
+import type { Trap, TrapStackContextProps, TrapMap } from './types'
 import { getActiveTrap } from './utils'
 
 export interface TrapStackProviderProps<O extends unknown = unknown> {

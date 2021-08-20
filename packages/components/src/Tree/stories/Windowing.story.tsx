@@ -24,13 +24,15 @@
 
  */
 
-import React, { FormEvent, useMemo, useState } from 'react'
+import type { FormEvent } from 'react'
+import React, { useMemo, useState } from 'react'
 import styled from 'styled-components'
 import { Button } from '../../Button'
 import { InputText } from '../../Form'
 import { Space, SpaceVertical } from '../../Layout'
 import { useToggle } from '../../utils'
-import { WindowedTreeNodeProps, WindowedTreeCollection, Tree } from '..'
+import type { WindowedTreeNodeProps } from '..'
+import { WindowedTreeCollection, Tree } from '..'
 import { generateBorderRadius } from '../utils/generateBorderRadius'
 import {
   FieldPickerItem,

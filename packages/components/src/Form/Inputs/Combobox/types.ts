@@ -24,7 +24,7 @@
 
  */
 
-import {
+import type {
   ColorProps,
   CompatibleHTMLProps,
   FlexboxProps,
@@ -32,13 +32,13 @@ import {
   SpaceProps,
   TypographyProps,
 } from '@looker/design-tokens'
-import { ReactNode } from 'react'
-import {
+import type { ReactNode } from 'react'
+import type {
   InputChipsCommonProps,
   InputChipsInputControlProps,
   InputChipsValidationProps,
 } from '../InputChips'
-import { InputTextProps } from '../InputText'
+import type { InputTextProps } from '../InputText'
 
 export type OptionIndicatorProps = Partial<ComboboxOptionStatuses> &
   ComboboxOptionObject

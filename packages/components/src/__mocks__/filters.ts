@@ -24,7 +24,7 @@
 
  */
 
-import { FieldFilter } from '../Form/Inputs/InputFilters'
+import type { FieldFilter } from '../Form/Inputs/InputFilters'
 
 export const filters: FieldFilter[] = [
   {

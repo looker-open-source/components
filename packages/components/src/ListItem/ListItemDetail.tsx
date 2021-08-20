@@ -25,9 +25,10 @@
  */
 
 import styled from 'styled-components'
-import React, { ReactNode } from 'react'
+import type { ReactNode } from 'react'
+import React from 'react'
 import { HoverDisclosure } from '../utils/HoverDisclosure'
-import { ListItemDetailOptions } from './types'
+import type { ListItemDetailOptions } from './types'
 
 export type ListItemDetailProps = Omit<
   ListItemDetailOptions,

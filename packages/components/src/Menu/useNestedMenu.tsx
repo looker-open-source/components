@@ -24,17 +24,12 @@
 
  */
 
-import { CompatibleHTMLProps, transitions } from '@looker/design-tokens'
-import { Placement } from '@popperjs/core'
+import type { CompatibleHTMLProps } from '@looker/design-tokens'
+import { transitions } from '@looker/design-tokens'
+import type { Placement } from '@popperjs/core'
 import omit from 'lodash/omit'
-import React, {
-  KeyboardEvent,
-  MouseEvent,
-  ReactNode,
-  useContext,
-  useEffect,
-  useRef,
-} from 'react'
+import type { KeyboardEvent, MouseEvent, ReactNode } from 'react'
+import React, { useContext, useEffect, useRef } from 'react'
 import { DialogContext } from '../Dialog'
 import { usePopover } from '../Popover'
 import { useWrapEvent } from '../utils'

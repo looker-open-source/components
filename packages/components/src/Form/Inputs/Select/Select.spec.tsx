@@ -34,10 +34,10 @@ import { fireEvent, screen } from '@testing-library/react'
 import React, { useState, useMemo, useEffect } from 'react'
 
 import { Button } from '../../../Button'
-import { ComboboxOptionIndicatorFunction } from '../Combobox'
+import type { ComboboxOptionIndicatorFunction } from '../Combobox'
 import { Select } from './Select'
 import { SelectMulti } from './SelectMulti'
-import { SelectOptionProps } from './types'
+import type { SelectOptionProps } from './types'
 
 const options100 = Array.from(Array(100), (_, i) => ({
   value: String(i + 1),

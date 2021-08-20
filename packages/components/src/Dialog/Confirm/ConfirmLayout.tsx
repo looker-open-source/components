@@ -23,8 +23,9 @@
  SOFTWARE.
 
  */
-import React, { FC, ReactElement } from 'react'
-import { ButtonProps } from '../../Button'
+import type { FC, ReactElement } from 'react'
+import React from 'react'
+import type { ButtonProps } from '../../Button'
 import { Paragraph } from '../../Text'
 import { DialogLayout } from '../Layout'
 

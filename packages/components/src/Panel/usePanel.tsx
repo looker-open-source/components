@@ -32,7 +32,7 @@ import { PanelHeader } from './PanelHeader'
 import { PanelsContext } from './Panels'
 import { PanelSurface } from './PanelSurface'
 import { PanelWindow } from './PanelWindow'
-import { UsePanelProps, UsePanelResponse } from './types'
+import type { UsePanelProps, UsePanelResponse } from './types'
 
 export const usePanel = ({
   canClose,

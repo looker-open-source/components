@@ -24,13 +24,15 @@
 
  */
 
-import { Page } from 'puppeteer'
-import React, { useState, FC } from 'react'
-import { Story } from '@storybook/react/types-6-0'
+import type { Page } from 'puppeteer'
+import type { FC } from 'react'
+import React, { useState } from 'react'
+import type { Story } from '@storybook/react/types-6-0'
 import { Button } from '../Button'
 import { Space } from '../Layout/Space'
 import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
-import { Tab, Tabs, TabList, TabListProps, TabPanel, TabPanels } from './'
+import type { TabListProps } from './'
+import { Tab, Tabs, TabList, TabPanel, TabPanels } from './'
 
 interface DemoProps extends TabListProps {
   tabCount: number

@@ -25,10 +25,12 @@
  */
 
 import xor from 'lodash/xor'
-import React, { forwardRef, MouseEvent, Ref } from 'react'
+import type { MouseEvent, Ref } from 'react'
+import React, { forwardRef } from 'react'
 import styled from 'styled-components'
 import { ButtonItem } from './ButtonItem'
-import { ButtonGroupOrToggleBaseProps, ButtonSet } from './ButtonSet'
+import type { ButtonGroupOrToggleBaseProps } from './ButtonSet'
+import { ButtonSet } from './ButtonSet'
 
 const ButtonGroupLayout = forwardRef(
   (

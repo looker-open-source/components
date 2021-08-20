@@ -24,7 +24,7 @@
 
  */
 
-import { SpecifiableColors } from '../types'
+import type { SpecifiableColors } from '../types'
 import { defaultCoreColors, defaultIntentColors } from '../defaults'
 import { generateBlendColors } from './generateBlendColors'
 

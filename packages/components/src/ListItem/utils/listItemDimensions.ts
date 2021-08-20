@@ -24,8 +24,8 @@
 
  */
 
-import { DensityRamp } from '@looker/design-tokens'
-import { ListItemDimensions } from '../types'
+import type { DensityRamp } from '@looker/design-tokens'
+import type { ListItemDimensions } from '../types'
 
 export const density0: ListItemDimensions = {
   descriptionFontSize: 'xsmall',

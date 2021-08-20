@@ -25,7 +25,7 @@
  */
 
 import { textBlends } from '../blendPoints'
-import { BlendColors, DerivativeColors, SpecifiableColors } from '../types'
+import type { BlendColors, DerivativeColors, SpecifiableColors } from '../types'
 import { accentBlendScale, generateInteractive } from './generateStatefulColors'
 import { mixColors } from './mixColors'
 import { mixScaledColors } from './mixScaledColors'

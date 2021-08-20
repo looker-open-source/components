@@ -24,20 +24,16 @@
 
  */
 
-import {
-  color,
+import type {
   CompatibleHTMLProps,
-  reset,
-  space,
   SpaceProps,
-  typography,
   SizeLarge,
   SizeMedium,
   SizeSmall,
   SizeXSmall,
   SizeXXSmall,
-  variant,
 } from '@looker/design-tokens'
+import { color, reset, space, typography, variant } from '@looker/design-tokens'
 import { css } from 'styled-components'
 
 export type AvatarSizes =

@@ -24,16 +24,15 @@
 
  */
 
-import {
-  reset,
-  space,
-  SpaceProps,
-  toggleSwitchShadowColor,
-} from '@looker/design-tokens'
-import React, { forwardRef, Ref } from 'react'
+import type { SpaceProps } from '@looker/design-tokens'
+import { reset, space, toggleSwitchShadowColor } from '@looker/design-tokens'
+import type { Ref } from 'react'
+import React, { forwardRef } from 'react'
 import styled from 'styled-components'
-import { InputProps, pickInputProps } from '../InputProps'
-import { KnobContainer, KnobProps } from './Knob'
+import type { InputProps } from '../InputProps'
+import { pickInputProps } from '../InputProps'
+import type { KnobProps } from './Knob'
+import { KnobContainer } from './Knob'
 
 export interface ToggleSwitchProps
   extends SpaceProps,

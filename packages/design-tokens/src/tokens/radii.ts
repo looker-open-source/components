@@ -24,7 +24,7 @@
 
  */
 
-import { Radii } from '../system'
+import type { Radii } from '../system'
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 export const radii: Radii = {

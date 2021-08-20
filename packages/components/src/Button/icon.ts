@@ -26,7 +26,7 @@
 
 import { css } from 'styled-components'
 import { StyledIconBase } from '@styled-icons/styled-icon'
-import { ButtonProps } from './types'
+import type { ButtonProps } from './types'
 
 export const iconMargins = (props: ButtonProps) => {
   const spacing = { inner: '0', outer: '0' }

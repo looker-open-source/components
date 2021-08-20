@@ -24,8 +24,9 @@
 
  */
 
-import { CompatibleHTMLProps } from '@looker/design-tokens'
-import React, { forwardRef, KeyboardEvent, Ref, useRef } from 'react'
+import type { CompatibleHTMLProps } from '@looker/design-tokens'
+import type { KeyboardEvent, Ref } from 'react'
+import React, { forwardRef, useRef } from 'react'
 import styled from 'styled-components'
 import { useArrowKeyNav, useForkedRef } from '../utils'
 import { getNextTreeFocus, getTreeItems } from './utils'

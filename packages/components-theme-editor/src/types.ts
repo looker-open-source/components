@@ -24,7 +24,7 @@
 
  */
 
-import {
+import type {
   CoreColors,
   FontFamilyChoices,
   IntentColors,

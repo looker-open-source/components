@@ -24,9 +24,11 @@
 
  */
 
-import React, { FC } from 'react'
+import type { FC } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import { SpaceProps, space } from '@looker/design-tokens'
+import type { SpaceProps } from '@looker/design-tokens'
+import { space } from '@looker/design-tokens'
 import { Divider } from '../Divider'
 
 const ListDividerLayout: FC = (props) => (

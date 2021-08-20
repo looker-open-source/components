@@ -25,11 +25,12 @@
  */
 
 import React from 'react'
-import { Story } from '@storybook/react/types-6-0'
+import type { Story } from '@storybook/react/types-6-0'
 import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
 import { List } from '../List'
 import { ListItem } from '../ListItem'
-import { Density, DensityProps } from './Density'
+import type { DensityProps } from './Density'
+import { Density } from './Density'
 
 export default {
   argTypes,

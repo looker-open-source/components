@@ -23,9 +23,10 @@
  SOFTWARE.
 
  */
-import { Context, useContext, useLayoutEffect } from 'react'
-import { ComboboxInputProps, ComboboxMultiInputProps } from '../types'
-import {
+import type { Context } from 'react'
+import { useContext, useLayoutEffect } from 'react'
+import type { ComboboxInputProps, ComboboxMultiInputProps } from '../types'
+import type {
   ComboboxContextProps,
   ComboboxMultiContextProps,
 } from '../ComboboxContext'

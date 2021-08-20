@@ -28,7 +28,8 @@ import React from 'react'
 import { fireEvent, screen } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import map from 'lodash/map'
-import { InputTimeSelect, InputTimeSelectProps } from './InputTimeSelect'
+import type { InputTimeSelectProps } from './InputTimeSelect'
+import { InputTimeSelect } from './InputTimeSelect'
 
 jest.mock('lodash/throttle', () => (fn: any) => fn)
 

@@ -26,7 +26,8 @@
 
 import React from 'react'
 import { screen, render } from '@testing-library/react'
-import { useListWidths, UseListWidthProps } from './useListWidths'
+import type { UseListWidthProps } from './useListWidths'
+import { useListWidths } from './useListWidths'
 
 const getBoundingClientRectMock = jest.fn()
 

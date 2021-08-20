@@ -24,8 +24,9 @@
 
  */
 import { useTranslation } from 'react-i18next'
-import React, { FC, useContext, SyntheticEvent } from 'react'
-import { NavbarElementProps } from 'react-day-picker'
+import type { FC, SyntheticEvent } from 'react'
+import React, { useContext } from 'react'
+import type { NavbarElementProps } from 'react-day-picker'
 import styled from 'styled-components'
 import noop from 'lodash/noop'
 import { ChevronLeft } from '@styled-icons/material-rounded/ChevronLeft'
@@ -36,7 +37,7 @@ import {
   IconButton,
   Tooltip,
 } from '@looker/components'
-import { CalendarSize } from './calendar-size'
+import type { CalendarSize } from './calendar-size'
 import { CalendarContext } from './CalendarContext'
 
 export const headingSizeMap = (size?: CalendarSize) => {

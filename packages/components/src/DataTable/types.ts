@@ -24,9 +24,9 @@
 
  */
 
-import { ReactElement, ReactNode } from 'react'
-import { InputFiltersProps } from '../Form/Inputs/InputFilters'
-import { DataTableColumns } from './Column'
+import type { ReactElement, ReactNode } from 'react'
+import type { InputFiltersProps } from '../Form/Inputs/InputFilters'
+import type { DataTableColumns } from './Column'
 
 export interface DataTableProps {
   children: ReactNode

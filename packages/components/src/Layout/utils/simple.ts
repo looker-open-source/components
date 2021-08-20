@@ -25,14 +25,12 @@
  */
 
 import { css } from 'styled-components'
-import {
-  layout,
+import type {
   LayoutProps,
-  space,
   SpaceProps,
-  position,
   PositionProps,
 } from '@looker/design-tokens'
+import { layout, space, position } from '@looker/design-tokens'
 
 export interface SimpleLayoutProps
   extends LayoutProps,

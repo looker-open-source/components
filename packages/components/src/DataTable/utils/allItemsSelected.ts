@@ -24,8 +24,8 @@
 
  */
 
-import { MixedBoolean } from '../../Form/Inputs/Checkbox'
-import { SelectConfig } from '../types'
+import type { MixedBoolean } from '../../Form/Inputs/Checkbox'
+import type { SelectConfig } from '../types'
 
 type HelperArgs = Pick<SelectConfig, 'selectedItems' | 'pageItems'>
 

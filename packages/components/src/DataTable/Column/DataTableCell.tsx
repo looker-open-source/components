@@ -24,14 +24,16 @@
 
  */
 
-import React, { forwardRef, Ref, ReactNode, useEffect, useRef } from 'react'
+import type { Ref, ReactNode } from 'react'
+import React, { forwardRef, useEffect, useRef } from 'react'
 import styled from 'styled-components'
-import { CompatibleHTMLProps } from '@looker/design-tokens'
+import type { CompatibleHTMLProps } from '@looker/design-tokens'
 import { Space, SpaceVertical } from '../../Layout'
 import { Paragraph } from '../../Text'
 import { Truncate } from '../../Truncate'
 import { useFocusVisible, useForkedRef } from '../../utils'
-import { columnSize, DataTableColumnSize } from './columnSize'
+import type { DataTableColumnSize } from './columnSize'
+import { columnSize } from './columnSize'
 import { FocusableCell } from './FocusableCell'
 
 export interface DataTableCellProps

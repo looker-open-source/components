@@ -25,10 +25,8 @@
  */
 
 import styled from 'styled-components'
-import {
-  listItemBackgroundColor,
-  ListItemBackgroundColorProps,
-} from '../ListItem/utils'
+import type { ListItemBackgroundColorProps } from '../ListItem/utils'
+import { listItemBackgroundColor } from '../ListItem/utils'
 
 /**
  * @TODO: Delete TreeItemLabel once FieldItem component is completed

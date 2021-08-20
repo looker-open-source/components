@@ -24,18 +24,18 @@
 
  */
 
-import { Story } from '@storybook/react/types-6-0'
-import { Page } from 'puppeteer'
+import type { Story } from '@storybook/react/types-6-0'
+import type { Page } from 'puppeteer'
 import React, { useState } from 'react'
 import { InputFilters } from '../../Form/Inputs/InputFilters'
 import { filters as defaultFilters } from '../../__mocks__/filters'
 import { columns as mockColumns } from '../../__mocks__/DataTable/columns'
 import { data } from '../../__mocks__/DataTable/data'
 import { DataTable } from '../DataTable'
-import { DataTableProps, BulkActionsConfig, SelectConfig } from '../types'
+import type { DataTableProps, BulkActionsConfig, SelectConfig } from '../types'
 import { DataTableAction } from '../Item'
 import { useSelectManager, doDataTableSort } from '../utils'
-import { DataTableColumns } from '../Column'
+import type { DataTableColumns } from '../Column'
 import {
   actions,
   itemBuilder,

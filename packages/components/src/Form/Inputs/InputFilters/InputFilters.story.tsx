@@ -24,13 +24,15 @@
 
  */
 
-import React, { useState, FormEvent } from 'react'
-import { Story } from '@storybook/react/types-6-0'
+import type { FormEvent } from 'react'
+import React, { useState } from 'react'
+import type { Story } from '@storybook/react/types-6-0'
 import { filters } from '../../../__mocks__/filters'
 import { InputText } from '../InputText'
 import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
-import { InputFilterEditorRenderProp } from './types'
-import { InputFilters, InputFiltersProps, FieldFilter } from './'
+import type { InputFilterEditorRenderProp } from './types'
+import type { InputFiltersProps, FieldFilter } from './'
+import { InputFilters } from './'
 
 const Template: Story<InputFiltersProps> = ({ filters, ...args }) => {
   const [controlledFilters, setControlledFilters] = useState(filters)

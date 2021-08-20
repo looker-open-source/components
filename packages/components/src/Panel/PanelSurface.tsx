@@ -24,8 +24,9 @@
 
  */
 
-import styled, { Keyframes, keyframes } from 'styled-components'
-import { PanelSurfaceProps } from './types'
+import type { Keyframes } from 'styled-components'
+import styled, { keyframes } from 'styled-components'
+import type { PanelSurfaceProps } from './types'
 
 // We have to use animation/keyframes here instead of transition
 // transition starts after the class changes from entering to entered

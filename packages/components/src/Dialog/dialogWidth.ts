@@ -24,15 +24,15 @@
 
  */
 
-import {
+import type {
   SizeXSmall,
   SizeXXSmall,
   SizeSmall,
   SizeMedium,
   SizeLarge,
-  system,
   ResponsiveValue,
 } from '@looker/design-tokens'
+import { system } from '@looker/design-tokens'
 
 export type DialogSizes =
   | SizeXXSmall

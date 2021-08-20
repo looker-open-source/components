@@ -23,8 +23,10 @@
  SOFTWARE.
 
  */
-import React, { FC } from 'react'
-import { theme as builtIn, Theme } from '@looker/design-tokens'
+import type { FC } from 'react'
+import React from 'react'
+import type { Theme } from '@looker/design-tokens'
+import { theme as builtIn } from '@looker/design-tokens'
 import { ThemeProvider as ActualThemeProvider } from 'styled-components'
 
 export interface ThemeProviderProps {

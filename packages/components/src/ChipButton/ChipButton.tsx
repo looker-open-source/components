@@ -26,7 +26,8 @@
 
 import styled from 'styled-components'
 import { inputHeight } from '../Form/Inputs/height'
-import { Chip, ChipProps } from '../Chip/Chip'
+import type { ChipProps } from '../Chip/Chip'
+import { Chip } from '../Chip/Chip'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface ChipButtonProps extends Omit<ChipProps, 'role'> {}

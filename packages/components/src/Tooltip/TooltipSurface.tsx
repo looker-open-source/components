@@ -25,10 +25,10 @@
  */
 
 import styled, { css } from 'styled-components'
+import type { OverlaySurfaceProps } from '../Overlay/OverlaySurface'
 import {
   OverlaySurface,
   OverlaySurfaceContentArea,
-  OverlaySurfaceProps,
 } from '../Overlay/OverlaySurface'
 import { Link } from '../Link'
 

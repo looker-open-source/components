@@ -29,12 +29,8 @@
 // onMouseUp is an optional callback parameter for any necessary cleanup or cancellations
 // because the user changed their mind and dragged out of the element before mouseup
 
-import {
-  MouseEvent as ReactMouseEvent,
-  useEffect,
-  useRef,
-  useCallback,
-} from 'react'
+import type { MouseEvent as ReactMouseEvent } from 'react'
+import { useEffect, useRef, useCallback } from 'react'
 /**
  * @param onMouseDownClick callback with React.MouseEvent for the first of either mousedown OR click
  * @param onMouseUp callback with DOM MouseEvent for mouseup (may be outside the element)

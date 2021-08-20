@@ -24,25 +24,26 @@
 
  */
 
+import type { ReactChild, Ref } from 'react'
 import React, {
   Children,
   forwardRef,
   isValidElement,
-  ReactChild,
-  Ref,
   useContext,
   useMemo,
 } from 'react'
-import {
+import type {
   CompatibleHTMLProps,
   DensityProp,
-  fontFamily,
   FontFamilies,
-  height,
   HeightProps,
+  WidthProps,
+} from '@looker/design-tokens'
+import {
+  fontFamily,
+  height,
   shouldForwardProp,
   width,
-  WidthProps,
 } from '@looker/design-tokens'
 import styled, { ThemeContext } from 'styled-components'
 import { useArrowKeyNav, useWindow } from '../utils'

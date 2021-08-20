@@ -25,14 +25,14 @@
  */
 
 import styled from 'styled-components'
+import type { CompatibleHTMLProps, FlexboxProps } from '@looker/design-tokens'
 import {
-  CompatibleHTMLProps,
-  FlexboxProps,
   flexbox,
   paddingDefaultsHelper,
   shouldForwardProp,
 } from '@looker/design-tokens'
-import { CommonLayoutProps, commonLayoutCSS } from '../Layout/utils/common'
+import type { CommonLayoutProps } from '../Layout/utils/common'
+import { commonLayoutCSS } from '../Layout/utils/common'
 
 export interface CardContentProps
   extends CommonLayoutProps,

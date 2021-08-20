@@ -24,8 +24,9 @@
 
  */
 
-import { FontSizes } from '@looker/design-tokens'
-import React, { FC } from 'react'
+import type { FontSizes } from '@looker/design-tokens'
+import type { FC } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { Heading, Paragraph } from '../'
 

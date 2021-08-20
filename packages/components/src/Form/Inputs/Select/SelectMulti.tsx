@@ -24,19 +24,19 @@
 
  */
 
-import React, { forwardRef, Ref } from 'react'
+import type { Ref } from 'react'
+import React, { forwardRef } from 'react'
 import styled from 'styled-components'
+import type { ComboboxMultiInputProps, ComboboxMultiProps } from '../Combobox'
 import {
   ComboboxMulti,
   ComboboxMultiInput,
-  ComboboxMultiInputProps,
   ComboboxMultiList,
-  ComboboxMultiProps,
 } from '../Combobox'
-import { InputChipsValidationProps } from '../InputChips'
-import { SelectBaseProps } from './Select'
+import type { InputChipsValidationProps } from '../InputChips'
+import type { SelectBaseProps } from './Select'
 import { SelectOptions } from './SelectOptions'
-import { SelectOptionObject } from './types'
+import type { SelectOptionObject } from './types'
 import {
   omitAriaAndValidationProps,
   pickAriaAndValidationProps,

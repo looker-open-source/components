@@ -25,7 +25,8 @@
  */
 
 import styled from 'styled-components'
-import { Span, SpanProps } from './Span'
+import type { SpanProps } from './Span'
+import { Span } from './Span'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface TextProps extends SpanProps {}

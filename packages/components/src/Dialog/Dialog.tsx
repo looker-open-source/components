@@ -24,9 +24,12 @@
 
  */
 
-import React, { FC, ReactNode } from 'react'
-import { useDialog, UseDialogProps } from './useDialog'
-import { DialogRender, DialogRenderProp } from './DialogRender'
+import type { FC, ReactNode } from 'react'
+import React from 'react'
+import type { UseDialogProps } from './useDialog'
+import { useDialog } from './useDialog'
+import type { DialogRenderProp } from './DialogRender'
+import { DialogRender } from './DialogRender'
 
 export interface DialogProps extends Omit<UseDialogProps, 'content'> {
   children?: DialogRenderProp | ReactNode
