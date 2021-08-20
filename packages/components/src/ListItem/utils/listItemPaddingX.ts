@@ -24,20 +24,14 @@
 
  */
 
-import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { screen } from '@testing-library/react'
-import { Basic } from './stories/NavList.story'
+import { DensityRamp } from '@looker/design-tokens'
+import { css } from 'styled-components'
+import { listItemDimensions } from './listItemDimensions'
 
-describe('NavList', () => {
-  test('display with theme.colors.key', () => {
-    renderWithTheme(<Basic />)
-
-    const listItem = screen.getByText('Explore')
-    expect(listItem).toHaveStyle('color: #6c43e0;')
-    expect(screen.getByText('Interesting details')).toHaveStyle(
-      'color: #6c43e0'
-    )
-    expect(screen.getByText('Description')).toHaveStyle('color: #6c43e0;')
-  })
-})
+export const listItemPaddingX = (density: DensityRamp = 0) => css`
+  ${({ theme: { space } }) =>
+    `
+      padding-left: ${space[listItemDimensions(density).px]};
+      padding-right: ${space[listItemDimensions(density).px]};
+    `}
+`

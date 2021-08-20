@@ -33,11 +33,7 @@ import styled, {
 } from 'styled-components'
 import { FocusVisibleProps } from '../utils'
 import { ListItemColorProp, ListItemRole, ListItemStatefulProps } from './types'
-import {
-  listItemBackgroundColor,
-  listItemDimensions,
-  listItemPadding,
-} from './utils'
+import { listItemBackgroundColor, listItemPaddingX } from './utils'
 
 const Button = styled.button`
   font-family: inherit;
@@ -87,14 +83,6 @@ const ListItemContentInternal: FC<ListItemContentProps> = ({
   )
 }
 
-const itemRoleNoneHeight = (density: DensityRamp = 0) => {
-  const { height } = listItemDimensions(density)
-
-  return css`
-    min-height: ${height}px;
-  `
-}
-
 export const ListItemContent = styled(ListItemContentInternal)`
   ${listItemBackgroundColor}
 
@@ -130,14 +118,10 @@ export const ListItemContent = styled(ListItemContentInternal)`
   margin: 0; /* safari has default margin */
   min-width: 0;
   outline: none;
-  ${({ density }) => listItemPadding(density)}
-  /*
-    Remove itemRole-specific space CSS when FieldItem is completed
-  */
-  padding-bottom: ${({ itemRole }) => (itemRole === 'none' ? 0 : undefined)};
-  padding-top: ${({ itemRole }) => (itemRole === 'none' ? 0 : undefined)};
-  ${({ density, itemRole }) =>
-    itemRole === 'none' && itemRoleNoneHeight(density)}
+
+  padding: 0; /* Remove default top and bottom padding */
+  ${({ density }) => listItemPaddingX(density)}
+
   /*
     Supports absolutely positioned box-shadow
   */

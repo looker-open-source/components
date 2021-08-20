@@ -24,8 +24,8 @@
 
  */
 
-import styled, { css } from 'styled-components'
-import { listItemDimensions } from '..'
+import styled from 'styled-components'
+import { ListItemLabel } from '../ListItem'
 import { generateIndent } from '../Tree/utils'
 import { lkFieldItemDensity } from './defaults'
 
@@ -35,21 +35,21 @@ export type LkFieldItemContentProps = {
   focusVisible: boolean
 }
 
-const itemRoleNoneHeight = () => {
-  const { height } = listItemDimensions(lkFieldItemDensity)
-
-  return css`
-    min-height: ${height}px;
-  `
-}
-
 export const LkFieldItemContent = styled.div.attrs<LkFieldItemContentProps>(
   ({ role = 'treeitem' }) => ({
     role,
   })
 )<LkFieldItemContentProps>`
+  /**
+    Height and padding normally get set by both the icon and label containers, but we're removing the
+    padding on the label container to avoid hover disclosed icons from expanding items in the core
+    Looker Field Picker
+  */
+  ${ListItemLabel} {
+    padding: 0;
+  }
+
   ${({ depth }) => generateIndent({ density: lkFieldItemDensity, depth })}
-  ${itemRoleNoneHeight()}
 
   /*
   IconButtons with hovered / selected backgrounds sit above

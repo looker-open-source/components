@@ -24,20 +24,38 @@
 
  */
 
+import { Story } from '@storybook/react/types-6-0'
 import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { screen } from '@testing-library/react'
-import { Basic } from './stories/NavList.story'
+import { defaultArgTypes as argTypes } from '../../../../../storybook/src/defaultArgTypes'
+import { TreeCollection } from '../../Tree'
+import { LkFieldItem, LkFieldTree, LkFieldTreeProps } from '../'
 
-describe('NavList', () => {
-  test('display with theme.colors.key', () => {
-    renderWithTheme(<Basic />)
+export default {
+  argTypes,
+  component: LkFieldTree,
+  title: 'LkFieldTree',
+}
 
-    const listItem = screen.getByText('Explore')
-    expect(listItem).toHaveStyle('color: #6c43e0;')
-    expect(screen.getByText('Interesting details')).toHaveStyle(
-      'color: #6c43e0'
-    )
-    expect(screen.getByText('Description')).toHaveStyle('color: #6c43e0;')
-  })
-})
+export * from './FieldPicker.story'
+
+const Template: Story<LkFieldTreeProps> = (args) => (
+  <TreeCollection>
+    <LkFieldTree label={<strong>Orders</strong>} {...args}>
+      <LkFieldTree label={<strong>Orders</strong>} defaultOpen>
+        <LkFieldItem>ID</LkFieldItem>
+        <LkFieldItem>Status</LkFieldItem>
+        <LkFieldTree label={<strong>Created</strong>} defaultOpen>
+          <LkFieldItem>Created Date</LkFieldItem>
+          <LkFieldItem>Created Month</LkFieldItem>
+          <LkFieldItem>Created Year</LkFieldItem>
+          <LkFieldItem>Created Quarter</LkFieldItem>
+        </LkFieldTree>
+      </LkFieldTree>
+    </LkFieldTree>
+  </TreeCollection>
+)
+
+export const Basic = Template.bind({})
+Basic.args = {
+  defaultOpen: true,
+}

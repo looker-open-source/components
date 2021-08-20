@@ -30,14 +30,15 @@ import styled, {
   StyledComponent,
   ThemeContext,
 } from 'styled-components'
-import {
-  color as colorHelper,
-  DensityProp,
-  SpacingSizes,
-} from '@looker/design-tokens'
+import { color as colorHelper, DensityProp } from '@looker/design-tokens'
 import { StyledIconBase } from '@styled-icons/styled-icon'
-import { IconPlaceholder, IconSize } from '../Icon'
-import { listItemDimensions, listItemIconColor } from './utils'
+import { IconPlaceholder } from '../Icon'
+import {
+  listItemDimensions,
+  listItemIconColor,
+  listItemPaddingY,
+} from './utils'
+import { ListItemDimensions } from './types'
 
 export type ListItemIconProps = DensityProp & {
   color?: string
@@ -45,10 +46,8 @@ export type ListItemIconProps = DensityProp & {
   alignStart?: boolean
 }
 
-type ListItemIconInternalProps = Omit<ListItemIconProps, 'density'> & {
-  iconGap: SpacingSizes
-  iconSize: IconSize
-}
+type ListItemIconInternalProps = ListItemIconProps &
+  Pick<ListItemDimensions, 'height' | 'iconGap' | 'iconSize' | 'py'>
 
 export const ListItemIcon: StyledComponent<
   'div',
@@ -57,29 +56,32 @@ export const ListItemIcon: StyledComponent<
 > = styled.div.attrs<ListItemIconProps>(
   ({ color, disabled, density, ...props }) => {
     const theme = useContext(ThemeContext)
-    const { iconGap, iconSize } = listItemDimensions(
+    const { height, iconGap, iconSize, py } = listItemDimensions(
       density || theme.defaults.density
     )
 
     return {
       ...props,
       color: listItemIconColor(color, disabled),
+      density,
+      height,
       iconGap,
       iconSize,
+      py,
     }
   }
 )<ListItemIconInternalProps>`
   align-self: ${({ alignStart }) => (alignStart ? 'flex-start' : 'center')};
   display: flex;
   margin-right: ${({ iconGap, theme }) => theme.space[iconGap]};
+  ${({ density }) => listItemPaddingY(density)}
+
   ${colorHelper}
 
-  & > svg,
-  ${StyledIconBase}, ${IconPlaceholder} {
+  & > svg, ${StyledIconBase}, ${IconPlaceholder} {
     flex-grow: 0;
     flex-shrink: 0;
     height: ${({ iconSize, theme }) => theme.sizes[iconSize]};
-    /* justify-content: center; */
     width: ${({ iconSize, theme }) => theme.sizes[iconSize]};
   }
 `
