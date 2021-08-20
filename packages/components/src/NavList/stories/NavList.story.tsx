@@ -27,6 +27,7 @@
 import React, { useState } from 'react'
 import { Info } from '@styled-icons/material-outlined/Info'
 import { Home } from '@styled-icons/material-outlined/Home'
+import { IconButton } from '../../Button'
 import { Aside } from '../../Layout'
 import { ListItem } from '../../ListItem'
 import { ProgressCircular } from '../../ProgressCircular'
@@ -115,3 +116,54 @@ export const MixedNavigation = () => (
     </NavList>
   </Aside>
 )
+
+export const KeyboardNavigation = () => {
+  const getDetail = (label: string) => ({
+    content: (
+      <IconButton label={`${label}-button`} icon={<Info />} tooltipDisabled />
+    ),
+    options: { hoverDisclosure: true },
+  })
+
+  return (
+    <NavList>
+      <ListItem
+        icon={<Info />}
+        detail={getDetail('list-item-detail')}
+        itemRole="none"
+      >
+        List Item
+      </ListItem>
+      <NavTree
+        icon={<Info />}
+        label="Nav Tree Default"
+        detail={getDetail('nav-tree-detail')}
+        defaultOpen
+      >
+        <NavTreeItem
+          parentIcon
+          detail={getDetail('nav-tree-item-detail')}
+          itemRole="none"
+        >
+          Nav Tree Item
+        </NavTreeItem>
+      </NavTree>
+      <NavTree
+        icon={<Info />}
+        indicatorLabel="Nav Tree Link Indicator"
+        label="Nav Tree Link"
+        detail={getDetail('nav-tree-link-detail')}
+        defaultOpen
+        href="https://google.com"
+        target="_blank"
+      >
+        <NavTreeItem parentIcon itemRole="none">
+          Now You See Me
+        </NavTreeItem>
+      </NavTree>
+    </NavList>
+  )
+}
+KeyboardNavigation.parameters = {
+  storyshots: { disable: true },
+}
