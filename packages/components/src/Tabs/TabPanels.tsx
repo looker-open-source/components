@@ -24,17 +24,15 @@
 
  */
 
-import React, { Children, cloneElement, FC } from 'react'
+import type { FC } from 'react'
+import React, { Children, cloneElement } from 'react'
 import styled from 'styled-components'
-import {
+import type {
   FlexboxProps,
   LayoutProps,
   SpaceProps,
-  flexbox,
-  layout,
-  space,
-  reset,
 } from '@looker/design-tokens'
+import { flexbox, layout, space, reset } from '@looker/design-tokens'
 import omit from 'lodash/omit'
 
 export interface TabPanelsProps extends FlexboxProps, LayoutProps, SpaceProps {

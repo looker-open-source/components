@@ -25,7 +25,8 @@
  */
 
 import { Box, Code, Text, Heading, UnorderedList } from '@looker/components'
-import React, { FC } from 'react'
+import type { FC } from 'react';
+import React from 'react'
 import styled from 'styled-components'
 
 const spacingTypes = [

@@ -24,8 +24,10 @@
 
  */
 
-import { Heading, HeadingProps } from '@looker/components'
-import React, { FC, ReactNode } from 'react'
+import type { HeadingProps } from '@looker/components';
+import { Heading } from '@looker/components'
+import type { FC, ReactNode } from 'react';
+import React from 'react'
 import styled from 'styled-components'
 import { maxTextWidth } from './styles'
 

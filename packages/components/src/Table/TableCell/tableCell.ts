@@ -24,19 +24,21 @@
 
  */
 
+import type {
+  CompatibleHTMLProps,
+  BorderProps,
+  ColorProps,
+  LayoutProps,
+  TypographyProps,
+  SpaceProps,
+} from '@looker/design-tokens'
 import {
   reset,
-  CompatibleHTMLProps,
   border,
-  BorderProps,
   color,
-  ColorProps,
   layout,
-  LayoutProps,
   typography,
-  TypographyProps,
   space,
-  SpaceProps,
 } from '@looker/design-tokens'
 import { css } from 'styled-components'
 

@@ -26,7 +26,8 @@
 
 import { css } from 'styled-components'
 import { SpaceVertical } from '../../Layout/Space'
-import { DataTableCell, DataTableColumns } from '..'
+import type { DataTableColumns } from '..'
+import { DataTableCell } from '..'
 
 function filterUndefined<T>(t: T | undefined): t is T {
   return t !== undefined

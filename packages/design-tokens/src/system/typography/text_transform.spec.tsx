@@ -28,7 +28,8 @@ import { screen } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import React from 'react'
 import styled from 'styled-components'
-import { textTransform, TextTransformProps } from './text_transform'
+import type { TextTransformProps } from './text_transform'
+import { textTransform } from './text_transform'
 
 test('text-transform', () => {
   const Test = styled.p<TextTransformProps>`

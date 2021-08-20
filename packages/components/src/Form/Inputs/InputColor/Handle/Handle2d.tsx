@@ -51,7 +51,8 @@
  */
 
 import styled from 'styled-components'
-import { HANDLE_SIZE, HandleProps, handleCSS } from './Handle'
+import type { HandleProps } from './Handle'
+import { HANDLE_SIZE, handleCSS } from './Handle'
 
 interface Handle2dProps extends HandleProps {
   y: number

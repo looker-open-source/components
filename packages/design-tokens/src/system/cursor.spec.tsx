@@ -28,7 +28,8 @@ import { screen } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import React from 'react'
 import styled from 'styled-components'
-import { cursor, CursorProps } from './cursor'
+import type { CursorProps } from './cursor'
+import { cursor } from './cursor'
 
 test('cursor', () => {
   const Test = styled.p<CursorProps>`

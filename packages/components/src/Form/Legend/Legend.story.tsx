@@ -25,9 +25,10 @@
  */
 
 import React from 'react'
-import { Story } from '@storybook/react/types-6-0'
+import type { Story } from '@storybook/react/types-6-0'
 import { defaultArgTypes as argTypes } from '../../../../../storybook/src/defaultArgTypes'
-import { Legend, LegendProps } from './Legend'
+import type { LegendProps } from './Legend'
+import { Legend } from './Legend'
 
 export default {
   argTypes,

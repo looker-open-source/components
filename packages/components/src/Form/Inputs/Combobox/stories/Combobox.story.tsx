@@ -24,7 +24,9 @@
 
  */
 
-import React, { FC, useEffect, useState } from 'react'
+import type { FC } from 'react'
+import React, { useEffect, useState } from 'react'
+import type { OptionIndicatorProps } from '..'
 import {
   Combobox,
   ComboboxMulti,
@@ -32,7 +34,6 @@ import {
   ComboboxMultiList,
   ComboboxMultiOption,
   ComboboxOption,
-  OptionIndicatorProps,
   ComboboxList,
   ComboboxInput,
 } from '..'

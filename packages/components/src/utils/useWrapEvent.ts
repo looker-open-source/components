@@ -24,7 +24,8 @@
 
  */
 
-import { SyntheticEvent, useCallback } from 'react'
+import type { SyntheticEvent } from 'react'
+import { useCallback } from 'react'
 
 export function useWrapEvent<E extends SyntheticEvent>(
   ourHandler: (e: E) => void,

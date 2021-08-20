@@ -24,7 +24,7 @@
 
  */
 
-import { WindowedTreeNodeIDProps } from '../types'
+import type { WindowedTreeNodeIDProps } from '../types'
 
 const getTreeWindowIntersection = (
   list: WindowedTreeNodeIDProps[],

@@ -24,10 +24,11 @@
 
  */
 
-import React, { FocusEvent, useContext, useState } from 'react'
+import type { FocusEvent } from 'react'
+import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
 import { Flex } from '../Layout'
-import { ListItemProps } from '../ListItem'
+import type { ListItemProps } from '../ListItem'
 import { createListItemPartitions } from '../ListItem/utils'
 import {
   createSafeRel,

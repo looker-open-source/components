@@ -26,6 +26,11 @@
 
 import styled from 'styled-components'
 
+import type {
+  SpaceProps,
+  TextDecorationProps,
+  TypographyProps,
+} from '@looker/design-tokens'
 import {
   fontFamily,
   fontSize,
@@ -35,13 +40,10 @@ import {
   fontStyle,
   reset,
   space,
-  SpaceProps,
   shouldForwardProp,
   textAlign,
   textColor,
   textDecoration,
-  TextDecorationProps,
-  TypographyProps,
 } from '@looker/design-tokens'
 
 export interface TextBaseProps

@@ -24,7 +24,8 @@
 
  */
 
-import React, { FC } from 'react'
+import type { FC } from 'react'
+import React from 'react'
 import { ArrowDropDown } from '@styled-icons/material/ArrowDropDown'
 import { ButtonOutline } from '../../Button'
 import { Box } from '../../Layout'

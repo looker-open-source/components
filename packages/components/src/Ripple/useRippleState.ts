@@ -24,14 +24,8 @@
 
  */
 
-import {
-  Reducer,
-  useCallback,
-  useContext,
-  useEffect,
-  useReducer,
-  useRef,
-} from 'react'
+import type { Reducer } from 'react'
+import { useCallback, useContext, useEffect, useReducer, useRef } from 'react'
 import { ThemeContext } from 'styled-components'
 
 export interface RippleAction {

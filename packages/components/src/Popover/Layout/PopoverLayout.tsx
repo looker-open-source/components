@@ -24,10 +24,13 @@
 
  */
 
-import React, { FC } from 'react'
-import { ModalLayoutProps, ModalLoading } from '../../Modal/ModalLayout'
+import type { FC } from 'react'
+import React from 'react'
+import type { ModalLayoutProps } from '../../Modal/ModalLayout'
+import { ModalLoading } from '../../Modal/ModalLayout'
 import { PopoverContent } from './PopoverContent'
-import { PopoverFooter, PopoverFooterProps } from './PopoverFooter'
+import type { PopoverFooterProps } from './PopoverFooter'
+import { PopoverFooter } from './PopoverFooter'
 import { PopoverHeader } from './PopoverHeader'
 
 export type PopoverLayoutProps = ModalLayoutProps &

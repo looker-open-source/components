@@ -25,13 +25,12 @@
  */
 
 import { useTranslation } from 'react-i18next'
-import React, { FC, ReactNode, ReactElement, useContext } from 'react'
+import type { FC, ReactNode, ReactElement } from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { DialogContext } from '../../../Dialog/DialogContext'
-import {
-  ModalFooter,
-  ModalFooterProps,
-} from '../../../Modal/ModalFooter/ModalFooter'
+import type { ModalFooterProps } from '../../../Modal/ModalFooter/ModalFooter'
+import { ModalFooter } from '../../../Modal/ModalFooter/ModalFooter'
 import { ButtonTransparent } from '../../../Button'
 
 export interface PopoverFooterProps

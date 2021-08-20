@@ -24,9 +24,11 @@
 
  */
 
-import { CompatibleHTMLProps, shouldForwardProp } from '@looker/design-tokens'
+import type { CompatibleHTMLProps } from '@looker/design-tokens'
+import { shouldForwardProp } from '@looker/design-tokens'
 import styled from 'styled-components'
-import { TableCellProps, tableCellCSS } from './tableCell'
+import type { TableCellProps } from './tableCell'
+import { tableCellCSS } from './tableCell'
 
 export interface TableDataCellProps
   extends TableCellProps,

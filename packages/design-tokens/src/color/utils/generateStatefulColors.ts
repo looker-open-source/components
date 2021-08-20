@@ -26,13 +26,13 @@
 
 import darken from 'polished/lib/color/darken'
 import lighten from 'polished/lib/color/lighten'
-import {
+import type {
   StatefulColors,
   StatefulColorChoices,
   SpecifiableColors,
   DerivativeColors,
 } from '../types'
-import { ExtendedStateColors } from '../types/stateful'
+import type { ExtendedStateColors } from '../types/stateful'
 import { mixScaledColors } from './mixScaledColors'
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */

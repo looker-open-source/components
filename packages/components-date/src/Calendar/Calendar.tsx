@@ -23,8 +23,10 @@
  SOFTWARE.
 
  */
-import React, { FC } from 'react'
-import DayPicker, { RangeModifier, LocaleUtils } from 'react-day-picker'
+import type { FC } from 'react'
+import React from 'react'
+import type { RangeModifier } from 'react-day-picker'
+import DayPicker, { LocaleUtils } from 'react-day-picker'
 import styled from 'styled-components'
 import has from 'lodash/has'
 import noop from 'lodash/noop'
@@ -36,7 +38,7 @@ import { CalendarNav } from './CalendarNav'
 import { dayPickerCss } from './dayPickerCss'
 import { CalendarNavDisabled } from './CalendarNavDisabled'
 import { formatMonthTitle } from './formatMonthTitle'
-import { CalendarLocalization } from './types'
+import type { CalendarLocalization } from './types'
 
 type NavCB = (date: Date) => void
 

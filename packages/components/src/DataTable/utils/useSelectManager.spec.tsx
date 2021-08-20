@@ -24,11 +24,13 @@
 
  */
 
-import React, { FC } from 'react'
+import type { FC } from 'react'
+import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { screen, fireEvent } from '@testing-library/react'
 import { DataTableAction, DataTableItem } from '../Item'
-import { DataTableCell, DataTableColumns } from '../Column'
+import type { DataTableColumns } from '../Column'
+import { DataTableCell } from '../Column'
 import { DataTable } from '../DataTable'
 import { useSelectManager } from './useSelectManager'
 

@@ -26,7 +26,8 @@
 
 import { shouldForwardProp } from '@looker/design-tokens'
 import styled from 'styled-components'
-import { defaultGap, SpaceHelperProps } from '../Space'
+import type { SpaceHelperProps } from '../Space'
+import { defaultGap } from '../Space'
 import { commonLayoutCSS } from '../utils/common'
 
 export interface GridProps extends SpaceHelperProps {

@@ -24,8 +24,9 @@
 
  */
 
-import { DensityProp, DensityRamp } from '@looker/design-tokens'
-import React, { FC } from 'react'
+import type { DensityProp, DensityRamp } from '@looker/design-tokens'
+import type { FC } from 'react'
+import React from 'react'
 import { Tree } from '../Tree'
 import { TreeCollection } from '../TreeCollection'
 import { TreeItem } from '../TreeItem'

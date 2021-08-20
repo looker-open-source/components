@@ -24,8 +24,12 @@
 
  */
 
-import React, { ReactNode, FC, useState } from 'react'
-import { DrawerPlacements, DialogDrawerWidth } from '../Drawer/DrawerSurface'
+import type { ReactNode, FC } from 'react'
+import React, { useState } from 'react'
+import type {
+  DrawerPlacements,
+  DialogDrawerWidth,
+} from '../Drawer/DrawerSurface'
 import { Portal } from '../Portal'
 import {
   useAnimationState,
@@ -36,12 +40,9 @@ import {
 } from '../utils'
 import { Backdrop } from './Backdrop'
 import { DialogContext } from './DialogContext'
-import {
-  DialogSurfaceProps,
-  DialogSurface,
-  DialogPlacements,
-} from './DialogSurface'
-import { DialogWidth } from './dialogWidth'
+import type { DialogSurfaceProps, DialogPlacements } from './DialogSurface'
+import { DialogSurface } from './DialogSurface'
+import type { DialogWidth } from './dialogWidth'
 
 export interface UseDialogBaseProps {
   /**

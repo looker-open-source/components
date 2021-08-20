@@ -24,11 +24,11 @@
 
  */
 
-import { Story } from '@storybook/react/types-6-0'
+import type { Story } from '@storybook/react/types-6-0'
 import React from 'react'
 import { DataTableAction } from '../Item'
 import { useDataTableSortManager } from '../utils'
-import { DataTableColumns } from '../Column'
+import type { DataTableColumns } from '../Column'
 import { Link } from '../../Link'
 
 const actionsUseDataTableSortManager = () => (

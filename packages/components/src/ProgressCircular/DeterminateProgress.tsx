@@ -24,10 +24,12 @@
 
  */
 
-import React, { FC } from 'react'
+import type { FC } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { CircleContainer } from './ProgressSvg'
-import { progressCircularSVG, ProgressCircularSizes } from './size'
+import type { ProgressCircularSizes } from './size'
+import { progressCircularSVG } from './size'
 
 interface DeterminateProgressProps {
   size: ProgressCircularSizes

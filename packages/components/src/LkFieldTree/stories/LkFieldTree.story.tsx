@@ -24,11 +24,12 @@
 
  */
 
-import { Story } from '@storybook/react/types-6-0'
+import type { Story } from '@storybook/react/types-6-0'
 import React from 'react'
 import { defaultArgTypes as argTypes } from '../../../../../storybook/src/defaultArgTypes'
 import { TreeCollection } from '../../Tree'
-import { LkFieldItem, LkFieldTree, LkFieldTreeProps } from '../'
+import type { LkFieldTreeProps } from '../'
+import { LkFieldItem, LkFieldTree } from '../'
 
 export default {
   argTypes,

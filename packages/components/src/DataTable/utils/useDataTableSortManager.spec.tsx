@@ -28,7 +28,7 @@ import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { screen, fireEvent } from '@testing-library/react'
 import { DataTableAction } from '../Item/DataTableAction'
-import { DataTableColumns } from '../Column'
+import type { DataTableColumns } from '../Column'
 import { Link } from '../../Link'
 import { useDataTableSortManager } from './useDataTableSortManager'
 

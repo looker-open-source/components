@@ -24,14 +24,16 @@
 
  */
 
-import React, { forwardRef, Ref } from 'react'
+import type { Ref } from 'react'
+import React, { forwardRef } from 'react'
 import styled from 'styled-components'
 import { useID } from '../../../utils'
 import { useFormContext } from '../../Form'
-import { Checkbox, CheckboxProps } from '../../Inputs/Checkbox/Checkbox'
+import type { CheckboxProps } from '../../Inputs/Checkbox/Checkbox'
+import { Checkbox } from '../../Inputs/Checkbox/Checkbox'
 import { omitFieldProps, pickFieldProps } from '../Field'
 import { FieldInline } from '../FieldInline'
-import { FieldBaseProps } from '../FieldBase'
+import type { FieldBaseProps } from '../FieldBase'
 
 export interface FieldCheckboxProps extends CheckboxProps, FieldBaseProps {}
 

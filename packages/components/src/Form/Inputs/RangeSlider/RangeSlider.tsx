@@ -25,24 +25,21 @@
  */
 
 import { useTranslation } from 'react-i18next'
+import type { Ref, KeyboardEvent } from 'react'
 import React, {
   forwardRef,
-  Ref,
   useState,
-  KeyboardEvent,
   useCallback,
   useEffect,
   useMemo,
   useRef,
 } from 'react'
-import {
+import type {
   SpaceProps,
-  reset,
-  space,
-  typography,
   TypographyProps,
   WidthProps,
 } from '@looker/design-tokens'
+import { reset, space, typography } from '@looker/design-tokens'
 import styled from 'styled-components'
 import sortBy from 'lodash/sortBy'
 import indexOf from 'lodash/indexOf'
@@ -57,7 +54,7 @@ import {
   useReadOnlyWarn,
   usePreviousValue,
 } from '../../../utils'
-import { ValidationType } from '../../ValidationMessage'
+import type { ValidationType } from '../../ValidationMessage'
 import { getPrecision, precisionRound } from './precisionUtils'
 
 export interface RangeSliderProps

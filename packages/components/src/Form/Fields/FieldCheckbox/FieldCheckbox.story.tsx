@@ -24,16 +24,14 @@
 
  */
 
-import { Story } from '@storybook/react/types-6-0'
+import type { Story } from '@storybook/react/types-6-0'
 import React, { useState } from 'react'
 import { UnorderedList } from '../../../UnorderedList'
-import {
-  CheckboxTree,
-  MixedBoolean,
-  useMixedStateCheckbox,
-} from '../../Inputs/Checkbox'
+import type { CheckboxTree, MixedBoolean } from '../../Inputs/Checkbox'
+import { useMixedStateCheckbox } from '../../Inputs/Checkbox'
 import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
-import { FieldCheckbox, FieldCheckboxProps } from './FieldCheckbox'
+import type { FieldCheckboxProps } from './FieldCheckbox'
+import { FieldCheckbox } from './FieldCheckbox'
 
 const Template: Story<FieldCheckboxProps> = (args) => (
   <FieldCheckbox {...args} />

@@ -24,8 +24,9 @@
 
  */
 
-import { Context, useEffect, useRef, useContext } from 'react'
-import {
+import type { Context } from 'react'
+import { useEffect, useRef, useContext } from 'react'
+import type {
   ComboboxContextProps,
   ComboboxMultiContextProps,
 } from '../ComboboxContext'

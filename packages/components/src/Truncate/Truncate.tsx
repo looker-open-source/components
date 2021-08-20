@@ -23,15 +23,18 @@
  SOFTWARE.
 
  */
-import React, { FC, useState, useCallback } from 'react'
+import type { FC } from 'react'
+import React, { useState, useCallback } from 'react'
 import styled from 'styled-components'
+import type {
+  TextColorProps,
+  TypographyProps,
+  WidthProps,
+} from '@looker/design-tokens'
 import {
   textColor,
-  TextColorProps,
   typography,
-  TypographyProps,
   width as widthHelper,
-  WidthProps,
 } from '@looker/design-tokens'
 import { Span } from '../Text/Span'
 import { useTooltip } from '../Tooltip'

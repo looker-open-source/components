@@ -27,7 +27,7 @@
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { screen } from '@testing-library/react'
-import { DataTableColumns } from '../Column'
+import type { DataTableColumns } from '../Column'
 import { useDataTable } from './useDataTable'
 
 describe('useSelectManager', () => {

@@ -26,15 +26,12 @@
 import { ArrowDropDown } from '@styled-icons/material/ArrowDropDown'
 import { ArrowRight } from '@styled-icons/material/ArrowRight'
 import styled from 'styled-components'
-import React, {
-  cloneElement,
-  KeyboardEvent,
-  MouseEvent,
-  useContext,
-} from 'react'
-import { ControlledOrUncontrolled } from '../Accordion2/controlTypes'
+import type { KeyboardEvent, MouseEvent } from 'react'
+import React, { cloneElement, useContext } from 'react'
+import type { ControlledOrUncontrolled } from '../Accordion2/controlTypes'
 import { partitionTreeProps, useTreeHandlers } from '../Tree/utils'
-import { ListItemDetail, listItemDimensions, ListItemProps } from '../ListItem'
+import type { ListItemProps } from '../ListItem'
+import { ListItemDetail, listItemDimensions } from '../ListItem'
 import { TreeContext } from '../Tree/TreeContext'
 import { useAccordion2 } from '../Accordion2'
 import {
@@ -47,7 +44,7 @@ import { List } from '../List'
 import { AccordionIndicator } from '../Accordion2/AccordionIndicator'
 import { createListItemPartitions } from '../ListItem/utils'
 import { WindowedTreeContext } from '../Tree/WindowedTreeNode'
-import { NavTreeProps } from './types'
+import type { NavTreeProps } from './types'
 import { NavTreeDisclosure } from './NavTreeDisclosure'
 import { NavTreeItemContent } from './NavTreeItemContent'
 

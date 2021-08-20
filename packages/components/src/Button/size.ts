@@ -24,14 +24,14 @@
 
  */
 
-import {
+import type {
   SizeLarge,
   SizeMedium,
   SizeSmall,
   SizeXSmall,
   SizeXXSmall,
-  variant,
 } from '@looker/design-tokens'
+import { variant } from '@looker/design-tokens'
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 

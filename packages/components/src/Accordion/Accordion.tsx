@@ -24,21 +24,19 @@
 
  */
 
-import React, { FC, ReactNode } from 'react'
+import type { FC, ReactNode } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import omit from 'lodash/omit'
-import {
-  textColor,
-  TextColorProps,
-  typography,
-  TypographyProps,
-} from '@looker/design-tokens'
-import { simpleLayoutCSS, SimpleLayoutProps } from '../Layout/utils/simple'
+import type { TextColorProps, TypographyProps } from '@looker/design-tokens'
+import { textColor, typography } from '@looker/design-tokens'
+import type { SimpleLayoutProps } from '../Layout/utils/simple'
+import { simpleLayoutCSS } from '../Layout/utils/simple'
 import { useAccordion2 } from '../Accordion2/useAccordion2'
 import { accordionDimensions } from '../Accordion2/accordionDimensions'
-import { AccordionIndicatorProps } from '../Accordion2/types'
-import { ControlledLoosely } from '../Accordion2/controlTypes'
-import { GenericClickProps } from '../utils'
+import type { AccordionIndicatorProps } from '../Accordion2/types'
+import type { ControlledLoosely } from '../Accordion2/controlTypes'
+import type { GenericClickProps } from '../utils'
 import { AccordionLegacy, isLegacyComposition } from './AccordionLegacy'
 import { AccordionDisclosure } from './AccordionDisclosure'
 import { AccordionContent } from './AccordionContent'

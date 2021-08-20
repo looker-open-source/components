@@ -24,11 +24,13 @@
 
  */
 
-import { CompatibleHTMLProps, DensityProp } from '@looker/design-tokens'
-import React, { ReactNode, useContext } from 'react'
+import type { CompatibleHTMLProps, DensityProp } from '@looker/design-tokens'
+import type { ReactNode } from 'react'
+import React, { useContext } from 'react'
 import styled, { ThemeContext } from 'styled-components'
-import { TruncateConfigProp, TruncateOptionally } from '../Truncate'
-import { ListItemColorProp } from './types'
+import type { TruncateConfigProp } from '../Truncate'
+import { TruncateOptionally } from '../Truncate'
+import type { ListItemColorProp } from './types'
 import { listItemDimensions, listItemLabelColor } from './utils'
 import { listItemPaddingY } from './utils/listItemPaddingY'
 

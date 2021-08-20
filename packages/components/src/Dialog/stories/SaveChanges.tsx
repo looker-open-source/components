@@ -24,7 +24,8 @@
 
  */
 
-import React, { FormEvent, useState } from 'react'
+import type { FormEvent } from 'react'
+import React, { useState } from 'react'
 import { useConfirm, Dialog, DialogLayout } from '..'
 import { Button, Form, FieldText, ButtonTransparent } from '../..'
 

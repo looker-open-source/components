@@ -24,9 +24,11 @@
 
  */
 
-import React, { FC, ReactNode } from 'react'
+import type { FC, ReactNode } from 'react'
+import React from 'react'
 import { useToggle } from '../../utils'
-import { PromptDialog, PromptBaseProps } from './PromptDialog'
+import type { PromptBaseProps } from './PromptDialog'
+import { PromptDialog } from './PromptDialog'
 
 export interface PromptProps extends PromptBaseProps {
   /**

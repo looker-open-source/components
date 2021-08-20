@@ -24,7 +24,7 @@
 
  */
 
-import { FontSizeRamp } from '../../system'
+import type { FontSizeRamp } from '../../system'
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 export const fontSizes: FontSizeRamp = {

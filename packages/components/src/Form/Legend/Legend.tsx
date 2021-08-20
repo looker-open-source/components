@@ -25,15 +25,17 @@
  */
 
 import styled from 'styled-components'
-import {
+import type {
   CompatibleHTMLProps,
+  SpaceProps,
+  TypographyProps,
+} from '@looker/design-tokens'
+import {
   color,
   reset,
   space,
-  SpaceProps,
   shouldForwardProp,
   typography,
-  TypographyProps,
 } from '@looker/design-tokens'
 
 export interface LegendProps

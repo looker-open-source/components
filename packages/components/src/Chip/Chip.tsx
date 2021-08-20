@@ -25,20 +25,19 @@
  */
 
 import { useTranslation } from 'react-i18next'
-import { maxWidth, MaxWidthProps, reset } from '@looker/design-tokens'
-import React, { forwardRef, KeyboardEvent, MouseEvent, Ref } from 'react'
+import type { MaxWidthProps } from '@looker/design-tokens'
+import { maxWidth, reset } from '@looker/design-tokens'
+import type { KeyboardEvent, MouseEvent, Ref } from 'react'
+import React, { forwardRef } from 'react'
 import styled, { css } from 'styled-components'
 import { Close } from '@styled-icons/material/Close'
-import {
-  useClickable,
-  GenericClickProps,
-  focusVisibleCSSWrapper,
-  FocusVisibleProps,
-  useWrapEvent,
-} from '../utils'
+import type { GenericClickProps, FocusVisibleProps } from '../utils'
+import { useClickable, focusVisibleCSSWrapper, useWrapEvent } from '../utils'
 import { IconButton } from '../Button/IconButton'
-import { Span, SpanProps } from '../Text'
-import { TruncateCSSProps, truncateCSS } from '../Text/truncate'
+import type { SpanProps } from '../Text'
+import { Span } from '../Text'
+import type { TruncateCSSProps } from '../Text/truncate'
+import { truncateCSS } from '../Text/truncate'
 
 export interface ChipProps
   extends MaxWidthProps,

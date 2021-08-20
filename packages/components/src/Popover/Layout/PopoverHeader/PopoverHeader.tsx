@@ -24,15 +24,13 @@
 
  */
 
-import React, { FC, ReactNode, useContext } from 'react'
+import type { FC, ReactNode } from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { DialogContext } from '../../../Dialog/DialogContext'
 import { VisuallyHidden } from '../../../VisuallyHidden'
-import {
-  ModalHeaderCloseButton,
-  ModalHeader,
-  ModalHeaderProps,
-} from '../../../Modal'
+import type { ModalHeaderProps } from '../../../Modal'
+import { ModalHeaderCloseButton, ModalHeader } from '../../../Modal'
 
 type WithDetail = {
   detail?: ModalHeaderProps['detail']

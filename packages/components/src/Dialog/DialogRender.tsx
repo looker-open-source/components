@@ -24,8 +24,9 @@
 
  */
 
-import React, { FC, ReactNode, isValidElement, cloneElement } from 'react'
-import { UseDialogResponse, UseDialogResponseDom } from './useDialog'
+import type { FC, ReactNode } from 'react'
+import React, { isValidElement, cloneElement } from 'react'
+import type { UseDialogResponse, UseDialogResponseDom } from './useDialog'
 
 export type DialogRenderProp = (props: UseDialogResponseDom) => ReactNode
 

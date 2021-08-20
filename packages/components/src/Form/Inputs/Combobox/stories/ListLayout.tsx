@@ -24,7 +24,8 @@
 
  */
 
-import React, { FormEvent, useState } from 'react'
+import type { FormEvent } from 'react'
+import React, { useState } from 'react'
 import { Slider, Label, FieldSelect, SelectMulti } from '../../..'
 import { Card } from '../../../../Card'
 import { SpaceVertical } from '../../../../Layout'

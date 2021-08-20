@@ -23,15 +23,9 @@
  SOFTWARE.
 
  */
-import React, {
-  FC,
-  useState,
-  SyntheticEvent,
-  useEffect,
-  forwardRef,
-  Ref,
-} from 'react'
-import { RangeModifier } from 'react-day-picker'
+import type { FC, SyntheticEvent, Ref } from 'react'
+import React, { useState, useEffect, forwardRef } from 'react'
+import type { RangeModifier } from 'react-day-picker'
 import styled from 'styled-components'
 import isFunction from 'lodash/isFunction'
 import partial from 'lodash/partial'
@@ -41,6 +35,7 @@ import isEmpty from 'lodash/isEmpty'
 import isEqual from 'lodash/isEqual'
 import values from 'lodash/values'
 import { useTranslation } from 'react-i18next'
+import type { ValidationType } from '@looker/components'
 import {
   inputCSS,
   InlineInputTextBase,
@@ -49,13 +44,14 @@ import {
   inputTextValidation,
   inputTextDisabled,
   ErrorIcon,
-  ValidationType,
   VisuallyHidden,
   useID,
   useReadOnlyWarn,
 } from '@looker/components'
-import { Calendar, CalendarLocalization, formatMonthTitle } from '../Calendar'
-import { Locales, formatDateString, parseDateFromString } from '../utils/i18n'
+import type { CalendarLocalization } from '../Calendar'
+import { Calendar, formatMonthTitle } from '../Calendar'
+import type { Locales } from '../utils/i18n'
+import { formatDateString, parseDateFromString } from '../utils/i18n'
 
 export interface InputDateRangeProps {
   'aria-labelledby'?: string

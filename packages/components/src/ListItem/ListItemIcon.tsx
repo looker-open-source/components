@@ -25,12 +25,10 @@
  */
 
 import { useContext } from 'react'
-import styled, {
-  DefaultTheme,
-  StyledComponent,
-  ThemeContext,
-} from 'styled-components'
-import { color as colorHelper, DensityProp } from '@looker/design-tokens'
+import type { DefaultTheme, StyledComponent } from 'styled-components'
+import styled, { ThemeContext } from 'styled-components'
+import type { DensityProp } from '@looker/design-tokens'
+import { color as colorHelper } from '@looker/design-tokens'
 import { StyledIconBase } from '@styled-icons/styled-icon'
 import { IconPlaceholder } from '../Icon'
 import {
@@ -38,7 +36,7 @@ import {
   listItemIconColor,
   listItemPaddingY,
 } from './utils'
-import { ListItemDimensions } from './types'
+import type { ListItemDimensions } from './types'
 
 export type ListItemIconProps = DensityProp & {
   color?: string

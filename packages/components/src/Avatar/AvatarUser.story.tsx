@@ -25,9 +25,10 @@
  */
 
 import React from 'react'
-import { Story } from '@storybook/react/types-6-0'
+import type { Story } from '@storybook/react/types-6-0'
 import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
-import { AvatarUserProps, AvatarUser } from './AvatarUser'
+import type { AvatarUserProps } from './AvatarUser'
+import { AvatarUser } from './AvatarUser'
 
 const Template: Story<AvatarUserProps> = (args) => <AvatarUser {...args} />
 

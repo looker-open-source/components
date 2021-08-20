@@ -24,7 +24,7 @@
 
  */
 
-import { SelectOptionGroupProps } from '../types'
+import type { SelectOptionGroupProps } from '../types'
 
 export const options1k = [
   { label: '!it Jeans', value: '!it Jeans' },

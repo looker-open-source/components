@@ -23,13 +23,14 @@
  SOFTWARE.
 
  */
-import React, { forwardRef, useCallback, Ref } from 'react'
+import type { Ref } from 'react'
+import React, { forwardRef, useCallback } from 'react'
 import styled from 'styled-components'
 import { useID } from '../../../utils'
 import { Fieldset } from '../../Fieldset'
 import { FieldRadio } from '../../Fields/FieldRadio'
 import { inputHeight } from '../height'
-import { OptionsGroupProps } from './OptionsGroup'
+import type { OptionsGroupProps } from './OptionsGroup'
 
 export type RadioGroupProps = OptionsGroupProps<string>
 

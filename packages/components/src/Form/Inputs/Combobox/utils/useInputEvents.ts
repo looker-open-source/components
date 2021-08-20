@@ -24,24 +24,18 @@
 
  */
 
-import {
-  FocusEvent,
-  MouseEvent as ReactMouseEvent,
-  useRef,
-  useContext,
-  useCallback,
-  Context,
-} from 'react'
+import type { FocusEvent, MouseEvent as ReactMouseEvent, Context } from 'react'
+import { useRef, useContext, useCallback } from 'react'
 import {
   targetIsButton,
   useMouseDownClick,
   useWrapEvent,
 } from '../../../../utils'
-import {
+import type {
   ComboboxContextProps,
   ComboboxMultiContextProps,
 } from '../ComboboxContext'
-import { ComboboxInputProps, ComboboxMultiInputProps } from '../types'
+import type { ComboboxInputProps, ComboboxMultiInputProps } from '../types'
 import { ComboboxActionType, ComboboxState } from './state'
 import { useBlur } from './useBlur'
 import { useKeyDown } from './useKeyDown'

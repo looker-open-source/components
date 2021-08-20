@@ -24,7 +24,7 @@
 
  */
 
-import { SpecifiableTextColors } from './specifiable'
+import type { SpecifiableTextColors } from './specifiable'
 
 interface HighlightColors {
   /**

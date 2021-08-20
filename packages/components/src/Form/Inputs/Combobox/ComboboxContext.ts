@@ -25,21 +25,16 @@
  */
 
 import omit from 'lodash/omit'
-import {
-  createContext,
-  Ref,
-  MutableRefObject,
-  Dispatch,
-  SetStateAction,
-} from 'react'
-import {
+import type { Ref, MutableRefObject, Dispatch, SetStateAction } from 'react'
+import { createContext } from 'react'
+import type {
   ComboboxData,
   ComboboxMultiData,
   ComboboxTransition,
   ComboboxState,
   ComboboxMultiActionPayload,
 } from './utils/state'
-import {
+import type {
   ComboboxCallback,
   ComboboxMultiCallback,
   ComboboxOptionIndicatorProps,

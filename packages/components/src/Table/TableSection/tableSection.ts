@@ -24,14 +24,12 @@
 
  */
 
-import {
-  reset,
+import type {
   CompatibleHTMLProps,
-  border,
   BorderProps,
-  typography,
   TypographyProps,
 } from '@looker/design-tokens'
+import { reset, border, typography } from '@looker/design-tokens'
 import { css } from 'styled-components'
 
 export interface TableSectionProps

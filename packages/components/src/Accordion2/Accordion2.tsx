@@ -28,7 +28,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Accordion2Disclosure } from './Accordion2Disclosure'
 import { accordionDimensions } from './accordionDimensions'
-import { Accordion2Props } from './types'
+import type { Accordion2Props } from './types'
 import { useAccordion2 } from './useAccordion2'
 
 const Accordion2Internal = (props: Accordion2Props) => {

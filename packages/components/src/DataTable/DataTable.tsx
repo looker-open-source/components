@@ -25,12 +25,13 @@
  */
 
 import styled from 'styled-components'
-import React, { FC, useState } from 'react'
+import type { FC } from 'react'
+import React, { useState } from 'react'
 import { BulkActions } from './BulkActions'
 import { DataTableContext } from './DataTableContext'
 import { DataTableFilters } from './Filters/DataTableFilters'
 import { Table } from './Table'
-import { DataTableProps } from './types'
+import type { DataTableProps } from './types'
 import { allItemsSelected } from './utils/allItemsSelected'
 
 export const DataTableLayout: FC<DataTableProps> = (props) => {

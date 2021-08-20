@@ -24,9 +24,12 @@
 
  */
 
-import React, { FC, ReactNode } from 'react'
-import { DialogRender, DialogRenderProp } from '../Dialog/DialogRender'
-import { UseDrawerProps, useDrawer } from './useDrawer'
+import type { FC, ReactNode } from 'react'
+import React from 'react'
+import type { DialogRenderProp } from '../Dialog/DialogRender'
+import { DialogRender } from '../Dialog/DialogRender'
+import type { UseDrawerProps } from './useDrawer'
+import { useDrawer } from './useDrawer'
 
 export interface DrawerProps extends UseDrawerProps {
   children?: DialogRenderProp | ReactNode

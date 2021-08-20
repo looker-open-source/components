@@ -25,26 +25,18 @@
  */
 
 import { useTranslation } from 'react-i18next'
-import React, {
-  FC,
-  useState,
-  SyntheticEvent,
-  useEffect,
-  forwardRef,
-  Ref,
-} from 'react'
+import type { FC, SyntheticEvent, Ref } from 'react'
+import React, { useState, useEffect, forwardRef } from 'react'
 import styled from 'styled-components'
 import isFunction from 'lodash/isFunction'
 import isEqual from 'lodash/isEqual'
-import { BorderProps, SpaceProps } from '@looker/design-tokens'
-import {
-  InputText,
-  ValidationType,
-  VisuallyHidden,
-  useReadOnlyWarn,
-} from '@looker/components'
-import { Calendar, CalendarLocalization, formatMonthTitle } from '../Calendar'
-import { Locales, formatDateString, parseDateFromString } from '../utils/i18n'
+import type { BorderProps, SpaceProps } from '@looker/design-tokens'
+import type { ValidationType } from '@looker/components'
+import { InputText, VisuallyHidden, useReadOnlyWarn } from '@looker/components'
+import type { CalendarLocalization } from '../Calendar'
+import { Calendar, formatMonthTitle } from '../Calendar'
+import type { Locales } from '../utils/i18n'
+import { formatDateString, parseDateFromString } from '../utils/i18n'
 
 export interface InputDateProps extends SpaceProps, BorderProps {
   'aria-describedby'?: string

@@ -24,16 +24,11 @@
 
  */
 
-import { Story } from '@storybook/react/types-6-0'
+import type { Story } from '@storybook/react/types-6-0'
 import { Favorite } from '@styled-icons/material/Favorite'
 import chunk from 'lodash/chunk'
-import React, {
-  FormEvent,
-  MouseEvent,
-  useMemo,
-  useState,
-  useEffect,
-} from 'react'
+import type { FormEvent, MouseEvent } from 'react'
+import React, { useMemo, useState, useEffect } from 'react'
 import { Card, CardContent } from '../../../Card'
 import { Button } from '../../../Button'
 import { Dialog, DialogContent } from '../../../Dialog'
@@ -44,8 +39,11 @@ import { PopoverContent, usePopover } from '../../../Popover'
 import { Heading, Paragraph, Text } from '../../../Text'
 import { Form } from '../../'
 import { Label } from '../../Label'
-import { ComboboxOptionObject } from '../../Inputs/Combobox'
-import { SelectOptionProps, SelectOptionGroupProps } from '../../Inputs/Select'
+import type { ComboboxOptionObject } from '../../Inputs/Combobox'
+import type {
+  SelectOptionProps,
+  SelectOptionGroupProps,
+} from '../../Inputs/Select'
 import { useToggle } from '../../../utils'
 import { FieldToggleSwitch } from '../FieldToggleSwitch'
 import {
@@ -56,7 +54,8 @@ import {
 } from '../../Inputs/Select/stories/options'
 import { options1k } from '../../Inputs/Select/stories/options1k'
 import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
-import { FieldSelect, FieldSelectProps } from './FieldSelect'
+import type { FieldSelectProps } from './FieldSelect'
+import { FieldSelect } from './FieldSelect'
 
 const Template: Story<FieldSelectProps> = (args) => <FieldSelect {...args} />
 

@@ -25,8 +25,10 @@
  */
 
 import styled from 'styled-components'
-import { LayoutProps, layout } from '@looker/design-tokens'
-import { ModalContent, ModalContentProps } from '../../../Modal/ModalContent'
+import type { LayoutProps } from '@looker/design-tokens'
+import { layout } from '@looker/design-tokens'
+import type { ModalContentProps } from '../../../Modal/ModalContent'
+import { ModalContent } from '../../../Modal/ModalContent'
 
 export type DialogContentProps = ModalContentProps & LayoutProps
 

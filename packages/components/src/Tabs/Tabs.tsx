@@ -24,7 +24,8 @@
 
  */
 
-import React, { Children, cloneElement, FC, useRef, useState } from 'react'
+import type { FC } from 'react'
+import React, { Children, cloneElement, useRef, useState } from 'react'
 
 export interface UseTabsProps {
   controlledIndex?: number

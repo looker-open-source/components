@@ -32,7 +32,8 @@ import {
 import React, { useState } from 'react'
 
 import { renderWithTheme } from '@looker/components-test-utils'
-import { theme, StatefulColor } from '@looker/design-tokens'
+import type { StatefulColor } from '@looker/design-tokens'
+import { theme } from '@looker/design-tokens'
 import { Button } from '../../Button'
 import { Prompt } from './Prompt'
 

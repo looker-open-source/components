@@ -25,12 +25,13 @@
  */
 
 import React, { useState } from 'react'
-import { Story } from '@storybook/react/types-6-0'
+import type { Story } from '@storybook/react/types-6-0'
 import { Select } from '../Select'
 import { Space } from '../../../Layout'
 import { Text } from '../../../Text'
 import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
-import { InputColor, InputColorProps } from './InputColor'
+import type { InputColorProps } from './InputColor'
+import { InputColor } from './InputColor'
 
 const Template: Story<InputColorProps> = (args) => <InputColor {...args} />
 

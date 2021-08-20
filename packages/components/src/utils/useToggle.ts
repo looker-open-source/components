@@ -24,7 +24,8 @@
 
  */
 
-import { Reducer, useCallback, useEffect, useReducer } from 'react'
+import type { Reducer } from 'react'
+import { useCallback, useEffect, useReducer } from 'react'
 
 export interface UseToggleReturn {
   value: boolean

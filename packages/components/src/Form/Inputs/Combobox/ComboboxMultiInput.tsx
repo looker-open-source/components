@@ -28,27 +28,26 @@
 // because their work is fantastic (but is not in TypeScript)
 
 import omit from 'lodash/omit'
+import type { Ref, FormEvent } from 'react'
 import React, {
   forwardRef,
   useContext,
-  Ref,
   useCallback,
   useEffect,
   useRef,
-  FormEvent,
 } from 'react'
 import styled from 'styled-components'
 import { useForkedRef } from '../../../utils'
+import type { InputChipsBaseProps } from '../InputChips'
 import {
   InputChips,
   InputChipsBase,
-  InputChipsBaseProps,
   joinValues,
   splitInputValue,
 } from '../InputChips'
 import { ComboboxMultiContext } from './ComboboxContext'
 import { comboboxStyles } from './ComboboxInput'
-import { ComboboxMultiInputProps } from './types'
+import type { ComboboxMultiInputProps } from './types'
 import { getComboboxText, formatOptionAsString, parseOption } from './utils'
 import { makeHash } from './utils/makeHash'
 import {

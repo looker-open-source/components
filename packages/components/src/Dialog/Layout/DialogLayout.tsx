@@ -24,16 +24,15 @@
 
  */
 
-import React, { FC, ReactNode } from 'react'
-import { ModalHeaderProps } from '../../Modal/ModalHeader'
-import {
-  ModalLayout,
-  ModalLayoutProps,
-  ModalLoading,
-} from '../../Modal/ModalLayout'
+import type { FC, ReactNode } from 'react'
+import React from 'react'
+import type { ModalHeaderProps } from '../../Modal/ModalHeader'
+import type { ModalLayoutProps } from '../../Modal/ModalLayout'
+import { ModalLayout, ModalLoading } from '../../Modal/ModalLayout'
 import { DialogContent } from './DialogContent'
 import { DialogFooter } from './DialogFooter'
-import { DialogHeader, DialogHeaderProps } from './DialogHeader'
+import type { DialogHeaderProps } from './DialogHeader'
+import { DialogHeader } from './DialogHeader'
 
 type WithFooter = {
   /**

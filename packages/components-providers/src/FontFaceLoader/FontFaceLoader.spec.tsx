@@ -26,8 +26,9 @@
 
 import React from 'react'
 import { HelmetProvider } from 'react-helmet-async'
-import { DefaultTheme, ThemeProvider } from 'styled-components'
-import { FontSources } from '@looker/design-tokens'
+import type { DefaultTheme } from 'styled-components'
+import { ThemeProvider } from 'styled-components'
+import type { FontSources } from '@looker/design-tokens'
 import { render } from '@testing-library/react'
 import { fontFacesCSS, FontFaceLoader } from './FontFaceLoader'
 

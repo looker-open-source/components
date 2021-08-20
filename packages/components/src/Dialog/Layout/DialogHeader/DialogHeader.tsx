@@ -24,10 +24,12 @@
 
  */
 
-import React, { FC, useContext } from 'react'
+import type { FC } from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { DialogContext } from '../../DialogContext'
-import { ModalHeader, ModalHeaderProps } from '../../../Modal/ModalHeader'
+import type { ModalHeaderProps } from '../../../Modal/ModalHeader'
+import { ModalHeader } from '../../../Modal/ModalHeader'
 import { ModalHeaderCloseButton } from '../../../Modal/ModalHeaderCloseButton'
 
 type WithDetail = {

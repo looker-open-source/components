@@ -25,7 +25,8 @@
  */
 
 import styled from 'styled-components'
-import { ModalFooter, ModalFooterProps } from '../../../Modal/ModalFooter'
+import type { ModalFooterProps } from '../../../Modal/ModalFooter'
+import { ModalFooter } from '../../../Modal/ModalFooter'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface DialogFooterProps extends ModalFooterProps {}

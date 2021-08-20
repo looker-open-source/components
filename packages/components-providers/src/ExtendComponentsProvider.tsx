@@ -24,9 +24,11 @@
 
  */
 
-import { generateTheme, ThemeCustomizations } from '@looker/design-tokens'
+import type { ThemeCustomizations } from '@looker/design-tokens'
+import { generateTheme } from '@looker/design-tokens'
 import { ThemeContext, ThemeProvider } from 'styled-components'
-import React, { FC, useMemo, useContext } from 'react'
+import type { FC } from 'react'
+import React, { useMemo, useContext } from 'react'
 
 export interface ExtendComponentsTheme {
   themeCustomizations?: ThemeCustomizations

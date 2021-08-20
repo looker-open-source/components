@@ -24,20 +24,11 @@
 
  */
 
-import React, {
-  forwardRef,
-  ReactNode,
-  Ref,
-  RefObject,
-  isValidElement,
-  cloneElement,
-} from 'react'
+import type { ReactNode, Ref, RefObject } from 'react'
+import React, { forwardRef, isValidElement, cloneElement } from 'react'
 import { mergeHandlers, useForkedRef, useHovered } from '../utils'
-import {
-  usePopover,
-  UsePopoverProps,
-  UsePopoverResponseDom,
-} from './usePopover'
+import type { UsePopoverProps, UsePopoverResponseDom } from './usePopover'
+import { usePopover } from './usePopover'
 
 export type PopoverRenderProp = (props: UsePopoverResponseDom) => ReactNode
 

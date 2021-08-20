@@ -27,7 +27,8 @@
 // Much of the following is pulled from https://github.com/reach/reach-ui
 // because their work is fantastic (but is not in TypeScript)
 
-import { Ref, useMemo, MutableRefObject } from 'react'
+import type { Ref, MutableRefObject } from 'react'
+import { useMemo } from 'react'
 
 export type RefToFork<E> = Ref<E> | MutableRefObject<E> | undefined
 

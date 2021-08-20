@@ -24,8 +24,9 @@
 
  */
 
-import { TrapStackContextProps } from '@looker/components-providers'
-import { Context, Ref, useContext, useEffect } from 'react'
+import type { TrapStackContextProps } from '@looker/components-providers'
+import type { Context, Ref } from 'react'
+import { useContext, useEffect } from 'react'
 import { useID } from './useID'
 import { useCallbackRef } from './useCallbackRef'
 

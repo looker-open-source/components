@@ -24,18 +24,15 @@
 
  */
 
-import { LayoutProps } from '@looker/design-tokens'
-import React, { forwardRef, Ref, FormEvent } from 'react'
+import type { LayoutProps } from '@looker/design-tokens'
+import type { Ref, FormEvent } from 'react'
+import React, { forwardRef } from 'react'
 import styled from 'styled-components'
-import { ValidationType } from '../../ValidationMessage'
-import {
-  Combobox,
-  ComboboxInput,
-  ComboboxList,
-  ComboboxOptionIndicatorProps,
-  ComboboxProps,
-} from '../Combobox'
-import { SelectOptions, SelectOptionsBaseProps } from './SelectOptions'
+import type { ValidationType } from '../../ValidationMessage'
+import type { ComboboxOptionIndicatorProps, ComboboxProps } from '../Combobox'
+import { Combobox, ComboboxInput, ComboboxList } from '../Combobox'
+import type { SelectOptionsBaseProps } from './SelectOptions'
+import { SelectOptions } from './SelectOptions'
 import { SelectInputIcon } from './SelectInputIcon'
 import {
   omitAriaAndValidationProps,
@@ -44,7 +41,7 @@ import {
 import { getOption, getFirstOption } from './utils/options'
 import { useFlatOptions } from './utils/useFlatOptions'
 import { useShouldWindowOptions } from './utils/useWindowedOptions'
-import { SelectOptionObject, SelectOptionProps } from './types'
+import type { SelectOptionObject, SelectOptionProps } from './types'
 
 export interface SelectBaseProps
   extends SelectOptionsBaseProps,

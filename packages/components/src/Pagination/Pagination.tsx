@@ -25,12 +25,14 @@
  */
 
 import { useTranslation } from 'react-i18next'
-import React, { FC } from 'react'
+import type { FC } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { ChevronLeft } from '@styled-icons/material-rounded/ChevronLeft'
 import { ChevronRight } from '@styled-icons/material-rounded/ChevronRight'
 import { Flex } from '../Layout'
-import { IconButton, IconButtonProps } from '../Button'
+import type { IconButtonProps } from '../Button'
+import { IconButton } from '../Button'
 import { Span } from '../Text'
 import { DoubleChevronLeft } from './DoubleChevronLeft'
 import { DoubleChevronRight } from './DoubleChevronRight'

@@ -25,23 +25,22 @@
  */
 
 import difference from 'lodash/difference'
-import React, {
+import type {
   FocusEvent,
   FormEvent,
-  forwardRef,
   KeyboardEvent,
   MouseEvent,
   Ref,
   RefObject,
   SyntheticEvent,
-  useRef,
-  useState,
 } from 'react'
+import React, { forwardRef, useRef, useState } from 'react'
 import styled, { css } from 'styled-components'
-import { MaxHeightProps } from '@looker/design-tokens'
+import type { MaxHeightProps } from '@looker/design-tokens'
 import { Chip } from '../../../Chip'
 import { inputHeight } from '../height'
-import { InputTextContent, InputText, InputTextBaseProps } from '../InputText'
+import type { InputTextBaseProps } from '../InputText'
+import { InputTextContent, InputText } from '../InputText'
 import { AdvancedInputControls } from '../AdvancedInputControls'
 import { useForkedRef, useWrapEvent, getNextFocusTarget } from '../../../utils'
 import { visuallyHiddenStyle } from '../../../VisuallyHidden'

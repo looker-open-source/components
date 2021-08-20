@@ -25,7 +25,8 @@
  */
 
 import { Paragraph as LookerParagraph } from '@looker/components'
-import React, { FC } from 'react'
+import type { FC } from 'react';
+import React from 'react'
 import { maxTextWidth } from './styles'
 
 export const Paragraph: FC = (props) => (

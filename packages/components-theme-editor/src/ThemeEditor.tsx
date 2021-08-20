@@ -26,11 +26,10 @@
 
 import { Science } from '@styled-icons/material-outlined/Science'
 import { IconButton, Dialog } from '@looker/components'
-import React, { FC } from 'react'
-import {
-  ThemeEditorContent,
-  ThemeEditorContentProps,
-} from './ThemeEditorContent'
+import type { FC } from 'react'
+import React from 'react'
+import type { ThemeEditorContentProps } from './ThemeEditorContent'
+import { ThemeEditorContent } from './ThemeEditorContent'
 
 export interface ThemeEditorProps extends ThemeEditorContentProps {
   hasCustomTheme: boolean

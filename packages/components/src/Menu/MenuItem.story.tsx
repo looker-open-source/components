@@ -25,10 +25,11 @@
  */
 
 import React from 'react'
-import { Story } from '@storybook/react/types-6-0'
+import type { Story } from '@storybook/react/types-6-0'
 import { PersonOutline } from '@styled-icons/material-outlined/PersonOutline'
 import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
-import { MenuItem, MenuItemProps } from './MenuItem'
+import type { MenuItemProps } from './MenuItem'
+import { MenuItem } from './MenuItem'
 
 const MenuItemTemplate: Story<MenuItemProps> = (args) => (
   <MenuItem {...args}>Menu Item</MenuItem>

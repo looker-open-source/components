@@ -24,20 +24,19 @@
 
  */
 
-import {
+import type {
   DensityProp,
-  height,
   HeightProps,
-  omitStyledProps,
-  width,
   WidthProps,
 } from '@looker/design-tokens'
+import { height, omitStyledProps, width } from '@looker/design-tokens'
 import React from 'react'
 import styled from 'styled-components'
 import { useWindowedTree } from './utils/useWindowedTree'
-import { WindowedTreeNodeProps } from './types'
+import type { WindowedTreeNodeProps } from './types'
 import { TreeCollectionContext } from './TreeCollectionContext'
-import { TreeCollection, TreeCollectionProps } from './TreeCollection'
+import type { TreeCollectionProps } from './TreeCollection'
+import { TreeCollection } from './TreeCollection'
 
 export type WindowedTreeCollectionProps = Omit<
   TreeCollectionProps,

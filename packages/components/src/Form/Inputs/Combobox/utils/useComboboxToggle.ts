@@ -28,7 +28,7 @@
 // because their work is fantastic (but is not in TypeScript)
 
 import { useRef, useEffect } from 'react'
-import {
+import type {
   ComboboxCallback,
   MaybeComboboxOptionObject,
   ComboboxOptionType,

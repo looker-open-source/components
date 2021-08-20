@@ -24,16 +24,18 @@
 
  */
 
-import { DensityRamp } from '@looker/design-tokens'
-import { Story } from '@storybook/react/types-6-0'
+import type { DensityRamp } from '@looker/design-tokens'
+import type { Story } from '@storybook/react/types-6-0'
 import { DateRange } from '@styled-icons/material-outlined/DateRange'
 import { SubdirectoryArrowLeft } from '@styled-icons/material/SubdirectoryArrowLeft'
-import { Page } from 'puppeteer'
-import React, { FC, useState } from 'react'
+import type { Page } from 'puppeteer'
+import type { FC } from 'react'
+import React, { useState } from 'react'
 import { Flex, Grid, Space } from '../Layout'
 import { ListItem } from '../ListItem'
 import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
-import { List, ListProps } from './List'
+import type { ListProps } from './List'
+import { List } from './List'
 
 export default {
   argTypes,

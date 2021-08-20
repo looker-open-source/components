@@ -24,8 +24,8 @@
 
  */
 
-import { SpecifiableColors } from '../color'
-import { FontFamilyChoices, FontSources } from '../system'
+import type { SpecifiableColors } from '../color'
+import type { FontFamilyChoices, FontSources } from '../system'
 
 export interface ThemeCustomizations {
   /**

@@ -31,16 +31,12 @@ import { Delete } from '@styled-icons/material/Delete'
 import { Link as LinkIcon } from '@styled-icons/material/Link'
 import { fireEvent, screen } from '@testing-library/react'
 import { IconButton } from '../Button'
-import { FieldFilter, InputFilters } from '../Form'
+import type { FieldFilter } from '../Form'
+import { InputFilters } from '../Form'
 import { Link } from '../Link'
 import { getTabStops } from '../utils'
-import {
-  DataTable,
-  DataTableAction,
-  DataTableCell,
-  DataTableColumns,
-  DataTableItem,
-} from '.'
+import type { DataTableColumns } from '.'
+import { DataTable, DataTableAction, DataTableCell, DataTableItem } from '.'
 
 export const defaultFilters: FieldFilter[] = [
   {

@@ -24,8 +24,8 @@
 
  */
 
-import { ReactNode } from 'react'
-import { FieldsetProps } from '../../Fieldset'
+import type { ReactNode } from 'react'
+import type { FieldsetProps } from '../../Fieldset'
 
 export interface OptionsGroupOptionProps {
   label: string

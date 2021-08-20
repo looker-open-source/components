@@ -24,7 +24,8 @@
 
  */
 
-import { css, keyframes, Keyframes } from 'styled-components'
+import type { Keyframes } from 'styled-components'
+import { css, keyframes } from 'styled-components'
 
 const rippleRadiusIn: Keyframes = keyframes`
 from {

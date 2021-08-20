@@ -23,7 +23,8 @@
  SOFTWARE.
 
  */
-import { Ref, useCallback, useState } from 'react'
+import type { Ref } from 'react'
+import { useCallback, useState } from 'react'
 import { useForkedRef } from './useForkedRef'
 
 // This hook is for when a dom node needs to be "seen" in some useEffect logic.

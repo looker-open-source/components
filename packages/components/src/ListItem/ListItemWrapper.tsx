@@ -24,9 +24,9 @@
 
  */
 
-import { CompatibleHTMLProps } from '@looker/design-tokens'
+import type { CompatibleHTMLProps } from '@looker/design-tokens'
 import styled from 'styled-components'
-import { ListColor } from '../List'
+import type { ListColor } from '../List'
 
 export interface ListItemWrapperProps extends CompatibleHTMLProps<HTMLElement> {
   color: ListColor

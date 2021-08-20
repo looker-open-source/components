@@ -25,7 +25,8 @@
  */
 
 import { Box } from '@looker/components'
-import React, { FC } from 'react'
+import type { FC } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 const FauxChartLayout: FC<{ className?: string }> = ({ className }) => (

@@ -23,14 +23,15 @@
  SOFTWARE.
 
  */
-import { Story } from '@storybook/react/types-6-0'
-import { Page } from 'puppeteer'
-import React, { useEffect, useState, FormEvent } from 'react'
+import type { Story } from '@storybook/react/types-6-0'
+import type { Page } from 'puppeteer'
+import type { FormEvent } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Divider } from '../Divider'
 import { Box, Space } from '../Layout'
 import { FieldToggleSwitch } from '../Form'
 import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
-import { ButtonGroupOrToggleBaseProps } from './ButtonSet'
+import type { ButtonGroupOrToggleBaseProps } from './ButtonSet'
 import { ButtonGroup } from './ButtonGroup'
 import { ButtonItem } from './ButtonItem'
 import { ButtonToggle } from './ButtonToggle'

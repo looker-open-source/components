@@ -26,7 +26,7 @@
 
 import pickBy from 'lodash/pickBy'
 import identity from 'lodash/identity'
-import { Colors, SpecifiableColors } from '../types'
+import type { Colors, SpecifiableColors } from '../types'
 import { generateBlendColors } from './generateBlendColors'
 import { generateDerivativeColors } from './generateDerivativeColors'
 import { generateStatefulColors } from './generateStatefulColors'

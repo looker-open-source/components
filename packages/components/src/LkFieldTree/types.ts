@@ -24,7 +24,7 @@
 
  */
 
-import { ListItemProps, TreeProps } from '..'
+import type { ListItemProps, TreeProps } from '..'
 
 export type LkFieldTreeProps = Omit<
   TreeProps,

@@ -24,8 +24,8 @@
 
  */
 
-import { IconType } from '../../Icon'
-import { DataTableColumnSize } from './columnSize'
+import type { IconType } from '../../Icon'
+import type { DataTableColumnSize } from './columnSize'
 
 export type DataTableColumnType = 'string' | 'number' | 'date'
 export type DataTableColumnSortDirection = 'asc' | 'desc'

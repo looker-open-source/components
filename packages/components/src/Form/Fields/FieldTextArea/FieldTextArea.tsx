@@ -24,12 +24,15 @@
 
  */
 
-import React, { FC } from 'react'
+import type { FC } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { useID } from '../../../utils'
 import { useFormContext } from '../../Form'
-import { TextArea, TextAreaProps } from '../../Inputs/TextArea'
-import { Field, FieldProps, omitFieldProps, pickFieldProps } from '../Field'
+import type { TextAreaProps } from '../../Inputs/TextArea'
+import { TextArea } from '../../Inputs/TextArea'
+import type { FieldProps } from '../Field'
+import { Field, omitFieldProps, pickFieldProps } from '../Field'
 
 export interface FieldTextAreaProps extends FieldProps, TextAreaProps {}
 

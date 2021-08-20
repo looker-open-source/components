@@ -24,8 +24,9 @@
 
  */
 
-import React, { FC, ReactNode, isValidElement, cloneElement } from 'react'
-import { PanelProps, PanelRenderProp } from './types'
+import type { FC, ReactNode } from 'react'
+import React, { isValidElement, cloneElement } from 'react'
+import type { PanelProps, PanelRenderProp } from './types'
 import { usePanel } from './usePanel'
 
 const isRenderProp = (

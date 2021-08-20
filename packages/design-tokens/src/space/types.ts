@@ -24,7 +24,7 @@
 
  */
 
-import {
+import type {
   SizeNone,
   SizeXXXSmall,
   SizeXXSmall,
@@ -37,7 +37,7 @@ import {
   SizeXXXLarge,
   SizeXXXXLarge,
 } from '../system/size'
-import {
+import type {
   Unit0,
   Unit05,
   Unit1,

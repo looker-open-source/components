@@ -24,7 +24,13 @@
 
  */
 
-import { SizeLarge, SizeMedium, SizeNone, SizeSmall, SizeXSmall } from './size'
+import type {
+  SizeLarge,
+  SizeMedium,
+  SizeNone,
+  SizeSmall,
+  SizeXSmall,
+} from './size'
 
 export type RadiusSizes =
   | SizeNone

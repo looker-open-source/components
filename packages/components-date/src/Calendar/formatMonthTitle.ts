@@ -24,7 +24,7 @@
 
  */
 import { LocaleUtils } from 'react-day-picker'
-import { CalendarLocalization } from './types'
+import type { CalendarLocalization } from './types'
 
 /**
  * Curried month formatter function.

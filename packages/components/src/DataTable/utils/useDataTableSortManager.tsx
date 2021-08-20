@@ -24,12 +24,14 @@
 
  */
 
-import React, { MouseEvent, useState, ReactNode } from 'react'
+import type { MouseEvent, ReactNode } from 'react'
+import React, { useState } from 'react'
 import { DataTable } from '../DataTable'
 import { DataTableItem } from '../Item'
-import { DataTableCell, DataTableColumns } from '../Column'
+import type { DataTableColumns } from '../Column'
+import { DataTableCell } from '../Column'
 import { doDataTableSort } from './sort_utils'
-import { DataTableDatum, DataTableData } from '.'
+import type { DataTableDatum, DataTableData } from '.'
 
 export const useDataTableSortManager = (
   caption: string,

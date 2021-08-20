@@ -25,10 +25,13 @@
  */
 
 import styled from 'styled-components'
-import { variant, ResponsiveValue, system } from '@looker/design-tokens'
+import type { ResponsiveValue } from '@looker/design-tokens'
+import { variant, system } from '@looker/design-tokens'
 import { SurfaceBase, surfaceTransition } from '../Dialog/SurfaceBase'
-import { DialogSizeRamp, dialogSizes } from '../Dialog/dialogWidth'
-import { AsideSizeRamp, asideSizes } from '../Layout/Semantics/Aside/asideWidth'
+import type { DialogSizeRamp } from '../Dialog/dialogWidth'
+import { dialogSizes } from '../Dialog/dialogWidth'
+import type { AsideSizeRamp } from '../Layout/Semantics/Aside/asideWidth'
+import { asideSizes } from '../Layout/Semantics/Aside/asideWidth'
 
 export type DrawerPlacements = 'left' | 'right'
 export type DialogDrawerWidth = ResponsiveValue<

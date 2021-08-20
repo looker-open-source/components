@@ -33,7 +33,8 @@ import {
   waitFor,
 } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import React, { MouseEvent as ReactMouseEvent, useRef } from 'react'
+import type { MouseEvent as ReactMouseEvent } from 'react'
+import React, { useRef } from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { Favorite } from '@styled-icons/material-outlined/Favorite'
 import { Button } from '../Button'

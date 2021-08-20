@@ -24,7 +24,7 @@
 
  */
 
-import { DataTableColumns } from '../Column'
+import type { DataTableColumns } from '../Column'
 import { stringComparator, doDataTableSort } from './sort_utils'
 
 describe('DataTable Sort Utils', () => {

@@ -24,11 +24,12 @@
 
  */
 import React, { useState } from 'react'
-import { Story } from '@storybook/react/types-6-0'
+import type { Story } from '@storybook/react/types-6-0'
 import { Box, Heading, Space, Text } from '@looker/components'
 import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
 import { DateFormat } from '../DateFormat'
-import { InputDate, InputDateProps } from './InputDate'
+import type { InputDateProps } from './InputDate'
+import { InputDate } from './InputDate'
 
 export default {
   argTypes,

@@ -24,14 +24,11 @@
 
  */
 
-import {
-  CompatibleHTMLProps,
-  FlexboxProps,
-  flexbox,
-  shouldForwardProp,
-} from '@looker/design-tokens'
+import type { CompatibleHTMLProps, FlexboxProps } from '@looker/design-tokens'
+import { flexbox, shouldForwardProp } from '@looker/design-tokens'
 import styled, { css } from 'styled-components'
-import { CommonLayoutProps, commonLayoutCSS } from '../Layout/utils/common'
+import type { CommonLayoutProps } from '../Layout/utils/common'
+import { commonLayoutCSS } from '../Layout/utils/common'
 
 export interface CardProps
   extends CompatibleHTMLProps<HTMLElement>,

@@ -26,7 +26,7 @@
 
 import { useHotkeys } from 'react-hotkeys-hook'
 import type { HotkeysEvent } from 'hotkeys-js'
-import { MutableRefObject } from 'react'
+import type { MutableRefObject } from 'react'
 import get from 'lodash/get'
 import filter from 'lodash/filter'
 import debounce from 'lodash/debounce'

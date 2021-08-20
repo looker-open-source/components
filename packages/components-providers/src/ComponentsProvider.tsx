@@ -29,13 +29,16 @@ import {
   googleFontUrl,
   theme as defaultTheme,
 } from '@looker/design-tokens'
-import React, { FC, Fragment, useMemo } from 'react'
+import type { FC } from 'react'
+import React, { Fragment, useMemo } from 'react'
 import { HelmetProvider } from 'react-helmet-async'
 import { FocusTrapProvider } from './FocusTrap'
 import { ScrollLockProvider } from './ScrollLock'
-import { useI18n, UseI18nProps } from './I18n'
-import { ThemeProvider, ThemeProviderProps } from './ThemeProvider'
-import { ExtendComponentsTheme } from './ExtendComponentsProvider'
+import type { UseI18nProps } from './I18n'
+import { useI18n } from './I18n'
+import type { ThemeProviderProps } from './ThemeProvider'
+import { ThemeProvider } from './ThemeProvider'
+import type { ExtendComponentsTheme } from './ExtendComponentsProvider'
 import { FontFaceLoader } from './FontFaceLoader'
 import { StyleDefender } from './StyleDefender'
 export interface ComponentsProviderProps

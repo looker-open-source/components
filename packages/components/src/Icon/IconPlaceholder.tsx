@@ -24,13 +24,12 @@
 
  */
 
-import {
+import type {
   CompatibleHTMLProps,
-  size,
   SizeProps,
-  space,
   SpaceProps,
 } from '@looker/design-tokens'
+import { size, space } from '@looker/design-tokens'
 import styled from 'styled-components'
 
 export interface IconPlaceholderProps

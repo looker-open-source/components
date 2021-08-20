@@ -24,11 +24,12 @@
 
  */
 
-import React, { FC } from 'react'
+import type { FC } from 'react';
+import React from 'react'
 import { useLocation } from '@reach/router'
 import { Accordion2, Heading } from '@looker/components'
 import styled from 'styled-components'
-import { NavigationSection } from './types'
+import type { NavigationSection } from './types'
 import { Page } from './Page'
 
 interface SectionProps {

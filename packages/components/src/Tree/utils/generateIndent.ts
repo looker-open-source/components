@@ -24,7 +24,7 @@
 
  */
 
-import { DensityProp, DensityRamp, Theme } from '@looker/design-tokens'
+import type { DensityProp, DensityRamp, Theme } from '@looker/design-tokens'
 import { css } from 'styled-components'
 import { accordionDimensions } from '../../Accordion2/accordionDimensions'
 

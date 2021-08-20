@@ -24,7 +24,8 @@
 
  */
 
-import i18next, { InitOptions, Resource } from 'i18next'
+import type { InitOptions, Resource } from 'i18next'
+import i18next from 'i18next'
 import { initReactI18next } from 'react-i18next'
 import { useEffect } from 'react'
 import { i18nResources } from './resources'

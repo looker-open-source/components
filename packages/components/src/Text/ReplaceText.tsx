@@ -23,7 +23,8 @@
  SOFTWARE.
 
  */
-import React, { Children, FC, ReactNode, useMemo } from 'react'
+import type { FC, ReactNode } from 'react'
+import React, { Children, useMemo } from 'react'
 import isRegExp from 'lodash/isRegExp'
 import escapeRegExp from 'lodash/escapeRegExp'
 import isString from 'lodash/isString'

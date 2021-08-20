@@ -24,8 +24,10 @@
 
  */
 
-import { UseDialogBaseProps, useDialog } from '../Dialog/useDialog'
-import { DrawerSurface, DrawerSurfaceProps } from './DrawerSurface'
+import type { UseDialogBaseProps } from '../Dialog/useDialog'
+import { useDialog } from '../Dialog/useDialog'
+import type { DrawerSurfaceProps } from './DrawerSurface'
+import { DrawerSurface } from './DrawerSurface'
 
 export interface UseDrawerProps
   extends UseDialogBaseProps,

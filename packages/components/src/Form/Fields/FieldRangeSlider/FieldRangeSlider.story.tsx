@@ -24,13 +24,14 @@
 
  */
 
-import { Story } from '@storybook/react/types-6-0'
+import type { Story } from '@storybook/react/types-6-0'
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { Button, ButtonGroup, ButtonItem } from '../../../Button'
 import { Space } from '../../../Layout'
 import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
-import { FieldRangeSlider, FieldRangeSliderProps } from './FieldRangeSlider'
+import type { FieldRangeSliderProps } from './FieldRangeSlider'
+import { FieldRangeSlider } from './FieldRangeSlider'
 
 export default {
   argTypes,

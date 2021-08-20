@@ -25,14 +25,15 @@
  */
 
 import { useTranslation } from 'react-i18next'
-import React, { FC, useState } from 'react'
+import type { FC } from 'react'
+import React, { useState } from 'react'
 import { ViewColumn } from '@styled-icons/material/ViewColumn'
 import { usePopover, PopoverContent } from '../../Popover'
 import { IconButton } from '../../Button/IconButton'
 import { CheckboxGroup } from '../../Form/Inputs/OptionsGroup'
 import { ButtonTransparent } from '../../Button/ButtonTransparent'
 import { Space, SpaceVertical } from '../../Layout'
-import { DataTableColumns } from '../Column'
+import type { DataTableColumns } from '../Column'
 
 export interface ColumnSelectorProps {
   columns: DataTableColumns

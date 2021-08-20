@@ -25,7 +25,7 @@
  */
 
 import { useStaticQuery, graphql } from 'gatsby'
-import { NavigationPage } from './types'
+import type { NavigationPage } from './types'
 
 export interface Sitemap {
   [key: string]: NavigationPage[]

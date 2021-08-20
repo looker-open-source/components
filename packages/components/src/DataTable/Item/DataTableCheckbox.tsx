@@ -24,8 +24,10 @@
 
  */
 
-import React, { FC } from 'react'
-import { Checkbox, MixedBoolean } from '../../Form'
+import type { FC } from 'react'
+import React from 'react'
+import type { MixedBoolean } from '../../Form'
+import { Checkbox } from '../../Form'
 import { ItemTarget } from './ItemTarget'
 
 export interface DataTableCheckboxProps {

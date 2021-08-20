@@ -24,8 +24,8 @@
 
  */
 
-import { ReactNode } from 'react'
-import { ValidationMessageProps } from '../ValidationMessage/ValidationMessage'
+import type { ReactNode } from 'react'
+import type { ValidationMessageProps } from '../ValidationMessage/ValidationMessage'
 
 export interface FieldBaseProps {
   className?: string
