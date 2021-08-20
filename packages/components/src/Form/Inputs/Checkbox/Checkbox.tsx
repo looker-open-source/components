@@ -134,9 +134,11 @@ export const Checkbox = styled(
     cursor: ${({ readOnly, disabled }) =>
       readOnly || disabled ? 'not-allowed' : undefined};
     height: 100%;
+    left: 0;
     margin: 0;
     opacity: 0;
     position: absolute;
+    top: 0;
     width: 100%;
     z-index: 1;
   }
