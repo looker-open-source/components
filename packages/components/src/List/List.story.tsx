@@ -34,6 +34,7 @@ import React, { useState } from 'react'
 import { Flex, Grid, Space } from '../Layout'
 import { ListItem } from '../ListItem'
 import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
+import { IconButton } from '../Button'
 import type { ListProps } from './List'
 import { List } from './List'
 
