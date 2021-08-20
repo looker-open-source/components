@@ -2426,10 +2426,10 @@
     styled-system "^5.1.5"
     uuid "^8.3.2"
 
-"@looker/embed-sdk@^1.4.0":
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/@looker/embed-sdk/-/embed-sdk-1.6.0.tgz#f8964e2f4554c4b52db4f5903323470539522d4d"
-  integrity sha512-wReAQubvcQDBAVI23JoMmoKkwG/hFQd+KXeq+OsEEdikWsp4tZySDEBDes0gn9MvSC9OsEdvw7z3I3rajR84eA==
+"@looker/embed-sdk@^1.6.0":
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/@looker/embed-sdk/-/embed-sdk-1.6.1.tgz#72035b07272ce111df6446198c965e42a5cdbd0f"
+  integrity sha512-R3iYXZJscFoAyfb/+EovwW5WxItnutayOJAbfUD05cvvW4Hz9FqBCGu6BLqLh4P9RgeEYK9GpidVwivliLhcGQ==
   dependencies:
     "@looker/chatty" "^2.3.0"
 
@@ -2491,29 +2491,25 @@
     prettier "^2.3.1"
     typescript "4.3.4"
 
-"@looker/extension-sdk-react@21.4.0":
-  version "21.4.0"
-  resolved "https://registry.yarnpkg.com/@looker/extension-sdk-react/-/extension-sdk-react-21.4.0.tgz#802a4da0b464800206fb57e0ea3c8f04dd14ef1b"
-  integrity sha512-gyY7uyQuDY+1zlMnYQNAW/LVO81t7f981L+JY0/VVYitWBuIYhjdc8DqA7YMoLDKSC1Q9Ng0FTRHZKufl7T43g==
+"@looker/extension-sdk-react@21.12.0":
+  version "21.12.0"
+  resolved "https://registry.yarnpkg.com/@looker/extension-sdk-react/-/extension-sdk-react-21.12.0.tgz#e5c0d78a988571612b91c20a225ca4d6d8451ced"
+  integrity sha512-Y+I+aIO5e+1J5e6aaxnY/J/QcA+MaG4zVZS36liGkD0R5u6y/7MSCvE4mXH9YaX9WIfwyH1PKZefs1IFZo9pTA==
   dependencies:
-    "@looker/extension-sdk" "^21.4.0"
-    "@looker/sdk" "^21.4.0"
-    "@looker/sdk-rtl" "^21.0.11"
+    "@looker/extension-sdk" "^21.12.0"
+    "@looker/sdk" "^21.12.0"
+    "@looker/sdk-rtl" "^21.0.19"
     history "^4.9.0"
     lodash "^4.17.20"
-    react "^16.13.1"
-    react-dom "^16.13.1"
-    react-router "^5.1.2"
-    react-router-dom "^5.1.2"
 
-"@looker/extension-sdk@21.4.0", "@looker/extension-sdk@^21.4.0":
-  version "21.4.0"
-  resolved "https://registry.yarnpkg.com/@looker/extension-sdk/-/extension-sdk-21.4.0.tgz#6ef8d96e8b03a08aba2ebf2050e4191deea37f94"
-  integrity sha512-NkJEpc1KfXXabLsuZkPn/HyBYzdpTOLAEt86xPnL2En4PJTU9X9pSPLjVtuIBr1f0d/g+z/roqR8PD1q9rGBCQ==
+"@looker/extension-sdk@21.12.0", "@looker/extension-sdk@^21.12.0":
+  version "21.12.0"
+  resolved "https://registry.yarnpkg.com/@looker/extension-sdk/-/extension-sdk-21.12.0.tgz#2d0b4c11ddae53ea13e13468a4ab7878158f1bf4"
+  integrity sha512-mAo8r1ooxxr2osYdH1ESbwEALc/5WnPUgzrpVQjBSSYaZXkF8pCdNnt+bqcLPcRjaKF657VTO2uHuJj4sjuYKQ==
   dependencies:
     "@looker/chatty" "^2.3.0"
-    "@looker/sdk" "^21.4.0"
-    "@looker/sdk-rtl" "^21.0.11"
+    "@looker/sdk" "^21.12.0"
+    "@looker/sdk-rtl" "^21.0.19"
     deepmerge "^4.2.2"
     readable-stream "^3.4.0"
     request "^2.88.0"
@@ -2527,7 +2523,7 @@
   dependencies:
     prettier ">=2.3.1"
 
-"@looker/sdk-rtl@^21.0.11", "@looker/sdk-rtl@^21.0.12", "@looker/sdk-rtl@^21.0.13":
+"@looker/sdk-rtl@^21.0.13":
   version "21.0.13"
   resolved "https://registry.yarnpkg.com/@looker/sdk-rtl/-/sdk-rtl-21.0.13.tgz#1ee9fd344c5146025b42fce1b3940758bb463b64"
   integrity sha512-x7UibUKwOrmw2jdkCopNtNHBtSkY7zufEur8WMj/STuZwlaumsZ4pjvY1g94CuxXLwu65zhRaeMXz9MJ3dQiIA==
@@ -2537,12 +2533,33 @@
     request "^2.88.0"
     request-promise-native "^1.0.8"
 
-"@looker/sdk@*", "@looker/sdk@^21.4.0", "@looker/sdk@^21.8.0":
+"@looker/sdk-rtl@^21.0.19":
+  version "21.0.19"
+  resolved "https://registry.yarnpkg.com/@looker/sdk-rtl/-/sdk-rtl-21.0.19.tgz#463f18343440c5e50dea6fe9c3732d80c19e6497"
+  integrity sha512-1Iu5A2JY+1wAoUTJJzdej3P4Zi4iq4FU3JqEFMdEL8w0LBku5KTgUdGYenkBZOB9JxOL4fr5aTaE8ohPHlVOSg==
+  dependencies:
+    ini "^1.3.8"
+    readable-stream "^3.4.0"
+    request "^2.88.0"
+    request-promise-native "^1.0.8"
+
+"@looker/sdk@*", "@looker/sdk@^21.8.0":
   version "21.8.0"
   resolved "https://registry.yarnpkg.com/@looker/sdk/-/sdk-21.8.0.tgz#d3e95a2f90f604861220290612f36a154aa5e42b"
   integrity sha512-sACoXEqShswHtxX5sBBVo7BUYM4u0iKmyZ+RZ8NiiDxYDzsRYfDfuFNAtfyh9WjOWMs35CWKfvsakZBcX+u35g==
   dependencies:
     "@looker/sdk-rtl" "^21.0.13"
+    ini "^1.3.8"
+    readable-stream "^3.4.0"
+    request "^2.88.0"
+    request-promise-native "^1.0.8"
+
+"@looker/sdk@^21.12.0":
+  version "21.12.0"
+  resolved "https://registry.yarnpkg.com/@looker/sdk/-/sdk-21.12.0.tgz#c3c6b8190024e1c684076a1886085cc559cb165b"
+  integrity sha512-wocxU9fhvAirk5PYg1wMBMG+aScn3KzZcOkQpf6XpXL92aD2y5+vpRhP0xzjJzmlvFmio3paBKp7PgUU3Za4Bg==
+  dependencies:
+    "@looker/sdk-rtl" "^21.0.19"
     ini "^1.3.8"
     readable-stream "^3.4.0"
     request "^2.88.0"
@@ -17422,7 +17439,7 @@ react-docgen@^5.0.0:
     node-dir "^0.1.10"
     strip-indent "^3.0.0"
 
-react-dom@16.14.0, react-dom@^16.13.1, react-dom@^16.14.0:
+react-dom@16.14.0, react-dom@^16.14.0:
   version "16.14.0"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.14.0.tgz#7ad838ec29a777fb3c75c3a190f661cf92ab8b89"
   integrity sha512-1gCeQXDLoIqMgqD3IO2Ah9bnf0w9kzhwN5q4FGnHZ67hBm9yePzB5JJAIQCc8x3pFnNlwFq4RidZggNAAkzWWw==
@@ -17585,7 +17602,7 @@ react-router-dom@^5.1.2:
     tiny-invariant "^1.0.2"
     tiny-warning "^1.0.0"
 
-react-router@5.2.0, react-router@^5.1.2:
+react-router@5.2.0:
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/react-router/-/react-router-5.2.0.tgz#424e75641ca8747fbf76e5ecca69781aa37ea293"
   integrity sha512-smz1DUuFHRKdcJC0jobGo8cVbhO3x50tCL4icacOlcwDOEQPq4TMqwx3sY1TP+DvtTgz4nm3thuo7A+BK2U0Dw==
@@ -17658,7 +17675,7 @@ react-use-flexsearch@^0.1.1:
   dependencies:
     flexsearch "^0.6.22"
 
-react@16.14.0, react@^16.13.1, react@^16.14.0:
+react@16.14.0, react@^16.14.0:
   version "16.14.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.14.0.tgz#94d776ddd0aaa37da3eda8fc5b6b18a4c9a3114d"
   integrity sha512-0X2CImDkJGApiAlcf0ODKIneSwBPhqJawOa5wCtKbu7ZECrmS26NvtSILynQ66cgkT/RJ4LidJOc3bUESwmU8g==

@@ -25,9 +25,8 @@
  */
 
 /**
- * This function is ripped from legacy (filters_serice.js) and escapes leading
- * and trailing whitespaces with a caret for the given string. Trailing whitespaces
- * are doubly escaped.
+ * This function is escapes leading and trailing spaces with a caret for the
+ * given string. Trailing spaces are doubly escaped.
  *
  * Double escape param is true when the filter type is matches, but false for "like" filters
  * as they
@@ -36,11 +35,11 @@ export const escapeLeadingAndTrailingWhitespaces = (
   value: string,
   doubleEscapeLastEscapedTrailingSpace = true
 ) => {
-  // the following regex escapes leading and trailing whitespaces only
-  // (leaving other whitespaces, such as between two letters, as they are)
+  // the following regex escapes leading and trailing spaces only
+  // (leaving other spaces, such as between two letters, as they are)
   let str = value.replace(
     /^([ ]*)(.*?)([ ]*)$/g,
-    (char: string, g1?: string, g2?: string, g3?: string) => {
+    (_: string, g1?: string, g2?: string, g3?: string) => {
       const leading = g1 ? g1.replace(/[ ]/g, '^ ') : ''
       const content = g2 || ''
       const trailing = g3 ? g3.replace(/[ ]/g, '^ ') : ''
