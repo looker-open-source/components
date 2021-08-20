@@ -25,7 +25,10 @@
  */
 
 module.exports = {
-  extends: ['@looker/eslint-config', '@looker/eslint-config/license-header'],
+  extends: [
+    '@looker/eslint-config-oss',
+    '@looker/eslint-config-oss/license-header',
+  ],
   rules: {
     camelcase: 'off',
     'import/order': 'off',

@@ -28,7 +28,10 @@
 const ignoreProps = require('./config/i18nIgnoredProps.js')
 
 module.exports = {
-  extends: ['@looker/eslint-config', '@looker/eslint-config/license-header'],
+  extends: [
+    '@looker/eslint-config-oss',
+    '@looker/eslint-config-oss/license-header',
+  ],
   overrides: [
     {
       files: ['www/**/*.ts', 'www/**/*.tsx'],
