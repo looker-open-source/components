@@ -195,12 +195,13 @@ const NavTreeLayout = ({
          * into useAccordion2 and receive them via disclosureProps, so instead we directly assign them here
          */
         onClick={handleContentClick}
-        {...contentHandlers}
         onKeyUp={handleContentKeyUp}
         rel={createSafeRel(rel, target)}
         target={target}
         {...ariaProps}
+        {...contentHandlers}
         {...disclosureDomProps}
+        focusVisible={false} // disable inherent focus style
       >
         {!isIndicatorToggleOnly && renderedIndicator}
         {disclosureLabel}
@@ -249,7 +250,12 @@ export const NavTree = styled(NavTreeLayout)`
       !icon &&
       `margin-right: ${
         theme.space[listItemDimensions(theme.defaults.density).iconGap]
-      }`}
+      };`}
+  }
+
+  ${AccordionIndicator}:focus, ${NavTreeItemContent}:focus {
+    box-shadow: inset 0 0 0 2px ${({ theme }) => theme.colors.keyFocus};
+    outline: none;
   }
 
   ${ListItemDetail} {
