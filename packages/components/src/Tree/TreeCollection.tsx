@@ -28,8 +28,8 @@ import type { CompatibleHTMLProps } from '@looker/design-tokens'
 import type { KeyboardEvent, Ref } from 'react'
 import React, { forwardRef, useRef } from 'react'
 import styled from 'styled-components'
+import { getNextItemFocus, getItems } from '../List/utils'
 import { useArrowKeyNav, useForkedRef } from '../utils'
-import { getNextTreeFocus, getTreeItems } from './utils'
 
 export type TreeCollectionProps = CompatibleHTMLProps<HTMLUListElement>
 
@@ -39,7 +39,7 @@ const TreeCollectionInternal = forwardRef(
 
     // Additional key shortcuts
     const handleKeyDown = (event: KeyboardEvent<HTMLElement>) => {
-      const treeItems = getTreeItems(internalRef.current as HTMLElement)
+      const treeItems = getItems(internalRef.current as HTMLElement)
       if (event.key === 'Home') {
         const firstItem = treeItems[0]
         firstItem && firstItem.focus()
@@ -51,7 +51,7 @@ const TreeCollectionInternal = forwardRef(
 
     const navProps = useArrowKeyNav<HTMLUListElement>({
       axis: 'both',
-      getNextFocus: getNextTreeFocus,
+      getNextFocus: getNextItemFocus,
       onKeyDown: handleKeyDown,
       ref: useForkedRef(internalRef, forwardedRef),
     })

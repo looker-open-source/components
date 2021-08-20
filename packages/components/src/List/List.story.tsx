@@ -233,3 +233,22 @@ export const DensityWithNonstringChildren = () => (
     <DensityExample density={-3}>{listItemsNonstringChildren}</DensityExample>
   </Grid>
 )
+
+export const KeyboardNav = () => (
+  <List>
+    <ListItem
+      detail={{
+        content: <IconButton label="button" icon={<DateRange />} />,
+        options: { hoverDisclosure: true },
+      }}
+    >
+      Cheddar
+    </ListItem>
+    <ListItem detail={<IconButton label="button" icon={<DateRange />} />}>
+      Gouda
+    </ListItem>
+  </List>
+)
+KeyboardNav.parameters = {
+  storyshots: { disable: true },
+}
