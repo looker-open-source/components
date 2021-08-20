@@ -74,7 +74,7 @@
     "@types/node": "^16.0.0",
     "babel-plugin-styled-components": "1.13.1",
     "core-js": "^3.12.1",
-    "eslint": "^7.27.0",
+    "eslint": "^7.32.0",
     "jest": "^26.6.3",
     "jest-image-snapshot": "^4.4.1",
     "jest-styled-components": "^7.0.4",
@@ -94,7 +94,7 @@
     "webpack": "^4.44.2"
   },
   "resolutions": {
-    "@typescript-eslint/eslint-plugin": "4.22.0",
+    "@typescript-eslint/eslint-plugin": "4.29.2",
     "axios": ">= 0.21.0",
     "browserslist": ">= 4.16.5",
     "eslint-plugin-react-hooks": ">= 4.2.0",
