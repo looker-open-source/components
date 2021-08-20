@@ -118,7 +118,7 @@ GroupedWindowing.parameters = {
   storyshots: { disable: true },
 }
 
-export const TrimInputValuesFalse = () => {
+export const FormatInputValuesFalse = () => {
   const [values, setValues] = useState<string[]>()
   return (
     <Space>
@@ -135,7 +135,7 @@ export const TrimInputValuesFalse = () => {
     </Space>
   )
 }
-TrimInputValuesFalse.parameters = {
+FormatInputValuesFalse.parameters = {
   storyshots: { disable: true },
 }
 

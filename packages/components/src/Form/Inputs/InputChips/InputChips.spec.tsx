@@ -190,21 +190,40 @@ tag2`
     expect(input).toHaveValue('')
   })
 
-  test('formatInputValue false', () => {
-    const onChangeMock = jest.fn()
+  describe('formatInputValue', () => {
+    test('false', () => {
+      const onChangeMock = jest.fn()
 
-    renderWithTheme(
-      <InputChips
-        onChange={onChangeMock}
-        values={[]}
-        placeholder="type here"
-        formatInputValue={false}
-      />
-    )
-    const input = screen.getByPlaceholderText('type here')
-    fireEvent.change(input, { target: { value: '  no trim  ,' } })
-    expect(onChangeMock).toHaveBeenCalledWith(['  no trim  '])
-    expect(input).toHaveValue('')
+      renderWithTheme(
+        <InputChips
+          onChange={onChangeMock}
+          values={[]}
+          placeholder="type here"
+          formatInputValue={false}
+        />
+      )
+      const input = screen.getByPlaceholderText('type here')
+      fireEvent.change(input, { target: { value: '  no trim  ,' } })
+      expect(onChangeMock).toHaveBeenCalledWith(['  no trim  '])
+      expect(input).toHaveValue('')
+    })
+
+    test('custom', () => {
+      const onChangeMock = jest.fn()
+
+      renderWithTheme(
+        <InputChips
+          onChange={onChangeMock}
+          values={[]}
+          placeholder="type here"
+          formatInputValue={(value: string) => value.toUpperCase()}
+        />
+      )
+      const input = screen.getByPlaceholderText('type here')
+      fireEvent.change(input, { target: { value: '  no trim  ,' } })
+      expect(onChangeMock).toHaveBeenCalledWith(['  NO TRIM  '])
+      expect(input).toHaveValue('')
+    })
   })
 
   test('duplicate values are not added', () => {

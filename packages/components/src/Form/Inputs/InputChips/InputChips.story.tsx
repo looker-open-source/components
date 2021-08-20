@@ -101,7 +101,7 @@ ReadOnly.parameters = {
   storyshots: { disable: true },
 }
 
-export const TrimInputValuesFalse = () => {
+export const FormatInputValuesFalse = () => {
   const [chips, setChips] = useState(['initial', 'values'])
   return (
     <Space>
@@ -115,7 +115,7 @@ export const TrimInputValuesFalse = () => {
     </Space>
   )
 }
-TrimInputValuesFalse.parameters = {
+FormatInputValuesFalse.parameters = {
   storyshots: { disable: true },
 }
 

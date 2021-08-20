@@ -145,8 +145,9 @@ invalid and duplicate values are entered.
 
 ## formatInputValue
 
-By default, any leading or trailing whitespace will be trimmed from
-entered values, before validation. To avoid this, use `formatInputValue={false}`.
+Use this callback to format values after there are entered, before validation.
+By default, any leading or trailing whitespace will be trimmed – to avoid this,
+use `formatInputValue={false}`.
 
 ```jsx
 ;() => {

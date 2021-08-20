@@ -48,8 +48,8 @@ export interface InputChipsValidationProps {
    */
   validate?: (value: string) => boolean
   /**
-   * Format each value entered, before validation, defaults to `value.trim()`,
-   * set to `false` to avoid trimming whitespace
+   * Callback to format each value entered, before validation.
+   * Defaults to `value.trim()`, set to `false` to avoid trimming whitespace.
    */
   formatInputValue?: FormatInputValue
   /**
