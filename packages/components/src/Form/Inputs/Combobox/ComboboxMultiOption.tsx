@@ -31,7 +31,8 @@ import type { Ref } from 'react'
 import React, { forwardRef } from 'react'
 import styled from 'styled-components'
 import { useForkedRef } from '../../../utils'
-import { Checkbox } from '../Checkbox'
+import { FauxCheckbox } from '../Checkbox/FauxCheckbox'
+import { CheckMark } from '../Checkbox/CheckMark'
 import type { ComboboxMultiContextProps } from './ComboboxContext'
 import { ComboboxMultiContext } from './ComboboxContext'
 import {
@@ -40,74 +41,70 @@ import {
   ComboboxOptionText,
 } from './ComboboxOption'
 import { ComboboxOptionIndicator } from './ComboboxOptionIndicator'
-import type { ComboboxOptionProps } from './types'
+import type { ComboboxOptionProps, ComboboxOptionStatuses } from './types'
 import { useAddOptionToContext } from './utils/useAddOptionToContext'
 import { useOptionEvents } from './utils/useOptionEvents'
 import { useOptionStatus } from './utils/useOptionStatus'
 import { useOptionScroll } from './utils/useOptionScroll'
 
-const ComboboxMultiOptionInternal = forwardRef(
-  (
-    {
-      children,
-      indicator,
-      highlightText = true,
-      scrollIntoView,
-      ...props
-    }: ComboboxOptionProps,
-    forwardedRef: Ref<HTMLLIElement>
-  ) => {
-    const { label, value } = props
+export const ComboboxMultiOption = styled(
+  forwardRef(
+    (
+      {
+        children,
+        indicator,
+        highlightText = true,
+        scrollIntoView,
+        ...props
+      }: ComboboxOptionProps,
+      forwardedRef: Ref<HTMLLIElement>
+    ) => {
+      const { label, value } = props
 
-    useAddOptionToContext<ComboboxMultiContextProps>(
-      ComboboxMultiContext,
-      value,
-      label,
-      scrollIntoView
-    )
-    const optionEvents = useOptionEvents<ComboboxMultiContextProps>(
-      props,
-      ComboboxMultiContext
-    )
-    const { isActive, isSelected } = useOptionStatus<ComboboxMultiContextProps>(
-      ComboboxMultiContext,
-      value
-    )
+      useAddOptionToContext<ComboboxMultiContextProps>(
+        ComboboxMultiContext,
+        value,
+        label,
+        scrollIntoView
+      )
+      const optionEvents = useOptionEvents<ComboboxMultiContextProps>(
+        props,
+        ComboboxMultiContext
+      )
+      const { isActive, isSelected } =
+        useOptionStatus<ComboboxMultiContextProps>(ComboboxMultiContext, value)
 
-    const scrollRef = useOptionScroll(
-      ComboboxMultiContext,
-      value,
-      label,
-      scrollIntoView,
-      isActive
-    )
-    const ref = useForkedRef(scrollRef, forwardedRef)
+      const scrollRef = useOptionScroll(
+        ComboboxMultiContext,
+        value,
+        label,
+        scrollIntoView,
+        isActive
+      )
+      const ref = useForkedRef(scrollRef, forwardedRef)
 
-    return (
-      <ComboboxOptionWrapper
-        {...props}
-        {...optionEvents}
-        ref={ref}
-        aria-selected={isActive}
-        isSelected={isSelected}
-      >
-        <ComboboxOptionIndicator
-          indicator={indicator}
-          isActive={isActive}
+      return (
+        <ComboboxOptionWrapper
+          {...props}
+          {...optionEvents}
+          ref={ref}
+          aria-selected={isActive}
           isSelected={isSelected}
-          isMulti={true}
         >
-          <Checkbox checked={isSelected} mt="xxxsmall" />
-        </ComboboxOptionIndicator>
-        {children || <ComboboxOptionText highlightText={highlightText} />}
-      </ComboboxOptionWrapper>
-    )
-  }
-)
-
-ComboboxMultiOptionInternal.displayName = 'ComboboxMultiOptionInternal'
-
-export const ComboboxMultiOption = styled(ComboboxMultiOptionInternal).attrs(
+          <ComboboxOptionIndicator
+            indicator={indicator}
+            isActive={isActive}
+            isSelected={isSelected}
+            isMulti={true}
+          >
+            <FauxCheckbox>{isSelected && <CheckMark />}</FauxCheckbox>
+          </ComboboxOptionIndicator>
+          {children || <ComboboxOptionText highlightText={highlightText} />}
+        </ComboboxOptionWrapper>
+      )
+    }
+  )
+).attrs(
   ({
     color = 'text4',
     display = 'flex',
@@ -123,6 +120,16 @@ export const ComboboxMultiOption = styled(ComboboxMultiOptionInternal).attrs(
     px,
     py,
   })
-)`
+)<ComboboxOptionStatuses>`
   ${comboboxOptionStyle}
+  ${FauxCheckbox} {
+    background-color: ${({ isSelected, theme }) =>
+      isSelected && theme.colors.key};
+    border-color: ${({ isSelected, theme }) => isSelected && theme.colors.key};
+    color: ${({ isSelected, theme }) => !isSelected && theme.colors.keyText};
+
+    height: ${({ theme: { space } }) => space.u4};
+    position: relative;
+    width: ${({ theme: { space } }) => space.u4};
+  }
 `
