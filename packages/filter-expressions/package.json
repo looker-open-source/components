@@ -9,7 +9,7 @@
   "access": "public"
  },
  "dependencies": {
-  "@looker/sdk": "^21.8.0",
+  "@looker/sdk": "^21.12.0",
   "lodash": "^4.17.20",
   "pegjs": "0.10.0"
  },
