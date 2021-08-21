@@ -26,10 +26,17 @@
 
 import styled from 'styled-components'
 
-export const FauxCheckbox = styled.div`
+export type FauxCheckboxProps = {
+  isSelected?: boolean
+}
+
+export const FauxCheckbox = styled.div<FauxCheckboxProps>`
   align-items: center;
   background: currentColor;
+  background-color: ${({ isSelected, theme }) =>
+    isSelected && theme.colors.key};
   border: solid 1px ${({ theme }) => theme.colors.ui2};
+  border-color: ${({ isSelected, theme }) => isSelected && theme.colors.key};
   border-radius: ${({ theme }) => theme.radii.small};
   color: ${({ theme }) => theme.colors.keyText};
   display: flex;
