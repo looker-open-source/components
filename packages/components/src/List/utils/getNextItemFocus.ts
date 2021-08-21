@@ -24,27 +24,56 @@
 
  */
 
+/*
+
+ MIT License
+
+ Copyright (c) 2021 Looker Data Sciences, Inc.
+
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in all
+ copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ SOFTWARE.
+
+ */
+
 import { getFallbackElement } from '../../utils/getNextFocus'
 
-export const getTreeItems = (ref: HTMLElement): HTMLElement[] =>
-  Array.from(ref.querySelectorAll('[role="treeitem"]:not(:disabled)'))
+export const itemSelector =
+  '[role="treeitem"]:not(:disabled),[role="listitem"]:not(:disabled),[role="menuitem"]:not(:disabled)'
+
+export const getItems = (ref: HTMLElement): HTMLElement[] =>
+  Array.from(ref.querySelectorAll(itemSelector))
 
 /**
  * Returns the next focusable inside an element in a given direction
  * @param direction 1 for forward -1 for reverse
  * @param element the container element
  */
-export const getNextTreeFocus = (
+export const getNextItemFocus = (
   direction: 1 | -1,
   element: HTMLElement,
   vertical?: boolean
 ) => {
-  const treeItems = getTreeItems(element)
+  const items = getItems(element)
 
-  if (treeItems.length > 0) {
+  if (items.length > 0) {
     const focusedElement = document.activeElement
     const isItemFocused =
-      focusedElement && treeItems.includes(focusedElement as HTMLElement)
+      focusedElement && items.includes(focusedElement as HTMLElement)
     const closestWrapper = focusedElement?.closest(
       'li:not(:disabled)'
     ) as HTMLElement
@@ -52,17 +81,15 @@ export const getNextTreeFocus = (
     if (vertical) {
       const target = isItemFocused
         ? (focusedElement as HTMLElement)
-        : (closestWrapper.querySelector(
-            '[role="treeitem"]:not(:disabled)'
-          ) as HTMLElement)
+        : (closestWrapper.querySelector(itemSelector) as HTMLElement)
 
-      const next = treeItems.findIndex((el) => el === target) + direction
+      const next = items.findIndex((el) => el === target) + direction
 
-      if (next === treeItems.length || !treeItems[next]) {
-        return getFallbackElement(direction, element, treeItems)
+      if (next === items.length || !items[next]) {
+        return getFallbackElement(direction, element, items)
       }
 
-      return treeItems[next]
+      return items[next]
     } else if (vertical === false) {
       const tabStops = Array.from(
         closestWrapper.querySelectorAll(
@@ -85,5 +112,5 @@ export const getNextTreeFocus = (
   }
 
   // Tabbing to a Tree should trigger this fallback condition
-  return getFallbackElement(direction, element, treeItems)
+  return getFallbackElement(direction, element, items)
 }

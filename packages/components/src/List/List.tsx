@@ -48,6 +48,7 @@ import {
 import styled, { ThemeContext } from 'styled-components'
 import { useArrowKeyNav, useWindow } from '../utils'
 import { ListItemContext, listItemDimensions } from '../ListItem'
+import { getNextItemFocus } from './utils'
 
 export type ListColor = 'key' | 'calculation' | 'dimension' | 'measure'
 
@@ -156,7 +157,9 @@ export const ListInternal = forwardRef(
     )
 
     const navProps = useArrowKeyNav({
+      axis: 'both',
       disabled: disableKeyboardNav,
+      getNextFocus: getNextItemFocus,
       onBlur,
       onFocus,
       onKeyDown,

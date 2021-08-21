@@ -31,12 +31,14 @@ import { getNextFocus as getNextFocusDefault } from './getNextFocus'
 import { useForkedRef } from './useForkedRef'
 import { useWrapEvent } from './useWrapEvent'
 
+export type ArrowKeyAxis = 'vertical' | 'horizontal' | 'both'
+
 export interface UseArrowKeyNavProps<E extends HTMLElement> {
   /**
    * vertical for up/down arrow keys, horizontal for left/right, both for all (grid)
    * @default vertical
    */
-  axis?: 'vertical' | 'horizontal' | 'both'
+  axis?: ArrowKeyAxis
   /**
    * If true, nothing is returned from the useArrowKeyNav call
    * Note: Used internally by Tree's nested List

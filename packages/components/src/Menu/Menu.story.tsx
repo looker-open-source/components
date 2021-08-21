@@ -678,3 +678,50 @@ export const NestedMenu = () => {
 NestedMenu.parameters = {
   storyshots: { disable: true },
 }
+
+export const NestedMenuAndFocusableDetails = () => {
+  const getOnClick = (text: string) => (e: MouseEvent<HTMLLIElement>) => {
+    alert(`You clicked ${text}`)
+    if (text === 'preventDefault') {
+      e.preventDefault()
+    }
+  }
+
+  const nestedMenu = (
+    <>
+      <MenuItem onClick={getOnClick('Sub Item')}>Sub Item</MenuItem>
+      <MenuItem onClick={getOnClick('Another Sub Item')}>
+        Another Sub Item
+      </MenuItem>
+      <MenuItem onClick={getOnClick('Third Sub Item')}>Third Sub Item</MenuItem>
+      <MenuItem onClick={getOnClick('4th Sub Item')}>4th Sub Item</MenuItem>
+      <MenuItem onClick={getOnClick('Fifth Sub Item')}>Fifth Sub Item</MenuItem>
+      <MenuItem onClick={getOnClick('preventDefault')}>preventDefault</MenuItem>
+    </>
+  )
+
+  const content = (
+    <>
+      <MenuItem
+        itemRole="none"
+        icon={<Download />}
+        detail={<IconButton label="Favorite" icon={<MoreVert />} />}
+      >
+        Download
+      </MenuItem>
+      <MenuItem nestedMenu={nestedMenu}>Sub Menu</MenuItem>
+      <MenuItem onClick={getOnClick('Sub Menu')} nestedMenu={nestedMenu}>
+        Sub Menu - with onClick
+      </MenuItem>
+    </>
+  )
+
+  return (
+    <Menu content={content}>
+      <Button>Nested Menu</Button>
+    </Menu>
+  )
+}
+NestedMenuAndFocusableDetails.parameters = {
+  storyshots: { disable: true },
+}

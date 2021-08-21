@@ -34,6 +34,7 @@ import React, { useState } from 'react'
 import { Flex, Grid, Space } from '../Layout'
 import { ListItem } from '../ListItem'
 import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
+import { IconButton } from '../Button'
 import type { ListProps } from './List'
 import { List } from './List'
 
@@ -233,3 +234,34 @@ export const DensityWithNonstringChildren = () => (
     <DensityExample density={-3}>{listItemsNonstringChildren}</DensityExample>
   </Grid>
 )
+
+export const KeyboardNavigation = () => (
+  <List>
+    <ListItem
+      itemRole="none"
+      detail={{
+        content: (
+          <IconButton
+            label="cheddar-button"
+            icon={<DateRange />}
+            tooltipDisabled
+          />
+        ),
+        options: { hoverDisclosure: true },
+      }}
+    >
+      Cheddar
+    </ListItem>
+    <ListItem
+      itemRole="none"
+      detail={
+        <IconButton label="gouda-button" icon={<DateRange />} tooltipDisabled />
+      }
+    >
+      Gouda
+    </ListItem>
+  </List>
+)
+KeyboardNavigation.parameters = {
+  storyshots: { disable: true },
+}

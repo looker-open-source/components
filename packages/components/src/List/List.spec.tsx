@@ -28,8 +28,9 @@ import 'jest-styled-components'
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import { ListItem } from '../ListItem'
-import { Basic, LongList } from './List.story'
+import { Basic, KeyboardNavigation, LongList } from './List.story'
 import { List } from './List'
 
 /* eslint-disable-next-line @typescript-eslint/unbound-method */
@@ -110,6 +111,55 @@ describe('List', () => {
       )
       expect(screen.getByText('Mozzarella')).toBeInTheDocument()
       expect(screen.getByText('Mozzarella')).toHaveStyle('color: #319220;')
+    })
+  })
+
+  describe('keyboard navigation', () => {
+    test('up and down arrow keys traverse from item to item', () => {
+      renderWithTheme(
+        <>
+          <button>Start Button</button>
+          <KeyboardNavigation />
+        </>
+      )
+
+      userEvent.click(screen.getByText('Start Button'))
+      userEvent.tab()
+      const listItems = screen.getAllByRole('listitem')
+      const cheddar = listItems[0]
+      const gouda = listItems[1]
+      expect(cheddar).toHaveFocus()
+
+      userEvent.keyboard('{arrowdown}')
+      expect(gouda).toHaveFocus()
+
+      userEvent.keyboard('{arrowup}')
+      expect(cheddar).toHaveFocus()
+    })
+
+    test('left and right arrow keys traverse within item from content to focusable detail elements', () => {
+      renderWithTheme(
+        <>
+          <button>Start Button</button>
+          <KeyboardNavigation />
+        </>
+      )
+
+      userEvent.click(screen.getByText('Start Button'))
+      userEvent.tab()
+      const listItems = screen.getAllByRole('listitem')
+      const cheddar = listItems[0]
+      const gouda = listItems[1]
+      expect(cheddar).toHaveFocus()
+
+      userEvent.keyboard('{arrowright}')
+      expect(screen.getByText('cheddar-button').closest('button')).toHaveFocus()
+
+      userEvent.keyboard('{arrowdown}')
+      expect(gouda).toHaveFocus()
+
+      userEvent.keyboard('{arrowright}')
+      expect(screen.getByText('gouda-button').closest('button')).toHaveFocus()
     })
   })
 })
