@@ -39,15 +39,13 @@ export const MenuListInternal = forwardRef(
   (
     { children, closeParentMenu, ...props }: MenuListProps,
     forwardedRef: Ref<HTMLUListElement>
-  ) => {
-    return (
-      <NestedMenuProvider closeParentMenu={closeParentMenu}>
-        <List role="menu" ref={forwardedRef} {...props}>
-          {children}
-        </List>
-      </NestedMenuProvider>
-    )
-  }
+  ) => (
+    <NestedMenuProvider closeParentMenu={closeParentMenu}>
+      <List role="menu" ref={forwardedRef} {...props}>
+        {children}
+      </List>
+    </NestedMenuProvider>
+  )
 )
 MenuListInternal.displayName = 'MenuListInternal'
 
