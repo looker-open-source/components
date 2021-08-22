@@ -143,6 +143,30 @@ invalid and duplicate values are entered.
 }
 ```
 
+## formatInputValue
+
+Use this callback to format values after there are entered, before validation.
+By default, any leading or trailing whitespace will be trimmed – to avoid this,
+use `formatInputValue={false}`.
+
+```jsx
+;() => {
+  const [values, setValues] = React.useState([])
+  return (
+    <Space>
+      <InputChips
+        placeholder="Values are not trimmed"
+        values={values}
+        onChange={setValues}
+        formatInputValue={false}
+        width="50%"
+      />
+      <pre>{JSON.stringify(values)}</pre>
+    </Space>
+  )
+}
+```
+
 ## removeOnBackspace
 
 The `removeOnBackspace` prop defaults to true.
