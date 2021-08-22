@@ -50,4 +50,13 @@ describe('PopoverContent', () => {
     expect(item).toHaveStyleRule('padding-top', '2rem')
     expect(item).toHaveStyleRule('padding-bottom', '0.75rem')
   })
+
+  test('Custom padding `p`', () => {
+    renderWithTheme(<PopoverContent p="u12">Hello world</PopoverContent>)
+    const item = screen.getByText('Hello world')
+    expect(item).toHaveStyleRule('padding-left', '3rem')
+    expect(item).toHaveStyleRule('padding-right', '3rem')
+    expect(item).toHaveStyleRule('padding-top', '3rem')
+    expect(item).toHaveStyleRule('padding-bottom', '3rem')
+  })
 })

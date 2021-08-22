@@ -32,12 +32,14 @@ import { ModalContent } from '../../../Modal/ModalContent'
 
 export type DialogContentProps = ModalContentProps & LayoutProps
 
-export const DialogContent = styled(ModalContent).attrs(
-  ({ pb = 'large', pt = 'large', px = 'xlarge' }) => ({
-    pb,
-    pt,
-    px,
-  })
-)<DialogContentProps>`
+const dialogContentDefaults = {
+  px: 'u8',
+  py: 'u5',
+}
+
+export const DialogContent = styled(ModalContent).attrs(({ p, py, px }) => ({
+  px: p || px || dialogContentDefaults.px,
+  py: p || py || dialogContentDefaults.py,
+}))<DialogContentProps>`
   ${layout}
 `
