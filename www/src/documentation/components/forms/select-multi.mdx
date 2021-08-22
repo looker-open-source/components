@@ -73,7 +73,8 @@ This enables the inputting behavior of [`InputChips`](/components/forms/input-ch
 by the enter key, comma, or tab or newline character when pasting. This prop also supports accepting values copy-pasted in from another `SelectMulti`.
 
 Use the `validate` callback to ensure that values entered via `freeInput` are valid, and the `onValidationFail` and `onDuplicate`
-callbacks to handle invalid values.
+callbacks to handle invalid values. By default, any leading or trailing whitespace will be trimmed from
+entered values, before validation. To avoid this, use `formatInputValue={false}`, or provide a callback for custom formatting.
 
 ```jsx
 ;() => {
@@ -88,7 +89,7 @@ callbacks to handle invalid values.
     setMessage('')
   }
   return (
-    <SpaceVertical>
+    <SpaceVertical align="stretch">
       <SelectMulti
         options={[
           { value: 'Cheddar' },

@@ -282,9 +282,33 @@ describe('closeOnSelect', () => {
       )
 
       const input = screen.getByPlaceholderText('Search')
-      fireEvent.change(input, { target: { value: 'baz,qux,' } })
+
+      // Whitespace trimmed by default
+      fireEvent.change(input, { target: { value: ' baz , qux,' } })
 
       expect(onChangeMock).toHaveBeenCalledWith(['FOO', 'BAR', 'baz', 'qux'])
+      expect(input).toHaveValue('')
+
+      fireEvent.click(document)
+    })
+
+    test('formatInputValue false', () => {
+      const onChangeMock = jest.fn()
+      renderWithTheme(
+        <SelectMulti
+          options={basicOptions}
+          defaultValues={['FOO', 'BAR']}
+          placeholder="Search"
+          onChange={onChangeMock}
+          freeInput
+          formatInputValue={false}
+        />
+      )
+
+      const input = screen.getByPlaceholderText('Search')
+      fireEvent.change(input, { target: { value: ' baz , qux,' } })
+
+      expect(onChangeMock).toHaveBeenCalledWith(['FOO', 'BAR', ' baz ', ' qux'])
       expect(input).toHaveValue('')
 
       fireEvent.click(document)

@@ -25,21 +25,24 @@
  */
 
 import type { Story } from '@storybook/react/types-6-0'
-import React from 'react'
+import React, { useState } from 'react'
+import { defaultArgTypes as argTypes } from '../../../../../../../storybook/src/defaultArgTypes'
+import { Space } from '../../../../Layout'
 import type { SelectMultiProps } from '../SelectMulti'
 import { SelectMulti } from '../SelectMulti'
-import { defaultArgTypes as argTypes } from '../../../../../../../storybook/src/defaultArgTypes'
 import { options1kGrouped } from './options1k'
 
 const Template: Story<SelectMultiProps> = (args) => <SelectMulti {...args} />
 
+const cheeses = [
+  { label: 'Cheddar', value: 'cheddar' },
+  { label: 'Gouda', value: 'gouda' },
+  { label: 'Swiss', value: 'swiss' },
+]
+
 export const Basic = Template.bind({})
 Basic.args = {
-  options: [
-    { label: 'Cheddar', value: 'cheddar' },
-    { label: 'Gouda', value: 'gouda' },
-    { label: 'Swiss', value: 'swiss' },
-  ],
+  options: cheeses,
 }
 
 export const Placeholder = Template.bind({})
@@ -112,6 +115,27 @@ GroupedWindowing.args = {
 }
 
 GroupedWindowing.parameters = {
+  storyshots: { disable: true },
+}
+
+export const FormatInputValuesFalse = () => {
+  const [values, setValues] = useState<string[]>()
+  return (
+    <Space>
+      <SelectMulti
+        values={values}
+        onChange={setValues}
+        options={cheeses}
+        freeInput
+        formatInputValue={false}
+        placeholder="Free input values are not trimmed"
+        width={400}
+      />
+      <pre data-testid="pre">{JSON.stringify(values)}</pre>
+    </Space>
+  )
+}
+FormatInputValuesFalse.parameters = {
   storyshots: { disable: true },
 }
 
