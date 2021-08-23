@@ -6,7 +6,7 @@ storybook: true
 The `<MessageBar />` component is used to alert the user with `warn`, `critical`, `inform`, or `positive` messages, settable via the `intent` property. If no intent is set, it will fall back to `inform` by default.
 
 ```jsx
-<SpaceVertical gap="xsmall">
+<SpaceVertical gap="u2">
   <MessageBar intent="inform">Inform (default)</MessageBar>
   <MessageBar intent="warn">Warning</MessageBar>
   <MessageBar intent="positive">Positive</MessageBar>
@@ -101,7 +101,7 @@ To control MessageBar renderin externally, use `onPrimaryAction` in conjunction 
         I can be closed and reopened
       </MessageBar>
       {!value && (
-        <ButtonOutline m="medium" onClick={setOn}>
+        <ButtonOutline m="u4" onClick={setOn}>
           Show MessageBar
         </ButtonOutline>
       )}

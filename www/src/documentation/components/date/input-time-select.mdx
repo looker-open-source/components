@@ -23,27 +23,27 @@ We've limited allowed intervals to a few approved options rather than accepting 
 
 ```jsx
 <Fieldset>
-  <SpaceVertical gap="xxsmall">
+  <SpaceVertical gap="u1">
     <Heading as="h4">5-minute</Heading>
     <InputTimeSelect interval={5} />
   </SpaceVertical>
-  <SpaceVertical gap="xxsmall">
+  <SpaceVertical gap="u1">
     <Heading as="h4">10-minute</Heading>
     <InputTimeSelect interval={10} />
   </SpaceVertical>
-  <SpaceVertical gap="xxsmall">
+  <SpaceVertical gap="u1">
     <Heading as="h4">15-minute</Heading>
     <InputTimeSelect interval={15} />
   </SpaceVertical>
-  <SpaceVertical gap="xxsmall">
+  <SpaceVertical gap="u1">
     <Heading as="h4">60-minute</Heading>
     <InputTimeSelect interval={20} />
   </SpaceVertical>
-  <SpaceVertical gap="xxsmall">
+  <SpaceVertical gap="u1">
     <Heading as="h4">30-minute</Heading>
     <InputTimeSelect interval={30} />
   </SpaceVertical>
-  <SpaceVertical gap="xxsmall">
+  <SpaceVertical gap="u1">
     <Heading as="h4">60-minute</Heading>
     <InputTimeSelect interval={60} />
   </SpaceVertical>
@@ -59,14 +59,14 @@ Depending on readability preference, the time picker can format the labels in ei
   const [value, setValue] = useState('14:00')
   return (
     <Grid>
-      <SpaceVertical gap="xsmall">
+      <SpaceVertical gap="u2">
         <Heading as="h3">12-hour</Heading>
         <Space>
           <InputTimeSelect format="12h" value={value} onChange={setValue} />
           <Text color="text2">{value}</Text>
         </Space>
       </SpaceVertical>
-      <SpaceVertical gap="xsmall">
+      <SpaceVertical gap="u2">
         <Heading as="h3">24-hour</Heading>
         <Space>
           <InputTimeSelect format="24h" value={value} onChange={setValue} />
