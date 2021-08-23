@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.3.0-alpha.0](https://github.com/looker-open-source/components/compare/@looker/design-tokens@2.2.0...@looker/design-tokens@2.3.0-alpha.0) (2021-08-23)
+
+
+### Features
+
+* **IconButton:** Add ripple effect ([#2721](https://github.com/looker-open-source/components/issues/2721)) ([582c37a](https://github.com/looker-open-source/components/commit/582c37a429285a07ccaa6981947e76a908d454b0))
+
+
+
+
+
 # [2.2.0](https://github.com/looker-open-source/components/compare/@looker/design-tokens@2.2.0-alpha.1...@looker/design-tokens@2.2.0) (2021-08-16)
 
 
