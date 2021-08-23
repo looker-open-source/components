@@ -25,17 +25,11 @@
  */
 
 import React from 'react'
-import styled from 'styled-components'
 import type { ParagraphProps } from '../..'
 import { Aside, Box, Paragraph } from '../..'
 import { TreeBranch, TreeCollection } from '../../Tree'
-import { generateBorderRadius } from '../../Tree/utils/generateBorderRadius'
-import { LkFieldTree } from '..'
+import { LkFieldGroupTree, LkFieldViewTree } from '..'
 import { FieldPickerItem } from './FieldPickerItem'
-
-const BorderRadiusOverrideTree = styled(LkFieldTree)`
-  ${({ theme }) => generateBorderRadius('medium', theme)}
-`
 
 const FieldGroupHeading = (props: ParagraphProps) => (
   <Paragraph
@@ -43,8 +37,7 @@ const FieldGroupHeading = (props: ParagraphProps) => (
     fontSize="xxsmall"
     fontWeight="semiBold"
     pb="xxsmall"
-    pr="xxsmall"
-    pt="xsmall"
+    px="xxsmall"
     truncate
     style={{ lineHeight: '0.75rem' }}
     {...props}
@@ -56,7 +49,7 @@ const fields = (
     <TreeBranch>
       <FieldGroupHeading>DIMENSIONS</FieldGroupHeading>
     </TreeBranch>
-    <BorderRadiusOverrideTree
+    <LkFieldGroupTree
       color="dimension"
       selected
       label={<Box pl="xxsmall">Created</Box>}
@@ -64,7 +57,7 @@ const fields = (
       <FieldPickerItem>Created Date</FieldPickerItem>
       <FieldPickerItem selected>Created Month</FieldPickerItem>
       <FieldPickerItem>Created Year</FieldPickerItem>
-    </BorderRadiusOverrideTree>
+    </LkFieldGroupTree>
     <FieldPickerItem>City</FieldPickerItem>
     <FieldPickerItem selected filter>
       This is a really long field name to show that truncation is working as
@@ -93,7 +86,7 @@ const fields = (
 export const FieldPicker = () => (
   <Aside>
     <TreeCollection>
-      <BorderRadiusOverrideTree
+      <LkFieldViewTree
         defaultOpen
         detail={3}
         label={
@@ -103,8 +96,8 @@ export const FieldPicker = () => (
         }
       >
         {fields}
-      </BorderRadiusOverrideTree>
-      <BorderRadiusOverrideTree
+      </LkFieldViewTree>
+      <LkFieldViewTree
         label={
           <Box pl="xxsmall" fontWeight="bold">
             Order Items
@@ -112,8 +105,8 @@ export const FieldPicker = () => (
         }
       >
         {fields}
-      </BorderRadiusOverrideTree>
-      <BorderRadiusOverrideTree
+      </LkFieldViewTree>
+      <LkFieldViewTree
         label={
           <Box pl="xxsmall" fontWeight="bold">
             Users
@@ -121,7 +114,7 @@ export const FieldPicker = () => (
         }
       >
         {fields}
-      </BorderRadiusOverrideTree>
+      </LkFieldViewTree>
     </TreeCollection>
   </Aside>
 )

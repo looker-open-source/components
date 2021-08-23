@@ -35,6 +35,7 @@ import type { ListItemProps } from '../ListItem'
 import { createListItemPartitions } from '../ListItem/utils'
 import { TreeContext } from '../Tree/TreeContext'
 import {
+  generateBorderRadius,
   indicatorDefaults,
   partitionTreeProps,
   useTreeHandlers,
@@ -48,7 +49,6 @@ import type { LkFieldTreeProps } from './types'
 
 const LkFieldTreeLayout = ({
   children,
-  className,
   isOpen: propsIsOpen,
   label,
   defaultOpen,
@@ -169,21 +169,27 @@ const LkFieldTreeLayout = ({
           depth: depth + 1,
         }}
       >
-        <div {...domProps} className={`${domProps.className} ${className}`}>
+        <div {...domProps}>
           {!partialRender && (
             <Flex as="li" color="text5" {...wrapperHandlers}>
               {content}
               {outside}
             </Flex>
           )}
-          {accordionIsOpen && <div {...contentDomProps} />}
+          {accordionIsOpen && (
+            <LkFieldTreeAccordionContent {...contentDomProps} />
+          )}
         </div>
       </TreeContext.Provider>
     </HoverDisclosureContext.Provider>
   )
 }
 
+export const LkFieldTreeAccordionContent = styled.div``
+
 export const LkFieldTree = styled(LkFieldTreeLayout)`
+  ${({ theme }) => generateBorderRadius('medium', theme)}
+
   ${LkFieldItem} {
     margin-top: 1px;
   }

@@ -24,8 +24,16 @@
 
  */
 
-export * from './LkFieldItem'
-export * from './LkFieldTree'
-export * from './LkFieldGroupTree'
-export * from './LkFieldViewTree'
-export * from './types'
+import styled from 'styled-components'
+import { LkFieldTree } from '.'
+
+export const LkFieldGroupTree = styled(LkFieldTree)`
+  /* Margin is to set the equivalent of the two icons (info and menu) 48px */
+  margin-right: ${({ isOpen, selected }) => {
+    const DEFAULT_ICON_BUTTON_SIZE = 24
+
+    return !isOpen && selected
+      ? `calc(${DEFAULT_ICON_BUTTON_SIZE}px * 2)`
+      : undefined
+  }};
+`

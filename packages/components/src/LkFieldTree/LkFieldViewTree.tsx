@@ -24,8 +24,15 @@
 
  */
 
-export * from './LkFieldItem'
-export * from './LkFieldTree'
-export * from './LkFieldGroupTree'
-export * from './LkFieldViewTree'
-export * from './types'
+import styled from 'styled-components'
+import { LkFieldTree, LkFieldTreeAccordionContent } from '.'
+
+export const LkFieldViewTree = styled(LkFieldTree)`
+  > ${LkFieldTreeAccordionContent} {
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
+  }
+
+  border-bottom: 1px solid ${({ theme }) => theme.colors.ui2};
+  padding: 0.25rem;
+`
