@@ -26,6 +26,8 @@
 
 export { Box } from './Box'
 export type { BoxProps } from './Box'
+export { Box2 } from './Box2'
+export type { Box2Props } from './Box2'
 export { Flex } from './Flex'
 export type { FlexProps } from './Flex'
 export { FlexItem } from './FlexItem'

@@ -24,26 +24,40 @@
 
  */
 
-import type { FlexboxProps } from '@looker/design-tokens'
-import { flexbox, shouldForwardProp } from '@looker/design-tokens'
 import styled from 'styled-components'
-import type { ComplexLayoutProps } from '../utils/complex'
-import { complexLayoutCSS } from '../utils/complex'
+import type {
+  CompatibleHTMLProps,
+  CursorProps,
+  FlexboxProps,
+  UserSelectProps,
+} from '@looker/design-tokens'
+import {
+  cursor,
+  flexbox,
+  shouldForwardProp,
+  userSelect,
+} from '@looker/design-tokens'
+import type { CommonLayoutProps } from '../utils/common'
+import { commonLayoutCSS } from '../utils/common'
 
-export interface FlexItemProps extends ComplexLayoutProps, FlexboxProps {}
+export type Box2Props = CompatibleHTMLProps<HTMLElement> &
+  CommonLayoutProps &
+  FlexboxProps &
+  CursorProps &
+  UserSelectProps
 
 /**
- * @deprecated - Use `Box2` or `div` instead.
- * NOTE: It's quite possible you don't need `FlexItem` at all
+ * The `Box2` component offers all the style functions that are exposed in @looker/design-tokens
+ *
+ * `Box2` is a replaces `Box` because it offers a more semantic set of `border*` properties
+ * as well as excluding `boxShadow*` properties included on the (deprecated) `Box`
+ *
+ * Finally `Box2` does _not_ include a global `reset` strategy that `Box` relied on, instead
+ * leveraging our `StyleDefender` pattern.
  */
-export const FlexItem = styled.div.withConfig({
-  shouldForwardProp,
-})<FlexItemProps>`
-  ${complexLayoutCSS}
+export const Box2 = styled.div.withConfig({ shouldForwardProp })<Box2Props>`
+  ${commonLayoutCSS}
+  ${userSelect}
   ${flexbox}
-  /*
-   * A min-width must be set here to resolve a firefox bug where any children
-   * with style of text-overflow: ellipsis; will otherwise not truncate the
-   * text appropriately. */
-  min-width: 0; /* IMPORTANT!! Do not delete! */
+  ${cursor}
 `
