@@ -40,7 +40,7 @@ export interface FlexProps
 
 /**
  * @deprecated - Use a more specific layout helper such as `Space` or `SpaceVertical`,
- * Alternatively `<Box display="flex" />` fully replicates previous `Box` behavior
+ * Alternatively `<Box2 display="flex" />` fully replicates previous `Flex` behavior
  */
 export const Flex = styled.div.withConfig({ shouldForwardProp })<FlexProps>`
   ${complexLayoutCSS}

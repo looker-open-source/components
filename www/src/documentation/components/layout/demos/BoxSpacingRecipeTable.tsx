@@ -83,7 +83,7 @@ const ListRender = (
   return (
     <li key={key}>
       <Box2
-        px="small"
+        px="u2"
         as="span"
         bg="ui1"
         borderRadius="4px"
@@ -92,9 +92,9 @@ const ListRender = (
       >
         <Code fontSize="xsmall">{value}</Code>
       </Box2>
-      <Box2 ml="small" as="span">
+      <Box2 ml="u3" as="span">
         <Text fontSize="small">{label}</Text>
-        <Box2 as="span" ml="xsmall">
+        <Box2 as="span" ml="u2">
           <Text fontSize="xsmall" color="text1">
             {defaultLabel}
           </Text>
