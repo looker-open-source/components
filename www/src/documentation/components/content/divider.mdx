@@ -6,17 +6,17 @@ Dividers accept all the spacing props from `<Box />`, which gives you the abilit
 
 ```jsx
 <Space around>
-  <Box bg="white" p="xlarge">
+  <Box bg="white" p="u8">
     On White
-    <Divider mt="medium" />
+    <Divider mt="u4" />
   </Box>
-  <Box bg="ui1" p="xlarge">
+  <Box bg="ui1" p="u8">
     On `ui1`
-    <Divider mt="medium" />
+    <Divider mt="u4" />
   </Box>
-  <Box bg="ui2" p="xlarge">
+  <Box bg="ui2" p="u8">
     On `ui2`
-    <Divider mt="medium" />
+    <Divider mt="u4" />
   </Box>
 </Space>
 ```
@@ -27,17 +27,17 @@ There are three divider appearances `light`, `dark` and `onDark`.
 
 ```jsx
 <Space around>
-  <Box bg="white " p="xlarge">
+  <Box bg="white " p="u8">
     light appearance
-    <Divider mt="medium" appearance="light" />
+    <Divider mt="u4" appearance="light" />
   </Box>
-  <Box bg="ui1" p="xlarge">
+  <Box bg="ui1" p="u8">
     dark appearance
-    <Divider mt="medium" appearance="dark" />
+    <Divider mt="u4" appearance="dark" />
   </Box>
-  <Box bg="ui5" p="xlarge">
+  <Box bg="ui5" p="u8">
     onDark appearance
-    <Divider mt="medium" appearance="onDark" />
+    <Divider mt="u4" appearance="onDark" />
   </Box>
 </Space>
 ```
@@ -60,7 +60,7 @@ There are three divider appearances `light`, `dark` and `onDark`.
 <Flex alignItems="center">
   <Icon icon={<Schedule />} size="xxlarge"/>
   <DividerVertical stretch/>
-  <Text pl="large" fontSize="xxxxlarge">2:45PM</Text>
+  <Text pl="u5" fontSize="xxxxlarge">2:45PM</Text>
 </Flex>
 
 ```
@@ -71,5 +71,5 @@ You can adjust the dividers height and supply a custom color if needed
 
 ```jsx
   Custom Divider
-  <Divider size="8px" customColor="turquoise" mt="large" borderRadius="100px" />
+  <Divider size="8px" customColor="turquoise" mt="u5" borderRadius="100px" />
 ```

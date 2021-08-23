@@ -178,7 +178,7 @@ Control the state of the menu with the React `useState` hook.
 ;() => {
   const hoverRef = React.useRef()
   return (
-    <Card ref={hoverRef} p="large">
+    <Card ref={hoverRef} p="u5">
       <Flex justifyContent="space-between">
         <Paragraph>Hovering in this card will show the menu button.</Paragraph>
         <Menu
@@ -222,7 +222,7 @@ controlled via state values – or use the hook version.
 
   return (
     <>
-      <Space align="start" p="medium">
+      <Space align="start" p="u4">
         <SpaceVertical>
           <Heading>Gouda</Heading>
           <Paragraph>{note}</Paragraph>
@@ -275,7 +275,7 @@ controlled via state values – or use the hook version.
       width={200}
       content={
         <>
-          <Box p="xsmall">
+          <Box p="u2">
             <InputSearch
               placeholder="start your search..."
               value={keywordSearch}
@@ -291,7 +291,7 @@ controlled via state values – or use the hook version.
         </>
       }
     >
-      <Button m="medium">Cheese</Button>
+      <Button m="u4">Cheese</Button>
     </Menu>
   )
 }
