@@ -111,6 +111,10 @@ export interface FilterProps {
    * Used to initialize filters in Edit Mode – do not use if filter is not editable
    */
   dispatchConfigTypeChange?: boolean
+  /**
+   * Skip checking if expression can be rendered by filter control
+   */
+  skipFilterConfigCheck?: boolean
 }
 
 /**

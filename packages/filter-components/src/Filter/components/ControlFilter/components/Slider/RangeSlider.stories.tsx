@@ -25,7 +25,7 @@
  */
 import React from 'react'
 import type { Story } from '@storybook/react/types-6-0'
-import { defaultArgTypes } from '../../../../../../../../storybook/src/defaultArgTypes'
+
 import { RangeSlider } from './RangeSlider'
 import type { RangeSliderProps } from './types'
 
@@ -40,5 +40,5 @@ Basic.args = {
 export default {
   title: 'Filters / Range Slider 👓',
   component: RangeSlider,
-  argTypes: { ...defaultArgTypes, onChange: { action: 'onChange' } },
+  argTypes: { onChange: { action: 'onChange' } },
 }

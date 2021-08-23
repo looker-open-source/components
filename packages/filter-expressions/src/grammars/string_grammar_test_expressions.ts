@@ -166,7 +166,7 @@ export const stringGrammarTestItems: GrammarTestItem[] = [
     expression: '  hello  ',
     describe: 'is   hello  ',
     type: 'match',
-    output: '  hello  ',
+    output: '^ ^ hello^ ^ ^ ',
   },
   {
     expression: '',
@@ -224,5 +224,23 @@ export const stringGrammarTestItems: GrammarTestItem[] = [
     describe: 'is quoted_underscore',
     type: 'match',
     output: '"quoted_underscore"',
+  },
+  {
+    expression: 'hello^ ^ ',
+    describe: 'is hello  ',
+    type: 'match',
+    output: 'hello^ ^ ^ ',
+  },
+  {
+    expression: '^ whitespace^ ^ ',
+    describe: 'is  whitespace  ',
+    type: 'match',
+    output: '^ whitespace^ ^ ^ ',
+  },
+  {
+    expression: '%^ whitespace^ %',
+    describe: 'contains whitespace',
+    type: 'contains',
+    output: '%whitespace%',
   },
 ]

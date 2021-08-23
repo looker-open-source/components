@@ -182,13 +182,26 @@ const checkboxGroupAdapter: FilterTokenAdapter<typeof CheckboxGroup> = (
 const getSingleValue = (
   item: FilterModel,
   stringOptions: Option[],
+  onlyValuesFromOptions: boolean,
   fieldCategory?: string
 ) => {
   const optionsMap = keyBy(stringOptions, 'value')
-  // Single Selects
-  let singleValue = String(
-    item.value?.length && optionsMap[item.value[0]] ? item.value[0] : ''
-  )
+
+  /**
+   * Many filter components use only values that are present in options,
+   * but at least one (DropdownMenu) can use values that are not present in options
+   * (typically because there are 1000+ suggestions)
+   */
+  let singleValue: string
+  if (onlyValuesFromOptions) {
+    // If the value does not appear in options, return an empty string
+    singleValue = String(
+      item.value?.length && optionsMap[item.value[0]] ? item.value[0] : ''
+    )
+  } else {
+    // If filter has a value, include it, regardless of whether it exists in options
+    singleValue = item.value?.length ? String(item.value[0]) : ''
+  }
 
   if (
     fieldCategory === 'parameter' &&
@@ -198,6 +211,7 @@ const getSingleValue = (
   ) {
     singleValue = stringOptions[0].value
   }
+
   return singleValue
 }
 
@@ -219,7 +233,7 @@ const buttonTogglesAdapter = (
 ): React.ComponentProps<typeof ButtonToggles> => {
   const { changeFilter, field } = props
   const stringOptions = getStringOptions(props)
-  const value = getSingleValue(item, stringOptions, field?.category)
+  const value = getSingleValue(item, stringOptions, true, field?.category)
 
   return {
     onChange: getSingleStringSelectChange(item, changeFilter),
@@ -232,10 +246,16 @@ const buttonTogglesAdapter = (
 const relativeTimeframesAdapter = (
   item: FilterModel,
   props: AdapterProps
-): React.ComponentProps<typeof RelativeTimeframes> => {
+): React.ComponentProps<typeof RelativeTimeframes> | undefined => {
+  if (item.type === 'range' && (item.start == null || item.end == null)) {
+    return undefined
+  }
   const { changeFilter } = props
   // Relative Timeframes
   const relativeTimeframeValue = filterModelToRelativeTimeframeModel(item)
+  if (relativeTimeframeValue === undefined) {
+    return undefined
+  }
   const relativeTimeframeOnChange = (
     relativeTimeframe: RelativeTimeframeModel
   ) => {
@@ -254,13 +274,14 @@ const relativeTimeframesAdapter = (
 const dateInputAdapter = (
   item: FilterModel,
   props: AdapterProps
-): React.ComponentProps<typeof DateInput> => {
+): React.ComponentProps<typeof DateInput> | undefined => {
+  if (item.date == null) {
+    return undefined
+  }
   const { changeFilter } = props
 
   // Day Picker
-  const dateValue = item.date
-    ? filterDateTimeModelToDate(item.date)
-    : new Date()
+  const dateValue = filterDateTimeModelToDate(item.date)
   const dateChange = (date: Date) => {
     const dateModel = dateToFilterDateTimeModel(date)
     changeFilter(Number(item.id), { ...item, type: 'on', date: dateModel })
@@ -277,15 +298,16 @@ const dateInputAdapter = (
 const dayRangeInputAdapter = (
   item: FilterModel,
   props: AdapterProps
-): React.ComponentProps<typeof DayRangeInput> => {
+): React.ComponentProps<typeof DayRangeInput> | undefined => {
+  if (item.start == null || item.end == null) {
+    return undefined
+  }
   const { changeFilter } = props
 
   // Day Range Picker
   const dateRangeValue = {
-    from: item.start ? filterDateTimeModelToDate(item.start) : new Date(),
-    to: item.end
-      ? addDays(filterDateTimeModelToDate(item.end), -1)
-      : new Date(), // DateRange is inclusive, grammar is exclusive
+    from: filterDateTimeModelToDate(item.start),
+    to: addDays(filterDateTimeModelToDate(item.end), -1), // DateRange is inclusive, grammar is exclusive
   }
   const dateRangeChange = ({ from, to }: { from: Date; to: Date }) => {
     const startDateModel = dateToFilterDateTimeModel(from)
@@ -313,14 +335,17 @@ const dayRangeInputAdapter = (
 const dateRangeAdapter = (
   item: FilterModel,
   props: AdapterProps
-): React.ComponentProps<typeof DateRange> => {
+): React.ComponentProps<typeof DateRange> | undefined => {
+  if (item.start == null || item.end == null) {
+    return undefined
+  }
   // Date/Time Range input
   const dateTimeRangeValue = {
     ...item,
     id: item.id || '',
-    start: item.start || dateToFilterDateTimeModel(new Date(Date.now())),
-    end: item.end || dateToFilterDateTimeModel(new Date(Date.now())),
-  }
+    start: item.start,
+    end: item.end,
+  } as FilterModel
 
   const { changeFilter } = props
 
@@ -349,10 +374,13 @@ const dateRangeAdapter = (
 const sliderAdapter = (
   item: FilterModel,
   props: AdapterProps
-): React.ComponentProps<typeof Slider> => {
+): React.ComponentProps<typeof Slider> | undefined => {
+  if (item.value?.length !== 1) {
+    return undefined
+  }
   const { changeFilter, config } = props
   // Slider
-  const sliderValue: number = item.value && item.value[0] ? item.value[0] : 0
+  const sliderValue: number = item.value[0]
   const sliderChange = (value: SliderProps['value']) => {
     changeFilter(Number(item.id), { ...item, type: '=', value: [value] })
   }
@@ -367,12 +395,15 @@ const sliderAdapter = (
 const rangeSliderAdapter = (
   item: FilterModel,
   props: AdapterProps
-): React.ComponentProps<typeof RangeSlider> => {
+): React.ComponentProps<typeof RangeSlider> | undefined => {
+  if (item.low == null || item.high == null) {
+    return undefined
+  }
   const { changeFilter, config } = props
   // Range Slider
   const rangeSliderValue: RangeSliderProps['value'] = {
-    min: item.low || 0,
-    max: item.high || 0,
+    min: item.low,
+    max: item.high,
   }
   const rangeSliderChange = (range: RangeSliderProps['value']) => {
     changeFilter(Number(item.id), {
@@ -402,7 +433,7 @@ const dropdownMenuAdapter = (
 ): React.ComponentProps<typeof DropdownMenu> => {
   const { changeFilter, config, field, isLoading, onInputChange } = props
   const stringOptions = getStringOptions(props)
-  const value = getSingleValue(item, stringOptions, field?.category)
+  const value = getSingleValue(item, stringOptions, false, field?.category)
   const tokenStyle = config?.display !== 'popover'
 
   return {
@@ -456,7 +487,7 @@ const radioGroupAdapter = (
 ): React.ComponentProps<typeof RadioGroup> => {
   const { changeFilter, field } = props
   const stringOptions = getStringOptions(props)
-  const value = getSingleValue(item, stringOptions, field?.category)
+  const value = getSingleValue(item, stringOptions, true, field?.category)
 
   return {
     onChange: getSingleStringSelectChange(item, changeFilter),
@@ -470,11 +501,16 @@ export const getControlFilterInfo = (
   item: FilterModel,
   adapterProps: AdapterProps
 ): {
-  Component: React.ElementType
-  props: React.ComponentProps<React.ElementType>
+  Component?: React.ElementType
+  props?: React.ComponentProps<React.ElementType>
 } => {
-  const { Component, adapter } = filterTokenAdapterMap[adapterProps.config.type]
-  const props = adapter(item, adapterProps)
+  const { Component, adapter } = filterTokenAdapterMap[
+    adapterProps.config.type
+  ] || {
+    Component: undefined,
+    adapter: undefined,
+  }
+  const props = adapter?.(item, adapterProps)
 
   return { Component, props }
 }
@@ -514,4 +550,8 @@ type FilterTokenAdapter<T extends React.ElementType> = (
 type FilterTokenProps<T extends React.ElementType> = {
   Component: T
   adapter: FilterTokenAdapter<T>
+}
+
+export const TEST_ONLY = {
+  getSingleValue,
 }

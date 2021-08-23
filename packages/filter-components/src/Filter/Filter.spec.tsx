@@ -161,7 +161,7 @@ describe('Filter', () => {
     // using dispatchConfigTypeChange=true
     const TestComponent = () => (
       <Filter
-        expression={'1,2,3'}
+        expression={'1'}
         expressionType="number"
         onChange={onChangeMock}
         name="Test Filter"

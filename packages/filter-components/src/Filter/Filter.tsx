@@ -35,7 +35,7 @@ import isEmpty from 'lodash/isEmpty'
 import type { FC } from 'react'
 import React, { useMemo, useRef, useState } from 'react'
 import type { FilterProps } from './types/filter_props'
-import { useValidationMessage } from './utils'
+import { useFilterConfig, useValidationMessage } from './utils'
 import { updateASTFromProps } from './utils/update_ast'
 import { isValidFilterType } from './utils/filter_token_type_map'
 import { ControlFilter } from './components/ControlFilter'
@@ -52,6 +52,7 @@ export const Filter: FC<FilterProps> = ({
   type,
   expressionType: propsExpressionType,
   loadUserAttributes,
+  skipFilterConfigCheck,
   ...props
 }) => {
   const expressionType = useMemo(() => {
@@ -130,7 +131,16 @@ export const Filter: FC<FilterProps> = ({
     }
   }
 
-  const isControlFilter = props.config && isValidFilterType(props.config.type)
+  const { uiConfig: config } = useFilterConfig({
+    ast: ast!,
+    config: props.config,
+    field: props.field,
+    suggestions: props.suggestions,
+    enumerations: props.enumerations,
+    skipFilterConfigCheck,
+  })
+
+  const isControlFilter = config && isValidFilterType(config.type)
   /**
    * Captures Filter UI changes, updates AST and generates a new expression
    */
@@ -162,6 +172,7 @@ export const Filter: FC<FilterProps> = ({
   return isControlFilter ? (
     <ControlFilter
       {...props}
+      config={config}
       expressionType={expressionType}
       ast={ast}
       changeFilter={changeFilter}
@@ -170,6 +181,7 @@ export const Filter: FC<FilterProps> = ({
   ) : (
     <AdvancedFilter
       {...props}
+      config={config}
       expressionType={expressionType}
       ast={ast}
       updateAST={updateAST}

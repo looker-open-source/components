@@ -33,7 +33,12 @@ import { DropdownMenu } from '../components/ControlFilter/components/DropdownMen
 import { DateInput } from '../components/AdvancedFilter/components/DateFilter/components/DateInput'
 import { DateRange } from '../components/AdvancedFilter/components/DateFilter/components/DateRange'
 import type { Option } from '../types/option'
-import { getControlFilterInfo, maxForFilterType } from './control_filter_utils'
+import {
+  getControlFilterInfo,
+  maxForFilterType,
+  TEST_ONLY,
+} from './control_filter_utils'
+const getSingleValue = TEST_ONLY.getSingleValue
 
 const getConfig = (
   options = {},
@@ -45,7 +50,7 @@ const getConfig = (
   display,
 })
 
-describe('getFilterToken', () => {
+describe('getControlFilterInfo', () => {
   it('Returns props for ButtonToggles Component', () => {
     const item: FilterModel = {
       id: 'filter',
@@ -286,114 +291,148 @@ describe('getFilterToken', () => {
     expect(month).toBe(9)
     expect(day).toBe(6)
   })
-})
 
-describe('Ensure change filter is called for each filter token map value', () => {
-  const numberStringControls = [
-    'checkboxes',
-    'button_group',
-    'tag_list',
-    'radio_buttons',
-    'button_toggles',
-    'dropdown_menu',
-    'slider',
-    'range_slider',
-  ]
+  describe('Ensure change filter is called for each filter token map value', () => {
+    const numberStringControls = [
+      'checkboxes',
+      'button_group',
+      'tag_list',
+      'radio_buttons',
+      'button_toggles',
+      'dropdown_menu',
+    ]
 
-  numberStringControls.forEach((control) => {
-    it(`${control} calls changeFilter `, () => {
+    numberStringControls.forEach((control) => {
+      it(`${control} calls changeFilter `, () => {
+        const item: FilterModel = {
+          id: 'filter',
+          type: '=',
+          is: true,
+        }
+        const filterOptions = {}
+        const changeFilter = jest.fn()
+        const tokenInfo = getControlFilterInfo(item, {
+          config: getConfig(filterOptions, control),
+          changeFilter,
+        })
+
+        tokenInfo?.props?.onChange?.(1234)
+        expect(changeFilter).toHaveBeenCalledTimes(1)
+      })
+    })
+
+    it('Ensure change filter is called for number slider', () => {
+      const changeFilter = jest.fn()
       const item: FilterModel = {
         id: 'filter',
-        type: '=',
+        type: 'range',
         is: true,
+        value: [50],
       }
-      const filterOptions = {}
-      const changeFilter = jest.fn()
+
       const tokenInfo = getControlFilterInfo(item, {
-        config: getConfig(filterOptions, control),
+        config: getConfig({}, 'slider'),
         changeFilter,
       })
 
-      tokenInfo?.props.onChange(1234)
+      tokenInfo?.props?.onChange?.(25)
       expect(changeFilter).toHaveBeenCalledTimes(1)
     })
-  })
 
-  it('Ensure change filter is called for relative frame changes', () => {
-    const date: FilterDateTimeModel = {
-      year: 2019,
-      month: 9,
-      day: 6,
-    }
+    it('Ensure change filter is called for number range slider', () => {
+      const changeFilter = jest.fn()
+      const item: FilterModel = {
+        id: 'filter',
+        type: 'range',
+        is: true,
+        low: 20,
+        high: 30,
+      }
 
-    const changeFilter = jest.fn()
-    const item: FilterModel = {
-      id: 'filter',
-      type: '=',
-      is: true,
-      start: date,
-      end: date,
-    }
+      const tokenInfo = getControlFilterInfo(item, {
+        config: getConfig({}, 'range_slider'),
+        changeFilter,
+      })
 
-    const tokenInfo = getControlFilterInfo(item, {
-      config: getConfig({}, 'relative_timeframes'),
-      changeFilter,
+      tokenInfo?.props?.onChange?.(25)
+      expect(changeFilter).toHaveBeenCalledTimes(1)
     })
-    const range = {
-      from: new Date(),
-      to: new Date(),
-    }
 
-    tokenInfo?.props.onChange(range)
-    expect(changeFilter).toHaveBeenCalledTimes(1)
-  })
+    it('Ensure change filter is called for relative frame changes', () => {
+      const date: FilterDateTimeModel = {
+        year: 2019,
+        month: 9,
+        day: 6,
+      }
 
-  it('Ensure change filter is called for day range picker', () => {
-    const date: FilterDateTimeModel = {
-      year: 2019,
-      month: 9,
-      day: 6,
-    }
+      const changeFilter = jest.fn()
+      const item: FilterModel = {
+        id: 'filter',
+        type: 'range',
+        is: true,
+        start: date,
+        end: date,
+      }
 
-    const changeFilter = jest.fn()
-    const item: FilterModel = {
-      id: 'filter',
-      type: 'range',
-      is: true,
-      start: date,
-      end: date,
-    }
+      const tokenInfo = getControlFilterInfo(item, {
+        config: getConfig({}, 'relative_timeframes'),
+        changeFilter,
+      })
+      const range = {
+        from: new Date(),
+        to: new Date(),
+      }
 
-    const tokenInfo = getControlFilterInfo(item, {
-      config: getConfig({}, 'day_range_picker'),
-      changeFilter,
+      tokenInfo?.props?.onChange?.(range)
+      expect(changeFilter).toHaveBeenCalledTimes(1)
     })
-    tokenInfo?.props.onChange(new Date())
-    expect(changeFilter).toHaveBeenCalledTimes(1)
-  })
 
-  it('Ensure change filter is called for date picker', () => {
-    const date: FilterDateTimeModel = {
-      year: 2019,
-      month: 9,
-      day: 6,
-    }
+    it('Ensure change filter is called for day range picker', () => {
+      const date: FilterDateTimeModel = {
+        year: 2019,
+        month: 9,
+        day: 6,
+      }
 
-    const changeFilter = jest.fn()
-    const item: FilterModel = {
-      id: 'filter',
-      type: '=',
-      is: true,
-      start: date,
-      end: date,
-    }
+      const changeFilter = jest.fn()
+      const item: FilterModel = {
+        id: 'filter',
+        type: 'range',
+        is: true,
+        start: date,
+        end: date,
+      }
 
-    const tokenInfo = getControlFilterInfo(item, {
-      config: getConfig({}, 'day_picker'),
-      changeFilter,
+      const tokenInfo = getControlFilterInfo(item, {
+        config: getConfig({}, 'day_range_picker'),
+        changeFilter,
+      })
+      tokenInfo?.props?.onChange?.(new Date())
+      expect(changeFilter).toHaveBeenCalledTimes(1)
     })
-    tokenInfo?.props.onChange(new Date())
-    expect(changeFilter).toHaveBeenCalledTimes(1)
+
+    it('Ensure change filter is called for date picker', () => {
+      const date: FilterDateTimeModel = {
+        year: 2019,
+        month: 9,
+        day: 6,
+      }
+
+      const changeFilter = jest.fn()
+      const item: FilterModel = {
+        id: 'filter',
+        type: 'on',
+        is: true,
+        date,
+      }
+
+      const tokenInfo = getControlFilterInfo(item, {
+        config: getConfig({}, 'day_picker'),
+        changeFilter,
+      })
+      tokenInfo?.props.onChange(new Date())
+      expect(changeFilter).toHaveBeenCalledTimes(1)
+    })
   })
 })
 
@@ -428,5 +467,43 @@ describe('maxForFilterType', () => {
     it(`${control} has no defined max`, () => {
       expect(maxForFilterType(control)).toBeUndefined()
     })
+  })
+})
+
+describe('getSingleValue', () => {
+  const item = {
+    id: '1',
+    is: true,
+    type: 'match',
+    value: ['Buddy McGee'],
+    attributeName: '',
+    attributeValue: '',
+    left: null,
+    right: null,
+  }
+  const baseOptions = [
+    {
+      value: 'Mr Blue Sky',
+      label: 'Mr Blue Sky',
+    },
+    {
+      value: 'Ms Pretty Face',
+      label: 'Ms Pretty Face',
+    },
+    {
+      value: 'The Whole Human Race',
+      label: 'The Whole Human Race',
+    },
+  ]
+  const fieldCategory = 'dimension'
+
+  it("should return an the item's value when the value does not appear in options and onlyValuesFromOptions is set to false", () => {
+    expect(getSingleValue(item, baseOptions, false, fieldCategory)).toEqual(
+      'Buddy McGee'
+    )
+  })
+
+  it('should return an empty string when the value does not appear in options and onlyValuesFromOptions is set to true', () => {
+    expect(getSingleValue(item, baseOptions, true, fieldCategory)).toEqual('')
   })
 })

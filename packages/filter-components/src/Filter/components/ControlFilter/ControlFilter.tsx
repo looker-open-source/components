@@ -26,9 +26,9 @@
 import type { FC } from 'react'
 import React, { useEffect } from 'react'
 import type { InternalFilterProps } from '../../types/filter_props'
-import { getFilterTokenItem } from '@looker/filter-expressions'
 import { getControlFilterInfo } from '../../utils'
 import take from 'lodash/take'
+import { getFilterTokenItem } from '../../utils/get_filter_token_item'
 
 /**
  * Visual filters that can take the form of radio buttons, checkboxes, etc.
@@ -47,13 +47,6 @@ export const ControlFilter: FC<InternalFilterProps> = ({
     adapterProps
   )
 
-  const {
-    onInputChange: filterTokenInputChange,
-    options,
-    max,
-    ...restProps
-  } = filterTokenProps
-
   /**
    * This effect is used by FilterEditorSettings in Edit Mode
    * because we currently delegate initializing filter value to the Filter components
@@ -62,14 +55,26 @@ export const ControlFilter: FC<InternalFilterProps> = ({
   useEffect(() => {
     // When control type changes in Edit Mode, update value and default value of filter
     if (dispatchConfigTypeChange) {
-      if (restProps.date) {
-        restProps.onChange(restProps.date)
+      if (filterTokenProps?.date) {
+        filterTokenProps?.onChange(filterTokenProps?.date)
       } else {
-        restProps.onChange(restProps.value)
+        filterTokenProps?.onChange(filterTokenProps?.value)
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [config.type])
+
+  if (!filterTokenProps || !Component) {
+    // props or Component not available - nothing to render
+    return null
+  }
+
+  const {
+    onInputChange: filterTokenInputChange,
+    options,
+    max,
+    ...restProps
+  } = filterTokenProps
 
   return (
     <Component

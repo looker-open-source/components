@@ -41,21 +41,21 @@ export interface UseSuggestableProps {
   sdk?: IAPIMethods
 }
 
-const shouldFetchSuggestions = (field: ILookmlModelExploreField) => {
-  return field.suggestable && !field.enumerations && !field.suggestions
+const shouldFetchSuggestions = (field?: ILookmlModelExploreField) => {
+  return field?.suggestable && !field?.enumerations && !field?.suggestions
 }
 
 /**
  * Returns the correct prop & value for suggestions, enumerations, or none
  */
 const getOptionsProps = (
-  field: ILookmlModelExploreField,
+  field: ILookmlModelExploreField | undefined,
   fetchedSuggestions: string[]
 ) => {
   if (shouldFetchSuggestions(field)) {
     return { suggestions: fetchedSuggestions }
   }
-  const { enumerations, suggestions } = field
+  const { enumerations, suggestions } = field || {}
   if (enumerations) {
     return { enumerations } as FilterProps
   }
@@ -72,7 +72,7 @@ const getOptionsProps = (
  * and returns the necessary props
  */
 export const useSuggestable = ({ filter, sdk }: UseSuggestableProps) => {
-  const field = filter.field as ILookmlModelExploreField
+  const field = filter.field as ILookmlModelExploreField | undefined
 
   const [searchTerm, setSearchTerm] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
@@ -90,10 +90,10 @@ export const useSuggestable = ({ filter, sdk }: UseSuggestableProps) => {
         try {
           const result = await sdk.ok(
             model_fieldname_suggestions(sdk, {
-              field_name: field.suggest_dimension || '',
-              model_name: field.project_name || '',
+              field_name: field?.suggest_dimension || '',
+              model_name: field?.project_name || '',
               term: searchTerm,
-              view_name: field.suggest_explore || field.view || '',
+              view_name: field?.suggest_explore || field?.view || '',
             })
           )
 

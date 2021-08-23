@@ -75,6 +75,23 @@ describe('DashboardFilter', () => {
     `)
   })
 
+  it('handles undefined field (LookML filter)', () => {
+    const onChangeMock = jest.fn()
+    renderWithTheme(
+      <DashboardFilter
+        filter={{
+          name: 'date',
+          type: 'date_filter',
+          default_value: '30 days',
+        }}
+        onChange={onChangeMock}
+      />
+    )
+    expect(screen.getByText('is in the last')).toBeVisible()
+    expect(screen.getByText('30')).toBeVisible()
+    expect(screen.getByText('days')).toBeVisible()
+  })
+
   describe('value', () => {
     it('uses default_value', () => {
       const onChangeMock = jest.fn()
