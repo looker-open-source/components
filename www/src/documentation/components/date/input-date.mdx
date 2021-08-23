@@ -30,9 +30,9 @@ import { ImportMessage } from '../ImportMessage'
     setSelectedDate(date)
   }
   return (
-    <Space gap="xxlarge">
+    <Space gap="u10">
       <InputDate onChange={handleChange} defaultValue={selectedDate} />
-      <Box p="large" height="100%" borderLeft="1px solid #ccc">
+      <Box p="u5" height="100%" borderLeft="1px solid #ccc">
         <Heading>Selected:</Heading>
         <Text color="text2">
           <DateFormat>{selectedDate}</DateFormat>
@@ -67,7 +67,7 @@ If you handle form validation externally (such as treating this date field as re
   const color = isValid ? undefined : 'critical'
 
   return (
-    <Space gap="xxxlarge">
+    <Space gap="u15">
       <InputDate
         onChange={handleChange}
         onValidationFail={handleValidationFail}
@@ -144,7 +144,7 @@ A common UI pattern is to combine `InputDate` with [Popover](/components/overlay
   return (
     <Popover
       content={
-        <Box p="small">
+        <Box p="u3">
           <InputDate defaultValue={selectedDate} onChange={setSelectedDate} />
         </Box>
       }
