@@ -32,10 +32,10 @@ import { borderHelper } from './semanticBorderHelper'
 import type { SimpleLayoutProps } from './simple'
 import { simpleLayoutCSS } from './simple'
 
-export type CommonLayoutProps = SimpleLayoutProps &
+export type CommonLayoutProps = ColorProps &
+  SimpleLayoutProps &
   SemanticBorderProps &
-  TypographyProps &
-  ColorProps & {
+  TypographyProps & {
     /**
      * Workaround for Styled Components merge with DOM `color` prop merge issue
      */

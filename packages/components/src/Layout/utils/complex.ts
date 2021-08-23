@@ -44,10 +44,10 @@ import { simpleLayoutCSS } from './simple'
 /**
  * @deprecated - use `CommonLayoutProps` instead.
  */
-export type ComplexLayoutProps = SimpleLayoutProps &
-  BorderProps &
+export type ComplexLayoutProps = BorderProps &
   BoxShadowProps &
   ColorProps &
+  SimpleLayoutProps &
   TypographyProps & {
     /**
      * Workaround for Styled Components merge with DOM `color` prop merge issue

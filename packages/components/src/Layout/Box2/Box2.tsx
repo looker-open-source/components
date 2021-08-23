@@ -25,17 +25,20 @@
  */
 
 import styled from 'styled-components'
-import {
+import type {
   CompatibleHTMLProps,
-  cursor,
   CursorProps,
-  flexbox,
   FlexboxProps,
-  shouldForwardProp,
-  userSelect,
   UserSelectProps,
 } from '@looker/design-tokens'
-import { commonLayoutCSS, CommonLayoutProps } from '../utils/common'
+import {
+  cursor,
+  flexbox,
+  shouldForwardProp,
+  userSelect,
+} from '@looker/design-tokens'
+import type { CommonLayoutProps } from '../utils/common'
+import { commonLayoutCSS } from '../utils/common'
 
 export type Box2Props = CompatibleHTMLProps<HTMLElement> &
   CommonLayoutProps &
@@ -43,6 +46,15 @@ export type Box2Props = CompatibleHTMLProps<HTMLElement> &
   CursorProps &
   UserSelectProps
 
+/**
+ * The `Box2` component offers all the style functions that are exposed in @looker/design-tokens
+ *
+ * `Box2` is a replaces `Box` because it offers a more semantic set of `border*` properties
+ * as well as excluding `boxShadow*` properties included on the (deprecated) `Box`
+ *
+ * Finally `Box2` does _not_ include a global `reset` strategy that `Box` relied on, instead
+ * leveraging our `StyleDefender` pattern.
+ */
 export const Box2 = styled.div.withConfig({ shouldForwardProp })<Box2Props>`
   ${commonLayoutCSS}
   ${userSelect}

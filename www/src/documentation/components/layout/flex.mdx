@@ -3,6 +3,7 @@ title: Flex & FlexItem
 github: components/src/Layout/Flex/Flex.tsx
 ---
 
+import { Code, Paragraph, MessageBar } from '@looker/components'
 import {
   AdjustingIndividualAlignment,
   AligningItems,
@@ -10,6 +11,22 @@ import {
   FlexItemExample,
   ItemDistribution,
 } from './demos'
+
+<MessageBar noActions intent="warn" mb="medium">
+  <Paragraph>
+    <Code>Flex</Code> has been deprecated. Use a more specific layout helper
+    such as
+    <a href="./space">
+      <Code>Space</Code> or <Code>SpaceVertical</Code>
+    </a> or <a href="./grid">
+      <Code>Grid</Code>
+    </a>
+  </Paragraph>
+  <Paragraph>
+    <strong>NOTE:</strong> <Code>&lt;Box2 display="flex" /&gt;</Code> is
+    functionally identical to today's <Code>Flex</Code>.
+  </Paragraph>
+</MessageBar>
 
 The `<Flex />` component creates a flex container for you to place `<FlexItem />` components inside. It lets you utilize [flex box](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout) to create a wide variety of layouts, with powerful alignment, directional, and space distribution abilities.
 

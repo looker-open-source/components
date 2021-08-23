@@ -24,8 +24,8 @@
 
  */
 
-import { Box, Code, Text, Heading, UnorderedList } from '@looker/components'
-import type { FC } from 'react';
+import { Box2, Code, Text, Heading, UnorderedList } from '@looker/components'
+import type { FC } from 'react'
 import React from 'react'
 import styled from 'styled-components'
 
@@ -82,7 +82,7 @@ const ListRender = (
 ) => {
   return (
     <li key={key}>
-      <Box
+      <Box2
         px="small"
         as="span"
         bg="ui1"
@@ -91,15 +91,15 @@ const ListRender = (
         color="key"
       >
         <Code fontSize="xsmall">{value}</Code>
-      </Box>
-      <Box ml="small" as="span">
+      </Box2>
+      <Box2 ml="small" as="span">
         <Text fontSize="small">{label}</Text>
-        <Box as="span" ml="xsmall">
+        <Box2 as="span" ml="xsmall">
           <Text fontSize="xsmall" color="text1">
             {defaultLabel}
           </Text>
-        </Box>
-      </Box>
+        </Box2>
+      </Box2>
     </li>
   )
 }
