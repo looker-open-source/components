@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0-alpha.0](https://github.com/looker-open-source/components/compare/@looker/filter-components@0.6.1...@looker/filter-components@0.7.0-alpha.0) (2021-08-23)
+
+
+### Features
+
+* Update filter packages ([#2755](https://github.com/looker-open-source/components/issues/2755)) ([ba09a8b](https://github.com/looker-open-source/components/commit/ba09a8b5534bd4bbd4e08135d92b9dab477c2291))
+
+
+
+
+
 ## [0.6.1](https://github.com/looker-open-source/components/compare/@looker/filter-components@0.6.1-alpha.1...@looker/filter-components@0.6.1) (2021-08-16)
 
 **Note:** Version bump only for package @looker/filter-components

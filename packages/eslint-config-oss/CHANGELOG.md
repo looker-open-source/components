@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 1.6.0-alpha.0 (2021-08-23)
+
+
+### Features
+
+* Rename @looker/eslint-config to @looker/eslint-config-oss ([#2753](https://github.com/looker-open-source/components/issues/2753)) ([d370ef9](https://github.com/looker-open-source/components/commit/d370ef9e30723d32a3794cd74dcbc444a064b674))
+
+
+
+
+
 ## [1.5.1](https://github.com/looker-open-source/components/compare/@looker/eslint-config@1.5.1-alpha.1...@looker/eslint-config@1.5.1) (2021-07-26)
 
 **Note:** Version bump only for package @looker/eslint-config

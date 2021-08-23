@@ -4,7 +4,7 @@
  "module": "lib/index.js",
  "types": "lib/index.d.ts",
  "license": "MIT",
- "version": "0.6.0",
+ "version": "0.7.0-alpha.0",
  "publishConfig": {
   "access": "public"
  },
