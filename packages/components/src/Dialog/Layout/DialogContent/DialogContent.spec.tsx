@@ -45,11 +45,13 @@ describe('DialogContent', () => {
       '0.125rem'
     )
   })
+
   test('display correct padding if hasHeader', () => {
     renderWithTheme(<DialogContent hasHeader>Stuff</DialogContent>)
 
     expect(screen.getByText('Stuff')).toHaveStyleRule('padding-top', '0.125rem')
   })
+
   test('display correct padding if both  hasFooter & hasHeader', () => {
     renderWithTheme(
       <DialogContent hasFooter hasHeader>
@@ -62,5 +64,14 @@ describe('DialogContent', () => {
       '0.125rem'
     )
     expect(screen.getByText('Stuff')).toHaveStyleRule('padding-top', '0.125rem')
+  })
+
+  test('Custom padding `p`', () => {
+    renderWithTheme(<DialogContent p="u12">Hello world</DialogContent>)
+    const item = screen.getByText('Hello world')
+    expect(item).toHaveStyleRule('padding-left', '3rem')
+    expect(item).toHaveStyleRule('padding-right', '3rem')
+    expect(item).toHaveStyleRule('padding-top', '3rem')
+    expect(item).toHaveStyleRule('padding-bottom', '3rem')
   })
 })

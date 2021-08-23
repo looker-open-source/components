@@ -24,7 +24,6 @@
 
  */
 
-import type { FC } from 'react'
 import React from 'react'
 import styled from 'styled-components'
 import type { LayoutProps } from '@looker/design-tokens'
@@ -34,17 +33,22 @@ import { ModalContent } from '../../../Modal/ModalContent'
 
 export type PopoverContentProps = ModalContentProps & LayoutProps
 
-const PopoverContentLayout: FC<PopoverContentProps> = ({
-  children,
-  ...props
-}) => {
-  return (
-    <ModalContent overflowVerticalPadding="u1" py="u4" px="u5" {...props}>
-      {children}
-    </ModalContent>
-  )
+const popoverContentDefaults = {
+  px: 'u5',
+  py: 'u4',
 }
 
-export const PopoverContent = styled(PopoverContentLayout)<PopoverContentProps>`
+export const PopoverContent = styled(
+  ({ children, p, py, px, ...props }: PopoverContentProps) => {
+    py = py || p || popoverContentDefaults.py
+    px = px || p || popoverContentDefaults.px
+
+    return (
+      <ModalContent overflowVerticalPadding="u1" py={py} px={px} {...props}>
+        {children}
+      </ModalContent>
+    )
+  }
+)<PopoverContentProps>`
   ${layout}
 `
