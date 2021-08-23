@@ -24,12 +24,13 @@
 
  */
 
-import { Story } from '@storybook/react/types-6-0'
+import type { Story } from '@storybook/react/types-6-0'
 import { Home } from '@styled-icons/material-outlined/Home'
 import React from 'react'
 import { VIEWPORT_MAP } from '../../utils-storybook'
 import { Icon } from '../../Icon'
-import { Box2, Box2Props } from './Box2'
+import type { Box2Props } from './Box2'
+import { Box2 } from './Box2'
 
 export default {
   component: Box2,
