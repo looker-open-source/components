@@ -117,7 +117,7 @@ export const FieldPickerItem: FC<FieldPickerItemProps> = ({
         }
       }}
     >
-      <Flex alignItems="center" pl="xxsmall">
+      <Flex alignItems="center">
         <Flex
           onClick={toggleField}
           height={height}

@@ -25,15 +25,17 @@
  */
 
 import styled from 'styled-components'
-import { LkFieldTree } from '.'
+import { LkFieldTree, LkFieldTreeAccordionDisclosure } from '.'
 
 export const LkFieldGroupTree = styled(LkFieldTree)`
-  /* Margin is to set the equivalent of the two icons (info and menu) 48px */
-  margin-right: ${({ isOpen, selected }) => {
-    const DEFAULT_ICON_BUTTON_SIZE = 24
+  > ${LkFieldTreeAccordionDisclosure} {
+    /* Margin is to set the equivalent of the two icons (info and menu) 48px */
+    margin-right: ${({ isOpen, selected }) => {
+      const DEFAULT_ICON_BUTTON_SIZE = 24
 
-    return !isOpen && selected
-      ? `calc(${DEFAULT_ICON_BUTTON_SIZE}px * 2)`
-      : undefined
-  }};
+      return !isOpen && selected
+        ? `calc(${DEFAULT_ICON_BUTTON_SIZE}px * 2)`
+        : undefined
+    }};
+  }
 `

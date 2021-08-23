@@ -36,8 +36,9 @@ const FieldGroupHeading = (props: ParagraphProps) => (
     color="text1"
     fontSize="xxsmall"
     fontWeight="semiBold"
+    pt="medium"
     pb="xxsmall"
-    px="xxsmall"
+    pl="xxsmall"
     truncate
     style={{ lineHeight: '0.75rem' }}
     {...props}
@@ -47,13 +48,9 @@ const FieldGroupHeading = (props: ParagraphProps) => (
 const fields = (
   <>
     <TreeBranch>
-      <FieldGroupHeading>DIMENSIONS</FieldGroupHeading>
+      <FieldGroupHeading pt="0">DIMENSIONS</FieldGroupHeading>
     </TreeBranch>
-    <LkFieldGroupTree
-      color="dimension"
-      selected
-      label={<Box pl="xxsmall">Created</Box>}
-    >
+    <LkFieldGroupTree color="dimension" selected label={<Box>Created</Box>}>
       <FieldPickerItem>Created Date</FieldPickerItem>
       <FieldPickerItem selected>Created Month</FieldPickerItem>
       <FieldPickerItem>Created Year</FieldPickerItem>
@@ -89,30 +86,14 @@ export const FieldPicker = () => (
       <LkFieldViewTree
         defaultOpen
         detail={3}
-        label={
-          <Box pl="xxsmall" fontWeight="bold">
-            Orders
-          </Box>
-        }
+        label={<Box fontWeight="bold">Orders</Box>}
       >
         {fields}
       </LkFieldViewTree>
-      <LkFieldViewTree
-        label={
-          <Box pl="xxsmall" fontWeight="bold">
-            Order Items
-          </Box>
-        }
-      >
+      <LkFieldViewTree label={<Box fontWeight="bold">Order Items</Box>}>
         {fields}
       </LkFieldViewTree>
-      <LkFieldViewTree
-        label={
-          <Box pl="xxsmall" fontWeight="bold">
-            Users
-          </Box>
-        }
-      >
+      <LkFieldViewTree label={<Box fontWeight="bold">Users</Box>}>
         {fields}
       </LkFieldViewTree>
     </TreeCollection>

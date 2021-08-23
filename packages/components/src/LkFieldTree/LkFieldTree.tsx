@@ -28,7 +28,6 @@ import styled from 'styled-components'
 import React, { useContext } from 'react'
 import { useAccordion2 } from '../Accordion2'
 import type { ControlledOrUncontrolled } from '../Accordion2/controlTypes'
-import { Flex } from '../Layout'
 import { HoverDisclosureContext, partitionAriaProps } from '../utils'
 import { List } from '../List'
 import type { ListItemProps } from '../ListItem'
@@ -171,10 +170,10 @@ const LkFieldTreeLayout = ({
       >
         <div {...domProps}>
           {!partialRender && (
-            <Flex as="li" color="text5" {...wrapperHandlers}>
+            <LkFieldTreeAccordionDisclosure {...wrapperHandlers}>
               {content}
               {outside}
-            </Flex>
+            </LkFieldTreeAccordionDisclosure>
           )}
           {accordionIsOpen && (
             <LkFieldTreeAccordionContent {...contentDomProps} />
@@ -185,6 +184,10 @@ const LkFieldTreeLayout = ({
   )
 }
 
+export const LkFieldTreeAccordionDisclosure = styled.li`
+  color: ${({ theme }) => theme.colors.text5};
+  display: flex;
+`
 export const LkFieldTreeAccordionContent = styled.div``
 
 export const LkFieldTree = styled(LkFieldTreeLayout)`
