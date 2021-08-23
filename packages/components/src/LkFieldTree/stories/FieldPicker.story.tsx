@@ -48,7 +48,7 @@ const FieldGroupHeading = (props: ParagraphProps) => (
 const fields = (
   <>
     <TreeBranch>
-      <FieldGroupHeading pt="0">DIMENSIONS</FieldGroupHeading>
+      <FieldGroupHeading pt="none">DIMENSIONS</FieldGroupHeading>
     </TreeBranch>
     <LkFieldGroupTree color="dimension" selected label={<Box>Created</Box>}>
       <FieldPickerItem>Created Date</FieldPickerItem>
@@ -83,19 +83,13 @@ const fields = (
 export const FieldPicker = () => (
   <Aside>
     <TreeCollection>
-      <LkFieldViewTree
-        defaultOpen
-        detail={3}
-        label={<Box fontWeight="bold">Orders</Box>}
-      >
+      <LkFieldViewTree defaultOpen detail={3} label={<strong>Orders</strong>}>
         {fields}
       </LkFieldViewTree>
-      <LkFieldViewTree label={<Box fontWeight="bold">Order Items</Box>}>
+      <LkFieldViewTree label={<strong>Order Items</strong>}>
         {fields}
       </LkFieldViewTree>
-      <LkFieldViewTree label={<Box fontWeight="bold">Users</Box>}>
-        {fields}
-      </LkFieldViewTree>
+      <LkFieldViewTree label={<strong>Users</strong>}>{fields}</LkFieldViewTree>
     </TreeCollection>
   </Aside>
 )

@@ -44,6 +44,8 @@ import { lkFieldItemDensity } from './defaults'
 import { LkFieldItem } from './LkFieldItem'
 import { LkFieldItemContent } from './LkFieldItemContent'
 import { LkFieldItemLabel } from './LkFieldItemLabel'
+import { LkFieldTreeAccordionContent } from './LkFieldTreeAccordionContent'
+import { LkFieldTreeAccordionDisclosure } from './LkFieldTreeAccordionDisclosure'
 import type { LkFieldTreeProps } from './types'
 
 const LkFieldTreeLayout = ({
@@ -183,12 +185,6 @@ const LkFieldTreeLayout = ({
     </HoverDisclosureContext.Provider>
   )
 }
-
-export const LkFieldTreeAccordionDisclosure = styled.li`
-  color: ${({ theme }) => theme.colors.text5};
-  display: flex;
-`
-export const LkFieldTreeAccordionContent = styled.div``
 
 export const LkFieldTree = styled(LkFieldTreeLayout)`
   ${({ theme }) => generateBorderRadius('medium', theme)}
