@@ -1,18 +1,27 @@
 ---
-title: Box
-github: components/src/Layout/Box/Box.tsx
+title: Box2
+github: components/src/Layout/Box2/Box2.tsx
 storybook: true
 ---
 
+import { Code, MessageBar } from '@looker/components'
 import { BoxSpacingRecipeTable } from './demos'
 
-`<Box />` is a low level component whose primary purpose is to provide a utility for easily controlling the spacing around elements in a consistent way using the [spacing values](/#!/Spacing).
+<MessageBar noActions intent="inform" mb="u4">
+  <Code>Box</Code> has been deprecated and replaced with
+  <Code fontWeight="bold" fontSize="inherit">
+    Box2
+  </Code> please update any existing instances to use the new improved version. Deprecation
+  of <Code>Box</Code> is planned for @looker/components 4.0 or thereafter
+</MessageBar>
+
+`<Box2 />` is a low level component whose primary purpose is to provide a utility for easily controlling the spacing around elements in a consistent way using the [spacing values](/#!/Spacing).
 
 ## Spacing with Box
 
-The `<Box />` component allows you to control it's margin and padding properties for a chosen side.
+The `<Box2 />` component allows you to control it's margin and padding properties for a chosen side.
 
-Using spacing on a `<Box />` is like following a recipe, you select:
+Using spacing on a `<Box2 />` is like following a recipe, you select:
 
 1. The type of spacing, margin or padding
 1. The side to apply it to
@@ -20,24 +29,24 @@ Using spacing on a `<Box />` is like following a recipe, you select:
 
 <BoxSpacingRecipeTable />
 
-To get the correct spacing you choose one value from each of the above columns. For example, to get 8px of margin on the right side you would do. `<Box mr="small">` or if you wanted 40px of padding on all sides you would do `<Box p="xxlarge">`.
+To get the correct spacing you choose one value from each of the above columns. For example, to get 8px of margin on the right side you would do. `<Box2 mr="u2">` or if you wanted 40px of padding on all sides you would do `<Box2 p="u10">`.
 
-You can combine different spacing recipes to apply spacing to multiple sides at one time. For example if you wanted 16px of margin on the left and 20px of padding on the top you would do `<Box ml="medium" pt="large">`
+You can combine different spacing recipes to apply spacing to multiple sides at one time. For example if you wanted 16px of margin on the left and 20px of padding on the top you would do `<Box2 ml="u4" pt="u5">`
 
 ### Spacing Examples
 
-Below are a few more examples of building a spacing recipe to help clarify how to use spacing with the `<Box>` component.
+Below are a few more examples of building a spacing recipe to help clarify how to use spacing with the `<Box2>` component.
 
 ```jsx
-<Box m="large">Margin All Sides - Large</Box>
-<Box pl="xsmall">Padding left - Extra Small</Box>
-<Box pl="medium">Padding left - Medium</Box>
-<Box my="xxxlarge" ml="xlarge">
-  Margin Top & Bottom - XXXLarge, Margin left - XLarge
-</Box>
-<Box pb="xxlarge" ml="xxxlarge">
-  Padding Bottom - XXLarge, Margin left - XXXLarge
-</Box>
+<Box2 m="u5">Margin All Sides - 20px</Box2>
+<Box2 pl="u1">Padding left - 4px</Box2>
+<Box2 pl="u4">Padding left - 16px</Box2>
+<Box2 my="u10" ml="u8">
+  Margin Top & Bottom - 40px, Margin left - 32px
+</Box2>
+<Box2 pb="u12" ml="u15">
+  Padding Bottom - 48px, Margin left - 60px
+</Box2>
 ```
 
 ### Spacing Responsively
@@ -45,16 +54,16 @@ Below are a few more examples of building a spacing recipe to help clarify how t
 Any one of the spacing properties can be passed an array of spacing sizes that will then apply at different breakpoints. There are 5 [breakpoints](/#!/Breakpoints) slots that you can target. Here is an example of what that looks like.
 
 ```jsx
-<Box
+<Box2
   pl={[
-    'xsmall', // xsmall spacing up to the first breakpoint
-    'medium', // medium spacing after first breakpoint
-    'xlarge', // xlarge spacing after second breakpoint
-    'xxxlarge', // xxxlarge spacing after third breakpoint
+    'u2', // 8px spacing up to the first breakpoint
+    'u4', // 15px spacing after first breakpoint
+    'u8', // xlarge spacing after second breakpoint
+    'u12', // xxxlarge spacing after third breakpoint
   ]}
 >
   My padding on the left changes with breakpoints
-</Box>
+</Box2>
 ```
 
 ## Customizing a Box
@@ -64,35 +73,35 @@ Boxes provide a low-level customization interface which allows them to have diff
 ### Customized Display
 
 ```jsx
-<Box display="inline">I'm inline.</Box>
-<Box display="inline">I'm also inline.</Box>
+<Box2 display="inline">I'm inline.</Box2>
+<Box2 display="inline">I'm also inline.</Box2>
 ```
 
 ### Heights and Widths
 
 ```jsx
-<Box
+<Box2
   display="inline-block"
   height="100px"
   bg="positive"
   color="inverseOn"
-  p="small"
+  p="u3"
   minWidth="200px"
 >
   I'm 100px tall.
-</Box>
-<Box
+</Box2>
+<Box2
   display="inline-block"
   height="50px"
   bg="inform"
   color="inverseOn"
-  ml="small"
-  p="small"
+  ml="u3"
+  p="u3"
   width="100px"
   fontSize="small"
 >
   I'm 50px tall.
-</Box>
+</Box2>
 ```
 
 ### Background Colors
@@ -100,9 +109,9 @@ Boxes provide a low-level customization interface which allows them to have diff
 Boxes can reference colors from the theme object, pulling any color on the theme's `colors` property.
 
 ```jsx
-<Box bg="positive" color="inverseOn" p="medium">
+<Box2 bg="positive" color="inverseOn" p="u4">
   My background is <Code>positive</Code>.
-</Box>
+</Box2>
 ```
 
 ### Positioning
@@ -110,11 +119,11 @@ Boxes can reference colors from the theme object, pulling any color on the theme
 Boxes can set positioning when needed.
 
 ```jsx
-<Box p="small" position="relative">
-  <Box position="absolute" top="0" right="0" bg="negative" color="inverseOn">
+<Box2 p="u3" position="relative">
+  <Box2 position="absolute" top="0" right="0" bg="negative" color="inverseOn">
     I'm absolutely positioned!
-  </Box>
-</Box>
+  </Box2>
+</Box2>
 ```
 
 ### Borders
@@ -122,13 +131,7 @@ Boxes can set positioning when needed.
 Boxes can have borders.
 
 ```jsx
-<Box
-  width="50px"
-  height="50px"
-  bg="keyAccent"
-  border="1px solid black"
-  borderRadius="4px"
->
+<Box2 width="50px" height="50px" bg="keyAccent" border="ui3" borderRadius="4px">
   I've got borders.
-</Box>
+</Box2>
 ```
