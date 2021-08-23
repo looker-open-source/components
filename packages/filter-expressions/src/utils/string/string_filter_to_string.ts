@@ -33,6 +33,7 @@ import type {
 import isItemToString from '../to_string/is_item_to_string'
 import { treeToString } from '../tree/tree_to_string'
 import { userAttributeToString } from '../user_attribute/user_attribute_to_string'
+import { escapeLeadingAndTrailingWhitespaces } from './escape_leading_and_trailing_whitespaces'
 import { escapeWithCaret } from './escape_with_caret'
 import { quoteFilter } from './quote_filter'
 
@@ -50,9 +51,24 @@ import { quoteFilter } from './quote_filter'
  * }
  */
 
+/**
+ * Will double escape trailing spaces (used for match and endsWith filter types)
+ */
+const escapeWithDoubleLastEscape = (v: string) =>
+  escapeLeadingAndTrailingWhitespaces(v)
+/**
+ * Will not double escape trailing spaces (used for startsWith and contains filter types
+ * because a % sign will be the real end of the string)
+ */
+const escapeWithoutDoubleLastEscape = (v: string) =>
+  escapeLeadingAndTrailingWhitespaces(v, false)
+
 const matchToString = ({ value, is }: FilterModel) =>
   isItemToString(is, '', '-') +
-  value.map(quoteFilter).join(`,${isItemToString(is, '', '-')}`)
+  value
+    .map(quoteFilter)
+    .map(escapeWithDoubleLastEscape)
+    .join(`,${isItemToString(is, '', '-')}`)
 
 const multiValueToString = (
   values: string[],
@@ -61,19 +77,19 @@ const multiValueToString = (
 
 const startWithToString = ({ value, is }: FilterModel) =>
   multiValueToString(
-    value.map(escapeWithCaret),
+    value.map(escapeWithCaret).map(escapeWithoutDoubleLastEscape),
     (token: string) => `${isItemToString(is, '', '-') + String(token)}%`
   )
 
 const endsWithToString = ({ value, is }: FilterModel) =>
   multiValueToString(
-    value.map(escapeWithCaret),
+    value.map(escapeWithCaret).map(escapeWithDoubleLastEscape),
     (token: string) => `${isItemToString(is, '', '-')}%${String(token)}`
   )
 
 const containsToString = ({ value, is }: FilterModel) =>
   multiValueToString(
-    value.map(escapeWithCaret),
+    value.map(escapeWithCaret).map(escapeWithoutDoubleLastEscape),
     (token: string) => `${isItemToString(is, '', '-')}%${String(token)}%`
   )
 

@@ -74,6 +74,19 @@ Object {
 }
 `;
 
+exports[`String grammar can parse %^ whitespace^ % 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "contains",
+  "value": Array [
+    "whitespace",
+  ],
+}
+`;
+
 exports[`String grammar can parse %100^%^_^^ FOO 100^%^_^^% 1`] = `
 Object {
   "id": 1,
@@ -135,6 +148,19 @@ Object {
   "type": "contains",
   "value": Array [
     "FOO",
+  ],
+}
+`;
+
+exports[`String grammar can parse ^ whitespace^ ^  1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "match",
+  "value": Array [
+    " whitespace  ",
   ],
 }
 `;
@@ -406,6 +432,19 @@ Object {
   "left": undefined,
   "right": undefined,
   "type": "blank",
+}
+`;
+
+exports[`String grammar can parse hello^ ^  1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "match",
+  "value": Array [
+    "hello  ",
+  ],
 }
 `;
 

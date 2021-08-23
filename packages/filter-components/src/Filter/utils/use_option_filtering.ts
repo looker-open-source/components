@@ -124,9 +124,7 @@ export interface UseOptionFilteringProps {
 }
 
 /**
- * Adds a debounce to the filter term / onInputChange call,
- * and filters options by the term if initial results are less than 999
- * otherwise calls onInputChange to trigger back-end filtering
+ * Adds a debounce to the filter term / onInputChange call
  */
 export const useOptionFiltering = ({
   excludeValues,
@@ -138,19 +136,7 @@ export const useOptionFiltering = ({
   const values =
     typeof value === 'string' ? (value === '' ? [] : [value]) : value
 
-  const MAX_OPTIONS = useRef(-1)
-  if (options.length > MAX_OPTIONS.current) {
-    MAX_OPTIONS.current = options.length
-  }
-
-  const filterOnBackend =
-    MAX_OPTIONS.current === -1 || MAX_OPTIONS.current >= limit
-
-  const onInputChangeToUse = filterOnBackend ? onInputChange : undefined
-
-  const { debouncedFilterTerm, ...rest } = useDebouncedFilterTerm(
-    onInputChangeToUse
-  )
+  const { debouncedFilterTerm, ...rest } = useDebouncedFilterTerm(onInputChange)
 
   const extendedOptions = useExtendedOptions(
     options,
@@ -168,7 +154,7 @@ export const useOptionFiltering = ({
       excludeValues ? values : []
     )
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [filterOnBackend, extendedOptions, debouncedFilterTerm, values])
+  }, [extendedOptions, debouncedFilterTerm, values])
 
   return {
     filteredOptions,

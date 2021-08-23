@@ -24,7 +24,6 @@
 
  */
 export * from './date'
-export * from './get_filter_token_item'
 export * from './get_expression_type'
 export * from './get_matches_advanced_node'
 export * from './has_user_attribute_node'

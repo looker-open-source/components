@@ -56,6 +56,7 @@ export const Config = Template.bind({})
 Config.args = {
   ...Basic.args,
   config: { max: 100, min: 0, type: 'slider' },
+  expression: '20',
 }
 
 export default {
