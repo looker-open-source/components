@@ -168,6 +168,7 @@ export const IconButton = styled(
   border: none;
   border-radius: ${({ shape }) => shape !== 'square' && '100%'};
   ${iconButtonColor}
+  flex-shrink: 0;
   padding: 0;
 
   ${({ outline }) => outline && iconButtonOutline}
