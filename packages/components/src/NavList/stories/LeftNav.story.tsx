@@ -66,6 +66,7 @@ export const LeftNav = () => (
             icon={<Add />}
             label="Add Board"
             onClick={() => alert('Board added!')}
+            size="medium"
           />
         }
       >
@@ -80,6 +81,7 @@ export const LeftNav = () => (
                 icon={<MoreVert />}
                 label="Edit Board"
                 onClick={() => alert('Edited board!')}
+                size="medium"
               />
             ),
             options: {
