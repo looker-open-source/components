@@ -25,26 +25,20 @@
  */
 
 import React from 'react'
-import styled from 'styled-components'
 import type { ParagraphProps } from '../..'
 import { Aside, Box, Paragraph } from '../..'
 import { TreeBranch, TreeCollection } from '../../Tree'
-import { generateBorderRadius } from '../../Tree/utils/generateBorderRadius'
-import { LkFieldTree } from '..'
+import { LkFieldGroupTree, LkFieldViewTree } from '..'
 import { FieldPickerItem } from './FieldPickerItem'
-
-const BorderRadiusOverrideTree = styled(LkFieldTree)`
-  ${({ theme }) => generateBorderRadius('medium', theme)}
-`
 
 const FieldGroupHeading = (props: ParagraphProps) => (
   <Paragraph
     color="text1"
     fontSize="xxsmall"
     fontWeight="semiBold"
+    pt="medium"
     pb="xxsmall"
-    pr="xxsmall"
-    pt="xsmall"
+    pl="xxsmall"
     truncate
     style={{ lineHeight: '0.75rem' }}
     {...props}
@@ -54,17 +48,13 @@ const FieldGroupHeading = (props: ParagraphProps) => (
 const fields = (
   <>
     <TreeBranch>
-      <FieldGroupHeading>DIMENSIONS</FieldGroupHeading>
+      <FieldGroupHeading pt="none">DIMENSIONS</FieldGroupHeading>
     </TreeBranch>
-    <BorderRadiusOverrideTree
-      color="dimension"
-      selected
-      label={<Box pl="xxsmall">Created</Box>}
-    >
+    <LkFieldGroupTree color="dimension" selected label={<Box>Created</Box>}>
       <FieldPickerItem>Created Date</FieldPickerItem>
       <FieldPickerItem selected>Created Month</FieldPickerItem>
       <FieldPickerItem>Created Year</FieldPickerItem>
-    </BorderRadiusOverrideTree>
+    </LkFieldGroupTree>
     <FieldPickerItem>City</FieldPickerItem>
     <FieldPickerItem selected filter>
       This is a really long field name to show that truncation is working as
@@ -93,35 +83,13 @@ const fields = (
 export const FieldPicker = () => (
   <Aside>
     <TreeCollection>
-      <BorderRadiusOverrideTree
-        defaultOpen
-        detail={3}
-        label={
-          <Box pl="xxsmall" fontWeight="bold">
-            Orders
-          </Box>
-        }
-      >
+      <LkFieldViewTree defaultOpen detail={3} label={<strong>Orders</strong>}>
         {fields}
-      </BorderRadiusOverrideTree>
-      <BorderRadiusOverrideTree
-        label={
-          <Box pl="xxsmall" fontWeight="bold">
-            Order Items
-          </Box>
-        }
-      >
+      </LkFieldViewTree>
+      <LkFieldViewTree label={<strong>Order Items</strong>}>
         {fields}
-      </BorderRadiusOverrideTree>
-      <BorderRadiusOverrideTree
-        label={
-          <Box pl="xxsmall" fontWeight="bold">
-            Users
-          </Box>
-        }
-      >
-        {fields}
-      </BorderRadiusOverrideTree>
+      </LkFieldViewTree>
+      <LkFieldViewTree label={<strong>Users</strong>}>{fields}</LkFieldViewTree>
     </TreeCollection>
   </Aside>
 )

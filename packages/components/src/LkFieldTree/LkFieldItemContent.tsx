@@ -40,23 +40,26 @@ export const LkFieldItemContent = styled.div.attrs<LkFieldItemContentProps>(
     role,
   })
 )<LkFieldItemContentProps>`
-  /**
-    Height and padding normally get set by both the icon and label containers, but we're removing the
-    padding on the label container to avoid hover disclosed icons from expanding items in the core
-    Looker Field Picker
-  */
   ${ListItemLabel} {
+    /*
+      Height and padding normally get set by both the icon and label containers, but we're removing the
+      vertical padding on the label container to avoid hover disclosed icons from expanding items
+      in the core Looker Field Picker
+    */
     padding: 0;
+
+    /* Horizontal label padding to avoid text from bumping agaisnt background */
+    padding-left: ${({ theme }) => theme.space.xxsmall};
   }
 
   ${({ depth }) => generateIndent({ density: lkFieldItemDensity, depth })}
 
   /*
-  IconButtons with hovered / selected backgrounds sit above
-  a non-absolutely positioned box-shadow. Absolute positioning
-  and a z-index gets the box-shadow to sit above ListItem children
-  with background colors.
- */
+    IconButtons with hovered / selected backgrounds sit above
+    a non-absolutely positioned box-shadow. Absolute positioning
+    and a z-index gets the box-shadow to sit above ListItem children
+    with background colors.
+  */
   ${({ focusVisible, theme }) =>
     focusVisible &&
     `
