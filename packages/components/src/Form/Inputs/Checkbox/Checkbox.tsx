@@ -92,7 +92,7 @@ const CheckboxLayout = forwardRef(
           onChange={noop} // suppress read-only error as we rely on click rather than change event here
           ref={ref}
         />
-        <FauxCheckbox>
+        <FauxCheckbox isSelected={!!isChecked}>
           {checked === 'mixed' ? <CheckMarkMixed /> : <CheckMark />}
         </FauxCheckbox>
       </div>
@@ -122,11 +122,6 @@ export const Checkbox = styled(CheckboxLayout)`
 
   input + ${FauxCheckbox} {
     ${inputTextValidation}
-  }
-
-  input:checked + ${FauxCheckbox} {
-    background-color: ${({ theme }) => theme.colors.key};
-    border-color: ${({ theme }) => theme.colors.key};
   }
 
   input:not(:checked) + ${FauxCheckbox} {
