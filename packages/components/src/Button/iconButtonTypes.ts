@@ -86,8 +86,8 @@ export interface IconButtonProps
    */
   size?: IconButtonSizes
   /**
-   *  Optional round icon button variant
-   * @default square
+   *  Optional square icon button variant
+   * @default round
    */
   shape?: 'round' | 'square'
   /**

@@ -62,7 +62,6 @@ export const IconButton = styled(
       size = 'xsmall',
       label,
       toggle,
-      toggleBackground,
       toggleColor = ICON_BUTTON_DEFAULT_COLOR,
       tooltipDisabled,
       tooltipPlacement,
@@ -73,16 +72,19 @@ export const IconButton = styled(
       onMouseOver: propsOnMouseOver,
       onMouseOut: propsOnMouseOut,
       style,
+      shape,
       ...rest
     } = props
 
-    const bounded = rest.shape !== 'round' && (toggleBackground || rest.outline)
     const {
       callbacks,
       className: rippleClassName,
       ref: rippleRef,
       style: rippleStyle,
-    } = useRipple({ bounded, color: toggle ? toggleColor : undefined })
+    } = useRipple({
+      bounded: shape === 'square',
+      color: toggle ? toggleColor : undefined,
+    })
 
     const ref = useForkedRef(forwardedRef, rippleRef)
 
@@ -164,7 +166,7 @@ export const IconButton = styled(
   background-color: ${({ theme, toggle, toggleBackground, toggleColor }) =>
     toggle && toggleBackground && theme.colors[`${toggleColor}Subtle`]};
   border: none;
-  border-radius: ${({ shape }) => shape === 'round' && '100%'};
+  border-radius: ${({ shape }) => shape !== 'square' && '100%'};
   ${iconButtonColor}
   padding: 0;
 

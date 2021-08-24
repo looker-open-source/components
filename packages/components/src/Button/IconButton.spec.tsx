@@ -287,5 +287,40 @@ describe('IconButton', () => {
       const button = screen.getByRole('button')
       expect(button).toHaveStyle({ '--ripple-color': '#C2772E' })
     })
+
+    test('square', () => {
+      // square shape should trigger the "bounded" styles, which need measurement
+      /* eslint-disable-next-line @typescript-eslint/unbound-method */
+      const globalGetBoundingClientRect =
+        Element.prototype.getBoundingClientRect
+      /* eslint-disable-next-line @typescript-eslint/unbound-method */
+      Element.prototype.getBoundingClientRect = jest.fn(() => {
+        return {
+          bottom: 0,
+          height: 30,
+          left: 0,
+          right: 0,
+          toJSON: jest.fn(),
+          top: 0,
+          width: 360,
+          x: 0,
+          y: 0,
+        }
+      })
+      renderWithTheme(
+        <IconButton icon={<Favorite />} label="Test" shape="square" />
+      )
+
+      const button = screen.getByRole('button')
+      expect(button).toHaveStyle({
+        '--ripple-color': '#71767a',
+        '--ripple-scale-end': '12.041594578792294',
+        '--ripple-scale-start': '12.041594578792294',
+        '--ripple-size': '30px',
+        '--ripple-translate': '165px, 0',
+      })
+      /* eslint-disable-next-line @typescript-eslint/unbound-method */
+      Element.prototype.getBoundingClientRect = globalGetBoundingClientRect
+    })
   })
 })

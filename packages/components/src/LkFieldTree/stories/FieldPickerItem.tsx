@@ -66,7 +66,7 @@ export const FieldPickerItem: FC<FieldPickerItemProps> = ({
   const detailContent = (
     <>
       <Tooltip placement="top" content="Some exciting info or something">
-        <IconButton icon={<Info />} label="Info" />
+        <IconButton shape="square" icon={<Info />} label="Info" />
       </Tooltip>
       <Menu
         isOpen={isFieldMenuOpen}
@@ -81,6 +81,7 @@ export const FieldPickerItem: FC<FieldPickerItemProps> = ({
         }
       >
         <IconButton
+          shape="square"
           icon={<MoreVert />}
           label="Options"
           tooltipPlacement="top"
@@ -146,6 +147,7 @@ export const FieldPickerItem: FC<FieldPickerItemProps> = ({
           <IconButton
             icon={<SubdirectoryArrowLeft />}
             onClick={() => setIsPivot(!isPivot)}
+            shape="square"
             toggle={isPivot}
             toggleBackground
             toggleColor={color}
@@ -156,6 +158,7 @@ export const FieldPickerItem: FC<FieldPickerItemProps> = ({
         <HoverDisclosure visible={isFilter} width={isPivot ? 24 : undefined}>
           <IconButton
             onClick={() => setIsFilter(!isFilter)}
+            shape="square"
             toggle={isFilter}
             toggleBackground
             toggleColor={color}
