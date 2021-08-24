@@ -29,6 +29,6 @@ import styled from 'styled-components'
 
 export const Link = styled(LookerLink)`
   &:visited {
-    color: ${(props) => props.theme.colors.keyInteractive};
+    color: ${({ theme }) => theme.colors.keyInteractive};
   }
 `

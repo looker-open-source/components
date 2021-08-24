@@ -69,7 +69,7 @@ export const Radio = styled(RadioLayout)`
   position: relative;
   width: 1rem;
   input {
-    background: ${(props) => props.theme.colors.field};
+    background: ${({ theme }) => theme.colors.field};
     height: 100%;
     opacity: 0;
     position: absolute;

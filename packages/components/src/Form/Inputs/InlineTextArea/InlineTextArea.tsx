@@ -130,7 +130,7 @@ export const InlineTextArea = styled(InlineTextAreaLayout)`
   display: inline-flex;
   flex-direction: column;
   justify-content: center;
-  min-height: ${(props) => props.theme.lineHeights.medium};
+  min-height: ${({ theme }) => theme.lineHeights.medium};
   min-width: 2rem;
   position: relative;
   text-align: inherit;
@@ -138,8 +138,8 @@ export const InlineTextArea = styled(InlineTextAreaLayout)`
 
   :focus,
   :hover {
-    background-color: ${(props) => props.theme.colors.ui1};
-    border-bottom-color: ${(props) => props.theme.colors.key};
+    background-color: ${({ theme }) => theme.colors.ui1};
+    border-bottom-color: ${({ theme }) => theme.colors.key};
     outline: none;
   }
 

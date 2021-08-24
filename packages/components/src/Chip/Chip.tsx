@@ -78,7 +78,7 @@ const ChipStyle = styled.span<FocusVisibleProps & MaxWidthProps>`
   &:active,
   &:focus,
   &[aria-selected='true'] {
-    background: ${(props) => props.theme.colors.keyAccent};
+    background: ${({ theme }) => theme.colors.keyAccent};
   }
 
   &.focus,

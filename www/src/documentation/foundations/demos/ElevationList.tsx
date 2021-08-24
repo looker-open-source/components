@@ -24,36 +24,31 @@
 
  */
 
- import React from 'react'
- import {
-    Code,
-    Flex,
-    Space,
-    Text
- } from '@looker/components'
+import React from 'react'
+import { Code, Space } from '@looker/components'
+import type { ElevationRamp } from '@looker/design-tokens'
 import styled from 'styled-components'
 
+const ElevatedBox = styled.div<{ level: ElevationRamp }>`
+  align-items: center;
+  border-radius: ${({ theme }) => theme.radii.medium};
+  box-shadow: ${({ level, theme }) => theme.elevations[level]};
+  display: flex;
+  height: 125px;
+  justify-content: center;
+  width: 124px;
+`
 
- const ElevatedBox = styled(Flex)<{level}>`
-    border-radius: ${(props) => props.theme.radii.medium};
-    box-shadow: ${(props) => props.theme.elevations[props.level]};
-    height: 125px;
-    width: 124px;
- `
-
- export const ElevationList = () => (
-   <Space gap="u6">
-   {["plus0", "plus1", "plus2", "plus3", "plus4", "plus5"].map(e => {
-     return(
-      <ElevatedBox
-        key={e}
-        level={e}
-        alignItems="center"
-        justifyContent="center"
-      >
-        <Code fontSize="xsmall" color="text3">{e}</Code>
-      </ElevatedBox>
-    )
-   })}
-    </Space>
+export const ElevationList = () => (
+  <Space gap="u6">
+    {['plus0', 'plus1', 'plus2', 'plus3', 'plus4', 'plus5'].map((e) => {
+      return (
+        <ElevatedBox key={e} level={e}>
+          <Code fontSize="xsmall" color="text3">
+            {e}
+          </Code>
+        </ElevatedBox>
+      )
+    })}
+  </Space>
 )

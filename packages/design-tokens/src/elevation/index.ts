@@ -25,7 +25,7 @@
  */
 
 import type { Elevations } from './types'
-export { Elevations } from './types'
+export { Elevations, ElevationRamp } from './types'
 
 const colorBase = '60, 64, 67'
 const baseShadowColor = `rgba(${colorBase}, .30)`

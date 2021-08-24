@@ -32,6 +32,6 @@ export const DocTable = styled(Table)`
   margin-bottom: ${({ theme }) => theme.space.u8};
 
   ${Code} {
-    color: ${(props) => props.theme.colors.key};
+    color: ${({ theme }) => theme.colors.key};
   }
 `

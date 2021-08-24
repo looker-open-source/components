@@ -43,6 +43,6 @@ export const innerInputStyle = css`
   }
 
   ::placeholder {
-    color: ${(props) => props.theme.colors.text1};
+    color: ${({ theme }) => theme.colors.text1};
   }
 `

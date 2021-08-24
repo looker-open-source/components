@@ -52,7 +52,7 @@ const ValidationMessageLayout: FC<ValidationMessageProps> = ({
 export const ValidationMessage = styled(ValidationMessageLayout)`
   ${reset}
 
-  font-size: ${(props) => props.theme.fontSizes.xsmall};
+  font-size: ${({ theme }) => theme.fontSizes.xsmall};
 
   ${({ theme, type }) => type === 'error' && `color: ${theme.colors.critical};`}
 `

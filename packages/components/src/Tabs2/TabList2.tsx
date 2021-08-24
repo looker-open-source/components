@@ -37,7 +37,7 @@ const defaultLayoutCSS = css`
     min-width: 3rem;
   }
   button + button {
-    margin-left: ${(props) => props.theme.space.xlarge};
+    margin-left: ${({ theme }) => theme.space.xlarge};
   }
 `
 

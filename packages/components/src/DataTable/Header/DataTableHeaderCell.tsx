@@ -111,8 +111,8 @@ DataTableHeaderCellLayout.displayName = 'DataTableHeaderCellLayout'
 
 export const DataTableHeaderCell = styled(DataTableHeaderCellLayout)`
   ${columnSize}
-  border-bottom: solid 1px ${(props) => props.theme.colors.ui2};
-  color: ${(props) => props.theme.colors.text5};
-  font-weight: ${(props) => props.theme.fontWeights.semiBold};
+  border-bottom: solid 1px ${({ theme }) => theme.colors.ui2};
+  color: ${({ theme }) => theme.colors.text5};
+  font-weight: ${({ theme }) => theme.fontWeights.semiBold};
   text-align: left;
 `

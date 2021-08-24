@@ -32,7 +32,7 @@ export const ButtonTransparent = styled(ButtonBase)`
   background: transparent;
   border: 1px solid transparent;
   color: ${({ theme, color = 'key' }) => theme.colors[color]};
-  padding: 0 ${(props) => props.theme.space.u2};
+  padding: 0 ${({ theme }) => theme.space.u2};
 
   &:hover,
   &:focus,

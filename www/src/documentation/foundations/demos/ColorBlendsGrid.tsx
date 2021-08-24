@@ -74,7 +74,7 @@ const BlendList = styled(({ colors, ...props }: BlendListProps) => (
   }
 
   *:last-child::before {
-    border-bottom: solid 1px ${(props) => props.theme.colors.ui3};
+    border-bottom: solid 1px ${({ theme }) => theme.colors.ui3};
     border-radius: 0 0 4px 4px;
   }
 `
