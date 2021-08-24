@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 2.3.0
+
+## @looker/components
+
+### Bug Fixes
+
+* **PopoverContent:** Properly absorb `p` value (also `DialogContent`) ([#2764](https://github.com/looker-open-source/components/issues/2764)) ([3b67543](https://github.com/looker-open-source/components/commit/3b67543b42ade867738a46e9448f96dd70b53284))
+
+
+### Features
+
+* **Box2:** A new improved box in `Box2` ([#2640](https://github.com/looker-open-source/components/issues/2640)) ([467042e](https://github.com/looker-open-source/components/commit/467042e83437416eaa92f7f2cdc707936c700da7))
+* **IconButton:** Add ripple effect ([#2721](https://github.com/looker-open-source/components/issues/2721)) ([582c37a](https://github.com/looker-open-source/components/commit/582c37a429285a07ccaa6981947e76a908d454b0))
+* **List:** Added dual axis keyboard navigation ([#2759](https://github.com/looker-open-source/components/issues/2759)) ([ba9724a](https://github.com/looker-open-source/components/commit/ba9724ae69137d6a4616159e2c64c6f2b336c3b8))
+* **LkFieldTree:** Added LkFieldViewTree and LkFieldGroupTree ([#2768](https://github.com/looker-open-source/components/issues/2768)) ([8a172e1](https://github.com/looker-open-source/components/commit/8a172e1a29ed93da4e3840b7027a93e339106e7e))
+* **LkFieldTree:** Add LkField suite of components ([#2731](https://github.com/looker-open-source/components/issues/2731)) ([c366715](https://github.com/looker-open-source/components/commit/c366715c26f7440d1bf1df82cd4d3c291dfb47d0))
+* **SelectMulti & InputChips:** Support value formatting ([#2754](https://github.com/looker-open-source/components/issues/2754)) ([e19a517](https://github.com/looker-open-source/components/commit/e19a5179440970c56975a9afe77c3d6c53111dfe))
+* **Tabs2:** Tabs with improved interface ([#2726](https://github.com/looker-open-source/components/issues/2726)) ([859c083](https://github.com/looker-open-source/components/commit/859c08331d951ddfc64f5d35d14454e10a1745e1)), closes [#42](https://github.com/looker-open-source/components/issues/42)
+
+## @looker/design-tokens
+
+### Features
+
+* **IconButton:** Add ripple effect ([#2721](https://github.com/looker-open-source/components/issues/2721)) ([582c37a](https://github.com/looker-open-source/components/commit/582c37a429285a07ccaa6981947e76a908d454b0))
+
+
 
 # 2.2.0
 
