@@ -106,7 +106,7 @@ export const TextArea = styled(TextAreaLayout).attrs<TextAreaProps>(
     ${simpleLayoutCSS}
     ${inputCSS}
     padding: ${({ theme }) => `${theme.space.u2} ${theme.space.u3}`};
-    padding-right: ${(props) => props.theme.space.u8};
+    padding-right: ${({ theme }) => theme.space.u8};
     ${textAreaResize}
     vertical-align: top; /* textarea is inline-block so this removes 4px generated below */
     width: 100%;
@@ -120,7 +120,7 @@ export const TextArea = styled(TextAreaLayout).attrs<TextAreaProps>(
       ${inputTextFocus}
     }
 
-    ${(props) => (props.disabled ? inputTextDisabled : '')}
+    ${({ disabled }) => (disabled ? inputTextDisabled : '')}
 
     ${inputTextValidation}
   }

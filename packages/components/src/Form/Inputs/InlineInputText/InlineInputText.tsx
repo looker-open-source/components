@@ -103,8 +103,8 @@ const StyledInput = styled.input`
   }
 
   :disabled {
-    color: ${(props) => props.theme.colors.text1};
-    -webkit-text-fill-color: ${(props) => props.theme.colors.text1};
+    color: ${({ theme }) => theme.colors.text1};
+    -webkit-text-fill-color: ${({ theme }) => theme.colors.text1};
   }
 `
 

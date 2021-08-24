@@ -71,6 +71,6 @@ const DeterminateContainer = styled.div`
 `
 
 const DeterminateCircle = styled.circle`
-  stroke: ${(props) => props.theme.colors.key};
+  stroke: ${({ theme }) => theme.colors.key};
   transition: stroke-dashoffset 500ms;
 `

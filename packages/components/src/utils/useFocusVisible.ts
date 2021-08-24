@@ -51,7 +51,7 @@ export const focusVisibleCSSWrapper = <Props extends FocusVisibleProps>(
   &:focus-visible {
     ${styleFn}
   }
-  ${(props) => props.focusVisible && styleFn(props)}
+  ${({ focusVisible }) => focusVisible && styleFn}
 `
 
 export const useFocusVisible = <E extends HTMLElement = HTMLElement>({

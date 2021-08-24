@@ -135,7 +135,7 @@ export const DataTableRow = styled(DataTableRowLayout)`
   th {
     background: ${({ checked, isHeaderRow, theme: { colors } }) =>
       checked && !isHeaderRow ? colors.keySubtle : colors.background};
-    border-bottom: solid 1px ${(props) => props.theme.colors.ui2};
+    border-bottom: solid 1px ${({ theme }) => theme.colors.ui2};
     &:first-of-type > div {
       border-left: 1px solid transparent;
       border-right: 1px solid transparent; /* Keeps checkbox centered */

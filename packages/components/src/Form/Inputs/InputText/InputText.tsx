@@ -223,27 +223,27 @@ InputTextLayout.displayName = 'InputComponent'
 const StyledInput = styled.input`
   ${innerInputStyle}
   flex: 1;
-  font-size: ${(props) => props.theme.fontSizes.small};
+  font-size: ${({ theme }) => theme.fontSizes.small};
   max-width: 100%;
   min-width: 2rem;
   padding: 0 ${({ theme: { space } }) => space.u2};
 `
 
 export const inputTextHover = css`
-  border-color: ${(props) => props.theme.colors.ui3};
+  border-color: ${({ theme }) => theme.colors.ui3};
 `
 export const inputTextFocus = css`
-  border-color: ${(props) => props.theme.colors.keyFocus};
-  box-shadow: 0 0 0 2px ${(props) => props.theme.colors.keyAccent};
+  border-color: ${({ theme }) => theme.colors.keyFocus};
+  box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.keyAccent};
   outline: none;
 `
 export const inputTextDisabled = css`
-  background: ${(props) => props.theme.colors.ui1};
-  color: ${(props) => props.theme.colors.text1};
+  background: ${({ theme }) => theme.colors.ui1};
+  color: ${({ theme }) => theme.colors.text1};
   cursor: default;
-  -webkit-text-fill-color: ${(props) => props.theme.colors.text1};
+  -webkit-text-fill-color: ${({ theme }) => theme.colors.text1};
   &:hover {
-    border-color: ${(props) => props.theme.colors.ui2};
+    border-color: ${({ theme }) => theme.colors.ui2};
   }
 `
 
@@ -260,13 +260,13 @@ export const ErrorIcon = styled(Error)`
 export const InputTextContent = styled.div<SpaceProps>`
   ${space}
   align-items: center;
-  color: ${(props) => props.theme.colors.text1};
+  color: ${({ theme }) => theme.colors.text1};
   display: flex;
   height: 100%;
   pointer-events: none;
 
   ${StyledIconBase} {
-    color: ${(props) => props.theme.colors.text1};
+    color: ${({ theme }) => theme.colors.text1};
     ${InputIconSize}
   }
 
@@ -330,7 +330,7 @@ export const InputText = styled(InputTextLayout).attrs<InputTextProps>(
     width: 100%;
     input,
     span {
-      padding: 0 ${({ theme: { space } }) => space.u2};
+      padding: 0 ${({ theme }) => theme.space.u2};
     }
   }
 
@@ -341,6 +341,6 @@ export const InputText = styled(InputTextLayout).attrs<InputTextProps>(
   :focus-within {
     ${inputTextFocus}
   }
-  ${(props) => (props.disabled ? inputTextDisabled : '')}
+  ${({ disabled }) => (disabled ? inputTextDisabled : '')}
   ${inputTextValidation}
 `

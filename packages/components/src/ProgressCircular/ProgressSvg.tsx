@@ -30,6 +30,6 @@ export const CircleContainer = styled.svg`
   fill: transparent;
   height: 100%;
   position: absolute;
-  stroke: ${(props) => props.theme.colors.key};
+  stroke: ${({ theme }) => theme.colors.key};
   width: 100%;
 `

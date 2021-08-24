@@ -95,5 +95,5 @@ export const Swatch = styled.div
     ${inputTextHover}
   }
 
-  ${(props) => props.color === 'transparent' && emptySwatch}
+  ${({ color }) => color === 'transparent' && emptySwatch}
 `

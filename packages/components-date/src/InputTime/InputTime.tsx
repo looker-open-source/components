@@ -528,7 +528,7 @@ const StyledInput = styled.input
   }))`
   ${innerInputStyle}
   font-family: inherit;
-  font-size: ${(props) => props.theme.fontSizes.small};
+  font-size: ${({ theme }) => theme.fontSizes.small};
   height: 34px;
   line-height: ${({ theme }) => theme.lineHeights.medium};
   padding: 0;

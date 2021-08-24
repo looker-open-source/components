@@ -83,9 +83,9 @@ const Style = styled.div
   ${space}
   ${position}
 
-  height: ${(props) => props.size}px;
+  height: ${({ size }) => size}px;
   position: relative;
-  width: ${(props) => props.size}px;
+  width: ${({ size }) => size}px;
 `
 
 export const Spinner = styled(SpinnerFactory)``

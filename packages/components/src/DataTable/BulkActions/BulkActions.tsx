@@ -110,7 +110,7 @@ const BulkActionsLayout: FC<BulkActionsProps> = ({
 export const BulkActions = styled(BulkActionsLayout)`
   align-items: center;
   background-color: ${({ theme }) => theme.colors.ui1};
-  border-bottom: solid 1px ${(props) => props.theme.colors.ui2};
+  border-bottom: solid 1px ${({ theme }) => theme.colors.ui2};
   display: flex;
   height: 3.25rem;
   justify-content: center;
