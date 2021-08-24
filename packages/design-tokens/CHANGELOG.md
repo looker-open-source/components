@@ -3,17 +3,7 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [2.3.0](https://github.com/looker-open-source/components/compare/@looker/design-tokens@2.3.0-alpha.0...@looker/design-tokens@2.3.0) (2021-08-24)
-
-**Note:** Version bump only for package @looker/design-tokens
-
-
-
-
-
-# [2.3.0-alpha.0](https://github.com/looker-open-source/components/compare/@looker/design-tokens@2.2.0...@looker/design-tokens@2.3.0-alpha.0) (2021-08-23)
-
-
+# [2.3.0](https://github.com/looker-open-source/components/compare/@looker/design-tokens@2.3.0...@looker/design-tokens@2.2.0) (2021-08-24)
 ### Features
 
 * **IconButton:** Add ripple effect ([#2721](https://github.com/looker-open-source/components/issues/2721)) ([582c37a](https://github.com/looker-open-source/components/commit/582c37a429285a07ccaa6981947e76a908d454b0))
@@ -22,7 +12,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [2.2.0](https://github.com/looker-open-source/components/compare/@looker/design-tokens@2.2.0-alpha.1...@looker/design-tokens@2.2.0) (2021-08-16)
+# [2.2.0](https://github.com/looker-open-source/components/compare/@looker/design-tokens@2.2.0...@looker/design-tokens@2.2.0) (2021-08-16)
 
 
 ### Features
@@ -34,7 +24,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * Create new unit-based spacing tokens to represent new design system values ([#2661](https://github.com/looker-open-source/components/issues/2661)) ([9ae1a20](https://github.com/looker-open-source/components/commit/9ae1a20d9bd47f268a37066e8a1303dce88b3769))
 
 
-# [2.1.0](https://github.com/looker-open-source/components/compare/@looker/design-tokens@2.1.0-alpha.1...@looker/design-tokens@2.1.0) (2021-07-26)
+# [2.1.0](https://github.com/looker-open-source/components/compare/@looker/design-tokens@2.1.0...@looker/design-tokens@2.0.0) (2021-07-26)
 
 ### Bug Fixes
 
