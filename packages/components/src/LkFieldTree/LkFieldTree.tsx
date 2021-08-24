@@ -28,13 +28,13 @@ import styled from 'styled-components'
 import React, { useContext } from 'react'
 import { useAccordion2 } from '../Accordion2'
 import type { ControlledOrUncontrolled } from '../Accordion2/controlTypes'
-import { Flex } from '../Layout'
 import { HoverDisclosureContext, partitionAriaProps } from '../utils'
 import { List } from '../List'
 import type { ListItemProps } from '../ListItem'
 import { createListItemPartitions } from '../ListItem/utils'
 import { TreeContext } from '../Tree/TreeContext'
 import {
+  generateBorderRadius,
   indicatorDefaults,
   partitionTreeProps,
   useTreeHandlers,
@@ -44,11 +44,12 @@ import { lkFieldItemDensity } from './defaults'
 import { LkFieldItem } from './LkFieldItem'
 import { LkFieldItemContent } from './LkFieldItemContent'
 import { LkFieldItemLabel } from './LkFieldItemLabel'
+import { LkFieldTreeAccordionContent } from './LkFieldTreeAccordionContent'
+import { LkFieldTreeAccordionDisclosure } from './LkFieldTreeAccordionDisclosure'
 import type { LkFieldTreeProps } from './types'
 
 const LkFieldTreeLayout = ({
   children,
-  className,
   isOpen: propsIsOpen,
   label,
   defaultOpen,
@@ -169,14 +170,16 @@ const LkFieldTreeLayout = ({
           depth: depth + 1,
         }}
       >
-        <div {...domProps} className={`${domProps.className} ${className}`}>
+        <div {...domProps}>
           {!partialRender && (
-            <Flex as="li" color="text5" {...wrapperHandlers}>
+            <LkFieldTreeAccordionDisclosure {...wrapperHandlers}>
               {content}
               {outside}
-            </Flex>
+            </LkFieldTreeAccordionDisclosure>
           )}
-          {accordionIsOpen && <div {...contentDomProps} />}
+          {accordionIsOpen && (
+            <LkFieldTreeAccordionContent {...contentDomProps} />
+          )}
         </div>
       </TreeContext.Provider>
     </HoverDisclosureContext.Provider>
@@ -184,6 +187,8 @@ const LkFieldTreeLayout = ({
 }
 
 export const LkFieldTree = styled(LkFieldTreeLayout)`
+  ${({ theme }) => generateBorderRadius('medium', theme)}
+
   ${LkFieldItem} {
     margin-top: 1px;
   }
