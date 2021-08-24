@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.3.0](https://github.com/looker-open-source/components/compare/@looker/components@2.3.0-alpha.0...@looker/components@2.3.0) (2021-08-24)
+
+
+### Features
+
+* **LkFieldTree:** Added LkFieldViewTree and LkFieldGroupTree ([#2768](https://github.com/looker-open-source/components/issues/2768)) ([8a172e1](https://github.com/looker-open-source/components/commit/8a172e1a29ed93da4e3840b7027a93e339106e7e))
+
+
+
+
+
 # [2.3.0-alpha.0](https://github.com/looker-open-source/components/compare/@looker/components@2.2.0...@looker/components@2.3.0-alpha.0) (2021-08-23)
 
 
