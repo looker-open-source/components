@@ -51,7 +51,7 @@ export interface PaginationProps {
 }
 
 const PaginationButton: FC<IconButtonProps> = (props) => (
-  <IconButton outline mx="xxsmall" {...props} />
+  <IconButton outline shape="square" mx="xxsmall" {...props} />
 )
 
 const PaginationLayout: FC<PaginationProps> = ({

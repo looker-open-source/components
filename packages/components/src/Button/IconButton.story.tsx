@@ -85,16 +85,11 @@ Large.args = {
   size: 'large',
 }
 
-export const Square = Template.bind({})
-Square.args = {
-  ...Basic.args,
-  shape: 'square',
-}
-
 export const OutlineXXSmall = Template.bind({})
 OutlineXXSmall.args = {
   ...Basic.args,
   outline: true,
+  shape: 'square',
   size: 'xxsmall',
 }
 
@@ -102,6 +97,7 @@ export const OutlineXSmall = Template.bind({})
 OutlineXSmall.args = {
   ...Basic.args,
   outline: true,
+  shape: 'square',
   size: 'xsmall',
 }
 
@@ -109,6 +105,7 @@ export const OutlineSmall = Template.bind({})
 OutlineSmall.args = {
   ...Basic.args,
   outline: true,
+  shape: 'square',
   size: 'small',
 }
 
@@ -116,6 +113,7 @@ export const OutlineLarge = Template.bind({})
 OutlineLarge.args = {
   ...Basic.args,
   outline: true,
+  shape: 'square',
   size: 'large',
 }
 
@@ -135,6 +133,7 @@ ToggleOff.args = {
 export const ToggleBackground = Template.bind({})
 ToggleBackground.args = {
   ...Basic.args,
+  shape: 'square',
   toggle: true,
   toggleBackground: true,
   toggleColor: undefined,
@@ -143,6 +142,7 @@ ToggleBackground.args = {
 export const ToggleColor = Template.bind({})
 ToggleColor.args = {
   ...Basic.args,
+  shape: 'square',
   toggle: true,
   toggleBackground: true,
   toggleColor: 'calculation',

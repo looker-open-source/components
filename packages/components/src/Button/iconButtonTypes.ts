@@ -86,8 +86,8 @@ export interface IconButtonProps
    */
   size?: IconButtonSizes
   /**
-   * The default shape is round unless outline or toggleBackground are used,
-   * in which case the default is square but can be explicitly set to round
+   *  Optional square icon button variant
+   * @default round
    */
   shape?: 'round' | 'square'
   /**
