@@ -31,7 +31,7 @@ import React, { cloneElement, useContext } from 'react'
 import type { ControlledOrUncontrolled } from '../Accordion2/controlTypes'
 import { partitionTreeProps, useTreeHandlers } from '../Tree/utils'
 import type { ListItemProps } from '../ListItem'
-import { ListItemDetail, listItemDimensions } from '../ListItem'
+import { listItemDimensions } from '../ListItem'
 import { TreeContext } from '../Tree/TreeContext'
 import { useAccordion2 } from '../Accordion2'
 import {
@@ -256,10 +256,5 @@ export const NavTree = styled(NavTreeLayout)`
   ${AccordionIndicator}:focus, ${NavTreeItemContent}:focus {
     box-shadow: inset 0 0 0 2px ${({ theme }) => theme.colors.keyFocus};
     outline: none;
-  }
-
-  ${ListItemDetail} {
-    padding-right: ${({ theme }) =>
-      theme.space[listItemDimensions(theme.defaults.density).px]};
   }
 `
