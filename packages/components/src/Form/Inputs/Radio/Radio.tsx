@@ -24,11 +24,19 @@
 
  */
 
+import pick from 'lodash/pick'
 import type { Ref } from 'react'
 import React, { forwardRef } from 'react'
 import styled from 'styled-components'
 import type { SpaceProps } from '@looker/design-tokens'
 import { reset, space } from '@looker/design-tokens'
+import { mergeClassNames } from '../../../utils'
+import {
+  rippleHandlerKeys,
+  rippleStyle,
+  useRipple,
+  useRippleHandlers,
+} from '../../../Ripple'
 import type { InputProps } from '../InputProps'
 import { pickInputProps } from '../InputProps'
 import type { ValidationType } from '../../ValidationMessage'
@@ -43,10 +51,28 @@ export interface RadioProps
 
 const RadioLayout = forwardRef(
   (props: RadioProps, ref: Ref<HTMLInputElement>) => {
-    const { className, validationType, ...restProps } = props
+    const { className, style, validationType, ...restProps } = props
+
+    const {
+      callbacks,
+      className: rippleClassName,
+      style: rippleStyle,
+    } = useRipple({ color: props.checked ? 'key' : 'neutral' })
+
+    const rippleHandlers = useRippleHandlers(
+      callbacks,
+      {
+        ...pick(restProps, rippleHandlerKeys),
+      },
+      restProps.disabled
+    )
 
     return (
-      <div className={className}>
+      <div
+        className={mergeClassNames([className, rippleClassName])}
+        style={{ ...style, ...rippleStyle }}
+        {...rippleHandlers}
+      >
         <input
           {...pickInputProps(restProps)}
           aria-invalid={validationType === 'error' ? 'true' : undefined}
@@ -64,15 +90,20 @@ RadioLayout.displayName = 'RadioLayout'
 export const Radio = styled(RadioLayout)`
   ${reset}
   ${space}
+  ${rippleStyle}
 
-  height: 1rem;
+  height: ${({ theme: { space } }) => space.u6};
+  padding: ${({ theme: { space } }) => space.u1};
   position: relative;
-  width: 1rem;
+  width: ${({ theme: { space } }) => space.u6};
+
   input {
     background: ${(props) => props.theme.colors.field};
     height: 100%;
+    left: 0;
     opacity: 0;
     position: absolute;
+    top: 0;
     width: 100%;
     z-index: 1;
 
