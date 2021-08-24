@@ -46,22 +46,17 @@ If you need an icon for purely decorative purposes use an `<Icon />` instead.
 
 ## Shapes
 
-- `round` | `square` (default)
+The default shape is round unless `outline` or `toggleBackground` are used,
+in which case the default is square but can be explicitly set to round.
 
 ```jsx
 <Space evenly>
+  <IconButton icon={<Delete />} label="Trash it" outline size="xxsmall" />
+  <IconButton icon={<Delete />} label="Trash it" outline shape="round" />
   <IconButton
     icon={<Delete />}
     label="Trash it"
-    outline
-    shape="round"
-    size="xxsmall"
-  />
-  <IconButton
-    icon={<Delete />}
-    label="Trash it"
-    outline
-    shape="round"
+    toggleBackground
     size="large"
   />
 </Space>

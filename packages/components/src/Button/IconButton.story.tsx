@@ -85,6 +85,12 @@ Large.args = {
   size: 'large',
 }
 
+export const Square = Template.bind({})
+Square.args = {
+  ...Basic.args,
+  shape: 'square',
+}
+
 export const OutlineXXSmall = Template.bind({})
 OutlineXXSmall.args = {
   ...Basic.args,

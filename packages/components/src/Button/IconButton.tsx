@@ -47,6 +47,24 @@ import { iconButtonOutline } from './iconButtonOutline'
 import { iconButtonIconSizeMap, buttonSizeMap } from './size'
 import type { IconButtonProps } from './iconButtonTypes'
 
+type ShapeRelevantProps = Pick<
+  IconButtonProps,
+  'shape' | 'outline' | 'toggleBackground'
+>
+
+// Utility for shape-dependent styles (default for shape depends on other props)
+const getIsSquare = ({
+  shape,
+  outline,
+  toggleBackground,
+}: ShapeRelevantProps) => {
+  if (shape === 'square') return true
+  if (toggleBackground || outline) {
+    return shape !== 'round'
+  }
+  return false
+}
+
 /**
  * Appears as just an `Icon` but with proper HTML semantics to produce a `button`
  * DOM element that is properly announced to screen-readers as well as providing
@@ -76,13 +94,15 @@ export const IconButton = styled(
       ...rest
     } = props
 
-    const bounded = rest.shape !== 'round' && (toggleBackground || rest.outline)
     const {
       callbacks,
       className: rippleClassName,
       ref: rippleRef,
       style: rippleStyle,
-    } = useRipple({ bounded, color: toggle ? toggleColor : undefined })
+    } = useRipple({
+      bounded: getIsSquare(rest),
+      color: toggle ? toggleColor : undefined,
+    })
 
     const ref = useForkedRef(forwardedRef, rippleRef)
 
@@ -164,9 +184,9 @@ export const IconButton = styled(
   background-color: ${({ theme, toggle, toggleBackground, toggleColor }) =>
     toggle && toggleBackground && theme.colors[`${toggleColor}Subtle`]};
   border: none;
-  border-radius: ${({ shape }) => shape === 'round' && '100%'};
   ${iconButtonColor}
   padding: 0;
 
+  ${(props) => !getIsSquare(props) && 'border-radius: 100%;'}
   ${({ outline }) => outline && iconButtonOutline}
 `
