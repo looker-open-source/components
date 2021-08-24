@@ -80,7 +80,6 @@ export const IconButton = styled(
       size = 'xsmall',
       label,
       toggle,
-      toggleBackground,
       toggleColor = ICON_BUTTON_DEFAULT_COLOR,
       tooltipDisabled,
       tooltipPlacement,
