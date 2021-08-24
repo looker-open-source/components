@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.1](https://github.com/looker-open-source/components/compare/@looker/components@2.3.0...@looker/components@2.3.1) (2021-08-24)
+
+
+### Bug Fixes
+
+* **IconButton:** IconButton should not shrink within a flex container ([#2772](https://github.com/looker-open-source/components/issues/2772)) ([245ccef](https://github.com/looker-open-source/components/commit/245ccefc660742454cc8a2dcc7ab2f8dec174ce0))
+* **IconButton:** Make hover/focus background consistent with shape ([#2770](https://github.com/looker-open-source/components/issues/2770)) ([4e950f4](https://github.com/looker-open-source/components/commit/4e950f410300ba53f518c3bbe15871dbdec4fb3d))
+
+
+
+
+
 # [2.3.0](https://github.com/looker-open-source/components/compare/@looker/components@2.2.0...@looker/components@2.3.0) (2021-08-24)
 ### Bug Fixes
 
