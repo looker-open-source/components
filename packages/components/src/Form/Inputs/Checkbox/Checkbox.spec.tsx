@@ -26,17 +26,31 @@
 
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { fireEvent, screen } from '@testing-library/react'
+import { act, fireEvent, screen } from '@testing-library/react'
+import { composeStories } from '@storybook/testing-react'
 import type { CheckboxProps } from './Checkbox'
-import { Checkbox } from './Checkbox'
+import * as stories from './Checkbox.story'
+
+const { Basic, Checked, ReadOnly } = composeStories(stories)
+
+beforeEach(() => {
+  jest.useFakeTimers()
+})
 
 afterEach(() => {
   jest.resetAllMocks()
+  jest.runOnlyPendingTimers()
+  jest.useRealTimers()
 })
+
+const runTimers = () =>
+  act(() => {
+    jest.runOnlyPendingTimers()
+  })
 
 describe('Checkbox', () => {
   test('Accepts defaultChecked prop, and toggles value without change handler', () => {
-    renderWithTheme(<Checkbox defaultChecked />)
+    renderWithTheme(<Basic defaultChecked />)
     const checkboxInput = screen.getByRole('checkbox')
 
     expect(checkboxInput as HTMLInputElement).toBeChecked()
@@ -48,7 +62,7 @@ describe('Checkbox', () => {
   })
 
   test('Accepts checked prop, and is read only without a change handler', () => {
-    renderWithTheme(<Checkbox checked />)
+    renderWithTheme(<Checked />)
     const checkboxInput = screen.getByRole('checkbox')
 
     expect(checkboxInput).toBeChecked()
@@ -64,7 +78,7 @@ describe('Checkbox', () => {
       onChange: jest.fn(),
     }
 
-    renderWithTheme(<Checkbox {...mockProps} />)
+    renderWithTheme(<Basic {...mockProps} />)
 
     const checkboxInput = screen.getByRole('checkbox')
 
@@ -82,7 +96,7 @@ describe('Checkbox', () => {
       onChange: jest.fn(),
     }
 
-    renderWithTheme(<Checkbox readOnly id="checkboxID" {...mockProps} />)
+    renderWithTheme(<ReadOnly id="checkboxID" {...mockProps} />)
 
     const checkboxInput = screen.getByRole('checkbox')
     fireEvent.click(checkboxInput)
@@ -90,10 +104,41 @@ describe('Checkbox', () => {
   })
 
   test('Supports aria-describedby', () => {
-    renderWithTheme(<Checkbox aria-describedby="some-id" id="checkboxID" />)
+    renderWithTheme(<Basic aria-describedby="some-id" id="checkboxID" />)
     expect(screen.getByRole('checkbox')).toHaveAttribute(
       'aria-describedby',
       'some-id'
     )
+  })
+
+  test('ripple effect', () => {
+    renderWithTheme(<Basic />)
+
+    const checkbox = screen.getByRole('checkbox').closest('div') as HTMLElement
+    expect(checkbox).not.toHaveClass('bg-on fg-in')
+    expect(checkbox).toHaveStyle({
+      '--ripple-color': '#71767a',
+      '--ripple-scale-end': '1',
+      // This should change to 0.1 when brandAnimation default becomes true
+      '--ripple-scale-start': '1',
+      '--ripple-size': '100%',
+      '--ripple-translate': '0, 0',
+    })
+
+    fireEvent.focus(checkbox)
+    expect(checkbox).toHaveClass('bg-on')
+
+    fireEvent.mouseDown(checkbox)
+    expect(checkbox).toHaveClass('bg-on fg-in')
+
+    // foreground is locked for a minimum time to animate the ripple
+    fireEvent.mouseUp(checkbox)
+    runTimers()
+    expect(checkbox).toHaveClass('bg-on fg-out')
+    runTimers()
+    expect(checkbox).toHaveClass('bg-on')
+
+    fireEvent.blur(checkbox)
+    expect(checkbox).not.toHaveClass('bg-on fg-in')
   })
 })
