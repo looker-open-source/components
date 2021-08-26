@@ -24,11 +24,19 @@
 
  */
 
+import pick from 'lodash/pick'
 import type { SpaceProps } from '@looker/design-tokens'
 import { reset, space, toggleSwitchShadowColor } from '@looker/design-tokens'
 import type { Ref } from 'react'
 import React, { forwardRef } from 'react'
 import styled from 'styled-components'
+import { mergeClassNames } from '../../../utils'
+import {
+  rippleHandlerKeys,
+  rippleStyle,
+  useRipple,
+  useRippleHandlers,
+} from '../../../Ripple'
 import type { InputProps } from '../InputProps'
 import { pickInputProps } from '../InputProps'
 import type { KnobProps } from './Knob'
@@ -54,39 +62,66 @@ const DisabledKnob = styled.div`
   top: 0;
 `
 
-export const ToggleSwitchLayout = forwardRef(
-  (
-    { className, disabled, on, validationType, ...props }: ToggleSwitchProps,
-    ref: Ref<HTMLInputElement>
-  ) => {
-    return (
-      <div className={className}>
-        <input
-          type="checkbox"
-          checked={on}
-          disabled={disabled}
-          role="switch"
-          aria-checked={on}
-          aria-invalid={validationType === 'error' ? 'true' : undefined}
-          ref={ref}
-          {...pickInputProps(props)}
-        />
-        <KnobContainer on={on} disabled={disabled} />
-        {disabled && <DisabledKnob />}
-      </div>
-    )
-  }
-)
+export const ToggleSwitch = styled(
+  // eslint-disable-next-line react/display-name
+  forwardRef(
+    (
+      {
+        className,
+        disabled,
+        on,
+        style,
+        validationType,
+        ...props
+      }: ToggleSwitchProps,
+      ref: Ref<HTMLInputElement>
+    ) => {
+      const {
+        callbacks,
+        className: rippleClassName,
+        style: rippleStyle,
+      } = useRipple({ color: on ? 'key' : 'neutral' })
 
-ToggleSwitchLayout.displayName = 'ToggleSwitchLayout'
+      const rippleHandlers = useRippleHandlers(
+        callbacks,
+        {
+          ...pick(props, rippleHandlerKeys),
+        },
+        disabled
+      )
 
-export const ToggleSwitch = styled(ToggleSwitchLayout)`
+      return (
+        <div
+          className={mergeClassNames([className, rippleClassName])}
+          style={{ ...style, ...rippleStyle }}
+          {...rippleHandlers}
+        >
+          {' '}
+          <input
+            type="checkbox"
+            checked={on}
+            disabled={disabled}
+            role="switch"
+            aria-checked={on}
+            aria-invalid={validationType === 'error' ? 'true' : undefined}
+            ref={ref}
+            {...pickInputProps(props)}
+          />
+          <KnobContainer on={on} disabled={disabled} />
+          {disabled && <DisabledKnob />}
+        </div>
+      )
+    }
+  )
+)`
   ${reset}
   ${space}
+  ${rippleStyle}
 
-  height: 1.25rem;
+  height: ${({ theme: { space } }) => space.u5};
+  padding: ${({ theme: { space } }) => space.u1};
   position: relative;
-  width: 2.1875rem;
+  width: ${({ theme: { space } }) => space.u9};
 
   input {
     cursor: ${({ disabled }) => (disabled ? undefined : 'pointer')};
@@ -104,3 +139,7 @@ export const ToggleSwitch = styled(ToggleSwitchLayout)`
     }
   }
 `
+
+// height: 1.25rem;
+// position: relative;
+// width: 2.1875rem;
