@@ -29,6 +29,6 @@ import styled from 'styled-components'
 
 export const Hr = styled(Divider).attrs(() => ({
   mx: 'auto',
-  my: 'xxlarge',
+  my: 'u10',
   width: '50%',
 }))``

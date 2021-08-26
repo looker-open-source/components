@@ -35,5 +35,5 @@ export const Code = styled(Box).attrs(() => ({
   fontFamily: 'code',
   fontSize: 'small',
   lineHeight: 'medium',
-  px: 'xxsmall',
+  px: 'u1',
 }))``

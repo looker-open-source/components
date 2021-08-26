@@ -64,7 +64,7 @@ const typeVariant = variant({
   variants: {
     bullet: {
       listStyleType: 'disc',
-      pl: 'medium',
+      pl: 'u4',
     },
     none: {
       listStyleType: 'none',

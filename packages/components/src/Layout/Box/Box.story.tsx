@@ -67,7 +67,7 @@ const responsiveArgs: BoxStoryProps = {
   height: ['100px', '200px', '50vh'],
   letterSpacing: '10',
   lineHeight: ['small', 'large'],
-  m: ['none', null, 'medium', 'xlarge'],
+  m: ['none', null, 'u4', 'u8'],
   maxHeight: '500px',
   maxWidth: '500px',
   textAlign: ['left', 'center', 'right'],

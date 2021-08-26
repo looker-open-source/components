@@ -79,17 +79,17 @@ const size = variant({
     small: {
       fontSize: 'xxsmall',
       lineHeight: '16px',
-      px: 'xsmall',
+      px: 'u2',
     },
     medium: {
       fontSize: 'xsmall',
       lineHeight: '24px',
-      px: 'xsmall',
+      px: 'u2',
     },
     large: {
       fontSize: 'medium',
       lineHeight: '32px',
-      px: 'small',
+      px: 'u3',
     },
   },
 })

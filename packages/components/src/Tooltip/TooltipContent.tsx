@@ -35,7 +35,7 @@ export const TooltipContent = styled(Paragraph).attrs<TooltipProps>(
     lineHeight: 'xsmall',
     m: 'none',
     maxWidth: width || '16rem',
-    p: 'xsmall',
+    p: 'u2',
     textAlign,
     width: 'auto',
   })
