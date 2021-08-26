@@ -119,10 +119,12 @@ export const ToggleSwitch = styled(
   ${rippleStyle}
 
   height: ${({ theme: { space } }) => space.u5};
-  padding: ${({ theme: { space } }) => space.u1};
   position: relative;
   width: ${({ theme: { space } }) => space.u9};
 
+  ${KnobContainer} {
+    padding: ${({ theme: { space } }) => space.u1};
+  }
   input {
     cursor: ${({ disabled }) => (disabled ? undefined : 'pointer')};
     height: 100%;
@@ -142,4 +144,4 @@ export const ToggleSwitch = styled(
 
 // height: 1.25rem;
 // position: relative;
-// width: 2.1875rem;
+// 2.1875rem;
