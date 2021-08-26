@@ -275,13 +275,13 @@ controlled via state values – or use the hook version.
       width={200}
       content={
         <>
-          <Box p="u2">
+          <Box2 p="u2">
             <InputSearch
               placeholder="start your search..."
               value={keywordSearch}
               onChange={setKeywordSearch}
             />
-          </Box>
+          </Box2>
           <MenuHeading>Cheeses</MenuHeading>
           {searchResults.map((cheese) => (
             <MenuItem itemRole="link" href={`#${cheese}`} key={cheese}>
