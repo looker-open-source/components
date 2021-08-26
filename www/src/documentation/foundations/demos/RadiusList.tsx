@@ -26,7 +26,7 @@
 
 import React from 'react'
 import {
-  Box,
+  Box2,
   Code,
   TableBody,
   TableDataCell,
@@ -38,7 +38,7 @@ import { theme } from '@looker/design-tokens'
 import styled from 'styled-components'
 import { DocTable } from '../../../components'
 
-const ExampleBox = styled(Box)`
+const ExampleBox = styled(Box2)`
   height: 40px;
   width: 60px;
 `
@@ -59,12 +59,7 @@ export const RadiusList = () => {
           return (
             <TableRow key={r[0]}>
               <TableDataCell>
-                <ExampleBox
-                  bg="ui1"
-                  border="solid 1px"
-                  borderColor="ui3"
-                  borderRadius={r[0]}
-                />
+                <ExampleBox bg="ui1" border="ui3" borderRadius={r[0]} />
               </TableDataCell>
               <TableDataCell>{r[1]}</TableDataCell>
               <TableDataCell>

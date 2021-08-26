@@ -31,7 +31,7 @@ import {
 } from '@looker/components-providers'
 import { defaultArgTypes as argTypes } from '../../../../../storybook/src/defaultArgTypes'
 import {
-  Box,
+  Box2,
   Button,
   ButtonOutline,
   CopyToClipboard,
@@ -257,7 +257,7 @@ export const OverlayOpenDialog = () => {
         content={
           <SpaceVertical p="u5">
             <Button onClick={setOn}>Open Dialog</Button>
-            <Box height={500} />
+            <Box2 height={500} />
           </SpaceVertical>
         }
       >
@@ -274,7 +274,7 @@ export const OverlayOpenDialog = () => {
       </Menu>
       <Heading>Opening a Dialog Directly</Heading>
       <Button onClick={setOn}>Open Dialog</Button>
-      <Box height={1000} />
+      <Box2 height={1000} />
     </SpaceVertical>
   )
 }
@@ -327,7 +327,7 @@ const DialogInner = () => {
         />
         <Paragraph>Try clicking the button:</Paragraph>
         <Button onClick={openAlert}>Open Alert</Button>
-        <Box height={500} />
+        <Box2 height={500} />
       </SpaceVertical>
     </DialogContent>
   )
@@ -370,9 +370,9 @@ export const Placement = () => {
   )
 
   return (
-    <Box mt="large">
+    <Box2 mt="large">
       <Heading>Placement</Heading>
-      <Box my="medium">
+      <Box2 my="medium">
         <Popover content={popoverContent}>
           <Button>Default</Button>
         </Popover>
@@ -380,8 +380,8 @@ export const Placement = () => {
         <Popover content={popoverContent}>
           <Button>Default</Button>
         </Popover>
-      </Box>
-    </Box>
+      </Box2>
+    </Box2>
   )
 }
 
@@ -418,10 +418,10 @@ const MovingTargetInner = () => {
     }
   }, [toggle])
   return (
-    <Box mt="large">
+    <Box2 mt="large">
       <Heading>Moving Target</Heading>
       {popover}
-      <Box
+      <Box2
         mt={value ? 'xxxlarge' : 'medium'}
         border="2px solid"
         width={150}
@@ -433,8 +433,8 @@ const MovingTargetInner = () => {
         className={isOpen ? 'active' : ''}
       >
         Open Popover
-      </Box>
-    </Box>
+      </Box2>
+    </Box2>
   )
 }
 

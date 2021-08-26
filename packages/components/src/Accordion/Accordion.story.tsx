@@ -33,7 +33,7 @@ import { ChevronLeft } from '@styled-icons/material-rounded/ChevronLeft'
 import { ExpandMore } from '@styled-icons/material-rounded/ExpandMore'
 import { HelpOutline } from '@styled-icons/material/HelpOutline'
 import { Badge } from '../Badge'
-import { Box, Space } from '../Layout'
+import { Box2, Space } from '../Layout'
 import { Fieldset, FieldText } from '../Form'
 import { Icon } from '../Icon'
 import { UnorderedList } from '../UnorderedList'
@@ -179,7 +179,7 @@ Nested.parameters = {
 
 export const ApiExplorer = () => {
   const content = (
-    <Box borderLeft="1px dotted" borderColor="ui2" ml="xsmall" pl="small">
+    <Box2 borderLeft ml="xsmall" pl="small">
       <UnorderedList fontSize="small">
         <li>
           <Badge intent="inform">GET</Badge> Search Favorites
@@ -197,7 +197,7 @@ export const ApiExplorer = () => {
           <Badge intent="warn">POST</Badge> Update Content
         </li>
       </UnorderedList>
-    </Box>
+    </Box2>
   )
 
   return (

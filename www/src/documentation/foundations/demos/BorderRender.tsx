@@ -24,9 +24,9 @@
 
  */
 
-import type { FC } from 'react';
+import type { FC } from 'react'
 import React from 'react'
-import { Box, Heading, Code } from '@looker/components'
+import { Box2, Heading, Code } from '@looker/components'
 import styled from 'styled-components'
 
 export interface BorderType {
@@ -69,7 +69,7 @@ export const BorderRender = () =>
 const Example: FC<{ border: BorderType }> = ({
   border: { color, examples, label, textColor },
 }) => (
-  <Box mb="xlarge">
+  <Box2 mb="xlarge">
     <Heading as="h3" fontWeight="semiBold" mb="small">
       {label} <Code fontSize="medium">{color}</Code>
     </Heading>
@@ -79,10 +79,10 @@ const Example: FC<{ border: BorderType }> = ({
         <BorderDividerExample bg={color} />
       </BorderExample>
     ))}
-  </Box>
+  </Box2>
 )
 
-const BorderExample = styled(Box)`
+const BorderExample = styled(Box2)`
   align-items: center;
   border: 1px solid;
   border-color: ${({ theme }) => theme.colors.ui3};
@@ -95,7 +95,7 @@ const BorderExample = styled(Box)`
   }
 `
 
-const BorderDividerExample = styled(Box)`
+const BorderDividerExample = styled(Box2)`
   height: 1px;
   width: 70%;
 `

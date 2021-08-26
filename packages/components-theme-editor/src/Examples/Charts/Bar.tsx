@@ -24,7 +24,7 @@
 
  */
 
-import { Box } from '@looker/components'
+import { Box2 } from '@looker/components'
 import type { FC } from 'react'
 import React from 'react'
 import styled from 'styled-components'
@@ -32,16 +32,16 @@ import styled from 'styled-components'
 const FauxChartLayout: FC<{ className?: string }> = ({ className }) => (
   <ul className={className}>
     <li>
-      <Box mx="u5" height="20%" title="Gouda" bg="inform"></Box>
+      <Box2 mx="u5" height="20%" title="Gouda" bg="inform"></Box2>
     </li>
     <li>
-      <Box mx="u5" height="60%" title="Cheddar" bg="positive"></Box>
+      <Box2 mx="u5" height="60%" title="Cheddar" bg="positive"></Box2>
     </li>
     <li>
-      <Box mx="u5" height="90%" title="Swiss" bg="warn"></Box>
+      <Box2 mx="u5" height="90%" title="Swiss" bg="warn"></Box2>
     </li>
     <li>
-      <Box mx="u5" height="40%" title="Blue" bg="critical"></Box>
+      <Box2 mx="u5" height="40%" title="Blue" bg="critical"></Box2>
     </li>
   </ul>
 )

@@ -26,7 +26,7 @@
 
 import React from 'react'
 import {
-  Box,
+  Box2,
   Code,
   TableBody,
   TableDataCell,
@@ -43,15 +43,15 @@ import { DocTable } from '../../../components'
 const DensityRow = ({ density }: { density: DensityRamp }) => (
   <TableRow>
     <TableDataCell>
-      <Box bg="ui2" p="u3" mr="large" borderRadius="medium">
-        <Box bg="background">
+      <Box2 bg="ui2" p="u3" mr="large" borderRadius="medium">
+        <Box2 bg="background">
           <List density={density}>
             <ListItem>Item 1</ListItem>
             <ListItem>Item 2</ListItem>
             <ListItem>Item 3</ListItem>
           </List>
-        </Box>
-      </Box>
+        </Box2>
+      </Box2>
     </TableDataCell>
     <TableDataCell>{density}</TableDataCell>
     <TableDataCell>

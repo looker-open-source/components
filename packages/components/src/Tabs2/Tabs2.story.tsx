@@ -26,7 +26,7 @@
 
 import React, { useState } from 'react'
 import type { Story } from '@storybook/react/types-6-0'
-import { Box } from '../Layout'
+import { Box2 } from '../Layout'
 import type { Tabs2Props } from './'
 import { Tab2, Tabs2 } from './'
 
@@ -36,7 +36,7 @@ export default {
 }
 
 const Template: Story<Tabs2Props> = (args) => (
-  <Box height="8rem">
+  <Box2 height="8rem">
     <Tabs2 {...args}>
       <Tab2 id="cats" label="Cats">
         Here's awesome story about cats
@@ -46,7 +46,7 @@ const Template: Story<Tabs2Props> = (args) => (
       </Tab2>
       <Tab2 label="Fish">Are kinda smelly</Tab2>
     </Tabs2>
-  </Box>
+  </Box2>
 )
 
 export const Basic = Template.bind({})
@@ -98,7 +98,7 @@ Scrolling.parameters = {
 
 export const Disabled = () => {
   return (
-    <Box height="8rem">
+    <Box2 height="8rem">
       <Tabs2>
         <Tab2 id="cats" label="Cats">
           Here's awesome story about cats
@@ -111,6 +111,6 @@ export const Disabled = () => {
           Humans tab is disabled
         </Tab2>
       </Tabs2>
-    </Box>
+    </Box2>
   )
 }

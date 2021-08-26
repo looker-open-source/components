@@ -69,7 +69,7 @@ describe('Box2', () => {
   })
 
   describe('user select', () => {
-    test('Box cannot be selected', () => {
+    test('cannot be selected', () => {
       renderWithTheme(<Box2 userSelect="none">Can't touch this</Box2>)
       expect(screen.getByText("Can't touch this")).toHaveStyleRule(
         'user-select',

@@ -24,10 +24,10 @@
 
  */
 
-import { Box } from '@looker/components'
+import { Box2 } from '@looker/components'
 import styled from 'styled-components'
 
-export const Code = styled(Box).attrs(() => ({
+export const Code = styled(Box2).attrs(() => ({
   as: 'code',
   bg: 'ui1',
   borderRadius: 'small',

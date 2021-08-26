@@ -31,7 +31,7 @@ import { DateRange } from '@styled-icons/material-outlined/DateRange'
 import { Undo } from '@styled-icons/material-outlined/Undo'
 import type { FC } from 'react'
 import React, { Fragment } from 'react'
-import { Box, Grid, Space } from '../Layout'
+import { Box2, Grid, Space } from '../Layout'
 import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
 import type { MenuItemProps } from '.'
 import { MenuHeading, MenuList, MenuItem, MenuDivider } from '.'
@@ -92,13 +92,13 @@ Basic.args = {
 const array3000 = Array.from(Array(3000), (_, i) => String(i + 1))
 export const LongList = () => {
   return (
-    <Box height="500px">
+    <Box2 height="500px">
       <MenuList>
         {array3000.map((item, i) => (
           <MenuItem key={i}>{item}</MenuItem>
         ))}
       </MenuList>
-    </Box>
+    </Box2>
   )
 }
 
@@ -160,7 +160,7 @@ export const MenuHeadingOverride = () => (
  */
 export const MenuListSpacing = () => (
   <Space p="u4" style={{ background: '#ff8c69' }}>
-    <Box bg="background">
+    <Box2 bg="background">
       <MenuList>
         <MenuDivider />
         <MenuItem selected>Top Item</MenuItem>
@@ -170,8 +170,8 @@ export const MenuListSpacing = () => (
         <MenuItem selected>Bottom Item</MenuItem>
         <MenuDivider />
       </MenuList>
-    </Box>
-    <Box bg="background">
+    </Box2>
+    <Box2 bg="background">
       <MenuList>
         <MenuItem selected>Top Item</MenuItem>
         <MenuItem selected>Top Item</MenuItem>
@@ -180,8 +180,8 @@ export const MenuListSpacing = () => (
         <MenuItem selected>Bottom Item</MenuItem>
         <MenuDivider />
       </MenuList>
-    </Box>
-    <Box bg="background">
+    </Box2>
+    <Box2 bg="background">
       <MenuList>
         <MenuDivider />
         <MenuItem selected>Top Item</MenuItem>
@@ -190,7 +190,7 @@ export const MenuListSpacing = () => (
         <MenuItem selected>Bottom Item</MenuItem>
         <MenuItem selected>Bottom Item</MenuItem>
       </MenuList>
-    </Box>
+    </Box2>
   </Space>
 )
 

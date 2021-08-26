@@ -38,7 +38,7 @@ import styled from 'styled-components'
 import { VIEWPORT_MAP } from '../utils-storybook'
 import { Card, CardContent, CardMedia } from '../Card'
 import { Heading, Paragraph, Span } from '../Text'
-import { Grid, Box } from '../Layout'
+import { Grid, Box2 } from '../Layout'
 import { IconButton } from '../Button'
 import { InputSearch } from '../Form'
 import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
@@ -113,9 +113,9 @@ const Template: Story<BreakpointProps> = () => {
       <Breakpoint show="mobile">
         <NavHeader backgroundColor="ui1" p="u3">
           <MobileHeaderGrid>
-            <Box color="key">
+            <Box2 color="key">
               <Home size="1.5rem" title="Home" />
-            </Box>
+            </Box2>
             <IconButton icon={<Menu />} label="navigation" />
           </MobileHeaderGrid>
         </NavHeader>
@@ -130,7 +130,7 @@ const Template: Story<BreakpointProps> = () => {
       <Breakpoint show={['tablet', undefined]}>
         <NavHeader backgroundColor="inverse" p="u4">
           <LargeHeaderGrid>
-            <Box color="text1">My logo here!</Box>
+            <Box2 color="text1">My logo here!</Box2>
             <nav>
               <Grid columns={4}>
                 <Link href="#" color="text1">
@@ -150,7 +150,7 @@ const Template: Story<BreakpointProps> = () => {
             <InputSearch placeholder="Search" />
           </LargeHeaderGrid>
         </NavHeader>
-        <Box p="u4">
+        <Box2 p="u4">
           <Breakpoint show={['tablet', 'laptop']}>
             <Grid columns={2}>
               <NatureCard backgroundColor="criticalFocus" />
@@ -170,7 +170,7 @@ const Template: Story<BreakpointProps> = () => {
               </Grid>
             </Grid>
           </Breakpoint>
-        </Box>
+        </Box2>
       </Breakpoint>
     </>
   )

@@ -27,7 +27,7 @@
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { act, fireEvent, screen } from '@testing-library/react'
-import { Box } from '../Layout/Box'
+import { Box2 } from '../Layout/Box2'
 import { Truncate } from './Truncate'
 
 const longLabel = 'This is a long label that should trigger truncation'
@@ -71,9 +71,9 @@ describe('Truncate', () => {
    */
   xtest('Truncate active', () => {
     renderWithTheme(
-      <Box width="5rem">
+      <Box2 width="5rem">
         <Truncate>{longLabel}</Truncate>
-      </Box>
+      </Box2>
     )
 
     const trigger = screen.getAllByText(longLabel)[0]

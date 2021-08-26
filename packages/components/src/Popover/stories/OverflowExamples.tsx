@@ -25,14 +25,14 @@
  */
 
 import React from 'react'
-import { Box } from '../../Layout'
+import { Box2 } from '../../Layout'
 
 import { ContentOverflow } from './ContentOverflow'
 import { EdgeOverflow } from './EdgeOverflow'
 
 export const OverflowExamples = () => {
   return (
-    <Box p="u10" width="100%" position="relative" height="100%">
+    <Box2 p="u10" width="100%" position="relative" height="100%">
       <EdgeOverflow top={0} left={0}>
         Top Left
       </EdgeOverflow>
@@ -95,7 +95,7 @@ export const OverflowExamples = () => {
       <p>....</p>
       <p>....</p>
       <p>....</p>
-    </Box>
+    </Box2>
   )
 }
 

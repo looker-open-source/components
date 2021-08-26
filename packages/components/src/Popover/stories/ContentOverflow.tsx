@@ -28,22 +28,22 @@ import type { FC } from 'react'
 import React from 'react'
 import { ArrowDropDown } from '@styled-icons/material/ArrowDropDown'
 import { ButtonOutline } from '../../Button'
-import { Box } from '../../Layout'
+import { Box2 } from '../../Layout'
 import { Paragraph } from '../../Text'
 import { Popover } from '../Popover'
 import { PopoverContent } from '../Layout/PopoverContent'
 
 export const ContentOverflow: FC = ({ children }) => (
-  <Box position="absolute" top="40%" left="40%">
+  <Box2 position="absolute" top="40%" left="40%">
     <Popover
       pin
       placement="bottom"
       content={
         <PopoverContent width="18rem">
           <Paragraph>Stuff above spacer</Paragraph>
-          <Box height="60vh" bg="ui1">
+          <Box2 height="60vh" bg="ui1">
             Spacer
-          </Box>
+          </Box2>
           <Paragraph>Content below spacer</Paragraph>
         </PopoverContent>
       }
@@ -52,5 +52,5 @@ export const ContentOverflow: FC = ({ children }) => (
         {children}
       </ButtonOutline>
     </Popover>
-  </Box>
+  </Box2>
 )

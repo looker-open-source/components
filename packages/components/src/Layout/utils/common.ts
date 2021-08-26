@@ -51,7 +51,7 @@ export const commonLayoutCSS = css`
    * Rules here should provide convenience styling for Box derived components.
    * Generally anything here could be overwritten by explicit values set via
    * Box's prop values. For example a function here that sets 'cursor: pointer'
-   * would be overwritten by an explicit <Box cursor='copy'/>.
+   * would be overwritten by an explicit <Box2 cursor='copy'/>.
    */
   ${simpleLayoutCSS}
 

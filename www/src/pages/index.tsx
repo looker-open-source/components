@@ -25,7 +25,7 @@
  */
 
 import {
-  Box,
+  Box2,
   Code,
   Grid,
   Flex,
@@ -72,7 +72,7 @@ const Intro = () => {
 
           <Grid columns={3}>
             <Flex flexDirection="column" alignItems="center">
-              <Box mb="medium">
+              <Box2 mb="medium">
                 <Flex
                   alignItems="center"
                   justifyContent="center"
@@ -94,7 +94,7 @@ const Intro = () => {
                     />
                   </svg>
                 </Flex>
-              </Box>
+              </Box2>
               <Heading as="h4" fontSize="large" fontWeight="semiBold">
                 Install
               </Heading>
@@ -105,7 +105,7 @@ const Intro = () => {
               </Paragraph>
             </Flex>
             <Flex flexDirection="column" alignItems="center">
-              <Box mb="medium">
+              <Box2 mb="medium">
                 <Flex
                   alignItems="center"
                   justifyContent="center"
@@ -116,7 +116,7 @@ const Intro = () => {
                 >
                   <Icon icon={<Explore />} color="#0087E1" />
                 </Flex>
-              </Box>
+              </Box2>
               <Heading as="h4" fontSize="large" fontWeight="semiBold">
                 Explore
               </Heading>
@@ -127,7 +127,7 @@ const Intro = () => {
               </Paragraph>
             </Flex>
             <Flex flexDirection="column" alignItems="center">
-              <Box mb="medium">
+              <Box2 mb="medium">
                 <Flex
                   alignItems="center"
                   justifyContent="center"
@@ -138,7 +138,7 @@ const Intro = () => {
                 >
                   <Icon icon={<Undo />} color="#FFA800" />
                 </Flex>
-              </Box>
+              </Box2>
               <Heading as="h4" fontSize="large" fontWeight="semiBold">
                 Contribute
               </Heading>

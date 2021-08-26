@@ -27,16 +27,16 @@ import React from 'react'
 import type { Story } from '@storybook/react/types-6-0'
 import { defaultArgTypes as argTypes } from '../../../../../storybook/src/defaultArgTypes'
 import { ConstitutionShort } from '../../__mocks__/Constitution'
-import { Box } from '../../Layout'
+import { Box2 } from '../../Layout'
 import type { DialogLayoutProps } from '.'
 import { DialogContent, DialogLayout } from '.'
 
 const Template: Story<DialogLayoutProps> = (args) => (
-  <Box bg="ui1">
+  <Box2 bg="ui1">
     <DialogLayout {...args}>
       <ConstitutionShort />
     </DialogLayout>
-  </Box>
+  </Box2>
 )
 
 export const Basic = Template.bind({})
@@ -77,11 +77,11 @@ FooterSecondary.args = {
 }
 
 export const NoPadding = () => (
-  <Box bg="ui1">
+  <Box2 bg="ui1">
     <DialogContent hasFooter={false} hasHeader={false}>
       <ConstitutionShort />
     </DialogContent>
-  </Box>
+  </Box2>
 )
 
 export default {
