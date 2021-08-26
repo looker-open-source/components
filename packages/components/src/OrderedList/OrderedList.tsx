@@ -64,14 +64,14 @@ const typeVariant = variant({
   variants: {
     letter: {
       listStyleType: 'upper-alpha',
-      pl: 'u3',
+      pl: 'u4',
     },
     none: {
       listStyleType: 'none',
     },
     number: {
       listStyleType: 'decimal',
-      pl: 'u3',
+      pl: 'u4',
     },
   },
 })

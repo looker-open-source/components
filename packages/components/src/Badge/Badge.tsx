@@ -89,7 +89,7 @@ const size = variant({
     large: {
       fontSize: 'medium',
       lineHeight: '32px',
-      px: 'u2',
+      px: 'u3',
     },
   },
 })
