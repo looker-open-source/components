@@ -43,5 +43,5 @@ const Template: Story<CardContentProps> = (args) => (
 export const Default = Template.bind({})
 export const ExtraPadding = Template.bind({})
 ExtraPadding.args = {
-  p: 'xxlarge',
+  p: 'u10',
 }

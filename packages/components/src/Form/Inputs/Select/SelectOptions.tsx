@@ -158,8 +158,8 @@ const SelectOptionGroupTitle = styled(Heading).attrs<HeadingProps>(() => ({
   fontFamily: 'body',
   fontSize: 'xxsmall',
   fontWeight: 'semiBold',
-  px: 'xsmall',
-  py: 'xxsmall',
+  px: 'u2',
+  py: 'u1',
 }))<{ isMulti?: boolean }>`
   display: flex;
   padding-top: ${({ theme }) => theme.space.u1};

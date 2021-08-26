@@ -54,7 +54,7 @@ Basic.parameters = {
 
 export const CustomPadding = Template.bind({})
 CustomPadding.args = {
-  pb: 'small',
-  pt: 'xlarge',
-  px: 'small',
+  pb: 'u3',
+  pt: 'u8',
+  px: 'u3',
 }
