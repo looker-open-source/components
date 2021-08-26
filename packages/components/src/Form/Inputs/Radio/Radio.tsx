@@ -52,12 +52,23 @@ export interface RadioProps
 export const Radio = styled(
   forwardRef((props: RadioProps, ref: Ref<HTMLInputElement>) => {
     const { className, style, validationType, ...restProps } = props
+    const radioColor = (checked: boolean, error: boolean) => {
+      if (error) {
+        return 'critical'
+      } else if (checked) {
+        return 'key'
+      } else {
+        return 'neutral'
+      }
+    }
 
     const {
       callbacks,
       className: rippleClassName,
       style: rippleStyle,
-    } = useRipple({ color: props.checked ? 'key' : 'neutral' })
+    } = useRipple({
+      color: radioColor(props.checked === true, validationType === 'error'),
+    })
 
     const rippleHandlers = useRippleHandlers(
       callbacks,
@@ -121,12 +132,6 @@ export const Radio = styled(
 
   input:not(:checked) + ${FauxRadio} {
     background: ${({ theme }) => theme.colors.field};
-  }
-
-  input:focus + ${FauxRadio} {
-    border-color: ${({ theme }) => theme.colors.keyFocus};
-    box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.keyAccent};
-    outline: none;
   }
 
   input:disabled + ${FauxRadio} {
