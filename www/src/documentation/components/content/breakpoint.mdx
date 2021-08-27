@@ -20,23 +20,23 @@ Use the `show` prop to specify either a string name of a single device (e.g. `'m
 ```jsx
 <Paragraph mb="u3">Resize window to watch content change:</Paragraph>
 <Breakpoint show={['mobile', 'laptop']}>
-  <Box bg="criticalAccent" p="u5">
+  <Box2 bg="criticalAccent" p="u5">
     Render on Mobile, Tablet, and Laptop (0-1024px)
-  </Box>
+  </Box2>
 </Breakpoint>
 <Breakpoint show={['desktop', 'xl']}>
-  <Box bg="keyAccent" p="u5">
+  <Box2 bg="keyAccent" p="u5">
     Desktop and xl screens (1025px and larger)
-  </Box>
+  </Box2>
 </Breakpoint>
 <Breakpoint show="desktop">
-  <Box bg="positiveAccent" p="u5" mt="u3">
+  <Box2 bg="positiveAccent" p="u5" mt="u3">
     Show on desktop only (1025-1200px)
-  </Box>
+  </Box2>
 </Breakpoint>
 <Breakpoint show="xl">
-  <Box bg="informAccent" p="u5" mt="u3">
+  <Box2 bg="informAccent" p="u5" mt="u3">
     Show on XL only (>1200px)
-  </Box>
+  </Box2>
 </Breakpoint>
 ```

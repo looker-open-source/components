@@ -26,7 +26,7 @@
 
 import React from 'react'
 import {
-  Box,
+  Box2,
   Heading,
   SpaceVertical,
   Space,
@@ -47,7 +47,7 @@ import { Refresh } from '@styled-icons/material/Refresh'
 import { FauxPieChart, FauxBarChart } from './Charts'
 
 export const FauxDashboard = () => (
-  <Box bg="background">
+  <Box2 bg="background">
     <SpaceVertical p="u8" gap="u8">
       <Space between>
         <Heading fontSize="xxxlarge">Title</Heading>
@@ -93,5 +93,5 @@ export const FauxDashboard = () => (
         </Card>
       </Grid>
     </SpaceVertical>
-  </Box>
+  </Box2>
 )

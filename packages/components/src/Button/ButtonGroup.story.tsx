@@ -28,7 +28,7 @@ import type { Page } from 'puppeteer'
 import type { FormEvent } from 'react'
 import React, { useEffect, useState } from 'react'
 import { Divider } from '../Divider'
-import { Box, Space } from '../Layout'
+import { Box2, Space } from '../Layout'
 import { FieldToggleSwitch } from '../Form'
 import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
 import type { ButtonGroupOrToggleBaseProps } from './ButtonSet'
@@ -165,7 +165,7 @@ export const Wrapping = () => {
   }, [])
   return (
     <Space>
-      <Box flex={1} border={border ? '1px solid' : 'none'}>
+      <Box2 flex={1} border={border}>
         <FieldToggleSwitch
           label="Show border"
           on={border}
@@ -216,7 +216,7 @@ export const Wrapping = () => {
           options={states}
         />
         Inline text
-      </Box>
+      </Box2>
     </Space>
   )
 }

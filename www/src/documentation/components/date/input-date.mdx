@@ -32,12 +32,12 @@ import { ImportMessage } from '../ImportMessage'
   return (
     <Space gap="u10">
       <InputDate onChange={handleChange} defaultValue={selectedDate} />
-      <Box p="u5" height="100%" borderLeft="1px solid #ccc">
+      <Box2 p="u5" height="100%" borderLeft>
         <Heading>Selected:</Heading>
         <Text color="text2">
           <DateFormat>{selectedDate}</DateFormat>
         </Text>
-      </Box>
+      </Box2>
     </Space>
   )
 }
@@ -144,9 +144,9 @@ A common UI pattern is to combine `InputDate` with [Popover](/components/overlay
   return (
     <Popover
       content={
-        <Box p="u3">
+        <Box2 p="u3">
           <InputDate defaultValue={selectedDate} onChange={setSelectedDate} />
-        </Box>
+        </Box2>
       }
     >
       <Button>

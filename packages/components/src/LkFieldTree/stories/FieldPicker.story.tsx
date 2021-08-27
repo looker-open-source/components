@@ -26,7 +26,7 @@
 
 import React from 'react'
 import type { ParagraphProps } from '../..'
-import { Aside, Box, Paragraph } from '../..'
+import { Aside, Box2, Paragraph } from '../..'
 import { TreeBranch, TreeCollection } from '../../Tree'
 import { LkFieldGroupTree, LkFieldViewTree } from '..'
 import { FieldPickerItem } from './FieldPickerItem'
@@ -50,7 +50,7 @@ const fields = (
     <TreeBranch>
       <FieldGroupHeading pt="none">DIMENSIONS</FieldGroupHeading>
     </TreeBranch>
-    <LkFieldGroupTree color="dimension" selected label={<Box>Created</Box>}>
+    <LkFieldGroupTree color="dimension" selected label={<Box2>Created</Box2>}>
       <FieldPickerItem>Created Date</FieldPickerItem>
       <FieldPickerItem selected>Created Month</FieldPickerItem>
       <FieldPickerItem>Created Year</FieldPickerItem>

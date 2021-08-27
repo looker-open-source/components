@@ -33,7 +33,7 @@ import {
   DialogContext,
   Layout,
   Section,
-  Box,
+  Box2,
   ExtendComponentsThemeProvider,
 } from '@looker/components'
 import type { ThemeCustomizations } from '@looker/design-tokens'
@@ -100,13 +100,13 @@ export const ThemeEditorContent: FC<ThemeEditorContentProps> = ({
           />
         </Aside>
         <Section pl="xxlarge">
-          <Box border="1px solid" borderColor="ui2">
+          <Box2 border>
             <ExtendComponentsThemeProvider
               themeCustomizations={themeCustomizations}
             >
               <FauxDashboard />
             </ExtendComponentsThemeProvider>
-          </Box>
+          </Box2>
         </Section>
       </Layout>
     </DialogLayout>

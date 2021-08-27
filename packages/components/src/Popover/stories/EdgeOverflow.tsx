@@ -28,7 +28,7 @@ import type { FC } from 'react'
 import React from 'react'
 import { ArrowDropDown } from '@styled-icons/material/ArrowDropDown'
 import { ButtonOutline } from '../../Button'
-import { Box } from '../../Layout'
+import { Box2 } from '../../Layout'
 import { Popover } from '../Popover'
 import { PopoverContent } from '../Layout/PopoverContent'
 
@@ -46,7 +46,7 @@ export const EdgeOverflow: FC<Props> = ({
   bottom,
   right,
 }) => (
-  <Box position="absolute" top={top} left={left} bottom={bottom} right={right}>
+  <Box2 position="absolute" top={top} left={left} bottom={bottom} right={right}>
     <Popover
       content={
         <PopoverContent width="18rem" height="5rem">
@@ -58,5 +58,5 @@ export const EdgeOverflow: FC<Props> = ({
         {children}
       </ButtonOutline>
     </Popover>
-  </Box>
+  </Box2>
 )

@@ -27,8 +27,8 @@
 import type { Story } from '@storybook/react/types-6-0'
 import type { FC } from 'react'
 import React from 'react'
-import type { BoxProps } from '../Box'
-import { Box } from '../Box'
+import type { Box2Props } from '../Box2'
+import { Box2 } from '../Box2'
 import { defaultArgTypes as argTypes } from '../../../../../storybook/src/defaultArgTypes'
 import type { GridProps } from './Grid'
 import { Grid } from './Grid'
@@ -39,8 +39,8 @@ export default {
   title: 'Grid',
 }
 
-const Placeholder: FC<BoxProps> = (props) => (
-  <Box
+const Placeholder: FC<Box2Props> = (props) => (
+  <Box2
     color="white"
     bg="key"
     justifyContent="center"

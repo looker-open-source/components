@@ -39,7 +39,7 @@ import type { Ref } from 'react'
 import React, { forwardRef } from 'react'
 import styled from 'styled-components'
 import { useID } from '../../../utils'
-import { Box } from '../../../Layout'
+import { Box2 } from '../../../Layout'
 import { useFocusManagement } from './utils/useFocusManagement'
 import type {
   ComboboxCallback,
@@ -182,7 +182,7 @@ export const ComboboxWrapper = forwardRef(
     ref: Ref<HTMLDivElement>
   ) => {
     return (
-      <Box
+      <Box2
         {...rest}
         ref={ref}
         role="combobox"

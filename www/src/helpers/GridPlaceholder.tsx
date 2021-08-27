@@ -24,13 +24,13 @@
 
  */
 
-import type { BoxProps } from '@looker/components'
-import { Box } from '@looker/components'
+import type { Box2Props } from '@looker/components'
+import { Box2 } from '@looker/components'
 import type { FC } from 'react'
 import React from 'react'
 
-export const GridPlaceholder: FC<BoxProps> = (props) => (
-  <Box
+export const GridPlaceholder: FC<Box2Props> = (props) => (
+  <Box2
     color="white"
     bg="positive"
     justifyContent="center"

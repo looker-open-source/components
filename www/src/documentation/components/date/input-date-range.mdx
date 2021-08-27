@@ -25,9 +25,9 @@ import { ImportMessage } from '../ImportMessage'
   }
   return (
     <>
-      <Box mb="u4">
+      <Box2 mb="u4">
         <Button onClick={handleButtonClick}>Select February 2020</Button>
-      </Box>
+      </Box2>
       <InputDateRange value={value} onChange={handleChange} />
     </>
   )
@@ -62,13 +62,13 @@ import { ImportMessage } from '../ImportMessage'
   }
   return (
     <>
-      <Box mb="u4" pb="u3" borderBottom="1px solid #ccc">
+      <Box2 mb="u4" pb="u3" borderBottom>
         <Heading>Selected:</Heading>{' '}
         <Text color="text2">
           <DateFormat>{selectedDate.from}</DateFormat> &mdash;
           <DateFormat>{selectedDate.to}</DateFormat>
         </Text>
-      </Box>
+      </Box2>
       <InputDateRange onChange={handleChange} defaultValue={selectedDate} />
     </>
   )
@@ -162,12 +162,12 @@ A common UI pattern is to combine `InputDateRange` with [Popover](/components/ov
   return (
     <Popover
       content={
-        <Box p="u3">
+        <Box2 p="u3">
           <InputDateRange
             defaultValue={selectedDateRange}
             onChange={setSelectedDateRange}
           />
-        </Box>
+        </Box2>
       }
     >
       <Button>

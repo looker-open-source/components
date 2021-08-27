@@ -85,68 +85,68 @@ Here is a visual example of how using `justifyContent` affects the distribution 
 <Flex justifyContent="flex-start" mb="u4" bg="ui1">
   <Box>
     <Text fontSize="xxxxlarge">🕺</Text>
-  </Box>
+  </Box2>
   <Box>
     <Text fontSize="xxxxlarge">🎶</Text>
-  </Box>
+  </Box2>
   <Box>
     <Text fontSize="xxxxlarge">💃</Text>
-  </Box>
+  </Box2>
 </Flex>
 <Flex justifyContent="space-between" mb="u4" bg="ui1">
   <Box>
     <Text fontSize="xxxxlarge">🕺</Text>
-  </Box>
+  </Box2>
   <Box>
     <Text fontSize="xxxxlarge">🎶</Text>
-  </Box>
+  </Box2>
   <Box>
     <Text fontSize="xxxxlarge">💃</Text>
-  </Box>
+  </Box2>
 </Flex>
 <Flex justifyContent="space-around" mb="u4" bg="ui1">
   <Box>
     <Text fontSize="xxxxlarge">🕺</Text>
-  </Box>
+  </Box2>
   <Box>
     <Text fontSize="xxxxlarge">🎶</Text>
-  </Box>
+  </Box2>
   <Box>
     <Text fontSize="xxxxlarge">💃</Text>
-  </Box>
+  </Box2>
 </Flex>
 <Flex justifyContent="space-evenly" mb="u4" bg="ui1">
   <Box>
     <Text fontSize="xxxxlarge">🕺</Text>
-  </Box>
+  </Box2>
   <Box>
     <Text fontSize="xxxxlarge">🎶</Text>
-  </Box>
+  </Box2>
   <Box>
     <Text fontSize="xxxxlarge">💃</Text>
-  </Box>
+  </Box2>
 </Flex>
 <Flex justifyContent="center" mb="u4" bg="ui1">
   <Box>
     <Text fontSize="xxxxlarge">🕺</Text>
-  </Box>
+  </Box2>
   <Box>
     <Text fontSize="xxxxlarge">🎶</Text>
-  </Box>
+  </Box2>
   <Box>
     <Text fontSize="xxxxlarge">💃</Text>
-  </Box>
+  </Box2>
 </Flex>
 <Flex justifyContent="flex-end" mb="u4" bg="ui1">
   <Box>
     <Text fontSize="xxxxlarge">🕺</Text>
-  </Box>
+  </Box2>
   <Box>
     <Text fontSize="xxxxlarge">🎶</Text>
-  </Box>
+  </Box2>
   <Box>
     <Text fontSize="xxxxlarge">💃</Text>
-  </Box>
+  </Box2>
 </Flex>
 ```
 
@@ -370,24 +370,24 @@ Using the `alignSelf` property on a `<FlexItem />` allows you to override the th
 ```jsx
 <Flex height="200px" bg="key">
   <FlexItem alignSelf="flex-start">
-    <Box m="u3" p="u5" bg="ui1">
+    <Box2 m="u3" p="u5" bg="ui1">
       Flex Start
-    </Box>
+    </Box2>
   </FlexItem>
   <FlexItem alignSelf="flex-end">
-    <Box m="u3" p="u5" bg="ui1">
+    <Box2 m="u3" p="u5" bg="ui1">
       Flex End
-    </Box>
+    </Box2>
   </FlexItem>
   <FlexItem alignSelf="center">
-    <Box m="u3" p="u5" bg="ui1">
+    <Box2 m="u3" p="u5" bg="ui1">
       Center
-    </Box>
+    </Box2>
   </FlexItem>
   <FlexItem alignSelf="baseline">
-    <Box m="u3" p="u5" bg="ui1">
+    <Box2 m="u3" p="u5" bg="ui1">
       Baseline
-    </Box>
+    </Box2>
   </FlexItem>
 </Flex>
 ```
@@ -401,56 +401,56 @@ By default flex items are laid our in source order, the `order` property on a `<
 ```jsx
 <Flex bg="ui1" mb="u5">
   <FlexItem>
-    <Box m="u3" p="u5" bg="ui2">
+    <Box2 m="u3" p="u5" bg="ui2">
       0
-    </Box>
+    </Box2>
   </FlexItem>
   <FlexItem>
-    <Box m="u3" p="u5" bg="ui1">
+    <Box2 m="u3" p="u5" bg="ui1">
       1
-    </Box>
+    </Box2>
   </FlexItem>
   <FlexItem>
-    <Box m="u3" p="u5" bg="ui3">
+    <Box2 m="u3" p="u5" bg="ui3">
       2
-    </Box>
+    </Box2>
   </FlexItem>
   <FlexItem>
-    <Box m="u3" p="u5" bg="ui5" color="inverseOn">
+    <Box2 m="u3" p="u5" bg="ui5" color="inverseOn">
       3
-    </Box>
+    </Box2>
   </FlexItem>
   <FlexItem>
-    <Box m="u3" p="u5" bg="ui4">
+    <Box2 m="u3" p="u5" bg="ui4">
       4
-    </Box>
+    </Box2>
   </FlexItem>
 </Flex>
 <Flex bg="ui1">
   <FlexItem>
-    <Box m="u3" p="u5" bg="ui2">
+    <Box2 m="u3" p="u5" bg="ui2">
       0
-    </Box>
+    </Box2>
   </FlexItem>
   <FlexItem order="2">
-    <Box m="u3" p="u5" bg="ui1">
+    <Box2 m="u3" p="u5" bg="ui1">
       1
-    </Box>
+    </Box2>
   </FlexItem>
   <FlexItem order="1">
-    <Box m="u3" p="u5" bg="ui3">
+    <Box2 m="u3" p="u5" bg="ui3">
       2
-    </Box>
+    </Box2>
   </FlexItem>
   <FlexItem>
-    <Box m="u3" p="u5" bg="ui5" color="inverseOn">
+    <Box2 m="u3" p="u5" bg="ui5" color="inverseOn">
       3
-    </Box>
+    </Box2>
   </FlexItem>
   <FlexItem order="-1">
-    <Box m="u3" p="u5" bg="ui4">
+    <Box2 m="u3" p="u5" bg="ui4">
       4
-    </Box>
+    </Box2>
   </FlexItem>
 </Flex>
 ```
@@ -466,24 +466,24 @@ The `flexBasis` property defines the flex-items' default size before the remaini
 ```jsx
 <Flex>
   <FlexItem flexBasis="20%">
-    <Box p="u3" m="u3" bg="ui4">
+    <Box2 p="u3" m="u3" bg="ui4">
       I am 20% of container
-    </Box>
+    </Box2>
   </FlexItem>
   <FlexItem flexBasis="5.5rem">
-    <Box p="u3" m="u3" bg="ui3">
+    <Box2 p="u3" m="u3" bg="ui3">
       I am 5.5rem of container
-    </Box>
+    </Box2>
   </FlexItem>
   <FlexItem flexBasis="150px">
-    <Box p="u3" m="u3" bg="ui2">
+    <Box2 p="u3" m="u3" bg="ui2">
       I am 150px of container
-    </Box>
+    </Box2>
   </FlexItem>
   <FlexItem>
-    <Box p="u3" m="u3" bg="ui1">
+    <Box2 p="u3" m="u3" bg="ui1">
       I am sized to my content
-    </Box>
+    </Box2>
   </FlexItem>
 </Flex>
 ```
@@ -503,19 +503,19 @@ Below we set the flex grow value of the first flex item to `2` so it will take u
 ```jsx
 <Flex>
   <FlexItem flex="2">
-    <Box p="u3" bg="ui4">
+    <Box2 p="u3" bg="ui4">
       Flex: 2
-    </Box>
+    </Box2>
   </FlexItem>
   <FlexItem flex="1">
-    <Box p="u3" bg="ui3">
+    <Box2 p="u3" bg="ui3">
       Flex: 1
-    </Box>
+    </Box2>
   </FlexItem>
   <FlexItem flex="1">
-    <Box p="u3" bg="ui2">
+    <Box2 p="u3" bg="ui2">
       Flex: 1
-    </Box>
+    </Box2>
   </FlexItem>
 </Flex>
 ```
@@ -527,19 +527,19 @@ Below we have a flex container with a set width of 500px and each child's `flex-
 ```jsx
 <Flex width="500px">
   <FlexItem flex="1 0 200px">
-    <Box p="u3" bg="ui4">
+    <Box2 p="u3" bg="ui4">
       No Shrink
-    </Box>
+    </Box2>
   </FlexItem>
   <FlexItem flex="1 1 200px">
-    <Box p="u3" bg="ui3">
+    <Box2 p="u3" bg="ui3">
       I'll shrink
-    </Box>
+    </Box2>
   </FlexItem>
   <FlexItem flex="1 1 200px">
-    <Box p="u3" bg="ui2">
+    <Box2 p="u3" bg="ui2">
       I'll shrink
-    </Box>
+    </Box2>
   </FlexItem>
 </Flex>
 ```

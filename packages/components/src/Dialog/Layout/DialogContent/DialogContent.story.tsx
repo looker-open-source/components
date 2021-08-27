@@ -25,23 +25,23 @@
  */
 
 import React from 'react'
-import { Box, Paragraph } from '../../..'
+import { Box2, Paragraph } from '../../..'
 import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
 import { DialogContent } from './DialogContent'
 
 export const Basic = () => (
   <DialogContent>
-    <Box height="2rem" bg="rebeccapurple" />
+    <Box2 height="2rem" bg="rebeccapurple" />
   </DialogContent>
 )
 
 export const Overflow = () => (
-  <Box height="10rem" display="flex" bg="white" p="u5">
+  <Box2 height="10rem" display="flex" bg="white" p="u5">
     <DialogContent>
       <Paragraph>Scroll down here...</Paragraph>
-      <Box height="12rem" bg="rebeccapurple" />
+      <Box2 height="12rem" bg="rebeccapurple" />
     </DialogContent>
-  </Box>
+  </Box2>
 )
 
 export default {

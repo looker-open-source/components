@@ -594,7 +594,7 @@ The `bulk` prop is used to configure a `DataTable`'s control bar. The object pas
 
   return (
     <Flex flexDirection="column" alignItems="center">
-      <Box width="100%" mb="u3">
+      <Box2 width="100%" mb="u3">
         <DataTable
           bulk={bulkActionsConfig}
           caption="Cheeses example"
@@ -608,7 +608,7 @@ The `bulk` prop is used to configure a `DataTable`'s control bar. The object pas
         >
           {pageItems}
         </DataTable>
-      </Box>
+      </Box2>
       <Pagination
         current={page}
         pages={data.length / perPageCount}
