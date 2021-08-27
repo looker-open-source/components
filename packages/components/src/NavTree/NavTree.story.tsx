@@ -39,12 +39,7 @@ export default {
 
 export const Basic = () => (
   <NavList>
-    <NavTree
-      defaultOpen
-      label="Cheeses"
-      icon={<Folder />}
-      indicatorLabel="Cheeses Tree Indicator"
-    >
+    <NavTree defaultOpen label="Cheeses" icon={<Folder />}>
       <NavTreeItem parentIcon>Cheddar</NavTreeItem>
     </NavTree>
   </NavList>

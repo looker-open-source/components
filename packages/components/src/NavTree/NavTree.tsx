@@ -268,7 +268,7 @@ const NavTreeLayout = ({
  */
 export const INDICATOR_SPACER = '8px'
 
-export const NavTree = styled(NavTreeLayout)`
+export const NavTree = styled(NavTreeLayout)<NavTreeProps>`
   ${AccordionIndicator} {
     padding-left: ${INDICATOR_SPACER};
     ${({ icon, theme }) =>
