@@ -1,10 +1,13 @@
 {
-  "extends": "./tsconfig.common.json",
+  "extends": "./tsconfig.json",
   "compilerOptions": {
     "declaration": true,
-    "emitDeclarationOnly": true
+    "noEmit": false,
+    "emitDeclarationOnly": true,
+    "paths": {}
   },
   "exclude": [
+    "*.js",
     "**/__mocks__/**",
     "**/*.shots.ts",
     "**/*.shots.tsx",

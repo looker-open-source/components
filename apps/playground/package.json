@@ -2,12 +2,6 @@
   "name": "playground",
   "version": "1.4.0",
   "license": "MIT",
-  "author": "Looker",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/looker-open-source/components",
-    "directory": "packages/components"
-  },
   "private": true,
   "scripts": {
     "develop": "webpack serve --hot --host=0.0.0.0 --port 3000 --disable-host-check --config webpack.config.js",
@@ -32,7 +26,6 @@
     "babel-loader-exclude-node-modules-except": "^1.2.1",
     "core-js": "^3.12.1",
     "html-webpack-plugin": "^4.5.2",
-    "tsconfig-paths-webpack-plugin": "^3.5.1",
     "webpack": "4.46.0",
     "webpack-bundle-analyzer": "^4.4.1",
     "webpack-cli": "^4.6.0",

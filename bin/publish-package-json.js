@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 /*
 
  MIT License
@@ -24,48 +26,43 @@
 
  */
 
-const path = require('path')
-const HtmlWebPackPlugin = require('html-webpack-plugin')
-const BundleAnalyzerPlugin =
-  require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const fs = require('fs')
 
-const excludeNodeModulesExcept = require('babel-loader-exclude-node-modules-except')
+const directory = process.cwd().split('/').slice(-2).join('/')
+const dev = require(`${process.cwd()}/package.json`)
 
-module.exports = {
-  devtool: 'source-map',
-  entry: {
-    app: ['core-js/stable', './src/index.tsx'],
-  },
-  mode: 'development',
-  module: {
-    rules: [
-      {
-        loader: 'babel-loader',
-        test: /\.tsx?$/,
-      },
-      {
-        exclude: [
-          excludeNodeModulesExcept([
-            '@looker/*',
-            'react-hotkeys-hook', // ditto
-          ]),
-        ],
-        loader: 'babel-loader',
-        test: /\.js$/,
-      },
-    ],
-  },
-  output: {
-    filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-  },
-  plugins: [
-    new BundleAnalyzerPlugin({
-      analyzerMode: process.env.ANALYZE_MODE || 'disabled',
-    }),
-    new HtmlWebPackPlugin({ template: 'src/template.html' }),
-  ],
-  resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
+let draft = { ...dev }
+const removeKeys = [
+  'devDependencies',
+  'eslintConfig',
+  'files',
+  'gitHead',
+  'main',
+  'scripts',
+]
+removeKeys.map((key) => {
+  delete draft[key]
+})
+
+const commonAdditions = {
+  author: 'Looker',
+  main: 'cjs/index.js',
+  module: 'index.js',
+  types: 'index.d.ts',
+  repository: {
+    type: 'git',
+    url: 'https://github.com/looker-open-source/components',
+    directory,
   },
 }
+
+draft = { ...draft, ...commonAdditions }
+
+fs.writeFile(
+  'lib/package.json',
+  JSON.stringify(draft, false, '\t'),
+  function (err) {
+    if (err) throw err
+    console.log('complete')
+  }
+)

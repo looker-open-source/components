@@ -25,9 +25,13 @@
  */
 
 import { screen } from '@testing-library/react'
-import { renderWithTheme } from '@looker/components-test-utils'
 import React from 'react'
 import styled from 'styled-components'
+/**
+ * This import path is ill-advised but acceptable since this
+ * is a test-only import and prevents a package-dependency loop
+ */
+import { renderWithTheme } from '../../../components-test-utils/src'
 import type { UserSelectProps } from './userSelect'
 import { userSelect } from './userSelect'
 

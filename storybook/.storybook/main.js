@@ -25,7 +25,6 @@
  */
 
 /* eslint-disable @typescript-eslint/no-var-requires */
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 const excludeNodeModulesExcept = require('babel-loader-exclude-node-modules-except')
 
 const defaultPreviewHead = `
@@ -83,7 +82,6 @@ ${defaultPreviewHead}
       test: /\.js$/,
     })
     config.resolve.extensions.push('.ts', '.tsx')
-    config.resolve.plugins = [new TsconfigPathsPlugin()]
     return config
   },
 }

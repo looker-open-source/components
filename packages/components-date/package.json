@@ -2,18 +2,8 @@
   "name": "@looker/components-date",
   "license": "MIT",
   "version": "2.1.2",
-  "main": "lib/cjs/index.js",
-  "module": "lib/index.js",
-  "types": "lib/index.d.ts",
-  "files": [
-    "lib"
-  ],
+  "main": "src/index.ts",
   "sideEffects": false,
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/looker-open-source/components-date",
-    "directory": "packages/components-date"
-  },
   "publishConfig": {
     "access": "public"
   },
