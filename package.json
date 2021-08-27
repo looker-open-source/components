@@ -27,6 +27,7 @@
     "build:cjs": "yarn lerna exec --scope '@looker/*' --stream 'babel src --env-name cjs --root-mode upward --out-dir lib/cjs --source-maps --extensions .ts,.tsx,.js --no-comments'",
     "build:esm": "yarn lerna exec --scope '@looker/*' --stream 'babel src --env-name esm --root-mode upward --out-dir lib --source-maps --extensions .ts,.tsx,.js --no-comments'",
     "build:ts": "yarn lerna exec --stream --scope '@looker/*' --sort 'tsc -b tsconfig.build.json'",
+    "postbuild":  "yarn lerna exec --scope '@looker/*' --stream '../../bin/publish-package-json.js'",
     "bumpversion": "yarn lerna version --conventional-commits --no-git-tag-version --no-push --yes",
     "clean": "run-p -c clean:*",
     "clean:build": "rm -Rf packages/*/lib",
@@ -52,8 +53,10 @@
     "test:image-snapshots": "yarn workspace storybook snapshots",
     "test:image-snapshots-update": "yarn workspace storybook snapshots -u",
     "storybook": "yarn workspace storybook develop",
-    "website-canary": "./config/website-canary.sh",
-    "website-latest": "./config/website-latest.sh"
+    "release-canary": "./bin/release-canary.sh",
+    "release-latest": "./bin/release-latest.sh",
+    "website-canary": "./bin/website-canary.sh",
+    "website-latest": "./bin/website-latest.sh"
   },
   "devDependencies": {
     "@babel/cli": "^7.14.5",

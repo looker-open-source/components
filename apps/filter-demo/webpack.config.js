@@ -24,14 +24,10 @@
 
  */
 
-/* eslint-disable @typescript-eslint/no-var-requires */
-
 const path = require('path')
 
 const BundleAnalyzerPlugin =
   require('webpack-bundle-analyzer').BundleAnalyzerPlugin
-
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 
 const PATHS = {
   app: path.join(__dirname, 'src/index.tsx'),
@@ -61,6 +57,5 @@ module.exports = {
   ],
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
-    plugins: [new TsconfigPathsPlugin()],
   },
 }

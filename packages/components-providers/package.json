@@ -1,24 +1,14 @@
 {
   "name": "@looker/components-providers",
   "license": "MIT",
-  "version": "1.4.4",
-  "main": "lib/cjs/index.js",
-  "module": "lib/index.js",
-  "types": "lib/index.d.ts",
-  "files": [
-    "lib"
-  ],
+  "version": "1.5.0-alpha.0",
+  "main": "src/index.ts",
   "sideEffects": false,
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/looker-open-source/components",
-    "directory": "packages/components-providers"
-  },
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@looker/design-tokens": "^2.3.1",
+    "@looker/design-tokens": "^2.4.0-alpha.0",
     "i18next": "20.3.1",
     "react-helmet-async": "^1.0.9",
     "react-i18next": "11.8.15",

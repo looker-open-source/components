@@ -25,13 +25,10 @@
  */
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const ignoreProps = require('./config/i18nIgnoredProps.js')
+const ignoreProps = require('./packages/eslint-config-oss/src/i18nIgnoredProps.js')
 
 module.exports = {
-  extends: [
-    '@looker/eslint-config-oss',
-    '@looker/eslint-config-oss/license-header',
-  ],
+  extends: ['@looker/eslint-config-oss'],
   overrides: [
     {
       files: ['packages/icons/src/**/*.tsx'],

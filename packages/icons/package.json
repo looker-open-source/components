@@ -1,19 +1,9 @@
 {
   "name": "@looker/icons",
   "license": "MIT",
-  "version": "1.4.2",
-  "main": "lib/cjs/index.js",
-  "module": "lib/index.js",
-  "types": "lib/index.d.ts",
-  "files": [
-    "lib"
-  ],
+  "version": "1.5.0-alpha.0",
+  "main": "src/index.ts",
   "sideEffects": false,
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/looker-open-source/components",
-    "directory": "packages/icons"
-  },
   "publishConfig": {
     "access": "public"
   },

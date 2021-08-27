@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.4.0-alpha.0](https://github.com/looker-open-source/components/compare/@looker/components@2.3.1...@looker/components@2.4.0-alpha.0) (2021-08-27)
+
+
+### Features
+
+* NPM output no longer includes /lib ([1767d54](https://github.com/looker-open-source/components/commit/1767d54820fa18c2f08ea2b6598386ee7e686ec9))
+
+
+
+
+
 ## [2.3.1](https://github.com/looker-open-source/components/compare/@looker/components@2.3.0...@looker/components@2.3.1) (2021-08-24)
 
 

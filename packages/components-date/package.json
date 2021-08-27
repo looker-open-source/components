@@ -1,25 +1,15 @@
 {
   "name": "@looker/components-date",
   "license": "MIT",
-  "version": "2.1.2",
-  "main": "lib/cjs/index.js",
-  "module": "lib/index.js",
-  "types": "lib/index.d.ts",
-  "files": [
-    "lib"
-  ],
+  "version": "2.2.0-alpha.0",
+  "main": "src/index.ts",
   "sideEffects": false,
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/looker-open-source/components-date",
-    "directory": "packages/components-date"
-  },
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@looker/components": "^2.3.1",
-    "@looker/design-tokens": "^2.3.1",
+    "@looker/components": "^2.4.0-alpha.0",
+    "@looker/design-tokens": "^2.4.0-alpha.0",
     "@styled-icons/material-rounded": "^10.28.0",
     "date-fns": "^2.21.1",
     "date-fns-tz": "^1.0.12",
@@ -29,7 +19,7 @@
     "react-i18next": "11.8.15"
   },
   "devDependencies": {
-    "@looker/components-test-utils": "^1.4.4",
+    "@looker/components-test-utils": "^1.5.0-alpha.0",
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^13.1.5",
