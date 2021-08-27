@@ -29,7 +29,7 @@ import startCase from 'lodash/startCase'
 import { IconButton, Space, Grid } from '@looker/components'
 import { useLocation } from '@reach/router'
 import { Menu } from '@styled-icons/material/Menu'
-import type { FC } from 'react';
+import type { FC } from 'react'
 import React from 'react'
 import styled from 'styled-components'
 import { Search } from '../Search'

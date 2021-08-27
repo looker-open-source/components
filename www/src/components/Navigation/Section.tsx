@@ -24,7 +24,7 @@
 
  */
 
-import type { FC } from 'react';
+import type { FC } from 'react'
 import React from 'react'
 import { useLocation } from '@reach/router'
 import { Accordion2, Heading } from '@looker/components'

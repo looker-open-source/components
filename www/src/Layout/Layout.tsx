@@ -24,7 +24,7 @@
 
  */
 
-import type { FC} from 'react';
+import type { FC } from 'react'
 import React, { useEffect, useState } from 'react'
 import {
   ComponentsProvider,
@@ -45,12 +45,6 @@ const storage =
     ? sessionStorage
     : { getItem: () => '{}', setItem: () => undefined }
 
-const getThemeFromStorage: undefined | ThemeCustomizations = () =>
-  JSON.parse(storage.getItem('custom_theme'))
-
-const setThemeInStorage = (theme: ThemeCustomizations) =>
-  storage.setItem('custom_theme', JSON.stringify(theme))
-
 const GatsbyOverrides = createGlobalStyle`
   body {
     height: 100vh;
@@ -67,29 +61,17 @@ export const Layout: FC = ({ children }) => {
   const [showNavigation, setNavigation] = useState(true)
   const toggleNavigation = () => setNavigation(!showNavigation)
 
-  const [customTheme, updateTheme] = useState<undefined | ThemeCustomizations>(
-    getThemeFromStorage()
-  )
-
-  useEffect(() => {
-    setThemeInStorage(customTheme)
-  }, [customTheme])
-
   return (
-    <ComponentsProvider loadGoogleFonts themeCustomizations={customTheme}>
+    <ComponentsProvider loadGoogleFonts>
       <GatsbyOverrides />
       <MDXProvider components={MDXComponents}>
         <Page fixed>
           <Header height="4rem">
-            <HeaderContent
-              updateTheme={updateTheme}
-              hasCustomTheme={Boolean(customTheme)}
-              toggleNavigation={toggleNavigation}
-            />
+            <HeaderContent toggleNavigation={toggleNavigation} />
           </Header>
           <ComponentsLayout hasAside>
             {showNavigation && <Navigation width="18rem" />}
-            <Section py="xlarge" px="xxxlarge" as="main">
+            <Section py="xlarge" px="xxxlarge" main>
               {children}
             </Section>
           </ComponentsLayout>

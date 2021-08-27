@@ -34,10 +34,6 @@ module.exports = {
   ],
   overrides: [
     {
-      files: ['www/**/*.ts', 'www/**/*.tsx'],
-      rules: {},
-    },
-    {
       files: ['packages/icons/src/**/*.tsx'],
       rules: {
         'prettier/prettier': 'off',

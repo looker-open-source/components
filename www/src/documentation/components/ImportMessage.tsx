@@ -24,7 +24,7 @@
 
  */
 
-import type { FC } from 'react';
+import type { FC } from 'react'
 import React from 'react'
 import { Code, Link, MessageBar } from '@looker/components'
 
@@ -32,13 +32,9 @@ export const ImportMessage: FC<{ packageName: string }> = ({
   children,
   packageName,
 }) => (
-  <MessageBar canDismiss={false} intent="inform" mb="medium">
-    Import{' '}
-    <Code fontWeight="bold" fontSize="inherit">
-      {children}
-    </Code>{' '}
-    from{' '}
-    <Code fontSize="inherit">
+  <MessageBar noActions intent="inform" mb="medium">
+    Import <Code fontWeight="bold">{children}</Code> from{' '}
+    <Code>
       <Link
         href={`https://www.npmjs.com/package/@looker/${packageName}`}
         isExternal
@@ -46,6 +42,6 @@ export const ImportMessage: FC<{ packageName: string }> = ({
       >
         @looker/{packageName}
       </Link>
-    </Code>{' '}
+    </Code>
   </MessageBar>
 )

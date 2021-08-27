@@ -24,10 +24,8 @@
 
  */
 
-import type { FC } from 'react';
+import type { FC } from 'react'
 import React from 'react'
 import { ListItem } from '@looker/components'
 
-export const Li: FC = (props) => (
-  <ListItem lineHeight="medium" p="none" pl="xxsmall" {...props} />
-)
+export const Li: FC = (props) => <li {...props} />
