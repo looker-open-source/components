@@ -29,10 +29,9 @@ import map from 'lodash/map'
 import startCase from 'lodash/startCase'
 import { useLocation } from '@reach/router'
 import styled from 'styled-components'
-import type { FC } from 'react';
+import type { FC } from 'react'
 import React from 'react'
-import type {
-  AsideProps} from '@looker/components';
+import type { AsideProps } from '@looker/components'
 import {
   Aside,
   Heading,

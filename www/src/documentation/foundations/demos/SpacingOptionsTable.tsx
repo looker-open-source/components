@@ -24,6 +24,7 @@
 
  */
 
+import { convertRemToPx } from '@looker/design-tokens'
 import React from 'react'
 import {
   Code,
@@ -36,7 +37,6 @@ import {
   theme,
 } from '@looker/components'
 import { DocTable } from '../../../components'
-import { convertRemToPx } from '@looker/design-tokens'
 
 const spacingExamples = [
   { label: 'xxxsmall', px: '2', rem: '0.125rem' },
