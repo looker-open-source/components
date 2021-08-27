@@ -134,7 +134,8 @@ export const FieldInline = styled(FieldInlineLayout)`
     font-weight: normal;
     grid-column: 2;
     grid-row: 1;
-    width: fit-content;
+    overflow: hidden;
+    width: 100%;
     /* stylelint-disable */
     -ms-grid-column: 2;
     -ms-grid-column-span: 1;
