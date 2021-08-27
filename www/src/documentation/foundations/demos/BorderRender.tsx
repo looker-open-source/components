@@ -74,7 +74,7 @@ const Example: FC<{ border: BorderType }> = ({
       {label} <Code fontSize="medium">{color}</Code>
     </Heading>
     {examples.map((example) => (
-      <BorderExample bg={example} key={example} color={textColor}>
+      <BorderExample bg={example} key={example} color={textColor} border="ui3">
         <Code>{example}</Code>
         <BorderDividerExample bg={color} />
       </BorderExample>
@@ -84,8 +84,6 @@ const Example: FC<{ border: BorderType }> = ({
 
 const BorderExample = styled(Box2)`
   align-items: center;
-  border: 1px solid;
-  border-color: ${({ theme }) => theme.colors.ui3};
   display: flex;
   justify-content: space-between;
   padding: ${({ theme }) => theme.space.u5};

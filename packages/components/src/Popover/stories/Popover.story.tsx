@@ -423,7 +423,7 @@ const MovingTargetInner = () => {
       {popover}
       <Box2
         mt={value ? 'xxxlarge' : 'medium'}
-        border="2px solid"
+        border
         width={150}
         p="u3"
         cursor="pointer"

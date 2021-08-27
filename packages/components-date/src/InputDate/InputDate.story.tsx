@@ -63,7 +63,7 @@ export const Controlled = () => {
   return (
     <Space gap="u10">
       <InputDate defaultValue={selectedDate} onChange={handleChange} />
-      <Box2 p="u5" height="100%" borderLeft="1px solid #ccc">
+      <Box2 p="u5" height="100%" borderLeft>
         <Heading>Selected:</Heading>
         <Text color="text2">
           <DateFormat>{selectedDate}</DateFormat>
