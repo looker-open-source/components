@@ -58,7 +58,6 @@
     "eslint-plugin-standard": "*",
     "eslint-plugin-testing-library": "*",
     "react-hot-loader": "^4.12.20",
-    "tsconfig-paths-webpack-plugin": "^3.5.1",
     "typescript": "*",
     "webpack": "*",
     "webpack-bundle-analyzer": "*",

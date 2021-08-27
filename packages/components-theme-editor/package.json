@@ -2,19 +2,12 @@
   "name": "components-theme-editor",
   "license": "MIT",
   "version": "1.4.0",
-  "main": "lib/cjs/index.js",
-  "module": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "src/index.ts",
   "files": [
     "lib"
   ],
   "private": true,
   "sideEffects": false,
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/looker-open-source/components",
-    "directory": "packages/theme-editor"
-  },
   "dependencies": {
     "@looker/components": "*",
     "@looker/design-tokens": "*",

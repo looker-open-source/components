@@ -26,8 +26,12 @@
 
 import React from 'react'
 import { screen } from '@testing-library/react'
-import { renderWithTheme } from '@looker/components-test-utils'
 import styled from 'styled-components'
+/**
+ * This import path is ill-advised but acceptable since this
+ * is a test-only import and prevents a package-dependency loop
+ */
+import { renderWithTheme } from '../../../../components-test-utils/src'
 import { intentUIBlend } from './intentUIBlend'
 
 describe('intentUIBlend', () => {

@@ -25,10 +25,14 @@
  */
 
 import { screen } from '@testing-library/react'
-import { renderWithTheme } from '@looker/components-test-utils'
 import type { FC } from 'react'
 import React, { useContext } from 'react'
 import styled, { ThemeContext, ThemeProvider } from 'styled-components'
+/**
+ * This import path is ill-advised but acceptable since this
+ * is a test-only import and prevents a package-dependency loop
+ */
+import { renderWithTheme } from '../../../components-test-utils/src'
 import { reset } from './reset'
 
 describe('reset', () => {

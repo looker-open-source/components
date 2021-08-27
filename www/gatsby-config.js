@@ -42,7 +42,6 @@ module.exports = {
     `gatsby-plugin-typescript`,
     'gatsby-plugin-react-helmet',
     `gatsby-plugin-styled-components`,
-    `gatsby-plugin-tsconfig-paths`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
