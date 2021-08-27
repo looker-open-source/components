@@ -24,7 +24,7 @@
 
  */
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useClickable, useToggle, useWrapEvent } from '../utils'
 import { Accordion2Content } from './Accordion2Content'
 import { accordionDefaults, accordionLeftDefaults } from './accordionDefaults'
@@ -59,7 +59,12 @@ export const useAccordion2 = ({
   toggleOpen: propsToggleOpen,
   ...props
 }: Accordion2Props) => {
-  const { value, toggle } = useToggle(!!defaultOpen)
+  const { change, value, toggle } = useToggle()
+
+  useEffect(() => {
+    defaultOpen !== undefined && change(defaultOpen)
+  }, [])
+
   const isOpen = propsIsOpen !== undefined ? propsIsOpen : value
 
   const onClick = useWrapEvent(() => {
