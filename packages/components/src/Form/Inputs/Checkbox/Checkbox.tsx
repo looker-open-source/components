@@ -72,11 +72,23 @@ export const Checkbox = styled(
     } = props
     const [isChecked, setIsChecked] = useState<MixedBoolean>(!!defaultChecked)
 
+    const checkboxColor = (checked: boolean, error: boolean) => {
+      if (error) {
+        return 'critical'
+      } else if (checked) {
+        return 'key'
+      } else {
+        return 'neutral'
+      }
+    }
+
     const {
       callbacks,
       className: rippleClassName,
       style: rippleStyle,
-    } = useRipple({ color: isChecked ? 'key' : 'neutral' })
+    } = useRipple({
+      color: checkboxColor(isChecked === true, validationType === 'error'),
+    })
 
     const rippleHandlers = useRippleHandlers(
       callbacks,
@@ -160,12 +172,6 @@ export const Checkbox = styled(
 
   input:not(:checked) + ${FauxCheckbox} {
     color: ${({ theme }) => theme.colors.keyText};
-  }
-
-  input:focus + ${FauxCheckbox} {
-    border-color: ${({ theme }) => theme.colors.keyFocus};
-    box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.keyAccent};
-    outline: none;
   }
 
   input:disabled + ${FauxCheckbox} {
