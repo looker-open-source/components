@@ -64,6 +64,7 @@ const NavTreeLayout = ({
   onMouseEnter,
   onMouseLeave,
   toggleOpen: propsToggleOpen,
+  truncate = true,
   ...restProps
 }: NavTreeProps) => {
   /**
@@ -107,7 +108,7 @@ const NavTreeLayout = ({
     ...treeItemInnerProps,
     children: label,
     icon,
-    truncate: true,
+    truncate,
   })
   let accordionProps: ControlledOrUncontrolled = {
     defaultOpen,
