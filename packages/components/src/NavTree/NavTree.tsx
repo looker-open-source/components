@@ -26,7 +26,7 @@
 import { ArrowDropDown } from '@styled-icons/material/ArrowDropDown'
 import { ArrowRight } from '@styled-icons/material/ArrowRight'
 import styled from 'styled-components'
-import type { KeyboardEvent, MouseEvent } from 'react'
+import type { FocusEvent, KeyboardEvent, MouseEvent } from 'react'
 import React, { cloneElement, useContext } from 'react'
 import type { ControlledOrUncontrolled } from '../Accordion2/controlTypes'
 import { partitionTreeProps, useTreeHandlers } from '../Tree/utils'
@@ -38,6 +38,7 @@ import {
   createSafeRel,
   HoverDisclosureContext,
   partitionAriaProps,
+  useFocusVisible,
   useWrapEvent,
 } from '../utils'
 import { List } from '../List'
@@ -143,15 +144,33 @@ const NavTreeLayout = ({
     ...accordionProps,
   })
 
+  /**
+   * In the event of indicator only toggle mode being enabled, we need two separate
+   * sets of focus visible handlers (i.e. one for the content container and one for the
+   * indicator itself).
+   *
+   * If indicator only toggle mode is NOT enabled, the focusVisible state from this useFocusVisible
+   * call should NOT need to be used.
+   */
+  const {
+    onBlur: onContentBlur,
+    onKeyUp: onContentKeyUp,
+    focusVisible: contentFocusVisible,
+  } = useFocusVisible({ onBlur, onKeyUp })
+
   const {
     indicator,
     children: disclosureLabel,
+    focusVisible: disclosureFocusVisible,
+    onBlur: onBlurDisclosureToggle,
     onClick: onClickDisclosureToggle,
     onKeyUp: onKeyUpDisclosureToggle,
     ...disclosureDomProps
   } = disclosureProps
 
   const indicatorToggleOnlyProps = {
+    focusVisible: disclosureFocusVisible,
+    onBlur: onBlurDisclosureToggle,
     onClick: onClickDisclosureToggle,
     onKeyUp: onKeyUpDisclosureToggle,
     tabIndex: -1,
@@ -160,18 +179,20 @@ const NavTreeLayout = ({
     ...(isIndicatorToggleOnly ? indicatorToggleOnlyProps : undefined),
   })
 
+  const handleContentBlur = useWrapEvent((event: FocusEvent<HTMLElement>) => {
+    if (!isIndicatorToggleOnly && onBlurDisclosureToggle)
+      onBlurDisclosureToggle(event)
+  }, onContentBlur)
   const handleContentClick = useWrapEvent((event: MouseEvent<HTMLElement>) => {
-    !isIndicatorToggleOnly &&
-      onClickDisclosureToggle &&
+    if (!isIndicatorToggleOnly && onClickDisclosureToggle)
       onClickDisclosureToggle(event)
   }, onClick)
   const handleContentKeyUp = useWrapEvent(
     (event: KeyboardEvent<HTMLElement>) => {
-      !isIndicatorToggleOnly &&
-        onKeyUpDisclosureToggle &&
+      if (!isIndicatorToggleOnly && onKeyUpDisclosureToggle)
         onKeyUpDisclosureToggle(event)
     },
-    onKeyUp
+    onContentKeyUp
   )
 
   const statefulProps = {
@@ -186,8 +207,12 @@ const NavTreeLayout = ({
       {isIndicatorToggleOnly && renderedIndicator}
       <NavTreeItemContent
         aria-selected={selected}
+        focusVisible={
+          isIndicatorToggleOnly ? contentFocusVisible : disclosureFocusVisible
+        }
         href={href}
         itemRole={isIndicatorToggleOnly ? 'link' : 'none'}
+        onBlur={handleContentBlur}
         /**
          * useAccordion2 would normally just wrap props' onClick and onKeyup
          * with open state toggling, but because we only want the indicator to handle
@@ -201,7 +226,6 @@ const NavTreeLayout = ({
         {...ariaProps}
         {...contentHandlers}
         {...disclosureDomProps}
-        focusVisible={false} // disable inherent focus style
       >
         {!isIndicatorToggleOnly && renderedIndicator}
         {disclosureLabel}
@@ -251,10 +275,5 @@ export const NavTree = styled(NavTreeLayout)`
       `margin-right: ${
         theme.space[listItemDimensions(theme.defaults.density).iconGap]
       };`}
-  }
-
-  ${AccordionIndicator}:focus, ${NavTreeItemContent}:focus {
-    box-shadow: inset 0 0 0 2px ${({ theme }) => theme.colors.keyFocus};
-    outline: none;
   }
 `

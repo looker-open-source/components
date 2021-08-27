@@ -39,6 +39,18 @@ export const AccordionIndicator = styled.div<AccordionIndicatorProps>`
   align-items: center;
   display: flex;
   justify-content: center;
+  outline: none;
+
+  ${({ focusVisible, theme }) => {
+    return (
+      focusVisible &&
+      `
+        & {
+          box-shadow: inset 0 0 0 2px ${theme.colors.keyFocus};
+        }
+      `
+    )
+  }}
 
   ${({ density, indicatorPosition, theme: { space } }) =>
     indicatorPosition === 'left'
