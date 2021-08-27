@@ -29,7 +29,7 @@ import startCase from 'lodash/startCase'
 import React, { useEffect, useState } from 'react'
 import { graphql, navigate, useStaticQuery } from 'gatsby'
 import { useFlexSearch } from 'react-use-flexsearch'
-import type { SelectOptionObject } from '@looker/components';
+import type { SelectOptionObject } from '@looker/components'
 import { InputSearch } from '@looker/components'
 import { Code } from '@styled-icons/material/Code'
 import { InsertDriveFile } from '@styled-icons/material/InsertDriveFile'

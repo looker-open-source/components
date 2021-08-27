@@ -24,10 +24,10 @@
 
  */
 
-import type { Language } from 'prism-react-renderer';
+import type { Language } from 'prism-react-renderer'
 import Highlight, { defaultProps } from 'prism-react-renderer'
 import styled from 'styled-components'
-import type { FC } from 'react';
+import type { FC } from 'react'
 import React from 'react'
 import { prismTheme } from './prismTheme'
 

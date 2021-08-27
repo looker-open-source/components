@@ -28,6 +28,7 @@ import React from 'react'
 import type { Story } from '@storybook/react/types-6-0'
 import { options } from '../../../__mocks__/CheckboxRadio'
 import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
+import { Box2 } from '../../../Layout'
 import type { FieldCheckboxGroupProps } from './FieldCheckboxGroup'
 import { FieldCheckboxGroup } from './FieldCheckboxGroup'
 
@@ -85,6 +86,23 @@ ErrorInline.args = {
     type: 'error',
   },
 }
+
+const longOption = {
+  label: `All legislative Powers herein granted shall be vested in a Congress of the
+  United States, which shall consist of a Senate and House of
+  Representatives.`,
+  value: 'long',
+}
+
+export const Truncate = () => (
+  <Box2 width={300}>
+    <FieldCheckboxGroup
+      defaultValue={defaultValueCheckbox}
+      label="Cheeses"
+      options={[longOption, ...options]}
+    />
+  </Box2>
+)
 
 // export const Controlled = () => 'TODO'
 

@@ -30,7 +30,7 @@ import { Warning } from '@styled-icons/material/Warning'
 import { ExpandLess } from '@styled-icons/material-rounded/ExpandLess'
 import { ExpandMore } from '@styled-icons/material-rounded/ExpandMore'
 import type { PrismTheme, Language } from 'prism-react-renderer'
-import type { FC, ReactNode} from 'react';
+import type { FC, ReactNode } from 'react'
 import React, { useState, useCallback } from 'react'
 import CopyToClipboard from 'react-copy-to-clipboard'
 import {
