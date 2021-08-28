@@ -74,6 +74,7 @@ export const LeftNav = () => (
           defaultOpen
           label="Elliot's Sick Board"
           href="https://google.com"
+          indicatorLabel="Sick Board Indicator"
           target="_blank"
           detail={{
             content: (
