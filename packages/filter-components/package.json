@@ -35,7 +35,7 @@
   "@types/styled-system": "*",
   "@typescript-eslint/eslint-plugin": "*",
   "@typescript-eslint/parser": "*",
-  "enzyme": "3.10.0",
+  "enzyme": "3.11.0",
   "eslint-config-prettier": "*",
   "eslint-config-standard": "*",
   "eslint-plugin-header": "*",
