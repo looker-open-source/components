@@ -26,10 +26,13 @@
 
 import React from 'react'
 import { Folder } from '@styled-icons/material/Folder'
+import type { Page } from 'puppeteer'
+import type { Story } from '@storybook/react/types-6-0'
 import { NavList } from '../NavList'
 import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
 import { NavTree } from './NavTree'
 import { NavTreeItem } from './NavTreeItem'
+import type { NavTreeProps } from '.'
 
 export default {
   argTypes,
@@ -79,4 +82,35 @@ export const ParentIcon = () => {
       </NavTree>
     </NavList>
   )
+}
+
+const FocusTemplate: Story<NavTreeProps> = (args) => (
+  <NavList>
+    <NavTree defaultOpen label="Cheeses" {...args} />
+  </NavList>
+)
+
+export const FocusedBasic = FocusTemplate.bind({})
+FocusedBasic.args = {}
+FocusedBasic.parameters = {
+  beforeScreenshot: async (page: Page) => {
+    const disclosure = await page.$('[role="treeitem"]')
+    await disclosure?.type(' ')
+    await page.waitForTimeout(50)
+  },
+  docs: { disable: true },
+}
+
+export const FocusedLink = FocusTemplate.bind({})
+FocusedLink.args = {
+  href: 'https://google.com',
+  indicatorLabel: 'Cheeses Indicator',
+}
+FocusedLink.parameters = {
+  beforeScreenshot: async (page: Page) => {
+    const disclosure = await page.$('[role="treeitem"]')
+    await disclosure?.type(' ')
+    await page.waitForTimeout(50)
+  },
+  docs: { disable: true },
 }
