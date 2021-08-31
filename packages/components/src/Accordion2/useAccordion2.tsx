@@ -24,8 +24,8 @@
 
  */
 
-import React, { useEffect } from 'react'
-import { useClickable, useToggle, useWrapEvent } from '../utils'
+import React, { useState } from 'react'
+import { useClickable, useWrapEvent } from '../utils'
 import { Accordion2Content } from './Accordion2Content'
 import { accordionDefaults, accordionLeftDefaults } from './accordionDefaults'
 import { AccordionIndicator } from './AccordionIndicator'
@@ -47,7 +47,7 @@ export const useAccordion2 = ({
   indicatorIcons = indicatorPosition === 'left'
     ? accordionLeftDefaults.indicatorIcons
     : accordionDefaults.indicatorIcons,
-  defaultOpen,
+  defaultOpen = false,
   isOpen: propsIsOpen,
   onBlur,
   onClick: propsOnClick,
@@ -59,11 +59,8 @@ export const useAccordion2 = ({
   toggleOpen: propsToggleOpen,
   ...props
 }: Accordion2Props) => {
-  const { change, value, toggle } = useToggle()
-
-  useEffect(() => {
-    defaultOpen !== undefined && change(defaultOpen)
-  }, [])
+  const [value, setValue] = useState(defaultOpen)
+  const toggle = () => setValue(!value)
 
   const isOpen = propsIsOpen !== undefined ? propsIsOpen : value
 
