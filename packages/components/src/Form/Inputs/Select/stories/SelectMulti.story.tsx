@@ -78,6 +78,7 @@ ErrorPlaceholder.args = {
 export const Values = Template.bind({})
 Values.args = {
   ...Basic.args,
+  disabled: true,
   values: ['cheddar', 'gouda'],
 }
 

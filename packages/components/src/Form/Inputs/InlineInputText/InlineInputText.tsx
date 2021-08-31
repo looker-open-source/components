@@ -101,11 +101,6 @@ const StyledInput = styled.input`
   &[type='number'] {
     appearance: textfield;
   }
-
-  :disabled {
-    color: ${({ theme }) => theme.colors.text1};
-    -webkit-text-fill-color: ${({ theme }) => theme.colors.text1};
-  }
 `
 
 const StyledText = styled.span`
@@ -159,5 +154,10 @@ export const InlineInputText = styled(InlineInputTextBase)`
 
   :hover {
     border-bottom-color: ${({ readOnly }) => readOnly && 'transparent'};
+  }
+
+  input:disabled {
+    color: ${({ theme }) => theme.colors.text1};
+    -webkit-text-fill-color: ${({ theme }) => theme.colors.text1};
   }
 `

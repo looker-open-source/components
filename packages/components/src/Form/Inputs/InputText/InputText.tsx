@@ -155,7 +155,7 @@ const InputTextLayout = forwardRef(
     }
 
     const iconBeforeOrPrefix = (iconBefore || typeof before === 'string') && (
-      <InputTextContent pl="xxsmall">
+      <InputTextContent pl="u2">
         {iconBefore || <Span fontSize="small">{before}</Span>}
       </InputTextContent>
     )
@@ -163,16 +163,13 @@ const InputTextLayout = forwardRef(
     const beforeToUse = iconBeforeOrPrefix || before || null
 
     const iconAfterOrSuffix = (iconAfter || typeof after === 'string') && (
-      <InputTextContent pl="xsmall" pr="xxsmall">
+      <InputTextContent pl="u2" pr="u2">
         {iconAfter || <Span fontSize="small">{after}</Span>}
       </InputTextContent>
     )
 
     const validationIcon = validationType === 'error' && (
-      <InputTextContent
-        pl={after || iconAfter ? 'xxsmall' : 'xsmall'}
-        pr="xxsmall"
-      >
+      <InputTextContent pl={after || iconAfter ? 'u1' : 'u2'} pr="u2">
         <ErrorIcon />
       </InputTextContent>
     )
@@ -218,7 +215,7 @@ const InputTextLayout = forwardRef(
   }
 )
 
-InputTextLayout.displayName = 'InputComponent'
+InputTextLayout.displayName = 'InputTextLayout'
 
 const StyledInput = styled.input`
   ${innerInputStyle}
@@ -230,26 +227,24 @@ const StyledInput = styled.input`
 `
 
 export const inputTextHover = css`
-  border-color: ${({ theme }) => theme.colors.ui3};
+  border-color: ${({ theme }) => theme.colors.ui5};
 `
 export const inputTextFocus = css`
-  border-color: ${({ theme }) => theme.colors.keyFocus};
-  box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.keyAccent};
+  border-color: ${({ theme }) => theme.colors.key};
+  box-shadow: inset 0 0 0 1px ${({ theme }) => theme.colors.key};
   outline: none;
 `
 export const inputTextDisabled = css`
-  background: ${({ theme }) => theme.colors.ui1};
-  color: ${({ theme }) => theme.colors.text1};
   cursor: default;
-  -webkit-text-fill-color: ${({ theme }) => theme.colors.text1};
+  opacity: 0.25;
   &:hover {
-    border-color: ${({ theme }) => theme.colors.ui2};
+    border-color: ${({ theme }) => theme.colors.ui4};
   }
 `
 
 const InputIconSize = css`
-  height: ${({ theme }) => theme.sizes.small};
-  width: ${({ theme }) => theme.sizes.small};
+  height: ${({ theme }) => theme.sizes.medium};
+  width: ${({ theme }) => theme.sizes.medium};
 `
 
 export const ErrorIcon = styled(Error)`
@@ -273,20 +268,27 @@ export const InputTextContent = styled.div<SpaceProps>`
   ${ErrorIcon} {
     color: ${({ theme }) => theme.colors.critical};
   }
+  svg {
+    height: 100%;
+    width: 100%;
+  }
 `
 
 export const inputTextValidation = css<{ validationType?: 'error' }>`
   ${(props) =>
     props.validationType === 'error'
       ? `
-      border-color: ${props.theme.colors.criticalBorder};
-      &:hover {
+      border-color: ${props.theme.colors.critical};
+      :hover {
         border-color: ${props.theme.colors.critical};
       }
       &:focus,
       :focus-within {
         border-color: ${props.theme.colors.critical};
-        box-shadow: 0 0 0 2px ${props.theme.colors.criticalAccent};
+        box-shadow: inset 0 0 0 1px ${props.theme.colors.critical};
+      }
+      input {
+        caret-color: ${props.theme.colors.critical};
       }
       `
       : ''}
@@ -294,9 +296,9 @@ export const inputTextValidation = css<{ validationType?: 'error' }>`
 
 export const inputCSS = css`
   background: ${({ theme: { colors } }) => colors.field};
-  border: 1px solid ${({ theme: { colors } }) => colors.ui2};
+  border: 1px solid ${({ theme: { colors } }) => colors.ui4};
   border-radius: ${({ theme: { radii } }) => radii.medium};
-  color: ${({ theme: { colors } }) => colors.text4};
+  color: ${({ theme: { colors } }) => colors.text5};
   font-size: ${({ theme: { fontSizes } }) => fontSizes.small};
 `
 
@@ -319,10 +321,6 @@ export const InputText = styled(InputTextLayout).attrs<InputTextProps>(
   ${layout}
   ${space}
   ${inputCSS}
-
-  input {
-    font-family: inherit;
-  }
 
   ${InlineInputTextBase} {
     height: 100%;

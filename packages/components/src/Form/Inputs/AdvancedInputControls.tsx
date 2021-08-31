@@ -28,12 +28,11 @@ import { useTranslation } from 'react-i18next'
 import type { CompatibleHTMLProps } from '@looker/design-tokens'
 import { Close } from '@styled-icons/material/Close'
 import { Error } from '@styled-icons/material/Error'
-import { ExpandLess } from '@styled-icons/material-rounded/ExpandLess'
-import { ExpandMore } from '@styled-icons/material-rounded/ExpandMore'
-import type { FC, MouseEvent, ReactElement } from 'react'
+import { ArrowDropDown } from '@styled-icons/material/ArrowDropDown'
+import { ArrowDropUp } from '@styled-icons/material/ArrowDropUp'
+import type { MouseEvent } from 'react'
 import React from 'react'
 import styled from 'styled-components'
-import compact from 'lodash/compact'
 import { IconButton } from '../../Button'
 import { iconButtonColor } from '../../Button/iconButtonColor'
 import { Icon } from '../../Icon'
@@ -53,76 +52,66 @@ export interface AdvancedInputControlsProps
   validationType?: 'error'
 }
 
-// inserts a divider line between each control element (item1 | item2 | item3)
-const intersperseDivider = (children: ReactElement[]) =>
-  children.map((child, i) => (
-    <React.Fragment key={i}>
-      {i > 0 && <SearchControlDivider key={i} />}
-      {child}
-    </React.Fragment>
-  ))
+export const AdvancedInputControls = styled(
+  (props: AdvancedInputControlsProps) => {
+    const { t } = useTranslation('AdvancedInputControls')
+    const clearIconLabelText = t('Clear Field')
+    const {
+      disabled,
+      clearIconLabel = clearIconLabelText,
+      isVisibleOptions,
+      onClear,
+      showCaret,
+      showClear,
+      summary,
+      validationType,
+      ...rest
+    } = props
 
-export const AdvancedInputControls: FC<AdvancedInputControlsProps> = (
-  props
-) => {
-  const { t } = useTranslation('AdvancedInputControls')
-  const clearIconLabelText = t('Clear Field')
-  const {
-    disabled,
-    clearIconLabel = clearIconLabelText,
-    isVisibleOptions,
-    onClear,
-    showCaret,
-    showClear,
-    summary,
-    validationType,
-    ...rest
-  } = props
-  const children = intersperseDivider(
-    compact([
-      summary && (
-        <Span
-          color="text1"
-          fontSize="small"
-          style={{ whiteSpace: 'nowrap' }}
-          pr="xxsmall"
-        >
-          {summary}
-        </Span>
-      ),
-      validationType === 'error' && (
-        <Icon icon={<Error />} size={20} color="critical" mx="xxsmall" />
-      ),
-      showClear && (
-        <IconButton
-          size="xsmall"
-          icon={<Close />}
-          label={clearIconLabel}
-          onClick={onClear}
-          tooltipDisabled={disabled}
-          disabled={disabled}
-        />
-      ),
-      showCaret && (
-        <CaretIcon
-          icon={isVisibleOptions ? <ExpandLess /> : <ExpandMore />}
-          disabled={disabled}
-          data-testid="caret"
-        />
-      ),
-    ])
-  )
-
-  return <SearchControlGrid {...rest}>{children}</SearchControlGrid>
-}
-
-const SearchControlGrid = styled.div`
+    return (
+      <div {...rest}>
+        {summary && (
+          <Span
+            color="text1"
+            fontSize="small"
+            style={{ whiteSpace: 'nowrap' }}
+            pr="u1"
+          >
+            {summary}
+          </Span>
+        )}
+        {summary && showClear && <SearchControlDivider />}
+        {showClear && (
+          <IconButton
+            size="xsmall"
+            icon={<Close />}
+            label={clearIconLabel}
+            onClick={onClear}
+            tooltipDisabled={disabled}
+            disabled={disabled}
+          />
+        )}
+        {showClear && showCaret && <SearchControlDivider />}
+        {showCaret && (
+          <CaretIcon
+            icon={isVisibleOptions ? <ArrowDropUp /> : <ArrowDropDown />}
+            data-testid="caret"
+          />
+        )}
+        {validationType === 'error' && (
+          <Icon icon={<Error />} color="critical" mr="u1" />
+        )}
+      </div>
+    )
+  }
+)`
   align-items: center;
   display: grid;
   grid-auto-flow: column dense;
   grid-gap: ${({ theme }) => theme.space.u1};
   justify-items: center;
   max-height: 1.9rem;
+  padding-right: ${({ theme }) => theme.space.u1};
 `
 
 const SearchControlDivider = styled.div`
@@ -131,8 +120,7 @@ const SearchControlDivider = styled.div`
   width: 1px;
 `
 
-const CaretIcon = styled(Icon).attrs(() => ({ mr: 'u1', size: 20 }))`
+const CaretIcon = styled(Icon)`
   ${iconButtonColor}
   cursor: default;
-  opacity: ${({ disabled }) => (disabled ? '0.75' : '1')};
 `
