@@ -24,7 +24,7 @@
 
  */
 
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import type { DensityRamp } from '@looker/design-tokens'
 import { StyledIconBase } from '@styled-icons/styled-icon'
 import type { AccordionIndicatorProps } from './types'
@@ -35,22 +35,19 @@ const size = (density: DensityRamp = 0) =>
 const gap = (density: DensityRamp = 0) =>
   accordionDimensions(density).indicatorGap
 
+const indicatorFocusVisible = css`
+  & {
+    box-shadow: inset 0 0 0 2px ${({ theme }) => theme.colors.keyFocus};
+  }
+`
+
 export const AccordionIndicator = styled.div<AccordionIndicatorProps>`
   align-items: center;
   display: flex;
   justify-content: center;
   outline: none;
 
-  ${({ focusVisible, theme }) => {
-    return (
-      focusVisible &&
-      `
-        & {
-          box-shadow: inset 0 0 0 2px ${theme.colors.keyFocus};
-        }
-      `
-    )
-  }}
+  ${({ focusVisible }) => focusVisible && indicatorFocusVisible}
 
   ${({ density, indicatorPosition, theme: { space } }) =>
     indicatorPosition === 'left'
