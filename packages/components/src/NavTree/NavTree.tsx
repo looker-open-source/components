@@ -26,7 +26,7 @@
 import { ArrowDropDown } from '@styled-icons/material/ArrowDropDown'
 import { ArrowRight } from '@styled-icons/material/ArrowRight'
 import styled from 'styled-components'
-import type { KeyboardEvent, MouseEvent } from 'react'
+import type { FocusEvent, KeyboardEvent, MouseEvent } from 'react'
 import React, { cloneElement, useContext } from 'react'
 import type { ControlledOrUncontrolled } from '../Accordion2/controlTypes'
 import { partitionTreeProps, useTreeHandlers } from '../Tree/utils'
@@ -38,6 +38,7 @@ import {
   createSafeRel,
   HoverDisclosureContext,
   partitionAriaProps,
+  useFocusVisible,
   useWrapEvent,
 } from '../utils'
 import { List } from '../List'
@@ -48,194 +49,6 @@ import type { NavTreeProps } from './types'
 import { NavTreeDisclosure } from './NavTreeDisclosure'
 import { NavTreeItemContent } from './NavTreeItemContent'
 
-const NavTreeLayout = ({
-  children,
-  defaultOpen,
-  indicatorLabel,
-  isOpen: propsIsOpen,
-  label,
-  onBlur,
-  onClick,
-  onClose,
-  onFocus,
-  onKeyUp,
-  onOpen,
-  onMouseEnter,
-  onMouseLeave,
-  toggleOpen: propsToggleOpen,
-  ...restProps
-}: NavTreeProps) => {
-  /**
-   * If `href` is supplied the clicking the label will NOT trigger
-   * the underlying accordion. Only the indicator will trigger toggle
-   */
-  const isIndicatorToggleOnly = !!restProps.href
-
-  const [treeItemInnerProps, accordionInnerProps] =
-    partitionTreeProps(restProps)
-
-  const { hovered, contentHandlers, wrapperHandlers } = useTreeHandlers({
-    onFocus,
-    onMouseEnter,
-    onMouseLeave,
-  })
-
-  const { disabled, href, icon, rel, selected, target } =
-    treeItemInnerProps as Partial<ListItemProps>
-  const [ariaProps] = partitionAriaProps(restProps)
-
-  const treeContext = useContext(TreeContext)
-
-  // Context for supporting windowing
-  // - density must be defined at the collection level for consistent child height
-  // - opened / closed state must be managed at the collection level for accurate item count
-  // - partialRender to hide the accordion disclosure if it's above the window
-  const {
-    isOpen: contextIsOpen,
-    toggleNode,
-    partialRender,
-  } = useContext(WindowedTreeContext)
-
-  const isOpen = contextIsOpen ?? propsIsOpen
-  const toggleOpen = toggleNode ?? propsToggleOpen
-
-  const startingDepth = 0
-  const depth = treeContext.depth ? treeContext.depth : startingDepth
-
-  const [inside, outside] = createListItemPartitions({
-    ...treeItemInnerProps,
-    children: label,
-    icon,
-    truncate: true,
-  })
-  let accordionProps: ControlledOrUncontrolled = {
-    defaultOpen,
-    onClose,
-    onOpen,
-    ...accordionInnerProps,
-  }
-  if (isOpen !== undefined && toggleOpen) {
-    accordionProps = { ...accordionProps, isOpen, toggleOpen }
-  }
-
-  const {
-    contentDomProps,
-    domProps,
-    disclosureProps,
-    isOpen: accordionIsOpen,
-  } = useAccordion2({
-    'aria-selected': selected,
-    children: (
-      <List disableKeyboardNav role="group" windowing={false}>
-        {children}
-      </List>
-    ),
-    disabled,
-    indicatorIcons: {
-      close: <ArrowRight aria-label={`${indicatorLabel} Close`} />,
-      open: <ArrowDropDown aria-label={`${indicatorLabel} Open`} />,
-    },
-    indicatorPosition: 'left',
-    label: inside,
-    onBlur,
-    role: 'treeitem',
-    tabIndex: -1,
-    ...accordionProps,
-  })
-
-  const {
-    indicator,
-    children: disclosureLabel,
-    onClick: onClickDisclosureToggle,
-    onKeyUp: onKeyUpDisclosureToggle,
-    ...disclosureDomProps
-  } = disclosureProps
-
-  const indicatorToggleOnlyProps = {
-    onClick: onClickDisclosureToggle,
-    onKeyUp: onKeyUpDisclosureToggle,
-    tabIndex: -1,
-  }
-  const renderedIndicator = cloneElement(indicator, {
-    ...(isIndicatorToggleOnly ? indicatorToggleOnlyProps : undefined),
-  })
-
-  const handleContentClick = useWrapEvent((event: MouseEvent<HTMLElement>) => {
-    !isIndicatorToggleOnly &&
-      onClickDisclosureToggle &&
-      onClickDisclosureToggle(event)
-  }, onClick)
-  const handleContentKeyUp = useWrapEvent(
-    (event: KeyboardEvent<HTMLElement>) => {
-      !isIndicatorToggleOnly &&
-        onKeyUpDisclosureToggle &&
-        onKeyUpDisclosureToggle(event)
-    },
-    onKeyUp
-  )
-
-  const statefulProps = {
-    color: 'key',
-    disabled,
-    hovered,
-    selected,
-  }
-
-  const content = (
-    <>
-      {isIndicatorToggleOnly && renderedIndicator}
-      <NavTreeItemContent
-        aria-selected={selected}
-        href={href}
-        itemRole={isIndicatorToggleOnly ? 'link' : 'none'}
-        /**
-         * useAccordion2 would normally just wrap props' onClick and onKeyup
-         * with open state toggling, but because we only want the indicator to handle
-         * open state toggling, we do not pass onClick and onKeyUp
-         * into useAccordion2 and receive them via disclosureProps, so instead we directly assign them here
-         */
-        onClick={handleContentClick}
-        onKeyUp={handleContentKeyUp}
-        rel={createSafeRel(rel, target)}
-        target={target}
-        {...ariaProps}
-        {...contentHandlers}
-        {...disclosureDomProps}
-        focusVisible={false} // disable inherent focus style
-      >
-        {!isIndicatorToggleOnly && renderedIndicator}
-        {disclosureLabel}
-      </NavTreeItemContent>
-    </>
-  )
-
-  return (
-    <HoverDisclosureContext.Provider value={{ visible: hovered }}>
-      <TreeContext.Provider
-        value={{
-          color: statefulProps.color,
-          depth: depth + 1,
-        }}
-      >
-        <div {...domProps}>
-          {!partialRender && (
-            <NavTreeDisclosure
-              as="li"
-              depth={depth}
-              {...wrapperHandlers}
-              {...statefulProps}
-            >
-              {content}
-              {outside}
-            </NavTreeDisclosure>
-          )}
-          {accordionIsOpen && <div {...contentDomProps} />}
-        </div>
-      </TreeContext.Provider>
-    </HoverDisclosureContext.Provider>
-  )
-}
-
 /**
  * Adds additional padding to left side of all NavTree-related elements
  * to allow for better click targeting when NavTree composition bumps against
@@ -243,7 +56,224 @@ const NavTreeLayout = ({
  */
 export const INDICATOR_SPACER = '8px'
 
-export const NavTree = styled(NavTreeLayout)`
+export const NavTree = styled(
+  ({
+    children,
+    defaultOpen,
+    indicatorLabel,
+    isOpen: propsIsOpen,
+    label,
+    onBlur,
+    onClick,
+    onClose,
+    onFocus,
+    onKeyUp,
+    onOpen,
+    onMouseEnter,
+    onMouseLeave,
+    toggleOpen: propsToggleOpen,
+    truncate = true,
+    ...restProps
+  }: NavTreeProps) => {
+    /**
+     * If `href` is supplied the clicking the label will NOT trigger
+     * the underlying accordion. Only the indicator will trigger toggle
+     */
+    const isIndicatorToggleOnly = !!restProps.href
+
+    const [treeItemInnerProps, accordionInnerProps] =
+      partitionTreeProps(restProps)
+
+    const { hovered, contentHandlers, wrapperHandlers } = useTreeHandlers({
+      onFocus,
+      onMouseEnter,
+      onMouseLeave,
+    })
+
+    const { disabled, href, icon, rel, selected, target } =
+      treeItemInnerProps as Partial<ListItemProps>
+    const [ariaProps] = partitionAriaProps(restProps)
+
+    const treeContext = useContext(TreeContext)
+
+    // Context for supporting windowing
+    // - density must be defined at the collection level for consistent child height
+    // - opened / closed state must be managed at the collection level for accurate item count
+    // - partialRender to hide the accordion disclosure if it's above the window
+    const {
+      isOpen: contextIsOpen,
+      toggleNode,
+      partialRender,
+    } = useContext(WindowedTreeContext)
+
+    const isOpen = contextIsOpen ?? propsIsOpen
+    const toggleOpen = toggleNode ?? propsToggleOpen
+
+    const startingDepth = 0
+    const depth = treeContext.depth ? treeContext.depth : startingDepth
+
+    const [inside, outside] = createListItemPartitions({
+      ...treeItemInnerProps,
+      children: label,
+      icon,
+      truncate,
+    })
+    let accordionProps: ControlledOrUncontrolled = {
+      defaultOpen,
+      onClose,
+      onOpen,
+      ...accordionInnerProps,
+    }
+    if (isOpen !== undefined && toggleOpen) {
+      accordionProps = { ...accordionProps, isOpen, toggleOpen }
+    }
+
+    const {
+      contentDomProps,
+      domProps,
+      disclosureProps,
+      isOpen: accordionIsOpen,
+    } = useAccordion2({
+      'aria-selected': selected,
+      children: (
+        <List disableKeyboardNav role="group" windowing={false}>
+          {children}
+        </List>
+      ),
+      disabled,
+      indicatorIcons: {
+        close: <ArrowRight aria-label={`${indicatorLabel} Close`} />,
+        open: <ArrowDropDown aria-label={`${indicatorLabel} Open`} />,
+      },
+      indicatorPosition: 'left',
+      label: inside,
+      onBlur,
+      role: 'treeitem',
+      tabIndex: -1,
+      ...accordionProps,
+    })
+
+    /**
+     * In the event of indicator only toggle mode being enabled, we need two separate
+     * sets of focus visible handlers (i.e. one for the content container and one for the
+     * indicator itself).
+     *
+     * If indicator only toggle mode is NOT enabled, the focusVisible state from this useFocusVisible
+     * call should NOT need to be used.
+     */
+    const {
+      onBlur: onContentBlur,
+      onKeyUp: onContentKeyUp,
+      focusVisible: contentFocusVisible,
+    } = useFocusVisible({ onBlur, onKeyUp })
+
+    const {
+      indicator,
+      children: disclosureLabel,
+      focusVisible: disclosureFocusVisible,
+      onBlur: onBlurDisclosureToggle,
+      onClick: onClickDisclosureToggle,
+      onKeyUp: onKeyUpDisclosureToggle,
+      ...disclosureDomProps
+    } = disclosureProps
+
+    const indicatorToggleOnlyProps = {
+      focusVisible: disclosureFocusVisible,
+      onBlur: onBlurDisclosureToggle,
+      onClick: onClickDisclosureToggle,
+      onKeyUp: onKeyUpDisclosureToggle,
+      tabIndex: -1,
+    }
+    const renderedIndicator = cloneElement(indicator, {
+      ...(isIndicatorToggleOnly ? indicatorToggleOnlyProps : undefined),
+    })
+
+    const handleContentBlur = useWrapEvent((event: FocusEvent<HTMLElement>) => {
+      if (!isIndicatorToggleOnly && onBlurDisclosureToggle)
+        onBlurDisclosureToggle(event)
+    }, onContentBlur)
+
+    const handleContentClick = useWrapEvent(
+      (event: MouseEvent<HTMLElement>) => {
+        if (!isIndicatorToggleOnly && onClickDisclosureToggle)
+          onClickDisclosureToggle(event)
+      },
+      onClick
+    )
+
+    const handleContentKeyUp = useWrapEvent(
+      (event: KeyboardEvent<HTMLElement>) => {
+        if (!isIndicatorToggleOnly && onKeyUpDisclosureToggle)
+          onKeyUpDisclosureToggle(event)
+      },
+      onContentKeyUp
+    )
+
+    const statefulProps = {
+      color: 'key',
+      disabled,
+      hovered,
+      selected,
+    }
+
+    const content = (
+      <>
+        {isIndicatorToggleOnly && renderedIndicator}
+        <NavTreeItemContent
+          aria-selected={selected}
+          focusVisible={
+            isIndicatorToggleOnly ? contentFocusVisible : disclosureFocusVisible
+          }
+          href={href}
+          itemRole={isIndicatorToggleOnly ? 'link' : 'none'}
+          onBlur={handleContentBlur}
+          /**
+           * useAccordion2 would normally just wrap props' onClick and onKeyup
+           * with open state toggling, but because we only want the indicator to handle
+           * open state toggling, we do not pass onClick and onKeyUp
+           * into useAccordion2 and receive them via disclosureProps, so instead we directly assign them here
+           */
+          onClick={handleContentClick}
+          onKeyUp={handleContentKeyUp}
+          rel={createSafeRel(rel, target)}
+          target={target}
+          {...ariaProps}
+          {...contentHandlers}
+          {...disclosureDomProps}
+        >
+          {!isIndicatorToggleOnly && renderedIndicator}
+          {disclosureLabel}
+        </NavTreeItemContent>
+      </>
+    )
+
+    return (
+      <HoverDisclosureContext.Provider value={{ visible: hovered }}>
+        <TreeContext.Provider
+          value={{
+            color: statefulProps.color,
+            depth: depth + 1,
+          }}
+        >
+          <div {...domProps}>
+            {!partialRender && (
+              <NavTreeDisclosure
+                as="li"
+                depth={depth}
+                {...wrapperHandlers}
+                {...statefulProps}
+              >
+                {content}
+                {outside}
+              </NavTreeDisclosure>
+            )}
+            {accordionIsOpen && <div {...contentDomProps} />}
+          </div>
+        </TreeContext.Provider>
+      </HoverDisclosureContext.Provider>
+    )
+  }
+)<NavTreeProps>`
   ${AccordionIndicator} {
     padding-left: ${INDICATOR_SPACER};
     ${({ icon, theme }) =>
@@ -251,10 +281,5 @@ export const NavTree = styled(NavTreeLayout)`
       `margin-right: ${
         theme.space[listItemDimensions(theme.defaults.density).iconGap]
       };`}
-  }
-
-  ${AccordionIndicator}:focus, ${NavTreeItemContent}:focus {
-    box-shadow: inset 0 0 0 2px ${({ theme }) => theme.colors.keyFocus};
-    outline: none;
   }
 `

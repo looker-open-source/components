@@ -71,21 +71,23 @@ const IndentOverrideTreeItem = styled(TreeItem).withConfig<
   }
 `
 
-export const NavTreeItem = styled((props: NavTreeItemProps) => {
-  const theme = useContext(ThemeContext)
-  const { depth } = useContext(TreeContext)
-  const { iconGap, px } = listItemDimensions(theme.defaults.density)
-  const { indicatorGap } = accordionDimensions()
+export const NavTreeItem = styled(
+  ({ truncate = true, ...props }: NavTreeItemProps) => {
+    const theme = useContext(ThemeContext)
+    const { depth } = useContext(TreeContext)
+    const { iconGap, px } = listItemDimensions(theme.defaults.density)
+    const { indicatorGap } = accordionDimensions()
 
-  return (
-    <IndentOverrideTreeItem
-      depth={depth}
-      iconGap={iconGap}
-      indicatorGap={indicatorGap}
-      itemRole={props.href ? 'link' : props.itemRole}
-      px={px}
-      truncate
-      {...props}
-    />
-  )
-})``
+    return (
+      <IndentOverrideTreeItem
+        depth={depth}
+        iconGap={iconGap}
+        indicatorGap={indicatorGap}
+        itemRole={props.href ? 'link' : props.itemRole}
+        px={px}
+        truncate={truncate}
+        {...props}
+      />
+    )
+  }
+)``

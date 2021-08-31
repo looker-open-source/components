@@ -34,7 +34,7 @@ export type NavTreeItemProps = {
    * Aligns item label based on parent Tree's icon prop
    */
   parentIcon?: boolean
-} & Omit<ListItemProps, 'density' | 'truncate'>
+} & Omit<ListItemProps, 'density'>
 
 type IndicatorToggleModeProps = {
   href: string

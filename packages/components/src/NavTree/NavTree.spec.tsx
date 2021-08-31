@@ -78,19 +78,27 @@ describe('NavTree', () => {
       // We expect both the NavTree and NavTreeItem child to both have role="treeitem"
       expect(screen.getAllByRole('treeitem').length).toBe(2)
     })
+
+    test('Expects an indicatorLabel when href is provided', () => {
+      renderWithTheme(
+        // @ts-expect-error: indicatorLabel required when href is set
+        <NavTree label="My NavTree" href="https://google.com">
+          Hello
+        </NavTree>
+      )
+    })
+
+    test('Expects an href when indicatorLabel is provided', () => {
+      renderWithTheme(
+        // @ts-expect-error: href required when indicatorLabel is set
+        <NavTree label="My NavTree" indicatorLabel="My NavTree Indicator">
+          Hello
+        </NavTree>
+      )
+    })
   })
 
   describe('href not provided', () => {
-    test('Changes accordion open state on indicator click', () => {
-      renderWithTheme(<Basic />)
-
-      const indicator = screen.getByLabelText('Cheeses Tree Indicator Open')
-      screen.getByText('Cheddar')
-      fireEvent.click(indicator)
-      screen.getByLabelText('Cheeses Tree Indicator Close')
-      expect(screen.queryByText('Cheddar')).not.toBeInTheDocument()
-    })
-
     test('Changes accordion open state on label click', () => {
       renderWithTheme(<Basic />)
 

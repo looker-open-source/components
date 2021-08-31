@@ -30,7 +30,7 @@ import { ArrowRight } from '@styled-icons/material/ArrowRight'
 import type { AccordionIndicatorProps } from '../../Accordion2/types'
 
 export const indicatorDefaults: Required<
-  Omit<AccordionIndicatorProps, 'density'>
+  Omit<AccordionIndicatorProps, 'density' | 'focusVisible'>
 > = {
   indicatorIcons: {
     close: <ArrowRight />,

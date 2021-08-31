@@ -51,6 +51,7 @@ export type Accordion2Props = ControlledOrUncontrolled &
   }
 
 export type AccordionIndicatorProps = DensityProp & {
+  focusVisible?: boolean
   /**
    * Icons for disclosure indicator.
    *
