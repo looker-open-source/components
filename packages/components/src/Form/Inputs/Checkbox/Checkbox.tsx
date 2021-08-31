@@ -34,6 +34,7 @@ import type { SpaceProps } from '@looker/design-tokens'
 import { reset, space } from '@looker/design-tokens'
 import { mergeClassNames } from '../../../utils'
 import {
+  inputRippleColor,
   rippleHandlerKeys,
   rippleStyle,
   useRipple,
@@ -72,22 +73,12 @@ export const Checkbox = styled(
     } = props
     const [isChecked, setIsChecked] = useState<MixedBoolean>(!!defaultChecked)
 
-    const checkboxColor = (checked: boolean, error: boolean) => {
-      if (error) {
-        return 'critical'
-      } else if (checked) {
-        return 'key'
-      } else {
-        return 'neutral'
-      }
-    }
-
     const {
       callbacks,
       className: rippleClassName,
       style: rippleStyle,
     } = useRipple({
-      color: checkboxColor(isChecked === true, validationType === 'error'),
+      color: inputRippleColor(isChecked !== false, validationType === 'error'),
     })
 
     const rippleHandlers = useRippleHandlers(

@@ -23,9 +23,17 @@
  SOFTWARE.
 
  */
+import type { ExtendedStatefulColor } from '@looker/design-tokens'
 
-export * from './inputRippleColor'
-export * from './rippleStyle'
-export * from './types'
-export * from './useRipple'
-export * from './useRippleHandlers'
+export const inputRippleColor = (
+  checked: boolean,
+  error: boolean
+): ExtendedStatefulColor => {
+  if (error) {
+    return 'critical'
+  } else if (checked) {
+    return 'key'
+  } else {
+    return 'neutral'
+  }
+}
