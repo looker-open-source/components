@@ -111,4 +111,26 @@ describe('Accordion2', () => {
       <Accordion2 isOpen {...defaultProps} />
     )
   })
+
+  test('defaultOpen mutation should be ignored', () => {
+    const Example = () => {
+      const [defaultOpen, setDefaultOpen] = React.useState(true)
+
+      return (
+        <>
+          <button onClick={() => setDefaultOpen(!defaultOpen)}>Toggle</button>
+          <Accordion2 defaultOpen={defaultOpen} label="Hello">
+            World
+          </Accordion2>
+          )
+        </>
+      )
+    }
+
+    renderWithTheme(<Example />)
+    expect(screen.getByText('World')).toBeInTheDocument()
+    // Accordion should ignore change
+    fireEvent.click(screen.getByText('Toggle'))
+    expect(screen.getByText('World')).toBeInTheDocument()
+  })
 })
