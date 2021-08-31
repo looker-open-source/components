@@ -26,6 +26,7 @@
 
 import React from 'react'
 import type { Story } from '@storybook/react/types-6-0'
+import { ThemeProvider } from 'styled-components'
 import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
 import type { RadioProps } from './Radio'
 import { Radio } from './Radio'
@@ -36,9 +37,23 @@ export default {
   title: 'Radio',
 }
 
-const Template: Story<RadioProps> = (args) => <Radio {...args} />
+const Template: Story<RadioProps & { ripple: boolean }> = ({
+  ripple,
+  ...args
+}) => (
+  <ThemeProvider
+    theme={(theme) => ({
+      ...theme,
+      defaults: { ...theme.defaults, brandAnimation: ripple },
+    })}
+  >
+    <Radio {...args} />
+  </ThemeProvider>
+)
 
-export const Basic = Template.bind({})
+export const Basic = Template.bind({
+  ripple: false,
+})
 
 export const Checked = Template.bind({})
 Checked.args = {

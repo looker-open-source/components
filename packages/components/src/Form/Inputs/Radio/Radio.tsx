@@ -24,11 +24,20 @@
 
  */
 
+import pick from 'lodash/pick'
 import type { Ref } from 'react'
 import React, { forwardRef } from 'react'
 import styled from 'styled-components'
 import type { SpaceProps } from '@looker/design-tokens'
 import { reset, space } from '@looker/design-tokens'
+import { mergeClassNames } from '../../../utils'
+import {
+  inputRippleColor,
+  rippleHandlerKeys,
+  rippleStyle,
+  useRipple,
+  useRippleHandlers,
+} from '../../../Ripple'
 import type { InputProps } from '../InputProps'
 import { pickInputProps } from '../InputProps'
 import type { ValidationType } from '../../ValidationMessage'
@@ -41,12 +50,34 @@ export interface RadioProps
   validationType?: ValidationType
 }
 
-const RadioLayout = forwardRef(
-  (props: RadioProps, ref: Ref<HTMLInputElement>) => {
-    const { className, validationType, ...restProps } = props
+export const Radio = styled(
+  forwardRef((props: RadioProps, ref: Ref<HTMLInputElement>) => {
+    const { className, style, validationType, ...restProps } = props
 
+    const {
+      callbacks,
+      className: rippleClassName,
+      style: rippleStyle,
+    } = useRipple({
+      color: inputRippleColor(
+        props.checked === true,
+        validationType === 'error'
+      ),
+    })
+
+    const rippleHandlers = useRippleHandlers(
+      callbacks,
+      {
+        ...pick(restProps, rippleHandlerKeys),
+      },
+      restProps.disabled
+    )
     return (
-      <div className={className}>
+      <div
+        className={mergeClassNames([className, rippleClassName])}
+        style={{ ...style, ...rippleStyle }}
+        {...rippleHandlers}
+      >
         <input
           {...pickInputProps(restProps)}
           aria-invalid={validationType === 'error' ? 'true' : undefined}
@@ -56,23 +87,25 @@ const RadioLayout = forwardRef(
         <FauxRadio />
       </div>
     )
-  }
-)
-
-RadioLayout.displayName = 'RadioLayout'
-
-export const Radio = styled(RadioLayout)`
+  })
+)`
   ${reset}
   ${space}
+  ${rippleStyle}
 
-  height: 1rem;
+  height: ${({ theme: { space } }) => space.u6};
+  padding: ${({ theme: { space } }) => space.u1};
   position: relative;
-  width: 1rem;
+  width: ${({ theme: { space } }) => space.u6};
+
   input {
     background: ${({ theme }) => theme.colors.field};
     height: 100%;
+    left: 0;
+    margin: 0;
     opacity: 0;
     position: absolute;
+    top: 0;
     width: 100%;
     z-index: 1;
 
@@ -94,12 +127,6 @@ export const Radio = styled(RadioLayout)`
 
   input:not(:checked) + ${FauxRadio} {
     background: ${({ theme }) => theme.colors.field};
-  }
-
-  input:focus + ${FauxRadio} {
-    border-color: ${({ theme }) => theme.colors.keyFocus};
-    box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.keyAccent};
-    outline: none;
   }
 
   input:disabled + ${FauxRadio} {
