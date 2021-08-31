@@ -26,45 +26,18 @@
 
 import React from 'react'
 import type { Story } from '@storybook/react/types-6-0'
-import { Delete } from '@styled-icons/material/Delete'
-import { IconButton } from '../../../Button'
 import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
 import { useToggle } from '../../../utils/useToggle'
-import type { FieldToggleSwitchProps } from './FieldToggleSwitch'
-import { FieldToggleSwitch } from './FieldToggleSwitch'
+import type { ToggleSwitchProps } from './ToggleSwitch'
+import { ToggleSwitch } from './ToggleSwitch'
 
-const Template: Story<FieldToggleSwitchProps> = ({ on = false, ...args }) => {
+const Template: Story<ToggleSwitchProps> = ({ on = false, ...args }) => {
   const { value, toggle } = useToggle(on)
-  return <FieldToggleSwitch onChange={toggle} on={value} {...args} />
+  return <ToggleSwitch onChange={toggle} on={value} {...args} />
 }
 
 export const Basic = Template.bind({})
-Basic.args = {
-  id: 'id',
-  label: 'Toggle Switch',
-  name: 'thumbsUp',
-}
-
-export const DetailDescription = Template.bind({})
-DetailDescription.args = {
-  ...Basic.args,
-  description: 'describe something here.',
-  detail: '4/20',
-}
-
-export const Tabstops = Template.bind({})
-Tabstops.args = {
-  ...Basic.args,
-  description: (
-    <>
-      describe something here. <a href="somewhere">Link</a>
-    </>
-  ),
-  detail: <IconButton icon={<Delete />} label="Hello world" />,
-}
-Tabstops.parameters = {
-  storyshots: { disable: true },
-}
+Basic.args = {}
 
 export const Checked = Template.bind({})
 Checked.args = {
@@ -90,20 +63,8 @@ ReadOnly.args = {
   readOnly: true,
 }
 
-export const Error = Template.bind({})
-Error.args = {
-  ...Basic.args,
-  validationMessage: { message: 'This is an error', type: 'error' },
-}
-
-export const DetailDescriptionError = Template.bind({})
-DetailDescriptionError.args = {
-  ...DetailDescription.args,
-  validationMessage: { message: 'This is an error', type: 'error' },
-}
-
 export default {
   argTypes,
-  component: FieldToggleSwitch,
-  title: 'FieldToggleSwitch',
+  component: ToggleSwitch,
+  title: 'ToggleSwitch',
 }
