@@ -40,7 +40,9 @@ import type {
 } from './types'
 import { listItemBackgroundColor, listItemPaddingX } from './utils'
 
-const Button = styled.button`
+const Button = styled.button.attrs(({ type = 'button' }) => ({
+  type,
+}))`
   font-family: inherit;
 `
 const Link = styled.a``
