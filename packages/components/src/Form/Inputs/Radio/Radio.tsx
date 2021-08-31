@@ -32,6 +32,7 @@ import type { SpaceProps } from '@looker/design-tokens'
 import { reset, space } from '@looker/design-tokens'
 import { mergeClassNames } from '../../../utils'
 import {
+  inputRippleColor,
   rippleHandlerKeys,
   rippleStyle,
   useRipple,
@@ -52,22 +53,16 @@ export interface RadioProps
 export const Radio = styled(
   forwardRef((props: RadioProps, ref: Ref<HTMLInputElement>) => {
     const { className, style, validationType, ...restProps } = props
-    const radioColor = (checked: boolean, error: boolean) => {
-      if (error) {
-        return 'critical'
-      } else if (checked) {
-        return 'key'
-      } else {
-        return 'neutral'
-      }
-    }
 
     const {
       callbacks,
       className: rippleClassName,
       style: rippleStyle,
     } = useRipple({
-      color: radioColor(props.checked === true, validationType === 'error'),
+      color: inputRippleColor(
+        props.checked === true,
+        validationType === 'error'
+      ),
     })
 
     const rippleHandlers = useRippleHandlers(
