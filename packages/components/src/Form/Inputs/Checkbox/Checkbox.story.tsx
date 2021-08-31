@@ -26,6 +26,7 @@
 
 import React from 'react'
 import type { Story } from '@storybook/react/types-6-0'
+import { ThemeProvider } from 'styled-components'
 import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
 import type { CheckboxProps } from './Checkbox'
 import { Checkbox } from './Checkbox'
@@ -36,9 +37,23 @@ export default {
   title: 'Checkbox',
 }
 
-const Template: Story<CheckboxProps> = (args) => <Checkbox {...args} />
+const Template: Story<CheckboxProps & { ripple: boolean }> = ({
+  ripple,
+  ...args
+}) => (
+  <ThemeProvider
+    theme={(theme) => ({
+      ...theme,
+      defaults: { ...theme.defaults, brandAnimation: ripple },
+    })}
+  >
+    <Checkbox {...args} />
+  </ThemeProvider>
+)
 
-export const Basic = Template.bind({})
+export const Basic = Template.bind({
+  ripple: false,
+})
 
 export const Checked = Template.bind({})
 Checked.args = {
