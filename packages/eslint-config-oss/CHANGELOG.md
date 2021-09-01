@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.7.0-alpha.1](https://github.com/looker-open-source/components/compare/@looker/eslint-config-oss@1.6.0...@looker/eslint-config-oss@1.7.0-alpha.1) (2021-09-01)
+
+
+### Features
+
+* NPM output no longer includes /lib & simplify Typescript monorepo configuration ([#2782](https://github.com/looker-open-source/components/issues/2782)) ([417219b](https://github.com/looker-open-source/components/commit/417219bdea141033a3d57a8188089e2ccfb675b0))
+
+
+
+
+
 # [1.7.0-alpha.0](https://github.com/looker-open-source/components/compare/@looker/eslint-config-oss@1.6.0...@looker/eslint-config-oss@1.7.0-alpha.0) (2021-08-27)
 
 
