@@ -73,12 +73,31 @@ Disabled.args = {
   disabled: true,
 }
 
-export const DisabledChecked = () => <Checkbox disabled checked />
+export const DisabledChecked = Template.bind({})
+DisabledChecked.args = {
+  ...Checked.args,
+  ...Disabled.args,
+}
 
-export const DisabledCheckedMixed = () => <Checkbox disabled checked="mixed" />
+export const DisabledCheckedMixed = Template.bind({})
+DisabledCheckedMixed.args = {
+  ...Disabled.args,
+  ...MixedChecked.args,
+}
 
-export const ReadOnly = () => <Checkbox readOnly />
+export const ReadOnly = Template.bind({})
+ReadOnly.args = {
+  readOnly: true,
+}
 
-export const ReadOnlyChecked = () => <Checkbox readOnly checked />
+export const ReadOnlyChecked = Template.bind({})
+ReadOnlyChecked.args = {
+  ...Checked.args,
+  readOnly: true,
+}
 
-export const ReadOnlyCheckedMixed = () => <Checkbox readOnly checked="mixed" />
+export const ReadOnlyCheckedMixed = Template.bind({})
+ReadOnlyCheckedMixed.args = {
+  ...MixedChecked.args,
+  readOnly: true,
+}
