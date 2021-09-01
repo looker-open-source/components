@@ -254,4 +254,10 @@ describe('focus behavior', () => {
     fireEvent.keyDown(tab1, { code: 39, key: 'ArrowRight' })
     expect(screen.getByText('tab2')).toHaveFocus()
   })
+
+  test('Tab has type attribute', () => {
+    renderWithTheme(<TabTest />)
+    fireEvent.click(screen.getByText('tab1'))
+    expect(screen.getByText('tab1')).toHaveAttribute('type', 'button')
+  })
 })

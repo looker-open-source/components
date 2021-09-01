@@ -83,6 +83,7 @@ export const Tab = styled(
         role="tab"
         selected={selected}
         tabIndex={-1}
+        type="button"
         {...focusVisibleProps}
         {...restProps}
       />
