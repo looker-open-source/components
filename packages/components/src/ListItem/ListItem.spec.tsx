@@ -170,6 +170,7 @@ describe('ListItem', () => {
     )
 
     const item = screen.getByText('Item')
+    expect(item.closest('button')).toHaveAttribute('type', 'button')
     fireEvent.click(item)
 
     expect(callbackFn).toHaveBeenCalledTimes(0)
