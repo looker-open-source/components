@@ -1,4 +1,10 @@
 {{license}}
+
+/**
+ * NOTE: This is an auto-generated file changes within may be overwritten
+ * Run `yarn workspace @looker/icons build` to update
+ */
+
 import React from 'react'
 import type { StyledIcon, StyledIconProps } from '@styled-icons/styled-icon'
 import { StyledIconBase } from '@styled-icons/styled-icon'

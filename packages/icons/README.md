@@ -4,17 +4,18 @@ Icons are defined in SVG format and are automatically built by a build script to
 
 ### Directories
 
-- `src/svg`: All source SVG icon files are placed here. The build process uses the files in this directory to create components.
-- `src/generated`: Built artifacts are placed into this directory, including a
-  set of SVGs converted to React components in icons/lib/glyphs.
+- `svg`: All source SVG icon files are placed here. The build process uses the files in this directory to create components.
+- `src/*`: Built artifacts are placed into this directory.
 
 ### Building Icons
 
-All icons should be exported as SVG and placed in the `icons/svg` directory. They do not need to be optimized beforehand, a build process will optimize them and convert them to components.
+All icons should be exported as SVG and placed in the `svg` directory. They do not need to be optimized beforehand, the build process will optimize them and convert them to components.
 
-Icons are automatically built when starting or publishing the style guide, running the tests, building the components or publishing the component package. The icons can be manually built using the command:
+When adding new icons run the build script below to output the optimized React-component versions.
 
-`yarn workspace @looker/icons prebuild`
+`yarn workspace @looker/icons build`
+
+Adding new icons to `svg` and failing to re-run the command above will result in a lint failure.
 
 ### Naming Icons
 

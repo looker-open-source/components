@@ -48,7 +48,6 @@ We recommend using [Node Version Manager (NVM)](https://github.com/nvm-sh/nvm#in
 - **yarn gatsby** starts the Gatsby server (powers our documentation site)
 - **yarn storybook** starts Storybook in "Docs" mode (includes stories from all packages)
 - **yarn build** runs build across all packages. This calls several subtasks
-  - **yarn prebuild** run clean, then use lerna to do any pre-build tasks needed for packages
   - **yarn build** runs build:\* in parallel (see below)
   - **yarn build:es** use lerna to do babel build on all packages in proper order
   - **yarn build:ts** use lerna to typescript declarations in proper order
