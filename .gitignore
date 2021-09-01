@@ -17,19 +17,12 @@ coverage
 docs/v*
 docs/latest
 docs/canary
-packages/icons/src
-/apps/*/dist
+apps/*/dist
 storybook-static
 www/public
 
 # lerna
-/packages/*/lib
-
-# deprecated but useful for folks with older builds
-/packages/*/dist
-/packages/*/esm
-/packages/*/cjs
-/packages/*/types
+packages/*/lib
 
 # misc
 .DS_Store

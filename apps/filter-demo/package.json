@@ -7,12 +7,7 @@
   "scripts": {
     "build": "export BABEL_ENV=build && webpack --config webpack.prod.js",
     "clean": "rm -rf dist",
-    "develop": "webpack serve --hot --port 8080 --disable-host-check --config webpack.develop.js",
-    "fix": "yarn lint --fix",
-    "lint": "sh -c 'yarn lint:css ${0} && yarn lint:es ${0}'",
-    "lint:css": "stylelint './src/**/*.ts{,x}'",
-    "lint:es": "yarn eslint . --cache",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "develop": "webpack serve --hot --port 8080 --disable-host-check --config webpack.develop.js"
   },
   "author": "Looker",
   "license": "MIT",

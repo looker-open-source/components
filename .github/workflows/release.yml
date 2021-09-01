@@ -29,9 +29,7 @@ jobs:
         run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
 
       - uses: c-hive/gha-yarn-cache@v1
-      - run: |
-          yarn install
-          yarn prebuild
+      - run: yarn install
 
       - name: Build web site
         run: |

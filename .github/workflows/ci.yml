@@ -24,7 +24,6 @@ jobs:
       - uses: actions/checkout@v2
       - uses: c-hive/gha-yarn-cache@v1
       - run: yarn install
-      - run: yarn prebuild
       - run: yarn lint:ts
         name: 'Typescript'
       - run: yarn lint:es
@@ -62,7 +61,6 @@ jobs:
       - uses: actions/checkout@v2
       - uses: c-hive/gha-yarn-cache@v1
       - run : yarn --silent
-      - run: yarn prebuild
       - run: yarn workspace www build
   image-snapshots:
     name: "Image Snapshots"

@@ -8,7 +8,9 @@
     "access": "public"
   },
   "scripts": {
-    "prebuild": "./bin/prebuild.js"
+    "prebuild": "rm -rf src/*",
+    "build": "./bin/build.js",
+    "lint": "./bin/lint.sh"
   },
   "dependencies": {
     "@styled-icons/styled-icon": "^10.6.3"
