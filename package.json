@@ -27,7 +27,7 @@
     "build:cjs": "yarn lerna exec --scope '@looker/*' --stream 'babel src --env-name cjs --root-mode upward --out-dir lib/cjs --source-maps --extensions .ts,.tsx,.js --no-comments'",
     "build:esm": "yarn lerna exec --scope '@looker/*' --stream 'babel src --env-name esm --root-mode upward --out-dir lib --source-maps --extensions .ts,.tsx,.js --no-comments'",
     "build:ts": "yarn lerna exec --stream --scope '@looker/*' --sort 'tsc -b tsconfig.build.json'",
-    "postbuild":  "yarn lerna exec --scope '@looker/*' --stream '../../bin/publish-package-json.js'",
+    "postbuild": "yarn lerna exec --scope '@looker/*' --stream '../../bin/publish-package-json.js'",
     "bumpversion": "yarn lerna version --conventional-commits --no-git-tag-version --no-push --yes",
     "clean": "run-p -c clean:*",
     "clean:build": "rm -Rf packages/*/lib",
@@ -36,7 +36,7 @@
     "clean:gatsby": "rm -Rf www/.cache www/public",
     "clean:coverage": "rm -rf coverage",
     "develop": "echo -e 'Use `yarn gatsby` to start Gatsby \nUse `yarn storybook` to start Storybook'",
-    "deduplicate": "npx yarn-deduplicate -s fewer yarn.lock && yarn",
+    "deduplicate": "yarn-deduplicate -s fewer yarn.lock",
     "playground": "yarn workspace playground develop",
     "gatsby": "yarn workspace www start",
     "fix": "yarn lint:es --fix",
@@ -46,6 +46,7 @@
     "lint:ts": "tsc",
     "lint:packages": "yarn lerna run lint  --stream",
     "lint:circular": "madge packages/*/src --circular --extensions ts,tsx",
+    "lint:yarn": "./bin/lint-yarn.sh",
     "lint-staged": "yarn exec lint-staged",
     "test": "yarn jest",
     "test:a11y": "yarn workspace storybook a11y",
@@ -93,7 +94,8 @@
     "react-is": "^16.13.1",
     "styled-components": "^5.3.0",
     "typescript": "4.3.4",
-    "webpack": "^4.44.2"
+    "webpack": "^4.44.2",
+    "yarn-deduplicate": "^3.1.0"
   },
   "resolutions": {
     "@typescript-eslint/eslint-plugin": "4.29.2",
