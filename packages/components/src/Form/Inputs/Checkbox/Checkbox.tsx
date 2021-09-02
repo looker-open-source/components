@@ -43,7 +43,6 @@ import {
 import type { InputProps } from '../InputProps'
 import { pickInputProps } from '../InputProps'
 import type { ValidationType } from '../../ValidationMessage'
-import { inputTextValidation } from '../InputText'
 
 import { CheckMark } from './CheckMark'
 import { CheckMarkMixed } from './CheckMarkMixed'
@@ -77,7 +76,7 @@ export const Checkbox = styled(
       className: rippleClassName,
       style: rippleStyle,
     } = useRipple({
-      color: inputRippleColor(isChecked !== false, validationType === 'error'),
+      color: inputRippleColor(isChecked !== false),
     })
 
     const rippleHandlers = useRippleHandlers(
@@ -122,7 +121,7 @@ export const Checkbox = styled(
           onChange={noop} // suppress read-only error as we rely on click rather than change event here
           ref={ref}
         />
-        <FauxCheckbox>
+        <FauxCheckbox isSelected={!!isChecked}>
           {checked === 'mixed' ? <CheckMarkMixed /> : <CheckMark />}
         </FauxCheckbox>
       </div>
@@ -149,28 +148,22 @@ export const Checkbox = styled(
     top: 0;
     width: 100%;
     z-index: 1;
-  }
 
-  input + ${FauxCheckbox} {
-    ${inputTextValidation}
-  }
-
-  input:checked + ${FauxCheckbox} {
-    background-color: ${({ theme }) => theme.colors.key};
-    border-color: ${({ theme }) => theme.colors.key};
-  }
-
-  input:not(:checked) + ${FauxCheckbox} {
-    color: ${({ theme }) => theme.colors.keyText};
-  }
-
-  input:disabled + ${FauxCheckbox} {
-    background: ${({ theme }) => theme.colors.ui1};
-    border-color: ${({ theme }) => theme.colors.ui2};
-    color: ${({ theme }) => theme.colors.text1};
-  }
-
-  input:disabled:not(:checked) + ${FauxCheckbox} {
-    color: transparent;
+    &:disabled {
+      + ${FauxCheckbox} {
+        border-color: ${({ theme }) => theme.colors.ui2};
+      }
+      &:checked + ${FauxCheckbox} {
+        background: ${({ theme }) => theme.colors.ui2};
+      }
+    }
+    &:not(:checked) {
+      &:focus,
+      &:hover {
+        + ${FauxCheckbox} {
+          border-color: ${({ theme }) => theme.colors.ui5};
+        }
+      }
+    }
   }
 `

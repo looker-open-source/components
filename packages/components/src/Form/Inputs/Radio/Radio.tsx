@@ -59,10 +59,7 @@ export const Radio = styled(
       className: rippleClassName,
       style: rippleStyle,
     } = useRipple({
-      color: inputRippleColor(
-        props.checked === true,
-        validationType === 'error'
-      ),
+      color: inputRippleColor(props.checked === true),
     })
 
     const rippleHandlers = useRippleHandlers(
@@ -93,8 +90,10 @@ export const Radio = styled(
   ${space}
   ${rippleStyle}
 
+  align-items: center;
+  display: flex;
   height: ${({ theme: { space } }) => space.u6};
-  padding: ${({ theme: { space } }) => space.u1};
+  justify-content: center;
   position: relative;
   width: ${({ theme: { space } }) => space.u6};
 
@@ -114,31 +113,19 @@ export const Radio = styled(
     }
   }
 
-  input + ${FauxRadio} {
-    border-color: ${({ theme, validationType }) =>
-      validationType === 'error'
-        ? theme.colors.criticalBorder
-        : theme.colors.ui2};
-  }
-
   input:checked + ${FauxRadio} {
     color: ${({ theme }) => theme.colors.key};
   }
 
-  input:not(:checked) + ${FauxRadio} {
+  input:not(:checked) + ${FauxRadio}:after {
     background: ${({ theme }) => theme.colors.field};
   }
 
   input:disabled + ${FauxRadio} {
-    color: ${({ theme }) => theme.colors.text1};
+    color: ${({ theme }) => theme.colors.ui2};
   }
 
-  input:disabled:not(:checked) + ${FauxRadio} {
-    background: ${({ theme }) => theme.colors.ui1};
-    color: transparent;
-
-    &::after {
-      background: ${({ theme }) => theme.colors.ui1};
-    }
+  input:disabled:not(:checked) + ${FauxRadio}:after {
+    background: ${({ theme }) => theme.colors.field};
   }
 `
