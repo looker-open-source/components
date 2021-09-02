@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.4.0](https://github.com/looker-open-source/components/compare/@looker/components@2.4.0-alpha.1...@looker/components@2.4.0) (2021-09-02)
+
+
+### Bug Fixes
+
+* **Checkbox:** update stories and tests ([#2800](https://github.com/looker-open-source/components/issues/2800)) ([748bc5d](https://github.com/looker-open-source/components/commit/748bc5d773f5a2df8a76a3ae14ecb9e3ae444093))
+
+
+
+
+
 # [2.4.0-alpha.1](https://github.com/looker-open-source/components/compare/@looker/components@2.3.1...@looker/components@2.4.0-alpha.1) (2021-09-01)
 
 
