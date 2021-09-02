@@ -59,7 +59,6 @@ export interface CheckboxProps
 }
 
 export const Checkbox = styled(
-  // eslint-disable-next-line react/display-name
   forwardRef((props: CheckboxProps, ref: Ref<HTMLInputElement>) => {
     const {
       className,
