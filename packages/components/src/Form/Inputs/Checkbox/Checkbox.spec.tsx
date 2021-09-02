@@ -31,7 +31,8 @@ import { composeStories } from '@storybook/testing-react'
 import type { CheckboxProps } from './Checkbox'
 import * as stories from './Checkbox.story'
 
-const { Basic, Checked, ReadOnly } = composeStories(stories)
+const { Basic, Checked, Disabled, DisabledChecked, MixedChecked, ReadOnly } =
+  composeStories(stories)
 
 beforeEach(() => {
   jest.useFakeTimers()
@@ -49,19 +50,54 @@ const runTimers = () =>
   })
 
 describe('Checkbox', () => {
+  test('renders', () => {
+    renderWithTheme(<Basic />)
+    expect(screen.getByRole('checkbox')).toBeInTheDocument()
+  })
+
+  test('checked', () => {
+    renderWithTheme(<Checked />)
+    const checkboxInput = screen.getByRole('checkbox')
+    expect(checkboxInput).toBeInTheDocument()
+    expect(checkboxInput).toBeChecked()
+  })
+
+  test('mixed', () => {
+    renderWithTheme(<MixedChecked />)
+    const checkboxInput = screen.getByRole('checkbox')
+
+    expect(checkboxInput).toBeInTheDocument()
+    expect(checkboxInput).toBeChecked()
+    expect(screen.getByText('Check Mark Mixed')).toBeInTheDocument()
+  })
+
+  test('disabled', () => {
+    renderWithTheme(<Disabled />)
+    const checkboxInput = screen.getByRole('checkbox')
+
+    expect(checkboxInput).toBeDisabled()
+  })
+
+  test('disabled & checked', () => {
+    renderWithTheme(<DisabledChecked />)
+    const checkboxInput = screen.getByRole('checkbox')
+
+    expect(checkboxInput).toBeChecked()
+    expect(checkboxInput).toBeDisabled()
+  })
+
   test('Accepts defaultChecked prop, and toggles value without change handler', () => {
     renderWithTheme(<Basic defaultChecked />)
     const checkboxInput = screen.getByRole('checkbox')
-
-    expect(checkboxInput as HTMLInputElement).toBeChecked()
+    expect(checkboxInput).toBeChecked()
 
     fireEvent.click(checkboxInput)
 
     // toggled state:
-    expect(checkboxInput as HTMLInputElement).not.toBeChecked()
+    expect(checkboxInput).not.toBeChecked()
   })
 
-  test('Accepts checked prop, and is read only without a change handler', () => {
+  test('Accepts checked prop, and is readOnly without a change handler', () => {
     renderWithTheme(<Checked />)
     const checkboxInput = screen.getByRole('checkbox')
 

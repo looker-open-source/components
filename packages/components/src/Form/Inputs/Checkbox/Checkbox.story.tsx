@@ -57,29 +57,32 @@ export const Basic = Template.bind({
 
 export const Checked = Template.bind({})
 Checked.args = {
+  ...Basic,
   checked: true,
 }
 
-export const Mixed = Template.bind({})
-Mixed.args = {
+export const MixedChecked = Template.bind({})
+MixedChecked.args = {
+  ...Basic,
   checked: 'mixed',
 }
 
 export const Disabled = Template.bind({})
 Disabled.args = {
+  ...Basic,
   disabled: true,
 }
 
 export const DisabledChecked = Template.bind({})
 DisabledChecked.args = {
-  ...Disabled.args,
   ...Checked.args,
+  ...Disabled.args,
 }
 
-export const DisabledMixed = Template.bind({})
-DisabledChecked.args = {
+export const DisabledCheckedMixed = Template.bind({})
+DisabledCheckedMixed.args = {
   ...Disabled.args,
-  ...Mixed.args,
+  ...MixedChecked.args,
 }
 
 export const ReadOnly = Template.bind({})
@@ -88,13 +91,13 @@ ReadOnly.args = {
 }
 
 export const ReadOnlyChecked = Template.bind({})
-ReadOnly.args = {
-  readOnly: true,
+ReadOnlyChecked.args = {
   ...Checked.args,
+  readOnly: true,
 }
 
-export const ReadOnlyMixed = Template.bind({})
-ReadOnly.args = {
+export const ReadOnlyCheckedMixed = Template.bind({})
+ReadOnlyCheckedMixed.args = {
+  ...MixedChecked.args,
   readOnly: true,
-  ...Mixed.args,
 }
