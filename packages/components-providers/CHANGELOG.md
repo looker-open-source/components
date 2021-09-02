@@ -5,32 +5,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [1.5.0](https://github.com/looker-open-source/components/compare/@looker/components-providers@1.5.0-alpha.1...@looker/components-providers@1.5.0) (2021-09-02)
 
-**Note:** Version bump only for package @looker/components-providers
-
-
-
-
-
-# [1.5.0-alpha.1](https://github.com/looker-open-source/components/compare/@looker/components-providers@1.4.4...@looker/components-providers@1.5.0-alpha.1) (2021-09-01)
-
-
 ### Features
 
 * NPM output no longer includes /lib & simplify Typescript monorepo configuration ([#2782](https://github.com/looker-open-source/components/issues/2782)) ([417219b](https://github.com/looker-open-source/components/commit/417219bdea141033a3d57a8188089e2ccfb675b0))
-
-
-
-
-
-# [1.5.0-alpha.0](https://github.com/looker-open-source/components/compare/@looker/components-providers@1.4.4...@looker/components-providers@1.5.0-alpha.0) (2021-08-27)
-
-
-### Features
-
-* NPM output no longer includes /lib ([1767d54](https://github.com/looker-open-source/components/commit/1767d54820fa18c2f08ea2b6598386ee7e686ec9))
-
-
-
 
 
 ## [1.4.4](https://github.com/looker-open-source/components/compare/@looker/components-providers@1.4.3...@looker/components-providers@1.4.4) (2021-08-24)

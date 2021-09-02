@@ -5,20 +5,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [2.4.0](https://github.com/looker-open-source/components/compare/@looker/components@2.4.0-alpha.1...@looker/components@2.4.0) (2021-09-02)
 
-
 ### Bug Fixes
 
 * **Checkbox:** update stories and tests ([#2800](https://github.com/looker-open-source/components/issues/2800)) ([748bc5d](https://github.com/looker-open-source/components/commit/748bc5d773f5a2df8a76a3ae14ecb9e3ae444093))
-
-
-
-
-
-# [2.4.0-alpha.1](https://github.com/looker-open-source/components/compare/@looker/components@2.3.1...@looker/components@2.4.0-alpha.1) (2021-09-01)
-
-
-### Bug Fixes
-
 * **FieldInline:** Truncation of long labels ([#2778](https://github.com/looker-open-source/components/issues/2778)) ([045271e](https://github.com/looker-open-source/components/commit/045271e67eaf3033ed0c791e7244966e5b23a52f))
 * **NavTree:** Various NavTree fixes ([#2784](https://github.com/looker-open-source/components/issues/2784)) ([05d88d0](https://github.com/looker-open-source/components/commit/05d88d09a013613bfcb0dc0137ea09a49d6d7968))
 * **Tab2:** `Tabs` should be output with `type="button"` to prevent accidental form submission ([#2795](https://github.com/looker-open-source/components/issues/2795)) ([a879fb7](https://github.com/looker-open-source/components/commit/a879fb7c4c6448715fece57122e404b2b0570f3e))
@@ -27,23 +16,10 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
+* NPM output no longer includes /lib ([1767d54](https://github.com/looker-open-source/components/commit/1767d54820fa18c2f08ea2b6598386ee7e686ec9))
 * **Checkbox:** add ripple effect ([#2775](https://github.com/looker-open-source/components/issues/2775)) ([45fff7f](https://github.com/looker-open-source/components/commit/45fff7fb34d79593a5c434fb56e4d27245364975))
 * **Radio:** add ripple effect ([#2776](https://github.com/looker-open-source/components/issues/2776)) ([e9fce0f](https://github.com/looker-open-source/components/commit/e9fce0f26b4d64bb5f1fbb7eb085442698d387fb))
 * NPM output no longer includes /lib & simplify Typescript monorepo configuration ([#2782](https://github.com/looker-open-source/components/issues/2782)) ([417219b](https://github.com/looker-open-source/components/commit/417219bdea141033a3d57a8188089e2ccfb675b0))
-
-
-
-
-
-# [2.4.0-alpha.0](https://github.com/looker-open-source/components/compare/@looker/components@2.3.1...@looker/components@2.4.0-alpha.0) (2021-08-27)
-
-
-### Features
-
-* NPM output no longer includes /lib ([1767d54](https://github.com/looker-open-source/components/commit/1767d54820fa18c2f08ea2b6598386ee7e686ec9))
-
-
-
 
 
 ## [2.3.1](https://github.com/looker-open-source/components/compare/@looker/components@2.3.0...@looker/components@2.3.1) (2021-08-24)
