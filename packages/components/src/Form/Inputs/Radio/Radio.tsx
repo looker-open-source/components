@@ -115,15 +115,12 @@ export const Radio = styled(
 
     &:checked + ${FauxRadio} {
       color: ${({ theme }) => theme.colors.key};
-    }
-    &[aria-invalid='true'] {
-      + ${FauxRadio},
-        &:focus
-        + ${FauxRadio},
-        &:not(:checked):hover
-        + ${FauxRadio} {
-        color: ${({ theme }) => theme.colors.critical};
+      &::after {
+        background: currentColor;
       }
+    }
+    &[aria-invalid='true'] + ${FauxRadio} {
+      color: ${({ theme }) => theme.colors.critical};
     }
     &:disabled {
       cursor: not-allowed;
@@ -131,10 +128,7 @@ export const Radio = styled(
         color: ${({ theme }) => theme.colors.ui2};
       }
     }
-    &:not(:checked) {
-      + ${FauxRadio}:after {
-        background: ${({ theme }) => theme.colors.field};
-      }
+    &:not(:checked):not([aria-invalid='true']) {
       &:hover,
       &:focus {
         + ${FauxRadio} {

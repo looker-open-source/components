@@ -39,7 +39,7 @@ export const FauxRadio = styled.div`
     box-shadow 25ms linear;
 
   &::after {
-    background: currentColor;
+    background: ${({ theme }) => theme.colors.field};
     border-radius: 50%;
     content: '';
     display: block;
