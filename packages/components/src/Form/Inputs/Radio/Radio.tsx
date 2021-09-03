@@ -59,7 +59,13 @@ export const Radio = styled(
       className: rippleClassName,
       style: rippleStyle,
     } = useRipple({
-      color: inputRippleColor(props.checked === true),
+      color: inputRippleColor(
+        props.checked === true,
+        validationType === 'error'
+      ),
+      // Only define size for density -6,
+      // to make the halo slightly bigger than the container
+      size: 1.167,
     })
 
     const rippleHandlers = useRippleHandlers(
@@ -98,7 +104,6 @@ export const Radio = styled(
   width: ${({ theme: { space } }) => space.u6};
 
   input {
-    background: ${({ theme }) => theme.colors.field};
     height: 100%;
     left: 0;
     margin: 0;
@@ -108,24 +113,28 @@ export const Radio = styled(
     width: 100%;
     z-index: 1;
 
+    &:checked + ${FauxRadio} {
+      color: ${({ theme }) => theme.colors.key};
+    }
     &:disabled {
       cursor: not-allowed;
+      + ${FauxRadio} {
+        color: ${({ theme }) => theme.colors.ui2};
+      }
     }
-  }
-
-  input:checked + ${FauxRadio} {
-    color: ${({ theme }) => theme.colors.key};
-  }
-
-  input:not(:checked) + ${FauxRadio}:after {
-    background: ${({ theme }) => theme.colors.field};
-  }
-
-  input:disabled + ${FauxRadio} {
-    color: ${({ theme }) => theme.colors.ui2};
-  }
-
-  input:disabled:not(:checked) + ${FauxRadio}:after {
-    background: ${({ theme }) => theme.colors.field};
+    &:not(:checked) {
+      + ${FauxRadio}:after {
+        background: ${({ theme }) => theme.colors.field};
+      }
+      &:hover,
+      &:focus {
+        + ${FauxRadio} {
+          color: ${({ theme }) => theme.colors.ui5};
+        }
+      }
+    }
+    &[aria-invalid='true'] + ${FauxRadio} {
+      color: ${({ theme }) => theme.colors.critical};
+    }
   }
 `

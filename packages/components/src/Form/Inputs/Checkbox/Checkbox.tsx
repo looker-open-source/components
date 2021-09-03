@@ -76,7 +76,10 @@ export const Checkbox = styled(
       className: rippleClassName,
       style: rippleStyle,
     } = useRipple({
-      color: inputRippleColor(isChecked !== false),
+      color: inputRippleColor(isChecked !== false, validationType === 'error'),
+      // Only define size for density -6,
+      // to make the halo slightly bigger than the container
+      size: 1.167,
     })
 
     const rippleHandlers = useRippleHandlers(
@@ -152,7 +155,7 @@ export const Checkbox = styled(
     z-index: 1;
 
     &:disabled {
-      + ${FauxCheckbox} {
+      + ${FauxCheckbox}, &:not(:checked):hover + ${FauxCheckbox} {
         border-color: ${({ theme }) => theme.colors.ui2};
       }
       &:checked + ${FauxCheckbox} {
@@ -165,6 +168,14 @@ export const Checkbox = styled(
         + ${FauxCheckbox} {
           border-color: ${({ theme }) => theme.colors.ui5};
         }
+      }
+    }
+    &[aria-invalid='true'] {
+      + ${FauxCheckbox}, &:focus + ${FauxCheckbox}, &:hover + ${FauxCheckbox} {
+        border-color: ${({ theme }) => theme.colors.critical};
+      }
+      &:checked + ${FauxCheckbox} {
+        background: ${({ theme }) => theme.colors.critical};
       }
     }
   }

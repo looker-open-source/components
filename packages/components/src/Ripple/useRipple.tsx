@@ -37,6 +37,7 @@ export type UseRippleProps = {
   /**
    * Use for elements where the ripple disappears at the edges of
    * a visible rectangle, e.g. a default Button
+   * @default false
    */
   bounded?: boolean
   /**
@@ -44,6 +45,13 @@ export type UseRippleProps = {
    * @default neutral
    */
   color?: ExtendedStatefulColor
+  /**
+   * Decimal multiplier, e.g. 1.5.
+   * Use for unbounded ripple that needs to extend past element dimensions,
+   * don't use with overflow: hidden
+   * @default 1
+   */
+  size?: number
 }
 
 export type UseRippleResponse = {
@@ -72,9 +80,10 @@ const getMinMaxDimensions = (width: number, height: number) => {
 }
 
 const getRippleScaleRange = (
+  bounded: boolean,
   min: number,
   max: number,
-  bounded?: boolean,
+  size: number,
   noScale?: boolean
 ): [number, number] => {
   // For squares it looks best to start the ripple very small
@@ -94,10 +103,10 @@ const getRippleScaleRange = (
   }
 
   if (noScale) {
-    return [1, 1]
+    return [size, size]
   }
   // Start small and expand to the full size
-  return [start, 1]
+  return [start, size]
 }
 
 const getRippleOffset = (min: number, max: number, bounded?: boolean) => {
@@ -116,8 +125,9 @@ const getRippleOffset = (min: number, max: number, bounded?: boolean) => {
  * and remaining props should be passed to an internal element that includes rippleStyle
  */
 export const useRipple = ({
-  bounded,
+  bounded = false,
   color = 'neutral',
+  size = 1,
 }: UseRippleProps): UseRippleResponse => {
   // ref is actually only used for bounded, when dimensions are needed
   // otherwise ref is wasteful since it triggers a state update & re-render
@@ -133,9 +143,10 @@ export const useRipple = ({
   // Get values for animation – bounded uses dimensions, otherwise they're static
   const [min, max] = getMinMaxDimensions(width, height)
   const rippleScaleRange = getRippleScaleRange(
+    bounded,
     min,
     max,
-    bounded,
+    size,
     !brandAnimation
   )
   const rippleOffset = getRippleOffset(min, max, bounded)
@@ -153,6 +164,9 @@ export const useRipple = ({
     ['--ripple-scale-start' as any]: rippleScaleRange[0],
     ['--ripple-size' as any]: bounded ? `${min}px` : '100%',
     ['--ripple-translate' as any]: rippleOffset,
+    // bounded ripple scales up larger than the container
+    // but should not show beyond its edges
+    ['--ripple-overflow' as any]: bounded ? 'hidden' : 'visible',
   }
 
   return {
