@@ -55,6 +55,7 @@ const FieldToggleSwitchLayout = forwardRef(
           id={id}
           validationType={validationMessage && validationMessage.type}
           ref={ref}
+          mr="u1"
         />
       </FieldInline>
     )
