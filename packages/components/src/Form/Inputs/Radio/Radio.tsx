@@ -116,9 +116,18 @@ export const Radio = styled(
     &:checked + ${FauxRadio} {
       color: ${({ theme }) => theme.colors.key};
     }
+    &[aria-invalid='true'] {
+      + ${FauxRadio},
+        &:focus
+        + ${FauxRadio},
+        &:not(:checked):hover
+        + ${FauxRadio} {
+        color: ${({ theme }) => theme.colors.critical};
+      }
+    }
     &:disabled {
       cursor: not-allowed;
-      + ${FauxRadio} {
+      + ${FauxRadio}, &:not(:checked):hover + ${FauxRadio} {
         color: ${({ theme }) => theme.colors.ui2};
       }
     }
@@ -131,11 +140,6 @@ export const Radio = styled(
         + ${FauxRadio} {
           color: ${({ theme }) => theme.colors.ui5};
         }
-      }
-    }
-    &[aria-invalid='true'] {
-      + ${FauxRadio}, &:focus + ${FauxRadio}, &:hover + ${FauxRadio} {
-        color: ${({ theme }) => theme.colors.critical};
       }
     }
   }

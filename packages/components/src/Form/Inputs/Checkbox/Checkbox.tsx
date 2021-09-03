@@ -154,6 +154,18 @@ export const Checkbox = styled(
     width: 100%;
     z-index: 1;
 
+    &[aria-invalid='true'] {
+      + ${FauxCheckbox},
+        &:focus
+        + ${FauxCheckbox},
+        &:not(:checked):hover
+        + ${FauxCheckbox} {
+        border-color: ${({ theme }) => theme.colors.critical};
+      }
+      &:checked + ${FauxCheckbox} {
+        background: ${({ theme }) => theme.colors.critical};
+      }
+    }
     &:disabled {
       + ${FauxCheckbox}, &:not(:checked):hover + ${FauxCheckbox} {
         border-color: ${({ theme }) => theme.colors.ui2};
@@ -168,14 +180,6 @@ export const Checkbox = styled(
         + ${FauxCheckbox} {
           border-color: ${({ theme }) => theme.colors.ui5};
         }
-      }
-    }
-    &[aria-invalid='true'] {
-      + ${FauxCheckbox}, &:focus + ${FauxCheckbox}, &:hover + ${FauxCheckbox} {
-        border-color: ${({ theme }) => theme.colors.critical};
-      }
-      &:checked + ${FauxCheckbox} {
-        background: ${({ theme }) => theme.colors.critical};
       }
     }
   }
