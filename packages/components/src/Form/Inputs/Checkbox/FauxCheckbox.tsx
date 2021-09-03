@@ -31,7 +31,6 @@ export type FauxCheckboxProps = {
 }
 
 export const FauxCheckbox = styled.div<FauxCheckboxProps>`
-  align-items: center;
   background-color: ${({ isSelected, theme }) =>
     isSelected ? theme.colors.key : 'currentColor'};
   border: solid 2px
@@ -39,9 +38,8 @@ export const FauxCheckbox = styled.div<FauxCheckboxProps>`
       isSelected ? colors.key : colors.ui4};
   border-radius: ${({ theme }) => theme.radii.small};
   color: ${({ theme }) => theme.colors.keyText};
-  display: flex;
-  height: 100%;
-  justify-content: center;
-  position: relative;
-  width: 100%;
+  padding: ${({ theme }) => theme.space.u05};
+  svg {
+    display: block;
+  }
 `

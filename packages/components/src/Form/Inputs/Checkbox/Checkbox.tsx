@@ -132,8 +132,10 @@ export const Checkbox = styled(
   ${space}
   ${rippleStyle}
 
+  align-items: center;
+  display: flex;
   height: ${({ theme: { space } }) => space.u6};
-  padding: ${({ theme: { space } }) => space.u1};
+  justify-content: center;
   position: relative;
   width: ${({ theme: { space } }) => space.u6};
 
