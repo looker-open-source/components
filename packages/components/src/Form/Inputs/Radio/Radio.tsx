@@ -133,8 +133,10 @@ export const Radio = styled(
         }
       }
     }
-    &[aria-invalid='true'] + ${FauxRadio} {
-      color: ${({ theme }) => theme.colors.critical};
+    &[aria-invalid='true'] {
+      + ${FauxRadio}, &:focus + ${FauxRadio}, &:hover + ${FauxRadio} {
+        color: ${({ theme }) => theme.colors.critical};
+      }
     }
   }
 `
