@@ -170,7 +170,7 @@ export const Checkbox = styled(
         background: ${({ theme }) => theme.colors.ui2};
       }
     }
-    &:not(:checked):not([aria-invalid='true']) {
+    &:not(:checked):not([aria-invalid='true']):not(:disabled) {
       &:hover,
       &:focus {
         + ${FauxCheckbox} {

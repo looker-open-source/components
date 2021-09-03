@@ -128,7 +128,7 @@ export const Radio = styled(
         color: ${({ theme }) => theme.colors.ui2};
       }
     }
-    &:not(:checked):not([aria-invalid='true']) {
+    &:not(:checked):not([aria-invalid='true']):not(:disabled) {
       &:hover,
       &:focus {
         + ${FauxRadio} {
