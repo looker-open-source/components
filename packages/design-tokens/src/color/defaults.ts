@@ -43,6 +43,7 @@ const measure = '#C2772E'
 export const defaultCoreColors: CoreColors = {
   background: white,
   key: purple400,
+  pageBackground: white,
   text: charcoal800,
 }
 

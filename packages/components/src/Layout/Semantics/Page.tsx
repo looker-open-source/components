@@ -28,10 +28,9 @@ import styled from 'styled-components'
 import { Layout } from './Layout'
 
 export const Page = styled(Layout)`
-  ${({ fixed }) =>
-    fixed &&
-    `
-      height: 100vh;
-    `}
+  background: ${({ theme }) => theme.colors.pageBackground};
+  font-family: ${({ theme }) => theme.fonts.body};
+
+  ${({ fixed }) => fixed && `height: 100vh;`}
   width: 100%;
 `

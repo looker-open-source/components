@@ -2403,29 +2403,6 @@
     debug "^2.2.0"
     es6-promise "^4.2.8"
 
-"@looker/components@2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@looker/components/-/components-2.0.0.tgz#579e5c0823a8799e2806abc0a73369d19c4442ba"
-  integrity sha512-+o8Cgw2MPy7FRS1lVqNoGrWNsSyBtCN70KRWkLyl1QXwX/k6K9IqvDq5RbMa5seeumD9dm/L0xKTmwpE0YlXyA==
-  dependencies:
-    "@looker/components-providers" "^1.4.0"
-    "@looker/design-tokens" "^2.0.0"
-    "@popperjs/core" "^2.6.0"
-    "@styled-icons/material" "^10.34.0"
-    "@styled-icons/material-outlined" "^10.28.0"
-    "@styled-icons/material-rounded" "^10.28.0"
-    "@styled-icons/styled-icon" "^10.6.3"
-    d3-color "^2.0.0"
-    d3-hsv "^0.1.0"
-    hotkeys-js "^3.8.3"
-    i18next "20.3.1"
-    lodash "^4.17.20"
-    react-hotkeys-hook "2.3.1"
-    react-i18next "11.8.15"
-    resize-observer-polyfill "^1.5.1"
-    styled-system "^5.1.5"
-    uuid "^8.3.2"
-
 "@looker/embed-sdk@^1.6.0":
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/@looker/embed-sdk/-/embed-sdk-1.6.1.tgz#72035b07272ce111df6446198c965e42a5cdbd0f"
