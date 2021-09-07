@@ -28,7 +28,6 @@ export const coreColors: Array<keyof CoreColors> = ['key', 'background', 'text']
 
 export interface TextColor {
   /**
-   * TODO
    * Used for: Text
    * @default charcoal800
    */
@@ -42,6 +41,14 @@ export interface CoreColors extends TextColor {
    * @default white
    */
   background: string
+
+  /**
+   * Used as page background
+   * In some themes pageBackground and background have a subtle difference
+   * wherein the pageBackground is closer to `ui1` but blends are calculated
+   * from a more "absolute" background color (white or black)
+   */
+  pageBackground: string
 
   /**
    * Key color is applied strategically across the UI
