@@ -244,9 +244,8 @@ export const inputTextDisabled = css`
 
 const InputIconSize = css`
   height: ${({ theme }) => theme.sizes.medium};
-  width: ${({ theme }) => theme.sizes.medium};
+  max-width: ${({ theme }) => theme.sizes.medium};
 `
-
 export const ErrorIcon = styled(Error)`
   ${InputIconSize}
   color: ${({ theme }) => theme.colors.critical};
@@ -262,15 +261,13 @@ export const InputTextContent = styled.div<SpaceProps>`
 
   ${StyledIconBase} {
     color: ${({ theme }) => theme.colors.text1};
-    ${InputIconSize}
   }
 
   ${ErrorIcon} {
     color: ${({ theme }) => theme.colors.critical};
   }
   svg {
-    height: 100%;
-    width: 100%;
+    ${InputIconSize}
   }
 `
 
@@ -279,11 +276,11 @@ export const inputTextValidation = css<{ validationType?: 'error' }>`
     props.validationType === 'error'
       ? `
       border-color: ${props.theme.colors.critical};
-      :hover {
+      &:hover {
         border-color: ${props.theme.colors.critical};
       }
       &:focus,
-      :focus-within {
+      &:focus-within {
         border-color: ${props.theme.colors.critical};
         box-shadow: inset 0 0 0 1px ${props.theme.colors.critical};
       }
@@ -336,7 +333,7 @@ export const InputText = styled(InputComponent).attrs<InputTextProps>(
     ${inputTextHover}
   }
   &:focus,
-  :focus-within {
+  &:focus-within {
     ${inputTextFocus}
   }
   ${({ disabled }) => (disabled ? inputTextDisabled : '')}
