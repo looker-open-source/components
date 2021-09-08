@@ -114,6 +114,10 @@ export const TextArea = styled(TextAreaLayout).attrs<TextAreaProps>(
     vertical-align: top; /* textarea is inline-block so this removes 4px generated below */
     width: 100%;
 
+    ::placeholder {
+      color: ${({ theme }) => theme.colors.text2};
+    }
+
     &:hover {
       ${inputTextHover}
     }
