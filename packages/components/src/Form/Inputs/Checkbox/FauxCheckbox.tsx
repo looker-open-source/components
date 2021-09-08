@@ -32,7 +32,7 @@ export type FauxCheckboxProps = {
 }
 
 export const FauxCheckbox = styled.div<FauxCheckboxProps>`
-  background-color: ${({ isSelected, theme }) =>
+  background: ${({ isSelected, theme }) =>
     isSelected ? theme.colors.key : 'currentColor'};
   border: solid 2px
     ${({ isSelected, theme: { colors } }) =>
