@@ -75,7 +75,7 @@ export const AdvancedInputControls = styled(
             color="text1"
             fontSize="small"
             style={{ whiteSpace: 'nowrap' }}
-            pr="u1"
+            pr="u2"
           >
             {summary}
           </Span>
@@ -83,12 +83,13 @@ export const AdvancedInputControls = styled(
         {summary && showClear && <SearchControlDivider />}
         {showClear && (
           <IconButton
-            size="xsmall"
+            size="small"
             icon={<Close />}
             label={clearIconLabel}
             onClick={onClear}
             tooltipDisabled={disabled}
             disabled={disabled}
+            mr="u1"
           />
         )}
         {showClear && showCaret && <SearchControlDivider />}
@@ -96,6 +97,7 @@ export const AdvancedInputControls = styled(
           <CaretIcon
             icon={isVisibleOptions ? <ArrowDropUp /> : <ArrowDropDown />}
             data-testid="caret"
+            mr="u1"
           />
         )}
         {validationType === 'error' && (
@@ -106,17 +108,15 @@ export const AdvancedInputControls = styled(
   }
 )`
   align-items: center;
-  display: grid;
-  grid-auto-flow: column dense;
-  grid-gap: ${({ theme }) => theme.space.u1};
-  justify-items: center;
+  display: flex;
   max-height: 1.9rem;
   padding-right: ${({ theme }) => theme.space.u1};
 `
 
 const SearchControlDivider = styled.div`
   background: ${({ theme }) => theme.colors.ui2};
-  height: 70%;
+  height: ${({ theme }) => theme.space.u5};
+  margin-right: ${({ theme }) => theme.space.u1};
   width: 1px;
 `
 

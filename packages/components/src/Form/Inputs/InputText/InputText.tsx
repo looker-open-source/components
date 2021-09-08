@@ -79,7 +79,7 @@ export interface InputTextProps extends InputTextBaseProps {
   iconBefore?: IconType
 }
 
-const InputTextLayout = forwardRef(
+const InputComponent = forwardRef(
   (
     {
       autoResize,
@@ -215,7 +215,7 @@ const InputTextLayout = forwardRef(
   }
 )
 
-InputTextLayout.displayName = 'InputTextLayout'
+InputComponent.displayName = 'InputComponent'
 
 const StyledInput = styled.input`
   ${innerInputStyle}
@@ -302,7 +302,7 @@ export const inputCSS = css`
   font-size: ${({ theme: { fontSizes } }) => fontSizes.small};
 `
 
-export const InputText = styled(InputTextLayout).attrs<InputTextProps>(
+export const InputText = styled(InputComponent).attrs<InputTextProps>(
   ({ height = inputHeight, type = 'text' }) => ({
     height,
     type,

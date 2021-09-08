@@ -25,11 +25,9 @@
  */
 
 import React, { useState } from 'react'
-import { Close } from '@styled-icons/material-rounded/Close'
 import type { Story } from '@storybook/react/types-6-0'
 import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
 import { Space } from '../../../Layout'
-import { InputText } from '../InputText'
 import type { InputChipsProps } from './InputChips'
 import { InputChips } from './InputChips'
 
@@ -38,14 +36,11 @@ const chipValues = ['Looker', 'Google']
 const Template: Story<InputChipsProps> = ({ values = [], ...args }) => {
   const [controlledChips, setControlledChips] = useState(values)
   return (
-    <>
-      <InputChips
-        {...args}
-        values={controlledChips}
-        onChange={setControlledChips}
-      />
-      <InputText iconAfter={<Close />} />
-    </>
+    <InputChips
+      {...args}
+      values={controlledChips}
+      onChange={setControlledChips}
+    />
   )
 }
 
