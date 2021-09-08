@@ -26,6 +26,7 @@
 
 import styled from 'styled-components'
 import { reset } from '@looker/design-tokens'
+import { checkboxRadioHeight } from '../height'
 
 export const FauxRadio = styled.div`
   ${reset}
@@ -34,16 +35,18 @@ export const FauxRadio = styled.div`
   border-color: currentColor;
   border-radius: 50%;
   color: ${({ theme }) => theme.colors.ui4};
+  height: ${checkboxRadioHeight};
   padding: ${({ theme }) => theme.space.u05};
   transition: background-color 25ms linear, border-color 25ms linear,
     box-shadow 25ms linear;
+  width: ${checkboxRadioHeight};
 
   &::after {
     background: ${({ theme }) => theme.colors.field};
     border-radius: 50%;
     content: '';
     display: block;
-    height: 10px;
-    width: 10px;
+    height: 100%;
+    width: 100%;
   }
 `

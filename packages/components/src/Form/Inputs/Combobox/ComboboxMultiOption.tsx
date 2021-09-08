@@ -124,4 +124,7 @@ export const ComboboxMultiOption = styled(
   })
 )`
   ${comboboxOptionStyle}
+  ${FauxCheckbox} {
+    margin-top: 1px;
+  }
 `

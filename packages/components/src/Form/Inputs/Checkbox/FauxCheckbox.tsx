@@ -25,6 +25,7 @@
  */
 
 import styled from 'styled-components'
+import { checkboxRadioHeight } from '../height'
 
 export type FauxCheckboxProps = {
   isSelected?: boolean
@@ -38,8 +39,12 @@ export const FauxCheckbox = styled.div<FauxCheckboxProps>`
       isSelected ? colors.key : colors.ui4};
   border-radius: ${({ theme }) => theme.radii.small};
   color: ${({ theme }) => theme.colors.keyText};
-  padding: ${({ theme }) => theme.space.u05};
+  height: ${checkboxRadioHeight};
+  position: relative;
+  width: ${checkboxRadioHeight};
   svg {
-    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
   }
 `

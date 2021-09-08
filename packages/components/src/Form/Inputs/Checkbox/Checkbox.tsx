@@ -35,6 +35,7 @@ import { reset, space } from '@looker/design-tokens'
 import { mergeClassNames } from '../../../utils'
 import {
   inputRippleColor,
+  RIPPLE_RATIO,
   rippleHandlerKeys,
   rippleStyle,
   useRipple,
@@ -79,7 +80,7 @@ export const Checkbox = styled(
       color: inputRippleColor(isChecked !== false, validationType === 'error'),
       // Only define size for density -6,
       // to make the halo slightly bigger than the container
-      size: 1.167,
+      size: RIPPLE_RATIO,
     })
 
     const rippleHandlers = useRippleHandlers(
