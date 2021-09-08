@@ -234,6 +234,7 @@ export const inputTextFocus = css`
   box-shadow: inset 0 0 0 1px ${({ theme }) => theme.colors.key};
   outline: none;
 `
+
 export const inputTextDisabled = css`
   cursor: default;
   opacity: 0.25;
