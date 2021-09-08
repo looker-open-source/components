@@ -24,6 +24,7 @@
 
  */
 
+export * from './constants'
 export * from './inputRippleColor'
 export * from './rippleStyle'
 export * from './types'

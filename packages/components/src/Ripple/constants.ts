@@ -24,28 +24,10 @@
 
  */
 
-import { useTranslation } from 'react-i18next'
-import React from 'react'
-
-export const CheckMarkMixed = () => {
-  const { t } = useTranslation('CheckMarkMixed')
-  return (
-    <svg
-      width="14"
-      height="14"
-      viewBox="0 0 14 14"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <title>{t('Check Mark Mixed')}</title>
-      <g
-        stroke="currentColor"
-        strokeWidth="2"
-        fill="none"
-        strokeLinecap="round"
-      >
-        <line x1="4" y1="7" x2="10" y2="7"></line>
-      </g>
-    </svg>
-  )
-}
+/**
+ * The ratio of ripple size (28) to container size (24) in Checkbox and Radio at their
+ * smallest density – the only time the former exceeds the latter.
+ * Defined in the format required by CSS transform translate, to avoid the need
+ * for measurement or calculation.
+ */
+export const RIPPLE_RATIO = 1.167

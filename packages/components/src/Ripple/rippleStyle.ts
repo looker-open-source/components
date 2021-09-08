@@ -63,7 +63,7 @@ to {
  */
 export const rippleStyle = css`
   outline: none;
-  overflow: hidden;
+  overflow: var(--ripple-overflow);
   position: relative;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 

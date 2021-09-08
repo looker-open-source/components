@@ -98,7 +98,7 @@ export const ComboboxMultiOption = styled(
             isMulti={true}
           >
             <FauxCheckbox isSelected={isSelected}>
-              {isSelected && <CheckMark />}
+              <CheckMark />
             </FauxCheckbox>
           </ComboboxOptionIndicator>
           {children || <ComboboxOptionText highlightText={highlightText} />}
@@ -125,8 +125,6 @@ export const ComboboxMultiOption = styled(
 )`
   ${comboboxOptionStyle}
   ${FauxCheckbox} {
-    height: ${({ theme: { space } }) => space.u4};
-    margin-top: ${({ theme: { space } }) => space.u05};
-    width: ${({ theme: { space } }) => space.u4};
+    margin-top: 1px;
   }
 `

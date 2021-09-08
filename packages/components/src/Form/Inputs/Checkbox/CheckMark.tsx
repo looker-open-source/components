@@ -27,18 +27,15 @@
 import React from 'react'
 export const CheckMark = () => (
   <svg
-    width="16"
-    height="16"
-    viewBox="0 0 16 16"
+    width="15"
+    height="14"
+    viewBox="0 0 15 14"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
-      d="M4 8L7 11L12 4"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
+      d="M5.78626 9.15812L2.20407 5.58594L0.805634 6.99219L5.78626 11.9881L14.7863 2.98812L13.3763 1.57812L5.78626 9.15812Z"
+      fill="currentColor"
     />
   </svg>
 )

@@ -29,6 +29,7 @@ import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { act, fireEvent, screen } from '@testing-library/react'
 import { composeStories } from '@storybook/testing-react'
+import { RIPPLE_RATIO } from '../../../Ripple'
 import * as stories from './Radio.story'
 
 const { Basic, Disabled, DisabledChecked } = composeStories(stories)
@@ -101,9 +102,10 @@ describe('Radio', () => {
     expect(radio).not.toHaveClass('bg-on fg-in')
     expect(radio).toHaveStyle({
       '--ripple-color': '#71767a',
-      '--ripple-scale-end': '1',
+      '--ripple-overflow': 'visible',
+      '--ripple-scale-end': RIPPLE_RATIO.toString(),
       // This should change to 0.1 when brandAnimation default becomes true
-      '--ripple-scale-start': '1',
+      '--ripple-scale-start': RIPPLE_RATIO.toString(),
       '--ripple-size': '100%',
       '--ripple-translate': '0, 0',
     })

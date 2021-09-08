@@ -33,6 +33,7 @@ import { reset, space } from '@looker/design-tokens'
 import { mergeClassNames } from '../../../utils'
 import {
   inputRippleColor,
+  RIPPLE_RATIO,
   rippleHandlerKeys,
   rippleStyle,
   useRipple,
@@ -63,6 +64,9 @@ export const Radio = styled(
         props.checked === true,
         validationType === 'error'
       ),
+      // Only define size for density -6,
+      // to make the halo slightly bigger than the container
+      size: RIPPLE_RATIO,
     })
 
     const rippleHandlers = useRippleHandlers(
@@ -93,13 +97,14 @@ export const Radio = styled(
   ${space}
   ${rippleStyle}
 
+  align-items: center;
+  display: flex;
   height: ${({ theme: { space } }) => space.u6};
-  padding: ${({ theme: { space } }) => space.u1};
+  justify-content: center;
   position: relative;
   width: ${({ theme: { space } }) => space.u6};
 
   input {
-    background: ${({ theme }) => theme.colors.field};
     height: 100%;
     left: 0;
     margin: 0;
@@ -109,36 +114,28 @@ export const Radio = styled(
     width: 100%;
     z-index: 1;
 
+    &:checked + ${FauxRadio} {
+      color: ${({ theme }) => theme.colors.key};
+      &::after {
+        background: currentColor;
+      }
+    }
+    &[aria-invalid='true'] + ${FauxRadio} {
+      color: ${({ theme }) => theme.colors.critical};
+    }
     &:disabled {
       cursor: not-allowed;
+      + ${FauxRadio}, &:not(:checked):hover + ${FauxRadio} {
+        color: ${({ theme }) => theme.colors.ui2};
+      }
     }
-  }
-
-  input + ${FauxRadio} {
-    border-color: ${({ theme, validationType }) =>
-      validationType === 'error'
-        ? theme.colors.criticalBorder
-        : theme.colors.ui2};
-  }
-
-  input:checked + ${FauxRadio} {
-    color: ${({ theme }) => theme.colors.key};
-  }
-
-  input:not(:checked) + ${FauxRadio} {
-    background: ${({ theme }) => theme.colors.field};
-  }
-
-  input:disabled + ${FauxRadio} {
-    color: ${({ theme }) => theme.colors.text1};
-  }
-
-  input:disabled:not(:checked) + ${FauxRadio} {
-    background: ${({ theme }) => theme.colors.ui1};
-    color: transparent;
-
-    &::after {
-      background: ${({ theme }) => theme.colors.ui1};
+    &:not(:checked):not([aria-invalid='true']):not(:disabled) {
+      &:hover,
+      &:focus {
+        + ${FauxRadio} {
+          color: ${({ theme }) => theme.colors.ui5};
+        }
+      }
     }
   }
 `
