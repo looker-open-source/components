@@ -34,16 +34,10 @@ export interface CodeProps extends TextBaseProps {
 }
 
 export const Code = styled(TextBase).attrs<CodeProps>(
-  ({
-    color = 'text5',
-    fontFamily = 'code',
-    fontSize = 'medium',
-    lineHeight,
-  }) => ({
+  ({ color = 'text5', fontFamily = 'code', fontSize, lineHeight }) => ({
     as: 'code',
     color,
     fontFamily,
-    fontSize,
     lineHeight: lineHeight || fontSize,
   })
 )<CodeProps>``
