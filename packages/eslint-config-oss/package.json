@@ -8,7 +8,6 @@
   },
   "sideEffects": false,
   "dependencies": {
-    "@types/vfile-message": "^2.0.0",
     "@typescript-eslint/eslint-plugin": "^4.29.2",
     "@typescript-eslint/parser": "^4.31.0",
     "eslint": "^7.32.0",
