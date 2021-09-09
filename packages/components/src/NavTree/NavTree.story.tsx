@@ -84,9 +84,9 @@ export const ParentIcon = () => {
   )
 }
 
-const FocusTemplate: Story<NavTreeProps> = (args) => (
+const FocusTemplate: Story<NavTreeProps> = ({ label = 'Cheeses', ...args }) => (
   <NavList>
-    <NavTree defaultOpen label="Cheeses" {...args} />
+    <NavTree defaultOpen label={label} {...args} />
   </NavList>
 )
 
