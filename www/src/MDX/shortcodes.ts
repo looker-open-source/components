@@ -24,10 +24,11 @@
 
  */
 
+import { colorBreakdown } from '@looker/design-tokens/src/color/utils/colorBreakdown'
 export * from '../documentation/foundations/demos'
 export * from '../documentation/components/content/demos'
 export * from '../documentation/components/date/demos'
 export * from '../documentation/components/ImportMessage'
 export * from '../documentation/components/layout/demos'
-export { colorBreakdown } from '@looker/design-tokens/src/color/utils/colorBreakdown'
 export * from '../components/'
+export { colorBreakdown }
