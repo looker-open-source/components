@@ -28,7 +28,7 @@ import 'jest-styled-components'
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { screen } from '@testing-library/react'
-import { Basic, FixedWithFooterAndHeaderShadow } from './Layout.story'
+import { Basic, FixedWithFooterAndHeaderShadow } from './Layout.stories'
 
 describe('Semantic Layout', () => {
   test('render Layout', () => {

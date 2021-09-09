@@ -16,10 +16,7 @@
     "**/*.spec.ts",
     "**/*.spec.tsx",
     "**/*.stories.tsx",
-    "**/*.story.tsx",
     "**/stories/*",
-    "**/*.test.ts",
-    "**/*.test.tsx"
   ],
   "include": ["types"]
 }

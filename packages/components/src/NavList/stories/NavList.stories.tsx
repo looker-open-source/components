@@ -41,7 +41,7 @@ export default {
   title: 'NavList',
 }
 
-export * from './LeftNav.story'
+export * from './LeftNav.stories'
 
 export const Basic = () => {
   const [selected, setSelected] = useState(false)

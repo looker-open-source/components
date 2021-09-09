@@ -37,7 +37,7 @@ export default {
   title: 'LkFieldTree',
 }
 
-export * from './FieldPicker.story'
+export * from './FieldPicker.stories'
 
 const Template: Story<Omit<LkFieldTreeProps, 'label'>> = (args) => (
   <TreeCollection>

@@ -27,7 +27,7 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { ComponentsProvider } from '@looker/components'
-import { PerformanceTest } from '@looker/components/src/Tooltip/Tooltip.story'
+import { PerformanceTest } from '@looker/components/src/Tooltip/Tooltip.stories'
 
 const App = () => {
   return (

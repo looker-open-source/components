@@ -30,7 +30,7 @@ import 'jest-styled-components'
 import React, { useState } from 'react'
 import userEvent from '@testing-library/user-event'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { Nested } from './Panel.story'
+import { Nested } from './Panel.stories'
 import { Panel, Panels, usePanel } from './'
 
 const globalConsole = global.console

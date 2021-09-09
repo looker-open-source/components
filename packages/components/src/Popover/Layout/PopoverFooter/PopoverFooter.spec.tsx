@@ -27,7 +27,7 @@
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { screen } from '@testing-library/react'
-import { Basic, FooterClose, FooterWithChildren } from './PopoverFooter.story'
+import { Basic, FooterClose, FooterWithChildren } from './PopoverFooter.stories'
 
 describe('PopoverFooter', () => {
   test('basic ', () => {

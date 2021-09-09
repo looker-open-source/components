@@ -30,7 +30,7 @@ import { renderWithTheme } from '@looker/components-test-utils'
 import { act, fireEvent, screen } from '@testing-library/react'
 import { composeStories } from '@storybook/testing-react'
 import { RIPPLE_RATIO } from '../../../Ripple'
-import * as stories from './Radio.story'
+import * as stories from './Radio.stories'
 
 const { Basic, Disabled, DisabledChecked } = composeStories(stories)
 

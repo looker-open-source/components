@@ -31,7 +31,7 @@ import userEvent from '@testing-library/user-event'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { screen } from '@testing-library/react'
 import { FieldToggleSwitch } from './FieldToggleSwitch'
-import * as stories from './FieldToggleSwitch.story'
+import * as stories from './FieldToggleSwitch.stories'
 
 const { Tabstops } = composeStories(stories)
 

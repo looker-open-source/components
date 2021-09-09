@@ -28,7 +28,7 @@ import 'jest-styled-components'
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { screen } from '@testing-library/react'
-import { Basic } from './PopoverContent.story'
+import { Basic } from './PopoverContent.stories'
 import { PopoverContent } from './PopoverContent'
 
 describe('PopoverContent', () => {

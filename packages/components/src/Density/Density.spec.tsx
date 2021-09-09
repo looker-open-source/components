@@ -28,7 +28,7 @@ import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { composeStories } from '@storybook/testing-react'
 import { screen } from '@testing-library/react'
-import * as stories from './Density.story'
+import * as stories from './Density.stories'
 const { Basic, Plus1, Minus3 } = composeStories(stories)
 
 describe('Density', () => {

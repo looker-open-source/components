@@ -59,8 +59,7 @@ ${head}
 ${defaultPreviewHead}
   `,
   stories: [
-    '../src/**/*.stories.tsx',
-    '../../packages/**/*.story.tsx',
+    '../../packages/**/*.stories.mdx',
     '../../packages/**/*.stories.tsx',
   ],
   webpackFinal: async (config) => {
