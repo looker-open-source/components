@@ -94,7 +94,6 @@ export const LkFieldItem = styled(
     }
     const [ariaProps, wrapperProps] = partitionAriaProps(restProps)
     const [inside, outside] = createListItemPartitions({
-      color,
       density: lkFieldItemDensity,
       ...restProps,
       ...statefulProps,

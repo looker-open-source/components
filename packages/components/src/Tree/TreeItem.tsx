@@ -125,7 +125,6 @@ export const TreeItem = styled(
     }
     const [ariaProps, wrapperProps] = partitionAriaProps(restProps)
     const [inside, outside] = createListItemPartitions({
-      color,
       density,
       ...restProps,
       ...statefulProps,

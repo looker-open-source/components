@@ -52,9 +52,12 @@ export default {
   title: 'Tree',
 }
 
-const Template: Story<TreeProps> = (args) => (
+const Template: Story<TreeProps> = ({
+  label = <strong>Orders</strong>,
+  ...args
+}) => (
   <TreeCollection>
-    <Tree label={<strong>Orders</strong>} {...args}>
+    <Tree label={label} {...args}>
       <Tree label={<strong>Orders</strong>} defaultOpen>
         <TreeItem>ID</TreeItem>
         <TreeItem>Status</TreeItem>
