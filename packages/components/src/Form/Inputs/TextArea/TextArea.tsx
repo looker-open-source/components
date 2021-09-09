@@ -95,9 +95,10 @@ export const TextArea = styled(TextAreaLayout).attrs<TextAreaProps>(
   width: 100%;
 
   ${ErrorIcon} {
+    pointer-events: none;
     position: absolute;
-    right: 0.5rem;
-    top: 0.5rem;
+    right: calc(${({ theme }) => theme.space.u3} + 1px);
+    top: calc(${({ theme }) => theme.space.u3} / 2);
   }
 
   textarea {
@@ -106,10 +107,15 @@ export const TextArea = styled(TextAreaLayout).attrs<TextAreaProps>(
     ${simpleLayoutCSS}
     ${inputCSS}
     padding: ${({ theme }) => `${theme.space.u2} ${theme.space.u3}`};
-    padding-right: ${({ theme }) => theme.space.u8};
+    padding-right: ${({ theme, validationType }) =>
+      validationType === 'error' && theme.space.u10};
     ${textAreaResize}
     vertical-align: top; /* textarea is inline-block so this removes 4px generated below */
     width: 100%;
+
+    ::placeholder {
+      color: ${({ theme }) => theme.colors.text2};
+    }
 
     &:hover {
       ${inputTextHover}

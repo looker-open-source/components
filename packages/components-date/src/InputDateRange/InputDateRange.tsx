@@ -38,6 +38,8 @@ import { useTranslation } from 'react-i18next'
 import type { ValidationType } from '@looker/components'
 import {
   inputCSS,
+  inputHeight,
+  InputTextContent,
   InlineInputTextBase,
   inputTextHover,
   inputTextFocus,
@@ -363,55 +365,55 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
             inputs.from.isValid && inputs.to.isValid ? undefined : 'error'
           }
         >
-          <InputTextWrapper inputLength={inputs.from.value.length}>
-            <VisuallyHidden id={startDateLabelledby}>
-              {t('Start date')}
-            </VisuallyHidden>
-            <InlineInputTextBase
-              placeholder={`${formatDateString(
-                new Date(Date.now()),
-                dateStringLocale
-              )}`}
-              disabled={disabled}
-              data-testid="date-from-text-input"
-              fontSize="small"
-              id={fromID}
-              onBlur={handleValidation}
-              onChange={handleTextInputChange}
-              onFocus={partial(handleTextInputFocus, 'from')}
-              readOnly={readOnly}
-              value={inputs.from.value}
-              aria-labelledby={`${ariaLabelledby} ${startDateLabelledby}`}
-            />
-          </InputTextWrapper>
+          <VisuallyHidden id={startDateLabelledby}>
+            {t('Start date')}
+          </VisuallyHidden>
+          <InlineInputTextBase
+            placeholder={`${formatDateString(
+              new Date(Date.now()),
+              dateStringLocale
+            )}`}
+            disabled={disabled}
+            data-testid="date-from-text-input"
+            fontSize="small"
+            id={fromID}
+            onBlur={handleValidation}
+            onChange={handleTextInputChange}
+            onFocus={partial(handleTextInputFocus, 'from')}
+            readOnly={readOnly}
+            value={inputs.from.value}
+            aria-labelledby={`${ariaLabelledby} ${startDateLabelledby}`}
+          />
           <HyphenWrapper
             hasInputValues={!isEmpty(dateRange)}
             aria-hidden="true"
           >
             &ndash;
           </HyphenWrapper>
-          <InputTextWrapper inputLength={inputs.to.value.length}>
-            <VisuallyHidden id={endDateLabelledby}>
-              {t('End date')}
-            </VisuallyHidden>
-            <InlineInputTextBase
-              placeholder={formatDateString(
-                new Date(Date.now()),
-                dateStringLocale
-              )}
-              disabled={disabled}
-              fontSize="small"
-              data-testid="date-to-text-input"
-              id={toID}
-              onBlur={handleValidation}
-              onChange={handleTextInputChange}
-              onFocus={partial(handleTextInputFocus, 'to')}
-              readOnly={readOnly}
-              value={inputs.to.value}
-              aria-labelledby={`${ariaLabelledby} ${endDateLabelledby}`}
-            />
-          </InputTextWrapper>
-          {(inputs.from.isValid && inputs.to.isValid) || <ErrorIcon />}
+          <VisuallyHidden id={endDateLabelledby}>
+            {t('End date')}
+          </VisuallyHidden>
+          <InlineInputTextBase
+            placeholder={formatDateString(
+              new Date(Date.now()),
+              dateStringLocale
+            )}
+            disabled={disabled}
+            fontSize="small"
+            data-testid="date-to-text-input"
+            id={toID}
+            onBlur={handleValidation}
+            onChange={handleTextInputChange}
+            onFocus={partial(handleTextInputFocus, 'to')}
+            readOnly={readOnly}
+            value={inputs.to.value}
+            aria-labelledby={`${ariaLabelledby} ${endDateLabelledby}`}
+          />
+          {(inputs.from.isValid && inputs.to.isValid) || (
+            <InputTextContent pr="u2">
+              <ErrorIcon />
+            </InputTextContent>
+          )}
         </InputTextGroupWrapper>
         <MultiCalendarLayout>
           <VisuallyHidden aria-live="assertive">{monthTitle}</VisuallyHidden>
@@ -452,8 +454,10 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
 InputDateRange.displayName = 'InputDateRange'
 
 const HyphenWrapper = styled.div<{ hasInputValues: boolean }>`
+  align-items: center;
   color: ${({ theme, hasInputValues }) =>
     hasInputValues ? theme.colors.text3 : theme.colors.text1};
+  display: flex;
 `
 const InputDateRangeWrapper = styled.div`
   width: 100%;
@@ -484,12 +488,12 @@ interface InputTextGroupWrapperProps {
 
 const InputTextGroupWrapper = styled.div<InputTextGroupWrapperProps>`
   ${inputCSS}
-  align-items: center;
+  align-items: stretch;
   display: grid;
   font-family: ${({ theme }) => theme.fonts.body};
-  grid-gap: ${({ theme }) => theme.space.u2};
   grid-template-columns: auto auto auto 1fr;
-  padding: 0 ${({ theme: { space } }) => space.u3};
+  height: ${inputHeight};
+  padding: ${({ theme: { space } }) => `${space.u05} ${space.u1}`};
   width: 100%;
   &:hover {
     ${inputTextHover}
@@ -503,20 +507,21 @@ const InputTextGroupWrapper = styled.div<InputTextGroupWrapperProps>`
 
   ${({ disabled }) => disabled && inputTextDisabled}
 
-  ${ErrorIcon} {
+  ${InputTextContent} {
     justify-self: right;
-    margin-right: ${({ theme }) => theme.space.u1};
   }
-`
 
-const InputTextWrapper = styled.div<{ inputLength: number }>`
-  padding: ${({ theme: { space } }) => space.u1} 0;
+  input {
+    font-family: inherit;
+  }
   ${InlineInputTextBase} {
-    align-self: center;
-    height: ${({ theme }) => theme.lineHeights.large};
-
+    margin: ${({ theme }) => theme.space.u05} 0;
     &:focus-within {
       background: ${({ theme }) => theme.colors.keyAccent};
+    }
+    input,
+    span {
+      padding: 0 ${({ theme }) => theme.space.u2};
     }
   }
 `

@@ -27,11 +27,10 @@ import type { FC } from 'react'
 import React from 'react'
 import type { RangeModifier } from 'react-day-picker'
 import DayPicker, { LocaleUtils } from 'react-day-picker'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import has from 'lodash/has'
 import noop from 'lodash/noop'
 import { reset, calendarMixColor } from '@looker/design-tokens'
-import { inputTextFocus } from '@looker/components'
 import { calendarSize, calendarSpacing } from './calendar-size'
 import { CalendarContext } from './CalendarContext'
 import { CalendarNav } from './CalendarNav'
@@ -124,12 +123,15 @@ export const Calendar = styled(InternalCalendar).attrs(() => ({
   ${calendarSpacing}
 
   .DayPicker-wrapper {
-    border: 1px solid transparent;
-    padding: 0;
+    border: 2px solid transparent;
 
     &:focus {
       outline: none;
-      ${({ disabled }) => !disabled && inputTextFocus}
+      ${({ disabled }) =>
+        !disabled &&
+        css`
+          border-color: ${({ theme }) => theme.colors.key};
+        `}
     }
   }
   .DayPicker-Month {

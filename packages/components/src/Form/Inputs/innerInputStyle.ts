@@ -29,8 +29,9 @@ import { css } from 'styled-components'
 export const innerInputStyle = css`
   background: transparent;
   border: none;
-  caret-color: ${({ theme }) => theme.colors.text5};
+  caret-color: ${({ theme }) => theme.colors.key};
   color: inherit;
+  font-family: inherit;
   height: 100%;
   outline: none;
   width: 100%;
@@ -43,6 +44,6 @@ export const innerInputStyle = css`
   }
 
   ::placeholder {
-    color: ${({ theme }) => theme.colors.text1};
+    color: ${({ theme }) => theme.colors.text2};
   }
 `

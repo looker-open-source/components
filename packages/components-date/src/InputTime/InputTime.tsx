@@ -42,7 +42,9 @@ import type { SimpleLayoutProps, ValidationType } from '@looker/components'
 import {
   ErrorIcon,
   getAutoFocusProps,
+  InputTextContent,
   inputCSS,
+  inputHeight,
   innerInputStyle,
   inputTextHover,
   inputTextFocus,
@@ -513,7 +515,11 @@ const InputTimeInternal = forwardRef(
         ) : (
           <span />
         )}
-        {validationType && <ErrorIcon />}
+        {validationType && (
+          <InputTextContent pr="u2">
+            <ErrorIcon />
+          </InputTextContent>
+        )}
       </div>
     )
   }
@@ -529,11 +535,10 @@ const StyledInput = styled.input
   ${innerInputStyle}
   font-family: inherit;
   font-size: ${({ theme }) => theme.fontSizes.small};
-  height: 34px;
   line-height: ${({ theme }) => theme.lineHeights.medium};
   padding: 0;
   text-align: center;
-  width: 1.25rem;
+  width: ${({ theme }) => theme.space.u5};
 
   &:focus {
     background: ${({ theme }) => theme.colors.keyAccent};
@@ -548,9 +553,11 @@ export const InputTime = styled(InputTimeInternal)`
   display: inline-grid;
   grid-gap: 0.15rem;
   grid-template-columns: auto auto auto auto 1fr;
-  padding: 0 ${({ theme }) => theme.space.u2};
+  height: ${inputHeight};
+  padding: ${({ theme: { space } }) =>
+    `${space.u05} ${space.u1} ${space.u05} ${space.u3}`};
 
-  ${ErrorIcon} {
+  ${InputTextContent} {
     justify-self: end;
   }
 
