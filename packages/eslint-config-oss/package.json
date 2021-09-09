@@ -10,7 +10,7 @@
   "dependencies": {
     "@types/vfile-message": "^2.0.0",
     "@typescript-eslint/eslint-plugin": "^4.29.2",
-    "@typescript-eslint/parser": "^4.29.2",
+    "@typescript-eslint/parser": "^4.31.0",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "8.3.0",
     "eslint-config-standard": "16.0.3",
@@ -30,7 +30,7 @@
     "eslint-plugin-standard": "5.0.0",
     "eslint-plugin-testing-library": "4.11.0",
     "prettier": "^2.3.1",
-    "typescript": "4.3.4"
+    "typescript": "4.4.2"
   },
   "gitHead": "62febc162e3e45124f403e2c84fc741f68fe6714"
 }
