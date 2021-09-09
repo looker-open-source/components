@@ -1144,7 +1144,7 @@
     core-js-pure "^3.15.0"
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.10.0", "@babel/runtime@^7.10.2", "@babel/runtime@^7.10.5", "@babel/runtime@^7.12.0", "@babel/runtime@^7.12.1", "@babel/runtime@^7.12.13", "@babel/runtime@^7.12.5", "@babel/runtime@^7.13.10", "@babel/runtime@^7.14.0", "@babel/runtime@^7.14.5", "@babel/runtime@^7.3.1", "@babel/runtime@^7.4.5", "@babel/runtime@^7.5.0", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.6", "@babel/runtime@^7.8.4", "@babel/runtime@^7.9.2", "@babel/runtime@^7.9.6":
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.10.0", "@babel/runtime@^7.10.2", "@babel/runtime@^7.10.5", "@babel/runtime@^7.12.0", "@babel/runtime@^7.12.1", "@babel/runtime@^7.12.5", "@babel/runtime@^7.13.10", "@babel/runtime@^7.14.0", "@babel/runtime@^7.14.5", "@babel/runtime@^7.3.1", "@babel/runtime@^7.4.5", "@babel/runtime@^7.5.0", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.6", "@babel/runtime@^7.8.4", "@babel/runtime@^7.9.2", "@babel/runtime@^7.9.6":
   version "7.14.6"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.14.6.tgz#535203bc0892efc7dec60bdc27b2ecf6e409062d"
   integrity sha512-/PCB2uJ7oM44tz8YhC4Z/6PeOKXp4K588f+5M3clr1M4zbqztlo0XEfJ2LEzj/FgwfgGcIdl8n7YYjTCI0BYwg==
@@ -3722,31 +3722,23 @@
     resolve-from "^5.0.0"
     store2 "^2.12.0"
 
-"@styled-icons/material-outlined@10.28.0", "@styled-icons/material-outlined@^10.28.0":
-  version "10.28.0"
-  resolved "https://registry.yarnpkg.com/@styled-icons/material-outlined/-/material-outlined-10.28.0.tgz#57d34c7a417bb79cf930bf1302aa8b463de1bcad"
-  integrity sha512-TXCYrBeR5YXDziNMDAO6ZpKVjWvWaWmhBvF/vTvL6sME5zazk9sToyRJ6i/+DZGNH8wD7+635e8hkZAYPp++/A==
+"@styled-icons/material-outlined@10.34.0":
+  version "10.34.0"
+  resolved "https://registry.yarnpkg.com/@styled-icons/material-outlined/-/material-outlined-10.34.0.tgz#5da422bc14dbc0ad0b4e7e15153056866f42f37b"
+  integrity sha512-scn3Ih15t82rUJPI9vwnZaYL6ZiDhlYoashIJAs8c8QjJfK0rWdt+hr3E6/0wixx67BkLB3j96Jn9y+qXfVVIQ==
   dependencies:
-    "@babel/runtime" "^7.12.13"
-    "@styled-icons/styled-icon" "^10.6.0"
+    "@babel/runtime" "^7.14.0"
+    "@styled-icons/styled-icon" "^10.6.3"
 
-"@styled-icons/material-rounded@10.28.0", "@styled-icons/material-rounded@^10.28.0":
-  version "10.28.0"
-  resolved "https://registry.yarnpkg.com/@styled-icons/material-rounded/-/material-rounded-10.28.0.tgz#d73fd9d2c981ca51b206e7fec7e5159486e2fbd9"
-  integrity sha512-qNnsrkdAwSaiakh7xPVVucP0XnDQ0UwaODpQ1cxASZ6+7XPJHsOxYd+VTTSn3h99Unzp4QJltrBaz//Ky6zSGw==
+"@styled-icons/material-rounded@10.34.0":
+  version "10.34.0"
+  resolved "https://registry.yarnpkg.com/@styled-icons/material-rounded/-/material-rounded-10.34.0.tgz#8a8a1c35215a9c035da51ae5e4797821e5d07a23"
+  integrity sha512-Y2QB3bz+tDmrtcgNXKIPnw8xqarObpcFxOapkP3pMDGl+guCgV5jNHrE8xTKyN5lYYQmm9oBZ5odwgT3B+Uw5g==
   dependencies:
-    "@babel/runtime" "^7.12.13"
-    "@styled-icons/styled-icon" "^10.6.0"
+    "@babel/runtime" "^7.14.0"
+    "@styled-icons/styled-icon" "^10.6.3"
 
-"@styled-icons/material@10.28.0":
-  version "10.28.0"
-  resolved "https://registry.yarnpkg.com/@styled-icons/material/-/material-10.28.0.tgz#9437b6a0acffcefb578247f349c2972403334244"
-  integrity sha512-+401y79/qclNEMVbkAy98sJbBazeX/0k0DuPsULikAa+GDmmfzwk+xi9HloQa1Gsyc9/Zbnc5Hf7rFiJcukfbA==
-  dependencies:
-    "@babel/runtime" "^7.12.13"
-    "@styled-icons/styled-icon" "^10.6.0"
-
-"@styled-icons/material@^10.34.0":
+"@styled-icons/material@10.34.0":
   version "10.34.0"
   resolved "https://registry.yarnpkg.com/@styled-icons/material/-/material-10.34.0.tgz#479bd36834d26e2b8e2ed06813a141a578ea6008"
   integrity sha512-BQCyzAN0RhkpI6mpIP7RvUoZOZ15d5opKfQRqQXVOfKD3Dkyi26Uog1KTuaaa/MqtqrWaYXC6Y1ypanvfpyL2g==
@@ -3754,7 +3746,7 @@
     "@babel/runtime" "^7.14.0"
     "@styled-icons/styled-icon" "^10.6.3"
 
-"@styled-icons/styled-icon@^10.6.0", "@styled-icons/styled-icon@^10.6.3":
+"@styled-icons/styled-icon@^10.6.3":
   version "10.6.3"
   resolved "https://registry.yarnpkg.com/@styled-icons/styled-icon/-/styled-icon-10.6.3.tgz#eae0e5e18fd601ac47e821bb9c2e099810e86403"
   integrity sha512-/A95L3peioLoWFiy+/eKRhoQ9r/oRrN/qzbSX4hXU1nGP2rUXcX3LWUhoBNAOp9Rw38ucc/4ralY427UUNtcGQ==

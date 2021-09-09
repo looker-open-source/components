@@ -11,8 +11,8 @@
   "dependencies": {
     "@looker/components": "*",
     "@looker/design-tokens": "*",
-    "@styled-icons/material": "^10.34.0",
-    "@styled-icons/material-outlined": "^10.28.0"
+    "@styled-icons/material": "10.34.0",
+    "@styled-icons/material-outlined": "10.34.0"
   },
   "devDependencies": {
     "lodash": "*",
