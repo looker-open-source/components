@@ -1,6 +1,6 @@
----
-title: Color
----
+import { Meta } from '@storybook/addon-docs'
+
+<Meta title="Docs/Foundations/Color" />
 
 import { theme } from '@looker/design-tokens'
 import { colorBreakdown } from '@looker/design-tokens/src/color/utils/colorBreakdown'
@@ -9,6 +9,8 @@ import { ColorBlendsGrid } from './demos/ColorBlendsGrid'
 
 export const colors = colorBreakdown(theme.colors)
 export const { core, derivative, intent, text, ui } = colors.divided
+
+# Color
 
 ## Core Colors
 

@@ -29,13 +29,13 @@ import React from 'react'
 import {
   Code,
   Text,
+  Table,
   TableBody,
   TableDataCell,
   TableHead,
   TableHeaderCell,
   TableRow,
 } from '@looker/components'
-import { DocTable } from '../../../components'
 
 const breakpointLabels = [
   'Breakpoint',
@@ -114,7 +114,7 @@ export const BreakpointTable: FC<BreakpointTableProps> = ({
   breakpoints = breakpointList,
   labels = breakpointLabels,
 }) => (
-  <DocTable>
+  <Table>
     <TableHead>
       <TableRow>{labels.map((label, i) => TableLabel(label, i))}</TableRow>
     </TableHead>
@@ -123,5 +123,5 @@ export const BreakpointTable: FC<BreakpointTableProps> = ({
         BreakpointRow(bp.slot, bp.starts, bp.rem, bp.description, i)
       )}
     </TableBody>
-  </DocTable>
+  </Table>
 )

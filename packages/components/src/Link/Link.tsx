@@ -59,11 +59,6 @@ export interface LinkProps
   isExternal?: boolean
 }
 
-/**
- * `target="_blank" can be used to reverse tab-nab
- * https://owasp.org/www-community/attacks/Reverse_Tabnabbing
- */
-
 const ExternalLinkIndicator = styled(Launch)`
   height: ${({ theme }) => theme.sizes.xxsmall};
   margin-left: ${({ theme }) => theme.space.u1};
@@ -79,6 +74,10 @@ const ExternalLinkIndicator = styled(Launch)`
 const generateLinkTypes = ({ isExternal, rel, target }: LinkProps) => {
   const linkTypes = rel ? rel.split(' ') : []
 
+  /**
+   * `target="_blank" can be used to reverse tab-nab
+   * https://owasp.org/www-community/attacks/Reverse_Tabnabbing
+   */
   if (target === '_blank') {
     linkTypes.push('noopener', 'noreferrer')
   } else if (isExternal) {
@@ -138,5 +137,9 @@ export const Link = styled(LinkLayout)`
       keyColor ? colors.keyInteractive : colors.linkInteractive};
     outline: none;
     text-decoration: underline;
+
+    button {
+      text-decoration: none;
+    }
   }
 `

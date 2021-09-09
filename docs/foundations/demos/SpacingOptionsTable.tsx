@@ -29,6 +29,7 @@ import React from 'react'
 import {
   Code,
   Text,
+  Table,
   TableBody,
   TableDataCell,
   TableHead,
@@ -36,7 +37,6 @@ import {
   TableRow,
   theme,
 } from '@looker/components'
-import { DocTable } from '../../../components'
 
 const spacingExamples = [
   { label: 'xxxsmall', px: '2', rem: '0.125rem' },
@@ -109,7 +109,7 @@ const SpacingRow = (px: number, rem: string, key: number, label: string) => {
 
 export const SpacingOptionsTable = () => {
   return (
-    <DocTable>
+    <Table>
       <TableHead>
         <TableRow>
           {spacingLabels.map((label, i) => {
@@ -127,13 +127,13 @@ export const SpacingOptionsTable = () => {
           )
         })}
       </TableBody>
-    </DocTable>
+    </Table>
   )
 }
 
 export const LegacySpaceTable = () => {
   return (
-    <DocTable>
+    <Table>
       <TableHead>
         <TableRow>
           <TableHeaderCell>New Value</TableHeaderCell>
@@ -152,6 +152,6 @@ export const LegacySpaceTable = () => {
           )
         })}
       </TableBody>
-    </DocTable>
+    </Table>
   )
 }

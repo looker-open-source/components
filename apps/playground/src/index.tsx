@@ -26,13 +26,22 @@
 
 import React from 'react'
 import { render } from 'react-dom'
-import { ComponentsProvider } from '@looker/components'
-import { PerformanceTest } from '@looker/components/src/Tooltip/Tooltip.story'
+import { ComponentsProvider, Button, Link, Space } from '@looker/components'
 
 const App = () => {
   return (
     <ComponentsProvider>
-      <PerformanceTest />
+      <Space>
+        <Link href="hi">Link</Link>
+
+        <Link href="hi">
+          <Button>Button</Button>
+        </Link>
+
+        <a href="hi">
+          <Button>Button</Button>
+        </a>
+      </Space>
     </ComponentsProvider>
   )
 }

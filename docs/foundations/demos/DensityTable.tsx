@@ -28,6 +28,7 @@ import React from 'react'
 import {
   Box2,
   Code,
+  Table,
   TableBody,
   TableDataCell,
   TableHead,
@@ -38,7 +39,6 @@ import {
   listItemDimensions,
 } from '@looker/components'
 import type { DensityRamp } from '@looker/design-tokens'
-import { DocTable } from '../../../components'
 
 const DensityRow = ({ density }: { density: DensityRamp }) => (
   <TableRow>
@@ -62,7 +62,7 @@ const DensityRow = ({ density }: { density: DensityRamp }) => (
 )
 
 export const DensityTable = () => (
-  <DocTable maxWidth="1200px">
+  <Table maxWidth="1200px">
     <TableHead>
       <TableRow>
         <TableHeaderCell>Example</TableHeaderCell>
@@ -76,5 +76,5 @@ export const DensityTable = () => (
         <DensityRow key={d} density={d} />
       ))}
     </TableBody>
-  </DocTable>
+  </Table>
 )

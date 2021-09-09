@@ -1,12 +1,14 @@
----
-title: 2. Extending
----
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks'
+
+<Meta title="Docs/Develop/Extending" />
+
+# Extending
 
 ## Composition
 
 Looker UI Components (and React) rely heavily on the concept of composition, where smaller components can be composed to create higher-order behavior. In the `BoardCard` example below the `Card`, `CardMedia`, `CardContent` and `Heading` are composed to define a what it means to display a Board object in Card format.
 
-```jsx
+<Canvas>
 ;() => {
   const BoardCard = ({ title, description, previewImage }) => (
     <Card raised width="24rem">
@@ -22,71 +24,74 @@ Looker UI Components (and React) rely heavily on the concept of composition, whe
     </Card>
   )
 
-  return (
-    <BoardCard
-      title="Business Metrics"
-      previewImage="https://www.fillmurray.com/384/192"
-      description="Important metrics we use to understand our daily operational performance."
-    />
-  )
-}
-```
+return (
+
+<BoardCard
+  title="Business Metrics"
+  previewImage="https://www.fillmurray.com/384/192"
+  description="Important metrics we use to understand our daily operational performance."
+/>
+) }
+
+</Canvas>
 
 ## Extending behavior
 
 In some cases we may not support the exact presentation or behavior necessary. Through composition and styling, most components can be extended and customized. Here's an example of a new LoggerButton that logs every click:
 
-```jsx
-;() => {
+<Story>
+() => {
   // import React from 'react'
   // import { Button, ButtonProps } from '@looker/components'
 
-  const logHandler = (event) => {
-    /**
-     *  Place an actual logging function here.
-     *  For our example we'll simply log to the browser console.
-     **/
-    console.log('You clicked:', event.currentTarget)
-  }
+const logHandler = (event) => {
+/**
+_ Place an actual logging function here.
+_ For our example we'll simply log to the browser console.
+**/
+console.log('You clicked:', event.currentTarget)
+}
 
-  const LoggerButton = ({ onClick, ...props }) => {
-    const handleClick = (event) => {
-      logHandler(event)
-      if (onClick) onClick(event)
-    }
+const LoggerButton = ({ onClick, ...props }) => {
+const handleClick = (event) => {
+logHandler(event)
+if (onClick) onClick(event)
+}
 
     return (
       <ButtonOutline onClick={handleClick} {...props}>
         {props.children}
       </ButtonOutline>
     )
-  }
 
-  return (
-    <LoggerButton onClick={() => alert('Thanks for the click.')}>
-      Click to run example
-    </LoggerButton>
-  )
 }
-```
+
+return (
+
+<LoggerButton onClick={() => alert('Thanks for the click.')}>
+  Click to run example
+</LoggerButton>
+)
+}
+</Story>
 
 ## Extending styling
 
 Styling can also be extended, but care is needed to ensure you do not violate Looker's design principles.
 
-```jsx
-;() => {
+<Canvas>
+() => {
   // import { Button } from '@looker/components'
   // import styled from 'styled-components'
 
-  const CustomButton = styled(Button)`
-    background: white;
-    border-color: transparent;
-    border-radius: 100%;
-    color: hotpink;
-    font-size: 2rem;
-    transition: transform 1.5s, background 2s;
-    width: 42px;
+const CustomButton = styled(Button)`
+background: white;
+border-color: transparent;
+border-radius: 100%;
+color: hotpink;
+font-size: 2rem;
+transition: transform 1.5s, background 2s;
+width: 42px;
 
     &:hover,
     &:focus {
@@ -99,8 +104,10 @@ Styling can also be extended, but care is needed to ensure you do not violate Lo
     &:active {
       background: orange;
     }
-  `
 
-  return <CustomButton size="large">+</CustomButton>
+`
+
+return <CustomButton size="large">+</CustomButton>
 }
-```
+
+</Canvas>

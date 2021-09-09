@@ -27,6 +27,7 @@
 import React from 'react'
 import {
   Code,
+  Table,
   TableBody,
   TableDataCell,
   TableHead,
@@ -35,7 +36,6 @@ import {
   Text,
 } from '@looker/components'
 import type { FontWeights, FontSizes } from '@looker/design-tokens'
-import { DocTable } from '../../../components'
 
 const specimen =
   "Roboto is the typographic base for the tone and content of Looker's design system"
@@ -64,7 +64,7 @@ const tableRows = typeFamily.map((t) => {
 
 export function FontWeightDemo() {
   return (
-    <DocTable>
+    <Table>
       <TableHead>
         <TableRow>
           <TableHeaderCell>Reference</TableHeaderCell>
@@ -73,7 +73,7 @@ export function FontWeightDemo() {
         </TableRow>
       </TableHead>
       <TableBody>{tableRows}</TableBody>
-    </DocTable>
+    </Table>
   )
 }
 
@@ -108,7 +108,7 @@ const tableRows2 = typeRamp.map((t) => {
 
 export function TypeScaleDemo() {
   return (
-    <DocTable>
+    <Table>
       <TableHead>
         <TableRow>
           <TableHeaderCell>Specimen</TableHeaderCell>
@@ -118,6 +118,6 @@ export function TypeScaleDemo() {
         </TableRow>
       </TableHead>
       <TableBody>{tableRows2}</TableBody>
-    </DocTable>
+    </Table>
   )
 }
