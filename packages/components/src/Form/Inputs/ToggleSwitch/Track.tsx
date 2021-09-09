@@ -24,15 +24,21 @@
 
  */
 
+import type { Colors } from '@looker/design-tokens'
 import React from 'react'
 import styled from 'styled-components'
-import type { OnElementProps } from './types'
+import type { SwitchElementProps } from './types'
 
-export const Track = styled(({ className }: OnElementProps) => (
+const getColor = ({ on, validationType }: SwitchElementProps): keyof Colors => {
+  if (validationType === 'error') return 'criticalAccent'
+  if (on) return 'keyAccent'
+  return 'ui3'
+}
+
+export const Track = styled(({ className }: SwitchElementProps) => (
   <div className={className} />
 ))`
-  background: ${({ on, theme }) =>
-    on ? theme.colors.keyAccent : theme.colors.ui3};
+  background: ${({ theme, ...props }) => theme.colors[getColor(props)]};
   border-radius: ${({ theme }) => theme.radii.large};
   height: 14px;
   transition: ${({ theme }) => theme.transitions.moderate}ms;

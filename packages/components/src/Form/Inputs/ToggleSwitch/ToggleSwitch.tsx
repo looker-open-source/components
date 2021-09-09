@@ -39,64 +39,67 @@ import {
 } from '../../../Ripple'
 import type { InputProps } from '../InputProps'
 import { pickInputProps } from '../InputProps'
-import type { OnProps } from './types'
+import type { SwitchProps } from './types'
 import { Handle } from './Handle'
 import { Track } from './Track'
 
 export interface ToggleSwitchProps
   extends SpaceProps,
     Omit<InputProps, 'type'>,
-    OnProps {
+    SwitchProps {
   size?: number
 }
 
-export const ToggleSwitchLayout = forwardRef(
-  (
-    { className, disabled, on, validationType, ...props }: ToggleSwitchProps,
-    ref: Ref<HTMLInputElement>
-  ) => {
-    const {
-      callbacks,
-      className: rippleClassName,
-      style,
-    } = useRipple({
-      color: inputRippleColor(!!on, validationType === 'error'),
-      // Only define size for density -6,
-      // to make the halo slightly bigger than the container
-      size: RIPPLE_RATIO,
-    })
+export const ToggleSwitch = styled(
+  forwardRef(
+    (
+      { className, disabled, on, validationType, ...props }: ToggleSwitchProps,
+      ref: Ref<HTMLInputElement>
+    ) => {
+      const {
+        callbacks,
+        className: rippleClassName,
+        style,
+      } = useRipple({
+        color: inputRippleColor(!!on, validationType === 'error'),
+        // Only define size for density -6,
+        // to make the halo slightly bigger than the container
+        size: RIPPLE_RATIO,
+      })
 
-    const rippleHandlers = useRippleHandlers(
-      callbacks,
-      {
-        ...pick(props, rippleHandlerKeys),
-      },
-      disabled
-    )
+      const rippleHandlers = useRippleHandlers(
+        callbacks,
+        {
+          ...pick(props, rippleHandlerKeys),
+        },
+        disabled
+      )
 
-    // Ripple event handlers go on the container but the ripple styles go on the handle
-    return (
-      <div className={className} {...rippleHandlers}>
-        <input
-          type="checkbox"
-          checked={on}
-          disabled={disabled}
-          role="switch"
-          aria-checked={on}
-          aria-invalid={validationType === 'error' ? 'true' : undefined}
-          ref={ref}
-          {...pickInputProps(props)}
-        />
-        <Track on={on} />
-        <Handle on={on} className={rippleClassName} style={style}></Handle>
-      </div>
-    )
-  }
-)
-
-ToggleSwitchLayout.displayName = 'ToggleSwitchLayout'
-
-export const ToggleSwitch = styled(ToggleSwitchLayout)`
+      // Ripple event handlers go on the container but the ripple styles go on the handle
+      return (
+        <div className={className} {...rippleHandlers}>
+          <input
+            type="checkbox"
+            checked={on}
+            disabled={disabled}
+            role="switch"
+            aria-checked={on}
+            aria-invalid={validationType === 'error' ? 'true' : undefined}
+            ref={ref}
+            {...pickInputProps(props)}
+          />
+          <Track on={on} validationType={validationType} />
+          <Handle
+            on={on}
+            validationType={validationType}
+            className={rippleClassName}
+            style={style}
+          ></Handle>
+        </div>
+      )
+    }
+  )
+)`
   ${reset}
   ${space}
 
@@ -109,7 +112,7 @@ export const ToggleSwitch = styled(ToggleSwitchLayout)`
   width: ${({ theme }) => theme.space.u10};
 
   input {
-    cursor: ${({ disabled }) => (disabled ? undefined : 'pointer')};
+    cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
     height: 100%;
     left: 0;
     margin: 0; /* Suppress browser default styling */

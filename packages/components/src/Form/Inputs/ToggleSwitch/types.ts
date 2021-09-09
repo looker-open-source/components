@@ -25,9 +25,12 @@
  */
 
 import type { CompatibleHTMLProps } from '@looker/design-tokens'
+import type { ValidationType } from '../../ValidationMessage'
 
-export type OnProps = {
+export type SwitchProps = {
   on?: boolean
+  validationType?: ValidationType
 }
 
-export type OnElementProps = OnProps & CompatibleHTMLProps<HTMLDivElement>
+export type SwitchElementProps = SwitchProps &
+  CompatibleHTMLProps<HTMLDivElement>

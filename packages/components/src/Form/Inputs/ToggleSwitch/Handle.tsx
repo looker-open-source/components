@@ -24,12 +24,21 @@
 
  */
 
+import type { Colors } from '@looker/design-tokens'
 import React from 'react'
 import styled from 'styled-components'
 import { rippleStyle } from '../../../Ripple'
-import type { OnElementProps } from './types'
+import type { SwitchElementProps } from './types'
 
-export const Handle = styled(({ className, style }: OnElementProps) => (
+const getColor = ({ on, validationType }: SwitchElementProps): keyof Colors => {
+  if (on) {
+    if (validationType === 'error') return 'critical'
+    return 'key'
+  }
+  return 'field'
+}
+
+export const Handle = styled(({ className, style }: SwitchElementProps) => (
   <div className={className} style={style}>
     <div />
   </div>
@@ -45,8 +54,7 @@ export const Handle = styled(({ className, style }: OnElementProps) => (
   transition: ${({ theme }) => theme.transitions.moderate}ms;
   width: ${({ theme }) => theme.space.u6};
   div {
-    background: ${({ on, theme: { colors } }) =>
-      on ? colors.key : colors.field};
+    background: ${({ theme, ...props }) => theme.colors[getColor(props)]};
     border-radius: 50%;
     box-shadow: ${({ theme }) => theme.elevations.plus1};
     height: 100%;
