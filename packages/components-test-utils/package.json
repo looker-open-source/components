@@ -9,8 +9,8 @@
   },
   "devDependencies": {
     "@looker/components-providers": "^1.5.0",
-    "@testing-library/react": "^11.2.6",
-    "jest-styled-components": "^7.0.4",
+    "@testing-library/react": "12.0.0",
+    "jest-styled-components": "^7.0.5",
     "react": "^16.14.0",
     "react-is": "^16.13.1",
     "styled-components": "^5.3.0"

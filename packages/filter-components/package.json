@@ -29,7 +29,6 @@
   "@testing-library/react": "11.1.1",
   "@typescript-eslint/eslint-plugin": "*",
   "@typescript-eslint/parser": "*",
-  "enzyme": "3.10.0",
   "eslint-config-prettier": "*",
   "eslint-config-standard": "*",
   "eslint-plugin-header": "*",
@@ -49,7 +48,6 @@
   "react": "^16.14.0",
   "react-dom": "^16.14.0",
   "react-i18next": "11.8.15",
-  "react-test-renderer": "16.11.0",
   "styled-components": "^5.3.0"
  },
  "peerDependencies": {
