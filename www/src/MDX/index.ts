@@ -34,8 +34,10 @@ import { Ol } from './Ol'
 import { Paragraph } from './Paragraph'
 import { Pre } from './Pre'
 import { Ul } from './Ul'
+import * as shortcodes from './shortcodes'
 
 export const MDXComponents = {
+  ...shortcodes,
   ...headings,
   Code,
   MessageBar,
