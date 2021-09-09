@@ -24,54 +24,35 @@
 
  */
 
-import type { FC } from 'react'
 import React from 'react'
 import styled from 'styled-components'
-import { reset, knobShadowColor } from '@looker/design-tokens'
+import { rippleStyle } from '../../../Ripple'
+import type { OnElementProps } from './types'
 
-export interface KnobProps {
-  disabled?: boolean
-  on?: boolean
-}
-
-const Knob = styled(({ className }) => <div className={className} />)`
-  background: ${({ theme }) => theme.colors.field};
-  border-radius: 50%;
-  bottom: 0.125rem;
-  height: 1rem;
-  left: 0.125rem;
-  position: absolute;
-  transform: ${({ on }) => (on ? `translateX(0.9375rem)` : undefined)};
-  transition: ${({ theme }) => theme.transitions.moderate}ms;
-  width: 1rem;
-`
-
-interface KnobContainerProps extends KnobProps {
-  className?: string
-}
-
-const KnobContainerLayout: FC<KnobContainerProps> = ({
-  className,
-  ...props
-}) => (
-  <div className={className}>
-    <Knob {...props} />
+export const Handle = styled(({ className, style }: OnElementProps) => (
+  <div className={className} style={style}>
+    <div />
   </div>
-)
-
-export const KnobContainer = styled(KnobContainerLayout)`
-  ${reset}
-
-  background: ${({ on, theme }) => (on ? theme.colors.key : theme.colors.ui3)};
-  border-radius: 1.25rem;
-  bottom: 0;
+))`
+  ${rippleStyle}
+  height: ${({ theme }) => theme.space.u6};
   left: 0;
+  padding: ${({ theme }) => theme.space.u05};
   position: absolute;
-  right: 0;
   top: 0;
+  transform: ${({ on, theme }) =>
+    on ? `translateX(${theme.space.u4})` : undefined};
   transition: ${({ theme }) => theme.transitions.moderate}ms;
-
-  &:hover {
-    ${({ disabled }) => disabled && knobShadowColor}
+  width: ${({ theme }) => theme.space.u6};
+  div {
+    background: ${({ on, theme: { colors } }) =>
+      on ? colors.key : colors.field};
+    border-radius: 50%;
+    box-shadow: ${({ theme }) => theme.elevations.plus1};
+    height: 100%;
+    /* This nested relative position div allows the handle
+    to appear on top of the ripple bg */
+    position: relative;
+    width: 100%;
   }
 `

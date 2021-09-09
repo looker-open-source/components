@@ -25,42 +25,58 @@
  */
 
 import type { SpaceProps } from '@looker/design-tokens'
-import { reset, space, toggleSwitchShadowColor } from '@looker/design-tokens'
+import { reset, space } from '@looker/design-tokens'
+import pick from 'lodash/pick'
 import type { Ref } from 'react'
 import React, { forwardRef } from 'react'
 import styled from 'styled-components'
+import {
+  inputRippleColor,
+  RIPPLE_RATIO,
+  rippleHandlerKeys,
+  useRipple,
+  useRippleHandlers,
+} from '../../../Ripple'
 import type { InputProps } from '../InputProps'
 import { pickInputProps } from '../InputProps'
-import type { KnobProps } from './Knob'
-import { KnobContainer } from './Knob'
+import type { OnProps } from './types'
+import { Handle } from './Handle'
+import { Track } from './Track'
 
 export interface ToggleSwitchProps
   extends SpaceProps,
     Omit<InputProps, 'type'>,
-    Omit<KnobProps, 'size'> {
+    OnProps {
   size?: number
 }
-
-const DisabledKnob = styled.div`
-  ${reset}
-
-  background: ${({ theme }) => theme.colors.ui3};
-  border-radius: 1.25rem;
-  bottom: 0;
-  left: 0;
-  opacity: 0.4;
-  position: absolute;
-  right: 0;
-  top: 0;
-`
 
 export const ToggleSwitchLayout = forwardRef(
   (
     { className, disabled, on, validationType, ...props }: ToggleSwitchProps,
     ref: Ref<HTMLInputElement>
   ) => {
+    const {
+      callbacks,
+      className: rippleClassName,
+      style,
+    } = useRipple({
+      color: inputRippleColor(!!on, validationType === 'error'),
+      // Only define size for density -6,
+      // to make the halo slightly bigger than the container
+      size: RIPPLE_RATIO,
+    })
+
+    const rippleHandlers = useRippleHandlers(
+      callbacks,
+      {
+        ...pick(props, rippleHandlerKeys),
+      },
+      disabled
+    )
+
+    // Ripple event handlers go on the container but the ripple styles go on the handle
     return (
-      <div className={className}>
+      <div className={className} {...rippleHandlers}>
         <input
           type="checkbox"
           checked={on}
@@ -71,8 +87,8 @@ export const ToggleSwitchLayout = forwardRef(
           ref={ref}
           {...pickInputProps(props)}
         />
-        <KnobContainer on={on} disabled={disabled} />
-        {disabled && <DisabledKnob />}
+        <Track on={on} />
+        <Handle on={on} className={rippleClassName} style={style}></Handle>
       </div>
     )
   }
@@ -84,9 +100,13 @@ export const ToggleSwitch = styled(ToggleSwitchLayout)`
   ${reset}
   ${space}
 
-  height: 1.25rem;
+  align-items: center;
+  display: flex;
+  height: ${({ theme }) => theme.space.u6};
+  justify-content: center;
+  opacity: ${({ disabled }) => disabled && '0.4'};
   position: relative;
-  width: 2.1875rem;
+  width: ${({ theme }) => theme.space.u10};
 
   input {
     cursor: ${({ disabled }) => (disabled ? undefined : 'pointer')};
@@ -98,9 +118,5 @@ export const ToggleSwitch = styled(ToggleSwitchLayout)`
     top: 0;
     width: 100%;
     z-index: 1;
-
-    &:focus + div {
-      ${toggleSwitchShadowColor}
-    }
   }
 `

@@ -24,29 +24,17 @@
 
  */
 
-import rgba from 'polished/lib/color/rgba'
-import lighten from 'polished/lib/color/lighten'
-import mix from 'polished/lib/color/mix'
-import { css } from 'styled-components'
-import type { ExtendedStatefulColor } from '../color/types/stateful'
+import React from 'react'
+import styled from 'styled-components'
+import type { OnElementProps } from './types'
 
-export const buttonShadow = (color: ExtendedStatefulColor = 'key') =>
-  css`
-    box-shadow: 0 0 0 0.15rem ${({ theme }) => rgba(theme.colors[color], 0.25)};
-  `
-
-export const iconButtonColorDerivation = () => css`
-  color: ${({ theme }) => lighten(0.14, theme.colors.neutral)};
+export const Track = styled(({ className }: OnElementProps) => (
+  <div className={className} />
+))`
+  background: ${({ on, theme }) =>
+    on ? theme.colors.keyAccent : theme.colors.ui3};
+  border-radius: ${({ theme }) => theme.radii.large};
+  height: 14px;
+  transition: ${({ theme }) => theme.transitions.moderate}ms;
+  width: ${({ theme }) => theme.space.u9};
 `
-
-export const tabShadowColor = () => css`
-  box-shadow: 0 0 0 0.15rem ${({ theme }) => rgba(theme.colors.keyFocus, 0.25)};
-`
-
-export const calendarMixColor = () => css`
-  color: ${({ theme: { colors } }) =>
-    mix(0.65, colors.keyAccent, colors.neutralInteractive)};
-`
-
-export const disabledSwatchColor = (color?: string) =>
-  color && color !== 'transparent' ? rgba(color, 0.85) : undefined
