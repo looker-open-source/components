@@ -28,7 +28,7 @@ import 'jest-styled-components'
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { screen } from '@testing-library/react'
-import { Basic, HideClose, Hidden } from './PopoverHeader.story'
+import { Basic, HideClose, Hidden } from './PopoverHeader.stories'
 
 describe('PopoverHeader', () => {
   test('Close visible by default', () => {

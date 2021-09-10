@@ -26,14 +26,9 @@
 
 const ignore = [
   '**/*.d.ts',
-  '**/*.test.js',
-  '**/*.test.jsx',
-  '**/*.test.ts',
-  '**/*.test.tsx',
   '**/*.spec.ts',
   '**/*.spec.tsx',
   '**/*.stories.tsx',
-  '**/*.story.tsx',
   '**/stories/*',
   '__snapshots__',
   '__tests__',

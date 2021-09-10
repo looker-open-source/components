@@ -28,7 +28,7 @@ import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { Basic, KeyboardNavigation } from './stories/NavList.story'
+import { Basic, KeyboardNavigation } from './stories/NavList.stories'
 
 describe('NavList', () => {
   test('display with theme.colors.key', () => {

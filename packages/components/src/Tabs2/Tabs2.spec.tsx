@@ -30,8 +30,8 @@ import { renderWithTheme } from '@looker/components-test-utils'
 import React from 'react'
 import { composeStories } from '@storybook/testing-react'
 import { fireEvent, screen } from '@testing-library/react'
-import * as stories from './Tabs2.story'
-import { Controlled, Disabled } from './Tabs2.story'
+import * as stories from './Tabs2.stories'
+import { Controlled, Disabled } from './Tabs2.stories'
 import { Tab2, Tabs2 } from './'
 
 const { Basic, DefaultTab, Distributed } = composeStories(stories)

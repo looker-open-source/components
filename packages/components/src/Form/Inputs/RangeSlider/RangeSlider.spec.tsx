@@ -31,7 +31,7 @@ import {
   withThemeProvider,
 } from '@looker/components-test-utils'
 import { RangeSlider } from './RangeSlider'
-import { RerenderRepro } from './RangeSlider.story'
+import { RerenderRepro } from './RangeSlider.stories'
 
 const globalConsole = global.console
 const globalRequestAnimationFrame = global.requestAnimationFrame

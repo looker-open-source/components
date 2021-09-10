@@ -34,8 +34,8 @@ import type { DrawerProps } from '../Drawer'
 import { Drawer } from '../Drawer'
 import { ButtonOutline } from '../../Button'
 
-export * from './useDrawer.story'
-export * from './renderProps.story'
+export * from './useDrawer.stories'
+export * from './renderProps.stories'
 
 const Template: Story<DrawerProps> = (args) => (
   <Drawer {...args} content={<DialogLongContent />}>

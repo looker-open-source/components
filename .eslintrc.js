@@ -51,16 +51,13 @@ module.exports = {
     },
     {
       files: [
-        '*.test.*',
         '*.spec.*',
-        '*.story.*',
+        '*.stories.*',
         '*.js',
         '**/__mocks__/**',
         '**/stories/**',
         'packages/components-theme-editor/**',
         'packages/design-tokens/**',
-        'packages/storybook-config/**',
-        'www/**',
         'www/**',
       ],
       rules: {

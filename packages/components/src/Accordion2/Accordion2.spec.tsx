@@ -29,7 +29,7 @@ import { renderWithTheme } from '@looker/components-test-utils'
 import { fireEvent, screen } from '@testing-library/react'
 import { children, label } from '../__mocks__/accordion'
 import { Accordion2 } from './Accordion2'
-import { Controlled } from './Accordion2.story'
+import { Controlled } from './Accordion2.stories'
 
 const defaultProps = { children, label }
 

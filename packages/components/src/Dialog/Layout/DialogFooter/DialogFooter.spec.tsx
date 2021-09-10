@@ -27,7 +27,7 @@
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { screen } from '@testing-library/react'
-import { Basic, Secondary } from './DialogFooter.story'
+import { Basic, Secondary } from './DialogFooter.stories'
 
 describe('DialogFooter', () => {
   test('basic ', () => {
