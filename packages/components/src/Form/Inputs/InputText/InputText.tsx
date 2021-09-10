@@ -227,7 +227,7 @@ const StyledInput = styled.input`
 `
 
 export const inputTextHover = css`
-  border-color: ${({ theme }) => theme.colors.ui5};
+  border-color: ${({ theme }) => theme.colors.ui4};
 `
 export const inputTextFocus = css`
   border-color: ${({ theme }) => theme.colors.key};
@@ -239,7 +239,7 @@ export const inputTextDisabled = css`
   cursor: default;
   opacity: 0.25;
   &:hover {
-    border-color: ${({ theme }) => theme.colors.ui4};
+    border-color: ${({ theme }) => theme.colors.ui3};
   }
 `
 
@@ -294,7 +294,7 @@ export const inputTextValidation = css<{ validationType?: 'error' }>`
 
 export const inputCSS = css`
   background: ${({ theme: { colors } }) => colors.field};
-  border: 1px solid ${({ theme: { colors } }) => colors.ui4};
+  border: 1px solid ${({ theme: { colors } }) => colors.ui3};
   border-radius: ${({ theme: { radii } }) => radii.medium};
   color: ${({ theme: { colors } }) => colors.text5};
   font-size: ${({ theme: { fontSizes } }) => fontSizes.small};
