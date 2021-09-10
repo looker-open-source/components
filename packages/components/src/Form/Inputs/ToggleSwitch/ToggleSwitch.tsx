@@ -26,6 +26,7 @@
 
 import type { SpaceProps } from '@looker/design-tokens'
 import { reset, space } from '@looker/design-tokens'
+import noop from 'lodash/noop'
 import pick from 'lodash/pick'
 import type { Ref } from 'react'
 import React, { forwardRef } from 'react'
@@ -53,7 +54,15 @@ export interface ToggleSwitchProps
 export const ToggleSwitch = styled(
   forwardRef(
     (
-      { className, disabled, on, validationType, ...props }: ToggleSwitchProps,
+      {
+        className,
+        disabled,
+        on,
+        onChange,
+        readOnly,
+        validationType,
+        ...props
+      }: ToggleSwitchProps,
       ref: Ref<HTMLInputElement>
     ) => {
       const {
@@ -82,6 +91,7 @@ export const ToggleSwitch = styled(
             type="checkbox"
             checked={on}
             disabled={disabled}
+            onChange={readOnly ? noop : onChange}
             role="switch"
             aria-checked={on}
             aria-invalid={validationType === 'error' ? 'true' : undefined}
@@ -112,7 +122,8 @@ export const ToggleSwitch = styled(
   width: ${({ theme }) => theme.space.u10};
 
   input {
-    cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
+    cursor: ${({ disabled, readOnly }) =>
+      disabled || readOnly ? 'not-allowed' : 'pointer'};
     height: 100%;
     left: 0;
     margin: 0; /* Suppress browser default styling */
