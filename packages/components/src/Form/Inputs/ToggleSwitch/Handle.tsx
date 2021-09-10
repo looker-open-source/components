@@ -39,7 +39,7 @@ const getColor = ({ on, validationType }: SwitchElementProps): keyof Colors => {
 }
 
 export const Handle = styled(({ className, style }: SwitchElementProps) => (
-  <div className={className} style={style}>
+  <div className={className} style={style} data-testid="handle">
     <div />
   </div>
 ))`
