@@ -26,7 +26,9 @@
 
 import styled from 'styled-components'
 import React from 'react'
+import { colorBreakdown } from '@looker/design-tokens/src/color/utils/colorBreakdown'
 import { Code, Grid } from '@looker/components'
+import { theme } from '@looker/design-tokens'
 
 type ColorSwatchProps = {
   name: string
@@ -55,13 +57,24 @@ const ColorListGrid = styled(Grid)`
 `
 
 type ColorListProps = {
-  colors: { [key: string]: string }
+  colorKey:
+    | 'core'
+    | 'derivative'
+    | 'intent'
+    | 'specializedText'
+    | 'stateful'
+    | 'text'
+    | 'ui'
 }
 
-export const ColorList = ({ colors }: ColorListProps) => (
-  <ColorListGrid gap="u5" maxWidth={600} pt="medium" pb="xxlarge">
-    {Object.entries(colors).map(([title, color], key) => (
-      <ColorSwatch name={title} color={color} key={key} />
-    ))}
-  </ColorListGrid>
-)
+export const ColorList = ({ colorKey }: ColorListProps) => {
+  const breakdown = colorBreakdown(theme.colors)
+  const colors = breakdown.divided[colorKey] || {}
+  return (
+    <ColorListGrid gap="u5" maxWidth={600} pt="medium" pb="xxlarge">
+      {Object.entries(colors).map(([title, color], key) => (
+        <ColorSwatch name={title} color={color} key={key} />
+      ))}
+    </ColorListGrid>
+  )
+}
