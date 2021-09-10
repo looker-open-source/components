@@ -51,7 +51,7 @@ export const Handle = styled(({ className, style }: SwitchElementProps) => (
   top: 0;
   transform: ${({ on, theme }) =>
     on ? `translateX(${theme.space.u4})` : undefined};
-  transition: ${({ theme }) => theme.transitions.moderate}ms;
+  transition: ${({ theme }) => theme.transitions.rapid}ms;
   width: ${({ theme }) => theme.space.u6};
   div {
     background: ${({ theme, ...props }) => theme.colors[getColor(props)]};

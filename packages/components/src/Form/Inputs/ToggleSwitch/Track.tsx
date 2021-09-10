@@ -41,6 +41,6 @@ export const Track = styled(({ className }: SwitchElementProps) => (
   background: ${({ theme, ...props }) => theme.colors[getColor(props)]};
   border-radius: ${({ theme }) => theme.radii.large};
   height: 14px;
-  transition: ${({ theme }) => theme.transitions.moderate}ms;
+  transition: ${({ theme }) => theme.transitions.rapid}ms;
   width: ${({ theme }) => theme.space.u9};
 `
