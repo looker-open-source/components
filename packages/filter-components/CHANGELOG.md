@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/looker-open-source/components/compare/@looker/filter-components@0.8.0...@looker/filter-components@0.9.0) (2021-09-10)
+
+
+### Bug Fixes
+
+* **Text inputs:** Lighter border-color ([#2823](https://github.com/looker-open-source/components/issues/2823)) ([c1d6815](https://github.com/looker-open-source/components/commit/c1d6815ec4bbad87019d396744eaf8746082c327))
+
+
+### Features
+
+* **Text inputs:** Google Material style updates ([#2796](https://github.com/looker-open-source/components/issues/2796)) ([81d829d](https://github.com/looker-open-source/components/commit/81d829d7314a0e50a8457cb03edc8ad5239eda3c))
+* **theme:** Add support for specifiable theme.colors.pageBackground ([#2814](https://github.com/looker-open-source/components/issues/2814)) ([bdcacfb](https://github.com/looker-open-source/components/commit/bdcacfb32a6d4c55ed35a899e71148744834c9d0))
+
+
+
+
+
 # [0.8.0](https://github.com/looker-open-source/components/compare/@looker/filter-components@0.8.0-alpha.1...@looker/filter-components@0.8.0) (2021-09-02)
 
 ### Features

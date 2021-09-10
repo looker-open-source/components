@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.3.0](https://github.com/looker-open-source/components/compare/@looker/components-date@2.2.0...@looker/components-date@2.3.0) (2021-09-10)
+
+
+### Features
+
+* **Text inputs:** Google Material style updates ([#2796](https://github.com/looker-open-source/components/issues/2796)) ([81d829d](https://github.com/looker-open-source/components/commit/81d829d7314a0e50a8457cb03edc8ad5239eda3c))
+
+
+
+
+
 # [2.2.0](https://github.com/looker-open-source/components/compare/@looker/components-date@2.2.0-alpha.1...@looker/components-date@2.2.0) (2021-09-02)
 
 ### Features

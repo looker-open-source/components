@@ -2,7 +2,7 @@
  "name": "@looker/filter-expressions",
  "main": "src/index.ts",
  "license": "MIT",
- "version": "0.8.0",
+ "version": "0.8.1",
  "publishConfig": {
   "access": "public"
  },
@@ -13,7 +13,7 @@
  },
  "devDependencies": {
   "@looker/eslint-config": "^1.5.1",
-  "@looker/prettier-config": "^1.5.0",
+  "@looker/prettier-config": "^1.5.1",
   "@types/pegjs": "^0.10.1",
   "@typescript-eslint/eslint-plugin": "*",
   "@typescript-eslint/parser": "*",

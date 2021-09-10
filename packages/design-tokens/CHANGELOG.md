@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.5.0](https://github.com/looker-open-source/components/compare/@looker/design-tokens@2.4.0...@looker/design-tokens@2.5.0) (2021-09-10)
+
+
+### Features
+
+* **theme:** Add support for specifiable theme.colors.pageBackground ([#2814](https://github.com/looker-open-source/components/issues/2814)) ([bdcacfb](https://github.com/looker-open-source/components/commit/bdcacfb32a6d4c55ed35a899e71148744834c9d0))
+* **ToggleSwitch:** Google Material style updates ([#2822](https://github.com/looker-open-source/components/issues/2822)) ([e2fcd6d](https://github.com/looker-open-source/components/commit/e2fcd6d63231c30bca81297e81e22853ee98c1d8))
+
+
+
+
+
 # [2.4.0](https://github.com/looker-open-source/components/compare/@looker/design-tokens@2.4.0-alpha.1...@looker/design-tokens@2.4.0) (2021-09-02)
 ### Features
 
