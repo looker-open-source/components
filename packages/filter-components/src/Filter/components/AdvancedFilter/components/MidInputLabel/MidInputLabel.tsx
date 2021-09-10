@@ -42,7 +42,7 @@ export const MidInputLabel = styled(Text).attrs<TextProps>(
   align-items: center;
   align-self: center;
   background: ${({ theme: { colors } }) => colors.background};
-  border: 1px solid ${({ theme: { colors } }) => colors.ui4};
+  border: 1px solid ${({ theme: { colors } }) => colors.ui3};
   border-right: none;
   display: flex;
   height: ${inputHeight};
