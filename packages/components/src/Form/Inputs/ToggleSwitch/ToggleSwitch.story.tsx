@@ -26,18 +26,34 @@
 
 import React from 'react'
 import type { Story } from '@storybook/react/types-6-0'
+import { ThemeProvider } from 'styled-components'
 import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
 import { useToggle } from '../../../utils/useToggle'
 import type { ToggleSwitchProps } from './ToggleSwitch'
 import { ToggleSwitch } from './ToggleSwitch'
 
-const Template: Story<ToggleSwitchProps> = ({ on = false, ...args }) => {
+const Template: Story<ToggleSwitchProps & { ripple: boolean }> = ({
+  on = false,
+  ripple,
+  ...args
+}) => {
   const { value, toggle } = useToggle(on)
-  return <ToggleSwitch onChange={toggle} on={value} {...args} />
+  return (
+    <ThemeProvider
+      theme={(theme) => ({
+        ...theme,
+        defaults: { ...theme.defaults, brandAnimation: ripple },
+      })}
+    >
+      <ToggleSwitch onChange={toggle} on={value} {...args} />
+    </ThemeProvider>
+  )
 }
 
 export const Basic = Template.bind({})
-Basic.args = {}
+Basic.args = {
+  ripple: false,
+}
 
 export const Checked = Template.bind({})
 Checked.args = {

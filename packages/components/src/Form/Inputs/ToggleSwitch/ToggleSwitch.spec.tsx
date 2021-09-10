@@ -27,35 +27,85 @@
 import 'jest-styled-components'
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { screen } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
-import { ToggleSwitch } from './ToggleSwitch'
+import { act, fireEvent, screen } from '@testing-library/react'
+import { composeStories } from '@storybook/testing-react'
+import { RIPPLE_RATIO } from '../../../Ripple'
+import * as stories from './ToggleSwitch.story'
+
+const { Basic, Checked, Disabled } = composeStories(stories)
+
+beforeEach(() => {
+  jest.useFakeTimers()
+})
+
+afterEach(() => {
+  jest.resetAllMocks()
+  jest.runOnlyPendingTimers()
+  jest.useRealTimers()
+})
+
+const runTimers = () =>
+  act(() => {
+    jest.runOnlyPendingTimers()
+  })
 
 describe('ToggleSwitch', () => {
   test('default', () => {
-    renderWithTheme(<ToggleSwitch />)
-    expect(screen.getByRole('switch')).toBeInTheDocument()
-  })
-
-  test('set to true', () => {
-    renderWithTheme(<ToggleSwitch on={true} onChange={jest.fn} />)
-    expect(screen.getByRole('switch')).toBeChecked()
-  })
-
-  test('set to false', () => {
-    renderWithTheme(<ToggleSwitch on={false} onChange={jest.fn} />)
+    renderWithTheme(<Basic />)
     expect(screen.getByRole('switch')).not.toBeChecked()
   })
 
+  test('on', () => {
+    renderWithTheme(<Checked />)
+    expect(screen.getByRole('switch')).toBeChecked()
+  })
+
   test('disabled', () => {
-    renderWithTheme(<ToggleSwitch on={true} disabled />)
+    renderWithTheme(<Disabled />)
+    expect(screen.getByRole('switch')).toBeDisabled()
+  })
+
+  test('disabled', () => {
+    renderWithTheme(<Disabled />)
     expect(screen.getByRole('switch')).toBeDisabled()
   })
 
   test('Should trigger onChange handler', () => {
     const onChange = jest.fn()
-    renderWithTheme(<ToggleSwitch onChange={onChange} />)
-    userEvent.click(screen.getByRole('switch'))
+    renderWithTheme(<Basic onChange={onChange} />)
+    fireEvent.click(screen.getByRole('switch'))
     expect(onChange).toHaveBeenCalledTimes(1)
+  })
+
+  test('ripple effect', () => {
+    renderWithTheme(<Basic />)
+
+    const handle = screen.getByTestId('handle') as HTMLElement
+    expect(handle).not.toHaveClass('bg-on fg-in')
+    expect(handle).toHaveStyle({
+      '--ripple-color': '#71767a',
+      '--ripple-overflow': 'visible',
+      '--ripple-scale-end': RIPPLE_RATIO.toString(),
+      // This should change to 0.1 when brandAnimation default becomes true
+      '--ripple-scale-start': RIPPLE_RATIO.toString(),
+      '--ripple-size': '100%',
+      '--ripple-translate': '0, 0',
+    })
+
+    fireEvent.focus(handle)
+    expect(handle).toHaveClass('bg-on')
+
+    fireEvent.mouseDown(handle)
+    expect(handle).toHaveClass('bg-on fg-in')
+
+    // foreground is locked for a minimum time to animate the ripple
+    fireEvent.mouseUp(handle)
+    runTimers()
+    expect(handle).toHaveClass('bg-on fg-out')
+    runTimers()
+    expect(handle).toHaveClass('bg-on')
+
+    fireEvent.blur(handle)
+    expect(handle).not.toHaveClass('bg-on fg-in')
   })
 })

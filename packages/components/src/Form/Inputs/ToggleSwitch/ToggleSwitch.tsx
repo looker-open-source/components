@@ -25,71 +25,105 @@
  */
 
 import type { SpaceProps } from '@looker/design-tokens'
-import { reset, space, toggleSwitchShadowColor } from '@looker/design-tokens'
+import { reset, space } from '@looker/design-tokens'
+import noop from 'lodash/noop'
+import pick from 'lodash/pick'
 import type { Ref } from 'react'
 import React, { forwardRef } from 'react'
 import styled from 'styled-components'
+import {
+  inputRippleColor,
+  RIPPLE_RATIO,
+  rippleHandlerKeys,
+  useRipple,
+  useRippleHandlers,
+} from '../../../Ripple'
 import type { InputProps } from '../InputProps'
 import { pickInputProps } from '../InputProps'
-import type { KnobProps } from './Knob'
-import { KnobContainer } from './Knob'
+import type { SwitchProps } from './types'
+import { Handle } from './Handle'
+import { Track } from './Track'
 
 export interface ToggleSwitchProps
   extends SpaceProps,
     Omit<InputProps, 'type'>,
-    Omit<KnobProps, 'size'> {
+    SwitchProps {
   size?: number
 }
 
-const DisabledKnob = styled.div`
-  ${reset}
+export const ToggleSwitch = styled(
+  forwardRef(
+    (
+      {
+        className,
+        disabled,
+        on,
+        onChange,
+        readOnly,
+        validationType,
+        ...props
+      }: ToggleSwitchProps,
+      ref: Ref<HTMLInputElement>
+    ) => {
+      const {
+        callbacks,
+        className: rippleClassName,
+        style,
+      } = useRipple({
+        color: inputRippleColor(!!on, validationType === 'error'),
+        // Only define size for density -6,
+        // to make the halo slightly bigger than the container
+        size: RIPPLE_RATIO,
+      })
 
-  background: ${({ theme }) => theme.colors.ui3};
-  border-radius: 1.25rem;
-  bottom: 0;
-  left: 0;
-  opacity: 0.4;
-  position: absolute;
-  right: 0;
-  top: 0;
-`
+      const rippleHandlers = useRippleHandlers(
+        callbacks,
+        {
+          ...pick(props, rippleHandlerKeys),
+        },
+        disabled
+      )
 
-export const ToggleSwitchLayout = forwardRef(
-  (
-    { className, disabled, on, validationType, ...props }: ToggleSwitchProps,
-    ref: Ref<HTMLInputElement>
-  ) => {
-    return (
-      <div className={className}>
-        <input
-          type="checkbox"
-          checked={on}
-          disabled={disabled}
-          role="switch"
-          aria-checked={on}
-          aria-invalid={validationType === 'error' ? 'true' : undefined}
-          ref={ref}
-          {...pickInputProps(props)}
-        />
-        <KnobContainer on={on} disabled={disabled} />
-        {disabled && <DisabledKnob />}
-      </div>
-    )
-  }
-)
-
-ToggleSwitchLayout.displayName = 'ToggleSwitchLayout'
-
-export const ToggleSwitch = styled(ToggleSwitchLayout)`
+      // Ripple event handlers go on the container but the ripple styles go on the handle
+      return (
+        <div className={className} {...rippleHandlers}>
+          <input
+            type="checkbox"
+            checked={on}
+            disabled={disabled}
+            onChange={readOnly ? noop : onChange}
+            role="switch"
+            aria-checked={on}
+            aria-invalid={validationType === 'error' ? 'true' : undefined}
+            ref={ref}
+            {...pickInputProps(props)}
+          />
+          <Track on={on} validationType={validationType} />
+          <Handle
+            on={on}
+            validationType={validationType}
+            className={rippleClassName}
+            style={style}
+          ></Handle>
+        </div>
+      )
+    }
+  )
+)`
   ${reset}
   ${space}
 
-  height: 1.25rem;
+  align-items: center;
+  display: flex;
+  height: ${({ theme }) => theme.space.u6};
+  justify-content: center;
+  opacity: ${({ disabled }) => disabled && '0.4'};
   position: relative;
-  width: 2.1875rem;
+  width: ${({ theme }) => theme.space.u10};
 
   input {
-    cursor: ${({ disabled }) => (disabled ? undefined : 'pointer')};
+    cursor: ${({ disabled, readOnly }) =>
+      disabled || readOnly ? 'not-allowed' : 'pointer'};
     height: 100%;
     left: 0;
     margin: 0; /* Suppress browser default styling */
@@ -98,9 +132,5 @@ export const ToggleSwitch = styled(ToggleSwitchLayout)`
     top: 0;
     width: 100%;
     z-index: 1;
-
-    &:focus + div {
-      ${toggleSwitchShadowColor}
-    }
   }
 `
