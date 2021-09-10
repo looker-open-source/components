@@ -227,7 +227,7 @@ const StyledInput = styled.input`
 `
 
 export const inputTextHover = css`
-  border-color: ${({ theme }) => theme.colors.ui5};
+  border-color: ${({ theme }) => theme.colors.ui4};
 `
 export const inputTextFocus = css`
   border-color: ${({ theme }) => theme.colors.key};
