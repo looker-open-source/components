@@ -29,7 +29,7 @@
     "@storybook/testing-react": "^0.0.22",
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.6",
-    "@testing-library/user-event": "^13.1.5",
+    "@testing-library/user-event": "^13.2.1",
     "csstype": "^3.0.8",
     "jest-styled-components": "^7.0.4",
     "lodash": "^4.17.20",
