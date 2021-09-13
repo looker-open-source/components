@@ -26,9 +26,8 @@
 
 import styled from 'styled-components'
 import React from 'react'
-import { colorBreakdown } from '@looker/design-tokens/src/color/utils/colorBreakdown'
 import { Code, Grid } from '@looker/components'
-import { theme } from '@looker/design-tokens'
+import { colorBreakdown, theme } from '@looker/design-tokens'
 
 type ColorSwatchProps = {
   name: string

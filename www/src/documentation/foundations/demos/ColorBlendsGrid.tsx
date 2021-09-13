@@ -27,9 +27,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Code, Grid } from '@looker/components'
-import type { ColorKey } from '@looker/design-tokens/src/color/utils/colorBreakdown'
-import { colorBreakdown } from '@looker/design-tokens/src/color/utils/colorBreakdown'
-import { theme } from '@looker/design-tokens'
+import type { ColorKey } from '@looker/design-tokens'
+import { colorBreakdown, theme } from '@looker/design-tokens'
 
 const BlendColor = styled(
   ({ name, color, ...props }: { color: string; name: string }) => (
