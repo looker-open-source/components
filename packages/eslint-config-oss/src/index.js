@@ -48,6 +48,7 @@ module.exports = {
       rules: {
         'header/header': 'off',
         'mdx/no-unescaped-entities': 'off',
+        'react/jsx-no-undef': 'off',
         'sort-keys': 'off',
       },
     },

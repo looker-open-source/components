@@ -27,10 +27,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Code, Grid } from '@looker/components'
-import type {
-  ColorKey,
-  StatefulColorGroups,
-} from '@looker/design-tokens/src/color/utils/colorBreakdown'
+import type { ColorKey } from '@looker/design-tokens'
+import { colorBreakdown, theme } from '@looker/design-tokens'
 
 const BlendColor = styled(
   ({ name, color, ...props }: { color: string; name: string }) => (
@@ -83,14 +81,13 @@ const BlendGrid = styled(Grid)`
   grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
 `
 
-export const ColorBlendsGrid = ({
-  statefulColorGroups,
-}: {
-  statefulColorGroups: StatefulColorGroups
-}) => (
-  <BlendGrid gap="u5" maxWidth={1000}>
-    {statefulColorGroups.map((group, index) => (
-      <BlendList colors={group} key={index} />
-    ))}
-  </BlendGrid>
-)
+export const ColorBlendsGrid = () => {
+  const { statefulColorGroups } = colorBreakdown(theme.colors)
+  return (
+    <BlendGrid gap="u5" maxWidth={1000}>
+      {statefulColorGroups.map((group, index) => (
+        <BlendList colors={group} key={index} />
+      ))}
+    </BlendGrid>
+  )
+}

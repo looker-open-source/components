@@ -24,14 +24,9 @@
 
  */
 
-import React from 'react'
-import styled from 'styled-components'
-import { Button } from '@looker/components'
-
-const RoundBtnStyled = styled(Button)`
-  border-radius: 2rem;
-`
-
-export const RoundBtn = () => (
-  <RoundBtnStyled>Hello Round Button</RoundBtnStyled>
-)
+export * from '../documentation/foundations/demos'
+export * from '../documentation/components/content/demos'
+export * from '../documentation/components/date/demos'
+export * from '../documentation/components/ImportMessage'
+export * from '../documentation/components/layout/demos'
+export * from '../components/'
