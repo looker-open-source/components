@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 2.5.0
+
+## `@looker/components`
+
+
+### Bug Fixes
+
+* **Code:** `Code` component should not have a default fontSize, instead inherit via CSS cascade like `Span` ([#2815](https://github.com/looker-open-source/components/issues/2815)) ([52de975](https://github.com/looker-open-source/components/commit/52de9750ea30cc653dae1182eeec5cd1f245b895))
+* **Text inputs:** Lighter border-color ([#2823](https://github.com/looker-open-source/components/issues/2823)) ([c1d6815](https://github.com/looker-open-source/components/commit/c1d6815ec4bbad87019d396744eaf8746082c327))
+
+### Features
+
+* **Checkbox & Radio:** Google Material styling updates ([#2805](https://github.com/looker-open-source/components/issues/2805)) ([37b1f5e](https://github.com/looker-open-source/components/commit/37b1f5ee438b32e4078fe66a2ffe044a44d645bf))
+* **Text inputs:** Google Material style updates ([#2796](https://github.com/looker-open-source/components/issues/2796)) ([81d829d](https://github.com/looker-open-source/components/commit/81d829d7314a0e50a8457cb03edc8ad5239eda3c))
+* **theme:** Add support for specifiable theme.colors.pageBackground ([#2814](https://github.com/looker-open-source/components/issues/2814)) ([bdcacfb](https://github.com/looker-open-source/components/commit/bdcacfb32a6d4c55ed35a899e71148744834c9d0))
+* **ToggleSwitch:** Google Material style updates ([#2822](https://github.com/looker-open-source/components/issues/2822)) ([e2fcd6d](https://github.com/looker-open-source/components/commit/e2fcd6d63231c30bca81297e81e22853ee98c1d8))
+
+## `@looker/components-date`
+
+### Features
+
+* **Text inputs:** Google Material style updates ([#2796](https://github.com/looker-open-source/components/issues/2796)) ([81d829d](https://github.com/looker-open-source/components/commit/81d829d7314a0e50a8457cb03edc8ad5239eda3c))
+
+
+## `@looker/design-tokens`
+
+* **theme:** Add support for specifiable theme.colors.pageBackground ([#2814](https://github.com/looker-open-source/components/issues/2814)) ([bdcacfb](https://github.com/looker-open-source/components/commit/bdcacfb32a6d4c55ed35a899e71148744834c9d0))
+
+
 # 2.4.0
 
 ## All packages
