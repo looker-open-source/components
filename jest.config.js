@@ -33,6 +33,7 @@ module.exports = {
     '!packages/components-theme-editor/**/*',
     '!packages/**/stories/*',
     '!packages/**/*.stories.tsx',
+    '!packages/demos/src/**/*',
     '!packages/icons/src/**/*',
     '!packages/**/index.ts',
     '!packages/**/types.ts',
