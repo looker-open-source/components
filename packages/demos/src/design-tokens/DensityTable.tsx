@@ -38,7 +38,9 @@ import {
   listItemDimensions,
 } from '@looker/components'
 import type { DensityRamp } from '@looker/design-tokens'
-import { DocTable } from '../../../components'
+import { DocTable } from '../helpers'
+
+const densities: DensityRamp[] = [1, 0, -1, -2, -3]
 
 const DensityRow = ({ density }: { density: DensityRamp }) => (
   <TableRow>
@@ -72,7 +74,7 @@ export const DensityTable = () => (
       </TableRow>
     </TableHead>
     <TableBody>
-      {[1, 0, -1, -2, -3].map((d) => (
+      {densities.map((d) => (
         <DensityRow key={d} density={d} />
       ))}
     </TableBody>

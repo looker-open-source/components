@@ -24,6 +24,5 @@
 
  */
 
-export * from './DocTable'
 export * from './Search'
 export * from './Status'

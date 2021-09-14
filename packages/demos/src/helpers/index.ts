@@ -24,20 +24,4 @@
 
  */
 
-import type { Box2Props } from '@looker/components'
-import { Box2 } from '@looker/components'
-import type { FC } from 'react'
-import React from 'react'
-
-export const GridPlaceholder: FC<Box2Props> = (props) => (
-  <Box2
-    color="white"
-    bg="positive"
-    justifyContent="center"
-    alignItems="center"
-    height="100%"
-    width="100%"
-    display="flex"
-    {...props}
-  />
-)
+export * from './DocTable'

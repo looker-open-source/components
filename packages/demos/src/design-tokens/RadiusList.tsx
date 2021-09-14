@@ -24,56 +24,51 @@
 
  */
 
-import React, { useContext } from 'react'
-import toPairs from 'lodash/toPairs'
-import { BreakpointRamp, convertRemToPx } from '@looker/design-tokens'
+import React from 'react'
 import {
-  Table,
+  Box2,
+  Code,
   TableBody,
   TableDataCell,
   TableHead,
   TableHeaderCell,
   TableRow,
 } from '@looker/components'
+import { theme } from '@looker/design-tokens'
+import styled from 'styled-components'
+import { DocTable } from '../helpers'
 
-export const NamedBreakpointTable = () => {
+const ExampleBox = styled(Box2)`
+  height: 40px;
+  width: 60px;
+`
+
+export const RadiusList = () => {
+  const radii = Object.entries(theme.radii)
   return (
-    <Table mb="large">
+    <DocTable>
       <TableHead>
         <TableRow>
-          <TableHeaderCell>Name</TableHeaderCell>
-          <TableHeaderCell>Width (REM)</TableHeaderCell>
-          <TableHeaderCell>Width (PX)</TableHeaderCell>
+          <TableHeaderCell>Example</TableHeaderCell>
+          <TableHeaderCell>Rem Value</TableHeaderCell>
+          <TableHeaderCell>Reference</TableHeaderCell>
         </TableRow>
       </TableHead>
       <TableBody>
-        {toPairs(BreakpointRamp).map(([name, width], i, array) => {
-          const [, prevWidth] = array[i - 1] || ['xs', '0rem']
-          const isLastBreakpoint = i + 1 === array.length
-
-          const prevWidthRem = `${parseInt(prevWidth as string, 10) + 1}rem`
-          const widthPx = `${convertRemToPx(parseInt(width as string, 10))}px`
-          const prevWidthPx = `${
-            convertRemToPx(parseInt(prevWidth as string, 10)) + 1
-          }px`
-
+        {radii.map((r) => {
           return (
-            <TableRow key={name}>
-              <TableDataCell>{name}</TableDataCell>
+            <TableRow key={r[0]}>
               <TableDataCell>
-                {isLastBreakpoint
-                  ? `>= ${prevWidthRem}`
-                  : `${prevWidthRem} \u2013 ${width}`}
+                <ExampleBox bg="ui1" border="ui3" borderRadius={r[0]} />
               </TableDataCell>
+              <TableDataCell>{r[1]}</TableDataCell>
               <TableDataCell>
-                {isLastBreakpoint
-                  ? `>= ${prevWidthPx}`
-                  : `${prevWidthPx} \u2013 ${widthPx}`}
+                <Code fontSize="xsmall">theme.radii.{r[0]}</Code>
               </TableDataCell>
             </TableRow>
           )
         })}
       </TableBody>
-    </Table>
+    </DocTable>
   )
 }

@@ -25,50 +25,32 @@
  */
 
 import React from 'react'
+import toPairs from 'lodash/toPairs'
 import {
-  Box2,
-  Code,
+  Table,
   TableBody,
   TableDataCell,
   TableHead,
   TableHeaderCell,
   TableRow,
 } from '@looker/components'
-import { theme } from '@looker/design-tokens'
-import styled from 'styled-components'
-import { DocTable } from '../../../components'
+import { Locales } from '@looker/components-date'
 
-const ExampleBox = styled(Box2)`
-  height: 40px;
-  width: 60px;
-`
-
-export const RadiusList = () => {
-  const radii = Object.entries(theme.radii)
-  return (
-    <DocTable>
-      <TableHead>
-        <TableRow>
-          <TableHeaderCell>Example</TableHeaderCell>
-          <TableHeaderCell>Rem Value</TableHeaderCell>
-          <TableHeaderCell>Reference</TableHeaderCell>
+export const LocaleTable = () => (
+  <Table mb="large">
+    <TableHead>
+      <TableRow>
+        <TableHeaderCell>Name</TableHeaderCell>
+        <TableHeaderCell>Code</TableHeaderCell>
+      </TableRow>
+    </TableHead>
+    <TableBody>
+      {toPairs(Locales).map((locale) => (
+        <TableRow key={locale[0]}>
+          <TableDataCell>{locale[0]}</TableDataCell>
+          <TableDataCell>{locale[1]}</TableDataCell>
         </TableRow>
-      </TableHead>
-      <TableBody>
-        {radii.map((r, index) => {
-          return (
-            <TableRow key={r[0]}>
-              <TableDataCell>
-                <ExampleBox bg="ui1" border="ui3" borderRadius={r[0]} />
-              </TableDataCell>
-              <TableDataCell>{r[1]}</TableDataCell>
-              <TableDataCell>
-                <Code fontSize="xsmall">theme.radii.{r[0]}</Code>
-              </TableDataCell>
-            </TableRow>
-          )
-        })}
-      </TableBody>
-    </DocTable>
-  )
-}
+      ))}
+    </TableBody>
+  </Table>
+)

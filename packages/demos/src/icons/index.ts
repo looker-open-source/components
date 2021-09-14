@@ -24,4 +24,4 @@
 
  */
 
-export * from './Button'
+export * from './IconList'

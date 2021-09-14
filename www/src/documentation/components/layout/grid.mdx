@@ -24,10 +24,12 @@ By default `Grid` has two columns with a "medium" `gap` between grid cells and "
 
 ```jsx
 <Grid>
-  <GridPlaceholder minHeight="5rem">A</GridPlaceholder>
-  <GridPlaceholder>B</GridPlaceholder>
-  <GridPlaceholder>C</GridPlaceholder>
-  <GridPlaceholder>D</GridPlaceholder>
+  <Box2 border minHeight="5rem">
+    A
+  </Box2>
+  <Box2 border>B</Box2>
+  <Box2 border>C</Box2>
+  <Box2 border>D</Box2>
 </Grid>
 ```
 
@@ -37,19 +39,23 @@ Use the `columns` prop to specify the number of columns to display.
 
 ```jsx
 <Grid columns={4}>
-  <GridPlaceholder minHeight="5rem">A</GridPlaceholder>
-  <GridPlaceholder>B</GridPlaceholder>
-  <GridPlaceholder>C</GridPlaceholder>
-  <GridPlaceholder>D</GridPlaceholder>
+  <Box2 border minHeight="5rem">
+    A
+  </Box2>
+  <Box2 border>B</Box2>
+  <Box2 border>C</Box2>
+  <Box2 border>D</Box2>
 </Grid>
 ```
 
 ```jsx
 <Grid columns={1}>
-  <GridPlaceholder minHeight="5rem">A</GridPlaceholder>
-  <GridPlaceholder>B</GridPlaceholder>
-  <GridPlaceholder>C</GridPlaceholder>
-  <GridPlaceholder>D</GridPlaceholder>
+  <Box2 border minHeight="5rem">
+    A
+  </Box2>
+  <Box2 border>B</Box2>
+  <Box2 border>C</Box2>
+  <Box2 border>D</Box2>
 </Grid>
 ```
 
@@ -59,14 +65,18 @@ Specify `gap` to change the distance between grid cells (defaults to `medium`)
 
 ```jsx
 <Grid gap="u15">
-  <GridPlaceholder minHeight="5rem">A</GridPlaceholder>
-  <GridPlaceholder>B</GridPlaceholder>
+  <Box2 border minHeight="5rem">
+    A
+  </Box2>
+  <Box2 border>B</Box2>
 </Grid>
 ```
 
 ```jsx
 <Grid gap="none">
-  <GridPlaceholder minHeight="5rem">A</GridPlaceholder>
-  <GridPlaceholder>B</GridPlaceholder>
+  <Box2 border minHeight="5rem">
+    A
+  </Box2>
+  <Box2 border>B</Box2>
 </Grid>
 ```

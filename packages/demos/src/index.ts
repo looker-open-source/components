@@ -24,35 +24,6 @@
 
  */
 
-import React from 'react'
-import toPairs from 'lodash/toPairs'
-import {
-  Locales,
-  Table,
-  TableBody,
-  TableDataCell,
-  TableHead,
-  TableHeaderCell,
-  TableRow,
-} from '@looker/components'
-
-export const LocaleTable = () => {
-  return (
-    <Table mb="large">
-      <TableHead>
-        <TableRow>
-          <TableHeaderCell>Name</TableHeaderCell>
-          <TableHeaderCell>Code</TableHeaderCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        {toPairs(Locales).map((locale) => (
-          <TableRow key={locale[0]}>
-            <TableDataCell>{locale[0]}</TableDataCell>
-            <TableDataCell>{locale[1]}</TableDataCell>
-          </TableRow>
-        ))}
-      </TableBody>
-    </Table>
-  )
-}
+export * from './components'
+export * from './design-tokens'
+export * from './icons'

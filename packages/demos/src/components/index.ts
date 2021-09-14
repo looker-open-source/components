@@ -25,4 +25,12 @@
  */
 
 export * from './BoxSpacingRecipeTable'
+export * from './CalendarPropTable'
+export * from './DateFormatTable'
 export * from './Flex'
+export * from './ListItemPropTable'
+export * from './LocaleTable'
+export * from './NamedBreakpointTable'
+export * from './SelectManagerParameterTable'
+export * from './SelectManagerReturnTable'
+export * from './TimeFormatTable'
