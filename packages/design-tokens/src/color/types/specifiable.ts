@@ -24,7 +24,12 @@
 
  */
 
-export const coreColors: Array<keyof CoreColors> = ['key', 'background', 'text']
+export const coreColors: Array<keyof CoreColors> = [
+  'key',
+  'background',
+  'pageBackground',
+  'text',
+]
 
 export interface TextColor {
   /**
