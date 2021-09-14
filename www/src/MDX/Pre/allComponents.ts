@@ -202,12 +202,10 @@ import { DialogSurface } from '@looker/components/src/Dialog/DialogSurface'
 import styled from 'styled-components'
 import isEqual from 'lodash/isEqual'
 import { useState } from 'react'
-import { GridPlaceholder } from '../../helpers/GridPlaceholder'
 
 import { icons } from './demoIcons'
 
 const otherLibraries = {
-  GridPlaceholder,
   isEqual,
   styled,
   theme,

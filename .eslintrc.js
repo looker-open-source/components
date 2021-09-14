@@ -50,6 +50,12 @@ module.exports = {
       },
     },
     {
+      files: ['packages/demos/src/**/*.tsx', 'packages/demos/src/**/*.ts'],
+      rules: {
+        'i18next/no-literal-string': 'off',
+      },
+    },
+    {
       files: [
         '*.spec.*',
         '*.stories.*',

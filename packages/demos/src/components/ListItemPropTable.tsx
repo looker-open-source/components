@@ -33,7 +33,6 @@ import {
   TableRow,
   TableHeaderCell,
   TableDataCell,
-  Text,
   UnorderedList,
 } from '@looker/components'
 import styled from 'styled-components'

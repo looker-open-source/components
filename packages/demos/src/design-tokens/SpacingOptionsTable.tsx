@@ -36,7 +36,7 @@ import {
   TableRow,
   theme,
 } from '@looker/components'
-import { DocTable } from '../../../components'
+import { DocTable } from '../helpers'
 
 const spacingExamples = [
   { label: 'xxxsmall', px: '2', rem: '0.125rem' },

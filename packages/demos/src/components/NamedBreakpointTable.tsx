@@ -24,7 +24,7 @@
 
  */
 
-import React, { useContext } from 'react'
+import React from 'react'
 import toPairs from 'lodash/toPairs'
 import { BreakpointRamp, convertRemToPx } from '@looker/design-tokens'
 import {

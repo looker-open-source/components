@@ -24,8 +24,6 @@
 
  */
 
-export * from './IconList'
-export * from './SelectManagerParameterTable'
-export * from './SelectManagerReturnTable'
-export * from './NamedBreakpointTable'
-export * from './ListItemPropTable'
+export * from './components'
+export * from './design-tokens'
+export * from './icons'

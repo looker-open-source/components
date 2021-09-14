@@ -33,7 +33,7 @@ import {
   TableBody,
   TableDataCell,
 } from '@looker/components'
-import { DocTable } from '../../../../components'
+import { DocTable } from '../helpers'
 
 export const ItemDistribution = () => (
   <DocTable>

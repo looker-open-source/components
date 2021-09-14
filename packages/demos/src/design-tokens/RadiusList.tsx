@@ -36,7 +36,7 @@ import {
 } from '@looker/components'
 import { theme } from '@looker/design-tokens'
 import styled from 'styled-components'
-import { DocTable } from '../../../components'
+import { DocTable } from '../helpers'
 
 const ExampleBox = styled(Box2)`
   height: 40px;
@@ -55,7 +55,7 @@ export const RadiusList = () => {
         </TableRow>
       </TableHead>
       <TableBody>
-        {radii.map((r, index) => {
+        {radii.map((r) => {
           return (
             <TableRow key={r[0]}>
               <TableDataCell>
