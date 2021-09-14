@@ -57,7 +57,7 @@ const unitValues: Array<string[]> = Object.entries(theme.space).filter(
   ([key]) => key.startsWith('u')
 )
 
-const lookupLegacyValue = (remValue) => {
+const lookupLegacyValue = (remValue: string) => {
   const validSpace = spacingExamples.find((item) => item.rem === remValue)
 
   if (validSpace) {

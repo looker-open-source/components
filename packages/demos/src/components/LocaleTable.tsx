@@ -27,7 +27,6 @@
 import React from 'react'
 import toPairs from 'lodash/toPairs'
 import {
-  Locales,
   Table,
   TableBody,
   TableDataCell,
@@ -35,24 +34,23 @@ import {
   TableHeaderCell,
   TableRow,
 } from '@looker/components'
+import { Locales } from '@looker/components-date'
 
-export const LocaleTable = () => {
-  return (
-    <Table mb="large">
-      <TableHead>
-        <TableRow>
-          <TableHeaderCell>Name</TableHeaderCell>
-          <TableHeaderCell>Code</TableHeaderCell>
+export const LocaleTable = () => (
+  <Table mb="large">
+    <TableHead>
+      <TableRow>
+        <TableHeaderCell>Name</TableHeaderCell>
+        <TableHeaderCell>Code</TableHeaderCell>
+      </TableRow>
+    </TableHead>
+    <TableBody>
+      {toPairs(Locales).map((locale) => (
+        <TableRow key={locale[0]}>
+          <TableDataCell>{locale[0]}</TableDataCell>
+          <TableDataCell>{locale[1]}</TableDataCell>
         </TableRow>
-      </TableHead>
-      <TableBody>
-        {toPairs(Locales).map((locale) => (
-          <TableRow key={locale[0]}>
-            <TableDataCell>{locale[0]}</TableDataCell>
-            <TableDataCell>{locale[1]}</TableDataCell>
-          </TableRow>
-        ))}
-      </TableBody>
-    </Table>
-  )
-}
+      ))}
+    </TableBody>
+  </Table>
+)
