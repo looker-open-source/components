@@ -28,7 +28,7 @@ import { renderWithTheme } from '@looker/components-test-utils'
 import { act, fireEvent, screen } from '@testing-library/react'
 import { ThemeProvider } from 'styled-components'
 import React from 'react'
-import type { UseRippleProps } from './useRipple'
+import type { UseRippleProps } from './types'
 import { useRipple } from './useRipple'
 
 const RippleInner = (props: UseRippleProps) => {
@@ -63,25 +63,8 @@ const RippleComponent = (props: UseRippleProps) => (
   </ThemeProvider>
 )
 
-/* eslint-disable-next-line @typescript-eslint/unbound-method */
-const globalGetBoundingClientRect = Element.prototype.getBoundingClientRect
-
 beforeEach(() => {
   jest.useFakeTimers()
-  /* eslint-disable-next-line @typescript-eslint/unbound-method */
-  Element.prototype.getBoundingClientRect = jest.fn(() => {
-    return {
-      bottom: 0,
-      height: 30,
-      left: 0,
-      right: 0,
-      toJSON: jest.fn(),
-      top: 0,
-      width: 360,
-      x: 0,
-      y: 0,
-    }
-  })
 })
 
 afterEach(() => {
@@ -89,8 +72,6 @@ afterEach(() => {
     jest.runOnlyPendingTimers()
   })
   jest.useRealTimers()
-  /* eslint-disable-next-line @typescript-eslint/unbound-method */
-  Element.prototype.getBoundingClientRect = globalGetBoundingClientRect
 })
 const runTimers = () =>
   act(() => {
@@ -102,6 +83,7 @@ describe('useRipple', () => {
     renderWithTheme(<RippleComponent />)
     expect(screen.getByText('style')).toHaveStyle({
       '--ripple-color': '#71767a',
+      '--ripple-overflow': 'visible',
       '--ripple-scale-end': '1',
       '--ripple-scale-start': '0.1',
       '--ripple-size': '100%',
@@ -110,9 +92,10 @@ describe('useRipple', () => {
   })
 
   test('bounded animation values', () => {
-    renderWithTheme(<RippleComponent bounded />)
+    renderWithTheme(<RippleComponent bounded height={30} width={360} />)
     expect(screen.getByText('style')).toHaveStyle({
       '--ripple-color': '#71767a',
+      '--ripple-overflow': 'hidden',
       '--ripple-scale-end': '12.041594578792294',
       '--ripple-scale-start': '1',
       '--ripple-size': '30px',
