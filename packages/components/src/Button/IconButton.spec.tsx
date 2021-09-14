@@ -26,6 +26,8 @@
 
 import 'jest-styled-components'
 import React from 'react'
+import ReactDOMServer from 'react-dom/server'
+import { ComponentsProvider } from '@looker/components-providers'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { Favorite } from '@styled-icons/material/Favorite'
 import {
@@ -314,13 +316,21 @@ describe('IconButton', () => {
       const button = screen.getByRole('button')
       expect(button).toHaveStyle({
         '--ripple-color': '#71767a',
-        '--ripple-scale-end': '12.041594578792294',
-        '--ripple-scale-start': '12.041594578792294',
-        '--ripple-size': '30px',
-        '--ripple-translate': '165px, 0',
+        '--ripple-scale-end': '1.414',
+        '--ripple-scale-start': '1.414',
+        '--ripple-size': '100%',
+        '--ripple-translate': '0, 0',
       })
       /* eslint-disable-next-line @typescript-eslint/unbound-method */
       Element.prototype.getBoundingClientRect = globalGetBoundingClientRect
     })
+  })
+
+  test('useMappedLayoutEffect warning', () => {
+    ReactDOMServer.renderToString(
+      <ComponentsProvider>
+        <IconButton icon={<Favorite />} label="Test" />
+      </ComponentsProvider>
+    )
   })
 })

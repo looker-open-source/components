@@ -24,54 +24,11 @@
 
  */
 
-import type { ExtendedStatefulColor } from '@looker/design-tokens'
-import type { CSSProperties } from 'react'
 import { useContext } from 'react'
 import { ThemeContext } from 'styled-components'
-import { useMeasuredElement, useCallbackRef } from '../utils'
-import type { RippleCallbacks } from './types'
+import type { UseRippleProps, UseRippleResponse } from './types'
 import { useRippleState } from './useRippleState'
 import { useRippleStateBG } from './useRippleStateBG'
-
-export type UseRippleProps = {
-  /**
-   * Use for elements where the ripple disappears at the edges of
-   * a visible rectangle, e.g. a default Button
-   * @default false
-   */
-  bounded?: boolean
-  /**
-   * Change the color of the ripple background and foreground
-   * @default neutral
-   */
-  color?: ExtendedStatefulColor
-  /**
-   * Decimal multiplier, e.g. 1.5.
-   * Use for unbounded ripple that needs to extend past element dimensions,
-   * don't use with overflow: hidden
-   * @default 1
-   */
-  size?: number
-}
-
-export type UseRippleResponse = {
-  /**
-   * The start and end functions for the background and foreground
-   */
-  callbacks: RippleCallbacks
-  /**
-   * The class names used in rippleStyle to trigger the animations
-   */
-  className: string
-  /**
-   * ref is only used for bounded ripple, to detect element dimensions
-   */
-  ref?: (node: HTMLElement | null) => void
-  /**
-   * style contains CSS variables to control the animation
-   */
-  style: CSSProperties
-}
 
 const getMinMaxDimensions = (width: number, height: number) => {
   const min = Math.min(width, height)
@@ -88,7 +45,7 @@ const getRippleScaleRange = (
 ): [number, number] => {
   // For squares it looks best to start the ripple very small
   const start = 0.1
-  if (bounded) {
+  if (bounded && min > 0 && max > 0) {
     // For rectangles it looks better to start at the size of the smaller dimension
     // which is 1 because of how size is calculated
     const startBounded = min === max ? start : 1
@@ -127,12 +84,10 @@ const getRippleOffset = (min: number, max: number, bounded?: boolean) => {
 export const useRipple = ({
   bounded = false,
   color = 'neutral',
+  height = 0,
   size = 1,
+  width = 0,
 }: UseRippleProps): UseRippleResponse => {
-  // ref is actually only used for bounded, when dimensions are needed
-  // otherwise ref is wasteful since it triggers a state update & re-render
-  const [element, ref] = useCallbackRef()
-  const [{ width, height }] = useMeasuredElement(element)
   // Get the theme colors to apply the right value for the color prop
   // brandAnimation toggles the animation
   const {
@@ -162,7 +117,7 @@ export const useRipple = ({
     ['--ripple-color' as any]: colors[color],
     ['--ripple-scale-end' as any]: rippleScaleRange[1] || 1,
     ['--ripple-scale-start' as any]: rippleScaleRange[0],
-    ['--ripple-size' as any]: bounded ? `${min}px` : '100%',
+    ['--ripple-size' as any]: bounded && min > 0 ? `${min}px` : '100%',
     ['--ripple-translate' as any]: rippleOffset,
     // bounded ripple scales up larger than the container
     // but should not show beyond its edges
@@ -180,8 +135,6 @@ export const useRipple = ({
     },
     // Props to be applied to the same element that gets rippleStyle
     className: `${bgClass} ${fgClass}`,
-    // bounded needs to get the element size
-    ref: bounded ? ref : undefined,
     style,
   }
 }
