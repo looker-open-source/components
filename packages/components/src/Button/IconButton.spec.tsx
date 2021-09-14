@@ -326,7 +326,8 @@ describe('IconButton', () => {
     })
   })
 
-  test('useMappedLayoutEffect warning', () => {
+  test('No useLayoutEffect warning', () => {
+    // A React warning would cause the test to fail
     ReactDOMServer.renderToString(
       <ComponentsProvider>
         <IconButton icon={<Favorite />} label="Test" />
