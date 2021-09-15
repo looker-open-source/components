@@ -25,14 +25,15 @@
  */
 
 import type { Ref } from 'react'
-import React, { forwardRef } from 'react'
-import styled from 'styled-components'
+import React, { forwardRef, useContext, useState } from 'react'
+import styled, { ThemeContext } from 'styled-components'
 import { useID } from '../../../utils'
 import { useFormContext } from '../../Form'
-import type { InputTextProps } from '../../Inputs/InputText/InputText'
-import { InputText } from '../../Inputs/InputText/InputText'
+import type { InputTextProps } from '../../Inputs/InputText'
+import { InputText, InputTextContext } from '../../Inputs/InputText'
 import type { FieldProps } from '../Field'
 import { Field, omitFieldProps, pickFieldProps } from '../Field'
+import { getHasValue } from '../Field/useFloatingLabel'
 
 export interface FieldTextProps extends FieldProps, InputTextProps {}
 
@@ -40,20 +41,32 @@ const FieldTextComponent = forwardRef(
   (props: FieldTextProps, ref: Ref<HTMLInputElement>) => {
     const id = useID(props.id)
     const validationMessage = useFormContext(props)
+    const { space } = useContext(ThemeContext)
+    const [beforeWidth, setBeforeWidth] = useState(0)
     return (
-      <Field
-        id={id}
-        validationMessage={validationMessage}
-        {...pickFieldProps(props)}
-      >
-        <InputText
-          {...omitFieldProps(props)}
+      <InputTextContext.Provider value={{ beforeWidth, setBeforeWidth }}>
+        <Field
           id={id}
-          aria-describedby={`describedby-${id}`}
-          validationType={validationMessage && validationMessage.type}
-          ref={ref}
-        />
-      </Field>
+          validationMessage={validationMessage}
+          hasValue={getHasValue(props)}
+          labelOffset={
+            props.iconBefore
+              ? space.u8
+              : props.before
+              ? `${beforeWidth}px`
+              : undefined
+          }
+          {...pickFieldProps(props)}
+        >
+          <InputText
+            {...omitFieldProps(props)}
+            id={id}
+            aria-describedby={`describedby-${id}`}
+            validationType={validationMessage && validationMessage.type}
+            ref={ref}
+          />
+        </Field>
+      </InputTextContext.Provider>
     )
   }
 )

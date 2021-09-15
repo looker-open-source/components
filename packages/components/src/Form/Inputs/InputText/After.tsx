@@ -24,41 +24,38 @@
 
  */
 
-import { useCallback, useState } from 'react'
-import { useResize } from './useResize'
+import React from 'react'
+import { Span } from '../../../Text'
+import { ErrorIcon, InputTextContent } from './InputTextContent'
+import type { InputTextProps } from './types'
 
-export const measureElement = (element?: HTMLElement | null) => {
-  if (!element) {
-    return typeof DOMRect === 'function'
-      ? new DOMRect()
-      : {
-          bottom: 0,
-          height: 0,
-          left: 0,
-          rect: {},
-          right: 0,
-          toJSON: () => null,
-          top: 0,
-          width: 0,
-          x: 0,
-          y: 0,
-        }
-  }
+export const After = ({
+  after,
+  iconAfter,
+  validationType,
+}: Pick<InputTextProps, 'after' | 'iconAfter' | 'validationType'>) => {
+  const iconAfterOrSuffix = (iconAfter || typeof after === 'string') && (
+    <InputTextContent pl="u2" pr="u2">
+      {iconAfter || <Span fontSize="small">{after}</Span>}
+    </InputTextContent>
+  )
 
-  return element.getBoundingClientRect()
-}
+  const validationIcon = validationType === 'error' && (
+    <InputTextContent pl={after || iconAfter ? 'u1' : 'u2'} pr="u2">
+      <ErrorIcon />
+    </InputTextContent>
+  )
 
-export const useMeasuredElement = (
-  element: HTMLElement | null
-): [DOMRect, () => void] => {
-  const [rect, setRect] = useState(measureElement())
-
-  const refreshDomRect = useCallback(() => {
-    // Update client rect
-    element && setRect(measureElement(element))
-  }, [element])
-
-  useResize(element, refreshDomRect)
-
-  return [rect, refreshDomRect]
+  return (
+    <>
+      {iconAfterOrSuffix ? (
+        <>
+          {iconAfterOrSuffix}
+          {validationIcon}
+        </>
+      ) : (
+        after || validationIcon
+      )}
+    </>
+  )
 }

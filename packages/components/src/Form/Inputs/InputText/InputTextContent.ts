@@ -24,41 +24,36 @@
 
  */
 
-import { useCallback, useState } from 'react'
-import { useResize } from './useResize'
+import type { SpaceProps } from '@looker/design-tokens'
+import { space } from '@looker/design-tokens'
+import { Error } from '@styled-icons/material/Error'
+import { StyledIconBase } from '@styled-icons/styled-icon'
+import styled, { css } from 'styled-components'
 
-export const measureElement = (element?: HTMLElement | null) => {
-  if (!element) {
-    return typeof DOMRect === 'function'
-      ? new DOMRect()
-      : {
-          bottom: 0,
-          height: 0,
-          left: 0,
-          rect: {},
-          right: 0,
-          toJSON: () => null,
-          top: 0,
-          width: 0,
-          x: 0,
-          y: 0,
-        }
+const InputIconSize = css`
+  height: ${({ theme }) => theme.sizes.medium};
+  max-width: ${({ theme }) => theme.sizes.medium};
+`
+export const ErrorIcon = styled(Error)`
+  ${InputIconSize}
+  color: ${({ theme }) => theme.colors.critical};
+`
+export const InputTextContent = styled.div<SpaceProps>`
+  ${space}
+  align-items: center;
+  color: ${({ theme }) => theme.colors.text1};
+  display: flex;
+  height: 100%;
+  pointer-events: none;
+
+  ${StyledIconBase} {
+    color: ${({ theme }) => theme.colors.text1};
   }
 
-  return element.getBoundingClientRect()
-}
-
-export const useMeasuredElement = (
-  element: HTMLElement | null
-): [DOMRect, () => void] => {
-  const [rect, setRect] = useState(measureElement())
-
-  const refreshDomRect = useCallback(() => {
-    // Update client rect
-    element && setRect(measureElement(element))
-  }, [element])
-
-  useResize(element, refreshDomRect)
-
-  return [rect, refreshDomRect]
-}
+  ${ErrorIcon} {
+    color: ${({ theme }) => theme.colors.critical};
+  }
+  svg {
+    ${InputIconSize}
+  }
+`
