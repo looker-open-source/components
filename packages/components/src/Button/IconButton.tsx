@@ -35,6 +35,7 @@ import { Icon } from '../Icon'
 import {
   rippleHandlerKeys,
   rippleStyle,
+  SQUARE_RIPPLE,
   useRipple,
   useRippleHandlers,
 } from '../Ripple'
@@ -84,6 +85,7 @@ export const IconButton = styled(
     } = useRipple({
       bounded: shape === 'square',
       color: toggle ? toggleColor : undefined,
+      size: shape === 'square' ? SQUARE_RIPPLE : 1,
     })
 
     const ref = useForkedRef(forwardedRef, rippleRef)

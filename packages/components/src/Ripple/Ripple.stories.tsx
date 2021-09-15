@@ -35,7 +35,7 @@ import { useRipple, useRippleHandlers, rippleStyle } from './'
 type RippleProps = SimpleLayoutProps & UseRippleProps & { className?: string }
 
 const Ripple = styled(
-  ({ className, bounded, color, ...props }: RippleProps) => {
+  ({ className, bounded, color, height, width, ...props }: RippleProps) => {
     const {
       callbacks,
       className: rippleClassName,
@@ -43,6 +43,8 @@ const Ripple = styled(
     } = useRipple({
       bounded,
       color,
+      height,
+      width,
     })
 
     const rippleHandlers = useRippleHandlers(callbacks, {})
