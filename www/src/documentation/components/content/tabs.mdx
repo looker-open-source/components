@@ -121,11 +121,11 @@ Using the distribute prop on `Tabs2` will equally distribute each `Tab` in the c
 
 ```jsx
 ;() => {
-  const [tabId, setTabId] = useState(0)
+  const [tabId, setTabId] = useState('cats')
   return (
     <>
-      <button onClick={() => setTab(0)}>Go to A</button>
-      <button onClick={() => setTab(1)}>Go to B</button>
+      <button onClick={() => setTabId('cats')}>Go to Cats</button>
+      <button onClick={() => setTabId('dogs')}>Go to Dogs</button>
       <Tabs2 tabId={tabId} onTabChange={setTabId}>
         <Tab2 id="cats" label="Cats">
           Here's awesome story about cats
