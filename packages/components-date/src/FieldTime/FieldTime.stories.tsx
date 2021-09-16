@@ -79,7 +79,11 @@ export const Controlled = () => {
         <Button onClick={partial(setControlledTime, '16:32')}>4:32pm</Button>
       </Space>
 
-      <FieldTime value={controlledTime} onChange={setControlledTime} />
+      <FieldTime
+        label="Controlled"
+        value={controlledTime}
+        onChange={setControlledTime}
+      />
     </SpaceVertical>
   )
 }

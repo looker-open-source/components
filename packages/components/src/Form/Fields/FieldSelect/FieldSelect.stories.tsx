@@ -66,10 +66,22 @@ Basic.args = {
   placeholder: 'Placeholder',
 }
 
+export const Value = Template.bind({})
+Value.args = {
+  ...Basic.args,
+  value: 'gouda',
+}
+
 export const Disabled = Template.bind({})
 Disabled.args = {
   ...Basic.args,
   disabled: true,
+}
+
+export const DisabledValue = Template.bind({})
+DisabledValue.args = {
+  ...Disabled.args,
+  value: 'gouda',
 }
 
 export const Detail = Template.bind({})
@@ -96,6 +108,12 @@ Error.args = {
   validationMessage: { message: 'Error Message', type: 'error' },
 }
 
+export const ErrorValue = Template.bind({})
+ErrorValue.args = {
+  ...Error.args,
+  value: 'gouda',
+}
+
 export const Inline = Template.bind({})
 Inline.args = {
   ...Basic.args,
@@ -106,6 +124,12 @@ export const ErrorInline = Template.bind({})
 ErrorInline.args = {
   ...Error.args,
   inline: true,
+}
+
+export const AutoResize = Template.bind({})
+AutoResize.args = {
+  ...Detail.args,
+  autoResize: true,
 }
 
 const optionsWithDescriptions = options.map((option: ComboboxOptionObject) => ({

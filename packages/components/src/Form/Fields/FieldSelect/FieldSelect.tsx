@@ -31,21 +31,25 @@ import { useID } from '../../../utils'
 import { useFormContext } from '../../Form'
 import type { SelectProps } from '../../Inputs/Select/Select'
 import { Select } from '../../Inputs/Select/Select'
-import type { FieldProps } from '../Field'
-import { Field, omitFieldProps, pickFieldProps } from '../Field'
+import type { FloatingLabelFieldProps } from '../Field'
+import { FloatingLabelField, omitFieldProps, pickFieldProps } from '../Field'
+import { getHasValue } from '../Field/useFloatingLabel'
 
-export interface FieldSelectProps extends FieldProps, SelectProps {}
+export interface FieldSelectProps
+  extends FloatingLabelFieldProps,
+    SelectProps {}
 
 const FieldSelectComponent = forwardRef(
   (props: FieldSelectProps, ref: Ref<HTMLInputElement>) => {
     const validationMessage = useFormContext(props)
     const id = useID(props.id)
     return (
-      <Field
+      <FloatingLabelField
         {...pickFieldProps(props)}
         id={id}
         ariaLabelOnly
         validationMessage={validationMessage}
+        hasValue={getHasValue(props)}
       >
         <Select
           {...omitFieldProps(props)}
@@ -55,7 +59,7 @@ const FieldSelectComponent = forwardRef(
           validationType={validationMessage && validationMessage.type}
           ref={ref}
         />
-      </Field>
+      </FloatingLabelField>
     )
   }
 )

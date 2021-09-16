@@ -27,9 +27,10 @@
 import type { Ref } from 'react'
 import React, { forwardRef } from 'react'
 import styled from 'styled-components'
-import type { FieldProps } from '@looker/components'
+import type { FloatingLabelFieldProps } from '@looker/components'
 import {
-  Field,
+  FloatingLabelField,
+  getHasValue,
   omitFieldProps,
   pickFieldProps,
   useFormContext,
@@ -39,7 +40,7 @@ import type { InputTimeSelectProps } from '../InputTimeSelect'
 import { InputTimeSelect } from '../InputTimeSelect'
 
 export interface FieldTimeSelectProps
-  extends FieldProps,
+  extends FloatingLabelFieldProps,
     InputTimeSelectProps {}
 
 const FieldTimeSelectComponent = forwardRef(
@@ -47,11 +48,12 @@ const FieldTimeSelectComponent = forwardRef(
     const validationMessage = useFormContext(props)
     const id = useID(props.id)
     return (
-      <Field
+      <FloatingLabelField
         data-testid="FieldSelectMultiId"
         {...pickFieldProps(props)}
         id={id}
         validationMessage={validationMessage}
+        hasValue={getHasValue(props)}
       >
         <InputTimeSelect
           {...omitFieldProps(props)}
@@ -60,7 +62,7 @@ const FieldTimeSelectComponent = forwardRef(
           validationType={validationMessage && validationMessage.type}
           ref={ref}
         />
-      </Field>
+      </FloatingLabelField>
     )
   }
 )
