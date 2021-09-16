@@ -104,6 +104,12 @@ NoResize.args = {
   resize: false,
 }
 
+export const ExternalLabel = Template.bind({})
+ExternalLabel.args = {
+  ...DetailDescription.args,
+  externalLabel: true,
+}
+
 const initialValue = 'Initial Value'
 
 export const Controlled = () => {
