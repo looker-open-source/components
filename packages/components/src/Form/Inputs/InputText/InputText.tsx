@@ -241,6 +241,10 @@ export const inputTextDisabled = css`
   &:hover {
     border-color: ${({ theme }) => theme.colors.ui3};
   }
+  /* FloatingLabelField handles opacity */
+  [data-disabled='true'] & {
+    opacity: 1;
+  }
 `
 
 const InputIconSize = css`

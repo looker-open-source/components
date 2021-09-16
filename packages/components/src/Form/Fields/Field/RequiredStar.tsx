@@ -27,7 +27,7 @@ import { useTranslation } from 'react-i18next'
 import type { FC } from 'react'
 import React from 'react'
 import styled from 'styled-components'
-import { VisuallyHidden } from '../../VisuallyHidden'
+import { VisuallyHidden } from '../../../VisuallyHidden'
 
 const RequiredStarLayout: FC<{ className?: string }> = ({ className }) => {
   const { t } = useTranslation('RequiredStar')

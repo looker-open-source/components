@@ -27,12 +27,12 @@
 import type { FC } from 'react'
 import React from 'react'
 import styled from 'styled-components'
-import { Label } from '../Label/Label'
-import { Paragraph } from '../../Text'
-import { ValidationMessage } from '../ValidationMessage/ValidationMessage'
-import { Truncate } from '../../Truncate'
-import type { FieldBaseProps } from './FieldBase'
+import { Label } from '../../Label/Label'
+import { Paragraph } from '../../../Text'
+import { ValidationMessage } from '../../ValidationMessage/ValidationMessage'
+import { Truncate } from '../../../Truncate'
 import { RequiredStar } from './RequiredStar'
+import type { FieldBaseProps } from './types'
 /**
  * `<FieldInline />` allows the rendering of a label (for FieldCheckbox, FieldRadio and FieldToggleSwitch),
  * and can render a validation message.

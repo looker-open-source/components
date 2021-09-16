@@ -24,16 +24,16 @@
 
  */
 
-import type { ReactNode } from 'react'
-import type { ValidationMessageProps } from '../ValidationMessage/ValidationMessage'
+import type { WidthProps } from '@looker/design-tokens'
+import type { FocusEvent, ReactNode } from 'react'
+import type { ValidationMessageProps } from '../../ValidationMessage/ValidationMessage'
+import type { LabelProps } from '../../Label'
 
-export interface FieldBaseProps {
-  className?: string
+type FieldLabelBaseProps = {
   /**
-   * Allows Field to adjust to the width of the input (InputText and Select)
+   * Id of the input element to match a label to.
    */
-  autoResize?: boolean
-  disabled?: boolean
+  id?: string
   /**
    * Defines the label for the field.
    * I18n recommended: content that is user visible should be treated for i18n
@@ -43,6 +43,34 @@ export interface FieldBaseProps {
    * Whether or not the field should display a `*` denoting it is required.
    */
   required?: boolean
+}
+
+export type UseFloatingLabelProps = {
+  /**
+   * Internal only
+   * @private
+   */
+  hasValue?: boolean
+  /**
+   * Internal only
+   * @private
+   */
+  labelOffset?: string
+  /**
+   * Internal only
+   * @private
+   */
+  checkValueOnBlur?: false | ((e: FocusEvent) => boolean)
+}
+
+export type FieldBaseProps = FieldLabelBaseProps & {
+  className?: string
+  children?: ReactNode
+  /**
+   * Allows Field to adjust to the width of the input (InputText and Select)
+   */
+  autoResize?: boolean
+  disabled?: boolean
   /**
    * notes and details added to the top right corner of the field
    * I18n recommended: content that is user visible should be treated for i18n
@@ -54,7 +82,39 @@ export interface FieldBaseProps {
    */
   description?: ReactNode
   /**
+   * Determines where to place the label in relation to the input.
+   * @default false
+   */
+  inline?: boolean
+  /**
    * Holds the type of validation (error, warning, etc.) and corresponding message.
    */
   validationMessage?: ValidationMessageProps
 }
+
+export type HideLabelProps = {
+  /**
+   * Hide label on Field
+   * @default false
+   */
+  hideLabel?: boolean
+  /**
+   * Use aria-label only
+   */
+  ariaLabelOnly?: boolean
+}
+
+export type FieldProps = FieldBaseProps & WidthProps & HideLabelProps
+
+export type FloatingLabelFieldProps = FieldProps & {
+  /**
+   * External label placement above the field
+   * @default false
+   */
+  externalLabel?: boolean
+}
+
+export type FloatingLabelFieldPropsInternal = FloatingLabelFieldProps &
+  UseFloatingLabelProps
+
+export type FieldLabelProps = HideLabelProps & FieldLabelBaseProps & LabelProps

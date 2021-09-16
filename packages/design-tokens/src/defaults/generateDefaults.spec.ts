@@ -53,4 +53,14 @@ describe('generateDefaults', () => {
     expect(defaults.brandAnimation).toEqual(true)
     expect(defaults.density).toEqual(-1)
   })
+
+  test('overwrite externalLabel', () => {
+    const defaults = generateDefaults(componentSettingsDefaults, {
+      externalLabel: false,
+    })
+
+    expect(defaults.brandAnimation).toEqual(false)
+    expect(defaults.density).toEqual(0)
+    expect(defaults.externalLabel).toEqual(false)
+  })
 })

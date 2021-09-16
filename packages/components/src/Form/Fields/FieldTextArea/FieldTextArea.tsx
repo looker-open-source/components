@@ -24,26 +24,29 @@
 
  */
 
-import type { FC } from 'react'
 import React from 'react'
 import styled from 'styled-components'
 import { useID } from '../../../utils'
 import { useFormContext } from '../../Form'
 import type { TextAreaProps } from '../../Inputs/TextArea'
 import { TextArea } from '../../Inputs/TextArea'
-import type { FieldProps } from '../Field'
-import { Field, omitFieldProps, pickFieldProps } from '../Field'
+import type { FloatingLabelFieldProps } from '../Field'
+import { FloatingLabelField, omitFieldProps, pickFieldProps } from '../Field'
+import { getHasValue } from '../Field/useFloatingLabel'
 
-export interface FieldTextAreaProps extends FieldProps, TextAreaProps {}
+export interface FieldTextAreaProps
+  extends FloatingLabelFieldProps,
+    TextAreaProps {}
 
-const FieldTextAreaComponent: FC<FieldTextAreaProps> = ({ ...props }) => {
+export const FieldTextArea = styled((props: FieldTextAreaProps) => {
   const id = useID(props.id)
   const validationMessage = useFormContext(props)
   return (
-    <Field
+    <FloatingLabelField
       {...pickFieldProps(props)}
       id={id}
       validationMessage={validationMessage}
+      hasValue={getHasValue(props)}
     >
       <TextArea
         {...omitFieldProps(props)}
@@ -51,10 +54,6 @@ const FieldTextAreaComponent: FC<FieldTextAreaProps> = ({ ...props }) => {
         aria-describedby={`describedby-${id}`}
         validationType={validationMessage && validationMessage.type}
       />
-    </Field>
+    </FloatingLabelField>
   )
-}
-
-FieldTextAreaComponent.displayName = 'FieldTextAreaComponent'
-
-export const FieldTextArea = styled(FieldTextAreaComponent)``
+})``

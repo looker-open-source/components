@@ -31,9 +31,8 @@ import { useID } from '../../../utils'
 import { useFormContext } from '../../Form'
 import type { CheckboxProps } from '../../Inputs/Checkbox/Checkbox'
 import { Checkbox } from '../../Inputs/Checkbox/Checkbox'
-import { omitFieldProps, pickFieldProps } from '../Field'
-import { FieldInline } from '../FieldInline'
-import type { FieldBaseProps } from '../FieldBase'
+import { FieldInline, omitFieldProps, pickFieldProps } from '../Field'
+import type { FieldBaseProps } from '../Field'
 
 export interface FieldCheckboxProps extends CheckboxProps, FieldBaseProps {}
 

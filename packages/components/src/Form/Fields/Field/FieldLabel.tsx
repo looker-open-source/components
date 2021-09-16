@@ -24,29 +24,40 @@
 
  */
 
-import type { DensityRamp } from '../system/density'
+import React, { useContext } from 'react'
+import styled from 'styled-components'
+import { FieldsetContext } from '../../Fieldset'
+import { VisuallyHidden } from '../../../VisuallyHidden'
+import { Label } from '../../Label'
+import { RequiredStar } from './RequiredStar'
+import type { FieldLabelProps } from './types'
 
-export type ComponentSettingsDefaults = {
-  /**
-   * Enable the Material "Ripple" animation on components that support it.
-   * Currently affects: IconButton, Checkbox, Radio & ToggleSwitch
-   * Future: Button*, Tab & ListItem
-   * @default false
-   */
-  brandAnimation: boolean
-
-  /**
-   * Default density to use for density-supporting components
-   *
-   * NOTE: This not implemented broadly yet. Altering this value is not recommended
-   * at this time.
-   */
-  density: DensityRamp
-  /**
-   * Disable the Material "floating label" layout and animation on components that support it.
-   * Currently affects: FieldTextArea
-   * Future: FieldText, FieldSelect, FieldSelectMulti, FieldDate, FieldDateRange, FieldDate, FieldTime, FieldTimeSelect
-   * @default true
-   */
-  externalLabel: boolean
-}
+export const FieldLabel = styled(
+  ({
+    ariaLabelOnly,
+    hideLabel,
+    id,
+    label,
+    required,
+    ...props
+  }: FieldLabelProps) => {
+    const { fieldsHideLabel } = useContext(FieldsetContext)
+    const shouldHideLabel =
+      (fieldsHideLabel || hideLabel) && hideLabel !== false
+    const labelComponent = (
+      <Label
+        htmlFor={ariaLabelOnly ? undefined : id}
+        id={`labelledby-${id}`}
+        {...props}
+      >
+        {label}
+        {required && <RequiredStar />}
+      </Label>
+    )
+    return shouldHideLabel ? (
+      <VisuallyHidden>{labelComponent}</VisuallyHidden>
+    ) : (
+      labelComponent
+    )
+  }
+)``

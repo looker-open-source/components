@@ -31,5 +31,5 @@ import type { FocusEvent } from 'react'
  * and document.activeElement as a fallback (IE11, where it’s updated before the blur event).
  * @param event the blur event
  */
-export const getNextFocusTarget = (event?: FocusEvent) =>
-  event?.relatedTarget || document.activeElement
+export const getNextFocusTarget = (event?: FocusEvent): Node | Element | null =>
+  (event?.relatedTarget as Node) || document.activeElement
