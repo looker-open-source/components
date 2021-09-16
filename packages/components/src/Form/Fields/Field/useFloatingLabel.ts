@@ -79,11 +79,15 @@ export const useFloatingLabel = ({
     className: hasValue || isFocused ? 'label-up' : 'label-down',
     handlers: {
       onBlur: (e: FocusEvent<HTMLDivElement>) => {
-        const nextFocusTarget = getNextFocusTarget(e)
+        // Check for a value on blur – if there is one,
+        // the label shouldn't move back down
         if (checkValueOnBlur) {
           setHasValue(checkValueOnBlur(e))
         }
 
+        const nextFocusTarget = getNextFocusTarget(e)
+        // For FieldSelect, focus can move (briefly) into the list,
+        // which is in a Portal
         const portalRoot = getPortalRoot()
         if (
           nextFocusTarget &&

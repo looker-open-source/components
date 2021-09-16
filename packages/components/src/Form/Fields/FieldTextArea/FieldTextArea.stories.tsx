@@ -105,6 +105,7 @@ NoResize.args = {
 }
 
 const initialValue = 'Initial Value'
+
 export const Controlled = () => {
   const [value, setValue] = useState(initialValue)
   const handleReset = () => setValue(initialValue)
@@ -126,4 +127,8 @@ export const Controlled = () => {
       />
     </SpaceVertical>
   )
+}
+
+Controlled.parameters = {
+  storyshots: { disable: true },
 }

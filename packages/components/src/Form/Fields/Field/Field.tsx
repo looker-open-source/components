@@ -71,8 +71,8 @@ export const Field = styled(
     id,
     ariaLabelOnly,
     label,
-    required,
     hideLabel,
+    required,
     validationMessage,
   }: FieldProps) => (
     <div className={className}>
