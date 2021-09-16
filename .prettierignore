@@ -1,5 +1,5 @@
 packages/**/lib/
-packages/icons/src/generated/
+packages/icons/src/**/*.tsx
 packages/www/.cache
 packages/www/public
 */**/CHANGELOG.md

@@ -34,28 +34,20 @@ module.exports = {
     'eslint:recommended',
     'standard',
     'plugin:jest-dom/recommended',
-    'plugin:prettier/recommended',
     'plugin:react/recommended',
     'plugin:testing-library/react',
     'plugin:@typescript-eslint/recommended',
-    'prettier',
+    'plugin:prettier/recommended',
+    'plugin:react-hooks/recommended',
   ],
-  ignorePatterns: ['lib/', '*.d.ts', 'generated/', 'node_modules/'],
+  ignorePatterns: ['lib/', '*.d.ts'],
   overrides: [
     {
       extends: ['plugin:mdx/recommended'],
       files: ['**/*.mdx'],
       rules: {
         'header/header': 'off',
-        'mdx/no-unescaped-entities': 'off',
         'react/jsx-no-undef': 'off',
-        'sort-keys': 'off',
-      },
-    },
-    {
-      files: ['*.ts', '*.tsx'],
-      rules: {
-        '@typescript-eslint/no-unused-vars': 'off',
       },
     },
   ],
@@ -65,7 +57,6 @@ module.exports = {
     'i18next',
     'header',
     'jest-dom',
-    'prettier',
     'react-hooks',
     'sort-keys-fix',
     'testing-library',
@@ -76,6 +67,7 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-redeclare': ['error'],
     '@typescript-eslint/no-use-before-define': 'off',
+    '@typescript-eslint/no-unused-vars': 'off',
     'header/header': [
       2,
       'block',
@@ -137,18 +129,14 @@ module.exports = {
         ],
       },
     ],
-    'no-undef': 'off', // Not needed with TS around
     'no-use-before-define': 'off',
-    'prettier/prettier': 'error',
-    'react-hooks/exhaustive-deps': 'warn',
-    'react-hooks/rules-of-hooks': 'error',
     'react/no-unescaped-entities': 'off',
     'react/prop-types': 'off',
     'sort-keys': 'off',
     'sort-keys-fix/sort-keys-fix': 'error',
+    '@typescript-eslint/no-unused-vars': 'off',
     // Work to enable these soon-ish
     'testing-library/no-node-access': 'off',
-    'testing-library/prefer-screen-queries': 'off',
   },
 
   settings: {
