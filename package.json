@@ -42,7 +42,7 @@
     "fix": "yarn lint:es --fix",
     "lint": "run-p -c lint:*",
     "lint:css": "stylelint 'packages/**/*.ts{,x}'",
-    "lint:es": "eslint 'packages/**/*.ts{,x}' 'apps/**/*.ts{,x}' 'storybook/**/*.ts{,x}' 'www/**/*.ts{,x}' 'www/**/*.mdx' --cache",
+    "lint:es": "eslint '**/*.ts{,x}' '**/*.mdx' --cache",
     "lint:ts": "tsc",
     "lint:packages": "yarn lerna run lint  --stream",
     "lint:circular": "madge packages/*/src --circular --extensions ts,tsx",
@@ -146,6 +146,5 @@
   "pre-commit": [
     "lint-staged"
   ],
-  "prettier": "@looker/prettier-config",
   "dependencies": {}
 }

@@ -13,7 +13,6 @@
  },
  "devDependencies": {
   "@looker/eslint-config": "^1.5.1",
-  "@looker/prettier-config": "^1.5.1",
   "@types/pegjs": "^0.10.1",
   "@typescript-eslint/eslint-plugin": "*",
   "@typescript-eslint/parser": "*",

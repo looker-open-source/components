@@ -31,12 +31,6 @@ module.exports = {
   extends: ['@looker/eslint-config-oss'],
   overrides: [
     {
-      files: ['packages/icons/src/**/*.tsx'],
-      rules: {
-        'prettier/prettier': 'off',
-      },
-    },
-    {
       files: ['packages/*/src/**/*.tsx', 'packages/*/src/**/*.ts'],
       rules: {
         'i18next/no-literal-string': [
