@@ -34,7 +34,7 @@ import React, {
 } from 'react'
 import styled from 'styled-components'
 import { useForkedRef } from '../utils'
-import type { IconButtonProps } from './IconButton'
+import type { IconButtonProps } from './iconButtonTypes'
 import type { ButtonProps } from './types'
 
 export type MultiFunctionButtonProps = {
