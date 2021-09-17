@@ -237,7 +237,7 @@ export const inputTextFocus = css`
 
 export const inputTextDisabled = css`
   cursor: default;
-  opacity: 0.25;
+  opacity: 0.4;
   &:hover {
     border-color: ${({ theme }) => theme.colors.ui3};
   }
