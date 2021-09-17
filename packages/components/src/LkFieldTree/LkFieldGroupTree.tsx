@@ -26,7 +26,7 @@
 
 import styled from 'styled-components'
 import { LkFieldTreeAccordionDisclosure } from './LkFieldTreeAccordionDisclosure'
-import { LkFieldTree } from '.'
+import { LkFieldTree } from './LkFieldTree'
 
 /**
  * LkFieldGroupTree is typically used to represent a group of Looker fields
