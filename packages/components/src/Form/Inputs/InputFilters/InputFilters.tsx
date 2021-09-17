@@ -33,7 +33,7 @@ import { Close } from '@styled-icons/material/Close'
 import { FilterList } from '@styled-icons/material/FilterList'
 import type { SelectOptionObject } from '../Select'
 import { Select } from '../Select'
-import { InputText } from '../InputText'
+import { InputText, inputTextFocus, inputCSS } from '../InputText'
 import { Icon } from '../../../Icon'
 import { IconButton } from '../../../Button'
 import { Chip } from '../../../Chip'
@@ -229,15 +229,16 @@ const ChipWrapper = styled.div`
 `
 
 export const InputFilters = styled(InputFiltersLayout)`
+  ${inputCSS}
   align-items: start;
-  border: solid 1px ${({ theme }) => theme.colors.ui2};
-  border-radius: ${({ theme: { radii } }) => radii.medium};
   display: flex;
   flex-wrap: wrap;
   padding: ${({ theme: { space } }) => space.u05} 0;
   padding-left: ${({ theme: { space } }) => space.u2};
-
   width: 100%;
+  &:focus-within {
+    ${inputTextFocus}
+  }
 
   ${Select} {
     margin-left: ${({ theme: { space } }) => space.u1};

@@ -69,12 +69,12 @@ ButtonToggleLayout.displayName = 'ButtonToggleLayout'
 
 export const ButtonToggle = styled(ButtonToggleLayout)`
   background-color: ${({ theme }) => theme.colors.background};
-  border: solid 1px ${({ theme }) => theme.colors.ui2};
+  border: solid 1px ${({ theme }) => theme.colors.ui3};
   border-left-width: 0;
   border-radius: ${({ theme }) => theme.radii.medium};
 
   ${ButtonItem} {
-    border-left: solid 1px ${({ theme }) => theme.colors.ui2};
+    border-left: solid 1px ${({ theme }) => theme.colors.ui3};
     height: calc(${inputHeight} - 2px);
 
     &:last-child {
@@ -107,13 +107,13 @@ export const ButtonToggle = styled(ButtonToggleLayout)`
         180deg,
         transparent,
         transparent calc(${inputHeight} - 3px),
-        ${({ theme }) => theme.colors.ui2} calc(${inputHeight} - 3px),
-        ${({ theme }) => theme.colors.ui2} calc(${inputHeight} - 2px)
+        ${({ theme }) => theme.colors.ui3} calc(${inputHeight} - 3px),
+        ${({ theme }) => theme.colors.ui3} calc(${inputHeight} - 2px)
       );
 
     /* prevents items in the last row from growing */
     &::after {
-      border-left: 1px solid ${({ theme }) => theme.colors.ui2};
+      border-left: 1px solid ${({ theme }) => theme.colors.ui3};
       content: '';
       flex-grow: 100;
       height: calc(${inputHeight} - 2px);
@@ -133,7 +133,7 @@ export const ButtonToggle = styled(ButtonToggleLayout)`
       /* Fixes bottom "border" when the item background obscures the parent's horizontal rows */
       &[aria-pressed='false']:hover:not(:focus),
       &[aria-pressed='true']:not(:focus) {
-        box-shadow: inset 0 -1px 0 0 ${({ theme }) => theme.colors.ui2};
+        box-shadow: inset 0 -1px 0 0 ${({ theme }) => theme.colors.ui3};
       }
     }
   }
