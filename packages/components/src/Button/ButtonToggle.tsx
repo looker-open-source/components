@@ -86,6 +86,7 @@ export const ButtonToggle = styled(ButtonToggleLayout)`
       border-top-left-radius: ${({ theme }) => theme.radii.medium};
     }
     &:focus {
+      box-shadow: inset 0 0 0 2px ${({ theme }) => theme.colors.key};
       /* Allows selected button to stack above so box-shadow isn't blocked on the right */
       position: relative;
     }

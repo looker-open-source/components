@@ -26,11 +26,9 @@
 
 import type { MouseEvent, Ref } from 'react'
 import React, { forwardRef, useContext } from 'react'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import type { CompatibleHTMLProps, SpaceProps } from '@looker/design-tokens'
 import { space, omitStyledProps } from '@looker/design-tokens'
-import type { FocusVisibleProps } from '../utils'
-import { focusVisibleCSSWrapper, useFocusVisible } from '../utils'
 import { inputHeight } from '../Form/Inputs/height'
 import { ButtonSetContext } from './ButtonSetContext'
 
@@ -42,7 +40,7 @@ export interface ButtonItemProps
 
 const ButtonLayout = forwardRef(
   (
-    { children, onClick, value, onBlur, onKeyUp, ...props }: ButtonItemProps,
+    { children, onClick, value, ...props }: ButtonItemProps,
     ref: Ref<HTMLButtonElement>
   ) => {
     const {
@@ -50,8 +48,6 @@ const ButtonLayout = forwardRef(
       value: contextValue,
       onItemClick,
     } = useContext(ButtonSetContext)
-
-    const focusVisibleProps = useFocusVisible({ onBlur, onKeyUp })
 
     function handleClick(e: MouseEvent<HTMLButtonElement>) {
       onClick && onClick(e)
@@ -70,33 +66,21 @@ const ButtonLayout = forwardRef(
       : false
 
     return (
-      <ButtonOuter
+      <button
         aria-pressed={selected}
         ref={ref}
         onClick={handleClick}
         value={itemValue}
         disabled={disabled}
-        {...focusVisibleProps}
         {...omitStyledProps(props)}
       >
         {children}
-      </ButtonOuter>
+      </button>
     )
   }
 )
 
 ButtonLayout.displayName = 'ButtonLayout'
-
-const ButtonOuter = styled.button.attrs(({ type = 'button' }) => ({
-  type,
-}))<ButtonItemProps & FocusVisibleProps>`
-  ${focusVisibleCSSWrapper(
-    ({ theme }) => css`
-      background: ${({ theme }) => theme.colors.neutralSubtle};
-      box-shadow: 0 0 0.5px 1px ${theme.colors.keyFocus};
-    `
-  )}
-`
 
 export const ButtonItem = styled(ButtonLayout)`
   align-items: center;

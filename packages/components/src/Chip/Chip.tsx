@@ -32,7 +32,7 @@ import React, { forwardRef } from 'react'
 import styled, { css } from 'styled-components'
 import { Close } from '@styled-icons/material/Close'
 import type { GenericClickProps, FocusVisibleProps } from '../utils'
-import { useClickable, focusVisibleCSSWrapper, useWrapEvent } from '../utils'
+import { useClickable, useWrapEvent } from '../utils'
 import { IconButton } from '../Button/IconButton'
 import type { SpanProps } from '../Text'
 import { Span } from '../Text'
@@ -83,17 +83,8 @@ const ChipStyle = styled.span<FocusVisibleProps & MaxWidthProps>`
 
   &.focus,
   &:focus {
-    outline: none;
-  }
-
-  ${focusVisibleCSSWrapper(
-    ({ theme }) => css`
-      box-shadow: 0 0 0.5px 1px ${theme.colors.keyFocus};
-    `
-  )}
-
-  &:active {
     border-color: ${({ theme }) => theme.colors.key};
+    outline: none;
   }
 
   &[disabled] {
