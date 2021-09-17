@@ -41,6 +41,7 @@ describe('pickSpecifiableColors', () => {
         "key": "#6C43E0",
         "link": "#0059b2",
         "measure": "#C2772E",
+        "pageBackground": "#FFFFFF",
         "positive": "#24b25f",
         "text": "#262D33",
         "warn": "#FFA800",

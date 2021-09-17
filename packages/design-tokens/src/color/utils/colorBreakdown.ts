@@ -67,7 +67,9 @@ export const colorBreakdown = (colors: Colors): ColorBreakdown => {
 
   for (const [key, value] of Object.entries(colors)) {
     if ((coreColors as string[]).includes(key)) {
-      divided.core[key] = value
+      if (key !== 'pageBackground') {
+        divided.core[key] = value
+      }
     } else if ((intentColors as string[]).includes(key)) {
       divided.intent[key] = value
     } else if ((derivativeColors as string[]).includes(key)) {
