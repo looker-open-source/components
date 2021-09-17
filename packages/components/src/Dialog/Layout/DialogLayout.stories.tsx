@@ -28,8 +28,9 @@ import type { Story } from '@storybook/react/types-6-0'
 import { defaultArgTypes as argTypes } from '../../../../../storybook/src/defaultArgTypes'
 import { ConstitutionShort } from '../../__mocks__/Constitution'
 import { Box2 } from '../../Layout'
-import type { DialogLayoutProps } from '.'
-import { DialogContent, DialogLayout } from '.'
+import type { DialogLayoutProps } from './DialogLayout'
+import { DialogLayout } from './DialogLayout'
+import { DialogContent } from './DialogContent'
 
 const Template: Story<DialogLayoutProps> = (args) => (
   <Box2 bg="ui1">

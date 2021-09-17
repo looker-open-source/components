@@ -26,7 +26,7 @@
 
 import styled from 'styled-components'
 import { LkFieldTreeAccordionContent } from './LkFieldTreeAccordionContent'
-import { LkFieldTree } from '.'
+import { LkFieldTree } from './LkFieldTree'
 
 /**
  * LkFieldViewTree is used to represent a Looker View and is expected to be

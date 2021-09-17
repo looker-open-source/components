@@ -59,7 +59,11 @@ import { Heading, Text, Paragraph } from '../Text'
 import { Tooltip } from '../Tooltip'
 import { useToggle } from '../utils'
 import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
-import { Menu, MenuDivider, MenuItem, MenuList, MenuHeading } from '.'
+import { Menu } from './Menu'
+import { MenuDivider } from './MenuDivider'
+import { MenuItem } from './MenuItem'
+import { MenuList } from './MenuList'
+import { MenuHeading } from './MenuHeading'
 
 export default {
   argTypes,

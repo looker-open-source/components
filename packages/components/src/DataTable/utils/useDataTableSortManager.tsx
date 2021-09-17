@@ -31,7 +31,7 @@ import { DataTableItem } from '../Item'
 import type { DataTableColumns } from '../Column'
 import { DataTableCell } from '../Column'
 import { doDataTableSort } from './sort_utils'
-import type { DataTableDatum, DataTableData } from '.'
+import type { DataTableDatum, DataTableData } from './sort_utils'
 
 export const useDataTableSortManager = (
   caption: string,

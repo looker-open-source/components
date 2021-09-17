@@ -33,8 +33,11 @@ import type { FC } from 'react'
 import React, { Fragment } from 'react'
 import { Box2, Grid, Space } from '../Layout'
 import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
-import type { MenuItemProps } from '.'
-import { MenuHeading, MenuList, MenuItem, MenuDivider } from '.'
+import type { MenuItemProps } from './MenuItem'
+import { MenuDivider } from './MenuDivider'
+import { MenuItem } from './MenuItem'
+import { MenuList } from './MenuList'
+import { MenuHeading } from './MenuHeading'
 
 const groups: { label?: string; items: MenuItemProps[] }[] = [
   {

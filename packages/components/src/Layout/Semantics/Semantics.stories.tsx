@@ -27,7 +27,11 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Grid } from '../Grid'
-import { Layout, Header, Aside, Footer, Section } from '.'
+import { Aside } from './Aside'
+import { Footer } from './Footer'
+import { Header } from './Header'
+import { Layout } from './Layout'
+import { Section } from './Section'
 
 export default {
   title: 'Semantics Layout',

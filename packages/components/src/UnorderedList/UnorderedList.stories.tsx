@@ -27,8 +27,8 @@
 import React from 'react'
 import type { Story } from '@storybook/react/types-6-0'
 import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
-import type { UnorderedListProps } from '.'
-import { UnorderedList } from '.'
+import type { UnorderedListProps } from './UnorderedList'
+import { UnorderedList } from './UnorderedList'
 
 export default {
   argTypes,

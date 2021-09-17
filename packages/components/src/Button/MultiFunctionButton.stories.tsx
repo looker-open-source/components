@@ -30,7 +30,9 @@ import { Add } from '@styled-icons/material/Add'
 import { Check } from '@styled-icons/material/Check'
 import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
 import { MultiFunctionButton } from './MultiFunctionButton'
-import { Button, ButtonOutline, ButtonTransparent } from '.'
+import { Button } from './Button'
+import { ButtonOutline } from './ButtonOutline'
+import { ButtonTransparent } from './ButtonTransparent'
 
 export default {
   argTypes,
