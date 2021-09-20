@@ -30,8 +30,8 @@ import React from 'react'
 import { VIEWPORT_MAP } from '../../utils-storybook'
 import { Icon } from '../../Icon'
 import { defaultArgTypes as argTypes } from '../../../../../storybook/src/defaultArgTypes'
-import type { BoxProps } from '.'
-import { Box } from '.'
+import type { BoxProps } from './Box'
+import { Box } from './Box'
 
 export default {
   argTypes,

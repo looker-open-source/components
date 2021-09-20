@@ -32,7 +32,7 @@ import { NavList } from '../NavList'
 import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
 import { NavTree } from './NavTree'
 import { NavTreeItem } from './NavTreeItem'
-import type { NavTreeProps } from '.'
+import type { NavTreeProps } from './types'
 
 export default {
   argTypes,

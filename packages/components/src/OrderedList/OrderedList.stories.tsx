@@ -27,8 +27,8 @@
 import React from 'react'
 import type { Story } from '@storybook/react/types-6-0'
 import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
-import type { OrderedListProps } from '.'
-import { OrderedList } from '.'
+import type { OrderedListProps } from './OrderedList'
+import { OrderedList } from './OrderedList'
 
 export default {
   argTypes,

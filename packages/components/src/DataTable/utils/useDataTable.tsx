@@ -29,7 +29,7 @@ import { DataTable } from '../DataTable'
 import { DataTableItem } from '../Item'
 import type { DataTableColumns } from '../Column'
 import { DataTableCell } from '../Column'
-import type { DataTableData } from '.'
+import type { DataTableData } from './sort_utils'
 
 export const useDataTable = (
   data: DataTableData,
