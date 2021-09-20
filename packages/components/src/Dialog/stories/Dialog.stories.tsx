@@ -72,6 +72,22 @@ Open.parameters = {
   docs: { disable: true },
 }
 
+export const AfterCloseAfterOpenMethods = Template.bind({})
+AfterCloseAfterOpenMethods.args = {
+  ...Basic.args,
+  onAfterClose: () => {
+    // eslint-disable-next-line no-console
+    console.log('Close')
+  },
+  onAfterOpen: () => {
+    // eslint-disable-next-line no-console
+    console.log('Open')
+  },
+}
+AfterCloseAfterOpenMethods.parameters = {
+  storyshots: { disable: true },
+}
+
 export const MediumContent = Template.bind({})
 MediumContent.args = {
   content: <DialogMediumContent />,

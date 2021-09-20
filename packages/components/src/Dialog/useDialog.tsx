@@ -25,7 +25,7 @@
  */
 
 import type { ReactNode, FC } from 'react'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import type {
   DrawerPlacements,
   DialogDrawerWidth,
@@ -95,6 +95,16 @@ export interface UseDialogProps extends UseDialogBaseProps, DialogSurfaceProps {
    * @private
    */
   Surface?: FC
+
+  /**
+   * function available after dialog is closed
+   */
+  onAfterClose?: () => void
+
+  /**
+   * function available before dialog is opened
+   */
+  onAfterOpen?: () => void
 }
 
 export interface UseDialogPropsInternal
@@ -121,6 +131,8 @@ export const useDialog = ({
   defaultOpen = false,
   isOpen: controlledIsOpen,
   canClose,
+  onAfterClose,
+  onAfterOpen,
   onClose,
   setOpen: controlledSetOpen,
   Surface: CustomSurface,
@@ -159,6 +171,10 @@ export const useDialog = ({
     defaultOpen ? 'none' : undefined
   )
 
+  useEffect(() => {
+    if (className === 'exiting' && onAfterClose) onAfterClose()
+    if (className === 'entered' && onAfterOpen) onAfterOpen()
+  }, [className, onAfterClose, onAfterOpen])
   const setOpen =
     isControlled && controlledSetOpen
       ? controlledSetOpen
