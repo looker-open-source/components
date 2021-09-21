@@ -38,6 +38,7 @@ import {
   useRipple,
   useRippleHandlers,
 } from '../../../Ripple'
+import { DISABLED_OPACITY } from '../../constants'
 import type { InputProps } from '../InputProps'
 import { pickInputProps } from '../InputProps'
 import type { SwitchProps } from './types'
@@ -117,7 +118,7 @@ export const ToggleSwitch = styled(
   display: flex;
   height: ${({ theme }) => theme.space.u6};
   justify-content: center;
-  opacity: ${({ disabled }) => disabled && '0.4'};
+  opacity: ${({ disabled }) => disabled && DISABLED_OPACITY};
   position: relative;
   width: ${({ theme }) => theme.space.u10};
 

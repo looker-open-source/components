@@ -32,6 +32,7 @@ import { Error } from '@styled-icons/material/Error'
 import type { MouseEvent, ReactNode, Ref } from 'react'
 import React, { forwardRef, useRef } from 'react'
 import styled, { css } from 'styled-components'
+import { DISABLED_OPACITY } from '../../constants'
 import type { InputProps, InputTextTypeProps } from '../InputProps'
 import { inputPropKeys, pickInputProps } from '../InputProps'
 import { innerInputStyle } from '../innerInputStyle'
@@ -237,7 +238,7 @@ export const inputTextFocus = css`
 
 export const inputTextDisabled = css`
   cursor: default;
-  opacity: 0.4;
+  opacity: ${DISABLED_OPACITY};
   &:hover {
     border-color: ${({ theme }) => theme.colors.ui3};
   }

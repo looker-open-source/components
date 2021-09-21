@@ -30,6 +30,7 @@ import React, { useContext } from 'react'
 import styled, { ThemeContext } from 'styled-components'
 import { Space } from '../../../Layout'
 import type { ValidationMessageProps } from '../../ValidationMessage'
+import { DISABLED_OPACITY } from '../../constants'
 import { Field } from './Field'
 import { FieldDetail } from './FieldDetail'
 import { FieldLabel } from './FieldLabel'
@@ -117,7 +118,7 @@ export const FloatingLabelField = styled(
   }
 )`
   display: ${({ autoResize }) => (autoResize ? 'inline-block' : 'block')};
-  opacity: ${({ disabled }) => (disabled ? '0.4' : '1')};
+  opacity: ${({ disabled }) => (disabled ? DISABLED_OPACITY : '1')};
   /* Make the top border intersect the the middle of the label */
   padding-top: calc(${({ theme }) => theme.fontSizes.xsmall} / 2);
   position: relative;
