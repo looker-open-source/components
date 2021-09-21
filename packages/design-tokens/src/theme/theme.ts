@@ -42,8 +42,10 @@ import type {
   Shadows,
   TransitionRamp,
   FontSources,
-  DensityRamp,
 } from '../system'
+
+import { componentSettingsDefaults } from '../defaults'
+import type { ComponentSettingsDefaults } from '../defaults'
 
 /**
  * Theme attributes shouldn't be exported as they should be consumed via `theme` rather than via
@@ -65,6 +67,7 @@ import {
 export interface Theme {
   breakpoints: string[]
   colors: Colors
+  defaults: ComponentSettingsDefaults
   easings: Easings
   elevations: Elevations
   fontSizes: FontSizeRamp
@@ -78,16 +81,12 @@ export interface Theme {
   space: SpaceRamp
   transitions: TransitionRamp
   zIndexFloor: number
-  defaults: {
-    brandAnimation: boolean
-    density: DensityRamp
-  }
 }
 
 export const theme: DefaultTheme = {
   breakpoints,
   colors,
-  defaults: { brandAnimation: false, density: 0 },
+  defaults: componentSettingsDefaults,
   easings,
   elevations,
   fontSizes,

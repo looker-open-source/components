@@ -24,44 +24,22 @@
 
  */
 
-import { generateColors } from '../../color'
-import type { Theme } from '../theme'
-import { defaultFontFallbacks } from '../../tokens'
-import { generateDefaults } from '../../defaults'
-import type { ThemeCustomizations } from '../ThemeCustomizations'
-import { generateFontFamilies } from '../../utils/typography'
+import type { DensityRamp } from '../system/density'
 
-export const generateTheme = (
-  theme: Theme,
-  customizations?: ThemeCustomizations
-): Theme => {
-  if (!customizations) {
-    return theme
-  }
+export type ComponentSettingsDefaults = {
+  /**
+   * Enable the Material "Ripple" animation on components that support it.
+   * Current affects: IconButton, Checkbox, Radio & ToggleSwitch
+   * Future: Button*, Tab & ListItem
+   * @default false
+   */
+  brandAnimation: boolean
 
-  const { fontSources } = customizations
-
-  const fonts = customizations.fontFamilies
-    ? generateFontFamilies(
-        theme.fonts,
-        defaultFontFallbacks,
-        customizations.fontFamilies
-      )
-    : theme.fonts
-
-  const colors = customizations.colors
-    ? generateColors(theme.colors, customizations.colors)
-    : theme.colors
-
-  const defaults = customizations.defaults
-    ? generateDefaults(theme.defaults, customizations.defaults)
-    : theme.defaults
-
-  return {
-    ...theme,
-    colors,
-    defaults,
-    fontSources,
-    fonts,
-  }
+  /**
+   * Default density to use for density-supporting components
+   *
+   * NOTE: This not implementented broadly yet. Altering this value is not recommended
+   * at this time.
+   */
+  density: DensityRamp
 }
