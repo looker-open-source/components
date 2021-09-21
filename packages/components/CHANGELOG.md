@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.6.0](https://github.com/looker-open-source/components/compare/@looker/components@2.5.0...@looker/components@2.6.0) (2021-09-21)
+
+
+### Bug Fixes
+
+* **IconButton:** Remove useLayoutEffect to avoid SSR warning ([#2831](https://github.com/looker-open-source/components/issues/2831)) ([b647328](https://github.com/looker-open-source/components/commit/b6473285bb98ea85adf019e3808e6d0a47c3f677))
+* **InputText:** Darken disabled opacity ([#2835](https://github.com/looker-open-source/components/issues/2835)) ([ca841c2](https://github.com/looker-open-source/components/commit/ca841c240db214b3a4fb17eb18b157704c0653ef))
+* **LkFieldGroupTree:** Import path issue for CodeSandbox ([#2837](https://github.com/looker-open-source/components/issues/2837)) ([214d023](https://github.com/looker-open-source/components/commit/214d0232febb3f8e44ad144722ae13b1fbaa0673))
+
+
+### Features
+
+* **Link:** Optionally disabled automatic `rel` additions via `dangerouslyDisableRel` prop ([#2843](https://github.com/looker-open-source/components/issues/2843)) ([7ee8287](https://github.com/looker-open-source/components/commit/7ee8287839da0a76d613fdb2bf2d0c465e6f0ebd))
+
+
+
+
+
 # [2.5.0](https://github.com/looker-open-source/components/compare/@looker/components@2.4.0...@looker/components@2.5.0) (2021-09-10)
 
 

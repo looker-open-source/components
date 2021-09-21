@@ -1,15 +1,15 @@
 {
   "name": "@looker/components",
   "license": "MIT",
-  "version": "2.5.0",
+  "version": "2.6.0",
   "main": "src/index.ts",
   "sideEffects": false,
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@looker/components-providers": "^1.5.1",
-    "@looker/design-tokens": "^2.5.0",
+    "@looker/components-providers": "^1.5.2",
+    "@looker/design-tokens": "^2.6.0",
     "@popperjs/core": "^2.6.0",
     "@styled-icons/material": "10.34.0",
     "@styled-icons/material-outlined": "10.34.0",
@@ -25,7 +25,7 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "@looker/components-test-utils": "^1.5.1",
+    "@looker/components-test-utils": "^1.5.2",
     "@storybook/testing-react": "^0.0.22",
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.6",

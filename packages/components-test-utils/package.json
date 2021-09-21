@@ -1,14 +1,14 @@
 {
   "name": "@looker/components-test-utils",
   "license": "MIT",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "main": "src/index.ts",
   "sideEffects": false,
   "publishConfig": {
     "access": "public"
   },
   "devDependencies": {
-    "@looker/components-providers": "^1.5.1",
+    "@looker/components-providers": "^1.5.2",
     "@testing-library/react": "^11.2.6",
     "jest-styled-components": "^7.0.4",
     "react": "^16.14.0",

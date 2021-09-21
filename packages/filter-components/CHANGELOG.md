@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.1](https://github.com/looker-open-source/components/compare/@looker/filter-components@0.9.0...@looker/filter-components@0.9.1) (2021-09-21)
+
+
+### Bug Fixes
+
+* Deprecate prettier package, simplify ESLint config ([#2834](https://github.com/looker-open-source/components/issues/2834)) ([7b06de8](https://github.com/looker-open-source/components/commit/7b06de8ee80cd56f7b3b17a2e28fcf411abfb710))
+
+
+
+
+
 # [0.9.0](https://github.com/looker-open-source/components/compare/@looker/filter-components@0.8.0...@looker/filter-components@0.9.0) (2021-09-10)
 
 

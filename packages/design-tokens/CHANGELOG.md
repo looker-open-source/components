@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.6.0](https://github.com/looker-open-source/components/compare/@looker/design-tokens@2.5.0...@looker/design-tokens@2.6.0) (2021-09-21)
+
+
+### Features
+
+* Support specification of `brandAnimation` and `density` via `themeCustomizations` ([#2845](https://github.com/looker-open-source/components/issues/2845)) ([cd744ae](https://github.com/looker-open-source/components/commit/cd744aea2eb073f86d22e00cc64855f030c68d97))
+
+
+
+
+
 # [2.5.0](https://github.com/looker-open-source/components/compare/@looker/design-tokens@2.4.0...@looker/design-tokens@2.5.0) (2021-09-10)
 
 

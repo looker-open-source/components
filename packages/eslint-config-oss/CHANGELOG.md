@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.2](https://github.com/looker-open-source/components/compare/@looker/eslint-config-oss@1.7.1...@looker/eslint-config-oss@1.7.2) (2021-09-21)
+
+
+### Bug Fixes
+
+* Deprecate prettier package, simplify ESLint config ([#2834](https://github.com/looker-open-source/components/issues/2834)) ([7b06de8](https://github.com/looker-open-source/components/commit/7b06de8ee80cd56f7b3b17a2e28fcf411abfb710))
+
+
+
+
+
 ## [1.7.1](https://github.com/looker-open-source/components/compare/@looker/eslint-config-oss@1.7.0...@looker/eslint-config-oss@1.7.1) (2021-09-10)
 
 **Note:** Version bump only for package @looker/eslint-config-oss
