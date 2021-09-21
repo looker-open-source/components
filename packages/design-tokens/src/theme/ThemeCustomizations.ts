@@ -26,12 +26,17 @@
 
 import type { SpecifiableColors } from '../color'
 import type { FontFamilyChoices, FontSources } from '../system'
+import type { ThemeDefaults } from '../defaults'
 
 export interface ThemeCustomizations {
   /**
    * Override default color specifications
    */
   colors?: Partial<SpecifiableColors>
+  /**
+   *
+   */
+  defaults?: ThemeDefaults
   /**
    * Override default font-family specifications. Specified fonts will have our built-in
    * font-stack appended. Built-in font stacks are designed to provide i18n character

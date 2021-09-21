@@ -24,44 +24,31 @@
 
  */
 
-import { generateColors } from '../../color'
-import type { Theme } from '../theme'
-import { defaultFontFallbacks } from '../../tokens'
-import { generateDefaults } from '../../defaults'
-import type { ThemeCustomizations } from '../ThemeCustomizations'
-import { generateFontFamilies } from '../../utils/typography'
+import { generateDefaults } from './generateDefaults'
+import { themeDefaults } from './index'
 
-export const generateTheme = (
-  theme: Theme,
-  customizations?: ThemeCustomizations
-): Theme => {
-  if (!customizations) {
-    return theme
-  }
+describe('generateDefaults', () => {
+  test('none', () => {
+    const defaults = generateDefaults(themeDefaults)
 
-  const { fontSources } = customizations
+    expect(defaults.brandAnimation).toEqual(false)
+    expect(defaults.density).toEqual(0)
+  })
 
-  const fonts = customizations.fontFamilies
-    ? generateFontFamilies(
-        theme.fonts,
-        defaultFontFallbacks,
-        customizations.fontFamilies
-      )
-    : theme.fonts
+  test('empty', () => {
+    const defaults = generateDefaults(themeDefaults, {})
 
-  const colors = customizations.colors
-    ? generateColors(theme.colors, customizations.colors)
-    : theme.colors
+    expect(defaults.brandAnimation).toEqual(themeDefaults.brandAnimation)
+    expect(defaults.density).toEqual(themeDefaults.density)
+  })
 
-  const defaults = customizations.defaults
-    ? generateDefaults(theme.defaults, customizations.defaults)
-    : theme.defaults
+  test('overwrite', () => {
+    const defaults = generateDefaults(themeDefaults, {
+      brandAnimation: true,
+      density: -1,
+    })
 
-  return {
-    ...theme,
-    colors,
-    defaults,
-    fontSources,
-    fonts,
-  }
-}
+    expect(defaults.brandAnimation).toEqual(true)
+    expect(defaults.density).toEqual(-1)
+  })
+})
