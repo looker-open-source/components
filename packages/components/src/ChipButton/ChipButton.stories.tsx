@@ -70,6 +70,12 @@ MaxWidth.args = {
   maxWidth: 150,
 }
 
+export const DeSelected = Template.bind({})
+DeSelected.args = {
+  ...Basic.args,
+  'aria-selected': false,
+}
+
 export const ChipButtons = () => {
   const handleClick = () => alert('Clicked!')
   const handleDelete = () => alert('Deleted!')

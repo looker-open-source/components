@@ -42,7 +42,7 @@ export interface ChipButtonProps extends Omit<ChipProps, 'role'> {}
 export const ChipButton = styled(Chip).attrs(() => ({
   role: 'button',
 }))<ChipButtonProps>`
-  border: 1px solid ${({ theme }) => theme.colors.ui2};
+  border: 1px solid ${({ theme }) => theme.colors.ui3};
   cursor: pointer;
   font-size: ${({ theme }) => theme.fontSizes.small};
   font-weight: ${({ theme }) => theme.fontWeights.normal};
@@ -52,6 +52,10 @@ export const ChipButton = styled(Chip).attrs(() => ({
   &:active,
   &[aria-pressed='true'] {
     border-color: ${({ theme }) => theme.colors.key};
+  }
+  &.focus,
+  &:focus {
+    box-shadow: inset 0 0 0 1px ${({ theme }) => theme.colors.key};
   }
 
   &[disabled] {
@@ -78,9 +82,7 @@ export const ChipButton = styled(Chip).attrs(() => ({
     }
 
     &[disabled] {
-      background: ${({ theme }) => theme.colors.background};
-      border-color: ${({ theme }) => theme.colors.ui2};
-      color: ${({ theme }) => theme.colors.neutral};
+      opacity: 0.4;
     }
   }
 `

@@ -59,7 +59,7 @@ ButtonGroupLayout.displayName = 'ButtonGroupLayout'
 
 export const ButtonGroup = styled(ButtonGroupLayout)`
   ${ButtonItem} {
-    border: 1px solid ${({ theme }) => theme.colors.ui2};
+    border: 1px solid ${({ theme }) => theme.colors.ui3};
     border-radius: ${({ theme }) => theme.radii.medium};
     margin-right: ${({ theme }) => theme.space.u1};
     &:last-child {
@@ -68,6 +68,10 @@ export const ButtonGroup = styled(ButtonGroupLayout)`
 
     &[aria-pressed='false']:not(:hover) {
       background: ${({ theme }) => theme.colors.background};
+    }
+    &[data-focusvisible='true'] {
+      border-color: ${({ theme }) => theme.colors.key};
+      box-shadow: inset 0 0 0 1px ${({ theme }) => theme.colors.key};
     }
   }
   &.wrapping {
