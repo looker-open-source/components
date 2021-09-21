@@ -29,6 +29,7 @@ import React, { forwardRef, useContext } from 'react'
 import styled from 'styled-components'
 import type { CompatibleHTMLProps, SpaceProps } from '@looker/design-tokens'
 import { space, omitStyledProps } from '@looker/design-tokens'
+import { useFocusVisible } from '../utils'
 import { inputHeight } from '../Form/Inputs/height'
 import { ButtonSetContext } from './ButtonSetContext'
 
@@ -40,7 +41,7 @@ export interface ButtonItemProps
 
 const ButtonLayout = forwardRef(
   (
-    { children, onClick, value, ...props }: ButtonItemProps,
+    { children, onClick, value, onBlur, onKeyUp, ...props }: ButtonItemProps,
     ref: Ref<HTMLButtonElement>
   ) => {
     const {
@@ -48,6 +49,11 @@ const ButtonLayout = forwardRef(
       value: contextValue,
       onItemClick,
     } = useContext(ButtonSetContext)
+
+    const { focusVisible, ...focusVisibleProps } = useFocusVisible({
+      onBlur,
+      onKeyUp,
+    })
 
     function handleClick(e: MouseEvent<HTMLButtonElement>) {
       onClick && onClick(e)
@@ -72,6 +78,8 @@ const ButtonLayout = forwardRef(
         onClick={handleClick}
         value={itemValue}
         disabled={disabled}
+        data-focusvisible={focusVisible}
+        {...focusVisibleProps}
         {...omitStyledProps(props)}
       >
         {children}
