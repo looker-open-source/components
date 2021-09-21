@@ -24,27 +24,16 @@
 
  */
 
-import type { SpecifiableColors } from '../color'
-import type { FontFamilyChoices, FontSources } from '../system'
-import type { ThemeDefaults } from '../defaults'
+import type { ThemeCustomizations } from './ThemeCustomizations'
 
-export interface ThemeCustomizations {
-  /**
-   * Override default color specifications
-   */
-  colors?: Partial<SpecifiableColors>
-  /**
-   *
-   */
-  defaults?: Partial<ThemeDefaults>
-  /**
-   * Override default font-family specifications. Specified fonts will have our built-in
-   * font-stack appended. Built-in font stacks are designed to provide i18n character
-   * support and fallbacks for browsers that can't load web fonts.
-   */
-  fontFamilies?: Partial<FontFamilyChoices>
-  /**
-   * Specify font sources
-   */
-  fontSources?: FontSources
-}
+describe('ThemeCustomizations', () => {
+  test('Allows partial defaults', () => {
+    const customizations: ThemeCustomizations = {
+      defaults: {
+        brandAnimation: true,
+      },
+    }
+
+    expect(customizations.defaults?.brandAnimation).toBeTruthy()
+  })
+})
