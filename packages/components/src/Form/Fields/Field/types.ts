@@ -94,12 +94,12 @@ export type FieldBaseProps = FieldLabelBaseProps & {
 
 export type HideLabelProps = {
   /**
-   * Hide label on Field
+   * Label will be visually hidden
    * @default false
    */
   hideLabel?: boolean
   /**
-   * Use aria-label only
+   * Apply label using aria-label, there will be no visible label in the UI
    */
   ariaLabelOnly?: boolean
 }

@@ -36,7 +36,7 @@ export const HelperText = styled(
     return (
       <SpaceVertical
         pt={description || validationMessage ? 'u2' : 'none'}
-        gap="u2"
+        gap="u1"
         className={className}
         id={`describedby-${id}`}
       >
