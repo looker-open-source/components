@@ -13,6 +13,21 @@ Drawer is a specialized form of `Dialog` that is attached to the edge of the vie
 </Drawer>
 ```
 
+## onAfterClose and onAfterOpne function
+
+onAfterClose: this function will be called after the `Drawer` is closed
+onAfterOpne: this function will be called after the `Drawer` is open
+
+```jsx
+<Drawer
+  content="My neat dialog"
+  onAfterClose={() => alert(`Close`)}
+  onAfterOpen={() => alert(`Open`)}
+>
+  <ButtonOutline>Open Drawer</ButtonOutline>
+</Drawer>
+```
+
 # useDrawer
 
 We provide a custom hook that returns the opener function and rendered drawer.

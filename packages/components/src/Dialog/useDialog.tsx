@@ -46,16 +46,17 @@ import type { DialogWidth } from './dialogWidth'
 
 export interface UseDialogBaseProps {
   /**
+   * Specify a callback to be called before trying to close the Popover. This allows for
+   * use-cases where the user might lose work (think common "Save before closing warning" type flow)
+   * Specify a callback to be called each time this Popover is closed
+   */
+  canClose?: () => boolean
+
+  /**
    * Content to rendered within the Dialog surface.
    * @required
    */
   content: ReactNode
-
-  /**
-   * Dialog will be displayed immediately when rendered.
-   * @default undefined
-   */
-  isOpen?: boolean
 
   /**
    * Dialog will be displayed immediately when rendered.
@@ -66,39 +67,37 @@ export interface UseDialogBaseProps {
   defaultOpen?: boolean
 
   /**
-   * Optional, for a controlled version of the component
-   */
-  setOpen?: (open: boolean) => void
-
-  /**
-   * Specify a callback to be called each time this Dialog is closed
-   */
-  onClose?: () => void
-
-  /**
-   * Specify a callback to be called before trying to close the Popover. This allows for
-   * use-cases where the user might lose work (think common "Save before closing warning" type flow)
-   * Specify a callback to be called each time this Popover is closed
-   */
-  canClose?: () => boolean
-
-  /**
    * The id of the dialog (if absent, a random id will be generated)
    */
   id?: string
-}
 
-export interface UseDialogProps extends UseDialogBaseProps, DialogSurfaceProps {
+  /**
+   * Dialog will be displayed immediately when rendered.
+   * @default undefined
+   */
+  isOpen?: boolean
+
   /**
    * function available after dialog is closed
    */
   onAfterClose?: () => void
 
   /**
-   * function available before dialog is opened
+   * function available after dialog is opened
    */
   onAfterOpen?: () => void
+  /**
+   * Specify a callback to be called each time this Dialog is closed
+   */
+  onClose?: () => void
 
+  /**
+   * Optional, for a controlled version of the component
+   */
+  setOpen?: (open: boolean) => void
+}
+
+export interface UseDialogProps extends UseDialogBaseProps, DialogSurfaceProps {
   /**
    * Specify a custom surface to use for Dialog surface.
    * This is intended for internal components use only (specifically `Drawer`)

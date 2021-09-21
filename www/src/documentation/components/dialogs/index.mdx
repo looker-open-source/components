@@ -91,6 +91,21 @@ Dialogs break out of the standard application flow and UI to present new informa
 }
 ```
 
+## onAfterClose and onAfterOpne function
+
+onAfterClose: this function will be called after the `Dialog` is closed
+onAfterOpne: this function will be called after the `Dialog` is open
+
+```jsx
+<Dialog
+  content="My neat dialog"
+  onAfterClose={() => alert(`Close`)}
+  onAfterOpen={() => alert(`Open`)}
+>
+  <ButtonOutline>Open Dialog</ButtonOutline>
+</Dialog>
+```
+
 ## Render Props
 
 `Dialog` supports render-props style use in cases where the simple compositional syntax is unable to automatically spread the dialog props down on the the child element properly.
