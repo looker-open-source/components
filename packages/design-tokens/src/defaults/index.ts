@@ -24,11 +24,11 @@
 
  */
 
-import type { ThemeDefaults } from './types'
+import type { ComponentSettingsDefaults } from './types'
 export { generateDefaults } from './generateDefaults'
-export type { ThemeDefaults } from './types'
+export type { ComponentSettingsDefaults } from './types'
 
-export const themeDefaults: ThemeDefaults = {
+export const componentSettingsDefaults: ComponentSettingsDefaults = {
   brandAnimation: false,
   density: 0,
 }

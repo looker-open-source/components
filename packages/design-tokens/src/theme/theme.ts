@@ -44,8 +44,8 @@ import type {
   FontSources,
 } from '../system'
 
-import { themeDefaults } from '../defaults'
-import type { ThemeDefaults } from '../defaults'
+import { componentSettingsDefaults } from '../defaults'
+import type { ComponentSettingsDefaults } from '../defaults'
 
 /**
  * Theme attributes shouldn't be exported as they should be consumed via `theme` rather than via
@@ -67,7 +67,7 @@ import {
 export interface Theme {
   breakpoints: string[]
   colors: Colors
-  defaults: ThemeDefaults
+  defaults: ComponentSettingsDefaults
   easings: Easings
   elevations: Elevations
   fontSizes: FontSizeRamp
@@ -86,7 +86,7 @@ export interface Theme {
 export const theme: DefaultTheme = {
   breakpoints,
   colors,
-  defaults: themeDefaults,
+  defaults: componentSettingsDefaults,
   easings,
   elevations,
   fontSizes,

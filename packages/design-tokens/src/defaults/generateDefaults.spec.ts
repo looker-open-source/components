@@ -25,25 +25,27 @@
  */
 
 import { generateDefaults } from './generateDefaults'
-import { themeDefaults } from './index'
+import { componentSettingsDefaults } from './index'
 
 describe('generateDefaults', () => {
   test('none', () => {
-    const defaults = generateDefaults(themeDefaults)
+    const defaults = generateDefaults(componentSettingsDefaults)
 
     expect(defaults.brandAnimation).toEqual(false)
     expect(defaults.density).toEqual(0)
   })
 
   test('empty', () => {
-    const defaults = generateDefaults(themeDefaults, {})
+    const defaults = generateDefaults(componentSettingsDefaults, {})
 
-    expect(defaults.brandAnimation).toEqual(themeDefaults.brandAnimation)
-    expect(defaults.density).toEqual(themeDefaults.density)
+    expect(defaults.brandAnimation).toEqual(
+      componentSettingsDefaults.brandAnimation
+    )
+    expect(defaults.density).toEqual(componentSettingsDefaults.density)
   })
 
   test('overwrite', () => {
-    const defaults = generateDefaults(themeDefaults, {
+    const defaults = generateDefaults(componentSettingsDefaults, {
       brandAnimation: true,
       density: -1,
     })

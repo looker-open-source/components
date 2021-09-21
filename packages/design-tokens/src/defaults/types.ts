@@ -26,7 +26,7 @@
 
 import type { DensityRamp } from '../system/density'
 
-export type ThemeDefaults = {
+export type ComponentSettingsDefaults = {
   /**
    * Enable the Material "Ripple" animation on components that support it.
    * Current affects: IconButton, Checkbox, Radio & ToggleSwitch

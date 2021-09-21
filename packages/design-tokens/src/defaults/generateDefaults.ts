@@ -24,11 +24,11 @@
 
  */
 
-import type { ThemeDefaults } from './types'
+import type { ComponentSettingsDefaults } from './types'
 
 export const generateDefaults = (
-  theme: ThemeDefaults,
-  custom?: Partial<ThemeDefaults>
+  theme: ComponentSettingsDefaults,
+  custom?: Partial<ComponentSettingsDefaults>
 ) => ({
   ...theme,
   ...custom,
