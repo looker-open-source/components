@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.7.0](https://github.com/looker-open-source/components/compare/@looker/components@2.6.0...@looker/components@2.7.0) (2021-09-21)
+
+
+### Bug Fixes
+
+* **InputColor:** Disabled swatch vs input style mismatch ([#2847](https://github.com/looker-open-source/components/issues/2847)) ([87443fb](https://github.com/looker-open-source/components/commit/87443fbfd61d68f48fd7d1bc8130e3608f4cf93f))
+
+
+### Features
+
+* Consistent border on ButtonToggle, ButtonGroup, Chip, ChipButton, & InputFilters ([#2836](https://github.com/looker-open-source/components/issues/2836)) ([3c20c0a](https://github.com/looker-open-source/components/commit/3c20c0a01bebef7553ff214b9e90b14b33b0a74d))
+
+
+
+
+
 # [2.6.0](https://github.com/looker-open-source/components/compare/@looker/components@2.5.0...@looker/components@2.6.0) (2021-09-21)
 
 

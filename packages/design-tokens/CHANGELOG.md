@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.6.1](https://github.com/looker-open-source/components/compare/@looker/design-tokens@2.6.0...@looker/design-tokens@2.6.1) (2021-09-21)
+
+
+### Bug Fixes
+
+* **InputColor:** Disabled swatch vs input style mismatch ([#2847](https://github.com/looker-open-source/components/issues/2847)) ([87443fb](https://github.com/looker-open-source/components/commit/87443fbfd61d68f48fd7d1bc8130e3608f4cf93f))
+
+
+
+
+
 # [2.6.0](https://github.com/looker-open-source/components/compare/@looker/design-tokens@2.5.0...@looker/design-tokens@2.6.0) (2021-09-21)
 
 
