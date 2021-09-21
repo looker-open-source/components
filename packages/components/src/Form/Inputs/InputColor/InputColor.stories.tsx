@@ -55,6 +55,12 @@ Disabled.args = {
   disabled: true,
 }
 
+export const DisabledNoValue = Template.bind({})
+DisabledNoValue.args = {
+  ...Basic.args,
+  disabled: true,
+}
+
 export const ReadOnly = Template.bind({})
 ReadOnly.args = {
   ...ColorChosen.args,
