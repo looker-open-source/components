@@ -57,6 +57,17 @@ export interface LinkProps
    * @default false
    */
   isExternal?: boolean
+
+  /**
+   * Disable `Link`'s automatic additional of `rel` for `target="_blank" &
+   * `isExternal` prop. Use of this is discouraged but may warranted in
+   * narrow cases.
+   *
+   * Use with caution.
+   *
+   * @default false
+   */
+  dangerouslyDisableRel?: boolean
 }
 
 /**
@@ -76,7 +87,13 @@ const ExternalLinkIndicator = styled(Launch)`
  * See https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types for context on
  * proper usage.
  */
-const generateLinkTypes = ({ isExternal, rel, target }: LinkProps) => {
+const generateLinkTypes = ({
+  dangerouslyDisableRel,
+  isExternal,
+  rel,
+  target,
+}: LinkProps) => {
+  if (dangerouslyDisableRel) return rel
   const linkTypes = rel ? rel.split(' ') : []
 
   if (target === '_blank') {
@@ -97,7 +114,10 @@ const LinkLayout = forwardRef(
 
     return (
       <a
-        {...omit(omitStyledProps(restProps), linkStyleProps)}
+        {...omit(omitStyledProps(restProps), [
+          ...linkStyleProps,
+          'dangerouslyDisableRel',
+        ])}
         ref={ref}
         rel={enhancedRel}
       >
