@@ -90,13 +90,6 @@ export interface UseDialogBaseProps {
 
 export interface UseDialogProps extends UseDialogBaseProps, DialogSurfaceProps {
   /**
-   * Specify a custom surface to use for Dialog surface.
-   * This is intended for internal components use only (specifically `Drawer`)
-   * @private
-   */
-  Surface?: FC
-
-  /**
    * function available after dialog is closed
    */
   onAfterClose?: () => void
@@ -105,6 +98,13 @@ export interface UseDialogProps extends UseDialogBaseProps, DialogSurfaceProps {
    * function available before dialog is opened
    */
   onAfterOpen?: () => void
+
+  /**
+   * Specify a custom surface to use for Dialog surface.
+   * This is intended for internal components use only (specifically `Drawer`)
+   * @private
+   */
+  Surface?: FC
 }
 
 export interface UseDialogPropsInternal
