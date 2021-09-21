@@ -30,13 +30,7 @@ import type {
   HeightProps,
   WidthProps,
 } from '@looker/design-tokens'
-import {
-  disabledSwatchColor,
-  height,
-  reset,
-  shouldForwardProp,
-  width,
-} from '@looker/design-tokens'
+import { height, reset, shouldForwardProp, width } from '@looker/design-tokens'
 import {
   inputCSS,
   inputTextHover,
@@ -82,14 +76,11 @@ export const Swatch = styled.div
   ${inputCSS}
   ${width}
   ${height}
-  background-color: ${({ color, disabled }) =>
-    disabled ? disabledSwatchColor(color) : color};
+  background-color: ${({ color }) => color};
   flex-shrink: 0;
   margin-top: auto;
 
-  &:disabled {
-    ${inputTextDisabled}
-  }
+  ${({ disabled }) => disabled && inputTextDisabled}
 
   &:hover:not([disabled]) {
     ${inputTextHover}

@@ -47,6 +47,3 @@ export const calendarMixColor = () => css`
   color: ${({ theme: { colors } }) =>
     mix(0.65, colors.keyAccent, colors.neutralInteractive)};
 `
-
-export const disabledSwatchColor = (color?: string) =>
-  color && color !== 'transparent' ? rgba(color, 0.85) : undefined
