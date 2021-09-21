@@ -85,6 +85,17 @@ describe('Link', () => {
     )
   })
 
+  test('dangerouslyDisableRel', () => {
+    renderWithTheme(
+      <Link href="/otherPage" dangerouslyDisableRel target="_blank">
+        Local Link
+      </Link>
+    )
+
+    const link = screen.getByText('Local Link')
+    expect(link).not.toHaveAttribute('rel')
+  })
+
   test('External', () => {
     renderWithTheme(
       <Link href="https://looker.com" isExternal>
