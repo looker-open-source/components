@@ -30,46 +30,76 @@ import { renderWithTheme } from '@looker/components-test-utils'
 import { screen } from '@testing-library/react'
 import { FieldCheckbox } from './FieldCheckbox'
 
-test('A required FieldCheckbox', () => {
-  renderWithTheme(
-    <FieldCheckbox
-      id="FieldCheckboxID"
-      label="I agree"
-      name="thumbsUp"
-      required
-    />
-  )
+describe('FieldCheckbox', () => {
+  test('required', () => {
+    renderWithTheme(
+      <FieldCheckbox
+        id="FieldCheckboxID"
+        label="I agree"
+        name="thumbsUp"
+        required
+      />
+    )
 
-  expect(screen.getByTestId('requiredStar')).toBeVisible()
-})
+    expect(screen.getByTestId('requiredStar')).toBeVisible()
+  })
 
-test('A disabled FieldCheckbox', () => {
-  renderWithTheme(
-    <FieldCheckbox
-      disabled
-      id="FieldCheckboxID"
-      label="I agree"
-      name="thumbsUp"
-    />
-  )
+  test('disabled', () => {
+    renderWithTheme(
+      <FieldCheckbox
+        disabled
+        id="FieldCheckboxID"
+        label="I agree"
+        name="thumbsUp"
+      />
+    )
 
-  expect(screen.getByLabelText('I agree')).toBeDisabled()
-})
+    expect(screen.getByText('I agree')).toBeDisabled()
+  })
 
-test('A FieldCheckbox with error has proper aria setup', () => {
-  const errorMessage = 'This is an error'
+  test('error message has proper aria setup', () => {
+    const errorMessage = 'This is an error'
 
-  const { container } = renderWithTheme(
-    <FieldCheckbox
-      id="test"
-      defaultValue="example"
-      validationMessage={{ message: errorMessage, type: 'error' }}
-    />
-  )
+    const { container } = renderWithTheme(
+      <FieldCheckbox
+        id="test"
+        defaultValue="example"
+        validationMessage={{ message: errorMessage, type: 'error' }}
+      />
+    )
 
-  const input = screen.getByDisplayValue('example')
-  const id = input.getAttribute('aria-describedby')
-  expect(id).toBeDefined()
-  expect(id).toEqual('describedby-test')
-  expect(container).toHaveTextContent(errorMessage)
+    const input = screen.getByDisplayValue('example')
+    const id = input.getAttribute('aria-describedby')
+    expect(id).toBeDefined()
+    expect(id).toEqual('test-description')
+    expect(container).toHaveTextContent(errorMessage)
+  })
+
+  test('Accessibility', () => {
+    renderWithTheme(
+      <FieldCheckbox
+        description="describe something here."
+        detail="4/20"
+        id="id"
+        label="Example Field"
+      />
+    )
+
+    expect(screen.getByRole('input')).toHaveAttribute(
+      'aria-describedby',
+      'id-description'
+    )
+
+    expect(screen.getByText('describe something here.')).toHaveAttribute(
+      'id',
+      'id-description'
+    )
+
+    expect(screen.getByText('4/20')).toHaveAttribute('id', 'id-description')
+
+    expect(screen.getByText('Example Field').closest('span')).toHaveAttribute(
+      'id',
+      'id-description'
+    )
+  })
 })

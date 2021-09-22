@@ -24,8 +24,8 @@
 
  */
 
-import type { FC } from 'react'
-import React from 'react'
+import type { ReactNode, FC } from 'react'
+import React, { isValidElement } from 'react'
 import styled from 'styled-components'
 import { Label } from '../../Label/Label'
 import { Paragraph } from '../../../Text'
@@ -33,6 +33,7 @@ import { ValidationMessage } from '../../ValidationMessage/ValidationMessage'
 import { Truncate } from '../../../Truncate'
 import { RequiredStar } from './RequiredStar'
 import type { FieldBaseProps } from './types'
+
 /**
  * `<FieldInline />` allows the rendering of a label (for FieldCheckbox, FieldRadio and FieldToggleSwitch),
  * and can render a validation message.
@@ -42,6 +43,13 @@ import type { FieldBaseProps } from './types'
 interface FieldInlinePropsInternal extends FieldBaseProps {
   id: string
 }
+
+const amendedChildren = (children: ReactNode, id: string) =>
+  isValidElement(children)
+    ? React.cloneElement(children, {
+        'aria-describedby': `${id}-description`,
+      })
+    : children
 
 const FieldInlineLayout: FC<FieldInlinePropsInternal> = ({
   className,
@@ -54,20 +62,24 @@ const FieldInlineLayout: FC<FieldInlinePropsInternal> = ({
   validationMessage,
 }) => {
   return (
-    <label className={className} htmlFor={id}>
-      <InputArea>{children}</InputArea>
-      <Label as="span">
+    <div className={className}>
+      <InputArea>{amendedChildren(children, id)}</InputArea>
+      <Label htmlFor={id} as="span">
         <Truncate>{label}</Truncate>
         {required && <RequiredStar />}
       </Label>
-      {detail && <FieldDetail>{detail}</FieldDetail>}
-      <MessageArea id={`${id}-describedby`}>
-        {description && <FieldDescription>{description}</FieldDescription>}
+      {detail && <FieldDetail id={`${id}-description`}>{detail}</FieldDetail>}
+      <MessageArea>
+        {description && (
+          <FieldDescription id={`${id}-description`}>
+            {description}
+          </FieldDescription>
+        )}
         {validationMessage ? (
           <ValidationMessage {...validationMessage} />
         ) : null}
       </MessageArea>
-    </label>
+    </div>
   )
 }
 
