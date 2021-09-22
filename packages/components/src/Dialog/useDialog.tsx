@@ -165,15 +165,22 @@ export const useDialog = ({
       ? controlledIsOpen || false
       : uncontrolledIsOpen
 
-  const { busy, className, renderDOM } = useAnimationState(
+  const { busy, className, renderDOM, transitionState } = useAnimationState(
     isOpen,
     defaultOpen ? 'none' : undefined
   )
-
+  // eslint-disable-next-line no-console
+  console.log('transitionState: ', transitionState)
+  // eslint-disable-next-line no-console
+  console.log('className: ', className)
   useEffect(() => {
-    if (className === 'exiting' && onAfterClose) onAfterClose()
-    if (className === 'entered' && onAfterOpen) onAfterOpen()
-  }, [className, onAfterClose, onAfterOpen])
+    if (transitionState === 'entered' && onAfterOpen) onAfterOpen()
+
+    if (transitionState === 'exited' && onAfterClose) {
+      onAfterClose()
+    }
+  }, [transitionState, onAfterClose, onAfterOpen])
+
   const setOpen =
     isControlled && controlledSetOpen
       ? controlledSetOpen

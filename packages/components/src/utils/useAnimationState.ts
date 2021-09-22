@@ -41,7 +41,7 @@ interface UseAnimationStateReturn {
   /**
    * className will transition from 'entering` => `entered` => `exiting` => `exited`
    */
-  className: 'entering' | 'entered' | 'exiting' | 'exited'
+  className: AnimationStates
   /**
    * renderDOM indicates whether or not the DOM elements to be associated should
    * be rendered.
@@ -51,6 +51,10 @@ interface UseAnimationStateReturn {
    * Animation is actively running (use to trigger `aria-busy` application)
    */
   busy: boolean
+  /**
+   * Manage the Animation transition for callback methods
+   */
+  transitionState: AnimationStates | undefined
 }
 
 export interface AnimationStateConfig {
@@ -74,7 +78,7 @@ export const useAnimationState = (
   enter: Transitions = 'moderate',
   exit: Transitions = 'moderate'
 ): UseAnimationStateReturn => {
-  const [state, setState] = useState<AnimationStates>('exited')
+  const [state, setState] = useState<AnimationStates>()
   const timingEnter = transitions[enter]
   const timingExit = transitions[exit]
 
@@ -105,9 +109,11 @@ export const useAnimationState = (
     }
   }, [isOpen, timingEnter, timingExit, state])
 
+  const definedState = state === undefined ? 'exited' : state
   return {
-    busy: busyStates.includes(state),
-    className: state,
+    busy: busyStates.includes(definedState),
+    className: definedState,
     renderDOM: state !== 'exited',
+    transitionState: state,
   }
 }
