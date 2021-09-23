@@ -32,7 +32,7 @@ import { useFormContext } from '../../Form'
 import type { InputTextProps } from '../../Inputs/InputText'
 import { InputText, InputTextContext } from '../../Inputs/InputText'
 import type { FieldProps } from '../Field'
-import { Field, omitFieldProps, pickFieldProps } from '../Field'
+import { FloatingLabelField, omitFieldProps, pickFieldProps } from '../Field'
 import { getHasValue } from '../Field/useFloatingLabel'
 
 export interface FieldTextProps extends FieldProps, InputTextProps {}
@@ -45,7 +45,7 @@ const FieldTextComponent = forwardRef(
     const [beforeWidth, setBeforeWidth] = useState(0)
     return (
       <InputTextContext.Provider value={{ beforeWidth, setBeforeWidth }}>
-        <Field
+        <FloatingLabelField
           id={id}
           validationMessage={validationMessage}
           hasValue={getHasValue(props)}
@@ -65,7 +65,7 @@ const FieldTextComponent = forwardRef(
             validationType={validationMessage && validationMessage.type}
             ref={ref}
           />
-        </Field>
+        </FloatingLabelField>
       </InputTextContext.Provider>
     )
   }
