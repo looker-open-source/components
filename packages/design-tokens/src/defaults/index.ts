@@ -31,5 +31,5 @@ export type { ComponentSettingsDefaults } from './types'
 export const componentSettingsDefaults: ComponentSettingsDefaults = {
   brandAnimation: false,
   density: 0,
-  externalLabel: false,
+  externalLabel: true,
 }
