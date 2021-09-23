@@ -24,36 +24,48 @@
 
  */
 
+import type { FC } from 'react'
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
+import { ExtendComponentsThemeProvider } from '@looker/components-providers'
 import { fireEvent, screen } from '@testing-library/react'
 import { theme } from '@looker/design-tokens'
 import { FloatingLabelField } from './FloatingLabelField'
+import type { FloatingLabelFieldPropsInternal } from './types'
+
+const TestComponent: FC<FloatingLabelFieldPropsInternal> = ({
+  children = <input id="test" type="text" />,
+  ...props
+}) => (
+  <ExtendComponentsThemeProvider
+    themeCustomizations={{ defaults: { externalLabel: false } }}
+  >
+    <FloatingLabelField id="test" label="hello!" {...props}>
+      {children}
+    </FloatingLabelField>
+  </ExtendComponentsThemeProvider>
+)
 
 describe('FloatingLabelField', () => {
   test('No value', () => {
-    renderWithTheme(
-      <FloatingLabelField id="test" label="hello!">
-        <input id="test" type="text" />
-      </FloatingLabelField>
-    )
+    renderWithTheme(<TestComponent />)
     expect(screen.getByText('hello!').closest('div')).toHaveClass('label-down')
   })
 
   test('With value (controlled)', () => {
     renderWithTheme(
-      <FloatingLabelField id="test" label="hello!" hasValue>
+      <TestComponent hasValue>
         <input id="test" type="text" defaultValue="test" />
-      </FloatingLabelField>
+      </TestComponent>
     )
     expect(screen.getByText('hello!').closest('div')).toHaveClass('label-up')
   })
 
   test('externalLabel', () => {
     renderWithTheme(
-      <FloatingLabelField id="test" label="hello!" hasValue externalLabel>
+      <TestComponent hasValue externalLabel>
         <input id="test" type="text" defaultValue="test" />
-      </FloatingLabelField>
+      </TestComponent>
     )
     expect(screen.getByText('hello!').closest('div')).not.toHaveClass(
       'label-up'
@@ -61,11 +73,7 @@ describe('FloatingLabelField', () => {
   })
 
   test('Focus/change/blur', () => {
-    renderWithTheme(
-      <FloatingLabelField id="test" label="hello!">
-        <input id="test" type="text" />
-      </FloatingLabelField>
-    )
+    renderWithTheme(<TestComponent />)
     const input = screen.getByLabelText('hello!')
     const label = screen.getByText('hello!')
     const wrapper = label.closest('div')
@@ -85,24 +93,14 @@ describe('FloatingLabelField', () => {
 
   test('Error', () => {
     renderWithTheme(
-      <FloatingLabelField
-        id="test"
-        label="hello!"
-        validationMessage={{ message: 'Oops', type: 'error' }}
-      >
-        <input id="test" type="text" />
-      </FloatingLabelField>
+      <TestComponent validationMessage={{ message: 'Oops', type: 'error' }} />
     )
     const label = screen.getByText('hello!')
     expect(label).toHaveStyle(`color: ${theme.colors.critical}`)
   })
 
   test('Detail', () => {
-    renderWithTheme(
-      <FloatingLabelField id="test" label="hello!" detail="0/50">
-        <input id="test" type="text" />
-      </FloatingLabelField>
-    )
+    renderWithTheme(<TestComponent detail="0/50" />)
     screen.getByText('0/50')
   })
 })
