@@ -72,7 +72,7 @@ export function useBlur<
     const popoverCurrent = listRef ? listRef.current : null
     if (popoverCurrent) {
       const focusInList =
-        popoverCurrent && popoverCurrent.contains(nextFocusTarget as Node)
+        popoverCurrent && popoverCurrent.contains(nextFocusTarget)
 
       if (focusInList && state !== ComboboxState.INTERACTING) {
         // focus landed inside the select, keep it open

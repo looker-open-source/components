@@ -31,9 +31,8 @@ import { useID } from '../../../utils'
 import { useFormContext } from '../../Form'
 import type { ToggleSwitchProps } from '../../Inputs/ToggleSwitch/ToggleSwitch'
 import { ToggleSwitch } from '../../Inputs/ToggleSwitch/ToggleSwitch'
-import { omitFieldProps, pickFieldProps } from '../Field'
-import { FieldInline } from '../FieldInline'
-import type { FieldBaseProps } from '../FieldBase'
+import { FieldInline, omitFieldProps, pickFieldProps } from '../Field'
+import type { FieldBaseProps } from '../Field'
 
 export interface FieldToggleSwitchProps
   extends FieldBaseProps,

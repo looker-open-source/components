@@ -24,43 +24,29 @@
 
  */
 
-import type { Ref } from 'react'
-import React, { forwardRef } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import { useID } from '../../../utils'
-import { useFormContext } from '../../Form'
-import type { RadioProps } from '../../Inputs/Radio/Radio'
-import { Radio } from '../../Inputs/Radio/Radio'
-import { FieldInline, omitFieldProps, pickFieldProps } from '../Field'
-import type { FieldBaseProps } from '../Field'
+import { SpaceVertical } from '../../../Layout'
+import { Paragraph } from '../../../Text'
+import { ValidationMessage } from '../../ValidationMessage'
+import type { FieldBaseProps } from './types'
 
-export interface FieldRadioProps extends RadioProps, FieldBaseProps {}
-
-const FieldRadioLayout = forwardRef(
-  (props: FieldRadioProps, ref: Ref<HTMLInputElement>) => {
-    const validationMessage = useFormContext(props)
-    const id = useID(props.id)
+export const HelperText = styled(
+  ({ className, description, id, validationMessage }: FieldBaseProps) => {
     return (
-      <FieldInline
-        id={id}
-        validationMessage={validationMessage}
-        {...pickFieldProps(props)}
+      <SpaceVertical
+        pt={description || validationMessage ? 'u2' : 'none'}
+        gap="u1"
+        className={className}
+        id={`describedby-${id}`}
       >
-        <Radio
-          {...omitFieldProps(props)}
-          aria-describedby={`describedby-${id}`}
-          id={id}
-          ref={ref}
-          validationType={
-            (validationMessage && validationMessage.type) ||
-            props.validationType
-          }
-        />
-      </FieldInline>
+        {description && (
+          <Paragraph fontSize="xsmall" color="text2">
+            {description}
+          </Paragraph>
+        )}
+        {validationMessage && <ValidationMessage {...validationMessage} />}
+      </SpaceVertical>
     )
   }
-)
-
-FieldRadioLayout.displayName = 'FieldRadioLayout'
-
-export const FieldRadio = styled(FieldRadioLayout)``
+)``

@@ -24,29 +24,24 @@
 
  */
 
-import type { DensityRamp } from '../system/density'
+import type { Dispatch, SetStateAction } from 'react'
+import { useRef, useEffect, useState } from 'react'
 
-export type ComponentSettingsDefaults = {
-  /**
-   * Enable the Material "Ripple" animation on components that support it.
-   * Currently affects: IconButton, Checkbox, Radio & ToggleSwitch
-   * Future: Button*, Tab & ListItem
-   * @default false
-   */
-  brandAnimation: boolean
-
-  /**
-   * Default density to use for density-supporting components
-   *
-   * NOTE: This not implemented broadly yet. Altering this value is not recommended
-   * at this time.
-   */
-  density: DensityRamp
-  /**
-   * Disable the Material "floating label" layout and animation on components that support it.
-   * Currently affects: FieldTextArea
-   * Future: FieldText, FieldSelect, FieldSelectMulti, FieldDate, FieldDateRange, FieldDate, FieldTime, FieldTimeSelect
-   * @default true
-   */
-  externalLabel: boolean
+/**
+ * A version of useState that is synced with a prop
+ * @param prop The prop to sync state to
+ * @returns the current state value
+ */
+export const useSyncedState = <S>(
+  prop: S
+): [S, Dispatch<SetStateAction<S>>] => {
+  const [state, setState] = useState(prop)
+  const isMountedRef = useRef(false)
+  useEffect(() => {
+    if (isMountedRef.current) {
+      setState(prop)
+    }
+    isMountedRef.current = true
+  }, [prop])
+  return [state, setState]
 }

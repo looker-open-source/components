@@ -52,6 +52,7 @@ const FieldTimeComponent = forwardRef(
       >
         <InputTime
           {...omitFieldProps(props)}
+          width="100%"
           aria-describedby={`describedby-${id}`}
           aria-labelledby={`labelledby-${id}`}
           id={id}
@@ -65,6 +66,4 @@ const FieldTimeComponent = forwardRef(
 
 FieldTimeComponent.displayName = 'FieldTimeComponent'
 
-export const FieldTime = styled(FieldTimeComponent)`
-  width: 100%;
-`
+export const FieldTime = styled(FieldTimeComponent)``

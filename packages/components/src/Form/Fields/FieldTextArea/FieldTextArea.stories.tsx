@@ -25,8 +25,11 @@
  */
 
 import type { Story } from '@storybook/react/types-6-0'
-import React from 'react'
+import type { FormEvent } from 'react'
+import React, { useState } from 'react'
 import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
+import { Button } from '../../../Button'
+import { Space, SpaceVertical } from '../../../Layout'
 import type { FieldTextAreaProps } from './FieldTextArea'
 import { FieldTextArea } from './FieldTextArea'
 
@@ -43,15 +46,49 @@ const Template: Story<FieldTextAreaProps> = (args) => (
 export const Basic = Template.bind({})
 Basic.args = { label: 'Text Area' }
 
+export const DefaultValue = Template.bind({})
+DefaultValue.args = { ...Basic.args, defaultValue: 'Default value' }
+
 export const Disabled = Template.bind({})
 Disabled.args = { ...Basic.args, disabled: true }
+
+export const DisabledValue = Template.bind({})
+DisabledValue.args = { ...DefaultValue.args, disabled: true }
 
 export const Required = Template.bind({})
 Required.args = { ...Basic.args, required: true }
 
+export const Description = Template.bind({})
+Description.args = { ...Basic.args, description: 'This is a description' }
+
+export const Detail = Template.bind({})
+Detail.args = { ...Basic.args, detail: '0/50' }
+
+export const DetailDescription = Template.bind({})
+DetailDescription.args = {
+  ...Basic.args,
+  description: 'This is a description',
+  detail: '0/50',
+}
+
 export const Error = Template.bind({})
 Error.args = {
   ...Basic.args,
+  validationMessage: { message: 'Error Message', type: 'error' },
+}
+
+export const ErrorDetail = Template.bind({})
+ErrorDetail.args = {
+  ...Basic.args,
+  detail: '0/50',
+  validationMessage: { message: 'Error Message', type: 'error' },
+}
+
+export const ErrorValueDetail = Template.bind({})
+ErrorValueDetail.args = {
+  ...Basic.args,
+  defaultValue: 'This value is too long',
+  detail: '50/50',
   validationMessage: { message: 'Error Message', type: 'error' },
 }
 
@@ -65,4 +102,39 @@ export const NoResize = Template.bind({})
 NoResize.args = {
   placeholder: 'no resize',
   resize: false,
+}
+
+export const ExternalLabel = Template.bind({})
+ExternalLabel.args = {
+  ...DetailDescription.args,
+  externalLabel: true,
+}
+
+const initialValue = 'Initial Value'
+
+export const Controlled = () => {
+  const [value, setValue] = useState(initialValue)
+  const handleReset = () => setValue(initialValue)
+  const handleClear = () => setValue('')
+  const handleChange = (e: FormEvent<HTMLTextAreaElement>) => {
+    setValue(e.currentTarget.value)
+  }
+  return (
+    <SpaceVertical>
+      <Space>
+        <Button onClick={handleReset}>Reset</Button>
+        <Button onClick={handleClear}>Clear</Button>
+      </Space>
+      <FieldTextArea
+        width="100%"
+        label="Controlled"
+        value={value}
+        onChange={handleChange}
+      />
+    </SpaceVertical>
+  )
+}
+
+Controlled.parameters = {
+  storyshots: { disable: true },
 }

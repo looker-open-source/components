@@ -23,24 +23,5 @@
  SOFTWARE.
 
  */
-import { useTranslation } from 'react-i18next'
-import type { FC } from 'react'
-import React from 'react'
-import styled from 'styled-components'
-import { VisuallyHidden } from '../../VisuallyHidden'
 
-const RequiredStarLayout: FC<{ className?: string }> = ({ className }) => {
-  const { t } = useTranslation('RequiredStar')
-  return (
-    <span aria-hidden="true" className={className} data-testid="requiredStar">
-      <VisuallyHidden>{` ${t('required')}`}</VisuallyHidden>
-    </span>
-  )
-}
-
-export const RequiredStar = styled(RequiredStarLayout)`
-  &::before {
-    color: ${({ theme }) => theme.colors.critical};
-    content: ' *';
-  }
-`
+export const DISABLED_OPACITY = '0.4'

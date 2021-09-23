@@ -74,10 +74,7 @@ export const LkFieldItem = styled(
     const handleWrapperBlur = (event: FocusEvent<HTMLElement>) => {
       const nextFocusTarget = getNextFocusTarget(event)
 
-      if (
-        nextFocusTarget &&
-        !event.currentTarget.contains(nextFocusTarget as Node)
-      ) {
+      if (nextFocusTarget && !event.currentTarget.contains(nextFocusTarget)) {
         setHovered(false)
       }
     }

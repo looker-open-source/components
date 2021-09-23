@@ -23,38 +23,24 @@
  SOFTWARE.
 
  */
+import { useTranslation } from 'react-i18next'
+import type { FC } from 'react'
+import React from 'react'
+import styled from 'styled-components'
+import { VisuallyHidden } from '../../../VisuallyHidden'
 
-import type { ReactNode } from 'react'
-import type { ValidationMessageProps } from '../ValidationMessage/ValidationMessage'
-
-export interface FieldBaseProps {
-  className?: string
-  /**
-   * Allows Field to adjust to the width of the input (InputText and Select)
-   */
-  autoResize?: boolean
-  disabled?: boolean
-  /**
-   * Defines the label for the field.
-   * I18n recommended: content that is user visible should be treated for i18n
-   */
-  label?: string
-  /**
-   * Whether or not the field should display a `*` denoting it is required.
-   */
-  required?: boolean
-  /**
-   * notes and details added to the top right corner of the field
-   * I18n recommended: content that is user visible should be treated for i18n
-   */
-  detail?: ReactNode
-  /**
-   * notes and more info added to the bottom of the field
-   * I18n recommended: content that is user visible should be treated for i18n
-   */
-  description?: ReactNode
-  /**
-   * Holds the type of validation (error, warning, etc.) and corresponding message.
-   */
-  validationMessage?: ValidationMessageProps
+const RequiredStarLayout: FC<{ className?: string }> = ({ className }) => {
+  const { t } = useTranslation('RequiredStar')
+  return (
+    <span aria-hidden="true" className={className} data-testid="requiredStar">
+      <VisuallyHidden>{` ${t('required')}`}</VisuallyHidden>
+    </span>
+  )
 }
+
+export const RequiredStar = styled(RequiredStarLayout)`
+  &::before {
+    color: ${({ theme }) => theme.colors.critical};
+    content: ' *';
+  }
+`
