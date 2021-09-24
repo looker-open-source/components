@@ -44,13 +44,6 @@ interface FieldInlinePropsInternal extends FieldBaseProps {
   id: string
 }
 
-const amendedChildren = (children: ReactNode, id: string) =>
-  isValidElement(children)
-    ? React.cloneElement(children, {
-        'aria-describedby': `${id}-description`,
-      })
-    : children
-
 const FieldInlineLayout: FC<FieldInlinePropsInternal> = ({
   className,
   children,
@@ -61,23 +54,27 @@ const FieldInlineLayout: FC<FieldInlinePropsInternal> = ({
   required,
   validationMessage,
 }) => {
+  const describedbyId = `${id}-description`
+
+  const inputWithAriaDescribed = isValidElement(children)
+    ? React.cloneElement(children, {
+        'aria-describedby': describedbyId,
+      })
+    : children
+
   return (
     <div className={className}>
-      <InputArea>{amendedChildren(children, id)}</InputArea>
-      <Label htmlFor={id} as="span">
+      <InputArea>{inputWithAriaDescribed}</InputArea>
+      <Label htmlFor={id}>
         <Truncate>{label}</Truncate>
         {required && <RequiredStar />}
       </Label>
-      {detail && <FieldDetail id={`${id}-description`}>{detail}</FieldDetail>}
+      {detail && <FieldDetail>{detail}</FieldDetail>}
       <MessageArea>
         {description && (
-          <FieldDescription id={`${id}-description`}>
-            {description}
-          </FieldDescription>
+          <FieldDescription id={describedbyId}>{description}</FieldDescription>
         )}
-        {validationMessage ? (
-          <ValidationMessage {...validationMessage} />
-        ) : null}
+        {validationMessage && <ValidationMessage {...validationMessage} />}
       </MessageArea>
     </div>
   )
