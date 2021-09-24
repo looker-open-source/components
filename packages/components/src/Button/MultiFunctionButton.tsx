@@ -76,11 +76,24 @@ export const MultiFunctionButton = forwardRef(
     useEffect(() => {
       const a = aRef.current
       const b = bRef.current
+
       if (a && b) {
+        const aWidth: any = children.props.width
+          ? children.props.width
+          : a.offsetWidth
+        const bWidth: any = alternate.props.width
+          ? alternate.props.width
+          : a.offsetWidth
+
         setContainerHeight(Math.max(a.offsetHeight, b.offsetHeight, 0))
-        setContainerWidth(Math.max(a.offsetWidth, b.offsetWidth, 0))
+        setContainerWidth(Math.max(aWidth, bWidth, 0))
       }
-    }, [containerHeight, containerWidth])
+    }, [
+      containerHeight,
+      containerWidth,
+      children.props.width,
+      alternate.props.width,
+    ])
 
     // setting focus on the right button as the component moves between them
     useEffect(() => {
@@ -92,8 +105,6 @@ export const MultiFunctionButton = forwardRef(
       }
     }, [swap])
 
-    const style = containerWidth > 0 ? { width: containerWidth } : undefined
-
     return (
       <MultiFunctionButtonStyle
         swap={swap}
@@ -104,13 +115,11 @@ export const MultiFunctionButton = forwardRef(
           'aria-hidden': !!swap,
           disabled: swap === true ? true : undefined,
           ref: useForkedRef(aRef, forwardedRef),
-          style,
         })}
         {cloneElement(alternate, {
           'aria-hidden': !swap,
           disabled: swap === false ? true : undefined,
           ref: useForkedRef(bRef, alternateRef),
-          style,
         })}
       </MultiFunctionButtonStyle>
     )
