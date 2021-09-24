@@ -50,7 +50,7 @@ describe('FieldToggleSwitch', () => {
     const input = screen.getByDisplayValue('example')
     const id = input.getAttribute('aria-describedby')
     expect(id).toBeDefined()
-    expect(id).toEqual('describedby-test')
+    expect(id).toEqual('test-description')
     expect(container).toHaveTextContent(errorMessage)
   })
 

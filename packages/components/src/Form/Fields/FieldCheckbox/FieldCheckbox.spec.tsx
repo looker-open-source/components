@@ -53,8 +53,7 @@ describe('FieldCheckbox', () => {
         name="thumbsUp"
       />
     )
-
-    expect(screen.getByText('I agree')).toBeDisabled()
+    expect(screen.getByRole('checkbox')).toBeDisabled()
   })
 
   test('error message has proper aria setup', () => {
@@ -84,20 +83,12 @@ describe('FieldCheckbox', () => {
         label="Example Field"
       />
     )
-
-    expect(screen.getByRole('input')).toHaveAttribute(
+    expect(screen.getByRole('checkbox')).toHaveAttribute(
       'aria-describedby',
       'id-description'
     )
 
     expect(screen.getByText('describe something here.')).toHaveAttribute(
-      'id',
-      'id-description'
-    )
-
-    expect(screen.getByText('4/20')).toHaveAttribute('id', 'id-description')
-
-    expect(screen.getByText('Example Field').closest('span')).toHaveAttribute(
       'id',
       'id-description'
     )

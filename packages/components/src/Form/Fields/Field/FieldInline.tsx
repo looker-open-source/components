@@ -24,7 +24,7 @@
 
  */
 
-import type { ReactNode, FC } from 'react'
+import type { FC } from 'react'
 import React, { isValidElement } from 'react'
 import styled from 'styled-components'
 import { Label } from '../../Label/Label'
