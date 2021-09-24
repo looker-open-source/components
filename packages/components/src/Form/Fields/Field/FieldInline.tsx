@@ -54,7 +54,7 @@ const FieldInlineLayout: FC<FieldInlinePropsInternal> = ({
   required,
   validationMessage,
 }) => {
-  const describedbyId = `${id}-description`
+  const describedbyId = `${id}-describedby`
 
   const inputWithAriaDescribed = isValidElement(children)
     ? React.cloneElement(children, {
@@ -70,10 +70,8 @@ const FieldInlineLayout: FC<FieldInlinePropsInternal> = ({
         {required && <RequiredStar />}
       </Label>
       {detail && <FieldDetail>{detail}</FieldDetail>}
-      <MessageArea>
-        {description && (
-          <FieldDescription id={describedbyId}>{description}</FieldDescription>
-        )}
+      <MessageArea id={describedbyId}>
+        {description && <FieldDescription>{description}</FieldDescription>}
         {validationMessage && <ValidationMessage {...validationMessage} />}
       </MessageArea>
     </div>

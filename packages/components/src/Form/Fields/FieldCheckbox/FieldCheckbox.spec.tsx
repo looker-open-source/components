@@ -53,7 +53,7 @@ describe('FieldCheckbox', () => {
         name="thumbsUp"
       />
     )
-    expect(screen.getByRole('checkbox')).toBeDisabled()
+    expect(screen.getByLabelText('I agree')).toBeDisabled()
   })
 
   test('error message has proper aria setup', () => {
@@ -70,27 +70,30 @@ describe('FieldCheckbox', () => {
     const input = screen.getByDisplayValue('example')
     const id = input.getAttribute('aria-describedby')
     expect(id).toBeDefined()
-    expect(id).toEqual('test-description')
+    expect(id).toEqual('test-describedby')
     expect(container).toHaveTextContent(errorMessage)
   })
 
   test('Accessibility', () => {
+    const errorMessage = 'This is an error'
     renderWithTheme(
       <FieldCheckbox
         description="describe something here."
         detail="4/20"
         id="id"
         label="Example Field"
+        validationMessage={{ message: errorMessage, type: 'error' }}
       />
     )
     expect(screen.getByRole('checkbox')).toHaveAttribute(
       'aria-describedby',
-      'id-description'
+      'id-describedby'
     )
 
-    expect(screen.getByText('describe something here.')).toHaveAttribute(
-      'id',
-      'id-description'
-    )
+    const description = screen.getByText('describe something here.')
+    const ariaDescribed = description.parentElement
+
+    expect(ariaDescribed).toHaveAttribute('id', 'id-describedby')
+    expect(ariaDescribed).toHaveTextContent(errorMessage)
   })
 })
