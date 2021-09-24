@@ -78,7 +78,7 @@ export const useAnimationState = (
   enter: Transitions = 'moderate',
   exit: Transitions = 'moderate'
 ): UseAnimationStateReturn => {
-  const [state, setState] = useState<AnimationStates>()
+  const [state, setState] = useState<AnimationStates>('exited')
   const timingEnter = transitions[enter]
   const timingExit = transitions[exit]
 
@@ -109,10 +109,9 @@ export const useAnimationState = (
     }
   }, [isOpen, timingEnter, timingExit, state])
 
-  const definedState = state === undefined ? 'exited' : state
   return {
-    busy: busyStates.includes(definedState),
-    className: definedState,
+    busy: busyStates.includes(state),
+    className: state,
     renderDOM: state !== 'exited',
     transitionState: state,
   }

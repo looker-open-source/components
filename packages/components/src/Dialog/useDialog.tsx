@@ -24,8 +24,8 @@
 
  */
 
-import type { ReactNode, FC } from 'react'
-import React, { useEffect, useState } from 'react'
+import type { FC, ReactNode } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import type {
   DrawerPlacements,
   DialogDrawerWidth,
@@ -169,15 +169,18 @@ export const useDialog = ({
     isOpen,
     defaultOpen ? 'none' : undefined
   )
-  // eslint-disable-next-line no-console
-  console.log('transitionState: ', transitionState)
-  // eslint-disable-next-line no-console
-  console.log('className: ', className)
+  const hasBeenOpenRef = useRef(false)
+
   useEffect(() => {
     if (transitionState === 'entered' && onAfterOpen) onAfterOpen()
 
     if (transitionState === 'exited' && onAfterClose) {
-      onAfterClose()
+      if (hasBeenOpenRef.current) {
+        onAfterClose()
+      }
+      hasBeenOpenRef.current = false
+    } else {
+      hasBeenOpenRef.current = true
     }
   }, [transitionState, onAfterClose, onAfterOpen])
 
