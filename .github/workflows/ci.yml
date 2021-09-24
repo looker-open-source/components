@@ -17,54 +17,109 @@ jobs:
         with:
           all_but_latest: true
           access_token: ${{ github.token }}
+
+  install-cache:
+    runs-on: ubuntu-latest
+    needs: cancel
+    steps:
+      - name: Checkout Commit
+        uses: actions/checkout@v2
+      - name: Cache yarn dependencies
+        uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: |
+            node_modules
+          key: ${{ runner.os }}-yarn-v1-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-v1
+      - name: Install dependencies if cache invalid
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        run: yarn
+
   lint:
     name: "Lint: ESLint + Prettier, Stylelint, Typescript"
     runs-on: ubuntu-latest
+    needs: install-cache
     steps:
-      - uses: actions/checkout@v2
-      - uses: c-hive/gha-yarn-cache@v1
-      - run: yarn install
+      - name: Checkout Commit
+        uses: actions/checkout@v2
+      - name: Restore yarn dependencies
+        uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-yarn-v1-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-v1
       - run: yarn lint
   test:
     name: "Tests: Jest + RTL"
     runs-on: ubuntu-latest
+    needs: install-cache
     steps:
-      - uses: actions/checkout@v2
-      - uses: c-hive/gha-yarn-cache@v1
-      - run : yarn --silent
-      - run: yarn test
-      - uses: actions/upload-artifact@v2
-        if: always()
+      - name: Checkout Commit
+        uses: actions/checkout@v2
+      - name: Restore yarn dependencies
+        uses: actions/cache@v2
+        id: yarn-cache
         with:
-          name: coverage
-          path: coverage
-          retention-days: 5
+          path: node_modules
+
+          key: ${{ runner.os }}-yarn-v1-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-v1
+      - run: yarn test --coverage=false
   build:
     name: "Build: ES & Typescript"
     runs-on: ubuntu-latest
+    needs: install-cache
     steps:
-      - uses: actions/checkout@v2
-      - uses: c-hive/gha-yarn-cache@v1
-      - run : yarn --silent
-      - run: yarn build
+      - name: Checkout Commit
+        uses: actions/checkout@v2
+      - name: Restore yarn dependencies
+        uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-yarn-v1-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-v1
+      - name: Build artifacts
+        run: yarn build
   gatsby:
     name: "Gatsby"
     runs-on: ubuntu-latest
+    needs: install-cache
     steps:
-      - uses: actions/checkout@v2
-      - uses: c-hive/gha-yarn-cache@v1
-      - run : yarn --silent
+      - name: Checkout Commit
+        uses: actions/checkout@v2
+      - name: Restore yarn dependencies
+        uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-yarn-v1-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-v1
       - run: yarn workspace www build
   image-snapshots:
     name: "Image Snapshots"
     runs-on: ubuntu-latest
+    needs: install-cache
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout Commit
+        uses: actions/checkout@v2
+      - name: Restore yarn dependencies
+        uses: actions/cache@v2
+        id: yarn-cache
         with:
-          ref: ${{ github.event.pull_request.head.ref }}
-      - uses: c-hive/gha-yarn-cache@v1
-      - run : yarn --silent
-      - run: yarn test:image-snapshots
+          path: node_modules
+          key: ${{ runner.os }}-yarn-v1-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-v1
+      - name: Run Image Snapshots
+        run: yarn test:image-snapshots
         id: snapshots
       # Upload snapshot diffs
       - uses: actions/upload-artifact@v2
@@ -73,18 +128,3 @@ jobs:
           name: snapshot-diffs
           path: snapshots/**/*-diff.png
           retention-days: 5
-      # If snapshots failed, build fresh ones and open a PR to help out our friends
-      - name: Fresh snapshots
-        if: ${{ always() && (steps.snapshots.outcome == 'failure') }}
-        run: yarn workspace storybook snapshots -u
-      - name: Create Pull Request
-        if: ${{ always() && (steps.snapshots-update.outcome == 'success') }}
-        uses: peter-evans/create-pull-request@v3
-        with:
-          commit-message: "chore: image-snapshot updates"
-          branch: "${{ github.event.pull_request.head.ref }}-snapshot-updates"
-          delete-branch: true
-          title: "chore: snapshot-updates for \"${{ github.event.pull_request.title }}\""
-          body: Image snapshot updates for the PR \"${{ github.event.pull_request.title }}\""
-          labels: image-snapshots
-          reviewers: "${{ github.payload.pull_request.sender.login }}"

@@ -18,21 +18,28 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - name: Clone repository
+      - name: Checkout Commit
         uses: actions/checkout@v2
         with:
           persist-credentials: false
           ref: main
           fetch-depth: 0
 
+      - name: Restore yarn dependencies
+        uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-yarn-v1-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-v1
+
       - name: Fetch all tags
         run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
 
-      - uses: c-hive/gha-yarn-cache@v1
-      - run: yarn install
-
       - name: Build web site
         run: |
+          yarn install
           yarn website-latest
 
       - name: Deploy canary documentation
