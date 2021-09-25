@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@looker/design-tokens": "^2.6.1",
-    "i18next": "20.3.1",
+    "i18next": "21.1.0",
     "react-helmet-async": "^1.0.9",
     "react-i18next": "11.8.15",
     "tabbable": "^5.2.0"
