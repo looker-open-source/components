@@ -18,7 +18,7 @@
   "@styled-icons/material-rounded": "10.34.0",
   "lodash": "^4.17.20",
   "polished": "3.4.1",
-  "use-debounce": "5.2.1"
+  "use-debounce": "7.0.0"
  },
  "devDependencies": {
   "@looker/components": "*",
