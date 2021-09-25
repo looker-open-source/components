@@ -30,46 +30,52 @@ import { renderWithTheme } from '@looker/components-test-utils'
 import { screen } from '@testing-library/react'
 import { FieldCheckbox } from './FieldCheckbox'
 
-test('A required FieldCheckbox', () => {
-  renderWithTheme(
-    <FieldCheckbox
-      id="FieldCheckboxID"
-      label="I agree"
-      name="thumbsUp"
-      required
-    />
-  )
+describe('FieldCheckbox', () => {
+  test('required', () => {
+    renderWithTheme(
+      <FieldCheckbox
+        id="FieldCheckboxID"
+        label="I agree"
+        name="thumbsUp"
+        required
+      />
+    )
 
-  expect(screen.getByTestId('requiredStar')).toBeVisible()
-})
+    expect(screen.getByTestId('requiredStar')).toBeVisible()
+  })
 
-test('A disabled FieldCheckbox', () => {
-  renderWithTheme(
-    <FieldCheckbox
-      disabled
-      id="FieldCheckboxID"
-      label="I agree"
-      name="thumbsUp"
-    />
-  )
+  test('disabled', () => {
+    renderWithTheme(
+      <FieldCheckbox
+        disabled
+        id="FieldCheckboxID"
+        label="I agree"
+        name="thumbsUp"
+      />
+    )
+    expect(screen.getByLabelText('I agree')).toBeDisabled()
+  })
 
-  expect(screen.getByLabelText('I agree')).toBeDisabled()
-})
+  test('Accessibility', () => {
+    const errorMessage = 'This is an error'
+    renderWithTheme(
+      <FieldCheckbox
+        description="describe something here."
+        detail="4/20"
+        id="test"
+        label="Example Field"
+        validationMessage={{ message: errorMessage, type: 'error' }}
+      />
+    )
+    expect(screen.getByRole('checkbox')).toHaveAttribute(
+      'aria-describedby',
+      'describedby-test'
+    )
 
-test('A FieldCheckbox with error has proper aria setup', () => {
-  const errorMessage = 'This is an error'
+    const description = screen.getByText('describe something here.')
+    const ariaDescribed = description.parentElement
 
-  const { container } = renderWithTheme(
-    <FieldCheckbox
-      id="test"
-      defaultValue="example"
-      validationMessage={{ message: errorMessage, type: 'error' }}
-    />
-  )
-
-  const input = screen.getByDisplayValue('example')
-  const id = input.getAttribute('aria-describedby')
-  expect(id).toBeDefined()
-  expect(id).toEqual('describedby-test')
-  expect(container).toHaveTextContent(errorMessage)
+    expect(ariaDescribed).toHaveAttribute('id', 'describedby-test')
+    expect(ariaDescribed).toHaveTextContent(errorMessage)
+  })
 })

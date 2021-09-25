@@ -25,7 +25,7 @@
  */
 
 import type { FC } from 'react'
-import React from 'react'
+import React, { isValidElement } from 'react'
 import styled from 'styled-components'
 import { Label } from '../../Label/Label'
 import { Paragraph } from '../../../Text'
@@ -33,6 +33,7 @@ import { ValidationMessage } from '../../ValidationMessage/ValidationMessage'
 import { Truncate } from '../../../Truncate'
 import { RequiredStar } from './RequiredStar'
 import type { FieldBaseProps } from './types'
+
 /**
  * `<FieldInline />` allows the rendering of a label (for FieldCheckbox, FieldRadio and FieldToggleSwitch),
  * and can render a validation message.
@@ -53,21 +54,27 @@ const FieldInlineLayout: FC<FieldInlinePropsInternal> = ({
   required,
   validationMessage,
 }) => {
+  const describedbyId = `describedby-${id}`
+
+  const inputWithAriaDescribed = isValidElement(children)
+    ? React.cloneElement(children, {
+        'aria-describedby': describedbyId,
+      })
+    : children
+
   return (
-    <label className={className} htmlFor={id}>
-      <InputArea>{children}</InputArea>
-      <Label as="span">
+    <div className={className}>
+      <InputArea>{inputWithAriaDescribed}</InputArea>
+      <Label htmlFor={id}>
         <Truncate>{label}</Truncate>
         {required && <RequiredStar />}
       </Label>
       {detail && <FieldDetail>{detail}</FieldDetail>}
-      <MessageArea id={`${id}-describedby`}>
+      <MessageArea id={describedbyId}>
         {description && <FieldDescription>{description}</FieldDescription>}
-        {validationMessage ? (
-          <ValidationMessage {...validationMessage} />
-        ) : null}
+        {validationMessage && <ValidationMessage {...validationMessage} />}
       </MessageArea>
-    </label>
+    </div>
   )
 }
 
