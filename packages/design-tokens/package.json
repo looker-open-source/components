@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "@testing-library/react": "^11.2.6",
-    "csstype": "^3.0.8",
+    "csstype": "^3.0.9",
     "lodash": "^4.17.20",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
