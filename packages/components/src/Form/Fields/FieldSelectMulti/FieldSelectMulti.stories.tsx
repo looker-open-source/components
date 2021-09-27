@@ -24,6 +24,7 @@
 
  */
 
+import { ExtendComponentsThemeProvider } from '@looker/components-providers'
 import type { Story } from '@storybook/react/types-6-0'
 import React, { useMemo, useState, useEffect } from 'react'
 import { Favorite } from '@styled-icons/material/Favorite'
@@ -43,9 +44,21 @@ import { options1k } from '../../Inputs/Select/stories/options1k'
 import type { FieldSelectMultiProps } from './FieldSelectMulti'
 import { FieldSelectMulti } from './FieldSelectMulti'
 
-const Template: Story<FieldSelectMultiProps> = (args) => (
-  <FieldSelectMulti {...args} />
-)
+const Template: Story<
+  FieldSelectMultiProps & { externalLabel: boolean; initialValues: string[] }
+> = ({ externalLabel, initialValues, ...args }) => {
+  const [values, setValues] = useState<string[] | undefined>(
+    initialValues || ['Apples']
+  )
+
+  return (
+    <ExtendComponentsThemeProvider
+      themeCustomizations={{ defaults: { externalLabel } }}
+    >
+      <FieldSelectMulti {...args} values={values} onChange={setValues} />
+    </ExtendComponentsThemeProvider>
+  )
+}
 
 const selectOptions = [
   { value: 'Apples' },
@@ -69,11 +82,16 @@ export const Basic = Template.bind({})
 Basic.args = {
   description: 'this is the description',
   detail: '5/50',
+  externalLabel: true,
+  initialValues: ['Apples'],
   isFilterable: true,
   label: 'Label',
   options: selectOptions,
   placeholder: 'Search fruits',
 }
+
+export const FloatingLabel = Template.bind({})
+FloatingLabel.args = { ...Basic.args, externalLabel: false }
 
 export const Disabled = Template.bind({})
 Disabled.args = {
@@ -87,6 +105,12 @@ Error.args = {
   validationMessage: { message: 'validation Message', type: 'error' },
 }
 
+export const ErrorFloatingLabel = Template.bind({})
+ErrorFloatingLabel.args = {
+  ...FloatingLabel.args,
+  validationMessage: { message: 'validation Message', type: 'error' },
+}
+
 const emailValidator =
   /^(([^<>()[\]\\.,:\s@"]+(\.[^<>()[\]\\.,:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 const emails = [
@@ -96,6 +120,17 @@ const emails = [
 ]
 
 export const CopyPaste = () => {
+  const [values1, setValues1] = useState<string[] | undefined>([
+    'Apples',
+    'Oranges',
+    'Apples2',
+  ])
+  const [values2, setValues2] = useState<string[] | undefined>([])
+  const [values3, setValues3] = useState<string[] | undefined>([
+    'good.looker@google.com',
+    'lookercomponents@google.com',
+  ])
+  const [values4, setValues4] = useState<string[] | undefined>([])
   const [errorMsg, setErrorMsg] = useState('')
   const validate = (value: string) => {
     return value.indexOf('2') === -1
@@ -116,7 +151,8 @@ export const CopyPaste = () => {
           label="Copy from here..."
           description="But not the reverse..."
           options={selectOptions}
-          defaultValues={['Apples', 'Oranges', 'Apples2']}
+          values={values1}
+          onChange={setValues1}
           placeholder="Search fruits"
           isFilterable
         />
@@ -124,6 +160,8 @@ export const CopyPaste = () => {
           label="...over to here"
           description="...because that one is not freeInput"
           options={selectOptions}
+          values={values2}
+          onChange={setValues2}
           placeholder="Search fruits"
           isFilterable
           freeInput
@@ -139,11 +177,9 @@ export const CopyPaste = () => {
         <FieldSelectMulti
           label="To:"
           options={emails}
+          values={values3}
+          onChange={setValues3}
           validate={validateEmail}
-          defaultValues={[
-            'good.looker@google.com',
-            'lookercomponents@google.com',
-          ]}
           placeholder="Enter recipients"
           isFilterable
           freeInput
@@ -151,6 +187,8 @@ export const CopyPaste = () => {
         <FieldSelectMulti
           label="CC:"
           options={emails}
+          values={values4}
+          onChange={setValues4}
           validate={validateEmail}
           placeholder="Enter recipients"
           isFilterable
@@ -223,6 +261,10 @@ const TestIndicator = () => {
 }
 
 export const SelectMultiDemo = () => {
+  const [values, setValues] = useState<string[] | undefined>(['Boulder Creek'])
+  const [values2, setValues2] = useState<string[] | undefined>([
+    'Boulder Creek',
+  ])
   const [delayedCheeseOptions, setCheeseOptions] = useState(
     [] as SelectOptionObject[]
   )
@@ -291,7 +333,8 @@ export const SelectMultiDemo = () => {
             onFilter={handleFilter1k}
             alignSelf="flex-start"
             showCreate
-            defaultValues={['Boulder Creek']}
+            values={values}
+            onChange={setValues}
             freeInput
             autoFocus
           />
@@ -324,7 +367,8 @@ export const SelectMultiDemo = () => {
         onFilter={handleFilter1k}
         alignSelf="flex-start"
         showCreate
-        defaultValues={['Boulder Creek']}
+        values={values2}
+        onChange={setValues2}
       />
       <Heading as="h4">Option Groups</Heading>
       <FieldSelectMulti
