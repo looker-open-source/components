@@ -24,6 +24,7 @@
 
  */
 
+import { ExtendComponentsThemeProvider } from '@looker/components-providers'
 import type { Story } from '@storybook/react/types-6-0'
 import { Favorite } from '@styled-icons/material/Favorite'
 import chunk from 'lodash/chunk'
@@ -57,10 +58,20 @@ import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/def
 import type { FieldSelectProps } from './FieldSelect'
 import { FieldSelect } from './FieldSelect'
 
-const Template: Story<FieldSelectProps> = (args) => <FieldSelect {...args} />
+const Template: Story<FieldSelectProps & { externalLabel: boolean }> = ({
+  externalLabel,
+  ...args
+}) => (
+  <ExtendComponentsThemeProvider
+    themeCustomizations={{ defaults: { externalLabel } }}
+  >
+    <FieldSelect {...args} />
+  </ExtendComponentsThemeProvider>
+)
 
 export const Basic = Template.bind({})
 Basic.args = {
+  externalLabel: true,
   label: 'Label',
   options: cheeseOptions,
   placeholder: 'Placeholder',
@@ -96,6 +107,14 @@ Description.args = {
   description: "I'm a little teapot",
 }
 
+export const DescriptionDetailFloatingLabel = Template.bind({})
+DescriptionDetailFloatingLabel.args = {
+  ...Basic.args,
+  description: "I'm a little teapot",
+  detail: '0/50',
+  externalLabel: false,
+}
+
 export const Required = Template.bind({})
 Required.args = {
   ...Basic.args,
@@ -111,6 +130,13 @@ Error.args = {
 export const ErrorValue = Template.bind({})
 ErrorValue.args = {
   ...Error.args,
+  value: 'gouda',
+}
+
+export const ErrorValueFloatingLabel = Template.bind({})
+ErrorValueFloatingLabel.args = {
+  ...Error.args,
+  externalLabel: false,
   value: 'gouda',
 }
 
@@ -130,6 +156,13 @@ export const AutoResize = Template.bind({})
 AutoResize.args = {
   ...Detail.args,
   autoResize: true,
+}
+
+export const AutoResizeFloatingLabel = Template.bind({})
+AutoResizeFloatingLabel.args = {
+  ...Detail.args,
+  autoResize: true,
+  externalLabel: false,
 }
 
 const optionsWithDescriptions = options.map((option: ComboboxOptionObject) => ({

@@ -24,6 +24,7 @@
 
  */
 
+import { ExtendComponentsThemeProvider } from '@looker/components-providers'
 import type { Story } from '@storybook/react/types-6-0'
 import React, { useState } from 'react'
 import { Grid, SpaceVertical } from '../../../Layout'
@@ -38,20 +39,32 @@ export default {
   title: 'FieldChips',
 }
 
-const Template: Story<FieldChipsProps & { initialValues: string[] }> = (
-  args
-) => {
-  const initialValues = args.initialValues || ['apples']
-  const [values, setValues] = useState<string[]>(initialValues)
+const Template: Story<
+  FieldChipsProps & { externalLabel: boolean; initialValues: string[] }
+> = ({ externalLabel, initialValues, ...args }) => {
+  const [values, setValues] = useState<string[]>(initialValues || ['apples'])
 
-  return <FieldChips {...args} values={values} onChange={setValues} />
+  return (
+    <ExtendComponentsThemeProvider
+      themeCustomizations={{ defaults: { externalLabel } }}
+    >
+      <FieldChips {...args} values={values} onChange={setValues} />
+    </ExtendComponentsThemeProvider>
+  )
 }
 
 export const Basic = Template.bind({})
-Basic.args = { label: 'Basic' }
+Basic.args = { externalLabel: true, label: 'Basic' }
+
+export const FloatingLabel = Template.bind({})
+FloatingLabel.args = {
+  externalLabel: false,
+  label: 'Floating Label',
+}
 
 export const Truncate = Template.bind({})
 Truncate.args = {
+  ...Basic.args,
   initialValues: ['A very long token that will truncate'],
   label: 'Truncate',
   width: 250,
@@ -59,6 +72,7 @@ Truncate.args = {
 
 export const Overflow = Template.bind({})
 Overflow.args = {
+  ...Basic.args,
   initialValues: [
     'California',
     'Wyoming',
@@ -76,9 +90,17 @@ Overflow.args = {
 
 export const AutoResize = Template.bind({})
 AutoResize.args = {
+  ...Basic.args,
   autoResize: true,
   label: 'Auto Resize',
   maxWidth: '50vw',
+  placeholder: 'Auto Resize',
+}
+
+export const AutoResizeFloatingLabel = Template.bind({})
+AutoResizeFloatingLabel.args = {
+  ...AutoResize.args,
+  externalLabel: false,
   placeholder: 'Auto Resize',
 }
 

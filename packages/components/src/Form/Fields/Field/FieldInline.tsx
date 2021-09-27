@@ -33,6 +33,7 @@ import { ValidationMessage } from '../../ValidationMessage/ValidationMessage'
 import { Truncate } from '../../../Truncate'
 import { RequiredStar } from './RequiredStar'
 import type { FieldBaseProps } from './types'
+
 /**
  * `<FieldInline />` allows the rendering of a label (for FieldCheckbox, FieldRadio and FieldToggleSwitch),
  * and can render a validation message.

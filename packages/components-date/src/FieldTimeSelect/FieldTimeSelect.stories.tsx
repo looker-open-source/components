@@ -25,7 +25,11 @@
  */
 import React, { useState } from 'react'
 import type { Story } from '@storybook/react/types-6-0'
-import { ButtonToggle, Fieldset } from '@looker/components'
+import {
+  ButtonToggle,
+  ExtendComponentsThemeProvider,
+  Fieldset,
+} from '@looker/components'
 import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
 import type { FieldTimeSelectProps } from './'
 import { FieldTimeSelect } from './'
@@ -36,26 +40,42 @@ export default {
   title: 'Date / FieldTimeSelect',
 }
 
-const Template: Story<FieldTimeSelectProps> = (args) => (
-  <FieldTimeSelect {...args} />
+const Template: Story<FieldTimeSelectProps & { externalLabel: boolean }> = ({
+  externalLabel,
+  ...args
+}) => (
+  <ExtendComponentsThemeProvider
+    themeCustomizations={{ defaults: { externalLabel } }}
+  >
+    <FieldTimeSelect {...args} />
+  </ExtendComponentsThemeProvider>
 )
 
 export const Basic = Template.bind({})
 Basic.args = {
   defaultValue: '14:30',
+  externalLabel: true,
   interval: 10,
   label: 'Select Time',
+}
+
+export const FloatingLabel = Template.bind({})
+FloatingLabel.args = {
+  ...Basic.args,
+  externalLabel: false,
 }
 
 export const Disabled = Template.bind({})
 Disabled.args = {
   disabled: true,
+  externalLabel: true,
   interval: 10,
   label: 'Select Time',
 }
 
 export const Required = Template.bind({})
 Required.args = {
+  externalLabel: true,
   interval: 10,
   label: 'Select Time',
   required: true,
@@ -65,10 +85,17 @@ export const Error = Template.bind({})
 Error.args = {
   description: 'this is the description is a very long one',
   detail: 'detail',
+  externalLabel: true,
   interval: 10,
   label: 'Select Time',
   required: true,
   validationMessage: { message: 'validation Message', type: 'error' },
+}
+
+export const ErrorFloatingLabel = Template.bind({})
+ErrorFloatingLabel.args = {
+  ...Error.args,
+  externalLabel: false,
 }
 
 export const Controlled = () => {
