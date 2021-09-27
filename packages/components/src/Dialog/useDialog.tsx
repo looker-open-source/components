@@ -25,7 +25,7 @@
  */
 
 import type { FC, ReactNode } from 'react'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useState } from 'react'
 import type {
   DrawerPlacements,
   DialogDrawerWidth,
@@ -86,6 +86,7 @@ export interface UseDialogBaseProps {
    * function available after dialog is opened
    */
   onAfterOpen?: () => void
+
   /**
    * Specify a callback to be called each time this Dialog is closed
    */
@@ -165,24 +166,12 @@ export const useDialog = ({
       ? controlledIsOpen || false
       : uncontrolledIsOpen
 
-  const { busy, className, renderDOM, transitionState } = useAnimationState(
+  const { busy, className, renderDOM } = useAnimationState({
+    enter: defaultOpen ? 'none' : undefined,
     isOpen,
-    defaultOpen ? 'none' : undefined
-  )
-  const hasBeenOpenRef = useRef(false)
-
-  useEffect(() => {
-    if (transitionState === 'entered' && onAfterOpen) onAfterOpen()
-
-    if (transitionState === 'exited' && onAfterClose) {
-      if (hasBeenOpenRef.current) {
-        onAfterClose()
-      }
-      hasBeenOpenRef.current = false
-    } else {
-      hasBeenOpenRef.current = true
-    }
-  }, [transitionState, onAfterClose, onAfterOpen])
+    onAfterEntered: onAfterOpen,
+    onAfterExited: onAfterClose,
+  })
 
   const setOpen =
     isControlled && controlledSetOpen
