@@ -555,7 +555,7 @@ export const InputTime = styled(InputTimeInternal)`
   grid-template-columns: auto auto auto auto 1fr;
   height: ${inputHeight};
   padding: ${({ theme: { space } }) =>
-    `${space.u05} ${space.u2} ${space.u05} ${space.u3}`};
+    `${space.u05} ${space.u1} ${space.u05} ${space.u3}`};
 
   ${InputTextContent} {
     justify-self: end;
