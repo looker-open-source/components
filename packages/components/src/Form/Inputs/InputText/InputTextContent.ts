@@ -26,18 +26,9 @@
 
 import type { SpaceProps } from '@looker/design-tokens'
 import { space } from '@looker/design-tokens'
-import { Error } from '@styled-icons/material/Error'
-import { StyledIconBase } from '@styled-icons/styled-icon'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
+import { inputIconSize } from '../inputIconSize'
 
-const InputIconSize = css`
-  height: ${({ theme }) => theme.sizes.medium};
-  max-width: ${({ theme }) => theme.sizes.medium};
-`
-export const ErrorIcon = styled(Error)`
-  ${InputIconSize}
-  color: ${({ theme }) => theme.colors.critical};
-`
 export const InputTextContent = styled.div<SpaceProps>`
   ${space}
   align-items: center;
@@ -46,14 +37,7 @@ export const InputTextContent = styled.div<SpaceProps>`
   height: 100%;
   pointer-events: none;
 
-  ${StyledIconBase} {
-    color: ${({ theme }) => theme.colors.text1};
-  }
-
-  ${ErrorIcon} {
-    color: ${({ theme }) => theme.colors.critical};
-  }
   svg {
-    ${InputIconSize}
+    ${inputIconSize}
   }
 `

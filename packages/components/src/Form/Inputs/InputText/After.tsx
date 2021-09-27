@@ -26,7 +26,8 @@
 
 import React from 'react'
 import { Span } from '../../../Text'
-import { ErrorIcon, InputTextContent } from './InputTextContent'
+import { ErrorIcon } from '../ErrorIcon'
+import { InputTextContent } from './InputTextContent'
 import type { InputTextProps } from './types'
 
 export const After = ({
