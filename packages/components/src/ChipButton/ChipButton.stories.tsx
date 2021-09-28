@@ -27,7 +27,7 @@
 import type { Story } from '@storybook/react/types-6-0'
 import React from 'react'
 import { Space } from '../Layout'
-import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
+import { defaultArgTypes as argTypes } from '../../../../apps/storybook/src/defaultArgTypes'
 import type { ChipButtonProps } from './ChipButton'
 import { ChipButton } from './ChipButton'
 

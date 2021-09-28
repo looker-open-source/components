@@ -28,7 +28,7 @@ import type { Story } from '@storybook/react/types-6-0'
 import partial from 'lodash/partial'
 import React, { useState } from 'react'
 import { Button, Paragraph, Space, SpaceVertical } from '@looker/components'
-import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
+import { defaultArgTypes as argTypes } from '../../../../apps/storybook/src/defaultArgTypes'
 import type { FieldTimeProps } from './FieldTime'
 import { FieldTime } from './FieldTime'
 

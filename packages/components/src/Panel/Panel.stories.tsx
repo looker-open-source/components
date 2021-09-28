@@ -34,7 +34,7 @@ import { ListItem } from '../ListItem'
 import { Aside, Layout, Page, Section, SpaceVertical } from '../Layout'
 import { Paragraph } from '../Text'
 import { TreeCollection, Tree, TreeItem } from '../Tree'
-import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
+import { defaultArgTypes as argTypes } from '../../../../apps/storybook/src/defaultArgTypes'
 import type { PanelProps } from './'
 import { Panel, Panels, usePanel } from './'
 

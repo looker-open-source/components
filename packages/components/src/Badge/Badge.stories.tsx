@@ -26,7 +26,7 @@
 
 import type { Story } from '@storybook/react/types-6-0'
 import React from 'react'
-import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
+import { defaultArgTypes as argTypes } from '../../../../apps/storybook/src/defaultArgTypes'
 import type { BadgeProps } from './Badge'
 import { Badge } from './Badge'
 
