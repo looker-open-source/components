@@ -110,19 +110,15 @@ export const useAnimationState = ({
     }
   }, [isOpen, timingEnter, timingExit, state])
 
-  const hasBeenOpenRef = useRef(false)
-
+  const previousStateRef = useRef(state)
   useEffect(() => {
-    if (state === 'entered' && onAfterEntered) onAfterEntered()
-
-    if (state === 'exited' && onAfterExited) {
-      if (hasBeenOpenRef.current) {
-        onAfterExited()
-      }
-      hasBeenOpenRef.current = false
-    } else {
-      hasBeenOpenRef.current = true
+    if (state === 'entered' && previousStateRef.current !== 'entered') {
+      onAfterEntered?.()
     }
+    if (state === 'exited' && previousStateRef.current !== 'exited') {
+      onAfterExited?.()
+    }
+    previousStateRef.current = state
   }, [state, onAfterExited, onAfterEntered])
 
   return {
