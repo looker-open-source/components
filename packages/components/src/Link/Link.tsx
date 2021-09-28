@@ -29,7 +29,7 @@ import type {
   TypographyProps,
 } from '@looker/design-tokens'
 import { reset, typography, omitStyledProps } from '@looker/design-tokens'
-import { Launch } from 'styled-icons/material'
+import { Launch } from '@styled-icons/material'
 import omit from 'lodash/omit'
 import styled from 'styled-components'
 import type { Ref } from 'react'

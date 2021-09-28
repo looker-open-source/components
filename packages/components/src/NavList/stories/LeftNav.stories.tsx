@@ -25,7 +25,7 @@
  */
 
 import React from 'react'
-import { Add, Code, MoreVert } from 'styled-icons/material'
+import { Add, Code, MoreVert } from '@styled-icons/material'
 import {
   Assignment,
   Explore,
@@ -35,7 +35,7 @@ import {
   Home,
   Schedule,
   Widgets,
-} from 'styled-icons/material-outlined'
+} from '@styled-icons/material-outlined'
 import { IconButton } from '../../Button'
 import { Divider } from '../../Divider'
 import { Aside } from '../../Layout'

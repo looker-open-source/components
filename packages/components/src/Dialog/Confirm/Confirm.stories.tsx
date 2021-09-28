@@ -25,7 +25,7 @@
  */
 
 import React from 'react'
-import { Info } from 'styled-icons/material-outlined'
+import { Info } from '@styled-icons/material-outlined'
 import { Button, ButtonOutline } from '../../Button'
 import { Icon } from '../../Icon'
 import { Space, SpaceVertical } from '../../Layout'

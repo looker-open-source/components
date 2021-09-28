@@ -27,7 +27,7 @@
 import type { Ref, FormEvent } from 'react'
 import React, { forwardRef, useState } from 'react'
 import styled from 'styled-components'
-import { Search } from 'styled-icons/material-outlined'
+import { Search } from '@styled-icons/material-outlined'
 import { useControlWarn } from '../../../utils'
 import { Combobox, ComboboxInput, ComboboxList } from '../Combobox'
 import type { SelectProps, SelectOptionObject } from '../Select'

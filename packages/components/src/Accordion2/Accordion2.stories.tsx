@@ -27,7 +27,7 @@
 import type { Story } from '@storybook/react/types-6-0'
 import type { Page } from 'puppeteer'
 import React from 'react'
-import { ChevronLeft, ExpandMore } from 'styled-icons/material-rounded'
+import { ChevronLeft, ExpandMore } from '@styled-icons/material-rounded'
 import { children, label } from '../__mocks__/accordion'
 import { Grid, SpaceVertical } from '../Layout'
 import { useToggle } from '../utils/useToggle'

@@ -25,8 +25,8 @@
  */
 
 import type { DensityRamp } from '@looker/design-tokens'
-import { ArrowDropDown, ArrowRight } from 'styled-icons/material'
-import { ExpandLess, ExpandMore } from 'styled-icons/material-rounded'
+import { ArrowDropDown, ArrowRight } from '@styled-icons/material'
+import { ExpandLess, ExpandMore } from '@styled-icons/material-rounded'
 import React from 'react'
 import type { AccordionIndicatorIcons } from './types'
 

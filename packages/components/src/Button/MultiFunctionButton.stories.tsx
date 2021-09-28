@@ -26,7 +26,7 @@
 
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { Add, Check } from 'styled-icons/material'
+import { Add, Check } from '@styled-icons/material'
 import { defaultArgTypes as argTypes } from '../../../../apps/storybook/src/defaultArgTypes'
 import { MultiFunctionButton } from './MultiFunctionButton'
 import { Button } from './Button'

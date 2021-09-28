@@ -26,7 +26,7 @@
 
 import type { TFunction } from 'i18next'
 import type { StyledIcon } from '@styled-icons/styled-icon'
-import { CheckCircle, Error, Info, Warning } from 'styled-icons/material'
+import { CheckCircle, Error, Info, Warning } from '@styled-icons/material'
 import { color, size } from '@looker/design-tokens'
 import omit from 'lodash/omit'
 import type { Ref } from 'react'

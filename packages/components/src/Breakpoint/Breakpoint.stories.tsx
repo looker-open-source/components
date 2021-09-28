@@ -25,7 +25,7 @@
  */
 import type { FC } from 'react'
 import React from 'react'
-import { Home } from 'styled-icons/material-outlined'
+import { Home } from '@styled-icons/material-outlined'
 import type { Story } from '@storybook/react/types-6-0'
 import type {
   SpaceProps,
@@ -33,7 +33,7 @@ import type {
   TextColorProps,
 } from '@looker/design-tokens'
 import { space, backgroundColor, textColor } from '@looker/design-tokens'
-import { Menu } from 'styled-icons/material'
+import { Menu } from '@styled-icons/material'
 import styled from 'styled-components'
 import { VIEWPORT_MAP } from '../utils-storybook'
 import { Card, CardContent, CardMedia } from '../Card'

@@ -30,8 +30,8 @@ import {
   FilterList,
   MoreVert,
   SubdirectoryArrowLeft,
-} from 'styled-icons/material'
-import { Info } from 'styled-icons/material-outlined'
+} from '@styled-icons/material'
+import { Info } from '@styled-icons/material-outlined'
 import type { ToggleColor } from '../..'
 import { IconButton, Menu, MenuItem, Tooltip, Flex, Truncate } from '../..'
 import { LkFieldItem } from '..'

@@ -26,10 +26,10 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { FilterDemo } from './FilterDemo'
 import { ExtensionProvider } from '@looker/extension-sdk-react'
 import { ComponentsProvider, Spinner, Flex } from '@looker/components'
 import { i18nResources } from '@looker/filter-components'
+import { FilterDemo } from './FilterDemo'
 
 const getRoot = () => {
   const existingRoot = document.getElementById('extension-root')

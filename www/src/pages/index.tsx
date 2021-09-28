@@ -34,7 +34,7 @@ import {
   Paragraph,
   Section,
 } from '@looker/components'
-import { Explore, Undo } from 'styled-icons/material'
+import { Explore, Undo } from '@styled-icons/material'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 import React from 'react'
 import { Helmet } from 'react-helmet'

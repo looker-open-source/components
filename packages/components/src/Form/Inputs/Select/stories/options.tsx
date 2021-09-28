@@ -39,7 +39,7 @@ import {
   TableChart,
   Toc,
   WaterfallChart,
-} from 'styled-icons/material'
+} from '@styled-icons/material'
 
 import React from 'react'
 

@@ -24,7 +24,7 @@
 
  */
 
-import { Info } from 'styled-icons/material'
+import { Info } from '@styled-icons/material'
 import React from 'react'
 import styled from 'styled-components'
 import { defaultArgTypes as argTypes } from '../../../../../../apps/storybook/src/defaultArgTypes'

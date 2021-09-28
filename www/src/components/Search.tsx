@@ -31,8 +31,8 @@ import { graphql, navigate, useStaticQuery } from 'gatsby'
 import { useFlexSearch } from 'react-use-flexsearch'
 import type { SelectOptionObject } from '@looker/components'
 import { InputSearch } from '@looker/components'
-import { Code, InsertDriveFile, VerifiedUser } from 'styled-icons/material'
-import { Info } from 'styled-icons/material-outlined'
+import { Code, InsertDriveFile, VerifiedUser } from '@styled-icons/material'
+import { Info } from '@styled-icons/material-outlined'
 
 export const Search = () => {
   const data = useStaticQuery(

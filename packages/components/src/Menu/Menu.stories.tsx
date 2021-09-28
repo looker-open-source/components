@@ -41,14 +41,14 @@ import {
   TextSnippet,
   Undo,
   VerifiedUser,
-} from 'styled-icons/material'
+} from '@styled-icons/material'
 import {
   AccountCircle,
   Create as CreateOutline,
   CreateNewFolder,
   Explore as ExploreOutline,
   Home,
-} from 'styled-icons/material-outlined'
+} from '@styled-icons/material-outlined'
 import type { MouseEvent, Ref } from 'react'
 import React, { forwardRef, Fragment, useMemo, useRef, useState } from 'react'
 import { Button, IconButton } from '../Button'

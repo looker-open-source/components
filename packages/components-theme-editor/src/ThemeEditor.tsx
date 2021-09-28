@@ -24,7 +24,7 @@
 
  */
 
-import { Science } from 'styled-icons/material-outlined'
+import { Science } from '@styled-icons/material-outlined'
 import { IconButton, Dialog } from '@looker/components'
 import type { FC } from 'react'
 import React from 'react'

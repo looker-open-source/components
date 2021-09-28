@@ -33,7 +33,7 @@ import {
   FilterList,
   Refresh,
   Settings,
-} from 'styled-icons/material'
+} from '@styled-icons/material'
 import { Button, IconButton } from '../Button'
 import { Space, SpaceVertical } from '../Layout'
 import { Heading } from '../Text'

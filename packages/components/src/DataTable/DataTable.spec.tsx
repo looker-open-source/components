@@ -27,7 +27,7 @@
 import React, { useState } from 'react'
 import chunk from 'lodash/chunk'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { Delete, Link as LinkIcon } from 'styled-icons/material'
+import { Delete, Link as LinkIcon } from '@styled-icons/material'
 import { fireEvent, screen } from '@testing-library/react'
 import { IconButton } from '../Button'
 import type { FieldFilter } from '../Form'

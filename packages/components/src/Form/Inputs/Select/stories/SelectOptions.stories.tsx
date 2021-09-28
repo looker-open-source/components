@@ -25,7 +25,7 @@
  */
 
 import type { Story } from '@storybook/react/types-6-0'
-import { Create, Favorite } from 'styled-icons/material'
+import { Create, Favorite } from '@styled-icons/material'
 import React from 'react'
 import {
   ComboboxContext,

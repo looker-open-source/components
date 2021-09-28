@@ -25,7 +25,7 @@
  */
 
 import React from 'react'
-import { ArrowDropDown, ArrowRight } from 'styled-icons/material'
+import { ArrowDropDown, ArrowRight } from '@styled-icons/material'
 import type { AccordionIndicatorProps } from '../../Accordion2/types'
 
 export const indicatorDefaults: Required<

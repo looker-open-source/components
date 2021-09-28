@@ -26,7 +26,12 @@
 
 import { useTranslation } from 'react-i18next'
 import type { CompatibleHTMLProps } from '@looker/design-tokens'
-import { Close, Error, ArrowDropDown, ArrowDropUp } from 'styled-icons/material'
+import {
+  Close,
+  Error,
+  ArrowDropDown,
+  ArrowDropUp,
+} from '@styled-icons/material'
 import type { MouseEvent } from 'react'
 import React from 'react'
 import styled from 'styled-components'

@@ -26,7 +26,7 @@
 
 import type { DensityRamp } from '@looker/design-tokens'
 import type { Story } from '@storybook/react/types-6-0'
-import { Create, DateRange, Undo } from 'styled-icons/material-outlined'
+import { Create, DateRange, Undo } from '@styled-icons/material-outlined'
 import type { FC } from 'react'
 import React, { Fragment } from 'react'
 import { Box2, Grid, Space } from '../Layout'

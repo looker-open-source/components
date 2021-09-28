@@ -42,7 +42,7 @@ import {
   Grid,
   CardContent,
 } from '@looker/components'
-import { MoreVert, Refresh } from 'styled-icons/material'
+import { MoreVert, Refresh } from '@styled-icons/material'
 import { FauxPieChart, FauxBarChart } from './Charts'
 
 export const FauxDashboard = () => (

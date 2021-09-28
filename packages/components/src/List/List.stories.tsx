@@ -26,8 +26,8 @@
 
 import type { DensityRamp } from '@looker/design-tokens'
 import type { Story } from '@storybook/react/types-6-0'
-import { DateRange } from 'styled-icons/material-outlined'
-import { SubdirectoryArrowLeft } from 'styled-icons/material'
+import { DateRange } from '@styled-icons/material-outlined'
+import { SubdirectoryArrowLeft } from '@styled-icons/material'
 import type { Page } from 'puppeteer'
 import type { FC } from 'react'
 import React, { useState } from 'react'

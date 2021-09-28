@@ -23,7 +23,7 @@
  SOFTWARE.
 
  */
-import { ArrowDropDown, ArrowRight } from 'styled-icons/material'
+import { ArrowDropDown, ArrowRight } from '@styled-icons/material'
 import styled from 'styled-components'
 import type { FocusEvent, KeyboardEvent, MouseEvent } from 'react'
 import React, { cloneElement, useContext } from 'react'

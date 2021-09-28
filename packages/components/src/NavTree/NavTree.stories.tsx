@@ -25,7 +25,7 @@
  */
 
 import React from 'react'
-import { Folder } from 'styled-icons/material'
+import { Folder } from '@styled-icons/material'
 import type { Page } from 'puppeteer'
 import type { Story } from '@storybook/react/types-6-0'
 import { NavList } from '../NavList'

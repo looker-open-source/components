@@ -26,7 +26,7 @@
 
 import React from 'react'
 import type { Story } from '@storybook/react/types-6-0'
-import { Done } from 'styled-icons/material'
+import { Done } from '@styled-icons/material'
 import { Button } from '../Button'
 import { Drawer } from '../Drawer'
 import { List } from '../List'
