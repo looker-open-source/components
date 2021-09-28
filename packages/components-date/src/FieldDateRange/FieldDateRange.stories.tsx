@@ -25,7 +25,11 @@
  */
 import React, { useState } from 'react'
 import type { Story } from '@storybook/react/types-6-0'
-import { FieldSelect, Paragraph } from '@looker/components'
+import {
+  ExtendComponentsThemeProvider,
+  FieldSelect,
+  Paragraph,
+} from '@looker/components'
 import { defaultArgTypes as argTypes } from '../../../../apps/storybook/src/defaultArgTypes'
 import { DateFormat } from '../DateFormat'
 import { Locales } from '../utils/i18n'
@@ -43,9 +47,14 @@ export default {
   title: 'Date / FieldDateRange',
 }
 
-const Template: Story<FieldInputDateRangeProps> = (args) => (
-  <FieldDateRange {...args} />
-)
+const Template: Story<FieldInputDateRangeProps & { externalLabel: boolean }> =
+  ({ externalLabel, ...args }) => (
+    <ExtendComponentsThemeProvider
+      themeCustomizations={{ defaults: { externalLabel } }}
+    >
+      <FieldDateRange {...args} />
+    </ExtendComponentsThemeProvider>
+  )
 
 export const Basic = Template.bind({})
 Basic.args = {
@@ -58,22 +67,25 @@ Basic.args = {
 
 export const Disabled = Template.bind({})
 Disabled.args = {
-  defaultValue: {
-    from: new Date('Jun 7, 2000'),
-    to: new Date('Jun 19, 2000'),
-  },
+  ...Basic.args,
+  disabled: true,
+}
+
+export const DisabledNoDefaultValue = Template.bind({})
+DisabledNoDefaultValue.args = {
   disabled: true,
   label: 'Pick A Date',
 }
 
 export const Error = Template.bind({})
 Error.args = {
-  defaultValue: {
-    from: new Date('Jun 7, 2000'),
-    to: new Date('Jun 19, 2000'),
-  },
-  label: 'Pick A Date',
+  ...Basic.args,
   validationMessage: { message: 'Field Disabled', type: 'error' },
+}
+
+export const NoDefaultValue = Template.bind({})
+NoDefaultValue.args = {
+  label: 'Pick A Date',
 }
 
 export const Localized = () => {

@@ -27,9 +27,9 @@
 import type { Ref } from 'react'
 import React, { forwardRef } from 'react'
 import styled from 'styled-components'
-import type { FieldProps } from '@looker/components'
+import type { FieldProps, FloatingLabelFieldProps } from '@looker/components'
 import {
-  Field,
+  FloatingLabelField,
   omitFieldProps,
   pickFieldProps,
   useFormContext,
@@ -40,6 +40,7 @@ import { InputDateRange } from '../InputDateRange'
 
 export interface FieldInputDateRangeProps
   extends FieldProps,
+    FloatingLabelFieldProps,
     InputDateRangeProps {
   ref: Ref<HTMLInputElement>
 }
@@ -48,9 +49,11 @@ const FieldDateRangeComponent = forwardRef(
   (props: FieldInputDateRangeProps, ref: Ref<HTMLInputElement>) => {
     const validationMessage = useFormContext(props)
     const id = useID(props.id)
+
     return (
-      <Field
+      <FloatingLabelField
         {...pickFieldProps(props)}
+        hasValue={!!props.defaultValue}
         id={id}
         validationMessage={validationMessage}
       >
@@ -62,7 +65,7 @@ const FieldDateRangeComponent = forwardRef(
           validationType={validationMessage && validationMessage.type}
           ref={ref}
         />
-      </Field>
+      </FloatingLabelField>
     )
   }
 )
