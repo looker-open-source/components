@@ -29,7 +29,7 @@ import { Delete } from '@styled-icons/material/Delete'
 import type { Page } from 'puppeteer'
 import React from 'react'
 import type { Story } from '@storybook/react/types-6-0'
-import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
+import { defaultArgTypes as argTypes } from '../../../../apps/storybook/src/defaultArgTypes'
 import { Button } from './Button'
 import type { ButtonProps } from './types'
 

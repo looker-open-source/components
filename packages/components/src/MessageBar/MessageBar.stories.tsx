@@ -29,7 +29,7 @@ import type { Story } from '@storybook/react/types-6-0'
 import { Delete } from '@styled-icons/material/Delete'
 import { GridView } from '@styled-icons/material/GridView'
 import { Button } from '../Button'
-import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
+import { defaultArgTypes as argTypes } from '../../../../apps/storybook/src/defaultArgTypes'
 import type { MessageBarProps } from './MessageBar'
 import { MessageBar } from './MessageBar'
 

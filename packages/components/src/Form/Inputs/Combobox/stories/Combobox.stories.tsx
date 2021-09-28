@@ -39,7 +39,7 @@ import {
 } from '..'
 import { Button, Heading, Paragraph, Space, SpaceVertical } from '../../../..'
 
-import { defaultArgTypes as argTypes } from '../../../../../../../storybook/src/defaultArgTypes'
+import { defaultArgTypes as argTypes } from '../../../../../../../apps/storybook/src/defaultArgTypes'
 export { ListLayoutDemo } from './ListLayout'
 
 const CustomIndicator: FC<OptionIndicatorProps> = ({

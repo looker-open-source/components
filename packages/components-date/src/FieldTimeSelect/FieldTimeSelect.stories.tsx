@@ -26,7 +26,7 @@
 import React, { useState } from 'react'
 import type { Story } from '@storybook/react/types-6-0'
 import { ButtonToggle, Fieldset } from '@looker/components'
-import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
+import { defaultArgTypes as argTypes } from '../../../../apps/storybook/src/defaultArgTypes'
 import type { FieldTimeSelectProps } from './'
 import { FieldTimeSelect } from './'
 

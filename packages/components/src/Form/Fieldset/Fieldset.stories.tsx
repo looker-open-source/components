@@ -39,7 +39,7 @@ import {
   FieldText,
 } from '../Fields'
 import { Form } from '../Form'
-import { defaultArgTypes as argTypes } from '../../../../../storybook/src/defaultArgTypes'
+import { defaultArgTypes as argTypes } from '../../../../../apps/storybook/src/defaultArgTypes'
 import type { FieldsetProps } from './Fieldset'
 import { Fieldset } from './Fieldset'
 

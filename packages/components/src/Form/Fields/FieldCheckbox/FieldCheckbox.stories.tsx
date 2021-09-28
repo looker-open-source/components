@@ -29,7 +29,7 @@ import React, { useState } from 'react'
 import { UnorderedList } from '../../../UnorderedList'
 import type { CheckboxTree, MixedBoolean } from '../../Inputs/Checkbox'
 import { useMixedStateCheckbox } from '../../Inputs/Checkbox'
-import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
+import { defaultArgTypes as argTypes } from '../../../../../../apps/storybook/src/defaultArgTypes'
 import type { FieldCheckboxProps } from './FieldCheckbox'
 import { FieldCheckbox } from './FieldCheckbox'
 

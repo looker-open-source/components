@@ -24,10 +24,21 @@
 
  */
 
-module.exports = (api) => {
-  api.cache(true)
+process.env.TZ = 'UTC'
 
-  return {
-    extends: '../babel.config.js',
-  }
+module.exports = {
+  moduleDirectories: ['./node_modules', './packages', './storybook'],
+  moduleFileExtensions: ['js', 'json', 'ts', 'tsx'],
+  moduleNameMapper: {
+    '@looker\\/((?!sdk)[^\\/]+)': '<rootDir>/../../packages/$1/src',
+    '\\.(css)$': '<rootDir>/../../config/jest/styleMock.js',
+    '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)$':
+      '<rootDir>/../../config/jest/fileMock.js',
+  },
+  roots: ['<rootDir>'],
+  testEnvironment: 'jsdom',
+  testMatch: ['**/*.shots.ts'],
+  transform: {
+    '^.+\\.(js|jsx|ts|tsx)$': 'babel-jest',
+  },
 }

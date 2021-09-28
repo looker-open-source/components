@@ -26,7 +26,7 @@
 
 import React from 'react'
 import { Box2, Paragraph } from '../../..'
-import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
+import { defaultArgTypes as argTypes } from '../../../../../../apps/storybook/src/defaultArgTypes'
 import { DialogContent } from './DialogContent'
 
 export const Basic = () => (

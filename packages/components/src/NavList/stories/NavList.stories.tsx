@@ -32,7 +32,7 @@ import { Aside } from '../../Layout'
 import { ListItem } from '../../ListItem'
 import { ProgressCircular } from '../../ProgressCircular'
 import { NavTree, NavTreeItem } from '../../NavTree'
-import { defaultArgTypes as argTypes } from '../../../../../storybook/src/defaultArgTypes'
+import { defaultArgTypes as argTypes } from '../../../../../apps/storybook/src/defaultArgTypes'
 import { NavList } from '../NavList'
 
 export default {

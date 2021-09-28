@@ -27,7 +27,7 @@
 import React from 'react'
 import type { Story } from '@storybook/react/types-6-0'
 import { ThemeProvider } from 'styled-components'
-import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
+import { defaultArgTypes as argTypes } from '../../../../../../apps/storybook/src/defaultArgTypes'
 import type { RadioProps } from './Radio'
 import { Radio } from './Radio'
 

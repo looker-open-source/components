@@ -27,7 +27,7 @@
 import React from 'react'
 import type { Story } from '@storybook/react/types-6-0'
 import { ConstitutionShort } from '../../../__mocks__/Constitution'
-import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
+import { defaultArgTypes as argTypes } from '../../../../../../apps/storybook/src/defaultArgTypes'
 import type { PopoverContentProps } from './PopoverContent'
 import { PopoverContent } from './PopoverContent'
 
