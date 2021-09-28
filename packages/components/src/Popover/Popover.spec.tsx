@@ -72,6 +72,8 @@ describe('Popover', () => {
       'id',
       'a11y-heading'
     )
+
+    fireEvent.click(document)
   })
 
   test('cloneElement style opens and closes', () => {
@@ -114,24 +116,23 @@ describe('Popover', () => {
     expect(screen.queryByText('simple content')).not.toBeInTheDocument()
   })
 
-  test('cloneElement style opens and closes', () => {
+  test('preventDefault works on trigger 2nd click', () => {
+    // preventDefault here avoids JSDOM error
+    const mockFormSubmit = jest.fn((e) => e.preventDefault())
+
     renderWithTheme(
-      <Popover content={SimpleContent}>
-        <button>Test</button>
-      </Popover>
+      <form onSubmit={mockFormSubmit}>
+        <Popover content={SimpleContent}>
+          <button>Test</button>
+        </Popover>
+      </form>
     )
-
-    // Verify hidden
-    expect(screen.queryByText('simple content')).not.toBeInTheDocument()
-
     const trigger = screen.getByText('Test')
+    // Click to open
     fireEvent.click(trigger)
-
-    // Find content
-    expect(screen.getByText('simple content')).toBeInTheDocument()
-
+    // Then click to close
     fireEvent.click(trigger)
-    expect(screen.queryByText('simple content')).not.toBeInTheDocument()
+    expect(mockFormSubmit).not.toHaveBeenCalled()
   })
 
   test('stopPropagation works - event on container is not called', () => {

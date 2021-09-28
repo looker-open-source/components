@@ -133,6 +133,8 @@ export const usePopoverToggle = (
       if (clickedOnToggle) {
         // stopPropagation because instant Popover re-opening is silly
         event.stopPropagation()
+        // preventDefault for consistency because handleOpen does it
+        event.preventDefault()
         return
       }
 
