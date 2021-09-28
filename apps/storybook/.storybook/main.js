@@ -24,21 +24,28 @@
 
  */
 
-process.env.TZ = 'UTC'
-
-module.exports = {
-  moduleDirectories: ['./node_modules', './packages', './storybook'],
-  moduleFileExtensions: ['js', 'json', 'ts', 'tsx'],
-  moduleNameMapper: {
-    '@looker\\/((?!sdk)[^\\/]+)': '<rootDir>/../packages/$1/src',
-    '\\.(css)$': '<rootDir>/../config/jest/styleMock.js',
-    '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)$':
-      '<rootDir>/../config/jest/fileMock.js',
+const config = {
+  addons: ['@storybook/addon-essentials', '@storybook/addon-a11y'],
+  features: {
+    postcss: false,
   },
-  roots: ['<rootDir>'],
-  testEnvironment: 'jsdom',
-  testMatch: ['**/*.shots.ts'],
-  transform: {
-    '^.+\\.(js|jsx|ts|tsx)$': 'babel-jest',
-  },
+  stories: [
+    '../../../packages/**/*.stories.mdx',
+    '../../../packages/**/*.stories.tsx',
+  ],
 }
+
+/**
+ * `react-docgen-typescript` is slow because it has to parse _everything_.
+ *
+ * `fast` builds (used by image-snapshots)  turn off docgen as well as all addons since
+ * neither will be needed for snapshots and it significantly improves Storybook performance.
+ */
+const mode = process.env.storybookBuildMode
+
+if (mode === 'fast') {
+  config.typescript = { check: false, reactDocgen: false }
+  config.addons = []
+}
+
+module.exports = config

@@ -29,7 +29,7 @@ import {
   ScrollLockContext,
   FocusTrapContext,
 } from '@looker/components-providers'
-import { defaultArgTypes as argTypes } from '../../../../../storybook/src/defaultArgTypes'
+import { defaultArgTypes as argTypes } from '../../../../../apps/storybook/src/defaultArgTypes'
 import {
   Box2,
   Button,

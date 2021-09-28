@@ -27,7 +27,7 @@
 import React from 'react'
 import type { Story } from '@storybook/react/types-6-0'
 import type { Page } from 'puppeteer'
-import { defaultArgTypes } from '../../../../../storybook/src/defaultArgTypes'
+import { defaultArgTypes } from '../../../../../apps/storybook/src/defaultArgTypes'
 import { DialogLongContent } from '../../__mocks__/DialogLongContent'
 import { dialogSizes } from '../../Dialog/dialogWidth'
 import type { DrawerProps } from '../Drawer'

@@ -27,7 +27,7 @@
 import { Info } from '@styled-icons/material/Info'
 import React from 'react'
 import styled from 'styled-components'
-import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
+import { defaultArgTypes as argTypes } from '../../../../../../apps/storybook/src/defaultArgTypes'
 import {
   Constitution,
   ConstitutionShort,

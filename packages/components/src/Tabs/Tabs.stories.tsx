@@ -30,7 +30,7 @@ import React, { useState } from 'react'
 import type { Story } from '@storybook/react/types-6-0'
 import { Button } from '../Button'
 import { Space } from '../Layout/Space'
-import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
+import { defaultArgTypes as argTypes } from '../../../../apps/storybook/src/defaultArgTypes'
 import type { TabListProps } from './'
 import { Tab, Tabs, TabList, TabPanel, TabPanels } from './'
 

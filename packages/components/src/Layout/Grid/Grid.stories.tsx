@@ -29,7 +29,7 @@ import type { FC } from 'react'
 import React from 'react'
 import type { Box2Props } from '../Box2'
 import { Box2 } from '../Box2'
-import { defaultArgTypes as argTypes } from '../../../../../storybook/src/defaultArgTypes'
+import { defaultArgTypes as argTypes } from '../../../../../apps/storybook/src/defaultArgTypes'
 import type { GridProps } from './Grid'
 import { Grid } from './Grid'
 

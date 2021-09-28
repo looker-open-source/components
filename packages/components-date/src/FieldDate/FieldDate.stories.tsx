@@ -39,7 +39,7 @@ import {
   Popover,
   PopoverContent,
 } from '@looker/components'
-import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
+import { defaultArgTypes as argTypes } from '../../../../apps/storybook/src/defaultArgTypes'
 import type { LocaleCodes } from '../utils/i18n'
 import { Locales } from '../utils/i18n'
 import { DateFormat } from '../DateFormat'

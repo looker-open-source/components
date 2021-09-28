@@ -27,7 +27,7 @@
 import type { Story } from '@storybook/react/types-6-0'
 import type { Page } from 'puppeteer'
 import React, { useState } from 'react'
-import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
+import { defaultArgTypes as argTypes } from '../../../../apps/storybook/src/defaultArgTypes'
 import { Popover } from '../Popover'
 import { ButtonItem } from './ButtonItem'
 import { Button } from './Button'

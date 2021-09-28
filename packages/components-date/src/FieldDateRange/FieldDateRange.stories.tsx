@@ -26,7 +26,7 @@
 import React, { useState } from 'react'
 import type { Story } from '@storybook/react/types-6-0'
 import { FieldSelect, Paragraph } from '@looker/components'
-import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
+import { defaultArgTypes as argTypes } from '../../../../apps/storybook/src/defaultArgTypes'
 import { DateFormat } from '../DateFormat'
 import { Locales } from '../utils/i18n'
 import type { FieldInputDateRangeProps } from './FieldDateRange'

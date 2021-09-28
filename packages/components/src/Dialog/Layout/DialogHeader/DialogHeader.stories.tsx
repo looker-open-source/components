@@ -25,7 +25,7 @@
  */
 
 import React from 'react'
-import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
+import { defaultArgTypes as argTypes } from '../../../../../../apps/storybook/src/defaultArgTypes'
 import { DialogHeader } from './DialogHeader'
 
 export default {

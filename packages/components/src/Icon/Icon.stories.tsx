@@ -35,7 +35,7 @@ import { Settings } from '@styled-icons/material/Settings'
 import { Button, IconButton } from '../Button'
 import { Space, SpaceVertical } from '../Layout'
 import { Heading } from '../Text'
-import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
+import { defaultArgTypes as argTypes } from '../../../../apps/storybook/src/defaultArgTypes'
 import type { IconProps } from './Icon'
 import { Icon } from './Icon'
 
