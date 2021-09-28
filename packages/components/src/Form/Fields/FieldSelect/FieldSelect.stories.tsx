@@ -26,7 +26,7 @@
 
 import { ExtendComponentsThemeProvider } from '@looker/components-providers'
 import type { Story } from '@storybook/react/types-6-0'
-import { Favorite } from '@styled-icons/material/Favorite'
+import { Favorite } from 'styled-icons/material'
 import chunk from 'lodash/chunk'
 import type { FormEvent, MouseEvent } from 'react'
 import React, { useMemo, useState, useEffect } from 'react'

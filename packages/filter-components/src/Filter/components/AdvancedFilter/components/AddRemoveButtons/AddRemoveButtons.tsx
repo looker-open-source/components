@@ -24,8 +24,7 @@
 
  */
 import { IconButton } from '@looker/components'
-import { Add } from '@styled-icons/material/Add'
-import { Close } from '@styled-icons/material/Close'
+import { Add , Close } from 'styled-icons/material'
 import { useTranslation } from 'react-i18next'
 import type { FC, MouseEvent } from 'react'
 import React from 'react'

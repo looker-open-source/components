@@ -25,17 +25,17 @@
  */
 
 import React from 'react'
-import { Add } from '@styled-icons/material/Add'
-import { Code } from '@styled-icons/material/Code'
-import { MoreVert } from '@styled-icons/material/MoreVert'
-import { Assignment } from '@styled-icons/material-outlined/Assignment'
-import { Explore } from '@styled-icons/material-outlined/Explore'
-import { Extension } from '@styled-icons/material-outlined/Extension'
-import { FavoriteBorder } from '@styled-icons/material-outlined/FavoriteBorder'
-import { Folder } from '@styled-icons/material-outlined/Folder'
-import { Home } from '@styled-icons/material-outlined/Home'
-import { Schedule } from '@styled-icons/material-outlined/Schedule'
-import { Widgets } from '@styled-icons/material-outlined/Widgets'
+import { Add, Code, MoreVert } from 'styled-icons/material'
+import {
+  Assignment,
+  Explore,
+  Extension,
+  FavoriteBorder,
+  Folder,
+  Home,
+  Schedule,
+  Widgets,
+} from 'styled-icons/material-outlined'
 import { IconButton } from '../../Button'
 import { Divider } from '../../Divider'
 import { Aside } from '../../Layout'

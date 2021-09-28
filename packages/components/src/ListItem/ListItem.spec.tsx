@@ -28,7 +28,7 @@ import 'jest-styled-components'
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { fireEvent, configure, screen } from '@testing-library/react'
-import { Science } from '@styled-icons/material-outlined/Science'
+import { Science } from 'styled-icons/material-outlined'
 import { List } from '../List'
 import { ListItem } from './ListItem'
 

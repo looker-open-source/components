@@ -28,8 +28,7 @@ import {
   getAllComboboxOptionText,
   renderWithTheme,
 } from '@looker/components-test-utils'
-import { AutoGraph } from '@styled-icons/material/AutoGraph'
-import { BarChart } from '@styled-icons/material/BarChart'
+import { AutoGraph, BarChart } from 'styled-icons/material'
 import { fireEvent, screen } from '@testing-library/react'
 import React, { useState, useMemo, useEffect } from 'react'
 

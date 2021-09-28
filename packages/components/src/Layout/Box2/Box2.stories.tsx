@@ -25,7 +25,7 @@
  */
 
 import type { Story } from '@storybook/react/types-6-0'
-import { Home } from '@styled-icons/material-outlined/Home'
+import { Home } from 'styled-icons/material-outlined'
 import React from 'react'
 import { VIEWPORT_MAP } from '../../utils-storybook'
 import { Icon } from '../../Icon'

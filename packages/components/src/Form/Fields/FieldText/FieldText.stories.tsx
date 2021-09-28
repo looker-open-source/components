@@ -24,11 +24,9 @@
 
  */
 
-import { AccountCircle } from '@styled-icons/material-outlined/AccountCircle'
+import { AccountCircle, Settings } from 'styled-icons/material-outlined'
 import type { Story } from '@storybook/react/types-6-0'
-import { AddAlert } from '@styled-icons/material/AddAlert'
-import { Favorite } from '@styled-icons/material/Favorite'
-import { Settings } from '@styled-icons/material-outlined/Settings'
+import { AddAlert, Favorite } from 'styled-icons/material'
 import { ExtendComponentsThemeProvider } from '@looker/components-providers'
 import React from 'react'
 import { Button } from '../../../Button'

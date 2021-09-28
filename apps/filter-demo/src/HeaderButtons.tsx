@@ -33,9 +33,8 @@ import {
   IconButton,
   Space,
 } from '@looker/components'
-import { Close } from '@styled-icons/material/Close'
-import { Done } from '@styled-icons/material/Done'
-import { Refresh } from '@styled-icons/material-outlined/Refresh'
+import { Close, Done } from 'styled-icons/material'
+import { Refresh } from 'styled-icons/material-outlined'
 
 export interface HeaderButtonProps {
   needsUpdate: boolean

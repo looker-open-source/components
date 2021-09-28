@@ -25,8 +25,7 @@
  */
 
 import React, { useState } from 'react'
-import { Info } from '@styled-icons/material-outlined/Info'
-import { Home } from '@styled-icons/material-outlined/Home'
+import { Info, Home } from 'styled-icons/material-outlined'
 import { IconButton } from '../../Button'
 import { Aside } from '../../Layout'
 import { ListItem } from '../../ListItem'

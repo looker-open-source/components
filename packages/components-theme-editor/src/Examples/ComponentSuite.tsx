@@ -48,7 +48,7 @@ import {
   TabPanels,
   TabPanel,
 } from '@looker/components'
-import { Done } from '@styled-icons/material/Done'
+import { Done } from 'styled-icons/material'
 import React, { useState } from 'react'
 
 export const ComponentSuite = () => {

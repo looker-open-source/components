@@ -25,7 +25,7 @@
  */
 
 import type { Story } from '@storybook/react/types-6-0'
-import { AccountCircle } from '@styled-icons/material-outlined/AccountCircle'
+import { AccountCircle } from 'styled-icons/material-outlined'
 import React from 'react'
 import { defaultArgTypes as argTypes } from '../../../../../apps/storybook/src/defaultArgTypes'
 import { Button } from '../../Button'

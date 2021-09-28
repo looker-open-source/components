@@ -24,7 +24,7 @@
 
  */
 
-import { Science } from '@styled-icons/material-outlined/Science'
+import { Science } from 'styled-icons/material-outlined'
 import type { Story } from '@storybook/react/types-6-0'
 import React from 'react'
 import { Icon } from '../../Icon'

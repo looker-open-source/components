@@ -25,7 +25,7 @@
  */
 
 import type { Story } from '@storybook/react/types-6-0'
-import { PersonOutline } from '@styled-icons/material/PersonOutline'
+import { PersonOutline } from 'styled-icons/material'
 import React from 'react'
 import { AvatarIcon } from '../../Avatar'
 import type { DataTableProps } from '..'

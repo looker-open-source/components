@@ -25,9 +25,7 @@
  */
 
 import type { Story } from '@storybook/react/types-6-0'
-import { AutoGraph } from '@styled-icons/material/AutoGraph'
-import { PieChart } from '@styled-icons/material/PieChart'
-import { TableChart } from '@styled-icons/material/TableChart'
+import { AutoGraph, PieChart, TableChart } from 'styled-icons/material'
 import React from 'react'
 import type { SelectProps } from '../Select'
 import { Select } from '../Select'

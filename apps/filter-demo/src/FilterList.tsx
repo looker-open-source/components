@@ -27,7 +27,7 @@
 import type { FC } from 'react'
 import React, { useContext, useMemo } from 'react'
 import { Button, DialogLayout, Drawer, Fieldset } from '@looker/components'
-import { FilterList as FilterListIcon } from '@styled-icons/material/FilterList'
+import { FilterList as FilterListIcon } from 'styled-icons/material'
 import type { LookerEmbedDashboard } from '@looker/embed-sdk'
 import { ExtensionContext } from '@looker/extension-sdk-react'
 import { DashboardFilter } from '@looker/filter-components'

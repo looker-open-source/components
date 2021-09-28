@@ -25,10 +25,8 @@
  */
 
 import { Icon, IconButton, Tooltip } from '@looker/components'
-import { Assignment } from '@styled-icons/material/Assignment'
-import { Warning } from '@styled-icons/material/Warning'
-import { ExpandLess } from '@styled-icons/material-rounded/ExpandLess'
-import { ExpandMore } from '@styled-icons/material-rounded/ExpandMore'
+import { Assignment, Warning } from 'styled-icons/material'
+import { ExpandLess, ExpandMore } from 'styled-icons/material-rounded'
 import type { PrismTheme, Language } from 'prism-react-renderer'
 import type { FC, ReactNode } from 'react'
 import React, { useState, useCallback } from 'react'

@@ -24,8 +24,7 @@
 
  */
 
-import { AddCircle } from '@styled-icons/material/AddCircle'
-import { Delete } from '@styled-icons/material/Delete'
+import { AddCircle, Delete } from 'styled-icons/material'
 import type { Page } from 'puppeteer'
 import React from 'react'
 import type { Story } from '@storybook/react/types-6-0'

@@ -26,10 +26,8 @@
 
 import React from 'react'
 import type { Story } from '@storybook/react/types-6-0'
-import { TextSnippet } from '@styled-icons/material/TextSnippet'
-import { Explore } from '@styled-icons/material-outlined/Explore'
-import { TableChart } from '@styled-icons/material-outlined/TableChart'
-import { Visibility } from '@styled-icons/material-outlined/Visibility'
+import { TextSnippet } from 'styled-icons/material'
+import { Explore, TableChart, Visibility } from 'styled-icons/material-outlined'
 
 import { Tree } from '../Tree'
 import { TreeCollection } from '../TreeCollection'

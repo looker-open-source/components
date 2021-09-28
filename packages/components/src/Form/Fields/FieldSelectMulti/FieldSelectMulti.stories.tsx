@@ -26,9 +26,8 @@
 
 import type { Story } from '@storybook/react/types-6-0'
 import React, { useMemo, useState, useEffect } from 'react'
-import { Favorite } from '@styled-icons/material/Favorite'
-import { ChevronRight } from '@styled-icons/material-rounded/ChevronRight'
-import { ExpandMore } from '@styled-icons/material-rounded/ExpandMore'
+import { Favorite } from 'styled-icons/material'
+import { ChevronRight, ExpandMore } from 'styled-icons/material-rounded'
 import { defaultArgTypes as argTypes } from '../../../../../../apps/storybook/src/defaultArgTypes'
 import { Button } from '../../../Button'
 import { Dialog, DialogLayout } from '../../../Dialog'
