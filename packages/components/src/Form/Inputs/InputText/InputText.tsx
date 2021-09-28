@@ -25,60 +25,19 @@
  */
 
 import omit from 'lodash/omit'
-import type { SpaceProps } from '@looker/design-tokens'
 import { omitStyledProps, space, reset, layout } from '@looker/design-tokens'
-import { StyledIconBase } from '@styled-icons/styled-icon'
-import { Error } from '@styled-icons/material/Error'
-import type { MouseEvent, ReactNode, Ref } from 'react'
+import type { MouseEvent, Ref } from 'react'
 import React, { forwardRef, useRef } from 'react'
 import styled, { css } from 'styled-components'
+import { targetIsButton, useForkedRef, useWrapEvent } from '../../../utils'
 import { DISABLED_OPACITY } from '../../constants'
-import type { InputProps, InputTextTypeProps } from '../InputProps'
+import { InlineInputTextBase } from '../InlineInputText'
 import { inputPropKeys, pickInputProps } from '../InputProps'
 import { innerInputStyle } from '../innerInputStyle'
-import type { SimpleLayoutProps } from '../../../Layout/utils/simple'
-import type { IconType } from '../../../Icon'
-import { Span } from '../../../Text'
-import { targetIsButton, useForkedRef, useWrapEvent } from '../../../utils'
-import { InlineInputTextBase } from '../InlineInputText'
 import { inputHeight } from '../height'
-
-export interface InputTextBaseProps
-  extends Omit<SimpleLayoutProps, 'size'>,
-    Omit<InputProps, 'type'>,
-    InputTextTypeProps {
-  /**
-   * Allows the input width to resize with the value or placeholder
-   * Styles will default to `width: auto` and `display: inline-flex`
-   * Do not use with children
-   */
-  autoResize?: boolean
-
-  onClick?: (e: MouseEvent<HTMLDivElement>) => void
-  onMouseDown?: (e: MouseEvent<HTMLDivElement>) => void
-  onMouseEnter?: (e: MouseEvent<HTMLDivElement>) => void
-  onMouseLeave?: (e: MouseEvent<HTMLDivElement>) => void
-  onMouseOver?: (e: MouseEvent<HTMLDivElement>) => void
-  onMouseOut?: (e: MouseEvent<HTMLDivElement>) => void
-  onMouseUp?: (e: MouseEvent<HTMLDivElement>) => void
-}
-
-export interface InputTextProps extends InputTextBaseProps {
-  /**
-   * Content to place after the input
-   * If a string is used, formatting will be automatically applied
-   * If JSX is used, it will displace the built-in validation icon
-   */
-  after?: ReactNode
-  iconAfter?: IconType
-
-  /**
-   * Content to place before the input
-   * If a string is used, formatting will be automatically applied
-   */
-  before?: ReactNode
-  iconBefore?: IconType
-}
+import { After } from './After'
+import { Before } from './Before'
+import type { InputTextProps } from './types'
 
 const InputComponent = forwardRef(
   (
@@ -155,35 +114,6 @@ const InputComponent = forwardRef(
       onMouseUp,
     }
 
-    const iconBeforeOrPrefix = (iconBefore || typeof before === 'string') && (
-      <InputTextContent pl="u2">
-        {iconBefore || <Span fontSize="small">{before}</Span>}
-      </InputTextContent>
-    )
-
-    const beforeToUse = iconBeforeOrPrefix || before || null
-
-    const iconAfterOrSuffix = (iconAfter || typeof after === 'string') && (
-      <InputTextContent pl="u2" pr="u2">
-        {iconAfter || <Span fontSize="small">{after}</Span>}
-      </InputTextContent>
-    )
-
-    const validationIcon = validationType === 'error' && (
-      <InputTextContent pl={after || iconAfter ? 'u1' : 'u2'} pr="u2">
-        <ErrorIcon />
-      </InputTextContent>
-    )
-
-    const afterToUse = iconAfterOrSuffix ? (
-      <>
-        {iconAfterOrSuffix}
-        {validationIcon}
-      </>
-    ) : (
-      after || validationIcon
-    )
-
     const inputProps = {
       ...pickInputProps(omitStyledProps(props)),
       'aria-invalid': validationType === 'error' ? true : undefined,
@@ -208,9 +138,13 @@ const InputComponent = forwardRef(
         {...mouseHandlers}
         {...omitStyledProps(omit(props, inputPropKeys))}
       >
-        {beforeToUse && beforeToUse}
+        <Before before={before} iconBefore={iconBefore} />
         {inner}
-        {afterToUse && afterToUse}
+        <After
+          after={after}
+          iconAfter={iconAfter}
+          validationType={validationType}
+        />
       </div>
     )
   }
@@ -245,35 +179,6 @@ export const inputTextDisabled = css`
   /* FloatingLabelField handles opacity */
   [data-disabled='true'] & {
     opacity: 1;
-  }
-`
-
-const InputIconSize = css`
-  height: ${({ theme }) => theme.sizes.medium};
-  max-width: ${({ theme }) => theme.sizes.medium};
-`
-export const ErrorIcon = styled(Error)`
-  ${InputIconSize}
-  color: ${({ theme }) => theme.colors.critical};
-`
-
-export const InputTextContent = styled.div<SpaceProps>`
-  ${space}
-  align-items: center;
-  color: ${({ theme }) => theme.colors.text1};
-  display: flex;
-  height: 100%;
-  pointer-events: none;
-
-  ${StyledIconBase} {
-    color: ${({ theme }) => theme.colors.text1};
-  }
-
-  ${ErrorIcon} {
-    color: ${({ theme }) => theme.colors.critical};
-  }
-  svg {
-    ${InputIconSize}
   }
 `
 

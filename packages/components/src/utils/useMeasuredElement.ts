@@ -27,7 +27,7 @@
 import { useCallback, useState } from 'react'
 import { useResize } from './useResize'
 
-function measureElement(element?: HTMLElement | null) {
+export const measureElement = (element?: HTMLElement | null) => {
   if (!element) {
     return typeof DOMRect === 'function'
       ? new DOMRect()
