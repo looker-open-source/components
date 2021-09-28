@@ -30,8 +30,8 @@ const config = {
     postcss: false,
   },
   stories: [
-    '../../packages/**/*.stories.mdx',
-    '../../packages/**/*.stories.tsx',
+    '../../../packages/**/*.stories.mdx',
+    '../../../packages/**/*.stories.tsx',
   ],
 }
 
