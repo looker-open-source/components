@@ -48,7 +48,7 @@ export default {
 }
 
 const Template: Story<FieldInputDateRangeProps & { externalLabel: boolean }> =
-  ({ externalLabel, ...args }) => (
+  ({ externalLabel = true, ...args }) => (
     <ExtendComponentsThemeProvider
       themeCustomizations={{ defaults: { externalLabel } }}
     >
@@ -74,6 +74,7 @@ Disabled.args = {
 export const DisabledNoDefaultValue = Template.bind({})
 DisabledNoDefaultValue.args = {
   disabled: true,
+  externalLabel: false,
   label: 'Pick A Date',
 }
 
@@ -85,6 +86,7 @@ Error.args = {
 
 export const NoDefaultValue = Template.bind({})
 NoDefaultValue.args = {
+  externalLabel: false,
   label: 'Pick A Date',
 }
 
