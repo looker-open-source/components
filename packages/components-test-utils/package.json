@@ -19,5 +19,11 @@
     "react": "^16.11",
     "react-is": "^16.11"
   },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+     "@looker/eslint-config-oss"
+    ]
+  },
   "gitHead": "62febc162e3e45124f403e2c84fc741f68fe6714"
 }

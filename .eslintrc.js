@@ -43,37 +43,5 @@ module.exports = {
         ],
       },
     },
-    {
-      files: ['packages/demos/src/**/*.tsx', 'packages/demos/src/**/*.ts'],
-      rules: {
-        'i18next/no-literal-string': 'off',
-      },
-    },
-    {
-      files: [
-        '*.spec.*',
-        '*.stories.*',
-        '*.js',
-        '**/__mocks__/**',
-        '**/stories/**',
-        'packages/components-theme-editor/**',
-        'packages/design-tokens/**',
-        'www/**',
-      ],
-      rules: {
-        'i18next/no-literal-string': 'off',
-      },
-    },
   ],
-  rules: {
-    '@typescript-eslint/no-explicit-any': 'off',
-    'no-restricted-properties': [
-      2,
-      {
-        message:
-          'Specifying static properties such as defaultProps can break tree shaking. Use default parameter values instead. See http://es6-features.org/#DefaultParameterValues.',
-        property: 'defaultProps',
-      },
-    ],
-  },
 }

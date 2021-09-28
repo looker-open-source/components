@@ -46,5 +46,14 @@
     "react-is": "^16.11",
     "styled-components": "^5"
   },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+     "@looker/eslint-config-oss"
+    ],
+    "rules": {
+     "@typescript-eslint/no-explicit-any": "off"
+    }
+   },
   "gitHead": "62febc162e3e45124f403e2c84fc741f68fe6714"
 }

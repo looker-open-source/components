@@ -50,6 +50,18 @@ module.exports = {
         'react/jsx-no-undef': 'off',
       },
     },
+    {
+      files: [
+        '*.spec.*',
+        '*.stories.*',
+        '**/stories/**',
+        '*.js',
+        '**/__mocks__/**',
+      ],
+      rules: {
+        'i18next/no-literal-string': 'off',
+      },
+    },
   ],
   parser: '@typescript-eslint/parser', // Specifies the ESLint parser
   plugins: [
@@ -66,8 +78,8 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-redeclare': ['error'],
-    '@typescript-eslint/no-use-before-define': 'off',
     '@typescript-eslint/no-unused-vars': 'off',
+    '@typescript-eslint/no-use-before-define': 'off',
     'header/header': [
       2,
       'block',
@@ -129,14 +141,24 @@ module.exports = {
         ],
       },
     ],
+    'no-restricted-properties': [
+      2,
+      {
+        message:
+          'Specifying static properties such as defaultProps can break tree shaking. Use default parameter values instead. See http://es6-features.org/#DefaultParameterValues.',
+        property: 'defaultProps',
+      },
+    ],
     'no-use-before-define': 'off',
     'react/no-unescaped-entities': 'off',
     'react/prop-types': 'off',
     'sort-keys': 'off',
     'sort-keys-fix/sort-keys-fix': 'error',
-    '@typescript-eslint/no-unused-vars': 'off',
+
     // Work to enable these soon-ish
     'testing-library/no-node-access': 'off',
+    // eslint-disable-next-line sort-keys-fix/sort-keys-fix
+    '@typescript-eslint/no-explicit-any': 'off',
   },
 
   settings: {
