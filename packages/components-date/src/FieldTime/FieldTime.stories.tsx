@@ -45,7 +45,7 @@ export default {
 }
 
 const Template: Story<FieldTimeProps & { externalLabel: boolean }> = ({
-  externalLabel,
+  externalLabel = true,
   ...args
 }) => (
   <ExtendComponentsThemeProvider
@@ -58,7 +58,6 @@ const Template: Story<FieldTimeProps & { externalLabel: boolean }> = ({
 export const Basic = Template.bind({})
 Basic.args = {
   defaultValue: '14:34',
-  externalLabel: true,
   format: '12h',
   label: 'Label',
 }

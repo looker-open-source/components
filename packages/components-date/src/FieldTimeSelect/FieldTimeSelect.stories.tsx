@@ -41,7 +41,7 @@ export default {
 }
 
 const Template: Story<FieldTimeSelectProps & { externalLabel: boolean }> = ({
-  externalLabel,
+  externalLabel = true,
   ...args
 }) => (
   <ExtendComponentsThemeProvider
@@ -54,7 +54,6 @@ const Template: Story<FieldTimeSelectProps & { externalLabel: boolean }> = ({
 export const Basic = Template.bind({})
 Basic.args = {
   defaultValue: '14:30',
-  externalLabel: true,
   interval: 10,
   label: 'Select Time',
 }
@@ -68,14 +67,12 @@ FloatingLabel.args = {
 export const Disabled = Template.bind({})
 Disabled.args = {
   disabled: true,
-  externalLabel: true,
   interval: 10,
   label: 'Select Time',
 }
 
 export const Required = Template.bind({})
 Required.args = {
-  externalLabel: true,
   interval: 10,
   label: 'Select Time',
   required: true,
@@ -85,7 +82,6 @@ export const Error = Template.bind({})
 Error.args = {
   description: 'this is the description is a very long one',
   detail: 'detail',
-  externalLabel: true,
   interval: 10,
   label: 'Select Time',
   required: true,

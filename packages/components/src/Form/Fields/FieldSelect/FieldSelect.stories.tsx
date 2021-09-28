@@ -59,7 +59,7 @@ import type { FieldSelectProps } from './FieldSelect'
 import { FieldSelect } from './FieldSelect'
 
 const Template: Story<FieldSelectProps & { externalLabel: boolean }> = ({
-  externalLabel,
+  externalLabel = true,
   ...args
 }) => (
   <ExtendComponentsThemeProvider
@@ -71,7 +71,6 @@ const Template: Story<FieldSelectProps & { externalLabel: boolean }> = ({
 
 export const Basic = Template.bind({})
 Basic.args = {
-  externalLabel: true,
   label: 'Label',
   options: cheeseOptions,
   placeholder: 'Placeholder',

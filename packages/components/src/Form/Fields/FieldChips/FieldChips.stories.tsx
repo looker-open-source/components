@@ -41,7 +41,7 @@ export default {
 
 const Template: Story<
   FieldChipsProps & { externalLabel: boolean; initialValues: string[] }
-> = ({ externalLabel, initialValues, ...args }) => {
+> = ({ externalLabel = true, initialValues, ...args }) => {
   const [values, setValues] = useState<string[]>(initialValues || ['apples'])
 
   return (
@@ -54,7 +54,7 @@ const Template: Story<
 }
 
 export const Basic = Template.bind({})
-Basic.args = { externalLabel: true, label: 'Basic' }
+Basic.args = { label: 'Basic' }
 
 export const FloatingLabel = Template.bind({})
 FloatingLabel.args = {
