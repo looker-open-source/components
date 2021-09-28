@@ -24,26 +24,39 @@
 
  */
 
-export * from './Checkbox'
-export * from './Combobox'
-export * from './ErrorIcon'
-export * from './height'
-export * from './InlineInputText'
-export * from './InlineTextArea'
-export * from './InputChips'
-export * from './InputColor'
-export * from './InputFilters'
-export * from './InputHidden'
-export * from './InputSearch'
-export * from './InputText'
-export * from './OptionsGroup'
-export * from './Radio'
-export * from './RangeSlider'
-export * from './Select'
-export * from './Slider'
-export * from './TextArea'
-export * from './ToggleSwitch'
+import React from 'react'
+import { Span } from '../../../Text'
+import { ErrorIcon } from '../ErrorIcon'
+import { InputTextContent } from './InputTextContent'
+import type { InputTextProps } from './types'
 
-// Utilities
-export * from './innerInputStyle'
-export * from './InputProps'
+export const After = ({
+  after,
+  iconAfter,
+  validationType,
+}: Pick<InputTextProps, 'after' | 'iconAfter' | 'validationType'>) => {
+  const iconAfterOrSuffix = (iconAfter || typeof after === 'string') && (
+    <InputTextContent pl="u2" pr="u2">
+      {iconAfter || <Span fontSize="small">{after}</Span>}
+    </InputTextContent>
+  )
+
+  const validationIcon = validationType === 'error' && (
+    <InputTextContent pl={after || iconAfter ? 'u1' : 'u2'} pr="u2">
+      <ErrorIcon />
+    </InputTextContent>
+  )
+
+  return (
+    <>
+      {iconAfterOrSuffix ? (
+        <>
+          {iconAfterOrSuffix}
+          {validationIcon}
+        </>
+      ) : (
+        after || validationIcon
+      )}
+    </>
+  )
+}

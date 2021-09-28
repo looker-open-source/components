@@ -24,26 +24,20 @@
 
  */
 
-export * from './Checkbox'
-export * from './Combobox'
-export * from './ErrorIcon'
-export * from './height'
-export * from './InlineInputText'
-export * from './InlineTextArea'
-export * from './InputChips'
-export * from './InputColor'
-export * from './InputFilters'
-export * from './InputHidden'
-export * from './InputSearch'
-export * from './InputText'
-export * from './OptionsGroup'
-export * from './Radio'
-export * from './RangeSlider'
-export * from './Select'
-export * from './Slider'
-export * from './TextArea'
-export * from './ToggleSwitch'
+import type { SpaceProps } from '@looker/design-tokens'
+import { space } from '@looker/design-tokens'
+import styled from 'styled-components'
+import { inputIconSize } from '../inputIconSize'
 
-// Utilities
-export * from './innerInputStyle'
-export * from './InputProps'
+export const InputTextContent = styled.div<SpaceProps>`
+  ${space}
+  align-items: center;
+  color: ${({ theme }) => theme.colors.text1};
+  display: flex;
+  height: 100%;
+  pointer-events: none;
+
+  svg {
+    ${inputIconSize}
+  }
+`

@@ -24,26 +24,9 @@
 
  */
 
-export * from './Checkbox'
-export * from './Combobox'
-export * from './ErrorIcon'
-export * from './height'
-export * from './InlineInputText'
-export * from './InlineTextArea'
-export * from './InputChips'
-export * from './InputColor'
-export * from './InputFilters'
-export * from './InputHidden'
-export * from './InputSearch'
-export * from './InputText'
-export * from './OptionsGroup'
-export * from './Radio'
-export * from './RangeSlider'
-export * from './Select'
-export * from './Slider'
-export * from './TextArea'
-export * from './ToggleSwitch'
+import { css } from 'styled-components'
 
-// Utilities
-export * from './innerInputStyle'
-export * from './InputProps'
+export const inputIconSize = css`
+  height: ${({ theme }) => theme.sizes.medium};
+  max-width: ${({ theme }) => theme.sizes.medium};
+`

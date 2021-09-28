@@ -24,26 +24,8 @@
 
  */
 
-export * from './Checkbox'
-export * from './Combobox'
-export * from './ErrorIcon'
-export * from './height'
-export * from './InlineInputText'
-export * from './InlineTextArea'
-export * from './InputChips'
-export * from './InputColor'
-export * from './InputFilters'
-export * from './InputHidden'
-export * from './InputSearch'
-export * from './InputText'
-export * from './OptionsGroup'
-export * from './Radio'
-export * from './RangeSlider'
-export * from './Select'
-export * from './Slider'
-export * from './TextArea'
-export * from './ToggleSwitch'
+import noop from 'lodash/noop'
+import { createContext } from 'react'
 
-// Utilities
-export * from './innerInputStyle'
-export * from './InputProps'
+const defaultContext = { beforeWidth: 0, setBeforeWidth: noop }
+export const InputTextContext = createContext(defaultContext)

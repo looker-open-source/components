@@ -29,13 +29,13 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import type { CompatibleHTMLProps } from '@looker/design-tokens'
 import type { ValidationType } from '../../ValidationMessage'
+import { ErrorIcon } from '../ErrorIcon'
 import {
   inputTextHover,
   inputTextFocus,
   inputTextDisabled,
   inputTextValidation,
   inputCSS,
-  ErrorIcon,
 } from '../InputText'
 import type { SimpleLayoutProps } from '../../../Layout/utils/simple'
 import { simpleLayoutCSS } from '../../../Layout/utils/simple'
