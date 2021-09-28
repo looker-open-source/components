@@ -157,8 +157,6 @@ module.exports = {
 
     // Work to enable these soon-ish
     'testing-library/no-node-access': 'off',
-    // eslint-disable-next-line sort-keys-fix/sort-keys-fix
-    '@typescript-eslint/no-explicit-any': 'off',
   },
 
   settings: {

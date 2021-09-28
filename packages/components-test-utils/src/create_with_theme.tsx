@@ -31,11 +31,13 @@ import 'jest-styled-components'
 import type { ReactElement } from 'react'
 import React from 'react'
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const withThemeProvider = (Component: ReactElement<any>) => (
   <ComponentsProvider disableStyleDefender>{Component}</ComponentsProvider>
 )
 
 export const renderWithTheme = (
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   Component: ReactElement<any>,
   options?: Omit<RenderOptions, 'queries'>
 ) => render(withThemeProvider(Component), options)

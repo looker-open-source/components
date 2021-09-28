@@ -59,6 +59,7 @@ const imageSnapshots = () => {
           await page.waitForTimeout(500)
         }
 
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         ;(context as any).clip = await page.evaluate(() => {
           const backdrop = document.querySelector(
             '#modal-root [data-testid="backdrop"]'
@@ -86,6 +87,7 @@ const imageSnapshots = () => {
         }
       },
       getScreenshotOptions: ({ context }) => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const { clip } = context as any
 
         return { clip, encoding: 'base64', fullPage: false }
