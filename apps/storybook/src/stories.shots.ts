@@ -81,7 +81,7 @@ const imageSnapshots = () => {
       getMatchOptions({ context: { kind, story } }) {
         return {
           customSnapshotIdentifier: story,
-          customSnapshotsDir: path.join('../snapshots', ...kind.split('/')),
+          customSnapshotsDir: path.join('../../snapshots', ...kind.split('/')),
           // failureThreshold: 0, // default value
         }
       },

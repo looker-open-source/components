@@ -24,28 +24,8 @@
 
  */
 
-const config = {
-  addons: ['@storybook/addon-essentials', '@storybook/addon-a11y'],
-  features: {
-    postcss: false,
-  },
-  stories: [
-    '../../packages/**/*.stories.mdx',
-    '../../packages/**/*.stories.tsx',
-  ],
-}
+import noop from 'lodash/noop'
+import { createContext } from 'react'
 
-/**
- * `react-docgen-typescript` is slow because it has to parse _everything_.
- *
- * `fast` builds (used by image-snapshots)  turn off docgen as well as all addons since
- * neither will be needed for snapshots and it significantly improves Storybook performance.
- */
-const mode = process.env.storybookBuildMode
-
-if (mode === 'fast') {
-  config.typescript = { check: false, reactDocgen: false }
-  config.addons = []
-}
-
-module.exports = config
+const defaultContext = { beforeWidth: 0, setBeforeWidth: noop }
+export const InputTextContext = createContext(defaultContext)

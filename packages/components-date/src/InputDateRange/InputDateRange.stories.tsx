@@ -38,7 +38,7 @@ import {
   TabPanels,
   TabPanel,
 } from '@looker/components'
-import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
+import { defaultArgTypes as argTypes } from '../../../../apps/storybook/src/defaultArgTypes'
 import { VIEWPORT_MAP } from '../../../components/src/utils-storybook/viewportMap'
 import { DateFormat } from '../DateFormat'
 import type { InputDateRangeProps } from './InputDateRange'

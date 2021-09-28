@@ -36,7 +36,7 @@ import { Grid } from '../Layout/Grid'
 import { SpaceVertical } from '../Layout/Space/SpaceVertical'
 import { Status } from '../Status'
 import { List } from '../List'
-import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
+import { defaultArgTypes as argTypes } from '../../../../apps/storybook/src/defaultArgTypes'
 import { ListItem } from './ListItem'
 import type { ListItemProps, ListItemRole } from './types'
 

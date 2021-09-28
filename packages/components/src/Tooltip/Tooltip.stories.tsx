@@ -33,7 +33,7 @@ import { FieldToggleSwitch } from '../Form'
 import { Space, SpaceVertical } from '../Layout'
 import { Text } from '../Text'
 import { Popover, PopoverContent } from '../Popover'
-import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
+import { defaultArgTypes as argTypes } from '../../../../apps/storybook/src/defaultArgTypes'
 import type { TooltipProps } from './'
 import { Tooltip } from './'
 

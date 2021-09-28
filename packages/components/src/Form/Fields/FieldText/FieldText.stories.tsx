@@ -29,6 +29,7 @@ import type { Story } from '@storybook/react/types-6-0'
 import { AddAlert } from '@styled-icons/material/AddAlert'
 import { Favorite } from '@styled-icons/material/Favorite'
 import { Settings } from '@styled-icons/material-outlined/Settings'
+import { ExtendComponentsThemeProvider } from '@looker/components-providers'
 import React from 'react'
 import { Button } from '../../../Button'
 import { Icon } from '../../../Icon'
@@ -39,7 +40,7 @@ import { useToggle } from '../../../utils'
 import { FieldCheckbox } from '../FieldCheckbox'
 import { FieldRadio } from '../FieldRadio'
 import { FieldToggleSwitch } from '../FieldToggleSwitch'
-import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
+import { defaultArgTypes as argTypes } from '../../../../../../apps/storybook/src/defaultArgTypes'
 import type { FieldTextProps } from './FieldText'
 import { FieldText } from './FieldText'
 
@@ -49,10 +50,19 @@ export default {
   title: 'FieldText',
 }
 
-const Template: Story<FieldTextProps> = (args) => <FieldText {...args} />
+const Template: Story<FieldTextProps & { externalLabel: boolean }> = ({
+  externalLabel,
+  ...args
+}) => (
+  <ExtendComponentsThemeProvider
+    themeCustomizations={{ defaults: { externalLabel } }}
+  >
+    <FieldText {...args} />
+  </ExtendComponentsThemeProvider>
+)
 
 export const Basic = Template.bind({})
-Basic.args = { label: 'Text Input' }
+Basic.args = { externalLabel: true, label: 'Text Input' }
 
 export const Detail = Template.bind({})
 Detail.args = { ...Basic.args, detail: '0/50' }
@@ -89,16 +99,42 @@ Error.args = {
 }
 
 export const Before = Template.bind({})
-Before.args = { before: '$', label: 'Dollars' }
+Before.args = { ...Basic.args, before: '$', label: 'Dollars' }
 
 export const After = Template.bind({})
-After.args = { after: '%', label: 'Percent' }
+After.args = { ...Basic.args, after: '%', label: 'Percent' }
 
 export const IconBefore = Template.bind({})
-IconBefore.args = { iconBefore: <Settings />, label: 'Settings' }
+IconBefore.args = { ...Basic.args, iconBefore: <Settings />, label: 'Settings' }
 
 export const IconAfter = Template.bind({})
-IconAfter.args = { iconAfter: <Settings />, label: 'Settings' }
+IconAfter.args = { ...Basic.args, iconAfter: <Settings />, label: 'Settings' }
+
+export const FloatingLabel = Template.bind({})
+FloatingLabel.args = {
+  description: 'Some important information about this field',
+  detail: '0/50',
+  externalLabel: false,
+  label: 'Floating Label',
+}
+
+export const FloatingLabelValue = Template.bind({})
+FloatingLabelValue.args = {
+  ...FloatingLabel.args,
+  defaultValue: 'Value',
+}
+
+export const FloatingLabelIcon = Template.bind({})
+FloatingLabelIcon.args = {
+  ...FloatingLabel.args,
+  iconBefore: <Settings />,
+}
+
+export const FloatingLabelValidation = Template.bind({})
+FloatingLabelValidation.args = {
+  ...FloatingLabel.args,
+  validationMessage: { message: 'Error Message', type: 'error' },
+}
 
 export const Toggles = () => (
   <>

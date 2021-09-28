@@ -29,7 +29,7 @@ import React from 'react'
 import { ThemeProvider } from 'styled-components'
 import { Add } from '@styled-icons/material/Add'
 import type { Story } from '@storybook/react/types-6-0'
-import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
+import { defaultArgTypes as argTypes } from '../../../../apps/storybook/src/defaultArgTypes'
 import { IconButton } from './IconButton'
 import type { IconButtonProps } from './iconButtonTypes'
 

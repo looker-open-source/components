@@ -38,7 +38,7 @@ import type { SelectOptionsProps } from '../SelectOptions'
 import { SelectOptions } from '../SelectOptions'
 import type { SelectOptionProps } from '../types'
 import { useFlatOptions } from '../utils/useFlatOptions'
-import { defaultArgTypes as argTypes } from '../../../../../../../storybook/src/defaultArgTypes'
+import { defaultArgTypes as argTypes } from '../../../../../../../apps/storybook/src/defaultArgTypes'
 import { cheeseOptions, iconOptions, optionsWithGroups } from './options'
 
 interface StoryProps extends SelectOptionsProps {

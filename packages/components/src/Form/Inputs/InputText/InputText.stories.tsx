@@ -28,8 +28,8 @@ import React from 'react'
 import type { Story } from '@storybook/react/types-6-0'
 import { Close } from '@styled-icons/material-rounded/Close'
 import { Info } from '@styled-icons/material-rounded/Info'
-import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
-import type { InputTextProps } from './InputText'
+import { defaultArgTypes as argTypes } from '../../../../../../apps/storybook/src/defaultArgTypes'
+import type { InputTextProps } from './types'
 import { InputText } from './InputText'
 
 export default {

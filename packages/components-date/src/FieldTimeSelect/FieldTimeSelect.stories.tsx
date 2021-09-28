@@ -30,7 +30,7 @@ import {
   ExtendComponentsThemeProvider,
   Fieldset,
 } from '@looker/components'
-import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
+import { defaultArgTypes as argTypes } from '../../../../apps/storybook/src/defaultArgTypes'
 import type { FieldTimeSelectProps } from './'
 import { FieldTimeSelect } from './'
 

@@ -54,7 +54,7 @@ import {
   optionsWithGroups,
 } from '../../Inputs/Select/stories/options'
 import { options1k } from '../../Inputs/Select/stories/options1k'
-import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
+import { defaultArgTypes as argTypes } from '../../../../../../apps/storybook/src/defaultArgTypes'
 import type { FieldSelectProps } from './FieldSelect'
 import { FieldSelect } from './FieldSelect'
 

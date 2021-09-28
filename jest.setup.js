@@ -26,7 +26,7 @@
 
 import { format } from 'util'
 import { setGlobalConfig } from '@storybook/testing-react'
-import * as globalStorybookConfig from './storybook/.storybook/preview'
+import * as globalStorybookConfig from './apps/storybook/.storybook/preview'
 
 require('@testing-library/jest-dom/extend-expect')
 require('jest-styled-components')

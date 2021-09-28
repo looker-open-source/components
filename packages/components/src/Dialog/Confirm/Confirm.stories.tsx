@@ -31,7 +31,7 @@ import { Icon } from '../../Icon'
 import { Space, SpaceVertical } from '../../Layout'
 import { Link } from '../../Link'
 import { Paragraph } from '../../Text'
-import { defaultArgTypes as argTypes } from '../../../../../storybook/src/defaultArgTypes'
+import { defaultArgTypes as argTypes } from '../../../../../apps/storybook/src/defaultArgTypes'
 import { Confirm } from './Confirm'
 
 export default {

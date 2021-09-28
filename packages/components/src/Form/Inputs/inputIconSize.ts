@@ -24,21 +24,9 @@
 
  */
 
-process.env.TZ = 'UTC'
+import { css } from 'styled-components'
 
-module.exports = {
-  moduleDirectories: ['./node_modules', './packages', './storybook'],
-  moduleFileExtensions: ['js', 'json', 'ts', 'tsx'],
-  moduleNameMapper: {
-    '@looker\\/((?!sdk)[^\\/]+)': '<rootDir>/../packages/$1/src',
-    '\\.(css)$': '<rootDir>/../config/jest/styleMock.js',
-    '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)$':
-      '<rootDir>/../config/jest/fileMock.js',
-  },
-  roots: ['<rootDir>'],
-  testEnvironment: 'jsdom',
-  testMatch: ['**/*.shots.ts'],
-  transform: {
-    '^.+\\.(js|jsx|ts|tsx)$': 'babel-jest',
-  },
-}
+export const inputIconSize = css`
+  height: ${({ theme }) => theme.sizes.medium};
+  max-width: ${({ theme }) => theme.sizes.medium};
+`

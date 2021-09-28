@@ -30,7 +30,7 @@ import styled from 'styled-components'
 import { FieldToggleSwitch } from '../../../Form'
 import { useToggle } from '../../../utils'
 import { Flex } from '../../Flex'
-import { defaultArgTypes as argTypes } from '../../../../../../storybook/src/defaultArgTypes'
+import { defaultArgTypes as argTypes } from '../../../../../../apps/storybook/src/defaultArgTypes'
 import type { AsideProps } from '../Aside/Aside'
 import { Aside } from '../Aside/Aside'
 

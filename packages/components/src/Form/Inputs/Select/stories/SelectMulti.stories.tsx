@@ -26,7 +26,7 @@
 
 import type { Story } from '@storybook/react/types-6-0'
 import React, { useState } from 'react'
-import { defaultArgTypes as argTypes } from '../../../../../../../storybook/src/defaultArgTypes'
+import { defaultArgTypes as argTypes } from '../../../../../../../apps/storybook/src/defaultArgTypes'
 import { Space } from '../../../../Layout'
 import type { SelectMultiProps } from '../SelectMulti'
 import { SelectMulti } from '../SelectMulti'

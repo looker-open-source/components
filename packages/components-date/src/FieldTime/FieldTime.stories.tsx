@@ -34,7 +34,7 @@ import {
   Space,
   SpaceVertical,
 } from '@looker/components'
-import { defaultArgTypes as argTypes } from '../../../../storybook/src/defaultArgTypes'
+import { defaultArgTypes as argTypes } from '../../../../apps/storybook/src/defaultArgTypes'
 import type { FieldTimeProps } from './FieldTime'
 import { FieldTime } from './FieldTime'
 

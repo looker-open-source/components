@@ -45,15 +45,6 @@ describe('LocationExact filter tests', () => {
     expect(screen.getByDisplayValue('2')).toBeVisible()
   })
 
-  it('should render a LocationExact with 90 degree corners', () => {
-    renderWithTheme(
-      <LocationExact item={item} onChange={jest.fn()} placement="middle" />
-    )
-    expect(screen.getByText('LONGITUDE').parentElement).toHaveStyle(`
-    border-bottom-right-radius: 0;
-    border-top-right-radius: 0;`)
-  })
-
   it('should call onChange with the correct lat when lat is changed', () => {
     const onChange = jest.fn()
     renderWithTheme(<LocationExact item={item} onChange={onChange} />)
