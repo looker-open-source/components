@@ -29,7 +29,6 @@ import ReactDOM from 'react-dom'
 import { FilterDemo } from './FilterDemo'
 import { ExtensionProvider } from '@looker/extension-sdk-react'
 import { ComponentsProvider, Spinner, Flex } from '@looker/components'
-import { i18nResources } from '@looker/filter-components'
 
 const getRoot = () => {
   const existingRoot = document.getElementById('extension-root')
@@ -50,7 +49,7 @@ const render = (Component: typeof FilterDemo) => {
   )
 
   ReactDOM.render(
-    <ComponentsProvider resources={i18nResources}>
+    <ComponentsProvider>
       <ExtensionProvider
         loadingComponent={loading}
         requiredLookerVersion=">=21.0"

@@ -45,7 +45,12 @@ import { DashboardList } from './DashboardList'
 import { DashboardEmbed } from './DashboardEmbed'
 import { FilterList } from './FilterList'
 
-const i18nPromise = i18nInit()
+// Can be set via env variable, etc
+const locale = 'de-DE'
+
+const i18nPromise = import(
+  /* webpackChunkName: "locale_[request]" */ `@looker/filter-components/src/i18n/locales/${locale}`
+).then((module) => i18nInit(module.default))
 
 const FilterDemoInternal: FC = () => {
   const [loadingDashboards, setLoadingDashboards] = useState(false)

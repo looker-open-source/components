@@ -24,10 +24,11 @@
 
  */
 import { Box, ChipButton, Popover } from '@looker/components'
-import { InputDate, Locales } from '@looker/components-date'
+import { InputDate } from '@looker/components-date'
 import type { FC } from 'react'
 import React from 'react'
 import styled from 'styled-components'
+import { getDateLocale } from '../../../../../../../i18n'
 import type { PlacementProps } from '../../../../../../utils/filter_styles'
 import { inputPlacementStyle } from '../../../../../../utils/filter_styles'
 import { formatDate, useDateLocalization } from '../../utils/format_date'
@@ -66,13 +67,12 @@ export const DateInputInternal: FC<DateInputProps> = ({
       content={
         <Box p="small">
           <InputDate
-            localization={dateLocalization}
+            {...dateLocalization}
             defaultValue={date}
             onChange={handleDayChange}
-            // hardcoding `Japanese` as it matches the current date format: YYYY/MM/DD
-            // eventually this should be replaced with the user's preferred locale
-            // when the rest of dates are localized
-            dateStringLocale={Locales.Japanese}
+            // hardcoding yyyy/MM/dd for legacy reasons
+            dateStringFormat="yyyy/MM/dd"
+            locale={getDateLocale()}
           />
         </Box>
       }

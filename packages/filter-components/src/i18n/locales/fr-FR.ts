@@ -23,4 +23,15 @@
  SOFTWARE.
 
  */
-export * from './i18n'
+
+import dateLocale from 'date-fns/locale/fr'
+import resources from '../../locales/fr-FR'
+import type { FilterLocale } from '../types'
+
+const filterLocale: FilterLocale = {
+  locale: 'fr-FR',
+  dateLocale,
+  resources: { 'fr-FR': resources },
+}
+
+export default filterLocale

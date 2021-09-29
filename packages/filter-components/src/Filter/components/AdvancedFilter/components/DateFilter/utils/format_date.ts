@@ -37,38 +37,6 @@ export const formatDate = (date: Date) => {
 export const useDateLocalization = () => {
   const { t } = useTranslation('format_date')
   return {
-    months: [
-      t('January'),
-      t('February'),
-      t('March'),
-      t('April'),
-      t('May'),
-      t('June'),
-      t('July'),
-      t('August'),
-      t('September'),
-      t('October'),
-      t('November'),
-      t('December'),
-    ],
-    weekdaysLong: [
-      t('Sunday'),
-      t('Monday'),
-      t('Tuesday'),
-      t('Wednesday'),
-      t('Thursday'),
-      t('Friday'),
-      t('Saturday'),
-    ],
-    weekdaysShort: [
-      t('Su'),
-      t('Mo'),
-      t('Tu'),
-      t('We'),
-      t('Th'),
-      t('Fr'),
-      t('Sa'),
-    ],
     firstDayOfWeek: parseInt(t('firstDayOfWeek'), 10) || 0, // Sunday = 0
   }
 }

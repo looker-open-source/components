@@ -23,43 +23,15 @@
  SOFTWARE.
 
  */
-import React, { useState } from 'react'
-import type { Story } from '@storybook/react/types-6-0'
-import { i18nInit } from '../i18n/i18n'
-import type { FilterProps, FilterChangeProps } from './types/filter_props'
-import { Filter } from './Filter'
 
-i18nInit()
+import dateLocale from 'date-fns/locale/pt'
+import resources from '../../locales/pt-PT'
+import type { FilterLocale } from '../types'
 
-const Template: Story<FilterProps> = (args) => {
-  const [expression, setExpression] = useState(args.expression)
-  const handleChange = (value: FilterChangeProps) => {
-    setExpression(value.expression)
-    args.onChange?.(value)
-  }
-  return <Filter {...args} expression={expression} onChange={handleChange} />
+const filterLocale: FilterLocale = {
+  locale: 'pt-PT',
+  dateLocale,
+  resources: { 'pt-PT': resources },
 }
 
-export const Basic = Template.bind({})
-Basic.args = {
-  expressionType: 'number',
-  expression: '',
-}
-
-export const MultiCondition = Template.bind({})
-MultiCondition.args = {
-  ...Basic.args,
-  expression: '[0,20],>30',
-}
-
-export const Config = Template.bind({})
-Config.args = {
-  expressionType: 'date',
-  expression: '7 day',
-  config: { type: 'relative_timeframes' },
-}
-
-export default {
-  title: 'Filters / Filter',
-  component: Filter,
-}
+export default filterLocale

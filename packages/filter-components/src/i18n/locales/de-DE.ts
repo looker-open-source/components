@@ -24,35 +24,14 @@
 
  */
 
-import type { LocaleCodes } from '@looker/components-date'
-import { Locales } from '@looker/components-date'
+import dateLocale from 'date-fns/locale/de'
+import resources from '../../locales/de-DE'
+import type { FilterLocale } from '../types'
 
-/**
- * localeMap converts locales to the format used in @looker/components
- */
-interface LocaleMap {
-  [key: string]: LocaleCodes
+const filterLocale: FilterLocale = {
+  locale: 'de-DE',
+  dateLocale,
+  resources: { 'de-DE': resources },
 }
 
-const localeMap: LocaleMap = {
-  'de-DE': Locales.German,
-  en: Locales.English,
-  'es-ES': Locales.Spanish,
-  'fr-FR': Locales.French,
-  'it-IT': Locales.Italian,
-  'ja-JP': Locales.Japanese,
-  'ko-KR': Locales.Korean,
-  'nl-NL': Locales.Dutch,
-  'pl-PL': Locales.Polish,
-  'pt-BR': Locales.PortugueseBrazil,
-  'pt-PT': Locales.Portuguese,
-  'ru-RU': Locales.Russian,
-  'sv-SE': Locales.Swedish,
-  'tr-TR': Locales.Turkish,
-  'zh-CN': Locales.Chinese,
-  'zh-TW': Locales.ChineseTaiwan,
-}
-
-export const getComponentLocale = (locale = 'en') => {
-  return localeMap[locale]
-}
+export default filterLocale

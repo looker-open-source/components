@@ -33,7 +33,7 @@ export * from './Filter/types/filter_ui_config'
 export * from './Filter/types/option'
 export * from './Filter/types/filter_props'
 export * from './DashboardFilter'
-export * from './utils'
+export * from './i18n'
 // Proxy imports to `@looker/filter-expressions`
 export {
   FilterExpressionType,

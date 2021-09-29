@@ -25,32 +25,6 @@
  */
 export default {
   format_date: {
-    January: 'Januar',
-    February: 'Februar',
-    March: 'März',
-    April: 'April',
-    May: 'Mai',
-    June: 'Juni',
-    July: 'Juli',
-    August: 'August',
-    September: 'September',
-    October: 'Oktober',
-    November: 'November',
-    December: 'Dezember',
-    Sunday: 'Sonntag',
-    Monday: 'Montag',
-    Tuesday: 'Dienstag',
-    Wednesday: 'Mittwoch',
-    Thursday: 'Donnerstag',
-    Friday: 'Freitag',
-    Saturday: 'Samstag',
-    Su: 'So',
-    Mo: 'Mo',
-    Tu: 'Di',
-    We: 'Mi',
-    Th: 'Do',
-    Fr: 'Fr',
-    Sa: 'Sa',
     firstDayOfWeek: '0',
   },
   get_filter_options: {
@@ -107,5 +81,9 @@ export default {
   },
   RelativeTimeframePresets: {
     More: 'Mehr',
+  },
+  use_option_filtering: {
+    'No values': 'No values',
+    'No values match': 'No values match',
   },
 }
