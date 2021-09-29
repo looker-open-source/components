@@ -27,7 +27,13 @@
 import type { Story } from '@storybook/react/types-6-0'
 import partial from 'lodash/partial'
 import React, { useState } from 'react'
-import { Button, Paragraph, Space, SpaceVertical } from '@looker/components'
+import {
+  Button,
+  ExtendComponentsThemeProvider,
+  Paragraph,
+  Space,
+  SpaceVertical,
+} from '@looker/components'
 import { defaultArgTypes as argTypes } from '../../../../apps/storybook/src/defaultArgTypes'
 import type { FieldTimeProps } from './FieldTime'
 import { FieldTime } from './FieldTime'
@@ -38,31 +44,50 @@ export default {
   title: 'Date / FieldTime',
 }
 
-const Template: Story<FieldTimeProps> = (args) => <FieldTime {...args} />
+const Template: Story<FieldTimeProps & { externalLabel: boolean }> = ({
+  externalLabel = true,
+  ...args
+}) => (
+  <ExtendComponentsThemeProvider
+    themeCustomizations={{ defaults: { externalLabel } }}
+  >
+    <FieldTime {...args} />
+  </ExtendComponentsThemeProvider>
+)
 
 export const Basic = Template.bind({})
-Basic.args = { defaultValue: '14:34', format: '12h', label: 'Label' }
+Basic.args = {
+  defaultValue: '14:34',
+  format: '12h',
+  label: 'Label',
+}
 
 export const Disabled = Template.bind({})
-Disabled.args = { defaultValue: '02:34', disabled: true, label: 'Label' }
+Disabled.args = { ...Basic.args, defaultValue: '02:34', disabled: true }
 
 export const Required = Template.bind({})
-Required.args = { defaultValue: '14:34', label: 'Label', required: true }
+Required.args = { ...Basic.args, required: true }
 
 export const Error = Template.bind({})
 Error.args = {
-  defaultValue: '14:34',
+  ...Basic.args,
   description: 'this is the description is a very long one',
   detail: 'detail',
-  label: 'Label',
   validationMessage: { message: 'validation Message', type: 'error' },
+}
+
+export const FloatingLabel = Template.bind({})
+FloatingLabel.args = {
+  ...Basic.args,
+  description: 'this is the description is a very long one',
+  detail: 'detail',
+  externalLabel: false,
 }
 
 export const MilitaryTime = Template.bind({})
 MilitaryTime.args = {
-  defaultValue: '14:34',
+  ...Basic.args,
   format: '24h',
-  label: 'Label',
 }
 
 export const Controlled = () => {
@@ -79,7 +104,11 @@ export const Controlled = () => {
         <Button onClick={partial(setControlledTime, '16:32')}>4:32pm</Button>
       </Space>
 
-      <FieldTime value={controlledTime} onChange={setControlledTime} />
+      <FieldTime
+        label="Controlled"
+        value={controlledTime}
+        onChange={setControlledTime}
+      />
     </SpaceVertical>
   )
 }

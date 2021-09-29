@@ -24,12 +24,13 @@
 
  */
 
-import type { Ref } from 'react'
+import type { FocusEvent, Ref } from 'react'
 import React, { forwardRef } from 'react'
 import styled from 'styled-components'
-import type { FieldProps } from '@looker/components'
+import type { FloatingLabelFieldProps } from '@looker/components'
 import {
-  Field,
+  FloatingLabelField,
+  getHasValue,
   omitFieldProps,
   pickFieldProps,
   useFormContext,
@@ -38,17 +39,28 @@ import {
 import type { InputTimeProps } from '../InputTime'
 import { InputTime } from '../InputTime'
 
-export interface FieldTimeProps extends FieldProps, InputTimeProps {}
+export interface FieldTimeProps
+  extends FloatingLabelFieldProps,
+    InputTimeProps {}
+
+const checkValueOnBlur = (e: FocusEvent) => {
+  const target = e.currentTarget
+  const inputs = Array.from(target.querySelectorAll('input'))
+  // Check all 3 inputs for a value
+  return inputs.every((input) => input.value !== '')
+}
 
 const FieldTimeComponent = forwardRef(
   (props: FieldTimeProps, ref: Ref<HTMLInputElement>) => {
     const validationMessage = useFormContext(props)
     const id = useID(props.id)
     return (
-      <Field
+      <FloatingLabelField
         {...pickFieldProps(props)}
         id={id}
         validationMessage={validationMessage}
+        hasValue={getHasValue(props)}
+        checkValueOnBlur={checkValueOnBlur}
       >
         <InputTime
           {...omitFieldProps(props)}
@@ -59,7 +71,7 @@ const FieldTimeComponent = forwardRef(
           validationType={validationMessage && validationMessage.type}
           ref={ref}
         />
-      </Field>
+      </FloatingLabelField>
     )
   }
 )

@@ -51,7 +51,7 @@ export default {
 }
 
 const Template: Story<FieldTextProps & { externalLabel: boolean }> = ({
-  externalLabel,
+  externalLabel = true,
   ...args
 }) => (
   <ExtendComponentsThemeProvider
@@ -62,7 +62,7 @@ const Template: Story<FieldTextProps & { externalLabel: boolean }> = ({
 )
 
 export const Basic = Template.bind({})
-Basic.args = { externalLabel: true, label: 'Text Input' }
+Basic.args = { label: 'Text Input' }
 
 export const Detail = Template.bind({})
 Detail.args = { ...Basic.args, detail: '0/50' }

@@ -31,10 +31,12 @@ import { useID } from '../../../utils'
 import { useFormContext } from '../../Form'
 import type { InputChipsProps } from '../../Inputs/InputChips/InputChips'
 import { InputChips } from '../../Inputs/InputChips/InputChips'
-import type { FieldProps } from '../Field'
-import { Field, omitFieldProps, pickFieldProps } from '../Field'
+import type { FloatingLabelFieldProps } from '../Field'
+import { FloatingLabelField, omitFieldProps, pickFieldProps } from '../Field'
 
-export interface FieldChipsProps extends FieldProps, InputChipsProps {}
+export interface FieldChipsProps
+  extends FloatingLabelFieldProps,
+    InputChipsProps {}
 
 const FieldChipsComponent = forwardRef(
   (props: FieldChipsProps, ref: Ref<HTMLInputElement>) => {
@@ -42,9 +44,11 @@ const FieldChipsComponent = forwardRef(
     const validationMessage = useFormContext(props)
 
     return (
-      <Field
+      <FloatingLabelField
         id={id}
         validationMessage={validationMessage}
+        hasValue={props.values.length > 0}
+        checkValueOnBlur={false}
         {...pickFieldProps(props)}
       >
         <InputChips
@@ -56,7 +60,7 @@ const FieldChipsComponent = forwardRef(
           validationType={validationMessage && validationMessage.type}
           values={props.values}
         />
-      </Field>
+      </FloatingLabelField>
     )
   }
 )
