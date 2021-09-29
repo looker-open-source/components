@@ -15,5 +15,14 @@
     "react-copy-to-clipboard": "^5.0.3",
     "react-is": "^16.13.1",
     "styled-components": "^5.3.0"
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+     "@looker/eslint-config-oss"
+    ],
+    "rules": {
+      "i18next/no-literal-string": "off"
+    }
   }
 }
