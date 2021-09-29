@@ -62,7 +62,14 @@ Basic.args = {
     from: new Date('May 18, 2020'),
     to: new Date('May 21, 2020'),
   },
+  externalLabel: true,
   label: 'Pick A Date',
+}
+
+export const LabelAnimation = Template.bind({})
+LabelAnimation.args = {
+  ...Basic.args,
+  externalLabel: false,
 }
 
 export const Disabled = Template.bind({})
@@ -78,16 +85,16 @@ DisabledNoDefaultValue.args = {
   label: 'Pick A Date',
 }
 
-export const Error = Template.bind({})
-Error.args = {
-  ...Basic.args,
-  validationMessage: { message: 'Field Disabled', type: 'error' },
-}
-
 export const NoDefaultValue = Template.bind({})
 NoDefaultValue.args = {
   externalLabel: false,
   label: 'Pick A Date',
+}
+
+export const Error = Template.bind({})
+Error.args = {
+  ...Basic.args,
+  validationMessage: { message: 'Field Disabled', type: 'error' },
 }
 
 export const Localized = () => {

@@ -458,6 +458,9 @@ const HyphenWrapper = styled.div<{ hasInputValues: boolean }>`
   color: ${({ theme, hasInputValues }) =>
     hasInputValues ? theme.colors.text3 : theme.colors.text1};
   display: flex;
+  .label-down & {
+    display: none;
+  }
 `
 const InputDateRangeWrapper = styled.div`
   width: 100%;
