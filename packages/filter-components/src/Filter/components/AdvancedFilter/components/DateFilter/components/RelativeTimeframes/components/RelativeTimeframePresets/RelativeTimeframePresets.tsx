@@ -32,8 +32,8 @@ import {
   MenuList,
   DialogContext,
 } from '@looker/components'
-import { Check } from '@styled-icons/material/Check'
-import { ExpandMore } from '@styled-icons/material-rounded/ExpandMore'
+import { Check } from '@styled-icons/material'
+import { ExpandMore } from '@styled-icons/material-rounded'
 import type { FC, MouseEvent } from 'react'
 import React, { useContext, useState } from 'react'
 import { useTranslation } from 'react-i18next'

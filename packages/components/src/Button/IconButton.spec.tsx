@@ -29,7 +29,7 @@ import React from 'react'
 import ReactDOMServer from 'react-dom/server'
 import { ComponentsProvider } from '@looker/components-providers'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { Favorite } from '@styled-icons/material/Favorite'
+import { Favorite } from '@styled-icons/material'
 import {
   act,
   fireEvent,

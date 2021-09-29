@@ -195,7 +195,7 @@ import {
   Warning,
 } from '@styled-icons/material'
 // eslint-disable-next-line import/first
-import { Favorite as FavoriteOutline } from '@styled-icons/material-outlined/Favorite'
+import { Favorite as FavoriteOutline } from '@styled-icons/material-outlined'
 
 const others = {
   Add,

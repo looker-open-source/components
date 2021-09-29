@@ -24,27 +24,31 @@
 
  */
 
-import { AddAlert } from '@styled-icons/material/AddAlert'
-import { Chat } from '@styled-icons/material/Chat'
-import { Create } from '@styled-icons/material/Create'
-import { Dashboard } from '@styled-icons/material/Dashboard'
-import { DeleteOutline } from '@styled-icons/material/DeleteOutline'
-import { Download } from '@styled-icons/material/Download'
-import { Favorite } from '@styled-icons/material/Favorite'
-import { MoreVert } from '@styled-icons/material/MoreVert'
-import { AttachFile } from '@styled-icons/material/AttachFile'
-import { PersonOutline } from '@styled-icons/material/PersonOutline'
-import { PieChart } from '@styled-icons/material/PieChart'
-import { Refresh } from '@styled-icons/material/Refresh'
-import { TableChart } from '@styled-icons/material/TableChart'
-import { TextSnippet } from '@styled-icons/material/TextSnippet'
-import { Undo } from '@styled-icons/material/Undo'
-import { VerifiedUser } from '@styled-icons/material/VerifiedUser'
-import { AccountCircle } from '@styled-icons/material-outlined/AccountCircle'
-import { Create as CreateOutline } from '@styled-icons/material-outlined/Create'
-import { CreateNewFolder } from '@styled-icons/material-outlined/CreateNewFolder'
-import { Explore as ExploreOutline } from '@styled-icons/material-outlined/Explore'
-import { Home } from '@styled-icons/material-outlined/Home'
+import {
+  AddAlert,
+  Chat,
+  Create,
+  Dashboard,
+  DeleteOutline,
+  Download,
+  Favorite,
+  MoreVert,
+  AttachFile,
+  PersonOutline,
+  PieChart,
+  Refresh,
+  TableChart,
+  TextSnippet,
+  Undo,
+  VerifiedUser,
+} from '@styled-icons/material'
+import {
+  AccountCircle,
+  Create as CreateOutline,
+  CreateNewFolder,
+  Explore as ExploreOutline,
+  Home,
+} from '@styled-icons/material-outlined'
 import type { MouseEvent, Ref } from 'react'
 import React, { forwardRef, Fragment, useMemo, useRef, useState } from 'react'
 import { Button, IconButton } from '../Button'

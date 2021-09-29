@@ -25,10 +25,12 @@
  */
 
 import React from 'react'
-import { Info } from '@styled-icons/material/Info'
-import { Explore } from '@styled-icons/material-outlined/Explore'
-import { TableChart } from '@styled-icons/material-outlined/TableChart'
-import { Visibility } from '@styled-icons/material-outlined/Visibility'
+import { Info } from '@styled-icons/material'
+import {
+  Explore,
+  TableChart,
+  Visibility,
+} from '@styled-icons/material-outlined'
 
 import { Tree, TreeCollection, TreeItem, IconButton } from '../..'
 
