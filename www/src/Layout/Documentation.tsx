@@ -29,7 +29,7 @@ import { graphql } from 'gatsby'
 import React from 'react'
 import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
-import { Launch } from '@styled-icons/material/Launch'
+import { Launch } from '@styled-icons/material'
 import {
   useTabs,
   TabList,

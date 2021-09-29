@@ -25,8 +25,7 @@
  */
 
 import React from 'react'
-import { Alarm } from '@styled-icons/material/Alarm'
-import { Download } from '@styled-icons/material/Download'
+import { Alarm, Download } from '@styled-icons/material'
 import type { Story } from '@storybook/react/types-6-0'
 import { defaultArgTypes as argTypes } from '../../../../../apps/storybook/src/defaultArgTypes'
 import type { TreeProps } from '..'

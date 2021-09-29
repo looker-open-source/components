@@ -26,7 +26,7 @@
 
 import type { FC } from 'react'
 import React from 'react'
-import { ArrowDropDown } from '@styled-icons/material/ArrowDropDown'
+import { ArrowDropDown } from '@styled-icons/material'
 import { ButtonOutline } from '../../Button'
 import { Box2 } from '../../Layout'
 import { Paragraph } from '../../Text'

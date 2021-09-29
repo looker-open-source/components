@@ -25,7 +25,7 @@
  */
 
 import React from 'react'
-import { DateRange } from '@styled-icons/material-outlined/DateRange'
+import { DateRange } from '@styled-icons/material-outlined'
 import { Tree, TreeCollection, TreeItem } from '..'
 
 export const ColorfulTree = () => (

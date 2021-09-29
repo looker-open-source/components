@@ -26,8 +26,7 @@
 import { useTranslation } from 'react-i18next'
 import type { FC } from 'react'
 import React, { useRef, useState, cloneElement, isValidElement } from 'react'
-import { Assignment } from '@styled-icons/material/Assignment'
-import { Done } from '@styled-icons/material/Done'
+import { Assignment, Done } from '@styled-icons/material'
 import { ButtonOutline } from '../Button/ButtonOutline'
 import { MultiFunctionButton } from '../Button/MultiFunctionButton'
 

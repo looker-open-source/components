@@ -122,22 +122,12 @@ module.exports = {
     'no-restricted-imports': [
       'error',
       {
-        paths: [
-          {
-            message:
-              "Please import icons from '@styled-icons/material/SomeIcon'",
-            name: '@styled-icons/material',
-          },
-          {
-            message:
-              "Please import icons from '@styled-icons/material-outlined/SomeIcon'",
-            name: '@looker/material-outlined',
-          },
-          {
-            message:
-              "Please import icons from '@styled-icons/material-rounded/SomeIcon'",
-            name: '@looker/material-rounded',
-          },
+        patterns: [
+          '**/core_api/*',
+          '@looker/icons/*',
+          '@styled-icons/material/*',
+          '@styled-icons/material-outlined/*',
+          '@styled-icons/material-rounded/*',
         ],
       },
     ],

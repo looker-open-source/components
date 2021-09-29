@@ -26,7 +26,7 @@
 
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { Science } from '@styled-icons/material-outlined/Science'
+import { Science } from '@styled-icons/material-outlined'
 import { screen, fireEvent } from '@testing-library/react'
 import { FieldToggleSwitch } from '../Form'
 import { Button } from '../Button'

@@ -67,7 +67,8 @@
   "rules": {
    "@typescript-eslint/no-explicit-any": "off",
    "@typescript-eslint/no-non-null-assertion": "off",
-   "sort-keys-fix/sort-keys-fix": "off"
+   "sort-keys-fix/sort-keys-fix": "off",
+   "no-restricted-imports": "off"
   }
  }
 }
