@@ -37,8 +37,8 @@ import {
 import it from 'date-fns/locale/it'
 
 import { defaultArgTypes as argTypes } from '../../../../apps/storybook/src/defaultArgTypes'
-import type { DayOfWeekNumbers } from '../__mocks__/LocaleSettings'
-import { LocaleSettings } from '../__mocks__/LocaleSettings'
+import type { DayOfWeekNumbers } from '../stories/LocaleSettings'
+import { LocaleSettings } from '../stories/LocaleSettings'
 import { DateFormat } from '../DateFormat'
 import type { FieldDateProps } from './FieldDate'
 import { FieldDate } from './FieldDate'
