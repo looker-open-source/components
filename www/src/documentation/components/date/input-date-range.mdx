@@ -106,46 +106,7 @@ storybook: true
 
 ## I18n
 
-`InputDateRange` acccepts two different props for use in localizing calendar output. The first is `dateStringLocale` accepts a country code and is used to format the rendered date string in the input box (i.e. `06/04/2020`). The second is `localization`, which is used to translate the calendar format and naming.
-
-### dateStringLocale
-
-```jsx
-<FieldDateRange
-  dateStringLocale="ko"
-  label="Korea (YYYY.MM.DD)"
-  value={{ from: new Date('June 2, 2020'), to: new Date('June 9, 2020') }}
-/>
-```
-
-### localization
-
-The `localization` prop can be used to provide translation strings for the names of the months, the days of the week, and what day the week starts on (usually `0` or `1`).
-
-```jsx
-;() => {
-  const months = [
-    'Gennaio',
-    'Febbraio',
-    'Marzo',
-    'Aprile',
-    'Maggio',
-    'Giugno',
-    'Luglio',
-    'Agosto',
-    'Settembre',
-    'Ottobre',
-    'Novembre',
-    'Dicembre',
-  ]
-  const weekdaysShort = ['Do', 'Lu', 'Ma', 'Me', 'Gi', 'Ve', 'Sa']
-  const firstDayOfWeek = 1 // monday
-  const localizationProps = { months, weekdaysShort, firstDayOfWeek }
-  return (
-    <InputDateRange localization={localizationProps} dateStringLocale="it" />
-  )
-}
-```
+See `locale` and `firstDayOfWeek` props on the [`Calendar`](calendar) component.
 
 ## Composing InputDateRange in a Popover
 

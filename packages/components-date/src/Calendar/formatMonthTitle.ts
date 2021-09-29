@@ -24,18 +24,17 @@
 
  */
 import { LocaleUtils } from 'react-day-picker'
-import type { CalendarLocalization } from './types'
+import type { Locale } from 'date-fns'
 
 /**
  * Curried month formatter function.
  * Takes a Date and returns a string containing the month and year (i.g. 'May 2021').
  * Used to label the currently shown month and year in the Calendar component.
  */
-export const formatMonthTitle =
-  (localization?: CalendarLocalization) => (month: Date) => {
-    if (localization?.months) {
-      return `${localization.months[month.getMonth()]} ${month.getFullYear()}`
-    } else {
-      return LocaleUtils.formatMonthTitle(month)
-    }
+export const formatMonthTitle = (locale?: Locale) => (month: Date) => {
+  if (locale) {
+    return `${locale.localize?.month(month.getMonth())} ${month.getFullYear()}`
+  } else {
+    return LocaleUtils.formatMonthTitle(month)
   }
+}

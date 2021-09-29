@@ -27,7 +27,10 @@
 import React, { useState } from 'react'
 import { fireEvent, screen } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { Locales } from '../utils/i18n'
+import en from 'date-fns/locale/en-US'
+import ital from 'date-fns/locale/it'
+import ko from 'date-fns/locale/ko'
+import { Locales } from '../locale/deprecated'
 import { InputDate } from './InputDate'
 
 const realDateNow = Date.now.bind(global.Date)
@@ -176,7 +179,7 @@ test('validates text input to match localized date format', () => {
   expect(mockProps.onValidationFail).toHaveBeenCalledTimes(1)
 })
 
-test('localizes calendar', () => {
+test('localizes calendar (deprecated)', () => {
   const months = [
     'Gennaio',
     'Febbraio',
@@ -209,7 +212,7 @@ test('localizes calendar', () => {
   ).toMatchInlineSnapshot(`"LuMaMeGiVeSaDo"`)
 })
 
-describe('localizes text input', () => {
+describe('localizes text input (deprecated)', () => {
   test('Korean', () => {
     renderWithTheme(
       <InputDate
@@ -234,6 +237,42 @@ describe('localizes text input', () => {
         dateStringLocale={Locales.English}
         defaultValue={new Date(Date.now())}
       />
+    )
+    expect(screen.getByDisplayValue('02/01/2020')).toBeInTheDocument()
+  })
+})
+
+test('localizes calendar', () => {
+  const { container } = renderWithTheme(
+    <InputDate locale={ital} firstDayOfWeek={1} />
+  )
+
+  expect(
+    screen.getByText('febbraio 2020', { selector: 'h5' })
+  ).toBeInTheDocument()
+  expect(
+    // eslint-disable-next-line testing-library/no-container
+    (container.querySelector('.DayPicker-WeekdaysRow') as HTMLElement)
+      .textContent
+  ).toMatchInlineSnapshot(`"lunmarmergiovensabdom"`)
+})
+
+describe('localizes text input', () => {
+  test('Korean', () => {
+    renderWithTheme(
+      <InputDate locale={ko} defaultValue={new Date(Date.now())} />
+    )
+    expect(screen.getByDisplayValue('2020.02.01')).toBeInTheDocument()
+  })
+  test('Italian', () => {
+    renderWithTheme(
+      <InputDate locale={ital} defaultValue={new Date(Date.now())} />
+    )
+    expect(screen.getByDisplayValue('01/02/2020')).toBeInTheDocument()
+  })
+  test('English', () => {
+    renderWithTheme(
+      <InputDate locale={en} defaultValue={new Date(Date.now())} />
     )
     expect(screen.getByDisplayValue('02/01/2020')).toBeInTheDocument()
   })
