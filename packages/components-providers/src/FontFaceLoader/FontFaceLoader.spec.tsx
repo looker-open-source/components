@@ -70,6 +70,7 @@ describe('FontFaceLoader', () => {
   })
 
   it('Does nothing if fontSource undefined', () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const context = {} as any
 
     render(
@@ -83,6 +84,7 @@ describe('FontFaceLoader', () => {
   })
 
   it('Does nothing if fontSource empty', () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const context = {} as any
 
     render(
@@ -97,6 +99,7 @@ describe('FontFaceLoader', () => {
   })
 
   it('theme.fontSources has entries', () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const context = {} as any
 
     render(

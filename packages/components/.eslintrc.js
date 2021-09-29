@@ -24,20 +24,31 @@
 
  */
 
-import { ComponentsProvider } from '@looker/components-providers'
-import type { RenderOptions } from '@testing-library/react'
-import { render } from '@testing-library/react'
-import 'jest-styled-components'
-import type { ReactElement } from 'react'
-import React from 'react'
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const ignoreProps = require('../eslint-config-oss/src/i18nIgnoredProps.js')
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const withThemeProvider = (Component: ReactElement<any>) => (
-  <ComponentsProvider disableStyleDefender>{Component}</ComponentsProvider>
-)
-
-export const renderWithTheme = (
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  Component: ReactElement<any>,
-  options?: Omit<RenderOptions, 'queries'>
-) => render(withThemeProvider(Component), options)
+module.exports = {
+  extends: ['@looker/eslint-config-oss'],
+  overrides: [
+    {
+      files: ['*.tsx', '*.ts'],
+      rules: {
+        '@typescript-eslint/no-explicit-any': 'off',
+        'i18next/no-literal-string': [
+          2,
+          {
+            ignoreAttribute: ignoreProps,
+            ignoreComponent: ['HyphenWrapper', 'Icon', 'WarningIcon'],
+            markupOnly: true,
+          },
+        ],
+      },
+    },
+    {
+      files: ['*.spec.*', '*.stories.*', '**/__mocks__/**', '**/stories/**'],
+      rules: {
+        'i18next/no-literal-string': 'off',
+      },
+    },
+  ],
+}
