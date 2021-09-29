@@ -24,33 +24,31 @@
 
  */
 
-import React from 'react'
-import toPairs from 'lodash/toPairs'
-import {
-  Table,
-  TableBody,
-  TableDataCell,
-  TableHead,
-  TableHeaderCell,
-  TableRow,
-} from '@looker/components'
-import { Locales } from '@looker/components-date'
+import type { ValidationType } from '@looker/components'
+import type { Locales } from './locale/deprecated'
+import type { CalendarLocaleProps } from './Calendar'
 
-export const LocaleTable = () => (
-  <Table mb="large">
-    <TableHead>
-      <TableRow>
-        <TableHeaderCell>Name</TableHeaderCell>
-        <TableHeaderCell>Code</TableHeaderCell>
-      </TableRow>
-    </TableHead>
-    <TableBody>
-      {toPairs(Locales).map((locale) => (
-        <TableRow key={locale[0]}>
-          <TableDataCell>{locale[0]}</TableDataCell>
-          <TableDataCell>{locale[1]}</TableDataCell>
-        </TableRow>
-      ))}
-    </TableBody>
-  </Table>
-)
+export type InputDateBaseProps = CalendarLocaleProps & {
+  'aria-labelledby'?: string
+  /**
+   * Format to display the date string in, may vary by locale.
+   * Supports full, long, medium, and short as well as all patterns supported by date-fns
+   * @default medium
+   */
+  dateStringFormat?: string
+  /**
+   * @deprecated Use locale instead
+   */
+  dateStringLocale?: Locales
+  disabled?: boolean
+  id?: string
+  onValidationFail?: (value: string) => void
+  validationType?: ValidationType
+}
+
+// TODO delete when localization on date components is removed
+export interface CalendarLocalization {
+  firstDayOfWeek: number
+  months: string[]
+  weekdaysShort: string[]
+}

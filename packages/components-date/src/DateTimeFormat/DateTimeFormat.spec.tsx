@@ -26,7 +26,8 @@
 
 import { render } from '@testing-library/react'
 import React from 'react'
-import { Locales } from '../utils/i18n'
+import ar from 'date-fns/locale/ar-SA'
+import { Locales } from '../locale/deprecated'
 import { DateTimeFormat } from './DateTimeFormat'
 const date = new Date('January 25, 1988 11:58:03')
 
@@ -41,6 +42,17 @@ describe('DateTimeFormat', () => {
   })
 
   test('specific locale', () => {
+    const { container } = render(
+      <DateTimeFormat locale={ar}>{date}</DateTimeFormat>
+    )
+    expect(container).toMatchInlineSnapshot(`
+      <div>
+        ينا 25, 1988, 11:58:03 ص
+      </div>
+    `)
+  })
+
+  test('specific locale (deprecated)', () => {
     const { container } = render(
       <DateTimeFormat locale={Locales.Arabic}>{date}</DateTimeFormat>
     )

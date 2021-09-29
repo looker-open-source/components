@@ -23,6 +23,8 @@
  SOFTWARE.
 
  */
+
+import en from 'date-fns/locale/en-US'
 import type { FC } from 'react'
 import React from 'react'
 import type { RangeModifier } from 'react-day-picker'
@@ -31,20 +33,40 @@ import styled, { css } from 'styled-components'
 import has from 'lodash/has'
 import noop from 'lodash/noop'
 import { reset, calendarMixColor } from '@looker/design-tokens'
+import type { Locale } from 'date-fns'
+import type { CalendarLocalization } from '../types'
+import { formatDateString } from '../locale'
 import { calendarSize, calendarSpacing } from './calendar-size'
 import { CalendarContext } from './CalendarContext'
 import { CalendarNav } from './CalendarNav'
 import { dayPickerCss } from './dayPickerCss'
 import { CalendarNavDisabled } from './CalendarNavDisabled'
 import { formatMonthTitle } from './formatMonthTitle'
-import type { CalendarLocalization } from './types'
 
 type NavCB = (date: Date) => void
 
-interface CalendarProps {
+export type CalendarLocaleProps = {
+  /**
+   * The day to use as first day of the week, starting from 0 (Sunday) to 6 (Saturday).
+   * Uses the locale default (0 for en-US)
+   */
+  firstDayOfWeek?: number
+  /**
+   * Locale object from date-fns
+   * @default date-fns/locale/en-US
+   * @example
+   * import ko from 'date-fns/locale/ko'
+   */
+  locale?: Locale
+  /**
+   * @deprecated Use locale instead
+   */
+  localization?: CalendarLocalization
+}
+
+export type CalendarProps = CalendarLocaleProps & {
   className?: string
   disabled?: boolean
-  localization?: CalendarLocalization
   onDayClick?: NavCB
   onMonthChange?: NavCB
   onNextClick?: NavCB
@@ -59,9 +81,51 @@ interface CalendarProps {
 
 const NoopComponent: FC = () => null
 
+const getLocaleProps = ({
+  firstDayOfWeek,
+  locale = en,
+  localization,
+}: CalendarLocaleProps) => {
+  // TODO [START] delete when localization prop is removed
+  if (localization) {
+    return {
+      ...localization,
+      localeUtils: {
+        ...LocaleUtils,
+        formatMonthTitle: (month: Date) => {
+          if (localization?.months) {
+            return `${
+              localization.months[month.getMonth()]
+            } ${month.getFullYear()}`
+          }
+          return LocaleUtils.formatMonthTitle(month)
+        },
+      },
+    }
+  }
+  // TODO [END] delete when localization prop is removed
+
+  const localeUtils: typeof LocaleUtils = {
+    ...LocaleUtils,
+    formatDay: (date) => formatDateString(date, locale, 'iii PP'),
+    formatMonthTitle: formatMonthTitle(locale),
+    formatWeekdayLong: (date) => locale.localize?.day(date),
+    formatWeekdayShort: (date) =>
+      locale.localize?.day(date, { width: 'short' }),
+  }
+
+  return {
+    firstDayOfWeek,
+    locale: locale.code,
+    localeUtils,
+  }
+}
+
 const InternalCalendar: FC<CalendarProps> = ({
   className,
   disabled,
+  firstDayOfWeek: propsFirstDayOfWeek,
+  locale,
   localization,
   onDayClick,
   onMonthChange,
@@ -74,6 +138,8 @@ const InternalCalendar: FC<CalendarProps> = ({
   showPreviousButton = true,
   viewMonth,
 }) => {
+  const firstDayOfWeek = propsFirstDayOfWeek ?? locale?.options?.weekStartsOn
+
   const renderDateRange = selectedDates && has(selectedDates, 'from')
   const modifiers = renderDateRange ? selectedDates : {}
 
@@ -95,11 +161,7 @@ const InternalCalendar: FC<CalendarProps> = ({
       }}
     >
       <DayPicker
-        {...(localization || {})}
-        localeUtils={{
-          ...LocaleUtils,
-          formatMonthTitle: formatMonthTitle(localization),
-        }}
+        {...getLocaleProps({ firstDayOfWeek, locale, localization })}
         className={`${renderDateRange && 'render-date-range'} ${className}`}
         selectedDays={selectedDates}
         month={viewMonth}
