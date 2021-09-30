@@ -24,7 +24,7 @@
 
  */
 
-import type { Ref } from 'react'
+import type { FocusEvent, Ref } from 'react'
 import React, { forwardRef } from 'react'
 import styled from 'styled-components'
 import { useID } from '../../../utils'
@@ -44,6 +44,12 @@ const getHasValue = ({ values, defaultValues }: SelectMultiProps) => {
   return false
 }
 
+const checkValueOnBlur = (e: FocusEvent) => {
+  const target = e.currentTarget
+  const options = target.querySelectorAll('[role="option"]')
+  return options.length !== 0
+}
+
 const FieldSelectMultiComponent = forwardRef(
   (props: FieldSelectMultiProps, ref: Ref<HTMLInputElement>) => {
     const validationMessage = useFormContext(props)
@@ -56,7 +62,7 @@ const FieldSelectMultiComponent = forwardRef(
         ariaLabelOnly
         validationMessage={validationMessage}
         hasValue={getHasValue(props)}
-        checkValueOnBlur={false}
+        checkValueOnBlur={checkValueOnBlur}
       >
         <SelectMulti
           {...omitFieldProps(props)}
