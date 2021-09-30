@@ -36,6 +36,12 @@ export type DateTimeFormatProps = {
   children?: Date
   format?: DateFormats | string
   // TODO delete Locales when enum is removed
+  /**
+   * Locale object from date-fns. Note: Locales enum previously supported in this prop
+   * is deprecated and will be removed in a future MAJOR release.
+   * @example
+   * import ko from 'date-fns/locale/ko'
+   */
   locale?: Locale | Locales
   timeZone?: string
 }
