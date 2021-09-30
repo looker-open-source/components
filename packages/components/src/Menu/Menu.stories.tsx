@@ -635,7 +635,12 @@ export const NestedMenu = () => {
       </MenuItem>
       <MenuItem onClick={getOnClick('Third Sub Item')}>Third Sub Item</MenuItem>
       <MenuItem onClick={getOnClick('4th Sub Item')}>4th Sub Item</MenuItem>
-      <MenuItem onClick={getOnClick('Fifth Sub Item')}>Fifth Sub Item</MenuItem>
+      <MenuItem
+        nestedMenu={<MenuItem>More nesting!</MenuItem>}
+        onClick={getOnClick('Fifth Sub Item')}
+      >
+        Fifth Sub Item (nested again)
+      </MenuItem>
       <MenuItem onClick={getOnClick('preventDefault')}>preventDefault</MenuItem>
     </>
   )

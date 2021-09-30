@@ -91,6 +91,11 @@ export type ListItemColorProp = {
 
 export type ListItemStatefulProps = {
   /**
+   * Indicates an open nested menu
+   * @private
+   */
+  'aria-expanded'?: boolean
+  /**
    * If true, the ListItem will have a "disabled" presentation.
    * @default false
    */

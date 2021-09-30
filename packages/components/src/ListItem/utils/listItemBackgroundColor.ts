@@ -33,6 +33,7 @@ export type ListItemBackgroundColorProps = ListItemStatefulProps &
   ListItemColorProp
 
 export const listItemBackgroundColor = ({
+  'aria-expanded': ariaExpanded,
   color,
   disabled,
   hovered,
@@ -56,7 +57,8 @@ export const listItemBackgroundColor = ({
   if (disabled) renderedColor = 'transparent'
   else if (selected && hovered) renderedColor = stateColors.all
   else if (selected) renderedColor = stateColors.selected
-  else if (hovered) renderedColor = stateColors.hovered
+  // aria-expanded indicates an open nested menu, color should match hovered
+  else if (hovered || ariaExpanded) renderedColor = stateColors.hovered
   else renderedColor = 'transparent'
 
   return css`
