@@ -24,7 +24,8 @@
 
  */
 
-import styled from 'styled-components'
+import type { Keyframes } from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import type { ResponsiveValue } from '@looker/design-tokens'
 import { variant, system } from '@looker/design-tokens'
 import { SurfaceBase, surfaceTransition } from '../Dialog/SurfaceBase'
@@ -83,25 +84,47 @@ const drawerWidth = () => {
   })
 }
 
+const slideIn: Keyframes = keyframes`
+from {
+  opacity: 0.01;
+  transform: translate(var(--direction-translate, 0), 0);
+}
+to {
+  opacity: 1;
+  transform: translate(0);
+}
+`
+const slideOut: Keyframes = keyframes`
+  from {
+    opacity: 1;
+    transform: translate(0);
+  }
+  to {
+    opacity: 0.01;
+    transform: translate(var(--direction-translate, 0), 0);
+  }
+`
+
 export const DrawerSurface = styled(SurfaceBase).attrs<DrawerSurfaceProps>(
   ({ placement = 'right', width = 'small' }) => ({
     placement,
     width,
   })
 )<DrawerSurfaceProps>`
+  --direction-translate: ${({ placement }) =>
+    placement === 'left' ? '-100%' : '100%'};
+
   /* Shadow designed to match theme.elevations.plus3 but with a single left-side shadow */
   height: 100%;
   position: absolute;
-  transition: transform ${surfaceTransition}, opacity ${surfaceTransition};
 
   ${placement}
   ${drawerWidth}
 
-  &.entering,
+  &.entering {
+    animation: ${slideIn} ${surfaceTransition};
+  }
   &.exiting {
-    opacity: 0.01;
-    transform: translateX(
-      ${({ placement }) => (placement === 'left' ? '-100%' : '100%')}
-    );
+    animation: ${slideOut} ${surfaceTransition};
   }
 `
