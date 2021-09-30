@@ -24,12 +24,12 @@
 
  */
 
-import type { Ref } from 'react'
+import type { FocusEvent, Ref } from 'react'
 import React, { forwardRef } from 'react'
 import styled from 'styled-components'
-import type { FieldProps } from '@looker/components'
+import type { FieldProps, FloatingLabelFieldProps } from '@looker/components'
 import {
-  Field,
+  FloatingLabelField,
   omitFieldProps,
   pickFieldProps,
   useFormContext,
@@ -40,17 +40,27 @@ import { InputDateRange } from '../InputDateRange'
 
 export interface FieldInputDateRangeProps
   extends FieldProps,
+    FloatingLabelFieldProps,
     InputDateRangeProps {
   ref: Ref<HTMLInputElement>
+}
+
+const checkValueOnBlur = (e: FocusEvent) => {
+  const inputs = Array.from(e.currentTarget.querySelectorAll('input'))
+  // Check both inputs (to - from) for a value
+  return inputs.some((input) => input.value !== '')
 }
 
 const FieldDateRangeComponent = forwardRef(
   (props: FieldInputDateRangeProps, ref: Ref<HTMLInputElement>) => {
     const validationMessage = useFormContext(props)
     const id = useID(props.id)
+
     return (
-      <Field
+      <FloatingLabelField
         {...pickFieldProps(props)}
+        checkValueOnBlur={checkValueOnBlur}
+        hasValue={!!props.defaultValue || !!props.value}
         id={id}
         validationMessage={validationMessage}
       >
@@ -62,7 +72,7 @@ const FieldDateRangeComponent = forwardRef(
           validationType={validationMessage && validationMessage.type}
           ref={ref}
         />
-      </Field>
+      </FloatingLabelField>
     )
   }
 )

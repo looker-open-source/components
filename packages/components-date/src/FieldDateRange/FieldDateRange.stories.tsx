@@ -25,7 +25,11 @@
  */
 import React, { useState } from 'react'
 import type { Story } from '@storybook/react/types-6-0'
-import { FieldSelect, Paragraph } from '@looker/components'
+import {
+  ExtendComponentsThemeProvider,
+  FieldSelect,
+  Paragraph,
+} from '@looker/components'
 import { defaultArgTypes as argTypes } from '../../../../apps/storybook/src/defaultArgTypes'
 import { DateFormat } from '../DateFormat'
 import { Locales } from '../utils/i18n'
@@ -43,9 +47,14 @@ export default {
   title: 'Date / FieldDateRange',
 }
 
-const Template: Story<FieldInputDateRangeProps> = (args) => (
-  <FieldDateRange {...args} />
-)
+const Template: Story<FieldInputDateRangeProps & { externalLabel: boolean }> =
+  ({ externalLabel = true, ...args }) => (
+    <ExtendComponentsThemeProvider
+      themeCustomizations={{ defaults: { externalLabel } }}
+    >
+      <FieldDateRange {...args} />
+    </ExtendComponentsThemeProvider>
+  )
 
 export const Basic = Template.bind({})
 Basic.args = {
@@ -53,26 +62,73 @@ Basic.args = {
     from: new Date('May 18, 2020'),
     to: new Date('May 21, 2020'),
   },
+  externalLabel: true,
   label: 'Pick A Date',
 }
 
 export const Disabled = Template.bind({})
 Disabled.args = {
-  defaultValue: {
-    from: new Date('Jun 7, 2000'),
-    to: new Date('Jun 19, 2000'),
-  },
+  ...Basic.args,
   disabled: true,
+}
+
+export const FloatingLabel = Template.bind({})
+FloatingLabel.args = {
+  ...Basic.args,
+  externalLabel: false,
+}
+
+export const FloatingLabelDisabledNoDefaultValue = Template.bind({})
+FloatingLabelDisabledNoDefaultValue.args = {
+  disabled: true,
+  externalLabel: false,
   label: 'Pick A Date',
+}
+
+export const FloatingLabelNoDefaultValue = Template.bind({})
+FloatingLabelNoDefaultValue.args = {
+  externalLabel: false,
+  label: 'Pick A Date',
+}
+
+export const ControlledFloatingLabel = () => {
+  const [range, setRange] = useState<FieldInputDateRangeProps['value']>({
+    from: new Date('May 18, 2020'),
+    to: new Date('May 21, 2020'),
+  })
+  return (
+    <ExtendComponentsThemeProvider
+      themeCustomizations={{ defaults: { externalLabel: false } }}
+    >
+      <FieldDateRange
+        externalLabel={false}
+        label="Controlled"
+        value={range}
+        onChange={setRange}
+      />
+    </ExtendComponentsThemeProvider>
+  )
+}
+
+export const ControlledNoValueFloatingLabel = () => {
+  const [range, setRange] = useState<FieldInputDateRangeProps['value']>()
+  return (
+    <ExtendComponentsThemeProvider
+      themeCustomizations={{ defaults: { externalLabel: false } }}
+    >
+      <FieldDateRange
+        externalLabel={false}
+        label="Controlled"
+        value={range}
+        onChange={setRange}
+      />
+    </ExtendComponentsThemeProvider>
+  )
 }
 
 export const Error = Template.bind({})
 Error.args = {
-  defaultValue: {
-    from: new Date('Jun 7, 2000'),
-    to: new Date('Jun 19, 2000'),
-  },
-  label: 'Pick A Date',
+  ...Basic.args,
   validationMessage: { message: 'Field Disabled', type: 'error' },
 }
 
