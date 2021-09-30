@@ -341,10 +341,10 @@ describe('<Menu />', () => {
       fireEvent.click(screen.getByText('French'))
       expect(screen.getByText('Camembert')).toBeVisible()
 
-      // If the the nestedMenu was already opened via hover, click closes both Menus
+      // If the the nestedMenu was already opened via hover, click does nothing
       // (userEvent.click fires 'mouseenter' first)
       userEvent.click(screen.getByText('French'))
-      expect(screen.queryByRole('menu')).not.toBeInTheDocument()
+      expect(screen.getByText('Camembert')).toBeVisible()
 
       // If the parent MenuItem has an onClick, click doesn't open the nestedMenu
       // and the parent Menu is closed after
