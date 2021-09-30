@@ -125,6 +125,24 @@ Controlled.parameters = {
   storyshots: { disable: true },
 }
 
+export const ControlledFloatingLabel = () => {
+  const [today, setToday] = useState<Date>()
+  const onClickSelectToday = () => setToday(new Date())
+  return (
+    <ExtendComponentsThemeProvider
+      themeCustomizations={{ defaults: { externalLabel: false } }}
+    >
+      <Button onClick={onClickSelectToday}>Today</Button>
+      <FieldDate
+        externalLabel={false}
+        label="Controlled"
+        value={today}
+        onChange={setToday}
+      />
+    </ExtendComponentsThemeProvider>
+  )
+}
+
 export const Localized = () => {
   const [localizedDate, setLocalizedDate] = useState<Date | undefined>()
   const [locale, setLocale] = useState<Locales>(Locales.Italian)
