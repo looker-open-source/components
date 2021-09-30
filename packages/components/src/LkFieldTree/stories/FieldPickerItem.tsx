@@ -109,7 +109,7 @@ export const FieldPickerItem: FC<FieldPickerItemProps> = ({
           width: 48,
         },
       }}
-      onKeyDown={(event) => {
+      onKeyDown={event => {
         if (event.key === 'Enter' && event.metaKey) {
           alert(`CMD + Enter'ed on ${children}!`)
         } else if (

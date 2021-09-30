@@ -31,7 +31,7 @@ import { defaultArgTypes as argTypes } from '../../../../../../apps/storybook/sr
 import type { InputSearchProps } from './InputSearch'
 import { InputSearch } from './InputSearch'
 
-const Template: Story<InputSearchProps> = (args) => <InputSearch {...args} />
+const Template: Story<InputSearchProps> = args => <InputSearch {...args} />
 
 export const Basic = Template.bind({})
 Basic.args = {}
@@ -110,7 +110,7 @@ export const Advanced = () => {
       { detail: 'got details?', value: 'Bar' },
     ]
     return startingOptions.filter(
-      (option) => option.value.toUpperCase().indexOf(value.toUpperCase()) > -1
+      option => option.value.toUpperCase().indexOf(value.toUpperCase()) > -1
     )
   }, [value])
 

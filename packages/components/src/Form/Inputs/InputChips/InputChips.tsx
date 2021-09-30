@@ -74,7 +74,7 @@ export const splitInputValue = (inputValue: string) => {
   const splitRegexp = `[,\\t\\n\\r]+`
   return removedEscapes
     .split(new RegExp(splitRegexp))
-    .map((value) =>
+    .map(value =>
       value
         .replace(new RegExp(commaKey, 'g'), ',')
         .replace(new RegExp(tabKey, 'g'), '\t')

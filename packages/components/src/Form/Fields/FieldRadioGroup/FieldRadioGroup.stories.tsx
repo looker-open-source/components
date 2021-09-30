@@ -37,7 +37,7 @@ export default {
   title: 'FieldRadioGroup',
 }
 
-const Template: Story<FieldRadioGroupProps> = (args) => (
+const Template: Story<FieldRadioGroupProps> = args => (
   <FieldRadioGroup
     {...args}
     autoFocus

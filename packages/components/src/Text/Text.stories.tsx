@@ -30,7 +30,7 @@ import { defaultArgTypes as argTypes } from '../../../../apps/storybook/src/defa
 import type { TextProps } from './Text'
 import { Text } from './Text'
 
-const Template: Story<TextProps> = (args) => <Text {...args} />
+const Template: Story<TextProps> = args => <Text {...args} />
 
 export const Basic = Template.bind({})
 Basic.args = {

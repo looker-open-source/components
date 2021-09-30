@@ -57,7 +57,7 @@ const partitionMenuProps = (
   const allProps = { ...props }
 
   const popoverProps = {}
-  popoverPropKeys.forEach((key) => {
+  popoverPropKeys.forEach(key => {
     if (props[key] !== undefined) {
       popoverProps[key] = props[key]
     }

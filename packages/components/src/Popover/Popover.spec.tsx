@@ -99,7 +99,7 @@ describe('Popover', () => {
   test('renderProps style expanded opens and closes', () => {
     renderWithTheme(
       <Popover content={SimpleContent}>
-        {(popoverProps) => <button {...popoverProps}>Test</button>}
+        {popoverProps => <button {...popoverProps}>Test</button>}
       </Popover>
     )
 
@@ -118,7 +118,7 @@ describe('Popover', () => {
 
   test('preventDefault works on trigger 2nd click', () => {
     // preventDefault here avoids JSDOM error
-    const mockFormSubmit = jest.fn((e) => e.preventDefault())
+    const mockFormSubmit = jest.fn(e => e.preventDefault())
 
     renderWithTheme(
       <form onSubmit={mockFormSubmit}>

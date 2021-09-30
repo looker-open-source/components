@@ -72,7 +72,7 @@ const NumberFilter = ({
 }
 
 const getValue = (expression: string) =>
-  expression.split(',').map((text) => parseInt(text, 10))
+  expression.split(',').map(text => parseInt(text, 10))
 
 const Filter = ({
   expression,

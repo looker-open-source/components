@@ -110,7 +110,7 @@ describe('Dialog', () => {
   test('Render props style', async () => {
     renderWithTheme(
       <Dialog content={<SimpleContent />}>
-        {(dialogProps) => <a {...dialogProps}>Open Dialog</a>}
+        {dialogProps => <a {...dialogProps}>Open Dialog</a>}
       </Dialog>
     )
 

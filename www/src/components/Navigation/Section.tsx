@@ -40,7 +40,7 @@ export const Section: FC<SectionProps> = ({ section }) => {
   const location = useLocation()
   const currentPath = location.pathname
 
-  const navigationItems = section.children.map((child) => {
+  const navigationItems = section.children.map(child => {
     const uri = child.path
 
     if ((child as NavigationSection).children) {

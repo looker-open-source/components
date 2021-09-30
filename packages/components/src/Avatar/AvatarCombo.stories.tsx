@@ -30,7 +30,7 @@ import { defaultArgTypes as argTypes } from '../../../../apps/storybook/src/defa
 import type { AvatarComboProps } from './AvatarCombo'
 import { AvatarCombo } from './AvatarCombo'
 
-const Template: Story<AvatarComboProps> = (args) => <AvatarCombo {...args} />
+const Template: Story<AvatarComboProps> = args => <AvatarCombo {...args} />
 
 const user = {
   avatar_url:

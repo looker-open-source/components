@@ -82,7 +82,7 @@ export const useI18n = ({
   resources = i18nResources,
 }: UseI18nProps) => {
   if (!i18next.isInitialized) {
-    i18nInit({ ...i18nInitOptions, lng: locale, resources }).catch((err) =>
+    i18nInit({ ...i18nInitOptions, lng: locale, resources }).catch(err =>
       // eslint-disable-next-line no-console
       console.error(err)
     )

@@ -52,11 +52,11 @@ export const doDataTableSort = <T>(
 ) => {
   const sortedData = [...data]
   const updatedColumns = [...columns]
-  const targetColumn = updatedColumns.find((column) => column.id === id)
+  const targetColumn = updatedColumns.find(column => column.id === id)
 
   // The default sort behavior only allows for one column to appear sorted at a time
   // Using delete operator to clean out all sortDirection properties in our columns array
-  columns.forEach((column) => delete column.sortDirection)
+  columns.forEach(column => delete column.sortDirection)
   if (targetColumn) {
     if (targetColumn.type === 'number') {
       if (sortDirection === 'desc') {

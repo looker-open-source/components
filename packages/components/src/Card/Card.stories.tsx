@@ -36,7 +36,7 @@ export default {
   title: 'Card',
 }
 
-const Template: Story<CardProps> = (args) => <Card {...args}>A basic card</Card>
+const Template: Story<CardProps> = args => <Card {...args}>A basic card</Card>
 
 export const Default = Template.bind({})
 

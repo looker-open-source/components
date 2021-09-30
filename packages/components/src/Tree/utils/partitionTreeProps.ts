@@ -29,7 +29,7 @@ import { treeItemInnerPropKeys } from '../types'
 export const partitionTreeProps = (props: Record<string, any>) => {
   const treeItemInnerProps = {}
   const accordionInnerProps = {}
-  Object.entries(props).forEach((prop) => {
+  Object.entries(props).forEach(prop => {
     const [propKey, propValue] = prop
     /**
      * treeItemInnerPropKeys const assertion doesn't like checking against a string type;

@@ -88,7 +88,7 @@ export const colorBreakdown = (colors: Colors): ColorBreakdown => {
   const statefulColorGroups: StatefulColorGroups = chunk(
     Object.entries(divided.stateful),
     7
-  ).map((chunk) => {
+  ).map(chunk => {
     const obj = {}
     chunk.forEach(([name, color]) => (obj[name] = color))
     return obj

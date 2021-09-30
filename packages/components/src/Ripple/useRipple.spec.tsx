@@ -54,7 +54,7 @@ const RippleInner = (props: UseRippleProps) => {
 // (then just change the value below to use this for the brandAnimation: false scenario)
 const RippleComponent = (props: UseRippleProps) => (
   <ThemeProvider
-    theme={(theme) => ({
+    theme={theme => ({
       ...theme,
       defaults: { ...theme.defaults, brandAnimation: true },
     })}

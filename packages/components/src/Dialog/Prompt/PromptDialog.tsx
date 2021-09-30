@@ -94,7 +94,7 @@ export interface PromptDialogProps extends PromptBaseProps {
   isOpen?: boolean
 }
 
-export const PromptDialog: FC<PromptDialogProps> = (props) => {
+export const PromptDialog: FC<PromptDialogProps> = props => {
   const { t } = useTranslation('PromptDialog')
   const cancelLabelText = t('Cancel')
   const saveLabelText = t('Save')

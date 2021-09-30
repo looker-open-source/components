@@ -54,7 +54,7 @@ export default {
   title: `Date / FieldDate`,
 }
 
-const Template: Story<FieldDateProps> = (args) => <FieldDate {...args} />
+const Template: Story<FieldDateProps> = args => <FieldDate {...args} />
 
 export const Basic = Template.bind({})
 Basic.args = { defaultValue: new Date('July 25, 2020'), label: 'Example' }

@@ -53,14 +53,14 @@ export interface SpinnerProps
   color?: string
 }
 
-const SpinnerFactory: FC<SpinnerProps> = (props) => {
+const SpinnerFactory: FC<SpinnerProps> = props => {
   const { color = 'text5', markers = 13, markerRadius, speed = 1000 } = props
   return (
     <Style
       data-testid="loading-spinner"
       {...omit(props, 'color', 'markers', 'markersRadius', 'speed')}
     >
-      {range(markers).map((i) => (
+      {range(markers).map(i => (
         <SpinnerMarker
           backgroundColor={color}
           key={i}

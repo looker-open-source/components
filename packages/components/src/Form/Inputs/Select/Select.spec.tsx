@@ -135,7 +135,7 @@ describe('Select / SelectMulti', () => {
       function handleFilter(term: string) {
         mockOnFilter(term)
         setOptions(
-          initialOptions.filter((option) => option.value.indexOf(term) > -1)
+          initialOptions.filter(option => option.value.indexOf(term) > -1)
         )
       }
 
@@ -300,7 +300,7 @@ describe('Select / SelectMulti', () => {
     (listLevel: boolean) => (indicator: ComboboxOptionIndicatorFunction) =>
       (
         <Select
-          options={options.map((opt) => ({
+          options={options.map(opt => ({
             ...opt,
             ...(listLevel ? {} : { indicator }),
           }))}
@@ -315,7 +315,7 @@ describe('Select / SelectMulti', () => {
     (listLevel: boolean) => (indicator: ComboboxOptionIndicatorFunction) =>
       (
         <SelectMulti
-          options={options.map((opt) => ({
+          options={options.map(opt => ({
             ...opt,
             ...(listLevel ? {} : { indicator }),
           }))}
@@ -495,13 +495,13 @@ describe('Select / SelectMulti', () => {
     > = [
       [
         'Select',
-        (longOptions) => (
+        longOptions => (
           <Select placeholder="Search" options={longOptions} key="select" />
         ),
       ],
       [
         'SelectMulti',
-        (longOptions) => (
+        longOptions => (
           <SelectMulti
             placeholder="Search"
             options={longOptions}
@@ -989,7 +989,7 @@ describe('Select', () => {
     const Component = () => {
       const [filterTerm, setFilterTerm] = useState('')
       const filteredOptions = useMemo(
-        () => options.filter((option) => option.label.indexOf(filterTerm) > -1),
+        () => options.filter(option => option.label.indexOf(filterTerm) > -1),
         [filterTerm]
       )
       return (
@@ -1146,9 +1146,7 @@ describe('Select', () => {
     function Component() {
       const [optionsToUse, setOptions] = useState(options100)
       function handleFilter(term: string) {
-        setOptions(
-          options100.filter((option) => option.value.indexOf(term) > -1)
-        )
+        setOptions(options100.filter(option => option.value.indexOf(term) > -1))
       }
       return (
         <Select

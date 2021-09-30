@@ -71,7 +71,7 @@ const Template: Story<DemoProps> = ({
    * and deep-copying the column objects prevents states where
    * sortDirection from a previous story persists on the new story
    */
-  const cleanColumns = columns.map((c) => ({ ...c }))
+  const cleanColumns = columns.map(c => ({ ...c }))
 
   const allPageItems = pageItems || data.map(({ id }) => id)
   const [cheeseData, setCheeseData] = useState(data)
@@ -139,7 +139,7 @@ const Template: Story<DemoProps> = ({
         filters ? (
           <InputFilters
             filters={listFilters}
-            onChange={(f) => setListFilters(f)}
+            onChange={f => setListFilters(f)}
           />
         ) : undefined
       }
@@ -183,7 +183,7 @@ Filters.args = {
   filters: true,
 }
 
-const noHiddenColumns = mockColumns.map((c) => {
+const noHiddenColumns = mockColumns.map(c => {
   return { ...c, hide: undefined }
 })
 export const FilterNoColumnSelector = Template.bind({})

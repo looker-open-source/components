@@ -51,7 +51,7 @@ export interface CopyToClipboardProps {
   success?: string | JSX.Element
 }
 
-export const CopyToClipboard: FC<CopyToClipboardProps> = (props) => {
+export const CopyToClipboard: FC<CopyToClipboardProps> = props => {
   const { t } = useTranslation('CopyToClipboard')
   const childrenText = t('Copy to Clipboard')
   const successText = t('Copied')

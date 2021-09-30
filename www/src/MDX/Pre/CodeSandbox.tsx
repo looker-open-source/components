@@ -88,7 +88,7 @@ export const CodeSandbox = ({
         theme={prismTheme}
         code={code}
         language={language}
-        transformCode={(code) => transformCode(code)}
+        transformCode={code => transformCode(code)}
       >
         <LivePreviewWrapper>
           <LiveConsumer>
@@ -164,7 +164,7 @@ interface CopyButtonProps extends ActionProps {
 export const CopyButton: FC<CopyButtonProps> = ({ code, editorIsVisible }) => {
   return (
     <Tooltip content="Copy sample code" placement="left">
-      {(tooltipProps) => (
+      {tooltipProps => (
         <CopyToClipboard
           text={code}
           onCopy={() => alert(`Sample code copied to clipboard.`)}

@@ -28,11 +28,11 @@ import type { FC } from 'react'
 import React from 'react'
 import { List, ListItem } from '../'
 
-const Item: FC = (props) => <ListItem {...props}>blah</ListItem>
+const Item: FC = props => <ListItem {...props}>blah</ListItem>
 
 export const ItemsFiller: FC<{ count?: number }> = ({ count = 10 }) => (
   <List>
-    {[...Array(count).keys()].map((key) => (
+    {[...Array(count).keys()].map(key => (
       <Item key={key} />
     ))}
   </List>

@@ -37,7 +37,7 @@ export default {
   title: 'Date / InputDate',
 }
 
-const Template: Story<InputDateProps> = (args) => <InputDate {...args} />
+const Template: Story<InputDateProps> = args => <InputDate {...args} />
 
 export const Value = Template.bind({})
 Value.args = {

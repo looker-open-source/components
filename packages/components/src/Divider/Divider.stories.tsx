@@ -36,7 +36,7 @@ export default {
   title: 'Divider',
 }
 
-const Template: Story<DividerProps> = (args) => <Divider {...args} />
+const Template: Story<DividerProps> = args => <Divider {...args} />
 
 export const Basic = Template.bind({})
 Basic.args = {}

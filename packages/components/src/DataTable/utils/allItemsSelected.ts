@@ -35,8 +35,8 @@ export const allItemsSelected = (
   const { selectedItems, pageItems } = select
 
   if (selectedItems.length > 0) {
-    if (pageItems.every((id) => selectedItems.includes(id))) return true
-    else if (pageItems.some((id) => selectedItems.includes(id))) return 'mixed'
+    if (pageItems.every(id => selectedItems.includes(id))) return true
+    else if (pageItems.some(id => selectedItems.includes(id))) return 'mixed'
   }
 
   return false

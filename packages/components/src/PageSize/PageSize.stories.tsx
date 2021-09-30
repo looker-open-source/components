@@ -30,7 +30,7 @@ import { defaultArgTypes as argTypes } from '../../../../apps/storybook/src/defa
 import type { PageSizeProps } from './PageSize'
 import { PageSize } from './PageSize'
 
-const Template: Story<PageSizeProps> = (args) => <PageSize {...args} />
+const Template: Story<PageSizeProps> = args => <PageSize {...args} />
 
 export const Basic = Template.bind({})
 Basic.args = {

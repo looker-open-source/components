@@ -210,7 +210,7 @@ export const InputChipsBaseInternal = forwardRef(
     }
 
     function handleDeleteChip(value: string, e?: SyntheticEvent) {
-      const newValues = values.filter((v) => value !== v)
+      const newValues = values.filter(v => value !== v)
       onChange(newValues)
       focusInput(internalRef)
       // Prevent the focus moving to the hidden input (from handleChipClick)
@@ -331,7 +331,7 @@ export const InputChipsBaseInternal = forwardRef(
       focusInput(internalRef)
     }
 
-    const chips = values.map((value) => {
+    const chips = values.map(value => {
       function onChipDelete(e?: SyntheticEvent) {
         handleDeleteChip(value, e)
       }

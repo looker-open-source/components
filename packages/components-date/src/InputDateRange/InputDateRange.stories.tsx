@@ -50,7 +50,7 @@ export default {
   title: 'Date / InputDateRange',
 }
 
-const Template: Story<InputDateRangeProps> = (args) => (
+const Template: Story<InputDateRangeProps> = args => (
   <InputDateRange {...args} />
 )
 

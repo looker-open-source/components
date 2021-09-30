@@ -37,7 +37,7 @@ export const inputFilterEditor: InputFilterEditorRenderProp = ({
   const { multiple = false } = filterOptions
 
   const options = filterOptions.options
-    ? filterOptions.options.map((value) => ({ label: value, value }))
+    ? filterOptions.options.map(value => ({ label: value, value }))
     : []
 
   const handleChangeCheckbox = (newValues: string[]) =>

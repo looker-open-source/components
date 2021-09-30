@@ -29,7 +29,7 @@ import type { FC } from 'react'
 import React from 'react'
 import { maxTextWidth } from './styles'
 
-export const Paragraph: FC = (props) => (
+export const Paragraph: FC = props => (
   <LookerParagraph
     lineHeight="medium"
     mb="medium"

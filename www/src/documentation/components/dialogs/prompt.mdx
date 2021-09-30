@@ -12,7 +12,7 @@ However, unlike the `<Confirm/>`, the `<Prompt/>` component comes with a built i
 <Prompt
   title={'Choose a cheese!'}
   inputLabel={'Name of Cheese'}
-  onCancel={(close) => {
+  onCancel={close => {
     alert('Prompt closed')
     close()
   }}
@@ -21,6 +21,6 @@ However, unlike the `<Confirm/>`, the `<Prompt/>` component comes with a built i
     close()
   }}
 >
-  {(open) => <Button onClick={open}>Prompt</Button>}
+  {open => <Button onClick={open}>Prompt</Button>}
 </Prompt>
 ```

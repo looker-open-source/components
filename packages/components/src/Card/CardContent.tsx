@@ -41,7 +41,7 @@ export interface CardContentProps
 
 export const CardContent = styled.div
   .withConfig({ shouldForwardProp })
-  .attrs<CardContentProps>((p) => ({
+  .attrs<CardContentProps>(p => ({
     ...paddingDefaultsHelper(p, { p: 'u4' }),
   }))<CardContentProps>`
   ${commonLayoutCSS}

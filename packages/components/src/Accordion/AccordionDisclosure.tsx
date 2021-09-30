@@ -40,7 +40,7 @@ export type AccordionDisclosureProps = SimpleLayoutProps & TypographyProps
  * & `Accordion` but are supplied here to meet type requirements of
  * `Accordion2Disclosure`
  */
-const AccordionDisclosureInternal: FC<AccordionDisclosureProps> = (props) => (
+const AccordionDisclosureInternal: FC<AccordionDisclosureProps> = props => (
   <Accordion2Disclosure focusVisible={false} indicator={null} {...props} />
 )
 

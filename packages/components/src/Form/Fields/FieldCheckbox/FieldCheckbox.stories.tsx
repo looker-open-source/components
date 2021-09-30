@@ -33,9 +33,7 @@ import { defaultArgTypes as argTypes } from '../../../../../../apps/storybook/sr
 import type { FieldCheckboxProps } from './FieldCheckbox'
 import { FieldCheckbox } from './FieldCheckbox'
 
-const Template: Story<FieldCheckboxProps> = (args) => (
-  <FieldCheckbox {...args} />
-)
+const Template: Story<FieldCheckboxProps> = args => <FieldCheckbox {...args} />
 
 export const Basic = Template.bind({})
 Basic.args = {

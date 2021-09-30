@@ -30,7 +30,7 @@ import { defaultArgTypes } from '../../../../apps/storybook/src/defaultArgTypes'
 import type { ProgressCircularProps } from './ProgressCircular'
 import { ProgressCircular } from './ProgressCircular'
 
-const Template: Story<ProgressCircularProps> = (args) => (
+const Template: Story<ProgressCircularProps> = args => (
   <ProgressCircular {...args} />
 )
 /* eslint-disable sort-keys-fix/sort-keys-fix */

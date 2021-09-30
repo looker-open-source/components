@@ -39,7 +39,7 @@ export default {
 
 export * from './FieldPicker.stories'
 
-const Template: Story<Omit<LkFieldTreeProps, 'label'>> = (args) => (
+const Template: Story<Omit<LkFieldTreeProps, 'label'>> = args => (
   <TreeCollection>
     <LkFieldTree label={<strong>Orders</strong>} {...args}>
       <LkFieldTree label={<strong>Orders</strong>} defaultOpen>

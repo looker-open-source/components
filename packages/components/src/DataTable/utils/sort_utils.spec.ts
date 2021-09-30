@@ -35,7 +35,7 @@ describe('DataTable Sort Utils', () => {
       ['Samus', 'Link'],
       ['', '%(#&@'],
       ['1234', '10000'],
-    ].map((values) => stringComparator(values[0], values[1]))
+    ].map(values => stringComparator(values[0], values[1]))
 
     expect(compared).toMatchInlineSnapshot(`
       Array [

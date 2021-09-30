@@ -51,20 +51,20 @@ export const Density: FC<DensityProps> = ({ scale, children }) => {
 /**
  * Shortcut to `<Density scale={1} />`
  */
-export const Density1: FC = (props) => <Density scale={1} {...props} />
+export const Density1: FC = props => <Density scale={1} {...props} />
 /**
  * Shortcut to `<Density scale={0} />`
  */
-export const Density0: FC = (props) => <Density scale={0} {...props} />
+export const Density0: FC = props => <Density scale={0} {...props} />
 /**
  * Shortcut to `<Density scale={-1} />`
  */
-export const DensityNegative1: FC = (props) => <Density scale={-1} {...props} />
+export const DensityNegative1: FC = props => <Density scale={-1} {...props} />
 /**
  * Shortcut to `<Density scale={-2} />`
  */
-export const DensityNegative2: FC = (props) => <Density scale={-2} {...props} />
+export const DensityNegative2: FC = props => <Density scale={-2} {...props} />
 /**
  * Shortcut to `<Density scale={-3} />`
  */
-export const DensityNegative3: FC = (props) => <Density scale={-3} {...props} />
+export const DensityNegative3: FC = props => <Density scale={-3} {...props} />

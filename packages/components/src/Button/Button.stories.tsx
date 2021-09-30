@@ -32,7 +32,7 @@ import { defaultArgTypes as argTypes } from '../../../../apps/storybook/src/defa
 import { Button } from './Button'
 import type { ButtonProps } from './types'
 
-const Template: Story<ButtonProps> = (args) => <Button {...args} />
+const Template: Story<ButtonProps> = args => <Button {...args} />
 
 export const Basic = Template.bind({})
 Basic.args = {

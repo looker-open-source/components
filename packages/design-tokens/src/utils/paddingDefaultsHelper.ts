@@ -69,7 +69,7 @@ export const paddingDefaultsHelper = (
   }
 
   /* Remove undefined values */
-  Object.keys(response).forEach((key) => {
+  Object.keys(response).forEach(key => {
     if (typeof response[key] === 'undefined') {
       delete response[key]
     }

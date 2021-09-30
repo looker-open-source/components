@@ -95,7 +95,7 @@ export const useWindowedTree = ({
     content = (
       <>
         {before}
-        {nodesInWindow.map((tree) => (
+        {nodesInWindow.map(tree => (
           <WindowedTreeNode
             {...tree}
             firstIDinWindow={firstIDinWindow}

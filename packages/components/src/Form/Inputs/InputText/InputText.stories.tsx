@@ -37,7 +37,7 @@ export default {
   title: 'InputText',
 }
 
-const Template: Story<InputTextProps> = (args) => <InputText {...args} />
+const Template: Story<InputTextProps> = args => <InputText {...args} />
 
 export const Basic = Template.bind({})
 

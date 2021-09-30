@@ -40,7 +40,7 @@ export const getFallbackElement = (
   let fallback
 
   if (direction === 1) {
-    const firstVisibleChild = tabStops.find((childElement) => {
+    const firstVisibleChild = tabStops.find(childElement => {
       return childElement.offsetTop >= containerElement.scrollTop
     })
 
@@ -67,7 +67,7 @@ export const getNextFocus = (direction: 1 | -1, element: HTMLElement) => {
       tabStops.includes(document.activeElement as HTMLElement)
     ) {
       const next =
-        tabStops.findIndex((el) => el === document.activeElement) + direction
+        tabStops.findIndex(el => el === document.activeElement) + direction
 
       if (next === tabStops.length || !tabStops[next]) {
         // Reached the end of tab stops for this direction

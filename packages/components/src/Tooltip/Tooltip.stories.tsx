@@ -37,7 +37,7 @@ import { defaultArgTypes as argTypes } from '../../../../apps/storybook/src/defa
 import type { TooltipProps } from './'
 import { Tooltip } from './'
 
-const Template: Story<TooltipProps> = (args) => (
+const Template: Story<TooltipProps> = args => (
   <Tooltip {...args}>
     <Button m="xxxlarge">Open Tooltip</Button>
   </Tooltip>
@@ -108,7 +108,7 @@ OpenDelayNone.parameters = {
 
 export const RenderProp = () => (
   <Tooltip content="Start editing" placement="right">
-    {(tooltipProps) => (
+    {tooltipProps => (
       <Button m="xxxlarge" {...tooltipProps}>
         Open Tooltip
       </Button>

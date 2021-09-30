@@ -129,7 +129,7 @@ test('RadioGroup disabled all Radios', () => {
 })
 
 test('RadioGroup disabled one specific Radio', () => {
-  const options = radioOptions.map((option) => {
+  const options = radioOptions.map(option => {
     return {
       disabled: ['Swiss'].includes(option.label),
       ...option,

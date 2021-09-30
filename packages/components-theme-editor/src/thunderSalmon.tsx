@@ -44,6 +44,6 @@ export const thunderSalmon: ThemeEditableProps = {
   fontFamilies: { body: 'Papyrus', brand: 'Impact', code: 'Papyrus' },
 }
 
-export const ThunderSalmon: FC<ButtonProps> = (props) => (
+export const ThunderSalmon: FC<ButtonProps> = props => (
   <ButtonTransparent {...props}>⚡️ 🍣</ButtonTransparent>
 )

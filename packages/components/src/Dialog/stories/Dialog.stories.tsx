@@ -43,7 +43,7 @@ import { Checkbox } from '../../Form/Inputs/Checkbox'
 export * from './Controlled'
 export * from './SaveChanges'
 
-const Template: Story<DialogProps> = (args) => (
+const Template: Story<DialogProps> = args => (
   <Dialog {...args}>
     <ButtonOutline>Open Dialog</ButtonOutline>
   </Dialog>

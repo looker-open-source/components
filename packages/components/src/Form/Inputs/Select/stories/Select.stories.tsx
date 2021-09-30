@@ -32,7 +32,7 @@ import { Select } from '../Select'
 import { defaultArgTypes as argTypes } from '../../../../../../../apps/storybook/src/defaultArgTypes'
 import { options1kGrouped } from './options1k'
 
-const Template: Story<SelectProps> = (args) => <Select {...args} />
+const Template: Story<SelectProps> = args => <Select {...args} />
 
 export const Basic = Template.bind({})
 Basic.args = {

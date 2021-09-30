@@ -55,14 +55,14 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
     undefined
   )
   const assignedFilters = filters
-    .filter((filter) => filter.value || filter.field === fieldEditing)
+    .filter(filter => filter.value || filter.field === fieldEditing)
     .sort((a, b) =>
       a.value === undefined ? 1 : b.value === undefined ? -1 : 0
     )
 
   const unassignedFilters = filters.filter(
-    (filter) =>
-      !assignedFilters.map((assigned) => assigned.field).includes(filter.field)
+    filter =>
+      !assignedFilters.map(assigned => assigned.field).includes(filter.field)
   )
 
   const [filterTerm, setFilterTerm] = useState('')
@@ -91,13 +91,13 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
   const isClearable = assignedFilters.length > 0
 
   const clearFilters = () => {
-    onChange(filters.map((filter) => omit(filter, 'value')))
+    onChange(filters.map(filter => omit(filter, 'value')))
   }
 
   const focusInput = () => inputRef.current && inputRef.current.focus()
 
   const handleFilterLookupChange = (field: string) => {
-    const filter = filters.find((option) => option.field === field)
+    const filter = filters.find(option => option.field === field)
     if (filter) {
       setFieldEditing(filter.field)
     }
@@ -122,7 +122,7 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
 
           const handleDelete = () =>
             onChange(
-              filters.map((currentFilter) =>
+              filters.map(currentFilter =>
                 currentFilter.field !== field
                   ? currentFilter
                   : omit(currentFilter, 'value')
@@ -131,7 +131,7 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
 
           const setFieldEditingValue = (value?: string) => {
             const filterIndex = assignedFilters.findIndex(
-              (f) => f.field === fieldEditing
+              f => f.field === fieldEditing
             )
 
             const newFilters = [...assignedFilters, ...unassignedFilters]

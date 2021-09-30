@@ -36,7 +36,7 @@ export default {
   title: 'Label',
 }
 
-const Template: Story<LabelProps> = (args) => <Label {...args} />
+const Template: Story<LabelProps> = args => <Label {...args} />
 
 export const Basic = Template.bind({})
 Basic.args = { children: "It's a label!" }

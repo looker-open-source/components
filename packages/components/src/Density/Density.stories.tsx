@@ -38,7 +38,7 @@ export default {
   title: 'Density',
 }
 
-const Template: Story<DensityProps> = (args) => (
+const Template: Story<DensityProps> = args => (
   <Density {...args}>
     <List>
       <ListItem>Cheddar</ListItem>

@@ -68,7 +68,7 @@ const Fields: FC<{ inline?: boolean }> = ({ inline }) => (
   </>
 )
 
-const Template: Story<FieldsetProps> = (args) => {
+const Template: Story<FieldsetProps> = args => {
   return (
     <Form m="xxlarge" maxWidth="600px">
       <Fieldset {...args}>

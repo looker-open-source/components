@@ -39,7 +39,7 @@ export default {
   title: 'FieldRangeSlider',
 }
 
-const Template: Story<FieldRangeSliderProps> = (args) => (
+const Template: Story<FieldRangeSliderProps> = args => (
   <FieldRangeSlider {...args} />
 )
 

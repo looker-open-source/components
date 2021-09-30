@@ -30,7 +30,7 @@ import { defaultArgTypes as argTypes } from '../../../../apps/storybook/src/defa
 import type { SpanProps } from './Span'
 import { Span } from './Span'
 
-const Template: Story<SpanProps> = (args) => <Span {...args} />
+const Template: Story<SpanProps> = args => <Span {...args} />
 
 export const Basic = Template.bind({})
 Basic.args = {

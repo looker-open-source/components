@@ -36,7 +36,7 @@ export default {
   title: 'CardContent',
 }
 
-const Template: Story<CardContentProps> = (args) => (
+const Template: Story<CardContentProps> = args => (
   <CardContent {...args}>A basic card</CardContent>
 )
 

@@ -229,7 +229,7 @@ const matchStringLabelToOption = (
   label?: string
 ) => {
   if (label) {
-    return find(options, (o) => {
+    return find(options, o => {
       return o.label ? o.label.includes(label) : false
     })
   }
@@ -245,7 +245,7 @@ const setScrollIntoView = (
 ) => {
   // CASE 1: scroll currently selected option into view
   if (selectedOption) {
-    return map(options, (option) =>
+    return map(options, option =>
       matchClosestMinute(interval, selectedOption.value) === option.value
         ? { ...option, scrollIntoView: true }
         : option
@@ -254,7 +254,7 @@ const setScrollIntoView = (
 
   // CASE 2: scroll current time into view
   const now = matchClosestMinute(interval)
-  return map(options, (option) =>
+  return map(options, option =>
     option.value === now ? { ...option, scrollIntoView: true } : option
   )
 }

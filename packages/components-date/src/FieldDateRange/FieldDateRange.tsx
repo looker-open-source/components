@@ -48,7 +48,7 @@ export interface FieldInputDateRangeProps
 const checkValueOnBlur = (e: FocusEvent) => {
   const inputs = Array.from(e.currentTarget.querySelectorAll('input'))
   // Check both inputs (to - from) for a value
-  return inputs.some((input) => input.value !== '')
+  return inputs.some(input => input.value !== '')
 }
 
 const FieldDateRangeComponent = forwardRef(
