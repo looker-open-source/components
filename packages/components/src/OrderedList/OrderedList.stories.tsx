@@ -36,7 +36,7 @@ export default {
   title: 'OrderedList',
 }
 
-const Template: Story<OrderedListProps> = (args) => (
+const Template: Story<OrderedListProps> = args => (
   <OrderedList {...args}>
     <li>Gouda</li>
     <li>Swiss</li>

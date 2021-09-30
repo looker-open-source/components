@@ -94,7 +94,7 @@ export interface ConfirmationDialogProps extends ConfirmationProps {
   isOpen?: boolean
 }
 
-export const ConfirmationDialog: FC<ConfirmationDialogProps> = (props) => {
+export const ConfirmationDialog: FC<ConfirmationDialogProps> = props => {
   const { t } = useTranslation('ConfirmationDialog')
   const {
     cancelLabel = t('Cancel'),

@@ -30,7 +30,7 @@ import { defaultArgTypes as argTypes } from '../../../../../../apps/storybook/sr
 import type { FieldRadioProps } from './FieldRadio'
 import { FieldRadio } from './FieldRadio'
 
-const Template: Story<FieldRadioProps> = (args) => <FieldRadio {...args} />
+const Template: Story<FieldRadioProps> = args => <FieldRadio {...args} />
 
 export const Basic = Template.bind({})
 Basic.args = {

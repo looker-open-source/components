@@ -36,7 +36,7 @@ export default {
   title: 'CardMedia',
 }
 
-const Template: Story<CardMediaProps> = (args) => <CardMedia {...args} />
+const Template: Story<CardMediaProps> = args => <CardMedia {...args} />
 
 export const Default = Template.bind({})
 Default.args = {

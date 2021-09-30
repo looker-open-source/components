@@ -49,7 +49,7 @@ export interface PaginationProps {
   alwaysVisible?: boolean
 }
 
-const PaginationButton: FC<IconButtonProps> = (props) => (
+const PaginationButton: FC<IconButtonProps> = props => (
   <IconButton outline shape="square" mx="xxsmall" {...props} />
 )
 

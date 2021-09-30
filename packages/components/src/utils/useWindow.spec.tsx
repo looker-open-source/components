@@ -84,7 +84,7 @@ describe('useWindow', () => {
   test('returns placeholders and children in "window"', () => {
     render(
       <WindowedComponent>
-        {arr3000.map((num) => (
+        {arr3000.map(num => (
           <li key={num}>{num}</li>
         ))}
       </WindowedComponent>
@@ -100,7 +100,7 @@ describe('useWindow', () => {
   test('updates window on scroll', () => {
     render(
       <WindowedComponent>
-        {arr3000.map((num) => (
+        {arr3000.map(num => (
           <li key={num}>{num}</li>
         ))}
       </WindowedComponent>
@@ -124,7 +124,7 @@ describe('useWindow', () => {
   test('updates window on scroll (to end)', () => {
     render(
       <WindowedComponent>
-        {arr3000.map((num) => (
+        {arr3000.map(num => (
           <li key={num}>{num}</li>
         ))}
       </WindowedComponent>
@@ -150,7 +150,7 @@ describe('useWindow', () => {
   test('updates window on resize', () => {
     render(
       <WindowedComponent>
-        {arr3000.map((num) => (
+        {arr3000.map(num => (
           <li key={num}>{num}</li>
         ))}
       </WindowedComponent>

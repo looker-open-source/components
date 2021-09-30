@@ -44,7 +44,7 @@ export default {
   title: 'Panel',
 }
 
-const Template: Story<PanelProps> = (args) => (
+const Template: Story<PanelProps> = args => (
   <Page hasAside>
     <Aside width="12rem">
       <Panels>

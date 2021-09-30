@@ -58,7 +58,7 @@ const unitValues: Array<string[]> = Object.entries(theme.space).filter(
 )
 
 const lookupLegacyValue = (remValue: string) => {
-  const validSpace = spacingExamples.find((item) => item.rem === remValue)
+  const validSpace = spacingExamples.find(item => item.rem === remValue)
 
   if (validSpace) {
     return <Code fontSize="small">{validSpace.label}</Code>
@@ -141,7 +141,7 @@ export const LegacySpaceTable = () => {
         </TableRow>
       </TableHead>
       <TableBody>
-        {unitValues.map((size) => {
+        {unitValues.map(size => {
           return (
             <TableRow key={`${size[0]}-legacy`}>
               <TableDataCell>

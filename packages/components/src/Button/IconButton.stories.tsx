@@ -45,7 +45,7 @@ const Template: Story<IconButtonProps & { ripple: boolean }> = ({
   // ripple prop and ThemeProvider allow you to toggle the animation via controls
 }) => (
   <ThemeProvider
-    theme={(theme) => ({
+    theme={theme => ({
       ...theme,
       defaults: { ...theme.defaults, brandAnimation: ripple },
     })}

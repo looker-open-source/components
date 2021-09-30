@@ -31,7 +31,7 @@ import type { SelectOptionObject } from './types'
 
 export function getOptionIcon(value: string, options: SelectOptionObject[]) {
   if (value && options) {
-    const option = options.find((opt) => opt.value === value)
+    const option = options.find(opt => opt.value === value)
     return option?.icon ? (
       <InputTextContent pl="u2">{option.icon}</InputTextContent>
     ) : null

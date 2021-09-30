@@ -36,7 +36,7 @@ export default {
   title: 'CodeBlock',
 }
 
-const Template: Story<CodeBlockProps> = (args) => <CodeBlock {...args} />
+const Template: Story<CodeBlockProps> = args => <CodeBlock {...args} />
 
 export const Basic = Template.bind({})
 Basic.args = {

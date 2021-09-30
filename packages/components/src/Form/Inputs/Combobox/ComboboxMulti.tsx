@@ -52,8 +52,8 @@ function compareOptions(
   optionsA: ComboboxOptionObject[],
   optionsB: ComboboxOptionObject[]
 ) {
-  return every(optionsA, (optionA) =>
-    optionsB.find((optionB) => isMatch(optionA, optionB))
+  return every(optionsA, optionA =>
+    optionsB.find(optionB => isMatch(optionA, optionB))
   )
 }
 

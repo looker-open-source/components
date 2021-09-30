@@ -36,7 +36,7 @@ export default {
   title: 'Paragraph',
 }
 
-const Template: Story<ParagraphProps> = (args) => <Paragraph {...args} />
+const Template: Story<ParagraphProps> = args => <Paragraph {...args} />
 
 export const Default = Template.bind({})
 Default.args = {

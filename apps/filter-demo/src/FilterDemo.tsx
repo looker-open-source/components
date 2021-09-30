@@ -103,9 +103,7 @@ const FilterDemoInternal: FC = () => {
   }, [dashboards, history, pathname, selectedDashboardId])
 
   useEffect(() => {
-    const dashboard = (dashboards || []).find(
-      (d) => d.id === selectedDashboardId
-    )
+    const dashboard = (dashboards || []).find(d => d.id === selectedDashboardId)
     const loadDashboard = async (id: string) => {
       const result = await core40SDK.ok(core40SDK.dashboard(id))
       setCurrentDashboard(result)

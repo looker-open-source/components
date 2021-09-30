@@ -31,7 +31,7 @@ import { defaultArgTypes as argTypes } from '../../../../apps/storybook/src/defa
 import type { CopyToClipboardProps } from './CopyToClipboard'
 import { CopyToClipboard } from './CopyToClipboard'
 
-const Template: Story<CopyToClipboardProps> = (args) => (
+const Template: Story<CopyToClipboardProps> = args => (
   <CopyToClipboard {...args} />
 )
 

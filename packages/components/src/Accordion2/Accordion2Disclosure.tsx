@@ -78,7 +78,7 @@ const labelTypographyDefaults = css`
 export const Accordion2Disclosure = styled(
   Accordion2DisclosureInternal
 ).withConfig({
-  shouldForwardProp: (prop) =>
+  shouldForwardProp: prop =>
     ['indicator', 'indicatorPosition'].includes(prop)
       ? true
       : shouldForwardProp(prop),

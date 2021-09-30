@@ -28,4 +28,4 @@ import type { FC } from 'react'
 import React from 'react'
 import { ListItem } from '@looker/components'
 
-export const Li: FC = (props) => <li {...props} />
+export const Li: FC = props => <li {...props} />

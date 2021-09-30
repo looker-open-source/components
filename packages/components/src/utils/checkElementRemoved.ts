@@ -37,7 +37,7 @@ export const checkElementRemoved = (
   if (!element) return false
   return mutationsList.some(({ type, removedNodes }) => {
     if (type === 'childList' && removedNodes.length > 0) {
-      return Array.from(removedNodes).some((node) => {
+      return Array.from(removedNodes).some(node => {
         return node.contains(element)
       })
     }

@@ -74,7 +74,7 @@ export const DensityTable = () => (
       </TableRow>
     </TableHead>
     <TableBody>
-      {densities.map((d) => (
+      {densities.map(d => (
         <DensityRow key={d} density={d} />
       ))}
     </TableBody>

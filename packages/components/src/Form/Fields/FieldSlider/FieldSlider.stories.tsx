@@ -37,7 +37,7 @@ export default {
   title: 'FieldSlider',
 }
 
-const Template: Story<FieldSliderProps> = (args) => <FieldSlider {...args} />
+const Template: Story<FieldSliderProps> = args => <FieldSlider {...args} />
 
 export const Basic = Template.bind({})
 Basic.args = { max: 5, min: 0 }

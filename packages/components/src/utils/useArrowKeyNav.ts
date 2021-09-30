@@ -171,7 +171,7 @@ export const useArrowKeyNav = <E extends HTMLElement = HTMLElement>({
     const element = internalRef.current
 
     // Create an observer to check if the focused element is removed
-    const observer = new MutationObserver((mutationsList) => {
+    const observer = new MutationObserver(mutationsList => {
       if (checkElementRemoved(mutationsList, focusedItemRef.current)) {
         // If it was, start focus back at the beginning
         placeInitialFocus()

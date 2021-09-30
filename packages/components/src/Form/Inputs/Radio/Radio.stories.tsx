@@ -42,7 +42,7 @@ const Template: Story<RadioProps & { ripple: boolean }> = ({
   ...args
 }) => (
   <ThemeProvider
-    theme={(theme) => ({
+    theme={theme => ({
       ...theme,
       defaults: { ...theme.defaults, brandAnimation: ripple },
     })}

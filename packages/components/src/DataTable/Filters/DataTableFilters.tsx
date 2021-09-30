@@ -42,7 +42,7 @@ export interface DataTableFiltersProps extends ColumnSelectorProps {
 }
 
 const hasSelectableColumns = (columns: DataTableColumns) =>
-  Boolean(columns.find((c) => c.hide !== undefined))
+  Boolean(columns.find(c => c.hide !== undefined))
 
 const DataTableFiltersLayout: FC<DataTableFiltersProps> = ({
   className,

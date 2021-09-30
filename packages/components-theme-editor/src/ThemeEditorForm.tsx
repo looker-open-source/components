@@ -62,18 +62,18 @@ export const ThemeEditorForm: FC<ThemeEditorFormProps> = ({
   return (
     <Fieldset>
       <Fieldset>
-        {coreColors.map((c) => (
+        {coreColors.map(c => (
           <ThemeFieldColor key={c} color={c} {...themeFieldColorProps} />
         ))}
       </Fieldset>
       <Fieldset accordion legend="Intent Colors">
-        {intentColors.map((c) => (
+        {intentColors.map(c => (
           <ThemeFieldColor key={c} color={c} {...themeFieldColorProps} />
         ))}
       </Fieldset>
 
       <Fieldset legend="Fonts" accordion>
-        {fontFamilies.map((family) => (
+        {fontFamilies.map(family => (
           <FieldSelect
             label={family}
             name={family}

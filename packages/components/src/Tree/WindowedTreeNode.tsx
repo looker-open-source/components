@@ -65,7 +65,7 @@ export const WindowedTreeNode = ({
   if (items && isValidElement(content)) {
     // insert the items as children
     const props = {
-      children: items.map((item) => (
+      children: items.map(item => (
         <WindowedTreeNode
           firstIDinWindow={firstIDinWindow}
           {...item}

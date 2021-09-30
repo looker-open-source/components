@@ -43,11 +43,11 @@ A complete implementation that keeps track of state and updates validation messa
     }
     setValidationErrors(errors)
   }
-  const onChangeVal1 = (event) => {
+  const onChangeVal1 = event => {
     setVal1(event.currentTarget.value)
     validate(event.currentTarget.value, val2)
   }
-  const onChangeVal2 = (event) => {
+  const onChangeVal2 = event => {
     setVal2(event.currentTarget.value)
     validate(val1, event.currentTarget.value)
   }

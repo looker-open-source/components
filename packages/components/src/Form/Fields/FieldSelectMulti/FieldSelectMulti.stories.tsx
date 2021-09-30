@@ -264,7 +264,7 @@ export const SelectMultiDemo = () => {
 
   const newOptions = useMemo(() => {
     if (searchTerm === '')
-      return selectOptions.map((option) => ({
+      return selectOptions.map(option => ({
         ...option,
         description: 'Lorem ipsum',
       }))

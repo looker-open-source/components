@@ -47,7 +47,7 @@ export default {
   title: 'Icon',
 }
 
-const Template: Story<IconProps> = (args) => <Icon {...args} />
+const Template: Story<IconProps> = args => <Icon {...args} />
 
 export const Basic = Template.bind({})
 Basic.args = {

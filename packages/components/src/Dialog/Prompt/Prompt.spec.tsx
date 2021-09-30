@@ -64,7 +64,7 @@ afterEach(() => {
 test('<Prompt/> with defaults', async () => {
   renderWithTheme(
     <Prompt {...requiredProps}>
-      {(open) => <Button onClick={open}>Open Prompt</Button>}
+      {open => <Button onClick={open}>Open Prompt</Button>}
     </Prompt>
   )
 
@@ -95,7 +95,7 @@ test('<Prompt/> with defaults', async () => {
 test('<Prompt/> with custom props', () => {
   renderWithTheme(
     <Prompt {...optionalProps} {...requiredProps}>
-      {(open) => <Button onClick={open}>Open Prompt</Button>}
+      {open => <Button onClick={open}>Open Prompt</Button>}
     </Prompt>
   )
 
@@ -122,7 +122,7 @@ test('<Prompt/> with custom props', () => {
 test('<Prompt /> does not clear value after closing', () => {
   renderWithTheme(
     <Prompt {...requiredProps}>
-      {(open) => <Button onClick={open}>Open Prompt</Button>}
+      {open => <Button onClick={open}>Open Prompt</Button>}
     </Prompt>
   )
 
@@ -145,7 +145,7 @@ test('<Prompt /> does not clear value after closing', () => {
 test('<Prompt /> clears value after closing with clearOnCancel', () => {
   renderWithTheme(
     <Prompt clearOnCancel {...requiredProps}>
-      {(open) => <Button onClick={open}>Open Prompt</Button>}
+      {open => <Button onClick={open}>Open Prompt</Button>}
     </Prompt>
   )
 
@@ -172,7 +172,7 @@ test('<Prompt /> updates when defaultValue changes', () => {
     return (
       <>
         <Prompt {...requiredProps} defaultValue={defaultValue}>
-          {(open) => <Button onClick={open}>Open Prompt</Button>}
+          {open => <Button onClick={open}>Open Prompt</Button>}
         </Prompt>
         <Button onClick={() => setDefaultValue('Swiss')}>
           Set Default Value to Swiss

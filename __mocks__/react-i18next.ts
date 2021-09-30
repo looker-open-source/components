@@ -28,7 +28,7 @@ export const useTranslation = () => ({
     [
       key,
       ...(options
-        ? Object.keys(options).map((optionsKey) =>
+        ? Object.keys(options).map(optionsKey =>
             optionsKey === 'ns' ? '' : options[optionsKey]
           )
         : []),

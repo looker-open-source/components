@@ -38,7 +38,7 @@ import { TreeCollection } from '../TreeCollection'
 import { TreeItem } from '../TreeItem'
 import type { TreeProps } from '../types'
 
-const Template: Story<TreeProps> = (args) => (
+const Template: Story<TreeProps> = args => (
   <TreeCollection>
     <Tree {...args} label={<strong>thelook</strong>} icon={<Explore />}>
       <Tree label="Users" icon={<Visibility />} defaultOpen>

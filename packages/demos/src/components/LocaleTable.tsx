@@ -45,7 +45,7 @@ export const LocaleTable = () => (
       </TableRow>
     </TableHead>
     <TableBody>
-      {toPairs(Locales).map((locale) => (
+      {toPairs(Locales).map(locale => (
         <TableRow key={locale[0]}>
           <TableDataCell>{locale[0]}</TableDataCell>
           <TableDataCell>{locale[1]}</TableDataCell>

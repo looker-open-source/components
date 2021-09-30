@@ -45,13 +45,13 @@ export const Basic = () => {
     <Confirm
       title="Confirm Something"
       message="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-      onConfirm={(close) => {
+      onConfirm={close => {
         alert('You did something')
         close()
       }}
       width={['10rem', '20rem', '30rem', '40rem']}
     >
-      {(open) => <ButtonOutline onClick={open}>Do something</ButtonOutline>}
+      {open => <ButtonOutline onClick={open}>Do something</ButtonOutline>}
     </Confirm>
   )
 }
@@ -65,14 +65,14 @@ export const Critical = () => {
     <Confirm
       title="Confirm Something"
       message="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-      onConfirm={(close) => {
+      onConfirm={close => {
         alert('You did something')
         close()
       }}
       buttonColor="critical"
       width={['10rem', '20rem', '30rem', '40rem']}
     >
-      {(open) => (
+      {open => (
         <ButtonOutline color="critical" onClick={open}>
           Something Destructive
         </ButtonOutline>
@@ -112,13 +112,13 @@ export const Rich = () => {
     <Confirm
       title="Did you know?"
       message={message}
-      onConfirm={(close) => {
+      onConfirm={close => {
         alert('Now you know.')
         close()
       }}
       width={['10rem', '20rem', '30rem', '40rem']}
     >
-      {(open) => <Button onClick={open}>Do something fancy</Button>}
+      {open => <Button onClick={open}>Do something fancy</Button>}
     </Confirm>
   )
 }

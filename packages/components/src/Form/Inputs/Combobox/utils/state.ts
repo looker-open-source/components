@@ -293,10 +293,10 @@ export function getOptionsFromValues(
   return newValues.reduce((acc: ComboboxOptionObject[], value: string) => {
     const valueAsOption = parseOption(value)
     const matchingOption = currentOptions.find(
-      (option) => option.value === valueAsOption.value
+      option => option.value === valueAsOption.value
     )
     const duplicateOption = acc.find(
-      (option) => option.value === valueAsOption.value
+      option => option.value === valueAsOption.value
     )
     if (!duplicateOption) {
       if (matchingOption) {

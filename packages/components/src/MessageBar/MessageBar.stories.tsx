@@ -32,7 +32,7 @@ import { defaultArgTypes as argTypes } from '../../../../apps/storybook/src/defa
 import type { MessageBarProps } from './MessageBar'
 import { MessageBar } from './MessageBar'
 
-const Template: Story<MessageBarProps> = (args) => <MessageBar {...args} />
+const Template: Story<MessageBarProps> = args => <MessageBar {...args} />
 
 export const Basic = Template.bind({})
 Basic.args = {

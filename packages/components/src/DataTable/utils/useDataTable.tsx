@@ -36,13 +36,13 @@ export const useDataTable = (
   columns: DataTableColumns,
   caption: string
 ) => {
-  const items = data.map((dataObj) => {
+  const items = data.map(dataObj => {
     const defaultOrderColumn = columns[0].id
     const id = dataObj[defaultOrderColumn]
 
     return (
       <DataTableItem id={id} key={id}>
-        {columns.map((column) => (
+        {columns.map(column => (
           <DataTableCell key={column.id}>{dataObj[column.id]}</DataTableCell>
         ))}
       </DataTableItem>

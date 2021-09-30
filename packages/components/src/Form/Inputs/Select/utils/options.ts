@@ -36,7 +36,7 @@ export function getMatchingOption(
   value?: string,
   options?: SelectOptionObject[]
 ) {
-  return options?.find((option) => option.value === value)
+  return options?.find(option => option.value === value)
 }
 
 export function getOption(value?: string, options?: SelectOptionObject[]) {
@@ -53,7 +53,7 @@ export function getOptions(
   options?: SelectOptionObject[]
 ): SelectOptionObject[] | undefined {
   if (!values) return undefined
-  return values.map((value) => ({
+  return values.map(value => ({
     label: getComboboxText(value, options),
     value,
   }))
@@ -78,18 +78,16 @@ export function notInOptions(
   inputValue?: string
 ) {
   if (!inputValue) return false
-  if (currentOptions.find((option) => compareOption(option, inputValue))) {
+  if (currentOptions.find(option => compareOption(option, inputValue))) {
     return false
   }
   if (!options) return true
-  return (
-    options.find((option) => compareOption(option, inputValue)) === undefined
-  )
+  return options.find(option => compareOption(option, inputValue)) === undefined
 }
 
 const checkForIcon = (option: SelectOptionObject) => option.icon !== undefined
 
 export const optionsHaveIcons = (options?: SelectOptionObject[]) => {
   if (!options || options.length === 0) return false
-  return options.some((option) => checkForIcon(option))
+  return options.some(option => checkForIcon(option))
 }

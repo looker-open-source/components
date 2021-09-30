@@ -92,8 +92,8 @@ const organizeKeyCommands = (shortcut: string) => {
       // elements intersect! sort by dom stacking order
       const { x, y } = calculateIntersectionPoint(rect1, rect2)
       const stackedElements = document.elementsFromPoint(x, y)
-      const idx1 = stackedElements.findIndex((el) => el === ev1.target)
-      const idx2 = stackedElements.findIndex((el) => el === ev2.target)
+      const idx1 = stackedElements.findIndex(el => el === ev1.target)
+      const idx2 = stackedElements.findIndex(el => el === ev2.target)
       return idx1 > idx2 ? 1 : -1
     }
   })
@@ -123,7 +123,7 @@ const discardStaleCommands = (keyCommand: string) => {
     filter(
       [...commandSet],
       // filter out elements that are no longer in the document
-      (event) => document.body.contains(event.target)
+      event => document.body.contains(event.target)
     )
   )
 }

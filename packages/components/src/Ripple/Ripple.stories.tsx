@@ -70,9 +70,9 @@ const Ripple = styled(
   justify-content: center;
 `
 
-const Template: Story<RippleProps> = (args) => (
+const Template: Story<RippleProps> = args => (
   <ThemeProvider
-    theme={(theme) => ({
+    theme={theme => ({
       ...theme,
       defaults: { ...theme.defaults, brandAnimation: true },
     })}

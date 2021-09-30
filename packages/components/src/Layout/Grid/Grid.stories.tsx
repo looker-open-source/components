@@ -39,7 +39,7 @@ export default {
   title: 'Grid',
 }
 
-const Placeholder: FC<Box2Props> = (props) => (
+const Placeholder: FC<Box2Props> = props => (
   <Box2
     color="white"
     bg="key"

@@ -113,7 +113,7 @@ const SelectMultiComponent = forwardRef(
     const defaultOptionValues = getOptions(defaultValues, navigationOptions)
 
     function handleChange(options: SelectOptionObject[] = []) {
-      const newValues = options && options.map((option) => option.value)
+      const newValues = options && options.map(option => option.value)
       onChange && onChange(newValues)
     }
 

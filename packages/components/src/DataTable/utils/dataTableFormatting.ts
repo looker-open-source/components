@@ -38,14 +38,14 @@ export const getNumericColumnIndices = (
   visibleColumns: string[]
 ) =>
   columns
-    .filter((c) => visibleColumns.includes(c.id) || c.hide === undefined)
+    .filter(c => visibleColumns.includes(c.id) || c.hide === undefined)
     .map((c, index) => (c.type === 'number' ? index + 1 : undefined))
     .filter(filterUndefined)
 
 export const numericColumnCSS = (columnIndices: number[]) =>
   css`
     ${columnIndices.map(
-      (columnIndex) =>
+      columnIndex =>
         css`
           ${DataTableCell}:nth-child(${columnIndex + 1}) {
             text-align: right;

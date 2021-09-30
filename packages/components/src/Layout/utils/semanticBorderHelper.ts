@@ -103,7 +103,7 @@ const borderPositionHelper = (
   }
 
   return css`
-    ${properties.map((property) => borderPropertyHelper(color, property))}
+    ${properties.map(property => borderPropertyHelper(color, property))}
   `
 }
 

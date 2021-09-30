@@ -59,7 +59,7 @@ const Template: Story<DemoProps> = ({
   return <DataTable caption="DataTable Responsive" select={select} {...args} />
 }
 
-const hideAllColumns = mockColumns.map((c) => {
+const hideAllColumns = mockColumns.map(c => {
   return { ...c, hide: true }
 })
 hideAllColumns[0].hide = false
