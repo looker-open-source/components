@@ -49,10 +49,10 @@ export const ColumnSelector: FC<ColumnSelectorProps> = ({
   const { t } = useTranslation('ColumnSelector')
   const [isOpen, setOpen] = useState(false)
 
-  const selectableColumns = columns.filter((c) => c.hide !== undefined)
+  const selectableColumns = columns.filter(c => c.hide !== undefined)
   const [columnsVisible, setColumnsVisible] = useState(defaultColumnsVisible)
 
-  const options = selectableColumns.map((column) => ({
+  const options = selectableColumns.map(column => ({
     label: column.title,
     value: column.id,
   }))
@@ -65,7 +65,7 @@ export const ColumnSelector: FC<ColumnSelectorProps> = ({
   const cancel = () => setOpen(false)
 
   const all = () => {
-    const resetColumn = columns.map((column) => column.id)
+    const resetColumn = columns.map(column => column.id)
     setColumnsVisible(resetColumn)
   }
 

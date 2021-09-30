@@ -67,7 +67,7 @@ export interface DataTableItemProps
   actionPrimary?: ReactNode
 }
 
-const DataTableItemLayout: FC<DataTableItemProps> = (props) => {
+const DataTableItemLayout: FC<DataTableItemProps> = props => {
   const { t } = useTranslation('DataTableItem')
   const actionsTooltipText = t('Options')
   const {

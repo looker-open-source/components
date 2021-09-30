@@ -40,7 +40,7 @@ export default {
   title: 'Aside',
 }
 
-const Template: Story<AsideProps> = (args) => (
+const Template: Story<AsideProps> = args => (
   <AsideStyle p="u5" text-align="center" {...args} />
 )
 
@@ -90,7 +90,7 @@ AsideCollapse.parameters = {
   },
 }
 
-const TemplateBorder: Story<AsideProps> = (args) => (
+const TemplateBorder: Story<AsideProps> = args => (
   <Aside p="u5" text-align="center" {...args} />
 )
 

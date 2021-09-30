@@ -64,7 +64,7 @@ const borderData: BorderType[] = [
 ]
 
 export const BorderRender = () =>
-  borderData.map((border) => <Example border={border} key={border.color} />)
+  borderData.map(border => <Example border={border} key={border.color} />)
 
 const Example: FC<{ border: BorderType }> = ({
   border: { color, examples, label, textColor },
@@ -73,7 +73,7 @@ const Example: FC<{ border: BorderType }> = ({
     <Heading as="h3" fontWeight="semiBold" mb="small">
       {label} <Code fontSize="medium">{color}</Code>
     </Heading>
-    {examples.map((example) => (
+    {examples.map(example => (
       <BorderExample bg={example} key={example} color={textColor} border="ui3">
         <Code>{example}</Code>
         <BorderDividerExample bg={color} />

@@ -55,7 +55,7 @@ export const RadiusList = () => {
         </TableRow>
       </TableHead>
       <TableBody>
-        {radii.map((r) => {
+        {radii.map(r => {
           return (
             <TableRow key={r[0]}>
               <TableDataCell>

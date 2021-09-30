@@ -114,13 +114,13 @@ export const Removable = () => {
   const [values, setValues] = useState(['Cheddar', 'Gouda', 'Swiss'])
   function getDeleteHandler(item: string) {
     return () => {
-      const newValues = values.filter((value) => value !== item)
+      const newValues = values.filter(value => value !== item)
       setValues(newValues)
     }
   }
   return (
     <Space>
-      {values.map((item) => (
+      {values.map(item => (
         <Chip onDelete={getDeleteHandler(item)} role="option" key={item}>
           {item}
         </Chip>

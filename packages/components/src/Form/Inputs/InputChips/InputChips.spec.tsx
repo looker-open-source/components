@@ -164,7 +164,7 @@ tag2`
     const onValidationFailMock = jest.fn()
     const onDuplicateMock = jest.fn()
 
-    const validate = jest.fn((value) => value === 'tag1')
+    const validate = jest.fn(value => value === 'tag1')
     renderWithTheme(
       <InputChips
         onChange={onChangeMock}

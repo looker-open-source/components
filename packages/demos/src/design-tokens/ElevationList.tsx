@@ -50,7 +50,7 @@ const ElevatedBox = styled.div<{ level: ElevationRamp }>`
 
 export const ElevationList = () => (
   <Space gap="u6">
-    {elevations.map((e) => {
+    {elevations.map(e => {
       return (
         <ElevatedBox key={e} level={e}>
           <Code fontSize="xsmall" color="text3">

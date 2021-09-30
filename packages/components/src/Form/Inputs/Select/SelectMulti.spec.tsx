@@ -131,8 +131,7 @@ describe('SelectMulti', () => {
       const options = React.useMemo(() => {
         if (term === '') return cheeses
         return cheeses.filter(
-          (cheese) =>
-            cheese.value.toUpperCase().indexOf(term.toUpperCase()) > -1
+          cheese => cheese.value.toUpperCase().indexOf(term.toUpperCase()) > -1
         )
       }, [term])
       return (

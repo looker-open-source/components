@@ -207,9 +207,9 @@ controlled via state values – or use the hook version.
 ;() => {
   const { value, setOn, setOff } = useToggle()
   const [note, setNote] = React.useState('Change me...')
-  const handleChange = (e) => setNote(e.currentTarget.value)
+  const handleChange = e => setNote(e.currentTarget.value)
 
-  const handleConfirm = (close) => {
+  const handleConfirm = close => {
     close()
     alert(`You can't delete Gouda, it's a cheese!`)
   }
@@ -264,7 +264,7 @@ controlled via state values – or use the hook version.
 
   const searchResults = React.useMemo(
     () =>
-      defaultCheeses.filter((cheese) =>
+      defaultCheeses.filter(cheese =>
         cheese.toLowerCase().includes(keywordSearch.toLowerCase())
       ),
     [keywordSearch]
@@ -283,7 +283,7 @@ controlled via state values – or use the hook version.
             />
           </Box2>
           <MenuHeading>Cheeses</MenuHeading>
-          {searchResults.map((cheese) => (
+          {searchResults.map(cheese => (
             <MenuItem itemRole="link" href={`#${cheese}`} key={cheese}>
               {cheese}
             </MenuItem>

@@ -31,7 +31,7 @@ import { defaultArgTypes as argTypes } from '../../../../apps/storybook/src/defa
 import type { MenuItemProps } from './MenuItem'
 import { MenuItem } from './MenuItem'
 
-const MenuItemTemplate: Story<MenuItemProps> = (args) => (
+const MenuItemTemplate: Story<MenuItemProps> = args => (
   <MenuItem {...args}>Menu Item</MenuItem>
 )
 

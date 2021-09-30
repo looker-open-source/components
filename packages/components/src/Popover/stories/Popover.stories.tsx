@@ -342,7 +342,7 @@ const popoverContent = (
 )
 export const RenderProps = () => (
   <Popover content={popoverContent}>
-    {(props) => <button {...props}>Test</button>}
+    {props => <button {...props}>Test</button>}
   </Popover>
 )
 
@@ -352,7 +352,7 @@ RenderProps.parameters = {
 
 export const RenderPropsSpread = () => (
   <Popover content={popoverContent}>
-    {(props) => <button {...props}>Test</button>}
+    {props => <button {...props}>Test</button>}
   </Popover>
 )
 

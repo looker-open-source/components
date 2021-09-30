@@ -54,7 +54,7 @@ export const useDataTableSortManager = (
     setColumns(sortedColumns)
   }
 
-  const items = data.map((dataObj) => {
+  const items = data.map(dataObj => {
     const defaultOrderColumn = columns[0].id
     const id = dataObj[defaultOrderColumn]
 
@@ -65,7 +65,7 @@ export const useDataTableSortManager = (
         onClick={onClickItem}
         actions={generateActions(dataObj)}
       >
-        {columns.map((column) => (
+        {columns.map(column => (
           <DataTableCell key={column.id}>{dataObj[column.id]}</DataTableCell>
         ))}
       </DataTableItem>

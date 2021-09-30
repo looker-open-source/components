@@ -41,86 +41,91 @@ export interface MenuItemProps
   extends Omit<ListItemProps, 'color'>,
     Pick<UseNestedMenuProps, 'nestedMenu'> {}
 
-const MenuItemInternal = forwardRef(
-  (
-    {
-      children,
-      detail,
-      onClick,
-      onKeyDown,
-      onMouseEnter,
-      onMouseLeave,
-      nestedMenu,
-      ...props
-    }: MenuItemProps,
-    forwardedRef: Ref<HTMLLIElement>
-  ) => {
-    const id = useID(props.id)
+export const MenuItem = styled(
+  forwardRef(
+    (
+      {
+        children,
+        detail,
+        onClick,
+        onKeyDown,
+        onMouseEnter,
+        onMouseLeave,
+        nestedMenu,
+        ...props
+      }: MenuItemProps,
+      forwardedRef: Ref<HTMLLIElement>
+    ) => {
+      const id = useID(props.id)
 
-    const {
-      popover,
-      domProps: {
-        onClick: nestedMenuOnClick,
-        ref: nestedMenuRef,
-        ...nestedMenuProps
-      },
-    } = useNestedMenu({
-      id,
-      nestedMenu,
-      onClick,
-      onKeyDown,
-      onMouseEnter,
-      onMouseLeave,
-    })
+      const {
+        popover,
+        domProps: {
+          onClick: nestedMenuOnClick,
+          ref: nestedMenuRef,
+          ...nestedMenuProps
+        },
+      } = useNestedMenu({
+        id,
+        nestedMenu,
+        onClick,
+        onKeyDown,
+        onMouseEnter,
+        onMouseLeave,
+      })
 
-    const ref = useForkedRef<HTMLLIElement>(nestedMenuRef, forwardedRef)
+      const ref = useForkedRef<HTMLLIElement>(nestedMenuRef, forwardedRef)
 
-    const theme = useContext(ThemeContext)
-    const { density } = useContext(ListItemContext)
-    const { iconSize } = listItemDimensions(density || theme.defaults.density)
+      const theme = useContext(ThemeContext)
+      const { density } = useContext(ListItemContext)
+      const { iconSize } = listItemDimensions(density || theme.defaults.density)
 
-    if (detail && nestedMenu) {
-      // eslint-disable-next-line no-console
-      console.warn('The detail prop is not supported when nestedMenu is used.')
-    }
-    detail = nestedMenu ? <NestedMenuIndicator size={iconSize} /> : detail
-
-    const { closeModal } = useContext(DialogContext)
-    const { closeParentMenu } = useContext(NestedMenuContext)
-
-    const handleOnClick = (event: MouseEvent<HTMLLIElement>) => {
-      // nestedMenuOnClick wraps onClick from props
-      nestedMenuOnClick(event)
-      // Close the Menu unless event has preventDefault
-      if (!event.defaultPrevented) {
-        closeModal?.()
-        closeParentMenu?.()
+      if (detail && nestedMenu) {
+        // eslint-disable-next-line no-console
+        console.warn(
+          'The detail prop is not supported when nestedMenu is used.'
+        )
       }
-    }
+      detail = nestedMenu ? <NestedMenuIndicator size={iconSize} /> : detail
 
-    return (
-      <>
-        <ListItem
-          detail={detail}
-          onClick={handleOnClick}
-          ref={ref}
-          role="menuitem"
-          {...props}
-          {...nestedMenuProps}
-        >
-          {children}
-        </ListItem>
-        {/* Keep nestedMenu popover outside of ListItem to prevent its events
+      const { closeModal } = useContext(DialogContext)
+      const { closeParentMenu } = useContext(NestedMenuContext)
+
+      const handleOnClick = (event: MouseEvent<HTMLLIElement>) => {
+        // nestedMenuOnClick wraps onClick from props
+        nestedMenuOnClick(event)
+        // Close the Menu unless event has preventDefault
+        if (!event.defaultPrevented) {
+          closeModal?.()
+          closeParentMenu?.()
+        }
+      }
+
+      return (
+        <>
+          <ListItem
+            detail={detail}
+            onClick={handleOnClick}
+            ref={ref}
+            role="menuitem"
+            {...props}
+            {...nestedMenuProps}
+          >
+            {children}
+          </ListItem>
+          {/* Keep nestedMenu popover outside of ListItem to prevent its events
        from bubbling up (especially onClick) due to React Portal event bubbling */}
-        {popover}
-      </>
-    )
+          {popover}
+        </>
+      )
+    }
+  )
+)`
+  /** Styling for items that have nested menus */
+  [aria-expanded='true'] {
+    background: ${({ theme: { colors } }) => colors.ui1};
   }
-)
-
-MenuItemInternal.displayName = 'MenuItemInternal'
-
-export const MenuItem = styled(MenuItemInternal)``
+`
 
 const NestedMenuIndicator = styled(ArrowRight).withConfig({
   shouldForwardProp,

@@ -908,7 +908,7 @@ describe('DataTable', () => {
           filters={
             <InputFilters
               filters={listFilters}
-              onChange={(f) => setListFilters(f)}
+              onChange={f => setListFilters(f)}
             />
           }
         >

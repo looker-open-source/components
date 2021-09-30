@@ -83,7 +83,7 @@ export const getNextItemFocus = (
         ? (focusedElement as HTMLElement)
         : (closestWrapper.querySelector(itemSelector) as HTMLElement)
 
-      const next = items.findIndex((el) => el === target) + direction
+      const next = items.findIndex(el => el === target) + direction
 
       if (next === items.length || !items[next]) {
         return getFallbackElement(direction, element, items)
@@ -97,7 +97,7 @@ export const getNextItemFocus = (
         )
       ) as HTMLElement[]
 
-      const next = tabStops.findIndex((el) => el === focusedElement) + direction
+      const next = tabStops.findIndex(el => el === focusedElement) + direction
 
       if (next === tabStops.length || !tabStops[next]) {
         return getFallbackElement(

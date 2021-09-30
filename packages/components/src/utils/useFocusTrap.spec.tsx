@@ -64,7 +64,7 @@ const Inner: FC<TestProps> = ({ children, clickOutsideDeactivates }) => {
   )
 }
 
-const FocusTrapComponent: FC<TestProps> = (props) => {
+const FocusTrapComponent: FC<TestProps> = props => {
   return (
     <FocusTrapProvider>
       <Inner {...props} />

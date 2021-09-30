@@ -36,7 +36,7 @@ export default {
   title: 'UnorderedList',
 }
 
-const Template: Story<UnorderedListProps> = (args) => (
+const Template: Story<UnorderedListProps> = args => (
   <UnorderedList {...args}>
     <li>Gouda</li>
     <li>Swiss</li>

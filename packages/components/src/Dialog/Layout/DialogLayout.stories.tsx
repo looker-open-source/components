@@ -32,7 +32,7 @@ import type { DialogLayoutProps } from './DialogLayout'
 import { DialogLayout } from './DialogLayout'
 import { DialogContent } from './DialogContent'
 
-const Template: Story<DialogLayoutProps> = (args) => (
+const Template: Story<DialogLayoutProps> = args => (
   <Box2 bg="ui1">
     <DialogLayout {...args}>
       <ConstitutionShort />

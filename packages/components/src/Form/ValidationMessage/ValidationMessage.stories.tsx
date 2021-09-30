@@ -36,7 +36,7 @@ export default {
   title: 'ValidationMessage',
 }
 
-const Template: Story<ValidationMessageProps> = (args) => (
+const Template: Story<ValidationMessageProps> = args => (
   <ValidationMessage {...args} />
 )
 

@@ -34,7 +34,7 @@ import { Table } from './Table'
 import type { DataTableProps } from './types'
 import { allItemsSelected } from './utils/allItemsSelected'
 
-export const DataTableLayout: FC<DataTableProps> = (props) => {
+export const DataTableLayout: FC<DataTableProps> = props => {
   const {
     bulk,
     className,
@@ -50,8 +50,8 @@ export const DataTableLayout: FC<DataTableProps> = (props) => {
    * Extract columns that the user can specify visibility on
    */
   const columnsVisibleDefault = columns
-    .filter((c) => c.hide === false)
-    .map((c) => c.id)
+    .filter(c => c.hide === false)
+    .map(c => c.id)
 
   /**
    * An array of column IDs that should be displayed to the user
@@ -63,7 +63,7 @@ export const DataTableLayout: FC<DataTableProps> = (props) => {
    * NOTE: Columns with `hide===undefined` are always visible
    */
   const columnsDisplayState = columns.map(
-    (c) => c.hide === undefined || columnsVisible.includes(c.id)
+    c => c.hide === undefined || columnsVisible.includes(c.id)
   )
 
   /**

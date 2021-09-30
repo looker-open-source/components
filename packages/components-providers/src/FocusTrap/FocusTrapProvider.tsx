@@ -36,7 +36,7 @@ export const FocusTrapContext = createContext<
 >({})
 FocusTrapContext.displayName = 'FocusTrapContext'
 
-export const FocusTrapProvider: FC = (props) => (
+export const FocusTrapProvider: FC = props => (
   <TrapStackProvider
     activate={activateFocusTrap}
     context={FocusTrapContext}

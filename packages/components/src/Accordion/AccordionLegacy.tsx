@@ -52,7 +52,7 @@ export const AccordionLegacy: FC<AccordionLegacyProps> = ({
 }) => {
   const accordionChildren = [] as ReactNode[]
 
-  Children.forEach(children, (child) => {
+  Children.forEach(children, child => {
     if (isValidElement(child)) {
       const isAccordionDisclosure =
         (child as ReactElement<unknown>).type === AccordionDisclosure

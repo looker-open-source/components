@@ -152,7 +152,7 @@ describe('Tooltip', () => {
   test('Render props version works', () => {
     renderWithTheme(
       <Tooltip content="Hello world">
-        {(props) => <Button {...props}>Test</Button>}
+        {props => <Button {...props}>Test</Button>}
       </Tooltip>
     )
 

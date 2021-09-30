@@ -58,7 +58,7 @@ export const LegacyComposition = () => (
   </Accordion>
 )
 
-const Template: Story<AccordionProps> = (args) => <Accordion {...args} />
+const Template: Story<AccordionProps> = args => <Accordion {...args} />
 
 export const Basic = Template.bind({})
 Basic.args = {

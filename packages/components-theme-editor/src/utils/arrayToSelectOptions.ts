@@ -25,6 +25,6 @@
  */
 
 export const arrayToSelectOptions = (options: string[]) =>
-  options.map((option) => {
+  options.map(option => {
     return { option, value: option }
   })

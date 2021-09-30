@@ -180,7 +180,7 @@ const optionReducer = (searchTerm: string) => {
   return (acc: SelectOptionProps[], option: SelectOptionProps) => {
     const optionAsGroup = option as SelectOptionGroupProps
     if (optionAsGroup.options) {
-      const filteredGroupOptions = optionAsGroup.options.filter((option) =>
+      const filteredGroupOptions = optionAsGroup.options.filter(option =>
         checkOption(option, searchTerm)
       )
       if (filteredGroupOptions.length > 0) {
@@ -473,7 +473,7 @@ export const OptionIcons = () => {
   const [filterTerm, setFilterTerm] = useState('')
   const newOptions = useMemo(() => {
     return iconOptions.filter(
-      (iconOption) =>
+      iconOption =>
         iconOption.label.toLowerCase().indexOf(filterTerm.toLowerCase()) > -1
     )
   }, [filterTerm])
@@ -494,7 +494,7 @@ export const OptionIcons = () => {
       />
       <FieldSelect
         label="Descriptions"
-        options={iconOptions.map((option) => ({
+        options={iconOptions.map(option => ({
           ...option,
           description: 'This is a description',
         }))}
@@ -568,7 +568,7 @@ export const CreateOption = () => {
   const [filterTerm, setFilterTerm] = useState('')
   const newOptions = useMemo(() => {
     return options.filter(
-      (option) =>
+      option =>
         option.label.toLowerCase().indexOf(filterTerm.toLowerCase()) > -1
     )
   }, [filterTerm])

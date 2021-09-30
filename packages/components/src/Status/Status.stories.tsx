@@ -30,7 +30,7 @@ import { defaultArgTypes as argTypes } from '../../../../apps/storybook/src/defa
 import type { StatusProps } from './Status'
 import { Status } from './Status'
 
-const Template: Story<StatusProps> = (args) => <Status {...args} />
+const Template: Story<StatusProps> = args => <Status {...args} />
 
 export const Inform = Template.bind({})
 Inform.args = {

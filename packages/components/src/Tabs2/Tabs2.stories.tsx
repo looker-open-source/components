@@ -35,7 +35,7 @@ export default {
   title: 'Tabs2',
 }
 
-const Template: Story<Tabs2Props> = (args) => (
+const Template: Story<Tabs2Props> = args => (
   <Box2 height="8rem">
     <Tabs2 {...args}>
       <Tab2 id="cats" label="Cats">

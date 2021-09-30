@@ -56,7 +56,7 @@ export const SaveChanges = () => {
     confirmLabel: 'Discard Changes',
     message:
       'Are you sure you want to close the dialog? Unsaved changes will be lost.',
-    onCancel: (close) => {
+    onCancel: close => {
       close()
     },
     onConfirm: handleConfirm,

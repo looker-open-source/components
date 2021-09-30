@@ -41,7 +41,7 @@ export default {
   title: 'Space',
 }
 
-const Template: Story<SpaceHelperProps> = (args) => (
+const Template: Story<SpaceHelperProps> = args => (
   <Space {...args}>
     <Button>Button A</Button>
     <Button>Button B</Button>

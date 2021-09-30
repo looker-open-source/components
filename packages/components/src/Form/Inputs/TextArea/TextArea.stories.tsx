@@ -36,7 +36,7 @@ export default {
   title: 'TextArea',
 }
 
-const Template: Story<TextAreaProps> = (args) => <TextArea {...args} />
+const Template: Story<TextAreaProps> = args => <TextArea {...args} />
 
 export const Basic = Template.bind({})
 

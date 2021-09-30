@@ -33,7 +33,7 @@ import { defaultArgTypes as argTypes } from '../../../../../../apps/storybook/sr
 import type { InputColorProps } from './InputColor'
 import { InputColor } from './InputColor'
 
-const Template: Story<InputColorProps> = (args) => <InputColor {...args} />
+const Template: Story<InputColorProps> = args => <InputColor {...args} />
 
 export default {
   argTypes,

@@ -62,7 +62,7 @@ the user to delete the current value.
       { label: 'Kiwis', value: '5' },
     ]
     if (searchTerm === '') return options
-    return options.filter((option) => {
+    return options.filter(option => {
       return option.label.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1
     })
   }, [searchTerm])
@@ -102,7 +102,7 @@ to allow the user to enter a value not found in the options.
       { value: 'Kiwis' },
     ]
     if (searchTerm === '') return options
-    return options.filter((option) => {
+    return options.filter(option => {
       return option.value.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1
     })
   }, [searchTerm])

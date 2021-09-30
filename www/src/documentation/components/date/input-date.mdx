@@ -24,7 +24,7 @@ storybook: true
 ```jsx
 ;() => {
   const [selectedDate, setSelectedDate] = useState(new Date())
-  const handleChange = (date) => {
+  const handleChange = date => {
     setSelectedDate(date)
   }
   return (

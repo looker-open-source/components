@@ -32,7 +32,7 @@ import type { SelectMultiProps } from '../SelectMulti'
 import { SelectMulti } from '../SelectMulti'
 import { options1kGrouped } from './options1k'
 
-const Template: Story<SelectMultiProps> = (args) => <SelectMulti {...args} />
+const Template: Story<SelectMultiProps> = args => <SelectMulti {...args} />
 
 const cheeses = [
   { label: 'Cheddar', value: 'cheddar' },

@@ -78,7 +78,7 @@ AsideLayout.displayName = 'AsideLayout'
 
 export const Aside = styled(AsideLayout)
   .withConfig<AsideProps>({
-    shouldForwardProp: (prop) => prop === 'collapse' || shouldForwardProp(prop),
+    shouldForwardProp: prop => prop === 'collapse' || shouldForwardProp(prop),
   })
   .attrs<AsideProps>(({ width = 'sidebar' }) => ({
     width,

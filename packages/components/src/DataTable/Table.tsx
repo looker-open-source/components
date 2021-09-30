@@ -49,7 +49,7 @@ export interface TableProps extends DataTableProps {
   columnsVisible: string[]
 }
 
-export const TableLayout: FC<TableProps> = (props) => {
+export const TableLayout: FC<TableProps> = props => {
   const { t } = useTranslation('DataTable')
   const noResultsDisplayText = t('No Results')
   const {

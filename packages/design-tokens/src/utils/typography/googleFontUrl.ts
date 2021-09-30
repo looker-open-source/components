@@ -44,9 +44,9 @@ export const googleFontParam = ({
 }: GoogleFontSpecification) => {
   let uri = `${family.replace(/"/g, '').replace(/ /g, '+')}:`
 
-  let weights = font.weights.map((weight) => `0,${weight}`)
+  let weights = font.weights.map(weight => `0,${weight}`)
   if (italic) {
-    const italicizedWeights = font.weights.map((weight) => `1,${weight}`)
+    const italicizedWeights = font.weights.map(weight => `1,${weight}`)
     weights = [...weights, ...italicizedWeights]
     uri += 'ital,'
   }
@@ -61,7 +61,7 @@ export const googleFontUrl = (theme: Theme) => {
 
   const weights = Object.values(theme.fontWeights)
   const fonts: GoogleFontSpecification[] = Object.values(theme.fonts).map(
-    (family) => {
+    family => {
       return {
         family: family.split(',')[0].replace(/'/g, ''),
         weights,
@@ -69,7 +69,7 @@ export const googleFontUrl = (theme: Theme) => {
     }
   )
 
-  const search = fonts.map((font) => `family=${googleFontParam(font)}`)
+  const search = fonts.map(font => `family=${googleFontParam(font)}`)
   search.push('display=swap')
   url.search = search.join('&')
 

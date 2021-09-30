@@ -25,5 +25,5 @@
  */
 
 export const undefinedCoalesce = <T>(arr: T[]) => {
-  return arr.find((element) => element !== undefined)
+  return arr.find(element => element !== undefined)
 }

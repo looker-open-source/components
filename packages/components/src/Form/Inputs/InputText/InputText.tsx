@@ -183,7 +183,7 @@ export const inputTextDisabled = css`
 `
 
 export const inputTextValidation = css<{ validationType?: 'error' }>`
-  ${(props) =>
+  ${props =>
     props.validationType === 'error'
       ? `
       border-color: ${props.theme.colors.critical};

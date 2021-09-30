@@ -39,9 +39,7 @@ export default {
   title: 'FieldTextArea',
 }
 
-const Template: Story<FieldTextAreaProps> = (args) => (
-  <FieldTextArea {...args} />
-)
+const Template: Story<FieldTextAreaProps> = args => <FieldTextArea {...args} />
 
 export const Basic = Template.bind({})
 Basic.args = { label: 'Text Area' }

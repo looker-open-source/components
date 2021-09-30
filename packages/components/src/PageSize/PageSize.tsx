@@ -65,7 +65,7 @@ const stringToSelectOption = (option: string) => ({
 })
 
 const arrayToSelectOptions = (options: Array<string | number>) =>
-  options.map((option) => stringToSelectOption(String(option)))
+  options.map(option => stringToSelectOption(String(option)))
 
 export const PageSizeLayout: FC<PageSizeProps> = ({
   alwaysVisible = false,
@@ -88,7 +88,7 @@ export const PageSizeLayout: FC<PageSizeProps> = ({
         options={arrayToSelectOptions(options)}
         value={String(value > total ? total : value)}
         onChange={handleOnChange}
-        disabled={options.every((option) => option > total)}
+        disabled={options.every(option => option > total)}
       />
       <span>
         {t('of')} {total}

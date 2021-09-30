@@ -36,7 +36,7 @@ export default {
   title: 'DividerVertical',
 }
 
-const Template: Story<DividerVerticalProps> = (args) => (
+const Template: Story<DividerVerticalProps> = args => (
   <DividerVertical {...args} />
 )
 
