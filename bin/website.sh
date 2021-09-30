@@ -14,7 +14,7 @@ mv www/public docs/$VERSION
 # Build Storybooks
 
 # @TODO Check if storybook is already built and re-use
-if [ ! -d storybook/storybook-static ]; then
+if [ ! -d apps/storybook/storybook-static ]; then
   yarn workspace storybook build
 fi
-cp -r storybook/storybook-static docs/$VERSION/storybook
+cp -r apps/storybook/storybook-static docs/$VERSION/storybook
