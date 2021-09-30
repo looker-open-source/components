@@ -80,8 +80,9 @@ export const NavTree = styled(
      */
     const isIndicatorToggleOnly = !!restProps.href
 
-    const [treeItemInnerProps, accordionInnerProps] =
-      partitionTreeProps(restProps)
+    const [treeItemInnerProps, accordionInnerProps] = partitionTreeProps(
+      restProps
+    )
 
     const { hovered, contentHandlers, wrapperHandlers } = useTreeHandlers({
       onFocus,
@@ -89,8 +90,14 @@ export const NavTree = styled(
       onMouseLeave,
     })
 
-    const { disabled, href, icon, rel, selected, target } =
-      treeItemInnerProps as Partial<ListItemProps>
+    const {
+      disabled,
+      href,
+      icon,
+      rel,
+      selected,
+      target,
+    } = treeItemInnerProps as Partial<ListItemProps>
     const [ariaProps] = partitionAriaProps(restProps)
 
     const treeContext = useContext(TreeContext)
@@ -99,11 +106,9 @@ export const NavTree = styled(
     // - density must be defined at the collection level for consistent child height
     // - opened / closed state must be managed at the collection level for accurate item count
     // - partialRender to hide the accordion disclosure if it's above the window
-    const {
-      isOpen: contextIsOpen,
-      toggleNode,
-      partialRender,
-    } = useContext(WindowedTreeContext)
+    const { isOpen: contextIsOpen, toggleNode, partialRender } = useContext(
+      WindowedTreeContext
+    )
 
     const isOpen = contextIsOpen ?? propsIsOpen
     const toggleOpen = toggleNode ?? propsToggleOpen

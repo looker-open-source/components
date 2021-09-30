@@ -45,14 +45,15 @@ export default {
   title: 'Date / FieldDateRange',
 }
 
-const Template: Story<FieldInputDateRangeProps & { externalLabel: boolean }> =
-  ({ externalLabel = true, ...args }) => (
-    <ExtendComponentsThemeProvider
-      themeCustomizations={{ defaults: { externalLabel } }}
-    >
-      <FieldDateRange {...args} />
-    </ExtendComponentsThemeProvider>
-  )
+const Template: Story<
+  FieldInputDateRangeProps & { externalLabel: boolean }
+> = ({ externalLabel = true, ...args }) => (
+  <ExtendComponentsThemeProvider
+    themeCustomizations={{ defaults: { externalLabel } }}
+  >
+    <FieldDateRange {...args} />
+  </ExtendComponentsThemeProvider>
+)
 
 export const Basic = Template.bind({})
 Basic.args = {

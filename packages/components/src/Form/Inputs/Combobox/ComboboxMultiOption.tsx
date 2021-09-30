@@ -72,8 +72,13 @@ export const ComboboxMultiOption = styled(
         props,
         ComboboxMultiContext
       )
-      const { isActive, isSelected } =
-        useOptionStatus<ComboboxMultiContextProps>(ComboboxMultiContext, value)
+      const {
+        isActive,
+        isSelected,
+      } = useOptionStatus<ComboboxMultiContextProps>(
+        ComboboxMultiContext,
+        value
+      )
 
       const scrollRef = useOptionScroll(
         ComboboxMultiContext,

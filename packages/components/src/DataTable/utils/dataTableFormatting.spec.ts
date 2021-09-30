@@ -48,7 +48,8 @@ describe('DataTable CSS Utils', () => {
 
   test('getNumericColumnIndices', () => {
     expect(getNumericColumnIndices(columns, ['id', 'name', 'age'])).toEqual([
-      1, 3,
+      1,
+      3,
     ])
   })
 })

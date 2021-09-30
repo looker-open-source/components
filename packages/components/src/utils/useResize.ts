@@ -46,7 +46,7 @@ export const useResize = (element: HTMLElement | null, handler: () => void) => {
     const resizeObserver = new ResizeObserver(() => throttledHandler())
 
     if (element) {
-      resizeObserver.observe(element as unknown as HTMLElement)
+      resizeObserver.observe((element as unknown) as HTMLElement)
     }
 
     window.addEventListener('resize', throttledHandler)

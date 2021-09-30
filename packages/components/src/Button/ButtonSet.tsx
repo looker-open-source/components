@@ -71,10 +71,11 @@ export interface ButtonGroupOrToggleBaseProps<
   onChange?: ButtonSetCallback<TValue>
 }
 
-export type ButtonSetType<TValue extends string | string[] = string[]> =
-  ForwardRefExoticComponent<
-    ButtonSetProps<TValue> & { ref: Ref<HTMLDivElement> }
-  >
+export type ButtonSetType<
+  TValue extends string | string[] = string[]
+> = ForwardRefExoticComponent<
+  ButtonSetProps<TValue> & { ref: Ref<HTMLDivElement> }
+>
 
 export const ButtonSetLayout = forwardRef(
   (

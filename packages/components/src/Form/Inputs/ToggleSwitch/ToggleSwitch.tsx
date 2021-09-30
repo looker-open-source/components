@@ -66,11 +66,7 @@ export const ToggleSwitch = styled(
       }: ToggleSwitchProps,
       ref: Ref<HTMLInputElement>
     ) => {
-      const {
-        callbacks,
-        className: rippleClassName,
-        style,
-      } = useRipple({
+      const { callbacks, className: rippleClassName, style } = useRipple({
         color: inputRippleColor(!!on, validationType === 'error'),
         // Only define size for density -6,
         // to make the halo slightly bigger than the container

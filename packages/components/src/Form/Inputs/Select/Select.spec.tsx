@@ -296,35 +296,35 @@ describe('Select / SelectMulti', () => {
   })
 
   /* eslint-disable react/display-name */
-  const GetIndicatorJSX =
-    (listLevel: boolean) => (indicator: ComboboxOptionIndicatorFunction) =>
-      (
-        <Select
-          options={options.map(opt => ({
-            ...opt,
-            ...(listLevel ? {} : { indicator }),
-          }))}
-          value="FOO"
-          placeholder="Search"
-          indicator={listLevel ? indicator : undefined}
-          key="select"
-        />
-      )
+  const GetIndicatorJSX = (listLevel: boolean) => (
+    indicator: ComboboxOptionIndicatorFunction
+  ) => (
+    <Select
+      options={options.map(opt => ({
+        ...opt,
+        ...(listLevel ? {} : { indicator }),
+      }))}
+      value="FOO"
+      placeholder="Search"
+      indicator={listLevel ? indicator : undefined}
+      key="select"
+    />
+  )
 
-  const GetIndicatorJSXMulti =
-    (listLevel: boolean) => (indicator: ComboboxOptionIndicatorFunction) =>
-      (
-        <SelectMulti
-          options={options.map(opt => ({
-            ...opt,
-            ...(listLevel ? {} : { indicator }),
-          }))}
-          values={['FOO']}
-          placeholder="Search"
-          indicator={listLevel ? indicator : undefined}
-          key="select-multi"
-        />
-      )
+  const GetIndicatorJSXMulti = (listLevel: boolean) => (
+    indicator: ComboboxOptionIndicatorFunction
+  ) => (
+    <SelectMulti
+      options={options.map(opt => ({
+        ...opt,
+        ...(listLevel ? {} : { indicator }),
+      }))}
+      values={['FOO']}
+      placeholder="Search"
+      indicator={listLevel ? indicator : undefined}
+      key="select-multi"
+    />
+  )
   /* eslint-enable react/display-name */
 
   test.each([
@@ -797,9 +797,9 @@ describe('Select', () => {
   const warnMock = jest.fn()
 
   beforeEach(() => {
-    global.console = {
+    global.console = ({
       warn: warnMock,
-    } as unknown as Console
+    } as unknown) as Console
   })
 
   afterEach(() => {

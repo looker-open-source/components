@@ -100,7 +100,7 @@ export const Tabs2 = ({
       <TabList2 distribute={distributed}>{labels}</TabList2>
       {currentTab && (
         <TabPanels2 id={currentTab.id}>
-          {currentTab.children as any as JSX.Element}
+          {(currentTab.children as any) as JSX.Element}
         </TabPanels2>
       )}
     </>

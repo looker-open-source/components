@@ -79,9 +79,7 @@ export * from './${name}'
 
 const generate = async () => {
   const files = await fg(['svg/*.svg'])
-  const icons = files.map((icon) =>
-    icon.replace('.svg', '').replace('svg/', '')
-  )
+  const icons = files.map(icon => icon.replace('.svg', '').replace('svg/', ''))
 
   if (icons.length === 0) {
     console.error('Error reading icons from source')
@@ -145,12 +143,12 @@ const generate = async () => {
       path.join(buildDir, 'index.ts'),
       `${license}
 export const iconsList = [
-${icons.map((icon) => `  '${icon}'`).join(',\n')},
+${icons.map(icon => `  '${icon}'`).join(',\n')},
 ]
 
 ${icons
-  .map((icon) => `export { ${icon} } from './${icon}'`)
-  .filter((lines) => lines)
+  .map(icon => `export { ${icon} } from './${icon}'`)
+  .filter(lines => lines)
   .join('\n')}
 `
     )
@@ -159,7 +157,7 @@ ${icons
   console.log(`${totalIcons} icons generated!`)
 }
 
-generate().catch((err) => {
+generate().catch(err => {
   console.error(err.stack)
   process.exit(1)
 })

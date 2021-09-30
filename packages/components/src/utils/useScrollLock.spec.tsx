@@ -34,10 +34,10 @@ const warnMock = jest.fn()
 const paddingSpy = jest.spyOn(document.body.style, 'paddingRight', 'set')
 
 beforeEach(() => {
-  global.console = {
+  global.console = ({
     ...globalConsole,
     warn: warnMock,
-  } as unknown as Console
+  } as unknown) as Console
 })
 
 afterEach(() => {
