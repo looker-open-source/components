@@ -40,11 +40,5 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           package-manager: yarn
+          skip-step: install
           threshold: 85
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v2
-        if: always()
-        with:
-          name: coverage
-          path: coverage
-          retention-days: 5
