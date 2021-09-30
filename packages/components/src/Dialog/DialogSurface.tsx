@@ -117,9 +117,6 @@ const placements = {
 
 const defaultDialogSurfacePlacement = 'center'
 
-// We have to use animation/keyframes here instead of transition
-// transition starts after the class changes from entering to entered
-// but animation/keyframes starts as soon as the element is rendered
 const dialogIn: Keyframes = keyframes`
 from {
   opacity: 0.01;
