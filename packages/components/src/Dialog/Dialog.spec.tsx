@@ -28,6 +28,7 @@ import 'jest-styled-components'
 import React, { useState } from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import {
+  act,
   screen,
   fireEvent,
   waitForElementToBeRemoved,
@@ -184,6 +185,32 @@ describe('Dialog', () => {
     const doneButton = screen.getByText('Done Reading')
     fireEvent.click(doneButton)
     await waitForElementToBeRemoved(() => screen.getByText(/We the People/))
+  })
+
+  test('props onAfterClose and onAfterOpen are called on appropriated time', async () => {
+    jest.useFakeTimers()
+
+    const onAfterClose = jest.fn()
+    const onAfterOpen = jest.fn()
+
+    renderWithTheme(
+      <Dialog
+        onAfterClose={onAfterClose}
+        onAfterOpen={onAfterOpen}
+        content={<SimpleContent />}
+      >
+        <a>Open Dialog</a>
+      </Dialog>
+    )
+
+    fireEvent.click(screen.getByText('Open Dialog'))
+    act(() => {
+      jest.runOnlyPendingTimers()
+    })
+    expect(onAfterOpen).toBeCalled()
+    fireEvent.click(screen.getByText('Done'))
+    await waitForElementToBeRemoved(() => screen.getByText('Dialog content'))
+    expect(onAfterClose).toBeCalled()
   })
 
   test('onClose callback', () => {

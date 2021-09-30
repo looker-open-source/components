@@ -83,6 +83,22 @@ Width.parameters = {
   docs: { disable: true },
 }
 
+export const AnimationCallbacks = Template.bind({})
+AnimationCallbacks.args = {
+  ...Basic.args,
+  onAfterClose: () => {
+    // eslint-disable-next-line no-console
+    console.log('Close')
+  },
+  onAfterOpen: () => {
+    // eslint-disable-next-line no-console
+    console.log('Open')
+  },
+}
+AnimationCallbacks.parameters = {
+  storyshots: { disable: true },
+}
+
 export default {
   argTypes: {
     ...defaultArgTypes,
