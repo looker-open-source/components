@@ -66,29 +66,48 @@ Basic.args = {
   label: 'Pick A Date',
 }
 
-export const LabelAnimation = Template.bind({})
-LabelAnimation.args = {
-  ...Basic.args,
-  externalLabel: false,
-}
-
 export const Disabled = Template.bind({})
 Disabled.args = {
   ...Basic.args,
   disabled: true,
 }
 
-export const DisabledNoDefaultValue = Template.bind({})
-DisabledNoDefaultValue.args = {
+export const FloatingLabel = Template.bind({})
+FloatingLabel.args = {
+  ...Basic.args,
+  externalLabel: false,
+}
+
+export const FloatingLabelDisabledNoDefaultValue = Template.bind({})
+FloatingLabelDisabledNoDefaultValue.args = {
   disabled: true,
   externalLabel: false,
   label: 'Pick A Date',
 }
 
-export const NoDefaultValue = Template.bind({})
-NoDefaultValue.args = {
+export const FloatingLabelNoDefaultValue = Template.bind({})
+FloatingLabelNoDefaultValue.args = {
   externalLabel: false,
   label: 'Pick A Date',
+}
+
+export const ControlledFloatingLabel = () => {
+  const [range, setRange] = useState<FieldInputDateRangeProps['value']>({
+    from: new Date('May 18, 2020'),
+    to: new Date('May 21, 2020'),
+  })
+  return (
+    <ExtendComponentsThemeProvider
+      themeCustomizations={{ defaults: { externalLabel: false } }}
+    >
+      <FieldDateRange
+        externalLabel={false}
+        label="Controlled"
+        value={range}
+        onChange={setRange}
+      />
+    </ExtendComponentsThemeProvider>
+  )
 }
 
 export const Error = Template.bind({})

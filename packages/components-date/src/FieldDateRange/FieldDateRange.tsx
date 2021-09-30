@@ -60,7 +60,7 @@ const FieldDateRangeComponent = forwardRef(
       <FloatingLabelField
         {...pickFieldProps(props)}
         checkValueOnBlur={checkValueOnBlur}
-        hasValue={!!props.defaultValue}
+        hasValue={!!props.defaultValue || !!props.value}
         id={id}
         validationMessage={validationMessage}
       >
