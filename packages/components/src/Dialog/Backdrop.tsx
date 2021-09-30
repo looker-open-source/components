@@ -30,8 +30,8 @@ import type {
   OpacityProps,
 } from '@looker/design-tokens'
 import { color, reset, shouldForwardProp } from '@looker/design-tokens'
-import type { CSSObject } from 'styled-components'
-import styled from 'styled-components'
+import type { CSSObject, Keyframes } from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 export interface BackdropProps
   extends CompatibleHTMLProps<HTMLDivElement>,
@@ -40,6 +40,23 @@ export interface BackdropProps
   visible?: boolean
   inlineStyle?: CSSObject
 }
+
+const fadeIn: Keyframes = keyframes`
+from {
+  opacity: 0.01;
+}
+to {
+  opacity: 0.6;
+}
+`
+const fadeOut: Keyframes = keyframes`
+from {
+  opacity: 0.6;
+}
+to {
+  opacity: 0.01;
+}
+`
 
 // Backdrop styles are applied here (rather than using the inline `style={...}` prop) to ensure that
 // transitions will still apply to backdrop
@@ -51,6 +68,8 @@ export const Backdrop = styled.div
   ${reset}
   ${color}
 
+  animation-duration: ${({ theme }) => theme.transitions.simple}ms;
+  animation-fill-mode: forwards;
   background: ${({ theme }) => theme.colors.ui5};
   bottom: 0;
   cursor: default;
@@ -59,10 +78,11 @@ export const Backdrop = styled.div
   position: fixed;
   right: 0;
   top: 0;
-  transition: opacity ${({ theme }) => theme.transitions.simple}ms;
 
-  &.entering,
+  &.entering {
+    animation-name: ${fadeIn};
+  }
   &.exiting {
-    opacity: 0.01;
+    animation-name: ${fadeOut};
   }
 `

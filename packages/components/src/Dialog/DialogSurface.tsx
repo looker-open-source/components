@@ -24,7 +24,8 @@
 
  */
 
-import styled, { css } from 'styled-components'
+import type { Keyframes } from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
 import type { ResponsiveValue } from '@looker/design-tokens'
 import { height, theme } from '@looker/design-tokens'
 import { SurfaceBase, surfaceTransition } from '../Dialog/SurfaceBase'
@@ -116,6 +117,27 @@ const placements = {
 
 const defaultDialogSurfacePlacement = 'center'
 
+const dialogIn: Keyframes = keyframes`
+from {
+  opacity: 0.01;
+  transform: translateY(100%);
+}
+to {
+  opacity: 1;
+  transform: translate(0);
+}
+`
+const dialogOut: Keyframes = keyframes`
+from {
+  opacity: 1;
+  transform: translate(0);
+}
+to {
+  opacity: 0.01;
+  transform: translateY(100%);
+}
+`
+
 export const DialogSurface = styled(SurfaceBase).attrs<DialogSurfaceProps>(
   ({ placement = defaultDialogSurfacePlacement, width = 'medium' }) => ({
     placement,
@@ -124,7 +146,6 @@ export const DialogSurface = styled(SurfaceBase).attrs<DialogSurfaceProps>(
 )<DialogSurfaceProps>`
   box-shadow: ${({ theme }) => theme.elevations.plus3};
   position: relative;
-  transition: transform ${surfaceTransition}, opacity ${surfaceTransition};
 
   ${dialogWidth}
   ${({ placement }) => placements[placement || defaultDialogSurfacePlacement]}
@@ -134,9 +155,10 @@ export const DialogSurface = styled(SurfaceBase).attrs<DialogSurfaceProps>(
     border-radius: ${({ theme }) => theme.radii.medium};
   }
 
-  &.entering,
+  &.entering {
+    animation: ${dialogIn} ${surfaceTransition};
+  }
   &.exiting {
-    opacity: 0.01;
-    transform: translateY(100%);
+    animation: ${dialogOut} ${surfaceTransition};
   }
 `
