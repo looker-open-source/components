@@ -110,6 +110,22 @@ export const ControlledFloatingLabel = () => {
   )
 }
 
+export const ControlledNoValueFloatingLabel = () => {
+  const [range, setRange] = useState<FieldInputDateRangeProps['value']>()
+  return (
+    <ExtendComponentsThemeProvider
+      themeCustomizations={{ defaults: { externalLabel: false } }}
+    >
+      <FieldDateRange
+        externalLabel={false}
+        label="Controlled"
+        value={range}
+        onChange={setRange}
+      />
+    </ExtendComponentsThemeProvider>
+  )
+}
+
 export const Error = Template.bind({})
 Error.args = {
   ...Basic.args,
