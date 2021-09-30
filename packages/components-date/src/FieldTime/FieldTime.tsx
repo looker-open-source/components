@@ -47,7 +47,7 @@ const checkValueOnBlur = (e: FocusEvent) => {
   const target = e.currentTarget
   const inputs = Array.from(target.querySelectorAll('input'))
   // Check all 3 inputs for a value
-  return inputs.every((input) => input.value !== '')
+  return inputs.some((input) => input.value !== '')
 }
 
 const FieldTimeComponent = forwardRef(
