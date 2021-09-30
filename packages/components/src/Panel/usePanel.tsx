@@ -62,11 +62,12 @@ export const usePanel = ({
   const isOpen = isControlled ? controlledIsOpen || false : uncontrolledIsOpen
 
   const firstRender = useRef(true)
-  const { busy, className, renderDOM } = useAnimationState(
+  const { busy, className, renderDOM } = useAnimationState({
+    enter:
+      disableAnimation || (isOpen && firstRender.current) ? 'none' : undefined,
+    exit: disableAnimation ? 'none' : undefined,
     isOpen,
-    disableAnimation || (isOpen && firstRender.current) ? 'none' : undefined,
-    disableAnimation ? 'none' : undefined
-  )
+  })
   firstRender.current = false
 
   const setOpen =

@@ -26,7 +26,7 @@
 
 import type { Transitions } from '@looker/design-tokens'
 import { transitions } from '@looker/design-tokens'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 type Entering = 'entering'
 type Entered = 'entered'
@@ -41,7 +41,7 @@ interface UseAnimationStateReturn {
   /**
    * className will transition from 'entering` => `entered` => `exiting` => `exited`
    */
-  className: 'entering' | 'entered' | 'exiting' | 'exited'
+  className: AnimationStates
   /**
    * renderDOM indicates whether or not the DOM elements to be associated should
    * be rendered.
@@ -53,9 +53,12 @@ interface UseAnimationStateReturn {
   busy: boolean
 }
 
-export interface AnimationStateConfig {
-  exit: boolean
-  enter: boolean
+export interface AnimationStateProps {
+  enter?: Transitions | undefined
+  exit?: Transitions | undefined
+  isOpen?: boolean
+  onAfterExited?: () => void
+  onAfterEntered?: () => void
 }
 
 /**
@@ -69,11 +72,13 @@ export interface AnimationStateConfig {
  * @param exit - whether to transition the exit @default true
  * @param timing - How long does the transition take to complete. Elements will be removed from the DOM once this time is elapsed
  */
-export const useAnimationState = (
-  isOpen: boolean,
-  enter: Transitions = 'moderate',
-  exit: Transitions = 'moderate'
-): UseAnimationStateReturn => {
+export const useAnimationState = ({
+  enter = 'moderate',
+  exit = 'moderate',
+  isOpen,
+  onAfterEntered,
+  onAfterExited,
+}: AnimationStateProps): UseAnimationStateReturn => {
   const [state, setState] = useState<AnimationStates>('exited')
   const timingEnter = transitions[enter]
   const timingExit = transitions[exit]
@@ -104,6 +109,17 @@ export const useAnimationState = (
       t && clearTimeout(t)
     }
   }, [isOpen, timingEnter, timingExit, state])
+
+  const previousStateRef = useRef(state)
+  useEffect(() => {
+    if (state === 'entered' && previousStateRef.current !== 'entered') {
+      onAfterEntered?.()
+    }
+    if (state === 'exited' && previousStateRef.current !== 'exited') {
+      onAfterExited?.()
+    }
+    previousStateRef.current = state
+  }, [state, onAfterExited, onAfterEntered])
 
   return {
     busy: busyStates.includes(state),

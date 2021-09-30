@@ -57,11 +57,11 @@ export const useTooltip = ({
   delay = 'intricate',
 }: UseTooltipProps) => {
   const [isOpen, setIsOpen] = useState(initializeOpen)
-  const { busy, className, renderDOM } = useAnimationState(
+  const { busy, className, renderDOM } = useAnimationState({
+    enter: delay,
+    exit: 'none',
     isOpen,
-    delay,
-    'none'
-  )
+  })
 
   const [surfaceElement, surfaceCallbackRef] = useCallbackRef()
   const [newTriggerElement, setTriggerElement] = useState<HTMLElement | null>(

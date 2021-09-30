@@ -24,7 +24,7 @@
 
  */
 
-import type { ReactNode, FC } from 'react'
+import type { FC, ReactNode } from 'react'
 import React, { useState } from 'react'
 import type {
   DrawerPlacements,
@@ -46,16 +46,17 @@ import type { DialogWidth } from './dialogWidth'
 
 export interface UseDialogBaseProps {
   /**
+   * Specify a callback to be called before trying to close the Popover. This allows for
+   * use-cases where the user might lose work (think common "Save before closing warning" type flow)
+   * Specify a callback to be called each time this Popover is closed
+   */
+  canClose?: () => boolean
+
+  /**
    * Content to rendered within the Dialog surface.
    * @required
    */
   content: ReactNode
-
-  /**
-   * Dialog will be displayed immediately when rendered.
-   * @default undefined
-   */
-  isOpen?: boolean
 
   /**
    * Dialog will be displayed immediately when rendered.
@@ -66,9 +67,25 @@ export interface UseDialogBaseProps {
   defaultOpen?: boolean
 
   /**
-   * Optional, for a controlled version of the component
+   * The id of the dialog (if absent, a random id will be generated)
    */
-  setOpen?: (open: boolean) => void
+  id?: string
+
+  /**
+   * Dialog will be displayed immediately when rendered.
+   * @default undefined
+   */
+  isOpen?: boolean
+
+  /**
+   * function available after dialog is closed
+   */
+  onAfterClose?: () => void
+
+  /**
+   * function available after dialog is opened
+   */
+  onAfterOpen?: () => void
 
   /**
    * Specify a callback to be called each time this Dialog is closed
@@ -76,16 +93,9 @@ export interface UseDialogBaseProps {
   onClose?: () => void
 
   /**
-   * Specify a callback to be called before trying to close the Popover. This allows for
-   * use-cases where the user might lose work (think common "Save before closing warning" type flow)
-   * Specify a callback to be called each time this Popover is closed
+   * Optional, for a controlled version of the component
    */
-  canClose?: () => boolean
-
-  /**
-   * The id of the dialog (if absent, a random id will be generated)
-   */
-  id?: string
+  setOpen?: (open: boolean) => void
 }
 
 export interface UseDialogProps extends UseDialogBaseProps, DialogSurfaceProps {
@@ -121,6 +131,8 @@ export const useDialog = ({
   defaultOpen = false,
   isOpen: controlledIsOpen,
   canClose,
+  onAfterClose,
+  onAfterOpen,
   onClose,
   setOpen: controlledSetOpen,
   Surface: CustomSurface,
@@ -154,10 +166,12 @@ export const useDialog = ({
       ? controlledIsOpen || false
       : uncontrolledIsOpen
 
-  const { busy, className, renderDOM } = useAnimationState(
+  const { busy, className, renderDOM } = useAnimationState({
+    enter: defaultOpen ? 'none' : undefined,
     isOpen,
-    defaultOpen ? 'none' : undefined
-  )
+    onAfterEntered: onAfterOpen,
+    onAfterExited: onAfterClose,
+  })
 
   const setOpen =
     isControlled && controlledSetOpen
