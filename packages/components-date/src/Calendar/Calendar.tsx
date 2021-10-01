@@ -107,11 +107,10 @@ const getLocaleProps = ({
 
   const localeUtils: typeof LocaleUtils = {
     ...LocaleUtils,
-    formatDay: (date) => formatDateString(date, locale, 'iii PP'),
+    formatDay: date => formatDateString(date, locale, 'iii PP'),
     formatMonthTitle: formatMonthTitle(locale),
-    formatWeekdayLong: (date) => locale.localize?.day(date),
-    formatWeekdayShort: (date) =>
-      locale.localize?.day(date, { width: 'short' }),
+    formatWeekdayLong: date => locale.localize?.day(date),
+    formatWeekdayShort: date => locale.localize?.day(date, { width: 'short' }),
   }
 
   return {
