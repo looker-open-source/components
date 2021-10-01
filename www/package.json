@@ -13,6 +13,7 @@
     "@looker/components-demos": "*",
     "@looker/filter-components": "*",
     "@looker/design-tokens": "*",
+    "@looker/eslint-config-oss": "*",
     "@looker/icons": "*",
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
