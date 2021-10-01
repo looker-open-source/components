@@ -35,10 +35,10 @@ export const useFocusTrap = <E extends HTMLElement = HTMLElement>({
   ...props
 }: UseTrapStackBaseProps<E> & { clickOutsideDeactivates?: boolean }) => {
   const returnFocusRef = useRef<Element>(null)
-  const options = useMemo(
-    () => ({ clickOutsideDeactivates, returnFocusRef }),
-    [returnFocusRef, clickOutsideDeactivates]
-  )
+  const options = useMemo(() => ({ clickOutsideDeactivates, returnFocusRef }), [
+    returnFocusRef,
+    clickOutsideDeactivates,
+  ])
   return useTrapStack<E, FocusTrapOptions>({
     context: FocusTrapContext,
     // If options.returnFocusRef is set, it will override this one

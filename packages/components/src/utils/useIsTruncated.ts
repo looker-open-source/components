@@ -56,7 +56,7 @@ export const useIsTruncated = (
 
     const resizeObserver = new ResizeObserver(() => handleResize())
     if (element) {
-      resizeObserver.observe(element as unknown as HTMLElement)
+      resizeObserver.observe((element as unknown) as HTMLElement)
     }
 
     return () => {

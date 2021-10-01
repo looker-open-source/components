@@ -53,9 +53,9 @@ const spacingExamples = [
 
 const spacingLabels = ['Size', 'Theme Value', 'PX Value', 'Rem Value']
 
-const unitValues: Array<string[]> = Object.entries(theme.space).filter(
-  ([key]) => key.startsWith('u')
-)
+const unitValues: Array<string[]> = Object.entries(
+  theme.space
+).filter(([key]) => key.startsWith('u'))
 
 const lookupLegacyValue = (remValue: string) => {
   const validSpace = spacingExamples.find(item => item.rem === remValue)

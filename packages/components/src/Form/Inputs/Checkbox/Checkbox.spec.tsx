@@ -32,8 +32,14 @@ import { RIPPLE_RATIO } from '../../../Ripple'
 import type { CheckboxProps } from './Checkbox'
 import * as stories from './Checkbox.stories'
 
-const { Basic, Checked, Disabled, DisabledChecked, MixedChecked, ReadOnly } =
-  composeStories(stories)
+const {
+  Basic,
+  Checked,
+  Disabled,
+  DisabledChecked,
+  MixedChecked,
+  ReadOnly,
+} = composeStories(stories)
 
 beforeEach(() => {
   jest.useFakeTimers()

@@ -192,8 +192,9 @@ In rare cases, such as nesting a popover from another library inside a `Dialog`,
 import { ScrollLockContext } from '@looker/components-providers'
 import { useContext } from 'react'
 
-const { activeTrapRef, disableCurrentTrap, enableCurrentTrap } =
-  useContext(ScrollLockContext)
+const { activeTrapRef, disableCurrentTrap, enableCurrentTrap } = useContext(
+  ScrollLockContext
+)
 
 function toggleScrollLock() {
   if (activeTrapRef && activeTrapRef.current) {

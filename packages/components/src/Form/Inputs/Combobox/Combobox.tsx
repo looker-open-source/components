@@ -196,6 +196,6 @@ export const ComboboxWrapper = forwardRef(
 
 ComboboxWrapper.displayName = 'ComboboxWrapper'
 
-export const Combobox = styled(ComboboxInternal).attrs(
-  ({ display = 'flex' }) => ({ display })
-)``
+export const Combobox = styled(
+  ComboboxInternal
+).attrs(({ display = 'flex' }) => ({ display }))``

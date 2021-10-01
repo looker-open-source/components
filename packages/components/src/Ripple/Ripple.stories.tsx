@@ -36,16 +36,14 @@ type RippleProps = SimpleLayoutProps & UseRippleProps & { className?: string }
 
 const Ripple = styled(
   ({ className, bounded, color, height, width, ...props }: RippleProps) => {
-    const {
-      callbacks,
-      className: rippleClassName,
-      ...rippleProps
-    } = useRipple({
-      bounded,
-      color,
-      height,
-      width,
-    })
+    const { callbacks, className: rippleClassName, ...rippleProps } = useRipple(
+      {
+        bounded,
+        color,
+        height,
+        width,
+      }
+    )
 
     const rippleHandlers = useRippleHandlers(callbacks, {})
 

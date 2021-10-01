@@ -77,8 +77,9 @@ const TreeLayout = ({
   toggleOpen: propsToggleOpen,
   ...restProps
 }: TreeProps) => {
-  const [treeItemInnerProps, accordionInnerProps] =
-    partitionTreeProps(restProps)
+  const [treeItemInnerProps, accordionInnerProps] = partitionTreeProps(
+    restProps
+  )
 
   const { hovered, contentHandlers, wrapperHandlers } = useTreeHandlers({
     onFocus,

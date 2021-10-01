@@ -65,12 +65,9 @@ const imageSnapshots = () => {
             '#modal-root [data-testid="backdrop"]'
           )
 
-          const {
-            height,
-            width,
-            left: x,
-            top: y,
-          } = (backdrop || document.body).getBoundingClientRect()
+          const { height, width, left: x, top: y } = (
+            backdrop || document.body
+          ).getBoundingClientRect()
 
           return { height, width, x, y }
         })

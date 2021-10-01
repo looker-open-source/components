@@ -41,7 +41,6 @@ module.exports = {
 }
 ```
 
-
 NOTE: Adding an `eslint.config.js` file will allow you to add your own rules to so that your package can add (or disable) additional lint rules as needed:
 
 ```js
@@ -65,6 +64,7 @@ Need to customize the prettier configuration? Add a `.prettierrc.json` to the ro
   "singleQuote": true
 }
 ```
+
 ## LICENCE
 
 [MIT](LICENCE)

@@ -216,14 +216,19 @@ export const SelectOptions = (props: SelectOptionsProps) => {
     isLoading,
   } = props
 
-  const { start, end, before, after, scrollToFirst, scrollToLast } =
-    useWindowedOptions(windowing, flatOptions, navigationOptions, isMulti)
+  const {
+    start,
+    end,
+    before,
+    after,
+    scrollToFirst,
+    scrollToLast,
+  } = useWindowedOptions(windowing, flatOptions, navigationOptions, isMulti)
   const keyPrefix = useID(flatOptions?.length.toString())
 
-  const hasIcons = useMemo(
-    () => optionsHaveIcons(navigationOptions),
-    [navigationOptions]
-  )
+  const hasIcons = useMemo(() => optionsHaveIcons(navigationOptions), [
+    navigationOptions,
+  ])
 
   if (isLoading) {
     return (
