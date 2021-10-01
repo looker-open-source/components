@@ -50,7 +50,7 @@ const FieldDateComponent = forwardRef(
     return (
       <FloatingLabelField
         {...pickFieldProps(props)}
-        hasValue={!!props.defaultValue}
+        hasValue={!!props.defaultValue || !!props.value}
         id={id}
         validationMessage={validationMessage}
       >

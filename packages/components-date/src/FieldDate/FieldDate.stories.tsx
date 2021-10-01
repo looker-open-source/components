@@ -72,12 +72,6 @@ Basic.args = {
   label: 'Example',
 }
 
-export const FloatingLabel = Template.bind({})
-FloatingLabel.args = { ...Basic.args, externalLabel: false }
-
-export const FloatingLabelNoDefaultValue = Template.bind({})
-FloatingLabelNoDefaultValue.args = { externalLabel: false, label: 'Example' }
-
 export const Disabled = Template.bind({})
 Disabled.args = { ...Basic.args, disabled: true }
 
@@ -125,8 +119,8 @@ Controlled.parameters = {
   storyshots: { disable: true },
 }
 
-export const ControlledFloatingLabel = () => {
-  const [today, setToday] = useState<Date>()
+export const ControlledFloatingLabelNoValue = () => {
+  const [today, setToday] = useState<any>()
   const onClickSelectToday = () => setToday(new Date())
   return (
     <ExtendComponentsThemeProvider
@@ -141,6 +135,39 @@ export const ControlledFloatingLabel = () => {
       />
     </ExtendComponentsThemeProvider>
   )
+}
+ControlledFloatingLabelNoValue.parameters = {
+  storyshots: { disable: true },
+}
+
+export const ControlledFloatingLabel = () => {
+  const [today, setToday] = useState<any>(new Date('04/07/1776'))
+  const onClickSelectToday = () => setToday(new Date())
+  return (
+    <ExtendComponentsThemeProvider
+      themeCustomizations={{ defaults: { externalLabel: false } }}
+    >
+      <Button onClick={onClickSelectToday}>Today</Button>
+      <FieldDate
+        externalLabel={false}
+        label="Controlled"
+        value={today}
+        onChange={setToday}
+      />
+    </ExtendComponentsThemeProvider>
+  )
+}
+ControlledFloatingLabel.parameters = {
+  storyshots: { disable: true },
+}
+
+export const FloatingLabel = Template.bind({})
+FloatingLabel.args = { ...Basic.args, externalLabel: false }
+
+export const FloatingLabelNoDefaultValue = Template.bind({})
+FloatingLabelNoDefaultValue.args = { externalLabel: false, label: 'Example' }
+FloatingLabelNoDefaultValue.parameters = {
+  storyshots: { disable: true },
 }
 
 export const Localized = () => {
