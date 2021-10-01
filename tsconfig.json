@@ -36,5 +36,5 @@
     }
   },
   "exclude": ["lib", "node_modules"],
-  "include": ["apps", "packages", "storybook/*/src",  "types", ]
+  "include": ["apps", "packages", "storybook/*/src" ]
 }

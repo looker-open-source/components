@@ -25,7 +25,7 @@
  */
 
 import type { FC } from 'react'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import {
   ComponentsProvider,
   Page,
@@ -33,17 +33,11 @@ import {
   Header,
   Layout as ComponentsLayout,
 } from '@looker/components'
-import type { ThemeCustomizations } from '@looker/design-tokens'
 import { createGlobalStyle } from 'styled-components'
 import { MDXProvider } from '@mdx-js/react'
 import { MDXComponents } from '../MDX'
 import { HeaderContent } from '../components/HeaderContent'
 import { Navigation } from '../components/Navigation'
-
-const storage =
-  typeof window !== 'undefined'
-    ? sessionStorage
-    : { getItem: () => '{}', setItem: () => undefined }
 
 const GatsbyOverrides = createGlobalStyle`
   body {

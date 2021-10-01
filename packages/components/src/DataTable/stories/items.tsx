@@ -83,11 +83,7 @@ export const itemBuilder = (
         key={id}
       >
         <DataTableCell description={type}>
-          <Link
-            href="https://components.looker.com/"
-            target="_blank"
-            rel="noreferrer"
-          >
+          <Link href="https://components.looker.com/" target="_blank">
             {name}
           </Link>
         </DataTableCell>

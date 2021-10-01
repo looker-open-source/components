@@ -107,7 +107,11 @@ const data = [
     calories: 103,
     id: 3,
     name: (
-      <a href="https://components.looker.com/" target="_blank" rel="noreferrer">
+      <a
+        href="https://components.looker.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         Gouda
       </a>
     ),
@@ -120,7 +124,7 @@ const data = [
       <Link
         href="https://components.looker.com/"
         target="_blank"
-        rel="noreferrer"
+        rel="noopener noreferrer"
       >
         American
       </Link>
