@@ -83,10 +83,20 @@ FloatingLabelDisabledNoDefaultValue.args = {
   label: 'Pick A Date',
 }
 
+// Disabling screenshots for now on stories using today's date
+FloatingLabelDisabledNoDefaultValue.parameters = {
+  storyshots: { disable: true },
+}
+
 export const FloatingLabelNoDefaultValue = Template.bind({})
 FloatingLabelNoDefaultValue.args = {
   externalLabel: false,
   label: 'Pick A Date',
+}
+
+// Disabling screenshots for now on stories using today's date
+FloatingLabelNoDefaultValue.parameters = {
+  storyshots: { disable: true },
 }
 
 export const ControlledFloatingLabel = () => {
@@ -122,6 +132,11 @@ export const ControlledNoValueFloatingLabel = () => {
       />
     </ExtendComponentsThemeProvider>
   )
+}
+
+// Disabling screenshots for now on stories using today's date
+ControlledNoValueFloatingLabel.parameters = {
+  storyshots: { disable: true },
 }
 
 export const Error = Template.bind({})
