@@ -52,16 +52,18 @@ export const NestedMenuProvider: FC<CloseParentMenuProps> = ({
   closeParentMenu,
 }) => {
   const delayedStateProps = useDelayedState<string>('')
-  const { closeParentMenu: closeGrandparent } = useContext(NestedMenuContext)
+  const { closeParentMenu: closeGrandparentMenu } =
+    useContext(NestedMenuContext)
 
-  const wrappedClose = useCallback(() => {
-    closeGrandparent?.()
+  const wrappedCloseParentMenu = useCallback(() => {
+    // Close the grandparent menu, if there is one
+    closeGrandparentMenu?.()
     closeParentMenu?.()
-  }, [closeGrandparent, closeParentMenu])
+  }, [closeGrandparentMenu, closeParentMenu])
 
   return (
     <NestedMenuContext.Provider
-      value={{ ...delayedStateProps, closeParentMenu: wrappedClose }}
+      value={{ ...delayedStateProps, closeParentMenu: wrappedCloseParentMenu }}
     >
       {children}
     </NestedMenuContext.Provider>

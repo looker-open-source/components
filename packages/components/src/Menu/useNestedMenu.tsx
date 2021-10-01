@@ -28,7 +28,7 @@ import type { CompatibleHTMLProps } from '@looker/design-tokens'
 import { transitions } from '@looker/design-tokens'
 import type { Placement } from '@popperjs/core'
 import omit from 'lodash/omit'
-import type { FocusEvent, KeyboardEvent, MouseEvent, ReactNode } from 'react'
+import type { KeyboardEvent, MouseEvent, ReactNode } from 'react'
 import React, { useContext, useEffect, useRef } from 'react'
 import { DialogContext } from '../Dialog'
 import { usePopover } from '../Popover'
@@ -187,14 +187,6 @@ export const useNestedMenu = ({
       }
     : {}
 
-  // React artificially bubbles events up through Portal
-  // We don't want that here because it causes the useArrowKeyNav logic
-  // to think focus is still inside the parent menu(s),
-  // resulting in a focus trap error when closing a 3rd level nested menu
-  const stopFocusBubbling = (e: FocusEvent) => {
-    e.stopPropagation()
-  }
-
   const { popover, popperInstanceRef, domProps } = usePopover({
     content: (
       <MenuList
@@ -202,7 +194,6 @@ export const useNestedMenu = ({
         density={density}
         {...listHandlers}
         closeParentMenu={closeModal}
-        onFocus={stopFocusBubbling}
       >
         {nestedMenu}
       </MenuList>
