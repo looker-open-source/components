@@ -27,6 +27,7 @@ import type { Story } from '@storybook/react/types-6-0'
 import React, { useState } from 'react'
 import {
   Button,
+  ExtendComponentsThemeProvider,
   Fieldset,
   i18nInit,
   Paragraph,
@@ -51,10 +52,22 @@ export default {
   title: `Date / FieldDate`,
 }
 
-const Template: Story<FieldDateProps> = args => <FieldDate {...args} />
+const Template: Story<FieldDateProps & { externalLabel: boolean }> = ({
+  externalLabel = true,
+  ...args
+}) => (
+  <ExtendComponentsThemeProvider
+    themeCustomizations={{ defaults: { externalLabel } }}
+  >
+    <FieldDate {...args} />
+  </ExtendComponentsThemeProvider>
+)
 
 export const Basic = Template.bind({})
-Basic.args = { defaultValue: new Date('July 25, 2020'), label: 'Example' }
+Basic.args = {
+  defaultValue: new Date('July 25, 2020'),
+  label: 'Example',
+}
 
 export const Disabled = Template.bind({})
 Disabled.args = { ...Basic.args, disabled: true }
@@ -98,6 +111,57 @@ export const Controlled = () => {
 }
 
 Controlled.parameters = {
+  storyshots: { disable: true },
+}
+
+export const ControlledFloatingLabelNoValue = () => {
+  const [today, setToday] = useState<any>()
+  const onClickSelectToday = () => setToday(new Date())
+  return (
+    <ExtendComponentsThemeProvider
+      themeCustomizations={{ defaults: { externalLabel: false } }}
+    >
+      <Button onClick={onClickSelectToday}>Today</Button>
+      <FieldDate
+        externalLabel={false}
+        label="Controlled"
+        value={today}
+        onChange={setToday}
+      />
+    </ExtendComponentsThemeProvider>
+  )
+}
+ControlledFloatingLabelNoValue.parameters = {
+  storyshots: { disable: true },
+}
+
+export const ControlledFloatingLabel = () => {
+  const [today, setToday] = useState<any>(new Date('04/07/1776'))
+  const onClickSelectToday = () => setToday(new Date())
+  return (
+    <ExtendComponentsThemeProvider
+      themeCustomizations={{ defaults: { externalLabel: false } }}
+    >
+      <Button onClick={onClickSelectToday}>Today</Button>
+      <FieldDate
+        externalLabel={false}
+        label="Controlled"
+        value={today}
+        onChange={setToday}
+      />
+    </ExtendComponentsThemeProvider>
+  )
+}
+ControlledFloatingLabel.parameters = {
+  storyshots: { disable: true },
+}
+
+export const FloatingLabel = Template.bind({})
+FloatingLabel.args = { ...Basic.args, externalLabel: false }
+
+export const FloatingLabelNoDefaultValue = Template.bind({})
+FloatingLabelNoDefaultValue.args = { externalLabel: false, label: 'Example' }
+FloatingLabelNoDefaultValue.parameters = {
   storyshots: { disable: true },
 }
 
