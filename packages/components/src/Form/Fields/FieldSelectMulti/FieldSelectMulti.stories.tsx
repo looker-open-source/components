@@ -24,6 +24,7 @@
 
  */
 
+import { ExtendComponentsThemeProvider } from '@looker/components-providers'
 import type { Story } from '@storybook/react/types-6-0'
 import React, { useMemo, useState, useEffect } from 'react'
 import { Favorite } from '@styled-icons/material'
@@ -42,9 +43,18 @@ import { options1k } from '../../Inputs/Select/stories/options1k'
 import type { FieldSelectMultiProps } from './FieldSelectMulti'
 import { FieldSelectMulti } from './FieldSelectMulti'
 
-const Template: Story<FieldSelectMultiProps> = (args) => (
-  <FieldSelectMulti {...args} />
-)
+const Template: Story<FieldSelectMultiProps & { externalLabel: boolean }> = ({
+  externalLabel,
+  ...args
+}) => {
+  return (
+    <ExtendComponentsThemeProvider
+      themeCustomizations={{ defaults: { externalLabel } }}
+    >
+      <FieldSelectMulti {...args} />
+    </ExtendComponentsThemeProvider>
+  )
+}
 
 const selectOptions = [
   { value: 'Apples' },
@@ -68,11 +78,21 @@ export const Basic = Template.bind({})
 Basic.args = {
   description: 'this is the description',
   detail: '5/50',
+  externalLabel: true,
   isFilterable: true,
   label: 'Label',
   options: selectOptions,
   placeholder: 'Search fruits',
 }
+
+export const FloatingLabel = Template.bind({})
+FloatingLabel.args = { ...Basic.args, externalLabel: false }
+
+export const Values = Template.bind({})
+Values.args = { ...Basic.args, defaultValues: ['Apples', 'Oranges'] }
+
+export const ValuesFloatingLabel = Template.bind({})
+ValuesFloatingLabel.args = { ...Values.args, externalLabel: false }
 
 export const Disabled = Template.bind({})
 Disabled.args = {
@@ -86,8 +106,7 @@ Error.args = {
   validationMessage: { message: 'validation Message', type: 'error' },
 }
 
-const emailValidator =
-  /^(([^<>()[\]\\.,:\s@"]+(\.[^<>()[\]\\.,:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+const emailValidator = /^(([^<>()[\]\\.,:\s@"]+(\.[^<>()[\]\\.,:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 const emails = [
   { label: 'Good Looker', value: 'good.looker@google.com' },
   { label: 'Components Team', value: 'lookercomponents@google.com' },
@@ -244,7 +263,7 @@ export const SelectMultiDemo = () => {
 
   const newOptions = useMemo(() => {
     if (searchTerm === '')
-      return selectOptions.map((option) => ({
+      return selectOptions.map(option => ({
         ...option,
         description: 'Lorem ipsum',
       }))

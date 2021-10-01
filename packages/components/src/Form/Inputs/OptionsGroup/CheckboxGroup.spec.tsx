@@ -126,7 +126,7 @@ test('CheckboxGroup disabled all checkbox', () => {
 })
 
 test('CheckboxGroup disabled one specific checkbox', () => {
-  const options = checkboxOptions.map((option) => {
+  const options = checkboxOptions.map(option => {
     return {
       disabled: ['Roquefort'].includes(option.label),
       ...option,

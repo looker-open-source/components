@@ -41,7 +41,7 @@ export default {
   title: 'Accordion2',
 }
 
-const Template: Story<Accordion2Props> = (args) => <Accordion2 {...args} />
+const Template: Story<Accordion2Props> = args => <Accordion2 {...args} />
 
 export const Basic = Template.bind({})
 Basic.args = {

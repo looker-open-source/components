@@ -30,7 +30,7 @@ import { Drawer } from '../Drawer'
 
 export const RenderProps = () => (
   <Drawer content={<DialogLongContent />}>
-    {(drawerProps) => <button {...drawerProps}>Open Drawer</button>}
+    {drawerProps => <button {...drawerProps}>Open Drawer</button>}
   </Drawer>
 )
 

@@ -40,7 +40,7 @@ export default {
 
 const defaultValueCheckbox = ['swiss', 'cheddar']
 
-const Template: Story<FieldCheckboxGroupProps> = (args) => (
+const Template: Story<FieldCheckboxGroupProps> = args => (
   <FieldCheckboxGroup
     {...args}
     autoFocus

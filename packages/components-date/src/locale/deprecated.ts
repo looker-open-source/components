@@ -24,12 +24,6 @@
 
  */
 
-/* eslint-disable import/no-duplicates */
-import format from 'date-fns-tz/format'
-import utcToZonedTime from 'date-fns-tz/utcToZonedTime'
-import isValid from 'date-fns/isValid'
-import parse from 'date-fns/parse'
-
 import ar from 'date-fns/locale/ar-SA'
 import de from 'date-fns/locale/de'
 import en from 'date-fns/locale/en-US'
@@ -47,8 +41,10 @@ import sv from 'date-fns/locale/sv'
 import tr from 'date-fns/locale/tr'
 import zhCn from 'date-fns/locale/zh-CN'
 import zhTw from 'date-fns/locale/zh-TW'
-/* eslint-enable import/no-duplicates */
 
+/**
+ * @deprecated
+ */
 export enum Locales {
   Arabic = 'ar',
   German = 'de',
@@ -69,6 +65,9 @@ export enum Locales {
   ChineseTaiwan = 'zh-tw',
 }
 
+/**
+ * @deprecated
+ */
 export type LocaleCodes =
   | Locales.Arabic
   | Locales.German
@@ -88,6 +87,9 @@ export type LocaleCodes =
   | Locales.Chinese
   | Locales.ChineseTaiwan
 
+/**
+ * @deprecated
+ */
 export const dateFnLocaleMap = {
   [Locales.Arabic]: ar,
   [Locales.German]: de,
@@ -108,46 +110,9 @@ export const dateFnLocaleMap = {
   [Locales.ChineseTaiwan]: zhTw,
 }
 
-export const formatDateString = (
-  date?: Date,
-  locale: LocaleCodes = Locales.English,
-  stringFormat = 'P',
-  timeZone: undefined | string = undefined
-): string | '' => {
-  if (!date) {
-    return ''
-  }
-
-  const renderedDate = timeZone ? utcToZonedTime(date, timeZone) : date
-
-  return format(renderedDate, stringFormat, {
-    locale: dateFnLocaleMap[locale],
-    ...(timeZone && { timeZone }),
-  })
-}
-
-export const formatYear = (date: Date): number => {
-  const year = date.getFullYear()
-  if (year < 100) {
-    // convert 2-digit year (2/2/20) to 4-digit year (2/2/2020)
-    return year + 2000
-  } else if (year < 1000) {
-    // convert 3-digit partial-year (2/2/201) to 4-digit year (2/2/2010)
-    return parseInt(`${year}0`)
-  }
-  return year
-}
-
-export const parseDateFromString = (
-  value: string,
-  locale: Locales = Locales.English
-): Date | false => {
-  // Date format 'P' represents localized dates in date-fns
-  const parsedValue = parse(value, 'P', new Date(), {
-    locale: dateFnLocaleMap[locale],
-  })
-
-  parsedValue.setFullYear(formatYear(parsedValue))
-
-  return isValid(parsedValue) && parsedValue
+/**
+ * @deprecated
+ */
+export const getLocale = (locale: Locales) => {
+  return dateFnLocaleMap[locale]
 }

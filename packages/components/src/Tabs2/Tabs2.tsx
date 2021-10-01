@@ -68,11 +68,11 @@ export const Tabs2 = ({
       // check if the defaultTabId is passed and if not set to display the first Tab available.
       !defaultTabId &&
       draftTabs.length > 0 &&
-      !draftTabs.find((tab) => tab.id === defaultTabId)
+      !draftTabs.find(tab => tab.id === defaultTabId)
     ) {
       // select the first `Tab` that is not disabled
       setCurrentTabId(
-        draftTabs[draftTabs.findIndex((tab) => !tab.disabled === true)].id
+        draftTabs[draftTabs.findIndex(tab => !tab.disabled === true)].id
       )
     }
   }, [children, defaultTabId, setTabs, setCurrentTabId])
@@ -93,14 +93,14 @@ export const Tabs2 = ({
   ))
 
   // associate the correct `Tab` to its content.
-  const currentTab = tabs.find((tab) => tab.id === tabId)
+  const currentTab = tabs.find(tab => tab.id === tabId)
 
   return (
     <>
       <TabList2 distribute={distributed}>{labels}</TabList2>
       {currentTab && (
         <TabPanels2 id={currentTab.id}>
-          {currentTab.children as any as JSX.Element}
+          {(currentTab.children as any) as JSX.Element}
         </TabPanels2>
       )}
     </>

@@ -43,13 +43,6 @@ export const ListItemWrapper = styled.li.attrs(
   outline: none;
   text-decoration: none;
 
-  /**
-    Styling for items that have nested menus
-   */
-  &[aria-expanded='true'] {
-    background: ${({ theme: { colors } }) => colors.ui1};
-  }
-
   &[disabled] {
     & > * {
       cursor: not-allowed;

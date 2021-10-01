@@ -36,7 +36,7 @@ export default {
   title: 'Legend',
 }
 
-const Template: Story<LegendProps> = (args) => <Legend {...args} />
+const Template: Story<LegendProps> = args => <Legend {...args} />
 
 export const Default = Template.bind({})
 Default.args = {

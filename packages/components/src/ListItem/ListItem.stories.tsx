@@ -39,7 +39,7 @@ import { defaultArgTypes as argTypes } from '../../../../apps/storybook/src/defa
 import { ListItem } from './ListItem'
 import type { ListItemProps, ListItemRole } from './types'
 
-const Template: Story<ListItemProps> = (args) => <ListItem {...args} />
+const Template: Story<ListItemProps> = args => <ListItem {...args} />
 
 export const Basic = Template.bind({})
 const basicArgs = { children: 'List Item' }

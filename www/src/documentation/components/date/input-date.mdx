@@ -24,7 +24,7 @@ storybook: true
 ```jsx
 ;() => {
   const [selectedDate, setSelectedDate] = useState(new Date())
-  const handleChange = (date) => {
+  const handleChange = date => {
     setSelectedDate(date)
   }
   return (
@@ -86,71 +86,4 @@ If you handle form validation externally (such as treating this date field as re
 
 ## I18n
 
-`InputDate` acccepts two different props for use in localizing calendar output. The first is `dateStringLocale` accepts a country code and is used to format the rendered date string in the input box (i.e. `06/04/2020`). The second is `localization`, which is used to translate the calendar format and naming.
-
-### dateStringLocale
-
-```jsx
-<Grid columns={2}>
-  <FieldDate
-    dateStringLocale="ko"
-    label="Korea (YYYY.MM.DD)"
-    value={new Date(Date.now())}
-  />
-  <FieldDate
-    dateStringLocale="it"
-    label="Italy (DD/MM/YYYY)"
-    value={new Date(Date.now())}
-  />
-</Grid>
-```
-
-### localization
-
-The `localization` prop can be used to provide translation strings for the names of the months, the days of the week, and what day the week starts on (usually `0` or `1`).
-
-```jsx
-;() => {
-  const months = [
-    'Gennaio',
-    'Febbraio',
-    'Marzo',
-    'Aprile',
-    'Maggio',
-    'Giugno',
-    'Luglio',
-    'Agosto',
-    'Settembre',
-    'Ottobre',
-    'Novembre',
-    'Dicembre',
-  ]
-  const weekdaysShort = ['Do', 'Lu', 'Ma', 'Me', 'Gi', 'Ve', 'Sa']
-  const firstDayOfWeek = 1 // monday
-  const localizationProps = { months, weekdaysShort, firstDayOfWeek }
-  return <InputDate localization={localizationProps} dateStringLocale="it" />
-}
-```
-
-## Composing InputDate in a Popover
-
-A common UI pattern is to combine `InputDate` with [Popover](/components/overlays/popover), [Button](/components/actions/button), and [DateFormat](/components/content/date-time-format). This enables the full calendar functionality without having to take up so much space on the page.
-
-```jsx
-;() => {
-  const [selectedDate, setSelectedDate] = useState(new Date(Date.now()))
-  return (
-    <Popover
-      content={
-        <Box2 p="u3">
-          <InputDate defaultValue={selectedDate} onChange={setSelectedDate} />
-        </Box2>
-      }
-    >
-      <Button>
-        <DateFormat>{selectedDate}</DateFormat>
-      </Button>
-    </Popover>
-  )
-}
-```
+See `locale` and `firstDayOfWeek` props on the [`Calendar`](calendar) component.

@@ -45,7 +45,7 @@ const IndentOverrideTreeItem = styled(TreeItem).withConfig<
   } & GenerateIndentProps &
     NavTreeItemProps
 >({
-  shouldForwardProp: (prop) =>
+  shouldForwardProp: prop =>
     ![
       'depth',
       'density',

@@ -26,6 +26,7 @@
   },
   "devDependencies": {
     "@looker/components-test-utils": "^1.5.3",
+    "@looker/eslint-config-oss": "*",
     "@storybook/testing-react": "^0.0.22",
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.6",

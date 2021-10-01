@@ -35,7 +35,7 @@ export interface DividerVerticalProps extends DividerProps {
 }
 
 export const DividerVertical = styled(DividerBase).attrs<DividerVerticalProps>(
-  (props) => {
+  props => {
     if (props.height && props.stretch) {
       // eslint-disable-next-line no-console
       console.warn(

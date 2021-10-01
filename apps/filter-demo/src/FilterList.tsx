@@ -85,7 +85,7 @@ export const FilterList: FC<FilterListProps> = ({
           }
         >
           <Fieldset>
-            {sortedFilters.map((filter) =>
+            {sortedFilters.map(filter =>
               filter.id ? (
                 <DashboardFilter
                   key={filter.id}

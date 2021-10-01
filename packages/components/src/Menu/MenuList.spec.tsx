@@ -65,7 +65,7 @@ describe('MenuList', () => {
       const arr3000 = Array.from(Array(3000), (_, i) => i)
       renderWithTheme(
         <MenuList>
-          {arr3000.map((num) => (
+          {arr3000.map(num => (
             <MenuItem key={num}>{num}</MenuItem>
           ))}
         </MenuList>

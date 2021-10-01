@@ -110,7 +110,7 @@ Sometimes you may need to control how `Tooltip` applies handlers to the componen
 
 ```jsx
 <Popover content="Example using render props exploded">
-  {(props) => (
+  {props => (
     <Button {...props}>
       Render Props Example: {props['aria-expanded'] ? 'open' : 'closed'}
     </Button>

@@ -121,8 +121,9 @@ export const useTooltip = ({
     [element, propsPlacement]
   )
 
-  const { placement, popperInstanceRef, style, targetRef } =
-    usePopper(usePopperProps)
+  const { placement, popperInstanceRef, style, targetRef } = usePopper(
+    usePopperProps
+  )
 
   const ref = useForkedRef(targetRef, surfaceCallbackRef)
 

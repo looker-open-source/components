@@ -62,7 +62,7 @@ function parseInputValue(value: string) {
   try {
     const parsed = JSON.parse(value)
     if (Array.isArray(parsed)) {
-      return parsed.map((option) =>
+      return parsed.map(option =>
         typeof option === 'string' ? option : JSON.stringify(option)
       )
     }
@@ -74,7 +74,7 @@ function parseInputValue(value: string) {
 
 function formatTextToCopy(selectedValues: string[]) {
   let noJson = true
-  const jsonReadyValues = selectedValues.map((value) => {
+  const jsonReadyValues = selectedValues.map(value => {
     try {
       JSON.parse(value)
       noJson = false
@@ -278,9 +278,9 @@ export const ComboboxMultiInputInternal = forwardRef(
 
 ComboboxMultiInputInternal.displayName = 'ComboboxMultiInputInternal'
 
-export const ComboboxMultiInput = styled(ComboboxMultiInputInternal).attrs(
-  ({ width = '100%' }) => ({ width })
-)`
+export const ComboboxMultiInput = styled(
+  ComboboxMultiInputInternal
+).attrs(({ width = '100%' }) => ({ width }))`
   ${comboboxStyles}
   padding-right: 0;
 `

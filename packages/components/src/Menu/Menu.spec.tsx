@@ -341,10 +341,10 @@ describe('<Menu />', () => {
       fireEvent.click(screen.getByText('French'))
       expect(screen.getByText('Camembert')).toBeVisible()
 
-      // If the the nestedMenu was already opened via hover, click closes both Menus
+      // If the the nestedMenu was already opened via hover, click does nothing
       // (userEvent.click fires 'mouseenter' first)
       userEvent.click(screen.getByText('French'))
-      expect(screen.queryByRole('menu')).not.toBeInTheDocument()
+      expect(screen.getByText('Camembert')).toBeVisible()
 
       // If the parent MenuItem has an onClick, click doesn't open the nestedMenu
       // and the parent Menu is closed after
@@ -413,6 +413,45 @@ describe('<Menu />', () => {
       expect(onClickMock).toHaveBeenCalledTimes(1)
       expect(child).toBeVisible()
       expect(parent).toBeVisible()
+
+      fireEvent.click(document)
+    })
+
+    test('3 levels deep', () => {
+      const onClickMock = jest.fn()
+      renderWithTheme(
+        <Menu
+          content={
+            <MenuItem
+              nestedMenu={
+                <MenuItem
+                  nestedMenu={
+                    <MenuItem onClick={onClickMock}>Camembert</MenuItem>
+                  }
+                >
+                  Stinky
+                </MenuItem>
+              }
+            >
+              French
+            </MenuItem>
+          }
+        >
+          <Button>Cheese</Button>
+        </Menu>
+      )
+
+      // Open three levels of nesting
+      userEvent.click(screen.getByText('Cheese'))
+      const first = screen.getByText('French')
+      userEvent.click(first)
+      const second = screen.getByText('Stinky')
+      userEvent.click(second)
+      const third = screen.getByText('Camembert')
+      userEvent.click(third)
+
+      // All levels close
+      expect(screen.queryByRole('menu')).not.toBeInTheDocument()
     })
   })
 })

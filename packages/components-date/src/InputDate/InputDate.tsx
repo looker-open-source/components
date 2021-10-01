@@ -31,28 +31,22 @@ import styled from 'styled-components'
 import isFunction from 'lodash/isFunction'
 import isEqual from 'lodash/isEqual'
 import type { BorderProps, SpaceProps } from '@looker/design-tokens'
-import type { ValidationType } from '@looker/components'
 import { InputText, VisuallyHidden, useReadOnlyWarn } from '@looker/components'
-import type { CalendarLocalization } from '../Calendar'
 import { Calendar, formatMonthTitle } from '../Calendar'
-import type { Locales } from '../utils/i18n'
-import { formatDateString, parseDateFromString } from '../utils/i18n'
+import { formatDateString, parseDateFromString } from '../locale'
+import { getLocale } from '../locale/deprecated'
+import type { InputDateBaseProps } from '../types'
 
-export interface InputDateProps extends SpaceProps, BorderProps {
-  'aria-describedby'?: string
-  'aria-labelledby'?: string
-  dateStringLocale?: Locales
-  defaultValue?: Date
-  disabled?: boolean
-  id?: string
-  localization?: CalendarLocalization
-  onChange?: (date?: Date) => void
-  onValidationFail?: (value: string) => void
-  readOnly?: boolean
-  ref?: Ref<HTMLInputElement>
-  validationType?: ValidationType
-  value?: Date
-}
+export type InputDateProps = SpaceProps &
+  BorderProps &
+  InputDateBaseProps & {
+    'aria-describedby'?: string
+    defaultValue?: Date
+    onChange?: (date?: Date) => void
+    readOnly?: boolean
+    ref?: Ref<HTMLInputElement>
+    value?: Date
+  }
 
 const isDateInView = (value: Date, viewMonth: Date) => {
   if (
@@ -70,11 +64,14 @@ export const InputDate: FC<InputDateProps> = forwardRef(
     {
       'aria-describedby': ariaDescribedby,
       'aria-labelledby': ariaLabelledby,
+      dateStringFormat,
       dateStringLocale,
       defaultValue,
       disabled,
+      firstDayOfWeek,
       localization,
       id,
+      locale: propsLocale,
       onChange,
       onValidationFail,
       readOnly,
@@ -83,13 +80,17 @@ export const InputDate: FC<InputDateProps> = forwardRef(
     },
     ref: Ref<HTMLInputElement>
   ) => {
+    const locale = dateStringLocale ? getLocale(dateStringLocale) : propsLocale
+
     const { t } = useTranslation('InputDate')
     useReadOnlyWarn('InputDate', value, onChange)
 
     const [selectedDate, setSelectedDate] = useState(value || defaultValue)
     const [validDate, setValidDate] = useState(validationType !== 'error')
     const [textInputValue, setTextInputValue] = useState(
-      selectedDate ? formatDateString(selectedDate, dateStringLocale) : ''
+      selectedDate
+        ? formatDateString(selectedDate, locale, dateStringFormat)
+        : ''
     )
     const [viewMonth, setViewMonth] = useState<Date | undefined>(
       value || defaultValue || new Date(Date.now())
@@ -107,7 +108,7 @@ export const InputDate: FC<InputDateProps> = forwardRef(
     }
 
     const handleDayClick = (date: Date) => {
-      setTextInputValue(formatDateString(date, dateStringLocale))
+      setTextInputValue(formatDateString(date, locale))
       handleDateChange(date)
     }
 
@@ -118,7 +119,7 @@ export const InputDate: FC<InputDateProps> = forwardRef(
       if (value.length === 0) {
         handleDateChange()
       } else {
-        const parsedValue = parseDateFromString(value, dateStringLocale)
+        const parsedValue = parseDateFromString(value, locale, dateStringFormat)
         if (parsedValue) {
           handleDateChange(parsedValue)
         }
@@ -131,7 +132,8 @@ export const InputDate: FC<InputDateProps> = forwardRef(
         const value = (e.target as HTMLInputElement).value
         // is valid if text input is blank or parseDateFromString returns a date object
         const isValid =
-          value.length === 0 || !!parseDateFromString(value, dateStringLocale)
+          value.length === 0 ||
+          !!parseDateFromString(value, locale, dateStringFormat)
         setValidDate(isValid)
         if (!isValid && isFunction(onValidationFail)) {
           onValidationFail(value)
@@ -150,7 +152,7 @@ export const InputDate: FC<InputDateProps> = forwardRef(
       // controlled component: update state when value changes externally
       if (value && !isEqual(value, selectedDate)) {
         setSelectedDate(value)
-        value && setTextInputValue(formatDateString(value, dateStringLocale))
+        value && setTextInputValue(formatDateString(value, locale))
         value &&
           viewMonth &&
           !isDateInView(value, viewMonth) &&
@@ -166,7 +168,7 @@ export const InputDate: FC<InputDateProps> = forwardRef(
           aria-labelledby={ariaLabelledby}
           placeholder={`${t('Date')} (${formatDateString(
             new Date(Date.now()),
-            dateStringLocale
+            locale
           )})`}
           value={textInputValue}
           onChange={handleTextInputChange}
@@ -180,12 +182,14 @@ export const InputDate: FC<InputDateProps> = forwardRef(
         />
         <CalendarWrapper>
           <VisuallyHidden aria-live="assertive">
-            {viewMonth ? formatMonthTitle(localization)(viewMonth) : ''}
+            {viewMonth ? formatMonthTitle(locale)(viewMonth) : ''}
           </VisuallyHidden>
           <Calendar
             selectedDates={selectedDate}
             onDayClick={handleDayClick}
             localization={localization}
+            locale={locale}
+            firstDayOfWeek={firstDayOfWeek}
             viewMonth={viewMonth}
             onMonthChange={setViewMonth}
             onNowClick={handleNavClick}

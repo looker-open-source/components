@@ -629,7 +629,16 @@ export const NestedMenu = () => {
 
   const nestedMenu = (
     <>
-      <MenuItem onClick={getOnClick('Sub Item')}>Sub Item</MenuItem>
+      <MenuItem
+        nestedMenu={
+          <MenuItem onClick={getOnClick('Another Level')}>
+            Another Level
+          </MenuItem>
+        }
+        onClick={getOnClick('Sub Item')}
+      >
+        Sub Item
+      </MenuItem>
       <MenuItem onClick={getOnClick('Another Sub Item')}>
         Another Sub Item
       </MenuItem>

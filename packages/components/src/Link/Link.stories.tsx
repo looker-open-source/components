@@ -36,7 +36,7 @@ export default {
   title: 'Link',
 }
 
-const Template: Story<LinkProps> = (args) => (
+const Template: Story<LinkProps> = args => (
   <Link {...args}>A link to somewhere...</Link>
 )
 

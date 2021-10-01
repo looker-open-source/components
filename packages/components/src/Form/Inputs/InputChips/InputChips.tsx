@@ -74,7 +74,7 @@ export const splitInputValue = (inputValue: string) => {
   const splitRegexp = `[,\\t\\n\\r]+`
   return removedEscapes
     .split(new RegExp(splitRegexp))
-    .map((value) =>
+    .map(value =>
       value
         .replace(new RegExp(commaKey, 'g'), ',')
         .replace(new RegExp(tabKey, 'g'), '\t')
@@ -174,8 +174,12 @@ export const InputChips = styled(
 
       const updateValues = (newInputValue?: string) => {
         const inputValues = parseInputValue(newInputValue || inputValue)
-        const { duplicateValues, invalidValues, unusedValues, validValues } =
-          validateValues(inputValues, values, validate, formatInputValue)
+        const {
+          duplicateValues,
+          invalidValues,
+          unusedValues,
+          validValues,
+        } = validateValues(inputValues, values, validate, formatInputValue)
 
         // Save valid values and keep invalid ones in the input
         const updatedInputValue = unusedValues.join(', ')

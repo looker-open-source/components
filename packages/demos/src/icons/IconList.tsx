@@ -35,7 +35,7 @@ import styled from 'styled-components'
 
 export const IconList = () => (
   <IconGrid>
-    {iconsList.map((name) => (
+    {iconsList.map(name => (
       <CopyToClipboard
         text={`<${name} />`}
         onCopy={() => alert(`Copied icon "${name}" to clipboard.`)}

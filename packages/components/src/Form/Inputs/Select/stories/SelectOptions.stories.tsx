@@ -44,7 +44,7 @@ interface StoryProps extends SelectOptionsProps {
   options: SelectOptionProps[]
 }
 
-const Template: Story<StoryProps> = (args) => {
+const Template: Story<StoryProps> = args => {
   const optionProps = useFlatOptions(args.options)
   return (
     <ComboboxContext.Provider
@@ -75,7 +75,7 @@ Icons.args = {
 }
 
 export const Detail = Template.bind({})
-const detailOptions = cheeseOptions.map((option) => ({
+const detailOptions = cheeseOptions.map(option => ({
   ...option,
   detail: (
     <>
@@ -90,7 +90,7 @@ Detail.args = {
 }
 
 export const Description = Template.bind({})
-const descriptionOptions = cheeseOptions.map((option) => ({
+const descriptionOptions = cheeseOptions.map(option => ({
   ...option,
   description: "I'm a little teapot",
 }))
@@ -100,7 +100,7 @@ Description.args = {
 
 export const DescriptionIcon = Template.bind({})
 DescriptionIcon.args = {
-  options: cheeseOptions.map((option) => ({
+  options: cheeseOptions.map(option => ({
     ...option,
     description: "I'm a little teapot",
     icon: <Create />,
@@ -109,7 +109,7 @@ DescriptionIcon.args = {
 
 export const Preface = Template.bind({})
 Preface.args = {
-  options: cheeseOptions.map((option) => ({
+  options: cheeseOptions.map(option => ({
     ...option,
     preface: 'Preface Text',
   })),
@@ -117,7 +117,7 @@ Preface.args = {
 
 export const PrefaceIcon = Template.bind({})
 PrefaceIcon.args = {
-  options: cheeseOptions.map((option) => ({
+  options: cheeseOptions.map(option => ({
     ...option,
     icon: <Create />,
     preface: 'Preface Text',
@@ -131,7 +131,7 @@ Groups.args = {
 
 export const KitchenSink = Template.bind({})
 KitchenSink.args = {
-  options: cheeseOptions.map((option) => ({
+  options: cheeseOptions.map(option => ({
     ...option,
     description: "I'm a little teapot",
     detail: '0/50',
@@ -152,7 +152,7 @@ Loading.parameters = {
 
 export const NoOptions = Template.bind({})
 
-const TemplateMulti: Story<StoryProps> = (args) => {
+const TemplateMulti: Story<StoryProps> = args => {
   const optionProps = useFlatOptions(args.options)
   return (
     <ComboboxMultiContext.Provider
@@ -181,13 +181,13 @@ BasicMulti.args = {
 export const DetailMulti = TemplateMulti.bind({})
 DetailMulti.args = {
   isMulti: true,
-  options: cheeseOptions.map((option) => ({ ...option, detail: '0/50' })),
+  options: cheeseOptions.map(option => ({ ...option, detail: '0/50' })),
 }
 
 export const DescriptionMulti = TemplateMulti.bind({})
 DescriptionMulti.args = {
   isMulti: true,
-  options: cheeseOptions.map((option) => ({
+  options: cheeseOptions.map(option => ({
     ...option,
     description: "I'm a little teapot",
   })),
@@ -202,7 +202,7 @@ GroupsMulti.args = {
 export const NoIndicatorMulti = TemplateMulti.bind({})
 NoIndicatorMulti.args = {
   isMulti: true,
-  options: cheeseOptions.map((option) => ({
+  options: cheeseOptions.map(option => ({
     ...option,
     indicator: false,
   })),

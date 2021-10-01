@@ -31,9 +31,9 @@ import { useListWidths } from './useListWidths'
 
 const getBoundingClientRectMock = jest.fn()
 
-const mockWrapper = {
+const mockWrapper = ({
   getBoundingClientRect: getBoundingClientRectMock,
-} as unknown as HTMLElement
+} as unknown) as HTMLElement
 
 function TestComponent(props: UseListWidthProps) {
   const { minWidth, width } = useListWidths({

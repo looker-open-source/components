@@ -74,28 +74,28 @@ export const windowedTreeReducer: Reducer<
       // auto-increment-style ID for each item
       let id = 0
 
-      const processTree =
-        (parentOpen?: boolean) =>
-        (tree: WindowedTreeNodeProps): WindowedTreeNodeIDProps => {
-          id++
-          if (parentOpen) {
-            shownIDs.push(id)
-          }
-          if (tree.items) {
-            map[id] = {
-              isOpen: tree.isOpen || false,
-              length: tree.items.length,
-            }
-            return {
-              ...tree,
-              id,
-              items: tree.items.map(
-                processTree(parentOpen ? tree.isOpen : false)
-              ),
-            }
-          }
-          return { content: tree.content, id }
+      const processTree = (parentOpen?: boolean) => (
+        tree: WindowedTreeNodeProps
+      ): WindowedTreeNodeIDProps => {
+        id++
+        if (parentOpen) {
+          shownIDs.push(id)
         }
+        if (tree.items) {
+          map[id] = {
+            isOpen: tree.isOpen || false,
+            length: tree.items.length,
+          }
+          return {
+            ...tree,
+            id,
+            items: tree.items.map(
+              processTree(parentOpen ? tree.isOpen : false)
+            ),
+          }
+        }
+        return { content: tree.content, id }
+      }
 
       const treesWithIDs = trees.map(processTree(true))
 

@@ -37,7 +37,7 @@ export default {
   title: 'ChipButton',
 }
 
-const Template: Story<ChipButtonProps> = (args) => <ChipButton {...args} />
+const Template: Story<ChipButtonProps> = args => <ChipButton {...args} />
 
 export const Basic = Template.bind({})
 Basic.args = {

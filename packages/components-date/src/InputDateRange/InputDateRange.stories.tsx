@@ -50,7 +50,7 @@ export default {
   title: 'Date / InputDateRange',
 }
 
-const Template: Story<InputDateRangeProps> = (args) => (
+const Template: Story<InputDateRangeProps> = args => (
   <InputDateRange {...args} />
 )
 
@@ -102,8 +102,9 @@ export const TimeframeFilter = () => {
   const endDate = new Date()
   endDate.setDate(15)
 
-  const [controlledDateRange, setControlledDateRange] =
-    useState<Partial<RangeModifier>>()
+  const [controlledDateRange, setControlledDateRange] = useState<
+    Partial<RangeModifier>
+  >()
 
   return (
     <Popover

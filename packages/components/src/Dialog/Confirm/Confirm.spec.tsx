@@ -58,7 +58,7 @@ afterEach(() => {
 test('<Confirm/> with defaults', async () => {
   renderWithTheme(
     <Confirm {...requiredProps}>
-      {(open) => <Button onClick={open}>Do Something</Button>}
+      {open => <Button onClick={open}>Do Something</Button>}
     </Confirm>
   )
 
@@ -82,7 +82,7 @@ test('<Confirm/> with defaults', async () => {
 test('<Confirm/> with custom props', () => {
   renderWithTheme(
     <Confirm {...requiredProps} {...optionalProps} buttonColor="critical">
-      {(open) => <Button onClick={open}>Do Something</Button>}
+      {open => <Button onClick={open}>Do Something</Button>}
     </Confirm>
   )
 

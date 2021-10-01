@@ -37,7 +37,7 @@ export default {
   title: 'SpaceVertical',
 }
 
-const Template: Story<SpaceVerticalProps> = (args) => (
+const Template: Story<SpaceVerticalProps> = args => (
   <SpaceVertical {...args}>
     <Button>Button A</Button>
     <Button>Button B</Button>

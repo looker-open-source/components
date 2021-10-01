@@ -40,7 +40,7 @@ const Template: Story<ToggleSwitchProps & { ripple: boolean }> = ({
   const { value, toggle } = useToggle(on)
   return (
     <ThemeProvider
-      theme={(theme) => ({
+      theme={theme => ({
         ...theme,
         defaults: { ...theme.defaults, brandAnimation: ripple },
       })}

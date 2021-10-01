@@ -37,7 +37,7 @@ import { ButtonOutline } from '../../Button'
 export * from './useDrawer.stories'
 export * from './renderProps.stories'
 
-const Template: Story<DrawerProps> = (args) => (
+const Template: Story<DrawerProps> = args => (
   <Drawer {...args} content={<DialogLongContent />}>
     <ButtonOutline>Open Drawer</ButtonOutline>
   </Drawer>

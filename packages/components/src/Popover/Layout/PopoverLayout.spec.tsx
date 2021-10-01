@@ -30,8 +30,13 @@ import { composeStories } from '@storybook/testing-react'
 import { screen } from '@testing-library/react'
 import * as stories from './PopoverLayout.stories'
 
-const { Basic, FooterCloseButton, Full, Header, HeaderHideHeading } =
-  composeStories(stories)
+const {
+  Basic,
+  FooterCloseButton,
+  Full,
+  Header,
+  HeaderHideHeading,
+} = composeStories(stories)
 
 describe('PopoverLayout', () => {
   test('basic display has footer ', () => {

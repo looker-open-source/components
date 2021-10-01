@@ -27,8 +27,10 @@
 import React, { useState } from 'react'
 import { fireEvent, screen } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
+import en from 'date-fns/locale/en-US'
+import ital from 'date-fns/locale/it'
+import ko from 'date-fns/locale/ko'
 import type { RangeModifier } from 'react-day-picker'
-import { Locales } from '../utils/i18n'
 import { InputDateRange } from './InputDateRange'
 
 const realDateNow = Date.now.bind(global.Date)
@@ -342,12 +344,12 @@ test('defaultValue highlights the correct dates in the Calendar', () => {
   }
   renderWithTheme(<InputDateRange {...mockProps} />)
 
-  const dayOne = screen.getByLabelText('Mon Jun 03 2019')
-  const dayTwo = screen.getByLabelText('Tue Jun 04 2019')
-  const dayThree = screen.getByLabelText('Wed Jun 05 2019')
+  const dayOne = screen.getByLabelText('Mon Jun 3, 2019')
+  const dayTwo = screen.getByLabelText('Tue Jun 4, 2019')
+  const dayThree = screen.getByLabelText('Wed Jun 5, 2019')
 
-  const dayBefore = screen.getByLabelText('Sun Jun 02 2019')
-  const dayAfter = screen.getByLabelText('Thu Jun 06 2019')
+  const dayBefore = screen.getByLabelText('Sun Jun 2, 2019')
+  const dayAfter = screen.getByLabelText('Thu Jun 6, 2019')
 
   expect(dayOne).toHaveAttribute('aria-selected', 'true')
   expect(dayTwo).toHaveAttribute('aria-selected', 'true')
@@ -405,41 +407,23 @@ test('validates TO text input to match localized date format', () => {
 })
 
 test('localizes calendar', () => {
-  const months = [
-    'Gennaio',
-    'Febbraio',
-    'Marzo',
-    'Aprile',
-    'Maggio',
-    'Giugno',
-    'Luglio',
-    'Agosto',
-    'Settembre',
-    'Ottobre',
-    'Novembre',
-    'Dicembre',
-  ]
-  const weekdaysShort = ['Do', 'Lu', 'Ma', 'Me', 'Gi', 'Ve', 'Sa']
-  const firstDayOfWeek = 1 // monday
-  const localizationProps = { firstDayOfWeek, months, weekdaysShort }
-
   const { container } = renderWithTheme(
-    <InputDateRange localization={localizationProps} />
+    <InputDateRange locale={ital} firstDayOfWeek={1} />
   )
 
-  expect(screen.getByText('Febbraio 2020')).toBeInTheDocument()
+  expect(screen.getByText('febbraio 2020')).toBeInTheDocument()
   expect(
     // eslint-disable-next-line testing-library/no-container
     (container.querySelector('.DayPicker-WeekdaysRow') as HTMLElement)
       .textContent
-  ).toMatchInlineSnapshot(`"LuMaMeGiVeSaDo"`)
+  ).toMatchInlineSnapshot(`"lunmarmergiovensabdom"`)
 })
 
 describe('localizes text input', () => {
   test('Korean', () => {
     renderWithTheme(
       <InputDateRange
-        dateStringLocale={Locales.Korean}
+        locale={ko}
         defaultValue={{
           from: new Date(Date.now()),
           to: new Date('May 2, 2020'),
@@ -451,7 +435,7 @@ describe('localizes text input', () => {
   test('Italian', () => {
     renderWithTheme(
       <InputDateRange
-        dateStringLocale={Locales.Italian}
+        locale={ital}
         defaultValue={{
           from: new Date(Date.now()),
           to: new Date('May 2, 2020'),
@@ -463,7 +447,7 @@ describe('localizes text input', () => {
   test('English', () => {
     renderWithTheme(
       <InputDateRange
-        dateStringLocale={Locales.English}
+        locale={en}
         defaultValue={{
           from: new Date(Date.now()),
           to: new Date('May 2, 2020'),

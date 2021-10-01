@@ -30,7 +30,7 @@ import { defaultArgTypes as argTypes } from '../../../../apps/storybook/src/defa
 import type { AvatarUserProps } from './AvatarUser'
 import { AvatarUser } from './AvatarUser'
 
-const Template: Story<AvatarUserProps> = (args) => <AvatarUser {...args} />
+const Template: Story<AvatarUserProps> = args => <AvatarUser {...args} />
 
 /* eslint-disable camelcase */
 const user = {

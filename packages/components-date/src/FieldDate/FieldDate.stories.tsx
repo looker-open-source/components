@@ -24,24 +24,21 @@
 
  */
 import type { Story } from '@storybook/react/types-6-0'
-import partial from 'lodash/partial'
-import type { SyntheticEvent } from 'react'
 import React, { useState } from 'react'
 import {
   Button,
   Fieldset,
-  FieldSelect,
-  FieldSlider,
-  FieldText,
-  Grid,
   i18nInit,
   Paragraph,
   Popover,
   PopoverContent,
 } from '@looker/components'
+
+import it from 'date-fns/locale/it'
+
 import { defaultArgTypes as argTypes } from '../../../../apps/storybook/src/defaultArgTypes'
-import type { LocaleCodes } from '../utils/i18n'
-import { Locales } from '../utils/i18n'
+import type { DayOfWeekNumbers } from '../stories/LocaleSettings'
+import { LocaleSettings } from '../stories/LocaleSettings'
 import { DateFormat } from '../DateFormat'
 import type { FieldDateProps } from './FieldDate'
 import { FieldDate } from './FieldDate'
@@ -54,7 +51,7 @@ export default {
   title: `Date / FieldDate`,
 }
 
-const Template: Story<FieldDateProps> = (args) => <FieldDate {...args} />
+const Template: Story<FieldDateProps> = args => <FieldDate {...args} />
 
 export const Basic = Template.bind({})
 Basic.args = { defaultValue: new Date('July 25, 2020'), label: 'Example' }
@@ -70,8 +67,6 @@ Error.args = {
   ...Basic.args,
   validationMessage: { message: 'Error Message', type: 'error' },
 }
-
-type DayOfWeekNumbers = 0 | 1 | 2 | 3 | 4 | 5 | 6
 
 export const Controlled = () => {
   const [controlledDate, setControlledDate] = useState<any>()
@@ -107,135 +102,33 @@ Controlled.parameters = {
 }
 
 export const Localized = () => {
-  const [localizedDate, setLocalizedDate] = useState<Date | undefined>()
-  const [locale, setLocale] = useState<Locales>(Locales.Italian)
-  const [firstDayOfWeek, setFirstDayOfWeek] = useState<DayOfWeekNumbers>(1)
-  const [months, setMonths] = useState([
-    'Gennaio',
-    'Febbraio',
-    'Marzo',
-    'Aprile',
-    'Maggio',
-    'Giugno',
-    'Luglio',
-    'Agosto',
-    'Settembre',
-    'Ottobre',
-    'Novembre',
-    'Dicembre',
-  ])
-  const [weekdaysShort, setWeekdaysShort] = useState([
-    'Do',
-    'Lu',
-    'Ma',
-    'Me',
-    'Gi',
-    'Ve',
-    'Sa',
-  ])
-
-  const localizationProps = {
-    firstDayOfWeek,
-    months,
-    weekdaysShort,
-  }
-
-  const handleFirstDayOfWeekChange = (e: SyntheticEvent<HTMLInputElement>) => {
-    setFirstDayOfWeek(parseInt(e.currentTarget.value, 10) as DayOfWeekNumbers)
-  }
-
-  const handleMonthChange = (
-    key: number,
-    e: SyntheticEvent<HTMLInputElement>
-  ) => {
-    setMonths(Object.assign([], months, { [key]: e.currentTarget.value }))
-  }
-
-  const handleWeekdaysShortChange = (
-    key: number,
-    e: SyntheticEvent<HTMLInputElement>
-  ) => {
-    setWeekdaysShort(
-      Object.assign([], weekdaysShort, { [key]: e.currentTarget.value })
-    )
-  }
-
-  const handleLocaleChange = (val: any) => {
-    setLocale(val)
-    setLocalizedDate(undefined)
-  }
+  const [date, setDate] = useState<Date | undefined>()
+  const [locale, setLocale] = useState(it)
+  const [firstDayOfWeek, setFirstDayOfWeek] = useState<DayOfWeekNumbers>(
+    locale.options?.weekStartsOn || 0
+  )
+  const clearDate = () => setDate(undefined)
 
   return (
     <Fieldset>
       <Paragraph>
         Selected:
-        {localizedDate && (
-          <DateFormat locale={locale}>{localizedDate}</DateFormat>
-        )}
+        {date && <DateFormat locale={locale}>{date}</DateFormat>}
       </Paragraph>
 
       <FieldDate
-        onChange={setLocalizedDate}
-        localization={localizationProps}
-        dateStringLocale={locale as LocaleCodes}
-        key={locale}
+        onChange={setDate}
+        firstDayOfWeek={firstDayOfWeek}
+        locale={locale}
+        key={locale.code}
         m="small"
       />
-
-      <FieldSelect
-        label="Date String Format"
-        options={[
-          { label: 'Arabic (ar)', value: 'ar' },
-          { label: 'German (de)', value: 'de' },
-          { label: 'English (en)', value: 'en' },
-          { label: 'Spanish (es)', value: 'es' },
-          { label: 'French (fr)', value: 'fr' },
-          { label: 'Italian (it)', value: 'it' },
-          { label: 'Japanese (ja)', value: 'ja' },
-          { label: 'Korean (ko)', value: 'ko' },
-          { label: 'Dutch (nl)', value: 'nl' },
-          { label: 'Polish (pl)', value: 'pl' },
-          { label: 'Portuguese (pt)', value: 'pt' },
-          { label: 'Portuguese - Brazil (pt-br)', value: 'pt-br' },
-          { label: 'Russian (ru)', value: 'ru' },
-          { label: 'Swedish (sv)', value: 'sv' },
-          { label: 'Turkish (tr)', value: 'tr' },
-          { label: 'Chinese - China (zh-cn)', value: 'zh-cn' },
-          { label: 'Chinese - Taiwan (zh-tw)', value: 'zh-tw' },
-        ]}
-        value={locale}
-        onChange={handleLocaleChange}
-        width="auto"
+      <LocaleSettings
+        setLocale={setLocale}
+        firstDayOfWeek={firstDayOfWeek}
+        setFirstDayOfWeek={setFirstDayOfWeek}
+        clearDate={clearDate}
       />
-      <FieldSlider
-        label="First Day Of Week"
-        min={0}
-        max={6}
-        value={firstDayOfWeek}
-        onChange={handleFirstDayOfWeekChange}
-      />
-
-      <Grid>
-        <Fieldset legend="Months">
-          {months.map((month, key) => (
-            <FieldText
-              value={month}
-              key={key}
-              onChange={partial(handleMonthChange, key)}
-            />
-          ))}
-        </Fieldset>
-        <Fieldset legend="Weekdays (short)">
-          {weekdaysShort.map((weekday, key) => (
-            <FieldText
-              value={weekday}
-              key={key}
-              onChange={partial(handleWeekdaysShortChange, key)}
-              maxLength={2}
-            />
-          ))}
-        </Fieldset>
-      </Grid>
     </Fieldset>
   )
 }

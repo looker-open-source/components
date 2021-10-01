@@ -36,7 +36,7 @@ export default {
   title: 'Heading',
 }
 
-const Template: Story<HeadingProps> = (args) => <Heading {...args} />
+const Template: Story<HeadingProps> = args => <Heading {...args} />
 
 export const Default = Template.bind({})
 Default.args = {

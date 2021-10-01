@@ -70,7 +70,7 @@ const DataTableCellLayout = forwardRef(
     useEffect(() => {
       const element = ref?.current?.querySelectorAll('a, button, input')
       if (element) {
-        element.forEach((activeElement) =>
+        element.forEach(activeElement =>
           activeElement.setAttribute('tabIndex', '-1')
         )
       }

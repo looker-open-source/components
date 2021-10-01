@@ -135,7 +135,7 @@ Passing in a React element into the `indicator` prop will display said element l
 ;() => {
   const link = (
     <Link
-      onClick={(event) => event.stopPropagation()}
+      onClick={event => event.stopPropagation()}
       href="https://en.wikipedia.org/wiki/Cheddar_cheese"
     >
       Wikipedia
@@ -362,10 +362,10 @@ The following properties are **optional** in the object passed into the `select`
   ]
 
   const [selections, setSelections] = useState([])
-  const onSelect = (selection) => {
+  const onSelect = selection => {
     setSelections(
       selections.includes(selection)
-        ? selections.filter((item) => item !== selection)
+        ? selections.filter(item => item !== selection)
         : [...selections, selection]
     )
   }
@@ -462,8 +462,9 @@ The `useSelectManager` hook can be used to quickly create the standard building 
 
   const allSelectableItems = data.map(({ id }) => String(id))
 
-  const { onSelect, onSelectAll, selections, setSelections } =
-    useSelectManager(allSelectableItems)
+  const { onSelect, onSelectAll, selections, setSelections } = useSelectManager(
+    allSelectableItems
+  )
 
   const items = data.map(({ id, name }) => (
     <DataTableItem
@@ -571,8 +572,9 @@ The `bulk` prop is used to configure a `DataTable`'s control bar. The object pas
     </DataTableItem>
   ))
 
-  const { onSelect, onSelectAll, selections, setSelections } =
-    useSelectManager(pageItemIds)
+  const { onSelect, onSelectAll, selections, setSelections } = useSelectManager(
+    pageItemIds
+  )
 
   const allItems = [...data].map(({ id }) => String(id))
   const onTotalSelectAll = () => setSelections(allItems)
@@ -610,7 +612,7 @@ The `bulk` prop is used to configure a `DataTable`'s control bar. The object pas
       <Pagination
         current={page}
         pages={data.length / perPageCount}
-        onChange={(nextPage) => {
+        onChange={nextPage => {
           setSelections([])
           setPage(nextPage)
         }}

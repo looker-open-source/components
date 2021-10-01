@@ -15,6 +15,7 @@
     "tabbable": "^5.2.0"
   },
   "devDependencies": {
+    "@looker/eslint-config-oss": "*",
     "@testing-library/react": "^11.2.6",
     "lodash": "^4.17.20",
     "react": "^16.14.0",

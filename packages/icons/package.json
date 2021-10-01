@@ -16,6 +16,7 @@
     "@styled-icons/styled-icon": "^10.6.3"
   },
   "devDependencies": {
+    "@looker/eslint-config-oss": "*",
     "fast-glob": "^3.2.5",
     "fs-extra": "^10.0.0",
     "h2x-core": "^1.1.1",

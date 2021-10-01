@@ -107,14 +107,14 @@ const getTrees = (labelLength: number): WindowedTreeNodeProps[] =>
 const treesRandomText = getTrees(50)
 const treesNoText = getTrees(0)
 
-const getUpdater =
-  (isOpen: boolean) =>
-  (tree: WindowedTreeNodeProps): WindowedTreeNodeProps => {
-    if (tree.items) {
-      return { ...tree, isOpen, items: tree.items.map(getUpdater(isOpen)) }
-    }
-    return { ...tree, isOpen }
+const getUpdater = (isOpen: boolean) => (
+  tree: WindowedTreeNodeProps
+): WindowedTreeNodeProps => {
+  if (tree.items) {
+    return { ...tree, isOpen, items: tree.items.map(getUpdater(isOpen)) }
   }
+  return { ...tree, isOpen }
+}
 
 export const Windowing = ({ noText }: { noText?: boolean }) => {
   const { value, toggle, setOn } = useToggle()

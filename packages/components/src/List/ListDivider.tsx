@@ -31,7 +31,7 @@ import type { SpaceProps } from '@looker/design-tokens'
 import { space } from '@looker/design-tokens'
 import { Divider } from '../Divider'
 
-const ListDividerLayout: FC = (props) => (
+const ListDividerLayout: FC = props => (
   <li {...props} aria-hidden="true">
     <Divider appearance="light" />
   </li>

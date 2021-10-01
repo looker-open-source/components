@@ -110,7 +110,7 @@ describe('Dialog', () => {
   test('Render props style', async () => {
     renderWithTheme(
       <Dialog content={<SimpleContent />}>
-        {(dialogProps) => <a {...dialogProps}>Open Dialog</a>}
+        {dialogProps => <a {...dialogProps}>Open Dialog</a>}
       </Dialog>
     )
 
@@ -313,9 +313,9 @@ describe('Dialog', () => {
       const globalConsole = global.console
       const errorMock = jest.fn()
 
-      global.console = {
+      global.console = ({
         error: errorMock,
-      } as unknown as Console
+      } as unknown) as Console
 
       renderWithTheme(<Dialog />)
       expect(errorMock.mock.calls).toMatchInlineSnapshot(`

@@ -38,7 +38,7 @@ export default {
   title: 'PopoverLayout',
 }
 
-const Template: Story<Partial<PopoverLayoutProps>> = (args) => (
+const Template: Story<Partial<PopoverLayoutProps>> = args => (
   <PopoverLayout {...args} />
 )
 

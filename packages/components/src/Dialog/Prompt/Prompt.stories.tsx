@@ -42,7 +42,7 @@ export const Basic = () => {
       title={'Choose a cheese!'}
       inputLabel={'Name of Cheese'}
       saveLabel={'Save'}
-      onCancel={(close) => {
+      onCancel={close => {
         alert('Prompt closed')
         close()
       }}
@@ -56,7 +56,7 @@ export const Basic = () => {
         </Button>
       }
     >
-      {(open) => <Button onClick={open}>Prompt</Button>}
+      {open => <Button onClick={open}>Prompt</Button>}
     </Prompt>
   )
 }

@@ -49,7 +49,7 @@ const densities: DensityRamp[] = [1, 0, -1, -2, -3]
 
 export const Density = () => (
   <Grid columns={densities.length}>
-    {densities.map((density) => (
+    {densities.map(density => (
       <DensityTree density={density} key={density} />
     ))}
   </Grid>

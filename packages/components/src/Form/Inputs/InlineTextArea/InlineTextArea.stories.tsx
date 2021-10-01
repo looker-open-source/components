@@ -36,7 +36,7 @@ export default {
   title: 'InlineTextArea',
 }
 
-const Template: Story<InlineTextAreaProps> = (args) => (
+const Template: Story<InlineTextAreaProps> = args => (
   <InlineTextArea {...args} />
 )
 

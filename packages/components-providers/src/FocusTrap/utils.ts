@@ -88,7 +88,7 @@ export const activateFocusTrap = ({
     const inputElements = Array.from(
       element.querySelectorAll('input, textarea, select')
     )
-    const tabbableInputElement = inputElements.find((inputElement) =>
+    const tabbableInputElement = inputElements.find(inputElement =>
       isTabbable(inputElement)
     )
     if (tabbableInputElement) {

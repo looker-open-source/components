@@ -36,7 +36,7 @@ export default {
   title: 'InlineInputText',
 }
 
-const Template: Story<InlineInputTextProps> = (args) => (
+const Template: Story<InlineInputTextProps> = args => (
   <InlineInputText {...args} />
 )
 

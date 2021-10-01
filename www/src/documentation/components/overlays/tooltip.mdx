@@ -80,7 +80,7 @@ Sometimes you may need to control how `Tooltip` applies handlers to the componen
 
 ```jsx
 <Tooltip content="Example using render props">
-  {(props) => <Button {...props}>Render Props Example</Button>}
+  {props => <Button {...props}>Render Props Example</Button>}
 </Tooltip>
 ```
 
@@ -88,7 +88,7 @@ If you need to be very specific
 
 ```jsx
 <Tooltip content="Example using render props exploded">
-  {(props) => (
+  {props => (
     <Button
       aria-describedby={props['aria-describedby']}
       className={props.className}

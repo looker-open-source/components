@@ -124,7 +124,7 @@ describe('Panel', () => {
           <li>Left</li>
         </Panel>
         <Panel content="My neat dialog" title="render prop">
-          {(panelProps) => <li {...panelProps}>render prop</li>}
+          {panelProps => <li {...panelProps}>render prop</li>}
         </Panel>
       </ul>
     </Panels>

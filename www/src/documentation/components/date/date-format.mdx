@@ -39,22 +39,13 @@ Wrap the `DateFormat` component around a javascript Date object to render a huma
 
 ## I18n
 
-`DateFormat` automatically formats the rendered date to the provided language/locale code.
+Install the [`date-fns`](https://date-fns.org/) package and import the necessary locale.
 
-```jsx
-<ul>
-  <li>
-    <strong>Arabic:</strong> <DateFormat locale="ar" />
-  </li>
-  <li>
-    <strong>Korean:</strong> <DateFormat locale="ko" />
-  </li>
-  <li>
-    <strong>German:</strong> <DateFormat locale="de" />
-  </li>
-</ul>
+```js static
+import { DateFormat } from '@looker/components-date'
+import ko from 'date-fns/locale/ko'
+
+export const LocalizedDateFormat = () => {
+  return <DateFormat locale={ko} />
+}
 ```
-
-All supported Locales are listed below:
-
-<LocaleTable />

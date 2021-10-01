@@ -30,7 +30,7 @@ import { defaultArgTypes as argTypes } from '../../../../apps/storybook/src/defa
 import type { AvatarIconProps } from './AvatarIcon'
 import { AvatarIcon } from './AvatarIcon'
 
-const Template: Story<AvatarIconProps> = (args) => <AvatarIcon {...args} />
+const Template: Story<AvatarIconProps> = args => <AvatarIcon {...args} />
 
 export const Primary = Template.bind({})
 Primary.args = {
