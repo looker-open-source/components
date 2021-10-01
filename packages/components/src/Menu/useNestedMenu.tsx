@@ -95,9 +95,8 @@ export const useNestedMenu = ({
 }: UseNestedMenuProps) => {
   const mousePosition = useRef<MousePosition>()
   const focusRef = useRef<Element | null>(null)
-  const { value, change, delayChange, waitChange } = useContext(
-    NestedMenuContext
-  )
+  const { value, change, delayChange, waitChange } =
+    useContext(NestedMenuContext)
 
   const { closeModal } = useContext(DialogContext)
   const { density } = useContext(ListItemContext)
@@ -195,6 +194,7 @@ export const useNestedMenu = ({
         density={density}
         {...listHandlers}
         closeParentMenu={closeModal}
+        onFocus={e => e.stopPropagation()}
       >
         {nestedMenu}
       </MenuList>

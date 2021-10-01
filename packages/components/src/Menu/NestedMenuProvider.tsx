@@ -25,7 +25,7 @@
  */
 
 import type { FC } from 'react'
-import React, { createContext } from 'react'
+import React, { createContext, useCallback, useContext } from 'react'
 import type { UseDelayedStateReturn } from '../utils'
 import { useDelayedState } from '../utils'
 
@@ -52,9 +52,16 @@ export const NestedMenuProvider: FC<CloseParentMenuProps> = ({
   closeParentMenu,
 }) => {
   const delayedStateProps = useDelayedState<string>('')
+  const { closeParentMenu: closeGrandparent } = useContext(NestedMenuContext)
+
+  const wrappedClose = useCallback(() => {
+    closeGrandparent?.()
+    closeParentMenu?.()
+  }, [closeGrandparent, closeParentMenu])
+
   return (
     <NestedMenuContext.Provider
-      value={{ ...delayedStateProps, closeParentMenu }}
+      value={{ ...delayedStateProps, closeParentMenu: wrappedClose }}
     >
       {children}
     </NestedMenuContext.Provider>
