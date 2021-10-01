@@ -82,9 +82,11 @@ const generate = async () => {
   const icons = files.map(icon => icon.replace('.svg', '').replace('svg/', ''))
 
   if (icons.length === 0) {
+    // eslint-disable-next-line no-console
     console.error('Error reading icons from source')
     process.exit(1)
   } else {
+    // eslint-disable-next-line no-console
     console.log('SVG files found:', icons.length)
   }
 
@@ -100,20 +102,11 @@ const generate = async () => {
       .toString('utf8')
     result = await h2x(result, state).join('\n      ')
 
-    /**
-     * @TODO - Height & width should be extracted from SVG
-     */
-    height = state.height || '24'
-    width = state.width || '24'
-    viewBox = state.viewBox || `0 0 ${width} ${height}`
+    const height = state.height || '24'
+    const width = state.width || '24'
+    const viewBox = state.viewBox || `0 0 ${width} ${height}`
 
     const attrs = { fill: 'currentColor', xmlns: 'http://www.w3.org/2000/svg' }
-
-    // for (const attr of SVG_ATTRS) {
-    //   if (attr in icon.attrs) {
-    //     attrs[fastCase.camelize(attr)] = state.attrs[attr]
-    //   }
-    // }
 
     const component = () =>
       template
@@ -154,10 +147,12 @@ ${icons
     )
 
   await writeIndexFiles()
+  // eslint-disable-next-line no-console
   console.log(`${totalIcons} icons generated!`)
 }
 
 generate().catch(err => {
+  // eslint-disable-next-line no-console
   console.error(err.stack)
   process.exit(1)
 })

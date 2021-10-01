@@ -75,7 +75,6 @@ describe('IconButton', () => {
   test('accepts events', async () => {
     const fauxMouseEnter = jest.fn()
     const fauxClick = jest.fn()
-    const label = 'Test'
 
     renderWithTheme(
       <IconButton
@@ -91,9 +90,6 @@ describe('IconButton', () => {
     fireEvent.mouseOver(button)
     expect(fauxMouseEnter).toHaveBeenCalledTimes(1)
     fireEvent.mouseOut(button)
-    runTimers()
-    await waitForElementToBeRemoved(() => screen.getAllByText(label)[1])
-
     fireEvent.click(button)
     expect(fauxClick).toHaveBeenCalledTimes(1)
   })

@@ -92,7 +92,7 @@ describe('useDataTableSortManager', () => {
         <a
           href="https://components.looker.com/"
           target="_blank"
-          rel="noreferrer"
+          rel="noopener noreferrer"
         >
           Gouda
         </a>
@@ -106,7 +106,7 @@ describe('useDataTableSortManager', () => {
         <Link
           href="https://components.looker.com/"
           target="_blank"
-          rel="noreferrer"
+          rel="noopener noreferrer"
         >
           American
         </Link>
