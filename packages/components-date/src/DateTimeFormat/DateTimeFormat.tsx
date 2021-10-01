@@ -26,60 +26,51 @@
 
 import type { FC } from 'react'
 import React from 'react'
-import repeat from 'lodash/repeat'
-import trim from 'lodash/trim'
-import type { LocaleCodes } from '../utils/i18n'
-import { Locales, formatDateString } from '../utils/i18n'
+import type { Locale } from 'date-fns'
+import type { DateFormats, DateTimeOptions } from '../locale'
+import { formatDateString } from '../locale'
+import type { Locales } from '../locale/deprecated'
+import { getLocale } from '../locale/deprecated'
 
-type DateFormats = 'short' | 'medium' | 'long' | 'full'
-
-export interface DateTimeFormatProps {
+export type DateTimeFormatProps = {
   children?: Date
-  format?: DateFormats
-  locale?: LocaleCodes
+  format?: DateFormats | string
+  // TODO delete Locales when enum is removed
+  /**
+   * Locale object from date-fns. Note: Locales enum previously supported in this prop
+   * is deprecated and will be removed in a future MAJOR release.
+   * @example
+   * import ko from 'date-fns/locale/ko'
+   */
+  locale?: Locale | Locales
   timeZone?: string
 }
 
-interface DateTimeFormatExtensionProps extends DateTimeFormatProps {
-  date?: boolean
-  time?: boolean
-}
+type DateTimeFormatExtensionProps = DateTimeFormatProps & DateTimeOptions
 
-export interface ExtendedDateTimeFormatOptions
-  extends Intl.DateTimeFormatOptions {
-  dateStyle?: DateFormats
-  timeStyle?: DateFormats
+// TODO delete when Locales enum is removed
+const localeIsString = (
+  locale: DateTimeFormatProps['locale']
+): locale is Locales => {
+  return typeof locale === 'string'
 }
 
 export const DateTimeFormat: FC<DateTimeFormatExtensionProps> = ({
   children = new Date(Date.now()),
   date = true,
   format = 'medium',
-  locale = Locales.English,
+  locale: propsLocale,
   time = true,
   timeZone,
 }) => {
-  const repetitions = {
-    full: 4,
-    long: 3,
-    medium: 2,
-    short: 1,
-  }
-
-  const dateFormat = repeat('P', repetitions[format]) // PPP... is localized date format in date-fns
-  const timeFormat = repeat('p', repetitions[format]) // ppp... is localized time format in date-fns
-  const timeZoneFormat = repeat('z', repetitions[format]) /// zzz... is localize timezone format in date-fns
-
-  const combinedDateTimeFormat = trim(
-    `${date ? dateFormat : ''}${time ? timeFormat : ''} ${
-      timeZone ? timeZoneFormat : ''
-    }`
-  )
+  const locale = localeIsString(propsLocale)
+    ? getLocale(propsLocale)
+    : propsLocale
 
   try {
     return (
       <>
-        {formatDateString(children, locale, combinedDateTimeFormat, timeZone)}
+        {formatDateString(children, locale, format, timeZone, { date, time })}
       </>
     )
   } catch (error) {

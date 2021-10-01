@@ -23,8 +23,8 @@
  SOFTWARE.
 
  */
-export interface CalendarLocalization {
-  firstDayOfWeek: number
-  months: string[]
-  weekdaysShort: string[]
-}
+
+export * from './formatDateString'
+// TODO delete when dateStringLocale prop is removed
+export * from './deprecated'
+export * from './parseDateFromString'

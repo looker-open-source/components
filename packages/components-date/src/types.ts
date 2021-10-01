@@ -24,4 +24,31 @@
 
  */
 
-export * from './i18n'
+import type { ValidationType } from '@looker/components'
+import type { Locales } from './locale/deprecated'
+import type { CalendarLocaleProps } from './Calendar'
+
+export type InputDateBaseProps = CalendarLocaleProps & {
+  'aria-labelledby'?: string
+  /**
+   * Format to display the date string in, may vary by locale.
+   * Supports full, long, medium, and short as well as all patterns supported by date-fns
+   * @default medium
+   */
+  dateStringFormat?: string
+  /**
+   * @deprecated Use locale instead
+   */
+  dateStringLocale?: Locales
+  disabled?: boolean
+  id?: string
+  onValidationFail?: (value: string) => void
+  validationType?: ValidationType
+}
+
+// TODO delete when localization on date components is removed
+export interface CalendarLocalization {
+  firstDayOfWeek: number
+  months: string[]
+  weekdaysShort: string[]
+}

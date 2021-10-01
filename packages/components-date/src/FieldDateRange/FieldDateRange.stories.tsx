@@ -25,14 +25,12 @@
  */
 import React, { useState } from 'react'
 import type { Story } from '@storybook/react/types-6-0'
-import {
-  ExtendComponentsThemeProvider,
-  FieldSelect,
-  Paragraph,
-} from '@looker/components'
+import { ExtendComponentsThemeProvider, Paragraph } from '@looker/components'
+import it from 'date-fns/locale/it'
+import type { DayOfWeekNumbers } from '../stories/LocaleSettings'
+import { LocaleSettings } from '../stories/LocaleSettings'
 import { defaultArgTypes as argTypes } from '../../../../apps/storybook/src/defaultArgTypes'
 import { DateFormat } from '../DateFormat'
-import { Locales } from '../utils/i18n'
 import type { FieldInputDateRangeProps } from './FieldDateRange'
 import { FieldDateRange } from './FieldDateRange'
 
@@ -85,10 +83,20 @@ FloatingLabelDisabledNoDefaultValue.args = {
   label: 'Pick A Date',
 }
 
+// Disabling screenshots for now on stories using today's date
+FloatingLabelDisabledNoDefaultValue.parameters = {
+  storyshots: { disable: true },
+}
+
 export const FloatingLabelNoDefaultValue = Template.bind({})
 FloatingLabelNoDefaultValue.args = {
   externalLabel: false,
   label: 'Pick A Date',
+}
+
+// Disabling screenshots for now on stories using today's date
+FloatingLabelNoDefaultValue.parameters = {
+  storyshots: { disable: true },
 }
 
 export const ControlledFloatingLabel = () => {
@@ -126,6 +134,11 @@ export const ControlledNoValueFloatingLabel = () => {
   )
 }
 
+// Disabling screenshots for now on stories using today's date
+ControlledNoValueFloatingLabel.parameters = {
+  storyshots: { disable: true },
+}
+
 export const Error = Template.bind({})
 Error.args = {
   ...Basic.args,
@@ -133,54 +146,28 @@ Error.args = {
 }
 
 export const Localized = () => {
-  const startDate = new Date()
-  startDate.setDate(9)
-  const endDate = new Date()
-  endDate.setDate(15)
-
-  const [localizedDate, setLocalizedDate] = useState<DateRange | undefined>()
-  const [locale, setLocale] = useState<Locales>(Locales.Korean)
-
-  const handleLocaleChange = (val: any) => {
-    setLocale(val)
-    setLocalizedDate(undefined)
-  }
+  const [range, setDateRange] = useState<DateRange | undefined>()
+  const [locale, setLocale] = useState(it)
+  const [firstDayOfWeek, setFirstDayOfWeek] = useState<DayOfWeekNumbers>(
+    locale.options?.weekStartsOn || 0
+  )
+  const clearDate = () => setDateRange(undefined)
 
   return (
     <>
       <Paragraph>
         Selected:
-        <DateFormat locale={locale}>{localizedDate?.from}</DateFormat>
+        <DateFormat locale={locale}>{range?.from}</DateFormat>
         {` - `}
-        <DateFormat locale={locale}>{localizedDate?.to}</DateFormat>
+        <DateFormat locale={locale}>{range?.to}</DateFormat>
       </Paragraph>
-      <FieldSelect
-        label="Locale"
-        options={[
-          { label: 'Arabic (ar)', value: 'ar' },
-          { label: 'German (de)', value: 'de' },
-          { label: 'English (en)', value: 'en' },
-          { label: 'Spanish (es)', value: 'es' },
-          { label: 'French (fr)', value: 'fr' },
-          { label: 'Italian (it)', value: 'it' },
-          { label: 'Japanese (ja)', value: 'ja' },
-          { label: 'Korean (ko)', value: 'ko' },
-          { label: 'Dutch (nl)', value: 'nl' },
-          { label: 'Polish (pl)', value: 'pl' },
-          { label: 'Portuguese (pt)', value: 'pt' },
-          { label: 'Portuguese - Brazil (pt-br)', value: 'pt-br' },
-          { label: 'Russian (ru)', value: 'ru' },
-          { label: 'Swedish (sv)', value: 'sv' },
-          { label: 'Turkish (tr)', value: 'tr' },
-          { label: 'Chinese - China (zh-cn)', value: 'zh-cn' },
-          { label: 'Chinese - Taiwan (zh-tw)', value: 'zh-tw' },
-        ]}
-        value={locale}
-        onChange={handleLocaleChange}
-        width="auto"
+      <FieldDateRange onChange={setDateRange} locale={locale} />
+      <LocaleSettings
+        setLocale={setLocale}
+        firstDayOfWeek={firstDayOfWeek}
+        setFirstDayOfWeek={setFirstDayOfWeek}
+        clearDate={clearDate}
       />
-
-      <FieldDateRange onChange={setLocalizedDate} />
     </>
   )
 }
