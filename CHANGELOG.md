@@ -3,6 +3,50 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 2.8.0
+
+## `@looker/components`
+
+### Bug Fixes
+
+* **Dialog:** Animation delay on open ([#2878](https://github.com/looker-open-source/components/issues/2878)) ([533275b](https://github.com/looker-open-source/components/commit/533275bdd98d83f86291010d2e5674d126a59f07))
+* **FieldInline:** Improve accessibility via composition improvements ([#2849](https://github.com/looker-open-source/components/issues/2849)) ([84ea64b](https://github.com/looker-open-source/components/commit/84ea64bab2c5bfd5eace92552d88ae0b76a995d7))
+* **Menu:** Error when nesting 3 levels deep ([#2885](https://github.com/looker-open-source/components/issues/2885)) ([a859b89](https://github.com/looker-open-source/components/commit/a859b8957443223fa6f13e3dec1bc29f611e63fd))
+* **Menu:** Nested menu parent item background and click ([#2879](https://github.com/looker-open-source/components/issues/2879)) ([b2edcf2](https://github.com/looker-open-source/components/commit/b2edcf2d927173fefa282b51c030511273f08107))
+* **Popover:** preventDefault on closing click ([#2870](https://github.com/looker-open-source/components/issues/2870)) ([e757c2d](https://github.com/looker-open-source/components/commit/e757c2dce901d86b610279efa9dc9f3541d33b39))
+
+
+### Features
+
+* **Dialog:** add methods onAfterClose and OnAfterOpen ([#2842](https://github.com/looker-open-source/components/issues/2842)) ([1cb63ff](https://github.com/looker-open-source/components/commit/1cb63ffd9eade374eb4d80424ae1e4b50263b9d6))
+* **FieldSelect, FieldChips, FieldTime, FieldTimeSelect:** Google Material label style ([#2868](https://github.com/looker-open-source/components/issues/2868)) ([80435a1](https://github.com/looker-open-source/components/commit/80435a1c16c6d26466624850e2d853526ad40269))
+* **FieldSelectMulti:** Google Material label style ([#2869](https://github.com/looker-open-source/components/issues/2869)) ([22be821](https://github.com/looker-open-source/components/commit/22be82127606cefd6c03fa35be22cb937f1eb2ff))
+* **FieldText:** Google Material label style ([#2852](https://github.com/looker-open-source/components/issues/2852)) ([61d5e62](https://github.com/looker-open-source/components/commit/61d5e62da210b0a0d8c4bcdc1076676b07aef7e7))
+* **FieldTextArea:** Google Material label style ([#2833](https://github.com/looker-open-source/components/issues/2833)) ([96a8eb5](https://github.com/looker-open-source/components/commit/96a8eb5b8e8f68ec65ad25df2bb38bbd6a2bcfed))
+
+## `@looker/components-date` (2.4.0)
+
+### Bug Fixes
+
+* **FieldTime:** Floating label position with partial value ([#2880](https://github.com/looker-open-source/components/issues/2880)) ([dae077b](https://github.com/looker-open-source/components/commit/dae077b479193147d3c26896e114ca51402ed08a))
+
+
+### Features
+
+* **Date Components:** Accept date-fns locale object ([#2848](https://github.com/looker-open-source/components/issues/2848)) ([8552024](https://github.com/looker-open-source/components/commit/85520246d130b296aaf36af22459b7833c314396))
+* **FieldDate:** add label animation to component ([#2877](https://github.com/looker-open-source/components/issues/2877)) ([a5f2b4d](https://github.com/looker-open-source/components/commit/a5f2b4df300113114d8d32136b84273712eabbfa))
+* **FieldDateRange:** add label animation to component ([#2873](https://github.com/looker-open-source/components/issues/2873)) ([c94b23f](https://github.com/looker-open-source/components/commit/c94b23f268532fc13816f0ca49c8d49c2a310980))
+* **FieldSelect, FieldChips, FieldTime, FieldTimeSelect:** Google Material label style ([#2868](https://github.com/looker-open-source/components/issues/2868)) ([80435a1](https://github.com/looker-open-source/components/commit/80435a1c16c6d26466624850e2d853526ad40269))
+* **FieldTextArea:** Google Material label style ([#2833](https://github.com/looker-open-source/components/issues/2833)) ([96a8eb5](https://github.com/looker-open-source/components/commit/96a8eb5b8e8f68ec65ad25df2bb38bbd6a2bcfed))
+## `@design-tokens` (2.7.0)
+
+### Features
+
+* **FieldTextArea:** Google Material label style ([#2833](https://github.com/looker-open-source/components/issues/2833)) ([96a8eb5](https://github.com/looker-open-source/components/commit/96a8eb5b8e8f68ec65ad25df2bb38bbd6a2bcfed))
+
+
+
+
 # 2.7.0
 
 ## `@looker/components`
