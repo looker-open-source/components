@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.4.0](https://github.com/looker-open-source/components/compare/@looker/components-date@2.3.2...@looker/components-date@2.4.0) (2021-10-01)
+
+
+### Bug Fixes
+
+* **FieldTime:** Floating label position with partial value ([#2880](https://github.com/looker-open-source/components/issues/2880)) ([dae077b](https://github.com/looker-open-source/components/commit/dae077b479193147d3c26896e114ca51402ed08a))
+
+
+### Features
+
+* **Date Components:** Accept date-fns locale object ([#2848](https://github.com/looker-open-source/components/issues/2848)) ([8552024](https://github.com/looker-open-source/components/commit/85520246d130b296aaf36af22459b7833c314396))
+* **FieldDate:** add label animation to component ([#2877](https://github.com/looker-open-source/components/issues/2877)) ([a5f2b4d](https://github.com/looker-open-source/components/commit/a5f2b4df300113114d8d32136b84273712eabbfa))
+* **FieldDateRange:** add label animation to component ([#2873](https://github.com/looker-open-source/components/issues/2873)) ([c94b23f](https://github.com/looker-open-source/components/commit/c94b23f268532fc13816f0ca49c8d49c2a310980))
+* **FieldSelect, FieldChips, FieldTime, FieldTimeSelect:** Google Material label style ([#2868](https://github.com/looker-open-source/components/issues/2868)) ([80435a1](https://github.com/looker-open-source/components/commit/80435a1c16c6d26466624850e2d853526ad40269))
+* **FieldTextArea:** Google Material label style ([#2833](https://github.com/looker-open-source/components/issues/2833)) ([96a8eb5](https://github.com/looker-open-source/components/commit/96a8eb5b8e8f68ec65ad25df2bb38bbd6a2bcfed))
+
+
+
+
+
 ## [2.3.2](https://github.com/looker-open-source/components/compare/@looker/components-date@2.3.1...@looker/components-date@2.3.2) (2021-09-21)
 
 **Note:** Version bump only for package @looker/components-date

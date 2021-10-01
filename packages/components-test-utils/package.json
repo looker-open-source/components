@@ -1,15 +1,15 @@
 {
   "name": "@looker/components-test-utils",
   "license": "MIT",
-  "version": "1.5.3",
+  "version": "1.5.4",
   "main": "src/index.ts",
   "sideEffects": false,
   "publishConfig": {
     "access": "public"
   },
   "devDependencies": {
-    "@looker/eslint-config-oss": "*",
-    "@looker/components-providers": "^1.5.3",
+    "@looker/components-providers": "^1.5.4",
+    "@looker/eslint-config-oss": "^1.7.3",
     "@testing-library/react": "^11.2.6",
     "jest-styled-components": "^7.0.4",
     "react": "^16.14.0",
@@ -23,7 +23,7 @@
   "eslintConfig": {
     "root": true,
     "extends": [
-     "@looker/eslint-config-oss"
+      "@looker/eslint-config-oss"
     ]
   },
   "gitHead": "62febc162e3e45124f403e2c84fc741f68fe6714"

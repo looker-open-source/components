@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.7.0](https://github.com/looker-open-source/components/compare/@looker/design-tokens@2.6.1...@looker/design-tokens@2.7.0) (2021-10-01)
+
+
+### Features
+
+* **FieldTextArea:** Google Material label style ([#2833](https://github.com/looker-open-source/components/issues/2833)) ([96a8eb5](https://github.com/looker-open-source/components/commit/96a8eb5b8e8f68ec65ad25df2bb38bbd6a2bcfed))
+
+
+
+
+
 ## [2.6.1](https://github.com/looker-open-source/components/compare/@looker/design-tokens@2.6.0...@looker/design-tokens@2.6.1) (2021-09-21)
 
 

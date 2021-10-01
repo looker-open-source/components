@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0](https://github.com/looker-open-source/components/compare/@looker/filter-components@0.9.2...@looker/filter-components@0.10.0) (2021-10-01)
+
+
+### Features
+
+* **FieldText:** Google Material label style ([#2852](https://github.com/looker-open-source/components/issues/2852)) ([61d5e62](https://github.com/looker-open-source/components/commit/61d5e62da210b0a0d8c4bcdc1076676b07aef7e7))
+
+
+
+
+
 ## [0.9.2](https://github.com/looker-open-source/components/compare/@looker/filter-components@0.9.1...@looker/filter-components@0.9.2) (2021-09-21)
 
 **Note:** Version bump only for package @looker/filter-components

@@ -1,7 +1,7 @@
 {
   "name": "@looker/design-tokens",
   "license": "MIT",
-  "version": "2.6.1",
+  "version": "2.7.0",
   "main": "src/index.ts",
   "sideEffects": false,
   "publishConfig": {
@@ -14,7 +14,7 @@
     "styled-system": "^5.1.5"
   },
   "devDependencies": {
-    "@looker/eslint-config-oss": "*",
+    "@looker/eslint-config-oss": "^1.7.3",
     "@testing-library/react": "^11.2.6",
     "csstype": "^3.0.8",
     "lodash": "^4.17.20",
@@ -33,7 +33,7 @@
   "eslintConfig": {
     "root": true,
     "extends": [
-     "@looker/eslint-config-oss"
+      "@looker/eslint-config-oss"
     ],
     "rules": {
       "i18next/no-literal-string": "off"

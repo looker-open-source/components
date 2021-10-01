@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.5.4](https://github.com/looker-open-source/components/compare/@looker/components-providers@1.5.3...@looker/components-providers@1.5.4) (2021-10-01)
+
+**Note:** Version bump only for package @looker/components-providers
+
+
+
+
+
 ## [1.5.3](https://github.com/looker-open-source/components/compare/@looker/components-providers@1.5.2...@looker/components-providers@1.5.3) (2021-09-21)
 
 **Note:** Version bump only for package @looker/components-providers
