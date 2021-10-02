@@ -30,6 +30,7 @@ import { renderWithTheme } from '@looker/components-test-utils'
 import { fireEvent, screen, act } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { MultiFunctionButton } from './MultiFunctionButton'
+import { ComponentSize } from './MultiFunctionButton.stories'
 
 const CopyToClipboard = () => {
   const [change, setChange] = useState(false)
@@ -88,6 +89,15 @@ describe('MultiFunctionButton', () => {
     const alternate = screen.getByText('Copied!')
     expect(alternate.closest('div')).toHaveStyle('height: 44px')
     expect(alternate.closest('div')).toHaveStyle('width: 162px')
+  })
+
+  test('component have width based on larger value between alternate and children', () => {
+    renderWithTheme(<ComponentSize />)
+    const children = screen.getByText('Test')
+    expect(children).toHaveStyle('width: 700px')
+    fireEvent.click(children)
+    const alternate = screen.getByText('This is a very large button')
+    expect(alternate).toHaveStyle('width: 700px')
   })
 
   test('component switch focus based on the displayed button', () => {

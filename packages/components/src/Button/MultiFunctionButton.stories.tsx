@@ -87,7 +87,11 @@ export const ComponentSize = () => {
       }
       swap={change}
     >
-      <CustomButtonOutline onClick={handleSwap} iconBefore={<Add />}>
+      <CustomButtonOutline
+        onClick={handleSwap}
+        iconBefore={<Add />}
+        width={700}
+      >
         Test
       </CustomButtonOutline>
     </MultiFunctionButton>
