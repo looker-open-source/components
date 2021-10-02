@@ -29,7 +29,7 @@
     "styled-components": "5.2.1"
   },
   "devDependencies": {
-    "@looker/eslint-config": "1.5.0",
+    "@looker/eslint-config": "1.5.1",
     "@looker/stylelint-config": "1.4.0",
     "@types/react-router-dom": "^5.1.8",
     "babel-loader": "*",
