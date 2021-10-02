@@ -83,7 +83,7 @@ export const MultiFunctionButton = forwardRef(
           : a.offsetWidth
         const bWidth: any = alternate.props.width
           ? alternate.props.width
-          : a.offsetWidth
+          : b.offsetWidth
 
         setContainerHeight(Math.max(a.offsetHeight, b.offsetHeight, 0))
         setContainerWidth(Math.max(aWidth, bWidth, 0))
@@ -115,11 +115,13 @@ export const MultiFunctionButton = forwardRef(
           'aria-hidden': !!swap,
           disabled: swap === true ? true : undefined,
           ref: useForkedRef(aRef, forwardedRef),
+          width: containerWidth,
         })}
         {cloneElement(alternate, {
           'aria-hidden': !swap,
           disabled: swap === false ? true : undefined,
           ref: useForkedRef(bRef, alternateRef),
+          width: containerWidth,
         })}
       </MultiFunctionButtonStyle>
     )
