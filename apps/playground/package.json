@@ -24,7 +24,7 @@
     "@babel/preset-env": "^7.14.7",
     "babel-loader": "^8.2.2",
     "babel-loader-exclude-node-modules-except": "^1.2.1",
-    "core-js": "^3.12.1",
+    "core-js": "^3.18.1",
     "html-webpack-plugin": "^4.5.2",
     "webpack": "4.46.0",
     "webpack-bundle-analyzer": "^4.4.1",
