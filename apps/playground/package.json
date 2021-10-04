@@ -11,9 +11,9 @@
     "@looker/components": "*",
     "@looker/components-providers": "*",
     "@looker/design-tokens": "*",
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0",
-    "react-is": "^16.13.1",
+    "react": "16.14.0",
+    "react-dom": "16.14.0",
+    "react-is": "16.13.1",
     "styled-components": "*"
   },
   "devDependencies": {

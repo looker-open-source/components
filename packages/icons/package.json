@@ -23,9 +23,9 @@
     "h2x-plugin-jsx": "^1.2.0",
     "h2x-types": "^1.1.0",
     "number-to-words": "^1.2.4",
-    "react": "^16.14.0",
-    "react-is": "^16.13.1",
-    "styled-components": "^5.3.0"
+    "react": "16.14.0",
+    "react-is": "16.13.1",
+    "styled-components": "5.3.1"
   },
   "peerDependencies": {
     "react": "^16.11",
