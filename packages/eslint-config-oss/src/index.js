@@ -123,7 +123,6 @@ module.exports = {
       'error',
       {
         patterns: [
-          '**/core_api/*',
           '@looker/icons/*',
           '@styled-icons/material/*',
           '@styled-icons/material-outlined/*',

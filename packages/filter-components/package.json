@@ -69,6 +69,41 @@
    "@typescript-eslint/no-non-null-assertion": "off",
    "sort-keys-fix/sort-keys-fix": "off",
    "no-restricted-imports": "off"
+  },
+  "overrides": [
+    {
+      "files": [
+        "*.tsx",
+        "*.ts"
+      ],
+      "excludedFiles": [
+        "*.spec.*",
+        "*.stories.*",
+        "**/stories/**",
+        "**/__mocks__/**"
+      ],
+      "rules": {
+        "no-restricted-imports": [
+          "error",
+            {
+              "paths": [
+                {
+                  "message": "Please import icons from '@styled-icons/material/SomeIcon'",
+                  "name": "@styled-icons/material"
+                },
+                {
+                  "message": "Please import icons from '@styled-icons/material-outlined/SomeIcon'",
+                  "name": "@styled-icons/material-outlined"
+                },
+                {
+                  "message": "Please import icons from '@styled-icons/material-rounded/SomeIcon'",
+                  "name": "@styled-icons/material-rounded"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ]
   }
- }
 }
