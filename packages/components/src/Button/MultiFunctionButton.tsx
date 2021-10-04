@@ -130,7 +130,9 @@ const MultiFunctionButtonStyle = styled.div<MultiFunctionButtonStyleProps>`
   height: ${({ height }) => height}px;
   justify-content: center;
   width: ${({ width }) => width}px;
-
+  > * {
+    flex-shrink: 0;
+  }
   ${({ swap }) =>
     swap
       ? `> *:first-child {

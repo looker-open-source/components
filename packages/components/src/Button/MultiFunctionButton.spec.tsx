@@ -67,29 +67,6 @@ describe('MultiFunctionButton', () => {
     expect(screen.getByText('Copied!')).toBeInTheDocument()
   })
 
-  test('component has same size at all times', () => {
-    Object.defineProperties(window.HTMLElement.prototype, {
-      offsetHeight: {
-        value: 44,
-      },
-    })
-
-    Object.defineProperties(window.HTMLElement.prototype, {
-      offsetWidth: {
-        value: 162,
-      },
-    })
-
-    renderWithTheme(<CopyToClipboard />)
-    const button = screen.getByText('Copy to Clipboard')
-    expect(button.closest('div')).toHaveStyle('height: 44px')
-    expect(button.closest('div')).toHaveStyle('width: 162px')
-    fireEvent.click(button)
-    const alternate = screen.getByText('Copied!')
-    expect(alternate.closest('div')).toHaveStyle('height: 44px')
-    expect(alternate.closest('div')).toHaveStyle('width: 162px')
-  })
-
   test('component switch focus based on the displayed button', () => {
     renderWithTheme(<CopyToClipboard />)
     const button = screen.getByText('Copy to Clipboard')

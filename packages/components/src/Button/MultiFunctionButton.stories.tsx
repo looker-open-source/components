@@ -87,9 +87,37 @@ export const ComponentSize = () => {
       }
       swap={change}
     >
-      <CustomButtonOutline onClick={handleSwap} iconBefore={<Add />}>
+      <CustomButtonOutline
+        onClick={handleSwap}
+        iconBefore={<Add />}
+        width={700}
+      >
         Test
       </CustomButtonOutline>
+    </MultiFunctionButton>
+  )
+}
+
+const ButtonA = styled(Button)`
+  width: 400px;
+`
+const ButtonB = styled(Button)`
+  width: 150px;
+`
+
+export const ComponentSizeStyled = () => {
+  const [change, setChange] = useState(false)
+
+  const handleSwap = () => {
+    setChange(true)
+    setTimeout(() => setChange(false), 1500)
+  }
+  return (
+    <MultiFunctionButton
+      alternate={<ButtonB size="large">Alternate</ButtonB>}
+      swap={change}
+    >
+      <ButtonA onClick={handleSwap}>Initial</ButtonA>
     </MultiFunctionButton>
   )
 }
