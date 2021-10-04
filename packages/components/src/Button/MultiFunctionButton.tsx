@@ -77,21 +77,10 @@ export const MultiFunctionButton = forwardRef(
       const a = aRef.current
       const b = bRef.current
       if (a && b) {
-        const aWidth: any = children.props.width
-          ? children.props.width
-          : a.offsetWidth
-        const bWidth: any = alternate.props.width
-          ? alternate.props.width
-          : b.offsetWidth
         setContainerHeight(Math.max(a.offsetHeight, b.offsetHeight, 0))
-        setContainerWidth(Math.max(aWidth, bWidth, 0))
+        setContainerWidth(Math.max(a.offsetWidth, b.offsetWidth, 0))
       }
-    }, [
-      alternate.props.width,
-      children.props.width,
-      containerHeight,
-      containerWidth,
-    ])
+    }, [containerHeight, containerWidth])
 
     // setting focus on the right button as the component moves between them
     useEffect(() => {
@@ -141,7 +130,9 @@ const MultiFunctionButtonStyle = styled.div<MultiFunctionButtonStyleProps>`
   height: ${({ height }) => height}px;
   justify-content: center;
   width: ${({ width }) => width}px;
-
+  > * {
+    flex-shrink: 0;
+  }
   ${({ swap }) =>
     swap
       ? `> *:first-child {
