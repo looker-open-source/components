@@ -1,90 +1,90 @@
 {
- "name": "@looker/filter-components",
- "main": "src/index.ts",
- "license": "MIT",
- "version": "0.10.0",
- "publishConfig": {
-  "access": "public"
- },
- "dependencies": {
-  "@looker/components": "^2.8.0",
-  "@looker/components-date": "^2.4.0",
-  "@looker/filter-expressions": "^0.8.3",
-  "@looker/icons": "^1.5.2",
-  "@looker/sdk": "^21.8.0",
-  "@looker/sdk-rtl": "^21.0.19",
-  "@styled-icons/material": "10.34.0",
-  "@styled-icons/material-outlined": "10.34.0",
-  "@styled-icons/material-rounded": "10.34.0",
-  "lodash": "^4.17.20",
-  "polished": "3.4.1",
-  "use-debounce": "5.2.1"
- },
- "devDependencies": {
-  "@looker/components": "*",
-  "@looker/components-test-utils": "^1.5.4",
-  "@looker/eslint-config": "^1.5.1",
-  "@looker/stylelint-config": "^1.5.2",
-  "@testing-library/react": "11.1.1",
-  "@typescript-eslint/eslint-plugin": "*",
-  "@typescript-eslint/parser": "*",
-  "enzyme": "3.10.0",
-  "eslint-config-prettier": "*",
-  "eslint-config-standard": "*",
-  "eslint-plugin-header": "*",
-  "eslint-plugin-i18next": "*",
-  "eslint-plugin-import": "*",
-  "eslint-plugin-jest-dom": "*",
-  "eslint-plugin-mdx": "*",
-  "eslint-plugin-node": "*",
-  "eslint-plugin-prettier": "*",
-  "eslint-plugin-promise": "*",
-  "eslint-plugin-react": "*",
-  "eslint-plugin-react-hooks": "*",
-  "eslint-plugin-sort-keys-fix": "*",
-  "eslint-plugin-standard": "*",
-  "eslint-plugin-testing-library": "*",
-  "glob": "7.1.6",
-  "react": "^16.14.0",
-  "react-dom": "^16.14.0",
-  "react-i18next": "11.8.15",
-  "react-test-renderer": "16.11.0",
-  "styled-components": "^5.3.0"
- },
- "peerDependencies": {
-  "@looker/components": "2",
-  "i18next": "20.3.1",
-  "react": "^16.11.0",
-  "react-dom": "^16.11.0",
-  "react-i18next": "11.8.15",
-  "styled-components": "^5"
- },
- "eslintConfig": {
-  "root": true,
-  "extends": [
-   "@looker/eslint-config/oss-compat"
-  ],
-  "rules": {
-   "@typescript-eslint/no-explicit-any": "off",
-   "@typescript-eslint/no-non-null-assertion": "off",
-   "sort-keys-fix/sort-keys-fix": "off",
-   "no-restricted-imports": "off"
+  "name": "@looker/filter-components",
+  "main": "src/index.ts",
+  "license": "MIT",
+  "version": "0.10.1",
+  "publishConfig": {
+    "access": "public"
   },
-  "overrides": [
-    {
-      "files": [
-        "*.tsx",
-        "*.ts"
-      ],
-      "excludedFiles": [
-        "*.spec.*",
-        "*.stories.*",
-        "**/stories/**",
-        "**/__mocks__/**"
-      ],
-      "rules": {
-        "no-restricted-imports": [
-          "error",
+  "dependencies": {
+    "@looker/components": "^2.8.1",
+    "@looker/components-date": "^2.4.1",
+    "@looker/filter-expressions": "^0.8.3",
+    "@looker/icons": "^1.5.3",
+    "@looker/sdk": "^21.8.0",
+    "@looker/sdk-rtl": "^21.0.19",
+    "@styled-icons/material": "10.34.0",
+    "@styled-icons/material-outlined": "10.34.0",
+    "@styled-icons/material-rounded": "10.34.0",
+    "lodash": "^4.17.20",
+    "polished": "3.4.1",
+    "use-debounce": "5.2.1"
+  },
+  "devDependencies": {
+    "@looker/components": "*",
+    "@looker/components-test-utils": "^1.5.5",
+    "@looker/eslint-config": "^1.5.1",
+    "@looker/stylelint-config": "^1.5.2",
+    "@testing-library/react": "11.1.1",
+    "@typescript-eslint/eslint-plugin": "*",
+    "@typescript-eslint/parser": "*",
+    "enzyme": "3.10.0",
+    "eslint-config-prettier": "*",
+    "eslint-config-standard": "*",
+    "eslint-plugin-header": "*",
+    "eslint-plugin-i18next": "*",
+    "eslint-plugin-import": "*",
+    "eslint-plugin-jest-dom": "*",
+    "eslint-plugin-mdx": "*",
+    "eslint-plugin-node": "*",
+    "eslint-plugin-prettier": "*",
+    "eslint-plugin-promise": "*",
+    "eslint-plugin-react": "*",
+    "eslint-plugin-react-hooks": "*",
+    "eslint-plugin-sort-keys-fix": "*",
+    "eslint-plugin-standard": "*",
+    "eslint-plugin-testing-library": "*",
+    "glob": "7.1.6",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "react-i18next": "11.8.15",
+    "react-test-renderer": "16.11.0",
+    "styled-components": "^5.3.0"
+  },
+  "peerDependencies": {
+    "@looker/components": "2",
+    "i18next": "20.3.1",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "react-i18next": "11.8.15",
+    "styled-components": "^5"
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "@looker/eslint-config/oss-compat"
+    ],
+    "rules": {
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-non-null-assertion": "off",
+      "sort-keys-fix/sort-keys-fix": "off",
+      "no-restricted-imports": "off"
+    },
+    "overrides": [
+      {
+        "files": [
+          "*.tsx",
+          "*.ts"
+        ],
+        "excludedFiles": [
+          "*.spec.*",
+          "*.stories.*",
+          "**/stories/**",
+          "**/__mocks__/**"
+        ],
+        "rules": {
+          "no-restricted-imports": [
+            "error",
             {
               "paths": [
                 {

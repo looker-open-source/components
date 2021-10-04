@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.1](https://github.com/looker-open-source/components/compare/@looker/components-date@2.4.0...@looker/components-date@2.4.1) (2021-10-04)
+
+
+### Bug Fixes
+
+* Restore deep-imports for [@styled-icons](https://github.com/styled-icons) imports (only in built artifacts) ([#2901](https://github.com/looker-open-source/components/issues/2901)) ([9ef563c](https://github.com/looker-open-source/components/commit/9ef563cafed5b594fb2cbad58660bb0f999ec192))
+
+
+
+
+
 # [2.4.0](https://github.com/looker-open-source/components/compare/@looker/components-date@2.3.2...@looker/components-date@2.4.0) (2021-10-01)
 
 

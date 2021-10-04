@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.4](https://github.com/looker-open-source/components/compare/@looker/eslint-config-oss@1.7.3...@looker/eslint-config-oss@1.7.4) (2021-10-04)
+
+
+### Bug Fixes
+
+* Restore deep-imports for [@styled-icons](https://github.com/styled-icons) imports (only in built artifacts) ([#2901](https://github.com/looker-open-source/components/issues/2901)) ([9ef563c](https://github.com/looker-open-source/components/commit/9ef563cafed5b594fb2cbad58660bb0f999ec192))
+
+
+
+
+
 ## [1.7.3](https://github.com/looker-open-source/components/compare/@looker/eslint-config-oss@1.7.2...@looker/eslint-config-oss@1.7.3) (2021-10-01)
 
 **Note:** Version bump only for package @looker/eslint-config-oss
