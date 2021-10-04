@@ -29,7 +29,8 @@ import React, { useContext } from 'react'
 import type { NavbarElementProps } from 'react-day-picker'
 import styled from 'styled-components'
 import noop from 'lodash/noop'
-import { ChevronLeft, ChevronRight } from '@styled-icons/material-rounded'
+import { ChevronLeft } from '@styled-icons/material-rounded/ChevronLeft'
+import { ChevronRight } from '@styled-icons/material-rounded/ChevronRight'
 import {
   ButtonTransparent,
   Heading,

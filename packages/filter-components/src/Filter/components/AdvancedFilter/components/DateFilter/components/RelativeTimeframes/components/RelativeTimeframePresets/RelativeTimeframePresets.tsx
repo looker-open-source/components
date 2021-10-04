@@ -32,8 +32,8 @@ import {
   MenuList,
   DialogContext,
 } from '@looker/components'
-import { Check } from '@styled-icons/material'
-import { ExpandMore } from '@styled-icons/material-rounded'
+import { Check } from '@styled-icons/material/Check'
+import { ExpandMore } from '@styled-icons/material-rounded/ExpandMore'
 import type { FC, MouseEvent } from 'react'
 import React, { useContext, useState } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -56,9 +56,7 @@ interface RelativeTimeframePresetsProps {
   onPresetChange: (selected: AllPresetTimeframes) => void
 }
 
-export const RelativeTimeframePresets: FC<RelativeTimeframePresetsProps> = (
-  props
-) => {
+export const RelativeTimeframePresets: FC<RelativeTimeframePresetsProps> = props => {
   const { t } = useTranslation('RelativeTimeframePresets')
 
   const [showMore, setShowMore] = useState(false)

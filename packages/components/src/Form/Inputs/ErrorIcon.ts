@@ -24,7 +24,7 @@
 
  */
 
-import { Error } from '@styled-icons/material'
+import { Error } from '@styled-icons/material/Error'
 import styled from 'styled-components'
 import { inputIconSize } from './inputIconSize'
 
