@@ -17,9 +17,9 @@
     "components-theme-editor": "*",
     "@looker/design-tokens": "*",
     "lodash": "*",
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0",
-    "react-is": "^16.13.1",
+    "react": "16.14.0",
+    "react-dom": "16.14.0",
+    "react-is": "16.13.1",
     "storybook": "6.3.8",
     "styled-components": "*"
   },

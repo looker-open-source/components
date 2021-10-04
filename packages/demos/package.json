@@ -12,10 +12,10 @@
     "@looker/eslint-config-oss": "*",
     "@looker/icons": "*",
     "lodash": "*",
-    "react": "^16.14.0",
+    "react": "16.14.0",
     "react-copy-to-clipboard": "^5.0.3",
-    "react-is": "^16.13.1",
-    "styled-components": "^5.3.0"
+    "react-is": "16.13.1",
+    "styled-components": "5.3.1"
   },
   "eslintConfig": {
     "root": true,
