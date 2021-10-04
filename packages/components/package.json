@@ -31,7 +31,7 @@
     "@testing-library/jest-dom": "*",
     "@testing-library/react": "*",
     "@testing-library/user-event": "*",
-    "csstype": "^3.0.8",
+    "csstype": "3.0.2",
     "jest-styled-components": "*",
     "lodash": "^4.17.20",
     "puppeteer": "^9.1.0",
