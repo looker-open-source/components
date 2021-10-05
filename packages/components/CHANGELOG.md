@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.8.2](https://github.com/looker-open-source/components/compare/@looker/components@2.8.1...@looker/components@2.8.2) (2021-10-05)
+
+
+### Bug Fixes
+
+* **MultiFunctionButton:** fix width bug, update test and story ([#2888](https://github.com/looker-open-source/components/issues/2888)) ([919595f](https://github.com/looker-open-source/components/commit/919595f988681ed6fa083782f4f852bb27ebde13))
+
+
+
+
+
 ## [2.8.1](https://github.com/looker-open-source/components/compare/@looker/components@2.8.0...@looker/components@2.8.1) (2021-10-04)
 
 
