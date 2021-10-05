@@ -44,6 +44,9 @@ globalAny.IntersectionObserver = observeMock
 // js-dom doesn't do scrollIntoView
 Element.prototype.scrollIntoView = jest.fn()
 
+// js-dom doesn't do requestAnimationFrame
+globalAny.requestAnimationFrame = cb => setTimeout(() => cb(), 0)
+
 /**
  * Throw a hard-error if an underlying library (e.g.: React) is throwing console.error
  * Inspired by: https://github.com/facebook/jest/issues/6121#issuecomment-529591574

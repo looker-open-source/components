@@ -24,7 +24,7 @@
 
  */
 
-import { render, screen } from '@testing-library/react'
+import { act, render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import React, { useRef } from 'react'
 import { useHovered } from './useHovered'
@@ -41,15 +41,18 @@ const HoveredComponent = () => {
 }
 
 describe('useHovered', () => {
-  let rafSpy: jest.SpyInstance<number, [FrameRequestCallback]>
   beforeEach(() => {
-    rafSpy = jest
-      .spyOn(window, 'requestAnimationFrame')
-      .mockImplementation((cb: any) => cb())
+    jest.useFakeTimers()
   })
+
   afterEach(() => {
-    rafSpy.mockRestore()
+    jest.useRealTimers()
   })
+
+  const runTimers = () =>
+    act(() => {
+      jest.runOnlyPendingTimers()
+    })
 
   it('toggles on hover', () => {
     render(<HoveredComponent />)
@@ -59,6 +62,7 @@ describe('useHovered', () => {
     userEvent.hover(hoverMe)
     expect(screen.getByText('button')).toBeVisible()
     userEvent.unhover(hoverMe)
+    runTimers()
     expect(screen.queryByText('button')).not.toBeInTheDocument()
   })
 
@@ -79,6 +83,7 @@ describe('useHovered', () => {
     expect(button).toBeVisible()
 
     userEvent.tab()
+    runTimers()
     expect(screen.queryByText('button')).not.toBeInTheDocument()
   })
 })
