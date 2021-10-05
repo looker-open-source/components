@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.7.3](https://github.com/looker-open-source/components/compare/@looker/design-tokens@2.7.2...@looker/design-tokens@2.7.3) (2021-10-05)
+
+
+### Bug Fixes
+
+* Export type for SpecifiableTextColors ([#2905](https://github.com/looker-open-source/components/issues/2905)) ([23ff0c6](https://github.com/looker-open-source/components/commit/23ff0c691043404f378eaada61733e217142f1ab))
+
+
+
+
+
 ## [2.7.2](https://github.com/looker-open-source/components/compare/@looker/design-tokens@2.7.1...@looker/design-tokens@2.7.2) (2021-10-05)
 
 **Note:** Version bump only for package @looker/design-tokens

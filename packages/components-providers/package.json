@@ -1,14 +1,14 @@
 {
   "name": "@looker/components-providers",
   "license": "MIT",
-  "version": "1.5.6",
+  "version": "1.5.7",
   "main": "src/index.ts",
   "sideEffects": false,
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@looker/design-tokens": "^2.7.2",
+    "@looker/design-tokens": "^2.7.3",
     "i18next": "20.3.1",
     "react-helmet-async": "^1.0.9",
     "react-i18next": "11.8.15",
