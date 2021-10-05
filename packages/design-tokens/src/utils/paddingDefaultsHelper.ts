@@ -68,7 +68,7 @@ export const paddingDefaultsHelper = (
     py,
   } as const
 
-  type responseKey = keyof typeof response
+  type ResponseKey = keyof typeof response
 
   /* Remove undefined values */
   Object.keys(response).forEach(key => {
