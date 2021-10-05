@@ -415,7 +415,7 @@ const InputTimeInternal = forwardRef(
     // Input UX: automatically advance cursor to specified input
     // Also track state for whether user is focusing or blurring any sub input
     useEffect(() => {
-      const ref = inputRefs[subInputFocus || '']
+      const ref = inputRefs[subInputFocus as keyof typeof inputRefs]
       if (ref.current) {
         ref.current.focus()
       }

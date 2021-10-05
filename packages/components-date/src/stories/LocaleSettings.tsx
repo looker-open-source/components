@@ -88,10 +88,12 @@ export const LocaleSettings = ({
 
   const handleLocaleChange = (val: string) => {
     setLocaleCode(val)
-    const locale = dateFnLocaleMap[val]
+    const locale = dateFnLocaleMap[val as keyof typeof dateFnLocaleMap]
     setLocale(locale)
     clearDate()
-    setFirstDayOfWeek(locale.options?.weekStartsOn)
+    if (locale.options?.weekStartsOn) {
+      setFirstDayOfWeek(locale.options?.weekStartsOn)
+    }
   }
 
   return (

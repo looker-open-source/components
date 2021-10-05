@@ -101,7 +101,7 @@ const StatusLayout = forwardRef(
         ref={ref}
         /* Don't specify title if Status is wrapped in tooltip */
         title={
-          !props['aria-describedby']
+          !props['aria-describedby' as keyof typeof props]
             ? title || getIntentLabel(t, intent)
             : undefined
         }

@@ -50,7 +50,7 @@ export const doDataTableSort = <T>(
   id: string,
   sortDirection: 'asc' | 'desc'
 ) => {
-  const sortedData = [...data]
+  const sortedData: Array<{ [key: string]: any }> = [...data]
   const updatedColumns = [...columns]
   const targetColumn = updatedColumns.find(column => column.id === id)
 
@@ -82,6 +82,6 @@ export const doDataTableSort = <T>(
 
   return {
     columns: updatedColumns,
-    data: sortedData,
+    data: sortedData as T[],
   }
 }

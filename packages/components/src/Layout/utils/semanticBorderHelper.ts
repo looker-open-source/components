@@ -76,7 +76,7 @@ export type SemanticBorderProps = BorderRadiusProps & {
 
 const borderPropertyHelper = (color: BorderBaseProp, property: string) => css`
   ${property}: 1px solid
-    ${({ theme }) => theme.colors[color] || color};
+    ${({ theme }) => theme.colors[color as keyof Colors] || color};
 `
 
 const borderPositionHelper = (

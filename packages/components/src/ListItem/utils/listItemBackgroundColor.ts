@@ -24,7 +24,7 @@
 
  */
 
-import type { Theme } from '@looker/design-tokens'
+import type { Colors, Theme } from '@looker/design-tokens'
 import { itemSelectedColor } from '@looker/design-tokens'
 import { css } from 'styled-components'
 import type { ListItemColorProp, ListItemStatefulProps } from '../types'
@@ -41,9 +41,9 @@ export const listItemBackgroundColor = ({
 }: ListItemBackgroundColorProps & { theme: Theme }) => {
   const stateColors = color
     ? {
-        all: colors[`${color}Subtle`],
+        all: colors[`${color}Subtle` as keyof Colors],
         hovered: colors.ui1,
-        selected: colors[`${color}Subtle`],
+        selected: colors[`${color}Subtle` as keyof Colors],
       }
     : {
         all: itemSelectedColor(colors.ui2),

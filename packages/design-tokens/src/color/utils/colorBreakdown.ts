@@ -89,7 +89,7 @@ export const colorBreakdown = (colors: Colors): ColorBreakdown => {
     Object.entries(divided.stateful),
     7
   ).map(chunk => {
-    const obj = {}
+    const obj: { [key: string]: string } = {}
     chunk.forEach(([name, color]) => (obj[name] = color))
     return obj
   })
