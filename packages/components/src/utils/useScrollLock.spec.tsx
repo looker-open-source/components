@@ -31,9 +31,10 @@ import { useScrollLock, useToggle } from './'
 
 const globalConsole = global.console
 const warnMock = jest.fn()
-const paddingSpy = jest.spyOn(document.body.style, 'paddingRight', 'set')
+let paddingSpy: jest.SpyInstance<void, string[]>
 
 beforeEach(() => {
+  paddingSpy = jest.spyOn(document.body.style, 'paddingRight', 'set')
   global.console = ({
     ...globalConsole,
     warn: warnMock,
