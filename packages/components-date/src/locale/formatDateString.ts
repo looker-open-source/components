@@ -31,12 +31,19 @@ import en from 'date-fns/locale/en-US'
 import repeat from 'lodash/repeat'
 import trim from 'lodash/trim'
 
-const dateFormatRepetitions = {
+type Full = 'full'
+type Long = 'long'
+type Medium = 'medium'
+type Short = 'short'
+
+type Formats = Full | Long | Medium | Short
+
+const dateFormatRepetitions: Record<Formats, number> = {
   full: 4,
   long: 3,
   medium: 2,
   short: 1,
-} as const
+}
 
 export type DateFormats = keyof typeof dateFormatRepetitions
 
@@ -45,9 +52,8 @@ export type DateTimeOptions = {
   time?: boolean
 }
 
-const isDateFormat = (stringFormat: string): stringFormat is DateFormats => {
-  return dateFormatRepetitions[stringFormat]
-}
+const isDateFormat = (stringFormat: string) =>
+  dateFormatRepetitions[stringFormat as DateFormats]
 
 const getStringFormat = (
   stringFormat: DateFormats,
@@ -79,7 +85,7 @@ export const formatDateString = (
   const renderedDate = timeZone ? utcToZonedTime(date, timeZone) : date
 
   const actualFormat = isDateFormat(stringFormat)
-    ? getStringFormat(stringFormat, timeZone, options)
+    ? getStringFormat(stringFormat as DateFormats, timeZone, options)
     : stringFormat
 
   return format(renderedDate, actualFormat, {

@@ -35,24 +35,30 @@ import styled from 'styled-components'
 
 export const IconList = () => (
   <IconGrid>
-    {iconsList.map(name => (
-      <CopyToClipboard
-        text={`<${name} />`}
-        onCopy={() => alert(`Copied icon "${name}" to clipboard.`)}
-        key={name}
-      >
-        <IconGridItem p="u3" gap="u2" align="center" tabIndex={0} role="button">
-          <Icon
-            display="inline-flex"
-            icon={AllIcons[name].render()}
-            size="large"
-          />
-          <Paragraph color="currentColor" fontSize="small" textAlign="center">
-            {name}
-          </Paragraph>
-        </IconGridItem>
-      </CopyToClipboard>
-    ))}
+    {iconsList.map(name => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const icon = AllIcons[name as keyof typeof AllIcons] as any
+      return (
+        <CopyToClipboard
+          text={`<${name} />`}
+          onCopy={() => alert(`Copied icon "${name}" to clipboard.`)}
+          key={name}
+        >
+          <IconGridItem
+            p="u3"
+            gap="u2"
+            align="center"
+            tabIndex={0}
+            role="button"
+          >
+            <Icon display="inline-flex" icon={icon.render()} size="large" />
+            <Paragraph color="currentColor" fontSize="small" textAlign="center">
+              {name}
+            </Paragraph>
+          </IconGridItem>
+        </CopyToClipboard>
+      )
+    })}
   </IconGrid>
 )
 

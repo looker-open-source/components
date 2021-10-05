@@ -27,7 +27,10 @@
 import pickBy from 'lodash/pickBy'
 import identity from 'lodash/identity'
 import type { FontFamilyChoices } from '../../system'
-import type { FontFamilyFallbacks } from '../../system/typography/font_families'
+import type {
+  FontFamilies,
+  FontFamilyFallbacks,
+} from '../../system/typography/font_families'
 import { fontFacesToFamily } from './fontFacesToFamily'
 
 export const generateFontFamilies = (
@@ -42,7 +45,10 @@ export const generateFontFamilies = (
 
   Object.entries(fontFamilies).map(
     ([key, fontFace]) =>
-      (fontFamilies[key] = fontFacesToFamily(fontFace, fallbacks[key]))
+      (fontFamilies[key as FontFamilies] = fontFacesToFamily(
+        fontFace,
+        fallbacks[key as FontFamilies]
+      ))
   )
 
   return fontFamilies

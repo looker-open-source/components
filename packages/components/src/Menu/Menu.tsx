@@ -54,12 +54,12 @@ const partitionMenuProps = (
   props: Omit<MenuProps, 'children' | 'content' | 'id' | 'listRef'>,
   popoverPropKeys: Array<keyof PopoverProps>
 ) => {
-  const allProps = { ...props }
+  const allProps: { [key: string]: any } = { ...props }
+  const popoverProps: { [key: string]: any } = {}
 
-  const popoverProps = {}
   popoverPropKeys.forEach(key => {
-    if (props[key] !== undefined) {
-      popoverProps[key] = props[key]
+    if (props[key as keyof typeof props] !== undefined) {
+      popoverProps[key] = props[key as keyof typeof props]
     }
     delete allProps[key]
   })

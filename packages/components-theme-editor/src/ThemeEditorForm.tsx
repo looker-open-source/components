@@ -43,13 +43,13 @@ export const ThemeEditorForm: FC<ThemeEditorFormProps> = ({
   onChange,
 }) => {
   const handleFontChange = (slot: string, font: string) => {
-    const newFontFamilies = { ...theme.fontFamilies }
+    const newFontFamilies: { [key: string]: string } = { ...theme.fontFamilies }
     newFontFamilies[slot] = font
     onChange({ ...theme, fontFamilies: newFontFamilies })
   }
 
   const handleColorChange = (event: FormEvent<HTMLInputElement>) => {
-    const newColors = { ...theme.colors }
+    const newColors: { [key: string]: string } = { ...theme.colors }
     newColors[event.currentTarget.name] = event.currentTarget.value
     onChange({ ...theme, colors: newColors })
   }

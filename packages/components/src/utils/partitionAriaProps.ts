@@ -36,8 +36,9 @@ import type React from 'react'
 export const partitionAriaProps = <T extends React.AriaAttributes>(
   props: T
 ) => {
-  const aria = {}
-  const remainder = {}
+  const aria: { [key: string]: string } = {}
+  const remainder: { [key: string]: string } = {}
+
   Object.entries(props).forEach(([key, value]) =>
     key.startsWith('aria-') ? (aria[key] = value) : (remainder[key] = value)
   )

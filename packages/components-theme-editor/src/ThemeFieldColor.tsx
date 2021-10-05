@@ -44,7 +44,7 @@ export const ThemeFieldColor: FC<ThemeFieldColorProps> = ({
   <FieldColor
     label={capitalize(color)}
     name={color}
-    value={colors && colors[color]}
+    value={colors && colors[color as keyof SpecifiableColors]}
     onChange={onChange}
   />
 )

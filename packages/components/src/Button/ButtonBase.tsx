@@ -33,6 +33,7 @@ import {
   shouldForwardProp,
   width,
 } from '@looker/design-tokens'
+import type { SizeRamp } from '@looker/design-tokens'
 import { StyledIconBase } from '@styled-icons/styled-icon'
 import type { Ref } from 'react'
 import React, { forwardRef } from 'react'
@@ -75,9 +76,9 @@ const buttonCSS = css<ButtonColorProps>`
 export const buttonIconSize = css<ButtonProps>`
   ${StyledIconBase} {
     height: ${({ theme, size = 'medium' }) =>
-      theme.sizes[buttonIconSizeMap[size]]};
+      theme.sizes[buttonIconSizeMap[size] as keyof SizeRamp]};
     width: ${({ theme, size = 'medium' }) =>
-      theme.sizes[buttonIconSizeMap[size]]};
+      theme.sizes[buttonIconSizeMap[size] as keyof SizeRamp]};
   }
 `
 

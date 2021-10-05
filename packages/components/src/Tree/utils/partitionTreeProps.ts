@@ -27,8 +27,8 @@
 import { treeItemInnerPropKeys } from '../types'
 
 export const partitionTreeProps = (props: Record<string, any>) => {
-  const treeItemInnerProps = {}
-  const accordionInnerProps = {}
+  const treeItemInnerProps: { [key: string]: string } = {}
+  const accordionInnerProps: { [key: string]: string } = {}
   Object.entries(props).forEach(prop => {
     const [propKey, propValue] = prop
     /**
