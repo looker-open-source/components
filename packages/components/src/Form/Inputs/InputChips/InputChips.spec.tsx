@@ -301,9 +301,7 @@ tag2`
   })
 
   test('mousedown on a chip does not focus the inner input', () => {
-    const rafSpy = jest
-      .spyOn(window, 'requestAnimationFrame')
-      .mockImplementation((cb: any) => cb())
+    jest.useFakeTimers()
 
     renderWithTheme(
       <InputChips
@@ -324,13 +322,12 @@ tag2`
     fireEvent.click(deleteButton)
     expect(input).toHaveFocus()
 
-    rafSpy.mockRestore()
+    jest.runOnlyPendingTimers()
+    jest.useRealTimers()
   })
 
   test('mousedown on clear button does not focus the inner input', () => {
-    const rafSpy = jest
-      .spyOn(window, 'requestAnimationFrame')
-      .mockImplementation((cb: any) => cb())
+    jest.useFakeTimers()
 
     renderWithTheme(
       <InputChips
@@ -350,7 +347,8 @@ tag2`
     fireEvent.click(clear)
     expect(input).toHaveFocus()
 
-    rafSpy.mockRestore()
+    jest.runOnlyPendingTimers()
+    jest.useRealTimers()
   })
 
   describe('Selecting chips', () => {

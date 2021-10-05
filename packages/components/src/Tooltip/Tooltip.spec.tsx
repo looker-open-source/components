@@ -33,18 +33,12 @@ import { Popover } from '../Popover'
 import { Tooltip } from './Tooltip'
 
 describe('Tooltip', () => {
-  let rafSpy: jest.SpyInstance<number, [FrameRequestCallback]>
-
   beforeEach(() => {
     jest.useFakeTimers()
-    rafSpy = jest
-      .spyOn(window, 'requestAnimationFrame')
-      .mockImplementation((cb: any) => cb())
   })
 
   afterEach(() => {
     jest.useRealTimers()
-    rafSpy.mockRestore()
   })
 
   const runTimers = () =>
@@ -70,6 +64,7 @@ describe('Tooltip', () => {
     expect(tooltip).toBeVisible()
 
     fireEvent.mouseOut(tooltip)
+    runTimers()
     expect(tooltip).not.toBeInTheDocument()
   })
 
@@ -87,6 +82,7 @@ describe('Tooltip', () => {
     expect(tooltip).toBeVisible()
 
     fireEvent.mouseOut(tooltip)
+    runTimers()
     expect(tooltip).not.toBeInTheDocument()
   })
 
@@ -108,7 +104,7 @@ describe('Tooltip', () => {
     expect(tooltip).toBeInTheDocument()
 
     fireEvent.mouseOut(tooltip)
-
+    runTimers()
     expect(tooltip).not.toBeInTheDocument()
   })
 
@@ -125,6 +121,7 @@ describe('Tooltip', () => {
     expect(tooltip).toBeVisible()
 
     fireEvent.mouseOut(trigger)
+    runTimers()
     expect(tooltip).not.toBeInTheDocument()
   })
 
@@ -206,6 +203,7 @@ describe('Tooltip', () => {
     expect(mockHandlers.onMouseOut).toHaveBeenCalled()
     fireEvent.mouseOver(button)
     expect(mockHandlers.onMouseOver).toHaveBeenCalled()
+    runTimers()
     expect(screen.queryByText('Some tooltip')).not.toBeInTheDocument()
 
     fireEvent.blur(button)

@@ -33,18 +33,12 @@ import { Truncate } from './Truncate'
 const longLabel = 'This is a long label that should trigger truncation'
 
 describe('Truncate', () => {
-  let rafSpy: jest.SpyInstance<number, [FrameRequestCallback]>
-
   beforeEach(() => {
     jest.useFakeTimers()
-    rafSpy = jest
-      .spyOn(window, 'requestAnimationFrame')
-      .mockImplementation((cb: any) => cb())
   })
 
   afterEach(() => {
     jest.useRealTimers()
-    rafSpy.mockRestore()
   })
 
   const runTimers = () =>
@@ -84,6 +78,7 @@ describe('Truncate', () => {
     expect(tooltip).toBeVisible()
 
     fireEvent.mouseOut(tooltip)
+    runTimers()
     expect(tooltip).not.toBeInTheDocument()
   })
 
@@ -100,6 +95,7 @@ describe('Truncate', () => {
     expect(tooltip).toBeVisible()
 
     fireEvent.mouseOut(tooltip)
+    runTimers()
     expect(tooltip).not.toBeInTheDocument()
   })
 })

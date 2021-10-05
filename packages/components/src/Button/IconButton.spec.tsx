@@ -30,12 +30,7 @@ import ReactDOMServer from 'react-dom/server'
 import { ComponentsProvider } from '@looker/components-providers'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { Favorite } from '@styled-icons/material'
-import {
-  act,
-  fireEvent,
-  screen,
-  waitForElementToBeRemoved,
-} from '@testing-library/react'
+import { act, fireEvent, screen } from '@testing-library/react'
 import { Tooltip } from '../Tooltip'
 import { IconButton } from './IconButton'
 
@@ -75,7 +70,6 @@ describe('IconButton', () => {
   test('accepts events', async () => {
     const fauxMouseEnter = jest.fn()
     const fauxClick = jest.fn()
-    const label = 'Test'
 
     renderWithTheme(
       <IconButton
@@ -92,7 +86,6 @@ describe('IconButton', () => {
     expect(fauxMouseEnter).toHaveBeenCalledTimes(1)
     fireEvent.mouseOut(button)
     runTimers()
-    await waitForElementToBeRemoved(() => screen.getAllByText(label)[1])
 
     fireEvent.click(button)
     expect(fauxClick).toHaveBeenCalledTimes(1)
@@ -114,7 +107,7 @@ describe('IconButton', () => {
     expect(tooltip[1]).toBeVisible()
 
     fireEvent.mouseOut(icon)
-    await waitForElementToBeRemoved(() => screen.getAllByText(label)[1])
+    runTimers()
   })
 
   test('tooltipDisabled actually disables tooltip', () => {
@@ -158,7 +151,7 @@ describe('IconButton', () => {
     expect(tooltipContents).toBeVisible()
 
     fireEvent.mouseOut(button)
-    await waitForElementToBeRemoved(() => screen.getByText(tooltip))
+    runTimers()
   })
 
   test('built-in tooltip respects text-align, width props', async () => {
@@ -182,7 +175,7 @@ describe('IconButton', () => {
     expect(tooltip[0]).toHaveStyleRule('text-align', 'right')
 
     fireEvent.mouseOut(trigger)
-    await waitForElementToBeRemoved(() => screen.getAllByText(label)[1])
+    runTimers()
   })
 
   test('toggleBackground renders a background', () => {

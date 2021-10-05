@@ -276,16 +276,13 @@ const dataTableWithSelectedItems = (
 )
 
 describe('DataTable', () => {
-  let rafSpy: jest.SpyInstance<number, [FrameRequestCallback]>
-
   beforeEach(() => {
-    rafSpy = jest
-      .spyOn(window, 'requestAnimationFrame')
-      .mockImplementation((cb: any) => cb())
+    jest.useFakeTimers()
   })
 
   afterEach(() => {
-    rafSpy.mockRestore()
+    jest.runOnlyPendingTimers()
+    jest.useRealTimers()
     handleActionClick.mockClear()
     handleListItemClick.mockClear()
     onSelect.mockClear()
