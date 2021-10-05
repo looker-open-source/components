@@ -39,7 +39,12 @@ export type TextColors = TextColor
 export { coreColors, intentColors, specifiableColors } from './specifiable'
 
 export type { DerivativeColors } from './derivative'
-export type { CoreColors, IntentColors, SpecifiableColors } from './specifiable'
+export type {
+  CoreColors,
+  IntentColors,
+  SpecifiableColors,
+  SpecifiableTextColors,
+} from './specifiable'
 export type { BlendColors } from './blends'
 export type {
   ExtendedStatefulColor,
