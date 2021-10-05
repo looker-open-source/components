@@ -25,7 +25,7 @@
  */
 
 import React from 'react'
-import { fireEvent, screen } from '@testing-library/react'
+import { act, fireEvent, screen } from '@testing-library/react'
 import {
   renderWithTheme,
   withThemeProvider,
@@ -34,20 +34,15 @@ import { RangeSlider } from './RangeSlider'
 import { RerenderRepro } from './RangeSlider.stories'
 
 const globalConsole = global.console
-const globalRequestAnimationFrame = global.requestAnimationFrame
 /* eslint-disable-next-line @typescript-eslint/unbound-method */
 const globalGetBoundingClientRect = Element.prototype.getBoundingClientRect
 
-type VoidFN = () => void
-
 beforeEach(() => {
+  jest.useFakeTimers()
   global.console = {
     ...globalConsole,
     warn: jest.fn(),
   }
-  global.requestAnimationFrame = jest
-    .fn()
-    .mockImplementation((cb: VoidFN) => cb())
   /* eslint-disable-next-line @typescript-eslint/unbound-method */
   Element.prototype.getBoundingClientRect = jest.fn(() => {
     return {
@@ -65,12 +60,18 @@ beforeEach(() => {
 })
 
 afterEach(() => {
+  jest.runOnlyPendingTimers()
+  jest.useRealTimers()
   jest.resetAllMocks()
   global.console = globalConsole
-  global.requestAnimationFrame = globalRequestAnimationFrame
   /* eslint-disable-next-line @typescript-eslint/unbound-method */
   Element.prototype.getBoundingClientRect = globalGetBoundingClientRect
 })
+
+const runTimers = () =>
+  act(() => {
+    jest.runOnlyPendingTimers()
+  })
 
 test('it selects the entire range by default', () => {
   const handleChange = jest.fn()
@@ -108,8 +109,10 @@ test('fires onChange callback on mouseMove', () => {
 
   const wrapper = screen.getByTestId('range-slider-wrapper')
   fireEvent.mouseDown(wrapper)
+  runTimers()
   fireEvent.mouseMove(wrapper, { clientX: 100, clientY: 10 })
   fireEvent.mouseUp(wrapper)
+  runTimers()
 
   expect(handleChange).toHaveBeenLastCalledWith([3, 10])
 })
@@ -120,8 +123,10 @@ test('fires onChange callback on touchMove', () => {
 
   const wrapper = screen.getByTestId('range-slider-wrapper')
   fireEvent.touchStart(wrapper)
+  runTimers()
   fireEvent.touchMove(wrapper, { touches: [{ clientX: 100, clientY: 10 }] })
   fireEvent.touchEnd(wrapper)
+  runTimers()
 
   expect(handleChange).toHaveBeenLastCalledWith([3, 10])
 })
@@ -165,6 +170,7 @@ describe('readOnly prop', () => {
 
     const wrapper = screen.getByTestId('range-slider-wrapper')
     fireEvent.mouseDown(wrapper)
+    runTimers()
     fireEvent.mouseMove(wrapper, { clientX: 100, clientY: 10 })
     expect(handleChange).not.toHaveBeenCalled()
   })
@@ -190,6 +196,7 @@ describe('disabled prop', () => {
 
     const wrapper = screen.getByTestId('range-slider-wrapper')
     fireEvent.mouseDown(wrapper)
+    runTimers()
     fireEvent.mouseMove(wrapper, { clientX: 100, clientY: 10 })
     expect(handleChange).not.toHaveBeenCalled()
   })
@@ -213,6 +220,7 @@ describe('disabled prop', () => {
 
     const wrapper = screen.getByTestId('range-slider-wrapper')
     fireEvent.touchStart(wrapper)
+    runTimers()
     fireEvent.touchMove(wrapper, { touches: [{ clientX: 100, clientY: 10 }] })
     expect(handleChange).not.toHaveBeenCalled()
   })
