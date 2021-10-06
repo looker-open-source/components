@@ -43,10 +43,8 @@ import type {
   TransitionRamp,
   FontSources,
 } from '../system'
-
 import { componentSettingsDefaults } from '../defaults'
 import type { ComponentSettingsDefaults } from '../defaults'
-
 /**
  * Theme attributes shouldn't be exported as they should be consumed via `theme` rather than via
  * direct import.
@@ -63,10 +61,19 @@ import {
   shadows,
   transitions,
 } from '../tokens'
+import type { DashboardAppearance } from './dashboardAppearance'
+import { generateDashboardAppearance } from './utils/generateDashboardAppearance'
 
 export interface Theme {
   breakpoints: string[]
   colors: Colors
+  /**
+   * Temporary addition, do not use as this is likely to be removed very soon.
+   *
+   * @deprecated
+   * @private
+   */
+  dashboardAppearance: DashboardAppearance
   defaults: ComponentSettingsDefaults
   easings: Easings
   elevations: Elevations
@@ -86,6 +93,7 @@ export interface Theme {
 export const theme: DefaultTheme = {
   breakpoints,
   colors,
+  dashboardAppearance: generateDashboardAppearance(colors),
   defaults: componentSettingsDefaults,
   easings,
   elevations,
