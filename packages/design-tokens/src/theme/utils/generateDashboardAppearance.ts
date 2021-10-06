@@ -24,7 +24,21 @@
 
  */
 
-export * from './dashboardAppearance'
-export * from './theme'
-export * from './utils'
-export type { ThemeCustomizations } from './ThemeCustomizations'
+import type { Colors } from '../../color/types'
+import type {
+  DashboardAppearance,
+  TileTitleAlignment,
+} from '../dashboardAppearance'
+
+export const generateDashboardAppearance = (
+  colors: Colors
+): DashboardAppearance => ({
+  filters: true,
+  tiles: {
+    background: colors.background,
+    body: colors.body,
+    title: colors.title,
+    titleAlignment: 'center' as TileTitleAlignment,
+  },
+  title: true,
+})
