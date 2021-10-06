@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.5.8](https://github.com/looker-open-source/components/compare/@looker/components-test-utils@1.5.7...@looker/components-test-utils@1.5.8) (2021-10-06)
+
+**Note:** Version bump only for package @looker/components-test-utils
+
+
+
+
+
 ## [1.5.7](https://github.com/looker-open-source/components/compare/@looker/components-test-utils@1.5.6...@looker/components-test-utils@1.5.7) (2021-10-05)
 
 **Note:** Version bump only for package @looker/components-test-utils

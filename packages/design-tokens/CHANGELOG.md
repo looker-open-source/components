@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.7.4](https://github.com/looker-open-source/components/compare/@looker/design-tokens@2.7.3...@looker/design-tokens@2.7.4) (2021-10-06)
+
+
+### Bug Fixes
+
+* **Theme:** Add `dashboardAppearance` to theme to improve compatibility with core product ([#2909](https://github.com/looker-open-source/components/issues/2909)) ([48e67c7](https://github.com/looker-open-source/components/commit/48e67c7ef2ce917beddd7597c5b42cb2943ed0d2))
+
+
+
+
+
 ## [2.7.3](https://github.com/looker-open-source/components/compare/@looker/design-tokens@2.7.2...@looker/design-tokens@2.7.3) (2021-10-05)
 
 
