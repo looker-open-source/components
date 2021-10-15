@@ -90,6 +90,7 @@ MobileUI.args = {
 }
 
 MobileUI.parameters = {
+  storyshots: { disable: true },
   viewport: {
     defaultViewport: 'mobile',
     viewports: VIEWPORT_MAP,

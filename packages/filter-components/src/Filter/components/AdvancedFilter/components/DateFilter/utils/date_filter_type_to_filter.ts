@@ -44,6 +44,7 @@ const filterTypeToDateMap: FilterTypeMap<DateFilterType> = {
   anyvalue: Blank,
   notnull: Blank,
   past: Past,
+  pastAgo: MatchesAdvanced,
   day: MatchesAdvanced,
   this: ThisNextLast,
   next: ThisNextLast,

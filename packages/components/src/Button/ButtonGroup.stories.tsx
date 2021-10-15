@@ -24,7 +24,7 @@
 
  */
 import type { Story } from '@storybook/react/types-6-0'
-import type { Page } from 'puppeteer'
+// import type { Page } from 'puppeteer'
 import type { FormEvent } from 'react'
 import React, { useEffect, useState } from 'react'
 import { Divider } from '../Divider'
@@ -67,12 +67,13 @@ Focused.args = {
 }
 
 Focused.parameters = {
-  beforeScreenshot: async (page: Page) => {
-    const button = await page.$('button')
-    await button?.type(' ')
-    await page.waitForTimeout(200)
-  },
+  // beforeScreenshot: async (page: Page) => {
+  //   const button = await page.$('button')
+  //   await button?.type(' ')
+  //   await page.waitForTimeout(200)
+  // },
   docs: { disable: true },
+  storyshots: { disable: true },
 }
 
 export const InitialValues = Template.bind({})

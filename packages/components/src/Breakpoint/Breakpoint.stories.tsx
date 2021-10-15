@@ -179,6 +179,7 @@ const Template: Story<BreakpointProps> = () => {
 export const MobileUI = Template.bind({})
 
 MobileUI.parameters = {
+  storyshots: { disable: true },
   viewport: {
     defaultViewport: 'mobile',
     viewports: VIEWPORT_MAP,
@@ -188,6 +189,7 @@ MobileUI.parameters = {
 export const TabletUI = Template.bind({})
 
 TabletUI.parameters = {
+  storyshots: { disable: true },
   viewport: {
     defaultViewport: 'tablet',
     viewports: VIEWPORT_MAP,
@@ -197,6 +199,7 @@ TabletUI.parameters = {
 export const DesktopUI = Template.bind({})
 
 DesktopUI.parameters = {
+  storyshots: { disable: true },
   viewport: {
     defaultViewport: 'desktop',
     viewports: VIEWPORT_MAP,

@@ -24,10 +24,12 @@
 
  */
 
-import {
+import type {
   FilterASTNode,
   FilterExpressionType,
   FilterModel,
+} from '@looker/filter-expressions'
+import {
   sanitizeString,
   sanitizeNumber,
   sanitizeDate,

@@ -28,7 +28,7 @@ import type { DensityRamp } from '@looker/design-tokens'
 import type { Story } from '@storybook/react/types-6-0'
 import { DateRange } from '@styled-icons/material-outlined'
 import { SubdirectoryArrowLeft } from '@styled-icons/material'
-import type { Page } from 'puppeteer'
+// import type { Page } from 'puppeteer'
 import type { FC } from 'react'
 import React, { useState } from 'react'
 import { Flex, Grid, Space } from '../Layout'
@@ -70,12 +70,13 @@ Focused.args = {
 }
 
 Focused.parameters = {
-  beforeScreenshot: async (page: Page) => {
-    const button = await page.$('button')
-    await button?.type(' ')
-    await page.waitForTimeout(50)
-  },
+  // beforeScreenshot: async (page: Page) => {
+  //   const button = await page.$('button')
+  //   await button?.type(' ')
+  //   await page.waitForTimeout(50)
+  // },
   docs: { disable: true },
+  storyshots: { disable: true },
 }
 
 export const FontFamily = Template.bind({})

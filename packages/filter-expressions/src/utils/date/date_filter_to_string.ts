@@ -102,12 +102,15 @@ const pastToString = (item: FilterModel) =>
     item.complete ? ' ago for ' + intervalToString(item) : ''
   }`
 
+const pastAgoToString = (item: FilterModel) => `${intervalToString(item)} ago`
+
 const notNullToString = () => `not null`
 
 const filterToStringMap: DateFilterItemToStringMapType = {
   null: nullItemToString,
   notnull: notNullToString,
   past: pastToString,
+  pastAgo: pastAgoToString,
   this: typeAndUnitToString,
   next: typeAndUnitToString,
   last: typeAndUnitToString,

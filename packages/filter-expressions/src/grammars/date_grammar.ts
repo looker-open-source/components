@@ -50,6 +50,7 @@ TERM = term:(USER_ATTRIBUTE /
        DATES /
        RELATIVE_RANGE /
        FROM_NOW /
+       PAST_AGO /
        PAST /
        THIS_RANGE / 
        THIS_NEXT_LAST /
@@ -76,20 +77,24 @@ THIS_RANGE = "THIS "i startInterval:INTERVAL_UNIT " TO "i endInterval:INTERVAL_U
     }
 }
 
-PAST = interval:N_INTERVAL _ ("AGO"i)? {
+PAST = interval:N_INTERVAL {
 	return {type:'past', value:interval.value, unit:interval.unit}
 }
 
-LAST_INTERVAL = "last"i _ interval:N_INTERVAL _ ("AGO"i)? {
+PAST_AGO = interval:N_INTERVAL SPACE "AGO"i {
+	return {type:'pastAgo', value:interval.value, unit:interval.unit}
+}
+
+LAST_INTERVAL = "last"i _ interval:N_INTERVAL {
 	return {type:'lastInterval', value:interval.value, unit:interval.unit}
 }
 
 FROM_NOW = interval:N_INTERVAL SPACE "FROM NOW"i {
-	return {type:'fromnow', value:interval.value, unit:interval.unit}
+	return {type:'from now', value:interval.value, unit:interval.unit}
 }
 
 INTERVAL_TYPE = SPACE dir:("AGO"i/"FROM NOW"i) {
-	return dir.toLowerCase() === "ago" ? "ago" : "fromnow"
+	return dir.toLowerCase() === "ago" ? "ago" : "from now"
 }
 
 RELATIVE_RANGE = startInterval:N_INTERVAL intervalType:INTERVAL_TYPE SPACE "for"i SPACE endInterval:N_INTERVAL  {
@@ -112,7 +117,7 @@ BEFORE_AFTER = prefix:(BEFORE / AFTER) SPACE interval:N_INTERVAL intervalType:IN
         value: interval.value,
         unit: interval.unit,
         type: prefix,
-        fromnow: intervalType === 'fromnow'
+        fromnow: intervalType === 'from now'
     }
 } / prefix:(BEFORE / AFTER) SPACE date:DATETIME {
     return { range: 'absolute', date: date, type: prefix}

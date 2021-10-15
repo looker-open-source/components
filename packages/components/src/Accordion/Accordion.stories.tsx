@@ -25,7 +25,7 @@
  */
 
 import type { Story } from '@storybook/react/types-6-0'
-import type { Page } from 'puppeteer'
+// import type { Page } from 'puppeteer'
 import type { FC, ReactNode } from 'react'
 import React, { useState } from 'react'
 import styled from 'styled-components'
@@ -72,12 +72,13 @@ Focused.args = {
 }
 
 Focused.parameters = {
-  beforeScreenshot: async (page: Page) => {
-    const disclosure = await page.$('[role="button"]')
-    await disclosure?.type(' ')
-    await page.waitForTimeout(50)
-  },
+  // beforeScreenshot: async (page: Page) => {
+  //   const disclosure = await page.$('[role="button"]')
+  //   await disclosure?.type(' ')
+  //   await page.waitForTimeout(50)
+  // },
   docs: { disable: true },
+  storyshots: { disable: true },
 }
 
 export const Left = () => (

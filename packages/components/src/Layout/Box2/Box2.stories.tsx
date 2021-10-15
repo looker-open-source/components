@@ -73,6 +73,7 @@ const responsiveArgs: Box2StoryProps = {
 export const MobileLayout = Template.bind({})
 MobileLayout.args = { ...responsiveArgs }
 MobileLayout.parameters = {
+  storyshots: { disable: true },
   viewport: {
     defaultViewport: 'mobile',
     viewports: VIEWPORT_MAP,
@@ -82,6 +83,7 @@ MobileLayout.parameters = {
 export const TabletLayout = Template.bind({})
 TabletLayout.args = { ...responsiveArgs }
 TabletLayout.parameters = {
+  storyshots: { disable: true },
   viewport: {
     defaultViewport: 'tablet',
     viewports: VIEWPORT_MAP,
@@ -91,6 +93,7 @@ TabletLayout.parameters = {
 export const DesktopLayout = Template.bind({})
 DesktopLayout.args = { ...responsiveArgs }
 DesktopLayout.parameters = {
+  storyshots: { disable: true },
   viewport: {
     defaultViewport: 'desktop',
     viewports: VIEWPORT_MAP,
@@ -132,6 +135,7 @@ export const Positioning: Story<Box2StoryProps> = () => (
 )
 
 Positioning.parameters = {
+  storyshots: { disable: true },
   viewport: {
     defaultViewport: 'mobile',
     viewports: VIEWPORT_MAP,

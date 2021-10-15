@@ -25,7 +25,7 @@
  */
 
 import type { Story } from '@storybook/react/types-6-0'
-import type { Page } from 'puppeteer'
+// import type { Page } from 'puppeteer'
 import React from 'react'
 import { ChevronLeft, ExpandMore } from '@styled-icons/material-rounded'
 import { children, label } from '../__mocks__/accordion'
@@ -54,12 +54,13 @@ Focused.args = {
   ...Basic.args,
 }
 Focused.parameters = {
-  beforeScreenshot: async (page: Page) => {
-    const disclosure = await page.$('[role="button"]')
-    await disclosure?.type(' ')
-    await page.waitForTimeout(50)
-  },
+  // beforeScreenshot: async (page: Page) => {
+  //   const disclosure = await page.$('[role="button"]')
+  //   await disclosure?.type(' ')
+  //   await page.waitForTimeout(50)
+  // },
   docs: { disable: true },
+  storyshots: { disable: true },
 }
 
 export const Left = Template.bind({})

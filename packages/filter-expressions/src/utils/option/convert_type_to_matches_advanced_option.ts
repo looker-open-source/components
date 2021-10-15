@@ -27,8 +27,10 @@ import type { FilterModel } from '../../types'
 
 /*
  * converts filter types to matches (advanced)
- * dateFilter 'day' and type 'thisRange' need to be in the filter list, but we do not want it showing up
+ * dateFilter 'day', type 'thisRange', and type 'pastAgo' need to be in the filter list, but we do not want it showing up
  * in the advanced filter options therefore it should be converted to matches (advanced)
  */
 export const convertTypeToMatchesAdvancedOption = ({ type }: FilterModel) =>
-  type === 'day' || type === 'thisRange' ? 'matchesAdvanced' : type
+  type === 'day' || type === 'thisRange' || type === 'pastAgo'
+    ? 'matchesAdvanced'
+    : type

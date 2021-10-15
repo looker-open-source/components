@@ -25,7 +25,7 @@
  */
 
 import type { Story } from '@storybook/react/types-6-0'
-import type { Page } from 'puppeteer'
+// import type { Page } from 'puppeteer'er'
 import React, { useState } from 'react'
 import { InputFilters } from '../../Form/Inputs/InputFilters'
 import { filters as defaultFilters } from '../../__mocks__/filters'
@@ -169,12 +169,13 @@ Focused.args = {
 }
 
 Focused.parameters = {
-  beforeScreenshot: async (page: Page) => {
-    const table = await page.$('table')
-    await table?.type(' ')
-    await page.waitForTimeout(50)
-  },
+  // beforeScreenshot: async (page: Page) => {
+  //   const table = await page.$('table')
+  //   await table?.type(' ')
+  //   await page.waitForTimeout(50)
+  // },
   docs: { disable: true },
+  storyshots: { disable: true },
 }
 
 export const Filters = Template.bind({})

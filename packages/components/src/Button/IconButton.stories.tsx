@@ -24,7 +24,7 @@
 
  */
 
-import type { Page } from 'puppeteer'
+// import type { Page } from 'puppeteer'
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
 import { Add } from '@styled-icons/material'
@@ -154,12 +154,13 @@ ToggleColorFocused.args = {
 }
 
 ToggleColorFocused.parameters = {
-  beforeScreenshot: async (page: Page) => {
-    const button = await page.$('button')
-    await button?.focus()
-    await page.waitForTimeout(50)
-  },
+  // beforeScreenshot: async (page: Page) => {
+  //   const button = await page.$('button')
+  //   await button?.focus()
+  //   await page.waitForTimeout(50)
+  // },
   docs: { disable: true },
+  storyshots: { disable: true },
 }
 
 export const ToggleBackgroundAndShapeRound = Template.bind({})
