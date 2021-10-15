@@ -24,10 +24,11 @@
 
  */
 import React, { useState } from 'react'
-import { IAPIMethods } from '@looker/sdk-rtl'
+import type { IAPIMethods } from '@looker/sdk-rtl'
 import type { Story } from '@storybook/react/types-6-0'
 
-import { DashboardFilter, DashboardFilterProps } from './DashboardFilter'
+import type { DashboardFilterProps } from './DashboardFilter'
+import { DashboardFilter } from './DashboardFilter'
 
 const Template: Story<DashboardFilterProps> = (args) => {
   const [expression, setExpression] = useState(args.expression)

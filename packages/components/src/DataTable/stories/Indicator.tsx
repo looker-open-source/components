@@ -81,3 +81,6 @@ Indicator.args = {
   children: items,
   columns: columns,
 }
+Indicator.parameters = {
+  storyshots: { disable: true },
+}

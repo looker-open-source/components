@@ -23,7 +23,9 @@
  SOFTWARE.
 
  */
-import { inputHeight, Text, TextProps } from '@looker/components'
+
+import type { TextProps } from '@looker/components'
+import { inputHeight, Text } from '@looker/components'
 import styled from 'styled-components'
 
 export const MidInputLabel = styled(Text).attrs<TextProps>(

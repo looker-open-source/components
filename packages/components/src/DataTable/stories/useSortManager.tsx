@@ -120,3 +120,6 @@ const Template: Story = () =>
   )
 
 export const useSortManager = Template.bind({})
+useSortManager.parameters = {
+  storyshots: { disable: true },
+}

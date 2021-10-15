@@ -46,12 +46,6 @@ Basic.args = {
   expression: '',
 }
 
-export const Location = Template.bind({})
-Location.args = {
-  expressionType: 'location',
-  expression: '36.9741, 122.0308',
-}
-
 export const MultiCondition = Template.bind({})
 MultiCondition.args = {
   ...Basic.args,

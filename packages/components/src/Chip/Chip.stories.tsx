@@ -25,7 +25,7 @@
  */
 
 import type { Story } from '@storybook/react/types-6-0'
-import type { Page } from 'puppeteer'
+// import type { Page } from 'puppeteer'
 import React, { useState } from 'react'
 import { Space } from '../Layout'
 import { defaultArgTypes as argTypes } from '../../../../apps/storybook/src/defaultArgTypes'
@@ -53,12 +53,13 @@ Focused.args = {
 }
 
 Focused.parameters = {
-  beforeScreenshot: async (page: Page) => {
-    const chip = await page.$('span')
-    await chip?.type(' ')
-    await page.waitForTimeout(50)
-  },
+  // beforeScreenshot: async (page: Page) => {
+  //   const chip = await page.$('span')
+  //   await chip?.type(' ')
+  //   await page.waitForTimeout(50)
+  // },
   docs: { disable: true },
+  storyshots: { disable: true },
 }
 
 export const Disabled = Template.bind({})

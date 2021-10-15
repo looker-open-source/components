@@ -26,7 +26,7 @@
 
 import React from 'react'
 import { Folder } from '@styled-icons/material'
-import type { Page } from 'puppeteer'
+// import type { Page } from 'puppeteer'
 import type { Story } from '@storybook/react/types-6-0'
 import { NavList } from '../NavList'
 import { defaultArgTypes as argTypes } from '../../../../apps/storybook/src/defaultArgTypes'
@@ -93,12 +93,13 @@ const FocusTemplate: Story<NavTreeProps> = ({ label = 'Cheeses', ...args }) => (
 export const FocusedBasic = FocusTemplate.bind({})
 FocusedBasic.args = {}
 FocusedBasic.parameters = {
-  beforeScreenshot: async (page: Page) => {
-    const disclosure = await page.$('[role="treeitem"]')
-    await disclosure?.type(' ')
-    await page.waitForTimeout(50)
-  },
+  // beforeScreenshot: async (page: Page) => {
+  //   const disclosure = await page.$('[role="treeitem"]')
+  //   await disclosure?.type(' ')
+  //   await page.waitForTimeout(50)
+  // },
   docs: { disable: true },
+  storyshots: { disable: true },
 }
 
 export const FocusedLink = FocusTemplate.bind({})
@@ -107,10 +108,11 @@ FocusedLink.args = {
   indicatorLabel: 'Cheeses Indicator',
 }
 FocusedLink.parameters = {
-  beforeScreenshot: async (page: Page) => {
-    const disclosure = await page.$('[role="treeitem"]')
-    await disclosure?.type(' ')
-    await page.waitForTimeout(50)
-  },
+  // beforeScreenshot: async (page: Page) => {
+  //   const disclosure = await page.$('[role="treeitem"]')
+  //   await disclosure?.type(' ')
+  //   await page.waitForTimeout(50)
+  // },
   docs: { disable: true },
+  storyshots: { disable: true },
 }

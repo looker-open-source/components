@@ -35,6 +35,7 @@ export default {
       'is from {{dateTimeStart}} until {{dateTimeEnd}}',
     'is in month year': 'is in {{month}} {{year}}',
     'is in the last': 'is in the last {{describeInterval}}',
+    'is interval ago': 'is {{interval}} ago',
     'is in the year year': 'is in the year {{year}}',
     'is intervalStart intervalType for intervalEnd':
       'is {{intervalStart}} {{intervalType}} for {{intervalEnd}}',

@@ -29,7 +29,8 @@ import type { GrammarTestItem } from './grammar_test_utils'
 export const dateExpressionTestItems: GrammarTestItem = [
   { expression: 'this day', output: 'this day', describe: 'is this day' },
   { expression: '3 days', output: '3 day', describe: 'is in the last 3 days' },
-  { expression: '3 days ago', output: '3 day', describe: 'is in the last 3 days' },
+  { expression: '3 days ago', output: '3 day ago', describe: 'is 3 days ago' },
+  { expression: '7 years ago', output: '7 year ago', describe: 'is 7 years ago' },
   { expression: '3 months ago for 2 days', output: '3 month ago for 2 day', describe: 'is 3 months ago for 2 days' },
   { expression: 'before 3 days ago', output: 'before 3 day ago', describe: 'is before 3 days ago' },
   { expression: 'before 2018-01-01 12:00:00', output: 'before 2018/01/01', describe: 'is before 2018/01/01' },

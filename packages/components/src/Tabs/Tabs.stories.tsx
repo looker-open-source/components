@@ -24,7 +24,7 @@
 
  */
 
-import type { Page } from 'puppeteer'
+// import type { Page } from 'puppeteer'
 import type { FC } from 'react'
 import React, { useState } from 'react'
 import type { Story } from '@storybook/react/types-6-0'
@@ -86,12 +86,13 @@ Focused.args = {
 }
 
 Focused.parameters = {
-  beforeScreenshot: async (page: Page) => {
-    const tabs = await page.$('[role="tablist"]')
-    await tabs?.type(' ')
-    await page.waitForTimeout(50)
-  },
+  // beforeScreenshot: async (page: Page) => {
+  //   const tabs = await page.$('[role="tablist"]')
+  //   await tabs?.type(' ')
+  //   await page.waitForTimeout(50)
+  // },
   docs: { disable: true },
+  storyshots: { disable: true },
 }
 
 export const Controlled: FC = () => {

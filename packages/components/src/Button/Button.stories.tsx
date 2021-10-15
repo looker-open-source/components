@@ -25,7 +25,7 @@
  */
 
 import { AddCircle, Delete } from '@styled-icons/material'
-import type { Page } from 'puppeteer'
+// import type { Page } from 'puppeteer'
 import React from 'react'
 import type { Story } from '@storybook/react/types-6-0'
 import { defaultArgTypes as argTypes } from '../../../../apps/storybook/src/defaultArgTypes'
@@ -45,14 +45,15 @@ Focused.args = {
   margin: 'small',
 }
 
-const beforeScreenshot = async (page: Page) => {
-  const button = await page.$('button')
-  await button?.type(' ')
-  await page.waitForTimeout(50)
-}
+// const beforeScreenshot = async (page: Page) => {
+//   const button = await page.$('button')
+//   await button?.type(' ')
+//   await page.waitForTimeout(50)
+// }
 Focused.parameters = {
-  beforeScreenshot,
+  // beforeScreenshot,
   docs: { disable: true },
+  storyshots: { disable: true },
 }
 
 export const Critical = Template.bind({})
@@ -68,7 +69,8 @@ CriticalFocused.args = {
 }
 
 CriticalFocused.parameters = {
-  beforeScreenshot,
+  // beforeScreenshot,
+  storyshots: { disable: true },
 }
 
 export const Neutral = Template.bind({})
@@ -84,7 +86,8 @@ NeutralFocused.args = {
 }
 
 NeutralFocused.parameters = {
-  beforeScreenshot,
+  // beforeScreenshot,
+  storyshots: { disable: true },
 }
 
 export const Disabled = Template.bind({})

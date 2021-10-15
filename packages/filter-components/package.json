@@ -24,6 +24,7 @@
     "@looker/components": "*",
     "@looker/components-test-utils": "^1.5.8",
     "@looker/eslint-config": "^1.5.1",
+    "@looker/eslint-config-oss": "*",
     "@looker/stylelint-config": "^1.5.2",
     "@testing-library/react": "*",
     "@typescript-eslint/eslint-plugin": "*",

@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 2.8.5-pre
+
+## `@looker/filter-components` 0.10.5
+
+### Bug Fixes
+
+* Date summary add space in fromnow
+* Stop matching on "X {unit} ago"
+
 # 2.8.3
 
 ## `@looker/design-tokens` 2.7.3

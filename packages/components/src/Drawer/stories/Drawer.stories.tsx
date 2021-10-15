@@ -26,7 +26,7 @@
 
 import React from 'react'
 import type { Story } from '@storybook/react/types-6-0'
-import type { Page } from 'puppeteer'
+// import type { Page } from 'puppeteer'
 import { defaultArgTypes } from '../../../../../apps/storybook/src/defaultArgTypes'
 import { DialogLongContent } from '../../__mocks__/DialogLongContent'
 import { dialogSizes } from '../../Dialog/dialogWidth'
@@ -49,18 +49,19 @@ Basic.parameters = {
   storyshots: { disable: true },
 }
 
-const beforeScreenshot = async (page: Page) => {
-  // Delay fixes threshold issue with focus ring
-  await page.waitForTimeout(50)
-}
+// const beforeScreenshot = async (page: Page) => {
+//   // Delay fixes threshold issue with focus ring
+//   await page.waitForTimeout(50)
+// }
 
 export const Open = Template.bind({})
 Open.args = {
   defaultOpen: true,
 }
 Open.parameters = {
-  beforeScreenshot,
+  // beforeScreenshot,
   docs: { disable: true },
+  storyshots: { disable: true },
 }
 
 export const PlacementLeft = Template.bind({})
@@ -69,8 +70,9 @@ PlacementLeft.args = {
   placement: 'left',
 }
 PlacementLeft.parameters = {
-  beforeScreenshot,
+  // beforeScreenshot,
   docs: { disable: true },
+  storyshots: { disable: true },
 }
 
 export const Width = Template.bind({})
@@ -79,8 +81,9 @@ Width.args = {
   width: '50rem',
 }
 Width.parameters = {
-  beforeScreenshot,
+  // beforeScreenshot,
   docs: { disable: true },
+  storyshots: { disable: true },
 }
 
 export const AnimationCallbacks = Template.bind({})

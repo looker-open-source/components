@@ -68,6 +68,9 @@ ResponsiveMinimal.args = {
   children: items,
   columns: hideAllColumns,
 }
+ResponsiveMinimal.parameters = {
+  storyshots: { disable: true },
+}
 
 export const ResponsiveOverflow = Template.bind({})
 ResponsiveOverflow.args = {

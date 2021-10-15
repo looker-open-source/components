@@ -84,6 +84,15 @@ const past = (item: FilterModel) => {
     describeInterval: describeInterval(item),
   })
 }
+
+const describePastAgo = (item: FilterModel) => {
+  const t = i18next.t.bind(i18next)
+  return t('is interval ago', {
+    ns: 'describe_date',
+    interval: describeInterval(item),
+  })
+}
+
 const describeTypeAndUnit = ({ type, unit }: FilterModel) => {
   const t = i18next.t.bind(i18next)
   return t('is type unitLabel', {
@@ -216,6 +225,7 @@ const describeDay = ({ day }: FilterModel) => {
 const filterToStringMap: DateFilterItemToStringMapType = {
   null: describeNull,
   notnull: describeNotNull,
+  pastAgo: describePastAgo,
   past,
   this: describeTypeAndUnit,
   next: describeTypeAndUnit,

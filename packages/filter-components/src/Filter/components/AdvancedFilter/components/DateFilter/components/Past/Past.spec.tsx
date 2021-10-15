@@ -41,7 +41,7 @@ describe('Past Date filter test', () => {
   it('should render a Past component', () => {
     renderWithTheme(
       <Filter
-        expression={'3 days ago'}
+        expression={'3 days'}
         name="test"
         onChange={jest.fn()}
         field={testField}
@@ -60,7 +60,7 @@ describe('Past Date filter test', () => {
   it('should render a Past component with Fiscal unit options', () => {
     renderWithTheme(
       <Filter
-        expression={'3 days ago'}
+        expression={'3 days'}
         name="test"
         onChange={jest.fn()}
         field={{ ...testField, fiscal_month_offset: 1 }}

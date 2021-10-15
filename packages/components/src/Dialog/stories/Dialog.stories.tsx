@@ -26,7 +26,7 @@
 
 import React from 'react'
 import type { Story } from '@storybook/react/types-6-0'
-import type { Page } from 'puppeteer'
+// import type { Page } from 'puppeteer'
 import { defaultArgTypes } from '../../../../../apps/storybook/src/defaultArgTypes'
 import { DialogLongContent } from '../../__mocks__/DialogLongContent'
 import { DialogMediumContent } from '../../__mocks__/DialogMediumContent'
@@ -57,10 +57,10 @@ Basic.parameters = {
   storyshots: { disable: true },
 }
 
-const beforeScreenshot = async (page: Page) => {
-  // Delay fixes threshold issue with focus ring
-  await page.waitForTimeout(50)
-}
+// const beforeScreenshot = async (page: Page) => {
+//   // Delay fixes threshold issue with focus ring
+//   await page.waitForTimeout(50)
+// }
 
 export const Open = Template.bind({})
 Open.args = {
@@ -68,8 +68,9 @@ Open.args = {
   defaultOpen: true,
 }
 Open.parameters = {
-  beforeScreenshot,
+  // beforeScreenshot,
   docs: { disable: true },
+  storyshots: { disable: true },
 }
 
 export const AnimationCallbacks = Template.bind({})
@@ -95,8 +96,9 @@ MediumContent.args = {
   id: 'CustomDialogId',
 }
 MediumContent.parameters = {
-  beforeScreenshot,
+  // beforeScreenshot,
   docs: { disable: true },
+  storyshots: { disable: true },
 }
 
 export const Height = Template.bind({})
@@ -105,8 +107,9 @@ Height.args = {
   height: '1000rem',
 }
 Height.parameters = {
-  beforeScreenshot,
+  // beforeScreenshot,
   docs: { disable: true },
+  storyshots: { disable: true },
 }
 
 export const PlacementTop = Template.bind({})
@@ -116,8 +119,9 @@ PlacementTop.args = {
   placement: 'top',
 }
 PlacementTop.parameters = {
-  beforeScreenshot,
+  // beforeScreenshot,
   docs: { disable: true },
+  storyshots: { disable: true },
 }
 
 export const PlacementCover = Template.bind({})
@@ -127,8 +131,9 @@ PlacementCover.args = {
   placement: 'cover',
 }
 PlacementCover.parameters = {
-  beforeScreenshot,
+  // beforeScreenshot,
   docs: { disable: true },
+  storyshots: { disable: true },
 }
 
 export const LongContent = Template.bind({})
@@ -137,8 +142,9 @@ LongContent.args = {
   defaultOpen: true,
 }
 LongContent.parameters = {
-  beforeScreenshot,
+  // beforeScreenshot,
   docs: { disable: true },
+  storyshots: { disable: true },
 }
 
 export const withCheckbox = Template.bind({})

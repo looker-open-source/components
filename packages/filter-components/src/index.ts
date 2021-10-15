@@ -28,6 +28,7 @@ export * from './Filter/components/AdvancedFilter/components/StringFilter/compon
 export * from './Filter/constants'
 export * from './Filter/utils'
 export * from './Filter/components/AdvancedFilter/utils'
+export * from './Filter/components/AdvancedFilter/components/DateFilter/utils'
 export * from './Filter/types/filter_state'
 export * from './Filter/types/filter_ui_config'
 export * from './Filter/types/option'

@@ -39,6 +39,7 @@ export const dateFilterTypes = [
   'anyvalue',
   'notnull',
   'past',
+  'pastAgo',
   'this',
   'next',
   'last',
