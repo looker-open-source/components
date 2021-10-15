@@ -3,21 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# 2.8.5-pre
+# 2.8.5
 
 ## `@looker/filter-components` 0.10.5
 
 ### Bug Fixes
 
-* Date summary add space in fromnow
-* Stop matching on "X {unit} ago"
+- Date summary add space in fromnow
+- Stop matching on "X {unit} ago"
 
 # 2.8.3
 
 ## `@looker/design-tokens` 2.7.3
+
 ### Bug Fixes
 
-* Export type for SpecifiableTextColors ([#2905](https://github.com/looker-open-source/components/issues/2905)) ([23ff0c6](https://github.com/looker-open-source/components/commit/23ff0c691043404f378eaada61733e217142f1ab))
+- Export type for SpecifiableTextColors ([#2905](https://github.com/looker-open-source/components/issues/2905)) ([23ff0c6](https://github.com/looker-open-source/components/commit/23ff0c691043404f378eaada61733e217142f1ab))
 
 # 2.8.2
 
@@ -25,8 +26,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **MultiFunctionButton:** fix width bug, update test and story ([#2888](https://github.com/looker-open-source/components/issues/2888)) ([919595f](https://github.com/looker-open-source/components/commit/919595f988681ed6fa083782f4f852bb27ebde13))
-
+- **MultiFunctionButton:** fix width bug, update test and story ([#2888](https://github.com/looker-open-source/components/issues/2888)) ([919595f](https://github.com/looker-open-source/components/commit/919595f988681ed6fa083782f4f852bb27ebde13))
 
 # 2.8.1
 
@@ -34,16 +34,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* Restore deep-imports for [@styled-icons](https://github.com/styled-icons) imports (only in built artifacts) ([#2901](https://github.com/looker-open-source/components/issues/2901)) ([9ef563c](https://github.com/looker-open-source/components/commit/9ef563cafed5b594fb2cbad58660bb0f999ec192))
-
+- Restore deep-imports for [@styled-icons](https://github.com/styled-icons) imports (only in built artifacts) ([#2901](https://github.com/looker-open-source/components/issues/2901)) ([9ef563c](https://github.com/looker-open-source/components/commit/9ef563cafed5b594fb2cbad58660bb0f999ec192))
 
 ## `@looker/components-date` 2.4.1
 
 ### Bug Fixes
 
-* Restore deep-imports for [@styled-icons](https://github.com/styled-icons) imports (only in built artifacts) ([#2901](https://github.com/looker-open-source/components/issues/2901)) ([9ef563c](https://github.com/looker-open-source/components/commit/9ef563cafed5b594fb2cbad58660bb0f999ec192))
-
-
+- Restore deep-imports for [@styled-icons](https://github.com/styled-icons) imports (only in built artifacts) ([#2901](https://github.com/looker-open-source/components/issues/2901)) ([9ef563c](https://github.com/looker-open-source/components/commit/9ef563cafed5b594fb2cbad58660bb0f999ec192))
 
 # 2.8.0
 
@@ -51,31 +48,30 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **Dialog:** Animation delay on open ([#2878](https://github.com/looker-open-source/components/issues/2878)) ([533275b](https://github.com/looker-open-source/components/commit/533275bdd98d83f86291010d2e5674d126a59f07))
-* **FieldInline:** Improve accessibility via composition improvements ([#2849](https://github.com/looker-open-source/components/issues/2849)) ([84ea64b](https://github.com/looker-open-source/components/commit/84ea64bab2c5bfd5eace92552d88ae0b76a995d7))
-* **Menu:** Error when nesting 3 levels deep ([#2885](https://github.com/looker-open-source/components/issues/2885)) ([a859b89](https://github.com/looker-open-source/components/commit/a859b8957443223fa6f13e3dec1bc29f611e63fd))
-* **Menu:** Nested menu parent item background and click ([#2879](https://github.com/looker-open-source/components/issues/2879)) ([b2edcf2](https://github.com/looker-open-source/components/commit/b2edcf2d927173fefa282b51c030511273f08107))
-* **Popover:** preventDefault on closing click ([#2870](https://github.com/looker-open-source/components/issues/2870)) ([e757c2d](https://github.com/looker-open-source/components/commit/e757c2dce901d86b610279efa9dc9f3541d33b39))
-
+- **Dialog:** Animation delay on open ([#2878](https://github.com/looker-open-source/components/issues/2878)) ([533275b](https://github.com/looker-open-source/components/commit/533275bdd98d83f86291010d2e5674d126a59f07))
+- **FieldInline:** Improve accessibility via composition improvements ([#2849](https://github.com/looker-open-source/components/issues/2849)) ([84ea64b](https://github.com/looker-open-source/components/commit/84ea64bab2c5bfd5eace92552d88ae0b76a995d7))
+- **Menu:** Error when nesting 3 levels deep ([#2885](https://github.com/looker-open-source/components/issues/2885)) ([a859b89](https://github.com/looker-open-source/components/commit/a859b8957443223fa6f13e3dec1bc29f611e63fd))
+- **Menu:** Nested menu parent item background and click ([#2879](https://github.com/looker-open-source/components/issues/2879)) ([b2edcf2](https://github.com/looker-open-source/components/commit/b2edcf2d927173fefa282b51c030511273f08107))
+- **Popover:** preventDefault on closing click ([#2870](https://github.com/looker-open-source/components/issues/2870)) ([e757c2d](https://github.com/looker-open-source/components/commit/e757c2dce901d86b610279efa9dc9f3541d33b39))
 
 ### Features
 
-* **Dialog:** add methods onAfterClose and OnAfterOpen ([#2842](https://github.com/looker-open-source/components/issues/2842)) ([1cb63ff](https://github.com/looker-open-source/components/commit/1cb63ffd9eade374eb4d80424ae1e4b50263b9d6))
-* **FieldSelect, FieldChips, FieldTime, FieldTimeSelect:** Google Material label style ([#2868](https://github.com/looker-open-source/components/issues/2868)) ([80435a1](https://github.com/looker-open-source/components/commit/80435a1c16c6d26466624850e2d853526ad40269))
-* **FieldSelectMulti:** Google Material label style ([#2869](https://github.com/looker-open-source/components/issues/2869)) ([22be821](https://github.com/looker-open-source/components/commit/22be82127606cefd6c03fa35be22cb937f1eb2ff))
-* **FieldText:** Google Material label style ([#2852](https://github.com/looker-open-source/components/issues/2852)) ([61d5e62](https://github.com/looker-open-source/components/commit/61d5e62da210b0a0d8c4bcdc1076676b07aef7e7))
-* **FieldTextArea:** Google Material label style ([#2833](https://github.com/looker-open-source/components/issues/2833)) ([96a8eb5](https://github.com/looker-open-source/components/commit/96a8eb5b8e8f68ec65ad25df2bb38bbd6a2bcfed))
+- **Dialog:** add methods onAfterClose and OnAfterOpen ([#2842](https://github.com/looker-open-source/components/issues/2842)) ([1cb63ff](https://github.com/looker-open-source/components/commit/1cb63ffd9eade374eb4d80424ae1e4b50263b9d6))
+- **FieldSelect, FieldChips, FieldTime, FieldTimeSelect:** Google Material label style ([#2868](https://github.com/looker-open-source/components/issues/2868)) ([80435a1](https://github.com/looker-open-source/components/commit/80435a1c16c6d26466624850e2d853526ad40269))
+- **FieldSelectMulti:** Google Material label style ([#2869](https://github.com/looker-open-source/components/issues/2869)) ([22be821](https://github.com/looker-open-source/components/commit/22be82127606cefd6c03fa35be22cb937f1eb2ff))
+- **FieldText:** Google Material label style ([#2852](https://github.com/looker-open-source/components/issues/2852)) ([61d5e62](https://github.com/looker-open-source/components/commit/61d5e62da210b0a0d8c4bcdc1076676b07aef7e7))
+- **FieldTextArea:** Google Material label style ([#2833](https://github.com/looker-open-source/components/issues/2833)) ([96a8eb5](https://github.com/looker-open-source/components/commit/96a8eb5b8e8f68ec65ad25df2bb38bbd6a2bcfed))
 
 ## `@looker/components-date` (2.4.0)
 
 ### Features
 
-* **Date Components:** Accept date-fns locale object ([#2848](https://github.com/looker-open-source/components/issues/2848)) ([8552024](https://github.com/looker-open-source/components/commit/85520246d130b296aaf36af22459b7833c314396))
-* **FieldDate:** add label animation to component ([#2877](https://github.com/looker-open-source/components/issues/2877)) ([a5f2b4d](https://github.com/looker-open-source/components/commit/a5f2b4df300113114d8d32136b84273712eabbfa))
-* **FieldDateRange:** add label animation to component ([#2873](https://github.com/looker-open-source/components/issues/2873)) ([c94b23f](https://github.com/looker-open-source/components/commit/c94b23f268532fc13816f0ca49c8d49c2a310980))
-* **FieldSelect, FieldChips, FieldTime, FieldTimeSelect:** Google Material label style ([#2868](https://github.com/looker-open-source/components/issues/2868)) ([80435a1](https://github.com/looker-open-source/components/commit/80435a1c16c6d26466624850e2d853526ad40269))
-* **FieldTextArea:** Google Material label style ([#2833](https://github.com/looker-open-source/components/issues/2833)) ([96a8eb5](https://github.com/looker-open-source/components/commit/96a8eb5b8e8f68ec65ad25df2bb38bbd6a2bcfed))
-* **FieldTime:** Floating label position with partial value ([#2880](https://github.com/looker-open-source/components/issues/2880)) ([dae077b](https://github.com/looker-open-source/components/commit/dae077b479193147d3c26896e114ca51402ed08a))
+- **Date Components:** Accept date-fns locale object ([#2848](https://github.com/looker-open-source/components/issues/2848)) ([8552024](https://github.com/looker-open-source/components/commit/85520246d130b296aaf36af22459b7833c314396))
+- **FieldDate:** add label animation to component ([#2877](https://github.com/looker-open-source/components/issues/2877)) ([a5f2b4d](https://github.com/looker-open-source/components/commit/a5f2b4df300113114d8d32136b84273712eabbfa))
+- **FieldDateRange:** add label animation to component ([#2873](https://github.com/looker-open-source/components/issues/2873)) ([c94b23f](https://github.com/looker-open-source/components/commit/c94b23f268532fc13816f0ca49c8d49c2a310980))
+- **FieldSelect, FieldChips, FieldTime, FieldTimeSelect:** Google Material label style ([#2868](https://github.com/looker-open-source/components/issues/2868)) ([80435a1](https://github.com/looker-open-source/components/commit/80435a1c16c6d26466624850e2d853526ad40269))
+- **FieldTextArea:** Google Material label style ([#2833](https://github.com/looker-open-source/components/issues/2833)) ([96a8eb5](https://github.com/looker-open-source/components/commit/96a8eb5b8e8f68ec65ad25df2bb38bbd6a2bcfed))
+- **FieldTime:** Floating label position with partial value ([#2880](https://github.com/looker-open-source/components/issues/2880)) ([dae077b](https://github.com/looker-open-source/components/commit/dae077b479193147d3c26896e114ca51402ed08a))
 
 # 2.7.0
 
@@ -83,13 +79,11 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **InputColor:** Disabled swatch vs input style mismatch ([#2847](https://github.com/looker-open-source/components/issues/2847)) ([87443fb](https://github.com/looker-open-source/components/commit/87443fbfd61d68f48fd7d1bc8130e3608f4cf93f))
-
+- **InputColor:** Disabled swatch vs input style mismatch ([#2847](https://github.com/looker-open-source/components/issues/2847)) ([87443fb](https://github.com/looker-open-source/components/commit/87443fbfd61d68f48fd7d1bc8130e3608f4cf93f))
 
 ### Features
 
-* Consistent border on ButtonToggle, ButtonGroup, Chip, ChipButton, & InputFilters ([#2836](https://github.com/looker-open-source/components/issues/2836)) ([3c20c0a](https://github.com/looker-open-source/components/commit/3c20c0a01bebef7553ff214b9e90b14b33b0a74d))
-
+- Consistent border on ButtonToggle, ButtonGroup, Chip, ChipButton, & InputFilters ([#2836](https://github.com/looker-open-source/components/issues/2836)) ([3c20c0a](https://github.com/looker-open-source/components/commit/3c20c0a01bebef7553ff214b9e90b14b33b0a74d))
 
 # 2.6.0
 
@@ -97,79 +91,71 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **IconButton:** Remove useLayoutEffect to avoid SSR warning ([#2831](https://github.com/looker-open-source/components/issues/2831)) ([b647328](https://github.com/looker-open-source/components/commit/b6473285bb98ea85adf019e3808e6d0a47c3f677))
-* **InputText:** Darken disabled opacity ([#2835](https://github.com/looker-open-source/components/issues/2835)) ([ca841c2](https://github.com/looker-open-source/components/commit/ca841c240db214b3a4fb17eb18b157704c0653ef))
-* **LkFieldGroupTree:** Import path issue for CodeSandbox ([#2837](https://github.com/looker-open-source/components/issues/2837)) ([214d023](https://github.com/looker-open-source/components/commit/214d0232febb3f8e44ad144722ae13b1fbaa0673))
+- **IconButton:** Remove useLayoutEffect to avoid SSR warning ([#2831](https://github.com/looker-open-source/components/issues/2831)) ([b647328](https://github.com/looker-open-source/components/commit/b6473285bb98ea85adf019e3808e6d0a47c3f677))
+- **InputText:** Darken disabled opacity ([#2835](https://github.com/looker-open-source/components/issues/2835)) ([ca841c2](https://github.com/looker-open-source/components/commit/ca841c240db214b3a4fb17eb18b157704c0653ef))
+- **LkFieldGroupTree:** Import path issue for CodeSandbox ([#2837](https://github.com/looker-open-source/components/issues/2837)) ([214d023](https://github.com/looker-open-source/components/commit/214d0232febb3f8e44ad144722ae13b1fbaa0673))
 
 ### Features
 
-* **Link:** Optionally disabled automatic `rel` additions via `dangerouslyDisableRel` prop ([#2843](https://github.com/looker-open-source/components/issues/2843)) ([7ee8287](https://github.com/looker-open-source/components/commit/7ee8287839da0a76d613fdb2bf2d0c465e6f0ebd))
-
+- **Link:** Optionally disabled automatic `rel` additions via `dangerouslyDisableRel` prop ([#2843](https://github.com/looker-open-source/components/issues/2843)) ([7ee8287](https://github.com/looker-open-source/components/commit/7ee8287839da0a76d613fdb2bf2d0c465e6f0ebd))
 
 ## `@looker/design-tokens`
 
 ### Features
 
-* Support specification of `brandAnimation` and `density` via `themeCustomizations` ([#2845](https://github.com/looker-open-source/components/issues/2845)) ([cd744ae](https://github.com/looker-open-source/components/commit/cd744aea2eb073f86d22e00cc64855f030c68d97))
+- Support specification of `brandAnimation` and `density` via `themeCustomizations` ([#2845](https://github.com/looker-open-source/components/issues/2845)) ([cd744ae](https://github.com/looker-open-source/components/commit/cd744aea2eb073f86d22e00cc64855f030c68d97))
 
 ## `@looker/eslint-config-oss`
 
-* Deprecate prettier package, simplify ESLint config ([#2834](https://github.com/looker-open-source/components/issues/2834)) ([7b06de8](https://github.com/looker-open-source/components/commit/7b06de8ee80cd56f7b3b17a2e28fcf411abfb710))
-
-
+- Deprecate prettier package, simplify ESLint config ([#2834](https://github.com/looker-open-source/components/issues/2834)) ([7b06de8](https://github.com/looker-open-source/components/commit/7b06de8ee80cd56f7b3b17a2e28fcf411abfb710))
 
 # 2.5.0
 
 ## `@looker/components`
 
-
 ### Bug Fixes
 
-* **Code:** `Code` component should not have a default fontSize, instead inherit via CSS cascade like `Span` ([#2815](https://github.com/looker-open-source/components/issues/2815)) ([52de975](https://github.com/looker-open-source/components/commit/52de9750ea30cc653dae1182eeec5cd1f245b895))
-* **Text inputs:** Lighter border-color ([#2823](https://github.com/looker-open-source/components/issues/2823)) ([c1d6815](https://github.com/looker-open-source/components/commit/c1d6815ec4bbad87019d396744eaf8746082c327))
+- **Code:** `Code` component should not have a default fontSize, instead inherit via CSS cascade like `Span` ([#2815](https://github.com/looker-open-source/components/issues/2815)) ([52de975](https://github.com/looker-open-source/components/commit/52de9750ea30cc653dae1182eeec5cd1f245b895))
+- **Text inputs:** Lighter border-color ([#2823](https://github.com/looker-open-source/components/issues/2823)) ([c1d6815](https://github.com/looker-open-source/components/commit/c1d6815ec4bbad87019d396744eaf8746082c327))
 
 ### Features
 
-* **Checkbox & Radio:** Google Material styling updates ([#2805](https://github.com/looker-open-source/components/issues/2805)) ([37b1f5e](https://github.com/looker-open-source/components/commit/37b1f5ee438b32e4078fe66a2ffe044a44d645bf))
-* **Text inputs:** Google Material style updates ([#2796](https://github.com/looker-open-source/components/issues/2796)) ([81d829d](https://github.com/looker-open-source/components/commit/81d829d7314a0e50a8457cb03edc8ad5239eda3c))
-* **theme:** Add support for specifiable theme.colors.pageBackground ([#2814](https://github.com/looker-open-source/components/issues/2814)) ([bdcacfb](https://github.com/looker-open-source/components/commit/bdcacfb32a6d4c55ed35a899e71148744834c9d0))
-* **ToggleSwitch:** Google Material style updates ([#2822](https://github.com/looker-open-source/components/issues/2822)) ([e2fcd6d](https://github.com/looker-open-source/components/commit/e2fcd6d63231c30bca81297e81e22853ee98c1d8))
+- **Checkbox & Radio:** Google Material styling updates ([#2805](https://github.com/looker-open-source/components/issues/2805)) ([37b1f5e](https://github.com/looker-open-source/components/commit/37b1f5ee438b32e4078fe66a2ffe044a44d645bf))
+- **Text inputs:** Google Material style updates ([#2796](https://github.com/looker-open-source/components/issues/2796)) ([81d829d](https://github.com/looker-open-source/components/commit/81d829d7314a0e50a8457cb03edc8ad5239eda3c))
+- **theme:** Add support for specifiable theme.colors.pageBackground ([#2814](https://github.com/looker-open-source/components/issues/2814)) ([bdcacfb](https://github.com/looker-open-source/components/commit/bdcacfb32a6d4c55ed35a899e71148744834c9d0))
+- **ToggleSwitch:** Google Material style updates ([#2822](https://github.com/looker-open-source/components/issues/2822)) ([e2fcd6d](https://github.com/looker-open-source/components/commit/e2fcd6d63231c30bca81297e81e22853ee98c1d8))
 
 ## `@looker/components-date`
 
 ### Features
 
-* **Text inputs:** Google Material style updates ([#2796](https://github.com/looker-open-source/components/issues/2796)) ([81d829d](https://github.com/looker-open-source/components/commit/81d829d7314a0e50a8457cb03edc8ad5239eda3c))
-
+- **Text inputs:** Google Material style updates ([#2796](https://github.com/looker-open-source/components/issues/2796)) ([81d829d](https://github.com/looker-open-source/components/commit/81d829d7314a0e50a8457cb03edc8ad5239eda3c))
 
 ## `@looker/design-tokens`
 
-* **theme:** Add support for specifiable theme.colors.pageBackground ([#2814](https://github.com/looker-open-source/components/issues/2814)) ([bdcacfb](https://github.com/looker-open-source/components/commit/bdcacfb32a6d4c55ed35a899e71148744834c9d0))
-
+- **theme:** Add support for specifiable theme.colors.pageBackground ([#2814](https://github.com/looker-open-source/components/issues/2814)) ([bdcacfb](https://github.com/looker-open-source/components/commit/bdcacfb32a6d4c55ed35a899e71148744834c9d0))
 
 # 2.4.0
 
 ## All packages
 
-* NPM output no longer includes /lib ([1767d54](https://github.com/looker-open-source/components/commit/1767d54820fa18c2f08ea2b6598386ee7e686ec9))
+- NPM output no longer includes /lib ([1767d54](https://github.com/looker-open-source/components/commit/1767d54820fa18c2f08ea2b6598386ee7e686ec9))
+
 ## @looker/components
 
 ### Bug Fixes
 
-* **Checkbox:** update stories and tests ([#2800](https://github.com/looker-open-source/components/issues/2800)) ([748bc5d](https://github.com/looker-open-source/components/commit/748bc5d773f5a2df8a76a3ae14ecb9e3ae444093))
-* **FieldInline:** Truncation of long labels ([#2778](https://github.com/looker-open-source/components/issues/2778)) ([045271e](https://github.com/looker-open-source/components/commit/045271e67eaf3033ed0c791e7244966e5b23a52f))
-* **NavTree:** Various NavTree fixes ([#2784](https://github.com/looker-open-source/components/issues/2784)) ([05d88d0](https://github.com/looker-open-source/components/commit/05d88d09a013613bfcb0dc0137ea09a49d6d7968))
-* **Tab2:** `Tabs` should be output with `type="button"` to prevent accidental form submission ([#2795](https://github.com/looker-open-source/components/issues/2795)) ([a879fb7](https://github.com/looker-open-source/components/commit/a879fb7c4c6448715fece57122e404b2b0570f3e))
-* **useAccordion2:** Ignore changes to defaultOpen ([#2785](https://github.com/looker-open-source/components/issues/2785)) ([e90381b](https://github.com/looker-open-source/components/commit/e90381bdaf2b8fc876da9892cc1fc69a5b5929a7))
-
+- **Checkbox:** update stories and tests ([#2800](https://github.com/looker-open-source/components/issues/2800)) ([748bc5d](https://github.com/looker-open-source/components/commit/748bc5d773f5a2df8a76a3ae14ecb9e3ae444093))
+- **FieldInline:** Truncation of long labels ([#2778](https://github.com/looker-open-source/components/issues/2778)) ([045271e](https://github.com/looker-open-source/components/commit/045271e67eaf3033ed0c791e7244966e5b23a52f))
+- **NavTree:** Various NavTree fixes ([#2784](https://github.com/looker-open-source/components/issues/2784)) ([05d88d0](https://github.com/looker-open-source/components/commit/05d88d09a013613bfcb0dc0137ea09a49d6d7968))
+- **Tab2:** `Tabs` should be output with `type="button"` to prevent accidental form submission ([#2795](https://github.com/looker-open-source/components/issues/2795)) ([a879fb7](https://github.com/looker-open-source/components/commit/a879fb7c4c6448715fece57122e404b2b0570f3e))
+- **useAccordion2:** Ignore changes to defaultOpen ([#2785](https://github.com/looker-open-source/components/issues/2785)) ([e90381b](https://github.com/looker-open-source/components/commit/e90381bdaf2b8fc876da9892cc1fc69a5b5929a7))
 
 ### Features
 
-* **Checkbox:** add ripple effect ([#2775](https://github.com/looker-open-source/components/issues/2775)) ([45fff7f](https://github.com/looker-open-source/components/commit/45fff7fb34d79593a5c434fb56e4d27245364975))
-* **Radio:** add ripple effect ([#2776](https://github.com/looker-open-source/components/issues/2776)) ([e9fce0f](https://github.com/looker-open-source/components/commit/e9fce0f26b4d64bb5f1fbb7eb085442698d387fb))
-* NPM output no longer includes /lib & simplify Typescript monorepo configuration ([#2782](https://github.com/looker-open-source/components/issues/2782)) ([417219b](https://github.com/looker-open-source/components/commit/417219bdea141033a3d57a8188089e2ccfb675b0))
-
-
+- **Checkbox:** add ripple effect ([#2775](https://github.com/looker-open-source/components/issues/2775)) ([45fff7f](https://github.com/looker-open-source/components/commit/45fff7fb34d79593a5c434fb56e4d27245364975))
+- **Radio:** add ripple effect ([#2776](https://github.com/looker-open-source/components/issues/2776)) ([e9fce0f](https://github.com/looker-open-source/components/commit/e9fce0f26b4d64bb5f1fbb7eb085442698d387fb))
+- NPM output no longer includes /lib & simplify Typescript monorepo configuration ([#2782](https://github.com/looker-open-source/components/issues/2782)) ([417219b](https://github.com/looker-open-source/components/commit/417219bdea141033a3d57a8188089e2ccfb675b0))
 
 # 2.3.0
 
@@ -177,114 +163,107 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* **PopoverContent:** Properly absorb `p` value (also `DialogContent`) ([#2764](https://github.com/looker-open-source/components/issues/2764)) ([3b67543](https://github.com/looker-open-source/components/commit/3b67543b42ade867738a46e9448f96dd70b53284))
-
+- **PopoverContent:** Properly absorb `p` value (also `DialogContent`) ([#2764](https://github.com/looker-open-source/components/issues/2764)) ([3b67543](https://github.com/looker-open-source/components/commit/3b67543b42ade867738a46e9448f96dd70b53284))
 
 ### Features
 
-* **Box2:** A new improved box in `Box2` ([#2640](https://github.com/looker-open-source/components/issues/2640)) ([467042e](https://github.com/looker-open-source/components/commit/467042e83437416eaa92f7f2cdc707936c700da7))
-* **IconButton:** Add ripple effect ([#2721](https://github.com/looker-open-source/components/issues/2721)) ([582c37a](https://github.com/looker-open-source/components/commit/582c37a429285a07ccaa6981947e76a908d454b0))
-* **List:** Added dual axis keyboard navigation ([#2759](https://github.com/looker-open-source/components/issues/2759)) ([ba9724a](https://github.com/looker-open-source/components/commit/ba9724ae69137d6a4616159e2c64c6f2b336c3b8))
-* **LkFieldTree:** Added LkFieldViewTree and LkFieldGroupTree ([#2768](https://github.com/looker-open-source/components/issues/2768)) ([8a172e1](https://github.com/looker-open-source/components/commit/8a172e1a29ed93da4e3840b7027a93e339106e7e))
-* **LkFieldTree:** Add LkField suite of components ([#2731](https://github.com/looker-open-source/components/issues/2731)) ([c366715](https://github.com/looker-open-source/components/commit/c366715c26f7440d1bf1df82cd4d3c291dfb47d0))
-* **SelectMulti & InputChips:** Support value formatting ([#2754](https://github.com/looker-open-source/components/issues/2754)) ([e19a517](https://github.com/looker-open-source/components/commit/e19a5179440970c56975a9afe77c3d6c53111dfe))
-* **Tabs2:** Tabs with improved interface ([#2726](https://github.com/looker-open-source/components/issues/2726)) ([859c083](https://github.com/looker-open-source/components/commit/859c08331d951ddfc64f5d35d14454e10a1745e1)), closes [#42](https://github.com/looker-open-source/components/issues/42)
+- **Box2:** A new improved box in `Box2` ([#2640](https://github.com/looker-open-source/components/issues/2640)) ([467042e](https://github.com/looker-open-source/components/commit/467042e83437416eaa92f7f2cdc707936c700da7))
+- **IconButton:** Add ripple effect ([#2721](https://github.com/looker-open-source/components/issues/2721)) ([582c37a](https://github.com/looker-open-source/components/commit/582c37a429285a07ccaa6981947e76a908d454b0))
+- **List:** Added dual axis keyboard navigation ([#2759](https://github.com/looker-open-source/components/issues/2759)) ([ba9724a](https://github.com/looker-open-source/components/commit/ba9724ae69137d6a4616159e2c64c6f2b336c3b8))
+- **LkFieldTree:** Added LkFieldViewTree and LkFieldGroupTree ([#2768](https://github.com/looker-open-source/components/issues/2768)) ([8a172e1](https://github.com/looker-open-source/components/commit/8a172e1a29ed93da4e3840b7027a93e339106e7e))
+- **LkFieldTree:** Add LkField suite of components ([#2731](https://github.com/looker-open-source/components/issues/2731)) ([c366715](https://github.com/looker-open-source/components/commit/c366715c26f7440d1bf1df82cd4d3c291dfb47d0))
+- **SelectMulti & InputChips:** Support value formatting ([#2754](https://github.com/looker-open-source/components/issues/2754)) ([e19a517](https://github.com/looker-open-source/components/commit/e19a5179440970c56975a9afe77c3d6c53111dfe))
+- **Tabs2:** Tabs with improved interface ([#2726](https://github.com/looker-open-source/components/issues/2726)) ([859c083](https://github.com/looker-open-source/components/commit/859c08331d951ddfc64f5d35d14454e10a1745e1)), closes [#42](https://github.com/looker-open-source/components/issues/42)
 
 ## @looker/design-tokens
 
 ### Features
 
-* **IconButton:** Add ripple effect ([#2721](https://github.com/looker-open-source/components/issues/2721)) ([582c37a](https://github.com/looker-open-source/components/commit/582c37a429285a07ccaa6981947e76a908d454b0))
-
-
+- **IconButton:** Add ripple effect ([#2721](https://github.com/looker-open-source/components/issues/2721)) ([582c37a](https://github.com/looker-open-source/components/commit/582c37a429285a07ccaa6981947e76a908d454b0))
 
 # 2.2.0
 
 ## @looker/components
 
-
 ### Bug Fixes
 
-* **ButtonToggle:** Remove background color for focus via click ([#2715](https://github.com/looker-open-source/components/issues/2715)) ([a074edf](https://github.com/looker-open-source/components/commit/a074edf26bec883a6d8db00e78e51f0f4569d1e5))
-* **InputFilters:** Should support placeholder attribute ([#2702](https://github.com/looker-open-source/components/issues/2702)) ([10524dd](https://github.com/looker-open-source/components/commit/10524dd35c6ae65910bc196ba29330187c4811b6))
-* **Layout:** test coverege ([#2680](https://github.com/looker-open-source/components/issues/2680)) ([b1945ea](https://github.com/looker-open-source/components/commit/b1945eacc8dd59a448c4eaaf49cffa062c362f1d))
-* **NavTree:** Made sure NavTree had role="treeitem" ([#2736](https://github.com/looker-open-source/components/issues/2736)) ([e9ca121](https://github.com/looker-open-source/components/commit/e9ca121217516dd2ee1e1d4a979e112f1f19cdc8))
-* **Panel:** `disableAnimation` prop to disable Panel open/close animation ([#2654](https://github.com/looker-open-source/components/issues/2654)) ([b8b755e](https://github.com/looker-open-source/components/commit/b8b755e0c7970521976a1c0ab3785b7409936be9))
-* **Panel:** Avoid focusing elements underneath ([#2611](https://github.com/looker-open-source/components/issues/2611)) ([751e757](https://github.com/looker-open-source/components/commit/751e757d331ea2864cc684378c3e87995d13ee6c))
-* **Text:** Clarify behavior, mark as deprecated and recommend `Span` instead ([#2711](https://github.com/looker-open-source/components/issues/2711)) ([dea5903](https://github.com/looker-open-source/components/commit/dea59036683df4274eb3970a93c75461a6e5db48))
-* **Tooltip:** Reduce re-renders to improve performance ([#2697](https://github.com/looker-open-source/components/issues/2697)) ([74b861b](https://github.com/looker-open-source/components/commit/74b861bd6a90e882bf7803a78ef2e29f731dbd41))
-* **VisuallyHidden:** Position causing whitespace issue with Page ([#2714](https://github.com/looker-open-source/components/issues/2714)) ([2804b00](https://github.com/looker-open-source/components/commit/2804b00d962d8a7f8fdf8ca9e42d5823dcd40205))
-* Export a few private items to allow downstream consumers to leverage without breaking tree-shaking ([#2655](https://github.com/looker-open-source/components/issues/2655)) ([71a5168](https://github.com/looker-open-source/components/commit/71a51689f7c8afc30c961b9b382d2771ab857247))
+- **ButtonToggle:** Remove background color for focus via click ([#2715](https://github.com/looker-open-source/components/issues/2715)) ([a074edf](https://github.com/looker-open-source/components/commit/a074edf26bec883a6d8db00e78e51f0f4569d1e5))
+- **InputFilters:** Should support placeholder attribute ([#2702](https://github.com/looker-open-source/components/issues/2702)) ([10524dd](https://github.com/looker-open-source/components/commit/10524dd35c6ae65910bc196ba29330187c4811b6))
+- **Layout:** test coverege ([#2680](https://github.com/looker-open-source/components/issues/2680)) ([b1945ea](https://github.com/looker-open-source/components/commit/b1945eacc8dd59a448c4eaaf49cffa062c362f1d))
+- **NavTree:** Made sure NavTree had role="treeitem" ([#2736](https://github.com/looker-open-source/components/issues/2736)) ([e9ca121](https://github.com/looker-open-source/components/commit/e9ca121217516dd2ee1e1d4a979e112f1f19cdc8))
+- **Panel:** `disableAnimation` prop to disable Panel open/close animation ([#2654](https://github.com/looker-open-source/components/issues/2654)) ([b8b755e](https://github.com/looker-open-source/components/commit/b8b755e0c7970521976a1c0ab3785b7409936be9))
+- **Panel:** Avoid focusing elements underneath ([#2611](https://github.com/looker-open-source/components/issues/2611)) ([751e757](https://github.com/looker-open-source/components/commit/751e757d331ea2864cc684378c3e87995d13ee6c))
+- **Text:** Clarify behavior, mark as deprecated and recommend `Span` instead ([#2711](https://github.com/looker-open-source/components/issues/2711)) ([dea5903](https://github.com/looker-open-source/components/commit/dea59036683df4274eb3970a93c75461a6e5db48))
+- **Tooltip:** Reduce re-renders to improve performance ([#2697](https://github.com/looker-open-source/components/issues/2697)) ([74b861b](https://github.com/looker-open-source/components/commit/74b861bd6a90e882bf7803a78ef2e29f731dbd41))
+- **VisuallyHidden:** Position causing whitespace issue with Page ([#2714](https://github.com/looker-open-source/components/issues/2714)) ([2804b00](https://github.com/looker-open-source/components/commit/2804b00d962d8a7f8fdf8ca9e42d5823dcd40205))
+- Export a few private items to allow downstream consumers to leverage without breaking tree-shaking ([#2655](https://github.com/looker-open-source/components/issues/2655)) ([71a5168](https://github.com/looker-open-source/components/commit/71a51689f7c8afc30c961b9b382d2771ab857247))
 
 ### Features
 
-* **Density:** Add new helpers for changing density default ([#2729](https://github.com/looker-open-source/components/issues/2729)) ([98f330d](https://github.com/looker-open-source/components/commit/98f330d4709d69697988cc3e988ee3251792a508))
-* **NavTree:** Added indicator toggle only behavior ([#2676](https://github.com/looker-open-source/components/issues/2676)) ([25437ce](https://github.com/looker-open-source/components/commit/25437ce0f24dc6c8c7a70ff4786b0ce7a0eaf9d4)), closes [#2681](https://github.com/looker-open-source/components/issues/2681) [#2696](https://github.com/looker-open-source/components/issues/2696) [#2698](https://github.com/looker-open-source/components/issues/2698)
-* **NavTree:** Added left padding to indicator icon to improve click targeting ([#2712](https://github.com/looker-open-source/components/issues/2712)) ([b98ce02](https://github.com/looker-open-source/components/commit/b98ce0266d646a926f1815c08fb5de071fee8373)), closes [#2713](https://github.com/looker-open-source/components/issues/2713)
-* Ripple effect ([#2720](https://github.com/looker-open-source/components/issues/2720)) ([2e4dc3c](https://github.com/looker-open-source/components/commit/2e4dc3c85c81902a2573a023b5c85f8d5409fff1))
-* Leverage new theme.elevations instead of theme.shadows ([#2723](https://github.com/looker-open-source/components/issues/2723)) ([33eff32](https://github.com/looker-open-source/components/commit/33eff32a08892e3cc60e725a3604b500bf631672))
-* Leverage `uX` theme.space unit notation within library ([#2724](https://github.com/looker-open-source/components/issues/2724)) ([e1bcefb](https://github.com/looker-open-source/components/commit/e1bcefbc5ceb0bc7129a1a86a16f432210c0f15a))
+- **Density:** Add new helpers for changing density default ([#2729](https://github.com/looker-open-source/components/issues/2729)) ([98f330d](https://github.com/looker-open-source/components/commit/98f330d4709d69697988cc3e988ee3251792a508))
+- **NavTree:** Added indicator toggle only behavior ([#2676](https://github.com/looker-open-source/components/issues/2676)) ([25437ce](https://github.com/looker-open-source/components/commit/25437ce0f24dc6c8c7a70ff4786b0ce7a0eaf9d4)), closes [#2681](https://github.com/looker-open-source/components/issues/2681) [#2696](https://github.com/looker-open-source/components/issues/2696) [#2698](https://github.com/looker-open-source/components/issues/2698)
+- **NavTree:** Added left padding to indicator icon to improve click targeting ([#2712](https://github.com/looker-open-source/components/issues/2712)) ([b98ce02](https://github.com/looker-open-source/components/commit/b98ce0266d646a926f1815c08fb5de071fee8373)), closes [#2713](https://github.com/looker-open-source/components/issues/2713)
+- Ripple effect ([#2720](https://github.com/looker-open-source/components/issues/2720)) ([2e4dc3c](https://github.com/looker-open-source/components/commit/2e4dc3c85c81902a2573a023b5c85f8d5409fff1))
+- Leverage new theme.elevations instead of theme.shadows ([#2723](https://github.com/looker-open-source/components/issues/2723)) ([33eff32](https://github.com/looker-open-source/components/commit/33eff32a08892e3cc60e725a3604b500bf631672))
+- Leverage `uX` theme.space unit notation within library ([#2724](https://github.com/looker-open-source/components/issues/2724)) ([e1bcefb](https://github.com/looker-open-source/components/commit/e1bcefbc5ceb0bc7129a1a86a16f432210c0f15a))
 
 ## @looker/design-tokens
 
 ### Features
 
-* Ripple effect ([#2720](https://github.com/looker-open-source/components/issues/2720)) ([2e4dc3c](https://github.com/looker-open-source/components/commit/2e4dc3c85c81902a2573a023b5c85f8d5409fff1))
-* Add new elevation values ([#2716](https://github.com/looker-open-source/components/issues/2716)) ([7ee921e](https://github.com/looker-open-source/components/commit/7ee921ec520da10972224807e63374e28395d01b))
-* Leverage new theme.elevations instead of theme.shadows ([#2723](https://github.com/looker-open-source/components/issues/2723)) ([33eff32](https://github.com/looker-open-source/components/commit/33eff32a08892e3cc60e725a3604b500bf631672))
-* Leverage uX theme.space unit notation within library ([#2724](https://github.com/looker-open-source/components/issues/2724)) ([e1bcefb](https://github.com/looker-open-source/components/commit/e1bcefbc5ceb0bc7129a1a86a16f432210c0f15a))
-* Create new unit-based spacing tokens to represent new design system values ([#2661](https://github.com/looker-open-source/components/issues/2661)) ([9ae1a20](https://github.com/looker-open-source/components/commit/9ae1a20d9bd47f268a37066e8a1303dce88b3769))
-
+- Ripple effect ([#2720](https://github.com/looker-open-source/components/issues/2720)) ([2e4dc3c](https://github.com/looker-open-source/components/commit/2e4dc3c85c81902a2573a023b5c85f8d5409fff1))
+- Add new elevation values ([#2716](https://github.com/looker-open-source/components/issues/2716)) ([7ee921e](https://github.com/looker-open-source/components/commit/7ee921ec520da10972224807e63374e28395d01b))
+- Leverage new theme.elevations instead of theme.shadows ([#2723](https://github.com/looker-open-source/components/issues/2723)) ([33eff32](https://github.com/looker-open-source/components/commit/33eff32a08892e3cc60e725a3604b500bf631672))
+- Leverage uX theme.space unit notation within library ([#2724](https://github.com/looker-open-source/components/issues/2724)) ([e1bcefb](https://github.com/looker-open-source/components/commit/e1bcefbc5ceb0bc7129a1a86a16f432210c0f15a))
+- Create new unit-based spacing tokens to represent new design system values ([#2661](https://github.com/looker-open-source/components/issues/2661)) ([9ae1a20](https://github.com/looker-open-source/components/commit/9ae1a20d9bd47f268a37066e8a1303dce88b3769))
 
 # 2.1.0
 
 ## @looker/components
 
-
 ### Bug Fixes
 
-* **Tree:** Controlled isOpen ([#2652](https://github.com/looker-open-source/components/issues/2652)) ([bf32714](https://github.com/looker-open-source/components/commit/bf32714cfb47968da9eec9af489aa7030e9887fd))
-* **SemanticBorder:** Support border="none" and border="customColor" ([#2649](https://github.com/looker-open-source/components/issues/2649)) ([eb3e8ee](https://github.com/looker-open-source/components/commit/eb3e8ee78a0334a860bd28a3c9f956f2e7621d35))
-* **Tree:** Fixed Tree indent bug ([#2651](https://github.com/looker-open-source/components/issues/2651)) ([33f5e06](https://github.com/looker-open-source/components/commit/33f5e06c027729e6aa824a54f188f885c18ffb50))
-* **CardContent:** Properly absorb padding (pN) values ([#2494](https://github.com/looker-open-source/components/issues/2494)) ([148cd49](https://github.com/looker-open-source/components/commit/148cd4945be2bf4dffb91458a2f1761d6c54d6cd))
-* **DataTable:** Corrects issue where "All Selected" checkbox is checked when `selectedItems=0` and `pageItems=0` (easily triggered by loading state) ([#2606](https://github.com/looker-open-source/components/issues/2606)) ([295fd1e](https://github.com/looker-open-source/components/commit/295fd1e3610035ca04eb6f81afd82c18a3dd03d4))
-* **DataTable:** Make first column sortable again ([#2638](https://github.com/looker-open-source/components/issues/2638)) ([5c59bd6](https://github.com/looker-open-source/components/commit/5c59bd6a74302960250de761078a8698a96ad9a7))
-* **DataTable:** Stop explicitly removing scrollbar from DataTable overflow behavior ([#2627](https://github.com/looker-open-source/components/issues/2627)) ([7a5d46d](https://github.com/looker-open-source/components/commit/7a5d46df3e992e5fc0f0ce1bb6378851c496b4b8))
-* **DialogLayout:** `footerSecondary` is only valid if `footer` is also specified ([#2528](https://github.com/looker-open-source/components/issues/2528)) ([c3a0662](https://github.com/looker-open-source/components/commit/c3a06625d442836ec832def2f41b4ddef544a355))
-* **Field:** Correct tab-stop order of `Field` & `FieldInline` ([#2632](https://github.com/looker-open-source/components/issues/2632)) ([4a21be7](https://github.com/looker-open-source/components/commit/4a21be770510a166d97b0413b8eb0117faa9b9c0))
-* **FieldInline:** Adjust description line height and padding for `FieldCheckbox`, `FieldRadio`, and `FieldToggleSwitch` ([#2550](https://github.com/looker-open-source/components/issues/2550)) ([2730993](https://github.com/looker-open-source/components/commit/273099313680dbba1284aaa306e3514c71287c07))
-* **IconButton:** IconButton label should support same typing as Tooltip content ([#2631](https://github.com/looker-open-source/components/issues/2631)) ([8d33f04](https://github.com/looker-open-source/components/commit/8d33f0433f3e6a9f19bb84521f5d08bf4991a641))
-* **InputChips:** Undefined height prop should always default to 'auto' ([#2610](https://github.com/looker-open-source/components/issues/2610)) ([b16d3da](https://github.com/looker-open-source/components/commit/b16d3da8cc9721e950213455e8dc34efab2cf374))
-* **InputColor:** Incorrect coloring and positioning when hueless or saturationless color is provided ([#2595](https://github.com/looker-open-source/components/issues/2595)) ([a39882b](https://github.com/looker-open-source/components/commit/a39882b4c582f208e71de82de69e17818fe95bd3))
-* **InputSearch:** Return focus to input after clearing ([#2594](https://github.com/looker-open-source/components/issues/2594)) ([6287777](https://github.com/looker-open-source/components/commit/62877775f831996739324f60620fdee59565c6f3))
-* **Menu:** Close the parent menu after clicking a nested menu item ([#2608](https://github.com/looker-open-source/components/issues/2608)) ([32a182d](https://github.com/looker-open-source/components/commit/32a182d5873006bda1c3521d04a382a24c3f9a55))
-* **MenuItem:** SVG error when opening a nested menu ([#2607](https://github.com/looker-open-source/components/issues/2607)) ([bccfb63](https://github.com/looker-open-source/components/commit/bccfb63d14483e7312bd0ba68b1424b596a80dc3))
-* **ModalHeader:** Lint errors in test file ([#2549](https://github.com/looker-open-source/components/issues/2549)) ([8e0c10b](https://github.com/looker-open-source/components/commit/8e0c10b9b70167c824fe5f67b7e21d8ce6a2d211))
-* **Popover:** Screen reader accessibility ([#2635](https://github.com/looker-open-source/components/issues/2635)) ([423df34](https://github.com/looker-open-source/components/commit/423df34d76f1fb5dab336c1d6672250f9a3b2802))
-* **PopoverContent:** update padding ([#2530](https://github.com/looker-open-source/components/issues/2530)) ([d322ad8](https://github.com/looker-open-source/components/commit/d322ad8475fa71a7a6991f3bb88d861de7e0ccbe))
-* **PopoverHeader:**  update width for use with Popover ([#2582](https://github.com/looker-open-source/components/issues/2582)) ([2b6bb51](https://github.com/looker-open-source/components/commit/2b6bb51ba615edfd534c2cfa90d8ea7497d76ba7))
-* **RangeSlider:** Value reset due to intermediate rerender ([#2585](https://github.com/looker-open-source/components/issues/2585)) ([0146424](https://github.com/looker-open-source/components/commit/0146424bbc73c722f92f87c7a960368f52b6a16d))
-* **SelectOptions:** Fixed detail alignment ([#2589](https://github.com/looker-open-source/components/issues/2589)) ([ae11a0b](https://github.com/looker-open-source/components/commit/ae11a0bf4956f00950314a48d95ec2b2f930d915)), closes [#2590](https://github.com/looker-open-source/components/issues/2590)
-* **Tree:** Fix Tree border ([#2629](https://github.com/looker-open-source/components/issues/2629)) ([a55d514](https://github.com/looker-open-source/components/commit/a55d51468862f5520ec5676352831b7895df1812)), closes [#2630](https://github.com/looker-open-source/components/issues/2630)
-* **usePopover:** aria-haspopup updated to ([#2593](https://github.com/looker-open-source/components/issues/2593)) ([e0c0000](https://github.com/looker-open-source/components/commit/e0c00001a82e7cbc54260321365326ea3fafbf78))
-* move lodash to peer dependencies ([#2580](https://github.com/looker-open-source/components/issues/2580)) ([a1a94a3](https://github.com/looker-open-source/components/commit/a1a94a3f501b481aaf73ec5305123965853cc508)), closes [/github.com/looker-open-source/components/blame/12658bddd81bf4dc1625865de424cc674ea07e1c/packages/components/README.md#L15](https://github.com//github.com/looker-open-source/components/blame/12658bddd81bf4dc1625865de424cc674ea07e1c/packages/components/README.md/issues/L15)
+- **Tree:** Controlled isOpen ([#2652](https://github.com/looker-open-source/components/issues/2652)) ([bf32714](https://github.com/looker-open-source/components/commit/bf32714cfb47968da9eec9af489aa7030e9887fd))
+- **SemanticBorder:** Support border="none" and border="customColor" ([#2649](https://github.com/looker-open-source/components/issues/2649)) ([eb3e8ee](https://github.com/looker-open-source/components/commit/eb3e8ee78a0334a860bd28a3c9f956f2e7621d35))
+- **Tree:** Fixed Tree indent bug ([#2651](https://github.com/looker-open-source/components/issues/2651)) ([33f5e06](https://github.com/looker-open-source/components/commit/33f5e06c027729e6aa824a54f188f885c18ffb50))
+- **CardContent:** Properly absorb padding (pN) values ([#2494](https://github.com/looker-open-source/components/issues/2494)) ([148cd49](https://github.com/looker-open-source/components/commit/148cd4945be2bf4dffb91458a2f1761d6c54d6cd))
+- **DataTable:** Corrects issue where "All Selected" checkbox is checked when `selectedItems=0` and `pageItems=0` (easily triggered by loading state) ([#2606](https://github.com/looker-open-source/components/issues/2606)) ([295fd1e](https://github.com/looker-open-source/components/commit/295fd1e3610035ca04eb6f81afd82c18a3dd03d4))
+- **DataTable:** Make first column sortable again ([#2638](https://github.com/looker-open-source/components/issues/2638)) ([5c59bd6](https://github.com/looker-open-source/components/commit/5c59bd6a74302960250de761078a8698a96ad9a7))
+- **DataTable:** Stop explicitly removing scrollbar from DataTable overflow behavior ([#2627](https://github.com/looker-open-source/components/issues/2627)) ([7a5d46d](https://github.com/looker-open-source/components/commit/7a5d46df3e992e5fc0f0ce1bb6378851c496b4b8))
+- **DialogLayout:** `footerSecondary` is only valid if `footer` is also specified ([#2528](https://github.com/looker-open-source/components/issues/2528)) ([c3a0662](https://github.com/looker-open-source/components/commit/c3a06625d442836ec832def2f41b4ddef544a355))
+- **Field:** Correct tab-stop order of `Field` & `FieldInline` ([#2632](https://github.com/looker-open-source/components/issues/2632)) ([4a21be7](https://github.com/looker-open-source/components/commit/4a21be770510a166d97b0413b8eb0117faa9b9c0))
+- **FieldInline:** Adjust description line height and padding for `FieldCheckbox`, `FieldRadio`, and `FieldToggleSwitch` ([#2550](https://github.com/looker-open-source/components/issues/2550)) ([2730993](https://github.com/looker-open-source/components/commit/273099313680dbba1284aaa306e3514c71287c07))
+- **IconButton:** IconButton label should support same typing as Tooltip content ([#2631](https://github.com/looker-open-source/components/issues/2631)) ([8d33f04](https://github.com/looker-open-source/components/commit/8d33f0433f3e6a9f19bb84521f5d08bf4991a641))
+- **InputChips:** Undefined height prop should always default to 'auto' ([#2610](https://github.com/looker-open-source/components/issues/2610)) ([b16d3da](https://github.com/looker-open-source/components/commit/b16d3da8cc9721e950213455e8dc34efab2cf374))
+- **InputColor:** Incorrect coloring and positioning when hueless or saturationless color is provided ([#2595](https://github.com/looker-open-source/components/issues/2595)) ([a39882b](https://github.com/looker-open-source/components/commit/a39882b4c582f208e71de82de69e17818fe95bd3))
+- **InputSearch:** Return focus to input after clearing ([#2594](https://github.com/looker-open-source/components/issues/2594)) ([6287777](https://github.com/looker-open-source/components/commit/62877775f831996739324f60620fdee59565c6f3))
+- **Menu:** Close the parent menu after clicking a nested menu item ([#2608](https://github.com/looker-open-source/components/issues/2608)) ([32a182d](https://github.com/looker-open-source/components/commit/32a182d5873006bda1c3521d04a382a24c3f9a55))
+- **MenuItem:** SVG error when opening a nested menu ([#2607](https://github.com/looker-open-source/components/issues/2607)) ([bccfb63](https://github.com/looker-open-source/components/commit/bccfb63d14483e7312bd0ba68b1424b596a80dc3))
+- **ModalHeader:** Lint errors in test file ([#2549](https://github.com/looker-open-source/components/issues/2549)) ([8e0c10b](https://github.com/looker-open-source/components/commit/8e0c10b9b70167c824fe5f67b7e21d8ce6a2d211))
+- **Popover:** Screen reader accessibility ([#2635](https://github.com/looker-open-source/components/issues/2635)) ([423df34](https://github.com/looker-open-source/components/commit/423df34d76f1fb5dab336c1d6672250f9a3b2802))
+- **PopoverContent:** update padding ([#2530](https://github.com/looker-open-source/components/issues/2530)) ([d322ad8](https://github.com/looker-open-source/components/commit/d322ad8475fa71a7a6991f3bb88d861de7e0ccbe))
+- **PopoverHeader:** update width for use with Popover ([#2582](https://github.com/looker-open-source/components/issues/2582)) ([2b6bb51](https://github.com/looker-open-source/components/commit/2b6bb51ba615edfd534c2cfa90d8ea7497d76ba7))
+- **RangeSlider:** Value reset due to intermediate rerender ([#2585](https://github.com/looker-open-source/components/issues/2585)) ([0146424](https://github.com/looker-open-source/components/commit/0146424bbc73c722f92f87c7a960368f52b6a16d))
+- **SelectOptions:** Fixed detail alignment ([#2589](https://github.com/looker-open-source/components/issues/2589)) ([ae11a0b](https://github.com/looker-open-source/components/commit/ae11a0bf4956f00950314a48d95ec2b2f930d915)), closes [#2590](https://github.com/looker-open-source/components/issues/2590)
+- **Tree:** Fix Tree border ([#2629](https://github.com/looker-open-source/components/issues/2629)) ([a55d514](https://github.com/looker-open-source/components/commit/a55d51468862f5520ec5676352831b7895df1812)), closes [#2630](https://github.com/looker-open-source/components/issues/2630)
+- **usePopover:** aria-haspopup updated to ([#2593](https://github.com/looker-open-source/components/issues/2593)) ([e0c0000](https://github.com/looker-open-source/components/commit/e0c00001a82e7cbc54260321365326ea3fafbf78))
+- move lodash to peer dependencies ([#2580](https://github.com/looker-open-source/components/issues/2580)) ([a1a94a3](https://github.com/looker-open-source/components/commit/a1a94a3f501b481aaf73ec5305123965853cc508)), closes [/github.com/looker-open-source/components/blame/12658bddd81bf4dc1625865de424cc674ea07e1c/packages/components/README.md#L15](https://github.com//github.com/looker-open-source/components/blame/12658bddd81bf4dc1625865de424cc674ea07e1c/packages/components/README.md/issues/L15)
 
 ### Features
 
-* Consistently support props across "Semantic Layout" components as well as `Grid` ([#2596](https://github.com/looker-open-source/components/issues/2596)) ([227eda3](https://github.com/looker-open-source/components/commit/227eda35b5977abb398dc1be3822a6ed76ecad49))
-* **Accordion2:** Density support ([#2565](https://github.com/looker-open-source/components/issues/2565)) ([6bf24d6](https://github.com/looker-open-source/components/commit/6bf24d60eb4ea33fec894fdf4d80f9938dec28b3))
-* **Accordion2:** New improved & simpler accordion component ([#2527](https://github.com/looker-open-source/components/issues/2527)) ([56911da](https://github.com/looker-open-source/components/commit/56911dac3623f299ccf715ff42bdf2dc99d69b1d))
-* **Popover:** updated aria-labelledby and role for A11Y ([#2544](https://github.com/looker-open-source/components/issues/2544)) ([3cc6bc5](https://github.com/looker-open-source/components/commit/3cc6bc507aaf9c93351a44d169d2401299e4906b))
-* **PopoverLayout:** new component for laying out for popover ([#2516](https://github.com/looker-open-source/components/issues/2516)) ([6374d56](https://github.com/looker-open-source/components/commit/6374d567e572e55b11cf4e2694f32f4141c901b5))
-* **PopoverLayout:** Supports `closeButton` prop ([#2557](https://github.com/looker-open-source/components/issues/2557)) ([268650a](https://github.com/looker-open-source/components/commit/268650aa5110be106e8392033f2e5c4f00f73924))
-* **Tree:** Add virtualization support ([#2481](https://github.com/looker-open-source/components/issues/2481)) ([dc2619d](https://github.com/looker-open-source/components/commit/dc2619d0fb541925cd1d5312ea4d04979e34edf6))
+- Consistently support props across "Semantic Layout" components as well as `Grid` ([#2596](https://github.com/looker-open-source/components/issues/2596)) ([227eda3](https://github.com/looker-open-source/components/commit/227eda35b5977abb398dc1be3822a6ed76ecad49))
+- **Accordion2:** Density support ([#2565](https://github.com/looker-open-source/components/issues/2565)) ([6bf24d6](https://github.com/looker-open-source/components/commit/6bf24d60eb4ea33fec894fdf4d80f9938dec28b3))
+- **Accordion2:** New improved & simpler accordion component ([#2527](https://github.com/looker-open-source/components/issues/2527)) ([56911da](https://github.com/looker-open-source/components/commit/56911dac3623f299ccf715ff42bdf2dc99d69b1d))
+- **Popover:** updated aria-labelledby and role for A11Y ([#2544](https://github.com/looker-open-source/components/issues/2544)) ([3cc6bc5](https://github.com/looker-open-source/components/commit/3cc6bc507aaf9c93351a44d169d2401299e4906b))
+- **PopoverLayout:** new component for laying out for popover ([#2516](https://github.com/looker-open-source/components/issues/2516)) ([6374d56](https://github.com/looker-open-source/components/commit/6374d567e572e55b11cf4e2694f32f4141c901b5))
+- **PopoverLayout:** Supports `closeButton` prop ([#2557](https://github.com/looker-open-source/components/issues/2557)) ([268650a](https://github.com/looker-open-source/components/commit/268650aa5110be106e8392033f2e5c4f00f73924))
+- **Tree:** Add virtualization support ([#2481](https://github.com/looker-open-source/components/issues/2481)) ([dc2619d](https://github.com/looker-open-source/components/commit/dc2619d0fb541925cd1d5312ea4d04979e34edf6))
 
 ## @looker/design-tokens
 
 ### Bug Fixes
 
-* move lodash to peer dependencies ([#2580](https://github.com/looker-open-source/components/issues/2580)) ([a1a94a3](https://github.com/looker-open-source/components/commit/a1a94a3f501b481aaf73ec5305123965853cc508)), closes [/github.com/looker-open-source/components/blame/12658bddd81bf4dc1625865de424cc674ea07e1c/packages/components/README.md#L15](https://github.com//github.com/looker-open-source/components/blame/12658bddd81bf4dc1625865de424cc674ea07e1c/packages/components/README.md/issues/L15)
-
+- move lodash to peer dependencies ([#2580](https://github.com/looker-open-source/components/issues/2580)) ([a1a94a3](https://github.com/looker-open-source/components/commit/a1a94a3f501b481aaf73ec5305123965853cc508)), closes [/github.com/looker-open-source/components/blame/12658bddd81bf4dc1625865de424cc674ea07e1c/packages/components/README.md#L15](https://github.com//github.com/looker-open-source/components/blame/12658bddd81bf4dc1625865de424cc674ea07e1c/packages/components/README.md/issues/L15)
 
 # 2.0.0
 
