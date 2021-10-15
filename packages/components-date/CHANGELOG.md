@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.5](https://github.com/looker-open-source/components/compare/@looker/components-date@2.4.4...@looker/components-date@2.4.5) (2021-10-15)
+
+
+### Bug Fixes
+
+* **FieldDate:** add a snapshot that was disabled ([#2907](https://github.com/looker-open-source/components/issues/2907)) ([916f85f](https://github.com/looker-open-source/components/commit/916f85f8f1d5c6dc5d21fd5c2971ba160cd20ebc))
+
+
+
+
+
 ## [2.4.4](https://github.com/looker-open-source/components/compare/@looker/components-date@2.4.3...@looker/components-date@2.4.4) (2021-10-06)
 
 **Note:** Version bump only for package @looker/components-date
