@@ -55,3 +55,6 @@ export const Percentage = () => {
 
   return useDataTable(data, columns, 'Cheese inventory')
 }
+Percentage.parameters = {
+  storyshots: { disable: true },
+}
