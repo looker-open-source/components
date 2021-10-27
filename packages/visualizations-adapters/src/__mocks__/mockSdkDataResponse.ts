@@ -122,7 +122,7 @@ export const mockSdkDataResponse = [
       ],
     },
     'orders.count': {
-      value: 49,
+      value: null,
     },
     'orders.average_total_amount_of_order_usd': {
       value: 108.37714285714284,
