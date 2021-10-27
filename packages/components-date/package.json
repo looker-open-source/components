@@ -1,15 +1,15 @@
 {
   "name": "@looker/components-date",
   "license": "MIT",
-  "version": "2.4.6",
+  "version": "2.4.7",
   "main": "src/index.ts",
   "sideEffects": false,
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@looker/components": "^2.8.6",
-    "@looker/design-tokens": "^2.7.6",
+    "@looker/components": "^2.8.7",
+    "@looker/design-tokens": "^2.7.7",
     "@styled-icons/material-rounded": "10.34.0",
     "date-fns": "2.24.0",
     "date-fns-tz": "^1.0.12",
@@ -19,8 +19,8 @@
     "react-i18next": "11.8.15"
   },
   "devDependencies": {
-    "@looker/components-test-utils": "^1.5.10",
-    "@looker/eslint-config-oss": "^1.7.6",
+    "@looker/components-test-utils": "^1.5.11",
+    "@looker/eslint-config-oss": "^1.7.7",
     "@testing-library/jest-dom": "*",
     "@testing-library/react": "*",
     "@testing-library/user-event": "*",

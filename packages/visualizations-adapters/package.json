@@ -1,23 +1,23 @@
 {
   "name": "@looker/visualizations-adapters",
   "main": "src/index.ts",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publishConfig": {
     "access": "public"
   },
   "license": "MIT",
   "sideEffects": false,
   "dependencies": {
-    "@looker/components": "*",
-    "@looker/design-tokens": "*",
+    "@looker/components": "^2.8.7",
+    "@looker/design-tokens": "^2.7.7",
     "@looker/sdk": "*",
     "@looker/sdk-rtl": "^21.0.20",
     "lodash": "*"
   },
   "devDependencies": {
-    "@looker/components-test-utils": "*",
-    "@looker/eslint-config-oss": "*",
-    "@looker/stylelint-config": "*",
+    "@looker/components-test-utils": "^1.5.11",
+    "@looker/eslint-config-oss": "^1.7.7",
+    "@looker/stylelint-config": "^1.5.5",
     "@testing-library/react": "*"
   },
   "peerDependencies": {

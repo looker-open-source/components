@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.7](https://github.com/looker-open-source/components/compare/@looker/eslint-config-oss@1.7.6...@looker/eslint-config-oss@1.7.7) (2021-10-27)
+
+**Note:** Version bump only for package @looker/eslint-config-oss
+
+
+
+
+
 ## [1.7.6](https://github.com/looker-open-source/components/compare/@looker/eslint-config-oss@1.7.5...@looker/eslint-config-oss@1.7.6) (2021-10-27)
 
 **Note:** Version bump only for package @looker/eslint-config-oss

@@ -2,7 +2,7 @@
   "name": "@looker/eslint-config-oss",
   "license": "MIT",
   "main": "src/index.js",
-  "version": "1.7.6",
+  "version": "1.7.7",
   "publishConfig": {
     "access": "public"
   },
