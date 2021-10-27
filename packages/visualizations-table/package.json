@@ -36,5 +36,6 @@
   },
   "stylelint": {
     "extends": "@looker/stylelint-config"
-  }
+  },
+  "gitHead": "734f77cda8050d9eea83a187113333dfad8650ca"
 }
