@@ -1,0 +1,58 @@
+{
+  "name": "@looker/visualizations-visx",
+  "main": "src/index.ts",
+  "version": "0.1.0",
+  "private": true,
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "MIT",
+  "sideEffects": false,
+  "scripts": {
+    "lint": "yarn lint:css && yarn lint:es",
+    "fix": "yarn lint:css --fix && yarn lint:es --fix",
+    "lint:css": "stylelint './src/**/*.ts{,x}'",
+    "lint:es": "eslint ./src/**/*.ts{,x}"
+  },
+  "dependencies": {
+    "@looker/visualizations-adapters": "*",
+    "@visx/axis": "2.1.1",
+    "@visx/glyph": "2.1.0",
+    "@visx/legend": "2.1.0",
+    "@visx/marker": "2.1.1",
+    "@visx/point": "2.1.0",
+    "@visx/scale": "2.1.0",
+    "@visx/shape": "2.1.1",
+    "@visx/text": "2.1.1",
+    "@visx/xychart": "2.1.1",
+    "date-fns": "^2.10.0",
+    "lodash": "*",
+    "react-spring": "9.2.4"
+  },
+  "devDependencies": {
+    "@looker/components-test-utils": "*",
+    "@looker/eslint-config-oss": "*",
+    "@looker/stylelint-config": "*",
+    "@testing-library/react": "*"
+  },
+  "peerDependencies": {
+    "@looker/components": "1.4 - 2",
+    "react": ">= 16.11.0",
+    "react-dom": ">= 16.11.0",
+    "styled-components": "^5.2"
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "@looker/eslint-config-oss"
+    ],
+    "rules": {
+      "camelcase": "off",
+      "import/order": "off",
+      "sort-keys-fix/sort-keys-fix": "off"
+    }
+  },
+  "stylelint": {
+    "extends": "@looker/stylelint-config"
+  }
+}
