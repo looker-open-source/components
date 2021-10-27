@@ -1,0 +1,42 @@
+{
+  "name": "@looker/visualizations-adapters",
+  "main": "src/index.ts",
+  "version": "0.1.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "MIT",
+  "sideEffects": false,
+  "dependencies": {
+    "@looker/components": "*",
+    "@looker/design-tokens": "*",
+    "@looker/sdk": "*",
+    "@looker/sdk-rtl": "^21.0.20",
+    "lodash": "*"
+  },
+  "devDependencies": {
+    "@looker/components-test-utils": "*",
+    "@looker/eslint-config-oss": "*",
+    "@looker/stylelint-config": "*",
+    "@testing-library/react": "*"
+  },
+  "peerDependencies": {
+    "react": ">= 16.11.0",
+    "react-dom": ">= 16.11.0",
+    "styled-components": "^5.2"
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "@looker/eslint-config-oss"
+    ],
+    "rules": {
+      "camelcase": "off",
+      "import/order": "off",
+      "sort-keys-fix/sort-keys-fix": "off"
+    }
+  },
+  "stylelint": {
+    "extends": "@looker/stylelint-config"
+  }
+}

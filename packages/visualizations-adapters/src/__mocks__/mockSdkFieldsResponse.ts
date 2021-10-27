@@ -1,0 +1,207 @@
+/*
+
+ MIT License
+
+ Copyright (c) 2021 Looker Data Sciences, Inc.
+
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in all
+ copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ SOFTWARE.
+
+ */
+
+/*
+ * This object represents the Fields metadat response as returned by the SDK.
+ */
+
+export const mockSdkFieldsResponse = {
+  measures: [
+    {
+      align: 'right',
+      can_filter: true,
+      category: 'measure',
+      default_filter_value: null,
+      description: null,
+      enumerations: null,
+      field_group_label: null,
+      fill_style: null,
+      fiscal_month_offset: 0,
+      has_allowed_values: false,
+      hidden: false,
+      is_filter: false,
+      is_numeric: true,
+      label: 'Orders Count',
+      label_from_parameter: null,
+      label_short: 'Count',
+      map_layer: null,
+      name: 'orders.count',
+      strict_value_format: false,
+      requires_refresh_on_sort: false,
+      sortable: true,
+      suggestions: null,
+      tags: [],
+      type: 'count_distinct',
+      user_attribute_filter_types: ['number', 'advanced_filter_number'],
+      value_format: null,
+      view: 'orders',
+      view_label: 'Orders',
+      dynamic: false,
+      week_start_day: 'monday',
+      dimension_group: null,
+      error: null,
+      field_group_variant: 'Count',
+      measure: true,
+      parameter: false,
+      primary_key: false,
+      project_name: 'thelook',
+      scope: 'orders',
+      suggest_dimension: 'orders.count',
+      suggest_explore: 'orders',
+      suggestable: false,
+      is_fiscal: false,
+      is_timeframe: false,
+      can_time_filter: false,
+      time_interval: null,
+      lookml_link:
+        '/projects/thelook/files/views_core%2Forders.view.lkml?line=333',
+      permanent: null,
+      source_file: 'views_core/orders.view.lkml',
+      source_file_path: 'thelook/views_core/orders.view.lkml',
+      sql_case: null,
+      filters: null,
+    },
+    {
+      align: 'right',
+      can_filter: true,
+      category: 'measure',
+      default_filter_value: null,
+      description: null,
+      enumerations: null,
+      field_group_label: null,
+      fill_style: null,
+      fiscal_month_offset: 0,
+      has_allowed_values: false,
+      hidden: false,
+      is_filter: false,
+      is_numeric: true,
+      label: 'Orders Average Total Amount of Order USD',
+      label_from_parameter: null,
+      label_short: 'Average Total Amount of Order USD',
+      map_layer: null,
+      name: 'orders.average_total_amount_of_order_usd',
+      strict_value_format: false,
+      requires_refresh_on_sort: false,
+      sortable: true,
+      suggestions: null,
+      tags: [],
+      type: 'average',
+      user_attribute_filter_types: ['number', 'advanced_filter_number'],
+      value_format: '$#,##0.00',
+      view: 'orders',
+      view_label: 'Orders',
+      dynamic: false,
+      week_start_day: 'monday',
+      dimension_group: null,
+      error: null,
+      field_group_variant: 'Average Total Amount of Order USD',
+      measure: true,
+      parameter: false,
+      primary_key: false,
+      project_name: 'thelook',
+      scope: 'orders',
+      suggest_dimension: 'orders.average_total_amount_of_order_usd',
+      suggest_explore: 'orders',
+      suggestable: false,
+      is_fiscal: false,
+      is_timeframe: false,
+      can_time_filter: false,
+      time_interval: null,
+      lookml_link:
+        '/projects/thelook/files/views_core%2Forders.view.lkml?line=294',
+      permanent: null,
+      source_file: 'views_core/orders.view.lkml',
+      source_file_path: 'thelook/views_core/orders.view.lkml',
+      sql_case: null,
+      filters: null,
+    },
+  ],
+  dimensions: [
+    {
+      align: 'left',
+      can_filter: true,
+      category: 'dimension',
+      default_filter_value: null,
+      description: null,
+      enumerations: null,
+      field_group_label: 'Created Date',
+      fill_style: 'range',
+      fiscal_month_offset: 0,
+      has_allowed_values: false,
+      hidden: false,
+      is_filter: false,
+      is_numeric: false,
+      label: 'Orders Created Date',
+      label_from_parameter: null,
+      label_short: 'Created Date',
+      map_layer: null,
+      name: 'orders.created_date',
+      strict_value_format: false,
+      requires_refresh_on_sort: false,
+      sortable: true,
+      suggestions: null,
+      tags: [],
+      type: 'date_date',
+      user_attribute_filter_types: ['datetime', 'advanced_filter_datetime'],
+      value_format: null,
+      view: 'orders',
+      view_label: 'Orders',
+      dynamic: false,
+      week_start_day: 'monday',
+      dimension_group: 'orders.created',
+      error: null,
+      field_group_variant: 'Date',
+      measure: false,
+      parameter: false,
+      primary_key: false,
+      project_name: 'thelook',
+      scope: 'orders',
+      suggest_dimension: 'orders.created_date',
+      suggest_explore: 'orders',
+      suggestable: false,
+      is_fiscal: false,
+      is_timeframe: true,
+      can_time_filter: false,
+      time_interval: {
+        name: 'day',
+        count: 1,
+      },
+      lookml_link:
+        '/projects/thelook/files/views_core%2Forders.view.lkml?line=75',
+      permanent: null,
+      source_file: 'views_core/orders.view.lkml',
+      source_file_path: 'thelook/views_core/orders.view.lkml',
+      sql_case: null,
+      filters: null,
+      sorted: {
+        sort_index: 0,
+        desc: true,
+      },
+    },
+  ],
+  table_calculations: [],
+  pivots: [],
+}

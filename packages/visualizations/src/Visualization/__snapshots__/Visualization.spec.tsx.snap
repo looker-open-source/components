@@ -1,0 +1,521 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Accepts array series override (Area Chart) 1`] = `
+Object {
+  "color": "#ffffff",
+  "line_width": 3,
+  "shape": "circle",
+  "style": "outline",
+  "visible": true,
+}
+`;
+
+exports[`Accepts array series override (Bar Chart) 1`] = `
+Object {
+  "color": "#ffffff",
+  "visible": true,
+}
+`;
+
+exports[`Accepts array series override (Column Chart) 1`] = `
+Object {
+  "color": "#ffffff",
+  "visible": true,
+}
+`;
+
+exports[`Accepts array series override (Line Chart) 1`] = `
+Object {
+  "color": "#ffffff",
+  "line_width": 3,
+  "shape": "circle",
+  "style": "outline",
+  "visible": true,
+}
+`;
+
+exports[`Accepts array series override (Scatterplot Chart) 1`] = `
+Object {
+  "color": "#ffffff",
+  "line_width": 3,
+  "shape": "circle",
+  "size_by": false,
+  "style": "outline",
+  "visible": true,
+}
+`;
+
+exports[`Accepts array series override (Sparkline Chart) 1`] = `
+Object {
+  "color": "#ffffff",
+  "line_width": 3,
+}
+`;
+
+exports[`Accepts named series override (Area Chart) 1`] = `
+Object {
+  "color": "#000000",
+  "label": "TEST LABEL!",
+  "line_width": 3,
+  "shape": "diamond",
+  "style": "outline",
+  "visible": false,
+}
+`;
+
+exports[`Accepts named series override (Bar Chart) 1`] = `
+Object {
+  "color": "#000000",
+  "label": "TEST LABEL!",
+  "visible": false,
+}
+`;
+
+exports[`Accepts named series override (Column Chart) 1`] = `
+Object {
+  "color": "#000000",
+  "label": "TEST LABEL!",
+  "visible": false,
+}
+`;
+
+exports[`Accepts named series override (Line Chart) 1`] = `
+Object {
+  "color": "#000000",
+  "label": "TEST LABEL!",
+  "line_width": 3,
+  "shape": "diamond",
+  "style": "outline",
+  "visible": false,
+}
+`;
+
+exports[`Accepts named series override (Scatterplot Chart) 1`] = `
+Object {
+  "color": "#000000",
+  "label": "TEST LABEL!",
+  "line_width": 3,
+  "shape": "diamond",
+  "size_by": false,
+  "style": "outline",
+  "visible": false,
+}
+`;
+
+exports[`Accepts named series override (Sparkline Chart) 1`] = `
+Object {
+  "color": "#000000",
+  "label": "TEST LABEL!",
+  "line_width": 3,
+  "visible": false,
+}
+`;
+
+exports[`Accepts y-axis override (Area Chart) 1`] = `
+Array [
+  Object {
+    "gridlines": true,
+    "label": "Axis name (1)",
+    "range": Array [
+      -200,
+      10000,
+    ],
+    "reversed": false,
+    "tick_density": "default",
+    "values": true,
+  },
+]
+`;
+
+exports[`Accepts y-axis override (Bar Chart) 1`] = `
+Array [
+  Object {
+    "gridlines": true,
+    "label": "Axis name (1)",
+    "range": Array [
+      -200,
+      10000,
+    ],
+    "reversed": false,
+    "tick_density": "default",
+    "values": true,
+  },
+]
+`;
+
+exports[`Accepts y-axis override (Column Chart) 1`] = `
+Array [
+  Object {
+    "gridlines": true,
+    "label": "Axis name (1)",
+    "range": Array [
+      -200,
+      10000,
+    ],
+    "reversed": false,
+    "tick_density": "default",
+    "values": true,
+  },
+]
+`;
+
+exports[`Accepts y-axis override (Line Chart) 1`] = `
+Array [
+  Object {
+    "gridlines": true,
+    "label": "Axis name (1)",
+    "range": Array [
+      -200,
+      10000,
+    ],
+    "reversed": false,
+    "tick_density": "default",
+    "values": true,
+  },
+]
+`;
+
+exports[`Accepts y-axis override (Scatterplot Chart) 1`] = `
+Array [
+  Object {
+    "gridlines": true,
+    "label": "Axis name (1)",
+    "range": Array [
+      -200,
+      10000,
+    ],
+    "reversed": false,
+    "tick_density": "default",
+    "values": true,
+  },
+]
+`;
+
+exports[`Accepts y-axis override (Sparkline Chart) 1`] = `
+Array [
+  Object {
+    "range": Array [
+      -200,
+      10000,
+    ],
+  },
+]
+`;
+
+exports[`Derives default values from SDK response (Area Chart) 1`] = `
+Object {
+  "legend": Object {
+    "position": "bottom",
+  },
+  "positioning": "overlay",
+  "render_null_values": false,
+  "series": Object {
+    "orders.average_total_amount_of_order_usd": Object {
+      "color": "#70BEFA",
+      "label": "Average Order Price",
+      "line_width": 3,
+      "shape": "circle",
+      "style": "outline",
+      "visible": false,
+    },
+    "orders.count": Object {
+      "color": "#FA8072",
+      "label": "Total Orders",
+      "line_width": 3,
+      "shape": "diamond",
+      "style": "outline",
+      "visible": true,
+    },
+  },
+  "tooltips": true,
+  "type": "area",
+  "value_labels": "legend",
+  "x_axis": Array [
+    Object {
+      "gridlines": false,
+      "label": "Orders Created Date",
+      "reversed": false,
+      "tick_density": "default",
+      "values": true,
+    },
+  ],
+  "y_axis": Array [
+    Object {
+      "gridlines": true,
+      "label": "Axis name (1)",
+      "range": Array [
+        "auto",
+        "auto",
+      ],
+      "reversed": false,
+      "tick_density": "default",
+      "values": true,
+    },
+  ],
+}
+`;
+
+exports[`Derives default values from SDK response (Bar Chart) 1`] = `
+Object {
+  "legend": Object {
+    "position": "bottom",
+  },
+  "positioning": "grouped",
+  "series": Object {
+    "orders.average_total_amount_of_order_usd": Object {
+      "color": "#70BEFA",
+      "label": "Average Order Price",
+      "visible": false,
+    },
+    "orders.count": Object {
+      "color": "#FA8072",
+      "label": "Total Orders",
+      "visible": true,
+    },
+  },
+  "tooltips": true,
+  "type": "bar",
+  "value_labels": "legend",
+  "x_axis": Array [
+    Object {
+      "gridlines": false,
+      "label": "Orders Created Date",
+      "reversed": false,
+      "tick_density": "default",
+      "values": true,
+    },
+  ],
+  "y_axis": Array [
+    Object {
+      "gridlines": true,
+      "label": "Axis name (1)",
+      "range": Array [
+        "auto",
+        "auto",
+      ],
+      "reversed": false,
+      "tick_density": "default",
+      "values": true,
+    },
+  ],
+}
+`;
+
+exports[`Derives default values from SDK response (Column Chart) 1`] = `
+Object {
+  "legend": Object {
+    "position": "bottom",
+  },
+  "positioning": "grouped",
+  "series": Object {
+    "orders.average_total_amount_of_order_usd": Object {
+      "color": "#70BEFA",
+      "label": "Average Order Price",
+      "visible": false,
+    },
+    "orders.count": Object {
+      "color": "#FA8072",
+      "label": "Total Orders",
+      "visible": true,
+    },
+  },
+  "tooltips": true,
+  "type": "column",
+  "value_labels": "legend",
+  "x_axis": Array [
+    Object {
+      "gridlines": false,
+      "label": "Orders Created Date",
+      "reversed": false,
+      "tick_density": "default",
+      "values": true,
+    },
+  ],
+  "y_axis": Array [
+    Object {
+      "gridlines": true,
+      "label": "Axis name (1)",
+      "range": Array [
+        "auto",
+        "auto",
+      ],
+      "reversed": false,
+      "tick_density": "default",
+      "values": true,
+    },
+  ],
+}
+`;
+
+exports[`Derives default values from SDK response (Line Chart) 1`] = `
+Object {
+  "legend": Object {
+    "position": "bottom",
+  },
+  "positioning": "overlay",
+  "render_null_values": false,
+  "series": Object {
+    "orders.average_total_amount_of_order_usd": Object {
+      "color": "#70BEFA",
+      "label": "Average Order Price",
+      "line_width": 3,
+      "shape": "circle",
+      "style": "outline",
+      "visible": false,
+    },
+    "orders.count": Object {
+      "color": "#FA8072",
+      "label": "Total Orders",
+      "line_width": 3,
+      "shape": "diamond",
+      "style": "outline",
+      "visible": true,
+    },
+  },
+  "tooltips": true,
+  "type": "line",
+  "value_labels": "legend",
+  "x_axis": Array [
+    Object {
+      "gridlines": false,
+      "label": "Orders Created Date",
+      "reversed": false,
+      "tick_density": "default",
+      "values": true,
+    },
+  ],
+  "y_axis": Array [
+    Object {
+      "gridlines": true,
+      "label": "Axis name (1)",
+      "range": Array [
+        "auto",
+        "auto",
+      ],
+      "reversed": false,
+      "tick_density": "default",
+      "values": true,
+    },
+  ],
+}
+`;
+
+exports[`Derives default values from SDK response (Pie Chart) 1`] = `
+Object {
+  "legend": Object {
+    "position": "bottom",
+    "type": "legend",
+    "value": "label",
+  },
+  "tooltips": true,
+  "type": "pie",
+}
+`;
+
+exports[`Derives default values from SDK response (Scatterplot Chart) 1`] = `
+Object {
+  "legend": Object {
+    "position": "bottom",
+  },
+  "positioning": "overlay",
+  "render_null_values": false,
+  "series": Object {
+    "orders.average_total_amount_of_order_usd": Object {
+      "color": "#70BEFA",
+      "label": "Average Order Price",
+      "line_width": 3,
+      "shape": "circle",
+      "size_by": false,
+      "style": "outline",
+      "visible": false,
+    },
+    "orders.count": Object {
+      "color": "#FA8072",
+      "label": "Total Orders",
+      "line_width": 3,
+      "shape": "diamond",
+      "size_by": false,
+      "style": "outline",
+      "visible": true,
+    },
+  },
+  "tooltips": true,
+  "type": "scatter",
+  "value_labels": "legend",
+  "x_axis": Array [
+    Object {
+      "gridlines": false,
+      "label": "Orders Created Date",
+      "reversed": false,
+      "tick_density": "default",
+      "values": true,
+    },
+  ],
+  "y_axis": Array [
+    Object {
+      "gridlines": true,
+      "label": "Axis name (1)",
+      "range": Array [
+        "auto",
+        "auto",
+      ],
+      "reversed": false,
+      "tick_density": "default",
+      "values": true,
+    },
+  ],
+}
+`;
+
+exports[`Derives default values from SDK response (Sparkline Chart) 1`] = `
+Object {
+  "render_null_values": false,
+  "series": Object {
+    "orders.average_total_amount_of_order_usd": Object {
+      "color": "#70BEFA",
+      "line_width": 3,
+    },
+    "orders.count": Object {
+      "color": "#FA8072",
+      "line_width": 3,
+    },
+  },
+  "type": "sparkline",
+  "value_labels": "legend",
+}
+`;
+
+exports[`Derives default values from SDK response (Table Chart) 1`] = `
+Object {
+  "series": Object {
+    "orders.average_total_amount_of_order_usd": Object {
+      "cell_visualization": false,
+      "label": "Average Order Price",
+      "visible": false,
+    },
+    "orders.count": Object {
+      "cell_visualization": true,
+      "label": "Total Orders",
+      "visible": true,
+    },
+  },
+  "truncate_text": true,
+  "type": "table",
+  "value_labels": "legend",
+}
+`;
+
+exports[`Table chart config accepts series cell visualization overrides 1`] = `
+Object {
+  "orders.average_total_amount_of_order_usd": Object {
+    "cell_visualization": false,
+    "label": "Average Order Price",
+    "visible": false,
+  },
+  "orders.count": Object {
+    "cell_visualization": false,
+    "label": "Table Label",
+    "visible": true,
+  },
+}
+`;
