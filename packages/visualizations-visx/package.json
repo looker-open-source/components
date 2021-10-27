@@ -8,12 +8,6 @@
   },
   "license": "MIT",
   "sideEffects": false,
-  "scripts": {
-    "lint": "yarn lint:css && yarn lint:es",
-    "fix": "yarn lint:css --fix && yarn lint:es --fix",
-    "lint:css": "stylelint './src/**/*.ts{,x}'",
-    "lint:es": "eslint ./src/**/*.ts{,x}"
-  },
   "dependencies": {
     "@looker/visualizations-adapters": "*",
     "@visx/axis": "2.1.1",
