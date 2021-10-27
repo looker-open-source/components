@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 2.8.7-pre
+
+- **`@looker/visualizations`** package introduced
+- **`@looker/visualizations-adapters`** package introduced
+- **`@looker/visualizations-table`** package introduced
+- **`@looker/visualizations-visx`** package introduced
+
 # 2.8.6
 
 ## `@looker/components` 2.8.6
