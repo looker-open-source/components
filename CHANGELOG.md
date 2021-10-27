@@ -3,9 +3,9 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# 2.9.0-pre
+# 2.8.6
 
-## `@looker/components` 2.9.0
+## `@looker/components` 2.8.6
 
 ### Features
 
@@ -17,7 +17,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 - **Dialog:** Remove misplaced tooltip on close icon button
 
-## `@looker/filter-components` 0.11.0
+## `@looker/filter-components` 0.10.6
 
 ### Features
 

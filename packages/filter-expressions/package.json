@@ -47,5 +47,6 @@
       "@typescript-eslint/no-non-null-assertion": "off",
       "sort-keys-fix/sort-keys-fix": "off"
     }
-  }
+  },
+  "gitHead": "401e58e64c41ac52836acc07911df2ff362c859d"
 }
