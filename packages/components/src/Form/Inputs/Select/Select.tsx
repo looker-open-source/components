@@ -29,15 +29,15 @@ import type { Ref, FormEvent } from 'react'
 import React, { forwardRef } from 'react'
 import styled from 'styled-components'
 import type { ValidationType } from '../../ValidationMessage'
+import {
+  omitAriaAndValidationProps,
+  pickAriaAndValidationProps,
+} from '../ariaProps'
 import type { ComboboxOptionIndicatorProps, ComboboxProps } from '../Combobox'
 import { Combobox, ComboboxInput, ComboboxList } from '../Combobox'
 import type { SelectOptionsBaseProps } from './SelectOptions'
 import { SelectOptions } from './SelectOptions'
 import { SelectInputIcon } from './SelectInputIcon'
-import {
-  omitAriaAndValidationProps,
-  pickAriaAndValidationProps,
-} from './utils/ariaProps'
 import { getOption, getFirstOption } from './utils/options'
 import { useFlatOptions } from './utils/useFlatOptions'
 import { useShouldWindowOptions } from './utils/useWindowedOptions'

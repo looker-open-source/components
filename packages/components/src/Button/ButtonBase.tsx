@@ -24,8 +24,9 @@
 
  */
 
+import type { Ref } from 'react'
+import React, { forwardRef } from 'react'
 import {
-  buttonShadow,
   maxWidth,
   minWidth,
   reset,
@@ -35,11 +36,15 @@ import {
 } from '@looker/design-tokens'
 import type { SizeRamp } from '@looker/design-tokens'
 import { StyledIconBase } from '@styled-icons/styled-icon'
-import type { Ref } from 'react'
-import React, { forwardRef } from 'react'
 import styled, { css } from 'styled-components'
-import type { FocusVisibleProps } from '../utils'
-import { useFocusVisible, focusVisibleCSSWrapper } from '../utils'
+import pick from 'lodash/pick'
+import {
+  rippleStyle,
+  useRipple,
+  useRippleHandlers,
+  rippleHandlerKeys,
+} from '../Ripple'
+import { mergeClassNames, useCallbackRef, useMeasuredElement } from '../utils'
 import { buttonSize, buttonIconSizeMap, buttonPadding } from './size'
 import { buttonIcon } from './icon'
 import type { ButtonColorProps, ButtonProps } from './types'
@@ -89,41 +94,60 @@ export const ButtonOuter = styled.button
   ${({ fullWidth }) => fullWidth && `width: 100%;`}
 `
 
-const ButtonOuterFocusVisible = styled(ButtonOuter)<
-  ButtonProps & FocusVisibleProps
->`
-  ${focusVisibleCSSWrapper(({ color }) => buttonShadow(color))}
-`
-
 export const ButtonBase = styled(
-  forwardRef((props: ButtonProps, ref: Ref<HTMLButtonElement>) => {
+  forwardRef((props: ButtonProps, forwardedRef: Ref<HTMLButtonElement>) => {
     const {
       children,
+      className,
+      color,
       iconBefore,
       iconAfter,
-      onBlur,
-      onKeyUp,
+      rippleBackgroundColor,
       size = 'medium',
+      style,
       ...restProps
     } = props
 
-    const focusVisibleProps = useFocusVisible({ onBlur, onKeyUp })
+    // find the dimensions of button for ripple behavior
+    const [element, ref] = useCallbackRef(forwardedRef)
+    const [{ height, width }] = useMeasuredElement(element)
 
+    const {
+      callbacks,
+      className: rippleClassName,
+      style: rippleStyle,
+    } = useRipple({
+      bounded: true,
+      color: rippleBackgroundColor || color || 'key',
+      height,
+      width,
+    })
+
+    const rippleHandlers = useRippleHandlers(
+      callbacks,
+      {
+        ...pick(restProps, rippleHandlerKeys),
+      },
+      restProps.disabled
+    )
     return (
-      <ButtonOuterFocusVisible
-        {...focusVisibleProps}
-        {...restProps}
-        size={size}
-        ref={ref}
+      <ButtonOuter
+        className={mergeClassNames([className, rippleClassName])}
         px={buttonPadding(!!(iconBefore || iconAfter), size)}
+        ref={ref}
+        {...restProps}
+        {...rippleHandlers}
+        size={size}
+        style={{ ...style, ...rippleStyle }}
       >
         {iconBefore}
         {children}
         {iconAfter}
-      </ButtonOuterFocusVisible>
+      </ButtonOuter>
     )
   })
 )`
   ${buttonIcon}
   ${buttonIconSize}
+  ${rippleStyle}
 `

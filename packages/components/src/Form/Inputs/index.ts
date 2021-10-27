@@ -47,3 +47,4 @@ export * from './ToggleSwitch'
 // Utilities
 export * from './innerInputStyle'
 export * from './InputProps'
+export { pickAriaAndValidationProps } from './ariaProps'

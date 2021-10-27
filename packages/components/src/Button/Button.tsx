@@ -27,35 +27,17 @@
 import styled from 'styled-components'
 import { ButtonBase } from './ButtonBase'
 
-export const Button = styled(ButtonBase)`
+export const Button = styled(ButtonBase).attrs(() => ({
+  rippleBackgroundColor: 'background',
+}))`
   background: ${({ theme, color = 'key' }) => theme.colors[color]};
   border: 1px solid ${({ theme, color = 'key' }) => theme.colors[color]};
   color: ${({ theme, color = 'key' }) => theme.colors[`${color}Text`]};
 
-  &:hover,
-  &:focus,
-  &.hover {
-    background: ${({ theme, color = 'key' }) =>
-      theme.colors[`${color}Interactive`]};
-    border-color: ${({ theme, color = 'key' }) =>
-      theme.colors[`${color}Interactive`]};
-  }
-
-  &[aria-expanded='true'],
-  &:active,
-  &.active {
+  &[aria-expanded='true'] {
     background: ${({ theme, color = 'key' }) =>
       theme.colors[`${color}Pressed`]};
     border-color: ${({ theme, color = 'key' }) =>
       theme.colors[`${color}Pressed`]};
-  }
-
-  &[disabled] {
-    &:hover,
-    &:active,
-    &:focus {
-      background-color: ${({ theme, color = 'key' }) => theme.colors[color]};
-      border-color: ${({ theme }) => theme.colors.ui3};
-    }
   }
 `

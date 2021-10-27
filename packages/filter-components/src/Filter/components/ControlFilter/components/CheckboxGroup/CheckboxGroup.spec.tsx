@@ -23,33 +23,36 @@
  SOFTWARE.
 
  */
+import { renderWithTheme } from '@looker/components-test-utils'
+import { screen } from '@testing-library/react'
+import React from 'react'
+import { CheckboxGroup } from './CheckboxGroup'
 
-import omit from 'lodash/omit'
-import pick from 'lodash/pick'
-import type { AriaAttributes } from 'react'
-import type { ValidationType } from '../../../ValidationMessage'
+const options = [
+  {
+    label: 'label1',
+    value: 'value1',
+  },
+  {
+    label: 'label2',
+    value: 'value2',
+  },
+  {
+    label: 'label3',
+    value: 'value3',
+  },
+]
 
-const ariaKeys = [
-  'aria-describedby',
-  'aria-invalid',
-  'aria-label',
-  'aria-labelledby',
-] as const
-
-type SelectedAriaAttributes = Pick<AriaAttributes, typeof ariaKeys[number]>
-
-export interface AriaAndValidationProps extends SelectedAriaAttributes {
-  validationType?: ValidationType
-}
-
-export function pickAriaAndValidationProps({
-  validationType,
-  ...props
-}: AriaAndValidationProps) {
-  const ariaProps = pick(props, ariaKeys)
-  return { ...ariaProps, 'aria-invalid': validationType === 'error' }
-}
-
-export function omitAriaAndValidationProps(props: AriaAndValidationProps) {
-  return omit(props, [...ariaKeys, 'validationType'])
-}
+describe('CheckboxGroup', () => {
+  it('handles loading state', () => {
+    renderWithTheme(
+      <CheckboxGroup
+        isLoading
+        options={options}
+        onChange={jest.fn()}
+        value={[]}
+      />
+    )
+    expect(screen.getByRole('progressbar')).toBeInTheDocument()
+  })
+})

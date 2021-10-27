@@ -61,4 +61,16 @@ describe('ButtonGroup', () => {
       )
     }
   })
+
+  it('handles loading state', () => {
+    renderWithTheme(
+      <ButtonGroup
+        isLoading
+        options={options}
+        onChange={jest.fn()}
+        value={[]}
+      />
+    )
+    expect(screen.getByRole('progressbar')).toBeInTheDocument()
+  })
 })

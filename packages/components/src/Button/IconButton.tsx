@@ -40,7 +40,7 @@ import {
   useRippleHandlers,
 } from '../Ripple'
 import { useTooltip } from '../Tooltip'
-import { mergeClassNames, useForkedRef, useWrapEvent } from '../utils'
+import { mergeClassNames, useWrapEvent } from '../utils'
 import { VisuallyHidden } from '../VisuallyHidden'
 import { ButtonOuter } from './ButtonBase'
 import { iconButtonColor, ICON_BUTTON_DEFAULT_COLOR } from './iconButtonColor'
@@ -80,15 +80,12 @@ export const IconButton = styled(
     const {
       callbacks,
       className: rippleClassName,
-      ref: rippleRef,
       style: rippleStyle,
     } = useRipple({
       bounded: shape === 'square',
       color: toggle ? toggleColor : undefined,
       size: shape === 'square' ? SQUARE_RIPPLE : 1,
     })
-
-    const ref = useForkedRef(forwardedRef, rippleRef)
 
     // any of the hover/focus handlers being present disables built-in tooltip
     const hasOuterTooltip = some(
@@ -136,7 +133,7 @@ export const IconButton = styled(
         aria-describedby={ariaDescribedBy}
         aria-expanded={ariaExpanded}
         aria-pressed={toggle ? true : undefined}
-        ref={ref}
+        ref={forwardedRef}
         p="none"
         size={size}
         width={buttonSizeMap[size]}

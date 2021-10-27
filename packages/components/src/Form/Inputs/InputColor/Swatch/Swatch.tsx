@@ -24,23 +24,17 @@
 
  */
 
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import type {
   CompatibleHTMLProps,
-  HeightProps,
-  WidthProps,
+  SizeProps,
+  SpaceProps,
 } from '@looker/design-tokens'
-import { height, reset, shouldForwardProp, width } from '@looker/design-tokens'
-import {
-  inputCSS,
-  inputTextHover,
-  inputTextDisabled,
-} from '../../../Inputs/InputText'
-import { inputHeight } from '../../height'
+import { reset, size, space, shouldForwardProp } from '@looker/design-tokens'
 
 export interface SwatchProps
-  extends WidthProps,
-    HeightProps,
+  extends SizeProps,
+    SpaceProps,
     CompatibleHTMLProps<HTMLDivElement> {
   /**
    * The background color to display on the swatch.
@@ -48,43 +42,40 @@ export interface SwatchProps
   color?: string
 }
 
-const emptySwatch = `position: relative;
-  &:after {
-    position: absolute;
-    display: block;
-    content: '';
-    height: 1px;
-    width: calc(100% + 12px);
+const emptySwatch = css`
+  position: relative;
+  &::after {
+    /* stylelint-disable-next-line */
     background: red;
+    content: '';
+    display: block;
+    height: 1px;
+    position: absolute;
     top: 50%;
-    margin-left: -6px;
     transform: rotate(-45deg);
-  }`
+    width: 100%;
+  }
+`
 
 export const Swatch = styled.div
   .withConfig({ shouldForwardProp })
-  .attrs<SwatchProps>(
-    ({ color = 'transparent', height = inputHeight, width = inputHeight }) => ({
-      color,
-      'data-testid': 'swatch',
-      height,
-      width,
-    })
-  )<SwatchProps>`
-  ${reset}
-
-  ${inputCSS}
-  ${width}
-  ${height}
-  background-color: ${({ color }) => color};
-  flex-shrink: 0;
-  margin-top: auto;
-
-  ${({ disabled }) => disabled && inputTextDisabled}
-
-  &:hover:not([disabled]) {
-    ${inputTextHover}
-  }
-
-  ${({ color }) => color === 'transparent' && emptySwatch}
-`
+  .attrs<SwatchProps>(({ color = 'transparent', size = 'xsmall' }) => ({
+    color,
+    'data-testid': 'swatch',
+    size,
+  }))<SwatchProps>`
+   ${reset}
+ 
+   ${size}
+   ${space}
+   background-color: ${({ color }) => color};
+   border: 1px solid ${({ theme: { colors } }) => colors.ui3};
+   border-radius: 50%;
+   cursor: ${({ disabled }) => !disabled && 'pointer'};
+ 
+   ${({ color }) => color === 'transparent' && emptySwatch}
+ 
+   &:hover {
+     border: 1px solid ${({ theme: { colors } }) => colors.ui4};
+   }
+ `

@@ -33,6 +33,7 @@ interface StringSelectProps<V extends string | string[]> {
   onChange: (value: V) => void
   onInputChange?: (value: string) => void
   validationMessage?: ValidationMessageProps
+  isLoading?: boolean
 }
 
 export type StringMultiSelectProps = StringSelectProps<string[]>

@@ -143,7 +143,7 @@ const getMultiStringSelectChange = (
  */
 const buttonGroupAdapter: FilterTokenAdapter<typeof ButtonGroup> = (
   item: FilterModel,
-  props: AdapterProps
+  { isLoading, ...props }: AdapterProps
 ): React.ComponentProps<typeof ButtonGroup> => {
   const stringOptions = getStringOptions(props)
   const optionsMap = keyBy(stringOptions, 'value')
@@ -158,6 +158,7 @@ const buttonGroupAdapter: FilterTokenAdapter<typeof ButtonGroup> = (
     value,
     options: stringOptions,
     max: maxForFilterType('button_group'),
+    isLoading,
   }
 }
 
@@ -168,7 +169,7 @@ const buttonGroupAdapter: FilterTokenAdapter<typeof ButtonGroup> = (
  */
 const checkboxGroupAdapter: FilterTokenAdapter<typeof CheckboxGroup> = (
   item: FilterModel,
-  props: AdapterProps
+  { isLoading, ...props }: AdapterProps
 ): React.ComponentProps<typeof CheckboxGroup> => {
   const adapterProps = buttonGroupAdapter(item, props)
   const { onChange, value, options } = adapterProps
@@ -176,6 +177,7 @@ const checkboxGroupAdapter: FilterTokenAdapter<typeof CheckboxGroup> = (
     onChange,
     value,
     options, // TODO: max: maxForFilterType('checkboxes')
+    isLoading,
   }
 }
 
@@ -229,7 +231,7 @@ const getSingleStringSelectChange = (
  */
 const buttonTogglesAdapter = (
   item: FilterModel,
-  props: AdapterProps
+  { isLoading, ...props }: AdapterProps
 ): React.ComponentProps<typeof ButtonToggles> => {
   const { changeFilter, field } = props
   const stringOptions = getStringOptions(props)
@@ -239,6 +241,7 @@ const buttonTogglesAdapter = (
     onChange: getSingleStringSelectChange(item, changeFilter),
     value,
     options: stringOptions,
+    isLoading,
     // TODO: max: maxForFilterType('button_toggles'),
   }
 }
@@ -483,7 +486,7 @@ const tagListAdapter = (
  */
 const radioGroupAdapter = (
   item: FilterModel,
-  props: AdapterProps
+  { isLoading, ...props }: AdapterProps
 ): React.ComponentProps<typeof RadioGroup> => {
   const { changeFilter, field } = props
   const stringOptions = getStringOptions(props)
@@ -494,6 +497,7 @@ const radioGroupAdapter = (
     value,
     options: stringOptions,
     max: maxForFilterType('radio_buttons'),
+    isLoading,
   }
 }
 

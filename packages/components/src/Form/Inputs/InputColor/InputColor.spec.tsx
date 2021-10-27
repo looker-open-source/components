@@ -35,11 +35,6 @@ import { Button } from '../../../Button'
 import { InputColor } from './InputColor'
 
 describe('InputColor', () => {
-  test('with hidden input', () => {
-    renderWithTheme(<InputColor value="yellow" hideInput />)
-    expect(screen.queryByDisplayValue('yellow')).not.toBeInTheDocument()
-  })
-
   test('starts with a named color value', () => {
     renderWithTheme(<InputColor value="green" />)
     expect(screen.getByDisplayValue('green')).toBeInTheDocument()
@@ -51,6 +46,7 @@ describe('InputColor', () => {
     input.focus()
     fireEvent.change(input, { target: { value: 'blue' } })
     expect(screen.getByDisplayValue('blue')).toBeInTheDocument()
+    fireEvent.click(document)
   })
 
   test('with controlled state', () => {
@@ -82,6 +78,8 @@ describe('InputColor', () => {
     expect(input).toHaveValue('yellow')
     fireEvent.change(input, { target: { value: 'purple' } })
     expect(input).toHaveValue('purple')
+
+    fireEvent.click(document)
   })
 
   test('opens on swatch click', () => {
@@ -199,6 +197,30 @@ describe('InputColor', () => {
     const onChangeMock = jest.fn()
     renderWithTheme(<InputColor value="green" onChange={onChangeMock} />)
     fireEvent.change(screen.getByRole('textbox'), { target: { value: '' } })
+    expect(onChangeMock.mock.calls).toMatchInlineSnapshot(`
+      Array [
+        Array [
+          Object {
+            "currentTarget": Object {
+              "name": undefined,
+              "value": "",
+            },
+            "target": Object {
+              "name": undefined,
+              "value": "",
+            },
+          },
+        ],
+      ]
+    `)
+
+    fireEvent.click(document)
+  })
+
+  test('clear value with button', () => {
+    const onChangeMock = jest.fn()
+    renderWithTheme(<InputColor value="green" onChange={onChangeMock} />)
+    fireEvent.click(screen.getByRole('button'))
     expect(onChangeMock.mock.calls).toMatchInlineSnapshot(`
       Array [
         Array [

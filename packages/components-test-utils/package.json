@@ -26,5 +26,6 @@
       "@looker/eslint-config-oss"
     ]
   },
-  "gitHead": "62febc162e3e45124f403e2c84fc741f68fe6714"
+  "gitHead": "62febc162e3e45124f403e2c84fc741f68fe6714",
+  "dependencies": {}
 }

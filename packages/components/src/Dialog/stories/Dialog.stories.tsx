@@ -214,6 +214,24 @@ MultiFunctionButton.parameters = {
   storyshots: { disable: true },
 }
 
+export const CloseIconButton = () => {
+  return (
+    <Dialog
+      content={
+        <DialogLayout header="Has a close icon button">
+          Some content
+        </DialogLayout>
+      }
+    >
+      <Button>Open Dialog</Button>
+    </Dialog>
+  )
+}
+
+CloseIconButton.parameters = {
+  storyshots: { disable: true },
+}
+
 export default {
   argTypes: {
     ...defaultArgTypes,

@@ -26,8 +26,20 @@
 
 import { renderWithTheme } from '@looker/components-test-utils'
 import React from 'react'
-import { fireEvent, screen } from '@testing-library/react'
+import { fireEvent, screen, act } from '@testing-library/react'
 import { Button } from './Button'
+
+beforeEach(() => {
+  jest.useFakeTimers()
+})
+afterEach(() => {
+  jest.runOnlyPendingTimers()
+  jest.useRealTimers()
+})
+const runTimers = () =>
+  act(() => {
+    jest.runOnlyPendingTimers()
+  })
 
 describe('Button', () => {
   test('accepts a className prop', () => {
@@ -35,28 +47,6 @@ describe('Button', () => {
       <Button className="foo">button with class</Button>
     )
     expect(container.firstChild).toHaveClass('foo')
-  })
-
-  test('focus-visible: renders outline when tabbing into focus, but not when clicking', () => {
-    renderWithTheme(
-      <>
-        <Button>button</Button>
-        <Button>focus</Button>
-      </>
-    )
-
-    fireEvent.click(screen.getByText('button'))
-    // eslint-disable-next-line jest-dom/prefer-to-have-style
-    expect(screen.getByText('button').style.boxShadow).toEqual('')
-
-    fireEvent.keyUp(screen.getByText('focus'), {
-      charCode: 9,
-      code: 9,
-      key: 'Tab',
-    })
-    expect(screen.getByText('focus')).toHaveStyle(
-      'box-shadow: 0 0 0 0.15rem rgba(108,67,224,0.25);'
-    )
   })
 
   test('size', () => {
@@ -69,5 +59,45 @@ describe('Button', () => {
 
     expect(screen.getByText('Xsmall Button')).toBeInTheDocument()
     expect(screen.getByText('Large Button')).toBeInTheDocument()
+  })
+
+  describe('ripple effect', () => {
+    test('default', () => {
+      renderWithTheme(<Button>Test</Button>)
+
+      const button = screen.getByRole('button')
+      expect(button).not.toHaveClass('bg-on fg-in')
+      expect(button).toHaveStyle({
+        '--ripple-color': '#FFFFFF',
+        '--ripple-scale-end': '1',
+        // This should change to 0.1 when brandAnimation default becomes true
+        '--ripple-scale-start': '1',
+        '--ripple-size': '100%',
+        '--ripple-translate': '0, 0',
+      })
+
+      fireEvent.focus(button)
+      expect(button).toHaveClass('bg-on')
+
+      fireEvent.mouseDown(button)
+      expect(button).toHaveClass('bg-on fg-in')
+
+      // foreground is locked for a minimum time to animate the ripple
+      fireEvent.mouseUp(button)
+      runTimers()
+      expect(button).toHaveClass('bg-on fg-out')
+      runTimers()
+      expect(button).toHaveClass('bg-on')
+
+      fireEvent.blur(button)
+      expect(button).not.toHaveClass('bg-on fg-in')
+    })
+
+    test('Color critical', () => {
+      renderWithTheme(<Button color="critical">Test</Button>)
+
+      const button = screen.getByRole('button')
+      expect(button).toHaveStyle({ '--ripple-color': '#FFFFFF' })
+    })
   })
 })

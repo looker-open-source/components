@@ -50,6 +50,7 @@ const Template: Story<Tabs2Props> = args => (
 )
 
 export const Basic = Template.bind({})
+Basic.args = {}
 
 export const Distributed = Template.bind({})
 Distributed.args = { distributed: true }

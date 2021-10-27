@@ -93,9 +93,11 @@ describe('FieldColor', () => {
       currentTarget: { value: '#FFFF00' },
       target: { value: '#FFFF00' },
     })
+
+    fireEvent.click(document)
   })
 
-  test('with a defau1tValue', () => {
+  test('with a defaultValue', () => {
     renderWithTheme(
       <FieldColor defaultValue="purple" label="Background Color" />
     )
@@ -132,5 +134,7 @@ describe('FieldColor', () => {
     expect(input).toHaveValue('yellow')
     fireEvent.change(input, { target: { value: 'purple' } })
     expect(input).toHaveValue('purple')
+
+    fireEvent.click(document)
   })
 })

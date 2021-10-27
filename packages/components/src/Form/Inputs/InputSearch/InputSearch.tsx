@@ -35,7 +35,7 @@ import { SelectOptions } from '../Select'
 import {
   omitAriaAndValidationProps,
   pickAriaAndValidationProps,
-} from '../Select/utils/ariaProps'
+} from '../ariaProps'
 import { getMatchingOption } from '../Select/utils/options'
 import { useShouldWindowOptions } from '../Select/utils/useWindowedOptions'
 import { useFlatOptions } from '../Select/utils/useFlatOptions'

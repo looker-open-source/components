@@ -141,10 +141,39 @@ export interface SpecifiableTextColors {
   body: string
 }
 
+export type IllustrationColors = {
+  /**
+   * Used in Illustration background circles
+   * If not specified, the background will have a neutral color and simplified style
+   */
+  illustration1?: string
+  /**
+   * Used in Illustration background circles
+   * If not specified, the background will have a neutral color and simplified style
+   */
+  illustration2?: string
+  /**
+   * Used in Illustration background circles
+   * If not specified, the background will have a neutral color and simplified style
+   */
+  illustration3?: string
+  /**
+   * Used in Illustration background circles
+   * If not specified, the background will have a neutral color and simplified style
+   */
+  illustration4?: string
+  /**
+   * Used in Illustration background circles
+   * If not specified, the background will have a neutral color and simplified style
+   */
+  illustration5?: string
+}
+
 export const specifiableTextColors = ['title', 'body']
 
 export type SpecifiableColors = CoreColors &
   IntentColors &
+  IllustrationColors &
   Partial<SpecifiableTextColors>
 export const specifiableColors: Array<keyof SpecifiableColors> = [
   ...coreColors,

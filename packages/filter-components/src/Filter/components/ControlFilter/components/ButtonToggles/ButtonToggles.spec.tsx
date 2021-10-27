@@ -73,4 +73,16 @@ describe('ButtonToggles tests', () => {
     fireEvent.click(screen.getByText('label2'))
     expect(mock).toHaveBeenCalledWith('value2')
   })
+
+  it('handles loading state', () => {
+    renderWithTheme(
+      <ButtonToggles
+        isLoading
+        value={'value1'}
+        options={options}
+        onChange={jest.fn()}
+      />
+    )
+    expect(screen.getByRole('progressbar')).toBeInTheDocument()
+  })
 })
