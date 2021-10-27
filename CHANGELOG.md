@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 2.9.0-pre
+
+## `@looker/components` 2.9.0
+
+### Features
+
+- **InputColor:** Redesign for Google Material
+- **FieldColor:** Google Material label style
+- **Button:** Add ripple animation
+
+### Fixes
+
+- **Dialog:** Remove misplaced tooltip on close icon button
+
+## `@looker/filter-components` 0.11.0
+
+### Features
+
+- **ButtonGroup/ButtonToggles/CheckboxGroup/RadioGroup** Loading spinner when suggestions are being fetched
+
 # 2.8.5
 
 ## `@looker/filter-components` 0.10.5
