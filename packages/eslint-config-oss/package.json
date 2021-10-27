@@ -19,6 +19,7 @@
     "eslint-plugin-i18next": "^5.1.1",
     "eslint-plugin-import": "^2.24.1",
     "eslint-plugin-jest-dom": "3.9.0",
+    "eslint-plugin-lodash": "7.1.0",
     "eslint-plugin-mdx": "^1.14.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "3.4.0",
@@ -30,5 +31,7 @@
     "eslint-plugin-testing-library": "4.11.0",
     "typescript": "4.4.2"
   },
-  "gitHead": "62febc162e3e45124f403e2c84fc741f68fe6714"
+  "gitHead": "62febc162e3e45124f403e2c84fc741f68fe6714",
+  "devDependencies": {},
+  "peerDependencies": {}
 }

@@ -27,6 +27,10 @@
 import type { Ref } from 'react'
 import React, { forwardRef } from 'react'
 import styled from 'styled-components'
+import {
+  omitAriaAndValidationProps,
+  pickAriaAndValidationProps,
+} from '../ariaProps'
 import type { ComboboxMultiInputProps, ComboboxMultiProps } from '../Combobox'
 import {
   ComboboxMulti,
@@ -37,10 +41,6 @@ import type { InputChipsValidationProps } from '../InputChips'
 import type { SelectBaseProps } from './Select'
 import { SelectOptions } from './SelectOptions'
 import type { SelectOptionObject } from './types'
-import {
-  omitAriaAndValidationProps,
-  pickAriaAndValidationProps,
-} from './utils/ariaProps'
 import { getOptions } from './utils/options'
 import { useFlatOptions } from './utils/useFlatOptions'
 import { useShouldWindowOptions } from './utils/useWindowedOptions'

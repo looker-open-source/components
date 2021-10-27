@@ -196,6 +196,7 @@ export const useDialog = ({
   const dialog = renderDOM && (
     <DialogContext.Provider
       value={{
+        busy,
         closeModal: handleClose,
         id: dialogId,
       }}

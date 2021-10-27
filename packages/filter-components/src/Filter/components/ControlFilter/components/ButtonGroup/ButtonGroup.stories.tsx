@@ -65,6 +65,15 @@ Error.args = {
   validationMessage: { type: 'error' },
 }
 
+export const Loading = Template.bind({})
+Loading.args = {
+  ...Basic.args,
+  isLoading: true,
+}
+Loading.parameters = {
+  storyshots: { disable: true },
+}
+
 export default {
   title: 'Filters / ButtonGroup',
   component: ButtonGroup,

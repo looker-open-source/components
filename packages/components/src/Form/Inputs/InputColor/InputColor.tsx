@@ -27,11 +27,15 @@
 import type { ChangeEvent, FormEvent, Ref } from 'react'
 import React, { useState, forwardRef, useEffect } from 'react'
 import styled from 'styled-components'
-import { useID, useWrapEvent } from '../../../utils'
-import { usePopover, PopoverContent } from '../../../Popover'
+import { useWrapEvent } from '../../../utils'
+import { PopoverLayout } from '../../../Popover'
 import type { InputTextProps } from '../InputText'
-import { InputText } from '../InputText'
-import { useFormContext } from '../../Form'
+import type { ComboboxOptionObject, ComboboxProps } from '../Combobox'
+import { Combobox, ComboboxInput, ComboboxList } from '../Combobox'
+import {
+  omitAriaAndValidationProps,
+  pickAriaAndValidationProps,
+} from '../ariaProps'
 import { Swatch } from './Swatch'
 import {
   isValidColor,
@@ -43,14 +47,19 @@ import type { SimpleHSV } from './types'
 import { ColorPicker } from './ColorPicker'
 import { DEFAULT_INPUT_COLOR_WIDTH } from './dimensions'
 
-export interface InputColorProps extends Omit<InputTextProps, 'height'> {
-  /**
-   * If true, hides input and only show color swatch.
-   */
-  hideInput?: boolean
-  value?: string
-  defaultValue?: string
-}
+export type InputColorProps = Omit<
+  ComboboxProps,
+  'value' | 'defaultValue' | 'onChange'
+> &
+  Pick<InputTextProps, 'readOnly' | 'validationType' | 'onChange'> & {
+    /**
+     * No longer supported and will be removed in an upcoming 3.x release
+     * @deprecated
+     */
+    hideInput?: boolean
+    value?: string
+    defaultValue?: string
+  }
 
 const createEventWithHSVValue = (
   color: SimpleHSV | string,
@@ -72,25 +81,25 @@ function getColorFromText(text?: string) {
   return text && isValidColor(text) ? stringToSimpleHsv(text) : undefined
 }
 
-export const InputColorInternal = forwardRef(
+const InputColorInternal = forwardRef(
   (
     {
-      className,
       hideInput,
       id,
+      name,
       onChange,
       onFocus,
       onBlur,
+      placeholder,
       value,
       defaultValue = '',
       disabled,
       readOnly,
+      validationType,
       ...props
     }: InputColorProps,
     ref: Ref<HTMLInputElement>
   ) => {
-    const inputID = useID(id)
-    const validationMessage = useFormContext(props)
     const initialColor = getColorFromText(value || defaultValue)
 
     const [color, setColor] = useState<SimpleHSV | undefined>(initialColor)
@@ -110,83 +119,77 @@ export const InputColorInternal = forwardRef(
     }, [isFocused, value, inputTextValue])
 
     const callOnChange = (newColor: SimpleHSV | string) => {
-      onChange?.(createEventWithHSVValue(newColor, props.name))
+      onChange?.(createEventWithHSVValue(newColor, name))
     }
 
-    const setColorState = (newColor: SimpleHSV) => {
+    const setColorState = (newColor?: SimpleHSV) => {
       setColor(newColor)
-      newColor && setInputTextValue(simpleHsvToHex(newColor))
-      callOnChange(newColor)
+      const newTextValue = newColor ? simpleHsvToHex(newColor) : ''
+      setInputTextValue(newTextValue)
+      // When clicking the clear button, newColor is undefined,
+      // so we pass an empty string to callOnChange to clear the input
+      callOnChange(newColor || '')
     }
 
-    const handleInputTextChange = (event: FormEvent<HTMLInputElement>) => {
-      const newValue = event.currentTarget.value
+    const handleInputTextChange = (e: FormEvent<HTMLInputElement>) => {
+      const newValue = e.currentTarget.value
       setInputTextValue(newValue)
 
       const isValid = isValidColor(newValue) || newValue === ''
       if (isValid) {
         callOnChange(newValue)
       }
-      setColor(getColorFromText(event.currentTarget.value))
+      setColor(getColorFromText(newValue))
     }
 
-    const content = (
-      <PopoverContent p="u4">
-        <ColorPicker
-          hsv={color || { h: 0, s: 1, v: 1 }}
-          setHsv={setColorState}
-          width={DEFAULT_INPUT_COLOR_WIDTH}
-        />
-      </PopoverContent>
-    )
+    const handleClear = (value?: ComboboxOptionObject) => {
+      if (!value) {
+        setColorState()
+      }
+    }
 
-    const { popover, domProps } = usePopover({ content })
+    const ariaProps = pickAriaAndValidationProps(props)
 
     return (
-      <div className={className}>
-        <Swatch
-          color={color ? hsvToHex(color) : undefined}
+      <Combobox {...omitAriaAndValidationProps(props)} onChange={handleClear}>
+        <ComboboxInput
+          before={
+            <Swatch
+              color={color ? hsvToHex(color) : undefined}
+              disabled={disabled}
+              readOnly={readOnly}
+              ml="u2"
+            />
+          }
+          aria-describedby={`describedby-${id}`}
+          ref={ref}
           disabled={disabled}
           readOnly={readOnly}
-          {...domProps}
+          validationType={validationType}
+          onChange={handleInputTextChange}
+          value={inputTextValue}
+          onFocus={wrappedOnFocus}
+          onBlur={wrappedOnBlur}
+          placeholder={placeholder}
+          isClearable
+          {...ariaProps}
         />
-        {!disabled && !readOnly && popover}
-        {!hideInput && (
-          <InputText
-            {...props}
-            aria-describedby={`describedby-${id}`}
-            id={inputID}
-            ref={ref}
-            disabled={disabled}
-            readOnly={readOnly}
-            validationType={validationMessage && validationMessage.type}
-            onChange={handleInputTextChange}
-            value={inputTextValue}
-            onFocus={wrappedOnFocus}
-            onBlur={wrappedOnBlur}
-          />
+        {!disabled && !readOnly && (
+          <ComboboxList width="fit-content" {...ariaProps}>
+            <PopoverLayout>
+              <ColorPicker
+                hsv={color || { h: 0, s: 1, v: 1 }}
+                setHsv={setColorState}
+                width={DEFAULT_INPUT_COLOR_WIDTH}
+              />
+            </PopoverLayout>
+          </ComboboxList>
         )}
-      </div>
+      </Combobox>
     )
   }
 )
 
 InputColorInternal.displayName = 'InputColorInternal'
 
-export const InputColor = styled(InputColorInternal)`
-  display: flex;
-
-  ${Swatch} {
-    border-radius: ${({ hideInput, theme: { radii } }) =>
-      hideInput ? radii.medium : radii.none};
-    border-bottom-left-radius: ${({ theme: { radii } }) => radii.medium};
-    border-right: ${({ hideInput }) => (hideInput ? undefined : 'none')};
-    border-top-left-radius: ${({ theme: { radii } }) => radii.medium};
-  }
-
-  ${InputText} {
-    border-radius: ${({ theme: { radii } }) => radii.none};
-    border-bottom-right-radius: ${({ theme: { radii } }) => radii.medium};
-    border-top-right-radius: ${({ theme: { radii } }) => radii.medium};
-  }
-`
+export const InputColor = styled(InputColorInternal)``

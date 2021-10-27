@@ -37,7 +37,7 @@ export const ColorSwatches = () => {
 
   const swatches = Object.entries(colors).map(([name, color]) => (
     <Card key={name} width="100%">
-      <Swatch color={color} width="100%" />
+      <Swatch color={color} size="100%" />
       <Heading fontSize="xsmall" py="u1" px="u3" as="h5">
         {name}
       </Heading>

@@ -39,7 +39,7 @@ export type UseBoundedRippleProps = {
    * Change the color of the ripple background and foreground
    * @default neutral
    */
-  color?: ExtendedStatefulColor
+  color?: ExtendedStatefulColor | 'background'
   /**
    * Decimal multiplier, e.g. 1.5.
    * Use for unbounded ripple that needs to extend past element dimensions,
@@ -77,10 +77,8 @@ export type UseRippleResponse = {
    * The class names used in rippleStyle to trigger the animations
    */
   className: string
-  /**
-   * ref is only used for bounded ripple, to detect element dimensions
-   */
-  ref?: (node: HTMLElement | null) => void
+
+  ref?: React.Ref<HTMLDivElement>
   /**
    * style contains CSS variables to control the animation
    */

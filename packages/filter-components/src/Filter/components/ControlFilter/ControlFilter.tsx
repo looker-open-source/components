@@ -37,7 +37,6 @@ export const ControlFilter: FC<InternalFilterProps> = ({
   ast,
   expressionType,
   validationMessage,
-  isLoading,
   dispatchConfigTypeChange = false,
   ...adapterProps
 }) => {

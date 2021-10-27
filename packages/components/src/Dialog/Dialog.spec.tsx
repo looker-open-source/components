@@ -32,6 +32,7 @@ import {
   screen,
   fireEvent,
   waitForElementToBeRemoved,
+  within,
 } from '@testing-library/react'
 import { SimpleContent } from '../__mocks__/DialogContentSimple'
 import { DialogMediumContent } from '../__mocks__/DialogMediumContent'
@@ -41,6 +42,7 @@ import {
   ControlledLegacy,
   ControlledNoChildren,
 } from './stories/Controlled'
+import { CloseIconButton } from './stories/Dialog.stories'
 
 describe('Dialog', () => {
   test('Verify initial state', () => {
@@ -187,30 +189,61 @@ describe('Dialog', () => {
     await waitForElementToBeRemoved(() => screen.getByText(/We the People/))
   })
 
-  test('props onAfterClose and onAfterOpen are called on appropriated time', async () => {
-    jest.useFakeTimers()
-
-    const onAfterClose = jest.fn()
-    const onAfterOpen = jest.fn()
-
-    renderWithTheme(
-      <Dialog
-        onAfterClose={onAfterClose}
-        onAfterOpen={onAfterOpen}
-        content={<SimpleContent />}
-      >
-        <a>Open Dialog</a>
-      </Dialog>
-    )
-
-    fireEvent.click(screen.getByText('Open Dialog'))
-    act(() => {
-      jest.runOnlyPendingTimers()
+  describe('Animation behavior', () => {
+    beforeEach(() => {
+      jest.useFakeTimers()
     })
-    expect(onAfterOpen).toBeCalled()
-    fireEvent.click(screen.getByText('Done'))
-    await waitForElementToBeRemoved(() => screen.getByText('Dialog content'))
-    expect(onAfterClose).toBeCalled()
+    const runTimers = () =>
+      act(() => {
+        jest.runOnlyPendingTimers()
+      })
+    afterEach(() => {
+      runTimers()
+      jest.useRealTimers()
+    })
+
+    test('props onAfterClose and onAfterOpen are called', async () => {
+      const onAfterClose = jest.fn()
+      const onAfterOpen = jest.fn()
+
+      renderWithTheme(
+        <Dialog
+          onAfterClose={onAfterClose}
+          onAfterOpen={onAfterOpen}
+          content={<SimpleContent />}
+        >
+          <a>Open Dialog</a>
+        </Dialog>
+      )
+
+      fireEvent.click(screen.getByText('Open Dialog'))
+      runTimers()
+      expect(onAfterOpen).toBeCalled()
+      fireEvent.click(screen.getByText('Done'))
+      await waitForElementToBeRemoved(() => screen.getByText('Dialog content'))
+      expect(onAfterClose).toBeCalled()
+    })
+
+    test('Close IconButton does not have tooltip when auto-focused', () => {
+      // If the close icon button gets focus before animation is complete
+      // the tooltip will have the wrong position
+      renderWithTheme(<CloseIconButton />)
+      fireEvent.click(screen.getByText('Open Dialog'))
+
+      // Finish animating
+      runTimers()
+      // Close button has initial focus but no tooltip
+      const closeButton = within(screen.getByRole('dialog')).getByRole('button')
+      expect(closeButton).toHaveFocus()
+      expect(screen.queryByRole('tooltip')).not.toBeInTheDocument()
+
+      // Close button has tooltip on next focus
+      fireEvent.blur(closeButton)
+      fireEvent.focus(closeButton)
+      expect(screen.queryByRole('tooltip')).toBeInTheDocument()
+      // Close the dialog to avoid act warning
+      fireEvent.click(closeButton)
+    })
   })
 
   test('onClose callback', () => {
@@ -319,12 +352,12 @@ describe('Dialog', () => {
 
       renderWithTheme(<Dialog />)
       expect(errorMock.mock.calls).toMatchInlineSnapshot(`
-        Array [
-          Array [
-            "Dialog cannot be used without specifying content",
-          ],
-        ]
-      `)
+         Array [
+           Array [
+             "Dialog cannot be used without specifying content",
+           ],
+         ]
+       `)
 
       global.console = globalConsole
     })

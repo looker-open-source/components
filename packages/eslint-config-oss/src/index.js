@@ -69,6 +69,7 @@ module.exports = {
     'i18next',
     'header',
     'jest-dom',
+    'lodash',
     'react-hooks',
     'sort-keys-fix',
     'testing-library',
@@ -117,6 +118,7 @@ module.exports = {
     'import/no-extraneous-dependencies': 'error',
     'import/order': 'error',
     indentation: 'off',
+    'lodash/import-scope': ['error', 'method'],
     'no-console': 'warn',
     'no-redeclare': 'off', // prefer TS version of `no-redeclare` to support function overload syntax
     'no-restricted-imports': [

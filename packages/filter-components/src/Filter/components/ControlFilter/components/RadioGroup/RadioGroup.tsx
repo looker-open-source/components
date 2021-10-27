@@ -23,7 +23,10 @@
  SOFTWARE.
 
  */
-import { RadioGroup as RadioGroupComponent } from '@looker/components'
+import {
+  ProgressCircular,
+  RadioGroup as RadioGroupComponent,
+} from '@looker/components'
 import compact from 'lodash/compact'
 import pick from 'lodash/pick'
 import type { FC } from 'react'
@@ -32,6 +35,7 @@ import styled from 'styled-components'
 import type { StringSingleSelectProps } from '../../../../types/string_select_props'
 
 const InternalRadioGroup: FC<StringSingleSelectProps> = ({
+  isLoading,
   value = '',
   options,
   anyOption,
@@ -42,7 +46,9 @@ const InternalRadioGroup: FC<StringSingleSelectProps> = ({
     ...options,
   ])
 
-  return (
+  return isLoading ? (
+    <ProgressCircular size="medium" />
+  ) : (
     <RadioGroupComponent
       options={optionsWithAny}
       value={value}

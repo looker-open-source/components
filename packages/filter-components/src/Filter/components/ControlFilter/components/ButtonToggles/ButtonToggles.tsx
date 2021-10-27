@@ -23,12 +23,19 @@
  SOFTWARE.
 
  */
-import { ButtonToggle } from '@looker/components'
+import { ButtonToggle, ProgressCircular } from '@looker/components'
 import type { FC } from 'react'
 import React from 'react'
-import pick from 'lodash/pick'
 import type { StringSingleSelectProps } from '../../../../types/string_select_props'
 
-export const ButtonToggles: FC<StringSingleSelectProps> = (props) => (
-  <ButtonToggle {...pick(props, ['onChange', 'options', 'value'])} />
-)
+export const ButtonToggles: FC<StringSingleSelectProps> = ({
+  isLoading,
+  onChange,
+  options,
+  value,
+}) =>
+  isLoading ? (
+    <ProgressCircular size="medium" />
+  ) : (
+    <ButtonToggle onChange={onChange} options={options} value={value} />
+  )

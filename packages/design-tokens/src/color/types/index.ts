@@ -41,6 +41,7 @@ export { coreColors, intentColors, specifiableColors } from './specifiable'
 export type { DerivativeColors } from './derivative'
 export type {
   CoreColors,
+  IllustrationColors,
   IntentColors,
   SpecifiableColors,
   SpecifiableTextColors,

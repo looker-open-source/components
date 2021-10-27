@@ -59,6 +59,10 @@ export interface ButtonBaseProps
 }
 
 export interface ButtonProps extends ButtonBaseProps, ButtonIconProps {
+  /**
+   * prop for internal used to support correct color on Button's ripple.
+   */
+  rippleBackgroundColor?: 'background'
   size?: ButtonSizes
   /**
    * If true, the button's width will be set to 100%.

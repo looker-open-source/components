@@ -54,4 +54,16 @@ describe('RadioGroup tests', () => {
 
     expect(screen.getByLabelText('any option')).toBeChecked()
   })
+
+  it('handles loading state', () => {
+    renderWithTheme(
+      <RadioGroup
+        isLoading
+        value={'value1'}
+        options={options}
+        onChange={jest.fn()}
+      />
+    )
+    expect(screen.getByRole('progressbar')).toBeInTheDocument()
+  })
 })

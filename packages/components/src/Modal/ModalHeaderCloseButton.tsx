@@ -39,7 +39,7 @@ const ModalHeaderCloseButtonLayout: FC<ModalHeaderCloseButtonProps> = ({
   size = 'medium',
 }) => {
   const { t } = useTranslation('ModalHeaderCloseButton')
-  const { closeModal, id } = useContext(DialogContext)
+  const { busy, closeModal, id } = useContext(DialogContext)
   return (
     <IconButton
       id={id ? `${id}-iconButton` : undefined}
@@ -47,6 +47,7 @@ const ModalHeaderCloseButtonLayout: FC<ModalHeaderCloseButtonProps> = ({
       onClick={closeModal}
       label={t('Close')}
       icon={<Close />}
+      data-notooltip={busy || undefined}
     />
   )
 }

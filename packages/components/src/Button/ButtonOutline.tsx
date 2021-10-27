@@ -32,30 +32,10 @@ export const ButtonOutline = styled(ButtonBase)`
   border: 1px solid ${({ theme }) => theme.colors.ui3};
   color: ${({ theme, color = 'key' }) => theme.colors[color]};
 
-  &:hover,
-  &:focus,
-  &.hover {
-    background: ${({ theme, color = 'key' }) => theme.colors[`${color}Subtle`]};
-    color: ${({ theme, color = 'key' }) => theme.colors[`${color}`]};
-  }
-
-  &[aria-expanded='true'],
-  &:active,
-  &.active {
+  &[aria-expanded='true'] {
     background: ${({ theme, color = 'key' }) => theme.colors[`${color}Accent`]};
     border-color: ${({ theme, color = 'key' }) =>
       theme.colors[`${color}Focus`]};
     color: ${({ theme, color = 'key' }) => theme.colors[color]};
-  }
-
-  &[disabled] {
-    &:hover,
-    &:active,
-    &:focus {
-      background-color: ${({ theme, color = 'key' }) =>
-        theme.colors[`${color}Text`]};
-      border-color: ${({ theme }) => theme.colors.ui3};
-      color: ${({ theme, color = 'key' }) => theme.colors[color]};
-    }
   }
 `

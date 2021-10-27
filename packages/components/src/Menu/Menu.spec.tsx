@@ -37,7 +37,6 @@ import type { MouseEvent as ReactMouseEvent } from 'react'
 import React, { useRef } from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { Favorite } from '@styled-icons/material-outlined'
-import { Button } from '../Button'
 import { Tooltip } from '../Tooltip'
 import { Menu, MenuItem } from './'
 
@@ -51,7 +50,7 @@ const menu = (
     }
   >
     <Tooltip content="Select your favorite kind">
-      <Button>Cheese</Button>
+      <button>Cheese</button>
     </Tooltip>
   </Menu>
 )
@@ -109,7 +108,7 @@ describe('<Menu />', () => {
             </>
           }
         >
-          <Button>Cheese</Button>
+          <button>Cheese</button>
         </Menu>
       )
     }
@@ -172,7 +171,7 @@ describe('<Menu />', () => {
           </>
         }
       >
-        <Button>Cheese</Button>
+        <button>Cheese</button>
       </Menu>
     )
 
@@ -195,7 +194,7 @@ describe('<Menu />', () => {
               </>
             }
           >
-            <Button>Cheese</Button>
+            <button>Cheese</button>
           </Menu>
           Some text in the div
         </div>
@@ -239,7 +238,7 @@ describe('<Menu />', () => {
             <MenuItem nestedMenu={<MenuItem>Swiss</MenuItem>}>Gouda</MenuItem>
           }
         >
-          <Button>Cheese</Button>
+          <button>Cheese</button>
         </Menu>
       )
 
@@ -285,7 +284,7 @@ describe('<Menu />', () => {
             <MenuItem nestedMenu={<MenuItem>Swiss</MenuItem>}>Gouda</MenuItem>
           }
         >
-          <Button>Cheese</Button>
+          <button>Cheese</button>
         </Menu>
       )
 
@@ -332,7 +331,7 @@ describe('<Menu />', () => {
             </>
           }
         >
-          <Button>Cheese</Button>
+          <button>Cheese</button>
         </Menu>
       )
 
@@ -366,7 +365,7 @@ describe('<Menu />', () => {
             </MenuItem>
           }
         >
-          <Button>Cheese</Button>
+          <button>Cheese</button>
         </Menu>
       )
 
@@ -397,7 +396,7 @@ describe('<Menu />', () => {
             </MenuItem>
           }
         >
-          <Button>Cheese</Button>
+          <button>Cheese</button>
         </Menu>
       )
 
@@ -437,7 +436,7 @@ describe('<Menu />', () => {
             </MenuItem>
           }
         >
-          <Button>Cheese</Button>
+          <button>Cheese</button>
         </Menu>
       )
 

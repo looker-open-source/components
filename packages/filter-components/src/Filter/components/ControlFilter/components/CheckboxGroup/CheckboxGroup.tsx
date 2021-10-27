@@ -26,8 +26,8 @@
 import {
   CheckboxGroup as CheckboxGroupComponent,
   FormContext,
+  ProgressCircular,
 } from '@looker/components'
-import pick from 'lodash/pick'
 import React from 'react'
 import type { StringMultiSelectProps } from '../../../../types/string_select_props'
 import { ERROR_TYPE } from '../../../../utils'
@@ -38,20 +38,31 @@ import { ERROR_TYPE } from '../../../../utils'
  */
 export const CheckboxGroup = ({
   validationMessage,
-  ...props
-}: StringMultiSelectProps) => (
-  <FormContext.Provider
-    value={{
-      validationMessages: {
-        'filter-checkbox-group': {
-          type: validationMessage?.type === ERROR_TYPE ? ERROR_TYPE : undefined,
+  inline,
+  isLoading,
+  onChange,
+  options,
+  value,
+}: StringMultiSelectProps) =>
+  isLoading ? (
+    <ProgressCircular size="medium" />
+  ) : (
+    <FormContext.Provider
+      value={{
+        validationMessages: {
+          'filter-checkbox-group': {
+            type:
+              validationMessage?.type === ERROR_TYPE ? ERROR_TYPE : undefined,
+          },
         },
-      },
-    }}
-  >
-    <CheckboxGroupComponent
-      name="filter-checkbox-group"
-      {...pick(props, ['inline', 'onChange', 'options', 'value'])}
-    />
-  </FormContext.Provider>
-)
+      }}
+    >
+      <CheckboxGroupComponent
+        name="filter-checkbox-group"
+        inline={inline}
+        onChange={onChange}
+        options={options}
+        value={value}
+      />
+    </FormContext.Provider>
+  )

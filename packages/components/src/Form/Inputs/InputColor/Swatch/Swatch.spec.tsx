@@ -43,10 +43,10 @@ describe('Swatch', () => {
   })
 
   test('width and height', () => {
-    renderWithTheme(<Swatch color="blue" width="50px" height="25px" />)
+    renderWithTheme(<Swatch color="blue" size="large" />)
     const swatch = screen.getByTestId('swatch')
-    expect(swatch).toHaveStyle('height: 25px')
-    expect(swatch).toHaveStyle('width: 50px')
+    expect(swatch).toHaveStyle('height: 2rem')
+    expect(swatch).toHaveStyle('width: 2rem')
   })
 
   test('disabled state', () => {
