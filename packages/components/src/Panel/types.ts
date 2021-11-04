@@ -115,6 +115,16 @@ export type UsePanelProps = PanelBaseProps & {
    * @default undefined
    */
   isOpen?: boolean
+
+  /**
+   * Called after the panel close animation finishes
+   */
+  onAfterClose?: () => void
+
+  /**
+   * Called after the panel open animation finishes
+   */
+  onAfterOpen?: () => void
 }
 
 export interface UsePanelResponseDom {

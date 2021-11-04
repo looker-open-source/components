@@ -35,12 +35,11 @@ import type {
   ChartData,
   CCartesian,
   LineProps,
-  SDKRecord,
   CSeriesSize,
+  SDKRecord,
 } from '@looker/visualizations-adapters'
 import { Tooltip as VisxTooltip } from '@visx/xychart'
-import type { TooltipDatum } from '@visx/xychart'
-import type { RenderTooltipParams } from '@visx/xychart/lib/components/Tooltip'
+import type { TooltipData } from '@visx/xychart'
 import { SpaceVertical } from '@looker/components'
 
 import get from 'lodash/get'
@@ -52,10 +51,12 @@ import {
 } from '../utils'
 import { DLGroup } from '../DLGroup'
 
-export type TooltipProps = Pick<LineProps, 'fields' | 'renderTooltip'> & {
+export type TooltipProps = Pick<LineProps, 'fields'> & {
   className?: string
   config: CCartesian
   data: ChartData
+  showDatumGlyph?: boolean
+  snapToDatum?: boolean
 }
 
 /**
@@ -63,9 +64,21 @@ export type TooltipProps = Pick<LineProps, 'fields' | 'renderTooltip'> & {
  * and Area with 2 main purposes:
  * 1. Override default styling on visx Tooltip component
  * 2. Construct a renderTooltip function to be passed to nested visx Tooltip component
+ *
+ * @prop config: Vis Config Object
+ * @prop data: Query response
+ * @prop showDatumGlyph: Render the glyph on hover
+ * @prop snapToDatum: Toggle tooltip position between data point position or mouse position
  */
 export const Tooltip = styled(
-  ({ className, config, data, fields, renderTooltip }: TooltipProps) => {
+  ({
+    className,
+    config,
+    data,
+    fields,
+    snapToDatum = true,
+    showDatumGlyph = true,
+  }: TooltipProps) => {
     const theme = useContext(ThemeContext)
     const { tooltips } = config
 
@@ -73,9 +86,11 @@ export const Tooltip = styled(
       return <></>
     }
 
-    const defaultRenderTooltip = ({
+    const renderTooltip = ({
       tooltipData,
-    }: RenderTooltipParams<TooltipDatum<SDKRecord>>) => {
+    }: {
+      tooltipData?: TooltipData<SDKRecord>
+    }) => {
       const nearestDatumMeasureName = tooltipData?.nearestDatum?.key || ''
       const nearestDatumIndex = tooltipData?.nearestDatum?.index || 0
       const datum = data[nearestDatumIndex]
@@ -159,10 +174,10 @@ export const Tooltip = styled(
       <VisxTooltip
         className={className}
         detectBounds
-        renderTooltip={renderTooltip || defaultRenderTooltip}
-        showDatumGlyph
-        snapTooltipToDatumX
-        snapTooltipToDatumY
+        renderTooltip={renderTooltip}
+        showDatumGlyph={showDatumGlyph}
+        snapTooltipToDatumX={snapToDatum}
+        snapTooltipToDatumY={snapToDatum}
         unstyled
         applyPositionStyle
         renderGlyph={({ color, key, datum }) => {

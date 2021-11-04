@@ -41,19 +41,13 @@ import {
   typography,
 } from '@looker/design-tokens'
 import type { Ref } from 'react'
-import React, {
-  forwardRef,
-  useCallback,
-  useContext,
-  useLayoutEffect,
-  useEffect,
-} from 'react'
+import React, { forwardRef, useCallback, useContext, useEffect } from 'react'
 import styled from 'styled-components'
 import once from 'lodash/once'
 import throttle from 'lodash/throttle'
 import { usePopover } from '../../../Popover'
 import { listPadding } from '../../../List/utils'
-import { useResize } from '../../../utils'
+import { useResize, useSafeLayoutEffect } from '../../../utils'
 import type { ComboboxOptionIndicatorProps } from './types'
 import { ComboboxContext, ComboboxMultiContext } from './ComboboxContext'
 import { useBlur } from './utils/useBlur'
@@ -153,7 +147,7 @@ const ComboboxListInternal = forwardRef(
     // accurate and ready for keyboard navigation handlers. Using layout
     // effect to schedule this effect before the ComboboxOptions push into
     // the array
-    useLayoutEffect(() => {
+    useSafeLayoutEffect(() => {
       if (windowingPropRef) windowingPropRef.current = windowing
       if (optionsRef) optionsRef.current = []
       return () => {

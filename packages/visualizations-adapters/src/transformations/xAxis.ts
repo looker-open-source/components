@@ -27,7 +27,7 @@
 import type {
   ConfigHelper,
   CCartesian,
-  AxisConfig,
+  XAxisConfig,
   RawApiConfigResponse,
   FieldMetadata,
 } from '../types'
@@ -53,9 +53,9 @@ type XAxisRaw = {
  */
 const deriveDefaults = (
   axisRaw: Partial<XAxisRaw>,
-  axisOfficial: AxisConfig,
+  axisOfficial: XAxisConfig,
   measure: FieldMetadata
-): AxisConfig => {
+): XAxisConfig => {
   // Get default label value
   const { label: measureLabel, view_label: measureViewLabel } = measure
 
@@ -73,15 +73,13 @@ const deriveDefaults = (
     gridlines = x_axis_gridlines,
     label = show_x_axis_label === false ? false : x_axis_label,
     reversed = x_axis_reversed,
-    tick_density = 'default',
     values = show_x_axis_ticks,
-  } = axisOfficial as AxisConfig
+  } = axisOfficial as XAxisConfig
 
   return {
     gridlines: typeof gridlines === 'undefined' ? true : gridlines,
     label: label === null ? false : label,
     reversed: !!reversed,
-    tick_density,
     values: typeof values === 'undefined' ? true : values,
   }
 }
@@ -96,7 +94,7 @@ export const xAxis: ConfigHelper<CCartesian> = ({ config, fields }) => {
     show_x_axis_ticks = true,
     show_x_axis_label = true,
     x_axis_label,
-    x_axis = [{}] as AxisConfig[], // officially supported config
+    x_axis = [{}] as XAxisConfig[], // officially supported config
     ...restConfig
   } = config
 
@@ -112,7 +110,7 @@ export const xAxis: ConfigHelper<CCartesian> = ({ config, fields }) => {
   ]
 
   const longestListLength = Math.max(xAxisRaw.length, x_axis.length)
-  const xAxisWithDefaults: AxisConfig[] = []
+  const xAxisWithDefaults: XAxisConfig[] = []
 
   for (let i = 0; i < longestListLength; i++) {
     const rawAxisAtPosition = omitBy(xAxisRaw[i] || {}, isNull)

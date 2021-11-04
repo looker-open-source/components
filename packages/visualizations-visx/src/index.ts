@@ -25,6 +25,8 @@
  */
 
 export * from './Area'
+export * from './Bar'
+export * from './Column'
 export * from './Line'
 export * from './Scatter'
 export * from './Sparkline'

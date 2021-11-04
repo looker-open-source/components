@@ -29,9 +29,9 @@
 
 import omit from 'lodash/omit'
 import type { FormEvent, Ref } from 'react'
-import React, { forwardRef, useRef, useContext, useLayoutEffect } from 'react'
+import React, { forwardRef, useRef, useContext } from 'react'
 import styled, { css } from 'styled-components'
-import { useForkedRef, useWrapEvent } from '../../../utils'
+import { useForkedRef, useSafeLayoutEffect, useWrapEvent } from '../../../utils'
 import { InputText } from '../InputText'
 import { AdvancedInputControls } from '../AdvancedInputControls'
 import { ComboboxContext } from './ComboboxContext'
@@ -95,7 +95,7 @@ export const ComboboxInputInternal = forwardRef(
     // If they are controlling the value we still need to do our transitions, so
     // we have this derived state to emulate onChange of the input as we receive
     // new `value`s ...[*]
-    useLayoutEffect(() => {
+    useSafeLayoutEffect(() => {
       if (controlledValue !== undefined) {
         if (isInputting.current) {
           handleValueChange(controlledValue)

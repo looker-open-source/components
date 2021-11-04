@@ -36,6 +36,7 @@ export const mockFields: Fields = {
       sortable: true,
       view: 'orders',
       view_label: 'Orders',
+      value_format: null,
     },
     {
       is_numeric: true,
@@ -45,6 +46,7 @@ export const mockFields: Fields = {
       sortable: true,
       view: 'orders',
       view_label: 'Orders',
+      value_format: '$#,##0.00',
     },
   ],
   dimensions: [
@@ -60,6 +62,7 @@ export const mockFields: Fields = {
       type: 'date_date',
       view: 'orders',
       view_label: 'Orders',
+      value_format: null,
     },
   ],
 }

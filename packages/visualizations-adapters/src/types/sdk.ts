@@ -45,6 +45,7 @@ export type FieldMetadata = {
   view: string
   view_label: string
   label_short: string
+  value_format: string | null
 }
 
 export type DimensionMetadata = FieldMetadata & {

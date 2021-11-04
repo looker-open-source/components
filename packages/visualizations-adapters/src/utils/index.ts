@@ -25,6 +25,7 @@
  */
 
 export * from './buildChartConfig'
+export * from './formatErrorMessage'
 export * from './hexToRgba'
 export * from './usePrevious'
 export * from './useMeasuredText'

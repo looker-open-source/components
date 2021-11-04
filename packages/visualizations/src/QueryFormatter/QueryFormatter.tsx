@@ -26,7 +26,8 @@
 
 import type { FC, ReactElement } from 'react'
 import React, { useContext } from 'react'
-import { Space, ProgressCircular } from '@looker/components'
+import { Space, ProgressCircular, ComponentsProvider } from '@looker/components'
+import { ThemeContext } from 'styled-components'
 import type { CAll } from '@looker/visualizations-adapters'
 import {
   tabularResponse,
@@ -40,8 +41,23 @@ export interface QueryFormatterProps {
   children: ReactElement
 }
 
-export const QueryFormatter: FC<QueryFormatterProps> = ({ children }) => {
+export const QueryFormatter: FC<QueryFormatterProps> = props => {
+  const { children } = props
+
   const { ok, data = [], fields, config, loading } = useContext(QueryContext)
+
+  const theme = useContext(ThemeContext)
+
+  if (!theme) {
+    // Recursively wrap QueryFormatter in ComponentsProvider to ensure that
+    // custom vis can be rendered outside of Looker Components context
+    // without breaking.
+    return (
+      <ComponentsProvider>
+        <QueryFormatter {...props} />
+      </ComponentsProvider>
+    )
+  }
 
   if (loading) {
     return (

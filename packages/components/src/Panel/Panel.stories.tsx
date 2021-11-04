@@ -24,14 +24,15 @@
 
  */
 
-import React from 'react'
+import React, { useCallback, useRef, useState } from 'react'
 import type { Story } from '@storybook/react/types-6-0'
 import { Done } from '@styled-icons/material'
 import { Button } from '../Button'
+import { FieldText } from '../Form'
 import { Drawer } from '../Drawer'
 import { List } from '../List'
 import { ListItem } from '../ListItem'
-import { Aside, Layout, Page, Section, SpaceVertical } from '../Layout'
+import { Aside, Box2, Layout, Page, Section, SpaceVertical } from '../Layout'
 import { Paragraph } from '../Text'
 import { TreeCollection, Tree, TreeItem } from '../Tree'
 import { defaultArgTypes as argTypes } from '../../../../apps/storybook/src/defaultArgTypes'
@@ -313,5 +314,46 @@ export const WithDrawer = () => (
 )
 
 WithDrawer.parameters = {
+  storyshots: { disable: true },
+}
+
+export const AnimationCallbacks = () => {
+  const inputRef = useRef<HTMLInputElement>(null)
+  const focusInput = useCallback(() => {
+    inputRef.current?.focus()
+  }, [])
+  const [message, setMessage] = useState('')
+  const showMessage = () => {
+    setMessage('Panel closed')
+  }
+  return (
+    <Page hasAside>
+      <Aside width="20rem">
+        <Panels>
+          <Box2 p="medium" height={300}>
+            <Panel
+              title="Animation Callbacks"
+              onAfterOpen={focusInput}
+              onAfterClose={showMessage}
+              content={
+                <Box2 px="medium">
+                  <FieldText label="Focus onAfterOpen" ref={inputRef} />
+                </Box2>
+              }
+            >
+              <Button>Open Panel</Button>
+            </Panel>
+          </Box2>
+        </Panels>
+      </Aside>
+      <Section>
+        <Paragraph>Main stuff here...</Paragraph>
+        <Paragraph>{message}</Paragraph>
+      </Section>
+    </Page>
+  )
+}
+
+AnimationCallbacks.parameters = {
   storyshots: { disable: true },
 }

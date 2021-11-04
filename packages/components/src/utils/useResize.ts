@@ -24,9 +24,9 @@
 
  */
 
-import { useLayoutEffect } from 'react'
 import throttle from 'lodash/throttle'
 import ResizeObserver from 'resize-observer-polyfill'
+import { useSafeLayoutEffect } from './useSafeLayoutEffect'
 
 /**
  * Calls the provided handler function when the element is resized
@@ -34,7 +34,7 @@ import ResizeObserver from 'resize-observer-polyfill'
  * @param handler the function to call on resize
  */
 export const useResize = (element: HTMLElement | null, handler: () => void) => {
-  useLayoutEffect(() => {
+  useSafeLayoutEffect(() => {
     const throttledHandler = throttle(handler, 100)
 
     if (!element) {

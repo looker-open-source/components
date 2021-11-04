@@ -25,10 +25,11 @@
  */
 
 import type { Ref, ReactNode } from 'react'
-import React, { forwardRef, useLayoutEffect, useRef } from 'react'
+import React, { forwardRef, useRef } from 'react'
 import { styleDefenderCSS } from '@looker/components-providers'
 import { createPortal } from 'react-dom'
 import styled from 'styled-components'
+import { useSafeLayoutEffect } from '../utils'
 
 const rootId = 'modal-root'
 
@@ -75,7 +76,7 @@ export const Portal = forwardRef(
   (props: PortalProps, ref: Ref<HTMLDivElement>) => {
     const el = useRef(document.createElement('div'))
 
-    useLayoutEffect(() => {
+    useSafeLayoutEffect(() => {
       const root = getPortalRoot()
       if (!root) return
 

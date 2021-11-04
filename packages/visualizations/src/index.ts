@@ -24,8 +24,16 @@
 
  */
 
-import { Area, Line, Scatter, Sparkline } from '@looker/visualizations-visx'
+import {
+  Area,
+  Bar,
+  Column,
+  Line,
+  Scatter,
+  Sparkline,
+} from '@looker/visualizations-visx'
 import { Table } from '@looker/visualizations-table'
+import { SingleValue } from '@looker/visualizations-single-value'
 
 export * from '@looker/visualizations-adapters'
 export * from './QueryFormatter'
@@ -37,4 +45,4 @@ export * from './Visualization'
  * they're based on.
  * */
 
-export { Area, Table, Line, Scatter, Sparkline }
+export { Area, Bar, Column, Table, Line, Scatter, Sparkline, SingleValue }

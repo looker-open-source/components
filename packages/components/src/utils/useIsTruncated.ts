@@ -24,8 +24,9 @@
 
  */
 
-import { useState, useCallback, useLayoutEffect } from 'react'
+import { useState, useCallback } from 'react'
 import ResizeObserver from 'resize-observer-polyfill'
+import { useSafeLayoutEffect } from './useSafeLayoutEffect'
 
 /*
  * Helper to be used in context where `text-overflow: ellipsis;` is set,
@@ -49,7 +50,7 @@ export const useIsTruncated = (
     element && setIsTruncated(isOverflowing(element))
   }, [element])
 
-  useLayoutEffect(() => {
+  useSafeLayoutEffect(() => {
     if (!element) {
       return
     }

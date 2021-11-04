@@ -25,6 +25,7 @@
  */
 
 import type { ConfigHelper, SupportedChartTypes, CAll } from '../types'
+
 import { barPositioning } from './barPositioning'
 import { linePositioning } from './linePositioning'
 import { legendPosition } from './legendPosition'
@@ -44,6 +45,7 @@ import { tooltips } from './tooltips'
 import { truncateText } from './truncateText'
 import { xAxis } from './xAxis'
 import { yAxis } from './yAxis'
+import { yAxisRange } from './yAxisRange'
 
 export const commonCartesianDefaults = [
   seriesLabels,
@@ -56,7 +58,6 @@ export const commonCartesianDefaults = [
 ]
 
 export const commonLineDefaults = [
-  linePositioning,
   seriesPointStyle,
   seriesPointShape,
   renderNullValues,
@@ -69,6 +70,7 @@ export const chartConfigByType: Record<
   area: [
     ...commonLineDefaults,
     ...commonCartesianDefaults,
+    linePositioning,
     seriesLineWidth,
     sanitizeSDKResponse,
   ],
@@ -97,10 +99,12 @@ export const chartConfigByType: Record<
     renderNullValues,
     sanitizeSDKResponse,
   ],
+  single_value: [sanitizeSDKResponse],
   sparkline: [
     seriesColors,
     seriesLineWidth,
     renderNullValues,
+    yAxisRange,
     sanitizeSDKResponse,
   ],
 }

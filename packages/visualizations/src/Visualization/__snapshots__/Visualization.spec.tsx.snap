@@ -120,8 +120,6 @@ Array [
       -200,
       10000,
     ],
-    "reversed": false,
-    "tick_density": "default",
     "values": true,
   },
 ]
@@ -136,8 +134,6 @@ Array [
       -200,
       10000,
     ],
-    "reversed": false,
-    "tick_density": "default",
     "values": true,
   },
 ]
@@ -152,8 +148,6 @@ Array [
       -200,
       10000,
     ],
-    "reversed": false,
-    "tick_density": "default",
     "values": true,
   },
 ]
@@ -168,8 +162,6 @@ Array [
       -200,
       10000,
     ],
-    "reversed": false,
-    "tick_density": "default",
     "values": true,
   },
 ]
@@ -184,8 +176,6 @@ Array [
       -200,
       10000,
     ],
-    "reversed": false,
-    "tick_density": "default",
     "values": true,
   },
 ]
@@ -229,13 +219,11 @@ Object {
   },
   "tooltips": true,
   "type": "area",
-  "value_labels": "legend",
   "x_axis": Array [
     Object {
       "gridlines": false,
       "label": "Orders Created Date",
       "reversed": false,
-      "tick_density": "default",
       "values": true,
     },
   ],
@@ -247,8 +235,6 @@ Object {
         "auto",
         "auto",
       ],
-      "reversed": false,
-      "tick_density": "default",
       "values": true,
     },
   ],
@@ -275,13 +261,11 @@ Object {
   },
   "tooltips": true,
   "type": "bar",
-  "value_labels": "legend",
   "x_axis": Array [
     Object {
       "gridlines": false,
       "label": "Orders Created Date",
       "reversed": false,
-      "tick_density": "default",
       "values": true,
     },
   ],
@@ -293,8 +277,6 @@ Object {
         "auto",
         "auto",
       ],
-      "reversed": false,
-      "tick_density": "default",
       "values": true,
     },
   ],
@@ -321,13 +303,11 @@ Object {
   },
   "tooltips": true,
   "type": "column",
-  "value_labels": "legend",
   "x_axis": Array [
     Object {
       "gridlines": false,
       "label": "Orders Created Date",
       "reversed": false,
-      "tick_density": "default",
       "values": true,
     },
   ],
@@ -339,8 +319,6 @@ Object {
         "auto",
         "auto",
       ],
-      "reversed": false,
-      "tick_density": "default",
       "values": true,
     },
   ],
@@ -352,7 +330,6 @@ Object {
   "legend": Object {
     "position": "bottom",
   },
-  "positioning": "overlay",
   "render_null_values": false,
   "series": Object {
     "orders.average_total_amount_of_order_usd": Object {
@@ -374,13 +351,11 @@ Object {
   },
   "tooltips": true,
   "type": "line",
-  "value_labels": "legend",
   "x_axis": Array [
     Object {
       "gridlines": false,
       "label": "Orders Created Date",
       "reversed": false,
-      "tick_density": "default",
       "values": true,
     },
   ],
@@ -392,8 +367,6 @@ Object {
         "auto",
         "auto",
       ],
-      "reversed": false,
-      "tick_density": "default",
       "values": true,
     },
   ],
@@ -417,7 +390,6 @@ Object {
   "legend": Object {
     "position": "bottom",
   },
-  "positioning": "overlay",
   "render_null_values": false,
   "series": Object {
     "orders.average_total_amount_of_order_usd": Object {
@@ -441,13 +413,11 @@ Object {
   },
   "tooltips": true,
   "type": "scatter",
-  "value_labels": "legend",
   "x_axis": Array [
     Object {
       "gridlines": false,
       "label": "Orders Created Date",
       "reversed": false,
-      "tick_density": "default",
       "values": true,
     },
   ],
@@ -459,11 +429,15 @@ Object {
         "auto",
         "auto",
       ],
-      "reversed": false,
-      "tick_density": "default",
       "values": true,
     },
   ],
+}
+`;
+
+exports[`Derives default values from SDK response (Single Value Chart) 1`] = `
+Object {
+  "type": "single_value",
 }
 `;
 
@@ -481,7 +455,14 @@ Object {
     },
   },
   "type": "sparkline",
-  "value_labels": "legend",
+  "y_axis": Array [
+    Object {
+      "range": Array [
+        "auto",
+        "auto",
+      ],
+    },
+  ],
 }
 `;
 
@@ -501,7 +482,6 @@ Object {
   },
   "truncate_text": true,
   "type": "table",
-  "value_labels": "legend",
 }
 `;
 

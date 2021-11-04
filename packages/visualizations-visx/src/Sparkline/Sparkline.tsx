@@ -30,7 +30,12 @@ import { LinePath } from '@visx/shape'
 import { Point } from '@visx/point'
 import { useMeasuredElement } from '@looker/components'
 import type { SparklineProps } from '@looker/visualizations-adapters'
-import { VisWrapper } from '@looker/visualizations-adapters'
+import {
+  VisWrapper,
+  isNumeric,
+  DEFAULT_HEIGHT,
+} from '@looker/visualizations-adapters'
+import { getSeriesColor } from '../utils'
 
 // When encountering a null value, the Sparkline will render a blank space.
 // This means that it is actually rendering two separate lines in the SVG,
@@ -52,9 +57,8 @@ const chunkByNull = (data: number[]) =>
 
 interface PointConfig {
   data: number[]
-  chartRect: DOMRect
-  min: number
-  max: number
+  chartDimensions: { width: number; height: number }
+  yRange: [number, number]
   lineWidth: number
   render_null_values: boolean
 }
@@ -62,9 +66,8 @@ interface PointConfig {
 // Calculate line path points based on data and chart dimensions.
 const generatePoints = ({
   data,
-  chartRect,
-  min,
-  max,
+  chartDimensions,
+  yRange,
   lineWidth,
   render_null_values,
 }: PointConfig) => {
@@ -72,12 +75,13 @@ const generatePoints = ({
   // this is accomplished by rendering multiple LinePaths, with one set ending
   // at the null value and beginning a new shape after
   const dataChunks = render_null_values ? [data] : chunkByNull(data)
+  const [yMin, yMax] = yRange
 
   const chartPadding = lineWidth / 2 // pad the svg area so that thick strokes don't get cropped
-  const chartWidth = chartRect.width - chartPadding * 2
-  const chartHeight = chartRect.height - chartPadding * 2
+  const chartWidth = chartDimensions.width - chartPadding * 2
+  const chartHeight = chartDimensions.height - chartPadding * 2
   const pointSpacing = chartWidth / Math.max(data.length - 1, 1)
-  const valueRange = max - min
+  const valueRange = yMax - yMin
 
   return dataChunks.map((chunk, chunkId) => {
     const prevChunks = dataChunks.slice(0, chunkId)
@@ -87,7 +91,7 @@ const generatePoints = ({
         x: (i + countFrom + chunkId) * pointSpacing + chartPadding,
         y:
           chartHeight -
-          ((Number(d) - min) / valueRange) * chartHeight +
+          ((Number(d) - yMin) / valueRange) * chartHeight +
           chartPadding,
       })
     })
@@ -98,77 +102,78 @@ export const Sparkline: FC<SparklineProps> = ({
   data = [],
   config,
   fields,
-  height = 300,
-  width = 500,
+  height = DEFAULT_HEIGHT,
+  width,
 }) => {
   const { render_null_values = false, series = {} } = config || {}
 
+  // only allow one measure for sparklines
+  const firstMeasure = fields.measures[0]
   const firstSeries = Array.isArray(series)
     ? series[0]
-    : series[fields?.measures?.[0].name || '']
+    : series[firstMeasure.name || '']
 
-  const { line_width: lineWidth = 3 } = firstSeries || {}
-
-  const [wrapperRef, setWrapperRef] = useState<HTMLDivElement | null>(null)
   const themeContext = useContext(ThemeContext)
+
+  // get VisWrapper dimensions to support 100% width sparklines
+  const [wrapperRef, setWrapperRef] = useState<HTMLDivElement | null>(null)
   const [wrapperRect, refreshRect] = useMeasuredElement(wrapperRef)
-
-  // track min and max values to automatically calibrate Y axis bounds.
-  let minValue = Infinity
-  let maxValue = 0
-
-  // extract line values and min/max from two dimensional data.
-  const dataPoints = data?.map(d => {
-    const val = d[fields.measures[0].name]
-    const nullValue = render_null_values ? Number(val) : val
-    if (val < minValue && nullValue !== null) {
-      minValue = val
-    }
-    if (val > maxValue && nullValue !== null) {
-      maxValue = val
-    }
-    return nullValue
-  })
-
-  const [yMin = minValue, yMax = maxValue] = config?.y_axis?.range || []
-
-  const chartPoints = generatePoints({
-    // FIXME
-    // https://github.com/looker-open-source/components/pull/2202
-    chartRect: wrapperRect as DOMRect,
-    data: dataPoints || [],
-    lineWidth: lineWidth || 1,
-    max: yMax === 'auto' ? maxValue : yMax,
-    min: yMin === 'auto' ? minValue : yMin,
-    render_null_values,
-  })
 
   useEffect(() => {
     refreshRect()
   }, [wrapperRef, refreshRect])
+
+  const { line_width: lineWidth = 3 } = firstSeries || {}
+
+  let dataMin = Infinity
+  let dataMax = -Infinity
+
+  // extract line values and min/max from two dimensional data.
+  const dataPoints = data?.map(d => {
+    const val = d[firstMeasure.name]
+    const nullValue = render_null_values ? Number(val) : val
+    if (val < dataMin && nullValue !== null) {
+      dataMin = val
+    }
+    if (val > dataMax && nullValue !== null) {
+      dataMax = val
+    }
+    return nullValue
+  })
+
+  const [configMin, configMax] = config?.y_axis?.[0]?.range || []
+
+  const chartPoints = generatePoints({
+    chartDimensions: { width: width || wrapperRect.width, height },
+    data: dataPoints || [],
+    lineWidth: lineWidth || 1,
+    yRange: [
+      isNumeric(configMin) ? (configMin as number) : dataMin,
+      isNumeric(configMax) ? (configMax as number) : dataMax,
+    ],
+    render_null_values,
+  })
 
   if (!data || data.length === 0) {
     return null
   }
 
   return (
-    <VisWrapper
-      ref={(el: HTMLDivElement) => {
-        setWrapperRef(el)
-      }}
-    >
+    <VisWrapper ref={setWrapperRef}>
       <svg width={width} height={height} data-testid="sparkline-chart">
         {chartPoints.length &&
-          chartPoints.map((chunk, i) => (
-            <LinePath
-              key={i}
-              data={chunk}
-              stroke={themeContext.colors.key}
-              strokeWidth={lineWidth}
-              x={(d: Point) => d.x || 0}
-              y={(d: Point) => d.y || 0}
-            />
-          ))}
+          chartPoints.map((chunk, i) => {
+            return (
+              <LinePath
+                key={i}
+                data={chunk}
+                stroke={getSeriesColor(firstSeries, themeContext)}
+                strokeWidth={lineWidth}
+                x={(d: Point) => d.x || 0}
+                y={(d: Point) => d.y || 0}
+              />
+            )
+          })}
       </svg>
     </VisWrapper>
   )

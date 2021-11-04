@@ -57,7 +57,6 @@ export const Line: FC<LineProps> = ({
   data,
   config,
   height = DEFAULT_HEIGHT,
-  renderTooltip,
   width,
   fields,
 }) => {
@@ -141,12 +140,7 @@ export const Line: FC<LineProps> = ({
           <XAxis />
           <YAxis />
           <Grid config={config} />
-          <Tooltip
-            config={config}
-            data={formattedData}
-            fields={fields}
-            renderTooltip={renderTooltip}
-          />
+          <Tooltip config={config} data={formattedData} fields={fields} />
           {lines}
         </XYChart>
         <Legend config={config} fields={fields} />

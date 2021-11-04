@@ -64,7 +64,6 @@ export const Scatter: FC<ScatterProps> = ({
   data,
   config,
   height = DEFAULT_HEIGHT,
-  renderTooltip,
   width,
   fields,
 }) => {
@@ -165,12 +164,7 @@ export const Scatter: FC<ScatterProps> = ({
           <XAxis />
           <YAxis />
           <Grid config={config} />
-          <Tooltip
-            config={config}
-            data={formattedData}
-            fields={fields}
-            renderTooltip={renderTooltip}
-          />
+          <Tooltip config={config} data={formattedData} fields={fields} />
           {plots}
         </XYChart>
         <Legend config={config} fields={fields} />

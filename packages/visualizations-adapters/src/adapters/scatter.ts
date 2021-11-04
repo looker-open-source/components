@@ -24,8 +24,6 @@
 
  */
 
-import type { TooltipDatum } from '@visx/xychart'
-import type { RenderTooltipParams } from '@visx/xychart/lib/components/Tooltip'
 import type { VisWrapperProps } from '../VisWrapper'
 import type { CLineBase } from './'
 import type {
@@ -36,6 +34,7 @@ import type {
   CSeriesSize,
   CSeriesLine,
   SupportedChartTypes,
+  ChartLayoutProps,
 } from '../types'
 
 export type CScatterSeries = CSeriesBasic &
@@ -48,11 +47,9 @@ export type CScatter = {
   type: SupportedChartTypes['scatter']
 } & Omit<CLineBase, 'series'>
 
-export type ScatterProps = VisWrapperProps & {
-  data: SDKRecord[]
-  fields: Fields
-  config: CScatter
-  renderTooltip?: (
-    params: RenderTooltipParams<TooltipDatum<SDKRecord>>
-  ) => React.ReactNode
-}
+export type ScatterProps = VisWrapperProps &
+  ChartLayoutProps & {
+    data: SDKRecord[]
+    fields: Fields
+    config: CScatter
+  }

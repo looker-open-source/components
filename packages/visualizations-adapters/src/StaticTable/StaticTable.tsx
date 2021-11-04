@@ -36,11 +36,10 @@ import {
   TableDataCell,
 } from '@looker/components'
 import type { VisWrapperProps } from '../VisWrapper'
-import type { SDKRecord, Fields } from '../types'
+import type { SDKRecord, Fields, ChartLayoutProps } from '../types'
 import type { CTable } from '../adapters'
-import { tabularResponse } from '../utils'
 
-export interface TableProps extends VisWrapperProps {
+export interface TableProps extends VisWrapperProps, ChartLayoutProps {
   data: SDKRecord[]
   config?: CTable
   fields?: Fields
@@ -55,8 +54,6 @@ export const StaticTable: FC<TableProps> = ({
     return null
   }
 
-  const tabularData = tabularResponse(data)
-
   const measureLabels = [...fields.measures].map((f: SDKRecord) => [
     f.name,
     f.view_label,
@@ -69,7 +66,7 @@ export const StaticTable: FC<TableProps> = ({
 
   const fieldLabels = Object.fromEntries([...dimensionLabels, ...measureLabels])
 
-  const formattedData = tabularData.map((d: SDKRecord) => {
+  const formattedData = data.map((d: SDKRecord) => {
     return Object.fromEntries(
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       Object.entries(d).map(([key, value]: [string, any]) => {
@@ -78,9 +75,9 @@ export const StaticTable: FC<TableProps> = ({
     )
   })
 
-  const resultKeys = Array.isArray(tabularData)
-    ? Object.keys(tabularData[0])
-    : Object.keys(tabularData)
+  const resultKeys = Array.isArray(data)
+    ? Object.keys(data[0])
+    : Object.keys(data)
 
   return (
     <Table

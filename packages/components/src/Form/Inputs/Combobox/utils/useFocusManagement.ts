@@ -24,8 +24,7 @@
 
  */
 
-import { useLayoutEffect } from 'react'
-import { useCallbackRef } from '../../../../utils'
+import { useCallbackRef, useSafeLayoutEffect } from '../../../../utils'
 import { ComboboxActionType } from './state'
 
 // Move focus back to the input if we start navigating w/ the
@@ -34,9 +33,9 @@ import { ComboboxActionType } from './state'
 
 export function useFocusManagement(lastActionType?: ComboboxActionType) {
   const [inputElement, inputCallbackRef] = useCallbackRef<HTMLInputElement>()
-  // useLayoutEffect so that the cursor goes to the end of the input instead
+  // useSafeLayoutEffect so that the cursor goes to the end of the input instead
   // of awkwardly at the beginning, unclear to my why ...
-  useLayoutEffect(() => {
+  useSafeLayoutEffect(() => {
     if (
       lastActionType === ComboboxActionType.SELECT_WITH_CLICK ||
       lastActionType === ComboboxActionType.INTERACT
