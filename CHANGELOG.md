@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 2.8.9
+
+### Features
+
+- **useSafeLayoutEffect:** Avoids React error for useLayoutEffect with SSR
+- **Panel:** Add onAfterOpen & onAfterClose callbacks
+- **Tabs2:** Make tabId type generic
+- **Visualization**: Make ComponentsProvider optional
+- **Visualization**: More specific error messaging
+
+- **`@looker/visualizations-single-value`** package introduced
+
 # 2.8.7
 
 - **`@looker/visualizations`** package introduced
