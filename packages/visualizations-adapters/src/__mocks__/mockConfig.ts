@@ -40,17 +40,14 @@ export const mockBarConfig: CBar = {
       label: 'Orders',
       values: true,
       gridlines: true,
-      tick_density: 'default',
     },
   ],
   y_axis: [
     {
-      reversed: false,
       label: false,
       values: true,
       gridlines: true,
       range: ['auto', 'auto'],
-      tick_density: 'default',
     },
   ],
 }

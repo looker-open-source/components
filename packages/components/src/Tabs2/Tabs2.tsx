@@ -37,22 +37,22 @@ import type { Tabs2Props, TabStack } from './types'
  * Tabs2 is a modernized version of the `Tabs` component with a simplified
  * interface to follow conventions in other components libraries and to more closely match the controlled and uncontrolled models of our other components.
  */
-export const Tabs2 = ({
+export const Tabs2 = <IDType extends string = string>({
   children,
   onTabChange,
   defaultTabId,
   distributed = false,
   tabId: propsTabId,
-}: Tabs2Props) => {
+}: Tabs2Props<IDType>) => {
   // list of all elements to be displayed as Tab and its content.
-  const [tabs, setTabs] = useState<TabStack>([])
+  const [tabs, setTabs] = useState<TabStack<IDType>>([])
   // The identifier for connecting the `Tab` with its content
   const [currentTabId, setCurrentTabId] = useState(defaultTabId)
   const tabId = propsTabId || currentTabId
 
   useEffect(() => {
     // structuring the data that comes in to be in the correct shape to create each individual `Tab` and its content.
-    const draftTabs: TabStack = Children.map(
+    const draftTabs: TabStack<IDType> = Children.map(
       children,
       (child: JSX.Element) => ({
         children: child.props.children,
@@ -77,7 +77,7 @@ export const Tabs2 = ({
     }
   }, [children, defaultTabId, setTabs, setCurrentTabId])
 
-  const handleTabChange = (draftId: string) =>
+  const handleTabChange = (draftId: IDType) =>
     onTabChange ? onTabChange(draftId) : setCurrentTabId(draftId)
 
   const labels = tabs.map(({ disabled, label, id }, index) => (

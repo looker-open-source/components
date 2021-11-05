@@ -27,6 +27,7 @@
 import React from 'react'
 import { screen } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
+import { tabularResponse } from '../utils'
 import { StaticTable } from '.'
 import type { SDKRecord } from '../types'
 import { mockBarConfig, mockQueryResult, mockFields } from '../__mocks__'
@@ -35,7 +36,7 @@ describe('Table', () => {
   it('renders Table', () => {
     renderWithTheme(
       <StaticTable
-        data={mockQueryResult.data as SDKRecord[]}
+        data={tabularResponse(mockQueryResult.data as SDKRecord[])}
         config={{
           ...mockBarConfig,
           type: 'table',

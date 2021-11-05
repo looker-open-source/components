@@ -26,7 +26,7 @@
 
 import type { CSeriesBasic, LegendPositions } from '../types'
 
-export type AxisConfig = {
+export type CommonAxisConfig = {
   /**
    * Render grid lines in chart
    */
@@ -39,18 +39,17 @@ export type AxisConfig = {
    * Render axis values
    */
   values?: boolean
+}
+
+export type XAxisConfig = CommonAxisConfig & {
   /**
    * Reverse data direction
    */
   reversed?: boolean
-  /**
-   * Control the amount of data labels to render
-   */
-  tick_density?: 'default' | number
 }
 
 export type YAxisEndpoint = number | 'auto' | undefined
-export type YAxisConfig = AxisConfig & {
+export type YAxisConfig = CommonAxisConfig & {
   /**
    * Set min and max values for Y-Axis
    */
@@ -76,7 +75,7 @@ export type CommonCartesianProperties = {
   /**
    * Configure an array of x-axis settings. Charts will only render a single x-axis for now.
    */
-  x_axis?: AxisConfig[]
+  x_axis?: XAxisConfig[]
   /**
    * Configure an array of y-axis settings.
    */

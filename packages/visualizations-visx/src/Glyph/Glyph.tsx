@@ -63,7 +63,6 @@ export const Glyph = ({
 }: GlyphProps) => {
   const theme = useContext(ThemeContext)
   const { shape = 'circle', line_width = 1 } = series
-
   const CurrGlyph = Glyphs[shape]
 
   const strokeWidth = () => {

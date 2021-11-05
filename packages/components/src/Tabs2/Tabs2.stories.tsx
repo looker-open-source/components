@@ -59,7 +59,7 @@ export const DefaultTab = Template.bind({})
 DefaultTab.args = { defaultTabId: 'dogs' }
 
 export const Controlled = () => {
-  const [currentTabId, setTabId] = useState('cats')
+  const [currentTabId, setTabId] = useState<'cats' | 'dogs'>('cats')
   return (
     <>
       <p>The current selected tab is: {currentTabId}</p>

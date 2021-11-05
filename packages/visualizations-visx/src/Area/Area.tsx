@@ -58,7 +58,6 @@ export const Area: FC<AreaProps> = ({
   data,
   config,
   height = DEFAULT_HEIGHT,
-  renderTooltip,
   width,
   fields,
 }) => {
@@ -151,12 +150,7 @@ export const Area: FC<AreaProps> = ({
           <XAxis />
           <YAxis />
           <Grid config={config} />
-          <Tooltip
-            config={config}
-            data={formattedData}
-            fields={fields}
-            renderTooltip={renderTooltip}
-          />
+          <Tooltip config={config} data={formattedData} fields={fields} />
           <PositioningWrapper
             offset={positioning === 'percent' ? 'expand' : 'none'}
           >

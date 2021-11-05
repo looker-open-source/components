@@ -30,6 +30,7 @@ import type { IError } from '@looker/sdk'
 import { Heading } from '@looker/components'
 import { Debug } from '../Debug'
 import type { QueryContextProps } from '../Query'
+import { formatErrorMessage } from '../utils'
 
 interface ErrorBoundaryProps {
   contextValues: QueryContextProps
@@ -74,7 +75,7 @@ export class ErrorBoundary extends Component<
             error={
               {
                 ...error,
-                message: (errorMessage as Error).toString(),
+                message: formatErrorMessage(errorMessage),
                 ...stackTrace,
               } as IError
             }

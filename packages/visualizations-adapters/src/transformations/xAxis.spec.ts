@@ -26,16 +26,15 @@
 
 import { xAxis } from './xAxis'
 import { mockBarConfig, mockFields } from '../__mocks__'
-import type { AxisConfig } from '../types'
+import type { XAxisConfig } from '../types'
 
 describe('xAxis', () => {
   test('config.x_axis is provided', () => {
-    const x_axis: AxisConfig[] = [
+    const x_axis: XAxisConfig[] = [
       {
         gridlines: false,
         label: 'label name',
         reversed: true,
-        tick_density: 'default',
         values: false,
       },
     ]
@@ -67,7 +66,6 @@ describe('xAxis', () => {
         gridlines: customizations.x_axis_gridlines,
         label: customizations.x_axis_label,
         reversed: customizations.x_axis_reversed,
-        tick_density: 'default', // This config option is currently not customizable via the xAxis function
         values: customizations.show_x_axis_ticks,
       },
     ])
@@ -77,10 +75,10 @@ describe('xAxis', () => {
     const transformedConfig = xAxis({
       config: {
         ...mockBarConfig,
-        x_axis_reversed: undefined,
         show_x_axis_ticks: undefined,
         show_x_axis_label: undefined,
         x_axis_gridlines: undefined,
+        x_axis_reversed: undefined,
         x_axis: undefined,
       },
       fields: mockFields,
@@ -92,7 +90,6 @@ describe('xAxis', () => {
         gridlines: true,
         label: 'Orders Created Date',
         reversed: false,
-        tick_density: 'default',
         values: true,
       },
     ])

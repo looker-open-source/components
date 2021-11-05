@@ -24,27 +24,37 @@
 
  */
 import type { FC } from 'react'
-import React, { useContext, Suspense } from 'react'
-import { ProgressCircular, Space } from '@looker/components'
+import React, { useContext } from 'react'
+import { ProgressCircular, Space, ComponentsProvider } from '@looker/components'
+import { ThemeContext } from 'styled-components'
 import { Table } from '@looker/visualizations-table'
-import { Area, Sparkline, Line, Scatter } from '@looker/visualizations-visx'
+import {
+  Area,
+  Bar,
+  Column,
+  Sparkline,
+  Line,
+  Scatter,
+} from '@looker/visualizations-visx'
+import { SingleValue } from '@looker/visualizations-single-value'
+
 import {
   buildChartConfig,
   Debug,
   QueryContext,
   ErrorBoundary,
-  Spinner,
   Unsupported,
   tabularResponse,
 } from '@looker/visualizations-adapters'
 import type {
+  ChartLayoutProps,
   VisWrapperProps,
   SupportedChartTypes,
   CommonCartesianProperties,
 } from '@looker/visualizations-adapters'
 import has from 'lodash/has'
 
-interface VisualizationProps extends VisWrapperProps {
+interface VisualizationProps extends VisWrapperProps, ChartLayoutProps {
   /*
    * debug renders the raw query data and query config rather than the chart
    * @default false
@@ -58,12 +68,13 @@ export const defaultChartComponent: Record<
   FC<any>
 > = {
   area: Area,
-  bar: Unsupported,
-  column: Unsupported,
-  default: Unsupported,
+  bar: Bar,
+  column: Column,
+  default: Table,
   line: Line,
   pie: Unsupported,
   scatter: Scatter,
+  single_value: SingleValue,
   sparkline: Sparkline,
   table: Table,
 }
@@ -115,17 +126,14 @@ const VisualizationComponent: FC<VisualizationProps> = ({
     }
 
     const ChartComponent = defaultChartComponent[config.type]
-
     return (
-      <Suspense fallback={<Spinner />}>
-        <ChartComponent
-          data={dataCopy}
-          config={config}
-          fields={fields}
-          width={width}
-          height={height}
-        />
-      </Suspense>
+      <ChartComponent
+        data={dataCopy}
+        config={config}
+        fields={fields}
+        width={width}
+        height={height}
+      />
     )
   } else {
     return null
@@ -134,6 +142,19 @@ const VisualizationComponent: FC<VisualizationProps> = ({
 
 export const Visualization: FC<VisualizationProps> = props => {
   const contextValues = useContext(QueryContext)
+
+  const theme = useContext(ThemeContext)
+
+  if (!theme) {
+    // Recursively wrap QueryFormatter in ComponentsProvider to ensure that
+    // visualizations and adapters can be rendered outside of Looker Components context
+    // without breaking.
+    return (
+      <ComponentsProvider>
+        <Visualization {...props} />
+      </ComponentsProvider>
+    )
+  }
 
   return (
     <ErrorBoundary contextValues={contextValues}>

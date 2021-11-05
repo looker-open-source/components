@@ -30,7 +30,7 @@ import 'jest-styled-components'
 import React, { useState } from 'react'
 import userEvent from '@testing-library/user-event'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { Nested } from './Panel.stories'
+import { AnimationCallbacks, Nested } from './Panel.stories'
 import { Panel, Panels, usePanel } from './'
 
 const globalConsole = global.console
@@ -248,5 +248,33 @@ describe('Panel', () => {
     expect(closeButton.closest('[data-panel]')).toHaveStyle(
       'visibility: visible;'
     )
+  })
+
+  test('onAfterOpen, onAfterClose', () => {
+    jest.useFakeTimers()
+
+    renderWithTheme(<AnimationCallbacks />)
+    const button = screen.getByRole('button')
+    fireEvent.click(button)
+    const input = screen.getByRole('textbox')
+    expect(input).not.toHaveFocus()
+
+    act(() => {
+      jest.runOnlyPendingTimers()
+    })
+    expect(input).toHaveFocus()
+
+    const closeButton = screen.getByRole('button', {
+      name: 'CloseTitle Animation Callbacks',
+    })
+    fireEvent.click(closeButton)
+    expect(screen.queryByText('Panel closed')).not.toBeInTheDocument()
+
+    act(() => {
+      jest.runOnlyPendingTimers()
+    })
+    expect(screen.queryByText('Panel closed')).toBeVisible()
+
+    jest.useRealTimers()
   })
 })

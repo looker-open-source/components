@@ -43,8 +43,7 @@ describe('Sparkline Chart', () => {
     expect(screen.getByTestId('sparkline-chart')).toMatchInlineSnapshot(`
       <svg
         data-testid="sparkline-chart"
-        height="300"
-        width="500"
+        height="500"
       >
         <path
           class="visx-linepath"
@@ -80,8 +79,7 @@ describe('Sparkline Chart', () => {
     expect(screen.getByTestId('sparkline-chart')).toMatchInlineSnapshot(`
       <svg
         data-testid="sparkline-chart"
-        height="300"
-        width="500"
+        height="500"
       >
         <path
           class="visx-linepath"

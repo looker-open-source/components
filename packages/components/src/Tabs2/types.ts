@@ -33,14 +33,17 @@ import type {
   TypographyProps,
 } from '@looker/design-tokens'
 
-export type Tab2Props = Omit<CompatibleHTMLProps<HTMLButtonElement>, 'type'> &
+export type Tab2Props<IDType extends string = string> = Omit<
+  CompatibleHTMLProps<HTMLButtonElement>,
+  'type'
+> &
   LayoutProps &
   PaddingProps &
   TypographyProps & {
     /**
      * displays as the `Tab`'s value
      */
-    label: string
+    label: IDType
     /**
      * callback to manage when `Tab` is clicked
      */
@@ -64,21 +67,21 @@ export type TabList2Props = PaddingProps &
     distribute?: boolean
   }
 
-type TabStackMember = Tab2Props & {
-  id: string
+type TabStackMember<IDType extends string = string> = Tab2Props<IDType> & {
+  id: IDType
 }
 
-export type TabStack = TabStackMember[]
+export type TabStack<IDType extends string = string> = TabStackMember<IDType>[]
 
-type Controlled = {
+type Controlled<IDType extends string = string> = {
   /**
    * Controlled: which tab to show now
    */
-  tabId: string
+  tabId: IDType
   /**
    * Callback called when tabId changes
    */
-  onTabChange: (tabId: string) => void
+  onTabChange: (tabId: IDType) => void
   defaultTabId?: never
 }
 
@@ -91,11 +94,14 @@ type Uncontrolled = {
   onTabChange?: never
 }
 
-export type Tabs2Props = (Controlled | Uncontrolled) & {
+export type Tabs2Props<IDType extends string = string> = (
+  | Controlled<IDType>
+  | Uncontrolled
+) & {
   /**
    * The list of `Tab`
    */
-  children: ReactElement<Tab2Props> | ReactElement<Tab2Props>[]
+  children: ReactElement<Tab2Props<IDType>> | ReactElement<Tab2Props<IDType>>[]
 
   /**
    * Spread the Tab between all the space available

@@ -35,8 +35,6 @@ describe('yAxis', () => {
         gridlines: false,
         label: false,
         range: [0, 88],
-        reversed: true,
-        tick_density: 44,
         values: false,
       },
     ]
@@ -52,19 +50,17 @@ describe('yAxis', () => {
   test('merges user overrides with raw sdk response', () => {
     const overrides: YAxisConfig[] = [
       {
-        tick_density: 50,
+        range: [-100, 100],
       },
     ]
 
     // response from explore
     const rawAxisResponse = [
       {
-        tickDensity: 'default' as const,
+        minValue: 30,
+        maxValue: 50,
       },
-      {
-        tickDensity: 'custom' as const,
-        tickDensityCustom: 75,
-      },
+      {},
     ]
 
     const { config: transformedConfig } = yAxis({
@@ -74,16 +70,15 @@ describe('yAxis', () => {
 
     expect(transformedConfig.y_axis?.length).toEqual(rawAxisResponse.length)
     expect(transformedConfig.y_axis?.[0]).toEqual(
-      expect.objectContaining({ tick_density: 50 }) // user override
+      expect.objectContaining({ range: [-100, 100] }) // user override
     )
     expect(transformedConfig.y_axis?.[1]).toEqual(
-      expect.objectContaining({ tick_density: 75 }) // derived value from sdk response
+      expect.objectContaining({ range: ['auto', 'auto'] }) // derived value from sdk response
     )
   })
 
   test('y axis customizations are provided, but config.y_axis is undefined', () => {
     const customizations = {
-      y_axis_reversed: false,
       y_axis_gridlines: false,
       y_axes: [
         {
@@ -112,8 +107,6 @@ describe('yAxis', () => {
           customizations.y_axes[0].minValue,
           customizations.y_axes[0].maxValue,
         ],
-        reversed: customizations.y_axis_reversed,
-        tick_density: customizations.y_axes[0].tickDensityCustom,
         values: customizations.y_axes[0].showValues,
       },
     ])
@@ -125,7 +118,6 @@ describe('yAxis', () => {
         ...mockBarConfig,
         y_axes: undefined,
         y_axis: undefined,
-        y_axis_reversed: undefined,
         y_axis_gridlines: undefined,
       },
       fields: mockFields,
@@ -136,8 +128,6 @@ describe('yAxis', () => {
         gridlines: true,
         label: 'Orders Count',
         range: ['auto', 'auto'],
-        reversed: false,
-        tick_density: 'default',
         values: true,
       },
     ])

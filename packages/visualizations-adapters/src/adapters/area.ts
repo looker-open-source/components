@@ -25,20 +25,21 @@
  */
 
 import type { VisWrapperProps } from '../VisWrapper'
-import type { TooltipDatum } from '@visx/xychart'
-import type { RenderTooltipParams } from '@visx/xychart/lib/components/Tooltip'
 import type { CLineBase } from './'
-import type { SupportedChartTypes, SDKRecord, Fields } from '../types'
+import type {
+  SupportedChartTypes,
+  SDKRecord,
+  Fields,
+  ChartLayoutProps,
+} from '../types'
 
 export type CArea = {
   type: SupportedChartTypes['area']
 } & CLineBase
 
-export type AreaProps = VisWrapperProps & {
-  data: SDKRecord[]
-  fields: Fields
-  config: CArea
-  renderTooltip?: (
-    params: RenderTooltipParams<TooltipDatum<SDKRecord>>
-  ) => React.ReactNode
-}
+export type AreaProps = VisWrapperProps &
+  ChartLayoutProps & {
+    data: SDKRecord[]
+    fields: Fields
+    config: CArea
+  }

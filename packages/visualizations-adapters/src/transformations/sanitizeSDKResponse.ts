@@ -53,6 +53,7 @@ export const keysToRemove = [
   'size_by_field',
   'stacking',
   'trellis',
+  'value_labels',
   'x_axis_gridlines',
   'x_axis_reversed',
   'x_axis_scale',

@@ -24,8 +24,6 @@
 
  */
 
-import type { TooltipDatum } from '@visx/xychart'
-import type { RenderTooltipParams } from '@visx/xychart/lib/components/Tooltip'
 import type { VisWrapperProps } from '../VisWrapper'
 import type {
   CommonCartesianProperties,
@@ -36,6 +34,7 @@ import type {
   CSeriesLine,
   LinearPositions,
   SupportedChartTypes,
+  ChartLayoutProps,
 } from '../types'
 
 export type CLineSeries = Partial<CSeriesBasic & CSeriesPoints & CSeriesLine>
@@ -50,11 +49,9 @@ export type CLine = {
   type: SupportedChartTypes['line']
 } & CLineBase
 
-export type LineProps = VisWrapperProps & {
-  data: SDKRecord[]
-  fields: Fields
-  config: CLine
-  renderTooltip?: (
-    params: RenderTooltipParams<TooltipDatum<SDKRecord>>
-  ) => React.ReactNode
-}
+export type LineProps = VisWrapperProps &
+  ChartLayoutProps & {
+    data: SDKRecord[]
+    fields: Fields
+    config: CLine
+  }

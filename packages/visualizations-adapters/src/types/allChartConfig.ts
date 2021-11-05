@@ -33,6 +33,7 @@ import type {
   CScatter,
   CSparkline,
   CTable,
+  CSingleValue,
 } from '../adapters'
 
 /*
@@ -49,10 +50,11 @@ export const supportedChartTypes = {
   column: 'column',
   default: 'default',
   line: 'line',
-  sparkline: 'sparkline',
-  scatter: 'scatter',
-  table: 'table',
   pie: 'pie',
+  single_value: 'single_value',
+  scatter: 'scatter',
+  sparkline: 'sparkline',
+  table: 'table',
 } as const
 
 export type SupportedChartTypes = typeof supportedChartTypes
@@ -74,4 +76,5 @@ export type CAll =
   | CSparkline
   | CScatter
   | CTable
+  | CSingleValue
   | { type: SupportedChartTypes['default'] }

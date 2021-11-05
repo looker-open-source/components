@@ -25,8 +25,9 @@
  */
 
 import { renderWithTheme } from '@looker/components-test-utils'
+import { render, screen } from '@testing-library/react'
 import type { FC } from 'react'
-import React from 'react'
+import React, { useContext } from 'react'
 import {
   QueryContext,
   mockQueryResult,
@@ -34,6 +35,7 @@ import {
 } from '@looker/visualizations-adapters'
 import type { QueryFormatterProps } from './QueryFormatter'
 import { QueryFormatter } from './QueryFormatter'
+import { ThemeContext } from 'styled-components'
 
 afterEach(() => {
   jest.clearAllMocks()
@@ -114,7 +116,6 @@ describe('QueryFormatter component', () => {
                 "gridlines": false,
                 "label": "Orders Created Date",
                 "reversed": false,
-                "tick_density": "default",
                 "values": true,
               },
             ],
@@ -127,8 +128,6 @@ describe('QueryFormatter component', () => {
                   "auto",
                   "auto",
                 ],
-                "reversed": false,
-                "tick_density": "default",
                 "values": true,
               },
             ],
@@ -201,6 +200,7 @@ describe('QueryFormatter component', () => {
                 "name": "orders.created_date",
                 "sortable": true,
                 "type": "date_date",
+                "value_format": null,
                 "view": "orders",
                 "view_label": "Orders",
               },
@@ -212,6 +212,7 @@ describe('QueryFormatter component', () => {
                 "label_short": "Count",
                 "name": "orders.count",
                 "sortable": true,
+                "value_format": null,
                 "view": "orders",
                 "view_label": "Orders",
               },
@@ -221,6 +222,7 @@ describe('QueryFormatter component', () => {
                 "label_short": "Average Total Amount of Order USD",
                 "name": "orders.average_total_amount_of_order_usd",
                 "sortable": true,
+                "value_format": "$#,##0.00",
                 "view": "orders",
                 "view_label": "Orders",
               },
@@ -252,5 +254,28 @@ describe('QueryFormatter component', () => {
         ],
       ]
     `)
+  })
+  it('wraps itself in ComponentsProvider if rendered outside of theme context', () => {
+    const CustomVis = () => {
+      const theme = useContext(ThemeContext)
+      return (
+        <>
+          <p>Rendered Without Error!</p>
+          <dl>
+            <dt>Background Color:</dt>
+            <dd>{theme.colors.background}</dd>
+          </dl>
+        </>
+      )
+    }
+
+    // use default rtl `render` instead of `renderWithTheme`
+    render(
+      <QueryFormatter>
+        <CustomVis />
+      </QueryFormatter>
+    )
+
+    expect(screen.getByText('Rendered Without Error!')).toBeInTheDocument()
   })
 })

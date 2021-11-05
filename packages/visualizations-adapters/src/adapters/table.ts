@@ -30,6 +30,7 @@ import type {
   SDKRecord,
   CSeriesBasic,
   SupportedChartTypes,
+  ChartLayoutProps,
 } from '../types'
 
 export type CTableSeries = { cell_visualization?: boolean } & CSeriesBasic
@@ -41,8 +42,9 @@ export type CTable = {
   type: SupportedChartTypes['table']
 }
 
-export type TableProps = VisWrapperProps & {
-  data: SDKRecord[]
-  config: CTable
-  fields: Fields
-}
+export type TableProps = VisWrapperProps &
+  ChartLayoutProps & {
+    data: SDKRecord[]
+    config: CTable
+    fields: Fields
+  }

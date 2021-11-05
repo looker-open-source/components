@@ -24,7 +24,8 @@
 
  */
 import type { Context } from 'react'
-import { useContext, useLayoutEffect } from 'react'
+import { useContext } from 'react'
+import { useSafeLayoutEffect } from '../../../../utils'
 import type { ComboboxInputProps, ComboboxMultiInputProps } from '../types'
 import type {
   ComboboxContextProps,
@@ -48,17 +49,17 @@ export function useInputPropRefs<
     inputReadOnlyPropRef,
   } = useContext(context)
 
-  useLayoutEffect(() => {
+  useSafeLayoutEffect(() => {
     if (autoCompletePropRef) autoCompletePropRef.current = autoComplete
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [autoComplete])
 
-  useLayoutEffect(() => {
+  useSafeLayoutEffect(() => {
     if (freeInputPropRef) freeInputPropRef.current = freeInput
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [freeInput])
 
-  useLayoutEffect(() => {
+  useSafeLayoutEffect(() => {
     if (inputReadOnlyPropRef) inputReadOnlyPropRef.current = inputReadOnly
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inputReadOnly])

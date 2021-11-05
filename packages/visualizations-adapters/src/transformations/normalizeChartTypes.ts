@@ -53,6 +53,7 @@ export const normalizeChartTypes: ConfigHelper<CAll> = ({ config, fields }) => {
     looker_scatter: 'scatter',
     pie: 'pie',
     scatter: 'scatter',
+    single_value: 'single_value',
     sparkline: 'sparkline',
     table: 'table',
   }

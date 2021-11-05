@@ -40,6 +40,8 @@ export const usePanel = ({
   defaultOpen = false,
   direction = 'left',
   isOpen: controlledIsOpen,
+  onAfterClose,
+  onAfterOpen,
   onClose,
   setOpen: controlledSetOpen,
   disableAnimation,
@@ -67,6 +69,8 @@ export const usePanel = ({
       disableAnimation || (isOpen && firstRender.current) ? 'none' : undefined,
     exit: disableAnimation ? 'none' : undefined,
     isOpen,
+    onAfterEntered: onAfterOpen,
+    onAfterExited: onAfterClose,
   })
   firstRender.current = false
 

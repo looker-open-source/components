@@ -24,8 +24,10 @@
 
  */
 
-import React from 'react'
+import React, { useContext } from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
+import { ThemeContext } from 'styled-components'
+import { render, screen } from '@testing-library/react'
 import type {
   CArea,
   CLine,
@@ -45,26 +47,59 @@ import {
 } from '@looker/visualizations-adapters'
 import { Visualization, defaultChartComponent } from './Visualization'
 
+const CustomVis = () => {
+  const theme = useContext(ThemeContext)
+  return (
+    <>
+      <p>Rendered Without Error!</p>
+      <dl>
+        <dt>Background Color:</dt>
+        <dd>{theme.colors.background}</dd>
+      </dl>
+    </>
+  )
+}
+
 jest.mock('@looker/visualizations-adapters', () => ({
   ...jest.requireActual('@looker/visualizations-adapters'),
-  Unsupported: jest.fn().mockReturnValue(null),
+  Unsupported: jest.fn().mockReturnValue(<CustomVis />),
 }))
 
 jest.mock('@looker/visualizations-table', () => ({
   ...jest.requireActual('@looker/visualizations-table'),
-  Table: jest.fn().mockReturnValue(null),
+  Table: jest.fn().mockReturnValue(<CustomVis />),
 }))
 
 jest.mock('@looker/visualizations-visx', () => ({
   ...jest.requireActual('@looker/visualizations-visx'),
-  Area: jest.fn().mockReturnValue(null),
-  Line: jest.fn().mockReturnValue(null),
-  Sparkline: jest.fn().mockReturnValue(null),
-  Scatter: jest.fn().mockReturnValue(null),
+  Area: jest.fn().mockReturnValue(<CustomVis />),
+  Bar: jest.fn().mockReturnValue(<CustomVis />),
+  Column: jest.fn().mockReturnValue(<CustomVis />),
+  Line: jest.fn().mockReturnValue(<CustomVis />),
+  Sparkline: jest.fn().mockReturnValue(<CustomVis />),
+  Scatter: jest.fn().mockReturnValue(<CustomVis />),
+}))
+
+jest.mock('@looker/visualizations-single-value', () => ({
+  ...jest.requireActual('@looker/visualizations-single-value'),
+  SingleValue: jest.fn().mockReturnValue(null),
 }))
 
 beforeEach(() => {
   jest.clearAllMocks()
+})
+
+describe.skip('Visualization', () => {
+  it('wraps itself in ComponentsProvider if rendered outside of theme context', () => {
+    // use default rtl `render` instead of `renderWithTheme`
+    render(
+      <QueryContext.Provider value={mockQueryResult}>
+        <Visualization />
+      </QueryContext.Provider>
+    )
+
+    expect(screen.getByText('Rendered Without Error!')).toBeInTheDocument()
+  })
 })
 
 /**
@@ -90,7 +125,6 @@ function buildConfigProp<T extends CAll>(
 
   const Component =
     defaultChartComponent[configOverrides.type as keyof SupportedChartTypes]
-
   return (Component as jest.Mock).mock.calls[0][0].config
 }
 
@@ -105,6 +139,11 @@ type BarTestTuple = [
 ]
 
 type PieTestTuple = [string, Record<'type', SupportedChartTypes['pie']>]
+
+type SingleValueTestTuple = [
+  string,
+  Record<'type', SupportedChartTypes['single_value']>
+]
 
 type SparklineTestTuple = [
   string,
@@ -166,11 +205,16 @@ const tableTestConditions: TableTestTuple[] = [
   ['(Table Chart)', { type: 'table' }],
 ]
 
+const singleValueTestConditions: SingleValueTestTuple[] = [
+  ['(Single Value Chart)', { type: 'single_value' }],
+]
+
 describe('Derives default values from SDK response', () => {
   test.each([
     ...lineTestConditions,
     ...barTestConditions,
     ...pieTestConditions,
+    ...singleValueTestConditions,
     ...sparklineTestConditions,
     ...tableTestConditions,
   ])('%s', (_, { type }) => {

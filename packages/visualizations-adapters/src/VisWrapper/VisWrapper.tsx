@@ -24,17 +24,42 @@
 
  */
 
-import type { ReactNode } from 'react'
-import styled, { css } from 'styled-components'
+import type { ReactNode, Ref, FC } from 'react'
+import React, { useContext, forwardRef } from 'react'
+import styled, { css, ThemeContext } from 'styled-components'
+import { ComponentsProvider } from '@looker/components'
 import type { CommonCartesianProperties, LegendPositions } from '../types'
 
 export type VisWrapperProps = {
   children?: ReactNode
-  height?: number
   legend?: CommonCartesianProperties['legend']
-  width?: number
-  minHeight?: number
 }
+
+export type VisWrapperInternalProps = VisWrapperProps & {
+  className?: string
+  ref?: Ref<HTMLDivElement>
+}
+
+const VisWrapperInternal: FC<VisWrapperInternalProps> = forwardRef(
+  (props, ref) => {
+    const theme = useContext(ThemeContext)
+
+    if (!theme) {
+      // Recursively wrap VisWrapper in ComponentsProvider to ensure that
+      // individual chart components can be rendered outside of Looker Components context
+      // without breaking.
+      return (
+        <ComponentsProvider>
+          <VisWrapperInternal {...props} ref={ref} />
+        </ComponentsProvider>
+      )
+    }
+
+    return <div {...props} ref={ref} />
+  }
+)
+
+VisWrapperInternal.displayName = 'VisWrapperInternal'
 
 const flexDirection = ({ legend }: Pick<VisWrapperProps, 'legend'>) => {
   const positionMap: Record<LegendPositions, string> = {
@@ -51,7 +76,7 @@ const flexDirection = ({ legend }: Pick<VisWrapperProps, 'legend'>) => {
   `
 }
 
-export const VisWrapper = styled.div`
+export const VisWrapper = styled(VisWrapperInternal)`
   /*
     Flex properties primarily used to reposition legend
     based on prop.

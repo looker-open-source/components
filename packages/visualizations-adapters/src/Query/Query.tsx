@@ -156,8 +156,7 @@ export const Query: FC<QueryProps> = ({
   const isLoading = values(asyncState).some(v => v.loading === true)
   const isEveryResponseOk = values(asyncState).every(v => v.responseOk === true)
 
-  const isDataShapeValid =
-    Boolean(fields?.measures?.length) && Boolean(fields?.dimensions?.length)
+  const isDataShapeValid = Boolean(fields?.measures?.length)
 
   const isDataValid = isEveryResponseOk && data?.length && isDataShapeValid
 

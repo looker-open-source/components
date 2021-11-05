@@ -27,6 +27,7 @@
 export * from './allChartConfig'
 export * from './apiResponse'
 export * from './cartesian'
+export * from './chartLayoutProps'
 export * from './configHelper'
 export * from './legend'
 export * from './referenceLine'

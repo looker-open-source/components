@@ -61,13 +61,10 @@ const deriveDefaults = (
   const {
     showLabels,
     showValues,
-    tickDensity,
-    tickDensityCustom = 100,
     minValue,
     maxValue,
     label: labelRaw,
     y_axis_gridlines,
-    y_axis_reversed,
   } = axisRaw
 
   const yAxisLabel = labelRaw || measureLabel || measureViewLabel
@@ -77,11 +74,9 @@ const deriveDefaults = (
     gridlines = y_axis_gridlines,
     label = showLabels === false ? false : yAxisLabel,
     range = [
-      minValue === undefined || minValue === null ? 'auto' : minValue,
-      maxValue === undefined || maxValue === null ? 'auto' : maxValue,
+      minValue === undefined ? 'auto' : minValue,
+      maxValue === undefined ? 'auto' : maxValue,
     ],
-    reversed = y_axis_reversed,
-    tick_density = tickDensity === 'custom' ? tickDensityCustom : 'default',
     values = showValues,
   } = axisOfficial as YAxisConfig
 
@@ -89,8 +84,6 @@ const deriveDefaults = (
     gridlines: typeof gridlines === 'undefined' ? true : gridlines,
     label,
     range,
-    reversed: !!reversed,
-    tick_density,
     values: typeof values === 'undefined' ? true : values,
   }
 }

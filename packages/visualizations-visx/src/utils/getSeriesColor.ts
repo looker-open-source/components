@@ -36,7 +36,7 @@ import type { CSeriesBasic } from '@looker/visualizations-adapters'
  */
 
 export const getSeriesColor = (series: CSeriesBasic, lookerTheme: Theme) => {
-  if (series.color) {
+  if (series?.color) {
     return series.color
   }
   return lookerTheme.colors.key

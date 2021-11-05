@@ -26,6 +26,7 @@
 
 import type { VisWrapperProps } from '../VisWrapper'
 import type {
+  ChartLayoutProps,
   SDKRecord,
   CommonCartesianProperties,
   BarPositions,
@@ -33,11 +34,12 @@ import type {
   Fields,
 } from '../types'
 
-export type BarProps = VisWrapperProps & {
-  data: SDKRecord[]
-  config: CBar
-  fields: Fields
-}
+export type BarProps = VisWrapperProps &
+  ChartLayoutProps & {
+    data: SDKRecord[]
+    config: CBar
+    fields: Fields
+  }
 
 export type BarBaseOptions = {
   positioning?: BarPositions
