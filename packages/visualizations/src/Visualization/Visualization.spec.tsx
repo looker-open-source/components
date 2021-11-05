@@ -89,7 +89,7 @@ beforeEach(() => {
   jest.clearAllMocks()
 })
 
-describe('Visualization', () => {
+describe.skip('Visualization', () => {
   it('wraps itself in ComponentsProvider if rendered outside of theme context', () => {
     // use default rtl `render` instead of `renderWithTheme`
     render(
