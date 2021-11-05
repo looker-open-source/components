@@ -1,21 +1,21 @@
 {
   "name": "@looker/components-providers",
   "license": "MIT",
-  "version": "1.5.12",
+  "version": "1.5.13",
   "main": "src/index.ts",
   "sideEffects": false,
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@looker/design-tokens": "^2.7.8",
+    "@looker/design-tokens": "^2.7.9",
     "i18next": "20.3.1",
     "react-helmet-async": "^1.0.9",
     "react-i18next": "11.8.15",
     "tabbable": "^5.2.0"
   },
   "devDependencies": {
-    "@looker/eslint-config-oss": "^1.7.8",
+    "@looker/eslint-config-oss": "^1.7.9",
     "@testing-library/react": "*",
     "lodash": "^4.17.20",
     "react": "16.14.0",

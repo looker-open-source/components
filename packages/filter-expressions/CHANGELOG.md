@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.8](https://github.com/looker-open-source/components/compare/@looker/filter-expressions@0.8.7...@looker/filter-expressions@0.8.8) (2021-11-05)
+
+**Note:** Version bump only for package @looker/filter-expressions
+
+
+
+
+
 ## [0.8.7](https://github.com/looker-open-source/components/compare/@looker/filter-expressions@0.8.6...@looker/filter-expressions@0.8.7) (2021-10-27)
 
 **Note:** Version bump only for package @looker/filter-expressions
