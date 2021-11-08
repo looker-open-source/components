@@ -40,7 +40,7 @@ const removeKeys = [
   'main',
   'scripts',
 ]
-removeKeys.map((key) => {
+removeKeys.map(key => {
   delete draft[key]
 })
 
@@ -66,3 +66,11 @@ fs.writeFile(
     console.log('complete')
   }
 )
+
+// Copy the README, if it exists, into the lib folders
+fs.copyFile('README.md', 'lib/README.md', err => {
+  if (err) {
+    console.error(err)
+  }
+  console.log('complete')
+})
