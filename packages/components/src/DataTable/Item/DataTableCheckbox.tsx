@@ -48,16 +48,18 @@ export const DataTableCheckbox: FC<DataTableCheckboxProps> = ({
   const handleCellOnClick = () => !disabled && onChange && onChange()
   const handleOnKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) =>
     event.key === 'Enter' && event.currentTarget.click()
+
+  let ariaLabel: string | undefined = 'Select all rows'
+  if (id !== 'headerId') {
+    ariaLabel = undefined
+  } else if (checked) {
+    ariaLabel = 'Select none'
+  }
+
   return (
     <ItemTarget aria-labelledby={`rowheader-${id}`} onClick={handleCellOnClick}>
       <Checkbox
-        aria-label={
-          id !== 'headerId'
-            ? undefined
-            : checked
-            ? 'Select none'
-            : 'Select all rows'
-        }
+        aria-label={ariaLabel}
         checked={checked}
         disabled={disabled}
         onKeyDown={handleOnKeyDown}

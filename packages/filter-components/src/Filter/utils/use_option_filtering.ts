@@ -133,9 +133,16 @@ export const useOptionFiltering = ({
   options,
   value,
 }: UseOptionFilteringProps) => {
-  const values =
-    typeof value === 'string' ? (value === '' ? [] : [value]) : value
-
+  let values: string[]
+  if (typeof value === 'string') {
+    if (value === '') {
+      values = []
+    } else {
+      values = [value]
+    }
+  } else {
+    values = value
+  }
   const { debouncedFilterTerm, ...rest } = useDebouncedFilterTerm(onInputChange)
 
   const extendedOptions = useExtendedOptions(

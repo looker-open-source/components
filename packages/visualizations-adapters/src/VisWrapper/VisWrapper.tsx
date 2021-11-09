@@ -82,6 +82,7 @@ export const VisWrapper = styled(VisWrapperInternal)`
     based on prop.
    */
   display: flex;
+  flex: 1;
   ${flexDirection}
 
   /*

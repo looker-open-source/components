@@ -150,13 +150,15 @@ export const Table: FC<TableProps> = ({
                 </StyledTableDataCell>
                 {resultKeys.map(key => {
                   const val = obj[key]
+                  let valHelper = val
+                  if (typeof val === 'function') {
+                    valHelper = val() // render any embedded react components
+                  } else if (Object(val) === val) {
+                    valHelper = JSON.stringify(val)
+                  }
                   return (
                     <StyledTableDataCell key={key}>
-                      {typeof val === 'function'
-                        ? val() // render any embedded react components
-                        : Object(val) === val
-                        ? JSON.stringify(val)
-                        : val}
+                      {valHelper}
                     </StyledTableDataCell>
                   )
                 })}

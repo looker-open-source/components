@@ -120,6 +120,7 @@ module.exports = {
     indentation: 'off',
     'lodash/import-scope': ['error', 'method'],
     'no-console': 'warn',
+    'no-nested-ternary': 'error',
     'no-redeclare': 'off', // prefer TS version of `no-redeclare` to support function overload syntax
     'no-restricted-imports': [
       'error',

@@ -60,14 +60,23 @@ const ButtonLayout = forwardRef(
       }
     }
 
-    const itemValue =
-      value !== undefined ? value : typeof children === 'string' ? children : ''
+    let itemValue = ''
 
-    const selected = contextValue
-      ? typeof contextValue === 'string'
-        ? contextValue === itemValue
-        : contextValue.includes(itemValue)
-      : false
+    if (value !== undefined) {
+      itemValue = value
+    } else if (typeof children === 'string') {
+      itemValue = children
+    }
+
+    let selected = false
+
+    if (contextValue) {
+      if (typeof contextValue === 'string') {
+        selected = contextValue === itemValue
+      } else {
+        selected = contextValue.includes(itemValue)
+      }
+    }
 
     return (
       <button

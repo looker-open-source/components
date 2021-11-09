@@ -24,21 +24,18 @@
 
  */
 
-export const createSafeRel = (
-  rel: string | undefined,
-  target: string | undefined
-) => {
-  /**
-   * `target="_blank" can be used to reverse tab-nab
-   * https://owasp.org/www-community/attacks/Reverse_Tabnabbing
-   */
-  const noTabNab = 'noopener noreferrer'
+import type { DateFilterType, FilterModel } from '@looker/filter-expressions'
+import { sanitizeDate } from '@looker/filter-expressions'
 
-  if (target === '_blank') {
-    if (rel) {
-      return `${rel} ${noTabNab}`
-    } else {
-      return noTabNab
-    }
-  } else return rel
+/**
+ * Used when adding a new row to an advanced date filter
+ * @param item The item in the previous row
+ * @returns An item based on the previous item but with a conventional default, e.g. 1 month
+ */
+export const newDateItem = ({
+  value,
+  unit,
+  ...restItem
+}: FilterModel<DateFilterType>) => {
+  return sanitizeDate(restItem)
 }

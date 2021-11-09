@@ -109,15 +109,13 @@ export const StaticTable: FC<TableProps> = ({
                 </TableDataCell>
                 {resultKeys.map(key => {
                   const val = obj[key]
-                  return (
-                    <TableDataCell key={key}>
-                      {typeof val === 'function'
-                        ? val() // render any embedded react components
-                        : Object(val) === val
-                        ? JSON.stringify(val)
-                        : val}
-                    </TableDataCell>
-                  )
+                  let valHelper = val
+                  if (typeof val === 'function') {
+                    valHelper = val() // render any embedded react components
+                  } else if (Object(val) === val) {
+                    valHelper = JSON.stringify(val)
+                  }
+                  return <TableDataCell key={key}>{valHelper}</TableDataCell>
                 })}
               </TableRow>
             )

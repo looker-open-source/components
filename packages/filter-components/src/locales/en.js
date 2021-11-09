@@ -138,6 +138,9 @@ export default {
     Remove: '',
     Toggle: '',
   },
+  NumberFilter: {
+    'any value': 'any value',
+  },
   OperatorLabel: {
     AND: 'AND',
     OR: 'OR',
@@ -173,8 +176,5 @@ export default {
   },
   use_validation_message: {
     'Value required': 'Value required',
-  },
-  NumberFilter: {
-    'any value': 'any value',
   },
 }

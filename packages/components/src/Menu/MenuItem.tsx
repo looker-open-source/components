@@ -23,7 +23,7 @@
  SOFTWARE.
 
  */
-
+import pick from 'lodash/pick'
 import styled, { ThemeContext } from 'styled-components'
 import type { MouseEvent, Ref } from 'react'
 import React, { forwardRef, useContext } from 'react'
@@ -32,7 +32,19 @@ import { ArrowRight } from '@styled-icons/material/ArrowRight'
 import { DialogContext } from '../Dialog'
 import type { ListItemProps } from '../ListItem'
 import { ListItem, ListItemContext, listItemDimensions } from '../ListItem'
-import { useForkedRef, useID } from '../utils'
+import {
+  useForkedRef,
+  useID,
+  mergeClassNames,
+  useCallbackRef,
+  useMeasuredElement,
+} from '../utils'
+import {
+  rippleHandlerKeys,
+  rippleStyle,
+  useRipple,
+  useRippleHandlers,
+} from '../Ripple'
 import { NestedMenuContext } from './NestedMenuProvider'
 import type { UseNestedMenuProps } from './useNestedMenu'
 import { useNestedMenu } from './useNestedMenu'
@@ -45,6 +57,7 @@ export const MenuItem = styled(
   forwardRef(
     (
       {
+        className,
         children,
         detail,
         onClick,
@@ -52,6 +65,7 @@ export const MenuItem = styled(
         onMouseEnter,
         onMouseLeave,
         nestedMenu,
+        style,
         ...props
       }: MenuItemProps,
       forwardedRef: Ref<HTMLLIElement>
@@ -74,7 +88,29 @@ export const MenuItem = styled(
         onMouseLeave,
       })
 
-      const ref = useForkedRef<HTMLLIElement>(nestedMenuRef, forwardedRef)
+      // find the dimensions of button for ripple behavior
+      const [element, internalRef] = useCallbackRef(forwardedRef)
+      const [{ height, width }] = useMeasuredElement(element)
+
+      const {
+        callbacks,
+        className: rippleClassName,
+        style: rippleStyle,
+      } = useRipple({
+        bounded: true,
+        color: 'neutral',
+        height,
+        width,
+      })
+
+      const rippleHandlers = useRippleHandlers(
+        callbacks,
+        {
+          ...pick({ ...props, ...nestedMenuProps }, rippleHandlerKeys),
+        },
+        props.disabled
+      )
+      const ref = useForkedRef<HTMLLIElement>(nestedMenuRef, internalRef)
 
       const theme = useContext(ThemeContext)
       const { density } = useContext(ListItemContext)
@@ -104,12 +140,15 @@ export const MenuItem = styled(
       return (
         <>
           <ListItem
+            className={mergeClassNames([className, rippleClassName])}
             detail={detail}
             onClick={handleOnClick}
             ref={ref}
             role="menuitem"
-            {...props}
+            style={{ ...style, ...rippleStyle }}
             {...nestedMenuProps}
+            {...props}
+            {...rippleHandlers}
           >
             {children}
           </ListItem>
@@ -121,6 +160,8 @@ export const MenuItem = styled(
     }
   )
 )`
+  ${rippleStyle}
+
   /** Styling for items that have nested menus */
   [aria-expanded='true'] {
     background: ${({ theme: { colors } }) => colors.ui1};

@@ -330,11 +330,12 @@ const SelectCreateOption = ({
   const inputValue = isMulti ? dataMulti.inputValue : data.inputValue
 
   const shouldShow = useMemo(() => {
-    const currentOptions = isMulti
-      ? dataMulti.options
-      : data.option
-      ? [data.option]
-      : []
+    let currentOptions: SelectOptionObject[] = []
+    if (isMulti) {
+      currentOptions = dataMulti.options
+    } else if (data.option) {
+      currentOptions = [data.option]
+    }
     return notInOptions(currentOptions, options, inputValue)
   }, [isMulti, data.option, dataMulti.options, options, inputValue])
 

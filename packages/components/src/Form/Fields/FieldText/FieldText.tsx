@@ -43,19 +43,20 @@ const FieldTextComponent = forwardRef(
     const validationMessage = useFormContext(props)
     const { space } = useContext(ThemeContext)
     const [beforeWidth, setBeforeWidth] = useState(0)
+    let labelOffset
+    if (props.iconBefore) {
+      labelOffset = space.u8
+    } else if (props.before) {
+      labelOffset = `${beforeWidth}px`
+    }
+
     return (
       <InputTextContext.Provider value={{ beforeWidth, setBeforeWidth }}>
         <FloatingLabelField
           id={id}
           validationMessage={validationMessage}
           hasValue={getHasValue(props)}
-          labelOffset={
-            props.iconBefore
-              ? space.u8
-              : props.before
-              ? `${beforeWidth}px`
-              : undefined
-          }
+          labelOffset={labelOffset}
           {...pickFieldProps(props)}
         >
           <InputText

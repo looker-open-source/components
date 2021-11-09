@@ -25,7 +25,7 @@
  */
 import { renderWithTheme } from '@looker/components-test-utils'
 import type { DateFilterType, FilterModel } from '@looker/filter-expressions'
-import { screen } from '@testing-library/react'
+import { fireEvent, screen } from '@testing-library/react'
 import React from 'react'
 import { DateFilter } from './DateFilter'
 
@@ -98,5 +98,47 @@ describe('Date filter test', () => {
     )
 
     expect(screen.getAllByPlaceholderText('Select time')).toHaveLength(2)
+  })
+
+  it('New row should default to 1 month', () => {
+    const item = {
+      id: '1',
+      is: true,
+      type: 'past' as const,
+      value: [3],
+      unit: 'week',
+    }
+    const onAddMock = jest.fn()
+
+    renderWithTheme(
+      <DateFilter
+        item={item}
+        filterType="date_time"
+        onChange={jest.fn()}
+        showAdd={true}
+        showName={true}
+        showRemove={false}
+        showOperator={false}
+        showMatchesAdvanced={false}
+        onAdd={onAddMock}
+        onRemove={jest.fn()}
+      />
+    )
+
+    fireEvent.click(screen.getByRole('button'))
+    expect(onAddMock.mock.calls).toMatchInlineSnapshot(`
+      Array [
+        Array [
+          Object {
+            "id": "1",
+            "is": true,
+            "type": "past",
+            "unit": "month",
+            "value": 1,
+          },
+          true,
+        ],
+      ]
+    `)
   })
 })

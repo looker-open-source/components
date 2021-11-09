@@ -23,7 +23,7 @@
  SOFTWARE.
 
  */
-import type { Ref } from 'react'
+import type { AriaAttributes, Ref } from 'react'
 import React, { useContext, forwardRef } from 'react'
 import styled from 'styled-components'
 import { ExpandLess } from '@styled-icons/material-rounded/ExpandLess'
@@ -69,25 +69,32 @@ const DataTableHeaderCellLayout = forwardRef(
     }
     const { role, ...clickableProps } = useClickable({ onClick })
 
-    const label = titleIcon ? (
-      <Tooltip content={title}>
-        <Icon color="ui3" title={title} icon={titleIcon} size="small" />
-      </Tooltip>
-    ) : size && sizeInfersTruncate(size) ? (
-      <Truncate width="auto">{title}</Truncate>
-    ) : (
-      title
-    )
+    let label
+
+    if (titleIcon) {
+      label = (
+        <Tooltip content={title}>
+          <Icon color="ui3" title={title} icon={titleIcon} size="small" />
+        </Tooltip>
+      )
+    } else if (size && sizeInfersTruncate(size)) {
+      label = <Truncate width="auto">{title}</Truncate>
+    } else {
+      label = title
+    }
+
+    let ariaSort: AriaAttributes['aria-sort'] = 'none'
+
+    if (sortDirection === 'asc') {
+      ariaSort = 'ascending'
+    } else if (sortDirection === 'desc') {
+      ariaSort = 'descending'
+    }
+
     return (
       <FocusableCell
         as="th"
-        aria-sort={
-          sortDirection === 'asc'
-            ? 'ascending'
-            : sortDirection === 'desc'
-            ? 'descending'
-            : 'none'
-        }
+        aria-sort={ariaSort}
         className={className}
         ref={ref}
         style={{ cursor: canSort ? 'pointer' : undefined }}

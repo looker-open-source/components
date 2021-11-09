@@ -54,9 +54,10 @@ export const AdvancedFilter: FC<AdvancedFilterProps> = ({
   validationMessage,
   isLoading,
 }) => {
-  const onAdd = (filterItem: FilterModel) => {
+  const onAdd = (filterItem: FilterModel, keepValue?: boolean) => {
     if (ast) {
-      updateAST(addNode(ast, { ...filterItem, value: [] } as FilterASTNode))
+      const newItem = keepValue ? filterItem : { ...filterItem, value: [] }
+      updateAST(addNode(ast, newItem as FilterASTNode))
     }
   }
 

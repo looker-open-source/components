@@ -46,7 +46,16 @@ const CustomIndicator: FC<OptionIndicatorProps> = ({
   isActive,
   isSelected,
 }) => {
-  return <>{isSelected ? '>>' : isActive ? '>' : ''}</>
+  let indicator
+
+  if (isSelected) {
+    indicator = '>>'
+  } else if (isActive) {
+    indicator = '>'
+  } else {
+    indicator = ''
+  }
+  return <>{indicator}</>
 }
 
 export const ComboboxDemo = () => {

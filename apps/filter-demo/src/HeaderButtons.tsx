@@ -24,7 +24,7 @@
 
  */
 
-import type { FC } from 'react'
+import type { FC, ReactNode } from 'react'
 import React, { useContext, useEffect, useState } from 'react'
 import {
   Button,
@@ -61,20 +61,25 @@ export const HeaderButtons: FC<HeaderButtonProps> = ({
     }
   }, [needsUpdate])
 
+  let runButton: ReactNode = null
+  if (needsUpdate) {
+    runButton = (
+      <Button
+        iconBefore={<Refresh />}
+        onClick={handleClick}
+        size="small"
+        disabled={hasClicked}
+      >
+        Run
+      </Button>
+    )
+  } else if (hasClicked) {
+    runButton = <Icon icon={<Done />} size="small" color="positive" />
+  }
+
   return (
     <Space gap="u2">
-      {needsUpdate ? (
-        <Button
-          iconBefore={<Refresh />}
-          onClick={handleClick}
-          size="small"
-          disabled={hasClicked}
-        >
-          Run
-        </Button>
-      ) : hasClicked ? (
-        <Icon icon={<Done />} size="small" color="positive" />
-      ) : null}
+      {runButton}
       <IconButton
         label="Close"
         icon={<Close />}

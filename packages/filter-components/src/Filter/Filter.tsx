@@ -89,12 +89,13 @@ export const Filter: FC<FilterProps> = ({
 
   const updateExpression = (newAST: FilterASTNode) => {
     const { toString } = typeToGrammar(expressionType)
-    // generate new expression from new AST
-    return newAST.type === 'matchesAdvanced'
-      ? newAST.expression === undefined || newAST.expression === null
-        ? expression
-        : newAST.expression
-      : toString(newAST, expressionType, props.field || undefined)
+    if (newAST.type === 'matchesAdvanced') {
+      if (newAST.expression === undefined || newAST.expression === null) {
+        return expression
+      } else return newAST.expression
+    } else {
+      return toString(newAST, expressionType, props.field || undefined)
+    }
   }
 
   const updateAST = (newAST: FilterASTNode | undefined) => {
