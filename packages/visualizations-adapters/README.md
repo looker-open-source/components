@@ -16,4 +16,4 @@ You'll also need to satisfy a few peer dependencies - React and Styled Component
 
 ## Getting Started
 
-Please see the documentation for [@looker/visualizations](https://github.com/looker-open-source/visualizations).
+Please see the documentation for [@looker/visualizations](https://github.com/looker-open-source/components/tree/main/packages/visualizations). After that, be sure to check out the [Looker Developer Portal](https://developers.looker.com/components/visualization-components) to see the supported configuration options, or view the [extension framework documentation](https://docs.looker.com/data-modeling/extension-framework/vis-components) for more advanced usage.

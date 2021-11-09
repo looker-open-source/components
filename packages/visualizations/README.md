@@ -48,7 +48,7 @@ Or alternatively, you can use the `QueryFormatter` component to pass the formatt
 </Query>
 ```
 
-For more information and advanced usage, including furthur configuration of our standard charting library, please see the full Looker Visualization Components documentation (documentation forthcoming).
+For more information and advanced usage, please see the [Looker Visualization Components documentation](https://docs.looker.com/data-modeling/extension-framework/vis-components). Additionally, you can preview our list of supported configuration options at the [Looker Developer Portal](https://developers.looker.com/components/visualization-components).
 
 ## Motivation
 
