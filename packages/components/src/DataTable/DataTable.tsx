@@ -74,12 +74,13 @@ export const DataTableLayout: FC<DataTableProps> = props => {
    * 3. Use whether `select` feature is active (TRUE|FALSE)
    *
    */
-  const firstColumnStuck =
-    columnsDisplayState[0] === false
-      ? false
-      : explicitFirstColumnStuck !== undefined
-      ? explicitFirstColumnStuck
-      : Boolean(select)
+
+  let firstColumnStuck = Boolean(select)
+  if (columnsDisplayState[0] === false) {
+    firstColumnStuck = false
+  } else if (explicitFirstColumnStuck !== undefined) {
+    firstColumnStuck = explicitFirstColumnStuck
+  }
 
   const context = {
     allSelected: allItemsSelected(select),

@@ -101,25 +101,36 @@ Portal.displayName = 'Portal'
  * DOM-output so it re-injects `styleDefenderCSS` to do a light-weight
  * "CSS reset"
  */
+
+const alignItems = ({ vertical }: PortalPlacementProps) => {
+  if (vertical === 'top') {
+    return 'flex-start'
+  } else if (vertical === 'bottom') {
+    return 'flex-end'
+  } else {
+    return 'center'
+  }
+}
+
+const justifyContent = ({ horizontal }: PortalPlacementProps) => {
+  if (horizontal === 'left') {
+    return 'flex-start'
+  } else if (horizontal === 'right') {
+    return 'flex-end'
+  } else {
+    return 'center'
+  }
+}
+
 const InvisiBox = styled.div.attrs(
   ({ className = 'looker-components-reset' }) => ({ className })
 )<PortalPlacementProps>`
   ${styleDefenderCSS}
 
-  align-items: ${({ vertical }) =>
-    vertical === 'top'
-      ? 'flex-start'
-      : vertical === 'bottom'
-      ? 'flex-end'
-      : 'center'};
+  align-items: ${alignItems};
   bottom: 0;
   display: flex;
-  justify-content: ${({ horizontal }) =>
-    horizontal === 'left'
-      ? 'flex-start'
-      : horizontal === 'right'
-      ? 'flex-end'
-      : 'center'};
+  justify-content: ${justifyContent};
   left: 0;
   pointer-events: none;
   position: ${({ fixed }) => (fixed === false ? 'absolute' : 'fixed')};

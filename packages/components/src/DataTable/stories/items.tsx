@@ -30,6 +30,7 @@ import { Delete } from '@styled-icons/material'
 import type { CheeseData } from '../../__mocks__/DataTable/data'
 import { data as mockData } from '../../__mocks__/DataTable/data'
 import { Link } from '../../Link'
+import type { StatusIntent } from '../../Status'
 import { Status } from '../../Status'
 import { Tooltip } from '../../Tooltip'
 import { DataTableCell } from '../Column'
@@ -74,44 +75,43 @@ export const itemBuilder = (
       calcium,
       status,
       disabled,
-    }) => (
-      <DataTableItem
-        actionPrimary={actionPrimary}
-        actions={actions}
-        disabled={disabled}
-        id={id}
-        key={id}
-      >
-        <DataTableCell description={type}>
-          <Link href="https://components.looker.com/" target="_blank">
-            {name}
-          </Link>
-        </DataTableCell>
-        <DataTableCell>
-          <Tooltip content={status}>
-            <Status
-              intent={
-                status === 'Out of Stock'
-                  ? 'critical'
-                  : status === 'Low Stock'
-                  ? 'warn'
-                  : 'positive'
-              }
-              title={status}
-              size="xsmall"
-            />
-          </Tooltip>
-        </DataTableCell>
-        <DataTableCell>{inventory}</DataTableCell>
-        <DataTableCell>{color}</DataTableCell>
-        <DataTableCell>{description}</DataTableCell>
-        <DataTableCell>{origin}</DataTableCell>
-        <DataTableCell>{calories}</DataTableCell>
-        <DataTableCell>{fat}</DataTableCell>
-        <DataTableCell>{protein}</DataTableCell>
-        <DataTableCell>{calcium}</DataTableCell>
-      </DataTableItem>
-    )
+    }) => {
+      let intent: StatusIntent = 'positive'
+      if (status === 'Out of Stock') {
+        intent = 'critical'
+      } else if (status === 'Low Stock') {
+        intent = 'warn'
+      }
+
+      return (
+        <DataTableItem
+          actionPrimary={actionPrimary}
+          actions={actions}
+          disabled={disabled}
+          id={id}
+          key={id}
+        >
+          <DataTableCell description={type}>
+            <Link href="https://components.looker.com/" target="_blank">
+              {name}
+            </Link>
+          </DataTableCell>
+          <DataTableCell>
+            <Tooltip content={status}>
+              <Status intent={intent} title={status} size="xsmall" />
+            </Tooltip>
+          </DataTableCell>
+          <DataTableCell>{inventory}</DataTableCell>
+          <DataTableCell>{color}</DataTableCell>
+          <DataTableCell>{description}</DataTableCell>
+          <DataTableCell>{origin}</DataTableCell>
+          <DataTableCell>{calories}</DataTableCell>
+          <DataTableCell>{fat}</DataTableCell>
+          <DataTableCell>{protein}</DataTableCell>
+          <DataTableCell>{calcium}</DataTableCell>
+        </DataTableItem>
+      )
+    }
   )
 }
 

@@ -71,7 +71,11 @@ const groupComponents = (pages: NavigationPage[]) => {
     const groupKeyArr = groupKey.split('/')
     const groupName = groupKeyArr[groupKeyArr.length - 1]
     return { children: group, path: groupKey, title: startCase(groupName) }
-  }).sort((a, b) => (a.title > b.title ? 1 : b.title > a.title ? -1 : 0))
+  }).sort((a, b) => {
+    if (a.title > b.title) return 1
+    if (b.title > a.title) return -1
+    return 0
+  })
 }
 
 const isDev = process.env.NODE_ENV === 'development'

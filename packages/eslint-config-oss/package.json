@@ -31,5 +31,7 @@
     "eslint-plugin-testing-library": "4.11.0",
     "typescript": "4.4.2"
   },
-  "gitHead": "734f77cda8050d9eea83a187113333dfad8650ca"
+  "gitHead": "734f77cda8050d9eea83a187113333dfad8650ca",
+  "devDependencies": {},
+  "peerDependencies": {}
 }

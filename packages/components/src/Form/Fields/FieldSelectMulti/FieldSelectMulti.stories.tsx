@@ -298,6 +298,16 @@ export const SelectMultiDemo = () => {
     )
   }
 
+  const whichIcon = (isActive?: boolean, isSelected?: boolean) => {
+    if (isActive) {
+      return <ChevronRight />
+    } else if (isSelected) {
+      return <Favorite />
+    } else {
+      return <ExpandMore />
+    }
+  }
+
   return (
     <SpaceVertical p="u5" width={400}>
       <Dialog isOpen={isOpen} onClose={handleClose}>
@@ -407,17 +417,7 @@ export const SelectMultiDemo = () => {
         closeOnSelect
         mb="xlarge"
         indicator={({ isActive, isSelected }) => (
-          <Icon
-            icon={
-              isActive ? (
-                <ChevronRight />
-              ) : isSelected ? (
-                <Favorite />
-              ) : (
-                <ExpandMore />
-              )
-            }
-          />
+          <Icon icon={whichIcon(isActive, isSelected)} />
         )}
       />
     </SpaceVertical>

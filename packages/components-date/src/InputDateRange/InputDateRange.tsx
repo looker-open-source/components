@@ -155,13 +155,14 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
     const [activeDateInput, setActiveDateInput] = useState<Endpoint>('from')
 
     // Calendar 1 view
-    const [viewMonth, setViewMonth] = useState<Date>(
-      value && value.from
-        ? value.from
-        : defaultValue && defaultValue.from
-        ? defaultValue.from
-        : new Date(Date.now())
-    )
+    let calView = new Date(Date.now())
+    if (value && value.from) {
+      calView = value.from
+    } else if (defaultValue && defaultValue.from) {
+      calView = defaultValue.from
+    }
+
+    const [viewMonth, setViewMonth] = useState<Date>(calView)
 
     // Calendar 2 view
     const viewNextMonth = new Date(viewMonth)

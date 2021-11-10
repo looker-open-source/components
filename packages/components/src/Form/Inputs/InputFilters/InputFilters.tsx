@@ -55,11 +55,18 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
   const [fieldEditing, setFieldEditing] = useState<undefined | string>(
     undefined
   )
+
   const assignedFilters = filters
     .filter(filter => filter.value || filter.field === fieldEditing)
-    .sort((a, b) =>
-      a.value === undefined ? 1 : b.value === undefined ? -1 : 0
-    )
+    .sort((a, b) => {
+      if (a.value === undefined) {
+        return 1
+      } else if (b.value === undefined) {
+        return -1
+      } else {
+        return 0
+      }
+    })
 
   const unassignedFilters = filters.filter(
     filter =>

@@ -28,7 +28,7 @@ import 'jest-styled-components'
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { Science } from '@styled-icons/material-outlined'
-import { fireEvent, screen } from '@testing-library/react'
+import { act, fireEvent, screen } from '@testing-library/react'
 
 import { MenuItem } from './MenuItem'
 
@@ -44,7 +44,14 @@ beforeEach(() => {
 
 afterEach(() => {
   global.console = globalConsole
+  jest.runOnlyPendingTimers()
+  jest.useRealTimers()
 })
+
+const runTimers = () =>
+  act(() => {
+    jest.runOnlyPendingTimers()
+  })
 
 describe('MenuItem', () => {
   test('renders', () => {
@@ -178,7 +185,43 @@ describe('MenuItem', () => {
         Array [
           "The detail prop is not supported when nestedMenu is used.",
         ],
+        Array [
+          "The detail prop is not supported when nestedMenu is used.",
+        ],
       ]
     `)
+  })
+  describe('ripple effect', () => {
+    test('default', () => {
+      renderWithTheme(<MenuItem>Menu Item</MenuItem>)
+
+      const menu = screen.getByText('Menu Item').closest('li')
+      expect(menu).not.toHaveClass('bg-on fg-in')
+      expect(menu).toHaveStyle({
+        '--ripple-color': '#71767a',
+        '--ripple-scale-end': '1',
+        // This should change to 0.1 when brandAnimation default becomes true
+        '--ripple-scale-start': '1',
+        '--ripple-size': '100%',
+        '--ripple-translate': '0, 0',
+      })
+
+      menu && fireEvent.focus(menu)
+      expect(menu).toHaveClass('bg-on')
+
+      menu && fireEvent.mouseDown(menu)
+      expect(menu).toHaveClass('bg-on fg-in')
+
+      // foreground is locked for a minimum time to animate the ripple
+      menu && fireEvent.mouseUp(menu)
+      runTimers()
+      expect(menu).toHaveClass('bg-on fg-out')
+      runTimers()
+      expect(menu).toHaveClass('bg-on')
+
+      menu && fireEvent.blur(menu)
+      expect(menu).not.toHaveClass('bg-on fg-in')
+      fireEvent.click(document)
+    })
   })
 })

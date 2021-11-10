@@ -24,6 +24,7 @@
 
  */
 
+import { ThemeProvider } from 'styled-components'
 import React from 'react'
 import type { Story } from '@storybook/react/types-6-0'
 import { PersonOutline } from '@styled-icons/material-outlined'
@@ -31,52 +32,67 @@ import { defaultArgTypes as argTypes } from '../../../../apps/storybook/src/defa
 import type { MenuItemProps } from './MenuItem'
 import { MenuItem } from './MenuItem'
 
-const MenuItemTemplate: Story<MenuItemProps> = args => (
-  <MenuItem {...args}>Menu Item</MenuItem>
+// test
+
+const Template: Story<MenuItemProps & { ripple: boolean }> = ({
+  ripple,
+  ...args
+}) => (
+  <ThemeProvider
+    theme={theme => ({
+      ...theme,
+      defaults: { ...theme.defaults, brandAnimation: ripple },
+    })}
+  >
+    <MenuItem {...args}>Menu Item</MenuItem>
+  </ThemeProvider>
 )
 
-export const Basic = MenuItemTemplate.bind({})
+export const Basic = Template.bind({})
+Basic.args = {
+  ripple: false,
+}
 
-export const Icon = MenuItemTemplate.bind({})
+export const Icon = Template.bind({})
 Icon.args = {
   ...Basic,
   icon: <PersonOutline />,
 }
 
-export const Detail = MenuItemTemplate.bind({})
+export const Detail = Template.bind({})
 Detail.args = {
   ...Basic,
   detail: 'A Detail',
 }
 
-export const IconAndDetail = MenuItemTemplate.bind({})
+export const IconAndDetail = Template.bind({})
 IconAndDetail.args = {
   ...Basic,
   detail: 'A Detail',
   icon: <PersonOutline />,
 }
 
-export const Description = MenuItemTemplate.bind({})
+export const Description = Template.bind({})
 Description.args = {
   ...Basic,
   description: 'A description',
 }
 
-export const IconAndDescription = MenuItemTemplate.bind({})
+export const IconAndDescription = Template.bind({})
 IconAndDescription.args = {
   ...Basic,
   description: 'A description',
   icon: <PersonOutline />,
 }
 
-export const DetailAndDescription = MenuItemTemplate.bind({})
+export const DetailAndDescription = Template.bind({})
 DetailAndDescription.args = {
   ...Basic,
   description: 'A description',
   detail: 'A detail',
 }
 
-export const IconAndDetailAndDescription = MenuItemTemplate.bind({})
+export const IconAndDetailAndDescription = Template.bind({})
 IconAndDetailAndDescription.args = {
   ...Basic,
   description: 'A description',
@@ -84,7 +100,7 @@ IconAndDetailAndDescription.args = {
   icon: <PersonOutline />,
 }
 
-export const Selected = MenuItemTemplate.bind({})
+export const Selected = Template.bind({})
 Selected.args = {
   ...Basic,
   selected: true,

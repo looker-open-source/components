@@ -160,20 +160,24 @@ const FieldsetLayout = forwardRef(
       }
     }
 
-    const renderedFieldset = legend ? (
-      accordion ? (
-        <Accordion2 {...accordionProps}>
-          <FieldsetAccordionContent>{content}</FieldsetAccordionContent>
-        </Accordion2>
-      ) : (
-        <SpaceVertical>
-          {legendRender}
-          {content}
-        </SpaceVertical>
-      )
-    ) : (
-      content
-    )
+    let renderedFieldset = content
+
+    if (legend) {
+      if (accordion) {
+        renderedFieldset = (
+          <Accordion2 {...accordionProps}>
+            <FieldsetAccordionContent>{content}</FieldsetAccordionContent>
+          </Accordion2>
+        )
+      } else {
+        renderedFieldset = (
+          <SpaceVertical>
+            {legendRender}
+            {content}
+          </SpaceVertical>
+        )
+      }
+    }
 
     return (
       <FieldsetContext.Provider

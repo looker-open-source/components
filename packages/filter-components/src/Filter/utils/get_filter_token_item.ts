@@ -66,6 +66,12 @@ const getNumberFilterTokenItem = (
   item: FilterModel,
   configType: string
 ): FilterModel => {
+  let value = [0]
+  if (item.value?.length) {
+    value = item.value
+  } else if (item.low) {
+    value = [item.low]
+  }
   switch (configType) {
     case 'range_slider': {
       const value = (item.value && item.value?.[0]) || 0
@@ -80,7 +86,7 @@ const getNumberFilterTokenItem = (
       return sanitizeNumber({
         ...item,
         type: '=',
-        value: item.value?.length ? item.value : item.low ? [item.low] : [0],
+        value,
       })
     default:
       return sanitizeNumber({ ...item, type: '=' })

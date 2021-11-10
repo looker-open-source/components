@@ -37,6 +37,7 @@ import { useDateFilterOptions } from '../../utils/get_date_filter_options'
 import { OperatorLabel } from '../OperatorLabel'
 import { GroupSelect } from '../GroupSelect'
 import { dateFilterTypeToFilter } from './utils/date_filter_type_to_filter'
+import { newDateItem } from './utils/new_date_item'
 import { useFilterOptions } from '../../utils'
 import { AddRemoveButtons } from '../AddRemoveButtons'
 
@@ -64,7 +65,7 @@ export const DateFilter: FC<FilterParamProps<DateFilterType>> = ({
   }
   const options = useFilterOptions(dateFilterOptions, showMatchesAdvanced)
 
-  const handleOnAdd = () => onAdd(item)
+  const handleOnAdd = () => onAdd(newDateItem(item), true)
   const handleOnRemove = () => onRemove(item.id)
 
   const FilterComponent: ElementType = dateFilterTypeToFilter(item.type)

@@ -56,6 +56,6 @@ export interface FilterParamProps<T extends string = string> {
   showOperator: boolean
   showMatchesAdvanced: boolean
   anyOption?: boolean
-  onAdd: (item: FilterModel) => void
+  onAdd: (item: FilterModel, keepValue?: boolean) => void
   onRemove: (id: string) => void
 }

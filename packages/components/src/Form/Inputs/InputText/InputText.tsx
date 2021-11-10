@@ -120,17 +120,19 @@ const InputComponent = forwardRef(
       type,
     }
 
-    const inner = children ? (
+    let inner = <StyledInput {...inputProps} ref={ref} />
+
+    if (children) {
       // Support for rendering chips in InputChips and SelectMulti
-      <div className="inner">
-        {children}
-        {<StyledInput {...inputProps} ref={ref} />}
-      </div>
-    ) : autoResize ? (
-      <InlineInputTextBase {...inputProps} ref={ref} />
-    ) : (
-      <StyledInput {...inputProps} ref={ref} />
-    )
+      inner = (
+        <div className="inner">
+          {children}
+          {<StyledInput {...inputProps} ref={ref} />}
+        </div>
+      )
+    } else if (autoResize) {
+      inner = <InlineInputTextBase {...inputProps} ref={ref} />
+    }
 
     return (
       <div
