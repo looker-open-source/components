@@ -3,7 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 2.8.10
+
+## `@looker/components` 2.8.10
+
+### Features
+
+- **MenuItem:** Add ripple effect
+
+## `@looker/filter-components` 0.10.10
+
+### Bug Fixes
+
+- **DateFilter:** Default value for new items
+
+## `@looker/eslint-config-oss` 1.7.10
+
+### Features
+
+- Added `no-nested-ternary` rule
+
+## `@looker/visualization-adapters` 0.1.4
+
+### Bug Fixes
+
+- **VisWrapper:** Add flex grow style
+
 # 2.8.9
+
+## `@looker/components` 2.8.9
 
 ### Features
 
@@ -16,6 +44,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 - **`@looker/visualizations-single-value`** package introduced
 
 # 2.8.7
+
+## `@looker/components` 2.8.7
 
 - **`@looker/visualizations`** package introduced
 - **`@looker/visualizations-adapters`** package introduced
