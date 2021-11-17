@@ -1,0 +1,14 @@
+{
+  "contains": "sisältää kohteen",
+  "doesnt contain": "ei sisällä kohdetta",
+  "doesnt end with": "ei lopu kohteella",
+  "doesnt start with": "ei ala kohteella",
+  "ends with": "loppuu kohteella",
+  "is": "on",
+  "is blank": "on tyhjä",
+  "is not": "ei ole",
+  "is not blank": "ei ole tyhjä",
+  "is not null": "ei ole nolla",
+  "is null": "on nolla",
+  "starts with": "alkaa kohteella"
+}

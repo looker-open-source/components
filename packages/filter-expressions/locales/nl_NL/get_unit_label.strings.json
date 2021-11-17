@@ -1,54 +1,12 @@
 {
-  "fiscal years": {
-    "value": "fiscale jaren"
-  },
-  "years": {
-    "value": "jaren"
-  },
-  "fiscal quarters": {
-    "value": "fiscale kwartalen"
-  },
-  "quarters": {
-    "value": "kwartalen"
-  },
-  "months": {
-    "value": "maanden"
-  },
-  "weeks": {
-    "value": "weken"
-  },
-  "days": {
-    "value": "dagen"
-  },
-  "hours": {
-    "value": "uren"
-  },
-  "minutes": {
-    "value": "minuten"
-  },
-  "seconds": {
-    "value": "seconden"
-  },
-  "complete fiscal years": {
-    "value": "hele fiscale jaren"
-  },
-  "complete years": {
-    "value": "hele jaren"
+  "complete days": {
+    "value": "hele dagen"
   },
   "complete fiscal quarters": {
     "value": "hele fiscale kwartalen"
   },
-  "complete quarters": {
-    "value": "hele kwartalen"
-  },
-  "complete months": {
-    "value": "hele maanden"
-  },
-  "complete weeks": {
-    "value": "hele weken"
-  },
-  "complete days": {
-    "value": "hele dagen"
+  "complete fiscal years": {
+    "value": "hele fiscale jaren"
   },
   "complete hours": {
     "value": "hele uren"
@@ -56,7 +14,49 @@
   "complete minutes": {
     "value": "hele minuten"
   },
+  "complete months": {
+    "value": "hele maanden"
+  },
+  "complete quarters": {
+    "value": "hele kwartalen"
+  },
   "complete seconds": {
     "value": "hele seconden"
+  },
+  "complete weeks": {
+    "value": "hele weken"
+  },
+  "complete years": {
+    "value": "hele jaren"
+  },
+  "days": {
+    "value": "dagen"
+  },
+  "fiscal quarters": {
+    "value": "fiscale kwartalen"
+  },
+  "fiscal years": {
+    "value": "fiscale jaren"
+  },
+  "hours": {
+    "value": "uren"
+  },
+  "minutes": {
+    "value": "minuten"
+  },
+  "months": {
+    "value": "maanden"
+  },
+  "quarters": {
+    "value": "kwartalen"
+  },
+  "seconds": {
+    "value": "seconden"
+  },
+  "weeks": {
+    "value": "weken"
+  },
+  "years": {
+    "value": "jaren"
   }
 }

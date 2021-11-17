@@ -1,0 +1,14 @@
+{
+  "contains": "포함",
+  "doesnt contain": "포함 안 함",
+  "doesnt end with": "다음으로 종료 안 함",
+  "doesnt start with": "다음으로 시작 안 함",
+  "ends with": "다음으로 종료",
+  "is": "이(가)",
+  "is blank": "이(가) 비어 있음",
+  "is not": "이(가) 다음이 아님",
+  "is not blank": "이(가) 비어 있지 않음",
+  "is not null": "이(가) null이 아님",
+  "is null": "이(가) null임",
+  "starts with": "다음으로 시작"
+}

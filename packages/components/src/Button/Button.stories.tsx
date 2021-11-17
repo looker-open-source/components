@@ -29,6 +29,7 @@ import React from 'react'
 import type { Story } from '@storybook/react/types-6-0'
 import { ThemeProvider } from 'styled-components'
 import { defaultArgTypes as argTypes } from '../../../../apps/storybook/src/defaultArgTypes'
+import { Box2 } from '../Layout'
 import { Button } from './Button'
 import type { ButtonProps } from './types'
 
@@ -105,6 +106,25 @@ export const Large = Template.bind({})
 Large.args = {
   ...Basic.args,
   size: 'large',
+}
+
+export const ShrinkingIconRepro = () => {
+  return (
+    <ThemeProvider
+      theme={theme => ({
+        ...theme,
+        defaults: { ...theme.defaults, brandAnimation: true },
+      })}
+    >
+      <Box2 display="flex">
+        <Box2 width="100%">Some text</Box2>
+        <Button iconBefore={<AddCircle />}>Button</Button>
+      </Box2>
+    </ThemeProvider>
+  )
+}
+ShrinkingIconRepro.parameters = {
+  storyshots: { disable: true },
 }
 
 export default {

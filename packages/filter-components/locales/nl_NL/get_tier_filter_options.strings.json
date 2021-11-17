@@ -1,9 +1,9 @@
 {
-  "is any value": {
-    "value": "is elke waarde"
-  },
   "is": {
     "value": "is"
+  },
+  "is any value": {
+    "value": "is elke waarde"
   },
   "is not": {
     "value": "is niet"

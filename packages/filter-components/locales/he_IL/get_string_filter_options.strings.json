@@ -1,0 +1,14 @@
+{
+  "contains": "מכיל",
+  "doesnt contain": "לא מכיל",
+  "doesnt end with": "לא מסתיים ב-",
+  "doesnt start with": "לא מתחיל ב-",
+  "ends with": "מסתיים ב-",
+  "is": "הוא",
+  "is blank": "ריק",
+  "is not": "אינו",
+  "is not blank": "אינו ריק",
+  "is not null": "אינו Null",
+  "is null": "Null",
+  "starts with": "מתחיל ב-"
+}

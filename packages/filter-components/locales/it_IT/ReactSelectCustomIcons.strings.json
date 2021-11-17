@@ -2,10 +2,10 @@
   "Clear all": {
     "value": "Cancella tutto"
   },
-  "Toggle": {
-    "value": "Attiva/disattiva"
-  },
   "Remove": {
     "value": "Rimuovi"
+  },
+  "Toggle": {
+    "value": "Attiva/disattiva"
   }
 }

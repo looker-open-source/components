@@ -1,0 +1,44 @@
+{
+  "exclusive": {
+    "value": "(без меж)"
+  },
+  "inclusive": {
+    "value": "[з межами]"
+  },
+  "is": {
+    "value": "є"
+  },
+  "is between": {
+    "value": "у діапазоні"
+  },
+  "is greater": {
+    "value": ">"
+  },
+  "is greater equal": {
+    "value": ">="
+  },
+  "is less": {
+    "value": "<"
+  },
+  "is less equal": {
+    "value": "<="
+  },
+  "is not": {
+    "value": "не є"
+  },
+  "is not between": {
+    "value": "поза діапазоном"
+  },
+  "is not null": {
+    "value": "не має значення NULL"
+  },
+  "is null": {
+    "value": "має значення NULL"
+  },
+  "left exclusive": {
+    "value": "(з лівою межею]"
+  },
+  "right exclusive": {
+    "value": "[з правою межею)"
+  }
+}

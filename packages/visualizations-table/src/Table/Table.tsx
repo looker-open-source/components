@@ -59,6 +59,7 @@ export const Table: FC<TableProps> = ({
   data = [],
   config,
   fields = { dimensions: [], measures: [] },
+  totals = {},
   width = 'auto',
 }) => {
   if (!data.length) {
@@ -165,6 +166,22 @@ export const Table: FC<TableProps> = ({
               </TableRow>
             )
           })}
+        {Object.keys(totals).length > 0 && (
+          <TableRow>
+            <StyledTableDataCell
+              textAlign="right"
+              color="text1"
+              width="1px"
+              pr="small"
+            >
+              Totals
+            </StyledTableDataCell>
+            {resultKeys.map(key => {
+              const val = totals[key]
+              return <StyledTableDataCell key={key}>{val}</StyledTableDataCell>
+            })}
+          </TableRow>
+        )}
       </TableBody>
     </TableElement>
   )

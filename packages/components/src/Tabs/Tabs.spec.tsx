@@ -28,236 +28,156 @@ import 'jest-styled-components'
 import '@testing-library/jest-dom/extend-expect'
 import { renderWithTheme } from '@looker/components-test-utils'
 import React from 'react'
-import { fireEvent, screen } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
+import { act, fireEvent, screen } from '@testing-library/react'
 import { Tab } from './Tab'
 import { TabList } from './TabList'
 import { TabPanel } from './TabPanel'
 import { TabPanels } from './TabPanels'
 import { Tabs, useTabs } from './Tabs'
 
-test('shows the correct number of navigation tabs', () => {
-  renderWithTheme(
-    <Tabs>
-      <TabList>
-        <Tab>tab1</Tab>
-        <Tab>tab2</Tab>
-        <Tab disabled>tab3</Tab>
-      </TabList>
-      <TabPanels>
-        <TabPanel>this is tab1 content</TabPanel>
-        <TabPanel>this is tab2 content</TabPanel>
-        <TabPanel>this is tab3 content</TabPanel>
-      </TabPanels>
-    </Tabs>
-  )
-  expect(screen.getAllByRole('tab')).toHaveLength(3)
+beforeEach(() => {
+  jest.useFakeTimers()
 })
-
-test('starts with Tab at index 0 opened', () => {
-  renderWithTheme(
-    <Tabs>
-      <TabList>
-        <Tab>tab1</Tab>
-        <Tab>tab2</Tab>
-        <Tab disabled>tab3</Tab>
-      </TabList>
-      <TabPanels>
-        <TabPanel>this is tab1 content</TabPanel>
-        <TabPanel>this is tab2 content</TabPanel>
-        <TabPanel>this is tab3 content</TabPanel>
-      </TabPanels>
-    </Tabs>
-  )
-
-  expect(screen.getByText('this is tab1 content')).toBeInTheDocument()
+afterEach(() => {
+  jest.runOnlyPendingTimers()
+  jest.useRealTimers()
 })
-
-const ChangingPanel = () => {
-  return (
-    <Tabs>
-      <TabList>
-        <Tab>tab1</Tab>
-        <Tab>tab2</Tab>
-        <Tab disabled>tab3</Tab>
-      </TabList>
-      <TabPanels>
-        <TabPanel>this is tab1 content</TabPanel>
-        <TabPanel>this is tab2 content</TabPanel>
-        <TabPanel>this is tab3 content</TabPanel>
-      </TabPanels>
-    </Tabs>
-  )
-}
-
-test('clicking on tab opens correct panel', () => {
-  renderWithTheme(<ChangingPanel />)
-
-  expect(screen.queryByText('this is tab1 content')).toBeInTheDocument()
-  expect(screen.queryByText('this is tab2 content')).not.toBeInTheDocument()
-  fireEvent.click(screen.getByText('tab2'))
-  expect(screen.queryByText('this is tab1 content')).not.toBeInTheDocument()
-  expect(screen.queryByText('this is tab2 content')).toBeInTheDocument()
-})
-
-const DisableTab = () => {
-  return (
-    <Tabs>
-      <TabList>
-        <Tab>tab1</Tab>
-        <Tab>tab2</Tab>
-        <Tab disabled>tab3</Tab>
-      </TabList>
-      <TabPanels>
-        <TabPanel>this is tab1 content</TabPanel>
-        <TabPanel>this is tab2 content</TabPanel>
-        <TabPanel>this is the disable tab-panel</TabPanel>
-      </TabPanels>
-    </Tabs>
-  )
-}
-
-test('clicking on disable tab does not change panel', () => {
-  renderWithTheme(<DisableTab />)
-
-  expect(screen.queryByText('this is tab1 content')).toBeInTheDocument()
-  expect(
-    screen.queryByText('this is the disable tab-panel')
-  ).not.toBeInTheDocument()
-  fireEvent.click(screen.getByText('tab3'))
-  expect(screen.queryByText('this is tab1 content')).toBeInTheDocument()
-  expect(
-    screen.queryByText('this is the disable tab-panel')
-  ).not.toBeInTheDocument()
-})
-
-const TabHooks = () => {
-  const tab = useTabs()
-  return (
-    <>
-      <TabList {...tab}>
-        <Tab>Tab Hook 1</Tab>
-        <Tab>Tab Hook 2</Tab>
-      </TabList>
-      <TabPanels {...tab}>
-        <TabPanel>1 this is the panel of tab hook 1</TabPanel>
-        <TabPanel>2 this is the panel of tab hook 2</TabPanel>
-      </TabPanels>
-    </>
-  )
-}
-
-test('hooks working', () => {
-  renderWithTheme(<TabHooks />)
-
-  expect(
-    screen.queryByText('1 this is the panel of tab hook 1')
-  ).toBeInTheDocument()
-  expect(
-    screen.queryByText('2 this is the panel of tab hook 2')
-  ).not.toBeInTheDocument()
-  fireEvent.click(screen.getByText('Tab Hook 2'))
-  expect(
-    screen.queryByText('1 this is the panel of tab hook 1')
-  ).not.toBeInTheDocument()
-  expect(
-    screen.queryByText('2 this is the panel of tab hook 2')
-  ).toBeInTheDocument()
-})
-
-describe('focus behavior', () => {
-  const TabTest = () => (
-    <Tabs>
-      <TabList>
-        <Tab>tab1</Tab>
-        <Tab>tab2</Tab>
-      </TabList>
-      <TabPanels>
-        <TabPanel>this is tab1 content</TabPanel>
-        <TabPanel>this is tab2 content</TabPanel>
-      </TabPanels>
-    </Tabs>
-  )
-
-  test('Tab Focus: does not render focus ring after click', () => {
-    renderWithTheme(<TabTest />)
-    fireEvent.click(screen.getByText('tab1'))
-    // eslint-disable-next-line jest-dom/prefer-to-have-style
-    expect(screen.getByText('tab1').style.boxShadow).toEqual('')
+const runTimers = () =>
+  act(() => {
+    jest.runOnlyPendingTimers()
   })
 
-  test('Tab Focus: renders focus ring for keyboard navigation', () => {
-    renderWithTheme(<TabTest />)
-    fireEvent.keyUp(screen.getByText('tab2'), {
-      charCode: 9,
-      code: 9,
-      key: 'Tab',
-    })
-    expect(screen.getByText('tab2')).toHaveStyle(
-      'box-shadow: 0 0 0 0.15rem rgba(151,133,242,0.25);'
-    )
+const TabsComponent = () => (
+  <Tabs>
+    <TabList>
+      <Tab>tab1</Tab>
+      <Tab>tab2</Tab>
+      <Tab disabled>tab3</Tab>
+    </TabList>
+    <TabPanels>
+      <TabPanel>this is tab1 content</TabPanel>
+      <TabPanel>this is tab2 content</TabPanel>
+      <TabPanel>this is the disable tab-panel</TabPanel>
+    </TabPanels>
+  </Tabs>
+)
+
+describe('Tabs', () => {
+  test('shows the correct number of navigation tabs', () => {
+    renderWithTheme(<TabsComponent />)
+    expect(screen.getAllByRole('tab')).toHaveLength(3)
   })
 
-  test('Tab Focus: By default, TabPanel is not tabbable', () => {
-    renderWithTheme(
-      <Tabs>
-        <TabList>
-          <Tab>tab1</Tab>
-          <Tab>tab2</Tab>
+  test('starts with Tab at index 0 opened', () => {
+    renderWithTheme(<TabsComponent />)
+
+    expect(screen.getByText('this is tab1 content')).toBeInTheDocument()
+  })
+
+  test('clicking on tab opens correct panel', () => {
+    renderWithTheme(<TabsComponent />)
+
+    expect(screen.queryByText('this is tab1 content')).toBeInTheDocument()
+    expect(screen.queryByText('this is tab2 content')).not.toBeInTheDocument()
+    fireEvent.click(screen.getByText('tab2'))
+    expect(screen.queryByText('this is tab1 content')).not.toBeInTheDocument()
+    expect(screen.queryByText('this is tab2 content')).toBeInTheDocument()
+  })
+
+  test('clicking on disable tab does not change panel', () => {
+    renderWithTheme(<TabsComponent />)
+
+    expect(screen.queryByText('this is tab1 content')).toBeInTheDocument()
+    expect(
+      screen.queryByText('this is the disable tab-panel')
+    ).not.toBeInTheDocument()
+    fireEvent.click(screen.getByText('tab3'))
+    expect(screen.queryByText('this is tab1 content')).toBeInTheDocument()
+    expect(
+      screen.queryByText('this is the disable tab-panel')
+    ).not.toBeInTheDocument()
+  })
+
+  const TabHooks = () => {
+    const tab = useTabs()
+    return (
+      <>
+        <TabList {...tab}>
+          <Tab>Tab Hook 1</Tab>
+          <Tab>Tab Hook 2</Tab>
         </TabList>
-        <TabPanels>
-          <TabPanel>
-            <button>Some button</button>
-          </TabPanel>
-          <TabPanel>this is tab2 content</TabPanel>
+        <TabPanels {...tab}>
+          <TabPanel>1 this is the panel of tab hook 1</TabPanel>
+          <TabPanel>2 this is the panel of tab hook 2</TabPanel>
         </TabPanels>
-      </Tabs>
+      </>
     )
-    userEvent.tab()
-    expect(screen.getByText('tab1')).toHaveFocus()
+  }
 
-    userEvent.tab()
-    expect(screen.getByText('Some button')).toHaveFocus()
-  })
+  test('hooks working', () => {
+    renderWithTheme(<TabHooks />)
 
-  test('Tab Focus: TabPanel can use "isTabStop" prop to become tabbable element', () => {
-    renderWithTheme(
-      <Tabs>
-        <TabList>
-          <Tab>tab1</Tab>
-          <Tab>tab2</Tab>
-        </TabList>
-        <TabPanels>
-          <TabPanel isTabStop>
-            <button>Some button</button>
-          </TabPanel>
-          <TabPanel>this is tab2 content</TabPanel>
-        </TabPanels>
-      </Tabs>
-    )
-    userEvent.tab()
-    expect(screen.getByText('tab1')).toHaveFocus()
-
-    const button = screen.getByText('Some button')
-    userEvent.tab()
-    expect(button.closest('div'))
-
-    userEvent.tab()
-    expect(button).toHaveFocus()
+    expect(
+      screen.queryByText('1 this is the panel of tab hook 1')
+    ).toBeInTheDocument()
+    expect(
+      screen.queryByText('2 this is the panel of tab hook 2')
+    ).not.toBeInTheDocument()
+    fireEvent.click(screen.getByText('Tab Hook 2'))
+    expect(
+      screen.queryByText('1 this is the panel of tab hook 1')
+    ).not.toBeInTheDocument()
+    expect(
+      screen.queryByText('2 this is the panel of tab hook 2')
+    ).toBeInTheDocument()
   })
 
   test('Tab keyboard navigation', () => {
-    renderWithTheme(<TabTest />)
-    const tab1 = screen.getByText('tab1')
-    tab1.focus()
+    renderWithTheme(<TabsComponent />)
+    const tab1 = screen.getByText('tab1').closest('button')
+    tab1 && tab1.focus()
     expect(tab1).toHaveFocus()
-    fireEvent.keyDown(tab1, { code: 39, key: 'ArrowRight' })
-    expect(screen.getByText('tab2')).toHaveFocus()
+    tab1 && fireEvent.keyDown(tab1, { code: 39, key: 'ArrowRight' })
+    expect(screen.getByText('tab2').closest('button')).toHaveFocus()
   })
 
   test('Tab has type attribute', () => {
-    renderWithTheme(<TabTest />)
-    fireEvent.click(screen.getByText('tab1'))
-    expect(screen.getByText('tab1')).toHaveAttribute('type', 'button')
+    renderWithTheme(<TabsComponent />)
+    const tab1 = screen.getByText('tab1').closest('button')
+    tab1 && fireEvent.click(tab1)
+    expect(tab1).toHaveAttribute('type', 'button')
+  })
+
+  describe('ripple effect', () => {
+    test('default', () => {
+      renderWithTheme(<TabsComponent />)
+
+      const tabs = screen.getByText('tab1').closest('button')
+      expect(tabs).not.toHaveClass('bg-on fg-in')
+      expect(tabs).toHaveStyle({
+        '--ripple-color': '#6C43E0',
+        '--ripple-scale-end': '1',
+        // This should change to 0.1 when brandAnimation default becomes true
+        '--ripple-scale-start': '1',
+        '--ripple-size': '100%',
+        '--ripple-translate': '0, 0',
+      })
+
+      tabs && fireEvent.focus(tabs)
+      expect(tabs).toHaveClass('bg-on')
+
+      tabs && fireEvent.mouseDown(tabs)
+      expect(tabs).toHaveClass('bg-on fg-in')
+
+      // foreground is locked for a minimum time to animate the ripple
+      tabs && fireEvent.mouseUp(tabs)
+      runTimers()
+      expect(tabs).toHaveClass('bg-on fg-out')
+      runTimers()
+      expect(tabs).toHaveClass('bg-on')
+
+      tabs && fireEvent.blur(tabs)
+      expect(tabs).not.toHaveClass('bg-on fg-in')
+    })
   })
 })

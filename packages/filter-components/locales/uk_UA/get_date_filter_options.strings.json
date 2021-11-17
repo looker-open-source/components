@@ -1,0 +1,44 @@
+{
+  "is": {
+    "value": "є"
+  },
+  "is any time": {
+    "value": "є будь-яким часом"
+  },
+  "is before": {
+    "value": "раніше"
+  },
+  "is in range": {
+    "value": "у діапазоні"
+  },
+  "is in the last": {
+    "value": "за останні"
+  },
+  "is in the month": {
+    "value": "станом на місяць"
+  },
+  "is in the year": {
+    "value": "станом на рік"
+  },
+  "is next": {
+    "value": "у наступний"
+  },
+  "is not null": {
+    "value": "не має значення NULL"
+  },
+  "is null": {
+    "value": "має значення NULL"
+  },
+  "is on or after": {
+    "value": "не раніше"
+  },
+  "is on the day": {
+    "value": "станом на день"
+  },
+  "is previous": {
+    "value": "у попередній"
+  },
+  "is this": {
+    "value": "у цей"
+  }
+}

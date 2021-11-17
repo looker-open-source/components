@@ -1,0 +1,14 @@
+{
+  "contains": "ประกอบด้วย",
+  "doesnt contain": "ไม่ได้ประกอบด้วย",
+  "doesnt end with": "ไม่ได้สิ้นสุดด้วย",
+  "doesnt start with": "ไม่ได้เริ่มต้นด้วย",
+  "ends with": "สิ้นสุดด้วย",
+  "is": "เป็น",
+  "is blank": "เว้นว่าง",
+  "is not": "ไม่",
+  "is not blank": "ไม่เว้นว่าง",
+  "is not null": "ไม่เป็นค่าว่าง",
+  "is null": "เป็นค่าว่าง",
+  "starts with": "เริ่มต้นด้วย"
+}

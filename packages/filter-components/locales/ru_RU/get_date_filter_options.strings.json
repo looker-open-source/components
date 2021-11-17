@@ -1,0 +1,44 @@
+{
+  "is": {
+    "value": "является"
+  },
+  "is any time": {
+    "value": "любое значение времени"
+  },
+  "is before": {
+    "value": "до даты"
+  },
+  "is in range": {
+    "value": "входит в диапазон"
+  },
+  "is in the last": {
+    "value": "в последнем"
+  },
+  "is in the month": {
+    "value": "в месяце"
+  },
+  "is in the year": {
+    "value": "в году"
+  },
+  "is next": {
+    "value": "в следующем"
+  },
+  "is not null": {
+    "value": "не является нулевым значением"
+  },
+  "is null": {
+    "value": "является нулевым значением"
+  },
+  "is on or after": {
+    "value": "в указанную дату или после нее"
+  },
+  "is on the day": {
+    "value": "в указанную дату"
+  },
+  "is previous": {
+    "value": "в предыдущем"
+  },
+  "is this": {
+    "value": "в этом"
+  }
+}

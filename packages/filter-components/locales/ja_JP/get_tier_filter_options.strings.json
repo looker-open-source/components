@@ -1,9 +1,9 @@
 {
-  "is any value": {
-    "value": "の値を問わずすべて"
-  },
   "is": {
     "value": "が次である"
+  },
+  "is any value": {
+    "value": "の値を問わずすべて"
   },
   "is not": {
     "value": "が次でない"

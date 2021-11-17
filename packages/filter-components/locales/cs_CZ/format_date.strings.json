@@ -1,0 +1,84 @@
+{
+  "April": {
+    "value": "Duben"
+  },
+  "August": {
+    "value": "Srpen"
+  },
+  "December": {
+    "value": "Prosinec"
+  },
+  "February": {
+    "value": "Únor"
+  },
+  "Fr": {
+    "value": "Pá"
+  },
+  "Friday": {
+    "value": "Pátek"
+  },
+  "January": {
+    "value": "Leden"
+  },
+  "July": {
+    "value": "Červenec"
+  },
+  "June": {
+    "value": "Červen"
+  },
+  "March": {
+    "value": "Březen"
+  },
+  "May": {
+    "value": "Květen"
+  },
+  "Mo": {
+    "value": "Po"
+  },
+  "Monday": {
+    "value": "Pondělí"
+  },
+  "November": {
+    "value": "Listopad"
+  },
+  "October": {
+    "value": "Říjen"
+  },
+  "Sa": {
+    "value": "So"
+  },
+  "Saturday": {
+    "value": "Sobota"
+  },
+  "September": {
+    "value": "Září"
+  },
+  "Su": {
+    "value": "Ne"
+  },
+  "Sunday": {
+    "value": "Neděle"
+  },
+  "Th": {
+    "value": "Čt"
+  },
+  "Thursday": {
+    "value": "Čtvrtek"
+  },
+  "Tu": {
+    "value": "Út"
+  },
+  "Tuesday": {
+    "value": "Úterý"
+  },
+  "We": {
+    "value": "St"
+  },
+  "Wednesday": {
+    "value": "Středa"
+  },
+  "firstDayOfWeek": {
+    "note": "0 je neděle, 1 je pondělí atd.",
+    "value": "0"
+  }
+}

@@ -35,24 +35,4 @@ describe('Tier filter values are escaped', () => {
     const result = escapeParameterValue('sub_region')
     expect(result).toBe('sub^_region')
   })
-
-  it.each([
-    '1234',
-    '-1234',
-    '0',
-  ])(
-    'does not escape string representation of number: %s',
-    (parameter: string) =>
-      expect(escapeParameterValue(parameter)).toBe(parameter)
-  )
-
-  it.each([
-    ['12a34', '12a34'],
-    ['-12a34', '^-12a34'],
-    ['zub_region0', 'zub^_region0'],
-  ])(
-    'escapes strings with numbers that do not evaluate to a finite number: %s',
-    (parameter: string, value: string) =>
-      expect(escapeParameterValue(parameter)).toBe(value)
-  )
 })

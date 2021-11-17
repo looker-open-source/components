@@ -24,104 +24,137 @@
 
  */
 
+import pick from 'lodash/pick'
 import type { Ref } from 'react'
 import React, { forwardRef } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import { layout, reset, padding, typography } from '@looker/design-tokens'
 import {
-  layout,
-  reset,
-  padding,
-  typography,
-  tabShadowColor,
-} from '@looker/design-tokens'
-import type { FocusVisibleProps } from '../utils'
-import { focusVisibleCSSWrapper, useFocusVisible, useWrapEvent } from '../utils'
+  rippleHandlerKeys,
+  rippleStyle,
+  useRipple,
+  useRippleHandlers,
+} from '../Ripple'
+import {
+  mergeClassNames,
+  useCallbackRef,
+  useMeasuredElement,
+  useWrapEvent,
+} from '../utils'
 import type { Tab2Props } from './types'
 
-type Tab2StyleProps = Omit<Tab2Props, 'label'> & FocusVisibleProps
+export const Tab2 = styled(
+  forwardRef((props: Tab2Props, forwardedRef: Ref<HTMLButtonElement>) => {
+    const {
+      children,
+      className,
+      disabled,
+      id,
+      onClick,
+      onSelect,
+      selected,
+      style,
+      ...restProps
+    } = props
 
-export const Tab2Style = styled.button.attrs<Tab2StyleProps>(
-  ({
-    fontFamily = 'brand',
-    fontSize = 'small',
-    fontWeight = 'medium',
-    pb = 'small',
-    pt = 'xsmall',
-  }) => ({
+    // find the dimensions of button for ripple behavior
+    const [element, ref] = useCallbackRef(forwardedRef)
+    const [{ height, width }] = useMeasuredElement(element)
+
+    const {
+      callbacks,
+      className: rippleClassName,
+      style: rippleStyle,
+    } = useRipple({
+      bounded: true,
+      color: selected ? 'key' : 'neutral',
+      height,
+      width,
+    })
+
+    const rippleHandlers = useRippleHandlers(
+      callbacks,
+      {
+        ...pick(restProps, rippleHandlerKeys),
+      },
+      disabled
+    )
+
+    const handleClick = useWrapEvent(() => {
+      if (!disabled && onSelect) {
+        onSelect()
+      }
+    }, onClick)
+
+    return (
+      <button
+        aria-controls={`panel-${id}`}
+        aria-orientation="horizontal"
+        aria-selected={selected}
+        className={mergeClassNames([className, rippleClassName])}
+        id={`tab-${id}`}
+        onClick={handleClick}
+        ref={ref}
+        role="tab"
+        style={{ ...style, ...rippleStyle }}
+        tabIndex={-1}
+        type="button"
+        {...restProps}
+        {...rippleHandlers}
+      >
+        <span>{children}</span>
+        <span />
+      </button>
+    )
+  })
+).attrs<Tab2Props>(
+  ({ fontFamily = 'brand', fontSize = 'small', fontWeight = 'medium' }) => ({
     fontFamily,
     fontSize,
     fontWeight,
-    pb,
-    pt,
   })
-)<Tab2StyleProps>`
+)<Tab2Props>`
   ${reset}
   ${layout}
   ${padding}
+  ${rippleStyle}
   ${typography}
 
+  align-items: center;
   background: transparent;
   border: none;
-  border-bottom: 3px solid
-    ${({ selected, theme }) => (selected ? theme.colors.key : 'transparent')};
-  border-radius: 0;
-  ${focusVisibleCSSWrapper(tabShadowColor)}
   color: ${({ selected, theme }) =>
-    selected ? theme.colors.text5 : theme.colors.text2};
+    selected ? theme.colors.key : theme.colors.text5};
   cursor: pointer;
+  display: inline-flex;
+  flex-direction: column;
+  height: ${({ theme }) => theme.space.u12};
+  justify-content: flex-end;
   /* this is here to remove default margin button in Safari */
   margin: 0;
-
-  &:active {
-    border-bottom-color: ${({ selected, theme }) =>
-      selected ? theme.colors.key : theme.colors.text2};
+  min-width: fit-content;
+  padding-left: ${({ theme }) => theme.space.u4};
+  padding-right: ${({ theme }) => theme.space.u4};
+  span {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
   }
-
-  &:focus {
-    outline: none;
+  span:last-child {
+    background-color: ${({ selected, theme }) => selected && theme.colors.key};
+    border-radius: 3px 3px 0 0;
+    height: 3px;
+    margin-top: ${({ theme }) => theme.space.u05};
+    padding-left: ${({ theme }) => theme.space.u05};
+    padding-right: ${({ theme }) => theme.space.u05};
+    width: 100%;
   }
-
-  &:hover {
-    border-bottom-color: ${({ selected, theme }) =>
-      selected ? theme.colors.key : theme.colors.ui3};
-  }
-
-  &:disabled {
-    border-bottom-color: transparent;
-    color: ${({ theme }) => theme.colors.text1};
-    cursor: default;
-  }
+  ${({ disabled }) =>
+    disabled &&
+    css`
+      border-bottom-color: transparent;
+      color: ${({ theme }) => theme.colors.text1};
+      cursor: default;
+    `}
 `
-
-export const Tab2 = styled(
-  forwardRef(
-    (
-      { id, onBlur, onClick, onKeyUp, onSelect, ...restProps }: Tab2Props,
-      ref: Ref<HTMLButtonElement>
-    ) => {
-      const handleClick = useWrapEvent(() => {
-        if (!restProps.disabled && onSelect) {
-          onSelect()
-        }
-      }, onClick)
-
-      const focusVisibleProps = useFocusVisible({ onBlur, onKeyUp })
-
-      return (
-        <Tab2Style
-          aria-controls={`panel-${id}`}
-          aria-orientation="horizontal"
-          aria-selected={restProps.selected}
-          id={`tab-${id}`}
-          onClick={handleClick}
-          ref={ref}
-          role="tab"
-          tabIndex={-1}
-          type="button"
-          {...focusVisibleProps}
-          {...restProps}
-        />
-      )
-    }
-  )
-)``

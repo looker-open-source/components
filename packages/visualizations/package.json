@@ -18,6 +18,7 @@
     "@looker/components-test-utils": "^1.5.14",
     "@looker/eslint-config-oss": "^1.7.10",
     "@looker/stylelint-config": "^1.5.8",
+    "@storybook/testing-react": "0.0.22",
     "@testing-library/react": "*"
   },
   "peerDependencies": {

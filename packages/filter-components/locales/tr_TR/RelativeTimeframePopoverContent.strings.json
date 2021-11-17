@@ -1,8 +1,8 @@
 {
-  "Presets": {
-    "value": "Önayarlar"
-  },
   "Custom": {
     "value": "Özel"
+  },
+  "Presets": {
+    "value": "Önayarlar"
   }
 }

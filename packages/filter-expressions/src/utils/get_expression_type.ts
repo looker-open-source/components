@@ -23,6 +23,7 @@
  SOFTWARE.
 
  */
+import { Category } from '@looker/sdk'
 import type { IDashboardFilter, ILookmlModelExploreField } from '@looker/sdk'
 import type { FilterExpressionType } from '../types/filter_type'
 
@@ -49,6 +50,12 @@ const getTimeframeExpressionType = (fieldType?: string) => {
 export const getExpressionTypeFromField = (
   field: ILookmlModelExploreField
 ): FilterExpressionType => {
+  if (field?.category === Category.parameter && field?.type === 'number') {
+    // If parameter field has enumerations it always parsed as 'tier' but
+    // visually should be treated differently if number type defined in LookML
+    // bugs: b/187940941, b/199507872
+    return field.type as FilterExpressionType
+  }
   if (field.enumerations) {
     return 'tier'
   }

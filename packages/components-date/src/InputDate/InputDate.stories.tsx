@@ -50,6 +50,12 @@ DisabledWithValue.args = {
   value: new Date('February 3, 2009'),
 }
 
+export const DateStringFormat = Template.bind({})
+DateStringFormat.args = {
+  dateStringFormat: 'MM-dd-yyyy',
+  defaultValue: new Date('February 3, 2009'),
+}
+
 export const ReadOnlyWithValue = Template.bind({})
 ReadOnlyWithValue.args = {
   readOnly: true,

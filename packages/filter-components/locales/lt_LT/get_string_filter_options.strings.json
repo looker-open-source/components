@@ -1,0 +1,14 @@
+{
+  "contains": "yra",
+  "doesnt contain": "nėra",
+  "doesnt end with": "nesibaigia",
+  "doesnt start with": "neprasideda",
+  "ends with": "baigiasi",
+  "is": "yra",
+  "is blank": "yra tuščia",
+  "is not": "nėra",
+  "is not blank": "nėra tuščia",
+  "is not null": "nėra nulis",
+  "is null": "yra nulis",
+  "starts with": "prasideda"
+}

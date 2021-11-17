@@ -1,0 +1,44 @@
+{
+  "is": {
+    "value": "est"
+  },
+  "is any time": {
+    "value": "est n'importe quelle date"
+  },
+  "is before": {
+    "value": "est antérieur à"
+  },
+  "is in range": {
+    "value": "se situe dans la plage"
+  },
+  "is in the last": {
+    "value": "se situe au cours des"
+  },
+  "is in the month": {
+    "value": "se situe dans le mois"
+  },
+  "is in the year": {
+    "value": "se situe dans l'année"
+  },
+  "is next": {
+    "value": "est après"
+  },
+  "is not null": {
+    "value": "n'est pas nul"
+  },
+  "is null": {
+    "value": "est nul"
+  },
+  "is on or after": {
+    "value": "tombe le ou après"
+  },
+  "is on the day": {
+    "value": "tombe le jour"
+  },
+  "is previous": {
+    "value": "est avant"
+  },
+  "is this": {
+    "value": "est ce"
+  }
+}

@@ -45,6 +45,7 @@ import {
   QueryContext,
   mockQueryResult,
 } from '@looker/visualizations-adapters'
+import { Sparkline } from '@looker/visualizations-visx'
 import { Visualization, defaultChartComponent } from './Visualization'
 
 const CustomVis = () => {
@@ -89,7 +90,7 @@ beforeEach(() => {
   jest.clearAllMocks()
 })
 
-describe.skip('Visualization', () => {
+describe('Visualization', () => {
   it('wraps itself in ComponentsProvider if rendered outside of theme context', () => {
     // use default rtl `render` instead of `renderWithTheme`
     render(
@@ -99,6 +100,15 @@ describe.skip('Visualization', () => {
     )
 
     expect(screen.getByText('Rendered Without Error!')).toBeInTheDocument()
+  })
+  it('accepts config overrides and merges them with QueryContext values', () => {
+    render(
+      <QueryContext.Provider value={mockQueryResult}>
+        <Visualization config={{ type: 'sparkline' }} />
+      </QueryContext.Provider>
+    )
+
+    expect(Sparkline).toHaveBeenCalledTimes(1)
   })
 })
 

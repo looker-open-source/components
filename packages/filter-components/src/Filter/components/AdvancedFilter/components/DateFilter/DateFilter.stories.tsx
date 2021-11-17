@@ -30,11 +30,12 @@ import type { DateFilterType } from '@looker/filter-expressions'
 import { DateFilter } from './DateFilter'
 import type { FilterParamProps } from '../../../../types/filter_param_props'
 
-export const ControlledDateFilter: Story<FilterParamProps<DateFilterType>> = (
-  args
-) => <DateFilter {...args} />
+const Template: Story<FilterParamProps<DateFilterType>> = (args) => (
+  <DateFilter {...args} />
+)
 
-ControlledDateFilter.args = {
+export const Basic = Template.bind({})
+Basic.args = {
   filterType: 'date',
   name: 'filtername',
   item: {
@@ -47,6 +48,19 @@ ControlledDateFilter.args = {
   showRemove: false,
   showOperator: false,
   showMatchesAdvanced: false,
+}
+
+export const Relative = Template.bind({})
+Relative.args = {
+  ...Basic.args,
+  item: {
+    id: '1',
+    is: false,
+    endInterval: { type: 'interval', value: 3, unit: 'week' },
+    intervalType: 'ago',
+    startInterval: { type: 'interval', value: 3, unit: 'month' },
+    type: 'relative',
+  },
 }
 
 export default {

@@ -1,0 +1,32 @@
+{
+  "Box": {
+    "value": "Boks"
+  },
+  "Circle": {
+    "value": "Cirkel"
+  },
+  "Location": {
+    "value": "Placering"
+  },
+  "feet": {
+    "value": "fod"
+  },
+  "is anywhere": {
+    "value": "er hvor som helst"
+  },
+  "is not null": {
+    "value": "er ikke null"
+  },
+  "is null": {
+    "value": "er null"
+  },
+  "kilometers": {
+    "value": "kilometer"
+  },
+  "meters": {
+    "value": "meter"
+  },
+  "miles": {
+    "value": "miles"
+  }
+}

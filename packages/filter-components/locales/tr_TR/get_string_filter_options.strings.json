@@ -1,0 +1,14 @@
+{
+  "contains": "şunu içeriyor:",
+  "doesnt contain": "şunu içermiyor:",
+  "doesnt end with": "şununla bitmiyor:",
+  "doesnt start with": "şununla başlamıyor:",
+  "ends with": "şununla bitiyor:",
+  "is": "şudur:",
+  "is blank": "boş",
+  "is not": "şu değildir:",
+  "is not blank": "boş değil",
+  "is not null": "değer içeriyor",
+  "is null": "değer içermiyor",
+  "starts with": "şununla başlıyor:"
+}

@@ -1,0 +1,38 @@
+{
+  "April": {
+    "value": "אפריל"
+  },
+  "August": {
+    "value": "אוגוסט"
+  },
+  "December": {
+    "value": "דצמבר"
+  },
+  "February": {
+    "value": "פברואר"
+  },
+  "January": {
+    "value": "ינואר"
+  },
+  "July": {
+    "value": "יולי"
+  },
+  "June": {
+    "value": "יוני"
+  },
+  "March": {
+    "value": "מרץ"
+  },
+  "May": {
+    "value": "מאי"
+  },
+  "November": {
+    "value": "נובמבר"
+  },
+  "October": {
+    "value": "אוקטובר"
+  },
+  "September": {
+    "value": "ספטמבר"
+  }
+}

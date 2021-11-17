@@ -62,6 +62,9 @@ const Template: Story<FieldTextProps & { externalLabel: boolean }> = ({
 export const Basic = Template.bind({})
 Basic.args = { label: 'Text Input' }
 
+export const NoLabel = Template.bind({})
+NoLabel.args = {}
+
 export const Detail = Template.bind({})
 Detail.args = { ...Basic.args, detail: '0/50' }
 
@@ -132,6 +135,11 @@ export const FloatingLabelValidation = Template.bind({})
 FloatingLabelValidation.args = {
   ...FloatingLabel.args,
   validationMessage: { message: 'Error Message', type: 'error' },
+}
+
+export const FloatingLabelNoLabel = Template.bind({})
+FloatingLabelNoLabel.args = {
+  externalLabel: false,
 }
 
 export const Toggles = () => (

@@ -1,0 +1,32 @@
+{
+  "Box": {
+    "value": "Laatikko"
+  },
+  "Circle": {
+    "value": "Ympyrä"
+  },
+  "Location": {
+    "value": "Sijainti"
+  },
+  "feet": {
+    "value": "jalkaa"
+  },
+  "is anywhere": {
+    "value": "on missä tahansa"
+  },
+  "is not null": {
+    "value": "ei ole nolla"
+  },
+  "is null": {
+    "value": "on nolla"
+  },
+  "kilometers": {
+    "value": "kilometriä"
+  },
+  "meters": {
+    "value": "metriä"
+  },
+  "miles": {
+    "value": "mailia"
+  }
+}

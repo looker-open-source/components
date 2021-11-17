@@ -1,0 +1,11 @@
+{
+  "is": {
+    "value": "הוא"
+  },
+  "is any value": {
+    "value": "ערך כלשהו"
+  },
+  "is not": {
+    "value": "אינו"
+  }
+}
