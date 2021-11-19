@@ -1,0 +1,32 @@
+{
+  "Box": {
+    "value": "Box"
+  },
+  "Circle": {
+    "value": "Kruh"
+  },
+  "Location": {
+    "value": "Poloha"
+  },
+  "feet": {
+    "value": "st."
+  },
+  "is anywhere": {
+    "value": "je kdekoliv"
+  },
+  "is not null": {
+    "value": "není prázdné"
+  },
+  "is null": {
+    "value": "je prázdné"
+  },
+  "kilometers": {
+    "value": "km"
+  },
+  "meters": {
+    "value": "m"
+  },
+  "miles": {
+    "value": "míle"
+  }
+}

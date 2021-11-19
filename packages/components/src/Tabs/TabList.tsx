@@ -58,7 +58,6 @@ export const TabList = styled(
             index,
             onSelect: () => onSelectTab && onSelectTab(index),
             selected: index === selectedIndex,
-            selectedIndex,
           })
         }
       )

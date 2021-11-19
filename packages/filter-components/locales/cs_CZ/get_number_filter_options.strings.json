@@ -1,0 +1,44 @@
+{
+  "exclusive": {
+    "value": "(vyjma)"
+  },
+  "inclusive": {
+    "value": "[včetně]"
+  },
+  "is": {
+    "value": "je"
+  },
+  "is between": {
+    "value": "je mezi"
+  },
+  "is greater": {
+    "value": "je >"
+  },
+  "is greater equal": {
+    "value": "je >="
+  },
+  "is less": {
+    "value": "je <"
+  },
+  "is less equal": {
+    "value": "je <="
+  },
+  "is not": {
+    "value": "není"
+  },
+  "is not between": {
+    "value": "není mezi"
+  },
+  "is not null": {
+    "value": "není prázdné"
+  },
+  "is null": {
+    "value": "je prázdné"
+  },
+  "left exclusive": {
+    "value": "(vyjma hodnoty vlevo]"
+  },
+  "right exclusive": {
+    "value": "[vyjma hodnoty vpravo)"
+  }
+}

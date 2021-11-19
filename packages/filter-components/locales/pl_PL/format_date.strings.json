@@ -1,84 +1,84 @@
 {
-  "January": {
-    "value": "Styczeń"
-  },
-  "February": {
-    "value": "Luty"
-  },
-  "March": {
-    "value": "Marzec"
-  },
   "April": {
     "value": "Kwiecień"
-  },
-  "May": {
-    "value": "Maj"
-  },
-  "June": {
-    "value": "Czerwiec"
-  },
-  "July": {
-    "value": "Lipiec"
   },
   "August": {
     "value": "Sierpień"
   },
-  "September": {
-    "value": "Wrzesień"
-  },
-  "October": {
-    "value": "Październik"
-  },
-  "November": {
-    "value": "Listopad"
-  },
   "December": {
     "value": "Grudzień"
   },
-  "Sunday": {
-    "value": "Niedziela"
-  },
-  "Monday": {
-    "value": "Poniedziałek"
-  },
-  "Tuesday": {
-    "value": "Wtorek"
-  },
-  "Wednesday": {
-    "value": "Środa"
-  },
-  "Thursday": {
-    "value": "Czwartek"
-  },
-  "Friday": {
-    "value": "Piątek"
-  },
-  "Saturday": {
-    "value": "Sobota"
-  },
-  "Su": {
-    "value": "Pon."
-  },
-  "Mo": {
-    "value": "Wt."
-  },
-  "Tu": {
-    "value": "Śr."
-  },
-  "We": {
-    "value": "Czw."
-  },
-  "Th": {
-    "value": "Pt."
+  "February": {
+    "value": "Luty"
   },
   "Fr": {
     "value": "Sob."
   },
+  "Friday": {
+    "value": "Piątek"
+  },
+  "January": {
+    "value": "Styczeń"
+  },
+  "July": {
+    "value": "Lipiec"
+  },
+  "June": {
+    "value": "Czerwiec"
+  },
+  "March": {
+    "value": "Marzec"
+  },
+  "May": {
+    "value": "Maj"
+  },
+  "Mo": {
+    "value": "Wt."
+  },
+  "Monday": {
+    "value": "Poniedziałek"
+  },
+  "November": {
+    "value": "Listopad"
+  },
+  "October": {
+    "value": "Październik"
+  },
   "Sa": {
     "value": "Niedz."
   },
+  "Saturday": {
+    "value": "Sobota"
+  },
+  "September": {
+    "value": "Wrzesień"
+  },
+  "Su": {
+    "value": "Pon."
+  },
+  "Sunday": {
+    "value": "Niedziela"
+  },
+  "Th": {
+    "value": "Pt."
+  },
+  "Thursday": {
+    "value": "Czwartek"
+  },
+  "Tu": {
+    "value": "Śr."
+  },
+  "Tuesday": {
+    "value": "Wtorek"
+  },
+  "We": {
+    "value": "Czw."
+  },
+  "Wednesday": {
+    "value": "Środa"
+  },
   "firstDayOfWeek": {
-    "value": "0",
-    "note": "0 oznacza niedzielę, 1 poniedziałek itd."
+    "note": "0 oznacza niedzielę, 1 poniedziałek itd.",
+    "value": "0"
   }
 }

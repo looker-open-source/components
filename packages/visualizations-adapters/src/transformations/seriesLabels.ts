@@ -42,14 +42,23 @@ export const seriesLabels: ConfigHelper<CommonCartesianProperties> = ({
   config,
   fields,
 }) => {
-  const { series_labels, series = {}, ...restConfig } = config
+  const {
+    series_labels,
+    series = {},
+    show_single_value_title = true,
+    single_value_title = '',
+    ...restConfig
+  } = config
 
   const measures = getMeasureNames(fields)
-
+  const singleValueTitle = show_single_value_title ? single_value_title : ''
   const buildNamedSeries = (s: { [k: string]: CSeriesBasic }) => {
     const namedSeries = measures.reduce((seriesConfig, field) => {
       const currentFieldSettings = pick(s, field)
-      const defaultSeriesLabel = { [field]: { label: series_labels?.[field] } }
+      const defaultSeriesLabel = {
+        // Down the chain, we'll use label_short from the field's metadata if [series].label is falsy
+        [field]: { label: series_labels?.[field] || singleValueTitle },
+      }
       return merge(seriesConfig, defaultSeriesLabel, currentFieldSettings)
     }, {} as { [key: string]: CSeriesBasic })
 

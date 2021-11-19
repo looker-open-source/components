@@ -1,24 +1,24 @@
 {
-  "Location": {
-    "value": "Posizione"
+  "Box": {
+    "value": "Riquadro"
   },
   "Circle": {
     "value": "Cerchio"
   },
-  "Box": {
-    "value": "Riquadro"
+  "Location": {
+    "value": "Posizione"
+  },
+  "feet": {
+    "value": "piedi"
   },
   "is anywhere": {
     "value": "è ovunque"
   },
-  "is null": {
-    "value": "è zero"
-  },
   "is not null": {
     "value": "non è zero"
   },
-  "feet": {
-    "value": "piedi"
+  "is null": {
+    "value": "è zero"
   },
   "kilometers": {
     "value": "chilometri"

@@ -1,38 +1,38 @@
 {
-  "January": {
-    "value": "Январь"
-  },
-  "February": {
-    "value": "Февраль"
-  },
-  "March": {
-    "value": "Март"
-  },
   "April": {
     "value": "Апрель"
-  },
-  "May": {
-    "value": "Май"
-  },
-  "June": {
-    "value": "Июнь"
-  },
-  "July": {
-    "value": "Июль"
   },
   "August": {
     "value": "Август"
   },
-  "September": {
-    "value": "Сентябрь"
+  "December": {
+    "value": "Декабрь"
   },
-  "October": {
-    "value": "Октябрь"
+  "February": {
+    "value": "Февраль"
+  },
+  "January": {
+    "value": "Январь"
+  },
+  "July": {
+    "value": "Июль"
+  },
+  "June": {
+    "value": "Июнь"
+  },
+  "March": {
+    "value": "Март"
+  },
+  "May": {
+    "value": "Май"
   },
   "November": {
     "value": "Ноябрь"
   },
-  "December": {
-    "value": "Декабрь"
+  "October": {
+    "value": "Октябрь"
+  },
+  "September": {
+    "value": "Сентябрь"
   }
 }

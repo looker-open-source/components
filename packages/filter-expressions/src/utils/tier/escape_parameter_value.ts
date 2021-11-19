@@ -25,20 +25,8 @@
  */
 
 /**
- * valueRepresentsNumber tests a string to see if it represents a finite number value
- * We use Lodash's isFinite to check for typeof 'number' and for finiity (native JavaScript `isFinite`)
- * We use isFinite rather than isNumber because we need to guard against NaN,
- * which results when we attempt to coerce a non-numeric string
- * @param value a string that may or may not represent a number value
- */
-const valueRepresentsNumber = (value: string): boolean =>
-  // Coercion of value to a number is not technically necessary according to the ES6 spec for `isFinite`,
-  // But TypeScript expects it, and in fact it is what you would expect the standard to be
-  isFinite(Number(value))
-
-/**
  * Escapes a tier filter expression using ^ used for parameter fields
  * Only escape the string if it does not represent a finite number
  */
 export const escapeParameterValue = (value: string) =>
-  valueRepresentsNumber(value) ? value : value.replace(/([\^_%,"']|^-)/g, '^$1')
+  value.replace(/([\^_%,"']|^-)/g, '^$1')

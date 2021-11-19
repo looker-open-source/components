@@ -23,10 +23,10 @@
  SOFTWARE.
 
  */
-
 import type { Story } from '@storybook/react/types-6-0'
 import type { FormEvent } from 'react'
 import React, { useState } from 'react'
+import { ExtendComponentsThemeProvider } from '@looker/components-providers'
 import { defaultArgTypes as argTypes } from '../../../../../../apps/storybook/src/defaultArgTypes'
 import { Button } from '../../../Button'
 import { Space, SpaceVertical } from '../../../Layout'
@@ -39,10 +39,29 @@ export default {
   title: 'FieldTextArea',
 }
 
-const Template: Story<FieldTextAreaProps> = args => <FieldTextArea {...args} />
+const Template: Story<FieldTextAreaProps & { externalLabel: boolean }> = ({
+  externalLabel = true,
+  ...args
+}) => (
+  <ExtendComponentsThemeProvider
+    themeCustomizations={{ defaults: { externalLabel } }}
+  >
+    <FieldTextArea {...args} />
+  </ExtendComponentsThemeProvider>
+)
 
 export const Basic = Template.bind({})
 Basic.args = { label: 'Text Area' }
+
+export const FloatingLabel = Template.bind({})
+FloatingLabel.args = { ...Basic.args, externalLabel: false }
+
+export const FloatingLabelValue = Template.bind({})
+FloatingLabelValue.args = {
+  ...Basic.args,
+  defaultValue: 'Default value',
+  externalLabel: false,
+}
 
 export const DefaultValue = Template.bind({})
 DefaultValue.args = { ...Basic.args, defaultValue: 'Default value' }

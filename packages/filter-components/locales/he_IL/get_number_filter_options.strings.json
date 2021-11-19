@@ -1,0 +1,44 @@
+{
+  "exclusive": {
+    "value": "(לא כולל)"
+  },
+  "inclusive": {
+    "value": "[כולל]"
+  },
+  "is": {
+    "value": "הוא"
+  },
+  "is between": {
+    "value": "בין"
+  },
+  "is greater": {
+    "value": "הוא >"
+  },
+  "is greater equal": {
+    "value": "הוא >="
+  },
+  "is less": {
+    "value": "הוא <"
+  },
+  "is less equal": {
+    "value": "הוא <="
+  },
+  "is not": {
+    "value": "אינו"
+  },
+  "is not between": {
+    "value": "לא בין"
+  },
+  "is not null": {
+    "value": "אינו Null"
+  },
+  "is null": {
+    "value": "Null"
+  },
+  "left exclusive": {
+    "value": "(לא כולל משמאל]"
+  },
+  "right exclusive": {
+    "value": "[לא כולל מימין)"
+  }
+}

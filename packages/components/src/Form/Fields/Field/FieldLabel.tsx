@@ -41,6 +41,8 @@ export const FieldLabel = styled(
     required,
     ...props
   }: FieldLabelProps) => {
+    if (!label) return null
+
     const { fieldsHideLabel } = useContext(FieldsetContext)
     const shouldHideLabel =
       (fieldsHideLabel || hideLabel) && hideLabel !== false

@@ -1,8 +1,8 @@
 {
-  "Presets": {
-    "value": "Ustawienia wstępne"
-  },
   "Custom": {
     "value": "Niestandardowe"
+  },
+  "Presets": {
+    "value": "Ustawienia wstępne"
   }
 }

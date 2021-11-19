@@ -28,11 +28,11 @@ import { ExtendComponentsThemeProvider } from '@looker/components-providers'
 import type { Story } from '@storybook/react/types-6-0'
 import { Favorite } from '@styled-icons/material'
 import chunk from 'lodash/chunk'
-import type { FormEvent, MouseEvent } from 'react'
+import type { FC, FormEvent, MouseEvent } from 'react'
 import React, { useMemo, useState, useEffect } from 'react'
 import { Card, CardContent } from '../../../Card'
 import { Button } from '../../../Button'
-import { Dialog, DialogContent } from '../../../Dialog'
+import { Dialog, DialogContent, DialogLayout } from '../../../Dialog'
 import { Divider } from '../../../Divider'
 import { Icon } from '../../../Icon'
 import { Flex, Space, SpaceVertical } from '../../../Layout'
@@ -621,6 +621,45 @@ export const DelayUpdate = () => {
 }
 
 DelayUpdate.parameters = {
+  storyshots: { disable: true },
+}
+
+const LabelFocusColorTestLayout: FC<{ version: string }> = ({
+  children,
+  version,
+}) => (
+  <SpaceVertical>
+    {children}
+    <FieldSelect
+      label={`Label ${version}`}
+      defaultValue={options[0].value}
+      options={options}
+    />
+    <Button>Button {version}</Button>
+  </SpaceVertical>
+)
+
+export const LabelFocusColorTest = () => {
+  return (
+    <ExtendComponentsThemeProvider
+      themeCustomizations={{ defaults: { externalLabel: false } }}
+    >
+      <LabelFocusColorTestLayout version="Initial">
+        <Dialog
+          content={
+            <DialogLayout>
+              <LabelFocusColorTestLayout version="Dialog" />
+            </DialogLayout>
+          }
+        >
+          <Button>Open Dialog</Button>
+        </Dialog>
+      </LabelFocusColorTestLayout>
+    </ExtendComponentsThemeProvider>
+  )
+}
+
+LabelFocusColorTest.parameters = {
   storyshots: { disable: true },
 }
 

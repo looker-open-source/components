@@ -32,7 +32,7 @@ import type { IError, Looker40SDK } from '@looker/sdk'
 import type { ISDKErrorResponse, ISDKSuccessResponse } from '@looker/sdk-rtl'
 import { isNumeric } from '../utils'
 import { QueryContext } from './QueryContext'
-import type { SDKRecord, CAll, Fields } from '../types'
+import type { SDKRecord, CAll, Fields, Totals } from '../types'
 
 interface QueryProps {
   sdk: Looker40SDK
@@ -92,6 +92,7 @@ type DataReducerState = {
   visConfig: null | Record<string, any>
   fields: null | Fields
   shareUrl: null | string
+  totals: null | Totals
 }
 
 type DataReducerAction =
@@ -106,6 +107,7 @@ type DataReducerAction =
         | { visConfig: Partial<CAll> }
         | { fields: Fields }
         | { shareUrl: string }
+        | { totals: Totals }
     }
 
 const initialDataState: DataReducerState = {
@@ -114,6 +116,7 @@ const initialDataState: DataReducerState = {
   visConfig: null,
   fields: null,
   shareUrl: null,
+  totals: null,
 }
 
 function dataStateReducer(
@@ -145,7 +148,8 @@ export const Query: FC<QueryProps> = ({
     asyncStateReducer,
     initialAsyncState
   )
-  const { data, fields, visConfig, shareUrl, queryId } = dataState
+
+  const { data, fields, totals, visConfig, shareUrl, queryId } = dataState
 
   // They passed in a query ID instead of query Slug. No need to request this from the server:
   if (isNumeric(query) && !queryId) {
@@ -273,9 +277,17 @@ export const Query: FC<QueryProps> = ({
         result.error = { ...result.error, ...queryArgs }
         setError((result as ISDKErrorResponse<IError>).error)
       } else if (result.ok === true && result.value) {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const { data, fields } = (result as ISDKSuccessResponse<any>).value
-        dispatchDataReducer({ type: 'update', value: { data, fields } })
+        const {
+          data,
+          fields,
+          totals_data,
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        } = (result as ISDKSuccessResponse<any>).value
+
+        dispatchDataReducer({
+          type: 'update',
+          value: { data, fields, totals: totals_data },
+        })
       }
     }
 
@@ -318,7 +330,7 @@ export const Query: FC<QueryProps> = ({
         error,
         ok: isEveryResponseOk,
         loading: isLoading,
-        ...(isDataValid && { data, fields, shareUrl }),
+        ...(isDataValid && { data, fields, shareUrl, totals }),
       }}
     >
       {children}

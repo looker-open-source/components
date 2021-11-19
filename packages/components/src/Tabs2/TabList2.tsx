@@ -32,24 +32,7 @@ import styled, { css } from 'styled-components'
 import { useArrowKeyNav } from '../utils'
 import type { TabList2Props } from './types'
 
-const defaultLayoutCSS = css`
-  button {
-    min-width: 3rem;
-  }
-  button + button {
-    margin-left: ${({ theme }) => theme.space.xlarge};
-  }
-`
-
-const distributeCSS = css`
-  display: grid;
-  grid-auto-columns: 1fr;
-  grid-auto-flow: column;
-  button {
-    padding: ${({ theme: { space } }) => `${space.xsmall} ${space.medium}`};
-  }
-`
-
+// add tabListCSS to the style of the component once TabList is deprecated
 export const tabListCSS = css<TabList2Props>`
   ${reset}
   ${padding}
@@ -62,7 +45,22 @@ export const tabListCSS = css<TabList2Props>`
   &::-webkit-scrollbar {
     display: none; /* Safari and Chrome */
   }
-  ${({ distribute }) => (distribute ? distributeCSS : defaultLayoutCSS)}
+  ${({ distribute }) =>
+    distribute &&
+    css`
+      display: grid;
+      grid-auto-columns: 1fr;
+      grid-auto-flow: column;
+      button {
+        padding: 0;
+        span:first-child {
+          padding: 0 ${({ theme }) => theme.space.u4};
+        }
+        span:last-child {
+          border-radius: 0;
+        }
+      }
+    `}
 `
 
 export const TabList2 = styled(

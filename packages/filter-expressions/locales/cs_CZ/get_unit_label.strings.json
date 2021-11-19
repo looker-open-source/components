@@ -1,0 +1,62 @@
+{
+  "complete days": {
+    "value": "celé dny"
+  },
+  "complete fiscal quarters": {
+    "value": "celá fiskální čtvrtletí"
+  },
+  "complete fiscal years": {
+    "value": "celé fiskální roky"
+  },
+  "complete hours": {
+    "value": "celé hodiny"
+  },
+  "complete minutes": {
+    "value": "celé minuty"
+  },
+  "complete months": {
+    "value": "celé měsíce"
+  },
+  "complete quarters": {
+    "value": "celá čtvrtletí"
+  },
+  "complete seconds": {
+    "value": "celé sekundy"
+  },
+  "complete weeks": {
+    "value": "celé týdny"
+  },
+  "complete years": {
+    "value": "celé roky"
+  },
+  "days": {
+    "value": "dny/ů"
+  },
+  "fiscal quarters": {
+    "value": "fiskální čtvrtletí"
+  },
+  "fiscal years": {
+    "value": "fiskální roky"
+  },
+  "hours": {
+    "value": "hodin(y)"
+  },
+  "minutes": {
+    "value": "minut(y)"
+  },
+  "months": {
+    "value": "měsíce/ů"
+  },
+  "quarters": {
+    "value": "čtvrtletí"
+  },
+  "seconds": {
+    "value": "sekund(y)"
+  },
+  "weeks": {
+    "value": "týdny/ů"
+  },
+  "years": {
+    "value": "roky/ů"
+  }
+}

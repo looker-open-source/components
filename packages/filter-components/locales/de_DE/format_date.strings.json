@@ -1,84 +1,84 @@
 {
-  "January": {
-    "value": "Januar"
-  },
-  "February": {
-    "value": "Februar"
-  },
-  "March": {
-    "value": "März"
-  },
   "April": {
     "value": "April"
-  },
-  "May": {
-    "value": "Mai"
-  },
-  "June": {
-    "value": "Juni"
-  },
-  "July": {
-    "value": "Juli"
   },
   "August": {
     "value": "August"
   },
-  "September": {
-    "value": "September"
-  },
-  "October": {
-    "value": "Oktober"
-  },
-  "November": {
-    "value": "November"
-  },
   "December": {
     "value": "Dezember"
   },
-  "Sunday": {
-    "value": "Sonntag"
-  },
-  "Monday": {
-    "value": "Montag"
-  },
-  "Tuesday": {
-    "value": "Dienstag"
-  },
-  "Wednesday": {
-    "value": "Mittwoch"
-  },
-  "Thursday": {
-    "value": "Donnerstag"
-  },
-  "Friday": {
-    "value": "Freitag"
-  },
-  "Saturday": {
-    "value": "Samstag"
-  },
-  "Su": {
-    "value": "So"
-  },
-  "Mo": {
-    "value": "Mo"
-  },
-  "Tu": {
-    "value": "Di"
-  },
-  "We": {
-    "value": "Mi"
-  },
-  "Th": {
-    "value": "Do"
+  "February": {
+    "value": "Februar"
   },
   "Fr": {
     "value": "Fr"
   },
+  "Friday": {
+    "value": "Freitag"
+  },
+  "January": {
+    "value": "Januar"
+  },
+  "July": {
+    "value": "Juli"
+  },
+  "June": {
+    "value": "Juni"
+  },
+  "March": {
+    "value": "März"
+  },
+  "May": {
+    "value": "Mai"
+  },
+  "Mo": {
+    "value": "Mo"
+  },
+  "Monday": {
+    "value": "Montag"
+  },
+  "November": {
+    "value": "November"
+  },
+  "October": {
+    "value": "Oktober"
+  },
   "Sa": {
     "value": "Sa"
   },
+  "Saturday": {
+    "value": "Samstag"
+  },
+  "September": {
+    "value": "September"
+  },
+  "Su": {
+    "value": "So"
+  },
+  "Sunday": {
+    "value": "Sonntag"
+  },
+  "Th": {
+    "value": "Do"
+  },
+  "Thursday": {
+    "value": "Donnerstag"
+  },
+  "Tu": {
+    "value": "Di"
+  },
+  "Tuesday": {
+    "value": "Dienstag"
+  },
+  "We": {
+    "value": "Mi"
+  },
+  "Wednesday": {
+    "value": "Mittwoch"
+  },
   "firstDayOfWeek": {
-    "value": "0",
-    "note": "0 ist Sonntag, 1 ist Montag usw."
+    "note": "0 ist Sonntag, 1 ist Montag usw.",
+    "value": "0"
   }
 }

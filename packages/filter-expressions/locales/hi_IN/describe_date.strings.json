@@ -1,0 +1,63 @@
+{
+  "absolute prefix dateTime": {
+    "value": "{{dateTime}} {{prefix}}"
+  },
+  "ago": {
+    "value": "पहले"
+  },
+  "from now": {
+    "value": "अब से"
+  },
+  "is any time": {
+    "value": "किसी भी समय है"
+  },
+  "is before": {
+    "value": "से पहले है"
+  },
+  "is day": {
+    "value": "{{day}} है"
+  },
+  "is from dateTimeStart until dateTimeEnd": {
+    "value": "{{dateTimeStart}} से {{dateTimeEnd}} तक है"
+  },
+  "is in month year": {
+    "value": "{{month}} {{year}} में है"
+  },
+  "is in the last": {
+    "value": "अंतिम {{describeInterval}} में है"
+  },
+  "is interval ago": {
+    "value": "{{interval}} पहले है"
+  },
+  "is in the year year": {
+    "value": "वर्ष {{year}} में है"
+  },
+  "is intervalStart intervalType for intervalEnd": {
+    "value": "{{intervalEnd}} के लिए {{intervalStart}} {{intervalType}} में है"
+  },
+  "is not null": {
+    "value": "नल नहीं है"
+  },
+  "is on dateTime": {
+    "value": "{{dateTime}} पर है"
+  },
+  "is on or after": {
+    "value": "पर या बाद में है"
+  },
+  "is previous unitLabel": {
+    "value": "पिछला {{unitLabel}} है"
+  },
+  "is type unitLabel": {
+    "value": "{{type}} {{unitLabel}} है"
+  },
+  "prefix interval timePassed": {
+    "value": "{{prefix}} {{interval}} {{timePassed}}"
+  },
+  "prefix now": {
+    "value": "{{prefix}} अब"
+  },
+  "this startInterval to endInterval": "यह {{startInterval}} से {{endInterval}}",
+  "value complete unitLabel": {
+    "value": "{{value}}{{complete}} {{unitLabel}}"
+  }
+}

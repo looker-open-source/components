@@ -1,84 +1,84 @@
 {
-  "January": {
-    "value": "Ocak"
-  },
-  "February": {
-    "value": "Şubat"
-  },
-  "March": {
-    "value": "Mart"
-  },
   "April": {
     "value": "Nisan"
-  },
-  "May": {
-    "value": "May"
-  },
-  "June": {
-    "value": "Haziran"
-  },
-  "July": {
-    "value": "Temmuz"
   },
   "August": {
     "value": "Ağustos"
   },
-  "September": {
-    "value": "Eylül"
-  },
-  "October": {
-    "value": "Ekim"
-  },
-  "November": {
-    "value": "Kasım"
-  },
   "December": {
     "value": "Aralık"
   },
-  "Sunday": {
-    "value": "Pazar"
-  },
-  "Monday": {
-    "value": "Pazartesi"
-  },
-  "Tuesday": {
-    "value": "Salı"
-  },
-  "Wednesday": {
-    "value": "Çarşamba"
-  },
-  "Thursday": {
-    "value": "Perşembe"
-  },
-  "Friday": {
-    "value": "Cuma"
-  },
-  "Saturday": {
-    "value": "Cumartesi"
-  },
-  "Su": {
-    "value": "Paz"
-  },
-  "Mo": {
-    "value": "Pzt"
-  },
-  "Tu": {
-    "value": "Sal"
-  },
-  "We": {
-    "value": "Çar"
-  },
-  "Th": {
-    "value": "Per"
+  "February": {
+    "value": "Şubat"
   },
   "Fr": {
     "value": "Cum"
   },
+  "Friday": {
+    "value": "Cuma"
+  },
+  "January": {
+    "value": "Ocak"
+  },
+  "July": {
+    "value": "Temmuz"
+  },
+  "June": {
+    "value": "Haziran"
+  },
+  "March": {
+    "value": "Mart"
+  },
+  "May": {
+    "value": "May"
+  },
+  "Mo": {
+    "value": "Pzt"
+  },
+  "Monday": {
+    "value": "Pazartesi"
+  },
+  "November": {
+    "value": "Kasım"
+  },
+  "October": {
+    "value": "Ekim"
+  },
   "Sa": {
     "value": "Cmt"
   },
+  "Saturday": {
+    "value": "Cumartesi"
+  },
+  "September": {
+    "value": "Eylül"
+  },
+  "Su": {
+    "value": "Paz"
+  },
+  "Sunday": {
+    "value": "Pazar"
+  },
+  "Th": {
+    "value": "Per"
+  },
+  "Thursday": {
+    "value": "Perşembe"
+  },
+  "Tu": {
+    "value": "Sal"
+  },
+  "Tuesday": {
+    "value": "Salı"
+  },
+  "We": {
+    "value": "Çar"
+  },
+  "Wednesday": {
+    "value": "Çarşamba"
+  },
   "firstDayOfWeek": {
-    "value": "0",
-    "note": "0 = Pazar, 1 = Pazartesi, vb."
+    "note": "0 = Pazar, 1 = Pazartesi, vb.",
+    "value": "0"
   }
 }

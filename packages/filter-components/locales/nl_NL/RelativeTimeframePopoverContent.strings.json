@@ -1,8 +1,8 @@
 {
-  "Presets": {
-    "value": "Sjablonen"
-  },
   "Custom": {
     "value": "Aangepast"
+  },
+  "Presets": {
+    "value": "Sjablonen"
   }
 }

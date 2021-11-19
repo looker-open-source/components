@@ -99,7 +99,7 @@ export const chartConfigByType: Record<
     renderNullValues,
     sanitizeSDKResponse,
   ],
-  single_value: [sanitizeSDKResponse],
+  single_value: [seriesLabels, seriesColors, sanitizeSDKResponse],
   sparkline: [
     seriesColors,
     seriesLineWidth,

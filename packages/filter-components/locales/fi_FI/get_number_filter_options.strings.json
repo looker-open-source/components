@@ -1,0 +1,44 @@
+{
+  "exclusive": {
+    "value": "(poissulkeva)"
+  },
+  "inclusive": {
+    "value": "[sisältävä]"
+  },
+  "is": {
+    "value": "on"
+  },
+  "is between": {
+    "value": "on välillä"
+  },
+  "is greater": {
+    "value": "on >"
+  },
+  "is greater equal": {
+    "value": "on >="
+  },
+  "is less": {
+    "value": "on <"
+  },
+  "is less equal": {
+    "value": "on <="
+  },
+  "is not": {
+    "value": "ei ole"
+  },
+  "is not between": {
+    "value": "ei ole välillä"
+  },
+  "is not null": {
+    "value": "ei ole nolla"
+  },
+  "is null": {
+    "value": "on nolla"
+  },
+  "left exclusive": {
+    "value": "(vasen-poissulkeva]"
+  },
+  "right exclusive": {
+    "value": "[oikea-poissulkeva)"
+  }
+}

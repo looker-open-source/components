@@ -35,27 +35,30 @@ export const SingleValue: FC<SingleValueProps> = ({
   fields,
   width,
   height,
+  config,
 }) => {
   if (!data) {
     return null
   }
-
+  const { series = {} } = config
+  // only allow one measure for single_value
   const { name, value_format } = fields.measures[0]
+  const firstSeries = Array.isArray(series) ? series[0] : series[name || '']
+  const { color, label } = firstSeries
   const value: number = data[0][name || '']
-  const formattedValue = value_format
-    ? numeral(value).format(value_format)
-    : value
-
+  const formattedValue = numeral(value).format(value_format || '0,0')
   return (
     <VisWrapper>
       <SingleValueLayout width={width} height={height}>
-        <SingleValueContent>{formattedValue}</SingleValueContent>
+        <SingleValueContent color={color}>{formattedValue}</SingleValueContent>
+        {label && <SingleValueTitle color={color}>{label}</SingleValueTitle>}
       </SingleValueLayout>
     </VisWrapper>
   )
 }
 
 type SingleValueLayoutProps = { width?: number; height?: number }
+type SingleValueContentProps = { color?: string }
 
 const SingleValueLayout = styled.div<SingleValueLayoutProps>`
   align-items: center;
@@ -67,6 +70,12 @@ const SingleValueLayout = styled.div<SingleValueLayoutProps>`
   width: ${({ width }) => `${width}px` || 'auto'};
 `
 
-const SingleValueContent = styled.div`
+const SingleValueContent = styled.div<SingleValueContentProps>`
+  color: ${({ color }) => `${color}`};
   font-size: ${({ theme }) => theme.fontSizes.xxxlarge};
+`
+const SingleValueTitle = styled.div<SingleValueContentProps>`
+  color: ${({ color }) => `${color}`};
+  font-size: ${({ theme }) => theme.fontSizes.large};
+  opacity: 50%;
 `

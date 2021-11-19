@@ -30,6 +30,7 @@ import { Space, ProgressCircular, ComponentsProvider } from '@looker/components'
 import { ThemeContext } from 'styled-components'
 import type { CAll } from '@looker/visualizations-adapters'
 import {
+  formatTotals,
   tabularResponse,
   QueryContext,
   commonCartesianDefaults,
@@ -44,7 +45,9 @@ export interface QueryFormatterProps {
 export const QueryFormatter: FC<QueryFormatterProps> = props => {
   const { children } = props
 
-  const { ok, data = [], fields, config, loading } = useContext(QueryContext)
+  const { ok, data = [], fields, config, loading, totals } = useContext(
+    QueryContext
+  )
 
   const theme = useContext(ThemeContext)
 
@@ -81,6 +84,7 @@ export const QueryFormatter: FC<QueryFormatterProps> = props => {
       config: configWithDefaults,
       data: tabularResponse(data),
       fields,
+      totals: formatTotals(totals),
       ok,
     })
   } else {

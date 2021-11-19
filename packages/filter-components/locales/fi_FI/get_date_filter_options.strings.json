@@ -1,0 +1,44 @@
+{
+  "is": {
+    "value": "on"
+  },
+  "is any time": {
+    "value": "on milloin tahansa"
+  },
+  "is before": {
+    "value": "on ennen ajankohtaa"
+  },
+  "is in range": {
+    "value": "on alueella"
+  },
+  "is in the last": {
+    "value": "on viimeisten"
+  },
+  "is in the month": {
+    "value": "on kuussa"
+  },
+  "is in the year": {
+    "value": "on vuonna"
+  },
+  "is next": {
+    "value": "on seuraava"
+  },
+  "is not null": {
+    "value": "ei ole nolla"
+  },
+  "is null": {
+    "value": "on nolla"
+  },
+  "is on or after": {
+    "value": "on ajankohtana tai jälkeen ajankohdan"
+  },
+  "is on the day": {
+    "value": "on päivänä"
+  },
+  "is previous": {
+    "value": "on aiempi"
+  },
+  "is this": {
+    "value": "on tämä"
+  }
+}

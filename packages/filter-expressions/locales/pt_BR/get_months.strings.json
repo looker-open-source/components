@@ -1,38 +1,38 @@
 {
-  "January": {
-    "value": "Janeiro"
-  },
-  "February": {
-    "value": "Fevereiro"
-  },
-  "March": {
-    "value": "Março"
-  },
   "April": {
     "value": "Abril"
-  },
-  "May": {
-    "value": "Maio"
-  },
-  "June": {
-    "value": "Junho"
-  },
-  "July": {
-    "value": "Julho"
   },
   "August": {
     "value": "Agosto"
   },
-  "September": {
-    "value": "Setembro"
+  "December": {
+    "value": "Dezembro"
   },
-  "October": {
-    "value": "Outubro"
+  "February": {
+    "value": "Fevereiro"
+  },
+  "January": {
+    "value": "Janeiro"
+  },
+  "July": {
+    "value": "Julho"
+  },
+  "June": {
+    "value": "Junho"
+  },
+  "March": {
+    "value": "Março"
+  },
+  "May": {
+    "value": "Maio"
   },
   "November": {
     "value": "Novembro"
   },
-  "December": {
-    "value": "Dezembro"
+  "October": {
+    "value": "Outubro"
+  },
+  "September": {
+    "value": "Setembro"
   }
 }

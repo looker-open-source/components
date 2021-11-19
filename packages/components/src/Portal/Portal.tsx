@@ -75,6 +75,7 @@ export interface PortalProps extends PortalPlacementProps {
 export const Portal = forwardRef(
   (props: PortalProps, ref: Ref<HTMLDivElement>) => {
     const el = useRef(document.createElement('div'))
+    el.current.className = 'portal-child'
 
     useSafeLayoutEffect(() => {
       const root = getPortalRoot()

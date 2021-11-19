@@ -67,6 +67,7 @@ export type CCartesian = CArea | CBar | CColumn | CLine | CScatter
 /*
  * All supported chart config objects
  */
+
 export type CAll =
   | CArea
   | CBar
@@ -77,4 +78,4 @@ export type CAll =
   | CScatter
   | CTable
   | CSingleValue
-  | { type: SupportedChartTypes['default'] }
+  | { type: keyof SupportedChartTypes }

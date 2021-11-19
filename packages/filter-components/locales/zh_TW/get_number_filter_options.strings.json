@@ -1,6 +1,15 @@
 {
+  "exclusive": {
+    "value": "(排除)"
+  },
+  "inclusive": {
+    "value": "[內含]"
+  },
   "is": {
     "value": "是"
+  },
+  "is between": {
+    "value": "介於"
   },
   "is greater": {
     "value": "為 >"
@@ -14,12 +23,6 @@
   "is less equal": {
     "value": " <="
   },
-  "is between": {
-    "value": "介於"
-  },
-  "is null": {
-    "value": "是 Null"
-  },
   "is not": {
     "value": "不是"
   },
@@ -29,16 +32,13 @@
   "is not null": {
     "value": "不是 Null"
   },
-  "inclusive": {
-    "value": "[內含]"
-  },
-  "exclusive": {
-    "value": "(排除)"
-  },
-  "right exclusive": {
-    "value": "[排除右邊)"
+  "is null": {
+    "value": "是 Null"
   },
   "left exclusive": {
     "value": "(排除左邊]"
+  },
+  "right exclusive": {
+    "value": "[排除右邊)"
   }
 }

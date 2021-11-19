@@ -32,8 +32,13 @@ import type {
   ChartLayoutProps,
 } from '../types'
 
+import type { CSeriesBasic } from '@looker/visualizations'
+
+export type CSingleValueSeries = Pick<CSeriesBasic, 'color' | 'label'>
+
 export type CSingleValue = {
   type: SupportedChartTypes['single_value']
+  series?: CSingleValueSeries[] | { [key: string]: CSingleValueSeries }
 }
 
 export type SingleValueProps = VisWrapperProps &

@@ -1,0 +1,44 @@
+{
+  "exclusive": {
+    "value": "(ไม่รวม)"
+  },
+  "inclusive": {
+    "value": "[รวม]"
+  },
+  "is": {
+    "value": "เป็น"
+  },
+  "is between": {
+    "value": "อยู่ระหว่าง"
+  },
+  "is greater": {
+    "value": "เป็น >"
+  },
+  "is greater equal": {
+    "value": "เป็น >="
+  },
+  "is less": {
+    "value": "เป็น <"
+  },
+  "is less equal": {
+    "value": "เป็น <="
+  },
+  "is not": {
+    "value": "ไม่"
+  },
+  "is not between": {
+    "value": "ไม่อยู่ระหว่าง"
+  },
+  "is not null": {
+    "value": "ไม่เป็นค่าว่าง"
+  },
+  "is null": {
+    "value": "เป็นค่าว่าง"
+  },
+  "left exclusive": {
+    "value": "(ไม่รวมซ้าย]"
+  },
+  "right exclusive": {
+    "value": "[ไม่รวมขวา)"
+  }
+}

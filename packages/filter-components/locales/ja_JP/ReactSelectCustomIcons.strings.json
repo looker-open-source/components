@@ -2,10 +2,10 @@
   "Clear all": {
     "value": "すべてクリア"
   },
-  "Toggle": {
-    "value": "切り替え"
-  },
   "Remove": {
     "value": "削除"
+  },
+  "Toggle": {
+    "value": "切り替え"
   }
 }

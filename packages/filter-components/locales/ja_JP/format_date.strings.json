@@ -1,84 +1,84 @@
 {
-  "January": {
-    "value": "1月"
-  },
-  "February": {
-    "value": "2月"
-  },
-  "March": {
-    "value": "3月"
-  },
   "April": {
     "value": "4月"
-  },
-  "May": {
-    "value": "5月"
-  },
-  "June": {
-    "value": "6月"
-  },
-  "July": {
-    "value": "7月"
   },
   "August": {
     "value": "8月"
   },
-  "September": {
-    "value": "9月"
-  },
-  "October": {
-    "value": "10月"
-  },
-  "November": {
-    "value": "11月"
-  },
   "December": {
     "value": "12月"
   },
-  "Sunday": {
-    "value": "日曜日"
-  },
-  "Monday": {
-    "value": "月曜日"
-  },
-  "Tuesday": {
-    "value": "火曜日"
-  },
-  "Wednesday": {
-    "value": "水曜日"
-  },
-  "Thursday": {
-    "value": "木曜日"
-  },
-  "Friday": {
-    "value": "金曜日"
-  },
-  "Saturday": {
-    "value": "土曜日"
-  },
-  "Su": {
-    "value": "日"
-  },
-  "Mo": {
-    "value": "月"
-  },
-  "Tu": {
-    "value": "火"
-  },
-  "We": {
-    "value": "水"
-  },
-  "Th": {
-    "value": "木"
+  "February": {
+    "value": "2月"
   },
   "Fr": {
     "value": "金"
   },
+  "Friday": {
+    "value": "金曜日"
+  },
+  "January": {
+    "value": "1月"
+  },
+  "July": {
+    "value": "7月"
+  },
+  "June": {
+    "value": "6月"
+  },
+  "March": {
+    "value": "3月"
+  },
+  "May": {
+    "value": "5月"
+  },
+  "Mo": {
+    "value": "月"
+  },
+  "Monday": {
+    "value": "月曜日"
+  },
+  "November": {
+    "value": "11月"
+  },
+  "October": {
+    "value": "10月"
+  },
   "Sa": {
     "value": "土"
   },
+  "Saturday": {
+    "value": "土曜日"
+  },
+  "September": {
+    "value": "9月"
+  },
+  "Su": {
+    "value": "日"
+  },
+  "Sunday": {
+    "value": "日曜日"
+  },
+  "Th": {
+    "value": "木"
+  },
+  "Thursday": {
+    "value": "木曜日"
+  },
+  "Tu": {
+    "value": "火"
+  },
+  "Tuesday": {
+    "value": "火曜日"
+  },
+  "We": {
+    "value": "水"
+  },
+  "Wednesday": {
+    "value": "水曜日"
+  },
   "firstDayOfWeek": {
-    "value": "0",
-    "note": "0は日曜日、1は月曜日、など"
+    "note": "0は日曜日、1は月曜日、など",
+    "value": "0"
   }
 }

@@ -39,6 +39,23 @@ const defaultCheckValueOnBlur = (e: FocusEvent) => {
   return input?.value !== undefined && input.value !== ''
 }
 
+const getIsInSelectList = (
+  nextFocusTarget: Element | Node | null,
+  inputArea: HTMLElement
+) => {
+  const portalRoot = getPortalRoot()
+  if (!portalRoot.contains(nextFocusTarget)) {
+    return false
+  }
+  if (portalRoot.contains(inputArea)) {
+    return (
+      ((nextFocusTarget as unknown) as Element)?.closest('portal-child') !==
+      inputArea.closest('portal-child')
+    )
+  }
+  return true
+}
+
 /**
  * A helper function to derive the hasValue prop from the value and defaultValue props.
  * Use custom logic for fields that have different value-related props (see FieldChips).
@@ -88,11 +105,15 @@ export const useFloatingLabel = ({
         const nextFocusTarget = getNextFocusTarget(e)
         // For FieldSelect, focus can move (briefly) into the list,
         // which is in a Portal
-        const portalRoot = getPortalRoot()
+        // (and a separate portal child from the input, if the input is also in aportal)
+        const isInSelectList = getIsInSelectList(
+          nextFocusTarget,
+          e.currentTarget
+        )
         if (
           nextFocusTarget &&
           !e.currentTarget.contains(nextFocusTarget) &&
-          !portalRoot.contains(nextFocusTarget)
+          !isInSelectList
         ) {
           setIsFocused(false)
         }

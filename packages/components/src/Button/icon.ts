@@ -61,5 +61,6 @@ export const iconMargins = (props: ButtonProps) => {
 export const buttonIcon = (props: ButtonProps) => css`
   ${StyledIconBase} {
     ${iconMargins(props)}
+    flex-shrink: 0;
   }
 `

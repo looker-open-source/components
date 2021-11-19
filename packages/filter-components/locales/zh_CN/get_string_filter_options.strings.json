@@ -1,0 +1,14 @@
+{
+  "contains": "包含",
+  "doesnt contain": "不包含",
+  "doesnt end with": "结尾不为",
+  "doesnt start with": "开头不为",
+  "ends with": "结尾为",
+  "is": "为",
+  "is blank": "为空",
+  "is not": "不为",
+  "is not blank": "不为空",
+  "is not null": "不为空值",
+  "is null": "为空值",
+  "starts with": "开头为"
+}

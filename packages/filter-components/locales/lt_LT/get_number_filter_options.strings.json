@@ -1,0 +1,44 @@
+{
+  "exclusive": {
+    "value": "(neįskaitant)"
+  },
+  "inclusive": {
+    "value": "(įskaitant)"
+  },
+  "is": {
+    "value": "yra"
+  },
+  "is between": {
+    "value": "yra tarp"
+  },
+  "is greater": {
+    "value": "yra >"
+  },
+  "is greater equal": {
+    "value": "yra >="
+  },
+  "is less": {
+    "value": "yra <"
+  },
+  "is less equal": {
+    "value": "yra <="
+  },
+  "is not": {
+    "value": "nėra"
+  },
+  "is not between": {
+    "value": "nėra tarp"
+  },
+  "is not null": {
+    "value": "nėra nulis"
+  },
+  "is null": {
+    "value": "yra nulis"
+  },
+  "left exclusive": {
+    "value": "(kairė-neįskaitant)"
+  },
+  "right exclusive": {
+    "value": "(dešinė-neįskaitant)"
+  }
+}

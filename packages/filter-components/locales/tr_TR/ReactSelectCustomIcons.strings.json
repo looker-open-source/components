@@ -2,10 +2,10 @@
   "Clear all": {
     "value": "Tümünü temizle"
   },
-  "Toggle": {
-    "value": "Değiştir"
-  },
   "Remove": {
     "value": "Kaldır"
+  },
+  "Toggle": {
+    "value": "Değiştir"
   }
 }

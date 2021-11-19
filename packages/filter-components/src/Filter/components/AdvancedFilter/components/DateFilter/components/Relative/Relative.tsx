@@ -23,7 +23,7 @@
  SOFTWARE.
 
  */
-import { Flex, inputHeight } from '@looker/components'
+import { Box2 } from '@looker/components'
 import type { FilterModel } from '@looker/filter-expressions'
 import type { ILookmlModelExploreField } from '@looker/sdk'
 import type { FC } from 'react'
@@ -64,7 +64,7 @@ export const Relative: FC<RelativeParamProps> = ({
   }
 
   return (
-    <Flex bg="white" height={inputHeight} alignItems="baseline">
+    <Box2 display="flex" bg="field">
       <Interval
         placement="middle"
         item={startInterval}
@@ -79,6 +79,6 @@ export const Relative: FC<RelativeParamProps> = ({
       />
       <MidInputLabel>FOR</MidInputLabel>
       <Interval item={endInterval} onChange={endChange} field={field} />
-    </Flex>
+    </Box2>
   )
 }
