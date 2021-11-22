@@ -1,8 +1,8 @@
 {
-  "Presets": {
-    "value": "Voreinstellungen"
-  },
   "Custom": {
     "value": "Benutzerdefiniert"
+  },
+  "Presets": {
+    "value": "Voreinstellungen"
   }
 }

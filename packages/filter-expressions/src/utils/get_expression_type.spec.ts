@@ -24,6 +24,7 @@
 
  */
 import type { ILookmlModelExploreField } from '@looker/sdk'
+import { Category } from '@looker/sdk'
 import { getExpressionTypeFromField } from './get_expression_type'
 
 describe('getExpressionTypeFromField', () => {
@@ -86,5 +87,13 @@ describe('getExpressionTypeFromField', () => {
   it('should return "string" by default', () => {
     const mockField = {} as ILookmlModelExploreField
     expect(getExpressionTypeFromField(mockField)).toEqual('string')
+  })
+
+  it('should return number for number parameter (b/187940941, b/199507872)', () => {
+    const mockField = {
+      category: Category.parameter,
+      type: 'number',
+    } as ILookmlModelExploreField
+    expect(getExpressionTypeFromField(mockField)).toEqual('number')
   })
 })

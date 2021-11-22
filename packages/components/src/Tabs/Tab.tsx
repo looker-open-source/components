@@ -24,81 +24,14 @@
 
  */
 
-import type { Ref } from 'react'
-import React, { forwardRef } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import type {
-  CompatibleHTMLProps,
-  LayoutProps,
-  PaddingProps,
-  TypographyProps,
-} from '@looker/design-tokens'
-import { useFocusVisible, useWrapEvent } from '../utils'
-import { Tab2Style } from '../Tabs2/Tab2'
+import { Tab2 } from '../Tabs2/Tab2'
+import type { Tab2Props } from '../Tabs2/types'
 
-export interface TabProps
-  extends Omit<CompatibleHTMLProps<HTMLButtonElement>, 'type'>,
-    LayoutProps,
-    PaddingProps,
-    TypographyProps {
+export interface TabProps extends Omit<Tab2Props, 'label'> {
   disabled?: boolean
   index?: number
-  selected?: boolean
-  onSelect?: () => void
 }
 
-/**
- * @deprecated Use `Tabs2` & `Tab2` instead
- */
-export const Tab = styled(
-  forwardRef((props: TabProps, ref: Ref<HTMLButtonElement>) => {
-    const {
-      disabled,
-      index,
-      onBlur,
-      onClick,
-      onKeyUp,
-      onSelect,
-      selected,
-      ...restProps
-    } = props
-
-    const handleClick = useWrapEvent(() => {
-      if (!disabled && onSelect) {
-        onSelect()
-      }
-    }, onClick)
-
-    const focusVisibleProps = useFocusVisible({ onBlur, onKeyUp })
-
-    return (
-      <Tab2Style
-        aria-controls={`panel-${index}`}
-        aria-orientation="horizontal"
-        aria-selected={selected}
-        disabled={disabled}
-        id={`tab-${index}`}
-        onClick={handleClick}
-        ref={ref}
-        role="tab"
-        selected={selected}
-        tabIndex={-1}
-        type="button"
-        {...focusVisibleProps}
-        {...restProps}
-      />
-    )
-  })
-).attrs(
-  ({
-    fontSize = 'small',
-    fontWeight = 'medium',
-    pb = 'small',
-    pt = 'xsmall',
-  }) => ({
-    fontSize,
-    fontWeight,
-    pb,
-    pt,
-  })
-)``
+export const Tab = styled((props: TabProps) => <Tab2 label=" " {...props} />)``

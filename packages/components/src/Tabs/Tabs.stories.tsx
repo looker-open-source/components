@@ -27,6 +27,7 @@
 // import type { Page } from 'puppeteer'
 import type { FC } from 'react'
 import React, { useState } from 'react'
+import { ThemeProvider } from 'styled-components'
 import type { Story } from '@storybook/react/types-6-0'
 import { Button } from '../Button'
 import { Space } from '../Layout/Space'
@@ -39,29 +40,42 @@ interface DemoProps extends TabListProps {
   tabPrefix: string
 }
 
-const Template: Story<DemoProps> = ({ tabCount, tabPrefix, ...args }) => {
+const Template: Story<DemoProps & { ripple: boolean }> = ({
+  ripple,
+  tabCount,
+  tabPrefix,
+  ...args
+}) => {
   const tabs = new Array(tabCount).fill('tab')
 
   return (
-    <Tabs>
-      <TabList {...args}>
-        {tabs.map((_k, index) => (
-          <Tab key={index}>
-            {tabPrefix} {index}
-          </Tab>
-        ))}
-      </TabList>
-      <TabPanels>
-        {tabs.map((_k, index) => (
-          <TabPanel key={index}>This is {index}</TabPanel>
-        ))}
-      </TabPanels>
-    </Tabs>
+    <ThemeProvider
+      theme={theme => ({
+        ...theme,
+        defaults: { ...theme.defaults, brandAnimation: ripple },
+      })}
+    >
+      <Tabs>
+        <TabList {...args}>
+          {tabs.map((_k, index) => (
+            <Tab key={index}>
+              {tabPrefix} {index}
+            </Tab>
+          ))}
+        </TabList>
+        <TabPanels>
+          {tabs.map((_k, index) => (
+            <TabPanel key={index}>This is {index}</TabPanel>
+          ))}
+        </TabPanels>
+      </Tabs>
+    </ThemeProvider>
   )
 }
 
 export const Basic = Template.bind({})
 Basic.args = {
+  ripple: false,
   tabCount: 3,
   tabPrefix: 'My Awesome Tab',
 }
@@ -75,24 +89,8 @@ Distributed.args = {
 
 export const Scrolling = Template.bind({})
 Scrolling.args = {
-  distribute: true,
   tabCount: 20,
   tabPrefix: 'My Awesome Tab',
-}
-
-export const Focused = Template.bind({})
-Focused.args = {
-  ...Basic.args,
-}
-
-Focused.parameters = {
-  // beforeScreenshot: async (page: Page) => {
-  //   const tabs = await page.$('[role="tablist"]')
-  //   await tabs?.type(' ')
-  //   await page.waitForTimeout(50)
-  // },
-  docs: { disable: true },
-  storyshots: { disable: true },
 }
 
 export const Controlled: FC = () => {

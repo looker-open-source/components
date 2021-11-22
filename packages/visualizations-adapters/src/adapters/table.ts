@@ -31,6 +31,7 @@ import type {
   CSeriesBasic,
   SupportedChartTypes,
   ChartLayoutProps,
+  Totals,
 } from '../types'
 
 export type CTableSeries = { cell_visualization?: boolean } & CSeriesBasic
@@ -47,4 +48,5 @@ export type TableProps = VisWrapperProps &
     data: SDKRecord[]
     config: CTable
     fields: Fields
+    totals?: Totals
   }

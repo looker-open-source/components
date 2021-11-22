@@ -1,0 +1,62 @@
+{
+  "complete days": {
+    "value": "kokonaista päivää"
+  },
+  "complete fiscal quarters": {
+    "value": "kokonaista tilikauden vuosineljännestä"
+  },
+  "complete fiscal years": {
+    "value": "kokonaista tilivuotta"
+  },
+  "complete hours": {
+    "value": "kokonaista tuntia"
+  },
+  "complete minutes": {
+    "value": "kokonaista minuuttia"
+  },
+  "complete months": {
+    "value": "kokonaista kuukautta"
+  },
+  "complete quarters": {
+    "value": "kokonaista vuosineljännestä"
+  },
+  "complete seconds": {
+    "value": "kokonaista sekuntia"
+  },
+  "complete weeks": {
+    "value": "kokonaista viikkoa"
+  },
+  "complete years": {
+    "value": "kokonaista vuotta"
+  },
+  "days": {
+    "value": "päivää"
+  },
+  "fiscal quarters": {
+    "value": "tilikauden vuosineljännestä"
+  },
+  "fiscal years": {
+    "value": "tilivuotta"
+  },
+  "hours": {
+    "value": "tuntia"
+  },
+  "minutes": {
+    "value": "minuuttia"
+  },
+  "months": {
+    "value": "kuukautta"
+  },
+  "quarters": {
+    "value": "vuosineljännestä"
+  },
+  "seconds": {
+    "value": "sekuntia"
+  },
+  "weeks": {
+    "value": "viikkoa"
+  },
+  "years": {
+    "value": "vuotta"
+  }
+}

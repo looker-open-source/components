@@ -50,7 +50,9 @@ export const seriesColors: ConfigHelper<CommonCartesianProperties> = ({
   config,
   fields,
 }) => {
-  const { series_colors, series = {}, ...restConfig } = config
+  const { series_colors, series = {}, custom_color, ...restConfig } = config
+  if (typeof custom_color === 'string')
+    fallbackSeriesColors.unshift(custom_color)
   const measures = getMeasureNames(fields)
   const defaultColors = measures
     .map((field, currentIndex) => {

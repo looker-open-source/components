@@ -25,6 +25,7 @@
  */
 
 import React, { useState } from 'react'
+import { ThemeProvider } from 'styled-components'
 import type { Story } from '@storybook/react/types-6-0'
 import { Box2 } from '../Layout'
 import type { Tabs2Props } from './'
@@ -35,31 +36,44 @@ export default {
   title: 'Tabs2',
 }
 
-const Template: Story<Tabs2Props> = args => (
-  <Box2 height="8rem">
-    <Tabs2 {...args}>
-      <Tab2 id="cats" label="Cats">
-        Here's awesome story about cats
-      </Tab2>
-      <Tab2 id="dogs" label="Dogs">
-        Cats are way better than dogs. Go to other tab
-      </Tab2>
-      <Tab2 label="Fish">Are kinda smelly</Tab2>
-    </Tabs2>
-  </Box2>
+const Template: Story<Tabs2Props & { ripple: boolean }> = ({
+  ripple,
+  ...args
+}) => (
+  <ThemeProvider
+    theme={theme => ({
+      ...theme,
+      defaults: { ...theme.defaults, brandAnimation: ripple },
+    })}
+  >
+    <Box2 height="8rem">
+      <Tabs2 {...args}>
+        <Tab2 id="cats" label="Cats">
+          Here's awesome story about cats
+        </Tab2>
+        <Tab2 id="dogs" label="Dogs">
+          Cats are way better than dogs. Go to other tab
+        </Tab2>
+        <Tab2 label="Fish">Are kinda smelly</Tab2>
+      </Tabs2>
+    </Box2>
+  </ThemeProvider>
 )
 
 export const Basic = Template.bind({})
-Basic.args = {}
+Basic.args = {
+  ripple: false,
+}
 
 export const Distributed = Template.bind({})
-Distributed.args = { distributed: true }
+Distributed.args = { ...Basic, distributed: true }
 
 export const DefaultTab = Template.bind({})
-DefaultTab.args = { defaultTabId: 'dogs' }
+DefaultTab.args = { ...Basic, defaultTabId: 'dogs' }
 
 export const Controlled = () => {
-  const [currentTabId, setTabId] = useState<'cats' | 'dogs'>('cats')
+  const [currentTabId, setTabId] = useState<string>('cats')
+
   return (
     <>
       <p>The current selected tab is: {currentTabId}</p>
@@ -83,7 +97,7 @@ Controlled.parameters = {
 export const Scrolling = () => {
   const tabs = new Array(20).fill('Tab2')
   return (
-    <Tabs2 distributed>
+    <Tabs2>
       {tabs.map((value, index) => (
         <Tab2 label={`Hello World ${index}`} key={index}>
           This is {value} {index}

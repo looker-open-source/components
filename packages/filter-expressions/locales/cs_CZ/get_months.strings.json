@@ -1,0 +1,38 @@
+{
+  "April": {
+    "value": "Duben"
+  },
+  "August": {
+    "value": "Srpen"
+  },
+  "December": {
+    "value": "Prosinec"
+  },
+  "February": {
+    "value": "Únor"
+  },
+  "January": {
+    "value": "Leden"
+  },
+  "July": {
+    "value": "Červenec"
+  },
+  "June": {
+    "value": "Červen"
+  },
+  "March": {
+    "value": "Březen"
+  },
+  "May": {
+    "value": "Květen"
+  },
+  "November": {
+    "value": "Listopad"
+  },
+  "October": {
+    "value": "Říjen"
+  },
+  "September": {
+    "value": "Září"
+  }
+}

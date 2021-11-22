@@ -26,7 +26,13 @@
 
 import { createContext } from 'react'
 import type { IError } from '@looker/sdk'
-import type { CAll, SDKRecord, Fields, RawApiConfigResponse } from '../types'
+import type {
+  CAll,
+  SDKRecord,
+  Fields,
+  RawApiConfigResponse,
+  Totals,
+} from '../types'
 export interface QueryContextProps {
   ok: boolean
   loading: boolean
@@ -34,6 +40,7 @@ export interface QueryContextProps {
   data: SDKRecord[]
   error?: IError
   fields: Fields
+  totals?: Totals
   shareUrl?: string
 }
 
@@ -43,4 +50,5 @@ export const QueryContext = createContext<QueryContextProps>({
   data: [],
   config: {},
   fields: { dimensions: [], measures: [] },
+  totals: {},
 })

@@ -1,0 +1,32 @@
+{
+  "Box": {
+    "value": "बॉक्स"
+  },
+  "Circle": {
+    "value": "वृत्त"
+  },
+  "Location": {
+    "value": "लोकेशन"
+  },
+  "feet": {
+    "value": "फ़ीट"
+  },
+  "is anywhere": {
+    "value": "कहीं भी है"
+  },
+  "is not null": {
+    "value": "नल नहीं है"
+  },
+  "is null": {
+    "value": "नल है"
+  },
+  "kilometers": {
+    "value": "किलोमीटर"
+  },
+  "meters": {
+    "value": "मीटर"
+  },
+  "miles": {
+    "value": "मील"
+  }
+}

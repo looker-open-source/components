@@ -1,0 +1,14 @@
+{
+  "contains": "містить",
+  "doesnt contain": "не містить",
+  "doesnt end with": "не закінчується на",
+  "doesnt start with": "не починається з",
+  "ends with": "закінчується на",
+  "is": "є",
+  "is blank": "пусте",
+  "is not": "не є",
+  "is not blank": "не пусте",
+  "is not null": "не має значення NULL",
+  "is null": "має значення NULL",
+  "starts with": "починається з"
+}

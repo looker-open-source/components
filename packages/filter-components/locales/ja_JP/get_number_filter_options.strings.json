@@ -1,6 +1,15 @@
 {
+  "exclusive": {
+    "value": "（除く）"
+  },
+  "inclusive": {
+    "value": "[含む]"
+  },
   "is": {
     "value": "が次である"
+  },
+  "is between": {
+    "value": "が次の範囲内"
   },
   "is greater": {
     "value": "が次の値より大きい（>）"
@@ -14,12 +23,6 @@
   "is less equal": {
     "value": "が次の値以下である（<=）"
   },
-  "is between": {
-    "value": "が次の範囲内"
-  },
-  "is null": {
-    "value": "がNullである"
-  },
   "is not": {
     "value": "が次でない"
   },
@@ -29,16 +32,13 @@
   "is not null": {
     "value": "がNullでない"
   },
-  "inclusive": {
-    "value": "[含む]"
+  "is null": {
+    "value": "がNullである"
   },
-  "exclusive": {
-    "value": "(除く)"
+  "left exclusive": {
+    "value": "（左側を除く]"
   },
   "right exclusive": {
     "value": "[右側を除く)"
-  },
-  "left exclusive": {
-    "value": "(左側を除く]"
   }
 }

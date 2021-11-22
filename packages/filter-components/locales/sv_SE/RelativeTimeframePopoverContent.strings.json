@@ -1,8 +1,8 @@
 {
-  "Presets": {
-    "value": "Förinställningar"
-  },
   "Custom": {
     "value": "Anpassat"
+  },
+  "Presets": {
+    "value": "Förinställningar"
   }
 }

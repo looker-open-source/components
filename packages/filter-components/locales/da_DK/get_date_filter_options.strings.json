@@ -1,0 +1,44 @@
+{
+  "is": {
+    "value": "er"
+  },
+  "is any time": {
+    "value": "er når som helst"
+  },
+  "is before": {
+    "value": "er før"
+  },
+  "is in range": {
+    "value": "er i område"
+  },
+  "is in the last": {
+    "value": "er inden for den/det seneste"
+  },
+  "is in the month": {
+    "value": "er i måneden"
+  },
+  "is in the year": {
+    "value": "er i året"
+  },
+  "is next": {
+    "value": "er næste"
+  },
+  "is not null": {
+    "value": "er ikke null"
+  },
+  "is null": {
+    "value": "er null"
+  },
+  "is on or after": {
+    "value": "er på eller efter"
+  },
+  "is on the day": {
+    "value": "er på dagen"
+  },
+  "is previous": {
+    "value": "er forrige"
+  },
+  "is this": {
+    "value": "er dette"
+  }
+}

@@ -1,8 +1,8 @@
 {
-  "Presets": {
-    "value": "プリセット"
-  },
   "Custom": {
     "value": "カスタム"
+  },
+  "Presets": {
+    "value": "プリセット"
   }
 }

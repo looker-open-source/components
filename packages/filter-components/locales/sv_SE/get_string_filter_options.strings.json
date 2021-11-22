@@ -1,0 +1,14 @@
+{
+  "contains": "innehåller",
+  "doesnt contain": "innehåller inte",
+  "doesnt end with": "slutar inte med",
+  "doesnt start with": "börjar inte med",
+  "ends with": "slutar med",
+  "is": "är",
+  "is blank": "är tom",
+  "is not": "är inte",
+  "is not blank": "är inte tom",
+  "is not null": "är inte null",
+  "is null": "är null",
+  "starts with": "börjar med"
+}

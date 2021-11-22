@@ -1,0 +1,14 @@
+{
+  "contains": "contient",
+  "doesnt contain": "ne contient pas",
+  "doesnt end with": "ne finit pas par",
+  "doesnt start with": "ne commence pas par",
+  "ends with": "finit par",
+  "is": "est",
+  "is blank": "est vierge",
+  "is not": "n'est pas",
+  "is not blank": "n'est pas vierge",
+  "is not null": "n'est pas nul",
+  "is null": "est nul",
+  "starts with": "commence par"
+}

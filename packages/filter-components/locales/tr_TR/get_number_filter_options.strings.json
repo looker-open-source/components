@@ -1,6 +1,15 @@
 {
+  "exclusive": {
+    "value": "(hariç)"
+  },
+  "inclusive": {
+    "value": "[dahil]"
+  },
   "is": {
     "value": "şudur:"
+  },
+  "is between": {
+    "value": "şunların arasında:"
   },
   "is greater": {
     "value": ">"
@@ -14,12 +23,6 @@
   "is less equal": {
     "value": "<="
   },
-  "is between": {
-    "value": "şunların arasında:"
-  },
-  "is null": {
-    "value": "değer içermiyor"
-  },
   "is not": {
     "value": "şu değildir:"
   },
@@ -29,16 +32,13 @@
   "is not null": {
     "value": "değer içeriyor"
   },
-  "inclusive": {
-    "value": "[dahil]"
-  },
-  "exclusive": {
-    "value": "(hariç)"
-  },
-  "right exclusive": {
-    "value": "[sağ hariç)"
+  "is null": {
+    "value": "değer içermiyor"
   },
   "left exclusive": {
     "value": "(sol hariç]"
+  },
+  "right exclusive": {
+    "value": "[sağ hariç)"
   }
 }

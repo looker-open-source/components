@@ -2,10 +2,10 @@
   "Clear all": {
     "value": "Borrar todo"
   },
-  "Toggle": {
-    "value": "Alternar"
-  },
   "Remove": {
     "value": "Quitar"
+  },
+  "Toggle": {
+    "value": "Alternar"
   }
 }

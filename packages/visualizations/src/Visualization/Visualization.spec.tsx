@@ -45,6 +45,7 @@ import {
   QueryContext,
   mockQueryResult,
 } from '@looker/visualizations-adapters'
+import { Sparkline } from '@looker/visualizations-visx'
 import { Visualization, defaultChartComponent } from './Visualization'
 
 const CustomVis = () => {
@@ -99,6 +100,15 @@ describe.skip('Visualization', () => {
     )
 
     expect(screen.getByText('Rendered Without Error!')).toBeInTheDocument()
+  })
+  it('accepts config overrides and merges them with QueryContext values', () => {
+    render(
+      <QueryContext.Provider value={mockQueryResult}>
+        <Visualization config={{ type: 'sparkline' }} />
+      </QueryContext.Provider>
+    )
+
+    expect(Sparkline).toHaveBeenCalledTimes(1)
   })
 })
 

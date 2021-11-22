@@ -1,9 +1,9 @@
 {
-  "is any value": {
-    "value": "é qualquer valor"
-  },
   "is": {
     "value": "é"
+  },
+  "is any value": {
+    "value": "é qualquer valor"
   },
   "is not": {
     "value": "não é"

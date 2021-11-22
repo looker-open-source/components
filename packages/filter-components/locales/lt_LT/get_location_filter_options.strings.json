@@ -1,0 +1,32 @@
+{
+  "Box": {
+    "value": "Langelis"
+  },
+  "Circle": {
+    "value": "Apskritimas"
+  },
+  "Location": {
+    "value": "Vieta"
+  },
+  "feet": {
+    "value": "pėdų"
+  },
+  "is anywhere": {
+    "value": "yra bet kur"
+  },
+  "is not null": {
+    "value": "nėra nulis"
+  },
+  "is null": {
+    "value": "yra nulis"
+  },
+  "kilometers": {
+    "value": "km"
+  },
+  "meters": {
+    "value": "m"
+  },
+  "miles": {
+    "value": "mylių"
+  }
+}

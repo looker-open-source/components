@@ -1,54 +1,12 @@
 {
-  "fiscal years": {
-    "value": "Geschäftsjahre"
-  },
-  "years": {
-    "value": "Jahre"
-  },
-  "fiscal quarters": {
-    "value": "Geschäftsquartale"
-  },
-  "quarters": {
-    "value": "Quartale"
-  },
-  "months": {
-    "value": "Monate"
-  },
-  "weeks": {
-    "value": "Wochen"
-  },
-  "days": {
-    "value": "Tage"
-  },
-  "hours": {
-    "value": "Stunden"
-  },
-  "minutes": {
-    "value": "Minuten"
-  },
-  "seconds": {
-    "value": "Sekunden"
-  },
-  "complete fiscal years": {
-    "value": "vollständige Geschäftsjahre"
-  },
-  "complete years": {
-    "value": "vollständige Jahre"
+  "complete days": {
+    "value": "vollständige Tage"
   },
   "complete fiscal quarters": {
     "value": "vollständige Geschäftsquartale"
   },
-  "complete quarters": {
-    "value": "vollständige Quartale"
-  },
-  "complete months": {
-    "value": "vollständige Monate"
-  },
-  "complete weeks": {
-    "value": "vollständige Wochen"
-  },
-  "complete days": {
-    "value": "vollständige Tage"
+  "complete fiscal years": {
+    "value": "vollständige Geschäftsjahre"
   },
   "complete hours": {
     "value": "vollständige Stunden"
@@ -56,7 +14,49 @@
   "complete minutes": {
     "value": "vollständige Minuten"
   },
+  "complete months": {
+    "value": "vollständige Monate"
+  },
+  "complete quarters": {
+    "value": "vollständige Quartale"
+  },
   "complete seconds": {
     "value": "vollständige Sekunden"
+  },
+  "complete weeks": {
+    "value": "vollständige Wochen"
+  },
+  "complete years": {
+    "value": "vollständige Jahre"
+  },
+  "days": {
+    "value": "Tage"
+  },
+  "fiscal quarters": {
+    "value": "Geschäftsquartale"
+  },
+  "fiscal years": {
+    "value": "Geschäftsjahre"
+  },
+  "hours": {
+    "value": "Stunden"
+  },
+  "minutes": {
+    "value": "Minuten"
+  },
+  "months": {
+    "value": "Monate"
+  },
+  "quarters": {
+    "value": "Quartale"
+  },
+  "seconds": {
+    "value": "Sekunden"
+  },
+  "weeks": {
+    "value": "Wochen"
+  },
+  "years": {
+    "value": "Jahre"
   }
 }

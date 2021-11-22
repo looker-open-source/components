@@ -277,3 +277,36 @@ describe('localizes text input', () => {
     expect(screen.getByDisplayValue('02/01/2020')).toBeInTheDocument()
   })
 })
+
+describe('dateStringFormat', () => {
+  test('Placeholder', () => {
+    renderWithTheme(<InputDate dateStringFormat="yyyy-MM-dd" />)
+
+    const input = screen.getByTestId('text-input')
+    expect(input).toHaveAttribute('placeholder', 'Date (2020-02-01)')
+  })
+
+  test('Initial value', () => {
+    renderWithTheme(
+      <InputDate
+        dateStringFormat="yyyy-MM-dd"
+        defaultValue={new Date(Date.now())}
+      />
+    )
+    expect(screen.getByDisplayValue('2020-02-01')).toBeInTheDocument()
+  })
+
+  test('After changing', () => {
+    renderWithTheme(
+      <InputDate
+        dateStringFormat="yyyy-MM-dd"
+        defaultValue={new Date(Date.now())}
+      />
+    )
+    const date = screen.getByText('15') // the 15th day of the month
+    fireEvent.click(date)
+
+    const input = screen.getByTestId('text-input')
+    expect(input).toHaveValue('2020-02-15')
+  })
+})

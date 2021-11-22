@@ -27,6 +27,7 @@
 export * from './mockConfig'
 export * from './mockQueryResult'
 export * from './mockFields'
+export * from './mockSdk'
 export * from './mockSdkConfigResponse'
 export * from './mockSdkDataResponse'
 export * from './mockSdkFieldsResponse'

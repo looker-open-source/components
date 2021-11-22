@@ -1,0 +1,14 @@
+{
+  "contains": "obsahuje",
+  "doesnt contain": "neobsahuje",
+  "doesnt end with": "nemá na konci",
+  "doesnt start with": "nemá na začátku",
+  "ends with": "má na konci",
+  "is": "je",
+  "is blank": "je prázdné",
+  "is not": "není",
+  "is not blank": "není prázdné",
+  "is not null": "není prázdné",
+  "is null": "je prázdné",
+  "starts with": "má na začátku"
+}

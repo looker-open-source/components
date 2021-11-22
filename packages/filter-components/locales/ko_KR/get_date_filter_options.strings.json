@@ -1,0 +1,44 @@
+{
+  "is": {
+    "value": "이(가)"
+  },
+  "is any time": {
+    "value": "이(가) 모든 시간임"
+  },
+  "is before": {
+    "value": "이(가) 다음보다 앞에 옴"
+  },
+  "is in range": {
+    "value": "이(가) 다음 범위임"
+  },
+  "is in the last": {
+    "value": "이(가) 다음 지난 기간에 속함"
+  },
+  "is in the month": {
+    "value": "이(가) 다음 월임"
+  },
+  "is in the year": {
+    "value": "이(가) 다음 연도임"
+  },
+  "is next": {
+    "value": "이(가) 다음임"
+  },
+  "is not null": {
+    "value": "이(가) null이 아님"
+  },
+  "is null": {
+    "value": "이(가) null임"
+  },
+  "is on or after": {
+    "value": "이(가) 다음과 위치가 같거나 그 뒤에 옴"
+  },
+  "is on the day": {
+    "value": "이(가) 다음 날짜임"
+  },
+  "is previous": {
+    "value": "이(가) 이전임"
+  },
+  "is this": {
+    "value": "이(가) 이 항목임"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "is": {
+    "value": "şudur:"
+  },
+  "is any time": {
+    "value": "herhangi bir zaman"
+  },
+  "is before": {
+    "value": "şu tarihten önce:"
+  },
+  "is in range": {
+    "value": "şu aralıkta:"
+  },
+  "is in the last": {
+    "value": "geçmiş şu sürede:"
+  },
+  "is in the month": {
+    "value": "şu ayda:"
+  },
+  "is in the year": {
+    "value": "şu yılda:"
+  },
+  "is next": {
+    "value": "sonraki"
+  },
+  "is not null": {
+    "value": "değer içeriyor"
+  },
+  "is null": {
+    "value": "değer içermiyor"
+  },
+  "is on or after": {
+    "value": "şu tarihte veya şu tarihten sonra:"
+  },
+  "is on the day": {
+    "value": "şu günde:"
+  },
+  "is previous": {
+    "value": "önceki"
+  },
+  "is this": {
+    "value": "bu"
+  }
+}

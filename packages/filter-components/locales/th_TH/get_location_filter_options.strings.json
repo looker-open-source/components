@@ -1,0 +1,32 @@
+{
+  "Box": {
+    "value": "กล่อง"
+  },
+  "Circle": {
+    "value": "วงกลม"
+  },
+  "Location": {
+    "value": "ตำแหน่งที่ตั้ง"
+  },
+  "feet": {
+    "value": "ฟุต"
+  },
+  "is anywhere": {
+    "value": "ที่ใดก็ได้"
+  },
+  "is not null": {
+    "value": "ไม่เป็นค่าว่าง"
+  },
+  "is null": {
+    "value": "เป็นค่าว่าง"
+  },
+  "kilometers": {
+    "value": "กิโลเมตร"
+  },
+  "meters": {
+    "value": "เมตร"
+  },
+  "miles": {
+    "value": "ไมล์"
+  }
+}

@@ -1,54 +1,12 @@
 {
-  "fiscal years": {
-    "value": "lata fiskalne/lat fiskalnych"
-  },
-  "years": {
-    "value": "lat/lata"
-  },
-  "fiscal quarters": {
-    "value": "kw. fiskalne"
-  },
-  "quarters": {
-    "value": "kw."
-  },
-  "months": {
-    "value": "mies."
-  },
-  "weeks": {
-    "value": "tyg."
-  },
-  "days": {
-    "value": "dni"
-  },
-  "hours": {
-    "value": "godz."
-  },
-  "minutes": {
-    "value": "min"
-  },
-  "seconds": {
-    "value": "sek."
-  },
-  "complete fiscal years": {
-    "value": "pełne lata fiskalne/pełnych lat fiskalnych"
-  },
-  "complete years": {
-    "value": "pełne lata/pełnych lat"
+  "complete days": {
+    "value": "pełnych dni"
   },
   "complete fiscal quarters": {
     "value": "pełnych kw. fiskalnych"
   },
-  "complete quarters": {
-    "value": "pełnych kw."
-  },
-  "complete months": {
-    "value": "pełnych mies."
-  },
-  "complete weeks": {
-    "value": "pełnych tyg."
-  },
-  "complete days": {
-    "value": "pełnych dni"
+  "complete fiscal years": {
+    "value": "pełne lata fiskalne/pełnych lat fiskalnych"
   },
   "complete hours": {
     "value": "pełnych godz."
@@ -56,7 +14,49 @@
   "complete minutes": {
     "value": "pełnych min"
   },
+  "complete months": {
+    "value": "pełnych mies."
+  },
+  "complete quarters": {
+    "value": "pełnych kw."
+  },
   "complete seconds": {
     "value": "pełnych sek."
+  },
+  "complete weeks": {
+    "value": "pełnych tyg."
+  },
+  "complete years": {
+    "value": "pełne lata/pełnych lat"
+  },
+  "days": {
+    "value": "dni"
+  },
+  "fiscal quarters": {
+    "value": "kw. fiskalne"
+  },
+  "fiscal years": {
+    "value": "lata fiskalne/lat fiskalnych"
+  },
+  "hours": {
+    "value": "godz."
+  },
+  "minutes": {
+    "value": "min"
+  },
+  "months": {
+    "value": "mies."
+  },
+  "quarters": {
+    "value": "kw."
+  },
+  "seconds": {
+    "value": "sek."
+  },
+  "weeks": {
+    "value": "tyg."
+  },
+  "years": {
+    "value": "lat/lata"
   }
 }

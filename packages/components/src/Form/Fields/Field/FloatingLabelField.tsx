@@ -31,6 +31,7 @@ import styled, { ThemeContext } from 'styled-components'
 import { Space } from '../../../Layout'
 import type { ValidationMessageProps } from '../../ValidationMessage'
 import { DISABLED_OPACITY } from '../../constants'
+import { FieldsetContext } from '../../Fieldset'
 import { Field } from './Field'
 import { FieldDetail } from './FieldDetail'
 import { FieldLabel } from './FieldLabel'
@@ -85,7 +86,16 @@ export const FloatingLabelField = styled(
       defaults: { externalLabel },
     } = useContext(ThemeContext)
 
-    if (externalLabel || propsExternalLabel || !label || inline) {
+    const { fieldsHideLabel } = useContext(FieldsetContext)
+
+    if (
+      externalLabel ||
+      propsExternalLabel ||
+      !label ||
+      hideLabel ||
+      fieldsHideLabel ||
+      inline
+    ) {
       return <Field {...props} />
     }
 
@@ -131,6 +141,7 @@ export const FloatingLabelField = styled(
     font-size: ${({ theme }) => theme.fontSizes.xsmall};
     /* Align with the input contents, compensate for left border */
     left: calc(${({ theme }) => theme.space.u2} + 1px);
+    line-height: initial;
     padding: 0 ${({ theme }) => theme.space.u1};
     position: absolute;
     top: 0;

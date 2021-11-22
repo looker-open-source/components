@@ -2,10 +2,10 @@
   "Clear all": {
     "value": "全部清除"
   },
-  "Toggle": {
-    "value": "切換"
-  },
   "Remove": {
     "value": "移除"
+  },
+  "Toggle": {
+    "value": "切換"
   }
 }

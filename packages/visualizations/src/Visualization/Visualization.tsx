@@ -37,13 +37,13 @@ import {
   Scatter,
 } from '@looker/visualizations-visx'
 import { SingleValue } from '@looker/visualizations-single-value'
-
 import {
   buildChartConfig,
   Debug,
   QueryContext,
   ErrorBoundary,
   Unsupported,
+  formatTotals,
   tabularResponse,
 } from '@looker/visualizations-adapters'
 import type {
@@ -51,15 +51,17 @@ import type {
   VisWrapperProps,
   SupportedChartTypes,
   CommonCartesianProperties,
+  CAll,
 } from '@looker/visualizations-adapters'
 import has from 'lodash/has'
 
-interface VisualizationProps extends VisWrapperProps, ChartLayoutProps {
+export interface VisualizationProps extends VisWrapperProps, ChartLayoutProps {
   /*
    * debug renders the raw query data and query config rather than the chart
    * @default false
    */
   debug?: boolean
+  config?: Partial<CAll>
 }
 
 export const defaultChartComponent: Record<
@@ -83,15 +85,19 @@ const VisualizationComponent: FC<VisualizationProps> = ({
   debug,
   height,
   width,
+  config: configProp,
 }) => {
   const {
     ok,
     data = [],
     error,
     fields,
+    totals,
     config: rawConfig,
     loading,
   } = useContext(QueryContext)
+
+  const rawConfigWithOverrides = { ...rawConfig, ...configProp }
 
   if (loading) {
     return (
@@ -105,14 +111,14 @@ const VisualizationComponent: FC<VisualizationProps> = ({
     return (
       <Debug
         ok={ok}
-        config={rawConfig}
+        config={rawConfigWithOverrides}
         data={data}
         fields={fields}
         error={error}
       />
     )
-  } else if (rawConfig && fields) {
-    const config = buildChartConfig(rawConfig, fields)
+  } else if (rawConfigWithOverrides && fields) {
+    const config = buildChartConfig(rawConfigWithOverrides, fields)
 
     // immutably copy data to prevent mutations from bleeding into the rest of the system
     const dataCopy = tabularResponse(Array.from(data))
@@ -131,6 +137,7 @@ const VisualizationComponent: FC<VisualizationProps> = ({
         data={dataCopy}
         config={config}
         fields={fields}
+        totals={formatTotals(totals)}
         width={width}
         height={height}
       />
@@ -146,7 +153,7 @@ export const Visualization: FC<VisualizationProps> = props => {
   const theme = useContext(ThemeContext)
 
   if (!theme) {
-    // Recursively wrap QueryFormatter in ComponentsProvider to ensure that
+    // Recursively wrap Visualization in ComponentsProvider to ensure that
     // visualizations and adapters can be rendered outside of Looker Components context
     // without breaking.
     return (

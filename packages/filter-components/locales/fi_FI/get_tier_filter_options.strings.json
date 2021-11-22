@@ -1,0 +1,11 @@
+{
+  "is": {
+    "value": "on"
+  },
+  "is any value": {
+    "value": "on mikä tahansa arvo"
+  },
+  "is not": {
+    "value": "ei ole"
+  }
+}

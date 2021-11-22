@@ -69,7 +69,12 @@ const imageSnapshots = () => {
             backdrop || document.body
           ).getBoundingClientRect()
 
-          return { height, width, x, y }
+          return {
+            height: Math.min(window.innerHeight, height),
+            width,
+            x,
+            y,
+          }
         })
         if (beforeScreenshot) {
           await beforeScreenshot(page)

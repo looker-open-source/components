@@ -1,0 +1,44 @@
+{
+  "exclusive": {
+    "value": "(असमावेशी)"
+  },
+  "inclusive": {
+    "value": "[समावेशी]"
+  },
+  "is": {
+    "value": "है"
+  },
+  "is between": {
+    "value": "के बीच है"
+  },
+  "is greater": {
+    "value": "> है"
+  },
+  "is greater equal": {
+    "value": ">= है"
+  },
+  "is less": {
+    "value": "< है"
+  },
+  "is less equal": {
+    "value": "<= है"
+  },
+  "is not": {
+    "value": "नहीं है"
+  },
+  "is not between": {
+    "value": "के बीच नहीं है"
+  },
+  "is not null": {
+    "value": "नल नहीं है"
+  },
+  "is null": {
+    "value": "नल है"
+  },
+  "left exclusive": {
+    "value": "(बायां-असमावेशी]"
+  },
+  "right exclusive": {
+    "value": "[दायां-असमावेशी)"
+  }
+}

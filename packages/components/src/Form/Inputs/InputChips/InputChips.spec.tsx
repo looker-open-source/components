@@ -61,6 +61,19 @@ describe('InputChips', () => {
     expect(input).toHaveValue('')
   })
 
+  test('values are not added when a comma is escaped', () => {
+    const onChangeMock = jest.fn()
+    renderWithTheme(
+      <InputChips onChange={onChangeMock} values={[]} placeholder="type here" />
+    )
+    const input = screen.getByPlaceholderText('type here')
+
+    // if the last character entered is an escaped comma, values not are added
+    fireEvent.change(input, { target: { value: 'tag1\\,' } })
+    expect(onChangeMock).not.toHaveBeenCalled()
+    expect(input).toHaveValue('tag1\\,')
+  })
+
   test('values are added when pasting', () => {
     const onChangeMock = jest.fn()
     renderWithTheme(

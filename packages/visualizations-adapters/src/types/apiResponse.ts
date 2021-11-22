@@ -24,7 +24,13 @@
 
  */
 
-import type { LegendPositions, PointShapes, LegendTypes, LabelTypes } from './'
+import type {
+  LegendPositions,
+  PointShapes,
+  LegendTypes,
+  LabelTypes,
+  SupportedChartTypes,
+} from './'
 import type { CBar, CArea } from '../adapters'
 
 /**
@@ -32,6 +38,7 @@ import type { CBar, CArea } from '../adapters'
  * and transformed to our final public contract.
  */
 export type RawApiConfigResponse = {
+  custom_color: string
   defaults_version: number
   hide_legend: boolean
   hidden_fields: string[]
@@ -53,6 +60,8 @@ export type RawApiConfigResponse = {
   show_x_axis_label: boolean
   show_y_axis_labels: boolean
   show_y_axis_ticks: boolean
+  show_single_value_title: boolean
+  single_value_title: string
   size_by_field: string
   stacking:
     | Exclude<CBar['positioning'], undefined>
@@ -67,6 +76,7 @@ export type RawApiConfigResponse = {
     | 'looker_grid'
     | 'looker_pie'
     | 'looker_scatter'
+    | keyof SupportedChartTypes
   value_labels: LegendTypes
   x_axis_label?: string | null
   x_axis_scale: 'auto'

@@ -1,9 +1,9 @@
 {
-  "is any value": {
-    "value": "herhangi bir değer"
-  },
   "is": {
     "value": "şudur:"
+  },
+  "is any value": {
+    "value": "herhangi bir değer"
   },
   "is not": {
     "value": "şu değildir:"

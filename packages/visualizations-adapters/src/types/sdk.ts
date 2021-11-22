@@ -71,3 +71,5 @@ export type Fields = {
   dimensions: DimensionMetadata[]
   measures: FieldMetadata[]
 }
+
+export type Totals = Record<string, { value: number }>

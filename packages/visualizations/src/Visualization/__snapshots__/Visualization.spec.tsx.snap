@@ -375,11 +375,14 @@ Object {
 
 exports[`Derives default values from SDK response (Pie Chart) 1`] = `
 Object {
+  "custom_color": "#72D16D",
   "legend": Object {
     "position": "bottom",
     "type": "legend",
     "value": "label",
   },
+  "show_single_value_title": true,
+  "single_value_title": "test",
   "tooltips": true,
   "type": "pie",
 }
@@ -437,6 +440,16 @@ Object {
 
 exports[`Derives default values from SDK response (Single Value Chart) 1`] = `
 Object {
+  "series": Object {
+    "orders.average_total_amount_of_order_usd": Object {
+      "color": "#70BEFA",
+      "label": "Average Order Price",
+    },
+    "orders.count": Object {
+      "color": "#FA8072",
+      "label": "Total Orders",
+    },
+  },
   "type": "single_value",
 }
 `;
@@ -454,6 +467,8 @@ Object {
       "line_width": 3,
     },
   },
+  "show_single_value_title": true,
+  "single_value_title": "test",
   "type": "sparkline",
   "y_axis": Array [
     Object {
@@ -468,6 +483,7 @@ Object {
 
 exports[`Derives default values from SDK response (Table Chart) 1`] = `
 Object {
+  "custom_color": "#72D16D",
   "series": Object {
     "orders.average_total_amount_of_order_usd": Object {
       "cell_visualization": false,

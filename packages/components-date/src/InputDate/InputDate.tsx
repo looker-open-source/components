@@ -108,7 +108,7 @@ export const InputDate: FC<InputDateProps> = forwardRef(
     }
 
     const handleDayClick = (date: Date) => {
-      setTextInputValue(formatDateString(date, locale))
+      setTextInputValue(formatDateString(date, locale, dateStringFormat))
       handleDateChange(date)
     }
 
@@ -152,7 +152,8 @@ export const InputDate: FC<InputDateProps> = forwardRef(
       // controlled component: update state when value changes externally
       if (value && !isEqual(value, selectedDate)) {
         setSelectedDate(value)
-        value && setTextInputValue(formatDateString(value, locale))
+        value &&
+          setTextInputValue(formatDateString(value, locale, dateStringFormat))
         value &&
           viewMonth &&
           !isDateInView(value, viewMonth) &&
@@ -168,7 +169,8 @@ export const InputDate: FC<InputDateProps> = forwardRef(
           aria-labelledby={ariaLabelledby}
           placeholder={`${t('Date')} (${formatDateString(
             new Date(Date.now()),
-            locale
+            locale,
+            dateStringFormat
           )})`}
           value={textInputValue}
           onChange={handleTextInputChange}

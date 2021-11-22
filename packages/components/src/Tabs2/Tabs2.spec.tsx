@@ -27,19 +27,41 @@
 import 'jest-styled-components'
 import '@testing-library/jest-dom/extend-expect'
 import { renderWithTheme } from '@looker/components-test-utils'
-import React from 'react'
-import { composeStories } from '@storybook/testing-react'
-import { fireEvent, screen } from '@testing-library/react'
-import * as stories from './Tabs2.stories'
-import { Controlled, Disabled } from './Tabs2.stories'
+import React, { useState } from 'react'
+import { act, fireEvent, screen } from '@testing-library/react'
 import { Tab2, Tabs2 } from './'
 
-const { Basic, DefaultTab, Distributed } = composeStories(stories)
+beforeEach(() => {
+  jest.useFakeTimers()
+})
+afterEach(() => {
+  jest.runOnlyPendingTimers()
+  jest.useRealTimers()
+})
+const runTimers = () =>
+  act(() => {
+    jest.runOnlyPendingTimers()
+  })
+
+const Basic = (args: any) => (
+  <Tabs2 ripple={false} {...args}>
+    <Tab2 id="cats" label="Cats">
+      Here's awesome story about cats
+    </Tab2>
+    <Tab2 id="dogs" label="Dogs">
+      Cats are way better than dogs. Go to other tab
+    </Tab2>
+    <Tab2 label="Fish">Are kinda smelly</Tab2>
+    <Tab2 disabled label="Human">
+      Humans tab is disabled
+    </Tab2>
+  </Tabs2>
+)
 
 describe('Tabs2', () => {
   test('basic', () => {
     renderWithTheme(<Basic />)
-    expect(screen.getAllByRole('tab')).toHaveLength(3)
+    expect(screen.getAllByRole('tab')).toHaveLength(4)
     expect(
       screen.getByText("Here's awesome story about cats")
     ).toBeInTheDocument()
@@ -60,7 +82,7 @@ describe('Tabs2', () => {
   })
 
   test('defaultTabId', () => {
-    renderWithTheme(<DefaultTab />)
+    renderWithTheme(<Basic defaultTabId="dogs" />)
 
     expect(
       screen.getByText('Cats are way better than dogs. Go to other tab')
@@ -68,7 +90,7 @@ describe('Tabs2', () => {
   })
 
   test('disabled', () => {
-    renderWithTheme(<Disabled />)
+    renderWithTheme(<Basic />)
     expect(
       screen.queryByText("Here's awesome story about cats")
     ).toBeInTheDocument()
@@ -90,12 +112,30 @@ describe('Tabs2', () => {
   })
 
   test('Distributed', () => {
-    renderWithTheme(<Distributed />)
-
-    expect(screen.getByText('Cats').closest('div')).toHaveStyle(
+    renderWithTheme(<Basic distributed={true} />)
+    expect(screen.getByText('Cats').closest('div')).toHaveStyleRule(
       'grid-auto-columns: 1fr'
     )
   })
+
+  const Controlled = () => {
+    const [currentTabId, setTabId] = useState('cats')
+    return (
+      <>
+        <p>The current selected tab is: {currentTabId}</p>
+        <button onClick={() => setTabId('cats')}>Switch to Cats</button>
+        <button onClick={() => setTabId('dogs')}>Switch to Dogs</button>
+        <Tabs2 tabId={currentTabId} onTabChange={setTabId}>
+          <Tab2 id="cats" label="Cats">
+            Here's awesome story about cats
+          </Tab2>
+          <Tab2 id="dogs" label="Dogs">
+            Cats are way better than dogs. Go to other tab
+          </Tab2>
+        </Tabs2>
+      </>
+    )
+  }
 
   test('controlled', () => {
     renderWithTheme(<Controlled />)
@@ -138,5 +178,37 @@ describe('Tabs2', () => {
         </Tab2>
       </Tabs2>
     )
+  })
+  describe('ripple effect', () => {
+    test('default', () => {
+      renderWithTheme(<Basic />)
+
+      const tabs = screen.getByText('Cats').closest('button')
+      expect(tabs).not.toHaveClass('bg-on fg-in')
+      expect(tabs).toHaveStyle({
+        '--ripple-color': '#6C43E0',
+        '--ripple-scale-end': '1',
+        // This should change to 0.1 when brandAnimation default becomes true
+        '--ripple-scale-start': '1',
+        '--ripple-size': '100%',
+        '--ripple-translate': '0, 0',
+      })
+
+      tabs && fireEvent.focus(tabs)
+      expect(tabs).toHaveClass('bg-on')
+
+      tabs && fireEvent.mouseDown(tabs)
+      expect(tabs).toHaveClass('bg-on fg-in')
+
+      // foreground is locked for a minimum time to animate the ripple
+      tabs && fireEvent.mouseUp(tabs)
+      runTimers()
+      expect(tabs).toHaveClass('bg-on fg-out')
+      runTimers()
+      expect(tabs).toHaveClass('bg-on')
+
+      tabs && fireEvent.blur(tabs)
+      expect(tabs).not.toHaveClass('bg-on fg-in')
+    })
   })
 })

@@ -221,10 +221,13 @@ export const InputChips = styled(
         value: string,
         event?: FormEvent<HTMLInputElement>
       ) => {
-        // If the last character is a comma, update the values
+        // If the last character is an unescaped comma, update the values
         // Or, if the user pastes content, we assume that the final value is complete
         // even if there's no comma at the end
-        if (pastedValue.current || value.endsWith(',')) {
+        if (
+          pastedValue.current ||
+          (value.endsWith(',') && !value.endsWith('\\,'))
+        ) {
           // Use the pasted value if there is one
           // (before newlines are stripped by the browser)
           updateValues(pastedValue.current || value)

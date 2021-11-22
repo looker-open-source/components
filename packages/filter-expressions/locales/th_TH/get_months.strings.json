@@ -1,0 +1,38 @@
+{
+  "April": {
+    "value": "เมษายน"
+  },
+  "August": {
+    "value": "สิงหาคม"
+  },
+  "December": {
+    "value": "ธันวาคม"
+  },
+  "February": {
+    "value": "กุมภาพันธ์"
+  },
+  "January": {
+    "value": "มกราคม"
+  },
+  "July": {
+    "value": "กรกฎาคม"
+  },
+  "June": {
+    "value": "มิถุนายน"
+  },
+  "March": {
+    "value": "มีนาคม"
+  },
+  "May": {
+    "value": "พ.ค."
+  },
+  "November": {
+    "value": "พฤศจิกายน"
+  },
+  "October": {
+    "value": "ตุลาคม"
+  },
+  "September": {
+    "value": "กันยายน"
+  }
+}

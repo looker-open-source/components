@@ -1,0 +1,44 @@
+{
+  "is": {
+    "value": "je"
+  },
+  "is any time": {
+    "value": "je kdykoliv"
+  },
+  "is before": {
+    "value": "je před"
+  },
+  "is in range": {
+    "value": "je v rozsahu"
+  },
+  "is in the last": {
+    "value": "je v minulém intervalu"
+  },
+  "is in the month": {
+    "value": "je v měsíci"
+  },
+  "is in the year": {
+    "value": "je v roce"
+  },
+  "is next": {
+    "value": "je další"
+  },
+  "is not null": {
+    "value": "není prázdné"
+  },
+  "is null": {
+    "value": "je prázdné"
+  },
+  "is on or after": {
+    "value": "je přesně nebo po"
+  },
+  "is on the day": {
+    "value": "je přesně v daný den"
+  },
+  "is previous": {
+    "value": "je předchozí"
+  },
+  "is this": {
+    "value": "je tento"
+  }
+}
