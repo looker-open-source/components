@@ -3,6 +3,52 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 2.8.11
+
+## `@looker/components` 2.8.11
+
+### Features
+
+- **Tabs/Tabs2:** Add ripple effect, use Google Material styling
+
+### Bug Fixes
+
+- **InputChips:** Don't tokenize input when last character is an escaped comma
+- **Button:** Icon shrinking in flex layouts
+- **InputDate:** dateStringFormat inconsistencies
+- **FloatingLabelField:** Change label color in input blur in dialog
+- **Field:** Don't render label when empty
+- **FieldLabel:** Don't inherit line height
+
+## `@looker/filter-components` 0.10.11
+
+### Features
+
+- New locales and translations added
+
+### Bug Fixes
+
+- String parameter filter breaks the query
+- **DateFilter/Relative:** Field mis-alignment
+
+## `@looker/visualizations` 0.2.4
+
+### Features
+
+- **Visualization:** Accept config overrides
+
+## `@looker/visualizations-adapters` 0.1.5
+
+### Bug Fixes
+
+- seriesLabels default object bug
+
+## `@looker/visualizations-table` 0.2.4
+
+### Features
+
+- **Table:** Add totals functionality
+
 # 2.8.10
 
 ## `@looker/components` 2.8.10
