@@ -1,14 +1,14 @@
 {
   "name": "@looker/visualizations-visx",
   "main": "src/index.ts",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "publishConfig": {
     "access": "public"
   },
   "license": "MIT",
   "sideEffects": false,
   "dependencies": {
-    "@looker/visualizations-adapters": "^0.1.4",
+    "@looker/visualizations-adapters": "^0.1.5",
     "@visx/axis": "2.1.1",
     "@visx/glyph": "2.1.0",
     "@visx/legend": "2.1.0",
@@ -23,9 +23,9 @@
     "react-spring": "9.2.4"
   },
   "devDependencies": {
-    "@looker/components-test-utils": "^1.5.14",
-    "@looker/eslint-config-oss": "^1.7.10",
-    "@looker/stylelint-config": "^1.5.8",
+    "@looker/components-test-utils": "^1.5.15",
+    "@looker/eslint-config-oss": "^1.7.11",
+    "@looker/stylelint-config": "^1.5.9",
     "@testing-library/react": "*"
   },
   "peerDependencies": {

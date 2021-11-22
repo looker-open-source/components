@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.7.11](https://github.com/looker-open-source/components/compare/@looker/design-tokens@2.7.10...@looker/design-tokens@2.7.11) (2021-11-22)
+
+**Note:** Version bump only for package @looker/design-tokens
+
+
+
+
+
 ## [2.7.10](https://github.com/looker-open-source/components/compare/@looker/design-tokens@2.7.9...@looker/design-tokens@2.7.10) (2021-11-10)
 
 **Note:** Version bump only for package @looker/design-tokens
