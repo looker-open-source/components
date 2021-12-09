@@ -59,7 +59,3 @@ global.console.error = function (...args) {
 }
 
 setGlobalConfig(globalStorybookConfig)
-
-beforeAll(() => {
-  jest.resetAllMocks()
-})
