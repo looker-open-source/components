@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@looker/components": "^2.8.11",
-    "@looker/components-date": "^2.4.11",
+    "@looker/components-date": "^3.0.0",
     "@looker/filter-expressions": "^0.8.10",
     "@looker/icons": "^1.5.11",
     "@looker/sdk": "^21.8.0",

@@ -3,6 +3,57 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 2.8.12
+
+## `@looker/components` 2.8.12
+
+### Bug Fixes
+
+- **FieldCheckbox/FieldRadio/FieldToggleSwitch:** Support use of tooltip inside field `detail`
+- **Tab:** Prevent double indicator with nested spans
+
+## `@looker/components-date` 3.0.1
+
+### Features
+
+- Improved bundle size with removal of deprecated localization props
+- **InputDate/FieldDate:** new `selectMonth` prop renders dropdowns for the calendar year and month
+
+### BREAKING CHANGES
+
+- Removed deprecated enum `Locales`
+- Removed deprecated prop `dateStringLocale` – use `locale` prop with `date-fns` locale instead, and optionally override with `dateStringFormat`
+- Removed deprecated prop `localization` - use `locale` prop with `date-fns` locale instead
+
+## `@looker/filter-components` 0.10.12
+
+### Features
+
+- **i18nInit:** Support for importing and passing in a single locale for bundle-size savings
+
+### Bug Fixes
+
+- **AdvancedFilter:** Multi-item row alignment
+- **DateFilter:** Remove unsupported time units for this / next / last
+
+## `@looker/visualizations` 0.2.5
+
+### Features
+
+- **Visualization:** Support for pivot queries
+
+## `@looker/visualizations-adapters` 0.1.6
+
+### Features
+
+- Query response flows through config transformations
+
+## `@looker/visualizations-single-value` 0.1.5
+
+### Features
+
+- **SingleValue:** Default value format support
+
 # 2.8.11
 
 ## `@looker/components` 2.8.11
