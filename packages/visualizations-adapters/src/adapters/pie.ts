@@ -26,6 +26,8 @@
 
 import type { VisWrapperProps } from '../VisWrapper'
 import type {
+  ChartLayoutProps,
+  CSeriesBasic,
   LegendTypes,
   LegendValues,
   SDKRecord,
@@ -34,11 +36,14 @@ import type {
   Fields,
 } from '../types'
 
-export type PieProps = VisWrapperProps & {
-  data: SDKRecord
-  config: CPie
-  fields: Fields
-}
+export type CPieSeries = Pick<CSeriesBasic, 'color'>
+
+export type PieProps = VisWrapperProps &
+  ChartLayoutProps & {
+    data: SDKRecord
+    config: CPie
+    fields: Fields
+  }
 
 export type CPieLegend = {
   position?: LegendPositions
@@ -50,4 +55,5 @@ export type CPie = {
   type: SupportedChartTypes['pie']
   legend?: false | CPieLegend
   tooltips?: boolean
+  series: CPieSeries[] | { [key: string]: CPieSeries }
 }

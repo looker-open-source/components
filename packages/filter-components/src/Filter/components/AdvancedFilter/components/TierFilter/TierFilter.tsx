@@ -23,7 +23,7 @@
  SOFTWARE.
 
  */
-import { Box, Flex } from '@looker/components'
+
 import {
   convertOptionToType,
   convertTypeToOption,
@@ -32,14 +32,13 @@ import type { ElementType, FC } from 'react'
 import React from 'react'
 import type { FilterParamProps } from '../../../../types/filter_param_props'
 import { GroupSelect } from '../GroupSelect'
-import { OperatorLabel } from '../OperatorLabel'
 import { tierFilterTypeToFilter } from './utils/tier_filter_type_to_filter'
 import {
   useParamFilterOptions,
   useTierFilterOptions,
   useFilterOptions,
 } from '../../utils'
-import { AddRemoveButtons } from '../AddRemoveButtons'
+import { ItemLayout } from '../ItemLayout'
 import { createEnumeration } from '../../../../utils'
 
 export const TierFilter: FC<FilterParamProps> = ({
@@ -49,18 +48,12 @@ export const TierFilter: FC<FilterParamProps> = ({
   field,
   userAttributes,
   onChange,
-  onAdd,
-  onRemove,
-  showAdd,
-  showRemove,
-  showOperator,
   showMatchesAdvanced,
   validationMessage,
+  ...rest
 }) => {
   const typeChange = (value: string) =>
     onChange(item.id, convertOptionToType(String(value)))
-  const handleOnAdd = () => onAdd(item)
-  const handleOnRemove = () => onRemove(item.id)
   const selectValue = convertTypeToOption(item)
 
   const isParamFilter = field ? field.category === 'parameter' : false
@@ -94,17 +87,14 @@ export const TierFilter: FC<FilterParamProps> = ({
   )
 
   return (
-    <Flex flexDirection="row" alignItems="center">
-      {showOperator && <OperatorLabel value={item.is} />}
-      <Box alignSelf="flex-start">
-        <GroupSelect
-          value={selectValue}
-          options={options}
-          onChange={typeChange}
-          validationMessage={validationMessage}
-          placement={item.type === 'anyvalue' ? undefined : 'left'}
-        />
-      </Box>
+    <ItemLayout item={item} {...rest}>
+      <GroupSelect
+        value={selectValue}
+        options={options}
+        onChange={typeChange}
+        validationMessage={validationMessage}
+        placement={item.type === 'anyvalue' ? undefined : 'left'}
+      />
       <FilterComponent
         item={item}
         onChange={onChange}
@@ -116,12 +106,6 @@ export const TierFilter: FC<FilterParamProps> = ({
         filterType={filterType}
         placement="right"
       />
-      <AddRemoveButtons
-        onRemove={handleOnRemove}
-        onAdd={handleOnAdd}
-        showAdd={showAdd}
-        showRemove={showRemove}
-      />
-    </Flex>
+    </ItemLayout>
   )
 }

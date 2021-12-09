@@ -24,7 +24,7 @@
 
  */
 
-import { mockLineConfig, mockFields } from '../__mocks__'
+import { mockLineConfig, mockFields, mockSdkDataResponse } from '../__mocks__'
 import { tooltips } from './tooltips'
 
 describe('tooltips', () => {
@@ -32,6 +32,7 @@ describe('tooltips', () => {
     const config = { ...mockLineConfig }
     const { config: transformedConfig } = tooltips({
       config,
+      data: mockSdkDataResponse,
       fields: mockFields,
     })
     expect(transformedConfig.tooltips).toEqual(true)
@@ -41,6 +42,7 @@ describe('tooltips', () => {
     const config = { ...mockLineConfig, tooltips: true }
     const { config: transformedConfig } = tooltips({
       config,
+      data: mockSdkDataResponse,
       fields: mockFields,
     })
     expect(transformedConfig.tooltips).toEqual(true)
@@ -50,6 +52,7 @@ describe('tooltips', () => {
     const config = { ...mockLineConfig, tooltips: false }
     const { config: transformedConfig } = tooltips({
       config,
+      data: mockSdkDataResponse,
       fields: mockFields,
     })
     expect(transformedConfig.tooltips).toEqual(false)

@@ -25,7 +25,7 @@
  */
 
 import { seriesColors } from './seriesColors'
-import { mockLineConfig, mockFields } from '../__mocks__'
+import { mockLineConfig, mockFields, mockSdkDataResponse } from '../__mocks__'
 import type { CSeriesBasic } from '../types'
 
 describe('seriesColors', () => {
@@ -39,6 +39,7 @@ describe('seriesColors', () => {
 
     const transformedConfig = seriesColors({
       config: { ...mockLineConfig, series, series_colors },
+      data: mockSdkDataResponse,
       fields: mockFields,
     })
 
@@ -56,6 +57,7 @@ describe('seriesColors', () => {
 
     const transformedConfig = seriesColors({
       config: { ...mockLineConfig, series, series_colors },
+      data: mockSdkDataResponse,
       fields: mockFields,
     })
 

@@ -41,12 +41,14 @@ const Template: Story<InputDateProps> = args => <InputDate {...args} />
 
 export const Value = Template.bind({})
 Value.args = {
+  onChange: () => undefined,
   value: new Date('February 3, 2009'),
 }
 
 export const DisabledWithValue = Template.bind({})
 DisabledWithValue.args = {
   disabled: true,
+  onChange: () => undefined,
   value: new Date('February 3, 2009'),
 }
 
@@ -58,9 +60,11 @@ DateStringFormat.args = {
 
 export const ReadOnlyWithValue = Template.bind({})
 ReadOnlyWithValue.args = {
+  onChange: () => undefined,
   readOnly: true,
   value: new Date('March 3, 2009'),
 }
+
 export const Controlled = () => {
   const [selectedDate, setSelectedDate] = useState<undefined | Date>(new Date())
   const handleChange = (date?: Date) => {
@@ -81,4 +85,18 @@ export const Controlled = () => {
 
 Controlled.parameters = {
   storyshots: { disable: true },
+}
+
+export const SelectMonthYear = () => {
+  const [value, setValue] = useState<Date | undefined>(
+    new Date('February 3, 2009')
+  )
+
+  return (
+    <InputDate
+      selectMonth
+      value={value}
+      onChange={(date?: Date) => setValue(date)}
+    />
+  )
 }

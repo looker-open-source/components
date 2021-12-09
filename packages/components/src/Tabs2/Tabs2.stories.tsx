@@ -68,6 +68,21 @@ Basic.args = {
 export const Distributed = Template.bind({})
 Distributed.args = { ...Basic, distributed: true }
 
+export const DistributedScrolling = () => {
+  const tabs = new Array(20).fill('Tab2')
+  return (
+    <Box2 height="8rem">
+      <Tabs2 distributed>
+        {tabs.map((value, index) => (
+          <Tab2 label={`Hello World ${index}`} key={index}>
+            This is {value} {index}
+          </Tab2>
+        ))}
+      </Tabs2>
+    </Box2>
+  )
+}
+
 export const DefaultTab = Template.bind({})
 DefaultTab.args = { ...Basic, defaultTabId: 'dogs' }
 

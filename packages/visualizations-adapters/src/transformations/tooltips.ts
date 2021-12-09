@@ -31,6 +31,7 @@ import type { ConfigHelper, CommonCartesianProperties } from '../types'
  */
 export const tooltips: ConfigHelper<CommonCartesianProperties> = ({
   config,
+  data,
   fields,
 }) => {
   const isTooltipsSet = typeof config.tooltips !== 'undefined'
@@ -40,6 +41,7 @@ export const tooltips: ConfigHelper<CommonCartesianProperties> = ({
       ...config,
       tooltips: isTooltipsSet ? config.tooltips : true,
     },
+    data,
     fields,
   }
 }

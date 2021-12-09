@@ -71,7 +71,11 @@ export const keysToRemove = [
  * It removes top-level api responses that we use to derive settings, but are
  * not publicy supported.
  */
-export const sanitizeSDKResponse: ConfigHelper<CAll> = ({ config, fields }) => {
+export const sanitizeSDKResponse: ConfigHelper<CAll> = ({
+  config,
+  data,
+  fields,
+}) => {
   type KeysOfUnion<T> = T extends T ? keyof T : never
   type ValidConfigKeys = KeysOfUnion<CAll>
 
@@ -85,6 +89,7 @@ export const sanitizeSDKResponse: ConfigHelper<CAll> = ({ config, fields }) => {
 
   return {
     config: omit(config, [...keysToRemove]),
+    data,
     fields,
   }
 }

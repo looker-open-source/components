@@ -32,6 +32,7 @@ import type { ConfigHelper, RawApiConfigResponse } from '../types'
  */
 export const linePositioning: ConfigHelper<CArea | CLine> = ({
   config,
+  data,
   fields,
 }) => {
   type AllKeys = RawApiConfigResponse['stacking'] | 'default'
@@ -55,6 +56,7 @@ export const linePositioning: ConfigHelper<CArea | CLine> = ({
       positioning:
         GROUP_MODES[currentPositioning as AllKeys] || GROUP_MODES.default,
     },
+    data,
     fields,
   }
 }

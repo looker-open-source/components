@@ -59,7 +59,8 @@ export const Suggestions = Template.bind({})
 Suggestions.args = {
   ...Basic.args,
   filter: {
-    field: { suggestable: true },
+    // Suggestions cause async updates that break jest snapshots
+    field: { suggestable: typeof jest === 'undefined' },
     name: 'Status',
     type: 'field_filter',
     ui_config: { type: 'button_group' },

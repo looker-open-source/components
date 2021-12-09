@@ -25,7 +25,7 @@
  */
 
 import { seriesPointShape } from './seriesPointShape'
-import { mockLineConfig, mockFields } from '../__mocks__'
+import { mockLineConfig, mockFields, mockSdkDataResponse } from '../__mocks__'
 import type { CLineSeries } from '../adapters'
 
 describe('seriesPointShape', () => {
@@ -37,6 +37,7 @@ describe('seriesPointShape', () => {
 
     const transformedConfig = seriesPointShape({
       config: { ...mockLineConfig, series },
+      data: mockSdkDataResponse,
       fields: mockFields,
     })
 
@@ -54,6 +55,7 @@ describe('seriesPointShape', () => {
 
     const transformedConfig = seriesPointShape({
       config: { ...mockLineConfig, series },
+      data: mockSdkDataResponse,
       fields: mockFields,
     })
 

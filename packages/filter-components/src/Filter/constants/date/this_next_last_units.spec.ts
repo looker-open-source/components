@@ -25,10 +25,10 @@
  */
 import type { Option } from '../../types/option'
 import {
-  fiscalNextLastUnits,
-  fiscalThisUnits,
-  nextLastUnits,
-  thisUnits,
+  fiscalThisNextUnits,
+  fiscalLastUnits,
+  thisNextUnits,
+  lastUnits,
 } from './this_next_last_units'
 
 const testSingular = (option: Option) =>
@@ -36,10 +36,10 @@ const testSingular = (option: Option) =>
 
 describe('date unit options for ThisNextLast component', () => {
   const optionsToTest: { [key: string]: Option[] } = {
-    thisUnits,
-    nextLastUnits,
-    fiscalNextLastUnits,
-    fiscalThisUnits,
+    lastUnits,
+    thisNextUnits,
+    fiscalThisNextUnits,
+    fiscalLastUnits,
   }
 
   Object.keys(optionsToTest).forEach((key: string) => {
@@ -50,9 +50,9 @@ describe('date unit options for ThisNextLast component', () => {
     })
   })
 
-  it('next and last component options should not contain day, hour, minute, second', () => {
+  it('this and next component options should not contain day, hour, minute, second', () => {
     const notContains = ['day', 'hour', 'minute', 'second']
-    expect(nextLastUnits).not.toContain(notContains)
-    expect(fiscalNextLastUnits).not.toContain(notContains)
+    expect(thisNextUnits).not.toContain(notContains)
+    expect(fiscalThisNextUnits).not.toContain(notContains)
   })
 })

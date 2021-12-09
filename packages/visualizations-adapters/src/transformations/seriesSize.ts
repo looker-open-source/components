@@ -59,7 +59,11 @@ function removeInvalidSizeBy(
  * Populate series size_by attribute from the size_by_field response
  * Works with both named series and array series options.
  */
-export const seriesSize: ConfigHelper<CScatter> = ({ config, fields }) => {
+export const seriesSize: ConfigHelper<CScatter> = ({
+  config,
+  data,
+  fields,
+}) => {
   const { size_by_field, series = {}, ...restConfig } = config
 
   const measures = getMeasureNames(fields)
@@ -103,6 +107,7 @@ export const seriesSize: ConfigHelper<CScatter> = ({ config, fields }) => {
         : buildNamedSeries(series),
       ...restConfig,
     },
+    data,
     fields,
   }
 }

@@ -25,7 +25,7 @@
  */
 
 import { seriesLineWidth } from './seriesLineWidth'
-import { mockLineConfig, mockFields } from '../__mocks__'
+import { mockLineConfig, mockFields, mockSdkDataResponse } from '../__mocks__'
 import type { CLineSeries } from '../adapters'
 
 describe('seriesLineWidth', () => {
@@ -37,6 +37,7 @@ describe('seriesLineWidth', () => {
 
     const transformedConfig = seriesLineWidth({
       config: { ...mockLineConfig, series },
+      data: mockSdkDataResponse,
       fields: mockFields,
     })
 
@@ -58,6 +59,7 @@ describe('seriesLineWidth', () => {
 
     const transformedConfig = seriesLineWidth({
       config: { ...mockLineConfig, series },
+      data: mockSdkDataResponse,
       fields: mockFields,
     })
 

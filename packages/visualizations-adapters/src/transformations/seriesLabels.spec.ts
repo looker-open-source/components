@@ -25,7 +25,7 @@
  */
 
 import { seriesLabels } from './seriesLabels'
-import { mockBarConfig, mockFields } from '../__mocks__'
+import { mockBarConfig, mockFields, mockSdkDataResponse } from '../__mocks__'
 import type { CSeriesBasic } from '../types'
 
 describe('seriesLabels', () => {
@@ -37,6 +37,7 @@ describe('seriesLabels', () => {
 
     const transformedConfig = seriesLabels({
       config: { ...mockBarConfig, series },
+      data: mockSdkDataResponse,
       fields: mockFields,
     })
 
@@ -59,6 +60,7 @@ describe('seriesLabels', () => {
 
     const transformedConfig = seriesLabels({
       config: { ...mockBarConfig, series, series_labels },
+      data: mockSdkDataResponse,
       fields: mockFields,
     })
 

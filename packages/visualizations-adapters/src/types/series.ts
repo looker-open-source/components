@@ -39,6 +39,10 @@ export type CSeriesBasic = {
    * Hide this series from the chart
    */
   visible?: boolean
+  /**
+   * Default value format
+   */
+  value_format?: string
 }
 
 export type CSeriesPoints = {

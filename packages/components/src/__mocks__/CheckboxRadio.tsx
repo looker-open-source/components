@@ -44,37 +44,37 @@ export const options = [
   },
   {
     label: 'Cheddar',
-    value: 'cheddar',
+    value: 'cheddar-2',
   },
   {
     label: 'Gouda',
-    value: 'gouda',
+    value: 'gouda 2',
   },
   {
     disabled: true,
     label: 'Swiss',
-    value: 'swiss',
+    value: 'swiss-2',
   },
   {
     label: 'Roquefort',
-    value: 'roquefort',
+    value: 'roquefort-2',
   },
   {
     label: 'Cheddar',
-    value: 'cheddar',
+    value: 'cheddar-3',
   },
   {
     label: 'Gouda',
-    value: 'gouda',
+    value: 'gouda-3',
   },
   {
     disabled: true,
     label: 'Swiss',
-    value: 'swiss',
+    value: 'swiss-3',
   },
   {
     label: 'Roquefort',
-    value: 'roquefort',
+    value: 'roquefort-3',
   },
 ]
 

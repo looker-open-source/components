@@ -35,6 +35,7 @@ import type {
  */
 export const legendPosition: ConfigHelper<CommonCartesianProperties> = ({
   config,
+  data,
   fields,
 }) => {
   type DefaultApiResponse = 'left' | 'center' | 'right'
@@ -67,6 +68,7 @@ export const legendPosition: ConfigHelper<CommonCartesianProperties> = ({
               position: positionValue,
             },
     },
+    data,
     fields,
   }
 }

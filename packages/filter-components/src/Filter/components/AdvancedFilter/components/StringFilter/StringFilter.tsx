@@ -23,7 +23,6 @@
  SOFTWARE.
 
  */
-import { Box, Flex } from '@looker/components'
 import type { StringFilterType } from '@looker/filter-expressions'
 import {
   convertOptionToType,
@@ -34,10 +33,9 @@ import type { ElementType, FC } from 'react'
 import React from 'react'
 import type { FilterParamProps } from '../../../../types/filter_param_props'
 import { GroupSelect } from '../GroupSelect'
-import { OperatorLabel } from '../OperatorLabel'
 import { stringFilterTypeToFilter } from './utils/string_filter_type_to_filter'
 import { useStringFilterOptions, useFilterOptions } from '../../utils'
-import { AddRemoveButtons } from '../AddRemoveButtons'
+import { ItemLayout } from '../ItemLayout'
 
 const typesUsingSuggestions: StringFilterType[] = [
   'match',
@@ -53,14 +51,10 @@ export const StringFilter: FC<FilterParamProps<StringFilterType>> = ({
   suggestions,
   userAttributes,
   isLoading,
-  onAdd,
   onChange,
-  onRemove,
-  showAdd,
-  showRemove,
-  showOperator,
   showMatchesAdvanced,
   validationMessage,
+  ...rest
 }) => {
   const stringFilterOptions = useStringFilterOptions()
   const options = useFilterOptions(stringFilterOptions, showMatchesAdvanced)
@@ -72,24 +66,19 @@ export const StringFilter: FC<FilterParamProps<StringFilterType>> = ({
         userAttributes
       )
     )
-  const handleOnAdd = () => onAdd(item)
-  const handleOnRemove = () => onRemove(item.id)
 
   const FilterComponent: ElementType = stringFilterTypeToFilter(item.type)
 
   const selectValue = convertTypeToOption(item)
   return (
-    <Flex flexDirection="row" alignItems="center">
-      {showOperator && <OperatorLabel value={item.is} />}
-      <Box alignSelf="flex-start">
-        <GroupSelect
-          value={selectValue}
-          options={options}
-          onChange={typeChange}
-          validationMessage={validationMessage}
-          placement={['blank', 'null'].includes(item.type) ? undefined : 'left'}
-        />
-      </Box>
+    <ItemLayout item={item} {...rest}>
+      <GroupSelect
+        value={selectValue}
+        options={options}
+        onChange={typeChange}
+        validationMessage={validationMessage}
+        placement={['blank', 'null'].includes(item.type) ? undefined : 'left'}
+      />
       <FilterComponent
         item={item}
         onInputChange={onInputChange}
@@ -103,12 +92,6 @@ export const StringFilter: FC<FilterParamProps<StringFilterType>> = ({
         filterType={filterType}
         isLoading={isLoading}
       />
-      <AddRemoveButtons
-        onRemove={handleOnRemove}
-        onAdd={handleOnAdd}
-        showAdd={showAdd}
-        showRemove={showRemove}
-      />
-    </Flex>
+    </ItemLayout>
   )
 }

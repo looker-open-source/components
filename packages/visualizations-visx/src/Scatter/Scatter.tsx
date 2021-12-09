@@ -41,7 +41,7 @@ import {
   getSeriesMax,
   getSeriesMin,
 } from '@looker/visualizations-adapters'
-import { Legend } from '../Legend'
+import { XYLegend } from '../XYLegend'
 import isArray from 'lodash/isArray'
 import get from 'lodash/get'
 import {
@@ -56,7 +56,7 @@ import {
   getDefaultGlyphSize,
 } from '../utils'
 
-import { Tooltip } from '../Tooltip'
+import { XYTooltip } from '../XYTooltip'
 import { Glyph } from '../Glyph'
 import { Grid } from '../Grid'
 
@@ -164,10 +164,10 @@ export const Scatter: FC<ScatterProps> = ({
           <XAxis />
           <YAxis />
           <Grid config={config} />
-          <Tooltip config={config} data={formattedData} fields={fields} />
+          <XYTooltip config={config} data={formattedData} fields={fields} />
           {plots}
         </XYChart>
-        <Legend config={config} fields={fields} />
+        <XYLegend config={config} fields={fields} />
       </VisWrapper>
     </DataProvider>
   )

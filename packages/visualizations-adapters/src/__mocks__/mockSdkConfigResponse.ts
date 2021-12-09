@@ -97,4 +97,6 @@ export const mockSdkConfigResponse: RawApiConfigResponse = {
   show_single_value_title: true,
   single_value_title: 'test',
   custom_color: '#72D16D',
+  value_format: '0',
+  label_value_format: '0',
 }

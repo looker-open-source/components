@@ -31,7 +31,11 @@ import type { ConfigHelper, CAll, RawApiConfigResponse } from '../types'
  * This function should be ran BEFORE all other config helpers.
  * It normalizes the chart type names (i.e. 'line' instead of 'looker_line')
  */
-export const normalizeChartTypes: ConfigHelper<CAll> = ({ config, fields }) => {
+export const normalizeChartTypes: ConfigHelper<CAll> = ({
+  config,
+  data,
+  fields,
+}) => {
   const { type = 'default' } = config
 
   const chartTypeMap: Record<
@@ -62,6 +66,7 @@ export const normalizeChartTypes: ConfigHelper<CAll> = ({ config, fields }) => {
 
   return {
     config: { ...config, type: normalizedType },
+    data,
     fields,
   }
 }

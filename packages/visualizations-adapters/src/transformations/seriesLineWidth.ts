@@ -35,6 +35,7 @@ import { getMeasureNames } from '../utils'
  */
 export const seriesLineWidth: ConfigHelper<CLine | CArea> = ({
   config,
+  data,
   fields,
 }) => {
   const { series = {}, ...restConfig } = config
@@ -65,6 +66,7 @@ export const seriesLineWidth: ConfigHelper<CLine | CArea> = ({
         : buildNamedSeries(series),
       ...restConfig,
     },
+    data,
     fields,
   }
 }

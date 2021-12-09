@@ -28,15 +28,14 @@ import type { FC, ReactElement } from 'react'
 import React, { useContext } from 'react'
 import { Space, ProgressCircular, ComponentsProvider } from '@looker/components'
 import { ThemeContext } from 'styled-components'
-import type { CAll } from '@looker/visualizations-adapters'
 import {
+  buildPivotFields,
+  tabularPivotResponse,
   formatTotals,
   tabularResponse,
   QueryContext,
-  commonCartesianDefaults,
-  normalizeChartTypes,
+  buildChartConfig,
 } from '@looker/visualizations-adapters'
-import flow from 'lodash/flow'
 
 export interface QueryFormatterProps {
   children: ReactElement
@@ -45,9 +44,15 @@ export interface QueryFormatterProps {
 export const QueryFormatter: FC<QueryFormatterProps> = props => {
   const { children } = props
 
-  const { ok, data = [], fields, config, loading, totals } = useContext(
-    QueryContext
-  )
+  const {
+    ok,
+    data = [],
+    fields,
+    config: rawConfigWithOverrides,
+    loading,
+    pivots,
+    totals,
+  } = useContext(QueryContext)
 
   const theme = useContext(ThemeContext)
 
@@ -70,20 +75,23 @@ export const QueryFormatter: FC<QueryFormatterProps> = props => {
     )
   }
 
-  if (data && config && fields) {
-    const configWithDefaults = flow([
-      normalizeChartTypes,
-      ...commonCartesianDefaults,
-      ({ config }: { config: CAll }) => config, // final step, return config object
-    ])({
-      config,
-      fields,
+  if (data && rawConfigWithOverrides && fields) {
+    const dataCopy = pivots
+      ? tabularPivotResponse({ data, fields, pivots })
+      : tabularResponse(Array.from(data))
+
+    const fieldsCopy = pivots ? buildPivotFields({ fields, pivots }) : fields
+
+    const config = buildChartConfig({
+      config: rawConfigWithOverrides,
+      data: dataCopy,
+      fields: fieldsCopy,
     })
 
     return React.cloneElement(children, {
-      config: configWithDefaults,
-      data: tabularResponse(data),
-      fields,
+      config,
+      data: dataCopy,
+      fields: fieldsCopy,
       totals: formatTotals(totals),
       ok,
     })

@@ -29,44 +29,29 @@ import React from 'react'
 import type { Locale } from 'date-fns'
 import type { DateFormats, DateTimeOptions } from '../locale'
 import { formatDateString } from '../locale'
-import type { Locales } from '../locale/deprecated'
-import { getLocale } from '../locale/deprecated'
 
 export type DateTimeFormatProps = {
   children?: Date
   format?: DateFormats | string
-  // TODO delete Locales when enum is removed
   /**
-   * Locale object from date-fns. Note: Locales enum previously supported in this prop
-   * is deprecated and will be removed in a future MAJOR release.
+   * Locale object from date-fns.
    * @example
    * import ko from 'date-fns/locale/ko'
    */
-  locale?: Locale | Locales
+  locale?: Locale
   timeZone?: string
 }
 
 type DateTimeFormatExtensionProps = DateTimeFormatProps & DateTimeOptions
 
-// TODO delete when Locales enum is removed
-const localeIsString = (
-  locale: DateTimeFormatProps['locale']
-): locale is Locales => {
-  return typeof locale === 'string'
-}
-
 export const DateTimeFormat: FC<DateTimeFormatExtensionProps> = ({
   children = new Date(Date.now()),
   date = true,
   format = 'medium',
-  locale: propsLocale,
+  locale,
   time = true,
   timeZone,
 }) => {
-  const locale = localeIsString(propsLocale)
-    ? getLocale(propsLocale)
-    : propsLocale
-
   try {
     return (
       <>

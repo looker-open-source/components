@@ -30,7 +30,6 @@ import { renderWithTheme } from '@looker/components-test-utils'
 import en from 'date-fns/locale/en-US'
 import ital from 'date-fns/locale/it'
 import ko from 'date-fns/locale/ko'
-import { Locales } from '../locale/deprecated'
 import { InputDate } from './InputDate'
 
 const realDateNow = Date.now.bind(global.Date)
@@ -179,77 +178,12 @@ test('validates text input to match localized date format', () => {
   expect(mockProps.onValidationFail).toHaveBeenCalledTimes(1)
 })
 
-test('localizes calendar (deprecated)', () => {
-  const months = [
-    'Gennaio',
-    'Febbraio',
-    'Marzo',
-    'Aprile',
-    'Maggio',
-    'Giugno',
-    'Luglio',
-    'Agosto',
-    'Settembre',
-    'Ottobre',
-    'Novembre',
-    'Dicembre',
-  ]
-  const weekdaysShort = ['Do', 'Lu', 'Ma', 'Me', 'Gi', 'Ve', 'Sa']
-  const firstDayOfWeek = 1 // monday
-  const localizationProps = { firstDayOfWeek, months, weekdaysShort }
-
-  const { container } = renderWithTheme(
-    <InputDate localization={localizationProps} />
-  )
-
-  expect(
-    screen.getByText('Febbraio 2020', { selector: 'h5' })
-  ).toBeInTheDocument()
-  expect(
-    // eslint-disable-next-line testing-library/no-container
-    (container.querySelector('.DayPicker-WeekdaysRow') as HTMLElement)
-      .textContent
-  ).toMatchInlineSnapshot(`"LuMaMeGiVeSaDo"`)
-})
-
-describe('localizes text input (deprecated)', () => {
-  test('Korean', () => {
-    renderWithTheme(
-      <InputDate
-        dateStringLocale={Locales.Korean}
-        defaultValue={new Date(Date.now())}
-      />
-    )
-    expect(screen.getByDisplayValue('2020.02.01')).toBeInTheDocument()
-  })
-  test('Italian', () => {
-    renderWithTheme(
-      <InputDate
-        dateStringLocale={Locales.Italian}
-        defaultValue={new Date(Date.now())}
-      />
-    )
-    expect(screen.getByDisplayValue('01/02/2020')).toBeInTheDocument()
-  })
-  test('English', () => {
-    renderWithTheme(
-      <InputDate
-        dateStringLocale={Locales.English}
-        defaultValue={new Date(Date.now())}
-      />
-    )
-    expect(screen.getByDisplayValue('02/01/2020')).toBeInTheDocument()
-  })
-})
-
 test('localizes calendar', () => {
   const { container } = renderWithTheme(
     <InputDate locale={ital} firstDayOfWeek={1} />
   )
 
-  expect(
-    screen.getByText('febbraio 2020', { selector: 'h5' })
-  ).toBeInTheDocument()
+  expect(screen.getAllByText('febbraio 2020')[0]).toBeInTheDocument()
   expect(
     // eslint-disable-next-line testing-library/no-container
     (container.querySelector('.DayPicker-WeekdaysRow') as HTMLElement)

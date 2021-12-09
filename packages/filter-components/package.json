@@ -16,6 +16,7 @@
     "@styled-icons/material": "10.34.0",
     "@styled-icons/material-outlined": "10.34.0",
     "@styled-icons/material-rounded": "10.34.0",
+    "date-fns": "^2.10.0",
     "lodash": "^4.17.20",
     "polished": "3.4.1",
     "use-debounce": "5.2.1"

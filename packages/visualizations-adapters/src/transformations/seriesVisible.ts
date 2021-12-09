@@ -39,6 +39,7 @@ import { getMeasureNames } from '../utils'
  */
 export const seriesVisible: ConfigHelper<CommonCartesianProperties> = ({
   config,
+  data,
   fields,
 }) => {
   const {
@@ -92,6 +93,7 @@ export const seriesVisible: ConfigHelper<CommonCartesianProperties> = ({
       type,
       ...restConfig,
     },
+    data,
     fields,
   }
 }

@@ -27,6 +27,7 @@ import type {
   Fields,
   CAll,
   RawApiConfigResponse,
+  SDKRecord,
 } from '@looker/visualizations-adapters'
 
 export interface ConfigHelperArgs<ChartConfig> {
@@ -35,6 +36,7 @@ export interface ConfigHelperArgs<ChartConfig> {
       type: CAll['type'] | RawApiConfigResponse['type']
     }
   fields: Fields
+  data: SDKRecord[]
 }
 
 // helper function args and return value must match for easy function composition

@@ -24,23 +24,12 @@
 
  */
 
-import merge from 'lodash/merge'
-import pick from 'lodash/pick'
-import set from 'lodash/set'
 import type {
   ConfigHelper,
   CommonCartesianProperties,
   CSeriesBasic,
 } from '../types'
-import { getMeasureNames } from '../utils'
-
-export const fallbackSeriesColors = [
-  '#6c43e0',
-  '#b73ec3',
-  '#db4da8',
-  '#ed6995',
-  '#f1898f',
-]
+import { DEFAULT_SERIES_COLORS } from '../utils'
 
 /**
  * Populate series colors from series_colors response.
@@ -48,49 +37,45 @@ export const fallbackSeriesColors = [
  */
 export const seriesColors: ConfigHelper<CommonCartesianProperties> = ({
   config,
+  data,
   fields,
 }) => {
   const { series_colors, series = {}, custom_color, ...restConfig } = config
-  if (typeof custom_color === 'string')
-    fallbackSeriesColors.unshift(custom_color)
-  const measures = getMeasureNames(fields)
-  const defaultColors = measures
-    .map((field, currentIndex) => {
-      return series_colors?.[field] || fallbackSeriesColors[currentIndex]
-    })
-    .filter(Boolean)
+
+  const seriesColorValues =
+    fields?.measures?.map(measure => {
+      return series_colors?.[measure.name]
+    }) || []
+
+  const colorSet = Array.from(
+    new Set([...seriesColorValues, custom_color, ...DEFAULT_SERIES_COLORS])
+  ).filter(Boolean)
+
   const buildArraySeries = (s: CSeriesBasic[] = []) => {
     // merge color array into existing series array
     const arraySeries = [...s]
-    for (let i = 0; i < measures.length; i++) {
-      while (defaultColors.length) {
-        const color = defaultColors.shift()
-        const duplicateColor =
-          arraySeries.findIndex(element => element.color === color) > -1
-        if (color && !duplicateColor) {
-          if (typeof arraySeries[i]?.color === 'string') {
-            // this element already has color property. try again on the next iteration
-            defaultColors.unshift(color)
-          } else {
-            set(arraySeries, [i, 'color'], color)
-          }
-          break
-        }
-      }
+    const defaultValues =
+      fields?.measures?.map((_, i) => ({
+        color: colorSet[i],
+      })) || []
+
+    for (let i = 0; i < defaultValues.length; i++) {
+      arraySeries[i] = Object.assign({}, defaultValues[i], arraySeries[i])
     }
+
     return arraySeries
   }
 
   const buildNamedSeries = (s: { [k: string]: CSeriesBasic }) => {
     // merge named color objects
-    const namedSeries = measures.reduce((seriesConfig, field, currentIndex) => {
-      const currentFieldSettings = pick(s, field)
-      const defaultSeriesColor = {
-        [field]: {
-          color: series_colors?.[field] || fallbackSeriesColors[currentIndex],
-        },
+    const namedSeries = fields?.measures?.reduce((seriesConfig, measure, i) => {
+      const { name: measureName } = measure
+      const { color: currentColor, ...restSeries } = s[measureName] || {}
+
+      return {
+        ...seriesConfig,
+        [measureName]: { ...restSeries, color: currentColor || colorSet[i] },
       }
-      return merge(seriesConfig, defaultSeriesColor, currentFieldSettings)
     }, {} as { [key: string]: CSeriesBasic })
     return namedSeries
   }
@@ -102,6 +87,7 @@ export const seriesColors: ConfigHelper<CommonCartesianProperties> = ({
         : buildNamedSeries(series),
       ...restConfig,
     },
+    data,
     fields,
   }
 }

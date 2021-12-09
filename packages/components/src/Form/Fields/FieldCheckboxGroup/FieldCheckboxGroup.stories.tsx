@@ -38,7 +38,14 @@ export default {
   title: 'FieldCheckboxGroup',
 }
 
-const defaultValueCheckbox = ['swiss', 'cheddar']
+const defaultValueCheckbox = [
+  'swiss',
+  'swiss-2',
+  'swiss-3',
+  'cheddar',
+  'cheddar-2',
+  'cheddar-3',
+]
 
 const Template: Story<FieldCheckboxGroupProps> = args => (
   <FieldCheckboxGroup

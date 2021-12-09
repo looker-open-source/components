@@ -28,12 +28,12 @@ import noop from 'lodash/noop'
 import type { CalendarSize } from './calendar-size'
 
 export interface CalendarContextValue {
-  size?: CalendarSize
   onNextClick?: (month: Date) => void
   onNowClick?: (month: Date) => void
   onPrevClick?: (month: Date) => void
   showNextButton: boolean
   showPreviousButton: boolean
+  size?: CalendarSize
 }
 
 export const CalendarContext = createContext<CalendarContextValue>({

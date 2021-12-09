@@ -31,7 +31,7 @@ import type { ConfigHelper } from '../types'
  * Set legend type to either be 'legend' or 'labels'.
  * Sets 'legend' by default.
  */
-export const legendType: ConfigHelper<CPie> = ({ config, fields }) => {
+export const legendType: ConfigHelper<CPie> = ({ config, data, fields }) => {
   const { value_labels, legend, ...restConfig } = config
 
   const legendType = (legend && legend.type) || value_labels || 'legend'
@@ -47,6 +47,7 @@ export const legendType: ConfigHelper<CPie> = ({ config, fields }) => {
             },
       ...restConfig,
     },
+    data,
     fields,
   }
 }

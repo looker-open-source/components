@@ -30,7 +30,11 @@ import type { ConfigHelper } from '../types'
 
 export type NamedSeries = { [k: string]: CTableSeries }
 
-export const seriesCellVis: ConfigHelper<CTable> = ({ config, fields }) => {
+export const seriesCellVis: ConfigHelper<CTable> = ({
+  config,
+  data,
+  fields,
+}) => {
   const { series_cell_visualizations, series, ...restConfig } = config
 
   const buildNamedSeries = (s?: NamedSeries) => {
@@ -62,6 +66,7 @@ export const seriesCellVis: ConfigHelper<CTable> = ({ config, fields }) => {
       ...restConfig,
       series: Array.isArray(series) ? series : buildNamedSeries(series),
     },
+    data,
     fields,
   }
 }

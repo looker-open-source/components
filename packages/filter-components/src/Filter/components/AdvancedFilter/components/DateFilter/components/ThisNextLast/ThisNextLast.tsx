@@ -28,10 +28,10 @@ import type { ILookmlModelExploreField } from '@looker/sdk'
 import type { FC } from 'react'
 import React from 'react'
 import {
-  fiscalNextLastUnits,
-  fiscalThisUnits,
-  nextLastUnits,
-  thisUnits,
+  fiscalThisNextUnits,
+  fiscalLastUnits,
+  thisNextUnits,
+  lastUnits,
 } from '../../../../../../constants'
 import type { Option } from '../../../../../../types/option'
 import { showFiscalUnits } from '../../../../utils/show_fiscal_units'
@@ -48,10 +48,10 @@ const getOptions = (
   field: ILookmlModelExploreField
 ): Option[] => {
   const showFiscal = showFiscalUnits(field)
-  if (type === 'this') {
-    return showFiscal ? fiscalThisUnits : thisUnits
+  if (type === 'last') {
+    return showFiscal ? fiscalLastUnits : lastUnits
   }
-  return showFiscal ? fiscalNextLastUnits : nextLastUnits
+  return showFiscal ? fiscalThisNextUnits : thisNextUnits
 }
 
 export const ThisNextLast: FC<ThisNextLastProps> = ({

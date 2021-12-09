@@ -24,7 +24,7 @@
 
  */
 
-import { mockLineConfig, mockFields } from '../__mocks__'
+import { mockLineConfig, mockFields, mockSdkDataResponse } from '../__mocks__'
 import { truncateText } from './truncateText'
 
 describe('truncateText', () => {
@@ -32,6 +32,7 @@ describe('truncateText', () => {
     const config = { ...mockLineConfig }
     const { config: transformedConfig } = truncateText({
       config,
+      data: mockSdkDataResponse,
       fields: mockFields,
     })
     expect(transformedConfig.truncate_text).toEqual(true)
@@ -41,6 +42,7 @@ describe('truncateText', () => {
     const config = { ...mockLineConfig, truncate_text: true }
     const { config: transformedConfig } = truncateText({
       config,
+      data: mockSdkDataResponse,
       fields: mockFields,
     })
     expect(transformedConfig.truncate_text).toEqual(true)
@@ -50,6 +52,7 @@ describe('truncateText', () => {
     const config = { ...mockLineConfig, truncate_text: false }
     const { config: transformedConfig } = truncateText({
       config,
+      data: mockSdkDataResponse,
       fields: mockFields,
     })
     expect(transformedConfig.truncate_text).toEqual(false)

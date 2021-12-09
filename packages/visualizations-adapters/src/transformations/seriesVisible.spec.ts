@@ -25,7 +25,7 @@
  */
 
 import { seriesVisible } from './seriesVisible'
-import { mockLineConfig, mockFields } from '../__mocks__'
+import { mockLineConfig, mockFields, mockSdkDataResponse } from '../__mocks__'
 import type { CLineSeries } from '../adapters'
 
 describe('seriesVisible', () => {
@@ -39,6 +39,7 @@ describe('seriesVisible', () => {
 
     const transformedConfig = seriesVisible({
       config: { ...mockLineConfig, hidden_fields, series },
+      data: mockSdkDataResponse,
       fields: mockFields,
     })
 
@@ -60,6 +61,7 @@ describe('seriesVisible', () => {
 
     const transformedConfig = seriesVisible({
       config: { ...mockLineConfig, hidden_fields, series },
+      data: mockSdkDataResponse,
       fields: mockFields,
     })
 
@@ -87,6 +89,7 @@ describe('seriesVisible', () => {
         size_by_field: 'orders.average_total_amount_of_order_usd',
         series,
       },
+      data: mockSdkDataResponse,
       fields: mockFields,
     })
 

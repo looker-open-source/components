@@ -70,47 +70,32 @@ describe('QueryFormatter component', () => {
       Array [
         Array [
           Object {
-            "defaults_version": 1,
-            "interpolation": "linear",
-            "label_density": 25,
-            "label_type": "lab",
             "legend": Object {
               "position": "bottom",
             },
-            "plot_size_by_field": false,
-            "point_style": "circle_outline",
+            "render_null_values": false,
             "series": Object {
               "orders.average_total_amount_of_order_usd": Object {
                 "color": "#70BEFA",
                 "label": "Average Order Price",
+                "line_width": 3,
+                "shape": "circle",
+                "style": "outline",
+                "value_format": "0",
                 "visible": false,
               },
               "orders.count": Object {
                 "color": "#FA8072",
                 "label": "Total Orders",
+                "line_width": 3,
+                "shape": "diamond",
+                "style": "outline",
+                "value_format": "0",
                 "visible": true,
               },
             },
-            "series_cell_visualizations": Object {
-              "orders.count": Object {
-                "is_active": true,
-              },
-            },
-            "series_point_styles": Object {
-              "orders.count": "diamond",
-            },
-            "series_types": Object {},
-            "show_null_points": true,
-            "show_value_labels": false,
-            "show_view_names": false,
-            "show_y_axis_labels": true,
-            "show_y_axis_ticks": true,
-            "size_by_field": "",
-            "stacking": "grouped",
             "tooltips": true,
-            "trellis": "",
             "type": "line",
-            "value_labels": "legend",
             "x_axis": Array [
               Object {
                 "gridlines": false,
@@ -119,7 +104,6 @@ describe('QueryFormatter component', () => {
                 "values": true,
               },
             ],
-            "x_axis_scale": "auto",
             "y_axis": Array [
               Object {
                 "gridlines": true,
@@ -131,10 +115,6 @@ describe('QueryFormatter component', () => {
                 "values": true,
               },
             ],
-            "y_axis_combined": true,
-            "y_axis_scale_mode": "linear",
-            "y_axis_tick_density": "default",
-            "y_axis_tick_density_custom": 5,
           },
         ],
       ]

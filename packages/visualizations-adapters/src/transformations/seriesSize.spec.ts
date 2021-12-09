@@ -25,7 +25,7 @@
  */
 
 import { seriesSize } from './seriesSize'
-import { mockLineConfig, mockFields } from '../__mocks__'
+import { mockLineConfig, mockFields, mockSdkDataResponse } from '../__mocks__'
 import type { CScatterSeries } from '../adapters'
 
 describe('seriesSize', () => {
@@ -39,6 +39,7 @@ describe('seriesSize', () => {
 
     const transformedConfig = seriesSize({
       config: { ...mockLineConfig, size_by_field, series },
+      data: mockSdkDataResponse,
       fields: mockFields,
     })
 
@@ -59,6 +60,7 @@ describe('seriesSize', () => {
 
     const transformedConfig = seriesSize({
       config: { ...mockLineConfig, size_by_field, series },
+      data: mockSdkDataResponse,
       fields: mockFields,
     })
 
@@ -76,6 +78,7 @@ describe('seriesSize', () => {
 
     const transformedConfig = seriesSize({
       config: { ...mockLineConfig, series },
+      data: mockSdkDataResponse,
       fields: mockFields,
     })
 
@@ -94,6 +97,7 @@ describe('seriesSize', () => {
 
     const transformedConfig = seriesSize({
       config: { ...mockLineConfig, series },
+      data: mockSdkDataResponse,
       fields: mockFields,
     })
 

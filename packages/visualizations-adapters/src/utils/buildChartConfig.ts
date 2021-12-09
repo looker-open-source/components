@@ -28,35 +28,39 @@ import type {
   CAll,
   RawApiConfigResponse,
   Fields,
+  SDKRecord,
   SupportedChartTypes,
+  ConfigHelperArgs,
 } from '../types'
 import flow from 'lodash/flow'
+
+type ChartConfigArgs = {
+  config: Partial<CAll> | Partial<RawApiConfigResponse>
+  data: SDKRecord[]
+  fields: Fields
+}
 
 /**
  * Utility function builds and sanitizes the public config object from
  * the provided raw sdk response and selected transformations.
- * @param rawSDKConfig vis config as it comes unsanitized from sdk
+ * @param config vis config as it comes unsanitized from sdk
+ * @param data query response
  * @param fields metadata describing fields and dimensions from query
  * @returns
  */
-export const buildChartConfig = (
-  rawSDKConfig: Partial<CAll> | Partial<RawApiConfigResponse>,
-  fields: Fields
-) => {
-  const config: CAll = flow([
+export const buildChartConfig = (args: ChartConfigArgs) => {
+  const { config } = flow([
     normalizeChartTypes,
-    ({ config, fields }) => {
+    (args: ConfigHelperArgs<CAll>) => {
+      const { type } = args.config
+
       const configTransformations =
-        chartConfigByType[config?.type as keyof SupportedChartTypes] ||
+        chartConfigByType[type as keyof SupportedChartTypes] ||
         chartConfigByType.default
 
-      return flow(configTransformations)({ config, fields })
+      return flow(configTransformations)(args)
     },
-    ({ config }: { config: CAll }) => config, // final step, return config object
-  ])({
-    config: rawSDKConfig,
-    fields,
-  })
+  ])(args)
 
   return config
 }

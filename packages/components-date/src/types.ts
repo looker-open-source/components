@@ -25,7 +25,6 @@
  */
 
 import type { ValidationType } from '@looker/components'
-import type { Locales } from './locale/deprecated'
 import type { CalendarLocaleProps } from './Calendar'
 
 export type InputDateBaseProps = CalendarLocaleProps & {
@@ -36,10 +35,6 @@ export type InputDateBaseProps = CalendarLocaleProps & {
    * @default medium
    */
   dateStringFormat?: string
-  /**
-   * @deprecated Use locale instead
-   */
-  dateStringLocale?: Locales
   disabled?: boolean
   id?: string
   onValidationFail?: (value: string) => void

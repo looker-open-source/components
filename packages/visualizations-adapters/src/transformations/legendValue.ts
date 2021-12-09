@@ -31,7 +31,7 @@ import type { ConfigHelper, LegendValues, RawApiConfigResponse } from '../types'
  * Set the value that you want to appear in the legend.
  * Sets 'label' by default.
  */
-export const legendValue: ConfigHelper<CPie> = ({ config, fields }) => {
+export const legendValue: ConfigHelper<CPie> = ({ config, data, fields }) => {
   type AllKeys = RawApiConfigResponse['label_type'] & LegendValues & ''
 
   const LEGEND_VALUE: Record<AllKeys, LegendValues> = {
@@ -64,6 +64,7 @@ export const legendValue: ConfigHelper<CPie> = ({ config, fields }) => {
             },
       ...restConfig,
     },
+    data,
     fields,
   }
 }

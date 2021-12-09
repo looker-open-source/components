@@ -32,17 +32,17 @@ const singularizeLabel = (option: Option): Option => ({
   label: option.singular || option.label,
 })
 
-export const thisUnits = dateUnits.map(singularizeLabel)
+export const lastUnits = dateUnits.map(singularizeLabel)
 
-export const nextLastUnits = thisUnits.filter(
+export const thisNextUnits = lastUnits.filter(
   (option: Option) =>
-    ['second', 'minute', 'hour', 'day'].indexOf(option.value as string) === -1
+    ['second', 'minute', 'hour'].indexOf(option.value as string) === -1
 )
 
-export const fiscalThisUnits = [...dateUnits, ...fiscalDateUnits].map(
+export const fiscalLastUnits = [...dateUnits, ...fiscalDateUnits].map(
   singularizeLabel
 )
 
-export const fiscalNextLastUnits = [...nextLastUnits, ...fiscalDateUnits].map(
+export const fiscalThisNextUnits = [...thisNextUnits, ...fiscalDateUnits].map(
   singularizeLabel
 )

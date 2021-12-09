@@ -25,3 +25,10 @@
  */
 export const DEFAULT_HEIGHT = 500
 export const DEFAULT_MIN_HEIGHT = 75
+export const DEFAULT_SERIES_COLORS = [
+  '#6c43e0',
+  '#b73ec3',
+  '#db4da8',
+  '#ed6995',
+  '#f1898f',
+]

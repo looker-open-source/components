@@ -78,7 +78,7 @@ export const i18nUpdate = ({ resources, locale }: UseI18nProps) => {
 }
 
 export const useI18n = ({
-  locale = 'en',
+  locale,
   resources = i18nResources,
 }: UseI18nProps) => {
   if (!i18next.isInitialized) {

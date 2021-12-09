@@ -23,45 +23,14 @@
  SOFTWARE.
 
  */
-import {
-  i18nUpdate,
-  i18nResources as componentsResources,
-} from '@looker/components'
+
+import { i18nUpdate } from '@looker/components'
 import type { I18nState } from '@looker/filter-expressions'
-import { i18nResources as expressionResources } from '@looker/filter-expressions'
+import enDate from 'date-fns/locale/en-US'
 import i18next from 'i18next'
 import merge from 'lodash/merge'
 import { initReactI18next } from 'react-i18next'
-import _availableLocales from '../locales/available_locales'
-
-import csCZ from '../locales/cs-CZ'
-import daDK from '../locales/da-DK'
-import deDE from '../locales/de-DE'
-import en from '../locales/en'
-import esES from '../locales/es-ES'
-import fiFI from '../locales/fi-FI'
-import frCA from '../locales/fr-CA'
-import frFR from '../locales/fr-FR'
-import heIL from '../locales/he-IL'
-import hiIN from '../locales/hi-IN'
-import itIT from '../locales/it-IT'
-import jaJP from '../locales/ja-JP'
-import koKR from '../locales/ko-KR'
-import ltLT from '../locales/lt-LT'
-import nbNO from '../locales/nb-NO'
-import nlNL from '../locales/nl-NL'
-import plPL from '../locales/pl-PL'
-import ptBR from '../locales/pt-BR'
-import ptPT from '../locales/pt-PT'
-import ruRU from '../locales/ru-RU'
-import svSE from '../locales/sv-SE'
-import thTH from '../locales/th-TH'
-import trTR from '../locales/tr-TR'
-import ukUA from '../locales/uk-UA'
-import zhCN from '../locales/zh-CN'
-import zhTW from '../locales/zh-TW'
-
-export const availableLocales = _availableLocales
+import { en } from '../locales'
 
 export const initOrUpdate = async ({ locale, resources }: I18nState) => {
   if (i18next.isInitialized) {
@@ -83,35 +52,21 @@ export const initOrUpdate = async ({ locale, resources }: I18nState) => {
   }
 }
 
-// Include filter-expression translations in filter-components translations
-export const i18nResources = merge(componentsResources, expressionResources, {
-  'cs-CZ': csCZ,
-  'da-DK': daDK,
-  'de-DE': deDE,
-  en,
-  'es-ES': esES,
-  'fi-FI': fiFI,
-  'fr-CA': frCA,
-  'fr-FR': frFR,
-  'he-IL': heIL,
-  'hi-IN': hiIN,
-  'it-IT': itIT,
-  'ja-JP': jaJP,
-  'ko-KR': koKR,
-  'lt-LT': ltLT,
-  'nb-NO': nbNO,
-  'nl-NL': nlNL,
-  'pl-PL': plPL,
-  'pt-BR': ptBR,
-  'pt-PT': ptPT,
-  'ru-RU': ruRU,
-  'th-TH': thTH,
-  'sv-SE': svSE,
-  'tr-TR': trTR,
-  'uk-UA': ukUA,
-  'zh-CN': zhCN,
-  'zh-TW': zhTW,
-})
+// Set and get the current date locale, defaults to English/US
+let dateLocale: Locale = enDate
+const setDateLocale = (_dateLocale: Locale) => {
+  dateLocale = _dateLocale
+}
+export const getDateLocale = () => {
+  return dateLocale
+}
+
+export type I18nStateWithDates = I18nState & {
+  /**
+   * Locale from date-fns
+   */
+  dateLocale: Locale
+}
 
 /**
  * Directly initialize the localization instance
@@ -120,7 +75,13 @@ export const i18nResources = merge(componentsResources, expressionResources, {
 export async function i18nInit({
   locale = 'en',
   resources,
-}: Partial<I18nState> = {}) {
-  await initOrUpdate({ locale, resources: merge(i18nResources, resources) })
+  dateLocale,
+}: I18nStateWithDates = en) {
+  setDateLocale(dateLocale)
+  // Merge with English in case there are translations missing
+  // from the resources passed in
+  const mergedResources = merge(resources, en.resources)
+
+  await initOrUpdate({ locale, resources: mergedResources })
   return i18next
 }

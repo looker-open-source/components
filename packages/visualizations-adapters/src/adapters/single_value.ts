@@ -34,7 +34,7 @@ import type {
 
 import type { CSeriesBasic } from '@looker/visualizations'
 
-export type CSingleValueSeries = Pick<CSeriesBasic, 'color' | 'label'>
+export type CSingleValueSeries = Omit<CSeriesBasic, 'visible'>
 
 export type CSingleValue = {
   type: SupportedChartTypes['single_value']

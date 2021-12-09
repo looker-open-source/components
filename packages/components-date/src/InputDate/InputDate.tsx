@@ -34,13 +34,16 @@ import type { BorderProps, SpaceProps } from '@looker/design-tokens'
 import { InputText, VisuallyHidden, useReadOnlyWarn } from '@looker/components'
 import { Calendar, formatMonthTitle } from '../Calendar'
 import { formatDateString, parseDateFromString } from '../locale'
-import { getLocale } from '../locale/deprecated'
 import type { InputDateBaseProps } from '../types'
 
 export type InputDateProps = SpaceProps &
   BorderProps &
   InputDateBaseProps & {
     'aria-describedby'?: string
+    /**
+     * use selectMonth to have month and year in a drop down menu for selection
+     */
+    selectMonth?: boolean
     defaultValue?: Date
     onChange?: (date?: Date) => void
     readOnly?: boolean
@@ -64,14 +67,13 @@ export const InputDate: FC<InputDateProps> = forwardRef(
     {
       'aria-describedby': ariaDescribedby,
       'aria-labelledby': ariaLabelledby,
+      selectMonth = false,
       dateStringFormat,
-      dateStringLocale,
       defaultValue,
       disabled,
       firstDayOfWeek,
-      localization,
       id,
-      locale: propsLocale,
+      locale,
       onChange,
       onValidationFail,
       readOnly,
@@ -80,8 +82,6 @@ export const InputDate: FC<InputDateProps> = forwardRef(
     },
     ref: Ref<HTMLInputElement>
   ) => {
-    const locale = dateStringLocale ? getLocale(dateStringLocale) : propsLocale
-
     const { t } = useTranslation('InputDate')
     useReadOnlyWarn('InputDate', value, onChange)
 
@@ -161,7 +161,6 @@ export const InputDate: FC<InputDateProps> = forwardRef(
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [textInputValue, value, onChange])
-
     return (
       <InputDateWrapper>
         <InputText
@@ -183,13 +182,13 @@ export const InputDate: FC<InputDateProps> = forwardRef(
           readOnly={readOnly}
         />
         <CalendarWrapper>
-          <VisuallyHidden aria-live="assertive">
+          <VisuallyHidden aria-live="assertive" data-testid="hidden-value">
             {viewMonth ? formatMonthTitle(locale)(viewMonth) : ''}
           </VisuallyHidden>
           <Calendar
+            selectMonth={selectMonth}
             selectedDates={selectedDate}
             onDayClick={handleDayClick}
-            localization={localization}
             locale={locale}
             firstDayOfWeek={firstDayOfWeek}
             viewMonth={viewMonth}

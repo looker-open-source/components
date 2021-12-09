@@ -35,7 +35,7 @@ import type { ILooker40SDK } from '@looker/sdk'
 import type { SDKResponse } from '@looker/sdk-rtl'
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-type Response = SDKResponse<any, any>
+export type Response = SDKResponse<any, any>
 
 export const mockSDK: Partial<ILooker40SDK> = {
   query_for_slug: () =>

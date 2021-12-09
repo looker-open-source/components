@@ -25,7 +25,7 @@
  */
 
 import type { CTableSeries } from '..'
-import { mockTableConfig, mockFields } from '../__mocks__'
+import { mockTableConfig, mockFields, mockSdkDataResponse } from '../__mocks__'
 import type { NamedSeries } from './seriesCellVis'
 import { seriesCellVis } from './seriesCellVis'
 
@@ -38,6 +38,7 @@ describe('seriesCellVis', () => {
 
     const transformedConfig = seriesCellVis({
       config: { ...mockTableConfig, series },
+      data: mockSdkDataResponse,
       fields: mockFields,
     })
 
@@ -64,6 +65,7 @@ describe('seriesCellVis', () => {
 
     const transformedConfig = seriesCellVis({
       config: { ...mockTableConfig, series, series_cell_visualizations },
+      data: mockSdkDataResponse,
       fields: mockFields,
     })
 

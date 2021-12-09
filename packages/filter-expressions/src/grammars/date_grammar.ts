@@ -53,7 +53,8 @@ TERM = term:(USER_ATTRIBUTE /
        PAST_AGO /
        PAST /
        THIS_RANGE / 
-       THIS_NEXT_LAST /
+       THIS_NEXT /
+       LAST /
        LAST_INTERVAL /
        DAY_INTERVAL /
        BEFORE_AFTER_THIS_NEXT_LAST /
@@ -65,7 +66,11 @@ TERM = term:(USER_ATTRIBUTE /
            return Object.assign({}, term, {is: true})
        }
 
-THIS_NEXT_LAST = type:("this"i / "last"i / "next"i) _ unit:INTERVAL_UNIT {
+THIS_NEXT = type:("this"i / "next"i) _ unit:DAY_YEAR_UNITS {
+	return {type:type.toLowerCase(), unit:unit}
+}
+
+LAST = type:("last"i) _ unit:INTERVAL_UNIT {
 	return {type:type.toLowerCase(), unit:unit}
 }
 
@@ -123,10 +128,10 @@ BEFORE_AFTER = prefix:(BEFORE / AFTER) SPACE interval:N_INTERVAL intervalType:IN
     return { range: 'absolute', date: date, type: prefix}
 }
 
-BEFORE_AFTER_THIS_NEXT_LAST = prefix:(BEFORE / AFTER) _ tnl:THIS_NEXT_LAST {
+BEFORE_AFTER_THIS_NEXT_LAST = prefix:(BEFORE / AFTER) _ type:("this"i / "next"i / "last"i) _ unit:DAY_YEAR_UNITS  {
     return {
-        type:prefix.toLowerCase() + '_' + tnl.type,
-        unit: tnl.unit
+        type:prefix.toLowerCase() + '_' + type,
+        unit: unit
     }
 }
 RANGE = start:DATETIME SPACE "TO"i SPACE end:DATETIME {
@@ -229,12 +234,19 @@ DAY_KEYWORD = day:("today"i / "yesterday"i / "tomorrow"i) { return day.toLowerCa
 
 DAY_OF_WEEK_KEYWORD = day:("monday"i / "tuesday"i / "wednesday"i / "thursday"i / "friday"i / "saturday"i / "sunday"i){ return day.toLowerCase()}
 
-INTERVAL_UNIT = keyword:$(
-		   SECOND /
+INTERVAL_UNIT = TIME_UNITS / DAY_YEAR_UNITS
+
+// break units as used by the this/next/last expressions
+TIME_UNITS = keyword:$(
+           SECOND /
            MINUTE /
-           HOUR /
-		   DAY /
-		   WEEK /
+           HOUR) ("s"i)? {
+             return keyword.toLowerCase()
+           }
+// units used by 
+DAY_YEAR_UNITS = keyword:$(
+           DAY /
+           WEEK /
            MONTH /
            QUARTER/
            FISCAL_QUARTER /
@@ -242,6 +254,7 @@ INTERVAL_UNIT = keyword:$(
            FISCAL_YEAR) ("s"i)? {
              return keyword.toLowerCase()
            }
+
 
 // 2019/01/01 08:45:00
 DATETIME_RULE = datetime: DATETIME {

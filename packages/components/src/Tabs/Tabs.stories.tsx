@@ -87,6 +87,13 @@ Distributed.args = {
   tabPrefix: 'My Awesome Tab',
 }
 
+export const DistributedScrolling = Template.bind({})
+DistributedScrolling.args = {
+  distribute: true,
+  tabCount: 20,
+  tabPrefix: 'My Awesome Tab',
+}
+
 export const Scrolling = Template.bind({})
 Scrolling.args = {
   tabCount: 20,

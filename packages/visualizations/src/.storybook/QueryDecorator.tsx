@@ -1,12 +1,25 @@
 import React from 'react'
-import { Query, mockSDK } from '@looker/visualizations-adapters'
+import type { Story } from '@storybook/react/types-6-0'
+import {
+  mockSdkConfigResponse,
+  mockSdkFieldsResponse,
+  mockSdkDataResponse,
+  QueryContext,
+} from '@looker/visualizations-adapters'
+import type { Fields } from '@looker/visualizations'
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
-export const QueryDecorator = (Story: any) => {
+export const QueryDecorator = (Story: Story) => {
   return (
-    <Query sdk={(mockSDK as unknown) as any} query="12345">
+    <QueryContext.Provider
+      value={{
+        config: { ...mockSdkConfigResponse },
+        ok: true,
+        loading: false,
+        data: [...mockSdkDataResponse],
+        fields: { ...mockSdkFieldsResponse } as Fields,
+      }}
+    >
       <Story />
-    </Query>
+    </QueryContext.Provider>
   )
 }
