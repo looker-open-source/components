@@ -62,5 +62,7 @@ describe('DayRangeInput', () => {
         ],
       ]
     `)
+
+    fireEvent.click(document)
   })
 })
