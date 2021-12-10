@@ -35,7 +35,7 @@ import type {
   CLineSeries,
 } from '@looker/visualizations-adapters'
 import { DEFAULT_HEIGHT, VisWrapper } from '@looker/visualizations-adapters'
-import { Legend } from '../Legend'
+import { XYLegend } from '../XYLegend'
 import isArray from 'lodash/isArray'
 import get from 'lodash/get'
 import {
@@ -47,7 +47,7 @@ import {
   useChartTheme,
   isValidChartData,
 } from '../utils'
-import { Tooltip } from '../Tooltip'
+import { XYTooltip } from '../XYTooltip'
 import { Marker } from '../Marker'
 import { Grid } from '../Grid'
 
@@ -150,14 +150,14 @@ export const Area: FC<AreaProps> = ({
           <XAxis />
           <YAxis />
           <Grid config={config} />
-          <Tooltip config={config} data={formattedData} fields={fields} />
+          <XYTooltip config={config} data={formattedData} fields={fields} />
           <PositioningWrapper
             offset={positioning === 'percent' ? 'expand' : 'none'}
           >
             {areas}
           </PositioningWrapper>
         </XYChart>
-        <Legend config={config} fields={fields} />
+        <XYLegend config={config} fields={fields} />
       </VisWrapper>
     </DataProvider>
   )

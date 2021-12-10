@@ -103,18 +103,3 @@ test('clicking "next month" calls context.onNavClick with props.nextMonth', () =
   fireEvent.click(next)
   expect(mockContext.onNextClick).toHaveBeenCalledWith(mockProps.nextMonth)
 })
-
-test('clicking label text calls context.onNavClick with Date.now()', () => {
-  ;(mockProps.localeUtils.formatMonthTitle as any).mockReturnValue('June 2019')
-  renderWithTheme(
-    <CalendarContext.Provider value={mockContext}>
-      <CalendarNav {...mockProps} />
-    </CalendarContext.Provider>
-  )
-
-  expect(mockContext.onNowClick).toHaveBeenCalledTimes(0)
-
-  const label = screen.getByText('June 2019')
-  fireEvent.click(label)
-  expect(mockContext.onNowClick).toHaveBeenCalledWith(new Date(Date.now())) // mocked date.now value
-})

@@ -23,52 +23,13 @@
  SOFTWARE.
 
  */
-import padStart from 'lodash/padStart'
-import { useTranslation } from 'react-i18next'
+
+import { formatDateString } from '@looker/components-date'
+import { getDateLocale } from '../../../../../../utils'
+
+// hardcoding yyyy/MM/dd for legacy reasons
+export const FILTERS_DATE_FORMAT = 'yyyy/MM/dd'
 
 export const formatDate = (date: Date) => {
-  const year = `${date.getFullYear()}`
-  const month = padStart(String(date.getMonth() + 1), 2, '0')
-  const day = padStart(String(date.getDate()), 2, '0')
-
-  return `${year}/${month}/${day}`
-}
-
-export const useDateLocalization = () => {
-  const { t } = useTranslation('format_date')
-  return {
-    months: [
-      t('January'),
-      t('February'),
-      t('March'),
-      t('April'),
-      t('May'),
-      t('June'),
-      t('July'),
-      t('August'),
-      t('September'),
-      t('October'),
-      t('November'),
-      t('December'),
-    ],
-    weekdaysLong: [
-      t('Sunday'),
-      t('Monday'),
-      t('Tuesday'),
-      t('Wednesday'),
-      t('Thursday'),
-      t('Friday'),
-      t('Saturday'),
-    ],
-    weekdaysShort: [
-      t('Su'),
-      t('Mo'),
-      t('Tu'),
-      t('We'),
-      t('Th'),
-      t('Fr'),
-      t('Sa'),
-    ],
-    firstDayOfWeek: parseInt(t('firstDayOfWeek'), 10) || 0, // Sunday = 0
-  }
+  return formatDateString(date, getDateLocale(), FILTERS_DATE_FORMAT)
 }

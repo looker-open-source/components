@@ -24,7 +24,7 @@
 
  */
 
-import type { ConfigHelper, SupportedChartTypes, CAll } from '../types'
+import type { ConfigHelper, SupportedChartTypes } from '../types'
 
 import { barPositioning } from './barPositioning'
 import { linePositioning } from './linePositioning'
@@ -46,10 +46,12 @@ import { truncateText } from './truncateText'
 import { xAxis } from './xAxis'
 import { yAxis } from './yAxis'
 import { yAxisRange } from './yAxisRange'
+import { seriesValueFormat } from './seriesValueFormat'
 
 export const commonCartesianDefaults = [
   seriesLabels,
   seriesColors,
+  seriesValueFormat,
   seriesVisible,
   legendPosition,
   tooltips,
@@ -65,7 +67,8 @@ export const commonLineDefaults = [
 
 export const chartConfigByType: Record<
   keyof SupportedChartTypes | 'default',
-  ConfigHelper<CAll>[]
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  ConfigHelper<any>[]
 > = {
   area: [
     ...commonLineDefaults,
@@ -76,7 +79,7 @@ export const chartConfigByType: Record<
   ],
   bar: [barPositioning, ...commonCartesianDefaults, sanitizeSDKResponse],
   column: [barPositioning, ...commonCartesianDefaults, sanitizeSDKResponse],
-  default: [],
+  default: [...commonCartesianDefaults, sanitizeSDKResponse],
   table: [
     seriesCellVis,
     seriesLabels,
@@ -99,7 +102,12 @@ export const chartConfigByType: Record<
     renderNullValues,
     sanitizeSDKResponse,
   ],
-  single_value: [seriesLabels, seriesColors, sanitizeSDKResponse],
+  single_value: [
+    seriesLabels,
+    seriesColors,
+    seriesValueFormat,
+    sanitizeSDKResponse,
+  ],
   sparkline: [
     seriesColors,
     seriesLineWidth,

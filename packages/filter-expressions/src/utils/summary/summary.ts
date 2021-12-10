@@ -62,6 +62,7 @@ const treeToSummary = (
   let result = resultOr
   result += resultOr && resultAnd ? ', and ' : ''
   result += resultAnd
+
   return result
 }
 

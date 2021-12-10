@@ -65,12 +65,13 @@ const describeDateTime = (
 
 const describeInterval = ({ value, unit, complete }: FilterModel) => {
   const t = i18next.t.bind(i18next)
-  return t('value complete unitLabel', {
+  const result = t('value complete unitLabel', {
     ns: 'describe_date',
     value,
     complete: complete ? ' complete' : '',
     unitLabel: getUnitLabel(unit, value),
   })
+  return result
 }
 const describeNotNull = () => {
   const t = i18next.t.bind(i18next)

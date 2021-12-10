@@ -87,7 +87,7 @@ const deriveDefaults = (
 /**
  * Merge all x-axis related properties into a single x_axis object
  */
-export const xAxis: ConfigHelper<CCartesian> = ({ config, fields }) => {
+export const xAxis: ConfigHelper<CCartesian> = ({ config, data, fields }) => {
   const {
     x_axis_reversed = false,
     x_axis_gridlines = true,
@@ -129,6 +129,7 @@ export const xAxis: ConfigHelper<CCartesian> = ({ config, fields }) => {
       ...restConfig,
       x_axis: xAxisWithDefaults,
     },
+    data,
     fields,
   }
 }

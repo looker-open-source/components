@@ -29,7 +29,13 @@ import type { InternalFilterProps } from '../../types/filter_props'
 import type { FilterModel, FilterASTNode } from '@looker/filter-expressions'
 import { addNode, removeNode, treeToList } from '@looker/filter-expressions'
 import { typeToComponent } from '../../utils/type_to_component'
-import { Box } from '@looker/components'
+import { SpaceVertical } from '@looker/components'
+
+const getShowOperator = (length: number, index: number) => {
+  if (index > 0) return true
+  if (length > 1) return 'spacer'
+  return false
+}
 
 /**
  * Advanced filters allow for more flexibility and specific customization by the user
@@ -73,7 +79,6 @@ export const AdvancedFilter: FC<AdvancedFilterProps> = ({
   const items: FilterModel[] = treeToList(ast!)
 
   const lastItemIndex = items.length - 1
-  const hasMultipleClauses = items.length > 1
 
   const filterList = items.map((item, itemIndex) => {
     const key = `${name}-${item.id}`
@@ -81,36 +86,30 @@ export const AdvancedFilter: FC<AdvancedFilterProps> = ({
     const showAdd = itemIndex === lastItemIndex && !isMatchesAdvanced
     const showRemove = lastItemIndex > 0 && !isMatchesAdvanced
     return (
-      <Box
+      <FilterComponent
         key={key}
-        pb={itemIndex === lastItemIndex ? 'none' : 'xxsmall'}
-        pl={hasMultipleClauses && itemIndex === 0 ? 'xxxlarge' : 'none'}
-      >
-        <FilterComponent
-          key={key}
-          name={name}
-          filterType={expressionType}
-          isLinked={isLinked}
-          suggestions={suggestions}
-          enumerations={enumerations}
-          item={item}
-          isLoading={isLoading}
-          onChange={changeFilter}
-          onInputChange={onInputChange}
-          onAdd={onAdd}
-          onRemove={onRemove}
-          showAdd={showAdd}
-          showName={itemIndex === 0}
-          showRemove={showRemove}
-          showOperator={itemIndex > 0}
-          userAttributes={userAttributes}
-          showMatchesAdvanced={items.length === 1}
-          field={field}
-          inline={inline}
-          validationMessage={validationMessage}
-        />
-      </Box>
+        name={name}
+        filterType={expressionType}
+        isLinked={isLinked}
+        suggestions={suggestions}
+        enumerations={enumerations}
+        item={item}
+        isLoading={isLoading}
+        onChange={changeFilter}
+        onInputChange={onInputChange}
+        onAdd={onAdd}
+        onRemove={onRemove}
+        showAdd={showAdd}
+        showName={itemIndex === 0}
+        showRemove={showRemove}
+        showOperator={getShowOperator(items.length, itemIndex)}
+        userAttributes={userAttributes}
+        showMatchesAdvanced={items.length === 1}
+        field={field}
+        inline={inline}
+        validationMessage={validationMessage}
+      />
     )
   })
-  return <div>{filterList}</div>
+  return <SpaceVertical>{filterList}</SpaceVertical>
 }

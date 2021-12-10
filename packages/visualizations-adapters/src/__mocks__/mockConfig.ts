@@ -55,6 +55,7 @@ export const mockBarConfig: CBar = {
 export const mockPieConfig: CPie = {
   type: 'pie',
   legend: { position: 'bottom', value: 'label', type: 'legend' },
+  series: [{ color: '#fa8072' }],
 }
 
 export const mockLineConfig: CLine = {

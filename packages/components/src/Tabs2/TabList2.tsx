@@ -53,11 +53,11 @@ export const tabListCSS = css<TabList2Props>`
       grid-auto-flow: column;
       button {
         padding: 0;
+        span {
+          border-radius: 0;
+        }
         span:first-child {
           padding: 0 ${({ theme }) => theme.space.u4};
-        }
-        span:last-child {
-          border-radius: 0;
         }
       }
     `}

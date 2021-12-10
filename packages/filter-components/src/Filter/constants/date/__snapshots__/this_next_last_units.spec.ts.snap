@@ -1,47 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`date unit options for ThisNextLast component fiscalNextLastUnits matches expected values 1`] = `
-Array [
-  Object {
-    "label": "week",
-    "singular": "week",
-    "unit": "week",
-    "value": "week",
-  },
-  Object {
-    "label": "month",
-    "singular": "month",
-    "unit": "month",
-    "value": "month",
-  },
-  Object {
-    "label": "quarter",
-    "singular": "quarter",
-    "unit": "quarter",
-    "value": "quarter",
-  },
-  Object {
-    "label": "year",
-    "singular": "year",
-    "unit": "year",
-    "value": "year",
-  },
-  Object {
-    "label": "fiscal quarter",
-    "singular": "fiscal quarter",
-    "unit": "fiscal quarter",
-    "value": "fiscal quarter",
-  },
-  Object {
-    "label": "fiscal year",
-    "singular": "fiscal year",
-    "unit": "fiscal year",
-    "value": "fiscal year",
-  },
-]
-`;
-
-exports[`date unit options for ThisNextLast component fiscalThisUnits matches expected values 1`] = `
+exports[`date unit options for ThisNextLast component fiscalLastUnits matches expected values 1`] = `
 Array [
   Object {
     "label": "second",
@@ -106,8 +65,79 @@ Array [
 ]
 `;
 
-exports[`date unit options for ThisNextLast component nextLastUnits matches expected values 1`] = `
+exports[`date unit options for ThisNextLast component fiscalThisNextUnits matches expected values 1`] = `
 Array [
+  Object {
+    "label": "day",
+    "singular": "day",
+    "unit": "day",
+    "value": "day",
+  },
+  Object {
+    "label": "week",
+    "singular": "week",
+    "unit": "week",
+    "value": "week",
+  },
+  Object {
+    "label": "month",
+    "singular": "month",
+    "unit": "month",
+    "value": "month",
+  },
+  Object {
+    "label": "quarter",
+    "singular": "quarter",
+    "unit": "quarter",
+    "value": "quarter",
+  },
+  Object {
+    "label": "year",
+    "singular": "year",
+    "unit": "year",
+    "value": "year",
+  },
+  Object {
+    "label": "fiscal quarter",
+    "singular": "fiscal quarter",
+    "unit": "fiscal quarter",
+    "value": "fiscal quarter",
+  },
+  Object {
+    "label": "fiscal year",
+    "singular": "fiscal year",
+    "unit": "fiscal year",
+    "value": "fiscal year",
+  },
+]
+`;
+
+exports[`date unit options for ThisNextLast component lastUnits matches expected values 1`] = `
+Array [
+  Object {
+    "label": "second",
+    "singular": "second",
+    "unit": "second",
+    "value": "second",
+  },
+  Object {
+    "label": "minute",
+    "singular": "minute",
+    "unit": "minute",
+    "value": "minute",
+  },
+  Object {
+    "label": "hour",
+    "singular": "hour",
+    "unit": "hour",
+    "value": "hour",
+  },
+  Object {
+    "label": "day",
+    "singular": "day",
+    "unit": "day",
+    "value": "day",
+  },
   Object {
     "label": "week",
     "singular": "week",
@@ -135,26 +165,8 @@ Array [
 ]
 `;
 
-exports[`date unit options for ThisNextLast component thisUnits matches expected values 1`] = `
+exports[`date unit options for ThisNextLast component thisNextUnits matches expected values 1`] = `
 Array [
-  Object {
-    "label": "second",
-    "singular": "second",
-    "unit": "second",
-    "value": "second",
-  },
-  Object {
-    "label": "minute",
-    "singular": "minute",
-    "unit": "minute",
-    "value": "minute",
-  },
-  Object {
-    "label": "hour",
-    "singular": "hour",
-    "unit": "hour",
-    "value": "hour",
-  },
   Object {
     "label": "day",
     "singular": "day",

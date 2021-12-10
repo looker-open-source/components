@@ -25,14 +25,15 @@
  */
 
 import { linePositioning } from './linePositioning'
-import { mockLineConfig, mockFields } from '../__mocks__'
+import { mockLineConfig, mockFields, mockSdkDataResponse } from '../__mocks__'
 
 describe('linePositioning', () => {
   test('default', () => {
     const config = { ...mockLineConfig }
     delete config.positioning
     expect(
-      linePositioning({ config, fields: mockFields }).config.positioning
+      linePositioning({ config, data: mockSdkDataResponse, fields: mockFields })
+        .config.positioning
     ).toEqual('overlay')
   })
 
@@ -41,6 +42,7 @@ describe('linePositioning', () => {
       const config = { ...mockLineConfig, positioning: 'overlay' as const }
       const { config: transformedConfig } = linePositioning({
         config,
+        data: mockSdkDataResponse,
         fields: mockFields,
       })
       expect(transformedConfig.positioning).toEqual('overlay')
@@ -50,6 +52,7 @@ describe('linePositioning', () => {
       const config = { ...mockLineConfig, positioning: 'percent' as const }
       const { config: transformedConfig } = linePositioning({
         config,
+        data: mockSdkDataResponse,
         fields: mockFields,
       })
       expect(transformedConfig.positioning).toEqual('percent')
@@ -59,6 +62,7 @@ describe('linePositioning', () => {
       const config = { ...mockLineConfig, positioning: 'stacked' as const }
       const { config: transformedConfig } = linePositioning({
         config,
+        data: mockSdkDataResponse,
         fields: mockFields,
       })
       expect(transformedConfig.positioning).toEqual('stacked')
@@ -72,6 +76,7 @@ describe('linePositioning', () => {
 
       const { config: transformedConfig } = linePositioning({
         config,
+        data: mockSdkDataResponse,
         fields: mockFields,
       })
       expect(transformedConfig.positioning).toEqual('overlay')
@@ -83,6 +88,7 @@ describe('linePositioning', () => {
 
       const { config: transformedConfig } = linePositioning({
         config,
+        data: mockSdkDataResponse,
         fields: mockFields,
       })
       expect(transformedConfig.positioning).toEqual('stacked')
@@ -94,6 +100,7 @@ describe('linePositioning', () => {
 
       const { config: transformedConfig } = linePositioning({
         config,
+        data: mockSdkDataResponse,
         fields: mockFields,
       })
       expect(transformedConfig.positioning).toEqual('percent')
@@ -105,6 +112,7 @@ describe('linePositioning', () => {
 
       const { config: transformedConfig } = linePositioning({
         config,
+        data: mockSdkDataResponse,
         fields: mockFields,
       })
       expect(transformedConfig.positioning).toEqual('overlay')
@@ -116,6 +124,7 @@ describe('linePositioning', () => {
 
       const { config: transformedConfig } = linePositioning({
         config,
+        data: mockSdkDataResponse,
         fields: mockFields,
       })
       expect(transformedConfig.positioning).toEqual('stacked')
@@ -127,6 +136,7 @@ describe('linePositioning', () => {
 
       const { config: transformedConfig } = linePositioning({
         config,
+        data: mockSdkDataResponse,
         fields: mockFields,
       })
       expect(transformedConfig.positioning).toEqual('overlay')

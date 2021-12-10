@@ -23,7 +23,58 @@
  SOFTWARE.
 
  */
-import { parseFilterExpression } from '../utils'
+import {
+  convertTypeToMatchesAdvancedOption,
+  i18nInit,
+  parseFilterExpression,
+  summary,
+  treeToList,
+} from '../utils'
+// import { i18nInit } from '../i18n'
+import { dateExpressionTestItems } from './date_grammar_test_expressions'
+import type { GrammarTestItem } from './grammar_test_utils'
+import { dateFilterToString } from '../utils/date/date_filter_to_string'
+
+const testDateItem = (testItem: GrammarTestItem) => {
+  test(`${testItem.expression}`, () => {
+    const { expression, type, describe, output, filterType = 'date' } = testItem
+
+    // test ast
+    const ast = parseFilterExpression(filterType, expression)
+    expect(ast).toMatchSnapshot()
+
+    // test descriptions
+    const description = summary({ type: filterType, expression })
+    expect(description).toBe(describe)
+
+    // test item type
+    const list = treeToList(ast)
+    const item = list[0]
+    if (type) {
+      expect(item.type).toEqual(type)
+    }
+
+    // test serialized output
+    // some filter types can't be represented by DateFilter,
+    // we expect this to be parsed as `type` above,
+    // but be converted to `matchesAdvanced`
+    const dateComponentType = convertTypeToMatchesAdvancedOption(item)
+    const dateOutput =
+      dateComponentType === 'matchesAdvanced'
+        ? expression
+        : dateFilterToString(ast, filterType)
+    expect(dateOutput).toBe(output)
+  })
+}
+
+describe('Date grammar can parse', () => {
+  beforeEach(() =>
+    i18nInit().catch((e) => {
+      throw new Error(e)
+    })
+  )
+  dateExpressionTestItems.forEach(testDateItem)
+})
 
 const basicDates = [
   'this day',

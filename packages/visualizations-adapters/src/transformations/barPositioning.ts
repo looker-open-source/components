@@ -43,6 +43,7 @@ const GROUP_MODES: Record<AllKeys, CBar['positioning']> = {
  */
 export const barPositioning: ConfigHelper<CBar | CColumn> = ({
   config,
+  data,
   fields,
 }) => {
   const { positioning, stacking, ...restConfig } = config
@@ -55,6 +56,7 @@ export const barPositioning: ConfigHelper<CBar | CColumn> = ({
       positioning:
         GROUP_MODES[currentPositioning as AllKeys] || GROUP_MODES.default,
     },
+    data,
     fields,
   }
 }

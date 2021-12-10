@@ -43,6 +43,19 @@ import {
 } from '../utils'
 import type { Tab2Props } from './types'
 
+export const Indicator = styled.span<{
+  selected: boolean | undefined
+}>`
+  background-color: ${({ selected, theme }) =>
+    selected ? theme.colors.key : 'transparent'};
+  border-radius: 3px 3px 0 0;
+  height: 3px;
+  margin-top: ${({ theme }) => theme.space.u05};
+  padding-left: ${({ theme }) => theme.space.u05};
+  padding-right: ${({ theme }) => theme.space.u05};
+  width: 100%;
+`
+
 export const Tab2 = styled(
   forwardRef((props: Tab2Props, forwardedRef: Ref<HTMLButtonElement>) => {
     const {
@@ -85,7 +98,6 @@ export const Tab2 = styled(
         onSelect()
       }
     }, onClick)
-
     return (
       <button
         aria-controls={`panel-${id}`}
@@ -103,7 +115,7 @@ export const Tab2 = styled(
         {...rippleHandlers}
       >
         <span>{children}</span>
-        <span />
+        <Indicator selected={selected} />
       </button>
     )
   })
@@ -135,21 +147,7 @@ export const Tab2 = styled(
   min-width: fit-content;
   padding-left: ${({ theme }) => theme.space.u4};
   padding-right: ${({ theme }) => theme.space.u4};
-  span {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-  }
-  span:last-child {
-    background-color: ${({ selected, theme }) => selected && theme.colors.key};
-    border-radius: 3px 3px 0 0;
-    height: 3px;
-    margin-top: ${({ theme }) => theme.space.u05};
-    padding-left: ${({ theme }) => theme.space.u05};
-    padding-right: ${({ theme }) => theme.space.u05};
-    width: 100%;
-  }
+
   ${({ disabled }) =>
     disabled &&
     css`

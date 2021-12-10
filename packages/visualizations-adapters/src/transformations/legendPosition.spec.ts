@@ -25,7 +25,7 @@
  */
 
 import { legendPosition } from './legendPosition'
-import { mockBarConfig, mockFields } from '../__mocks__'
+import { mockBarConfig, mockSdkDataResponse, mockFields } from '../__mocks__'
 
 describe('legendPosition', () => {
   describe('config.hide_legend ===', () => {
@@ -34,6 +34,7 @@ describe('legendPosition', () => {
       const { config: transformedConfig } = legendPosition({
         config,
         fields: mockFields,
+        data: mockSdkDataResponse,
       })
       expect(transformedConfig.legend).toEqual(false)
     })
@@ -43,6 +44,7 @@ describe('legendPosition', () => {
       const { config: transformedConfig } = legendPosition({
         config,
         fields: mockFields,
+        data: mockSdkDataResponse,
       })
       expect(transformedConfig.legend).toEqual({ position: 'bottom' })
     })
@@ -58,6 +60,7 @@ describe('legendPosition', () => {
       const { config: transformedConfig } = legendPosition({
         config,
         fields: mockFields,
+        data: mockSdkDataResponse,
       })
       expect(transformedConfig.legend).toEqual({ position: 'bottom' })
     })
@@ -71,6 +74,7 @@ describe('legendPosition', () => {
       const { config: transformedConfig } = legendPosition({
         config,
         fields: mockFields,
+        data: mockSdkDataResponse,
       })
       expect(transformedConfig.legend).toEqual({ position: 'bottom' })
     })
@@ -84,6 +88,7 @@ describe('legendPosition', () => {
       const { config: transformedConfig } = legendPosition({
         config,
         fields: mockFields,
+        data: mockSdkDataResponse,
       })
       expect(transformedConfig.legend).toEqual({ position: 'left' })
     })
@@ -97,6 +102,7 @@ describe('legendPosition', () => {
       const { config: transformedConfig } = legendPosition({
         config,
         fields: mockFields,
+        data: mockSdkDataResponse,
       })
       expect(transformedConfig.legend).toEqual({ position: 'right' })
     })
@@ -110,6 +116,7 @@ describe('legendPosition', () => {
       const { config: transformedConfig } = legendPosition({
         config,
         fields: mockFields,
+        data: mockSdkDataResponse,
       })
       expect(transformedConfig.legend).toEqual({ position: 'top' })
     })
@@ -126,6 +133,7 @@ describe('legendPosition', () => {
       const { config: transformedConfig } = legendPosition({
         config,
         fields: mockFields,
+        data: mockSdkDataResponse,
       })
       expect(transformedConfig.legend).toEqual({ position: 'bottom' })
     })
@@ -140,6 +148,7 @@ describe('legendPosition', () => {
       const { config: transformedConfig } = legendPosition({
         config,
         fields: mockFields,
+        data: mockSdkDataResponse,
       })
       expect(transformedConfig.legend).toEqual({ position: 'left' })
     })
@@ -154,6 +163,7 @@ describe('legendPosition', () => {
       const { config: transformedConfig } = legendPosition({
         config,
         fields: mockFields,
+        data: mockSdkDataResponse,
       })
       expect(transformedConfig.legend).toEqual({ position: 'right' })
     })
@@ -168,6 +178,7 @@ describe('legendPosition', () => {
       const { config: transformedConfig } = legendPosition({
         config,
         fields: mockFields,
+        data: mockSdkDataResponse,
       })
       expect(transformedConfig.legend).toEqual({ position: 'top' })
     })

@@ -1,5 +1,134 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Date grammar can parse  1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "type": "anyvalue",
+}
+`;
+
+exports[`Date grammar can parse 3 days 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "past",
+  "unit": "day",
+  "value": 3,
+}
+`;
+
+exports[`Date grammar can parse 3 days ago 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "pastAgo",
+  "unit": "day",
+  "value": 3,
+}
+`;
+
+exports[`Date grammar can parse 3 months ago for 2 days 1`] = `
+Object {
+  "endInterval": Object {
+    "type": "interval",
+    "unit": "day",
+    "value": 2,
+  },
+  "id": 1,
+  "intervalType": "ago",
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "startInterval": Object {
+    "type": "interval",
+    "unit": "month",
+    "value": 3,
+  },
+  "type": "relative",
+}
+`;
+
+exports[`Date grammar can parse 7 year ago 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "pastAgo",
+  "unit": "year",
+  "value": 7,
+}
+`;
+
+exports[`Date grammar can parse 2018 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "year",
+  "year": "2018",
+}
+`;
+
+exports[`Date grammar can parse 2018/01 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "month": "01",
+  "right": undefined,
+  "type": "month",
+  "year": "2018",
+}
+`;
+
+exports[`Date grammar can parse 2018-05-18 1`] = `
+Object {
+  "date": Object {
+    "day": "18",
+    "month": "05",
+    "year": "2018",
+  },
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "on",
+}
+`;
+
+exports[`Date grammar can parse 2018-05-18 12:00:00 to 2018-05-18 14:00:00 1`] = `
+Object {
+  "end": Object {
+    "day": "18",
+    "hour": "14",
+    "minute": "00",
+    "month": "05",
+    "second": "00",
+    "year": "2018",
+  },
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "start": Object {
+    "day": "18",
+    "hour": "12",
+    "minute": "00",
+    "month": "05",
+    "second": "00",
+    "year": "2018",
+  },
+  "type": "range",
+}
+`;
+
 exports[`Date grammar can parse absolute date 2018 1`] = `
 Object {
   "id": 1,
@@ -170,6 +299,149 @@ Object {
   "range": "absolute",
   "right": undefined,
   "type": "before",
+}
+`;
+
+exports[`Date grammar can parse after 1 month ago 1`] = `
+Object {
+  "fromnow": false,
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "range": "relative",
+  "right": undefined,
+  "type": "after",
+  "unit": "month",
+  "value": 1,
+}
+`;
+
+exports[`Date grammar can parse after 2 weeks from now 1`] = `
+Object {
+  "fromnow": true,
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "range": "relative",
+  "right": undefined,
+  "type": "after",
+  "unit": "week",
+  "value": 2,
+}
+`;
+
+exports[`Date grammar can parse after 2018-10-05 1`] = `
+Object {
+  "date": Object {
+    "day": "05",
+    "month": "10",
+    "year": "2018",
+  },
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "range": "absolute",
+  "right": undefined,
+  "type": "after",
+}
+`;
+
+exports[`Date grammar can parse after last day 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "after_last",
+  "unit": "day",
+}
+`;
+
+exports[`Date grammar can parse after last quarter 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "after_last",
+  "unit": "quarter",
+}
+`;
+
+exports[`Date grammar can parse after last year 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "after_last",
+  "unit": "year",
+}
+`;
+
+exports[`Date grammar can parse after next day 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "after_next",
+  "unit": "day",
+}
+`;
+
+exports[`Date grammar can parse after next month 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "after_next",
+  "unit": "month",
+}
+`;
+
+exports[`Date grammar can parse after next week 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "after_next",
+  "unit": "week",
+}
+`;
+
+exports[`Date grammar can parse after this day 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "after_this",
+  "unit": "day",
+}
+`;
+
+exports[`Date grammar can parse after this month 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "after_this",
+  "unit": "month",
+}
+`;
+
+exports[`Date grammar can parse after this week 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "after_this",
+  "unit": "week",
 }
 `;
 
@@ -459,6 +731,152 @@ Object {
 }
 `;
 
+exports[`Date grammar can parse before 2 months from now 1`] = `
+Object {
+  "fromnow": true,
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "range": "relative",
+  "right": undefined,
+  "type": "before",
+  "unit": "month",
+  "value": 2,
+}
+`;
+
+exports[`Date grammar can parse before 3 days ago 1`] = `
+Object {
+  "fromnow": false,
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "range": "relative",
+  "right": undefined,
+  "type": "before",
+  "unit": "day",
+  "value": 3,
+}
+`;
+
+exports[`Date grammar can parse before 2018-01-01 12:00:00 1`] = `
+Object {
+  "date": Object {
+    "day": "01",
+    "hour": "12",
+    "minute": "00",
+    "month": "01",
+    "second": "00",
+    "year": "2018",
+  },
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "range": "absolute",
+  "right": undefined,
+  "type": "before",
+}
+`;
+
+exports[`Date grammar can parse before last day 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "before_last",
+  "unit": "day",
+}
+`;
+
+exports[`Date grammar can parse before last month 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "before_last",
+  "unit": "month",
+}
+`;
+
+exports[`Date grammar can parse before last week 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "before_last",
+  "unit": "week",
+}
+`;
+
+exports[`Date grammar can parse before next day 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "before_next",
+  "unit": "day",
+}
+`;
+
+exports[`Date grammar can parse before next quarter 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "before_next",
+  "unit": "quarter",
+}
+`;
+
+exports[`Date grammar can parse before next year 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "before_next",
+  "unit": "year",
+}
+`;
+
+exports[`Date grammar can parse before this day 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "before_this",
+  "unit": "day",
+}
+`;
+
+exports[`Date grammar can parse before this month 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "before_this",
+  "unit": "month",
+}
+`;
+
+exports[`Date grammar can parse before this week 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "before_this",
+  "unit": "week",
+}
+`;
+
 exports[`Date grammar can parse days 1 day ago 1`] = `
 Object {
   "id": 1,
@@ -588,6 +1006,127 @@ Object {
 }
 `;
 
+exports[`Date grammar can parse last day 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "last",
+  "unit": "day",
+}
+`;
+
+exports[`Date grammar can parse last fiscal quarter 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "last",
+  "unit": "fiscal quarter",
+}
+`;
+
+exports[`Date grammar can parse last fiscal year 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "last",
+  "unit": "fiscal year",
+}
+`;
+
+exports[`Date grammar can parse last hour 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "last",
+  "unit": "hour",
+}
+`;
+
+exports[`Date grammar can parse last minute 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "last",
+  "unit": "minute",
+}
+`;
+
+exports[`Date grammar can parse last month 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "last",
+  "unit": "month",
+}
+`;
+
+exports[`Date grammar can parse last quarter 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "last",
+  "unit": "quarter",
+}
+`;
+
+exports[`Date grammar can parse last second 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "last",
+  "unit": "second",
+}
+`;
+
+exports[`Date grammar can parse last week 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "last",
+  "unit": "week",
+}
+`;
+
+exports[`Date grammar can parse last week 2`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "last",
+  "unit": "week",
+}
+`;
+
+exports[`Date grammar can parse last year 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "last",
+  "unit": "year",
+}
+`;
+
 exports[`Date grammar can parse minutes 1 minute 1`] = `
 Object {
   "id": 1,
@@ -630,6 +1169,17 @@ Object {
     "value": 60,
   },
   "type": "relative",
+}
+`;
+
+exports[`Date grammar can parse monday 1`] = `
+Object {
+  "day": "monday",
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "day",
 }
 `;
 
@@ -787,6 +1337,114 @@ Object {
   "right": undefined,
   "type": "this",
   "unit": "month",
+}
+`;
+
+exports[`Date grammar can parse next day 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "next",
+  "unit": "day",
+}
+`;
+
+exports[`Date grammar can parse next fiscal quarter 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "next",
+  "unit": "fiscal quarter",
+}
+`;
+
+exports[`Date grammar can parse next fiscal year 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "next",
+  "unit": "fiscal year",
+}
+`;
+
+exports[`Date grammar can parse next month 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "next",
+  "unit": "month",
+}
+`;
+
+exports[`Date grammar can parse next quarter 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "next",
+  "unit": "quarter",
+}
+`;
+
+exports[`Date grammar can parse next week 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "next",
+  "unit": "week",
+}
+`;
+
+exports[`Date grammar can parse next week 2`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "next",
+  "unit": "week",
+}
+`;
+
+exports[`Date grammar can parse next year 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "next",
+  "unit": "year",
+}
+`;
+
+exports[`Date grammar can parse not null 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "notnull",
+}
+`;
+
+exports[`Date grammar can parse null 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "null",
 }
 `;
 
@@ -949,6 +1607,107 @@ Object {
     "value": 60,
   },
   "type": "relative",
+}
+`;
+
+exports[`Date grammar can parse this day 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "this",
+  "unit": "day",
+}
+`;
+
+exports[`Date grammar can parse this fiscal quarter 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "this",
+  "unit": "fiscal quarter",
+}
+`;
+
+exports[`Date grammar can parse this fiscal year 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "this",
+  "unit": "fiscal year",
+}
+`;
+
+exports[`Date grammar can parse this month 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "this",
+  "unit": "month",
+}
+`;
+
+exports[`Date grammar can parse this quarter 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "this",
+  "unit": "quarter",
+}
+`;
+
+exports[`Date grammar can parse this week 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "this",
+  "unit": "week",
+}
+`;
+
+exports[`Date grammar can parse this year 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "this",
+  "unit": "year",
+}
+`;
+
+exports[`Date grammar can parse this year to day 1`] = `
+Object {
+  "endInterval": "day",
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "startInterval": "year",
+  "type": "thisRange",
+}
+`;
+
+exports[`Date grammar can parse this year to second 1`] = `
+Object {
+  "endInterval": "second",
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "startInterval": "year",
+  "type": "thisRange",
 }
 `;
 

@@ -34,7 +34,11 @@ import isNull from 'lodash/isNull'
  * Created for use in Sparkline where the y-axis options are much simpler than
  * other cartesian charts.
  */
-export const yAxisRange: ConfigHelper<CSparkline> = ({ config, fields }) => {
+export const yAxisRange: ConfigHelper<CSparkline> = ({
+  config,
+  data,
+  fields,
+}) => {
   const {
     y_axes: y_axis_raw = [{}] as YAxisRaw[], // default object from SDK
     y_axis = [{}] as YAxisConfig[], // officially supported config
@@ -67,6 +71,7 @@ export const yAxisRange: ConfigHelper<CSparkline> = ({ config, fields }) => {
       ...restConfig,
       y_axis: yAxisWithDefaults,
     },
+    data,
     fields,
   }
 }

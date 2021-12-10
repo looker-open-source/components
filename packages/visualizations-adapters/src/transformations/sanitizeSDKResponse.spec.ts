@@ -24,7 +24,11 @@
 
  */
 
-import { mockFields, mockSdkConfigResponse } from '../__mocks__'
+import {
+  mockFields,
+  mockSdkConfigResponse,
+  mockSdkDataResponse,
+} from '../__mocks__'
 import { keysToRemove, sanitizeSDKResponse } from './sanitizeSDKResponse'
 
 describe('sanitizeSDKResponse', () => {
@@ -36,6 +40,7 @@ describe('sanitizeSDKResponse', () => {
 
     const transformedConfig = sanitizeSDKResponse({
       config: mockSdkConfigResponse,
+      data: mockSdkDataResponse,
       fields: mockFields,
     })
 

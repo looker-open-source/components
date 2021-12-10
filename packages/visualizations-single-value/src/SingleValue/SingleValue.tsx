@@ -41,12 +41,13 @@ export const SingleValue: FC<SingleValueProps> = ({
     return null
   }
   const { series = {} } = config
+
   // only allow one measure for single_value
-  const { name, value_format } = fields.measures[0]
+  const { name } = fields.measures[0]
   const firstSeries = Array.isArray(series) ? series[0] : series[name || '']
-  const { color, label } = firstSeries
+  const { color, label, value_format } = firstSeries
   const value: number = data[0][name || '']
-  const formattedValue = numeral(value).format(value_format || '0,0')
+  const formattedValue = numeral(value).format(value_format)
   return (
     <VisWrapper>
       <SingleValueLayout width={width} height={height}>

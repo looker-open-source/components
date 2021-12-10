@@ -25,7 +25,7 @@
  */
 
 import { xAxis } from './xAxis'
-import { mockBarConfig, mockFields } from '../__mocks__'
+import { mockBarConfig, mockFields, mockSdkDataResponse } from '../__mocks__'
 import type { XAxisConfig } from '../types'
 
 describe('xAxis', () => {
@@ -41,6 +41,7 @@ describe('xAxis', () => {
 
     const transformedConfig = xAxis({
       config: { ...mockBarConfig, x_axis },
+      data: mockSdkDataResponse,
       fields: mockFields,
     })
 
@@ -58,6 +59,7 @@ describe('xAxis', () => {
 
     const transformedConfig = xAxis({
       config: { ...mockBarConfig, x_axis: undefined, ...customizations },
+      data: mockSdkDataResponse,
       fields: mockFields,
     })
 
@@ -81,6 +83,7 @@ describe('xAxis', () => {
         x_axis_reversed: undefined,
         x_axis: undefined,
       },
+      data: mockSdkDataResponse,
       fields: mockFields,
     })
 

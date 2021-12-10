@@ -25,12 +25,15 @@
  */
 
 export * from './buildChartConfig'
+export * from './buildPivotFields'
+export * from './buildPivotMeasureName'
 export * from './formatErrorMessage'
 export * from './formatTotals'
 export * from './hexToRgba'
 export * from './usePrevious'
 export * from './useMeasuredText'
 export * from './tabularResponse'
+export * from './tabularPivotResponse'
 export * from './generateLegend'
 export * from './isNumeric'
 export * from './getSeriesMax'

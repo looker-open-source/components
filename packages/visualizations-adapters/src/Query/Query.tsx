@@ -32,7 +32,7 @@ import type { IError, Looker40SDK } from '@looker/sdk'
 import type { ISDKErrorResponse, ISDKSuccessResponse } from '@looker/sdk-rtl'
 import { isNumeric } from '../utils'
 import { QueryContext } from './QueryContext'
-import type { SDKRecord, CAll, Fields, Totals } from '../types'
+import type { SDKRecord, CAll, Fields, Pivots, Totals } from '../types'
 
 interface QueryProps {
   sdk: Looker40SDK
@@ -91,6 +91,7 @@ type DataReducerState = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   visConfig: null | Record<string, any>
   fields: null | Fields
+  pivots: null | Pivots
   shareUrl: null | string
   totals: null | Totals
 }
@@ -106,6 +107,7 @@ type DataReducerAction =
         | { data: SDKRecord }
         | { visConfig: Partial<CAll> }
         | { fields: Fields }
+        | { pivots: Pivots }
         | { shareUrl: string }
         | { totals: Totals }
     }
@@ -115,6 +117,7 @@ const initialDataState: DataReducerState = {
   data: null,
   visConfig: null,
   fields: null,
+  pivots: null,
   shareUrl: null,
   totals: null,
 }
@@ -149,7 +152,15 @@ export const Query: FC<QueryProps> = ({
     initialAsyncState
   )
 
-  const { data, fields, totals, visConfig, shareUrl, queryId } = dataState
+  const {
+    data,
+    fields,
+    pivots,
+    totals,
+    visConfig,
+    shareUrl,
+    queryId,
+  } = dataState
 
   // They passed in a query ID instead of query Slug. No need to request this from the server:
   if (isNumeric(query) && !queryId) {
@@ -280,13 +291,14 @@ export const Query: FC<QueryProps> = ({
         const {
           data,
           fields,
+          pivots,
           totals_data,
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } = (result as ISDKSuccessResponse<any>).value
 
         dispatchDataReducer({
           type: 'update',
-          value: { data, fields, totals: totals_data },
+          value: { data, fields, pivots, totals: totals_data },
         })
       }
     }
@@ -330,7 +342,7 @@ export const Query: FC<QueryProps> = ({
         error,
         ok: isEveryResponseOk,
         loading: isLoading,
-        ...(isDataValid && { data, fields, shareUrl, totals }),
+        ...(isDataValid && { data, fields, pivots, shareUrl, totals }),
       }}
     >
       {children}

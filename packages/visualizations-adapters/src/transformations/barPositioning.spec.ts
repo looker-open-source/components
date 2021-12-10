@@ -25,7 +25,7 @@
  */
 
 import { barPositioning } from './barPositioning'
-import { mockBarConfig, mockFields } from '../__mocks__'
+import { mockBarConfig, mockFields, mockSdkDataResponse } from '../__mocks__'
 
 describe('barPositioning', () => {
   test('default', () => {
@@ -33,7 +33,8 @@ describe('barPositioning', () => {
     delete config.positioning
 
     expect(
-      barPositioning({ config, fields: mockFields }).config.positioning
+      barPositioning({ config, data: mockSdkDataResponse, fields: mockFields })
+        .config.positioning
     ).toEqual('grouped')
   })
 
@@ -42,6 +43,7 @@ describe('barPositioning', () => {
       const config = { ...mockBarConfig, positioning: 'grouped' as const }
       const { config: transformedConfig } = barPositioning({
         config,
+        data: mockSdkDataResponse,
         fields: mockFields,
       })
       expect(transformedConfig.positioning).toEqual('grouped')
@@ -51,6 +53,7 @@ describe('barPositioning', () => {
       const config = { ...mockBarConfig, positioning: 'percent' as const }
       const { config: transformedConfig } = barPositioning({
         config,
+        data: mockSdkDataResponse,
         fields: mockFields,
       })
       expect(transformedConfig.positioning).toEqual('percent')
@@ -60,6 +63,7 @@ describe('barPositioning', () => {
       const config = { ...mockBarConfig, positioning: 'stacked' as const }
       const { config: transformedConfig } = barPositioning({
         config,
+        data: mockSdkDataResponse,
         fields: mockFields,
       })
       expect(transformedConfig.positioning).toEqual('stacked')
@@ -73,6 +77,7 @@ describe('barPositioning', () => {
 
       const { config: transformedConfig } = barPositioning({
         config,
+        data: mockSdkDataResponse,
         fields: mockFields,
       })
       expect(transformedConfig.positioning).toEqual('grouped')
@@ -84,6 +89,7 @@ describe('barPositioning', () => {
 
       const { config: transformedConfig } = barPositioning({
         config,
+        data: mockSdkDataResponse,
         fields: mockFields,
       })
       expect(transformedConfig.positioning).toEqual('stacked')
@@ -95,6 +101,7 @@ describe('barPositioning', () => {
 
       const { config: transformedConfig } = barPositioning({
         config,
+        data: mockSdkDataResponse,
         fields: mockFields,
       })
       expect(transformedConfig.positioning).toEqual('percent')
@@ -106,6 +113,7 @@ describe('barPositioning', () => {
 
       const { config: transformedConfig } = barPositioning({
         config,
+        data: mockSdkDataResponse,
         fields: mockFields,
       })
       expect(transformedConfig.positioning).toEqual('grouped')
@@ -117,6 +125,7 @@ describe('barPositioning', () => {
 
       const { config: transformedConfig } = barPositioning({
         config,
+        data: mockSdkDataResponse,
         fields: mockFields,
       })
       expect(transformedConfig.positioning).toEqual('stacked')
@@ -128,6 +137,7 @@ describe('barPositioning', () => {
 
       const { config: transformedConfig } = barPositioning({
         config,
+        data: mockSdkDataResponse,
         fields: mockFields,
       })
       expect(transformedConfig.positioning).toEqual('grouped')

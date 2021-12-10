@@ -23,20 +23,22 @@
  SOFTWARE.
 
  */
+
 import type { ValidationMessageProps } from '@looker/components'
 import type {
   FilterExpressionType,
-  FilterModel,
   UserAttributeWithValue,
 } from '@looker/filter-expressions'
 import type { ILookmlModelExploreField } from '@looker/sdk'
+import type { FilterItemLayoutProps } from './filter_item_layout_props'
 import type { Option } from './option'
 
 /**
- * Interface for the parameters assigned to Filter/components
+ * Interface for the parameters assigned to AdvancedFilter/components
  */
-export interface FilterParamProps<T extends string = string> {
-  item: FilterModel<T>
+export type FilterParamProps<
+  T extends string = string
+> = FilterItemLayoutProps<T> & {
   name?: string
   filterType: FilterExpressionType
   isLinked?: boolean
@@ -50,12 +52,6 @@ export interface FilterParamProps<T extends string = string> {
   userAttributes?: UserAttributeWithValue[]
   validationMessage?: ValidationMessageProps
   onInputChange?: (value: string) => void
-  showAdd: boolean
-  showName: boolean
-  showRemove: boolean
-  showOperator: boolean
   showMatchesAdvanced: boolean
   anyOption?: boolean
-  onAdd: (item: FilterModel, keepValue?: boolean) => void
-  onRemove: (id: string) => void
 }

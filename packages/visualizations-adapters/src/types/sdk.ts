@@ -72,4 +72,9 @@ export type Fields = {
   measures: FieldMetadata[]
 }
 
+export type Pivots = {
+  data: SDKRecord
+  key: string
+}[]
+
 export type Totals = Record<string, { value: number }>

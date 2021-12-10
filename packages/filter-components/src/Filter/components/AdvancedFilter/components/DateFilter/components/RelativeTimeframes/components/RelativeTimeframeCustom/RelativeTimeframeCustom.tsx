@@ -24,12 +24,13 @@
 
  */
 
-import { InputDateRange, Locales } from '@looker/components-date'
+import { InputDateRange } from '@looker/components-date'
 import React from 'react'
 import styled from 'styled-components'
+import { getDateLocale } from '../../../../../../../../../utils'
 import type { DayRange } from '../../../../types/day_range'
 import type { RelativeTimeframeModel } from '../../../../types/relative_timeframe_types'
-import { useDateLocalization } from '../../../../utils/format_date'
+import { FILTERS_DATE_FORMAT } from '../../../../utils/format_date'
 
 interface RelativeTimeframeCustomProps {
   value: RelativeTimeframeModel
@@ -41,8 +42,6 @@ export const RelativeTimeframeCustom = ({
   onCustomChange,
 }: RelativeTimeframeCustomProps) => {
   const range = typeof value === 'string' ? undefined : value
-
-  const dateLocalization = useDateLocalization()
 
   const handleCustomChange = (d: Partial<DayRange> = {}) => {
     const newDateRange = {
@@ -56,13 +55,12 @@ export const RelativeTimeframeCustom = ({
   return (
     <InputWrapper>
       <InputDateRange
-        localization={dateLocalization}
-        // hardcoding `Japanese` as it matches the current date format: YYYY/MM/DD
+        // hardcoding 'yyyy/MM/dd' for legacy reasons
         // eventually this should be replaced with the user's preferred locale
-        // when the rest of dates are localized
-        dateStringLocale={Locales.Japanese}
+        dateStringFormat={FILTERS_DATE_FORMAT}
         value={range}
         onChange={handleCustomChange}
+        locale={getDateLocale()}
       />
     </InputWrapper>
   )

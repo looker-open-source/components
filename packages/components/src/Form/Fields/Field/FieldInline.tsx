@@ -28,7 +28,7 @@ import type { FC } from 'react'
 import React, { isValidElement } from 'react'
 import styled from 'styled-components'
 import { Label } from '../../Label/Label'
-import { Paragraph } from '../../../Text'
+import { Paragraph, Span } from '../../../Text'
 import { ValidationMessage } from '../../ValidationMessage/ValidationMessage'
 import { Truncate } from '../../../Truncate'
 import { RequiredStar } from './RequiredStar'
@@ -78,7 +78,7 @@ const FieldInlineLayout: FC<FieldInlinePropsInternal> = ({
   )
 }
 
-const FieldDetail = styled(Paragraph)`
+const FieldDetail = styled(Span)`
   color: ${({ theme }) => theme.colors.text2};
   font-size: ${({ theme }) => theme.fontSizes.xsmall};
   grid-column: 3;

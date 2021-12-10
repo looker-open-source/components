@@ -25,8 +25,8 @@
  */
 
 import en from 'date-fns/locale/en-US'
-import type { FC } from 'react'
 import React from 'react'
+import type { FC } from 'react'
 import type { RangeModifier } from 'react-day-picker'
 import DayPicker, { LocaleUtils } from 'react-day-picker'
 import styled, { css } from 'styled-components'
@@ -34,14 +34,13 @@ import has from 'lodash/has'
 import noop from 'lodash/noop'
 import { reset, calendarMixColor } from '@looker/design-tokens'
 import type { Locale } from 'date-fns'
-import type { CalendarLocalization } from '../types'
 import { formatDateString } from '../locale'
 import { calendarSize, calendarSpacing } from './calendar-size'
 import { CalendarContext } from './CalendarContext'
 import { CalendarNav } from './CalendarNav'
 import { dayPickerCss } from './dayPickerCss'
-import { CalendarNavDisabled } from './CalendarNavDisabled'
 import { formatMonthTitle } from './formatMonthTitle'
+import { YearMonthForm, fromMonth, toMonth } from './YearMonthForm'
 
 type NavCB = (date: Date) => void
 
@@ -58,10 +57,6 @@ export type CalendarLocaleProps = {
    * import ko from 'date-fns/locale/ko'
    */
   locale?: Locale
-  /**
-   * @deprecated Use locale instead
-   */
-  localization?: CalendarLocalization
 }
 
 export type CalendarProps = CalendarLocaleProps & {
@@ -73,38 +68,20 @@ export type CalendarProps = CalendarLocaleProps & {
   onNowClick?: NavCB
   onPrevClick?: NavCB
   readOnly?: boolean
+  /**
+   * use selectMonth to have month and year in a drop down menu for selection
+   */
+  selectMonth?: boolean
   selectedDates?: Date | Date[] | RangeModifier
   showNextButton?: boolean
   showPreviousButton?: boolean
   viewMonth?: Date
 }
 
-const NoopComponent: FC = () => null
-
 const getLocaleProps = ({
   firstDayOfWeek,
   locale = en,
-  localization,
 }: CalendarLocaleProps) => {
-  // TODO [START] delete when localization prop is removed
-  if (localization) {
-    return {
-      ...localization,
-      localeUtils: {
-        ...LocaleUtils,
-        formatMonthTitle: (month: Date) => {
-          if (localization?.months) {
-            return `${
-              localization.months[month.getMonth()]
-            } ${month.getFullYear()}`
-          }
-          return LocaleUtils.formatMonthTitle(month)
-        },
-      },
-    }
-  }
-  // TODO [END] delete when localization prop is removed
-
   const localeUtils: typeof LocaleUtils = {
     ...LocaleUtils,
     formatDay: date => formatDateString(date, locale, 'iii PP'),
@@ -120,12 +97,14 @@ const getLocaleProps = ({
   }
 }
 
+const NoopComponent: FC = () => null
+
 const InternalCalendar: FC<CalendarProps> = ({
   className,
+  selectMonth,
   disabled,
   firstDayOfWeek: propsFirstDayOfWeek,
   locale,
-  localization,
   onDayClick,
   onMonthChange,
   onNextClick,
@@ -148,6 +127,24 @@ const InternalCalendar: FC<CalendarProps> = ({
     return (date: Date) => (disabled ? noop() : cb(date))
   }
 
+  const { localeUtils, ...localeProps } = getLocaleProps({
+    firstDayOfWeek,
+    locale,
+  })
+  const form = (
+    <YearMonthForm
+      selectMonth={selectMonth}
+      date={viewMonth}
+      disabled={disabled}
+      localeUtils={localeUtils}
+      onChange={onMonthChange}
+      onNowClick={onNowClick}
+      size="medium"
+    />
+  )
+
+  const nav = <CalendarNav>{form}</CalendarNav>
+
   return (
     <CalendarContext.Provider
       value={{
@@ -160,14 +157,17 @@ const InternalCalendar: FC<CalendarProps> = ({
       }}
     >
       <DayPicker
-        {...getLocaleProps({ firstDayOfWeek, locale, localization })}
+        localeUtils={localeUtils}
+        {...localeProps}
         className={`${renderDateRange && 'render-date-range'} ${className}`}
-        selectedDays={selectedDates}
         month={viewMonth}
-        showOutsideDays={true}
+        fromMonth={fromMonth}
+        toMonth={toMonth}
         onDayClick={disableCallback(onDayClick)}
-        navbarElement={disabled ? CalendarNavDisabled : CalendarNav}
+        navbarElement={!disabled ? nav : form}
         captionElement={NoopComponent}
+        selectedDays={selectedDates}
+        showOutsideDays={true}
         modifiers={modifiers}
         onMonthChange={onMonthChange}
       />
@@ -183,6 +183,9 @@ export const Calendar = styled(InternalCalendar).attrs(() => ({
   ${dayPickerCss}
   ${calendarSpacing}
 
+  .DayPicker-NavBar {
+    display: none;
+  }
   .DayPicker-wrapper {
     border: 2px solid transparent;
 
@@ -203,6 +206,11 @@ export const Calendar = styled(InternalCalendar).attrs(() => ({
   .DayPicker-Body {
     display: grid;
     grid-gap: 1px;
+  }
+
+  .DayPicker-Weekdays {
+    display: block;
+    margin-top: 0;
   }
 
   .DayPicker-Week,

@@ -243,6 +243,9 @@ describe('Dialog', () => {
       expect(screen.queryByRole('tooltip')).toBeInTheDocument()
       // Close the dialog to avoid act warning
       fireEvent.click(closeButton)
+
+      // Finish animating
+      runTimers()
     })
   })
 

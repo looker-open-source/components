@@ -25,12 +25,13 @@
  */
 
 import { legendValue } from './legendValue'
-import { mockPieConfig, mockFields } from '../__mocks__'
+import { mockPieConfig, mockFields, mockSdkDataResponse } from '../__mocks__'
 
 describe('legendValue', () => {
   test('default value', () => {
     const { config } = legendValue({
       config: { ...mockPieConfig },
+      data: mockSdkDataResponse,
       fields: mockFields,
     })
 
@@ -46,6 +47,7 @@ describe('legendValue', () => {
       }
       const { config: transformedConfig } = legendValue({
         config,
+        data: mockSdkDataResponse,
         fields: mockFields,
       })
       if (transformedConfig.legend) {
@@ -61,6 +63,7 @@ describe('legendValue', () => {
       }
       const { config: transformedConfig } = legendValue({
         config,
+        data: mockSdkDataResponse,
         fields: mockFields,
       })
       if (transformedConfig.legend) {
@@ -76,6 +79,7 @@ describe('legendValue', () => {
       }
       const { config: transformedConfig } = legendValue({
         config,
+        data: mockSdkDataResponse,
         fields: mockFields,
       })
       if (transformedConfig.legend) {
@@ -91,6 +95,7 @@ describe('legendValue', () => {
       }
       const { config: transformedConfig } = legendValue({
         config,
+        data: mockSdkDataResponse,
         fields: mockFields,
       })
       if (transformedConfig.legend) {
@@ -106,6 +111,7 @@ describe('legendValue', () => {
       }
       const { config: transformedConfig } = legendValue({
         config,
+        data: mockSdkDataResponse,
         fields: mockFields,
       })
       if (transformedConfig.legend) {
@@ -119,6 +125,7 @@ describe('legendValue', () => {
       const config = { ...mockPieConfig, legend: { value: 'label' as const } }
       const { config: transformedConfig } = legendValue({
         config,
+        data: mockSdkDataResponse,
         fields: mockFields,
       })
       if (transformedConfig.legend) {
@@ -130,6 +137,7 @@ describe('legendValue', () => {
       const config = { ...mockPieConfig, legend: { value: 'value' as const } }
       const { config: transformedConfig } = legendValue({
         config,
+        data: mockSdkDataResponse,
         fields: mockFields,
       })
       if (transformedConfig.legend) {
@@ -141,6 +149,7 @@ describe('legendValue', () => {
       const config = { ...mockPieConfig, legend: { value: 'percent' as const } }
       const { config: transformedConfig } = legendValue({
         config,
+        data: mockSdkDataResponse,
         fields: mockFields,
       })
       if (transformedConfig.legend) {
@@ -155,6 +164,7 @@ describe('legendValue', () => {
       }
       const { config: transformedConfig } = legendValue({
         config,
+        data: mockSdkDataResponse,
         fields: mockFields,
       })
       if (transformedConfig.legend) {
@@ -169,6 +179,7 @@ describe('legendValue', () => {
       }
       const { config: transformedConfig } = legendValue({
         config,
+        data: mockSdkDataResponse,
         fields: mockFields,
       })
       if (transformedConfig.legend) {
@@ -181,6 +192,7 @@ describe('legendValue', () => {
     const config = { ...mockPieConfig, legend: false }
     const { config: transformedConfig } = legendValue({
       config,
+      data: mockSdkDataResponse,
       fields: mockFields,
     })
     expect(transformedConfig.legend).toEqual(false)

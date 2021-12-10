@@ -49,7 +49,7 @@ import {
   pickLongestLabel,
   useMeasuredText,
 } from '@looker/visualizations-adapters'
-import { Legend } from '../Legend'
+import { XYLegend } from '../XYLegend'
 import isArray from 'lodash/isArray'
 import get from 'lodash/get'
 import compact from 'lodash/compact'
@@ -62,7 +62,7 @@ import {
   isValidChartData,
   formatDateLabel,
 } from '../utils'
-import { Tooltip } from '../Tooltip'
+import { XYTooltip } from '../XYTooltip'
 import { Grid } from '../Grid'
 
 export const Bar: FC<BarProps> = ({
@@ -204,7 +204,7 @@ export const Bar: FC<BarProps> = ({
           {xAxis}
           {yAxis}
           <Grid config={config} />
-          <Tooltip
+          <XYTooltip
             config={config}
             data={formattedData}
             fields={fields}
@@ -219,7 +219,7 @@ export const Bar: FC<BarProps> = ({
             <BarGroup>{renderedBars}</BarGroup>
           )}
         </XYChart>
-        <Legend config={config} fields={fields} />
+        <XYLegend config={config} fields={fields} />
       </VisWrapper>
     </DataProvider>
   )

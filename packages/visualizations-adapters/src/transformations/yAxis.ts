@@ -92,7 +92,7 @@ const deriveDefaults = (
  * Combine `y_axis_reversed` and `y_axes: {showValues, showLabels}` into
  * `y_axis: {reversed, show_values, show_label }`
  */
-export const yAxis: ConfigHelper<CCartesian> = ({ config, fields }) => {
+export const yAxis: ConfigHelper<CCartesian> = ({ config, data, fields }) => {
   const {
     y_axes: y_axis_raw = [{}] as YAxisRaw[], // default object from SDK
     y_axis_reversed = false,
@@ -121,6 +121,7 @@ export const yAxis: ConfigHelper<CCartesian> = ({ config, fields }) => {
       ...restConfig,
       y_axis: yAxisWithDefaults,
     },
+    data,
     fields,
   }
 }

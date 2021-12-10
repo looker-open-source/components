@@ -24,7 +24,7 @@
 
  */
 
-import { mockLineConfig, mockFields } from '../__mocks__'
+import { mockLineConfig, mockFields, mockSdkDataResponse } from '../__mocks__'
 import { renderNullValues } from './renderNullValues'
 
 describe('renderNullValues', () => {
@@ -32,6 +32,7 @@ describe('renderNullValues', () => {
     const config = { ...mockLineConfig }
     const { config: transformedConfig } = renderNullValues({
       config,
+      data: mockSdkDataResponse,
       fields: mockFields,
     })
     expect(transformedConfig.render_null_values).toEqual(false)
@@ -41,6 +42,7 @@ describe('renderNullValues', () => {
     const config = { ...mockLineConfig, render_null_values: true }
     const { config: transformedConfig } = renderNullValues({
       config,
+      data: mockSdkDataResponse,
       fields: mockFields,
     })
     expect(transformedConfig.render_null_values).toEqual(true)
@@ -50,6 +52,7 @@ describe('renderNullValues', () => {
     const config = { ...mockLineConfig, render_null_values: false }
     const { config: transformedConfig } = renderNullValues({
       config,
+      data: mockSdkDataResponse,
       fields: mockFields,
     })
     expect(transformedConfig.render_null_values).toEqual(false)

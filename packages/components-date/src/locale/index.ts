@@ -26,5 +26,5 @@
 
 export * from './formatDateString'
 // TODO delete when dateStringLocale prop is removed
-export * from './deprecated'
+export * from './getLocale'
 export * from './parseDateFromString'

@@ -25,7 +25,7 @@
  */
 
 import { yAxis } from './yAxis'
-import { mockBarConfig, mockFields } from '../__mocks__'
+import { mockBarConfig, mockFields, mockSdkDataResponse } from '../__mocks__'
 import type { YAxisConfig, YAxisRaw } from '../types'
 
 describe('yAxis', () => {
@@ -41,6 +41,7 @@ describe('yAxis', () => {
 
     const transformedConfig = yAxis({
       config: { ...mockBarConfig, y_axis },
+      data: mockSdkDataResponse,
       fields: mockFields,
     })
 
@@ -65,6 +66,7 @@ describe('yAxis', () => {
 
     const { config: transformedConfig } = yAxis({
       config: { ...mockBarConfig, y_axes: rawAxisResponse, y_axis: overrides },
+      data: mockSdkDataResponse,
       fields: mockFields,
     })
 
@@ -96,6 +98,7 @@ describe('yAxis', () => {
 
     const transformedConfig = yAxis({
       config: { ...mockBarConfig, y_axis: undefined, ...customizations },
+      data: mockSdkDataResponse,
       fields: mockFields,
     })
 
@@ -120,6 +123,7 @@ describe('yAxis', () => {
         y_axis: undefined,
         y_axis_gridlines: undefined,
       },
+      data: mockSdkDataResponse,
       fields: mockFields,
     })
 

@@ -23,7 +23,7 @@
  SOFTWARE.
 
  */
-import { Flex } from '@looker/components'
+
 import type { DateFilterType } from '@looker/filter-expressions'
 import {
   convertTypeToMatchesAdvancedOption,
@@ -34,26 +34,23 @@ import type { ElementType, FC } from 'react'
 import React from 'react'
 import type { FilterParamProps } from '../../../../types/filter_param_props'
 import { useDateFilterOptions } from '../../utils/get_date_filter_options'
-import { OperatorLabel } from '../OperatorLabel'
 import { GroupSelect } from '../GroupSelect'
 import { dateFilterTypeToFilter } from './utils/date_filter_type_to_filter'
 import { newDateItem } from './utils/new_date_item'
 import { useFilterOptions } from '../../utils'
-import { AddRemoveButtons } from '../AddRemoveButtons'
+import { ItemLayout } from '../ItemLayout'
 
 export const DateFilter: FC<FilterParamProps<DateFilterType>> = ({
   item,
   filterType,
   onChange,
-  showOperator,
   onAdd,
-  onRemove,
   showAdd,
-  showRemove,
   showMatchesAdvanced,
   validationMessage,
   userAttributes,
   field,
+  ...rest
 }) => {
   const typeChange = (value: string) =>
     onChange(item.id, sanitizeDate({ ...item, type: value }))
@@ -66,13 +63,11 @@ export const DateFilter: FC<FilterParamProps<DateFilterType>> = ({
   const options = useFilterOptions(dateFilterOptions, showMatchesAdvanced)
 
   const handleOnAdd = () => onAdd(newDateItem(item), true)
-  const handleOnRemove = () => onRemove(item.id)
 
   const FilterComponent: ElementType = dateFilterTypeToFilter(item.type)
 
   return (
-    <Flex flexDirection="row" alignItems="center">
-      {showOperator && <OperatorLabel value={item.is} />}
+    <ItemLayout item={item} showAdd={showAdd} onAdd={handleOnAdd} {...rest}>
       <GroupSelect
         value={type}
         options={options}
@@ -95,12 +90,6 @@ export const DateFilter: FC<FilterParamProps<DateFilterType>> = ({
         field={field}
         placement="right"
       />
-      <AddRemoveButtons
-        onRemove={handleOnRemove}
-        onAdd={handleOnAdd}
-        showAdd={showAdd}
-        showRemove={showRemove}
-      />
-    </Flex>
+    </ItemLayout>
   )
 }

@@ -6,6 +6,7 @@ Object {
   "line_width": 3,
   "shape": "circle",
   "style": "outline",
+  "value_format": "0",
   "visible": true,
 }
 `;
@@ -13,6 +14,7 @@ Object {
 exports[`Accepts array series override (Bar Chart) 1`] = `
 Object {
   "color": "#ffffff",
+  "value_format": "0",
   "visible": true,
 }
 `;
@@ -20,6 +22,7 @@ Object {
 exports[`Accepts array series override (Column Chart) 1`] = `
 Object {
   "color": "#ffffff",
+  "value_format": "0",
   "visible": true,
 }
 `;
@@ -30,6 +33,7 @@ Object {
   "line_width": 3,
   "shape": "circle",
   "style": "outline",
+  "value_format": "0",
   "visible": true,
 }
 `;
@@ -41,6 +45,7 @@ Object {
   "shape": "circle",
   "size_by": false,
   "style": "outline",
+  "value_format": "0",
   "visible": true,
 }
 `;
@@ -59,6 +64,7 @@ Object {
   "line_width": 3,
   "shape": "diamond",
   "style": "outline",
+  "value_format": "0",
   "visible": false,
 }
 `;
@@ -67,6 +73,7 @@ exports[`Accepts named series override (Bar Chart) 1`] = `
 Object {
   "color": "#000000",
   "label": "TEST LABEL!",
+  "value_format": "0",
   "visible": false,
 }
 `;
@@ -75,6 +82,7 @@ exports[`Accepts named series override (Column Chart) 1`] = `
 Object {
   "color": "#000000",
   "label": "TEST LABEL!",
+  "value_format": "0",
   "visible": false,
 }
 `;
@@ -86,6 +94,7 @@ Object {
   "line_width": 3,
   "shape": "diamond",
   "style": "outline",
+  "value_format": "0",
   "visible": false,
 }
 `;
@@ -98,6 +107,7 @@ Object {
   "shape": "diamond",
   "size_by": false,
   "style": "outline",
+  "value_format": "0",
   "visible": false,
 }
 `;
@@ -206,6 +216,7 @@ Object {
       "line_width": 3,
       "shape": "circle",
       "style": "outline",
+      "value_format": "0",
       "visible": false,
     },
     "orders.count": Object {
@@ -214,6 +225,7 @@ Object {
       "line_width": 3,
       "shape": "diamond",
       "style": "outline",
+      "value_format": "0",
       "visible": true,
     },
   },
@@ -251,11 +263,13 @@ Object {
     "orders.average_total_amount_of_order_usd": Object {
       "color": "#70BEFA",
       "label": "Average Order Price",
+      "value_format": "0",
       "visible": false,
     },
     "orders.count": Object {
       "color": "#FA8072",
       "label": "Total Orders",
+      "value_format": "0",
       "visible": true,
     },
   },
@@ -293,11 +307,13 @@ Object {
     "orders.average_total_amount_of_order_usd": Object {
       "color": "#70BEFA",
       "label": "Average Order Price",
+      "value_format": "0",
       "visible": false,
     },
     "orders.count": Object {
       "color": "#FA8072",
       "label": "Total Orders",
+      "value_format": "0",
       "visible": true,
     },
   },
@@ -338,6 +354,7 @@ Object {
       "line_width": 3,
       "shape": "circle",
       "style": "outline",
+      "value_format": "0",
       "visible": false,
     },
     "orders.count": Object {
@@ -346,6 +363,7 @@ Object {
       "line_width": 3,
       "shape": "diamond",
       "style": "outline",
+      "value_format": "0",
       "visible": true,
     },
   },
@@ -376,6 +394,7 @@ Object {
 exports[`Derives default values from SDK response (Pie Chart) 1`] = `
 Object {
   "custom_color": "#72D16D",
+  "label_value_format": "0",
   "legend": Object {
     "position": "bottom",
     "type": "legend",
@@ -385,6 +404,7 @@ Object {
   "single_value_title": "test",
   "tooltips": true,
   "type": "pie",
+  "value_format": "0",
 }
 `;
 
@@ -402,6 +422,7 @@ Object {
       "shape": "circle",
       "size_by": false,
       "style": "outline",
+      "value_format": "0",
       "visible": false,
     },
     "orders.count": Object {
@@ -411,6 +432,7 @@ Object {
       "shape": "diamond",
       "size_by": false,
       "style": "outline",
+      "value_format": "0",
       "visible": true,
     },
   },
@@ -444,10 +466,12 @@ Object {
     "orders.average_total_amount_of_order_usd": Object {
       "color": "#70BEFA",
       "label": "Average Order Price",
+      "value_format": "0",
     },
     "orders.count": Object {
       "color": "#FA8072",
       "label": "Total Orders",
+      "value_format": "0",
     },
   },
   "type": "single_value",
@@ -456,6 +480,7 @@ Object {
 
 exports[`Derives default values from SDK response (Sparkline Chart) 1`] = `
 Object {
+  "label_value_format": "0",
   "render_null_values": false,
   "series": Object {
     "orders.average_total_amount_of_order_usd": Object {
@@ -470,6 +495,7 @@ Object {
   "show_single_value_title": true,
   "single_value_title": "test",
   "type": "sparkline",
+  "value_format": "0",
   "y_axis": Array [
     Object {
       "range": Array [
@@ -484,6 +510,7 @@ Object {
 exports[`Derives default values from SDK response (Table Chart) 1`] = `
 Object {
   "custom_color": "#72D16D",
+  "label_value_format": "0",
   "series": Object {
     "orders.average_total_amount_of_order_usd": Object {
       "cell_visualization": false,
@@ -498,6 +525,7 @@ Object {
   },
   "truncate_text": true,
   "type": "table",
+  "value_format": "0",
 }
 `;
 

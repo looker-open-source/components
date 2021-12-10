@@ -23,6 +23,7 @@
  SOFTWARE.
 
  */
+import { convertTypeToMatchesAdvancedOption, treeToList } from '..'
 import type { GrammarTestItem } from '../../grammars'
 import { dateExpressionTestItems } from '../../grammars'
 import { parseFilterExpression } from '../parse_filter_expression'
@@ -36,7 +37,18 @@ describe('Date To String', () => {
       'date filter output matches expected value for expression ' + expression,
       () => {
         const ast = parseFilterExpression('date', expression)
-        const stringOutput = dateFilterToString(ast, 'date')
+        // test item type
+        const list = treeToList(ast)
+        const item = list[0]
+        // test output
+        // some filter types can't be represented by DateFilter,
+        // we expect this to be parsed as `type` above,
+        // but be converted to `matchesAdvanced`
+        const dateComponentType = convertTypeToMatchesAdvancedOption(item)
+        const stringOutput =
+          dateComponentType === 'matchesAdvanced'
+            ? expression
+            : dateFilterToString(ast, 'date')
         expect(stringOutput).toBe(output)
       }
     )

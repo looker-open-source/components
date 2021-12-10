@@ -45,6 +45,8 @@ import {
   Unsupported,
   formatTotals,
   tabularResponse,
+  tabularPivotResponse,
+  buildPivotFields,
 } from '@looker/visualizations-adapters'
 import type {
   ChartLayoutProps,
@@ -92,6 +94,7 @@ const VisualizationComponent: FC<VisualizationProps> = ({
     data = [],
     error,
     fields,
+    pivots,
     totals,
     config: rawConfig,
     loading,
@@ -118,10 +121,18 @@ const VisualizationComponent: FC<VisualizationProps> = ({
       />
     )
   } else if (rawConfigWithOverrides && fields) {
-    const config = buildChartConfig(rawConfigWithOverrides, fields)
-
     // immutably copy data to prevent mutations from bleeding into the rest of the system
-    const dataCopy = tabularResponse(Array.from(data))
+    const dataCopy = pivots
+      ? tabularPivotResponse({ data, fields, pivots })
+      : tabularResponse(Array.from(data))
+
+    const fieldsCopy = pivots ? buildPivotFields({ fields, pivots }) : fields
+
+    const config = buildChartConfig({
+      config: rawConfigWithOverrides,
+      data: dataCopy,
+      fields: fieldsCopy,
+    })
 
     if (has(config, 'x_axis') && dataCopy.length) {
       const xAxis = (config as CommonCartesianProperties)?.x_axis?.[0]
@@ -131,12 +142,13 @@ const VisualizationComponent: FC<VisualizationProps> = ({
       }
     }
 
-    const ChartComponent = defaultChartComponent[config.type]
+    const ChartComponent =
+      defaultChartComponent[config.type as keyof SupportedChartTypes]
     return (
       <ChartComponent
         data={dataCopy}
         config={config}
-        fields={fields}
+        fields={fieldsCopy}
         totals={formatTotals(totals)}
         width={width}
         height={height}

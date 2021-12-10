@@ -23,7 +23,7 @@
  SOFTWARE.
 
  */
-import { Flex, Text } from '@looker/components'
+import { Span } from '@looker/components'
 import type { FC } from 'react'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
@@ -35,10 +35,8 @@ interface OperatorLabelProps {
 export const OperatorLabel: FC<OperatorLabelProps> = ({ value }) => {
   const { t } = useTranslation('OperatorLabel')
   return (
-    <Flex width={44}>
-      <Text color="text1" fontSize="small" mr="medium" textAlign="right">
-        {value ? t('OR') : t('AND')}
-      </Text>
-    </Flex>
+    <Span color="text1" fontSize="small">
+      {value ? t('OR') : t('AND')}
+    </Span>
   )
 }

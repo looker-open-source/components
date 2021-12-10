@@ -23,7 +23,7 @@
  SOFTWARE.
 
  */
-import { Box, Flex } from '@looker/components'
+
 import type { NumberFilterType } from '@looker/filter-expressions'
 import {
   convertOptionToType,
@@ -33,25 +33,20 @@ import {
 import type { FC } from 'react'
 import React from 'react'
 import type { FilterParamProps } from '../../../../types/filter_param_props'
+import { ItemLayout } from '../ItemLayout'
 import { GroupSelect } from '../GroupSelect'
-import { OperatorLabel } from '../OperatorLabel'
 import { numberFilterTypeToFilter } from './utils/number_filter_type_to_filter'
 import { useNumberFilterOptions, useFilterOptions } from '../../utils'
-import { AddRemoveButtons } from '../AddRemoveButtons'
 import { useTranslation } from 'react-i18next'
 
 export const NumberFilter: FC<FilterParamProps<NumberFilterType>> = ({
   item,
   filterType,
-  onAdd,
   onChange,
-  onRemove,
   validationMessage,
-  showAdd,
-  showRemove,
-  showOperator,
   userAttributes,
   showMatchesAdvanced,
+  ...rest
 }) => {
   const numberFilterOptions = useNumberFilterOptions()
   const options = useFilterOptions(numberFilterOptions, showMatchesAdvanced)
@@ -61,9 +56,6 @@ export const NumberFilter: FC<FilterParamProps<NumberFilterType>> = ({
       item.id,
       sanitizeNumber({ ...item, ...convertOptionToType(String(value)) })
     )
-
-  const handleOnAdd = () => onAdd(item)
-  const handleOnRemove = () => onRemove(item.id)
 
   const FilterComponent: any = numberFilterTypeToFilter(item.type)
   const selectValue = convertTypeToOption(item)
@@ -75,17 +67,14 @@ export const NumberFilter: FC<FilterParamProps<NumberFilterType>> = ({
     (!item?.value?.length || item.value.length === 0 ? t('any value') : '')
 
   return (
-    <Flex flexDirection="row" alignItems="center">
-      {showOperator && <OperatorLabel value={item.is} />}
-      <Box alignSelf="flex-start">
-        <GroupSelect
-          value={selectValue}
-          options={options}
-          onChange={typeChange}
-          validationMessage={validationMessage}
-          placement={item.type === 'null' ? undefined : 'left'}
-        />
-      </Box>
+    <ItemLayout item={item} {...rest}>
+      <GroupSelect
+        value={selectValue}
+        options={options}
+        onChange={typeChange}
+        validationMessage={validationMessage}
+        placement={item.type === 'null' ? undefined : 'left'}
+      />
       <FilterComponent
         item={item}
         onChange={onChange}
@@ -95,12 +84,6 @@ export const NumberFilter: FC<FilterParamProps<NumberFilterType>> = ({
         filterType={filterType}
         placeholder={placeholder}
       />
-      <AddRemoveButtons
-        onRemove={handleOnRemove}
-        onAdd={handleOnAdd}
-        showAdd={showAdd}
-        showRemove={showRemove}
-      />
-    </Flex>
+    </ItemLayout>
   )
 }

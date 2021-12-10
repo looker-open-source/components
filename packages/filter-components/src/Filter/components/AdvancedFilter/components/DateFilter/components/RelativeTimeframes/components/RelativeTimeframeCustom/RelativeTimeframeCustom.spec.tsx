@@ -89,12 +89,12 @@ describe('RelativeTimeframeCustom', () => {
     const selectedDatesLabels = getSelectedDatesLabels(container)
     expect(selectedDatesLabels).toMatchInlineSnapshot(`
       Array [
-        "Thu Jan 10 2019",
-        "Fri Jan 11 2019",
-        "Sat Jan 12 2019",
-        "Sun Jan 13 2019",
-        "Mon Jan 14 2019",
-        "Tue Jan 15 2019",
+        "Thu Jan 10, 2019",
+        "Fri Jan 11, 2019",
+        "Sat Jan 12, 2019",
+        "Sun Jan 13, 2019",
+        "Mon Jan 14, 2019",
+        "Tue Jan 15, 2019",
       ]
     `)
   })

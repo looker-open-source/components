@@ -38,6 +38,7 @@ import { getMeasureNames } from '../utils'
  */
 export const seriesPointStyle: ConfigHelper<CLine | CArea> = ({
   config,
+  data,
   fields,
 }) => {
   const { type, point_style, series = {}, ...restConfig } = config
@@ -86,6 +87,7 @@ export const seriesPointStyle: ConfigHelper<CLine | CArea> = ({
       type,
       ...restConfig,
     },
+    data,
     fields,
   }
 }

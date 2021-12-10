@@ -24,11 +24,12 @@
 
  */
 import { ChipButton, Popover } from '@looker/components'
-import { InputDateRange, Locales } from '@looker/components-date'
+import { InputDateRange } from '@looker/components-date'
 import React from 'react'
 import styled from 'styled-components'
+import { getDateLocale } from '../../../../../../../utils'
 import type { DayRange } from '../../types/day_range'
-import { formatDate, useDateLocalization } from '../../utils/format_date'
+import { FILTERS_DATE_FORMAT, formatDate } from '../../utils/format_date'
 
 interface DayRangePickerProps {
   value: DayRange
@@ -36,8 +37,6 @@ interface DayRangePickerProps {
 }
 
 export const DayRangeInput = ({ value, onChange }: DayRangePickerProps) => {
-  const dateLocalization = useDateLocalization()
-
   const handleChange = (d: Partial<DayRange> = {}) => {
     const newFrom = d.from || new Date(Date.now())
     const newTo = d.to || new Date(Date.now())
@@ -61,13 +60,12 @@ export const DayRangeInput = ({ value, onChange }: DayRangePickerProps) => {
       content={
         <InputWrapper>
           <InputDateRange
-            localization={dateLocalization}
             onChange={handleChange}
             value={value}
-            // hardcoding `Japanese` as it matches the current date format: YYYY/MM/DD
+            // hardcoding 'yyyy/MM/dd' for legacy reasons
             // eventually this should be replaced with the user's preferred locale
-            // when the rest of dates are localized
-            dateStringLocale={Locales.Japanese}
+            dateStringFormat={FILTERS_DATE_FORMAT}
+            locale={getDateLocale()}
           />
         </InputWrapper>
       }

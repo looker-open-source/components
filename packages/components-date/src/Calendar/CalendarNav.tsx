@@ -23,7 +23,6 @@
  SOFTWARE.
 
  */
-import { useTranslation } from 'react-i18next'
 import type { FC, SyntheticEvent } from 'react'
 import React, { useContext } from 'react'
 import type { NavbarElementProps } from 'react-day-picker'
@@ -31,12 +30,7 @@ import styled from 'styled-components'
 import noop from 'lodash/noop'
 import { ChevronLeft } from '@styled-icons/material-rounded/ChevronLeft'
 import { ChevronRight } from '@styled-icons/material-rounded/ChevronRight'
-import {
-  ButtonTransparent,
-  Heading,
-  IconButton,
-  Tooltip,
-} from '@looker/components'
+import { IconButton } from '@looker/components'
 import type { CalendarSize } from './calendar-size'
 import { CalendarContext } from './CalendarContext'
 
@@ -53,21 +47,18 @@ export const headingSizeMap = (size?: CalendarSize) => {
   }
 }
 
-export const CalendarNav: FC<NavbarElementProps> = ({
-  month,
+export const CalendarNav: FC<Partial<NavbarElementProps>> = ({
+  children,
   labels,
-  localeUtils,
   nextMonth,
   previousMonth,
 }) => {
-  const { t } = useTranslation('CalendarNav')
   const {
-    size,
-    onNowClick = noop,
     onNextClick = noop,
     onPrevClick = noop,
     showPreviousButton,
     showNextButton,
+    size,
   } = useContext(CalendarContext)
 
   const handleNextClick = (e: SyntheticEvent<HTMLButtonElement>) => {
@@ -80,40 +71,24 @@ export const CalendarNav: FC<NavbarElementProps> = ({
     onPrevClick(previousMonth)
   }
 
-  const handleLabelClick = () => {
-    onNowClick(new Date(Date.now())) // specify Date.now() to facilitate testing mocks
-  }
-
   return (
     <NavGrid>
       <NextButtonWrapper>
         {showPreviousButton && (
           <IconButton
             icon={<ChevronLeft />}
-            label={labels.previousMonth}
+            label={labels?.previousMonth}
             size={size}
             onClick={handlePreviousClick}
           />
         )}
       </NextButtonWrapper>
-
-      <Tooltip content={t('View Current Month')}>
-        <ButtonTransparent onClick={handleLabelClick} color="neutral">
-          <Heading
-            as={headingSizeMap(size)}
-            fontWeight="semiBold"
-            fontFamily="body"
-          >
-            {localeUtils.formatMonthTitle(month)}
-          </Heading>
-        </ButtonTransparent>
-      </Tooltip>
-
+      {children}
       <PrevButtonWrapper>
         {showNextButton && (
           <IconButton
             icon={<ChevronRight />}
-            label={labels.nextMonth}
+            label={labels?.nextMonth}
             size={size}
             onClick={handleNextClick}
             style={{ justifySelf: 'right' }}

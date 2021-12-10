@@ -41,7 +41,7 @@ import type {
   CLineSeries,
 } from '@looker/visualizations-adapters'
 import { DEFAULT_HEIGHT, VisWrapper } from '@looker/visualizations-adapters'
-import { Legend } from '../Legend'
+import { XYLegend } from '../XYLegend'
 import isArray from 'lodash/isArray'
 import get from 'lodash/get'
 import compact from 'lodash/compact'
@@ -54,7 +54,7 @@ import {
   useChartTheme,
   isValidChartData,
 } from '../utils'
-import { Tooltip } from '../Tooltip'
+import { XYTooltip } from '../XYTooltip'
 import { Grid } from '../Grid'
 
 export const Column: FC<ColumnProps> = ({
@@ -137,7 +137,7 @@ export const Column: FC<ColumnProps> = ({
           <XAxis />
           <YAxis />
           <Grid config={config} />
-          <Tooltip
+          <XYTooltip
             config={config}
             data={formattedData}
             fields={fields}
@@ -152,7 +152,7 @@ export const Column: FC<ColumnProps> = ({
             <BarGroup>{renderedColumns}</BarGroup>
           )}
         </XYChart>
-        <Legend config={config} fields={fields} />
+        <XYLegend config={config} fields={fields} />
       </VisWrapper>
     </DataProvider>
   )

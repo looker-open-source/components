@@ -35,6 +35,7 @@ export * from './Filter/types/option'
 export * from './Filter/types/filter_props'
 export * from './DashboardFilter'
 export * from './utils'
+export * from './locales'
 // Proxy imports to `@looker/filter-expressions`
 export {
   FilterExpressionType,
@@ -44,3 +45,4 @@ export {
 } from '@looker/filter-expressions'
 // Proxy imports to `@looker/components`
 export { ComponentsProvider } from '@looker/components'
+export { getLocale } from '@looker/components-date'

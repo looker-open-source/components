@@ -28,35 +28,94 @@ import type { Story } from '@storybook/react/types-6-0'
 import React from 'react'
 import { Visualization } from '../Visualization'
 import type { VisualizationProps } from '../Visualization'
-import { QueryDecorator } from '../../.storybook'
+import type { Fields } from '@looker/visualizations-adapters'
+import {
+  QueryContext,
+  mockPivots,
+  mockSdkConfigResponse,
+  mockSdkDataResponse,
+  mockSdkFieldsResponse,
+  mockSdkPivotDataResponse,
+} from '@looker/visualizations-adapters'
 
 export default {
   component: Visualization,
-  decorators: [QueryDecorator],
   title: 'Visualizations/Line',
 }
 
 const Template: Story<VisualizationProps> = ({ config, ...restProps }) => {
-  return <Visualization config={{ ...config, type: 'line' }} {...restProps} />
+  return (
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    <QueryContext.Provider
+      value={{
+        config: { ...mockSdkConfigResponse },
+        ok: true,
+        loading: false,
+        data: [...mockSdkDataResponse],
+        fields: { ...mockSdkFieldsResponse } as Fields,
+      }}
+    >
+      <Visualization
+        config={{ ...config, type: 'line' }}
+        {...restProps}
+        height={600}
+        width={800}
+      />
+    </QueryContext.Provider>
+  )
+}
+
+const PivotTemplate: Story<VisualizationProps> = ({ config, ...restProps }) => {
+  return (
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    <QueryContext.Provider
+      value={{
+        config: { ...mockSdkConfigResponse },
+        ok: true,
+        loading: false,
+        data: [...mockSdkPivotDataResponse],
+        fields: { ...mockSdkFieldsResponse } as Fields,
+        pivots: [...mockPivots],
+      }}
+    >
+      <Visualization
+        config={{ ...config, type: 'line' }}
+        {...restProps}
+        height={600}
+        width={800}
+      />
+    </QueryContext.Provider>
+  )
 }
 
 export const Line = Template.bind({})
 Line.args = {
-  height: 600,
-  width: 800,
   config: { series: [{ visible: true }, { visible: true }] },
 }
 
 export const PointStyleFilled = Template.bind({})
 PointStyleFilled.args = {
-  height: 600,
-  width: 800,
   config: { series: [{ style: 'filled' }, { style: 'filled' }] },
 }
 
 export const PointStyleNone = Template.bind({})
 PointStyleNone.args = {
-  height: 600,
-  width: 800,
   config: { series: [{ style: 'none' }, { style: 'none' }] },
+}
+
+export const Pivot = PivotTemplate.bind({})
+Pivot.args = {
+  config: {
+    series: [
+      { visible: true },
+      { visible: true },
+      { visible: true },
+      { visible: true },
+      { visible: true },
+      { visible: true },
+    ],
+  },
+}
+Pivot.parameters = {
+  storyshots: { disable: true },
 }

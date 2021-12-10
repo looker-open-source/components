@@ -25,7 +25,7 @@
  */
 
 import { normalizeChartTypes } from './normalizeChartTypes'
-import { mockFields } from '../__mocks__'
+import { mockFields, mockSdkDataResponse } from '../__mocks__'
 
 describe('normalizeChartTypes', () => {
   describe('config.type ===', () => {
@@ -33,6 +33,7 @@ describe('normalizeChartTypes', () => {
       const config = { type: 'default' as const }
       const { config: transformedConfig } = normalizeChartTypes({
         config,
+        data: mockSdkDataResponse,
         fields: mockFields,
       })
       expect(transformedConfig.type).toEqual('default')
@@ -42,6 +43,7 @@ describe('normalizeChartTypes', () => {
       const config = { type: 'area' as const }
       const { config: transformedConfig } = normalizeChartTypes({
         config,
+        data: mockSdkDataResponse,
         fields: mockFields,
       })
       expect(transformedConfig.type).toEqual('area')
@@ -51,6 +53,7 @@ describe('normalizeChartTypes', () => {
       const config = { type: 'bar' as const }
       const { config: transformedConfig } = normalizeChartTypes({
         config,
+        data: mockSdkDataResponse,
         fields: mockFields,
       })
       expect(transformedConfig.type).toEqual('bar')
@@ -60,6 +63,7 @@ describe('normalizeChartTypes', () => {
       const config = { type: 'column' as const }
       const { config: transformedConfig } = normalizeChartTypes({
         config,
+        data: mockSdkDataResponse,
         fields: mockFields,
       })
       expect(transformedConfig.type).toEqual('column')
@@ -69,6 +73,7 @@ describe('normalizeChartTypes', () => {
       const config = { type: 'line' as const }
       const { config: transformedConfig } = normalizeChartTypes({
         config,
+        data: mockSdkDataResponse,
         fields: mockFields,
       })
       expect(transformedConfig.type).toEqual('line')
@@ -78,6 +83,7 @@ describe('normalizeChartTypes', () => {
       const config = { type: 'pie' as const }
       const { config: transformedConfig } = normalizeChartTypes({
         config,
+        data: mockSdkDataResponse,
         fields: mockFields,
       })
       expect(transformedConfig.type).toEqual('pie')
@@ -87,6 +93,7 @@ describe('normalizeChartTypes', () => {
       const config = { type: 'scatter' as const }
       const { config: transformedConfig } = normalizeChartTypes({
         config,
+        data: mockSdkDataResponse,
         fields: mockFields,
       })
       expect(transformedConfig.type).toEqual('scatter')
@@ -96,6 +103,7 @@ describe('normalizeChartTypes', () => {
       const config = { type: 'sparkline' as const }
       const { config: transformedConfig } = normalizeChartTypes({
         config,
+        data: mockSdkDataResponse,
         fields: mockFields,
       })
       expect(transformedConfig.type).toEqual('sparkline')
@@ -105,6 +113,7 @@ describe('normalizeChartTypes', () => {
       const config = { type: 'table' as const }
       const { config: transformedConfig } = normalizeChartTypes({
         config,
+        data: mockSdkDataResponse,
         fields: mockFields,
       })
       expect(transformedConfig.type).toEqual('table')
@@ -114,6 +123,7 @@ describe('normalizeChartTypes', () => {
       const config = { type: 'looker_area' as const }
       const { config: transformedConfig } = normalizeChartTypes({
         config,
+        data: mockSdkDataResponse,
         fields: mockFields,
       })
       expect(transformedConfig.type).toEqual('area')
@@ -123,6 +133,7 @@ describe('normalizeChartTypes', () => {
       const config = { type: 'looker_bar' as const }
       const { config: transformedConfig } = normalizeChartTypes({
         config,
+        data: mockSdkDataResponse,
         fields: mockFields,
       })
       expect(transformedConfig.type).toEqual('bar')
@@ -132,6 +143,7 @@ describe('normalizeChartTypes', () => {
       const config = { type: 'looker_column' as const }
       const { config: transformedConfig } = normalizeChartTypes({
         config,
+        data: mockSdkDataResponse,
         fields: mockFields,
       })
       expect(transformedConfig.type).toEqual('column')
@@ -141,6 +153,7 @@ describe('normalizeChartTypes', () => {
       const config = { type: 'looker_line' as const }
       const { config: transformedConfig } = normalizeChartTypes({
         config,
+        data: mockSdkDataResponse,
         fields: mockFields,
       })
       expect(transformedConfig.type).toEqual('line')
@@ -150,6 +163,7 @@ describe('normalizeChartTypes', () => {
       const config = { type: 'looker_pie' as const }
       const { config: transformedConfig } = normalizeChartTypes({
         config,
+        data: mockSdkDataResponse,
         fields: mockFields,
       })
       expect(transformedConfig.type).toEqual('pie')
@@ -159,6 +173,7 @@ describe('normalizeChartTypes', () => {
       const config = { type: 'looker_scatter' as const }
       const { config: transformedConfig } = normalizeChartTypes({
         config,
+        data: mockSdkDataResponse,
         fields: mockFields,
       })
       expect(transformedConfig.type).toEqual('scatter')
@@ -168,6 +183,7 @@ describe('normalizeChartTypes', () => {
       const config = { type: 'looker_grid' as const }
       const { config: transformedConfig } = normalizeChartTypes({
         config,
+        data: mockSdkDataResponse,
         fields: mockFields,
       })
       expect(transformedConfig.type).toEqual('table')
@@ -177,6 +193,7 @@ describe('normalizeChartTypes', () => {
       const config = { type: (undefined as unknown) as 'default' }
       const { config: transformedConfig } = normalizeChartTypes({
         config,
+        data: mockSdkDataResponse,
         fields: mockFields,
       })
       expect(transformedConfig.type).toEqual('default')
@@ -187,6 +204,7 @@ describe('normalizeChartTypes', () => {
     const config = { type: 'gouda-cheese-chart' as 'default' }
     const { config: transformedConfig } = normalizeChartTypes({
       config,
+      data: mockSdkDataResponse,
       fields: mockFields,
     })
     expect(transformedConfig.type).toEqual('gouda-cheese-chart')

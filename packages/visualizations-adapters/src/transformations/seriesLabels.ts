@@ -40,6 +40,7 @@ import { getMeasureNames } from '../utils'
  */
 export const seriesLabels: ConfigHelper<CommonCartesianProperties> = ({
   config,
+  data,
   fields,
 }) => {
   const {
@@ -70,6 +71,7 @@ export const seriesLabels: ConfigHelper<CommonCartesianProperties> = ({
       series: Array.isArray(series) ? series : buildNamedSeries(series),
       ...restConfig,
     },
+    data,
     fields,
   }
 }

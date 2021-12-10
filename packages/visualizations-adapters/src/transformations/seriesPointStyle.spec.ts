@@ -25,7 +25,7 @@
  */
 
 import { seriesPointStyle } from './seriesPointStyle'
-import { mockLineConfig, mockFields } from '../__mocks__'
+import { mockLineConfig, mockFields, mockSdkDataResponse } from '../__mocks__'
 import type { CLineSeries } from '../adapters'
 
 describe('seriesPointStyle', () => {
@@ -37,6 +37,7 @@ describe('seriesPointStyle', () => {
 
     const transformedConfig = seriesPointStyle({
       config: { ...mockLineConfig, point_style: 'none', series },
+      data: mockSdkDataResponse,
       fields: mockFields,
     })
 
@@ -54,6 +55,7 @@ describe('seriesPointStyle', () => {
 
     const transformedConfig = seriesPointStyle({
       config: { ...mockLineConfig, point_style: 'none', series },
+      data: mockSdkDataResponse,
       fields: mockFields,
     })
 

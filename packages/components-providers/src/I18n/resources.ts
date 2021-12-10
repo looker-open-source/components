@@ -44,7 +44,7 @@ export const i18nResources: Resource = {
       SelectedCountOfTotalDisplayed:
         '{{selectedItemCount}} of {{pageCount}} displayed items selected',
     },
-    CalendarNav: {
+    Calendar: {
       'View Current Month': 'View Current Month',
     },
     CheckMarkMixed: {

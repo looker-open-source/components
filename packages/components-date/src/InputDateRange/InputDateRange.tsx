@@ -51,7 +51,6 @@ import {
 } from '@looker/components'
 import { Calendar, formatMonthTitle } from '../Calendar'
 import { formatDateString, parseDateFromString } from '../locale'
-import { getLocale } from '../locale/deprecated'
 import type { InputDateBaseProps } from '../types'
 
 export type InputDateRangeProps = InputDateBaseProps & {
@@ -125,13 +124,11 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
     {
       'aria-labelledby': ariaLabelledby,
       dateStringFormat,
-      dateStringLocale,
       defaultValue = {},
       disabled,
       firstDayOfWeek,
       id,
-      locale: propsLocale,
-      localization,
+      locale,
       onChange,
       onValidationFail,
       readOnly,
@@ -140,8 +137,6 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
     },
     ref: Ref<HTMLDivElement>
   ) => {
-    const locale = dateStringLocale ? getLocale(dateStringLocale) : propsLocale
-
     useReadOnlyWarn('InputDateRange', value, onChange)
 
     /*
@@ -425,7 +420,6 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
           <CalendarWrapper>
             <Calendar
               disabled={disabled}
-              localization={localization}
               locale={locale}
               firstDayOfWeek={firstDayOfWeek}
               onDayClick={handleCalendarClick}
@@ -441,7 +435,6 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
           <CalendarWrapper>
             <Calendar
               disabled={disabled}
-              localization={localization}
               locale={locale}
               firstDayOfWeek={firstDayOfWeek}
               onDayClick={handleCalendarClick}

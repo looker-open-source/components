@@ -23,33 +23,73 @@
  SOFTWARE.
 
  */
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import type { Story } from '@storybook/react/types-6-0'
+import { getLocale } from '../../'
 import { i18nInit } from '../utils/i18n'
+import { i18nResources } from '../locales'
 import type { FilterProps, FilterChangeProps } from './types/filter_props'
 import { Filter } from './Filter'
 
-i18nInit()
-
-const Template: Story<FilterProps> = (args) => {
+const Template: Story<FilterProps & { locale?: string }> = ({
+  locale = 'en',
+  ...args
+}) => {
   const [expression, setExpression] = useState(args.expression)
   const handleChange = (value: FilterChangeProps) => {
     setExpression(value.expression)
     args.onChange?.(value)
   }
-  return <Filter {...args} expression={expression} onChange={handleChange} />
+
+  const [ready, setReady] = useState(false)
+  useEffect(() => {
+    // Update the locale
+    i18nInit({
+      locale,
+      resources: i18nResources,
+      dateLocale: getLocale(locale),
+    }).then(() => {
+      setReady(true)
+    })
+  }, [locale])
+
+  return ready ? (
+    <Filter {...args} expression={expression} onChange={handleChange} />
+  ) : (
+    <p>Loading...</p>
+  )
 }
 
 export const Basic = Template.bind({})
 Basic.args = {
+  locale: 'en',
   expressionType: 'number',
   expression: '',
 }
 
-export const MultiCondition = Template.bind({})
-MultiCondition.args = {
+export const MultiConditionNumber = Template.bind({})
+MultiConditionNumber.args = {
   ...Basic.args,
   expression: '[0,20],>30',
+}
+
+export const MultiConditionDate = Template.bind({})
+MultiConditionDate.args = {
+  locale: 'en',
+  expressionType: 'date',
+  expression: 'this week,last week, next week',
+}
+
+export const MultiConditionString = Template.bind({})
+MultiConditionString.args = {
+  expressionType: 'string',
+  expression: '%Active%,MV Sport,-Activewear Apparel',
+}
+
+export const MultiConditionTier = Template.bind({})
+MultiConditionTier.args = {
+  expressionType: 'tier',
+  expression: "20 to 29,{{ _user_attributes['locale'] }}",
 }
 
 export const Config = Template.bind({})

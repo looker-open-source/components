@@ -31,6 +31,10 @@ import type { FilterModel } from '../../types'
  * in the advanced filter options therefore it should be converted to matches (advanced)
  */
 export const convertTypeToMatchesAdvancedOption = ({ type }: FilterModel) =>
-  type === 'day' || type === 'thisRange' || type === 'pastAgo'
+  type === 'day' ||
+  type === 'thisRange' ||
+  type === 'pastAgo' ||
+  type?.startsWith('before_') ||
+  type?.startsWith('after_')
     ? 'matchesAdvanced'
     : type

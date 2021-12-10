@@ -30,7 +30,11 @@ import {
 } from '@looker/components-test-utils'
 import { fireEvent, screen } from '@testing-library/react'
 import React from 'react'
-import { fiscalNextLastUnits, thisUnits } from '../../../../../../constants'
+import {
+  fiscalLastUnits,
+  fiscalThisNextUnits,
+  thisNextUnits,
+} from '../../../../../../constants'
 import { Filter } from '../../../../../../Filter'
 import {
   testField,
@@ -70,7 +74,7 @@ describe('This Date filter test', () => {
 
     fireEvent.click(unitsDropdown)
     expect(getAllComboboxOptionText()).toEqual(
-      thisUnits.map((option) => option.label)
+      thisNextUnits.map((option) => option.label)
     )
     closeCombobox()
   })
@@ -108,7 +112,7 @@ describe('Last Date filter test', () => {
 
     fireEvent.click(unitsDropdown)
     expect(getAllComboboxOptionText()).toEqual(
-      fiscalNextLastUnits.map((option) => option.label)
+      fiscalLastUnits.map((option) => option.label)
     )
     closeCombobox()
   })
@@ -146,7 +150,7 @@ describe('Next Date filter test', () => {
 
     fireEvent.click(unitsDropdown)
     expect(getAllComboboxOptionText()).toEqual(
-      fiscalNextLastUnits.map((option) => option.label)
+      fiscalThisNextUnits.map((option) => option.label)
     )
     closeCombobox()
   })
