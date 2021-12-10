@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.1](https://github.com/looker-open-source/components/compare/@looker/components-date@2.4.11...@looker/components-date@3.0.1) (2021-12-10)
+
+**Note:** Version bump only for package @looker/components-date
+
+
+
+
+
 ## [2.4.11](https://github.com/looker-open-source/components/compare/@looker/components-date@2.4.10...@looker/components-date@2.4.11) (2021-11-22)
 
 **Note:** Version bump only for package @looker/components-date

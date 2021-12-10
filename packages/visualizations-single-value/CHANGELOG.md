@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.4](https://github.com/looker-open-source/components/compare/@looker/visualizations-single-value@0.1.3...@looker/visualizations-single-value@0.1.4) (2021-12-10)
+
+**Note:** Version bump only for package @looker/visualizations-single-value
+
+
+
+
+
 ## [0.1.3](https://github.com/looker-open-source/components/compare/@looker/visualizations-single-value@0.1.2...@looker/visualizations-single-value@0.1.3) (2021-11-22)
 
 **Note:** Version bump only for package @looker/visualizations-single-value
