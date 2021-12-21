@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 2.8.13
+
+## `@looker/components` 2.8.13
+
+### Features
+
+- **InputText/Select/SelectMulti:** noErrorIcon prop
+
+### Bug Fixes
+
+- **Tabs2:** Changed tab content causing tabs to revert
+
+## `@looker/filter-components` 0.10.13
+
+### Bug Fixes
+
+- **RelativeTimeframes:** Localize strings
+- **DashboardFilter:** Use correct model name to fetch suggestions
+
+## `@looker/visualizations` 0.2.6
+
+### Features
+
+- Pie Chart added
+
+## `@looker/visualizations-visx` 0.2.5
+
+### Features
+
+- **Pie:** Toggle tooltip hover UX
+- **Pie:** Label Value format
+- **Pie:** Configure chart legend position
+
 # 2.8.12
 
 ## `@looker/components` 2.8.12
