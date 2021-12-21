@@ -3,37 +3,37 @@
     "value": "{{prefix}} {{dateTime}}"
   },
   "ago": {
-    "value": "há"
+    "value": "atrás"
   },
   "from now": {
-    "value": "daqui a"
+    "value": "a partir de agora"
   },
   "is any time": {
-    "value": "é em qualquer altura"
+    "value": "é qualquer momento"
   },
   "is before": {
-    "value": "é antes de"
+    "value": "está antes de"
   },
   "is day": {
     "value": "é {{day}}"
   },
   "is from dateTimeStart until dateTimeEnd": {
-    "value": "é de {{dateTimeStart}} até {{dateTimeEnd}}"
+    "value": "é a partir de {{dateTimeStart}} até {{dateTimeEnd}}"
   },
   "is in month year": {
-    "value": "é em {{month}} {{year}}"
+    "value": "é em {{month}} de {{year}}"
   },
   "is in the last": {
-    "value": "é no último {{describeInterval}}"
-  },
-  "is interval ago": {
-    "value": "é há {{interval}}"
+    "value": "é no último intervalo de {{describeInterval}}"
   },
   "is in the year year": {
-    "value": "é no ano {{year}}"
+    "value": "é no ano de {{year}}"
+  },
+  "is interval ago": {
+    "value": "é {{interval}} atrás"
   },
   "is intervalStart intervalType for intervalEnd": {
-    "value": "é {{intervalStart}} {{intervalType}} até {{intervalEnd}}"
+    "value": "é {{intervalStart}} {{intervalType}} para {{intervalEnd}}"
   },
   "is not null": {
     "value": "não é nulo"
@@ -42,10 +42,10 @@
     "value": "é em {{dateTime}}"
   },
   "is on or after": {
-    "value": "é a ou depois de"
+    "value": "está em ou depois de"
   },
   "is previous unitLabel": {
-    "value": "é {{unitLabel}} anterior"
+    "value": "é a unidade {{unitLabel}} anterior"
   },
   "is type unitLabel": {
     "value": "é {{type}} {{unitLabel}}"
@@ -56,7 +56,7 @@
   "prefix now": {
     "value": "{{prefix}} agora"
   },
-  "this startInterval to endInterval": "este {{startInterval}} até {{endInterval}}",
+  "this startInterval to endInterval": "{{startInterval}} a {{endInterval}}",
   "value complete unitLabel": {
     "value": "{{value}}{{complete}} {{unitLabel}}"
   }

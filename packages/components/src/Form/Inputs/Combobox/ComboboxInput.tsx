@@ -54,6 +54,7 @@ export const ComboboxInputInternal = forwardRef(
       isClearable,
       // wrapped events
       onChange,
+      noErrorIcon,
       readOnly = false,
       summary,
       validationType,
@@ -158,7 +159,7 @@ export const ComboboxInputInternal = forwardRef(
             showCaret={!freeInput}
             showClear={!!(isClearable && inputValue) && !disabled && !readOnly}
             summary={summary}
-            validationType={validationType}
+            errorIcon={!noErrorIcon && validationType === 'error'}
           />
         }
         ref={ref}

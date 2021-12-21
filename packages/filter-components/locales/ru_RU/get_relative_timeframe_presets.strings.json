@@ -1,0 +1,56 @@
+{
+  "Last 14 Days": {
+    "value": "За последние 14 дней"
+  },
+  "Last 180 Days": {
+    "value": "За последние 180 дней"
+  },
+  "Last 28 Days": {
+    "value": "За последние 28 дней"
+  },
+  "Last 30 Days": {
+    "value": "За последние 30 дней"
+  },
+  "Last 365 Days": {
+    "value": "За последние 365 дней"
+  },
+  "Last 7 Days": {
+    "value": "За последние 7 дней"
+  },
+  "Last 90 Days": {
+    "value": "За последние 90 дней"
+  },
+  "Previous Month": {
+    "value": "За прошлый месяц"
+  },
+  "Previous Quarter": {
+    "value": "За прошлый квартал"
+  },
+  "Previous Week": {
+    "value": "За прошлую неделю"
+  },
+  "Previous Year": {
+    "value": "За прошлый год"
+  },
+  "This Month": {
+    "value": "За этот месяц"
+  },
+  "This Quarter": {
+    "value": "За этот квартал"
+  },
+  "This Week": {
+    "value": "За эту неделю"
+  },
+  "This Year": {
+    "value": "За этот год"
+  },
+  "Today": {
+    "value": "Сегодня"
+  },
+  "Year To Date": {
+    "value": "С начала года до текущей даты"
+  },
+  "Yesterday": {
+    "value": "Вчера"
+  }
+}

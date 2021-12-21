@@ -37,8 +37,8 @@ const resources = {
       'הוא מ-{{dateTimeStart}} עד {{dateTimeEnd}}',
     'is in month year': 'הוא ב-{{month}} {{year}}',
     'is in the last': 'האחרון {{describeInterval}}',
-    'is interval ago': 'הוא ב {{interval}} שעבר',
     'is in the year year': 'הוא בשנת {{year}}',
+    'is interval ago': 'הוא ב {{interval}} שעבר',
     'is intervalStart intervalType for intervalEnd':
       'ב {{intervalStart}} {{intervalType}} ל {{intervalEnd}}',
     'is not null': 'אינו Null',

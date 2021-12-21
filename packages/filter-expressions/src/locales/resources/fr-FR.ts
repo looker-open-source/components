@@ -28,28 +28,28 @@ import type { I18nState } from '../../utils'
 const resources = {
   describe_date: {
     'absolute prefix dateTime': '{{prefix}} {{dateTime}}',
-    ago: ' ',
+    ago: 'auparavant',
     'from now': 'à partir de maintenant',
-    'is any time': "est n'importe quelle date",
-    'is before': 'est antérieur à',
+    'is any time': 'est à tout moment',
+    'is before': 'est situé avant',
     'is day': 'est {{day}}',
     'is from dateTimeStart until dateTimeEnd':
-      "a lieu du {{dateTimeStart}} jusqu'au {{dateTimeEnd}}",
-    'is in month year': 'se situe en {{month}} {{year}}',
-    'is in the last': 'se situe dans les derniers {{describeInterval}}',
+      'est de {{dateTimeStart}} à {{dateTimeEnd}}',
+    'is in month year': 'est en {{month}} {{year}}',
+    'is in the last': 'est dans le dernier {{describeInterval}}',
+    'is in the year year': 'est dans l’année {{year}}',
     'is interval ago': 'est il y a {{interval}}',
-    'is in the year year': "se situe dans l'année {{year}}",
     'is intervalStart intervalType for intervalEnd':
       'est {{intervalStart}} {{intervalType}} pour {{intervalEnd}}',
-    'is not null': "n'est pas nul",
-    'is on dateTime': 'tombe le {{dateTime}}',
-    'is on or after': 'tombe le ou après',
+    'is not null': 'n’est pas nul',
+    'is on dateTime': 'est le {{dateTime}}',
+    'is on or after': 'est situé le jour même ou après',
     'is previous unitLabel': 'est avant {{unitLabel}}',
     'is type unitLabel': 'est {{type}} {{unitLabel}}',
     'prefix interval timePassed': '{{prefix}} {{interval}} {{timePassed}}',
-    'prefix now': '{{prefix}} maintenant',
+    'prefix now': '{{prefix}} présentement',
     'this startInterval to endInterval':
-      "ce {{startInterval}} jusqu'au {{endInterval}}",
+      'ce {{startInterval}} à {{endInterval}}',
     'value complete unitLabel': '{{value}}{{complete}} {{unitLabel}}',
   },
   get_months: {
@@ -89,7 +89,7 @@ const resources = {
     years: 'années',
   },
   summary: {
-    'Value required': 'Valeur obligatoire',
+    'Value required': 'Valeur requise',
   },
 }
 

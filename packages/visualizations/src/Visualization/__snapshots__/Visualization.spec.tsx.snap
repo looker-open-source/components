@@ -393,15 +393,20 @@ Object {
 
 exports[`Derives default values from SDK response (Pie Chart) 1`] = `
 Object {
-  "custom_color": "#72D16D",
   "label_value_format": "0",
   "legend": Object {
-    "position": "bottom",
+    "position": "right",
     "type": "legend",
-    "value": "label",
+    "value": "label_percent",
   },
-  "show_single_value_title": true,
-  "single_value_title": "test",
+  "series": Object {
+    "2019-12-22": Object {
+      "color": "#b73ec3",
+    },
+    "California": Object {
+      "color": "#ed6995",
+    },
+  },
   "tooltips": true,
   "type": "pie",
   "value_format": "0",
@@ -492,8 +497,6 @@ Object {
       "line_width": 3,
     },
   },
-  "show_single_value_title": true,
-  "single_value_title": "test",
   "type": "sparkline",
   "value_format": "0",
   "y_axis": Array [

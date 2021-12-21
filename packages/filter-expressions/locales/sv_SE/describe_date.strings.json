@@ -24,13 +24,13 @@
     "value": "är om {{month}} {{year}}"
   },
   "is in the last": {
-    "value": "är under det sista {{describeInterval}}"
-  },
-  "is interval ago": {
-    "value": "är {{interval}} sedan"
+    "value": "är under senaste {{describeInterval}}"
   },
   "is in the year year": {
     "value": "är under år {{year}}"
+  },
+  "is interval ago": {
+    "value": "är {{interval}} sedan"
   },
   "is intervalStart intervalType for intervalEnd": {
     "value": "är {{intervalStart}} {{intervalType}} för {{intervalEnd}}"

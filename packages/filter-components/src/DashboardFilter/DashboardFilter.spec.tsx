@@ -29,6 +29,14 @@ import type { IAPIMethods } from '@looker/sdk-rtl'
 import { fireEvent, screen } from '@testing-library/react'
 import { DashboardFilter } from './DashboardFilter'
 
+jest.mock('@looker/sdk', () => ({
+  ...jest.requireActual('@looker/sdk'),
+  model_fieldname_suggestions: jest.fn((sdk: { get: () => any }) => sdk.get()),
+}))
+
+// eslint-disable-next-line import/first
+import { model_fieldname_suggestions } from '@looker/sdk'
+
 describe('DashboardFilter', () => {
   it('renders label', () => {
     const onChangeMock = jest.fn()
@@ -184,20 +192,29 @@ describe('DashboardFilter', () => {
 
     it('fetches suggestions', async () => {
       const onChangeMock = jest.fn()
+      const sdkOkMock = jest.fn((value) => value)
+      const sdkGetMock = jest.fn(() => ({
+        suggestions: ['complete', 'pending', 'cancelled'],
+      }))
+
       const sdkMock = ({
-        ok: jest.fn((value) => value),
-        get: jest.fn(() => ({
-          suggestions: ['complete', 'pending', 'cancelled'],
-        })),
+        ok: sdkOkMock,
+        get: sdkGetMock,
       } as unknown) as IAPIMethods
+
       renderWithTheme(
         <DashboardFilter
           filter={{
             name: 'Status',
             field: {
+              name: 'orders.status',
               suggestable: true,
+              project_name: 'bar',
+              suggest_dimension: 'orders.status',
+              view: 'orders',
             },
             default_value: 'complete',
+            model: 'foo',
             ui_config: { type: 'button_group' },
           }}
           sdk={sdkMock}
@@ -215,6 +232,16 @@ describe('DashboardFilter', () => {
 
       expect(values[2]).toHaveTextContent('cancelled')
       expect(values[2]).toHaveAttribute('aria-pressed', 'false')
+
+      expect(model_fieldname_suggestions).toHaveBeenCalledWith(
+        { ok: sdkOkMock, get: sdkGetMock },
+        {
+          field_name: 'orders.status',
+          model_name: 'foo',
+          term: '',
+          view_name: 'orders',
+        }
+      )
     })
 
     it('shows fetch error message', async () => {

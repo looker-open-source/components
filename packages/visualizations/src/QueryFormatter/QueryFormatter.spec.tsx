@@ -30,7 +30,7 @@ import type { FC } from 'react'
 import React, { useContext } from 'react'
 import {
   QueryContext,
-  mockQueryResult,
+  mockQueryContextValues,
   mockSdkConfigResponse,
 } from '@looker/visualizations-adapters'
 import type { QueryFormatterProps } from './QueryFormatter'
@@ -47,7 +47,7 @@ describe('QueryFormatter component', () => {
   const QueryFormatterInContext: FC<QueryFormatterProps> = props => (
     <QueryContext.Provider
       value={{
-        ...mockQueryResult,
+        ...mockQueryContextValues,
         config: mockSdkConfigResponse,
       }}
     >
@@ -137,15 +137,15 @@ describe('QueryFormatter component', () => {
         Array [
           Array [
             Object {
+              "orders.average_total_amount_of_order_usd": 1088,
               "orders.count": 3087,
-              "users.count": 1088,
-              "users.gender": "f",
+              "orders.created_date": "2019-12-22",
               "users.state": "California",
             },
             Object {
+              "orders.average_total_amount_of_order_usd": 1069,
               "orders.count": 2515,
-              "users.count": 1069,
-              "users.gender": "m",
+              "orders.created_date": "2019-12-22",
               "users.state": "California",
             },
           ],
@@ -183,6 +183,20 @@ describe('QueryFormatter component', () => {
                 "value_format": null,
                 "view": "orders",
                 "view_label": "Orders",
+              },
+              Object {
+                "is_filter": false,
+                "is_fiscal": false,
+                "is_numeric": false,
+                "is_timeframe": true,
+                "label": "Users State",
+                "label_short": "State",
+                "name": "users.state",
+                "sortable": true,
+                "type": "string",
+                "value_format": null,
+                "view": "users",
+                "view_label": "Users",
               },
             ],
             "measures": Array [

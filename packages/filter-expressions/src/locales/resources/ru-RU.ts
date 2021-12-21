@@ -37,8 +37,8 @@ const resources = {
       'с {{dateTimeStart}} до {{dateTimeEnd}}',
     'is in month year': 'в {{month}} {{year}}',
     'is in the last': 'в последнем {{describeInterval}}',
-    'is interval ago': '{{interval}} назад',
     'is in the year year': 'в {{year}} году',
+    'is interval ago': '{{interval}} назад',
     'is intervalStart intervalType for intervalEnd':
       '{{intervalStart}} {{intervalType}} для {{intervalEnd}}',
     'is not null': 'не является нулевым значением',

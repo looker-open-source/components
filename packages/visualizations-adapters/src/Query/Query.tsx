@@ -30,7 +30,12 @@ import values from 'lodash/values'
 import get from 'lodash/get'
 import type { IError, Looker40SDK } from '@looker/sdk'
 import type { ISDKErrorResponse, ISDKSuccessResponse } from '@looker/sdk-rtl'
-import { isNumeric } from '../utils'
+import {
+  buildPivotFields,
+  isNumeric,
+  tabularPivotResponse,
+  tabularResponse,
+} from '../utils'
 import { QueryContext } from './QueryContext'
 import type { SDKRecord, CAll, Fields, Pivots, Totals } from '../types'
 
@@ -87,7 +92,7 @@ function asyncStateReducer(
 
 type DataReducerState = {
   queryId: null | number
-  data: null | SDKRecord
+  data: null | SDKRecord[]
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   visConfig: null | Record<string, any>
   fields: null | Fields
@@ -104,7 +109,7 @@ type DataReducerAction =
       type: 'update'
       value:
         | { queryId: number }
-        | { data: SDKRecord }
+        | { data: SDKRecord[] }
         | { visConfig: Partial<CAll> }
         | { fields: Fields }
         | { pivots: Pivots }
@@ -335,14 +340,28 @@ export const Query: FC<QueryProps> = ({
     }
   }, [queryId, visConfig, data, asyncLifecycle, sdk])
 
+  let dataCopy: SDKRecord[] = []
+  let fieldsCopy: Fields = { dimensions: [], measures: [] }
+
+  if (isDataValid && fields) {
+    dataCopy = pivots
+      ? tabularPivotResponse({ data, fields, pivots })
+      : tabularResponse(Array.from(data))
+
+    fieldsCopy = pivots ? buildPivotFields({ fields, pivots }) : fields
+  }
+
   return (
     <QueryContext.Provider
       value={{
         config: { ...visConfig, ...configOverrides },
+        data: dataCopy,
         error,
-        ok: isEveryResponseOk,
+        fields: fieldsCopy,
         loading: isLoading,
-        ...(isDataValid && { data, fields, pivots, shareUrl, totals }),
+        ok: isEveryResponseOk,
+        shareUrl: shareUrl || undefined,
+        totals: totals || undefined,
       }}
     >
       {children}

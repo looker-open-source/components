@@ -49,7 +49,10 @@ export interface AdvancedInputControlsProps
   showCaret?: boolean
   showClear: boolean
   summary?: string
-  validationType?: 'error'
+  /**
+   * Display the error icon
+   */
+  errorIcon?: boolean
 }
 
 export const AdvancedInputControls = styled(
@@ -64,7 +67,7 @@ export const AdvancedInputControls = styled(
       showCaret,
       showClear,
       summary,
-      validationType,
+      errorIcon,
       ...rest
     } = props
 
@@ -100,9 +103,7 @@ export const AdvancedInputControls = styled(
             mr="u1"
           />
         )}
-        {validationType === 'error' && (
-          <Icon icon={<Error />} color="critical" mr="u1" />
-        )}
+        {errorIcon && <Icon icon={<Error />} color="critical" mr="u1" />}
       </div>
     )
   }

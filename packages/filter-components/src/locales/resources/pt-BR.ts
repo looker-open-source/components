@@ -87,6 +87,26 @@ const resources = {
     'left exclusive': '(semiaberto]',
     'right exclusive': '[semifechado)',
   },
+  get_relative_timeframe_presets: {
+    'Last 14 Days': 'Últimos 14 dias',
+    'Last 180 Days': 'Últimos 180 dias',
+    'Last 28 Days': 'Últimos 28 dias',
+    'Last 30 Days': 'Últimos 30 dias',
+    'Last 365 Days': 'Últimos 365 dias',
+    'Last 7 Days': 'Últimos 7 dias',
+    'Last 90 Days': 'Últimos 90 dias',
+    'Previous Month': 'Mês anterior',
+    'Previous Quarter': 'Trimestre anterior',
+    'Previous Week': 'Semana anterior',
+    'Previous Year': 'Ano anterior',
+    'This Month': 'Este mês',
+    'This Quarter': 'Este trimestre',
+    'This Week': 'Esta semana',
+    'This Year': 'Este ano',
+    Today: 'Hoje',
+    'Year To Date': 'Ano atual',
+    Yesterday: 'Ontem',
+  },
   get_string_filter_options: {
     contains: 'contém',
     'doesnt contain': 'não contém',
@@ -114,6 +134,9 @@ const resources = {
     Remove: '',
     Toggle: '',
   },
+  NumberFilter: {
+    'any value': 'qualquer valor',
+  },
   OperatorLabel: {
     AND: 'E',
     OR: 'OU',
@@ -131,7 +154,7 @@ const resources = {
     'Choose a Timeframe': 'Escolha um período de tempo',
   },
   RelativeTimeframePopoverContent: {
-    Custom: 'Personalizar',
+    Custom: 'Personalização',
     Presets: 'Predefinições',
   },
   RelativeTimeframePresets: {

@@ -24,7 +24,7 @@
 
  */
 
-import type { FieldMetadata, Fields, Pivots } from '../types'
+import type { MeasureMetadata, Fields, Pivots } from '../types'
 import { buildPivotMeasureName } from '.'
 
 /**
@@ -54,10 +54,10 @@ export const buildPivotFields = ({
 
       return {
         ...measureField,
-        label: `${measureField.label}: ${capitalizedPivotValue}`,
         label_short: capitalizedPivotValue,
         name: pivotMeasureName,
-      } as FieldMetadata
+        pivoted_label: `${measureField.label}: ${capitalizedPivotValue}`,
+      } as MeasureMetadata
     })
   })
 

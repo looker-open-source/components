@@ -53,6 +53,7 @@ const InputComponent = forwardRef(
       iconAfter,
 
       type = 'text',
+      noErrorIcon,
       validationType,
 
       // mouse handlers need to be applied to the external div rather than the input
@@ -145,6 +146,7 @@ const InputComponent = forwardRef(
         <After
           after={after}
           iconAfter={iconAfter}
+          noErrorIcon={noErrorIcon}
           validationType={validationType}
         />
       </div>

@@ -27,26 +27,23 @@
 import React from 'react'
 import { screen } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { tabularResponse } from '../utils'
 import { StaticTable } from '.'
-import type { SDKRecord } from '../types'
-import { mockBarConfig, mockQueryResult, mockFields } from '../__mocks__'
+import { mockQueryContextValues } from '../__mocks__'
 
-describe('Table', () => {
-  it('renders Table', () => {
+describe('StaticTable', () => {
+  it('renders StaticTable', () => {
     renderWithTheme(
       <StaticTable
-        data={tabularResponse(mockQueryResult.data as SDKRecord[])}
+        {...mockQueryContextValues}
         config={{
-          ...mockBarConfig,
+          ...mockQueryContextValues.config,
           type: 'table',
         }}
-        fields={mockFields}
       />
     )
 
     // verify that table headers are being populated from Fields metadata
-    expect(screen.getByText('Orders').tagName).toEqual('TH')
+    expect(screen.getAllByText('Orders')[0].tagName).toEqual('TH')
     // verify that table content is being populated from data
     expect(screen.getAllByText('California')[0].tagName).toEqual('TD')
   })

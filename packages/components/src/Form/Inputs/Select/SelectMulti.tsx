@@ -96,6 +96,7 @@ const SelectMultiComponent = forwardRef(
       onDuplicate,
       onFilter,
       onValidationFail,
+      noErrorIcon,
       options,
       placeholder,
       removeOnBackspace = true,
@@ -148,6 +149,7 @@ const SelectMultiComponent = forwardRef(
           freeInput={freeInput}
           validate={validate}
           formatInputValue={formatInputValue}
+          noErrorIcon={noErrorIcon}
           onValidationFail={onValidationFail}
           onDuplicate={onDuplicate}
           ref={ref}

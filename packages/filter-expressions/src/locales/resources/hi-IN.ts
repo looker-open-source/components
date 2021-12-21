@@ -37,8 +37,8 @@ const resources = {
       '{{dateTimeStart}} से {{dateTimeEnd}} तक है',
     'is in month year': '{{month}} {{year}} में है',
     'is in the last': 'अंतिम {{describeInterval}} में है',
-    'is interval ago': '{{interval}} पहले है',
     'is in the year year': 'वर्ष {{year}} में है',
+    'is interval ago': '{{interval}} पहले है',
     'is intervalStart intervalType for intervalEnd':
       '{{intervalEnd}} के लिए {{intervalStart}} {{intervalType}} में है',
     'is not null': 'नल नहीं है',

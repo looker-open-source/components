@@ -26,11 +26,11 @@
   "is in the last": {
     "value": "за останні {{describeInterval}}"
   },
-  "is interval ago": {
-    "value": "{{interval}} тому"
-  },
   "is in the year year": {
     "value": "станом на {{year}} рік"
+  },
+  "is interval ago": {
+    "value": "{{interval}} тому"
   },
   "is intervalStart intervalType for intervalEnd": {
     "value": "це {{intervalStart}} {{intervalType}} для {{intervalEnd}}"

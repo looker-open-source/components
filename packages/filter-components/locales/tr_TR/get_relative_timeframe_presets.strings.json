@@ -1,0 +1,56 @@
+{
+  "Last 14 Days": {
+    "value": "Son 14 Gün"
+  },
+  "Last 180 Days": {
+    "value": "Son 180 Gün"
+  },
+  "Last 28 Days": {
+    "value": "Son 28 Gün"
+  },
+  "Last 30 Days": {
+    "value": "Son 30 Gün"
+  },
+  "Last 365 Days": {
+    "value": "Son 365 Gün"
+  },
+  "Last 7 Days": {
+    "value": "Son 7 Gün"
+  },
+  "Last 90 Days": {
+    "value": "Son 90 Gün"
+  },
+  "Previous Month": {
+    "value": "Önceki Ay"
+  },
+  "Previous Quarter": {
+    "value": "Önceki Çeyrek"
+  },
+  "Previous Week": {
+    "value": "Önceki Hafta"
+  },
+  "Previous Year": {
+    "value": "Önceki Yıl"
+  },
+  "This Month": {
+    "value": "Bu Ay"
+  },
+  "This Quarter": {
+    "value": "Bu Çeyrek"
+  },
+  "This Week": {
+    "value": "Bu Hafta"
+  },
+  "This Year": {
+    "value": "Bu Yıl"
+  },
+  "Today": {
+    "value": "Bugün"
+  },
+  "Year To Date": {
+    "value": "Yılbaşından Bugüne"
+  },
+  "Yesterday": {
+    "value": "Dün"
+  }
+}

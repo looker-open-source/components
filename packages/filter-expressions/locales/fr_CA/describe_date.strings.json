@@ -26,17 +26,17 @@
   "is in the last": {
     "value": "est dans le dernier {{describeInterval}}"
   },
+  "is in the year year": {
+    "value": "est dans l’année {{year}}"
+  },
   "is interval ago": {
     "value": "est il y a {{interval}}"
-  },
-  "is in the year year": {
-    "value": "est dans l'année {{year}}"
   },
   "is intervalStart intervalType for intervalEnd": {
     "value": "est {{intervalStart}} {{intervalType}} pour {{intervalEnd}}"
   },
   "is not null": {
-    "value": "n'est pas nul"
+    "value": "n’est pas nul"
   },
   "is on dateTime": {
     "value": "est le {{dateTime}}"

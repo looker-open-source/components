@@ -91,7 +91,7 @@ export const useSuggestable = ({ filter, sdk }: UseSuggestableProps) => {
           const result = await sdk.ok(
             model_fieldname_suggestions(sdk, {
               field_name: field?.suggest_dimension || '',
-              model_name: field?.project_name || '',
+              model_name: filter.model || '',
               term: searchTerm,
               view_name: field?.suggest_explore || field?.view || '',
             })

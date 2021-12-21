@@ -26,11 +26,11 @@
   "is in the last": {
     "value": "yra praeityje: {{describeInterval}}"
   },
-  "is interval ago": {
-    "value": "yra prieš {{interval}}"
-  },
   "is in the year year": {
     "value": "yra {{year}} m."
+  },
+  "is interval ago": {
+    "value": "yra prieš {{interval}}"
   },
   "is intervalStart intervalType for intervalEnd": {
     "value": "yra {{intervalStart}} {{intervalType}}, {{intervalEnd}}"

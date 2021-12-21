@@ -29,10 +29,7 @@ import React, { useContext } from 'react'
 import { Space, ProgressCircular, ComponentsProvider } from '@looker/components'
 import { ThemeContext } from 'styled-components'
 import {
-  buildPivotFields,
-  tabularPivotResponse,
   formatTotals,
-  tabularResponse,
   QueryContext,
   buildChartConfig,
 } from '@looker/visualizations-adapters'
@@ -50,7 +47,6 @@ export const QueryFormatter: FC<QueryFormatterProps> = props => {
     fields,
     config: rawConfigWithOverrides,
     loading,
-    pivots,
     totals,
   } = useContext(QueryContext)
 
@@ -76,22 +72,16 @@ export const QueryFormatter: FC<QueryFormatterProps> = props => {
   }
 
   if (data && rawConfigWithOverrides && fields) {
-    const dataCopy = pivots
-      ? tabularPivotResponse({ data, fields, pivots })
-      : tabularResponse(Array.from(data))
-
-    const fieldsCopy = pivots ? buildPivotFields({ fields, pivots }) : fields
-
     const config = buildChartConfig({
       config: rawConfigWithOverrides,
-      data: dataCopy,
-      fields: fieldsCopy,
+      data,
+      fields,
     })
 
     return React.cloneElement(children, {
       config,
-      data: dataCopy,
-      fields: fieldsCopy,
+      data,
+      fields,
       totals: formatTotals(totals),
       ok,
     })

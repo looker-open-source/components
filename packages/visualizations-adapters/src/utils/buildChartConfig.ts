@@ -23,7 +23,12 @@
  SOFTWARE.
 
  */
-import { normalizeChartTypes, chartConfigByType } from '../transformations'
+import {
+  normalizeChartTypes,
+  chartConfigByType,
+  sanitizeSDKResponse,
+} from '../transformations'
+
 import type {
   CAll,
   RawApiConfigResponse,
@@ -60,6 +65,7 @@ export const buildChartConfig = (args: ChartConfigArgs) => {
 
       return flow(configTransformations)(args)
     },
+    sanitizeSDKResponse,
   ])(args)
 
   return config

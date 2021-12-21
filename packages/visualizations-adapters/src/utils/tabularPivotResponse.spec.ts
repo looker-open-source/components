@@ -25,13 +25,19 @@
  */
 
 import { tabularPivotResponse } from './tabularPivotResponse'
-import { mockFields, mockPivots, mockSdkPivotDataResponse } from '../__mocks__'
+import {
+  mockPivots,
+  mockSdkPivotDataResponse,
+  mockSdkFieldsResponse,
+} from '../__mocks__'
+
+import type { Fields } from '../types'
 
 describe('tabularPivotResponse', () => {
   it('flattens raw pivot data', () => {
     const transformedData = tabularPivotResponse({
       data: mockSdkPivotDataResponse,
-      fields: mockFields,
+      fields: mockSdkFieldsResponse as Fields,
       pivots: mockPivots,
     })
 

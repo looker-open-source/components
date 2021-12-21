@@ -1,0 +1,56 @@
+{
+  "Last 14 Days": {
+    "value": "Posledních 14 dnů"
+  },
+  "Last 180 Days": {
+    "value": "Posledních 180 dnů"
+  },
+  "Last 28 Days": {
+    "value": "Posledních 28 dnů"
+  },
+  "Last 30 Days": {
+    "value": "Posledních 30 dnů"
+  },
+  "Last 365 Days": {
+    "value": "Posledních 365 dnů"
+  },
+  "Last 7 Days": {
+    "value": "Posledních 7 dnů"
+  },
+  "Last 90 Days": {
+    "value": "Posledních 90 dnů"
+  },
+  "Previous Month": {
+    "value": "Minulý měsíc"
+  },
+  "Previous Quarter": {
+    "value": "Minulé čtvrtletí"
+  },
+  "Previous Week": {
+    "value": "Minulý týden"
+  },
+  "Previous Year": {
+    "value": "Minulý rok"
+  },
+  "This Month": {
+    "value": "Tento měsíc"
+  },
+  "This Quarter": {
+    "value": "Toto čtvrtletí"
+  },
+  "This Week": {
+    "value": "Tento týden"
+  },
+  "This Year": {
+    "value": "Tento rok"
+  },
+  "Today": {
+    "value": "Dnes"
+  },
+  "Year To Date": {
+    "value": "Od počátku roku"
+  },
+  "Yesterday": {
+    "value": "Včera"
+  }
+}

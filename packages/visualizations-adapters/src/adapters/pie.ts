@@ -40,7 +40,7 @@ export type CPieSeries = Pick<CSeriesBasic, 'color'>
 
 export type PieProps = VisWrapperProps &
   ChartLayoutProps & {
-    data: SDKRecord
+    data: SDKRecord[]
     config: CPie
     fields: Fields
   }

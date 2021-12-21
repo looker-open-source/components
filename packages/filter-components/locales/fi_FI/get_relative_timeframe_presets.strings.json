@@ -1,0 +1,56 @@
+{
+  "Last 14 Days": {
+    "value": "Viimeiset 14 päivää"
+  },
+  "Last 180 Days": {
+    "value": "Viimeiset 180 päivää"
+  },
+  "Last 28 Days": {
+    "value": "Viimeiset 28 päivää"
+  },
+  "Last 30 Days": {
+    "value": "Viimeiset 30 päivää"
+  },
+  "Last 365 Days": {
+    "value": "Viimeiset 365 päivää"
+  },
+  "Last 7 Days": {
+    "value": "Viimeiset 7 päivää"
+  },
+  "Last 90 Days": {
+    "value": "Viimeiset 90 päivää"
+  },
+  "Previous Month": {
+    "value": "Edellinen kuukausi"
+  },
+  "Previous Quarter": {
+    "value": "Edellinen vuosineljännes"
+  },
+  "Previous Week": {
+    "value": "Edellinen viikko"
+  },
+  "Previous Year": {
+    "value": "Edellinen vuosi"
+  },
+  "This Month": {
+    "value": "Tämä kuukausi"
+  },
+  "This Quarter": {
+    "value": "Tämä vuosineljännes"
+  },
+  "This Week": {
+    "value": "Tämä viikko"
+  },
+  "This Year": {
+    "value": "Tämä vuosi"
+  },
+  "Today": {
+    "value": "Tänään"
+  },
+  "Year To Date": {
+    "value": "Vuosi tähän päivään"
+  },
+  "Yesterday": {
+    "value": "Eilen"
+  }
+}

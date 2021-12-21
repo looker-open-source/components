@@ -25,7 +25,11 @@
  */
 
 import { pickSeriesByName } from '@looker/visualizations-adapters'
-import type { CCartesian, Fields } from '@looker/visualizations-adapters'
+import type {
+  CCartesian,
+  Fields,
+  MeasureMetadata,
+} from '@looker/visualizations-adapters'
 import find from 'lodash/find'
 
 /**
@@ -45,8 +49,15 @@ export const seriesLabelFormatter = (
   const closestSeries = pickSeriesByName(fields, config, item)
 
   const field = find([...fields.measures, ...fields.dimensions], { name: item })
+
+  const pivoted_label = field && (field as MeasureMetadata)?.pivoted_label
+
   const fallback = item.split('.').pop() || ''
+
   return (
-    closestSeries.label || field?.label_short || fallback.replace(/_/g, ' ')
+    closestSeries.label ||
+    pivoted_label ||
+    field?.label ||
+    fallback.replace(/_/g, ' ')
   )
 }

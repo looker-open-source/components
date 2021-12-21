@@ -30,6 +30,28 @@ import { TabList2 } from './TabList2'
 import { TabPanels2 } from './TabPanels2'
 import type { Tabs2Props, TabStack } from './types'
 
+// structuring the data that comes in to be in the correct shape to create each individual `Tab` and its content.
+const getTabsData = <IDType extends string = string>(
+  children: Tabs2Props<IDType>['children']
+): TabStack<IDType> =>
+  Children.map(children, child => ({
+    children: child.props.children,
+    disabled: child.props.disabled,
+    id: (child.props.id as IDType) || child.props.label,
+    label: child.props.label,
+  }))
+
+// Compare a list of tab IDs with the intended tab ID and return the latter if found
+// and the first in the list otherwise
+const getFallbackTabId = (enabledTabIds: string, intendedTabId?: string) => {
+  const enabledTabIdsArr = JSON.parse(enabledTabIds)
+  if (enabledTabIds.length === 0) return undefined
+  if (intendedTabId && enabledTabIdsArr.includes(intendedTabId))
+    return intendedTabId
+  // select the first `Tab` that is not disabled
+  return enabledTabIdsArr[0]
+}
+
 /**
  * `Tabs2` are a clickable areas (Tab2) that organizes content across different pages or areas.
  * When a Tab2 is clicked, its contents are displayed and others are hidden.
@@ -45,37 +67,36 @@ export const Tabs2 = <IDType extends string = string>({
   tabId: propsTabId,
 }: Tabs2Props<IDType>) => {
   // list of all elements to be displayed as Tab and its content.
-  const [tabs, setTabs] = useState<TabStack<IDType>>([])
+  const initialTabs = getTabsData(children)
+  const [tabs, setTabs] = useState<TabStack<IDType>>(initialTabs)
+
+  // Save a list of the non-disabled tab IDs for fallback tab selection
+  // JSON.stringify for use in useEffect deps array
+  const enabledTabIds = JSON.stringify(
+    tabs.reduce(
+      (acc: string[], tab) => (tab.disabled ? acc : [...acc, tab.id]),
+      []
+    )
+  )
+
   // The identifier for connecting the `Tab` with its content
-  const [currentTabId, setCurrentTabId] = useState(defaultTabId)
+  const [currentTabId, setCurrentTabId] = useState(
+    getFallbackTabId(enabledTabIds, defaultTabId)
+  )
   const tabId = propsTabId || currentTabId
 
   useEffect(() => {
-    // structuring the data that comes in to be in the correct shape to create each individual `Tab` and its content.
-    const draftTabs: TabStack<IDType> = Children.map(
-      children,
-      (child: JSX.Element) => ({
-        children: child.props.children,
-        disabled: child.props.disabled,
-        id: child.props.id || child.props.label,
-        label: child.props.label,
-      })
-    )
+    setTabs(getTabsData(children))
+  }, [children])
 
-    setTabs(draftTabs)
-
-    if (
-      // check if the defaultTabId is passed and if not set to display the first Tab available.
-      !defaultTabId &&
-      draftTabs.length > 0 &&
-      !draftTabs.find(tab => tab.id === defaultTabId)
-    ) {
-      // select the first `Tab` that is not disabled
-      setCurrentTabId(
-        draftTabs[draftTabs.findIndex(tab => !tab.disabled === true)].id
-      )
+  useEffect(() => {
+    // As the list of tabs changes, check if we need a fallback
+    // or can stick with the current one
+    const fallbackTabId = getFallbackTabId(enabledTabIds, currentTabId)
+    if (fallbackTabId !== currentTabId) {
+      setCurrentTabId(fallbackTabId)
     }
-  }, [children, defaultTabId, setTabs, setCurrentTabId])
+  }, [currentTabId, enabledTabIds])
 
   const handleTabChange = (draftId: IDType) =>
     onTabChange ? onTabChange(draftId) : setCurrentTabId(draftId)

@@ -12,7 +12,7 @@
     "value": "pés"
   },
   "is anywhere": {
-    "value": "está em qualquer lado"
+    "value": "tem qualquer valor"
   },
   "is not null": {
     "value": "não é nulo"
@@ -21,7 +21,7 @@
     "value": "é nulo"
   },
   "kilometers": {
-    "value": "quilómetros"
+    "value": "quilômetros"
   },
   "meters": {
     "value": "metros"

@@ -26,11 +26,11 @@
   "is in the last": {
     "value": "es en {{describeInterval}} anterior"
   },
-  "is interval ago": {
-    "value": "es en {{interval}} antes"
-  },
   "is in the year year": {
     "value": "es en el año {{year}}"
+  },
+  "is interval ago": {
+    "value": "es en {{interval}} antes"
   },
   "is intervalStart intervalType for intervalEnd": {
     "value": "es en {{intervalType}} de {{intervalStart}} a {{intervalEnd}}"

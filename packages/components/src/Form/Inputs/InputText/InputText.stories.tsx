@@ -85,3 +85,9 @@ export const Error = Template.bind({})
 Error.args = {
   validationType: 'error',
 }
+
+export const NoErrorIcon = Template.bind({})
+NoErrorIcon.args = {
+  ...Error.args,
+  noErrorIcon: true,
+}

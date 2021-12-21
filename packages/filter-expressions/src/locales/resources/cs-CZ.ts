@@ -37,8 +37,8 @@ const resources = {
       'je od {{dateTimeStart}} do {{dateTimeEnd}}',
     'is in month year': 'je v {{month}} {{year}}',
     'is in the last': 'je v minulém intervalu {{describeInterval}}',
-    'is interval ago': 'je před intervalem {{interval}}',
     'is in the year year': 'je v roce {{year}}',
+    'is interval ago': 'je před intervalem {{interval}}',
     'is intervalStart intervalType for intervalEnd':
       'je {{intervalStart}} {{intervalType}} pro {{intervalEnd}}',
     'is not null': 'není prázdné',

@@ -38,7 +38,7 @@ import type {
   AllPresetTimeframes,
   RelativeTimeframeModel,
 } from '../../types/relative_timeframe_types'
-import { relativeTimeframeToString } from '../../utils/relative_timeframe_to_string'
+import { useRelativeTimeframeToString } from '../../utils/relative_timeframe_to_string'
 import { RelativeTimeframePopoverContent } from './components/RelativeTimeframePopoverContent'
 
 interface RelativeTimeframesProps {
@@ -98,7 +98,7 @@ export const RelativeTimeframes: FC<RelativeTimeframesProps> = ({
   // hoist popperInstanceRef for use in handleNav callback
   internalPopoverInstanceRef.current = popperInstanceRef.current
 
-  const label = relativeTimeframeToString(value)
+  const label = useRelativeTimeframeToString(value)
 
   const overlayTrigger = (
     <ChipButton ref={ref} onClick={open}>

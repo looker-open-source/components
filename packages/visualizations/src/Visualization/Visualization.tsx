@@ -35,6 +35,7 @@ import {
   Sparkline,
   Line,
   Scatter,
+  Pie,
 } from '@looker/visualizations-visx'
 import { SingleValue } from '@looker/visualizations-single-value'
 import {
@@ -42,11 +43,7 @@ import {
   Debug,
   QueryContext,
   ErrorBoundary,
-  Unsupported,
   formatTotals,
-  tabularResponse,
-  tabularPivotResponse,
-  buildPivotFields,
 } from '@looker/visualizations-adapters'
 import type {
   ChartLayoutProps,
@@ -55,7 +52,6 @@ import type {
   CommonCartesianProperties,
   CAll,
 } from '@looker/visualizations-adapters'
-import has from 'lodash/has'
 
 export interface VisualizationProps extends VisWrapperProps, ChartLayoutProps {
   /*
@@ -76,7 +72,7 @@ export const defaultChartComponent: Record<
   column: Column,
   default: Table,
   line: Line,
-  pie: Unsupported,
+  pie: Pie,
   scatter: Scatter,
   single_value: SingleValue,
   sparkline: Sparkline,
@@ -94,7 +90,6 @@ const VisualizationComponent: FC<VisualizationProps> = ({
     data = [],
     error,
     fields,
-    pivots,
     totals,
     config: rawConfig,
     loading,
@@ -121,26 +116,16 @@ const VisualizationComponent: FC<VisualizationProps> = ({
       />
     )
   } else if (rawConfigWithOverrides && fields) {
-    // immutably copy data to prevent mutations from bleeding into the rest of the system
-    const dataCopy = pivots
-      ? tabularPivotResponse({ data, fields, pivots })
-      : tabularResponse(Array.from(data))
-
-    const fieldsCopy = pivots ? buildPivotFields({ fields, pivots }) : fields
-
     const config = buildChartConfig({
       config: rawConfigWithOverrides,
-      data: dataCopy,
-      fields: fieldsCopy,
+      data,
+      fields,
     })
 
-    if (has(config, 'x_axis') && dataCopy.length) {
-      const xAxis = (config as CommonCartesianProperties)?.x_axis?.[0]
+    const xAxisReversed = (config as CommonCartesianProperties)?.x_axis?.[0]
+      .reversed
 
-      if (xAxis?.reversed) {
-        dataCopy.reverse()
-      }
-    }
+    const dataCopy = xAxisReversed ? data.slice().reverse() : data
 
     const ChartComponent =
       defaultChartComponent[config.type as keyof SupportedChartTypes]
@@ -148,7 +133,7 @@ const VisualizationComponent: FC<VisualizationProps> = ({
       <ChartComponent
         data={dataCopy}
         config={config}
-        fields={fieldsCopy}
+        fields={fields}
         totals={formatTotals(totals)}
         width={width}
         height={height}

@@ -28,12 +28,15 @@ import type { LayoutProps } from '@looker/design-tokens'
 import type { Ref, FormEvent } from 'react'
 import React, { forwardRef } from 'react'
 import styled from 'styled-components'
-import type { ValidationType } from '../../ValidationMessage'
 import {
   omitAriaAndValidationProps,
   pickAriaAndValidationProps,
 } from '../ariaProps'
-import type { ComboboxOptionIndicatorProps, ComboboxProps } from '../Combobox'
+import type {
+  ComboboxInputProps,
+  ComboboxOptionIndicatorProps,
+  ComboboxProps,
+} from '../Combobox'
 import { Combobox, ComboboxInput, ComboboxList } from '../Combobox'
 import type { SelectOptionsBaseProps } from './SelectOptions'
 import { SelectOptions } from './SelectOptions'
@@ -45,12 +48,12 @@ import type { SelectOptionObject, SelectOptionProps } from './types'
 
 export interface SelectBaseProps
   extends SelectOptionsBaseProps,
+    Pick<ComboboxInputProps, 'noErrorIcon' | 'placeholder' | 'validationType'>,
     Pick<ComboboxOptionIndicatorProps, 'indicator'> {
   /**
    * Options may be flat or grouped, label is optional – without it the value is used
    */
   options?: SelectOptionProps[]
-  placeholder?: string
   /**
    * The user can clear the current value by clicking an x icon button
    */
@@ -66,8 +69,6 @@ export interface SelectBaseProps
    * (use this to untether the list width from the input width)
    */
   listLayout?: LayoutProps
-
-  validationType?: ValidationType
   /**
    * Render only the options visible in the scroll window
    * defaults to false for <100 options, true for >=100 options
@@ -119,6 +120,7 @@ const SelectComponent = forwardRef(
       showCreate = false,
       formatCreateLabel,
       isLoading,
+      noErrorIcon,
       ...props
     }: SelectProps,
     ref: Ref<HTMLInputElement>
@@ -167,6 +169,7 @@ const SelectComponent = forwardRef(
           autoFocus={autoFocus}
           placeholder={placeholder}
           name={name}
+          noErrorIcon={noErrorIcon}
           validationType={props.validationType}
           isClearable={isClearable}
           autoComplete={false}

@@ -87,6 +87,26 @@ const resources = {
     'left exclusive': '(kairė-neįskaitant)',
     'right exclusive': '(dešinė-neįskaitant)',
   },
+  get_relative_timeframe_presets: {
+    'Last 14 Days': 'Pastarosios 14 dienų',
+    'Last 180 Days': 'Pastarosios 180 dienų',
+    'Last 28 Days': 'Pastarosios 28 dienos',
+    'Last 30 Days': 'Pastarosios 30 dienų',
+    'Last 365 Days': 'Pastarosios 365 dienos',
+    'Last 7 Days': 'Pastarosios 7 dienos',
+    'Last 90 Days': 'Pastarosios 90 dienų',
+    'Previous Month': 'Ankstesnis mėnuo',
+    'Previous Quarter': 'Ankstesnis ketvirtis',
+    'Previous Week': 'Ankstesnė savaitė',
+    'Previous Year': 'Ankstesni metai',
+    'This Month': 'Šis mėnuo',
+    'This Quarter': 'Šis ketvirtis',
+    'This Week': 'Ši savaitė',
+    'This Year': 'Šie metai',
+    Today: 'Šiandien',
+    'Year To Date': 'Nuo metų pradžios',
+    Yesterday: 'Vakar',
+  },
   get_string_filter_options: {
     contains: 'yra',
     'doesnt contain': 'nėra',
@@ -114,6 +134,9 @@ const resources = {
     Remove: '',
     Toggle: '',
   },
+  NumberFilter: {
+    'any value': 'bet kokia vertė',
+  },
   OperatorLabel: {
     AND: 'IR',
     OR: 'ARBA',
@@ -131,7 +154,7 @@ const resources = {
     'Choose a Timeframe': 'Pasirinkite laikotarpį',
   },
   RelativeTimeframePopoverContent: {
-    Custom: 'Tinkinti',
+    Custom: 'Tinkinta',
     Presets: 'Išankstiniai nustatymai',
   },
   RelativeTimeframePresets: {

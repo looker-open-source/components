@@ -37,11 +37,11 @@ const resources = {
       'est de {{dateTimeStart}} à {{dateTimeEnd}}',
     'is in month year': 'est en {{month}} {{year}}',
     'is in the last': 'est dans le dernier {{describeInterval}}',
+    'is in the year year': 'est dans l’année {{year}}',
     'is interval ago': 'est il y a {{interval}}',
-    'is in the year year': "est dans l'année {{year}}",
     'is intervalStart intervalType for intervalEnd':
       'est {{intervalStart}} {{intervalType}} pour {{intervalEnd}}',
-    'is not null': "n'est pas nul",
+    'is not null': 'n’est pas nul',
     'is on dateTime': 'est le {{dateTime}}',
     'is on or after': 'est situé le jour même ou après',
     'is previous unitLabel': 'est avant {{unitLabel}}',

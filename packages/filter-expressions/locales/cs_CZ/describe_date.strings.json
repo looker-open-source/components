@@ -26,11 +26,11 @@
   "is in the last": {
     "value": "je v minulém intervalu {{describeInterval}}"
   },
-  "is interval ago": {
-    "value": "je před intervalem {{interval}}"
-  },
   "is in the year year": {
     "value": "je v roce {{year}}"
+  },
+  "is interval ago": {
+    "value": "je před intervalem {{interval}}"
   },
   "is intervalStart intervalType for intervalEnd": {
     "value": "je {{intervalStart}} {{intervalType}} pro {{intervalEnd}}"

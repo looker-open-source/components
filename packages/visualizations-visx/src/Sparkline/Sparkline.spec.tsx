@@ -27,8 +27,8 @@ import React from 'react'
 import { screen } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import {
-  mockQueryResult,
-  mockQueryResultWithNull,
+  mockQueryContextValues,
+  mockContextWithNull,
 } from '@looker/visualizations-adapters'
 import { Sparkline } from './Sparkline'
 
@@ -36,7 +36,7 @@ import { Sparkline } from './Sparkline'
 
 describe('Sparkline Chart', () => {
   it('renders an svg based derived from two dimensional response', () => {
-    const { data, fields } = mockQueryResult
+    const { data, fields } = mockQueryContextValues
     renderWithTheme(
       <Sparkline config={{ type: 'sparkline' }} data={data} fields={fields!} />
     )
@@ -47,7 +47,7 @@ describe('Sparkline Chart', () => {
       >
         <path
           class="visx-linepath"
-          d="M1.5,0L-1.5,0"
+          d="M1.5,1.5L-1.5,498.5"
           fill="transparent"
           stroke="#6C43E0"
           stroke-linecap="round"
@@ -57,7 +57,7 @@ describe('Sparkline Chart', () => {
     `)
   })
   it('accepts line width overrides', () => {
-    const { data, fields } = mockQueryResult
+    const { data, fields } = mockQueryContextValues
     renderWithTheme(
       <Sparkline
         config={{ series: [{ line_width: 5 }], type: 'sparkline' }}
@@ -70,7 +70,7 @@ describe('Sparkline Chart', () => {
     expect(linePath).toHaveAttribute('stroke-width', '5')
   })
   it('renders multiple svg paths when encountering a null data point', () => {
-    const { data, fields } = mockQueryResultWithNull
+    const { data, fields } = mockContextWithNull
 
     renderWithTheme(
       <Sparkline config={{ type: 'sparkline' }} data={data} fields={fields!} />
@@ -83,7 +83,15 @@ describe('Sparkline Chart', () => {
       >
         <path
           class="visx-linepath"
-          d="M1.5,0L0.75,0L0,0L-0.75,0L-1.5,0"
+          d="M1.5,1.5L0.75,498.5"
+          fill="transparent"
+          stroke="#6C43E0"
+          stroke-linecap="round"
+          stroke-width="3"
+        />
+        <path
+          class="visx-linepath"
+          d="M-0.75,1.5L-1.5,285.784"
           fill="transparent"
           stroke="#6C43E0"
           stroke-linecap="round"

@@ -23,12 +23,16 @@
  SOFTWARE.
 
  */
+
+import { useTranslation } from 'react-i18next'
 import type { RelativeTimeframeModel } from '../types/relative_timeframe_types'
 import { formatDate } from './format_date'
 
-export const relativeTimeframeToString = (
+export const useRelativeTimeframeToString = (
   timeframe: RelativeTimeframeModel
-): string =>
-  typeof timeframe === 'string'
-    ? timeframe
+): string => {
+  const { t } = useTranslation('get_relative_timeframe_presets')
+  return typeof timeframe === 'string'
+    ? t(timeframe)
     : `${formatDate(timeframe.from)} - ${formatDate(timeframe.to)}`
+}

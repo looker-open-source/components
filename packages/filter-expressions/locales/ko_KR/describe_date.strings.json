@@ -26,11 +26,11 @@
   "is in the last": {
     "value": "이(가) 지난 {{describeInterval}}임"
   },
-  "is interval ago": {
-    "value": "이(가) {{interval}} 전임"
-  },
   "is in the year year": {
     "value": "이(가) {{year}} 연도임"
+  },
+  "is interval ago": {
+    "value": "이(가) {{interval}} 전임"
   },
   "is intervalStart intervalType for intervalEnd": {
     "value": "이(가) {{intervalEnd}}의 {{intervalStart}} {{intervalType}}임"

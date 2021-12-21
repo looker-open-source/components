@@ -1,9 +1,9 @@
 {
   "exclusive": {
-    "value": "(excluindo)"
+    "value": "(aberto)"
   },
   "inclusive": {
-    "value": "[incluindo]"
+    "value": "[fechado]"
   },
   "is": {
     "value": "é"
@@ -12,16 +12,16 @@
     "value": "está entre"
   },
   "is greater": {
-    "value": "é >"
+    "value": "é > que"
   },
   "is greater equal": {
-    "value": "é >="
+    "value": "é > ou igual a"
   },
   "is less": {
-    "value": "é <"
+    "value": "é < que"
   },
   "is less equal": {
-    "value": "é <="
+    "value": "é < ou igual a"
   },
   "is not": {
     "value": "não é"
@@ -36,9 +36,9 @@
     "value": "é nulo"
   },
   "left exclusive": {
-    "value": "(esquerda excluída)"
+    "value": "(semiaberto]"
   },
   "right exclusive": {
-    "value": "(direita excluída)"
+    "value": "[semifechado)"
   }
 }

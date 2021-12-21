@@ -48,6 +48,15 @@ export type FieldMetadata = {
   value_format: string | null
 }
 
+export type MeasureMetadata = FieldMetadata & {
+  /**
+   * An alternate label used when rendering a pivot query.
+   * This pivoted_label should include the measure's associated
+   * unique pivot value (i.e. "Orders Count: Complete").
+   */
+  pivoted_label?: string
+}
+
 export type DimensionMetadata = FieldMetadata & {
   is_filter: boolean
   is_fiscal: boolean
@@ -69,7 +78,7 @@ export type DimensionMetadata = FieldMetadata & {
 
 export type Fields = {
   dimensions: DimensionMetadata[]
-  measures: FieldMetadata[]
+  measures: MeasureMetadata[]
 }
 
 export type Pivots = {

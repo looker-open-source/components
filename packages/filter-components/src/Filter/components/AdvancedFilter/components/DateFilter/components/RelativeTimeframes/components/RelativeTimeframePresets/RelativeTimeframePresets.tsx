@@ -42,6 +42,7 @@ import type {
   AllPresetTimeframes,
   RelativeTimeframeModel,
 } from '../../../../types/relative_timeframe_types'
+import { useRelativeTimeframePresets } from '../../utils/get_relative_timeframe_presets'
 import {
   PresetTimeframes,
   PresetTimeframesLeastRecent,
@@ -134,6 +135,7 @@ const PresetTimeframeGroup: FC<PresetTimeframeGroupProps> = ({
   presetTimeframe,
   value,
 }) => {
+  const presets = useRelativeTimeframePresets()
   const { closeModal } = useContext(DialogContext)
 
   const handleOnClick = (timeframe: AllPresetTimeframes) => () => {
@@ -154,7 +156,7 @@ const PresetTimeframeGroup: FC<PresetTimeframeGroupProps> = ({
             selected={current}
           >
             <FadeIn duration={duration} delay={delay}>
-              {timeframe as string}
+              {presets[timeframe as AllPresetTimeframes]}
             </FadeIn>
           </CustomMenuItem>
         )

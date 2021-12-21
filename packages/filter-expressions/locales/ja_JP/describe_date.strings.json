@@ -26,11 +26,11 @@
   "is in the last": {
     "value": "が直近{{describeInterval}}以内である"
   },
-  "is interval ago": {
-    "value": "が{{interval}}前である"
-  },
   "is in the year year": {
     "value": "が次の年である（{{year}}）"
+  },
+  "is interval ago": {
+    "value": "が{{interval}}前である"
   },
   "is intervalStart intervalType for intervalEnd": {
     "value": "が{{intervalEnd}}の{{intervalStart}}{{intervalType}}"

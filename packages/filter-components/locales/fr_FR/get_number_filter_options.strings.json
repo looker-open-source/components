@@ -9,7 +9,7 @@
     "value": "est"
   },
   "is between": {
-    "value": "est compris entre"
+    "value": "est situé entre"
   },
   "is greater": {
     "value": "est >"
@@ -24,21 +24,21 @@
     "value": "est <="
   },
   "is not": {
-    "value": "n'est pas"
+    "value": "n’est pas"
   },
   "is not between": {
-    "value": "n'est pas compris entre"
+    "value": "n’est pas situé entre"
   },
   "is not null": {
-    "value": "n'est pas nul"
+    "value": "n’est pas nul"
   },
   "is null": {
     "value": "est nul"
   },
   "left exclusive": {
-    "value": "(ouvert à gauche]"
+    "value": "(exclusif-gauche)"
   },
   "right exclusive": {
-    "value": "[ouvert à droite)"
+    "value": "[exclusif-droite)"
   }
 }
