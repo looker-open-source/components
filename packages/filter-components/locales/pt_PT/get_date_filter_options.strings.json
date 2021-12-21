@@ -3,10 +3,10 @@
     "value": "é"
   },
   "is any time": {
-    "value": "é em qualquer altura"
+    "value": "é qualquer momento"
   },
   "is before": {
-    "value": "é antes de"
+    "value": "está antes de"
   },
   "is in range": {
     "value": "está no intervalo"
@@ -18,10 +18,10 @@
     "value": "é no mês"
   },
   "is in the year": {
-    "value": "é no ano"
+    "value": "está no ano"
   },
   "is next": {
-    "value": "é a seguir"
+    "value": "é próximo"
   },
   "is not null": {
     "value": "não é nulo"
@@ -30,15 +30,15 @@
     "value": "é nulo"
   },
   "is on or after": {
-    "value": "é a ou depois de"
+    "value": "está em ou depois de"
   },
   "is on the day": {
-    "value": "é no dia"
+    "value": "está no dia"
   },
   "is previous": {
     "value": "é anterior"
   },
   "is this": {
-    "value": "é isto"
+    "value": "é isso"
   }
 }

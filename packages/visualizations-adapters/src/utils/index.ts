@@ -27,6 +27,7 @@
 export * from './buildChartConfig'
 export * from './buildPivotFields'
 export * from './buildPivotMeasureName'
+export * from './deriveColorPalette'
 export * from './formatErrorMessage'
 export * from './formatTotals'
 export * from './hexToRgba'

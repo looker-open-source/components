@@ -28,21 +28,15 @@ import React from 'react'
 import { screen } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { Table } from './'
-import type { SDKRecord } from '@looker/visualizations-adapters'
-import {
-  mockBarConfig,
-  mockQueryResult,
-  mockFields,
-  tabularResponse,
-} from '@looker/visualizations-adapters'
+import { mockQueryContextValues } from '@looker/visualizations-adapters'
 
 describe('Table', () => {
   it('renders Table', () => {
     renderWithTheme(
       <Table
-        data={tabularResponse(mockQueryResult.data) as SDKRecord[]}
+        {...mockQueryContextValues}
         config={{
-          ...mockBarConfig,
+          ...mockQueryContextValues.config,
           series: {
             'orders.count': {
               cell_visualization: true,
@@ -50,12 +44,11 @@ describe('Table', () => {
           },
           type: 'table',
         }}
-        fields={mockFields}
       />
     )
 
     // verify that table headers are being populated from Fields metadata
-    expect(screen.getByText('Orders').tagName).toEqual('TH')
+    expect(screen.getAllByText('Orders')[0].tagName).toEqual('TH')
     // verify that table content is being populated from data
     expect(screen.getAllByText('California')[0].tagName).toEqual('TD')
     // TODO: restore these checks when Table is caught up with config changes

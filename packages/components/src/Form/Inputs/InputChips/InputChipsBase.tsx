@@ -134,6 +134,7 @@ export const InputChipsBaseInternal = forwardRef(
       onInputChange,
       formatTextToCopy = joinValues,
       disabled,
+      noErrorIcon,
       validationType,
       onClear,
       isVisibleOptions,
@@ -378,7 +379,7 @@ export const InputChipsBaseInternal = forwardRef(
               isClearable && values.length > 0 && !disabled && !readOnly
             }
             summary={summary}
-            validationType={validationType}
+            errorIcon={!noErrorIcon && validationType === 'error'}
           />
         }
         height={height}

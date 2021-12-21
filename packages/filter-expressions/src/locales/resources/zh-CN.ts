@@ -37,8 +37,8 @@ const resources = {
       '从 {{dateTimeStart}} 到 {{dateTimeEnd}}',
     'is in month year': '在 {{year}} 年 {{month}} 之内',
     'is in the last': '在过去 {{describeInterval}} 之内',
-    'is interval ago': '在 {{interval}} 之前',
     'is in the year year': '在 {{year}} 年之内',
+    'is interval ago': '在 {{interval}} 之前',
     'is intervalStart intervalType for intervalEnd':
       '{{intervalType}} 在 {{intervalStart}} 到 {{intervalEnd}} 期间',
     'is not null': '不为空值',

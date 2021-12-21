@@ -35,7 +35,7 @@ export const legendValue: ConfigHelper<CPie> = ({ config, data, fields }) => {
   type AllKeys = RawApiConfigResponse['label_type'] & LegendValues & ''
 
   const LEGEND_VALUE: Record<AllKeys, LegendValues> = {
-    '': 'label',
+    '': 'label_percent',
     lab: 'label',
     label: 'label',
     labPer: 'label_percent',

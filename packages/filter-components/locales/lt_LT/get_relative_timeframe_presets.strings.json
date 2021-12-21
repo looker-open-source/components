@@ -1,0 +1,56 @@
+{
+  "Last 14 Days": {
+    "value": "Pastarosios 14 dienų"
+  },
+  "Last 180 Days": {
+    "value": "Pastarosios 180 dienų"
+  },
+  "Last 28 Days": {
+    "value": "Pastarosios 28 dienos"
+  },
+  "Last 30 Days": {
+    "value": "Pastarosios 30 dienų"
+  },
+  "Last 365 Days": {
+    "value": "Pastarosios 365 dienos"
+  },
+  "Last 7 Days": {
+    "value": "Pastarosios 7 dienos"
+  },
+  "Last 90 Days": {
+    "value": "Pastarosios 90 dienų"
+  },
+  "Previous Month": {
+    "value": "Ankstesnis mėnuo"
+  },
+  "Previous Quarter": {
+    "value": "Ankstesnis ketvirtis"
+  },
+  "Previous Week": {
+    "value": "Ankstesnė savaitė"
+  },
+  "Previous Year": {
+    "value": "Ankstesni metai"
+  },
+  "This Month": {
+    "value": "Šis mėnuo"
+  },
+  "This Quarter": {
+    "value": "Šis ketvirtis"
+  },
+  "This Week": {
+    "value": "Ši savaitė"
+  },
+  "This Year": {
+    "value": "Šie metai"
+  },
+  "Today": {
+    "value": "Šiandien"
+  },
+  "Year To Date": {
+    "value": "Nuo metų pradžios"
+  },
+  "Yesterday": {
+    "value": "Vakar"
+  }
+}

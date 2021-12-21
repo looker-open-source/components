@@ -25,7 +25,7 @@
  */
 
 import React, { useContext } from 'react'
-import styled, { ThemeContext } from 'styled-components'
+import styled, { ThemeContext, css } from 'styled-components'
 import {
   getSeriesMax,
   getSeriesMin,
@@ -50,6 +50,16 @@ import {
   getDefaultGlyphSize,
 } from '../utils'
 import { DLGroup } from '../DLGroup'
+
+export const tooltipStyles = css`
+  background-color: ${({ theme }) => theme.colors.inverse};
+  border-radius: ${({ theme }) => theme.radii.medium};
+  color: ${({ theme }) => theme.colors.inverseOn};
+  font-family: ${({ theme }) => theme.fonts.body};
+  font-size: ${({ theme }) => theme.fontSizes.xsmall};
+  padding: ${({ theme }) => theme.space.u3};
+  pointer-events: none; /* Prevents mouse from falling onto tooltip and interrupting horizontal hover flow on charts */
+`
 
 export type TooltipProps = Pick<LineProps, 'fields'> & {
   className?: string
@@ -205,11 +215,5 @@ export const XYTooltip = styled(
     )
   }
 )`
-  background-color: ${({ theme }) => theme.colors.inverse};
-  border-radius: ${({ theme }) => theme.radii.medium};
-  color: ${({ theme }) => theme.colors.inverseOn};
-  font-family: ${({ theme }) => theme.fonts.body};
-  font-size: ${({ theme }) => theme.fontSizes.xsmall};
-  padding: ${({ theme }) => theme.space.u3};
-  pointer-events: none; /* Prevents mouse from falling onto tooltip and interrupting horizontal hover flow on charts */
+  ${tooltipStyles}
 `

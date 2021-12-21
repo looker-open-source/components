@@ -87,6 +87,26 @@ const resources = {
     'left exclusive': '（左側を除く]',
     'right exclusive': '[右側を除く)',
   },
+  get_relative_timeframe_presets: {
+    'Last 14 Days': '過去14日間',
+    'Last 180 Days': '過去180日間',
+    'Last 28 Days': '過去28日間',
+    'Last 30 Days': '過去30日間',
+    'Last 365 Days': '過去365日間',
+    'Last 7 Days': '過去7日間',
+    'Last 90 Days': '過去90日間',
+    'Previous Month': '前月',
+    'Previous Quarter': '前四半期',
+    'Previous Week': '前週',
+    'Previous Year': '前年',
+    'This Month': '今月',
+    'This Quarter': '今四半期',
+    'This Week': '今週',
+    'This Year': '今年',
+    Today: '今日',
+    'Year To Date': '年初来',
+    Yesterday: '昨日',
+  },
   get_string_filter_options: {
     contains: 'が次の値を含む',
     'doesnt contain': 'が次の値を含まない',
@@ -113,6 +133,9 @@ const resources = {
     'Clear all': '',
     Remove: '',
     Toggle: '',
+  },
+  NumberFilter: {
+    'any value': '任意の値',
   },
   OperatorLabel: {
     AND: 'AND',
@@ -142,7 +165,7 @@ const resources = {
     'No values match': '一致する値なし',
   },
   use_placeholder: {
-    'any value': '値を問わずすべて',
+    'any value': '任意の値',
   },
   use_suggestable: {
     'Error loading suggestions': '提案値の読み込みエラー',

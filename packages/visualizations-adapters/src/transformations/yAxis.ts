@@ -30,7 +30,7 @@ import type {
   YAxisConfig,
   YAxisRaw,
   RawApiConfigResponse,
-  FieldMetadata,
+  MeasureMetadata,
 } from '../types'
 import omitBy from 'lodash/omitBy'
 import isNull from 'lodash/isNull'
@@ -52,10 +52,14 @@ type YAxisRawExtended = YAxisRaw & {
 const deriveDefaults = (
   axisRaw: YAxisRawExtended,
   axisOfficial: YAxisConfig,
-  measure: FieldMetadata
+  measure: MeasureMetadata
 ): YAxisConfig => {
   // Get default label value
-  const { label: measureLabel, view_label: measureViewLabel } = measure
+  const {
+    label: measureLabel,
+
+    view_label: measureViewLabel,
+  } = measure
 
   // raw sdk attributes
   const {

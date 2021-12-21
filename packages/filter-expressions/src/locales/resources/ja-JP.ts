@@ -37,8 +37,8 @@ const resources = {
       'が{{dateTimeStart}}から{{dateTimeEnd}}まで',
     'is in month year': 'が次である（{{year}}{{month}}）',
     'is in the last': 'が直近{{describeInterval}}以内である',
-    'is interval ago': 'が{{interval}}前である',
     'is in the year year': 'が次の年である（{{year}}）',
+    'is interval ago': 'が{{interval}}前である',
     'is intervalStart intervalType for intervalEnd':
       'が{{intervalEnd}}の{{intervalStart}}{{intervalType}}',
     'is not null': 'がNullでない',

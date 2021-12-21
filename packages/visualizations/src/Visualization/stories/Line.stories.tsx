@@ -31,11 +31,14 @@ import type { VisualizationProps } from '../Visualization'
 import type { Fields } from '@looker/visualizations-adapters'
 import {
   QueryContext,
+  buildPivotFields,
   mockPivots,
   mockSdkConfigResponse,
   mockSdkDataResponse,
   mockSdkFieldsResponse,
   mockSdkPivotDataResponse,
+  tabularResponse,
+  tabularPivotResponse,
 } from '@looker/visualizations-adapters'
 
 export default {
@@ -51,38 +54,51 @@ const Template: Story<VisualizationProps> = ({ config, ...restProps }) => {
         config: { ...mockSdkConfigResponse },
         ok: true,
         loading: false,
-        data: [...mockSdkDataResponse],
+        data: tabularResponse([...mockSdkDataResponse]),
         fields: { ...mockSdkFieldsResponse } as Fields,
       }}
     >
       <Visualization
         config={{ ...config, type: 'line' }}
-        {...restProps}
         height={600}
         width={800}
+        {...restProps}
       />
     </QueryContext.Provider>
   )
 }
 
 const PivotTemplate: Story<VisualizationProps> = ({ config, ...restProps }) => {
+  const mockPivotFields = buildPivotFields({
+    fields: {
+      ...mockSdkFieldsResponse,
+    } as Fields,
+    pivots: mockPivots,
+  })
+
+  const mockPivotData = tabularPivotResponse({
+    data: [...mockSdkPivotDataResponse],
+    fields: {
+      ...mockSdkFieldsResponse,
+    } as Fields,
+    pivots: mockPivots,
+  })
+
   return (
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     <QueryContext.Provider
       value={{
         config: { ...mockSdkConfigResponse },
         ok: true,
         loading: false,
-        data: [...mockSdkPivotDataResponse],
-        fields: { ...mockSdkFieldsResponse } as Fields,
-        pivots: [...mockPivots],
+        data: mockPivotData,
+        fields: mockPivotFields,
       }}
     >
       <Visualization
         config={{ ...config, type: 'line' }}
-        {...restProps}
         height={600}
         width={800}
+        {...restProps}
       />
     </QueryContext.Provider>
   )
@@ -104,18 +120,6 @@ PointStyleNone.args = {
 }
 
 export const Pivot = PivotTemplate.bind({})
-Pivot.args = {
-  config: {
-    series: [
-      { visible: true },
-      { visible: true },
-      { visible: true },
-      { visible: true },
-      { visible: true },
-      { visible: true },
-    ],
-  },
-}
 Pivot.parameters = {
   storyshots: { disable: true },
 }

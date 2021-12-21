@@ -26,11 +26,11 @@
   "is in the last": {
     "value": "अंतिम {{describeInterval}} में है"
   },
-  "is interval ago": {
-    "value": "{{interval}} पहले है"
-  },
   "is in the year year": {
     "value": "वर्ष {{year}} में है"
+  },
+  "is interval ago": {
+    "value": "{{interval}} पहले है"
   },
   "is intervalStart intervalType for intervalEnd": {
     "value": "{{intervalEnd}} के लिए {{intervalStart}} {{intervalType}} में है"

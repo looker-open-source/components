@@ -1,0 +1,56 @@
+{
+  "Last 14 Days": {
+    "value": "Ultimi 14 giorni"
+  },
+  "Last 180 Days": {
+    "value": "Ultimi 180 giorni"
+  },
+  "Last 28 Days": {
+    "value": "Ultimi 28 giorni"
+  },
+  "Last 30 Days": {
+    "value": "Ultimi 30 giorni"
+  },
+  "Last 365 Days": {
+    "value": "Ultimi 365 giorni"
+  },
+  "Last 7 Days": {
+    "value": "Ultimi 7 giorni"
+  },
+  "Last 90 Days": {
+    "value": "Ultimi 90 giorni"
+  },
+  "Previous Month": {
+    "value": "Mese precedente"
+  },
+  "Previous Quarter": {
+    "value": "Trimestre precedente"
+  },
+  "Previous Week": {
+    "value": "Settimana precedente"
+  },
+  "Previous Year": {
+    "value": "Anno precedente"
+  },
+  "This Month": {
+    "value": "Mese corrente"
+  },
+  "This Quarter": {
+    "value": "Trimestre corrente"
+  },
+  "This Week": {
+    "value": "Settimana corrente"
+  },
+  "This Year": {
+    "value": "Anno corrente"
+  },
+  "Today": {
+    "value": "Oggi"
+  },
+  "Year To Date": {
+    "value": "Da inizio anno"
+  },
+  "Yesterday": {
+    "value": "Ieri"
+  }
+}

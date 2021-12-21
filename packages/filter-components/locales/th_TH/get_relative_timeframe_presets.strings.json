@@ -1,0 +1,56 @@
+{
+  "Last 14 Days": {
+    "value": "14 วันที่ผ่านมา"
+  },
+  "Last 180 Days": {
+    "value": "180 วันที่ผ่านมา"
+  },
+  "Last 28 Days": {
+    "value": "28 วันที่ผ่านมา"
+  },
+  "Last 30 Days": {
+    "value": "30 วันที่ผ่านมา"
+  },
+  "Last 365 Days": {
+    "value": "365 วันที่ผ่านมา"
+  },
+  "Last 7 Days": {
+    "value": "7 วันที่ผ่านมา"
+  },
+  "Last 90 Days": {
+    "value": "90 วันที่ผ่านมา"
+  },
+  "Previous Month": {
+    "value": "เดือนที่แล้ว"
+  },
+  "Previous Quarter": {
+    "value": "ไตรมาสที่แล้ว"
+  },
+  "Previous Week": {
+    "value": "สัปดาห์ที่แล้ว"
+  },
+  "Previous Year": {
+    "value": "ปีที่แล้ว"
+  },
+  "This Month": {
+    "value": "เดือนนี้"
+  },
+  "This Quarter": {
+    "value": "ไตรมาสนี้"
+  },
+  "This Week": {
+    "value": "สัปดาห์นี้"
+  },
+  "This Year": {
+    "value": "ปีนี้"
+  },
+  "Today": {
+    "value": "วันนี้"
+  },
+  "Year To Date": {
+    "value": "ตั้งแต่ต้นปี"
+  },
+  "Yesterday": {
+    "value": "เมื่อวาน"
+  }
+}

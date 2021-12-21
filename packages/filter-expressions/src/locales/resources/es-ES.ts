@@ -37,8 +37,8 @@ const resources = {
       'es de {{dateTimeStart}} a {{dateTimeEnd}}',
     'is in month year': 'es en {{month}} de {{year}}',
     'is in the last': 'es en {{describeInterval}} anterior',
-    'is interval ago': 'es en {{interval}} antes',
     'is in the year year': 'es en el año {{year}}',
+    'is interval ago': 'es en {{interval}} antes',
     'is intervalStart intervalType for intervalEnd':
       'es en {{intervalType}} de {{intervalStart}} a {{intervalEnd}}',
     'is not null': 'no es nulo',

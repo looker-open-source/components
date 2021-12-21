@@ -44,7 +44,7 @@ export type RawApiConfigResponse = {
   hidden_fields: string[]
   interpolation: 'linear'
   label_density: number
-  label_type: LabelTypes
+  label_type?: LabelTypes
   label_value_format: string
   legend_position: LegendPositions | 'center'
   plot_size_by_field: boolean
@@ -61,8 +61,8 @@ export type RawApiConfigResponse = {
   show_x_axis_label: boolean
   show_y_axis_labels: boolean
   show_y_axis_ticks: boolean
-  show_single_value_title: boolean
-  single_value_title: string
+  show_single_value_title?: boolean
+  single_value_title?: string
   size_by_field: string
   stacking:
     | Exclude<CBar['positioning'], undefined>

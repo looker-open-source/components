@@ -26,6 +26,7 @@
 
 export * from './barPositioning'
 export * from './chartConfigByType'
+export * from './dimensionSeriesColors'
 export * from './legendPosition'
 export * from './legendType'
 export * from './legendValue'

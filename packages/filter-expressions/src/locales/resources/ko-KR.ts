@@ -37,8 +37,8 @@ const resources = {
       '이(가) {{dateTimeStart}}에서 {{dateTimeEnd}}까지임',
     'is in month year': '이(가) {{month}} {{year}}임',
     'is in the last': '이(가) 지난 {{describeInterval}}임',
-    'is interval ago': '이(가) {{interval}} 전임',
     'is in the year year': '이(가) {{year}} 연도임',
+    'is interval ago': '이(가) {{interval}} 전임',
     'is intervalStart intervalType for intervalEnd':
       '이(가) {{intervalEnd}}의 {{intervalStart}} {{intervalType}}임',
     'is not null': '이(가) null이 아님',

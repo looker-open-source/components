@@ -28,20 +28,20 @@ import type { QueryContextProps } from '../Query'
 import { mockBarConfig } from './mockConfig'
 import { mockFields } from './mockFields'
 
-export const mockQueryResult: QueryContextProps = {
+export const mockQueryContextValues: QueryContextProps = {
   config: mockBarConfig,
   data: [
     {
-      'orders.count': { rendered: '3,087', value: 3087 },
-      'users.count': { rendered: '1,088', value: 1088 },
-      'users.gender': { value: 'f' },
-      'users.state': { value: 'California' },
+      'orders.count': 3087,
+      'orders.average_total_amount_of_order_usd': 1088,
+      'orders.created_date': '2019-12-22',
+      'users.state': 'California',
     },
     {
-      'orders.count': { rendered: '2,515', value: 2515 },
-      'users.count': { rendered: '1,069', value: 1069 },
-      'users.gender': { value: 'm' },
-      'users.state': { value: 'California' },
+      'orders.count': 2515,
+      'orders.average_total_amount_of_order_usd': 1069,
+      'orders.created_date': '2019-12-22',
+      'users.state': 'California',
     },
   ],
   fields: mockFields,
@@ -49,38 +49,38 @@ export const mockQueryResult: QueryContextProps = {
   loading: false,
 }
 
-export const mockQueryResultWithNull: QueryContextProps = {
+export const mockContextWithNull: QueryContextProps = {
   config: mockBarConfig,
   data: [
     {
-      'orders.count': { rendered: '3,087', value: 3087 },
-      'users.count': { rendered: '1,088', value: 1088 },
-      'users.gender': { value: 'm' },
-      'users.state': { value: 'California' },
+      'orders.count': 3087,
+      'orders.average_total_amount_of_order_usd': 1088,
+      'orders.created_date': '2019-12-22',
+      'users.state': 'California',
     },
     {
-      'orders.count': { rendered: '3,087', value: 2087 },
-      'users.count': { rendered: '1,088', value: 88 },
-      'users.gender': { value: 'm' },
-      'users.state': { value: 'California' },
+      'orders.count': 2087,
+      'orders.average_total_amount_of_order_usd': 88,
+      'orders.created_date': '2019-12-22',
+      'users.state': 'California',
     },
     {
-      'orders.count': { rendered: '2,515', value: null },
-      'users.count': { rendered: '1,069', value: null },
-      'users.gender': { value: 'm' },
-      'users.state': { value: 'California' },
+      'orders.count': null,
+      'orders.average_total_amount_of_order_usd': null,
+      'orders.created_date': '2019-12-22',
+      'users.state': 'California',
     },
     {
-      'orders.count': { rendered: '3,087', value: 3087 },
-      'users.count': { rendered: '1,088', value: 88 },
-      'users.gender': { value: 'm' },
-      'users.state': { value: 'California' },
+      'orders.count': 3087,
+      'orders.average_total_amount_of_order_usd': 88,
+      'orders.created_date': '2019-12-22',
+      'users.state': 'California',
     },
     {
-      'orders.count': { rendered: '2,515', value: 2515 },
-      'users.count': { rendered: '1,069', value: 1069 },
-      'users.gender': { value: 'm' },
-      'users.state': { value: 'California' },
+      'orders.count': 2515,
+      'orders.average_total_amount_of_order_usd': 1069,
+      'orders.created_date': '2019-12-22',
+      'users.state': 'California',
     },
   ],
   fields: mockFields,

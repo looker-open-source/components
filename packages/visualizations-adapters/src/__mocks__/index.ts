@@ -25,7 +25,7 @@
  */
 
 export * from './mockConfig'
-export * from './mockQueryResult'
+export * from './mockQueryContextValues'
 export * from './mockFields'
 export * from './mockPivots'
 export * from './mockSdk'

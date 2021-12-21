@@ -26,11 +26,11 @@
   "is in the last": {
     "value": "อยู่ใน {{describeInterval}} ล่าสุด"
   },
-  "is interval ago": {
-    "value": "เมื่อ {{interval}} ที่แล้ว"
-  },
   "is in the year year": {
     "value": "ภายในปี {{year}}"
+  },
+  "is interval ago": {
+    "value": "เมื่อ {{interval}} ที่แล้ว"
   },
   "is intervalStart intervalType for intervalEnd": {
     "value": "อยู่ตั้งแต่ {{intervalStart}} {{intervalType}} เป็นเวลา {{intervalEnd}}"

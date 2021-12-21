@@ -24,9 +24,11 @@
 
  */
 
+import type { FormEvent } from 'react'
 import React, { useState } from 'react'
 import { ThemeProvider } from 'styled-components'
 import type { Story } from '@storybook/react/types-6-0'
+import { FieldText } from '../Form'
 import { Box2 } from '../Layout'
 import type { Tabs2Props } from './'
 import { Tab2, Tabs2 } from './'
@@ -143,4 +145,23 @@ export const Disabled = () => {
       </Tabs2>
     </Box2>
   )
+}
+
+export const StateChanges = () => {
+  const [value, setValue] = useState('')
+  const handleChange = (e: FormEvent<HTMLInputElement>) => {
+    setValue(e.currentTarget.value)
+  }
+  return (
+    <Tabs2>
+      <Tab2 label="Tab 1">Go to Tab 2 and try entering text in the field</Tab2>
+      <Tab2 label="Tab 2">
+        <FieldText value={value} onChange={handleChange} />
+      </Tab2>
+    </Tabs2>
+  )
+}
+
+StateChanges.parameters = {
+  storyshots: { disable: true },
 }

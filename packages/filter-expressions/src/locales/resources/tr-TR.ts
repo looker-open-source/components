@@ -37,8 +37,8 @@ const resources = {
       'şu tarihten: {{dateTimeStart}} şu tarihe kadar: {{dateTimeEnd}}',
     'is in month year': '{{month}}{{year}} tarihinde',
     'is in the last': 'geçmiş şu sürede: {{describeInterval}}',
-    'is interval ago': '{{interval}} önce',
     'is in the year year': 'şu yılda: {{year}}',
+    'is interval ago': '{{interval}} önce',
     'is intervalStart intervalType for intervalEnd':
       '{{intervalEnd}} için {{intervalStart}} {{intervalType}}',
     'is not null': 'değer içeriyor',

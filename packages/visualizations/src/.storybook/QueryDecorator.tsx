@@ -6,7 +6,7 @@ import {
   mockSdkDataResponse,
   QueryContext,
 } from '@looker/visualizations-adapters'
-import type { Fields } from '@looker/visualizations'
+import { Fields, tabularResponse } from '@looker/visualizations'
 
 export const QueryDecorator = (Story: Story) => {
   return (
@@ -15,7 +15,7 @@ export const QueryDecorator = (Story: Story) => {
         config: { ...mockSdkConfigResponse },
         ok: true,
         loading: false,
-        data: [...mockSdkDataResponse],
+        data: tabularResponse([...mockSdkDataResponse]),
         fields: { ...mockSdkFieldsResponse } as Fields,
       }}
     >

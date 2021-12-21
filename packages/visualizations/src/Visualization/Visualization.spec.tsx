@@ -43,7 +43,7 @@ import {
   mockSdkConfigResponse,
   supportedChartTypes,
   QueryContext,
-  mockQueryResult,
+  mockQueryContextValues,
 } from '@looker/visualizations-adapters'
 import { Sparkline } from '@looker/visualizations-visx'
 import { Visualization, defaultChartComponent } from './Visualization'
@@ -77,6 +77,7 @@ jest.mock('@looker/visualizations-visx', () => ({
   Bar: jest.fn().mockReturnValue(<CustomVis />),
   Column: jest.fn().mockReturnValue(<CustomVis />),
   Line: jest.fn().mockReturnValue(<CustomVis />),
+  Pie: jest.fn().mockReturnValue(<CustomVis />),
   Sparkline: jest.fn().mockReturnValue(<CustomVis />),
   Scatter: jest.fn().mockReturnValue(<CustomVis />),
 }))
@@ -94,7 +95,7 @@ describe('Visualization', () => {
   it('wraps itself in ComponentsProvider if rendered outside of theme context', () => {
     // use default rtl `render` instead of `renderWithTheme`
     render(
-      <QueryContext.Provider value={mockQueryResult}>
+      <QueryContext.Provider value={mockQueryContextValues}>
         <Visualization />
       </QueryContext.Provider>
     )
@@ -103,7 +104,7 @@ describe('Visualization', () => {
   })
   it('accepts config overrides and merges them with QueryContext values', () => {
     render(
-      <QueryContext.Provider value={mockQueryResult}>
+      <QueryContext.Provider value={mockQueryContextValues}>
         <Visualization config={{ type: 'sparkline' }} />
       </QueryContext.Provider>
     )
@@ -125,7 +126,7 @@ function buildConfigProp<T extends CAll>(
   renderWithTheme(
     <QueryContext.Provider
       value={{
-        ...mockQueryResult,
+        ...mockQueryContextValues,
         config: { ...mockSdkConfigResponse, ...configOverrides },
       }}
     >
@@ -369,7 +370,7 @@ describe('Pie', () => {
 
     expect(config.legend).toMatchInlineSnapshot(`
       Object {
-        "position": "bottom",
+        "position": "right",
         "type": "legend",
         "value": "label_percent",
       }

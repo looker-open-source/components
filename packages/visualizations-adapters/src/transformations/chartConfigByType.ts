@@ -32,11 +32,11 @@ import { legendPosition } from './legendPosition'
 import { legendType } from './legendType'
 import { legendValue } from './legendValue'
 import { renderNullValues } from './renderNullValues'
-import { sanitizeSDKResponse } from './sanitizeSDKResponse'
 import { seriesCellVis } from './seriesCellVis'
 import { seriesColors } from './seriesColors'
 import { seriesLabels } from './seriesLabels'
 import { seriesLineWidth } from './seriesLineWidth'
+import { dimensionSeriesColors } from './dimensionSeriesColors'
 import { seriesPointShape } from './seriesPointShape'
 import { seriesPointStyle } from './seriesPointStyle'
 import { seriesSize } from './seriesSize'
@@ -75,44 +75,26 @@ export const chartConfigByType: Record<
     ...commonCartesianDefaults,
     linePositioning,
     seriesLineWidth,
-    sanitizeSDKResponse,
   ],
-  bar: [barPositioning, ...commonCartesianDefaults, sanitizeSDKResponse],
-  column: [barPositioning, ...commonCartesianDefaults, sanitizeSDKResponse],
-  default: [...commonCartesianDefaults, sanitizeSDKResponse],
-  table: [
-    seriesCellVis,
-    seriesLabels,
-    seriesVisible,
-    truncateText,
-    sanitizeSDKResponse,
+  bar: [barPositioning, ...commonCartesianDefaults],
+  column: [barPositioning, ...commonCartesianDefaults],
+  default: [...commonCartesianDefaults],
+  table: [seriesCellVis, seriesLabels, seriesVisible, truncateText],
+  line: [...commonLineDefaults, ...commonCartesianDefaults, seriesLineWidth],
+  pie: [
+    legendPosition,
+    legendType,
+    legendValue,
+    dimensionSeriesColors,
+    tooltips,
   ],
-  line: [
-    ...commonLineDefaults,
-    ...commonCartesianDefaults,
-    seriesLineWidth,
-    sanitizeSDKResponse,
-  ],
-  pie: [legendPosition, legendType, legendValue, tooltips, sanitizeSDKResponse],
   scatter: [
     ...commonLineDefaults,
     ...commonCartesianDefaults,
     seriesLineWidth,
     seriesSize,
     renderNullValues,
-    sanitizeSDKResponse,
   ],
-  single_value: [
-    seriesLabels,
-    seriesColors,
-    seriesValueFormat,
-    sanitizeSDKResponse,
-  ],
-  sparkline: [
-    seriesColors,
-    seriesLineWidth,
-    renderNullValues,
-    yAxisRange,
-    sanitizeSDKResponse,
-  ],
+  single_value: [seriesLabels, seriesColors, seriesValueFormat],
+  sparkline: [seriesColors, seriesLineWidth, renderNullValues, yAxisRange],
 }

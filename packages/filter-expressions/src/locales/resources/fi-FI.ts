@@ -37,8 +37,8 @@ const resources = {
       'on ajankohdasta {{dateTimeStart}} ajankohtaan {{dateTimeEnd}}',
     'is in month year': 'on ajankohdassa {{month}} {{year}}',
     'is in the last': 'on viimeisten {{describeInterval}} joukossa',
-    'is interval ago': 'on {{interval}} sitten',
     'is in the year year': 'on vuonna {{year}}',
+    'is interval ago': 'on {{interval}} sitten',
     'is intervalStart intervalType for intervalEnd':
       'on {{intervalStart}} {{intervalType}} kohteelle {{intervalEnd}}',
     'is not null': 'ei ole nolla',

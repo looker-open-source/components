@@ -30,7 +30,6 @@ import type {
   CAll,
   SDKRecord,
   Fields,
-  Pivots,
   RawApiConfigResponse,
   Totals,
 } from '../types'
@@ -41,7 +40,6 @@ export interface QueryContextProps {
   data: SDKRecord[]
   error?: IError
   fields: Fields
-  pivots?: Pivots
   totals?: Totals
   shareUrl?: string
 }

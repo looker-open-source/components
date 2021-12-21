@@ -26,11 +26,11 @@
   "is in the last": {
     "value": "geçmiş şu sürede: {{describeInterval}}"
   },
-  "is interval ago": {
-    "value": "{{interval}} önce"
-  },
   "is in the year year": {
     "value": "şu yılda: {{year}}"
+  },
+  "is interval ago": {
+    "value": "{{interval}} önce"
   },
   "is intervalStart intervalType for intervalEnd": {
     "value": "{{intervalEnd}} için {{intervalStart}} {{intervalType}}"

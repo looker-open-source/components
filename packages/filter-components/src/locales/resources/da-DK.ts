@@ -87,6 +87,26 @@ const resources = {
     'left exclusive': '(venstre-eksklusive]',
     'right exclusive': '[højre-eksklusive)',
   },
+  get_relative_timeframe_presets: {
+    'Last 14 Days': 'De seneste 14 dage',
+    'Last 180 Days': 'De seneste 180 dage',
+    'Last 28 Days': 'De seneste 28 dage',
+    'Last 30 Days': 'De seneste 30 dage',
+    'Last 365 Days': 'De seneste 365 dage',
+    'Last 7 Days': 'De seneste 7 dage',
+    'Last 90 Days': 'De seneste 90 dage',
+    'Previous Month': 'Forrige måned',
+    'Previous Quarter': 'Forrige kvartal',
+    'Previous Week': 'Forrige uge',
+    'Previous Year': 'Forrige år',
+    'This Month': 'Denne måned',
+    'This Quarter': 'Dette kvartal',
+    'This Week': 'Denne uge',
+    'This Year': 'Dette år',
+    Today: 'I dag',
+    'Year To Date': 'År til dato',
+    Yesterday: 'I går',
+  },
   get_string_filter_options: {
     contains: 'indeholder',
     'doesnt contain': 'indeholder ikke',
@@ -114,6 +134,9 @@ const resources = {
     Remove: '',
     Toggle: '',
   },
+  NumberFilter: {
+    'any value': 'enhver værdi',
+  },
   OperatorLabel: {
     AND: 'OG',
     OR: 'ELLER',
@@ -131,7 +154,7 @@ const resources = {
     'Choose a Timeframe': 'Vælg en tidsramme',
   },
   RelativeTimeframePopoverContent: {
-    Custom: 'Brugerdefineret',
+    Custom: 'Tilpasning',
     Presets: 'Forudindstillinger',
   },
   RelativeTimeframePresets: {

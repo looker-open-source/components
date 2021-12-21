@@ -24,13 +24,13 @@
     "value": "est <="
   },
   "is not": {
-    "value": "n'est pas"
+    "value": "n’est pas"
   },
   "is not between": {
-    "value": "n'est pas situé entre"
+    "value": "n’est pas situé entre"
   },
   "is not null": {
-    "value": "n'est pas nul"
+    "value": "n’est pas nul"
   },
   "is null": {
     "value": "est nul"

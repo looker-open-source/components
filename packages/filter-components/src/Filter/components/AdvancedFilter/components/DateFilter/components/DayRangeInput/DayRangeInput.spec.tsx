@@ -62,7 +62,7 @@ describe('DayRangeInput', () => {
         ],
       ]
     `)
-
+    // Close menu to silence act warning
     fireEvent.click(document)
   })
 })

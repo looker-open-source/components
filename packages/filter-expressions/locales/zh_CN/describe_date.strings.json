@@ -26,11 +26,11 @@
   "is in the last": {
     "value": "在过去 {{describeInterval}} 之内"
   },
-  "is interval ago": {
-    "value": "在 {{interval}} 之前"
-  },
   "is in the year year": {
     "value": "在 {{year}} 年之内"
+  },
+  "is interval ago": {
+    "value": "在 {{interval}} 之前"
   },
   "is intervalStart intervalType for intervalEnd": {
     "value": "{{intervalType}} 在 {{intervalStart}} 到 {{intervalEnd}} 期间"

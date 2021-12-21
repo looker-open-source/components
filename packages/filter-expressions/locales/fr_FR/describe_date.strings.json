@@ -3,46 +3,46 @@
     "value": "{{prefix}} {{dateTime}}"
   },
   "ago": {
-    "value": " "
+    "value": "auparavant"
   },
   "from now": {
     "value": "à partir de maintenant"
   },
   "is any time": {
-    "value": "est n'importe quelle date"
+    "value": "est à tout moment"
   },
   "is before": {
-    "value": "est antérieur à"
+    "value": "est situé avant"
   },
   "is day": {
     "value": "est {{day}}"
   },
   "is from dateTimeStart until dateTimeEnd": {
-    "value": "a lieu du {{dateTimeStart}} jusqu'au {{dateTimeEnd}}"
+    "value": "est de {{dateTimeStart}} à {{dateTimeEnd}}"
   },
   "is in month year": {
-    "value": "se situe en {{month}} {{year}}"
+    "value": "est en {{month}} {{year}}"
   },
   "is in the last": {
-    "value": "se situe dans les derniers {{describeInterval}}"
+    "value": "est dans le dernier {{describeInterval}}"
+  },
+  "is in the year year": {
+    "value": "est dans l’année {{year}}"
   },
   "is interval ago": {
     "value": "est il y a {{interval}}"
-  },
-  "is in the year year": {
-    "value": "se situe dans l'année {{year}}"
   },
   "is intervalStart intervalType for intervalEnd": {
     "value": "est {{intervalStart}} {{intervalType}} pour {{intervalEnd}}"
   },
   "is not null": {
-    "value": "n'est pas nul"
+    "value": "n’est pas nul"
   },
   "is on dateTime": {
-    "value": "tombe le {{dateTime}}"
+    "value": "est le {{dateTime}}"
   },
   "is on or after": {
-    "value": "tombe le ou après"
+    "value": "est situé le jour même ou après"
   },
   "is previous unitLabel": {
     "value": "est avant {{unitLabel}}"
@@ -54,9 +54,9 @@
     "value": "{{prefix}} {{interval}} {{timePassed}}"
   },
   "prefix now": {
-    "value": "{{prefix}} maintenant"
+    "value": "{{prefix}} présentement"
   },
-  "this startInterval to endInterval": "ce {{startInterval}} jusqu'au {{endInterval}}",
+  "this startInterval to endInterval": "ce {{startInterval}} à {{endInterval}}",
   "value complete unitLabel": {
     "value": "{{value}}{{complete}} {{unitLabel}}"
   }

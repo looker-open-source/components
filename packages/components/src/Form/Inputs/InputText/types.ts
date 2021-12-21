@@ -52,6 +52,10 @@ export type InputTextBaseProps = Omit<SimpleLayoutProps, 'size'> &
      * Do not use with children
      */
     autoResize?: boolean
+    /**
+     * Don't show the error icon when validationType is 'error'
+     */
+    noErrorIcon?: boolean
   }
 
 export type InputTextProps = InputTextBaseProps & {

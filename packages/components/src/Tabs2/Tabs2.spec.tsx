@@ -29,6 +29,8 @@ import '@testing-library/jest-dom/extend-expect'
 import { renderWithTheme } from '@looker/components-test-utils'
 import React, { useState } from 'react'
 import { act, fireEvent, screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+import { StateChanges } from './Tabs2.stories'
 import { Tab2, Tabs2 } from './'
 
 beforeEach(() => {
@@ -109,6 +111,14 @@ describe('Tabs2', () => {
       screen.getByText("Here's awesome story about cats")
     ).toBeInTheDocument()
     expect(screen.queryByText('not available')).not.toBeInTheDocument()
+  })
+
+  test('no defaultTabId should not revert to first tab after state change', () => {
+    renderWithTheme(<StateChanges />)
+    fireEvent.click(screen.getByText('Tab 2'))
+    const textfield = screen.getByRole('textbox')
+    userEvent.type(textfield, 'test')
+    expect(textfield).toBeInTheDocument()
   })
 
   test('Distributed', () => {

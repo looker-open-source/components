@@ -26,11 +26,11 @@
   "is in the last": {
     "value": "在最後 {{describeInterval}}"
   },
-  "is interval ago": {
-    "value": "{{interval}} 前"
-  },
   "is in the year year": {
     "value": "為 {{year}} 年"
+  },
+  "is interval ago": {
+    "value": "{{interval}} 前"
   },
   "is intervalStart intervalType for intervalEnd": {
     "value": "每 {{intervalStart}} {{intervalType}} 到 {{intervalEnd}}"
@@ -45,7 +45,7 @@
     "value": "在或晚於"
   },
   "is previous unitLabel": {
-    "value": "為之前的 {{unitLabel}}"
+    "value": "在前一個 {{unitLabel}}"
   },
   "is type unitLabel": {
     "value": "為 {{type}} {{unitLabel}}"

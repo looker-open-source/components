@@ -37,8 +37,8 @@ const resources = {
       'yra nuo {{dateTimeStart}} iki {{dateTimeEnd}}',
     'is in month year': 'yra {{year}} {{month}}',
     'is in the last': 'yra praeityje: {{describeInterval}}',
-    'is interval ago': 'yra prieš {{interval}}',
     'is in the year year': 'yra {{year}} m.',
+    'is interval ago': 'yra prieš {{interval}}',
     'is intervalStart intervalType for intervalEnd':
       'yra {{intervalStart}} {{intervalType}}, {{intervalEnd}}',
     'is not null': 'nėra nulis',

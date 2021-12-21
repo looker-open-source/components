@@ -37,8 +37,8 @@ const resources = {
       'er fra {{dateTimeStart}} til {{dateTimeEnd}}',
     'is in month year': 'er i {{month}} {{year}}',
     'is in the last': 'er i den siste {{describeInterval}}',
-    'is interval ago': 'er {{interval}} siden',
     'is in the year year': 'er i år {{year}}',
+    'is interval ago': 'er {{interval}} siden',
     'is intervalStart intervalType for intervalEnd':
       'er {{intervalStart}} {{intervalType}} for {{intervalEnd}}',
     'is not null': 'er ikke null',

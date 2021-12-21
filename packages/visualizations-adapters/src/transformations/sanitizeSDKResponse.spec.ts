@@ -33,11 +33,6 @@ import { keysToRemove, sanitizeSDKResponse } from './sanitizeSDKResponse'
 
 describe('sanitizeSDKResponse', () => {
   test('removes appropriate properties from config object', () => {
-    // ensure that the mock sdk response stays up-to-date to validate the keys we want to remove
-    keysToRemove.forEach(key =>
-      expect(mockSdkConfigResponse).toHaveProperty(key)
-    )
-
     const transformedConfig = sanitizeSDKResponse({
       config: mockSdkConfigResponse,
       data: mockSdkDataResponse,

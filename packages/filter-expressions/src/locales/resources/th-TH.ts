@@ -37,8 +37,8 @@ const resources = {
       'ตั้งแต่ {{dateTimeStart}} จนถึง {{dateTimeEnd}}',
     'is in month year': 'อยู่ใน {{month}} {{year}}',
     'is in the last': 'อยู่ใน {{describeInterval}} ล่าสุด',
-    'is interval ago': 'เมื่อ {{interval}} ที่แล้ว',
     'is in the year year': 'ภายในปี {{year}}',
+    'is interval ago': 'เมื่อ {{interval}} ที่แล้ว',
     'is intervalStart intervalType for intervalEnd':
       'อยู่ตั้งแต่ {{intervalStart}} {{intervalType}} เป็นเวลา {{intervalEnd}}',
     'is not null': 'ไม่เป็นค่าว่าง',

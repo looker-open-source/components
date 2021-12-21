@@ -3,37 +3,37 @@
     "value": "est"
   },
   "is any time": {
-    "value": "est n'importe quelle date"
+    "value": "est à tout moment"
   },
   "is before": {
-    "value": "est antérieur à"
+    "value": "est situé avant"
   },
   "is in range": {
-    "value": "se situe dans la plage"
+    "value": "est dans la portée"
   },
   "is in the last": {
-    "value": "se situe au cours des"
+    "value": "est au cours du dernier"
   },
   "is in the month": {
-    "value": "se situe dans le mois"
+    "value": "est dans le mois"
   },
   "is in the year": {
-    "value": "se situe dans l'année"
+    "value": "est dans l’année"
   },
   "is next": {
-    "value": "est après"
+    "value": "est le prochain"
   },
   "is not null": {
-    "value": "n'est pas nul"
+    "value": "n’est pas nul"
   },
   "is null": {
     "value": "est nul"
   },
   "is on or after": {
-    "value": "tombe le ou après"
+    "value": "est situé le jour même ou après"
   },
   "is on the day": {
-    "value": "tombe le jour"
+    "value": "est le jour même"
   },
   "is previous": {
     "value": "est avant"

@@ -37,8 +37,8 @@ const resources = {
       'is van {{dateTimeStart}} tot {{dateTimeEnd}}',
     'is in month year': 'is in {{month}} {{year}}',
     'is in the last': 'is in de laatste {{describeInterval}}',
-    'is interval ago': 'is {{interval}} geleden',
     'is in the year year': 'is in het jaar {{year}}',
+    'is interval ago': 'is {{interval}} geleden',
     'is intervalStart intervalType for intervalEnd':
       'is {{intervalStart}} {{intervalType}} voor {{intervalEnd}}',
     'is not null': 'is geldig',
