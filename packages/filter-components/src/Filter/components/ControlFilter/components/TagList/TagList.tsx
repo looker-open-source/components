@@ -29,10 +29,7 @@ import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import type { StringMultiSelectProps } from '../../../../types/string_select_props'
 import type { TokenStyleProps } from '../../../../utils/filter_styles'
-import {
-  inputErrorStyle,
-  tokenStylePlaceholder,
-} from '../../../../utils/filter_styles'
+import { tokenStylePlaceholder } from '../../../../utils/filter_styles'
 import { useOptionFiltering } from '../../../../utils/use_option_filtering'
 import { usePlaceholder } from '../../../../utils/use_placeholder'
 
@@ -86,13 +83,14 @@ const TagListComponent: FC<TagListProps> = ({
         maxWidth: ['95vw', '90vw', '80vw', '65vw', '50vw'],
         width: 'auto',
       }}
+      noErrorIcon
+      validationType={validationMessage?.type}
     />
   )
 }
 
 export const TagList = styled(TagListComponent)`
   ${InputText} {
-    ${inputErrorStyle}
     ${tokenStylePlaceholder}
   }
 `

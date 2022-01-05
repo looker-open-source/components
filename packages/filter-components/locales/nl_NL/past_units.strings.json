@@ -1,0 +1,32 @@
+{
+  "complete days": {
+    "value": "hele dagen"
+  },
+  "complete fiscal quarters": {
+    "value": "hele fiscale kwartalen"
+  },
+  "complete fiscal years": {
+    "value": "hele fiscale jaren"
+  },
+  "complete hours": {
+    "value": "hele uren"
+  },
+  "complete minutes": {
+    "value": "hele minuten"
+  },
+  "complete months": {
+    "value": "hele maanden"
+  },
+  "complete quarters": {
+    "value": "hele kwartalen"
+  },
+  "complete seconds": {
+    "value": "hele seconden"
+  },
+  "complete weeks": {
+    "value": "hele weken"
+  },
+  "complete years": {
+    "value": "hele jaren"
+  }
+}

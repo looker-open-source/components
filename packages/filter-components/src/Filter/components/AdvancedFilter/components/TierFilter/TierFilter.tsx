@@ -92,7 +92,7 @@ export const TierFilter: FC<FilterParamProps> = ({
         value={selectValue}
         options={options}
         onChange={typeChange}
-        validationMessage={validationMessage}
+        validationType={validationMessage?.type}
         placement={item.type === 'anyvalue' ? undefined : 'left'}
       />
       <FilterComponent

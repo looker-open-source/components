@@ -25,11 +25,13 @@
  */
 
 import type { FC } from 'react'
-import React from 'react'
-import styled from 'styled-components'
+import React, { useContext } from 'react'
+import styled, { ThemeContext } from 'styled-components'
 import get from 'lodash/get'
 import reduce from 'lodash/reduce'
 import has from 'lodash/has'
+import isArray from 'lodash/isArray'
+
 import {
   Table as TableElement,
   TableHead,
@@ -41,7 +43,7 @@ import {
 import type { SDKRecord, TableProps } from '@looker/visualizations-adapters'
 import { TableMeasure } from './TableMeasure'
 
-const getMinMax = (key: string, data: SDKRecord) => {
+const getMinMax = (key: string | number, data: SDKRecord) => {
   return reduce(
     data,
     (minMax, d) => {
@@ -62,26 +64,29 @@ export const Table: FC<TableProps> = ({
   totals = {},
   width = 'auto',
 }) => {
+  const theme = useContext(ThemeContext)
   if (!data.length) {
     return null
   }
-
-  const measureLabels = [...fields.measures].map((f: SDKRecord) => [
-    f.name,
-    f.view_label,
-  ])
-
-  const dimensionLabels = [...fields.dimensions].map((f: SDKRecord) => [
-    f.name,
-    f.label_short,
-  ])
-
-  const fieldLabels = Object.fromEntries([...dimensionLabels, ...measureLabels])
+  const fieldLabels = Object.fromEntries(
+    [...fields.measures, ...fields.dimensions].map((f, i) => {
+      const series = isArray(config.series)
+        ? get(config, ['series', i])
+        : get(config, ['series', f.name])
+      const label = series?.label ? series.label : f.label_short
+      return [f.name, label]
+    })
+  )
 
   const cellVis: Record<string, { min: number; max: number }> = reduce(
-    get(config, 'series_cell_visualizations', {}),
-    (acc, { is_active }, key) => {
-      const cell = is_active ? { [key]: getMinMax(key, data) } : {}
+    get(config, 'series', {}),
+    (acc, { cell_visualization }, key) => {
+      const measureName = Number.isInteger(key)
+        ? fields.measures[parseInt(key)]?.name
+        : key
+      const cell = cell_visualization
+        ? { [measureName]: getMinMax(measureName, data) }
+        : {}
       return { ...acc, ...cell }
     },
     {}
@@ -91,21 +96,13 @@ export const Table: FC<TableProps> = ({
     return Object.fromEntries(
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       Object.entries(d).map(([key, value]: [string, any]) => {
-        const renderCellVis = get(
-          config,
-          ['series_cell_visualizations', key, 'is_active'],
-          false
-        )
-        /*
-         * Return a function which can be executed when table is rendered.
-         * This allows a React-safe way for children to be string, number, object, or a React component.
-         */
-        const formattedValue = renderCellVis
+        const cellVisEntry = cellVis[key]
+        const formattedValue = cellVisEntry
           ? () => (
               <TableMeasure
                 value={value}
-                min={cellVis[key].min}
-                max={cellVis[key].max}
+                min={cellVisEntry.min}
+                max={cellVisEntry.max}
               />
             )
           : value
@@ -140,7 +137,12 @@ export const Table: FC<TableProps> = ({
         {Array.isArray(data) &&
           formattedData.map((obj: SDKRecord, i: number) => {
             return (
-              <TableRow key={i}>
+              <StyledTableRow
+                key={i}
+                backgroundColor={
+                  i % 2 ? theme.colors.ui1 : theme.colors.background
+                }
+              >
                 <StyledTableDataCell
                   textAlign="right"
                   color="text1"
@@ -163,7 +165,7 @@ export const Table: FC<TableProps> = ({
                     </StyledTableDataCell>
                   )
                 })}
-              </TableRow>
+              </StyledTableRow>
             )
           })}
         {Object.keys(totals).length > 0 && (
@@ -192,6 +194,12 @@ const StyledTableHeaderCell = styled(TableHeaderCell)`
     max-width: 0;
     min-width: 0;
   }
+`
+
+const StyledTableRow = styled(TableRow)<{
+  backgroundColor: string
+}>`
+  background: ${({ backgroundColor }) => backgroundColor};
 `
 
 const StyledTableDataCell = styled(TableDataCell)`

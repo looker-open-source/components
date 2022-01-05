@@ -40,6 +40,18 @@ const resources = {
   Between: {
     AND: 'EN',
   },
+  date_units: {
+    days: 'dagen',
+    'fiscal quarters': 'fiscale kwartalen',
+    'fiscal years': 'fiscale jaren',
+    hours: 'uren',
+    minutes: 'minuten',
+    months: 'maanden',
+    quarters: 'kwartalen',
+    seconds: 'seconden',
+    weeks: 'weken',
+    years: 'jaren',
+  },
   get_date_filter_options: {
     is: 'is',
     'is any time': 'is elk tijdstip',
@@ -140,6 +152,18 @@ const resources = {
   OperatorLabel: {
     AND: 'EN',
     OR: 'OF',
+  },
+  past_units: {
+    'complete days': 'hele dagen',
+    'complete fiscal quarters': 'hele fiscale kwartalen',
+    'complete fiscal years': 'hele fiscale jaren',
+    'complete hours': 'hele uren',
+    'complete minutes': 'hele minuten',
+    'complete months': 'hele maanden',
+    'complete quarters': 'hele kwartalen',
+    'complete seconds': 'hele seconden',
+    'complete weeks': 'hele weken',
+    'complete years': 'hele jaren',
   },
   ReactSelectCustomIcons: {
     'Clear all': 'Alles verwijderen',

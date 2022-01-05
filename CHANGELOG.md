@@ -3,6 +3,48 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 2.8.14
+
+## `@looker/components` 2.8.14
+
+### Bug Fixes
+
+- **Button:** Shrinking in flex layouts
+- **DataTable:** Header icon duplicate tooltip
+- **Tab/Tab2:** Text vertical alignment
+
+## `@looker/filter-components` 0.10.14
+
+### Features
+
+- **DateFilter:** Localize units
+
+### Bug Fixes
+
+- Input error styling
+
+## `@looker/visualizations` 0.2.7
+
+### Features
+
+- Row totals support
+
+### Bug Fixes
+
+- Hide y-axis label when query has multiple measures
+
+## `@looker/visualizations-table` 0.2.7
+
+### Features
+
+- **Table:** Zebra-style row background
+
+## `@looker/visualizations-visx` 0.2.6
+
+### Features
+
+- **Pie:** Labels mode for legend type
+
 # 2.8.13
 
 ## `@looker/components` 2.8.13

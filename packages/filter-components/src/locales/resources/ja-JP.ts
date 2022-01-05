@@ -40,6 +40,18 @@ const resources = {
   Between: {
     AND: 'AND',
   },
+  date_units: {
+    days: '日',
+    'fiscal quarters': '会計四半期',
+    'fiscal years': '会計年度',
+    hours: '時間',
+    minutes: '分',
+    months: '月',
+    quarters: '四半期',
+    seconds: '秒',
+    weeks: '週',
+    years: '年',
+  },
   get_date_filter_options: {
     is: 'が次である',
     'is any time': 'の時間を問わずすべて',
@@ -140,6 +152,18 @@ const resources = {
   OperatorLabel: {
     AND: 'AND',
     OR: 'OR',
+  },
+  past_units: {
+    'complete days': '終了した日',
+    'complete fiscal quarters': '終了した会計四半期',
+    'complete fiscal years': '終了した会計年度',
+    'complete hours': '終了した時間',
+    'complete minutes': '終了した分',
+    'complete months': '終了した月',
+    'complete quarters': '終了した四半期',
+    'complete seconds': '終了した秒',
+    'complete weeks': '終了した週',
+    'complete years': '終了した年',
   },
   ReactSelectCustomIcons: {
     'Clear all': 'すべてクリア',

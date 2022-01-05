@@ -1,0 +1,32 @@
+{
+  "complete days": {
+    "value": "hele dage"
+  },
+  "complete fiscal quarters": {
+    "value": "hele regnskabskvartaler"
+  },
+  "complete fiscal years": {
+    "value": "hele regnskabsår"
+  },
+  "complete hours": {
+    "value": "hele timer"
+  },
+  "complete minutes": {
+    "value": "hele minutter"
+  },
+  "complete months": {
+    "value": "hele måneder"
+  },
+  "complete quarters": {
+    "value": "hele kvartaler"
+  },
+  "complete seconds": {
+    "value": "hele sekunder"
+  },
+  "complete weeks": {
+    "value": "hele uger"
+  },
+  "complete years": {
+    "value": "hele år"
+  }
+}

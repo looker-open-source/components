@@ -40,6 +40,18 @@ const resources = {
   Between: {
     AND: 'І',
   },
+  date_units: {
+    days: 'дн',
+    'fiscal quarters': 'фінансових кварталів',
+    'fiscal years': 'фінансових років',
+    hours: 'год',
+    minutes: 'хв',
+    months: 'міс.',
+    quarters: 'кварт.',
+    seconds: 'сек',
+    weeks: 'тижн',
+    years: 'р.',
+  },
   get_date_filter_options: {
     is: 'є',
     'is any time': 'є будь-яким часом',
@@ -140,6 +152,18 @@ const resources = {
   OperatorLabel: {
     AND: 'І',
     OR: 'АБО',
+  },
+  past_units: {
+    'complete days': 'повних днів',
+    'complete fiscal quarters': 'повних фінансових кварталів',
+    'complete fiscal years': 'повних фінансових років',
+    'complete hours': 'повних годин',
+    'complete minutes': 'повних хвилин',
+    'complete months': 'повних місяців',
+    'complete quarters': 'повних кварталів',
+    'complete seconds': 'повних секунд',
+    'complete weeks': 'повних тижнів',
+    'complete years': 'повних років',
   },
   ReactSelectCustomIcons: {
     'Clear all': 'Очистити все',

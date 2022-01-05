@@ -46,7 +46,7 @@ export interface UseTrapStackBaseProps<
 
 export interface UseTrapStackProps<
   Element extends HTMLElement = HTMLElement,
-  Options extends unknown = unknown
+  Options = unknown
 > extends UseTrapStackBaseProps<Element> {
   context: Context<TrapStackContextProps<Options>>
   options?: Options
@@ -57,10 +57,7 @@ export interface UseTrapStackProps<
  * stack of "traps" – e.g. scroll lock or focus trap in one or more
  * Dialogs & Popovers
  */
-export const useTrapStack = <
-  E extends HTMLElement = HTMLElement,
-  O extends unknown = unknown
->({
+export const useTrapStack = <E extends HTMLElement = HTMLElement, O = unknown>({
   context,
   disabled = false,
   ref,

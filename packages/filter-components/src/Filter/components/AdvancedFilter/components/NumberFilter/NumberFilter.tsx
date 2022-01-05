@@ -72,7 +72,7 @@ export const NumberFilter: FC<FilterParamProps<NumberFilterType>> = ({
         value={selectValue}
         options={options}
         onChange={typeChange}
-        validationMessage={validationMessage}
+        validationType={validationMessage?.type}
         placement={item.type === 'null' ? undefined : 'left'}
       />
       <FilterComponent

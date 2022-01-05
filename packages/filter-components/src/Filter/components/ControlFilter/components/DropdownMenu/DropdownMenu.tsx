@@ -29,10 +29,7 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import type { StringSingleSelectProps } from '../../../../types/string_select_props'
 import type { TokenStyleProps } from '../../../../utils/filter_styles'
-import {
-  inputErrorStyle,
-  tokenStylePlaceholder,
-} from '../../../../utils/filter_styles'
+import { tokenStylePlaceholder } from '../../../../utils/filter_styles'
 import { useOptionFiltering } from '../../../../utils/use_option_filtering'
 import { usePlaceholder } from '../../../../utils/use_placeholder'
 
@@ -71,13 +68,14 @@ const DropdownMenuComponent: FC<StringSingleSelectProps & TokenStyleProps> = ({
         maxWidth: ['95vw', '90vw', '80vw', '65vw', '50vw'],
         width: 'auto',
       }}
+      noErrorIcon
+      validationType={validationMessage?.type}
     />
   )
 }
 
 export const DropdownMenu = styled(DropdownMenuComponent)`
   ${InputText} {
-    ${inputErrorStyle}
     ${tokenStylePlaceholder}
     ${({ tokenStyle, value }) =>
       value !== '' && tokenStyle

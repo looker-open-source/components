@@ -1,0 +1,32 @@
+{
+  "days": {
+    "value": "дн"
+  },
+  "fiscal quarters": {
+    "value": "фінансових кварталів"
+  },
+  "fiscal years": {
+    "value": "фінансових років"
+  },
+  "hours": {
+    "value": "год"
+  },
+  "minutes": {
+    "value": "хв"
+  },
+  "months": {
+    "value": "міс."
+  },
+  "quarters": {
+    "value": "кварт."
+  },
+  "seconds": {
+    "value": "сек"
+  },
+  "weeks": {
+    "value": "тижн"
+  },
+  "years": {
+    "value": "р."
+  }
+}

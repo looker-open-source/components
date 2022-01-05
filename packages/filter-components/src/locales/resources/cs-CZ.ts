@@ -40,6 +40,18 @@ const resources = {
   Between: {
     AND: 'A',
   },
+  date_units: {
+    days: 'dny/ů',
+    'fiscal quarters': 'fiskální čtvrtletí',
+    'fiscal years': 'fiskální roky',
+    hours: 'hodin(y)',
+    minutes: 'minut(y)',
+    months: 'měsíce/ů',
+    quarters: 'čtvrtletí',
+    seconds: 'sekund(y)',
+    weeks: 'týdny/ů',
+    years: 'roky/ů',
+  },
   get_date_filter_options: {
     is: 'je',
     'is any time': 'je kdykoliv',
@@ -140,6 +152,18 @@ const resources = {
   OperatorLabel: {
     AND: 'A',
     OR: 'NEBO',
+  },
+  past_units: {
+    'complete days': 'celé dny',
+    'complete fiscal quarters': 'celá fiskální čtvrtletí',
+    'complete fiscal years': 'celé fiskální roky',
+    'complete hours': 'celé hodiny',
+    'complete minutes': 'celé minuty',
+    'complete months': 'celé měsíce',
+    'complete quarters': 'celá čtvrtletí',
+    'complete seconds': 'celé sekundy',
+    'complete weeks': 'celé týdny',
+    'complete years': 'celé roky',
   },
   ReactSelectCustomIcons: {
     'Clear all': 'Vymazat vše',

@@ -1,0 +1,32 @@
+{
+  "complete days": {
+    "value": "पूर्ण दिन"
+  },
+  "complete fiscal quarters": {
+    "value": "पूर्ण वित्तीय तिमाहियां"
+  },
+  "complete fiscal years": {
+    "value": "पूर्ण वित्तीय वर्ष"
+  },
+  "complete hours": {
+    "value": "पूर्ण घंटे"
+  },
+  "complete minutes": {
+    "value": "पूर्ण मिनट"
+  },
+  "complete months": {
+    "value": "पूर्ण महीने"
+  },
+  "complete quarters": {
+    "value": "पूर्ण तिमाहियां"
+  },
+  "complete seconds": {
+    "value": "पूर्ण सेकंड"
+  },
+  "complete weeks": {
+    "value": "पूर्ण सप्ताह"
+  },
+  "complete years": {
+    "value": "पूर्ण वर्ष"
+  }
+}

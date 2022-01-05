@@ -1,0 +1,32 @@
+{
+  "days": {
+    "value": "天"
+  },
+  "fiscal quarters": {
+    "value": "个财政季度"
+  },
+  "fiscal years": {
+    "value": "个财政年度"
+  },
+  "hours": {
+    "value": "小时"
+  },
+  "minutes": {
+    "value": "分钟"
+  },
+  "months": {
+    "value": "个月"
+  },
+  "quarters": {
+    "value": "个季度"
+  },
+  "seconds": {
+    "value": "秒"
+  },
+  "weeks": {
+    "value": "周"
+  },
+  "years": {
+    "value": "年"
+  }
+}

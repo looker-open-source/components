@@ -44,7 +44,7 @@ describe('DialogLayout', () => {
 
   test('Replaces the built-in `IconButton` with an arbitrary ReactNode', () => {
     renderWithTheme(<HeaderDetail />)
-    expect(screen.queryByText('Header text')).toBeInTheDocument()
+    expect(screen.getByText('Header text')).toBeInTheDocument()
     expect(screen.getByText('Cancel')).toBeInTheDocument()
   })
 

@@ -273,7 +273,7 @@ describe('ListItem', () => {
 
     expect(screen.queryByText('Detail')).not.toBeInTheDocument()
     fireEvent.mouseEnter(screen.getByText('Label'), { bubbles: true })
-    expect(screen.queryByText('Detail')).toBeInTheDocument()
+    expect(screen.getByText('Detail')).toBeInTheDocument()
   })
 
   test('onKeyUp callback functions', () => {

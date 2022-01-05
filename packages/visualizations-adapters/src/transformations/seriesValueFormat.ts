@@ -54,7 +54,7 @@ export const seriesValueFormat: ConfigHelper<CommonCartesianProperties> = ({
       value_format:
         valueFormat || measure.value_format || DEFAULT_STRING_FORMAT,
     }))
-    for (let i = 0; i < defaultValues.length; i++) {
+    for (let i = 0; i < defaultValues?.length; i++) {
       arraySeries[i] = Object.assign({}, defaultValues[i], arraySeries[i])
     }
     return arraySeries

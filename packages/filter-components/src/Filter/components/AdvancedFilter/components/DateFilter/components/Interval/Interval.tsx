@@ -27,7 +27,10 @@ import type { FilterModel } from '@looker/filter-expressions'
 import type { ILookmlModelExploreField } from '@looker/sdk'
 import type { ChangeEvent, FC } from 'react'
 import React from 'react'
-import { dateUnits, fiscalIntervalUnits } from '../../../../../../constants'
+import {
+  useDateUnits,
+  useFiscalIntervalUnits,
+} from '../../../../../../constants'
 import { showFiscalUnits } from '../../../../utils/show_fiscal_units'
 
 import { GroupSelect } from '../../../GroupSelect'
@@ -57,6 +60,8 @@ export const Interval: FC<IntervalParamProps> = ({
 
   const unitChange = (unit: string) => onChange({ value, unit })
 
+  const fiscalIntervalUnits = useFiscalIntervalUnits()
+  const dateUnits = useDateUnits()
   const options = showFiscalUnits(field) ? fiscalIntervalUnits : dateUnits
   return (
     <>

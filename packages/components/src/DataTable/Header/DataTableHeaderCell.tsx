@@ -34,6 +34,7 @@ import { Space } from '../../Layout/Space'
 import { Tooltip } from '../../Tooltip'
 import { Truncate } from '../../Truncate'
 import { useClickable } from '../../utils'
+import { VisuallyHidden } from '../../VisuallyHidden'
 import { columnSize, sizeInfersTruncate } from '../Column/columnSize'
 import type { DataTableColumn } from '../Column'
 import { FocusableCell } from '../Column/FocusableCell'
@@ -73,9 +74,12 @@ const DataTableHeaderCellLayout = forwardRef(
 
     if (titleIcon) {
       label = (
-        <Tooltip content={title}>
-          <Icon color="ui3" title={title} icon={titleIcon} size="small" />
-        </Tooltip>
+        <>
+          <VisuallyHidden>{title}</VisuallyHidden>
+          <Tooltip content={title}>
+            <Icon color="ui3" icon={titleIcon} size="small" />
+          </Tooltip>
+        </>
       )
     } else if (size && sizeInfersTruncate(size)) {
       label = <Truncate width="auto">{title}</Truncate>

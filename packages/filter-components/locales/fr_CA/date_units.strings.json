@@ -1,0 +1,32 @@
+{
+  "days": {
+    "value": "jours"
+  },
+  "fiscal quarters": {
+    "value": "trimestres fiscaux"
+  },
+  "fiscal years": {
+    "value": "années fiscales"
+  },
+  "hours": {
+    "value": "heures"
+  },
+  "minutes": {
+    "value": "minutes"
+  },
+  "months": {
+    "value": "mois"
+  },
+  "quarters": {
+    "value": "trimestres"
+  },
+  "seconds": {
+    "value": "secondes"
+  },
+  "weeks": {
+    "value": "semaines"
+  },
+  "years": {
+    "value": "années"
+  }
+}

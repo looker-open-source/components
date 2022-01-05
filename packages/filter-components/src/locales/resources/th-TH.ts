@@ -40,6 +40,18 @@ const resources = {
   Between: {
     AND: 'AND',
   },
+  date_units: {
+    days: 'วัน',
+    'fiscal quarters': 'ไตรมาสงบประมาณ',
+    'fiscal years': 'ปีงบประมาณ',
+    hours: 'ชั่วโมง',
+    minutes: 'นาที',
+    months: 'เดือน',
+    quarters: 'ไตรมาส',
+    seconds: 'วินาที',
+    weeks: 'สัปดาห์',
+    years: 'ปี',
+  },
   get_date_filter_options: {
     is: 'เป็น',
     'is any time': 'เป็นเวลาใดก็ได้',
@@ -140,6 +152,18 @@ const resources = {
   OperatorLabel: {
     AND: 'AND',
     OR: 'OR',
+  },
+  past_units: {
+    'complete days': 'วันถ้วน',
+    'complete fiscal quarters': 'ไตรมาสงบประมาณถ้วน',
+    'complete fiscal years': 'ปีงบประมาณถ้วน',
+    'complete hours': 'ชั่วโมงถ้วน',
+    'complete minutes': 'นาทีถ้วน',
+    'complete months': 'เดือนถ้วน',
+    'complete quarters': 'ไตรมาสถ้วน',
+    'complete seconds': 'วินาทีถ้วน',
+    'complete weeks': 'สัปดาห์ถ้วน',
+    'complete years': 'ปีถ้วน',
   },
   ReactSelectCustomIcons: {
     'Clear all': 'ล้างทั้งหมด',

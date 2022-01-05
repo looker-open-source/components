@@ -40,6 +40,18 @@ const resources = {
   Between: {
     AND: 'AND',
   },
+  date_units: {
+    days: '天',
+    'fiscal quarters': '會計季度',
+    'fiscal years': '會計年度',
+    hours: '小時',
+    minutes: '分鐘',
+    months: '個月',
+    quarters: '季',
+    seconds: '秒',
+    weeks: '週',
+    years: '年',
+  },
   get_date_filter_options: {
     is: '是',
     'is any time': '是任何時間',
@@ -140,6 +152,18 @@ const resources = {
   OperatorLabel: {
     AND: 'AND',
     OR: 'OR',
+  },
+  past_units: {
+    'complete days': '天整',
+    'complete fiscal quarters': '個完整會計季度',
+    'complete fiscal years': '個完整會計年度',
+    'complete hours': '小時整',
+    'complete minutes': '分鐘整',
+    'complete months': '個月整',
+    'complete quarters': '季整',
+    'complete seconds': '秒整',
+    'complete weeks': '週整',
+    'complete years': '年整',
   },
   ReactSelectCustomIcons: {
     'Clear all': '全部清除',

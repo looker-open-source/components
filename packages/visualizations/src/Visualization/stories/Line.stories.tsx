@@ -25,10 +25,11 @@
  */
 
 import type { Story } from '@storybook/react/types-6-0'
+import omit from 'lodash/omit'
 import React from 'react'
 import { Visualization } from '../Visualization'
 import type { VisualizationProps } from '../Visualization'
-import type { Fields } from '@looker/visualizations-adapters'
+import type { Fields, CLine } from '@looker/visualizations-adapters'
 import {
   QueryContext,
   buildPivotFields,
@@ -46,12 +47,16 @@ export default {
   title: 'Visualizations/Line',
 }
 
-const Template: Story<VisualizationProps> = ({ config, ...restProps }) => {
+type LineVisualizationProps = Omit<VisualizationProps, 'config'> & {
+  config: Omit<CLine, 'type'> // omit type from config object as that will be hard-coded in the template
+}
+
+const Template: Story<LineVisualizationProps> = ({ config, ...restProps }) => {
   return (
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     <QueryContext.Provider
       value={{
-        config: { ...mockSdkConfigResponse },
+        config: { ...mockSdkConfigResponse, y_axes: undefined },
         ok: true,
         loading: false,
         data: tabularResponse([...mockSdkDataResponse]),
@@ -123,3 +128,25 @@ export const Pivot = PivotTemplate.bind({})
 Pivot.parameters = {
   storyshots: { disable: true },
 }
+
+export const DefaultYAxisSingleMeasure: Story<LineVisualizationProps> = () => (
+  <QueryContext.Provider
+    value={{
+      config: { ...mockSdkConfigResponse, y_axes: undefined },
+      ok: true,
+      loading: false,
+      // Need to filter out average measure values in each datum
+      data: tabularResponse(
+        [...mockSdkDataResponse].map(datum => {
+          return omit(datum, 'orders.average_total_amount_of_order_usd')
+        })
+      ),
+      fields: {
+        ...mockSdkFieldsResponse,
+        measures: mockSdkFieldsResponse.measures.slice(0, 1), // removes the average measure field
+      } as Fields,
+    }}
+  >
+    <Visualization config={{ type: 'line' }} height={600} width={800} />
+  </QueryContext.Provider>
+)

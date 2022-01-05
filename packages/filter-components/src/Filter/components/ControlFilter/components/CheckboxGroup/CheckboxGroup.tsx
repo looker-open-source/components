@@ -25,17 +25,11 @@
  */
 import {
   CheckboxGroup as CheckboxGroupComponent,
-  FormContext,
   ProgressCircular,
 } from '@looker/components'
 import React from 'react'
 import type { StringMultiSelectProps } from '../../../../types/string_select_props'
-import { ERROR_TYPE } from '../../../../utils'
 
-/*
- * Filter CheckboxGroup adds red-outline around the checkbox when the CheckboxGroup has an error
- * Kinda hacky change when LENS-1066 is completed
- */
 export const CheckboxGroup = ({
   validationMessage,
   inline,
@@ -47,22 +41,11 @@ export const CheckboxGroup = ({
   isLoading ? (
     <ProgressCircular size="medium" />
   ) : (
-    <FormContext.Provider
-      value={{
-        validationMessages: {
-          'filter-checkbox-group': {
-            type:
-              validationMessage?.type === ERROR_TYPE ? ERROR_TYPE : undefined,
-          },
-        },
-      }}
-    >
-      <CheckboxGroupComponent
-        name="filter-checkbox-group"
-        inline={inline}
-        onChange={onChange}
-        options={options}
-        value={value}
-      />
-    </FormContext.Provider>
+    <CheckboxGroupComponent
+      inline={inline}
+      onChange={onChange}
+      options={options}
+      value={value}
+      validationType={validationMessage?.type}
+    />
   )

@@ -1,0 +1,32 @@
+{
+  "days": {
+    "value": "päivää"
+  },
+  "fiscal quarters": {
+    "value": "tilikauden vuosineljännestä"
+  },
+  "fiscal years": {
+    "value": "tilivuotta"
+  },
+  "hours": {
+    "value": "tuntia"
+  },
+  "minutes": {
+    "value": "minuuttia"
+  },
+  "months": {
+    "value": "kuukautta"
+  },
+  "quarters": {
+    "value": "vuosineljännestä"
+  },
+  "seconds": {
+    "value": "sekuntia"
+  },
+  "weeks": {
+    "value": "viikkoa"
+  },
+  "years": {
+    "value": "vuotta"
+  }
+}

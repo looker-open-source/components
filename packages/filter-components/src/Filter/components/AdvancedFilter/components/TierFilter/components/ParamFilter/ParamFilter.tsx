@@ -53,7 +53,7 @@ export const ParamFilter: FC<ParamFilterProps> = ({
       value={item.value && item.value[0]}
       onChange={handleChange}
       options={enumerations || []}
-      validationMessage={validationMessage}
+      validationType={validationMessage?.type}
     />
   )
 }

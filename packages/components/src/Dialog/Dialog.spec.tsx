@@ -54,20 +54,20 @@ describe('Dialog', () => {
     renderWithTheme(
       <Dialog isOpen placement="top" content={<SimpleContent />} />
     )
-    expect(screen.queryByText('Dialog content')).toBeInTheDocument()
+    expect(screen.getByText('Dialog content')).toBeInTheDocument()
   })
 
   test('defaultOpen', async () => {
     renderWithTheme(<Dialog defaultOpen content={<DialogMediumContent />} />)
-    expect(screen.queryByText(/We the People/)).toBeInTheDocument()
+    expect(screen.getByText(/We the People/)).toBeInTheDocument()
     expect(
-      screen.queryByLabelText(/The Constitution/, {
+      screen.getByLabelText(/The Constitution/, {
         selector: '[role="dialog"]',
       })
     ).toBeInTheDocument()
     const doneButton = screen.getByText('Done Reading')
     fireEvent.click(doneButton)
-    await waitForElementToBeRemoved(() => screen.getByText(/We the People/))
+    await waitForElementToBeRemoved(() => screen.queryByText(/We the People/))
   })
 
   test('Dialog can be opened & closed', async () => {
@@ -84,12 +84,12 @@ describe('Dialog', () => {
     const link = screen.getByText('Open Dialog')
     expect(link).toBeInTheDocument()
     fireEvent.click(link)
-    expect(screen.queryByText('Dialog content')).toBeInTheDocument()
+    expect(screen.getByText('Dialog content')).toBeInTheDocument()
 
     // Close the Dialog
     const doneButton = screen.getByText('Done')
     fireEvent.click(doneButton)
-    await waitForElementToBeRemoved(() => screen.getByText('Dialog content'))
+    await waitForElementToBeRemoved(() => screen.queryByText('Dialog content'))
   })
 
   test('Backdrop can be clicked to close', async () => {
@@ -100,13 +100,13 @@ describe('Dialog', () => {
     )
 
     // Confirm Dialog is open
-    expect(screen.queryByText('Dialog content')).toBeInTheDocument()
+    expect(screen.getByText('Dialog content')).toBeInTheDocument()
 
     // Find & click the backdrop
     fireEvent.click(screen.getByTestId('backdrop'))
 
     // Confirm Dialog closes
-    await waitForElementToBeRemoved(() => screen.getByText('Dialog content'))
+    await waitForElementToBeRemoved(() => screen.queryByText('Dialog content'))
   })
 
   test('Render props style', async () => {
@@ -119,12 +119,12 @@ describe('Dialog', () => {
     // Open Dialog
     const link = screen.getByText('Open Dialog')
     fireEvent.click(link)
-    expect(screen.queryByText('Dialog content')).toBeInTheDocument()
+    expect(screen.getByText('Dialog content')).toBeInTheDocument()
 
     // Close the Dialog
     const doneButton = screen.getByText('Done')
     fireEvent.click(doneButton)
-    await waitForElementToBeRemoved(() => screen.getByText('Dialog content'))
+    await waitForElementToBeRemoved(() => screen.queryByText('Dialog content'))
   })
 
   test('Controlled', async () => {
@@ -133,12 +133,12 @@ describe('Dialog', () => {
     // Open Dialog
     const link = screen.getByText('Open Dialog')
     fireEvent.click(link)
-    expect(screen.queryByText(/We the People/)).toBeInTheDocument()
+    expect(screen.getByText(/We the People/)).toBeInTheDocument()
 
     // Close the Dialog
     const doneButton = screen.getByText('Done Reading')
     fireEvent.click(doneButton)
-    await waitForElementToBeRemoved(() => screen.getByText(/We the People/))
+    await waitForElementToBeRemoved(() => screen.queryByText(/We the People/))
   })
 
   test('Controlled no callbacks', async () => {
@@ -158,7 +158,7 @@ describe('Dialog', () => {
     // Open Dialog
     const link = screen.getByText('Open Dialog')
     fireEvent.click(link)
-    expect(screen.queryByText(/We the People/)).toBeInTheDocument()
+    expect(screen.getByText(/We the People/)).toBeInTheDocument()
   })
 
   test('Controlled - no children', async () => {
@@ -167,12 +167,12 @@ describe('Dialog', () => {
     // Open Dialog
     const link = screen.getByText('Open Dialog')
     fireEvent.click(link)
-    expect(screen.queryByText(/We the People/)).toBeInTheDocument()
+    expect(screen.getByText(/We the People/)).toBeInTheDocument()
 
     // Close the Dialog
     const doneButton = screen.getByText('Done Reading')
     fireEvent.click(doneButton)
-    await waitForElementToBeRemoved(() => screen.getByText(/We the People/))
+    await waitForElementToBeRemoved(() => screen.queryByText(/We the People/))
   })
 
   test('Controlled - legacy', async () => {
@@ -181,12 +181,12 @@ describe('Dialog', () => {
     // Open Dialog
     const link = screen.getByText('Open Dialog')
     fireEvent.click(link)
-    expect(screen.queryByText(/We the People/)).toBeInTheDocument()
+    expect(screen.getByText(/We the People/)).toBeInTheDocument()
 
     // Close the Dialog
     const doneButton = screen.getByText('Done Reading')
     fireEvent.click(doneButton)
-    await waitForElementToBeRemoved(() => screen.getByText(/We the People/))
+    await waitForElementToBeRemoved(() => screen.queryByText(/We the People/))
   })
 
   describe('Animation behavior', () => {
@@ -220,7 +220,9 @@ describe('Dialog', () => {
       runTimers()
       expect(onAfterOpen).toBeCalled()
       fireEvent.click(screen.getByText('Done'))
-      await waitForElementToBeRemoved(() => screen.getByText('Dialog content'))
+      await waitForElementToBeRemoved(() =>
+        screen.queryByText('Dialog content')
+      )
       expect(onAfterClose).toBeCalled()
     })
 
@@ -240,7 +242,7 @@ describe('Dialog', () => {
       // Close button has tooltip on next focus
       fireEvent.blur(closeButton)
       fireEvent.focus(closeButton)
-      expect(screen.queryByRole('tooltip')).toBeInTheDocument()
+      expect(screen.getByRole('tooltip')).toBeInTheDocument()
       // Close the dialog to avoid act warning
       fireEvent.click(closeButton)
 

@@ -1,0 +1,32 @@
+{
+  "days": {
+    "value": "天"
+  },
+  "fiscal quarters": {
+    "value": "會計季度"
+  },
+  "fiscal years": {
+    "value": "會計年度"
+  },
+  "hours": {
+    "value": "小時"
+  },
+  "minutes": {
+    "value": "分鐘"
+  },
+  "months": {
+    "value": "個月"
+  },
+  "quarters": {
+    "value": "季"
+  },
+  "seconds": {
+    "value": "秒"
+  },
+  "weeks": {
+    "value": "週"
+  },
+  "years": {
+    "value": "年"
+  }
+}

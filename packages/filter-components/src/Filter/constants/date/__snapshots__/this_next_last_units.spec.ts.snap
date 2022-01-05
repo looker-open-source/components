@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`date unit options for ThisNextLast component fiscalLastUnits matches expected values 1`] = `
+exports[`date unit options for ThisNextLast component useFiscalLastUnits matches expected values 1`] = `
 Array [
   Object {
     "label": "second",
@@ -65,7 +65,7 @@ Array [
 ]
 `;
 
-exports[`date unit options for ThisNextLast component fiscalThisNextUnits matches expected values 1`] = `
+exports[`date unit options for ThisNextLast component useFiscalThisNextUnits matches expected values 1`] = `
 Array [
   Object {
     "label": "day",
@@ -112,7 +112,7 @@ Array [
 ]
 `;
 
-exports[`date unit options for ThisNextLast component lastUnits matches expected values 1`] = `
+exports[`date unit options for ThisNextLast component useLastUnits matches expected values 1`] = `
 Array [
   Object {
     "label": "second",
@@ -165,7 +165,7 @@ Array [
 ]
 `;
 
-exports[`date unit options for ThisNextLast component thisNextUnits matches expected values 1`] = `
+exports[`date unit options for ThisNextLast component useThisNextUnits matches expected values 1`] = `
 Array [
   Object {
     "label": "day",

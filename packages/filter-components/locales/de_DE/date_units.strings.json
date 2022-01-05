@@ -1,0 +1,32 @@
+{
+  "days": {
+    "value": "Tage"
+  },
+  "fiscal quarters": {
+    "value": "Geschäftsquartale"
+  },
+  "fiscal years": {
+    "value": "Geschäftsjahre"
+  },
+  "hours": {
+    "value": "Stunden"
+  },
+  "minutes": {
+    "value": "Minuten"
+  },
+  "months": {
+    "value": "Monate"
+  },
+  "quarters": {
+    "value": "Quartale"
+  },
+  "seconds": {
+    "value": "Sekunden"
+  },
+  "weeks": {
+    "value": "Wochen"
+  },
+  "years": {
+    "value": "Jahre"
+  }
+}

@@ -40,6 +40,18 @@ const resources = {
   Between: {
     AND: '및',
   },
+  date_units: {
+    days: '일',
+    'fiscal quarters': '회계 분기',
+    'fiscal years': '회계 연수',
+    hours: '시간',
+    minutes: '분',
+    months: '월',
+    quarters: '분기',
+    seconds: '초',
+    weeks: '주',
+    years: '년',
+  },
   get_date_filter_options: {
     is: '이(가)',
     'is any time': '이(가) 모든 시간임',
@@ -140,6 +152,18 @@ const resources = {
   OperatorLabel: {
     AND: '및',
     OR: '또는',
+  },
+  past_units: {
+    'complete days': '전체 일',
+    'complete fiscal quarters': '전체 회계 분기',
+    'complete fiscal years': '전체 회계 연수',
+    'complete hours': '전체 시간',
+    'complete minutes': '전체 분',
+    'complete months': '전체 월',
+    'complete quarters': '전체 분기',
+    'complete seconds': '전체 초',
+    'complete weeks': '전체 주',
+    'complete years': '전체 년',
   },
   ReactSelectCustomIcons: {
     'Clear all': '모두 지우기',

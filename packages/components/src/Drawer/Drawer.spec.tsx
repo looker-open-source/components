@@ -69,10 +69,10 @@ describe('Drawer', () => {
   test('defaultOpen', async () => {
     renderWithTheme(<Drawer defaultOpen content={<SimpleContent />} />)
     runTimers()
-    expect(screen.queryByText('Drawer content')).toBeInTheDocument()
+    expect(screen.getByText('Drawer content')).toBeInTheDocument()
     const doneButton = screen.getByText('Done')
     fireEvent.click(doneButton)
-    await waitForElementToBeRemoved(() => screen.getByText('Drawer content'))
+    await waitForElementToBeRemoved(() => screen.queryByText('Drawer content'))
   })
 
   test('useDrawer hook', async () => {
@@ -88,14 +88,14 @@ describe('Drawer', () => {
     fireEvent.click(link)
     runTimers()
     expect(
-      screen.queryByText('The Constitution of the United States')
+      screen.getByText('The Constitution of the United States')
     ).toBeInTheDocument()
 
     // Close the Drawer
     const doneButton = screen.getByText('Done Reading')
     fireEvent.click(doneButton)
     await waitForElementToBeRemoved(() =>
-      screen.getByText('The Constitution of the United States')
+      screen.queryByText('The Constitution of the United States')
     )
   })
 
@@ -112,14 +112,14 @@ describe('Drawer', () => {
     fireEvent.click(link)
     runTimers()
     expect(
-      screen.queryByText('The Constitution of the United States')
+      screen.getByText('The Constitution of the United States')
     ).toBeInTheDocument()
 
     // Close the Drawer
     const doneButton = screen.getByText('Done Reading')
     fireEvent.click(doneButton)
     await waitForElementToBeRemoved(() =>
-      screen.getByText('The Constitution of the United States')
+      screen.queryByText('The Constitution of the United States')
     )
   })
   test('renderProps form', async () => {

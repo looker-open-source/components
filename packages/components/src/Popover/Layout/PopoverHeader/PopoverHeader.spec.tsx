@@ -33,8 +33,8 @@ import { Basic, HideClose, Hidden } from './PopoverHeader.stories'
 describe('PopoverHeader', () => {
   test('Close visible by default', () => {
     renderWithTheme(<Basic />)
-    expect(screen.queryByText('Header Text')).toBeInTheDocument()
-    expect(screen.queryByText('Close')).toBeInTheDocument()
+    expect(screen.getByText('Header Text')).toBeInTheDocument()
+    expect(screen.getByText('Close')).toBeInTheDocument()
   })
   test('hideClose', () => {
     renderWithTheme(<HideClose />)

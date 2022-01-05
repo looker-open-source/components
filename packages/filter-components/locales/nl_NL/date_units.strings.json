@@ -1,0 +1,32 @@
+{
+  "days": {
+    "value": "dagen"
+  },
+  "fiscal quarters": {
+    "value": "fiscale kwartalen"
+  },
+  "fiscal years": {
+    "value": "fiscale jaren"
+  },
+  "hours": {
+    "value": "uren"
+  },
+  "minutes": {
+    "value": "minuten"
+  },
+  "months": {
+    "value": "maanden"
+  },
+  "quarters": {
+    "value": "kwartalen"
+  },
+  "seconds": {
+    "value": "seconden"
+  },
+  "weeks": {
+    "value": "weken"
+  },
+  "years": {
+    "value": "jaren"
+  }
+}

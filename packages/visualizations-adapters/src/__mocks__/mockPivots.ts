@@ -30,17 +30,20 @@ export const mockPivots = [
     data: {
       'orders.status': 'cancelled',
     },
+    is_total: false,
   },
   {
     key: 'complete',
     data: {
       'orders.status': 'complete',
     },
+    is_total: false,
   },
   {
     key: 'pending',
     data: {
       'orders.status': 'pending',
     },
+    is_total: false,
   },
 ]

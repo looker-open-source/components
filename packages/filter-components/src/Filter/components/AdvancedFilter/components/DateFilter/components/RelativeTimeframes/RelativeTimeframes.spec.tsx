@@ -88,7 +88,7 @@ describe('RelativeTimeframes', () => {
     // Close the Dialog
     fireEvent.click(screen.getByText('Close'))
     await waitForElementToBeRemoved(() =>
-      screen.getByText('Choose a Timeframe')
+      screen.queryByText('Choose a Timeframe')
     )
   })
 })

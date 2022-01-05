@@ -30,7 +30,6 @@ import type {
   YAxisConfig,
   YAxisRaw,
   RawApiConfigResponse,
-  MeasureMetadata,
 } from '../types'
 import omitBy from 'lodash/omitBy'
 import isNull from 'lodash/isNull'
@@ -47,20 +46,13 @@ type YAxisRawExtended = YAxisRaw & {
  *
  * @param axisRaw the axis config as it comes directly from the sdk
  * @param axisOfficial any user overrides or post-transformed value
- * @param measure field metadata
+ * @param fallbackLabel will usually be a measure field's label unless there are multiple measures
  */
 const deriveDefaults = (
   axisRaw: YAxisRawExtended,
   axisOfficial: YAxisConfig,
-  measure: MeasureMetadata
+  fallbackLabel?: string
 ): YAxisConfig => {
-  // Get default label value
-  const {
-    label: measureLabel,
-
-    view_label: measureViewLabel,
-  } = measure
-
   // raw sdk attributes
   const {
     showLabels,
@@ -71,7 +63,7 @@ const deriveDefaults = (
     y_axis_gridlines,
   } = axisRaw
 
-  const yAxisLabel = labelRaw || measureLabel || measureViewLabel
+  const yAxisLabel = labelRaw || fallbackLabel
 
   // officially supported config values, falling back to raw sdk attributes
   const {
@@ -106,17 +98,27 @@ export const yAxis: ConfigHelper<CCartesian> = ({ config, data, fields }) => {
   } = config
 
   const longestListLength = Math.max(y_axis_raw.length, y_axis.length)
+  const numberOfMeasureLabels = Array.from(
+    new Set(fields.measures.map(measure => measure.label))
+  ).length
   const yAxisWithDefaults: YAxisConfig[] = []
 
   for (let i = 0; i < longestListLength; i++) {
     const rawAxisAtPosition = omitBy(y_axis_raw[i] || {}, isNull)
     const officialAxisAtPosition = y_axis[i] || {}
-    const measureAtPosition = fields?.measures?.[i] || {}
+
+    /**
+     * If there are multiple measure labels to choose from,
+     * we don't want the default y-axis label to be a measure label
+     */
+    const { label, view_label } = fields.measures[i] || {}
+    const fallbackLabel =
+      numberOfMeasureLabels === 1 ? label || view_label : undefined
 
     yAxisWithDefaults[i] = deriveDefaults(
       { ...rawAxisAtPosition, y_axis_gridlines, y_axis_reversed },
       officialAxisAtPosition,
-      measureAtPosition
+      fallbackLabel
     )
   }
 

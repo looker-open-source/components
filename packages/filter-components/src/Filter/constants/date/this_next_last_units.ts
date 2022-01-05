@@ -24,7 +24,7 @@
 
  */
 import type { Option } from '../../types/option'
-import { dateUnits, fiscalDateUnits } from './date_units'
+import { useDateUnits, useFiscalDateUnits } from './date_units'
 
 /** returns the singular value from Option */
 const singularizeLabel = (option: Option): Option => ({
@@ -32,17 +32,27 @@ const singularizeLabel = (option: Option): Option => ({
   label: option.singular || option.label,
 })
 
-export const lastUnits = dateUnits.map(singularizeLabel)
+export const useLastUnits = () => {
+  const dateUnits = useDateUnits()
+  return dateUnits.map(singularizeLabel)
+}
 
-export const thisNextUnits = lastUnits.filter(
-  (option: Option) =>
-    ['second', 'minute', 'hour'].indexOf(option.value as string) === -1
-)
+export const useThisNextUnits = () => {
+  const lastUnits = useLastUnits()
+  return lastUnits.filter(
+    (option: Option) =>
+      ['second', 'minute', 'hour'].indexOf(option.value as string) === -1
+  )
+}
 
-export const fiscalLastUnits = [...dateUnits, ...fiscalDateUnits].map(
-  singularizeLabel
-)
+export const useFiscalLastUnits = () => {
+  const dateUnits = useDateUnits()
+  const fiscalDateUnits = useFiscalDateUnits()
+  return [...dateUnits, ...fiscalDateUnits].map(singularizeLabel)
+}
 
-export const fiscalThisNextUnits = [...thisNextUnits, ...fiscalDateUnits].map(
-  singularizeLabel
-)
+export const useFiscalThisNextUnits = () => {
+  const thisNextUnits = useThisNextUnits()
+  const fiscalDateUnits = useFiscalDateUnits()
+  return [...thisNextUnits, ...fiscalDateUnits].map(singularizeLabel)
+}

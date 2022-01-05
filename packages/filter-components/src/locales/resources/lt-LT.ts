@@ -40,6 +40,18 @@ const resources = {
   Between: {
     AND: 'IR',
   },
+  date_units: {
+    days: 'dienos',
+    'fiscal quarters': 'finansiniai ketvirčiai',
+    'fiscal years': 'finansiniai metai',
+    hours: 'valandos',
+    minutes: 'minutės',
+    months: 'mėnesiai',
+    quarters: 'ketvirčiai',
+    seconds: 'sekundės',
+    weeks: 'savaitės',
+    years: 'metai',
+  },
   get_date_filter_options: {
     is: 'yra',
     'is any time': 'yra bet kuriuo metu',
@@ -140,6 +152,18 @@ const resources = {
   OperatorLabel: {
     AND: 'IR',
     OR: 'ARBA',
+  },
+  past_units: {
+    'complete days': 'praėjusios dienos',
+    'complete fiscal quarters': 'praėję finansiniai ketvirčiai',
+    'complete fiscal years': 'praėję finansiniai metai',
+    'complete hours': 'praėjusios valandos',
+    'complete minutes': 'praėjusios minutės',
+    'complete months': 'praėję mėnesiai',
+    'complete quarters': 'praėję ketvirčiai',
+    'complete seconds': 'praėjusios sekundės',
+    'complete weeks': 'praėjusios savaitės',
+    'complete years': 'praėję metai',
   },
   ReactSelectCustomIcons: {
     'Clear all': 'Valyti visus',

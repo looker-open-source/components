@@ -68,7 +68,7 @@ const describeInterval = ({ value, unit, complete }: FilterModel) => {
   const result = t('value complete unitLabel', {
     ns: 'describe_date',
     value,
-    complete: complete ? ' complete' : '',
+    complete: complete ? t(' complete', { ns: 'describe_date' }) : '',
     unitLabel: getUnitLabel(unit, value),
   })
   return result

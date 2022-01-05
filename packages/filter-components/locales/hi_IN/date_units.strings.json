@@ -1,0 +1,32 @@
+{
+  "days": {
+    "value": "दिन"
+  },
+  "fiscal quarters": {
+    "value": "वित्तीय तिमाहियां"
+  },
+  "fiscal years": {
+    "value": "वित्तीय वर्ष"
+  },
+  "hours": {
+    "value": "घंटे"
+  },
+  "minutes": {
+    "value": "मिनट"
+  },
+  "months": {
+    "value": "महीने"
+  },
+  "quarters": {
+    "value": "तिमाहियां"
+  },
+  "seconds": {
+    "value": "सेकंड"
+  },
+  "weeks": {
+    "value": "सप्ताह"
+  },
+  "years": {
+    "value": "वर्ष"
+  }
+}

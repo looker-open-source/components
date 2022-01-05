@@ -1,0 +1,32 @@
+{
+  "days": {
+    "value": "วัน"
+  },
+  "fiscal quarters": {
+    "value": "ไตรมาสงบประมาณ"
+  },
+  "fiscal years": {
+    "value": "ปีงบประมาณ"
+  },
+  "hours": {
+    "value": "ชั่วโมง"
+  },
+  "minutes": {
+    "value": "นาที"
+  },
+  "months": {
+    "value": "เดือน"
+  },
+  "quarters": {
+    "value": "ไตรมาส"
+  },
+  "seconds": {
+    "value": "วินาที"
+  },
+  "weeks": {
+    "value": "สัปดาห์"
+  },
+  "years": {
+    "value": "ปี"
+  }
+}

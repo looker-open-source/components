@@ -1,0 +1,32 @@
+{
+  "days": {
+    "value": "дн."
+  },
+  "fiscal quarters": {
+    "value": "финанс. кварт."
+  },
+  "fiscal years": {
+    "value": "финанс. год(а)/лет"
+  },
+  "hours": {
+    "value": "ч"
+  },
+  "minutes": {
+    "value": "мин"
+  },
+  "months": {
+    "value": "мес."
+  },
+  "quarters": {
+    "value": "кварт."
+  },
+  "seconds": {
+    "value": "сек"
+  },
+  "weeks": {
+    "value": "нед."
+  },
+  "years": {
+    "value": "год(а)/лет"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "complete days": {
+    "value": "vollständige Tage"
+  },
+  "complete fiscal quarters": {
+    "value": "vollständige Geschäftsquartale"
+  },
+  "complete fiscal years": {
+    "value": "vollständige Geschäftsjahre"
+  },
+  "complete hours": {
+    "value": "vollständige Stunden"
+  },
+  "complete minutes": {
+    "value": "vollständige Minuten"
+  },
+  "complete months": {
+    "value": "vollständige Monate"
+  },
+  "complete quarters": {
+    "value": "vollständige Quartale"
+  },
+  "complete seconds": {
+    "value": "vollständige Sekunden"
+  },
+  "complete weeks": {
+    "value": "vollständige Wochen"
+  },
+  "complete years": {
+    "value": "vollständige Jahre"
+  }
+}

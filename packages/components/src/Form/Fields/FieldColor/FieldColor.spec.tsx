@@ -43,7 +43,7 @@ describe('FieldColor', () => {
 
   test('with a validation message', () => {
     renderWithTheme(<FieldColorValidationMessage />)
-    expect(screen.queryByText('Error!')).toBeInTheDocument()
+    expect(screen.getByText('Error!')).toBeInTheDocument()
   })
 
   test('A FieldColor with description has proper aria setup', () => {

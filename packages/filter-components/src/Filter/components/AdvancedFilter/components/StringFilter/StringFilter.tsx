@@ -76,7 +76,7 @@ export const StringFilter: FC<FilterParamProps<StringFilterType>> = ({
         value={selectValue}
         options={options}
         onChange={typeChange}
-        validationMessage={validationMessage}
+        validationType={validationMessage?.type}
         placement={['blank', 'null'].includes(item.type) ? undefined : 'left'}
       />
       <FilterComponent

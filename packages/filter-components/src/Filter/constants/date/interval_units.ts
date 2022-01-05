@@ -23,6 +23,10 @@
  SOFTWARE.
 
  */
-import { dateUnits, fiscalDateUnits } from './date_units'
+import { useDateUnits, useFiscalDateUnits } from './date_units'
 
-export const fiscalIntervalUnits = [...dateUnits, ...fiscalDateUnits]
+export const useFiscalIntervalUnits = () => {
+  const dateUnits = useDateUnits()
+  const fiscalDateUnits = useFiscalDateUnits()
+  return [...dateUnits, ...fiscalDateUnits]
+}

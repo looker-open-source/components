@@ -30,11 +30,6 @@ import {
 } from '@looker/components-test-utils'
 import { fireEvent, screen } from '@testing-library/react'
 import React from 'react'
-import {
-  fiscalLastUnits,
-  fiscalThisNextUnits,
-  thisNextUnits,
-} from '../../../../../../constants'
 import { Filter } from '../../../../../../Filter'
 import {
   testField,
@@ -73,9 +68,15 @@ describe('This Date filter test', () => {
     expect(unitsDropdown).toHaveValue('year')
 
     fireEvent.click(unitsDropdown)
-    expect(getAllComboboxOptionText()).toEqual(
-      thisNextUnits.map((option) => option.label)
-    )
+    expect(getAllComboboxOptionText()).toMatchInlineSnapshot(`
+      Array [
+        "day",
+        "week",
+        "month",
+        "quarter",
+        "year",
+      ]
+    `)
     closeCombobox()
   })
 })
@@ -111,9 +112,20 @@ describe('Last Date filter test', () => {
     expect(unitsDropdown).toHaveValue('fiscal year')
 
     fireEvent.click(unitsDropdown)
-    expect(getAllComboboxOptionText()).toEqual(
-      fiscalLastUnits.map((option) => option.label)
-    )
+    expect(getAllComboboxOptionText()).toMatchInlineSnapshot(`
+      Array [
+        "second",
+        "minute",
+        "hour",
+        "day",
+        "week",
+        "month",
+        "quarter",
+        "year",
+        "fiscal quarter",
+        "fiscal year",
+      ]
+    `)
     closeCombobox()
   })
 })
@@ -149,9 +161,17 @@ describe('Next Date filter test', () => {
     expect(unitsDropdown).toHaveValue('week')
 
     fireEvent.click(unitsDropdown)
-    expect(getAllComboboxOptionText()).toEqual(
-      fiscalThisNextUnits.map((option) => option.label)
-    )
+    expect(getAllComboboxOptionText()).toMatchInlineSnapshot(`
+      Array [
+        "day",
+        "week",
+        "month",
+        "quarter",
+        "year",
+        "fiscal quarter",
+        "fiscal year",
+      ]
+    `)
     closeCombobox()
   })
 })

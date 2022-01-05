@@ -77,22 +77,22 @@ describe('Tabs', () => {
   test('clicking on tab opens correct panel', () => {
     renderWithTheme(<TabsComponent />)
 
-    expect(screen.queryByText('this is tab1 content')).toBeInTheDocument()
+    expect(screen.getByText('this is tab1 content')).toBeInTheDocument()
     expect(screen.queryByText('this is tab2 content')).not.toBeInTheDocument()
     fireEvent.click(screen.getByText('tab2'))
     expect(screen.queryByText('this is tab1 content')).not.toBeInTheDocument()
-    expect(screen.queryByText('this is tab2 content')).toBeInTheDocument()
+    expect(screen.getByText('this is tab2 content')).toBeInTheDocument()
   })
 
   test('clicking on disable tab does not change panel', () => {
     renderWithTheme(<TabsComponent />)
 
-    expect(screen.queryByText('this is tab1 content')).toBeInTheDocument()
+    expect(screen.getByText('this is tab1 content')).toBeInTheDocument()
     expect(
       screen.queryByText('this is the disable tab-panel')
     ).not.toBeInTheDocument()
     fireEvent.click(screen.getByText('tab3'))
-    expect(screen.queryByText('this is tab1 content')).toBeInTheDocument()
+    expect(screen.getByText('this is tab1 content')).toBeInTheDocument()
     expect(
       screen.queryByText('this is the disable tab-panel')
     ).not.toBeInTheDocument()
@@ -118,7 +118,7 @@ describe('Tabs', () => {
     renderWithTheme(<TabHooks />)
 
     expect(
-      screen.queryByText('1 this is the panel of tab hook 1')
+      screen.getByText('1 this is the panel of tab hook 1')
     ).toBeInTheDocument()
     expect(
       screen.queryByText('2 this is the panel of tab hook 2')
@@ -128,7 +128,7 @@ describe('Tabs', () => {
       screen.queryByText('1 this is the panel of tab hook 1')
     ).not.toBeInTheDocument()
     expect(
-      screen.queryByText('2 this is the panel of tab hook 2')
+      screen.getByText('2 this is the panel of tab hook 2')
     ).toBeInTheDocument()
   })
 

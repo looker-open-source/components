@@ -56,7 +56,7 @@ export const UserAttribute: FC<FilterParamProps> = ({
       placeholder="Select..."
       options={createOptions(userAttributes)}
       onChange={userAttributeChange}
-      validationMessage={validationMessage}
+      validationType={validationMessage?.type}
       placement="right"
     />
   )

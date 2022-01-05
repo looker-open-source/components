@@ -154,7 +154,7 @@ describe('InputFilters', () => {
     fireEvent.click(screen.getByText('Swiss'))
 
     expect(screen.getByText('name:')).toBeInTheDocument()
-    expect(screen.queryByText(/Swiss/)).toBeInTheDocument()
+    expect(screen.getByText(/Swiss/)).toBeInTheDocument()
 
     fireEvent.click(document)
 
@@ -181,13 +181,13 @@ describe('InputFilters', () => {
 
     fireEvent.click(screen.getByText('Cheddar'))
 
-    expect(screen.queryByText('name:')).toBeInTheDocument()
-    expect(screen.queryByText(/Cheddar/)).toBeInTheDocument()
+    expect(screen.getByText('name:')).toBeInTheDocument()
+    expect(screen.getByText(/Cheddar/)).toBeInTheDocument()
 
     fireEvent.click(screen.getByText('name:'))
     fireEvent.click(screen.getByText('Swiss'))
 
-    expect(screen.queryByText(/Swiss/)).toBeInTheDocument()
+    expect(screen.getByText(/Swiss/)).toBeInTheDocument()
 
     // Close popover to silence act() warning
     fireEvent.click(document)
@@ -207,9 +207,9 @@ describe('InputFilters', () => {
 
     fireEvent.click(document)
 
-    expect(screen.queryByText('color:')).toBeInTheDocument()
-    expect(screen.queryByText(/blue/)).toBeInTheDocument()
-    expect(screen.queryByText(/white/)).toBeInTheDocument()
+    expect(screen.getByText('color:')).toBeInTheDocument()
+    expect(screen.getByText(/blue/)).toBeInTheDocument()
+    expect(screen.getByText(/white/)).toBeInTheDocument()
 
     // Close popover to silence act() warning
     fireEvent.click(document)
@@ -261,11 +261,11 @@ describe('InputFilters', () => {
 
     fireEvent.click(document)
 
-    expect(screen.queryByText('color:')).toBeInTheDocument()
-    expect(screen.queryByText(/yellow/)).toBeInTheDocument()
-    expect(screen.queryByText(/orange/)).toBeInTheDocument()
+    expect(screen.getByText('color:')).toBeInTheDocument()
+    expect(screen.getByText(/yellow/)).toBeInTheDocument()
+    expect(screen.getByText(/orange/)).toBeInTheDocument()
     expect(screen.getByText('name:')).toBeInTheDocument()
-    expect(screen.queryByText(/Gouda/)).toBeInTheDocument()
+    expect(screen.getByText(/Gouda/)).toBeInTheDocument()
 
     fireEvent.click(screen.getByText('Clear Filters'))
 

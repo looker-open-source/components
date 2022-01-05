@@ -48,7 +48,7 @@ describe('Table', () => {
     )
 
     // verify that table headers are being populated from Fields metadata
-    expect(screen.getAllByText('Orders')[0].tagName).toEqual('TH')
+    expect(screen.getAllByText('Count')[0].tagName).toEqual('TH')
     // verify that table content is being populated from data
     expect(screen.getAllByText('California')[0].tagName).toEqual('TD')
     // TODO: restore these checks when Table is caught up with config changes

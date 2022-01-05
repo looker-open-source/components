@@ -23,8 +23,7 @@
  SOFTWARE.
 
  */
-import type { ValidationMessageProps } from '@looker/components'
-import { ERROR_TYPE } from './use_validation_message'
+
 import { css } from 'styled-components'
 
 export const multiInputWidth = 280
@@ -68,21 +67,6 @@ export const inputPlacementStyle = ({ placement }: PlacementProps) => {
       return ''
   }
 }
-
-export const inputErrorStyle = css<{
-  validationMessage?: ValidationMessageProps
-}>`
-  ${({ theme, validationMessage }) =>
-    validationMessage?.type === ERROR_TYPE && theme
-      ? css`
-          border-color: ${theme.colors.criticalBorder};
-          &:hover,
-          &:focus-within {
-            border-color: ${theme.colors.criticalBorder};
-          }
-        `
-      : ''}
-`
 
 export interface TokenStyleProps {
   tokenStyle?: boolean

@@ -48,8 +48,8 @@ describe('MultiStringInput tests', () => {
       const input = screen.getByPlaceholderText('any value')!
       fireEvent.click(input)
 
-      expect(screen.queryByRole('listbox')).toBeInTheDocument()
-      expect(screen.queryByText('Foo')).toBeInTheDocument()
+      expect(screen.getByRole('listbox')).toBeInTheDocument()
+      expect(screen.getByText('Foo')).toBeInTheDocument()
 
       // Close popover to silence act() warning
       fireEvent.click(document)

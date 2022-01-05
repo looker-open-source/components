@@ -32,7 +32,7 @@ import { ProgressCircular } from './ProgressCircular'
 describe('ProgressCircular', () => {
   test('renders default behavior', () => {
     renderWithTheme(<ProgressCircular />)
-    expect(screen.queryByRole('progressbar')).toBeInTheDocument()
+    expect(screen.getByRole('progressbar')).toBeInTheDocument()
   })
 
   test('renders progress of 25', () => {
@@ -80,6 +80,6 @@ describe('ProgressCircular', () => {
 
   test('renders different sizes', () => {
     renderWithTheme(<ProgressCircular size="xsmall" />)
-    expect(screen.queryByRole('progressbar')).toBeInTheDocument()
+    expect(screen.getByRole('progressbar')).toBeInTheDocument()
   })
 })

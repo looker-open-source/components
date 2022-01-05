@@ -33,8 +33,8 @@ import type { ChangeEvent, FC } from 'react'
 import React, { useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import {
-  beforeOrAfterUnits,
-  fiscalBeforeOrAfterUnits,
+  useBeforeOrAfterUnits,
+  useFiscalBeforeOrAfterUnits,
 } from '../../../../../../constants'
 import { showFiscalUnits } from '../../../../utils/show_fiscal_units'
 import { GroupSelect } from '../../../GroupSelect'
@@ -82,6 +82,8 @@ export const BeforeAfter: FC<BeforeAfterProps> = ({
   const actualDate = date ? filterDateTimeModelToDate(date) : new Date()
   const selectedValue = fromnow ? `f_${unit}` : `${unit}`
 
+  const fiscalBeforeOrAfterUnits = useFiscalBeforeOrAfterUnits()
+  const beforeOrAfterUnits = useBeforeOrAfterUnits()
   const unitOptions = showFiscalUnits(field)
     ? fiscalBeforeOrAfterUnits
     : beforeOrAfterUnits
