@@ -56,7 +56,7 @@ describe('inputFilterEditor', () => {
         })}
       </>
     )
-    expect(screen.queryByText('datagroup_trigger')).toBeInTheDocument()
+    expect(screen.getByText('datagroup_trigger')).toBeInTheDocument()
   })
 
   test('onChange is called', () => {

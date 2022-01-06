@@ -40,6 +40,18 @@ const resources = {
   Between: {
     AND: 'ו',
   },
+  date_units: {
+    days: 'ימים',
+    'fiscal quarters': 'רבעונים פיסקליים',
+    'fiscal years': 'שנים פיסקליות',
+    hours: 'שעות',
+    minutes: 'דקות',
+    months: 'חודשים',
+    quarters: 'רבעונים',
+    seconds: 'שניות',
+    weeks: 'שבועות',
+    years: 'שנים',
+  },
   get_date_filter_options: {
     is: 'הוא',
     'is any time': 'מועד כלשהו',
@@ -140,6 +152,18 @@ const resources = {
   OperatorLabel: {
     AND: 'ו',
     OR: 'או',
+  },
+  past_units: {
+    'complete days': 'ימים מלאים',
+    'complete fiscal quarters': 'רבעונים פיסקליים מלאים',
+    'complete fiscal years': 'שנים פיסקליות מלאות',
+    'complete hours': 'שעות מלאות',
+    'complete minutes': 'דקות מלאות',
+    'complete months': 'חודשים מלאים',
+    'complete quarters': 'רבעונים מלאים',
+    'complete seconds': 'שניות מלאות',
+    'complete weeks': 'שבועות מלאים',
+    'complete years': 'שנים מלאות',
   },
   ReactSelectCustomIcons: {
     'Clear all': 'נקה הכול',

@@ -40,6 +40,18 @@ const resources = {
   Between: {
     AND: 'И',
   },
+  date_units: {
+    days: 'дн.',
+    'fiscal quarters': 'финанс. кварт.',
+    'fiscal years': 'финанс. год(а)/лет',
+    hours: 'ч',
+    minutes: 'мин',
+    months: 'мес.',
+    quarters: 'кварт.',
+    seconds: 'сек',
+    weeks: 'нед.',
+    years: 'год(а)/лет',
+  },
   get_date_filter_options: {
     is: 'является',
     'is any time': 'любое значение времени',
@@ -140,6 +152,18 @@ const resources = {
   OperatorLabel: {
     AND: 'И',
     OR: 'ИЛИ',
+  },
+  past_units: {
+    'complete days': 'полн. дн.',
+    'complete fiscal quarters': 'полн. финанс. кварт.',
+    'complete fiscal years': 'полн. финанс. год(а)/лет',
+    'complete hours': 'полн. ч',
+    'complete minutes': 'полн. мин',
+    'complete months': 'полн. мес.',
+    'complete quarters': 'полн. кварт.',
+    'complete seconds': 'полн. сек',
+    'complete weeks': 'полн. нед.',
+    'complete years': 'полн. год(а)/лет',
   },
   ReactSelectCustomIcons: {
     'Clear all': 'Очистить все',

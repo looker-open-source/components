@@ -31,10 +31,6 @@ import {
 } from '@looker/components-test-utils'
 import { fireEvent, screen } from '@testing-library/react'
 import React from 'react'
-import {
-  beforeOrAfterUnits,
-  fiscalBeforeOrAfterUnits,
-} from '../../../../../../constants'
 import { Filter } from '../../../../../../Filter'
 import {
   testField,
@@ -63,9 +59,27 @@ describe('BeforeAfter Date filter test', () => {
     expect(screen.queryByTestId('number-value')).toHaveValue(3)
 
     fireEvent.click(inputs[2])
-    expect(getAllComboboxOptionText()).toEqual(
-      beforeOrAfterUnits.map((option) => option.label)
-    )
+    expect(getAllComboboxOptionText()).toMatchInlineSnapshot(`
+      Array [
+        "years ago",
+        "quarters ago",
+        "months ago",
+        "weeks ago",
+        "days ago",
+        "hours ago",
+        "minutes ago",
+        "seconds ago",
+        "now",
+        "seconds from now",
+        "minutes from now",
+        "hours from now",
+        "days from now",
+        "weeks from now",
+        "months from now",
+        "quarters from now",
+        "years from now",
+      ]
+    `)
     closeCombobox()
   })
 
@@ -82,9 +96,31 @@ describe('BeforeAfter Date filter test', () => {
     )
 
     fireEvent.click(screen.getAllByRole('textbox')[2])
-    expect(getAllComboboxOptionText()).toEqual(
-      fiscalBeforeOrAfterUnits.map((option) => option.label)
-    )
+    expect(getAllComboboxOptionText()).toMatchInlineSnapshot(`
+      Array [
+        "fiscal years ago",
+        "fiscal quarters ago",
+        "years ago",
+        "quarters ago",
+        "months ago",
+        "weeks ago",
+        "days ago",
+        "hours ago",
+        "minutes ago",
+        "seconds ago",
+        "now",
+        "seconds from now",
+        "minutes from now",
+        "hours from now",
+        "days from now",
+        "weeks from now",
+        "months from now",
+        "quarters from now",
+        "years from now",
+        "fiscal quarter from now",
+        "fiscal years from now",
+      ]
+    `)
     closeCombobox()
   })
 })

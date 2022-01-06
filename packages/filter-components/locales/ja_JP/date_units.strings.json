@@ -1,0 +1,32 @@
+{
+  "days": {
+    "value": "日"
+  },
+  "fiscal quarters": {
+    "value": "会計四半期"
+  },
+  "fiscal years": {
+    "value": "会計年度"
+  },
+  "hours": {
+    "value": "時間"
+  },
+  "minutes": {
+    "value": "分"
+  },
+  "months": {
+    "value": "月"
+  },
+  "quarters": {
+    "value": "四半期"
+  },
+  "seconds": {
+    "value": "秒"
+  },
+  "weeks": {
+    "value": "週"
+  },
+  "years": {
+    "value": "年"
+  }
+}

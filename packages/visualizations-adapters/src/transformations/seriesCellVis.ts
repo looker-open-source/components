@@ -26,45 +26,65 @@
 
 import get from 'lodash/get'
 import type { CTable, CTableSeries } from '../adapters'
-import type { ConfigHelper } from '../types'
+import type { ConfigHelper, ConfigHelperArgs } from '../types'
 
-export type NamedSeries = { [k: string]: CTableSeries }
+type ApiConfigWithOverrides = ConfigHelperArgs<CTable>['config']
+
+const setSeriesCellVisStatus = (
+  config: ApiConfigWithOverrides,
+  measureName = '',
+  i: number
+) => {
+  const cellVisDefault = i === 0
+  const seriesBaseName = measureName.split('|')[0] // isolated value relevant to pivoted queries
+  const apiValue = get(
+    config,
+    ['series_cell_visualizations', seriesBaseName, 'is_active'],
+    cellVisDefault
+  )
+  return apiValue
+}
 
 export const seriesCellVis: ConfigHelper<CTable> = ({
   config,
   data,
   fields,
 }) => {
-  const { series_cell_visualizations, series, ...restConfig } = config
+  const { series = {}, ...restConfig } = config
 
-  const buildNamedSeries = (s?: NamedSeries) => {
-    const namedSeries: NamedSeries = fields?.measures.reduce(
+  const buildArraySeries = (s: CTableSeries[] = []) => {
+    const arraySeries = fields?.measures.map(({ name }, i) => {
+      const defaultSeriesCellValue = setSeriesCellVisStatus(config, name, i)
+      const { cell_visualization = defaultSeriesCellValue, ...restSeries } =
+        s?.[i] || {}
+      return { cell_visualization, ...restSeries }
+    }, [])
+    return arraySeries
+  }
+
+  const buildNamedSeries = (s: { [k: string]: CTableSeries } = {}) => {
+    const namedSeries = fields.measures.reduce(
       (seriesConfig, { name }, i) => {
-        // default true ONLY for the first measure, unless otherwise specified
-        const cellVisDefault = i === 0
-        const apiValue = get(
-          series_cell_visualizations,
-          [name, 'is_active'],
-          cellVisDefault
-        )
-        const { cell_visualization = apiValue, ...restSeries } = s?.[name] || {}
-
+        const defaultSeriesCellValue = setSeriesCellVisStatus(config, name, i)
+        const { cell_visualization = defaultSeriesCellValue, ...restSeries } =
+          s?.[name] || {}
         return {
           ...seriesConfig,
           [name]: { cell_visualization, ...restSeries },
-        } as NamedSeries
+        }
       },
 
       {}
     )
-
     return namedSeries
   }
 
   return {
     config: {
+      series: Array.isArray(series)
+        ? buildArraySeries(series)
+        : buildNamedSeries(series),
       ...restConfig,
-      series: Array.isArray(series) ? series : buildNamedSeries(series),
     },
     data,
     fields,

@@ -59,6 +59,7 @@ const buttonCSS = css<ButtonColorProps>`
   border-radius: ${({ theme }) => theme.radii.medium};
   cursor: pointer;
   display: inline-flex;
+  flex-shrink: 0;
   font-family: ${({ theme }) => theme.fonts.brand};
   font-weight: ${({ theme }) => theme.fontWeights.medium};
   justify-content: center;

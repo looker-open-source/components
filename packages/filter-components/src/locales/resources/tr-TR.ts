@@ -40,6 +40,18 @@ const resources = {
   Between: {
     AND: 'İLE',
   },
+  date_units: {
+    days: 'gün',
+    'fiscal quarters': 'mali çeyrek',
+    'fiscal years': 'mali yıl',
+    hours: 'saat',
+    minutes: 'dakika',
+    months: 'ay',
+    quarters: 'çeyrek',
+    seconds: 'saniye',
+    weeks: 'hafta',
+    years: 'yıl',
+  },
   get_date_filter_options: {
     is: 'şudur:',
     'is any time': 'herhangi bir zaman',
@@ -140,6 +152,18 @@ const resources = {
   OperatorLabel: {
     AND: 'İLE',
     OR: 'VEYA',
+  },
+  past_units: {
+    'complete days': 'tam gün',
+    'complete fiscal quarters': 'tam mali çeyrek',
+    'complete fiscal years': 'tam mali yıl',
+    'complete hours': 'tam saat',
+    'complete minutes': 'tam dakika',
+    'complete months': 'tam ay',
+    'complete quarters': 'tam çeyrek',
+    'complete seconds': 'tam saniye',
+    'complete weeks': 'tam hafta',
+    'complete years': 'tam yıl',
   },
   ReactSelectCustomIcons: {
     'Clear all': 'Tümünü temizle',

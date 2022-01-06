@@ -1,0 +1,32 @@
+{
+  "days": {
+    "value": "dienos"
+  },
+  "fiscal quarters": {
+    "value": "finansiniai ketvirčiai"
+  },
+  "fiscal years": {
+    "value": "finansiniai metai"
+  },
+  "hours": {
+    "value": "valandos"
+  },
+  "minutes": {
+    "value": "minutės"
+  },
+  "months": {
+    "value": "mėnesiai"
+  },
+  "quarters": {
+    "value": "ketvirčiai"
+  },
+  "seconds": {
+    "value": "sekundės"
+  },
+  "weeks": {
+    "value": "savaitės"
+  },
+  "years": {
+    "value": "metai"
+  }
+}

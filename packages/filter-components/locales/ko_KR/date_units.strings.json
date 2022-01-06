@@ -1,0 +1,32 @@
+{
+  "days": {
+    "value": "일"
+  },
+  "fiscal quarters": {
+    "value": "회계 분기"
+  },
+  "fiscal years": {
+    "value": "회계 연수"
+  },
+  "hours": {
+    "value": "시간"
+  },
+  "minutes": {
+    "value": "분"
+  },
+  "months": {
+    "value": "월"
+  },
+  "quarters": {
+    "value": "분기"
+  },
+  "seconds": {
+    "value": "초"
+  },
+  "weeks": {
+    "value": "주"
+  },
+  "years": {
+    "value": "년"
+  }
+}

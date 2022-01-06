@@ -1,0 +1,32 @@
+{
+  "complete days": {
+    "value": "ימים מלאים"
+  },
+  "complete fiscal quarters": {
+    "value": "רבעונים פיסקליים מלאים"
+  },
+  "complete fiscal years": {
+    "value": "שנים פיסקליות מלאות"
+  },
+  "complete hours": {
+    "value": "שעות מלאות"
+  },
+  "complete minutes": {
+    "value": "דקות מלאות"
+  },
+  "complete months": {
+    "value": "חודשים מלאים"
+  },
+  "complete quarters": {
+    "value": "רבעונים מלאים"
+  },
+  "complete seconds": {
+    "value": "שניות מלאות"
+  },
+  "complete weeks": {
+    "value": "שבועות מלאים"
+  },
+  "complete years": {
+    "value": "שנים מלאות"
+  }
+}

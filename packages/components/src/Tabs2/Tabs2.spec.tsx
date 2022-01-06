@@ -73,14 +73,14 @@ describe('Tabs2', () => {
     renderWithTheme(<Basic />)
 
     expect(
-      screen.queryByText("Here's awesome story about cats")
+      screen.getByText("Here's awesome story about cats")
     ).toBeInTheDocument()
     expect(screen.queryByText('Are kinda smelly')).not.toBeInTheDocument()
     fireEvent.click(screen.getByText('Fish'))
     expect(
       screen.queryByText("Here's awesome story about cats")
     ).not.toBeInTheDocument()
-    expect(screen.queryByText('Are kinda smelly')).toBeInTheDocument()
+    expect(screen.getByText('Are kinda smelly')).toBeInTheDocument()
   })
 
   test('defaultTabId', () => {
@@ -94,12 +94,12 @@ describe('Tabs2', () => {
   test('disabled', () => {
     renderWithTheme(<Basic />)
     expect(
-      screen.queryByText("Here's awesome story about cats")
+      screen.getByText("Here's awesome story about cats")
     ).toBeInTheDocument()
     expect(screen.queryByText('Humans tab is disabled')).not.toBeInTheDocument()
     fireEvent.click(screen.getByText('Human'))
     expect(
-      screen.queryByText("Here's awesome story about cats")
+      screen.getByText("Here's awesome story about cats")
     ).toBeInTheDocument()
     expect(screen.queryByText('Humans tab is disabled')).not.toBeInTheDocument()
   })
@@ -151,13 +151,13 @@ describe('Tabs2', () => {
     renderWithTheme(<Controlled />)
 
     expect(
-      screen.queryByText("Here's awesome story about cats")
+      screen.getByText("Here's awesome story about cats")
     ).toBeInTheDocument()
 
     fireEvent.click(screen.getByText('Switch to Dogs'))
 
     expect(
-      screen.queryByText('Cats are way better than dogs. Go to other tab')
+      screen.getByText('Cats are way better than dogs. Go to other tab')
     ).toBeInTheDocument()
   })
 

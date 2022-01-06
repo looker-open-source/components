@@ -23,26 +23,20 @@
  SOFTWARE.
 
  */
-import type { SelectProps, ValidationMessageProps } from '@looker/components'
+import type { SelectProps } from '@looker/components'
 import { InputText, Select } from '@looker/components'
 import omit from 'lodash/omit'
 import React from 'react'
 import styled from 'styled-components'
 import type { PlacementProps } from '../../../../utils/filter_styles'
-import {
-  inputPlacementStyle,
-  inputErrorStyle,
-} from '../../../../utils/filter_styles'
+import { inputPlacementStyle } from '../../../../utils/filter_styles'
 
-export interface GroupSelectProps extends SelectProps, PlacementProps {
-  validationMessage?: ValidationMessageProps
-}
+export type GroupSelectProps = SelectProps & PlacementProps
 
 export const GroupSelect = styled((props: GroupSelectProps) => (
-  <Select autoResize {...omit(props, 'placement')} />
+  <Select autoResize {...omit(props, 'placement')} noErrorIcon />
 ))`
   ${InputText} {
     ${inputPlacementStyle}
-    ${inputErrorStyle}
   }
 `

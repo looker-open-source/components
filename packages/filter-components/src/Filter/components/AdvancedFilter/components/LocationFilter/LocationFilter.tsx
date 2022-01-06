@@ -55,7 +55,7 @@ export const LocationFilter: FC<FilterParamProps<LocationFilterType>> = ({
           value={item.type}
           options={options}
           onChange={locationTypeChange}
-          validationMessage={validationMessage}
+          validationType={validationMessage?.type}
           placement={
             ['null', 'notnull', 'anyvalue'].includes(item.type)
               ? undefined

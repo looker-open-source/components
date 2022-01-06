@@ -3990,7 +3990,7 @@
     lodash "^4.17.15"
     redent "^3.0.0"
 
-"@testing-library/react-hooks@3.3.0":
+"@testing-library/react-hooks@*", "@testing-library/react-hooks@3.3.0":
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/@testing-library/react-hooks/-/react-hooks-3.3.0.tgz#dc217bfce8e7c34a99c811d73d23feef957b7c1d"
   integrity sha512-rE9geI1+HJ6jqXkzzJ6abREbeud6bLF8OmF+Vyc7gBoPwZAEVBYjbC1up5nNoVfYBhO5HUwdD4u9mTehAUeiyw==
@@ -4487,9 +4487,9 @@
     "@types/react" "*"
 
 "@types/react-dom@*", "@types/react-dom@^17.0.9":
-  version "17.0.10"
-  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-17.0.10.tgz#d6972ec018d23cf22b99597f1289343d99ea9d9d"
-  integrity sha512-8oz3NAUId2z/zQdFI09IMhQPNgIbiP8Lslhv39DIDamr846/0spjZK0vnrMak0iB8EKb9QFTTIdg2Wj2zH5a3g==
+  version "17.0.11"
+  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-17.0.11.tgz#e1eadc3c5e86bdb5f7684e00274ae228e7bcc466"
+  integrity sha512-f96K3k+24RaLGVu/Y2Ng3e1EbZ8/cVJvypZWd7cy0ofCBaf2lcM46xNhycMZ2xGwbBjRql7hOlZ+e2WlJ5MH3Q==
   dependencies:
     "@types/react" "*"
 
@@ -4532,9 +4532,9 @@
     "@types/react" "*"
 
 "@types/react@*", "@types/react@^17.0.9":
-  version "17.0.20"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.20.tgz#a4284b184d47975c71658cd69e759b6bd37c3b8c"
-  integrity sha512-wWZrPlihslrPpcKyCSlmIlruakxr57/buQN1RjlIeaaTWDLtJkTtRW429MoQJergvVKc4IWBpRhWw7YNh/7GVA==
+  version "17.0.38"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.38.tgz#f24249fefd89357d5fa71f739a686b8d7c7202bd"
+  integrity sha512-SI92X1IA+FMnP3qM5m4QReluXzhcmovhZnLNm3pyeQlooi02qI7sLiepEYqT678uNiyc25XfCqxREFpy3W7YhQ==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -4818,6 +4818,21 @@
     prop-types "^15.5.10"
     react-use-measure "^2.0.4"
 
+"@visx/annotation@2.5.0":
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/@visx/annotation/-/annotation-2.5.0.tgz#687146d4c23e8dd0443598e67bdb30bd8965438d"
+  integrity sha512-3ByH2z9TLUboN5ExCluSgX9DbnVwPVYUhqJicknO2J9Vk/AGcxh/X61gP+CUAYxf9YfL694rPHpjDA3djUt8yQ==
+  dependencies:
+    "@types/react" "*"
+    "@visx/drag" "2.5.0"
+    "@visx/group" "2.1.0"
+    "@visx/point" "2.1.0"
+    "@visx/shape" "2.4.0"
+    "@visx/text" "2.3.0"
+    classnames "^2.3.1"
+    prop-types "^15.5.10"
+    react-use-measure "^2.0.4"
+
 "@visx/axis@2.1.1":
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/@visx/axis/-/axis-2.1.1.tgz#d19f2e742cd0b7b77e199961ae3a6ee4dc4f9ad7"
@@ -4865,6 +4880,15 @@
   dependencies:
     "@types/react" "*"
     "@visx/event" "2.1.0"
+    prop-types "^15.5.10"
+
+"@visx/drag@2.5.0":
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/@visx/drag/-/drag-2.5.0.tgz#face33c7b67637e3c4708b41926e059181160125"
+  integrity sha512-8oVcL0G8ydLC6PS6EZ1Nl3YX19vB4TDG5dFF27dvAMP82NNCmgB9U29B6NegMXVFnj12nWBOoxnIDsUpf8bdQQ==
+  dependencies:
+    "@types/react" "*"
+    "@visx/event" "2.1.2"
     prop-types "^15.5.10"
 
 "@visx/event@2.1.0":
@@ -4981,6 +5005,18 @@
     d3-scale "^3.3.0"
     d3-time "^2.1.1"
 
+"@visx/scale@2.2.2":
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/@visx/scale/-/scale-2.2.2.tgz#b8eafabdcf92bb45ab196058fe184772ad80fd25"
+  integrity sha512-3aDySGUTpe6VykDQmF+g2nz5paFu9iSPTcCOEgkcru0/v5tmGzUdvivy8CkYbr87HN73V/Jc53lGm+kJUQcLBw==
+  dependencies:
+    "@types/d3-interpolate" "^1.3.1"
+    "@types/d3-scale" "^3.3.0"
+    "@types/d3-time" "^2.0.0"
+    d3-interpolate "^1.4.0"
+    d3-scale "^3.3.0"
+    d3-time "^2.1.1"
+
 "@visx/shape@2.1.1":
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/@visx/shape/-/shape-2.1.1.tgz#5dcde5208e639451f0ac61f8cc5d0c0aee3b55ad"
@@ -4999,10 +5035,40 @@
     lodash "^4.17.21"
     prop-types "^15.5.10"
 
+"@visx/shape@2.4.0":
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@visx/shape/-/shape-2.4.0.tgz#d25d6a319c416258e12947d74773edb83051ba03"
+  integrity sha512-D6XdGCgWi0/0ZKJ5iK8W5gILCKdrbDwnR/e7o6n/favLU0o+ntiI4a9PZBZ5bYS0aFNG7r+miGMcWV/AQfODuA==
+  dependencies:
+    "@types/d3-path" "^1.0.8"
+    "@types/d3-shape" "^1.3.1"
+    "@types/lodash" "^4.14.172"
+    "@types/react" "*"
+    "@visx/curve" "2.1.0"
+    "@visx/group" "2.1.0"
+    "@visx/scale" "2.2.2"
+    classnames "^2.3.1"
+    d3-path "^1.0.5"
+    d3-shape "^1.2.0"
+    lodash "^4.17.21"
+    prop-types "^15.5.10"
+
 "@visx/text@2.1.1":
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/@visx/text/-/text-2.1.1.tgz#80fb86a3558dc5c113cf23f64c38ccd2ffbaba74"
   integrity sha512-3GN0LTjQ8Cl0Y0xznHpOUNMDGZfvV//7BM89u7FSL2nvllz+bxfW/3C7gZD8ipnxSTxRuNanTr2NaK5/YFQPpw==
+  dependencies:
+    "@types/lodash" "^4.14.172"
+    "@types/react" "*"
+    classnames "^2.3.1"
+    lodash "^4.17.21"
+    prop-types "^15.7.2"
+    reduce-css-calc "^1.3.0"
+
+"@visx/text@2.3.0":
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/@visx/text/-/text-2.3.0.tgz#34b66a467685cf1db2380a2673e032f2f874919a"
+  integrity sha512-5mEcmzWZqbziz6Azv+H6BWrnUbnpygAw4SNzBqF+YiGik5gR/USaBRAs9aKjnoUg6qFe3NZWFOcGpR3BzDR/bQ==
   dependencies:
     "@types/lodash" "^4.14.172"
     "@types/react" "*"
@@ -8189,7 +8255,7 @@ d3-scale@^3.3.0:
     d3-time "^2.1.1"
     d3-time-format "2 - 3"
 
-d3-shape@^1.0.6, d3-shape@^1.2.0:
+d3-shape@^1.0.6, d3-shape@^1.2.0, d3-shape@^1.3.5:
   version "1.3.7"
   resolved "https://registry.yarnpkg.com/d3-shape/-/d3-shape-1.3.7.tgz#df63801be07bc986bc54f63789b4fe502992b5d7"
   integrity sha512-EUkvKjqPFUAZyOlhY5gzCxCeI0Aep04LwIRpsZ/mLFelJiUfnK56jo5JMDSE7yyP2kLSb6LtF+S5chMk7uqPqw==

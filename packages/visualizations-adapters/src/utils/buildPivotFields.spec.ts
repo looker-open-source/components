@@ -77,4 +77,30 @@ describe('buildPivotFields', () => {
 
     expect(ordersCountComplete.pivoted_label).toBe('Orders Count: Complete')
   })
+
+  it('automatically adds formatted labels to row totals field object', () => {
+    const { measures } = buildPivotFields({
+      fields: mockFields,
+      pivots: [
+        ...mockPivots,
+        {
+          key: '$$$_row_total_$$$',
+          data: {
+            'orders.status': null,
+          },
+          is_total: true,
+        },
+      ],
+    })
+
+    const ordersCountRowTotal = measures.find(
+      pivotMeasure => pivotMeasure.name === 'orders.count|$$$_row_total_$$$'
+    ) || {
+      label: 'faux_label',
+      label_short: 'faux_label_short',
+      pivoted_label: 'faux_pivoted_label',
+    }
+
+    expect(ordersCountRowTotal.pivoted_label).toBe('Orders Count: Row Total')
+  })
 })

@@ -1,0 +1,32 @@
+{
+  "complete days": {
+    "value": "celé dny"
+  },
+  "complete fiscal quarters": {
+    "value": "celá fiskální čtvrtletí"
+  },
+  "complete fiscal years": {
+    "value": "celé fiskální roky"
+  },
+  "complete hours": {
+    "value": "celé hodiny"
+  },
+  "complete minutes": {
+    "value": "celé minuty"
+  },
+  "complete months": {
+    "value": "celé měsíce"
+  },
+  "complete quarters": {
+    "value": "celá čtvrtletí"
+  },
+  "complete seconds": {
+    "value": "celé sekundy"
+  },
+  "complete weeks": {
+    "value": "celé týdny"
+  },
+  "complete years": {
+    "value": "celé roky"
+  }
+}

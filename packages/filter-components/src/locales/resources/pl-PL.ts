@@ -40,6 +40,18 @@ const resources = {
   Between: {
     AND: 'I',
   },
+  date_units: {
+    days: 'dni',
+    'fiscal quarters': 'kw. fiskalne',
+    'fiscal years': 'lata fiskalne/lat fiskalnych',
+    hours: 'godz.',
+    minutes: 'min',
+    months: 'mies.',
+    quarters: 'kw.',
+    seconds: 'sek.',
+    weeks: 'tyg.',
+    years: 'lat/lata',
+  },
   get_date_filter_options: {
     is: 'jest',
     'is any time': 'jest dowolnym czasem',
@@ -140,6 +152,18 @@ const resources = {
   OperatorLabel: {
     AND: 'I',
     OR: 'LUB',
+  },
+  past_units: {
+    'complete days': 'pełnych dni',
+    'complete fiscal quarters': 'pełnych kw. fiskalnych',
+    'complete fiscal years': 'pełne lata fiskalne/pełnych lat fiskalnych',
+    'complete hours': 'pełnych godz.',
+    'complete minutes': 'pełnych min',
+    'complete months': 'pełnych mies.',
+    'complete quarters': 'pełnych kw.',
+    'complete seconds': 'pełnych sek.',
+    'complete weeks': 'pełnych tyg.',
+    'complete years': 'pełne lata/pełnych lat',
   },
   ReactSelectCustomIcons: {
     'Clear all': 'Wyczyść wszystko',

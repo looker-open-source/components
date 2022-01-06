@@ -29,42 +29,35 @@ import React, { useState, useContext } from 'react'
 import { hsv } from 'd3-hsv'
 import type { Arc } from 'd3-shape'
 import { localPoint } from '@visx/event'
-import type {
-  DimensionMetadata,
-  SDKRecord,
-} from '@looker/visualizations-adapters'
+import type { SDKRecord } from '@looker/visualizations-adapters'
 import { ThemeContext } from 'styled-components'
 import type { PieArcDatum } from '@visx/shape/lib/shapes/Pie'
 import type { Point } from '@visx/point'
-import { PIE_SLICE_ZOOM } from './'
+import { PIE_SLICE_ZOOM } from './pieConstants'
 
 type PieArcProps = {
   arc: PieArcDatum<SDKRecord>
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   path: Arc<any, PieArcDatum<SDKRecord>>
-  colorScale: (key: string) => string
-  dimension: DimensionMetadata
   onMouseOut: () => void
   onMouseOver: (arc: PieArcDatum<SDKRecord>, point: Point | null) => void
   renderTooltip: boolean
+  datumColor: string
 }
 
 export const PieArc: FC<PieArcProps> = ({
   arc,
   path,
-  dimension,
-  colorScale,
+  datumColor,
   onMouseOver,
   onMouseOut,
   renderTooltip,
 }) => {
   const [isHovered, setIsHovered] = useState(false)
-  const dimensonValue = arc.data[dimension.name]
 
   const theme = useContext(ThemeContext)
 
-  const baseColor: string = colorScale(dimensonValue) || '#000000'
-  const { h, s, v } = hsv(baseColor)
+  const { h, s, v } = hsv(datumColor)
   const hoverColor = hsv(h, s, Math.min(v + 0.2, 1)).hex()
 
   return (
@@ -76,7 +69,7 @@ export const PieArc: FC<PieArcProps> = ({
             ...arc,
           }) || undefined
         }
-        fill={isHovered ? baseColor : 'transparent'}
+        fill={isHovered ? datumColor : 'transparent'}
         transform={`scale(${PIE_SLICE_ZOOM})`}
         opacity="0.4"
       />
@@ -87,7 +80,7 @@ export const PieArc: FC<PieArcProps> = ({
             ...arc,
           }) || undefined
         }
-        fill={isHovered ? hoverColor : baseColor}
+        fill={isHovered ? hoverColor : datumColor}
         onMouseMove={e => {
           const coords = localPoint(
             (e.target as SVGElement).ownerSVGElement as Element,

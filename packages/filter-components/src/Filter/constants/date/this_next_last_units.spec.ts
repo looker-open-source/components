@@ -23,35 +23,47 @@
  SOFTWARE.
 
  */
+
+import { renderHook } from '@testing-library/react-hooks'
 import type { Option } from '../../types/option'
 import {
-  fiscalThisNextUnits,
-  fiscalLastUnits,
-  thisNextUnits,
-  lastUnits,
+  useFiscalThisNextUnits,
+  useFiscalLastUnits,
+  useThisNextUnits,
+  useLastUnits,
 } from './this_next_last_units'
 
 const testSingular = (option: Option) =>
   expect(option.label).toBe(option.singular)
 
 describe('date unit options for ThisNextLast component', () => {
-  const optionsToTest: { [key: string]: Option[] } = {
-    lastUnits,
-    thisNextUnits,
-    fiscalThisNextUnits,
-    fiscalLastUnits,
+  const hooksToTest: { [key: string]: () => Option[] } = {
+    useLastUnits,
+    useThisNextUnits,
+    useFiscalThisNextUnits,
+    useFiscalLastUnits,
   }
 
-  Object.keys(optionsToTest).forEach((key: string) => {
+  Object.keys(hooksToTest).forEach((key: string) => {
     it(`${key} matches expected values`, () => {
-      const options: Option[] = optionsToTest[key]
-      expect(options).toMatchSnapshot()
-      options.forEach(testSingular)
+      const {
+        result: { current },
+      } = renderHook<undefined, Option[]>(hooksToTest[key])
+      expect(current).toMatchSnapshot()
+      current.forEach(testSingular)
     })
   })
 
   it('this and next component options should not contain day, hour, minute, second', () => {
     const notContains = ['day', 'hour', 'minute', 'second']
+
+    const {
+      result: { current: thisNextUnits },
+    } = renderHook<undefined, Option[]>(useThisNextUnits)
+    const {
+      result: { current: fiscalThisNextUnits },
+    } = renderHook<undefined, Option[]>(useFiscalThisNextUnits)
+
     expect(thisNextUnits).not.toContain(notContains)
     expect(fiscalThisNextUnits).not.toContain(notContains)
   })

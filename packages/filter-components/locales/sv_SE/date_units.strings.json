@@ -1,0 +1,32 @@
+{
+  "days": {
+    "value": "dagar"
+  },
+  "fiscal quarters": {
+    "value": "räkenskapskvartal"
+  },
+  "fiscal years": {
+    "value": "räkenskapsår"
+  },
+  "hours": {
+    "value": "timmar"
+  },
+  "minutes": {
+    "value": "minuter"
+  },
+  "months": {
+    "value": "månader"
+  },
+  "quarters": {
+    "value": "kvartal"
+  },
+  "seconds": {
+    "value": "sekunder"
+  },
+  "weeks": {
+    "value": "veckor"
+  },
+  "years": {
+    "value": "år"
+  }
+}

@@ -41,20 +41,9 @@ import {
   useMeasuredElement,
   useWrapEvent,
 } from '../utils'
+import { TabIndicator } from './TabIndicator'
+import { TabLabel } from './TabLabel'
 import type { Tab2Props } from './types'
-
-export const Indicator = styled.span<{
-  selected: boolean | undefined
-}>`
-  background-color: ${({ selected, theme }) =>
-    selected ? theme.colors.key : 'transparent'};
-  border-radius: 3px 3px 0 0;
-  height: 3px;
-  margin-top: ${({ theme }) => theme.space.u05};
-  padding-left: ${({ theme }) => theme.space.u05};
-  padding-right: ${({ theme }) => theme.space.u05};
-  width: 100%;
-`
 
 export const Tab2 = styled(
   forwardRef((props: Tab2Props, forwardedRef: Ref<HTMLButtonElement>) => {
@@ -114,8 +103,8 @@ export const Tab2 = styled(
         {...restProps}
         {...rippleHandlers}
       >
-        <span>{children}</span>
-        <Indicator selected={selected} />
+        <TabLabel>{children}</TabLabel>
+        <TabIndicator selected={selected} />
       </button>
     )
   })
@@ -138,15 +127,11 @@ export const Tab2 = styled(
   color: ${({ selected, theme }) =>
     selected ? theme.colors.key : theme.colors.text5};
   cursor: pointer;
-  display: inline-flex;
-  flex-direction: column;
   height: ${({ theme }) => theme.space.u12};
-  justify-content: flex-end;
   /* this is here to remove default margin button in Safari */
   margin: 0;
   min-width: fit-content;
-  padding-left: ${({ theme }) => theme.space.u4};
-  padding-right: ${({ theme }) => theme.space.u4};
+  position: relative;
 
   ${({ disabled }) =>
     disabled &&

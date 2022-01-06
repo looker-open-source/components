@@ -84,6 +84,7 @@ export type Fields = {
 export type Pivots = {
   data: SDKRecord
   key: string
+  is_total: boolean
 }[]
 
 export type Totals = Record<string, { value: number }>

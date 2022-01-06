@@ -551,7 +551,7 @@ describe('Keyboard navigation', () => {
     fireEvent.keyDown(input, arrowDown)
     fireEvent.keyDown(input, space)
     expect(input).toHaveValue('Bar')
-    expect(screen.queryByRole('listbox')).toBeInTheDocument()
+    expect(screen.getByRole('listbox')).toBeInTheDocument()
 
     // Close popover to silence act() warning
     fireEvent.click(document)

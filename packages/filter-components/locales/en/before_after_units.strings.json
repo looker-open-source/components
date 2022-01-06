@@ -1,0 +1,65 @@
+{
+  "days ago": {
+    "value": "days ago"
+  },
+  "days from now": {
+    "value": "days from now"
+  },
+  "fiscal quarter from now": {
+    "value": "fiscal quarter from now"
+  },
+  "fiscal quarters ago": {
+    "value": "fiscal quarters ago"
+  },
+  "fiscal years ago": {
+    "value": "fiscal years ago"
+  },
+  "fiscal years from now": {
+    "value": "fiscal years from now"
+  },
+  "hours ago": {
+    "value": "hours ago"
+  },
+  "hours from now": {
+    "value": "hours from now"
+  },
+  "minutes ago": {
+    "value": "minutes ago"
+  },
+  "minutes from now": {
+    "value": "minutes from now"
+  },
+  "months ago": {
+    "value": "months ago"
+  },
+  "months from now": {
+    "value": "months from now"
+  },
+  "now": {
+    "value": "now"
+  },
+  "quarters ago": {
+    "value": "quarters ago"
+  },
+  "quarters from now": {
+    "value": "quarters from now"
+  },
+  "seconds ago": {
+    "value": "seconds ago"
+  },
+  "seconds from now": {
+    "value": "seconds from now"
+  },
+  "weeks ago": {
+    "value": "weeks ago"
+  },
+  "weeks from now": {
+    "value": "weeks from now"
+  },
+  "years ago": {
+    "value": "years ago"
+  },
+  "years from now": {
+    "value": "years from now"
+  }
+}

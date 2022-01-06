@@ -30,8 +30,6 @@ import {
 } from '@looker/components-test-utils'
 import { fireEvent, screen } from '@testing-library/react'
 import React from 'react'
-import { dateUnits } from '../../../../../../constants/date/date_units'
-import { fiscalIntervalUnits } from '../../../../../../constants/date/interval_units'
 import { Filter } from '../../../../../../Filter'
 import {
   testField,
@@ -52,9 +50,18 @@ describe('Interval Date filter test', () => {
     )
 
     fireEvent.click(screen.getAllByRole('textbox')[1])
-    expect(getAllComboboxOptionText()).toEqual(
-      dateUnits.map((option) => option.label)
-    )
+    expect(getAllComboboxOptionText()).toMatchInlineSnapshot(`
+      Array [
+        "seconds",
+        "minutes",
+        "hours",
+        "days",
+        "weeks",
+        "months",
+        "quarters",
+        "years",
+      ]
+    `)
     closeCombobox()
   })
 
@@ -71,9 +78,20 @@ describe('Interval Date filter test', () => {
     )
 
     fireEvent.click(screen.getAllByRole('textbox')[1])
-    expect(getAllComboboxOptionText()).toEqual(
-      fiscalIntervalUnits.map((option) => option.label)
-    )
+    expect(getAllComboboxOptionText()).toMatchInlineSnapshot(`
+      Array [
+        "seconds",
+        "minutes",
+        "hours",
+        "days",
+        "weeks",
+        "months",
+        "quarters",
+        "years",
+        "fiscal quarters",
+        "fiscal years",
+      ]
+    `)
     closeCombobox()
   })
 })

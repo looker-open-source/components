@@ -1,0 +1,32 @@
+{
+  "complete days": {
+    "value": "tam gün"
+  },
+  "complete fiscal quarters": {
+    "value": "tam mali çeyrek"
+  },
+  "complete fiscal years": {
+    "value": "tam mali yıl"
+  },
+  "complete hours": {
+    "value": "tam saat"
+  },
+  "complete minutes": {
+    "value": "tam dakika"
+  },
+  "complete months": {
+    "value": "tam ay"
+  },
+  "complete quarters": {
+    "value": "tam çeyrek"
+  },
+  "complete seconds": {
+    "value": "tam saniye"
+  },
+  "complete weeks": {
+    "value": "tam hafta"
+  },
+  "complete years": {
+    "value": "tam yıl"
+  }
+}

@@ -40,6 +40,18 @@ const resources = {
   Between: {
     AND: 'AND',
   },
+  date_units: {
+    days: 'Tage',
+    'fiscal quarters': 'Geschäftsquartale',
+    'fiscal years': 'Geschäftsjahre',
+    hours: 'Stunden',
+    minutes: 'Minuten',
+    months: 'Monate',
+    quarters: 'Quartale',
+    seconds: 'Sekunden',
+    weeks: 'Wochen',
+    years: 'Jahre',
+  },
   get_date_filter_options: {
     is: 'ist',
     'is any time': 'ist jederzeit',
@@ -140,6 +152,18 @@ const resources = {
   OperatorLabel: {
     AND: 'AND',
     OR: 'OR',
+  },
+  past_units: {
+    'complete days': 'vollständige Tage',
+    'complete fiscal quarters': 'vollständige Geschäftsquartale',
+    'complete fiscal years': 'vollständige Geschäftsjahre',
+    'complete hours': 'vollständige Stunden',
+    'complete minutes': 'vollständige Minuten',
+    'complete months': 'vollständige Monate',
+    'complete quarters': 'vollständige Quartale',
+    'complete seconds': 'vollständige Sekunden',
+    'complete weeks': 'vollständige Wochen',
+    'complete years': 'vollständige Jahre',
   },
   ReactSelectCustomIcons: {
     'Clear all': 'Alle leeren',

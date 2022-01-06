@@ -33,7 +33,6 @@ import styled from 'styled-components'
 import type { Option } from '../../../../../../types/option'
 import type { PlacementProps } from '../../../../../../utils/filter_styles'
 import {
-  inputErrorStyle,
   inputPlacementStyle,
   multiInputWidth,
 } from '../../../../../../utils/filter_styles'
@@ -109,6 +108,8 @@ export const MultiStringInputLayout: FC<MultiStringInputProps> = ({
     id,
     maxHeight: 145,
     onChange: handleChange,
+    noErrorIcon: true,
+    validationType: validationMessage?.type,
     values,
     width,
   }
@@ -136,9 +137,7 @@ export const MultiStringInputLayout: FC<MultiStringInputProps> = ({
 
 export const MultiStringInput = styled(MultiStringInputLayout)`
   ${inputPlacementStyle}
-  ${inputErrorStyle}
   ${InputText} {
     ${inputPlacementStyle}
-    ${inputErrorStyle}
   }
 `

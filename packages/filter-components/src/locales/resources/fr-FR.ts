@@ -40,6 +40,18 @@ const resources = {
   Between: {
     AND: 'ET',
   },
+  date_units: {
+    days: 'jours',
+    'fiscal quarters': 'trimestres fiscaux',
+    'fiscal years': 'années fiscales',
+    hours: 'heures',
+    minutes: 'minutes',
+    months: 'mois',
+    quarters: 'trimestres',
+    seconds: 'secondes',
+    weeks: 'semaines',
+    years: 'années',
+  },
   get_date_filter_options: {
     is: 'est',
     'is any time': 'est à tout moment',
@@ -140,6 +152,18 @@ const resources = {
   OperatorLabel: {
     AND: 'ET',
     OR: 'OU',
+  },
+  past_units: {
+    'complete days': 'jours complets',
+    'complete fiscal quarters': 'trimestres fiscaux complets',
+    'complete fiscal years': 'années fiscales complètes',
+    'complete hours': 'heures complètes',
+    'complete minutes': 'minutes complètes',
+    'complete months': 'mois complets',
+    'complete quarters': 'trimestres complets',
+    'complete seconds': 'secondes complètes',
+    'complete weeks': 'semaines complètes',
+    'complete years': 'années complètes',
   },
   ReactSelectCustomIcons: {
     'Clear all': 'Effacer tout',

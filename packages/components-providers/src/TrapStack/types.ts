@@ -26,12 +26,12 @@
 
 import type { MutableRefObject } from 'react'
 
-export interface Trap<O extends unknown = unknown> {
+export interface Trap<O = unknown> {
   element: HTMLElement
   options?: O
 }
 
-export interface TrapStackContextProps<O extends unknown = unknown> {
+export interface TrapStackContextProps<O = unknown> {
   /**
    * Stores the element for the active trap (undefined if none are active)
    */
@@ -58,6 +58,6 @@ export interface TrapStackContextProps<O extends unknown = unknown> {
   removeTrap?: (id: string) => void
 }
 
-export interface TrapMap<O extends unknown = unknown> {
+export interface TrapMap<O = unknown> {
   [key: string]: Trap<O>
 }

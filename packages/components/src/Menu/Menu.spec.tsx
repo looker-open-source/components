@@ -65,7 +65,7 @@ describe('<Menu />', () => {
 
     fireEvent.click(button)
 
-    expect(screen.queryByText('Swiss')).toBeInTheDocument()
+    expect(screen.getByText('Swiss')).toBeInTheDocument()
 
     fireEvent.click(document)
 
@@ -83,7 +83,7 @@ describe('<Menu />', () => {
 
     fireEvent.mouseOver(button)
 
-    expect(screen.queryByText('Select your favorite kind')).toBeInTheDocument()
+    expect(screen.getByText('Select your favorite kind')).toBeInTheDocument()
 
     fireEvent.mouseOut(button)
 
@@ -217,7 +217,7 @@ describe('<Menu />', () => {
     const triggerNew = screen.getByText('Cheese')
     expect(screen.queryByText('Gouda')).not.toBeInTheDocument()
     fireEvent.click(triggerNew) // open Menu
-    expect(screen.queryByText('Gouda')).toBeInTheDocument()
+    expect(screen.getByText('Gouda')).toBeInTheDocument()
 
     fireEvent.click(document)
   })

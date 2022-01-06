@@ -30,6 +30,7 @@ import React, { forwardRef } from 'react'
 import { fontSize, padding, reset } from '@looker/design-tokens'
 import styled, { css } from 'styled-components'
 import { useArrowKeyNav } from '../utils'
+import { TabIndicator } from './TabIndicator'
 import type { TabList2Props } from './types'
 
 // add tabListCSS to the style of the component once TabList is deprecated
@@ -51,14 +52,11 @@ export const tabListCSS = css<TabList2Props>`
       display: grid;
       grid-auto-columns: 1fr;
       grid-auto-flow: column;
-      button {
-        padding: 0;
-        span {
-          border-radius: 0;
-        }
-        span:first-child {
-          padding: 0 ${({ theme }) => theme.space.u4};
-        }
+      ${TabIndicator} {
+        border-radius: 0;
+        height: 2px;
+        left: 0;
+        right: 0;
       }
     `}
 `

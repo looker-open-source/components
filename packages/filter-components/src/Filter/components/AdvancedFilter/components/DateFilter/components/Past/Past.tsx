@@ -27,7 +27,7 @@ import type { FilterModel } from '@looker/filter-expressions'
 import type { ILookmlModelExploreField } from '@looker/sdk'
 import type { ChangeEvent, FC } from 'react'
 import React, { useMemo } from 'react'
-import { fiscalPastUnits, pastUnits } from '../../../../../../constants'
+import { useFiscalPastUnits, usePastUnits } from '../../../../../../constants'
 import { showFiscalUnits } from '../../../../utils/show_fiscal_units'
 import { GroupSelect } from '../../../GroupSelect'
 import { GroupInput } from '../../../GroupInput'
@@ -52,6 +52,8 @@ export const Past: FC<PastProps> = ({ item, onChange, field }: PastProps) => {
   }
   const selectedUnit = complete ? `c_${unit}` : `${unit}`
 
+  const fiscalPastUnits = useFiscalPastUnits()
+  const pastUnits = usePastUnits()
   const options = showFiscalUnits(field) ? fiscalPastUnits : pastUnits
   // options have extra properties that will cause React warnings
   const formattedOptions = useMemo(

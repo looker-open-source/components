@@ -143,3 +143,16 @@ export const NoLegend = Template.bind({})
 NoLegend.args = {
   config: { type: 'pie', legend: false, series: {} },
 }
+
+export const Labels = Template.bind({})
+Labels.args = {
+  config: {
+    type: 'pie',
+    legend: { type: 'labels', value: 'label_value' },
+    series: {},
+  },
+}
+
+Labels.parameters = {
+  storyshots: { disable: true },
+}

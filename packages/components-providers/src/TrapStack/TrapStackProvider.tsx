@@ -29,7 +29,7 @@ import React, { useRef, useMemo } from 'react'
 import type { Trap, TrapStackContextProps, TrapMap } from './types'
 import { getActiveTrap } from './utils'
 
-export interface TrapStackProviderProps<O extends unknown = unknown> {
+export interface TrapStackProviderProps<O = unknown> {
   activate: (trap: Trap<O>) => () => void
   children?: ReactNode
   context: Context<TrapStackContextProps<O>>

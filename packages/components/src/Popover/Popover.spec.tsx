@@ -62,7 +62,7 @@ describe('Popover', () => {
     const openPopover = screen.getByText('Open')
     fireEvent.click(openPopover)
 
-    expect(screen.queryByText('Header text')).toBeInTheDocument()
+    expect(screen.getByText('Header text')).toBeInTheDocument()
     expect(screen.getByRole('dialog')).toBeInTheDocument()
     expect(screen.getByRole('dialog')).toHaveAttribute(
       'aria-labelledby',
@@ -224,7 +224,7 @@ describe('Popover', () => {
     const triggerNew = screen.getByText('Instant Click')
     expect(screen.queryByText('simple content')).not.toBeInTheDocument()
     fireEvent.click(triggerNew) // open Popover
-    expect(screen.queryByText('simple content')).toBeInTheDocument()
+    expect(screen.getByText('simple content')).toBeInTheDocument()
 
     fireEvent.click(document)
   })

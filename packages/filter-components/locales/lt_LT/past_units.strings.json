@@ -1,0 +1,32 @@
+{
+  "complete days": {
+    "value": "praėjusios dienos"
+  },
+  "complete fiscal quarters": {
+    "value": "praėję finansiniai ketvirčiai"
+  },
+  "complete fiscal years": {
+    "value": "praėję finansiniai metai"
+  },
+  "complete hours": {
+    "value": "praėjusios valandos"
+  },
+  "complete minutes": {
+    "value": "praėjusios minutės"
+  },
+  "complete months": {
+    "value": "praėję mėnesiai"
+  },
+  "complete quarters": {
+    "value": "praėję ketvirčiai"
+  },
+  "complete seconds": {
+    "value": "praėjusios sekundės"
+  },
+  "complete weeks": {
+    "value": "praėjusios savaitės"
+  },
+  "complete years": {
+    "value": "praėję metai"
+  }
+}

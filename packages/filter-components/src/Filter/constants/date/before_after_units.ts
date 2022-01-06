@@ -23,44 +23,57 @@
  SOFTWARE.
 
  */
+
+import { useTranslation } from 'react-i18next'
 import type { Option } from '../../types/option'
 
-// prettier-ignore
-const agoDateUnits: Option[] = [
-  { value: 'year', unit: 'years', label: 'years ago' },
-  { value: 'quarter', unit: 'quarters', label: 'quarters ago' },
-  { value: 'month', unit: 'months', label: 'months ago' },
-  { value: 'week', unit: 'weeks', label: 'weeks ago' },
-  { value: 'day', unit: 'days', label: 'days ago' },
-  { value: 'hour', unit: 'hours', label: 'hours ago' },
-  { value: 'minute', unit: 'minutes', label: 'minutes ago' },
-  { value: 'second', unit: 'seconds', label: 'seconds ago' },
-  { value: 'now', unit: 'now', label: 'now' },
-]
+const useAgoDateUnits = (): Option[] => {
+  const { t } = useTranslation('before_after_units')
+  // prettier-ignore
+  return [
+    { value: 'year'    , unit: 'years'    , label: t('years ago'    ) },
+    { value: 'quarter' , unit: 'quarters' , label: t('quarters ago' ) },
+    { value: 'month'   , unit: 'months'   , label: t('months ago'   ) },
+    { value: 'week'    , unit: 'weeks'    , label: t('weeks ago'    ) },
+    { value: 'day'     , unit: 'days'     , label: t('days ago'     ) },
+    { value: 'hour'    , unit: 'hours'    , label: t('hours ago'    ) },
+    { value: 'minute'  , unit: 'minutes'  , label: t('minutes ago'  ) },
+    { value: 'second'  , unit: 'seconds'  , label: t('seconds ago'  ) },
+    { value: 'now'     , unit: 'now'      , label: t('now'          ) },
+  ]
+}
 
-// prettier-ignore
-const fromNowDateUnits: Option[] = [
-  { value: 'f_second',  unit: 'second',  label: 'seconds from now',  fromnow: true },
-  { value: 'f_minute',  unit: 'minute',  label: 'minutes from now',  fromnow: true },
-  { value: 'f_hour',    unit: 'hour',    label: 'hours from now',    fromnow: true },
-  { value: 'f_day',     unit: 'day',     label: 'days from now',     fromnow: true },
-  { value: 'f_week',    unit: 'week',    label: 'weeks from now',    fromnow: true },
-  { value: 'f_month',   unit: 'month',   label: 'months from now',   fromnow: true },
-  { value: 'f_quarter', unit: 'quarter', label: 'quarters from now', fromnow: true },
-  { value: 'f_year',    unit: 'year',    label: 'years from now',    fromnow: true },
-]
+const useFromNowDateUnits = (): Option[] => {
+  const { t } = useTranslation('before_after_units')
+  // prettier-ignore
+  return [
+    { value: 'f_second' , unit: 'second' , label: t('seconds from now' ), fromnow: true },
+    { value: 'f_minute' , unit: 'minute' , label: t('minutes from now' ), fromnow: true },
+    { value: 'f_hour'   , unit: 'hour'   , label: t('hours from now'   ), fromnow: true },
+    { value: 'f_day'    , unit: 'day'    , label: t('days from now'    ), fromnow: true },
+    { value: 'f_week'   , unit: 'week'   , label: t('weeks from now'   ), fromnow: true },
+    { value: 'f_month'  , unit: 'month'  , label: t('months from now'  ), fromnow: true },
+    { value: 'f_quarter', unit: 'quarter', label: t('quarters from now'), fromnow: true },
+    { value: 'f_year'   , unit: 'year'   , label: t('years from now'   ), fromnow: true },
+  ]
+}
 
-export const beforeOrAfterUnits: Option[] = [
-  ...agoDateUnits,
-  ...fromNowDateUnits,
-]
-
-// prettier-ignore
-export const fiscalBeforeOrAfterUnits: Option[] = [
-  { value: 'fiscal year',     unit: 'fiscal year',    label: 'fiscal years ago' },
-  { value: 'fiscal quarter',  unit: 'fiscal quarter', label: 'fiscal quarters ago',},
-  ...agoDateUnits,
-  ...fromNowDateUnits,
-  { value: 'f_fiscal quarter', unit: 'fiscal quarter', label: 'fiscal quarter from now',},
-  { value: 'f_fiscal year',    unit: 'fiscal year',    label: 'fiscal years from now',},
-]
+export const useBeforeOrAfterUnits = (): Option[] => {
+  const agoDateUnits = useAgoDateUnits()
+  const fromNowDateUnits = useFromNowDateUnits()
+  return [...agoDateUnits, ...fromNowDateUnits]
+}
+export const useFiscalBeforeOrAfterUnits = (): Option[] => {
+  const { t } = useTranslation('before_after_units')
+  const agoDateUnits = useAgoDateUnits()
+  const fromNowDateUnits = useFromNowDateUnits()
+  // prettier-ignore
+  return [
+      { value: 'fiscal year'   , unit: 'fiscal year'   , label: t('fiscal years ago'   ) },
+      { value: 'fiscal quarter', unit: 'fiscal quarter', label: t('fiscal quarters ago') },
+      ...agoDateUnits,
+      ...fromNowDateUnits,
+      { value: 'f_fiscal quarter', unit: 'fiscal quarter', label: t('fiscal quarter from now') },
+      { value: 'f_fiscal year'   , unit: 'fiscal year'   , label: t('fiscal years from now'  ) },
+    ]
+}

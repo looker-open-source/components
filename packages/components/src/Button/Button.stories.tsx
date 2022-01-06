@@ -123,8 +123,21 @@ export const ShrinkingIconRepro = () => {
     </ThemeProvider>
   )
 }
-ShrinkingIconRepro.parameters = {
-  storyshots: { disable: true },
+
+export const ShrinkingButtonRepro = () => {
+  return (
+    <ThemeProvider
+      theme={theme => ({
+        ...theme,
+        defaults: { ...theme.defaults, brandAnimation: true },
+      })}
+    >
+      <Box2 display="flex" width={200}>
+        <Box2 width={250}>Some text</Box2>
+        <Button>Don't shrink me</Button>
+      </Box2>
+    </ThemeProvider>
+  )
 }
 
 export default {

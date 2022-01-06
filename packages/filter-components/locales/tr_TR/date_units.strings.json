@@ -1,0 +1,32 @@
+{
+  "days": {
+    "value": "gün"
+  },
+  "fiscal quarters": {
+    "value": "mali çeyrek"
+  },
+  "fiscal years": {
+    "value": "mali yıl"
+  },
+  "hours": {
+    "value": "saat"
+  },
+  "minutes": {
+    "value": "dakika"
+  },
+  "months": {
+    "value": "ay"
+  },
+  "quarters": {
+    "value": "çeyrek"
+  },
+  "seconds": {
+    "value": "saniye"
+  },
+  "weeks": {
+    "value": "hafta"
+  },
+  "years": {
+    "value": "yıl"
+  }
+}

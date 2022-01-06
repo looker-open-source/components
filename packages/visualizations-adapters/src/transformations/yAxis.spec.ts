@@ -130,7 +130,7 @@ describe('yAxis', () => {
     expect(transformedConfig.config.y_axis).toEqual([
       {
         gridlines: true,
-        label: 'Orders Count',
+        label: undefined,
         range: ['auto', 'auto'],
         values: true,
       },

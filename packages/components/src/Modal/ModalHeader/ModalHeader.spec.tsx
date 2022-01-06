@@ -33,7 +33,7 @@ import { ModalHeader } from './ModalHeader'
 describe('ModalHeader', () => {
   test('basic', () => {
     renderWithTheme(<ModalHeader>Heading</ModalHeader>)
-    expect(screen.queryByText('Heading')).toBeInTheDocument()
+    expect(screen.getByText('Heading')).toBeInTheDocument()
   })
 
   test('has aria-label', async () => {
@@ -45,7 +45,7 @@ describe('ModalHeader', () => {
     renderWithTheme(
       <ModalHeader detail={<button>x</button>}>Header</ModalHeader>
     )
-    expect(screen.queryByText('x')).toBeInTheDocument()
+    expect(screen.getByText('x')).toBeInTheDocument()
   })
 
   test(`detail has marginY`, () => {

@@ -40,6 +40,18 @@ const resources = {
   Between: {
     AND: 'JA',
   },
+  date_units: {
+    days: 'päivää',
+    'fiscal quarters': 'tilikauden vuosineljännestä',
+    'fiscal years': 'tilivuotta',
+    hours: 'tuntia',
+    minutes: 'minuuttia',
+    months: 'kuukautta',
+    quarters: 'vuosineljännestä',
+    seconds: 'sekuntia',
+    weeks: 'viikkoa',
+    years: 'vuotta',
+  },
   get_date_filter_options: {
     is: 'on',
     'is any time': 'on milloin tahansa',
@@ -140,6 +152,18 @@ const resources = {
   OperatorLabel: {
     AND: 'JA',
     OR: 'TAI',
+  },
+  past_units: {
+    'complete days': 'kokonaista päivää',
+    'complete fiscal quarters': 'kokonaista tilikauden vuosineljännestä',
+    'complete fiscal years': 'kokonaista tilivuotta',
+    'complete hours': 'kokonaista tuntia',
+    'complete minutes': 'kokonaista minuuttia',
+    'complete months': 'kokonaista kuukautta',
+    'complete quarters': 'kokonaista vuosineljännestä',
+    'complete seconds': 'kokonaista sekuntia',
+    'complete weeks': 'kokonaista viikkoa',
+    'complete years': 'kokonaista vuotta',
   },
   ReactSelectCustomIcons: {
     'Clear all': 'Tyhjennä kaikki',

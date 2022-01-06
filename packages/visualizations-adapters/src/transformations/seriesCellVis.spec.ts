@@ -26,7 +26,6 @@
 
 import type { CTableSeries } from '..'
 import { mockTableConfig, mockFields, mockSdkDataResponse } from '../__mocks__'
-import type { NamedSeries } from './seriesCellVis'
 import { seriesCellVis } from './seriesCellVis'
 
 describe('seriesCellVis', () => {
@@ -46,7 +45,7 @@ describe('seriesCellVis', () => {
   })
 
   test('series as object', () => {
-    const series: NamedSeries = {
+    const series: { [k: string]: CTableSeries } = {
       'orders.count': { color: 'blue', visible: true },
       'orders.average_total_amount_of_order_usd': {
         color: 'red',

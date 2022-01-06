@@ -1,0 +1,32 @@
+{
+  "days": {
+    "value": "dager"
+  },
+  "fiscal quarters": {
+    "value": "regnskapskvartaler"
+  },
+  "fiscal years": {
+    "value": "regnskapsår"
+  },
+  "hours": {
+    "value": "timer"
+  },
+  "minutes": {
+    "value": "minutter"
+  },
+  "months": {
+    "value": "måneder"
+  },
+  "quarters": {
+    "value": "kvartaler"
+  },
+  "seconds": {
+    "value": "sekunder"
+  },
+  "weeks": {
+    "value": "uker"
+  },
+  "years": {
+    "value": "år"
+  }
+}

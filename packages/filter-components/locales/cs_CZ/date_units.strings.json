@@ -1,0 +1,32 @@
+{
+  "days": {
+    "value": "dny/ů"
+  },
+  "fiscal quarters": {
+    "value": "fiskální čtvrtletí"
+  },
+  "fiscal years": {
+    "value": "fiskální roky"
+  },
+  "hours": {
+    "value": "hodin(y)"
+  },
+  "minutes": {
+    "value": "minut(y)"
+  },
+  "months": {
+    "value": "měsíce/ů"
+  },
+  "quarters": {
+    "value": "čtvrtletí"
+  },
+  "seconds": {
+    "value": "sekund(y)"
+  },
+  "weeks": {
+    "value": "týdny/ů"
+  },
+  "years": {
+    "value": "roky/ů"
+  }
+}

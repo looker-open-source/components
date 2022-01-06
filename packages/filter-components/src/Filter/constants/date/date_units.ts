@@ -23,30 +23,30 @@
  SOFTWARE.
 
  */
+
+import { useTranslation } from 'react-i18next'
 import type { Option } from '../../types/option'
 
-export const dateUnits: Option[] = [
-  { value: 'second', unit: 'second', label: 'seconds', singular: 'second' },
-  { value: 'minute', unit: 'minute', label: 'minutes', singular: 'minute' },
-  { value: 'hour', unit: 'hour', label: 'hours', singular: 'hour' },
-  { value: 'day', unit: 'day', label: 'days', singular: 'day' },
-  { value: 'week', unit: 'week', label: 'weeks', singular: 'week' },
-  { value: 'month', unit: 'month', label: 'months', singular: 'month' },
-  { value: 'quarter', unit: 'quarter', label: 'quarters', singular: 'quarter' },
-  { value: 'year', unit: 'year', label: 'years', singular: 'year' },
-]
+export const useDateUnits = (): Option[] => {
+  const { t } = useTranslation('date_units')
+  // prettier-ignore
+  return [
+    { value: 'second' , unit: 'second' , label: t('seconds' ), singular: t('second' ) },
+    { value: 'minute' , unit: 'minute' , label: t('minutes' ), singular: t('minute' ) },
+    { value: 'hour'   , unit: 'hour'   , label: t('hours'   ), singular: t('hour'   ) },
+    { value: 'day'    , unit: 'day'    , label: t('days'    ), singular: t('day'    ) },
+    { value: 'week'   , unit: 'week'   , label: t('weeks'   ), singular: t('week'   ) },
+    { value: 'month'  , unit: 'month'  , label: t('months'  ), singular: t('month'  ) },
+    { value: 'quarter', unit: 'quarter', label: t('quarters'), singular: t('quarter') },
+    { value: 'year'   , unit: 'year'   , label: t('years'   ), singular: t('year'   ) },
+  ]
+}
 
-export const fiscalDateUnits: Option[] = [
-  {
-    value: 'fiscal quarter',
-    unit: 'fiscal quarter',
-    label: 'fiscal quarters',
-    singular: 'fiscal quarter',
-  },
-  {
-    value: 'fiscal year',
-    unit: 'fiscal year',
-    label: 'fiscal years',
-    singular: 'fiscal year',
-  },
-]
+export const useFiscalDateUnits = (): Option[] => {
+  const { t } = useTranslation('date_units')
+  // prettier-ignore
+  return [
+    { value: 'fiscal quarter', unit: 'fiscal quarter', label: t('fiscal quarters'), singular: t('fiscal quarter') },
+    { value: 'fiscal year'   , unit: 'fiscal year'   , label: t('fiscal years'   ), singular: t('fiscal year'   ) },
+  ]
+}

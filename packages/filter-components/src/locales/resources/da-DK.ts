@@ -40,6 +40,18 @@ const resources = {
   Between: {
     AND: 'OG',
   },
+  date_units: {
+    days: 'dage',
+    'fiscal quarters': 'regnskabskvartaler',
+    'fiscal years': 'regnskabsår',
+    hours: 'timer',
+    minutes: 'minutter',
+    months: 'måneder',
+    quarters: 'kvartaler',
+    seconds: 'sekunder',
+    weeks: 'uger',
+    years: 'år',
+  },
   get_date_filter_options: {
     is: 'er',
     'is any time': 'er når som helst',
@@ -140,6 +152,18 @@ const resources = {
   OperatorLabel: {
     AND: 'OG',
     OR: 'ELLER',
+  },
+  past_units: {
+    'complete days': 'hele dage',
+    'complete fiscal quarters': 'hele regnskabskvartaler',
+    'complete fiscal years': 'hele regnskabsår',
+    'complete hours': 'hele timer',
+    'complete minutes': 'hele minutter',
+    'complete months': 'hele måneder',
+    'complete quarters': 'hele kvartaler',
+    'complete seconds': 'hele sekunder',
+    'complete weeks': 'hele uger',
+    'complete years': 'hele år',
   },
   ReactSelectCustomIcons: {
     'Clear all': 'Ryd alt',

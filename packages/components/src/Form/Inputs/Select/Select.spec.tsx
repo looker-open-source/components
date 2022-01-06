@@ -520,8 +520,8 @@ describe('Select / SelectMulti', () => {
       const input = screen.getByPlaceholderText('Search')
       fireEvent.mouseDown(input)
 
-      expect(screen.queryByText('0')).toBeInTheDocument()
-      expect(screen.queryByText('5')).toBeInTheDocument()
+      expect(screen.getByText('0')).toBeInTheDocument()
+      expect(screen.getByText('5')).toBeInTheDocument()
       // js-dom doesn't do layout so only the first option + 5 buffer are rendered
       expect(screen.queryByText('6')).not.toBeInTheDocument()
 
@@ -548,7 +548,7 @@ describe('Select / SelectMulti', () => {
         fireEvent.mouseDown(input)
 
         expect(screen.getByText('First')).toBeInTheDocument()
-        expect(screen.queryByText('3')).toBeInTheDocument()
+        expect(screen.getByText('3')).toBeInTheDocument()
         // js-dom doesn't do layout so only the first divider (hidden), group header
         // and 4 options are rendered
         expect(screen.queryByText('4')).not.toBeInTheDocument()
@@ -613,8 +613,8 @@ describe('Select / SelectMulti', () => {
       const input = screen.getByPlaceholderText('Search')
       fireEvent.mouseDown(input)
 
-      expect(screen.queryByText('0')).toBeInTheDocument()
-      expect(screen.queryByText('98')).toBeInTheDocument()
+      expect(screen.getByText('0')).toBeInTheDocument()
+      expect(screen.getByText('98')).toBeInTheDocument()
 
       // Close popover to silence act() warning
       fireEvent.click(document)

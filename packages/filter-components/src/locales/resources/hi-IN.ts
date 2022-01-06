@@ -40,6 +40,18 @@ const resources = {
   Between: {
     AND: 'और',
   },
+  date_units: {
+    days: 'दिन',
+    'fiscal quarters': 'वित्तीय तिमाहियां',
+    'fiscal years': 'वित्तीय वर्ष',
+    hours: 'घंटे',
+    minutes: 'मिनट',
+    months: 'महीने',
+    quarters: 'तिमाहियां',
+    seconds: 'सेकंड',
+    weeks: 'सप्ताह',
+    years: 'वर्ष',
+  },
   get_date_filter_options: {
     is: 'है',
     'is any time': 'किसी भी समय है',
@@ -140,6 +152,18 @@ const resources = {
   OperatorLabel: {
     AND: 'और',
     OR: 'या',
+  },
+  past_units: {
+    'complete days': 'पूर्ण दिन',
+    'complete fiscal quarters': 'पूर्ण वित्तीय तिमाहियां',
+    'complete fiscal years': 'पूर्ण वित्तीय वर्ष',
+    'complete hours': 'पूर्ण घंटे',
+    'complete minutes': 'पूर्ण मिनट',
+    'complete months': 'पूर्ण महीने',
+    'complete quarters': 'पूर्ण तिमाहियां',
+    'complete seconds': 'पूर्ण सेकंड',
+    'complete weeks': 'पूर्ण सप्ताह',
+    'complete years': 'पूर्ण वर्ष',
   },
   ReactSelectCustomIcons: {
     'Clear all': 'सभी साफ करें',

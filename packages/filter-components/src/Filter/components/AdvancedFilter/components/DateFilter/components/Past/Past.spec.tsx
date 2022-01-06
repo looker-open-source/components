@@ -30,7 +30,6 @@ import {
 } from '@looker/components-test-utils'
 import { fireEvent, screen } from '@testing-library/react'
 import React from 'react'
-import { fiscalPastUnits, pastUnits } from '../../../../../../constants'
 import { Filter } from '../../../../../../Filter'
 import {
   testField,
@@ -51,9 +50,26 @@ describe('Past Date filter test', () => {
     )
 
     fireEvent.click(screen.getAllByRole('textbox')[1])
-    expect(getAllComboboxOptionText()).toEqual(
-      pastUnits.map((option) => option.label)
-    )
+    expect(getAllComboboxOptionText()).toMatchInlineSnapshot(`
+      Array [
+        "seconds",
+        "minutes",
+        "hours",
+        "days",
+        "weeks",
+        "months",
+        "quarters",
+        "years",
+        "complete seconds",
+        "complete minutes",
+        "complete hours",
+        "complete days",
+        "complete weeks",
+        "complete months",
+        "complete quarters",
+        "complete years",
+      ]
+    `)
     closeCombobox()
   })
 
@@ -70,9 +86,30 @@ describe('Past Date filter test', () => {
     )
 
     fireEvent.click(screen.getAllByRole('textbox')[1])
-    expect(getAllComboboxOptionText()).toEqual(
-      fiscalPastUnits.map((option) => option.label)
-    )
+    expect(getAllComboboxOptionText()).toMatchInlineSnapshot(`
+      Array [
+        "seconds",
+        "minutes",
+        "hours",
+        "days",
+        "weeks",
+        "months",
+        "quarters",
+        "years",
+        "fiscal quarters",
+        "fiscal years",
+        "complete seconds",
+        "complete minutes",
+        "complete hours",
+        "complete days",
+        "complete weeks",
+        "complete months",
+        "complete quarters",
+        "complete years",
+        "complete fiscal quarters",
+        "complete fiscal years",
+      ]
+    `)
     closeCombobox()
   })
 })

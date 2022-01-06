@@ -72,7 +72,7 @@ export const DateFilter: FC<FilterParamProps<DateFilterType>> = ({
         value={type}
         options={options}
         onChange={typeChange}
-        validationMessage={validationMessage}
+        validationType={validationMessage?.type}
         placement={
           ['null', 'notnull', 'anyvalue'].includes(item.type)
             ? undefined

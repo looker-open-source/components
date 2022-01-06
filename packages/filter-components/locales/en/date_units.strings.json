@@ -1,0 +1,62 @@
+{
+  "day": {
+    "value": "day"
+  },
+  "days": {
+    "value": "days"
+  },
+  "fiscal quarter": {
+    "value": "fiscal quarter"
+  },
+  "fiscal quarters": {
+    "value": "fiscal quarters"
+  },
+  "fiscal year": {
+    "value": "fiscal year"
+  },
+  "fiscal years": {
+    "value": "fiscal years"
+  },
+  "hour": {
+    "value": "hour"
+  },
+  "hours": {
+    "value": "hours"
+  },
+  "minute": {
+    "value": "minute"
+  },
+  "minutes": {
+    "value": "minutes"
+  },
+  "month": {
+    "value": "month"
+  },
+  "months": {
+    "value": "months"
+  },
+  "quarter": {
+    "value": "quarter"
+  },
+  "quarters": {
+    "value": "quarters"
+  },
+  "second": {
+    "value": "second"
+  },
+  "seconds": {
+    "value": "seconds"
+  },
+  "week": {
+    "value": "week"
+  },
+  "weeks": {
+    "value": "weeks"
+  },
+  "year": {
+    "value": "year"
+  },
+  "years": {
+    "value": "years"
+  }
+}

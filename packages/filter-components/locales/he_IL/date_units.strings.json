@@ -1,0 +1,32 @@
+{
+  "days": {
+    "value": "ימים"
+  },
+  "fiscal quarters": {
+    "value": "רבעונים פיסקליים"
+  },
+  "fiscal years": {
+    "value": "שנים פיסקליות"
+  },
+  "hours": {
+    "value": "שעות"
+  },
+  "minutes": {
+    "value": "דקות"
+  },
+  "months": {
+    "value": "חודשים"
+  },
+  "quarters": {
+    "value": "רבעונים"
+  },
+  "seconds": {
+    "value": "שניות"
+  },
+  "weeks": {
+    "value": "שבועות"
+  },
+  "years": {
+    "value": "שנים"
+  }
+}

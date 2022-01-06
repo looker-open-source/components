@@ -40,6 +40,18 @@ const resources = {
   Between: {
     AND: 'OCH',
   },
+  date_units: {
+    days: 'dagar',
+    'fiscal quarters': 'räkenskapskvartal',
+    'fiscal years': 'räkenskapsår',
+    hours: 'timmar',
+    minutes: 'minuter',
+    months: 'månader',
+    quarters: 'kvartal',
+    seconds: 'sekunder',
+    weeks: 'veckor',
+    years: 'år',
+  },
   format_date: {
     firstDayOfWeek: '0',
   },
@@ -143,6 +155,18 @@ const resources = {
   OperatorLabel: {
     AND: 'OCH',
     OR: 'ELLER',
+  },
+  past_units: {
+    'complete days': 'hela dagar',
+    'complete fiscal quarters': 'hela räkenskapskvartal',
+    'complete fiscal years': 'hela räkenskapsår',
+    'complete hours': 'hela timmar',
+    'complete minutes': 'hela minuter',
+    'complete months': 'hela månader',
+    'complete quarters': 'hela kvartal',
+    'complete seconds': 'hela sekunder',
+    'complete weeks': 'hela veckor',
+    'complete years': 'hela år',
   },
   ReactSelectCustomIcons: {
     'Clear all': 'Rensa alla',

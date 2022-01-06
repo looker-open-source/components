@@ -25,7 +25,7 @@
  */
 
 import type { FC } from 'react'
-import React from 'react'
+import React, { Fragment } from 'react'
 import { DEFAULT_HEIGHT } from '@looker/visualizations-adapters'
 import type { PieArcDatum } from '@visx/shape/lib/shapes/Pie'
 import VisxPie from '@visx/shape/lib/shapes/Pie'
@@ -38,17 +38,19 @@ import type {
   PieProps,
   SDKRecord,
   LegendPositions,
+  LegendTypes,
 } from '@looker/visualizations-adapters'
 import { LegendOrdinal } from '@visx/legend'
 import type { Point } from '@visx/point'
 import isArray from 'lodash/isArray'
 import pick from 'lodash/pick'
 import styled, { css } from 'styled-components'
-import { labelFormatter } from './labelFormatter'
+import { useLabelWidth } from './useLabelWidth'
+import { getLabelContent } from './getLabelContent'
+import { getChartGeometry } from './getChartGeometry'
 import { PieTooltip } from './PieTooltip'
 import { PieArc } from './PieArc'
-
-export const PIE_SLICE_ZOOM = 1.03
+import { PieLabel } from './PieLabel'
 
 const generateColorScale = (
   data: SDKRecord,
@@ -76,19 +78,12 @@ export const Pie: FC<PieProps> = ({
 }) => {
   const { showTooltip, hideTooltip, ...tooltipProps } = useTooltip()
   const { series, legend, tooltips = true } = config
-
-  // calculate chart dimensions
-  const diameter = Math.min(width, height)
-  const radius = diameter / 2
-  const padding = diameter - diameter / PIE_SLICE_ZOOM
+  const { position: legendPosition = 'right', type: legendType } = legend || {}
 
   // limit PIE chart to 50 sections
   const limitedData: SDKRecord[] = data.slice(0, 50)
-  const firstMeasure = fields.measures[0]
-  const firstDimension = fields.dimensions[0]
-
-  // derive colors based on series config
-  const colorScale = generateColorScale(limitedData, series, firstDimension)
+  const firstMeasure = fields.measures[0] || {}
+  const firstDimension = fields.dimensions[0] || {}
 
   // format data for use in legend
   const keyValData = Object.fromEntries(
@@ -102,6 +97,24 @@ export const Pie: FC<PieProps> = ({
   const measureTotal = Number(
     Object.values(keyValData).reduce((total, v) => Number(total) + Number(v), 0)
   )
+
+  const labelWidth = useLabelWidth(measureTotal, keyValData, legend)
+
+  const {
+    canvasW,
+    canvasH,
+    pieCenterX,
+    pieCenterY,
+    outerRadius,
+  } = getChartGeometry({
+    legendType: legend ? legend.type : undefined,
+    width,
+    height,
+    labelWidth,
+  })
+
+  // derive colors based on series config
+  const colorScale = generateColorScale(limitedData, series, firstDimension)
 
   let mouseOutTimer = 0
 
@@ -125,41 +138,60 @@ export const Pie: FC<PieProps> = ({
     })
   }
 
-  const { position: legendPosition = 'right' } = legend || {}
-
   return (
     <>
-      <PieGrid>
+      <PieGrid legendType={legend ? legend.type : undefined}>
         <PieChart
           legendPosition={legendPosition}
-          width={diameter}
-          height={diameter}
+          width={canvasW}
+          height={canvasH}
         >
-          <Group top={radius} left={radius}>
+          <Group top={pieCenterY} left={pieCenterX}>
             <VisxPie
               data={limitedData}
               pieValue={(d: SDKRecord) => d[firstMeasure.name]}
               pieSortValues={() => 1}
-              outerRadius={radius - padding}
+              outerRadius={outerRadius}
             >
               {({ arcs, path }) => {
-                return arcs.map((arc, i) => (
-                  <PieArc
-                    arc={arc}
-                    dimension={firstDimension}
-                    path={path}
-                    key={i}
-                    colorScale={colorScale}
-                    onMouseOver={handleMouseOver}
-                    onMouseOut={handleMouseOut}
-                    renderTooltip={tooltips}
-                  />
-                ))
+                return arcs.map((arc, i) => {
+                  const dimensonValue = arc.data[firstDimension.name]
+                  const arcDatum = pick(keyValData, dimensonValue)
+
+                  const datumColor: string =
+                    colorScale(dimensonValue) || '#000000'
+
+                  return (
+                    <Fragment key={i}>
+                      <PieArc
+                        arc={arc}
+                        path={path}
+                        key={i}
+                        datumColor={datumColor}
+                        onMouseOver={handleMouseOver}
+                        onMouseOut={handleMouseOut}
+                        renderTooltip={tooltips}
+                      />
+                      {legendType === 'labels' && (
+                        <PieLabel
+                          arc={arc}
+                          outerRadius={outerRadius}
+                          labelContent={getLabelContent(
+                            measureTotal,
+                            arcDatum,
+                            legend
+                          )}
+                          datumColor={datumColor}
+                        />
+                      )}
+                    </Fragment>
+                  )
+                })
               }}
             </VisxPie>
           </Group>
         </PieChart>
-        {legend && (
+        {legend && legendType === 'legend' && (
           <LegendWrapper legendPosition={legendPosition}>
             <LegendOrdinal
               direction={
@@ -169,7 +201,7 @@ export const Pie: FC<PieProps> = ({
               }
               labelFormat={label => {
                 const datum = pick(keyValData, label as string)
-                return labelFormatter(measureTotal, datum, legend)
+                return getLabelContent(measureTotal, datum, legend)
               }}
               scale={colorScale}
               shape="circle"
@@ -186,12 +218,16 @@ export const Pie: FC<PieProps> = ({
   )
 }
 
-type LegendLayoutProps = { legendPosition?: LegendPositions }
+type LegendLayoutProps = {
+  legendPosition?: LegendPositions
+  legendType?: LegendTypes
+}
 
-const PieGrid = styled.div`
+const PieGrid = styled.div<LegendLayoutProps>`
   align-items: center;
   display: grid;
-  grid-column-gap: ${({ theme }) => theme.space.medium};
+  grid-column-gap: ${({ theme, legendType }) =>
+    legendType === 'legend' ? theme.space.medium : 0};
   grid-template-areas:
     'top top'
     'left right'
