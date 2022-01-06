@@ -1,15 +1,15 @@
 {
   "name": "@looker/visualizations-visx",
   "main": "src/index.ts",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "publishConfig": {
     "access": "public"
   },
   "license": "MIT",
   "sideEffects": false,
   "dependencies": {
-    "@looker/components-providers": "*",
-    "@looker/visualizations-adapters": "^0.1.7",
+    "@looker/components-providers": "^1.5.18",
+    "@looker/visualizations-adapters": "^0.1.8",
     "@visx/annotation": "2.5.0",
     "@visx/axis": "2.1.1",
     "@visx/event": "2.1.2",
@@ -32,9 +32,9 @@
     "react-spring": "9.2.4"
   },
   "devDependencies": {
-    "@looker/components-test-utils": "^1.5.17",
-    "@looker/eslint-config-oss": "^1.7.12",
-    "@looker/stylelint-config": "^1.5.10",
+    "@looker/components-test-utils": "^1.5.18",
+    "@looker/eslint-config-oss": "^1.7.13",
+    "@looker/stylelint-config": "^1.5.11",
     "@testing-library/react": "*",
     "@testing-library/react-hooks": "*",
     "@types/numeral": "2.0.2"
