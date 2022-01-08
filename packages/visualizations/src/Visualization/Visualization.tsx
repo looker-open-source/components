@@ -129,6 +129,13 @@ const VisualizationComponent: FC<VisualizationProps> = ({
 
     const ChartComponent =
       defaultChartComponent[config.type as keyof SupportedChartTypes]
+
+    if (!ChartComponent) (
+      console.error(`Warning: Your query may be using an unsupported
+      visualization type. Please see the list of visualization types
+      supported by Visualization Components.`)
+    )
+
     return (
       <ChartComponent
         data={dataCopy}
