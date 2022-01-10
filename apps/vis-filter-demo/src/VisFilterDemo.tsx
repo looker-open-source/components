@@ -25,25 +25,23 @@
  */
 
 /* eslint-disable camelcase */
-import type { FC, FormEvent } from 'react'
+import type { FC, FormEvent, KeyboardEvent } from 'react'
 import React, { useContext, useEffect, useState } from 'react'
 import { hot } from 'react-hot-loader/root'
 import {
   Button,
+  Divider,
   FieldText,
+  Header,
   Page,
   Paragraph,
   Space,
-  SpaceVertical,
 } from '@looker/components'
 import { ExtensionContext } from '@looker/extension-sdk-react'
-import { i18nInit, Filter } from '@looker/filter-components'
-import type { FilterChangeProps } from '@looker/filter-components'
 import { create_query, query_for_slug } from '@looker/sdk'
-import type { IQuery, IWriteQuery } from '@looker/sdk'
+import type { ILookmlModelExploreField, IQuery, IWriteQuery } from '@looker/sdk'
 import { Query, Visualization } from '@looker/visualizations'
-
-i18nInit()
+import { Filtering } from './Filtering'
 
 const createQueryRequest = (
   { client_id, filters, ...query }: IQuery,
@@ -56,9 +54,6 @@ const createQueryRequest = (
   return result
 }
 
-// Hardcoding the filter field here for demo purposes
-const filterField = 'orders.created_date'
-
 const VisFilterDemoInternal: FC = () => {
   const { core40SDK } = useContext(ExtensionContext)
 
@@ -69,22 +64,22 @@ const VisFilterDemoInternal: FC = () => {
   }
 
   const [queryDetails, setQueryDetails] = useState<IQuery>()
-
-  const [filterExpression, setFilterExpression] = useState('7 day')
-  const handleFilterChange = ({ expression }: FilterChangeProps) => {
-    setFilterExpression(expression)
-  }
+  const [filterField, setFilterField] = useState<ILookmlModelExploreField>()
 
   const submitQueryId = () => {
     setQueryId(draftQueryId)
+    setFilterField(undefined)
+  }
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      submitQueryId()
+    }
   }
 
-  const submitFilter = () => {
+  const submitFilter = (name: string, expression: string) => {
     if (!queryDetails) return
     // Create a new query from the previous one with updated filters
-    const newQuery = createQueryRequest(queryDetails, {
-      [filterField]: filterExpression,
-    })
+    const newQuery = createQueryRequest(queryDetails, { [name]: expression })
     const getQueryDetails = async () => {
       const result = await core40SDK.ok(create_query(core40SDK, newQuery))
       setQueryDetails(result)
@@ -109,37 +104,35 @@ const VisFilterDemoInternal: FC = () => {
   }, [queryId, core40SDK, queryDetails])
 
   return (
-    <Page>
-      <SpaceVertical width="50%" minWidth={400}>
-        <Space>
-          <FieldText
-            label="Enter Query ID"
-            value={draftQueryId}
-            onChange={handleChange}
-          />
-          <Button onClick={submitQueryId}>Send</Button>
-        </Space>
-        {queryDetails && (
-          <>
-            <Space>
-              <Filter
-                name={filterField}
-                expressionType="date"
-                config={{ type: 'relative_timeframes' }}
-                expression={filterExpression}
-                onChange={handleFilterChange}
-              />
-              <Button onClick={submitFilter}>Filter</Button>
-            </Space>
-            <Paragraph>Query ID: {queryId}</Paragraph>
-          </>
-        )}
-      </SpaceVertical>
-      <Space height={800}>
-        <Query query={queryId} sdk={core40SDK}>
-          <Visualization />
-        </Query>
+    <Page height="100%" p="large">
+      <Header as="h4">Enter a query ID</Header>
+      <Space alignItems="flex-end">
+        <FieldText
+          value={draftQueryId}
+          onChange={handleChange}
+          autoFocus
+          onKeyDown={handleKeyDown}
+        />
+        <Button onClick={submitQueryId}>Run</Button>
       </Space>
+      {queryDetails && (
+        <Filtering
+          model={queryDetails.model}
+          explore={queryDetails.view}
+          onSubmit={submitFilter}
+          filterField={filterField}
+          setFilterField={setFilterField}
+        />
+      )}
+      {queryId && queryId !== draftQueryId && (
+        <Paragraph mt="medium" fontSize="small" textAlign="right">
+          <strong>Filtered Query ID:</strong> {queryId}
+        </Paragraph>
+      )}
+      {queryId && <Divider my="medium" />}
+      <Query query={queryId} sdk={core40SDK}>
+        <Visualization />
+      </Query>
     </Page>
   )
 }
