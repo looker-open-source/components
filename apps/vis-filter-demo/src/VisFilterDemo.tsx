@@ -57,20 +57,24 @@ const createQueryRequest = (
 const VisFilterDemoInternal: FC = () => {
   const { core40SDK } = useContext(ExtensionContext)
 
-  const [queryId, setQueryId] = useState('')
   const [draftQueryId, setDraftQueryId] = useState('')
+  const [queryId, setQueryId] = useState('')
+  const [queryDetails, setQueryDetails] = useState<IQuery>()
+  const [filterField, setFilterField] = useState<ILookmlModelExploreField>()
+
   const handleChange = (e: FormEvent<HTMLInputElement>) => {
     setDraftQueryId(e.currentTarget.value)
   }
 
-  const [queryDetails, setQueryDetails] = useState<IQuery>()
-  const [filterField, setFilterField] = useState<ILookmlModelExploreField>()
-
   const submitQueryId = () => {
     setQueryId(draftQueryId)
+    // Reset the filter
     setFilterField(undefined)
   }
+
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    // Make it behave like a form
+    // (form submission may be disabled due to iframe)
     if (e.key === 'Enter') {
       submitQueryId()
     }

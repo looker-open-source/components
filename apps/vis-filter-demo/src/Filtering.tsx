@@ -56,13 +56,7 @@ export type FilteringProps = {
   setFilterField: (field: ILookmlModelExploreField) => void
 }
 
-const getSelectFilterLabel = (field: ILookmlModelExploreField | undefined) => {
-  if (field?.name) {
-    return field.name.replace('.', ' > ').replace(/_/g, ' ')
-  }
-  return 'Select a field'
-}
-
+// Group the fields by view name, for easier browsing
 const groupFields = (fields: ILookmlModelExploreField[] | undefined) => {
   if (!fields) return {}
   return fields.reduce((acc: FieldGroups, dimension) => {
@@ -76,6 +70,14 @@ const groupFields = (fields: ILookmlModelExploreField[] | undefined) => {
   }, {})
 }
 
+// The label for the button to select a field for filtering
+const getSelectFilterLabel = (field: ILookmlModelExploreField | undefined) => {
+  if (field?.name) {
+    return field.name.replace('.', ' > ').replace(/_/g, ' ')
+  }
+  return 'Select a field'
+}
+
 export const Filtering = ({
   filterField,
   setFilterField,
@@ -86,13 +88,14 @@ export const Filtering = ({
   const { core40SDK } = useContext(ExtensionContext)
 
   const [fieldGroups, setFieldGroups] = useState<FieldGroups>({})
-
   const [filterExpression, setFilterExpression] = useState('')
-  const handleFilterChange = ({ expression }: FilterChangeProps) => {
-    setFilterExpression(expression)
-  }
+
   const handleClick = () => {
     filterField?.name && onSubmit(filterField.name, filterExpression)
+  }
+
+  const handleFilterChange = ({ expression }: FilterChangeProps) => {
+    setFilterExpression(expression)
   }
 
   useEffect(() => {
@@ -107,6 +110,7 @@ export const Filtering = ({
   }, [core40SDK, model, explore])
 
   useEffect(() => {
+    // Reset the filter expression when the field changes
     setFilterExpression('')
   }, [filterField])
 

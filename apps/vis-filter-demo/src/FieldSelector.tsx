@@ -50,6 +50,7 @@ export const FieldSelector = ({
   const { closeModal } = useContext(DialogContext)
   const getFieldClickHandler = (field: ILookmlModelExploreField) => () => {
     onChange(field)
+    // Close the popover after selecting a field
     closeModal()
   }
   return (

@@ -1,6 +1,6 @@
-# @looker/filter-components Demo
+# Vis/Filter Demo
 
-This repository demonstrates how to use `@looker/filter-components` in conjunction with `@looker/embed-sdk`. It uses the [Looker Extension Framework](https://docs.looker.com/data-modeling/extension-framework/extension-framework-intro) but the same functionality could also be accomplished in a standalone application using the [Looker SDK](https://docs.looker.com/reference/api-and-integration/api-sdk).
+This repository demonstrates how to use `@looker/visualizations` in conjunction with `@looker/filter-components`. It uses the [Looker Extension Framework](https://docs.looker.com/data-modeling/extension-framework/extension-framework-intro) but the same functionality could also be accomplished in a standalone application using the [Looker SDK](https://docs.looker.com/reference/api-and-integration/api-sdk).
 
 ## Development Setup
 
@@ -39,14 +39,12 @@ The following instructions are based on [Looker Extension Kitchensink Template](
    You can either drag & upload this file into your Looker project, or create a `manifest.lkml` with the same content. Change the `id`, `label`, or `url` as needed.
 
    ```
-   application: filter_demo {
-    label: "Filter Demo"
-    url: "http://localhost:8080/bundle.js"
-    entitlements: {
-        core_api_methods: ["theme_or_default", "all_dashboards", "dashboard", "update_dashboard", "model_fieldname_suggestions"]
-        navigation: yes
-        use_embeds: yes
-    }
+   application: vis_filter_demo {
+      label: "Vis Filter Demo"
+      url: "http://localhost:8080/bundle.js"
+      entitlements: {
+         core_api_methods: ["lookml_model_explore", "query", "query_for_slug", "run_query", "create_query"]
+      }
    }
    ```
 
