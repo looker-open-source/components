@@ -128,7 +128,7 @@ const VisFilterDemoInternal: FC = () => {
           setFilterField={setFilterField}
         />
       )}
-      {queryId && queryId !== draftQueryId && (
+      {filterField && queryId && queryId !== draftQueryId && (
         <Paragraph mt="medium" fontSize="small" textAlign="right">
           <strong>Filtered Query ID:</strong> {queryId}
         </Paragraph>
