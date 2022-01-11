@@ -28,7 +28,7 @@ import type { FC, ReactNode } from 'react'
 import React, { useEffect, useState, useReducer, useCallback } from 'react'
 import values from 'lodash/values'
 import get from 'lodash/get'
-import type { IError, Looker40SDK } from '@looker/sdk'
+import type { IError, IQuery, Looker40SDK } from '@looker/sdk'
 import type { ISDKErrorResponse, ISDKSuccessResponse } from '@looker/sdk-rtl'
 import {
   buildPivotFields,
@@ -45,6 +45,8 @@ interface QueryProps {
   query?: number | string
   /* Accept user defined config options to overwrite API response */
   config?: Partial<CAll>
+  /* Accept query result if fetch takes place outside this component */
+  queryResult?: IQuery
 }
 
 type AsyncRequestNames = 'fetchQueryId' | 'fetchVisConfig' | 'fetchQueryResult'
@@ -141,6 +143,7 @@ function dataStateReducer(
 
 export const Query: FC<QueryProps> = ({
   query,
+  queryResult,
   children,
   sdk,
   config: configOverrides,
@@ -226,6 +229,26 @@ export const Query: FC<QueryProps> = ({
   )
 
   useEffect(() => {
+    const handleQueryResult = (value: IQuery) => {
+      if ('vis_config' in value) {
+        dispatchDataReducer({
+          type: 'update',
+          value: { visConfig: value.vis_config as CAll },
+        })
+      }
+      if ('id' in value) {
+        dispatchDataReducer({
+          type: 'update',
+          value: { queryId: Number(value.id) },
+        })
+      }
+      if ('share_url' in value) {
+        dispatchDataReducer({
+          type: 'update',
+          value: { shareUrl: String(value.share_url) },
+        })
+      }
+    }
     const fetchQueryId = async (slug: string) => {
       const result = await sdk.query_for_slug(slug, 'id, vis_config, share_url')
 
@@ -238,25 +261,7 @@ export const Query: FC<QueryProps> = ({
       }
 
       if ('value' in result) {
-        const value = result.value
-        if ('vis_config' in value) {
-          dispatchDataReducer({
-            type: 'update',
-            value: { visConfig: value.vis_config as CAll },
-          })
-        }
-        if ('id' in value) {
-          dispatchDataReducer({
-            type: 'update',
-            value: { queryId: Number(value.id) },
-          })
-        }
-        if ('share_url' in value) {
-          dispatchDataReducer({
-            type: 'update',
-            value: { shareUrl: String(value.share_url) },
-          })
-        }
+        handleQueryResult(result.value)
       } else {
         // render error state
         setError({
@@ -266,11 +271,14 @@ export const Query: FC<QueryProps> = ({
       }
     }
 
-    if (query && !queryId) {
+    if (query && !queryId && !queryResult) {
       // assume user passed query slug instead of query id. fetch numeric ID and config from slug:
       asyncLifecycle('fetchQueryId', () => fetchQueryId(query as string))
     }
-  }, [query, error, asyncLifecycle, queryId, sdk])
+    if (queryResult) {
+      handleQueryResult(queryResult)
+    }
+  }, [query, queryResult, error, asyncLifecycle, queryId, sdk])
 
   // get full query response
   useEffect(() => {

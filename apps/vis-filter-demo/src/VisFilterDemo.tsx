@@ -134,9 +134,11 @@ const VisFilterDemoInternal: FC = () => {
         </Paragraph>
       )}
       {queryId && <Divider my="medium" />}
-      <Query query={queryId} sdk={core40SDK}>
-        <Visualization />
-      </Query>
+      {queryDetails && (
+        <Query query={queryId} queryResult={queryDetails} sdk={core40SDK}>
+          <Visualization />
+        </Query>
+      )}
     </Page>
   )
 }
