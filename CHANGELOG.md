@@ -3,6 +3,71 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 3.0.0
+
+## `@looker/components` 3.0.0
+
+### Features
+
+- Ripple animation turned on by default
+- **Link:** Disable underline for hover/focus state when underline prop is false
+- **NavTree:** Updated focus style for indicator when disclosure is also a link
+- **ListItem/NavTree:** Ripple animation added
+- **Select/SelectMulti:** Ripple animation added
+
+### Bug Fixes
+
+- **FloatingLabelField:** Add white-space: nowrap to detail area
+
+### BREAKING CHANGES
+
+- **Tree:** Remove all deprecated props: `assumeIconAlignment`, `branchFontWeight`, `forceLabelPadding`, `labelBackgroundOnly`
+
+## `@looker/components-date` 3.0.4
+
+- Components derive date locale from `ComponentsProvider`
+
+## `@looker/filter-components` 0.10.15
+
+### Features
+
+- **FilterToken** Component added
+- **FilterErrorMessages** Component added
+- **Token** Component added
+
+## `@looker/visualizations` 0.2.8
+
+### Features
+
+- **Visualization:** Broader support for render_null_values config option
+- Custom width for XYLegend and PieLegend
+
+### Bug Fixes
+
+- **Visualization:** Check valid data before rendering chart
+
+## `@looker/visualizations-adapters` 0.1.9
+
+### Features
+
+- Sort query response by date
+- Sync pivot name formatting with api response
+
+## `@looker/visualizations-visx` 0.2.7
+
+### Features
+
+- **Pie:** Paginate legend
+
+### Bug Fixes
+
+- **SparkLine:** Value type enforcement
+- **Area/Bar/Column/Scatter:** Legend resizing
+
+## `@looker/i18n` 0.1.0
+
+- Package created
+
 # 2.8.14
 
 ## `@looker/components` 2.8.14

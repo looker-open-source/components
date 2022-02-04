@@ -8,7 +8,7 @@
   "license": "MIT",
   "sideEffects": false,
   "dependencies": {
-    "@looker/components": "^2.8.14",
+    "@looker/components": "^3",
     "@looker/design-tokens": "^2.7.13",
     "@looker/sdk": "*",
     "@looker/sdk-rtl": "^21.0.20",

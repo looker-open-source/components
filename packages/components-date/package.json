@@ -8,7 +8,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@looker/components": "^2.8.14",
+    "@looker/components": "^3",
     "@looker/design-tokens": "^2.7.13",
     "@looker/i18n": "*",
     "@styled-icons/material-rounded": "10.34.0",

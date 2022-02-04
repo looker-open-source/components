@@ -41,7 +41,7 @@
     "@types/numeral": "2.0.2"
   },
   "peerDependencies": {
-    "@looker/components": "1.4 - 2",
+    "@looker/components": "1.4 - 3",
     "react": ">= 16.11.0",
     "react-dom": ">= 16.11.0",
     "styled-components": "^5.2"
