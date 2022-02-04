@@ -2439,35 +2439,6 @@
     prettier "^2.3.1"
     typescript "4.2.4"
 
-"@looker/eslint-config@^1.5.1":
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/@looker/eslint-config/-/eslint-config-1.5.1.tgz#a963b0f07a271b6ba4751c26be31eebcd2f3180b"
-  integrity sha512-OY5+POz2a89WHs/iR3hksLybf+fXPyINfSKdmJ+yrzYmdXePQRwwlz8q8HiqI5/yw6ptknyyabK+wHVVstW+TQ==
-  dependencies:
-    "@types/vfile-message" "^2.0.0"
-    "@typescript-eslint/eslint-plugin" "^4.22.0"
-    "@typescript-eslint/parser" "^4.23.0"
-    eslint "^7.27.0"
-    eslint-config-prettier "8.2.0"
-    eslint-config-standard "16.0.2"
-    eslint-import-resolver-typescript "^2.4.0"
-    eslint-import-resolver-webpack "^0.13.0"
-    eslint-plugin-header "^3.1.1"
-    eslint-plugin-i18next "^5.1.1"
-    eslint-plugin-import "^2.23.4"
-    eslint-plugin-jest-dom "3.8.0"
-    eslint-plugin-mdx "^1.12.0"
-    eslint-plugin-node "^11.1.0"
-    eslint-plugin-prettier "3.4.0"
-    eslint-plugin-promise "^5.1.0"
-    eslint-plugin-react "^7.23.2"
-    eslint-plugin-react-hooks "^4.2.0"
-    eslint-plugin-sort-keys-fix "^1.1.1"
-    eslint-plugin-standard "5.0.0"
-    eslint-plugin-testing-library "4.1.1"
-    prettier "^2.3.1"
-    typescript "4.3.4"
-
 "@looker/extension-sdk-react@21.12.0":
   version "21.12.0"
   resolved "https://registry.yarnpkg.com/@looker/extension-sdk-react/-/extension-sdk-react-21.12.0.tgz#e5c0d78a988571612b91c20a225ca4d6d8451ced"
@@ -21176,11 +21147,6 @@ typescript@4.2.4:
   version "4.2.4"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.2.4.tgz#8610b59747de028fda898a8aef0e103f156d0961"
   integrity sha512-V+evlYHZnQkaz8TRBuxTA92yZBPotr5H+WhQ7bD3hZUndx5tGOa1fuCgeSjxAzM1RiN5IzvadIXTVefuuwZCRg==
-
-typescript@4.3.4:
-  version "4.3.4"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.3.4.tgz#3f85b986945bcf31071decdd96cf8bfa65f9dcbc"
-  integrity sha512-uauPG7XZn9F/mo+7MrsRjyvbxFpzemRjKEZXS4AK83oP2KKOJPvb+9cO/gmnv8arWZvhnjVOXz7B49m1l0e9Ew==
 
 typescript@4.4.2:
   version "4.4.2"

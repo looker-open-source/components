@@ -25,7 +25,6 @@
   "devDependencies": {
     "@looker/components": "*",
     "@looker/components-test-utils": "^1.5.18",
-    "@looker/eslint-config": "^1.5.1",
     "@looker/eslint-config-oss": "^1.7.13",
     "@looker/stylelint-config": "^1.5.11",
     "@storybook/testing-react": "^0.0.22",
@@ -67,13 +66,15 @@
   "eslintConfig": {
     "root": true,
     "extends": [
-      "@looker/eslint-config/oss-compat"
+      "@looker/eslint-config-oss"
     ],
     "rules": {
       "@typescript-eslint/no-explicit-any": "off",
       "@typescript-eslint/no-non-null-assertion": "off",
-      "sort-keys-fix/sort-keys-fix": "off",
-      "no-restricted-imports": "off"
+      "no-restricted-imports": "off",
+      "camelcase": "off",
+      "import/order": "off",
+      "sort-keys-fix/sort-keys-fix": "off"
     },
     "overrides": [
       {
