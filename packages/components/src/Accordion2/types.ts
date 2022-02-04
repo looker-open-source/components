@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -25,7 +25,7 @@
  */
 
 import type { ReactNode } from 'react'
-import type { DensityProp } from '@looker/design-tokens'
+import type { CompatibleHTMLProps, DensityProp } from '@looker/design-tokens'
 import type { IconType } from '../Icon'
 import type { GenericClickProps } from '../utils'
 import type { ControlledOrUncontrolled } from './controlTypes'
@@ -50,19 +50,22 @@ export type Accordion2Props = ControlledOrUncontrolled &
     id?: string
   }
 
-export type AccordionIndicatorProps = DensityProp & {
-  focusVisible?: boolean
-  /**
-   * Icons for disclosure indicator.
-   *
-   * indicatorPosition === default / 'right' will default to `ExpandMore` / `ExpandLess`
-   * indicatorPosition === 'left' will default to `ArrowRight` / `ArrowDropDown`
-   */
-  indicatorIcons?: AccordionIndicatorIcons
+export type AccordionIndicatorProps = Omit<
+  CompatibleHTMLProps<HTMLDivElement>,
+  'content'
+> &
+  DensityProp & {
+    /**
+     * Icons for disclosure indicator.
+     *
+     * indicatorPosition === default / 'right' will default to `ExpandMore` / `ExpandLess`
+     * indicatorPosition === 'left' will default to `ArrowRight` / `ArrowDropDown`
+     */
+    indicatorIcons?: AccordionIndicatorIcons
 
-  /**
-   * Determines where the disclosure indicator will sit on
-   * @default right
-   */
-  indicatorPosition?: AccordionIndicatorPosition
-}
+    /**
+     * Determines where the disclosure indicator will sit on
+     * @default right
+     */
+    indicatorPosition?: AccordionIndicatorPosition
+  }

@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -26,12 +26,72 @@
 
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { fireEvent, screen } from '@testing-library/react'
-import { Basic, Link } from './NavTree.stories'
+import { act, fireEvent, screen } from '@testing-library/react'
+import { NavList } from '../NavList'
+import { Link } from './NavTree.stories'
 import { NavTreeItem } from './NavTreeItem'
 import { NavTree } from './NavTree'
 
+const Basic = () => (
+  <NavList>
+    <NavTree defaultOpen label="Cheeses">
+      <NavTreeItem parentIcon>Cheddar</NavTreeItem>
+    </NavTree>
+  </NavList>
+)
+
+beforeEach(() => {
+  jest.useFakeTimers()
+})
+
+afterEach(() => {
+  jest.runOnlyPendingTimers()
+  jest.useRealTimers()
+})
+
+const runTimers = () =>
+  act(() => {
+    jest.runOnlyPendingTimers()
+  })
+
 describe('NavTree', () => {
+  test('ripple effect', () => {
+    renderWithTheme(
+      <NavList>
+        <NavTree defaultOpen label="Cheeses">
+          <NavTreeItem parentIcon>Cheddar</NavTreeItem>
+        </NavTree>
+      </NavList>
+    )
+
+    const navTree = screen.getByText('Cheddar').closest('button')
+    expect(navTree).not.toHaveClass('bg-on fg-in')
+    expect(navTree).toHaveStyle({
+      '--ripple-color': '#71767a',
+      '--ripple-scale-end': '1',
+      '--ripple-scale-start': '0.1',
+      '--ripple-size': '100%',
+      '--ripple-translate': '0, 0',
+    })
+
+    navTree && fireEvent.focus(navTree)
+    expect(navTree).toHaveClass('bg-on')
+
+    navTree && fireEvent.mouseDown(navTree)
+    expect(navTree).toHaveClass('bg-on fg-in')
+
+    // foreground is locked for a minimum time to animate the ripple
+    navTree && fireEvent.mouseUp(navTree)
+    runTimers()
+    expect(navTree).toHaveClass('bg-on fg-out')
+    runTimers()
+    expect(navTree).toHaveClass('bg-on')
+
+    navTree && fireEvent.blur(navTree)
+    expect(navTree).not.toHaveClass('bg-on fg-in')
+    fireEvent.click(document)
+  })
+
   test('Renders string disclosure label and detail', () => {
     renderWithTheme(<Basic />)
 

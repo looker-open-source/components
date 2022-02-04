@@ -1,0 +1,65 @@
+{
+  "days ago": {
+    "value": "gün önce"
+  },
+  "days from now": {
+    "value": "gün sonra"
+  },
+  "fiscal quarter from now": {
+    "value": "mali çeyrek sonra"
+  },
+  "fiscal quarters ago": {
+    "value": "mali çeyrek önce"
+  },
+  "fiscal years ago": {
+    "value": "mali yıl önce"
+  },
+  "fiscal years from now": {
+    "value": "mali yıl sonra"
+  },
+  "hours ago": {
+    "value": "saat önce"
+  },
+  "hours from now": {
+    "value": "saat sonra"
+  },
+  "minutes ago": {
+    "value": "dakika önce"
+  },
+  "minutes from now": {
+    "value": "dakika sonra"
+  },
+  "months ago": {
+    "value": "ay önce"
+  },
+  "months from now": {
+    "value": "ay sonra"
+  },
+  "now": {
+    "value": "şimdi"
+  },
+  "quarters ago": {
+    "value": "çeyrek önce"
+  },
+  "quarters from now": {
+    "value": "çeyrek sonra"
+  },
+  "seconds ago": {
+    "value": "saniye önce"
+  },
+  "seconds from now": {
+    "value": "saniye sonra"
+  },
+  "weeks ago": {
+    "value": "hafta önce"
+  },
+  "weeks from now": {
+    "value": "hafta sonra"
+  },
+  "years ago": {
+    "value": "yıl önce"
+  },
+  "years from now": {
+    "value": "yıl sonra"
+  }
+}

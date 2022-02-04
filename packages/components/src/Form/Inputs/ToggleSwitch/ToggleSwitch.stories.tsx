@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -26,56 +26,36 @@
 
 import React from 'react'
 import type { Story } from '@storybook/react/types-6-0'
-import { ThemeProvider } from 'styled-components'
 import { defaultArgTypes as argTypes } from '../../../../../../apps/storybook/src/defaultArgTypes'
 import { useToggle } from '../../../utils/useToggle'
 import type { ToggleSwitchProps } from './ToggleSwitch'
 import { ToggleSwitch } from './ToggleSwitch'
 
-const Template: Story<ToggleSwitchProps & { ripple: boolean }> = ({
-  on = false,
-  ripple,
-  ...args
-}) => {
+const Template: Story<ToggleSwitchProps> = ({ on = false, ...args }) => {
   const { value, toggle } = useToggle(on)
-  return (
-    <ThemeProvider
-      theme={theme => ({
-        ...theme,
-        defaults: { ...theme.defaults, brandAnimation: ripple },
-      })}
-    >
-      <ToggleSwitch onChange={toggle} on={value} {...args} />
-    </ThemeProvider>
-  )
+  return <ToggleSwitch onChange={toggle} on={value} {...args} />
 }
 
 export const Basic = Template.bind({})
-Basic.args = {
-  ripple: false,
-}
 
 export const Checked = Template.bind({})
 Checked.args = {
-  ...Basic.args,
   on: true,
 }
 
 export const Disabled = Template.bind({})
 Disabled.args = {
-  ...Basic.args,
   disabled: true,
 }
 
 export const DisabledChecked = Template.bind({})
 DisabledChecked.args = {
-  ...Checked.args,
   disabled: true,
+  on: true,
 }
 
 export const ReadOnly = Template.bind({})
 ReadOnly.args = {
-  ...Basic.args,
   readOnly: true,
 }
 

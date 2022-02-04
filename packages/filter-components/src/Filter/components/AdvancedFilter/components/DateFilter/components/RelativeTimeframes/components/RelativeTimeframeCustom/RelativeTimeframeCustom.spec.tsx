@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -39,7 +39,7 @@ const getMockComponent = (props: any = {}) => {
 
 const getSelectedDatesLabels = (container: HTMLElement) => {
   const selectedDates = container.querySelectorAll('[aria-selected="true"]')
-  return Array.from(selectedDates).map((selectedDate) =>
+  return Array.from(selectedDates).map(selectedDate =>
     selectedDate.getAttribute('aria-label')
   )
 }

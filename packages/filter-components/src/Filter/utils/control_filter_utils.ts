@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -124,7 +124,7 @@ const getPartitionedOptions = (
   // Partition out values that are included in the options array and those
   // that are not.
   const valueGroups: string[][] = isArray(item.value)
-    ? partition(item.value.map(String), (value) => optionsMap[value])
+    ? partition(item.value.map(String), value => optionsMap[value])
     : [[], []]
   return valueGroups
 }

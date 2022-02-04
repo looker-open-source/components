@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -33,6 +33,29 @@ const resources = {
     Add: 'Přidat',
     Remove: 'Odebrat',
   },
+  before_after_units: {
+    'days ago': 'dny/ů zpátky',
+    'days from now': 'dny/ů od teď',
+    'fiscal quarter from now': 'fiskální čtvrtletí od teď',
+    'fiscal quarters ago': 'fiskální čtvrtletí zpátky',
+    'fiscal years ago': 'fiskální roky zpátky',
+    'fiscal years from now': 'fiskální roky od teď',
+    'hours ago': 'hodin(y) zpátky',
+    'hours from now': 'hodin(y) od teď',
+    'minutes ago': 'minut(y) zpátky',
+    'minutes from now': 'minut(y) od teď',
+    'months ago': 'měsíce/ů zpátky',
+    'months from now': 'měsíce/ů od teď',
+    now: 'nyní',
+    'quarters ago': 'čtvrtletí zpátky',
+    'quarters from now': 'čtvrtletí od teď',
+    'seconds ago': 'sekund(y) zpátky',
+    'seconds from now': 'sekund(y) od teď',
+    'weeks ago': 'týdny/ů zpátky',
+    'weeks from now': 'týdny/ů od teď',
+    'years ago': 'roky/ů zpátky',
+    'years from now': 'roky/ů od teď',
+  },
   BeforeAfter: {
     absolute: '(absolutně)',
     relative: '(relativně)',
@@ -41,15 +64,25 @@ const resources = {
     AND: 'A',
   },
   date_units: {
+    day: 'den',
     days: 'dny/ů',
+    'fiscal quarter': 'fiskální čtvrtletí',
     'fiscal quarters': 'fiskální čtvrtletí',
+    'fiscal year': 'fiskální rok',
     'fiscal years': 'fiskální roky',
+    hour: 'hodina',
     hours: 'hodin(y)',
+    minute: 'minuta',
     minutes: 'minut(y)',
+    month: 'měsíc',
     months: 'měsíce/ů',
+    quarter: 'čtvrtletí',
     quarters: 'čtvrtletí',
+    second: 'sekunda',
     seconds: 'sekund(y)',
+    week: 'týden',
     weeks: 'týdny/ů',
+    year: 'rok',
     years: 'roky/ů',
   },
   get_date_filter_options: {
@@ -183,6 +216,12 @@ const resources = {
   },
   RelativeTimeframePresets: {
     More: 'Více',
+  },
+  use_filters_errors: {
+    'Selection required': 'Je požadován výběr',
+    'Invalid value': 'Neplatná hodnota',
+    'No value is set for your user attribute':
+      'Pro váš atribut uživatele není nastavena žádná hodnota',
   },
   use_option_filtering: {
     'No values': 'Žádné hodnoty',

@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -33,6 +33,29 @@ const resources = {
     Add: 'Legg til',
     Remove: 'Fjern',
   },
+  before_after_units: {
+    'days ago': 'dager siden',
+    'days from now': 'dager fra nå',
+    'fiscal quarter from now': 'regnskapskvartal fra nå',
+    'fiscal quarters ago': 'regnskapskvartaler siden',
+    'fiscal years ago': 'regnskapsår siden',
+    'fiscal years from now': 'regnskapsår fra nå',
+    'hours ago': 'timer siden',
+    'hours from now': 'timer fra nå',
+    'minutes ago': 'minutter siden',
+    'minutes from now': 'minutter fra nå',
+    'months ago': 'måneder siden',
+    'months from now': 'måneder fra nå',
+    now: 'nå',
+    'quarters ago': 'kvartaler siden',
+    'quarters from now': 'kvartaler fra nå',
+    'seconds ago': 'sekunder siden',
+    'seconds from now': 'sekunder fra nå',
+    'weeks ago': 'uker siden',
+    'weeks from now': 'uker fra nå',
+    'years ago': 'år siden',
+    'years from now': 'år fra nå',
+  },
   BeforeAfter: {
     absolute: '(absolutt)',
     relative: '(relativ)',
@@ -41,15 +64,25 @@ const resources = {
     AND: 'OG',
   },
   date_units: {
+    day: 'dag',
     days: 'dager',
+    'fiscal quarter': 'regnskapskvartal',
     'fiscal quarters': 'regnskapskvartaler',
+    'fiscal year': 'regnskapsår',
     'fiscal years': 'regnskapsår',
+    hour: 'time',
     hours: 'timer',
+    minute: 'minutt',
     minutes: 'minutter',
+    month: 'måned',
     months: 'måneder',
+    quarter: 'kvartal',
     quarters: 'kvartaler',
+    second: 'sekund',
     seconds: 'sekunder',
+    week: 'uke',
     weeks: 'uker',
+    year: 'år',
     years: 'år',
   },
   get_date_filter_options: {
@@ -183,6 +216,12 @@ const resources = {
   },
   RelativeTimeframePresets: {
     More: 'Mer',
+  },
+  use_filters_errors: {
+    'Selection required': 'Valg må angis',
+    'Invalid value': 'Ugyldig verdi',
+    'No value is set for your user attribute':
+      'Ingen verdi er angitt for brukerattributtet',
   },
   use_option_filtering: {
     'No values': 'Ingen verdier',

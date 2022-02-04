@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -27,6 +27,7 @@ import type { I18nState } from '../../utils'
 
 const resources = {
   describe_date: {
+    ' complete': ' полн.',
     'absolute prefix dateTime': '{{prefix}} {{dateTime}}',
     ago: 'назад',
     'from now': 'спустя',
@@ -67,25 +68,45 @@ const resources = {
     September: 'Сентябрь',
   },
   get_unit_label: {
+    'complete day': 'полн. дн.',
     'complete days': 'полн. дн.',
+    'complete fiscal quarter': 'полн. финанс. кварт.',
     'complete fiscal quarters': 'полн. финанс. кварт.',
+    'complete fiscal year': 'полн. финанс. год',
     'complete fiscal years': 'полн. финанс. год(а)/лет',
+    'complete hour': 'полн. ч',
     'complete hours': 'полн. ч',
+    'complete minute': 'полн. мин',
     'complete minutes': 'полн. мин',
+    'complete month': 'полн. мес.',
     'complete months': 'полн. мес.',
+    'complete quarter': 'полн. кварт.',
     'complete quarters': 'полн. кварт.',
+    'complete second': 'полн. сек',
     'complete seconds': 'полн. сек',
+    'complete week': 'полн. нед.',
     'complete weeks': 'полн. нед.',
+    'complete year': 'полн. год',
     'complete years': 'полн. год(а)/лет',
+    day: 'дн.',
     days: 'дн.',
+    'fiscal quarter': 'финанс. кварт.',
     'fiscal quarters': 'финанс. кварт.',
+    'fiscal year': 'финанс. год',
     'fiscal years': 'финанс. год(а)/лет',
+    hour: 'ч',
     hours: 'ч',
+    minute: 'мин',
     minutes: 'мин',
+    month: 'мес.',
     months: 'мес.',
+    quarter: 'кварт.',
     quarters: 'кварт.',
+    second: 'сек',
     seconds: 'сек',
+    week: 'нед.',
     weeks: 'нед.',
+    year: 'г.',
     years: 'год(а)/лет',
   },
   summary: {

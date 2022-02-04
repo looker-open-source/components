@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -31,7 +31,7 @@ describe('generateDefaults', () => {
   test('none', () => {
     const defaults = generateDefaults(componentSettingsDefaults)
 
-    expect(defaults.brandAnimation).toEqual(false)
+    expect(defaults.brandAnimation).toEqual(true)
     expect(defaults.density).toEqual(0)
   })
 
@@ -46,11 +46,11 @@ describe('generateDefaults', () => {
 
   test('overwrite', () => {
     const defaults = generateDefaults(componentSettingsDefaults, {
-      brandAnimation: true,
+      brandAnimation: false,
       density: -1,
     })
 
-    expect(defaults.brandAnimation).toEqual(true)
+    expect(defaults.brandAnimation).toEqual(false)
     expect(defaults.density).toEqual(-1)
   })
 
@@ -59,7 +59,7 @@ describe('generateDefaults', () => {
       externalLabel: false,
     })
 
-    expect(defaults.brandAnimation).toEqual(false)
+    expect(defaults.brandAnimation).toEqual(true)
     expect(defaults.density).toEqual(0)
     expect(defaults.externalLabel).toEqual(false)
   })

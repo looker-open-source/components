@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -192,7 +192,7 @@ describe('DashboardFilter', () => {
 
     it('fetches suggestions', async () => {
       const onChangeMock = jest.fn()
-      const sdkOkMock = jest.fn((value) => value)
+      const sdkOkMock = jest.fn(value => value)
       const sdkGetMock = jest.fn(() => ({
         suggestions: ['complete', 'pending', 'cancelled'],
       }))
@@ -247,7 +247,7 @@ describe('DashboardFilter', () => {
     it('shows fetch error message', async () => {
       const onChangeMock = jest.fn()
       const sdkMock = ({
-        ok: jest.fn((value) => value),
+        ok: jest.fn(value => value),
         get: jest.fn(() => {
           throw new Error()
         }),

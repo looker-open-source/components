@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -52,8 +52,7 @@ describe('ButtonTransparent', () => {
     expect(button).toHaveStyle({
       '--ripple-color': '#6C43E0',
       '--ripple-scale-end': '1',
-      // This should change to 0.1 when brandAnimation default becomes true
-      '--ripple-scale-start': '1',
+      '--ripple-scale-start': '0.1',
       '--ripple-size': '100%',
       '--ripple-translate': '0, 0',
     })

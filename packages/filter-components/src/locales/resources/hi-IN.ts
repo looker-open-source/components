@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -33,6 +33,29 @@ const resources = {
     Add: 'जोड़ें',
     Remove: 'निकालें',
   },
+  before_after_units: {
+    'days ago': 'दिन पहले',
+    'days from now': 'दिनों बाद',
+    'fiscal quarter from now': 'अब से शुरू होने वाली वित्तीय तिमाही',
+    'fiscal quarters ago': 'वित्तीय तिमाहियां पहले',
+    'fiscal years ago': 'वित्तीय वर्ष पहले',
+    'fiscal years from now': 'वित्तीय वर्षों बाद',
+    'hours ago': 'घंटे पहले',
+    'hours from now': 'घंटों बाद',
+    'minutes ago': 'मिनट पहले',
+    'minutes from now': 'मिनटों बाद',
+    'months ago': 'महीने पहले',
+    'months from now': 'महीनों बाद',
+    now: 'अभी',
+    'quarters ago': 'तिमाहियां पहले',
+    'quarters from now': 'तिमाहियों बाद',
+    'seconds ago': 'सेकंड पहले',
+    'seconds from now': 'सेकंड बाद',
+    'weeks ago': 'सप्ताह पहले',
+    'weeks from now': 'सप्ताहों बाद',
+    'years ago': 'वर्ष पहले',
+    'years from now': 'वर्षों बाद',
+  },
   BeforeAfter: {
     absolute: '(परम)',
     relative: '(सापेक्षिक)',
@@ -41,15 +64,25 @@ const resources = {
     AND: 'और',
   },
   date_units: {
+    day: 'दिन',
     days: 'दिन',
+    'fiscal quarter': 'वित्तीय तिमाही',
     'fiscal quarters': 'वित्तीय तिमाहियां',
+    'fiscal year': 'वित्तीय वर्ष',
     'fiscal years': 'वित्तीय वर्ष',
+    hour: 'घंटा',
     hours: 'घंटे',
+    minute: 'मिनट',
     minutes: 'मिनट',
+    month: 'महीना',
     months: 'महीने',
+    quarter: 'तिमाही',
     quarters: 'तिमाहियां',
+    second: 'सेकंड',
     seconds: 'सेकंड',
+    week: 'सप्ताह',
     weeks: 'सप्ताह',
+    year: 'वर्ष',
     years: 'वर्ष',
   },
   get_date_filter_options: {
@@ -183,6 +216,12 @@ const resources = {
   },
   RelativeTimeframePresets: {
     More: 'अधिक',
+  },
+  use_filters_errors: {
+    'Selection required': 'चयन आवश्यक है',
+    'Invalid value': 'अमान्य मान',
+    'No value is set for your user attribute':
+      'आपकी उपयोगकर्ता विशेषता के लिए कोई मान सेट नहीं है',
   },
   use_option_filtering: {
     'No values': 'कोई मान नहीं दर्ज किया है',

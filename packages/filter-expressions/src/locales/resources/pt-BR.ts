@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -27,6 +27,7 @@ import type { I18nState } from '../../utils'
 
 const resources = {
   describe_date: {
+    ' complete': ' completo',
     'absolute prefix dateTime': '{{prefix}} {{dateTime}}',
     ago: 'atrás',
     'from now': 'a partir de agora',
@@ -66,25 +67,45 @@ const resources = {
     September: 'Setembro',
   },
   get_unit_label: {
+    'complete day': 'dia completo',
     'complete days': 'dias completos',
+    'complete fiscal quarter': 'trimestre fiscal completo',
     'complete fiscal quarters': 'trimestres fiscais completos',
+    'complete fiscal year': 'ano fiscal completo',
     'complete fiscal years': 'anos fiscais completos',
+    'complete hour': 'hora completa',
     'complete hours': 'horas completas',
+    'complete minute': 'minuto completo',
     'complete minutes': 'minutos completos',
+    'complete month': 'mês completo',
     'complete months': 'meses completos',
+    'complete quarter': 'trimestre completo',
     'complete quarters': 'trimestres completos',
+    'complete second': 'segundo completo',
     'complete seconds': 'segundos completos',
+    'complete week': 'semana completa',
     'complete weeks': 'semanas completas',
+    'complete year': 'ano completo',
     'complete years': 'anos completos',
+    day: 'dia',
     days: 'dias',
+    'fiscal quarter': 'trimestre fiscal',
     'fiscal quarters': 'trimestres fiscais',
+    'fiscal year': 'ano fiscal',
     'fiscal years': 'anos fiscais',
+    hour: 'hora',
     hours: 'horas',
+    minute: 'minuto',
     minutes: 'minutos',
+    month: 'mês',
     months: 'meses',
+    quarter: 'trimestre',
     quarters: 'trimestres',
+    second: 'segundo',
     seconds: 'segundos',
+    week: 'semana',
     weeks: 'semanas',
+    year: 'ano',
     years: 'anos',
   },
   summary: {

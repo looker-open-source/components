@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -46,8 +46,11 @@ export interface LinkProps
 
   /**
    * Display underline.
-   * NOTE: Underline is displayed when Link has :hover or :focus
-   * @default false
+   * NOTE:
+   * When false no underline will be displayed for any pseudo classes
+   * When true underline will always be displayed
+   * When undefined underline is only displayed when Link has :hover, :focus, :active and :visited
+   * @default undefined
    */
   underline?: boolean
 
@@ -146,7 +149,8 @@ export const Link = styled(LinkLayout)`
 
   color: ${({ keyColor, theme: { colors } }) =>
     keyColor ? colors.key : colors.link};
-  text-decoration: ${({ underline }) => (underline ? 'underline' : 'none')};
+  text-decoration: ${({ underline }) =>
+    underline === true ? 'underline' : 'none'};
 
   &[aria-expanded='true'],
   &:focus,
@@ -157,6 +161,7 @@ export const Link = styled(LinkLayout)`
     color: ${({ keyColor, theme: { colors } }) =>
       keyColor ? colors.keyInteractive : colors.linkInteractive};
     outline: none;
-    text-decoration: underline;
+    text-decoration: ${({ underline }) =>
+      underline === false ? 'none' : 'underline'};
   }
 `

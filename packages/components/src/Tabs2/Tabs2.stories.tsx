@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -26,7 +26,6 @@
 
 import type { FormEvent } from 'react'
 import React, { useState } from 'react'
-import { ThemeProvider } from 'styled-components'
 import type { Story } from '@storybook/react/types-6-0'
 import { FieldText } from '../Form'
 import { Box2 } from '../Layout'
@@ -38,37 +37,24 @@ export default {
   title: 'Tabs2',
 }
 
-const Template: Story<Tabs2Props & { ripple: boolean }> = ({
-  ripple,
-  ...args
-}) => (
-  <ThemeProvider
-    theme={theme => ({
-      ...theme,
-      defaults: { ...theme.defaults, brandAnimation: ripple },
-    })}
-  >
-    <Box2 height="8rem">
-      <Tabs2 {...args}>
-        <Tab2 id="cats" label="Cats">
-          Here's awesome story about cats
-        </Tab2>
-        <Tab2 id="dogs" label="Dogs">
-          Cats are way better than dogs. Go to other tab
-        </Tab2>
-        <Tab2 label="Fish">Are kinda smelly</Tab2>
-      </Tabs2>
-    </Box2>
-  </ThemeProvider>
+const Template: Story<Tabs2Props> = args => (
+  <Box2 height="8rem">
+    <Tabs2 {...args}>
+      <Tab2 id="cats" label="Cats">
+        Here's awesome story about cats
+      </Tab2>
+      <Tab2 id="dogs" label="Dogs">
+        Cats are way better than dogs. Go to other tab
+      </Tab2>
+      <Tab2 label="Fish">Are kinda smelly</Tab2>
+    </Tabs2>
+  </Box2>
 )
 
 export const Basic = Template.bind({})
-Basic.args = {
-  ripple: false,
-}
 
 export const Distributed = Template.bind({})
-Distributed.args = { ...Basic, distributed: true }
+Distributed.args = { distributed: true }
 
 export const DistributedScrolling = () => {
   const tabs = new Array(20).fill('Tab2')
@@ -86,7 +72,7 @@ export const DistributedScrolling = () => {
 }
 
 export const DefaultTab = Template.bind({})
-DefaultTab.args = { ...Basic, defaultTabId: 'dogs' }
+DefaultTab.args = { defaultTabId: 'dogs' }
 
 export const Controlled = () => {
   const [currentTabId, setTabId] = useState<string>('cats')

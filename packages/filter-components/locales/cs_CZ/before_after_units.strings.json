@@ -1,0 +1,65 @@
+{
+  "days ago": {
+    "value": "dny/ů zpátky"
+  },
+  "days from now": {
+    "value": "dny/ů od teď"
+  },
+  "fiscal quarter from now": {
+    "value": "fiskální čtvrtletí od teď"
+  },
+  "fiscal quarters ago": {
+    "value": "fiskální čtvrtletí zpátky"
+  },
+  "fiscal years ago": {
+    "value": "fiskální roky zpátky"
+  },
+  "fiscal years from now": {
+    "value": "fiskální roky od teď"
+  },
+  "hours ago": {
+    "value": "hodin(y) zpátky"
+  },
+  "hours from now": {
+    "value": "hodin(y) od teď"
+  },
+  "minutes ago": {
+    "value": "minut(y) zpátky"
+  },
+  "minutes from now": {
+    "value": "minut(y) od teď"
+  },
+  "months ago": {
+    "value": "měsíce/ů zpátky"
+  },
+  "months from now": {
+    "value": "měsíce/ů od teď"
+  },
+  "now": {
+    "value": "nyní"
+  },
+  "quarters ago": {
+    "value": "čtvrtletí zpátky"
+  },
+  "quarters from now": {
+    "value": "čtvrtletí od teď"
+  },
+  "seconds ago": {
+    "value": "sekund(y) zpátky"
+  },
+  "seconds from now": {
+    "value": "sekund(y) od teď"
+  },
+  "weeks ago": {
+    "value": "týdny/ů zpátky"
+  },
+  "weeks from now": {
+    "value": "týdny/ů od teď"
+  },
+  "years ago": {
+    "value": "roky/ů zpátky"
+  },
+  "years from now": {
+    "value": "roky/ů od teď"
+  }
+}

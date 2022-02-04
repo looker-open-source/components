@@ -1,7 +1,7 @@
 {
   "name": "@looker/components",
   "license": "MIT",
-  "version": "2.8.14",
+  "version": "3.0.0",
   "main": "src/index.ts",
   "sideEffects": false,
   "publishConfig": {
@@ -10,6 +10,7 @@
   "dependencies": {
     "@looker/components-providers": "^1.5.18",
     "@looker/design-tokens": "^2.7.13",
+    "@looker/i18n": "*",
     "@popperjs/core": "^2.6.0",
     "@styled-icons/material": "10.34.0",
     "@styled-icons/material-outlined": "10.34.0",

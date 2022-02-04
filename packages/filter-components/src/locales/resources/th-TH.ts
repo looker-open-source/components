@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -33,6 +33,29 @@ const resources = {
     Add: 'เพิ่ม',
     Remove: 'นำออก',
   },
+  before_after_units: {
+    'days ago': 'วันที่แล้ว',
+    'days from now': 'วันนับจากนี้',
+    'fiscal quarter from now': 'ไตรมาสงบประมาณนับจากนี้',
+    'fiscal quarters ago': 'ไตรมาสงบประมาณที่แล้ว',
+    'fiscal years ago': 'ปีงบประมาณที่แล้ว',
+    'fiscal years from now': 'ปีงบประมาณนับจากนี้',
+    'hours ago': 'ชั่วโมงที่แล้ว',
+    'hours from now': 'ชั่วโมงนับจากนี้',
+    'minutes ago': 'นาทีที่แล้ว',
+    'minutes from now': 'นาทีนับจากนี้',
+    'months ago': 'เดือนที่แล้ว',
+    'months from now': 'เดือนนับจากนี้',
+    now: 'ขณะนี้',
+    'quarters ago': 'ไตรมาสที่แล้ว',
+    'quarters from now': 'ไตรมาสนับจากนี้',
+    'seconds ago': 'วินาทีที่แล้ว',
+    'seconds from now': 'วินาทีนับจากนี้',
+    'weeks ago': 'สัปดาห์ที่แล้ว',
+    'weeks from now': 'สัปดาห์นับจากนี้',
+    'years ago': 'ปีที่แล้ว',
+    'years from now': 'ปีนับจากนี้',
+  },
   BeforeAfter: {
     absolute: '(สัมบูรณ์)',
     relative: '(สัมพัทธ์)',
@@ -41,15 +64,25 @@ const resources = {
     AND: 'AND',
   },
   date_units: {
+    day: 'วัน',
     days: 'วัน',
+    'fiscal quarter': 'ไตรมาสงบประมาณ',
     'fiscal quarters': 'ไตรมาสงบประมาณ',
+    'fiscal year': 'ปีงบประมาณ',
     'fiscal years': 'ปีงบประมาณ',
+    hour: 'ชั่วโมง',
     hours: 'ชั่วโมง',
+    minute: 'นาที',
     minutes: 'นาที',
+    month: 'เดือน',
     months: 'เดือน',
+    quarter: 'ไตรมาส',
     quarters: 'ไตรมาส',
+    second: 'วินาที',
     seconds: 'วินาที',
+    week: 'สัปดาห์',
     weeks: 'สัปดาห์',
+    year: 'ปี',
     years: 'ปี',
   },
   get_date_filter_options: {
@@ -183,6 +216,12 @@ const resources = {
   },
   RelativeTimeframePresets: {
     More: 'เพิ่มเติม',
+  },
+  use_filters_errors: {
+    'Selection required': 'ต้องเลือก',
+    'Invalid value': 'ค่าไม่ถูกต้อง',
+    'No value is set for your user attribute':
+      'ไม่มีการกำหนดค่าสำหรับแอตทริบิวต์ของผู้ใช้ของคุณ',
   },
   use_option_filtering: {
     'No values': 'ไม่มีค่า',

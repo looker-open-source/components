@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -33,7 +33,6 @@ import {
   HoverDisclosureContext,
   partitionAriaProps,
   undefinedCoalesce,
-  useFocusVisible,
   useWrapEvent,
   useForkedRef,
 } from '../utils'
@@ -65,6 +64,7 @@ const ListItemInternal = forwardRef(
       onMouseEnter,
       onMouseLeave,
       rel,
+      ripple = true,
       role,
       selected,
       tabIndex = -1,
@@ -83,10 +83,6 @@ const ListItemInternal = forwardRef(
 
     const color = undefinedCoalesce([propsColor, contextColor])
 
-    const { focusVisible, ...focusVisibleHandlers } = useFocusVisible({
-      onBlur,
-      onKeyUp,
-    })
     const [hovered, setHovered] = useState(propsHovered)
 
     const handleOnClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -123,6 +119,7 @@ const ListItemInternal = forwardRef(
       color,
       disabled,
       hovered,
+      ripple,
       selected,
     }
 
@@ -164,17 +161,17 @@ const ListItemInternal = forwardRef(
             itemRole={itemRole}
             aria-selected={selected}
             cursorPointer={!!(href || onClick)}
-            focusVisible={focusVisible}
             href={href}
             onClick={disabled ? undefined : handleOnClick}
+            onBlur={onBlur}
             onKeyDown={onKeyDown}
+            onKeyUp={onKeyUp}
             density={density}
             rel={createSafeRel(rel, target)}
             role={role || 'listitem'}
             target={target}
             tabIndex={tabIndex}
             {...ariaProps}
-            {...focusVisibleHandlers}
             {...statefulProps}
           >
             {insideElements}

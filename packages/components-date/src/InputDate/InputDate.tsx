@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -89,7 +89,7 @@ export const InputDate: FC<InputDateProps> = forwardRef(
     const [validDate, setValidDate] = useState(validationType !== 'error')
     const [textInputValue, setTextInputValue] = useState(
       selectedDate
-        ? formatDateString(selectedDate, locale, dateStringFormat)
+        ? formatDateString(selectedDate, dateStringFormat, locale)
         : ''
     )
     const [viewMonth, setViewMonth] = useState<Date | undefined>(
@@ -108,7 +108,7 @@ export const InputDate: FC<InputDateProps> = forwardRef(
     }
 
     const handleDayClick = (date: Date) => {
-      setTextInputValue(formatDateString(date, locale, dateStringFormat))
+      setTextInputValue(formatDateString(date, dateStringFormat, locale))
       handleDateChange(date)
     }
 
@@ -153,7 +153,7 @@ export const InputDate: FC<InputDateProps> = forwardRef(
       if (value && !isEqual(value, selectedDate)) {
         setSelectedDate(value)
         value &&
-          setTextInputValue(formatDateString(value, locale, dateStringFormat))
+          setTextInputValue(formatDateString(value, dateStringFormat, locale))
         value &&
           viewMonth &&
           !isDateInView(value, viewMonth) &&
@@ -168,8 +168,8 @@ export const InputDate: FC<InputDateProps> = forwardRef(
           aria-labelledby={ariaLabelledby}
           placeholder={`${t('Date')} (${formatDateString(
             new Date(Date.now()),
-            locale,
-            dateStringFormat
+            dateStringFormat,
+            locale
           )})`}
           value={textInputValue}
           onChange={handleTextInputChange}

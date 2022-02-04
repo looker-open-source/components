@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -68,10 +68,7 @@ const getItems = (
       const labelText = labelLength ? `: ${getString()}` : ''
       return {
         content: (
-          <BorderRadiusOverrideTree
-            labelBackgroundOnly
-            label={`${prefix}-${i}${labelText}`}
-          />
+          <BorderRadiusOverrideTree label={`${prefix}-${i}${labelText}`} />
         ),
         isOpen: true,
         items: getItems(`${prefix}-${i}`, labelLength),
@@ -93,12 +90,7 @@ const getTrees = (labelLength: number): WindowedTreeNodeProps[] =>
   Array.from(Array(100), (_, i) => {
     const labelText = labelLength ? `: ${getString()}` : ''
     return {
-      content: (
-        <BorderRadiusOverrideTree
-          labelBackgroundOnly
-          label={`${i}${labelText}`}
-        />
-      ),
+      content: <BorderRadiusOverrideTree label={`${i}${labelText}`} />,
       isOpen: true,
       items: getItems(String(i), labelLength, true),
     }

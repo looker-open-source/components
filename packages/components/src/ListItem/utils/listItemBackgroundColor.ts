@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -30,12 +30,24 @@ import { css } from 'styled-components'
 import type { ListItemColorProp, ListItemStatefulProps } from '../types'
 
 export type ListItemBackgroundColorProps = ListItemStatefulProps &
-  ListItemColorProp
+  ListItemColorProp & {
+    /**
+     * Indicates ripple is enabled and hover should not be used
+     */
+    ripple?: boolean
+  }
 
+/**
+ * @TODO Remove hovered prop and hovered logic when ripple effect
+ * is implemented in LkField components. All other ListItem related
+ * components (i.e. ListItem, NavTreeItem, TreeItem) all use ripple
+ * to handle hover state.
+ */
 export const listItemBackgroundColor = ({
   color,
   disabled,
-  hovered,
+  hovered: propsHovered,
+  ripple,
   selected,
   theme: { colors },
 }: ListItemBackgroundColorProps & { theme: Theme }) => {
@@ -52,6 +64,7 @@ export const listItemBackgroundColor = ({
       }
 
   let renderedColor
+  const hovered = !ripple && propsHovered
 
   if (disabled) renderedColor = 'transparent'
   else if (selected && hovered) renderedColor = stateColors.all

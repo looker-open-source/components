@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -23,6 +23,7 @@
  SOFTWARE.
 
  */
+export * from './constants'
 export * from './Filter/Filter'
 export * from './Filter/components/AdvancedFilter/components/StringFilter/components/MultiStringInput'
 export * from './Filter/constants'
@@ -33,7 +34,9 @@ export * from './Filter/types/filter_state'
 export * from './Filter/types/filter_ui_config'
 export * from './Filter/types/option'
 export * from './Filter/types/filter_props'
+export * from './FilterErrorMessage'
 export * from './DashboardFilter'
+export * from './Token'
 export * from './utils'
 export * from './locales'
 // Proxy imports to `@looker/filter-expressions`

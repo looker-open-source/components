@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -27,17 +27,60 @@
 import type { Story } from '@storybook/react/types-6-0'
 import React from 'react'
 import { Visualization } from '../Visualization'
-import { QueryDecorator } from '../../.storybook'
-import type { VisualizationProps } from '../Visualization'
+import type { Fields, AreaProps, CArea } from '@looker/visualizations-adapters'
+import {
+  QueryContext,
+  buildPivotFields,
+  mockPivots,
+  mockLineConfig,
+  mockSdkConfigResponse,
+  mockSdkPivotDataResponse,
+  tabularPivotResponse,
+  mockSdkDataResponse,
+  mockSdkFieldsResponse,
+  tabularResponse,
+  buildChartConfig,
+} from '@looker/visualizations-adapters'
 
 export default {
   component: Visualization,
-  decorators: [QueryDecorator],
   title: 'Visualizations/Area',
 }
 
-const Template: Story<VisualizationProps> = ({ config, ...restProps }) => {
-  return <Visualization config={{ ...config, type: 'area' }} {...restProps} />
+type StoryTemplateProps = Omit<AreaProps, 'config'> & {
+  config: Omit<CArea, 'type'>
+}
+
+const Template: Story<StoryTemplateProps> = ({
+  config: configProp,
+  ...restProps
+}) => {
+  const data = tabularResponse([...mockSdkDataResponse])
+
+  const config = buildChartConfig({
+    config: {
+      ...mockSdkConfigResponse,
+      ...configProp,
+      type: 'area',
+    },
+    data,
+    fields: mockSdkFieldsResponse as Fields,
+  })
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return (
+    <QueryContext.Provider
+      value={{
+        config,
+        ok: true,
+        loading: false,
+        data,
+        fields: mockSdkFieldsResponse as Fields,
+      }}
+    >
+      <Visualization {...restProps} />
+    </QueryContext.Provider>
+  )
 }
 
 export const Area = Template.bind({})
@@ -65,4 +108,45 @@ StackedPercentage.args = {
     positioning: 'percent',
     series: [{ visible: true }, { visible: true }],
   },
+}
+
+export const Pivot = () => {
+  const mockPivotFields = buildPivotFields({
+    fields: {
+      ...mockSdkFieldsResponse,
+    } as Fields,
+    pivots: mockPivots,
+  })
+
+  const mockPivotData = tabularPivotResponse({
+    data: [...mockSdkPivotDataResponse],
+    fields: {
+      ...mockSdkFieldsResponse,
+    } as Fields,
+    pivots: mockPivots,
+  })
+
+  const config = buildChartConfig({
+    config: { ...mockLineConfig, type: 'area' },
+    data: mockPivotData,
+    fields: mockPivotFields,
+  })
+
+  return (
+    <QueryContext.Provider
+      value={{
+        config,
+        ok: true,
+        loading: false,
+        data: mockPivotData,
+        fields: mockPivotFields,
+      }}
+    >
+      <Visualization height={600} width={800} />
+    </QueryContext.Provider>
+  )
+}
+
+Pivot.parameters = {
+  storyshots: { disable: true },
 }

@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -24,72 +24,35 @@
 
  */
 
-import type { InitOptions, Resource } from 'i18next'
+import { i18nInitOptionsComponents, i18nInitComponents } from '@looker/i18n'
+import type { I18nStateWithDates } from '@looker/i18n'
 import i18next from 'i18next'
-import { initReactI18next } from 'react-i18next'
+import merge from 'lodash/merge'
 import { useEffect } from 'react'
 import { i18nResources } from './resources'
 
-export const i18nInitOptions: InitOptions = {
-  fallbackLng: 'en',
-  interpolation: {
-    escapeValue: false,
-  },
-  lng: 'en',
-  missingKeyHandler: (languages: string[], ns: string, key: string) => {
-    if (process.env.NODE_ENV !== 'production') {
-      throw new Error(
-        `Missing i18n key (${languages.join(', ')}): "${key}" in ${ns}`
-      )
-    }
-  },
-  react: {
-    useSuspense: false,
-  },
-  resources: i18nResources,
-  saveMissing: true,
+export const i18nInitOptions = i18nInitOptionsComponents
+
+export const i18nInit = async (options?: Partial<I18nStateWithDates>) => {
+  // Merge with English translations in case there are translations missing
+  // from the resources passed in
+  const mergedResources = merge({}, options?.resources, i18nResources)
+  return i18nInitComponents({ ...options, resources: mergedResources })
 }
 
-export const i18nInit = async (initOptions = i18nInitOptions) =>
-  i18next
-    .use(initReactI18next) // passes i18n down to react-i18next
-    .init(initOptions)
-
-export interface UseI18nProps {
-  /**
-   * @default en
-   */
-  locale?: string
-  resources?: Resource
-}
-
-export const i18nUpdate = ({ resources, locale }: UseI18nProps) => {
-  if (resources) {
-    Object.keys(resources).forEach((lng: string) => {
-      const allNamespaces = resources[lng]
-      Object.keys(allNamespaces).forEach((ns: string) => {
-        i18next.addResourceBundle(lng, ns, allNamespaces[ns])
-      })
-    })
-  }
-  if (locale && locale !== i18next.language) {
-    i18next.changeLanguage(locale)
-  }
-}
+export type UseI18nProps = Partial<I18nStateWithDates>
 
 export const useI18n = ({
+  dateLocale,
   locale,
   resources = i18nResources,
 }: UseI18nProps) => {
   if (!i18next.isInitialized) {
-    i18nInit({ ...i18nInitOptions, lng: locale, resources }).catch(err =>
-      // eslint-disable-next-line no-console
-      console.error(err)
-    )
+    i18nInitComponents({ dateLocale, locale, resources })
   }
 
   useEffect(() => {
-    const update = () => i18nUpdate({ locale, resources })
+    const update = () => i18nInitComponents({ dateLocale, locale, resources })
     if (i18next.isInitialized) {
       update()
     } else {
@@ -98,5 +61,5 @@ export const useI18n = ({
     return () => {
       i18next.off('initialized', update)
     }
-  }, [locale, resources])
+  }, [dateLocale, locale, resources])
 }

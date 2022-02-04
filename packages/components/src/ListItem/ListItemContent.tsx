@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -24,20 +24,32 @@
 
  */
 
-import type { CompatibleHTMLProps, DensityRamp } from '@looker/design-tokens'
-import type { FC } from 'react'
-import React from 'react'
+import pick from 'lodash/pick'
+import type {
+  CompatibleHTMLProps,
+  DensityRamp,
+  ExtendedStatefulColor,
+} from '@looker/design-tokens'
+import type { Ref } from 'react'
+import React, { forwardRef } from 'react'
 import type {
   FlattenSimpleInterpolation,
   Interpolation,
 } from 'styled-components'
 import styled, { css } from 'styled-components'
-import type { FocusVisibleProps } from '../utils'
+import { mergeClassNames, useCallbackRef, useMeasuredElement } from '../utils'
+import {
+  rippleHandlerKeys,
+  rippleStyle,
+  useRipple,
+  useRippleHandlers,
+} from '../Ripple'
 import type {
   ListItemColorProp,
   ListItemRole,
   ListItemStatefulProps,
 } from './types'
+import { listItemColorOptions } from './types'
 import { listItemBackgroundColor, listItemPaddingX } from './utils'
 
 const Button = styled.button.attrs(({ type = 'button' }) => ({
@@ -64,55 +76,95 @@ export const listItemLabelCSS = listItemContentCSS
 
 export type ListItemContentProps = CompatibleHTMLProps<HTMLElement> &
   ListItemStatefulProps &
-  ListItemColorProp &
-  FocusVisibleProps & {
+  ListItemColorProp & {
     cursorPointer?: boolean
     density?: DensityRamp
     disabled?: boolean
     itemRole?: ListItemRole
+    /**
+     * Determines if ripple effect is enabled or disabled.
+     * Used primarily when parent component should handle
+     * ripple effect like with NavTree.
+     * @default true
+     */
+    ripple?: boolean
   }
 
-const ListItemContentInternal: FC<ListItemContentProps> = ({
-  children,
-  itemRole = 'button',
-  ...props
-}) => {
-  if (!props.disabled && itemRole === 'link') {
-    return <Link {...props}>{children}</Link>
-  } else if (itemRole === 'none') {
-    return <Div {...props}>{children}</Div>
-  }
+export const ListItemContent = styled(
+  forwardRef(
+    (
+      {
+        className,
+        children,
+        color,
+        itemRole = 'button',
+        ripple = true,
+        selected,
+        style,
+        ...props
+      }: ListItemContentProps,
+      forwardedRef: Ref<HTMLElement | HTMLButtonElement>
+    ) => {
+      // find the dimensions of button for ripple behavior
+      const [element, ref] = useCallbackRef(forwardedRef)
+      const [{ height, width }] = useMeasuredElement(element)
 
-  return (
-    <Button {...props} type="button">
-      {children}
-    </Button>
-  )
-}
+      const {
+        callbacks,
+        className: rippleClassName,
+        style: rippleStyle,
+      } = useRipple({
+        bounded: true,
+        color:
+          selected &&
+          listItemColorOptions.includes(color as ExtendedStatefulColor)
+            ? (color as ExtendedStatefulColor)
+            : 'neutral',
+        height,
+        width,
+      })
 
-export const ListItemContent = styled(ListItemContentInternal)`
-  ${listItemBackgroundColor}
+      const rippleHandlers = useRippleHandlers(
+        callbacks,
+        {
+          ...pick({ ...props }, rippleHandlerKeys),
+        },
+        props.disabled
+      )
 
-  /*
-  IconButtons with hovered / selected backgrounds sit above
-  a non-absolutely positioned box-shadow. Absolute positioning
-  and a z-index gets the box-shadow to sit above ListItem children
-  with background colors.
- */
-  ${({ focusVisible, theme }) =>
-    focusVisible &&
-    `
-    &::after {
-      bottom: 0;
-      box-shadow: inset 0 0 0 2px ${theme.colors.keyFocus};
-      content: '';
-      left: 0;
-      position: absolute;
-      right: 0;
-      top: 0;
-      z-index: 1;
+      const rippleProps = ripple
+        ? {
+            className: mergeClassNames([className, rippleClassName]),
+            ref,
+            ...rippleHandlers,
+            style: { ...style, ...rippleStyle },
+          }
+        : { className, ref, style }
+
+      if (!props.disabled && itemRole === 'link') {
+        return (
+          <Link {...props} {...rippleProps}>
+            {children}
+          </Link>
+        )
+      } else if (itemRole === 'none') {
+        return (
+          <Div {...props} {...rippleProps}>
+            {children}
+          </Div>
+        )
+      }
+
+      return (
+        <Button {...props} {...rippleProps} type="button">
+          {children}
+        </Button>
+      )
     }
-  `}
+  )
+)`
+  ${listItemBackgroundColor}
+  ${rippleStyle}
 
   align-items: center;
   border: none;

@@ -7,9 +7,10 @@
     "access": "public"
   },
   "dependencies": {
-    "@looker/components": "^2.8.14",
+    "@looker/components": "^3",
     "@looker/components-date": "^3.0.3",
     "@looker/filter-expressions": "^0.8.13",
+    "@looker/i18n": "*",
     "@looker/icons": "^1.5.13",
     "@looker/sdk": "^21.8.0",
     "@looker/sdk-rtl": "^21.0.19",
@@ -24,9 +25,9 @@
   "devDependencies": {
     "@looker/components": "*",
     "@looker/components-test-utils": "^1.5.18",
-    "@looker/eslint-config": "^1.5.1",
     "@looker/eslint-config-oss": "^1.7.13",
     "@looker/stylelint-config": "^1.5.11",
+    "@storybook/testing-react": "^0.0.22",
     "@testing-library/react": "*",
     "@testing-library/react-hooks": "3.3.0",
     "@typescript-eslint/eslint-plugin": "*",
@@ -55,7 +56,7 @@
     "styled-components": "5.3.1"
   },
   "peerDependencies": {
-    "@looker/components": "2",
+    "@looker/components": "3",
     "i18next": "20.3.1",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
@@ -65,13 +66,15 @@
   "eslintConfig": {
     "root": true,
     "extends": [
-      "@looker/eslint-config/oss-compat"
+      "@looker/eslint-config-oss"
     ],
     "rules": {
       "@typescript-eslint/no-explicit-any": "off",
       "@typescript-eslint/no-non-null-assertion": "off",
-      "sort-keys-fix/sort-keys-fix": "off",
-      "no-restricted-imports": "off"
+      "no-restricted-imports": "off",
+      "camelcase": "off",
+      "import/order": "off",
+      "sort-keys-fix/sort-keys-fix": "off"
     },
     "overrides": [
       {

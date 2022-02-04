@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -54,6 +54,7 @@ export type RawApiConfigResponse = {
   series_labels: { [key: string]: string }
   series_point_styles: { [key: string]: PointShapes | 'automatic' }
   series_types: Record<string, string>
+  series_value_format?: { [key: string]: { [key: string]: string } }
   show_null_points: boolean
   show_value_labels: boolean
   show_view_names: boolean

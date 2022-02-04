@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -26,7 +26,6 @@
 
 import React from 'react'
 import type { Story } from '@storybook/react/types-6-0'
-import { ThemeProvider } from 'styled-components'
 import { defaultArgTypes as argTypes } from '../../../../../../apps/storybook/src/defaultArgTypes'
 import type { RadioProps } from './Radio'
 import { Radio } from './Radio'
@@ -37,23 +36,9 @@ export default {
   title: 'Radio',
 }
 
-const Template: Story<RadioProps & { ripple: boolean }> = ({
-  ripple,
-  ...args
-}) => (
-  <ThemeProvider
-    theme={theme => ({
-      ...theme,
-      defaults: { ...theme.defaults, brandAnimation: ripple },
-    })}
-  >
-    <Radio {...args} />
-  </ThemeProvider>
-)
+const Template: Story<RadioProps> = args => <Radio {...args} />
 
-export const Basic = Template.bind({
-  ripple: false,
-})
+export const Basic = Template.bind({})
 
 export const Checked = Template.bind({})
 Checked.args = {

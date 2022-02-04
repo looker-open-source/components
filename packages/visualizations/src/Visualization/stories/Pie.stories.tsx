@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -36,6 +36,7 @@ import {
   QueryContext,
   mockSdkDataResponse,
   tabularResponse,
+  buildChartConfig,
 } from '@looker/visualizations-adapters'
 
 const defaultPieData: SDKRecord[] = [
@@ -91,7 +92,7 @@ export default {
 }
 
 const Template: Story<Partial<PieProps>> = ({
-  config = {},
+  config: configProp,
   data = defaultPieData,
   fields = defaultPieFields,
   ...restProps
@@ -99,14 +100,18 @@ const Template: Story<Partial<PieProps>> = ({
   return (
     <QueryContext.Provider
       value={{
-        config,
+        config: buildChartConfig({
+          config: { type: 'pie', ...configProp },
+          data,
+          fields,
+        }),
         data,
         fields,
         loading: false,
         ok: true,
       }}
     >
-      <Visualization config={{ ...config, type: 'pie' }} {...restProps} />
+      <Visualization {...restProps} />
     </QueryContext.Provider>
   )
 }
@@ -130,12 +135,31 @@ MaxDataRender.args = {
   },
 }
 
-export const LegendLeft = Template.bind({})
-LegendLeft.args = {
+export const LegendBottom = Template.bind({})
+LegendBottom.args = {
   config: {
-    type: 'pie',
-    legend: { position: 'left', value: 'value' },
+    legend: { position: 'bottom', value: 'label' },
     series: {},
+    type: 'pie',
+  },
+}
+LegendBottom.parameters = {
+  storyshots: { disable: true },
+}
+
+export const LegendBottomMaxDataRender = Template.bind({})
+LegendBottomMaxDataRender.args = {
+  data: tabularResponse(mockSdkDataResponse),
+  fields: {
+    ...defaultPieFields,
+    dimensions: [
+      { ...defaultPieFields.dimensions[0], name: 'orders.created_date' },
+    ],
+  },
+  config: {
+    legend: { position: 'bottom', value: 'label_value' },
+    series: {},
+    type: 'pie',
   },
 }
 
@@ -143,16 +167,15 @@ export const NoLegend = Template.bind({})
 NoLegend.args = {
   config: { type: 'pie', legend: false, series: {} },
 }
+NoLegend.parameters = {
+  storyshots: { disable: true },
+}
 
 export const Labels = Template.bind({})
 Labels.args = {
   config: {
-    type: 'pie',
     legend: { type: 'labels', value: 'label_value' },
     series: {},
+    type: 'pie',
   },
-}
-
-Labels.parameters = {
-  storyshots: { disable: true },
 }

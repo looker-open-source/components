@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -33,16 +33,17 @@ import partial from 'lodash/partial'
 import { seriesLabelFormatter } from '../utils'
 
 type LegendProps = {
+  chartWidth?: number
   config: CCartesian
   fields: Fields
 }
 
 const DEFAULT_LEGEND_WIDTH = 200
 
-export const XYLegend: FC<LegendProps> = ({ config, fields }) => {
+export const XYLegend: FC<LegendProps> = ({ chartWidth, config, fields }) => {
   const { colorScale, theme: visxTheme, margin } = useContext(DataContext)
   const {
-    space: { small },
+    space: { xsmall, small },
   } = useContext(ThemeContext)
   const { legend } = config
 
@@ -51,36 +52,53 @@ export const XYLegend: FC<LegendProps> = ({ config, fields }) => {
     return <></>
   }
 
-  // The distance between the VisWrapper left edge and the y-axis
-  const yAxisSpacer = margin?.left
-  const { direction, width } =
+  const legendWidth = legend.width || DEFAULT_LEGEND_WIDTH
+
+  // The distance between the VisWrapper left edge and svg's y-axis
+  const yAxisSpacer =
     legend.position === 'left' || legend.position === 'right'
-      ? {
-          direction: 'column' as const,
-          width: DEFAULT_LEGEND_WIDTH,
-        }
-      : {
-          direction: 'row' as const,
-          width: `calc(100% - ${yAxisSpacer})`,
-        }
+      ? undefined
+      : margin?.left
+
+  const { direction, ...legendStyle } = {
+    bottom: {
+      direction: 'row' as const,
+      marginLeft: yAxisSpacer,
+      marginTop: small,
+      width: `calc(${
+        chartWidth ? `${chartWidth}px` : '100%'
+      } - ${yAxisSpacer}px)`,
+    },
+    top: {
+      direction: 'row' as const,
+      marginLeft: yAxisSpacer,
+      marginBottom: small,
+      width: `calc(${
+        chartWidth ? `${chartWidth}px` : '100%'
+      } - ${yAxisSpacer}px)`,
+    },
+    left: {
+      direction: 'column' as const,
+      width: legendWidth,
+    },
+    right: {
+      direction: 'column' as const,
+      width: legendWidth,
+    },
+  }[legend.position]
 
   return (
     <LegendOrdinal
       direction={direction}
-      itemMargin={`0 ${small} ${small} ${small}`}
+      itemMargin={`0 ${small} ${xsmall} ${small}`}
       labelFormat={partial(seriesLabelFormatter, fields, config)}
       style={{
         color: visxTheme?.svgLabelBig.fill,
         display: 'flex',
+        flexShrink: 0,
+        flexWrap: 'wrap',
         justifyContent: 'center',
-        marginLeft: yAxisSpacer,
-        /**
-         * At the moment, unless we specify a width on the legend, the chart's underlying
-         * <svg> will take up all avaiable width (relative to the <VisWrapper> parent).
-         * Setting the width will prevent any sort of visx ref measuring from ignoring the
-         * <Legend>.
-         */
-        width,
+        ...legendStyle,
       }}
       // TODO: resolve non-null assertion -- https://b.corp.google.com/issues/199297029
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion

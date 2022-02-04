@@ -1,0 +1,65 @@
+{
+  "days ago": {
+    "value": "днів тому"
+  },
+  "days from now": {
+    "value": "днів відтепер"
+  },
+  "fiscal quarter from now": {
+    "value": "фінансовий квартал відтепер"
+  },
+  "fiscal quarters ago": {
+    "value": "фінансових кварталів тому"
+  },
+  "fiscal years ago": {
+    "value": "фінансових років тому"
+  },
+  "fiscal years from now": {
+    "value": "фінансових років відтепер"
+  },
+  "hours ago": {
+    "value": "годин тому"
+  },
+  "hours from now": {
+    "value": "годин відтепер"
+  },
+  "minutes ago": {
+    "value": "хвилин тому"
+  },
+  "minutes from now": {
+    "value": "хвилин відтепер"
+  },
+  "months ago": {
+    "value": "місяців тому"
+  },
+  "months from now": {
+    "value": "місяців відтепер"
+  },
+  "now": {
+    "value": "зараз"
+  },
+  "quarters ago": {
+    "value": "кварталів тому"
+  },
+  "quarters from now": {
+    "value": "кварталів відтепер"
+  },
+  "seconds ago": {
+    "value": "секунд тому"
+  },
+  "seconds from now": {
+    "value": "секунд відтепер"
+  },
+  "weeks ago": {
+    "value": "тижнів тому"
+  },
+  "weeks from now": {
+    "value": "тижнів відтепер"
+  },
+  "years ago": {
+    "value": "років тому"
+  },
+  "years from now": {
+    "value": "років відтепер"
+  }
+}

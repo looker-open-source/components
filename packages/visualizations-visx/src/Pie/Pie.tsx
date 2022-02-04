@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -30,6 +30,7 @@ import { DEFAULT_HEIGHT } from '@looker/visualizations-adapters'
 import type { PieArcDatum } from '@visx/shape/lib/shapes/Pie'
 import VisxPie from '@visx/shape/lib/shapes/Pie'
 import { scaleOrdinal } from '@visx/scale'
+import type { ScaleOrdinal } from 'd3-scale'
 import { Group } from '@visx/group'
 import { useTooltip } from '@visx/tooltip'
 import type {
@@ -40,7 +41,6 @@ import type {
   LegendPositions,
   LegendTypes,
 } from '@looker/visualizations-adapters'
-import { LegendOrdinal } from '@visx/legend'
 import type { Point } from '@visx/point'
 import isArray from 'lodash/isArray'
 import pick from 'lodash/pick'
@@ -51,12 +51,13 @@ import { getChartGeometry } from './getChartGeometry'
 import { PieTooltip } from './PieTooltip'
 import { PieArc } from './PieArc'
 import { PieLabel } from './PieLabel'
+import { PieLegend } from './PieLegend'
 
 const generateColorScale = (
   data: SDKRecord,
   seriesConfig: CPie['series'],
   dimension: DimensionMetadata
-) => {
+): ScaleOrdinal<string, string> => {
   const dataKey = dimension.name
 
   const range = isArray(seriesConfig)
@@ -78,7 +79,11 @@ export const Pie: FC<PieProps> = ({
 }) => {
   const { showTooltip, hideTooltip, ...tooltipProps } = useTooltip()
   const { series, legend, tooltips = true } = config
-  const { position: legendPosition = 'right', type: legendType } = legend || {}
+  const {
+    position: legendPosition = 'right',
+    type: legendType,
+    width: legendWidth,
+  } = legend || {}
 
   // limit PIE chart to 50 sections
   const limitedData: SDKRecord[] = data.slice(0, 50)
@@ -86,7 +91,7 @@ export const Pie: FC<PieProps> = ({
   const firstDimension = fields.dimensions[0] || {}
 
   // format data for use in legend
-  const keyValData = Object.fromEntries(
+  const keyValData: Record<string, number> = Object.fromEntries(
     limitedData.map((d: SDKRecord) => [
       d[firstDimension.name],
       Number(d[firstMeasure.name]),
@@ -193,18 +198,13 @@ export const Pie: FC<PieProps> = ({
         </PieChart>
         {legend && legendType === 'legend' && (
           <LegendWrapper legendPosition={legendPosition}>
-            <LegendOrdinal
-              direction={
-                legendPosition === 'top' || legendPosition === 'bottom'
-                  ? 'row'
-                  : 'column'
-              }
-              labelFormat={label => {
-                const datum = pick(keyValData, label as string)
-                return getLabelContent(measureTotal, datum, legend)
-              }}
+            <PieLegend
+              legendConfig={legend}
               scale={colorScale}
-              shape="circle"
+              data={keyValData}
+              measureTotal={measureTotal}
+              height={canvasH}
+              width={legendWidth || canvasW}
             />
           </LegendWrapper>
         )}

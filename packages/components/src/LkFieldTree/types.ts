@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -28,16 +28,7 @@ import type { ListItemProps, TreeProps } from '..'
 
 export type LkFieldTreeProps = Omit<
   TreeProps,
-  | 'assumeIconAlignment'
-  | 'border'
-  | 'branchFontWeight'
-  | 'density'
-  | 'description'
-  | 'dividers'
-  | 'forceLabelPadding'
-  | 'itemRole'
-  | 'labelBackgroundOnly'
-  | 'truncate'
+  'border' | 'density' | 'description' | 'itemRole' | 'truncate'
 >
 
 export type LkFieldItemProps = Omit<

@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -216,6 +216,12 @@ const resources = {
   },
   RelativeTimeframePresets: {
     More: 'More',
+  },
+  use_filters_errors: {
+    'Invalid value': 'Invalid value',
+    'No value is set for your user attribute':
+      'No value is set for your user attribute',
+    'Selection required': 'Selection required',
   },
   use_option_filtering: {
     'No values': 'No values',

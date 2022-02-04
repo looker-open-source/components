@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -33,6 +33,29 @@ const resources = {
     Add: '追加',
     Remove: '削除',
   },
+  before_after_units: {
+    'days ago': '日前',
+    'days from now': '日後',
+    'fiscal quarter from now': '会計四半期後',
+    'fiscal quarters ago': '会計四半期前',
+    'fiscal years ago': '会計年度前',
+    'fiscal years from now': '会計年度後',
+    'hours ago': '時間前',
+    'hours from now': '時間後',
+    'minutes ago': '分前',
+    'minutes from now': '分後',
+    'months ago': 'か月前',
+    'months from now': 'か月後',
+    now: '現在',
+    'quarters ago': '四半期前',
+    'quarters from now': '四半期後',
+    'seconds ago': '秒前',
+    'seconds from now': '秒後',
+    'weeks ago': '週間前',
+    'weeks from now': '週間後',
+    'years ago': '年前',
+    'years from now': '年後',
+  },
   BeforeAfter: {
     absolute: '（絶対指定）',
     relative: '（相対指定）',
@@ -41,15 +64,25 @@ const resources = {
     AND: 'AND',
   },
   date_units: {
+    day: '日',
     days: '日',
+    'fiscal quarter': '会計四半期',
     'fiscal quarters': '会計四半期',
+    'fiscal year': '会計年度',
     'fiscal years': '会計年度',
+    hour: '時間',
     hours: '時間',
+    minute: '分',
     minutes: '分',
+    month: '月',
     months: '月',
+    quarter: '四半期',
     quarters: '四半期',
+    second: '秒',
     seconds: '秒',
+    week: '週',
     weeks: '週',
+    year: '年',
     years: '年',
   },
   get_date_filter_options: {
@@ -183,6 +216,12 @@ const resources = {
   },
   RelativeTimeframePresets: {
     More: '詳細',
+  },
+  use_filters_errors: {
+    'Selection required': '選択が必要です',
+    'Invalid value': '値が無効です',
+    'No value is set for your user attribute':
+      'ユーザー属性に値が設定されていません',
   },
   use_option_filtering: {
     'No values': '値なし',

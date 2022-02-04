@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -72,7 +72,7 @@ const IndentOverrideTreeItem = styled(TreeItem).withConfig<
 `
 
 export const NavTreeItem = styled(
-  ({ truncate = true, ...props }: NavTreeItemProps) => {
+  ({ ripple = true, truncate = true, ...props }: NavTreeItemProps) => {
     const theme = useContext(ThemeContext)
     const { depth } = useContext(TreeContext)
     const { iconGap, px } = listItemDimensions(theme.defaults.density)
@@ -81,10 +81,12 @@ export const NavTreeItem = styled(
     return (
       <IndentOverrideTreeItem
         depth={depth}
+        color="key"
         iconGap={iconGap}
         indicatorGap={indicatorGap}
         itemRole={props.href ? 'link' : props.itemRole}
         px={px}
+        ripple={ripple}
         truncate={truncate}
         {...props}
       />

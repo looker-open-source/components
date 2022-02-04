@@ -1,0 +1,65 @@
+{
+  "days ago": {
+    "value": "päivää sitten"
+  },
+  "days from now": {
+    "value": "päivää tästä hetkestä"
+  },
+  "fiscal quarter from now": {
+    "value": "tilikauden vuosineljännes tästä hetkestä"
+  },
+  "fiscal quarters ago": {
+    "value": "tilikauden vuosineljännestä sitten"
+  },
+  "fiscal years ago": {
+    "value": "tilivuotta sitten"
+  },
+  "fiscal years from now": {
+    "value": "tilivuotta tästä hetkestä"
+  },
+  "hours ago": {
+    "value": "tuntia sitten"
+  },
+  "hours from now": {
+    "value": "tuntia tästä hetkestä"
+  },
+  "minutes ago": {
+    "value": "minuuttia sitten"
+  },
+  "minutes from now": {
+    "value": "minuuttia tästä hetkestä"
+  },
+  "months ago": {
+    "value": "kuukautta sitten"
+  },
+  "months from now": {
+    "value": "kuukautta tästä hetkestä"
+  },
+  "now": {
+    "value": "nyt"
+  },
+  "quarters ago": {
+    "value": "vuosineljännestä sitten"
+  },
+  "quarters from now": {
+    "value": "vuosineljännestä tästä hetkestä"
+  },
+  "seconds ago": {
+    "value": "sekuntia sitten"
+  },
+  "seconds from now": {
+    "value": "sekuntia tästä hetkestä"
+  },
+  "weeks ago": {
+    "value": "viikkoa sitten"
+  },
+  "weeks from now": {
+    "value": "viikkoa tästä hetkestä"
+  },
+  "years ago": {
+    "value": "vuotta sitten"
+  },
+  "years from now": {
+    "value": "vuotta tästä hetkestä"
+  }
+}

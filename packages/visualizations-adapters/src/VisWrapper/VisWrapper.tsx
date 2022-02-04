@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -73,6 +73,7 @@ const flexDirection = ({ legend }: Pick<VisWrapperProps, 'legend'>) => {
 
   return css`
     flex-direction: ${positionMap[position]};
+    justify-content: ${position === 'left' ? 'flex-end' : 'flex-start'};
   `
 }
 

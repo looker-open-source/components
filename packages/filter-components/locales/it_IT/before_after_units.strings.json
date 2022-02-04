@@ -1,0 +1,65 @@
+{
+  "days ago": {
+    "value": "giorni fa"
+  },
+  "days from now": {
+    "value": "giorni da ora"
+  },
+  "fiscal quarter from now": {
+    "value": "trimestre fiscale da ora"
+  },
+  "fiscal quarters ago": {
+    "value": "trimestri fiscali fa"
+  },
+  "fiscal years ago": {
+    "value": "anni fiscali fa"
+  },
+  "fiscal years from now": {
+    "value": "anni fiscali da ora"
+  },
+  "hours ago": {
+    "value": "ore fa"
+  },
+  "hours from now": {
+    "value": "ore da ora"
+  },
+  "minutes ago": {
+    "value": "minuti fa"
+  },
+  "minutes from now": {
+    "value": "minuti da ora"
+  },
+  "months ago": {
+    "value": "mesi fa"
+  },
+  "months from now": {
+    "value": "mesi da ora"
+  },
+  "now": {
+    "value": "ora"
+  },
+  "quarters ago": {
+    "value": "trimestri fa"
+  },
+  "quarters from now": {
+    "value": "trimestri da ora"
+  },
+  "seconds ago": {
+    "value": "secondi fa"
+  },
+  "seconds from now": {
+    "value": "secondi da ora"
+  },
+  "weeks ago": {
+    "value": "settimane fa"
+  },
+  "weeks from now": {
+    "value": "settimane da ora"
+  },
+  "years ago": {
+    "value": "anni fa"
+  },
+  "years from now": {
+    "value": "anni da ora"
+  }
+}

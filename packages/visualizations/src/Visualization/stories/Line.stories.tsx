@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -25,15 +25,16 @@
  */
 
 import type { Story } from '@storybook/react/types-6-0'
-import omit from 'lodash/omit'
 import React from 'react'
+import omit from 'lodash/omit'
 import { Visualization } from '../Visualization'
-import type { VisualizationProps } from '../Visualization'
-import type { Fields, CLine } from '@looker/visualizations-adapters'
+import type { Fields, LineProps, CLine } from '@looker/visualizations-adapters'
 import {
+  buildChartConfig,
   QueryContext,
   buildPivotFields,
   mockPivots,
+  mockLineConfig,
   mockSdkConfigResponse,
   mockSdkDataResponse,
   mockSdkFieldsResponse,
@@ -47,64 +48,38 @@ export default {
   title: 'Visualizations/Line',
 }
 
-type LineVisualizationProps = Omit<VisualizationProps, 'config'> & {
-  config: Omit<CLine, 'type'> // omit type from config object as that will be hard-coded in the template
+type StoryTemplateProps = Omit<LineProps, 'config'> & {
+  config: Omit<CLine, 'type'>
 }
 
-const Template: Story<LineVisualizationProps> = ({ config, ...restProps }) => {
+const Template: Story<StoryTemplateProps> = ({
+  config: configProp,
+  ...restProps
+}) => {
+  const data = tabularResponse([...mockSdkDataResponse])
+
+  const config = buildChartConfig({
+    config: {
+      ...mockSdkConfigResponse,
+      ...configProp,
+      type: 'line',
+    },
+    data,
+    fields: mockSdkFieldsResponse as Fields,
+  })
+
   return (
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     <QueryContext.Provider
       value={{
-        config: { ...mockSdkConfigResponse, y_axes: undefined },
+        config,
         ok: true,
         loading: false,
-        data: tabularResponse([...mockSdkDataResponse]),
-        fields: { ...mockSdkFieldsResponse } as Fields,
+        data,
+        fields: mockSdkFieldsResponse as Fields,
       }}
     >
-      <Visualization
-        config={{ ...config, type: 'line' }}
-        height={600}
-        width={800}
-        {...restProps}
-      />
-    </QueryContext.Provider>
-  )
-}
-
-const PivotTemplate: Story<VisualizationProps> = ({ config, ...restProps }) => {
-  const mockPivotFields = buildPivotFields({
-    fields: {
-      ...mockSdkFieldsResponse,
-    } as Fields,
-    pivots: mockPivots,
-  })
-
-  const mockPivotData = tabularPivotResponse({
-    data: [...mockSdkPivotDataResponse],
-    fields: {
-      ...mockSdkFieldsResponse,
-    } as Fields,
-    pivots: mockPivots,
-  })
-
-  return (
-    <QueryContext.Provider
-      value={{
-        config: { ...mockSdkConfigResponse },
-        ok: true,
-        loading: false,
-        data: mockPivotData,
-        fields: mockPivotFields,
-      }}
-    >
-      <Visualization
-        config={{ ...config, type: 'line' }}
-        height={600}
-        width={800}
-        {...restProps}
-      />
+      <Visualization height={600} width={800} {...restProps} />
     </QueryContext.Provider>
   )
 }
@@ -124,29 +99,79 @@ PointStyleNone.args = {
   config: { series: [{ style: 'none' }, { style: 'none' }] },
 }
 
-export const Pivot = PivotTemplate.bind({})
+export const Pivot = () => {
+  const mockPivotFields = buildPivotFields({
+    fields: {
+      ...mockSdkFieldsResponse,
+    } as Fields,
+    pivots: mockPivots,
+  })
+
+  const mockPivotData = tabularPivotResponse({
+    data: [...mockSdkPivotDataResponse],
+    fields: {
+      ...mockSdkFieldsResponse,
+    } as Fields,
+    pivots: mockPivots,
+  })
+
+  const config = buildChartConfig({
+    config: { ...mockLineConfig, type: 'area' },
+    data: mockPivotData,
+    fields: mockPivotFields,
+  })
+
+  return (
+    <QueryContext.Provider
+      value={{
+        config,
+        ok: true,
+        loading: false,
+        data: mockPivotData,
+        fields: mockPivotFields,
+      }}
+    >
+      <Visualization height={600} width={800} />
+    </QueryContext.Provider>
+  )
+}
 Pivot.parameters = {
   storyshots: { disable: true },
 }
 
-export const DefaultYAxisSingleMeasure: Story<LineVisualizationProps> = () => (
-  <QueryContext.Provider
-    value={{
-      config: { ...mockSdkConfigResponse, y_axes: undefined },
-      ok: true,
-      loading: false,
-      // Need to filter out average measure values in each datum
-      data: tabularResponse(
-        [...mockSdkDataResponse].map(datum => {
-          return omit(datum, 'orders.average_total_amount_of_order_usd')
-        })
-      ),
-      fields: {
-        ...mockSdkFieldsResponse,
-        measures: mockSdkFieldsResponse.measures.slice(0, 1), // removes the average measure field
-      } as Fields,
-    }}
-  >
-    <Visualization config={{ type: 'line' }} height={600} width={800} />
-  </QueryContext.Provider>
-)
+export const DefaultYAxisSingleMeasure: Story<LineProps> = () => {
+  const fields = {
+    ...mockSdkFieldsResponse,
+    measures: mockSdkFieldsResponse.measures.slice(0, 1), // removes the average measure field
+  } as Fields
+
+  const data = tabularResponse(
+    [...mockSdkDataResponse].map(datum => {
+      return omit(datum, 'orders.average_total_amount_of_order_usd')
+    })
+  )
+
+  const config = buildChartConfig({
+    config: {
+      ...mockSdkConfigResponse,
+      y_axes: undefined,
+      type: 'line',
+    },
+    data,
+    fields,
+  })
+
+  return (
+    <QueryContext.Provider
+      value={{
+        config,
+        ok: true,
+        loading: false,
+        data,
+        fields,
+      }}
+    >
+      <Visualization height={600} width={800} />
+    </QueryContext.Provider>
+  )
+}

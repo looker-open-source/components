@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -24,14 +24,14 @@
 
  */
 
+import { ExtendComponentsThemeProvider } from '@looker/components-providers'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { act, fireEvent, screen } from '@testing-library/react'
-import { ThemeProvider } from 'styled-components'
 import React from 'react'
 import type { UseRippleProps } from './types'
 import { useRipple } from './useRipple'
 
-const RippleInner = (props: UseRippleProps) => {
+const RippleComponent = (props: UseRippleProps) => {
   const {
     callbacks: { startBG, endBG, startFG, endFG },
     className,
@@ -49,19 +49,6 @@ const RippleInner = (props: UseRippleProps) => {
     </div>
   )
 }
-
-// TODO: Remove this when we change brandAnimation default to true
-// (then just change the value below to use this for the brandAnimation: false scenario)
-const RippleComponent = (props: UseRippleProps) => (
-  <ThemeProvider
-    theme={theme => ({
-      ...theme,
-      defaults: { ...theme.defaults, brandAnimation: true },
-    })}
-  >
-    <RippleInner {...props} />
-  </ThemeProvider>
-)
 
 beforeEach(() => {
   jest.useFakeTimers()
@@ -115,7 +102,15 @@ describe('useRipple', () => {
   })
 
   test('theme setting brandAnimation false', () => {
-    renderWithTheme(<RippleInner color="key" />)
+    renderWithTheme(
+      <ExtendComponentsThemeProvider
+        themeCustomizations={{
+          defaults: { brandAnimation: false },
+        }}
+      >
+        <RippleComponent color="key" />
+      </ExtendComponentsThemeProvider>
+    )
     expect(screen.getByText('style')).toHaveStyle({
       '--ripple-color': '#6C43E0',
       '--ripple-scale-end': '1',

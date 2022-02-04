@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -30,7 +30,7 @@ import type { FC } from 'react'
 import React from 'react'
 import { i18nResources } from './resources'
 import type { UseI18nProps } from './useI18n'
-import { i18nInit, i18nInitOptions, useI18n } from './useI18n'
+import { useI18n } from './useI18n'
 
 const TestComponent: FC<UseI18nProps> = ({ children, ...props }) => {
   useI18n(props)
@@ -65,15 +65,6 @@ describe('useI18n', () => {
         ],
       ]
     `)
-    spy.mockRestore()
-  })
-})
-
-describe('i18nInit', () => {
-  test('calls init with default options', () => {
-    const spy = jest.spyOn(i18next, 'init')
-    i18nInit()
-    expect(i18next.init).toHaveBeenCalledWith(i18nInitOptions)
     spy.mockRestore()
   })
 })

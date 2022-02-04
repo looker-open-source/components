@@ -1,0 +1,65 @@
+{
+  "days ago": {
+    "value": "天前"
+  },
+  "days from now": {
+    "value": "天后"
+  },
+  "fiscal quarter from now": {
+    "value": "个财政季度后（距今）"
+  },
+  "fiscal quarters ago": {
+    "value": "个财政季度前"
+  },
+  "fiscal years ago": {
+    "value": "个财政年度前"
+  },
+  "fiscal years from now": {
+    "value": "个财政年度后"
+  },
+  "hours ago": {
+    "value": "小时前"
+  },
+  "hours from now": {
+    "value": "小时后"
+  },
+  "minutes ago": {
+    "value": "分钟前"
+  },
+  "minutes from now": {
+    "value": "分钟后"
+  },
+  "months ago": {
+    "value": "个月前"
+  },
+  "months from now": {
+    "value": "个月后"
+  },
+  "now": {
+    "value": "现在"
+  },
+  "quarters ago": {
+    "value": "个季度前"
+  },
+  "quarters from now": {
+    "value": "个季度后"
+  },
+  "seconds ago": {
+    "value": "秒前"
+  },
+  "seconds from now": {
+    "value": "秒后"
+  },
+  "weeks ago": {
+    "value": "周前"
+  },
+  "weeks from now": {
+    "value": "周后"
+  },
+  "years ago": {
+    "value": "年前"
+  },
+  "years from now": {
+    "value": "年后"
+  }
+}

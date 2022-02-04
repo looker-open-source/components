@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -73,7 +73,7 @@ const betweenToString = ({ bounds, low, high, is }: any) =>
  */
 const valueToString = ({ is, type, value }: ValueProps) =>
   value
-    ?.map<string>((v) => `${isToString(is)}${type === '=' ? '' : type}${v}`)
+    ?.map<string>(v => `${isToString(is)}${type === '=' ? '' : type}${v}`)
     .join(',') || ''
 
 /**
@@ -120,7 +120,7 @@ const removeEmptyItems = (items: FilterModel[]) =>
  */
 const addDuplicateNotNodeIfNeeded = (list: FilterModel[]): FilterModel[] => {
   // break up into OR and AND clauses
-  const [orClauses, andClauses] = partition(list, (item) => item.is)
+  const [orClauses, andClauses] = partition(list, item => item.is)
   // check for duplicate not condition
   if (
     andClauses.length === 1 &&
@@ -130,7 +130,7 @@ const addDuplicateNotNodeIfNeeded = (list: FilterModel[]): FilterModel[] => {
       andClauses[0].value?.length > 1
     ) &&
     orClauses.length >= 1 &&
-    orClauses.every((item) => item.type === '=')
+    orClauses.every(item => item.type === '=')
   ) {
     // duplicate the first not (AND) clause
     return [...orClauses, ...andClauses, andClauses[0]]

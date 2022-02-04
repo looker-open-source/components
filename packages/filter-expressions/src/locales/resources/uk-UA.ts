@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -27,6 +27,7 @@ import type { I18nState } from '../../utils'
 
 const resources = {
   describe_date: {
+    ' complete': ' завершено',
     'absolute prefix dateTime': '{{prefix}} {{dateTime}}',
     ago: 'тому',
     'from now': 'відтепер',
@@ -67,25 +68,45 @@ const resources = {
     September: 'вересня',
   },
   get_unit_label: {
+    'complete day': 'повний день',
     'complete days': 'повних днів',
+    'complete fiscal quarter': 'повний фінансовий квартал',
     'complete fiscal quarters': 'повних фінансових кварталів',
+    'complete fiscal year': 'повний фінансовий рік',
     'complete fiscal years': 'повних фінансових років',
+    'complete hour': 'повну годину',
     'complete hours': 'повних годин',
+    'complete minute': 'повну хвилину',
     'complete minutes': 'повних хвилин',
+    'complete month': 'повний місяць',
     'complete months': 'повних місяців',
+    'complete quarter': 'повний квартал',
     'complete quarters': 'повних кварталів',
+    'complete second': 'повну секунду',
     'complete seconds': 'повних секунд',
+    'complete week': 'повний тиждень',
     'complete weeks': 'повних тижнів',
+    'complete year': 'повний рік',
     'complete years': 'повних років',
+    day: 'день',
     days: 'дн',
+    'fiscal quarter': 'фінансовий квартал',
     'fiscal quarters': 'фінансових кварталів',
+    'fiscal year': 'фінансовий рік',
     'fiscal years': 'фінансових років',
+    hour: 'година',
     hours: 'год',
+    minute: 'хвилина',
     minutes: 'хв',
+    month: 'місяць',
     months: 'міс.',
+    quarter: 'квартал',
     quarters: 'кварт.',
+    second: 'секунда',
     seconds: 'сек',
+    week: 'тиждень',
     weeks: 'тижн',
+    year: 'рік',
     years: 'р.',
   },
   summary: {

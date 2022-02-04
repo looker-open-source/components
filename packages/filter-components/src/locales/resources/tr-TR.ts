@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -33,6 +33,29 @@ const resources = {
     Add: 'Ekle',
     Remove: 'Kaldır',
   },
+  before_after_units: {
+    'days ago': 'gün önce',
+    'days from now': 'gün sonra',
+    'fiscal quarter from now': 'mali çeyrek sonra',
+    'fiscal quarters ago': 'mali çeyrek önce',
+    'fiscal years ago': 'mali yıl önce',
+    'fiscal years from now': 'mali yıl sonra',
+    'hours ago': 'saat önce',
+    'hours from now': 'saat sonra',
+    'minutes ago': 'dakika önce',
+    'minutes from now': 'dakika sonra',
+    'months ago': 'ay önce',
+    'months from now': 'ay sonra',
+    now: 'şimdi',
+    'quarters ago': 'çeyrek önce',
+    'quarters from now': 'çeyrek sonra',
+    'seconds ago': 'saniye önce',
+    'seconds from now': 'saniye sonra',
+    'weeks ago': 'hafta önce',
+    'weeks from now': 'hafta sonra',
+    'years ago': 'yıl önce',
+    'years from now': 'yıl sonra',
+  },
   BeforeAfter: {
     absolute: '(mutlak)',
     relative: '(göreli)',
@@ -41,15 +64,25 @@ const resources = {
     AND: 'İLE',
   },
   date_units: {
+    day: 'gün',
     days: 'gün',
+    'fiscal quarter': 'mali çeyrek',
     'fiscal quarters': 'mali çeyrek',
+    'fiscal year': 'mali yıl',
     'fiscal years': 'mali yıl',
+    hour: 'saat',
     hours: 'saat',
+    minute: 'dakika',
     minutes: 'dakika',
+    month: 'ay',
     months: 'ay',
+    quarter: 'çeyrek',
     quarters: 'çeyrek',
+    second: 'saniye',
     seconds: 'saniye',
+    week: 'hafta',
     weeks: 'hafta',
+    year: 'yıl',
     years: 'yıl',
   },
   get_date_filter_options: {
@@ -183,6 +216,12 @@ const resources = {
   },
   RelativeTimeframePresets: {
     More: 'Daha Fazla',
+  },
+  use_filters_errors: {
+    'Selection required': 'Seçim gerekli',
+    'Invalid value': 'Geçersiz değer',
+    'No value is set for your user attribute':
+      'Kullanıcı özniteliği için ayarlanan değer yok',
   },
   use_option_filtering: {
     'No values': 'Değer yok',

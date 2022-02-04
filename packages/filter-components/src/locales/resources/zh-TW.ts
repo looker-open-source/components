@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -33,6 +33,29 @@ const resources = {
     Add: '新增',
     Remove: '移除',
   },
+  before_after_units: {
+    'days ago': '天前',
+    'days from now': '天後',
+    'fiscal quarter from now': '個會計季度後',
+    'fiscal quarters ago': '個會計季度前',
+    'fiscal years ago': '個會計年度前',
+    'fiscal years from now': '個會計年度後',
+    'hours ago': '小時前',
+    'hours from now': '小時後',
+    'minutes ago': '分鐘前',
+    'minutes from now': '分鐘後',
+    'months ago': '個月前',
+    'months from now': '個月後',
+    now: '現在',
+    'quarters ago': '季前',
+    'quarters from now': '季後',
+    'seconds ago': '秒前',
+    'seconds from now': '秒後',
+    'weeks ago': '週前',
+    'weeks from now': '週後',
+    'years ago': '年前',
+    'years from now': '年後',
+  },
   BeforeAfter: {
     absolute: '(絕對)',
     relative: '(相對)',
@@ -41,15 +64,25 @@ const resources = {
     AND: 'AND',
   },
   date_units: {
+    day: '天',
     days: '天',
+    'fiscal quarter': '會計季度',
     'fiscal quarters': '會計季度',
+    'fiscal year': '會計年度',
     'fiscal years': '會計年度',
+    hour: '小時',
     hours: '小時',
+    minute: '分鐘',
     minutes: '分鐘',
+    month: '月',
     months: '個月',
+    quarter: '季',
     quarters: '季',
+    second: '秒',
     seconds: '秒',
+    week: '週',
     weeks: '週',
+    year: '年',
     years: '年',
   },
   get_date_filter_options: {
@@ -183,6 +216,11 @@ const resources = {
   },
   RelativeTimeframePresets: {
     More: '更多',
+  },
+  use_filters_errors: {
+    'Selection required': '需要選取內容',
+    'Invalid value': '無效的值',
+    'No value is set for your user attribute': '沒有為您的使用者屬性設定值',
   },
   use_option_filtering: {
     'No values': '沒有值',

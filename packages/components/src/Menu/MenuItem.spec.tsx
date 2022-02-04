@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -185,9 +185,6 @@ describe('MenuItem', () => {
         Array [
           "The detail prop is not supported when nestedMenu is used.",
         ],
-        Array [
-          "The detail prop is not supported when nestedMenu is used.",
-        ],
       ]
     `)
   })
@@ -195,13 +192,12 @@ describe('MenuItem', () => {
     test('default', () => {
       renderWithTheme(<MenuItem>Menu Item</MenuItem>)
 
-      const menu = screen.getByText('Menu Item').closest('li')
+      const menu = screen.getByText('Menu Item').closest('button')
       expect(menu).not.toHaveClass('bg-on fg-in')
       expect(menu).toHaveStyle({
         '--ripple-color': '#71767a',
         '--ripple-scale-end': '1',
-        // This should change to 0.1 when brandAnimation default becomes true
-        '--ripple-scale-start': '1',
+        '--ripple-scale-start': '0.1',
         '--ripple-size': '100%',
         '--ripple-translate': '0, 0',
       })

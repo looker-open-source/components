@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -27,10 +27,13 @@ import React from 'react'
 import type { Story } from '@storybook/react/types-6-0'
 import type { DateFilterType } from '@looker/filter-expressions'
 
+import { i18nInit } from './../../../../../utils'
 import { DateFilter } from './DateFilter'
 import type { FilterParamProps } from '../../../../types/filter_param_props'
 
-const Template: Story<FilterParamProps<DateFilterType>> = (args) => (
+i18nInit()
+
+const Template: Story<FilterParamProps<DateFilterType>> = args => (
   <DateFilter {...args} />
 )
 

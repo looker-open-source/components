@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -33,6 +33,29 @@ const resources = {
     Add: 'הוסף',
     Remove: 'הסר',
   },
+  before_after_units: {
+    'days ago': 'ימים חלפו',
+    'days from now': 'ימים מעכשיו',
+    'fiscal quarter from now': 'רבעון פיסקלי מעכשיו',
+    'fiscal quarters ago': 'רבעונים פיסקליים חלפו',
+    'fiscal years ago': 'שנים פיסקליות חלפו',
+    'fiscal years from now': 'שנים פיסקליות מעכשיו',
+    'hours ago': 'שעות חלפו',
+    'hours from now': 'שעות מעכשיו',
+    'minutes ago': 'דקות חלפו',
+    'minutes from now': 'דקות מעכשיו',
+    'months ago': 'חודשים חלפו',
+    'months from now': 'חודשים מעכשיו',
+    now: 'עכשיו',
+    'quarters ago': 'רבעונים חלפו',
+    'quarters from now': 'רבעונים מעכשיו',
+    'seconds ago': 'שניות חלפו',
+    'seconds from now': 'שניות מעכשיו',
+    'weeks ago': 'שבועות חלפו',
+    'weeks from now': 'שבועות מעכשיו',
+    'years ago': 'שנים חלפו',
+    'years from now': 'שנים מעכשיו',
+  },
   BeforeAfter: {
     absolute: '(מוחלט)',
     relative: '(יחסי)',
@@ -41,15 +64,25 @@ const resources = {
     AND: 'ו',
   },
   date_units: {
+    day: 'יום',
     days: 'ימים',
+    'fiscal quarter': 'רבעון פיסקלי',
     'fiscal quarters': 'רבעונים פיסקליים',
+    'fiscal year': 'שנה פיסקלית',
     'fiscal years': 'שנים פיסקליות',
+    hour: 'שעה',
     hours: 'שעות',
+    minute: 'דקה',
     minutes: 'דקות',
+    month: 'חודש',
     months: 'חודשים',
+    quarter: 'רבעון',
     quarters: 'רבעונים',
+    second: 'שנייה',
     seconds: 'שניות',
+    week: 'שבוע',
     weeks: 'שבועות',
+    year: 'שנה',
     years: 'שנים',
   },
   get_date_filter_options: {
@@ -183,6 +216,11 @@ const resources = {
   },
   RelativeTimeframePresets: {
     More: 'עוד',
+  },
+  use_filters_errors: {
+    'Selection required': 'יש לבצע בחירה',
+    'Invalid value': 'ערך לא חוקי',
+    'No value is set for your user attribute': 'לא הוגדר ערך לתכונת המשתמש שלך',
   },
   use_option_filtering: {
     'No values': 'אין ערכים',

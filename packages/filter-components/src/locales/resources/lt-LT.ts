@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -33,6 +33,29 @@ const resources = {
     Add: 'Pridėti',
     Remove: 'Pašalinti',
   },
+  before_after_units: {
+    'days ago': 'dienas prieš',
+    'days from now': 'dienas nuo dabar',
+    'fiscal quarter from now': 'finansinis ketvirtis nuo dabar',
+    'fiscal quarters ago': 'finansinius ketvirčius prieš',
+    'fiscal years ago': 'finansinius metus prieš',
+    'fiscal years from now': 'finansinius metus nuo dabar',
+    'hours ago': 'valandas prieš',
+    'hours from now': 'valandas nuo dabar',
+    'minutes ago': 'minutes prieš',
+    'minutes from now': 'minutes nuo dabar',
+    'months ago': 'mėnesius prieš',
+    'months from now': 'mėnesius nuo dabar',
+    now: 'dabar',
+    'quarters ago': 'ketvirčius prieš',
+    'quarters from now': 'ketvirčius nuo dabar',
+    'seconds ago': 'sekundes prieš',
+    'seconds from now': 'sekundes nuo dabar',
+    'weeks ago': 'savaites prieš',
+    'weeks from now': 'savaites nuo dabar',
+    'years ago': 'metus prieš',
+    'years from now': 'metus nuo dabar',
+  },
   BeforeAfter: {
     absolute: '(visiškai)',
     relative: '(santykinai)',
@@ -41,15 +64,25 @@ const resources = {
     AND: 'IR',
   },
   date_units: {
+    day: 'd.',
     days: 'dienos',
+    'fiscal quarter': 'finansinis ketvirtis',
     'fiscal quarters': 'finansiniai ketvirčiai',
+    'fiscal year': 'finansiniai metai',
     'fiscal years': 'finansiniai metai',
+    hour: 'val.',
     hours: 'valandos',
+    minute: 'min.',
     minutes: 'minutės',
+    month: 'mėnuo',
     months: 'mėnesiai',
+    quarter: 'ketvirtis',
     quarters: 'ketvirčiai',
+    second: 'sek.',
     seconds: 'sekundės',
+    week: 'savaitė',
     weeks: 'savaitės',
+    year: 'metai',
     years: 'metai',
   },
   get_date_filter_options: {
@@ -183,6 +216,12 @@ const resources = {
   },
   RelativeTimeframePresets: {
     More: 'Daugiau',
+  },
+  use_filters_errors: {
+    'Selection required': 'Reikalinga atranka',
+    'Invalid value': 'Klaidinga reikšmė',
+    'No value is set for your user attribute':
+      'Nenustatyta jokia vartotojo atributo vertė',
   },
   use_option_filtering: {
     'No values': 'Nėra verčių',

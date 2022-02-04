@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -42,7 +42,7 @@ const describeMultiValue = (
       // if it's a parameter field - lookup value in enumerations to get label
       const valueMap = keyBy(field.enumerations, 'value')
       return values
-        .map((value) => {
+        .map(value => {
           // parameter values in enumeration are already escaped
           // we escape here to match the enumeration values
           const escapedValue = escapeParameterValue(value)

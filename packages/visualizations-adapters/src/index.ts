@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -35,4 +35,4 @@ export * from './VisWrapper'
 export * from './adapters'
 export * from './types'
 export * from './utils'
-export * from './transformations'
+export * from './configTransformations'

@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -27,6 +27,7 @@ import type { I18nState } from '../../utils'
 
 const resources = {
   describe_date: {
+    ' complete': ' slutför',
     'absolute prefix dateTime': '{{prefix}} {{dateTime}}',
     ago: 'sedan',
     'from now': 'från nu',
@@ -67,25 +68,45 @@ const resources = {
     September: 'September',
   },
   get_unit_label: {
+    'complete day': 'hel dag',
     'complete days': 'hela dagar',
+    'complete fiscal quarter': 'helt räkenskapskvartal',
     'complete fiscal quarters': 'hela räkenskapskvartal',
+    'complete fiscal year': 'helt räkenskapsår',
     'complete fiscal years': 'hela räkenskapsår',
+    'complete hour': 'hel timme',
     'complete hours': 'hela timmar',
+    'complete minute': 'hel minut',
     'complete minutes': 'hela minuter',
+    'complete month': 'hel månad',
     'complete months': 'hela månader',
+    'complete quarter': 'helt kvartal',
     'complete quarters': 'hela kvartal',
+    'complete second': 'hel sekund',
     'complete seconds': 'hela sekunder',
+    'complete week': 'hel vecka',
     'complete weeks': 'hela veckor',
+    'complete year': 'helt år',
     'complete years': 'hela år',
+    day: 'dag',
     days: 'dagar',
+    'fiscal quarter': 'räkenskapskvartal',
     'fiscal quarters': 'räkenskapskvartal',
+    'fiscal year': 'räkenskapsår',
     'fiscal years': 'räkenskapsår',
+    hour: 'timme',
     hours: 'timmar',
+    minute: 'minut',
     minutes: 'minuter',
+    month: 'månad',
     months: 'månader',
+    quarter: 'kvartal',
     quarters: 'kvartal',
+    second: 'sekund',
     seconds: 'sekunder',
+    week: 'vecka',
     weeks: 'veckor',
+    year: 'år',
     years: 'år',
   },
   summary: {

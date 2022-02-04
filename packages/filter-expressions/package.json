@@ -7,12 +7,12 @@
     "access": "public"
   },
   "dependencies": {
+    "@looker/i18n": "*",
     "@looker/sdk": "^21.12.0",
     "lodash": "^4.17.20",
     "pegjs": "0.10.0"
   },
   "devDependencies": {
-    "@looker/eslint-config": "^1.5.1",
     "@looker/eslint-config-oss": "^1.7.13",
     "@types/pegjs": "^0.10.1",
     "@typescript-eslint/eslint-plugin": "*",
@@ -40,11 +40,14 @@
   "eslintConfig": {
     "root": true,
     "extends": [
-      "@looker/eslint-config/oss-compat"
+      "@looker/eslint-config-oss"
     ],
     "rules": {
       "@typescript-eslint/no-explicit-any": "off",
       "@typescript-eslint/no-non-null-assertion": "off",
+      "no-restricted-imports": "off",
+      "camelcase": "off",
+      "import/order": "off",
       "sort-keys-fix/sort-keys-fix": "off"
     }
   },

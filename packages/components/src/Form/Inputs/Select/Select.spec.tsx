@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -29,7 +29,7 @@ import {
   renderWithTheme,
 } from '@looker/components-test-utils'
 import { AutoGraph, BarChart } from '@styled-icons/material'
-import { fireEvent, screen } from '@testing-library/react'
+import { act, fireEvent, screen } from '@testing-library/react'
 import React, { useState, useMemo, useEffect } from 'react'
 
 import { Button } from '../../../Button'
@@ -42,7 +42,63 @@ const options100 = Array.from(Array(100), (_, i) => ({
   value: String(i + 1),
 }))
 
+beforeEach(() => {
+  jest.useFakeTimers()
+})
+
+afterEach(() => {
+  jest.runOnlyPendingTimers()
+  jest.useRealTimers()
+})
+
+const runTimers = () =>
+  act(() => {
+    jest.runOnlyPendingTimers()
+  })
+
 describe('Select / SelectMulti', () => {
+  test('ripple effect', () => {
+    renderWithTheme(
+      <Select
+        options={[
+          { label: 'Cheddar', value: 'cheddar' },
+          { label: 'Gouda', value: 'gouda' },
+          { label: 'Swiss', value: 'swiss' },
+        ]}
+        placeholder="Select"
+      ></Select>
+    )
+
+    fireEvent.click(screen.getByPlaceholderText('Select'))
+
+    const select = screen.getByText('Cheddar').closest('li')
+    expect(select).not.toHaveClass('bg-on fg-in')
+    expect(select).toHaveStyle({
+      '--ripple-color': '#71767a',
+      '--ripple-scale-end': '1',
+      '--ripple-scale-start': '0.1',
+      '--ripple-size': '100%',
+      '--ripple-translate': '0, 0',
+    })
+
+    select && fireEvent.focus(select)
+    expect(select).toHaveClass('bg-on')
+
+    select && fireEvent.mouseDown(select)
+    expect(select).toHaveClass('bg-on fg-in')
+
+    // foreground is locked for a minimum time to animate the ripple
+    select && fireEvent.mouseUp(select)
+    runTimers()
+    expect(select).toHaveClass('bg-on fg-out')
+    runTimers()
+    expect(select).toHaveClass('bg-on')
+
+    select && fireEvent.blur(select)
+    expect(select).not.toHaveClass('bg-on fg-in')
+    fireEvent.click(document)
+  })
+
   const options = [{ value: 'FOO' }, { value: 'BAR' }]
 
   test.each([
@@ -511,7 +567,7 @@ describe('Select / SelectMulti', () => {
       ],
     ]
 
-    test.each(testArray)('100 options do not all render', (_, getJSX) => {
+    test.each(testArray)('100 options do not all render (%s)', (_, getJSX) => {
       const longOptions = Array.from(Array(100), (_, index) => ({
         value: `${index}`,
       }))
@@ -530,7 +586,7 @@ describe('Select / SelectMulti', () => {
     })
 
     test.each(testArray)(
-      '100 grouped options do not all render',
+      '100 grouped options do not all render (%s)',
       (_, getJSX) => {
         const longOptions = Array.from(Array(100), (_, index) => ({
           value: `${index}`,
@@ -558,7 +614,7 @@ describe('Select / SelectMulti', () => {
     )
 
     test.each(testArray)(
-      'Hover navigation is off while scrolling',
+      'Hover navigation is off while scrolling (%s)',
       (_, getJSX) => {
         jest.useFakeTimers()
 
@@ -597,14 +653,13 @@ describe('Select / SelectMulti', () => {
         // Close popover to silence act() warning
         fireEvent.click(document)
 
-        jest.runOnlyPendingTimers()
-        jest.useRealTimers()
+        runTimers()
 
         rafSpy.mockRestore()
       }
     )
 
-    test.each(testArray)('99 options all render', (_, getJSX) => {
+    test.each(testArray)('99 options all render (%s)', (_, getJSX) => {
       const longOptions = Array.from(Array(99), (_, index) => ({
         value: `${index}`,
       }))
@@ -786,6 +841,8 @@ describe('Select / SelectMulti', () => {
     fireEvent.click(option)
 
     expect(input).toHaveFocus()
+
+    runTimers()
 
     // Close popover to silence act() warning
     fireEvent.click(document)

@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -167,7 +167,7 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
      * FROM State
      */
     const [fromTextInputValue, setFromTextInputValue] = useState(
-      formatDateString(dateRange.from, locale, dateStringFormat)
+      formatDateString(dateRange.from, dateStringFormat, locale)
     )
     const [validFromDate, setValidFromDate] = useState(
       validationType !== 'error'
@@ -178,7 +178,7 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
      * TO State
      */
     const [toTextInputValue, setToTextInputValue] = useState(
-      formatDateString(dateRange.to, locale, dateStringFormat)
+      formatDateString(dateRange.to, dateStringFormat, locale)
     )
     const [validToDate, setValidToDate] = useState(validationType !== 'error')
     const toID = useID(id && `to-${id}`)
@@ -211,11 +211,11 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
         setDateRange(value)
         value.from &&
           inputs.from.setValue(
-            formatDateString(value.from, locale, dateStringFormat)
+            formatDateString(value.from, dateStringFormat, locale)
           )
         value.to &&
           inputs.to.setValue(
-            formatDateString(value.to, locale, dateStringFormat)
+            formatDateString(value.to, dateStringFormat, locale)
           )
         value.from &&
           !isDateRangeInView(value, viewMonth) &&
@@ -261,7 +261,7 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
       // only update inactive input so as not to block manual keyboard input
       const nonActiveInput = datesToSet[0] === 'from' ? 'to' : 'from'
       inputs[nonActiveInput].setValue(
-        formatDateString(newDateRange[nonActiveInput], locale, dateStringFormat)
+        formatDateString(newDateRange[nonActiveInput], dateStringFormat, locale)
       )
 
       if (!validationType) {
@@ -280,7 +280,7 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
     const handleCalendarClick = (date: Date) => {
       const datesToSet = chooseDatesToSet(activeDateInput, date, dateRange)
       for (const d of datesToSet) {
-        inputs[d].setValue(formatDateString(date, locale, dateStringFormat))
+        inputs[d].setValue(formatDateString(date, dateStringFormat, locale))
       }
       if (datesToSet[0] === activeDateInput && datesToSet.length === 1) {
         toggleActiveDateInput()
@@ -369,8 +369,8 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
           <InlineInputTextBase
             placeholder={`${formatDateString(
               new Date(Date.now()),
-              locale,
-              dateStringFormat
+              dateStringFormat,
+              locale
             )}`}
             disabled={disabled}
             data-testid="date-from-text-input"
@@ -395,8 +395,8 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
           <InlineInputTextBase
             placeholder={formatDateString(
               new Date(Date.now()),
-              locale,
-              dateStringFormat
+              dateStringFormat,
+              locale
             )}
             disabled={disabled}
             fontSize="small"

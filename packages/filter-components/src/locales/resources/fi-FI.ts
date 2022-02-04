@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -33,6 +33,29 @@ const resources = {
     Add: 'Lisää',
     Remove: 'Poista',
   },
+  before_after_units: {
+    'days ago': 'päivää sitten',
+    'days from now': 'päivää tästä hetkestä',
+    'fiscal quarter from now': 'tilikauden vuosineljännes tästä hetkestä',
+    'fiscal quarters ago': 'tilikauden vuosineljännestä sitten',
+    'fiscal years ago': 'tilivuotta sitten',
+    'fiscal years from now': 'tilivuotta tästä hetkestä',
+    'hours ago': 'tuntia sitten',
+    'hours from now': 'tuntia tästä hetkestä',
+    'minutes ago': 'minuuttia sitten',
+    'minutes from now': 'minuuttia tästä hetkestä',
+    'months ago': 'kuukautta sitten',
+    'months from now': 'kuukautta tästä hetkestä',
+    now: 'nyt',
+    'quarters ago': 'vuosineljännestä sitten',
+    'quarters from now': 'vuosineljännestä tästä hetkestä',
+    'seconds ago': 'sekuntia sitten',
+    'seconds from now': 'sekuntia tästä hetkestä',
+    'weeks ago': 'viikkoa sitten',
+    'weeks from now': 'viikkoa tästä hetkestä',
+    'years ago': 'vuotta sitten',
+    'years from now': 'vuotta tästä hetkestä',
+  },
   BeforeAfter: {
     absolute: '(absoluuttinen)',
     relative: '(relatiivinen)',
@@ -41,15 +64,25 @@ const resources = {
     AND: 'JA',
   },
   date_units: {
+    day: 'päivä',
     days: 'päivää',
+    'fiscal quarter': 'tilikauden vuosineljännes',
     'fiscal quarters': 'tilikauden vuosineljännestä',
+    'fiscal year': 'tilivuosi',
     'fiscal years': 'tilivuotta',
+    hour: 'tunti',
     hours: 'tuntia',
+    minute: 'minuutti',
     minutes: 'minuuttia',
+    month: 'kuukausi',
     months: 'kuukautta',
+    quarter: 'vuosineljännes',
     quarters: 'vuosineljännestä',
+    second: 'sekunti',
     seconds: 'sekuntia',
+    week: 'viikko',
     weeks: 'viikkoa',
+    year: 'vuosi',
     years: 'vuotta',
   },
   get_date_filter_options: {
@@ -183,6 +216,12 @@ const resources = {
   },
   RelativeTimeframePresets: {
     More: 'Lisää',
+  },
+  use_filters_errors: {
+    'Selection required': 'Valinta tarvitaan',
+    'Invalid value': 'Virheellinen arvo',
+    'No value is set for your user attribute':
+      'Käyttäjäattribuutille ei ole asetettu arvoa',
   },
   use_option_filtering: {
     'No values': 'Ei arvoja',

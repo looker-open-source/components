@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -33,6 +33,29 @@ const resources = {
     Add: 'Ajouter',
     Remove: 'Retirer',
   },
+  before_after_units: {
+    'days ago': 'jours auparavant',
+    'days from now': 'journées à partir de maintenant',
+    'fiscal quarter from now': 'trimestre fiscal à partir de maintenant',
+    'fiscal quarters ago': 'trimestres fiscaux auparavant',
+    'fiscal years ago': 'années fiscales auparavant',
+    'fiscal years from now': 'années fiscales à partir de maintenant',
+    'hours ago': 'heures auparavant',
+    'hours from now': 'heures à partir de maintenant',
+    'minutes ago': 'minutes auparavant',
+    'minutes from now': 'minutes à partir de maintenant',
+    'months ago': 'mois auparavant',
+    'months from now': 'mois à partir de maintenant',
+    now: 'présentement',
+    'quarters ago': 'trimestres auparavant',
+    'quarters from now': 'trimestres à partir de maintenant',
+    'seconds ago': 'secondes auparavant',
+    'seconds from now': 'secondes à partir de maintenant',
+    'weeks ago': 'semaines auparavant',
+    'weeks from now': 'semaines à partir de maintenant',
+    'years ago': 'années auparavant',
+    'years from now': 'années à partir de maintenant',
+  },
   BeforeAfter: {
     absolute: '(absolu)',
     relative: '(relatif)',
@@ -41,15 +64,25 @@ const resources = {
     AND: 'ET',
   },
   date_units: {
+    day: 'jour',
     days: 'jours',
+    'fiscal quarter': 'trimestre fiscal',
     'fiscal quarters': 'trimestres fiscaux',
+    'fiscal year': 'année fiscale',
     'fiscal years': 'années fiscales',
+    hour: 'heure',
     hours: 'heures',
+    minute: 'minute',
     minutes: 'minutes',
+    month: 'mois',
     months: 'mois',
+    quarter: 'trimestre',
     quarters: 'trimestres',
+    second: 'seconde',
     seconds: 'secondes',
+    week: 'semaine',
     weeks: 'semaines',
+    year: 'année',
     years: 'années',
   },
   get_date_filter_options: {
@@ -183,6 +216,12 @@ const resources = {
   },
   RelativeTimeframePresets: {
     More: 'Plus',
+  },
+  use_filters_errors: {
+    'Selection required': 'Sélection requise',
+    'Invalid value': 'Valeur non valide',
+    'No value is set for your user attribute':
+      'Aucune valeur n’est définie pour cet attribut d’utilisateur',
   },
   use_option_filtering: {
     'No values': 'Aucune valeur',

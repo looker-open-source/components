@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -49,24 +49,15 @@ import {
 } from './utils'
 import { WindowedTreeContext } from './WindowedTreeNode'
 import type { TreeProps } from './types'
-import { TreeItem } from './TreeItem'
 import { TreeItemContent } from './TreeItemContent'
-import { TreeItemLabel } from './TreeItemLabel'
+import { TreeItem } from './TreeItem'
 
-/**
- * TODO: When labelToggle is introduced the aria-* attributes should land on the nested ListItem's
- * label container (i.e. the focusable element).
- */
 const TreeLayout = ({
-  assumeIconAlignment,
   border: propsBorder,
   children,
-  dividers,
-  forceLabelPadding,
   isOpen: propsIsOpen,
   itemRole = 'none', // By default, Tree's content container should be a 'div'
   label,
-  labelBackgroundOnly: propsLabelBackgroundOnly,
   defaultOpen,
   onBlur,
   onClose,
@@ -123,10 +114,6 @@ const TreeLayout = ({
     listContext.color,
   ])
 
-  const hasLabelBackgroundOnly = undefinedCoalesce([
-    propsLabelBackgroundOnly,
-    treeContext.labelBackgroundOnly,
-  ])
   const startingDepth = 0
   const depth = treeContext.depth ? treeContext.depth : startingDepth
 
@@ -193,21 +180,16 @@ const TreeLayout = ({
       depth={depth}
       href={href}
       itemRole={itemRole}
-      labelBackgroundOnly={hasLabelBackgroundOnly}
       {...contentHandlers}
       rel={createSafeRel(rel, target)}
+      ripple={false}
       target={target}
       {...ariaProps}
       {...disclosureDomProps}
       {...statefulProps}
     >
       {indicator}
-      {/* @TODO: Delete labelBackgroundOnly behavior once FieldItem component is completed */}
-      {hasLabelBackgroundOnly ? (
-        <TreeItemLabel {...statefulProps}>{disclosureLabel}</TreeItemLabel>
-      ) : (
-        disclosureLabel
-      )}
+      {disclosureLabel}
     </TreeItemContent>
   )
 
@@ -219,7 +201,6 @@ const TreeLayout = ({
           color,
           density,
           depth: depth + 1,
-          labelBackgroundOnly: hasLabelBackgroundOnly,
         }}
       >
         <div {...domProps}>
@@ -250,9 +231,6 @@ const TreeAccordionContent = styled.div<TreeBorderProps>`
   ${generateTreeBorder}
 `
 
-/**
- * @deprecated
- */
 const dividersCSS = css`
   ${TreeItem} {
     margin-top: 1px;

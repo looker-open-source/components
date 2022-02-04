@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -55,6 +55,7 @@ export const useTooltip = ({
   triggerElement,
   placement: propsPlacement = 'bottom',
   delay = 'intricate',
+  ariaDescribedById,
 }: UseTooltipProps) => {
   const [isOpen, setIsOpen] = useState(initializeOpen)
   const { busy, className, renderDOM } = useAnimationState({
@@ -167,7 +168,7 @@ export const useTooltip = ({
     const enabledDomProps = disabled
       ? {}
       : {
-          'aria-describedby': guaranteedId,
+          'aria-describedby': ariaDescribedById || guaranteedId,
           className: renderDOM ? 'hover' : undefined,
         }
 
@@ -201,5 +202,6 @@ export const useTooltip = ({
     textAlign,
     triggerElement,
     width,
+    ariaDescribedById,
   ])
 }

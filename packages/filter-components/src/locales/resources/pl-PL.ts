@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -33,6 +33,29 @@ const resources = {
     Add: 'Dodaj',
     Remove: 'Usuń',
   },
+  before_after_units: {
+    'days ago': 'dni temu',
+    'days from now': 'dni od teraz',
+    'fiscal quarter from now': 'kwartał fiskalny od teraz',
+    'fiscal quarters ago': 'kw. fiskalne temu',
+    'fiscal years ago': 'lata fiskalne/lat fiskalnych temu',
+    'fiscal years from now': 'lat fiskalnych/lata fiskalne od teraz',
+    'hours ago': 'godz. temu',
+    'hours from now': 'godz. od teraz',
+    'minutes ago': 'min temu',
+    'minutes from now': 'min od teraz',
+    'months ago': 'mies. temu',
+    'months from now': 'mies. od teraz',
+    now: 'teraz',
+    'quarters ago': 'kw. temu',
+    'quarters from now': 'kw. od teraz',
+    'seconds ago': 'sek. temu',
+    'seconds from now': 'sek. od teraz',
+    'weeks ago': 'tyg. temu',
+    'weeks from now': 'tyg. od teraz',
+    'years ago': 'lat/lata temu',
+    'years from now': 'lat/lata od teraz',
+  },
   BeforeAfter: {
     absolute: '(wartość bezwzględna)',
     relative: '(wartość relatywna)',
@@ -41,15 +64,25 @@ const resources = {
     AND: 'I',
   },
   date_units: {
+    day: 'dzień',
     days: 'dni',
+    'fiscal quarter': 'kwartał fiskalny',
     'fiscal quarters': 'kw. fiskalne',
+    'fiscal year': 'rok fiskalny',
     'fiscal years': 'lata fiskalne/lat fiskalnych',
+    hour: 'godzina',
     hours: 'godz.',
+    minute: 'minuta',
     minutes: 'min',
+    month: 'miesiąc',
     months: 'mies.',
+    quarter: 'kwartał',
     quarters: 'kw.',
+    second: 'sekunda',
     seconds: 'sek.',
+    week: 'tydzień',
     weeks: 'tyg.',
+    year: 'rok',
     years: 'lat/lata',
   },
   get_date_filter_options: {
@@ -183,6 +216,12 @@ const resources = {
   },
   RelativeTimeframePresets: {
     More: 'Więcej',
+  },
+  use_filters_errors: {
+    'Selection required': 'Wymagany wybór',
+    'Invalid value': 'Nieprawidłowa wartość',
+    'No value is set for your user attribute':
+      'Nie ustawiono wartości dla atrybutu użytkownika',
   },
   use_option_filtering: {
     'No values': 'Brak wartości',

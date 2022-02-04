@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -27,6 +27,7 @@ import type { I18nState } from '../../utils'
 
 const resources = {
   describe_date: {
+    ' complete': ' terminé',
     'absolute prefix dateTime': '{{prefix}} {{dateTime}}',
     ago: 'auparavant',
     'from now': 'à partir de maintenant',
@@ -67,25 +68,45 @@ const resources = {
     September: 'Septembre',
   },
   get_unit_label: {
+    'complete day': 'jour complet',
     'complete days': 'jours complets',
+    'complete fiscal quarter': 'trimestre fiscal complet',
     'complete fiscal quarters': 'trimestres fiscaux complets',
+    'complete fiscal year': 'année fiscale complète',
     'complete fiscal years': 'années fiscales complètes',
+    'complete hour': 'heure complète',
     'complete hours': 'heures complètes',
+    'complete minute': 'minute complète',
     'complete minutes': 'minutes complètes',
+    'complete month': 'mois complet',
     'complete months': 'mois complets',
+    'complete quarter': 'trimestre complet',
     'complete quarters': 'trimestres complets',
+    'complete second': 'seconde complète',
     'complete seconds': 'secondes complètes',
+    'complete week': 'semaine complète',
     'complete weeks': 'semaines complètes',
+    'complete year': 'année complète',
     'complete years': 'années complètes',
+    day: 'jour',
     days: 'jours',
+    'fiscal quarter': 'trimestre fiscal',
     'fiscal quarters': 'trimestres fiscaux',
+    'fiscal year': 'année fiscale',
     'fiscal years': 'années fiscales',
+    hour: 'heure',
     hours: 'heures',
+    minute: 'minute',
     minutes: 'minutes',
+    month: 'mois',
     months: 'mois',
+    quarter: 'trimestre',
     quarters: 'trimestres',
+    second: 'seconde',
     seconds: 'secondes',
+    week: 'semaine',
     weeks: 'semaines',
+    year: 'année',
     years: 'années',
   },
   summary: {

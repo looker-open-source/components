@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -25,7 +25,8 @@
  */
 import i18next from 'i18next'
 import es from 'date-fns/locale/es'
-import { getDateLocale, i18nInit } from './i18n'
+import { getDateLocale } from '@looker/i18n'
+import { i18nInit } from './i18n'
 
 describe('i18nInit', () => {
   let spy: jest.SpyInstance

@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -36,12 +36,10 @@ import {
   HoverDisclosureContext,
   partitionAriaProps,
   undefinedCoalesce,
-  useFocusVisible,
   useWrapEvent,
 } from '../utils'
 import { TreeContext } from './TreeContext'
 import { TreeItemContent } from './TreeItemContent'
-import { TreeItemLabel } from './TreeItemLabel'
 
 export type TreeItemProps = ListItemProps & {
   labelBackgroundOnly?: boolean
@@ -64,19 +62,14 @@ export const TreeItem = styled(
     onMouseEnter,
     onMouseLeave,
     rel,
+    ripple = false,
     selected,
     target,
     ...restProps
   }: TreeItemProps) => {
-    const {
-      density: contextDensity,
-      depth,
-      color: contextColor,
-      labelBackgroundOnly: contextLabelBackgroundOnly,
-    } = useContext(TreeContext)
-
-    const hasLabelBackgroundOnly =
-      contextLabelBackgroundOnly || propsLabelBackgroundOnly
+    const { density: contextDensity, depth, color: contextColor } = useContext(
+      TreeContext
+    )
 
     const [hovered, setHovered] = useState(false)
     const handleWrapperMouseEnter = useWrapEvent(
@@ -97,20 +90,6 @@ export const TreeItem = styled(
         setHovered(false)
       }
     }
-    const { focusVisible, ...focusVisibleHandlers } = useFocusVisible({
-      onBlur,
-      onKeyUp,
-    })
-
-    /**
-     * Using `labelBackgroundOnly` with items with itemRole="button" or "link"
-     * leads to overly thin backgrounds
-     */
-    if (hasLabelBackgroundOnly && itemRole !== 'none')
-      // eslint-disable-next-line no-console
-      console.warn(
-        'TreeItems should use itemRole="none" when a parent Tree has labelBackgroundOnly=true for visualize purposes.'
-      )
 
     const density = undefinedCoalesce([propsDensity, contextDensity])
     const color = undefinedCoalesce([propsColor, contextColor])
@@ -118,6 +97,7 @@ export const TreeItem = styled(
       color,
       disabled,
       hovered,
+      ripple,
       selected,
     }
     const [ariaProps, wrapperProps] = partitionAriaProps(restProps)
@@ -146,28 +126,20 @@ export const TreeItem = styled(
              * aligns with the label of the parent as opposed to the indicator
              */
             depth={depth + 1}
-            focusVisible={focusVisible}
             href={href}
             itemRole={itemRole}
-            labelBackgroundOnly={hasLabelBackgroundOnly}
             onClick={onClick}
             onFocus={onFocus}
+            onBlur={onBlur}
             onKeyDown={onKeyDown}
+            onKeyUp={onKeyUp}
             rel={createSafeRel(rel, target)}
             tabIndex={-1}
             target={target}
             {...ariaProps}
-            {...focusVisibleHandlers}
             {...statefulProps}
           >
-            {/*
-             * @TODO: Delete labelBackgroundOnly behavior once FieldItem component is completed
-             */}
-            {hasLabelBackgroundOnly ? (
-              <TreeItemLabel {...statefulProps}>{inside}</TreeItemLabel>
-            ) : (
-              inside
-            )}
+            {inside}
           </TreeItemContent>
           {outside}
         </Flex>

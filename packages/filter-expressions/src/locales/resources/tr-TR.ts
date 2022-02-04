@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -27,6 +27,7 @@ import type { I18nState } from '../../utils'
 
 const resources = {
   describe_date: {
+    ' complete': ' tamamla',
     'absolute prefix dateTime': '{{prefix}} {{dateTime}}',
     ago: 'önce',
     'from now': 'sonra',
@@ -67,25 +68,45 @@ const resources = {
     September: 'Eylül',
   },
   get_unit_label: {
+    'complete day': 'tam gün',
     'complete days': 'tam gün',
+    'complete fiscal quarter': 'tam mali çeyrek',
     'complete fiscal quarters': 'tam mali çeyrek',
+    'complete fiscal year': 'tam mali yıl',
     'complete fiscal years': 'tam mali yıl',
+    'complete hour': 'tam saat',
     'complete hours': 'tam saat',
+    'complete minute': 'tam dakika',
     'complete minutes': 'tam dakika',
+    'complete month': 'tam ay',
     'complete months': 'tam ay',
+    'complete quarter': 'tam çeyrek',
     'complete quarters': 'tam çeyrek',
+    'complete second': 'tam saniye',
     'complete seconds': 'tam saniye',
+    'complete week': 'tam hafta',
     'complete weeks': 'tam hafta',
+    'complete year': 'tam yıl',
     'complete years': 'tam yıl',
+    day: 'gün',
     days: 'gün',
+    'fiscal quarter': 'mali çeyrek',
     'fiscal quarters': 'mali çeyrek',
+    'fiscal year': 'mali yıl',
     'fiscal years': 'mali yıl',
+    hour: 'saat',
     hours: 'saat',
+    minute: 'dakika',
     minutes: 'dakika',
+    month: 'ay',
     months: 'ay',
+    quarter: 'çeyrek',
     quarters: 'çeyrek',
+    second: 'saniye',
     seconds: 'saniye',
+    week: 'hafta',
     weeks: 'hafta',
+    year: 'yıl',
     years: 'yıl',
   },
   summary: {

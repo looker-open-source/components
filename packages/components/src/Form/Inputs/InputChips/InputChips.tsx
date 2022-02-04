@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -187,6 +187,7 @@ export const InputChips = styled(
         if (updatedValues) {
           onChange(updatedValues)
         }
+        setInputValue(updatedInputValue)
 
         if (invalidValues.length > 0) {
           onValidationFail && onValidationFail(invalidValues)
@@ -194,8 +195,6 @@ export const InputChips = styled(
         if (duplicateValues.length > 0) {
           onDuplicate && onDuplicate(duplicateValues)
         }
-
-        setInputValue(updatedInputValue)
       }
 
       const handleBlur = () => {

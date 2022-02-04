@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -40,6 +40,7 @@ export type CTable = {
   // Tables should probably never use an ordered array, but we need to keep this symmetrical with other adapters
   series?: CTableSeries[] | { [key: string]: CTableSeries }
   truncate_text?: boolean
+  truncate_header?: boolean
   type: SupportedChartTypes['table']
 }
 

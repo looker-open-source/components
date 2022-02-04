@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -23,36 +23,16 @@
  SOFTWARE.
 
  */
-import type { Resource } from 'i18next'
-import i18next from 'i18next'
+import { i18nInit as i18nInitBase } from '@looker/i18n'
+import type { I18nState as _I18nState } from '@looker/i18n'
 import merge from 'lodash/merge'
 import { en } from '../locales'
 
-export type I18nState = {
-  /**
-   * A dictionary of namespaces containing key value pairs of translations
-   */
-  resources: Resource
-  /**
-   * The current locale value
-   */
-  locale: string
-}
-
+export type I18nState = _I18nState
 /**
  * Directly initialize the localization instance
  */
 export async function i18nInit(options: I18nState = en) {
-  i18next.init({
-    nsSeparator: false,
-    keySeparator: false,
-    fallbackLng: 'en',
-    lng: options.locale,
-    interpolation: {
-      escapeValue: false,
-    },
-    // add optional resources from args
-    resources: merge(options.resources, en.resources),
-  })
-  return i18next
+  const resources = merge(options.resources, en.resources)
+  return i18nInitBase({ ...options, resources })
 }

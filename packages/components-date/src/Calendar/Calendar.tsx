@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -24,7 +24,7 @@
 
  */
 
-import en from 'date-fns/locale/en-US'
+import { getDateLocale } from '@looker/i18n'
 import React from 'react'
 import type { FC } from 'react'
 import type { RangeModifier } from 'react-day-picker'
@@ -80,11 +80,11 @@ export type CalendarProps = CalendarLocaleProps & {
 
 const getLocaleProps = ({
   firstDayOfWeek,
-  locale = en,
+  locale = getDateLocale(),
 }: CalendarLocaleProps) => {
   const localeUtils: typeof LocaleUtils = {
     ...LocaleUtils,
-    formatDay: date => formatDateString(date, locale, 'iii PP'),
+    formatDay: date => formatDateString(date, 'iii PP', locale),
     formatMonthTitle: formatMonthTitle(locale),
     formatWeekdayLong: date => locale.localize?.day(date),
     formatWeekdayShort: date => locale.localize?.day(date, { width: 'short' }),

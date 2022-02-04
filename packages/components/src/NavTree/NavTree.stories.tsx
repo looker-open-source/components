@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -40,13 +40,20 @@ export default {
   title: 'NavTree',
 }
 
-export const Basic = () => (
+const Template: Story<NavTreeProps> = args => (
   <NavList>
-    <NavTree defaultOpen label="Cheeses" icon={<Folder />}>
+    <NavTree {...args}>
       <NavTreeItem parentIcon>Cheddar</NavTreeItem>
     </NavTree>
   </NavList>
 )
+
+export const Basic = Template.bind({})
+Basic.args = {
+  defaultOpen: true,
+  icon: <Folder />,
+  label: 'Cheeses',
+}
 
 export const Link = () => (
   <NavList>
@@ -82,37 +89,4 @@ export const ParentIcon = () => {
       </NavTree>
     </NavList>
   )
-}
-
-const FocusTemplate: Story<NavTreeProps> = ({ label = 'Cheeses', ...args }) => (
-  <NavList>
-    <NavTree defaultOpen label={label} {...args} />
-  </NavList>
-)
-
-export const FocusedBasic = FocusTemplate.bind({})
-FocusedBasic.args = {}
-FocusedBasic.parameters = {
-  // beforeScreenshot: async (page: Page) => {
-  //   const disclosure = await page.$('[role="treeitem"]')
-  //   await disclosure?.type(' ')
-  //   await page.waitForTimeout(50)
-  // },
-  docs: { disable: true },
-  storyshots: { disable: true },
-}
-
-export const FocusedLink = FocusTemplate.bind({})
-FocusedLink.args = {
-  href: 'https://google.com',
-  indicatorLabel: 'Cheeses Indicator',
-}
-FocusedLink.parameters = {
-  // beforeScreenshot: async (page: Page) => {
-  //   const disclosure = await page.$('[role="treeitem"]')
-  //   await disclosure?.type(' ')
-  //   await page.waitForTimeout(50)
-  // },
-  docs: { disable: true },
-  storyshots: { disable: true },
 }

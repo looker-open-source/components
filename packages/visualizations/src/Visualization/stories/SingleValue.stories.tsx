@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -27,21 +27,55 @@
 import type { Story } from '@storybook/react/types-6-0'
 import React from 'react'
 import { Visualization } from '../Visualization'
-import type { VisualizationProps } from '../Visualization'
-import { QueryDecorator } from '../../.storybook'
+import type {
+  Fields,
+  SingleValueProps,
+  CSingleValue,
+} from '@looker/visualizations-adapters'
+import {
+  buildChartConfig,
+  QueryContext,
+  mockSdkConfigResponse,
+  mockSdkDataResponse,
+  mockSdkFieldsResponse,
+  tabularResponse,
+} from '@looker/visualizations-adapters'
 
 export default {
   component: Visualization,
-  decorators: [QueryDecorator],
   title: 'Visualizations/Single Value',
 }
 
-const Template: Story<VisualizationProps> = ({ config, ...restProps }) => {
+type StoryTemplateProps = Omit<SingleValueProps, 'config'> & {
+  config: Omit<CSingleValue, 'type'>
+}
+
+const Template: Story<StoryTemplateProps> = ({
+  config: configProp,
+  ...restProps
+}) => {
+  const data = tabularResponse([...mockSdkDataResponse])
+
   return (
-    <Visualization
-      config={{ ...config, type: 'single_value' }}
-      {...restProps}
-    />
+    <QueryContext.Provider
+      value={{
+        config: buildChartConfig({
+          config: {
+            ...mockSdkConfigResponse,
+            ...configProp,
+            type: 'single_value',
+          },
+          data,
+          fields: mockSdkFieldsResponse as Fields,
+        }),
+        ok: true,
+        loading: false,
+        data,
+        fields: mockSdkFieldsResponse as Fields,
+      }}
+    >
+      <Visualization {...restProps} />
+    </QueryContext.Provider>
   )
 }
 
