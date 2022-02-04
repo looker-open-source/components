@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -33,6 +33,29 @@ const resources = {
     Add: 'Toevoegen',
     Remove: 'Verwijderen',
   },
+  before_after_units: {
+    'days ago': 'dagen geleden',
+    'days from now': 'dagen vanaf nu',
+    'fiscal quarter from now': 'fiscaal kwartaal vanaf nu',
+    'fiscal quarters ago': 'fiscale kwartalen geleden',
+    'fiscal years ago': 'fiscale jaren geleden',
+    'fiscal years from now': 'fiscale jaren vanaf nu',
+    'hours ago': 'uur geleden',
+    'hours from now': 'uur vanaf nu',
+    'minutes ago': 'maanden geleden',
+    'minutes from now': 'minuten vanaf nu',
+    'months ago': 'maanden geleden',
+    'months from now': 'maanden vanaf nu',
+    now: 'nu',
+    'quarters ago': 'kwartalen geleden',
+    'quarters from now': 'kwartalen vanaf nu',
+    'seconds ago': 'seconden geleden',
+    'seconds from now': 'seconden vanaf nu',
+    'weeks ago': 'weken geleden',
+    'weeks from now': 'weken vanaf nu',
+    'years ago': 'jaar geleden',
+    'years from now': 'jaar vanaf nu',
+  },
   BeforeAfter: {
     absolute: '(absoluut)',
     relative: '(relatief)',
@@ -41,15 +64,25 @@ const resources = {
     AND: 'EN',
   },
   date_units: {
+    day: 'dag',
     days: 'dagen',
+    'fiscal quarter': 'fiscaal kwartaal',
     'fiscal quarters': 'fiscale kwartalen',
+    'fiscal year': 'fiscaal jaar',
     'fiscal years': 'fiscale jaren',
+    hour: 'uur',
     hours: 'uren',
+    minute: 'minuut',
     minutes: 'minuten',
+    month: 'maand',
     months: 'maanden',
+    quarter: 'kwartaal',
     quarters: 'kwartalen',
+    second: 'seconde',
     seconds: 'seconden',
+    week: 'week',
     weeks: 'weken',
+    year: 'jaar',
     years: 'jaren',
   },
   get_date_filter_options: {
@@ -183,6 +216,12 @@ const resources = {
   },
   RelativeTimeframePresets: {
     More: 'Meer',
+  },
+  use_filters_errors: {
+    'Selection required': 'Selectie vereist',
+    'Invalid value': 'Ongeldige waarde',
+    'No value is set for your user attribute':
+      'Er is geen waarde ingesteld voor uw gebruikerskenmerk',
   },
   use_option_filtering: {
     'No values': 'Geen waarden',

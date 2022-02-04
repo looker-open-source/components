@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -27,7 +27,6 @@
 import { InputDateRange } from '@looker/components-date'
 import React from 'react'
 import styled from 'styled-components'
-import { getDateLocale } from '../../../../../../../../../utils'
 import type { DayRange } from '../../../../types/day_range'
 import type { RelativeTimeframeModel } from '../../../../types/relative_timeframe_types'
 import { FILTERS_DATE_FORMAT } from '../../../../utils/format_date'
@@ -60,7 +59,6 @@ export const RelativeTimeframeCustom = ({
         dateStringFormat={FILTERS_DATE_FORMAT}
         value={range}
         onChange={handleCustomChange}
-        locale={getDateLocale()}
       />
     </InputWrapper>
   )

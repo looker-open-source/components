@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -30,21 +30,14 @@ import { ListItemContent } from '../ListItem'
 import type { GenerateIndentProps } from './utils'
 import { generateIndent } from './utils'
 
-type TreeItemContentProps = ListItemContentProps &
-  GenerateIndentProps & {
-    labelBackgroundOnly?: boolean
-  }
+type TreeItemContentProps = ListItemContentProps & GenerateIndentProps
 
-/**
- * @TODO: Delete labelBackgroundOnly behavior once FieldItem component is completed
- */
 export const TreeItemContent = styled(
   ListItemContent
 ).attrs<TreeItemContentProps>(({ role = 'treeitem' }) => ({
   role,
 }))<TreeItemContentProps>`
   ${({ density, depth }) => generateIndent({ density, depth })}
-  ${({ labelBackgroundOnly }) => labelBackgroundOnly && 'background: none;'}
   display: flex;
   flex: 1;
   padding-right: 0;

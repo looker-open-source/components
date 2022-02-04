@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -27,6 +27,7 @@ import type { I18nState } from '../../utils'
 
 const resources = {
   describe_date: {
+    ' complete': ' 완료',
     'absolute prefix dateTime': '{{prefix}} {{dateTime}}',
     ago: '전',
     'from now': '지금부터',
@@ -67,25 +68,45 @@ const resources = {
     September: '9월',
   },
   get_unit_label: {
+    'complete day': '전체 일',
     'complete days': '전체 일',
+    'complete fiscal quarter': '전체 회계 분기',
     'complete fiscal quarters': '전체 회계 분기',
+    'complete fiscal year': '전체 회계 연수',
     'complete fiscal years': '전체 회계 연수',
+    'complete hour': '전체 시간',
     'complete hours': '전체 시간',
+    'complete minute': '전체 분',
     'complete minutes': '전체 분',
+    'complete month': '전체 월',
     'complete months': '전체 월',
+    'complete quarter': '전체 분기',
     'complete quarters': '전체 분기',
+    'complete second': '전체 초',
     'complete seconds': '전체 초',
+    'complete week': '전체 주',
     'complete weeks': '전체 주',
+    'complete year': '전체 년',
     'complete years': '전체 년',
+    day: '일',
     days: '일',
+    'fiscal quarter': '회계 분기',
     'fiscal quarters': '회계 분기',
+    'fiscal year': '회계 연도',
     'fiscal years': '회계 연수',
+    hour: '시간',
     hours: '시간',
+    minute: '분',
     minutes: '분',
+    month: '월',
     months: '월',
+    quarter: '분기',
     quarters: '분기',
+    second: '초',
     seconds: '초',
+    week: '주',
     weeks: '주',
+    year: '년',
     years: '년',
   },
   summary: {

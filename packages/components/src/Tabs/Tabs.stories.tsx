@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -27,7 +27,6 @@
 // import type { Page } from 'puppeteer'
 import type { FC } from 'react'
 import React, { useState } from 'react'
-import { ThemeProvider } from 'styled-components'
 import type { Story } from '@storybook/react/types-6-0'
 import { Button } from '../Button'
 import { Space } from '../Layout/Space'
@@ -40,42 +39,29 @@ interface DemoProps extends TabListProps {
   tabPrefix: string
 }
 
-const Template: Story<DemoProps & { ripple: boolean }> = ({
-  ripple,
-  tabCount,
-  tabPrefix,
-  ...args
-}) => {
+const Template: Story<DemoProps> = ({ tabCount, tabPrefix, ...args }) => {
   const tabs = new Array(tabCount).fill('tab')
 
   return (
-    <ThemeProvider
-      theme={theme => ({
-        ...theme,
-        defaults: { ...theme.defaults, brandAnimation: ripple },
-      })}
-    >
-      <Tabs>
-        <TabList {...args}>
-          {tabs.map((_k, index) => (
-            <Tab key={index}>
-              {tabPrefix} {index}
-            </Tab>
-          ))}
-        </TabList>
-        <TabPanels>
-          {tabs.map((_k, index) => (
-            <TabPanel key={index}>This is {index}</TabPanel>
-          ))}
-        </TabPanels>
-      </Tabs>
-    </ThemeProvider>
+    <Tabs>
+      <TabList {...args}>
+        {tabs.map((_k, index) => (
+          <Tab key={index}>
+            {tabPrefix} {index}
+          </Tab>
+        ))}
+      </TabList>
+      <TabPanels>
+        {tabs.map((_k, index) => (
+          <TabPanel key={index}>This is {index}</TabPanel>
+        ))}
+      </TabPanels>
+    </Tabs>
   )
 }
 
 export const Basic = Template.bind({})
 Basic.args = {
-  ripple: false,
   tabCount: 3,
   tabPrefix: 'My Awesome Tab',
 }

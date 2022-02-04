@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -24,9 +24,17 @@
 
  */
 
-import styled, { css } from 'styled-components'
+import pick from 'lodash/pick'
+import React from 'react'
+import styled from 'styled-components'
 import type { DensityRamp } from '@looker/design-tokens'
 import { StyledIconBase } from '@styled-icons/styled-icon'
+import {
+  rippleHandlerKeys,
+  rippleStyle,
+  useRipple,
+  useRippleHandlers,
+} from '../Ripple'
 import type { AccordionIndicatorProps } from './types'
 import { accordionDimensions } from './accordionDimensions'
 
@@ -35,19 +43,52 @@ const size = (density: DensityRamp = 0) =>
 const gap = (density: DensityRamp = 0) =>
   accordionDimensions(density).indicatorGap
 
-const indicatorFocusVisible = css`
-  & {
-    box-shadow: inset 0 0 0 2px ${({ theme }) => theme.colors.keyFocus};
-  }
-`
+// TODO: Get ripple onto AccordionIndicator
+export const AccordionIndicator = styled(
+  ({
+    children,
+    density,
+    indicatorPosition,
+    ...props
+  }: AccordionIndicatorProps) => {
+    const {
+      callbacks,
+      className: rippleClassName,
+      style: rippleStyle,
+    } = useRipple({
+      color: 'neutral',
+    })
 
-export const AccordionIndicator = styled.div<AccordionIndicatorProps>`
+    const rippleHandlers = useRippleHandlers(callbacks, {
+      ...pick({ ...props }, rippleHandlerKeys),
+    })
+
+    const rippleContainerProps = {
+      className: rippleClassName,
+      style: rippleStyle,
+    }
+
+    /**
+     * Ripple effect should only appear when the
+     * indicator is a separate click target from the
+     * rest of its disclosure. When it is a separate click
+     * target, it receives tabIndex -1 from the parent disclosure.
+     */
+    const isIndicatorToggleOnly = props.tabIndex === -1
+
+    return (
+      <div {...props} {...(isIndicatorToggleOnly && rippleHandlers)}>
+        <RippleContainer density={density || 0} {...rippleContainerProps}>
+          {children}
+        </RippleContainer>
+      </div>
+    )
+  }
+)<AccordionIndicatorProps>`
   align-items: center;
   display: flex;
   justify-content: center;
   outline: none;
-
-  ${({ focusVisible }) => focusVisible && indicatorFocusVisible}
 
   ${({ density, indicatorPosition, theme: { space } }) =>
     indicatorPosition === 'left'
@@ -56,6 +97,18 @@ export const AccordionIndicator = styled.div<AccordionIndicatorProps>`
 
   ${StyledIconBase} {
     height: ${({ density, theme }) => theme.sizes[size(density)]};
+    /*
+      Default vertical-align is set to middle which shifts indicator icon
+      below mid-point
+    */
+    vertical-align: baseline;
     width: ${({ density, theme }) => theme.sizes[size(density)]};
   }
+`
+
+const RippleContainer = styled.div<{ density: DensityRamp }>`
+  ${rippleStyle}
+  border-radius: 50%;
+  height: ${({ density, theme }) => theme.sizes[size(density)]};
+  width: ${({ density, theme }) => theme.sizes[size(density)]};
 `

@@ -1,4 +1,7 @@
 {
+  " complete": {
+    "value": " מלא"
+  },
   "absolute prefix dateTime": {
     "value": "{{prefix}} {{dateTime}}"
   },

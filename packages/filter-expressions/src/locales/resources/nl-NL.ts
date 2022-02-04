@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -27,6 +27,7 @@ import type { I18nState } from '../../utils'
 
 const resources = {
   describe_date: {
+    ' complete': ' voltooid',
     'absolute prefix dateTime': '{{prefix}} {{dateTime}}',
     ago: 'geleden',
     'from now': 'vanaf nu',
@@ -67,25 +68,45 @@ const resources = {
     September: 'September',
   },
   get_unit_label: {
+    'complete day': 'hele dag',
     'complete days': 'hele dagen',
+    'complete fiscal quarter': 'hele fiscale kwartaal',
     'complete fiscal quarters': 'hele fiscale kwartalen',
+    'complete fiscal year': 'hele fiscale jaar',
     'complete fiscal years': 'hele fiscale jaren',
+    'complete hour': 'hele uur',
     'complete hours': 'hele uren',
+    'complete minute': 'hele minuut',
     'complete minutes': 'hele minuten',
+    'complete month': 'hele maand',
     'complete months': 'hele maanden',
+    'complete quarter': 'hele kwartaal',
     'complete quarters': 'hele kwartalen',
+    'complete second': 'hele seconde',
     'complete seconds': 'hele seconden',
+    'complete week': 'hele week',
     'complete weeks': 'hele weken',
+    'complete year': 'hele jaar',
     'complete years': 'hele jaren',
+    day: 'dag',
     days: 'dagen',
+    'fiscal quarter': 'fiscaal kwartaal',
     'fiscal quarters': 'fiscale kwartalen',
+    'fiscal year': 'fiscaal jaar',
     'fiscal years': 'fiscale jaren',
+    hour: 'uur',
     hours: 'uren',
+    minute: 'minuut',
     minutes: 'minuten',
+    month: 'maand',
     months: 'maanden',
+    quarter: 'kwartaal',
     quarters: 'kwartalen',
+    second: 'seconde',
     seconds: 'seconden',
+    week: 'week',
     weeks: 'weken',
+    year: 'jaar',
     years: 'jaren',
   },
   summary: {

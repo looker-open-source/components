@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -24,13 +24,76 @@
 
  */
 
+import pick from 'lodash/pick'
+import type { FC } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import { listItemBackgroundColor } from '../ListItem/utils'
+import type { ListItemContentProps } from '../ListItem'
+import { mergeClassNames, useCallbackRef, useMeasuredElement } from '../utils'
+import {
+  rippleHandlerKeys,
+  rippleStyle,
+  useRipple,
+  useRippleHandlers,
+} from '../Ripple'
 import { generateIndent } from '../Tree/utils'
+import { listItemBackgroundColor } from '../ListItem/utils'
 
-export const NavTreeDisclosure = styled.div`
+export const NavTreeDisclosure = styled<FC<ListItemContentProps>>(
+  ({
+    children,
+    className,
+    disabled,
+
+    // destructure to omit these styling-only props
+    hovered,
+    ripple,
+    // end destructure to omit
+
+    selected,
+    style,
+    ...props
+  }) => {
+    // find the dimensions of button for ripple behavior
+    const [element, ref] = useCallbackRef()
+    const [{ height, width }] = useMeasuredElement(element)
+
+    const {
+      callbacks,
+      className: rippleClassName,
+      style: rippleStyle,
+    } = useRipple({
+      bounded: true,
+      color: selected ? 'key' : 'neutral',
+      height,
+      width,
+    })
+
+    const rippleHandlers = useRippleHandlers(
+      callbacks,
+      {
+        ...pick({ ...props }, rippleHandlerKeys),
+      },
+      disabled
+    )
+
+    const rippleProps = {
+      className: mergeClassNames([className, rippleClassName]),
+      ref: ref,
+      ...rippleHandlers,
+      style: { ...style, ...rippleStyle },
+    }
+
+    return (
+      <li {...props} {...rippleProps}>
+        {children}
+      </li>
+    )
+  }
+)`
   ${generateIndent}
   ${listItemBackgroundColor}
+  ${rippleStyle}
 
   color: ${({ theme }) => theme.colors.text5};
   display: flex;

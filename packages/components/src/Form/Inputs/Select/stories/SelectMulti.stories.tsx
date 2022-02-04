@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -26,6 +26,7 @@
 
 import type { Story } from '@storybook/react/types-6-0'
 import React, { useState } from 'react'
+
 import { defaultArgTypes as argTypes } from '../../../../../../../apps/storybook/src/defaultArgTypes'
 import { Space } from '../../../../Layout'
 import type { SelectMultiProps } from '../SelectMulti'

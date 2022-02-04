@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -24,7 +24,6 @@
 
  */
 
-import { ThemeProvider } from 'styled-components'
 import React from 'react'
 import type { Story } from '@storybook/react/types-6-0'
 import { PersonOutline } from '@styled-icons/material-outlined'
@@ -34,67 +33,47 @@ import { MenuItem } from './MenuItem'
 
 // test
 
-const Template: Story<MenuItemProps & { ripple: boolean }> = ({
-  ripple,
-  ...args
-}) => (
-  <ThemeProvider
-    theme={theme => ({
-      ...theme,
-      defaults: { ...theme.defaults, brandAnimation: ripple },
-    })}
-  >
-    <MenuItem {...args}>Menu Item</MenuItem>
-  </ThemeProvider>
+const Template: Story<MenuItemProps> = args => (
+  <MenuItem {...args}>Menu Item</MenuItem>
 )
 
 export const Basic = Template.bind({})
-Basic.args = {
-  ripple: false,
-}
 
 export const Icon = Template.bind({})
 Icon.args = {
-  ...Basic,
   icon: <PersonOutline />,
 }
 
 export const Detail = Template.bind({})
 Detail.args = {
-  ...Basic,
   detail: 'A Detail',
 }
 
 export const IconAndDetail = Template.bind({})
 IconAndDetail.args = {
-  ...Basic,
   detail: 'A Detail',
   icon: <PersonOutline />,
 }
 
 export const Description = Template.bind({})
 Description.args = {
-  ...Basic,
   description: 'A description',
 }
 
 export const IconAndDescription = Template.bind({})
 IconAndDescription.args = {
-  ...Basic,
   description: 'A description',
   icon: <PersonOutline />,
 }
 
 export const DetailAndDescription = Template.bind({})
 DetailAndDescription.args = {
-  ...Basic,
   description: 'A description',
   detail: 'A detail',
 }
 
 export const IconAndDetailAndDescription = Template.bind({})
 IconAndDetailAndDescription.args = {
-  ...Basic,
   description: 'A description',
   detail: 'A detail',
   icon: <PersonOutline />,
@@ -102,7 +81,6 @@ IconAndDetailAndDescription.args = {
 
 export const Selected = Template.bind({})
 Selected.args = {
-  ...Basic,
   selected: true,
 }
 

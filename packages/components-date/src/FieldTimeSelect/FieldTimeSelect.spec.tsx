@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -87,5 +87,36 @@ describe('FieldTimeSelect', () => {
     fireEvent.keyDown(screen.getByLabelText('Label'), { key: 'Enter' })
     expect(onChange).toHaveBeenCalledTimes(1)
     fireEvent.click(document)
+  })
+
+  test('should display error message for invalid time input', () => {
+    renderWithTheme(
+      <FieldTimeSelect label="Label" id="field-time-select" interval={10} />
+    )
+
+    fireEvent.click(screen.getByLabelText('Label'))
+    fireEvent.change(screen.getByLabelText('Label'), {
+      target: { value: 'invalid time' },
+    })
+    fireEvent.keyDown(screen.getByLabelText('Label'), { key: 'Enter' })
+    expect(screen.getByText('Invalid Time')).toBeVisible()
+    fireEvent.click(document)
+  })
+
+  test('should reset any format errors on blur', () => {
+    renderWithTheme(
+      <FieldTimeSelect label="Label" id="field-time-select" interval={10} />
+    )
+
+    fireEvent.click(screen.getByLabelText('Label'))
+    fireEvent.change(screen.getByLabelText('Label'), {
+      target: { value: 'invalid time' },
+    })
+    fireEvent.keyDown(screen.getByLabelText('Label'), { key: 'Enter' })
+    expect(screen.getByText('Invalid Time')).toBeVisible()
+    fireEvent.click(document)
+    fireEvent.blur(screen.getByLabelText('Label'))
+    const errorMessage = screen.queryByText('Invalid Time')
+    expect(errorMessage).not.toBeInTheDocument()
   })
 })

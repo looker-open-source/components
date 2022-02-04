@@ -1,4 +1,7 @@
 {
+  " complete": {
+    "value": " fullført"
+  },
   "absolute prefix dateTime": {
     "value": "{{prefix}} {{dateTime}}"
   },

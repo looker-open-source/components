@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -70,7 +70,7 @@ export const BeforeAfter: FC<BeforeAfterProps> = ({
     onChange(id, { value: Number(e.target.value) })
 
   const unitChange = (value: string) => {
-    const option = unitOptions.find((option) => option.value === value)
+    const option = unitOptions.find(option => option.value === value)
     onChange(id, { unit: option?.unit, fromnow: option?.fromnow })
   }
 

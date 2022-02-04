@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -45,56 +45,17 @@ export const treeItemInnerPropKeys = [
   ...linkPropKeys,
 ] as const
 
-/**
- * @deprecated
- */
-type AssumeIconAlignment = {
-  /**
-   * If true, alignment will change in two ways:
-   * 1) The `Tree`'s label will align itself with a parent `Tree`'s label (Note: the parent should have an icon and the child should not)
-   * 2) The `Tree`'s child items will align their labels with the `Tree`'s label
-   * @default false
-   * @deprecated Use NavTree and NavTreeItem instead
-   */
-  assumeIconAlignment?: boolean
-  forceLabelPadding?: never
-}
-
-/**
- * @deprecated
- */
-type ForceLabelPadding = {
-  /**
-   * If true, alignment will change in two ways:
-   * 1) The `Tree`'s label will align itself with a parent `Tree`'s label (Note: the parent should have an icon and the child should not)
-   * 2) The `Tree`'s child items will align their labels with the `Tree`'s label
-   * @default false
-   * @todo - Remove in 3.x release
-   * @deprecated Use NavTree and NavTreeItem instead
-   */
-  forceLabelPadding?: boolean
-  assumeIconAlignment?: never
-}
-
 export type TreeProps = ControlledLoosely &
   GenericClickProps<HTMLElement> &
-  Pick<ListItemProps, typeof treeItemInnerPropKeys[number]> &
-  (AssumeIconAlignment | ForceLabelPadding) & {
+  Pick<ListItemProps, typeof treeItemInnerPropKeys[number]> & {
     /**
      * If true, vertical lines will extend from the Tree indicator (and all sub-Trees' indicators)
      */
     border?: boolean
     /**
-     * If true, the internal AccordionDisclosure will have fontWeight = 'Normal'
-     * @default false
-     * @deprecated Tree `label` prop text will be normal font weight by default. Use a <strong> tag in the `label` prop to bold text for better accessibility.
-     */
-    branchFontWeight?: boolean
-    /**
      * Produce a small visual space between each `TreeItem` displayed in the list so adjacent
      * items that are in a "selected" or active state have visual separation.
      * @default false
-     * @deprecated Use `LKFieldTree` & `LKFieldItem` for dividers support
      */
     dividers?: boolean
     /**
@@ -106,13 +67,6 @@ export type TreeProps = ControlledLoosely &
      * Label text or element displayed within Tree's internal AccordionDisclosure
      */
     label: ReactNode
-    /**
-     * If true, the following visual changes occur:
-     * - TreeItem: Indent padding is not included in background color
-     * - Tree: Indicator and indent padding is not included in background color
-     * @deprecated Use LkFieldTree and LkFieldItem for label background only behavior
-     */
-    labelBackgroundOnly?: boolean
   }
 
 export type WindowedTreeNodeProps = {

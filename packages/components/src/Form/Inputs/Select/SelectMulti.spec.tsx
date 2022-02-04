@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -25,11 +25,25 @@
  */
 
 import { firePasteEvent, renderWithTheme } from '@looker/components-test-utils'
-import { cleanup, fireEvent, screen } from '@testing-library/react'
+import { act, cleanup, fireEvent, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import React from 'react'
 
 import { SelectMulti } from './SelectMulti'
+
+beforeEach(() => {
+  jest.useFakeTimers()
+})
+
+afterEach(() => {
+  jest.runOnlyPendingTimers()
+  jest.useRealTimers()
+})
+
+const runTimers = () =>
+  act(() => {
+    jest.runOnlyPendingTimers()
+  })
 
 afterEach(cleanup)
 
@@ -39,6 +53,47 @@ const basicOptions = [
 ]
 
 describe('SelectMulti', () => {
+  test('ripple effect', () => {
+    renderWithTheme(
+      <SelectMulti
+        options={[
+          { label: 'Cheddar', value: 'cheddar' },
+          { label: 'Gouda', value: 'gouda' },
+          { label: 'Swiss', value: 'swiss' },
+        ]}
+        placeholder="SelectMulti"
+      ></SelectMulti>
+    )
+
+    fireEvent.click(screen.getByPlaceholderText('SelectMulti'))
+
+    const select = screen.getByText('Cheddar').closest('li')
+    expect(select).not.toHaveClass('bg-on fg-in')
+    expect(select).toHaveStyle({
+      '--ripple-color': '#71767a',
+      '--ripple-scale-end': '1',
+      '--ripple-scale-start': '0.1',
+      '--ripple-size': '100%',
+      '--ripple-translate': '0, 0',
+    })
+
+    select && fireEvent.focus(select)
+    expect(select).toHaveClass('bg-on')
+
+    select && fireEvent.mouseDown(select)
+    expect(select).toHaveClass('bg-on fg-in')
+
+    // foreground is locked for a minimum time to animate the ripple
+    select && fireEvent.mouseUp(select)
+    runTimers()
+    expect(select).toHaveClass('bg-on fg-out')
+    runTimers()
+    expect(select).toHaveClass('bg-on')
+
+    select && fireEvent.blur(select)
+    expect(select).not.toHaveClass('bg-on fg-in')
+    fireEvent.click(document)
+  })
   test('values', () => {
     const options = [
       { label: 'Foo', value: 'FOO' },

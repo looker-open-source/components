@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -45,24 +45,34 @@ Basic.args = {
   href: 'https://google.com',
 }
 
-export const Underline = Template.bind({})
-Underline.args = {
-  underline: true,
-}
-
 export const KeyColor = Template.bind({})
 KeyColor.args = {
+  ...Basic.args,
   keyColor: true,
 }
 
 export const External = Template.bind({})
 External.args = {
+  ...Basic.args,
   isExternal: true,
 }
 
 export const KitchenSink = Template.bind({})
 KitchenSink.args = {
+  ...Basic.args,
   isExternal: true,
   keyColor: true,
+  underline: true,
+}
+
+export const UnderlineFalse = Template.bind({})
+UnderlineFalse.args = {
+  ...Basic.args,
+  underline: false,
+}
+
+export const UnderlineTrue = Template.bind({})
+UnderlineTrue.args = {
+  ...Basic.args,
   underline: true,
 }

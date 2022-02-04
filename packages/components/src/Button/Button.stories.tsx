@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -27,31 +27,16 @@
 import { AddCircle, Delete } from '@styled-icons/material'
 import React from 'react'
 import type { Story } from '@storybook/react/types-6-0'
-import { ThemeProvider } from 'styled-components'
 import { defaultArgTypes as argTypes } from '../../../../apps/storybook/src/defaultArgTypes'
 import { Box2 } from '../Layout'
 import { Button } from './Button'
 import type { ButtonProps } from './types'
 
-const Template: Story<ButtonProps & { ripple: boolean }> = ({
-  ripple,
-  ...args
-  // ripple prop and ThemeProvider allow you to toggle the animation via controls
-}) => (
-  <ThemeProvider
-    theme={theme => ({
-      ...theme,
-      defaults: { ...theme.defaults, brandAnimation: ripple },
-    })}
-  >
-    <Button {...args} />
-  </ThemeProvider>
-)
+const Template: Story<ButtonProps> = args => <Button {...args} />
 
 export const Basic = Template.bind({})
 Basic.args = {
   children: 'Button Text',
-  ripple: false,
 }
 
 export const Critical = Template.bind({})
@@ -108,37 +93,19 @@ Large.args = {
   size: 'large',
 }
 
-export const ShrinkingIconRepro = () => {
-  return (
-    <ThemeProvider
-      theme={theme => ({
-        ...theme,
-        defaults: { ...theme.defaults, brandAnimation: true },
-      })}
-    >
-      <Box2 display="flex">
-        <Box2 width="100%">Some text</Box2>
-        <Button iconBefore={<AddCircle />}>Button</Button>
-      </Box2>
-    </ThemeProvider>
-  )
-}
+export const ShrinkingIconRepro = () => (
+  <Box2 display="flex">
+    <Box2 width="100%">Some text</Box2>
+    <Button iconBefore={<AddCircle />}>Button</Button>
+  </Box2>
+)
 
-export const ShrinkingButtonRepro = () => {
-  return (
-    <ThemeProvider
-      theme={theme => ({
-        ...theme,
-        defaults: { ...theme.defaults, brandAnimation: true },
-      })}
-    >
-      <Box2 display="flex" width={200}>
-        <Box2 width={250}>Some text</Box2>
-        <Button>Don't shrink me</Button>
-      </Box2>
-    </ThemeProvider>
-  )
-}
+export const ShrinkingButtonRepro = () => (
+  <Box2 display="flex" width={200}>
+    <Box2 width={250}>Some text</Box2>
+    <Button>Don't shrink me</Button>
+  </Box2>
+)
 
 export default {
   argTypes,

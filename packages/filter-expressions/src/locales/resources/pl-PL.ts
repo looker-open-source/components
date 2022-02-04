@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -27,6 +27,7 @@ import type { I18nState } from '../../utils'
 
 const resources = {
   describe_date: {
+    ' complete': ' ukończono',
     'absolute prefix dateTime': '{{prefix}} {{dateTime}}',
     ago: 'temu',
     'from now': 'od teraz',
@@ -67,25 +68,45 @@ const resources = {
     September: 'Wrzesień',
   },
   get_unit_label: {
+    'complete day': 'pełny dzień',
     'complete days': 'pełnych dni',
+    'complete fiscal quarter': 'pełny kwartał fiskalny',
     'complete fiscal quarters': 'pełnych kw. fiskalnych',
+    'complete fiscal year': 'pełny rok fiskalny',
     'complete fiscal years': 'pełne lata fiskalne/pełnych lat fiskalnych',
+    'complete hour': 'pełna godzina',
     'complete hours': 'pełnych godz.',
+    'complete minute': 'pełna minuta',
     'complete minutes': 'pełnych min',
+    'complete month': 'pełny miesiąc',
     'complete months': 'pełnych mies.',
+    'complete quarter': 'pełny kwartał',
     'complete quarters': 'pełnych kw.',
+    'complete second': 'pełna sekunda',
     'complete seconds': 'pełnych sek.',
+    'complete week': 'pełny tydzień',
     'complete weeks': 'pełnych tyg.',
+    'complete year': 'pełny rok',
     'complete years': 'pełne lata/pełnych lat',
+    day: 'dzień',
     days: 'dni',
+    'fiscal quarter': 'kwartał fiskalny',
     'fiscal quarters': 'kw. fiskalne',
+    'fiscal year': 'rok fiskalny',
     'fiscal years': 'lata fiskalne/lat fiskalnych',
+    hour: 'godzina',
     hours: 'godz.',
+    minute: 'minuta',
     minutes: 'min',
+    month: 'miesiąc',
     months: 'mies.',
+    quarter: 'kwartał',
     quarters: 'kw.',
+    second: 'sekunda',
     seconds: 'sek.',
+    week: 'tydzień',
     weeks: 'tyg.',
+    year: 'rok',
     years: 'lat/lata',
   },
   summary: {

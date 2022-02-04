@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -167,7 +167,7 @@ export const Scatter: FC<ScatterProps> = ({
           <XYTooltip config={config} data={formattedData} fields={fields} />
           {plots}
         </XYChart>
-        <XYLegend config={config} fields={fields} />
+        <XYLegend chartWidth={width} config={config} fields={fields} />
       </VisWrapper>
     </DataProvider>
   )

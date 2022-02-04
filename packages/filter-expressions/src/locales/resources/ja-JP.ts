@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -27,6 +27,7 @@ import type { I18nState } from '../../utils'
 
 const resources = {
   describe_date: {
+    ' complete': ' 完了',
     'absolute prefix dateTime': '{{prefix}} {{dateTime}}',
     ago: '前',
     'from now': '後',
@@ -67,25 +68,45 @@ const resources = {
     September: '9月',
   },
   get_unit_label: {
+    'complete day': '終了した日',
     'complete days': '終了した日',
+    'complete fiscal quarter': '終了した会計四半期',
     'complete fiscal quarters': '終了した会計四半期',
+    'complete fiscal year': '終了した会計年度',
     'complete fiscal years': '終了した会計年度',
+    'complete hour': '終了した時間',
     'complete hours': '終了した時間',
+    'complete minute': '終了した分',
     'complete minutes': '終了した分',
+    'complete month': '終了した月',
     'complete months': '終了した月',
+    'complete quarter': '終了した四半期',
     'complete quarters': '終了した四半期',
+    'complete second': '終了した秒',
     'complete seconds': '終了した秒',
+    'complete week': '終了した週',
     'complete weeks': '終了した週',
+    'complete year': '終了した年',
     'complete years': '終了した年',
+    day: '日',
     days: '日',
+    'fiscal quarter': '会計四半期',
     'fiscal quarters': '会計四半期',
+    'fiscal year': '会計年度',
     'fiscal years': '会計年度',
+    hour: '時間',
     hours: '時間',
+    minute: '分',
     minutes: '分',
+    month: '月',
     months: '月',
+    quarter: '四半期',
     quarters: '四半期',
+    second: '秒',
     seconds: '秒',
+    week: '週',
     weeks: '週',
+    year: '年',
     years: '年',
   },
   summary: {

@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -26,7 +26,7 @@
 
 import React from 'react'
 import type { Story } from '@storybook/react/types-6-0'
-import styled, { ThemeProvider } from 'styled-components'
+import styled from 'styled-components'
 import type { SimpleLayoutProps } from '../Layout'
 import { simpleLayoutCSS } from '../Layout'
 import type { UseRippleProps } from './'
@@ -68,16 +68,7 @@ const Ripple = styled(
   justify-content: center;
 `
 
-const Template: Story<RippleProps> = args => (
-  <ThemeProvider
-    theme={theme => ({
-      ...theme,
-      defaults: { ...theme.defaults, brandAnimation: true },
-    })}
-  >
-    <Ripple {...args} />
-  </ThemeProvider>
-)
+const Template: Story<RippleProps> = args => <Ripple {...args} />
 
 export const Basic = Template.bind({})
 Basic.args = { height: 80, width: 80 }

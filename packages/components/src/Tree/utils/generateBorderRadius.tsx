@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -28,7 +28,6 @@ import type { RadiusSizes, Theme } from '@looker/design-tokens'
 import { css } from 'styled-components'
 import { LkFieldItemLabel } from '../../LkFieldTree/LkFieldItemLabel'
 import { TreeItemContent } from '../TreeItemContent'
-import { TreeItemLabel } from '../TreeItemLabel'
 
 // Creates CSS for generating border radius on Tree and sub-Tree components
 export const generateBorderRadius = (
@@ -37,9 +36,8 @@ export const generateBorderRadius = (
 ) => {
   const { radii } = theme
 
-  // @TODO: Remove TreeItemContent and TreeItemLabel selectors when labelBackgroundOnly is deprecated from Tree
   return css`
-    ${TreeItemContent}, ${TreeItemLabel}, ${LkFieldItemLabel} {
+    ${TreeItemContent}, ${LkFieldItemLabel} {
       border-radius: ${radii[borderRadius]};
     }
   `

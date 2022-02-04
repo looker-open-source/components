@@ -1,4 +1,7 @@
 {
+  " complete": {
+    "value": " praėję"
+  },
   "absolute prefix dateTime": {
     "value": "{{prefix}} {{dateTime}}"
   },

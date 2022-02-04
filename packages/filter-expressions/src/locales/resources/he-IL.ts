@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -27,6 +27,7 @@ import type { I18nState } from '../../utils'
 
 const resources = {
   describe_date: {
+    ' complete': ' מלא',
     'absolute prefix dateTime': '{{prefix}} {{dateTime}}',
     ago: 'לשעבר',
     'from now': 'מעתה',
@@ -67,25 +68,45 @@ const resources = {
     September: 'ספטמבר',
   },
   get_unit_label: {
+    'complete day': 'יום מלא',
     'complete days': 'ימים מלאים',
+    'complete fiscal quarter': 'רבעון פיסקלי מלא',
     'complete fiscal quarters': 'רבעונים פיסקליים מלאים',
+    'complete fiscal year': 'שנה פיסלית מלאה',
     'complete fiscal years': 'שנים פיסקליות מלאות',
+    'complete hour': 'שעה מלאה',
     'complete hours': 'שעות מלאות',
+    'complete minute': 'דקה מלאה',
     'complete minutes': 'דקות מלאות',
+    'complete month': 'חודש מלא',
     'complete months': 'חודשים מלאים',
+    'complete quarter': 'רבעון מלא',
     'complete quarters': 'רבעונים מלאים',
+    'complete second': 'שניה מלאה',
     'complete seconds': 'שניות מלאות',
+    'complete week': 'שבוע מלא',
     'complete weeks': 'שבועות מלאים',
+    'complete year': 'שנה מלאה',
     'complete years': 'שנים מלאות',
+    day: 'יום',
     days: 'ימים',
+    'fiscal quarter': 'רבעון פיסקלי',
     'fiscal quarters': 'רבעונים פיסקליים',
+    'fiscal year': 'שנה פיסקלית',
     'fiscal years': 'שנים פיסקליות',
+    hour: 'שעה',
     hours: 'שעות',
+    minute: 'דקה',
     minutes: 'דקות',
+    month: 'חודש',
     months: 'חודשים',
+    quarter: 'רבעון',
     quarters: 'רבעונים',
+    second: 'שנייה',
     seconds: 'שניות',
+    week: 'שבוע',
     weeks: 'שבועות',
+    year: 'שנה',
     years: 'שנים',
   },
   summary: {

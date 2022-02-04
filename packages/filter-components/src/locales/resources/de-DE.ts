@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -33,6 +33,29 @@ const resources = {
     Add: 'Hinzufügen',
     Remove: 'Entfernen',
   },
+  before_after_units: {
+    'days ago': 'Tage zuvor',
+    'days from now': 'Tage ab jetzt',
+    'fiscal quarter from now': 'Geschäftsquartal ab jetzt',
+    'fiscal quarters ago': 'Geschäftsquartale zuvor',
+    'fiscal years ago': 'Geschäftsjahre zuvor',
+    'fiscal years from now': 'Geschäftsjahre ab jetzt',
+    'hours ago': 'Stunden zuvor',
+    'hours from now': 'Stunden ab jetzt',
+    'minutes ago': 'Minuten zuvor',
+    'minutes from now': 'Minuten ab jetzt',
+    'months ago': 'Monate zuvor',
+    'months from now': 'Monate ab jetzt',
+    now: 'jetzt',
+    'quarters ago': 'Quartale zuvor',
+    'quarters from now': 'Quartale ab jetzt',
+    'seconds ago': 'Sekunden zuvor',
+    'seconds from now': 'Sekunden ab jetzt',
+    'weeks ago': 'Wochen zuvor',
+    'weeks from now': 'Wochen ab jetzt',
+    'years ago': 'Jahre zuvor',
+    'years from now': 'Jahre ab jetzt',
+  },
   BeforeAfter: {
     absolute: '(absolut)',
     relative: '(relativ)',
@@ -41,15 +64,25 @@ const resources = {
     AND: 'AND',
   },
   date_units: {
+    day: 'Tag',
     days: 'Tage',
+    'fiscal quarter': 'Geschäftsquartal',
     'fiscal quarters': 'Geschäftsquartale',
+    'fiscal year': 'Geschäftsjahr',
     'fiscal years': 'Geschäftsjahre',
+    hour: 'Stunde',
     hours: 'Stunden',
+    minute: 'Minute',
     minutes: 'Minuten',
+    month: 'Monat',
     months: 'Monate',
+    quarter: 'Quartal',
     quarters: 'Quartale',
+    second: 'Sekunde',
     seconds: 'Sekunden',
+    week: 'Woche',
     weeks: 'Wochen',
+    year: 'Jahr',
     years: 'Jahre',
   },
   get_date_filter_options: {
@@ -183,6 +216,12 @@ const resources = {
   },
   RelativeTimeframePresets: {
     More: 'Mehr',
+  },
+  use_filters_errors: {
+    'Selection required': 'Auswahl erforderlich',
+    'Invalid value': 'Ungültiger Wert',
+    'No value is set for your user attribute':
+      'Für dieses Benutzerattribut ist kein Wert festgelegt',
   },
   use_option_filtering: {
     'No values': 'Keine Werte',

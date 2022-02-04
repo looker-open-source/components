@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -27,12 +27,57 @@
 import 'jest-styled-components'
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { fireEvent, configure, screen } from '@testing-library/react'
+import { act, fireEvent, configure, screen } from '@testing-library/react'
 import { Science } from '@styled-icons/material-outlined'
 import { List } from '../List'
 import { ListItem } from './ListItem'
 
+beforeEach(() => {
+  jest.useFakeTimers()
+})
+
+afterEach(() => {
+  jest.runOnlyPendingTimers()
+  jest.useRealTimers()
+})
+
+const runTimers = () =>
+  act(() => {
+    jest.runOnlyPendingTimers()
+  })
+
 describe('ListItem', () => {
+  test('ripple effect', () => {
+    renderWithTheme(<ListItem>List Item</ListItem>)
+
+    const listItem = screen.getByText('List Item').closest('button')
+    expect(listItem).not.toHaveClass('bg-on fg-in')
+    expect(listItem).toHaveStyle({
+      '--ripple-color': '#71767a',
+      '--ripple-scale-end': '1',
+      '--ripple-scale-start': '0.1',
+      '--ripple-size': '100%',
+      '--ripple-translate': '0, 0',
+    })
+
+    listItem && fireEvent.focus(listItem)
+    expect(listItem).toHaveClass('bg-on')
+
+    listItem && fireEvent.mouseDown(listItem)
+    expect(listItem).toHaveClass('bg-on fg-in')
+
+    // foreground is locked for a minimum time to animate the ripple
+    listItem && fireEvent.mouseUp(listItem)
+    runTimers()
+    expect(listItem).toHaveClass('bg-on fg-out')
+    runTimers()
+    expect(listItem).toHaveClass('bg-on')
+
+    listItem && fireEvent.blur(listItem)
+    expect(listItem).not.toHaveClass('bg-on fg-in')
+    fireEvent.click(document)
+  })
+
   test('children', () => {
     renderWithTheme(<ListItem>who!</ListItem>)
     expect(screen.getByText('who!')).toBeVisible()

@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -33,6 +33,29 @@ const resources = {
     Add: '추가',
     Remove: '제거',
   },
+  before_after_units: {
+    'days ago': '일 전',
+    'days from now': '일 후(지금부터)',
+    'fiscal quarter from now': '회계 분기 후(지금부터)',
+    'fiscal quarters ago': '회계 분기 전',
+    'fiscal years ago': '회계 연수 전',
+    'fiscal years from now': '회계 연수 후(지금부터)',
+    'hours ago': '시간 전',
+    'hours from now': '시간 후(지금부터)',
+    'minutes ago': '분 전',
+    'minutes from now': '분 후(지금부터)',
+    'months ago': '개월 전',
+    'months from now': '개월 후(지금부터)',
+    now: '지금',
+    'quarters ago': '분기 전',
+    'quarters from now': '분기 후(지금부터)',
+    'seconds ago': '초 전',
+    'seconds from now': '초 후(지금부터)',
+    'weeks ago': '주 전',
+    'weeks from now': '주 후(지금부터)',
+    'years ago': '년 전',
+    'years from now': '년 후(지금부터)',
+  },
   BeforeAfter: {
     absolute: '(절대)',
     relative: '(상대)',
@@ -41,15 +64,25 @@ const resources = {
     AND: '및',
   },
   date_units: {
+    day: '일',
     days: '일',
+    'fiscal quarter': '회계 분기',
     'fiscal quarters': '회계 분기',
+    'fiscal year': '회계 연도',
     'fiscal years': '회계 연수',
+    hour: '시간',
     hours: '시간',
+    minute: '분',
     minutes: '분',
+    month: '월',
     months: '월',
+    quarter: '분기',
     quarters: '분기',
+    second: '초',
     seconds: '초',
+    week: '주',
     weeks: '주',
+    year: '년',
     years: '년',
   },
   get_date_filter_options: {
@@ -183,6 +216,11 @@ const resources = {
   },
   RelativeTimeframePresets: {
     More: '더 보기',
+  },
+  use_filters_errors: {
+    'Selection required': '선택 필요',
+    'Invalid value': '잘못된 값',
+    'No value is set for your user attribute': '사용자 특성에 설정된 값 없음',
   },
   use_option_filtering: {
     'No values': '값 없음',

@@ -10,6 +10,7 @@
   "dependencies": {
     "@looker/components": "^2.8.14",
     "@looker/design-tokens": "^2.7.13",
+    "@looker/i18n": "*",
     "@styled-icons/material-rounded": "10.34.0",
     "date-fns": "2.24.0",
     "date-fns-tz": "^1.0.12",

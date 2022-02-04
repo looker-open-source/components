@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -31,6 +31,7 @@ export const mockPivots = [
       'orders.status': 'cancelled',
     },
     is_total: false,
+    label: 'Cancelled',
   },
   {
     key: 'complete',
@@ -38,6 +39,7 @@ export const mockPivots = [
       'orders.status': 'complete',
     },
     is_total: false,
+    label: 'Complete',
   },
   {
     key: 'pending',
@@ -45,5 +47,6 @@ export const mockPivots = [
       'orders.status': 'pending',
     },
     is_total: false,
+    label: 'Pending',
   },
 ]

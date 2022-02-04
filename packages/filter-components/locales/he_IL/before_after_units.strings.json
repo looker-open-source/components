@@ -1,0 +1,65 @@
+{
+  "days ago": {
+    "value": "ימים חלפו"
+  },
+  "days from now": {
+    "value": "ימים מעכשיו"
+  },
+  "fiscal quarter from now": {
+    "value": "רבעון פיסקלי מעכשיו"
+  },
+  "fiscal quarters ago": {
+    "value": "רבעונים פיסקליים חלפו"
+  },
+  "fiscal years ago": {
+    "value": "שנים פיסקליות חלפו"
+  },
+  "fiscal years from now": {
+    "value": "שנים פיסקליות מעכשיו"
+  },
+  "hours ago": {
+    "value": "שעות חלפו"
+  },
+  "hours from now": {
+    "value": "שעות מעכשיו"
+  },
+  "minutes ago": {
+    "value": "דקות חלפו"
+  },
+  "minutes from now": {
+    "value": "דקות מעכשיו"
+  },
+  "months ago": {
+    "value": "חודשים חלפו"
+  },
+  "months from now": {
+    "value": "חודשים מעכשיו"
+  },
+  "now": {
+    "value": "עכשיו"
+  },
+  "quarters ago": {
+    "value": "רבעונים חלפו"
+  },
+  "quarters from now": {
+    "value": "רבעונים מעכשיו"
+  },
+  "seconds ago": {
+    "value": "שניות חלפו"
+  },
+  "seconds from now": {
+    "value": "שניות מעכשיו"
+  },
+  "weeks ago": {
+    "value": "שבועות חלפו"
+  },
+  "weeks from now": {
+    "value": "שבועות מעכשיו"
+  },
+  "years ago": {
+    "value": "שנים חלפו"
+  },
+  "years from now": {
+    "value": "שנים מעכשיו"
+  }
+}

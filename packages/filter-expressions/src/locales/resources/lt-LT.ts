@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -27,6 +27,7 @@ import type { I18nState } from '../../utils'
 
 const resources = {
   describe_date: {
+    ' complete': ' praėję',
     'absolute prefix dateTime': '{{prefix}} {{dateTime}}',
     ago: 'prieš',
     'from now': 'nuo dabar',
@@ -67,25 +68,45 @@ const resources = {
     September: 'Rugsėjis',
   },
   get_unit_label: {
+    'complete day': 'praėjusi diena',
     'complete days': 'praėjusios dienos',
+    'complete fiscal quarter': 'praėjęs finansinis ketvirtis',
     'complete fiscal quarters': 'praėję finansiniai ketvirčiai',
+    'complete fiscal year': 'praėję finansiniai metai',
     'complete fiscal years': 'praėję finansiniai metai',
+    'complete hour': 'praėjusi valanda',
     'complete hours': 'praėjusios valandos',
+    'complete minute': 'praėjusi minutė',
     'complete minutes': 'praėjusios minutės',
+    'complete month': 'praėjęs mėnuo',
     'complete months': 'praėję mėnesiai',
+    'complete quarter': 'praėjęs ketvirtis',
     'complete quarters': 'praėję ketvirčiai',
+    'complete second': 'praėjusi sekundė',
     'complete seconds': 'praėjusios sekundės',
+    'complete week': 'praėjusi savaitė',
     'complete weeks': 'praėjusios savaitės',
+    'complete year': 'praėję metai',
     'complete years': 'praėję metai',
+    day: 'd.',
     days: 'dienos',
+    'fiscal quarter': 'finansinis ketvirtis',
     'fiscal quarters': 'finansiniai ketvirčiai',
+    'fiscal year': 'finansiniai metai',
     'fiscal years': 'finansiniai metai',
+    hour: 'val.',
     hours: 'valandos',
+    minute: 'min.',
     minutes: 'minutės',
+    month: 'mėnuo',
     months: 'mėnesiai',
+    quarter: 'ketvirtis',
     quarters: 'ketvirčiai',
+    second: 'sek.',
     seconds: 'sekundės',
+    week: 'savaitė',
     weeks: 'savaitės',
+    year: 'metai',
     years: 'metai',
   },
   summary: {

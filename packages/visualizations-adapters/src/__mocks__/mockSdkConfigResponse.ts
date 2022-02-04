@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -96,4 +96,8 @@ export const mockSdkConfigResponse: RawApiConfigResponse = {
   custom_color: '#72D16D',
   value_format: '0',
   label_value_format: '0',
+  series_value_format: {
+    'orders.count': { format_string: '1' },
+    'orders.average_total_amount_of_order_usd': { format_string: '1' },
+  },
 }

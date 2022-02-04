@@ -1,0 +1,65 @@
+{
+  "days ago": {
+    "value": "dienas prieš"
+  },
+  "days from now": {
+    "value": "dienas nuo dabar"
+  },
+  "fiscal quarter from now": {
+    "value": "finansinis ketvirtis nuo dabar"
+  },
+  "fiscal quarters ago": {
+    "value": "finansinius ketvirčius prieš"
+  },
+  "fiscal years ago": {
+    "value": "finansinius metus prieš"
+  },
+  "fiscal years from now": {
+    "value": "finansinius metus nuo dabar"
+  },
+  "hours ago": {
+    "value": "valandas prieš"
+  },
+  "hours from now": {
+    "value": "valandas nuo dabar"
+  },
+  "minutes ago": {
+    "value": "minutes prieš"
+  },
+  "minutes from now": {
+    "value": "minutes nuo dabar"
+  },
+  "months ago": {
+    "value": "mėnesius prieš"
+  },
+  "months from now": {
+    "value": "mėnesius nuo dabar"
+  },
+  "now": {
+    "value": "dabar"
+  },
+  "quarters ago": {
+    "value": "ketvirčius prieš"
+  },
+  "quarters from now": {
+    "value": "ketvirčius nuo dabar"
+  },
+  "seconds ago": {
+    "value": "sekundes prieš"
+  },
+  "seconds from now": {
+    "value": "sekundes nuo dabar"
+  },
+  "weeks ago": {
+    "value": "savaites prieš"
+  },
+  "weeks from now": {
+    "value": "savaites nuo dabar"
+  },
+  "years ago": {
+    "value": "metus prieš"
+  },
+  "years from now": {
+    "value": "metus nuo dabar"
+  }
+}

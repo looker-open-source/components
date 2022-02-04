@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -27,6 +27,7 @@ import type { I18nState } from '../../utils'
 
 const resources = {
   describe_date: {
+    ' complete': ' completado',
     'absolute prefix dateTime': '{{prefix}} {{dateTime}}',
     ago: 'antes',
     'from now': 'a partir de ahora',
@@ -67,25 +68,45 @@ const resources = {
     September: 'Septiembre',
   },
   get_unit_label: {
+    'complete day': 'día completo',
     'complete days': 'días completos',
+    'complete fiscal quarter': 'trimestre fiscal completo',
     'complete fiscal quarters': 'trimestres fiscales completos',
+    'complete fiscal year': 'año fiscal completo',
     'complete fiscal years': 'años fiscales completos',
+    'complete hour': 'hora completa',
     'complete hours': 'horas completas',
+    'complete minute': 'minuto completo',
     'complete minutes': 'minutos completos',
+    'complete month': 'mes completo',
     'complete months': 'meses completos',
+    'complete quarter': 'trimestre completo',
     'complete quarters': 'trimestres completos',
+    'complete second': 'segundo completo',
     'complete seconds': 'segundos completos',
+    'complete week': 'semana completa',
     'complete weeks': 'semanas completas',
+    'complete year': 'año completo',
     'complete years': 'años completos',
+    day: 'día',
     days: 'días',
+    'fiscal quarter': 'trimestre fiscal',
     'fiscal quarters': 'trimestres fiscales',
+    'fiscal year': 'año fiscal',
     'fiscal years': 'años fiscales',
+    hour: 'hora',
     hours: 'horas',
+    minute: 'minuto',
     minutes: 'minutos',
+    month: 'mes',
     months: 'meses',
+    quarter: 'trimestre',
     quarters: 'trimestres',
+    second: 'segundo',
     seconds: 'segundos',
+    week: 'semana',
     weeks: 'semanas',
+    year: 'año',
     years: 'años',
   },
   summary: {

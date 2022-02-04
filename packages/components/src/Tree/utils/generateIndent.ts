@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -43,11 +43,6 @@ export const generateIndentCalculation = (
   return `calc((${sizes[indicatorSize]} + ${space[indicatorGap]}) * ${depth})`
 }
 
-/**
- * Generates an indent for a TreeItem
- * @TODO Once this is rebased onto the `Tree refactor` branch, we need to rethink how assumeIconAlignment
- * handles the "parent Tree with Icon" and "parent Tree without Icon" branching paths
- */
 export const generateIndent = ({
   depth = 0,
   density,

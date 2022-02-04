@@ -1,30 +1,60 @@
 {
+  "day": {
+    "value": "дн."
+  },
   "days": {
     "value": "дн."
+  },
+  "fiscal quarter": {
+    "value": "финанс. кварт."
   },
   "fiscal quarters": {
     "value": "финанс. кварт."
   },
+  "fiscal year": {
+    "value": "финанс. год"
+  },
   "fiscal years": {
     "value": "финанс. год(а)/лет"
+  },
+  "hour": {
+    "value": "ч"
   },
   "hours": {
     "value": "ч"
   },
+  "minute": {
+    "value": "мин"
+  },
   "minutes": {
     "value": "мин"
+  },
+  "month": {
+    "value": "мес."
   },
   "months": {
     "value": "мес."
   },
+  "quarter": {
+    "value": "кварт."
+  },
   "quarters": {
     "value": "кварт."
+  },
+  "second": {
+    "value": "сек"
   },
   "seconds": {
     "value": "сек"
   },
+  "week": {
+    "value": "нед."
+  },
   "weeks": {
     "value": "нед."
+  },
+  "year": {
+    "value": "год"
   },
   "years": {
     "value": "год(а)/лет"

@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -26,7 +26,6 @@
 
 // import type { Page } from 'puppeteer'
 import React from 'react'
-import { ThemeProvider } from 'styled-components'
 import { Add } from '@styled-icons/material'
 import type { Story } from '@storybook/react/types-6-0'
 import { defaultArgTypes as argTypes } from '../../../../apps/storybook/src/defaultArgTypes'
@@ -39,26 +38,12 @@ export default {
   title: 'IconButton',
 }
 
-const Template: Story<IconButtonProps & { ripple: boolean }> = ({
-  ripple,
-  ...args
-  // ripple prop and ThemeProvider allow you to toggle the animation via controls
-}) => (
-  <ThemeProvider
-    theme={theme => ({
-      ...theme,
-      defaults: { ...theme.defaults, brandAnimation: ripple },
-    })}
-  >
-    <IconButton {...args} />
-  </ThemeProvider>
-)
+const Template: Story<IconButtonProps> = args => <IconButton {...args} />
 
 export const Basic = Template.bind({})
 Basic.args = {
   icon: <Add />,
   label: 'Add',
-  ripple: false,
 }
 
 export const XXSmall = Template.bind({})

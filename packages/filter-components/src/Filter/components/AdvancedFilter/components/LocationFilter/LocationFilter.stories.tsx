@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -30,9 +30,9 @@ import type { FilterParamProps } from '../../../../types/filter_param_props'
 import { LocationFilter } from './LocationFilter'
 import type { LocationFilterType } from '@looker/filter-expressions'
 
-export const DefaultStory: Story<FilterParamProps<LocationFilterType>> = (
-  args
-) => <LocationFilter {...args} />
+export const DefaultStory: Story<
+  FilterParamProps<LocationFilterType>
+> = args => <LocationFilter {...args} />
 DefaultStory.args = {
   filterType: 'location',
   item: {

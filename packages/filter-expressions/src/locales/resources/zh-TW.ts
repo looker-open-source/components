@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -27,6 +27,7 @@ import type { I18nState } from '../../utils'
 
 const resources = {
   describe_date: {
+    ' complete': ' 完成',
     'absolute prefix dateTime': '{{prefix}} {{dateTime}}',
     ago: '前',
     'from now': '從現在起',
@@ -67,25 +68,45 @@ const resources = {
     September: '九月',
   },
   get_unit_label: {
+    'complete day': '天整',
     'complete days': '天整',
+    'complete fiscal quarter': '個完整會計季度',
     'complete fiscal quarters': '個完整會計季度',
+    'complete fiscal year': '個完整會計年度',
     'complete fiscal years': '個完整會計年度',
+    'complete hour': '小時整',
     'complete hours': '小時整',
+    'complete minute': '分鐘整',
     'complete minutes': '分鐘整',
+    'complete month': '個月整',
     'complete months': '個月整',
+    'complete quarter': '季整',
     'complete quarters': '季整',
+    'complete second': '秒整',
     'complete seconds': '秒整',
+    'complete week': '週整',
     'complete weeks': '週整',
+    'complete year': '年整',
     'complete years': '年整',
+    day: '天',
     days: '天',
+    'fiscal quarter': '會計季度',
     'fiscal quarters': '會計季度',
+    'fiscal year': '會計年度',
     'fiscal years': '會計年度',
+    hour: '小時',
     hours: '小時',
+    minute: '分鐘',
     minutes: '分鐘',
+    month: '月',
     months: '個月',
+    quarter: '季',
     quarters: '季',
+    second: '秒',
     seconds: '秒',
+    week: '週',
     weeks: '週',
+    year: '年',
     years: '年',
   },
   summary: {

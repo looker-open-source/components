@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -41,7 +41,6 @@ export * from './Density.stories'
 export * from './DisabledAndSelected.stories'
 export * from './FileTree.stories'
 export * from './HoverDisclosure.stories'
-export * from './LabelBackgroundOnly.stories'
 export * from './LongLabels.stories'
 export * from './Windowing.stories'
 

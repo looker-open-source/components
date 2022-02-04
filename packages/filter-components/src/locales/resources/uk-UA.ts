@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -33,6 +33,29 @@ const resources = {
     Add: 'Додати',
     Remove: 'Вилучити',
   },
+  before_after_units: {
+    'days ago': 'днів тому',
+    'days from now': 'днів відтепер',
+    'fiscal quarter from now': 'фінансовий квартал відтепер',
+    'fiscal quarters ago': 'фінансових кварталів тому',
+    'fiscal years ago': 'фінансових років тому',
+    'fiscal years from now': 'фінансових років відтепер',
+    'hours ago': 'годин тому',
+    'hours from now': 'годин відтепер',
+    'minutes ago': 'хвилин тому',
+    'minutes from now': 'хвилин відтепер',
+    'months ago': 'місяців тому',
+    'months from now': 'місяців відтепер',
+    now: 'зараз',
+    'quarters ago': 'кварталів тому',
+    'quarters from now': 'кварталів відтепер',
+    'seconds ago': 'секунд тому',
+    'seconds from now': 'секунд відтепер',
+    'weeks ago': 'тижнів тому',
+    'weeks from now': 'тижнів відтепер',
+    'years ago': 'років тому',
+    'years from now': 'років відтепер',
+  },
   BeforeAfter: {
     absolute: '(абсолютне значення)',
     relative: '(відносне значення)',
@@ -41,15 +64,25 @@ const resources = {
     AND: 'І',
   },
   date_units: {
+    day: 'день',
     days: 'дн',
+    'fiscal quarter': 'фінансовий квартал',
     'fiscal quarters': 'фінансових кварталів',
+    'fiscal year': 'фінансовий рік',
     'fiscal years': 'фінансових років',
+    hour: 'година',
     hours: 'год',
+    minute: 'хвилина',
     minutes: 'хв',
+    month: 'місяць',
     months: 'міс.',
+    quarter: 'квартал',
     quarters: 'кварт.',
+    second: 'секунда',
     seconds: 'сек',
+    week: 'тиждень',
     weeks: 'тижн',
+    year: 'рік',
     years: 'р.',
   },
   get_date_filter_options: {
@@ -183,6 +216,12 @@ const resources = {
   },
   RelativeTimeframePresets: {
     More: 'Ще',
+  },
+  use_filters_errors: {
+    'Selection required': 'Обов’язково виберіть елемент',
+    'Invalid value': 'Недійсне значення',
+    'No value is set for your user attribute':
+      'Значення для атрибута користувача не вказано',
   },
   use_option_filtering: {
     'No values': 'Немає значень',

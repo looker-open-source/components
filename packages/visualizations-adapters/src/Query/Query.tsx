@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -28,13 +28,23 @@ import type { FC, ReactNode } from 'react'
 import React, { useEffect, useState, useReducer, useCallback } from 'react'
 import values from 'lodash/values'
 import get from 'lodash/get'
+import flow from 'lodash/flow'
+import merge from 'lodash/merge'
 import type { IError, Looker40SDK } from '@looker/sdk'
 import type { ISDKErrorResponse, ISDKSuccessResponse } from '@looker/sdk-rtl'
+import {
+  sortByDateTime,
+  renderNullValues,
+  xAxisReversed,
+} from '../dataTransformations'
 import {
   buildPivotFields,
   isNumeric,
   tabularPivotResponse,
   tabularResponse,
+  normalizePivotLabels,
+  buildChartConfig,
+  formatTotals,
 } from '../utils'
 import { QueryContext } from './QueryContext'
 import type { SDKRecord, CAll, Fields, Pivots, Totals } from '../types'
@@ -143,7 +153,7 @@ export const Query: FC<QueryProps> = ({
   query,
   children,
   sdk,
-  config: configOverrides,
+  config: configProp,
 }) => {
   const [error, setError] = useState<IError>()
 
@@ -178,7 +188,8 @@ export const Query: FC<QueryProps> = ({
 
   const isDataShapeValid = Boolean(fields?.measures?.length)
 
-  const isDataValid = isEveryResponseOk && data?.length && isDataShapeValid
+  const isDataValid =
+    isEveryResponseOk && data?.length && fields && isDataShapeValid
 
   // reset reducer state when query prop changes
   useEffect(() => {
@@ -340,28 +351,49 @@ export const Query: FC<QueryProps> = ({
     }
   }, [queryId, visConfig, data, asyncLifecycle, sdk])
 
-  let dataCopy: SDKRecord[] = []
-  let fieldsCopy: Fields = { dimensions: [], measures: [] }
+  /*
+   * Prep/sanitize data & config objects for rendering visualizations
+   */
 
-  if (isDataValid && fields) {
-    dataCopy = pivots
-      ? tabularPivotResponse({ data, fields, pivots })
-      : tabularResponse(Array.from(data))
+  const normalizedPivots = pivots ? normalizePivotLabels(pivots) : undefined
+  let normalizedData: SDKRecord[] = []
+  let normalizedFields: Fields = { dimensions: [], measures: [] }
 
-    fieldsCopy = pivots ? buildPivotFields({ fields, pivots }) : fields
+  if (isDataValid) {
+    normalizedData = normalizedPivots
+      ? tabularPivotResponse({ data, fields, pivots: normalizedPivots })
+      : tabularResponse(data)
+
+    normalizedFields = normalizedPivots
+      ? buildPivotFields({ fields, pivots: normalizedPivots })
+      : fields
   }
+
+  const config = buildChartConfig({
+    config: merge({}, visConfig, configProp),
+    data: normalizedData,
+    fields: normalizedFields,
+  })
+
+  const dataTransformations = [sortByDateTime, renderNullValues, xAxisReversed]
+
+  const { data: transformedData } = flow(dataTransformations)({
+    data: normalizedData,
+    config,
+    fields: normalizedFields,
+  })
 
   return (
     <QueryContext.Provider
       value={{
-        config: { ...visConfig, ...configOverrides },
-        data: dataCopy,
+        config,
+        data: transformedData,
         error,
-        fields: fieldsCopy,
+        fields: normalizedFields,
         loading: isLoading,
         ok: isEveryResponseOk,
         shareUrl: shareUrl || undefined,
-        totals: totals || undefined,
+        totals: totals ? formatTotals(totals) : undefined,
       }}
     >
       {children}

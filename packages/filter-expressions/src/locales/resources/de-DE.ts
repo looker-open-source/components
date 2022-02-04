@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -27,6 +27,7 @@ import type { I18nState } from '../../utils'
 
 const resources = {
   describe_date: {
+    ' complete': ' abgeschlossen',
     'absolute prefix dateTime': '{{prefix}} {{dateTime}}',
     ago: 'her',
     'from now': 'ab jetzt',
@@ -67,25 +68,45 @@ const resources = {
     September: 'September',
   },
   get_unit_label: {
+    'complete day': 'vollständiger Tag',
     'complete days': 'vollständige Tage',
+    'complete fiscal quarter': 'vollständiges Geschäftsquartal',
     'complete fiscal quarters': 'vollständige Geschäftsquartale',
+    'complete fiscal year': 'vollständiges Geschäftsjahr',
     'complete fiscal years': 'vollständige Geschäftsjahre',
+    'complete hour': 'vollständige Stunde',
     'complete hours': 'vollständige Stunden',
+    'complete minute': 'vollständige Minute',
     'complete minutes': 'vollständige Minuten',
+    'complete month': 'vollständiger Monat',
     'complete months': 'vollständige Monate',
+    'complete quarter': 'vollständiges Quartal',
     'complete quarters': 'vollständige Quartale',
+    'complete second': 'vollständige Sekunde',
     'complete seconds': 'vollständige Sekunden',
+    'complete week': 'vollständige Woche',
     'complete weeks': 'vollständige Wochen',
+    'complete year': 'vollständiges Jahr',
     'complete years': 'vollständige Jahre',
+    day: 'Tag',
     days: 'Tage',
+    'fiscal quarter': 'Geschäftsquartal',
     'fiscal quarters': 'Geschäftsquartale',
+    'fiscal year': 'Geschäftsjahr',
     'fiscal years': 'Geschäftsjahre',
+    hour: 'Stunde',
     hours: 'Stunden',
+    minute: 'Minute',
     minutes: 'Minuten',
+    month: 'Monat',
     months: 'Monate',
+    quarter: 'Quartal',
     quarters: 'Quartale',
+    second: 'Sekunde',
     seconds: 'Sekunden',
+    week: 'Woche',
     weeks: 'Wochen',
+    year: 'Jahr',
     years: 'Jahre',
   },
   summary: {

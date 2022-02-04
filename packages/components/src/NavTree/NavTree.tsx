@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -38,7 +38,6 @@ import {
   createSafeRel,
   HoverDisclosureContext,
   partitionAriaProps,
-  useFocusVisible,
   useWrapEvent,
 } from '../utils'
 import { List } from '../List'
@@ -158,20 +157,6 @@ export const NavTree = styled(
       ...accordionProps,
     })
 
-    /**
-     * In the event of indicator only toggle mode being enabled, we need two separate
-     * sets of focus visible handlers (i.e. one for the content container and one for the
-     * indicator itself).
-     *
-     * If indicator only toggle mode is NOT enabled, the focusVisible state from this useFocusVisible
-     * call should NOT need to be used.
-     */
-    const {
-      onBlur: onContentBlur,
-      onKeyUp: onContentKeyUp,
-      focusVisible: contentFocusVisible,
-    } = useFocusVisible({ onBlur, onKeyUp })
-
     const {
       indicator,
       children: disclosureLabel,
@@ -183,7 +168,6 @@ export const NavTree = styled(
     } = disclosureProps
 
     const indicatorToggleOnlyProps = {
-      focusVisible: disclosureFocusVisible,
       onBlur: onBlurDisclosureToggle,
       onClick: onClickDisclosureToggle,
       onKeyUp: onKeyUpDisclosureToggle,
@@ -196,7 +180,7 @@ export const NavTree = styled(
     const handleContentBlur = useWrapEvent((event: FocusEvent<HTMLElement>) => {
       if (!isIndicatorToggleOnly && onBlurDisclosureToggle)
         onBlurDisclosureToggle(event)
-    }, onContentBlur)
+    })
 
     const handleContentClick = useWrapEvent(
       (event: MouseEvent<HTMLElement>) => {
@@ -210,14 +194,15 @@ export const NavTree = styled(
       (event: KeyboardEvent<HTMLElement>) => {
         if (!isIndicatorToggleOnly && onKeyUpDisclosureToggle)
           onKeyUpDisclosureToggle(event)
-      },
-      onContentKeyUp
+      }
     )
 
     const statefulProps = {
-      color: 'key',
+      color: 'key' as const,
       disabled,
       hovered,
+      // disables the hover bg color since ripple includes hover style
+      ripple: true,
       selected,
     }
 
@@ -226,9 +211,6 @@ export const NavTree = styled(
         {isIndicatorToggleOnly && renderedIndicator}
         <NavTreeItemContent
           aria-selected={selected}
-          focusVisible={
-            isIndicatorToggleOnly ? contentFocusVisible : disclosureFocusVisible
-          }
           href={href}
           itemRole={isIndicatorToggleOnly ? 'link' : 'none'}
           onBlur={handleContentBlur}
@@ -241,6 +223,10 @@ export const NavTree = styled(
           onClick={handleContentClick}
           onKeyUp={handleContentKeyUp}
           rel={createSafeRel(rel, target)}
+          /**
+           * Parent NavTreeDisclosure will handle ripple effect
+           */
+          ripple={false}
           target={target}
           {...ariaProps}
           {...contentHandlers}
@@ -263,7 +249,6 @@ export const NavTree = styled(
           <div {...domProps}>
             {!partialRender && (
               <NavTreeDisclosure
-                as="li"
                 depth={depth}
                 {...wrapperHandlers}
                 {...statefulProps}

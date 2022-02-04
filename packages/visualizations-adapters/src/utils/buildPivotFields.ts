@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -25,7 +25,7 @@
  */
 
 import type { MeasureMetadata, Fields, Pivots } from '../types'
-import { buildPivotMeasureName, i18Noop } from '.'
+import { buildPivotMeasureName } from '.'
 
 /**
  * Creates a new fields metadata object, replacing the existing fields.measures
@@ -42,30 +42,18 @@ export const buildPivotFields = ({
 }) => {
   const fieldsCopy = { ...fields }
 
-  fieldsCopy.measures = pivots.flatMap(({ key: pivotValue, is_total }) => {
+  fieldsCopy.measures = pivots.flatMap(({ key, label: pivotLabel }) => {
     return fields.measures.map(measureField => {
       const pivotMeasureName = buildPivotMeasureName({
         measureName: measureField.name,
-        pivotValue: pivotValue,
+        pivotValue: key,
       })
-
-      /**
-       * For context, the API treats row totals on a pivot query like any other
-       * pivot value. This means the Looker API auto-appends the pivots metadata
-       * array with an object, with key "$$$_row_total_$$$". However, the API
-       * doesn't include any formatted labels with its response, so we'll need to
-       * check for the row totals pivot object and then create our own formatted
-       * label.
-       */
-      const capitalizedPivotValue = is_total
-        ? i18Noop('Row Total')
-        : pivotValue[0].toUpperCase() + pivotValue.slice(1)
 
       return {
         ...measureField,
-        label_short: capitalizedPivotValue,
+        label_short: pivotLabel,
         name: pivotMeasureName,
-        pivoted_label: `${measureField.label}: ${capitalizedPivotValue}`,
+        pivoted_label: `${measureField.label}: ${pivotLabel}`,
       } as MeasureMetadata
     })
   })

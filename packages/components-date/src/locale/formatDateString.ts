@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -24,10 +24,10 @@
 
  */
 
+import { getDateLocale } from '@looker/i18n'
 import format from 'date-fns-tz/format'
 import utcToZonedTime from 'date-fns-tz/utcToZonedTime'
 import type { Locale } from 'date-fns'
-import en from 'date-fns/locale/en-US'
 import repeat from 'lodash/repeat'
 import trim from 'lodash/trim'
 
@@ -73,8 +73,8 @@ const getStringFormat = (
 
 export const formatDateString = (
   date?: Date,
-  locale: Locale = en,
   stringFormat: DateFormats | string = 'P',
+  locale: Locale = getDateLocale(),
   timeZone: undefined | string = undefined,
   options: DateTimeOptions = {}
 ): string | '' => {

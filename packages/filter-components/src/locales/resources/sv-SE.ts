@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -33,6 +33,29 @@ const resources = {
     Add: 'Lägg till',
     Remove: 'Ta bort',
   },
+  before_after_units: {
+    'days ago': 'dagar sedan',
+    'days from now': 'dagar kvar',
+    'fiscal quarter from now': 'räkenskapskvartal från nu',
+    'fiscal quarters ago': 'räkenskapskvartal sedan',
+    'fiscal years ago': 'räkenskapsår sedan',
+    'fiscal years from now': 'räkenskapsår kvar',
+    'hours ago': 'timmar sedan',
+    'hours from now': 'timmar kvar',
+    'minutes ago': 'minuter sedan',
+    'minutes from now': 'minuter kvar',
+    'months ago': 'månader sedan',
+    'months from now': 'månader kvar',
+    now: 'nu',
+    'quarters ago': 'kvartal sedan',
+    'quarters from now': 'kvartal kvar',
+    'seconds ago': 'sekunder sedan',
+    'seconds from now': 'sekunder kvar',
+    'weeks ago': 'veckor sedan',
+    'weeks from now': 'veckor kvar',
+    'years ago': 'år sedan',
+    'years from now': 'år kvar',
+  },
   BeforeAfter: {
     absolute: '(absolut)',
     relative: '(relativt)',
@@ -41,15 +64,25 @@ const resources = {
     AND: 'OCH',
   },
   date_units: {
+    day: 'dag',
     days: 'dagar',
+    'fiscal quarter': 'räkenskapskvartal',
     'fiscal quarters': 'räkenskapskvartal',
+    'fiscal year': 'räkenskapsår',
     'fiscal years': 'räkenskapsår',
+    hour: 'timme',
     hours: 'timmar',
+    minute: 'minut',
     minutes: 'minuter',
+    month: 'månad',
     months: 'månader',
+    quarter: 'kvartal',
     quarters: 'kvartal',
+    second: 'sekund',
     seconds: 'sekunder',
+    week: 'vecka',
     weeks: 'veckor',
+    year: 'år',
     years: 'år',
   },
   format_date: {
@@ -186,6 +219,12 @@ const resources = {
   },
   RelativeTimeframePresets: {
     More: 'Mer',
+  },
+  use_filters_errors: {
+    'Selection required': 'Markering krävs',
+    'Invalid value': 'Ogiltigt värde',
+    'No value is set for your user attribute':
+      'Inget värde inställt för ditt användarattribut',
   },
   use_option_filtering: {
     'No values': 'Inga värden',

@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -39,18 +39,14 @@ import {
 } from '@looker/visualizations-visx'
 import { SingleValue } from '@looker/visualizations-single-value'
 import {
-  buildChartConfig,
   Debug,
   QueryContext,
   ErrorBoundary,
-  formatTotals,
 } from '@looker/visualizations-adapters'
 import type {
   ChartLayoutProps,
   VisWrapperProps,
   SupportedChartTypes,
-  CommonCartesianProperties,
-  CAll,
 } from '@looker/visualizations-adapters'
 
 export interface VisualizationProps extends VisWrapperProps, ChartLayoutProps {
@@ -59,7 +55,6 @@ export interface VisualizationProps extends VisWrapperProps, ChartLayoutProps {
    * @default false
    */
   debug?: boolean
-  config?: Partial<CAll>
 }
 
 export const defaultChartComponent: Record<
@@ -83,19 +78,10 @@ const VisualizationComponent: FC<VisualizationProps> = ({
   debug,
   height,
   width,
-  config: configProp,
 }) => {
-  const {
-    ok,
-    data = [],
-    error,
-    fields,
-    totals,
-    config: rawConfig,
-    loading,
-  } = useContext(QueryContext)
-
-  const rawConfigWithOverrides = { ...rawConfig, ...configProp }
+  const { ok, data = [], error, fields, totals, config, loading } = useContext(
+    QueryContext
+  )
 
   if (loading) {
     return (
@@ -109,32 +95,22 @@ const VisualizationComponent: FC<VisualizationProps> = ({
     return (
       <Debug
         ok={ok}
-        config={rawConfigWithOverrides}
+        config={config}
         data={data}
         fields={fields}
         error={error}
       />
     )
-  } else if (rawConfigWithOverrides && fields) {
-    const config = buildChartConfig({
-      config: rawConfigWithOverrides,
-      data,
-      fields,
-    })
-
-    const xAxisReversed = (config as CommonCartesianProperties)?.x_axis?.[0]
-      .reversed
-
-    const dataCopy = xAxisReversed ? data.slice().reverse() : data
-
+  } else if (config?.type && fields?.measures.length) {
     const ChartComponent =
       defaultChartComponent[config.type as keyof SupportedChartTypes]
+
     return (
       <ChartComponent
-        data={dataCopy}
+        data={data}
         config={config}
         fields={fields}
-        totals={formatTotals(totals)}
+        totals={totals}
         width={width}
         height={height}
       />

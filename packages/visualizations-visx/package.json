@@ -10,6 +10,7 @@
   "dependencies": {
     "@looker/components-providers": "^1.5.18",
     "@looker/visualizations-adapters": "^0.1.8",
+    "@styled-icons/material": "10.34.0",
     "@visx/annotation": "2.5.0",
     "@visx/axis": "2.1.1",
     "@visx/event": "2.1.2",

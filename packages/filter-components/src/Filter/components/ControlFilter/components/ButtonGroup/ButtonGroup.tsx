@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -31,7 +31,7 @@ import {
 import React from 'react'
 import styled, { css } from 'styled-components'
 import type { StringMultiSelectProps } from '../../../../types/string_select_props'
-import { ERROR_TYPE } from '../../../../utils'
+import { ERROR_TYPE } from '../../../../../constants'
 
 /*
  * Filter ButtonGroup adds red-outline around the buttons when the ButtonGroup has an error

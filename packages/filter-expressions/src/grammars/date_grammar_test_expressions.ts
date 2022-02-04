@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -68,7 +68,7 @@ export const dateExpressionTestItems: GrammarTestItem = [
   { expression: 'next year', output: 'next year', describe: 'is next year', type: 'next'},
   { expression: 'next fiscal year', output: 'next fiscal year', describe: 'is next fiscal year', type: 'next'},
 
-  // last 
+  // last
   { expression: 'last second', output: 'last second', describe: 'is previous second', type: 'last'},
   { expression: 'last minute', output: 'last minute', describe: 'is previous minute', type: 'last'},
   { expression: 'last hour', output: 'last hour', describe: 'is previous hour', type: 'last'},

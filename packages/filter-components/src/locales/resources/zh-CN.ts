@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -33,6 +33,29 @@ const resources = {
     Add: '添加',
     Remove: '移除',
   },
+  before_after_units: {
+    'days ago': '天前',
+    'days from now': '天后',
+    'fiscal quarter from now': '个财政季度后（距今）',
+    'fiscal quarters ago': '个财政季度前',
+    'fiscal years ago': '个财政年度前',
+    'fiscal years from now': '个财政年度后',
+    'hours ago': '小时前',
+    'hours from now': '小时后',
+    'minutes ago': '分钟前',
+    'minutes from now': '分钟后',
+    'months ago': '个月前',
+    'months from now': '个月后',
+    now: '现在',
+    'quarters ago': '个季度前',
+    'quarters from now': '个季度后',
+    'seconds ago': '秒前',
+    'seconds from now': '秒后',
+    'weeks ago': '周前',
+    'weeks from now': '周后',
+    'years ago': '年前',
+    'years from now': '年后',
+  },
   BeforeAfter: {
     absolute: '（绝对值）',
     relative: '（相对值）',
@@ -41,15 +64,25 @@ const resources = {
     AND: '和',
   },
   date_units: {
+    day: '天',
     days: '天',
+    'fiscal quarter': '财政季度',
     'fiscal quarters': '个财政季度',
+    'fiscal year': '财政年度',
     'fiscal years': '个财政年度',
+    hour: '小时',
     hours: '小时',
+    minute: '分钟',
     minutes: '分钟',
+    month: '月',
     months: '个月',
+    quarter: '季度',
     quarters: '个季度',
+    second: '秒',
     seconds: '秒',
+    week: '周',
     weeks: '周',
+    year: '年',
     years: '年',
   },
   get_date_filter_options: {
@@ -183,6 +216,11 @@ const resources = {
   },
   RelativeTimeframePresets: {
     More: '更多',
+  },
+  use_filters_errors: {
+    'Selection required': '所需的选择',
+    'Invalid value': '无效值',
+    'No value is set for your user attribute': '您的用户属性没有设置任何值',
   },
   use_option_filtering: {
     'No values': '没有值',

@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -25,8 +25,7 @@
  */
 import type { ValidationMessageProps } from '@looker/components'
 import { useTranslation } from 'react-i18next'
-
-export const ERROR_TYPE = 'error'
+import { ERROR_TYPE } from '../../constants'
 
 /*
  * gets validation message for filter-components

@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -30,7 +30,7 @@ import type { StringFilterType } from '@looker/filter-expressions'
 import type { FilterParamProps } from '../../../../types/filter_param_props'
 import { StringFilter } from './StringFilter'
 
-const Template: Story<FilterParamProps<StringFilterType>> = (args) => (
+const Template: Story<FilterParamProps<StringFilterType>> = args => (
   <StringFilter {...args} />
 )
 

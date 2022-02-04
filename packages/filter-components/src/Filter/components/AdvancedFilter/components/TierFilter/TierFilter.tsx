@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -66,7 +66,7 @@ export const TierFilter: FC<FilterParamProps> = ({
     isParamFilter
   )
   const isValueSet = item.value && item.value.length > 0
-  const isValueInEnumeration = unescapedEnumerations?.some((e) =>
+  const isValueInEnumeration = unescapedEnumerations?.some(e =>
     item.value?.includes(e.value)
   )
 

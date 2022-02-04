@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -39,9 +39,15 @@ import {
   TableBody,
   TableHeaderCell,
   TableDataCell,
+  Truncate,
 } from '@looker/components'
-import type { SDKRecord, TableProps } from '@looker/visualizations-adapters'
+import type {
+  MeasureMetadata,
+  SDKRecord,
+  TableProps,
+} from '@looker/visualizations-adapters'
 import { TableMeasure } from './TableMeasure'
+import numeral from 'numeral'
 
 const getMinMax = (key: string | number, data: SDKRecord) => {
   return reduce(
@@ -68,12 +74,14 @@ export const Table: FC<TableProps> = ({
   if (!data.length) {
     return null
   }
+  const truncateText = config.truncate_text
   const fieldLabels = Object.fromEntries(
     [...fields.measures, ...fields.dimensions].map((f, i) => {
       const series = isArray(config.series)
         ? get(config, ['series', i])
         : get(config, ['series', f.name])
-      const label = series?.label ? series.label : f.label_short
+      const label =
+        series?.label || (f as MeasureMetadata).pivoted_label || f.label_short
       return [f.name, label]
     })
   )
@@ -96,16 +104,28 @@ export const Table: FC<TableProps> = ({
     return Object.fromEntries(
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       Object.entries(d).map(([key, value]: [string, any]) => {
+        const matchingMeasureIndex = fields.measures.findIndex(
+          measure => measure.name === key
+        )
+
+        const valueFormat = isArray(config.series)
+          ? get(config, ['series', matchingMeasureIndex, 'value_format'])
+          : get(config, ['series', key, 'value_format'])
+
+        const valueFormatted = valueFormat
+          ? numeral(value).format(valueFormat)
+          : value
+
         const cellVisEntry = cellVis[key]
         const formattedValue = cellVisEntry
           ? () => (
               <TableMeasure
-                value={value}
+                value={valueFormatted}
                 min={cellVisEntry.min}
                 max={cellVisEntry.max}
               />
             )
-          : value
+          : valueFormatted
         return [key, formattedValue]
       })
     )
@@ -161,7 +181,11 @@ export const Table: FC<TableProps> = ({
                   }
                   return (
                     <StyledTableDataCell key={key}>
-                      {valHelper}
+                      {truncateText ? (
+                        <Truncate>{valHelper}</Truncate>
+                      ) : (
+                        valHelper
+                      )}
                     </StyledTableDataCell>
                   )
                 })}
@@ -194,6 +218,7 @@ const StyledTableHeaderCell = styled(TableHeaderCell)`
     max-width: 0;
     min-width: 0;
   }
+  padding: ${({ theme }) => theme.space.xsmall};
 `
 
 const StyledTableRow = styled(TableRow)<{
@@ -201,7 +226,15 @@ const StyledTableRow = styled(TableRow)<{
 }>`
   background: ${({ backgroundColor }) => backgroundColor};
 `
-
 const StyledTableDataCell = styled(TableDataCell)`
   font-size: ${({ theme }) => theme.fontSizes.medium};
+  max-width: 500px;
+  overflow-wrap: break-word;
+  position: relative;
+  ${Truncate} {
+    left: 0;
+    padding: ${({ theme }) => theme.space.xsmall};
+    position: absolute;
+    top: 0;
+  }
 `

@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -40,7 +40,6 @@ import { ListItem } from './ListItem'
 import type { ListItemProps, ListItemRole } from './types'
 
 const Template: Story<ListItemProps> = args => <ListItem {...args} />
-
 export const Basic = Template.bind({})
 const basicArgs = { children: 'List Item' }
 Basic.args = {
@@ -94,13 +93,12 @@ const Example: FC<ListItemProps> = ({ children, ...props }) => {
 }
 
 export const ColorComparison = () => (
-  <Grid columns={4}>
+  <Grid columns={3}>
     <Example>Default</Example>
     <Example selected>Selected</Example>
     <Example selected disabled>
       Selected + Disabled
     </Example>
-    <Example hovered>Hover</Example>
   </Grid>
 )
 

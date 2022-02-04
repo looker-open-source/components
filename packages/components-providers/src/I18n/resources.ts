@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -30,6 +30,11 @@ export const i18nResources: Resource = {
   en: {
     AdvancedInputControls: {
       'Clear Field': 'Clear Field',
+    },
+    AvatarButton: {
+      'Account Icon': 'Account Icon',
+      'Account Menu': 'Account Menu',
+      'Profile Picture': 'Profile Picture',
     },
     AvatarUser: {
       Avatar: 'Avatar',
@@ -102,6 +107,7 @@ export const i18nResources: Resource = {
       'Validation Error': 'Validation Error',
     },
     InputTimeSelect: {
+      'Invalid Time': 'Invalid Time',
       'Select time': 'Select time',
     },
     MessageBar: {

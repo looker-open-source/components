@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -27,6 +27,7 @@ import type { I18nState } from '../../utils'
 
 const resources = {
   describe_date: {
+    ' complete': ' เสร็จสมบูรณ์',
     'absolute prefix dateTime': '{{prefix}} {{dateTime}}',
     ago: 'ที่แล้ว',
     'from now': 'นับจากนี้',
@@ -67,25 +68,45 @@ const resources = {
     September: 'กันยายน',
   },
   get_unit_label: {
+    'complete day': 'วันถ้วน',
     'complete days': 'วันถ้วน',
+    'complete fiscal quarter': 'ไตรมาสงบประมาณถ้วน',
     'complete fiscal quarters': 'ไตรมาสงบประมาณถ้วน',
+    'complete fiscal year': 'ปีงบประมาณถ้วน',
     'complete fiscal years': 'ปีงบประมาณถ้วน',
+    'complete hour': 'ชั่วโมงถ้วน',
     'complete hours': 'ชั่วโมงถ้วน',
+    'complete minute': 'นาทีถ้วน',
     'complete minutes': 'นาทีถ้วน',
+    'complete month': 'เดือนถ้วน',
     'complete months': 'เดือนถ้วน',
+    'complete quarter': 'ไตรมาสถ้วน',
     'complete quarters': 'ไตรมาสถ้วน',
+    'complete second': 'วินาทีถ้วน',
     'complete seconds': 'วินาทีถ้วน',
+    'complete week': 'สัปดาห์ถ้วน',
     'complete weeks': 'สัปดาห์ถ้วน',
+    'complete year': 'ปีถ้วน',
     'complete years': 'ปีถ้วน',
+    day: 'วัน',
     days: 'วัน',
+    'fiscal quarter': 'ไตรมาสงบประมาณ',
     'fiscal quarters': 'ไตรมาสงบประมาณ',
+    'fiscal year': 'ปีงบประมาณ',
     'fiscal years': 'ปีงบประมาณ',
+    hour: 'ชั่วโมง',
     hours: 'ชั่วโมง',
+    minute: 'นาที',
     minutes: 'นาที',
+    month: 'เดือน',
     months: 'เดือน',
+    quarter: 'ไตรมาส',
     quarters: 'ไตรมาส',
+    second: 'วินาที',
     seconds: 'วินาที',
+    week: 'สัปดาห์',
     weeks: 'สัปดาห์',
+    year: 'ปี',
     years: 'ปี',
   },
   summary: {

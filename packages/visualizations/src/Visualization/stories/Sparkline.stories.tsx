@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -27,18 +27,54 @@
 import type { Story } from '@storybook/react/types-6-0'
 import React from 'react'
 import { Visualization } from '../Visualization'
-import type { VisualizationProps } from '../Visualization'
-import { QueryDecorator } from '../../.storybook'
+import type {
+  Fields,
+  SparklineProps,
+  CSparkline,
+} from '@looker/visualizations-adapters'
+import {
+  buildChartConfig,
+  QueryContext,
+  mockSdkConfigResponse,
+  mockSdkDataResponse,
+  mockSdkFieldsResponse,
+  tabularResponse,
+} from '@looker/visualizations-adapters'
 
 export default {
   component: Visualization,
-  decorators: [QueryDecorator],
   title: 'Visualizations/Sparkline',
 }
 
-const Template: Story<VisualizationProps> = ({ config, ...restProps }) => {
+type StoryTemplateProps = Omit<SparklineProps, 'config'> & {
+  config: Omit<CSparkline, 'type'>
+}
+
+const Template: Story<StoryTemplateProps> = ({
+  config: configProp,
+  ...restProps
+}) => {
+  const data = tabularResponse([...mockSdkDataResponse])
   return (
-    <Visualization config={{ ...config, type: 'sparkline' }} {...restProps} />
+    <QueryContext.Provider
+      value={{
+        config: buildChartConfig({
+          config: {
+            ...mockSdkConfigResponse,
+            ...configProp,
+            type: 'sparkline',
+          },
+          data,
+          fields: mockSdkFieldsResponse as Fields,
+        }),
+        ok: true,
+        loading: false,
+        data,
+        fields: mockSdkFieldsResponse as Fields,
+      }}
+    >
+      <Visualization {...restProps} />
+    </QueryContext.Provider>
   )
 }
 
@@ -48,9 +84,4 @@ Sparkline.args = {}
 export const LineWidth = Template.bind({})
 LineWidth.args = {
   config: { series: [{ line_width: 15 }] },
-}
-
-export const RenderNullValues = Template.bind({})
-RenderNullValues.args = {
-  config: { render_null_values: true },
 }

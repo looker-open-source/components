@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -32,10 +32,16 @@ import { screen } from '@testing-library/react'
 import { Link } from './Link'
 
 describe('Link', () => {
-  test('Underline', () => {
-    renderWithTheme(<Link underline>My link</Link>)
+  test('UnderlineTrue', () => {
+    renderWithTheme(<Link underline={true}>My link</Link>)
     const link = screen.getByText('My link')
     expect(link).toHaveStyleRule('text-decoration: underline')
+  })
+
+  test('UnderlineFalse', () => {
+    renderWithTheme(<Link underline={false}>My link</Link>)
+    const link = screen.getByText('My link')
+    expect(link).toHaveStyleRule('text-decoration: none')
   })
 
   test('color', () => {

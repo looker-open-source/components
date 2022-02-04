@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -302,7 +302,7 @@ describe('getControlFilterInfo', () => {
       'dropdown_menu',
     ]
 
-    numberStringControls.forEach((control) => {
+    numberStringControls.forEach(control => {
       it(`${control} calls changeFilter `, () => {
         const item: FilterModel = {
           id: 'filter',
@@ -463,7 +463,7 @@ describe('maxForFilterType', () => {
     'range_slider',
   ]
 
-  controlsWithNoMax.forEach((control) => {
+  controlsWithNoMax.forEach(control => {
     it(`${control} has no defined max`, () => {
       expect(maxForFilterType(control)).toBeUndefined()
     })

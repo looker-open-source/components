@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -27,6 +27,7 @@ import type { I18nState } from '../../utils'
 
 const resources = {
   describe_date: {
+    ' complete': ' completa',
     'absolute prefix dateTime': '{{prefix}} {{dateTime}}',
     ago: 'fa',
     'from now': 'da ora',
@@ -61,31 +62,51 @@ const resources = {
     July: 'Luglio',
     June: 'Giugno',
     March: 'Marzo',
-    May: 'Mag',
+    May: 'Maggio',
     November: 'Novembre',
     October: 'Ottobre',
     September: 'Settembre',
   },
   get_unit_label: {
+    'complete day': 'giorno completo',
     'complete days': 'giorni completi',
+    'complete fiscal quarter': 'trimestre fiscale completo',
     'complete fiscal quarters': 'trimestri fiscali completi',
+    'complete fiscal year': 'anno fiscale completo',
     'complete fiscal years': 'anni fiscali completi',
+    'complete hour': 'ora completa',
     'complete hours': 'ore complete',
+    'complete minute': 'minuto completo',
     'complete minutes': 'minuti completi',
+    'complete month': 'mese completo',
     'complete months': 'mesi completi',
+    'complete quarter': 'trimestre completo',
     'complete quarters': 'trimestri completi',
+    'complete second': 'secondo completo',
     'complete seconds': 'secondi completi',
+    'complete week': 'settimana completa',
     'complete weeks': 'settimane complete',
+    'complete year': 'anno completo',
     'complete years': 'anni completi',
+    day: 'giorno',
     days: 'giorni',
+    'fiscal quarter': 'trimestre fiscale',
     'fiscal quarters': 'trimestri fiscali',
+    'fiscal year': 'anno fiscale',
     'fiscal years': 'anni fiscali',
+    hour: 'ora',
     hours: 'ore',
+    minute: 'minuto',
     minutes: 'minuti',
+    month: 'mese',
     months: 'mesi',
+    quarter: 'trimestre',
     quarters: 'trimestri',
+    second: 'secondo',
     seconds: 'secondi',
+    week: 'settimana',
     weeks: 'settimane',
+    year: 'anno',
     years: 'anni',
   },
   summary: {

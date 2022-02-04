@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -25,9 +25,14 @@
  */
 
 import type { Ref } from 'react'
-import React, { forwardRef } from 'react'
+import React, { forwardRef, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
-import type { FloatingLabelFieldProps } from '@looker/components'
+import omit from 'lodash/omit'
+import type {
+  FloatingLabelFieldProps,
+  ValidationMessageProps,
+} from '@looker/components'
 import {
   FloatingLabelField,
   getHasValue,
@@ -47,20 +52,43 @@ const FieldTimeSelectComponent = forwardRef(
   (props: FieldTimeSelectProps, ref: Ref<HTMLInputElement>) => {
     const validationMessage = useFormContext(props)
     const id = useID(props.id)
+    const fieldProps = omit(omitFieldProps(props), ['onChange'])
+    const [formatError, setFormatError] = useState('')
+    const { t } = useTranslation('InputTimeSelect')
+    const onChange = (value?: string) => {
+      props.onChange && props.onChange(value)
+      if (value) {
+        setFormatError('')
+      } else {
+        setFormatError(t('Invalid Time'))
+      }
+    }
+
+    const onBlur = () => {
+      // Clear the format errors on blur since the combobox will revert back to
+      // the previously selected value or the new value is it is valid
+      setFormatError('')
+    }
+
+    const errorMessage = (formatError
+      ? { message: formatError, type: 'error' }
+      : validationMessage) as ValidationMessageProps
     return (
       <FloatingLabelField
         data-testid="FieldSelectMultiId"
         {...pickFieldProps(props)}
         id={id}
-        validationMessage={validationMessage}
+        validationMessage={errorMessage}
         hasValue={getHasValue(props)}
       >
         <InputTimeSelect
-          {...omitFieldProps(props)}
+          {...fieldProps}
           aria-labelledby={`labelledby-${id}`}
           id={id}
-          validationType={validationMessage && validationMessage.type}
+          validationType={errorMessage?.type}
           ref={ref}
+          onChange={onChange}
+          onBlur={onBlur}
         />
       </FloatingLabelField>
     )

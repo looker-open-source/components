@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -33,6 +33,29 @@ const resources = {
     Add: 'Добавить',
     Remove: 'Удалить',
   },
+  before_after_units: {
+    'days ago': 'дн. назад',
+    'days from now': 'дн. спустя',
+    'fiscal quarter from now': 'финанс. кварт. спустя',
+    'fiscal quarters ago': 'финанс. кварт. назад',
+    'fiscal years ago': 'финанс. год(а)/лет назад',
+    'fiscal years from now': 'финанс. год(а)/лет спустя',
+    'hours ago': 'ч назад',
+    'hours from now': 'ч спустя',
+    'minutes ago': 'мин назад',
+    'minutes from now': 'мин спустя',
+    'months ago': 'мес. назад',
+    'months from now': 'мес. спустя',
+    now: 'сейчас',
+    'quarters ago': 'кварт. назад',
+    'quarters from now': 'кварт. спустя',
+    'seconds ago': 'сек назад',
+    'seconds from now': 'сек спустя',
+    'weeks ago': 'нед. назад',
+    'weeks from now': 'нед. спустя',
+    'years ago': 'год(а)/лет назад',
+    'years from now': 'год(а)/лет спустя',
+  },
   BeforeAfter: {
     absolute: '(абсолютное значение)',
     relative: '(относительное значение)',
@@ -41,15 +64,25 @@ const resources = {
     AND: 'И',
   },
   date_units: {
+    day: 'дн.',
     days: 'дн.',
+    'fiscal quarter': 'финанс. кварт.',
     'fiscal quarters': 'финанс. кварт.',
+    'fiscal year': 'финанс. год',
     'fiscal years': 'финанс. год(а)/лет',
+    hour: 'ч',
     hours: 'ч',
+    minute: 'мин',
     minutes: 'мин',
+    month: 'мес.',
     months: 'мес.',
+    quarter: 'кварт.',
     quarters: 'кварт.',
+    second: 'сек',
     seconds: 'сек',
+    week: 'нед.',
     weeks: 'нед.',
+    year: 'год',
     years: 'год(а)/лет',
   },
   get_date_filter_options: {
@@ -183,6 +216,12 @@ const resources = {
   },
   RelativeTimeframePresets: {
     More: 'Еще',
+  },
+  use_filters_errors: {
+    'Selection required': 'Требуется выбрать',
+    'Invalid value': 'Недопустимое значение',
+    'No value is set for your user attribute':
+      'Значение пользовательского атрибута не задано',
   },
   use_option_filtering: {
     'No values': 'Нет значений',

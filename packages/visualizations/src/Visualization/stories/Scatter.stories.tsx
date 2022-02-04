@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -27,18 +27,57 @@
 import type { Story } from '@storybook/react/types-6-0'
 import React from 'react'
 import { Visualization } from '../Visualization'
-import type { VisualizationProps } from '../Visualization'
-import { QueryDecorator } from '../../.storybook'
+import type {
+  ScatterProps,
+  Fields,
+  CScatter,
+} from '@looker/visualizations-adapters'
+import {
+  buildChartConfig,
+  QueryContext,
+  mockSdkConfigResponse,
+  mockSdkDataResponse,
+  mockSdkFieldsResponse,
+  tabularResponse,
+} from '@looker/visualizations-adapters'
 
 export default {
   component: Visualization,
-  decorators: [QueryDecorator],
   title: 'Visualizations/Scatter',
 }
 
-const Template: Story<VisualizationProps> = ({ config, ...restProps }) => {
+type StoryTemplateProps = Omit<ScatterProps, 'config'> & {
+  config: Omit<CScatter, 'type'>
+}
+
+const Template: Story<StoryTemplateProps> = ({
+  config: configProp,
+  ...restProps
+}) => {
+  const data = tabularResponse([...mockSdkDataResponse])
+
+  const config = buildChartConfig({
+    config: {
+      ...mockSdkConfigResponse,
+      ...configProp,
+      type: 'scatter',
+    },
+    data,
+    fields: mockSdkFieldsResponse as Fields,
+  })
+
   return (
-    <Visualization config={{ ...config, type: 'scatter' }} {...restProps} />
+    <QueryContext.Provider
+      value={{
+        config,
+        ok: true,
+        loading: false,
+        data,
+        fields: mockSdkFieldsResponse as Fields,
+      }}
+    >
+      <Visualization {...restProps} />
+    </QueryContext.Provider>
   )
 }
 

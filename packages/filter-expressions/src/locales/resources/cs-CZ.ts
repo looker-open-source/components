@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -27,6 +27,7 @@ import type { I18nState } from '../../utils'
 
 const resources = {
   describe_date: {
+    ' complete': ' hotovo',
     'absolute prefix dateTime': '{{prefix}} {{dateTime}}',
     ago: 'v minulosti',
     'from now': 'od této chvíle',
@@ -67,25 +68,45 @@ const resources = {
     September: 'Září',
   },
   get_unit_label: {
+    'complete day': 'celý den',
     'complete days': 'celé dny',
+    'complete fiscal quarter': 'celé fiskální čtvrtletí',
     'complete fiscal quarters': 'celá fiskální čtvrtletí',
+    'complete fiscal year': 'celý fiskální rok',
     'complete fiscal years': 'celé fiskální roky',
+    'complete hour': 'celá hodina',
     'complete hours': 'celé hodiny',
+    'complete minute': 'celá minuta',
     'complete minutes': 'celé minuty',
+    'complete month': 'celý měsíc',
     'complete months': 'celé měsíce',
+    'complete quarter': 'celé čtvrtletí',
     'complete quarters': 'celá čtvrtletí',
+    'complete second': 'celá sekunda',
     'complete seconds': 'celé sekundy',
+    'complete week': 'celý týden',
     'complete weeks': 'celé týdny',
+    'complete year': 'celý rok',
     'complete years': 'celé roky',
+    day: 'den',
     days: 'dny/ů',
+    'fiscal quarter': 'fiskální čtvrtletí',
     'fiscal quarters': 'fiskální čtvrtletí',
+    'fiscal year': 'fiskální rok',
     'fiscal years': 'fiskální roky',
+    hour: 'hodina',
     hours: 'hodin(y)',
+    minute: 'minuta',
     minutes: 'minut(y)',
+    month: 'měsíc',
     months: 'měsíce/ů',
+    quarter: 'čtvrtletí',
     quarters: 'čtvrtletí',
+    second: 'sekunda',
     seconds: 'sekund(y)',
+    week: 'týden',
     weeks: 'týdny/ů',
+    year: 'rok',
     years: 'roky/ů',
   },
   summary: {

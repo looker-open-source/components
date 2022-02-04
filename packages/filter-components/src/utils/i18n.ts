@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -24,50 +24,12 @@
 
  */
 
-import { i18nUpdate } from '@looker/components'
-import type { I18nState } from '@looker/filter-expressions'
-import enDate from 'date-fns/locale/en-US'
-import i18next from 'i18next'
+import { i18nInitComponents } from '@looker/i18n'
+import type { I18nStateWithDates as _I18nStateWithDates } from '@looker/i18n'
 import merge from 'lodash/merge'
-import { initReactI18next } from 'react-i18next'
 import { en } from '../locales'
 
-export const initOrUpdate = async ({ locale, resources }: I18nState) => {
-  if (i18next.isInitialized) {
-    i18nUpdate({ locale, resources })
-    return i18next
-  } else {
-    return i18next.use(initReactI18next).init({
-      nsSeparator: false,
-      keySeparator: false,
-      fallbackLng: 'en',
-      lng: locale,
-      interpolation: {
-        escapeValue: false, // not needed for react as it escapes by default
-      },
-      // add optional resources from args
-      resources,
-      react: { useSuspense: false },
-    })
-  }
-}
-
-// Set and get the current date locale, defaults to English/US
-let dateLocale: Locale = enDate
-const setDateLocale = (_dateLocale: Locale) => {
-  dateLocale = _dateLocale
-}
-export const getDateLocale = () => {
-  return dateLocale
-}
-
-export type I18nStateWithDates = I18nState & {
-  /**
-   * Locale from date-fns
-   */
-  dateLocale: Locale
-}
-
+export type I18nStateWithDates = _I18nStateWithDates
 /**
  * Directly initialize the localization instance
  * (not needed if using ComponentsProvider)
@@ -77,11 +39,9 @@ export async function i18nInit({
   resources,
   dateLocale,
 }: I18nStateWithDates = en) {
-  setDateLocale(dateLocale)
   // Merge with English in case there are translations missing
   // from the resources passed in
-  const mergedResources = merge(resources, en.resources)
+  const mergedResources = merge({}, resources, en.resources)
 
-  await initOrUpdate({ locale, resources: mergedResources })
-  return i18next
+  return i18nInitComponents({ dateLocale, locale, resources: mergedResources })
 }

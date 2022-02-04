@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -33,6 +33,29 @@ const resources = {
     Add: 'Aggiungi',
     Remove: 'Rimuovi',
   },
+  before_after_units: {
+    'days ago': 'giorni fa',
+    'days from now': 'giorni da ora',
+    'fiscal quarter from now': 'trimestre fiscale da ora',
+    'fiscal quarters ago': 'trimestri fiscali fa',
+    'fiscal years ago': 'anni fiscali fa',
+    'fiscal years from now': 'anni fiscali da ora',
+    'hours ago': 'ore fa',
+    'hours from now': 'ore da ora',
+    'minutes ago': 'minuti fa',
+    'minutes from now': 'minuti da ora',
+    'months ago': 'mesi fa',
+    'months from now': 'mesi da ora',
+    now: 'ora',
+    'quarters ago': 'trimestri fa',
+    'quarters from now': 'trimestri da ora',
+    'seconds ago': 'secondi fa',
+    'seconds from now': 'secondi da ora',
+    'weeks ago': 'settimane fa',
+    'weeks from now': 'settimane da ora',
+    'years ago': 'anni fa',
+    'years from now': 'anni da ora',
+  },
   BeforeAfter: {
     absolute: '(assoluto)',
     relative: '(relativo)',
@@ -41,15 +64,25 @@ const resources = {
     AND: 'E',
   },
   date_units: {
+    day: 'giorno',
     days: 'giorni',
+    'fiscal quarter': 'trimestre fiscale',
     'fiscal quarters': 'trimestri fiscali',
+    'fiscal year': 'anno fiscale',
     'fiscal years': 'anni fiscali',
+    hour: 'ora',
     hours: 'ore',
+    minute: 'minuto',
     minutes: 'minuti',
+    month: 'mese',
     months: 'mesi',
+    quarter: 'trimestre',
     quarters: 'trimestri',
+    second: 'secondo',
     seconds: 'secondi',
+    week: 'settimana',
     weeks: 'settimane',
+    year: 'anno',
     years: 'anni',
   },
   get_date_filter_options: {
@@ -183,6 +216,12 @@ const resources = {
   },
   RelativeTimeframePresets: {
     More: 'Altro',
+  },
+  use_filters_errors: {
+    'Selection required': 'Selezione obbligatoria',
+    'Invalid value': 'Valore non valido',
+    'No value is set for your user attribute':
+      'Nessun valore è impostato per l’attributo utente',
   },
   use_option_filtering: {
     'No values': 'Nessun valore',

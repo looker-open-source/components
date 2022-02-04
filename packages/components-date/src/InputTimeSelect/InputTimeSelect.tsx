@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -80,6 +80,7 @@ export interface InputTimeSelectProps
   defaultValue?: string
   value?: string
   onChange?: (val?: string) => void
+  onBlur?: () => void
   validationType?: ValidationType
   onValidationFail?: (value: string) => void
 }
@@ -268,6 +269,7 @@ const InputTimeSelectLayout = forwardRef(
       interval = 15,
       format = '12h',
       onChange,
+      onBlur,
       value = '',
       defaultValue,
       validationType,
@@ -328,6 +330,7 @@ const InputTimeSelectLayout = forwardRef(
     }
 
     const handleTextInputBlur = () => {
+      onBlur && onBlur()
       setInputTextValue('')
     }
 

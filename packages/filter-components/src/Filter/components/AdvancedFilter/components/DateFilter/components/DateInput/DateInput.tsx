@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -28,7 +28,6 @@ import { InputDate } from '@looker/components-date'
 import type { FC } from 'react'
 import React from 'react'
 import styled from 'styled-components'
-import { getDateLocale } from '../../../../../../../utils'
 import type { PlacementProps } from '../../../../../../utils/filter_styles'
 import { inputPlacementStyle } from '../../../../../../utils/filter_styles'
 import { FILTERS_DATE_FORMAT, formatDate } from '../../utils/format_date'
@@ -70,7 +69,6 @@ export const DateInputInternal: FC<DateInputProps> = ({
             // hardcoding 'yyyy/MM/dd' for legacy reasons
             // eventually this should be replaced with the user's preferred locale
             dateStringFormat={FILTERS_DATE_FORMAT}
-            locale={getDateLocale()}
           />
         </Box>
       }

@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -27,6 +27,7 @@ import type { I18nState } from '../../utils'
 
 const resources = {
   describe_date: {
+    ' complete': ' valmis',
     'absolute prefix dateTime': '{{prefix}} {{dateTime}}',
     ago: 'sitten',
     'from now': 'tästä hetkestä',
@@ -67,25 +68,45 @@ const resources = {
     September: 'Syyskuu',
   },
   get_unit_label: {
+    'complete day': 'kokonainen päivä',
     'complete days': 'kokonaista päivää',
+    'complete fiscal quarter': 'kokonainen tilikauden vuosineljännes',
     'complete fiscal quarters': 'kokonaista tilikauden vuosineljännestä',
+    'complete fiscal year': 'kokonainen tilivuosi',
     'complete fiscal years': 'kokonaista tilivuotta',
+    'complete hour': 'kokonainen tunti',
     'complete hours': 'kokonaista tuntia',
+    'complete minute': 'kokonainen minuutti',
     'complete minutes': 'kokonaista minuuttia',
+    'complete month': 'kokonainen kuukausi',
     'complete months': 'kokonaista kuukautta',
+    'complete quarter': 'kokonainen vuosineljännes',
     'complete quarters': 'kokonaista vuosineljännestä',
+    'complete second': 'kokonainen sekunti',
     'complete seconds': 'kokonaista sekuntia',
+    'complete week': 'kokonainen viikko',
     'complete weeks': 'kokonaista viikkoa',
+    'complete year': 'kokonainen vuosi',
     'complete years': 'kokonaista vuotta',
+    day: 'päivä',
     days: 'päivää',
+    'fiscal quarter': 'tilikauden vuosineljännes',
     'fiscal quarters': 'tilikauden vuosineljännestä',
+    'fiscal year': 'tilivuosi',
     'fiscal years': 'tilivuotta',
+    hour: 'tunti',
     hours: 'tuntia',
+    minute: 'minuutti',
     minutes: 'minuuttia',
+    month: 'kuukausi',
     months: 'kuukautta',
+    quarter: 'vuosineljännes',
     quarters: 'vuosineljännestä',
+    second: 'sekunti',
     seconds: 'sekuntia',
+    week: 'viikko',
     weeks: 'viikkoa',
+    year: 'vuosi',
     years: 'vuotta',
   },
   summary: {

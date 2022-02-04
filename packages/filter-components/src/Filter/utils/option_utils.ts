@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -34,7 +34,7 @@ const createOption = (value: string): Option => ({
 export const createOptions = (values?: string | string[]) => {
   if (!values) return []
   const valuesArray: any[] = !Array.isArray(values) ? [values] : values
-  return valuesArray.map((value) => createOption(value))
+  return valuesArray.map(value => createOption(value))
 }
 
 /**
@@ -76,7 +76,7 @@ export const filterOptions = (
   excludedValues?: string[]
 ) => {
   if (!excludedValues && (!filterTerm || filterTerm === '')) return options
-  return options.filter((option) =>
+  return options.filter(option =>
     filterOption(option, filterTerm || '', excludedValues)
   )
 }

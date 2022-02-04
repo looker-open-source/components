@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -33,6 +33,29 @@ const resources = {
     Add: 'Tilføj',
     Remove: 'Fjern',
   },
+  before_after_units: {
+    'days ago': 'dage siden',
+    'days from now': 'dage fra nu',
+    'fiscal quarter from now': 'regnskabskvartal fra nu',
+    'fiscal quarters ago': 'regnskabskvartaler siden',
+    'fiscal years ago': 'regnskabsår siden',
+    'fiscal years from now': 'regnskabsår fra nu',
+    'hours ago': 'timer siden',
+    'hours from now': 'timer fra nu',
+    'minutes ago': 'minutter siden',
+    'minutes from now': 'minutter fra nu',
+    'months ago': 'måneder siden',
+    'months from now': 'måneder fra nu',
+    now: 'nu',
+    'quarters ago': 'kvartaler siden',
+    'quarters from now': 'kvartaler fra nu',
+    'seconds ago': 'sekunder siden',
+    'seconds from now': 'sekunder fra nu',
+    'weeks ago': 'uger siden',
+    'weeks from now': 'uger fra nu',
+    'years ago': 'år siden',
+    'years from now': 'år fra nu',
+  },
   BeforeAfter: {
     absolute: '(absolut)',
     relative: '(relativ)',
@@ -41,15 +64,25 @@ const resources = {
     AND: 'OG',
   },
   date_units: {
+    day: 'dag',
     days: 'dage',
+    'fiscal quarter': 'regnskabskvartal',
     'fiscal quarters': 'regnskabskvartaler',
+    'fiscal year': 'regnskabsår',
     'fiscal years': 'regnskabsår',
+    hour: 'time',
     hours: 'timer',
+    minute: 'minut',
     minutes: 'minutter',
+    month: 'måned',
     months: 'måneder',
+    quarter: 'kvartal',
     quarters: 'kvartaler',
+    second: 'sekund',
     seconds: 'sekunder',
+    week: 'uge',
     weeks: 'uger',
+    year: 'år',
     years: 'år',
   },
   get_date_filter_options: {
@@ -183,6 +216,12 @@ const resources = {
   },
   RelativeTimeframePresets: {
     More: 'Mere',
+  },
+  use_filters_errors: {
+    'Selection required': 'Valg kræves',
+    'Invalid value': 'Ugyldig værdi',
+    'No value is set for your user attribute':
+      'Der er ikke angivet nogen værdi for din brugerattribut',
   },
   use_option_filtering: {
     'No values': 'Ingen værdier',

@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -33,6 +33,29 @@ const resources = {
     Add: 'Adicionar',
     Remove: 'Remover',
   },
+  before_after_units: {
+    'days ago': 'dias atrás',
+    'days from now': 'dias a partir de agora',
+    'fiscal quarter from now': 'trimestre fiscal a partir de agora',
+    'fiscal quarters ago': 'trimestres fiscais atrás',
+    'fiscal years ago': 'anos fiscais atrás',
+    'fiscal years from now': 'anos fiscais a partir de agora',
+    'hours ago': 'horas atrás',
+    'hours from now': 'horas a partir de agora',
+    'minutes ago': 'minutos atrás',
+    'minutes from now': 'minutos a partir de agora',
+    'months ago': 'meses atrás',
+    'months from now': 'meses a partir de agora',
+    now: 'agora',
+    'quarters ago': 'trimestres atrás',
+    'quarters from now': 'trimestres a partir de agora',
+    'seconds ago': 'segundos atrás',
+    'seconds from now': 'segundos a partir de agora',
+    'weeks ago': 'semanas atrás',
+    'weeks from now': 'semanas a partir de agora',
+    'years ago': 'anos atrás',
+    'years from now': 'anos a partir de agora',
+  },
   BeforeAfter: {
     absolute: '(absoluto)',
     relative: '(relativo)',
@@ -41,15 +64,25 @@ const resources = {
     AND: 'E',
   },
   date_units: {
+    day: 'dia',
     days: 'dias',
+    'fiscal quarter': 'trimestre fiscal',
     'fiscal quarters': 'trimestres fiscais',
+    'fiscal year': 'ano fiscal',
     'fiscal years': 'anos fiscais',
+    hour: 'hora',
     hours: 'horas',
+    minute: 'minuto',
     minutes: 'minutos',
+    month: 'mês',
     months: 'meses',
+    quarter: 'trimestre',
     quarters: 'trimestres',
+    second: 'segundo',
     seconds: 'segundos',
+    week: 'semana',
     weeks: 'semanas',
+    year: 'ano',
     years: 'anos',
   },
   get_date_filter_options: {
@@ -183,6 +216,12 @@ const resources = {
   },
   RelativeTimeframePresets: {
     More: 'Mais',
+  },
+  use_filters_errors: {
+    'Selection required': 'Seleção obrigatória',
+    'Invalid value': 'Valor inválido',
+    'No value is set for your user attribute':
+      'Não há um valor definido para o seu atributo de usuário',
   },
   use_option_filtering: {
     'No values': 'Nenhum valor',

@@ -1,0 +1,65 @@
+{
+  "days ago": {
+    "value": "dager siden"
+  },
+  "days from now": {
+    "value": "dager fra nå"
+  },
+  "fiscal quarter from now": {
+    "value": "regnskapskvartal fra nå"
+  },
+  "fiscal quarters ago": {
+    "value": "regnskapskvartaler siden"
+  },
+  "fiscal years ago": {
+    "value": "regnskapsår siden"
+  },
+  "fiscal years from now": {
+    "value": "regnskapsår fra nå"
+  },
+  "hours ago": {
+    "value": "timer siden"
+  },
+  "hours from now": {
+    "value": "timer fra nå"
+  },
+  "minutes ago": {
+    "value": "minutter siden"
+  },
+  "minutes from now": {
+    "value": "minutter fra nå"
+  },
+  "months ago": {
+    "value": "måneder siden"
+  },
+  "months from now": {
+    "value": "måneder fra nå"
+  },
+  "now": {
+    "value": "nå"
+  },
+  "quarters ago": {
+    "value": "kvartaler siden"
+  },
+  "quarters from now": {
+    "value": "kvartaler fra nå"
+  },
+  "seconds ago": {
+    "value": "sekunder siden"
+  },
+  "seconds from now": {
+    "value": "sekunder fra nå"
+  },
+  "weeks ago": {
+    "value": "uker siden"
+  },
+  "weeks from now": {
+    "value": "uker fra nå"
+  },
+  "years ago": {
+    "value": "år siden"
+  },
+  "years from now": {
+    "value": "år fra nå"
+  }
+}

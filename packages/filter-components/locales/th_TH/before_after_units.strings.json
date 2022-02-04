@@ -1,0 +1,65 @@
+{
+  "days ago": {
+    "value": "วันที่แล้ว"
+  },
+  "days from now": {
+    "value": "วันนับจากนี้"
+  },
+  "fiscal quarter from now": {
+    "value": "ไตรมาสงบประมาณนับจากนี้"
+  },
+  "fiscal quarters ago": {
+    "value": "ไตรมาสงบประมาณที่แล้ว"
+  },
+  "fiscal years ago": {
+    "value": "ปีงบประมาณที่แล้ว"
+  },
+  "fiscal years from now": {
+    "value": "ปีงบประมาณนับจากนี้"
+  },
+  "hours ago": {
+    "value": "ชั่วโมงที่แล้ว"
+  },
+  "hours from now": {
+    "value": "ชั่วโมงนับจากนี้"
+  },
+  "minutes ago": {
+    "value": "นาทีที่แล้ว"
+  },
+  "minutes from now": {
+    "value": "นาทีนับจากนี้"
+  },
+  "months ago": {
+    "value": "เดือนที่แล้ว"
+  },
+  "months from now": {
+    "value": "เดือนนับจากนี้"
+  },
+  "now": {
+    "value": "ขณะนี้"
+  },
+  "quarters ago": {
+    "value": "ไตรมาสที่แล้ว"
+  },
+  "quarters from now": {
+    "value": "ไตรมาสนับจากนี้"
+  },
+  "seconds ago": {
+    "value": "วินาทีที่แล้ว"
+  },
+  "seconds from now": {
+    "value": "วินาทีนับจากนี้"
+  },
+  "weeks ago": {
+    "value": "สัปดาห์ที่แล้ว"
+  },
+  "weeks from now": {
+    "value": "สัปดาห์นับจากนี้"
+  },
+  "years ago": {
+    "value": "ปีที่แล้ว"
+  },
+  "years from now": {
+    "value": "ปีนับจากนี้"
+  }
+}

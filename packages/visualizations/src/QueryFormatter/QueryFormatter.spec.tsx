@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -31,7 +31,6 @@ import React, { useContext } from 'react'
 import {
   QueryContext,
   mockQueryContextValues,
-  mockSdkConfigResponse,
 } from '@looker/visualizations-adapters'
 import type { QueryFormatterProps } from './QueryFormatter'
 import { QueryFormatter } from './QueryFormatter'
@@ -45,20 +44,15 @@ afterEach(() => {
 
 describe('QueryFormatter component', () => {
   const QueryFormatterInContext: FC<QueryFormatterProps> = props => (
-    <QueryContext.Provider
-      value={{
-        ...mockQueryContextValues,
-        config: mockSdkConfigResponse,
-      }}
-    >
+    <QueryContext.Provider value={mockQueryContextValues}>
       <QueryFormatter {...props} />
     </QueryContext.Provider>
   )
 
-  it('passes config object to child component', () => {
-    const configLogger = jest.fn()
-    const CustomVis: FC<any> = ({ config }) => {
-      configLogger(config)
+  it('passes config, data, and fields props to child component', () => {
+    const propLogger = jest.fn()
+    const CustomVis: FC<any> = props => {
+      propLogger(props)
       return null
     }
     renderWithTheme(
@@ -66,165 +60,13 @@ describe('QueryFormatter component', () => {
         <CustomVis />
       </QueryFormatterInContext>
     )
-    expect(configLogger.mock.calls).toMatchInlineSnapshot(`
-      Array [
-        Array [
-          Object {
-            "legend": Object {
-              "position": "bottom",
-            },
-            "render_null_values": false,
-            "series": Object {
-              "orders.average_total_amount_of_order_usd": Object {
-                "color": "#70BEFA",
-                "label": "Average Order Price",
-                "line_width": 3,
-                "shape": "circle",
-                "style": "outline",
-                "value_format": "0",
-                "visible": false,
-              },
-              "orders.count": Object {
-                "color": "#FA8072",
-                "label": "Total Orders",
-                "line_width": 3,
-                "shape": "diamond",
-                "style": "outline",
-                "value_format": "0",
-                "visible": true,
-              },
-            },
-            "tooltips": true,
-            "type": "line",
-            "x_axis": Array [
-              Object {
-                "gridlines": false,
-                "label": "Orders Created Date",
-                "reversed": false,
-                "values": true,
-              },
-            ],
-            "y_axis": Array [
-              Object {
-                "gridlines": true,
-                "label": "Axis name (1)",
-                "range": Array [
-                  "auto",
-                  "auto",
-                ],
-                "values": true,
-              },
-            ],
-          },
-        ],
-      ]
-    `)
-  })
-
-  it('passes tabular formatted data to child by default', () => {
-    const dataLogger = jest.fn()
-    const CustomVis: FC<any> = ({ data }) => {
-      dataLogger(data)
-      return null
-    }
-    renderWithTheme(
-      <QueryFormatterInContext>
-        <CustomVis />
-      </QueryFormatterInContext>
+    expect(propLogger).toHaveBeenCalledWith(
+      expect.objectContaining({
+        config: expect.anything(),
+        data: expect.anything(),
+        fields: expect.anything(),
+      })
     )
-    expect(dataLogger.mock.calls).toMatchInlineSnapshot(`
-      Array [
-        Array [
-          Array [
-            Object {
-              "orders.average_total_amount_of_order_usd": 1088,
-              "orders.count": 3087,
-              "orders.created_date": "2019-12-22",
-              "users.state": "California",
-            },
-            Object {
-              "orders.average_total_amount_of_order_usd": 1069,
-              "orders.count": 2515,
-              "orders.created_date": "2019-12-22",
-              "users.state": "California",
-            },
-          ],
-        ],
-      ]
-    `)
-  })
-
-  it('passes fields object to child component', () => {
-    const fieldsLogger = jest.fn()
-    const CustomVis: FC<any> = ({ fields }) => {
-      fieldsLogger(fields)
-      return null
-    }
-    renderWithTheme(
-      <QueryFormatterInContext>
-        <CustomVis />
-      </QueryFormatterInContext>
-    )
-    expect(fieldsLogger.mock.calls).toMatchInlineSnapshot(`
-      Array [
-        Array [
-          Object {
-            "dimensions": Array [
-              Object {
-                "is_filter": false,
-                "is_fiscal": false,
-                "is_numeric": false,
-                "is_timeframe": true,
-                "label": "Orders Created Date",
-                "label_short": "Created Date",
-                "name": "orders.created_date",
-                "sortable": true,
-                "type": "date_date",
-                "value_format": null,
-                "view": "orders",
-                "view_label": "Orders",
-              },
-              Object {
-                "is_filter": false,
-                "is_fiscal": false,
-                "is_numeric": false,
-                "is_timeframe": true,
-                "label": "Users State",
-                "label_short": "State",
-                "name": "users.state",
-                "sortable": true,
-                "type": "string",
-                "value_format": null,
-                "view": "users",
-                "view_label": "Users",
-              },
-            ],
-            "measures": Array [
-              Object {
-                "is_numeric": true,
-                "label": "Orders Count",
-                "label_short": "Count",
-                "name": "orders.count",
-                "sortable": true,
-                "value_format": null,
-                "view": "orders",
-                "view_label": "Orders",
-              },
-              Object {
-                "is_numeric": true,
-                "label": "Orders Average Total Amount of Order USD",
-                "label_short": "Average Total Amount of Order USD",
-                "name": "orders.average_total_amount_of_order_usd",
-                "sortable": true,
-                "value_format": "$#,##0.00",
-                "view": "orders",
-                "view_label": "Orders",
-              },
-            ],
-          },
-        ],
-      ]
-    `)
   })
 
   it('passes custom user provided props to child component', () => {
@@ -249,6 +91,7 @@ describe('QueryFormatter component', () => {
       ]
     `)
   })
+
   it('wraps itself in ComponentsProvider if rendered outside of theme context', () => {
     const CustomVis = () => {
       const theme = useContext(ThemeContext)

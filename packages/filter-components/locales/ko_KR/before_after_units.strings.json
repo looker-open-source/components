@@ -1,0 +1,65 @@
+{
+  "days ago": {
+    "value": "일 전"
+  },
+  "days from now": {
+    "value": "일 후(지금부터)"
+  },
+  "fiscal quarter from now": {
+    "value": "회계 분기 후(지금부터)"
+  },
+  "fiscal quarters ago": {
+    "value": "회계 분기 전"
+  },
+  "fiscal years ago": {
+    "value": "회계 연수 전"
+  },
+  "fiscal years from now": {
+    "value": "회계 연수 후(지금부터)"
+  },
+  "hours ago": {
+    "value": "시간 전"
+  },
+  "hours from now": {
+    "value": "시간 후(지금부터)"
+  },
+  "minutes ago": {
+    "value": "분 전"
+  },
+  "minutes from now": {
+    "value": "분 후(지금부터)"
+  },
+  "months ago": {
+    "value": "개월 전"
+  },
+  "months from now": {
+    "value": "개월 후(지금부터)"
+  },
+  "now": {
+    "value": "지금"
+  },
+  "quarters ago": {
+    "value": "분기 전"
+  },
+  "quarters from now": {
+    "value": "분기 후(지금부터)"
+  },
+  "seconds ago": {
+    "value": "초 전"
+  },
+  "seconds from now": {
+    "value": "초 후(지금부터)"
+  },
+  "weeks ago": {
+    "value": "주 전"
+  },
+  "weeks from now": {
+    "value": "주 후(지금부터)"
+  },
+  "years ago": {
+    "value": "년 전"
+  },
+  "years from now": {
+    "value": "년 후(지금부터)"
+  }
+}

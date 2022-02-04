@@ -1,0 +1,65 @@
+{
+  "days ago": {
+    "value": "dias atrás"
+  },
+  "days from now": {
+    "value": "dias a partir de agora"
+  },
+  "fiscal quarter from now": {
+    "value": "trimestre fiscal a partir de agora"
+  },
+  "fiscal quarters ago": {
+    "value": "trimestres fiscais atrás"
+  },
+  "fiscal years ago": {
+    "value": "anos fiscais atrás"
+  },
+  "fiscal years from now": {
+    "value": "anos fiscais a partir de agora"
+  },
+  "hours ago": {
+    "value": "horas atrás"
+  },
+  "hours from now": {
+    "value": "horas a partir de agora"
+  },
+  "minutes ago": {
+    "value": "minutos atrás"
+  },
+  "minutes from now": {
+    "value": "minutos a partir de agora"
+  },
+  "months ago": {
+    "value": "meses atrás"
+  },
+  "months from now": {
+    "value": "meses a partir de agora"
+  },
+  "now": {
+    "value": "agora"
+  },
+  "quarters ago": {
+    "value": "trimestres atrás"
+  },
+  "quarters from now": {
+    "value": "trimestres a partir de agora"
+  },
+  "seconds ago": {
+    "value": "segundos atrás"
+  },
+  "seconds from now": {
+    "value": "segundos a partir de agora"
+  },
+  "weeks ago": {
+    "value": "semanas atrás"
+  },
+  "weeks from now": {
+    "value": "semanas a partir de agora"
+  },
+  "years ago": {
+    "value": "anos atrás"
+  },
+  "years from now": {
+    "value": "anos a partir de agora"
+  }
+}

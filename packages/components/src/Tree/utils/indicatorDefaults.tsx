@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -30,7 +30,7 @@ import { ArrowRight } from '@styled-icons/material/ArrowRight'
 import type { AccordionIndicatorProps } from '../../Accordion2/types'
 
 export const indicatorDefaults: Required<
-  Omit<AccordionIndicatorProps, 'density' | 'focusVisible'>
+  Pick<AccordionIndicatorProps, 'indicatorIcons' | 'indicatorPosition'>
 > = {
   indicatorIcons: {
     close: <ArrowRight />,

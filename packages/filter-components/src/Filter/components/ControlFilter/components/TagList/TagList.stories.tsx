@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -68,7 +68,7 @@ const options = [
   },
 ]
 
-const Template: Story<TagListProps> = (args) => {
+const Template: Story<TagListProps> = args => {
   const [value, setValue] = useState(args.value || [])
   const handleChange = (newValue: string[]) => {
     setValue(newValue)
@@ -86,7 +86,7 @@ Basic.args = {
 export const WithValues = Template.bind({})
 WithValues.args = {
   ...Basic.args,
-  value: options.map((x) => x.value),
+  value: options.map(x => x.value),
 }
 
 export default {

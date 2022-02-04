@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -27,7 +27,7 @@ export const numbers = `
 /* Common numbers parsing expressions */
 
 number "number"
- = (minus? int frac? exp?) { return parseFloat(text()); } / (minus? int? frac exp?) { return parseFloat(text()); } 
+ = (minus? int frac? exp?) { return parseFloat(text()); } / (minus? int? frac exp?) { return parseFloat(text()); }
 
 positive "positive"
  = int frac? exp? { return parseFloat(text()); }

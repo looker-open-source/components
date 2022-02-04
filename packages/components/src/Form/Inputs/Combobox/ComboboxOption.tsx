@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -27,6 +27,7 @@
 // Much of the following is pulled from https://github.com/reach/reach-ui
 // because their work is fantastic (but is not in TypeScript)
 
+import pick from 'lodash/pick'
 import type { CompatibleHTMLProps } from '@looker/design-tokens'
 import {
   color,
@@ -42,7 +43,18 @@ import React, { forwardRef, useContext } from 'react'
 import styled, { css } from 'styled-components'
 import omit from 'lodash/omit'
 import { ReplaceText, Span } from '../../../Text'
-import { useForkedRef } from '../../../utils'
+import {
+  mergeClassNames,
+  useCallbackRef,
+  useForkedRef,
+  useMeasuredElement,
+} from '../../../utils'
+import {
+  rippleHandlerKeys,
+  rippleStyle,
+  useRipple,
+  useRippleHandlers,
+} from '../../../Ripple'
 import { makeHash } from './utils/makeHash'
 import type { ComboboxContextProps } from './ComboboxContext'
 import {
@@ -63,34 +75,65 @@ interface ComboboxOptionWrapperProps extends ComboboxOptionProps {
   isSelected?: boolean
 }
 
-const ComboboxOptionWrapperInternal = forwardRef(
-  (
-    { children, label, value, ...rest }: ComboboxOptionWrapperProps,
-    forwardedRef: Ref<HTMLLIElement>
-  ) => (
-    <OptionContext.Provider value={{ label, value }}>
-      <li
-        {...omit(omitStyledProps(rest), 'isSelected')}
-        ref={forwardedRef}
-        id={String(makeHash(value))}
-        role="option"
-        // without this the menu will close from `onBlur`, but with it the
-        // element can be `document.activeElement` and then our focus checks in
-        // onBlur will work as intended
-        tabIndex={-1}
-      >
-        {children}
-      </li>
-    </OptionContext.Provider>
+export const ComboboxOptionWrapper = styled(
+  forwardRef(
+    (props: ComboboxOptionWrapperProps, forwardedRef: Ref<HTMLLIElement>) => {
+      const {
+        children,
+        className,
+        isSelected,
+        label,
+        style,
+        value,
+        ...rest
+      } = props
+      // find the element's dimensions for ripple behavior
+      const [element, ref] = useCallbackRef(forwardedRef)
+      const [{ height, width }] = useMeasuredElement(element)
+
+      const {
+        callbacks,
+        className: rippleClassName,
+        style: rippleStyle,
+      } = useRipple({
+        bounded: true,
+        color: isSelected ? 'key' : 'neutral',
+        height,
+        width,
+      })
+
+      const rippleHandlers = useRippleHandlers(
+        callbacks,
+        {
+          ...pick({ ...rest }, rippleHandlerKeys),
+        },
+        rest.disabled
+      )
+      return (
+        <OptionContext.Provider value={{ label, value }}>
+          <li
+            className={mergeClassNames([className, rippleClassName])}
+            {...omit(omitStyledProps(rest))}
+            ref={ref}
+            id={String(makeHash(value))}
+            role="option"
+            {...rippleHandlers}
+            style={{ ...style, ...rippleStyle }}
+            // without this the menu will close from `onBlur`, but with it the
+            // element can be `document.activeElement` and then our focus checks in
+            // onBlur will work as intended
+            tabIndex={-1}
+          >
+            {children}
+          </li>
+        </OptionContext.Provider>
+      )
+    }
   )
-)
-
-ComboboxOptionWrapperInternal.displayName = 'ComboboxOptionWrapper'
-
-export const ComboboxOptionWrapper = styled(ComboboxOptionWrapperInternal)`
+)`
+  ${rippleStyle}
   background-color: ${({ isSelected, theme }) =>
     isSelected && theme.colors.keySubtle};
-
   &[aria-selected='true'] {
     background-color: ${({ isSelected, theme }) =>
       isSelected ? theme.colors.keyAccent : theme.colors.ui1};
@@ -132,6 +175,7 @@ const ComboboxOptionInternal = forwardRef(
       scrollIntoView,
       isActive
     )
+
     const ref = useForkedRef(scrollRef, forwardedRef)
 
     return (
@@ -162,7 +206,6 @@ export const comboboxOptionStyle = css`
   ${layout}
   ${space}
   ${typography}
-
   align-items: stretch;
   cursor: default;
   outline: none;

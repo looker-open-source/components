@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2021 Looker Data Sciences, Inc.
+ Copyright (c) 2022 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -28,11 +28,7 @@ import type { FC, ReactElement } from 'react'
 import React, { useContext } from 'react'
 import { Space, ProgressCircular, ComponentsProvider } from '@looker/components'
 import { ThemeContext } from 'styled-components'
-import {
-  formatTotals,
-  QueryContext,
-  buildChartConfig,
-} from '@looker/visualizations-adapters'
+import { QueryContext } from '@looker/visualizations-adapters'
 
 export interface QueryFormatterProps {
   children: ReactElement
@@ -45,7 +41,7 @@ export const QueryFormatter: FC<QueryFormatterProps> = props => {
     ok,
     data = [],
     fields,
-    config: rawConfigWithOverrides,
+    config: configContext,
     loading,
     totals,
   } = useContext(QueryContext)
@@ -71,18 +67,12 @@ export const QueryFormatter: FC<QueryFormatterProps> = props => {
     )
   }
 
-  if (data && rawConfigWithOverrides && fields) {
-    const config = buildChartConfig({
-      config: rawConfigWithOverrides,
-      data,
-      fields,
-    })
-
+  if (data && configContext && fields) {
     return React.cloneElement(children, {
-      config,
+      config: configContext,
       data,
       fields,
-      totals: formatTotals(totals),
+      totals,
       ok,
     })
   } else {
