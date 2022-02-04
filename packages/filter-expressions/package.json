@@ -2,18 +2,18 @@
   "name": "@looker/filter-expressions",
   "main": "src/index.ts",
   "license": "MIT",
-  "version": "0.8.13",
+  "version": "0.8.14",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@looker/i18n": "*",
+    "@looker/i18n": "^0.1.1",
     "@looker/sdk": "^21.12.0",
     "lodash": "^4.17.20",
     "pegjs": "0.10.0"
   },
   "devDependencies": {
-    "@looker/eslint-config-oss": "^1.7.13",
+    "@looker/eslint-config-oss": "^1.7.14",
     "@types/pegjs": "^0.10.1",
     "@typescript-eslint/eslint-plugin": "*",
     "@typescript-eslint/parser": "*",
