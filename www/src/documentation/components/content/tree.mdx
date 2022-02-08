@@ -82,62 +82,6 @@ Use the `disabled` prop to present your `Tree` in a disabled state. Note that us
 </TreeCollection>
 ```
 
-## Changing Background Behavior
-
-By default, `Tree`s and `TreeItem`s background color from being hovered (or other state changes like the `selected` and `current` props) will start left of their indent padding.
-
-Use `Tree`'s `labelBackgroundOnly` prop to remove the indent padding from being included in the backgrounds of both `Tree` and `TreeItem`.
-
-The layout changes from `labelBackgroundOnly` necessitate a separate callback be assigned to the indent spacing of child `TreeItem`s. Use `TreeItem`'s `onClickWhitespace` prop to assign a callback to the indent padding of a given item. Generally the callback specified on `onClickWhitespace` is the same as specified on the primary item within the `TreeItem`.
-
-**Note:** When `labelBackgroundOnly` is true, `TreeItem`s should use `itemRole="none"`.
-
-```jsx
-;() => {
-  const Label = ({ children, height, onClick }) => (
-    <Flex alignItems="center" height={height} onClick={onClick}>
-      {children}
-    </Flex>
-  )
-
-  // Use the listItemDimensions helper function to grab the dimensions of your Tree's density value
-  const density = -1
-  const { height: fieldHeight } = listItemDimensions(density)
-
-  return (
-    <TreeCollection>
-      <Tree density={density} label="Cheeses" labelBackgroundOnly defaultOpen>
-        <TreeItem
-          itemRole="none"
-          onClickWhitespace={() => alert('Gouda time.')}
-        >
-          <Label height={fieldHeight} onClick={() => alert('Gouda time.')}>
-            Gouda
-          </Label>
-        </TreeItem>
-        <TreeItem
-          itemRole="none"
-          onClickWhitespace={() => alert('Swiss time.')}
-          selected
-        >
-          <Label height={fieldHeight} onClick={() => alert('Swiss time.')}>
-            Swiss
-          </Label>
-        </TreeItem>
-        <TreeItem
-          itemRole="none"
-          onClickWhitespace={() => alert('Cheddar time.')}
-        >
-          <Label height={fieldHeight} onClick={() => alert('Cheddar time.')}>
-            Cheddar
-          </Label>
-        </TreeItem>
-      </Tree>
-    </TreeCollection>
-  )
-}
-```
-
 ## Truncating Tree Items & Labels
 
 Occasionally tree item labels will wrap to a second line when the text content is very long, or the available space is very narrow. The text content will wrap by default, but if that is undesirable you can use the `truncate` prop to limit text content to a single line.
@@ -254,24 +198,6 @@ The `toggleOpen` prop should receive a function that has one parameter: a boolea
     </TreeCollection>
   )
 }
-```
-
-## Aligning Trees with icons and without icons
-
-Use the `assumeIconAlignment` prop to align the label of a `Tree` without an icon with the label of a parent `Tree`s with an icon.
-
-**Note:** `assumeIconAlignment` will also align the labels of the child `TreeItem` with the `Tree`'s label.
-
-```jsx
-<TreeCollection>
-  <Tree label="Parent Tree" icon={<Pivot />} defaultOpen>
-    <Tree label="Tree with assumeIconAlignment" defaultOpen assumeIconAlignment>
-      <TreeItem>Gouda</TreeItem>
-      <TreeItem>Swiss</TreeItem>
-      <TreeItem>Cheddar</TreeItem>
-    </Tree>
-  </Tree>
-</TreeCollection>
 ```
 
 ## TreeCollection
