@@ -39,7 +39,23 @@ Wrap the `DateFormat` component around a javascript Date object to render a huma
 
 ## I18n
 
-Install the [`date-fns`](https://date-fns.org/) package and import the necessary locale.
+Install the [`date-fns`](https://date-fns.org/) package, import the necessary locale, and pass it to `ComponentsProvider`.
+
+```js static
+import { ComponentsProvider } from '@looker/components'
+import { DateFormat } from '@looker/components-date'
+import ko from 'date-fns/locale/ko'
+
+export const App = () => {
+  return (
+    <ComponentsProvider dateLocale={ko}>
+      <DateFormat />
+    </ComponentsProvider>
+  )
+}
+```
+
+The locale can also be passed directly to the `DateFormat` component.
 
 ```js static
 import { DateFormat } from '@looker/components-date'

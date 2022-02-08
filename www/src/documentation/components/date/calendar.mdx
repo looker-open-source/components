@@ -75,7 +75,23 @@ We support four different callbacks to hook into various navigation events:
 
 ## I18n
 
-Install the [`date-fns`](https://date-fns.org/) package and import the necessary locale.
+Install the [`date-fns`](https://date-fns.org/) package, import the necessary locale, and pass it to `ComponentsProvider`.
+
+```js static
+import { ComponentsProvider } from '@looker/components'
+import { Calendar } from '@looker/components-date'
+import ko from 'date-fns/locale/ko'
+
+export const App = () => {
+  return (
+    <ComponentsProvider dateLocale={ko}>
+      <Calendar />
+    </ComponentsProvider>
+  )
+}
+```
+
+The locale can also be passed directly to the `Calendar` component.
 
 ```js static
 import { Calendar } from '@looker/components-date'
@@ -93,4 +109,12 @@ Use the `firstDayOfWeek` prop to override this – 0 for Sunday, 1 for Monday, e
 
 ```jsx
 <Calendar firstDayOfWeek={1} />
+```
+
+### selectMonth
+
+The `selectMonth` prop turns the month and year in the title of the calendar into dropdowns.
+
+```jsx
+<Calendar selectMonth />
 ```

@@ -50,66 +50,75 @@ You can use the theme's properties within your custom components:
 }
 ```
 
-## Extending the Theme
+## Customizing the Theme
 
-You can extend the theme provided by Looker Components by creating a copy and then providing that version of theme to the ThemeProvider.
-
-```jsx
-;() => {
-  /**
-   *  import { Button, ComponentsProvider, theme } from '@looker/components'
-   *  import styled from 'styled-components'
-   **/
-
-  const myTheme = {
-    ...theme,
-    myCustomAttribute: 'hotpink',
-  }
-
-  const PrettyButton = styled(Button)`
-    border-color: ${({ theme }) => theme.myCustomAttribute};
-    background-color: ${({ theme }) => theme.myCustomAttribute};
-  `
-
-  return (
-    <ComponentsProvider theme={myTheme}>
-      <PrettyButton>Pink is so Pretty!</PrettyButton>
-    </ComponentsProvider>
-  )
-}
-```
-
-## Nesting ComponentsProvider (ThemeProviders)
-
-`ComponentsProvider` as a Styled Components' ThemeProvider acts as a React Context and in so doing is able to support the standard behavior of nested contexts - the theme defined nearest to the component will be the version used.
-
-NOTE: You'll also see that `PrettyButton` in the example simply falls back to `Button`'s default style when `myCustomAttribute` isn't assigned.
+You can extend the theme provided by Looker Components by passing colors, fonts, and more into the `themeCustomizations` prop.
 
 ```jsx
 ;() => {
   /**
    *  import { Button, ComponentsProvider } from '@looker/components'
-   *  import styled from 'styled-components'
    **/
 
-  const myTheme = {
-    ...theme,
-    myCustomAttribute: 'hotpink',
-  }
+  return (
+    <ComponentsProvider themeCustomizations={{ colors: { key: 'hotpink' } }}>
+      <Button>Pink is so Pretty!</Button>
+    </ComponentsProvider>
+  )
+}
+```
 
-  const PrettyButton = styled(Button)`
-    border-color: ${({ theme }) => theme.myCustomAttribute};
-    background-color: ${({ theme }) => theme.myCustomAttribute};
-  `
+The following colors are available for customization, the first three being the most likely to need to be customized:
+
+- key: Key color is applied strategically across the UI. Used for default action buttons, toggle switches, interactive component accents
+- text: Used for text
+- background: Default page background used for application background
+
+These colors are less likely to need to be customized:
+
+- pageBackground: Used as page background in some themes pageBackground and background have a subtle difference, wherein the pageBackground is closer to `ui1` but blends are calculated from a more "absolute" background color (white or black)
+- link: Link text color, used for Breadcrumb, link
+- critical: Critical intent color used for: Delete button, error and validation messages
+- warn: Warn intent color used for Warning banner
+- positive: Positive intent color used for Positive banner
+- inform: Inform intent color used for Info banner
+- calculation: Indicates a calculated value
+- dimension: Indicates dimensionality
+- measure: Indicates a measure
+- title: Used by Heading. This is generally identical to colors.text5
+- body: Used by Paragraph, Ul/Ol. This is generally identical to colors.text5
+
+The following font family options may be customized (use the `fontSources` property to specify the sources):
+
+- body: Used for body text
+- brand: Used for headings
+- code: Used for code snippets
+
+Additionaly properties to customize:
+
+- brandAnimation: The Google Material ripple effect for pressable elements
+- externalLabel: True sets the field label style to external, false sets it to the Google Material floating label style
+
+## Nesting ComponentsProvider (ThemeProviders)
+
+`ExtendComponentsThemeProvider` as a Styled Components' ThemeProvider acts as a React Context and in so doing is able to support the standard behavior of nested contexts - the theme defined nearest to the component will be the version used.
+
+```jsx
+;() => {
+  /**
+   *  import { Button, ComponentsProvider } from '@looker/components'
+   **/
 
   return (
     <ComponentsProvider>
       <Space>
-        <PrettyButton>Stock Theme</PrettyButton>
+        <Button>Stock Theme</Button>
 
-        <ComponentsProvider theme={myTheme}>
-          <PrettyButton>Pretty Button with Custom Theme</PrettyButton>
-        </ComponentsProvider>
+        <ExtendComponentsThemeProvider
+          themeCustomizations={{ colors: { key: 'hotpink' } }}
+        >
+          <Button>Button with Custom Theme</Button>
+        </ExtendComponentsThemeProvider>
       </Space>
     </ComponentsProvider>
   )
