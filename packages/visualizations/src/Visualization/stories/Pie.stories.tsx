@@ -143,9 +143,6 @@ LegendBottom.args = {
     type: 'pie',
   },
 }
-LegendBottom.parameters = {
-  storyshots: { disable: true },
-}
 
 export const LegendBottomMaxDataRender = Template.bind({})
 LegendBottomMaxDataRender.args = {
@@ -166,9 +163,6 @@ LegendBottomMaxDataRender.args = {
 export const NoLegend = Template.bind({})
 NoLegend.args = {
   config: { type: 'pie', legend: false, series: {} },
-}
-NoLegend.parameters = {
-  storyshots: { disable: true },
 }
 
 export const Labels = Template.bind({})

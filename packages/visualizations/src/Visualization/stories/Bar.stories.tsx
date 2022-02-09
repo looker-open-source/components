@@ -146,6 +146,3 @@ export const Pivot = () => {
     </QueryContext.Provider>
   )
 }
-Pivot.parameters = {
-  storyshots: { disable: true },
-}

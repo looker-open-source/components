@@ -73,10 +73,6 @@ const Template: Story<StoryTemplateProps> = ({ config, ...restProps }) => {
 export const Table = Template.bind({})
 Table.args = {}
 
-Table.parameters = {
-  storyshots: { disable: true },
-}
-
 export const Pivot = () => {
   const mockPivotFields = buildPivotFields({
     fields: {
@@ -106,7 +102,4 @@ export const Pivot = () => {
       <Visualization height={600} width={800} />
     </QueryContext.Provider>
   )
-}
-Pivot.parameters = {
-  storyshots: { disable: true },
 }
