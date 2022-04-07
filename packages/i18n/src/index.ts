@@ -24,6 +24,7 @@
 
  */
 
+export * from './getDateLocale'
 export * from './i18nInit'
 export * from './i18nInitComponents'
 export * from './types'

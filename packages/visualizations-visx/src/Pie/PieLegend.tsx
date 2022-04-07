@@ -34,8 +34,8 @@ import styled, { css, ThemeContext } from 'styled-components'
 import { useMeasuredElement, useCallbackRef } from '@looker/components'
 import pick from 'lodash/pick'
 import { PieLegendControls } from './PieLegendControls'
-import type { LegendOrientations } from './PieLegendControls'
 import { getLabelContent } from './getLabelContent'
+import type { LegendOrientations } from './types'
 
 type PieLegendProps = {
   /*

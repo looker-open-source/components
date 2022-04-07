@@ -198,6 +198,9 @@ const resources = {
     'complete weeks': 'pełnych tyg.',
     'complete years': 'pełne lata/pełnych lat',
   },
+  RadioGroup: {
+    'any value': 'dowolna wartość',
+  },
   ReactSelectCustomIcons: {
     'Clear all': 'Wyczyść wszystko',
     Remove: 'Usuń',
@@ -218,10 +221,10 @@ const resources = {
     More: 'Więcej',
   },
   use_filters_errors: {
-    'Selection required': 'Wymagany wybór',
     'Invalid value': 'Nieprawidłowa wartość',
     'No value is set for your user attribute':
       'Nie ustawiono wartości dla atrybutu użytkownika',
+    'Selection required': 'Wymagany wybór',
   },
   use_option_filtering: {
     'No values': 'Brak wartości',

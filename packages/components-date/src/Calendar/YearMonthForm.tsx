@@ -24,7 +24,6 @@
 
  */
 import React from 'react'
-import { useTranslation } from 'react-i18next'
 import {
   ButtonTransparent,
   Heading,
@@ -62,8 +61,6 @@ export const YearMonthForm = ({
   onNowClick,
   size,
 }: YearMonthFormProps) => {
-  const { t } = useTranslation('Calendar')
-
   const months = localeUtils?.getMonths()
 
   const years = []
@@ -107,7 +104,7 @@ export const YearMonthForm = ({
     </Space>
   ) : (
     <Space justifyContent="center">
-      <Tooltip placement="bottom" content={t('View Current Month')}>
+      <Tooltip placement="bottom" content="View Current Month">
         <ButtonTransparent onClick={handleLabelClick} color="key">
           <Heading
             as={headingSizeMap(size)}

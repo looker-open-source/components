@@ -32,7 +32,6 @@ import React, { forwardRef, useState, useEffect } from 'react'
 import styled from 'styled-components'
 import type { SpaceProps } from '@looker/design-tokens'
 import { reset, space } from '@looker/design-tokens'
-import { mergeClassNames } from '../../../utils'
 import {
   inputRippleColor,
   RIPPLE_RATIO,
@@ -72,15 +71,13 @@ export const Checkbox = styled(
     } = props
     const [isChecked, setIsChecked] = useState<MixedBoolean>(!!defaultChecked)
 
-    const {
-      callbacks,
-      className: rippleClassName,
-      style: rippleStyle,
-    } = useRipple({
+    const { callbacks, ...rippleProps } = useRipple({
+      className,
       color: inputRippleColor(isChecked !== false, validationType === 'error'),
       // Only define size for density -6,
       // to make the halo slightly bigger than the container
       size: RIPPLE_RATIO,
+      style,
     })
 
     const rippleHandlers = useRippleHandlers(
@@ -110,11 +107,7 @@ export const Checkbox = styled(
     }, [checked])
 
     return (
-      <div
-        className={mergeClassNames([className, rippleClassName])}
-        style={{ ...style, ...rippleStyle }}
-        {...rippleHandlers}
-      >
+      <div {...rippleProps}>
         <input
           type="checkbox"
           {...pickInputProps(restProps)}
@@ -124,6 +117,7 @@ export const Checkbox = styled(
           onClick={handleClick}
           onChange={noop} // suppress read-only error as we rely on click rather than change event here
           ref={ref}
+          {...rippleHandlers}
         />
         <FauxCheckbox isSelected={!!isChecked}>
           {checked === 'mixed' ? <CheckMarkMixed /> : <CheckMark />}

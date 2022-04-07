@@ -27,7 +27,7 @@ import type { ElementType } from 'react'
 import type { DateFilterType, FilterTypeMap } from '@looker/filter-expressions'
 import defaultTo from 'lodash/defaultTo'
 import { MatchesAdvanced } from '../../MatchesAdvanced'
-import { UserAttribute } from '../../UserAttribute/UserAttribute'
+import { UserAttributes } from '../../UserAttributes'
 import { BeforeAfter } from '../components/BeforeAfter'
 import { DateRange } from '../components/DateRange'
 import { OnDate } from '../components/OnDate'
@@ -57,7 +57,7 @@ const filterTypeToDateMap: FilterTypeMap<DateFilterType> = {
   thisRange: MatchesAdvanced,
   on: OnDate,
   relative: Relative,
-  user_attribute: UserAttribute,
+  user_attribute: UserAttributes,
 }
 
 export const dateFilterTypeToFilter = (type: DateFilterType): ElementType =>

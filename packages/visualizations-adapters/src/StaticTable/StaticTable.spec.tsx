@@ -28,15 +28,16 @@ import React from 'react'
 import { screen } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { StaticTable } from '.'
-import { mockQueryContextValues } from '../__mocks__'
+import { mockBarConfig, mockFields, mockData } from '../__mocks__'
 
 describe('StaticTable', () => {
   it('renders StaticTable', () => {
     renderWithTheme(
       <StaticTable
-        {...mockQueryContextValues}
+        data={mockData}
+        fields={mockFields}
         config={{
-          ...mockQueryContextValues.config,
+          ...mockBarConfig,
           type: 'table',
         }}
       />

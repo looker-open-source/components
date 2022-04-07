@@ -59,6 +59,7 @@ export const AdvancedFilter: FC<AdvancedFilterProps> = ({
   inline,
   validationMessage,
   isLoading,
+  allowMultipleValues,
 }) => {
   const onAdd = (filterItem: FilterModel, keepValue?: boolean) => {
     if (ast) {
@@ -83,7 +84,11 @@ export const AdvancedFilter: FC<AdvancedFilterProps> = ({
   const filterList = items.map((item, itemIndex) => {
     const key = `${name}-${item.id}`
     const isMatchesAdvanced = item.type === 'matchesAdvanced'
-    const showAdd = itemIndex === lastItemIndex && !isMatchesAdvanced
+    const showAdd =
+      itemIndex === lastItemIndex &&
+      !isMatchesAdvanced &&
+      !field?.parameter &&
+      Boolean(allowMultipleValues)
     const showRemove = lastItemIndex > 0 && !isMatchesAdvanced
     return (
       <FilterComponent
@@ -108,6 +113,7 @@ export const AdvancedFilter: FC<AdvancedFilterProps> = ({
         field={field}
         inline={inline}
         validationMessage={validationMessage}
+        allowMultipleOptions={Boolean(allowMultipleValues)}
       />
     )
   })

@@ -25,10 +25,17 @@
  */
 import { useMeasuredElement, useCallbackRef } from '../utils'
 import { useRipple } from './useRipple'
-import type { UseBoundedRippleProps } from './types'
+import type { UseBoundedRippleProps, UseBoundedRippleResponse } from './types'
 
-export const useBoundedRipple = (props: UseBoundedRippleProps) => {
-  const [element, ref] = useCallbackRef()
+/**
+ * @returns callbacks should be mapped to DOM event handlers (see useRippleHandlers)
+ * and remaining props should be passed to an internal element that includes rippleStyle
+ */
+export const useBoundedRipple = <T extends HTMLElement = HTMLElement>({
+  ref: forwardedRef,
+  ...props
+}: UseBoundedRippleProps<T>): UseBoundedRippleResponse<T> => {
+  const [element, ref] = useCallbackRef(forwardedRef)
   const [{ height, width }] = useMeasuredElement(element)
   const result = useRipple({ ...props, bounded: true, height, width })
   return { ...result, ref }

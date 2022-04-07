@@ -50,6 +50,7 @@ import {
   getDefaultGlyphSize,
 } from '../utils'
 import { DLGroup } from '../DLGroup'
+import numeral from 'numeral'
 
 export const tooltipStyles = css`
   background-color: ${({ theme }) => theme.colors.inverse};
@@ -90,8 +91,7 @@ export const XYTooltip = styled(
     showDatumGlyph = true,
   }: TooltipProps) => {
     const theme = useContext(ThemeContext)
-    const { tooltips } = config
-
+    const { tooltips, series } = config
     if (!tooltips) {
       return <></>
     }
@@ -110,13 +110,21 @@ export const XYTooltip = styled(
         config,
         nearestDatumMeasureName
       )
-
       /**
        * In the event there is more than 1 dimension, we'll hide the label
        * and instead just display the concatenation of all dimension values
        */
       const dimensionLabel =
         fields.dimensions.length === 1 ? fields.dimensions[0].label_short : ''
+
+      const valueFormatted = numeral(datum[nearestDatumMeasureName]).format(
+        nearestSeries.value_format
+      )
+      const { size_by } = nearestSeries
+      const sizeBySeries = size_by ? get(series, size_by) : {}
+      const sizeByValueFormatted = numeral(
+        datum[nearestSeries.size_by || '']
+      ).format(sizeBySeries.value_format)
 
       return (
         <dl>
@@ -128,7 +136,7 @@ export const XYTooltip = styled(
                 config,
                 nearestDatumMeasureName
               )}
-              value={datum[nearestDatumMeasureName]}
+              value={valueFormatted}
             />
             {nearestSeries.size_by && (
               <DLGroup
@@ -138,7 +146,7 @@ export const XYTooltip = styled(
                   config,
                   nearestSeries.size_by
                 )}
-                value={datum[nearestSeries.size_by || '']}
+                value={sizeByValueFormatted}
               />
             )}
           </SpaceVertical>

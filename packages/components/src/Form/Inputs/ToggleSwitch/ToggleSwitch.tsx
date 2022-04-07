@@ -66,7 +66,7 @@ export const ToggleSwitch = styled(
       }: ToggleSwitchProps,
       ref: Ref<HTMLInputElement>
     ) => {
-      const { callbacks, className: rippleClassName, style } = useRipple({
+      const { callbacks, ...rippleProps } = useRipple({
         color: inputRippleColor(!!on, validationType === 'error'),
         // Only define size for density -6,
         // to make the halo slightly bigger than the container
@@ -83,7 +83,7 @@ export const ToggleSwitch = styled(
 
       // Ripple event handlers go on the container but the ripple styles go on the handle
       return (
-        <div className={className} {...rippleHandlers}>
+        <div className={className}>
           <input
             type="checkbox"
             checked={on}
@@ -94,14 +94,10 @@ export const ToggleSwitch = styled(
             aria-invalid={validationType === 'error' ? 'true' : undefined}
             ref={ref}
             {...pickInputProps(props)}
+            {...rippleHandlers}
           />
           <Track on={on} validationType={validationType} />
-          <Handle
-            on={on}
-            validationType={validationType}
-            className={rippleClassName}
-            style={style}
-          ></Handle>
+          <Handle on={on} validationType={validationType} {...rippleProps} />
         </div>
       )
     }

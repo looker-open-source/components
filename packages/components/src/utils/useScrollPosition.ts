@@ -34,11 +34,15 @@ import { useEffect, useState } from 'react'
 export const useScrollPosition = (element: HTMLElement | null) => {
   const [scrollPosition, setScrollPosition] = useState(0)
   useEffect(() => {
-    const scrollListener = throttle(() => {
-      if (element) {
-        setScrollPosition(element.scrollTop)
-      }
-    }, 50)
+    const scrollListener = throttle(
+      () => {
+        if (element) {
+          setScrollPosition(element.scrollTop)
+        }
+      },
+      50,
+      { leading: true, trailing: true }
+    )
 
     if (element) {
       element.addEventListener('scroll', scrollListener)

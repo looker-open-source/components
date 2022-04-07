@@ -198,6 +198,9 @@ const resources = {
     'complete weeks': 'complete weeks',
     'complete years': 'complete years',
   },
+  RadioGroup: {
+    'any value': 'any value',
+  },
   ReactSelectCustomIcons: {
     'Clear all': 'Clear all',
     Remove: 'Remove',

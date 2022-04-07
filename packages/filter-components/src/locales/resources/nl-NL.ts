@@ -198,6 +198,9 @@ const resources = {
     'complete weeks': 'hele weken',
     'complete years': 'hele jaren',
   },
+  RadioGroup: {
+    'any value': 'elke waarde',
+  },
   ReactSelectCustomIcons: {
     'Clear all': 'Alles verwijderen',
     Remove: 'Verwijderen',
@@ -218,10 +221,10 @@ const resources = {
     More: 'Meer',
   },
   use_filters_errors: {
-    'Selection required': 'Selectie vereist',
     'Invalid value': 'Ongeldige waarde',
     'No value is set for your user attribute':
       'Er is geen waarde ingesteld voor uw gebruikerskenmerk',
+    'Selection required': 'Selectie vereist',
   },
   use_option_filtering: {
     'No values': 'Geen waarden',

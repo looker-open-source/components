@@ -47,12 +47,12 @@ const options = [
 ]
 
 describe('RadioGroup tests', () => {
-  it('renders any option', () => {
+  it('renders any value', () => {
     renderWithTheme(
       <RadioGroup value={''} options={options} onChange={jest.fn()} anyOption />
     )
 
-    expect(screen.getByLabelText('any option')).toBeChecked()
+    expect(screen.getByLabelText('any value')).toBeChecked()
   })
 
   it('handles loading state', () => {

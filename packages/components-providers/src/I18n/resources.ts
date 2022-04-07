@@ -32,8 +32,6 @@ export const i18nResources: Resource = {
       'Clear Field': 'Clear Field',
     },
     AvatarButton: {
-      'Account Icon': 'Account Icon',
-      'Account Menu': 'Account Menu',
       'Profile Picture': 'Profile Picture',
     },
     AvatarUser: {
@@ -51,6 +49,10 @@ export const i18nResources: Resource = {
     },
     Calendar: {
       'View Current Month': 'View Current Month',
+    },
+    CalendarNav: {
+      'next month': 'next month',
+      'previous month': 'previous month',
     },
     CheckMarkMixed: {
       'Check Mark Mixed': 'Check Mark Mixed',
@@ -89,10 +91,14 @@ export const i18nResources: Resource = {
       Warning: 'Warning',
     },
     InputDate: {
+      // Date should be removed when components-date is removed
       Date: 'Date',
+      'Open calendar': 'Open calendar',
+      error: 'error',
     },
     InputDateRange: {
       'End date': 'End date',
+      'Open calendar': 'Open calendar',
       'Start date': 'Start date',
     },
     InputFilters: {
@@ -115,6 +121,11 @@ export const i18nResources: Resource = {
     },
     ModalHeaderCloseButton: {
       Close: 'Close',
+    },
+    MonthPickerNav: {
+      close: 'close',
+      'next year': 'next year',
+      'previous year': 'previous year',
     },
     PageSize: {
       Display: 'Display',

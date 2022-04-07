@@ -25,7 +25,7 @@
  */
 
 export * from './mockConfig'
-export * from './mockQueryContextValues'
+export * from './mockData'
 export * from './mockFields'
 export * from './mockPivots'
 export * from './mockSdk'
@@ -33,3 +33,4 @@ export * from './mockSdkConfigResponse'
 export * from './mockSdkDataResponse'
 export * from './mockSdkFieldsResponse'
 export * from './mockSdkPivotDataResponse'
+export * from './mockSDKModelExploreResponse'

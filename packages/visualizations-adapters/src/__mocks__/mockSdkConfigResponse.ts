@@ -94,10 +94,4 @@ export const mockSdkConfigResponse: RawApiConfigResponse = {
   defaults_version: 1,
   hidden_fields: ['orders.average_total_amount_of_order_usd'],
   custom_color: '#72D16D',
-  value_format: '0',
-  label_value_format: '0',
-  series_value_format: {
-    'orders.count': { format_string: '1' },
-    'orders.average_total_amount_of_order_usd': { format_string: '1' },
-  },
 }

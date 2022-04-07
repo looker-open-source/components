@@ -26,13 +26,12 @@
 
 import type { VisWrapperProps } from '../VisWrapper'
 import type {
+  CSeriesBasic,
   SupportedChartTypes,
   SDKRecord,
   Fields,
   ChartLayoutProps,
 } from '../types'
-
-import type { CSeriesBasic } from '@looker/visualizations'
 
 export type CSingleValueSeries = Omit<CSeriesBasic, 'visible'>
 

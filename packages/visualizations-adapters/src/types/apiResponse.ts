@@ -45,7 +45,7 @@ export type RawApiConfigResponse = {
   interpolation: 'linear'
   label_density: number
   label_type?: LabelTypes
-  label_value_format: string
+  label_value_format?: string
   legend_position: LegendPositions | 'center'
   plot_size_by_field: boolean
   point_style: 'none' | 'circle' | 'circle_outline'
@@ -79,7 +79,7 @@ export type RawApiConfigResponse = {
     | 'looker_pie'
     | 'looker_scatter'
     | keyof SupportedChartTypes
-  value_format: string
+  value_format?: string
   value_labels: LegendTypes
   x_axis_label?: string | null
   x_axis_scale: 'auto'

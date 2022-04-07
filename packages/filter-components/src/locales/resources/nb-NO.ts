@@ -198,6 +198,9 @@ const resources = {
     'complete weeks': 'hele uker',
     'complete years': 'hele år',
   },
+  RadioGroup: {
+    'any value': 'enhver verdi',
+  },
   ReactSelectCustomIcons: {
     'Clear all': 'Fjern alle',
     Remove: 'Fjern',
@@ -218,10 +221,10 @@ const resources = {
     More: 'Mer',
   },
   use_filters_errors: {
-    'Selection required': 'Valg må angis',
     'Invalid value': 'Ugyldig verdi',
     'No value is set for your user attribute':
       'Ingen verdi er angitt for brukerattributtet',
+    'Selection required': 'Valg må angis',
   },
   use_option_filtering: {
     'No values': 'Ingen verdier',

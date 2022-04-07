@@ -1,0 +1,360 @@
+import { Menu } from '@looker/components'
+
+<Meta component={Menu} title="Docs/Components/Overlays/Menu/Menu" />
+
+# Menu
+
+`Menu` is a specific implementation of [`Popover`](popover) that accepts an array
+(or React Fragment) of [`MenuItem`](menuitem)s in the content prop.
+
+**Note:** The direct child of `Menu` should be able to accept the following props. TypeScript currently doesn't support the enforcement of this.
+
+- `onClick` for toggling the menu
+- `ref` for popover placement
+- aria attributes for accessibility
+
+```jsx
+<Space>
+  <Menu
+    content={
+      <>
+        <MenuItem icon={<Favorite />}>Gouda</MenuItem>
+        <MenuItem icon={<Favorite />}>Swiss</MenuItem>
+      </>
+    }
+  >
+    <Button>Cheese</Button>
+  </Menu>
+
+  <Menu
+    disabled
+    content={
+      <>
+        <MenuItem icon={<Favorite />}>Gouda</MenuItem>
+        <MenuItem icon={<Favorite />}>Swiss</MenuItem>
+      </>
+    }
+  >
+    <Button disabled>Disabled Cheese</Button>
+  </Menu>
+</Space>
+```
+
+## Density
+
+Use the `density` prop to set the size and spacing of your `Menu`. As `density` decreases, so does the height and spacing of child `MenuItem`s.
+
+`density` values range from -3 to 1.
+
+```jsx
+<Space>
+  <Menu
+    density={1}
+    content={
+      <>
+        <MenuItem icon={<Favorite />}>Gouda</MenuItem>
+        <MenuItem icon={<Favorite />}>Swiss</MenuItem>
+      </>
+    }
+  >
+    <Button>Big Items</Button>
+  </Menu>
+  <Menu
+    density={-3}
+    content={
+      <>
+        <MenuItem icon={<Favorite />}>Gouda</MenuItem>
+        <MenuItem icon={<Favorite />}>Swiss</MenuItem>
+      </>
+    }
+  >
+    <Button>Small Items</Button>
+  </Menu>
+</Space>
+```
+
+## Tooltip
+
+To add a tooltip to the menu button, nest a `Tooltip` inside `Menu`.
+
+```jsx
+<Menu
+  content={
+    <>
+      <MenuItem icon={<Favorite />}>Gouda</MenuItem>
+      <MenuItem icon={<Favorite />}>Swiss</MenuItem>
+    </>
+  }
+>
+  <Tooltip placement="top" content="Select your favorite kind">
+    <Button>Cheese</Button>
+  </Tooltip>
+</Menu>
+```
+
+## Placement
+
+Use the `placement` prop to position the overlay that contains the list.
+The `pin` props allow you to enforce the placement to varying degrees.
+
+```jsx
+<Menu
+  placement="left"
+  content={
+    <>
+      <MenuItem icon={<Favorite />}>Gouda</MenuItem>
+      <MenuItem icon={<Favorite />}>Swiss</MenuItem>
+    </>
+  }
+>
+  <Button>Cheese</Button>
+</Menu>
+```
+
+## Nested Menu
+
+Add `nestedMenu` to a `MenuItem` to create a nested menu.
+
+```jsx
+<Menu
+  content={
+    <>
+      <MenuItem
+        nestedMenu={
+          <>
+            <MenuItem>Camembert</MenuItem>
+            <MenuItem>Comté</MenuItem>
+          </>
+        }
+      >
+        French
+      </MenuItem>
+      <MenuItem
+        nestedMenu={
+          <>
+            <MenuItem>Gouda</MenuItem>
+            <MenuItem>Limburger</MenuItem>
+          </>
+        }
+      >
+        Dutch
+      </MenuItem>
+    </>
+  }
+>
+  <Button>Cheese</Button>
+</Menu>
+```
+
+## Controlled Menu
+
+Control the state of the menu with the React `useState` hook.
+
+```jsx
+;() => {
+  const [isOpen, setOpen] = React.useState(false)
+  return (
+    <Space>
+      <Menu
+        isOpen={isOpen}
+        setOpen={setOpen}
+        content={
+          <>
+            <MenuItem icon={<Email />}>Email</MenuItem>
+            <MenuItem icon={<TableChart />}>Spreadsheet</MenuItem>
+          </>
+        }
+      >
+        <Button>Export</Button>
+      </Menu>
+      <Text>{isOpen ? 'Menu Open' : 'Menu Closed'}</Text>
+    </Space>
+  )
+}
+```
+
+## Toggling the menu button on hover
+
+```jsx
+;() => {
+  const hoverRef = React.useRef()
+  return (
+    <Card ref={hoverRef} p="u5">
+      <Flex justifyContent="space-between">
+        <Paragraph>Hovering in this card will show the menu button.</Paragraph>
+        <Menu
+          hoverDisclosureRef={hoverRef}
+          content={
+            <>
+              <MenuItem>Edit item</MenuItem>
+              <MenuItem>Create new sub-item</MenuItem>
+            </>
+          }
+        >
+          <IconButton icon={<MoreVert />} label="More Options" />
+        </Menu>
+      </Flex>
+    </Card>
+  )
+}
+```
+
+## Recipe: A MenuItem opening a Dialog
+
+To open a `Dialog` from a `MenuItem`, it must be placed outside of the `Menu` and
+controlled via state values – or use the hook version.
+
+```jsx
+;() => {
+  const { value, setOn, setOff } = useToggle()
+  const [note, setNote] = React.useState('Change me...')
+  const handleChange = e => setNote(e.currentTarget.value)
+
+  const handleConfirm = close => {
+    close()
+    alert(`You can't delete Gouda, it's a cheese!`)
+  }
+
+  const [confirm, openConfirm] = useConfirm({
+    message: 'Are you sure you want to delete Gouda?',
+    onConfirm: handleConfirm,
+    title: 'Delete Cheese?',
+  })
+
+  return (
+    <>
+      <Space align="start" p="u4">
+        <SpaceVertical>
+          <Heading>Gouda</Heading>
+          <Paragraph>{note}</Paragraph>
+        </SpaceVertical>
+        <Menu
+          content={
+            <>
+              <MenuItem onClick={setOn}>Update note</MenuItem>
+              <MenuItem onClick={openConfirm}>Delete cheese</MenuItem>
+            </>
+          }
+        >
+          <IconButton icon={<MoreVert />} label="Options" />
+        </Menu>
+      </Space>
+      {confirm}
+      <Dialog isOpen={value} onClose={setOff}>
+        <DialogLayout
+          footer={<Button onClick={setOff}>Close</Button>}
+          header="Update Note"
+        >
+          <InputText value={note} onChange={handleChange} />
+        </DialogLayout>
+      </Dialog>
+    </>
+  )
+}
+```
+
+## Recipe: A Filterable Menu Overlay
+
+[`InputSearch`](/forms/input-search) can be incorporated into a menu popover to filter menu items by search query. Click the `cheese` button below to try it out.
+
+```jsx
+;() => {
+  const defaultCheeses = ['Gouda', 'Swiss', 'Cheddar', 'Goat', 'Parmesan']
+
+  const [keywordSearch, setKeywordSearch] = React.useState('')
+
+  const searchResults = React.useMemo(
+    () =>
+      defaultCheeses.filter(cheese =>
+        cheese.toLowerCase().includes(keywordSearch.toLowerCase())
+      ),
+    [keywordSearch]
+  )
+
+  return (
+    <Menu
+      width={200}
+      content={
+        <>
+          <Box2 p="u2">
+            <InputSearch
+              placeholder="start your search..."
+              value={keywordSearch}
+              onChange={setKeywordSearch}
+            />
+          </Box2>
+          <MenuHeading>Cheeses</MenuHeading>
+          {searchResults.map(cheese => (
+            <MenuItem itemRole="link" href={`#${cheese}`} key={cheese}>
+              {cheese}
+            </MenuItem>
+          ))}
+        </>
+      }
+    >
+      <Button m="u4">Cheese</Button>
+    </Menu>
+  )
+}
+```
+
+## Adding icon placeholder space
+
+If a `Menu` contains some number of `MenuItem`s with icons and some without, use the `iconGutter` prop to properly align all item labels with each other.
+
+More specifically, when `iconGutter` is true on a `Menu`, all `MenuItem`s without `icon` prop values will allocate icon placeholder space.
+
+```jsx
+<Space>
+  <Menu
+    content={
+      <>
+        <MenuItem icon={<DateRange />}>Calendar</MenuItem>
+        <MenuItem>No icon</MenuItem>
+        <MenuItem icon={<Pivot />}>Pivot</MenuItem>
+      </>
+    }
+  >
+    <Button>No Icon Gutter</Button>
+  </Menu>
+  <Menu
+    iconGutter
+    content={
+      <>
+        <MenuItem icon={<DateRange />}>Calendar</MenuItem>
+        <MenuItem>No icon</MenuItem>
+        <MenuItem icon={<Pivot />}>Pivot</MenuItem>
+      </>
+    }
+  >
+    <Button>Icon Gutter</Button>
+  </Menu>
+</Space>
+```
+
+## MenuHeading and MenuDivider
+
+`MenuHeading` is typically used as a title for a group of `MenuItem`s. `MenuHeading` children must be of type string.
+
+`MenuDivider` is a divider element used to separate groups of `MenuItem`s.
+
+**Note:** As a convenience feature, `MenuDivider` will not render a divider if it is the first or last child of a `Menu`.
+
+```jsx
+<Menu
+  content={
+    <>
+      <MenuHeading>Good Cheeses</MenuHeading>
+      <MenuItem>Cheddar</MenuItem>
+      <MenuItem>Swiss</MenuItem>
+      <MenuItem>Brie</MenuItem>
+      <MenuDivider></MenuDivider>
+      <MenuHeading>Great Cheeses</MenuHeading>
+      <MenuItem>Pepper Jack</MenuItem>
+      <MenuItem>String Cheese</MenuItem>
+    </>
+  }
+>
+  <Button>Menu with headings and dividers</Button>
+</Menu>
+```

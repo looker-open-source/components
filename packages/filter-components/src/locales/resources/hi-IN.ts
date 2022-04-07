@@ -198,6 +198,9 @@ const resources = {
     'complete weeks': 'पूर्ण सप्ताह',
     'complete years': 'पूर्ण वर्ष',
   },
+  RadioGroup: {
+    'any value': 'कोई भी मान',
+  },
   ReactSelectCustomIcons: {
     'Clear all': 'सभी साफ करें',
     Remove: 'निकालें',
@@ -218,10 +221,10 @@ const resources = {
     More: 'अधिक',
   },
   use_filters_errors: {
-    'Selection required': 'चयन आवश्यक है',
     'Invalid value': 'अमान्य मान',
     'No value is set for your user attribute':
       'आपकी उपयोगकर्ता विशेषता के लिए कोई मान सेट नहीं है',
+    'Selection required': 'चयन आवश्यक है',
   },
   use_option_filtering: {
     'No values': 'कोई मान नहीं दर्ज किया है',

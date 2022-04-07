@@ -50,6 +50,7 @@ describe('Number filter test', () => {
         showMatchesAdvanced={false}
         onAdd={jest.fn()}
         onRemove={jest.fn()}
+        allowMultipleOptions={true}
       />
     )
     const inputs = screen.getAllByRole('textbox')

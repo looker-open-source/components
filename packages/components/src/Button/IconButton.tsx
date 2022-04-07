@@ -57,6 +57,7 @@ export const IconButton = styled(
   forwardRef((props: IconButtonProps, forwardedRef: Ref<HTMLButtonElement>) => {
     const {
       'aria-expanded': ariaExpanded,
+      children,
       className,
       icon,
       id,
@@ -77,15 +78,14 @@ export const IconButton = styled(
       ...rest
     } = props
 
-    const {
-      callbacks,
-      className: rippleClassName,
-      style: rippleStyle,
-    } = useRipple({
-      bounded: shape === 'square',
-      color: toggle ? toggleColor : undefined,
-      size: shape === 'square' ? SQUARE_RIPPLE : 1,
-    })
+    const { callbacks, className: rippleClassName, ...rippleProps } = useRipple(
+      {
+        bounded: shape === 'square',
+        color: toggle ? toggleColor : undefined,
+        size: shape === 'square' ? SQUARE_RIPPLE : 1,
+        style,
+      }
+    )
 
     // any of the hover/focus handlers being present disables built-in tooltip
     const hasOuterTooltip = some(
@@ -142,13 +142,14 @@ export const IconButton = styled(
           tooltipClassName,
           rippleClassName,
         ])}
-        style={{ ...style, ...rippleStyle }}
+        {...rest}
+        {...rippleProps}
         {...rippleHandlers}
         {...otherHandlers}
-        {...rest}
       >
         <VisuallyHidden>{label}</VisuallyHidden>
         <Icon icon={icon} size={iconButtonIconSizeMap[size]} />
+        {children}
         {tooltip}
       </ButtonOuter>
     )

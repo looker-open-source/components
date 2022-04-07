@@ -28,7 +28,7 @@ import type {
   LocationFilterType,
 } from '@looker/filter-expressions'
 import { MatchesAdvanced } from '../../MatchesAdvanced'
-import { UserAttribute } from '../../UserAttribute/UserAttribute'
+import { UserAttributes } from '../../UserAttributes'
 
 import { LocationBox } from '../components/LocationBox'
 import { LocationCircle } from '../components/LocationCircle'
@@ -43,7 +43,7 @@ const filterTypeToLocationMap: FilterTypeMap<LocationFilterType> = {
   anyvalue: Blank,
   null: Blank,
   notnull: Blank,
-  user_attribute: UserAttribute,
+  user_attribute: UserAttributes,
 }
 
 export const locationFilterTypeToFilter = (type: LocationFilterType) =>

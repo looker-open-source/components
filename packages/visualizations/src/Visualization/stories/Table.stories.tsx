@@ -33,6 +33,7 @@ import type {
   CTable,
 } from '@looker/visualizations-adapters'
 import {
+  buildChartConfig,
   buildPivotFields,
   mockSdkFieldsResponse,
   mockPivots,
@@ -40,7 +41,6 @@ import {
   tabularPivotResponse,
   mockSdkPivotDataResponse,
   mockSdkDataResponse,
-  QueryContext,
   mockSdkConfigResponse,
 } from '@looker/visualizations-adapters'
 
@@ -49,24 +49,33 @@ export default {
   title: 'Visualizations/Table',
 }
 
-type StoryTemplateProps = Omit<TableProps, 'config'> & {
+type StoryTemplateProps = Omit<TableProps, 'config' | 'fields' | 'data'> & {
   config: Omit<CTable, 'type'>
 }
 
-const Template: Story<StoryTemplateProps> = ({ config, ...restProps }) => {
+const Template: Story<StoryTemplateProps> = ({
+  config: configProp,
+  ...restProps
+}) => {
+  const data = tabularResponse([...mockSdkDataResponse])
+
+  const config = buildChartConfig({
+    config: {
+      ...mockSdkConfigResponse,
+      ...configProp,
+      type: 'table',
+    },
+    data,
+    fields: mockSdkFieldsResponse as Fields,
+  })
+
   return (
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    <QueryContext.Provider
-      value={{
-        config: { ...mockSdkConfigResponse, type: 'table' },
-        ok: true,
-        loading: false,
-        data: tabularResponse([...mockSdkDataResponse]),
-        fields: { ...mockSdkFieldsResponse } as Fields,
-      }}
-    >
-      <Visualization {...restProps} />
-    </QueryContext.Provider>
+    <Visualization
+      config={config}
+      data={data}
+      fields={mockSdkFieldsResponse as Fields}
+      {...restProps}
+    />
   )
 }
 
@@ -93,18 +102,18 @@ export const Pivot = () => {
     pivots: mockPivots,
   })
 
+  const config = buildChartConfig({
+    config: { ...mockSdkConfigResponse, type: 'table' },
+    data: mockPivotData,
+    fields: mockPivotFields,
+  })
+
   return (
-    <QueryContext.Provider
-      value={{
-        config: { ...mockSdkConfigResponse, type: 'table' },
-        ok: true,
-        loading: false,
-        data: mockPivotData,
-        fields: mockPivotFields,
-      }}
-    >
-      <Visualization height={600} width={800} />
-    </QueryContext.Provider>
+    <Visualization
+      config={config}
+      data={mockPivotData}
+      fields={mockPivotFields}
+    />
   )
 }
 Pivot.parameters = {

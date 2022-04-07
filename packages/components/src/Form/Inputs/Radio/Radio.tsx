@@ -30,7 +30,6 @@ import React, { forwardRef } from 'react'
 import styled from 'styled-components'
 import type { SpaceProps } from '@looker/design-tokens'
 import { reset, space } from '@looker/design-tokens'
-import { mergeClassNames } from '../../../utils'
 import {
   inputRippleColor,
   RIPPLE_RATIO,
@@ -55,11 +54,8 @@ export const Radio = styled(
   forwardRef((props: RadioProps, ref: Ref<HTMLInputElement>) => {
     const { className, style, validationType, ...restProps } = props
 
-    const {
-      callbacks,
-      className: rippleClassName,
-      style: rippleStyle,
-    } = useRipple({
+    const { callbacks, ...rippleProps } = useRipple({
+      className,
       color: inputRippleColor(
         props.checked === true,
         validationType === 'error'
@@ -67,6 +63,7 @@ export const Radio = styled(
       // Only define size for density -6,
       // to make the halo slightly bigger than the container
       size: RIPPLE_RATIO,
+      style,
     })
 
     const rippleHandlers = useRippleHandlers(
@@ -77,16 +74,13 @@ export const Radio = styled(
       restProps.disabled
     )
     return (
-      <div
-        className={mergeClassNames([className, rippleClassName])}
-        style={{ ...style, ...rippleStyle }}
-        {...rippleHandlers}
-      >
+      <div {...rippleProps}>
         <input
           {...pickInputProps(restProps)}
           aria-invalid={validationType === 'error' ? 'true' : undefined}
           ref={ref}
           type="radio"
+          {...rippleHandlers}
         />
         <FauxRadio />
       </div>

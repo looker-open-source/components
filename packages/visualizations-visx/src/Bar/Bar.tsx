@@ -27,7 +27,6 @@
 import type { FC } from 'react'
 import React, { useContext } from 'react'
 import {
-  Axis,
   DataProvider,
   BarSeries,
   XYChart,
@@ -37,7 +36,6 @@ import {
 } from '@visx/xychart'
 import type { AxisScaleOutput, AxisScale } from '@visx/axis'
 import type { LinearScaleConfig } from '@visx/scale'
-import { Text } from '@visx/text'
 import type {
   BarProps,
   SDKRecord,
@@ -48,11 +46,15 @@ import {
   VisWrapper,
   pickLongestLabel,
   useMeasuredText,
+  getVisibleMeasureNames,
+  DEFAULT_MARGIN,
 } from '@looker/visualizations-adapters'
 import { XYLegend } from '../XYLegend'
 import isArray from 'lodash/isArray'
 import get from 'lodash/get'
 import compact from 'lodash/compact'
+import pick from 'lodash/pick'
+import { XAxis, YAxis } from '../Axis'
 import {
   concatDimensions,
   getX,
@@ -61,9 +63,12 @@ import {
   useChartTheme,
   isValidChartData,
   formatDateLabel,
+  getXAxisFormat,
+  getYAxisFormat,
 } from '../utils'
 import { XYTooltip } from '../XYTooltip'
 import { Grid } from '../Grid'
+import numeral from 'numeral'
 
 export const Bar: FC<BarProps> = ({
   data,
@@ -80,7 +85,6 @@ export const Bar: FC<BarProps> = ({
    * with a single `dimension` property.
    */
   const formattedData = concatDimensions(data, fields)
-
   const chartTheme = useChartTheme(seriesList)
   const visxTheme = useContext(VisxThemeContext)
 
@@ -91,14 +95,101 @@ export const Bar: FC<BarProps> = ({
     })
   )
   const yAxisLongestLabel = pickLongestLabel(yAxisLabels)
-  const { width: longestLabelWidth } = useMeasuredText(yAxisLongestLabel, {
+  const { width: yAxisLongestLabelWidth } = useMeasuredText(yAxisLongestLabel, {
     fontFamily: visxTheme.axisStyles.x.bottom.tickLabel.fontFamily || 'Roboto',
     fontSize: visxTheme.axisStyles.x.bottom.tickLabel.fontSize || '1rem',
   })
 
+  // CAUTION: yAxisConfig intentionally refers to x_axis properties in the config response.
+  const yAxisConfig = config?.x_axis?.[0]
+  const yAxisValueFormat = getXAxisFormat(fields)
+
+  // -10 provides spacing between label and tick values / axis line
+  const yAxisLabelDx = yAxisConfig?.values ? -yAxisLongestLabelWidth - 10 : -10
+
+  /**
+   * CAUTION: x and y axes from the vis config are flipped when used in Bar;
+   * xAxisConfig intentionally refers to y_axis properties in the config response.
+   */
+  const xAxisConfig = config?.y_axis?.[0]
+  const xAxisValueFormat = getYAxisFormat(config)
+
+  /**
+   * Borrowed from useAxis
+   * assume xAxis comes from measure since yAxis is dimension
+   * get measure name, then values from that measure name
+   * compute average length taking into account value format
+   * create boolean for when average length is certain size to peform rotation
+   */
+  const measureNames = getVisibleMeasureNames(fields, config)
+
+  const measureValues = data.flatMap(d => {
+    const datumMeasureValues = Object.values(pick(d, measureNames))
+    return datumMeasureValues.map(value =>
+      numeral(value).format(xAxisValueFormat)
+    )
+  })
+
+  const xAxisLongestLabel = pickLongestLabel(measureValues)
+
+  const {
+    height: xAxisLongestLabelHeight,
+    width: xAxisLongestLabelWidth,
+  } = useMeasuredText(xAxisLongestLabel, {
+    fontFamily: visxTheme.axisStyles.x.bottom.tickLabel.fontFamily || 'Roboto',
+    fontSize: visxTheme.axisStyles.x.bottom.tickLabel.fontSize || '1rem',
+  })
+
+  const averageMeasureValueLength =
+    measureValues.join('').length / measureValues.length
+
+  const hasRotatedXAxisLabels =
+    xAxisConfig?.values && averageMeasureValueLength > 10
+
+  const angledLabelHypotenuse = Math.sqrt(
+    (xAxisLongestLabelWidth * xAxisLongestLabelWidth) / 2
+  )
+
+  const xAxisStyle = hasRotatedXAxisLabels
+    ? {
+        labelDy: angledLabelHypotenuse,
+        tickAngle: -45,
+        tickSpace: xAxisLongestLabelHeight * 2,
+        tickTextAnchor: 'end' as const,
+      }
+    : {
+        labelDy: 0,
+        tickAngle: 0,
+        tickSpace: xAxisLongestLabelWidth + DEFAULT_MARGIN,
+        tickTextAnchor: 'inherit' as const,
+      }
+
   // Early return if the data response is insufficient
   if (!isValidChartData(data, fields)) {
     return null
+  }
+
+  const domain =
+    positioning === 'percent'
+      ? [0, 1]
+      : getYAxisRange({ config, data: formattedData, fields })
+
+  const xScale: LinearScaleConfig<AxisScaleOutput> = {
+    type: 'linear',
+    ...(domain && { domain, zero: false }),
+  }
+
+  const chartMarginBottom = hasRotatedXAxisLabels
+    ? angledLabelHypotenuse + DEFAULT_MARGIN
+    : DEFAULT_MARGIN
+
+  const chartMargin = {
+    right: 0,
+    top: 0,
+    bottom: chartMarginBottom,
+    left: yAxisConfig?.values
+      ? yAxisLongestLabelWidth + DEFAULT_MARGIN
+      : DEFAULT_MARGIN,
   }
 
   const renderedBars: JSX.Element[] | undefined = compact(
@@ -125,68 +216,6 @@ export const Bar: FC<BarProps> = ({
     })
   )
 
-  const domain =
-    positioning === 'percent'
-      ? [0, 1]
-      : getYAxisRange({ config, data: formattedData, fields })
-
-  const xScale: LinearScaleConfig<AxisScaleOutput> = {
-    type: 'linear',
-    ...(domain && { domain, zero: false }),
-  }
-
-  /**
-   * CAUTION: x and y axes from the vis config are flipped when used in Bar;
-   * xAxisConfig intentionally refers to y_axis properties in the config response.
-   */
-  const xAxisConfig = config?.y_axis?.[0]
-  const xAxis = (
-    <Axis
-      hideTicks={!xAxisConfig?.values}
-      label={xAxisConfig?.label || ''}
-      labelOffset={xAxisConfig?.values ? undefined : 0}
-      labelProps={{
-        ...visxTheme.axisStyles.x.bottom.axisLabel,
-      }}
-      orientation="bottom"
-      tickComponent={({ formattedValue, ...tickProps }) =>
-        xAxisConfig?.values ? (
-          <Text {...tickProps}>{formattedValue}</Text>
-        ) : null
-      }
-    />
-  )
-
-  // yAxisConfig intentionally refers to x_axis properties in the config response.
-  const yAxisConfig = config?.x_axis?.[0]
-
-  const yAxis = (
-    <Axis
-      hideTicks={!yAxisConfig?.values}
-      label={yAxisConfig?.label || ''}
-      labelOffset={yAxisConfig?.values ? undefined : 0}
-      labelProps={{
-        ...visxTheme.axisStyles.y.left.axisLabel,
-        dx: yAxisConfig?.values ? -longestLabelWidth - 10 : -10,
-      }}
-      orientation="left"
-      tickComponent={({ formattedValue, ...tickProps }) =>
-        yAxisConfig?.values ? (
-          <Text {...tickProps}>
-            {formatDateLabel({ dateString: formattedValue || '', fields })}
-          </Text>
-        ) : null
-      }
-    />
-  )
-
-  const chartMargin = {
-    right: 0,
-    top: 0,
-    bottom: 50,
-    left: yAxisConfig?.values ? longestLabelWidth + 50 : 50,
-  }
-
   return (
     <DataProvider
       // these props have been moved from XYChart to DataProvider
@@ -201,8 +230,20 @@ export const Bar: FC<BarProps> = ({
     >
       <VisWrapper legend={legend}>
         <XYChart margin={chartMargin} width={width} height={height}>
-          {xAxis}
-          {yAxis}
+          <XAxis
+            showTicks={xAxisConfig?.values}
+            fields={fields}
+            label={xAxisConfig?.label || ''}
+            valueFormat={xAxisValueFormat}
+            {...xAxisStyle}
+          />
+          <YAxis
+            showTicks={yAxisConfig?.values}
+            fields={fields}
+            label={yAxisConfig?.label || ''}
+            labelDx={yAxisLabelDx}
+            valueFormat={yAxisValueFormat}
+          />
           <Grid config={config} />
           <XYTooltip
             config={config}

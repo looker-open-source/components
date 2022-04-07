@@ -24,7 +24,9 @@
 
  */
 import type { FilterModel } from '../../types'
+import { describeIsItem } from '../summary/describe_is_item'
 
 export const describeUserAttribute = ({
   attributeValue,
-}: FilterModel): string => (attributeValue ? `is ${attributeValue}` : '')
+}: FilterModel): string =>
+  attributeValue ? describeIsItem(true, attributeValue) : ''

@@ -17,10 +17,10 @@
   "dependencies": {
     "@looker/components": "*",
     "@looker/embed-sdk": "^1.6.0",
-    "@looker/extension-sdk": "21.12.0",
-    "@looker/extension-sdk-react": "21.12.0",
+    "@looker/extension-sdk": "22.4.0",
+    "@looker/extension-sdk-react": "22.4.0",
     "@looker/filter-components": "*",
-    "@looker/sdk": "*",
+    "@looker/sdk": "^22.4.0",
     "@styled-icons/material": "10.34.0",
     "@styled-icons/material-outlined": "10.34.0",
     "react": "16.14.0",
@@ -29,7 +29,7 @@
     "styled-components": "5.3.1"
   },
   "devDependencies": {
-    "@looker/eslint-config": "1.5.0",
+    "@looker/eslint-config-oss": "^1.7.14",
     "@looker/stylelint-config": "1.4.0",
     "@types/react-router-dom": "^5.1.8",
     "babel-loader": "*",

@@ -26,9 +26,18 @@
 import { useUserAttributeOption } from './get_user_attribute_option'
 import { useTranslation } from 'react-i18next'
 
-export const useDateFilterOptions = () => {
+export const useDateFilterOptions = (isParameter: boolean) => {
   const { t } = useTranslation('get_date_filter_options')
   const userAttributeOption = useUserAttributeOption()
+  if (isParameter) {
+    return [
+      {
+        value: 'on',
+        label: t('is on the day'),
+      },
+      userAttributeOption,
+    ]
+  }
   return [
     {
       value: 'past',

@@ -198,6 +198,9 @@ const resources = {
     'complete weeks': 'praėjusios savaitės',
     'complete years': 'praėję metai',
   },
+  RadioGroup: {
+    'any value': 'bet kokia vertė',
+  },
   ReactSelectCustomIcons: {
     'Clear all': 'Valyti visus',
     Remove: 'Pašalinti',
@@ -218,10 +221,10 @@ const resources = {
     More: 'Daugiau',
   },
   use_filters_errors: {
-    'Selection required': 'Reikalinga atranka',
     'Invalid value': 'Klaidinga reikšmė',
     'No value is set for your user attribute':
       'Nenustatyta jokia vartotojo atributo vertė',
+    'Selection required': 'Reikalinga atranka',
   },
   use_option_filtering: {
     'No values': 'Nėra verčių',

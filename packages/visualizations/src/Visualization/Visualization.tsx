@@ -25,7 +25,7 @@
  */
 import type { FC } from 'react'
 import React, { useContext } from 'react'
-import { ProgressCircular, Space, ComponentsProvider } from '@looker/components'
+import { ComponentsProvider } from '@looker/components'
 import { ThemeContext } from 'styled-components'
 import { Table } from '@looker/visualizations-table'
 import {
@@ -38,26 +38,30 @@ import {
   Pie,
 } from '@looker/visualizations-visx'
 import { SingleValue } from '@looker/visualizations-single-value'
-import {
-  Debug,
-  QueryContext,
-  ErrorBoundary,
-} from '@looker/visualizations-adapters'
+import { ErrorBoundary } from '@looker/visualizations-adapters'
 import type {
   ChartLayoutProps,
   VisWrapperProps,
   SupportedChartTypes,
+  SDKRecord,
+  Fields,
+  CAll,
+  Totals,
 } from '@looker/visualizations-adapters'
+import has from 'lodash/has'
 
 export interface VisualizationProps extends VisWrapperProps, ChartLayoutProps {
   /*
    * debug renders the raw query data and query config rather than the chart
    * @default false
    */
-  debug?: boolean
+  data?: SDKRecord[]
+  fields?: Fields
+  config?: CAll
+  totals?: Totals
 }
 
-export const defaultChartComponent: Record<
+export const chartComponentMap: Record<
   keyof SupportedChartTypes | 'default',
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   FC<any>
@@ -75,35 +79,20 @@ export const defaultChartComponent: Record<
 }
 
 const VisualizationComponent: FC<VisualizationProps> = ({
-  debug,
   height,
   width,
+  data = [],
+  fields,
+  totals,
+  config,
 }) => {
-  const { ok, data = [], error, fields, totals, config, loading } = useContext(
-    QueryContext
-  )
-
-  if (loading) {
-    return (
-      <Space justifyContent="center" p="small">
-        <ProgressCircular />
-      </Space>
-    )
-  }
-
-  if (debug || ok === false) {
-    return (
-      <Debug
-        ok={ok}
-        config={config}
-        data={data}
-        fields={fields}
-        error={error}
-      />
-    )
-  } else if (config?.type && fields?.measures.length) {
+  if (
+    config?.type &&
+    fields?.measures.length &&
+    has(chartComponentMap, config.type)
+  ) {
     const ChartComponent =
-      defaultChartComponent[config.type as keyof SupportedChartTypes]
+      chartComponentMap[config.type as keyof SupportedChartTypes]
 
     return (
       <ChartComponent
@@ -121,8 +110,6 @@ const VisualizationComponent: FC<VisualizationProps> = ({
 }
 
 export const Visualization: FC<VisualizationProps> = props => {
-  const contextValues = useContext(QueryContext)
-
   const theme = useContext(ThemeContext)
 
   if (!theme) {
@@ -137,7 +124,7 @@ export const Visualization: FC<VisualizationProps> = props => {
   }
 
   return (
-    <ErrorBoundary contextValues={contextValues}>
+    <ErrorBoundary {...props}>
       <VisualizationComponent {...props} />
     </ErrorBoundary>
   )

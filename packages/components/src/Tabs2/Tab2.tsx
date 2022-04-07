@@ -32,15 +32,10 @@ import { layout, reset, padding, typography } from '@looker/design-tokens'
 import {
   rippleHandlerKeys,
   rippleStyle,
-  useRipple,
+  useBoundedRipple,
   useRippleHandlers,
 } from '../Ripple'
-import {
-  mergeClassNames,
-  useCallbackRef,
-  useMeasuredElement,
-  useWrapEvent,
-} from '../utils'
+import { useWrapEvent } from '../utils'
 import { TabIndicator } from './TabIndicator'
 import { TabLabel } from './TabLabel'
 import type { Tab2Props } from './types'
@@ -59,19 +54,11 @@ export const Tab2 = styled(
       ...restProps
     } = props
 
-    // find the dimensions of button for ripple behavior
-    const [element, ref] = useCallbackRef(forwardedRef)
-    const [{ height, width }] = useMeasuredElement(element)
-
-    const {
-      callbacks,
-      className: rippleClassName,
-      style: rippleStyle,
-    } = useRipple({
-      bounded: true,
+    const { callbacks, ...rippleProps } = useBoundedRipple({
+      className,
       color: selected ? 'key' : 'neutral',
-      height,
-      width,
+      ref: forwardedRef,
+      style,
     })
 
     const rippleHandlers = useRippleHandlers(
@@ -92,15 +79,13 @@ export const Tab2 = styled(
         aria-controls={`panel-${id}`}
         aria-orientation="horizontal"
         aria-selected={selected}
-        className={mergeClassNames([className, rippleClassName])}
         id={`tab-${id}`}
         onClick={handleClick}
-        ref={ref}
         role="tab"
-        style={{ ...style, ...rippleStyle }}
         tabIndex={-1}
         type="button"
         {...restProps}
+        {...rippleProps}
         {...rippleHandlers}
       >
         <TabLabel>{children}</TabLabel>

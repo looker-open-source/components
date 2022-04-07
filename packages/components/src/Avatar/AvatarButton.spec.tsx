@@ -43,7 +43,7 @@ const runTimers = () =>
 
 describe('AvatarButton', () => {
   test('default', () => {
-    renderWithTheme(<AvatarButton />)
+    renderWithTheme(<AvatarButton label="Avatar" />)
 
     const button = screen.getByRole('button')
     expect(button).not.toHaveClass('bg-on fg-in')

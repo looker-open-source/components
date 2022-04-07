@@ -46,6 +46,7 @@ describe('Interval Date filter test', () => {
         field={testField}
         expressionType="date"
         config={testFilterUIConfig}
+        allowMultipleValues={true}
       />
     )
 
@@ -74,6 +75,7 @@ describe('Interval Date filter test', () => {
         field={{ ...testField, fiscal_month_offset: 1 }}
         expressionType="date"
         config={testFilterUIConfig}
+        allowMultipleValues={true}
       />
     )
 

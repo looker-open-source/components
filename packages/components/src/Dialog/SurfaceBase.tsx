@@ -62,6 +62,7 @@ export const SurfaceBase = styled(SurfaceLayout).attrs(() => ({
   color: ${({ theme }) => theme.colors.text};
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 
   &:focus {
     outline: none;

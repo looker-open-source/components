@@ -1,0 +1,85 @@
+import { CheckboxGroup } from '@looker/components'
+
+<Meta component={CheckboxGroup} title="Docs/Components/Inputs/CheckboxGroup" />
+
+# CheckboxGroup
+
+Groups of checkbox can be displayed with `CheckboxGroup`. `Disabled` can be used on each checkbox specifically or on the group. Using `defaultValue` will render a checked checkbox.
+
+```jsx
+;() => {
+  const options = [
+    {
+      label: 'Cheddar',
+      value: 'cheddar',
+    },
+    {
+      label: 'Gouda',
+      value: 'gouda',
+    },
+  ]
+
+  const optionsDisabled = [
+    {
+      label: 'Cheddar',
+      value: 'cheddar',
+    },
+    {
+      disabled: true,
+      label: 'Gouda',
+      value: 'gouda',
+    },
+  ]
+
+  return (
+    <Grid m="u10">
+      <CheckboxGroup
+        defaultValue={['cheddar']}
+        name="group1"
+        options={options}
+      />
+      <CheckboxGroup
+        defaultValue={['cheddar']}
+        inline
+        name="group1"
+        options={options}
+      />
+      <CheckboxGroup name="group1" options={optionsDisabled} />
+      <CheckboxGroup inline name="group1" options={optionsDisabled} />
+      <CheckboxGroup disabled name="group1" options={options} />
+      <CheckboxGroup disabled inline name="group1" options={options} />
+    </Grid>
+  )
+}
+```
+
+## Controlled
+
+Control externally via `value` and `onChange` props.
+
+```js
+;() => {
+  const options = [
+    {
+      label: 'Cheddar',
+      value: 'cheddar',
+    },
+    {
+      label: 'Gouda',
+      value: 'gouda',
+    },
+  ]
+  const [value, setValue] = useState(['cheddar'])
+  return (
+    <Space align="start">
+      <CheckboxGroup
+        name="cheeses"
+        value={value}
+        onChange={setValue}
+        options={options}
+      />
+      <Paragraph>Current selection: {value.join(', ')}</Paragraph>
+    </Space>
+  )
+}
+```

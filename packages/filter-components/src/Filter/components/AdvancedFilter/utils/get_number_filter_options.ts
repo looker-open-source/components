@@ -26,9 +26,12 @@
 import { useTranslation } from 'react-i18next'
 import { useUserAttributeOption } from './get_user_attribute_option'
 
-export const useNumberFilterOptions = () => {
+export const useNumberFilterOptions = (isParameter: boolean) => {
   const { t } = useTranslation('get_number_filter_options')
   const userAttributeOption = useUserAttributeOption()
+  if (isParameter) {
+    return [{ value: '=', label: t('is') }, userAttributeOption]
+  }
   return [
     { value: '=', label: t('is') },
     { value: '>', label: t('is greater') },

@@ -24,27 +24,15 @@
 
  */
 
-import type { CompatibleHTMLProps } from '@looker/design-tokens'
-import pick from 'lodash/pick'
 import { useTranslation } from 'react-i18next'
 import { AccountCircle } from '@styled-icons/material-outlined/AccountCircle'
 import type { Ref } from 'react'
 import React, { forwardRef } from 'react'
 import styled from 'styled-components'
-import { Icon } from '../Icon'
-import {
-  rippleHandlerKeys,
-  rippleStyle,
-  useRipple,
-  useRippleHandlers,
-} from '../Ripple'
-import { mergeClassNames } from '../utils'
-import { iconButtonColor } from '../Button/iconButtonColor'
-import { buttonSizeMap } from '../Button/size'
+import { IconButton } from '../Button'
+import type { IconButtonProps } from '../Button'
 
-export interface AvatarButtonProps
-  extends Omit<CompatibleHTMLProps<HTMLButtonElement>, 'children' | 'type'> {
-  color?: string
+export type AvatarButtonProps = Omit<IconButtonProps, 'icon'> & {
   /**
    * `imageUrl != null`  indicates that `gravatar` feature is enabled on instance but NOT whether or not the user has
    * gravatar actually specified. Gravatar responds with transparent image if the user doesn't have a gravatar specified
@@ -56,40 +44,21 @@ export interface AvatarButtonProps
 export const AvatarButton = styled(
   // eslint-disable-next-line react/display-name
   forwardRef(
-    (props: AvatarButtonProps, forwardedRef: Ref<HTMLButtonElement>) => {
-      const { className, imageUrl, style, ...rest } = props
+    (
+      { imageUrl, label, size = 'large', ...rest }: AvatarButtonProps,
+      forwardedRef: Ref<HTMLButtonElement>
+    ) => {
       const { t } = useTranslation('AvatarButton')
 
-      const {
-        callbacks,
-        className: rippleClassName,
-        style: rippleStyle,
-      } = useRipple({
-        color: 'neutral',
-      })
-
-      const rippleHandlers = useRippleHandlers(
-        callbacks,
-        {
-          ...pick({ ...rest }, rippleHandlerKeys),
-        },
-        rest.disabled
-      )
-
       return (
-        <button
-          className={mergeClassNames([className, rippleClassName])}
-          aria-label={t('Account Menu')}
+        <IconButton
+          label={label}
+          aria-label={typeof label === 'string' ? label : ''}
+          icon={<AccountCircle />}
+          size={size}
           ref={forwardedRef}
           {...rest}
-          style={{ ...style, ...rippleStyle }}
-          {...rippleHandlers}
         >
-          <Icon
-            size={buttonSizeMap.xsmall}
-            title={t('Account Icon')}
-            icon={<AccountCircle />}
-          />
           {imageUrl && (
             <img
               alt={t('Profile Picture')}
@@ -97,23 +66,12 @@ export const AvatarButton = styled(
               src={imageUrl}
             />
           )}
-        </button>
+        </IconButton>
       )
     }
   )
 )`
-  ${iconButtonColor}
-  ${rippleStyle}
-
-  align-items: center;
-  background: transparent;
-  border: none;
-  color: ${({ color, theme }) => color || theme.colors.ui4};
-  display: flex;
-  height: ${buttonSizeMap.large}px;
-  justify-content: center;
   position: relative;
-  width: ${buttonSizeMap.large}px;
 
   img {
     border-radius: 50%;

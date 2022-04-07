@@ -29,11 +29,10 @@ import type { FC } from 'react'
 import React from 'react'
 import styled from 'styled-components'
 import type { ListItemContentProps } from '../ListItem'
-import { mergeClassNames, useCallbackRef, useMeasuredElement } from '../utils'
 import {
   rippleHandlerKeys,
   rippleStyle,
-  useRipple,
+  useBoundedRipple,
   useRippleHandlers,
 } from '../Ripple'
 import { generateIndent } from '../Tree/utils'
@@ -54,19 +53,10 @@ export const NavTreeDisclosure = styled<FC<ListItemContentProps>>(
     style,
     ...props
   }) => {
-    // find the dimensions of button for ripple behavior
-    const [element, ref] = useCallbackRef()
-    const [{ height, width }] = useMeasuredElement(element)
-
-    const {
-      callbacks,
-      className: rippleClassName,
-      style: rippleStyle,
-    } = useRipple({
-      bounded: true,
+    const { callbacks, ...ripplePropsRest } = useBoundedRipple<HTMLLIElement>({
+      className,
       color: selected ? 'key' : 'neutral',
-      height,
-      width,
+      style,
     })
 
     const rippleHandlers = useRippleHandlers(
@@ -77,12 +67,7 @@ export const NavTreeDisclosure = styled<FC<ListItemContentProps>>(
       disabled
     )
 
-    const rippleProps = {
-      className: mergeClassNames([className, rippleClassName]),
-      ref: ref,
-      ...rippleHandlers,
-      style: { ...style, ...rippleStyle },
-    }
+    const rippleProps = { ...ripplePropsRest, ...rippleHandlers }
 
     return (
       <li {...props} {...rippleProps}>

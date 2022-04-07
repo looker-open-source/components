@@ -37,11 +37,10 @@ import type {
   Interpolation,
 } from 'styled-components'
 import styled, { css } from 'styled-components'
-import { mergeClassNames, useCallbackRef, useMeasuredElement } from '../utils'
 import {
   rippleHandlerKeys,
   rippleStyle,
-  useRipple,
+  useBoundedRipple,
   useRippleHandlers,
 } from '../Ripple'
 import type {
@@ -103,25 +102,17 @@ export const ListItemContent = styled(
         style,
         ...props
       }: ListItemContentProps,
-      forwardedRef: Ref<HTMLElement | HTMLButtonElement>
+      forwardedRef: Ref<HTMLElement>
     ) => {
-      // find the dimensions of button for ripple behavior
-      const [element, ref] = useCallbackRef(forwardedRef)
-      const [{ height, width }] = useMeasuredElement(element)
-
-      const {
-        callbacks,
-        className: rippleClassName,
-        style: rippleStyle,
-      } = useRipple({
-        bounded: true,
+      const { callbacks, ...rippleRestProps } = useBoundedRipple({
+        className,
         color:
           selected &&
           listItemColorOptions.includes(color as ExtendedStatefulColor)
             ? (color as ExtendedStatefulColor)
             : 'neutral',
-        height,
-        width,
+        ref: forwardedRef,
+        style,
       })
 
       const rippleHandlers = useRippleHandlers(
@@ -134,29 +125,40 @@ export const ListItemContent = styled(
 
       const rippleProps = ripple
         ? {
-            className: mergeClassNames([className, rippleClassName]),
-            ref,
+            ...rippleRestProps,
             ...rippleHandlers,
-            style: { ...style, ...rippleStyle },
           }
-        : { className, ref, style }
+        : { className, style }
 
       if (!props.disabled && itemRole === 'link') {
         return (
-          <Link {...props} {...rippleProps}>
+          <Link
+            ref={forwardedRef as Ref<HTMLAnchorElement>}
+            {...props}
+            {...rippleProps}
+          >
             {children}
           </Link>
         )
       } else if (itemRole === 'none') {
         return (
-          <Div {...props} {...rippleProps}>
+          <Div
+            ref={forwardedRef as Ref<HTMLDivElement>}
+            {...props}
+            {...rippleProps}
+          >
             {children}
           </Div>
         )
       }
 
       return (
-        <Button {...props} {...rippleProps} type="button">
+        <Button
+          ref={forwardedRef as Ref<HTMLButtonElement>}
+          {...props}
+          {...rippleProps}
+          type="button"
+        >
           {children}
         </Button>
       )

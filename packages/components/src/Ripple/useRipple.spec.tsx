@@ -35,11 +35,10 @@ const RippleComponent = (props: UseRippleProps) => {
   const {
     callbacks: { startBG, endBG, startFG, endFG },
     className,
-    ref,
     style,
   } = useRipple(props)
   return (
-    <div ref={ref}>
+    <div>
       <div data-testid="startBG" onClick={startBG} />
       <div data-testid="endBG" onClick={endBG} />
       <div data-testid="startFG" onClick={startFG} />

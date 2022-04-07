@@ -44,7 +44,7 @@ export interface ParagraphProps
     Omit<CompatibleHTMLProps<HTMLParagraphElement>, 'wrap'> {}
 
 export const Paragraph = styled(TextBase).attrs<ParagraphProps>(
-  ({ color = 'body', fontSize = 'medium', lineHeight }) => ({
+  ({ color = 'body', fontSize = 'inherit', lineHeight }) => ({
     as: 'p',
     color,
     fontSize,

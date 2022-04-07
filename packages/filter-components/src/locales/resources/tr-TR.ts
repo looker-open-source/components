@@ -198,6 +198,9 @@ const resources = {
     'complete weeks': 'tam hafta',
     'complete years': 'tam yıl',
   },
+  RadioGroup: {
+    'any value': 'herhangi bir değer',
+  },
   ReactSelectCustomIcons: {
     'Clear all': 'Tümünü temizle',
     Remove: 'Kaldır',
@@ -218,10 +221,10 @@ const resources = {
     More: 'Daha Fazla',
   },
   use_filters_errors: {
-    'Selection required': 'Seçim gerekli',
     'Invalid value': 'Geçersiz değer',
     'No value is set for your user attribute':
       'Kullanıcı özniteliği için ayarlanan değer yok',
+    'Selection required': 'Seçim gerekli',
   },
   use_option_filtering: {
     'No values': 'Değer yok',

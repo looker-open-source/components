@@ -44,8 +44,8 @@ Wrap the `DateFormat` component around a javascript Date object to render a huma
 Install the [`date-fns`](https://date-fns.org/) package, import the necessary locale, and pass it to `ComponentsProvider`.
 
 ```js static
-import { ComponentsProvider } from '@looker/components'
-import { DateFormat } from '@looker/components-date'
+import { ComponentsProvider } from './'
+import { DateFormat } from './'
 import ko from 'date-fns/locale/ko'
 
 export const App = () => {
@@ -60,7 +60,7 @@ export const App = () => {
 The locale can also be passed directly to the `DateFormat` component.
 
 ```js static
-import { DateFormat } from '@looker/components-date'
+import { DateFormat } from './'
 import ko from 'date-fns/locale/ko'
 
 export const LocalizedDateFormat = () => {

@@ -24,6 +24,7 @@
 
  */
 
+import has from 'lodash/has'
 import type { SDKRecord } from '../types'
 
 export type TabularResponseHelper = (data: SDKRecord[]) => SDKRecord[]
@@ -37,7 +38,7 @@ export const tabularResponse: TabularResponseHelper = (data = []) =>
     return Object.fromEntries(
       dataEntries.map(([key, val]: [string, { value: unknown }]) => [
         key,
-        val.value,
+        has(val, 'value') ? val.value : val,
       ])
     )
   })

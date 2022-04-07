@@ -1,0 +1,68 @@
+import { DateFormat } from '@looker/components-date'
+
+<Meta component={DateFormat} title="Docs/Components/Date/DateFormat" />
+
+# DateFormat
+
+<ImportMessage packageName="components-date">DateFormat</ImportMessage>
+
+As it's name implies, `DateFormat` is used to format a javascript Date object to human readable and localized text.
+
+This is the sibling component of [`TimeFormat`](time-format), which does the same thing for times. If no Date object is provided, it will default to `Now`.
+
+```jsx
+<DateFormat />
+```
+
+## Providing A Date Object
+
+Wrap the `DateFormat` component around a javascript Date object to render a human-readable date.
+
+```jsx
+<DateFormat>{new Date(1589411215703)}</DateFormat>
+```
+
+## Format
+
+\* medium is the default format
+
+<DateFormatTable />
+
+## TimeZone
+
+`DateFormat`, as well as [`TimeFormat`]('time-format') assume that the provided date object is anchored in UTC time. If you need to adjust this to display correctly, you can pass the user's preferred time zone into the `timeZone` prop. This component will accept any string listed in the the [IANA standard](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
+
+```jsx
+<DateFormat timeZone="Pacific/Auckland">
+  {new Date(Date.parse('05 May 2020 12:00 UTC'))}
+</DateFormat>
+```
+
+## I18n
+
+Install the [`date-fns`](https://date-fns.org/) package, import the necessary locale, and pass it to `ComponentsProvider`.
+
+```js static
+import { ComponentsProvider } from '@looker/components'
+import { DateFormat } from '@looker/components-date'
+import ko from 'date-fns/locale/ko'
+
+export const App = () => {
+  return (
+    <ComponentsProvider dateLocale={ko}>
+      <DateFormat />
+    </ComponentsProvider>
+  )
+}
+```
+
+The locale can also be passed directly to the `DateFormat` component.
+
+```js static
+import { DateFormat } from '@looker/components-date'
+import ko from 'date-fns/locale/ko'
+
+export const LocalizedDateFormat = () => {
+  return <DateFormat locale={ko} />
+}
+```

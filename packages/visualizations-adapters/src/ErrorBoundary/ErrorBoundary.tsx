@@ -28,13 +28,15 @@ import React, { Component } from 'react'
 import type { ReactNode, ErrorInfo } from 'react'
 import type { IError } from '@looker/sdk'
 import { Heading } from '@looker/components'
+import type { SDKRecord, Fields, CAll } from '@looker/visualizations-adapters'
 import { Debug } from '../Debug'
-import type { QueryContextProps } from '../Query'
-import { formatErrorMessage } from '../utils'
+import { formatErrorMessage, i18Noop } from '../utils'
 
 interface ErrorBoundaryProps {
-  contextValues: QueryContextProps
   children: ReactNode
+  data?: SDKRecord[]
+  config?: CAll
+  fields?: Fields
 }
 
 interface ErrorBoundaryState {
@@ -62,27 +64,20 @@ export class ErrorBoundary extends Component<
 
   render() {
     if (this.state.hasError) {
-      const { contextValues, ...restProps } = this.props
       const { errorMessage, stackTrace } = this.state
-      const { ok, error, data, config, fields } = contextValues
 
       return (
         <>
-          {/* eslint-disable-next-line i18next/no-literal-string */}
-          <Heading>Something went wrong.</Heading>
+          <Heading>{i18Noop('Something went wrong.')}</Heading>
           <Debug
-            ok={ok}
+            ok={false}
             error={
               {
-                ...error,
                 message: formatErrorMessage(errorMessage),
                 ...stackTrace,
               } as IError
             }
-            data={data}
-            config={config}
-            fields={fields}
-            {...restProps}
+            {...this.props}
           />
         </>
       )

@@ -101,6 +101,7 @@ export const canRenderFilter = ({
     enumerations,
     field,
     changeFilter: noop,
+    allowMultipleValues: true,
   })
 
   // if props exists it can be rendered

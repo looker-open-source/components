@@ -1,0 +1,267 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Calculate Suggest Options Return everything if no max 1`] = `
+Array [
+  Object {
+    "label": "a",
+    "value": "a",
+  },
+  Object {
+    "label": "b",
+    "value": "b",
+  },
+  Object {
+    "label": "c",
+    "value": "c",
+  },
+  Object {
+    "label": "d",
+    "value": "d",
+  },
+  Object {
+    "label": "e",
+    "value": "e",
+  },
+  Object {
+    "label": "f",
+    "value": "f",
+  },
+  Object {
+    "label": "g",
+    "value": "g",
+  },
+  Object {
+    "label": "h",
+    "value": "h",
+  },
+  Object {
+    "label": "i",
+    "value": "i",
+  },
+  Object {
+    "label": "j",
+    "value": "j",
+  },
+  Object {
+    "label": "k",
+    "value": "k",
+  },
+  Object {
+    "label": "l",
+    "value": "l",
+  },
+  Object {
+    "label": "m",
+    "value": "m",
+  },
+  Object {
+    "label": "n",
+    "value": "n",
+  },
+  Object {
+    "label": "o",
+    "value": "o",
+  },
+  Object {
+    "label": "p",
+    "value": "p",
+  },
+  Object {
+    "label": "q",
+    "value": "q",
+  },
+  Object {
+    "label": "r",
+    "value": "r",
+  },
+  Object {
+    "label": "s",
+    "value": "s",
+  },
+  Object {
+    "label": "t",
+    "value": "t",
+  },
+  Object {
+    "label": "u",
+    "value": "u",
+  },
+  Object {
+    "label": "v",
+    "value": "v",
+  },
+  Object {
+    "label": "w",
+    "value": "w",
+  },
+  Object {
+    "label": "x",
+    "value": "x",
+  },
+  Object {
+    "label": "y",
+    "value": "y",
+  },
+  Object {
+    "label": "z",
+    "value": "z",
+  },
+  Object {
+    "label": "∅ - aa",
+    "value": "aa",
+  },
+  Object {
+    "label": "∅ - gg",
+    "value": "gg",
+  },
+]
+`;
+
+exports[`Calculate Suggest Options Return existing values along with current options 1`] = `
+Array [
+  Object {
+    "label": "a",
+    "value": "a",
+  },
+  Object {
+    "label": "b",
+    "value": "b",
+  },
+  Object {
+    "label": "c",
+    "value": "c",
+  },
+  Object {
+    "label": "d",
+    "value": "d",
+  },
+  Object {
+    "label": "z",
+    "value": "z",
+  },
+]
+`;
+
+exports[`Calculate Suggest Options Return existing values along with current options 2 1`] = `
+Array [
+  Object {
+    "label": "a",
+    "value": "a",
+  },
+  Object {
+    "label": "b",
+    "value": "b",
+  },
+  Object {
+    "label": "z",
+    "value": "z",
+  },
+  Object {
+    "label": "∅ - zz",
+    "value": "zz",
+  },
+  Object {
+    "label": "∅ - zba",
+    "value": "zba",
+  },
+]
+`;
+
+exports[`Calculate Suggest Options Return limited existing values if over limit 1`] = `
+Array [
+  Object {
+    "label": "∅ - a",
+    "value": "a",
+  },
+  Object {
+    "label": "∅ - b",
+    "value": "b",
+  },
+  Object {
+    "label": "∅ - c",
+    "value": "c",
+  },
+  Object {
+    "label": "∅ - d",
+    "value": "d",
+  },
+  Object {
+    "label": "∅ - e",
+    "value": "e",
+  },
+]
+`;
+
+exports[`Calculate Suggest Options Return normally if no string 1`] = `
+Array [
+  1,
+  2,
+  3,
+]
+`;
+
+exports[`Calculate Suggest Options Return only existing values if at limit 1`] = `
+Array [
+  Object {
+    "label": "∅ - a",
+    "value": "a",
+  },
+  Object {
+    "label": "∅ - b",
+    "value": "b",
+  },
+  Object {
+    "label": "∅ - c",
+    "value": "c",
+  },
+  Object {
+    "label": "∅ - d",
+    "value": "d",
+  },
+  Object {
+    "label": "∅ - e",
+    "value": "e",
+  },
+  Object {
+    "label": "∅ - f",
+    "value": "f",
+  },
+  Object {
+    "label": "∅ - g",
+    "value": "g",
+  },
+]
+`;
+
+exports[`Calculate Suggest Options Return only options if no value 1`] = `
+Array [
+  Object {
+    "label": "a",
+    "value": "a",
+  },
+  Object {
+    "label": "b",
+    "value": "b",
+  },
+  Object {
+    "label": "c",
+    "value": "c",
+  },
+  Object {
+    "label": "d",
+    "value": "d",
+  },
+  Object {
+    "label": "e",
+    "value": "e",
+  },
+  Object {
+    "label": "f",
+    "value": "f",
+  },
+  Object {
+    "label": "g",
+    "value": "g",
+  },
+]
+`;

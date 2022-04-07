@@ -27,29 +27,30 @@ import type { I18nState } from '../../utils'
 
 const resources = {
   describe_date: {
-    ' complete': ' completo',
+    ' complete': ' concluído',
     'absolute prefix dateTime': '{{prefix}} {{dateTime}}',
-    ago: 'atrás',
-    'from now': 'a partir de agora',
-    'is any time': 'é qualquer momento',
-    'is before': 'está antes de',
+    ago: 'há',
+    'from now': 'daqui a',
+    'is any time': 'é em qualquer altura',
+    'is before': 'é antes de',
     'is day': 'é {{day}}',
     'is from dateTimeStart until dateTimeEnd':
-      'é a partir de {{dateTimeStart}} até {{dateTimeEnd}}',
-    'is in month year': 'é em {{month}} de {{year}}',
-    'is in the last': 'é no último intervalo de {{describeInterval}}',
-    'is in the year year': 'é no ano de {{year}}',
-    'is interval ago': 'é {{interval}} atrás',
+      'é de {{dateTimeStart}} até {{dateTimeEnd}}',
+    'is in month year': 'é em {{month}} {{year}}',
+    'is in the last': 'é no último {{describeInterval}}',
+    'is in the year year': 'é no ano {{year}}',
+    'is interval ago': 'é há {{interval}}',
     'is intervalStart intervalType for intervalEnd':
-      'é {{intervalStart}} {{intervalType}} para {{intervalEnd}}',
+      'é {{intervalStart}} {{intervalType}} até {{intervalEnd}}',
     'is not null': 'não é nulo',
     'is on dateTime': 'é em {{dateTime}}',
-    'is on or after': 'está em ou depois de',
-    'is previous unitLabel': 'é a unidade {{unitLabel}} anterior',
+    'is on or after': 'é a ou depois de',
+    'is previous unitLabel': 'é {{unitLabel}} anterior',
     'is type unitLabel': 'é {{type}} {{unitLabel}}',
     'prefix interval timePassed': '{{prefix}} {{interval}} {{timePassed}}',
     'prefix now': '{{prefix}} agora',
-    'this startInterval to endInterval': '{{startInterval}} a {{endInterval}}',
+    'this startInterval to endInterval':
+      'este {{startInterval}} até {{endInterval}}',
     'value complete unitLabel': '{{value}}{{complete}} {{unitLabel}}',
   },
   get_months: {
@@ -109,7 +110,7 @@ const resources = {
     years: 'anos',
   },
   summary: {
-    'Value required': 'Valor necessário',
+    'Value required': 'É necessário um valor',
   },
 }
 

@@ -53,6 +53,7 @@ import { quoteFilter } from './quote_filter'
 
 /**
  * Will double escape trailing spaces (used for match and endsWith filter types)
+ * stringGrammar reverses this by returning a single space " " from "^ ^ "
  */
 const escapeWithDoubleLastEscape = (v: string) =>
   escapeLeadingAndTrailingWhitespaces(v)
@@ -63,9 +64,15 @@ const escapeWithDoubleLastEscape = (v: string) =>
 const escapeWithoutDoubleLastEscape = (v: string) =>
   escapeLeadingAndTrailingWhitespaces(v, false)
 
+/**
+ * Escapes any backslashes found in the value, i.e. \ becomes \\
+ */
+const escapeBackslash = (v: string) => v.replace(/\\/g, '\\\\')
+
 const matchToString = ({ value, is }: FilterModel) =>
   isItemToString(is, '', '-') +
   value
+    .map(escapeBackslash)
     .map(quoteFilter)
     .map(escapeWithDoubleLastEscape)
     .join(`,${isItemToString(is, '', '-')}`)
@@ -77,19 +84,28 @@ const multiValueToString = (
 
 const startWithToString = ({ value, is }: FilterModel) =>
   multiValueToString(
-    value.map(escapeWithCaret).map(escapeWithoutDoubleLastEscape),
+    value
+      .map(escapeBackslash)
+      .map(escapeWithCaret)
+      .map(escapeWithoutDoubleLastEscape),
     (token: string) => `${isItemToString(is, '', '-') + String(token)}%`
   )
 
 const endsWithToString = ({ value, is }: FilterModel) =>
   multiValueToString(
-    value.map(escapeWithCaret).map(escapeWithDoubleLastEscape),
+    value
+      .map(escapeBackslash)
+      .map(escapeWithCaret)
+      .map(escapeWithDoubleLastEscape),
     (token: string) => `${isItemToString(is, '', '-')}%${String(token)}`
   )
 
 const containsToString = ({ value, is }: FilterModel) =>
   multiValueToString(
-    value.map(escapeWithCaret).map(escapeWithoutDoubleLastEscape),
+    value
+      .map(escapeBackslash)
+      .map(escapeWithCaret)
+      .map(escapeWithoutDoubleLastEscape),
     (token: string) => `${isItemToString(is, '', '-')}%${String(token)}%`
   )
 

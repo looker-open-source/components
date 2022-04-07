@@ -30,9 +30,10 @@ import type {
 } from '@looker/filter-expressions'
 import defaultTo from 'lodash/defaultTo'
 import { MatchesAdvanced } from '../../MatchesAdvanced'
-import { UserAttribute } from '../../UserAttribute/UserAttribute'
+import { UserAttributes } from '../../UserAttributes'
 
 import { MultiStringInput } from '../components/MultiStringInput'
+import { StringInput } from '../components/StringInput'
 
 const Blank = () => ''
 
@@ -43,8 +44,26 @@ const filterTypeToStringMap: FilterTypeMap<StringFilterType> = {
   startsWith: MultiStringInput,
   endsWith: MultiStringInput,
   blank: Blank,
-  user_attribute: UserAttribute,
+  user_attribute: UserAttributes,
 }
 
-export const stringFilterTypeToFilter = (type: StringFilterType): ElementType =>
-  defaultTo(filterTypeToStringMap[type], MatchesAdvanced)
+const filterTypeToStringMapSingleValue: FilterTypeMap<string> = {
+  contains: StringInput,
+  match: StringInput,
+  startsWith: StringInput,
+  endsWith: StringInput,
+}
+
+export const stringFilterTypeToFilter = (
+  type: StringFilterType,
+  isParameterField?: boolean,
+  allowMultipleValues?: boolean
+): ElementType => {
+  if (
+    (!allowMultipleValues || isParameterField) &&
+    filterTypeToStringMapSingleValue[type]
+  ) {
+    return filterTypeToStringMapSingleValue[type]
+  }
+  return defaultTo(filterTypeToStringMap[type], MatchesAdvanced)
+}

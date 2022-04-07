@@ -83,7 +83,7 @@ export interface UsePopoverProps
   disableScrollLock?: boolean
 
   /**
-   * The trigger element ref to use (if absent, one will be created and returned)
+   * The trigger element to use (alternatively use the ref returned)
    */
   triggerElement?: HTMLElement | null
 
@@ -92,6 +92,11 @@ export interface UsePopoverProps
    * @default true
    */
   focusTrap?: boolean
+
+  /**
+   * Will be merged with the ref in the return
+   */
+  ref?: Ref<HTMLElement>
 
   /**
    * Whether to lock scrolling outside the popover
@@ -150,6 +155,7 @@ export const usePopover = ({
   focusTrap = true,
   scrollLock = true,
   cancelClickOutside,
+  ref,
   surface,
   width,
   id,
@@ -157,7 +163,7 @@ export const usePopover = ({
   const [scrollElement, scrollRef] = useScrollLock({ disabled: !scrollLock })
   const [, focusRef] = useFocusTrap({ disabled: !focusTrap })
 
-  const [newTriggerElement, callbackRef] = useCallbackRef()
+  const [newTriggerElement, callbackRef] = useCallbackRef(ref)
   // If the triggerElement is passed in props, use that instead of the new element
   const element =
     typeof triggerElement === 'undefined' ? newTriggerElement : triggerElement
@@ -177,6 +183,10 @@ export const usePopover = ({
   const openWithoutElem = useOpenWithoutElement(isOpen, element)
 
   const handleOpen = (event: SyntheticEvent) => {
+    // If the element is not already set via ref, set it now
+    if (!element) {
+      callbackRef(event.currentTarget as HTMLElement)
+    }
     if (!disabled) {
       setOpen(true)
     }
@@ -229,7 +239,7 @@ export const usePopover = ({
     style
   )
 
-  const ref = useForkedRef(targetRef, focusRef)
+  const surfaceRef = useForkedRef(targetRef, focusRef)
 
   const [containerElement, contentContainerRef] = useCallbackRef<HTMLElement>()
 
@@ -250,7 +260,7 @@ export const usePopover = ({
           aria-modal={true}
           maxWidth={width}
           placement={placement}
-          ref={ref}
+          ref={surfaceRef}
           role="dialog"
           style={style}
         >

@@ -28,20 +28,44 @@ import {
   mockSdkConfigResponse,
   mockSdkFieldsResponse,
   mockSdkDataResponse,
+  mockSDKModelExploreResponse,
 } from './'
 
 // eslint-disable-next-line no-restricted-imports
-import type { ILooker40SDK } from '@looker/sdk'
+import type { Looker40SDK } from '@looker/sdk'
 import type { SDKResponse } from '@looker/sdk-rtl'
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export type Response = SDKResponse<any, any>
 
-export const mockSDK: Partial<ILooker40SDK> = {
+export const mockSDK = ({
+  dashboard: () =>
+    Promise.resolve({
+      ok: true,
+      value: {
+        dashboard_elements: [
+          {
+            query: {
+              id: 126,
+              vis_config: mockSdkConfigResponse,
+              model: 'thelook',
+              view: 'orders',
+            },
+          },
+        ],
+      },
+    } as Response),
+  lookml_model_explore: () =>
+    Promise.resolve({ ok: true, value: mockSDKModelExploreResponse }),
   query_for_slug: () =>
     Promise.resolve({
       ok: true,
-      value: { id: 126, vis_config: mockSdkConfigResponse },
+      value: {
+        id: 126,
+        vis_config: mockSdkConfigResponse,
+        model: 'thelook',
+        view: 'orders',
+      },
     } as Response),
   run_query: () =>
     Promise.resolve({
@@ -55,6 +79,10 @@ export const mockSDK: Partial<ILooker40SDK> = {
   query: () =>
     Promise.resolve({
       ok: true,
-      value: { vis_config: mockSdkConfigResponse },
+      value: {
+        vis_config: mockSdkConfigResponse,
+        model: 'thelook',
+        view: 'orders',
+      },
     } as Response),
-}
+} as unknown) as Looker40SDK

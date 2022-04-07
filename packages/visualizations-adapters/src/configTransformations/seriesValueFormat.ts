@@ -32,8 +32,7 @@ import type {
 import merge from 'lodash/merge'
 import pick from 'lodash/pick'
 import get from 'lodash/get'
-
-const DEFAULT_STRING_FORMAT = '0,0'
+import { DEFAULT_STRING_FORMAT } from '../utils/constants'
 
 export const seriesValueFormat: ConfigHelper<CommonCartesianProperties> = ({
   config,
@@ -47,7 +46,6 @@ export const seriesValueFormat: ConfigHelper<CommonCartesianProperties> = ({
     series_value_format = {},
     ...restConfig
   } = config
-
   const valueFormat = value_format || label_value_format
 
   const buildArraySeries = (s: CSeriesBasic[] = []) => {
@@ -55,6 +53,7 @@ export const seriesValueFormat: ConfigHelper<CommonCartesianProperties> = ({
     const defaultValues = fields?.measures?.map(measure => ({
       value_format:
         get(series_value_format, [measure.name, 'format_string']) ||
+        get(measure, 'value_format') ||
         valueFormat ||
         DEFAULT_STRING_FORMAT,
     }))
@@ -72,10 +71,14 @@ export const seriesValueFormat: ConfigHelper<CommonCartesianProperties> = ({
         name,
         'format_string',
       ])
+      const measureValueFormat = get(measure, 'value_format')
       const defaultValueFormat = {
         [name]: {
           value_format:
-            seriesValueFormatString || valueFormat || DEFAULT_STRING_FORMAT,
+            seriesValueFormatString ||
+            measureValueFormat ||
+            valueFormat ||
+            DEFAULT_STRING_FORMAT,
         },
       }
       return merge(seriesConfig, defaultValueFormat, currentFieldSettings)

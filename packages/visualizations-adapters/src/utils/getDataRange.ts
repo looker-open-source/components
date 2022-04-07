@@ -24,9 +24,9 @@
 
  */
 
-import type { CCartesian, Fields, SDKRecord } from '../types'
 import isArray from 'lodash/isArray'
 import add from 'lodash/add'
+import type { CCartesian, Fields, SDKRecord } from '../types'
 
 export type GetDataRangeProps = {
   config: CCartesian

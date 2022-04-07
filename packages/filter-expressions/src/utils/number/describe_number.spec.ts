@@ -26,10 +26,13 @@
 import type { GrammarTestItem } from '../../grammars'
 import { numberExpressionTestItems } from '../../grammars'
 import { summary } from '../summary/summary'
+import { i18nInit } from '../i18n'
 import type { FilterModel } from '../../types'
 import { describeNumber } from './describe_number'
 
 describe('Summary', () => {
+  beforeEach(() => i18nInit())
+
   numberExpressionTestItems.forEach((testItem: GrammarTestItem) => {
     const { expression, describe } = testItem
 

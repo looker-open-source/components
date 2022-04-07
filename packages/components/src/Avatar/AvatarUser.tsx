@@ -26,7 +26,7 @@
 
 import { useTranslation } from 'react-i18next'
 import type { FC } from 'react'
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { omitStyledProps, shouldForwardProp } from '@looker/design-tokens'
 import type { AvatarProps } from './Avatar'
@@ -50,6 +50,9 @@ const AvatarLayout: FC<AvatarUserProps> = ({
 }) => {
   const { t } = useTranslation('AvatarUser')
 
+  const [imgError, setImgError] = useState(false)
+  const handleError = () => setImgError(true)
+
   const firstInitial = user && user.first_name && user.first_name[0]
   const lastInitial = user && user.last_name && user.last_name[0]
   const name = user ? `${user.first_name} ${user.last_name}` : t('Avatar')
@@ -63,20 +66,19 @@ const AvatarLayout: FC<AvatarUserProps> = ({
           ? `${firstInitial}`
           : `${firstInitial}${lastInitial}`}
       </AvatarInitials>
-      {user && user.avatar_url && (
+      {user && user.avatar_url && !imgError && (
         <AvatarPhoto
           aria-hidden
+          onError={handleError}
           data-testid="avatar-photo"
-          color={color}
-          type="image/png"
-          data={user.avatar_url}
+          src={user.avatar_url}
         />
       )}
     </BaseElement>
   )
 }
 
-const AvatarPhoto = styled.object`
+const AvatarPhoto = styled.img`
   bottom: 0;
   height: 100%;
   left: 0;

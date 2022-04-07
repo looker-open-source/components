@@ -54,4 +54,5 @@ export type FilterParamProps<
   onInputChange?: (value: string) => void
   showMatchesAdvanced: boolean
   anyOption?: boolean
+  allowMultipleOptions?: boolean
 }

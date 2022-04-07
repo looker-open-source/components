@@ -46,6 +46,7 @@ describe('Past Date filter test', () => {
         field={testField}
         expressionType="date"
         config={testFilterUIConfig}
+        allowMultipleValues={true}
       />
     )
 

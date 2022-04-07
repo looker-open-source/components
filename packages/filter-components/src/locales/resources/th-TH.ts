@@ -198,6 +198,9 @@ const resources = {
     'complete weeks': 'สัปดาห์ถ้วน',
     'complete years': 'ปีถ้วน',
   },
+  RadioGroup: {
+    'any value': 'ค่าใดก็ได้',
+  },
   ReactSelectCustomIcons: {
     'Clear all': 'ล้างทั้งหมด',
     Remove: 'นำออก',
@@ -218,10 +221,10 @@ const resources = {
     More: 'เพิ่มเติม',
   },
   use_filters_errors: {
-    'Selection required': 'ต้องเลือก',
     'Invalid value': 'ค่าไม่ถูกต้อง',
     'No value is set for your user attribute':
       'ไม่มีการกำหนดค่าสำหรับแอตทริบิวต์ของผู้ใช้ของคุณ',
+    'Selection required': 'ต้องเลือก',
   },
   use_option_filtering: {
     'No values': 'ไม่มีค่า',

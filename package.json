@@ -78,7 +78,7 @@
     "@babel/preset-typescript": "^7.13.0",
     "@babel/runtime": "^7.14.0",
     "@babel/runtime-corejs3": "^7.14.7",
-    "@looker/sdk": "^21.12.0",
+    "@looker/sdk": "^22.4.0",
     "@storybook/testing-react": "^0.0.22",
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "11.2.6",

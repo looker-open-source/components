@@ -34,7 +34,6 @@ import max from 'lodash/max'
 import isEmpty from 'lodash/isEmpty'
 import isEqual from 'lodash/isEqual'
 import values from 'lodash/values'
-import { useTranslation } from 'react-i18next'
 import {
   inputCSS,
   inputHeight,
@@ -345,7 +344,6 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
       setViewMonth(transformMonth(month, viewMonthDiff))
     }
 
-    const { t } = useTranslation('InputDateRange')
     const startDateLabelledby = `startDate-labelledby-${id}`
     const endDateLabelledby = `endDate-labelledby-${id}`
 
@@ -363,9 +361,7 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
             inputs.from.isValid && inputs.to.isValid ? undefined : 'error'
           }
         >
-          <VisuallyHidden id={startDateLabelledby}>
-            {t('Start date')}
-          </VisuallyHidden>
+          <VisuallyHidden id={startDateLabelledby}>Start date</VisuallyHidden>
           <InlineInputTextBase
             placeholder={`${formatDateString(
               new Date(Date.now()),
@@ -389,9 +385,7 @@ export const InputDateRange: FC<InputDateRangeProps> = forwardRef(
           >
             &ndash;
           </HyphenWrapper>
-          <VisuallyHidden id={endDateLabelledby}>
-            {t('End date')}
-          </VisuallyHidden>
+          <VisuallyHidden id={endDateLabelledby}>End date</VisuallyHidden>
           <InlineInputTextBase
             placeholder={formatDateString(
               new Date(Date.now()),

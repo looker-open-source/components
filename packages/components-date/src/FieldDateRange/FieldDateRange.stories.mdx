@@ -1,0 +1,33 @@
+import { FieldDateRange } from '@looker/components-date'
+
+<Meta
+  component={FieldDateRange}
+  title="Docs/Components/Fields/FieldDateRange"
+/>
+
+# FieldDateRange
+
+<ImportMessage packageName="components-date">FieldDateRange</ImportMessage>
+
+This component is composed of an `InputDateRange` and a `Label`.
+
+```jsx
+<Grid columns={1}>
+  <FieldDateRange label="Pick a date" />
+  <FieldDateRange
+    label="Validation Error"
+    validationMessage={{
+      message: 'Select a valid calendar date',
+      type: 'error',
+    }}
+  />
+  <FieldDateRange
+    label="Disabled Field"
+    defaultValue={{
+      from: new Date('May 18, 2020'),
+      to: new Date('May 21, 2020'),
+    }}
+    disabled
+  />
+</Grid>
+```

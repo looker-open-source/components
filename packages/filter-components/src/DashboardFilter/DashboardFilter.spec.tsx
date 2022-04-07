@@ -109,6 +109,7 @@ describe('DashboardFilter', () => {
             name: 'Status',
             field: {},
             default_value: 'complete',
+            allow_multiple_values: true,
           }}
           onChange={onChangeMock}
         />
@@ -120,7 +121,12 @@ describe('DashboardFilter', () => {
       const onChangeMock = jest.fn()
       renderWithTheme(
         <DashboardFilter
-          filter={{ name: 'Status', field: {}, default_value: 'complete' }}
+          filter={{
+            name: 'Status',
+            field: {},
+            default_value: 'complete',
+            allow_multiple_values: true,
+          }}
           expression="complete,pending"
           onChange={onChangeMock}
         />

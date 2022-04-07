@@ -1,0 +1,166 @@
+/*
+
+ MIT License
+
+ Copyright (c) 2022 Looker Data Sciences, Inc.
+
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in all
+ copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ SOFTWARE.
+
+ */
+
+import { useEffect } from 'react'
+import type { Looker40SDK, IQuery, IError } from '@looker/sdk'
+import type { SDKResponse } from '@looker/sdk-rtl'
+import {
+  normalizePivotLabels,
+  buildPivotFields,
+  tabularPivotResponse,
+  tabularResponse,
+  formatTotals,
+} from '@looker/visualizations-adapters'
+import type {
+  Fields,
+  SDKRecord,
+  Totals,
+  Pivots,
+} from '@looker/visualizations-adapters'
+import memoize from 'lodash/memoize'
+import isEmpty from 'lodash/isEmpty'
+import isEqual from 'lodash/isEqual'
+import useSWR from 'swr'
+import { useSDK } from './useSDK'
+import { DataState } from './useDataState'
+
+type IQueryExtended = IQuery & {
+  data: SDKRecord[]
+  fields: Fields
+  pivots: Pivots
+  totals_data: Totals
+}
+
+type RunQueryReturnType = SDKResponse<IQueryExtended, IError>
+
+const fetchQueryData = memoize(
+  async (id: number, sdk: Looker40SDK, agentTag?: string) => {
+    const result = await sdk.run_query(
+      {
+        query_id: String(id),
+        result_format: 'json_detail',
+      },
+      { agentTag }
+    )
+
+    return result
+  }
+)
+
+/**
+ * useQueryData fetches the query response (data, fields, etc) from a numeric query id
+ * @param id numeric query id
+ * @param agentTag used for internal telemetry
+ * @returns normalized data, fields, totals, and async request state
+ */
+
+export const useQueryData = (id: number, agentTag?: string) => {
+  const sdk = useSDK()
+  const { getById, setById } = DataState.useContainer()
+
+  /*
+   * Check for stored values
+   * -----------------------------------------------------------
+   */
+
+  const data = getById(id, 'data')
+  const fields = getById(id, 'fields')
+  const pivots = getById(id, 'pivots')
+  const totals = getById(id, 'totals')
+
+  /*
+   * Dispatch network request
+   * -----------------------------------------------------------
+   */
+
+  const fetcher = async () => {
+    if (id > 0 && isEmpty(data)) {
+      return fetchQueryData(id, sdk, agentTag) as Promise<RunQueryReturnType>
+    } else {
+      return Promise.resolve()
+    }
+  }
+
+  const {
+    data: SWRData,
+    isValidating,
+    error,
+  } = useSWR<void | RunQueryReturnType>(
+    `useQueryData-${id}`, // caution: argument string must be unique to this instance
+    fetcher
+  )
+
+  /*
+   * Publish SWR response to central data store
+   * -----------------------------------------------------------
+   */
+
+  useEffect(() => {
+    const {
+      data: rawData,
+      fields: rawFields,
+      pivots: rawPivots,
+      totals_data: rawTotals,
+    } = SWRData?.ok ? SWRData.value : ({} as IQueryExtended)
+
+    if (id && !isEmpty(rawData) && !isEqual(rawData, data)) {
+      setById(id, {
+        data: rawData,
+        ...(rawFields ? { fields: rawFields } : {}),
+        ...(rawPivots ? { pivots: rawPivots } : {}),
+        ...(rawTotals ? { totals: rawTotals } : {}),
+      })
+    }
+  }, [id, SWRData, setById, data])
+
+  /*
+   * Transform and normalize data for use in visualizations
+   * -----------------------------------------------------------
+   */
+
+  const normalizedPivots = pivots ? normalizePivotLabels(pivots) : undefined
+
+  const normalizedFields =
+    normalizedPivots && fields
+      ? buildPivotFields({ fields, pivots: normalizedPivots })
+      : fields
+
+  const normalizedData =
+    pivots && data && fields
+      ? tabularPivotResponse({ data, fields, pivots })
+      : tabularResponse(data || [])
+
+  const normalizedTotals = totals ? formatTotals(totals) : undefined
+
+  return {
+    data: normalizedData,
+    fields: normalizedFields,
+    isOK: !error,
+    isPending: isValidating,
+    totals: normalizedTotals,
+    ...(error ? { error } : {}),
+  }
+}

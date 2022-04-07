@@ -25,7 +25,7 @@
  */
 
 import type { ExtendedStatefulColor } from '@looker/design-tokens'
-import type { CSSProperties } from 'react'
+import type { CSSProperties, Ref } from 'react'
 
 export type RippleCallbacks = {
   endBG: () => void
@@ -34,7 +34,15 @@ export type RippleCallbacks = {
   startFG: () => void
 }
 
-export type UseBoundedRippleProps = {
+export type UseRippleBaseProps = {
+  /**
+   * An existing class name to merge with the ripple class name
+   */
+  className?: string
+  /**
+   * Existing styles to merge with the ripple styles (css vars)
+   */
+  style?: CSSProperties
   /**
    * Change the color of the ripple background and foreground
    * @default neutral
@@ -49,7 +57,16 @@ export type UseBoundedRippleProps = {
   size?: number
 }
 
-export type UseRippleProps = UseBoundedRippleProps & {
+export type UseBoundedRippleProps<
+  T extends HTMLElement = HTMLElement
+> = UseRippleBaseProps & {
+  /**
+   * Existing ref to wrap
+   */
+  ref?: Ref<T>
+}
+
+export type UseRippleProps = UseRippleBaseProps & {
   /**
    * Use for elements where the ripple disappears at the edges of
    * a visible rectangle, e.g. a default Button
@@ -77,10 +94,17 @@ export type UseRippleResponse = {
    * The class names used in rippleStyle to trigger the animations
    */
   className: string
-
-  ref?: React.Ref<HTMLDivElement>
   /**
    * style contains CSS variables to control the animation
    */
   style: CSSProperties
+}
+
+export type UseBoundedRippleResponse<
+  T extends HTMLElement = HTMLElement
+> = UseRippleResponse & {
+  /**
+   * ref used for measuring the element for correct ripple sizing
+   */
+  ref: (node: T | null) => void
 }

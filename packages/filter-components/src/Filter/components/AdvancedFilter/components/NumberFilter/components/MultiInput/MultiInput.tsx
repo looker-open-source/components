@@ -23,6 +23,8 @@
  SOFTWARE.
 
  */
+
+import type { ValidationMessageProps } from '@looker/components'
 import { InputChips } from '@looker/components'
 import type { ValueProps } from '@looker/filter-expressions'
 import type { FC } from 'react'
@@ -43,6 +45,7 @@ interface MultiInputProps {
   placement?: 'right'
   /** Text to be shown inside the input when there is no value entered  */
   placeholder?: string
+  validationMessage?: ValidationMessageProps
 }
 
 const validate = (value: string) => {
@@ -55,6 +58,7 @@ export const MultiInputInternal: FC<MultiInputProps> = ({
   onChange,
   width,
   placeholder,
+  validationMessage,
 }) => {
   const ref = useRef<HTMLInputElement>(null)
   const values = item.value.map(String)
@@ -85,6 +89,8 @@ export const MultiInputInternal: FC<MultiInputProps> = ({
       inputValue={inputValue}
       onInputChange={setInputValue}
       validate={validate}
+      validationType={validationMessage?.type}
+      noErrorIcon
     />
   )
 }

@@ -23,6 +23,8 @@
  SOFTWARE.
 
  */
+
+import type { ValidationMessageProps } from '@looker/components'
 import type { FilterModel } from '@looker/filter-expressions'
 import type { ChangeEvent, FC } from 'react'
 import React from 'react'
@@ -32,12 +34,14 @@ import { GroupInput } from '../../../GroupInput'
 interface SingleNumberInputProps extends Omit<GroupInputProps, 'onChange'> {
   item: FilterModel
   onChange?: (id: string, value: any) => void
+  validationMessage?: ValidationMessageProps
 }
 
 export const SingleNumberInput: FC<SingleNumberInputProps> = ({
   item,
   onChange,
   placement,
+  validationMessage,
 }) => {
   const inputChange = ({
     currentTarget: { value },
@@ -60,6 +64,8 @@ export const SingleNumberInput: FC<SingleNumberInputProps> = ({
       placement={placement}
       minWidth="4.5em"
       data-testid="single-number"
+      validationType={validationMessage?.type}
+      noErrorIcon
     />
   )
 }

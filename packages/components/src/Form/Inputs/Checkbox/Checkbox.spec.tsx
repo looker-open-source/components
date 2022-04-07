@@ -157,9 +157,12 @@ describe('Checkbox', () => {
   test('ripple effect', () => {
     renderWithTheme(<Basic />)
 
-    const checkbox = screen.getByRole('checkbox').closest('div') as HTMLElement
-    expect(checkbox).not.toHaveClass('bg-on fg-in')
-    expect(checkbox).toHaveStyle({
+    const checkboxWrapper = screen
+      .getByRole('checkbox')
+      .closest('div') as HTMLElement
+    const checkbox = screen.getByRole('checkbox')
+    expect(checkboxWrapper).not.toHaveClass('bg-on fg-in')
+    expect(checkboxWrapper).toHaveStyle({
       '--ripple-color': '#71767a',
       '--ripple-overflow': 'visible',
       '--ripple-scale-end': RIPPLE_RATIO.toString(),
@@ -169,19 +172,19 @@ describe('Checkbox', () => {
     })
 
     fireEvent.focus(checkbox)
-    expect(checkbox).toHaveClass('bg-on')
+    expect(checkboxWrapper).toHaveClass('bg-on')
 
     fireEvent.mouseDown(checkbox)
-    expect(checkbox).toHaveClass('bg-on fg-in')
+    expect(checkboxWrapper).toHaveClass('bg-on fg-in')
 
     // foreground is locked for a minimum time to animate the ripple
     fireEvent.mouseUp(checkbox)
     runTimers()
-    expect(checkbox).toHaveClass('bg-on fg-out')
+    expect(checkboxWrapper).toHaveClass('bg-on fg-out')
     runTimers()
-    expect(checkbox).toHaveClass('bg-on')
+    expect(checkboxWrapper).toHaveClass('bg-on')
 
     fireEvent.blur(checkbox)
-    expect(checkbox).not.toHaveClass('bg-on fg-in')
+    expect(checkboxWrapper).not.toHaveClass('bg-on fg-in')
   })
 })

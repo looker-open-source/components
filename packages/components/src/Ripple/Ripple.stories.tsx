@@ -26,56 +26,78 @@
 
 import React from 'react'
 import type { Story } from '@storybook/react/types-6-0'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import type { SimpleLayoutProps } from '../Layout'
 import { simpleLayoutCSS } from '../Layout'
-import type { UseRippleProps } from './'
-import { useRipple, useRippleHandlers, rippleStyle } from './'
+import type { UseBoundedRippleProps, UseRippleProps } from './'
+import { useRipple, useBoundedRipple, useRippleHandlers, rippleStyle } from './'
 
 type RippleProps = SimpleLayoutProps & UseRippleProps & { className?: string }
 
+const styles = css`
+  ${simpleLayoutCSS}
+  ${rippleStyle}
+
+align-items: center;
+  display: flex;
+  justify-content: center;
+`
+
 const Ripple = styled(
-  ({ className, bounded, color, height, width, ...props }: RippleProps) => {
-    const { callbacks, className: rippleClassName, ...rippleProps } = useRipple(
-      {
-        bounded,
-        color,
-        height,
-        width,
-      }
-    )
+  ({ bounded, className, color, height, width, ...props }: RippleProps) => {
+    const { callbacks, ...rippleProps } = useRipple({
+      bounded,
+      className,
+      color,
+      height,
+      width,
+    })
 
     const rippleHandlers = useRippleHandlers(callbacks, {})
 
     return (
-      <div
-        className={`${className} ${rippleClassName}`}
-        tabIndex={0}
-        {...rippleProps}
-        {...rippleHandlers}
-        {...props}
-      >
+      <div tabIndex={0} {...rippleProps} {...rippleHandlers} {...props}>
         click me
       </div>
     )
   }
 )<SimpleLayoutProps>`
-  ${simpleLayoutCSS}
-  ${rippleStyle}
+  ${styles}
+`
 
-  align-items: center;
-  display: flex;
-  justify-content: center;
+type BoundedRippleProps = SimpleLayoutProps &
+  Omit<UseBoundedRippleProps, 'ref'> & { className?: string }
+
+const BoundedRipple = styled(
+  ({ className, color, height, width, ...props }: BoundedRippleProps) => {
+    const { callbacks, ...rippleProps } = useBoundedRipple<HTMLDivElement>({
+      className,
+      color,
+    })
+
+    const rippleHandlers = useRippleHandlers(callbacks, {})
+
+    return (
+      <div tabIndex={0} {...rippleProps} {...rippleHandlers} {...props}>
+        click me
+      </div>
+    )
+  }
+)<SimpleLayoutProps>`
+  ${styles}
 `
 
 const Template: Story<RippleProps> = args => <Ripple {...args} />
+const BoundedTemplate: Story<BoundedRippleProps> = args => (
+  <BoundedRipple {...args} />
+)
 
 export const Basic = Template.bind({})
 Basic.args = { height: 80, width: 80 }
 Basic.parameters = { storyshots: { disable: true } }
 
-export const Bounded = Template.bind({})
-Bounded.args = { ...Basic.args, bounded: true, width: 200 }
+export const Bounded = BoundedTemplate.bind({})
+Bounded.args = { ...Basic.args, width: 200 }
 Bounded.parameters = { storyshots: { disable: true } }
 
 export const Key = Template.bind({})

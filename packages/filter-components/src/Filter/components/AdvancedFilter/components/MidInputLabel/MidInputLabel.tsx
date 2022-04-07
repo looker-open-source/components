@@ -24,31 +24,37 @@
 
  */
 
-import type { TextProps } from '@looker/components'
-import { inputHeight, Text } from '@looker/components'
+import React from 'react'
+import type { ValidationType } from '@looker/components'
+import { inputHeight, Box2 } from '@looker/components'
 import styled from 'styled-components'
 
-export const MidInputLabel = styled(Text).attrs<TextProps>(
-  ({
-    color = 'text1',
-    fontSize = 'small',
-    px = 'xsmall',
-    textAlign = 'right',
-  }) => ({
-    color,
-    fontSize,
-    px,
-    textAlign,
-  })
+export type MidInputLabelProps = {
+  children: string
+  className?: string
+  validationType?: ValidationType
+}
+
+export const MidInputLabel = styled(
+  ({ validationType, ...props }: MidInputLabelProps) => {
+    return (
+      <Box2
+        alignItems="center"
+        alignSelf="center"
+        bg="background"
+        border={validationType === 'error' ? 'critical' : 'ui3'}
+        color="text1"
+        display="flex"
+        height={inputHeight}
+        lineHeight="medium"
+        px="xsmall"
+        textAlign="right"
+        {...props}
+      />
+    )
+  }
 )`
-  align-items: center;
-  align-self: center;
-  background: ${({ theme: { colors } }) => colors.background};
-  border: 1px solid ${({ theme: { colors } }) => colors.ui3};
   border-right: none;
-  display: flex;
-  height: ${inputHeight};
-  line-height: ${({ theme }) => theme.lineHeights.medium};
   text-overflow: ellipsis;
   white-space: nowrap;
 `

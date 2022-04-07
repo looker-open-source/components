@@ -32,3 +32,6 @@ export const DEFAULT_SERIES_COLORS = [
   '#ed6995',
   '#f1898f',
 ]
+export const DEFAULT_STRING_FORMAT = '0,0.[00]'
+export const DEFAULT_STRING_FORMAT_PERCENT = '0.[00]%'
+export const DEFAULT_MARGIN = 50

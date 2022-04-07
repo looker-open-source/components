@@ -27,15 +27,19 @@
 import type { FC } from 'react'
 import React from 'react'
 import { Accordion2 } from '@looker/components'
+import type { SDKRecord, Fields, CAll } from '@looker/visualizations-adapters'
+import type { IError } from '@looker/sdk'
 import { StaticTable } from '../StaticTable'
-import type { QueryContextProps } from '../Query'
 import isEmpty from 'lodash/isEmpty'
 import { KeyValueList } from '../KeyValueList'
 
-type DebugProps = Pick<
-  QueryContextProps,
-  'ok' | 'data' | 'error' | 'config' | 'fields'
->
+type DebugProps = {
+  ok?: boolean
+  data?: SDKRecord[]
+  error?: IError
+  config?: Partial<CAll>
+  fields?: Fields
+}
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 

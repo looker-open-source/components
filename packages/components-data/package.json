@@ -1,0 +1,41 @@
+{
+  "name": "@looker/components-data",
+  "license": "MIT",
+  "main": "src/index.ts",
+  "version": "0.1.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": false,
+  "files": [
+    "src",
+    "lib"
+  ],
+  "dependencies": {
+    "@looker/components": "*",
+    "@looker/sdk": "^22.4.0",
+    "@looker/sdk-rtl": "^21.3.3",
+    "@looker/visualizations-adapters": "*",
+    "lodash": "4.17.21",
+    "swr": "1.2.2",
+    "unstated-next": "1.1.0"
+  },
+  "devDependencies": {
+    "@looker/components-test-utils": "^1.5.19",
+    "@looker/eslint-config-oss": "^1.7.14",
+    "@testing-library/react": "*"
+  },
+  "peerDependencies": {
+    "react": "16.11.0 - 18",
+    "react-dom": "16.11.0 - 18"
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "@looker/eslint-config-oss"
+    ],
+    "rules": {
+      "camelcase": "off"
+    }
+  }
+}

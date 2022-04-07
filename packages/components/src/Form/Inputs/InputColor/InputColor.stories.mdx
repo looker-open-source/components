@@ -1,0 +1,18 @@
+import { InputColor } from '@looker/components'
+
+<Meta component={InputColor} title="Docs/Components/Inputs/InputColor" />
+
+# InputColor
+
+The `InputColor` component has an input to add a color value and a color wheel to pick color directly. The value prop can be used as a control component. To set an initial value on an uncontrolled component use defaultValue.
+
+```js
+<SpaceVertical>
+  <InputColor />
+  <InputColor value="green" />
+  <InputColor defaultValue="purple" />
+  <InputColor disabled />
+  <InputColor defaultValue="green" disabled />
+  <InputColor defaultValue="green" readOnly />
+</SpaceVertical>
+```

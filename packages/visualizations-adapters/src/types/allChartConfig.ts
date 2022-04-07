@@ -51,8 +51,8 @@ export const supportedChartTypes = {
   default: 'default',
   line: 'line',
   pie: 'pie',
-  single_value: 'single_value',
   scatter: 'scatter',
+  single_value: 'single_value',
   sparkline: 'sparkline',
   table: 'table',
 } as const

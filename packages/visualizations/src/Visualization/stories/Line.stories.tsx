@@ -31,7 +31,6 @@ import { Visualization } from '../Visualization'
 import type { Fields, LineProps, CLine } from '@looker/visualizations-adapters'
 import {
   buildChartConfig,
-  QueryContext,
   buildPivotFields,
   mockPivots,
   mockLineConfig,
@@ -48,7 +47,7 @@ export default {
   title: 'Visualizations/Line',
 }
 
-type StoryTemplateProps = Omit<LineProps, 'config'> & {
+type StoryTemplateProps = Omit<LineProps, 'config' | 'fields' | 'data'> & {
   config: Omit<CLine, 'type'>
 }
 
@@ -69,18 +68,14 @@ const Template: Story<StoryTemplateProps> = ({
   })
 
   return (
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    <QueryContext.Provider
-      value={{
-        config,
-        ok: true,
-        loading: false,
-        data,
-        fields: mockSdkFieldsResponse as Fields,
-      }}
-    >
-      <Visualization height={600} width={800} {...restProps} />
-    </QueryContext.Provider>
+    <Visualization
+      config={config}
+      data={data}
+      fields={mockSdkFieldsResponse as Fields}
+      height={600}
+      width={800}
+      {...restProps}
+    />
   )
 }
 
@@ -122,17 +117,13 @@ export const Pivot = () => {
   })
 
   return (
-    <QueryContext.Provider
-      value={{
-        config,
-        ok: true,
-        loading: false,
-        data: mockPivotData,
-        fields: mockPivotFields,
-      }}
-    >
-      <Visualization height={600} width={800} />
-    </QueryContext.Provider>
+    <Visualization
+      config={config}
+      data={mockPivotData}
+      fields={mockPivotFields}
+      height={600}
+      width={800}
+    />
   )
 }
 Pivot.parameters = {
@@ -162,16 +153,12 @@ export const DefaultYAxisSingleMeasure: Story<LineProps> = () => {
   })
 
   return (
-    <QueryContext.Provider
-      value={{
-        config,
-        ok: true,
-        loading: false,
-        data,
-        fields,
-      }}
-    >
-      <Visualization height={600} width={800} />
-    </QueryContext.Provider>
+    <Visualization
+      config={config}
+      data={data}
+      fields={fields}
+      height={600}
+      width={800}
+    />
   )
 }

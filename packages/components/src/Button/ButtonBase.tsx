@@ -40,11 +40,10 @@ import styled, { css } from 'styled-components'
 import pick from 'lodash/pick'
 import {
   rippleStyle,
-  useRipple,
+  useBoundedRipple,
   useRippleHandlers,
   rippleHandlerKeys,
 } from '../Ripple'
-import { mergeClassNames, useCallbackRef, useMeasuredElement } from '../utils'
 import { buttonSize, buttonIconSizeMap, buttonPadding } from './size'
 import { buttonIcon } from './icon'
 import type { ButtonColorProps, ButtonProps } from './types'
@@ -109,19 +108,11 @@ export const ButtonBase = styled(
       ...restProps
     } = props
 
-    // find the dimensions of button for ripple behavior
-    const [element, ref] = useCallbackRef(forwardedRef)
-    const [{ height, width }] = useMeasuredElement(element)
-
-    const {
-      callbacks,
-      className: rippleClassName,
-      style: rippleStyle,
-    } = useRipple({
-      bounded: true,
+    const { callbacks, ...rippleProps } = useBoundedRipple({
+      className,
       color: rippleBackgroundColor || color || 'key',
-      height,
-      width,
+      ref: forwardedRef,
+      style,
     })
 
     const rippleHandlers = useRippleHandlers(
@@ -133,13 +124,11 @@ export const ButtonBase = styled(
     )
     return (
       <ButtonOuter
-        className={mergeClassNames([className, rippleClassName])}
         px={buttonPadding(!!(iconBefore || iconAfter), size)}
-        ref={ref}
         {...restProps}
+        {...rippleProps}
         {...rippleHandlers}
         size={size}
-        style={{ ...style, ...rippleStyle }}
       >
         {iconBefore}
         {children}

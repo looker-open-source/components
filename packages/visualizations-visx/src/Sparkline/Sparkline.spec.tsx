@@ -27,8 +27,9 @@ import React from 'react'
 import { screen } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import {
-  mockQueryContextValues,
-  mockContextWithNull,
+  mockFields,
+  mockData,
+  mockDataWithNull,
 } from '@looker/visualizations-adapters'
 import { Sparkline } from './Sparkline'
 
@@ -36,9 +37,12 @@ import { Sparkline } from './Sparkline'
 
 describe('Sparkline Chart', () => {
   it('renders an svg based derived from two dimensional response', () => {
-    const { data, fields } = mockQueryContextValues
     renderWithTheme(
-      <Sparkline config={{ type: 'sparkline' }} data={data} fields={fields!} />
+      <Sparkline
+        config={{ type: 'sparkline' }}
+        data={mockData}
+        fields={mockFields}
+      />
     )
     expect(screen.getByTestId('sparkline-chart')).toMatchInlineSnapshot(`
       <svg
@@ -57,12 +61,11 @@ describe('Sparkline Chart', () => {
     `)
   })
   it('accepts line width overrides', () => {
-    const { data, fields } = mockQueryContextValues
     renderWithTheme(
       <Sparkline
         config={{ series: [{ line_width: 5 }], type: 'sparkline' }}
-        data={data}
-        fields={fields!}
+        data={mockData}
+        fields={mockFields}
       />
     )
     const linePath = screen.getByTestId('sparkline-chart').firstChild
@@ -70,10 +73,12 @@ describe('Sparkline Chart', () => {
     expect(linePath).toHaveAttribute('stroke-width', '5')
   })
   it('renders multiple svg paths when encountering a null data point', () => {
-    const { data, fields } = mockContextWithNull
-
     renderWithTheme(
-      <Sparkline config={{ type: 'sparkline' }} data={data} fields={fields!} />
+      <Sparkline
+        config={{ type: 'sparkline' }}
+        data={mockDataWithNull}
+        fields={mockFields}
+      />
     )
 
     expect(screen.getByTestId('sparkline-chart')).toMatchInlineSnapshot(`

@@ -80,6 +80,7 @@ describe('ToggleSwitch', () => {
   test('ripple effect', () => {
     renderWithTheme(<Basic />)
 
+    const input = screen.getByRole('switch')
     const handle = screen.getByTestId('handle') as HTMLElement
     expect(handle).not.toHaveClass('bg-on fg-in')
     expect(handle).toHaveStyle({
@@ -91,20 +92,20 @@ describe('ToggleSwitch', () => {
       '--ripple-translate': '0, 0',
     })
 
-    fireEvent.focus(handle)
+    fireEvent.focus(input)
     expect(handle).toHaveClass('bg-on')
 
-    fireEvent.mouseDown(handle)
+    fireEvent.mouseDown(input)
     expect(handle).toHaveClass('bg-on fg-in')
 
     // foreground is locked for a minimum time to animate the ripple
-    fireEvent.mouseUp(handle)
+    fireEvent.mouseUp(input)
     runTimers()
     expect(handle).toHaveClass('bg-on fg-out')
     runTimers()
     expect(handle).toHaveClass('bg-on')
 
-    fireEvent.blur(handle)
+    fireEvent.blur(input)
     expect(handle).not.toHaveClass('bg-on fg-in')
   })
 })

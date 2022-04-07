@@ -185,7 +185,7 @@ const getSingleValue = (
   item: FilterModel,
   stringOptions: Option[],
   onlyValuesFromOptions: boolean,
-  fieldCategory?: string
+  fieldCategory?: string | null
 ) => {
   const optionsMap = keyBy(stringOptions, 'value')
 

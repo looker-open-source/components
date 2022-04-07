@@ -69,7 +69,7 @@ const FilterDemoInternal: FC = () => {
           result
             .slice(0, 99)
             .sort(({ title: aTitle = '' }, { title: bTitle = '' }) =>
-              aTitle.localeCompare(bTitle)
+              aTitle && bTitle ? aTitle.localeCompare(bTitle) : 0
             )
         )
         setLoadingDashboards(false)
@@ -175,7 +175,7 @@ const FilterDemoInternal: FC = () => {
               current={currentDashboard?.id}
             />
             <FilterList
-              filters={currentDashboard?.dashboard_filters}
+              filters={currentDashboard?.dashboard_filters || undefined}
               embedDashboard={embedDashboard}
               needsUpdate={needsUpdate}
               filterValues={filterValues}

@@ -63,7 +63,8 @@ export const TierFilter: FC<FilterParamProps> = ({
   )
   const FilterComponent: ElementType = tierFilterTypeToFilter(
     item.type,
-    isParamFilter
+    isParamFilter,
+    rest.allowMultipleOptions
   )
   const isValueSet = item.value && item.value.length > 0
   const isValueInEnumeration = unescapedEnumerations?.some(e =>

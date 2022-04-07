@@ -3,7 +3,7 @@ title: Dialog
 storybook: true
 ---
 
-import { MessageBar } from '@looker/components'
+import { MessageBar } from './'
 
 Dialogs break out of the standard application flow and UI to present new information or required actions.
 
@@ -161,7 +161,7 @@ Determines how surface is positioned in the the viewport.
 
 ```js static
 import React, { useContext } from 'react'
-import { Button, DialogContext } from '@looker/components'
+import { Button, DialogContext } from './'
 
 export function DialogContextDemo() {
   return (
@@ -189,7 +189,7 @@ in `ComponentsProvider`, which manage competing scroll locks and focus traps fro
 In rare cases, such as nesting a popover from another library inside a `Dialog`, you may need to temporarily disable these behaviors:
 
 ```js static
-import { ScrollLockContext } from '@looker/components-providers'
+import { ScrollLockContext } from './components-providers'
 import { useContext } from 'react'
 
 const { activeTrapRef, disableCurrentTrap, enableCurrentTrap } = useContext(

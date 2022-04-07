@@ -24,17 +24,26 @@
 
  */
 
-import { Text } from '@visx/text'
 import { Axis, ThemeContext as VisxThemeContext } from '@visx/xychart'
 import React, { useContext } from 'react'
+import type { Fields } from '@looker/visualizations-adapters'
+import { Tick } from './Tick'
 
 export type YAxisProps = {
+  fields: Fields
   showTicks?: boolean
   label?: string
   labelDx: number
+  valueFormat?: string | null
 }
 
-export const YAxis = ({ showTicks, label, labelDx }: YAxisProps) => {
+export const YAxis = ({
+  showTicks,
+  label,
+  labelDx,
+  valueFormat,
+  fields,
+}: YAxisProps) => {
   const visxTheme = useContext(VisxThemeContext)
 
   return (
@@ -43,8 +52,10 @@ export const YAxis = ({ showTicks, label, labelDx }: YAxisProps) => {
       label={label}
       labelOffset={showTicks ? undefined : 0}
       labelProps={{ ...visxTheme.axisStyles.y.left.axisLabel, dx: labelDx }}
-      tickComponent={({ formattedValue, ...tickProps }) =>
-        showTicks ? <Text {...tickProps}>{formattedValue}</Text> : null
+      tickComponent={tickProps =>
+        showTicks ? (
+          <Tick fields={fields} valueFormat={valueFormat} {...tickProps} />
+        ) : null
       }
       orientation="left"
     />

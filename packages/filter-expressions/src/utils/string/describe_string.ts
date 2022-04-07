@@ -23,48 +23,71 @@
  SOFTWARE.
 
  */
+import i18next from 'i18next'
 import defaultTo from 'lodash/defaultTo'
 import type { FilterItemToStringMapType, FilterModel } from '../../types'
 import { describeIsItem } from '../summary/describe_is_item'
+import { describeIsAnyValue } from '../summary/describe_is_any_value'
 import { describeNull } from '../summary/describe_null'
+import { joinOr } from '../summary/join_or'
 import { describeUserAttribute } from '../user_attribute/describe_user_attribute'
 import { addQuotes } from './add_quotes'
 
-const describeMultiValue = (value: string[]) =>
-  `${value && value.map(addQuotes).join(' or ')}`
+const describeMultiValue = (value: string[]) => {
+  return value && joinOr(value.map(addQuotes))
+}
+const match = ({ is, value }: FilterModel) => {
+  return value && value.length
+    ? describeIsItem(is, describeMultiValue(value))
+    : describeIsAnyValue()
+}
 
-const match = ({ is, value }: FilterModel) =>
-  `${describeIsItem(is)} ${
-    value && value.length ? describeMultiValue(value) : 'any value'
-  }`
+const contains = ({ is, value }: FilterModel) => {
+  const t = i18next.t.bind(i18next)
+  const valueText = describeMultiValue(value)
+  const containsText = t('contains value', {
+    ns: 'describe_string',
+    value: valueText,
+  })
+  const doesntContainText = t('does not contain value', {
+    ns: 'describe_string',
+    value: valueText,
+  })
+  return is ? containsText : doesntContainText
+}
 
-const contains = ({ is, value }: FilterModel) =>
-  `${describeIsItem(
-    is,
-    'contains',
-    'does not contain',
-    ''
-  )} ${describeMultiValue(value)}`
+const startsWith = ({ is, value }: FilterModel) => {
+  const t = i18next.t.bind(i18next)
+  const valueText = describeMultiValue(value)
+  const startsWithText = t('starts with value', {
+    ns: 'describe_string',
+    value: valueText,
+  })
+  const doesntStartWithText = t('does not start with value', {
+    ns: 'describe_string',
+    value: valueText,
+  })
+  return is ? startsWithText : doesntStartWithText
+}
 
-const startsWith = ({ is, value }: FilterModel) =>
-  `${describeIsItem(
-    is,
-    'starts with',
-    'does not start with',
-    ''
-  )} ${describeMultiValue(value)}`
+const endsWith = ({ is, value }: FilterModel) => {
+  const t = i18next.t.bind(i18next)
+  const valueText = describeMultiValue(value)
+  const endsWithText = t('ends with value', {
+    ns: 'describe_string',
+    value: valueText,
+  })
+  const doesntEndWithText = t('does not end with value', {
+    ns: 'describe_string',
+    value: valueText,
+  })
+  return is ? endsWithText : doesntEndWithText
+}
 
-const endsWith = ({ is, value }: FilterModel) =>
-  `${describeIsItem(
-    is,
-    'ends with',
-    'does not end with',
-    ''
-  )} ${describeMultiValue(value)}`
-
-const blank = ({ is }: FilterModel) => `${describeIsItem(is)} blank`
-
-const anyvalue = () => 'is any value'
+const blank = ({ is }: FilterModel) => {
+  const t = i18next.t.bind(i18next)
+  return describeIsItem(is, t('blank', { ns: 'describe_string' }))
+}
 
 const filterToStringMap: FilterItemToStringMapType = {
   blank,
@@ -74,7 +97,7 @@ const filterToStringMap: FilterItemToStringMapType = {
   startsWith,
   endsWith,
   user_attribute: describeUserAttribute,
-  anyvalue,
+  anyvalue: describeIsAnyValue,
 }
 
 /**

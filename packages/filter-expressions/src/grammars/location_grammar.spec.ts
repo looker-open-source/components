@@ -23,7 +23,7 @@
  SOFTWARE.
 
  */
-import { parseFilterExpression, summary } from '../utils'
+import { i18nInit, parseFilterExpression, summary } from '../utils'
 
 const location = [
   ['36.97, -122.03', '36.97, -122.03'],
@@ -43,6 +43,7 @@ const location = [
 ]
 
 describe('Location grammar can parse expressions', () => {
+  beforeEach(() => i18nInit())
   it.each(location)('%s', (expression, result) => {
     expect(parseFilterExpression('location', expression)).toMatchSnapshot()
     expect(summary({ type: 'location', expression })).toBe(result)

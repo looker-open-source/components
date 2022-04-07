@@ -41,7 +41,7 @@ export type VisWrapperInternalProps = VisWrapperProps & {
 }
 
 const VisWrapperInternal: FC<VisWrapperInternalProps> = forwardRef(
-  (props, ref) => {
+  ({ legend, ...props }, ref) => {
     const theme = useContext(ThemeContext)
 
     if (!theme) {

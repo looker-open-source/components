@@ -28,15 +28,20 @@ import React from 'react'
 import { screen } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { Table } from './'
-import { mockQueryContextValues } from '@looker/visualizations-adapters'
+import {
+  mockBarConfig,
+  mockFields,
+  mockData,
+} from '@looker/visualizations-adapters'
 
 describe('Table', () => {
   it('renders Table', () => {
     renderWithTheme(
       <Table
-        {...mockQueryContextValues}
+        data={mockData}
+        fields={mockFields}
         config={{
-          ...mockQueryContextValues.config,
+          ...mockBarConfig,
           series: {
             'orders.count': {
               cell_visualization: true,

@@ -35,10 +35,7 @@ export const Basic = Template.bind({})
 Basic.args = {
   imageUrl:
     'https://github.com/looker-open-source/components/blob/1b708b472d974987e80c30bbbb286911a438542a/packages/components/test-assets/cheese.png?raw=true',
-}
-Basic.parameters = {
-  // disabling due to environment diff
-  storyshots: { disable: true },
+  label: 'Your Account',
 }
 
 export default {

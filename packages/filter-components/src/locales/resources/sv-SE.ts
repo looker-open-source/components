@@ -201,6 +201,9 @@ const resources = {
     'complete weeks': 'hela veckor',
     'complete years': 'hela år',
   },
+  RadioGroup: {
+    'any value': 'vilket värde som helst',
+  },
   ReactSelectCustomIcons: {
     'Clear all': 'Rensa alla',
     Remove: 'Ta bort',
@@ -221,10 +224,10 @@ const resources = {
     More: 'Mer',
   },
   use_filters_errors: {
-    'Selection required': 'Markering krävs',
     'Invalid value': 'Ogiltigt värde',
     'No value is set for your user attribute':
       'Inget värde inställt för ditt användarattribut',
+    'Selection required': 'Markering krävs',
   },
   use_option_filtering: {
     'No values': 'Inga värden',

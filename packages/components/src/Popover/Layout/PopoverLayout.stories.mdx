@@ -1,0 +1,65 @@
+import { PopoverLayout } from '@looker/components'
+
+<Meta
+  component={PopoverLayout}
+  title="Docs/Components/Overlays/Popover/PopoverLayout"
+/>
+
+# PopoverLayout
+
+The `PopoverLayout` component manages the popover layout components below to easily meet design-system expectations.
+
+This component composes `PopoverHeader`, `PopoverContent` and `PopverFooter` as needed.
+
+`PopoverHeader` will display the closing button if `footer` is set to false.
+
+By default `PopoverFooter` will contain a dismissal button with the text "Done". That value can be changed by using the prop `closeButton`.
+
+```jsx
+<PopoverLayout header="Example Popover">PopoverLayout content</PopoverLayout>
+```
+
+## Header hidden
+
+Use the hidden prop to hide the visible header text but still provide context for screen readers
+
+```jsx
+<PopoverLayout hideHeader header="Example Popover" footer={false}>
+  PopoverLayout content
+</PopoverLayout>
+```
+
+## Footer extra content
+
+Use the footer prop to add an extra element to the Footer.
+
+```jsx
+<PopoverLayout
+  header="Header"
+  footer={
+    <ButtonTransparent color="neutral" size="small">
+      Cancel
+    </ButtonTransparent>
+  }
+>
+  PopoverLayout content
+</PopoverLayout>
+```
+
+## Footer closeButton
+
+Use the closeButton prop to change the default value of Footer.
+
+```jsx
+<PopoverLayout header="Header" closeButton="Close">
+  PopoverLayout content
+</PopoverLayout>
+```
+
+## no Footer
+
+```jsx
+<PopoverLayout header="Header" footer={false}>
+  PopoverLayout content
+</PopoverLayout>
+```

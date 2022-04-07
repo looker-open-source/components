@@ -31,7 +31,6 @@ import get from 'lodash/get'
 import reduce from 'lodash/reduce'
 import has from 'lodash/has'
 import isArray from 'lodash/isArray'
-
 import {
   Table as TableElement,
   TableHead,
@@ -46,6 +45,7 @@ import type {
   SDKRecord,
   TableProps,
 } from '@looker/visualizations-adapters'
+import { isNumeric } from '@looker/visualizations-adapters'
 import { TableMeasure } from './TableMeasure'
 import numeral from 'numeral'
 
@@ -112,9 +112,14 @@ export const Table: FC<TableProps> = ({
           ? get(config, ['series', matchingMeasureIndex, 'value_format'])
           : get(config, ['series', key, 'value_format'])
 
-        const valueFormatted = valueFormat
-          ? numeral(value).format(valueFormat)
-          : value
+        const isNumericValue =
+          typeof value === 'number' ||
+          (typeof value === 'string' && isNumeric(value))
+
+        const valueFormatted =
+          isNumericValue && valueFormat
+            ? numeral(value).format(valueFormat)
+            : value
 
         const cellVisEntry = cellVis[key]
         const formattedValue = cellVisEntry

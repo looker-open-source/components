@@ -24,9 +24,12 @@
 
  */
 import type { FilterModel } from '../../types'
+import { i18nInit } from '../i18n'
 import { describeString } from './describe_string'
 
 describe('String summary', () => {
+  beforeEach(() => i18nInit())
+
   it('returns empty string for an invalid item type', () => {
     const item: FilterModel = {
       id: '1',

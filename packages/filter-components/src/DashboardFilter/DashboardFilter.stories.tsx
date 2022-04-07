@@ -52,6 +52,7 @@ Basic.args = {
     field: { is_numeric: true },
     name: 'Cost',
     type: 'field_filter',
+    allow_multiple_values: true,
   },
 }
 
@@ -64,6 +65,7 @@ Suggestions.args = {
     name: 'Status',
     type: 'field_filter',
     ui_config: { type: 'button_group' },
+    allow_multiple_values: true,
   },
   sdk: ({
     ok: (value: any) => value,
@@ -79,6 +81,7 @@ Validation.args = {
   filter: {
     ...Suggestions.args.filter,
     required: true,
+    allow_multiple_values: true,
   },
 }
 

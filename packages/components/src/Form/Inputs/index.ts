@@ -43,6 +43,7 @@ export * from './Select'
 export * from './Slider'
 export * from './TextArea'
 export * from './ToggleSwitch'
+export * from './InputFile'
 
 // Utilities
 export * from './innerInputStyle'

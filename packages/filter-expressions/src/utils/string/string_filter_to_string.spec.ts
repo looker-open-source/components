@@ -38,6 +38,50 @@ describe('String filter to string', () => {
     expect(result).toBe('')
   })
 
+  it('returns escaped backslash (match)', () => {
+    const item: FilterModel = {
+      is: true,
+      id: '1',
+      type: 'match',
+      value: ['foo\\bar'],
+    }
+    const result = stringFilterToString(item)
+    expect(result).toBe('foo\\\\bar')
+  })
+
+  it('returns escaped backslash (starts with)', () => {
+    const item: FilterModel = {
+      is: true,
+      id: '1',
+      type: 'startsWith',
+      value: ['foo\\bar'],
+    }
+    const result = stringFilterToString(item)
+    expect(result).toBe('foo\\\\bar%')
+  })
+
+  it('returns escaped backslash (ends with)', () => {
+    const item: FilterModel = {
+      is: true,
+      id: '1',
+      type: 'endsWith',
+      value: ['foo\\bar'],
+    }
+    const result = stringFilterToString(item)
+    expect(result).toBe('%foo\\\\bar')
+  })
+
+  it('returns escaped backslash (contains)', () => {
+    const item: FilterModel = {
+      is: true,
+      id: '1',
+      type: 'contains',
+      value: ['foo\\bar'],
+    }
+    const result = stringFilterToString(item)
+    expect(result).toBe('%foo\\\\bar%')
+  })
+
   it('returns empty string for a user attribute item with no value', () => {
     const item: FilterModel = {
       is: true,

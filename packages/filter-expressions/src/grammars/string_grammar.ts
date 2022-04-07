@@ -72,7 +72,7 @@ KEYWORDS = ("EMPTY" / "empty") {
    }
 
 MATCH
-   = quotation_mark sequence:(char / PCT_SYMBOL / COMMA / UNDERSCORE)+ quotation_mark {
+   = quotation_mark sequence:(char / PCT_SYMBOL / COMMA / UNDERSCORE / CARET)+ quotation_mark {
           return {
               type:'match',
               value: [sequence.join('')]
@@ -159,9 +159,16 @@ char "character"
    / unescaped
    / NOT_SYMBOL
 
-ESCAPE_CARET = CARET symbol:(PCT_SYMBOL / UNDERSCORE / COMMA_SYMBOL / CARET / NOT_SYMBOL / SPACE_SYMBOL) {
-			return symbol
-		}
+/* Returns a single space for double escaped space at the end, or before a comma
+to reverse escapeWithDoubleLastEscape */
+ESCAPE_CARET
+ = CARET (SPACE_SYMBOL ! FOLLOWING_SPACE_END / ESCAPED_DOUBLE_SPACE) {
+     return " "
+   }
+   /
+   CARET symbol:(PCT_SYMBOL / UNDERSCORE / COMMA_SYMBOL / CARET / NOT_SYMBOL) {
+     return symbol
+   }
 
 SYMBOLS = PCT_SYMBOL / COMMA_SYMBOL / NOT_SYMBOL / UNDERSCORE / CARET
 PCT_SYMBOL 		        = '%'
@@ -169,6 +176,8 @@ UNDERSCORE 		        = '_'
 COMMA_SYMBOL   	        = ","
 NOT_SYMBOL	  	        = "-"
 SPACE_SYMBOL            = " "
+FOLLOWING_SPACE_END     = "^ " (&COMMA_SYMBOL / !.)
+ESCAPED_DOUBLE_SPACE    = " ^ "
 CARET 	   		        = "^"
 escape         	        = "\\\\"
 escaped_quotation_mark  = '\\\\"'

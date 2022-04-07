@@ -3,8 +3,8 @@ title: Calendar
 github: components-date/src/Calendar/Calendar.tsx
 ---
 
-import { Code } from '@looker/components'
 import { ImportMessage } from '../ImportMessage'
+import { Code } from './'
 
 <ImportMessage packageName="components-date">Calendar</ImportMessage>
 
@@ -79,8 +79,8 @@ We support four different callbacks to hook into various navigation events:
 Install the [`date-fns`](https://date-fns.org/) package, import the necessary locale, and pass it to `ComponentsProvider`.
 
 ```js static
-import { ComponentsProvider } from '@looker/components'
-import { Calendar } from '@looker/components-date'
+import { ComponentsProvider } from './'
+import { Calendar } from './'
 import ko from 'date-fns/locale/ko'
 
 export const App = () => {
@@ -95,7 +95,7 @@ export const App = () => {
 The locale can also be passed directly to the `Calendar` component.
 
 ```js static
-import { Calendar } from '@looker/components-date'
+import { Calendar } from './'
 import ko from 'date-fns/locale/ko'
 
 export const LocalizedCalendar = () => {

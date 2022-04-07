@@ -71,7 +71,9 @@ export const DividerBase = styled.hr
   .attrs<DividerProps>(
     ({ appearance = 'default', customColor, size = '1px' }) => ({
       appearance,
+      'aria-orientation': 'horizontal',
       bg: customColor,
+      role: 'separator',
       size,
     })
   )<DividerProps>`

@@ -198,6 +198,9 @@ const resources = {
     'complete weeks': 'celé týdny',
     'complete years': 'celé roky',
   },
+  RadioGroup: {
+    'any value': 'jakákoliv hodnota',
+  },
   ReactSelectCustomIcons: {
     'Clear all': 'Vymazat vše',
     Remove: 'Odebrat',
@@ -218,10 +221,10 @@ const resources = {
     More: 'Více',
   },
   use_filters_errors: {
-    'Selection required': 'Je požadován výběr',
     'Invalid value': 'Neplatná hodnota',
     'No value is set for your user attribute':
       'Pro váš atribut uživatele není nastavena žádná hodnota',
+    'Selection required': 'Je požadován výběr',
   },
   use_option_filtering: {
     'No values': 'Žádné hodnoty',

@@ -1,0 +1,17 @@
+{
+  "private": true,
+  "version": "1.0.0",
+  "name": "@looker/eslint-plugin",
+  "main": "src/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@manypkg/get-packages": "1.1.3",
+    "jsonc-eslint-parser": "2.1.0"
+  },
+  "peerDependencies": {
+    "eslint": "7.32.0"
+  },
+  "devDependencies": {}
+}

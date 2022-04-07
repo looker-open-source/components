@@ -1,0 +1,188 @@
+import { Checkbox } from '@looker/components'
+
+<Meta component={Checkbox} title="Docs/Components/Inputs/Checkbox" />
+
+# Checkbox
+
+The `<Checkbox />` component renders a single checkbox element on the page, with no accompanying label. It is generally used to construct higher-order components like the `<FieldCheckbox />`. If you are building a form, you probably want to use `<FieldCheckbox />` instead as it provides label support.
+
+## Checked Property
+
+The `<Checkbox />` component can be rendered in three different states: checked, unchecked, and "mixed". In addition to the standard boolean, rendering a "mixed" value can be used to indicate that only a fraction of related sub-options have been selected.
+
+**Note:** The "mixed" value is only available to the `checked` property and not available to `defaultChecked` property.
+
+```jsx
+<Space>
+  <Checkbox defaultChecked />
+  <Checkbox defaultChecked={false} />
+  <Checkbox checked="mixed" onChange={() => {}} />
+</Space>
+```
+
+## onChange Property
+
+`Checkbox` accepts an onChange callback, which can be used for toggling checkbox state.
+
+```jsx
+;() => {
+  const [checked, setChecked] = React.useState(true)
+  const handleChange = () => setChecked(!checked)
+  return <Checkbox checked={checked} onChange={handleChange} />
+}
+```
+
+## Advanced Use: Controlling parent/child mixed states
+
+Using a mixed state checkbox can be used to establish a parent and child relationship between multiple options. This is an advanced use and will likely require bespoke state management. In an attempt to facilitate a standard UX, we've create a hook and state pattern.
+
+This may not be sufficient for your own use case, but it may provide a good starting point and reference for how it should work.
+
+```jsx
+;() => {
+  // Set up local state and child change handlers
+  const [parentState, setParentState] = useState(false)
+  const [appleState, setAppleState] = useState(false)
+  const [bananaState, setBananaState] = useState(true)
+  const handleAppleChange = () => setAppleState(!appleState)
+  const handleBananaChange = () => setBananaState(!bananaState)
+
+  // Establish checkbox hierarchy for use in custom hook
+  const fruitTree = {
+    parent: {
+      setState: setParentState,
+      state: parentState,
+    },
+    children: [
+      { setState: setAppleState, state: appleState },
+      { setState: setBananaState, state: bananaState },
+    ],
+  }
+
+  // Sync parent/child states and get provided parent change handler
+  const handleParentChange = useMixedStateCheckbox(fruitTree)
+
+  return (
+    <UnorderedList>
+      <li>
+        <FieldCheckbox
+          label="All Fruit"
+          value="all-fruit"
+          onChange={handleParentChange}
+          checked={parentState}
+        />
+      </li>
+      <li>
+        <UnorderedList pl="u5">
+          <li>
+            <FieldCheckbox
+              label="🍏"
+              value="apple"
+              onChange={handleAppleChange}
+              checked={appleState}
+            />
+          </li>
+          <li>
+            <FieldCheckbox
+              value="apple"
+              onChange={handleBananaChange}
+              checked={bananaState}
+              label="🍌"
+            />
+          </li>
+        </UnorderedList>
+      </li>
+    </UnorderedList>
+  )
+}
+```
+
+## Name and ID
+
+A name and ID can be specified in the `<Checkbox />` component. Names are important if the checkbox is used in the context of a form, in which case a name is required for the value of the checkbox to be captured.
+
+```jsx
+<Checkbox name="someName" id="someId" />
+```
+
+## Disabled Property
+
+Use the disable property to gray out the checkbox, making it unclickable.
+
+```jsx
+<Space>
+  <Checkbox disabled />
+  <Checkbox disabled checked />
+  <Checkbox disabled checked="mixed" />
+</Space>
+```
+
+## ReadOnly property
+
+`Checkbox` will ignore user-actions on a `Checkbox` with the `readOnly` property enabled, similar to `disabled` but without greying out the option.
+
+NOTE: In HTML specifying `readonly` on _only_ prevents changes to `value` attribute of the checkbox and therefore allowing the user to still check and uncheck the checkbox.
+
+In most cases we emulate the HTML specification where it has an existing decision or feature. However, the specification's behavior around checkboxes with a `readonly` attribute is rather unintuitive.
+
+```jsx
+<Space>
+  <Checkbox readOnly />
+  <Checkbox readOnly checked />
+  <Checkbox readOnly checked="mixed" />
+</Space>
+```
+
+## Accessibility
+
+### Best Practices
+
+- Individual checkboxes must have an onscreen `<Label>`
+- Groups of checkboxes must have group label, using the `<Fieldset>` and `<legend>` tags.
+- See related [ARIA attributes](#related-aria-attributes)
+
+### Markup Expectations
+
+- **Always** include an unique id on the checkbox element so it can be referenced by a label `<Checkbox id="agree">`
+
+### Labeling Expectations
+
+- Use clear and descriptive labels that avoid ambiguity.
+- **Always** include a `<Label>` with a `for` property that matches the checkbox `id`.
+
+```jsx
+<FieldCheckbox label="Subscribe to our email list" value="confirm" />
+```
+
+- Groups of checkboxes **must be** wrapped in a `<fieldset>` and have `<legend>` that describes the group. We recommend utilizing `CheckboxGroup` for these use cases.
+
+## Focus Expectations
+
+- checkboxes with `:focus` should have an outline and/or a visible change to show it has focus.
+- If the checkbox with `:focus` has an error, the error should be read by a screen reader
+
+## Keyboard Expectations
+
+- If checkbox has focus the `SPACE` key should toggle the state.
+- If checkbox has focus the `Enter` key should submit the form.
+- If checkbox has focus, `TAB` and `SHIFT+TAB` should move focus to next focusable element.
+
+## Related Aria Attributes
+
+### aria-describedby
+
+Use this to provide a detailed descriptions of a field that contains errors.
+
+```jsx
+<FieldCheckbox
+  id="approve"
+  aria-describedby="confirm-error-message"
+  label="Approve Changes"
+  validationMessage={{
+    type: 'error',
+    message: 'Confirm you approve these changes',
+  }}
+/>
+```
+
+This would announce "Approve, unchecked checkbox. Confirm you approve these changes."
