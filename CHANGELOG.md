@@ -3,6 +3,72 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 3.0.2
+
+## `@looker/components` 3.0.2
+
+### Features
+
+- **InputFile:** Component added
+- **ButtonGroup/ButtonToggle:** Add ripple effect
+
+### Bug Fixes
+
+- **Paragraph:** Inherit the font size of its container
+- **DividerVertical:** Height issue when hr has global height set
+- **DataTableCell:** With indicator not truncating
+- **Menu:** Not opening when Tooltip is used
+- Duplicate events on components using the ripple effect
+- **AvatarUser:** Replace object tag with img tag (more secure)
+
+## `@looker/components-data` 0.1.0
+
+- Package created
+
+## `@looker/filter-components` 0.10.16
+
+### Features
+
+- Support "Allow multiple filter values' setting
+
+### Bug Fixes
+
+- Allow deselection of suggestion values when there is a max
+- **NumberFilter:** Error styling
+- **RadioGroup:** Replace "Any option" with "Any value"
+
+## `@looker/filter-expressions` 0.8.15
+
+### Bug Fixes
+
+- Escaping of special characters
+
+## `@looker/visualizations` 0.2.9
+
+### Features
+
+- Query by single tile dashboard
+- Use `@looker/components-data` to fetch and store data in context
+
+## `@looker/visualizations-table` 0.2.9
+
+### Features
+
+- **Table:** Allow more dynamic children values
+
+## `@looker/visualizations-visx` 0.2.8
+
+### Features
+
+- **BarChart:** Rotating x-axis labels
+- Currency formating for tooltip and axis values
+- **Line/Area/Scatter:** Conditionally use time scale
+
+### Bug Fixes
+
+- Axis tick error when measure scale includes values with commas
+- Explicit not-a-number check before value format conversion on x-axis ticks
+
 # 3.0.0
 
 ## `@looker/components` 3.0.0
@@ -299,7 +365,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 - **FieldColor:** Google Material label style
 - **Button:** Add ripple animation
 
-### Fixes
+### Bug Fixes
 
 - **Dialog:** Remove misplaced tooltip on close icon button
 
