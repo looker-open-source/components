@@ -33,7 +33,6 @@ import type {
   SDKRecord,
 } from '@looker/visualizations-adapters'
 import {
-  QueryContext,
   mockSdkDataResponse,
   tabularResponse,
   buildChartConfig,
@@ -98,21 +97,16 @@ const Template: Story<Partial<PieProps>> = ({
   ...restProps
 }) => {
   return (
-    <QueryContext.Provider
-      value={{
-        config: buildChartConfig({
-          config: { type: 'pie', ...configProp },
-          data,
-          fields,
-        }),
+    <Visualization
+      config={buildChartConfig({
+        config: { type: 'pie', ...configProp },
         data,
         fields,
-        loading: false,
-        ok: true,
-      }}
-    >
-      <Visualization {...restProps} />
-    </QueryContext.Provider>
+      })}
+      data={data}
+      fields={fields}
+      {...restProps}
+    />
   )
 }
 

@@ -23,7 +23,6 @@
  SOFTWARE.
 
  */
-import { useTranslation } from 'react-i18next'
 import type { KeyboardEvent, Ref, SyntheticEvent } from 'react'
 import React, { useMemo, forwardRef, useState, useEffect } from 'react'
 import styled from 'styled-components'
@@ -280,7 +279,6 @@ const InputTimeSelectLayout = forwardRef(
     }: InputTimeSelectProps,
     ref: Ref<HTMLDivElement>
   ) => {
-    const { t } = useTranslation('InputTimeSelect')
     useReadOnlyWarn('InputTimeSelect', value, onChange)
     const valueProp = value || defaultValue
     if (!isValidTime(valueProp)) {
@@ -375,7 +373,7 @@ const InputTimeSelectLayout = forwardRef(
         value={selectedOption}
       >
         <ComboboxInput
-          placeholder={t('Select time')}
+          placeholder="Select time"
           onChange={handleTextInputChange}
           onBlur={handleTextInputBlur}
           onKeyDown={handleKeyDown}

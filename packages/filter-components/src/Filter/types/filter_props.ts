@@ -115,6 +115,10 @@ export interface FilterProps {
    * Skip checking if expression can be rendered by filter control
    */
   skipFilterConfigCheck?: boolean
+  /**
+   * Allow multiple values to filter by
+   */
+  allowMultipleValues?: boolean
 }
 
 /**

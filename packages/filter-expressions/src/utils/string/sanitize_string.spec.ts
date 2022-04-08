@@ -53,9 +53,9 @@ describe('Sanitize String tests', () => {
       value_is_hidden: false,
       source: '',
       hidden_value_domain_whitelist: '',
-      user_attribute_id: 1,
+      user_attribute_id: '1',
       user_can_edit: false,
-      user_id: 1,
+      user_id: '1',
       can: {},
     }
     const expression = `{{ _user_attributes['id'] }}`

@@ -31,5 +31,29 @@
     "eslint-plugin-testing-library": "4.11.0",
     "typescript": "4.4.2"
   },
-  "gitHead": "734f77cda8050d9eea83a187113333dfad8650ca"
+  "gitHead": "734f77cda8050d9eea83a187113333dfad8650ca",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "5.8.0",
+    "@typescript-eslint/parser": "5.8.0",
+    "eslint": "7.32.0",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-config-standard": "16.0.3",
+    "eslint-import-resolver-typescript": "2.5.0",
+    "eslint-import-resolver-webpack": "0.13.2",
+    "eslint-plugin-header": "3.1.1",
+    "eslint-plugin-i18next": "5.1.2",
+    "eslint-plugin-import": "2.25.3",
+    "eslint-plugin-jest-dom": "4.0.0",
+    "eslint-plugin-lodash": "7.3.0",
+    "eslint-plugin-mdx": "1.16.0",
+    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-prettier": "4.0.0",
+    "eslint-plugin-promise": "6.0.0",
+    "eslint-plugin-react": "7.27.0",
+    "eslint-plugin-react-hooks": "4.3.0",
+    "eslint-plugin-sort-keys-fix": "1.1.2",
+    "eslint-plugin-testing-library": "5.0.1",
+    "typescript": "4.5.2"
+  },
+  "peerDependencies": {}
 }

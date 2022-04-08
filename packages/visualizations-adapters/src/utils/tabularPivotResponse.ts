@@ -49,9 +49,11 @@ export const tabularPivotResponse = ({
     const formattedDatum: SDKRecord = {}
 
     const dimensionNames = getDimensionNames(fields)
+
     dimensionNames.forEach(
       dimensionName =>
-        (formattedDatum[dimensionName] = datum[dimensionName].value)
+        (formattedDatum[dimensionName] =
+          datum[dimensionName] && datum[dimensionName].value)
     )
 
     const measureNames = getMeasureNames(fields)
@@ -59,7 +61,7 @@ export const tabularPivotResponse = ({
       const pivotValues = pivots.map(pivot => pivot.key)
       pivotValues.forEach(pivotValue => {
         formattedDatum[buildPivotMeasureName({ measureName, pivotValue })] =
-          datum[measureName][pivotValue].value
+          datum[measureName] && datum[measureName][pivotValue].value
       })
     })
 

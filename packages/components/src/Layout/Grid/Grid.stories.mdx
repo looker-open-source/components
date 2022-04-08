@@ -1,0 +1,77 @@
+import { Grid } from '@looker/components'
+
+<Meta component={Grid} title="Docs/Components/Layout/Grid" />
+
+# Grid
+
+<MessageBar intent="warn" noActions>
+  <strong>CAUTION:</strong> Grid component does not render correctly on IE11,
+  and all grid styles will be discarded. If a consistent layout on legacy
+  browsers is important, we recommend <Code>Flex</Code> for horizontal layouts
+  and <Code>SpaceVertical</Code> to render a single width grid.
+</MessageBar>
+
+`<Grid />` provides a simple implementation of the CSS Grid.
+
+## Default
+
+By default `Grid` has two columns with a "medium" `gap` between grid cells and "100%" `width`
+
+```jsx
+<Grid>
+  <Box2 border minHeight="5rem">
+    A
+  </Box2>
+  <Box2 border>B</Box2>
+  <Box2 border>C</Box2>
+  <Box2 border>D</Box2>
+</Grid>
+```
+
+## Columns
+
+Use the `columns` prop to specify the number of columns to display.
+
+```jsx
+<Grid columns={4}>
+  <Box2 border minHeight="5rem">
+    A
+  </Box2>
+  <Box2 border>B</Box2>
+  <Box2 border>C</Box2>
+  <Box2 border>D</Box2>
+</Grid>
+```
+
+```jsx
+<Grid columns={1}>
+  <Box2 border minHeight="5rem">
+    A
+  </Box2>
+  <Box2 border>B</Box2>
+  <Box2 border>C</Box2>
+  <Box2 border>D</Box2>
+</Grid>
+```
+
+## Gap
+
+Specify `gap` to change the distance between grid cells (defaults to `medium`)
+
+```jsx
+<Grid gap="u15">
+  <Box2 border minHeight="5rem">
+    A
+  </Box2>
+  <Box2 border>B</Box2>
+</Grid>
+```
+
+```jsx
+<Grid gap="none">
+  <Box2 border minHeight="5rem">
+    A
+  </Box2>
+  <Box2 border>B</Box2>
+</Grid>
+```

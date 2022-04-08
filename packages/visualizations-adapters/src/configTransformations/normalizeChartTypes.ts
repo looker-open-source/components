@@ -27,6 +27,29 @@
 import has from 'lodash/has'
 import type { ConfigHelper, CAll, RawApiConfigResponse } from '../types'
 
+export type RawChartType = CAll['type'] | RawApiConfigResponse['type'] | ''
+
+export const chartTypeMap: Record<RawChartType, CAll['type']> = {
+  '': 'default',
+  area: 'area',
+  bar: 'bar',
+  column: 'column',
+  default: 'default',
+  line: 'line',
+  looker_area: 'area',
+  looker_bar: 'bar',
+  looker_column: 'column',
+  looker_grid: 'table',
+  looker_line: 'line',
+  looker_pie: 'pie',
+  looker_scatter: 'scatter',
+  pie: 'pie',
+  scatter: 'scatter',
+  single_value: 'single_value',
+  sparkline: 'sparkline',
+  table: 'table',
+}
+
 /**
  * This function should be ran BEFORE all other config helpers.
  * It normalizes the chart type names (i.e. 'line' instead of 'looker_line')
@@ -37,30 +60,6 @@ export const normalizeChartTypes: ConfigHelper<CAll> = ({
   fields,
 }) => {
   const { type = 'default' } = config
-
-  const chartTypeMap: Record<
-    CAll['type'] | RawApiConfigResponse['type'] | '',
-    CAll['type']
-  > = {
-    '': 'default',
-    area: 'area',
-    bar: 'bar',
-    column: 'column',
-    default: 'default',
-    line: 'line',
-    looker_area: 'area',
-    looker_bar: 'bar',
-    looker_column: 'column',
-    looker_grid: 'table',
-    looker_line: 'line',
-    looker_pie: 'pie',
-    looker_scatter: 'scatter',
-    pie: 'pie',
-    scatter: 'scatter',
-    single_value: 'single_value',
-    sparkline: 'sparkline',
-    table: 'table',
-  }
 
   const normalizedType = has(chartTypeMap, type) ? chartTypeMap[type] : type
 

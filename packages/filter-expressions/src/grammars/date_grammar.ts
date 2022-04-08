@@ -52,7 +52,7 @@ TERM = term:(USER_ATTRIBUTE /
        FROM_NOW /
        PAST_AGO /
        PAST /
-       THIS_RANGE /
+       THIS_RANGE / 
        THIS_NEXT /
        LAST /
        LAST_INTERVAL /
@@ -243,7 +243,7 @@ TIME_UNITS = keyword:$(
            HOUR) ("s"i)? {
              return keyword.toLowerCase()
            }
-// units used by
+// units used by 
 DAY_YEAR_UNITS = keyword:$(
            DAY /
            WEEK /

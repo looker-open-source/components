@@ -33,7 +33,14 @@ describe('FilterErrorMessage tests', () => {
   it('displays that the required filter is in an error state', () => {
     renderWithTheme(
       <FilterErrorMessage
-        filters={[{ expression: '', name: 'testfilter', isRequired: true }]}
+        filters={[
+          {
+            expression: '',
+            name: 'testfilter',
+            isRequired: true,
+            allowMultipleValues: true,
+          },
+        ]}
       />
     )
     expect(screen.getByText('Selection required')).toBeVisible()

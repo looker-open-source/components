@@ -96,9 +96,15 @@ const describePastAgo = (item: FilterModel) => {
 
 const describeTypeAndUnit = ({ type, unit }: FilterModel) => {
   const t = i18next.t.bind(i18next)
+  const thisText = t('this', {
+    ns: 'describe_date',
+  })
+  const nextText = t('next', {
+    ns: 'describe_date',
+  })
   return t('is type unitLabel', {
     ns: 'describe_date',
-    type,
+    type: type === 'this' ? thisText : nextText,
     unitLabel: getUnitLabel(unit),
   })
 }
@@ -201,10 +207,12 @@ const relative = ({
   intervalType,
 }: FilterModel) => {
   const t = i18next.t.bind(i18next)
+  const agoText = t('ago', { ns: 'describe_date' })
+  const fromNowText = t('from now', { ns: 'describe_date' })
   return t('is intervalStart intervalType for intervalEnd', {
     ns: 'describe_date',
     intervalStart: describeInterval(startInterval),
-    intervalType,
+    intervalType: intervalType === 'ago' ? agoText : fromNowText,
     intervalEnd: describeInterval(endInterval),
   })
 }

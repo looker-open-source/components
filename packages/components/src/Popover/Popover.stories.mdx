@@ -1,0 +1,120 @@
+import { Popover } from '@looker/components'
+
+<Meta component={Popover} title="Docs/Components/Overlays/Popover/Popover" />
+
+# Popover
+
+Popovers are containers for things like contextual information, menus, and related actions.
+
+## Terminology
+
+Popovers are assembled of two pieces: an overlay and a surface. Unlike [Dialogs](/components/dialogs/), the `Popover` overlay is transparent, but it still blocks the application behind it until it is closed, with the exception of [grouped Popovers](#grouped-popovers). The `Popover`'s surface renders the content above the overlay and the rest of the application.
+
+```jsx
+<Popover
+  width={640}
+  content={
+    <PopoverLayout header="Wildebeest">
+      <Text fontSize="small">
+        The blue wildebeest, also called the common wildebeest, white-bearded
+        wildebeest or brindled gnu, is a large antelope and one of the two
+        species of wildebeest. It is placed in the genus Connochaetes and family
+        Bovidae and has a close taxonomic relationship with the black
+        wildebeest. The blue wildebeest is known to have five subspecies. This
+        broad-shouldered antelope has a muscular, front-heavy appearance, with a
+        distinctive robust muzzle. Young blue wildebeest are born tawny brown,
+        and begin to take on their adult colouration at the age of two months.
+        The adults' hues range from a deep slate or bluish gray to light gray or
+        even grayish brown. Both sexes possess a pair of large curved horns.
+      </Text>
+    </PopoverLayout>
+  }
+>
+  <Button>A Wikipedia article about Wildebeests</Button>
+</Popover>
+```
+
+## Placement
+
+Placement can be adjusted with the `placement` prop. Valid positions are `top`, `left`, `right` and `bottom`, each can be augmented with -`start` or `-end` which places the edge of the popover at the start or end of the target.
+
+```jsx
+;() => {
+  const popoverContent = (
+    <PopoverLayout>
+      <Paragraph width={300} p="u10">
+        👋 Hello, I am a popover!
+      </Paragraph>
+    </PopoverLayout>
+  )
+
+  return (
+    <SpaceVertical>
+      <Space between width="100%">
+        <Popover content={popoverContent}>
+          <Button>Default</Button>
+        </Popover>
+        <Popover content={popoverContent} placement="right">
+          <Button>Right</Button>
+        </Popover>
+        <Popover content={popoverContent} placement="left">
+          <Button>Left</Button>
+        </Popover>
+      </Space>
+      <Space between width="100%">
+        <Popover content={popoverContent} placement="bottom-start">
+          <Button>Bottom Start</Button>
+        </Popover>
+        <Popover content={popoverContent} placement="right-end">
+          <Button>Right End</Button>
+        </Popover>
+        <Popover content={popoverContent} placement="top-start">
+          <Button>Top Start</Button>
+        </Popover>
+      </Space>
+    </SpaceVertical>
+  )
+}
+```
+
+## Disclosing the Trigger on Hover
+
+```jsx
+;() => {
+  const hoverRef = React.useRef()
+  const content = <PopoverLayout>I'm in the popover</PopoverLayout>
+  return (
+    <Card ref={hoverRef} raised>
+      <CardContent>
+        <Space between>
+          <Paragraph>
+            Hovering in this card will show the button that triggers the
+            popover.
+          </Paragraph>
+          <Popover content={content} hoverDisclosureRef={hoverRef}>
+            <IconButton icon={<MoreVert />} label="More Options" />
+          </Popover>
+        </Space>
+      </CardContent>
+    </Card>
+  )
+}
+```
+
+## PopoverContent
+
+`PopoverContent` is a simple container component that can be used to apply a consistent style to content placed within a Popover surface.
+
+## "Render Prop" style
+
+Sometimes you may need to control how `Tooltip` applies handlers to the component within it. If so you can use the render prop form of the component:
+
+```jsx
+<Popover content="Example using render props exploded">
+  {props => (
+    <Button {...props}>
+      Render Props Example: {props['aria-expanded'] ? 'open' : 'closed'}
+    </Button>
+  )}
+</Popover>
+```

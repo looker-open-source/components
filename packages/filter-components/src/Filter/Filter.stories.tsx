@@ -65,6 +65,7 @@ Basic.args = {
   locale: 'en',
   expressionType: 'number',
   expression: '',
+  allowMultipleValues: true,
 }
 
 export const MultiConditionNumber = Template.bind({})
@@ -78,18 +79,21 @@ MultiConditionDate.args = {
   locale: 'en',
   expressionType: 'date',
   expression: 'this week,last week, next week',
+  allowMultipleValues: true,
 }
 
 export const MultiConditionString = Template.bind({})
 MultiConditionString.args = {
   expressionType: 'string',
   expression: '%Active%,MV Sport,-Activewear Apparel',
+  allowMultipleValues: true,
 }
 
 export const MultiConditionTier = Template.bind({})
 MultiConditionTier.args = {
   expressionType: 'tier',
   expression: "20 to 29,{{ _user_attributes['locale'] }}",
+  allowMultipleValues: true,
 }
 
 export const Config = Template.bind({})
@@ -97,6 +101,15 @@ Config.args = {
   ...Basic.args,
   config: { max: 100, min: 0, type: 'slider' },
   expression: '20',
+}
+
+export const RelativeTimeframes = Template.bind({})
+RelativeTimeframes.args = {
+  locale: 'en',
+  config: { type: 'relative_timeframes' },
+  expression: 'Today',
+  expressionType: 'date',
+  allowMultipleValues: true,
 }
 
 export default {

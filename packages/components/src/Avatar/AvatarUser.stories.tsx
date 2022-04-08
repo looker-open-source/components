@@ -53,6 +53,11 @@ Initials.args = {
   user: { ...user, avatar_url: null },
 }
 
+export const ImageError = Template.bind({})
+ImageError.args = {
+  user: { ...user, avatar_url: 'broken-image' },
+}
+
 export default {
   argTypes,
   component: AvatarUser,

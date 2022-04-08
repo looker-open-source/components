@@ -87,7 +87,7 @@ export const Line: FC<LineProps> = ({
       ? get(config, ['series', i])
       : get(config, ['series', measure.name])
 
-    if (!series.visible) return <Fragment key={i}></Fragment>
+    if (!series?.visible) return <Fragment key={i}></Fragment>
 
     const { style, line_width, shape } = series
     const id = `marker-${shape}-${i}`

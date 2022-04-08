@@ -8,6 +8,10 @@
   "license": "MIT",
   "sideEffects": false,
   "dependencies": {
+    "@looker/components": "^3.0.1",
+    "@looker/components-data": "0.1.0",
+    "@looker/sdk": "^22.4.0",
+    "@looker/sdk-rtl": "^21.3.3",
     "@looker/visualizations-adapters": "^0.1.9",
     "@looker/visualizations-single-value": "^0.1.7",
     "@looker/visualizations-table": "^0.2.8",
@@ -23,6 +27,7 @@
   },
   "peerDependencies": {
     "@looker/components": "1.4 - 3",
+    "@looker/components-data": "0 - 1",
     "react": ">= 16.11.0",
     "react-dom": ">= 16.11.0",
     "styled-components": "^5.2"

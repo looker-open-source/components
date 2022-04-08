@@ -29,19 +29,29 @@ import type { ElementType } from 'react'
 import { MatchesAdvanced } from '../../MatchesAdvanced'
 
 import { MultiStringInput } from '../../StringFilter/components/MultiStringInput'
-import { UserAttribute } from '../../UserAttribute'
+import { StringInput } from '../../StringFilter/components/StringInput'
+import { UserAttributes } from '../../UserAttributes'
 import { ParamFilter } from '../components/ParamFilter'
 
 const typeMap: FilterTypeMap = {
   anyvalue: () => '',
   match: MultiStringInput,
-  user_attribute: UserAttribute,
+  user_attribute: UserAttributes,
+}
+
+const typeMapSingleInput: FilterTypeMap = {
+  match: StringInput,
 }
 
 export const tierFilterTypeToFilter = (
   type: string,
-  isParamFilter?: boolean
-): ElementType =>
-  isParamFilter && type !== 'user_attribute'
-    ? ParamFilter
-    : defaultTo(typeMap[type], MatchesAdvanced)
+  isParamFilter?: boolean,
+  allowMultipleValues?: boolean
+): ElementType => {
+  if (isParamFilter && type !== 'user_attribute') {
+    return ParamFilter
+  } else if (!allowMultipleValues && typeMapSingleInput[type]) {
+    return typeMapSingleInput[type]
+  }
+  return defaultTo(typeMap[type], MatchesAdvanced)
+}

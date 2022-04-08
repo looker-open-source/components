@@ -198,6 +198,9 @@ const resources = {
     'complete weeks': '終了した週',
     'complete years': '終了した年',
   },
+  RadioGroup: {
+    'any value': '任意の値',
+  },
   ReactSelectCustomIcons: {
     'Clear all': 'すべてクリア',
     Remove: '削除',
@@ -218,10 +221,10 @@ const resources = {
     More: '詳細',
   },
   use_filters_errors: {
-    'Selection required': '選択が必要です',
     'Invalid value': '値が無効です',
     'No value is set for your user attribute':
       'ユーザー属性に値が設定されていません',
+    'Selection required': '選択が必要です',
   },
   use_option_filtering: {
     'No values': '値なし',

@@ -26,6 +26,7 @@
 
 import { useContext } from 'react'
 import { ThemeContext } from 'styled-components'
+import { mergeClassNames } from '../utils'
 import type { UseRippleProps, UseRippleResponse } from './types'
 import { useRippleState } from './useRippleState'
 import { useRippleStateBG } from './useRippleStateBG'
@@ -83,9 +84,11 @@ const getRippleOffset = (min: number, max: number, bounded?: boolean) => {
  */
 export const useRipple = ({
   bounded = false,
+  className = '',
   color = 'neutral',
   height = 0,
   size = 1,
+  style,
   width = 0,
 }: UseRippleProps): UseRippleResponse => {
   // Get the theme colors to apply the right value for the color prop
@@ -113,7 +116,7 @@ export const useRipple = ({
 
   // Limitations of style/CSSProperties type
   // https://github.com/frenic/csstype#what-should-i-do-when-i-get-type-errors
-  const style = {
+  const rippleStyle = {
     ['--ripple-color' as any]: colors[color],
     ['--ripple-scale-end' as any]: rippleScaleRange[1] || 1,
     ['--ripple-scale-start' as any]: rippleScaleRange[0],
@@ -134,7 +137,7 @@ export const useRipple = ({
       startFG,
     },
     // Props to be applied to the same element that gets rippleStyle
-    className: `${bgClass} ${fgClass}`,
-    style,
+    className: mergeClassNames([className, `${bgClass} ${fgClass}`]),
+    style: { ...style, ...rippleStyle },
   }
 }

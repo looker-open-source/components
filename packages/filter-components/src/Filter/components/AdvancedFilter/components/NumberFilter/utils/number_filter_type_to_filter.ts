@@ -28,7 +28,7 @@ import type {
   NumberFilterType,
 } from '@looker/filter-expressions'
 import { MatchesAdvanced } from '../../MatchesAdvanced'
-import { UserAttribute } from '../../UserAttribute/UserAttribute'
+import { UserAttributes } from '../../UserAttributes'
 
 import { Between } from '../components/Between'
 import { MultiInput } from '../components/MultiInput'
@@ -44,8 +44,23 @@ const filterTypeToNumberMap: FilterTypeMap<NumberFilterType> = {
   '<=': SingleNumberInput,
   between: Between,
   null: Blank,
-  user_attribute: UserAttribute,
+  user_attribute: UserAttributes,
 }
 
-export const numberFilterTypeToFilter = (type: NumberFilterType) =>
-  filterTypeToNumberMap[type] || MatchesAdvanced
+const filterTypeToNumberMapSingleInput: FilterTypeMap<string> = {
+  '=': SingleNumberInput,
+}
+
+export const numberFilterTypeToFilter = (
+  type: NumberFilterType,
+  allowMultipleOptions: boolean,
+  isParameterField?: boolean
+) => {
+  if (
+    (!allowMultipleOptions || isParameterField) &&
+    filterTypeToNumberMapSingleInput[type]
+  ) {
+    return filterTypeToNumberMapSingleInput[type]
+  }
+  return filterTypeToNumberMap[type] || MatchesAdvanced
+}

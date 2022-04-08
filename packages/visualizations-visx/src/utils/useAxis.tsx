@@ -31,6 +31,7 @@ import {
   useMeasuredText,
   pickLongestLabel,
   getVisibleMeasureNames,
+  DEFAULT_MARGIN,
 } from '@looker/visualizations-adapters'
 import type {
   ChartData,
@@ -40,14 +41,13 @@ import type {
 import { formatDateLabel } from './formatDateLabel'
 import { XAxis, YAxis } from '../Axis'
 import { getYAxisRange } from '.'
+import { getYAxisFormat, getXAxisFormat } from '../utils'
 
 export type UseAxisProps = {
   config: CCartesian
   data: ChartData
   fields: Fields
 }
-
-const DEFAULT_MARGIN = 50
 
 /**
  * useAxis accepts chart information and outputs axes compatible with
@@ -56,7 +56,6 @@ const DEFAULT_MARGIN = 50
  */
 export const useAxis = ({ config, data, fields }: UseAxisProps) => {
   const visxTheme = useContext(VisxThemeContext)
-
   /**
    * Need an array of formatted date strings (i.e. values as if they'd appear on the
    * x-axis) in order to properly calculate tick spacing
@@ -97,11 +96,14 @@ export const useAxis = ({ config, data, fields }: UseAxisProps) => {
         tickTextAnchor: 'inherit' as const,
       }
 
+  const xAxisValueFormat = getXAxisFormat(fields)
+
   const XAxisWrapped = () => (
     <XAxis
       showTicks={renderXAxisTicks}
       fields={fields}
       label={config?.x_axis?.[0]?.label || undefined}
+      valueFormat={xAxisValueFormat}
       {...xAxisStyle}
     />
   )
@@ -145,11 +147,15 @@ export const useAxis = ({ config, data, fields }: UseAxisProps) => {
   // -10 provides spacing between label and tick values / axis line
   const yAxisLabelDx = renderYAxisTicks ? -yAxisLongestLabelWidth - 10 : -10
 
+  const yAxisValueFormat = getYAxisFormat(config)
+
   const YAxisWrapped = () => (
     <YAxis
       showTicks={renderYAxisTicks}
+      fields={fields}
       label={config?.y_axis?.[0]?.label || undefined}
       labelDx={yAxisLabelDx}
+      valueFormat={yAxisValueFormat}
     />
   )
 

@@ -198,6 +198,9 @@ const resources = {
     'complete weeks': '전체 주',
     'complete years': '전체 년',
   },
+  RadioGroup: {
+    'any value': '모든 값',
+  },
   ReactSelectCustomIcons: {
     'Clear all': '모두 지우기',
     Remove: '제거',
@@ -218,9 +221,9 @@ const resources = {
     More: '더 보기',
   },
   use_filters_errors: {
-    'Selection required': '선택 필요',
     'Invalid value': '잘못된 값',
     'No value is set for your user attribute': '사용자 특성에 설정된 값 없음',
+    'Selection required': '선택 필요',
   },
   use_option_filtering: {
     'No values': '값 없음',

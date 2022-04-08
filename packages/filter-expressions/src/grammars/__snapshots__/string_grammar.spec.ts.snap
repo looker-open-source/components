@@ -48,6 +48,19 @@ Object {
 }
 `;
 
+exports[`String grammar can parse "Intentional^caret" 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "match",
+  "value": Array [
+    "Intentional^caret",
+  ],
+}
+`;
+
 exports[`String grammar can parse "quoted_underscore" 1`] = `
 Object {
   "id": 1,
@@ -160,7 +173,7 @@ Object {
   "right": undefined,
   "type": "match",
   "value": Array [
-    " whitespace  ",
+    " whitespace ",
   ],
 }
 `;
@@ -443,7 +456,7 @@ Object {
   "right": undefined,
   "type": "match",
   "value": Array [
-    "hello  ",
+    "hello ",
   ],
 }
 `;

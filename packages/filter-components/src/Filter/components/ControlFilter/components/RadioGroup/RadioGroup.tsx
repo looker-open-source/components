@@ -31,6 +31,7 @@ import compact from 'lodash/compact'
 import pick from 'lodash/pick'
 import type { FC } from 'react'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
 import type { StringSingleSelectProps } from '../../../../types/string_select_props'
 
@@ -41,8 +42,9 @@ const InternalRadioGroup: FC<StringSingleSelectProps> = ({
   anyOption,
   ...props
 }) => {
+  const { t } = useTranslation('RadioGroup')
   const optionsWithAny = compact([
-    anyOption && { label: 'any option', value: '' },
+    anyOption && { label: t('any value'), value: '' },
     ...options,
   ])
 

@@ -206,6 +206,13 @@ export const stringGrammarTestItems: GrammarTestItem[] = [
     type: 'match',
     output: '"\\"DANCE\\" Tube Socks,T1418,multi-co..."',
   },
+  // Quoted string containing the '^' character
+  {
+    expression: '"Intentional^caret"',
+    describe: 'is Intentional^caret',
+    type: 'match',
+    output: '"Intentional^caret"',
+  },
   // User attribute example: there is no description since we have no value at that point
   {
     expression: `{{ _user_attributes['id'] }}`,
@@ -227,15 +234,15 @@ export const stringGrammarTestItems: GrammarTestItem[] = [
   },
   {
     expression: 'hello^ ^ ',
-    describe: 'is hello  ',
+    describe: 'is hello ',
     type: 'match',
-    output: 'hello^ ^ ^ ',
+    output: 'hello^ ^ ',
   },
   {
     expression: '^ whitespace^ ^ ',
-    describe: 'is  whitespace  ',
+    describe: 'is  whitespace ',
     type: 'match',
-    output: '^ whitespace^ ^ ^ ',
+    output: '^ whitespace^ ^ ',
   },
   {
     expression: '%^ whitespace^ %',

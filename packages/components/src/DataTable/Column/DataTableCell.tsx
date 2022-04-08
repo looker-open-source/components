@@ -100,7 +100,7 @@ const DataTableCellLayout = forwardRef(
       content = (
         <Space gap="u4">
           {indicator}
-          <span>{content}</span>
+          <Truncate>{content}</Truncate>
         </Space>
       )
     }

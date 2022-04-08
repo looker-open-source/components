@@ -24,7 +24,6 @@
 
  */
 
-import { useTranslation } from 'react-i18next'
 import type { FC, SyntheticEvent, Ref } from 'react'
 import React, { useState, useEffect, forwardRef } from 'react'
 import styled from 'styled-components'
@@ -82,7 +81,6 @@ export const InputDate: FC<InputDateProps> = forwardRef(
     },
     ref: Ref<HTMLInputElement>
   ) => {
-    const { t } = useTranslation('InputDate')
     useReadOnlyWarn('InputDate', value, onChange)
 
     const [selectedDate, setSelectedDate] = useState(value || defaultValue)
@@ -166,7 +164,7 @@ export const InputDate: FC<InputDateProps> = forwardRef(
         <InputText
           aria-describedby={ariaDescribedby}
           aria-labelledby={ariaLabelledby}
-          placeholder={`${t('Date')} (${formatDateString(
+          placeholder={`Date (${formatDateString(
             new Date(Date.now()),
             dateStringFormat,
             locale

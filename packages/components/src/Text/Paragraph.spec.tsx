@@ -36,7 +36,12 @@ describe('Paragraph', () => {
     expect(screen.getByText('Hello').tagName).toEqual('P')
   })
 
-  test('fontSize', () => {
+  test('fontSize = default', () => {
+    renderWithTheme(<Paragraph>Hello</Paragraph>)
+    expect(screen.getByText('Hello')).toHaveStyle('font-size: inherit;')
+  })
+
+  test('fontSize = design token', () => {
     renderWithTheme(<Paragraph fontSize="xxxxlarge">Hello</Paragraph>)
     expect(screen.getByText('Hello')).toHaveStyle('font-size: 2.25rem;')
   })

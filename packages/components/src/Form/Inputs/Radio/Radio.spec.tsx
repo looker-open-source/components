@@ -98,9 +98,10 @@ describe('Radio', () => {
   test('ripple effect', () => {
     renderWithTheme(<Basic />)
 
-    const radio = screen.getByRole('radio').closest('div') as HTMLElement
-    expect(radio).not.toHaveClass('bg-on fg-in')
-    expect(radio).toHaveStyle({
+    const radioWrapper = screen.getByRole('radio').closest('div') as HTMLElement
+    const radio = screen.getByRole('radio')
+    expect(radioWrapper).not.toHaveClass('bg-on fg-in')
+    expect(radioWrapper).toHaveStyle({
       '--ripple-color': '#71767a',
       '--ripple-overflow': 'visible',
       '--ripple-scale-end': RIPPLE_RATIO.toString(),
@@ -110,19 +111,19 @@ describe('Radio', () => {
     })
 
     fireEvent.focus(radio)
-    expect(radio).toHaveClass('bg-on')
+    expect(radioWrapper).toHaveClass('bg-on')
 
     fireEvent.mouseDown(radio)
-    expect(radio).toHaveClass('bg-on fg-in')
+    expect(radioWrapper).toHaveClass('bg-on fg-in')
 
     // foreground is locked for a minimum time to animate the ripple
     fireEvent.mouseUp(radio)
     runTimers()
-    expect(radio).toHaveClass('bg-on fg-out')
+    expect(radioWrapper).toHaveClass('bg-on fg-out')
     runTimers()
-    expect(radio).toHaveClass('bg-on')
+    expect(radioWrapper).toHaveClass('bg-on')
 
     fireEvent.blur(radio)
-    expect(radio).not.toHaveClass('bg-on fg-in')
+    expect(radioWrapper).not.toHaveClass('bg-on fg-in')
   })
 })

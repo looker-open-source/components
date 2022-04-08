@@ -32,9 +32,9 @@ import type {
   SparklineProps,
   CSparkline,
 } from '@looker/visualizations-adapters'
+
 import {
   buildChartConfig,
-  QueryContext,
   mockSdkConfigResponse,
   mockSdkDataResponse,
   mockSdkFieldsResponse,
@@ -46,7 +46,7 @@ export default {
   title: 'Visualizations/Sparkline',
 }
 
-type StoryTemplateProps = Omit<SparklineProps, 'config'> & {
+type StoryTemplateProps = Omit<SparklineProps, 'config' | 'fields' | 'data'> & {
   config: Omit<CSparkline, 'type'>
 }
 
@@ -55,26 +55,24 @@ const Template: Story<StoryTemplateProps> = ({
   ...restProps
 }) => {
   const data = tabularResponse([...mockSdkDataResponse])
+
+  const config = buildChartConfig({
+    config: {
+      ...mockSdkConfigResponse,
+      ...configProp,
+      type: 'sparkline',
+    },
+    data,
+    fields: mockSdkFieldsResponse as Fields,
+  })
+
   return (
-    <QueryContext.Provider
-      value={{
-        config: buildChartConfig({
-          config: {
-            ...mockSdkConfigResponse,
-            ...configProp,
-            type: 'sparkline',
-          },
-          data,
-          fields: mockSdkFieldsResponse as Fields,
-        }),
-        ok: true,
-        loading: false,
-        data,
-        fields: mockSdkFieldsResponse as Fields,
-      }}
-    >
-      <Visualization {...restProps} />
-    </QueryContext.Provider>
+    <Visualization
+      config={config}
+      data={data}
+      fields={mockSdkFieldsResponse as Fields}
+      {...restProps}
+    />
   )
 }
 

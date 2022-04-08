@@ -198,6 +198,9 @@ const resources = {
     'complete weeks': 'kokonaista viikkoa',
     'complete years': 'kokonaista vuotta',
   },
+  RadioGroup: {
+    'any value': 'mikä tahansa arvo',
+  },
   ReactSelectCustomIcons: {
     'Clear all': 'Tyhjennä kaikki',
     Remove: 'Poista',
@@ -218,10 +221,10 @@ const resources = {
     More: 'Lisää',
   },
   use_filters_errors: {
-    'Selection required': 'Valinta tarvitaan',
     'Invalid value': 'Virheellinen arvo',
     'No value is set for your user attribute':
       'Käyttäjäattribuutille ei ole asetettu arvoa',
+    'Selection required': 'Valinta tarvitaan',
   },
   use_option_filtering: {
     'No values': 'Ei arvoja',

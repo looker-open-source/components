@@ -39,6 +39,7 @@ describe('Filter', () => {
         expressionType="date"
         onChange={onChangeMock}
         name="Test Filter"
+        allowMultipleValues={true}
       />
     )
     expect(screen.getByText('is any time')).toBeVisible()
@@ -50,6 +51,7 @@ describe('Filter', () => {
           expressionType="date"
           onChange={onChangeMock}
           name="Test Filter"
+          allowMultipleValues={true}
         />
       </ComponentsProvider>
     )
@@ -66,6 +68,7 @@ describe('Filter', () => {
         expressionType="date"
         onChange={onChangeMock}
         name="Test Filter"
+        allowMultipleValues={true}
       />
     )
     expect(screen.getByDisplayValue('is in the year')).toBeVisible()
@@ -78,6 +81,7 @@ describe('Filter', () => {
           expressionType="string"
           onChange={onChangeMock}
           name="Test Filter"
+          allowMultipleValues={true}
         />
       </ComponentsProvider>
     )
@@ -100,6 +104,7 @@ describe('Filter', () => {
           expressionType="number"
           onChange={handleChange}
           name="Test Filter"
+          allowMultipleValues={true}
         />
       )
     }
@@ -137,6 +142,7 @@ describe('Filter', () => {
           expressionType="number"
           onChange={handleChange}
           name="Test Filter"
+          allowMultipleValues={true}
         />
       )
     }
@@ -167,6 +173,7 @@ describe('Filter', () => {
         name="Test Filter"
         config={{ display: 'inline', type: 'slider' }}
         dispatchConfigTypeChange={true}
+        allowMultipleValues={true}
       />
     )
 
@@ -185,6 +192,7 @@ describe('Filter', () => {
         name="Test Filter"
         config={{ display: 'inline', type: 'slider' }}
         dispatchConfigTypeChange={false}
+        allowMultipleValues={true}
       />
     )
 
@@ -209,6 +217,7 @@ describe('Filter', () => {
             expressionType="date"
             onChange={onChange}
             name="Test Filter"
+            allowMultipleValues={true}
           />
         </>
       )

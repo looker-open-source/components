@@ -1,0 +1,78 @@
+import { Divider } from '@looker/components'
+import { Meta } from '@storybook/addon-docs'
+
+<Meta component={Divider} title="Docs/Components/Content/Divider" />
+
+# Divider
+
+Dividers accept all the spacing props from `<Box2 />`, which gives you the ability to easily put spacing around your dividers. By default a divider's background color will be `charcoal300`
+
+```jsx
+<Space around>
+  <Box2 bg="white" p="u8">
+    On White
+    <Divider mt="u4" />
+  </Box2>
+  <Box2 bg="ui1" p="u8">
+    On `ui1`
+    <Divider mt="u4" />
+  </Box2>
+  <Box2 bg="ui2" p="u8">
+    On `ui2`
+    <Divider mt="u4" />
+  </Box2>
+</Space>
+```
+
+## Divider Appearance
+
+There are three divider appearances `light`, `dark` and `onDark`.
+
+```jsx
+<Space around>
+  <Box2 bg="white " p="u8">
+    light appearance
+    <Divider mt="u4" appearance="light" />
+  </Box2>
+  <Box2 bg="ui1" p="u8">
+    dark appearance
+    <Divider mt="u4" appearance="dark" />
+  </Box2>
+  <Box2 bg="ui5" p="u8">
+    onDark appearance
+    <Divider mt="u4" appearance="onDark" />
+  </Box2>
+</Space>
+```
+
+## DividerVertical
+
+`<DividerVertical />` has a default height of 1rem. That can be changed by using the prop `height` or `stretch`. Do not use both props.
+
+```jsx
+<Flex alignItems="center">
+  <Icon icon={<Schedule />} />
+  <DividerVertical/>
+  <Text>2:45PM</Text>
+</Flex>
+<Flex alignItems="center">
+  <Icon icon={<Schedule />} />
+  <DividerVertical height="3rem"/>
+  <Text>2:45PM</Text>
+</Flex>
+<Flex alignItems="center">
+  <Icon icon={<Schedule />} size="xxlarge"/>
+  <DividerVertical stretch/>
+  <Text pl="u5" fontSize="xxxxlarge">2:45PM</Text>
+</Flex>
+
+```
+
+## Custom Divider
+
+You can adjust the dividers height and supply a custom color if needed
+
+```jsx
+  Custom Divider
+  <Divider size="8px" customColor="turquoise" mt="u5" borderRadius="100px" />
+```

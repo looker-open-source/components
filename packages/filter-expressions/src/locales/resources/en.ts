@@ -47,11 +47,51 @@ const resources = {
     'is on or after': 'is on or after',
     'is previous unitLabel': 'is previous {{unitLabel}}',
     'is type unitLabel': 'is {{type}} {{unitLabel}}',
+    next: 'next',
     'prefix interval timePassed': '{{prefix}} {{interval}} {{timePassed}}',
     'prefix now': '{{prefix}} now',
+    this: 'this',
     'this startInterval to endInterval':
       'this {{startInterval}} to {{endInterval}}',
     'value complete unitLabel': '{{value}}{{complete}} {{unitLabel}}',
+  },
+  describe_is_any_value: {
+    'any value': 'any value',
+  },
+  describe_is_item: {
+    'is not value': 'is not {{value}}',
+    'is value': 'is {{value}}',
+  },
+  describe_location: {
+    'coords1 to coords2': '{{coords1}} to {{coords2}}',
+    'distance unit from lat, lon':
+      '{{distance}} {{unit}} from {{lat}}, {{lon}}',
+    'is anywhere': 'is anywhere',
+    'is not null': 'is not null',
+    'is null': 'is null',
+    'lat degrees north': '{{lat}}°N',
+    'lat degrees south': '{{lat}}°S',
+    'lon degrees east': '{{lon}}°E',
+    'lon degrees west': '{{lon}}°W',
+  },
+  describe_number: {
+    'is in range range': 'is in range {{range}}',
+    'is not in range range': 'is not in range {{range}}',
+  },
+  describe_string: {
+    blank: 'blank',
+    'contains value': 'contains {{value}}',
+    'does not contain value': 'does not contain {{value}}',
+    'does not end with value': 'does not end with {{value}}',
+    'does not start with value': 'does not start with {{value}}',
+    'ends with value': 'ends with {{value}}',
+    'starts with value': 'starts with {{value}}',
+  },
+  get_distance_unit_labels: {
+    feet: 'feet',
+    kilometers: 'kilometers',
+    meters: 'meters',
+    miles: 'miles',
   },
   get_months: {
     April: 'April',
@@ -108,6 +148,9 @@ const resources = {
     weeks: 'weeks',
     year: 'year',
     years: 'years',
+  },
+  join_or: {
+    'a or b': '{{a}} or {{b}}',
   },
   summary: {
     'Value required': 'Value required',

@@ -198,6 +198,9 @@ const resources = {
     'complete weeks': 'שבועות מלאים',
     'complete years': 'שנים מלאות',
   },
+  RadioGroup: {
+    'any value': 'ערך כלשהו',
+  },
   ReactSelectCustomIcons: {
     'Clear all': 'נקה הכול',
     Remove: 'הסר',
@@ -218,9 +221,9 @@ const resources = {
     More: 'עוד',
   },
   use_filters_errors: {
-    'Selection required': 'יש לבצע בחירה',
     'Invalid value': 'ערך לא חוקי',
     'No value is set for your user attribute': 'לא הוגדר ערך לתכונת המשתמש שלך',
+    'Selection required': 'יש לבצע בחירה',
   },
   use_option_filtering: {
     'No values': 'אין ערכים',

@@ -28,21 +28,20 @@ import {
   chartConfigByType,
   sanitizeSDKResponse,
 } from '../configTransformations'
-
+import flow from 'lodash/flow'
 import type {
+  ConfigHelperArgs,
   CAll,
   RawApiConfigResponse,
   Fields,
   SDKRecord,
   SupportedChartTypes,
-  ConfigHelperArgs,
 } from '../types'
-import flow from 'lodash/flow'
 
 type ChartConfigArgs = {
   config: Partial<CAll> | Partial<RawApiConfigResponse>
-  data: SDKRecord[]
-  fields: Fields
+  data?: SDKRecord[]
+  fields?: Fields
 }
 
 /**
@@ -54,6 +53,8 @@ type ChartConfigArgs = {
  * @returns
  */
 export const buildChartConfig = (args: ChartConfigArgs) => {
+  const isDataValid = args.data?.length && args.fields?.measures.length
+
   const { config } = flow([
     normalizeChartTypes,
     (args: ConfigHelperArgs<CAll>) => {
@@ -63,7 +64,13 @@ export const buildChartConfig = (args: ChartConfigArgs) => {
         chartConfigByType[type as keyof SupportedChartTypes] ||
         chartConfigByType.default
 
-      return flow(configTransformations)(args)
+      if (isDataValid) {
+        // if necessary data is present, run transformations
+        return flow(configTransformations)(args)
+      } else {
+        // if no data or fields, simply pass through unmodified results at this point
+        return args
+      }
     },
     sanitizeSDKResponse,
   ])(args)

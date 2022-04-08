@@ -12,8 +12,8 @@
     "@looker/filter-expressions": "^0.8.14",
     "@looker/i18n": "^0.1.1",
     "@looker/icons": "^1.5.14",
-    "@looker/sdk": "^21.8.0",
-    "@looker/sdk-rtl": "^21.0.19",
+    "@looker/sdk": "^22.4.0",
+    "@looker/sdk-rtl": "^21.3.3",
     "@styled-icons/material": "10.34.0",
     "@styled-icons/material-outlined": "10.34.0",
     "@styled-icons/material-rounded": "10.34.0",
@@ -23,6 +23,7 @@
     "use-debounce": "5.2.1"
   },
   "devDependencies": {
+    "@babel/cli": "*",
     "@looker/components": "*",
     "@looker/components-test-utils": "^1.5.19",
     "@looker/eslint-config-oss": "^1.7.14",

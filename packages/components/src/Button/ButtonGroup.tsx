@@ -69,10 +69,6 @@ export const ButtonGroup = styled(ButtonGroupLayout)`
     &[aria-pressed='false']:not(:hover) {
       background: ${({ theme }) => theme.colors.background};
     }
-    &[data-focusvisible='true'] {
-      border-color: ${({ theme }) => theme.colors.key};
-      box-shadow: inset 0 0 0 1px ${({ theme }) => theme.colors.key};
-    }
   }
   &.wrapping {
     margin: -${({ theme }) => theme.space.u05};

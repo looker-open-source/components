@@ -54,13 +54,17 @@ export const DateFilter: FC<FilterParamProps<DateFilterType>> = ({
 }) => {
   const typeChange = (value: string) =>
     onChange(item.id, sanitizeDate({ ...item, type: value }))
-  const dateFilterOptions = useDateFilterOptions()
+  const isParameter = !!field?.parameter
+  const dateFilterOptions = useDateFilterOptions(isParameter)
   const type = convertTypeToMatchesAdvancedOption(item)
   if (type === 'matchesAdvanced') {
     showMatchesAdvanced = true
     showAdd = false
   }
-  const options = useFilterOptions(dateFilterOptions, showMatchesAdvanced)
+  const options = useFilterOptions(
+    dateFilterOptions,
+    !isParameter && showMatchesAdvanced
+  )
 
   const handleOnAdd = () => onAdd(newDateItem(item), true)
 

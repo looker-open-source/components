@@ -27,9 +27,8 @@
 import type { Story } from '@storybook/react/types-6-0'
 import React from 'react'
 import { Visualization } from '../Visualization'
-import type { Fields, AreaProps, CArea } from '@looker/visualizations-adapters'
+import type { AreaProps, CArea, Fields } from '@looker/visualizations-adapters'
 import {
-  QueryContext,
   buildPivotFields,
   mockPivots,
   mockLineConfig,
@@ -47,7 +46,7 @@ export default {
   title: 'Visualizations/Area',
 }
 
-type StoryTemplateProps = Omit<AreaProps, 'config'> & {
+type StoryTemplateProps = Omit<AreaProps, 'config' | 'fields' | 'data'> & {
   config: Omit<CArea, 'type'>
 }
 
@@ -67,19 +66,13 @@ const Template: Story<StoryTemplateProps> = ({
     fields: mockSdkFieldsResponse as Fields,
   })
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return (
-    <QueryContext.Provider
-      value={{
-        config,
-        ok: true,
-        loading: false,
-        data,
-        fields: mockSdkFieldsResponse as Fields,
-      }}
-    >
-      <Visualization {...restProps} />
-    </QueryContext.Provider>
+    <Visualization
+      config={config}
+      data={data}
+      fields={mockSdkFieldsResponse as Fields}
+      {...restProps}
+    />
   )
 }
 
@@ -112,17 +105,13 @@ StackedPercentage.args = {
 
 export const Pivot = () => {
   const mockPivotFields = buildPivotFields({
-    fields: {
-      ...mockSdkFieldsResponse,
-    } as Fields,
+    fields: mockSdkFieldsResponse as Fields,
     pivots: mockPivots,
   })
 
   const mockPivotData = tabularPivotResponse({
     data: [...mockSdkPivotDataResponse],
-    fields: {
-      ...mockSdkFieldsResponse,
-    } as Fields,
+    fields: mockSdkFieldsResponse as Fields,
     pivots: mockPivots,
   })
 
@@ -133,17 +122,13 @@ export const Pivot = () => {
   })
 
   return (
-    <QueryContext.Provider
-      value={{
-        config,
-        ok: true,
-        loading: false,
-        data: mockPivotData,
-        fields: mockPivotFields,
-      }}
-    >
-      <Visualization height={600} width={800} />
-    </QueryContext.Provider>
+    <Visualization
+      config={config}
+      fields={mockPivotFields}
+      data={mockPivotData}
+      height={600}
+      width={800}
+    />
   )
 }
 

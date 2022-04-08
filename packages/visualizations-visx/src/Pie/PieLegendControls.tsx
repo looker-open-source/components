@@ -34,8 +34,7 @@ import {
 } from '@styled-icons/material'
 import { IconButton } from '@looker/components'
 import styled, { css } from 'styled-components'
-
-export type LegendOrientations = 'horizontal' | 'vertical'
+import type { LegendOrientations } from './types'
 
 type PieLegendControlsProps = {
   contentRect: { width: number; height: number }

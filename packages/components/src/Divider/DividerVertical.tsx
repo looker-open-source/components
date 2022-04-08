@@ -47,6 +47,7 @@ export const DividerVertical = styled(DividerBase).attrs<DividerVerticalProps>(
 
     return {
       ...props,
+      'aria-orientation': 'vertical',
       height,
       mx,
       my,
@@ -57,5 +58,5 @@ export const DividerVertical = styled(DividerBase).attrs<DividerVerticalProps>(
   display: inline-block;
   width: ${({ size }) => size};
   ${({ height, stretch }) =>
-    stretch ? `align-self: stretch;` : `height: ${height};`}
+    stretch ? `align-self: stretch; height: inherit;` : `height: ${height};`}
 `

@@ -32,9 +32,9 @@ import type {
   SingleValueProps,
   CSingleValue,
 } from '@looker/visualizations-adapters'
+
 import {
   buildChartConfig,
-  QueryContext,
   mockSdkConfigResponse,
   mockSdkDataResponse,
   mockSdkFieldsResponse,
@@ -46,7 +46,10 @@ export default {
   title: 'Visualizations/Single Value',
 }
 
-type StoryTemplateProps = Omit<SingleValueProps, 'config'> & {
+type StoryTemplateProps = Omit<
+  SingleValueProps,
+  'config' | 'fields' | 'data'
+> & {
   config: Omit<CSingleValue, 'type'>
 }
 
@@ -56,26 +59,23 @@ const Template: Story<StoryTemplateProps> = ({
 }) => {
   const data = tabularResponse([...mockSdkDataResponse])
 
+  const config = buildChartConfig({
+    config: {
+      ...mockSdkConfigResponse,
+      ...configProp,
+      type: 'single_value',
+    },
+    data,
+    fields: mockSdkFieldsResponse as Fields,
+  })
+
   return (
-    <QueryContext.Provider
-      value={{
-        config: buildChartConfig({
-          config: {
-            ...mockSdkConfigResponse,
-            ...configProp,
-            type: 'single_value',
-          },
-          data,
-          fields: mockSdkFieldsResponse as Fields,
-        }),
-        ok: true,
-        loading: false,
-        data,
-        fields: mockSdkFieldsResponse as Fields,
-      }}
-    >
-      <Visualization {...restProps} />
-    </QueryContext.Provider>
+    <Visualization
+      config={config}
+      data={data}
+      fields={mockSdkFieldsResponse as Fields}
+      {...restProps}
+    />
   )
 }
 

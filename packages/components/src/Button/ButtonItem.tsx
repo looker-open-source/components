@@ -29,7 +29,13 @@ import React, { forwardRef, useContext } from 'react'
 import styled from 'styled-components'
 import type { CompatibleHTMLProps, SpaceProps } from '@looker/design-tokens'
 import { space, omitStyledProps } from '@looker/design-tokens'
-import { useFocusVisible } from '../utils'
+import pick from 'lodash/pick'
+import {
+  rippleHandlerKeys,
+  rippleStyle,
+  useBoundedRipple,
+  useRippleHandlers,
+} from '../Ripple'
 import { inputHeight } from '../Form/Inputs/height'
 import { ButtonSetContext } from './ButtonSetContext'
 
@@ -41,17 +47,12 @@ export interface ButtonItemProps
 
 const ButtonLayout = forwardRef(
   (
-    { children, onClick, value, onBlur, onKeyUp, ...props }: ButtonItemProps,
-    ref: Ref<HTMLButtonElement>
+    { children, className, onClick, style, value, ...props }: ButtonItemProps,
+    forwardedRef: Ref<HTMLButtonElement>
   ) => {
     const { disabled, value: contextValue, onItemClick } = useContext(
       ButtonSetContext
     )
-
-    const { focusVisible, ...focusVisibleProps } = useFocusVisible({
-      onBlur,
-      onKeyUp,
-    })
 
     function handleClick(e: MouseEvent<HTMLButtonElement>) {
       onClick && onClick(e)
@@ -78,16 +79,29 @@ const ButtonLayout = forwardRef(
       }
     }
 
+    const { callbacks, ...rippleProps } = useBoundedRipple({
+      className,
+      color: selected ? 'key' : 'neutral',
+      ref: forwardedRef,
+      style,
+    })
+    const rippleHandlers = useRippleHandlers(
+      callbacks,
+      {
+        ...pick({ ...props }, rippleHandlerKeys),
+      },
+      disabled
+    )
+
     return (
       <button
         aria-pressed={selected}
-        ref={ref}
         onClick={handleClick}
         value={itemValue}
         disabled={disabled}
-        data-focusvisible={focusVisible}
-        {...focusVisibleProps}
         {...omitStyledProps(props)}
+        {...rippleProps}
+        {...rippleHandlers}
       >
         {children}
       </button>
@@ -98,6 +112,7 @@ const ButtonLayout = forwardRef(
 ButtonLayout.displayName = 'ButtonLayout'
 
 export const ButtonItem = styled(ButtonLayout)`
+  ${rippleStyle}
   align-items: center;
   background: transparent;
   border: none;

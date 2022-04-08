@@ -24,5 +24,9 @@
 
  */
 
-export const isNumeric = (str?: string | number) =>
-  str !== '' && str !== null && !isNaN(Number(str))
+export const isNumeric = (str?: string | number): str is string =>
+  typeof str === 'number' ||
+  (str !== '' &&
+    str !== null &&
+    str !== undefined &&
+    !isNaN(parseFloat(str.replace(/\.|,/g, ''))))

@@ -43,16 +43,11 @@ import React, { forwardRef, useContext } from 'react'
 import styled, { css } from 'styled-components'
 import omit from 'lodash/omit'
 import { ReplaceText, Span } from '../../../Text'
-import {
-  mergeClassNames,
-  useCallbackRef,
-  useForkedRef,
-  useMeasuredElement,
-} from '../../../utils'
+import { useForkedRef } from '../../../utils'
 import {
   rippleHandlerKeys,
   rippleStyle,
-  useRipple,
+  useBoundedRipple,
   useRippleHandlers,
 } from '../../../Ripple'
 import { makeHash } from './utils/makeHash'
@@ -87,19 +82,12 @@ export const ComboboxOptionWrapper = styled(
         value,
         ...rest
       } = props
-      // find the element's dimensions for ripple behavior
-      const [element, ref] = useCallbackRef(forwardedRef)
-      const [{ height, width }] = useMeasuredElement(element)
 
-      const {
-        callbacks,
-        className: rippleClassName,
-        style: rippleStyle,
-      } = useRipple({
-        bounded: true,
+      const { callbacks, ...rippleProps } = useBoundedRipple({
+        className,
         color: isSelected ? 'key' : 'neutral',
-        height,
-        width,
+        ref: forwardedRef,
+        style,
       })
 
       const rippleHandlers = useRippleHandlers(
@@ -112,13 +100,11 @@ export const ComboboxOptionWrapper = styled(
       return (
         <OptionContext.Provider value={{ label, value }}>
           <li
-            className={mergeClassNames([className, rippleClassName])}
             {...omit(omitStyledProps(rest))}
-            ref={ref}
             id={String(makeHash(value))}
             role="option"
+            {...rippleProps}
             {...rippleHandlers}
-            style={{ ...style, ...rippleStyle }}
             // without this the menu will close from `onBlur`, but with it the
             // element can be `document.activeElement` and then our focus checks in
             // onBlur will work as intended

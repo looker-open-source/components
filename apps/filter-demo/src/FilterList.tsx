@@ -91,7 +91,7 @@ export const FilterList: FC<FilterListProps> = ({
                   key={filter.id}
                   sdk={core40SDK}
                   filter={filter}
-                  onChange={getChangeHandler(filter.name)}
+                  onChange={getChangeHandler(filter.name || '')}
                   expression={filter?.name ? filterValues[filter?.name] : ''}
                 />
               ) : null

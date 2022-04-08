@@ -1,0 +1,52 @@
+import { DashboardFilter } from '@looker/filter-components'
+
+<Meta
+  component={DashboardFilter}
+  title="Docs/Components/Filters/DashboardFilter"
+/>
+
+# DashboardFilter
+
+<ImportMessage packageName="filter-components">DashboardFilter</ImportMessage>
+
+`DashboardFilter` renders a dashboard filter as returned by the Looker API.
+
+**Note:** for more direct rendering control, see the [`Filter`](filter) component.
+
+```jsx
+<DashboardFilter
+  filter={{
+    field: { is_numeric: true },
+    id: 1,
+    name: 'Age',
+    type: 'field_filter',
+  }}
+/>
+```
+
+## expression & onChange
+
+Use `onChange` to get updates to the `expression`.
+
+```jsx
+;() => {
+  const [expression, setExpression] = useState('[0,100]')
+  return (
+    <SpaceVertical>
+      <DashboardFilter
+        filter={{
+          field: { is_numeric: true },
+          id: 1,
+          name: 'Age',
+          type: 'field_filter',
+        }}
+        expression={expression}
+        onChange={setExpression}
+      />
+      <Paragraph>
+        <strong>Current filter expression:</strong> {expression}
+      </Paragraph>
+    </SpaceVertical>
+  )
+}
+```

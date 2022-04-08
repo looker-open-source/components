@@ -26,8 +26,7 @@
 import type { FC } from 'react'
 import React, { useEffect } from 'react'
 import type { InternalFilterProps } from '../../types/filter_props'
-import { getControlFilterInfo } from '../../utils'
-import take from 'lodash/take'
+import { getControlFilterInfo, calculateSuggestOptions } from '../../utils'
 import { getFilterTokenItem } from '../../utils/get_filter_token_item'
 
 /**
@@ -70,19 +69,19 @@ export const ControlFilter: FC<InternalFilterProps> = ({
 
   const {
     onInputChange: filterTokenInputChange,
-    options,
-    max,
     ...restProps
   } = filterTokenProps
 
+  const toggleOptions = calculateSuggestOptions(filterTokenProps)
+
   return (
     <Component
-      options={max ? take(options, max) : options}
       onInputChange={filterTokenInputChange}
       inline={config.display === 'inline'}
       validationMessage={validationMessage}
       anyOption={!(field?.category === 'parameter')}
       {...restProps}
+      options={toggleOptions}
     />
   )
 }

@@ -23,7 +23,9 @@
  SOFTWARE.
 
  */
-import { Flex } from '@looker/components'
+
+import type { ValidationMessageProps } from '@looker/components'
+import { Space } from '@looker/components'
 import type { FilterModel } from '@looker/filter-expressions'
 import type { ChangeEvent, FC } from 'react'
 import React from 'react'
@@ -46,9 +48,14 @@ interface BetweenFilterProps {
   width?: string | number
   borderRadiusLeft?: string | number
   borderLeftColor?: string
+  validationMessage?: ValidationMessageProps
 }
 
-export const Between: FC<BetweenFilterProps> = ({ item, onChange }) => {
+export const Between: FC<BetweenFilterProps> = ({
+  item,
+  onChange,
+  validationMessage,
+}) => {
   const { t } = useTranslation('Between')
 
   const betweenOptions = useBetweenOptions()
@@ -66,32 +73,40 @@ export const Between: FC<BetweenFilterProps> = ({ item, onChange }) => {
     onChange?.(id, { bounds: value })
   }
 
+  const validationProps = {
+    noErrorIcon: true,
+    validationType: validationMessage?.type,
+  }
+
   return (
-    <Flex flexDirection="row">
+    <Space gap="none" width="auto">
       <GroupSelect
         placement="middle"
         value={item.bounds}
         options={betweenOptions}
         onChange={selectChange}
+        {...validationProps}
       />
-      <Flex alignItems="center">
-        <GroupInput
-          value={low}
-          type="number"
-          onChange={lowChange}
-          minWidth="4.5em"
-          data-testid="low"
-        />
-        <MidInputLabel>{t('AND')}</MidInputLabel>
-        <GroupInput
-          value={high}
-          type="number"
-          onChange={highChange}
-          placement="right"
-          minWidth="4.5em"
-          data-testid="high"
-        />
-      </Flex>
-    </Flex>
+      <GroupInput
+        value={low}
+        type="number"
+        onChange={lowChange}
+        minWidth="4.5em"
+        data-testid="low"
+        {...validationProps}
+      />
+      <MidInputLabel validationType={validationMessage?.type}>
+        {t('AND')}
+      </MidInputLabel>
+      <GroupInput
+        value={high}
+        type="number"
+        onChange={highChange}
+        placement="right"
+        minWidth="4.5em"
+        data-testid="high"
+        {...validationProps}
+      />
+    </Space>
   )
 }

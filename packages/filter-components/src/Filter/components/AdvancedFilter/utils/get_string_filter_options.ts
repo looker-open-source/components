@@ -26,9 +26,12 @@
 import { useTranslation } from 'react-i18next'
 import { useUserAttributeOption } from './get_user_attribute_option'
 
-export const useStringFilterOptions = () => {
+export const useStringFilterOptions = (isParameter?: boolean) => {
   const { t } = useTranslation('get_string_filter_options')
   const userAttributeOption = useUserAttributeOption()
+  if (isParameter) {
+    return [{ value: 'match', label: t('is') }, userAttributeOption]
+  }
   return [
     { value: 'match', label: t('is') },
     { value: 'contains', label: t('contains') },

@@ -198,6 +198,9 @@ const resources = {
     'complete weeks': 'повних тижнів',
     'complete years': 'повних років',
   },
+  RadioGroup: {
+    'any value': 'будь-яке значення',
+  },
   ReactSelectCustomIcons: {
     'Clear all': 'Очистити все',
     Remove: 'Вилучити',
@@ -218,10 +221,10 @@ const resources = {
     More: 'Ще',
   },
   use_filters_errors: {
-    'Selection required': 'Обов’язково виберіть елемент',
     'Invalid value': 'Недійсне значення',
     'No value is set for your user attribute':
       'Значення для атрибута користувача не вказано',
+    'Selection required': 'Обов’язково виберіть елемент',
   },
   use_option_filtering: {
     'No values': 'Немає значень',

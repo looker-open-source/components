@@ -24,6 +24,7 @@
 
  */
 import { parseFilterExpression } from '../utils'
+import { i18nInit } from '../utils/i18n'
 import type { GrammarTestItem } from './grammar_test_utils'
 import { stringGrammarTestItems } from './string_grammar_test_expressions'
 
@@ -57,6 +58,7 @@ const testStringItem = (testItem: GrammarTestItem) => {
 }
 
 describe('String grammar can parse', () => {
+  beforeEach(() => i18nInit())
   stringGrammarTestItems.forEach(testStringItem)
 })
 

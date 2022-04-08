@@ -33,7 +33,7 @@ export const quoteFilter = <T>(filter?: T | string | null) => {
   }
   if (
     typeof filter === 'string' &&
-    (/^-|['",%_]/.test(filter) ||
+    (/^-|['",%_^]/.test(filter) ||
       filter.toLowerCase() === 'null' ||
       filter.toLowerCase() === 'empty')
   ) {

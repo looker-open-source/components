@@ -198,6 +198,9 @@ const resources = {
     'complete weeks': '完整周',
     'complete years': '完整年',
   },
+  RadioGroup: {
+    'any value': '任意值',
+  },
   ReactSelectCustomIcons: {
     'Clear all': '全部清除',
     Remove: '移除',
@@ -218,9 +221,9 @@ const resources = {
     More: '更多',
   },
   use_filters_errors: {
-    'Selection required': '所需的选择',
     'Invalid value': '无效值',
     'No value is set for your user attribute': '您的用户属性没有设置任何值',
+    'Selection required': '所需的选择',
   },
   use_option_filtering: {
     'No values': '没有值',

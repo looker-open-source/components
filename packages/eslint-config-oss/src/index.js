@@ -47,6 +47,7 @@ module.exports = {
       files: ['**/*.mdx'],
       rules: {
         'header/header': 'off',
+        'import/no-extraneous-dependencies': 'off',
         'react/jsx-no-undef': 'off',
       },
     },
@@ -60,6 +61,36 @@ module.exports = {
       ],
       rules: {
         'i18next/no-literal-string': 'off',
+      },
+    },
+    {
+      files: ['jest.config.js'],
+      rules: {
+        '@typescript-eslint/no-var-requires': 'off',
+      },
+    },
+    {
+      extends: ['plugin:@looker/recommended'],
+      files: ['**/*.json'],
+      rules: {
+        '@looker/no-private-dependencies': [
+          'error',
+          {
+            exclude: [
+              // So this config can lint for private packages.
+              '@looker/eslint-plugin',
+              // Required for running tests.
+              '@looker/jest-config',
+              // Actually public, but private: true locally.
+              '@looker/sdk',
+              // Required for tests.
+              '@looker/test-utils',
+            ],
+          },
+        ],
+        'header/header': 'off',
+        'no-unused-expressions': 'off',
+        'sort-keys-fix/sort-keys-fix': 'off',
       },
     },
   ],
@@ -142,6 +173,7 @@ module.exports = {
       },
     ],
     'no-use-before-define': 'off',
+    'react/display-name': 'off',
     'react/no-unescaped-entities': 'off',
     'react/prop-types': 'off',
     'sort-keys': 'off',

@@ -48,8 +48,12 @@ export const NumberFilter: FC<FilterParamProps<NumberFilterType>> = ({
   showMatchesAdvanced,
   ...rest
 }) => {
-  const numberFilterOptions = useNumberFilterOptions()
-  const options = useFilterOptions(numberFilterOptions, showMatchesAdvanced)
+  const isParameter = !!rest.field?.parameter
+  const numberFilterOptions = useNumberFilterOptions(isParameter)
+  const options = useFilterOptions(
+    numberFilterOptions,
+    !isParameter && showMatchesAdvanced
+  )
 
   const typeChange = (value: string) =>
     onChange(
@@ -57,7 +61,11 @@ export const NumberFilter: FC<FilterParamProps<NumberFilterType>> = ({
       sanitizeNumber({ ...item, ...convertOptionToType(String(value)) })
     )
 
-  const FilterComponent: any = numberFilterTypeToFilter(item.type)
+  const FilterComponent: any = numberFilterTypeToFilter(
+    item.type,
+    !!rest.allowMultipleOptions,
+    isParameter
+  )
   const selectValue = convertTypeToOption(item)
 
   const validationText = validationMessage?.message

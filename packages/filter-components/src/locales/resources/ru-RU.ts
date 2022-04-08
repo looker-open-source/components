@@ -198,6 +198,9 @@ const resources = {
     'complete weeks': 'полн. нед.',
     'complete years': 'полн. год(а)/лет',
   },
+  RadioGroup: {
+    'any value': 'любое значение',
+  },
   ReactSelectCustomIcons: {
     'Clear all': 'Очистить все',
     Remove: 'Удалить',
@@ -218,10 +221,10 @@ const resources = {
     More: 'Еще',
   },
   use_filters_errors: {
-    'Selection required': 'Требуется выбрать',
     'Invalid value': 'Недопустимое значение',
     'No value is set for your user attribute':
       'Значение пользовательского атрибута не задано',
+    'Selection required': 'Требуется выбрать',
   },
   use_option_filtering: {
     'No values': 'Нет значений',

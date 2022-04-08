@@ -36,7 +36,7 @@ import { Table } from '@looker/visualizations-table'
 import { SingleValue } from '@looker/visualizations-single-value'
 
 export * from '@looker/visualizations-adapters'
-export * from './QueryFormatter'
+export * from './Query'
 export * from './Visualization'
 
 /**

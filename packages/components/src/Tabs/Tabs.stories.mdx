@@ -1,0 +1,140 @@
+import { Code, MessageBar, Tabs2 } from '@looker/components'
+import { Meta } from '@storybook/addon-docs'
+
+<Meta component={Tabs2} title="Docs/Components/Content/Tabs" />
+
+# Tabs
+
+<MessageBar noActions intent="inform">
+  Tabs has been deprecated and replaced with
+  <Code fontWeight="bold" fontSize="inherit">
+    Tabs2
+  </Code> please update any existing instances to use the new improved version. Deprecation
+  of `Tabs` is planned for @looker/components 3.0
+</MessageBar>
+
+`Tabs2` contains one or more `Tab2` components. `Tabs2`, when left uncontrolled, manages the visible tab as well as switching between tabs.
+
+Each `Tab2` must have a `label`. The value passed as children will be displayed as its content area. `id` is optional (`label` will be used in its place if not supplied) but `id` is highly recommended when using `Tabs2` in a controlled state.
+
+```jsx
+<Tabs2>
+  <Tab2 id="cats" label="Cats">
+    Here's awesome story about cats
+  </Tab2>
+  <Tab2 id="dogs" label="Dogs">
+    Cats are way better than dogs. Go to other tab
+  </Tab2>
+  <Tab2 label="Fish">Are kinda smelly</Tab2>
+</Tabs2>
+```
+
+## Horizonal Scroll
+
+`Tabs` supports scrolling when the tabs' combined width cannot be accommodated within the viewport width. Try scrolling left-right.
+
+```jsx
+<Tabs2>
+  <Tab2 label="Really long tab title that should help demonstrate side-scroll">
+    Really long tab title that should help demonstrate side-scroll
+  </Tab2>
+  <Tab2 label="Yet-another-tab-title to get things wide enough">
+    Yet-another-tab-title to get things wide enough
+  </Tab2>
+  <Tab2 label="Really, you must be obsessed with these long tab titles?">
+    Really, you must be obsessed with these long tab titles?
+  </Tab2>
+  <Tab2 label="Okay, okay, we get it you want to see scrolling in action...">
+    Okay, okay, we get it you want to see scrolling in action...
+  </Tab2>
+  <Tab2 label="Repeat really long tab title that should help demonstrate side-scroll">
+    Repeat really long tab title that should help demonstrate side-scroll
+  </Tab2>
+  <Tab2 label="Repeat yet-another-tab-title to get things wide enough">
+    Repeat yet-another-tab-title to get things wide enough
+  </Tab2>
+</Tabs2>
+```
+
+## Disabled Tab(s)
+
+To display a tab that can't be activated add the `disabled` prop.
+
+```jsx
+<Tabs2>
+  <Tab2 id="cats" label="Cats">
+    Here's awesome story about cats
+  </Tab2>
+  <Tab2 id="dogs" label="Dogs">
+    Cats are way better than dogs. Go to other tab
+  </Tab2>
+  <Tab2 label="Fish">Are kinda smelly</Tab2>
+  <Tab2 disabled label="Human">
+    not available
+  </Tab2>
+</Tabs2>
+```
+
+## Distribute Attribute
+
+Using the distribute prop on `Tabs2` will equally distribute each `Tab` in the container.
+
+```jsx
+<Tabs2 distribute>
+  <Tab2 label="Rebecca Purple">
+    Rebecca Purple
+    <div
+      style={{
+        backgroundColor: 'RebeccaPurple',
+        height: '350px',
+      }}
+    />
+  </Tab2>
+  <Tab2 label="Coral">
+    <div
+      style={{
+        backgroundColor: 'coral',
+        height: '350px',
+      }}
+    />
+  </Tab2>
+  <Tab2 label="Forest Green">
+    <div
+      style={{
+        backgroundColor: 'ForestGreen',
+        height: '350px',
+      }}
+    />
+  </Tab2>
+  <Tab2 label="Cornflower Blue">
+    <div
+      style={{
+        backgroundColor: 'CornflowerBlue',
+        height: '350px',
+      }}
+    />
+  </Tab2>
+</Tabs2>
+```
+
+## Controlled Tab
+
+```jsx
+;() => {
+  const [tabId, setTabId] = useState('cats')
+  return (
+    <>
+      <button onClick={() => setTabId('cats')}>Go to Cats</button>
+      <button onClick={() => setTabId('dogs')}>Go to Dogs</button>
+      <Tabs2 tabId={tabId} onTabChange={setTabId}>
+        <Tab2 id="cats" label="Cats">
+          Here's awesome story about cats
+        </Tab2>
+        <Tab2 id="dogs" label="Dogs">
+          Cats are way better than dogs. Go to other tab
+        </Tab2>
+      </Tabs2>
+    </>
+  )
+}
+```

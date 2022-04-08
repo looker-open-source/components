@@ -28,8 +28,8 @@ import type { Story } from '@storybook/react/types-6-0'
 import type { RangeModifier } from 'react-day-picker'
 import {
   Button,
-  MenuList,
-  MenuItem,
+  List,
+  ListItem,
   Popover,
   PopoverContent,
   Tabs,
@@ -118,14 +118,14 @@ export const TimeframeFilter = () => {
             </TabList>
             <TabPanels>
               <TabPanel>
-                <MenuList>
-                  <MenuItem>Today</MenuItem>
-                  <MenuItem>Yesterday</MenuItem>
-                  <MenuItem>Last 7 Days</MenuItem>
-                  <MenuItem>Last 14 Days</MenuItem>
-                  <MenuItem>Last 90 Days</MenuItem>
-                  <MenuItem>Year To Date</MenuItem>
-                </MenuList>
+                <List>
+                  <ListItem>Today</ListItem>
+                  <ListItem>Yesterday</ListItem>
+                  <ListItem>Last 7 Days</ListItem>
+                  <ListItem>Last 14 Days</ListItem>
+                  <ListItem>Last 90 Days</ListItem>
+                  <ListItem>Year To Date</ListItem>
+                </List>
               </TabPanel>
               <TabPanel>
                 <InputDateRange

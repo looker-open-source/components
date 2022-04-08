@@ -30,6 +30,7 @@ import {
   summary,
   treeToList,
 } from '../utils'
+import { i18nInit } from '../utils/i18n'
 import { tierFilterToString } from '../utils/tier/tier_filter_to_string'
 import { tierGrammarTestItems } from './tier_grammar_test_expressions'
 
@@ -60,5 +61,6 @@ const testStringItem = (testItem: GrammarTestItem) => {
 }
 
 describe('Tier grammar can parse', () => {
+  beforeEach(() => i18nInit())
   tierGrammarTestItems.forEach(testStringItem)
 })

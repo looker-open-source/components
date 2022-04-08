@@ -26,12 +26,11 @@
 
 import { renderWithTheme } from '@looker/components-test-utils'
 import { screen } from '@testing-library/react'
-import { ThemeProvider } from 'styled-components'
 import React from 'react'
 import type { UseBoundedRippleProps } from './types'
 import { useBoundedRipple } from './useBoundedRipple'
 
-const RippleInner = (props: UseBoundedRippleProps) => {
+const RippleComponent = (props: UseBoundedRippleProps) => {
   const {
     callbacks: { startBG, endBG, startFG, endFG },
     className,
@@ -49,19 +48,6 @@ const RippleInner = (props: UseBoundedRippleProps) => {
     </div>
   )
 }
-
-// TODO: Remove this when we change brandAnimation default to true
-// (then just change the value below to use this for the brandAnimation: false scenario)
-const RippleComponent = (props: UseBoundedRippleProps) => (
-  <ThemeProvider
-    theme={theme => ({
-      ...theme,
-      defaults: { ...theme.defaults, brandAnimation: true },
-    })}
-  >
-    <RippleInner {...props} />
-  </ThemeProvider>
-)
 
 /* eslint-disable-next-line @typescript-eslint/unbound-method */
 const globalGetBoundingClientRect = Element.prototype.getBoundingClientRect

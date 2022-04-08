@@ -42,12 +42,14 @@ export const Basic = Template.bind({})
 Basic.args = {
   expressionType: 'date',
   expression: '',
+  allowMultipleValues: true,
 }
 
 export const Expression = Template.bind({})
 Expression.args = {
   expressionType: 'string',
   expression: 'foo,bar',
+  allowMultipleValues: true,
 }
 
 export const Error = Template.bind({})

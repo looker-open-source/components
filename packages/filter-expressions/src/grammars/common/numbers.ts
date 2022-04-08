@@ -27,7 +27,7 @@ export const numbers = `
 /* Common numbers parsing expressions */
 
 number "number"
- = (minus? int frac? exp?) { return parseFloat(text()); } / (minus? int? frac exp?) { return parseFloat(text()); }
+ = (minus? int frac? exp?) { return parseFloat(text()); } / (minus? int? frac exp?) { return parseFloat(text()); } 
 
 positive "positive"
  = int frac? exp? { return parseFloat(text()); }

@@ -37,7 +37,6 @@ import {
   mockSdkConfigResponse,
   mockSdkPivotDataResponse,
   mockSdkDataResponse,
-  QueryContext,
   buildChartConfig,
   mockBarConfig,
 } from '@looker/visualizations-adapters'
@@ -47,7 +46,7 @@ export default {
   title: 'Visualizations/Bar',
 }
 
-type StoryTemplateProps = Omit<BarProps, 'config'> & {
+type StoryTemplateProps = Omit<BarProps, 'config' | 'fields' | 'data'> & {
   config: Omit<CBar, 'type'>
 }
 
@@ -68,18 +67,12 @@ const Template: Story<StoryTemplateProps> = ({
   })
 
   return (
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    <QueryContext.Provider
-      value={{
-        config,
-        ok: true,
-        loading: false,
-        data,
-        fields: mockSdkFieldsResponse as Fields,
-      }}
-    >
-      <Visualization {...restProps} />
-    </QueryContext.Provider>
+    <Visualization
+      config={config}
+      data={data}
+      fields={mockSdkFieldsResponse as Fields}
+      {...restProps}
+    />
   )
 }
 
@@ -133,17 +126,13 @@ export const Pivot = () => {
   })
 
   return (
-    <QueryContext.Provider
-      value={{
-        config,
-        ok: true,
-        loading: false,
-        data: mockPivotData,
-        fields: mockPivotFields,
-      }}
-    >
-      <Visualization height={600} width={800} />
-    </QueryContext.Provider>
+    <Visualization
+      config={config}
+      fields={mockPivotFields}
+      data={mockPivotData}
+      height={600}
+      width={800}
+    />
   )
 }
 Pivot.parameters = {

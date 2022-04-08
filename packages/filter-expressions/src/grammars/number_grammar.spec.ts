@@ -304,16 +304,16 @@ describe('between tests', () => {
 
 // prettier-ignore
 const nowSupported = [
-  // the following previously had no deserializer,
-  // but are now supported
-  ["1 to",                   ">=",     "1"],
-  ["to -1",                  "<=",     "-1"],
-  ["to 0.1",                 "<=",     "0.1"],
-  ["not 1, not 2",           "!=",     "1,2"],
-  ["<> 1, <> 2",             "!=",     "1,2"],
-  ["!= 1, != 2",             "!=",     "1,2"],
+  // the following previously had no deserializer,	
+  // but are now supported	
+  ["1 to",                   ">=",     "1"],	
+  ["to -1",                  "<=",     "-1"],	
+  ["to 0.1",                 "<=",     "0.1"],	
+  ["not 1, not 2",           "!=",     "1,2"],	
+  ["<> 1, <> 2",             "!=",     "1,2"],	
+  ["!= 1, != 2",             "!=",     "1,2"],	
   ["1, not 2",               "!=",     "1,2"],
-  [">1 AND <2 OR >3 AND <4", "between",      ">1 AND <2 OR >3 AND <4"],
+  [">1 AND <2 OR >3 AND <4", "between",      ">1 AND <2 OR >3 AND <4"],	
 ]
 
 describe('nowSupported expressions', () => {
@@ -321,21 +321,21 @@ describe('nowSupported expressions', () => {
 })
 
 // prettier-ignore
-const unsupported = [
-  ["0.1.1.1",                "matchesAdvanced",     "0.1.1.1"],
-  ["0.....1",                "matchesAdvanced",     "0.....1"],
-  ["--1",                    "matchesAdvanced",     "--1"],
-  ["foo",                    "matchesAdvanced",     "foo"],
-  ["seventeen",              "matchesAdvanced",     "seventeen"],
-  ["&,,,$%testContext.#,,,$,testContext.",         "matchesAdvanced",     "&,,,$%testContext.#,,,$,testContext."],
-  ["\\\\\\\\\\\\\\",         "matchesAdvanced",     "\\\\\\\\\\\\\\"],
-  ["~`!testContext.#$%^*()-+=_{}[]|?",  "matchesAdvanced",     "~`!testContext.#$%^*()-+=_{}[]|?"],
-  ["<>,. ¡™£¢∞§¶•ªº–≠œ∑",    "matchesAdvanced",     "<>,. ¡™£¢∞§¶•ªº–≠œ∑"],
-  ["´®†¥¨ˆøπ“‘åß∂ƒ©˙∆˚¬…æ",  "matchesAdvanced",     "´®†¥¨ˆøπ“‘åß∂ƒ©˙∆˚¬…æ"],
-  ["Ω≈ç√∫˜µ≤≥÷",             "matchesAdvanced",     "Ω≈ç√∫˜µ≤≥÷"],
-  ["😻🌚",                   "matchesAdvanced",     "😻🌚"],
-  ["^12345",                 "matchesAdvanced",     "^12345"],
-  ["1234^, 567", "matchesAdvanced", "1234^, 567"],
+const unsupported = [	
+  ["0.1.1.1",                "matchesAdvanced",     "0.1.1.1"],	
+  ["0.....1",                "matchesAdvanced",     "0.....1"],	
+  ["--1",                    "matchesAdvanced",     "--1"],	
+  ["foo",                    "matchesAdvanced",     "foo"],	
+  ["seventeen",              "matchesAdvanced",     "seventeen"],	
+  ["&,,,$%testContext.#,,,$,testContext.",         "matchesAdvanced",     "&,,,$%testContext.#,,,$,testContext."],	
+  ["\\\\\\\\\\\\\\",         "matchesAdvanced",     "\\\\\\\\\\\\\\"],	
+  ["~`!testContext.#$%^*()-+=_{}[]|?",  "matchesAdvanced",     "~`!testContext.#$%^*()-+=_{}[]|?"],	
+  ["<>,. ¡™£¢∞§¶•ªº–≠œ∑",    "matchesAdvanced",     "<>,. ¡™£¢∞§¶•ªº–≠œ∑"],	
+  ["´®†¥¨ˆøπ“‘åß∂ƒ©˙∆˚¬…æ",  "matchesAdvanced",     "´®†¥¨ˆøπ“‘åß∂ƒ©˙∆˚¬…æ"],	
+  ["Ω≈ç√∫˜µ≤≥÷",             "matchesAdvanced",     "Ω≈ç√∫˜µ≤≥÷"],	
+  ["😻🌚",                   "matchesAdvanced",     "😻🌚"],	
+  ["^12345",                 "matchesAdvanced",     "^12345"],	
+  ["1234^, 567", "matchesAdvanced", "1234^, 567"],	
 
 ]
 

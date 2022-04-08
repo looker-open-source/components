@@ -8,11 +8,12 @@
   },
   "dependencies": {
     "@looker/i18n": "^0.1.1",
-    "@looker/sdk": "^21.12.0",
+    "@looker/sdk": "^22.4.0",
     "lodash": "^4.17.20",
     "pegjs": "0.10.0"
   },
   "devDependencies": {
+    "@babel/cli": "*",
     "@looker/eslint-config-oss": "^1.7.14",
     "@types/pegjs": "^0.10.1",
     "@typescript-eslint/eslint-plugin": "*",

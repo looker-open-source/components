@@ -34,7 +34,6 @@ import type {
 } from '@looker/visualizations-adapters'
 import {
   buildChartConfig,
-  QueryContext,
   mockSdkConfigResponse,
   mockSdkDataResponse,
   mockSdkFieldsResponse,
@@ -46,7 +45,7 @@ export default {
   title: 'Visualizations/Scatter',
 }
 
-type StoryTemplateProps = Omit<ScatterProps, 'config'> & {
+type StoryTemplateProps = Omit<ScatterProps, 'config' | 'fields' | 'data'> & {
   config: Omit<CScatter, 'type'>
 }
 
@@ -67,17 +66,12 @@ const Template: Story<StoryTemplateProps> = ({
   })
 
   return (
-    <QueryContext.Provider
-      value={{
-        config,
-        ok: true,
-        loading: false,
-        data,
-        fields: mockSdkFieldsResponse as Fields,
-      }}
-    >
-      <Visualization {...restProps} />
-    </QueryContext.Provider>
+    <Visualization
+      config={config}
+      data={data}
+      fields={mockSdkFieldsResponse as Fields}
+      {...restProps}
+    />
   )
 }
 

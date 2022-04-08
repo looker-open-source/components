@@ -1,0 +1,228 @@
+import { InputChips } from '@looker/components'
+
+<Meta component={InputChips} title="Docs/Components/Inputs/InputChips" />
+
+# InputChips
+
+The `InputChips` component takes an array of strings (`values`) and renders them each as a [`Chip`](/components/content/chip) inside a text box.
+The input value is converted to chip values as the user types via the <strong>comma</strong> or <strong>enter</strong> keys, or on blur.
+Chips can be selected, via keyboard commands or clicking, and copy-pasted.
+The `values` and `onChange` props are required – `InputChips` is a controlled component.
+
+`InputChips` also supports `summary` and `isClearable`, similar to [`InputSearch`](../input-search) and `autoResize`, similar to [`InputText`](../input-text).
+
+```jsx
+;() => {
+  function ExampleInputChips({ values: initialValues = [], ...props }) {
+    const [values, setValues] = React.useState(initialValues)
+    function handleChange(newValues) {
+      setValues(newValues)
+    }
+    return (
+      <InputChips
+        placeholder="Enter multiple values"
+        summary={values.length > 0 && `You've entered ${values.length} items`}
+        values={values}
+        onChange={handleChange}
+        {...props}
+      />
+    )
+  }
+  return (
+    <SpaceVertical align="start">
+      <ExampleInputChips />
+      <ExampleInputChips values={['mango', 'kiwi']} />
+      <ExampleInputChips values={[]} isClearable={false} />
+      <ExampleInputChips values={[]} autoResize />
+    </SpaceVertical>
+  )
+}
+```
+
+## Controlled Input Value
+
+The `inputValue` and `onInputChange` props allow control of the typed value. We also provide an optional `onClear` event hook that can be used for post-event cleanup or rendering helpful undo functionality.
+
+```jsx
+;() => {
+  const [values, setValues] = React.useState([])
+  const previousInputValues = usePreviousValue(values)
+  const [inputValue, setInputValue] = React.useState('')
+  const [renderUndoButton, setRenderUndoButton] = React.useState(false)
+  function handleChange(newValues) {
+    setValues(newValues)
+    setRenderUndoButton(false)
+  }
+  function handleInputChange(newValue) {
+    setInputValue(newValue)
+  }
+  function handleClear() {
+    setRenderUndoButton(true)
+  }
+  function handleUndo() {
+    setValues(previousInputValues)
+    setRenderUndoButton(false)
+  }
+  return (
+    <>
+      <InputChips
+        placeholder="Enter multiple values"
+        summary={values.length > 0 && `You've entered ${values.length} items`}
+        values={values}
+        inputValue={inputValue}
+        onChange={handleChange}
+        onInputChange={handleInputChange}
+        onClear={handleClear}
+        mb="u3"
+      />
+      {renderUndoButton && (
+        <>
+          You cleared the values! <Button onClick={handleUndo}>Undo</Button>
+        </>
+      )}
+      {inputValue !== '' && (
+        <Paragraph>
+          You are typing: <strong>{inputValue}</strong>
+        </Paragraph>
+      )}
+    </>
+  )
+}
+```
+
+## Validation
+
+If a duplicate value is entered, it will not be added to the values list.
+The optional `validate` prop is a function returning a boolean that is called for each value that is entered.
+If it returns false, the value is not added. `onValidationFail` and `onDuplicate` are optional handlers for when
+invalid and duplicate values are entered.
+
+```jsx
+;() => {
+  const emailValidator = new RegExp(
+    /^(([^<>()\[\]\\.,:\s@"]+(\.[^<>()\[\]\\.,:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+  )
+  const [values, setValues] = React.useState([])
+  const [invalidValue, setInvalidValue] = React.useState('')
+  const [duplicateValue, setDuplicateValue] = React.useState('')
+
+  function handleChange(newValues) {
+    setValues(newValues)
+    setInvalidValue('')
+    setDuplicateValue('')
+  }
+  function validate(valueToValidate) {
+    return emailValidator.test(valueToValidate)
+  }
+  function handleInvalid(invalidValue) {
+    setInvalidValue(invalidValue)
+  }
+  function handleDuplicate(duplicateValue) {
+    setDuplicateValue(duplicateValue)
+  }
+  return (
+    <>
+      <InputChips
+        placeholder="Enter email addresses"
+        values={values}
+        validate={validate}
+        onChange={handleChange}
+        onValidationFail={handleInvalid}
+        onDuplicate={handleDuplicate}
+        mb="u3"
+      />
+      <Paragraph>
+        {invalidValue !== ''
+          ? `You entered an invalid email: ${invalidValue}`
+          : duplicateValue !== ''
+          ? `${duplicateValue} has already been entered`
+          : ''}
+      </Paragraph>
+    </>
+  )
+}
+```
+
+## formatInputValue
+
+Use this callback to format values after there are entered, before validation.
+By default, any leading or trailing whitespace will be trimmed – to avoid this,
+use `formatInputValue={false}`.
+
+```jsx
+;() => {
+  const [values, setValues] = React.useState([])
+  return (
+    <Space>
+      <InputChips
+        placeholder="Values are not trimmed"
+        values={values}
+        onChange={setValues}
+        formatInputValue={false}
+        width="50%"
+      />
+      <pre>{JSON.stringify(values)}</pre>
+    </Space>
+  )
+}
+```
+
+## removeOnBackspace
+
+The `removeOnBackspace` prop defaults to true.
+When set to false, hitting the `Backspace` key while focused in the input will not remove values.
+
+```jsx
+;() => {
+  const [values, setValues] = React.useState(['mango', 'kiwi'])
+  function handleChange(newValues) {
+    setValues(newValues)
+  }
+  return (
+    <InputChips
+      placeholder="Backspace does not remove values"
+      values={values}
+      onChange={handleChange}
+      removeOnBackspace={false}
+    />
+  )
+}
+```
+
+## Disabled
+
+Use the `disable` property to make an input field un-editable.
+
+```jsx
+<SpaceVertical>
+  <InputChips disabled values={['disabled']} />
+  <InputChips
+    placeholder="this is a disabled placeholder"
+    disabled
+    values={[]}
+  />
+</SpaceVertical>
+```
+
+## ReadOnly property
+
+As the name suggests, readOnly makes the text un-editable.
+
+```jsx
+<InputChips
+  placeholder="or here ether."
+  readOnly
+  values={['you', "can't", 'change', 'me', 'here']}
+/>
+```
+
+The `InputChips` component provides the prop `clearIconLabel` to customize the input icon label, the same is available to the individual `Chip` with the prop `chipIconLabel`. Hover over the the `x` icon to see the tooltip.
+
+```jsx
+<InputChips
+  placeholder="hover the x on the right corner"
+  clearIconLabel="remove all"
+  chipIconLabel="remove this chip"
+  values={['you', "can't", 'change', 'me', 'here']}
+/>
+```

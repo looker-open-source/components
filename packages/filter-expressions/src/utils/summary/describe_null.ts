@@ -27,4 +27,4 @@ import type { FilterModel } from '../../types'
 import { describeIsItem } from './describe_is_item'
 
 export const describeNull = ({ is }: FilterModel): string =>
-  `${describeIsItem(is)} null`
+  describeIsItem(is, 'null')

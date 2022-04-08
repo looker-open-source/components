@@ -198,6 +198,9 @@ const resources = {
     'complete weeks': 'hele uger',
     'complete years': 'hele år',
   },
+  RadioGroup: {
+    'any value': 'enhver værdi',
+  },
   ReactSelectCustomIcons: {
     'Clear all': 'Ryd alt',
     Remove: 'Fjern',
@@ -218,10 +221,10 @@ const resources = {
     More: 'Mere',
   },
   use_filters_errors: {
-    'Selection required': 'Valg kræves',
     'Invalid value': 'Ugyldig værdi',
     'No value is set for your user attribute':
       'Der er ikke angivet nogen værdi for din brugerattribut',
+    'Selection required': 'Valg kræves',
   },
   use_option_filtering: {
     'No values': 'Ingen værdier',

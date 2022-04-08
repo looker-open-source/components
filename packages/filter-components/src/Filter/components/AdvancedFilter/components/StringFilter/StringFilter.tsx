@@ -56,8 +56,12 @@ export const StringFilter: FC<FilterParamProps<StringFilterType>> = ({
   validationMessage,
   ...rest
 }) => {
-  const stringFilterOptions = useStringFilterOptions()
-  const options = useFilterOptions(stringFilterOptions, showMatchesAdvanced)
+  const isParameter = rest.field?.parameter
+  const stringFilterOptions = useStringFilterOptions(isParameter)
+  const options = useFilterOptions(
+    stringFilterOptions,
+    !isParameter && showMatchesAdvanced
+  )
   const typeChange = (value: string) =>
     onChange(
       item.id,
@@ -67,7 +71,11 @@ export const StringFilter: FC<FilterParamProps<StringFilterType>> = ({
       )
     )
 
-  const FilterComponent: ElementType = stringFilterTypeToFilter(item.type)
+  const FilterComponent: ElementType = stringFilterTypeToFilter(
+    item.type,
+    isParameter,
+    rest.allowMultipleOptions
+  )
 
   const selectValue = convertTypeToOption(item)
   return (

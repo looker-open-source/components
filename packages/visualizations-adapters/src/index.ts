@@ -24,15 +24,15 @@
 
  */
 
+export * from './__mocks__'
+export * from './adapters'
+export * from './configTransformations'
+export * from './dataTransformations'
 export * from './Debug'
 export * from './ErrorBoundary'
 export * from './KeyValueList'
-export * from './__mocks__'
-export * from './Query'
 export * from './Spinner'
-export * from './Unsupported'
-export * from './VisWrapper'
-export * from './adapters'
 export * from './types'
 export * from './utils'
-export * from './configTransformations'
+export * from './Unsupported'
+export * from './VisWrapper'

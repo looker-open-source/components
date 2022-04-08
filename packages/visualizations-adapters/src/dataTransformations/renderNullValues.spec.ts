@@ -24,10 +24,10 @@
 
  */
 
-import { renderNullValues } from './renderNullValues'
+import { nullValueZero } from './nullValueZero'
 import { mockFields } from '../__mocks__'
 
-describe('renderNullValues', () => {
+describe('nullValueZero', () => {
   const mockData = [
     {
       'orders.created_month': '2019-11',
@@ -47,7 +47,7 @@ describe('renderNullValues', () => {
   ]
 
   it('replaces null values with 0 when render_null_values is true', () => {
-    const { data: draftData } = renderNullValues({
+    const { data: draftData } = nullValueZero({
       data: mockData,
       fields: mockFields,
       config: { type: 'line', render_null_values: true },
@@ -75,7 +75,7 @@ describe('renderNullValues', () => {
   })
 
   it('passes through unmodified data when render_null_values is false', () => {
-    const { data: draftData } = renderNullValues({
+    const { data: draftData } = nullValueZero({
       data: mockData,
       fields: mockFields,
       config: { type: 'line', render_null_values: false },

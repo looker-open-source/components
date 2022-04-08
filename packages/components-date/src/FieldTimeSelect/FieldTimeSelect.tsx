@@ -26,7 +26,6 @@
 
 import type { Ref } from 'react'
 import React, { forwardRef, useState } from 'react'
-import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
 import omit from 'lodash/omit'
 import type {
@@ -54,13 +53,12 @@ const FieldTimeSelectComponent = forwardRef(
     const id = useID(props.id)
     const fieldProps = omit(omitFieldProps(props), ['onChange'])
     const [formatError, setFormatError] = useState('')
-    const { t } = useTranslation('InputTimeSelect')
     const onChange = (value?: string) => {
       props.onChange && props.onChange(value)
       if (value) {
         setFormatError('')
       } else {
-        setFormatError(t('Invalid Time'))
+        setFormatError('Invalid Time')
       }
     }
 

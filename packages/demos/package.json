@@ -9,7 +9,7 @@
     "@looker/components": "*",
     "@looker/components-date": "*",
     "@looker/design-tokens": "*",
-    "@looker/eslint-config-oss": "*",
+    "@looker/eslint-config-oss": "^1.7.14",
     "@looker/icons": "*",
     "lodash": "*",
     "react": "16.14.0",

@@ -28,10 +28,11 @@ import { renderWithTheme } from '@looker/components-test-utils'
 import { ThemeContext } from 'styled-components'
 import { render, screen } from '@testing-library/react'
 import {
-  QueryContext,
-  mockQueryContextValues,
+  mockBarConfig,
+  mockFields,
+  mockData,
 } from '@looker/visualizations-adapters'
-import { Visualization, defaultChartComponent } from './Visualization'
+import { Visualization, chartComponentMap } from './Visualization'
 
 const CustomVis = () => {
   const theme = useContext(ThemeContext)
@@ -80,9 +81,11 @@ describe('Visualization', () => {
   it('wraps itself in ComponentsProvider if rendered outside of theme context', () => {
     // use default rtl `render` instead of `renderWithTheme`
     render(
-      <QueryContext.Provider value={mockQueryContextValues}>
-        <Visualization />
-      </QueryContext.Provider>
+      <Visualization
+        data={mockData}
+        fields={mockFields}
+        config={mockBarConfig}
+      />
     )
 
     expect(screen.getByText('Rendered Without Error!')).toBeInTheDocument()
@@ -90,18 +93,19 @@ describe('Visualization', () => {
 })
 
 describe('Visualization renders chart component based on type', () => {
-  type ChartRecord = typeof defaultChartComponent
-  const visEntries = Object.entries(defaultChartComponent) as [
+  type ChartRecord = typeof chartComponentMap
+  const visEntries = Object.entries(chartComponentMap) as [
     keyof ChartRecord, // key union
     ChartRecord[keyof ChartRecord] // val union
   ][]
+
   test.each(visEntries)('render %i', (type, Component) => {
     renderWithTheme(
-      <QueryContext.Provider
-        value={{ ...mockQueryContextValues, config: { type } }}
-      >
-        <Visualization />
-      </QueryContext.Provider>
+      <Visualization
+        data={mockData}
+        fields={mockFields}
+        config={{ ...mockBarConfig, type }}
+      />
     )
     expect(Component).toHaveBeenCalledTimes(1)
   })

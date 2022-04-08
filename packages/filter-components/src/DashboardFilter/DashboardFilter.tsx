@@ -44,7 +44,15 @@ export const DashboardFilter: FC<DashboardFilterProps> = ({
   sdk,
   ...rest
 }) => {
-  const { id, name, type, field, required, ui_config } = filter
+  const {
+    id,
+    name,
+    type,
+    field,
+    required,
+    ui_config,
+    allow_multiple_values,
+  } = filter
 
   const stateProps = useExpressionState({ filter, ...rest })
 
@@ -61,7 +69,7 @@ export const DashboardFilter: FC<DashboardFilterProps> = ({
   return (
     <Field
       id={id || ''}
-      label={name}
+      label={name || ''}
       detail={
         errorMessage && (
           <Tooltip content={errorMessage}>
@@ -73,12 +81,13 @@ export const DashboardFilter: FC<DashboardFilterProps> = ({
     >
       <Filter
         name={name || ''}
-        type={type}
+        type={type || ''}
         field={field}
         config={ui_config}
         isRequired={required}
         {...suggestableProps}
         {...stateProps}
+        allowMultipleValues={!!allow_multiple_values}
       />
     </Field>
   )

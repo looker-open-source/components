@@ -49,6 +49,10 @@ export const MenuListInternal = forwardRef(
 )
 MenuListInternal.displayName = 'MenuListInternal'
 
+/**
+ * @private Should only be used when a more complicated <Popover> + <MenuList>
+ * composition is needed over a normal <Menu> element.
+ */
 export const MenuList = styled(MenuListInternal)`
   min-width: 12rem;
 

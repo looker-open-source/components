@@ -150,8 +150,8 @@ export const Sparkline: FC<SparklineProps> = ({
     data: dataSet || [],
     lineWidth: lineWidth || 1,
     yRange: [
-      isNumeric(configMin) ? ((configMin as unknown) as number) : dataMin,
-      isNumeric(configMax) ? ((configMax as unknown) as number) : dataMax,
+      isNumeric(configMin as string) ? (configMin as number) : dataMin,
+      isNumeric(configMax as string) ? (configMax as number) : dataMax,
     ],
   })
 

@@ -25,24 +25,13 @@
  */
 
 import React, { useContext } from 'react'
-import type { Fields } from '@looker/visualizations-adapters'
-import { Text } from '@visx/text'
 import {
   Axis,
   ThemeContext as VisxThemeContext,
   DataContext,
 } from '@visx/xychart'
-import { formatDateLabel } from '../utils/formatDateLabel'
-
-export type XAxisProps = {
-  fields: Fields
-  label?: string
-  labelDy: number
-  showTicks?: boolean
-  tickAngle: number
-  tickTextAnchor: 'end' | 'start' | 'middle' | 'inherit'
-  tickSpace: number
-}
+import type { XAxisProps } from './types'
+import { Tick } from './Tick'
 
 export const XAxis = ({
   fields,
@@ -52,6 +41,7 @@ export const XAxis = ({
   tickAngle,
   tickTextAnchor,
   tickSpace,
+  valueFormat,
 }: XAxisProps) => {
   const visxTheme = useContext(VisxThemeContext)
   const { width = 0 } = useContext(DataContext)
@@ -69,14 +59,9 @@ export const XAxis = ({
       }}
       orientation="bottom"
       numTicks={numTicks}
-      tickComponent={({ formattedValue, ...tickProps }) =>
+      tickComponent={tickProps =>
         showTicks ? (
-          <Text {...tickProps}>
-            {formatDateLabel({
-              dateString: formattedValue || '',
-              fields,
-            })}
-          </Text>
+          <Tick fields={fields} valueFormat={valueFormat} {...tickProps} />
         ) : null
       }
       tickLabelProps={() => ({

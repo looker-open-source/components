@@ -12,7 +12,7 @@ If you are working with Looker Visualizations Components, you will likely not ne
 You'll also need to satisfy a few peer dependencies - React and Styled Components:
 
 - **NPM:** `npm install react react-dom styled-components`
-- **YARN:** `yarn addreact react-dom styled-components`
+- **YARN:** `yarn add react react-dom styled-components`
 
 ## Getting Started
 

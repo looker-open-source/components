@@ -27,7 +27,6 @@
 import { seriesValueFormat } from './seriesValueFormat'
 import { mockBarConfig, mockFields, mockSdkDataResponse } from '../__mocks__'
 import type { CSeriesBasic } from '../types'
-
 describe('seriesValueFormat', () => {
   describe('Series as array', () => {
     const series: CSeriesBasic[] = [
@@ -50,16 +49,16 @@ describe('seriesValueFormat', () => {
         {
           color: '#FA8072',
           label: 'Total Orders',
-          value_format: '0,0',
+          value_format: '0,0.[00]',
         },
         {
           color: '#70BEFB',
           label: 'Average Order Price',
-          value_format: '0,0',
+          value_format: '0,0.[00]',
         },
       ])
     })
-    test(`Populates value from config.label_value_format`, () => {
+    test(`Populates value from fields then config.label_value_format`, () => {
       const transformedConfig = seriesValueFormat({
         config: { ...mockBarConfig, series, label_value_format: '#,##0' },
         fields: mockFields,
@@ -74,11 +73,11 @@ describe('seriesValueFormat', () => {
         {
           color: '#70BEFB',
           label: 'Average Order Price',
-          value_format: '#,##0',
+          value_format: '$#,##0.00',
         },
       ])
     })
-    test(`Populates value from config.value_format`, () => {
+    test(`Populates value from fields then config.value_format`, () => {
       const transformedConfig = seriesValueFormat({
         config: { ...mockBarConfig, series, value_format: '#,##0' },
         fields: mockFields,
@@ -93,7 +92,7 @@ describe('seriesValueFormat', () => {
         {
           color: '#70BEFB',
           label: 'Average Order Price',
-          value_format: '#,##0',
+          value_format: '$#,##0.00',
         },
       ])
     })
@@ -172,15 +171,15 @@ describe('seriesValueFormat', () => {
       expect(transformedConfig.config.series).toEqual({
         'orders.count': {
           ...series['orders.count'],
-          value_format: '0,0', // null in mock fields
+          value_format: '0,0.[00]', // null in mock fields
         },
         'orders.average_total_amount_of_order_usd': {
           ...series['orders.average_total_amount_of_order_usd'],
-          value_format: '0,0',
+          value_format: '0,0.[00]',
         },
       })
     })
-    test(`Populates value from config.label_value_format`, () => {
+    test(`Populates value from fields then config.label_value_format`, () => {
       const transformedConfig = seriesValueFormat({
         config: { ...mockBarConfig, series, label_value_format: '#,##0' },
         fields: mockFields,
@@ -193,11 +192,11 @@ describe('seriesValueFormat', () => {
         },
         'orders.average_total_amount_of_order_usd': {
           ...series['orders.average_total_amount_of_order_usd'],
-          value_format: '#,##0',
+          value_format: '$#,##0.00',
         },
       })
     })
-    test(`Populates value from config.value_format`, () => {
+    test(`Populates value from fields then config.value_format`, () => {
       const transformedConfig = seriesValueFormat({
         config: { ...mockBarConfig, series, value_format: '#,##0' },
         fields: mockFields,
@@ -210,7 +209,7 @@ describe('seriesValueFormat', () => {
         },
         'orders.average_total_amount_of_order_usd': {
           ...series['orders.average_total_amount_of_order_usd'],
-          value_format: '#,##0',
+          value_format: '$#,##0.00',
         },
       })
     })

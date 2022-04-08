@@ -47,6 +47,7 @@ describe('This Date filter test', () => {
         field={testField}
         expressionType="date"
         config={testFilterUIConfig}
+        allowMultipleValues={true}
       />
     )
     expect(screen.getAllByRole('textbox')[0]).toHaveValue('is this')
@@ -61,6 +62,7 @@ describe('This Date filter test', () => {
         field={testField}
         expressionType="date"
         config={testFilterUIConfig}
+        allowMultipleValues={true}
       />
     )
 
@@ -91,6 +93,7 @@ describe('Last Date filter test', () => {
         field={{ ...testField, type: 'date_fiscal_quarter' }}
         expressionType="date"
         config={testFilterUIConfig}
+        allowMultipleValues={true}
       />
     )
     expect(screen.getAllByRole('textbox')[0]).toHaveValue('is previous')
@@ -105,6 +108,7 @@ describe('Last Date filter test', () => {
         field={{ ...testField, type: 'date_fiscal_quarter' }}
         expressionType="date"
         config={testFilterUIConfig}
+        allowMultipleValues={true}
       />
     )
 
@@ -140,6 +144,7 @@ describe('Next Date filter test', () => {
         field={{ ...testField, type: 'date_fiscal_quarter' }}
         expressionType="date"
         config={testFilterUIConfig}
+        allowMultipleValues={true}
       />
     )
     expect(screen.getAllByRole('textbox')[0]).toHaveValue('is next')
@@ -154,6 +159,7 @@ describe('Next Date filter test', () => {
         field={{ ...testField, type: 'date_fiscal_quarter' }}
         expressionType="date"
         config={testFilterUIConfig}
+        allowMultipleValues={true}
       />
     )
 
