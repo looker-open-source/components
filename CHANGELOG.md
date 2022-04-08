@@ -10,7 +10,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Features
 
 - **InputFile:** Component added
-- **ButtonGroup/ButtonToggle:** Add ripple effect
+- **ButtonGroup / ButtonToggle:** Add ripple effect
 
 ### Bug Fixes
 
