@@ -62,6 +62,7 @@ const defaultPieFields: Fields = {
       label_short: 'Count',
       name: 'orders.count',
       sortable: true,
+      type: 'count_distinct',
       view: 'orders',
       view_label: 'Orders',
       value_format: null,

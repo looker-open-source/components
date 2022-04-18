@@ -47,11 +47,51 @@ const resources = {
     'is on or after': 'şu tarihte veya şu tarihten sonra:',
     'is previous unitLabel': 'önceki {{unitLabel}}',
     'is type unitLabel': '{{type}} {{unitLabel}}',
+    next: 'ileri',
     'prefix interval timePassed': '{{prefix}} {{interval}} {{timePassed}}',
     'prefix now': '{{prefix}} şimdi',
+    this: 'bu',
     'this startInterval to endInterval':
       'bu {{startInterval}} - {{endInterval}}',
     'value complete unitLabel': '{{value}}{{complete}} {{unitLabel}}',
+  },
+  describe_is_any_value: {
+    'any value': 'herhangi bir değer',
+  },
+  describe_is_item: {
+    'is not value': '{{value}} değil',
+    'is value': '{{value}}',
+  },
+  describe_location: {
+    'coords1 to coords2': '{{coords1}} - {{coords2}}',
+    'distance unit from lat, lon':
+      '{{distance}} {{unit}} şuradan: {{lat}}, {{lon}}',
+    'is anywhere': 'her yerde',
+    'is not null': 'değer içeriyor',
+    'is null': 'değer içermiyor',
+    'lat degrees north': '{{lat}}°N',
+    'lat degrees south': '{{lat}}°S',
+    'lon degrees east': '{{lon}}°E',
+    'lon degrees west': '{{lon}}°W',
+  },
+  describe_number: {
+    'is in range range': 'şu aralıkta: {{range}}',
+    'is not in range range': 'şu aralıkta değil: {{range}}',
+  },
+  describe_string: {
+    blank: 'boş',
+    'contains value': 'şunu içeriyor: {{value}}',
+    'does not contain value': 'şunu içermiyor: {{value}}',
+    'does not end with value': 'şununla bitmiyor: {{value}}',
+    'does not start with value': 'şununla başlamıyor: {{value}}',
+    'ends with value': 'şununla bitiyor: {{value}}',
+    'starts with value': 'şununla başlıyor: {{value}}',
+  },
+  get_distance_unit_labels: {
+    feet: 'feet',
+    kilometers: 'kilometre',
+    meters: 'metre',
+    miles: 'mil',
   },
   get_months: {
     April: 'Nisan',
@@ -108,6 +148,9 @@ const resources = {
     weeks: 'hafta',
     year: 'yıl',
     years: 'yıl',
+  },
+  join_or: {
+    'a or b': '{{a}} veya {{b}}',
   },
   summary: {
     'Value required': 'Değer gerekli',

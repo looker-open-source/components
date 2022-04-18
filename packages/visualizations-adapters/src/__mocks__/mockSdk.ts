@@ -39,6 +39,16 @@ import type { SDKResponse } from '@looker/sdk-rtl'
 export type Response = SDKResponse<any, any>
 
 export const mockSDK = ({
+  create_query: () =>
+    Promise.resolve({
+      ok: true,
+      value: {
+        id: 126,
+        vis_config: mockSdkConfigResponse,
+        model: 'thelook',
+        view: 'orders',
+      },
+    }),
   dashboard: () =>
     Promise.resolve({
       ok: true,

@@ -24,11 +24,11 @@
 
  */
 
-import { useTranslation } from 'react-i18next'
 import type { FC } from 'react'
 import React from 'react'
 import styled from 'styled-components'
 import { Select } from '../Form'
+import { useTranslation } from '../utils'
 
 export interface PageSizeProps {
   className?: string

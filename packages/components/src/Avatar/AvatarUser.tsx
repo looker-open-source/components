@@ -24,11 +24,11 @@
 
  */
 
-import { useTranslation } from 'react-i18next'
 import type { FC } from 'react'
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { omitStyledProps, shouldForwardProp } from '@looker/design-tokens'
+import { useTranslation } from '../utils'
 import type { AvatarProps } from './Avatar'
 import { avatarCSS } from './Avatar'
 

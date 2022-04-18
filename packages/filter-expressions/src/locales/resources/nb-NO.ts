@@ -47,11 +47,50 @@ const resources = {
     'is on or after': 'er på eller etter',
     'is previous unitLabel': 'er forrige {{unitLabel}}',
     'is type unitLabel': 'er {{type}} {{unitLabel}}',
+    next: 'neste',
     'prefix interval timePassed': '{{prefix}} {{interval}} {{timePassed}}',
     'prefix now': '{{prefix}} nå',
+    this: 'denne',
     'this startInterval to endInterval':
       'denne {{startInterval}} til {{endInterval}}',
     'value complete unitLabel': '{{value}}{{complete}} {{unitLabel}}',
+  },
+  describe_is_any_value: {
+    'any value': 'enhver verdi',
+  },
+  describe_is_item: {
+    'is not value': 'er ikke {{value}}',
+    'is value': 'er {{value}}',
+  },
+  describe_location: {
+    'coords1 to coords2': '{{coords1}} til {{coords2}}',
+    'distance unit from lat, lon': '{{distance}} {{unit}} fra {{lat}}, {{lon}}',
+    'is anywhere': 'er hvor som helst',
+    'is not null': 'er ikke null',
+    'is null': 'er null',
+    'lat degrees north': '{{lat}}°N',
+    'lat degrees south': '{{lat}}°S',
+    'lon degrees east': '{{lon}}°Ø',
+    'lon degrees west': '{{lon}}°W',
+  },
+  describe_number: {
+    'is in range range': 'er i området {{range}}',
+    'is not in range range': 'er ikke i området {{range}}',
+  },
+  describe_string: {
+    blank: 'tom',
+    'contains value': 'inneholder {{value}}',
+    'does not contain value': 'inneholder ikke {{value}}',
+    'does not end with value': 'slutter ikke med {{value}}',
+    'does not start with value': 'starter ikke med {{value}}',
+    'ends with value': 'slutter med {{value}}',
+    'starts with value': 'starter med {{value}}',
+  },
+  get_distance_unit_labels: {
+    feet: 'fot (lengdeenhet)',
+    kilometers: 'kilometer',
+    meters: 'meter',
+    miles: 'mil',
   },
   get_months: {
     April: 'April',
@@ -108,6 +147,9 @@ const resources = {
     weeks: 'uker',
     year: 'år',
     years: 'år',
+  },
+  join_or: {
+    'a or b': '{{a}} eller {{b}}',
   },
   summary: {
     'Value required': 'Verdi må angis',

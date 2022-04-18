@@ -96,12 +96,12 @@ export const FloatingLabelField = styled(
       fieldsHideLabel ||
       inline
     ) {
-      return <Field {...props} />
+      return <Field {...props} className={className} />
     }
 
     return (
       <div
-        className={`${className} ${labelPositionClass}`}
+        className={`${className} ${labelPositionClass} floating`}
         style={style}
         data-disabled={disabled}
       >
@@ -127,40 +127,42 @@ export const FloatingLabelField = styled(
     )
   }
 )`
-  display: ${({ autoResize }) => (autoResize ? 'inline-block' : 'block')};
-  opacity: ${({ disabled }) => (disabled ? DISABLED_OPACITY : '1')};
-  /* Make the top border intersect the the middle of the label */
-  padding-top: calc(${({ theme }) => theme.fontSizes.xsmall} / 2);
-  position: relative;
-  width: ${({ autoResize }) => (autoResize ? 'fit-content' : '100%')};
-  ${width}
+  &.floating {
+    display: ${({ autoResize }) => (autoResize ? 'inline-block' : 'block')};
+    opacity: ${({ disabled }) => (disabled ? DISABLED_OPACITY : '1')};
+    /* Make the top border intersect the the middle of the label */
+    padding-top: calc(${({ theme }) => theme.fontSizes.xsmall} / 2);
+    position: relative;
+    width: ${({ autoResize }) => (autoResize ? 'fit-content' : '100%')};
+    ${width}
 
-  label {
-    background: ${({ theme }) => theme.colors.field};
-    border-radius: ${({ theme }) => theme.radii.small};
-    font-size: ${({ theme }) => theme.fontSizes.xsmall};
-    /* Align with the input contents, compensate for left border */
-    left: calc(${({ theme }) => theme.space.u2} + 1px);
-    line-height: initial;
-    padding: 0 ${({ theme }) => theme.space.u1};
-    position: absolute;
-    top: 0;
-    transition: ${({ theme }) => theme.transitions.rapid}ms;
-  }
-  &.label-down {
     label {
-      font-size: ${({ theme }) => theme.fontSizes.small};
-      pointer-events: none;
-      transform: translate(var(--label-translate, 0));
+      background: ${({ theme }) => theme.colors.field};
+      border-radius: ${({ theme }) => theme.radii.small};
+      font-size: ${({ theme }) => theme.fontSizes.xsmall};
+      /* Align with the input contents, compensate for left border */
+      left: calc(${({ theme }) => theme.space.u2} + 1px);
+      line-height: initial;
+      padding: 0 ${({ theme }) => theme.space.u1};
+      position: absolute;
+      top: 0;
+      transition: ${({ theme }) => theme.transitions.rapid}ms;
     }
-    input::placeholder,
-    textarea::placeholder {
-      color: ${({ theme }) => theme.colors.field};
+    &.label-down {
+      label {
+        font-size: ${({ theme }) => theme.fontSizes.small};
+        pointer-events: none;
+        transform: translate(var(--label-translate, 0));
+      }
+      input::placeholder,
+      textarea::placeholder {
+        color: ${({ theme }) => theme.colors.field};
+      }
     }
-  }
 
-  & > ${Space} {
-    /* Align with the input contents, compensate for left border */
-    margin: 0 calc(${({ theme }) => theme.space.u3} + 1px);
+    & > ${Space} {
+      /* Align with the input contents, compensate for left border */
+      margin: 0 calc(${({ theme }) => theme.space.u3} + 1px);
+    }
   }
 `

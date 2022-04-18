@@ -24,12 +24,12 @@
 
  */
 
-import { useTranslation } from 'react-i18next'
 import type { FC, FormEvent, KeyboardEvent, ReactNode } from 'react'
 import React, { useState, useCallback, useEffect } from 'react'
 import type { StatefulColor } from '@looker/design-tokens'
 import { Button, ButtonTransparent } from '../../Button'
 import { Label, InputText } from '../../Form'
+import { useTranslation } from '../../utils'
 import { VisuallyHidden } from '../../VisuallyHidden'
 import { Dialog, DialogLayout } from '..'
 

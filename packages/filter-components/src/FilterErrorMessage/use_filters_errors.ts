@@ -24,7 +24,6 @@
 
  */
 
-import { useTranslation } from 'react-i18next'
 import some from 'lodash/some'
 import type { ValidationMessageProps } from '@looker/components'
 import type { UserAttributeWithValue } from '@looker/filter-expressions'
@@ -32,6 +31,7 @@ import {
   getExpressionType,
   getUserAttributeMatchingTypeAndExpression,
 } from '@looker/filter-expressions'
+import { useTranslation } from '../utils'
 import type { FilterProps } from '../Filter/types/filter_props'
 import { ERROR_TYPE } from '../constants'
 

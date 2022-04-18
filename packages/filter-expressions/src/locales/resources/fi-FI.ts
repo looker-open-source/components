@@ -47,11 +47,51 @@ const resources = {
     'is on or after': 'on ajankohtana tai jälkeen ajankohdan',
     'is previous unitLabel': 'on aiempi {{unitLabel}}',
     'is type unitLabel': 'on {{type}} {{unitLabel}}',
+    next: 'seuraava',
     'prefix interval timePassed': '{{prefix}} {{interval}} {{timePassed}}',
     'prefix now': '{{prefix}} nyt',
+    this: 'tämä',
     'this startInterval to endInterval':
       'tämä {{startInterval}}–{{endInterval}}',
     'value complete unitLabel': '{{value}}{{complete}} {{unitLabel}}',
+  },
+  describe_is_any_value: {
+    'any value': 'mikä tahansa arvo',
+  },
+  describe_is_item: {
+    'is not value': 'ei ole {{value}}',
+    'is value': 'on {{value}}',
+  },
+  describe_location: {
+    'coords1 to coords2': '{{coords1}} kohteeseen {{coords2}}',
+    'distance unit from lat, lon':
+      '{{distance}} {{unit}} kohteesta {{lat}}, {{lon}}',
+    'is anywhere': 'on missä tahansa',
+    'is not null': 'ei ole nolla',
+    'is null': 'on nolla',
+    'lat degrees north': '{{lat}}°N',
+    'lat degrees south': '{{lat}}°S',
+    'lon degrees east': '{{lon}}°E',
+    'lon degrees west': '{{lon}}°W',
+  },
+  describe_number: {
+    'is in range range': 'on alueella {{range}}',
+    'is not in range range': 'ei ole alueella {{range}}',
+  },
+  describe_string: {
+    blank: 'tyhjä',
+    'contains value': 'sisältää kohteen {{value}}',
+    'does not contain value': 'ei sisällä kohdetta {{value}}',
+    'does not end with value': 'ei lopu kohteella {{value}}',
+    'does not start with value': 'ei ala kohteella {{value}}',
+    'ends with value': 'loppuu kohteella {{value}}',
+    'starts with value': 'alkaa kohteella {{value}}',
+  },
+  get_distance_unit_labels: {
+    feet: 'jalkaa',
+    kilometers: 'kilometriä',
+    meters: 'metriä',
+    miles: 'mailia',
   },
   get_months: {
     April: 'Huhtikuu',
@@ -108,6 +148,9 @@ const resources = {
     weeks: 'viikkoa',
     year: 'vuosi',
     years: 'vuotta',
+  },
+  join_or: {
+    'a or b': '{{a}} tai {{b}}',
   },
   summary: {
     'Value required': 'Arvo tarvitaan',

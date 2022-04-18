@@ -24,7 +24,6 @@
 
  */
 
-import { useTranslation } from 'react-i18next'
 import type { FC, ReactNode, ReactElement } from 'react'
 import React, { useContext } from 'react'
 import styled from 'styled-components'
@@ -32,6 +31,7 @@ import { DialogContext } from '../../../Dialog/DialogContext'
 import type { ModalFooterProps } from '../../../Modal/ModalFooter/ModalFooter'
 import { ModalFooter } from '../../../Modal/ModalFooter/ModalFooter'
 import { ButtonTransparent } from '../../../Button'
+import { useTranslation } from '../../../utils'
 
 export interface PopoverFooterProps
   extends Omit<ModalFooterProps, 'secondary' | 'children'> {

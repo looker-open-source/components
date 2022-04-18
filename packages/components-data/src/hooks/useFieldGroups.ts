@@ -92,9 +92,9 @@ export const useFieldGroups = (id: number) => {
   const fetcher = async () => {
     if (id > 0 && model && view && isEmpty(allModelFields)) {
       return fetchModelExplore(model, view, sdk)
-    } else {
-      return Promise.resolve()
     }
+
+    return undefined
   }
 
   const { data: SWRData, isValidating, error } = useSWR<void | SDKResponse<

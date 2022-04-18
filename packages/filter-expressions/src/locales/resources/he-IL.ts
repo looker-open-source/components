@@ -47,11 +47,50 @@ const resources = {
     'is on or after': 'אחרי או ב-',
     'is previous unitLabel': 'קדם ל {{unitLabel}}',
     'is type unitLabel': 'ב {{type}} {{unitLabel}}',
+    next: 'הבא',
     'prefix interval timePassed': '{{prefix}} {{interval}} {{timePassed}}',
     'prefix now': '{{prefix}} כעת',
+    this: 'הזה',
     'this startInterval to endInterval':
       'הזה {{startInterval}} ל {{endInterval}}',
     'value complete unitLabel': '{{value}} {{complete}} {{unitLabel}}',
+  },
+  describe_is_any_value: {
+    'any value': 'ערך כלשהו',
+  },
+  describe_is_item: {
+    'is not value': 'אינו {{value}}',
+    'is value': 'הוא {{value}}',
+  },
+  describe_location: {
+    'coords1 to coords2': '{{coords1}} אל {{coords2}}',
+    'distance unit from lat, lon': '{{distance}} {{unit}} מ- {{lat}}, {{lon}}',
+    'is anywhere': 'בכל מקום',
+    'is not null': 'אינו Null',
+    'is null': 'Null',
+    'lat degrees north': '{{lat}}°צפון',
+    'lat degrees south': '{{lat}}°דרום',
+    'lon degrees east': '{{lon}}°מזרח',
+    'lon degrees west': '{{lon}}°מערב',
+  },
+  describe_number: {
+    'is in range range': 'נמצא בטווח {{range}}',
+    'is not in range range': 'לא נמצא בטווח {{range}}',
+  },
+  describe_string: {
+    blank: 'ריק',
+    'contains value': 'מכיל {{value}}',
+    'does not contain value': 'אינו מכיל {{value}}',
+    'does not end with value': 'אינו מסתיים ב-{{value}}',
+    'does not start with value': 'מסתיים ב-{{value}}',
+    'ends with value': 'מסתיים ב-{{value}}',
+    'starts with value': 'מתחיל ב-{{value}}',
+  },
+  get_distance_unit_labels: {
+    feet: 'רגל (מידת אורך)',
+    kilometers: 'קילומטרים',
+    meters: 'מטרים',
+    miles: 'מייל (מידת מרחק)',
   },
   get_months: {
     April: 'אפריל',
@@ -108,6 +147,9 @@ const resources = {
     weeks: 'שבועות',
     year: 'שנה',
     years: 'שנים',
+  },
+  join_or: {
+    'a or b': '{{a}} או {{b}}',
   },
   summary: {
     'Value required': 'נדרש ערך',

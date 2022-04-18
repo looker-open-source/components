@@ -32,6 +32,11 @@ import React from 'react'
 import { formatDateLabel } from '../utils'
 import type { XAxisProps } from './types'
 
+/**
+ * All tick labels longer than this will be truncated
+ */
+export const MAX_TICK_LABEL_LENGTH = 20
+
 export type TickProps = Pick<XAxisProps, 'fields' | 'valueFormat'> &
   TickRendererProps
 
@@ -54,14 +59,20 @@ export const Tick = ({
    */
   const isNumericTick = isNumeric(formattedValue)
 
+  const label = formatDateLabel({
+    dateString: formattedValue || '',
+    fields,
+  })
+  const renderedLabel =
+    label.length > MAX_TICK_LABEL_LENGTH
+      ? `${label.slice(0, MAX_TICK_LABEL_LENGTH).trim()}\u2026`
+      : label
+
   return (
     <Text {...tickProps}>
       {valueFormat && isNumericTick
         ? numeral(formattedValue).format(valueFormat)
-        : formatDateLabel({
-            dateString: formattedValue || '',
-            fields,
-          })}
+        : renderedLabel}
     </Text>
   )
 }

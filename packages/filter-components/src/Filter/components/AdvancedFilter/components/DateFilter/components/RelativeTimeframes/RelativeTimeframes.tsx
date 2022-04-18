@@ -32,7 +32,7 @@ import {
 } from '@looker/components'
 import type { FC } from 'react'
 import React, { useRef } from 'react'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from '../../../../../../../utils'
 import type { DayRange } from '../../types/day_range'
 import type {
   AllPresetTimeframes,

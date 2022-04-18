@@ -24,12 +24,11 @@
 
  */
 
-import { useTranslation } from 'react-i18next'
 import type { Ref } from 'react'
 import React, { forwardRef } from 'react'
 import { fontSize, padding, reset } from '@looker/design-tokens'
 import styled, { css } from 'styled-components'
-import { useArrowKeyNav } from '../utils'
+import { useArrowKeyNav, useTranslation } from '../utils'
 import { TabIndicator } from './TabIndicator'
 import type { TabList2Props } from './types'
 

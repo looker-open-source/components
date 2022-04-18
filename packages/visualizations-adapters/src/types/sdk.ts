@@ -55,6 +55,7 @@ export type MeasureMetadata = FieldMetadata & {
    * unique pivot value (i.e. "Orders Count: Complete").
    */
   pivoted_label?: string
+  type: string
 }
 
 export type DimensionMetadata = FieldMetadata & {

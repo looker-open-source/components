@@ -24,11 +24,11 @@
 
  */
 
-import { useTranslation } from 'react-i18next'
 import { AccountCircle } from '@styled-icons/material-outlined/AccountCircle'
 import type { Ref } from 'react'
 import React, { forwardRef } from 'react'
 import styled from 'styled-components'
+import { useTranslation } from '../utils'
 import { IconButton } from '../Button'
 import type { IconButtonProps } from '../Button'
 

@@ -24,7 +24,6 @@
 
  */
 
-import { useTranslation } from 'react-i18next'
 import type { Ref, KeyboardEvent } from 'react'
 import React, {
   forwardRef,
@@ -53,6 +52,7 @@ import {
   useMouseDragPosition,
   useReadOnlyWarn,
   usePreviousValue,
+  useTranslation,
 } from '../../../utils'
 import type { ValidationType } from '../../ValidationMessage'
 import { getPrecision, precisionRound } from './precisionUtils'

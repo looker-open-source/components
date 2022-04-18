@@ -29,4 +29,4 @@ export const isNumeric = (str?: string | number): str is string =>
   (str !== '' &&
     str !== null &&
     str !== undefined &&
-    !isNaN(parseFloat(str.replace(/\.|,/g, ''))))
+    !isNaN(Number(str.replace(/\.|,/g, ''))))

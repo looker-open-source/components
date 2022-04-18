@@ -23,7 +23,7 @@
  SOFTWARE.
 
  */
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from '../../../../utils'
 import { useUserAttributeOption } from './get_user_attribute_option'
 
 export const useStringFilterOptions = (isParameter?: boolean) => {

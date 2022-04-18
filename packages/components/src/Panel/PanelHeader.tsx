@@ -26,10 +26,10 @@
 
 import type { FC } from 'react'
 import React, { useContext } from 'react'
-import { useTranslation } from 'react-i18next'
 import { ThemeContext } from 'styled-components'
 import { ArrowBack } from '@styled-icons/material-rounded/ArrowBack'
 import { Heading } from '../Text'
+import { useTranslation } from '../utils'
 import { Space } from '../Layout'
 import { IconButton } from '../Button'
 import type { PanelBaseProps } from './types'

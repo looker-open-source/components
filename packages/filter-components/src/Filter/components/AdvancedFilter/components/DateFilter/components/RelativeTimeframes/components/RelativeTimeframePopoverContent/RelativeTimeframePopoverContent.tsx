@@ -25,7 +25,7 @@
  */
 import React from 'react'
 import { Tabs, Tab, TabList, TabPanels, TabPanel } from '@looker/components'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from '../../../../../../../../../utils'
 import type { DayRange } from '../../../../types/day_range'
 import type {
   AllPresetTimeframes,

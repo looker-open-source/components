@@ -24,7 +24,6 @@
 
  */
 
-import { useTranslation } from 'react-i18next'
 import { addYears, getYear, setMonth, setYear } from 'date-fns'
 import React, { useCallback, useEffect, useState } from 'react'
 import { ChevronLeft } from '@styled-icons/material-rounded/ChevronLeft/ChevronLeft'
@@ -34,6 +33,7 @@ import { Divider } from '../Divider'
 import { IconButton } from '../Button'
 import { InlineInputText } from '../Form'
 import { Space } from '../Layout'
+import { useTranslation } from '../utils'
 import { formatDateString } from './utils'
 import type { CalendarNavProps } from './CalendarNav'
 import { YearList } from './YearList'

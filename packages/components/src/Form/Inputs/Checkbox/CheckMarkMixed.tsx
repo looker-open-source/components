@@ -24,8 +24,8 @@
 
  */
 
-import { useTranslation } from 'react-i18next'
 import React from 'react'
+import { useTranslation } from '../../../utils'
 
 export const CheckMarkMixed = () => {
   const { t } = useTranslation('CheckMarkMixed')

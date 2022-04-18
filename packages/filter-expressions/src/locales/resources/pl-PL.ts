@@ -47,11 +47,50 @@ const resources = {
     'is on or after': 'jest w danym terminie lub po',
     'is previous unitLabel': 'jest poprzednim {{unitLabel}}',
     'is type unitLabel': 'jest {{type}} {{unitLabel}}',
+    next: 'dalej',
     'prefix interval timePassed': '{{prefix}} {{interval}} {{timePassed}}',
     'prefix now': '{{prefix}} teraz',
+    this: 'ten',
     'this startInterval to endInterval':
       'ten {{startInterval}} do {{endInterval}}',
     'value complete unitLabel': '{{value}}{{complete}} {{unitLabel}}',
+  },
+  describe_is_any_value: {
+    'any value': 'dowolna wartość',
+  },
+  describe_is_item: {
+    'is not value': 'nie jest {{value}}',
+    'is value': 'jest {{value}}',
+  },
+  describe_location: {
+    'coords1 to coords2': '{{coords1}} do {{coords2}}',
+    'distance unit from lat, lon': '{{distance}} {{unit}} z {{lat}}, {{lon}}',
+    'is anywhere': 'ma dowolną wartość',
+    'is not null': 'nie ma wartości null',
+    'is null': 'ma wartość null',
+    'lat degrees north': '{{lat}}°N',
+    'lat degrees south': '{{lat}}°S',
+    'lon degrees east': '{{lon}}°E',
+    'lon degrees west': '{{lon}}°W',
+  },
+  describe_number: {
+    'is in range range': 'mieści się w zakresie {{range}}',
+    'is not in range range': 'nie mieści się w zakresie {{range}}',
+  },
+  describe_string: {
+    blank: 'jest puste',
+    'contains value': 'zawiera {{value}}',
+    'does not contain value': 'nie zawiera {{value}}',
+    'does not end with value': 'nie kończy się na {{value}}',
+    'does not start with value': 'nie zaczyna się od {{value}}',
+    'ends with value': 'kończy się na {{value}}',
+    'starts with value': 'zaczyna się na {{value}}',
+  },
+  get_distance_unit_labels: {
+    feet: 'ft',
+    kilometers: 'km',
+    meters: 'm',
+    miles: 'mi',
   },
   get_months: {
     April: 'Kwiecień',
@@ -108,6 +147,9 @@ const resources = {
     weeks: 'tyg.',
     year: 'rok',
     years: 'lat/lata',
+  },
+  join_or: {
+    'a or b': '{{a}} lub {{b}}',
   },
   summary: {
     'Value required': 'Wartość jest wymagana',

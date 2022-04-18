@@ -43,15 +43,54 @@ const resources = {
     'is intervalStart intervalType for intervalEnd':
       'é {{intervalStart}} {{intervalType}} até {{intervalEnd}}',
     'is not null': 'não é nulo',
-    'is on dateTime': 'é em {{dateTime}}',
+    'is on dateTime': 'é a {{dateTime}}',
     'is on or after': 'é a ou depois de',
     'is previous unitLabel': 'é {{unitLabel}} anterior',
     'is type unitLabel': 'é {{type}} {{unitLabel}}',
+    next: 'seguinte',
     'prefix interval timePassed': '{{prefix}} {{interval}} {{timePassed}}',
     'prefix now': '{{prefix}} agora',
+    this: 'este',
     'this startInterval to endInterval':
       'este {{startInterval}} até {{endInterval}}',
     'value complete unitLabel': '{{value}}{{complete}} {{unitLabel}}',
+  },
+  describe_is_any_value: {
+    'any value': 'qualquer valor',
+  },
+  describe_is_item: {
+    'is not value': 'não é {{value}}',
+    'is value': 'é {{value}}',
+  },
+  describe_location: {
+    'coords1 to coords2': '{{coords1}} até {{coords2}}',
+    'distance unit from lat, lon': '{{distance}} {{unit}} de {{lat}}, {{lon}}',
+    'is anywhere': 'está em qualquer lado',
+    'is not null': 'não é nulo',
+    'is null': 'é nulo',
+    'lat degrees north': '{{lat}}° N',
+    'lat degrees south': '{{lat}}° S',
+    'lon degrees east': '{{lon}}° E',
+    'lon degrees west': '{{lon}}° O',
+  },
+  describe_number: {
+    'is in range range': 'está no intervalo {{range}}',
+    'is not in range range': 'não está no intervalo {{range}}',
+  },
+  describe_string: {
+    blank: 'vazio',
+    'contains value': 'contém {{value}}',
+    'does not contain value': 'não contém {{value}}',
+    'does not end with value': 'não acaba em {{value}}',
+    'does not start with value': 'não começa por {{value}}',
+    'ends with value': 'acaba em {{value}}',
+    'starts with value': 'começa por {{value}}',
+  },
+  get_distance_unit_labels: {
+    feet: 'pés',
+    kilometers: 'quilómetros',
+    meters: 'metros',
+    miles: 'milhas',
   },
   get_months: {
     April: 'Abril',
@@ -108,6 +147,9 @@ const resources = {
     weeks: 'semanas',
     year: 'ano',
     years: 'anos',
+  },
+  join_or: {
+    'a or b': '{{a}} ou {{b}}',
   },
   summary: {
     'Value required': 'É necessário um valor',

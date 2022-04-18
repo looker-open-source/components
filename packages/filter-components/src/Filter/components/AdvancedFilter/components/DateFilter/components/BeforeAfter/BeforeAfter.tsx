@@ -31,11 +31,11 @@ import {
 import type { ILookmlModelExploreField } from '@looker/sdk'
 import type { ChangeEvent, FC } from 'react'
 import React, { useMemo } from 'react'
-import { useTranslation } from 'react-i18next'
 import {
   useBeforeOrAfterUnits,
   useFiscalBeforeOrAfterUnits,
 } from '../../../../../../constants'
+import { useTranslation } from '../../../../../../../utils'
 import { showFiscalUnits } from '../../../../utils/show_fiscal_units'
 import { GroupSelect } from '../../../GroupSelect'
 import { DateInput } from '../DateInput'

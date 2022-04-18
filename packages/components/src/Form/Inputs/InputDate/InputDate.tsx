@@ -24,7 +24,6 @@
 
  */
 
-import { useTranslation } from 'react-i18next'
 import type { FocusEvent, FormEvent, KeyboardEvent, Ref } from 'react'
 import React, { useCallback, useState, useEffect, forwardRef } from 'react'
 import styled from 'styled-components'
@@ -34,7 +33,7 @@ import type { BorderProps, SpaceProps } from '@looker/design-tokens'
 import { format } from 'date-fns'
 import { CalendarToday } from '@styled-icons/material/CalendarToday'
 import { InputText } from '../InputText'
-import { useReadOnlyWarn, useToggle } from '../../../utils'
+import { useReadOnlyWarn, useToggle, useTranslation } from '../../../utils'
 import { formatDateString, parseDateFromString } from '../../../Calendar/utils'
 import { Calendar } from '../../../Calendar'
 import { usePopover } from '../../../Popover'

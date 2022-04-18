@@ -23,28 +23,13 @@
  SOFTWARE.
 
  */
-import { useStringFilterOptions } from './get_string_filter_options'
 
-jest.mock('@looker/i18n', () => ({
-  // this mock makes sure any components using the translate hook can use it without breaking tests
-  useTranslationBase: () => {
-    return {
-      t: (str: string) => str,
-    }
-  },
-}))
+import type { Namespace, UseTranslationOptions } from 'react-i18next'
+import { useTranslationBase } from '@looker/i18n'
 
-describe('string filter options', () => {
-  it('should only return string literal matches and user attribute match options for parameter filters', () => {
-    expect(useStringFilterOptions(true)).toStrictEqual([
-      {
-        value: 'match',
-        label: 'is',
-      },
-      {
-        label: 'matches a user attribute',
-        value: 'user_attribute',
-      },
-    ])
-  })
-})
+export const useTranslation = (
+  ns?: Namespace,
+  options?: UseTranslationOptions
+) => {
+  return useTranslationBase({}, ns, options)
+}

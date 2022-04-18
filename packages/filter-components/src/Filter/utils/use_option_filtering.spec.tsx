@@ -31,6 +31,15 @@ import {
   useDebouncedFilterTerm,
 } from './use_option_filtering'
 
+jest.mock('@looker/i18n', () => ({
+  // this mock makes sure any components using the translate hook can use it without breaking tests
+  useTranslationBase: () => {
+    return {
+      t: (str: string) => str,
+    }
+  },
+}))
+
 const options = [
   { value: 'Foo', label: 'Foo' },
   { value: 'Bar', label: 'Bar' },

@@ -75,9 +75,9 @@ export const useQueryId = (slugOrId: string | number = '') => {
       }) as Promise<ISDKSuccessResponse<IQuery>>
     } else if (querySlug && !queryId) {
       return fetchQueryId(querySlug, sdk)
-    } else {
-      return Promise.resolve()
     }
+
+    return undefined
   }
   const { data: SWRData, isValidating, error } = useSWR<void | SDKResponse<
     IQuery,

@@ -24,7 +24,6 @@
 
  */
 
-import { useTranslation } from 'react-i18next'
 import omit from 'lodash/omit'
 import styled from 'styled-components'
 import type { FC } from 'react'
@@ -39,6 +38,7 @@ import { IconButton } from '../../../Button'
 import { Chip } from '../../../Chip'
 import { Text } from '../../../Text'
 import { Popover, PopoverContent } from '../../../Popover'
+import { useTranslation } from '../../../utils'
 import { InputFiltersChip } from './InputFiltersChip'
 import { inputFilterEditor } from './inputFilterEditor'
 import type { InputFiltersProps } from './types'

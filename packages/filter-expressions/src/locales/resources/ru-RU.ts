@@ -47,11 +47,50 @@ const resources = {
     'is on or after': 'в указанную дату или после нее',
     'is previous unitLabel': 'в предыдущем {{unitLabel}}',
     'is type unitLabel': 'является {{type}} {{unitLabel}}',
+    next: 'далее',
     'prefix interval timePassed': '{{prefix}} {{interval}} {{timePassed}}',
     'prefix now': '{{prefix}} сейчас',
+    this: 'текущий',
     'this startInterval to endInterval':
       'этот {{startInterval}} до {{endInterval}}',
     'value complete unitLabel': '{{value}}{{complete}} {{unitLabel}}',
+  },
+  describe_is_any_value: {
+    'any value': 'любое значение',
+  },
+  describe_is_item: {
+    'is not value': 'не имеет значения {{value}}',
+    'is value': 'имеет значение {{value}}',
+  },
+  describe_location: {
+    'coords1 to coords2': 'от {{coords1}} до {{coords2}}',
+    'distance unit from lat, lon': '{{distance}} {{unit}} от {{lat}}, {{lon}}',
+    'is anywhere': 'находится где-либо',
+    'is not null': 'не является нулевым значением',
+    'is null': 'является нулевым значением',
+    'lat degrees north': '{{lat}}°С',
+    'lat degrees south': '{{lat}}°Ю',
+    'lon degrees east': '{{lon}}°В',
+    'lon degrees west': '{{lon}}°З',
+  },
+  describe_number: {
+    'is in range range': 'в диапазоне {{range}}',
+    'is not in range range': 'не входит в диапазон {{range}}',
+  },
+  describe_string: {
+    blank: 'не содержит данные',
+    'contains value': 'содержит {{value}}',
+    'does not contain value': 'не содержит {{value}}',
+    'does not end with value': 'не заканчивается на {{value}}',
+    'does not start with value': 'не начинается с {{value}}',
+    'ends with value': 'заканчивается на {{value}}',
+    'starts with value': 'начинается с {{value}}',
+  },
+  get_distance_unit_labels: {
+    feet: 'фут(а/ов)',
+    kilometers: 'км',
+    meters: 'м',
+    miles: 'миль(и)',
   },
   get_months: {
     April: 'Апрель',
@@ -108,6 +147,9 @@ const resources = {
     weeks: 'нед.',
     year: 'г.',
     years: 'год(а)/лет',
+  },
+  join_or: {
+    'a or b': '{{a}} или {{b}}',
   },
   summary: {
     'Value required': 'Необходимо ввести значение',

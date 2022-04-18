@@ -24,7 +24,6 @@
 
  */
 
-import { useTranslation } from 'react-i18next'
 import type { FC, ReactNode } from 'react'
 import React, { createContext, useContext, useEffect, useMemo } from 'react'
 import styled from 'styled-components'
@@ -34,7 +33,7 @@ import { ListDivider } from '../../../List/ListDivider'
 import { ListItemPreface } from '../../../ListItem/ListItemPreface'
 import type { HeadingProps } from '../../../Text'
 import { Heading, Paragraph, Text } from '../../../Text'
-import { useID } from '../../../utils'
+import { useID, useTranslation } from '../../../utils'
 import type { ComboboxOptionIndicatorProps } from '../Combobox'
 import {
   ComboboxContext,

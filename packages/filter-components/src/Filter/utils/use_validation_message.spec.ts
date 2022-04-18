@@ -26,6 +26,15 @@
 import { ERROR_TYPE } from '../../constants'
 import { useValidationMessage } from '.'
 
+jest.mock('@looker/i18n', () => ({
+  // this mock makes sure any components using the translate hook can use it without breaking tests
+  useTranslationBase: () => {
+    return {
+      t: (str: string) => str,
+    }
+  },
+}))
+
 describe('useValidationMessage', () => {
   describe('Required filter', () => {
     it('should error if required filter is on and there is no value', () => {

@@ -23,7 +23,6 @@
  SOFTWARE.
 
  */
-import { useTranslation } from 'react-i18next'
 import React from 'react'
 import { ChevronLeft } from '@styled-icons/material-rounded/ChevronLeft/ChevronLeft'
 import { ChevronRight } from '@styled-icons/material-rounded/ChevronRight/ChevronRight'
@@ -31,6 +30,7 @@ import { ArrowDropDown } from '@styled-icons/material/ArrowDropDown/ArrowDropDow
 import { getMonth, setMonth } from 'date-fns'
 import { ButtonTransparent, IconButton } from '../Button'
 import { Space } from '../Layout'
+import { useTranslation } from '../utils'
 import type { CalendarLocaleProps, NavCB } from './types'
 import { formatDateString } from './utils'
 

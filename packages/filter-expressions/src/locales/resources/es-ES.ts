@@ -47,11 +47,51 @@ const resources = {
     'is on or after': 'es el día o después de',
     'is previous unitLabel': 'es en {{unitLabel}} anterior',
     'is type unitLabel': 'es en {{type}} {{unitLabel}}',
+    next: 'siguiente',
     'prefix interval timePassed': '{{prefix}} {{interval}} {{timePassed}}',
     'prefix now': '{{prefix}} ahora',
+    this: 'este/a',
     'this startInterval to endInterval':
       'de {{startInterval}} a {{endInterval}}',
     'value complete unitLabel': '{{value}}{{complete}} {{unitLabel}}',
+  },
+  describe_is_any_value: {
+    'any value': 'cualquier valor',
+  },
+  describe_is_item: {
+    'is not value': 'no es {{value}}',
+    'is value': 'es {{value}}',
+  },
+  describe_location: {
+    'coords1 to coords2': '{{coords1}} a {{coords2}}',
+    'distance unit from lat, lon':
+      '{{distance}} {{unit}} desde {{lat}}, {{lon}}',
+    'is anywhere': 'está en cualquier lugar',
+    'is not null': 'no es nulo',
+    'is null': 'es nulo',
+    'lat degrees north': '{{lat}} N',
+    'lat degrees south': '{{lat}} S',
+    'lon degrees east': '{{lon}} E',
+    'lon degrees west': '{{lon}} O',
+  },
+  describe_number: {
+    'is in range range': 'está dentro del intervalo {{range}}',
+    'is not in range range': 'no está dentro del intervalo {{range}}',
+  },
+  describe_string: {
+    blank: 'en blanco',
+    'contains value': 'contiene {{value}}',
+    'does not contain value': 'no contiene {{value}}',
+    'does not end with value': 'no termina con {{value}}',
+    'does not start with value': 'no empieza con {{value}}',
+    'ends with value': 'termina con {{value}}',
+    'starts with value': 'empieza con {{value}}',
+  },
+  get_distance_unit_labels: {
+    feet: 'pies',
+    kilometers: 'kilómetros',
+    meters: 'metros',
+    miles: 'millas',
   },
   get_months: {
     April: 'Abril',
@@ -108,6 +148,9 @@ const resources = {
     weeks: 'semanas',
     year: 'año',
     years: 'años',
+  },
+  join_or: {
+    'a or b': '{{a}} o {{b}}',
   },
   summary: {
     'Value required': 'Se requiere un valor.',

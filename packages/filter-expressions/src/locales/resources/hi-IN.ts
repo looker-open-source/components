@@ -47,11 +47,50 @@ const resources = {
     'is on or after': 'पर या बाद में है',
     'is previous unitLabel': 'पिछला {{unitLabel}} है',
     'is type unitLabel': '{{type}} {{unitLabel}} है',
+    next: 'अगला',
     'prefix interval timePassed': '{{prefix}} {{interval}} {{timePassed}}',
     'prefix now': '{{prefix}} अब',
+    this: 'यह',
     'this startInterval to endInterval':
       'यह {{startInterval}} से {{endInterval}}',
     'value complete unitLabel': '{{value}}{{complete}} {{unitLabel}}',
+  },
+  describe_is_any_value: {
+    'any value': 'कोई भी मान',
+  },
+  describe_is_item: {
+    'is not value': '{{value}} नहीं है',
+    'is value': '{{value}} है',
+  },
+  describe_location: {
+    'coords1 to coords2': '{{coords1}} से {{coords2}}',
+    'distance unit from lat, lon': '{{lat}} से {{distance}} {{unit}}, {{lon}}',
+    'is anywhere': 'कहीं भी है',
+    'is not null': 'नल नहीं है',
+    'is null': 'नल है',
+    'lat degrees north': '{{lat}}°उत्तर',
+    'lat degrees south': '{{lat}}°दक्षिण',
+    'lon degrees east': '{{lon}}°पूर्व',
+    'lon degrees west': '{{lon}}°पश्चिम',
+  },
+  describe_number: {
+    'is in range range': '{{range}} रेंज में है',
+    'is not in range range': '{{range}} रेंज में नहीं है',
+  },
+  describe_string: {
+    blank: 'खाली है',
+    'contains value': '{{value}} शामिल है',
+    'does not contain value': '{{value}} शामिल नहीं है',
+    'does not end with value': '{{value}} के साथ समाप्त नहीं होता',
+    'does not start with value': '{{value}} से शुरू नहीं होता',
+    'ends with value': '{{value}} के साथ खत्म होता है',
+    'starts with value': '{{value}} से शुरू होता है',
+  },
+  get_distance_unit_labels: {
+    feet: 'फ़ीट',
+    kilometers: 'किलोमीटर',
+    meters: 'मीटर',
+    miles: 'मील',
   },
   get_months: {
     April: 'अप्रैल',
@@ -108,6 +147,9 @@ const resources = {
     weeks: 'सप्ताह',
     year: 'वर्ष',
     years: 'वर्ष',
+  },
+  join_or: {
+    'a or b': '{{a}} या {{b}}',
   },
   summary: {
     'Value required': 'मान दर्ज करना ज़रूरी है',

@@ -32,12 +32,12 @@ import {
 } from '@looker/filter-expressions'
 import type { FC } from 'react'
 import React from 'react'
+import { useTranslation } from '../../../../../utils'
 import type { FilterParamProps } from '../../../../types/filter_param_props'
 import { ItemLayout } from '../ItemLayout'
 import { GroupSelect } from '../GroupSelect'
 import { numberFilterTypeToFilter } from './utils/number_filter_type_to_filter'
 import { useNumberFilterOptions, useFilterOptions } from '../../utils'
-import { useTranslation } from 'react-i18next'
 
 export const NumberFilter: FC<FilterParamProps<NumberFilterType>> = ({
   item,

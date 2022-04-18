@@ -47,11 +47,50 @@ const resources = {
     'is on or after': 'อยู่ที่หรือหลัง',
     'is previous unitLabel': 'คือ {{unitLabel}} ก่อนหน้า',
     'is type unitLabel': 'คือ {{type}} {{unitLabel}}',
+    next: 'ถัดไป',
     'prefix interval timePassed': '{{prefix}} {{interval}} {{timePassed}}',
     'prefix now': '{{prefix}} ตอนนี้',
+    this: 'นี้',
     'this startInterval to endInterval':
       '{{startInterval}} นี้ถึง {{endInterval}}',
     'value complete unitLabel': '{{value}}{{complete}} {{unitLabel}}',
+  },
+  describe_is_any_value: {
+    'any value': 'ค่าใดก็ได้',
+  },
+  describe_is_item: {
+    'is not value': 'ไม่ใช่ {{value}}',
+    'is value': 'เป็น {{value}}',
+  },
+  describe_location: {
+    'coords1 to coords2': '{{coords1}} ถึง {{coords2}}',
+    'distance unit from lat, lon': '{{distance}} {{unit}} จาก {{lat}}, {{lon}}',
+    'is anywhere': 'ที่ใดก็ได้',
+    'is not null': 'ไม่เป็นค่าว่าง',
+    'is null': 'เป็นค่าว่าง',
+    'lat degrees north': '{{lat}}°N',
+    'lat degrees south': '{{lat}}°S',
+    'lon degrees east': '{{lon}}°E',
+    'lon degrees west': '{{lon}}°W',
+  },
+  describe_number: {
+    'is in range range': 'อยู่ในช่วง {{range}}',
+    'is not in range range': 'ไม่อยู่ในช่วง {{range}}',
+  },
+  describe_string: {
+    blank: 'เว้นว่าง',
+    'contains value': 'ประกอบด้วย {{value}}',
+    'does not contain value': 'ไม่ได้ประกอบด้วย {{value}}',
+    'does not end with value': 'ไม่ได้สิ้นสุดด้วย {{value}}',
+    'does not start with value': 'ไม่ได้เริ่มต้นด้วย {{value}}',
+    'ends with value': 'สิ้นสุดด้วย {{value}}',
+    'starts with value': 'เริ่มต้นด้วย {{value}}',
+  },
+  get_distance_unit_labels: {
+    feet: 'ฟุต',
+    kilometers: 'กิโลเมตร',
+    meters: 'เมตร',
+    miles: 'ไมล์',
   },
   get_months: {
     April: 'เมษายน',
@@ -108,6 +147,9 @@ const resources = {
     weeks: 'สัปดาห์',
     year: 'ปี',
     years: 'ปี',
+  },
+  join_or: {
+    'a or b': '{{a}} หรือ {{b}}',
   },
   summary: {
     'Value required': 'ต้องระบุค่า',

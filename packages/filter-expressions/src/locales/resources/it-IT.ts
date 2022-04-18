@@ -47,11 +47,50 @@ const resources = {
     'is on or after': 'è il o dopo il',
     'is previous unitLabel': 'è precedente {{unitLabel}}',
     'is type unitLabel': 'è {{type}} {{unitLabel}}',
+    next: 'avanti',
     'prefix interval timePassed': '{{prefix}} {{interval}} {{timePassed}}',
     'prefix now': '{{prefix}} ora',
+    this: 'questo',
     'this startInterval to endInterval':
       'questo {{startInterval}} fino a {{endInterval}}',
     'value complete unitLabel': '{{value}}{{complete}} {{unitLabel}}',
+  },
+  describe_is_any_value: {
+    'any value': 'qualsiasi valore',
+  },
+  describe_is_item: {
+    'is not value': 'non è {{value}}',
+    'is value': 'è {{value}}',
+  },
+  describe_location: {
+    'coords1 to coords2': '{{coords1}} a {{coords2}}',
+    'distance unit from lat, lon': '{{distance}} {{unit}} da {{lat}}, {{lon}}',
+    'is anywhere': 'è ovunque',
+    'is not null': 'non è zero',
+    'is null': 'è zero',
+    'lat degrees north': '{{lat}}°N',
+    'lat degrees south': '{{lat}}°S',
+    'lon degrees east': '{{lon}}°E',
+    'lon degrees west': '{{lon}}°O',
+  },
+  describe_number: {
+    'is in range range': "è compreso nell'intervallo {{range}}",
+    'is not in range range': "non è compreso nell'intervallo {{range}}",
+  },
+  describe_string: {
+    blank: 'vuoto',
+    'contains value': 'contiene {{value}}',
+    'does not contain value': 'non contiene {{value}}',
+    'does not end with value': 'non termina con {{value}}',
+    'does not start with value': 'non inizia con {{value}}',
+    'ends with value': 'termina con {{value}}',
+    'starts with value': 'inizia con {{value}}',
+  },
+  get_distance_unit_labels: {
+    feet: 'piedi',
+    kilometers: 'chilometri',
+    meters: 'metri',
+    miles: 'miglia',
   },
   get_months: {
     April: 'Aprile',
@@ -108,6 +147,9 @@ const resources = {
     weeks: 'settimane',
     year: 'anno',
     years: 'anni',
+  },
+  join_or: {
+    'a or b': '{{a}} oppure {{b}}',
   },
   summary: {
     'Value required': 'Valore obbligatorio',

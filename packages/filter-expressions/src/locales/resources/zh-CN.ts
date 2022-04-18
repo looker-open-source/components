@@ -47,11 +47,51 @@ const resources = {
     'is on or after': '等于或晚于',
     'is previous unitLabel': '上一 {{unitLabel}}',
     'is type unitLabel': '为 {{type}} {{unitLabel}}',
+    next: '下一步',
     'prefix interval timePassed': '{{prefix}} {{interval}} {{timePassed}}',
     'prefix now': '{{prefix}} 现在',
+    this: '此',
     'this startInterval to endInterval':
       '此 {{startInterval}} 到 {{endInterval}}',
     'value complete unitLabel': '{{value}}{{complete}} {{unitLabel}}',
+  },
+  describe_is_any_value: {
+    'any value': '任意值',
+  },
+  describe_is_item: {
+    'is not value': '不为 {{value}}',
+    'is value': '为 {{value}}',
+  },
+  describe_location: {
+    'coords1 to coords2': '{{coords1}} 至 {{coords2}}',
+    'distance unit from lat, lon':
+      '距离 {{lat}} {{distance}} {{unit}} ({{lon}})',
+    'is anywhere': '在任何地方',
+    'is not null': '不为空值',
+    'is null': '为空值',
+    'lat degrees north': '{{lat}}°N',
+    'lat degrees south': '{{lat}}°S',
+    'lon degrees east': '{{lon}}°E',
+    'lon degrees west': '{{lon}}°W',
+  },
+  describe_number: {
+    'is in range range': '在 {{range}} 范围内',
+    'is not in range range': '不在 {{range}} 范围内',
+  },
+  describe_string: {
+    blank: '空',
+    'contains value': '包含 {{value}}',
+    'does not contain value': '不包含 {{value}}',
+    'does not end with value': '结尾不为 {{value}}',
+    'does not start with value': '开头不为 {{value}}',
+    'ends with value': '结尾为 {{value}}',
+    'starts with value': '开头为 {{value}}',
+  },
+  get_distance_unit_labels: {
+    feet: '英尺',
+    kilometers: '千米',
+    meters: '米',
+    miles: '英里',
   },
   get_months: {
     April: '四月',
@@ -108,6 +148,9 @@ const resources = {
     weeks: '周',
     year: '年',
     years: '年',
+  },
+  join_or: {
+    'a or b': '{{a}} 或 {{b}}',
   },
   summary: {
     'Value required': '必须提供值',

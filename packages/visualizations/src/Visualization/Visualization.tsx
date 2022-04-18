@@ -38,7 +38,7 @@ import {
   Pie,
 } from '@looker/visualizations-visx'
 import { SingleValue } from '@looker/visualizations-single-value'
-import { ErrorBoundary } from '@looker/visualizations-adapters'
+import { ErrorBoundary, i18Noop } from '@looker/visualizations-adapters'
 import type {
   ChartLayoutProps,
   VisWrapperProps,
@@ -86,6 +86,14 @@ const VisualizationComponent: FC<VisualizationProps> = ({
   totals,
   config,
 }) => {
+  if (fields?.measures.some(measure => measure.type === 'date')) {
+    throw new Error(
+      i18Noop(
+        "Your query includes a measure of type 'date'. Measures of type 'date' are currently not supported."
+      )
+    )
+  }
+
   if (
     config?.type &&
     fields?.measures.length &&

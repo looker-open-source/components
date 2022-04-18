@@ -120,7 +120,10 @@ module.exports = {
         '',
         ' MIT License',
         '',
-        ' Copyright (c) 2022 Looker Data Sciences, Inc.',
+        {
+          pattern: ' Copyright \\(c\\) 20\\d{2} Looker Data Sciences, Inc.',
+          template: ' Copyright (c) 2022 Looker Data Sciences, Inc.',
+        },
         '',
         ' Permission is hereby granted, free of charge, to any person obtaining a copy',
         ' of this software and associated documentation files (the "Software"), to deal',
