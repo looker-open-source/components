@@ -2,10 +2,10 @@
 # Alterations to CHANGELOG will trigger documentation deployment.
 # Changes should only be made at release time
 #
-CHANGELOG @lukelooker @mdodgelooker
+CHANGELOG @treshugart @mdodgelooker
 
 #
 # filter & visualization package changes should generally only happen "upstream"
 #
-/packages/filter* @lukelooker @mdodgelooker @dbchristopher
-/packages/visualizations* @lukelooker @mdodgelooker @dbchristopher
+/packages/filter* @treshugart @mdodgelooker @dbchristopher
+/packages/visualizations* @treshugart @mdodgelooker @dbchristopher
