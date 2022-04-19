@@ -2,19 +2,19 @@
   "name": "@looker/visualizations-single-value",
   "license": "MIT",
   "main": "src/index.ts",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "publishConfig": {
     "access": "public"
   },
   "sideEffects": false,
   "dependencies": {
-    "@looker/visualizations-adapters": "^0.1.10",
+    "@looker/visualizations-adapters": "^0.1.11",
     "numeral": "2.0.6"
   },
   "devDependencies": {
-    "@looker/components-test-utils": "^1.5.20",
-    "@looker/eslint-config-oss": "^1.7.15",
-    "@looker/stylelint-config": "^1.5.13",
+    "@looker/components-test-utils": "^1.5.21",
+    "@looker/eslint-config-oss": "^1.7.16",
+    "@looker/stylelint-config": "^1.5.14",
     "@testing-library/react": "*",
     "@types/numeral": "2.0.2"
   },
