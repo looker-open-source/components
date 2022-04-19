@@ -23,28 +23,24 @@
  SOFTWARE.
 
  */
-import { useStringFilterOptions } from './get_string_filter_options'
 
-jest.mock('@looker/i18n', () => ({
-  // this mock makes sure any components using the translate hook can use it without breaking tests
-  useTranslationBase: () => {
-    return {
-      t: (str: string) => str,
-    }
-  },
-}))
+import i18next from 'i18next'
+import { useTranslation as useTranslationOrig } from 'react-i18next'
+import type { Namespace, UseTranslationOptions } from 'react-i18next'
+import { i18nInitComponents } from './i18nInitComponents'
+import type { I18nStateWithDates } from './types'
 
-describe('string filter options', () => {
-  it('should only return string literal matches and user attribute match options for parameter filters', () => {
-    expect(useStringFilterOptions(true)).toStrictEqual([
-      {
-        value: 'match',
-        label: 'is',
-      },
-      {
-        label: 'matches a user attribute',
-        value: 'user_attribute',
-      },
-    ])
-  })
-})
+export const useTranslationBase = <N extends Namespace>(
+  en: Partial<I18nStateWithDates>,
+  ns?: N,
+  options?: UseTranslationOptions
+) => {
+  const firstNameSpace = en.resources && Object.keys(en.resources.en || {})[0]
+  const isEn = !i18next.language || i18next.language === 'en'
+  const enResourcesLoaded =
+    firstNameSpace && i18next.hasResourceBundle('en', firstNameSpace)
+  if (isEn && !enResourcesLoaded) {
+    i18nInitComponents(en)
+  }
+  return useTranslationOrig(ns, options)
+}

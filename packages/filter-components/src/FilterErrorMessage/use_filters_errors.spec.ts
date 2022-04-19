@@ -37,6 +37,15 @@ jest.mock('@looker/filter-expressions', () => ({
   getUserAttributeMatchingTypeAndExpression: jest.fn(),
 }))
 
+jest.mock('@looker/i18n', () => ({
+  // this mock makes sure any components using the translate hook can use it without breaking tests
+  useTranslationBase: () => {
+    return {
+      t: (str: string) => str,
+    }
+  },
+}))
+
 describe('FilterErrorMessage utils tests', () => {
   const getFilter = (overrideFilter: Partial<FilterProps> = {}) => {
     const defaultFilter: FilterProps = {

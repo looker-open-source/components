@@ -47,11 +47,50 @@ const resources = {
     'is on or after': 'je přesně nebo po',
     'is previous unitLabel': 'je předchozí {{unitLabel}}',
     'is type unitLabel': 'je {{type}} {{unitLabel}}',
+    next: 'další',
     'prefix interval timePassed': '{{prefix}} {{interval}} {{timePassed}}',
     'prefix now': '{{prefix}} nyní',
+    this: 'tato',
     'this startInterval to endInterval':
       'tento {{startInterval}} do {{endInterval}}',
     'value complete unitLabel': '{{value}}{{complete}} {{unitLabel}}',
+  },
+  describe_is_any_value: {
+    'any value': 'jakákoliv hodnota',
+  },
+  describe_is_item: {
+    'is not value': 'není {{value}}',
+    'is value': 'je {{value}}',
+  },
+  describe_location: {
+    'coords1 to coords2': '{{coords1}} do {{coords2}}',
+    'distance unit from lat, lon': '{{distance}} {{unit}} od {{lat}}, {{lon}}',
+    'is anywhere': 'je kdekoliv',
+    'is not null': 'není prázdné',
+    'is null': 'je prázdné',
+    'lat degrees north': '{{lat}}°N',
+    'lat degrees south': '{{lat}}°S',
+    'lon degrees east': '{{lon}}°E',
+    'lon degrees west': '{{lon}}°W',
+  },
+  describe_number: {
+    'is in range range': 'je v rozsahu {{range}}',
+    'is not in range range': 'není v rozsahu {{range}}',
+  },
+  describe_string: {
+    blank: 'prázdné',
+    'contains value': 'obsahuje {{value}}',
+    'does not contain value': 'neobsahuje {{value}}',
+    'does not end with value': 'nemá na konci {{value}}',
+    'does not start with value': 'nemá na začátku {{value}}',
+    'ends with value': 'má na konci {{value}}',
+    'starts with value': 'má na začátku {{value}}',
+  },
+  get_distance_unit_labels: {
+    feet: 'st.',
+    kilometers: 'km',
+    meters: 'm',
+    miles: 'míle',
   },
   get_months: {
     April: 'Duben',
@@ -108,6 +147,9 @@ const resources = {
     weeks: 'týdny/ů',
     year: 'rok',
     years: 'roky/ů',
+  },
+  join_or: {
+    'a or b': '{{a}} nebo {{b}}',
   },
   summary: {
     'Value required': 'Hodnota je povinná',

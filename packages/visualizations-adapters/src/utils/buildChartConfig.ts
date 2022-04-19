@@ -53,7 +53,7 @@ type ChartConfigArgs = {
  * @returns
  */
 export const buildChartConfig = (args: ChartConfigArgs) => {
-  const isDataValid = args.data?.length && args.fields?.measures.length
+  const isDataValid = args.data?.length && args.fields?.measures?.length
 
   const { config } = flow([
     normalizeChartTypes,

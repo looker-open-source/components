@@ -24,7 +24,6 @@
 
  */
 
-import { useTranslation } from 'react-i18next'
 import type { ReactNode, FC } from 'react'
 import React, { useContext } from 'react'
 import styled from 'styled-components'
@@ -33,6 +32,7 @@ import { Button, ButtonTransparent } from '../../Button'
 import { Space } from '../../Layout'
 import { Menu } from '../../Menu'
 import { Span } from '../../Text'
+import { useTranslation } from '../../utils'
 import { DataTableContext } from '../DataTableContext'
 
 interface BulkActionsProps {

@@ -99,9 +99,9 @@ export const useQueryData = (id: number, agentTag?: string) => {
   const fetcher = async () => {
     if (id > 0 && isEmpty(data)) {
       return fetchQueryData(id, sdk, agentTag) as Promise<RunQueryReturnType>
-    } else {
-      return Promise.resolve()
     }
+
+    return undefined
   }
 
   const {

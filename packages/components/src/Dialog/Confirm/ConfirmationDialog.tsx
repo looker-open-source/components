@@ -24,11 +24,11 @@
 
  */
 
-import { useTranslation } from 'react-i18next'
 import type { FC, ReactElement } from 'react'
 import React, { useCallback } from 'react'
 import type { StatefulColor } from '@looker/design-tokens'
 import { Button, ButtonTransparent } from '../../Button'
+import { useTranslation } from '../../utils'
 import type { DialogProps } from '../Dialog'
 import { Dialog } from '../Dialog'
 import { ConfirmLayout } from './ConfirmLayout'

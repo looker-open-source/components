@@ -25,6 +25,7 @@
  */
 
 export * from './concatDimensions'
+export * from './dimensionToDate'
 export * from './formatDateLabel'
 export * from './getMarkerFill'
 export * from './getSeriesColor'

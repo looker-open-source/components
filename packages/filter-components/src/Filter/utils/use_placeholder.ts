@@ -24,7 +24,7 @@
 
  */
 import type { ValidationMessageProps } from '@looker/components'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from '../../utils'
 
 export const usePlaceholder = (
   value?: string | string[],

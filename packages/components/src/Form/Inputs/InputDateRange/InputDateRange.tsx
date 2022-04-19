@@ -31,13 +31,13 @@ import React, {
   useMemo,
   useState,
 } from 'react'
-import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
 import isFunction from 'lodash/isFunction'
 import isEmpty from 'lodash/isEmpty'
 import { isBefore, isSameDay } from 'date-fns'
 import type { Locale } from 'date-fns'
 import { CalendarToday } from '@styled-icons/material/CalendarToday'
+import { useTranslation } from '../../../utils'
 import type { RangeModifier } from '../../../Calendar/types'
 import { Calendar } from '../../../Calendar/Calendar'
 import { formatDateString, parseDateFromString } from '../../../Calendar/utils'

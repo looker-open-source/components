@@ -31,8 +31,8 @@ import compact from 'lodash/compact'
 import pick from 'lodash/pick'
 import type { FC } from 'react'
 import React from 'react'
-import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
+import { useTranslation } from '../../../../../utils'
 import type { StringSingleSelectProps } from '../../../../types/string_select_props'
 
 const InternalRadioGroup: FC<StringSingleSelectProps> = ({

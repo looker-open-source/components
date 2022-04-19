@@ -24,14 +24,18 @@
 
  */
 
-import { useTranslation } from 'react-i18next'
 import { densityTarget } from '@looker/design-tokens'
 import type { FC } from 'react'
 import React from 'react'
 import styled, { css } from 'styled-components'
 import { Spinner } from '../Spinner'
 import { Heading } from '../Text'
-import { useArrowKeyNav, useCallbackRef, useIsTruncated } from '../utils'
+import {
+  useArrowKeyNav,
+  useCallbackRef,
+  useIsTruncated,
+  useTranslation,
+} from '../utils'
 import {
   getNumericColumnIndices,
   numericColumnCSS,

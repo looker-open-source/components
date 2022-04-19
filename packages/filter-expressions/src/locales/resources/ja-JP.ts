@@ -47,11 +47,50 @@ const resources = {
     'is on or after': 'が次の日以降',
     'is previous unitLabel': 'が前の{{unitLabel}}である',
     'is type unitLabel': 'が次である（{{type}}{{unitLabel}}）',
+    next: '次',
     'prefix interval timePassed': '{{prefix}} {{interval}} {{timePassed}}',
     'prefix now': '{{prefix}}現在',
+    this: 'この',
     'this startInterval to endInterval':
       'この{{startInterval}}から{{endInterval}}',
     'value complete unitLabel': '{{value}}{{complete}} {{unitLabel}}',
+  },
+  describe_is_any_value: {
+    'any value': '任意の値',
+  },
+  describe_is_item: {
+    'is not value': 'が次の値でない（{{value}}）',
+    'is value': 'が次の値である（{{value}}）',
+  },
+  describe_location: {
+    'coords1 to coords2': '{{coords1}}から{{coords2}}へ',
+    'distance unit from lat, lon': '{{lat}}、{{lon}}から{{distance}}{{unit}}',
+    'is anywhere': 'がいずれかの場所にある',
+    'is not null': 'がNullでない',
+    'is null': 'がNullである',
+    'lat degrees north': '北緯{{lat}}°',
+    'lat degrees south': '南緯{{lat}}°',
+    'lon degrees east': '東経{{lon}}°',
+    'lon degrees west': '西経{{lon}}°',
+  },
+  describe_number: {
+    'is in range range': 'が次の範囲内（{{range}}）',
+    'is not in range range': 'が次の範囲外（{{range}}）',
+  },
+  describe_string: {
+    blank: '空欄',
+    'contains value': 'が次の値を含む（{{value}}）',
+    'does not contain value': 'が次の値を含まない（{{value}}）',
+    'does not end with value': 'が次の値で終わらない（{{value}}）',
+    'does not start with value': 'が次の値で始まらない（{{value}}）',
+    'ends with value': 'が次の値で終わる（{{value}}）',
+    'starts with value': 'が次の値で始まる（{{value}}）',
+  },
+  get_distance_unit_labels: {
+    feet: 'feet',
+    kilometers: 'キロメートル',
+    meters: 'メートル',
+    miles: 'マイル',
   },
   get_months: {
     April: '4月',
@@ -108,6 +147,9 @@ const resources = {
     weeks: '週',
     year: '年',
     years: '年',
+  },
+  join_or: {
+    'a or b': '{{a}}または{{b}}',
   },
   summary: {
     'Value required': '値が必須',

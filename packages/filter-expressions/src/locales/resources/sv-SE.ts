@@ -47,11 +47,51 @@ const resources = {
     'is on or after': 'är på eller efter',
     'is previous unitLabel': 'är föregående {{unitLabel}}',
     'is type unitLabel': 'är {{type}} {{unitLabel}}',
+    next: 'nästa',
     'prefix interval timePassed': '{{prefix}} {{interval}} {{timePassed}}',
     'prefix now': '{{prefix}} nu',
+    this: 'detta',
     'this startInterval to endInterval':
       'detta {{startInterval}} till {{endInterval}}',
     'value complete unitLabel': '{{value}}{{complete}} {{unitLabel}}',
+  },
+  describe_is_any_value: {
+    'any value': 'vilket värde som helst',
+  },
+  describe_is_item: {
+    'is not value': 'är inte {{value}}',
+    'is value': 'är {{value}}',
+  },
+  describe_location: {
+    'coords1 to coords2': '{{coords1}} till {{coords2}}',
+    'distance unit from lat, lon':
+      '{{distance}} {{unit}} från {{lat}}, {{lon}}',
+    'is anywhere': 'är var som helst',
+    'is not null': 'är inte null',
+    'is null': 'är null',
+    'lat degrees north': '{{lat}}°N',
+    'lat degrees south': '{{lat}}°S',
+    'lon degrees east': '{{lon}}°O',
+    'lon degrees west': '{{lon}}°V',
+  },
+  describe_number: {
+    'is in range range': 'är i intervallet {{range}}',
+    'is not in range range': 'är inte i intervallet {{range}}',
+  },
+  describe_string: {
+    blank: 'tomt',
+    'contains value': 'innehåller {{value}}',
+    'does not contain value': 'innehåller inte {{value}}',
+    'does not end with value': 'slutar inte med {{value}}',
+    'does not start with value': 'börjar inte med {{value}}',
+    'ends with value': 'slutar med {{value}}',
+    'starts with value': 'börjar med {{value}}',
+  },
+  get_distance_unit_labels: {
+    feet: 'fot',
+    kilometers: 'kilometer',
+    meters: 'meter',
+    miles: 'miles',
   },
   get_months: {
     April: 'April',
@@ -108,6 +148,9 @@ const resources = {
     weeks: 'veckor',
     year: 'år',
     years: 'år',
+  },
+  join_or: {
+    'a or b': '{{a}} eller {{b}}',
   },
   summary: {
     'Value required': 'Värde krävs',

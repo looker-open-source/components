@@ -77,9 +77,9 @@ export const useQueryMetadata = (id: number) => {
       (isEmpty(metadata.vis_config) || !metadata.model || !metadata.view)
     ) {
       return fetchQueryMetadata(id, sdk)
-    } else {
-      return Promise.resolve()
     }
+
+    return undefined
   }
 
   const { data: SWRData, isValidating, error } = useSWR<void | SDKResponse<

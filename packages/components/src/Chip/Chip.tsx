@@ -24,7 +24,6 @@
 
  */
 
-import { useTranslation } from 'react-i18next'
 import type { MaxWidthProps } from '@looker/design-tokens'
 import { maxWidth, reset } from '@looker/design-tokens'
 import type { KeyboardEvent, MouseEvent, Ref } from 'react'
@@ -32,7 +31,7 @@ import React, { forwardRef } from 'react'
 import styled from 'styled-components'
 import { Close } from '@styled-icons/material/Close'
 import type { GenericClickProps, FocusVisibleProps } from '../utils'
-import { useClickable, useWrapEvent } from '../utils'
+import { useClickable, useWrapEvent, useTranslation } from '../utils'
 import { IconButton } from '../Button/IconButton'
 import type { SpanProps } from '../Text'
 import { Span } from '../Text'

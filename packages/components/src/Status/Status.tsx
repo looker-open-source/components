@@ -34,8 +34,8 @@ import { color, size } from '@looker/design-tokens'
 import omit from 'lodash/omit'
 import type { Ref } from 'react'
 import React, { forwardRef } from 'react'
-import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
+import { useTranslation } from '../utils'
 import type { IconProps } from '../Icon'
 
 export type StatusIntent =

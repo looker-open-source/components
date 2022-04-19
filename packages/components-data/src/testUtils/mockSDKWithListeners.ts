@@ -32,9 +32,15 @@ export const sdkMethodQueryForSlugListener = jest.fn()
 export const sdkMethodDashboardListener = jest.fn()
 export const sdkMethodRunQueryListener = jest.fn()
 export const sdkMethodLookmlModelExploreListener = jest.fn()
+export const sdkMethodCreateQueryListener = jest.fn()
 
 export const mockSDKWithListeners: Partial<Looker40SDK> = {
   ...mockSDK,
+  create_query: () =>
+    (mockSDK as Looker40SDK).create_query({}).then(result => {
+      sdkMethodCreateQueryListener(result)
+      return result
+    }),
   dashboard: () =>
     (mockSDK as Looker40SDK).dashboard('1').then(result => {
       sdkMethodDashboardListener(result)

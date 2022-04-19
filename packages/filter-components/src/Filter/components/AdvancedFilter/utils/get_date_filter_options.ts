@@ -23,8 +23,8 @@
  SOFTWARE.
 
  */
+import { useTranslation } from '../../../../utils'
 import { useUserAttributeOption } from './get_user_attribute_option'
-import { useTranslation } from 'react-i18next'
 
 export const useDateFilterOptions = (isParameter: boolean) => {
   const { t } = useTranslation('get_date_filter_options')

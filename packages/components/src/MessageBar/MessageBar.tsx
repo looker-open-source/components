@@ -35,14 +35,13 @@ import noop from 'lodash/noop'
 import isUndefined from 'lodash/isUndefined'
 import type { Ref, ReactElement } from 'react'
 import React, { forwardRef, useState, useEffect } from 'react'
-import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
 import type { ButtonProps } from '../Button'
 import { IconButton, ButtonTransparent } from '../Button'
 import { Space } from '../Layout/Space'
 import type { SimpleLayoutProps } from '../Layout/utils/simple'
 import { simpleLayoutCSS } from '../Layout/utils/simple'
-import { useReadOnlyWarn } from '../utils'
+import { useReadOnlyWarn, useTranslation } from '../utils'
 import { getIntentLabel, Status } from '../Status'
 
 export type MessageBarIntent = 'critical' | 'inform' | 'positive' | 'warn'
@@ -130,7 +129,10 @@ function getPrimaryActionButton(
           onClick={onClick}
           icon={<Close />}
           size="small"
-          label={`${t('DismissIntent', { intent: getIntentLabel(t, intent) })}`}
+          label={`${t('DismissIntent', {
+            intent: getIntentLabel(t, intent),
+            ns: 'MessageBar',
+          })}`}
         />
       )
   }

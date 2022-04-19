@@ -38,9 +38,8 @@ import type {
   Fields,
   CCartesian,
 } from '@looker/visualizations-adapters'
-import { formatDateLabel } from './formatDateLabel'
-import { XAxis, YAxis } from '../Axis'
-import { getYAxisRange } from '.'
+import { MAX_TICK_LABEL_LENGTH, XAxis, XAxisDate, YAxis } from '../Axis'
+import { formatDateLabel, getYAxisRange, isDateQuery } from '.'
 import { getYAxisFormat, getXAxisFormat } from '../utils'
 
 export type UseAxisProps = {
@@ -50,21 +49,29 @@ export type UseAxisProps = {
 }
 
 /**
+ * In the event that visx decides to render a tick label of the longest length
+ * (as per pickLongestLabel), we should have a small buffer between the longest
+ * tick label and the optional axis label.
+ */
+const TICK_LABEL_TO_AXIS_LABEL_SPACER = 10
+
+/**
  * useAxis accepts chart information and outputs axes compatible with
  * a visx XYChart. It also outputs the proper margin object for the calling
  * chart component (necessary when x-axis tick labels are angled).
  */
 export const useAxis = ({ config, data, fields }: UseAxisProps) => {
   const visxTheme = useContext(VisxThemeContext)
+
   /**
-   * Need an array of formatted date strings (i.e. values as if they'd appear on the
+   * Need an array of formatted date strings (i.e. values as they'd appear on the
    * x-axis) in order to properly calculate tick spacing
    */
   const xAxisLabels = data.map(datum =>
     formatDateLabel({
       dateString: datum.dimension,
       fields,
-    })
+    }).slice(0, MAX_TICK_LABEL_LENGTH)
   )
   const xAxisLongestLabel = pickLongestLabel(xAxisLabels)
   const {
@@ -78,9 +85,9 @@ export const useAxis = ({ config, data, fields }: UseAxisProps) => {
 
   const renderXAxisTicks = config?.x_axis?.[0]?.values
   const hasRotatedXAxisLabels = renderXAxisTicks && averageLabelLength > 10
-  const angledLabelHypotenuse = Math.sqrt(
-    (xAxisLongestLabelWidth * xAxisLongestLabelWidth) / 2
-  )
+  const angledLabelHypotenuse =
+    Math.sqrt((xAxisLongestLabelWidth * xAxisLongestLabelWidth) / 2) +
+    TICK_LABEL_TO_AXIS_LABEL_SPACER
 
   const xAxisStyle = hasRotatedXAxisLabels
     ? {
@@ -98,15 +105,21 @@ export const useAxis = ({ config, data, fields }: UseAxisProps) => {
 
   const xAxisValueFormat = getXAxisFormat(fields)
 
-  const XAxisWrapped = () => (
-    <XAxis
-      showTicks={renderXAxisTicks}
-      fields={fields}
-      label={config?.x_axis?.[0]?.label || undefined}
-      valueFormat={xAxisValueFormat}
-      {...xAxisStyle}
-    />
-  )
+  const XAxisWrapped = () =>
+    isDateQuery(fields) && config.type !== 'column' ? (
+      <XAxisDate
+        label={config?.x_axis?.[0]?.label || undefined}
+        showTicks={renderXAxisTicks}
+      />
+    ) : (
+      <XAxis
+        showTicks={renderXAxisTicks}
+        fields={fields}
+        label={config?.x_axis?.[0]?.label || undefined}
+        valueFormat={xAxisValueFormat}
+        {...xAxisStyle}
+      />
+    )
 
   const renderYAxisTicks = config?.y_axis?.[0]?.values
 

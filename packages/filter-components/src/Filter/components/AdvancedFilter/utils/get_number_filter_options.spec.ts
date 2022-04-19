@@ -25,6 +25,15 @@
  */
 import { useNumberFilterOptions } from './get_number_filter_options'
 
+jest.mock('@looker/i18n', () => ({
+  // this mock makes sure any components using the translate hook can use it without breaking tests
+  useTranslationBase: () => {
+    return {
+      t: (str: string) => str,
+    }
+  },
+}))
+
 describe('number filter options', () => {
   it('should only return direct number matches and user attribute match options for parameter filters', () => {
     expect(useNumberFilterOptions(true)).toStrictEqual([

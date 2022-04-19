@@ -23,52 +23,24 @@
  SOFTWARE.
 
  */
-import { IconButton } from '@looker/components'
-import { Add } from '@styled-icons/material/Add'
-import { Close } from '@styled-icons/material/Close'
-import { useTranslation } from '../../../../../utils'
-import type { FC, MouseEvent } from 'react'
+
 import React from 'react'
+import { Axis } from '@visx/xychart'
 
-interface AddRemoveButtonsProps {
-  onAdd: (e: MouseEvent) => void
-  onRemove: (e: MouseEvent) => void
-  showAdd: boolean
-  showRemove: boolean
+export type XAxisDateProps = {
+  label?: string
+  showTicks?: boolean
 }
 
-export const AddRemoveButtons: FC<AddRemoveButtonsProps> = ({
-  onAdd,
-  onRemove,
-  showAdd,
-  showRemove,
-}) => {
-  const { t } = useTranslation('AddRemoveButtons')
-  return (
-    <>
-      {showRemove && (
-        <IconButton
-          icon={<Close />}
-          size="small"
-          ml="xsmall"
-          label={t('Remove')}
-          outline={false}
-          onClick={onRemove}
-          style={{ marginTop: '2px' }}
-        />
-      )}
-
-      {showAdd && (
-        <IconButton
-          icon={<Add />}
-          size="small"
-          ml="xsmall"
-          label={t('Add')}
-          outline={false}
-          onClick={onAdd}
-          style={{ marginTop: '2px' }}
-        />
-      )}
-    </>
-  )
-}
+/**
+ * Axis component to be used when using a time scale
+ */
+export const XAxisDate = ({ label, showTicks }: XAxisDateProps) => (
+  <Axis
+    hideTicks={!showTicks}
+    label={label}
+    labelOffset={showTicks ? undefined : 0}
+    orientation="bottom"
+    tickValues={showTicks ? undefined : []}
+  />
+)

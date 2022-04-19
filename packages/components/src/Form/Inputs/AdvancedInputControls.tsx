@@ -24,7 +24,6 @@
 
  */
 
-import { useTranslation } from 'react-i18next'
 import type { CompatibleHTMLProps } from '@looker/design-tokens'
 import { Close } from '@styled-icons/material/Close'
 import { Error } from '@styled-icons/material/Error'
@@ -37,6 +36,7 @@ import { IconButton } from '../../Button'
 import { iconButtonColor } from '../../Button/iconButtonColor'
 import { Icon } from '../../Icon'
 import { Span } from '../../Text'
+import { useTranslation } from '../../utils'
 
 export interface AdvancedInputControlsProps
   extends CompatibleHTMLProps<HTMLDivElement> {

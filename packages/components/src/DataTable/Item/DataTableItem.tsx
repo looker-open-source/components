@@ -26,12 +26,12 @@
 
 import type { FC, ReactNode } from 'react'
 import React, { useContext, useRef } from 'react'
-import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
 import type { CompatibleHTMLProps } from '@looker/design-tokens'
 import { MoreVert } from '@styled-icons/material/MoreVert'
 import { IconButton } from '../../Button'
 import { Menu } from '../../Menu'
+import { useTranslation } from '../../utils'
 import { DataTableContext } from '../DataTableContext'
 import { DataTableRow } from './DataTableRow'
 import { ItemTarget, ItemTargetGroup } from './ItemTarget'

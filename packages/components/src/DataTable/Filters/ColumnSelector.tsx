@@ -24,10 +24,10 @@
 
  */
 
-import { useTranslation } from 'react-i18next'
 import type { FC } from 'react'
 import React, { useState } from 'react'
 import { ViewColumn } from '@styled-icons/material/ViewColumn'
+import { useTranslation } from '../../utils'
 import { usePopover, PopoverContent } from '../../Popover'
 import { IconButton } from '../../Button/IconButton'
 import { CheckboxGroup } from '../../Form/Inputs/OptionsGroup'

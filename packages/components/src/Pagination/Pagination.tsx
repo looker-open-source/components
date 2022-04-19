@@ -24,7 +24,6 @@
 
  */
 
-import { useTranslation } from 'react-i18next'
 import type { FC } from 'react'
 import React from 'react'
 import styled from 'styled-components'
@@ -34,6 +33,7 @@ import { Flex } from '../Layout'
 import type { IconButtonProps } from '../Button'
 import { IconButton } from '../Button'
 import { Span } from '../Text'
+import { useTranslation } from '../utils'
 import { DoubleChevronLeft } from './DoubleChevronLeft'
 import { DoubleChevronRight } from './DoubleChevronRight'
 

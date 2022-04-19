@@ -41,6 +41,7 @@ import isArray from 'lodash/isArray'
 import get from 'lodash/get'
 import {
   concatDimensions,
+  dimensionToDate,
   getX,
   getY,
   getYAxisRange,
@@ -48,6 +49,7 @@ import {
   useAxis,
   useChartTheme,
   isValidChartData,
+  isDateQuery,
 } from '../utils'
 import { XYTooltip } from '../XYTooltip'
 import { Marker } from '../Marker'
@@ -103,7 +105,7 @@ export const Line: FC<LineProps> = ({
         >
           key={id}
           dataKey={measure.name}
-          data={formattedData}
+          data={dimensionToDate(formattedData, fields)}
           stroke={getSeriesColor(series, theme)}
           strokeWidth={line_width}
           xAccessor={(d: SDKRecord) => getX(d)}
@@ -131,7 +133,7 @@ export const Line: FC<LineProps> = ({
       // without doing this you would have to render XYChart as a child
       // of XYChart, which would then require the legend to be SVG-based
       // because HTML cannot be a child of SVG
-      xScale={{ type: 'band' }}
+      xScale={{ type: isDateQuery(fields) ? 'time' : 'band' }}
       yScale={yScale}
       theme={chartTheme}
     >

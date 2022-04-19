@@ -28,6 +28,16 @@ import { renderHook } from '@testing-library/react-hooks'
 import { AllPresetTimeframes } from '../types/relative_timeframe_types'
 import { useRelativeTimeframeToString } from './relative_timeframe_to_string'
 
+jest.mock('@looker/i18n', () => ({
+  ...jest.requireActual('@looker/i18n'),
+  // this mock makes sure any components using the translate hook can use it without breaking tests
+  useTranslationBase: () => {
+    return {
+      t: (str: string) => str,
+    }
+  },
+}))
+
 describe('Relative Timeframe to String', () => {
   it('should return the preset name for presets', () => {
     const {

@@ -54,6 +54,8 @@ import {
   isValidChartData,
   getRelativeGlyphSize,
   getDefaultGlyphSize,
+  dimensionToDate,
+  isDateQuery,
 } from '../utils'
 
 import { XYTooltip } from '../XYTooltip'
@@ -109,7 +111,7 @@ export const Scatter: FC<ScatterProps> = ({
         >
           key={id}
           dataKey={measure.name}
-          data={formattedData}
+          data={dimensionToDate(formattedData, fields)}
           xAccessor={(d: SDKRecord) => getX(d)}
           yAccessor={(d: SDKRecord) => getY(d, i)}
           size={sizeProps => {
@@ -155,7 +157,7 @@ export const Scatter: FC<ScatterProps> = ({
       // without doing this you would have to render XYChart as a child
       // of XYChart, which would then require the legend to be SVG-based
       // because HTML cannot be a child of SVG
-      xScale={{ type: 'band' }}
+      xScale={{ type: isDateQuery(fields) ? 'time' : 'band' }}
       yScale={yScale}
       theme={chartTheme}
     >

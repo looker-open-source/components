@@ -23,7 +23,7 @@
  SOFTWARE.
 
  */
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from '../../../utils'
 import type { Option } from '../../types/option'
 import { useDateUnits, useFiscalDateUnits } from './date_units'
 

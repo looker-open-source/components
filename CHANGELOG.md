@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## `@looker/components-data` 0.1.2
+
+### Features
+
+- **useCreateQuery** Hook added
+
+## `@looker/visualizations-visx` 0.2.9
+
+### Bug Fixes
+
+- Set max tick label length to prevent outliers from setting excessively large chart margins
+
+## `@looker/visualizations` 0.2.10
+
+### Bug Fixes
+
+- New error message when measures with date type are encountered
+
 # 3.0.2
 
 ## `@looker/components` 3.0.2

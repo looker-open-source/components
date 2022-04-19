@@ -47,11 +47,50 @@ const resources = {
     'is on or after': 'не раніше',
     'is previous unitLabel': 'це попередній {{unitLabel}}',
     'is type unitLabel': 'це {{type}} {{unitLabel}}',
+    next: 'далі',
     'prefix interval timePassed': '{{prefix}} {{interval}} {{timePassed}}',
     'prefix now': '{{prefix}} зараз',
+    this: 'це',
     'this startInterval to endInterval':
       'це {{startInterval}} до {{endInterval}}',
     'value complete unitLabel': '{{value}}{{complete}} {{unitLabel}}',
+  },
+  describe_is_any_value: {
+    'any value': 'будь-яке значення',
+  },
+  describe_is_item: {
+    'is not value': 'не {{value}}',
+    'is value': '{{value}}',
+  },
+  describe_location: {
+    'coords1 to coords2': '{{coords1}} до {{coords2}}',
+    'distance unit from lat, lon': '{{distance}} {{unit}} з {{lat}}, {{lon}}',
+    'is anywhere': 'будь-де',
+    'is not null': 'не має значення NULL',
+    'is null': 'має значення NULL',
+    'lat degrees north': '{{lat}}°N',
+    'lat degrees south': '{{lat}}°S',
+    'lon degrees east': '{{lon}}°E',
+    'lon degrees west': '{{lon}}°W',
+  },
+  describe_number: {
+    'is in range range': 'у діапазоні {{range}}',
+    'is not in range range': 'поза діапазоном {{range}}',
+  },
+  describe_string: {
+    blank: 'пусте',
+    'contains value': 'містить {{value}}',
+    'does not contain value': 'не містить {{value}}',
+    'does not end with value': 'не закінчується на {{value}}',
+    'does not start with value': 'не починається з {{value}}',
+    'ends with value': 'закінчується на {{value}}',
+    'starts with value': 'починається з {{value}}',
+  },
+  get_distance_unit_labels: {
+    feet: 'футів',
+    kilometers: 'км',
+    meters: 'м',
+    miles: 'миль',
   },
   get_months: {
     April: 'квітня',
@@ -108,6 +147,9 @@ const resources = {
     weeks: 'тижн',
     year: 'рік',
     years: 'р.',
+  },
+  join_or: {
+    'a or b': '{{a}} або {{b}}',
   },
   summary: {
     'Value required': 'Потрібно ввести значення',

@@ -24,7 +24,7 @@
 
  */
 
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from '../../../../../../../../utils'
 import type { AllPresetTimeframes } from '../../../types/relative_timeframe_types'
 
 export const useRelativeTimeframePresets = (): {

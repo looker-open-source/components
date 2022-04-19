@@ -33,6 +33,15 @@ import {
   useLastUnits,
 } from './this_next_last_units'
 
+jest.mock('@looker/i18n', () => ({
+  // this mock makes sure any components using the translate hook can use it without breaking tests
+  useTranslationBase: () => {
+    return {
+      t: (str: string) => str,
+    }
+  },
+}))
+
 const testSingular = (option: Option) =>
   expect(option.label).toBe(option.singular)
 

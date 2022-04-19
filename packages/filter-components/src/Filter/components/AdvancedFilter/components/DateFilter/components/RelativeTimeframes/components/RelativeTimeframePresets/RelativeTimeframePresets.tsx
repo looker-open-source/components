@@ -36,8 +36,8 @@ import { Check } from '@styled-icons/material/Check'
 import { ExpandMore } from '@styled-icons/material-rounded/ExpandMore'
 import type { FC, MouseEvent } from 'react'
 import React, { useContext, useState } from 'react'
-import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
+import { useTranslation } from '../../../../../../../../../utils'
 import type {
   AllPresetTimeframes,
   RelativeTimeframeModel,

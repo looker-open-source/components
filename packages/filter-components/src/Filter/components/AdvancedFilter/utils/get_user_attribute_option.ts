@@ -24,7 +24,7 @@
 
  */
 import { TYPE_USER_ATTRIBUTE } from '@looker/filter-expressions'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from '../../../../utils'
 
 export const useUserAttributeOption = () => {
   const { t } = useTranslation('get_user_attribute_option')

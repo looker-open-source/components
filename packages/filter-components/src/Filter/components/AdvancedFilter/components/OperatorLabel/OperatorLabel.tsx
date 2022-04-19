@@ -26,7 +26,7 @@
 import { Span } from '@looker/components'
 import type { FC } from 'react'
 import React from 'react'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from '../../../../../utils'
 
 interface OperatorLabelProps {
   value: boolean

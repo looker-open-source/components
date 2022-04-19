@@ -27,7 +27,7 @@ import type { IDashboardFilter, ILookmlModelExploreField } from '@looker/sdk'
 import type { IAPIMethods } from '@looker/sdk-rtl'
 import { model_fieldname_suggestions } from '@looker/sdk'
 import { useEffect, useState } from 'react'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from '../utils'
 import type { FilterProps } from '../Filter/types/filter_props'
 
 export interface UseSuggestableProps {

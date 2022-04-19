@@ -47,11 +47,50 @@ const resources = {
     'is on or after': 'is op of na',
     'is previous unitLabel': 'is een {{unitLabel}} eerder',
     'is type unitLabel': 'is {{type}} {{unitLabel}}',
+    next: 'volgende',
     'prefix interval timePassed': '{{prefix}} {{interval}} {{timePassed}}',
     'prefix now': '{{prefix}} nu',
+    this: 'deze',
     'this startInterval to endInterval':
       'deze {{startInterval}} tot {{endInterval}}',
     'value complete unitLabel': '{{value}}{{complete}} {{unitLabel}}',
+  },
+  describe_is_any_value: {
+    'any value': 'elke waarde',
+  },
+  describe_is_item: {
+    'is not value': 'is niet {{value}}',
+    'is value': 'is {{value}}',
+  },
+  describe_location: {
+    'coords1 to coords2': '{{coords1}} tot {{coords2}}',
+    'distance unit from lat, lon': '{{distance}} {{unit}} van {{lat}}, {{lon}}',
+    'is anywhere': 'is overal',
+    'is not null': 'is geldig',
+    'is null': 'is ongeldig',
+    'lat degrees north': '{{lat}}°N',
+    'lat degrees south': '{{lat}}°Z',
+    'lon degrees east': '{{lon}}°O',
+    'lon degrees west': '{{lon}}°W',
+  },
+  describe_number: {
+    'is in range range': 'ligt in het bereik {{range}}',
+    'is not in range range': 'ligt niet in het bereik {{range}}',
+  },
+  describe_string: {
+    blank: 'leeg',
+    'contains value': 'bevat {{value}}',
+    'does not contain value': 'bevat geen {{value}}',
+    'does not end with value': 'eindigt niet met {{value}}',
+    'does not start with value': 'begint niet met {{value}}',
+    'ends with value': 'eindigt met {{value}}',
+    'starts with value': 'begint met {{value}}',
+  },
+  get_distance_unit_labels: {
+    feet: 'feet',
+    kilometers: 'kilometer',
+    meters: 'meter',
+    miles: 'mijl',
   },
   get_months: {
     April: 'April',
@@ -108,6 +147,9 @@ const resources = {
     weeks: 'weken',
     year: 'jaar',
     years: 'jaren',
+  },
+  join_or: {
+    'a or b': '{{a}} of {{b}}',
   },
   summary: {
     'Value required': 'Waarde is vereist',

@@ -24,12 +24,11 @@
 
  */
 
-import { useTranslation } from 'react-i18next'
 import type { Ref } from 'react'
 import React, { Children, cloneElement, forwardRef } from 'react'
 import type { FontSizeProps, PaddingProps } from '@looker/design-tokens'
 import styled from 'styled-components'
-import { useArrowKeyNav } from '../utils'
+import { useArrowKeyNav, useTranslation } from '../utils'
 import { tabListCSS } from '../Tabs2/TabList2'
 
 export interface TabListProps extends PaddingProps, FontSizeProps {

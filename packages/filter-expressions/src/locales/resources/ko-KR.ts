@@ -47,11 +47,51 @@ const resources = {
     'is on or after': '이(가) 다음과 위치가 같거나 그 뒤에 옴',
     'is previous unitLabel': '이(가) 이전 {{unitLabel}}임',
     'is type unitLabel': '이(가) {{type}} {{unitLabel}}임',
+    next: '다음',
     'prefix interval timePassed': '{{prefix}} {{interval}} {{timePassed}}',
     'prefix now': '{{prefix}} 지금',
+    this: '이',
     'this startInterval to endInterval':
       '이 {{startInterval}}부터 {{endInterval}}까지',
     'value complete unitLabel': '{{value}}{{complete}} {{unitLabel}}',
+  },
+  describe_is_any_value: {
+    'any value': '모든 값',
+  },
+  describe_is_item: {
+    'is not value': '이(가) {{value}}이(가) 아님',
+    'is value': '이(가) {{value}}',
+  },
+  describe_location: {
+    'coords1 to coords2': '{{coords1}}~{{coords2}}',
+    'distance unit from lat, lon':
+      '{{distance}} {{unit}}, {{lat}}, {{lon}}부터',
+    'is anywhere': '이(가) 전체 지역에 있음',
+    'is not null': '이(가) null이 아님',
+    'is null': '이(가) null임',
+    'lat degrees north': '{{lat}}°N',
+    'lat degrees south': '{{lat}}°S',
+    'lon degrees east': '{{lon}}°E',
+    'lon degrees west': '{{lon}}°W',
+  },
+  describe_number: {
+    'is in range range': '이(가) {{range}} 범위임',
+    'is not in range range': '이(가) {{range}} 범위 아님',
+  },
+  describe_string: {
+    blank: '비어 있음',
+    'contains value': '{{value}} 포함',
+    'does not contain value': '{{value}} 포함 안 함',
+    'does not end with value': '{{value}}(으)로 종료 안 함',
+    'does not start with value': '{{value}}(으)로 시작 안 함',
+    'ends with value': '{{value}}(으)로 종료',
+    'starts with value': '{{value}}(으)로 시작',
+  },
+  get_distance_unit_labels: {
+    feet: '피트',
+    kilometers: 'km',
+    meters: 'm',
+    miles: '마일',
   },
   get_months: {
     April: '4월',
@@ -108,6 +148,9 @@ const resources = {
     weeks: '주',
     year: '년',
     years: '년',
+  },
+  join_or: {
+    'a or b': '{{a}} 또는 {{b}}',
   },
   summary: {
     'Value required': '값 필요',

@@ -25,7 +25,7 @@
  */
 import { useDebounce } from 'use-debounce'
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from '../../utils'
 import type { Option } from '../types/option'
 import { createOptions, filterOptions } from './option_utils'
 const useExtendedOptions = (

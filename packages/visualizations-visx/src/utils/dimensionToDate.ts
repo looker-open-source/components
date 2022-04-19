@@ -23,28 +23,15 @@
  SOFTWARE.
 
  */
-import { useStringFilterOptions } from './get_string_filter_options'
 
-jest.mock('@looker/i18n', () => ({
-  // this mock makes sure any components using the translate hook can use it without breaking tests
-  useTranslationBase: () => {
-    return {
-      t: (str: string) => str,
-    }
-  },
-}))
+import { parseISO } from 'date-fns'
+import type { ChartData, Fields } from '@looker/visualizations-adapters'
+import { isDateQuery } from './isDateQuery'
 
-describe('string filter options', () => {
-  it('should only return string literal matches and user attribute match options for parameter filters', () => {
-    expect(useStringFilterOptions(true)).toStrictEqual([
-      {
-        value: 'match',
-        label: 'is',
-      },
-      {
-        label: 'matches a user attribute',
-        value: 'user_attribute',
-      },
-    ])
-  })
-})
+export const dimensionToDate = (data: ChartData, fields: Fields) =>
+  isDateQuery(fields)
+    ? data.map(({ dimension, ...restDatum }) => ({
+        dimension: parseISO(dimension),
+        ...restDatum,
+      }))
+    : data

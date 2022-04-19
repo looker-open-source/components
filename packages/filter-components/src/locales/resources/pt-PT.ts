@@ -149,7 +149,7 @@ const resources = {
     'This Week': 'Esta semana',
     'This Year': 'Este ano',
     Today: 'Hoje',
-    'Year To Date': 'Ano atual',
+    'Year To Date': 'Ano até à data',
     Yesterday: 'Ontem',
   },
   get_string_filter_options: {

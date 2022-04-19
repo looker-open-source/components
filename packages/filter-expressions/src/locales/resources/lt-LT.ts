@@ -47,11 +47,50 @@ const resources = {
     'is on or after': 'yra tada ar po',
     'is previous unitLabel': 'yra ankstesnis (-ė) {{unitLabel}}',
     'is type unitLabel': 'yra {{type}} {{unitLabel}}',
+    next: 'toliau',
     'prefix interval timePassed': '{{prefix}} {{interval}} {{timePassed}}',
     'prefix now': '{{prefix}} dabar',
+    this: 'šis',
     'this startInterval to endInterval':
       'šis {{startInterval}} iki {{endInterval}}',
     'value complete unitLabel': '{{value}}{{complete}} {{unitLabel}}',
+  },
+  describe_is_any_value: {
+    'any value': 'bet kokia vertė',
+  },
+  describe_is_item: {
+    'is not value': 'nėra {{value}}',
+    'is value': 'yra {{value}}',
+  },
+  describe_location: {
+    'coords1 to coords2': '{{coords1}}–{{coords2}}',
+    'distance unit from lat, lon': '{{distance}} {{unit}} nuo {{lat}}, {{lon}}',
+    'is anywhere': 'yra bet kur',
+    'is not null': 'nėra nulis',
+    'is null': 'yra nulis',
+    'lat degrees north': '{{lat}}°N',
+    'lat degrees south': '{{lat}}°S',
+    'lon degrees east': '{{lon}}°E',
+    'lon degrees west': '{{lon}}°W',
+  },
+  describe_number: {
+    'is in range range': 'yra diapazone {{range}}',
+    'is not in range range': 'nėra diapazone {{range}}',
+  },
+  describe_string: {
+    blank: 'tuščia',
+    'contains value': 'turi {{value}}',
+    'does not contain value': 'neturi {{value}}',
+    'does not end with value': 'nesibaigia {{value}}',
+    'does not start with value': 'neprasideda {{value}}',
+    'ends with value': 'baigiasi {{value}}',
+    'starts with value': 'prasideda {{value}}',
+  },
+  get_distance_unit_labels: {
+    feet: 'pėdų',
+    kilometers: 'km',
+    meters: 'm',
+    miles: 'mylių',
   },
   get_months: {
     April: 'Balandis',
@@ -108,6 +147,9 @@ const resources = {
     weeks: 'savaitės',
     year: 'metai',
     years: 'metai',
+  },
+  join_or: {
+    'a or b': '{{a}} arba {{b}}',
   },
   summary: {
     'Value required': 'Būtina užpildyti',

@@ -64,9 +64,9 @@ export const useQueryIdFromDashboard = (dashboardId?: number) => {
   const fetcher = async () => {
     if (dashboardId && !queryId) {
       return fetchDashboard(dashboardId, sdk)
-    } else {
-      return Promise.resolve()
     }
+
+    return undefined
   }
 
   const { data: SWRData, isValidating, error } = useSWR<void | SDKResponse<

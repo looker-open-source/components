@@ -47,11 +47,50 @@ const resources = {
     'is on or after': 'ist am oder nach dem',
     'is previous unitLabel': 'ist vorherige/r/s {{unitLabel}}',
     'is type unitLabel': 'ist {{type}} {{unitLabel}}',
+    next: 'nächste(r/s)',
     'prefix interval timePassed': '{{prefix}} {{interval}} {{timePassed}}',
     'prefix now': '{{prefix}} jetzt',
+    this: 'diese(r/s)',
     'this startInterval to endInterval':
       'diese/r/s {{startInterval}} bis {{endInterval}}',
     'value complete unitLabel': '{{value}}{{complete}} {{unitLabel}}',
+  },
+  describe_is_any_value: {
+    'any value': 'beliebiger Wert',
+  },
+  describe_is_item: {
+    'is not value': 'ist nicht {{value}}',
+    'is value': 'ist {{value}}',
+  },
+  describe_location: {
+    'coords1 to coords2': '{{coords1}} bis {{coords2}}',
+    'distance unit from lat, lon': '{{distance}} {{unit}} von {{lat}}, {{lon}}',
+    'is anywhere': 'ist überall',
+    'is not null': 'ist nicht null',
+    'is null': 'ist null',
+    'lat degrees north': '{{lat}}°N',
+    'lat degrees south': '{{lat}}°S',
+    'lon degrees east': '{{lon}}°O',
+    'lon degrees west': '{{lon}}°W',
+  },
+  describe_number: {
+    'is in range range': 'befindet sich im Bereich {{range}}',
+    'is not in range range': 'befindet sich nicht im Bereich {{range}}',
+  },
+  describe_string: {
+    blank: 'leer',
+    'contains value': 'enthält {{value}}',
+    'does not contain value': 'enthält nicht {{value}}',
+    'does not end with value': 'endet nicht mit {{value}}',
+    'does not start with value': 'beginnt nicht mit {{value}}',
+    'ends with value': 'endet mit {{value}}',
+    'starts with value': 'beginnt mit {{value}}',
+  },
+  get_distance_unit_labels: {
+    feet: 'Fuß',
+    kilometers: 'Kilometer',
+    meters: 'Meter',
+    miles: 'Meilen',
   },
   get_months: {
     April: 'April',
@@ -108,6 +147,9 @@ const resources = {
     weeks: 'Wochen',
     year: 'Jahr',
     years: 'Jahre',
+  },
+  join_or: {
+    'a or b': '{{a}} oder {{b}}',
   },
   summary: {
     'Value required': 'Wert erforderlich',
