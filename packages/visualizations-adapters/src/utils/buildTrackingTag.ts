@@ -24,18 +24,10 @@
 
  */
 
-export * from './FieldCheckbox'
-export * from './FieldCheckboxGroup'
-export * from './FieldChips'
-export * from './FieldColor'
-export * from './FieldDate'
-export * from './FieldRadio'
-export * from './FieldRadioGroup'
-export * from './FieldRangeSlider'
-export * from './FieldSelect'
-export * from './FieldSelectMulti'
-export * from './FieldSlider'
-export * from './FieldText'
-export * from './FieldTextArea'
-export * from './FieldToggleSwitch'
-export * from './Field'
+import type { CAll } from '../types'
+
+/**
+ * Creates a string used internal usage tracking purposes
+ */
+export const buildTrackingTag = (type: CAll['type']) =>
+  `visualization-component--${type}`

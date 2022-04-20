@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## `@looker/components` 3.0.4
+
+### Features
+
+- **FieldDate** component
+- **FieldDateRange** component
+
+## `@looker/components-data` 0.1.3
+
+### Bug Fixes
+
+- **useVisConfig** tracks chart type that made data request
+
+## `@looker/visualizations-adapters` 0.1.12
+
+### Features
+
+- **buildTrackingTag** utility function to format tracking tags
+
+## `@looker/visualizations` 0.2.11
+
+### Bug Fixes
+
+- `Query` allows rendering of query data without any measures
+- `Visualization` allows rendering of query data without any measures
+
 ## `@looker/components-data` 0.1.2
 
 ### Features

@@ -286,7 +286,7 @@ describe('getControlFilterInfo', () => {
     })
 
     expect(tokenInfo?.Component).toBe(DateRange)
-    const { year, month, day } = tokenInfo?.props.item.start
+    const { year, month, day } = tokenInfo?.props.item.start ?? {}
     expect(year).toBe(2019)
     expect(month).toBe(9)
     expect(day).toBe(6)

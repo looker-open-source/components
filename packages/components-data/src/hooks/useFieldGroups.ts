@@ -111,9 +111,8 @@ export const useFieldGroups = (id: number) => {
    */
 
   useEffect(() => {
-    const { fields: draftModelFields } = SWRData?.ok
-      ? SWRData?.value
-      : ({} as ILookmlModelExplore)
+    const { fields: draftModelFields } =
+      (SWRData?.ok && SWRData.value) || ({} as ILookmlModelExplore)
 
     if (
       id &&

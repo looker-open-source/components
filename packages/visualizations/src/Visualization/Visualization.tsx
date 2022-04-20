@@ -94,13 +94,9 @@ const VisualizationComponent: FC<VisualizationProps> = ({
     )
   }
 
-  if (
-    config?.type &&
-    fields?.measures.length &&
-    has(chartComponentMap, config.type)
-  ) {
+  if (has(chartComponentMap, config?.type || '')) {
     const ChartComponent =
-      chartComponentMap[config.type as keyof SupportedChartTypes]
+      chartComponentMap[config?.type as keyof SupportedChartTypes]
 
     return (
       <ChartComponent
@@ -113,6 +109,8 @@ const VisualizationComponent: FC<VisualizationProps> = ({
       />
     )
   } else {
+    // eslint-disable-next-line no-console
+    console.warn(i18Noop('No supported chart type defined in config object'))
     return null
   }
 }

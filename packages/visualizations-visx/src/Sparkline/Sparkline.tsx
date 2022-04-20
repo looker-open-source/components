@@ -131,17 +131,18 @@ export const Sparkline: FC<SparklineProps> = ({
 
   const { line_width: lineWidth = 3 } = firstSeries || {}
 
-  const { dataSet, dataMin, dataMax } = data?.reduce<SparklineRenderParams>(
-    ({ dataSet, dataMin, dataMax }, d) => {
-      const val = d[firstMeasure.name]
-      return {
-        dataSet: [...dataSet, val],
-        dataMin: isNumeric(val) ? Math.min(dataMin, Number(val)) : dataMin,
-        dataMax: isNumeric(val) ? Math.max(dataMax, Number(val)) : dataMax,
-      }
-    },
-    { dataSet: [], dataMin: Infinity, dataMax: -Infinity }
-  )
+  const { dataSet, dataMin, dataMax } =
+    data?.reduce<SparklineRenderParams>(
+      ({ dataSet, dataMin, dataMax }, d) => {
+        const val = d[firstMeasure.name]
+        return {
+          dataSet: [...dataSet, val],
+          dataMin: isNumeric(val) ? Math.min(dataMin, Number(val)) : dataMin,
+          dataMax: isNumeric(val) ? Math.max(dataMax, Number(val)) : dataMax,
+        }
+      },
+      { dataSet: [], dataMin: Infinity, dataMax: -Infinity }
+    ) ?? {}
 
   const [configMin, configMax] = config?.y_axis?.[0]?.range || []
 

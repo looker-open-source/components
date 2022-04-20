@@ -168,7 +168,13 @@ export const ComboboxInternal = forwardRef(
 
     return (
       <ComboboxContext.Provider value={context}>
-        <ComboboxWrapper id={id} {...rest} isVisible={isVisible} ref={ref} />
+        <ComboboxWrapper
+          id={id}
+          {...rest}
+          isVisible={isVisible}
+          ref={ref}
+          role={rest.role}
+        />
       </ComboboxContext.Provider>
     )
   }
@@ -178,14 +184,19 @@ ComboboxInternal.displayName = 'ComboboxInternal'
 
 export const ComboboxWrapper = forwardRef(
   (
-    { isVisible, ...rest }: ComboboxBaseProps & { isVisible: boolean },
+    {
+      isVisible,
+      ...rest
+    }: ComboboxBaseProps & {
+      isVisible: boolean
+    },
     ref: Ref<HTMLDivElement>
   ) => {
     return (
       <Box2
         {...rest}
         ref={ref}
-        role="combobox"
+        role={rest.role ? rest.role : 'combobox'}
         aria-haspopup="listbox"
         aria-owns={`listbox-${rest.id}`}
         aria-expanded={isVisible}

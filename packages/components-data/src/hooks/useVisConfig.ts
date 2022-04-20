@@ -24,9 +24,13 @@
 
  */
 
-import type { CAll } from '@looker/visualizations-adapters'
+import type { CAll, RawChartType } from '@looker/visualizations-adapters'
 import merge from 'lodash/merge'
-import { buildChartConfig } from '@looker/visualizations-adapters'
+import {
+  buildChartConfig,
+  buildTrackingTag,
+  chartTypeMap,
+} from '@looker/visualizations-adapters'
 import { useQueryData, useQueryMetadata } from '.'
 
 /**
@@ -51,7 +55,15 @@ export const useVisConfig = (id: number, configOverrides?: Partial<CAll>) => {
     isPending,
   } = useQueryMetadata(id)
 
-  const { data, fields } = useQueryData(id)
+  /**
+   * Used for internal tracking purposes
+   */
+  const { type = chartTypeMap.default } = { ...vis_config, ...configOverrides }
+
+  const { data, fields } = useQueryData(
+    id,
+    buildTrackingTag(chartTypeMap[type as RawChartType])
+  )
 
   /*
    * Transform and normalize config for use in visualizations
