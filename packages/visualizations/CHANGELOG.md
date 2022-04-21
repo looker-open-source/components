@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.11](https://github.com/looker-open-source/components/compare/@looker/visualizations@0.2.10...@looker/visualizations@0.2.11) (2022-04-21)
+
+**Note:** Version bump only for package @looker/visualizations
+
+
+
+
+
 ## [0.2.10](https://github.com/looker-open-source/components/compare/@looker/visualizations@0.2.9...@looker/visualizations@0.2.10) (2022-04-19)
 
 **Note:** Version bump only for package @looker/visualizations
