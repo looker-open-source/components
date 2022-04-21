@@ -36,6 +36,7 @@ import {
 import type { CAll } from '@looker/visualizations-adapters'
 import { ProgressCircular, Space } from '@looker/components'
 import {
+  buildTrackingTag,
   sortByDateTime,
   nullValueZero,
   xAxisReversed,
@@ -96,7 +97,7 @@ export const Query: FC<QueryProps> = ({
     totals,
     isPending: isQueryDataPending,
     isOK: isQueryDataOK,
-  } = useQueryData(queryId, `visualization-component--${visConfig.type}`)
+  } = useQueryData(queryId, buildTrackingTag(visConfig.type))
 
   // derived accumulative state from all the various requests:
   const isLoading = [
@@ -122,10 +123,7 @@ export const Query: FC<QueryProps> = ({
   }
 
   const isDataValid = Boolean(
-    isEveryResponseOk &&
-      data?.length &&
-      fields?.measures?.length &&
-      fields?.dimensions
+    isEveryResponseOk && data?.length && fields?.dimensions
   )
 
   if (!isDataValid) {
@@ -144,20 +142,28 @@ export const Query: FC<QueryProps> = ({
    * Pass normalized values down to children
    */
 
-  return (
-    <>
-      {Children.map(children, child =>
-        React.isValidElement(child)
-          ? React.cloneElement(child, {
-              config: visConfig,
-              data: transformedData,
-              fields,
-              loading: isLoading,
-              ok: isEveryResponseOk,
-              totals,
-            })
-          : child
-      )}
-    </>
-  )
+  if (Children.count(children) >= 1) {
+    return (
+      <>
+        {Children.map(children, child => {
+          return React.isValidElement(child)
+            ? React.cloneElement(child, {
+                config: visConfig,
+                data: transformedData,
+                fields,
+                loading: isLoading,
+                ok: isEveryResponseOk,
+                totals,
+              })
+            : child
+        })}
+      </>
+    )
+  } else {
+    // eslint-disable-next-line no-console
+    console.warn(
+      i18Noop('Warning: No children passed to Query component. Rendering null.')
+    )
+    return null
+  }
 }

@@ -59,7 +59,7 @@ export const normalizeChartTypes: ConfigHelper<CAll> = ({
   data,
   fields,
 }) => {
-  const { type = 'default' } = config
+  const { type = chartTypeMap.default } = config
 
   const normalizedType = has(chartTypeMap, type) ? chartTypeMap[type] : type
 

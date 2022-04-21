@@ -345,7 +345,7 @@ const InputTextGroupWrapper = styled.div<InputTextGroupWrapperProps>`
   ${inputTextValidation}
 
   ${({ disabled }) => disabled && inputTextDisabled}
- 
+
   input {
     font-family: inherit;
   }

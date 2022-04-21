@@ -175,6 +175,7 @@ const InputSearchLayout = forwardRef(
         width={autoResize ? 'auto' : '100%'}
         display={autoResize ? 'inline-flex' : undefined}
         {...omitAriaAndValidationProps(props)}
+        role={props.role}
       >
         <ComboboxInput
           {...ariaProps}
