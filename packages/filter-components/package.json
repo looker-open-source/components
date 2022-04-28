@@ -12,7 +12,7 @@
     "@looker/filter-expressions": "^0.8.17",
     "@looker/i18n": "^0.1.4",
     "@looker/icons": "^1.5.17",
-    "@looker/sdk": "^22.4.0",
+    "@looker/sdk": "^22.4.2",
     "@looker/sdk-rtl": "^21.3.3",
     "@styled-icons/material": "10.34.0",
     "@styled-icons/material-outlined": "10.34.0",

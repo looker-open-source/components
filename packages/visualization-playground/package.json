@@ -1,0 +1,74 @@
+{
+  "name": "@looker/visualization-playground",
+  "main": "src/index.ts",
+  "version": "1.0.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "MIT",
+  "sideEffects": false,
+  "dependencies": {
+    "@looker/components": "*",
+    "@looker/components-data": "*",
+    "@looker/design-tokens": "*",
+    "@looker/extension-sdk-react": "^22.4.2",
+    "@looker/filter-components": "*",
+    "@looker/sdk": "^22.4.2",
+    "@looker/sdk-rtl": "^21.3.3",
+    "@looker/visualizations": "*",
+    "@styled-icons/material": "10.28.0",
+    "lodash": "4.17.21",
+    "prism-react-renderer": "1.3.1",
+    "react": "16.14.0",
+    "react-dom": "16.14.0",
+    "styled-components": "5.3.1",
+    "styled-system": "^5.1.5"
+  },
+  "devDependencies": {
+    "@looker/components-test-utils": "*",
+    "@looker/eslint-config-oss": "*",
+    "@storybook/testing-react": "0.0.22",
+    "@testing-library/react": "*",
+    "@types/styled-system": "^5.1.5"
+  },
+  "peerDependencies": {
+    "@looker/components": "1.4 - 2",
+    "@looker/components-data": "0 - 1",
+    "react": "16.11.0 - 18",
+    "react-dom": "16.11.0 - 18",
+    "styled-components": "^5.3.1"
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "@looker/eslint-config-oss"
+    ],
+    "rules": {
+      "camelcase": "off",
+      "import/order": "off",
+      "sort-keys-fix/sort-keys-fix": "off",
+      "no-restricted-imports": [
+        "error",
+        {
+          "paths": [
+            {
+              "message": "Please import icons from '@styled-icons/material/SomeIcon'",
+              "name": "@styled-icons/material"
+            },
+            {
+              "message": "Please import icons from '@styled-icons/material-outlined/SomeIcon'",
+              "name": "@styled-icons/material-outlined"
+            },
+            {
+              "message": "Please import icons from '@styled-icons/material-rounded/SomeIcon'",
+              "name": "@styled-icons/material-rounded"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "stylelint": {
+    "extends": "@looker/stylelint-config"
+  }
+}

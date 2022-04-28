@@ -69,16 +69,17 @@ export const useQueryId = (slugOrId: string | number = '') => {
   const fetcher = async () => {
     if (isNumeric(querySlug)) {
       // Already have numeric Id; skip network request
-      return Promise.resolve({
+      return (Promise.resolve({
         ok: true,
         value: { id: querySlug },
-      }) as Promise<ISDKSuccessResponse<IQuery>>
+      }) as unknown) as Promise<ISDKSuccessResponse<IQuery>>
     } else if (querySlug && !queryId) {
       return fetchQueryId(querySlug, sdk)
     }
 
     return undefined
   }
+
   const { data: SWRData, isValidating, error } = useSWR<void | SDKResponse<
     IQuery,
     IError
