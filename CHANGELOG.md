@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## `@looker/visualizations` 0.2.12
+
+### Features
+
+- `Query` component accepts a custom loading indicator
+
+## `@looker/filter-components` 0.10.19
+
+### Features
+
+- Allow selecting new values for single value string filters
+
+## `@looker/components` 3.0.5
+
+### Bug Fixes
+
+- Fixed issue where ButtonToggle component could unintentionally submit the contining form
+- InputDate today behavior
+
+## `@looker/visualization-playground` 1.0.0
+
+### Features
+
+- Brand new development and demo environment for visualization components
+
 ## `@looker/components` 3.0.4
 
 ### Features

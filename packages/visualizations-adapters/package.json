@@ -11,7 +11,7 @@
     "@looker/components": "^3.0.4",
     "@looker/components-data": "^0.1.3",
     "@looker/design-tokens": "^2.7.17",
-    "@looker/sdk": "^22.4.0",
+    "@looker/sdk": "^22.4.2",
     "@looker/sdk-rtl": "^21.3.3",
     "d3-color": "3.0.1",
     "d3-hsv": "0.1.0",

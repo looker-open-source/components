@@ -24,7 +24,7 @@
 
  */
 
-import type { FC } from 'react'
+import type { FC, ComponentType } from 'react'
 import React, { Children } from 'react'
 import flow from 'lodash/flow'
 import {
@@ -46,6 +46,7 @@ import {
 export type QueryProps = {
   /* Accept user defined config options to overwrite API response */
   config?: Partial<CAll>
+  LoadingIndicator?: ComponentType
 } & (
   | /* Restricted prop combo: use EITHER a dashboard or query, but not both */
   {
@@ -63,6 +64,7 @@ export const Query: FC<QueryProps> = ({
   dashboard,
   children,
   config: configProp,
+  LoadingIndicator,
 }) => {
   if (dashboard && query) {
     // eslint-disable-next-line no-console
@@ -117,7 +119,7 @@ export const Query: FC<QueryProps> = ({
   if (isLoading) {
     return (
       <Space justifyContent="center" p="small">
-        <ProgressCircular />
+        {LoadingIndicator ? <LoadingIndicator /> : <ProgressCircular />}
       </Space>
     )
   }

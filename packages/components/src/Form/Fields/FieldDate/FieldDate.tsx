@@ -24,7 +24,6 @@
 
  */
 
-import { getDateLocale } from '@looker/i18n'
 import type { Ref } from 'react'
 import React, { forwardRef } from 'react'
 import styled from 'styled-components'
@@ -44,22 +43,11 @@ export interface FieldDateProps
 export const FieldDate = styled(
   // eslint-disable-next-line react/display-name
   forwardRef((props: FieldDateProps, ref: Ref<HTMLInputElement>) => {
-    const {
-      dateStringFormat,
-      defaultValue,
-      id,
-      locale = getDateLocale(),
-      onChange,
-      value,
-    } = props
+    const { defaultValue, id, onChange, value } = props
     const validationMessage = useFormContext(props)
     return (
       <FloatingLabelField
         checkValueOnBlur={false}
-        description={
-          dateStringFormat ||
-          locale.formatLong?.date({ width: 'short' }).toUpperCase()
-        }
         hasValue={!!defaultValue || !!value}
         id={useID(id)}
         validationMessage={validationMessage}

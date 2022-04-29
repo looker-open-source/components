@@ -142,6 +142,10 @@ export const ControlledFloatingLabel = () => {
   )
 }
 
+ControlledFloatingLabel.parameters = {
+  storyshots: { disable: true },
+}
+
 export const FloatingLabel = Template.bind({})
 FloatingLabel.args = { ...Basic.args, externalLabel: false }
 

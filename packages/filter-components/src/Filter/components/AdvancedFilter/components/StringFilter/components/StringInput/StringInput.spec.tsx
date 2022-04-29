@@ -34,7 +34,6 @@ describe('StringInput tests', () => {
   const getMockedComponent = ({ ...props }) => (
     <StringInput
       onChange={jest.fn()}
-      onInputChange={jest.fn()}
       item={{ id: '1' } as FilterModel}
       suggestions={['Foo']}
       {...props}
@@ -53,6 +52,23 @@ describe('StringInput tests', () => {
 
       // Close popover to silence act() warning
       fireEvent.click(document)
+    })
+  })
+
+  describe('event hanlders', () => {
+    it('should hide the options popover on enter', () => {
+      const onChangeMock = jest.fn()
+      renderWithTheme(
+        getMockedComponent({
+          suggestions: ['Foo'],
+          onInputChange: onChangeMock,
+        })
+      )
+      const input = screen.getByPlaceholderText('any value')!
+      fireEvent.click(input)
+      fireEvent.change(input, { target: { value: 'bar' } })
+      fireEvent.keyDown(input, { key: 'Enter', code: 'Enter', charCode: 13 })
+      expect(screen.queryByText('Foo')).not.toBeInTheDocument()
     })
   })
 })

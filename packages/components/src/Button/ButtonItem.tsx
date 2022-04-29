@@ -99,6 +99,7 @@ const ButtonLayout = forwardRef(
         onClick={handleClick}
         value={itemValue}
         disabled={disabled}
+        type="button"
         {...omitStyledProps(props)}
         {...rippleProps}
         {...rippleHandlers}

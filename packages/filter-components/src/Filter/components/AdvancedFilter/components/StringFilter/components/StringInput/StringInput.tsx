@@ -24,7 +24,7 @@
 
  */
 import type { ValidationMessageProps } from '@looker/components'
-import { InputText, Select } from '@looker/components'
+import { InputText, InputSearch } from '@looker/components'
 import type { FilterModel } from '@looker/filter-expressions'
 import type { FC } from 'react'
 import isArray from 'lodash/isArray'
@@ -80,7 +80,16 @@ export const StringInputLayout: FC<StringInputProps> = ({
   })
 
   const handleChange = (newValue?: string) => {
+    onFilter(newValue || '')
     onChange?.(item.id, { value: [newValue] })
+  }
+
+  const comboboxInputRef = React.useRef<HTMLInputElement>(null)
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      event.preventDefault()
+      comboboxInputRef?.current?.click()
+    }
   }
 
   const placeholderProps = usePlaceholder(item.value, validationMessage)
@@ -100,15 +109,18 @@ export const StringInputLayout: FC<StringInputProps> = ({
     isArray(item.value) && item.value.length ? item.value[0] : item.value
 
   return (
-    <Select
+    <InputSearch
       {...commonProps}
       options={filteredOptions}
-      isFilterable={true}
-      onFilter={onFilter}
       noOptionsLabel={noOptionsLabel}
       indicator={false}
       isLoading={isLoading}
       value={value}
+      onKeyDown={handleKeyDown}
+      isClearable={true}
+      ref={comboboxInputRef}
+      hideSearchIcon={true}
+      openOnClick={true}
     />
   )
 }

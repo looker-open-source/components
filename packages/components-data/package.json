@@ -13,7 +13,7 @@
   ],
   "dependencies": {
     "@looker/components": "^3.0.4",
-    "@looker/sdk": "^22.4.0",
+    "@looker/sdk": "^22.4.2",
     "@looker/sdk-rtl": "^21.3.3",
     "@looker/visualizations-adapters": "^0.1.12",
     "lodash": "4.17.21",

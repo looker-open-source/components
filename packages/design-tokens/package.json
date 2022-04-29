@@ -16,6 +16,7 @@
   "devDependencies": {
     "@looker/eslint-config-oss": "^1.7.17",
     "@testing-library/react": "*",
+    "@types/styled-system": "^5.1.5",
     "csstype": "3.0.2",
     "lodash": "^4.17.20",
     "react": "16.14.0",
