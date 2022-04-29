@@ -5,7 +5,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "1.5.15",
+  "version": "1.5.16",
   "sideEffects": false,
   "dependencies": {
     "prettier": "2.2.1",
@@ -16,7 +16,5 @@
     "stylelint-order": "^4.1.0",
     "stylelint-prettier": "^1.2.0"
   },
-  "gitHead": "734f77cda8050d9eea83a187113333dfad8650ca",
-  "devDependencies": {},
-  "peerDependencies": {}
+  "gitHead": "734f77cda8050d9eea83a187113333dfad8650ca"
 }

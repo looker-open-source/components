@@ -1,7 +1,7 @@
 {
   "name": "@looker/i18n",
   "license": "MIT",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "main": "src/index.ts",
   "sideEffects": false,
   "publishConfig": {
@@ -13,7 +13,7 @@
     "react-i18next": "11.8.15"
   },
   "devDependencies": {
-    "@looker/eslint-config-oss": "^1.7.17"
+    "@looker/eslint-config-oss": "^1.7.18"
   },
   "eslintConfig": {
     "root": true,
@@ -21,6 +21,5 @@
       "@looker/eslint-config-oss"
     ]
   },
-  "gitHead": "62febc162e3e45124f403e2c84fc741f68fe6714",
-  "peerDependencies": {}
+  "gitHead": "62febc162e3e45124f403e2c84fc741f68fe6714"
 }

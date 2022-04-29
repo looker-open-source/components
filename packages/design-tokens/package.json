@@ -1,7 +1,7 @@
 {
   "name": "@looker/design-tokens",
   "license": "MIT",
-  "version": "2.7.17",
+  "version": "2.7.18",
   "main": "src/index.ts",
   "sideEffects": false,
   "publishConfig": {
@@ -14,7 +14,7 @@
     "styled-system": "^5.1.5"
   },
   "devDependencies": {
-    "@looker/eslint-config-oss": "^1.7.17",
+    "@looker/eslint-config-oss": "^1.7.18",
     "@testing-library/react": "*",
     "@types/styled-system": "^5.1.5",
     "csstype": "3.0.2",
