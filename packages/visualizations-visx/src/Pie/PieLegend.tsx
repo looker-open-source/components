@@ -33,6 +33,7 @@ import type { DefaultTheme } from 'styled-components'
 import styled, { css, ThemeContext } from 'styled-components'
 import { useMeasuredElement, useCallbackRef } from '@looker/components'
 import pick from 'lodash/pick'
+import { useTranslation } from 'react-i18next'
 import { PieLegendControls } from './PieLegendControls'
 import { getLabelContent } from './getLabelContent'
 import type { LegendOrientations } from './types'
@@ -75,10 +76,10 @@ const getLegendStyle = (
 
   return orientation === 'horizontal'
     ? {
-        display: 'grid',
+        display: `grid`,
         gridTemplateRows: `repeat(${rows}, auto )`,
         gridColumnGap: theme.space.small,
-        gridAutoFlow: 'column',
+        gridAutoFlow: `column`,
       }
     : {}
 }
@@ -91,12 +92,14 @@ export const PieLegend: FC<PieLegendProps> = ({
   height,
   width,
 }) => {
+  const { t } = useTranslation('PieLegend')
+
   // track state for scrolling through very long legends
   const [page, setPage] = useState(0)
 
   const theme = useContext(ThemeContext)
   const { position } = legendConfig || {}
-  const legendOrientation: LegendOrientations =
+  const ORIENTATION: LegendOrientations =
     position === 'top' || position === 'bottom' ? 'horizontal' : 'vertical'
 
   // find the dimensions of content and container to trigger pagination behavior
@@ -114,11 +117,9 @@ export const PieLegend: FC<PieLegendProps> = ({
     typeof DOMRect === 'function' ? containerElementRect.width : width
 
   const pageSize =
-    legendOrientation === 'horizontal'
-      ? containerWidth * 0.9
-      : containerHeight * 0.9
+    ORIENTATION === 'horizontal' ? containerWidth * 0.9 : containerHeight * 0.9
   const totalPages =
-    legendOrientation === 'horizontal'
+    ORIENTATION === 'horizontal'
       ? Math.floor(contentWidth / Math.max(pageSize, 1))
       : Math.floor(contentHeight / Math.max(pageSize, 1))
 
@@ -146,19 +147,22 @@ export const PieLegend: FC<PieLegendProps> = ({
     <LegendWrapper
       maxHeight={height}
       maxWidth={width}
-      orientation={legendOrientation}
+      orientation={ORIENTATION}
     >
       <LegendContent
         ref={containerRef}
         tabIndex={0}
         onKeyDown={handleKeyDown}
         role="figure"
-        aria-label={`Legend page ${page + 1} of ${totalPages + 1}`}
+        aria-label={t('Legend page {{page}} of {{totalPages}}', {
+          page: page + 1,
+          totalPages: totalPages + 1,
+        })}
       >
         <ContentPositioner
           pageNumber={page}
           pageSize={pageSize}
-          orientation={legendOrientation}
+          orientation={ORIENTATION}
           ref={contentRef}
         >
           <LegendOrdinal
@@ -168,14 +172,14 @@ export const PieLegend: FC<PieLegendProps> = ({
             }}
             scale={scale}
             shape="circle"
-            style={getLegendStyle(scale, legendOrientation, theme)}
+            style={getLegendStyle(scale, ORIENTATION, theme)}
           />
         </ContentPositioner>
       </LegendContent>
       <PieLegendControls
         containerRect={{ width: containerWidth, height: containerHeight }}
         contentRect={{ width: contentWidth, height: contentHeight }}
-        orientation={legendOrientation}
+        orientation={ORIENTATION}
         page={page}
         totalPages={totalPages}
         handleNextClick={handleNextPage}

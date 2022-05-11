@@ -23,16 +23,6 @@
  SOFTWARE.
 
  */
+import { en } from './resources/en'
 
-import type { Pivots } from '../types'
-import { i18Noop } from '.'
-
-export const normalizePivotLabels = (pivots: Pivots) => {
-  return pivots.map(pivot => {
-    const { key, is_total } = pivot
-    const capitalizedPivotValue = is_total
-      ? i18Noop('Row Total')
-      : key[0].toUpperCase() + key.slice(1)
-    return { ...pivot, label: capitalizedPivotValue }
-  })
-}
+export const i18nResources = { ...en.resources }

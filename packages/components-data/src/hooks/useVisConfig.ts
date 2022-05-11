@@ -29,7 +29,7 @@ import merge from 'lodash/merge'
 import {
   buildChartConfig,
   buildTrackingTag,
-  chartTypeMap,
+  CHART_TYPE_MAP,
 } from '@looker/visualizations-adapters'
 import { useQueryData, useQueryMetadata } from '.'
 
@@ -58,11 +58,14 @@ export const useVisConfig = (id: number, configOverrides?: Partial<CAll>) => {
   /**
    * Used for internal tracking purposes
    */
-  const { type = chartTypeMap.default } = { ...vis_config, ...configOverrides }
+  const { type = CHART_TYPE_MAP.default } = {
+    ...vis_config,
+    ...configOverrides,
+  }
 
   const { data, fields } = useQueryData(
     id,
-    buildTrackingTag(chartTypeMap[type as RawChartType])
+    buildTrackingTag(CHART_TYPE_MAP[type as RawChartType])
   )
 
   /*

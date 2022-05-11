@@ -36,7 +36,7 @@ import type {
   CSparkline,
   CAll,
   YAxisConfig,
-} from '@looker/visualizations'
+} from '@looker/visualizations-adapters'
 
 /**
  * A list of relevant charts that access this configuration

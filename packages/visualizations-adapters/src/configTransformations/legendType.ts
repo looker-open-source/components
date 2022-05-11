@@ -34,7 +34,7 @@ import type { ConfigHelper } from '../types'
 export const legendType: ConfigHelper<CPie> = ({ config, data, fields }) => {
   const { value_labels, legend, ...restConfig } = config
 
-  const legendType = (legend && legend.type) || value_labels || 'legend'
+  const LEGEND_TYPE = (legend && legend.type) || value_labels || 'legend'
 
   return {
     config: {
@@ -43,7 +43,7 @@ export const legendType: ConfigHelper<CPie> = ({ config, data, fields }) => {
           ? false
           : {
               ...legend,
-              type: legendType,
+              type: LEGEND_TYPE,
             },
       ...restConfig,
     },

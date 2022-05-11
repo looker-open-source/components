@@ -26,8 +26,8 @@
 import React from 'react'
 import { screen, fireEvent, waitFor } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import type { CAll } from '@looker/visualizations'
-import { mockSDK } from '@looker/visualizations'
+import type { CAll } from '@looker/visualizations-adapters'
+import { mockSDK } from '@looker/visualizations-adapters'
 import { DataProvider } from '@looker/components-data'
 import { EmbedEditor } from './'
 

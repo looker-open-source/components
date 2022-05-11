@@ -31,6 +31,7 @@ import { Grid, SpaceVertical } from '../Layout'
 import { Span } from '../Text'
 import { MonthPicker } from './MonthPicker'
 import type { ScrollableDateListItemProps, YearBaseProps } from './types'
+import { confirmToday } from './utils/dateConfirmations'
 
 export type YearProps = YearBaseProps & ScrollableDateListItemProps
 
@@ -66,6 +67,7 @@ export const Year = ({
           [...Array(12)].map((_, i) => {
             return (
               <MonthPicker
+                isTodaysMonth={confirmToday(i)}
                 key={i}
                 monthNumber={i}
                 date={date}

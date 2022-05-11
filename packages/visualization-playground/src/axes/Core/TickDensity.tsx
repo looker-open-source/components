@@ -25,7 +25,7 @@
  */
 import React, { useState } from 'react'
 import type { FormEvent } from 'react'
-import type { YAxisConfig } from '@looker/visualizations'
+import type { YAxisConfig } from '@looker/visualizations-adapters'
 import { Slider, FieldRadio, Field, useID } from '@looker/components'
 
 export type TickDensityProps = {

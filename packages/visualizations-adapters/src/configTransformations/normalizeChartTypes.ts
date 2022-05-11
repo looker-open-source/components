@@ -29,7 +29,7 @@ import type { ConfigHelper, CAll, RawApiConfigResponse } from '../types'
 
 export type RawChartType = CAll['type'] | RawApiConfigResponse['type'] | ''
 
-export const chartTypeMap: Record<RawChartType, CAll['type']> = {
+export const CHART_TYPE_MAP: Record<RawChartType, CAll['type']> = {
   '': 'default',
   area: 'area',
   bar: 'bar',
@@ -59,9 +59,9 @@ export const normalizeChartTypes: ConfigHelper<CAll> = ({
   data,
   fields,
 }) => {
-  const { type = chartTypeMap.default } = config
+  const { type = CHART_TYPE_MAP.default } = config
 
-  const normalizedType = has(chartTypeMap, type) ? chartTypeMap[type] : type
+  const normalizedType = has(CHART_TYPE_MAP, type) ? CHART_TYPE_MAP[type] : type
 
   return {
     config: { ...config, type: normalizedType },

@@ -29,7 +29,7 @@ import {
   mockSdkConfigResponse,
   mockSdkDataResponse,
 } from '../__mocks__'
-import { keysToRemove, sanitizeSDKResponse } from './sanitizeSDKResponse'
+import { KEYS_TO_REMOVE, sanitizeSDKResponse } from './sanitizeSDKResponse'
 
 describe('sanitizeSDKResponse', () => {
   test('removes appropriate properties from config object', () => {
@@ -40,7 +40,7 @@ describe('sanitizeSDKResponse', () => {
     })
 
     // ensure the final output has in fact been stripped of unsupported keys
-    keysToRemove.forEach(key =>
+    KEYS_TO_REMOVE.forEach(key =>
       expect(transformedConfig).not.toHaveProperty(key)
     )
   })

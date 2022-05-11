@@ -18,7 +18,7 @@ You'll also need to satisfy a few peer dependencies - Looker/components, React, 
 
 ## Getting Started
 
-Looker Visualization Components are designed to be used in a React environment that has been authenticated with our [API](https://docs.looker.com/reference/api-and-integration/api-getting-started), using the [Javascript SDK](https://www.npmjs.com/package/@looker/sdk). That step will be handled automatically when building within the [Looker extension framework](https://docs.looker.com/data-modeling/extension-framework/extension-framework-intro).
+Looker Visualization Components are designed to be used in a React environment that has been authenticated with our [API](https://docs.looker.com/reference/api-and-integration/api-getting-started), using the [Javascript SDK](https://developers.looker.com/api/getting-started). That step will be handled automatically when building within the [Looker extension framework](https://docs.looker.com/data-modeling/extension-framework/extension-framework-intro).
 
 ```jsx
 import { Query, Visualization } from '@looker/visualizations'
@@ -39,6 +39,24 @@ Within the `Query` component you can render any of our [standard charts](https:/
 ```
 
 For more information and advanced usage, please see the [Looker Visualization Components documentation](https://docs.looker.com/data-modeling/extension-framework/vis-components). Additionally, you can preview our list of supported configuration options at the [Looker Developer Portal](https://developers.looker.com/components/visualization-components).
+
+### i18n Locale Support
+
+In your [React app](https://reactjs.org/docs/getting-started.html), call `i18nInit` once with an optional locale object (defaults to `en`) to support localized strings. This will also initialize the locales for [`@looker/components`](https://docs.looker.com/data-modeling/extension-framework/components) as that is a dependency of our visualization components.
+
+```jsx
+import {
+  i18nInit,
+  koKR,
+} from '@looker/visualizations'
+
+// initialize once in the global scope
+i18nInit(koKR)
+
+export const App = (...) => {
+  return (...)
+}
+```
 
 ## Motivation
 

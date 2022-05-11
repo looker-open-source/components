@@ -34,7 +34,7 @@ import type {
   CTable,
   CSeriesBasic,
   CSingleValue,
-} from '@looker/visualizations'
+} from '@looker/visualizations-adapters'
 import { FieldText } from '@looker/components'
 
 /**

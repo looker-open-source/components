@@ -25,6 +25,7 @@
  */
 import type { FilterASTNode } from '../../types'
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type NodeHandler = (node: FilterASTNode, parent?: FilterASTNode) => any
 
 /**
@@ -34,6 +35,7 @@ export const inorderTraversal = (
   root: FilterASTNode,
   nodeHandler: NodeHandler
 ) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const inorder = (node: any, parent: any) => {
     if (node) {
       inorder(node.left, node)

@@ -30,7 +30,7 @@ import type {
   CScatter,
   CLineSeries,
   PointStyles,
-} from '@looker/visualizations'
+} from '@looker/visualizations-adapters'
 import { FieldSelect } from '@looker/components'
 
 /**

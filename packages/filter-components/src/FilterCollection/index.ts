@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2022 Looker Data Sciences, Inc.
+ Copyright (c) 2021 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -24,10 +24,4 @@
 
  */
 
-/**
- * noop function that will eventually be replaced by proper
- * translation at a later time. For now, we'll use this on
- * any vis component-related code that's using raw, untranslated
- * strings.
- */
-export const i18Noop = (content: string) => content
+export * from './FilterCollection'

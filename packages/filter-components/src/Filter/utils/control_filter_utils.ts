@@ -176,7 +176,8 @@ const checkboxGroupAdapter: FilterTokenAdapter<typeof CheckboxGroup> = (
   return {
     onChange,
     value,
-    options, // TODO: max: maxForFilterType('checkboxes')
+    options,
+    max: maxForFilterType('checkboxes'),
     isLoading,
   }
 }

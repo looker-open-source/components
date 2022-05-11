@@ -24,7 +24,11 @@
 
  */
 import React from 'react'
-import type { CScatter, CScatterSeries, Fields } from '@looker/visualizations'
+import type {
+  CScatter,
+  CScatterSeries,
+  Fields,
+} from '@looker/visualizations-adapters'
 import { FieldSelect } from '@looker/components'
 
 /**

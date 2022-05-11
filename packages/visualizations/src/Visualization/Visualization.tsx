@@ -38,7 +38,7 @@ import {
   Pie,
 } from '@looker/visualizations-visx'
 import { SingleValue } from '@looker/visualizations-single-value'
-import { ErrorBoundary, i18Noop } from '@looker/visualizations-adapters'
+import { ErrorBoundary } from '@looker/visualizations-adapters'
 import type {
   ChartLayoutProps,
   VisWrapperProps,
@@ -49,6 +49,7 @@ import type {
   Totals,
 } from '@looker/visualizations-adapters'
 import has from 'lodash/has'
+import { useTranslation } from '../utils'
 
 export interface VisualizationProps extends VisWrapperProps, ChartLayoutProps {
   /*
@@ -86,12 +87,10 @@ const VisualizationComponent: FC<VisualizationProps> = ({
   totals,
   config,
 }) => {
+  const { t } = useTranslation('Visualization')
+
   if (fields?.measures.some(measure => measure.type === 'date')) {
-    throw new Error(
-      i18Noop(
-        "Your query includes a measure of type 'date'. Measures of type 'date' are currently not supported."
-      )
-    )
+    throw new Error(t("Measures of type 'date' are currently not supported"))
   }
 
   if (has(chartComponentMap, config?.type || '')) {
@@ -110,7 +109,7 @@ const VisualizationComponent: FC<VisualizationProps> = ({
     )
   } else {
     // eslint-disable-next-line no-console
-    console.warn(i18Noop('No supported chart type defined in config object'))
+    console.warn(t('No supported chart type defined in config object'))
     return null
   }
 }

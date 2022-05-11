@@ -33,7 +33,7 @@ import type {
   CBar,
   CColumn,
   CScatter,
-} from '@looker/visualizations'
+} from '@looker/visualizations-adapters'
 import { FieldCheckbox } from '@looker/components'
 
 /**

@@ -28,7 +28,7 @@ import { useEffect } from 'react'
 import type { Looker40SDK, IQuery, IError } from '@looker/sdk'
 import type { SDKResponse } from '@looker/sdk-rtl'
 import {
-  normalizePivotLabels,
+  useNormalizedPivotLabels,
   buildPivotFields,
   tabularPivotResponse,
   tabularResponse,
@@ -61,7 +61,7 @@ const fetchQueryData = memoize(
     const result = await sdk.run_query(
       {
         query_id: String(id),
-        result_format: 'json_detail',
+        result_format: `json_detail`,
       },
       { agentTag }
     )
@@ -141,7 +141,7 @@ export const useQueryData = (id: number, agentTag?: string) => {
    * -----------------------------------------------------------
    */
 
-  const normalizedPivots = pivots ? normalizePivotLabels(pivots) : undefined
+  const normalizedPivots = useNormalizedPivotLabels(pivots)
 
   const normalizedFields =
     normalizedPivots && fields

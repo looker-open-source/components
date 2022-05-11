@@ -11,17 +11,20 @@
     "@looker/components": "^3.0.5",
     "@looker/components-data": "^0.1.4",
     "@looker/design-tokens": "^2.7.18",
+    "@looker/i18n": "*",
     "@looker/sdk": "^22.4.2",
     "@looker/sdk-rtl": "^21.3.3",
     "d3-color": "3.0.1",
     "d3-hsv": "0.1.0",
-    "lodash": "*"
+    "lodash": "*",
+    "react-i18next": "*"
   },
   "devDependencies": {
     "@looker/components-test-utils": "^1.5.23",
     "@looker/eslint-config-oss": "^1.7.18",
     "@looker/stylelint-config": "^1.5.16",
-    "@testing-library/react": "*"
+    "@testing-library/react": "*",
+    "@testing-library/react-hooks": "8.0.0"
   },
   "peerDependencies": {
     "react": ">= 16.11.0",

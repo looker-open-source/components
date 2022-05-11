@@ -48,6 +48,7 @@ import type {
 import { isNumeric } from '@looker/visualizations-adapters'
 import { TableMeasure } from './TableMeasure'
 import numeral from 'numeral'
+import { useTranslation } from 'react-i18next'
 
 const getMinMax = (key: string | number, data: SDKRecord) => {
   return reduce(
@@ -70,6 +71,8 @@ export const Table: FC<TableProps> = ({
   totals = {},
   width = 'auto',
 }) => {
+  const { t } = useTranslation('Table')
+
   const theme = useContext(ThemeContext)
   if (!data.length) {
     return null
@@ -205,7 +208,7 @@ export const Table: FC<TableProps> = ({
               width="1px"
               pr="small"
             >
-              Totals
+              {t('Totals')}
             </StyledTableDataCell>
             {resultKeys.map(key => {
               const val = totals[key]

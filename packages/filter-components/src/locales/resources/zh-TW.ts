@@ -61,7 +61,7 @@ const resources = {
     relative: '(相對)',
   },
   Between: {
-    AND: 'AND',
+    AND: '和',
   },
   date_units: {
     day: '天',
@@ -183,7 +183,7 @@ const resources = {
     'any value': '任何值',
   },
   OperatorLabel: {
-    AND: 'AND',
+    AND: '和',
     OR: 'OR',
   },
   past_units: {

@@ -84,7 +84,7 @@ export const Glyph = ({
       left={left}
       size={size}
       fill={fill || theme.colors.key}
-      transform={shape === 'triangle-down' ? 'rotate(180)' : ''}
+      transform={shape === `triangle-down` ? `rotate(180)` : ``}
       style={styleObj || {}}
       stroke={stroke === false ? undefined : renderedStroke}
       strokeWidth={strokeWidth()}

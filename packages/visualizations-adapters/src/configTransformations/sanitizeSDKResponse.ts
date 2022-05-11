@@ -27,7 +27,7 @@
 import omit from 'lodash/omit'
 import type { ConfigHelper, CAll } from '../types'
 
-export const keysToRemove = [
+export const KEYS_TO_REMOVE = [
   'defaults_version',
   'hidden_fields',
   'hide_legend',
@@ -82,13 +82,13 @@ export const sanitizeSDKResponse: ConfigHelper<CAll> = ({
   // Ensure that there is no overlap between keysToRemove and ValidConfigKeys.
   // This prevents accidental removal of config keys that we do intend to support.
   type IsNever<T extends never> = T
-  type MustBeNever = IsNever<ValidConfigKeys & typeof keysToRemove[number]>
+  type MustBeNever = IsNever<ValidConfigKeys & typeof KEYS_TO_REMOVE[number]>
 
   // @ts-expect-error: unused variable. just needed to do something with type MustBeNever
   const unusedVar: MustBeNever = undefined
 
   return {
-    config: omit(config, [...keysToRemove]),
+    config: omit(config, [...KEYS_TO_REMOVE]),
     data,
     fields,
   }

@@ -15,8 +15,10 @@
   "devDependencies": {
     "@looker/components-test-utils": "^1.5.23",
     "@looker/eslint-config-oss": "^1.7.18",
+    "@looker/i18n": "*",
     "@looker/stylelint-config": "^1.5.16",
-    "@testing-library/react": "*"
+    "@testing-library/react": "*",
+    "react-i18next": "*"
   },
   "peerDependencies": {
     "@looker/components": "1.4 - 3",

@@ -31,7 +31,7 @@ import type {
   CArea,
   CScatter,
   CSparkline,
-} from '@looker/visualizations'
+} from '@looker/visualizations-adapters'
 import { FieldCheckbox } from '@looker/components'
 
 /**

@@ -55,7 +55,7 @@ export const PieLabel: FC<PieLabelProps> = ({
   const connectorLength = getConnectorLength(averageAngle, outerRadius)
   const [labelX, labelY] = pointRadial(averageAngle, connectorLength)
 
-  const anchorPosition = connectorX > 0 ? 'start' : 'end'
+  const ANCHOR_POSITION = connectorX > 0 ? 'start' : 'end'
 
   return (
     <Annotation x={connectorX} y={connectorY} dx={labelX} dy={labelY}>
@@ -69,7 +69,7 @@ export const PieLabel: FC<PieLabelProps> = ({
         backgroundFill="transparent"
         backgroundPadding={{ top: 5, right: 5, bottom: 5, left: 5 }}
         showAnchorLine={false}
-        horizontalAnchor={anchorPosition}
+        horizontalAnchor={ANCHOR_POSITION}
         verticalAnchor="middle"
         title={labelContent}
       />

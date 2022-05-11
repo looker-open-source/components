@@ -135,12 +135,12 @@ export const MonthPickerNav = ({
       </Space>
       <Divider appearance="light" />
       <YearList
-        currentDate={trackYear}
-        selectedMonth={date}
-        onMonthClick={handleMonthClick}
-        onMonthChange={setTrackYear}
-        locale={locale}
         baseMonth={baseMonth}
+        currentDate={trackYear}
+        locale={locale}
+        onMonthChange={setTrackYear}
+        onMonthClick={handleMonthClick}
+        selectedMonth={date}
         setBaseMonth={setBaseMonth}
       />
     </>

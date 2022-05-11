@@ -26,7 +26,7 @@
 import React from 'react'
 import { screen, fireEvent } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { mockTableConfig } from '@looker/visualizations'
+import { mockTableConfig } from '@looker/visualizations-adapters'
 import { TruncateText } from './TruncateText'
 
 afterEach(() => {

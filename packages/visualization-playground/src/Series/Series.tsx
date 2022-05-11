@@ -35,8 +35,8 @@ import type {
   CSeriesLine,
   CSeriesSize,
   Fields,
-} from '@looker/visualizations'
-import { isNumeric } from '@looker/visualizations'
+} from '@looker/visualizations-adapters'
+import { isNumeric } from '@looker/visualizations-adapters'
 import { Fieldset, Grid, Divider } from '@looker/components'
 import { SeriesColor } from './SeriesColor'
 import type { CColorSupported } from './SeriesColor'

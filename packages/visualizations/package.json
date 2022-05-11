@@ -10,6 +10,7 @@
   "dependencies": {
     "@looker/components": "^3.0.5",
     "@looker/components-data": "^0.1.4",
+    "@looker/i18n": "*",
     "@looker/sdk": "^22.4.2",
     "@looker/sdk-rtl": "^21.3.3",
     "@looker/visualizations-adapters": "^0.1.13",

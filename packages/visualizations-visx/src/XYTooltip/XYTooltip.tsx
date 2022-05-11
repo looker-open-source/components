@@ -41,7 +41,7 @@ import type {
 import { Tooltip as VisxTooltip } from '@visx/xychart'
 import type { TooltipData } from '@visx/xychart'
 import { SpaceVertical } from '@looker/components'
-
+import { useTranslation } from 'react-i18next'
 import get from 'lodash/get'
 import { Glyph } from '../Glyph'
 import {
@@ -90,6 +90,7 @@ export const XYTooltip = styled(
     snapToDatum = true,
     showDatumGlyph = true,
   }: TooltipProps) => {
+    const { t } = useTranslation('XYTooltip')
     const theme = useContext(ThemeContext)
     const { tooltips, series } = config
     if (!tooltips) {
@@ -140,7 +141,7 @@ export const XYTooltip = styled(
             />
             {nearestSeries.size_by && (
               <DLGroup
-                preface="Points sized by:"
+                preface={t('Points sized by')}
                 label={seriesLabelFormatter(
                   fields,
                   config,
@@ -181,8 +182,8 @@ export const XYTooltip = styled(
         transform: `scale(${scaleValue}, ${scaleValue})`,
         ...(size_by
           ? {
-              opacity: '0.5',
-              filter: 'drop-shadow(1px 1px 3px rgb(0 0 0 / 0.5))',
+              opacity: `0.5`,
+              filter: `drop-shadow(1px 1px 3px rgb(0 0 0 / 0.5))`,
             }
           : {}),
       }

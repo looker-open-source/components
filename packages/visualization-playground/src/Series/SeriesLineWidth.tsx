@@ -31,7 +31,7 @@ import type {
   CScatter,
   CSparkline,
   CSeriesLine,
-} from '@looker/visualizations'
+} from '@looker/visualizations-adapters'
 import { FieldSlider } from '@looker/components'
 
 /**

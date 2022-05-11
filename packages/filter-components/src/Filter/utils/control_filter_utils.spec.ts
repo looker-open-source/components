@@ -188,6 +188,7 @@ describe('getControlFilterInfo', () => {
     })
 
     expect(checkboxes?.props?.value).toEqual(['one', 'two', 'three'])
+    expect(checkboxes?.props.max).toEqual(50)
 
     const buttonGroup = getControlFilterInfo(item, {
       config: getConfig(filterOptions, 'button_group'),

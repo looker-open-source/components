@@ -23,30 +23,6 @@
  SOFTWARE.
 
  */
+import { en } from './resources/en'
 
-import { normalizePivotLabels } from './normalizePivotLabels'
-
-describe('normalizePivotLabels', () => {
-  it('Derives a pivot label from capitalizing the key value by default', () => {
-    const normalizedPivots = normalizePivotLabels([
-      {
-        key: 'cancelled',
-        is_total: false,
-        data: {},
-      },
-    ])
-
-    expect(normalizedPivots[0].label).toEqual('Cancelled')
-  })
-  it('Sets the label to "Row Total" when is_total is true', () => {
-    const normalizedPivots = normalizePivotLabels([
-      {
-        key: 'cancelled',
-        is_total: true,
-        data: {},
-      },
-    ])
-
-    expect(normalizedPivots[0].label).toEqual('Row Total')
-  })
-})
+export const i18nResources = { ...en.resources }

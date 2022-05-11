@@ -26,7 +26,7 @@
 import React from 'react'
 import { screen, fireEvent } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { mockLineConfig } from '@looker/visualizations'
+import { mockLineConfig } from '@looker/visualizations-adapters'
 import { RenderNullValues } from './RenderNullValues'
 
 afterEach(() => {

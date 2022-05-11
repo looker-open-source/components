@@ -27,8 +27,8 @@ import type { FC, FormEvent, SetStateAction, Dispatch } from 'react'
 import React from 'react'
 import { FieldText, FieldSelect, Heading, Fieldset } from '@looker/components'
 import { FieldInfo } from '../FieldInfo'
-import type { CAll, SupportedChartTypes } from '@looker/visualizations'
-import { supportedChartTypes } from '@looker/visualizations'
+import type { CAll, SupportedChartTypes } from '@looker/visualizations-adapters'
+import { SUPPORTED_CHART_TYPES } from '@looker/visualizations-adapters'
 import {
   useVisConfig,
   useQueryId,
@@ -89,7 +89,7 @@ export const EmbedEditor: FC<EmbedEditorProps> = ({
         }}
         value={visConfig.type}
         options={[
-          ...Object.values(supportedChartTypes).map(t => ({ value: t })),
+          ...Object.values(SUPPORTED_CHART_TYPES).map(t => ({ value: t })),
         ]}
       />
       <Fieldset inline>

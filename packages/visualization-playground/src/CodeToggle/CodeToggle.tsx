@@ -25,7 +25,7 @@
  */
 import React from 'react'
 import type { FC, SetStateAction, Dispatch } from 'react'
-import type { CAll } from '@looker/visualizations'
+import type { CAll } from '@looker/visualizations-adapters'
 import {
   useVisConfig,
   useQueryId,

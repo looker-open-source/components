@@ -35,9 +35,10 @@ import {
 import { Table } from '@looker/visualizations-table'
 import { SingleValue } from '@looker/visualizations-single-value'
 
-export * from '@looker/visualizations-adapters'
 export * from './Query'
 export * from './Visualization'
+export * from './utils'
+export * from './locales'
 
 /**
  * These named exports are provided as a convenience to developers who want direct
