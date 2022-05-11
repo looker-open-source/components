@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.20](https://github.com/looker-open-source/components/compare/@looker/filter-components@0.10.19...@looker/filter-components@0.10.20) (2022-05-11)
+
+**Note:** Version bump only for package @looker/filter-components
+
+
+
+
+
 ## [0.10.19](https://github.com/looker-open-source/components/compare/@looker/filter-components@0.10.18...@looker/filter-components@0.10.19) (2022-04-29)
 
 **Note:** Version bump only for package @looker/filter-components

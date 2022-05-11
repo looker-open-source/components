@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.5.19](https://github.com/looker-open-source/components/compare/@looker/icons@1.5.18...@looker/icons@1.5.19) (2022-05-11)
+
+**Note:** Version bump only for package @looker/icons
+
+
+
+
+
 ## [1.5.18](https://github.com/looker-open-source/components/compare/@looker/icons@1.5.17...@looker/icons@1.5.18) (2022-04-29)
 
 **Note:** Version bump only for package @looker/icons
