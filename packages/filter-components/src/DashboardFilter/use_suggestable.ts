@@ -26,9 +26,11 @@
 import type { IDashboardFilter, ILookmlModelExploreField } from '@looker/sdk'
 import type { IAPIMethods } from '@looker/sdk-rtl'
 import { model_fieldname_suggestions } from '@looker/sdk'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useMemo, useState } from 'react'
 import { useTranslation } from '../utils'
 import type { FilterProps } from '../Filter/types/filter_props'
+import type { FilterMap } from '../FilterCollection'
+import { FilterContext } from '../FilterCollection'
 
 export interface UseSuggestableProps {
   /**
@@ -66,12 +68,39 @@ const getOptionsProps = (
 }
 
 /**
+ * Should create a filter map that looks something like this:
+ * {
+ *  users.state: "California,Georgia,New%20York"
+ * }
+ */
+const getLinkedFilterMap = (
+  filterMap: FilterMap,
+  listensToFilters?: string[] | null
+) => {
+  if (!listensToFilters || listensToFilters.length === 0) return undefined
+
+  // filterMap is undefined, which is probably why we're not getting the results we need from this reduce call
+  return listensToFilters.reduce((acc: { [key: string]: string }, title) => {
+    if (filterMap[title]) {
+      const { filter, expression } = filterMap[title]
+      if (filter.dimension && expression) {
+        acc[filter.dimension] = expression
+      }
+    }
+    return acc
+  }, {})
+}
+
+/**
  * Accepts a dashboard filter and an SDK 4.0 instance,
  * determines if and what type of options the filter's field supports,
  * calls the API to fetch suggestions if applicable,
  * and returns the necessary props
  */
 export const useSuggestable = ({ filter, sdk }: UseSuggestableProps) => {
+  const { state } = useContext(FilterContext)
+  const filterMap = state.filterMap
+
   const field = filter.field as ILookmlModelExploreField | undefined
 
   const [searchTerm, setSearchTerm] = useState('')
@@ -81,21 +110,31 @@ export const useSuggestable = ({ filter, sdk }: UseSuggestableProps) => {
 
   const { t } = useTranslation('use_suggestable')
 
+  const { listens_to_filters } = filter
+
+  // Make this a string for deep comparison in the deps array below
+  const linkedFilterMap = useMemo(
+    () => getLinkedFilterMap(filterMap, listens_to_filters),
+    [filterMap, listens_to_filters]
+  )
+
+  // linkedFilterMap is empty for linked filters, and undefined for non-linked filters
+
   useEffect(() => {
     const loadSuggestions = async () => {
       // Only need to fetch suggestions if they're not included on the field
       if (sdk && shouldFetchSuggestions(field)) {
         setLoading(true)
+        const params = {
+          field_name: field?.suggest_dimension || '',
+          model_name: filter.model || '',
+          term: searchTerm,
+          view_name: field?.suggest_explore || field?.view || '',
+          filters: linkedFilterMap,
+        }
 
         try {
-          const result = await sdk.ok(
-            model_fieldname_suggestions(sdk, {
-              field_name: field?.suggest_dimension || '',
-              model_name: filter.model || '',
-              term: searchTerm,
-              view_name: field?.suggest_explore || field?.view || '',
-            })
-          )
+          const result = await sdk.ok(model_fieldname_suggestions(sdk, params))
 
           setLoading(false)
           setSuggestions(result.suggestions || [])
@@ -106,8 +145,7 @@ export const useSuggestable = ({ filter, sdk }: UseSuggestableProps) => {
       }
     }
     loadSuggestions()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [field, searchTerm, sdk])
+  }, [filter.model, field, searchTerm, sdk, linkedFilterMap, t])
 
   return {
     errorMessage,

@@ -58,6 +58,7 @@ module.exports = {
         '**/stories/**',
         '*.js',
         '**/__mocks__/**',
+        '**/locales/**',
       ],
       rules: {
         'i18next/no-literal-string': 'off',

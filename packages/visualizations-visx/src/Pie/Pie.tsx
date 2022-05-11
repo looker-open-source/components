@@ -237,7 +237,7 @@ const PieGrid = styled.div<LegendLayoutProps>`
 
 const PieChart = styled.svg<LegendLayoutProps>`
   ${({ legendPosition }) => css`
-    grid-area: ${legendPosition === 'left' ? 'right' : 'left'};
+    grid-area: ${legendPosition === `left` ? `right` : `left`};
   `}
 `
 

@@ -115,7 +115,7 @@ export const Column: FC<ColumnProps> = ({
       ? [0, 1]
       : getYAxisRange({ config, data: formattedData, fields })
 
-  const yScale: LinearScaleConfig<AxisScaleOutput> = {
+  const Y_SCALE: LinearScaleConfig<AxisScaleOutput> = {
     type: 'linear',
     ...(domain && { domain, zero: false }),
   }
@@ -129,7 +129,7 @@ export const Column: FC<ColumnProps> = ({
       // of XYChart, which would then require the legend to be SVG-based
       // because HTML cannot be a child of SVG
       xScale={{ type: 'band' }}
-      yScale={yScale}
+      yScale={Y_SCALE}
       theme={chartTheme}
     >
       <VisWrapper legend={legend}>

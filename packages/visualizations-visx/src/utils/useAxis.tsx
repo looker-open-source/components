@@ -89,7 +89,7 @@ export const useAxis = ({ config, data, fields }: UseAxisProps) => {
     Math.sqrt((xAxisLongestLabelWidth * xAxisLongestLabelWidth) / 2) +
     TICK_LABEL_TO_AXIS_LABEL_SPACER
 
-  const xAxisStyle = hasRotatedXAxisLabels
+  const X_AXIS_STYLE = hasRotatedXAxisLabels
     ? {
         labelDy: angledLabelHypotenuse,
         tickAngle: -45,
@@ -117,7 +117,7 @@ export const useAxis = ({ config, data, fields }: UseAxisProps) => {
         fields={fields}
         label={config?.x_axis?.[0]?.label || undefined}
         valueFormat={xAxisValueFormat}
-        {...xAxisStyle}
+        {...X_AXIS_STYLE}
       />
     )
 

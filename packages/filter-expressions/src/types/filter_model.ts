@@ -34,6 +34,7 @@ export interface FilterModel<T extends string = string> {
   date?: FilterDateTimeModel
   start?: FilterDateTimeModel
   end?: FilterDateTimeModel
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [propName: string]: any
 }
 

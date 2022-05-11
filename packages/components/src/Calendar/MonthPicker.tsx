@@ -28,7 +28,6 @@ import React, { useCallback } from 'react'
 import styled from 'styled-components'
 import type { CompatibleHTMLProps } from '@looker/design-tokens'
 import pick from 'lodash/pick'
-import { isSameYear, getMonth } from 'date-fns'
 import {
   rippleHandlerKeys,
   rippleStyle,
@@ -36,23 +35,26 @@ import {
   useRippleHandlers,
 } from '../Ripple'
 import type { YearBaseProps } from './types'
+import { isThisMonth } from './utils/dateConfirmations'
 
 type MonthPickerProps = YearBaseProps &
   Omit<CompatibleHTMLProps<HTMLButtonElement>, 'onSelect' | 'type'> & {
     date: Date
     monthNumber: number
+    isTodaysMonth?: boolean
   }
 
 export const MonthPicker = styled(
   ({
     className,
-    selectedMonth,
-    onMonthClick,
-    monthNumber,
-    selected,
-    style,
-    date,
+    date = new Date(),
+    isTodaysMonth,
     locale,
+    monthNumber,
+    onMonthClick,
+    selected,
+    selectedMonth,
+    style,
     ...restProps
   }: MonthPickerProps) => {
     const { callbacks, ...rippleProps } = useBoundedRipple({
@@ -69,12 +71,13 @@ export const MonthPicker = styled(
       restProps.disabled
     )
     const isMonth =
-      selectedMonth &&
-      isSameYear(selectedMonth, date) &&
-      getMonth(selectedMonth) === monthNumber
+      selectedMonth && isThisMonth(selectedMonth, monthNumber, date)
+
+    isTodaysMonth = isTodaysMonth && isThisMonth(new Date(), monthNumber, date)
 
     return (
       <button
+        aria-current={isTodaysMonth}
         aria-selected={isMonth}
         type="button"
         onClick={useCallback(() => onMonthClick(monthNumber), [
@@ -99,6 +102,10 @@ export const MonthPicker = styled(
   font-weight: ${({ theme }) => theme.fontWeights.medium};
   height: ${({ theme }) => theme.space.u7};
   width: ${({ theme }) => theme.space.u12};
+  &[aria-current='true'] {
+    border: 1px solid ${({ theme }) => theme.colors.key};
+    color: ${({ theme }) => theme.colors.key};
+  }
   &[aria-selected='true'] {
     background: ${({ theme }) => theme.colors.key};
     color: ${({ theme }) => theme.colors.keyText};

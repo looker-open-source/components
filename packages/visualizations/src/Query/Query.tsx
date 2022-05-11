@@ -35,12 +35,13 @@ import {
 } from '@looker/components-data'
 import type { CAll } from '@looker/visualizations-adapters'
 import { ProgressCircular, Space } from '@looker/components'
+import { useTranslation } from '../utils'
 import {
+  ErrorBoundary,
   buildTrackingTag,
   sortByDateTime,
   nullValueZero,
   xAxisReversed,
-  i18Noop,
 } from '@looker/visualizations-adapters'
 
 export type QueryProps = {
@@ -59,20 +60,18 @@ export type QueryProps = {
     }
 )
 
-export const Query: FC<QueryProps> = ({
+const QueryInternal: FC<QueryProps> = ({
   query,
   dashboard,
   children,
   config: configProp,
   LoadingIndicator,
 }) => {
+  const { t } = useTranslation('Query')
+
   if (dashboard && query) {
     // eslint-disable-next-line no-console
-    console.warn(
-      i18Noop(
-        'Error: Query component received both `dashboard` and `query` props. The `dashboard` prop will be ignored.'
-      )
-    )
+    console.warn(t('Query component received both dashboard and query props'))
   }
 
   const {
@@ -163,9 +162,15 @@ export const Query: FC<QueryProps> = ({
     )
   } else {
     // eslint-disable-next-line no-console
-    console.warn(
-      i18Noop('Warning: No children passed to Query component. Rendering null.')
-    )
+    console.warn(t('No children passed to Query component'))
     return null
   }
+}
+
+export const Query: FC<QueryProps> = props => {
+  return (
+    <ErrorBoundary>
+      <QueryInternal {...props} />
+    </ErrorBoundary>
+  )
 }

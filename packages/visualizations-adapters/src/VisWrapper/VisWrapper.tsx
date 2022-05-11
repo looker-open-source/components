@@ -59,21 +59,21 @@ const VisWrapperInternal: FC<VisWrapperInternalProps> = forwardRef(
   }
 )
 
-VisWrapperInternal.displayName = 'VisWrapperInternal'
+VisWrapperInternal.displayName = `VisWrapperInternal`
 
 const flexDirection = ({ legend }: Pick<VisWrapperProps, 'legend'>) => {
-  const positionMap: Record<LegendPositions, string> = {
+  const POSITION_MAP: Record<LegendPositions, string> = {
     top: 'column-reverse',
     right: 'row',
     left: 'row-reverse',
     bottom: 'column',
   }
 
-  const position = legend ? legend.position : 'bottom'
+  const POSITION = legend ? legend.position : 'bottom'
 
   return css`
-    flex-direction: ${positionMap[position]};
-    justify-content: ${position === 'left' ? 'flex-end' : 'flex-start'};
+    flex-direction: ${POSITION_MAP[POSITION]};
+    justify-content: ${POSITION === 'left' ? `flex-end` : `flex-start`};
   `
 }
 

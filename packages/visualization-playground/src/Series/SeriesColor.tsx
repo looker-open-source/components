@@ -35,7 +35,7 @@ import type {
   CSeriesBasic,
   CSingleValue,
   CPie,
-} from '@looker/visualizations'
+} from '@looker/visualizations-adapters'
 import { FieldColor } from '@looker/components'
 
 /**

@@ -34,7 +34,7 @@ import type {
   CScatter,
   CAll,
   XAxisConfig,
-} from '@looker/visualizations'
+} from '@looker/visualizations-adapters'
 import { Core } from '../Core'
 
 /**

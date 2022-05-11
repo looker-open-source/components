@@ -24,7 +24,7 @@
 
  */
 import type { FC } from 'react'
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Field, Status, Tooltip } from '@looker/components'
 import { Filter } from '../Filter/Filter'
 import { useValidationMessage } from '../Filter/utils'
@@ -32,6 +32,7 @@ import type { UseSuggestableProps } from './use_suggestable'
 import { useSuggestable } from './use_suggestable'
 import type { UseExpressionStateProps } from './use_expression_state'
 import { useExpressionState } from './use_expression_state'
+import { FilterContext } from '../FilterCollection'
 
 export type DashboardFilterProps = UseExpressionStateProps & UseSuggestableProps
 
@@ -53,6 +54,14 @@ export const DashboardFilter: FC<DashboardFilterProps> = ({
     ui_config,
     allow_multiple_values,
   } = filter
+
+  const { removeFilter } = useContext(FilterContext)
+
+  useEffect(() => {
+    return () => {
+      removeFilter(filter)
+    }
+  }, [removeFilter, filter])
 
   const stateProps = useExpressionState({ filter, ...rest })
 

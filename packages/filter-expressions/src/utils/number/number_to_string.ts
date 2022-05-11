@@ -59,6 +59,7 @@ const nullToString = ({ is }: FilterModel): string => `${isToString(is)}null`
  * if both low & high values are null, undefined or empty
  * returns empty string which means 'any value'
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const betweenToString = ({ bounds, low, high, is }: any) =>
   bounds && (!isNullUndefinedOrEmpty(low) || !isNullUndefinedOrEmpty(high))
     ? `${isToString(is)}${bounds[0]}${defaultTo(low, '')},${defaultTo(

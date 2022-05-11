@@ -28,23 +28,29 @@ import type { FC } from 'react'
 import React from 'react'
 import styled from 'styled-components'
 import { Truncate } from '@looker/components'
+import type { Namespace } from 'react-i18next'
+import { useTranslation } from 'react-i18next'
 import type { SDKRecord } from '../types'
 
 interface KeyValueListProps {
   value: SDKRecord
 }
 
-const renderKeyValueList = (o: SDKRecord) => {
+const renderKeyValueList = (
+  o: SDKRecord,
+  i18n: ReturnType<typeof useTranslation>
+) => {
+  const { t } = i18n
   const collection = Object.entries(o)
 
   const renderValueByType = (v: string | boolean | number | SDKRecord) => {
     switch (typeof v) {
       case 'object':
-        return v === null ? 'null' : renderKeyValueList(v)
+        return v === null ? t('null') : renderKeyValueList(v, i18n)
       case 'boolean':
-        return v ? 'TRUE' : 'FALSE'
+        return v ? t('true') : t('false')
       case 'undefined':
-        return 'undefined'
+        return t('undefined')
       default:
         return v
     }
@@ -96,5 +102,7 @@ const DT = styled.dt`
 `
 
 export const KeyValueList: FC<KeyValueListProps> = ({ value }) => {
-  return renderKeyValueList(value)
+  const i18n = useTranslation('KeyValueList' as Namespace<string>)
+
+  return renderKeyValueList(value, i18n)
 }

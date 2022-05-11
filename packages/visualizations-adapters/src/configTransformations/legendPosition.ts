@@ -45,12 +45,12 @@ export const legendPosition: ConfigHelper<CommonCartesianProperties> = ({
 
   // Pie charts render legend to the right by default. All other cartesian charts
   // render the legend below.
-  const defaultPosition = config.type === 'pie' ? 'right' : 'bottom'
+  const DEFAULT_POSITION = config.type === 'pie' ? 'right' : 'bottom'
 
   const LEGEND_POSITION: Record<AllKeys, LegendPositions> = {
-    '': defaultPosition,
+    '': DEFAULT_POSITION,
     bottom: 'bottom',
-    center: defaultPosition,
+    center: DEFAULT_POSITION,
     left: 'left',
     right: 'right',
     top: 'top',

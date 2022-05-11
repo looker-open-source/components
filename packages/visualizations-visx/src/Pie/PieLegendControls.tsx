@@ -34,6 +34,7 @@ import {
 } from '@styled-icons/material'
 import { IconButton } from '@looker/components'
 import styled, { css } from 'styled-components'
+import { useTranslation } from 'react-i18next'
 import type { LegendOrientations } from './types'
 
 type PieLegendControlsProps = {
@@ -55,6 +56,7 @@ export const PieLegendControls: FC<PieLegendControlsProps> = ({
   handleNextClick,
   handlePrevClick,
 }) => {
+  const { t } = useTranslation('PieLegendControls')
   return (
     <>
       {/* Vertical layout */}
@@ -67,7 +69,7 @@ export const PieLegendControls: FC<PieLegendControlsProps> = ({
             onClick={handlePrevClick}
             disabled={page === 0}
             size="large"
-            label="Previous page"
+            label={t('Previous page')}
           />
           <span>
             {page + 1}/{totalPages + 1}
@@ -79,7 +81,7 @@ export const PieLegendControls: FC<PieLegendControlsProps> = ({
             disabled={page === totalPages}
             p="small"
             size="large"
-            label="Next page"
+            label={t('Next page')}
           />
         </LegendControls>
       )}
@@ -94,7 +96,7 @@ export const PieLegendControls: FC<PieLegendControlsProps> = ({
             onClick={handleNextClick}
             disabled={page === totalPages}
             size="large"
-            label="Next page"
+            label={t('Next page')}
           />
           <span>
             {page + 1}/{totalPages + 1}
@@ -106,7 +108,7 @@ export const PieLegendControls: FC<PieLegendControlsProps> = ({
             disabled={page === 0}
             p="small"
             size="large"
-            label="Previous page"
+            label={t('Previous page')}
           />
         </LegendControls>
       )}

@@ -32,7 +32,7 @@ import type { ExtensionContextData } from '@looker/extension-sdk-react'
 import type { Looker40SDK } from '@looker/sdk'
 import { ExtensionContext } from '@looker/extension-sdk-react'
 import { DataProvider } from '@looker/components-data'
-import { mockSDK } from '@looker/visualizations'
+import { mockSDK } from '@looker/visualizations-adapters'
 import { AppContext } from '../AppContext'
 import { QueryInput } from './'
 

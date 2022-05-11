@@ -16,6 +16,7 @@
     "@looker/sdk": "^22.4.2",
     "@looker/sdk-rtl": "^21.3.3",
     "@looker/visualizations": "^0.2.12",
+    "@looker/visualizations-adapters": "*",
     "@styled-icons/material": "10.28.0",
     "lodash": "4.17.21",
     "prism-react-renderer": "1.3.1",

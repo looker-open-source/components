@@ -25,7 +25,7 @@
  */
 import type { FC, SetStateAction, Dispatch } from 'react'
 import React from 'react'
-import type { TrendLine, CAll } from '@looker/visualizations'
+import type { TrendLine, CAll } from '@looker/visualizations-adapters'
 import {
   Dialog,
   Button,

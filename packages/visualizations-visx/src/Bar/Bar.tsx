@@ -150,7 +150,7 @@ export const Bar: FC<BarProps> = ({
     (xAxisLongestLabelWidth * xAxisLongestLabelWidth) / 2
   )
 
-  const xAxisStyle = hasRotatedXAxisLabels
+  const X_AXIS_STYLE = hasRotatedXAxisLabels
     ? {
         labelDy: angledLabelHypotenuse,
         tickAngle: -45,
@@ -174,7 +174,7 @@ export const Bar: FC<BarProps> = ({
       ? [0, 1]
       : getYAxisRange({ config, data: formattedData, fields })
 
-  const xScale: LinearScaleConfig<AxisScaleOutput> = {
+  const X_SCALE: LinearScaleConfig<AxisScaleOutput> = {
     type: 'linear',
     ...(domain && { domain, zero: false }),
   }
@@ -224,7 +224,7 @@ export const Bar: FC<BarProps> = ({
       // without doing this you would have to render XYChart as a child
       // of XYChart, which would then require the legend to be SVG-based
       // because HTML cannot be a child of SVG
-      xScale={xScale}
+      xScale={X_SCALE}
       yScale={{ type: 'band' }}
       theme={chartTheme}
     >
@@ -235,7 +235,7 @@ export const Bar: FC<BarProps> = ({
             fields={fields}
             label={xAxisConfig?.label || ''}
             valueFormat={xAxisValueFormat}
-            {...xAxisStyle}
+            {...X_AXIS_STYLE}
           />
           <YAxis
             showTicks={yAxisConfig?.values}

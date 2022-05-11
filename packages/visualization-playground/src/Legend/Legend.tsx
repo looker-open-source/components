@@ -36,8 +36,8 @@ import type {
   CAll,
   CPieLegend,
   CartesianLegend,
-} from '@looker/visualizations'
-import { isNumeric } from '@looker/visualizations'
+} from '@looker/visualizations-adapters'
+import { isNumeric } from '@looker/visualizations-adapters'
 import { FieldSelect, FieldText } from '@looker/components'
 import { LegendPie } from './LegendPie'
 

@@ -36,6 +36,7 @@ describe('getUserAttributeMatchingTypeAndExpression', () => {
   } as FilterASTNode
 
   beforeEach(() => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     ;(parseFilterExpression as jest.Mock<any>).mockReturnValue(ast)
   })
 

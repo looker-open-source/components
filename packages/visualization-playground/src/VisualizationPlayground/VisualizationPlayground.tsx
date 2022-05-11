@@ -24,13 +24,14 @@
 
  */
 import React, { useContext, useState, useEffect, useCallback } from 'react'
-import type { CAll, QueryProps } from '@looker/visualizations'
+import type { QueryProps } from '@looker/visualizations'
+import type { CAll } from '@looker/visualizations-adapters'
+import { Query, Visualization } from '@looker/visualizations'
 import {
-  Query,
-  Visualization,
   isNumeric,
   mockSDK,
-} from '@looker/visualizations'
+  ErrorBoundary,
+} from '@looker/visualizations-adapters'
 import { DataProvider } from '@looker/components-data'
 import {
   Box2,
@@ -44,7 +45,6 @@ import {
 } from '@looker/components'
 import styled, { ThemeContext } from 'styled-components'
 import type { Looker40SDK } from '@looker/sdk'
-import { i18nInit } from '@looker/filter-components'
 import { useLocalStorage } from '../utils'
 import { EmbedEditor } from '../EmbedEditor'
 import { ConfigEditor } from '../ConfigEditor'
@@ -53,8 +53,6 @@ import { QueryInput } from '../QueryInput'
 import { Filtering } from '../Filtering'
 import { CodeEditor } from '../CodeEditor'
 import { CodeToggle } from '../CodeToggle'
-
-i18nInit()
 
 type TabIDs = 'live' | 'mock'
 
@@ -155,22 +153,24 @@ export const VisualizationPlayground = ({
         }}
       >
         <PageLayout fixed hasAside p="medium" borderRadius="large">
-          <Aside backgroundColor="background" width="25rem">
-            <EmbedEditor
-              width={width}
-              setWidth={setWidth}
-              height={height}
-              setHeight={setHeight}
-              config={configOverrides}
-              onConfigChange={setConfigOverrides}
-              {...queryProps}
-            />
-            <ConfigEditor
-              config={configOverrides}
-              onConfigChange={setConfigOverrides}
-              {...queryProps}
-            />
-          </Aside>
+          <ErrorBoundary>
+            <Aside backgroundColor="background" width="25rem">
+              <EmbedEditor
+                width={width}
+                setWidth={setWidth}
+                height={height}
+                setHeight={setHeight}
+                config={configOverrides}
+                onConfigChange={setConfigOverrides}
+                {...queryProps}
+              />
+              <ConfigEditor
+                config={configOverrides}
+                onConfigChange={setConfigOverrides}
+                {...queryProps}
+              />
+            </Aside>
+          </ErrorBoundary>
           <ExtendComponentsThemeProvider
             themeCustomizations={{
               colors: {
@@ -186,57 +186,65 @@ export const VisualizationPlayground = ({
               bg={`${theme.colors.background}`}
               borderRadius="medium"
             >
-              <CodeToggle
-                codeToggled={codeToggled}
-                setCodeToggled={setCodeToggled}
-                config={configOverrides}
-                {...queryProps}
-              />
+              <ErrorBoundary>
+                <CodeToggle
+                  codeToggled={codeToggled}
+                  setCodeToggled={setCodeToggled}
+                  config={configOverrides}
+                  {...queryProps}
+                />
 
-              {codeToggled ? (
-                <CodeEditor config={configOverrides} {...queryProps} />
-              ) : (
-                <Tabs2<TabIDs>
-                  tabId={storedTabId as TabIDs}
-                  onTabChange={setStoredTabId}
-                >
-                  <Tab2
-                    id="live"
-                    label="Live SDK"
-                    disabled={typeof sdk === 'undefined'}
+                {codeToggled ? (
+                  <CodeEditor config={configOverrides} {...queryProps} />
+                ) : (
+                  <Tabs2<TabIDs>
+                    tabId={storedTabId as TabIDs}
+                    onTabChange={setStoredTabId}
                   >
-                    <Box2 my="small">
-                      <QueryInput
-                        onChange={handleQueryInputChange}
-                        dashboardId={dashboardId}
-                        queryId={queryIdentifier}
-                        fetchBy={fetchBy}
-                        setFetchBy={setFetchBy}
-                        {...queryProps}
-                      />
-                    </Box2>
-                    <Filtering
-                      setQueryIdentifier={setQueryIdentifier}
-                      setFetchBy={setFetchBy}
-                      {...queryProps}
-                    />
-                    <Query config={configOverrides} {...queryProps}>
-                      <Visualization
-                        width={isNumeric(width) ? Number(width) : undefined}
-                        height={isNumeric(height) ? Number(height) : undefined}
-                      />
-                    </Query>
-                  </Tab2>
-                  <Tab2 id="mock" label="Mock Data">
-                    <Query query="mock-query-id" config={configOverrides}>
-                      <Visualization
-                        width={isNumeric(width) ? Number(width) : undefined}
-                        height={isNumeric(height) ? Number(height) : undefined}
-                      />
-                    </Query>
-                  </Tab2>
-                </Tabs2>
-              )}
+                    <Tab2
+                      id="live"
+                      label="Live SDK"
+                      disabled={typeof sdk === 'undefined'}
+                    >
+                      <ErrorBoundary>
+                        <Box2 my="small">
+                          <QueryInput
+                            onChange={handleQueryInputChange}
+                            dashboardId={dashboardId}
+                            queryId={queryIdentifier}
+                            fetchBy={fetchBy}
+                            setFetchBy={setFetchBy}
+                            {...queryProps}
+                          />
+                        </Box2>
+                        <Filtering
+                          setQueryIdentifier={setQueryIdentifier}
+                          setFetchBy={setFetchBy}
+                          {...queryProps}
+                        />
+                        <Query config={configOverrides} {...queryProps}>
+                          <Visualization
+                            width={isNumeric(width) ? Number(width) : undefined}
+                            height={
+                              isNumeric(height) ? Number(height) : undefined
+                            }
+                          />
+                        </Query>
+                      </ErrorBoundary>
+                    </Tab2>
+                    <Tab2 id="mock" label="Mock Data">
+                      <Query query="mock-query-id" config={configOverrides}>
+                        <Visualization
+                          width={isNumeric(width) ? Number(width) : undefined}
+                          height={
+                            isNumeric(height) ? Number(height) : undefined
+                          }
+                        />
+                      </Query>
+                    </Tab2>
+                  </Tabs2>
+                )}
+              </ErrorBoundary>
             </Section>
           </ExtendComponentsThemeProvider>
         </PageLayout>

@@ -125,7 +125,7 @@ export const Area: FC<AreaProps> = ({
       ? [0, 1]
       : getYAxisRange({ config, data: formattedData, fields })
 
-  const yScale: LinearScaleConfig<AxisScaleOutput> = {
+  const Y_SCALE: LinearScaleConfig<AxisScaleOutput> = {
     type: 'linear',
     ...(domain && { domain, zero: false }),
   }
@@ -144,7 +144,7 @@ export const Area: FC<AreaProps> = ({
       // of XYChart, which would then require the legend to be SVG-based
       // because HTML cannot be a child of SVG
       xScale={{ type: isDateQuery(fields) ? 'time' : 'band' }}
-      yScale={yScale}
+      yScale={Y_SCALE}
       theme={chartTheme}
     >
       <VisWrapper legend={legend}>

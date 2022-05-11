@@ -33,7 +33,7 @@ import type {
   CScatter,
   CTable,
   CSeriesBasic,
-} from '@looker/visualizations'
+} from '@looker/visualizations-adapters'
 import { FieldToggleSwitch } from '@looker/components'
 
 /**

@@ -26,8 +26,11 @@
 import React from 'react'
 import { screen, fireEvent } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import type { CScatterSeries, CLineSeries } from '@looker/visualizations'
-import { mockLineConfig, mockFields } from '@looker/visualizations'
+import type {
+  CScatterSeries,
+  CLineSeries,
+} from '@looker/visualizations-adapters'
+import { mockLineConfig, mockFields } from '@looker/visualizations-adapters'
 import { Series } from './Series'
 
 afterEach(() => {

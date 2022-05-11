@@ -54,10 +54,10 @@ export const seriesPointShape: ConfigHelper<CLine | CArea> = ({
     const namedSeries = measures.reduce((seriesConfig, field) => {
       const shape = series_point_styles?.[field]
       const currentFieldSettings = pick(s, field)
-      const defaultSeriesShape = {
+      const DEFAULT_SERIES_SHAPE = {
         [field]: { shape: !shape || shape === 'automatic' ? 'circle' : shape },
       }
-      return merge(seriesConfig, defaultSeriesShape, currentFieldSettings)
+      return merge(seriesConfig, DEFAULT_SERIES_SHAPE, currentFieldSettings)
     }, {} as { [key: string]: CLineSeries })
     return namedSeries
   }

@@ -31,6 +31,7 @@ import type { SDKRecord, Fields, CAll } from '@looker/visualizations-adapters'
 import type { IError } from '@looker/sdk'
 import { StaticTable } from '../StaticTable'
 import isEmpty from 'lodash/isEmpty'
+import { useTranslation } from 'react-i18next'
 import { KeyValueList } from '../KeyValueList'
 
 type DebugProps = {
@@ -50,31 +51,33 @@ export const Debug: FC<DebugProps> = ({
   config = {},
   fields,
 }) => {
+  const { t } = useTranslation('Debug')
+
   return (
     <>
-      <KeyValueList value={{ response: ok ? 'ok' : 'error' }} />
+      <KeyValueList value={{ response: ok ? t('ok') : t('error') }} />
       {!isEmpty(error) && (
-        <Accordion2 indicatorPosition="left" defaultOpen label="Error">
+        <Accordion2 indicatorPosition="left" defaultOpen label={t('Error')}>
           <KeyValueList value={error || {}} />
         </Accordion2>
       )}
       {!isEmpty(config) && (
-        <Accordion2 indicatorPosition="left" label="Config">
+        <Accordion2 indicatorPosition="left" label={t('Config')}>
           <KeyValueList value={config} />
         </Accordion2>
       )}
       {!isEmpty(fields) && (
         <>
-          <Accordion2 indicatorPosition="left" label="Dimensions">
+          <Accordion2 indicatorPosition="left" label={t('Dimensions')}>
             <KeyValueList value={fields?.dimensions || {}} />
           </Accordion2>
-          <Accordion2 indicatorPosition="left" label="Measures">
+          <Accordion2 indicatorPosition="left" label={t('Measures')}>
             <KeyValueList value={fields?.measures || {}} />
           </Accordion2>
         </>
       )}
       {data && (
-        <Accordion2 indicatorPosition="left" defaultOpen label="Result">
+        <Accordion2 indicatorPosition="left" defaultOpen label={t('Result')}>
           <StaticTable data={data} fields={fields} />
         </Accordion2>
       )}

@@ -25,7 +25,7 @@
  */
 import React from 'react'
 import type { Dispatch, SetStateAction, FormEvent } from 'react'
-import type { CAll, CTable } from '@looker/visualizations'
+import type { CAll, CTable } from '@looker/visualizations-adapters'
 import { FieldCheckbox } from '@looker/components'
 
 /**

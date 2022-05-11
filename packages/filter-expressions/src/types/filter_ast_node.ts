@@ -31,5 +31,6 @@ export interface FilterASTNode {
   type?: string
   left?: FilterASTNode
   right?: FilterASTNode
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [propName: string]: any
 }

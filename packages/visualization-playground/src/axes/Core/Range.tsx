@@ -25,8 +25,11 @@
  */
 import type { FormEvent, FormEventHandler } from 'react'
 import React from 'react'
-import { isNumeric } from '@looker/visualizations'
-import type { YAxisConfig, YAxisEndpoint } from '@looker/visualizations'
+import { isNumeric } from '@looker/visualizations-adapters'
+import type {
+  YAxisConfig,
+  YAxisEndpoint,
+} from '@looker/visualizations-adapters'
 import { FieldText, Fieldset } from '@looker/components'
 import { FieldInfo } from '../../FieldInfo'
 

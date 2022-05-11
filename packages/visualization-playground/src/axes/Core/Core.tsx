@@ -31,7 +31,7 @@ import {
   ButtonItem,
   FieldText,
 } from '@looker/components'
-import type { YAxisConfig, XAxisConfig } from '@looker/visualizations'
+import type { YAxisConfig, XAxisConfig } from '@looker/visualizations-adapters'
 import partial from 'lodash/partial'
 import curry from 'lodash/curry'
 import { Checkbox } from '../../Checkbox'

@@ -34,7 +34,7 @@ import type {
   CScatter,
   LinearPositions,
   BarPositions,
-} from '@looker/visualizations'
+} from '@looker/visualizations-adapters'
 import { FieldSelect } from '@looker/components'
 
 /**

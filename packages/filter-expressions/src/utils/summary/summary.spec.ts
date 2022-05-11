@@ -62,7 +62,7 @@ describe('Summary for user attribute', () => {
       type: TYPE_USER_ATTRIBUTE,
       value: 'some-value',
       ...overrideProps,
-    } as any) as UserAttributeWithValue)
+    } as any) as UserAttributeWithValue) // eslint-disable-line @typescript-eslint/no-explicit-any
 
   it('with value', () => {
     const userAttributeWithValue = getUserAttribute()

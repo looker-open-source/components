@@ -9,6 +9,7 @@
   "sideEffects": false,
   "dependencies": {
     "@looker/components-providers": "^1.5.23",
+    "@looker/i18n": "*",
     "@looker/visualizations-adapters": "^0.1.13",
     "@styled-icons/material": "10.34.0",
     "@visx/annotation": "2.5.0",
@@ -30,6 +31,7 @@
     "date-fns": "^2.10.0",
     "lodash": "*",
     "numeral": "2.0.6",
+    "react-i18next": "*",
     "react-spring": "9.2.4"
   },
   "devDependencies": {

@@ -44,7 +44,7 @@ import type {
 
 // IMPORTANT: be sure to update `normalizeChartTypes` to map any proprietary
 // looker chart names to these standards.
-export const supportedChartTypes = {
+export const SUPPORTED_CHART_TYPES = {
   area: 'area',
   bar: 'bar',
   column: 'column',
@@ -57,7 +57,7 @@ export const supportedChartTypes = {
   table: 'table',
 } as const
 
-export type SupportedChartTypes = typeof supportedChartTypes
+export type SupportedChartTypes = typeof SUPPORTED_CHART_TYPES
 
 /*
  * Cartesian charts which have some common config options

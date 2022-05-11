@@ -41,6 +41,7 @@ const describeEquals = ({ is, value }: FilterModel) => {
 const describeSingleValue = ({ is, type, value }: FilterModel): string =>
   describeIsItem(is, `${type} ${value && value.length ? value[0] : ''}`)
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const describeBetween = ({ bounds, low, high, is }: any) => {
   if (bounds) {
     const t = i18next.t.bind(i18next)

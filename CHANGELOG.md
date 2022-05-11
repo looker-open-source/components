@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## `@looker-filter-components` 0.10.20
+
+### Bug Fixes
+
+- set checkboxes max to 50
+
+## `@looker/visualizations` 0.2.13
+
+### Features
+
+- `i18n` support
+
 ## `@looker/visualizations` 0.2.12
 
 ### Features

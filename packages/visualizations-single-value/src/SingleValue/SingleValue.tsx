@@ -66,9 +66,9 @@ const SingleValueLayout = styled.div<SingleValueLayoutProps>`
   background: ${({ theme }) => theme.colors.background};
   display: grid;
   grid-template-columns: 1fr;
-  height: ${({ height }) => `${height}px` || 'auto'};
+  height: ${({ height }) => `${height}px` || `auto`};
   justify-items: center;
-  width: ${({ width }) => `${width}px` || 'auto'};
+  width: ${({ width }) => `${width}px` || `auto`};
 `
 
 const SingleValueContent = styled.div<SingleValueContentProps>`

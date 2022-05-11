@@ -16,9 +16,11 @@ You'll also need to satisfy a few peer dependencies - Looker/components, React, 
 
 ## Getting Started
 
-Looker Visualization Components are designed to be used in a React environment that has been authenticated with our [API](https://docs.looker.com/reference/api-and-integration/api-getting-started), using the [Javascript SDK](https://www.npmjs.com/package/@looker/sdk). You will be required to pass an authenticated SDK object as a prop in order to facilitate data fetching and query creation. The following is an example of how to mount the Visualization Playground within Looker's Extension Framework.
+Looker Visualization Components are designed to be used in a React environment that has been authenticated with our [API](https://docs.looker.com/reference/api-and-integration/api-getting-started), using the [Javascript SDK](https://developers.looker.com/api/getting-started). You will be required to pass an authenticated SDK object as a prop in order to facilitate data fetching and query creation. The following is an example of how to mount the Visualization Playground within Looker's Extension Framework.
 
-you must render the `VisualizationPlayground` within the provided AppContext to route necessary extension methods to their associated hooks. See usage below for an example.
+For the full experience, you must render the `VisualizationPlayground` within the provided AppContext to route necessary extension methods to their associated hooks. See usage below for an example.
+
+If you omit the `sdk` prop and use of `AppContext.Provider`, the playground will still function but with a limited mock dataset to play with.
 
 ```tsx
 import React, { useContext } from 'react'
@@ -55,5 +57,24 @@ const ExtensionWrapper = () => {
       <VisualizationPlayground sdk={core40SDK} />
     </AppContext.Provider>
   )
+}
+```
+
+### i18n Locale Support
+
+To successfully render the playground you should initialize the i18n support for both [Filter](https://docs.looker.com/data-modeling/extension-framework/filter-components) and [Visualization Components](https://docs.looker.com/data-modeling/extension-framework/vis-components). Within your [React app](https://reactjs.org/docs/getting-started.html), call the respective `i18nInit` methods once each with an optional locale object (defaults to `en`) to support localized strings. This will also initialize the locales for [`@looker/components`](https://docs.looker.com/data-modeling/extension-framework/components) as that is a dependency of our visualization components.
+
+```jsx
+import { i18nResources, i18nInit } from '@looker/filter-components'
+import { VisualizationPlayground } from '@looker/visualization-playground'
+import { i18nInit as i18nInitVis } from '@looker/visualizations'
+import { ComponentsProvider } from '@looker/components'
+
+// initialize in the global scope
+i18nInit()
+i18nInitVis()
+
+export const App = (...) => {
+  return <ComponentsProvider loadGoogleFonts resources={i18nResources}><VisualizationPlayground /></ComponentsProvider>
 }
 ```
