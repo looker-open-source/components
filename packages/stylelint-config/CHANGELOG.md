@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.5.18](https://github.com/looker-open-source/components/compare/@looker/stylelint-config@1.5.17...@looker/stylelint-config@1.5.18) (2022-05-16)
+
+**Note:** Version bump only for package @looker/stylelint-config
+
+
+
+
+
 ## [1.5.17](https://github.com/looker-open-source/components/compare/@looker/stylelint-config@1.5.16...@looker/stylelint-config@1.5.17) (2022-05-11)
 
 **Note:** Version bump only for package @looker/stylelint-config

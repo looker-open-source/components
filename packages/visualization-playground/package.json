@@ -1,22 +1,22 @@
 {
   "name": "@looker/visualization-playground",
   "main": "src/index.ts",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "publishConfig": {
     "access": "public"
   },
   "license": "MIT",
   "sideEffects": false,
   "dependencies": {
-    "@looker/components": "^3.0.6",
-    "@looker/components-data": "^0.1.5",
-    "@looker/design-tokens": "^2.7.19",
+    "@looker/components": "^3.0.7",
+    "@looker/components-data": "^0.1.6",
+    "@looker/design-tokens": "^2.7.20",
     "@looker/extension-sdk-react": "^22.4.2",
-    "@looker/filter-components": "^0.10.20",
+    "@looker/filter-components": "^0.10.21",
     "@looker/sdk": "^22.4.2",
     "@looker/sdk-rtl": "^21.3.3",
-    "@looker/visualizations": "^0.2.13",
-    "@looker/visualizations-adapters": "^0.1.14",
+    "@looker/visualizations": "^0.2.14",
+    "@looker/visualizations-adapters": "^0.1.15",
     "@styled-icons/material": "10.28.0",
     "lodash": "4.17.21",
     "prism-react-renderer": "1.3.1",
@@ -26,8 +26,8 @@
     "styled-system": "^5.1.5"
   },
   "devDependencies": {
-    "@looker/components-test-utils": "^1.5.24",
-    "@looker/eslint-config-oss": "^1.7.19",
+    "@looker/components-test-utils": "^1.5.25",
+    "@looker/eslint-config-oss": "^1.7.20",
     "@storybook/testing-react": "0.0.22",
     "@testing-library/react": "*",
     "@types/styled-system": "^5.1.5"

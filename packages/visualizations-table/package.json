@@ -1,22 +1,22 @@
 {
   "name": "@looker/visualizations-table",
   "main": "src/index.ts",
-  "version": "0.2.13",
+  "version": "0.2.14",
   "publishConfig": {
     "access": "public"
   },
   "license": "MIT",
   "sideEffects": false,
   "dependencies": {
-    "@looker/visualizations-adapters": "^0.1.14",
+    "@looker/visualizations-adapters": "^0.1.15",
     "lodash": "4.17.21",
     "numeral": "2.0.6"
   },
   "devDependencies": {
-    "@looker/components-test-utils": "^1.5.24",
-    "@looker/eslint-config-oss": "^1.7.19",
-    "@looker/i18n": "^0.1.6",
-    "@looker/stylelint-config": "^1.5.17",
+    "@looker/components-test-utils": "^1.5.25",
+    "@looker/eslint-config-oss": "^1.7.20",
+    "@looker/i18n": "^0.1.7",
+    "@looker/stylelint-config": "^1.5.18",
     "@testing-library/react": "*",
     "react-i18next": "*"
   },

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.15](https://github.com/looker-open-source/components/compare/@looker/visualizations-adapters@0.1.14...@looker/visualizations-adapters@0.1.15) (2022-05-16)
+
+**Note:** Version bump only for package @looker/visualizations-adapters
+
+
+
+
+
 ## [0.1.14](https://github.com/looker-open-source/components/compare/@looker/visualizations-adapters@0.1.13...@looker/visualizations-adapters@0.1.14) (2022-05-11)
 
 **Note:** Version bump only for package @looker/visualizations-adapters

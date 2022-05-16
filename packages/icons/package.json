@@ -1,7 +1,7 @@
 {
   "name": "@looker/icons",
   "license": "MIT",
-  "version": "1.5.19",
+  "version": "1.5.20",
   "main": "src/index.ts",
   "sideEffects": false,
   "publishConfig": {
@@ -16,7 +16,7 @@
     "@styled-icons/styled-icon": "^10.6.3"
   },
   "devDependencies": {
-    "@looker/eslint-config-oss": "^1.7.19",
+    "@looker/eslint-config-oss": "^1.7.20",
     "fast-glob": "^3.2.5",
     "fs-extra": "^10.0.0",
     "h2x-core": "^1.1.1",
