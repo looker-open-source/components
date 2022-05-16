@@ -38,4 +38,4 @@ export const buildPivotMeasureName = ({
 }: {
   measureName: string
   pivotValue: string
-}) => `${measureName}|${pivotValue}`
+}) => `${pivotValue} - ${measureName}`

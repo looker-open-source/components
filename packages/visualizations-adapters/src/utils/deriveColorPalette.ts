@@ -24,6 +24,7 @@
 
  */
 import { hsv } from 'd3-hsv'
+import { DEFAULT_SERIES_COLORS } from '../utils'
 
 const colorTransformations = [
   { h: 0, s: 0, v: 0 }, // unmodified default colors
@@ -43,7 +44,9 @@ const colorTransformations = [
  * @param baseColors an array of color codes
  * @returns an array of color codes
  */
-export const deriveColorPalette = (baseColors: string[]) => {
+export const deriveColorPalette = (
+  baseColors: string[] = DEFAULT_SERIES_COLORS
+) => {
   return colorTransformations.flatMap(t => {
     const { h: hueDiff, s: satDiff, v: valDiff } = t
     return baseColors.map(color => {

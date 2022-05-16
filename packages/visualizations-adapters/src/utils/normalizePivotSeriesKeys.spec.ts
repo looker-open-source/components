@@ -33,14 +33,14 @@ describe('normalizePivotSeriesKeys', () => {
     }
     const output = normalizePivotSeriesKeys(series_colors)
 
-    expect(output).toEqual({ 'orders.count|Yes': '#FFFFFF' })
+    expect(output).toEqual({ 'Yes - orders.count': '#FFFFFF' })
   })
 
   it('it converts Row Total keys to reference magic string', () => {
     const series_colors = {
-      'Row Total - orders.count': '#FFFFFF',
+      '$$$_row_total_$$$ - orders.count': '#FFFFFF',
     }
     const output = normalizePivotSeriesKeys(series_colors)
-    expect(output).toEqual({ 'orders.count|$$$_row_total_$$$': '#FFFFFF' })
+    expect(output).toEqual({ '$$$_row_total_$$$ - orders.count': '#FFFFFF' })
   })
 })

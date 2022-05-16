@@ -23,7 +23,8 @@
   "devDependencies": {
     "@looker/components-test-utils": "^1.5.24",
     "@looker/eslint-config-oss": "^1.7.19",
-    "@testing-library/react": "*"
+    "@testing-library/react": "*",
+    "@testing-library/react-hooks": "*"
   },
   "peerDependencies": {
     "react": "16.11.0 - 18",

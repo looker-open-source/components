@@ -29,6 +29,7 @@ import {
   mockSdkFieldsResponse,
   mockSdkDataResponse,
   mockSDKModelExploreResponse,
+  mockSdkColorCollectionResponse,
 } from './'
 
 // eslint-disable-next-line no-restricted-imports
@@ -39,6 +40,11 @@ import type { SDKResponse } from '@looker/sdk-rtl'
 export type Response = SDKResponse<any, any>
 
 export const mockSDK = ({
+  color_collection: () =>
+    Promise.resolve({
+      ok: true,
+      value: mockSdkColorCollectionResponse,
+    }),
   create_query: () =>
     Promise.resolve({
       ok: true,

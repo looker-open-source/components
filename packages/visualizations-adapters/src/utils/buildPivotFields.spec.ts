@@ -41,7 +41,7 @@ describe('buildPivotFields', () => {
 
     // Check for orders.count - pivot complete object
     const ordersCountComplete = pivotMeasures.find(
-      pivotMeasure => pivotMeasure.name === 'orders.count|complete'
+      pivotMeasure => pivotMeasure.name === 'complete - orders.count'
     ) || { label: 'faux_label', label_short: 'faux_label_short' }
 
     expect(ordersCountComplete).not.toBeUndefined()
@@ -51,7 +51,8 @@ describe('buildPivotFields', () => {
     // Check for orders.average_total_amount_of_order_usd - pivot pending object
     const ordersAveragePending = pivotMeasures.find(
       pivotMeasure =>
-        pivotMeasure.name === 'orders.average_total_amount_of_order_usd|pending'
+        pivotMeasure.name ===
+        'pending - orders.average_total_amount_of_order_usd'
     ) || { label: 'faux_label', label_short: 'faux_label_short' }
     expect(ordersAveragePending).not.toBeUndefined()
     expect(ordersAveragePending.label_short).toBe('Pending')
@@ -68,7 +69,7 @@ describe('buildPivotFields', () => {
 
     // Check for orders.count - pivot complete object
     const ordersCountComplete = measures.find(
-      pivotMeasure => pivotMeasure.name === 'orders.count|complete'
+      pivotMeasure => pivotMeasure.name === 'complete - orders.count'
     ) || {
       label: 'faux_label',
       label_short: 'faux_label_short',

@@ -32,6 +32,8 @@ interface TableMeasureProps {
   min: number
   max: number
   value: number
+  valueFormatted: string
+  color?: string
 }
 
 /*
@@ -41,19 +43,21 @@ interface TableMeasureProps {
 
 export const TableMeasure: FC<TableMeasureProps> = ({
   value = 0.5,
+  valueFormatted,
   max = 1,
+  color,
 }) => {
   const fillPercent = (value / max) * 0.75 // max out at 75% cell width to ensure room to render the value
   return (
     <MeasureWrapper>
-      <Bar width={fillPercent} data-testid="cell-visualization" />
-      <div>{value}</div>
+      <Bar color={color} width={fillPercent} data-testid="cell-visualization" />
+      <div>{valueFormatted}</div>
     </MeasureWrapper>
   )
 }
 
-const Bar = styled.div<{ width: number }>`
-  background: ${({ theme }) => theme.colors.key};
+const Bar = styled.div<{ color?: string; width: number }>`
+  background: ${({ theme, color }) => color || theme.colors.key};
   flex: ${({ width }) => width};
   height: 1rem;
 `
