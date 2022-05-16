@@ -31,6 +31,7 @@ import {
   buildTrackingTag,
   CHART_TYPE_MAP,
 } from '@looker/visualizations-adapters'
+import { useColorPalette } from './useColorPalette'
 import { useQueryData, useQueryMetadata } from '.'
 
 /**
@@ -68,12 +69,25 @@ export const useVisConfig = (id: number, configOverrides?: Partial<CAll>) => {
     buildTrackingTag(CHART_TYPE_MAP[type as RawChartType])
   )
 
+  const {
+    colorPalette,
+    isPending: isColorPalettePending,
+    isOK: isColorPaletteOK,
+  } = useColorPalette(vis_config?.color_application)
+
   /*
    * Transform and normalize config for use in visualizations
    * -----------------------------------------------------------
    */
 
-  const configWithOverrides = merge({}, vis_config, configOverrides)
+  const configWithOverrides = merge(
+    {},
+    vis_config,
+    {
+      default_series_colors: colorPalette,
+    },
+    configOverrides
+  )
 
   const transformedConfig = buildChartConfig({
     config: configWithOverrides,
@@ -82,8 +96,8 @@ export const useVisConfig = (id: number, configOverrides?: Partial<CAll>) => {
   })
 
   return {
-    isOK,
-    isPending,
+    isOK: isOK && isColorPaletteOK,
+    isPending: isPending || isColorPalettePending,
     visConfig: transformedConfig,
     ...(error ? { error } : {}),
   }

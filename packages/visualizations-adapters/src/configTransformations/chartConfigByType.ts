@@ -85,6 +85,7 @@ export const chartConfigByType: Record<
     seriesVisible,
     truncateText,
     seriesValueFormat,
+    seriesColors,
   ],
   line: [...commonLineDefaults, ...commonCartesianDefaults, seriesLineWidth],
   pie: [

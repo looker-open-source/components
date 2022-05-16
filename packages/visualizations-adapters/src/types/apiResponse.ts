@@ -24,6 +24,8 @@
 
  */
 
+import type { IContinuousPalette, IDiscretePalette } from '@looker/sdk'
+
 import type {
   LegendPositions,
   PointShapes,
@@ -33,13 +35,22 @@ import type {
 } from './'
 import type { CBar, CArea } from '../adapters'
 
+export type ColorApplication = {
+  collection_id: string
+  palette_id?: string
+  options?: { steps: number; reverse: boolean }
+  custom?: IDiscretePalette | IContinuousPalette
+}
+
 /**
  * RapApiConfigResponse represents config attributes that will be ingested from the api
  * and transformed to our final public contract.
  */
 export type RawApiConfigResponse = {
+  color_application?: ColorApplication
   custom_color: string
   defaults_version: number
+  default_series_colors?: string[]
   hide_legend: boolean
   hidden_fields: string[]
   interpolation: 'linear'

@@ -28,7 +28,9 @@ import omit from 'lodash/omit'
 import type { ConfigHelper, CAll } from '../types'
 
 export const KEYS_TO_REMOVE = [
+  'color_application',
   'defaults_version',
+  'default_series_colors',
   'hidden_fields',
   'hide_legend',
   'interpolation',

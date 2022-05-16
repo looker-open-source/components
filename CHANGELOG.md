@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## `@looker/components` 3.0.6
+
+### Features
+
+- Locale strings added to repo
+
+## `@looker/visualizations` 0.2.14
+
+### Features
+
+- Chart color schemes are now defined by color collection settings
+
+### Bug Fixes
+
+- Fix issue with customized pivoted labels not rendering
+
 ## `@looker-filter-components` 0.10.20
 
 ### Bug Fixes

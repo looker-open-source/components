@@ -78,24 +78,27 @@ describe('seriesColors', () => {
         },
         // our supported format
         series: {
-          'orders.count|Yes': {},
-          'orders.count|$$$_row_total_$$$': {},
+          'Yes - orders.count': {},
+          '$$$_row_total_$$$ - orders.count': {},
         },
       },
       data: mockSdkDataResponse,
       fields: {
         ...mockFields,
         measures: [
-          { ...mockFields.measures[0], name: 'orders.count|Yes' },
-          { ...mockFields.measures[0], name: 'orders.count|$$$_row_total_$$$' },
+          { ...mockFields.measures[0], name: 'Yes - orders.count' },
+          {
+            ...mockFields.measures[0],
+            name: '$$$_row_total_$$$ - orders.count',
+          },
         ],
       },
     })
 
     // merges series_colors into the series object
     expect(config.series).toEqual({
-      'orders.count|Yes': { color: 'red' },
-      'orders.count|$$$_row_total_$$$': { color: 'blue' },
+      'Yes - orders.count': { color: 'red' },
+      '$$$_row_total_$$$ - orders.count': { color: 'blue' },
     })
   })
 })

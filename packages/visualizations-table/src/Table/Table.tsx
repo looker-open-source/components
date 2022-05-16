@@ -111,26 +111,31 @@ export const Table: FC<TableProps> = ({
           measure => measure.name === key
         )
 
-        const valueFormat = isArray(config.series)
-          ? get(config, ['series', matchingMeasureIndex, 'value_format'])
-          : get(config, ['series', key, 'value_format'])
+        const seriesConfig = isArray(config.series)
+          ? get(config, ['series', matchingMeasureIndex])
+          : get(config, ['series', key])
+
+        const { value_format, color } = seriesConfig || {}
 
         const isNumericValue =
           typeof value === 'number' ||
           (typeof value === 'string' && isNumeric(value))
 
         const valueFormatted =
-          isNumericValue && valueFormat
-            ? numeral(value).format(valueFormat)
+          isNumericValue && value_format
+            ? numeral(value).format(value_format)
             : value
 
         const cellVisEntry = cellVis[key]
+
         const formattedValue = cellVisEntry
           ? () => (
               <TableMeasure
-                value={valueFormatted}
+                value={value}
+                valueFormatted={valueFormatted}
                 min={cellVisEntry.min}
                 max={cellVisEntry.max}
+                color={color}
               />
             )
           : valueFormatted

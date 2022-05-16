@@ -33,9 +33,17 @@ export const sdkMethodDashboardListener = jest.fn()
 export const sdkMethodRunQueryListener = jest.fn()
 export const sdkMethodLookmlModelExploreListener = jest.fn()
 export const sdkMethodCreateQueryListener = jest.fn()
+export const sdkMethodColorCollectionListener = jest.fn()
 
 export const mockSDKWithListeners: Partial<Looker40SDK> = {
   ...mockSDK,
+  color_collection: () =>
+    (mockSDK as Looker40SDK)
+      .color_collection('abcdefghijklmnop')
+      .then(result => {
+        sdkMethodColorCollectionListener(result)
+        return result
+      }),
   create_query: () =>
     (mockSDK as Looker40SDK).create_query({}).then(result => {
       sdkMethodCreateQueryListener(result)

@@ -29,7 +29,7 @@ import type {
   CommonCartesianProperties,
   CSeriesBasic,
 } from '../types'
-import { DEFAULT_SERIES_COLORS, deriveColorPalette } from '../utils'
+import { deriveColorPalette } from '../utils'
 
 const MAX_DATA_POINTS = 50
 
@@ -44,8 +44,14 @@ export const dimensionSeriesColors: ConfigHelper<CommonCartesianProperties> = ({
   data,
   fields,
 }) => {
-  const { series_colors, series = {}, custom_color, ...restConfig } = config
-  const fullColorPalette = deriveColorPalette(DEFAULT_SERIES_COLORS)
+  const {
+    series_colors,
+    series = {},
+    custom_color,
+    default_series_colors,
+    ...restConfig
+  } = config
+  const fullColorPalette = deriveColorPalette(default_series_colors)
 
   const limitedData = data.slice(0, MAX_DATA_POINTS)
 
@@ -89,6 +95,7 @@ export const dimensionSeriesColors: ConfigHelper<CommonCartesianProperties> = ({
       series: Array.isArray(series)
         ? buildArraySeries(series)
         : buildNamedSeries(series),
+      default_series_colors,
       ...restConfig,
     },
     data,

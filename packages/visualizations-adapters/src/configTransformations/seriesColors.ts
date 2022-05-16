@@ -29,7 +29,7 @@ import type {
   CommonCartesianProperties,
   CSeriesBasic,
 } from '../types'
-import { DEFAULT_SERIES_COLORS, normalizePivotSeriesKeys } from '../utils'
+import { normalizePivotSeriesKeys } from '../utils'
 
 /**
  * Populate series colors from series_colors response.
@@ -44,6 +44,7 @@ export const seriesColors: ConfigHelper<CommonCartesianProperties> = ({
     series_colors = {},
     series = {},
     custom_color,
+    default_series_colors = [],
     ...restConfig
   } = config
 
@@ -55,7 +56,7 @@ export const seriesColors: ConfigHelper<CommonCartesianProperties> = ({
     }) || []
 
   const colorSet = Array.from(
-    new Set([...seriesColorValues, custom_color, ...DEFAULT_SERIES_COLORS])
+    new Set([...seriesColorValues, custom_color, ...default_series_colors])
   ).filter(Boolean)
 
   const buildArraySeries = (s: CSeriesBasic[] = []) => {
@@ -92,6 +93,7 @@ export const seriesColors: ConfigHelper<CommonCartesianProperties> = ({
       series: Array.isArray(series)
         ? buildArraySeries(series)
         : buildNamedSeries(series),
+      default_series_colors,
       ...restConfig,
     },
     data,

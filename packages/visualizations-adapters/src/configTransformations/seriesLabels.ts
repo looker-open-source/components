@@ -58,7 +58,9 @@ export const seriesLabels: ConfigHelper<CommonCartesianProperties> = ({
       const currentFieldSettings = pick(s, field)
       const defaultSeriesLabel = {
         // Down the chain, we'll use label_short from the field's metadata if [series].label is falsy
-        [field]: { label: series_labels?.[field] || singleValueTitle },
+        [field]: {
+          label: series_labels?.[field] || singleValueTitle,
+        },
       }
       return merge(seriesConfig, defaultSeriesLabel, currentFieldSettings)
     }, {} as { [key: string]: CSeriesBasic })

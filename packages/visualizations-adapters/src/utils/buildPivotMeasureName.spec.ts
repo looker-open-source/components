@@ -33,6 +33,6 @@ describe('buildPivotMeasureName', () => {
       pivotValue: 'complete',
     })
 
-    expect(pivotMeasureName).toEqual('orders.count|complete')
+    expect(pivotMeasureName).toEqual('complete - orders.count')
   })
 })
