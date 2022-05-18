@@ -6,6 +6,6 @@ This package publishes several components that can be used to build ThemeEditor 
 
 These are not intended for use in production applications and may have experience radical API or UI changes in the future.
 
-## LICENCE
+## LICENSE
 
-[MIT](LICENCE)
+[MIT](../../LICENSE.md)

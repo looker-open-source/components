@@ -65,6 +65,6 @@ Need to customize the prettier configuration? Add a `.prettierrc.json` to the ro
 }
 ```
 
-## LICENCE
+## LICENSE
 
-[MIT](LICENCE)
+[MIT](../../LICENSE.md)

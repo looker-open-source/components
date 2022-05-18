@@ -18,6 +18,6 @@ module.exports = {
 }
 ```
 
-## LICENCE
+## LICENSE
 
-[MIT](LICENCE)
+[MIT](../../LICENSE.md)

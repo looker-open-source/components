@@ -39,7 +39,7 @@ We recommend using [Node Version Manager (NVM)](https://github.com/nvm-sh/nvm#in
 ## Applications
 
 - [playground](./apps/playground/README.md) — A convenient React environment used for developing Looker UI Components
-- [storybook](./storybook/README.md) — Storybook is a tool for developing UI components in isolation
+- [storybook](./apps/storybook/README.md) — Storybook is a tool for developing UI components in isolation
 - [www](./www/README.md) — The Gatsby site which powers our living style guide
 
 ### Common Project Commands
