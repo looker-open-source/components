@@ -2,7 +2,7 @@
   "name": "@looker/components-data",
   "license": "MIT",
   "main": "src/index.ts",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "publishConfig": {
     "access": "public"
   },
@@ -12,17 +12,17 @@
     "lib"
   ],
   "dependencies": {
-    "@looker/components": "^3.0.7",
+    "@looker/components": "^3.0.8",
     "@looker/sdk": "^22.4.2",
     "@looker/sdk-rtl": "^21.3.3",
-    "@looker/visualizations-adapters": "^0.1.15",
+    "@looker/visualizations-adapters": "^0.1.16",
     "lodash": "4.17.21",
     "swr": "1.2.2",
     "unstated-next": "1.1.0"
   },
   "devDependencies": {
-    "@looker/components-test-utils": "^1.5.25",
-    "@looker/eslint-config-oss": "^1.7.20",
+    "@looker/components-test-utils": "^1.5.26",
+    "@looker/eslint-config-oss": "^1.7.21",
     "@testing-library/react": "*",
     "@testing-library/react-hooks": "*"
   },

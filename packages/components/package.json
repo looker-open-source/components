@@ -1,16 +1,16 @@
 {
   "name": "@looker/components",
   "license": "MIT",
-  "version": "3.0.7",
+  "version": "3.0.8",
   "main": "src/index.ts",
   "sideEffects": false,
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@looker/components-providers": "^1.5.25",
-    "@looker/design-tokens": "^2.7.20",
-    "@looker/i18n": "^0.1.7",
+    "@looker/components-providers": "^1.5.26",
+    "@looker/design-tokens": "^2.7.21",
+    "@looker/i18n": "^0.1.8",
     "@popperjs/core": "^2.6.0",
     "@styled-icons/material": "10.34.0",
     "@styled-icons/material-outlined": "10.34.0",
@@ -28,8 +28,8 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "@looker/components-test-utils": "^1.5.25",
-    "@looker/eslint-config-oss": "^1.7.20",
+    "@looker/components-test-utils": "^1.5.26",
+    "@looker/eslint-config-oss": "^1.7.21",
     "@storybook/addon-docs": "^6.4.19",
     "@storybook/testing-react": "^0.0.22",
     "@testing-library/jest-dom": "*",
