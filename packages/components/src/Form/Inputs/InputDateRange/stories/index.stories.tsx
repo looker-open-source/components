@@ -23,17 +23,20 @@
  SOFTWARE.
 
  */
+
 import React, { useState } from 'react'
 import type { Story } from '@storybook/react/types-6-0'
-import { defaultArgTypes as argTypes } from '../../../../../../apps/storybook/src/defaultArgTypes'
-import type { RangeModifier } from '../../../Calendar'
-import type { InputDateRangeProps } from './InputDateRange'
-import { InputDateRange } from './InputDateRange'
+import { defaultArgTypes as argTypes } from '../../../../../../../apps/storybook/src/defaultArgTypes'
+import type { RangeModifier } from '../../../../Calendar'
+import type { InputDateRangeProps } from '../InputDateRange'
+import { InputDateRange } from '../InputDateRange'
+
+export { default as Popover } from './Popover'
 
 export default {
   argTypes,
   component: InputDateRange,
-  title: 'InputDateRange',
+  title: 'Stories/Form/Inputs/InputDateRange',
 }
 
 const Template: Story<InputDateRangeProps> = ({ value, ...args }) => {

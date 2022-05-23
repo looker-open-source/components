@@ -32,7 +32,7 @@ import en from 'date-fns/locale/en-US'
 import ital from 'date-fns/locale/it'
 import ko from 'date-fns/locale/ko'
 import { InputDateRange } from './InputDateRange'
-import * as stories from './InputDateRange.stories'
+import * as stories from './stories/index.stories'
 
 const { ExternalUpdates } = composeStories(stories)
 

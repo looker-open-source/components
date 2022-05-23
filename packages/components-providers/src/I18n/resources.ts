@@ -162,5 +162,8 @@ export const i18nResources: Resource = {
     TabList: {
       Tabs: 'Tabs',
     },
+    TimeSelect: {
+      'Select Time': 'Select Time',
+    },
   },
 }

@@ -30,6 +30,7 @@
   "devDependencies": {
     "@looker/components-test-utils": "^1.5.25",
     "@looker/eslint-config-oss": "^1.7.20",
+    "@storybook/addon-docs": "^6.4.19",
     "@storybook/testing-react": "^0.0.22",
     "@testing-library/jest-dom": "*",
     "@testing-library/react": "*",
@@ -38,6 +39,7 @@
     "jest-styled-components": "*",
     "lodash": "^4.17.20",
     "puppeteer": "^9.1.0",
+    "raw-loader": "^4.0.2",
     "react": "16.14.0",
     "react-dom": "16.14.0",
     "react-is": "16.13.1",
@@ -56,6 +58,15 @@
       "@looker/eslint-config-oss"
     ],
     "overrides": [
+      {
+        "files": [
+          "*.mdx",
+          "*.md"
+        ],
+        "rules": {
+          "import/no-webpack-loader-syntax": "off"
+        }
+      },
       {
         "files": [
           "*.tsx",

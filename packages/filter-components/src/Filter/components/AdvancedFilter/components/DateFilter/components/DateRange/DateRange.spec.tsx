@@ -144,13 +144,11 @@ describe('DateRange', () => {
 
   it('should push the end time when start time is set after end', () => {
     renderWithTheme(<DateRange item={mockItem} onChange={onChangeMock} />)
-    const startTime = screen.getByText('2018/01/01')
 
-    fireEvent.click(startTime) // open calendar
-    const nextMonthButton = screen.getByText('Next Month')
-    fireEvent.click(nextMonthButton) // go to February
-    const feb15th = screen.getByText('15')
-    fireEvent.click(feb15th)
+    fireEvent.click(screen.getByText('2018/01/01'))
+    fireEvent.click(screen.getByText('Open calendar'))
+    fireEvent.click(screen.getByText('next month'))
+    fireEvent.click(screen.getByTitle('Thu Feb 15, 2018'))
 
     expect(onChangeMock.mock.calls).toMatchInlineSnapshot(`
       Array [
@@ -184,14 +182,12 @@ describe('DateRange', () => {
 
   it('should push the start time when end time is set before start', () => {
     renderWithTheme(<DateRange item={mockItem} onChange={onChangeMock} />)
-    const endTime = screen.getByText('2018/02/01')
 
-    fireEvent.click(endTime) // open calendar
-    const previousMonthButton = screen.getByText('Previous Month')
-    fireEvent.click(previousMonthButton) // go to January
-    fireEvent.click(previousMonthButton) // go to December
-    const dec15th = screen.getByText('15')
-    fireEvent.click(dec15th)
+    fireEvent.click(screen.getByText('2018/02/01'))
+    fireEvent.click(screen.getByText('Open calendar'))
+    fireEvent.click(screen.getByText('previous month'))
+    fireEvent.click(screen.getByText('previous month'))
+    fireEvent.click(screen.getByTitle('Fri Dec 15, 2017'))
 
     expect(onChangeMock.mock.calls).toMatchInlineSnapshot(`
       Array [

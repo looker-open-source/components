@@ -29,6 +29,7 @@ import type { Looker40SDK, IWriteQuery, IQuery } from '@looker/sdk'
 import type { ISDKSuccessResponse } from '@looker/sdk-rtl'
 import memoize from 'lodash/memoize'
 import useSWR from 'swr'
+import { getErrorResponse, isSuccessResponse } from '../utils'
 import { useSDK } from './useSDK'
 import { DataState } from './useDataState'
 
@@ -60,7 +61,7 @@ export const useCreateQuery = (newQuery?: Partial<IWriteQuery>) => {
     return undefined
   }
 
-  const { data: SWRData, isValidating, error } = useSWR(
+  const { data: SWRData, isValidating } = useSWR(
     JSON.stringify(newQuery),
     fetcher
   )
@@ -76,9 +77,9 @@ export const useCreateQuery = (newQuery?: Partial<IWriteQuery>) => {
   }, [draftId])
 
   return {
-    isOK: !error,
+    isOK: isSuccessResponse(SWRData) || typeof newQuery === 'undefined',
     isPending: isValidating,
     queryId: draftId ? Number(draftId) : undefined,
-    ...(error ? { error } : {}),
+    ...getErrorResponse(SWRData),
   }
 }

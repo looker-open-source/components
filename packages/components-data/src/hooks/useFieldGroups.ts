@@ -36,6 +36,7 @@ import isEmpty from 'lodash/isEmpty'
 import isEqual from 'lodash/isEqual'
 import memoize from 'lodash/memoize'
 import useSWR from 'swr'
+import { getErrorResponse } from '../utils'
 import { useSDK, useQueryMetadata, DataState } from '.'
 
 const fetchModelExplore = memoize(
@@ -97,7 +98,7 @@ export const useFieldGroups = (id: number) => {
     return undefined
   }
 
-  const { data: SWRData, isValidating, error } = useSWR<void | SDKResponse<
+  const { data: SWRData, isValidating } = useSWR<void | SDKResponse<
     ILookmlModelExplore,
     IError
   >>(
@@ -136,8 +137,8 @@ export const useFieldGroups = (id: number) => {
 
   return {
     fieldGroups,
-    isOK: !error,
+    isOK: !!fieldGroups,
     isPending: isValidating,
-    ...(error ? { error } : {}),
+    ...getErrorResponse(SWRData),
   }
 }

@@ -51,7 +51,7 @@ export const useVisConfig = (id: number, configOverrides?: Partial<CAll>) => {
 
   const {
     metadata: { vis_config },
-    isOK,
+    isOK: isMetadataOK,
     error,
     isPending,
   } = useQueryMetadata(id)
@@ -96,7 +96,7 @@ export const useVisConfig = (id: number, configOverrides?: Partial<CAll>) => {
   })
 
   return {
-    isOK: isOK && isColorPaletteOK,
+    isOK: isMetadataOK && isColorPaletteOK,
     isPending: isPending || isColorPalettePending,
     visConfig: transformedConfig,
     ...(error ? { error } : {}),

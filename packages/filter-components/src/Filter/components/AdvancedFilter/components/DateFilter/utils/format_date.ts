@@ -24,7 +24,7 @@
 
  */
 
-import { formatDateString } from '@looker/components-date'
+import { formatDateString } from '@looker/components'
 
 // hardcoding yyyy/MM/dd for legacy reasons
 export const FILTERS_DATE_FORMAT = 'yyyy/MM/dd'

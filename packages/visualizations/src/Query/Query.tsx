@@ -43,6 +43,7 @@ import {
   nullValueZero,
   xAxisReversed,
 } from '@looker/visualizations-adapters'
+import { QueryError } from '../QueryError'
 
 export type QueryProps = {
   /* Accept user defined config options to overwrite API response */
@@ -78,18 +79,21 @@ const QueryInternal: FC<QueryProps> = ({
     queryId: dashboardQueryId,
     isPending: isDashboardPending,
     isOK: isDashboardOK,
+    error: dashboardError,
   } = useQueryIdFromDashboard(dashboard)
 
   const {
     queryId,
     isPending: isQueryIdPending,
     isOK: isQueryIdOK,
+    error: queryIdError,
   } = useQueryId(query || dashboardQueryId)
 
   const {
     visConfig,
     isPending: isVisConfigPending,
     isOK: isVisConfigOK,
+    error: visConfigError,
   } = useVisConfig(queryId, configProp)
 
   const {
@@ -98,6 +102,7 @@ const QueryInternal: FC<QueryProps> = ({
     totals,
     isPending: isQueryDataPending,
     isOK: isQueryDataOK,
+    error: queryDataError,
   } = useQueryData(queryId, buildTrackingTag(visConfig.type))
 
   // derived accumulative state from all the various requests:
@@ -115,6 +120,11 @@ const QueryInternal: FC<QueryProps> = ({
     isQueryDataOK,
   ].every(responseOk => responseOk === true)
 
+  if (!query && !dashboard) {
+    // no query to render!
+    return null
+  }
+
   if (isLoading) {
     return (
       <Space justifyContent="center" p="small">
@@ -123,12 +133,17 @@ const QueryInternal: FC<QueryProps> = ({
     )
   }
 
-  const isDataValid = Boolean(
-    isEveryResponseOk && data?.length && fields?.dimensions
-  )
-
-  if (!isDataValid) {
-    return null
+  if (!isEveryResponseOk) {
+    return (
+      <QueryError
+        message={
+          visConfigError?.message ||
+          queryIdError?.message ||
+          dashboardError?.message ||
+          queryDataError?.message
+        }
+      />
+    )
   }
 
   const dataTransformations = [sortByDateTime, nullValueZero, xAxisReversed]

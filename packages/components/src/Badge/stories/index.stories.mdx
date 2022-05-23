@@ -1,0 +1,25 @@
+import { Badge } from '@looker/components'
+import storyIntent from '!!raw-loader!./Intent'
+import storySizes from '!!raw-loader!./Sizes'
+
+<Meta component={Badge} title="Content/Badge" />
+
+# Badge
+
+A `Badge` is used for labeling elements with a message or status.
+
+## Intent
+
+Badge `intent` is specified as a design token with a semantic meaning. The values can be one of `key`, `positive`, `inform`, `neutral`, `warn` or `critical`.
+
+<Editor code={storyIntent} />
+
+## Sizes
+
+Badge `size` is specified as a design token of `small`, `medium` or `large`. You cannot specify other values such as pixels or design token values outside that range such as `xxlarge`.
+
+<Editor code={storySizes} />
+
+## Props
+
+<ArgsTable of={Badge} />

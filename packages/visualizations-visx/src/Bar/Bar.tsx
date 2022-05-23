@@ -225,7 +225,7 @@ export const Bar: FC<BarProps> = ({
       // of XYChart, which would then require the legend to be SVG-based
       // because HTML cannot be a child of SVG
       xScale={X_SCALE}
-      yScale={{ type: 'band' }}
+      yScale={{ type: 'band', paddingInner: 0.2 }}
       theme={chartTheme}
     >
       <VisWrapper legend={legend}>

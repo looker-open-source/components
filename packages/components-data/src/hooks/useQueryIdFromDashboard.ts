@@ -29,6 +29,7 @@ import type { Looker40SDK, IDashboard, IError, IQuery } from '@looker/sdk'
 import type { SDKResponse } from '@looker/sdk-rtl'
 import memoize from 'lodash/memoize'
 import useSWR from 'swr'
+import { getErrorResponse } from '../utils'
 import { DataState } from './useDataState'
 import { useSDK } from './useSDK'
 
@@ -69,7 +70,7 @@ export const useQueryIdFromDashboard = (dashboardId?: number) => {
     return undefined
   }
 
-  const { data: SWRData, isValidating, error } = useSWR<void | SDKResponse<
+  const { data: SWRData, isValidating } = useSWR<void | SDKResponse<
     IDashboard,
     IError
   >>(
@@ -95,9 +96,9 @@ export const useQueryIdFromDashboard = (dashboardId?: number) => {
   }, [SWRData, dashboardId, setByDashboardId, queryId])
 
   return {
-    isOK: !error,
+    isOK: !!queryId || typeof dashboardId === 'undefined',
     isPending: isValidating,
     queryId,
-    ...(error ? { error } : {}),
+    ...getErrorResponse(SWRData),
   }
 }

@@ -128,7 +128,7 @@ export const Column: FC<ColumnProps> = ({
       // without doing this you would have to render XYChart as a child
       // of XYChart, which would then require the legend to be SVG-based
       // because HTML cannot be a child of SVG
-      xScale={{ type: 'band' }}
+      xScale={{ type: 'band', paddingInner: 0.2 }}
       yScale={Y_SCALE}
       theme={chartTheme}
     >

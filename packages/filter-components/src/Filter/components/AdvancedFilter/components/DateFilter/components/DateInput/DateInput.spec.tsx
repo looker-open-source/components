@@ -28,29 +28,14 @@ import { fireEvent, screen } from '@testing-library/react'
 import React from 'react'
 import { DateInput } from './DateInput'
 
-describe('DateInput', () => {
-  it('renders a DateInput', () => {
-    const onChangeMock = jest.fn()
-    renderWithTheme(
-      <DateInput
-        date={
-          new Date('Thu Jan 01 1863 03:24:00 GMT-0800 (Pacific Standard Time)')
-        }
-        onChange={onChangeMock}
-      />
-    )
-    const token = screen.getByText('1863/01/01')
-    fireEvent.click(token)
-    fireEvent.click(screen.getByText('4'))
-    expect(onChangeMock.mock.calls).toMatchInlineSnapshot(`
-      Array [
-        Array [
-          1863-01-04T11:24:00.000Z,
-        ],
-      ]
-    `)
-
-    // close the popover to prevent act warning
-    fireEvent.click(token)
-  })
+test('renders a DateInput', () => {
+  const onChangeMock = jest.fn()
+  renderWithTheme(
+    <DateInput date={new Date(1863, 0, 1)} onChange={onChangeMock} />
+  )
+  fireEvent.click(screen.getByText('1863/01/01'))
+  fireEvent.click(screen.getByText('Open calendar'))
+  fireEvent.click(screen.getByTitle(/Jan 04, 1863/))
+  expect(onChangeMock.mock.calls).toEqual([[new Date(1863, 0, 4)]])
+  fireEvent.click(document)
 })
