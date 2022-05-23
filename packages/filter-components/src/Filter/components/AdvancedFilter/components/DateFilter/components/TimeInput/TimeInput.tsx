@@ -23,8 +23,7 @@
  SOFTWARE.
 
  */
-import { InputText } from '@looker/components'
-import { InputTimeSelect } from '@looker/components-date'
+import { InputTimeSelect, InputText } from '@looker/components'
 import type { FC } from 'react'
 import React from 'react'
 import styled from 'styled-components'

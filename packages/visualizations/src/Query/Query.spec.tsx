@@ -30,7 +30,7 @@ import { DataProvider } from '@looker/components-data'
 import { Query } from './'
 import type { Response, SDKRecord, CAll } from '@looker/visualizations-adapters'
 import type { Looker40SDK } from '@looker/sdk'
-import { waitFor } from '@testing-library/react'
+import { waitFor, screen } from '@testing-library/react'
 import { mockSDK, mockSdkFieldsResponse } from '@looker/visualizations-adapters'
 import { renderWithTheme } from '@looker/components-test-utils'
 
@@ -145,11 +145,33 @@ describe('Query', () => {
       </DataProvider>
     )
 
-    expect(mockConsoleWarn).toHaveBeenCalled()
-
-    // use any async assertion to suppress act(...) warning
     await waitFor(() => {
       expect(isResponseOk).toHaveBeenLastCalledWith(true)
+    })
+
+    expect(mockConsoleWarn).toHaveBeenCalled()
+  })
+
+  it('Renders sdk error message in the dom', async () => {
+    const errorMessage = 'Query not found'
+
+    const mockSDKNotFound = ({
+      ...mockSDK,
+      query_for_slug: () =>
+        Promise.resolve({
+          ok: false,
+          error: { message: errorMessage },
+        }),
+    } as unknown) as Looker40SDK
+
+    renderWithTheme(
+      <DataProvider sdk={mockSDKNotFound}>
+        <Query query={'abc123'}>{() => null}</Query>
+      </DataProvider>
+    )
+
+    await waitFor(() => {
+      expect(screen.getByText(errorMessage)).toBeInTheDocument()
     })
   })
 })

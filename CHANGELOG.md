@@ -3,7 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## `@looker/components` 3.0.6
+## `@looker/components` 3.0.8
+
+### Features
+
+- Docs rewrite spike
+
+## `@looker/visualizations-visx` 0.2.14
+
+### Features
+
+- Add spacing between the bars when viewing stacked column and bar charts
+
+### Chores
+
+- Updated visx dependencies
+
+## `@looker/visualizations` 0.2.15
+
+### Features
+
+- Render an error message when provided query or dashboard id is not found
+
+## `@looker/visualization-playground` 1.0.3
+
+### Features
+
+- Edit series value format
+
+## `@looker/components` 3.0.7
 
 ### Features
 

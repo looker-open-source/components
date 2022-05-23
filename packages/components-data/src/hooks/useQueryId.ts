@@ -29,8 +29,8 @@ import { isNumeric } from '@looker/visualizations-adapters'
 import type { Looker40SDK, IQuery, IError } from '@looker/sdk'
 import type { SDKResponse, ISDKSuccessResponse } from '@looker/sdk-rtl'
 import memoize from 'lodash/memoize'
-
 import useSWR from 'swr'
+import { getErrorResponse } from '../utils'
 import { useSDK } from './useSDK'
 import { DataState } from './useDataState'
 
@@ -80,7 +80,7 @@ export const useQueryId = (slugOrId: string | number = '') => {
     return undefined
   }
 
-  const { data: SWRData, isValidating, error } = useSWR<void | SDKResponse<
+  const { data: SWRData, isValidating } = useSWR<void | SDKResponse<
     IQuery,
     IError
   >>(
@@ -104,9 +104,9 @@ export const useQueryId = (slugOrId: string | number = '') => {
   }, [SWRData, queryId, querySlug, setBySlug, cachedQuery])
 
   return {
-    isOK: !error,
+    isOK: !!queryId,
     isPending: isValidating,
     queryId,
-    ...(error ? { error } : {}),
+    ...getErrorResponse(SWRData),
   }
 }

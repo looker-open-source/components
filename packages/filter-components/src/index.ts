@@ -48,5 +48,4 @@ export {
   summary,
 } from '@looker/filter-expressions'
 // Proxy imports to `@looker/components`
-export { ComponentsProvider } from '@looker/components'
-export { getLocale } from '@looker/components-date'
+export { ComponentsProvider, getLocale } from '@looker/components'

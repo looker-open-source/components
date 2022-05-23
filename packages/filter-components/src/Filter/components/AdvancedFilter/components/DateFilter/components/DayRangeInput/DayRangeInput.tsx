@@ -23,10 +23,8 @@
  SOFTWARE.
 
  */
-import { ChipButton, Popover } from '@looker/components'
-import { InputDateRange } from '@looker/components-date'
+import { Box2, ChipButton, InputDateRange, Popover } from '@looker/components'
 import React from 'react'
-import styled from 'styled-components'
 import type { DayRange } from '../../types/day_range'
 import { FILTERS_DATE_FORMAT, formatDate } from '../../utils/format_date'
 
@@ -57,7 +55,7 @@ export const DayRangeInput = ({ value, onChange }: DayRangePickerProps) => {
   return (
     <Popover
       content={
-        <InputWrapper>
+        <Box2 p="u3">
           <InputDateRange
             onChange={handleChange}
             value={value}
@@ -65,7 +63,7 @@ export const DayRangeInput = ({ value, onChange }: DayRangePickerProps) => {
             // eventually this should be replaced with the user's preferred locale
             dateStringFormat={FILTERS_DATE_FORMAT}
           />
-        </InputWrapper>
+        </Box2>
       }
       placement="bottom-start"
     >
@@ -73,11 +71,3 @@ export const DayRangeInput = ({ value, onChange }: DayRangePickerProps) => {
     </Popover>
   )
 }
-
-const InputWrapper = styled.div`
-  padding: ${({ theme }) => theme.space.small};
-  & > div {
-    display: flex;
-    flex-direction: column;
-  }
-`

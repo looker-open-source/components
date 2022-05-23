@@ -12,6 +12,7 @@
     "@looker/i18n": "^0.1.7",
     "@looker/visualizations-adapters": "^0.1.15",
     "@styled-icons/material": "10.34.0",
+    "@types/d3-scale": "^3.3.0",
     "@visx/annotation": "2.5.0",
     "@visx/axis": "2.1.1",
     "@visx/event": "2.1.2",

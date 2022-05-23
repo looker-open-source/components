@@ -54,6 +54,8 @@ import { SeriesSizeBy } from './SeriesSizeBy'
 import type { CSeriesSizeBySupported } from './SeriesSizeBy'
 import { SeriesCellVisualization } from './SeriesCellVisualization'
 import type { CCellVisualizationSupported } from './SeriesCellVisualization'
+import { SeriesValueFormat } from './SeriesValueFormat'
+import type { CValueFormatSupported } from './SeriesValueFormat'
 import partial from 'lodash/partial'
 import set from 'lodash/set'
 import styled from 'styled-components'
@@ -152,6 +154,11 @@ export const Series = (props: SeriesProps) => {
               series={s as CSeriesLine}
               onSeriesChange={handleSeriesChange}
               disabled={seriesDisabled}
+            />
+            <SeriesValueFormat
+              chartType={config.type as CValueFormatSupported['type']}
+              series={s as CSeriesBasic}
+              onSeriesChange={handleSeriesChange}
             />
             <Grid columns={2}>
               <SeriesPointStyle

@@ -36,6 +36,9 @@ const resources = {
     'Query component received both dashboard and query props':
       'Query component received both dashboard and query props',
   },
+  QueryError: {
+    Error: 'Error',
+  },
   Visualization: {
     "Measures of type 'date' are currently not supported":
       "Measures of type 'date' are currently not supported",

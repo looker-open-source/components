@@ -55,15 +55,11 @@ describe('OnDate', () => {
 
   it('should fire onChange with the new date when changed', () => {
     renderWithTheme(<OnDate item={mockItem} onChange={onChangeMock} />)
-    const input = screen.getByText('2018/01/01')
 
-    fireEvent.click(input) // open calendar
-    const nextMonthButton = screen
-      .getByText('Next Month')
-      .closest('button') as HTMLElement
-    fireEvent.click(nextMonthButton) // go to February
-    const feb15th = screen.getByText('15')
-    fireEvent.click(feb15th)
+    fireEvent.click(screen.getByText('2018/01/01'))
+    fireEvent.click(screen.getByText('Open calendar'))
+    fireEvent.click(screen.getByText('next month'))
+    fireEvent.click(screen.getByTitle('Thu Feb 15, 2018'))
 
     expect(onChangeMock.mock.calls).toMatchInlineSnapshot(`
       Array [
@@ -91,10 +87,10 @@ describe('OnDate', () => {
     } as FilterModel
     onChangeMock.mockReset()
     renderWithTheme(<OnDate item={itemWithTime} onChange={onChangeMock} />)
-    const input = screen.getByText('2018/01/01')
-    fireEvent.click(input) // open calendar
-    const jan15th = screen.getByText('15')
-    fireEvent.click(jan15th)
+
+    fireEvent.click(screen.getByText('2018/01/01'))
+    fireEvent.click(screen.getByText('Open calendar'))
+    fireEvent.click(screen.getByTitle('Mon Jan 15, 2018'))
 
     expect(onChangeMock).toHaveBeenCalledWith('1', {
       date: { year: 2018, month: 1, day: 15 },

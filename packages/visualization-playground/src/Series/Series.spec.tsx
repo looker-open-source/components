@@ -248,4 +248,29 @@ describe('Series', () => {
       })
     )
   })
+
+  it('updates Series Value Format', () => {
+    renderWithTheme(
+      <Series
+        config={{
+          ...mockLineConfig,
+          series: {
+            'orders.count': { value_format: '#,##0.00' },
+          } as Partial<CLineSeries>,
+        }}
+        fields={mockFields}
+        onConfigChange={handleConfigChange}
+      />
+    )
+
+    fireEvent.change(screen.getByLabelText('Value Format'), {
+      target: { value: '0' },
+    })
+
+    expect(handleConfigChange).toHaveBeenLastCalledWith(
+      expect.objectContaining({
+        series: { 'orders.count': { value_format: '0' } },
+      })
+    )
+  })
 })

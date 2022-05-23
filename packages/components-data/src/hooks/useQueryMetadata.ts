@@ -31,6 +31,7 @@ import isEmpty from 'lodash/isEmpty'
 import isEqual from 'lodash/isEqual'
 import memoize from 'lodash/memoize'
 import useSWR from 'swr'
+import { getErrorResponse, isSuccessResponse } from '../utils'
 import { useSDK } from './useSDK'
 import { DataState } from './useDataState'
 
@@ -82,7 +83,7 @@ export const useQueryMetadata = (id: number) => {
     return undefined
   }
 
-  const { data: SWRData, isValidating, error } = useSWR<void | SDKResponse<
+  const { data: SWRData, isValidating } = useSWR<void | SDKResponse<
     IQuery,
     IError
   >>(
@@ -96,7 +97,7 @@ export const useQueryMetadata = (id: number) => {
    */
 
   useEffect(() => {
-    const SWRValue = SWRData?.ok ? SWRData?.value : ({} as IQuery)
+    const SWRValue = isSuccessResponse(SWRData) ? SWRData.value : ({} as IQuery)
 
     const {
       vis_config: draftConfig,
@@ -117,9 +118,9 @@ export const useQueryMetadata = (id: number) => {
   }, [id, SWRData, metadata, setById])
 
   return {
-    isOK: !error,
+    isOK: !!metadata,
     isPending: isValidating,
     metadata,
-    ...(error ? { error } : {}),
+    ...getErrorResponse(SWRData),
   }
 }

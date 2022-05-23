@@ -24,10 +24,12 @@
 
  */
 import { renderWithTheme } from '@looker/components-test-utils'
-import { fireEvent, screen } from '@testing-library/react'
+import { fireEvent, screen, waitFor } from '@testing-library/react'
 import React from 'react'
 import { AllPresetTimeframes } from '../../../../types/relative_timeframe_types'
 import { RelativeTimeframeCustom } from './RelativeTimeframeCustom'
+
+const dateRegex = /\d{4}\/\d{2}\/\d{2}/
 
 const getMockComponent = (props: any = {}) => {
   const defaultProps = {
@@ -59,17 +61,17 @@ describe('RelativeTimeframeCustom', () => {
     const toDateInput = screen.getByTestId(
       'date-to-text-input'
     ) as HTMLInputElement
-    expect(fromDateInput.value).toMatchInlineSnapshot(`""`)
-    expect(toDateInput.value).toMatchInlineSnapshot(`""`)
+    expect(fromDateInput.value).toMatch(dateRegex)
+    expect(toDateInput.value).toMatch(dateRegex)
     // Should select the current day by default.
     const selectedDatesLabels = getSelectedDatesLabels(container)
-    expect(selectedDatesLabels).toMatchInlineSnapshot(`Array []`)
+    expect(selectedDatesLabels).toEqual([])
   })
 
-  it('should accept date range', () => {
+  it('should accept date range', async () => {
     const fromDate = new Date('2019-01-10T00:00:00.000-08:00')
     const toDate = new Date('2019-01-15T00:00:00.000-08:00')
-    const { container } = renderWithTheme(
+    renderWithTheme(
       getMockComponent({
         value: {
           from: fromDate,
@@ -84,19 +86,19 @@ describe('RelativeTimeframeCustom', () => {
     const toDateInput = screen.getByTestId(
       'date-to-text-input'
     ) as HTMLInputElement
-    expect(fromDateInput.value).toMatchInlineSnapshot(`"2019/01/10"`)
-    expect(toDateInput.value).toMatchInlineSnapshot(`"2019/01/15"`)
-    const selectedDatesLabels = getSelectedDatesLabels(container)
-    expect(selectedDatesLabels).toMatchInlineSnapshot(`
-      Array [
-        "Thu Jan 10, 2019",
-        "Fri Jan 11, 2019",
-        "Sat Jan 12, 2019",
-        "Sun Jan 13, 2019",
-        "Mon Jan 14, 2019",
-        "Tue Jan 15, 2019",
-      ]
-    `)
+    expect(fromDateInput.value).toBe('2019/01/10')
+    expect(toDateInput.value).toBe('2019/01/15')
+    fireEvent.click(screen.getByText('Open calendar'))
+    await waitFor(() => {
+      expect(screen.getByTitle('Thu Jan 10, 2019')).toHaveAttribute(
+        'aria-selected',
+        'true'
+      )
+    })
+    expect(screen.getByTitle('Tue Jan 15, 2019')).toHaveAttribute(
+      'aria-selected',
+      'true'
+    )
   })
 
   it('should handle updates', () => {

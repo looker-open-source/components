@@ -17,6 +17,7 @@
     "@looker/visualizations-single-value": "^0.1.13",
     "@looker/visualizations-table": "^0.2.14",
     "@looker/visualizations-visx": "^0.2.13",
+    "@styled-icons/material": "10.28.0",
     "lodash": "*"
   },
   "devDependencies": {
@@ -41,7 +42,26 @@
     "rules": {
       "camelcase": "off",
       "import/order": "off",
-      "sort-keys-fix/sort-keys-fix": "off"
+      "sort-keys-fix/sort-keys-fix": "off",
+      "no-restricted-imports": [
+        "error",
+        {
+          "paths": [
+            {
+              "message": "Please import icons from '@styled-icons/material/SomeIcon'",
+              "name": "@styled-icons/material"
+            },
+            {
+              "message": "Please import icons from '@styled-icons/material-outlined/SomeIcon'",
+              "name": "@styled-icons/material-outlined"
+            },
+            {
+              "message": "Please import icons from '@styled-icons/material-rounded/SomeIcon'",
+              "name": "@styled-icons/material-rounded"
+            }
+          ]
+        }
+      ]
     }
   },
   "stylelint": {

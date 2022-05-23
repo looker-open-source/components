@@ -36,6 +36,7 @@ import find from 'lodash/find'
 import useSWR from 'swr'
 import { DEFAULT_SERIES_COLORS } from '@looker/visualizations-adapters'
 import type { ColorApplication } from '@looker/visualizations-adapters'
+import { getErrorResponse, isErrorResponse } from '../utils'
 import { useSDK } from './useSDK'
 
 type RunQueryReturnType = SDKResponse<IColorCollection, IError>
@@ -108,7 +109,7 @@ export const useColorPalette = (colorApplication?: ColorApplication) => {
     return undefined
   }
 
-  const { data, isValidating, error } = useSWR<void | RunQueryReturnType>(
+  const { data, isValidating } = useSWR<void | RunQueryReturnType>(
     collection_id,
     fetcher
   )
@@ -134,8 +135,8 @@ export const useColorPalette = (colorApplication?: ColorApplication) => {
 
   return {
     colorPalette,
-    isOK: !error,
+    isOK: !(colorApplication && isErrorResponse(data)) || !!colorPalette,
     isPending: isValidating,
-    ...(error ? { error } : {}),
+    ...getErrorResponse(data),
   }
 }

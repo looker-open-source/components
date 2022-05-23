@@ -44,6 +44,7 @@ import memoize from 'lodash/memoize'
 import isEmpty from 'lodash/isEmpty'
 import isEqual from 'lodash/isEqual'
 import useSWR from 'swr'
+import { getErrorResponse } from '../utils'
 import { useSDK } from './useSDK'
 import { DataState } from './useDataState'
 
@@ -104,11 +105,7 @@ export const useQueryData = (id: number, agentTag?: string) => {
     return undefined
   }
 
-  const {
-    data: SWRData,
-    isValidating,
-    error,
-  } = useSWR<void | RunQueryReturnType>(
+  const { data: SWRData, isValidating } = useSWR<void | RunQueryReturnType>(
     `useQueryData-${id}`, // caution: argument string must be unique to this instance
     fetcher
   )
@@ -158,9 +155,9 @@ export const useQueryData = (id: number, agentTag?: string) => {
   return {
     data: normalizedData,
     fields: normalizedFields,
-    isOK: !error,
+    isOK: !!data,
     isPending: isValidating,
     totals: normalizedTotals,
-    ...(error ? { error } : {}),
+    ...getErrorResponse(SWRData),
   }
 }

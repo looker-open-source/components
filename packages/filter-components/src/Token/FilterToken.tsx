@@ -24,7 +24,7 @@
 
  */
 
-import React from 'react'
+import React, { forwardRef } from 'react'
 import { Popover, PopoverContent } from '@looker/components'
 import {
   getExpressionType,
@@ -41,68 +41,67 @@ import { getLabel } from './utils/get_label'
 export type FilterTokenProps = FilterProps &
   Pick<TokenProps, 'maxWidth' | 'onClick'>
 
-export const FilterToken = ({
-  config,
-  maxWidth,
-  onClick,
-  userAttributes,
-  ...props
-}: FilterTokenProps) => {
-  const expressionType =
-    props.expressionType ||
-    getExpressionType({ type: props.type, field: props.field || undefined })
+export const FilterToken = forwardRef(
+  (
+    { config, maxWidth, onClick, userAttributes, ...props }: FilterTokenProps,
+    ref?: React.Ref<HTMLDivElement>
+  ) => {
+    const expressionType =
+      props.expressionType ||
+      getExpressionType({ type: props.type, field: props.field || undefined })
 
-  const label = getLabel({
-    ...props,
-    type: expressionType,
-    userAttributes,
-  })
-  const hasError =
-    useFiltersErrors([props], { userAttributes }).type === ERROR_TYPE
-  const userAttribute = getUserAttributeMatchingTypeAndExpression(
-    expressionType,
-    props.expression,
-    userAttributes
-  )
-  const isSubdued =
-    props.expression === '' ||
-    props.expression === undefined ||
-    (!!userAttribute && !userAttribute.value)
+    const label = getLabel({
+      ...props,
+      type: expressionType,
+      userAttributes,
+    })
+    const hasError =
+      useFiltersErrors([props], { userAttributes }).type === ERROR_TYPE
+    const userAttribute = getUserAttributeMatchingTypeAndExpression(
+      expressionType,
+      props.expression,
+      userAttributes
+    )
+    const isSubdued =
+      props.expression === '' ||
+      props.expression === undefined ||
+      (!!userAttribute && !userAttribute.value)
 
-  const content = (
-    <Filter
-      expressionType={expressionType}
-      config={config}
-      inline={config?.display === 'inline'}
-      userAttributes={userAttributes}
-      {...props}
-    />
-  )
-
-  if (config?.display === 'inline') {
-    return content
-  }
-
-  const popoverContent = (
-    <PopoverContent maxWidth="90vw" py="large">
-      {content}
-      <FilterErrorMessage
-        filters={[props]}
+    const content = (
+      <Filter
+        expressionType={expressionType}
+        config={config}
+        inline={config?.display === 'inline'}
         userAttributes={userAttributes}
-        useLongMessageForm={true}
+        {...props}
       />
-    </PopoverContent>
-  )
+    )
 
-  return (
-    <Popover content={popoverContent} placement="bottom-start">
-      <Token
-        label={label}
-        subdued={isSubdued}
-        hasError={hasError}
-        maxWidth={maxWidth}
-        onClick={onClick}
-      />
-    </Popover>
-  )
-}
+    if (config?.display === 'inline') {
+      return content
+    }
+
+    const popoverContent = (
+      <PopoverContent maxWidth="90vw" py="large">
+        {content}
+        <FilterErrorMessage
+          filters={[props]}
+          userAttributes={userAttributes}
+          useLongMessageForm={true}
+        />
+      </PopoverContent>
+    )
+
+    return (
+      <Popover content={popoverContent} placement="bottom-start" ref={ref}>
+        <Token
+          label={label}
+          subdued={isSubdued}
+          hasError={hasError}
+          maxWidth={maxWidth}
+          onClick={onClick}
+        />
+      </Popover>
+    )
+  }
+)

@@ -23,10 +23,11 @@
  SOFTWARE.
 
  */
+import type { CompatibleHTMLProps } from '@looker/design-tokens'
+import type { Locale } from 'date-fns'
 import { getDate, isSameDay } from 'date-fns'
 import React from 'react'
 import styled from 'styled-components'
-import type { CompatibleHTMLProps } from '@looker/design-tokens'
 import pick from 'lodash/pick'
 import {
   rippleHandlerKeys,
@@ -35,6 +36,7 @@ import {
   useRippleHandlers,
 } from '../Ripple'
 import type { DateSelectionProps } from './types'
+import { formatDateString } from './utils'
 
 export const HitArea = styled.div`
   height: ${({ theme }) => theme.space.u8};
@@ -50,20 +52,23 @@ type DayProps = Omit<
   'onSelect' | 'type'
 > &
   DateSelectionProps & {
-    selected?: boolean
     date: Date
+    locale: Locale
+    selected?: boolean
   }
 
 export const Day = styled(
   ({
     className,
     date,
+    locale,
     onDraftSelect,
     onSelect,
     selected,
     style,
     ...props
   }: DayProps) => {
+    const dateString = formatDateString(date, 'EEE MMM dd, yyyy', locale)
     const today = isSameDay(date, new Date())
     const handleClick = () => {
       onSelect(date)
@@ -90,10 +95,12 @@ export const Day = styled(
     return (
       <button
         {...props}
-        type="button"
-        aria-selected={selected}
         aria-current={today ? 'date' : 'false'}
+        aria-label={dateString}
+        aria-selected={selected}
         onClick={handleClick}
+        title={dateString}
+        type="button"
         {...rippleProps}
         {...rippleHandlers}
       >

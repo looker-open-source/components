@@ -23,8 +23,7 @@
  SOFTWARE.
 
  */
-import { Box, ChipButton, Popover } from '@looker/components'
-import { InputDate } from '@looker/components-date'
+import { Box, ChipButton, InputDate, Popover } from '@looker/components'
 import type { FC } from 'react'
 import React from 'react'
 import styled from 'styled-components'

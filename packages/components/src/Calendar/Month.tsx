@@ -212,6 +212,7 @@ export const Month = styled(
                   {typeof day !== 'string' && (
                     <Day
                       date={day}
+                      locale={locale}
                       onSelect={onSelect}
                       onDraftSelect={onDraftSelect}
                       selected={datesSelected.some(date =>
