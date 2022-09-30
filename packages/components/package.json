@@ -16,7 +16,7 @@
     "@styled-icons/material-outlined": "10.34.0",
     "@styled-icons/material-rounded": "10.34.0",
     "@styled-icons/styled-icon": "^10.6.3",
-    "d3-color": "^2.0.0",
+    "d3-color": "^3.1.0",
     "d3-hsv": "^0.1.0",
     "date-fns": "^2.10.0",
     "date-fns-tz": "^1.0.12",
