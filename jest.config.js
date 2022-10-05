@@ -30,7 +30,6 @@ module.exports = {
   collectCoverage: true,
   collectCoverageFrom: [
     'packages/**/*.(ts)?(x)',
-    '!packages/components-theme-editor/**/*',
     '!packages/**/stories/*',
     '!packages/**/*.stories.tsx',
     '!packages/demos/src/**/*',
