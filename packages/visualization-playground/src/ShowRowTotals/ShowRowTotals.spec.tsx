@@ -23,36 +23,44 @@
  SOFTWARE.
 
  */
-import type { FC } from 'react'
-import React, { useState, useEffect } from 'react'
-import { FieldCheckbox } from '@looker/components'
+import React from 'react'
+import { screen, fireEvent } from '@testing-library/react'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { mockTableConfig } from '@looker/visualizations-adapters'
+import { ShowRowTotals } from './ShowRowTotals'
 
-interface CheckboxProps {
-  label?: string
-  onChange?: (isChecked: boolean) => void
-  checked?: boolean
-}
+afterEach(() => {
+  jest.resetAllMocks()
+})
 
-/**
- * A simple checkbox designed to be symmetrical with other components used in
- * Config editor. Stores checked state, and accepts a "checked" prop (rather
- * than "checked" per standard checkbox)
- */
+describe('ShowRowTotals', () => {
+  const handleConfigChange = jest.fn()
 
-export const Checkbox: FC<CheckboxProps> = ({ onChange, label, checked }) => {
-  const [isChecked, setIsChecked] = useState(Boolean(checked))
-  useEffect(() => {
-    if (checked !== isChecked) {
-      onChange?.(isChecked)
-    }
-  }, [isChecked, onChange, checked])
-  return (
-    <FieldCheckbox
-      label={label}
-      checked={isChecked}
-      onChange={() => {
-        setIsChecked(!isChecked)
-      }}
-    />
-  )
-}
+  it('hidden when show_row_totals is unsupported', () => {
+    const { container } = renderWithTheme(
+      <ShowRowTotals
+        config={{ type: 'unsupported' as 'table' }}
+        onConfigChange={handleConfigChange}
+      />
+    )
+
+    expect(container).toBeEmptyDOMElement()
+  })
+
+  it('toggles show_row_totals', () => {
+    renderWithTheme(
+      <ShowRowTotals
+        config={{ ...mockTableConfig, show_row_totals: true }}
+        onConfigChange={handleConfigChange}
+      />
+    )
+
+    fireEvent.click(screen.getByLabelText('Show row totals'))
+
+    expect(handleConfigChange).toHaveBeenLastCalledWith(
+      expect.objectContaining({
+        show_row_totals: false,
+      })
+    )
+  })
+})

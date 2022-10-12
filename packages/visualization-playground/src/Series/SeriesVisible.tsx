@@ -34,6 +34,7 @@ import type {
   CTable,
   CSeriesBasic,
 } from '@looker/visualizations-adapters'
+import has from 'lodash/has'
 import { FieldToggleSwitch } from '@looker/components'
 
 /**
@@ -65,7 +66,7 @@ export type SeriesVisibleProps = {
 export const SeriesVisible = (props: SeriesVisibleProps) => {
   const { chartType, series, onSeriesChange } = props
 
-  if (!renderFor.includes(chartType)) {
+  if (!renderFor.includes(chartType) && !has(series, 'visible')) {
     // Early return! Only render for supported charts
     return null
   }

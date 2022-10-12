@@ -23,10 +23,14 @@
  SOFTWARE.
 
  */
-import React, { useContext, useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import type { QueryProps } from '@looker/visualizations'
 import type { CAll } from '@looker/visualizations-adapters'
-import { Query, Visualization } from '@looker/visualizations'
+import {
+  Query,
+  Visualization,
+  i18nInit as i18nInitVis,
+} from '@looker/visualizations'
 import {
   isNumeric,
   mockSDK,
@@ -42,9 +46,12 @@ import {
   ExtendComponentsThemeProvider,
   Page,
   theme,
+  ComponentsProvider,
 } from '@looker/components'
-import styled, { ThemeContext } from 'styled-components'
+import styled, { useTheme } from 'styled-components'
 import type { Looker40SDK } from '@looker/sdk'
+import { i18nResources, i18nInit } from '@looker/filter-components'
+import { Radar } from '../Radar'
 import { useLocalStorage } from '../utils'
 import { EmbedEditor } from '../EmbedEditor'
 import { ConfigEditor } from '../ConfigEditor'
@@ -53,6 +60,9 @@ import { QueryInput } from '../QueryInput'
 import { Filtering } from '../Filtering'
 import { CodeEditor } from '../CodeEditor'
 import { CodeToggle } from '../CodeToggle'
+
+i18nInit()
+i18nInitVis()
 
 type TabIDs = 'live' | 'mock'
 
@@ -91,7 +101,7 @@ export const setQueryProps = ({
   }
 }
 
-export const VisualizationPlayground = ({
+export const VisualizationPlaygroundInternal = ({
   sdk,
 }: VisualizationPlaygroundProps) => {
   const [storedTabId, setStoredTabId] = useLocalStorage<TabIDs>(
@@ -125,7 +135,7 @@ export const VisualizationPlayground = ({
     setConfigOverrides({})
   }, [storedTabId, fetchBy, dashboardId, queryIdentifier])
 
-  const { colors } = useContext(ThemeContext)
+  const { colors } = useTheme()
 
   const queryProps: Partial<QueryProps> = setQueryProps({
     fetchBy,
@@ -228,6 +238,8 @@ export const VisualizationPlayground = ({
                             height={
                               isNumeric(height) ? Number(height) : undefined
                             }
+                            /* add custom vis type */
+                            chartTypeMap={{ radar: Radar }}
                           />
                         </Query>
                       </ErrorBoundary>
@@ -239,6 +251,8 @@ export const VisualizationPlayground = ({
                           height={
                             isNumeric(height) ? Number(height) : undefined
                           }
+                          /* add custom vis type */
+                          chartTypeMap={{ radar: Radar }}
                         />
                       </Query>
                     </Tab2>
@@ -250,6 +264,16 @@ export const VisualizationPlayground = ({
         </PageLayout>
       </ExtendComponentsThemeProvider>
     </DataProvider>
+  )
+}
+
+export const VisualizationPlayground = (
+  props: VisualizationPlaygroundProps
+) => {
+  return (
+    <ComponentsProvider loadGoogleFonts resources={i18nResources}>
+      <VisualizationPlaygroundInternal {...props} />
+    </ComponentsProvider>
   )
 }
 

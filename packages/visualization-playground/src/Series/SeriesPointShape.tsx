@@ -31,6 +31,7 @@ import type {
   CLineSeries,
   PointShapes,
 } from '@looker/visualizations-adapters'
+import has from 'lodash/has'
 import { FieldSelect } from '@looker/components'
 
 /**
@@ -61,7 +62,7 @@ export type SeriesPointShapeProps = {
 export const SeriesPointShape = (props: SeriesPointShapeProps) => {
   const { chartType, series, onSeriesChange } = props
 
-  if (!renderFor.includes(chartType)) {
+  if (!renderFor.includes(chartType) && !has(series, 'shape')) {
     // Early return! Only render for supported charts
     return null
   }

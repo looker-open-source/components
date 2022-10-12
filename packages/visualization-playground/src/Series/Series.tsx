@@ -59,6 +59,7 @@ import type { CValueFormatSupported } from './SeriesValueFormat'
 import partial from 'lodash/partial'
 import set from 'lodash/set'
 import styled from 'styled-components'
+import has from 'lodash/has'
 
 /**
  * A list of relevant charts that access this configuration
@@ -99,7 +100,7 @@ export const Series = (props: SeriesProps) => {
   const { config, fields, onConfigChange } = props
   const { series = {} } = config
 
-  if (!renderFor.includes(config.type)) {
+  if (!renderFor.includes(config.type) && !has(config, 'series')) {
     // Early return! Only render for supported charts
     return null
   }

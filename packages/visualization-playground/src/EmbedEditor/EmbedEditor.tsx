@@ -25,7 +25,13 @@
  */
 import type { FC, FormEvent, SetStateAction, Dispatch } from 'react'
 import React from 'react'
-import { FieldText, FieldSelect, Heading, Fieldset } from '@looker/components'
+import {
+  FieldText,
+  FieldSelect,
+  Heading,
+  Fieldset,
+  Grid,
+} from '@looker/components'
 import { FieldInfo } from '../FieldInfo'
 import type { CAll, SupportedChartTypes } from '@looker/visualizations-adapters'
 import { SUPPORTED_CHART_TYPES } from '@looker/visualizations-adapters'
@@ -39,7 +45,10 @@ import { RenderNullValues } from '../RenderNullValues'
 import { Tooltips } from '../Tooltips'
 import { Positioning } from '../Positioning'
 import { TruncateText } from '../TruncateText'
+import { TruncateHeader } from '../TruncateHeader'
 import { StyledCard } from '../StyledCard'
+import { ShowTotals } from '../ShowTotals'
+import { ShowRowTotals } from '../ShowRowTotals'
 
 interface EmbedEditorProps {
   width?: string
@@ -90,6 +99,7 @@ export const EmbedEditor: FC<EmbedEditorProps> = ({
         value={visConfig.type}
         options={[
           ...Object.values(SUPPORTED_CHART_TYPES).map(t => ({ value: t })),
+          { value: 'radar', label: 'Custom Vis: Radar' },
         ]}
       />
       <Fieldset inline>
@@ -120,12 +130,18 @@ export const EmbedEditor: FC<EmbedEditorProps> = ({
       </Fieldset>
       <Legend config={visConfig} onConfigChange={onConfigChange} />
       <Fieldset inline>
-        <Tooltips config={visConfig} onConfigChange={onConfigChange} />
-        <RenderNullValues config={visConfig} onConfigChange={onConfigChange} />
-      </Fieldset>
-      <Fieldset inline>
-        <Positioning config={visConfig} onConfigChange={onConfigChange} />
-        <TruncateText config={visConfig} onConfigChange={onConfigChange} />
+        <Grid>
+          <Tooltips config={visConfig} onConfigChange={onConfigChange} />
+          <RenderNullValues
+            config={visConfig}
+            onConfigChange={onConfigChange}
+          />
+          <Positioning config={visConfig} onConfigChange={onConfigChange} />
+          <TruncateText config={visConfig} onConfigChange={onConfigChange} />
+          <TruncateHeader config={visConfig} onConfigChange={onConfigChange} />
+          <ShowTotals config={visConfig} onConfigChange={onConfigChange} />
+          <ShowRowTotals config={visConfig} onConfigChange={onConfigChange} />
+        </Grid>
       </Fieldset>
     </StyledCard>
   )

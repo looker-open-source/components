@@ -36,6 +36,7 @@ import type {
   CSingleValue,
   CPie,
 } from '@looker/visualizations-adapters'
+import has from 'lodash/has'
 import { FieldColor } from '@looker/components'
 
 /**
@@ -72,7 +73,7 @@ export type SeriesColorProps = {
 export const SeriesColor = (props: SeriesColorProps) => {
   const { chartType, series, onSeriesChange, ...restProps } = props
 
-  if (!renderFor.includes(chartType)) {
+  if (!renderFor.includes(chartType) && !has(series, 'color')) {
     // Early return! Only render for supported charts
     return null
   }

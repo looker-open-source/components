@@ -25,6 +25,7 @@
  */
 import type { FC, Dispatch, SetStateAction } from 'react'
 import React from 'react'
+import { DEFAULT_EMPTY_FIELDS } from '@looker/visualizations-adapters'
 import type { CAll } from '@looker/visualizations-adapters'
 import type { QueryProps } from '@looker/visualizations'
 import {
@@ -53,7 +54,7 @@ export const ConfigEditor: FC<ConfigEditorProps> = ({
   const { queryId } = useQueryId(query || dashboardQueryId)
   const { visConfig } = useVisConfig(queryId, configOverrides)
 
-  const { fields = { measures: [], dimensions: [] } } = useQueryData(queryId)
+  const { fields = DEFAULT_EMPTY_FIELDS } = useQueryData(queryId)
 
   return (
     <StyledCard>

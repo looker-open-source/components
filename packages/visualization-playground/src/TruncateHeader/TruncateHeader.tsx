@@ -24,49 +24,43 @@
 
  */
 import React from 'react'
-import type {
-  CScatter,
-  CScatterSeries,
-  Fields,
-} from '@looker/visualizations-adapters'
-import has from 'lodash/has'
-import { FieldSelect } from '@looker/components'
+import type { Dispatch, SetStateAction, FormEvent } from 'react'
+import type { CAll, CTable } from '@looker/visualizations-adapters'
+import { FieldCheckbox } from '@looker/components'
 
 /**
  * A list of relevant charts that access this configuration
  */
-export type CSeriesSizeBySupported = CScatter
+type SupportedChartConfig = CTable
 
-const renderFor: Array<CSeriesSizeBySupported['type']> = ['scatter']
-
-export type SeriesSizeByProps = {
-  chartType: CSeriesSizeBySupported['type']
-  fields: Fields
-  series: CScatterSeries
-  onSeriesChange: (series: CScatterSeries) => void
+type TruncateTextProps = {
+  config: SupportedChartConfig
+  onConfigChange: Dispatch<SetStateAction<Partial<CAll>>>
 }
 
-export const SeriesSizeBy = (props: SeriesSizeByProps) => {
-  const { chartType, fields, series, onSeriesChange } = props
+const renderFor: Array<SupportedChartConfig['type']> = ['table']
 
-  if (!renderFor.includes(chartType) && !has(series, 'size_by')) {
+export const TruncateHeader = (props: TruncateTextProps) => {
+  const { config, onConfigChange } = props
+
+  const { truncate_header } = config
+
+  if (!renderFor.includes(config.type)) {
     // Early return! Only render for supported charts
     return null
   }
 
-  const handleChange = (value: string) => {
-    const draft = { ...series, size_by: value }
-    onSeriesChange(draft)
+  const handleChange = (e: FormEvent) => {
+    const { checked } = e.target as HTMLInputElement
+    const draft = { ...config, truncate_header: checked }
+    onConfigChange(draft)
   }
 
-  const sizeByOptions = ['none', ...fields.measures.map(m => m.name)]
-
   return (
-    <FieldSelect
-      label="Size By"
+    <FieldCheckbox
+      label="Truncate header"
+      checked={truncate_header}
       onChange={handleChange}
-      options={sizeByOptions.map(s => ({ value: s }))}
-      value={series.size_by || 'none'}
     />
   )
 }

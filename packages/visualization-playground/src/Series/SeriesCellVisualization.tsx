@@ -27,6 +27,7 @@ import React from 'react'
 import type { FormEvent } from 'react'
 import type { CTable, CTableSeries } from '@looker/visualizations-adapters'
 import { FieldCheckbox } from '@looker/components'
+import has from 'lodash/has'
 
 /**
  * A list of relevant charts that access this configuration
@@ -46,7 +47,7 @@ export const SeriesCellVisualization = (
 ) => {
   const { chartType, series, onSeriesChange } = props
 
-  if (!renderFor.includes(chartType)) {
+  if (!renderFor.includes(chartType) && !has(series, 'cell_visualization')) {
     // Early return! Only render for supported charts
     return null
   }

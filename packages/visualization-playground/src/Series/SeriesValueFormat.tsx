@@ -36,6 +36,7 @@ import type {
   CSingleValue,
 } from '@looker/visualizations-adapters'
 import { FieldText } from '@looker/components'
+import has from 'lodash/has'
 
 /**
  * A list of relevant charts that access this configuration
@@ -68,7 +69,7 @@ export type SeriesValueFormatProps = {
 export const SeriesValueFormat = (props: SeriesValueFormatProps) => {
   const { chartType, series, onSeriesChange } = props
 
-  if (!renderFor.includes(chartType)) {
+  if (!renderFor.includes(chartType) && !has(series, 'value_format')) {
     // Early return! Only render for supported charts
     return null
   }

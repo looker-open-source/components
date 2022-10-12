@@ -29,6 +29,10 @@ import React from 'react'
 import type { VisualizationPlaygroundProps } from '../VisualizationPlayground'
 import { VisualizationPlayground } from '../VisualizationPlayground'
 
+const sleep = (milliseconds: number) => {
+  return new Promise(resolve => setTimeout(resolve, milliseconds))
+}
+
 export default {
   component: VisualizationPlayground,
   title: 'Visualizations/Playground',
@@ -40,3 +44,10 @@ const Template: Story<VisualizationPlaygroundProps> = props => {
 
 export const Playground = Template.bind({})
 Playground.args = {}
+Playground.parameters = {
+  beforeScreenshot: async () => {
+    // delay screenshot one frame to ensure sdk promise
+    // has resolved and data was rendered
+    await sleep(10)
+  },
+}

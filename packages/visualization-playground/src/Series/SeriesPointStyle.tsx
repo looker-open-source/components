@@ -32,6 +32,7 @@ import type {
   PointStyles,
 } from '@looker/visualizations-adapters'
 import { FieldSelect } from '@looker/components'
+import has from 'lodash/has'
 
 /**
  * A list of relevant charts that access this configuration
@@ -56,7 +57,7 @@ export type SeriesPointStyleProps = {
 export const SeriesPointStyle = (props: SeriesPointStyleProps) => {
   const { chartType, series, onSeriesChange } = props
 
-  if (!renderFor.includes(chartType)) {
+  if (!renderFor.includes(chartType) && !has(series, 'style')) {
     // Early return! Only render for supported charts
     return null
   }

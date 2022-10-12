@@ -33,6 +33,7 @@ import type {
   CSeriesLine,
 } from '@looker/visualizations-adapters'
 import { FieldSlider } from '@looker/components'
+import has from 'lodash/has'
 
 /**
  * A list of relevant charts that access this configuration
@@ -56,7 +57,7 @@ export type SeriesLineWidthProps = {
 export const SeriesLineWidth = (props: SeriesLineWidthProps) => {
   const { chartType, series, onSeriesChange, ...restProps } = props
 
-  if (!renderFor.includes(chartType)) {
+  if (!renderFor.includes(chartType) && !has(series, 'line_width')) {
     // Early return! Only render for supported charts
     return null
   }

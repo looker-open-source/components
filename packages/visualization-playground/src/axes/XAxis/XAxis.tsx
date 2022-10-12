@@ -35,6 +35,7 @@ import type {
   CAll,
   XAxisConfig,
 } from '@looker/visualizations-adapters'
+import has from 'lodash/has'
 import { Core } from '../Core'
 
 /**
@@ -62,7 +63,7 @@ export const XAxis = (props: XAxisProps) => {
     onConfigChange,
   } = props
 
-  if (!renderFor.includes(config.type)) {
+  if (!renderFor.includes(config.type) && !has(config, 'x_axis')) {
     // Early return! Only render for supported charts
     return null
   }

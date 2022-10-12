@@ -37,6 +37,7 @@ import type {
   CAll,
   YAxisConfig,
 } from '@looker/visualizations-adapters'
+import has from 'lodash/has'
 
 /**
  * A list of relevant charts that access this configuration
@@ -70,7 +71,7 @@ export const YAxis = (props: YAxisProps) => {
     onConfigChange,
   } = props
 
-  if (!renderFor.includes(config.type)) {
+  if (!renderFor.includes(config.type) && !has(config, 'y_axis')) {
     // Early return! Only render for supported charts
     return null
   }

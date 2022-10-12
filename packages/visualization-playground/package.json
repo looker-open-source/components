@@ -1,40 +1,59 @@
 {
   "name": "@looker/visualization-playground",
-  "main": "src/index.ts",
-  "version": "1.0.4",
-  "publishConfig": {
-    "access": "public"
-  },
   "license": "MIT",
+  "main": "src/index.ts",
+  "version": "2.1.0",
+  "description": "A demo and development environment for building Looker Visualization Components",
   "sideEffects": false,
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "repository": {
+    "url": "looker-open-source/components",
+    "directory": "packages/visualization-playground"
+  },
+  "files": [
+    "src",
+    "lib"
+  ],
+  "scripts": {
+    "test": "lk test",
+    "coverage": "lk coverage",
+    "prepublishOnly": "lk prepublishOnly"
+  },
   "dependencies": {
-    "@looker/components": "^3.0.8",
-    "@looker/components-data": "^0.1.7",
-    "@looker/design-tokens": "^2.7.21",
+    "@looker/components": "*",
+    "@looker/components-data": "^1.0.0",
+    "@looker/filter-components": "*",
+    "@looker/visualizations": "^1.1.0",
+    "@looker/visualizations-adapters": "^1.0.0",
     "@looker/extension-sdk-react": "^22.4.2",
-    "@looker/filter-components": "^0.10.22",
     "@looker/sdk": "^22.4.2",
     "@looker/sdk-rtl": "^21.3.3",
-    "@looker/visualizations": "^0.2.15",
-    "@looker/visualizations-adapters": "^0.1.16",
-    "@styled-icons/material": "10.28.0",
+    "@styled-icons/material": "10.34.0",
+    "@visx/group": "^2.10.0",
+    "@visx/point": "^2.6.0",
+    "@visx/scale": "^2.2.2",
+    "@visx/shape": "2.10.0",
     "lodash": "4.17.21",
     "prism-react-renderer": "1.3.1",
     "react": "16.14.0",
     "react-dom": "16.14.0",
     "styled-components": "5.3.1",
-    "styled-system": "^5.1.5"
+    "styled-system": "*"
   },
   "devDependencies": {
-    "@looker/components-test-utils": "^1.5.26",
-    "@looker/eslint-config-oss": "^1.7.21",
+    "@looker/babel-preset-styled-components": "*",
+    "@looker/babel-preset-typescript": "*",
+    "@looker/components-scripts": "*",
+    "@looker/components-test-utils": "*",
+    "@looker/eslint-config-oss": "*",
+    "@looker/jest-config": "*",
     "@storybook/testing-react": "0.0.22",
-    "@testing-library/react": "*",
-    "@types/styled-system": "^5.1.5"
+    "@testing-library/react": "*"
   },
   "peerDependencies": {
-    "@looker/components": "1.4 - 2",
-    "@looker/components-data": "0 - 1",
     "react": "16.11.0 - 18",
     "react-dom": "16.11.0 - 18",
     "styled-components": "^5.3.1"
@@ -66,7 +85,8 @@
             }
           ]
         }
-      ]
+      ],
+      "i18next/no-literal-string": "off"
     }
   },
   "stylelint": {
