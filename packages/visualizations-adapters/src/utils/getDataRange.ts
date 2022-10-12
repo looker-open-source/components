@@ -26,10 +26,16 @@
 
 import isArray from 'lodash/isArray'
 import add from 'lodash/add'
-import type { CCartesian, Fields, SDKRecord } from '../types'
+import get from 'lodash/get'
+import type {
+  CCartesian,
+  Fields,
+  SDKRecord,
+  CommonCartesianProperties,
+} from '../types'
 
 export type GetDataRangeProps = {
-  config: CCartesian
+  config: CCartesian | CommonCartesianProperties
   data: SDKRecord[]
   fields: Fields
 }
@@ -44,7 +50,7 @@ export const getDataRange = ({
   data,
   fields,
 }: GetDataRangeProps): [number, number] => {
-  const { positioning } = config
+  const positioning = get(config, ['positioning'], 'overlay')
 
   const eligibleMeasures = fields.measures
     .filter((measure, index) => {
@@ -68,12 +74,12 @@ export const getDataRange = ({
        */
       return true
     })
-    .map(measure => measure.name)
+    .map((measure) => measure.name)
 
   const range = data.reduce(
     (draftRange, datum) => {
       const [currentMin, currentMax] = draftRange as [number, number]
-      const datumValues = eligibleMeasures.map(name => datum[name])
+      const datumValues = eligibleMeasures.map((name) => datum[name])
 
       // add all datum values together when rendering in stacking mode
       const accumulatedValue: number = datumValues.reduce(add, 0)

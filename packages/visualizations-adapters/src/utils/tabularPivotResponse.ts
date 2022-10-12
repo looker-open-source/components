@@ -45,21 +45,21 @@ export const tabularPivotResponse = ({
   fields: Fields
   pivots: Pivots
 }) =>
-  data.map(datum => {
+  data.map((datum) => {
     const formattedDatum: SDKRecord = {}
 
     const dimensionNames = getDimensionNames(fields)
 
     dimensionNames.forEach(
-      dimensionName =>
+      (dimensionName) =>
         (formattedDatum[dimensionName] =
           datum[dimensionName] && datum[dimensionName].value)
     )
 
     const measureNames = getMeasureNames(fields)
-    measureNames.forEach(measureName => {
-      const pivotValues = pivots.map(pivot => pivot.key)
-      pivotValues.forEach(pivotValue => {
+    measureNames.forEach((measureName) => {
+      const pivotValues = pivots.map((pivot) => pivot.key)
+      pivotValues.forEach((pivotValue) => {
         formattedDatum[buildPivotMeasureName({ measureName, pivotValue })] =
           datum[measureName] && datum[measureName][pivotValue].value
       })

@@ -99,7 +99,7 @@ export const yAxis: ConfigHelper<CCartesian> = ({ config, data, fields }) => {
 
   const longestListLength = Math.max(y_axis_raw.length, y_axis.length)
   const numberOfMeasureLabels = Array.from(
-    new Set(fields.measures.map(measure => measure.label))
+    new Set(fields.measures.map((measure) => measure.label))
   ).length
   const yAxisWithDefaults: YAxisConfig[] = []
 

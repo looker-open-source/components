@@ -78,4 +78,4 @@ export type CAll =
   | CScatter
   | CTable
   | CSingleValue
-  | { type: keyof SupportedChartTypes }
+  | { type: string }

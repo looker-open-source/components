@@ -29,7 +29,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Truncate } from '@looker/components'
 import type { Namespace } from 'react-i18next'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from '../utils'
 import type { SDKRecord } from '../types'
 
 interface KeyValueListProps {

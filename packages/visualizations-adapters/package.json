@@ -1,35 +1,52 @@
 {
   "name": "@looker/visualizations-adapters",
-  "main": "src/index.ts",
-  "version": "0.1.16",
-  "publishConfig": {
-    "access": "public"
-  },
   "license": "MIT",
+  "main": "src/index.ts",
+  "version": "1.0.0",
   "sideEffects": false,
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "repository": {
+    "url": "looker-open-source/components",
+    "directory": "packages/visualizations-adapters"
+  },
+  "files": [
+    "src",
+    "lib"
+  ],
+  "scripts": {
+    "buildLocales": "lk buildLocales",
+    "prepublishOnly": "lk prepublishOnly",
+    "test": "lk test",
+    "coverage": "lk coverage"
+  },
   "dependencies": {
-    "@looker/components": "^3.0.8",
-    "@looker/components-data": "^0.1.7",
-    "@looker/design-tokens": "^2.7.21",
-    "@looker/i18n": "^0.1.8",
+    "@looker/components": "^4.0.3",
+    "@looker/i18n": "*",
     "@looker/sdk": "^22.4.2",
     "@looker/sdk-rtl": "^21.3.3",
     "d3-color": "3.0.1",
     "d3-hsv": "0.1.0",
-    "lodash": "*",
+    "lodash": "4.17.21",
     "react-i18next": "*"
   },
   "devDependencies": {
-    "@looker/components-test-utils": "^1.5.26",
-    "@looker/eslint-config-oss": "^1.7.21",
-    "@looker/stylelint-config": "^1.5.19",
+    "@looker/babel-preset-styled-components": "*",
+    "@looker/babel-preset-typescript": "*",
+    "@looker/components-scripts": "*",
+    "@looker/components-test-utils": "*",
+    "@looker/eslint-config-oss": "*",
+    "@looker/jest-config": "*",
+    "@looker/stylelint-config": "*",
     "@testing-library/react": "*",
     "@testing-library/react-hooks": "8.0.0"
   },
   "peerDependencies": {
-    "react": ">= 16.11.0",
-    "react-dom": ">= 16.11.0",
-    "styled-components": "^5.2"
+    "react": "16.11.0 - 18",
+    "react-dom": "16.11.0 - 18",
+    "styled-components": "^5.3.1"
   },
   "eslintConfig": {
     "root": true,
@@ -44,6 +61,5 @@
   },
   "stylelint": {
     "extends": "@looker/stylelint-config"
-  },
-  "gitHead": "734f77cda8050d9eea83a187113333dfad8650ca"
+  }
 }

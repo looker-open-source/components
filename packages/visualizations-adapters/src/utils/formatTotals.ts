@@ -24,13 +24,30 @@
 
  */
 
-import type { Totals } from '../types'
+import type { Totals, TotalsValue } from '../types'
+import { buildPivotMeasureName } from './buildPivotMeasureName'
+import has from 'lodash/has'
+type ValueOf<T> = T[keyof T]
+
+const isTotalsValue = (obj: ValueOf<Totals>): obj is TotalsValue => {
+  return has(obj, 'value')
+}
 
 export const formatTotals = (totals: Totals = {}) => {
-  const entries = Object.entries(totals).map(([key, totalMetadata]) => [
-    key,
-    totalMetadata.value,
-  ])
+  const entries: Record<string, ValueOf<TotalsValue>> = {}
+  Object.entries(totals).forEach(([key, obj]) => {
+    if (isTotalsValue(obj)) {
+      entries[key] = obj.value
+    } else {
+      Object.entries(obj).forEach(([innerKey, innerObj]) => {
+        const measureName = buildPivotMeasureName({
+          measureName: key,
+          pivotValue: innerKey,
+        })
+        entries[measureName] = innerObj.value
+      })
+    }
+  })
 
-  return Object.fromEntries(entries)
+  return entries
 }

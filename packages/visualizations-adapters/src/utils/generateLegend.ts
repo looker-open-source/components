@@ -26,6 +26,7 @@
 
 import map from 'lodash/map'
 import get from 'lodash/get'
+import { DEFAULT_EMPTY_FIELDS } from '.'
 import type { SDKRecord, CAll, Fields } from '../types'
 
 const ENDASH = '\u2013'
@@ -36,7 +37,7 @@ export type Legend = {
 }
 
 export const generateLegend = (
-  fields: Fields = { dimensions: [], measures: [] },
+  fields: Fields = DEFAULT_EMPTY_FIELDS,
   config: Partial<CAll>
 ): Legend => {
   const defaultDimensionLabel = map(

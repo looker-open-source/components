@@ -60,7 +60,7 @@ export class ErrorBoundary extends Component<
   }
 
   componentDidCatch(errorMessage: Error, stackTrace: ErrorInfo) {
-    this.setState(state => ({ ...state, errorMessage, stackTrace }))
+    this.setState((state) => ({ ...state, errorMessage, stackTrace }))
   }
 
   render() {
@@ -70,7 +70,7 @@ export class ErrorBoundary extends Component<
         <>
           <Heading>
             <Translation ns="ErrorBoundary">
-              {t => {
+              {(t) => {
                 return t('Something went wrong')
               }}
             </Translation>

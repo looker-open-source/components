@@ -41,7 +41,7 @@ export type FieldMetadata = {
   is_numeric: boolean
   name: string
   sortable: boolean
-  sorted?: { desc: boolean; sort_index: number }
+  sorted?: { desc: boolean; sort_index: number; pivot_index?: number }
   view: string
   view_label: string
   label_short: string
@@ -49,6 +49,8 @@ export type FieldMetadata = {
 }
 
 export type MeasureMetadata = FieldMetadata & {
+  /* when response is pivoted, store a string referencing the pivot metadata */
+  pivot_key?: string
   /**
    * An alternate label used when rendering a pivot query.
    * This pivoted_label should include the measure's associated
@@ -80,17 +82,24 @@ export type DimensionMetadata = FieldMetadata & {
 export type Fields = {
   dimensions: DimensionMetadata[]
   measures: MeasureMetadata[]
+  pivots: DimensionMetadata[]
 }
 
-export type Pivots = {
-  data: SDKRecord
+export type PivotMetadata = {
+  data: Record<string, string>
   key: string
   is_total: boolean
+  labels: Record<string, string>
+  metadata?: Record<string, { value: string }>
+  sort_values?: Record<string, string>
   /**
    * `label` value is derived by our own helper functions, and not expected
    *  to be returned by sdk.
    */
   label?: string
-}[]
+}
 
-export type Totals = Record<string, { value: number }>
+export type Pivots = PivotMetadata[]
+
+export type TotalsValue = { value: number | null }
+export type Totals = Record<string, TotalsValue | Record<string, TotalsValue>>

@@ -41,7 +41,7 @@ export const nullValueZero: ConfigHelper<CLineBase> = ({
 }) => {
   if (config?.render_null_values) {
     const measureNames = getMeasureNames(fields)
-    const draftData = data.map(d => {
+    const draftData = data.map((d) => {
       const measures = Object.entries(
         pick(d, measureNames)
       ).map(([key, val]) => [key, Number(val)])

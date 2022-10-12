@@ -45,7 +45,7 @@ export const hexToRgba = (hex: string, opacity: number): string => {
   if (hex.length === 3 || hex.length === 6) {
     const chunkLength = hex.length === 3 ? 1 : 2
 
-    const [r, g, b] = chunk(hex, chunkLength).map(chunk => {
+    const [r, g, b] = chunk(hex, chunkLength).map((chunk) => {
       // for 3 digit hex codes double the values (FFF => FFFFFF)
       // otherwise just join string values
       const color = chunkLength === 1 ? chunk[0] + chunk[0] : chunk.join('')

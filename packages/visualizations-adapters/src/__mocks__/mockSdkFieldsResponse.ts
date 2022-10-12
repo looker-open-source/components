@@ -25,7 +25,7 @@
  */
 
 /*
- * This object represents the Fields metadat response as returned by the SDK.
+ * This object represents the Fields metadata response as returned by the SDK.
  */
 
 export const mockSdkFieldsResponse = {
@@ -204,4 +204,66 @@ export const mockSdkFieldsResponse = {
   ],
   table_calculations: [],
   pivots: [],
+}
+
+export const mockSdkPivotedFieldsResponse = {
+  ...mockSdkFieldsResponse,
+  pivots: [
+    {
+      align: 'left',
+      can_filter: true,
+      category: 'dimension',
+      default_filter_value: null,
+      description: '',
+      enumerations: null,
+      field_group_label: null,
+      fill_style: null,
+      fiscal_month_offset: 0,
+      has_allowed_values: false,
+      hidden: false,
+      is_filter: false,
+      is_numeric: false,
+      label: 'Orders Status',
+      label_from_parameter: null,
+      label_short: 'Status',
+      map_layer: null,
+      name: 'orders.status',
+      strict_value_format: false,
+      requires_refresh_on_sort: false,
+      sortable: true,
+      suggestions: null,
+      tags: [],
+      type: 'string',
+      user_attribute_filter_types: ['string', 'advanced_filter_string'],
+      value_format: null,
+      view: 'orders',
+      view_label: 'Orders',
+      dynamic: false,
+      week_start_day: 'monday',
+      original_view: 'orders',
+      dimension_group: null,
+      error: null,
+      field_group_variant: 'Status',
+      measure: false,
+      parameter: false,
+      primary_key: false,
+      project_name: 'thelook',
+      scope: 'orders',
+      suggest_dimension: 'orders.status',
+      suggest_explore: 'orders',
+      suggestable: true,
+      is_fiscal: false,
+      is_timeframe: false,
+      can_time_filter: false,
+      time_interval: null,
+      lookml_link: '/projects/thelook/files/views%2Forders.view.lkml?line=25',
+      permanent: null,
+      source_file: 'views/orders.view.lkml',
+      source_file_path: 'thelook/views/orders.view.lkml',
+      sql_case: null,
+      filters: null,
+      times_used: 0,
+      sorted: { sort_index: 1, desc: false },
+    },
+  ],
 }

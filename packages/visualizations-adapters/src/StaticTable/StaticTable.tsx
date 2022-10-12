@@ -87,7 +87,7 @@ export const StaticTable: FC<TableProps> = ({
       <TableHead>
         <TableRow>
           <TableHeaderCell />
-          {resultKeys.map(key => (
+          {resultKeys.map((key) => (
             <StyledTableHeaderCell key={key} width="auto">
               {fieldLabels[key]}
             </StyledTableHeaderCell>
@@ -107,7 +107,7 @@ export const StaticTable: FC<TableProps> = ({
                 >
                   {i + 1}
                 </TableDataCell>
-                {resultKeys.map(key => {
+                {resultKeys.map((key) => {
                   const val = obj[key]
                   let valHelper = val
                   if (typeof val === 'function') {

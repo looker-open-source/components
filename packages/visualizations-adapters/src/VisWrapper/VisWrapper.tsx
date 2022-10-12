@@ -25,8 +25,8 @@
  */
 
 import type { ReactNode, Ref, FC } from 'react'
-import React, { useContext, forwardRef } from 'react'
-import styled, { css, ThemeContext } from 'styled-components'
+import React, { forwardRef } from 'react'
+import styled, { css, useTheme } from 'styled-components'
 import { ComponentsProvider } from '@looker/components'
 import type { CommonCartesianProperties, LegendPositions } from '../types'
 
@@ -42,7 +42,7 @@ export type VisWrapperInternalProps = VisWrapperProps & {
 
 const VisWrapperInternal: FC<VisWrapperInternalProps> = forwardRef(
   ({ legend, ...props }, ref) => {
-    const theme = useContext(ThemeContext)
+    const theme = useTheme()
 
     if (!theme) {
       // Recursively wrap VisWrapper in ComponentsProvider to ensure that

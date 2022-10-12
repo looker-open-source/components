@@ -25,7 +25,7 @@
  */
 
 import type { Pivots } from '../types'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from './useTranslation'
 
 export const useNormalizedPivotLabels = (pivots?: Pivots) => {
   const { t } = useTranslation('useNormalizedPivotLabels')
@@ -34,7 +34,7 @@ export const useNormalizedPivotLabels = (pivots?: Pivots) => {
     return undefined
   }
 
-  return pivots.map(pivot => {
+  return pivots.map((pivot) => {
     const { key, is_total } = pivot
     const capitalizedPivotValue = is_total
       ? t('Row Total')

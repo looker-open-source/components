@@ -4,14 +4,14 @@ This is a low-level package used within the Looker Visualizations Components lib
 
 ## Installation
 
-If you are working with Looker Visualizations Components, you will likely not need to reference the `visualizations-adapters` library directly. But if the need arises, you can install this package with Yarn or NPM:
+If you are working with Looker Visualizations Components, you will likely not need to reference the `visualizations-adapters` library directly. But if the need arises, you can install this package with Yarn or npm:
 
-- **NPM:** `npm install @looker/visualizations-adapters`
+- **npm:** `npm install @looker/visualizations-adapters`
 - **YARN:** `yarn add @looker/visualizations-adapters`
 
 You'll also need to satisfy a few peer dependencies - React and Styled Components:
 
-- **NPM:** `npm install react react-dom styled-components`
+- **npm:** `npm install react react-dom styled-components`
 - **YARN:** `yarn add react react-dom styled-components`
 
 ## Getting Started

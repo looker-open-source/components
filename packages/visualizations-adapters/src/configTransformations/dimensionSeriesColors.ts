@@ -57,8 +57,8 @@ export const dimensionSeriesColors: ConfigHelper<CommonCartesianProperties> = ({
 
   const dimensionValues =
     fields?.dimensions
-      ?.flatMap(dimension => {
-        return limitedData.map(data => data[dimension.name])
+      ?.flatMap((dimension) => {
+        return limitedData.map((data) => data[dimension.name])
       })
       .slice(0, MAX_DATA_POINTS) || []
 

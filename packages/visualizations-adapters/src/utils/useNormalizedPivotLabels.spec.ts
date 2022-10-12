@@ -25,18 +25,11 @@
  */
 
 import { useNormalizedPivotLabels } from './useNormalizedPivotLabels'
+import { i18nInit } from './i18n'
 import { renderHook } from '@testing-library/react-hooks'
 
-jest.mock('react-i18next', () => ({
-  // this mock makes sure any components using the translate hook can use it without breaking tests
-  useTranslation: () => {
-    return {
-      t: (str: string) => str,
-    }
-  },
-}))
-
 describe('useNormalizedPivotLabels', () => {
+  i18nInit()
   it('Derives a pivot label from capitalizing the key value by default', () => {
     const { result } = renderHook(() =>
       useNormalizedPivotLabels([
@@ -44,6 +37,7 @@ describe('useNormalizedPivotLabels', () => {
           key: 'cancelled',
           is_total: false,
           data: {},
+          labels: { 'orders.status': 'Canceled' },
         },
       ])
     )
@@ -60,6 +54,7 @@ describe('useNormalizedPivotLabels', () => {
           key: 'cancelled',
           is_total: true,
           data: {},
+          labels: { 'orders.status': 'Canceled' },
         },
       ])
     )

@@ -24,10 +24,9 @@
 
  */
 
-import type { CCartesian, Fields } from '@looker/visualizations-adapters'
 import isArray from 'lodash/isArray'
-
-const defaultFields: Fields = { dimensions: [], measures: [] }
+import { DEFAULT_EMPTY_FIELDS } from '.'
+import type { CCartesian, Fields } from '../types'
 
 /**
  * This function extracts measure names of visible measures from the fields object.
@@ -37,7 +36,7 @@ const defaultFields: Fields = { dimensions: [], measures: [] }
  */
 
 export const getVisibleMeasureNames = (
-  fields: Fields = defaultFields,
+  fields: Fields = DEFAULT_EMPTY_FIELDS,
   config: CCartesian
 ): string[] => {
   const { measures = [] } = fields
@@ -60,5 +59,5 @@ export const getVisibleMeasureNames = (
     return true
   })
 
-  return visibleMeasures.map(measure => measure.name)
+  return visibleMeasures.map((measure) => measure.name)
 }

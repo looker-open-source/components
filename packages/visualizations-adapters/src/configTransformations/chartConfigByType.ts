@@ -42,11 +42,14 @@ import { seriesPointStyle } from './seriesPointStyle'
 import { seriesSize } from './seriesSize'
 import { seriesVisible } from './seriesVisible'
 import { tooltips } from './tooltips'
+import { truncateHeader } from './truncateHeader'
 import { truncateText } from './truncateText'
 import { xAxis } from './xAxis'
 import { yAxis } from './yAxis'
 import { yAxisRange } from './yAxisRange'
 import { seriesValueFormat } from './seriesValueFormat'
+import { showTotals } from './showTotals'
+import { showRowTotals } from './showRowTotals'
 
 export const commonCartesianDefaults = [
   seriesLabels,
@@ -83,9 +86,12 @@ export const chartConfigByType: Record<
     seriesCellVis,
     seriesLabels,
     seriesVisible,
+    truncateHeader,
     truncateText,
     seriesValueFormat,
     seriesColors,
+    showTotals,
+    showRowTotals,
   ],
   line: [...commonLineDefaults, ...commonCartesianDefaults, seriesLineWidth],
   pie: [

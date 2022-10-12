@@ -51,7 +51,7 @@ describe('tabularPivotResponse', () => {
       'cancelled - orders.average_total_amount_of_order_usd',
     ]
 
-    expectedKeys.forEach(key => {
+    expectedKeys.forEach((key) => {
       expect(transformedData[0][key]).not.toBeUndefined()
     })
 

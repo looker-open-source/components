@@ -35,7 +35,11 @@ describe('legendValue', () => {
       fields: mockFields,
     })
 
-    expect(config.legend).toEqual({ value: 'label' })
+    expect(config.legend).toEqual({
+      position: 'bottom',
+      type: 'legend',
+      value: 'label',
+    })
   })
 
   describe('config.label_type ===', () => {
@@ -103,7 +107,7 @@ describe('legendValue', () => {
       }
     })
 
-    test.only('labPer', () => {
+    test('labPer', () => {
       const config = {
         ...mockPieConfig,
         label_type: 'labPer' as const,

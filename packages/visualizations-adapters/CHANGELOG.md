@@ -1,15 +1,24 @@
-# Change Log
+# [1.0.0](https://github.com/looker-open-source/components/compare/22.16.0...1.0.0) (2022-10-12)
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+### Features
+
+* add row totals to table vis b/246839518 ([a391757](https://github.com/looker-open-source/components/commit/a39175700751360053da1a237126cdd25981b982))
+* add show_totals and show_row_totals config transformation b/248616608 ([8fda5e1](https://github.com/looker-open-source/components/commit/8fda5e15d6622b9928399f8e13393b3a8383973c))
+* rename table column with series label b/248301650 ([494f908](https://github.com/looker-open-source/components/commit/494f90846c12ac87e8f1737d1b20e226a15d7a12))
+* table head groups for pivoted queries b/235396147 ([36742ad](https://github.com/looker-open-source/components/commit/36742ad1a507850aad8d7946e7cdf2f0fbe03ce0))
+
+
+# [0.2.0](https://github.com/looker-open-source/components/compare/22.10.3...0.2.0) (2022-09-07)
+
+### Features
+
+* **loc:** update loc 37 ([198ebcd](https://github.com/looker-open-source/components/commit/198ebcd45101930956837f2495863fe2f2419ace))
+* **truncateHeader** sets config.truncate_header to true by default for table visualizations
 
 ## [0.1.16](https://github.com/looker-open-source/components/compare/@looker/visualizations-adapters@0.1.15...@looker/visualizations-adapters@0.1.16) (2022-05-23)
 
 **Note:** Version bump only for package @looker/visualizations-adapters
-
-
-
-
 
 ## [0.1.15](https://github.com/looker-open-source/components/compare/@looker/visualizations-adapters@0.1.14...@looker/visualizations-adapters@0.1.15) (2022-05-16)
 

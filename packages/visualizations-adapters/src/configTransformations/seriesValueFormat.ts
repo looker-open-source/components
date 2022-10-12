@@ -50,7 +50,7 @@ export const seriesValueFormat: ConfigHelper<CommonCartesianProperties> = ({
 
   const buildArraySeries = (s: CSeriesBasic[] = []) => {
     const arraySeries = [...s]
-    const defaultValues = fields?.measures?.map(measure => ({
+    const defaultValues = fields?.measures?.map((measure) => ({
       value_format:
         get(series_value_format, [measure.name, 'format_string']) ||
         get(measure, 'value_format') ||

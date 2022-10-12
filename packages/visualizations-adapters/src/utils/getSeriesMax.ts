@@ -33,7 +33,7 @@ import { isNumeric } from './isNumeric'
  * Used by Scatter chart to calibrate the size-by functionality
  */
 export const getSeriesMax = (seriesName: string, data: SDKRecord[]) => {
-  const values = data.map(d => {
+  const values = data.map((d) => {
     const val = d[seriesName]
     return isNumeric(val) ? Number(val) : -Infinity
   })

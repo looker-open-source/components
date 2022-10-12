@@ -26,12 +26,12 @@
 
 import pick from 'lodash/pick'
 import merge from 'lodash/merge'
+import set from 'lodash/set'
 import type {
   ConfigHelper,
   CommonCartesianProperties,
   CSeriesBasic,
 } from '../types'
-import { getMeasureNames } from '../utils'
 
 /**
  * Populate series[name].label from series_labels response.
@@ -44,33 +44,54 @@ export const seriesLabels: ConfigHelper<CommonCartesianProperties> = ({
   fields,
 }) => {
   const {
-    series_labels,
+    series_labels = {},
     series = {},
     show_single_value_title = true,
     single_value_title = '',
     ...restConfig
   } = config
 
-  const measures = getMeasureNames(fields)
   const singleValueTitle = show_single_value_title ? single_value_title : ''
   const buildNamedSeries = (s: { [k: string]: CSeriesBasic }) => {
-    const namedSeries = measures.reduce((seriesConfig, field) => {
-      const currentFieldSettings = pick(s, field)
+    const namedSeries = fields.measures.reduce((seriesConfig, measure) => {
+      const { name } = measure
+      const currentFieldSettings = pick(s, name)
       const defaultSeriesLabel = {
         // Down the chain, we'll use label_short from the field's metadata if [series].label is falsy
-        [field]: {
-          label: series_labels?.[field] || singleValueTitle,
+        [name]: {
+          label:
+            series_labels?.[name] ||
+            measure.label ||
+            measure.label_short ||
+            singleValueTitle,
         },
       }
+
       return merge(seriesConfig, defaultSeriesLabel, currentFieldSettings)
     }, {} as { [key: string]: CSeriesBasic })
 
     return namedSeries
   }
 
+  const buildArraySeries = (s: CSeriesBasic[] = []) => {
+    const arraySeries = [...s]
+    for (let i = 0; i < fields.measures.length; i++) {
+      const measure = fields.measures[i]
+      const seriesLabelValues = Object.values(series_labels)
+      const {
+        label = seriesLabelValues[i] || measure.label || measure.label_short,
+      } = arraySeries[i] || {}
+      set(arraySeries, [i, 'label'], label)
+    }
+
+    return arraySeries
+  }
+
   return {
     config: {
-      series: Array.isArray(series) ? series : buildNamedSeries(series),
+      series: Array.isArray(series)
+        ? buildArraySeries(series)
+        : buildNamedSeries(series),
       ...restConfig,
     },
     data,

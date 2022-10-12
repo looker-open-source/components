@@ -40,7 +40,7 @@ describe('sanitizeSDKResponse', () => {
     })
 
     // ensure the final output has in fact been stripped of unsupported keys
-    KEYS_TO_REMOVE.forEach(key =>
+    KEYS_TO_REMOVE.forEach((key) =>
       expect(transformedConfig).not.toHaveProperty(key)
     )
   })

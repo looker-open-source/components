@@ -31,7 +31,7 @@ import type { SDKRecord, Fields, CAll } from '@looker/visualizations-adapters'
 import type { IError } from '@looker/sdk'
 import { StaticTable } from '../StaticTable'
 import isEmpty from 'lodash/isEmpty'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from '../utils'
 import { KeyValueList } from '../KeyValueList'
 
 type DebugProps = {

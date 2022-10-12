@@ -40,10 +40,13 @@ export const buildPivotFields = ({
   fields: Fields
   pivots: Pivots
 }) => {
-  const fieldsCopy = { ...fields }
+  const fieldsCopy = {
+    ...fields,
+    pivots: [...(fields?.pivots || [])],
+  }
 
   fieldsCopy.measures = pivots.flatMap(({ key, label: pivotLabel }) => {
-    return fields.measures.map(measureField => {
+    return fields.measures.map((measureField) => {
       const pivotMeasureName = buildPivotMeasureName({
         measureName: measureField.name,
         pivotValue: key,
@@ -53,6 +56,7 @@ export const buildPivotFields = ({
         ...measureField,
         label_short: pivotLabel,
         name: pivotMeasureName,
+        pivot_key: key,
         pivoted_label: `${measureField.label}: ${pivotLabel}`,
       } as MeasureMetadata
     })

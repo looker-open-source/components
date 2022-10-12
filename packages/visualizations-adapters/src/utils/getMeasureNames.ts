@@ -24,9 +24,8 @@
 
  */
 
-import type { Fields } from '@looker/visualizations-adapters'
-
-const defaultFields: Fields = { dimensions: [], measures: [] }
+import { DEFAULT_EMPTY_FIELDS } from '.'
+import type { Fields } from '../types'
 
 /**
  * This function extracts measure names from the fields object.
@@ -35,7 +34,9 @@ const defaultFields: Fields = { dimensions: [], measures: [] }
  * @returns an array of strings names
  */
 
-export const getMeasureNames = (fields: Fields = defaultFields): string[] => {
+export const getMeasureNames = (
+  fields: Fields = DEFAULT_EMPTY_FIELDS
+): string[] => {
   const { measures = [] } = fields
-  return measures.map(field => field.name)
+  return measures.map((field) => field.name)
 }

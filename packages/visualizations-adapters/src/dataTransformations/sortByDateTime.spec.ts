@@ -42,6 +42,7 @@ describe('sortByDateTime', () => {
       fields: {
         measures,
         dimensions: [{ ...dimensions[0], name: 'orders.created_month' }],
+        pivots: [],
       },
       config: { type: 'line' },
     })

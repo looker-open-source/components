@@ -44,7 +44,7 @@ export const sortByDateTime: ConfigHelper<CAll> = ({
 
   return {
     data: isTimeframeDataset
-      ? sortBy(draftData, [d => new Date(d[dimension.name])])
+      ? sortBy(draftData, [(d) => new Date(d[dimension.name])])
       : draftData,
     fields,
     config,

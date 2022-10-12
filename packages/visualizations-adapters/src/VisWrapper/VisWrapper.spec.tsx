@@ -23,15 +23,15 @@
  SOFTWARE.
 
  */
-import React, { useContext } from 'react'
-import { ThemeContext } from 'styled-components'
+import React from 'react'
+import { useTheme } from 'styled-components'
 import { render, screen } from '@testing-library/react'
 import { VisWrapper } from './VisWrapper'
 
 describe('VisWrapper', () => {
   it('wraps itself in ComponentsProvider if rendered outside of theme context', () => {
     const CustomVis = () => {
-      const theme = useContext(ThemeContext)
+      const theme = useTheme()
       return (
         <>
           <p>Rendered Without Error!</p>

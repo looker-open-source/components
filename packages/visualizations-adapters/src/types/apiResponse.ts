@@ -42,6 +42,11 @@ export type ColorApplication = {
   custom?: IDiscretePalette | IContinuousPalette
 }
 
+type HiddenPivot = {
+  is_entire_pivot_hidden?: boolean
+  measure_names?: string[]
+}
+
 /**
  * RapApiConfigResponse represents config attributes that will be ingested from the api
  * and transformed to our final public contract.
@@ -53,6 +58,7 @@ export type RawApiConfigResponse = {
   default_series_colors?: string[]
   hide_legend: boolean
   hidden_fields: string[]
+  hidden_pivots: { [pivot_key: string]: HiddenPivot }
   interpolation: 'linear'
   label_density: number
   label_type?: LabelTypes

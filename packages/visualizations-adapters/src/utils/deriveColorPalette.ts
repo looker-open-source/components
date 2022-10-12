@@ -40,16 +40,16 @@ const colorTransformations = [
 ]
 
 /**
- * Helper function derives complelementary alternate colors from a base set
+ * Helper function derives complementary alternate colors from a base set
  * @param baseColors an array of color codes
  * @returns an array of color codes
  */
 export const deriveColorPalette = (
   baseColors: string[] = DEFAULT_SERIES_COLORS
 ) => {
-  return colorTransformations.flatMap(t => {
+  return colorTransformations.flatMap((t) => {
     const { h: hueDiff, s: satDiff, v: valDiff } = t
-    return baseColors.map(color => {
+    return baseColors.map((color) => {
       const { h, s, v } = hsv(color)
       const newHue = (h + hueDiff) % 360
       const newSat = Math.max(Math.min(s + satDiff, 1), 0)

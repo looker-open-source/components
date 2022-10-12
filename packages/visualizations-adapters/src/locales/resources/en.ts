@@ -39,6 +39,7 @@ const resources = {
     'Something went wrong': 'Something went wrong',
   },
   translation: {
+    'Row Total': 'Row Total',
     false: 'false',
     null: 'null',
     true: 'true',

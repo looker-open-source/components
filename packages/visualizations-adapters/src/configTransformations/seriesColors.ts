@@ -51,7 +51,7 @@ export const seriesColors: ConfigHelper<CommonCartesianProperties> = ({
   const seriesColors = normalizePivotSeriesKeys(series_colors)
 
   const seriesColorValues =
-    fields?.measures?.map(measure => {
+    fields?.measures?.map((measure) => {
       return seriesColors?.[measure.name]
     }) || []
 
