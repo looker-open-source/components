@@ -1,18 +1,18 @@
 # @looker/visualizations-table
 
-This package stores the default table visualization used within the Looker Visualization Components library.
+This package stores the core web component used for Looker's open source table visualization.
 
 ## Installation
 
-If you are working with Looker Visualizations Components, you will likely not need to reference the this package directly. But if you would like to import `Table` to extend or use outside of that context you can install it with Yarn or NPM:
+If you are working with Looker Visualizations Components, you will likely not need to reference the this package directly. But if you would like to import `Table` to extend or use outside of that context you can install it with npm or Yarn:
 
-- **NPM:** `npm install @looker/visualizations-table`
-- **YARN:** `yarn add @looker/visualizations-table`
+- **npm:** `npm install @looker/visualizations-table`
+- **Yarn:** `yarn add @looker/visualizations-table`
 
 You'll also need to satisfy a few peer dependencies - Looker/components, React, and Styled Components:
 
-- **NPM:** `npm install @looker/components react react-dom styled-components`
-- **YARN:** `yarn add @looker/components react react-dom styled-components`
+- **npm:** `npm install @looker/components react react-dom styled-components`
+- **Yarn:** `yarn add @looker/components react react-dom styled-components`
 
 ## Getting Started
 

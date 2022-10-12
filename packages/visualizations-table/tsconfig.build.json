@@ -1,8 +1,10 @@
 {
-  "extends": "../../tsconfig.build.json",
+  "extends": "../tsconfig.build.json",
   "compilerOptions": {
+    "lib": ["es2022", "es6", "dom"],
     "rootDir": "./src",
-    "outDir": "./lib"
+    "outDir": "./lib",
+    "experimentalDecorators": true
   },
   "include": ["src/**/*"]
 }

@@ -1,30 +1,54 @@
 {
   "name": "@looker/visualizations-table",
-  "main": "src/index.ts",
-  "version": "0.2.15",
-  "publishConfig": {
-    "access": "public"
-  },
   "license": "MIT",
+  "main": "src/index.ts",
+  "version": "1.1.0",
   "sideEffects": false,
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "repository": {
+    "url": "looker-open-source/components",
+    "directory": "packages/visualizations-table"
+  },
+  "files": [
+    "src",
+    "lib"
+  ],
+  "scripts": {
+    "buildLocales": "lk buildLocales",
+    "prepublishOnly": "lk prepublishOnly",
+    "test": "lk test",
+    "coverage": "lk coverage"
+  },
   "dependencies": {
-    "@looker/visualizations-adapters": "^0.1.16",
+    "@looker/components": "^4.0.3",
+    "@looker/visualizations-adapters": "^1.0.0",
+    "@tanstack/react-table": "^8.5.11",
+    "@tanstack/react-virtual": "3.0.0-beta.18",
+    "@styled-icons/material": "10.34.0",
     "lodash": "4.17.21",
     "numeral": "2.0.6"
   },
   "devDependencies": {
-    "@looker/components-test-utils": "^1.5.26",
-    "@looker/eslint-config-oss": "^1.7.21",
-    "@looker/i18n": "^0.1.8",
-    "@looker/stylelint-config": "^1.5.19",
-    "@testing-library/react": "*",
-    "react-i18next": "*"
+    "@babel/plugin-proposal-decorators": "^7.18.10",
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@looker/babel-preset-react": "*",
+    "@looker/babel-preset-typescript": "*",
+    "@looker/components-scripts": "*",
+    "@looker/components-test-utils": "*",
+    "@looker/eslint-config-oss": "*",
+    "@looker/i18n": "*",
+    "@looker/jest-config": "*",
+    "@testing-library/react": "11.0.4",
+    "@testing-library/react-hooks": "^8.0.1",
+    "jest-environment-jsdom": "26.6.2"
   },
   "peerDependencies": {
-    "@looker/components": "1.4 - 3",
-    "react": ">= 16.11.0",
-    "react-dom": ">= 16.11.0",
-    "styled-components": "^5.2"
+    "react": "16.11.0 - 18",
+    "react-dom": "16.11.0 - 18",
+    "styled-components": "^5.3.1"
   },
   "eslintConfig": {
     "root": true,
@@ -36,9 +60,5 @@
       "import/order": "off",
       "sort-keys-fix/sort-keys-fix": "off"
     }
-  },
-  "stylelint": {
-    "extends": "@looker/stylelint-config"
-  },
-  "gitHead": "734f77cda8050d9eea83a187113333dfad8650ca"
+  }
 }
