@@ -26,7 +26,6 @@
 
 import { useEffect } from 'react'
 import type {
-  Looker40SDK,
   IError,
   ILookmlModelExplore,
   ILookmlModelExploreField,
@@ -34,17 +33,9 @@ import type {
 import type { SDKResponse } from '@looker/sdk-rtl'
 import isEmpty from 'lodash/isEmpty'
 import isEqual from 'lodash/isEqual'
-import memoize from 'lodash/memoize'
 import useSWR from 'swr'
 import { getErrorResponse } from '../utils'
 import { useSDK, useQueryMetadata, DataState } from '.'
-
-const fetchModelExplore = memoize(
-  async (model: string, explore: string, sdk: Looker40SDK) => {
-    const result = await sdk.lookml_model_explore(model, explore, 'fields')
-    return result
-  }
-)
 
 type FieldGroups = {
   [group: string]: ILookmlModelExploreField[]
@@ -92,7 +83,7 @@ export const useFieldGroups = (id: number) => {
 
   const fetcher = async () => {
     if (id > 0 && model && view && isEmpty(allModelFields)) {
-      return fetchModelExplore(model, view, sdk)
+      return await sdk.lookml_model_explore(model, view, 'fields')
     }
 
     return undefined
@@ -103,7 +94,8 @@ export const useFieldGroups = (id: number) => {
     IError
   >>(
     `useFieldGroups-${model}-${view}`, // caution: argument string must be unique to this instance
-    fetcher
+    fetcher,
+    { revalidateOnFocus: false }
   )
 
   /*

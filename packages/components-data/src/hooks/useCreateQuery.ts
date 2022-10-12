@@ -25,21 +25,12 @@
  */
 
 import { useEffect } from 'react'
-import type { Looker40SDK, IWriteQuery, IQuery } from '@looker/sdk'
+import type { IWriteQuery, IQuery } from '@looker/sdk'
 import type { ISDKSuccessResponse } from '@looker/sdk-rtl'
-import memoize from 'lodash/memoize'
 import useSWR from 'swr'
 import { getErrorResponse, isSuccessResponse } from '../utils'
 import { useSDK } from './useSDK'
 import { DataState } from './useDataState'
-
-const createQuery = memoize(
-  async (newQuery: Partial<IWriteQuery>, sdk: Looker40SDK) => {
-    const result = await sdk.create_query(newQuery)
-
-    return result
-  }
-)
 
 /**
  * useCreateQuery creates a new query derived from the `newQuery` configuration.
@@ -55,7 +46,7 @@ export const useCreateQuery = (newQuery?: Partial<IWriteQuery>) => {
 
   const fetcher = async () => {
     if (newQuery) {
-      return createQuery(newQuery, sdk)
+      return await sdk.create_query(newQuery)
     }
 
     return undefined
@@ -63,7 +54,8 @@ export const useCreateQuery = (newQuery?: Partial<IWriteQuery>) => {
 
   const { data: SWRData, isValidating } = useSWR(
     JSON.stringify(newQuery),
-    fetcher
+    fetcher,
+    { revalidateOnFocus: false }
   )
 
   const { id: draftId, ...draftMetadata } =

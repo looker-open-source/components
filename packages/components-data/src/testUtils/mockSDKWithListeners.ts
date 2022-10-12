@@ -40,34 +40,34 @@ export const mockSDKWithListeners: Partial<Looker40SDK> = {
   color_collection: () =>
     (mockSDK as Looker40SDK)
       .color_collection('abcdefghijklmnop')
-      .then(result => {
+      .then((result) => {
         sdkMethodColorCollectionListener(result)
         return result
       }),
   create_query: () =>
-    (mockSDK as Looker40SDK).create_query({}).then(result => {
+    (mockSDK as Looker40SDK).create_query({}).then((result) => {
       sdkMethodCreateQueryListener(result)
       return result
     }),
   dashboard: () =>
-    (mockSDK as Looker40SDK).dashboard('1').then(result => {
+    (mockSDK as Looker40SDK).dashboard('1').then((result) => {
       sdkMethodDashboardListener(result)
       return result
     }),
   lookml_model_explore: () =>
     (mockSDK as Looker40SDK)
       .lookml_model_explore('thelook', 'orders')
-      .then(result => {
+      .then((result) => {
         sdkMethodLookmlModelExploreListener(result)
         return result
       }),
   query: () =>
-    (mockSDK as Looker40SDK).query('1').then(result => {
+    (mockSDK as Looker40SDK).query('1').then((result) => {
       sdkMethodQueryListener(result)
       return result
     }),
   query_for_slug: () =>
-    (mockSDK as Looker40SDK).query_for_slug('qz123').then(result => {
+    (mockSDK as Looker40SDK).query_for_slug('qz123').then((result) => {
       sdkMethodQueryForSlugListener(result)
       return result
     }),
@@ -77,7 +77,7 @@ export const mockSDKWithListeners: Partial<Looker40SDK> = {
         query_id: '1',
         result_format: 'json_detail',
       })
-      .then(result => {
+      .then((result) => {
         sdkMethodRunQueryListener(result)
         return result
       }),

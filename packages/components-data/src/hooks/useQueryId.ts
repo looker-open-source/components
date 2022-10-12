@@ -26,19 +26,12 @@
 
 import { useEffect, useMemo } from 'react'
 import { isNumeric } from '@looker/visualizations-adapters'
-import type { Looker40SDK, IQuery, IError } from '@looker/sdk'
+import type { IQuery, IError } from '@looker/sdk'
 import type { SDKResponse, ISDKSuccessResponse } from '@looker/sdk-rtl'
-import memoize from 'lodash/memoize'
 import useSWR from 'swr'
 import { getErrorResponse } from '../utils'
 import { useSDK } from './useSDK'
 import { DataState } from './useDataState'
-
-const fetchQueryId = memoize(async (slug: string, sdk: Looker40SDK) => {
-  const result = await sdk.query_for_slug(slug)
-
-  return result
-})
 
 /**
  * useQueryId is a hook for getting the numeric query id from a string slug
@@ -74,7 +67,7 @@ export const useQueryId = (slugOrId: string | number = '') => {
         value: { id: querySlug },
       }) as unknown) as Promise<ISDKSuccessResponse<IQuery>>
     } else if (querySlug && !queryId) {
-      return fetchQueryId(querySlug, sdk)
+      return await sdk.query_for_slug(querySlug)
     }
 
     return undefined
@@ -85,7 +78,8 @@ export const useQueryId = (slugOrId: string | number = '') => {
     IError
   >>(
     `useQueryId-${querySlug}`, // caution: argument string must be unique to this instance
-    fetcher
+    fetcher,
+    { revalidateOnFocus: false }
   )
 
   /*

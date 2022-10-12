@@ -1,7 +1,8 @@
-# Change Log
+# [1.0.0](https://github.com/looker-open-source/components/compare/22.16.0...1.0.0) (2022-10-12)
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+## Features
+
+* Return top level pivots response from sdk request
 
 ## [0.1.7](https://github.com/looker-open-source/components/compare/@looker/components-data@0.1.6...@looker/components-data@0.1.7) (2022-05-23)
 

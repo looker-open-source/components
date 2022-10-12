@@ -25,7 +25,6 @@
  */
 
 import type {
-  Looker40SDK,
   IError,
   IColorCollection,
   IContinuousPalette,
@@ -40,11 +39,6 @@ import { getErrorResponse, isErrorResponse } from '../utils'
 import { useSDK } from './useSDK'
 
 type RunQueryReturnType = SDKResponse<IColorCollection, IError>
-
-const fetchColorCollection = async (id: string, sdk: Looker40SDK) => {
-  const result = await sdk.color_collection(id)
-  return result
-}
 
 const isDiscretePalette = (
   palette: IDiscretePalette | IContinuousPalette
@@ -100,10 +94,9 @@ export const useColorPalette = (colorApplication?: ColorApplication) => {
 
   const fetcher = async () => {
     if (collection_id) {
-      return fetchColorCollection(
-        collection_id,
-        sdk
-      ) as Promise<RunQueryReturnType>
+      return ((await sdk.color_collection(
+        collection_id
+      )) as unknown) as Promise<RunQueryReturnType>
     }
 
     return undefined
@@ -111,7 +104,8 @@ export const useColorPalette = (colorApplication?: ColorApplication) => {
 
   const { data, isValidating } = useSWR<void | RunQueryReturnType>(
     collection_id,
-    fetcher
+    fetcher,
+    { revalidateOnFocus: false }
   )
 
   const {

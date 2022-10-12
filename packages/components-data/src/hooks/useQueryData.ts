@@ -25,7 +25,7 @@
  */
 
 import { useEffect } from 'react'
-import type { Looker40SDK, IQuery, IError } from '@looker/sdk'
+import type { IQuery, IError } from '@looker/sdk'
 import type { SDKResponse } from '@looker/sdk-rtl'
 import {
   useNormalizedPivotLabels,
@@ -40,7 +40,6 @@ import type {
   Totals,
   Pivots,
 } from '@looker/visualizations-adapters'
-import memoize from 'lodash/memoize'
 import isEmpty from 'lodash/isEmpty'
 import isEqual from 'lodash/isEqual'
 import useSWR from 'swr'
@@ -56,20 +55,6 @@ type IQueryExtended = IQuery & {
 }
 
 type RunQueryReturnType = SDKResponse<IQueryExtended, IError>
-
-const fetchQueryData = memoize(
-  async (id: number, sdk: Looker40SDK, agentTag?: string) => {
-    const result = await sdk.run_query(
-      {
-        query_id: String(id),
-        result_format: `json_detail`,
-      },
-      { agentTag }
-    )
-
-    return result
-  }
-)
 
 /**
  * useQueryData fetches the query response (data, fields, etc) from a numeric query id
@@ -99,7 +84,13 @@ export const useQueryData = (id: number, agentTag?: string) => {
 
   const fetcher = async () => {
     if (id > 0 && isEmpty(data)) {
-      return fetchQueryData(id, sdk, agentTag) as Promise<RunQueryReturnType>
+      return ((await sdk.run_query(
+        {
+          query_id: String(id),
+          result_format: `json_detail`,
+        },
+        { agentTag }
+      )) as unknown) as Promise<RunQueryReturnType>
     }
 
     return undefined
@@ -107,7 +98,8 @@ export const useQueryData = (id: number, agentTag?: string) => {
 
   const { data: SWRData, isValidating } = useSWR<void | RunQueryReturnType>(
     `useQueryData-${id}`, // caution: argument string must be unique to this instance
-    fetcher
+    fetcher,
+    { revalidateOnFocus: false }
   )
 
   /*
@@ -157,6 +149,7 @@ export const useQueryData = (id: number, agentTag?: string) => {
     fields: normalizedFields,
     isOK: !!data,
     isPending: isValidating,
+    pivots,
     totals: normalizedTotals,
     ...getErrorResponse(SWRData),
   }

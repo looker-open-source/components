@@ -25,18 +25,12 @@
  */
 
 import { useEffect } from 'react'
-import type { Looker40SDK, IDashboard, IError, IQuery } from '@looker/sdk'
+import type { IDashboard, IError, IQuery } from '@looker/sdk'
 import type { SDKResponse } from '@looker/sdk-rtl'
-import memoize from 'lodash/memoize'
 import useSWR from 'swr'
 import { getErrorResponse } from '../utils'
 import { DataState } from './useDataState'
 import { useSDK } from './useSDK'
-
-const fetchDashboard = memoize(async (requestId: number, sdk: Looker40SDK) => {
-  const result = await sdk.dashboard(String(requestId), 'dashboard_elements')
-  return result
-})
 
 /**
  * This hook fetches data from provided dashboard Id, and returns
@@ -64,7 +58,7 @@ export const useQueryIdFromDashboard = (dashboardId?: number) => {
 
   const fetcher = async () => {
     if (dashboardId && !queryId) {
-      return fetchDashboard(dashboardId, sdk)
+      return await sdk.dashboard(String(dashboardId), 'dashboard_elements')
     }
 
     return undefined
@@ -75,7 +69,8 @@ export const useQueryIdFromDashboard = (dashboardId?: number) => {
     IError
   >>(
     `useQueryIdFromDashboard-${dashboardId}`, // caution: argument string must be unique to this instance
-    fetcher
+    fetcher,
+    { revalidateOnFocus: false }
   )
 
   /*

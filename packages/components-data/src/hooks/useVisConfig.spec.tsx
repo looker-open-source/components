@@ -30,14 +30,6 @@ import { waitFor, render } from '@testing-library/react'
 import { ContextWrapper, sdkMethodQueryListener } from '../testUtils'
 import { useVisConfig } from './useVisConfig'
 
-jest.mock('react-i18next', () => ({
-  ...jest.requireActual('react-i18next'),
-  // this mock makes sure any components using the translate hook can use it without breaking tests
-  useTranslation: () => ({
-    t: (str: string) => str,
-  }),
-}))
-
 // mock to track results from front-end data store
 const dataContainerListener = jest.fn()
 

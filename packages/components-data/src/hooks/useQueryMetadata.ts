@@ -25,23 +25,14 @@
  */
 
 import { useEffect, useMemo } from 'react'
-import type { Looker40SDK, IQuery, IError } from '@looker/sdk'
+import type { IQuery, IError } from '@looker/sdk'
 import type { SDKResponse } from '@looker/sdk-rtl'
 import isEmpty from 'lodash/isEmpty'
 import isEqual from 'lodash/isEqual'
-import memoize from 'lodash/memoize'
 import useSWR from 'swr'
 import { getErrorResponse, isSuccessResponse } from '../utils'
 import { useSDK } from './useSDK'
 import { DataState } from './useDataState'
-
-const fetchQueryMetadata = memoize(
-  async (requestId: number, sdk: Looker40SDK) => {
-    const result = await sdk.query(String(requestId))
-
-    return result
-  }
-)
 
 /**
  * A shared hook for fetching query metadata, including config (untransformed and
@@ -77,7 +68,7 @@ export const useQueryMetadata = (id: number) => {
       id > 0 &&
       (isEmpty(metadata.vis_config) || !metadata.model || !metadata.view)
     ) {
-      return fetchQueryMetadata(id, sdk)
+      return await sdk.query(String(id))
     }
 
     return undefined
@@ -88,7 +79,8 @@ export const useQueryMetadata = (id: number) => {
     IError
   >>(
     `useQueryMetadata-${id}`, // caution: argument string must be unique to this instance
-    fetcher
+    fetcher,
+    { revalidateOnFocus: false }
   )
 
   /*

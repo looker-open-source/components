@@ -2,27 +2,41 @@
   "name": "@looker/components-data",
   "license": "MIT",
   "main": "src/index.ts",
-  "version": "0.1.7",
-  "publishConfig": {
-    "access": "public"
-  },
+  "version": "1.0.0",
   "sideEffects": false,
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "repository": {
+    "url": "looker-open-source/components",
+    "directory": "packages/components-data"
+  },
   "files": [
     "src",
     "lib"
   ],
+  "scripts": {
+    "test": "lk test",
+    "coverage": "lk coverage",
+    "prepublishOnly": "lk prepublishOnly"
+  },
   "dependencies": {
-    "@looker/components": "^3.0.8",
+    "@looker/components": "*",
     "@looker/sdk": "^22.4.2",
     "@looker/sdk-rtl": "^21.3.3",
-    "@looker/visualizations-adapters": "^0.1.16",
+    "@looker/visualizations-adapters": "^1.0.0",
     "lodash": "4.17.21",
     "swr": "1.2.2",
     "unstated-next": "1.1.0"
   },
   "devDependencies": {
-    "@looker/components-test-utils": "^1.5.26",
-    "@looker/eslint-config-oss": "^1.7.21",
+    "@looker/babel-preset-react": "*",
+    "@looker/babel-preset-typescript": "*",
+    "@looker/components-scripts": "*",
+    "@looker/components-test-utils": "*",
+    "@looker/eslint-config-oss": "*",
+    "@looker/jest-config": "*",
     "@testing-library/react": "*",
     "@testing-library/react-hooks": "*"
   },

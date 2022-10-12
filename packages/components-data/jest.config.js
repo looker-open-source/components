@@ -23,33 +23,15 @@
  SOFTWARE.
 
  */
-import type { FC } from 'react'
-import React from 'react'
-import { SWRConfig } from 'swr'
-import { ComponentsProvider } from '@looker/components'
-import type { Looker40SDK } from '@looker/sdk'
-import { SDKContext } from '../SDKContext'
-import type { DataStore } from '../hooks'
-import { DataState } from '../hooks'
-import { mockSDKWithListeners } from '.'
 
-type ContextWrapperProps = {
-  initialState?: DataStore
-}
+const { config } = require('@looker/jest-config')
 
-export const ContextWrapper: FC<ContextWrapperProps> = ({
-  children,
-  initialState,
-}) => {
-  return (
-    <ComponentsProvider>
-      <SWRConfig value={{ provider: () => new Map() }}>
-        <SDKContext.Provider value={mockSDKWithListeners as Looker40SDK}>
-          <DataState.Provider initialState={initialState}>
-            {children}
-          </DataState.Provider>
-        </SDKContext.Provider>
-      </SWRConfig>
-    </ComponentsProvider>
-  )
+module.exports = {
+  ...config,
+  collectCoverageFrom: ['src/**/*.@(ts|tsx)'],
+  coveragePathIgnorePatterns: [
+    ...config.coveragePathIgnorePatterns,
+    '<rootDir>/.*/index.ts',
+    'src/TestUtils/.*',
+  ],
 }
