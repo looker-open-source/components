@@ -1,0 +1,4 @@
+{
+  "No children passed to Query component": "No se pasó ningún elemento secundario al componente de consulta.",
+  "Query component received both dashboard and query props": "El componente de consulta recibió propiedades de dashboard y de consulta."
+}

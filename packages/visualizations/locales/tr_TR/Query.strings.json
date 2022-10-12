@@ -1,0 +1,4 @@
+{
+  "No children passed to Query component": "Sorgu bileşenine alt öğe geçmedi",
+  "Query component received both dashboard and query props": "Sorgu bileşeni hem pano hem sorgu özelliklerini aldı"
+}

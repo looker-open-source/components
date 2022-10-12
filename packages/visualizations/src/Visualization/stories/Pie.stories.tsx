@@ -84,6 +84,7 @@ const defaultPieFields: Fields = {
       value_format: null,
     },
   ],
+  pivots: [],
 }
 
 export default {

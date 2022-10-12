@@ -1,0 +1,4 @@
+{
+  "Measures of type 'date' are currently not supported": "タイプ 'date' の Measure は現在サポートされていません",
+  "No chart found for type \"{{type}}\"": "タイプ「{{type}}」のチャートが見つかりません"
+}

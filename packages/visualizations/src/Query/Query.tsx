@@ -99,6 +99,7 @@ const QueryInternal: FC<QueryProps> = ({
   const {
     data,
     fields,
+    pivots,
     totals,
     isPending: isQueryDataPending,
     isOK: isQueryDataOK,
@@ -127,7 +128,7 @@ const QueryInternal: FC<QueryProps> = ({
 
   if (isLoading) {
     return (
-      <Space justifyContent="center" p="small">
+      <Space justify="center" p="small">
         {LoadingIndicator ? <LoadingIndicator /> : <ProgressCircular />}
       </Space>
     )
@@ -167,6 +168,7 @@ const QueryInternal: FC<QueryProps> = ({
                 config: visConfig,
                 data: transformedData,
                 fields,
+                pivots,
                 loading: isLoading,
                 ok: isEveryResponseOk,
                 totals,

@@ -1,0 +1,4 @@
+{
+  "No children passed to Query component": "Geen subonderdelen doorgevoerd naar querycomponent",
+  "Query component received both dashboard and query props": "Queryonderdeel heeft zowel dashboard- als queryeigenschappen ontvangen"
+}

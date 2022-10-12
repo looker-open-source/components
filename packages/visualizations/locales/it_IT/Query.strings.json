@@ -1,0 +1,4 @@
+{
+  "No children passed to Query component": "Nessun elemento secondario trasmesso al componente Query",
+  "Query component received both dashboard and query props": "Il componente query ha ricevuto sia la dashboard che gli oggetti di query"
+}

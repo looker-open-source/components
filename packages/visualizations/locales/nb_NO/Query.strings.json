@@ -1,0 +1,4 @@
+{
+  "No children passed to Query component": "Ingen underordnede elementer ble sendt til spørrings-komponenten",
+  "Query component received both dashboard and query props": "Spørringskomponenten mottok både instrumentbord og spørringsrekvisitter"
+}

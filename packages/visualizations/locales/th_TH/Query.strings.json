@@ -1,0 +1,4 @@
+{
+  "No children passed to Query component": "ไม่มีรายการรองที่ส่งผ่านไปยังองค์ประกอบการสืบค้น",
+  "Query component received both dashboard and query props": "องค์ประกอบการสืบค้นได้รับคุณสมบัติของทั้งแดชบอร์ดและการสืบค้น"
+}

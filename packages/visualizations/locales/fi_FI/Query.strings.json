@@ -1,0 +1,4 @@
+{
+  "No children passed to Query component": "Yhtään lasta ei ole välitetty kyselykomponenttiin",
+  "Query component received both dashboard and query props": "Kyselykomponentti vastaanotti sekä hallintapaneeli- että kyselyominaisuuksia"
+}

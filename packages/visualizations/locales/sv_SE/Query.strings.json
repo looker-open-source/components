@@ -1,0 +1,4 @@
+{
+  "No children passed to Query component": "Inga underordnade godkändes av sökfrågekomponenten",
+  "Query component received both dashboard and query props": "Sökfrågekomponenten tog emot både instrumentpanel och frågeförslag"
+}

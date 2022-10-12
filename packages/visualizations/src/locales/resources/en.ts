@@ -42,8 +42,7 @@ const resources = {
   Visualization: {
     "Measures of type 'date' are currently not supported":
       "Measures of type 'date' are currently not supported",
-    'No supported chart type defined in config object':
-      'No supported chart type defined in config object',
+    'No chart found for type "{{type}}"': 'No chart found for type "{{type}}"',
   },
 }
 
@@ -51,6 +50,7 @@ export const en: I18nState = {
   locale: 'en',
   resources: {
     en: merge(
+      {},
       resources,
       visAdapterLocales.resources.en,
       visTableLocales.resources.en,

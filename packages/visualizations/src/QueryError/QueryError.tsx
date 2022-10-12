@@ -37,10 +37,10 @@ export const QueryError = ({ message }: QueryErrorProps) => {
   const { t } = useTranslation('QueryError')
   return (
     <SpaceVertical p="medium" gap="xxsmall">
-      <Space justifyContent="center">
+      <Space justify="center">
         <Icon icon={<ErrorOutline />} size="large" color="ui4" />
       </Space>
-      <Space justifyContent="center" color="text2" gap="xxsmall">
+      <Space justify="center" color="text2" gap="xxsmall">
         <strong>{t('Error')}:</strong>
         <span>{message}</span>
       </Space>

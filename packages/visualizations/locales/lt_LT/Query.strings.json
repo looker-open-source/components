@@ -1,0 +1,4 @@
+{
+  "No children passed to Query component": "Užklausos komponentui neperduoti antriniai elementai",
+  "Query component received both dashboard and query props": "Užklausos komponentas gavo ataskaitų srities ir užklausos savybes"
+}

@@ -1,0 +1,4 @@
+{
+  "No children passed to Query component": "Ingen underordnet er videreført til forespørgselskomponent",
+  "Query component received both dashboard and query props": "Forespørgselskomponenten har modtaget både dashboard- og forespørgsels-props"
+}

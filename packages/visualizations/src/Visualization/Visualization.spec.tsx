@@ -23,19 +23,19 @@
  SOFTWARE.
 
  */
-import React, { useContext } from 'react'
+import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { ThemeContext } from 'styled-components'
+import { useTheme } from 'styled-components'
 import { render, screen } from '@testing-library/react'
 import {
   mockBarConfig,
   mockFields,
   mockData,
 } from '@looker/visualizations-adapters'
-import { Visualization, chartComponentMap } from './Visualization'
+import { Visualization, defaultChartTypeMap } from './Visualization'
 
 const CustomVis = () => {
-  const theme = useContext(ThemeContext)
+  const theme = useTheme()
   return (
     <>
       <p>Rendered Without Error!</p>
@@ -93,8 +93,8 @@ describe('Visualization', () => {
 })
 
 describe('Visualization renders chart component based on type', () => {
-  type ChartRecord = typeof chartComponentMap
-  const visEntries = Object.entries(chartComponentMap) as [
+  type ChartRecord = typeof defaultChartTypeMap
+  const visEntries = Object.entries(defaultChartTypeMap) as [
     keyof ChartRecord, // key union
     ChartRecord[keyof ChartRecord] // val union
   ][]

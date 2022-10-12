@@ -1,0 +1,4 @@
+{
+  "Measures of type 'date' are currently not supported": "Actualmente no se admiten las medidas del tipo \"fecha\".",
+  "No chart found for type \"{{type}}\"": "No se encontró ningún gráfico para el tipo \"{{type}}\""
+}

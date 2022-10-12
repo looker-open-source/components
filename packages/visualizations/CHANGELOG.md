@@ -1,7 +1,44 @@
-# Change Log
+# [1.1.0](https://github.com/looker-open-source/components/compare/22.16.0...1.1.0) (2022-10-12)
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+### Bug Fixes
+
+* Space/SpaceVertical props cleanup ([b9145ad](https://github.com/looker-open-source/components/commit/b9145ade9426fe2389806ac2db4cce316562e509))
+
+
+### Features
+
+* Optimize large table data sets with row virtualization ([0425b5a](https://github.com/looker-open-source/components/commit/0425b5a666b7dc76ff15da5bdf7c4d203a2d7752))
+* sort multiple table columns b/244479248 ([f382174](https://github.com/looker-open-source/components/commit/f3821744124712a8f631f9ce604c6174379de64f))
+* table head groups for pivoted queries b/235396147 ([36742ad](https://github.com/looker-open-source/components/commit/36742ad1a507850aad8d7946e7cdf2f0fbe03ce0))
+
+
+
+# [1.0.0](https://github.com/looker-open-source/components/compare/22.16.0...1.0.0) (2022-09-22)
+
+
+### Features
+
+* Optimize large table data sets with row virtualization ([0425b5a](https://github.com/looker-open-source/components/commit/0425b5a666b7dc76ff15da5bdf7c4d203a2d7752))
+
+
+
+# [0.3.0](https://github.com/looker-open-source/components/compare/22.10.3...0.3.0) (2022-09-07)
+
+
+### Features
+
+* **loc:** update loc 37 ([198ebcd](https://github.com/looker-open-source/components/commit/198ebcd45101930956837f2495863fe2f2419ace))
+* Update table visualization to 0.3.0
+
+### Fixes
+
+* Fixes issue where Query component would revert to loading state unnecessarily.
+
+### Reverts
+
+* Revert "Move no-restricted-imports to eslint plugin" ([3c5d40b](https://github.com/looker-open-source/components/commit/3c5d40b14453034528a39a6d52261c64efd43082))
+
 
 ## [0.2.15](https://github.com/looker-open-source/components/compare/@looker/visualizations@0.2.14...@looker/visualizations@0.2.15) (2022-05-23)
 

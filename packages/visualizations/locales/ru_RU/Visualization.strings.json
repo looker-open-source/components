@@ -1,0 +1,4 @@
+{
+  "Measures of type 'date' are currently not supported": "Поля measure типа date в настоящее время не доступны",
+  "No chart found for type \"{{type}}\"": "График для типа «{{type}}» не обнаружен"
+}

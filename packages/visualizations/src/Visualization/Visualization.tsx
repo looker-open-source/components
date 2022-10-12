@@ -24,9 +24,9 @@
 
  */
 import type { FC } from 'react'
-import React, { useContext } from 'react'
+import React from 'react'
 import { ComponentsProvider } from '@looker/components'
-import { ThemeContext } from 'styled-components'
+import { useTheme } from 'styled-components'
 import { Table } from '@looker/visualizations-table'
 import {
   Area,
@@ -46,9 +46,10 @@ import type {
   SDKRecord,
   Fields,
   CAll,
-  Totals,
+  Pivots,
 } from '@looker/visualizations-adapters'
 import has from 'lodash/has'
+import { QueryError } from '../QueryError'
 import { useTranslation } from '../utils'
 
 export interface VisualizationProps extends VisWrapperProps, ChartLayoutProps {
@@ -59,10 +60,13 @@ export interface VisualizationProps extends VisWrapperProps, ChartLayoutProps {
   data?: SDKRecord[]
   fields?: Fields
   config?: CAll
-  totals?: Totals
+  totals?: Record<string, number>
+  pivots?: Pivots
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  chartTypeMap?: Record<string, FC<any>>
 }
 
-export const chartComponentMap: Record<
+export const defaultChartTypeMap: Record<
   keyof SupportedChartTypes | 'default',
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   FC<any>
@@ -84,8 +88,10 @@ const VisualizationComponent: FC<VisualizationProps> = ({
   width,
   data = [],
   fields,
+  pivots,
   totals,
   config,
+  chartTypeMap = {},
 }) => {
   const { t } = useTranslation('Visualization')
 
@@ -93,9 +99,16 @@ const VisualizationComponent: FC<VisualizationProps> = ({
     throw new Error(t("Measures of type 'date' are currently not supported"))
   }
 
-  if (has(chartComponentMap, config?.type || '')) {
+  // Merge user chart type overrides with our standard library
+  const completeChartTypeMap = Object.assign(
+    {},
+    defaultChartTypeMap,
+    chartTypeMap
+  )
+
+  if (has(completeChartTypeMap, config?.type || '')) {
     const ChartComponent =
-      chartComponentMap[config?.type as keyof SupportedChartTypes]
+      completeChartTypeMap[config?.type as keyof SupportedChartTypes]
 
     return (
       <ChartComponent
@@ -103,19 +116,24 @@ const VisualizationComponent: FC<VisualizationProps> = ({
         config={config}
         fields={fields}
         totals={totals}
+        pivots={pivots}
         width={width}
         height={height}
       />
     )
   } else {
-    // eslint-disable-next-line no-console
-    console.warn(t('No supported chart type defined in config object'))
-    return null
+    return (
+      <QueryError
+        message={t('No chart found for type "{{type}}"', {
+          type: config?.type,
+        })}
+      />
+    )
   }
 }
 
 export const Visualization: FC<VisualizationProps> = props => {
-  const theme = useContext(ThemeContext)
+  const theme = useTheme()
 
   if (!theme) {
     // Recursively wrap Visualization in ComponentsProvider to ensure that
