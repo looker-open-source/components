@@ -1,3 +1,8 @@
+## [1.1.1](https://github.com/looker-open-source/components/compare/22.16.0...1.1.1) (2022-10-13)
+### Bug Fixes
+
+* Bump subpackage dependencies
+
 # [1.1.0](https://github.com/looker-open-source/components/compare/22.16.0...1.1.0) (2022-10-12)
 
 
