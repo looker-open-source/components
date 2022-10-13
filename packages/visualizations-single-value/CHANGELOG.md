@@ -1,7 +1,7 @@
-# Change Log
+# [1.0.0](https://github.com/looker-open-source/components/compare/22.16.0...1.0.0) (2022-10-13)
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+**Note:** Version bump only for package @looker/visualizations-single-value
+
 
 ## [0.1.14](https://github.com/looker-open-source/components/compare/@looker/visualizations-single-value@0.1.13...@looker/visualizations-single-value@0.1.14) (2022-05-23)
 

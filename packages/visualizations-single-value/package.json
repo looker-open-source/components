@@ -2,27 +2,45 @@
   "name": "@looker/visualizations-single-value",
   "license": "MIT",
   "main": "src/index.ts",
-  "version": "0.1.14",
-  "publishConfig": {
-    "access": "public"
-  },
+  "version": "1.0.0",
   "sideEffects": false,
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "repository": {
+    "url": "looker-open-source/components",
+    "directory": "packages/visualizations-single-value"
+  },
+  "files": [
+    "src",
+    "lib"
+  ],
+  "scripts": {
+    "test": "lk test",
+    "coverage": "lk coverage",
+    "prepublishOnly": "lk prepublishOnly"
+  },
   "dependencies": {
-    "@looker/visualizations-adapters": "^0.1.16",
+    "@looker/visualizations-adapters": "^1.0.0",
     "numeral": "2.0.6"
   },
   "devDependencies": {
-    "@looker/components-test-utils": "^1.5.26",
-    "@looker/eslint-config-oss": "^1.7.21",
-    "@looker/stylelint-config": "^1.5.19",
+    "@looker/babel-preset-styled-components": "*",
+    "@looker/babel-preset-typescript": "*",
+    "@looker/components-scripts": "*",
+    "@looker/components-test-utils": "*",
+    "@looker/eslint-config-oss": "*",
+    "@looker/jest-config": "*",
+    "@looker/stylelint-config": "*",
     "@testing-library/react": "*",
     "@types/numeral": "2.0.2"
   },
   "peerDependencies": {
-    "@looker/components": "1.4 - 3",
-    "react": ">= 16.11.0",
-    "react-dom": ">= 16.11.0",
-    "styled-components": "^5.2"
+    "@looker/components": "1.4 - 4",
+    "react": "16.11.0 - 18",
+    "react-dom": "16.11.0 - 18",
+    "styled-components": "^5.3.1"
   },
   "eslintConfig": {
     "root": true,
