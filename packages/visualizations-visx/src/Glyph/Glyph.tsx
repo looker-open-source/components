@@ -24,8 +24,8 @@
 
  */
 
-import React, { useContext } from 'react'
-import { ThemeContext } from 'styled-components'
+import React from 'react'
+import { useTheme } from 'styled-components'
 import {
   GlyphCircle,
   GlyphSquare,
@@ -61,7 +61,7 @@ export const Glyph = ({
   styleObj,
   stroke,
 }: GlyphProps) => {
-  const theme = useContext(ThemeContext)
+  const theme = useTheme()
   const { shape = 'circle', line_width = 1 } = series
   const CurrGlyph = Glyphs[shape]
 

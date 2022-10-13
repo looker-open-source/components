@@ -24,8 +24,8 @@
 
  */
 
-import React, { useContext } from 'react'
-import { ThemeContext } from 'styled-components'
+import React from 'react'
+import { useTheme } from 'styled-components'
 import { Marker as VisxMarker } from '@visx/marker'
 import { Glyph } from '../Glyph'
 import { getMarkerFill, getDefaultGlyphSize } from '../utils'
@@ -37,7 +37,7 @@ export type MarkerProps = {
 }
 
 export const Marker = ({ series, id }: MarkerProps) => {
-  const theme = useContext(ThemeContext)
+  const theme = useTheme()
   const { line_width = 1 } = series
   const fill = getMarkerFill(series, theme)
   const size = getDefaultGlyphSize(line_width)

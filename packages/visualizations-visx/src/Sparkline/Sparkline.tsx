@@ -24,8 +24,8 @@
 
  */
 import type { FC } from 'react'
-import React, { useState, useContext, useEffect } from 'react'
-import { ThemeContext } from 'styled-components'
+import React, { useState, useEffect } from 'react'
+import { useTheme } from 'styled-components'
 import { LinePath } from '@visx/shape'
 import { Point } from '@visx/point'
 import { useMeasuredElement } from '@looker/components'
@@ -119,7 +119,7 @@ export const Sparkline: FC<SparklineProps> = ({
     ? series[0]
     : series[firstMeasure.name || '']
 
-  const themeContext = useContext(ThemeContext)
+  const themeContext = useTheme()
 
   // get VisWrapper dimensions to support 100% width sparklines
   const [wrapperRef, setWrapperRef] = useState<HTMLDivElement | null>(null)

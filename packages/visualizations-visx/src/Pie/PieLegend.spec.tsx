@@ -30,25 +30,6 @@ import { renderWithTheme } from '@looker/components-test-utils'
 import { PieLegend } from './PieLegend'
 import { scaleOrdinal } from '@visx/scale'
 
-jest.mock('react-i18next', () => ({
-  ...jest.requireActual('react-i18next'),
-  // this mock makes sure any components using the translate hook can use it without breaking tests
-  useTranslation: () => {
-    return {
-      t: (str: string, interpolationVals?: Record<string, string>) => {
-        if (interpolationVals) {
-          const { page, totalPages } = interpolationVals
-          return str
-            .replace('{{page}}', String(page))
-            .replace('{{totalPages}}', String(totalPages))
-        } else {
-          return str
-        }
-      },
-    }
-  },
-}))
-
 const globalGetBoundingClientRect = Element.prototype.getBoundingClientRect
 
 beforeEach(() => {

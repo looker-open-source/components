@@ -34,8 +34,8 @@ import {
 } from '@styled-icons/material'
 import { IconButton } from '@looker/components'
 import styled, { css } from 'styled-components'
-import { useTranslation } from 'react-i18next'
 import type { LegendOrientations } from './types'
+import { useTranslation } from '../utils'
 
 type PieLegendControlsProps = {
   contentRect: { width: number; height: number }

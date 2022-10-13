@@ -25,12 +25,12 @@
  */
 
 import type { FC } from 'react'
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 import { hsv } from 'd3-hsv'
 import type { Arc } from 'd3-shape'
 import { localPoint } from '@visx/event'
 import type { SDKRecord } from '@looker/visualizations-adapters'
-import { ThemeContext } from 'styled-components'
+import { useTheme } from 'styled-components'
 import type { PieArcDatum } from '@visx/shape/lib/shapes/Pie'
 import type { Point } from '@visx/point'
 import { PIE_SLICE_ZOOM } from './pieConstants'
@@ -55,7 +55,7 @@ export const PieArc: FC<PieArcProps> = ({
 }) => {
   const [isHovered, setIsHovered] = useState(false)
 
-  const theme = useContext(ThemeContext)
+  const theme = useTheme()
 
   const { h, s, v } = hsv(datumColor)
   const hoverColor = hsv(h, s, Math.min(v + 0.2, 1)).hex()

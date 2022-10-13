@@ -5,15 +5,15 @@ As Looker Visualization Components are designed to be library agnostic, in the l
 
 ## Installation
 
-If you are working with Looker Visualizations Components, you will likely not need to reference the this package directly. But if you would like to import any of our Visx charts to extend or use outside of the context you can install them with Yarn or NPM:
+If you are working with Looker Visualizations Components, you will likely not need to reference the this package directly. But if you would like to import any of our Visx charts to extend or use outside of the context you can install them with npm or Yarn:
 
-- **NPM:** `npm install @looker/visualizations-visx`
-- **YARN:** `yarn add @looker/visualizations-visx`
+- **npm:** `npm install @looker/visualizations-visx`
+- **Yarn:** `yarn add @looker/visualizations-visx`
 
 You'll also need to satisfy a few peer dependencies - Looker/components, React, & Styled Components:
 
-- **NPM:** `npm install @looker/components react react-dom styled-components`
-- **YARN:** `yarn add @looker/components react react-dom styled-components`
+- **npm:** `npm install @looker/components react react-dom styled-components`
+- **Yarn:** `yarn add @looker/components react react-dom styled-components`
 
 ## Getting Started
 

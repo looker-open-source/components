@@ -25,8 +25,8 @@
  */
 
 import type { FC } from 'react'
-import React, { useContext, Fragment } from 'react'
-import { ThemeContext } from 'styled-components'
+import React, { Fragment } from 'react'
+import { useTheme } from 'styled-components'
 import { DataProvider, LineSeries, XYChart } from '@visx/xychart'
 import type { AxisScaleOutput, AxisScale } from '@visx/axis'
 import type { LinearScaleConfig } from '@visx/scale'
@@ -62,7 +62,7 @@ export const Line: FC<LineProps> = ({
   width,
   fields,
 }) => {
-  const theme = useContext(ThemeContext)
+  const theme = useTheme()
 
   /**
    * The concatDimensions call will further format the data array returned from

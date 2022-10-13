@@ -24,8 +24,8 @@
 
  */
 
-import React, { useContext } from 'react'
-import styled, { ThemeContext, css } from 'styled-components'
+import React from 'react'
+import styled, { css, useTheme } from 'styled-components'
 import {
   getSeriesMax,
   getSeriesMin,
@@ -40,14 +40,14 @@ import type {
 } from '@looker/visualizations-adapters'
 import { Tooltip as VisxTooltip } from '@visx/xychart'
 import type { TooltipData } from '@visx/xychart'
-import { SpaceVertical } from '@looker/components'
-import { useTranslation } from 'react-i18next'
+import { SpaceVertical, TooltipContent } from '@looker/components'
 import get from 'lodash/get'
 import { Glyph } from '../Glyph'
 import {
   seriesLabelFormatter,
   getRelativeGlyphSize,
   getDefaultGlyphSize,
+  useTranslation,
 } from '../utils'
 import { DLGroup } from '../DLGroup'
 import numeral from 'numeral'
@@ -91,7 +91,7 @@ export const XYTooltip = styled(
     showDatumGlyph = true,
   }: TooltipProps) => {
     const { t } = useTranslation('XYTooltip')
-    const theme = useContext(ThemeContext)
+    const theme = useTheme()
     const { tooltips, series } = config
     if (!tooltips) {
       return <></>
@@ -128,30 +128,32 @@ export const XYTooltip = styled(
       ).format(sizeBySeries.value_format)
 
       return (
-        <dl>
-          <SpaceVertical gap="u3">
-            <DLGroup label={dimensionLabel} value={datum.dimension} />
-            <DLGroup
-              label={seriesLabelFormatter(
-                fields,
-                config,
-                nearestDatumMeasureName
-              )}
-              value={valueFormatted}
-            />
-            {nearestSeries.size_by && (
+        <TooltipContent>
+          <StyledDL>
+            <SpaceVertical gap="u3">
+              <DLGroup label={dimensionLabel} value={datum.dimension} />
               <DLGroup
-                preface={t('Points sized by')}
                 label={seriesLabelFormatter(
                   fields,
                   config,
-                  nearestSeries.size_by
+                  nearestDatumMeasureName
                 )}
-                value={sizeByValueFormatted}
+                value={valueFormatted}
               />
-            )}
-          </SpaceVertical>
-        </dl>
+              {nearestSeries.size_by && (
+                <DLGroup
+                  preface={t('Points sized by')}
+                  label={seriesLabelFormatter(
+                    fields,
+                    config,
+                    nearestSeries.size_by
+                  )}
+                  value={sizeByValueFormatted}
+                />
+              )}
+            </SpaceVertical>
+          </StyledDL>
+        </TooltipContent>
       )
     }
 
@@ -225,4 +227,8 @@ export const XYTooltip = styled(
   }
 )`
   ${tooltipStyles}
+`
+
+const StyledDL = styled.dl`
+  margin: 0;
 `

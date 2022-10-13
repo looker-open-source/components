@@ -25,10 +25,10 @@
  */
 
 import type { FC } from 'react'
-import React, { useContext } from 'react'
+import React from 'react'
 import { Annotation, Label, Connector } from '@visx/annotation'
 import { pointRadial } from 'd3-shape'
-import { ThemeContext } from 'styled-components'
+import { useTheme } from 'styled-components'
 import type { PieArcDatum } from '@visx/shape/lib/shapes/Pie'
 import type { SDKRecord } from '@looker/visualizations-adapters'
 import { getConnectorLength } from './getConnectorLength'
@@ -46,7 +46,7 @@ export const PieLabel: FC<PieLabelProps> = ({
   labelContent,
   datumColor,
 }) => {
-  const theme = useContext(ThemeContext)
+  const theme = useTheme()
   const { startAngle, endAngle } = arc
   const averageAngle = (startAngle + endAngle) / 2
 

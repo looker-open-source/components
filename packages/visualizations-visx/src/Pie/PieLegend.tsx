@@ -27,13 +27,13 @@
 import type { FC, KeyboardEvent } from 'react'
 import type { ScaleOrdinal } from 'd3-scale'
 import type { CPie } from '@looker/visualizations-adapters'
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 import { LegendOrdinal } from '@visx/legend'
 import type { DefaultTheme } from 'styled-components'
-import styled, { css, ThemeContext } from 'styled-components'
+import styled, { css, useTheme } from 'styled-components'
 import { useMeasuredElement, useCallbackRef } from '@looker/components'
 import pick from 'lodash/pick'
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from '../utils'
 import { PieLegendControls } from './PieLegendControls'
 import { getLabelContent } from './getLabelContent'
 import type { LegendOrientations } from './types'
@@ -97,7 +97,7 @@ export const PieLegend: FC<PieLegendProps> = ({
   // track state for scrolling through very long legends
   const [page, setPage] = useState(0)
 
-  const theme = useContext(ThemeContext)
+  const theme = useTheme()
   const { position } = legendConfig || {}
   const ORIENTATION: LegendOrientations =
     position === 'top' || position === 'bottom' ? 'horizontal' : 'vertical'

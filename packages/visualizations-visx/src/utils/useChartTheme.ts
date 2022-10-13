@@ -23,15 +23,15 @@
  SOFTWARE.
 
  */
-import { useContext } from 'react'
-import { ThemeContext } from 'styled-components'
+
+import { useTheme } from 'styled-components'
 import type { CCartesian } from '@looker/visualizations-adapters'
 import isArray from 'lodash/isArray'
 import compact from 'lodash/compact'
 import { buildChartTheme } from '@visx/xychart'
 
 export const useChartTheme = (series?: CCartesian['series']) => {
-  const theme = useContext(ThemeContext)
+  const theme = useTheme()
 
   const seriesList =
     series && isArray(series) ? series : Object.values(series || {})

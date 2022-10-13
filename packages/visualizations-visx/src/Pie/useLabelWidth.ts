@@ -24,13 +24,12 @@
 
  */
 
-import { useContext } from 'react'
 import {
   pickLongestLabel,
   useMeasuredText,
 } from '@looker/visualizations-adapters'
 import type { CPie } from '@looker/visualizations-adapters'
-import { ThemeContext } from 'styled-components'
+import { useTheme } from 'styled-components'
 import { getLabelContent } from './getLabelContent'
 
 export const MIN_LABEL_SPACE = 90
@@ -50,7 +49,7 @@ export const useLabelWidth = (
   legend: CPie['legend']
 ) => {
   const { type: legendType = 'legend' } = legend || {}
-  const theme = useContext(ThemeContext)
+  const theme = useTheme()
 
   const longestLabel = pickLongestLabel(
     Object.entries(keyValData).map(([key, val]) => {

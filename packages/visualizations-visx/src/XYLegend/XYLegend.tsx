@@ -26,9 +26,10 @@
 import type { FC } from 'react'
 import React, { useContext } from 'react'
 import type { CCartesian, Fields } from '@looker/visualizations-adapters'
-import { ThemeContext } from 'styled-components'
+import { useTheme } from 'styled-components'
 import { DataContext } from '@visx/xychart'
 import { LegendOrdinal } from '@visx/legend'
+import type { ScaleOrdinal } from 'd3-scale'
 import partial from 'lodash/partial'
 import { seriesLabelFormatter } from '../utils'
 
@@ -41,10 +42,15 @@ type LegendProps = {
 const DEFAULT_LEGEND_WIDTH = 200
 
 export const XYLegend: FC<LegendProps> = ({ chartWidth, config, fields }) => {
-  const { colorScale, theme: visxTheme, margin } = useContext(DataContext)
+  const {
+    colorScale = {} as ScaleOrdinal<string, string, never>,
+    theme: visxTheme,
+    margin,
+  } = useContext(DataContext)
+
   const {
     space: { xsmall, small },
-  } = useContext(ThemeContext)
+  } = useTheme()
   const { legend } = config
 
   // Early return if legend is either false or undefined
@@ -100,9 +106,7 @@ export const XYLegend: FC<LegendProps> = ({ chartWidth, config, fields }) => {
         justifyContent: 'center',
         ...legendStyle,
       }}
-      // TODO: resolve non-null assertion -- https://b.corp.google.com/issues/199297029
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      scale={colorScale!}
+      scale={colorScale}
       shape="line"
     />
   )

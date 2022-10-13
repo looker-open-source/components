@@ -33,8 +33,6 @@ import {
 } from '@looker/visualizations-adapters'
 import { Sparkline } from './Sparkline'
 
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
-
 describe('Sparkline Chart', () => {
   it('renders an svg based derived from two dimensional response', () => {
     renderWithTheme(
@@ -51,7 +49,7 @@ describe('Sparkline Chart', () => {
       >
         <path
           class="visx-linepath"
-          d="M1.5,1.5L-1.5,498.5"
+          d="M1.5,498.5L0,1.5L-1.5,96.26133333333331"
           fill="transparent"
           stroke="#6C43E0"
           stroke-linecap="round"
