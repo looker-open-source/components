@@ -1,0 +1,44 @@
+{
+  "exclusive": {
+    "value": "(제외)"
+  },
+  "inclusive": {
+    "value": "[포함]"
+  },
+  "is": {
+    "value": "이(가)"
+  },
+  "is between": {
+    "value": "이(가) 다음 두 값 사이임"
+  },
+  "is greater": {
+    "value": "이(가) >"
+  },
+  "is greater equal": {
+    "value": "이(가) >="
+  },
+  "is less": {
+    "value": "이(가) <"
+  },
+  "is less equal": {
+    "value": "이(가) <="
+  },
+  "is not": {
+    "value": "이(가) 다음이 아님"
+  },
+  "is not between": {
+    "value": "이(가) 다음 두 값 사이가 아님"
+  },
+  "is not null": {
+    "value": "이(가) null이 아님"
+  },
+  "is null": {
+    "value": "이(가) null임"
+  },
+  "left exclusive": {
+    "value": "(왼쪽-제외]"
+  },
+  "right exclusive": {
+    "value": "[오른쪽-제외)"
+  }
+}

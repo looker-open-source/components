@@ -25,7 +25,7 @@
  */
 
 import { yAxisRange } from './yAxisRange'
-import { mockBarConfig, mockFields, mockSdkDataResponse } from '../__mocks__'
+import { mockBarConfig, mockFields, mockSdkDataResponse } from '../fixtures'
 import type { YAxisConfig, YAxisRaw } from '../types'
 
 describe('yAxisRange', () => {

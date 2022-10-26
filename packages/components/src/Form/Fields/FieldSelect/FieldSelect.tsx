@@ -47,7 +47,6 @@ const FieldSelectComponent = forwardRef(
       <FloatingLabelField
         {...pickFieldProps(props)}
         id={id}
-        ariaLabelOnly
         validationMessage={validationMessage}
         hasValue={getHasValue(props)}
       >
@@ -58,6 +57,7 @@ const FieldSelectComponent = forwardRef(
           id={id}
           validationType={validationMessage && validationMessage.type}
           ref={ref}
+          wrapperAriaLabel={`${props.label}`}
         />
       </FloatingLabelField>
     )

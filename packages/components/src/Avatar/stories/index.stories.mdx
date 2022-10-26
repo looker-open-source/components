@@ -1,0 +1,56 @@
+import { Avatar } from '@looker/components'
+import storyAccessible from '!!raw-loader!./Accessible'
+import storyButton from '!!raw-loader!./Button'
+import storyUser from '!!raw-loader!./User'
+import storyIcon from '!!raw-loader!./Icon'
+import storySize from '!!raw-loader!./Size'
+import storyColor from '!!raw-loader!./Color'
+import storyCombo from '!!raw-loader!./Combo'
+
+<Meta component={Avatar} title="Content/Avatar" />
+
+# Avatar
+
+`Avatar` is most often used to identify individual users or groups. There are three variations on it:
+
+- `AvatarUser` displays the profile image, if there is one available, or the user's initials.
+- `AvatarIcon` displays an icon as the avatar, which can be selected with the icon prop, and has the `User` icon as default.
+- `AvatarCombo` displayed `AvatarUser` or `AvatarIcon` with secondary `AvatarIcon` connected to it.
+
+### Accessibility
+If you want `Avatar` as a clickable-target use `role="button"`. This will help with usability and accessibility.
+
+<Editor code={storyAccessible} />
+
+Alternatively, the `AvatarButton` component can be used. 
+<Editor code={storyButton} />
+
+## AvatarUser
+Takes a `User` object as specified by Looker's SDK and produces an `Avatar`. The minimum keys in object are `avatar_url`, `first_name` and `last_name`. If the user in question has a blank image (Gravatar's default if the user hasn't yet selected a profile picture) the user's initials will be used instead of the image.
+<Editor code={storyUser} />
+
+## AvatarIcon
+
+Has a default icon value of `User`. That value can be specified by setting the `icon` property.
+<Editor code={storyIcon} />
+
+### Size
+
+Both `AvatarIcon` and `AvatarUser` can have a specify a size. Possible values are `xxsmall`, `xsmall`, `small`, `medium` or `large` and `small` is the default value. If you specify `xxsmall` for `AvatarUser` will only display the first initial.
+<Editor code={storySize} />
+
+### Color
+
+Avatars allow the developer to specify a color to use. Default Colors:
+
+- `AvatarIcon`: `keyFocus`
+- `AvatarUser`: `key`
+<Editor code={storyColor} />
+
+
+A combination of `AvatarUser` and `AvatarIcon`.
+
+- `secondaryIcon` - icon used for secondary avatar. Default: `User`
+- `secondaryColor` - color to use for secondary avatar border & icon. Default: `key`
+- `secondaryBg` - color to use for secondary avatar background. Default: `inverseOn`
+<Editor code={storyCombo} />

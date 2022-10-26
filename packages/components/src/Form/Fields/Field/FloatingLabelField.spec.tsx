@@ -82,7 +82,7 @@ describe('FloatingLabelField', () => {
     fireEvent.focus(input)
     expect(label).toHaveStyle(`color: ${theme.colors.key}`)
     expect(wrapper).toHaveClass('label-up')
-    fireEvent.blur(input)
+    fireEvent.blur(input, { relatedTarget: document.body })
     expect(wrapper).toHaveClass('label-down')
 
     fireEvent.focus(input)

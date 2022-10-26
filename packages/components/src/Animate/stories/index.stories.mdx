@@ -1,0 +1,16 @@
+import { FadeIn } from '@looker/components'
+import { excludedProps } from '@looker/storybook'
+import storyFadeIn from '!!raw-loader!./FadeIn'
+
+<Meta component={FadeIn} title="Docs/Components/Content/FadeIn" />
+
+# FadeIn
+
+`FadeIn` renders an animated container to wrap around content that you want to fade in,
+with `duration` and `delay` props to customize the animation.
+
+<Editor code={storyFadeIn} />
+
+## Props
+
+<ArgsTable of={FadeIn} exclude={excludedProps} />

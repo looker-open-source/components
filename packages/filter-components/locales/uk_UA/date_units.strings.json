@@ -1,0 +1,62 @@
+{
+  "day": {
+    "value": "день"
+  },
+  "days": {
+    "value": "дн"
+  },
+  "fiscal quarter": {
+    "value": "фінансовий квартал"
+  },
+  "fiscal quarters": {
+    "value": "фінансових кварталів"
+  },
+  "fiscal year": {
+    "value": "фінансовий рік"
+  },
+  "fiscal years": {
+    "value": "фінансових років"
+  },
+  "hour": {
+    "value": "година"
+  },
+  "hours": {
+    "value": "год"
+  },
+  "minute": {
+    "value": "хвилина"
+  },
+  "minutes": {
+    "value": "хв"
+  },
+  "month": {
+    "value": "місяць"
+  },
+  "months": {
+    "value": "міс."
+  },
+  "quarter": {
+    "value": "квартал"
+  },
+  "quarters": {
+    "value": "кварт."
+  },
+  "second": {
+    "value": "секунда"
+  },
+  "seconds": {
+    "value": "сек"
+  },
+  "week": {
+    "value": "тиждень"
+  },
+  "weeks": {
+    "value": "тижн"
+  },
+  "year": {
+    "value": "рік"
+  },
+  "years": {
+    "value": "р."
+  }
+}

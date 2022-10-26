@@ -1,0 +1,65 @@
+{
+  "days ago": {
+    "value": "dni temu"
+  },
+  "days from now": {
+    "value": "dni od teraz"
+  },
+  "fiscal quarter from now": {
+    "value": "kwartał fiskalny od teraz"
+  },
+  "fiscal quarters ago": {
+    "value": "kw. fiskalne temu"
+  },
+  "fiscal years ago": {
+    "value": "lata fiskalne/lat fiskalnych temu"
+  },
+  "fiscal years from now": {
+    "value": "lat fiskalnych/lata fiskalne od teraz"
+  },
+  "hours ago": {
+    "value": "godz. temu"
+  },
+  "hours from now": {
+    "value": "godz. od teraz"
+  },
+  "minutes ago": {
+    "value": "min temu"
+  },
+  "minutes from now": {
+    "value": "min od teraz"
+  },
+  "months ago": {
+    "value": "mies. temu"
+  },
+  "months from now": {
+    "value": "mies. od teraz"
+  },
+  "now": {
+    "value": "teraz"
+  },
+  "quarters ago": {
+    "value": "kw. temu"
+  },
+  "quarters from now": {
+    "value": "kw. od teraz"
+  },
+  "seconds ago": {
+    "value": "sek. temu"
+  },
+  "seconds from now": {
+    "value": "sek. od teraz"
+  },
+  "weeks ago": {
+    "value": "tyg. temu"
+  },
+  "weeks from now": {
+    "value": "tyg. od teraz"
+  },
+  "years ago": {
+    "value": "lat/lata temu"
+  },
+  "years from now": {
+    "value": "lat/lata od teraz"
+  }
+}

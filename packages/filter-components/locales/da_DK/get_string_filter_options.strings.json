@@ -1,0 +1,14 @@
+{
+  "contains": "indeholder",
+  "doesnt contain": "indeholder ikke",
+  "doesnt end with": "slutter ikke med",
+  "doesnt start with": "starter ikke med",
+  "ends with": "slutter med",
+  "is": "er",
+  "is blank": "er tom",
+  "is not": "er ikke",
+  "is not blank": "er ikke tom",
+  "is not null": "er ikke null",
+  "is null": "er null",
+  "starts with": "starter med"
+}

@@ -25,7 +25,7 @@
  */
 
 import { getDataRange } from './getDataRange'
-import { mockBarConfig, mockFields } from '../__mocks__'
+import { mockBarConfig, mockFields } from '../fixtures'
 
 describe('getDataRange', () => {
   const mockData = [

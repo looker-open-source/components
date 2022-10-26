@@ -27,6 +27,7 @@
 import type { Story } from '@storybook/react/types-6-0'
 import { Create, Favorite } from '@styled-icons/material'
 import React from 'react'
+import { defaultArgTypes as argTypes } from '@looker/storybook'
 import {
   ComboboxContext,
   ComboboxMultiContext,
@@ -37,7 +38,6 @@ import type { SelectOptionsProps } from '../SelectOptions'
 import { SelectOptions } from '../SelectOptions'
 import type { SelectOptionProps } from '../types'
 import { useFlatOptions } from '../utils/useFlatOptions'
-import { defaultArgTypes as argTypes } from '../../../../../../../apps/storybook/src/defaultArgTypes'
 import { cheeseOptions, iconOptions, optionsWithGroups } from './options'
 
 interface StoryProps extends SelectOptionsProps {

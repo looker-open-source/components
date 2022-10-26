@@ -65,8 +65,6 @@ const ButtonToggleLayout = forwardRef(
   }
 )
 
-ButtonToggleLayout.displayName = 'ButtonToggleLayout'
-
 export const ButtonToggle = styled(ButtonToggleLayout)`
   background-color: ${({ theme }) => theme.colors.background};
   border: solid 1px ${({ theme }) => theme.colors.ui3};

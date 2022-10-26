@@ -36,6 +36,7 @@ import type { PlacementProps } from '../../../../../../utils/filter_styles'
 import { MidInputLabel } from '../../../MidInputLabel'
 import { DateInput } from '../DateInput'
 import { TimeInput } from '../TimeInput'
+import { useTranslation } from '../../../../../../../utils'
 
 interface DateRangeParamProps extends PlacementProps {
   item: FilterModel
@@ -78,6 +79,7 @@ export const DateRange: FC<DateRangeParamProps> = ({
       onChange(id, { end: dateToFilterDateTimeModel(newEnd) })
     }
   }
+  const { t } = useTranslation('DateRange')
 
   return (
     <Flex>
@@ -89,7 +91,7 @@ export const DateRange: FC<DateRangeParamProps> = ({
       {showTime && (
         <TimeInput date={startDate} onChange={startChange} placement="middle" />
       )}
-      <MidInputLabel>until (before)</MidInputLabel>
+      <MidInputLabel>{t('until (before)')}</MidInputLabel>
       <DateInput
         date={endDate}
         onChange={endChange}

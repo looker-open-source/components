@@ -25,8 +25,9 @@
  */
 
 import type { HTMLProps } from 'react'
+import type { SemanticBorderProps } from '../utils'
+
 export {
-  border,
   borderRadius,
   boxShadow,
   backgroundPosition,
@@ -55,10 +56,19 @@ export {
   verticalAlign,
   width,
 } from 'styled-system'
+
+export { borderHelper as border } from '../utils'
+
+export type BorderProps = SemanticBorderProps & {
+  /**
+   * @deprecated - not used by borderHelper which is exported as `border` and can be deleted. Once all usage has been deleted then this prop can be removed from here.
+   */
+  borderColor?: string
+}
+
 export type {
   BackgroundColorProps,
   BackgroundPositionProps,
-  BorderProps,
   BorderRadiusProps,
   BoxShadowProps,
   DisplayProps,

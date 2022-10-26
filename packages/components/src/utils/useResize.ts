@@ -25,7 +25,6 @@
  */
 
 import throttle from 'lodash/throttle'
-import ResizeObserver from 'resize-observer-polyfill'
 import { useSafeLayoutEffect } from './useSafeLayoutEffect'
 
 /**

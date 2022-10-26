@@ -69,7 +69,7 @@ const TreeLayout = ({
   ...restProps
 }: TreeProps) => {
   const [treeItemInnerProps, accordionInnerProps] = partitionTreeProps(
-    restProps
+    restProps as Record<string, unknown>
   )
 
   const { hovered, contentHandlers, wrapperHandlers } = useTreeHandlers({

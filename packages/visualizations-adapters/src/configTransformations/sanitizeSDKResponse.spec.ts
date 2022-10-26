@@ -28,7 +28,7 @@ import {
   mockFields,
   mockSdkConfigResponse,
   mockSdkDataResponse,
-} from '../__mocks__'
+} from '../fixtures'
 import { KEYS_TO_REMOVE, sanitizeSDKResponse } from './sanitizeSDKResponse'
 
 describe('sanitizeSDKResponse', () => {

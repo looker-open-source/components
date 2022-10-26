@@ -27,7 +27,7 @@
 import type { CompatibleHTMLProps } from '@looker/design-tokens'
 import type { FocusEvent } from 'react'
 import { useState } from 'react'
-import { getNextFocusTarget, useWrapEvent } from '../../utils'
+import { useWrapEvent } from '../../utils'
 
 export const useTreeHandlers = (
   props: Pick<
@@ -39,7 +39,7 @@ export const useTreeHandlers = (
 
   // This is needed so that hover disclosed elements don't get lost during keyboard nav
   const onBlur = (event: FocusEvent<HTMLElement>) => {
-    const nextFocusTarget = getNextFocusTarget(event)
+    const nextFocusTarget = event.relatedTarget
 
     if (nextFocusTarget && !event.currentTarget.contains(nextFocusTarget)) {
       setHovered(false)

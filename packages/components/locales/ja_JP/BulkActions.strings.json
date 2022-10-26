@@ -1,0 +1,8 @@
+{
+  "AllPageCountDisplayedSelected": "すべての{{pageCount}}個の表示項目が選択されています",
+  "AllTotalCountSelected": "すべての{{totalCount}}個の項目が選択されています",
+  "Bulk Actions": "一括操作",
+  "Clear Selection": "選択をクリア",
+  "SelectAllCountResults": "すべての{{totalCount}}件の結果を選択",
+  "SelectedCountOfTotalDisplayed": "{{selectedItemCount}}/{{pageCount}}個の表示項目が選択されています"
+}

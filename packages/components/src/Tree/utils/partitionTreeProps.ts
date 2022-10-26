@@ -24,21 +24,17 @@
 
  */
 
-import { treeItemInnerPropKeys } from '../types'
+import { isTreeItemInnerPropKey } from '../types'
 
-export const partitionTreeProps = (props: Record<string, any>) => {
-  const treeItemInnerProps: { [key: string]: string } = {}
-  const accordionInnerProps: { [key: string]: string } = {}
+export const partitionTreeProps = (
+  props: Readonly<Record<string, unknown>>
+) => {
+  const treeItemInnerProps: Record<string, unknown> = {}
+  const accordionInnerProps: Record<string, unknown> = {}
+
   Object.entries(props).forEach(prop => {
     const [propKey, propValue] = prop
-    /**
-     * treeItemInnerPropKeys const assertion doesn't like checking against a string type;
-     * using "as ReadonlyArray<string>" to make the types happy
-     */
-    if (
-      props &&
-      (treeItemInnerPropKeys as ReadonlyArray<string>).includes(propKey)
-    ) {
+    if (props && isTreeItemInnerPropKey(propKey)) {
       treeItemInnerProps[propKey] = propValue
     } else {
       accordionInnerProps[propKey] = propValue

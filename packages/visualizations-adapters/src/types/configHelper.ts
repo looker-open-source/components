@@ -25,15 +25,19 @@
  */
 import type {
   Fields,
-  CAll,
+  SupportedChartTypes,
   RawApiConfigResponse,
   SDKRecord,
-} from '@looker/visualizations-adapters'
+} from './'
+
+export type KnownChartTypes =
+  | keyof SupportedChartTypes
+  | RawApiConfigResponse['type']
 
 export interface ConfigHelperArgs<ChartConfig> {
   config: Omit<ChartConfig, 'type'> &
     Partial<Omit<RawApiConfigResponse, 'type'>> & {
-      type: CAll['type'] | RawApiConfigResponse['type']
+      type?: KnownChartTypes
     }
   fields: Fields
   data: SDKRecord[]

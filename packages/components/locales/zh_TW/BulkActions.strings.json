@@ -1,0 +1,8 @@
+{
+  "AllPageCountDisplayedSelected": "已全選 {{pageCount}} 個顯示的項目",
+  "AllTotalCountSelected": "已全選 {{totalCount}} 個項目",
+  "Bulk Actions": "批次執行動作",
+  "Clear Selection": "清除選取內容",
+  "SelectAllCountResults": "全選 {{totalCount}} 個結果",
+  "SelectedCountOfTotalDisplayed": "已選取 {{selectedItemCount}} 個 (共 {{pageCount}} 個) 顯示的項目"
+}

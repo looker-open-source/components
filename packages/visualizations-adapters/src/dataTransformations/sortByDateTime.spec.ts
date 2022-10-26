@@ -25,7 +25,7 @@
  */
 
 import { sortByDateTime } from './sortByDateTime'
-import { mockFields } from '../__mocks__'
+import { mockFields } from '../fixtures'
 
 describe('sortByDateTime', () => {
   const mockData = [

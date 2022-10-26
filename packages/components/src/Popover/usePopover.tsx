@@ -27,7 +27,7 @@
 import type { WidthProps } from '@looker/design-tokens'
 import type { Placement } from '@popperjs/core'
 import type { AriaAttributes, ReactNode, Ref, SyntheticEvent } from 'react'
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { Flex } from '../Layout'
 import { Portal } from '../Portal'
 import { DialogContext } from '../Dialog'
@@ -114,6 +114,11 @@ export interface UsePopoverProps
    * The id of the dialog (if absent, a random id will be generated)
    */
   id?: string
+
+  /**
+   * Optional Aria Label if not using Popover Header for A11Y
+   */
+  ariaLabel?: string
 }
 
 const useOpenWithoutElement = (
@@ -136,6 +141,7 @@ export interface UsePopoverResponseDom extends AriaHaspopupProps {
   /**
    * Used by popper.js to position the OverlaySurface relative to the trigger
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ref: Ref<any>
   'aria-expanded': boolean
 }
@@ -159,6 +165,7 @@ export const usePopover = ({
   surface,
   width,
   id,
+  ariaLabel,
 }: UsePopoverProps) => {
   const [scrollElement, scrollRef] = useScrollLock({ disabled: !scrollLock })
   const [, focusRef] = useFocusTrap({ disabled: !focusTrap })
@@ -194,11 +201,11 @@ export const usePopover = ({
     event.preventDefault()
   }
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     if (canClose && !canClose()) return
     setOpen(false)
     onClose && onClose()
-  }
+  }, [canClose, onClose, setOpen])
 
   const usePopperProps = useMemo<UsePopperProps>(
     () => ({
@@ -245,18 +252,22 @@ export const usePopover = ({
 
   const SurfaceComponent = surface || OverlaySurface
 
-  id = useID(id)
+  const _id = useID(id)
+
+  const contextValue = useMemo(
+    () => ({
+      closeModal: handleClose,
+      id: _id,
+    }),
+    [handleClose, _id]
+  )
 
   const popover = content && !openWithoutElem && isOpen && !disabled && (
-    <DialogContext.Provider
-      value={{
-        closeModal: handleClose,
-        id,
-      }}
-    >
+    <DialogContext.Provider value={contextValue}>
       <Portal ref={scrollRef}>
         <SurfaceComponent
-          aria-labelledby={`${id}-heading`}
+          aria-label={ariaLabel}
+          aria-labelledby={ariaLabel ? undefined : `${_id}-heading`}
           aria-modal={true}
           maxWidth={width}
           placement={placement}
@@ -268,7 +279,7 @@ export const usePopover = ({
             alignItems="flex-start"
             borderRadius="inherit"
             flexDirection="column"
-            id={id}
+            id={_id}
             maxHeight={`calc(${verticalSpace - 10}px - 1rem)`}
             overflowY="auto"
             ref={contentContainerRef}

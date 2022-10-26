@@ -134,7 +134,7 @@ interface LightSaturationPreviewContainerProps
 }
 
 const LightSaturationPreviewContainer = styled.div.attrs<LightSaturationPreviewContainerProps>(
-  ({ backgroundColor }) => ({ style: { backgroundColor: backgroundColor } })
+  ({ backgroundColor }) => ({ style: { backgroundColor } })
 )<LightSaturationPreviewContainerProps>`
   background-image: linear-gradient(0deg, #000, transparent),
     linear-gradient(90deg, #fff, hsla(0, 0%, 100%, 0));

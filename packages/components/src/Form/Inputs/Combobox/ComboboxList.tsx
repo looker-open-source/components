@@ -192,6 +192,7 @@ const ComboboxListInternal = forwardRef(
     }
 
     const { popover, contentContainer, popperInstanceRef } = usePopover({
+      ariaLabel: props['aria-label'],
       cancelClickOutside,
       content,
       focusTrap: false,

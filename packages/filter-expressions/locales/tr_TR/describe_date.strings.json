@@ -1,0 +1,72 @@
+{
+  " complete": {
+    "value": " tamamla"
+  },
+  "absolute prefix dateTime": {
+    "value": "{{prefix}} {{dateTime}}"
+  },
+  "ago": {
+    "value": "önce"
+  },
+  "from now": {
+    "value": "sonra"
+  },
+  "is any time": {
+    "value": "herhangi bir zaman"
+  },
+  "is before": {
+    "value": "şu tarihten önce:"
+  },
+  "is day": {
+    "value": "{{day}}"
+  },
+  "is from dateTimeStart until dateTimeEnd": {
+    "value": "şu tarihten: {{dateTimeStart}} şu tarihe kadar: {{dateTimeEnd}}"
+  },
+  "is in month year": {
+    "value": "{{month}}{{year}} tarihinde"
+  },
+  "is in the last": {
+    "value": "geçmiş şu sürede: {{describeInterval}}"
+  },
+  "is in the year year": {
+    "value": "şu yılda: {{year}}"
+  },
+  "is interval ago": {
+    "value": "{{interval}} önce"
+  },
+  "is intervalStart intervalType for intervalEnd": {
+    "value": "{{intervalEnd}} için {{intervalStart}} {{intervalType}}"
+  },
+  "is not null": {
+    "value": "değer içeriyor"
+  },
+  "is on dateTime": {
+    "value": "şu tarihte: {{dateTime}}"
+  },
+  "is on or after": {
+    "value": "şu tarihte veya şu tarihten sonra:"
+  },
+  "is previous unitLabel": {
+    "value": "önceki {{unitLabel}}"
+  },
+  "is type unitLabel": {
+    "value": "{{type}} {{unitLabel}}"
+  },
+  "next": {
+    "value": "ileri"
+  },
+  "prefix interval timePassed": {
+    "value": "{{prefix}} {{interval}} {{timePassed}}"
+  },
+  "prefix now": {
+    "value": "{{prefix}} şimdi"
+  },
+  "this": {
+    "value": "bu"
+  },
+  "this startInterval to endInterval": "bu {{startInterval}} - {{endInterval}}",
+  "value complete unitLabel": {
+    "value": "{{value}}{{complete}} {{unitLabel}}"
+  }
+}

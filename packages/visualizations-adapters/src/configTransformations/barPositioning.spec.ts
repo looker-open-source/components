@@ -25,7 +25,7 @@
  */
 
 import { barPositioning } from './barPositioning'
-import { mockBarConfig, mockFields, mockSdkDataResponse } from '../__mocks__'
+import { mockBarConfig, mockFields, mockSdkDataResponse } from '../fixtures'
 
 describe('barPositioning', () => {
   test('default', () => {

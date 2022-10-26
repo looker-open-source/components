@@ -26,10 +26,10 @@
 
 import type { CompatibleHTMLProps } from '@looker/design-tokens'
 import type { FocusEvent } from 'react'
-import { useState, useContext } from 'react'
-import { ThemeContext } from 'styled-components'
+import { useState } from 'react'
+import { useTheme } from 'styled-components'
 import { getPortalRoot } from '../../../Portal'
-import { useSyncedState, getNextFocusTarget } from '../../../utils'
+import { useSyncedState } from '../../../utils'
 import type { UseFloatingLabelProps } from './types'
 
 const defaultCheckValueOnBlur = (e: FocusEvent) => {
@@ -62,8 +62,8 @@ const getIsInSelectList = (
  */
 export const getHasValue = <
   Props extends {
-    value?: any
-    defaultValue?: any
+    value?: unknown
+    defaultValue?: unknown
   } = CompatibleHTMLProps<HTMLInputElement>
 >({
   value,
@@ -85,11 +85,11 @@ export const useFloatingLabel = ({
   const [isFocused, setIsFocused] = useState(false)
   const [hasValue, setHasValue] = useSyncedState(propsHasValue)
 
-  const theme = useContext(ThemeContext)
+  const theme = useTheme()
   // Limitations of style/CSSProperties type
   // https://github.com/frenic/csstype#what-should-i-do-when-i-get-type-errors
-  const style = {
-    ['--label-translate' as any]: `${labelOffset}, ${theme.space.u4}`,
+  const style: Record<string, string> = {
+    '--label-translate': `${labelOffset}, ${theme.space.u4}`,
   }
 
   return {
@@ -102,7 +102,7 @@ export const useFloatingLabel = ({
           setHasValue(checkValueOnBlur(e))
         }
 
-        const nextFocusTarget = getNextFocusTarget(e)
+        const nextFocusTarget = e.relatedTarget
         // For FieldSelect, focus can move (briefly) into the list,
         // which is in a Portal
         // (and a separate portal child from the input, if the input is also in aportal)

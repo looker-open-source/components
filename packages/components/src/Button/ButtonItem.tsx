@@ -87,9 +87,7 @@ const ButtonLayout = forwardRef(
     })
     const rippleHandlers = useRippleHandlers(
       callbacks,
-      {
-        ...pick({ ...props }, rippleHandlerKeys),
-      },
+      pick(props, rippleHandlerKeys),
       disabled
     )
 
@@ -151,12 +149,16 @@ export const ButtonItem = styled(ButtonLayout)`
   }
 
   &[aria-pressed='true'] {
-    background: ${({ theme }) => theme.colors.keySubtle};
-    color: ${({ theme }) => theme.colors.key};
+    background: ${({ theme }) => theme.colors.keyAccent};
+    color: ${({ theme }) => theme.colors.text5};
 
     &[disabled] {
       background: ${({ theme }) => theme.colors.keySubtle};
       color: ${({ theme }) => theme.colors.keyFocus};
+    }
+
+    &:hover {
+      border: 1px solid ${({ theme }) => theme.colors.keyInteractive};
     }
   }
 `

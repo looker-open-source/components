@@ -1,0 +1,29 @@
+{
+  "coords1 to coords2": {
+    "value": "{{coords1}} 至 {{coords2}}"
+  },
+  "distance unit from lat, lon": {
+    "value": "從 {{lat}}，{{lon}} 的 {{distance}} {{unit}} "
+  },
+  "is anywhere": {
+    "value": "任意處"
+  },
+  "is not null": {
+    "value": "不是 Null"
+  },
+  "is null": {
+    "value": "是 Null"
+  },
+  "lat degrees north": {
+    "value": "{{lat}}°N"
+  },
+  "lat degrees south": {
+    "value": "{{lat}}°S"
+  },
+  "lon degrees east": {
+    "value": "{{lon}}°E"
+  },
+  "lon degrees west": {
+    "value": "{{lon}}°W"
+  }
+}

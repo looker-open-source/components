@@ -46,4 +46,5 @@ export interface RangeSliderProps {
   onChange: (value: Range) => void
   options?: Options
   value: Range
+  name?: string
 }

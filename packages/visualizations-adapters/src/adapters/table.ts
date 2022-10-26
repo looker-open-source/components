@@ -43,7 +43,7 @@ export type CTable = {
   show_row_numbers?: boolean
   truncate_text?: boolean
   truncate_header?: boolean
-  type: SupportedChartTypes['table']
+  type?: SupportedChartTypes['table']
   show_totals?: boolean
   hide_totals?: boolean
   show_row_totals?: boolean
@@ -58,4 +58,5 @@ export type TableProps = VisWrapperProps &
     pivots?: Pivots
     totals?: Record<string, number>
     row_totals?: Record<string, number>
+    defaultRowHeight?: number
   }

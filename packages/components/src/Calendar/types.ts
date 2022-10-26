@@ -95,3 +95,15 @@ export type ScrollableDateListItemProps = {
   setItemPosition: (index: number, element: HTMLElement) => void
   fullRender: boolean
 }
+
+export type MonthListProps = MonthBaseProps & ScrollableDateListBaseProps
+export type MonthListItemProps = Omit<
+  MonthListProps,
+  'currentDate' | 'baseMonth' | 'setBaseMonth' | 'onMonthChange'
+>
+
+export type YearListProps = ScrollableDateListBaseProps & YearBaseProps
+export type YearListItemProps = Omit<
+  YearListProps,
+  'currentDate' | 'baseMonth' | 'setBaseMonth' | 'onMonthChange'
+>

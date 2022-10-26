@@ -1,0 +1,11 @@
+{
+  "Invalid value": {
+    "value": "अमान्य मान"
+  },
+  "No value is set for your user attribute": {
+    "value": "आपके उपयोगकर्ता गुण के लिए कोई मान सेट नहीं है"
+  },
+  "Selection required": {
+    "value": "चुनना ज़रूरी है"
+  }
+}

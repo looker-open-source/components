@@ -32,6 +32,7 @@ import { useVirtualizer } from '@tanstack/react-virtual'
 type UseVirtualArgs = {
   data: SDKRecord[]
   scrollContainer: RefObject<HTMLDivElement>
+  defaultRowHeight?: number
 }
 
 /**
@@ -39,12 +40,16 @@ type UseVirtualArgs = {
  * behavior used to improve the UX for large data sets.
  */
 
-export const useVirtual = ({ data, scrollContainer }: UseVirtualArgs) => {
+export const useVirtual = ({
+  data,
+  scrollContainer,
+  defaultRowHeight = 30,
+}: UseVirtualArgs) => {
   const rowVirtualizer = useVirtualizer({
     count: data.length,
     getScrollElement: () => scrollContainer.current,
     overscan: 10,
-    estimateSize: () => 30,
+    estimateSize: () => defaultRowHeight,
   })
 
   const { getTotalSize, getVirtualItems } = rowVirtualizer

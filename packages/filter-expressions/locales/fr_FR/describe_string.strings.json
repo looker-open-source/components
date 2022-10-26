@@ -1,0 +1,23 @@
+{
+  "blank": {
+    "value": "vide"
+  },
+  "contains value": {
+    "value": "contient {{value}}"
+  },
+  "does not contain value": {
+    "value": "ne contient pas {{value}}"
+  },
+  "does not end with value": {
+    "value": "ne se termine pas par {{value}}"
+  },
+  "does not start with value": {
+    "value": "ne commence pas par {{value}}"
+  },
+  "ends with value": {
+    "value": "se termine par {{value}}"
+  },
+  "starts with value": {
+    "value": "commence par {{value}}"
+  }
+}

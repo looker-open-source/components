@@ -27,6 +27,7 @@ import merge from 'lodash/merge'
 import dateLocale from 'date-fns/locale/ja'
 import type { I18nStateWithDates } from '../../utils'
 import { jaJP as expressionLocale } from '@looker/filter-expressions'
+import { jaJP as componentsLocale } from '@looker/components'
 
 const resources = {
   AddRemoveButtons: {
@@ -74,8 +75,8 @@ const resources = {
     hours: '時間',
     minute: '分',
     minutes: '分',
-    month: '月',
-    months: '月',
+    month: 'か月',
+    months: 'か月',
     quarter: '四半期',
     quarters: '四半期',
     second: '秒',
@@ -85,24 +86,27 @@ const resources = {
     year: '年',
     years: '年',
   },
+  DateRange: {
+    'until (before)': '次まで（指定時より前）',
+  },
   get_date_filter_options: {
     is: 'が次である',
     'is any time': 'の時間を問わずすべて',
-    'is before': 'が次の日以前',
-    'is in range': 'が次の範囲内',
+    'is before': 'が指定の日以前',
+    'is in range': 'が指定の範囲内',
     'is in the last': 'が直近である',
     'is in the month': 'が次の月である',
-    'is in the year': 'が次の年である',
+    'is in the year': 'が指定の年である',
     'is next': 'が次である',
-    'is not null': 'がNullでない',
-    'is null': 'がNullである',
-    'is on or after': 'が次の日以降',
-    'is on the day': 'が次の日である',
+    'is not null': 'が Null でない',
+    'is null': 'が Null である',
+    'is on or after': 'が指定の日以降',
+    'is on the day': 'が指定の日である',
     'is previous': 'が前である',
     'is this': 'がこれである',
   },
   get_filter_options: {
-    'matches advanced': 'が次に一致する（高度フィルター）',
+    'matches advanced': 'が次に一致する（高度フィルタ）',
   },
   get_location_filter_options: {
     Box: 'ボックス',
@@ -110,8 +114,8 @@ const resources = {
     Location: '場所',
     feet: 'feet',
     'is anywhere': 'がいずれかの場所にある',
-    'is not null': 'がNullでない',
-    'is null': 'がNullである',
+    'is not null': 'が Null でない',
+    'is null': 'が Null である',
     kilometers: 'キロメートル',
     meters: 'メートル',
     miles: 'マイル',
@@ -120,26 +124,26 @@ const resources = {
     exclusive: '（除く）',
     inclusive: '[含む]',
     is: 'が次である',
-    'is between': 'が次の範囲内',
+    'is between': 'が指定の範囲内',
     'is greater': 'が次の値より大きい（>）',
     'is greater equal': 'が次の値以上である（>=）',
     'is less': 'が次の値より小さい（<）',
     'is less equal': 'が次の値以下である（<=）',
     'is not': 'が次でない',
     'is not between': 'が次の範囲外',
-    'is not null': 'がNullでない',
-    'is null': 'がNullである',
+    'is not null': 'が Null でない',
+    'is null': 'が Null である',
     'left exclusive': '（左側を除く]',
     'right exclusive': '[右側を除く)',
   },
   get_relative_timeframe_presets: {
-    'Last 14 Days': '過去14日間',
-    'Last 180 Days': '過去180日間',
-    'Last 28 Days': '過去28日間',
-    'Last 30 Days': '過去30日間',
-    'Last 365 Days': '過去365日間',
-    'Last 7 Days': '過去7日間',
-    'Last 90 Days': '過去90日間',
+    'Last 14 Days': '過去 14 日間',
+    'Last 180 Days': '過去 180 日間',
+    'Last 28 Days': '過去 28 日間',
+    'Last 30 Days': '過去 30 日間',
+    'Last 365 Days': '過去 365 日間',
+    'Last 7 Days': '過去 7 日間',
+    'Last 90 Days': '過去 90 日間',
     'Previous Month': '前月',
     'Previous Quarter': '前四半期',
     'Previous Week': '前週',
@@ -162,8 +166,8 @@ const resources = {
     'is blank': 'が空欄である',
     'is not': 'が次でない',
     'is not blank': 'が空欄でない',
-    'is not null': 'がNullでない',
-    'is null': 'がNullである',
+    'is not null': 'が Null でない',
+    'is null': 'が Null である',
     'starts with': 'が次の値で始まる',
   },
   get_tier_filter_options: {
@@ -244,5 +248,12 @@ const resources = {
 export const jaJP: I18nStateWithDates = {
   dateLocale,
   locale: 'ja-JP',
-  resources: { 'ja-JP': merge(resources, expressionLocale.resources['ja-JP']) },
+  resources: {
+    'ja-JP': merge(
+      {},
+      resources,
+      expressionLocale.resources['ja-JP'],
+      componentsLocale.resources['ja-JP']
+    ),
+  },
 }

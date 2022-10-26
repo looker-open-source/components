@@ -109,7 +109,11 @@ export const useSuggestable = ({ filter, sdk }: UseSuggestableProps) => {
   const [fetchedSuggestions, setSuggestions] = useState<string[]>([])
 
   const { t } = useTranslation('use_suggestable')
-
+  // needed to apply translation to here to prevent infinte loop
+  // caused by listening for t in useEffect, more info in issues below
+  // https://github.com/i18next/react-i18next/issues/1228
+  // https://github.com/i18next/react-i18next/issues/1391
+  const translatedErrorMessage = t('Error loading suggestions')
   const { listens_to_filters } = filter
 
   // Make this a string for deep comparison in the deps array below
@@ -119,7 +123,6 @@ export const useSuggestable = ({ filter, sdk }: UseSuggestableProps) => {
   )
 
   // linkedFilterMap is empty for linked filters, and undefined for non-linked filters
-
   useEffect(() => {
     const loadSuggestions = async () => {
       // Only need to fetch suggestions if they're not included on the field
@@ -140,12 +143,19 @@ export const useSuggestable = ({ filter, sdk }: UseSuggestableProps) => {
           setSuggestions(result.suggestions || [])
         } catch (error) {
           setLoading(false)
-          setErrorMessage(t('Error loading suggestions'))
+          setErrorMessage(translatedErrorMessage)
         }
       }
     }
     loadSuggestions()
-  }, [filter.model, field, searchTerm, sdk, linkedFilterMap, t])
+  }, [
+    filter.model,
+    field,
+    searchTerm,
+    sdk,
+    linkedFilterMap,
+    translatedErrorMessage,
+  ])
 
   return {
     errorMessage,

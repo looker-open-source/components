@@ -25,9 +25,9 @@
  */
 
 import type { FC } from 'react'
-import React, { useContext } from 'react'
+import React from 'react'
 import type { DensityRamp } from '@looker/design-tokens'
-import { ThemeContext, ThemeProvider } from 'styled-components'
+import { ThemeProvider, useTheme } from 'styled-components'
 
 export type DensityProps = {
   scale: DensityRamp
@@ -42,7 +42,7 @@ export type DensityProps = {
  * the explicitly specified value will be used instead.
  */
 export const Density: FC<DensityProps> = ({ scale, children }) => {
-  const theme = useContext(ThemeContext)
+  const theme = useTheme()
   theme.defaults.density = scale
 
   return <ThemeProvider theme={theme}>{children}</ThemeProvider>

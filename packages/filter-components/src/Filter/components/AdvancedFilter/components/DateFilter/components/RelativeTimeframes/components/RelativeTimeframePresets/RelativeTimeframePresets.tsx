@@ -57,7 +57,9 @@ interface RelativeTimeframePresetsProps {
   onPresetChange: (selected: AllPresetTimeframes) => void
 }
 
-export const RelativeTimeframePresets: FC<RelativeTimeframePresetsProps> = props => {
+export const RelativeTimeframePresets: FC<RelativeTimeframePresetsProps> = (
+  props
+) => {
   const { t } = useTranslation('RelativeTimeframePresets')
 
   const [showMore, setShowMore] = useState(false)

@@ -474,6 +474,19 @@ Object {
 }
 `;
 
+exports[`Additional number tests 12345678901234567890 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "=",
+  "value": Array [
+    12345678901234567890n,
+  ],
+}
+`;
+
 exports[`Additional number tests not -.2 1`] = `
 Object {
   "id": 1,

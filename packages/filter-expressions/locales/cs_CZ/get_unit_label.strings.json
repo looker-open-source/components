@@ -1,0 +1,82 @@
+{
+  "complete day": "celý den",
+  "complete days": {
+    "value": "celé dny"
+  },
+  "complete fiscal quarter": "celé fiskální čtvrtletí",
+  "complete fiscal quarters": {
+    "value": "celá fiskální čtvrtletí"
+  },
+  "complete fiscal year": "celý fiskální rok",
+  "complete fiscal years": {
+    "value": "celé fiskální roky"
+  },
+  "complete hour": "celá hodina",
+  "complete hours": {
+    "value": "celé hodiny"
+  },
+  "complete minute": "celá minuta",
+  "complete minutes": {
+    "value": "celé minuty"
+  },
+  "complete month": "celý měsíc",
+  "complete months": {
+    "value": "celé měsíce"
+  },
+  "complete quarter": "celé čtvrtletí",
+  "complete quarters": {
+    "value": "celá čtvrtletí"
+  },
+  "complete second": "celá sekunda",
+  "complete seconds": {
+    "value": "celé sekundy"
+  },
+  "complete week": "celý týden",
+  "complete weeks": {
+    "value": "celé týdny"
+  },
+  "complete year": "celý rok",
+  "complete years": {
+    "value": "celé roky"
+  },
+  "day": "den",
+  "days": {
+    "value": "dny/ů"
+  },
+  "fiscal quarter": "fiskální čtvrtletí",
+  "fiscal quarters": {
+    "value": "fiskální čtvrtletí"
+  },
+  "fiscal year": "fiskální rok",
+  "fiscal years": {
+    "value": "fiskální roky"
+  },
+  "hour": "hodina",
+  "hours": {
+    "value": "hodin(y)"
+  },
+  "minute": "minuta",
+  "minutes": {
+    "value": "minut(y)"
+  },
+  "month": "měsíc",
+  "months": {
+    "value": "měsíce/ů"
+  },
+  "quarter": "čtvrtletí",
+  "quarters": {
+    "value": "čtvrtletí"
+  },
+  "second": "sekunda",
+  "seconds": {
+    "value": "sekund(y)"
+  },
+  "week": "týden",
+  "weeks": {
+    "value": "týdny/ů"
+  },
+  "year": "rok",
+  "years": {
+    "value": "roky/ů"
+  }
+}

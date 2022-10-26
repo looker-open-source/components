@@ -50,9 +50,16 @@ export const ChipButton = styled(Chip).attrs(() => ({
   padding: 0 ${({ theme }) => theme.space.u4};
 
   &:active,
+  &:hover,
   &[aria-pressed='true'] {
     border-color: ${({ theme }) => theme.colors.key};
   }
+
+  &[aria-selected='true'] {
+    background: ${({ theme }) => theme.colors.keyAccent};
+    color: ${({ theme }) => theme.colors.text5};
+  }
+
   &.focus,
   &:focus {
     box-shadow: inset 0 0 0 1px ${({ theme }) => theme.colors.key};

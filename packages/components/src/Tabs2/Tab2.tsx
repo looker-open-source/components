@@ -63,9 +63,7 @@ export const Tab2 = styled(
 
     const rippleHandlers = useRippleHandlers(
       callbacks,
-      {
-        ...pick(restProps, rippleHandlerKeys),
-      },
+      pick(restProps, rippleHandlerKeys),
       disabled
     )
 

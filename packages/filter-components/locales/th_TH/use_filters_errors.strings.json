@@ -1,0 +1,11 @@
+{
+  "Invalid value": {
+    "value": "ค่าไม่ถูกต้อง"
+  },
+  "No value is set for your user attribute": {
+    "value": "ไม่มีการกำหนดค่าสำหรับแอตทริบิวต์ของผู้ใช้ของคุณ"
+  },
+  "Selection required": {
+    "value": "ต้องเลือก"
+  }
+}

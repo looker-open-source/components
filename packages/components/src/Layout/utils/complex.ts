@@ -52,7 +52,7 @@ export type ComplexLayoutProps = BorderProps &
     /**
      * Workaround for Styled Components merge with DOM `color` prop merge issue
      */
-    color?: any
+    color?: string
   }
 
 /**

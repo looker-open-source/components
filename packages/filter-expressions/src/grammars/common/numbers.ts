@@ -27,16 +27,16 @@ export const numbers = `
 /* Common numbers parsing expressions */
 
 number "number"
- = (minus? int frac? exp?) { return parseFloat(text()); } / (minus? int? frac exp?) { return parseFloat(text()); } 
+ = (minus? int frac? exp?) { return getNumberFromString(text()); } / (minus? int? frac exp?) { return getNumberFromString(text()); } 
 
 positive "positive"
- = int frac? exp? { return parseFloat(text()); }
+ = int frac? exp? { return getNumberFromString(text()); }
 
 positiveInteger "positive integer"
-= int { return parseFloat(text()); }
+= int { return getNumberFromString(text()); }
 
 integer "integer"
- = minus? int { return parseFloat(text()); }
+ = minus? int { return getNumberFromString(text()); }
 
 not = "not"i
 decimal_point = "."

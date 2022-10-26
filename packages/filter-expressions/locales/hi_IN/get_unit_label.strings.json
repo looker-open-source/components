@@ -1,0 +1,82 @@
+{
+  "complete day": "पूरा दिन",
+  "complete days": {
+    "value": "पूर्ण दिन"
+  },
+  "complete fiscal quarter": "पूरी वित्तीय तिमाही",
+  "complete fiscal quarters": {
+    "value": "पूर्ण वित्तीय तिमाहियां"
+  },
+  "complete fiscal year": "पूरा वित्तीय वर्ष",
+  "complete fiscal years": {
+    "value": "पूर्ण वित्तीय वर्ष"
+  },
+  "complete hour": "पूरा घंटा",
+  "complete hours": {
+    "value": "पूर्ण घंटे"
+  },
+  "complete minute": "पूरा मिनट",
+  "complete minutes": {
+    "value": "पूर्ण मिनट"
+  },
+  "complete month": "पूरा महीना",
+  "complete months": {
+    "value": "पूर्ण महीने"
+  },
+  "complete quarter": "पूरी तिमाही",
+  "complete quarters": {
+    "value": "पूर्ण तिमाहियां"
+  },
+  "complete second": "पूरा सेकंड",
+  "complete seconds": {
+    "value": "पूर्ण सेकंड"
+  },
+  "complete week": "पूरा सप्ताह",
+  "complete weeks": {
+    "value": "पूर्ण सप्ताह"
+  },
+  "complete year": "पूरा वर्ष",
+  "complete years": {
+    "value": "पूर्ण वर्ष"
+  },
+  "day": "दिन",
+  "days": {
+    "value": "दिन"
+  },
+  "fiscal quarter": "वित्तीय तिमाही",
+  "fiscal quarters": {
+    "value": "वित्तीय तिमाहियां"
+  },
+  "fiscal year": "वित्तीय वर्ष",
+  "fiscal years": {
+    "value": "वित्तीय वर्ष"
+  },
+  "hour": "घंटा",
+  "hours": {
+    "value": "घंटे"
+  },
+  "minute": "मिनट",
+  "minutes": {
+    "value": "मिनट"
+  },
+  "month": "महीना",
+  "months": {
+    "value": "महीने"
+  },
+  "quarter": "तिमाही",
+  "quarters": {
+    "value": "तिमाहियां"
+  },
+  "second": "सेकंड",
+  "seconds": {
+    "value": "सेकंड"
+  },
+  "week": "सप्ताह",
+  "weeks": {
+    "value": "सप्ताह"
+  },
+  "year": "वर्ष",
+  "years": {
+    "value": "वर्ष"
+  }
+}

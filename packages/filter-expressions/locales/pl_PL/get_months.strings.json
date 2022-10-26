@@ -1,0 +1,38 @@
+{
+  "April": {
+    "value": "Kwiecień"
+  },
+  "August": {
+    "value": "Sierpień"
+  },
+  "December": {
+    "value": "Grudzień"
+  },
+  "February": {
+    "value": "Luty"
+  },
+  "January": {
+    "value": "Styczeń"
+  },
+  "July": {
+    "value": "Lipiec"
+  },
+  "June": {
+    "value": "Czerwiec"
+  },
+  "March": {
+    "value": "Marzec"
+  },
+  "May": {
+    "value": "Maj"
+  },
+  "November": {
+    "value": "Listopad"
+  },
+  "October": {
+    "value": "Październik"
+  },
+  "September": {
+    "value": "Wrzesień"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "is": {
+    "value": "是"
+  },
+  "is any time": {
+    "value": "是任何時間"
+  },
+  "is before": {
+    "value": "早於"
+  },
+  "is in range": {
+    "value": "在範圍內"
+  },
+  "is in the last": {
+    "value": "在最後"
+  },
+  "is in the month": {
+    "value": "在當月"
+  },
+  "is in the year": {
+    "value": "在當年"
+  },
+  "is next": {
+    "value": "在下一個"
+  },
+  "is not null": {
+    "value": "不是 Null"
+  },
+  "is null": {
+    "value": "是 Null"
+  },
+  "is on or after": {
+    "value": "在或晚於"
+  },
+  "is on the day": {
+    "value": "在當天"
+  },
+  "is previous": {
+    "value": "在前一個"
+  },
+  "is this": {
+    "value": "在這個"
+  }
+}

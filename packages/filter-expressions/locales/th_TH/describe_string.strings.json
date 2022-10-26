@@ -1,0 +1,23 @@
+{
+  "blank": {
+    "value": "เว้นว่าง"
+  },
+  "contains value": {
+    "value": "ประกอบด้วย {{value}}"
+  },
+  "does not contain value": {
+    "value": "ไม่ได้ประกอบด้วย {{value}}"
+  },
+  "does not end with value": {
+    "value": "ไม่ได้สิ้นสุดด้วย {{value}}"
+  },
+  "does not start with value": {
+    "value": "ไม่ได้เริ่มต้นด้วย {{value}}"
+  },
+  "ends with value": {
+    "value": "สิ้นสุดด้วย {{value}}"
+  },
+  "starts with value": {
+    "value": "เริ่มต้นด้วย {{value}}"
+  }
+}

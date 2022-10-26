@@ -26,8 +26,8 @@
 
 import { screen } from '@testing-library/react'
 import type { FC } from 'react'
-import React, { useContext } from 'react'
-import styled, { ThemeContext, ThemeProvider } from 'styled-components'
+import React from 'react'
+import styled, { ThemeProvider, useTheme } from 'styled-components'
 /**
  * This import path is ill-advised but acceptable since this
  * is a test-only import and prevents a package-dependency loop
@@ -38,7 +38,7 @@ import { reset } from './reset'
 describe('reset', () => {
   test('resetFn', () => {
     const TestWrapper: FC = ({ children }) => {
-      const theme = useContext(ThemeContext)
+      const theme = useTheme()
       return <ThemeProvider theme={{ ...theme }}>{children}</ThemeProvider>
     }
 

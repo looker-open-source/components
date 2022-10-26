@@ -35,6 +35,7 @@ import type {
   CSeriesLine,
   CSeriesSize,
   Fields,
+  ValueOf,
 } from '@looker/visualizations-adapters'
 import { isNumeric } from '@looker/visualizations-adapters'
 import { Fieldset, Grid, Divider } from '@looker/components'
@@ -65,16 +66,7 @@ import has from 'lodash/has'
  * A list of relevant charts that access this configuration
  */
 type SupportedChartConfig = {
-  type:
-    | SupportedChartTypes['area']
-    | SupportedChartTypes['bar']
-    | SupportedChartTypes['column']
-    | SupportedChartTypes['line']
-    | SupportedChartTypes['pie']
-    | SupportedChartTypes['scatter']
-    | SupportedChartTypes['sparkline']
-    | SupportedChartTypes['table']
-    | SupportedChartTypes['single_value']
+  type?: ValueOf<SupportedChartTypes>
   series?: CScatterSeries | CTableSeries | CLineSeries
 }
 

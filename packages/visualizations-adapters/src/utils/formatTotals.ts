@@ -24,10 +24,9 @@
 
  */
 
-import type { Totals, TotalsValue } from '../types'
+import type { Totals, TotalsValue, ValueOf } from '../types'
 import { buildPivotMeasureName } from './buildPivotMeasureName'
 import has from 'lodash/has'
-type ValueOf<T> = T[keyof T]
 
 const isTotalsValue = (obj: ValueOf<Totals>): obj is TotalsValue => {
   return has(obj, 'value')

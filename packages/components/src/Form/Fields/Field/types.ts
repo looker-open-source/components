@@ -38,7 +38,7 @@ type FieldLabelBaseProps = {
    * Defines the label for the field.
    * I18n recommended: content that is user visible should be treated for i18n
    */
-  label?: string
+  label?: ReactNode
   /**
    * Whether or not the field should display a `*` denoting it is required.
    */

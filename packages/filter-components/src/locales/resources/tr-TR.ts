@@ -27,6 +27,7 @@ import merge from 'lodash/merge'
 import dateLocale from 'date-fns/locale/tr'
 import type { I18nStateWithDates } from '../../utils'
 import { trTR as expressionLocale } from '@looker/filter-expressions'
+import { trTR as componentsLocale } from '@looker/components'
 
 const resources = {
   AddRemoveButtons: {
@@ -84,6 +85,9 @@ const resources = {
     weeks: 'hafta',
     year: 'yıl',
     years: 'yıl',
+  },
+  DateRange: {
+    'until (before)': 'şu tarihe kadar (şu tarihten önce):',
   },
   get_date_filter_options: {
     is: 'şudur:',
@@ -244,5 +248,12 @@ const resources = {
 export const trTR: I18nStateWithDates = {
   dateLocale,
   locale: 'tr-TR',
-  resources: { 'tr-TR': merge(resources, expressionLocale.resources['tr-TR']) },
+  resources: {
+    'tr-TR': merge(
+      {},
+      resources,
+      expressionLocale.resources['tr-TR'],
+      componentsLocale.resources['tr-TR']
+    ),
+  },
 }

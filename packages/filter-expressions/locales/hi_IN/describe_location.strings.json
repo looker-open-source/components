@@ -1,0 +1,29 @@
+{
+  "coords1 to coords2": {
+    "value": "{{coords1}} से लेकर {{coords2}} तक"
+  },
+  "distance unit from lat, lon": {
+    "value": "{{lat}} से {{distance}} {{unit}}, {{lon}}"
+  },
+  "is anywhere": {
+    "value": "कहीं भी है"
+  },
+  "is not null": {
+    "value": "शून्य नहीं है"
+  },
+  "is null": {
+    "value": "शून्य है"
+  },
+  "lat degrees north": {
+    "value": "{{lat}}°उत्तर"
+  },
+  "lat degrees south": {
+    "value": "{{lat}}°दक्षिण"
+  },
+  "lon degrees east": {
+    "value": "{{lon}}°पूर्व"
+  },
+  "lon degrees west": {
+    "value": "{{lon}}°पश्चिम"
+  }
+}

@@ -26,13 +26,7 @@
 
 import type { IContinuousPalette, IDiscretePalette } from '@looker/sdk'
 
-import type {
-  LegendPositions,
-  PointShapes,
-  LegendTypes,
-  LabelTypes,
-  SupportedChartTypes,
-} from './'
+import type { LegendPositions, PointShapes, LegendTypes, LabelTypes } from './'
 import type { CBar, CArea } from '../adapters'
 
 export type ColorApplication = {
@@ -95,7 +89,6 @@ export type RawApiConfigResponse = {
     | 'looker_grid'
     | 'looker_pie'
     | 'looker_scatter'
-    | keyof SupportedChartTypes
   value_format?: string
   value_labels: LegendTypes
   x_axis_label?: string | null

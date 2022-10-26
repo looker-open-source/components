@@ -83,7 +83,7 @@ export const TableLayout: FC<TableProps> = props => {
 
   const navProps = useArrowKeyNav<HTMLTableElement>({
     axis: 'both',
-    getNextFocus: getNextFocus,
+    getNextFocus,
   })
 
   return (

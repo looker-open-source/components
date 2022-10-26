@@ -53,7 +53,7 @@ export type CPieLegend = {
 }
 
 export type CPie = {
-  type: SupportedChartTypes['pie']
+  type?: SupportedChartTypes['pie']
   legend?: false | CPieLegend
   tooltips?: boolean
   series: CPieSeries[] | { [key: string]: CPieSeries }

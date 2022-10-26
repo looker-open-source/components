@@ -1,0 +1,8 @@
+{
+  "AllPageCountDisplayedSelected": "Se seleccionaron los {{pageCount}} elementos que se muestran",
+  "AllTotalCountSelected": "Se seleccionaron los {{totalCount}} elementos",
+  "Bulk Actions": "Acciones masivas",
+  "Clear Selection": "Borrar selección",
+  "SelectAllCountResults": "Seleccionar los {{totalCount}} resultados",
+  "SelectedCountOfTotalDisplayed": "Se seleccionaron {{selectedItemCount}} de los {{pageCount}} elementos que se muestran"
+}

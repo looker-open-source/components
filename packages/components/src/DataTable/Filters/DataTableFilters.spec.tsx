@@ -28,8 +28,8 @@ import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { screen } from '@testing-library/react'
 import { InputFilters } from '../../Form'
-import { columns } from '../../__mocks__/DataTable/columns'
-import { filters } from '../../__mocks__/filters'
+import { columns } from '../../fixtures/DataTable/columns'
+import { filters } from '../../fixtures/filters'
 import { DataTableFilters } from './DataTableFilters'
 
 describe('DataTableFilters', () => {

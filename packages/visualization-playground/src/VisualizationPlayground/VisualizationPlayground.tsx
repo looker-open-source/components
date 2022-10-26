@@ -26,11 +26,7 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import type { QueryProps } from '@looker/visualizations'
 import type { CAll } from '@looker/visualizations-adapters'
-import {
-  Query,
-  Visualization,
-  i18nInit as i18nInitVis,
-} from '@looker/visualizations'
+import { Query, Visualization } from '@looker/visualizations'
 import {
   isNumeric,
   mockSDK,
@@ -38,7 +34,7 @@ import {
 } from '@looker/visualizations-adapters'
 import { DataProvider } from '@looker/components-data'
 import {
-  Box2,
+  Box,
   Tab2,
   Tabs2,
   Aside,
@@ -46,12 +42,11 @@ import {
   ExtendComponentsThemeProvider,
   Page,
   theme,
-  ComponentsProvider,
 } from '@looker/components'
 import styled, { useTheme } from 'styled-components'
 import type { Looker40SDK } from '@looker/sdk'
-import { i18nResources, i18nInit } from '@looker/filter-components'
 import { Radar } from '../Radar'
+import { TurtleTable } from '../TurtleTable'
 import { useLocalStorage } from '../utils'
 import { EmbedEditor } from '../EmbedEditor'
 import { ConfigEditor } from '../ConfigEditor'
@@ -60,9 +55,6 @@ import { QueryInput } from '../QueryInput'
 import { Filtering } from '../Filtering'
 import { CodeEditor } from '../CodeEditor'
 import { CodeToggle } from '../CodeToggle'
-
-i18nInit()
-i18nInitVis()
 
 type TabIDs = 'live' | 'mock'
 
@@ -101,7 +93,7 @@ export const setQueryProps = ({
   }
 }
 
-export const VisualizationPlaygroundInternal = ({
+export const VisualizationPlayground = ({
   sdk,
 }: VisualizationPlaygroundProps) => {
   const [storedTabId, setStoredTabId] = useLocalStorage<TabIDs>(
@@ -217,7 +209,7 @@ export const VisualizationPlaygroundInternal = ({
                       disabled={typeof sdk === 'undefined'}
                     >
                       <ErrorBoundary>
-                        <Box2 my="small">
+                        <Box my="small">
                           <QueryInput
                             onChange={handleQueryInputChange}
                             dashboardId={dashboardId}
@@ -226,22 +218,29 @@ export const VisualizationPlaygroundInternal = ({
                             setFetchBy={setFetchBy}
                             {...queryProps}
                           />
-                        </Box2>
+                        </Box>
                         <Filtering
                           setQueryIdentifier={setQueryIdentifier}
                           setFetchBy={setFetchBy}
                           {...queryProps}
                         />
-                        <Query config={configOverrides} {...queryProps}>
-                          <Visualization
-                            width={isNumeric(width) ? Number(width) : undefined}
-                            height={
-                              isNumeric(height) ? Number(height) : undefined
-                            }
-                            /* add custom vis type */
-                            chartTypeMap={{ radar: Radar }}
-                          />
-                        </Query>
+                        <Box my="small">
+                          <Query config={configOverrides} {...queryProps}>
+                            <Visualization
+                              width={
+                                isNumeric(width) ? Number(width) : undefined
+                              }
+                              height={
+                                isNumeric(height) ? Number(height) : undefined
+                              }
+                              /* add custom vis type */
+                              chartTypeMap={{
+                                radar: Radar,
+                                turtle_table: TurtleTable,
+                              }}
+                            />
+                          </Query>
+                        </Box>
                       </ErrorBoundary>
                     </Tab2>
                     <Tab2 id="mock" label="Mock Data">
@@ -264,16 +263,6 @@ export const VisualizationPlaygroundInternal = ({
         </PageLayout>
       </ExtendComponentsThemeProvider>
     </DataProvider>
-  )
-}
-
-export const VisualizationPlayground = (
-  props: VisualizationPlaygroundProps
-) => {
-  return (
-    <ComponentsProvider loadGoogleFonts resources={i18nResources}>
-      <VisualizationPlaygroundInternal {...props} />
-    </ComponentsProvider>
   )
 }
 

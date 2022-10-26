@@ -1,0 +1,11 @@
+{
+  "Invalid value": {
+    "value": "잘못된 값"
+  },
+  "No value is set for your user attribute": {
+    "value": "사용자 특성에 설정된 값 없음"
+  },
+  "Selection required": {
+    "value": "선택 필요"
+  }
+}

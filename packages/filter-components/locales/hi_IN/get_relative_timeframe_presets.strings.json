@@ -1,0 +1,56 @@
+{
+  "Last 14 Days": {
+    "value": "अंतिम 14 दिन"
+  },
+  "Last 180 Days": {
+    "value": "अंतिम 180 दिन"
+  },
+  "Last 28 Days": {
+    "value": "अंतिम 28 दिन"
+  },
+  "Last 30 Days": {
+    "value": "अंतिम 30 दिन"
+  },
+  "Last 365 Days": {
+    "value": "अंतिम 365 दिन"
+  },
+  "Last 7 Days": {
+    "value": "अंतिम 7 दिन"
+  },
+  "Last 90 Days": {
+    "value": "अंतिम 90 दिन"
+  },
+  "Previous Month": {
+    "value": "पिछले महीने"
+  },
+  "Previous Quarter": {
+    "value": "पिछली तिमाही"
+  },
+  "Previous Week": {
+    "value": "पिछले सप्ताह"
+  },
+  "Previous Year": {
+    "value": "पिछला वर्ष"
+  },
+  "This Month": {
+    "value": "इस महीने"
+  },
+  "This Quarter": {
+    "value": "इस तिमाही"
+  },
+  "This Week": {
+    "value": "इस सप्ताह"
+  },
+  "This Year": {
+    "value": "इस साल"
+  },
+  "Today": {
+    "value": "आज"
+  },
+  "Year To Date": {
+    "value": "एक साल पहले से आज तक"
+  },
+  "Yesterday": {
+    "value": "बीता कल"
+  }
+}

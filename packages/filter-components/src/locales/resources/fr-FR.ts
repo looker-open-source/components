@@ -27,6 +27,7 @@ import merge from 'lodash/merge'
 import dateLocale from 'date-fns/locale/fr'
 import type { I18nStateWithDates } from '../../utils'
 import { frFR as expressionLocale } from '@looker/filter-expressions'
+import { frFR as componentsLocale } from '@looker/components'
 
 const resources = {
   AddRemoveButtons: {
@@ -46,7 +47,7 @@ const resources = {
     'minutes from now': 'minutes à partir de maintenant',
     'months ago': 'mois auparavant',
     'months from now': 'mois à partir de maintenant',
-    now: 'présentement',
+    now: 'maintenant',
     'quarters ago': 'trimestres auparavant',
     'quarters from now': 'trimestres à partir de maintenant',
     'seconds ago': 'secondes auparavant',
@@ -85,6 +86,9 @@ const resources = {
     year: 'année',
     years: 'années',
   },
+  DateRange: {
+    'until (before)': "jusqu'à (avant)",
+  },
   get_date_filter_options: {
     is: 'est',
     'is any time': 'est à tout moment',
@@ -92,9 +96,9 @@ const resources = {
     'is in range': 'est dans la portée',
     'is in the last': 'est au cours du dernier',
     'is in the month': 'est dans le mois',
-    'is in the year': 'est dans l’année',
+    'is in the year': "est dans l'année",
     'is next': 'est le prochain',
-    'is not null': 'n’est pas nul',
+    'is not null': "n'est pas nul",
     'is null': 'est nul',
     'is on or after': 'est situé le jour même ou après',
     'is on the day': 'est le jour même',
@@ -109,8 +113,8 @@ const resources = {
     Circle: 'Cercle',
     Location: 'Emplacement',
     feet: 'pied',
-    'is anywhere': 'est n’importe où',
-    'is not null': 'n’est pas nul',
+    'is anywhere': "est n'importe où",
+    'is not null': "n'est pas nul",
     'is null': 'est nul',
     kilometers: 'kilomètres',
     meters: 'mètres',
@@ -125,9 +129,9 @@ const resources = {
     'is greater equal': 'est >=',
     'is less': 'est <',
     'is less equal': 'est <=',
-    'is not': 'n’est pas',
-    'is not between': 'n’est pas situé entre',
-    'is not null': 'n’est pas nul',
+    'is not': "n'est pas",
+    'is not between': "n'est pas situé entre",
+    'is not null': "n'est pas nul",
     'is null': 'est nul',
     'left exclusive': '(exclusif-gauche)',
     'right exclusive': '[exclusif-droite)',
@@ -148,8 +152,8 @@ const resources = {
     'This Quarter': 'Ce trimestre',
     'This Week': 'Cette semaine',
     'This Year': 'Cette année',
-    Today: 'Aujourd’hui',
-    'Year To Date': 'Depuis le début de l’année',
+    Today: "Aujourd'hui",
+    'Year To Date': "Depuis le début de l'année",
     Yesterday: 'Hier',
   },
   get_string_filter_options: {
@@ -160,16 +164,16 @@ const resources = {
     'ends with': 'termine avec',
     is: 'est',
     'is blank': 'est vide',
-    'is not': 'n’est pas',
-    'is not blank': 'n’est pas vide',
-    'is not null': 'n’est pas nul',
+    'is not': "n'est pas",
+    'is not blank': "n'est pas vide",
+    'is not null': "n'est pas nul",
     'is null': 'est nul',
     'starts with': 'commence avec',
   },
   get_tier_filter_options: {
     is: 'est',
     'is any value': 'est toute valeur',
-    'is not': 'n’est pas',
+    'is not': "n'est pas",
   },
   get_user_attribute_option: {
     'matches a user attribute': 'correspond à un attribut utilisateur',
@@ -180,7 +184,7 @@ const resources = {
     Toggle: '',
   },
   NumberFilter: {
-    'any value': 'n’importe quelle valeur',
+    'any value': "n'importe quelle valeur",
   },
   OperatorLabel: {
     AND: 'ET',
@@ -199,7 +203,7 @@ const resources = {
     'complete years': 'années complètes',
   },
   RadioGroup: {
-    'any value': 'n’importe quelle valeur',
+    'any value': "n'importe quelle valeur",
   },
   ReactSelectCustomIcons: {
     'Clear all': 'Effacer tout',
@@ -223,7 +227,7 @@ const resources = {
   use_filters_errors: {
     'Invalid value': 'Valeur non valide',
     'No value is set for your user attribute':
-      'Aucune valeur n’est définie pour cet attribut d’utilisateur',
+      "Aucune valeur n'est définie pour cet attribut d'utilisateur",
     'Selection required': 'Sélection requise',
   },
   use_option_filtering: {
@@ -231,7 +235,7 @@ const resources = {
     'No values match': 'Aucune valeur correspondante',
   },
   use_placeholder: {
-    'any value': 'n’importe quelle valeur',
+    'any value': "n'importe quelle valeur",
   },
   use_suggestable: {
     'Error loading suggestions': 'Erreur lors du chargement des suggestions',
@@ -244,5 +248,12 @@ const resources = {
 export const frFR: I18nStateWithDates = {
   dateLocale,
   locale: 'fr-FR',
-  resources: { 'fr-FR': merge(resources, expressionLocale.resources['fr-FR']) },
+  resources: {
+    'fr-FR': merge(
+      {},
+      resources,
+      expressionLocale.resources['fr-FR'],
+      componentsLocale.resources['fr-FR']
+    ),
+  },
 }

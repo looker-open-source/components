@@ -1,0 +1,8 @@
+{
+  "is in range range": {
+    "value": "रेंज {{range}} में है"
+  },
+  "is not in range range": {
+    "value": "रेंज {{range}} में नहीं है"
+  }
+}

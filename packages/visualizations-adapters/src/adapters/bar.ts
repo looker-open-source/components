@@ -46,6 +46,6 @@ export type BarBaseOptions = {
 }
 
 export type CBar = {
-  type: SupportedChartTypes['bar']
+  type?: SupportedChartTypes['bar']
 } & BarBaseOptions &
   CommonCartesianProperties

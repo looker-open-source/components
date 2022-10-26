@@ -30,8 +30,8 @@ import type { ListItemDimensions } from '../types'
 export const density0: ListItemDimensions = {
   descriptionFontSize: 'xsmall',
   descriptionLineHeight: 'xsmall',
+  gap: 'u3',
   height: 36,
-  iconGap: 'u3',
   iconSize: 'small',
   labelFontSize: 'small',
   labelLineHeight: 'small',
@@ -44,8 +44,8 @@ export const densityPositive1: ListItemDimensions = {
   ...density0,
   descriptionFontSize: 'small',
   descriptionLineHeight: 'small',
+  gap: 'u4',
   height: 48,
-  iconGap: 'u4',
   iconSize: 'medium',
   labelFontSize: 'medium',
   labelLineHeight: 'medium',
@@ -65,8 +65,8 @@ export const densityNegative2: ListItemDimensions = {
 }
 export const densityNegative3: ListItemDimensions = {
   ...densityNegative2,
+  gap: 'u2',
   height: 24,
-  iconGap: 'u2',
   iconSize: 'xxsmall',
   labelFontSize: 'xsmall',
   labelLineHeight: 'xsmall',

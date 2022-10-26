@@ -39,7 +39,7 @@ Use `onChange` to get updates to the `expression`.
 ```jsx
 ;() => {
   const [expression, setExpression] = useState('[0,100]')
-  const handleChange = value => {
+  const handleChange = (value) => {
     setExpression(value.expression)
   }
   return (

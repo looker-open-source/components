@@ -1,0 +1,44 @@
+{
+  "exclusive": {
+    "value": "(exclusif)"
+  },
+  "inclusive": {
+    "value": "[inclusif]"
+  },
+  "is": {
+    "value": "est"
+  },
+  "is between": {
+    "value": "est situé entre"
+  },
+  "is greater": {
+    "value": "est >"
+  },
+  "is greater equal": {
+    "value": "est >="
+  },
+  "is less": {
+    "value": "est <"
+  },
+  "is less equal": {
+    "value": "est <="
+  },
+  "is not": {
+    "value": "n’est pas"
+  },
+  "is not between": {
+    "value": "n’est pas situé entre"
+  },
+  "is not null": {
+    "value": "n’est pas nul"
+  },
+  "is null": {
+    "value": "est nul"
+  },
+  "left exclusive": {
+    "value": "(exclusif-gauche)"
+  },
+  "right exclusive": {
+    "value": "[exclusif-droite)"
+  }
+}

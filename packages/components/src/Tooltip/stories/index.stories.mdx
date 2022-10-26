@@ -1,0 +1,65 @@
+import { Meta } from '@storybook/addon-docs'
+import { Tooltip } from '@looker/components'
+import { excludedProps } from '@looker/storybook'
+import storyDefault from '!!raw-loader!./Default'
+import storyExample from '!!raw-loader!./Example'
+import storyExampleRenderProp from '!!raw-loader!./ExampleRenderProp'
+import storyDelayNone from '!!raw-loader!./DelayNone'
+import storyExamplePlacement from '!!raw-loader!./ExamplePlacement'
+
+<Meta component={Tooltip} title="Content/Tooltip" />
+
+# Tooltip
+
+A simple Tooltip component with out of the box styles and behavior.
+
+<Editor code={storyDefault} />
+
+<Editor code={storyExample} />
+
+## Tooltip Placement
+
+Tooltip allows you to specify where it should appear in relation to the target element. It accepts the following values:
+
+1. `auto`
+1. `auto-end`
+1. `top-start`
+1. `top`
+1. `top-end`
+1. `right-start`
+1. `right`
+1. `right-end`
+1. `bottom-end`
+1. `bottom`
+1. `bottom-start`
+1. `left-end`
+1. `left`
+1. `left-start`
+
+<Editor code={storyExamplePlacement} />
+
+## Delay
+
+By default, the tooltip will show a brief delay. To customize this, use the `delay` prop.
+
+<Editor code={storyDelayNone} />
+
+## "Render Prop" style
+
+Sometimes you may need to control how `Tooltip` applies handlers to the component within it. If so you can use the render prop form of the component:
+
+<Editor code={storyExampleRenderProp} />
+
+If you need to be very specific
+
+<Editor code={storyExampleRenderProp} />
+
+## Tooltip passes a "hover" class
+
+In both the regular and "Render Prop" styles, `Tooltip` will pass a class named `hover` to its child element (or function) when the `Tooltip` is open.
+
+This will preserve any hover styling when the cursor is on the tooltip text and off of the trigger element itself.
+
+## Props
+
+<ArgsTable of={Tooltip} exclude={excludedProps} exclude={excludedProps} />

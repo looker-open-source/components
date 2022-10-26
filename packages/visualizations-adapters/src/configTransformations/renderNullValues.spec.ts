@@ -24,7 +24,7 @@
 
  */
 
-import { mockLineConfig, mockFields, mockSdkDataResponse } from '../__mocks__'
+import { mockLineConfig, mockFields, mockSdkDataResponse } from '../fixtures'
 import { renderNullValues } from './renderNullValues'
 
 describe('renderNullValues', () => {

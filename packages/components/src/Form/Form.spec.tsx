@@ -90,7 +90,7 @@ describe('Form', () => {
    * https://github.com/jsdom/jsdom/issues/1937
    * https://github.com/jsdom/jsdom#unimplemented-parts-of-the-web-platform
    */
-  xtest('Should trigger onSubmit handler', () => {
+  test.skip('Should trigger onSubmit handler', () => {
     const onSubmit = jest.fn()
     renderWithTheme(
       <Form onSubmit={onSubmit}>

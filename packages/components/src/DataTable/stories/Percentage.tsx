@@ -26,7 +26,7 @@
 
 import type { DataTableColumns } from '../Column'
 import { useDataTable } from '../utils/useDataTable'
-import { data } from '../../__mocks__/DataTable/data'
+import { data } from '../../fixtures/DataTable/data'
 
 export const Percentage = () => {
   const columns: DataTableColumns = [

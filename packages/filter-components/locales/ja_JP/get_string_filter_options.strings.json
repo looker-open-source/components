@@ -1,0 +1,14 @@
+{
+  "contains": "が次の値を含む",
+  "doesnt contain": "が次の値を含まない",
+  "doesnt end with": "が次の値で終わらない",
+  "doesnt start with": "が次の値で始まらない",
+  "ends with": "が次の値で終わる",
+  "is": "が次である",
+  "is blank": "が空欄である",
+  "is not": "が次でない",
+  "is not blank": "が空欄でない",
+  "is not null": "が Null でない",
+  "is null": "が Null である",
+  "starts with": "が次の値で始まる"
+}

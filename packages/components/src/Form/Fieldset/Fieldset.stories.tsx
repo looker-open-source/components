@@ -27,6 +27,7 @@
 import type { Story } from '@storybook/react/types-6-0'
 import type { FC } from 'react'
 import React from 'react'
+import { defaultArgTypes as argTypes } from '@looker/storybook'
 import { Button } from '../../Button'
 import { Divider } from '../../Divider'
 import { Link } from '../../Link'
@@ -39,7 +40,6 @@ import {
   FieldText,
 } from '../Fields'
 import { Form } from '../Form'
-import { defaultArgTypes as argTypes } from '../../../../../apps/storybook/src/defaultArgTypes'
 import type { FieldsetProps } from './Fieldset'
 import { Fieldset } from './Fieldset'
 

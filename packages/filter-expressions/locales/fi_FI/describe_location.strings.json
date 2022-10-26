@@ -1,0 +1,29 @@
+{
+  "coords1 to coords2": {
+    "value": "{{coords1}} kohteeseen {{coords2}}"
+  },
+  "distance unit from lat, lon": {
+    "value": "{{distance}} {{unit}} kohteesta {{lat}}, {{lon}}"
+  },
+  "is anywhere": {
+    "value": "on missä tahansa"
+  },
+  "is not null": {
+    "value": "ei ole nolla"
+  },
+  "is null": {
+    "value": "on nolla"
+  },
+  "lat degrees north": {
+    "value": "{{lat}}°N"
+  },
+  "lat degrees south": {
+    "value": "{{lat}}°S"
+  },
+  "lon degrees east": {
+    "value": "{{lon}}°E"
+  },
+  "lon degrees west": {
+    "value": "{{lon}}°W"
+  }
+}

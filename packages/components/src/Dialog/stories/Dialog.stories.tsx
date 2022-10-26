@@ -26,10 +26,9 @@
 
 import React from 'react'
 import type { Story } from '@storybook/react/types-6-0'
-// import type { Page } from 'puppeteer'
-import { defaultArgTypes } from '../../../../../apps/storybook/src/defaultArgTypes'
-import { DialogLongContent } from '../../__mocks__/DialogLongContent'
-import { DialogMediumContent } from '../../__mocks__/DialogMediumContent'
+import { defaultArgTypes } from '@looker/storybook'
+import { DialogLongContent } from '../../fixtures/DialogLongContent'
+import { DialogMediumContent } from '../../fixtures/DialogMediumContent'
 import { SpaceVertical } from '../../Layout/Space/SpaceVertical'
 import { CopyToClipboard } from '../../CopyToClipboard'
 import { Button, ButtonOutline } from '../../Button'
@@ -39,9 +38,12 @@ import { dialogSizes } from '../dialogWidth'
 import { dialogPlacements } from '../DialogSurface'
 import { DialogLayout } from '../Layout'
 import { Checkbox } from '../../Form/Inputs/Checkbox'
+import ActiveElement from './ActiveElement'
 
 export * from './Controlled'
 export * from './SaveChanges'
+export { ActiveElement }
+Object.assign(ActiveElement, { parameters: { storyshots: { disable: true } } })
 
 const Template: Story<DialogProps> = args => (
   <Dialog {...args}>
@@ -57,18 +59,12 @@ Basic.parameters = {
   storyshots: { disable: true },
 }
 
-// const beforeScreenshot = async (page: Page) => {
-//   // Delay fixes threshold issue with focus ring
-//   await page.waitForTimeout(50)
-// }
-
 export const Open = Template.bind({})
 Open.args = {
   ...Basic.args,
   defaultOpen: true,
 }
 Open.parameters = {
-  // beforeScreenshot,
   docs: { disable: true },
   storyshots: { disable: true },
 }
@@ -96,7 +92,6 @@ MediumContent.args = {
   id: 'CustomDialogId',
 }
 MediumContent.parameters = {
-  // beforeScreenshot,
   docs: { disable: true },
   storyshots: { disable: true },
 }
@@ -107,7 +102,6 @@ Height.args = {
   height: '1000rem',
 }
 Height.parameters = {
-  // beforeScreenshot,
   docs: { disable: true },
   storyshots: { disable: true },
 }
@@ -119,7 +113,6 @@ PlacementTop.args = {
   placement: 'top',
 }
 PlacementTop.parameters = {
-  // beforeScreenshot,
   docs: { disable: true },
   storyshots: { disable: true },
 }
@@ -131,7 +124,6 @@ PlacementCover.args = {
   placement: 'cover',
 }
 PlacementCover.parameters = {
-  // beforeScreenshot,
   docs: { disable: true },
   storyshots: { disable: true },
 }
@@ -142,7 +134,6 @@ LongContent.args = {
   defaultOpen: true,
 }
 LongContent.parameters = {
-  // beforeScreenshot,
   docs: { disable: true },
   storyshots: { disable: true },
 }

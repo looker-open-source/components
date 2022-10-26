@@ -82,9 +82,7 @@ export const Checkbox = styled(
 
     const rippleHandlers = useRippleHandlers(
       callbacks,
-      {
-        ...pick(restProps, rippleHandlerKeys),
-      },
+      pick(restProps, rippleHandlerKeys),
       restProps.disabled
     )
 

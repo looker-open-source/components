@@ -1,0 +1,62 @@
+{
+  "day": {
+    "value": "दिन"
+  },
+  "days": {
+    "value": "दिन"
+  },
+  "fiscal quarter": {
+    "value": "वित्तीय तिमाही"
+  },
+  "fiscal quarters": {
+    "value": "वित्तीय तिमाहियां"
+  },
+  "fiscal year": {
+    "value": "वित्तीय वर्ष"
+  },
+  "fiscal years": {
+    "value": "वित्तीय वर्ष"
+  },
+  "hour": {
+    "value": "घंटा"
+  },
+  "hours": {
+    "value": "घंटे"
+  },
+  "minute": {
+    "value": "मिनट"
+  },
+  "minutes": {
+    "value": "मिनट"
+  },
+  "month": {
+    "value": "महीना"
+  },
+  "months": {
+    "value": "महीने"
+  },
+  "quarter": {
+    "value": "तिमाही"
+  },
+  "quarters": {
+    "value": "तिमाहियां"
+  },
+  "second": {
+    "value": "सेकंड"
+  },
+  "seconds": {
+    "value": "सेकंड"
+  },
+  "week": {
+    "value": "सप्ताह"
+  },
+  "weeks": {
+    "value": "सप्ताह"
+  },
+  "year": {
+    "value": "वर्ष"
+  },
+  "years": {
+    "value": "वर्ष"
+  }
+}

@@ -54,7 +54,7 @@ describe('BeforeAfter Date filter test', () => {
 
     const inputs = screen.getAllByRole('textbox')
     expect(inputs[0]).toHaveValue('is before')
-    expect(inputs[1]).toHaveValue('relative')
+    expect(inputs[1]).toHaveValue('(relative)')
     expect(inputs[2]).toHaveValue('days ago')
     // input[type=number] is not captured by getAllByRole('textbox')
     expect(screen.queryByTestId('number-value')).toHaveValue(3)

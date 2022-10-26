@@ -1,0 +1,72 @@
+{
+  " complete": {
+    "value": " 완료"
+  },
+  "absolute prefix dateTime": {
+    "value": "{{prefix}} {{dateTime}}"
+  },
+  "ago": {
+    "value": "전"
+  },
+  "from now": {
+    "value": "지금부터"
+  },
+  "is any time": {
+    "value": "이(가) 모든 시간임"
+  },
+  "is before": {
+    "value": "이(가) 다음보다 앞에 옴"
+  },
+  "is day": {
+    "value": "이(가) {{day}}임"
+  },
+  "is from dateTimeStart until dateTimeEnd": {
+    "value": "이(가) {{dateTimeStart}}에서 {{dateTimeEnd}}까지임"
+  },
+  "is in month year": {
+    "value": "이(가) {{month}} {{year}}임"
+  },
+  "is in the last": {
+    "value": "이(가) 지난 {{describeInterval}}임"
+  },
+  "is in the year year": {
+    "value": "이(가) {{year}} 연도임"
+  },
+  "is interval ago": {
+    "value": "이(가) {{interval}} 전임"
+  },
+  "is intervalStart intervalType for intervalEnd": {
+    "value": "이(가) {{intervalEnd}}의 {{intervalStart}} {{intervalType}}임"
+  },
+  "is not null": {
+    "value": "이(가) null이 아님"
+  },
+  "is on dateTime": {
+    "value": "이(가) {{dateTime}}임"
+  },
+  "is on or after": {
+    "value": "이(가) 다음과 위치가 같거나 그 뒤에 옴"
+  },
+  "is previous unitLabel": {
+    "value": "이(가) 이전 {{unitLabel}}임"
+  },
+  "is type unitLabel": {
+    "value": "이(가) {{type}} {{unitLabel}}임"
+  },
+  "next": {
+    "value": "다음"
+  },
+  "prefix interval timePassed": {
+    "value": "{{prefix}} {{interval}} {{timePassed}}"
+  },
+  "prefix now": {
+    "value": "{{prefix}} 지금"
+  },
+  "this": {
+    "value": "이"
+  },
+  "this startInterval to endInterval": "이 {{startInterval}}부터 {{endInterval}}까지",
+  "value complete unitLabel": {
+    "value": "{{value}}{{complete}} {{unitLabel}}"
+  }
+}

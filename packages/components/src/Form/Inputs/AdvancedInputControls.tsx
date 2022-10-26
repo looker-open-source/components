@@ -87,7 +87,7 @@ export const AdvancedInputControls = styled(
         {showClear && (
           <IconButton
             size="small"
-            icon={<Close />}
+            icon={<Close role="presentation" />}
             label={clearIconLabel}
             onClick={onClear}
             tooltipDisabled={disabled}
@@ -98,13 +98,24 @@ export const AdvancedInputControls = styled(
         {showClear && showCaret && <SearchControlDivider />}
         {showCaret && (
           <CaretIcon
-            icon={isVisibleOptions ? <ArrowDropUp /> : <ArrowDropDown />}
+            icon={
+              isVisibleOptions ? (
+                <ArrowDropUp role="presentation" />
+              ) : (
+                <ArrowDropDown role="presentation" />
+              )
+            }
             data-testid="caret"
             mr="u1"
           />
         )}
         {errorIcon && (
-          <Icon size="xsmall" icon={<Error />} color="critical" mr="u1" />
+          <Icon
+            size="xsmall"
+            icon={<Error role="presentation" />}
+            color="critical"
+            mr="u1"
+          />
         )}
       </div>
     )

@@ -100,6 +100,7 @@ export const EmbedEditor: FC<EmbedEditorProps> = ({
         options={[
           ...Object.values(SUPPORTED_CHART_TYPES).map(t => ({ value: t })),
           { value: 'radar', label: 'Custom Vis: Radar' },
+          { value: 'turtle_table', label: 'Custom Vis: Turtles' },
         ]}
       />
       <Fieldset inline>

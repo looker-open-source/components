@@ -51,7 +51,7 @@ describe('MessageBar', () => {
     expect(handleDismiss).not.toHaveBeenCalled()
 
     const dismissButton =
-      screen.getByText('DismissIntent Inform').closest('button') ||
+      screen.getByText('Dismiss Inform').closest('button') ||
       document.createElement('button') // suppress typescript warning about possible null button
 
     fireEvent.click(dismissButton)
@@ -81,7 +81,7 @@ describe('MessageBar', () => {
 
       // dismiss button
       const dismissButton =
-        screen.getByText('DismissIntent Inform').closest('button') ||
+        screen.getByText('Dismiss Inform').closest('button') ||
         document.createElement('button') // suppress typescript warning about possible null button
 
       fireEvent.click(dismissButton)
@@ -95,13 +95,13 @@ describe('MessageBar', () => {
         <MessageBar>Message text</MessageBar>
       )
 
-      expect(screen.getByText('DismissIntent Inform')).toBeInTheDocument()
+      expect(screen.getByText('Dismiss Inform')).toBeInTheDocument()
 
       rerender(
         withThemeProvider(<MessageBar noActions>Message text</MessageBar>)
       )
 
-      expect(screen.queryByText('DismissIntent Inform')).not.toBeInTheDocument()
+      expect(screen.queryByText('Dismiss Inform')).not.toBeInTheDocument()
     })
 
     test('accepts a text label to customize primaryAction', () => {
@@ -121,7 +121,7 @@ describe('MessageBar', () => {
       expect(
         screen.getByText('Do you want to know what the matrix is?')
       ).toBeInTheDocument()
-      expect(screen.queryByText('DismissIntent Inform')).not.toBeInTheDocument()
+      expect(screen.queryByText('Dismiss Inform')).not.toBeInTheDocument()
 
       fireEvent.click(primaryButton)
 
@@ -172,7 +172,7 @@ describe('MessageBar', () => {
 
       expect(screen.getByText('Take the red pill')).toBeInTheDocument()
       expect(screen.getByText('Take the blue pill')).toBeInTheDocument()
-      expect(screen.queryByText('DismissIntent Inform')).not.toBeInTheDocument()
+      expect(screen.queryByText('Dismiss Inform')).not.toBeInTheDocument()
     })
 
     test('renders secondaryButton next to default Dismiss button', () => {
@@ -186,7 +186,7 @@ describe('MessageBar', () => {
       )
 
       expect(screen.getByText('secondary action')).toBeInTheDocument()
-      expect(screen.getByText('DismissIntent Inform')).toBeInTheDocument()
+      expect(screen.getByText('Dismiss Inform')).toBeInTheDocument()
     })
   })
 
@@ -194,7 +194,7 @@ describe('MessageBar', () => {
     test('Warn MessageBar', () => {
       renderWithTheme(<MessageBar intent="warn">Warn</MessageBar>)
       // dismiss button
-      expect(screen.getByText('DismissIntent Warning')).toBeInTheDocument()
+      expect(screen.getByText('Dismiss Warning')).toBeInTheDocument()
       // icon title and color
       expect(screen.getByTitle('Warning').closest('svg')).toHaveStyle(
         `color: ${theme.colors.warn}`
@@ -208,7 +208,7 @@ describe('MessageBar', () => {
         </MessageBar>
       )
       // dismiss button
-      expect(screen.getByText('DismissIntent Error')).toBeInTheDocument()
+      expect(screen.getByText('Dismiss Error')).toBeInTheDocument()
       // icon title and color
       expect(screen.getByTitle('Error').closest('svg')).toHaveStyle(
         `color: ${theme.colors.critical}`
@@ -228,7 +228,7 @@ describe('MessageBar', () => {
       )
 
       // dismiss button
-      expect(screen.getByText('DismissIntent Inform')).toBeInTheDocument()
+      expect(screen.getByText('Dismiss Inform')).toBeInTheDocument()
       // icon title and color
       expect(screen.getByTitle('Inform').closest('svg')).toHaveStyle(
         `color: ${theme.colors.inform}`
@@ -242,7 +242,7 @@ describe('MessageBar', () => {
         </MessageBar>
       )
       // dismiss button
-      expect(screen.getByText('DismissIntent Success')).toBeInTheDocument()
+      expect(screen.getByText('Dismiss Success')).toBeInTheDocument()
 
       // icon title and color
       expect(screen.getByTitle('Success').closest('svg')).toHaveStyle(

@@ -24,7 +24,7 @@
 
  */
 
-import { mockPieConfig, mockFields, mockSdkDataResponse } from '../__mocks__'
+import { mockPieConfig, mockFields, mockSdkDataResponse } from '../fixtures'
 import { legendType } from './legendType'
 
 describe('legendType', () => {

@@ -25,8 +25,8 @@
  */
 
 import { getYear } from 'date-fns'
-import React, { useCallback, useContext } from 'react'
-import { ThemeContext } from 'styled-components'
+import React, { useCallback } from 'react'
+import { useTheme } from 'styled-components'
 import { Grid, SpaceVertical } from '../Layout'
 import { Span } from '../Text'
 import { MonthPicker } from './MonthPicker'
@@ -54,7 +54,7 @@ export const Year = ({
     [setItemPosition, index]
   )
 
-  const { space } = useContext(ThemeContext)
+  const { space } = useTheme()
   const height = `calc(${space.u7} * 3 + ${space.u3} * 2)`
 
   return (

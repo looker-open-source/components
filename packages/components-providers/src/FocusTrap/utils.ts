@@ -36,6 +36,20 @@ import { tabbable, isFocusable, isTabbable } from 'tabbable'
 import type { Trap } from '../TrapStack/types'
 import type { FocusTrapOptions } from './types'
 
+// Firefox reverts focus to the body when using Select. activeElement keeps
+// track of which element should maintain focus after selection
+let activeElement: Element | null
+
+// Evergreens support :focus-visible but JSDom still does not, so we must use
+// this to check for support before using the selector.
+const isFocusVisible = (element = document.activeElement) => {
+  try {
+    return element?.matches(':focus-visible')
+  } catch (e) {
+    return true
+  }
+}
+
 const isSelectableInput = (
   node: FocusableElement
 ): node is HTMLInputElement => {
@@ -73,8 +87,8 @@ export const activateFocusTrap = ({
 
   const getInitialFocusNodeByPriority = () => {
     // Return the already focused node within element
-    if (element.contains(document.activeElement)) {
-      return document.activeElement as HTMLElement
+    if (element.contains(activeElement as Node)) {
+      return activeElement
     }
 
     // Look for data-autofocus b/c React strips autofocus from dom
@@ -153,19 +167,21 @@ export const activateFocusTrap = ({
   // This needs to be done on mousedown and touchstart instead of click
   // so that it precedes the focus event.
   const checkPointerDown = function (e: MouseEvent | TouchEvent) {
-    if (
-      !element.contains(e.target as Node) &&
-      options?.clickOutsideDeactivates
-    ) {
-      // immediately deactivate the trap
+    if (element.contains(e.target as Node)) {
+      activeElement = e.target as Element
+    } else if (options?.clickOutsideDeactivates) {
       deactivate()
     }
   }
 
   // In case focus escapes the trap for some strange reason, pull it back in.
   const checkFocusIn = (e: FocusEvent) => {
+    if (element.contains(e.target as Node)) {
+      activeElement = e.target as Element
+      return
+    }
     // In Firefox when you Tab out of an iframe the Document is briefly focused.
-    if (element.contains(e.target as Node) || e.target instanceof Document) {
+    if (e.target instanceof Document) {
       return
     }
     e.stopImmediatePropagation()
@@ -206,7 +222,12 @@ export const activateFocusTrap = ({
   })
 
   const t = setTimeout(() => {
-    tryFocus(getInitialFocusNode())
+    // We use the default document activeElement because it will cover a
+    // superset of elements that we do not account for (or need to) with
+    // our internally maintained version of activeElement.
+    if (isFocusVisible()) {
+      tryFocus(getInitialFocusNode())
+    }
   }, 0)
 
   // Deactivate function

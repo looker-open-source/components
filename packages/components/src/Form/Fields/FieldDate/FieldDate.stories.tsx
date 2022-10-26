@@ -26,9 +26,9 @@
 import type { Story } from '@storybook/react/types-6-0'
 import React, { useState } from 'react'
 import { ExtendComponentsThemeProvider } from '@looker/components-providers'
+import { defaultArgTypes as argTypes } from '@looker/storybook'
 import { Button } from '../../../Button'
 import { Popover, PopoverContent } from '../../../Popover'
-import { defaultArgTypes as argTypes } from '../../../../../../apps/storybook/src/defaultArgTypes'
 import { DateFormat } from '../../Inputs/DateFormat'
 import type { FieldDateProps } from './FieldDate'
 import { FieldDate } from './FieldDate'
@@ -38,7 +38,7 @@ export type DayOfWeekNumbers = 0 | 1 | 2 | 3 | 4 | 5 | 6
 export default {
   argTypes,
   component: FieldDate,
-  title: `FieldDate`,
+  title: 'FieldDate',
 }
 
 const Template: Story<FieldDateProps & { externalLabel: boolean }> = ({

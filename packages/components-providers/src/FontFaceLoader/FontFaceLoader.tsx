@@ -24,9 +24,9 @@
 
  */
 
-import React, { useContext, useMemo } from 'react'
+import React, { useMemo } from 'react'
 import { Helmet } from 'react-helmet-async'
-import { ThemeContext } from 'styled-components'
+import { useTheme } from 'styled-components'
 import type { FontSources } from '@looker/design-tokens'
 
 export const fontFacesCSS = (fontSources: FontSources) =>
@@ -48,7 +48,7 @@ export const fontFace = (face: string, url: string) => `
  * Font sources are determined using the fontSources key on the theme
  */
 export const FontFaceLoader = () => {
-  const { fontSources } = useContext(ThemeContext)
+  const { fontSources } = useTheme()
 
   const css = useMemo(() => {
     if (fontSources && fontSources.length > 0) {

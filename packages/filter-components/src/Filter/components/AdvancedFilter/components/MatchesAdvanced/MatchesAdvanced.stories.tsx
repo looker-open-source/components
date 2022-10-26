@@ -29,7 +29,7 @@ import type { Story } from '@storybook/react/types-6-0'
 import type { FilterParamProps } from '../../../../types/filter_param_props'
 import { MatchesAdvanced } from './MatchesAdvanced'
 
-export const DefaultStory: Story<FilterParamProps> = args => (
+export const DefaultStory: Story<FilterParamProps> = (args) => (
   <MatchesAdvanced {...args} />
 )
 DefaultStory.args = {

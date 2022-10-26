@@ -29,6 +29,7 @@ import type { Story } from '@storybook/react/types-6-0'
 import { AddAlert, Favorite } from '@styled-icons/material'
 import { ExtendComponentsThemeProvider } from '@looker/components-providers'
 import React from 'react'
+import { defaultArgTypes as argTypes } from '@looker/storybook'
 import { Button } from '../../../Button'
 import { Icon } from '../../../Icon'
 import { Space, SpaceVertical } from '../../../Layout'
@@ -38,7 +39,6 @@ import { useToggle } from '../../../utils'
 import { FieldCheckbox } from '../FieldCheckbox'
 import { FieldRadio } from '../FieldRadio'
 import { FieldToggleSwitch } from '../FieldToggleSwitch'
-import { defaultArgTypes as argTypes } from '../../../../../../apps/storybook/src/defaultArgTypes'
 import type { FieldTextProps } from './FieldText'
 import { FieldText } from './FieldText'
 
@@ -173,7 +173,7 @@ Toggles.parameters = {
 
 export const AutoResize = () => {
   return (
-    <Space alignItems="flex-end">
+    <Space align="end">
       <FieldText autoResize placeholder="Start typing to resize me" />
       <FieldText
         label="I also resize"

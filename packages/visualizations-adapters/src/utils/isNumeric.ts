@@ -26,7 +26,6 @@
 
 export const isNumeric = (str?: string | number): str is string =>
   typeof str === 'number' ||
-  (str !== '' &&
-    str !== null &&
-    str !== undefined &&
+  (typeof str === 'string' &&
+    str !== '' &&
     !isNaN(Number(str.replace(/\.|,/g, ''))))

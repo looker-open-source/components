@@ -27,6 +27,7 @@
 import React from 'react'
 export const CheckMark = () => (
   <svg
+    role="presentation"
     width="15"
     height="14"
     viewBox="0 0 15 14"

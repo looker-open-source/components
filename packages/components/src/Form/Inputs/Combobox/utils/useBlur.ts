@@ -28,7 +28,6 @@
 // because their work is fantastic (but is not in TypeScript)
 import type { Context, FocusEvent } from 'react'
 import { useContext } from 'react'
-import { getNextFocusTarget } from '../../../../utils'
 import type {
   ComboboxContextProps,
   ComboboxMultiContextProps,
@@ -68,7 +67,7 @@ export function useBlur<
       return
     }
     // we on want to close only if focus rests outside the select
-    const nextFocusTarget = getNextFocusTarget(e)
+    const nextFocusTarget = e.relatedTarget
     const popoverCurrent = listRef ? listRef.current : null
     if (popoverCurrent) {
       const focusInList =

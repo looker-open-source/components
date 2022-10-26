@@ -1,0 +1,44 @@
+{
+  "is": {
+    "value": "is"
+  },
+  "is any time": {
+    "value": "alles"
+  },
+  "is before": {
+    "value": "vóór datum"
+  },
+  "is in range": {
+    "value": "datumbereik (van/tot)"
+  },
+  "is in the last": {
+    "value": "in de afgelopen"
+  },
+  "is in the month": {
+    "value": "specifieke maand"
+  },
+  "is in the year": {
+    "value": "specifiek jaar"
+  },
+  "is next": {
+    "value": "volgende"
+  },
+  "is not null": {
+    "value": "geldige datums"
+  },
+  "is null": {
+    "value": "ongeldige datums"
+  },
+  "is on or after": {
+    "value": "op of na datum"
+  },
+  "is on the day": {
+    "value": "specifieke datum"
+  },
+  "is previous": {
+    "value": "vorige"
+  },
+  "is this": {
+    "value": "deze"
+  }
+}

@@ -34,13 +34,20 @@ export default {
   component: FilterErrorMessage,
 }
 
-const Template: Story<FilterErrorMessageProps> = args => {
+const Template: Story<FilterErrorMessageProps> = (args) => {
   return <FilterErrorMessage {...args} />
 }
 
 export const Basic = Template.bind({})
 Basic.args = {
-  filters: [{ expression: '', isRequired: true, name: 'testfilter' }],
+  filters: [
+    {
+      expression: '',
+      expressionType: 'string',
+      isRequired: true,
+      name: 'testfilter',
+    },
+  ],
 }
 
 export const UserAttributesError = Template.bind({})

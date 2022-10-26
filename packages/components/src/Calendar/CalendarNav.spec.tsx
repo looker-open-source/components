@@ -26,11 +26,8 @@
 
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { composeStories } from '@storybook/testing-react'
 import { fireEvent, screen } from '@testing-library/react'
-import * as stories from './Calendar.stories'
-
-const { Basic } = composeStories(stories)
+import { Basic } from './stories/index.stories'
 
 describe('CalendarNav', () => {
   test('expected month displayed', () => {

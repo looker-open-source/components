@@ -26,12 +26,12 @@
 
 import React, { useState } from 'react'
 import { Info, Home } from '@styled-icons/material-outlined'
+import { defaultArgTypes as argTypes } from '@looker/storybook'
 import { IconButton } from '../../Button'
 import { Aside } from '../../Layout'
 import { ListItem } from '../../ListItem'
 import { ProgressCircular } from '../../ProgressCircular'
 import { NavTree, NavTreeItem } from '../../NavTree'
-import { defaultArgTypes as argTypes } from '../../../../../apps/storybook/src/defaultArgTypes'
 import { NavList } from '../NavList'
 
 export default {
@@ -40,7 +40,7 @@ export default {
   title: 'NavList',
 }
 
-export * from './LeftNav.stories'
+export { LeftNav } from './LeftNav'
 
 export const Basic = () => {
   const [selected, setSelected] = useState(false)

@@ -46,6 +46,17 @@ const relativeElementVisibility = (
   return (isAbove && 'above') || (isBelow && 'below') || 'visible'
 }
 
+export const isScrollable = (el: HTMLElement | null): boolean => {
+  if (el) {
+    if (el.scrollHeight > el.clientHeight) {
+      return true
+    } else {
+      return isScrollable(el.parentElement)
+    }
+  }
+  return false
+}
+
 export function useOptionScroll<
   CProps extends ComboboxContextProps | ComboboxMultiContextProps
 >(
@@ -65,7 +76,9 @@ export function useOptionScroll<
   useEffect(() => {
     if (scrollIntoView) {
       if (newTriggerElement) {
-        newTriggerElement.scrollIntoView()
+        if (isScrollable(newTriggerElement)) {
+          newTriggerElement.scrollIntoView()
+        }
       }
       if (!isActive) {
         transition &&
@@ -87,7 +100,9 @@ export function useOptionScroll<
       )
       if (visibility !== 'visible') {
         const attachToTop = visibility === 'above'
-        newTriggerElement.scrollIntoView(attachToTop) // false scrolls to bottom, true scrolls to top
+        if (isScrollable(newTriggerElement)) {
+          newTriggerElement.scrollIntoView(attachToTop) // false scrolls to bottom, true scrolls to top
+        }
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

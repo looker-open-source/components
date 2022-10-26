@@ -1,0 +1,8 @@
+{
+  "AllPageCountDisplayedSelected": "เลือกรายการที่แสดงทั้งหมด {{pageCount}} รายการแล้ว",
+  "AllTotalCountSelected": "เลือกรายการทั้งหมด {{totalCount}} รายการแล้ว",
+  "Bulk Actions": "การดำเนินการเป็นกลุ่ม",
+  "Clear Selection": "ล้างการเลือก",
+  "SelectAllCountResults": "เลือกผลลัพธ์ทั้งหมด {{totalCount}} รายการ",
+  "SelectedCountOfTotalDisplayed": "เลือกรายการที่แสดง {{selectedItemCount}} จาก {{pageCount}} รายการแล้ว"
+}

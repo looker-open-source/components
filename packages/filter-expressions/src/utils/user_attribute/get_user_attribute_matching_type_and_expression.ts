@@ -48,5 +48,5 @@ export const getUserAttributeMatchingTypeAndExpression = (
   userAttributes?: UserAttributeWithValue[]
 ): UserAttributeWithValue | null => {
   const ast = parseFilterExpression(type, expression, userAttributes)
-  return userAttributes?.find(ua => ua.name === ast.attributeName) || null
+  return userAttributes?.find((ua) => ua.name === ast.attributeName) || null
 }

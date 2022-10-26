@@ -144,26 +144,37 @@ export const useArrowKeyNav = <E extends HTMLElement = HTMLElement>({
   }, [getNextFocus])
 
   const handleFocus = (e: FocusEvent<E>) => {
-    setFocusInside(true)
-
     // When focus lands on the container
     if (e.target === internalRef.current) {
       // Check if there's a previously focused item that is still rendered
+      // and return focus there
       if (
         focusedItemRef.current &&
         internalRef.current.contains(focusedItemRef.current)
       ) {
         focusedItemRef.current.focus()
       } else {
-        // Otherwise focus the first item
-        placeInitialFocus()
+        try {
+          // Otherwise check if the focus is via keyboard (if supported)
+          if (internalRef.current.matches(':focus-visible')) {
+            // If so, focus the first item
+            placeInitialFocus()
+          }
+        } catch (e) {
+          // If :focus-visible is not supported, always focus the first item
+          placeInitialFocus()
+        }
       }
     } else {
+      // Focus has moved to an item
       focusedItemRef.current = e.target
+      // Remove tabIndex={0} from the container
+      setFocusInside(true)
     }
   }
 
   const handleBlur = () => {
+    // Replace tabIndex={0} on the container
     setFocusInside(false)
   }
 
@@ -192,8 +203,10 @@ export const useArrowKeyNav = <E extends HTMLElement = HTMLElement>({
     onFocus: useWrapEvent(handleFocus, onFocus),
     onKeyDown: useWrapEvent(handleKeyDown, onKeyDown),
     ref: useForkedRef(internalRef, ref),
-    // Remove tabIndex from container if focus is inside to prevent focus from
-    // landing back on the container when shift-tabbing from the first item
+    // Toggle container's tabIndex so that
+    // 1) when focus is outside, the container is the intial focus target,
+    // and from there arrow keys move focus around within
+    // 2) when focus is inside, only items can be focused, not the container
     tabIndex: focusInside ? undefined : 0,
   }
 

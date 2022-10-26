@@ -1,0 +1,29 @@
+{
+  "coords1 to coords2": {
+    "value": "{{coords1}} até {{coords2}}"
+  },
+  "distance unit from lat, lon": {
+    "value": "{{distance}} {{unit}} de {{lat}}, {{lon}}"
+  },
+  "is anywhere": {
+    "value": "está em qualquer lado"
+  },
+  "is not null": {
+    "value": "não é nulo"
+  },
+  "is null": {
+    "value": "é nulo"
+  },
+  "lat degrees north": {
+    "value": "{{lat}}° N"
+  },
+  "lat degrees south": {
+    "value": "{{lat}}° S"
+  },
+  "lon degrees east": {
+    "value": "{{lon}}° E"
+  },
+  "lon degrees west": {
+    "value": "{{lon}}° O"
+  }
+}

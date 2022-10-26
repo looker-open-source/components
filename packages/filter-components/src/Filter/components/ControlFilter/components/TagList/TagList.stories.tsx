@@ -68,7 +68,7 @@ const options = [
   },
 ]
 
-const Template: Story<TagListProps> = args => {
+const Template: Story<TagListProps> = (args) => {
   const [value, setValue] = useState(args.value || [])
   const handleChange = (newValue: string[]) => {
     setValue(newValue)
@@ -86,7 +86,7 @@ Basic.args = {
 export const WithValues = Template.bind({})
 WithValues.args = {
   ...Basic.args,
-  value: options.map(x => x.value),
+  value: options.map((x) => x.value),
 }
 
 export default {

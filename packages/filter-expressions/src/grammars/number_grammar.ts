@@ -23,6 +23,7 @@
  SOFTWARE.
 
  */
+import { initializer } from './common/initializer'
 import { numbers } from './common/numbers'
 import { whitespace } from './common/whitespace'
 import { userAttribute } from './user_attribute_grammar'
@@ -34,7 +35,6 @@ import { userAttribute } from './user_attribute_grammar'
 // See https://docs.looker.com/reference/filter-expressions#number
 
 const grammar = `
-{ const Object = options.Object }
 
 EXPRESSION
 = LOGICAL_EXPRESSION / TERM
@@ -209,4 +209,10 @@ LTE = "<="
 LT = "<"
 `
 
-export const numberGrammar = grammar.concat(userAttribute, numbers, whitespace)
+export const numberGrammar = [
+  initializer,
+  grammar,
+  userAttribute,
+  numbers,
+  whitespace,
+].join('')

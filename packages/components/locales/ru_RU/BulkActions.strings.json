@@ -1,0 +1,8 @@
+{
+  "AllPageCountDisplayedSelected": "Выбраны все отображаемые элементы ({{pageCount}})",
+  "AllTotalCountSelected": "Выбраны все элементы ({{totalCount}})",
+  "Bulk Actions": "Массовые действия",
+  "Clear Selection": "Очистить выбор",
+  "SelectAllCountResults": "Выбрать все результаты ({{totalCount}})",
+  "SelectedCountOfTotalDisplayed": "Выбраны отображаемые элементы: {{selectedItemCount}} из {{pageCount}}"
+}

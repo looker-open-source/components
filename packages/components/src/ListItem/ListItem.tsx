@@ -29,7 +29,6 @@ import type { Ref } from 'react'
 import React, { forwardRef, useContext, useRef, useState } from 'react'
 import {
   createSafeRel,
-  getNextFocusTarget,
   HoverDisclosureContext,
   partitionAriaProps,
   undefinedCoalesce,
@@ -112,6 +111,7 @@ const ListItemInternal = forwardRef(
       ...props,
       color,
       density,
+      detail,
       icon: icon || (iconGutter ? <IconPlaceholder /> : undefined),
     })
 
@@ -128,7 +128,7 @@ const ListItemInternal = forwardRef(
     }
 
     const handleWrapperBlur = (event: React.FocusEvent<HTMLElement>) => {
-      const nextFocusTarget = getNextFocusTarget(event)
+      const nextFocusTarget = event.relatedTarget
 
       if (nextFocusTarget && !event.currentTarget.contains(nextFocusTarget)) {
         setHovered(false)

@@ -1,0 +1,8 @@
+{
+  "is not value": {
+    "value": "nėra {{value}}"
+  },
+  "is value": {
+    "value": "yra {{value}}"
+  }
+}

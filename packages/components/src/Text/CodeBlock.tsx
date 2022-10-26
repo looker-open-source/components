@@ -48,14 +48,8 @@ const CodeBlockLayout: FC<CodeBlockProps> = ({
 )
 
 export const CodeBlock = styled(CodeBlockLayout).attrs(
-  ({
-    border = '1px solid',
-    borderColor = 'ui2',
-    fontSize = 'small',
-    p = 'medium',
-  }) => ({
+  ({ border = 'ui2', fontSize = 'small', p = 'medium' }) => ({
     border,
-    borderColor,
     fontSize,
     p,
   })

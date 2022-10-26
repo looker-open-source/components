@@ -32,30 +32,33 @@ import { screen } from '@testing-library/react'
 import type { MonthTitleProps } from './MonthTitle'
 import { MonthTitle } from './MonthTitle'
 
-describe('MonthTitle', () => {
-  const defaultProps: MonthTitleProps = {
-    inline: false,
-    locale: en,
-    month: new Date('July 1, 2021'),
-    rangeType: 'draft',
-  }
+const defaultProps: MonthTitleProps = {
+  inline: false,
+  locale: en,
+  month: new Date('July 1, 2021'),
+  rangeType: 'draft',
+}
 
-  test('above 1st week', () => {
-    renderWithTheme(
-      <MonthTitle {...defaultProps} month={new Date('Jan 12, 2022')} />
-    )
-    const title = screen.getByText('Jan 2022')
-    expect(title).toHaveStyle('margin-bottom: 0.125rem')
-  })
+test('above 1st week', () => {
+  renderWithTheme(
+    <MonthTitle {...defaultProps} month={new Date('Jan 12, 2022')} />
+  )
+  const title = screen.getByText('Jan 2022')
+  expect(title).toHaveStyle('margin-bottom: 0.125rem')
+})
 
-  test('inline with 1st week', () => {
-    renderWithTheme(<MonthTitle {...defaultProps} inline />)
-    const title = screen.getByText('Jul 2021')
-    expect(title).toHaveStyle('margin-bottom: -2rem')
-  })
+test('inline with 1st week', () => {
+  renderWithTheme(<MonthTitle {...defaultProps} inline />)
+  const title = screen.getByText('Jul 2021')
+  expect(title).toHaveStyle('margin-bottom: -2rem')
+})
 
-  test('localization', () => {
-    renderWithTheme(<MonthTitle {...defaultProps} locale={ko} />)
-    expect(screen.getByText('7월 2021')).toBeVisible()
-  })
+test('localization', () => {
+  renderWithTheme(<MonthTitle {...defaultProps} locale={ko} />)
+  expect(screen.getByText('7월 2021')).toBeVisible()
+})
+
+test('month names do not overlap days on the same line', () => {
+  renderWithTheme(<MonthTitle {...defaultProps} />)
+  expect(screen.getByText('Jul 2021')).toHaveStyle('width: fit-content')
 })

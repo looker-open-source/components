@@ -1,0 +1,72 @@
+{
+  " complete": {
+    "value": " завершено"
+  },
+  "absolute prefix dateTime": {
+    "value": "{{prefix}} {{dateTime}}"
+  },
+  "ago": {
+    "value": "тому"
+  },
+  "from now": {
+    "value": "відтепер"
+  },
+  "is any time": {
+    "value": "є будь-яким часом"
+  },
+  "is before": {
+    "value": "раніше"
+  },
+  "is day": {
+    "value": "{{day}}"
+  },
+  "is from dateTimeStart until dateTimeEnd": {
+    "value": "з {{dateTimeStart}} до {{dateTimeEnd}}"
+  },
+  "is in month year": {
+    "value": "станом на {{month}} {{year}}"
+  },
+  "is in the last": {
+    "value": "за останні {{describeInterval}}"
+  },
+  "is in the year year": {
+    "value": "станом на {{year}} рік"
+  },
+  "is interval ago": {
+    "value": "{{interval}} тому"
+  },
+  "is intervalStart intervalType for intervalEnd": {
+    "value": "це {{intervalStart}} {{intervalType}} для {{intervalEnd}}"
+  },
+  "is not null": {
+    "value": "не має значення NULL"
+  },
+  "is on dateTime": {
+    "value": "станом на {{dateTime}}"
+  },
+  "is on or after": {
+    "value": "не раніше"
+  },
+  "is previous unitLabel": {
+    "value": "це попередній {{unitLabel}}"
+  },
+  "is type unitLabel": {
+    "value": "це {{type}} {{unitLabel}}"
+  },
+  "next": {
+    "value": "далі"
+  },
+  "prefix interval timePassed": {
+    "value": "{{prefix}} {{interval}} {{timePassed}}"
+  },
+  "prefix now": {
+    "value": "{{prefix}} зараз"
+  },
+  "this": {
+    "value": "це"
+  },
+  "this startInterval to endInterval": "це {{startInterval}} до {{endInterval}}",
+  "value complete unitLabel": {
+    "value": "{{value}}{{complete}} {{unitLabel}}"
+  }
+}

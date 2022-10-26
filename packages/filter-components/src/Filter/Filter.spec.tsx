@@ -225,7 +225,7 @@ describe('Filter', () => {
 
     renderWithTheme(<TestComponent />)
     const inputs = screen.getAllByRole('textbox')
-    expect(inputs[0]).toHaveValue('matches advanced')
+    expect(inputs[0]).toHaveValue('matches (advanced)')
     expect(inputs[1]).toHaveValue('5 mont')
 
     fireEvent.change(inputs[1], { target: { value: '5 month' } })
@@ -233,7 +233,30 @@ describe('Filter', () => {
     fireEvent.click(screen.getByText('rerender'))
 
     const updatedInputs = screen.getAllByRole('textbox')
-    expect(updatedInputs[0]).toHaveValue('matches advanced')
+    expect(updatedInputs[0]).toHaveValue('matches (advanced)')
     expect(updatedInputs[1]).toHaveValue('5 month')
+  })
+
+  it('requires at least one of: expressionType, field, type', () => {
+    // @ts-expect-error: require one of expressionType, field, or type
+    renderWithTheme(<Filter expression="" name="test" />)
+    // Just expressionType: good
+    renderWithTheme(
+      <Filter expression="" name="test" expressionType="string" />
+    )
+    // Just field: good
+    renderWithTheme(<Filter expression="" name="test" field={{}} />)
+    // Just type: good
+    renderWithTheme(<Filter expression="" name="test" type="date_filter" />)
+    // expressionType, field and type: good
+    renderWithTheme(
+      <Filter
+        expression=""
+        name="test"
+        expressionType="string"
+        field={{}}
+        type="field_filter"
+      />
+    )
   })
 })

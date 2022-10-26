@@ -1,0 +1,82 @@
+{
+  "complete day": "יום מלא",
+  "complete days": {
+    "value": "ימים מלאים"
+  },
+  "complete fiscal quarter": "רבעון פיסקלי מלא",
+  "complete fiscal quarters": {
+    "value": "רבעונים פיסקליים מלאים"
+  },
+  "complete fiscal year": "שנה פיסלית מלאה",
+  "complete fiscal years": {
+    "value": "שנים פיסקליות מלאות"
+  },
+  "complete hour": "שעה מלאה",
+  "complete hours": {
+    "value": "שעות מלאות"
+  },
+  "complete minute": "דקה מלאה",
+  "complete minutes": {
+    "value": "דקות מלאות"
+  },
+  "complete month": "חודש מלא",
+  "complete months": {
+    "value": "חודשים מלאים"
+  },
+  "complete quarter": "רבעון מלא",
+  "complete quarters": {
+    "value": "רבעונים מלאים"
+  },
+  "complete second": "שניה מלאה",
+  "complete seconds": {
+    "value": "שניות מלאות"
+  },
+  "complete week": "שבוע מלא",
+  "complete weeks": {
+    "value": "שבועות מלאים"
+  },
+  "complete year": "שנה מלאה",
+  "complete years": {
+    "value": "שנים מלאות"
+  },
+  "day": "יום",
+  "days": {
+    "value": "ימים"
+  },
+  "fiscal quarter": "רבעון פיסקלי",
+  "fiscal quarters": {
+    "value": "רבעונים פיסקליים"
+  },
+  "fiscal year": "שנה פיסקלית",
+  "fiscal years": {
+    "value": "שנים פיסקליות"
+  },
+  "hour": "שעה",
+  "hours": {
+    "value": "שעות"
+  },
+  "minute": "דקה",
+  "minutes": {
+    "value": "דקות"
+  },
+  "month": "חודש",
+  "months": {
+    "value": "חודשים"
+  },
+  "quarter": "רבעון",
+  "quarters": {
+    "value": "רבעונים"
+  },
+  "second": "שנייה",
+  "seconds": {
+    "value": "שניות"
+  },
+  "week": "שבוע",
+  "weeks": {
+    "value": "שבועות"
+  },
+  "year": "שנה",
+  "years": {
+    "value": "שנים"
+  }
+}

@@ -1,0 +1,72 @@
+{
+  " complete": {
+    "value": " fuldført"
+  },
+  "absolute prefix dateTime": {
+    "value": "{{prefix}} {{dateTime}}"
+  },
+  "ago": {
+    "value": "siden"
+  },
+  "from now": {
+    "value": "fra nu"
+  },
+  "is any time": {
+    "value": "er når som helst"
+  },
+  "is before": {
+    "value": "er før"
+  },
+  "is day": {
+    "value": "er {{day}}"
+  },
+  "is from dateTimeStart until dateTimeEnd": {
+    "value": "er fra {{dateTimeStart}} indtil {{dateTimeEnd}}"
+  },
+  "is in month year": {
+    "value": "er om {{month}} {{year}}"
+  },
+  "is in the last": {
+    "value": "er inden for den/det seneste {{describeInterval}}"
+  },
+  "is in the year year": {
+    "value": "er i år {{year}}"
+  },
+  "is interval ago": {
+    "value": "er {{interval}} siden"
+  },
+  "is intervalStart intervalType for intervalEnd": {
+    "value": "er {{intervalStart}} {{intervalType}} for {{intervalEnd}}"
+  },
+  "is not null": {
+    "value": "er ikke null"
+  },
+  "is on dateTime": {
+    "value": "er den {{dateTime}}"
+  },
+  "is on or after": {
+    "value": "er på eller efter"
+  },
+  "is previous unitLabel": {
+    "value": "er tidligere {{unitLabel}}"
+  },
+  "is type unitLabel": {
+    "value": "er {{type}} {{unitLabel}}"
+  },
+  "next": {
+    "value": "næste"
+  },
+  "prefix interval timePassed": {
+    "value": "{{prefix}} {{interval}} {{timePassed}}"
+  },
+  "prefix now": {
+    "value": "{{prefix}} nu"
+  },
+  "this": {
+    "value": "denne"
+  },
+  "this startInterval to endInterval": "dette {{startInterval}} til {{endInterval}}",
+  "value complete unitLabel": {
+    "value": "{{value}}{{complete}} {{unitLabel}}"
+  }
+}

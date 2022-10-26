@@ -47,7 +47,25 @@ export interface SliderProps
   max?: number
   min?: number
   step?: number
-  value?: number
+  value?: number | string
+}
+
+const getValueAsNumber = (
+  value: string | number,
+  defaultValue: number
+): number => {
+  if (typeof value === 'number') {
+    return value
+  }
+
+  const numericValue = parseFloat(value)
+  if (isNaN(numericValue)) {
+    // This is for developers which is why the string has not been i18n
+    // eslint-disable-next-line no-console
+    console.error('value prop in Slider is not numeric')
+    return defaultValue
+  }
+  return numericValue
 }
 
 const SliderInternal = forwardRef(
@@ -67,8 +85,9 @@ const SliderInternal = forwardRef(
     }: SliderProps,
     ref: Ref<HTMLInputElement>
   ) => {
+    const numericValue = getValueAsNumber(value, min)
     const [isFocused, setIsFocused] = useState(false)
-    const [internalValue, setInternalValue] = useState(value)
+    const [internalValue, setInternalValue] = useState(numericValue)
 
     if (min > max) {
       // Props don't make sense. ABORT!!
@@ -82,7 +101,7 @@ const SliderInternal = forwardRef(
     const boundSliderValue = (v: number) => Math.min(Math.max(v, min), max) // enforce that value stays between min and max
 
     const displayValue = isFunction(onChange)
-      ? boundSliderValue(value)
+      ? boundSliderValue(numericValue)
       : boundSliderValue(internalValue)
 
     const fillPercent = Math.round(((displayValue - min) / (max - min)) * 100)

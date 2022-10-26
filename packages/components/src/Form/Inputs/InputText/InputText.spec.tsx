@@ -166,7 +166,7 @@ describe('InputText', () => {
       `)
     })
 
-    xtest('focus & blur behavior', () => {
+    test.skip('focus & blur behavior', () => {
       const handleBlur = jest.fn()
       const handleFocus = jest.fn()
       renderWithTheme(

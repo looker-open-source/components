@@ -1,0 +1,82 @@
+{
+  "complete day": "pełny dzień",
+  "complete days": {
+    "value": "pełnych dni"
+  },
+  "complete fiscal quarter": "pełny kwartał fiskalny",
+  "complete fiscal quarters": {
+    "value": "pełnych kw. fiskalnych"
+  },
+  "complete fiscal year": "pełny rok fiskalny",
+  "complete fiscal years": {
+    "value": "pełne lata fiskalne/pełnych lat fiskalnych"
+  },
+  "complete hour": "pełna godzina",
+  "complete hours": {
+    "value": "pełnych godz."
+  },
+  "complete minute": "pełna minuta",
+  "complete minutes": {
+    "value": "pełnych min"
+  },
+  "complete month": "pełny miesiąc",
+  "complete months": {
+    "value": "pełnych mies."
+  },
+  "complete quarter": "pełny kwartał",
+  "complete quarters": {
+    "value": "pełnych kw."
+  },
+  "complete second": "pełna sekunda",
+  "complete seconds": {
+    "value": "pełnych sek."
+  },
+  "complete week": "pełny tydzień",
+  "complete weeks": {
+    "value": "pełnych tyg."
+  },
+  "complete year": "pełny rok",
+  "complete years": {
+    "value": "pełne lata/pełnych lat"
+  },
+  "day": "dzień",
+  "days": {
+    "value": "dni"
+  },
+  "fiscal quarter": "kwartał fiskalny",
+  "fiscal quarters": {
+    "value": "kw. fiskalne"
+  },
+  "fiscal year": "rok fiskalny",
+  "fiscal years": {
+    "value": "lata fiskalne/lat fiskalnych"
+  },
+  "hour": "godzina",
+  "hours": {
+    "value": "godz."
+  },
+  "minute": "minuta",
+  "minutes": {
+    "value": "min"
+  },
+  "month": "miesiąc",
+  "months": {
+    "value": "mies."
+  },
+  "quarter": "kwartał",
+  "quarters": {
+    "value": "kw."
+  },
+  "second": "sekunda",
+  "seconds": {
+    "value": "sek."
+  },
+  "week": "tydzień",
+  "weeks": {
+    "value": "tyg."
+  },
+  "year": "rok",
+  "years": {
+    "value": "lat/lata"
+  }
+}

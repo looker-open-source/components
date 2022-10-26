@@ -2,67 +2,63 @@
   "name": "@looker/filter-components",
   "main": "src/index.ts",
   "license": "MIT",
-  "version": "0.10.22",
+  "version": "0.10.23",
+  "sideEffects": false,
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "repository": {
+    "url": "looker-open-source/components",
+    "directory": "packages/filter-components"
+  },
+  "scripts": {
+    "buildLocales": "lk buildLocales",
+    "prepublishOnly": "lk prepublishOnly",
+    "test": "lk test",
+    "coverage": "lk coverage"
   },
   "dependencies": {
-    "@looker/components": "^3.0.8",
-    "@looker/components-date": "^3.0.11",
-    "@looker/filter-expressions": "^0.8.21",
-    "@looker/i18n": "^0.1.8",
-    "@looker/icons": "^1.5.21",
-    "@looker/sdk": "^22.4.2",
+    "@looker/components": "4.0.3",
+    "@looker/filter-expressions": "1.0.0",
+    "@looker/i18n": "0.1.8",
+    "@looker/sdk": "22.4.2",
     "@looker/sdk-rtl": "^21.3.3",
     "@styled-icons/material": "10.34.0",
     "@styled-icons/material-outlined": "10.34.0",
     "@styled-icons/material-rounded": "10.34.0",
     "date-fns": "^2.10.0",
-    "lodash": "^4.17.20",
+    "lodash": "*",
     "polished": "3.4.1",
     "use-debounce": "5.2.1"
   },
   "devDependencies": {
     "@babel/cli": "*",
-    "@looker/components": "*",
-    "@looker/components-test-utils": "^1.5.26",
-    "@looker/eslint-config-oss": "^1.7.21",
-    "@looker/stylelint-config": "^1.5.19",
+    "@looker/babel-preset-prebuild-locales": "*",
+    "@looker/babel-preset-styled-components": "*",
+    "@looker/babel-preset-typescript": "*",
+    "@looker/components-scripts": "*",
+    "@looker/components-test-utils": "*",
+    "@looker/eslint-config-oss": "*",
+    "@looker/jest-config": "*",
+    "@looker/stylelint-config": "*",
+    "@looker/test-utils": "*",
     "@storybook/testing-react": "^0.0.22",
     "@testing-library/react": "*",
-    "@testing-library/react-hooks": "3.3.0",
-    "@typescript-eslint/eslint-plugin": "*",
-    "@typescript-eslint/parser": "*",
+    "@testing-library/react-hooks": "*",
     "enzyme": "3.10.0",
-    "eslint-config-prettier": "*",
-    "eslint-config-standard": "*",
-    "eslint-plugin-header": "*",
-    "eslint-plugin-i18next": "*",
-    "eslint-plugin-import": "*",
-    "eslint-plugin-jest-dom": "*",
-    "eslint-plugin-mdx": "*",
-    "eslint-plugin-node": "*",
-    "eslint-plugin-prettier": "*",
-    "eslint-plugin-promise": "*",
-    "eslint-plugin-react": "*",
-    "eslint-plugin-react-hooks": "*",
-    "eslint-plugin-sort-keys-fix": "*",
-    "eslint-plugin-standard": "*",
-    "eslint-plugin-testing-library": "*",
     "glob": "7.1.6",
     "react": "16.14.0",
     "react-dom": "16.14.0",
     "react-i18next": "11.8.15",
-    "react-test-renderer": "16.11.0",
     "styled-components": "5.3.1"
   },
   "peerDependencies": {
-    "@looker/components": "3",
     "i18next": "20.3.1",
-    "react": "^16.11.0",
-    "react-dom": "^16.11.0",
+    "react": "16.14.0 - 18",
+    "react-dom": "16.14.0 - 18",
     "react-i18next": "11.8.15",
-    "styled-components": "^5"
+    "styled-components": "^5.3.1"
   },
   "eslintConfig": {
     "root": true,
@@ -72,46 +68,14 @@
     "rules": {
       "@typescript-eslint/no-explicit-any": "off",
       "@typescript-eslint/no-non-null-assertion": "off",
-      "no-restricted-imports": "off",
       "camelcase": "off",
       "import/order": "off",
-      "sort-keys-fix/sort-keys-fix": "off"
-    },
-    "overrides": [
-      {
-        "files": [
-          "*.tsx",
-          "*.ts"
-        ],
-        "excludedFiles": [
-          "*.spec.*",
-          "*.stories.*",
-          "**/stories/**",
-          "**/__mocks__/**"
-        ],
-        "rules": {
-          "no-restricted-imports": [
-            "error",
-            {
-              "paths": [
-                {
-                  "message": "Please import icons from '@styled-icons/material/SomeIcon'",
-                  "name": "@styled-icons/material"
-                },
-                {
-                  "message": "Please import icons from '@styled-icons/material-outlined/SomeIcon'",
-                  "name": "@styled-icons/material-outlined"
-                },
-                {
-                  "message": "Please import icons from '@styled-icons/material-rounded/SomeIcon'",
-                  "name": "@styled-icons/material-rounded"
-                }
-              ]
-            }
-          ]
-        }
-      }
-    ]
+      "no-restricted-imports": "off",
+      "sort-keys-fix/sort-keys-fix": "off",
+      "i18next/no-literal-string": "off"
+    }
   },
-  "gitHead": "734f77cda8050d9eea83a187113333dfad8650ca"
+  "stylelint": {
+    "extends": "@looker/stylelint-config"
+  }
 }

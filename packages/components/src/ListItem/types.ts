@@ -43,7 +43,7 @@ export interface ListItemDimensions {
   height: number
   px: SpacingSizes
   py: SpacingSizes | '0.375rem'
-  iconGap: SpacingSizes
+  gap: SpacingSizes
   iconSize: IconSize
   labelFontSize: FontSizes
   labelLineHeight: LineHeights
@@ -55,7 +55,7 @@ export const listItemDimensionKeys = [
   'height',
   'px',
   'py',
-  'iconGap',
+  'gap',
   'iconSize',
   'labelFontSize',
   'labelLineHeight',
@@ -120,7 +120,6 @@ export interface ListItemDetailOptions
   /**
    * If true, the detail will appear outside of the item's grey background on hover
    * In addition, if true, events originating from the detail will not bubble to the item's handlers
-   * @deprecated
    * @default false
    */
   accessory?: boolean
@@ -129,10 +128,6 @@ export interface ListItemDetailOptions
    * @default false
    */
   hoverDisclosure?: boolean
-  /**
-   * @deprecated No padding applied always. Prop to be removed soon
-   */
-  padding?: boolean
 }
 
 export type ListItemRole = 'button' | 'link' | 'none'

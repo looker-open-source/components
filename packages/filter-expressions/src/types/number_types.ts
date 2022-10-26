@@ -23,7 +23,7 @@
  SOFTWARE.
 
  */
-export enum NumberTypes {
+enum NumberTypes {
   EQUAL = '=',
   GT = '>',
   GTE = '>=',
@@ -34,3 +34,5 @@ export enum NumberTypes {
   NULL = 'null',
   BETWEEN = 'between',
 }
+
+export { NumberTypes }

@@ -29,8 +29,8 @@ import React from 'react'
 import type { DataTableProps } from '../'
 import { DataTable } from '../'
 import { useSelectManager } from '../utils/useSelectManager'
-import { columns as mockColumns } from '../../__mocks__/DataTable/columns'
-import { data } from '../../__mocks__/DataTable/data'
+import { columns as mockColumns } from '../../fixtures/DataTable/columns'
+import { data } from '../../fixtures/DataTable/data'
 import { items, itemsNoActions } from './items'
 
 interface DemoProps extends Omit<DataTableProps, 'bulk' | 'select'> {

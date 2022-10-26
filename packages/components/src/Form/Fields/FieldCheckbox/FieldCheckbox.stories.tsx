@@ -26,10 +26,10 @@
 
 import type { Story } from '@storybook/react/types-6-0'
 import React, { useState } from 'react'
+import { defaultArgTypes as argTypes } from '@looker/storybook'
 import { UnorderedList } from '../../../UnorderedList'
 import type { CheckboxTree, MixedBoolean } from '../../Inputs/Checkbox'
 import { useMixedStateCheckbox } from '../../Inputs/Checkbox'
-import { defaultArgTypes as argTypes } from '../../../../../../apps/storybook/src/defaultArgTypes'
 import type { FieldCheckboxProps } from './FieldCheckbox'
 import { FieldCheckbox } from './FieldCheckbox'
 

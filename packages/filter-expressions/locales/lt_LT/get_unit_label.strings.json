@@ -1,0 +1,82 @@
+{
+  "complete day": "praėjusi diena",
+  "complete days": {
+    "value": "praėjusios dienos"
+  },
+  "complete fiscal quarter": "praėjęs finansinis ketvirtis",
+  "complete fiscal quarters": {
+    "value": "praėję finansiniai ketvirčiai"
+  },
+  "complete fiscal year": "praėję finansiniai metai",
+  "complete fiscal years": {
+    "value": "praėję finansiniai metai"
+  },
+  "complete hour": "praėjusi valanda",
+  "complete hours": {
+    "value": "praėjusios valandos"
+  },
+  "complete minute": "praėjusi minutė",
+  "complete minutes": {
+    "value": "praėjusios minutės"
+  },
+  "complete month": "praėjęs mėnuo",
+  "complete months": {
+    "value": "praėję mėnesiai"
+  },
+  "complete quarter": "praėjęs ketvirtis",
+  "complete quarters": {
+    "value": "praėję ketvirčiai"
+  },
+  "complete second": "praėjusi sekundė",
+  "complete seconds": {
+    "value": "praėjusios sekundės"
+  },
+  "complete week": "praėjusi savaitė",
+  "complete weeks": {
+    "value": "praėjusios savaitės"
+  },
+  "complete year": "praėję metai",
+  "complete years": {
+    "value": "praėję metai"
+  },
+  "day": "d.",
+  "days": {
+    "value": "dienos"
+  },
+  "fiscal quarter": "finansinis ketvirtis",
+  "fiscal quarters": {
+    "value": "finansiniai ketvirčiai"
+  },
+  "fiscal year": "finansiniai metai",
+  "fiscal years": {
+    "value": "finansiniai metai"
+  },
+  "hour": "val.",
+  "hours": {
+    "value": "valandos"
+  },
+  "minute": "min.",
+  "minutes": {
+    "value": "minutės"
+  },
+  "month": "mėnuo",
+  "months": {
+    "value": "mėnesiai"
+  },
+  "quarter": "ketvirtis",
+  "quarters": {
+    "value": "ketvirčiai"
+  },
+  "second": "sek.",
+  "seconds": {
+    "value": "sekundės"
+  },
+  "week": "savaitė",
+  "weeks": {
+    "value": "savaitės"
+  },
+  "year": "metai",
+  "years": {
+    "value": "metai"
+  }
+}

@@ -1,0 +1,41 @@
+import { ButtonToggle, Code, MessageBar } from '@looker/components'
+import { excludedProps } from '@looker/storybook'
+import storyBasic from '!!raw-loader!./Basic'
+import storyDisabled from '!!raw-loader!./Disabled'
+import storyNullable from '!!raw-loader!./Nullable'
+import storyOptions from '!!raw-loader!./Options'
+
+<Meta component={ButtonToggle} title="Actions/ButtonToggle" />
+
+# ButtonToggle
+
+<MessageBar noActions intent="inform">
+  <Code>ButtonToggle</Code> does not support uncontrolled versions.
+</MessageBar>
+
+`ButtonToggle` behaves as radio button group. Use this when the user may select only one of a small set of options.
+Control externally via `value` and `onChange` props. On individual `ButtonItem`, `value` is optional and will fall back to the text if absent.
+
+<Editor code={storyBasic} />
+
+## Disabled
+
+Use a disabled Button Toggle to indicate to the user what action will be possible on a page once a prerequisite action is taken. Disabled buttons do not respond to user interaction.
+
+<Editor code={storyDisabled} />
+
+## Nullable
+
+Use the `nullable` prop if the user should be able to click the selected item to de-select it.
+
+<Editor code={storyNullable} />
+
+## Options
+
+An alternative to composing a `ButtonGroup` or `ButtonToggle` with `ButtonItem` children is to pass it an array of `options`.
+
+<Editor code={storyNullable} />
+
+## Props
+
+<ArgsTable of={ButtonToggle} exclude={excludedProps} />

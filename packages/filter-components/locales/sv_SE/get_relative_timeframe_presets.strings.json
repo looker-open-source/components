@@ -1,0 +1,56 @@
+{
+  "Last 14 Days": {
+    "value": "Sista 14 dagarna"
+  },
+  "Last 180 Days": {
+    "value": "Sista 180 dagarna"
+  },
+  "Last 28 Days": {
+    "value": "Sista 28 dagarna"
+  },
+  "Last 30 Days": {
+    "value": "Sista 30 dagarna"
+  },
+  "Last 365 Days": {
+    "value": "Sista 365 dagarna"
+  },
+  "Last 7 Days": {
+    "value": "Sista 7 dagarna"
+  },
+  "Last 90 Days": {
+    "value": "Sista 90 dagarna"
+  },
+  "Previous Month": {
+    "value": "Föregående månad"
+  },
+  "Previous Quarter": {
+    "value": "Föregående kvartal"
+  },
+  "Previous Week": {
+    "value": "Föregående vecka"
+  },
+  "Previous Year": {
+    "value": "Föregående år"
+  },
+  "This Month": {
+    "value": "Denna månad"
+  },
+  "This Quarter": {
+    "value": "Detta kvartal"
+  },
+  "This Week": {
+    "value": "Denna vecka"
+  },
+  "This Year": {
+    "value": "Detta år"
+  },
+  "Today": {
+    "value": "I dag"
+  },
+  "Year To Date": {
+    "value": "År till dags dato"
+  },
+  "Yesterday": {
+    "value": "I går"
+  }
+}

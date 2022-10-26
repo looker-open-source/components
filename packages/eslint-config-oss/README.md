@@ -16,7 +16,7 @@ The default export contains all default Airbnb ESLint rules, including ECMAScrip
 Install the package with
 
 ```sh
-yarn add @looker/eslint-config-oss eslint -D
+npm install --save-dev @looker/eslint-config-oss eslint
 ```
 
 ## Usage

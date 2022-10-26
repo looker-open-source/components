@@ -41,5 +41,7 @@ export type ColumnProps = VisWrapperProps &
     fields: Fields
   }
 
-export type CColumn = { type: SupportedChartTypes['column'] } & BarBaseOptions &
+export type CColumn = {
+  type?: SupportedChartTypes['column']
+} & BarBaseOptions &
   CommonCartesianProperties

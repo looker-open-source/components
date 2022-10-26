@@ -50,6 +50,7 @@ describe('FilterErrorMessage utils tests', () => {
   const getFilter = (overrideFilter: Partial<FilterProps> = {}) => {
     const defaultFilter: FilterProps = {
       expression: '',
+      expressionType: 'string',
       isRequired: true,
       name: 'testfilter',
     }

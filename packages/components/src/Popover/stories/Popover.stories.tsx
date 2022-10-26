@@ -29,7 +29,7 @@ import {
   ScrollLockContext,
   FocusTrapContext,
 } from '@looker/components-providers'
-import { defaultArgTypes as argTypes } from '../../../../../apps/storybook/src/defaultArgTypes'
+import { defaultArgTypes as argTypes } from '@looker/storybook'
 import {
   Box2,
   Button,
@@ -47,12 +47,16 @@ import {
   SpaceVertical,
   useToggle,
   PopoverLayout,
+  FieldRadioGroup,
+  DialogContext,
+  FieldCheckbox,
+  ComponentsProvider,
 } from '../..'
 import { Tooltip } from '../../Tooltip'
 import { Popover } from '../Popover'
 import { PopoverContent } from '../Layout/PopoverContent'
 import { usePopover } from '../usePopover'
-import { Constitution, ConstitutionShort } from '../../__mocks__/Constitution'
+import { Constitution, ConstitutionShort } from '../../fixtures/Constitution'
 
 export * from './OverflowExamples'
 
@@ -496,5 +500,44 @@ export const MultiFunctionButton = () => {
 }
 MultiFunctionButton.parameters = {
   docs: { disable: true },
+  storyshots: { disable: true },
+}
+
+const Wrapper = () => {
+  const [value, setValue] = React.useState('')
+  const { closeModal } = React.useContext(DialogContext)
+
+  return (
+    <Box2 pt="u3" width="100%">
+      <FieldCheckbox label="Checkbox" value="checked" />
+      <Box2 pl="u6" pt="u2">
+        <FieldRadioGroup
+          options={[
+            { label: 'One', value: '1' },
+            { label: 'Two', value: '2' },
+            { label: 'Three', value: '3' },
+          ]}
+          value={value}
+          onChange={setValue}
+        />
+      </Box2>
+      <Button onClick={closeModal}>Done</Button>
+    </Box2>
+  )
+}
+
+export const PopoverFieldRadioGroup = () => {
+  return (
+    <ComponentsProvider>
+      <Box2 p="ui1" className="App">
+        <Popover aria-haspopup width="300px" content={<Wrapper />}>
+          <Button>Open Popover</Button>
+        </Popover>
+      </Box2>
+    </ComponentsProvider>
+  )
+}
+
+PopoverFieldRadioGroup.parameters = {
   storyshots: { disable: true },
 }

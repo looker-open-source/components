@@ -1,0 +1,14 @@
+{
+  "feet": {
+    "value": "fot"
+  },
+  "kilometers": {
+    "value": "kilometer"
+  },
+  "meters": {
+    "value": "meter"
+  },
+  "miles": {
+    "value": "miles"
+  }
+}

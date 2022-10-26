@@ -28,7 +28,7 @@ import React from 'react'
 import { screen } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import map from 'lodash/map'
-import { fieldOptions } from '../../../__mocks__/CheckboxRadio'
+import { fieldOptions } from '../../../fixtures/CheckboxRadio'
 import { FieldRadioGroup } from './FieldRadioGroup'
 
 const fieldRadioProps = {

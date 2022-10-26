@@ -27,6 +27,7 @@ import merge from 'lodash/merge'
 import dateLocale from 'date-fns/locale/zh-TW'
 import type { I18nStateWithDates } from '../../utils'
 import { zhTW as expressionLocale } from '@looker/filter-expressions'
+import { zhTW as componentsLocale } from '@looker/components'
 
 const resources = {
   AddRemoveButtons: {
@@ -66,16 +67,16 @@ const resources = {
   date_units: {
     day: '天',
     days: '天',
-    'fiscal quarter': '會計季度',
-    'fiscal quarters': '會計季度',
-    'fiscal year': '會計年度',
-    'fiscal years': '會計年度',
+    'fiscal quarter': '個會計季度',
+    'fiscal quarters': '個會計季度',
+    'fiscal year': '個會計年度',
+    'fiscal years': '個會計年度',
     hour: '小時',
     hours: '小時',
     minute: '分鐘',
     minutes: '分鐘',
     month: '月',
-    months: '個月',
+    months: '月',
     quarter: '季',
     quarters: '季',
     second: '秒',
@@ -84,6 +85,9 @@ const resources = {
     weeks: '週',
     year: '年',
     years: '年',
+  },
+  DateRange: {
+    'until (before)': '直到 (之前)',
   },
   get_date_filter_options: {
     is: '是',
@@ -243,5 +247,12 @@ const resources = {
 export const zhTW: I18nStateWithDates = {
   dateLocale,
   locale: 'zh-TW',
-  resources: { 'zh-TW': merge(resources, expressionLocale.resources['zh-TW']) },
+  resources: {
+    'zh-TW': merge(
+      {},
+      resources,
+      expressionLocale.resources['zh-TW'],
+      componentsLocale.resources['zh-TW']
+    ),
+  },
 }

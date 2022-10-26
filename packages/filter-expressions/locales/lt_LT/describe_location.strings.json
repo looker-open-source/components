@@ -1,0 +1,29 @@
+{
+  "coords1 to coords2": {
+    "value": "{{coords1}}–{{coords2}}"
+  },
+  "distance unit from lat, lon": {
+    "value": "{{distance}} {{unit}} nuo {{lat}}, {{lon}}"
+  },
+  "is anywhere": {
+    "value": "yra bet kur"
+  },
+  "is not null": {
+    "value": "nėra nulis"
+  },
+  "is null": {
+    "value": "yra nulis"
+  },
+  "lat degrees north": {
+    "value": "{{lat}}°N"
+  },
+  "lat degrees south": {
+    "value": "{{lat}}°S"
+  },
+  "lon degrees east": {
+    "value": "{{lon}}°E"
+  },
+  "lon degrees west": {
+    "value": "{{lon}}°W"
+  }
+}

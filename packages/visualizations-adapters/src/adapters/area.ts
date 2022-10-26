@@ -34,7 +34,7 @@ import type {
 } from '../types'
 
 export type CArea = {
-  type: SupportedChartTypes['area']
+  type?: SupportedChartTypes['area']
 } & CLineBase
 
 export type AreaProps = VisWrapperProps &

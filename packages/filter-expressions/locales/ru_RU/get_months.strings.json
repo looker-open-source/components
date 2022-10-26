@@ -1,0 +1,38 @@
+{
+  "April": {
+    "value": "Апрель"
+  },
+  "August": {
+    "value": "Август"
+  },
+  "December": {
+    "value": "Декабрь"
+  },
+  "February": {
+    "value": "Февраль"
+  },
+  "January": {
+    "value": "Январь"
+  },
+  "July": {
+    "value": "Июль"
+  },
+  "June": {
+    "value": "Июнь"
+  },
+  "March": {
+    "value": "Март"
+  },
+  "May": {
+    "value": "Май"
+  },
+  "November": {
+    "value": "Ноябрь"
+  },
+  "October": {
+    "value": "Октябрь"
+  },
+  "September": {
+    "value": "Сентябрь"
+  }
+}

@@ -26,7 +26,7 @@
 
 import React, { useState } from 'react'
 import { Dialog } from '..'
-import { DialogMediumContent } from '../../__mocks__/DialogMediumContent'
+import { DialogMediumContent } from '../../fixtures/DialogMediumContent'
 
 export const Controlled = () => {
   const [isOpen, setOpen] = useState(false)

@@ -24,7 +24,7 @@
 
  */
 
-import { mockLineConfig, mockFields, mockSdkDataResponse } from '../__mocks__'
+import { mockLineConfig, mockFields, mockSdkDataResponse } from '../fixtures'
 import { truncateHeader } from './truncateHeader'
 
 test('config.truncate_header === undefined', () => {

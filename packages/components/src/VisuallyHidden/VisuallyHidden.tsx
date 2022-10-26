@@ -34,6 +34,7 @@ export const visuallyHiddenStyle = css`
   position: absolute;
   top: 0;
   width: 1px;
+  color: #000;
 `
 
 export const VisuallyHidden = styled.div`

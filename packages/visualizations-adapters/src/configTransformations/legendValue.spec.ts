@@ -25,7 +25,7 @@
  */
 
 import { legendValue } from './legendValue'
-import { mockPieConfig, mockFields, mockSdkDataResponse } from '../__mocks__'
+import { mockPieConfig, mockFields, mockSdkDataResponse } from '../fixtures'
 
 describe('legendValue', () => {
   test('default value', () => {

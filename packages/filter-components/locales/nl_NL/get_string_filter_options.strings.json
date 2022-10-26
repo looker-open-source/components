@@ -1,0 +1,14 @@
+{
+  "contains": "bevat",
+  "doesnt contain": "bevat geen",
+  "doesnt end with": "eindigt niet met",
+  "doesnt start with": "begint niet met",
+  "ends with": "eindigt met",
+  "is": "is",
+  "is blank": "is leeg",
+  "is not": "is niet",
+  "is not blank": "is niet leeg",
+  "is not null": "geldige datums",
+  "is null": "ongeldige datums",
+  "starts with": "begint met"
+}

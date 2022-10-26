@@ -131,8 +131,6 @@ const LinkLayout = forwardRef(
   }
 )
 
-LinkLayout.displayName = 'LinkLayout'
-
 /**
  * The `<Link />` component renders an `<a>` tag that accepts an `href` property.
  *

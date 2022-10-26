@@ -1,0 +1,11 @@
+{
+  "Invalid value": {
+    "value": "Недопустимое значение"
+  },
+  "No value is set for your user attribute": {
+    "value": "Значение пользовательского атрибута не задано"
+  },
+  "Selection required": {
+    "value": "Требуется выбрать"
+  }
+}

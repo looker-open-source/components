@@ -1,0 +1,81 @@
+import { IconButton } from '@looker/components'
+import { excludedProps } from '@looker/storybook'
+import storyBasic from '!!raw-loader!./Basic'
+import storyXXSmall from '!!raw-loader!./XXSmall'
+import storyXSmall from '!!raw-loader!./XSmall'
+import storySmall from '!!raw-loader!./Small'
+import storyMedium from '!!raw-loader!./Medium'
+import storyLarge from '!!raw-loader!./Large'
+import storyRound from '!!raw-loader!./Round'
+import storySquare from '!!raw-loader!./Square'
+import storyToggleOn from '!!raw-loader!./ToggleOn'
+import storyToggleOff from '!!raw-loader!./ToggleOff'
+import storyToggleDynamic from '!!raw-loader!./ToggleDynamic'
+import storyToggleBackground from '!!raw-loader!./ToggleBackground'
+import storyToggleColor from '!!raw-loader!./ToggleColor'
+import storyTooltip from '!!raw-loader!./Tooltip'
+import storyTooltipDisabled from '!!raw-loader!./TooltipDisabled'
+
+<Meta component={IconButton} title="Actions/IconButton" />
+
+# IconButton
+
+`IconButton`'s are used when you need an icon to trigger an action, such as showing a dialog or deleting an item.
+It require a `label` that describes it's action. The `label` should be descriptive and succinct.
+If you need an icon for purely decorative purposes use an `<Icon />` instead.
+
+<Editor code={storyBasic} />
+
+## Sizes
+
+- `xxsmall` | `xsmall` (default) | `small` | `medium` | `large`
+
+<Editor code={storyXXSmall} />
+<Editor code={storyXSmall} />
+<Editor code={storySmall} />
+<Editor code={storyMedium} />
+<Editor code={storyLarge} />
+
+## Shapes
+
+- `round` (default) | `square`
+
+<Editor code={storyRound} />
+<Editor code={storySquare} />
+
+## Toggle
+
+Icon buttons have the `toggle` prop which can be used to show a toggleable state. The `toggle` prop has to be explictly set to either `true` or `false`.
+
+<Editor code={storyToggleOn} />
+<Editor code={storyToggleOff} />
+<Editor code={storyToggleDynamic} />
+
+## ToggleBackground
+
+Icon buttons have the `toggleBackground` prop which can be used to show a background color to the Icon. The `toggle` prop has to be explictly set to either `true` or `false`.
+
+<Editor code={storyToggleBackground} />
+
+### ToggleColor
+
+Icon buttons have the `toggleColor` prop which can be used to specify what the icon's color and background color are when `toggle = true`. It accepts the following values:
+`key` | `calculation` | `dimension` | `measure`
+
+<Editor code={storyToggleColor} />
+
+## IconButton & Tooltip
+
+You can also use your own `Tooltip` around `IconButton` (this will effectively remove the "built-in" `Tooltip`)
+
+<Editor code={storyTooltip} />
+
+## Disabling the Tooltip
+
+If you would like to disable the tooltip entirely, use the `tooltipDisabled` prop.
+
+<Editor code={storyTooltipDisabled} />
+
+## Props
+
+<ArgsTable of={IconButton} exclude={excludedProps} />

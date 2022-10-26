@@ -47,7 +47,7 @@ export const Past: FC<PastProps> = ({ item, onChange, field }: PastProps) => {
   }
 
   const unitChange = (value: string) => {
-    const option = options.find(option => option.value === value)
+    const option = options.find((option) => option.value === value)
     onChange(item.id, { unit: option?.unit, complete: option?.complete })
   }
   const selectedUnit = complete ? `c_${unit}` : `${unit}`

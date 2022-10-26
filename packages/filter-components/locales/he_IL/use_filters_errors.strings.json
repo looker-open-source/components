@@ -1,0 +1,11 @@
+{
+  "Invalid value": {
+    "value": "ערך לא חוקי"
+  },
+  "No value is set for your user attribute": {
+    "value": "לא הוגדר ערך לתכונת המשתמש שלך"
+  },
+  "Selection required": {
+    "value": "יש לבצע בחירה"
+  }
+}

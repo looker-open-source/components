@@ -9,34 +9,33 @@
 1. Install `@looker/filter-components`:
 
 ```bash static
-# Looker projects generally utilize Yarn (https://yarnpkg.com/)
-yarn add @looker/filter-components
-
-# If you prefer you can of course also use NPM directly:
 npm install @looker/filter-components
+
+# Using Yarn
+yarn add @looker/filter-components
 ```
 
 You'll also need to satisfy peer dependencies - React & Styled Components:
 
 ```bash static
+# Using npm
+npm install react react-dom styled-components
+
 # Using Yarn
 yarn add react react-dom styled-components
-
-# Using NPM
-npm install react react-dom styled-components
 ```
 
 Finally, if you're using Typescript you'll want to add the associated types for the dependencies (note @looker/filter-components is built in Typescript and therefore has built-in types).
 
 ```bash static
+# Using npm
+npm install --save-dev @types/react @types/react-dom @types/styled-components
+
 # Using Yarn
 yarn add --dev @types/react @types/react-dom @types/styled-components
-
-# Using NPM
-npm install --dev @types/react @types/react-dom @types/styled-components`
 ```
 
-2. In your [React app](https://reactjs.org/docs/getting-started.html), call `i18nInit` once with an optional locale object (defaults to `en`), add a `ComponentsProvider`\*, and render filters inside with the `DashboardFilter` component.
+2. In your [React app](https://reactjs.org/docs/getting-started.html), add a `ComponentsProvider`\*, and render filters inside with the `DashboardFilter` component. If using a language other than English, import the locale module and spread that onto the `ComponentsProvider`.
 
 The following is an example of a component in a that displays a list of dashboard filters:
 
@@ -44,21 +43,19 @@ The following is an example of a component in a that displays a list of dashboar
 import {
   ComponentsProvider,
   DashboardFilter,
-  i18nInit,
+  // Optional locale module (Korea)
   koKR,
 } from '@looker/filter-components'
 
-i18nInit(koKR)
-
 export const FiltersSection = ({ filters, filterValues, updateFilters }) => {
   return (
-    <ComponentsProvider>
-      {filters.map(filter => (
+    <ComponentsProvider {...koKR}>
+      {filters.map((filter) => (
         <DashboardFilter
           key={filter.id}
           filter={filter}
           expression={filterValues[filter.name]}
-          onChange={expression => updateFilters(filter.name, expression)}
+          onChange={(expression) => updateFilters(filter.name, expression)}
         />
       ))}
     </ComponentsProvider>

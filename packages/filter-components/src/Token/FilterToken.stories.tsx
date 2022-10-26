@@ -34,7 +34,7 @@ export default {
   component: FilterToken,
 }
 
-const Template: Story<FilterTokenProps> = args => {
+const Template: Story<FilterTokenProps> = (args) => {
   return <FilterToken {...args} />
 }
 

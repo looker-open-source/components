@@ -1,0 +1,29 @@
+{
+  "coords1 to coords2": {
+    "value": "{{coords1}} אל {{coords2}}"
+  },
+  "distance unit from lat, lon": {
+    "value": "{{distance}} {{unit}} מ- {{lat}}, {{lon}}"
+  },
+  "is anywhere": {
+    "value": "בכל מקום"
+  },
+  "is not null": {
+    "value": "אינו Null"
+  },
+  "is null": {
+    "value": "Null"
+  },
+  "lat degrees north": {
+    "value": "{{lat}}°צפון"
+  },
+  "lat degrees south": {
+    "value": "{{lat}}°דרום"
+  },
+  "lon degrees east": {
+    "value": "{{lon}}°מזרח"
+  },
+  "lon degrees west": {
+    "value": "{{lon}}°מערב"
+  }
+}

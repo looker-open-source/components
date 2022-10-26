@@ -74,7 +74,7 @@ describe('Date filter test', () => {
     )
 
     expect(screen.getByDisplayValue('yesterday')).toBeVisible()
-    expect(screen.getByDisplayValue('matches advanced')).toBeVisible()
+    expect(screen.getByDisplayValue('matches (advanced)')).toBeVisible()
   })
 
   it('should render a DateFilter with time dropdown(s)', () => {

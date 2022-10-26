@@ -1,0 +1,64 @@
+import { Button } from '@looker/components'
+import { excludedProps } from '@looker/storybook'
+import storyBasic from '!!raw-loader!./Basic'
+import storyCritical from '!!raw-loader!./Critical'
+import storyDisabled from '!!raw-loader!./Disabled'
+import storyIconAfter from '!!raw-loader!./IconAfter'
+import storyIconBefore from '!!raw-loader!./IconBefore'
+import storyFullWidth from '!!raw-loader!./FullWidth'
+import storyLarge from '!!raw-loader!./Large'
+import storyNeutral from '!!raw-loader!./Neutral'
+import storyMedium from '!!raw-loader!./Medium'
+import storySmall from '!!raw-loader!./Small'
+import storyXSmall from '!!raw-loader!./XSmall'
+
+<Meta component={Button} title="Actions/Button" />
+
+# Button
+
+Use a default button for the most frequently used action or most important action on a page. Default buttons should only appear once on a page. They are sometimes accompanied by a secondary button.
+
+<Editor code={storyBasic} />
+
+## Color
+
+`Key` is the primary brand color, which is the default setting.
+`Critical` Buttons are to be used in situations where you need to convey some very important, potentially irreversible consequence of pressing this button.
+
+<Editor code={storyCritical} />
+
+`Neutral` buttons are meant to fade into the background. These are usually used for secondary, nonessential, actions.
+
+<Editor code={storyNeutral} />
+
+## Size
+
+Use the size property on a `<Button />` to modify the size the button rendered. You can combine it with the `mode` property to get the correct style and size of button you need.
+
+<Editor code={storyXSmall} />
+<Editor code={storySmall} />
+<Editor code={storyMedium} />
+<Editor code={storyLarge} />
+
+## Full Width
+
+Use the `fullWidth` property on a `<Button />` and it will set its width to 100%.
+
+<Editor code={storyFullWidth} />
+
+## Disabled
+
+Use a disabled button to indicate to the user what action will be possible on a page once a prerequisite action is taken. Disabled buttons do not respond to user interaction.
+
+<Editor code={storyDisabled} />
+
+## Icons
+
+Buttons can have an icon before or after their content, using the `iconBefore` and `iconAfter` property. Each property accepts the [name of an icon](/#!/Icons)
+
+<Editor code={storyIconBefore} />
+<Editor code={storyIconAfter} />
+
+## Props
+
+<ArgsTable of={Button} exclude={excludedProps} />

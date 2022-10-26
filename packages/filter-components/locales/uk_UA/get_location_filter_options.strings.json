@@ -1,0 +1,32 @@
+{
+  "Box": {
+    "value": "Прямокутник"
+  },
+  "Circle": {
+    "value": "Коло"
+  },
+  "Location": {
+    "value": "Розташування"
+  },
+  "feet": {
+    "value": "футів"
+  },
+  "is anywhere": {
+    "value": "будь-де"
+  },
+  "is not null": {
+    "value": "не має значення NULL"
+  },
+  "is null": {
+    "value": "має значення NULL"
+  },
+  "kilometers": {
+    "value": "км"
+  },
+  "meters": {
+    "value": "м"
+  },
+  "miles": {
+    "value": "миль"
+  }
+}

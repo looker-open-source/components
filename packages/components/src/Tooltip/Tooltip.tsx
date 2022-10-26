@@ -48,7 +48,7 @@ type RefAttributes = {
   /**
    * @deprecated not actually forwarded, will be removed in 3.x release
    */
-  ref?: Ref<any>
+  ref?: Ref<unknown>
 }
 
 export const Tooltip: ForwardRefExoticComponent<
@@ -66,7 +66,7 @@ export const Tooltip: ForwardRefExoticComponent<
       children,
       ...props
     }: TooltipProps,
-    _: Ref<any>
+    _: Ref<unknown>
   ) => {
     const { domProps, tooltip } = useTooltip({
       // ariaExpanded=true indicates an open Popover – disable the tooltip

@@ -44,7 +44,7 @@ const describeMultiValue = (
       // if it's a parameter field - lookup value in enumerations to get label
       const valueMap = keyBy(field.enumerations, 'value')
       return joinOr(
-        values.map(value => {
+        values.map((value) => {
           // parameter values in enumeration are already escaped
           // we escape here to match the enumeration values
           const escapedValue = escapeParameterValue(value)

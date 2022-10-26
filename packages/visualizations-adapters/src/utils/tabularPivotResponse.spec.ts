@@ -29,7 +29,7 @@ import {
   mockPivots,
   mockSdkPivotDataResponse,
   mockSdkFieldsResponse,
-} from '../__mocks__'
+} from '../fixtures'
 
 import type { Fields } from '../types'
 

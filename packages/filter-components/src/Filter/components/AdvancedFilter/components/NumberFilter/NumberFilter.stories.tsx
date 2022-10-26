@@ -33,7 +33,7 @@ import type { FilterParamProps } from '../../../../types/filter_param_props'
 
 i18nInit()
 
-const Template: Story<FilterParamProps<NumberFilterType>> = args => (
+const Template: Story<FilterParamProps<NumberFilterType>> = (args) => (
   <NumberFilter {...args} />
 )
 

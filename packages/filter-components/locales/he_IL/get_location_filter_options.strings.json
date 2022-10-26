@@ -1,0 +1,32 @@
+{
+  "Box": {
+    "value": "תא"
+  },
+  "Circle": {
+    "value": "מעגל"
+  },
+  "Location": {
+    "value": "מקום"
+  },
+  "feet": {
+    "value": "רגל (מידת אורך)"
+  },
+  "is anywhere": {
+    "value": "בכל מקום"
+  },
+  "is not null": {
+    "value": "אינו Null"
+  },
+  "is null": {
+    "value": "Null"
+  },
+  "kilometers": {
+    "value": "קילומטרים"
+  },
+  "meters": {
+    "value": "מטרים"
+  },
+  "miles": {
+    "value": "מייל (מידת מרחק)"
+  }
+}

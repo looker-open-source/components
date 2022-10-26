@@ -1,0 +1,23 @@
+{
+  "blank": {
+    "value": "tuščia"
+  },
+  "contains value": {
+    "value": "turi {{value}}"
+  },
+  "does not contain value": {
+    "value": "neturi {{value}}"
+  },
+  "does not end with value": {
+    "value": "nesibaigia {{value}}"
+  },
+  "does not start with value": {
+    "value": "neprasideda {{value}}"
+  },
+  "ends with value": {
+    "value": "baigiasi {{value}}"
+  },
+  "starts with value": {
+    "value": "prasideda {{value}}"
+  }
+}

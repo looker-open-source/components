@@ -25,8 +25,8 @@
  */
 
 import type { FC } from 'react'
-import React, { useContext } from 'react'
-import { ThemeContext } from 'styled-components'
+import React from 'react'
+import { useTheme } from 'styled-components'
 import { ArrowBack } from '@styled-icons/material-rounded/ArrowBack'
 import { Heading } from '../Text'
 import { useTranslation } from '../utils'
@@ -43,7 +43,7 @@ export const PanelHeader: FC<PanelBaseProps> = ({
   const { t } = useTranslation('PanelHeader')
   const defaultLabel = t('CloseTitle', { title })
 
-  const { space } = useContext(ThemeContext)
+  const { space } = useTheme()
 
   return (
     <Space

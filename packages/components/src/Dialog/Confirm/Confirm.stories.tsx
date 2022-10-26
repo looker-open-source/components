@@ -26,12 +26,12 @@
 
 import React from 'react'
 import { Info } from '@styled-icons/material-outlined'
+import { defaultArgTypes as argTypes } from '@looker/storybook'
 import { Button, ButtonOutline } from '../../Button'
 import { Icon } from '../../Icon'
 import { Space, SpaceVertical } from '../../Layout'
 import { Link } from '../../Link'
 import { Paragraph } from '../../Text'
-import { defaultArgTypes as argTypes } from '../../../../../apps/storybook/src/defaultArgTypes'
 import { Confirm } from './Confirm'
 
 export default {

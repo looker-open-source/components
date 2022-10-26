@@ -1,0 +1,32 @@
+{
+  "complete days": {
+    "value": "pełnych dni"
+  },
+  "complete fiscal quarters": {
+    "value": "pełnych kw. fiskalnych"
+  },
+  "complete fiscal years": {
+    "value": "pełne lata fiskalne/pełnych lat fiskalnych"
+  },
+  "complete hours": {
+    "value": "pełnych godz."
+  },
+  "complete minutes": {
+    "value": "pełnych min"
+  },
+  "complete months": {
+    "value": "pełnych mies."
+  },
+  "complete quarters": {
+    "value": "pełnych kw."
+  },
+  "complete seconds": {
+    "value": "pełnych sek."
+  },
+  "complete weeks": {
+    "value": "pełnych tyg."
+  },
+  "complete years": {
+    "value": "pełne lata/pełnych lat"
+  }
+}

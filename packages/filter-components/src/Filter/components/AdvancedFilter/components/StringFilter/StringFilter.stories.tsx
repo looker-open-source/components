@@ -30,7 +30,7 @@ import type { StringFilterType } from '@looker/filter-expressions'
 import type { FilterParamProps } from '../../../../types/filter_param_props'
 import { StringFilter } from './StringFilter'
 
-const Template: Story<FilterParamProps<StringFilterType>> = args => (
+const Template: Story<FilterParamProps<StringFilterType>> = (args) => (
   <StringFilter {...args} />
 )
 

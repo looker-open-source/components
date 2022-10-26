@@ -85,7 +85,7 @@ export const Day = styled(
     const rippleHandlers = useRippleHandlers(
       callbacks,
       {
-        ...pick({ ...props }, rippleHandlerKeys),
+        ...pick(props, rippleHandlerKeys),
         onFocus: handleHoverFocus,
         onMouseEnter: handleHoverFocus,
       },

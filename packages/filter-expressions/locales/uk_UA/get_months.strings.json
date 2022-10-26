@@ -1,0 +1,38 @@
+{
+  "April": {
+    "value": "квітня"
+  },
+  "August": {
+    "value": "серпня"
+  },
+  "December": {
+    "value": "грудня"
+  },
+  "February": {
+    "value": "лютого"
+  },
+  "January": {
+    "value": "січня"
+  },
+  "July": {
+    "value": "липня"
+  },
+  "June": {
+    "value": "червня"
+  },
+  "March": {
+    "value": "березня"
+  },
+  "May": {
+    "value": "трав."
+  },
+  "November": {
+    "value": "листопада"
+  },
+  "October": {
+    "value": "жовтня"
+  },
+  "September": {
+    "value": "вересня"
+  }
+}

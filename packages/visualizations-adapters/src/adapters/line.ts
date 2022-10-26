@@ -46,7 +46,7 @@ export type CLineBase = {
 } & Omit<CommonCartesianProperties, 'series'>
 
 export type CLine = {
-  type: SupportedChartTypes['line']
+  type?: SupportedChartTypes['line']
 } & CLineBase
 
 export type LineProps = VisWrapperProps &

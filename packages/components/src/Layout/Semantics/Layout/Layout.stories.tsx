@@ -27,12 +27,9 @@
 import { Info } from '@styled-icons/material'
 import React from 'react'
 import styled from 'styled-components'
-import { defaultArgTypes as argTypes } from '../../../../../../apps/storybook/src/defaultArgTypes'
-import {
-  Constitution,
-  ConstitutionShort,
-} from '../../../__mocks__/Constitution'
-import { ItemsFiller } from '../../../__mocks__/ListHelper'
+import { defaultArgTypes as argTypes } from '@looker/storybook'
+import { Constitution, ConstitutionShort } from '../../../fixtures/Constitution'
+import { ItemsFiller } from '../../../fixtures/ListHelper'
 import { IconButton } from '../../../Button'
 import { Heading } from '../../../Text'
 import { Page, Header, Layout, Aside, Section, Footer } from '../'

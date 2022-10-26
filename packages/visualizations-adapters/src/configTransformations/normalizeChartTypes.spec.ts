@@ -25,7 +25,7 @@
  */
 
 import { normalizeChartTypes } from './normalizeChartTypes'
-import { mockFields, mockSdkDataResponse } from '../__mocks__'
+import { mockFields, mockSdkDataResponse } from '../fixtures'
 
 describe('normalizeChartTypes', () => {
   describe('config.type ===', () => {

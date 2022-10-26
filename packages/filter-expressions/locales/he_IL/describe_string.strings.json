@@ -1,0 +1,23 @@
+{
+  "blank": {
+    "value": "ריק"
+  },
+  "contains value": {
+    "value": "מכיל {{value}}"
+  },
+  "does not contain value": {
+    "value": "אינו מכיל {{value}}"
+  },
+  "does not end with value": {
+    "value": "אינו מסתיים ב-{{value}}"
+  },
+  "does not start with value": {
+    "value": "מסתיים ב-{{value}}"
+  },
+  "ends with value": {
+    "value": "מסתיים ב-{{value}}"
+  },
+  "starts with value": {
+    "value": "מתחיל ב-{{value}}"
+  }
+}

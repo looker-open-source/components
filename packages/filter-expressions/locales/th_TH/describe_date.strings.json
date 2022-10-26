@@ -1,0 +1,72 @@
+{
+  " complete": {
+    "value": " เสร็จสมบูรณ์"
+  },
+  "absolute prefix dateTime": {
+    "value": "{{prefix}} {{dateTime}}"
+  },
+  "ago": {
+    "value": "ที่แล้ว"
+  },
+  "from now": {
+    "value": "นับจากนี้"
+  },
+  "is any time": {
+    "value": "เป็นเวลาใดก็ได้"
+  },
+  "is before": {
+    "value": "อยู่ก่อน"
+  },
+  "is day": {
+    "value": "เป็น {{day}}"
+  },
+  "is from dateTimeStart until dateTimeEnd": {
+    "value": "ตั้งแต่ {{dateTimeStart}} จนถึง {{dateTimeEnd}}"
+  },
+  "is in month year": {
+    "value": "อยู่ใน {{month}} {{year}}"
+  },
+  "is in the last": {
+    "value": "อยู่ใน {{describeInterval}} ล่าสุด"
+  },
+  "is in the year year": {
+    "value": "ภายในปี {{year}}"
+  },
+  "is interval ago": {
+    "value": "เมื่อ {{interval}} ที่แล้ว"
+  },
+  "is intervalStart intervalType for intervalEnd": {
+    "value": "อยู่ตั้งแต่ {{intervalStart}} {{intervalType}} เป็นเวลา {{intervalEnd}}"
+  },
+  "is not null": {
+    "value": "ไม่เป็นค่าว่าง"
+  },
+  "is on dateTime": {
+    "value": "เมื่อ {{dateTime}}"
+  },
+  "is on or after": {
+    "value": "อยู่ที่หรือหลัง"
+  },
+  "is previous unitLabel": {
+    "value": "คือ {{unitLabel}} ก่อนหน้า"
+  },
+  "is type unitLabel": {
+    "value": "คือ {{type}} {{unitLabel}}"
+  },
+  "next": {
+    "value": "ถัดไป"
+  },
+  "prefix interval timePassed": {
+    "value": "{{prefix}} {{interval}} {{timePassed}}"
+  },
+  "prefix now": {
+    "value": "{{prefix}} ตอนนี้"
+  },
+  "this": {
+    "value": "นี้"
+  },
+  "this startInterval to endInterval": "{{startInterval}} นี้ถึง {{endInterval}}",
+  "value complete unitLabel": {
+    "value": "{{value}}{{complete}} {{unitLabel}}"
+  }
+}

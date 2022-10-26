@@ -1,0 +1,72 @@
+{
+  " complete": {
+    "value": " 完成"
+  },
+  "absolute prefix dateTime": {
+    "value": "{{prefix}} {{dateTime}}"
+  },
+  "ago": {
+    "value": "以前"
+  },
+  "from now": {
+    "value": "从现在起"
+  },
+  "is any time": {
+    "value": "任意时间"
+  },
+  "is before": {
+    "value": "早于"
+  },
+  "is day": {
+    "value": "在 {{day}} 这一天"
+  },
+  "is from dateTimeStart until dateTimeEnd": {
+    "value": "从 {{dateTimeStart}} 到 {{dateTimeEnd}}"
+  },
+  "is in month year": {
+    "value": "在 {{year}} 年 {{month}} 之内"
+  },
+  "is in the last": {
+    "value": "在过去 {{describeInterval}} 之内"
+  },
+  "is in the year year": {
+    "value": "在 {{year}} 年之内"
+  },
+  "is interval ago": {
+    "value": "在 {{interval}} 之前"
+  },
+  "is intervalStart intervalType for intervalEnd": {
+    "value": "{{intervalType}} 在 {{intervalStart}} 到 {{intervalEnd}} 期间"
+  },
+  "is not null": {
+    "value": "不为空值"
+  },
+  "is on dateTime": {
+    "value": "在 {{dateTime}} 这一时间"
+  },
+  "is on or after": {
+    "value": "等于或晚于"
+  },
+  "is previous unitLabel": {
+    "value": "上一 {{unitLabel}}"
+  },
+  "is type unitLabel": {
+    "value": "为 {{type}} {{unitLabel}}"
+  },
+  "next": {
+    "value": "下一步"
+  },
+  "prefix interval timePassed": {
+    "value": "{{prefix}} {{interval}} {{timePassed}}"
+  },
+  "prefix now": {
+    "value": "{{prefix}} 现在"
+  },
+  "this": {
+    "value": "此"
+  },
+  "this startInterval to endInterval": "此 {{startInterval}} 到 {{endInterval}}",
+  "value complete unitLabel": {
+    "value": "{{value}}{{complete}} {{unitLabel}}"
+  }
+}

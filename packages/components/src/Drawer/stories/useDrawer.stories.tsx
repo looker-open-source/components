@@ -25,7 +25,7 @@
  */
 
 import React, { useState } from 'react'
-import { DialogLongContent } from '../../__mocks__/DialogLongContent'
+import { DialogLongContent } from '../../fixtures/DialogLongContent'
 import { useDrawer } from '../useDrawer'
 
 export const UseDrawerHook = () => {

@@ -64,7 +64,7 @@ const LkFieldTreeLayout = ({
 }: LkFieldTreeProps) => {
   const density = lkFieldItemDensity
   const [treeItemInnerProps, accordionInnerProps] = partitionTreeProps(
-    restProps
+    restProps as Record<string, unknown>
   )
 
   const { hovered, contentHandlers, wrapperHandlers } = useTreeHandlers({
@@ -123,7 +123,7 @@ const LkFieldTreeLayout = ({
   } = useAccordion2({
     'aria-selected': selected,
     children: (
-      <List disableKeyboardNav role="group" windowing={false}>
+      <List disableKeyboardNav role="group" windowing={false} as="div">
         {children}
       </List>
     ),
@@ -175,7 +175,7 @@ const LkFieldTreeLayout = ({
       >
         <div {...domProps}>
           {!partialRender && (
-            <LkFieldTreeAccordionDisclosure {...wrapperHandlers}>
+            <LkFieldTreeAccordionDisclosure role="group" {...wrapperHandlers}>
               {content}
               {outside}
             </LkFieldTreeAccordionDisclosure>

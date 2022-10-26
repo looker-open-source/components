@@ -37,6 +37,7 @@ import { Tooltip } from '../../../Tooltip'
 import { useID, useTranslation } from '../../../utils'
 import type { InputTimeSelectProps } from '../../Inputs/InputTimeSelect'
 import { InputTimeSelect } from '../../Inputs/InputTimeSelect'
+import { VisuallyHidden } from '../../../VisuallyHidden'
 
 export interface FieldTimeSelectProps
   extends FloatingLabelFieldProps,
@@ -48,12 +49,13 @@ export const FieldTimeSelect = styled(
     const id = useID(props.id)
     const fieldProps = omit(omitFieldProps(props), ['onChange'])
     const [formatError, setFormatError] = useState('')
+    const { t } = useTranslation('FieldTimeSelect')
     const onChange = (value?: string) => {
       props.onChange && props.onChange(value)
       if (value) {
         setFormatError('')
       } else {
-        setFormatError('Invalid Time')
+        setFormatError(t('Please use format HHMM'))
       }
     }
 
@@ -65,17 +67,21 @@ export const FieldTimeSelect = styled(
     const errorMessage = (formatError
       ? { message: formatError, type: 'error' }
       : validationMessage) as ValidationMessageProps
-    const { t: translate } = useTranslation('TimeSelect')
     return (
       <FloatingLabelField
         data-testid="FieldSelectMultiId"
         {...pickFieldProps(props)}
         id={id}
-        validationMessage={errorMessage}
         hasValue={getHasValue(props)}
       >
-        <Tooltip placement="top-end" content={translate('Select Time')}>
+        <Tooltip
+          placement="top-end"
+          content={formatError}
+          isOpen={true}
+          canClose={() => false}
+        >
           <div>
+            <VisuallyHidden aria-live="polite">{formatError}</VisuallyHidden>
             <InputTimeSelect
               {...fieldProps}
               aria-labelledby={`labelledby-${id}`}

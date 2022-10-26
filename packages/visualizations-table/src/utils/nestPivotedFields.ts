@@ -50,7 +50,7 @@ type NestPivotedFieldsProps = {
  * @returns Column groups for use with Tanstack Table
  */
 export const nestPivotedFields = ({
-  pivotList,
+  pivotList = [],
   pivotIndex,
   nestedPivots,
   pivotValues,
@@ -62,7 +62,8 @@ export const nestPivotedFields = ({
     const { id, header } = pivotValues
       ? {
           id: `${pivot.name} - ${pivotValues?.data[pivot.name]}`,
-          header: pivotValues?.labels[pivot.name],
+          // `replace` call use to strip HTML markup that came from the sdk response
+          header: pivotValues?.labels[pivot.name]?.replace(/(<([^>]+)>)/gi, ''),
         }
       : { id: pivot.name, header: pivot.label }
 

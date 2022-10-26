@@ -50,6 +50,7 @@ export const Table = ({
   pivots,
   width,
   totals,
+  defaultRowHeight,
 }: TableProps) => {
   const { t } = useTranslation('Table')
 
@@ -58,6 +59,7 @@ export const Table = ({
   const { virtualRows, OffsetTop, OffsetBottom } = useVirtual({
     data,
     scrollContainer,
+    defaultRowHeight,
   })
 
   const { table, sorting, handleTableSort } = useHeadlessTable({
@@ -87,13 +89,16 @@ export const Table = ({
 
   const headerGroups = table.getHeaderGroups()
 
+  const rowNumWidth = String(data.length).length * 14
   return (
     <ScrollWrapper width={width} height={height} ref={scrollContainer}>
       <TableElement cellSpacing="0">
         <THead>
           {headerGroups.map((headerGroup, i) => (
             <tr key={`theadRow${i}`}>
-              {show_row_numbers ? <TableHeadCell></TableHeadCell> : undefined}
+              {show_row_numbers ? (
+                <TableHeadCell width={rowNumWidth}></TableHeadCell>
+              ) : undefined}
               {headerGroup.headers.map(header => {
                 const { header: headerContent } = header.column.columnDef
 
@@ -103,11 +108,13 @@ export const Table = ({
                   t,
                   columnSortState
                 )
+
                 return (
                   <TableHeadCell
                     key={header.id}
                     colSpan={header.colSpan}
                     aria-sort={ariaSort}
+                    width={header.column.getSize()}
                   >
                     <TableHeadLayout
                       sortButtonDefaultVisible={!!columnSortState}
@@ -164,25 +171,35 @@ export const Table = ({
                       ? get(series, [measureIndex, 'value_format'])
                       : get(series, [column.id, 'value_format'])
 
+                    const CellValue = cell.getValue()
+
                     return (
-                      <TableCell key={cell.id} ref={measureElement}>
-                        <CellContentLayout>
-                          {columnConfig?.cell_visualization ? (
-                            <CellVisualization
-                              color={columnConfig.color}
-                              min={min}
-                              max={max}
-                              value={Number(cell.getValue())}
-                            />
-                          ) : null}
-                          <CellContentWrapper truncateText={!!truncate_text}>
-                            {valueFormat
-                              ? numeral(Number(cell.getValue())).format(
-                                  valueFormat
-                                )
-                              : flexRender(cellContent, getContext())}
-                          </CellContentWrapper>
-                        </CellContentLayout>
+                      <TableCell
+                        key={cell.id}
+                        ref={measureElement}
+                        width={column.getSize()}
+                      >
+                        {typeof CellValue === 'function' ? (
+                          <CellValue />
+                        ) : (
+                          <CellContentLayout>
+                            {columnConfig?.cell_visualization ? (
+                              <CellVisualization
+                                color={columnConfig.color}
+                                min={min}
+                                max={max}
+                                value={Number(cell.getValue())}
+                              />
+                            ) : null}
+                            <CellContentWrapper truncateText={!!truncate_text}>
+                              {valueFormat
+                                ? numeral(Number(cell.getValue())).format(
+                                    valueFormat
+                                  )
+                                : flexRender(cellContent, getContext())}
+                            </CellContentWrapper>
+                          </CellContentLayout>
+                        )}
                       </TableCell>
                     )
                   })}
@@ -282,7 +299,7 @@ const TFoot = styled.tfoot`
   bottom: 0px;
 `
 
-const TableCellStyles = css`
+const TableCellStyles = css<{ width?: number }>`
   border-right: 1px solid ${({ theme }) => theme.colors.ui2};
   font-size: ${({ theme }) => theme.fontSizes.small};
   line-height: ${({ theme }) => theme.lineHeights.small};
@@ -290,12 +307,13 @@ const TableCellStyles = css`
     css`
       ${theme.space.xxsmall} ${theme.space.xsmall}
     `};
+  width: ${({ width }) => width}px;
   &:last-child {
     border-right: none;
   }
 `
 
-const TableCell = styled.td`
+const TableCell = styled.td<{ width?: number }>`
   ${TableCellStyles}
 `
 
@@ -305,7 +323,7 @@ const RowNum = styled(TableCell)`
   width: 1rem;
 `
 
-const TableHeadCell = styled.th`
+const TableHeadCell = styled.th<{ width?: number }>`
   ${TableCellStyles}
   text-align: left;
   background: ${({ theme }) => theme.colors.background};

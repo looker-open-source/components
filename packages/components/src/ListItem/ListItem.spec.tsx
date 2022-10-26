@@ -192,7 +192,7 @@ describe('ListItem', () => {
   })
 
   // At the moment, JSDom doesn't support the pseudo-selector parameter in getComputedStyle
-  xtest('has a key color border on key press', () => {
+  test.skip('has a key color border on key press', () => {
     configure({ computedStyleSupportsPseudoElements: true })
     renderWithTheme(<ListItem>Item</ListItem>)
     const item = screen.getByRole('listitem')
@@ -372,5 +372,24 @@ describe('ListItem', () => {
     const wrapper = screen.getByRole('none')
     expect(wrapper).not.toHaveAttribute('aria-current', 'location')
     expect(wrapper).not.toHaveAttribute('aria-describedby', 'something-else')
+  })
+
+  test('has left padding on detail', () => {
+    renderWithTheme(<ListItem detail="Detail">Dimension</ListItem>)
+
+    expect(screen.getByText('Detail')).toHaveStyleRule(
+      'padding-left',
+      '0.75rem'
+    )
+  })
+
+  test('no left padding on detail when accessory === true', () => {
+    renderWithTheme(
+      <ListItem detail={{ content: 'Detail', options: { accessory: true } }}>
+        Dimension
+      </ListItem>
+    )
+
+    expect(screen.getByText('Detail')).toHaveStyleRule('padding-left', '0')
   })
 })

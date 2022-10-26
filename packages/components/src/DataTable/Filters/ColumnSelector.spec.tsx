@@ -27,7 +27,7 @@
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { fireEvent, screen } from '@testing-library/react'
-import { columns } from '../../__mocks__/DataTable/columns'
+import { columns } from '../../fixtures/DataTable/columns'
 import { ColumnSelector } from './ColumnSelector'
 
 describe('ColumnSelector', () => {

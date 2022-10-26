@@ -36,7 +36,7 @@ const ArrowKeyNavComponent: FC<{
 }> = ({ axis, children }) => {
   const navProps = useArrowKeyNav<HTMLUListElement>({ axis })
   return (
-    <ul {...navProps}>
+    <ul role="list" {...navProps}>
       {children}
       <li tabIndex={-1}>first</li>
       <li tabIndex={-1}>second</li>
@@ -191,5 +191,33 @@ describe('useArrowKeyNav', () => {
 
     userEvent.type(moreStuff, '{arrowdown}')
     expect(screen.getByText('less')).toHaveFocus()
+  })
+
+  test('Menu: focus landed on container after tab, moves to first item', () => {
+    render(<ArrowKeyNavComponent />)
+    const list = screen.getByRole('list')
+    const first = screen.getByText('first')
+
+    list.focus()
+    expect(first).toHaveFocus()
+    userEvent.type(first, '{arrowdown}')
+    expect(screen.getByText('second')).toHaveFocus()
+  })
+
+  test('Menu: focus landed on container after click, stays there', () => {
+    // Mock matches b/c jest does not support :focus-visible as selector
+    const globalMatches = Element.prototype.matches
+    /* eslint-disable-next-line @typescript-eslint/unbound-method */
+    Element.prototype.matches = jest.fn(() => false)
+
+    render(<ArrowKeyNavComponent />)
+    const list = screen.getByRole('list')
+    list.focus()
+    expect(screen.getByText('first')).not.toHaveFocus()
+    userEvent.type(list, '{arrowdown}')
+    expect(screen.getByText('first')).toHaveFocus()
+
+    /* eslint-disable-next-line @typescript-eslint/unbound-method */
+    Element.prototype.matches = globalMatches
   })
 })

@@ -1,0 +1,11 @@
+{
+  "Invalid value": {
+    "value": "Ugyldig værdi"
+  },
+  "No value is set for your user attribute": {
+    "value": "Der er ikke angivet nogen værdi for din brugerattribut"
+  },
+  "Selection required": {
+    "value": "Valg kræves"
+  }
+}

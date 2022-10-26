@@ -27,6 +27,7 @@ import merge from 'lodash/merge'
 import dateLocale from 'date-fns/locale/ko'
 import type { I18nStateWithDates } from '../../utils'
 import { koKR as expressionLocale } from '@looker/filter-expressions'
+import { koKR as componentsLocale } from '@looker/components'
 
 const resources = {
   AddRemoveButtons: {
@@ -84,6 +85,9 @@ const resources = {
     weeks: '주',
     year: '년',
     years: '년',
+  },
+  DateRange: {
+    'until (before)': '기한',
   },
   get_date_filter_options: {
     is: '이(가)',
@@ -243,5 +247,12 @@ const resources = {
 export const koKR: I18nStateWithDates = {
   dateLocale,
   locale: 'ko-KR',
-  resources: { 'ko-KR': merge(resources, expressionLocale.resources['ko-KR']) },
+  resources: {
+    'ko-KR': merge(
+      {},
+      resources,
+      expressionLocale.resources['ko-KR'],
+      componentsLocale.resources['ko-KR']
+    ),
+  },
 }

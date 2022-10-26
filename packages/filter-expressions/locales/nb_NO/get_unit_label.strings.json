@@ -1,0 +1,82 @@
+{
+  "complete day": "fullført dag",
+  "complete days": {
+    "value": "hele dager"
+  },
+  "complete fiscal quarter": "fullført regnskapskvartal",
+  "complete fiscal quarters": {
+    "value": "hele regnskapskvartaler"
+  },
+  "complete fiscal year": "fullført regnskapsår",
+  "complete fiscal years": {
+    "value": "hele regnskapsår"
+  },
+  "complete hour": "fullført time",
+  "complete hours": {
+    "value": "hele timer"
+  },
+  "complete minute": "fullført minutt",
+  "complete minutes": {
+    "value": "hele minutter"
+  },
+  "complete month": "fullført måned",
+  "complete months": {
+    "value": "hele måneder"
+  },
+  "complete quarter": "fullført kvartal",
+  "complete quarters": {
+    "value": "hele kvartaler"
+  },
+  "complete second": "fullført sekund",
+  "complete seconds": {
+    "value": "hele sekunder"
+  },
+  "complete week": "fullført uke",
+  "complete weeks": {
+    "value": "hele uker"
+  },
+  "complete year": "fullført år",
+  "complete years": {
+    "value": "hele år"
+  },
+  "day": "dag",
+  "days": {
+    "value": "dager"
+  },
+  "fiscal quarter": "regnskapskvartal",
+  "fiscal quarters": {
+    "value": "regnskapskvartaler"
+  },
+  "fiscal year": "regnskapsår",
+  "fiscal years": {
+    "value": "regnskapsår"
+  },
+  "hour": "time",
+  "hours": {
+    "value": "timer"
+  },
+  "minute": "minutt",
+  "minutes": {
+    "value": "minutter"
+  },
+  "month": "måned",
+  "months": {
+    "value": "måneder"
+  },
+  "quarter": "kvartal",
+  "quarters": {
+    "value": "kvartaler"
+  },
+  "second": "sekund",
+  "seconds": {
+    "value": "sekunder"
+  },
+  "week": "uke",
+  "weeks": {
+    "value": "uker"
+  },
+  "year": "år",
+  "years": {
+    "value": "år"
+  }
+}

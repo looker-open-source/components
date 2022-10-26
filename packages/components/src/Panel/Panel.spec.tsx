@@ -28,7 +28,6 @@ import '@testing-library/jest-dom/extend-expect'
 import { act, fireEvent, screen } from '@testing-library/react'
 import 'jest-styled-components'
 import React, { useState } from 'react'
-import userEvent from '@testing-library/user-event'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { AnimationCallbacks, Nested } from './Panel.stories'
 import { Panel, Panels, usePanel } from './'
@@ -198,7 +197,7 @@ describe('Panel', () => {
 
     expect(screen.getByText('Panel content')).toBeInTheDocument()
 
-    fireEvent.click(screen.getByText('CloseTitle Panel Hook'))
+    fireEvent.click(screen.getByText('Close Panel Hook'))
 
     expect(screen.getByText('Option A')).toBeInTheDocument()
   })
@@ -223,7 +222,7 @@ describe('Panel', () => {
 
     const listItem = screen.getByText('option A')
 
-    userEvent.click(listItem)
+    fireEvent.click(listItem)
     runTimers()
     expect(listItem).not.toBeVisible()
 
@@ -235,12 +234,12 @@ describe('Panel', () => {
       'visibility: visible;'
     )
 
-    userEvent.click(nestedPanelButton)
+    fireEvent.click(nestedPanelButton)
     runTimers()
     expect(listItem).not.toBeVisible()
     expect(nestedPanelButton).not.toBeVisible()
     const closeButton = screen.getByRole('button', {
-      name: 'CloseTitle Nested',
+      name: 'Close Nested',
     })
     // Workaround: toBeVisible doesn't account for visibility being override-able
     // https://github.com/testing-library/jest-dom/issues/209
@@ -265,7 +264,7 @@ describe('Panel', () => {
     expect(input).toHaveFocus()
 
     const closeButton = screen.getByRole('button', {
-      name: 'CloseTitle Animation Callbacks',
+      name: 'Close Animation Callbacks',
     })
     fireEvent.click(closeButton)
     expect(screen.queryByText('Panel closed')).not.toBeInTheDocument()

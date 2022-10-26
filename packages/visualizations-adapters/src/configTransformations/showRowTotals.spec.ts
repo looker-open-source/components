@@ -24,7 +24,7 @@
 
  */
 
-import { mockTableConfig, mockFields, mockSdkDataResponse } from '../__mocks__'
+import { mockTableConfig, mockFields, mockSdkDataResponse } from '../fixtures'
 import { showRowTotals } from './showRowTotals'
 
 describe('showRowTotals', () => {

@@ -27,7 +27,7 @@
 import 'jest-styled-components'
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { screen } from '@testing-library/react'
+import { fireEvent, screen, waitFor } from '@testing-library/react'
 import { Tooltip } from '../Tooltip'
 import { Status } from './Status'
 
@@ -80,7 +80,11 @@ describe('Status', () => {
         <Status data-testid="status" title="Gone gone" />
       </Tooltip>
     )
-    expect(screen.getByTestId('status')).toHaveAttribute('aria-describedby')
-    expect(screen.queryByTitle('Gone gone')).not.toBeInTheDocument()
+    fireEvent.mouseEnter(screen.getByTestId('status'))
+    await waitFor(() => {
+      expect(
+        screen.queryByRole('tooltip', { name: 'Gone Gone' })
+      ).not.toBeInTheDocument()
+    })
   })
 })

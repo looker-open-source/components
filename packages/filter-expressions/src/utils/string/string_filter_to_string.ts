@@ -64,15 +64,9 @@ const escapeWithDoubleLastEscape = (v: string) =>
 const escapeWithoutDoubleLastEscape = (v: string) =>
   escapeLeadingAndTrailingWhitespaces(v, false)
 
-/**
- * Escapes any backslashes found in the value, i.e. \ becomes \\
- */
-const escapeBackslash = (v: string) => v.replace(/\\/g, '\\\\')
-
 const matchToString = ({ value, is }: FilterModel) =>
   isItemToString(is, '', '-') +
   value
-    .map(escapeBackslash)
     .map(quoteFilter)
     .map(escapeWithDoubleLastEscape)
     .join(`,${isItemToString(is, '', '-')}`)
@@ -84,28 +78,19 @@ const multiValueToString = (
 
 const startWithToString = ({ value, is }: FilterModel) =>
   multiValueToString(
-    value
-      .map(escapeBackslash)
-      .map(escapeWithCaret)
-      .map(escapeWithoutDoubleLastEscape),
+    value.map(escapeWithCaret).map(escapeWithoutDoubleLastEscape),
     (token: string) => `${isItemToString(is, '', '-') + String(token)}%`
   )
 
 const endsWithToString = ({ value, is }: FilterModel) =>
   multiValueToString(
-    value
-      .map(escapeBackslash)
-      .map(escapeWithCaret)
-      .map(escapeWithDoubleLastEscape),
+    value.map(escapeWithCaret).map(escapeWithDoubleLastEscape),
     (token: string) => `${isItemToString(is, '', '-')}%${String(token)}`
   )
 
 const containsToString = ({ value, is }: FilterModel) =>
   multiValueToString(
-    value
-      .map(escapeBackslash)
-      .map(escapeWithCaret)
-      .map(escapeWithoutDoubleLastEscape),
+    value.map(escapeWithCaret).map(escapeWithoutDoubleLastEscape),
     (token: string) => `${isItemToString(is, '', '-')}%${String(token)}%`
   )
 

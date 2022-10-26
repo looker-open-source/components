@@ -43,15 +43,13 @@ export const calculateSuggestOptions = (filterTokenProps: any) => {
 
   // if values is not an arary or is not an array containing a string
   // return default
-  if (!isArray(values) || !find(values, val => typeof val === 'string')) {
+  if (!isArray(values) || !find(values, (val) => typeof val === 'string')) {
     return max ? take(options, max) : options
   }
 
   const existingValues =
-    map(
-      values,
-      v => find(options, { value: v }) || { value: v, label: '∅ - ' + v }
-    ) || []
+    map(values, (v) => find(options, { value: v }) || { value: v, label: v }) ||
+    []
 
   // if there is a max limit, first use all existing values then options
   // if there is no max, union all

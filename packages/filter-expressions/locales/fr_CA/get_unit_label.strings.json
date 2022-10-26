@@ -1,0 +1,82 @@
+{
+  "complete day": "jour complet",
+  "complete days": {
+    "value": "jours complets"
+  },
+  "complete fiscal quarter": "trimestre fiscal complet",
+  "complete fiscal quarters": {
+    "value": "trimestres fiscaux complets"
+  },
+  "complete fiscal year": "année fiscale complète",
+  "complete fiscal years": {
+    "value": "années fiscales complètes"
+  },
+  "complete hour": "heure complète",
+  "complete hours": {
+    "value": "heures complètes"
+  },
+  "complete minute": "minute complète",
+  "complete minutes": {
+    "value": "minutes complètes"
+  },
+  "complete month": "mois complet",
+  "complete months": {
+    "value": "mois complets"
+  },
+  "complete quarter": "trimestre complet",
+  "complete quarters": {
+    "value": "trimestres complets"
+  },
+  "complete second": "seconde complète",
+  "complete seconds": {
+    "value": "secondes complètes"
+  },
+  "complete week": "semaine complète",
+  "complete weeks": {
+    "value": "semaines complètes"
+  },
+  "complete year": "année complète",
+  "complete years": {
+    "value": "années complètes"
+  },
+  "day": "jour",
+  "days": {
+    "value": "jours"
+  },
+  "fiscal quarter": "trimestre fiscal",
+  "fiscal quarters": {
+    "value": "trimestres fiscaux"
+  },
+  "fiscal year": "année fiscale",
+  "fiscal years": {
+    "value": "années fiscales"
+  },
+  "hour": "heure",
+  "hours": {
+    "value": "heures"
+  },
+  "minute": "minute",
+  "minutes": {
+    "value": "minutes"
+  },
+  "month": "mois",
+  "months": {
+    "value": "mois"
+  },
+  "quarter": "trimestre",
+  "quarters": {
+    "value": "trimestres"
+  },
+  "second": "seconde",
+  "seconds": {
+    "value": "secondes"
+  },
+  "week": "semaine",
+  "weeks": {
+    "value": "semaines"
+  },
+  "year": "année",
+  "years": {
+    "value": "années"
+  }
+}

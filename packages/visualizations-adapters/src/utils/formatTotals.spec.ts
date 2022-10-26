@@ -29,7 +29,7 @@ import {
   mockRawTotals,
   mockNestedRawTotals,
   mockNestedTotals,
-} from '../__mocks__'
+} from '../fixtures'
 
 it('tranforms raw totals to desired format for one level deep object', () => {
   expect(formatTotals(mockRawTotals)).toEqual(mockTotals)

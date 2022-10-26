@@ -61,7 +61,12 @@ export interface ComboboxBaseProps
     Omit<
       CompatibleHTMLProps<HTMLDivElement>,
       'readOnly' | 'onChange' | 'value' | 'defaultValue'
-    > {}
+    > {
+  /**
+   * The optional a11y aria label for combobox Wrapper element that has popup
+   */
+  wrapperAriaLabel?: string
+}
 
 export interface ComboboxCommonProps<
   TCallback extends ComboboxCallback | ComboboxMultiCallback = ComboboxCallback
@@ -197,8 +202,9 @@ export const ComboboxWrapper = forwardRef(
         {...rest}
         ref={ref}
         role={rest.role ? rest.role : 'combobox'}
-        aria-haspopup="listbox"
-        aria-owns={`listbox-${rest.id}`}
+        aria-haspopup="true"
+        aria-owns={isVisible ? `listbox-${rest.id}` : undefined}
+        aria-label={`${rest.wrapperAriaLabel || ''} combobox`}
         aria-expanded={isVisible}
       />
     )

@@ -1,0 +1,62 @@
+{
+  "day": {
+    "value": "päivä"
+  },
+  "days": {
+    "value": "päivää"
+  },
+  "fiscal quarter": {
+    "value": "tilikauden vuosineljännes"
+  },
+  "fiscal quarters": {
+    "value": "tilikauden vuosineljännestä"
+  },
+  "fiscal year": {
+    "value": "tilivuosi"
+  },
+  "fiscal years": {
+    "value": "tilivuotta"
+  },
+  "hour": {
+    "value": "tunti"
+  },
+  "hours": {
+    "value": "tuntia"
+  },
+  "minute": {
+    "value": "minuutti"
+  },
+  "minutes": {
+    "value": "minuuttia"
+  },
+  "month": {
+    "value": "kuukausi"
+  },
+  "months": {
+    "value": "kuukautta"
+  },
+  "quarter": {
+    "value": "vuosineljännes"
+  },
+  "quarters": {
+    "value": "vuosineljännestä"
+  },
+  "second": {
+    "value": "sekunti"
+  },
+  "seconds": {
+    "value": "sekuntia"
+  },
+  "week": {
+    "value": "viikko"
+  },
+  "weeks": {
+    "value": "viikkoa"
+  },
+  "year": {
+    "value": "vuosi"
+  },
+  "years": {
+    "value": "vuotta"
+  }
+}

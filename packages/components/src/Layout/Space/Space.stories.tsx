@@ -27,7 +27,7 @@
 import type { Story } from '@storybook/react/types-6-0'
 import { AccountCircle } from '@styled-icons/material-outlined'
 import React from 'react'
-import { defaultArgTypes as argTypes } from '../../../../../apps/storybook/src/defaultArgTypes'
+import { defaultArgTypes as argTypes } from '@looker/storybook'
 import { Button } from '../../Button'
 import { Icon } from '../../Icon'
 import { Status } from '../../Status'

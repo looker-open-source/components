@@ -28,7 +28,7 @@ import en from 'date-fns/locale/en-US'
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { screen } from '@testing-library/react'
-import type { YearListProps } from './YearList'
+import type { YearListProps } from './types'
 import { YearList } from './YearList'
 
 describe('YearList', () => {

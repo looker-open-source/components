@@ -35,4 +35,4 @@
  * @param value the filter value where special characters will be escaped
  */
 export const escapeWithCaret = (value: string) =>
-  value.replace(/[%^_,]/g, c => `^${c}`)
+  value.replace(/[%^_,]/g, (c) => `^${c}`)

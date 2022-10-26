@@ -34,7 +34,7 @@ export default {
   component: Token,
 }
 
-const Template: Story<TokenProps> = args => {
+const Template: Story<TokenProps> = (args) => {
   return <Token {...args} />
 }
 

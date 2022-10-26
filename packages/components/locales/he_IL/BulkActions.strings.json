@@ -1,0 +1,8 @@
+{
+  "AllPageCountDisplayedSelected": "כל {{pageCount}} הפריטים המוצגים נבחרוו",
+  "AllTotalCountSelected": "כל {{totalCount}} הפריטים נבחרו",
+  "Bulk Actions": "פעולות במרוכז",
+  "Clear Selection": "נקה את הבחירה",
+  "SelectAllCountResults": "בחר את כל {{totalCount}} התוצאות",
+  "SelectedCountOfTotalDisplayed": "{{selectedItemCount}} מתוך {{pageCount}} הפריטים המוצגים נבחרו"
+}

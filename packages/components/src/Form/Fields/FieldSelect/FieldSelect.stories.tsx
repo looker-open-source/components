@@ -30,6 +30,7 @@ import { Favorite } from '@styled-icons/material'
 import chunk from 'lodash/chunk'
 import type { FC, FormEvent, MouseEvent } from 'react'
 import React, { useMemo, useState, useEffect } from 'react'
+import { defaultArgTypes as argTypes } from '@looker/storybook'
 import { Card, CardContent } from '../../../Card'
 import { Button } from '../../../Button'
 import { Dialog, DialogContent, DialogLayout } from '../../../Dialog'
@@ -54,7 +55,6 @@ import {
   optionsWithGroups,
 } from '../../Inputs/Select/stories/options'
 import { options1k } from '../../Inputs/Select/stories/options1k'
-import { defaultArgTypes as argTypes } from '../../../../../../apps/storybook/src/defaultArgTypes'
 import type { FieldSelectProps } from './FieldSelect'
 import { FieldSelect } from './FieldSelect'
 

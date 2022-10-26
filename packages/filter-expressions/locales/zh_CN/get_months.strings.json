@@ -1,0 +1,38 @@
+{
+  "April": {
+    "value": "四月"
+  },
+  "August": {
+    "value": "八月"
+  },
+  "December": {
+    "value": "十二月"
+  },
+  "February": {
+    "value": "二月"
+  },
+  "January": {
+    "value": "一月"
+  },
+  "July": {
+    "value": "七月"
+  },
+  "June": {
+    "value": "六月"
+  },
+  "March": {
+    "value": "三月"
+  },
+  "May": {
+    "value": "5 月"
+  },
+  "November": {
+    "value": "十一月"
+  },
+  "October": {
+    "value": "十月"
+  },
+  "September": {
+    "value": "九月"
+  }
+}

@@ -60,7 +60,7 @@ export const useFiltersErrors = (
   const { t } = useTranslation('use_filters_errors')
   let result: ValidationMessageProps = {}
 
-  some(filters, filter => {
+  some(filters, (filter) => {
     // Required filter error state (required filter is on and there is no filter value)
     if (filter.isRequired && !filter.expression) {
       result = {

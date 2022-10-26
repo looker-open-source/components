@@ -26,10 +26,10 @@
 
 import React, { useState } from 'react'
 import type { Story } from '@storybook/react/types-6-0'
+import { defaultArgTypes as argTypes } from '@looker/storybook'
 import { Select } from '../Select'
 import { Space } from '../../../Layout'
 import { Text } from '../../../Text'
-import { defaultArgTypes as argTypes } from '../../../../../../apps/storybook/src/defaultArgTypes'
 import type { InputColorProps } from './InputColor'
 import { InputColor } from './InputColor'
 

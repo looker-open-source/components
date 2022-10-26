@@ -25,31 +25,14 @@
  */
 
 import React, { useState } from 'react'
-import { act, fireEvent, screen } from '@testing-library/react'
+import { fireEvent, screen } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import ital from 'date-fns/locale/it'
 import { InputDate } from './InputDate'
 
-const realDateNow = Date.now.bind(global.Date)
-
-beforeEach(() => {
-  jest.useFakeTimers()
-  /* eslint-disable-next-line @typescript-eslint/unbound-method */
-  global.Date.now = jest.fn(() => 1580567580000)
-})
-
 afterEach(() => {
-  /* eslint-disable-next-line @typescript-eslint/unbound-method */
-  global.Date.now = realDateNow
   jest.clearAllMocks()
-  jest.runOnlyPendingTimers()
-  jest.useRealTimers()
 })
-
-const runTimers = () =>
-  act(() => {
-    jest.runOnlyPendingTimers()
-  })
 
 const ControlledInputDate = () => {
   const [value, setValue] = useState<Date | undefined>(new Date('June 3, 2019'))
@@ -74,109 +57,65 @@ const mockProps = {
 
 test('calls onChange prop when a day is clicked', () => {
   renderWithTheme(<InputDate {...mockProps} />)
-  const calendar = screen.getByText('Open calendar')
-  fireEvent.click(calendar)
-  runTimers()
-
-  const date = screen.getAllByText('15')[1]
-  fireEvent.click(date)
-  runTimers()
-
+  fireEvent.click(screen.getByText('Open calendar'))
+  fireEvent.click(screen.getByTitle('Sat Jun 15, 2019'))
   expect(mockProps.onChange).toHaveBeenCalledWith(
     new Date('June 15, 2019 11:00:00 PM')
   )
 })
 
+test('fills TextInput with value', () => {
+  renderWithTheme(<InputDate {...mockProps} />)
+  expect(screen.getByDisplayValue('06/03/2019')).toBeInTheDocument()
+})
+
 test('updates text input value when day is clicked', () => {
   renderWithTheme(<InputDate {...mockProps} />)
   expect(mockProps.onChange).not.toHaveBeenCalled()
+  expect(screen.getByDisplayValue('06/03/2019')).toBeInTheDocument()
 
-  const input = screen.getByTestId('text-input') as HTMLInputElement
-  expect(input).toHaveValue('06/03/2019')
-
-  const calendar = screen.getByText('Open calendar')
-  fireEvent.click(calendar)
-  runTimers()
-
-  const date = screen.getAllByText('15')[1]
-  fireEvent.click(date)
-  runTimers()
-
-  expect(input).toHaveValue('06/15/2019')
-})
-
-test('fills TextInput with value, and updates when props.value changes', () => {
-  renderWithTheme(<InputDate {...mockProps} />)
-  const input = screen.getByTestId('text-input') as HTMLInputElement
-  expect(input).toHaveValue('06/03/2019')
+  fireEvent.click(screen.getByText('Open calendar'))
+  fireEvent.click(screen.getByTitle('Sat Jun 15, 2019'))
+  expect(screen.getByDisplayValue('06/15/2019')).toBeInTheDocument()
 })
 
 test('value can be controlled externally', () => {
   renderWithTheme(<ControlledInputDate />)
-
   expect(screen.getByDisplayValue('06/03/2019')).toBeInTheDocument()
+
   fireEvent.click(screen.getByText('June 15, 2019'))
-  runTimers()
-
   expect(screen.getByDisplayValue('06/15/2019')).toBeInTheDocument()
-  fireEvent.click(screen.getByText('January 1, 2012'))
-  runTimers()
 
+  fireEvent.click(screen.getByText('January 1, 2012'))
   expect(screen.getByDisplayValue('01/01/2012')).toBeInTheDocument()
 })
 
 test('user can change the selected date via text input field', () => {
   renderWithTheme(<ControlledInputDate />)
-
-  const textInput = screen.getByDisplayValue('06/03/2019')
-  expect(textInput).toBeInTheDocument()
-
-  fireEvent.change(textInput, { target: { value: '01/01/2012' } })
-  runTimers()
-
-  fireEvent.blur(textInput)
-  runTimers()
-
+  const input = screen.getByDisplayValue('06/03/2019')
+  fireEvent.change(input, { target: { value: '01/01/2012' } })
+  fireEvent.blur(input)
   expect(screen.getByDisplayValue('01/01/2012')).toBeInTheDocument()
 })
 
 test('user can clear the selected date by deleting text input content', () => {
   renderWithTheme(<InputDate {...mockProps} />)
-
-  const TextInput = screen.getByDisplayValue('06/03/2019')
-
-  fireEvent.change(TextInput, { target: { value: '' } })
-  runTimers()
-
-  fireEvent.blur(TextInput) // update value on blur
-  runTimers()
-
+  const input = screen.getByDisplayValue('06/03/2019')
+  fireEvent.change(input, { target: { value: '' } })
+  fireEvent.blur(input)
   expect(mockProps.onChange).toHaveBeenCalledWith(undefined)
-})
-
-test('fills TextInput with defaultValue', () => {
-  renderWithTheme(<InputDate {...mockProps} />)
-  const input = screen.getByTestId('text-input') as HTMLInputElement
-  expect(input).toHaveValue('06/03/2019')
 })
 
 test('validates text input to match localized date format', () => {
   renderWithTheme(<InputDate {...mockProps} />)
-  const input = screen.getByTestId('text-input') as HTMLInputElement
+  const input = screen.getByDisplayValue('06/03/2019')
 
   fireEvent.change(input, { target: { value: '6/3/2019' } })
-  runTimers()
   fireEvent.blur(input)
-  runTimers()
-
   expect(mockProps.onValidationFail).not.toHaveBeenCalled()
 
   fireEvent.change(input, { target: { value: 'not-a-valid-date' } })
-  runTimers()
-
   fireEvent.blur(input)
-  runTimers()
-
   expect(mockProps.onValidationFail).toHaveBeenCalledTimes(1)
 })
 
@@ -184,30 +123,17 @@ test('localizes calendar', () => {
   renderWithTheme(
     <InputDate locale={ital} dateStringFormat="MMMM-dd" {...mockProps} />
   )
-
-  const input = screen.getByTestId('text-input') as HTMLInputElement
-  expect(input).toHaveValue('giugno-03')
+  expect(screen.getByDisplayValue('giugno-03')).toBeInTheDocument()
 })
 
-describe('dateStringFormat', () => {
-  test('Initial value format', () => {
-    renderWithTheme(<InputDate dateStringFormat="yyyy-MM-dd" {...mockProps} />)
+test('Initial dateStringValue', () => {
+  renderWithTheme(<InputDate dateStringFormat="yyyy-MM-dd" {...mockProps} />)
+  expect(screen.getByDisplayValue('2019-06-03')).toBeInTheDocument()
+})
 
-    expect(screen.getByDisplayValue('2019-06-03')).toBeInTheDocument()
-  })
-
-  test('After changing', () => {
-    renderWithTheme(<InputDate dateStringFormat="yyyy-MM-dd" {...mockProps} />)
-
-    const calendar = screen.getByText('Open calendar')
-    fireEvent.click(calendar)
-    runTimers()
-
-    const date = screen.getAllByText('15')[1]
-    fireEvent.click(date)
-    runTimers()
-
-    const input = screen.getByTestId('text-input')
-    expect(input).toHaveValue('2019-06-15')
-  })
+test('Changing value with dateStringFormat', () => {
+  renderWithTheme(<InputDate dateStringFormat="yyyy-MM-dd" {...mockProps} />)
+  fireEvent.click(screen.getByText('Open calendar'))
+  fireEvent.click(screen.getByTitle('Sat Jun 15, 2019'))
+  expect(screen.getByDisplayValue('2019-06-15')).toBeInTheDocument()
 })

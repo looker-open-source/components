@@ -25,7 +25,7 @@
  */
 
 import { linePositioning } from './linePositioning'
-import { mockLineConfig, mockFields, mockSdkDataResponse } from '../__mocks__'
+import { mockLineConfig, mockFields, mockSdkDataResponse } from '../fixtures'
 
 describe('linePositioning', () => {
   test('default', () => {

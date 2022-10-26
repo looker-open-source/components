@@ -51,6 +51,7 @@ import {
 } from '@styled-icons/material-outlined'
 import type { MouseEvent, Ref } from 'react'
 import React, { forwardRef, Fragment, useMemo, useRef, useState } from 'react'
+import { defaultArgTypes as argTypes } from '@looker/storybook'
 import { Button, IconButton } from '../Button'
 import { Card } from '../Card'
 import { Dialog, DialogLayout } from '../Dialog'
@@ -62,7 +63,6 @@ import { Tab, TabList, TabPanel, TabPanels, Tabs } from '../Tabs'
 import { Heading, Text, Paragraph } from '../Text'
 import { Tooltip } from '../Tooltip'
 import { useToggle } from '../utils'
-import { defaultArgTypes as argTypes } from '../../../../apps/storybook/src/defaultArgTypes'
 import { Menu } from './Menu'
 import { MenuDivider } from './MenuDivider'
 import { MenuItem } from './MenuItem'
@@ -317,9 +317,11 @@ export const RealisticMenus = () => {
           </>
         }
       >
-        <IconButton label="Dashboard actions" size="medium" icon={<MoreVert />}>
-          Icon Space Preserved
-        </IconButton>
+        <IconButton
+          label="Dashboard actions"
+          size="medium"
+          icon={<MoreVert />}
+        />
       </Menu>
 
       <Menu
@@ -355,9 +357,11 @@ export const RealisticMenus = () => {
           </>
         }
       >
-        <IconButton label="Dashboard actions" size="medium" icon={<MoreVert />}>
-          Icon Space Preserved
-        </IconButton>
+        <IconButton
+          label="Dashboard actions"
+          size="medium"
+          icon={<MoreVert />}
+        />
       </Menu>
 
       <Menu

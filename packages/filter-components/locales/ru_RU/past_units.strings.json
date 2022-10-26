@@ -1,0 +1,32 @@
+{
+  "complete days": {
+    "value": "полн. дн."
+  },
+  "complete fiscal quarters": {
+    "value": "полн. финанс. кварт."
+  },
+  "complete fiscal years": {
+    "value": "полн. финанс. год(а)/лет"
+  },
+  "complete hours": {
+    "value": "полн. ч"
+  },
+  "complete minutes": {
+    "value": "полн. мин"
+  },
+  "complete months": {
+    "value": "полн. мес."
+  },
+  "complete quarters": {
+    "value": "полн. кварт."
+  },
+  "complete seconds": {
+    "value": "полн. сек"
+  },
+  "complete weeks": {
+    "value": "полн. нед."
+  },
+  "complete years": {
+    "value": "полн. год(а)/лет"
+  }
+}

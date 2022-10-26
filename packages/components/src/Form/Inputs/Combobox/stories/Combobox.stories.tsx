@@ -26,6 +26,7 @@
 
 import type { FC } from 'react'
 import React, { useEffect, useState } from 'react'
+import { defaultArgTypes as argTypes } from '@looker/storybook'
 import type { OptionIndicatorProps } from '..'
 import {
   Combobox,
@@ -39,7 +40,6 @@ import {
 } from '..'
 import { Button, Heading, Paragraph, Space, SpaceVertical } from '../../../..'
 
-import { defaultArgTypes as argTypes } from '../../../../../../../apps/storybook/src/defaultArgTypes'
 export { ListLayoutDemo } from './ListLayout'
 
 const CustomIndicator: FC<OptionIndicatorProps> = ({

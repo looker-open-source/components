@@ -25,13 +25,7 @@
  */
 
 import type { ReactChild, Ref } from 'react'
-import React, {
-  Children,
-  forwardRef,
-  isValidElement,
-  useContext,
-  useMemo,
-} from 'react'
+import React, { Children, forwardRef, isValidElement, useMemo } from 'react'
 import type {
   CompatibleHTMLProps,
   DensityProp,
@@ -45,7 +39,7 @@ import {
   shouldForwardProp,
   width,
 } from '@looker/design-tokens'
-import styled, { ThemeContext } from 'styled-components'
+import styled, { useTheme } from 'styled-components'
 import { useArrowKeyNav, useWindow } from '../utils'
 import { ListItemContext, listItemDimensions } from '../ListItem'
 import { getNextItemFocus } from './utils'
@@ -125,7 +119,7 @@ export const ListInternal = forwardRef(
     forwardedRef: Ref<HTMLUListElement>
   ) => {
     const childArray = useMemo(() => Children.toArray(children), [children])
-    const theme = useContext(ThemeContext)
+    const theme = useTheme()
     const itemDimensions = listItemDimensions(density || theme.defaults.density)
 
     if (windowing === undefined) {

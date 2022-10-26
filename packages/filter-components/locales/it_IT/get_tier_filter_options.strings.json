@@ -1,0 +1,11 @@
+{
+  "is": {
+    "value": "è"
+  },
+  "is any value": {
+    "value": "è qualsiasi valore"
+  },
+  "is not": {
+    "value": "non è"
+  }
+}

@@ -30,7 +30,7 @@ import { grammarsMap } from '../type_to_grammar'
 import { summary } from './summary'
 
 describe('Summary', () => {
-  Object.keys(grammarsMap).forEach(type => {
+  Object.keys(grammarsMap).forEach((type) => {
     const expression = '&,,,$%testContext.#,,,$,testContext.'
     it(`for invalid input ${expression} should return the invalid input`, () => {
       expect(
@@ -46,10 +46,10 @@ describe('Summary', () => {
 })
 
 describe('Summary for empty string', () => {
-  i18nInit().catch(e => {
+  i18nInit().catch((e) => {
     throw new Error(e)
   })
-  it.each(Object.keys(grammarsMap))('%s', type => {
+  it.each(Object.keys(grammarsMap))('%s', (type) => {
     expect(summary({ type: type as FilterExpressionType })).toMatchSnapshot()
   })
 })

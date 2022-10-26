@@ -1,0 +1,8 @@
+{
+  "AllPageCountDisplayedSelected": "已选择 {{pageCount}} 页上显示的所有项目",
+  "AllTotalCountSelected": "已选择所有 {{totalCount}} 个项目",
+  "Bulk Actions": "批量操作",
+  "Clear Selection": "清除选定内容",
+  "SelectAllCountResults": "选择所有 {{totalCount}} 个结果",
+  "SelectedCountOfTotalDisplayed": "已选择 {{pageCount}} 页上显示的所有 {{selectedItemCount}} 个项目"
+}

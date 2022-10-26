@@ -26,7 +26,6 @@
 
 import { firePasteEvent, renderWithTheme } from '@looker/components-test-utils'
 import { act, cleanup, fireEvent, screen } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
 import React from 'react'
 
 import { SelectMulti } from './SelectMulti'
@@ -158,7 +157,7 @@ describe('SelectMulti', () => {
     }
     renderWithTheme(<TestComponent />)
     const input = screen.getByPlaceholderText('Search')
-    userEvent.type(input, 'b')
+    fireEvent.change(input, { target: { value: 'b' } })
     expect(input).toHaveValue('b')
 
     fireEvent.click(document)
@@ -203,7 +202,7 @@ describe('SelectMulti', () => {
 
     renderWithTheme(<TestComponent />)
     const input = screen.getByPlaceholderText('Search')
-    userEvent.type(input, 'z')
+    fireEvent.change(input, { target: { value: 'z' } })
     // Tests a bug fix with the controlled value behavior where SELECT_SILENT
     // was incorrectly triggered b/c the context value had '' for label
     // when the selected option is filtered out (faulty logic in getComboboxText)

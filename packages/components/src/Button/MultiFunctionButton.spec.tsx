@@ -28,7 +28,6 @@ import 'jest-styled-components'
 import React, { useState } from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { fireEvent, screen, act } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
 import { MultiFunctionButton } from './MultiFunctionButton'
 
 const CopyToClipboard = () => {
@@ -71,7 +70,8 @@ describe('MultiFunctionButton', () => {
     renderWithTheme(<CopyToClipboard />)
     const button = screen.getByText('Copy to Clipboard')
     expect(button).not.toHaveFocus()
-    userEvent.click(button)
+    button.focus()
+    fireEvent.click(button)
     const alternate = screen.getByText('Copied!')
     expect(alternate).toHaveFocus()
   })
@@ -87,18 +87,16 @@ describe('MultiFunctionButton focus returns to children', () => {
     jest.useRealTimers()
   })
 
-  const runTimers = () =>
-    act(() => {
-      jest.runOnlyPendingTimers()
-    })
-
   test('after swap goes back to false', () => {
     renderWithTheme(<CopyToClipboard />)
     const button = screen.getByText('Copy to Clipboard')
-    userEvent.click(button)
+    button.focus()
+    fireEvent.click(button)
     const alternate = screen.getByText('Copied!')
     expect(alternate).toHaveFocus()
-    runTimers()
+    act(() => {
+      jest.runOnlyPendingTimers()
+    })
     expect(button).toHaveFocus()
   })
 })

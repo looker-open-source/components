@@ -1,0 +1,11 @@
+{
+  "is": {
+    "value": "是"
+  },
+  "is any value": {
+    "value": "是任何值"
+  },
+  "is not": {
+    "value": "不是"
+  }
+}

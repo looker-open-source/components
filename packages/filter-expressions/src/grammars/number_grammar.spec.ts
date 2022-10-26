@@ -54,7 +54,7 @@ describe('Number grammar can parse', () => {
 const fail = ['(,)', 'AND', 'OR', '[inf,10]']
 
 describe("Number grammar can't parse", () => {
-  it.each(fail)('%s', expression => {
+  it.each(fail)('%s', (expression) => {
     const ast = parseFilterExpression('number', expression)
     expect(ast).toMatchSnapshot()
     expect(ast.type).toBe('matchesAdvanced')
@@ -67,6 +67,8 @@ const numeric = [
   ['1, 2, 3', '=', '1,2,3'],
   ['3.14159', '=', '3.14159'],
   ['123456789', '=', '123456789'],
+  // Should support big integers
+  ['12345678901234567890', '=', '12345678901234567890'],
   ['0.01', '=', '0.01'],
   ['.01', '=', /* ".01" */ '0.01'],
   ['-.01', '=', /* "-.01" */ '-0.01'],

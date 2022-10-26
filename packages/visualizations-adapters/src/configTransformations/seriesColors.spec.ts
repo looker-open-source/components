@@ -25,7 +25,7 @@
  */
 
 import { seriesColors } from './seriesColors'
-import { mockLineConfig, mockFields, mockSdkDataResponse } from '../__mocks__'
+import { mockLineConfig, mockFields, mockSdkDataResponse } from '../fixtures'
 import type { CSeriesBasic } from '../types'
 
 describe('seriesColors', () => {

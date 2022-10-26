@@ -41,10 +41,10 @@
     "@looker/jest-config": "*",
     "@looker/stylelint-config": "*",
     "@testing-library/react": "*",
-    "@testing-library/react-hooks": "8.0.0"
+    "@testing-library/react-hooks": "*"
   },
   "peerDependencies": {
-    "react": "16.11.0 - 18",
+    "react": "16.14.0 - 18",
     "react-dom": "16.11.0 - 18",
     "styled-components": "^5.3.1"
   },

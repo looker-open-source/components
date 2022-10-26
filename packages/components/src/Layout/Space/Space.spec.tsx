@@ -46,8 +46,9 @@ describe('Space', () => {
         {content}
       </Space>
     )
-    expect(screen.getByTestId('space')).toHaveStyle(
-      'flex-direction: row-reverse;'
+    expect(screen.getByTestId('space')).toHaveStyleRule(
+      'flex-direction',
+      'row-reverse'
     )
   })
 
@@ -57,8 +58,9 @@ describe('Space', () => {
         {content}
       </Space>
     )
-    expect(screen.getByTestId('space')).toHaveStyle(
-      'justify-content: space-around;'
+    expect(screen.getByTestId('space')).toHaveStyleRule(
+      'justify-content',
+      'space-around'
     )
   })
 
@@ -68,8 +70,9 @@ describe('Space', () => {
         {content}
       </Space>
     )
-    expect(screen.getByTestId('space')).toHaveStyle(
-      'justify-content: space-around;'
+    expect(screen.getByTestId('space')).toHaveStyleRule(
+      'justify-content',
+      'space-around'
     )
   })
 
@@ -79,8 +82,9 @@ describe('Space', () => {
         {content}
       </Space>
     )
-    expect(screen.getByTestId('space')).toHaveStyle(
-      'justify-content: space-between;'
+    expect(screen.getByTestId('space')).toHaveStyleRule(
+      'justify-content',
+      'space-between'
     )
   })
 
@@ -90,8 +94,25 @@ describe('Space', () => {
         {content}
       </Space>
     )
-    expect(screen.getByTestId('space')).toHaveStyle(
-      'justify-content: space-evenly;'
+    expect(screen.getByTestId('space')).toHaveStyleRule(
+      'justify-content',
+      'space-evenly'
+    )
+  })
+
+  test('align="stretch" overrides justify', () => {
+    renderWithTheme(
+      <Space justify="end" align="stretch" data-testid="space">
+        {content}
+      </Space>
+    )
+    expect(screen.getByTestId('space')).toHaveStyleRule(
+      'align-items',
+      'stretch'
+    )
+    expect(screen.getByTestId('space')).not.toHaveStyleRule(
+      'justify-content',
+      'flex-end'
     )
   })
 })

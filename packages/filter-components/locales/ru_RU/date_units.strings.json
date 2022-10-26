@@ -1,0 +1,62 @@
+{
+  "day": {
+    "value": "день"
+  },
+  "days": {
+    "value": "д"
+  },
+  "fiscal quarter": {
+    "value": "финансовый квартал"
+  },
+  "fiscal quarters": {
+    "value": "финанс. кварт."
+  },
+  "fiscal year": {
+    "value": "финансовый год"
+  },
+  "fiscal years": {
+    "value": "финанс. год(а)/лет"
+  },
+  "hour": {
+    "value": "час"
+  },
+  "hours": {
+    "value": "ч"
+  },
+  "minute": {
+    "value": "минута"
+  },
+  "minutes": {
+    "value": "мин"
+  },
+  "month": {
+    "value": "месяц"
+  },
+  "months": {
+    "value": "мес."
+  },
+  "quarter": {
+    "value": "квартал"
+  },
+  "quarters": {
+    "value": "кварт."
+  },
+  "second": {
+    "value": "секунда"
+  },
+  "seconds": {
+    "value": "сек."
+  },
+  "week": {
+    "value": "неделя"
+  },
+  "weeks": {
+    "value": "нед."
+  },
+  "year": {
+    "value": "год"
+  },
+  "years": {
+    "value": "год(а)/лет"
+  }
+}

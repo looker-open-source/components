@@ -50,6 +50,32 @@ describe('Slider', () => {
     expect(parseInt(input.value)).toEqual(props.min)
   })
 
+  test('Slider value can be a numeric string', () => {
+    const value = '2'
+    const props = {
+      min: 1,
+      value,
+    }
+    renderWithTheme(<Slider {...props} />)
+    const input = screen.getByTestId('slider-input') as HTMLInputElement
+    expect(input.value).toEqual(value)
+  })
+
+  test('Slider calls console.error if value is a non-numeric string', () => {
+    const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation()
+
+    const value = 'I am not numeric'
+    const props = {
+      min: 1,
+      value,
+    }
+    renderWithTheme(<Slider {...props} />)
+    const input = screen.getByTestId('slider-input') as HTMLInputElement
+    expect(parseInt(input.value)).toEqual(props.min)
+    expect(consoleErrorSpy).toHaveBeenCalled()
+    consoleErrorSpy.mockRestore()
+  })
+
   test('Slider with name and id', () => {
     const props = {
       id: 'Slip',

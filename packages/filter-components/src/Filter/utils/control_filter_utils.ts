@@ -61,7 +61,7 @@ import type { Option } from '../types/option'
 import { createEnumeration, createOptions } from './option_utils'
 import type { FilterProps, InternalFilterProps } from '../types/filter_props'
 
-interface AdapterProps extends Omit<FilterProps, 'expression' | 'name'> {
+interface AdapterProps extends Omit<FilterProps, 'expression'> {
   changeFilter: InternalFilterProps['changeFilter']
 }
 
@@ -124,7 +124,7 @@ const getPartitionedOptions = (
   // Partition out values that are included in the options array and those
   // that are not.
   const valueGroups: string[][] = isArray(item.value)
-    ? partition(item.value.map(String), value => optionsMap[value])
+    ? partition(item.value.map(String), (value) => optionsMap[value])
     : [[], []]
   return valueGroups
 }
@@ -423,6 +423,7 @@ const rangeSliderAdapter = (
     value: rangeSliderValue,
     options: config?.options as RangeSliderProps['options'],
     onChange: rangeSliderChange,
+    name: props.name,
   }
 }
 

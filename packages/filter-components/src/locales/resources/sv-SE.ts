@@ -27,6 +27,7 @@ import merge from 'lodash/merge'
 import dateLocale from 'date-fns/locale/sv'
 import type { I18nStateWithDates } from '../../utils'
 import { svSE as expressionLocale } from '@looker/filter-expressions'
+import { svSE as componentsLocale } from '@looker/components'
 
 const resources = {
   AddRemoveButtons: {
@@ -84,6 +85,9 @@ const resources = {
     weeks: 'veckor',
     year: 'år',
     years: 'år',
+  },
+  DateRange: {
+    'until (before)': 'fram till (före)',
   },
   format_date: {
     firstDayOfWeek: '0',
@@ -247,5 +251,12 @@ const resources = {
 export const svSE: I18nStateWithDates = {
   dateLocale,
   locale: 'sv-SE',
-  resources: { 'sv-SE': merge(resources, expressionLocale.resources['sv-SE']) },
+  resources: {
+    'sv-SE': merge(
+      {},
+      resources,
+      expressionLocale.resources['sv-SE'],
+      componentsLocale.resources['sv-SE']
+    ),
+  },
 }

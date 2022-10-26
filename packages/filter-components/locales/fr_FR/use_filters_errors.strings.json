@@ -1,0 +1,11 @@
+{
+  "Invalid value": {
+    "value": "Valeur non valide"
+  },
+  "No value is set for your user attribute": {
+    "value": "Aucune valeur n'est définie pour cet attribut d'utilisateur"
+  },
+  "Selection required": {
+    "value": "Sélection requise"
+  }
+}

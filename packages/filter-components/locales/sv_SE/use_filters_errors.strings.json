@@ -1,0 +1,11 @@
+{
+  "Invalid value": {
+    "value": "Ogiltigt värde"
+  },
+  "No value is set for your user attribute": {
+    "value": "Inget värde inställt för ditt användarattribut"
+  },
+  "Selection required": {
+    "value": "Markering krävs"
+  }
+}

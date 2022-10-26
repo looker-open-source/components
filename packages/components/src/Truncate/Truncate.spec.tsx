@@ -63,7 +63,7 @@ describe('Truncate', () => {
    * Need to figure out a clever way to trigger overflow so test can prove
    * the tooltip is enabled in overflow scenario
    */
-  xtest('Truncate active', () => {
+  test.skip('Truncate active', () => {
     renderWithTheme(
       <Box2 width="5rem">
         <Truncate>{longLabel}</Truncate>

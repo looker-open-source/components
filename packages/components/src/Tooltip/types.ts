@@ -116,6 +116,7 @@ export type UseTooltipResponseDom = UseTooltipCallbacks &
     /**
      * @deprecated returns a no-op function, will be removed in 3.x release
      */
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     ref: Ref<any>
   }
 export interface TooltipProps extends UseTooltipProps, Partial<MenuDomProps> {

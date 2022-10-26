@@ -50,7 +50,7 @@ import { ComboboxInput } from '../Combobox/ComboboxInput'
 import { ComboboxList } from '../Combobox/ComboboxList'
 import { ComboboxOption } from '../Combobox/ComboboxOption'
 import { pickAriaAndValidationProps } from '../ariaProps'
-import { useReadOnlyWarn } from '../../../utils'
+import { useReadOnlyWarn, useTranslation } from '../../../utils'
 import type { TimeFormats } from '../InputTime/utils'
 import {
   formatTimeString,
@@ -213,7 +213,7 @@ const matchStringValueToOption = (
   value?: string
 ) => {
   if (value && isValidTime(value)) {
-    const option = find(options, { value: value })
+    const option = find(options, { value })
     return option || createOptionFromStringValue(format, value)
   }
   return undefined
@@ -362,6 +362,7 @@ const InputTimeSelectLayout = forwardRef(
     )
 
     const ariaProps = pickAriaAndValidationProps(props)
+    const { t } = useTranslation('InputTimeSelect')
 
     return (
       <Combobox
@@ -369,9 +370,10 @@ const InputTimeSelectLayout = forwardRef(
         ref={ref}
         onChange={throttledHandleChange}
         value={selectedOption}
+        wrapperAriaLabel={t('Select time')}
       >
         <ComboboxInput
-          placeholder="Select time"
+          placeholder={t('Select time')}
           onChange={handleTextInputChange}
           onBlur={handleTextInputBlur}
           onKeyDown={handleKeyDown}
@@ -382,7 +384,7 @@ const InputTimeSelectLayout = forwardRef(
           id={id}
           {...ariaProps}
         />
-        <ComboboxList persistSelection>
+        <ComboboxList persistSelection aria-label={t('Select time')}>
           {timeOptionsFocused.map((option, index) => (
             <ComboboxOption {...option} key={index} />
           ))}

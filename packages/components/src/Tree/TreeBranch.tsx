@@ -51,7 +51,7 @@ const TreeBranchLayout: FC<TreeBranchProps> = ({ children, className }) => {
   )
 }
 
-const TreeBranchIndentSpacer = styled.li`
+const TreeBranchIndentSpacer = styled.div`
   ${generateIndent}
 `
 

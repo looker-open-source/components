@@ -27,6 +27,7 @@ import merge from 'lodash/merge'
 import dateLocale from 'date-fns/locale/nl'
 import type { I18nStateWithDates } from '../../utils'
 import { nlNL as expressionLocale } from '@looker/filter-expressions'
+import { nlNL as componentsLocale } from '@looker/components'
 
 const resources = {
   AddRemoveButtons: {
@@ -42,7 +43,7 @@ const resources = {
     'fiscal years from now': 'fiscale jaren vanaf nu',
     'hours ago': 'uur geleden',
     'hours from now': 'uur vanaf nu',
-    'minutes ago': 'maanden geleden',
+    'minutes ago': 'minuten geleden',
     'minutes from now': 'minuten vanaf nu',
     'months ago': 'maanden geleden',
     'months from now': 'maanden vanaf nu',
@@ -85,21 +86,24 @@ const resources = {
     year: 'jaar',
     years: 'jaren',
   },
+  DateRange: {
+    'until (before)': 'tot (voor)',
+  },
   get_date_filter_options: {
     is: 'is',
-    'is any time': 'is elk tijdstip',
-    'is before': 'is voor',
-    'is in range': 'ligt in het bereik',
-    'is in the last': 'is in de laatste',
-    'is in the month': 'is in de maand',
-    'is in the year': 'is in het jaar',
-    'is next': 'is volgende',
-    'is not null': 'is geldig',
-    'is null': 'is ongeldig',
-    'is on or after': 'is op of na',
-    'is on the day': 'is op de dag',
-    'is previous': 'is vorige',
-    'is this': 'is deze',
+    'is any time': 'alles',
+    'is before': 'vóór datum',
+    'is in range': 'datumbereik (van/tot)',
+    'is in the last': 'in de afgelopen',
+    'is in the month': 'specifieke maand',
+    'is in the year': 'specifiek jaar',
+    'is next': 'volgende',
+    'is not null': 'geldige datums',
+    'is null': 'ongeldige datums',
+    'is on or after': 'op of na datum',
+    'is on the day': 'specifieke datum',
+    'is previous': 'vorige',
+    'is this': 'deze',
   },
   get_filter_options: {
     'matches advanced': 'komt overeen met (geavanceerd)',
@@ -109,9 +113,9 @@ const resources = {
     Circle: 'Cirkel',
     Location: 'Locatie',
     feet: 'feet',
-    'is anywhere': 'is overal',
-    'is not null': 'is geldig',
-    'is null': 'is ongeldig',
+    'is anywhere': 'overal',
+    'is not null': 'geldige datums',
+    'is null': 'ongeldige datums',
     kilometers: 'kilometer',
     meters: 'meter',
     miles: 'mijl',
@@ -127,8 +131,8 @@ const resources = {
     'is less equal': 'is <=',
     'is not': 'is niet',
     'is not between': 'ligt niet tussen',
-    'is not null': 'is geldig',
-    'is null': 'is ongeldig',
+    'is not null': 'geldige datums',
+    'is null': 'ongeldige datums',
     'left exclusive': '(links-exclusief)',
     'right exclusive': '[rechts-exclusief]',
   },
@@ -162,13 +166,13 @@ const resources = {
     'is blank': 'is leeg',
     'is not': 'is niet',
     'is not blank': 'is niet leeg',
-    'is not null': 'is geldig',
-    'is null': 'is ongeldig',
+    'is not null': 'geldige datums',
+    'is null': 'ongeldige datums',
     'starts with': 'begint met',
   },
   get_tier_filter_options: {
     is: 'is',
-    'is any value': 'is elke waarde',
+    'is any value': 'alle waarden',
     'is not': 'is niet',
   },
   get_user_attribute_option: {
@@ -202,7 +206,7 @@ const resources = {
     'any value': 'elke waarde',
   },
   ReactSelectCustomIcons: {
-    'Clear all': 'Alles verwijderen',
+    'Clear all': 'Alles wissen',
     Remove: 'Verwijderen',
     Toggle: 'Aan/uitzetten',
   },
@@ -244,5 +248,12 @@ const resources = {
 export const nlNL: I18nStateWithDates = {
   dateLocale,
   locale: 'nl-NL',
-  resources: { 'nl-NL': merge(resources, expressionLocale.resources['nl-NL']) },
+  resources: {
+    'nl-NL': merge(
+      {},
+      resources,
+      expressionLocale.resources['nl-NL'],
+      componentsLocale.resources['nl-NL']
+    ),
+  },
 }

@@ -1,0 +1,38 @@
+{
+  "April": {
+    "value": "Huhtikuu"
+  },
+  "August": {
+    "value": "Elokuu"
+  },
+  "December": {
+    "value": "Joulukuu"
+  },
+  "February": {
+    "value": "Helmikuu"
+  },
+  "January": {
+    "value": "Tammikuu"
+  },
+  "July": {
+    "value": "Heinäkuu"
+  },
+  "June": {
+    "value": "Kesäkuu"
+  },
+  "March": {
+    "value": "Maaliskuu"
+  },
+  "May": {
+    "value": "Touko"
+  },
+  "November": {
+    "value": "Marraskuu"
+  },
+  "October": {
+    "value": "Lokakuu"
+  },
+  "September": {
+    "value": "Syyskuu"
+  }
+}

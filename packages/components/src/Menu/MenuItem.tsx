@@ -23,7 +23,7 @@
  SOFTWARE.
 
  */
-import styled, { ThemeContext } from 'styled-components'
+import styled, { useTheme } from 'styled-components'
 import type { MouseEvent, Ref } from 'react'
 import React, { forwardRef, useContext } from 'react'
 import { shouldForwardProp, size } from '@looker/design-tokens'
@@ -75,7 +75,7 @@ export const MenuItem = styled(
       })
       const ref = useForkedRef<HTMLLIElement>(nestedMenuRef, forwardedRef)
 
-      const theme = useContext(ThemeContext)
+      const theme = useTheme()
       const { density } = useContext(ListItemContext)
       const { iconSize } = listItemDimensions(density || theme.defaults.density)
 

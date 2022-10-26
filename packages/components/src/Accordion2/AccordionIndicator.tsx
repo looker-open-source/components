@@ -59,9 +59,10 @@ export const AccordionIndicator = styled(
       color: 'neutral',
     })
 
-    const rippleHandlers = useRippleHandlers(callbacks, {
-      ...pick({ ...props }, rippleHandlerKeys),
-    })
+    const rippleHandlers = useRippleHandlers(
+      callbacks,
+      pick(props, rippleHandlerKeys)
+    )
 
     const rippleContainerProps = {
       className: rippleClassName,

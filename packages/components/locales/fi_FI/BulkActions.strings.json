@@ -1,0 +1,8 @@
+{
+  "AllPageCountDisplayedSelected": "Kaikki {{pageCount}} näytettyä kohdetta valittu",
+  "AllTotalCountSelected": "Kaikki {{totalCount}} kohdetta valittu",
+  "Bulk Actions": "Joukkotoiminnot",
+  "Clear Selection": "Tyhjennä valinta",
+  "SelectAllCountResults": "Valitse kaikki {{totalCount}} tulosta",
+  "SelectedCountOfTotalDisplayed": "{{selectedItemCount}}/{{pageCount}} näytettyä kohdetta valittu"
+}

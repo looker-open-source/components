@@ -104,8 +104,6 @@ const BadgeLayout = forwardRef(
   }
 )
 
-BadgeLayout.displayName = 'BadgeLayout'
-
 const badgeIntent = (intent: BadgeIntent) =>
   css`
     background: ${intentUIBlend(intent, 1)};

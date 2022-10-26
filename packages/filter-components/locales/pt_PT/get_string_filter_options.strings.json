@@ -1,0 +1,14 @@
+{
+  "contains": "contém",
+  "doesnt contain": "não contém",
+  "doesnt end with": "não acaba em",
+  "doesnt start with": "não começa por",
+  "ends with": "acaba em",
+  "is": "é",
+  "is blank": "está vazio",
+  "is not": "não é",
+  "is not blank": "não está vazio",
+  "is not null": "não é nulo",
+  "is null": "é nulo",
+  "starts with": "começa por"
+}

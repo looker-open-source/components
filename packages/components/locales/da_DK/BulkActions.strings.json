@@ -1,0 +1,8 @@
+{
+  "AllPageCountDisplayedSelected": "Alle {{pageCount}} viste elementer er valgt",
+  "AllTotalCountSelected": "Alle {{totalCount}} elementer er valgt",
+  "Bulk Actions": "Massehandlinger",
+  "Clear Selection": "Ryd markering",
+  "SelectAllCountResults": "Vælg alle {{totalCount}} resultater",
+  "SelectedCountOfTotalDisplayed": "{{selectedItemCount}} af {{pageCount}} viste elementer er valgt"
+}

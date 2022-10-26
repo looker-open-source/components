@@ -26,7 +26,7 @@
 
 import React from 'react'
 import type { Story } from '@storybook/react/types-6-0'
-import { defaultArgTypes } from '../../../../apps/storybook/src/defaultArgTypes'
+import { defaultArgTypes } from '@looker/storybook'
 import type { ProgressCircularProps } from './ProgressCircular'
 import { ProgressCircular } from './ProgressCircular'
 

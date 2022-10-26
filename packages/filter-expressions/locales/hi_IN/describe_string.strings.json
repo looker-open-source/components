@@ -1,0 +1,23 @@
+{
+  "blank": {
+    "value": "खाली है"
+  },
+  "contains value": {
+    "value": "{{value}} शामिल है"
+  },
+  "does not contain value": {
+    "value": "{{value}} शामिल नहीं है"
+  },
+  "does not end with value": {
+    "value": "{{value}} के साथ समाप्त नहीं होता"
+  },
+  "does not start with value": {
+    "value": "{{value}} से शुरू नहीं होता है"
+  },
+  "ends with value": {
+    "value": "{{value}} पर समाप्त होता है"
+  },
+  "starts with value": {
+    "value": "{{value}} से शुरू होता है"
+  }
+}

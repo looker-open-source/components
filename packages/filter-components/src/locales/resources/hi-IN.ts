@@ -27,6 +27,7 @@ import merge from 'lodash/merge'
 import dateLocale from 'date-fns/locale/hi'
 import type { I18nStateWithDates } from '../../utils'
 import { hiIN as expressionLocale } from '@looker/filter-expressions'
+import { hiIN as componentsLocale } from '@looker/components'
 
 const resources = {
   AddRemoveButtons: {
@@ -35,24 +36,24 @@ const resources = {
   },
   before_after_units: {
     'days ago': 'दिन पहले',
-    'days from now': 'दिनों बाद',
+    'days from now': 'अभी से दिनों बाद',
     'fiscal quarter from now': 'अब से शुरू होने वाली वित्तीय तिमाही',
     'fiscal quarters ago': 'वित्तीय तिमाहियां पहले',
     'fiscal years ago': 'वित्तीय वर्ष पहले',
     'fiscal years from now': 'वित्तीय वर्षों बाद',
     'hours ago': 'घंटे पहले',
-    'hours from now': 'घंटों बाद',
+    'hours from now': 'घंटे बाद',
     'minutes ago': 'मिनट पहले',
-    'minutes from now': 'मिनटों बाद',
+    'minutes from now': 'मिनट बाद',
     'months ago': 'महीने पहले',
-    'months from now': 'महीनों बाद',
+    'months from now': 'महीने बाद',
     now: 'अभी',
     'quarters ago': 'तिमाहियां पहले',
-    'quarters from now': 'तिमाहियों बाद',
+    'quarters from now': 'अभी से तिमाहियां',
     'seconds ago': 'सेकंड पहले',
     'seconds from now': 'सेकंड बाद',
     'weeks ago': 'सप्ताह पहले',
-    'weeks from now': 'सप्ताहों बाद',
+    'weeks from now': 'अभी से सप्ताहों बाद',
     'years ago': 'वर्ष पहले',
     'years from now': 'वर्षों बाद',
   },
@@ -85,6 +86,9 @@ const resources = {
     year: 'वर्ष',
     years: 'वर्ष',
   },
+  DateRange: {
+    'until (before)': '(पहले) तक',
+  },
   get_date_filter_options: {
     is: 'है',
     'is any time': 'किसी भी समय है',
@@ -94,10 +98,10 @@ const resources = {
     'is in the month': 'महीने में है',
     'is in the year': 'वर्ष में है',
     'is next': 'अगला है',
-    'is not null': 'नल नहीं है',
-    'is null': 'नल है',
+    'is not null': 'शून्य नहीं है',
+    'is null': 'शून्य है',
     'is on or after': 'पर या बाद में है',
-    'is on the day': 'तारीख को है',
+    'is on the day': 'के दिन है',
     'is previous': 'पिछला है',
     'is this': 'यह है',
   },
@@ -107,11 +111,11 @@ const resources = {
   get_location_filter_options: {
     Box: 'बॉक्स',
     Circle: 'वृत्त',
-    Location: 'लोकेशन',
+    Location: 'स्थान',
     feet: 'फ़ीट',
     'is anywhere': 'कहीं भी है',
-    'is not null': 'नल नहीं है',
-    'is null': 'नल है',
+    'is not null': 'शून्य नहीं है',
+    'is null': 'शून्य है',
     kilometers: 'किलोमीटर',
     meters: 'मीटर',
     miles: 'मील',
@@ -127,8 +131,8 @@ const resources = {
     'is less equal': '<= है',
     'is not': 'नहीं है',
     'is not between': 'के बीच नहीं है',
-    'is not null': 'नल नहीं है',
-    'is null': 'नल है',
+    'is not null': 'शून्य नहीं है',
+    'is null': 'शून्य है',
     'left exclusive': '(बायां-असमावेशी]',
     'right exclusive': '[दायां-असमावेशी)',
   },
@@ -143,14 +147,14 @@ const resources = {
     'Previous Month': 'पिछले महीने',
     'Previous Quarter': 'पिछली तिमाही',
     'Previous Week': 'पिछले सप्ताह',
-    'Previous Year': 'पिछले साल',
+    'Previous Year': 'पिछला वर्ष',
     'This Month': 'इस महीने',
     'This Quarter': 'इस तिमाही',
     'This Week': 'इस सप्ताह',
     'This Year': 'इस साल',
     Today: 'आज',
-    'Year To Date': 'आज से पिछले एक साल का',
-    Yesterday: 'कल का',
+    'Year To Date': 'एक साल पहले से आज तक',
+    Yesterday: 'बीता कल',
   },
   get_string_filter_options: {
     contains: 'शामिल है',
@@ -168,7 +172,7 @@ const resources = {
   },
   get_tier_filter_options: {
     is: 'है',
-    'is any value': 'कोई भी मान है',
+    'is any value': 'कोई मान है',
     'is not': 'नहीं है',
   },
   get_user_attribute_option: {
@@ -202,7 +206,7 @@ const resources = {
     'any value': 'कोई भी मान',
   },
   ReactSelectCustomIcons: {
-    'Clear all': 'सभी साफ करें',
+    'Clear all': 'सभी साफ़ करें',
     Remove: 'निकालें',
     Toggle: 'टॉगल करें',
   },
@@ -223,12 +227,12 @@ const resources = {
   use_filters_errors: {
     'Invalid value': 'अमान्य मान',
     'No value is set for your user attribute':
-      'आपकी उपयोगकर्ता विशेषता के लिए कोई मान सेट नहीं है',
-    'Selection required': 'चयन आवश्यक है',
+      'आपके उपयोगकर्ता गुण के लिए कोई मान सेट नहीं है',
+    'Selection required': 'चुनना ज़रूरी है',
   },
   use_option_filtering: {
-    'No values': 'कोई मान नहीं दर्ज किया है',
-    'No values match': 'कोई मान इससे नहीं मिलता है',
+    'No values': 'कोई मान नहीं',
+    'No values match': 'कोई मान मेल नहीं करते हैं',
   },
   use_placeholder: {
     'any value': 'कोई भी मान',
@@ -237,12 +241,19 @@ const resources = {
     'Error loading suggestions': 'सुझाव लोड करने में त्रुटि हुई',
   },
   use_validation_message: {
-    'Value required': 'मान दर्ज करना ज़रूरी है',
+    'Value required': 'मान आवश्यक',
   },
 }
 
 export const hiIN: I18nStateWithDates = {
   dateLocale,
   locale: 'hi-IN',
-  resources: { 'hi-IN': merge(resources, expressionLocale.resources['hi-IN']) },
+  resources: {
+    'hi-IN': merge(
+      {},
+      resources,
+      expressionLocale.resources['hi-IN'],
+      componentsLocale.resources['hi-IN']
+    ),
+  },
 }

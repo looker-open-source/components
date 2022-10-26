@@ -1,0 +1,15 @@
+import { MultiFunctionButton } from '@looker/components'
+import { excludedProps } from '@looker/storybook'
+import storyCopyToClipboard from '!!raw-loader!./CopyToClipboard'
+
+<Meta component={MultiFunctionButton} title="Actions/MultiFunctionButton" />
+
+# MultiFunctionButton
+
+Here's an example of implementing a multi function button, like conveying to a user that the content has been copied to the clipboard:
+
+<Editor code={storyCopyToClipboard} />
+
+## Props
+
+<ArgsTable of={MultiFunctionButton} exclude={excludedProps} />

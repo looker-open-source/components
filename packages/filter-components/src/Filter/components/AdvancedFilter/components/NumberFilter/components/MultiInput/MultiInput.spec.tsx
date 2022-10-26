@@ -40,7 +40,7 @@ describe('MultiInput', () => {
   it('calls onChange with numbers', () => {
     const onChange = jest.fn()
     renderWithTheme(
-      <MultiInput item={item} onChange={onChange} placeholder={'any value'} />
+      <MultiInput item={item} onChange={onChange} placeholder="any value" />
     )
 
     const input = screen.getByPlaceholderText('any value')
@@ -62,7 +62,7 @@ describe('MultiInput', () => {
               <MultiInput
                 item={item}
                 onChange={onChange}
-                placeholder={'any value'}
+                placeholder="any value"
               />
             </Portal>
           ) : (
@@ -88,13 +88,36 @@ describe('MultiInput', () => {
   it('does not call onChange if a non-number is entered', () => {
     const onChange = jest.fn()
     renderWithTheme(
-      <MultiInput item={item} onChange={onChange} placeholder={'any value'} />
+      <MultiInput item={item} onChange={onChange} placeholder="any value" />
     )
 
     const input = screen.getByPlaceholderText('any value')
     fireEvent.change(input, { target: { value: '100k,' } })
 
     expect(input).toHaveValue('100k')
-    expect(onChange).not.toHaveBeenCalledWith()
+    expect(onChange).not.toHaveBeenCalled()
+  })
+
+  it('calls onChange with a big integer', () => {
+    const onChange = jest.fn()
+    renderWithTheme(
+      <MultiInput item={item} onChange={onChange} placeholder="any value" />
+    )
+
+    const input = screen.getByPlaceholderText('any value')
+    fireEvent.change(input, { target: { value: '12345678901234567890,' } })
+
+    expect(onChange.mock.calls).toMatchInlineSnapshot(`
+      Array [
+        Array [
+          "1",
+          Object {
+            "value": Array [
+              12345678901234567890n,
+            ],
+          },
+        ],
+      ]
+    `)
   })
 })

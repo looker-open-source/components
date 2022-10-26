@@ -1,0 +1,8 @@
+{
+  "AllPageCountDisplayedSelected": "सभी {{pageCount}} दिखाए गए आइटम चुने गए",
+  "AllTotalCountSelected": "सभी {{totalCount}} आइटम चुने गए",
+  "Bulk Actions": "बल्क क्रियाएं",
+  "Clear Selection": "चुना गया हटाएं",
+  "SelectAllCountResults": "सभी {{totalCount}} नतीजे चुनें",
+  "SelectedCountOfTotalDisplayed": "{{pageCount}} के {{selectedItemCount}} दिखाए गए आइटम चुने गए"
+}

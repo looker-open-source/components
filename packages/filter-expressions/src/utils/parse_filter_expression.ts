@@ -31,6 +31,7 @@ import type {
   TransformFunction,
   UserAttributeWithValue,
 } from '../types'
+import { getNumberFromString } from './number/get_number_from_string'
 import { getMatchesAdvancedNode } from './get_matches_advanced_node'
 import { transformAST } from './transform/transform_ast'
 import { userAttributeTransform } from './transform/userAttributeTransform'
@@ -48,6 +49,11 @@ const generateParser = (() => {
     return parserCache[type]
   }
 })()
+
+/**
+ * Variables used inside grammars
+ */
+export const parserOptions = { Object, getNumberFromString }
 
 /**
  * A functions that uses a grammar of type type to parse an expression and returns an AST
@@ -71,7 +77,7 @@ export const parseFilterExpression = (
       userAttributeTransform(userAttributes),
       transform,
     ]
-    return transformAST(parser.parse(expression, { Object }), transforms)
+    return transformAST(parser.parse(expression, parserOptions), transforms)
   } catch (error) {
     return getMatchesAdvancedNode(expression)
   }

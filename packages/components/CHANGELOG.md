@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+# [4.0.0](https://github.com/looker-open-source/components/compare/22.16.0...4.0.0) (2022-09-29)
+
+
+### Code Refactoring
+
+* Rename Box2 to Box and deprecate Box2 ([3be4506](https://github.com/looker-open-source/components/commit/3be450600dd3d962306852d5fc8f14f119ba6503))
+
+
+### Features
+
+* **ListItem:** Add padding between label and detail ([310d69e](https://github.com/looker-open-source/components/commit/
+
+
+### BREAKING CHANGES
+
+* boxShadow prop no longer supported
+* Replace border with semanticBorder
+
+Change-Id: I814479e9eedc45179cc8e3fa7929bae2faa7cf3d
+
+
 ## [3.0.8](https://github.com/looker-open-source/components/compare/@looker/components@3.0.7...@looker/components@3.0.8) (2022-05-23)
 
 **Note:** Version bump only for package @looker/components

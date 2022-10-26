@@ -1,0 +1,82 @@
+{
+  "complete day": "วันถ้วน",
+  "complete days": {
+    "value": "วันถ้วน"
+  },
+  "complete fiscal quarter": "ไตรมาสงบประมาณถ้วน",
+  "complete fiscal quarters": {
+    "value": "ไตรมาสงบประมาณถ้วน"
+  },
+  "complete fiscal year": "ปีงบประมาณถ้วน",
+  "complete fiscal years": {
+    "value": "ปีงบประมาณถ้วน"
+  },
+  "complete hour": "ชั่วโมงถ้วน",
+  "complete hours": {
+    "value": "ชั่วโมงถ้วน"
+  },
+  "complete minute": "นาทีถ้วน",
+  "complete minutes": {
+    "value": "นาทีถ้วน"
+  },
+  "complete month": "เดือนถ้วน",
+  "complete months": {
+    "value": "เดือนถ้วน"
+  },
+  "complete quarter": "ไตรมาสถ้วน",
+  "complete quarters": {
+    "value": "ไตรมาสถ้วน"
+  },
+  "complete second": "วินาทีถ้วน",
+  "complete seconds": {
+    "value": "วินาทีถ้วน"
+  },
+  "complete week": "สัปดาห์ถ้วน",
+  "complete weeks": {
+    "value": "สัปดาห์ถ้วน"
+  },
+  "complete year": "ปีถ้วน",
+  "complete years": {
+    "value": "ปีถ้วน"
+  },
+  "day": "วัน",
+  "days": {
+    "value": "วัน"
+  },
+  "fiscal quarter": "ไตรมาสงบประมาณ",
+  "fiscal quarters": {
+    "value": "ไตรมาสงบประมาณ"
+  },
+  "fiscal year": "ปีงบประมาณ",
+  "fiscal years": {
+    "value": "ปีงบประมาณ"
+  },
+  "hour": "ชั่วโมง",
+  "hours": {
+    "value": "ชั่วโมง"
+  },
+  "minute": "นาที",
+  "minutes": {
+    "value": "นาที"
+  },
+  "month": "เดือน",
+  "months": {
+    "value": "เดือน"
+  },
+  "quarter": "ไตรมาส",
+  "quarters": {
+    "value": "ไตรมาส"
+  },
+  "second": "วินาที",
+  "seconds": {
+    "value": "วินาที"
+  },
+  "week": "สัปดาห์",
+  "weeks": {
+    "value": "สัปดาห์"
+  },
+  "year": "ปี",
+  "years": {
+    "value": "ปี"
+  }
+}

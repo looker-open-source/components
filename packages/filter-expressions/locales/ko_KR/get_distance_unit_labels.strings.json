@@ -1,0 +1,14 @@
+{
+  "feet": {
+    "value": "피트"
+  },
+  "kilometers": {
+    "value": "km"
+  },
+  "meters": {
+    "value": "m"
+  },
+  "miles": {
+    "value": "마일"
+  }
+}

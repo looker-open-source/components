@@ -24,29 +24,14 @@
 
  */
 
-import { i18nInitOptionsComponents, i18nInitComponents } from '@looker/i18n'
+import { i18nInitComponents } from '@looker/i18n'
 import type { I18nStateWithDates } from '@looker/i18n'
 import i18next from 'i18next'
-import merge from 'lodash/merge'
 import { useEffect } from 'react'
-import { i18nResources } from './resources'
-
-export const i18nInitOptions = i18nInitOptionsComponents
-
-export const i18nInit = async (options?: Partial<I18nStateWithDates>) => {
-  // Merge with English translations in case there are translations missing
-  // from the resources passed in
-  const mergedResources = merge({}, options?.resources, i18nResources)
-  return i18nInitComponents({ ...options, resources: mergedResources })
-}
 
 export type UseI18nProps = Partial<I18nStateWithDates>
 
-export const useI18n = ({
-  dateLocale,
-  locale,
-  resources = i18nResources,
-}: UseI18nProps) => {
+export const useI18n = ({ dateLocale, locale, resources }: UseI18nProps) => {
   if (!i18next.isInitialized) {
     i18nInitComponents({ dateLocale, locale, resources })
   }

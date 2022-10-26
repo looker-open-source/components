@@ -13,7 +13,7 @@ All icons should be exported as SVG and placed in the `svg` directory. They do n
 
 When adding new icons run the build script below to output the optimized React-component versions.
 
-`yarn workspace @looker/icons build`
+`npm run build --workspace @looker/icons`
 
 Adding new icons to `svg` and failing to re-run the command above will result in a lint failure.
 

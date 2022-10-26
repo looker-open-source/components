@@ -1,0 +1,62 @@
+{
+  "day": {
+    "value": "den"
+  },
+  "days": {
+    "value": "dny/ů"
+  },
+  "fiscal quarter": {
+    "value": "fiskální čtvrtletí"
+  },
+  "fiscal quarters": {
+    "value": "fiskální čtvrtletí"
+  },
+  "fiscal year": {
+    "value": "fiskální rok"
+  },
+  "fiscal years": {
+    "value": "fiskální roky"
+  },
+  "hour": {
+    "value": "hodina"
+  },
+  "hours": {
+    "value": "hodin(y)"
+  },
+  "minute": {
+    "value": "minuta"
+  },
+  "minutes": {
+    "value": "minut(y)"
+  },
+  "month": {
+    "value": "měsíc"
+  },
+  "months": {
+    "value": "měsíce/ů"
+  },
+  "quarter": {
+    "value": "čtvrtletí"
+  },
+  "quarters": {
+    "value": "čtvrtletí"
+  },
+  "second": {
+    "value": "sekunda"
+  },
+  "seconds": {
+    "value": "sekund(y)"
+  },
+  "week": {
+    "value": "týden"
+  },
+  "weeks": {
+    "value": "týdny/ů"
+  },
+  "year": {
+    "value": "rok"
+  },
+  "years": {
+    "value": "roky/ů"
+  }
+}

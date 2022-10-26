@@ -50,7 +50,7 @@
 
  */
 
-import { getFallbackElement } from '../../utils/getNextFocus'
+import { getFallbackElement, getTabStops } from '../../utils/getNextFocus'
 
 export const itemSelector =
   '[role="treeitem"]:not(:disabled),[role="listitem"]:not(:disabled),[role="menuitem"]:not(:disabled)'
@@ -69,45 +69,41 @@ export const getNextItemFocus = (
   vertical?: boolean
 ) => {
   const items = getItems(element)
+  const focusedElement = document.activeElement
 
-  if (items.length > 0) {
-    const focusedElement = document.activeElement
-    const isItemFocused =
-      focusedElement && items.includes(focusedElement as HTMLElement)
+  if (items.length > 0 && focusedElement instanceof HTMLElement) {
+    const isItemFocused = focusedElement && items.includes(focusedElement)
     const closestWrapper = focusedElement?.closest(
-      'li:not(:disabled)'
-    ) as HTMLElement
+      'li:not(:disabled),[role=group]:not(:disabled)'
+    )
 
-    if (vertical) {
-      const target = isItemFocused
-        ? (focusedElement as HTMLElement)
-        : (closestWrapper.querySelector(itemSelector) as HTMLElement)
+    if (closestWrapper instanceof HTMLElement) {
+      if (vertical) {
+        const target = isItemFocused
+          ? focusedElement
+          : closestWrapper.querySelector(itemSelector)
 
-      const next = items.findIndex(el => el === target) + direction
+        const next = items.findIndex(el => el === target) + direction
 
-      if (next === items.length || !items[next]) {
-        return getFallbackElement(direction, element, items)
-      }
+        if (next === items.length || !items[next]) {
+          return getFallbackElement(direction, element, items)
+        }
 
-      return items[next]
-    } else if (vertical === false) {
-      const tabStops = Array.from(
-        closestWrapper.querySelectorAll(
+        return items[next]
+      } else if (vertical === false) {
+        const tabStops = getTabStops(
+          closestWrapper,
           'a,input,button:not(:disabled),[tabindex="0"],[tabindex="-1"]:not(:disabled)'
         )
-      ) as HTMLElement[]
 
-      const next = tabStops.findIndex(el => el === focusedElement) + direction
+        const next = tabStops.findIndex(el => el === focusedElement) + direction
 
-      if (next === tabStops.length || !tabStops[next]) {
-        return getFallbackElement(
-          direction,
-          focusedElement as HTMLElement,
-          tabStops as HTMLElement[]
-        )
+        if (next === tabStops.length || !tabStops[next]) {
+          return getFallbackElement(direction, focusedElement, tabStops)
+        }
+
+        return tabStops[next]
       }
-
-      return tabStops[next]
     }
   }
 

@@ -44,7 +44,7 @@ export type CScatterSeries = CSeriesBasic &
 
 export type CScatter = {
   series?: CScatterSeries[] | { [key: string]: CScatterSeries }
-  type: SupportedChartTypes['scatter']
+  type?: SupportedChartTypes['scatter']
 } & Omit<CLineBase, 'series'>
 
 export type ScatterProps = VisWrapperProps &

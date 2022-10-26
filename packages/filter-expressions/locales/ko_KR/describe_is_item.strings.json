@@ -1,0 +1,8 @@
+{
+  "is not value": {
+    "value": "이(가) {{value}}이(가) 아님"
+  },
+  "is value": {
+    "value": "이(가) {{value}}"
+  }
+}

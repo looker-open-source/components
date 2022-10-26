@@ -26,9 +26,9 @@
 
 import type { ThemeCustomizations } from '@looker/design-tokens'
 import { generateTheme } from '@looker/design-tokens'
-import { ThemeContext, ThemeProvider } from 'styled-components'
+import { ThemeProvider, useTheme } from 'styled-components'
 import type { FC } from 'react'
-import React, { useMemo, useContext } from 'react'
+import React, { useMemo } from 'react'
 
 export interface ExtendComponentsTheme {
   themeCustomizations?: ThemeCustomizations
@@ -46,7 +46,7 @@ export const ExtendComponentsThemeProvider: FC<ExtendComponentsTheme> = ({
   children,
   themeCustomizations,
 }) => {
-  const parentTheme = useContext(ThemeContext)
+  const parentTheme = useTheme()
 
   const theme = useMemo(() => {
     return generateTheme(parentTheme, themeCustomizations)

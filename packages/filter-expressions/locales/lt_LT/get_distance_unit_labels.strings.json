@@ -1,0 +1,14 @@
+{
+  "feet": {
+    "value": "pėdų"
+  },
+  "kilometers": {
+    "value": "km"
+  },
+  "meters": {
+    "value": "m"
+  },
+  "miles": {
+    "value": "mylių"
+  }
+}

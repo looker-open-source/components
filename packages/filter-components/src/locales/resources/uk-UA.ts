@@ -27,6 +27,7 @@ import merge from 'lodash/merge'
 import dateLocale from 'date-fns/locale/uk'
 import type { I18nStateWithDates } from '../../utils'
 import { ukUA as expressionLocale } from '@looker/filter-expressions'
+import { ukUA as componentsLocale } from '@looker/components'
 
 const resources = {
   AddRemoveButtons: {
@@ -84,6 +85,9 @@ const resources = {
     weeks: 'тижн',
     year: 'рік',
     years: 'р.',
+  },
+  DateRange: {
+    'until (before)': 'до (не включно)',
   },
   get_date_filter_options: {
     is: 'є',
@@ -244,5 +248,12 @@ const resources = {
 export const ukUA: I18nStateWithDates = {
   dateLocale,
   locale: 'uk-UA',
-  resources: { 'uk-UA': merge(resources, expressionLocale.resources['uk-UA']) },
+  resources: {
+    'uk-UA': merge(
+      {},
+      resources,
+      expressionLocale.resources['uk-UA'],
+      componentsLocale.resources['uk-UA']
+    ),
+  },
 }

@@ -27,9 +27,9 @@
 import type { FormEvent } from 'react'
 import React, { useState } from 'react'
 import type { Story } from '@storybook/react/types-6-0'
-import { filters } from '../../../__mocks__/filters'
+import { defaultArgTypes as argTypes } from '@looker/storybook'
+import { filters } from '../../../fixtures/filters'
 import { InputText } from '../InputText'
-import { defaultArgTypes as argTypes } from '../../../../../../apps/storybook/src/defaultArgTypes'
 import type { InputFilterEditorRenderProp } from './types'
 import type { InputFiltersProps, FieldFilter } from './'
 import { InputFilters } from './'
@@ -90,8 +90,9 @@ const CustomTemplate: Story<InputFiltersProps> = ({ ...args }) => {
 }
 
 export const Basic = Template.bind({})
+Basic.args = { filters }
 Basic.args = {
-  filters: filters,
+  filters,
 }
 
 export const FilterSelected = Template.bind({})

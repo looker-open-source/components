@@ -25,7 +25,7 @@
  */
 import React, { useState } from 'react'
 import type { Story } from '@storybook/react/types-6-0'
-
+import { Button, Dialog, DialogLayout } from '@looker/components'
 import type { StringSingleSelectProps } from '../../../../types/string_select_props'
 import { ButtonToggles } from './ButtonToggles'
 
@@ -44,7 +44,7 @@ const options = [
   },
 ]
 
-const Template: Story<StringSingleSelectProps> = args => {
+const Template: Story<StringSingleSelectProps> = (args) => {
   const [value, setValue] = useState(args.value || '')
   const handleChange = (newValue: string) => {
     setValue(newValue)
@@ -57,6 +57,31 @@ export const Basic = Template.bind({})
 Basic.args = {
   options,
   value: options[1].value,
+}
+
+export const InsideADialog = () => {
+  const [value, setValue] = useState('')
+  const handleChange = (newValue: string) => {
+    setValue(newValue)
+  }
+  return (
+    <Dialog
+      content={
+        <DialogLayout>
+          <ButtonToggles
+            options={options}
+            value={value}
+            onChange={handleChange}
+          />
+        </DialogLayout>
+      }
+    >
+      <Button>Open</Button>
+    </Dialog>
+  )
+}
+InsideADialog.parameters = {
+  storyshots: { disable: true },
 }
 
 export const Loading = Template.bind({})

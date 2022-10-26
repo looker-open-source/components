@@ -41,7 +41,7 @@ const getMockComponent = (props: any = {}) => {
 
 const getSelectedDatesLabels = (container: HTMLElement) => {
   const selectedDates = container.querySelectorAll('[aria-selected="true"]')
-  return Array.from(selectedDates).map(selectedDate =>
+  return Array.from(selectedDates).map((selectedDate) =>
     selectedDate.getAttribute('aria-label')
   )
 }

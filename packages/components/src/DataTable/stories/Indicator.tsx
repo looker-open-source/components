@@ -79,7 +79,7 @@ const Template: Story<DataTableProps> = ({ ...args }) => {
 export const Indicator = Template.bind({})
 Indicator.args = {
   children: items,
-  columns: columns,
+  columns,
 }
 Indicator.parameters = {
   storyshots: { disable: true },

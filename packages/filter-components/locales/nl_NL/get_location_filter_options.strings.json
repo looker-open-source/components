@@ -1,0 +1,32 @@
+{
+  "Box": {
+    "value": "Vak"
+  },
+  "Circle": {
+    "value": "Cirkel"
+  },
+  "Location": {
+    "value": "Locatie"
+  },
+  "feet": {
+    "value": "feet"
+  },
+  "is anywhere": {
+    "value": "overal"
+  },
+  "is not null": {
+    "value": "geldige datums"
+  },
+  "is null": {
+    "value": "ongeldige datums"
+  },
+  "kilometers": {
+    "value": "kilometer"
+  },
+  "meters": {
+    "value": "meter"
+  },
+  "miles": {
+    "value": "mijl"
+  }
+}

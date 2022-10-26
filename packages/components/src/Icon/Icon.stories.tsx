@@ -34,10 +34,10 @@ import {
   Refresh,
   Settings,
 } from '@styled-icons/material'
+import { defaultArgTypes as argTypes } from '@looker/storybook'
 import { Button, IconButton } from '../Button'
 import { Space, SpaceVertical } from '../Layout'
 import { Heading } from '../Text'
-import { defaultArgTypes as argTypes } from '../../../../apps/storybook/src/defaultArgTypes'
 import type { IconProps } from './Icon'
 import { Icon } from './Icon'
 

@@ -1,0 +1,62 @@
+{
+  "day": {
+    "value": "יום"
+  },
+  "days": {
+    "value": "ימים"
+  },
+  "fiscal quarter": {
+    "value": "רבעון פיסקלי"
+  },
+  "fiscal quarters": {
+    "value": "רבעונים פיסקליים"
+  },
+  "fiscal year": {
+    "value": "שנה פיסקלית"
+  },
+  "fiscal years": {
+    "value": "שנים פיסקליות"
+  },
+  "hour": {
+    "value": "שעה"
+  },
+  "hours": {
+    "value": "שעות"
+  },
+  "minute": {
+    "value": "דקה"
+  },
+  "minutes": {
+    "value": "דקות"
+  },
+  "month": {
+    "value": "חודש"
+  },
+  "months": {
+    "value": "חודשים"
+  },
+  "quarter": {
+    "value": "רבעון"
+  },
+  "quarters": {
+    "value": "רבעונים"
+  },
+  "second": {
+    "value": "שנייה"
+  },
+  "seconds": {
+    "value": "שניות"
+  },
+  "week": {
+    "value": "שבוע"
+  },
+  "weeks": {
+    "value": "שבועות"
+  },
+  "year": {
+    "value": "שנה"
+  },
+  "years": {
+    "value": "שנים"
+  }
+}

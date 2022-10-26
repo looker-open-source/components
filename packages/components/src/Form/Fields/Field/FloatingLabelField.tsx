@@ -27,7 +27,7 @@
 import type { StatefulColor } from '@looker/design-tokens'
 import { width } from '@looker/design-tokens'
 import React, { useContext } from 'react'
-import styled, { ThemeContext } from 'styled-components'
+import styled, { useTheme } from 'styled-components'
 import { Space } from '../../../Layout'
 import type { ValidationMessageProps } from '../../ValidationMessage'
 import { DISABLED_OPACITY } from '../../constants'
@@ -84,7 +84,7 @@ export const FloatingLabelField = styled(
 
     const {
       defaults: { externalLabel },
-    } = useContext(ThemeContext)
+    } = useTheme()
 
     const { fieldsHideLabel } = useContext(FieldsetContext)
 

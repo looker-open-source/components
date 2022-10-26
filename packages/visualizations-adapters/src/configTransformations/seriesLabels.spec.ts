@@ -25,7 +25,7 @@
  */
 
 import { seriesLabels } from './seriesLabels'
-import { mockBarConfig, mockFields, mockSdkDataResponse } from '../__mocks__'
+import { mockBarConfig, mockFields, mockSdkDataResponse } from '../fixtures'
 import type { CSeriesBasic, MeasureMetadata } from '../types'
 
 test('array series fills in values from series_labels', () => {

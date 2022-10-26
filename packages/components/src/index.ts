@@ -72,14 +72,13 @@ export * from './Truncate'
 export * from './UnorderedList'
 export * from './VisuallyHidden'
 
+export * from './locales'
 export * from './utils'
+export * from './utils-storybook'
 
 export {
   ComponentsProvider,
   ExtendComponentsThemeProvider,
-  i18nInit,
-  i18nInitOptions,
-  i18nResources,
 } from '@looker/components-providers'
 
 export { i18nUpdate } from '@looker/i18n'

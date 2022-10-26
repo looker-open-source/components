@@ -1,0 +1,29 @@
+{
+  "coords1 to coords2": {
+    "value": "{{coords1}}~{{coords2}}"
+  },
+  "distance unit from lat, lon": {
+    "value": "{{distance}} {{unit}}, {{lat}}, {{lon}}부터"
+  },
+  "is anywhere": {
+    "value": "이(가) 전체 지역에 있음"
+  },
+  "is not null": {
+    "value": "이(가) null이 아님"
+  },
+  "is null": {
+    "value": "이(가) null임"
+  },
+  "lat degrees north": {
+    "value": "{{lat}}°N"
+  },
+  "lat degrees south": {
+    "value": "{{lat}}°S"
+  },
+  "lon degrees east": {
+    "value": "{{lon}}°E"
+  },
+  "lon degrees west": {
+    "value": "{{lon}}°W"
+  }
+}

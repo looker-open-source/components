@@ -70,7 +70,7 @@ export const BeforeAfter: FC<BeforeAfterProps> = ({
     onChange(id, { value: Number(e.target.value) })
 
   const unitChange = (value: string) => {
-    const option = unitOptions.find(option => option.value === value)
+    const option = unitOptions.find((option) => option.value === value)
     onChange(id, { unit: option?.unit, fromnow: option?.fromnow })
   }
 

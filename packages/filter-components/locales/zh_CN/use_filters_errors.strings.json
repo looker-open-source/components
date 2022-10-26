@@ -1,0 +1,11 @@
+{
+  "Invalid value": {
+    "value": "无效值"
+  },
+  "No value is set for your user attribute": {
+    "value": "您的用户属性没有设置任何值"
+  },
+  "Selection required": {
+    "value": "所需的选择"
+  }
+}

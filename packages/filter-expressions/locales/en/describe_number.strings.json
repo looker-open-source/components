@@ -1,0 +1,8 @@
+{
+  "is in range range": {
+    "value": "is in range {{range}}"
+  },
+  "is not in range range": {
+    "value": "is not in range {{range}}"
+  }
+}

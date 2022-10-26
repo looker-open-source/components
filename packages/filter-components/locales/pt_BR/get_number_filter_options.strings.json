@@ -1,0 +1,44 @@
+{
+  "exclusive": {
+    "value": "(aberto)"
+  },
+  "inclusive": {
+    "value": "[fechado]"
+  },
+  "is": {
+    "value": "é"
+  },
+  "is between": {
+    "value": "está entre"
+  },
+  "is greater": {
+    "value": "é > que"
+  },
+  "is greater equal": {
+    "value": "é > ou igual a"
+  },
+  "is less": {
+    "value": "é < que"
+  },
+  "is less equal": {
+    "value": "é < ou igual a"
+  },
+  "is not": {
+    "value": "não é"
+  },
+  "is not between": {
+    "value": "não está entre"
+  },
+  "is not null": {
+    "value": "não é nulo"
+  },
+  "is null": {
+    "value": "é nulo"
+  },
+  "left exclusive": {
+    "value": "(semiaberto]"
+  },
+  "right exclusive": {
+    "value": "[semifechado)"
+  }
+}

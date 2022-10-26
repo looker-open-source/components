@@ -105,7 +105,6 @@ export const FieldPickerItem: FC<FieldPickerItemProps> = ({
         options: {
           accessory: true,
           hoverDisclosure: !isFieldMenuOpen,
-          padding: false,
           width: 48,
         },
       }}

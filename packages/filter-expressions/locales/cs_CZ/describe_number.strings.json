@@ -1,0 +1,8 @@
+{
+  "is in range range": {
+    "value": "je v rozsahu {{range}}"
+  },
+  "is not in range range": {
+    "value": "není v rozsahu {{range}}"
+  }
+}

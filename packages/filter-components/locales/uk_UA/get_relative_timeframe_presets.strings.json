@@ -1,0 +1,56 @@
+{
+  "Last 14 Days": {
+    "value": "За останні 14 днів"
+  },
+  "Last 180 Days": {
+    "value": "За останні 180 днів"
+  },
+  "Last 28 Days": {
+    "value": "За останні 28 днів"
+  },
+  "Last 30 Days": {
+    "value": "За останні 30 днів"
+  },
+  "Last 365 Days": {
+    "value": "За останні 365 днів"
+  },
+  "Last 7 Days": {
+    "value": "За останні 7 днів"
+  },
+  "Last 90 Days": {
+    "value": "За останні 90 днів"
+  },
+  "Previous Month": {
+    "value": "За минулий місяць"
+  },
+  "Previous Quarter": {
+    "value": "За минулий квартал"
+  },
+  "Previous Week": {
+    "value": "За минулий тиждень"
+  },
+  "Previous Year": {
+    "value": "За минулий рік"
+  },
+  "This Month": {
+    "value": "За цей місяць"
+  },
+  "This Quarter": {
+    "value": "За цей квартал"
+  },
+  "This Week": {
+    "value": "За цей тиждень"
+  },
+  "This Year": {
+    "value": "За цей рік"
+  },
+  "Today": {
+    "value": "Сьогодні"
+  },
+  "Year To Date": {
+    "value": "З початку року до поточної дати"
+  },
+  "Yesterday": {
+    "value": "Вчора"
+  }
+}

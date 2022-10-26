@@ -26,8 +26,10 @@
 
 import { useRef, useEffect } from 'react'
 
-export const usePreviousValue = (value: any) => {
-  const ref = useRef()
+type UsePreviousValue = boolean | number[]
+
+export const usePreviousValue = (value?: UsePreviousValue) => {
+  const ref = useRef<UsePreviousValue>()
   useEffect(() => {
     ref.current = value
   })

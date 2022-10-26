@@ -24,9 +24,8 @@
 
  */
 
-import { useContext } from 'react'
 import type { DefaultTheme, StyledComponent } from 'styled-components'
-import styled, { ThemeContext } from 'styled-components'
+import styled, { useTheme } from 'styled-components'
 import type { DensityProp } from '@looker/design-tokens'
 import { color as colorHelper } from '@looker/design-tokens'
 import { StyledIconBase } from '@styled-icons/styled-icon'
@@ -45,7 +44,7 @@ export type ListItemIconProps = DensityProp & {
 }
 
 type ListItemIconInternalProps = ListItemIconProps &
-  Pick<ListItemDimensions, 'height' | 'iconGap' | 'iconSize' | 'py'>
+  Pick<ListItemDimensions, 'height' | 'gap' | 'iconSize' | 'py'>
 
 export const ListItemIcon: StyledComponent<
   'div',
@@ -53,8 +52,8 @@ export const ListItemIcon: StyledComponent<
   ListItemIconProps
 > = styled.div.attrs<ListItemIconProps>(
   ({ color, disabled, density, ...props }) => {
-    const theme = useContext(ThemeContext)
-    const { height, iconGap, iconSize, py } = listItemDimensions(
+    const theme = useTheme()
+    const { height, gap, iconSize, py } = listItemDimensions(
       density || theme.defaults.density
     )
 
@@ -62,8 +61,8 @@ export const ListItemIcon: StyledComponent<
       ...props,
       color: listItemIconColor(color, disabled),
       density,
+      gap,
       height,
-      iconGap,
       iconSize,
       py,
     }
@@ -71,7 +70,7 @@ export const ListItemIcon: StyledComponent<
 )<ListItemIconInternalProps>`
   align-self: ${({ alignStart }) => (alignStart ? 'flex-start' : 'center')};
   display: flex;
-  margin-right: ${({ iconGap, theme }) => theme.space[iconGap]};
+  margin-right: ${({ gap, theme }) => theme.space[gap]};
   ${({ density }) => listItemPaddingY(density)}
 
   ${colorHelper}

@@ -1,0 +1,32 @@
+{
+  "Box": {
+    "value": "Ruta"
+  },
+  "Circle": {
+    "value": "Cirkel"
+  },
+  "Location": {
+    "value": "Plats"
+  },
+  "feet": {
+    "value": "fot"
+  },
+  "is anywhere": {
+    "value": "är var som helst"
+  },
+  "is not null": {
+    "value": "är inte null"
+  },
+  "is null": {
+    "value": "är null"
+  },
+  "kilometers": {
+    "value": "kilometer"
+  },
+  "meters": {
+    "value": "meter"
+  },
+  "miles": {
+    "value": "miles"
+  }
+}

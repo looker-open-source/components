@@ -1,0 +1,65 @@
+{
+  "days ago": {
+    "value": "Tage zuvor"
+  },
+  "days from now": {
+    "value": "Tage ab jetzt"
+  },
+  "fiscal quarter from now": {
+    "value": "Geschäftsquartal ab jetzt"
+  },
+  "fiscal quarters ago": {
+    "value": "Geschäftsquartale zuvor"
+  },
+  "fiscal years ago": {
+    "value": "Geschäftsjahre zuvor"
+  },
+  "fiscal years from now": {
+    "value": "Geschäftsjahre ab jetzt"
+  },
+  "hours ago": {
+    "value": "Stunden zuvor"
+  },
+  "hours from now": {
+    "value": "Stunden ab jetzt"
+  },
+  "minutes ago": {
+    "value": "Minuten zuvor"
+  },
+  "minutes from now": {
+    "value": "Minuten ab jetzt"
+  },
+  "months ago": {
+    "value": "Monate zuvor"
+  },
+  "months from now": {
+    "value": "Monate ab jetzt"
+  },
+  "now": {
+    "value": "jetzt"
+  },
+  "quarters ago": {
+    "value": "Quartale zuvor"
+  },
+  "quarters from now": {
+    "value": "Quartale ab jetzt"
+  },
+  "seconds ago": {
+    "value": "Sekunden zuvor"
+  },
+  "seconds from now": {
+    "value": "Sekunden ab jetzt"
+  },
+  "weeks ago": {
+    "value": "Wochen zuvor"
+  },
+  "weeks from now": {
+    "value": "Wochen ab jetzt"
+  },
+  "years ago": {
+    "value": "Jahre zuvor"
+  },
+  "years from now": {
+    "value": "Jahre ab jetzt"
+  }
+}

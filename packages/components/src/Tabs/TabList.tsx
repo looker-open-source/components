@@ -34,7 +34,7 @@ import { tabListCSS } from '../Tabs2/TabList2'
 export interface TabListProps extends PaddingProps, FontSizeProps {
   children: JSX.Element[]
   selectedIndex?: number
-  onSelectTab?: (index: any) => void
+  onSelectTab?: (index: number) => void
   className?: string
   distribute?: boolean
 }

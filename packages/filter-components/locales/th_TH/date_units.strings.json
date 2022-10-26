@@ -1,0 +1,62 @@
+{
+  "day": {
+    "value": "วัน"
+  },
+  "days": {
+    "value": "วัน"
+  },
+  "fiscal quarter": {
+    "value": "ไตรมาสงบประมาณ"
+  },
+  "fiscal quarters": {
+    "value": "ไตรมาสงบประมาณ"
+  },
+  "fiscal year": {
+    "value": "ปีงบประมาณ"
+  },
+  "fiscal years": {
+    "value": "ปีงบประมาณ"
+  },
+  "hour": {
+    "value": "ชั่วโมง"
+  },
+  "hours": {
+    "value": "ชั่วโมง"
+  },
+  "minute": {
+    "value": "นาที"
+  },
+  "minutes": {
+    "value": "นาที"
+  },
+  "month": {
+    "value": "เดือน"
+  },
+  "months": {
+    "value": "เดือน"
+  },
+  "quarter": {
+    "value": "ไตรมาส"
+  },
+  "quarters": {
+    "value": "ไตรมาส"
+  },
+  "second": {
+    "value": "วินาที"
+  },
+  "seconds": {
+    "value": "วินาที"
+  },
+  "week": {
+    "value": "สัปดาห์"
+  },
+  "weeks": {
+    "value": "สัปดาห์"
+  },
+  "year": {
+    "value": "ปี"
+  },
+  "years": {
+    "value": "ปี"
+  }
+}

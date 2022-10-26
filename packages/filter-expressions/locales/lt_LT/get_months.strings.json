@@ -1,0 +1,38 @@
+{
+  "April": {
+    "value": "Balandis"
+  },
+  "August": {
+    "value": "Rugpjūtis"
+  },
+  "December": {
+    "value": "Gruodis"
+  },
+  "February": {
+    "value": "Vasaris"
+  },
+  "January": {
+    "value": "Sausis"
+  },
+  "July": {
+    "value": "Liepa"
+  },
+  "June": {
+    "value": "Birželis"
+  },
+  "March": {
+    "value": "Kovas"
+  },
+  "May": {
+    "value": "Geg."
+  },
+  "November": {
+    "value": "Lapkritis"
+  },
+  "October": {
+    "value": "Spalis"
+  },
+  "September": {
+    "value": "Rugsėjis"
+  }
+}

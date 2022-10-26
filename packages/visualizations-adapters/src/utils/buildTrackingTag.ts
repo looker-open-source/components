@@ -24,10 +24,8 @@
 
  */
 
-import type { CAll } from '../types'
-
 /**
  * Creates a string used internal usage tracking purposes
  */
-export const buildTrackingTag = (type: CAll['type']) =>
+export const buildTrackingTag = (type: string) =>
   `visualization-component--${type}`

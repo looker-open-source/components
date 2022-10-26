@@ -26,7 +26,7 @@
 
 import styled from 'styled-components'
 
-export const LkFieldTreeAccordionDisclosure = styled.li`
+export const LkFieldTreeAccordionDisclosure = styled.div`
   color: ${({ theme }) => theme.colors.text5};
   display: flex;
 `

@@ -1,0 +1,82 @@
+{
+  "complete day": "tam gün",
+  "complete days": {
+    "value": "tam gün"
+  },
+  "complete fiscal quarter": "tam mali çeyrek",
+  "complete fiscal quarters": {
+    "value": "tam mali çeyrek"
+  },
+  "complete fiscal year": "tam mali yıl",
+  "complete fiscal years": {
+    "value": "tam mali yıl"
+  },
+  "complete hour": "tam saat",
+  "complete hours": {
+    "value": "tam saat"
+  },
+  "complete minute": "tam dakika",
+  "complete minutes": {
+    "value": "tam dakika"
+  },
+  "complete month": "tam ay",
+  "complete months": {
+    "value": "tam ay"
+  },
+  "complete quarter": "tam çeyrek",
+  "complete quarters": {
+    "value": "tam çeyrek"
+  },
+  "complete second": "tam saniye",
+  "complete seconds": {
+    "value": "tam saniye"
+  },
+  "complete week": "tam hafta",
+  "complete weeks": {
+    "value": "tam hafta"
+  },
+  "complete year": "tam yıl",
+  "complete years": {
+    "value": "tam yıl"
+  },
+  "day": "gün",
+  "days": {
+    "value": "gün"
+  },
+  "fiscal quarter": "mali çeyrek",
+  "fiscal quarters": {
+    "value": "mali çeyrek"
+  },
+  "fiscal year": "mali yıl",
+  "fiscal years": {
+    "value": "mali yıl"
+  },
+  "hour": "saat",
+  "hours": {
+    "value": "saat"
+  },
+  "minute": "dakika",
+  "minutes": {
+    "value": "dakika"
+  },
+  "month": "ay",
+  "months": {
+    "value": "ay"
+  },
+  "quarter": "çeyrek",
+  "quarters": {
+    "value": "çeyrek"
+  },
+  "second": "saniye",
+  "seconds": {
+    "value": "saniye"
+  },
+  "week": "hafta",
+  "weeks": {
+    "value": "hafta"
+  },
+  "year": "yıl",
+  "years": {
+    "value": "yıl"
+  }
+}

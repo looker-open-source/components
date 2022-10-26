@@ -1,0 +1,11 @@
+{
+  "is": {
+    "value": "为"
+  },
+  "is any value": {
+    "value": "任意值"
+  },
+  "is not": {
+    "value": "不为"
+  }
+}

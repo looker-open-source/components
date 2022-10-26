@@ -1,0 +1,8 @@
+{
+  "AllPageCountDisplayedSelected": "Alle {{pageCount}} viste elementer er valgt",
+  "AllTotalCountSelected": "Alle {{totalCount}} elementer er valgt",
+  "Bulk Actions": "Bulk-handlinger",
+  "Clear Selection": "Tøm valg",
+  "SelectAllCountResults": "Velg alle {{totalCount}} resultater",
+  "SelectedCountOfTotalDisplayed": "{{selectedItemCount}} av {{pageCount}} viste elementer er valgt"
+}

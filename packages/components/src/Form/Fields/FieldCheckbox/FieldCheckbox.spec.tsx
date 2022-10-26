@@ -28,6 +28,7 @@ import 'jest-styled-components'
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { screen } from '@testing-library/react'
+import { Paragraph } from '../../..'
 import { FieldCheckbox } from './FieldCheckbox'
 
 describe('FieldCheckbox', () => {
@@ -77,5 +78,19 @@ describe('FieldCheckbox', () => {
 
     expect(ariaDescribed).toHaveAttribute('id', 'describedby-test')
     expect(ariaDescribed).toHaveTextContent(errorMessage)
+  })
+
+  test('label can be a ReactNode', () => {
+    const paragraphSampleText = 'Sample paragraph text'
+    renderWithTheme(
+      <FieldCheckbox
+        id="FieldCheckboxID"
+        label={<Paragraph>{paragraphSampleText}</Paragraph>}
+        name="thumbsUp"
+      />
+    )
+
+    const paragraph = screen.getByText(paragraphSampleText)
+    expect(paragraph).toHaveTextContent(paragraphSampleText)
   })
 })

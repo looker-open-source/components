@@ -1,0 +1,65 @@
+{
+  "days ago": {
+    "value": "dagen geleden"
+  },
+  "days from now": {
+    "value": "dagen vanaf nu"
+  },
+  "fiscal quarter from now": {
+    "value": "fiscaal kwartaal vanaf nu"
+  },
+  "fiscal quarters ago": {
+    "value": "fiscale kwartalen geleden"
+  },
+  "fiscal years ago": {
+    "value": "fiscale jaren geleden"
+  },
+  "fiscal years from now": {
+    "value": "fiscale jaren vanaf nu"
+  },
+  "hours ago": {
+    "value": "uur geleden"
+  },
+  "hours from now": {
+    "value": "uur vanaf nu"
+  },
+  "minutes ago": {
+    "value": "minuten geleden"
+  },
+  "minutes from now": {
+    "value": "minuten vanaf nu"
+  },
+  "months ago": {
+    "value": "maanden geleden"
+  },
+  "months from now": {
+    "value": "maanden vanaf nu"
+  },
+  "now": {
+    "value": "nu"
+  },
+  "quarters ago": {
+    "value": "kwartalen geleden"
+  },
+  "quarters from now": {
+    "value": "kwartalen vanaf nu"
+  },
+  "seconds ago": {
+    "value": "seconden geleden"
+  },
+  "seconds from now": {
+    "value": "seconden vanaf nu"
+  },
+  "weeks ago": {
+    "value": "weken geleden"
+  },
+  "weeks from now": {
+    "value": "weken vanaf nu"
+  },
+  "years ago": {
+    "value": "jaar geleden"
+  },
+  "years from now": {
+    "value": "jaar vanaf nu"
+  }
+}

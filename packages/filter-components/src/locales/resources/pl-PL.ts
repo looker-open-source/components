@@ -27,6 +27,7 @@ import merge from 'lodash/merge'
 import dateLocale from 'date-fns/locale/pl'
 import type { I18nStateWithDates } from '../../utils'
 import { plPL as expressionLocale } from '@looker/filter-expressions'
+import { plPL as componentsLocale } from '@looker/components'
 
 const resources = {
   AddRemoveButtons: {
@@ -84,6 +85,9 @@ const resources = {
     weeks: 'tyg.',
     year: 'rok',
     years: 'lat/lata',
+  },
+  DateRange: {
+    'until (before)': 'do (przed)',
   },
   get_date_filter_options: {
     is: 'jest',
@@ -244,5 +248,12 @@ const resources = {
 export const plPL: I18nStateWithDates = {
   dateLocale,
   locale: 'pl-PL',
-  resources: { 'pl-PL': merge(resources, expressionLocale.resources['pl-PL']) },
+  resources: {
+    'pl-PL': merge(
+      {},
+      resources,
+      expressionLocale.resources['pl-PL'],
+      componentsLocale.resources['pl-PL']
+    ),
+  },
 }

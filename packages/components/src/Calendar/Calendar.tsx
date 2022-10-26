@@ -116,6 +116,8 @@ export const Calendar = styled(
     // to be updated when user scrolls all the way to the top or bottom
     const [baseMonth, setBaseMonth] = useState(viewMonth)
 
+    const [activeInput, setActiveInput] = useState<'from' | 'to'>('from')
+
     // Toggle the month picker view
     const { value: showMonthPicker, setOn, setOff } = useToggle(false)
     const onOpenMonthPicker = useCallback(() => {
@@ -148,38 +150,45 @@ export const Calendar = styled(
         // Always call onSelectDate whether single or range mode
         // it may also be useful for range selection, for validation, etc
         onSelectDate?.(date)
+
         if (isRange) {
-          setDraftTo(undefined)
-          // If there's a `from` but no `to`, and the date is
-          // NOT after the `from`, select the `to`
-          if (
-            selectedRange?.from &&
-            !selectedRange.to &&
-            !isBefore(date, selectedRange.from)
-          ) {
-            onSelectRange?.({ ...selectedRange, to: date })
-            closeModal()
-          } else if (
-            // If there's a `to` but no `from`, and the date is
-            // NOT before the `to`, select the `from`
-            selectedRange?.to &&
-            !selectedRange.from &&
-            !isAfter(date, selectedRange.to)
-          ) {
-            onSelectRange?.({ ...selectedRange, from: date })
-            closeModal()
-          } else {
-            // If the `from` isn't yet selected, or both `from` and `to`
-            // are already selected, or the date selected is
-            // before the existing `from`, or after the existing `to`
-            // only update the `from`
-            onSelectRange?.({ from: date })
+          // check if date is earlier than from
+          const beforeFrom =
+            selectedRange?.from && isBefore(date, selectedRange.from)
+          // check if date is after to
+          const afterTo = selectedRange?.to && isAfter(date, selectedRange.to)
+          // if activeInput is from and
+          if (activeInput === 'from') {
+            // if date clicked is not later than to
+            if (!afterTo) {
+              onSelectRange?.({ ...selectedRange, from: date })
+              setActiveInput('to')
+            } else {
+              // otherwise expand selection by setting date to to
+              onSelectRange?.({ ...selectedRange, to: date })
+            }
+          } else if (activeInput === 'to') {
+            // if date clicked is not earlier than from
+            if (!beforeFrom) {
+              onSelectRange?.({ ...selectedRange, to: date })
+              setActiveInput('from')
+            } else {
+              // otherwise expand selection by setting date to from
+              onSelectRange?.({ ...selectedRange, from: date })
+            }
           }
         } else {
           closeModal()
         }
       },
-      [closeModal, isRange, selectedRange, onSelectRange, onSelectDate]
+      [
+        closeModal,
+        selectedRange,
+        onSelectRange,
+        onSelectDate,
+        activeInput,
+        isRange,
+      ]
     )
 
     // Keep track of when the month was updated from scrolling

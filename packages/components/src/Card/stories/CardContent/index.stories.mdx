@@ -1,0 +1,15 @@
+import { Card, CardContent } from '@looker/components'
+import { excludedProps } from '@looker/storybook'
+import storyExample from '!!raw-loader!./Example'
+
+<Meta component={CardContent} title="Content/CardContent" />
+
+## CardContent
+
+Using the `CardContent` component quickly gives your content consistent spacing inside your `Card`. You can then use other components to layout your `Card`.
+
+<Editor code={storyExample} />
+
+## Props
+
+<ArgsTable of={CardContent} exclude={excludedProps} />

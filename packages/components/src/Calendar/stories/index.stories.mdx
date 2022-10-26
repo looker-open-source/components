@@ -1,0 +1,27 @@
+import { Calendar } from '@looker/components'
+import { excludedProps } from '@looker/storybook'
+import storyBasic from '!!raw-loader!./Basic'
+import storyProviderLocale from '!!raw-loader!./ProviderLocale'
+import storyLocale from '!!raw-loader!./Locale'
+
+<Meta component={Calendar} title="Components/Calendar" />
+
+# Calendar
+
+`Calendar` is a stateless component which renders a standard calendar month. It accepts a limited amount of props, and is the foundation of our more useful [`InputDate`](/components/forms/input-date) and `InputDateRange` components.
+
+<Editor code={storyBasic} />
+
+## I18n
+
+Install the [`date-fns`](https://date-fns.org/) package, import the necessary locale, and pass it to `ComponentsProvider`.
+
+<Editor code={storyProviderLocale} />
+
+The locale can also be passed directly to the `Calendar` component.
+
+<Editor code={storyLocale} />
+
+## Props
+
+<ArgsTable of={Calendar} exclude={excludedProps} />

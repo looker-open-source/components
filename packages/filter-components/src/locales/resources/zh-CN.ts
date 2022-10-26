@@ -27,6 +27,7 @@ import merge from 'lodash/merge'
 import dateLocale from 'date-fns/locale/zh-CN'
 import type { I18nStateWithDates } from '../../utils'
 import { zhCN as expressionLocale } from '@looker/filter-expressions'
+import { zhCN as componentsLocale } from '@looker/components'
 
 const resources = {
   AddRemoveButtons: {
@@ -84,6 +85,9 @@ const resources = {
     weeks: '周',
     year: '年',
     years: '年',
+  },
+  DateRange: {
+    'until (before)': '截止到（之前）',
   },
   get_date_filter_options: {
     is: '为',
@@ -243,5 +247,12 @@ const resources = {
 export const zhCN: I18nStateWithDates = {
   dateLocale,
   locale: 'zh-CN',
-  resources: { 'zh-CN': merge(resources, expressionLocale.resources['zh-CN']) },
+  resources: {
+    'zh-CN': merge(
+      {},
+      resources,
+      expressionLocale.resources['zh-CN'],
+      componentsLocale.resources['zh-CN']
+    ),
+  },
 }

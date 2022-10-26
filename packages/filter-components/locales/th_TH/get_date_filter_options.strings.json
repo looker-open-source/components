@@ -1,0 +1,44 @@
+{
+  "is": {
+    "value": "เป็น"
+  },
+  "is any time": {
+    "value": "เป็นเวลาใดก็ได้"
+  },
+  "is before": {
+    "value": "อยู่ก่อน"
+  },
+  "is in range": {
+    "value": "อยู่ในช่วง"
+  },
+  "is in the last": {
+    "value": "อยู่ในรายการล่าสุด"
+  },
+  "is in the month": {
+    "value": "อยู่ในเดือน"
+  },
+  "is in the year": {
+    "value": "อยู่ในปี"
+  },
+  "is next": {
+    "value": "อยู่ถัดไป"
+  },
+  "is not null": {
+    "value": "ไม่เป็นค่าว่าง"
+  },
+  "is null": {
+    "value": "เป็นค่าว่าง"
+  },
+  "is on or after": {
+    "value": "อยู่ที่หรือหลัง"
+  },
+  "is on the day": {
+    "value": "อยู่ในวัน"
+  },
+  "is previous": {
+    "value": "อยู่ก่อนหน้า"
+  },
+  "is this": {
+    "value": "อยู่รายการนี้"
+  }
+}

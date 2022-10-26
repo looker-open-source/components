@@ -1,0 +1,23 @@
+{
+  "blank": {
+    "value": "비어 있음"
+  },
+  "contains value": {
+    "value": "{{value}} 포함"
+  },
+  "does not contain value": {
+    "value": "{{value}} 포함 안 함"
+  },
+  "does not end with value": {
+    "value": "{{value}}(으)로 종료 안 함"
+  },
+  "does not start with value": {
+    "value": "{{value}}(으)로 시작 안 함"
+  },
+  "ends with value": {
+    "value": "{{value}}(으)로 종료"
+  },
+  "starts with value": {
+    "value": "{{value}}(으)로 시작"
+  }
+}

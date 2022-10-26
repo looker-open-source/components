@@ -1,0 +1,8 @@
+{
+  "is not value": {
+    "value": "ei ole {{value}}"
+  },
+  "is value": {
+    "value": "on {{value}}"
+  }
+}

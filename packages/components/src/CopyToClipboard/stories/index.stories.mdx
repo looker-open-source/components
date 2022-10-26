@@ -1,0 +1,27 @@
+import { CopyToClipboard } from '@looker/components'
+import { excludedProps } from '@looker/storybook'
+import storyBasic from '!!raw-loader!./Basic'
+import storySuccess from '!!raw-loader!./Success'
+import storyChildComponent from '!!raw-loader!./ChildComponent'
+
+<Meta component={CopyToClipboard} title="Actions/CopyToClipboard" />
+
+# CopyToClipboard
+
+<Editor code={storyBasic} />
+
+### Label
+
+`CopyToClipboard` offers props `children` and `success` both can be used to change the labels on the button by passing a string
+
+<Editor code={storySuccess} />
+
+### Customize Components
+
+`CopyToClipboard` `children` and `success` support taking a `JSX.Element` instead of a simple string if you prefer
+
+<Editor code={storyChildComponent} />
+
+## Props
+
+<ArgsTable of={CopyToClipboard} exclude={excludedProps} />

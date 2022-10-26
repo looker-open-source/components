@@ -36,6 +36,7 @@ describe('FilterErrorMessage tests', () => {
         filters={[
           {
             expression: '',
+            expressionType: 'string',
             name: 'testfilter',
             isRequired: true,
             allowMultipleValues: true,

@@ -28,9 +28,9 @@
 import type { FC } from 'react'
 import React, { useState } from 'react'
 import type { Story } from '@storybook/react/types-6-0'
+import { defaultArgTypes as argTypes } from '@looker/storybook'
 import { Button } from '../Button'
 import { Space } from '../Layout/Space'
-import { defaultArgTypes as argTypes } from '../../../../apps/storybook/src/defaultArgTypes'
 import type { TabListProps } from './'
 import { Tab, Tabs, TabList, TabPanel, TabPanels } from './'
 

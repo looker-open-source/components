@@ -69,7 +69,7 @@ const testDateItem = (testItem: GrammarTestItem) => {
 
 describe('Date grammar can parse', () => {
   beforeEach(() =>
-    i18nInit().catch(e => {
+    i18nInit().catch((e) => {
       throw new Error(e)
     })
   )

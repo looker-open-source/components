@@ -27,6 +27,7 @@ import merge from 'lodash/merge'
 import dateLocale from 'date-fns/locale/fr-CA'
 import type { I18nStateWithDates } from '../../utils'
 import { frCA as expressionLocale } from '@looker/filter-expressions'
+import { frCA as componentsLocale } from '@looker/components'
 
 const resources = {
   AddRemoveButtons: {
@@ -35,7 +36,7 @@ const resources = {
   },
   before_after_units: {
     'days ago': 'jours auparavant',
-    'days from now': 'journées à partir de maintenant',
+    'days from now': 'jours à partir de maintenant',
     'fiscal quarter from now': 'trimestre fiscal à partir de maintenant',
     'fiscal quarters ago': 'trimestres fiscaux auparavant',
     'fiscal years ago': 'années fiscales auparavant',
@@ -46,7 +47,7 @@ const resources = {
     'minutes from now': 'minutes à partir de maintenant',
     'months ago': 'mois auparavant',
     'months from now': 'mois à partir de maintenant',
-    now: 'présentement',
+    now: 'maintenant',
     'quarters ago': 'trimestres auparavant',
     'quarters from now': 'trimestres à partir de maintenant',
     'seconds ago': 'secondes auparavant',
@@ -85,11 +86,14 @@ const resources = {
     year: 'année',
     years: 'années',
   },
+  DateRange: {
+    'until (before)': 'jusqu’à (avant)',
+  },
   get_date_filter_options: {
     is: 'est',
     'is any time': 'est à tout moment',
     'is before': 'est situé avant',
-    'is in range': 'est dans la portée',
+    'is in range': 'est dans la plage',
     'is in the last': 'est au cours du dernier',
     'is in the month': 'est dans le mois',
     'is in the year': 'est dans l’année',
@@ -155,16 +159,16 @@ const resources = {
   get_string_filter_options: {
     contains: 'contient',
     'doesnt contain': 'ne contient pas',
-    'doesnt end with': 'ne se termine pas avec',
-    'doesnt start with': 'ne commence pas avec',
-    'ends with': 'termine avec',
+    'doesnt end with': 'ne se termine pas par',
+    'doesnt start with': 'ne commence pas par',
+    'ends with': 'se termine par',
     is: 'est',
     'is blank': 'est vide',
     'is not': 'n’est pas',
     'is not blank': 'n’est pas vide',
     'is not null': 'n’est pas nul',
     'is null': 'est nul',
-    'starts with': 'commence avec',
+    'starts with': 'commence par',
   },
   get_tier_filter_options: {
     is: 'est',
@@ -244,5 +248,12 @@ const resources = {
 export const frCA: I18nStateWithDates = {
   dateLocale,
   locale: 'fr-CA',
-  resources: { 'fr-CA': merge(resources, expressionLocale.resources['fr-CA']) },
+  resources: {
+    'fr-CA': merge(
+      {},
+      resources,
+      expressionLocale.resources['fr-CA'],
+      componentsLocale.resources['fr-CA']
+    ),
+  },
 }

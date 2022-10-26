@@ -26,11 +26,16 @@
 
 import styled, { css } from 'styled-components'
 import type { FlexboxProps, SpacingSizes } from '@looker/design-tokens'
-import { flexbox, shouldForwardProp, variant } from '@looker/design-tokens'
+import { flexbox, shouldForwardProp } from '@looker/design-tokens'
 import type { CommonLayoutProps } from '../utils/common'
 import { commonLayoutCSS } from '../utils/common'
 
-export interface SpaceHelperProps extends CommonLayoutProps, FlexboxProps {
+export interface SpaceHelperProps
+  extends CommonLayoutProps,
+    Omit<
+      FlexboxProps,
+      'alignItems' | 'display' | 'flexDirection' | 'justifyContent'
+    > {
   /**
    * Amount of space between grid cells
    * @default medium
@@ -68,114 +73,60 @@ export interface SpaceHelperProps extends CommonLayoutProps, FlexboxProps {
   reverse?: boolean
   /**
    * Align items vertically within `Space`
-   * NOTE: This will by overridden if `stretch=true`
    * @default center
    */
-  align?: 'start' | 'center' | 'end'
+  align?: 'start' | 'center' | 'end' | 'stretch' | 'baseline'
 
   /**
    * Justify items horizontally within `Space`
-   * NOTE: This will by overridden by any of stretch, evenly, reverse or between
-   * NOTE: Justification is based on flex-direction so if `reverse=true` this will be "backwards"
+   * NOTE: This will by overridden by any of align="stretch", evenly, reverse or between.
+   * NOTE: Justification is based on flex-direction so if `reverse=true` this will be "backwards".
    * @default start
    */
   justify?: 'start' | 'center' | 'end'
-
-  /**
-   * Stretch items full width of space
-   * @default false
-   */
-  stretch?: boolean
 }
 
 export const defaultGap = 'u4'
 
-export const spaceCSS = css`
+const getFlexValue = (value: SpaceHelperProps['align' | 'justify']) =>
+  value && ['end', 'start'].includes(value) ? `flex-${value}` : value
+
+const getSpaceValue = ({ around, between, evenly }: SpaceHelperProps) => {
+  if (around) return 'space-around'
+  if (between) return 'space-between'
+  if (evenly) return 'space-evenly'
+  return false
+}
+
+const justifyContent = ({ align, justify, ...rest }: SpaceHelperProps) => {
+  const spaceValue = getSpaceValue(rest)
+  if (spaceValue || (justify && align !== 'stretch')) {
+    return css`
+      justify-content: ${spaceValue || getFlexValue(justify)};
+    `
+  }
+  return false
+}
+
+export const spaceCSS = css<SpaceHelperProps>`
   ${commonLayoutCSS}
   ${flexbox}
 
   display: flex;
+
+  ${({ align }) => align && `align-items: ${getFlexValue(align)};`}
+  ${justifyContent}
 `
-
-/**
- * Sadly, there's no way to detect if a browser supports flexbox-gap ("gap" is supported via grid)
- * Chrome 84 will purportedly support flexbox "gap" if it does so we'll look for a fix that allows
- * for specific targeting of that browser as well
- *
- * The `gap` implementation properly adds space between items both horizontally and vertically
- * when `flexGap="gap"` whereas the home-grown version only produces gaps on the horizontal axis.
- *
- */
-
-const fauxGap = ({ gap = defaultGap, reverse }: SpaceHelperProps) => css`
-  && > * {
-    margin-right: ${({ theme: { space } }) => space[gap]};
-  }
-
-  ${({ theme: { space } }) =>
-    reverse
-      ? `&& > *:first-child { margin-right: ${space.none}; }`
-      : `&& > *:last-child { margin-right: ${space.none}; }`}
-`
-
-const flexGap = ({ gap = defaultGap, reverse }: SpaceHelperProps) => css`
-  @supports (-moz-appearance: none) {
-    gap: 0 ${({ theme: { space } }) => space[gap]};
-  }
-
-  @supports not (-moz-appearance: none) {
-    ${fauxGap({ gap, reverse })}
-  }
-
-  /* Target IE11 */
-  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-    ${fauxGap({ gap, reverse })}
-  }
-`
-
-const verticalAlign = variant({
-  prop: 'align',
-  variants: {
-    center: {
-      alignItems: 'center',
-    },
-    end: {
-      alignItems: 'flex-end',
-    },
-    start: {
-      alignItems: 'flex-start',
-    },
-  },
-})
-
-const justify = variant({
-  prop: 'justify',
-  variants: {
-    center: {
-      justifyContent: 'center',
-    },
-    end: {
-      justifyContent: 'flex-end',
-    },
-    start: {
-      justifyContent: 'flex-start',
-    },
-  },
-})
 
 export const Space = styled.div
   .withConfig({ shouldForwardProp })
-  .attrs<SpaceHelperProps>(({ alignItems = 'center', width = '100%' }) => ({
-    alignItems,
+  .attrs<SpaceHelperProps>(({ align = 'center', width = '100%' }) => ({
+    align,
     width,
   }))<SpaceHelperProps>`
   ${spaceCSS}
-  ${({ stretch }) => !stretch && verticalAlign}
-  ${({ stretch }) => !stretch && justify}
   flex-direction: ${({ reverse }) => (reverse ? 'row-reverse' : 'row')};
-
-  ${({ around }) => around && 'justify-content: space-around;'}
-  ${({ between }) => between && 'justify-content: space-between;'}
-  ${({ evenly }) => evenly && 'justify-content: space-evenly;'}
-  ${({ around, between, evenly }) => !around && !between && !evenly && flexGap}
+  /* gap throws off spacing for around & evenly */
+  ${({ around, evenly, gap = defaultGap, theme: { space } }) =>
+    !around && !evenly && `gap: 0 ${space[gap]};`}
 `

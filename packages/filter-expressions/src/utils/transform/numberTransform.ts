@@ -36,7 +36,7 @@ import applyId from './utils/apply_id_to_ast'
  */
 const countNots = (root: FilterASTNode): number => {
   let count = 0
-  inorderTraversal(root, node => {
+  inorderTraversal(root, (node) => {
     if (node.is === false) {
       count += 1
     }
@@ -51,7 +51,7 @@ const countNots = (root: FilterASTNode): number => {
 const removeDuplicateNotNodes = (root: FilterASTNode) => {
   const workingRoot = cloneDeep(applyId(root))
   // get the andClauses - "is not" nodes from the ast
-  const andClauses = treeToList(workingRoot).filter(item => item.is === false)
+  const andClauses = treeToList(workingRoot).filter((item) => item.is === false)
   // we only care if there are two andClauses with the same expression
   return andClauses.length === 2 &&
     serializeNumberNode(andClauses[0]) === serializeNumberNode(andClauses[1])

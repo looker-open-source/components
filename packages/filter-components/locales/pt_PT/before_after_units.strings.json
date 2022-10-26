@@ -1,0 +1,65 @@
+{
+  "days ago": {
+    "value": "há dias"
+  },
+  "days from now": {
+    "value": "daqui a dias"
+  },
+  "fiscal quarter from now": {
+    "value": "trimestre fiscal a partir de agora"
+  },
+  "fiscal quarters ago": {
+    "value": "há trimestres fiscais"
+  },
+  "fiscal years ago": {
+    "value": "há anos fiscais"
+  },
+  "fiscal years from now": {
+    "value": "daqui a anos fiscais"
+  },
+  "hours ago": {
+    "value": "há horas"
+  },
+  "hours from now": {
+    "value": "daqui a horas"
+  },
+  "minutes ago": {
+    "value": "há minutos"
+  },
+  "minutes from now": {
+    "value": "daqui a minutos"
+  },
+  "months ago": {
+    "value": "há meses"
+  },
+  "months from now": {
+    "value": "daqui a meses"
+  },
+  "now": {
+    "value": "agora"
+  },
+  "quarters ago": {
+    "value": "há trimestres"
+  },
+  "quarters from now": {
+    "value": "daqui a trimestres"
+  },
+  "seconds ago": {
+    "value": "há segundos"
+  },
+  "seconds from now": {
+    "value": "daqui a segundos"
+  },
+  "weeks ago": {
+    "value": "há semanas"
+  },
+  "weeks from now": {
+    "value": "daqui a semanas"
+  },
+  "years ago": {
+    "value": "há anos"
+  },
+  "years from now": {
+    "value": "daqui a anos"
+  }
+}

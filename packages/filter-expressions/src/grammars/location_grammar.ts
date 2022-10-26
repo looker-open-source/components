@@ -23,6 +23,7 @@
  SOFTWARE.
 
  */
+import { initializer } from './common/initializer'
 import { numbers } from './common/numbers'
 import { whitespace } from './common/whitespace'
 import { userAttribute } from './user_attribute_grammar'
@@ -100,8 +101,10 @@ LON = number {
 COMMA = ","
 `
 
-export const locationGrammar = grammar.concat(
+export const locationGrammar = [
+  initializer,
+  grammar,
   userAttribute,
   numbers,
-  whitespace
-)
+  whitespace,
+].join('')

@@ -50,7 +50,7 @@ export const buildGroupedColumns = (
 
   // Header rows are rendered last-to-first from the pivots array,
   // so must be reversed before beginning render process.
-  const reversedPivots = [...fields.pivots].reverse()
+  const reversedPivots = [...(fields.pivots || [])].reverse()
 
   const dimensionColumns = buildDimensionColumns(fields.dimensions)
 

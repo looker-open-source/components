@@ -1,0 +1,23 @@
+{
+  "blank": {
+    "value": "vazio"
+  },
+  "contains value": {
+    "value": "contém {{value}}"
+  },
+  "does not contain value": {
+    "value": "não contém {{value}}"
+  },
+  "does not end with value": {
+    "value": "não acaba em {{value}}"
+  },
+  "does not start with value": {
+    "value": "não começa por {{value}}"
+  },
+  "ends with value": {
+    "value": "acaba em {{value}}"
+  },
+  "starts with value": {
+    "value": "começa por {{value}}"
+  }
+}

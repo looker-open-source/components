@@ -1,0 +1,62 @@
+{
+  "day": {
+    "value": "dag"
+  },
+  "days": {
+    "value": "dager"
+  },
+  "fiscal quarter": {
+    "value": "regnskapskvartal"
+  },
+  "fiscal quarters": {
+    "value": "regnskapskvartaler"
+  },
+  "fiscal year": {
+    "value": "regnskapsår"
+  },
+  "fiscal years": {
+    "value": "regnskapsår"
+  },
+  "hour": {
+    "value": "time"
+  },
+  "hours": {
+    "value": "timer"
+  },
+  "minute": {
+    "value": "minutt"
+  },
+  "minutes": {
+    "value": "minutter"
+  },
+  "month": {
+    "value": "måned"
+  },
+  "months": {
+    "value": "måneder"
+  },
+  "quarter": {
+    "value": "kvartal"
+  },
+  "quarters": {
+    "value": "kvartaler"
+  },
+  "second": {
+    "value": "sekund"
+  },
+  "seconds": {
+    "value": "sekunder"
+  },
+  "week": {
+    "value": "uke"
+  },
+  "weeks": {
+    "value": "uker"
+  },
+  "year": {
+    "value": "år"
+  },
+  "years": {
+    "value": "år"
+  }
+}

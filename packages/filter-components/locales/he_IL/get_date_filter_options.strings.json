@@ -1,0 +1,44 @@
+{
+  "is": {
+    "value": "הוא"
+  },
+  "is any time": {
+    "value": "מועד כלשהו"
+  },
+  "is before": {
+    "value": "לפני"
+  },
+  "is in range": {
+    "value": "בטווח"
+  },
+  "is in the last": {
+    "value": "האחרון"
+  },
+  "is in the month": {
+    "value": "בחודש"
+  },
+  "is in the year": {
+    "value": "בשנת"
+  },
+  "is next": {
+    "value": "הבא"
+  },
+  "is not null": {
+    "value": "אינו Null"
+  },
+  "is null": {
+    "value": "Null"
+  },
+  "is on or after": {
+    "value": "אחרי או ב-"
+  },
+  "is on the day": {
+    "value": "ביום"
+  },
+  "is previous": {
+    "value": "הקודם"
+  },
+  "is this": {
+    "value": "זה הוא"
+  }
+}

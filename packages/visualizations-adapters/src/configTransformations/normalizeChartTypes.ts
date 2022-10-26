@@ -25,11 +25,18 @@
  */
 
 import has from 'lodash/has'
-import type { ConfigHelper, CAll, RawApiConfigResponse } from '../types'
+import type {
+  CAll,
+  ConfigHelper,
+  SupportedChartTypes,
+  ValueOf,
+  KnownChartTypes,
+} from '../types'
 
-export type RawChartType = CAll['type'] | RawApiConfigResponse['type'] | ''
-
-export const CHART_TYPE_MAP: Record<RawChartType, CAll['type']> = {
+export const CHART_TYPE_MAP: Record<
+  KnownChartTypes | '',
+  ValueOf<SupportedChartTypes>
+> = {
   '': 'default',
   area: 'area',
   bar: 'bar',
@@ -50,6 +57,10 @@ export const CHART_TYPE_MAP: Record<RawChartType, CAll['type']> = {
   table: 'table',
 }
 
+const isKnownChartType = (type: string): type is keyof SupportedChartTypes => {
+  return has(CHART_TYPE_MAP, type)
+}
+
 /**
  * This function should be ran BEFORE all other config helpers.
  * It normalizes the chart type names (i.e. 'line' instead of 'looker_line')
@@ -61,7 +72,7 @@ export const normalizeChartTypes: ConfigHelper<CAll> = ({
 }) => {
   const { type = CHART_TYPE_MAP.default } = config
 
-  const normalizedType = has(CHART_TYPE_MAP, type) ? CHART_TYPE_MAP[type] : type
+  const normalizedType = isKnownChartType(type) ? CHART_TYPE_MAP[type] : type
 
   return {
     config: { ...config, type: normalizedType },

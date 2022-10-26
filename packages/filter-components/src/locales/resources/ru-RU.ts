@@ -27,6 +27,7 @@ import merge from 'lodash/merge'
 import dateLocale from 'date-fns/locale/ru'
 import type { I18nStateWithDates } from '../../utils'
 import { ruRU as expressionLocale } from '@looker/filter-expressions'
+import { ruRU as componentsLocale } from '@looker/components'
 
 const resources = {
   AddRemoveButtons: {
@@ -34,8 +35,8 @@ const resources = {
     Remove: 'Удалить',
   },
   before_after_units: {
-    'days ago': 'дн. назад',
-    'days from now': 'дн. спустя',
+    'days ago': 'дн. назад',
+    'days from now': 'дн. спустя',
     'fiscal quarter from now': 'финанс. кварт. спустя',
     'fiscal quarters ago': 'финанс. кварт. назад',
     'fiscal years ago': 'финанс. год(а)/лет назад',
@@ -65,25 +66,28 @@ const resources = {
   },
   date_units: {
     day: 'день',
-    days: 'дни',
+    days: 'д',
     'fiscal quarter': 'финансовый квартал',
-    'fiscal quarters': 'финансовые кварталы',
+    'fiscal quarters': 'финанс. кварт.',
     'fiscal year': 'финансовый год',
     'fiscal years': 'финанс. год(а)/лет',
     hour: 'час',
-    hours: 'часы',
+    hours: 'ч',
     minute: 'минута',
-    minutes: 'минуты',
+    minutes: 'мин',
     month: 'месяц',
-    months: 'месяцы',
+    months: 'мес.',
     quarter: 'квартал',
-    quarters: 'кварталы',
+    quarters: 'кварт.',
     second: 'секунда',
-    seconds: 'секунды',
+    seconds: 'сек.',
     week: 'неделя',
-    weeks: 'недели',
+    weeks: 'нед.',
     year: 'год',
     years: 'год(а)/лет',
+  },
+  DateRange: {
+    'until (before)': 'до даты (не включая дату)',
   },
   get_date_filter_options: {
     is: 'является',
@@ -244,5 +248,12 @@ const resources = {
 export const ruRU: I18nStateWithDates = {
   dateLocale,
   locale: 'ru-RU',
-  resources: { 'ru-RU': merge(resources, expressionLocale.resources['ru-RU']) },
+  resources: {
+    'ru-RU': merge(
+      {},
+      resources,
+      expressionLocale.resources['ru-RU'],
+      componentsLocale.resources['ru-RU']
+    ),
+  },
 }

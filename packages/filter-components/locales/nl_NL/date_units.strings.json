@@ -1,0 +1,62 @@
+{
+  "day": {
+    "value": "dag"
+  },
+  "days": {
+    "value": "dagen"
+  },
+  "fiscal quarter": {
+    "value": "fiscaal kwartaal"
+  },
+  "fiscal quarters": {
+    "value": "fiscale kwartalen"
+  },
+  "fiscal year": {
+    "value": "fiscaal jaar"
+  },
+  "fiscal years": {
+    "value": "fiscale jaren"
+  },
+  "hour": {
+    "value": "uur"
+  },
+  "hours": {
+    "value": "uren"
+  },
+  "minute": {
+    "value": "minuut"
+  },
+  "minutes": {
+    "value": "minuten"
+  },
+  "month": {
+    "value": "maand"
+  },
+  "months": {
+    "value": "maanden"
+  },
+  "quarter": {
+    "value": "kwartaal"
+  },
+  "quarters": {
+    "value": "kwartalen"
+  },
+  "second": {
+    "value": "seconde"
+  },
+  "seconds": {
+    "value": "seconden"
+  },
+  "week": {
+    "value": "week"
+  },
+  "weeks": {
+    "value": "weken"
+  },
+  "year": {
+    "value": "jaar"
+  },
+  "years": {
+    "value": "jaren"
+  }
+}

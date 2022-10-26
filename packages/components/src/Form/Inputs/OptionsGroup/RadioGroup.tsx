@@ -100,6 +100,7 @@ const RadioGroupLayout = forwardRef(
     return (
       <Fieldset
         data-testid="radio-list"
+        role="radiogroup"
         inline={inline}
         wrap={inline}
         gap={!inline ? 'u1' : undefined}

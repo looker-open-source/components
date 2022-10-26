@@ -24,5 +24,5 @@
 
  */
 
-export * from './create_with_theme'
+export * from './with_theme'
 export * from './helpers/react-testing-library'

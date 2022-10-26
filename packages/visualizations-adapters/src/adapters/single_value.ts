@@ -36,7 +36,7 @@ import type {
 export type CSingleValueSeries = Omit<CSeriesBasic, 'visible'>
 
 export type CSingleValue = {
-  type: SupportedChartTypes['single_value']
+  type?: SupportedChartTypes['single_value']
   series?: CSingleValueSeries[] | { [key: string]: CSingleValueSeries }
 }
 

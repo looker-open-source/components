@@ -41,8 +41,8 @@
     "@testing-library/react-hooks": "*"
   },
   "peerDependencies": {
-    "react": "16.11.0 - 18",
-    "react-dom": "16.11.0 - 18"
+    "react": "16.14.0 - 18",
+    "react-dom": "16.14.0 - 18"
   },
   "eslintConfig": {
     "root": true,

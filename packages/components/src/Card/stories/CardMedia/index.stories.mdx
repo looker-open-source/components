@@ -1,0 +1,24 @@
+import { Card, CardMedia, CardContent } from '@looker/components'
+import { excludedProps } from '@looker/storybook'
+import storyExample from '!!raw-loader!./Example'
+import storyExample2 from '!!raw-loader!./Example2'
+
+<Meta component={CardMedia} title="Content/CardMedia" />
+
+## CardMedia
+
+A common pattern for `Cards` is to display an image that reinforces what the content is about.
+
+The `CardMedia` component accepts and `image` property that will render the image as a background image and the optional `title` property used to give the image an accessible title if needed.
+
+<Editor code={storyExample} />
+
+## A group of media Cards
+
+A few common patterns for `Cards` are displaying them in groups and using images to reinforce the content of the card.
+
+<Editor code={storyExample2} />
+
+## Props
+
+<ArgsTable of={CardMedia} exclude={excludedProps} />

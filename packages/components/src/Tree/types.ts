@@ -45,9 +45,17 @@ export const treeItemInnerPropKeys = [
   ...linkPropKeys,
 ] as const
 
+export type TreeItemInnerPropKey = typeof treeItemInnerPropKeys[number]
+
+export const isTreeItemInnerPropKey = (
+  propKey: string
+): propKey is TreeItemInnerPropKey => {
+  return treeItemInnerPropKeys.includes(propKey as TreeItemInnerPropKey)
+}
+
 export type TreeProps = ControlledLoosely &
   GenericClickProps<HTMLElement> &
-  Pick<ListItemProps, typeof treeItemInnerPropKeys[number]> & {
+  Pick<ListItemProps, TreeItemInnerPropKey> & {
     /**
      * If true, vertical lines will extend from the Tree indicator (and all sub-Trees' indicators)
      */

@@ -1,0 +1,29 @@
+{
+  "coords1 to coords2": {
+    "value": "от {{coords1}} до {{coords2}}"
+  },
+  "distance unit from lat, lon": {
+    "value": "{{distance}} {{unit}} от {{lat}}, {{lon}}"
+  },
+  "is anywhere": {
+    "value": "находится где-либо"
+  },
+  "is not null": {
+    "value": "не является нулевым значением"
+  },
+  "is null": {
+    "value": "является нулевым значением"
+  },
+  "lat degrees north": {
+    "value": "{{lat}}°N"
+  },
+  "lat degrees south": {
+    "value": "{{lat}}°S"
+  },
+  "lon degrees east": {
+    "value": "{{lon}}°E"
+  },
+  "lon degrees west": {
+    "value": "{{lon}}°W"
+  }
+}

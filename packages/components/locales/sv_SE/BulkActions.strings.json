@@ -1,0 +1,8 @@
+{
+  "AllPageCountDisplayedSelected": "Alla {{pageCount}} objekt som visas har valts",
+  "AllTotalCountSelected": "Alla {{totalCount}} objekt har valts",
+  "Bulk Actions": "Massåtgärder",
+  "Clear Selection": "Rensa markering",
+  "SelectAllCountResults": "Visa alla {{totalCount}} resultat",
+  "SelectedCountOfTotalDisplayed": "{{selectedItemCount}} av {{pageCount}} visade objekt har valts"
+}

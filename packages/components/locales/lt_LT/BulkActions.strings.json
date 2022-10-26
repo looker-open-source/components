@@ -1,0 +1,8 @@
+{
+  "AllPageCountDisplayedSelected": "Pasirinkti visi rodomi elementai: {{pageCount}}",
+  "AllTotalCountSelected": "Pasirinkti visi elementai: {{totalCount}}",
+  "Bulk Actions": "Masiniai veiksmai",
+  "Clear Selection": "Išvalyti, kas pažymėta",
+  "SelectAllCountResults": "Pasirinkti visus rezultatus: {{totalCount}}",
+  "SelectedCountOfTotalDisplayed": "Pasirinkta rodomų elementų: {{selectedItemCount}} iš {{pageCount}}"
+}

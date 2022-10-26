@@ -32,7 +32,6 @@ import type { ListItemProps } from '../ListItem'
 import { createListItemPartitions } from '../ListItem/utils'
 import {
   createSafeRel,
-  getNextFocusTarget,
   HoverDisclosureContext,
   partitionAriaProps,
   undefinedCoalesce,
@@ -84,7 +83,7 @@ export const TreeItem = styled(
     const handleWrapperFocus = () => setHovered(true)
     // This is needed so that hover disclosed elements don't get lost during keyboard nav
     const handleWrapperBlur = (event: FocusEvent<HTMLElement>) => {
-      const nextFocusTarget = getNextFocusTarget(event)
+      const nextFocusTarget = event.relatedTarget
 
       if (nextFocusTarget && !event.currentTarget.contains(nextFocusTarget)) {
         setHovered(false)

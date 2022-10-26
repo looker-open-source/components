@@ -25,7 +25,7 @@
  */
 
 import { seriesPointShape } from './seriesPointShape'
-import { mockLineConfig, mockFields, mockSdkDataResponse } from '../__mocks__'
+import { mockLineConfig, mockFields, mockSdkDataResponse } from '../fixtures'
 import type { CLineSeries } from '../adapters'
 
 describe('seriesPointShape', () => {

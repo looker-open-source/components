@@ -61,5 +61,6 @@ export const MonthTitle = styled(
     inline ? `0 0 -${space.u8} 0` : `${space.u05} 0`};
   /* stylelint-enable */
   position: relative;
+  width: fit-content;
   z-index: ${({ theme }) => theme.zIndexFloor};
 `

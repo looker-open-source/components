@@ -27,8 +27,8 @@
 import React from 'react'
 import type { Story } from '@storybook/react/types-6-0'
 import { Delete, GridView } from '@styled-icons/material'
+import { defaultArgTypes as argTypes } from '@looker/storybook'
 import { Button } from '../Button'
-import { defaultArgTypes as argTypes } from '../../../../apps/storybook/src/defaultArgTypes'
 import type { MessageBarProps } from './MessageBar'
 import { MessageBar } from './MessageBar'
 

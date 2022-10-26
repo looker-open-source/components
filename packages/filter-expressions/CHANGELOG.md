@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0](https://github.com/looker-open-source/components/compare/22.16.0...1.0.0) (2022-09-29)
+
+### Bug Fixes
+
+* Backslash in string filters no longer escaped
+
+
 ## [0.8.21](https://github.com/looker-open-source/components/compare/@looker/filter-expressions@0.8.20...@looker/filter-expressions@0.8.21) (2022-05-23)
 
 **Note:** Version bump only for package @looker/filter-expressions

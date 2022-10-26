@@ -79,7 +79,7 @@ export const getExpressionType = (
   filter: Pick<IDashboardFilter, 'type' | 'field'>
 ): FilterExpressionType => {
   if (filter.field) {
-    return getExpressionTypeFromField(filter.field as ILookmlModelExploreField)
+    return getExpressionTypeFromField(filter.field)
   }
 
   const filterExpressionMap: FilterExpressionTypeMap = {
@@ -90,5 +90,5 @@ export const getExpressionType = (
     // string filter
     field_filter: 'string',
   }
-  return filterExpressionMap[filter.type!]
+  return filterExpressionMap[filter.type ?? 'field_filter']
 }

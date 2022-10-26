@@ -1,0 +1,11 @@
+{
+  "Invalid value": {
+    "value": "Geçersiz değer"
+  },
+  "No value is set for your user attribute": {
+    "value": "Kullanıcı özniteliği için ayarlanan değer yok"
+  },
+  "Selection required": {
+    "value": "Seçim gerekli"
+  }
+}

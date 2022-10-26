@@ -37,19 +37,18 @@ import {
   shouldForwardProp,
   userSelect,
 } from '@looker/design-tokens'
-import type { ComplexLayoutProps } from '../utils/complex'
-import { complexLayoutCSS } from '../utils/complex'
+import type { CommonLayoutProps } from '../utils/common'
+import { commonLayoutCSS } from '../utils/common'
 
-export interface BoxProps
-  extends CompatibleHTMLProps<HTMLElement>,
-    ComplexLayoutProps,
-    FlexboxProps,
-    CursorProps,
-    UserSelectProps {}
+export type BoxProps = CompatibleHTMLProps<HTMLElement> &
+  CommonLayoutProps &
+  FlexboxProps &
+  CursorProps &
+  UserSelectProps
 
 export const Box = styled.div.withConfig({ shouldForwardProp })<BoxProps>`
-  ${complexLayoutCSS}
+  ${commonLayoutCSS}
   ${userSelect}
-  ${flexbox}
-  ${cursor}
+   ${flexbox}
+   ${cursor}
 `

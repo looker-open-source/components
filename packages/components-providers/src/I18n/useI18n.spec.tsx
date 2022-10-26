@@ -28,9 +28,21 @@ import { render } from '@testing-library/react'
 import i18next from 'i18next'
 import type { FC } from 'react'
 import React from 'react'
-import { i18nResources } from './resources'
 import type { UseI18nProps } from './useI18n'
 import { useI18n } from './useI18n'
+
+const i18nMockResources = {
+  en: {
+    AComponent: {
+      Something: 'Something',
+      'Something else': 'Something else',
+    },
+    BComponent: {
+      Hello: 'Hello',
+      World: 'World',
+    },
+  },
+}
 
 const TestComponent: FC<UseI18nProps> = ({ children, ...props }) => {
   useI18n(props)
@@ -44,13 +56,14 @@ describe('useI18n', () => {
 
     expect(i18next.init).toHaveBeenCalledTimes(1)
     spy.mockRestore()
+    i18next.isInitialized = false
   })
 
   test('updates with new props', () => {
     const spy = jest.spyOn(i18next, 'addResourceBundle')
     i18next.isInitialized = true
-    render(<TestComponent />)
-    expect(spy).toHaveBeenCalledTimes(Object.keys(i18nResources.en).length)
+    render(<TestComponent resources={i18nMockResources} />)
+    expect(spy).toHaveBeenCalledTimes(Object.keys(i18nMockResources.en).length)
     spy.mockRestore()
   })
 

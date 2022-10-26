@@ -34,8 +34,8 @@ import {
   waitForElementToBeRemoved,
   within,
 } from '@testing-library/react'
-import { SimpleContent } from '../__mocks__/DialogContentSimple'
-import { DialogMediumContent } from '../__mocks__/DialogMediumContent'
+import { SimpleContent } from '../fixtures/DialogContentSimple'
+import { DialogMediumContent } from '../fixtures/DialogMediumContent'
 import { Dialog } from './Dialog'
 import {
   Controlled,

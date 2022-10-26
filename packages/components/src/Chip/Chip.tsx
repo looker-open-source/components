@@ -31,7 +31,7 @@ import React, { forwardRef } from 'react'
 import styled from 'styled-components'
 import { Close } from '@styled-icons/material/Close'
 import type { GenericClickProps, FocusVisibleProps } from '../utils'
-import { useClickable, useWrapEvent, useTranslation } from '../utils'
+import { useClickable, useWrapEvent, useTranslation, useID } from '../utils'
 import { IconButton } from '../Button/IconButton'
 import type { SpanProps } from '../Text'
 import { Span } from '../Text'
@@ -57,6 +57,10 @@ export interface ChipProps
   readOnly?: boolean
 }
 
+const ChipLabel = styled(Span)<SpanProps & TruncateCSSProps>`
+  ${truncateCSS}
+`
+
 const ChipStyle = styled.span<FocusVisibleProps & MaxWidthProps>`
   ${reset}
   ${maxWidth}
@@ -65,13 +69,17 @@ const ChipStyle = styled.span<FocusVisibleProps & MaxWidthProps>`
   background: ${({ theme }) => theme.colors.keySubtle};
   border: 1px solid transparent;
   border-radius: 4px;
-  color: ${({ theme }) => theme.colors.keyInteractive};
+  color: ${({ theme }) => theme.colors.key};
   display: inline-flex;
   font-size: ${({ theme }) => theme.fontSizes.xsmall};
   font-weight: ${({ theme }) => theme.fontWeights.semiBold};
   height: 28px;
   min-width: 44px;
   padding: ${({ theme: { space } }) => `${space.u1} ${space.u2}`};
+
+  ${ChipLabel} {
+    filter: brightness(0.9);
+  }
 
   &:hover,
   &:active,
@@ -90,15 +98,12 @@ const ChipStyle = styled.span<FocusVisibleProps & MaxWidthProps>`
     background: ${({ theme }) => theme.colors.neutralAccent};
     border-color: ${({ theme }) => theme.colors.ui2};
     color: ${({ theme }) => theme.colors.text1};
+    filter: none;
 
     &:hover {
       background: ${({ theme }) => theme.colors.neutralAccent};
     }
   }
-`
-
-const ChipLabel = styled(Span)<SpanProps & TruncateCSSProps>`
-  ${truncateCSS}
 `
 
 const ChipJSX = forwardRef((props: ChipProps, ref: Ref<HTMLSpanElement>) => {
@@ -134,6 +139,8 @@ const ChipJSX = forwardRef((props: ChipProps, ref: Ref<HTMLSpanElement>) => {
     e.stopPropagation()
   }
 
+  const id = useID()
+
   return (
     <ChipStyle
       {...clickableProps}
@@ -141,7 +148,7 @@ const ChipJSX = forwardRef((props: ChipProps, ref: Ref<HTMLSpanElement>) => {
       ref={ref}
       {...rest}
     >
-      <ChipLabel truncate={truncate}>
+      <ChipLabel truncate={truncate} id={id}>
         {prefix && <ChipLabel fontWeight="normal">{prefix}: </ChipLabel>}
         {children}
       </ChipLabel>
@@ -150,17 +157,16 @@ const ChipJSX = forwardRef((props: ChipProps, ref: Ref<HTMLSpanElement>) => {
         (onDelete && (
           <IconButton
             disabled={disabled}
-            icon={<Close />}
+            icon={<Close role="presentation" />}
             label={iconLabel}
             ml="xsmall"
             onClick={handleDelete}
             size="xxsmall"
+            aria-describedby={id}
           />
         ))}
     </ChipStyle>
   )
 })
-
-ChipJSX.displayName = 'ChipJSX'
 
 export const Chip = styled(ChipJSX)``

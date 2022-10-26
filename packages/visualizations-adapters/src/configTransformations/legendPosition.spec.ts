@@ -25,7 +25,7 @@
  */
 
 import { legendPosition } from './legendPosition'
-import { mockBarConfig, mockSdkDataResponse, mockFields } from '../__mocks__'
+import { mockBarConfig, mockSdkDataResponse, mockFields } from '../fixtures'
 
 describe('legendPosition', () => {
   describe('config.hide_legend ===', () => {

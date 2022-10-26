@@ -27,6 +27,7 @@ import merge from 'lodash/merge'
 import dateLocale from 'date-fns/locale/es'
 import type { I18nStateWithDates } from '../../utils'
 import { esES as expressionLocale } from '@looker/filter-expressions'
+import { esES as componentsLocale } from '@looker/components'
 
 const resources = {
   AddRemoveButtons: {
@@ -85,21 +86,24 @@ const resources = {
     year: 'año',
     years: 'años',
   },
+  DateRange: {
+    'until (before)': 'hasta (antes)',
+  },
   get_date_filter_options: {
     is: 'es',
     'is any time': 'es cualquier hora',
     'is before': 'es antes de',
     'is in range': 'está dentro del intervalo',
-    'is in the last': 'es en anterior',
+    'is in the last': 'es en el pasado',
     'is in the month': 'es en el mes',
     'is in the year': 'es en el año',
-    'is next': 'es en siguiente',
+    'is next': 'es el siguiente',
     'is not null': 'no es nulo',
     'is null': 'es nulo',
     'is on or after': 'es el día o después de',
     'is on the day': 'es el día',
-    'is previous': 'es en anterior',
-    'is this': 'es en este período de',
+    'is previous': 'es el anterior',
+    'is this': 'es este',
   },
   get_filter_options: {
     'matches advanced': 'coincide (avanzado)',
@@ -117,20 +121,20 @@ const resources = {
     miles: 'millas',
   },
   get_number_filter_options: {
-    exclusive: '(exclusivo)',
-    inclusive: '[inclusivo]',
+    exclusive: '(exclusive)',
+    inclusive: '[inclusive]',
     is: 'es',
-    'is between': 'es entre',
+    'is between': 'está entre',
     'is greater': 'es >',
     'is greater equal': 'es >=',
     'is less': 'es <',
     'is less equal': 'es <=',
     'is not': 'no es',
-    'is not between': 'no es entre',
+    'is not between': 'no está entre',
     'is not null': 'no es nulo',
     'is null': 'es nulo',
-    'left exclusive': '(exclusivo a la izquierda]',
-    'right exclusive': '[exclusivo a la derecha)',
+    'left exclusive': '(izquierda exclusive]',
+    'right exclusive': '[derecha exclusive)',
   },
   get_relative_timeframe_presets: {
     'Last 14 Days': 'Últimos 14 días',
@@ -158,9 +162,9 @@ const resources = {
     'doesnt end with': 'no termina con',
     'doesnt start with': 'no empieza con',
     'ends with': 'termina con',
-    is: 'está',
+    is: 'es',
     'is blank': 'está en blanco',
-    'is not': 'no está',
+    'is not': 'no es',
     'is not blank': 'no está en blanco',
     'is not null': 'no es nulo',
     'is null': 'es nulo',
@@ -227,8 +231,8 @@ const resources = {
     'Selection required': 'Se requiere una selección',
   },
   use_option_filtering: {
-    'No values': 'No hay ningún valor.',
-    'No values match': 'No hay ningún valor que coincida.',
+    'No values': 'Ningún valor',
+    'No values match': 'Ningún valor coincide',
   },
   use_placeholder: {
     'any value': 'cualquier valor',
@@ -244,5 +248,12 @@ const resources = {
 export const esES: I18nStateWithDates = {
   dateLocale,
   locale: 'es-ES',
-  resources: { 'es-ES': merge(resources, expressionLocale.resources['es-ES']) },
+  resources: {
+    'es-ES': merge(
+      {},
+      resources,
+      expressionLocale.resources['es-ES'],
+      componentsLocale.resources['es-ES']
+    ),
+  },
 }

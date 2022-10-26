@@ -25,7 +25,7 @@
  */
 
 import React, { useContext } from 'react'
-import styled, { ThemeContext } from 'styled-components'
+import styled, { useTheme } from 'styled-components'
 import type { SpacingSizes } from '@looker/design-tokens'
 import type { GenerateIndentProps } from '../Tree/utils/generateIndent'
 import { generateIndentCalculation } from '../Tree/utils/generateIndent'
@@ -39,29 +39,24 @@ import { INDICATOR_SPACER } from './NavTree'
 
 const IndentOverrideTreeItem = styled(TreeItem).withConfig<
   {
-    iconGap: SpacingSizes
+    gap: SpacingSizes
     indicatorGap: SpacingSizes
     px: SpacingSizes
   } & GenerateIndentProps &
     NavTreeItemProps
 >({
   shouldForwardProp: prop =>
-    ![
-      'depth',
-      'density',
-      'iconGap',
-      'indicatorGap',
-      'parentIcon',
-      'px',
-    ].includes(prop),
+    !['depth', 'density', 'gap', 'indicatorGap', 'parentIcon', 'px'].includes(
+      prop
+    ),
 })`
   ${TreeItemContent} {
-    ${({ depth = 0, density, iconGap, indicatorGap, parentIcon, theme }) =>
+    ${({ depth = 0, density, gap, indicatorGap, parentIcon, theme }) =>
       `padding-left: calc(${generateIndentCalculation(
         parentIcon ? depth + 1 : depth,
         density || theme.defaults.density,
         theme
-      )} + ${theme.space[iconGap]} - ${
+      )} + ${theme.space[gap]} - ${
         theme.space[indicatorGap]
       } + ${INDICATOR_SPACER});`}
   }
@@ -73,16 +68,16 @@ const IndentOverrideTreeItem = styled(TreeItem).withConfig<
 
 export const NavTreeItem = styled(
   ({ ripple = true, truncate = true, ...props }: NavTreeItemProps) => {
-    const theme = useContext(ThemeContext)
+    const theme = useTheme()
     const { depth } = useContext(TreeContext)
-    const { iconGap, px } = listItemDimensions(theme.defaults.density)
+    const { gap, px } = listItemDimensions(theme.defaults.density)
     const { indicatorGap } = accordionDimensions()
 
     return (
       <IndentOverrideTreeItem
         depth={depth}
         color="key"
-        iconGap={iconGap}
+        gap={gap}
         indicatorGap={indicatorGap}
         itemRole={props.href ? 'link' : props.itemRole}
         px={px}

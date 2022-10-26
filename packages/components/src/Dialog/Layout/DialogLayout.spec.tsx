@@ -28,7 +28,7 @@ import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { composeStories } from '@storybook/testing-react'
 import { render, screen } from '@testing-library/react'
-import { ConstitutionShort } from '../../__mocks__/Constitution'
+import { ConstitutionShort } from '../../fixtures/Constitution'
 import * as stories from './DialogLayout.stories'
 import { DialogLayout } from './DialogLayout'
 

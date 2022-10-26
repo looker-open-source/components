@@ -1,0 +1,11 @@
+{
+  "Invalid value": {
+    "value": "Klaidinga reikšmė"
+  },
+  "No value is set for your user attribute": {
+    "value": "Nenustatyta jokia vartotojo atributo vertė"
+  },
+  "Selection required": {
+    "value": "Reikalinga atranka"
+  }
+}

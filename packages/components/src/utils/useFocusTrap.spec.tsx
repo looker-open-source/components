@@ -30,7 +30,7 @@ import { act, fireEvent, render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import type { FC } from 'react'
 import React from 'react'
-import { FieldText } from '../Form/Fields'
+import { FieldSelect, FieldText } from '../Form/Fields'
 import { useFocusTrap, useToggle } from './'
 
 beforeEach(() => {
@@ -342,5 +342,53 @@ describe('useFocusTrap', () => {
       userEvent.click(outside)
       expect(outside).toHaveFocus()
     })
+  })
+})
+
+// https://github.com/looker-open-source/components/issues/2953
+//
+// This test was originally failing in Firefox but we can test it and expect
+// it to work in any browser because the fix required that we maintain our
+// own record of activeElement, which is used in all browsers.
+//
+// The fix itself could not be feature detected without essentially running
+// this test at runtime in production code.
+test('Focus maintained with Select', async () => {
+  // It is important to keep the InputText before the Select because the
+  // bug was caused by the InputText being focused after selecting a value.
+  // The Select should be refocused after selecting a value instead.
+  renderWithTheme(
+    <Inner>
+      <FieldText placeholder="Input Text" />
+      <FieldSelect
+        options={[{ label: '1', value: '1' }]}
+        placeholder="Components Select"
+      />
+    </Inner>
+  )
+
+  // Toggle the children on <Inner />.
+  fireEvent.click(screen.getByText('toggle'))
+
+  // We this represents the host div, not the internal input.
+  const select = screen.getByPlaceholderText('Components Select')
+
+  // Focus so the activeElement gets recorded. Firing the click event will
+  // not do this.
+  fireEvent.focus(select)
+
+  // Click so the dropdown is opened. Focusing will not do this.
+  fireEvent.click(select)
+
+  // Selects the LI representing the first value. Firing this on the select
+  // option will not change the value.
+  fireEvent.click(screen.getByText('1'))
+
+  // The select should briefly not have focus because this was clicked.
+  expect(select).not.toHaveFocus()
+
+  // We must wait for the select to be refocused on the next event loop.
+  await waitFor(() => {
+    expect(select).toHaveFocus()
   })
 })

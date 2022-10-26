@@ -74,8 +74,11 @@ export const createListItemPartitions = ({
   }
 
   const { accessory, content, ...options } = getDetailOptions(detail)
+
   const renderedDetail = detail && (
-    <ListItemDetail {...options}>{content}</ListItemDetail>
+    <ListItemDetail accessory={accessory} density={density} {...options}>
+      {content}
+    </ListItemDetail>
   )
 
   const inside = (

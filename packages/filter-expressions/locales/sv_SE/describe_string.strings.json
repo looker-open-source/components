@@ -1,0 +1,23 @@
+{
+  "blank": {
+    "value": "tomt"
+  },
+  "contains value": {
+    "value": "innehåller {{value}}"
+  },
+  "does not contain value": {
+    "value": "innehåller inte {{value}}"
+  },
+  "does not end with value": {
+    "value": "slutar inte med {{value}}"
+  },
+  "does not start with value": {
+    "value": "börjar inte med {{value}}"
+  },
+  "ends with value": {
+    "value": "slutar med {{value}}"
+  },
+  "starts with value": {
+    "value": "börjar med {{value}}"
+  }
+}

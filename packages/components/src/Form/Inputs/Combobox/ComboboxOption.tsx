@@ -92,9 +92,7 @@ export const ComboboxOptionWrapper = styled(
 
       const rippleHandlers = useRippleHandlers(
         callbacks,
-        {
-          ...pick({ ...rest }, rippleHandlerKeys),
-        },
+        pick(rest, rippleHandlerKeys),
         rest.disabled
       )
       return (
@@ -263,4 +261,7 @@ export function ComboboxOptionTextInternal({
   )
 }
 
-export const ComboboxOptionText = styled(ComboboxOptionTextInternal)``
+export const ComboboxOptionText = styled(ComboboxOptionTextInternal)`
+  max-width: 100%;
+  word-wrap: break-word;
+`

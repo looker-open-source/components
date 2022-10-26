@@ -30,7 +30,6 @@ import styled from 'styled-components'
 import { Flex } from '../Layout'
 import { createListItemPartitions } from '../ListItem/utils'
 import {
-  getNextFocusTarget,
   HoverDisclosureContext,
   partitionAriaProps,
   useFocusVisible,
@@ -72,7 +71,7 @@ export const LkFieldItem = styled(
     const handleWrapperFocus = () => setHovered(true)
     // This is needed so that hover disclosed elements don't get lost during keyboard nav
     const handleWrapperBlur = (event: FocusEvent<HTMLElement>) => {
-      const nextFocusTarget = getNextFocusTarget(event)
+      const nextFocusTarget = event.relatedTarget
 
       if (nextFocusTarget && !event.currentTarget.contains(nextFocusTarget)) {
         setHovered(false)
@@ -99,7 +98,7 @@ export const LkFieldItem = styled(
     return (
       <HoverDisclosureContext.Provider value={{ visible: hovered }}>
         <Flex
-          as="li"
+          role="group"
           className={className}
           onBlur={handleWrapperBlur}
           onFocus={handleWrapperFocus}
@@ -114,6 +113,7 @@ export const LkFieldItem = styled(
              * aligns with the label of the parent as opposed to the indicator
              */
             depth={depth + 1}
+            role="treeitem"
             focusVisible={focusVisible}
             onClick={onClick}
             onFocus={onFocus}

@@ -1,0 +1,29 @@
+{
+  "coords1 to coords2": {
+    "value": "{{coords1}} tot {{coords2}}"
+  },
+  "distance unit from lat, lon": {
+    "value": "{{distance}} {{unit}} van {{lat}}, {{lon}}"
+  },
+  "is anywhere": {
+    "value": "overal"
+  },
+  "is not null": {
+    "value": "geldige datums"
+  },
+  "is null": {
+    "value": "ongeldige datums"
+  },
+  "lat degrees north": {
+    "value": "{{lat}}°N"
+  },
+  "lat degrees south": {
+    "value": "{{lat}}°Z"
+  },
+  "lon degrees east": {
+    "value": "{{lon}}°O"
+  },
+  "lon degrees west": {
+    "value": "{{lon}}°W"
+  }
+}

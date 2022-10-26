@@ -34,8 +34,8 @@ import {
   isAfter,
   isBefore,
 } from 'date-fns'
-import React, { useCallback, useContext } from 'react'
-import styled, { ThemeContext } from 'styled-components'
+import React, { useCallback } from 'react'
+import styled, { useTheme } from 'styled-components'
 import { fadeIn } from '@looker/design-tokens'
 import { Grid } from '../Layout'
 import { Day } from './Day'
@@ -47,17 +47,26 @@ import type {
   MonthBaseProps,
 } from './types'
 
-type MonthPropsWithScroll = MonthBaseProps & ScrollableDateListItemProps
+export type MonthPropsWithScroll = MonthBaseProps & ScrollableDateListItemProps
 
 const getMonthPadding = (month: Date, firstDayOfWeek: number) => {
   const startDate = startOfMonth(month)
   const endDate = endOfMonth(month)
   const startDay = getDay(startDate)
   const endDay = getDay(endDate)
-  const startPadding = startDay - firstDayOfWeek
+  const startPadding = correctNegativePadding(startDay - firstDayOfWeek)
   const endPadding = 6 - endDay + firstDayOfWeek
   return { endPadding, startPadding }
 }
+
+/**
+ * Negative padding never makes sense, so add 7 if it's negative.
+ * broken use case was 0 start day, 1 firstDayOfWeek which created -1 startPadding
+ * before this function
+ * @returns padding + 7 if it's negative, otherwise return padding unchanged
+ */
+const correctNegativePadding = (padding: number) =>
+  padding < 0 ? padding + 7 : padding
 
 type CalendarCell = Date | 'before' | 'after'
 
@@ -177,7 +186,7 @@ export const Month = styled(
         ? rangeType
         : 'none'
 
-    const { space } = useContext(ThemeContext)
+    const { space } = useTheme()
     const height = `calc(${space.u8} * ${days.length / 7})`
 
     return (

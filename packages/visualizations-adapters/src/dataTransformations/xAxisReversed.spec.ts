@@ -25,7 +25,7 @@
  */
 
 import { xAxisReversed } from './xAxisReversed'
-import { mockFields } from '../__mocks__'
+import { mockFields } from '../fixtures'
 
 describe('xAxisReversed', () => {
   const mockData = [

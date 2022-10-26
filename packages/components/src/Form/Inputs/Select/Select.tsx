@@ -96,6 +96,10 @@ export interface SelectProps
    * Handle an option being selected
    */
   onChange?: (value: string) => void
+  /**
+   * The optional a11y aria label for combobox Wrapper element that has popup
+   */
+  wrapperAriaLabel?: string
 }
 
 const SelectComponent = forwardRef(
@@ -160,6 +164,7 @@ const SelectComponent = forwardRef(
         onClose={handleClose}
         width={autoResize ? 'auto' : '100%'}
         display={autoResize ? 'inline-flex' : undefined}
+        wrapperAriaLabel={props.wrapperAriaLabel}
         {...omitAriaAndValidationProps(props)}
       >
         <ComboboxInput

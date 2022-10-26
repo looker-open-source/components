@@ -34,6 +34,7 @@ import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { theme } from '@looker/design-tokens'
 import { Button } from '../../Button'
+import { jaJP } from '../../locales'
 import { Confirm } from './Confirm'
 
 const requiredProps = {
@@ -55,46 +56,69 @@ afterEach(() => {
   optionalProps.onCancel.mockClear()
 })
 
-test('<Confirm/> with defaults', async () => {
-  renderWithTheme(
-    <Confirm {...requiredProps}>
-      {open => <Button onClick={open}>Do Something</Button>}
-    </Confirm>
-  )
+describe('Confirm', () => {
+  test('with defaults', async () => {
+    renderWithTheme(
+      <Confirm {...requiredProps}>
+        {open => <Button onClick={open}>Do Something</Button>}
+      </Confirm>
+    )
 
-  const opener = screen.getByText('Do Something')
-  fireEvent.click(opener)
+    const opener = screen.getByText('Do Something')
+    fireEvent.click(opener)
 
-  const button = screen.getByText('Confirm')
+    const button = screen.getByText('Confirm')
 
-  expect(screen.getByText(requiredProps.title)).toBeVisible()
-  expect(screen.getByText(requiredProps.message)).toBeVisible()
-  expect(button).toHaveStyleRule(`background: ${theme.colors.key}`)
+    expect(screen.getByText(requiredProps.title)).toBeVisible()
+    expect(screen.getByText(requiredProps.message)).toBeVisible()
+    expect(button).toHaveStyleRule(`background: ${theme.colors.key}`)
 
-  fireEvent.click(button)
-  expect(requiredProps.onConfirm).toHaveBeenCalledTimes(1)
+    fireEvent.click(button)
+    expect(requiredProps.onConfirm).toHaveBeenCalledTimes(1)
 
-  fireEvent.click(screen.getByText('Cancel'))
-  await waitForElementToBeRemoved(() => screen.queryByText(requiredProps.title))
-  expect(screen.queryByText(requiredProps.title)).not.toBeInTheDocument()
-})
+    fireEvent.click(screen.getByText('Cancel'))
+    await waitForElementToBeRemoved(() =>
+      screen.queryByText(requiredProps.title)
+    )
+    expect(screen.queryByText(requiredProps.title)).not.toBeInTheDocument()
+  })
 
-test('<Confirm/> with custom props', () => {
-  renderWithTheme(
-    <Confirm {...requiredProps} {...optionalProps} buttonColor="critical">
-      {open => <Button onClick={open}>Do Something</Button>}
-    </Confirm>
-  )
+  test('with custom props', () => {
+    renderWithTheme(
+      <Confirm {...requiredProps} {...optionalProps} buttonColor="critical">
+        {open => <Button onClick={open}>Do Something</Button>}
+      </Confirm>
+    )
 
-  const opener = screen.getByText('Do Something')
-  fireEvent.click(opener)
+    const opener = screen.getByText('Do Something')
+    fireEvent.click(opener)
 
-  const button = screen.getByText(optionalProps.confirmLabel || '')
-  expect(button).toHaveStyleRule(`background: ${theme.colors.critical}`)
+    const button = screen.getByText(optionalProps.confirmLabel || '')
+    expect(button).toHaveStyleRule(`background: ${theme.colors.critical}`)
 
-  fireEvent.click(screen.getByText(optionalProps.cancelLabel || ''))
-  fireEvent.click(button)
+    fireEvent.click(screen.getByText(optionalProps.cancelLabel || ''))
+    fireEvent.click(button)
 
-  expect(requiredProps.onConfirm).toHaveBeenCalledTimes(1)
-  expect(optionalProps.onCancel).toHaveBeenCalledTimes(1)
+    expect(requiredProps.onConfirm).toHaveBeenCalledTimes(1)
+    expect(optionalProps.onCancel).toHaveBeenCalledTimes(1)
+  })
+
+  test('i18n', () => {
+    renderWithTheme(
+      <Confirm {...requiredProps}>
+        {open => <Button onClick={open}>Do Something</Button>}
+      </Confirm>,
+      undefined,
+      jaJP
+    )
+
+    const opener = screen.getByText('Do Something')
+    fireEvent.click(opener)
+
+    const buttons = screen.getAllByRole('button')
+    // "Confirm" in Japanese
+    expect(buttons[0]).toHaveTextContent('確認')
+    // "Cancel" in Japanese
+    expect(buttons[1]).toHaveTextContent('キャンセル')
+  })
 })

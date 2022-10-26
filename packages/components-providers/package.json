@@ -1,39 +1,57 @@
 {
   "name": "@looker/components-providers",
   "license": "MIT",
-  "version": "1.5.26",
+  "version": "1.5.27",
   "main": "src/index.ts",
   "sideEffects": false,
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "repository": {
+    "url": "looker-open-source/components",
+    "directory": "packages/components-providers"
+  },
+  "files": [
+    "src",
+    "lib"
+  ],
+  "scripts": {
+    "test": "jest",
+    "prepublishOnly": "lk prepublishOnly"
   },
   "dependencies": {
-    "@looker/design-tokens": "^2.7.21",
-    "@looker/i18n": "^0.1.8",
+    "@looker/design-tokens": "3.0.4",
+    "@looker/i18n": "0.1.8",
     "i18next": "20.3.1",
     "react-helmet-async": "^1.0.9",
     "react-i18next": "11.8.15",
     "tabbable": "^5.2.0"
   },
   "devDependencies": {
-    "@looker/eslint-config-oss": "^1.7.21",
+    "@looker/babel-preset-styled-components": "*",
+    "@looker/babel-preset-typescript": "*",
+    "@looker/components-scripts": "*",
+    "@looker/eslint-config-oss": "*",
+    "@looker/jest-config": "*",
     "@testing-library/react": "*",
     "lodash": "^4.17.20",
     "react": "16.14.0",
-    "react-is": "16.13.1",
     "styled-components": "5.3.1"
   },
   "peerDependencies": {
     "lodash": "^4.17.20",
-    "react": "^16.11",
-    "react-is": "^16.11",
-    "styled-components": "^5"
+    "react": "16.14.0 - 18",
+    "styled-components": "^5.3.1"
   },
   "eslintConfig": {
     "root": true,
     "extends": [
       "@looker/eslint-config-oss"
-    ]
+    ],
+    "rules": {
+      "i18next/no-literal-string": "off"
+    }
   },
-  "gitHead": "734f77cda8050d9eea83a187113333dfad8650ca"
+  "gitHead": "62febc162e3e45124f403e2c84fc741f68fe6714"
 }

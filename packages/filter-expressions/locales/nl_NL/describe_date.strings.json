@@ -1,0 +1,72 @@
+{
+  " complete": {
+    "value": " voltooid"
+  },
+  "absolute prefix dateTime": {
+    "value": "{{prefix}} {{dateTime}}"
+  },
+  "ago": {
+    "value": "geleden"
+  },
+  "from now": {
+    "value": "vanaf nu"
+  },
+  "is any time": {
+    "value": "alles"
+  },
+  "is before": {
+    "value": "vóór datum"
+  },
+  "is day": {
+    "value": "is {{day}}"
+  },
+  "is from dateTimeStart until dateTimeEnd": {
+    "value": "van {{dateTimeStart}} tot {{dateTimeEnd}}"
+  },
+  "is in month year": {
+    "value": "is in {{month}} {{year}}"
+  },
+  "is in the last": {
+    "value": "is in de afgelopen {{describeInterval}}"
+  },
+  "is in the year year": {
+    "value": "specifiek jaar {{year}}"
+  },
+  "is interval ago": {
+    "value": "is {{interval}} geleden"
+  },
+  "is intervalStart intervalType for intervalEnd": {
+    "value": "is {{intervalStart}} {{intervalType}} voor {{intervalEnd}}"
+  },
+  "is not null": {
+    "value": "geldige datums"
+  },
+  "is on dateTime": {
+    "value": "is op/om {{dateTime}}"
+  },
+  "is on or after": {
+    "value": "op of na datum"
+  },
+  "is previous unitLabel": {
+    "value": "is een {{unitLabel}} eerder"
+  },
+  "is type unitLabel": {
+    "value": "is {{type}} {{unitLabel}}"
+  },
+  "next": {
+    "value": "volgende"
+  },
+  "prefix interval timePassed": {
+    "value": "{{prefix}} {{interval}} {{timePassed}}"
+  },
+  "prefix now": {
+    "value": "{{prefix}} nu"
+  },
+  "this": {
+    "value": "deze"
+  },
+  "this startInterval to endInterval": "deze {{startInterval}} tot {{endInterval}}",
+  "value complete unitLabel": {
+    "value": "{{value}}{{complete}} {{unitLabel}}"
+  }
+}

@@ -28,7 +28,7 @@ import { getUnitLabel } from './get_unit_label'
 
 describe('Returns a label', () => {
   beforeEach(() =>
-    i18nInit().catch(e => {
+    i18nInit().catch((e) => {
       throw new Error(e)
     })
   )

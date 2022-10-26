@@ -3,56 +3,45 @@
   "license": "MIT",
   "main": "src/index.js",
   "version": "1.7.21",
-  "publishConfig": {
-    "access": "public"
-  },
   "sideEffects": false,
-  "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^4.29.2",
-    "@typescript-eslint/parser": "^4.31.0",
-    "eslint": "^7.32.0",
-    "eslint-config-prettier": "8.3.0",
-    "eslint-config-standard": "16.0.3",
-    "eslint-import-resolver-typescript": "^2.4.0",
-    "eslint-import-resolver-webpack": "^0.13.1",
-    "eslint-plugin-header": "^3.1.1",
-    "eslint-plugin-i18next": "^5.1.1",
-    "eslint-plugin-import": "^2.24.1",
-    "eslint-plugin-jest-dom": "3.9.0",
-    "eslint-plugin-lodash": "7.1.0",
-    "eslint-plugin-mdx": "^1.14.1",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-prettier": "3.4.0",
-    "eslint-plugin-promise": "^5.1.0",
-    "eslint-plugin-react": "^7.23.2",
-    "eslint-plugin-react-hooks": "^4.2.0",
-    "eslint-plugin-sort-keys-fix": "^1.1.2",
-    "eslint-plugin-standard": "5.0.0",
-    "eslint-plugin-testing-library": "4.11.0",
-    "typescript": "4.4.2"
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
   },
-  "gitHead": "734f77cda8050d9eea83a187113333dfad8650ca",
+  "repository": {
+    "url": "looker-open-source/components",
+    "directory": "packages/eslint-config-oss"
+  },
+  "scripts": {
+    "prepublishOnly": "lk prepublishOnly"
+  },
+  "optionalDependencies": {
+    "@looker/eslint-plugin": "*"
+  },
+  "gitHead": "62febc162e3e45124f403e2c84fc741f68fe6714",
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "5.8.0",
-    "@typescript-eslint/parser": "5.8.0",
-    "eslint": "7.32.0",
-    "eslint-config-prettier": "8.3.0",
-    "eslint-config-standard": "16.0.3",
-    "eslint-import-resolver-typescript": "2.5.0",
+    "@looker/components-scripts": "*",
+    "@typescript-eslint/eslint-plugin": "5.20.0",
+    "@typescript-eslint/parser": "5.20.0",
+    "eslint": "8.24.0",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-config-standard": "17.0.0",
+    "eslint-import-resolver-typescript": "2.7.1",
     "eslint-import-resolver-webpack": "0.13.2",
     "eslint-plugin-header": "3.1.1",
     "eslint-plugin-i18next": "5.1.2",
-    "eslint-plugin-import": "2.25.3",
-    "eslint-plugin-jest-dom": "4.0.0",
-    "eslint-plugin-lodash": "7.3.0",
-    "eslint-plugin-mdx": "1.16.0",
-    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-import": "2.26.0",
+    "eslint-plugin-jest-dom": "4.0.1",
+    "eslint-plugin-lodash": "7.4.0",
+    "eslint-plugin-mdx": "1.17.0",
+    "eslint-plugin-n": "15.2.4",
     "eslint-plugin-prettier": "4.0.0",
     "eslint-plugin-promise": "6.0.0",
-    "eslint-plugin-react": "7.27.0",
-    "eslint-plugin-react-hooks": "4.3.0",
+    "eslint-plugin-react": "7.29.4",
+    "eslint-plugin-react-hooks": "4.4.0",
     "eslint-plugin-sort-keys-fix": "1.1.2",
-    "eslint-plugin-testing-library": "5.0.1",
-    "typescript": "4.5.2"
+    "eslint-plugin-testing-library": "5.3.1",
+    "eslint-plugin-unicorn": "44.0.2",
+    "typescript": "4.6.3"
   }
 }

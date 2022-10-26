@@ -168,7 +168,10 @@ export const useTooltip = ({
     const enabledDomProps = disabled
       ? {}
       : {
-          'aria-describedby': ariaDescribedById || guaranteedId,
+          'aria-describedby':
+            renderDOM && content
+              ? ariaDescribedById || guaranteedId
+              : undefined,
           className: renderDOM ? 'hover' : undefined,
         }
 

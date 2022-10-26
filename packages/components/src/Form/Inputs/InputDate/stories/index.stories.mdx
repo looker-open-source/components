@@ -1,0 +1,50 @@
+import { InputDate } from '@looker/components'
+import storyControlled from '!!raw-loader!./Controlled'
+import storyDisabling from '!!raw-loader!./Disabling'
+import storyFormattingDateStrings from '!!raw-loader!./FormattingDateStrings'
+import storyValidation from '!!raw-loader!./Validation'
+import storyValueAndDefaultValue from '!!raw-loader!./ValueAndDefaultValue'
+
+<Meta component={InputDate} title="Docs/Form/Inputs/InputDate" />
+
+# InputDate
+
+`InputDate` provides a text input and calendar to select a single date, which can be used as a form input or filter.
+
+## Value & default value
+
+`InputDate` can be initialized with a default selected date.
+
+<Editor code={storyValueAndDefaultValue} />
+
+## Controlled
+
+`InputDate` accepts a single event callback: `onChange`. The handler will receive a javascript `Date` object.
+
+<Editor code={storyControlled} />
+
+## Formatting date strings
+
+If you want to use a custom date format, you can do that with the `dateStringFormat` prop which accepts a `date-fns` [format](https://date-fns.org/v2.28.0/docs/format).
+
+<Editor code={storyFormattingDateStrings} />
+
+## Disabling
+
+You can `disable` the date input while also providing a value.
+
+<Editor code={storyDisabling} />
+
+## Validation
+
+`InputDate` has built-in validation to verify that users enter a valid date string when manually typing the date. If you wish to customize validation, you can pass `validationType` and an `onValidationFail` callback that gets called when validation fails.
+
+<Editor code={storyValidation} />
+
+## I18n
+
+This component supports `locale`, used to set a specific language.
+
+```jsx
+<InputDate defaultValue={new Date('June 3, 2019')} locale={ital} />
+```

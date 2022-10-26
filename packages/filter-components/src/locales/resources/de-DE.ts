@@ -27,6 +27,7 @@ import merge from 'lodash/merge'
 import dateLocale from 'date-fns/locale/de'
 import type { I18nStateWithDates } from '../../utils'
 import { deDE as expressionLocale } from '@looker/filter-expressions'
+import { deDE as componentsLocale } from '@looker/components'
 
 const resources = {
   AddRemoveButtons: {
@@ -61,7 +62,7 @@ const resources = {
     relative: '(relativ)',
   },
   Between: {
-    AND: 'AND',
+    AND: 'UND',
   },
   date_units: {
     day: 'Tag',
@@ -85,14 +86,17 @@ const resources = {
     year: 'Jahr',
     years: 'Jahre',
   },
+  DateRange: {
+    'until (before)': 'bis (vor)',
+  },
   get_date_filter_options: {
     is: 'ist',
     'is any time': 'ist jederzeit',
     'is before': 'ist vor dem',
-    'is in range': 'befindet sich im Bereich',
+    'is in range': 'ist im Bereich',
     'is in the last': 'ist in den letzten',
     'is in the month': 'ist im Monat',
-    'is in the year': 'befindet sich im Jahr',
+    'is in the year': 'ist im Jahr',
     'is next': 'ist nächste/r/s',
     'is not null': 'ist nicht null',
     'is null': 'ist null',
@@ -102,12 +106,12 @@ const resources = {
     'is this': 'ist diese/r/s',
   },
   get_filter_options: {
-    'matches advanced': 'Übereinstimmung (für Fortgeschrittene)',
+    'matches advanced': 'Übereinstimmungen (erweitert)',
   },
   get_location_filter_options: {
     Box: 'Feld',
     Circle: 'Kreis',
-    Location: 'Standort',
+    Location: 'Ort',
     feet: 'Fuß',
     'is anywhere': 'ist überall',
     'is not null': 'ist nicht null',
@@ -183,8 +187,8 @@ const resources = {
     'any value': 'beliebiger Wert',
   },
   OperatorLabel: {
-    AND: 'AND',
-    OR: 'OR',
+    AND: 'UND',
+    OR: 'ODER',
   },
   past_units: {
     'complete days': 'vollständige Tage',
@@ -223,7 +227,7 @@ const resources = {
   use_filters_errors: {
     'Invalid value': 'Ungültiger Wert',
     'No value is set for your user attribute':
-      'Für dieses Benutzerattribut ist kein Wert festgelegt',
+      'Für dieses Benutzerattribut ist kein Wert festgelegt.',
     'Selection required': 'Auswahl erforderlich',
   },
   use_option_filtering: {
@@ -244,5 +248,12 @@ const resources = {
 export const deDE: I18nStateWithDates = {
   dateLocale,
   locale: 'de-DE',
-  resources: { 'de-DE': merge(resources, expressionLocale.resources['de-DE']) },
+  resources: {
+    'de-DE': merge(
+      {},
+      resources,
+      expressionLocale.resources['de-DE'],
+      componentsLocale.resources['de-DE']
+    ),
+  },
 }

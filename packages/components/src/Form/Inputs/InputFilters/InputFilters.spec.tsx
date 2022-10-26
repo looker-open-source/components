@@ -27,7 +27,7 @@
 import React, { useState } from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { fireEvent, screen } from '@testing-library/react'
-import { filters } from '../../../__mocks__/filters'
+import { filters } from '../../../fixtures/filters'
 import type { FieldFilter } from './'
 import { InputFilters } from './'
 

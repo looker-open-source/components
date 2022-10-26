@@ -26,8 +26,8 @@
 
 import React from 'react'
 import type { Story } from '@storybook/react/types-6-0'
-import { defaultArgTypes as argTypes } from '../../../../../apps/storybook/src/defaultArgTypes'
-import { ConstitutionShort } from '../../__mocks__/Constitution'
+import { defaultArgTypes as argTypes } from '@looker/storybook'
+import { ConstitutionShort } from '../../fixtures/Constitution'
 import { ButtonTransparent } from '../../Button/ButtonTransparent'
 import type { PopoverLayoutProps } from './PopoverLayout'
 import { PopoverLayout } from './PopoverLayout'

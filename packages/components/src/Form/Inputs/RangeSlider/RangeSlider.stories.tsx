@@ -25,12 +25,12 @@
  */
 
 import React from 'react'
+import { defaultArgTypes as argTypes } from '@looker/storybook'
 import { Button } from '../../../Button'
 import { Space, SpaceVertical } from '../../../Layout'
 import { OrderedList } from '../../../OrderedList'
 import { Paragraph } from '../../../Text'
 import { useToggle } from '../../../utils'
-import { defaultArgTypes as argTypes } from '../../../../../../apps/storybook/src/defaultArgTypes'
 import { RangeSlider } from './RangeSlider'
 
 export default {

@@ -38,7 +38,7 @@ import { formatDateString } from './utils'
 import type { CalendarNavProps } from './CalendarNav'
 import { YearList } from './YearList'
 
-type MonthPickerNavProps = Pick<
+export type MonthPickerNavProps = Pick<
   CalendarNavProps,
   'locale' | 'onMonthChange'
 > & {

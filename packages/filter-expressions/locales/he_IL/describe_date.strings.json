@@ -1,0 +1,72 @@
+{
+  " complete": {
+    "value": " מלא"
+  },
+  "absolute prefix dateTime": {
+    "value": "{{prefix}} {{dateTime}}"
+  },
+  "ago": {
+    "value": "לשעבר"
+  },
+  "from now": {
+    "value": "מעתה"
+  },
+  "is any time": {
+    "value": "מועד כלשהו"
+  },
+  "is before": {
+    "value": "לפני"
+  },
+  "is day": {
+    "value": "הוא {{day}}"
+  },
+  "is from dateTimeStart until dateTimeEnd": {
+    "value": "הוא מ-{{dateTimeStart}} עד {{dateTimeEnd}}"
+  },
+  "is in month year": {
+    "value": "הוא ב-{{month}} {{year}}"
+  },
+  "is in the last": {
+    "value": "האחרון {{describeInterval}}"
+  },
+  "is in the year year": {
+    "value": "הוא בשנת {{year}}"
+  },
+  "is interval ago": {
+    "value": "הוא ב {{interval}} שעבר"
+  },
+  "is intervalStart intervalType for intervalEnd": {
+    "value": "ב {{intervalStart}} {{intervalType}} ל {{intervalEnd}}"
+  },
+  "is not null": {
+    "value": "אינו Null"
+  },
+  "is on dateTime": {
+    "value": "הוא ב-{{dateTime}}"
+  },
+  "is on or after": {
+    "value": "אחרי או ב-"
+  },
+  "is previous unitLabel": {
+    "value": "קדם ל {{unitLabel}}"
+  },
+  "is type unitLabel": {
+    "value": "ב {{type}} {{unitLabel}}"
+  },
+  "next": {
+    "value": "הבא"
+  },
+  "prefix interval timePassed": {
+    "value": "{{prefix}} {{interval}} {{timePassed}}"
+  },
+  "prefix now": {
+    "value": "{{prefix}} כעת"
+  },
+  "this": {
+    "value": "הזה"
+  },
+  "this startInterval to endInterval": "הזה {{startInterval}} ל {{endInterval}}",
+  "value complete unitLabel": {
+    "value": "{{value}} {{complete}} {{unitLabel}}"
+  }
+}

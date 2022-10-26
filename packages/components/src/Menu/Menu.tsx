@@ -48,20 +48,22 @@ export interface MenuProps
    */
   listRef?: Ref<HTMLUListElement>
 }
+type PartitionProps = Omit<MenuProps, 'children' | 'content' | 'id' | 'listRef'>
+type KeyOfPartitionProps = keyof PartitionProps
 
 // Returns two object, the first being Popover props and the second being List props
 const partitionMenuProps = (
-  props: Omit<MenuProps, 'children' | 'content' | 'id' | 'listRef'>,
+  props: PartitionProps,
   popoverPropKeys: Array<keyof PopoverProps>
 ) => {
-  const allProps: { [key: string]: any } = { ...props }
-  const popoverProps: { [key: string]: any } = {}
+  const allProps = { ...props }
+  const popoverProps: Record<string, unknown> = {}
 
   popoverPropKeys.forEach(key => {
-    if (props[key as keyof typeof props] !== undefined) {
-      popoverProps[key] = props[key as keyof typeof props]
+    if (props[key as KeyOfPartitionProps] !== undefined) {
+      popoverProps[key] = props[key as KeyOfPartitionProps]
     }
-    delete allProps[key]
+    delete allProps[key as KeyOfPartitionProps]
   })
 
   const listProps = allProps
@@ -72,6 +74,7 @@ const partitionMenuProps = (
 export const Menu = forwardRef(
   (
     { children, content, id: propsID, listRef, ...restProps }: MenuProps,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     ref: Ref<any>
   ) => {
     const [popoverProps, listProps] = partitionMenuProps(

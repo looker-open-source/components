@@ -32,7 +32,7 @@ import { describeDate } from './describe_date'
 
 describe('Summary', () => {
   beforeEach(() =>
-    i18nInit().catch(e => {
+    i18nInit().catch((e) => {
       throw new Error(e)
     })
   )

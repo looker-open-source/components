@@ -36,19 +36,44 @@ import type { ValidationMessageProps } from '@looker/components'
 export interface FilterChangeProps {
   expression: string
 }
-/**
- * Interface for the <Filter/> component's props property
- */
-export interface FilterProps {
+
+type ExpressionTypeProps = {
+  /**
+   * The type of the expression. Required if field is not provided.
+   * Will be derived from field and type if absent.
+   */
+  expressionType: FilterExpressionType
+}
+type FieldProps = {
+  /**
+   * The field associated with the filter.
+   * Required if expressionType is not provided.
+   */
+  field: ILookmlModelExploreField | null
+}
+type TypeProps = {
   /**
    * The type on the DashboardFilter, e.g. field_filter,
    * used to derive expressionType if that is not provided
    */
-  type?: string
-  /**
-   * The type of the expression, derived from the type and field if not provided
-   */
-  expressionType?: FilterExpressionType
+  type: string
+}
+
+// Use a union to get "either / or" required
+// Use an intersection + Partial to make them both also optional
+// Combined result is "at least one of"
+type ExpressionTypeOrFieldProps = (
+  | ExpressionTypeProps
+  | FieldProps
+  | TypeProps
+) &
+  (Partial<ExpressionTypeProps> & Partial<FieldProps> & Partial<TypeProps>)
+
+/**
+ * Interface for the <Filter/> component's props property.
+ * Requires at least one of: expressionType, field, type
+ */
+export type FilterProps = ExpressionTypeOrFieldProps & {
   /**
    * The UI config that determines how a control filter will render and behave
    */
@@ -103,10 +128,6 @@ export interface FilterProps {
    * Enumerations for the filter
    */
   enumerations?: Option[] | null
-  /**
-   * The field associated with the filter
-   */
-  field?: ILookmlModelExploreField | null
   /**
    * Used to initialize filters in Edit Mode – do not use if filter is not editable
    */

@@ -25,7 +25,7 @@
  */
 
 import { seriesValueFormat } from './seriesValueFormat'
-import { mockBarConfig, mockFields, mockSdkDataResponse } from '../__mocks__'
+import { mockBarConfig, mockFields, mockSdkDataResponse } from '../fixtures'
 import type { CSeriesBasic } from '../types'
 describe('seriesValueFormat', () => {
   describe('Series as array', () => {

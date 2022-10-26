@@ -34,7 +34,7 @@ import type { ComboboxOptionObject } from '../types'
 import { getComboboxText } from './getComboboxText'
 import { parseOption } from './parseOption'
 
-export enum ComboboxState {
+enum ComboboxState {
   // Nothing going on, waiting for the user to type or use the arrow keys
   IDLE = 'IDLE',
 
@@ -49,7 +49,7 @@ export enum ComboboxState {
   INTERACTING = 'INTERACTING',
 }
 
-export enum ComboboxActionType {
+enum ComboboxActionType {
   // User cleared the value w/ backspace, but input still has focus
   CLEAR = 'CLEAR',
 
@@ -82,6 +82,8 @@ export enum ComboboxActionType {
 
   FOCUS = 'FOCUS',
 }
+
+export { ComboboxActionType, ComboboxState }
 
 export interface ComboboxData {
   inputValue?: string

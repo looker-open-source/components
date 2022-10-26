@@ -25,7 +25,7 @@
  */
 
 import { nullValueZero } from './nullValueZero'
-import { mockFields } from '../__mocks__'
+import { mockFields } from '../fixtures'
 
 describe('nullValueZero', () => {
   const mockData = [

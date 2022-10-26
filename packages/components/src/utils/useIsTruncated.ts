@@ -25,7 +25,6 @@
  */
 
 import { useState, useCallback } from 'react'
-import ResizeObserver from 'resize-observer-polyfill'
 import { useSafeLayoutEffect } from './useSafeLayoutEffect'
 
 /*
@@ -39,7 +38,7 @@ const isOverflowing = (node: HTMLElement) =>
 
 export const useIsTruncated = (
   element: HTMLElement | null,
-  identity?: any
+  identity?: number
 ): boolean => {
   const [isTruncated, setIsTruncated] = useState(false)
 

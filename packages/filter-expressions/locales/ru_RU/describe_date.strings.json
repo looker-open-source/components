@@ -1,0 +1,72 @@
+{
+  " complete": {
+    "value": " полн."
+  },
+  "absolute prefix dateTime": {
+    "value": "{{prefix}} {{dateTime}}"
+  },
+  "ago": {
+    "value": "назад"
+  },
+  "from now": {
+    "value": "спустя"
+  },
+  "is any time": {
+    "value": "любое значение времени"
+  },
+  "is before": {
+    "value": "до даты"
+  },
+  "is day": {
+    "value": "между {{day}}"
+  },
+  "is from dateTimeStart until dateTimeEnd": {
+    "value": "с {{dateTimeStart}} до {{dateTimeEnd}}"
+  },
+  "is in month year": {
+    "value": "в {{month}} {{year}}"
+  },
+  "is in the last": {
+    "value": "в последнем {{describeInterval}}"
+  },
+  "is in the year year": {
+    "value": "в {{year}} году"
+  },
+  "is interval ago": {
+    "value": "{{interval}} назад"
+  },
+  "is intervalStart intervalType for intervalEnd": {
+    "value": "{{intervalStart}} {{intervalType}} для {{intervalEnd}}"
+  },
+  "is not null": {
+    "value": "не является нулевым значением"
+  },
+  "is on dateTime": {
+    "value": "приходится на дату {{dateTime}}"
+  },
+  "is on or after": {
+    "value": "в указанную дату или после нее"
+  },
+  "is previous unitLabel": {
+    "value": "в предыдущем {{unitLabel}}"
+  },
+  "is type unitLabel": {
+    "value": "является {{type}} {{unitLabel}}"
+  },
+  "next": {
+    "value": "далее"
+  },
+  "prefix interval timePassed": {
+    "value": "{{prefix}} {{interval}} {{timePassed}}"
+  },
+  "prefix now": {
+    "value": "{{prefix}} сейчас"
+  },
+  "this": {
+    "value": "текущий"
+  },
+  "this startInterval to endInterval": "от {{startInterval}} до {{endInterval}}",
+  "value complete unitLabel": {
+    "value": "{{value}}{{complete}} {{unitLabel}}"
+  }
+}

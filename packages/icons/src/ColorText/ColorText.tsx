@@ -27,7 +27,7 @@
 
 /**
  * NOTE: This is an auto-generated file changes within may be overwritten
- * Run `yarn workspace @looker/icons build` to update
+ * Run `npm run build --workspace @looker/icons` to update
  */
 
 import React from 'react'

@@ -68,11 +68,13 @@ export const popoverPropKeys: Array<keyof PopoverProps> = [
   'triggerToggle',
   'cancelClickOutside',
   'hoverDisclosureRef',
+  'ariaLabel',
 ]
 
 export const Popover = forwardRef(
   (
     { children, hoverDisclosureRef, ...props }: PopoverProps,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     forwardedRef: Ref<any>
   ) => {
     const { domProps, isOpen, popover } = usePopover(props)

@@ -25,8 +25,8 @@
  */
 
 import type { Reducer } from 'react'
-import { useCallback, useContext, useEffect, useReducer, useRef } from 'react'
-import { ThemeContext } from 'styled-components'
+import { useCallback, useEffect, useReducer, useRef } from 'react'
+import { useTheme } from 'styled-components'
 
 export interface RippleAction {
   type: 'START' | 'END' | 'DONE'
@@ -66,7 +66,7 @@ export const useRippleState = () => {
   // Get the transitions to match the ripple-in & -out animation durations
   const {
     transitions: { quick, simple },
-  } = useContext(ThemeContext)
+  } = useTheme()
 
   const start = useCallback(() => {
     dispatch({ type: 'START' })

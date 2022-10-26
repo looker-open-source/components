@@ -78,5 +78,23 @@ describe('SingleNumberInput component', () => {
       })
       expect(props.onChange).not.toHaveBeenCalled()
     })
+
+    it('calls onChange handler for big integer', () => {
+      renderWithTheme(<SingleNumberInput {...props} />)
+      const input = screen.getByTestId('single-number')
+      fireEvent.change(input, { target: { value: '12345678901234567890' } })
+      expect(props.onChange.mock.calls).toMatchInlineSnapshot(`
+        Array [
+          Array [
+            "test_id",
+            Object {
+              "value": Array [
+                12345678901234567890n,
+              ],
+            },
+          ],
+        ]
+      `)
+    })
   })
 })

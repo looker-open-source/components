@@ -27,9 +27,9 @@
 import { ExtendComponentsThemeProvider } from '@looker/components-providers'
 import type { Story } from '@storybook/react/types-6-0'
 import React, { useState } from 'react'
+import { defaultArgTypes as argTypes } from '@looker/storybook'
 import { Grid, SpaceVertical } from '../../../Layout'
 import { Paragraph } from '../../../Text'
-import { defaultArgTypes as argTypes } from '../../../../../../apps/storybook/src/defaultArgTypes'
 import type { FieldChipsProps } from './FieldChips'
 import { FieldChips } from './FieldChips'
 

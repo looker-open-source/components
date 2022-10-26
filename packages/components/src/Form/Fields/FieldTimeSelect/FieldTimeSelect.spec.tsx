@@ -99,7 +99,9 @@ describe('FieldTimeSelect', () => {
       target: { value: 'invalid time' },
     })
     fireEvent.keyDown(screen.getByLabelText('Label'), { key: 'Enter' })
-    expect(screen.getByText('Invalid Time')).toBeVisible()
+    expect(
+      screen.getAllByText('Please use format HH:MM')[0]
+    ).toBeInTheDocument()
     fireEvent.click(document)
   })
 
@@ -113,10 +115,12 @@ describe('FieldTimeSelect', () => {
       target: { value: 'invalid time' },
     })
     fireEvent.keyDown(screen.getByLabelText('Label'), { key: 'Enter' })
-    expect(screen.getByText('Invalid Time')).toBeVisible()
+    expect(
+      screen.getAllByText('Please use format HH:MM')[0]
+    ).toBeInTheDocument()
     fireEvent.click(document)
     fireEvent.blur(screen.getByLabelText('Label'))
-    const errorMessage = screen.queryByText('Invalid Time')
+    const errorMessage = screen.queryByText('Please use format HH:MM')
     expect(errorMessage).not.toBeInTheDocument()
   })
 })

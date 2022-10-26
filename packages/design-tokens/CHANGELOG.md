@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0](https://github.com/looker-open-source/components/compare/22.16.0...3.0.0) (2022-09-29)
+
+### BREAKING CHANGES
+
+* Replace border with semanticBorder b/197909346
+
+
 ## [2.7.21](https://github.com/looker-open-source/components/compare/@looker/design-tokens@2.7.20...@looker/design-tokens@2.7.21) (2022-05-23)
 
 **Note:** Version bump only for package @looker/design-tokens

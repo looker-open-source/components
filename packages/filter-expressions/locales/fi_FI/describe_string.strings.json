@@ -1,0 +1,23 @@
+{
+  "blank": {
+    "value": "tyhjä"
+  },
+  "contains value": {
+    "value": "sisältää kohteen {{value}}"
+  },
+  "does not contain value": {
+    "value": "ei sisällä kohdetta {{value}}"
+  },
+  "does not end with value": {
+    "value": "ei lopu kohteella {{value}}"
+  },
+  "does not start with value": {
+    "value": "ei ala kohteella {{value}}"
+  },
+  "ends with value": {
+    "value": "loppuu kohteella {{value}}"
+  },
+  "starts with value": {
+    "value": "alkaa kohteella {{value}}"
+  }
+}

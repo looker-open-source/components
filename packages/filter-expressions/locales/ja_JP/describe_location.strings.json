@@ -1,0 +1,29 @@
+{
+  "coords1 to coords2": {
+    "value": "{{coords1}}から{{coords2}}へ"
+  },
+  "distance unit from lat, lon": {
+    "value": "{{lat}}、{{lon}}から{{distance}}{{unit}}"
+  },
+  "is anywhere": {
+    "value": "がいずれかの場所にある"
+  },
+  "is not null": {
+    "value": "が Null でない"
+  },
+  "is null": {
+    "value": "が Null である"
+  },
+  "lat degrees north": {
+    "value": "北緯 {{lat}}°"
+  },
+  "lat degrees south": {
+    "value": "南緯 {{lat}}°"
+  },
+  "lon degrees east": {
+    "value": "東経 {{lon}}°"
+  },
+  "lon degrees west": {
+    "value": "西経 {{lon}}°"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "blank": {
+    "value": "prázdné"
+  },
+  "contains value": {
+    "value": "obsahuje {{value}}"
+  },
+  "does not contain value": {
+    "value": "neobsahuje {{value}}"
+  },
+  "does not end with value": {
+    "value": "nemá na konci {{value}}"
+  },
+  "does not start with value": {
+    "value": "nemá na začátku {{value}}"
+  },
+  "ends with value": {
+    "value": "má na konci {{value}}"
+  },
+  "starts with value": {
+    "value": "má na začátku {{value}}"
+  }
+}

@@ -84,7 +84,7 @@ type ISummary = (o: ISummaryOptions) => string
 /**
  * Builds a summary description for a filter expression
  */
-export const summary: ISummary = props => {
+export const summary: ISummary = (props) => {
   const {
     type,
     expression = '',
@@ -118,4 +118,4 @@ export const summary: ISummary = props => {
 const getUserAttributeMatchingAST = (
   { attributeName }: FilterASTNode,
   userAttributes?: UserAttributeWithValue[]
-) => userAttributes?.find(ua => ua.name === attributeName)
+) => userAttributes?.find((ua) => ua.name === attributeName)

@@ -25,7 +25,7 @@
  */
 
 import { dimensionSeriesColors } from './dimensionSeriesColors'
-import { mockLineConfig, mockFields, mockSdkDataResponse } from '../__mocks__'
+import { mockLineConfig, mockFields, mockSdkDataResponse } from '../fixtures'
 import { tabularResponse } from '../utils'
 import type { CSeriesBasic } from '../types'
 

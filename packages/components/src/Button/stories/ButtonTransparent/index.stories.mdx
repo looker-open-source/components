@@ -1,0 +1,41 @@
+import { ButtonTransparent } from '@looker/components'
+import { excludedProps } from '@looker/storybook'
+import storyBasic from '!!raw-loader!./Basic'
+import storyCritical from '!!raw-loader!./Critical'
+import storyNeutral from '!!raw-loader!./Neutral'
+import storyXSmall from '!!raw-loader!./XSmall'
+import storySmall from '!!raw-loader!./Small'
+import storyMedium from '!!raw-loader!./Medium'
+import storyLarge from '!!raw-loader!./Large'
+
+<Meta component={ButtonTransparent} title="Actions/ButtonTransparent" />
+
+# ButtonTransparent
+
+Use a transparent button as a tertiary action on a screen, they are often used as a Cancel button on a form. Typically it performs the opposite action of a default button
+
+<Editor code={storyBasic} />
+
+## Color
+
+`Key` is the primary brand color, which is the default setting.
+`Critical` Buttons are to be used in situations where you need to convey some very important, potentially irreversible consequence of pressing this button.
+
+<Editor code={storyCritical} />
+
+`Neutral` buttons are meant to fade into the background. These are usually used for secondary, nonessential, actions.
+
+<Editor code={storyNeutral} />
+
+## Size
+
+Use the size property on a `<Button />` to modify the size the button rendered. You can combine it with the `mode` property to get the correct style and size of button you need.
+
+<Editor code={storyXSmall} />
+<Editor code={storySmall} />
+<Editor code={storyMedium} />
+<Editor code={storyLarge} />
+
+## Props
+
+<ArgsTable of={ButtonTransparent} exclude={excludedProps} />

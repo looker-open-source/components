@@ -1,0 +1,72 @@
+{
+  " complete": {
+    "value": " hotovo"
+  },
+  "absolute prefix dateTime": {
+    "value": "{{prefix}} {{dateTime}}"
+  },
+  "ago": {
+    "value": "v minulosti"
+  },
+  "from now": {
+    "value": "od této chvíle"
+  },
+  "is any time": {
+    "value": "je kdykoliv"
+  },
+  "is before": {
+    "value": "je před"
+  },
+  "is day": {
+    "value": "je {{day}}"
+  },
+  "is from dateTimeStart until dateTimeEnd": {
+    "value": "je od {{dateTimeStart}} do {{dateTimeEnd}}"
+  },
+  "is in month year": {
+    "value": "je v {{month}} {{year}}"
+  },
+  "is in the last": {
+    "value": "je v minulém intervalu {{describeInterval}}"
+  },
+  "is in the year year": {
+    "value": "je v roce {{year}}"
+  },
+  "is interval ago": {
+    "value": "je před intervalem {{interval}}"
+  },
+  "is intervalStart intervalType for intervalEnd": {
+    "value": "je {{intervalStart}} {{intervalType}} pro {{intervalEnd}}"
+  },
+  "is not null": {
+    "value": "není prázdné"
+  },
+  "is on dateTime": {
+    "value": "je {{dateTime}}"
+  },
+  "is on or after": {
+    "value": "je přesně nebo po"
+  },
+  "is previous unitLabel": {
+    "value": "je předchozí {{unitLabel}}"
+  },
+  "is type unitLabel": {
+    "value": "je {{type}} {{unitLabel}}"
+  },
+  "next": {
+    "value": "další"
+  },
+  "prefix interval timePassed": {
+    "value": "{{prefix}} {{interval}} {{timePassed}}"
+  },
+  "prefix now": {
+    "value": "{{prefix}} nyní"
+  },
+  "this": {
+    "value": "tato"
+  },
+  "this startInterval to endInterval": "tento {{startInterval}} do {{endInterval}}",
+  "value complete unitLabel": {
+    "value": "{{value}}{{complete}} {{unitLabel}}"
+  }
+}

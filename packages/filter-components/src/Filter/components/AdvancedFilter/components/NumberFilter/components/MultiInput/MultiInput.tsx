@@ -26,6 +26,7 @@
 
 import type { ValidationMessageProps } from '@looker/components'
 import { InputChips } from '@looker/components'
+import { getNumberFromString } from '@looker/filter-expressions'
 import type { ValueProps } from '@looker/filter-expressions'
 import type { FC } from 'react'
 import React, { useRef, useEffect, useState } from 'react'
@@ -65,7 +66,7 @@ export const MultiInputInternal: FC<MultiInputProps> = ({
   const [inputValue, setInputValue] = useState('')
 
   const handleChange = (newValues: string[]) => {
-    onChange?.(item.id, { value: newValues.map(Number) })
+    onChange?.(item.id, { value: newValues.map(getNumberFromString) })
   }
 
   useEffect(() => {

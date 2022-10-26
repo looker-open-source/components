@@ -23,12 +23,12 @@
  SOFTWARE.
 
  */
+import { initializer } from './common/initializer'
 import { numbers } from './common/numbers'
 import { whitespace } from './common/whitespace'
 import { userAttribute } from './user_attribute_grammar'
 
 const base = `
-{ const Object = options.Object }
 
 //LOOKER DATE GRAMMAR
 ROOT = EXPRESSION
@@ -318,4 +318,10 @@ hh = value:([0][0-9]/[1][0-9]/[2][0-3]) {return value.join('')}
 mm = value:([0][0-9]/[1][0-9]/[2][0-9]/[3][0-9]/[4][0-9]/[5][0-9]) {return value.join('')}
 `
 
-export const dateGrammar = base.concat(numbers, whitespace, userAttribute)
+export const dateGrammar = [
+  initializer,
+  base,
+  numbers,
+  whitespace,
+  userAttribute,
+].join('')

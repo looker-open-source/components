@@ -1,0 +1,38 @@
+{
+  "April": {
+    "value": "अप्रैल"
+  },
+  "August": {
+    "value": "अगस्त"
+  },
+  "December": {
+    "value": "दिसंबर"
+  },
+  "February": {
+    "value": "फ़रवरी"
+  },
+  "January": {
+    "value": "जनवरी"
+  },
+  "July": {
+    "value": "जुलाई"
+  },
+  "June": {
+    "value": "जून"
+  },
+  "March": {
+    "value": "मार्च"
+  },
+  "May": {
+    "value": "मई"
+  },
+  "November": {
+    "value": "नवंबर"
+  },
+  "October": {
+    "value": "अक्टूबर"
+  },
+  "September": {
+    "value": "सितंबर"
+  }
+}

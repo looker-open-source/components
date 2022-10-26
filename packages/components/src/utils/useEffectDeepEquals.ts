@@ -67,7 +67,7 @@ export function useDeepCompareMemoize<T>(value: T) {
 
 /**
  * An alternative rewrite to useEffect for situations where you need
- * to compare compex, deeply nested objects in the dependency array.
+ * to compare complex, deeply nested objects in the dependency array.
  *
  * @param callback function to call when dependencies change
  * @param dependencies an array of objects to compare

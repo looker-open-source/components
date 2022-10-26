@@ -61,7 +61,7 @@ const Div = styled.div``
 
 // Use listItemLabelCSS to target the internal button / link / div CSS of ListItem
 export const listItemContentCSS = (
-  style: FlattenSimpleInterpolation | Interpolation<any>
+  style: FlattenSimpleInterpolation | Interpolation<unknown>
 ) => css`
   > ${Button}, > ${Link}, > ${Div} {
     ${style}
@@ -117,9 +117,7 @@ export const ListItemContent = styled(
 
       const rippleHandlers = useRippleHandlers(
         callbacks,
-        {
-          ...pick({ ...props }, rippleHandlerKeys),
-        },
+        pick(props, rippleHandlerKeys),
         props.disabled
       )
 

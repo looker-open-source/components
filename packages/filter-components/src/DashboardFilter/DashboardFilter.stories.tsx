@@ -30,7 +30,7 @@ import type { Story } from '@storybook/react/types-6-0'
 import type { DashboardFilterProps } from './DashboardFilter'
 import { DashboardFilter } from './DashboardFilter'
 
-const Template: Story<DashboardFilterProps> = args => {
+const Template: Story<DashboardFilterProps> = (args) => {
   const [expression, setExpression] = useState(args.expression)
   const handleChange = (newExpression: string) => {
     setExpression(newExpression)

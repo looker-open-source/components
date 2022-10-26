@@ -26,7 +26,7 @@
 
 import React, { useState } from 'react'
 import type { Story } from '@storybook/react/types-6-0'
-import { defaultArgTypes as argTypes } from '../../../../../../apps/storybook/src/defaultArgTypes'
+import { defaultArgTypes as argTypes } from '@looker/storybook'
 import { Space } from '../../../Layout'
 import type { InputChipsProps } from './InputChips'
 import { InputChips } from './InputChips'

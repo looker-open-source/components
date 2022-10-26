@@ -23,7 +23,8 @@
  SOFTWARE.
 
  */
-import type { I18nState } from '@looker/i18n'
+import dateLocale from 'date-fns/locale/en-US'
+import type { I18nStateWithDates } from '@looker/i18n'
 
 const resources = {
   AdvancedInputControls: {
@@ -36,12 +37,13 @@ const resources = {
     Avatar: 'Avatar',
   },
   BulkActions: {
-    AllPageCountDisplayedSelected: 'AllPageCountDisplayedSelected',
-    AllTotalCountSelected: 'AllTotalCountSelected',
+    AllPageCountDisplayedSelected: 'All {{pageCount}} displayed items selected',
+    AllTotalCountSelected: 'All {{totalCount}} items selected',
     'Bulk Actions': 'Bulk Actions',
     'Clear Selection': 'Clear Selection',
-    SelectAllCountResults: 'SelectAllCountResults',
-    SelectedCountOfTotalDisplayed: 'SelectedCountOfTotalDisplayed',
+    SelectAllCountResults: 'Select all {{totalCount}} results',
+    SelectedCountOfTotalDisplayed:
+      '{{selectedItemCount}} of {{pageCount}} displayed items selected',
   },
   CalendarNav: {
     'next month': 'next month',
@@ -74,6 +76,9 @@ const resources = {
   DataTableItem: {
     Options: 'Options',
   },
+  FieldTimeSelect: {
+    'Please use format HHMM': 'Please use format HH:MM',
+  },
   GetIntentLabel: {
     Error: 'Error',
     Inform: 'Inform',
@@ -92,8 +97,11 @@ const resources = {
     'Filter List': 'Filter List',
     'bottom-start': 'bottom-start',
   },
+  InputTimeSelect: {
+    'Select time': 'Select time',
+  },
   MessageBar: {
-    DismissIntent: 'DismissIntent',
+    DismissIntent: 'Dismiss {{intent}}',
   },
   ModalHeaderCloseButton: {
     Close: 'Close',
@@ -115,7 +123,7 @@ const resources = {
     of: 'of',
   },
   PanelHeader: {
-    CloseTitle: 'CloseTitle',
+    CloseTitle: 'Close {{title}}',
   },
   PopoverFooter: {
     Done: 'Done',
@@ -125,7 +133,9 @@ const resources = {
     Save: 'Save',
   },
   RangeSlider: {
+    'Maximum Name': 'Maximum {{name}}',
     'Maximum Value': 'Maximum Value',
+    'Minimum Name': 'Minimum {{name}}',
     'Minimum Value': 'Minimum Value',
   },
   RequiredStar: {
@@ -140,7 +150,8 @@ const resources = {
   },
 }
 
-export const en: I18nState = {
+export const en: I18nStateWithDates = {
+  dateLocale,
   locale: 'en',
   resources: { en: resources },
 }

@@ -34,6 +34,7 @@ export const generateDashboardAppearance = (
   colors: Colors
 ): DashboardAppearance => ({
   filters: true,
+  show_last_collective_runtime: true,
   tiles: {
     background: colors.background,
     body: colors.body,

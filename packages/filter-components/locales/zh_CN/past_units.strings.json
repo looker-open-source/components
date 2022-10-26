@@ -1,0 +1,32 @@
+{
+  "complete days": {
+    "value": "完整天"
+  },
+  "complete fiscal quarters": {
+    "value": "完整财政季度"
+  },
+  "complete fiscal years": {
+    "value": "完整财政年度"
+  },
+  "complete hours": {
+    "value": "完整小时"
+  },
+  "complete minutes": {
+    "value": "完整分钟"
+  },
+  "complete months": {
+    "value": "完整月"
+  },
+  "complete quarters": {
+    "value": "完整季度"
+  },
+  "complete seconds": {
+    "value": "完整秒"
+  },
+  "complete weeks": {
+    "value": "完整周"
+  },
+  "complete years": {
+    "value": "完整年"
+  }
+}

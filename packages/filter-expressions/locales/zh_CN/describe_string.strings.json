@@ -1,0 +1,23 @@
+{
+  "blank": {
+    "value": "空"
+  },
+  "contains value": {
+    "value": "包含 {{value}}"
+  },
+  "does not contain value": {
+    "value": "不包含 {{value}}"
+  },
+  "does not end with value": {
+    "value": "结尾不为 {{value}}"
+  },
+  "does not start with value": {
+    "value": "开头不为 {{value}}"
+  },
+  "ends with value": {
+    "value": "结尾为 {{value}}"
+  },
+  "starts with value": {
+    "value": "开头为 {{value}}"
+  }
+}

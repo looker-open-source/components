@@ -187,6 +187,7 @@ test('starts new range with from when exsting value has both from and', async ()
       Array [
         Object {
           "from": 2019-06-01T07:00:00.000Z,
+          "to": 2019-06-09T07:00:00.000Z,
         },
       ],
     ]
@@ -265,8 +266,7 @@ test('selects the to when clicking a date after the from', async () => {
     Array [
       Array [
         Object {
-          "from": 2019-06-03T07:00:00.000Z,
-          "to": 2019-06-15T07:00:00.000Z,
+          "from": 2019-06-15T07:00:00.000Z,
         },
       ],
     ]

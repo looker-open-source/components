@@ -31,7 +31,7 @@ import { Icon } from '../../Icon'
 import { SpaceVertical } from '../../Layout'
 import { Heading } from '../../Text'
 import { DataTable } from '../DataTable'
-import { columns } from '../../__mocks__/DataTable/columns'
+import { columns } from '../../fixtures/DataTable/columns'
 import type { DataTableProps } from '../types'
 
 const Template: Story<DataTableProps> = ({ ...args }) => (

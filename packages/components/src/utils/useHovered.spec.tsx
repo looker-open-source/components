@@ -24,8 +24,7 @@
 
  */
 
-import { act, render, screen } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
+import { act, fireEvent, render, screen } from '@testing-library/react'
 import React, { useRef } from 'react'
 import { useHovered } from './useHovered'
 
@@ -59,9 +58,9 @@ describe('useHovered', () => {
     expect(screen.queryByText('button')).not.toBeInTheDocument()
 
     const hoverMe = screen.getByText('hover me')
-    userEvent.hover(hoverMe)
+    fireEvent.mouseEnter(hoverMe)
     expect(screen.getByText('button')).toBeVisible()
-    userEvent.unhover(hoverMe)
+    fireEvent.mouseLeave(hoverMe)
     runTimers()
     expect(screen.queryByText('button')).not.toBeInTheDocument()
   })
@@ -69,20 +68,21 @@ describe('useHovered', () => {
   it('toggles on focus', () => {
     render(<HoveredComponent />)
     expect(screen.queryByText('button')).not.toBeInTheDocument()
-    userEvent.tab()
+
+    const hoverMe = screen.getByText('hover me')
+    fireEvent.focus(hoverMe)
 
     const button = screen.getByText('button')
     expect(button).toBeVisible()
-    userEvent.tab()
+    fireEvent.focus(button)
 
     // With the button focused, hovering in & out should have no effect
-    const hoverMe = screen.getByText('hover me')
-    userEvent.hover(hoverMe)
+    fireEvent.mouseEnter(hoverMe)
     expect(button).toBeVisible()
-    userEvent.unhover(hoverMe)
+    fireEvent.mouseLeave(hoverMe)
     expect(button).toBeVisible()
 
-    userEvent.tab()
+    fireEvent.blur(button)
     runTimers()
     expect(screen.queryByText('button')).not.toBeInTheDocument()
   })

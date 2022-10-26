@@ -1,0 +1,56 @@
+{
+  "Last 14 Days": {
+    "value": "Laatste 14 dagen"
+  },
+  "Last 180 Days": {
+    "value": "Laatste 180 dagen"
+  },
+  "Last 28 Days": {
+    "value": "Laatste 28 dagen"
+  },
+  "Last 30 Days": {
+    "value": "Laatste 30 dagen"
+  },
+  "Last 365 Days": {
+    "value": "Laatste 365 dagen"
+  },
+  "Last 7 Days": {
+    "value": "Laatste 7 dagen"
+  },
+  "Last 90 Days": {
+    "value": "Laatste 90 dagen"
+  },
+  "Previous Month": {
+    "value": "Vorige maand"
+  },
+  "Previous Quarter": {
+    "value": "Vorig kwartaal"
+  },
+  "Previous Week": {
+    "value": "Vorige week"
+  },
+  "Previous Year": {
+    "value": "Vorig jaar"
+  },
+  "This Month": {
+    "value": "Deze maand"
+  },
+  "This Quarter": {
+    "value": "Dit kwartaal"
+  },
+  "This Week": {
+    "value": "Deze week"
+  },
+  "This Year": {
+    "value": "Dit jaar"
+  },
+  "Today": {
+    "value": "Vandaag"
+  },
+  "Year To Date": {
+    "value": "Jaar tot heden"
+  },
+  "Yesterday": {
+    "value": "Gisteren"
+  }
+}

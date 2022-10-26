@@ -27,11 +27,11 @@
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { fireEvent, screen } from '@testing-library/react'
-import { children, label } from '../__mocks__/accordion'
+import { children, label, lorem } from '../fixtures/accordion'
 import { Accordion2 } from './Accordion2'
-import { Controlled } from './Accordion2.stories'
+import { Controlled } from './stories/index.stories'
 
-const defaultProps = { children, label }
+const defaultProps = { children, label, lorem }
 
 describe('Accordion2', () => {
   test('Basic', () => {
@@ -66,12 +66,12 @@ describe('Accordion2', () => {
 
   test('Controlled - shows and hides children with provided isOpen and toggleOpen props', () => {
     renderWithTheme(<Controlled />)
-    const accordionLabel = screen.getByText(label)
-    screen.getByText(children)
+    const accordionLabel = screen.getByText('See more')
+    screen.getByText(lorem)
     fireEvent.click(accordionLabel)
-    expect(screen.queryByText(children)).not.toBeInTheDocument()
+    expect(screen.queryByText(lorem)).not.toBeInTheDocument()
     fireEvent.click(accordionLabel)
-    screen.getByText(children)
+    screen.getByText(lorem)
   })
 
   test('Wraps handlers passed in', () => {

@@ -27,10 +27,10 @@
 import React from 'react'
 import type { Story } from '@storybook/react/types-6-0'
 import styled from 'styled-components'
+import { defaultArgTypes as argTypes } from '@looker/storybook'
 import { FieldToggleSwitch } from '../../../Form'
 import { useToggle } from '../../../utils'
 import { Flex } from '../../Flex'
-import { defaultArgTypes as argTypes } from '../../../../../../apps/storybook/src/defaultArgTypes'
 import type { AsideProps } from '../Aside/Aside'
 import { Aside } from '../Aside/Aside'
 

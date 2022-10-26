@@ -2,41 +2,41 @@
   "name": "@looker/filter-expressions",
   "main": "src/index.ts",
   "license": "MIT",
-  "version": "0.8.21",
+  "version": "1.0.0",
+  "sideEffects": false,
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "repository": {
+    "url": "looker-open-source/components",
+    "directory": "packages/filter-expressions"
+  },
+  "scripts": {
+    "buildLocales": "lk buildLocales",
+    "prepublishOnly": "lk prepublishOnly",
+    "test": "lk test",
+    "coverage": "lk coverage"
   },
   "dependencies": {
-    "@looker/i18n": "^0.1.8",
+    "@looker/i18n": "*",
     "@looker/sdk": "^22.4.2",
-    "lodash": "^4.17.20",
+    "lodash": "*",
     "pegjs": "0.10.0"
   },
   "devDependencies": {
     "@babel/cli": "*",
-    "@looker/eslint-config-oss": "^1.7.21",
+    "@looker/babel-preset-prebuild-locales": "*",
+    "@looker/babel-preset-react": "*",
+    "@looker/babel-preset-typescript": "*",
+    "@looker/components-scripts": "*",
+    "@looker/eslint-config-oss": "*",
+    "@looker/jest-config": "*",
     "@types/pegjs": "^0.10.1",
-    "@typescript-eslint/eslint-plugin": "*",
-    "@typescript-eslint/parser": "*",
-    "eslint-config-prettier": "*",
-    "eslint-config-standard": "*",
-    "eslint-plugin-header": "*",
-    "eslint-plugin-i18next": "*",
-    "eslint-plugin-import": "*",
-    "eslint-plugin-jest-dom": "*",
-    "eslint-plugin-mdx": "*",
-    "eslint-plugin-node": "*",
-    "eslint-plugin-prettier": "*",
-    "eslint-plugin-promise": "*",
-    "eslint-plugin-react": "*",
-    "eslint-plugin-react-hooks": "*",
-    "eslint-plugin-sort-keys-fix": "*",
-    "eslint-plugin-standard": "*",
-    "eslint-plugin-testing-library": "*",
     "glob": "7.1.6"
   },
   "peerDependencies": {
-    "i18next": "19.8.7"
+    "i18next": "20.3.1"
   },
   "eslintConfig": {
     "root": true,
@@ -44,13 +44,10 @@
       "@looker/eslint-config-oss"
     ],
     "rules": {
-      "@typescript-eslint/no-explicit-any": "off",
       "@typescript-eslint/no-non-null-assertion": "off",
-      "no-restricted-imports": "off",
-      "camelcase": "off",
       "import/order": "off",
-      "sort-keys-fix/sort-keys-fix": "off"
+      "sort-keys-fix/sort-keys-fix": "off",
+      "i18next/no-literal-string": "off"
     }
-  },
-  "gitHead": "734f77cda8050d9eea83a187113333dfad8650ca"
+  }
 }

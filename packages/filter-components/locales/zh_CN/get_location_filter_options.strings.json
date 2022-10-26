@@ -1,0 +1,32 @@
+{
+  "Box": {
+    "value": "框"
+  },
+  "Circle": {
+    "value": "圈"
+  },
+  "Location": {
+    "value": "位置"
+  },
+  "feet": {
+    "value": "英尺"
+  },
+  "is anywhere": {
+    "value": "在任何地方"
+  },
+  "is not null": {
+    "value": "不为空值"
+  },
+  "is null": {
+    "value": "为空值"
+  },
+  "kilometers": {
+    "value": "千米"
+  },
+  "meters": {
+    "value": "米"
+  },
+  "miles": {
+    "value": "英里"
+  }
+}

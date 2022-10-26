@@ -37,15 +37,15 @@ export type ChartData = (SDKRecord & {
 })[]
 
 export type FieldMetadata = {
-  label: string
-  is_numeric: boolean
+  label?: string
+  is_numeric?: boolean
   name: string
-  sortable: boolean
+  sortable?: boolean
   sorted?: { desc: boolean; sort_index: number; pivot_index?: number }
-  view: string
-  view_label: string
-  label_short: string
-  value_format: string | null
+  view?: string
+  view_label?: string
+  label_short?: string
+  value_format?: string | null
 }
 
 export type MeasureMetadata = FieldMetadata & {
@@ -57,14 +57,14 @@ export type MeasureMetadata = FieldMetadata & {
    * unique pivot value (i.e. "Orders Count: Complete").
    */
   pivoted_label?: string
-  type: string
+  type?: string
 }
 
 export type DimensionMetadata = FieldMetadata & {
-  is_filter: boolean
-  is_fiscal: boolean
-  is_timeframe: boolean
-  type:
+  is_filter?: boolean
+  is_fiscal?: boolean
+  is_timeframe?: boolean
+  type?:
     | 'date_month'
     | 'date_date'
     | 'date_year'
@@ -82,7 +82,7 @@ export type DimensionMetadata = FieldMetadata & {
 export type Fields = {
   dimensions: DimensionMetadata[]
   measures: MeasureMetadata[]
-  pivots: DimensionMetadata[]
+  pivots?: DimensionMetadata[]
 }
 
 export type PivotMetadata = {

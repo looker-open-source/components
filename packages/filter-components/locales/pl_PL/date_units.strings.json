@@ -1,0 +1,62 @@
+{
+  "day": {
+    "value": "dzień"
+  },
+  "days": {
+    "value": "dni"
+  },
+  "fiscal quarter": {
+    "value": "kwartał fiskalny"
+  },
+  "fiscal quarters": {
+    "value": "kw. fiskalne"
+  },
+  "fiscal year": {
+    "value": "rok fiskalny"
+  },
+  "fiscal years": {
+    "value": "lata fiskalne/lat fiskalnych"
+  },
+  "hour": {
+    "value": "godzina"
+  },
+  "hours": {
+    "value": "godz."
+  },
+  "minute": {
+    "value": "minuta"
+  },
+  "minutes": {
+    "value": "min"
+  },
+  "month": {
+    "value": "miesiąc"
+  },
+  "months": {
+    "value": "mies."
+  },
+  "quarter": {
+    "value": "kwartał"
+  },
+  "quarters": {
+    "value": "kw."
+  },
+  "second": {
+    "value": "sekunda"
+  },
+  "seconds": {
+    "value": "sek."
+  },
+  "week": {
+    "value": "tydzień"
+  },
+  "weeks": {
+    "value": "tyg."
+  },
+  "year": {
+    "value": "rok"
+  },
+  "years": {
+    "value": "lat/lata"
+  }
+}

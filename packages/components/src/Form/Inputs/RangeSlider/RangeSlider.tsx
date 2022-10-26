@@ -63,6 +63,7 @@ export interface RangeSliderProps
     TypographyProps {
   'aria-labelledby'?: string
   'aria-describedby'?: string
+  name?: string
   max?: number
   min?: number
   step?: number
@@ -182,6 +183,7 @@ export const InternalRangeSlider = forwardRef(
       readOnly: readOnlyProp = false,
       'aria-labelledby': ariaLabelledby,
       'aria-describedby': ariaDescribedby,
+      name,
     }: RangeSliderProps,
     ref: Ref<HTMLDivElement>
   ) => {
@@ -450,7 +452,7 @@ export const InternalRangeSlider = forwardRef(
             onKeyDown={handleKeyboardNav}
             ref={minThumbRef}
             disabled={disabled}
-            aria-label={t('Minimum Value')}
+            aria-label={name ? t('Minimum Name', { name }) : t('Minimum Value')}
             role="slider"
             aria-valuemin={min}
             aria-valuemax={max}
@@ -465,7 +467,7 @@ export const InternalRangeSlider = forwardRef(
             onKeyDown={handleKeyboardNav}
             ref={maxThumbRef}
             disabled={disabled}
-            aria-label={t('Maximum Value')}
+            aria-label={name ? t('Maximum Name', { name }) : t('Maximum Value')}
             role="slider"
             aria-valuemin={min}
             aria-valuemax={max}

@@ -196,9 +196,10 @@ describe('DashboardFilter', () => {
       expect(values[2]).toHaveAttribute('aria-pressed', 'false')
     })
 
-    xit('fetches suggestions', async () => {
+    it('fetches suggestions', async () => {
       const onChangeMock = jest.fn()
-      const sdkOkMock = jest.fn(value => value)
+      const sdkOkMock = jest.fn((value) => Promise.resolve(value))
+
       const sdkGetMock = jest.fn(() => ({
         suggestions: ['complete', 'pending', 'cancelled'],
       }))
@@ -253,7 +254,7 @@ describe('DashboardFilter', () => {
     it('shows fetch error message', async () => {
       const onChangeMock = jest.fn()
       const sdkMock = ({
-        ok: jest.fn(value => value),
+        ok: jest.fn((value) => value),
         get: jest.fn(() => {
           throw new Error()
         }),

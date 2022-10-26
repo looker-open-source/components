@@ -37,7 +37,7 @@ const textTruncate = (props: TruncateCSSProps) => {
   const { truncateLines } = props
 
   if (truncateLines && truncateLines > 1) {
-    // Despite the vendor prefixes below, this works in all modern browsers (not IE11)
+    // Despite the vendor prefixes below, this works in all modern browsers
     return css`
       /* stylelint-disable value-no-vendor-prefix, property-no-vendor-prefix */
       -webkit-box-orient: vertical;

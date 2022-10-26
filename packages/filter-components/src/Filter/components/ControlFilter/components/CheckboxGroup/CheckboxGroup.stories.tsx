@@ -44,7 +44,7 @@ const options = [
   },
 ]
 
-const Template: Story<StringMultiSelectProps> = args => {
+const Template: Story<StringMultiSelectProps> = (args) => {
   const [value, setValue] = useState(args.value || [])
   const handleChange = (newValue: string[]) => {
     setValue(newValue)

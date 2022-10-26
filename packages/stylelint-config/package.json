@@ -2,19 +2,30 @@
   "name": "@looker/stylelint-config",
   "license": "MIT",
   "main": "src/index.js",
-  "publishConfig": {
-    "access": "public"
-  },
   "version": "1.5.19",
   "sideEffects": false,
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "repository": {
+    "url": "looker-open-source/components",
+    "directory": "packages/stylelint-config"
+  },
+  "scripts": {
+    "prepublishOnly": "lk prepublishOnly"
+  },
   "dependencies": {
     "prettier": "2.2.1",
-    "stylelint": "^13.13.1",
+    "stylelint": "13.13.1",
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-recommended": "^5.0.0",
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-order": "^4.1.0",
     "stylelint-prettier": "^1.2.0"
   },
-  "gitHead": "734f77cda8050d9eea83a187113333dfad8650ca"
+  "devDependencies": {
+    "@looker/components-scripts": "*"
+  },
+  "gitHead": "62febc162e3e45124f403e2c84fc741f68fe6714"
 }

@@ -75,9 +75,7 @@ export const ToggleSwitch = styled(
 
       const rippleHandlers = useRippleHandlers(
         callbacks,
-        {
-          ...pick(props, rippleHandlerKeys),
-        },
+        pick(props, rippleHandlerKeys),
         disabled
       )
 

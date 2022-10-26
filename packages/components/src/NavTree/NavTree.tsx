@@ -81,7 +81,7 @@ export const NavTree = styled(
     const isIndicatorToggleOnly = !!restProps.href
 
     const [treeItemInnerProps, accordionInnerProps] = partitionTreeProps(
-      restProps
+      restProps as Record<string, unknown>
     )
 
     const { hovered, contentHandlers, wrapperHandlers } = useTreeHandlers({
@@ -269,7 +269,7 @@ export const NavTree = styled(
     ${({ icon, theme }) =>
       !icon &&
       `margin-right: ${
-        theme.space[listItemDimensions(theme.defaults.density).iconGap]
+        theme.space[listItemDimensions(theme.defaults.density).gap]
       };`}
   }
 `

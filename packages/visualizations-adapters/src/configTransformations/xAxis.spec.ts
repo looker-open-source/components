@@ -25,7 +25,7 @@
  */
 
 import { xAxis } from './xAxis'
-import { mockBarConfig, mockFields, mockSdkDataResponse } from '../__mocks__'
+import { mockBarConfig, mockFields, mockSdkDataResponse } from '../fixtures'
 import type { XAxisConfig } from '../types'
 
 describe('xAxis', () => {

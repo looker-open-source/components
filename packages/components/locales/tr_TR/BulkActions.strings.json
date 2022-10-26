@@ -1,0 +1,8 @@
+{
+  "AllPageCountDisplayedSelected": "{{pageCount}} görüntülenen öğenin tümü seçildi",
+  "AllTotalCountSelected": "{{totalCount}} öğenin tümü seçildi",
+  "Bulk Actions": "Toplu Eylemler",
+  "Clear Selection": "Seçimi Temizle",
+  "SelectAllCountResults": "{{totalCount}} sonucun tümünü seç",
+  "SelectedCountOfTotalDisplayed": "{{selectedItemCount}}/{{pageCount}} görüntülenen öğe seçildi"
+}

@@ -26,8 +26,8 @@
 
 import React, { useState, useMemo } from 'react'
 import type { Story } from '@storybook/react/types-6-0'
+import { defaultArgTypes as argTypes } from '@looker/storybook'
 import { options1kGrouped } from '../Select/stories/options1k'
-import { defaultArgTypes as argTypes } from '../../../../../../apps/storybook/src/defaultArgTypes'
 import type { InputSearchProps } from './InputSearch'
 import { InputSearch } from './InputSearch'
 

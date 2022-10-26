@@ -26,7 +26,6 @@
 
 import { renderWithTheme } from '@looker/components-test-utils'
 import { cleanup, fireEvent, screen } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
 import React from 'react'
 
 import type { ComboboxOptionIndicatorFunction } from '.'
@@ -373,7 +372,7 @@ describe('<Combobox/> with children', () => {
     screen.getByPlaceholderText('Type here').focus()
     expect(screen.queryByRole('listbox')).not.toBeInTheDocument()
 
-    userEvent.click(screen.getByTestId('caret'))
+    fireEvent.click(screen.getByTestId('caret'))
     expect(screen.getByRole('listbox')).toBeInTheDocument()
 
     // Close popover to silence act() warning

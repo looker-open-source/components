@@ -153,7 +153,7 @@ export const SelectOptionWithDescription = ({
 }
 
 const SelectOptionGroupTitle = styled(Heading).attrs<HeadingProps>(() => ({
-  color: 'text1',
+  color: 'text3',
   fontFamily: 'body',
   fontSize: 'xxsmall',
   fontWeight: 'semiBold',
@@ -242,7 +242,7 @@ export const SelectOptions = (props: SelectOptionsProps) => {
 
   const noOptions = (
     <EmptyListItem>
-      <Text color="text1">{noOptionsLabel}</Text>
+      <Text color="text3">{noOptionsLabel}</Text>
     </EmptyListItem>
   )
 

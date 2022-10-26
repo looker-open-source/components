@@ -1,0 +1,32 @@
+{
+  "Box": {
+    "value": "상자"
+  },
+  "Circle": {
+    "value": "원"
+  },
+  "Location": {
+    "value": "위치"
+  },
+  "feet": {
+    "value": "피트"
+  },
+  "is anywhere": {
+    "value": "이(가) 전체 지역에 있음"
+  },
+  "is not null": {
+    "value": "이(가) null이 아님"
+  },
+  "is null": {
+    "value": "이(가) null임"
+  },
+  "kilometers": {
+    "value": "km"
+  },
+  "meters": {
+    "value": "m"
+  },
+  "miles": {
+    "value": "마일"
+  }
+}

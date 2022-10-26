@@ -1,0 +1,15 @@
+import { DividerVertical } from '@looker/components'
+import { excludedProps } from '@looker/storybook'
+import storyBasic from '!!raw-loader!./Basic'
+
+<Meta component={DividerVertical} title="Content/DividerVertical" />
+
+# DividerVertical
+
+`<DividerVertical />` has a default height of 1rem. That can be changed by using the prop `height` or `stretch`. Do not use both props.
+
+<Editor code={storyBasic} />
+
+## Props
+
+<ArgsTable of={DividerVertical} exclude={excludedProps} />

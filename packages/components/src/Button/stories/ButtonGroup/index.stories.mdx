@@ -1,0 +1,34 @@
+import { ButtonGroup, Code, MessageBar } from '@looker/components'
+import { excludedProps } from '@looker/storybook'
+import storyBasic from '!!raw-loader!./Basic'
+import storyDisabled from '!!raw-loader!./Disabled'
+import storyOptions from '!!raw-loader!./Options'
+
+<Meta component={ButtonGroup} title="Actions/ButtonGroup" />
+
+# ButtonGroup
+
+<MessageBar noActions intent="inform">
+  <Code>ButtonGroup</Code> does not support uncontrolled versions.
+</MessageBar>
+
+`ButtonGroup` behaves like a checkbox group. Use this when the user may select zero or more of a small set of options.
+Control externally via `value` and `onChange` props. On individual `ButtonItem`, `value` is optional and will fall back to the text if absent.
+
+<Editor code={storyBasic} />
+
+## Disabled
+
+A button group can be disabled to indicate to the user what action will be possible on a page once a prerequisite action is taken. Disabled button groups do not respond to user interaction.
+
+<Editor code={storyDisabled} />
+
+## Options
+
+An alternative to composing a `ButtonGroup` or `ButtonToggle` with `ButtonItem` children is to pass it an array of `options`.
+
+<Editor code={storyOptions} />
+
+## Props
+
+<ArgsTable of={ButtonGroup} exclude={excludedProps} />

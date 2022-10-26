@@ -67,7 +67,7 @@ export const TierFilter: FC<FilterParamProps> = ({
     rest.allowMultipleOptions
   )
   const isValueSet = item.value && item.value.length > 0
-  const isValueInEnumeration = unescapedEnumerations?.some(e =>
+  const isValueInEnumeration = unescapedEnumerations?.some((e) =>
     item.value?.includes(e.value)
   )
 

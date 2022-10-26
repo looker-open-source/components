@@ -20,7 +20,7 @@ yarn: `yarn add lodash react react-dom styled-components`
 
 Finally, if you're using Typescript you'll want to add the associated types for the dependencies (note @looker/components is built in Typescript and therefore has built-in types).
 
-`npm install --dev @types/lodash @types/react @types/react-dom @types/styled-components`
+`npm install --save-dev @types/lodash @types/react @types/react-dom @types/styled-components`
 
 yarn: `yarn add --dev @types/lodash @types/react @types/react-dom @types/styled-components`
 

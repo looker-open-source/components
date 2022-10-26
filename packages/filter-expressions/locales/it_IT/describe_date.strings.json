@@ -1,0 +1,72 @@
+{
+  " complete": {
+    "value": " completa"
+  },
+  "absolute prefix dateTime": {
+    "value": "{{prefix}} {{dateTime}}"
+  },
+  "ago": {
+    "value": "fa"
+  },
+  "from now": {
+    "value": "da ora"
+  },
+  "is any time": {
+    "value": "è in qualsiasi momento"
+  },
+  "is before": {
+    "value": "è prima di"
+  },
+  "is day": {
+    "value": "è {{day}}"
+  },
+  "is from dateTimeStart until dateTimeEnd": {
+    "value": "è dal giorno {{dateTimeStart}} fino al giorno {{dateTimeEnd}}"
+  },
+  "is in month year": {
+    "value": "è a {{month}} {{year}}"
+  },
+  "is in the last": {
+    "value": "è nell’ultimo {{describeInterval}}"
+  },
+  "is in the year year": {
+    "value": "è nell'anno {{year}}"
+  },
+  "is interval ago": {
+    "value": "è {{interval}} fa"
+  },
+  "is intervalStart intervalType for intervalEnd": {
+    "value": "è {{intervalStart}} {{intervalType}} per {{intervalEnd}}"
+  },
+  "is not null": {
+    "value": "non è zero"
+  },
+  "is on dateTime": {
+    "value": "è il giorno {{dateTime}}"
+  },
+  "is on or after": {
+    "value": "è il o dopo il"
+  },
+  "is previous unitLabel": {
+    "value": "è precedente {{unitLabel}}"
+  },
+  "is type unitLabel": {
+    "value": "è {{type}} {{unitLabel}}"
+  },
+  "next": {
+    "value": "avanti"
+  },
+  "prefix interval timePassed": {
+    "value": "{{prefix}} {{interval}} {{timePassed}}"
+  },
+  "prefix now": {
+    "value": "{{prefix}} ora"
+  },
+  "this": {
+    "value": "questo"
+  },
+  "this startInterval to endInterval": "questo {{startInterval}} fino a {{endInterval}}",
+  "value complete unitLabel": {
+    "value": "{{value}}{{complete}} {{unitLabel}}"
+  }
+}

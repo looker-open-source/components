@@ -25,8 +25,8 @@
  */
 
 import React, { useState } from 'react'
+import { defaultArgTypes as argTypes } from '@looker/storybook'
 import { Paragraph } from '../Text'
-import { defaultArgTypes as argTypes } from '../../../../apps/storybook/src/defaultArgTypes'
 import { Pagination } from './Pagination'
 
 export const Basic = () => {

@@ -29,7 +29,7 @@ import type { Story } from '@storybook/react/types-6-0'
 import { RangeSlider } from './RangeSlider'
 import type { RangeSliderProps } from './types'
 
-const Template: Story<RangeSliderProps> = args => <RangeSlider {...args} />
+const Template: Story<RangeSliderProps> = (args) => <RangeSlider {...args} />
 
 export const Basic = Template.bind({})
 Basic.args = {

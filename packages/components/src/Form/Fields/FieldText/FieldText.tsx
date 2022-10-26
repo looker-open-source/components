@@ -25,8 +25,8 @@
  */
 
 import type { Ref } from 'react'
-import React, { forwardRef, useContext, useState } from 'react'
-import styled, { ThemeContext } from 'styled-components'
+import React, { forwardRef, useState } from 'react'
+import styled, { useTheme } from 'styled-components'
 import { useID } from '../../../utils'
 import { useFormContext } from '../../Form'
 import type { InputTextProps } from '../../Inputs/InputText'
@@ -41,7 +41,7 @@ const FieldTextComponent = forwardRef(
   (props: FieldTextProps, ref: Ref<HTMLInputElement>) => {
     const id = useID(props.id)
     const validationMessage = useFormContext(props)
-    const { space } = useContext(ThemeContext)
+    const { space } = useTheme()
     const [beforeWidth, setBeforeWidth] = useState(0)
     let labelOffset
     if (props.iconBefore) {

@@ -1,0 +1,56 @@
+{
+  "Last 14 Days": {
+    "value": "過去 14 日間"
+  },
+  "Last 180 Days": {
+    "value": "過去 180 日間"
+  },
+  "Last 28 Days": {
+    "value": "過去 28 日間"
+  },
+  "Last 30 Days": {
+    "value": "過去 30 日間"
+  },
+  "Last 365 Days": {
+    "value": "過去 365 日間"
+  },
+  "Last 7 Days": {
+    "value": "過去 7 日間"
+  },
+  "Last 90 Days": {
+    "value": "過去 90 日間"
+  },
+  "Previous Month": {
+    "value": "前月"
+  },
+  "Previous Quarter": {
+    "value": "前四半期"
+  },
+  "Previous Week": {
+    "value": "前週"
+  },
+  "Previous Year": {
+    "value": "前年"
+  },
+  "This Month": {
+    "value": "今月"
+  },
+  "This Quarter": {
+    "value": "今四半期"
+  },
+  "This Week": {
+    "value": "今週"
+  },
+  "This Year": {
+    "value": "今年"
+  },
+  "Today": {
+    "value": "今日"
+  },
+  "Year To Date": {
+    "value": "年初来"
+  },
+  "Yesterday": {
+    "value": "昨日"
+  }
+}

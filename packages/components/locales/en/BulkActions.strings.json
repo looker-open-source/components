@@ -1,0 +1,8 @@
+{
+  "AllPageCountDisplayedSelected": "All {{pageCount}} displayed items selected",
+  "AllTotalCountSelected": "All {{totalCount}} items selected",
+  "Bulk Actions": "Bulk Actions",
+  "Clear Selection": "Clear Selection",
+  "SelectAllCountResults": "Select all {{totalCount}} results",
+  "SelectedCountOfTotalDisplayed": "{{selectedItemCount}} of {{pageCount}} displayed items selected"
+}

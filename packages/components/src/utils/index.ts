@@ -26,7 +26,6 @@
 
 export * from './createSafeRel'
 export * from './getNextFocus'
-export * from './getNextFocusTarget'
 export * from './getWindowedListBoundaries'
 export * from './HoverDisclosure'
 export * from './mergeClassNames'

@@ -1,0 +1,29 @@
+import { Divider } from '@looker/components'
+import { excludedProps } from '@looker/storybook'
+import storyBasic from '!!raw-loader!./Basic'
+import storyAppearance from '!!raw-loader!./Appearance'
+import storyCustom from '!!raw-loader!./Custom'
+
+<Meta component={Divider} title="Content/Divider" />
+
+# Divider
+
+Dividers accept all the spacing props from `<Box />`, which gives you the ability to easily put spacing around your dividers. By default a divider's background color will be `charcoal300`
+
+<Editor code={storyBasic} />
+
+## Appearance
+
+There are three divider appearances `light`, `dark` and `onDark`.
+
+<Editor code={storyAppearance} />
+
+## Custom
+
+This example shows a size of 20px and turquoise custom color.
+
+<Editor code={storyCustom} />
+
+## Props
+
+<ArgsTable of={Divider} exclude={excludedProps} />

@@ -24,8 +24,8 @@
 
  */
 import React, { useState } from 'react'
+import { defaultArgTypes as argTypes } from '@looker/storybook'
 import { Button } from '../../Button'
-import { defaultArgTypes as argTypes } from '../../../../../apps/storybook/src/defaultArgTypes'
 import { Prompt, usePrompt } from './Prompt'
 
 export default {

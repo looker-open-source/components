@@ -24,8 +24,7 @@
 
  */
 
-import { useContext } from 'react'
-import { ThemeContext } from 'styled-components'
+import { useTheme } from 'styled-components'
 import { mergeClassNames } from '../utils'
 import type { UseRippleProps, UseRippleResponse } from './types'
 import { useRippleState } from './useRippleState'
@@ -96,7 +95,7 @@ export const useRipple = ({
   const {
     colors,
     defaults: { brandAnimation },
-  } = useContext(ThemeContext)
+  } = useTheme()
 
   // Get values for animation – bounded uses dimensions, otherwise they're static
   const [min, max] = getMinMaxDimensions(width, height)
@@ -117,14 +116,14 @@ export const useRipple = ({
   // Limitations of style/CSSProperties type
   // https://github.com/frenic/csstype#what-should-i-do-when-i-get-type-errors
   const rippleStyle = {
-    ['--ripple-color' as any]: colors[color],
-    ['--ripple-scale-end' as any]: rippleScaleRange[1] || 1,
-    ['--ripple-scale-start' as any]: rippleScaleRange[0],
-    ['--ripple-size' as any]: bounded && min > 0 ? `${min}px` : '100%',
-    ['--ripple-translate' as any]: rippleOffset,
+    '--ripple-color': colors[color],
     // bounded ripple scales up larger than the container
     // but should not show beyond its edges
-    ['--ripple-overflow' as any]: bounded ? 'hidden' : 'visible',
+    '--ripple-overflow': bounded ? 'hidden' : 'visible',
+    '--ripple-scale-end': rippleScaleRange[1] || 1,
+    '--ripple-scale-start': rippleScaleRange[0],
+    '--ripple-size': bounded && min > 0 ? `${min}px` : '100%',
+    '--ripple-translate': rippleOffset,
   }
 
   return {

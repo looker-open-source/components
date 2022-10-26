@@ -1,0 +1,65 @@
+{
+  "days ago": {
+    "value": "дн. назад"
+  },
+  "days from now": {
+    "value": "дн. спустя"
+  },
+  "fiscal quarter from now": {
+    "value": "финанс. кварт. спустя"
+  },
+  "fiscal quarters ago": {
+    "value": "финанс. кварт. назад"
+  },
+  "fiscal years ago": {
+    "value": "финанс. год(а)/лет назад"
+  },
+  "fiscal years from now": {
+    "value": "финанс. год(а)/лет спустя"
+  },
+  "hours ago": {
+    "value": "ч назад"
+  },
+  "hours from now": {
+    "value": "ч спустя"
+  },
+  "minutes ago": {
+    "value": "мин назад"
+  },
+  "minutes from now": {
+    "value": "мин спустя"
+  },
+  "months ago": {
+    "value": "мес. назад"
+  },
+  "months from now": {
+    "value": "мес. спустя"
+  },
+  "now": {
+    "value": "сейчас"
+  },
+  "quarters ago": {
+    "value": "кварт. назад"
+  },
+  "quarters from now": {
+    "value": "кварт. спустя"
+  },
+  "seconds ago": {
+    "value": "сек. назад"
+  },
+  "seconds from now": {
+    "value": "сек. спустя"
+  },
+  "weeks ago": {
+    "value": "нед. назад"
+  },
+  "weeks from now": {
+    "value": "нед. спустя"
+  },
+  "years ago": {
+    "value": "год(а)/лет назад"
+  },
+  "years from now": {
+    "value": "год(а)/лет спустя"
+  }
+}

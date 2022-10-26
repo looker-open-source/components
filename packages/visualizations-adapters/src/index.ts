@@ -24,7 +24,7 @@
 
  */
 
-export * from './__mocks__'
+export * from './fixtures'
 export * from './adapters'
 export * from './configTransformations'
 export * from './dataTransformations'

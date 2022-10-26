@@ -41,7 +41,7 @@ const ast = {
   is: true,
 }
 describe('User Attribute grammar can parse expressions', () => {
-  it.each(grammars)('%s', grammar =>
+  it.each(grammars)('%s', (grammar) =>
     expect(
       parseFilterExpression(grammar, userAttributeExpression)
     ).toMatchObject(ast)

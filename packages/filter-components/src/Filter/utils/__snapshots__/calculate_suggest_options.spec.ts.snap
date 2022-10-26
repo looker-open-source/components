@@ -107,11 +107,11 @@ Array [
     "value": "z",
   },
   Object {
-    "label": "∅ - aa",
+    "label": "aa",
     "value": "aa",
   },
   Object {
-    "label": "∅ - gg",
+    "label": "gg",
     "value": "gg",
   },
 ]
@@ -157,11 +157,11 @@ Array [
     "value": "z",
   },
   Object {
-    "label": "∅ - zz",
+    "label": "zz",
     "value": "zz",
   },
   Object {
-    "label": "∅ - zba",
+    "label": "zba",
     "value": "zba",
   },
 ]
@@ -170,23 +170,23 @@ Array [
 exports[`Calculate Suggest Options Return limited existing values if over limit 1`] = `
 Array [
   Object {
-    "label": "∅ - a",
+    "label": "a",
     "value": "a",
   },
   Object {
-    "label": "∅ - b",
+    "label": "b",
     "value": "b",
   },
   Object {
-    "label": "∅ - c",
+    "label": "c",
     "value": "c",
   },
   Object {
-    "label": "∅ - d",
+    "label": "d",
     "value": "d",
   },
   Object {
-    "label": "∅ - e",
+    "label": "e",
     "value": "e",
   },
 ]
@@ -203,31 +203,31 @@ Array [
 exports[`Calculate Suggest Options Return only existing values if at limit 1`] = `
 Array [
   Object {
-    "label": "∅ - a",
+    "label": "a",
     "value": "a",
   },
   Object {
-    "label": "∅ - b",
+    "label": "b",
     "value": "b",
   },
   Object {
-    "label": "∅ - c",
+    "label": "c",
     "value": "c",
   },
   Object {
-    "label": "∅ - d",
+    "label": "d",
     "value": "d",
   },
   Object {
-    "label": "∅ - e",
+    "label": "e",
     "value": "e",
   },
   Object {
-    "label": "∅ - f",
+    "label": "f",
     "value": "f",
   },
   Object {
-    "label": "∅ - g",
+    "label": "g",
     "value": "g",
   },
 ]

@@ -1,0 +1,8 @@
+{
+  "AllPageCountDisplayedSelected": "Byly vybrány všechny zobrazené položky (počet: {{pageCount}})",
+  "AllTotalCountSelected": "Byly vybrány všechny položky (počet: {{totalCount}})",
+  "Bulk Actions": "Hromadné akce",
+  "Clear Selection": "Vymazat výběr",
+  "SelectAllCountResults": "Vybrat všechny výsledky (počet: {{totalCount}})",
+  "SelectedCountOfTotalDisplayed": "Byly vybrány zobrazené položky ({{selectedItemCount}} z {{pageCount}})"
+}

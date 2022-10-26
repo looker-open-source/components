@@ -1,0 +1,68 @@
+import { Chip } from '@looker/components'
+import { excludedProps } from '@looker/storybook'
+import storyBasic from '!!raw-loader!./Basic'
+import storyClickAndDelete from '!!raw-loader!./ClickAndDelete'
+import storyDeletable from '!!raw-loader!./Deletable'
+import storyDisabled from '!!raw-loader!./Disabled'
+import storyMaxWidth from '!!raw-loader!./MaxWidth'
+import storyPrefix from '!!raw-loader!./Prefix'
+import storyRemovable from '!!raw-loader!./Removable'
+import storyIconLabel from '!!raw-loader!./IconLabel'
+
+<Meta component={Chip} title="Content/Chip" />
+
+# Chip
+
+The `Chip` component is a compact element.
+
+## Basic
+
+It has some basic functionality
+
+<Editor code={storyBasic} />
+
+## Click and Delete
+
+It has Click and Delete functionality.
+
+<Editor code={storyClickAndDelete} />
+
+## Deletable
+
+It can have `onDelete` available
+
+<Editor code={storyDeletable} />
+
+## Disabled
+
+It can be disabled.
+
+<Editor code={storyDisabled} />
+
+## MaxWidth
+
+The width of the `Chip` will accomodate its contents, by default. Setting a `maxWidth` will cause any overflow text to be truncated with ellipses.
+
+<Editor code={storyMaxWidth} />
+
+## Prefix
+
+TBD.
+
+<Editor code={storyPrefix} />
+
+## Removable
+
+A chip can be removed by clicking X.
+
+<Editor code={storyRemovable} />
+
+# IconLabel
+
+The `Chip` component provides the prop `iconLabel` to customize the icon label. Hover over the the `x` icon to see the tooltip.
+
+<Editor code={storyIconLabel} />
+
+## Props
+
+<ArgsTable of={Chip} exclude={excludedProps} />

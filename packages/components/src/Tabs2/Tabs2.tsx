@@ -106,6 +106,7 @@ export const Tabs2 = <IDType extends string = string>({
       disabled={disabled}
       label={label}
       key={index}
+      id={id}
       selected={id === tabId}
       onSelect={() => handleTabChange(id || label)}
     >
@@ -121,7 +122,7 @@ export const Tabs2 = <IDType extends string = string>({
       <TabList2 distribute={distributed}>{labels}</TabList2>
       {currentTab && (
         <TabPanels2 id={currentTab.id}>
-          {(currentTab.children as any) as JSX.Element}
+          {currentTab.children as JSX.Element}
         </TabPanels2>
       )}
     </>

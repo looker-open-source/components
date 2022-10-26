@@ -1,0 +1,11 @@
+{
+  "Invalid value": {
+    "value": "Neplatná hodnota"
+  },
+  "No value is set for your user attribute": {
+    "value": "Pro váš atribut uživatele není nastavena žádná hodnota"
+  },
+  "Selection required": {
+    "value": "Je požadován výběr"
+  }
+}

@@ -34,6 +34,7 @@ export const RangeSlider: FC<RangeSliderProps> = ({
   value,
   options,
   onChange,
+  name,
 }) => {
   const bounds = { min: 0, max: 100, ...(options || {}) }
   const handleOnChange = (v: number[]) => {
@@ -50,6 +51,7 @@ export const RangeSlider: FC<RangeSliderProps> = ({
           isNumber(value.max) ? value.max : bounds.max,
         ]}
         onChange={handleOnChange}
+        name={name}
       />
     </RangeSliderWrapper>
   )

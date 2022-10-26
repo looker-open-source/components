@@ -26,9 +26,9 @@
 import React, { useState } from 'react'
 import type { Story } from '@storybook/react/types-6-0'
 import { ExtendComponentsThemeProvider } from '@looker/components-providers'
+import { defaultArgTypes as argTypes } from '@looker/storybook'
 import { ButtonToggle } from '../../../Button'
 import { Fieldset } from '../../Fieldset'
-import { defaultArgTypes as argTypes } from '../../../../../../apps/storybook/src/defaultArgTypes'
 import type { FieldTimeSelectProps } from './'
 import { FieldTimeSelect } from './'
 

@@ -27,7 +27,7 @@
 import type { Story } from '@storybook/react/types-6-0'
 import type { SyntheticEvent, Dispatch, SetStateAction } from 'react'
 import React, { useState } from 'react'
-import { defaultArgTypes as argTypes } from '../../../../../../apps/storybook/src/defaultArgTypes'
+import { defaultArgTypes as argTypes } from '@looker/storybook'
 import type { FieldSliderProps } from './FieldSlider'
 import { FieldSlider } from './FieldSlider'
 

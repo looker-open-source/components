@@ -1,0 +1,82 @@
+{
+  "complete day": "終了した日",
+  "complete days": {
+    "value": "終了した日"
+  },
+  "complete fiscal quarter": "終了した会計四半期",
+  "complete fiscal quarters": {
+    "value": "終了した会計四半期"
+  },
+  "complete fiscal year": "終了した会計年度",
+  "complete fiscal years": {
+    "value": "終了した会計年度"
+  },
+  "complete hour": "終了した時間",
+  "complete hours": {
+    "value": "終了した時間"
+  },
+  "complete minute": "終了した分",
+  "complete minutes": {
+    "value": "終了した分"
+  },
+  "complete month": "終了した月",
+  "complete months": {
+    "value": "終了した月"
+  },
+  "complete quarter": "終了した四半期",
+  "complete quarters": {
+    "value": "終了した四半期"
+  },
+  "complete second": "終了した秒",
+  "complete seconds": {
+    "value": "終了した秒"
+  },
+  "complete week": "終了した週",
+  "complete weeks": {
+    "value": "終了した週"
+  },
+  "complete year": "終了した年",
+  "complete years": {
+    "value": "終了した年"
+  },
+  "day": "日",
+  "days": {
+    "value": "日"
+  },
+  "fiscal quarter": "会計四半期",
+  "fiscal quarters": {
+    "value": "会計四半期"
+  },
+  "fiscal year": "会計年度",
+  "fiscal years": {
+    "value": "会計年度"
+  },
+  "hour": "時間",
+  "hours": {
+    "value": "時間"
+  },
+  "minute": "分",
+  "minutes": {
+    "value": "分"
+  },
+  "month": "か月",
+  "months": {
+    "value": "か月"
+  },
+  "quarter": "四半期",
+  "quarters": {
+    "value": "四半期"
+  },
+  "second": "秒",
+  "seconds": {
+    "value": "秒"
+  },
+  "week": "週",
+  "weeks": {
+    "value": "週"
+  },
+  "year": "年",
+  "years": {
+    "value": "年"
+  }
+}

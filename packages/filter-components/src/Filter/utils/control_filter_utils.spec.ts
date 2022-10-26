@@ -61,6 +61,7 @@ describe('getControlFilterInfo', () => {
     const tokenInfo = getControlFilterInfo(item, {
       config: getConfig(filterOptions),
       changeFilter: jest.fn(),
+      name: '',
     })
     expect(tokenInfo).not.toBeNull()
     expect(tokenInfo?.Component).toBe(ButtonToggles)
@@ -79,6 +80,7 @@ describe('getControlFilterInfo', () => {
       changeFilter: jest.fn(),
       onInputChange: jest.fn(),
       suggestions,
+      name: '',
     })
 
     expect(tokenInfo).not.toBeNull()
@@ -91,6 +93,7 @@ describe('getControlFilterInfo', () => {
       changeFilter: jest.fn(),
       onInputChange: jest.fn(),
       suggestions,
+      name: '',
     })
 
     expect(tokenInfoTwo).not.toBeNull()
@@ -123,6 +126,7 @@ describe('getControlFilterInfo', () => {
       onInputChange: jest.fn(),
       enumerations,
       field,
+      name: '',
     })
 
     const filterOptionsArray = [] as any
@@ -131,6 +135,7 @@ describe('getControlFilterInfo', () => {
       changeFilter: jest.fn(),
       onInputChange: jest.fn(),
       enumerations,
+      name: '',
     })
     expect(tokenInfoTwo?.props?.options).toHaveLength(4)
     expect(tokenInfo?.props?.options[0].value).toEqual('caret_escaped')
@@ -155,6 +160,7 @@ describe('getControlFilterInfo', () => {
       onInputChange: jest.fn(),
       suggestions: [],
       enumerations,
+      name: '',
     })
 
     const filterOptionsArray = [] as any
@@ -164,6 +170,7 @@ describe('getControlFilterInfo', () => {
       onInputChange: jest.fn(),
       suggestions: [],
       enumerations,
+      name: '',
     })
     expect(tokenInfo?.props?.options).toHaveLength(4)
     expect(tokenInfoTwo?.props?.options).toHaveLength(4)
@@ -185,6 +192,7 @@ describe('getControlFilterInfo', () => {
       changeFilter: jest.fn(),
       onInputChange: jest.fn(),
       suggestions,
+      name: '',
     })
 
     expect(checkboxes?.props?.value).toEqual(['one', 'two', 'three'])
@@ -195,6 +203,7 @@ describe('getControlFilterInfo', () => {
       changeFilter: jest.fn(),
       onInputChange: jest.fn(),
       suggestions,
+      name: '',
     })
     expect(buttonGroup?.props?.value).toEqual(['one', 'two', 'three'])
   })
@@ -210,6 +219,7 @@ describe('getControlFilterInfo', () => {
       config: getConfig(filterOptions, 'checkboxes'),
       changeFilter: jest.fn(),
       onInputChange: jest.fn(),
+      name: '',
     })
 
     expect(checkboxes?.props.options).toHaveLength(3)
@@ -227,6 +237,7 @@ describe('getControlFilterInfo', () => {
       config: getConfig(filterOptions, 'button_group'),
       changeFilter: jest.fn(),
       onInputChange: jest.fn(),
+      name: '',
     })
 
     expect(tokenInfo?.props.value).toHaveLength(2)
@@ -254,6 +265,7 @@ describe('getControlFilterInfo', () => {
       config: getConfig(filterOptions, 'day_picker'),
       changeFilter: jest.fn(),
       onInputChange: jest.fn(),
+      name: '',
     })
 
     expect(tokenInfo?.Component).toBe(DateInput)
@@ -284,6 +296,7 @@ describe('getControlFilterInfo', () => {
       config: getConfig({}, 'date_time_range_input'),
       changeFilter: jest.fn(),
       onInputChange: jest.fn(),
+      name: '',
     })
 
     expect(tokenInfo?.Component).toBe(DateRange)
@@ -303,7 +316,7 @@ describe('getControlFilterInfo', () => {
       'dropdown_menu',
     ]
 
-    numberStringControls.forEach(control => {
+    numberStringControls.forEach((control) => {
       it(`${control} calls changeFilter `, () => {
         const item: FilterModel = {
           id: 'filter',
@@ -315,6 +328,7 @@ describe('getControlFilterInfo', () => {
         const tokenInfo = getControlFilterInfo(item, {
           config: getConfig(filterOptions, control),
           changeFilter,
+          name: '',
         })
 
         tokenInfo?.props?.onChange?.(1234)
@@ -334,6 +348,7 @@ describe('getControlFilterInfo', () => {
       const tokenInfo = getControlFilterInfo(item, {
         config: getConfig({}, 'slider'),
         changeFilter,
+        name: '',
       })
 
       tokenInfo?.props?.onChange?.(25)
@@ -353,6 +368,7 @@ describe('getControlFilterInfo', () => {
       const tokenInfo = getControlFilterInfo(item, {
         config: getConfig({}, 'range_slider'),
         changeFilter,
+        name: '',
       })
 
       tokenInfo?.props?.onChange?.(25)
@@ -378,6 +394,7 @@ describe('getControlFilterInfo', () => {
       const tokenInfo = getControlFilterInfo(item, {
         config: getConfig({}, 'relative_timeframes'),
         changeFilter,
+        name: '',
       })
       const range = {
         from: new Date(),
@@ -407,6 +424,7 @@ describe('getControlFilterInfo', () => {
       const tokenInfo = getControlFilterInfo(item, {
         config: getConfig({}, 'day_range_picker'),
         changeFilter,
+        name: '',
       })
       tokenInfo?.props?.onChange?.(new Date())
       expect(changeFilter).toHaveBeenCalledTimes(1)
@@ -430,6 +448,7 @@ describe('getControlFilterInfo', () => {
       const tokenInfo = getControlFilterInfo(item, {
         config: getConfig({}, 'day_picker'),
         changeFilter,
+        name: '',
       })
       tokenInfo?.props.onChange(new Date())
       expect(changeFilter).toHaveBeenCalledTimes(1)
@@ -464,7 +483,7 @@ describe('maxForFilterType', () => {
     'range_slider',
   ]
 
-  controlsWithNoMax.forEach(control => {
+  controlsWithNoMax.forEach((control) => {
     it(`${control} has no defined max`, () => {
       expect(maxForFilterType(control)).toBeUndefined()
     })

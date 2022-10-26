@@ -1,0 +1,56 @@
+{
+  "Last 14 Days": {
+    "value": "14 הימים האחרונים"
+  },
+  "Last 180 Days": {
+    "value": "180 הימים האחרונים"
+  },
+  "Last 28 Days": {
+    "value": "28 הימים האחרונים"
+  },
+  "Last 30 Days": {
+    "value": "30 הימים האחרונים"
+  },
+  "Last 365 Days": {
+    "value": "365 הימים האחרונים"
+  },
+  "Last 7 Days": {
+    "value": "7 הימים האחרונים"
+  },
+  "Last 90 Days": {
+    "value": "90 הימים האחרונים"
+  },
+  "Previous Month": {
+    "value": "בחודש שעבר"
+  },
+  "Previous Quarter": {
+    "value": "ברבעון שעבר"
+  },
+  "Previous Week": {
+    "value": "בשבוע שעבר"
+  },
+  "Previous Year": {
+    "value": "בשנה שעברה"
+  },
+  "This Month": {
+    "value": "החודש הנוכחי"
+  },
+  "This Quarter": {
+    "value": "הרבעון הנוכחי"
+  },
+  "This Week": {
+    "value": "השבוע הנוכחי"
+  },
+  "This Year": {
+    "value": "השנה הנוכחית"
+  },
+  "Today": {
+    "value": "היום"
+  },
+  "Year To Date": {
+    "value": "שנה מהיום"
+  },
+  "Yesterday": {
+    "value": "אתמול"
+  }
+}

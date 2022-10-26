@@ -42,7 +42,7 @@ const calculateValues = (half: number) => {
   return {
     dashArray: half * 4.7,
     dashOffset: half * 2.3,
-    half: half,
+    half,
     radius: half / 1.34,
   }
 }

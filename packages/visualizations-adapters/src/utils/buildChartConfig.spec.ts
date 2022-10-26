@@ -25,7 +25,7 @@
  */
 
 import { buildChartConfig } from './buildChartConfig'
-import { mockFields, mockData } from '../__mocks__'
+import { mockFields, mockData } from '../fixtures'
 
 describe('buildChartConfig', () => {
   it('normalizes chart type strings', () => {

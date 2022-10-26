@@ -25,7 +25,7 @@
  */
 
 import type { CTableSeries } from '..'
-import { mockTableConfig, mockFields, mockSdkDataResponse } from '../__mocks__'
+import { mockTableConfig, mockFields, mockSdkDataResponse } from '../fixtures'
 import { seriesCellVis } from './seriesCellVis'
 
 describe('seriesCellVis', () => {

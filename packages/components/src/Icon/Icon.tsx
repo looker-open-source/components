@@ -72,6 +72,7 @@ const IconLayout = forwardRef(
       aria-hidden={title === undefined && true}
       title={title}
       ref={ref}
+      aria-label={title}
       role="img"
       {...omitStyledProps(props)}
     >

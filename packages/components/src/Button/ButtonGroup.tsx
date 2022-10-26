@@ -55,8 +55,6 @@ const ButtonGroupLayout = forwardRef(
   }
 )
 
-ButtonGroupLayout.displayName = 'ButtonGroupLayout'
-
 export const ButtonGroup = styled(ButtonGroupLayout)`
   ${ButtonItem} {
     border: 1px solid ${({ theme }) => theme.colors.ui3};

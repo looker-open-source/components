@@ -339,7 +339,7 @@ describe('DataTable', () => {
       expect(handleListItemClick).toHaveBeenCalledTimes(1)
     })
 
-    xtest('Item has pointer cursor and shadow when hovering over DataTableItem', () => {
+    test.skip('Item has pointer cursor and shadow when hovering over DataTableItem', () => {
       /**
        * mouseEnter events off of the fireEvent jest-dom function do not (currently)
        * trigger hover styles (i.e. hover pseudo classes) on DataTableItems, which makes
@@ -523,8 +523,8 @@ describe('DataTable', () => {
       )
 
       screen.getByText('Bulk Actions')
-      screen.getByText('SelectedCountOfTotalDisplayed 2 1')
-      screen.getByText('SelectAllCountResults 4')
+      screen.getByText('1 of 2 displayed items selected')
+      screen.getByText('Select all 4 results')
     })
 
     test('Control bar is not visible when bulk prop is not provided', () => {
@@ -569,7 +569,7 @@ describe('DataTable', () => {
       )
 
       expect(
-        screen.getByText('AllPageCountDisplayedSelected 2')
+        screen.getByText('All 2 displayed items selected')
       ).toBeInTheDocument()
     })
 
@@ -609,7 +609,7 @@ describe('DataTable', () => {
       )
 
       expect(onTotalSelectAll).toHaveBeenCalledTimes(0)
-      fireEvent.click(screen.getByText('SelectAllCountResults 4'))
+      fireEvent.click(screen.getByText('Select all 4 results'))
       expect(onTotalSelectAll).toHaveBeenCalledTimes(1)
     })
 

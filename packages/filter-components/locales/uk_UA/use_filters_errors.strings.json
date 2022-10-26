@@ -1,0 +1,11 @@
+{
+  "Invalid value": {
+    "value": "Недійсне значення"
+  },
+  "No value is set for your user attribute": {
+    "value": "Значення для атрибута користувача не вказано"
+  },
+  "Selection required": {
+    "value": "Обов’язково виберіть елемент"
+  }
+}

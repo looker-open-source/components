@@ -44,6 +44,11 @@ export interface DashboardAppearance {
    * @default true
    */
   filters: boolean
+  /**
+   * Toggles the last collective runtime
+   * @default true
+   */
+  show_last_collective_runtime: boolean
 
   /**
    * Default appearance for non-text tiles displayed within this DashboardAppearance

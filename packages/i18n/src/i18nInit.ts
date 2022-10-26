@@ -30,6 +30,7 @@ import type { I18nState } from './types'
 
 export const i18nInitOptions: InitOptions = {
   fallbackLng: 'en',
+  initImmediate: false,
   interpolation: {
     escapeValue: false,
   },

@@ -1,0 +1,72 @@
+{
+  " complete": {
+    "value": " 完了"
+  },
+  "absolute prefix dateTime": {
+    "value": "{{prefix}} {{dateTime}}"
+  },
+  "ago": {
+    "value": "前"
+  },
+  "from now": {
+    "value": "後"
+  },
+  "is any time": {
+    "value": "の時間を問わずすべて"
+  },
+  "is before": {
+    "value": "が指定の日以前"
+  },
+  "is day": {
+    "value": "が次である（{{day}}）"
+  },
+  "is from dateTimeStart until dateTimeEnd": {
+    "value": "が{{dateTimeStart}}から{{dateTimeEnd}}まで"
+  },
+  "is in month year": {
+    "value": "が次である（{{year}}{{month}}）"
+  },
+  "is in the last": {
+    "value": "が直近{{describeInterval}}以内である"
+  },
+  "is in the year year": {
+    "value": "が指定の年である（{{year}}）"
+  },
+  "is interval ago": {
+    "value": "が{{interval}}前である"
+  },
+  "is intervalStart intervalType for intervalEnd": {
+    "value": "が{{intervalEnd}}の{{intervalStart}}{{intervalType}}"
+  },
+  "is not null": {
+    "value": "が Null でない"
+  },
+  "is on dateTime": {
+    "value": "が次である（{{dateTime}}）"
+  },
+  "is on or after": {
+    "value": "が指定の日以降"
+  },
+  "is previous unitLabel": {
+    "value": "が前の{{unitLabel}}である"
+  },
+  "is type unitLabel": {
+    "value": "が次である（{{type}}{{unitLabel}}）"
+  },
+  "next": {
+    "value": "次"
+  },
+  "prefix interval timePassed": {
+    "value": "{{prefix}} {{interval}} {{timePassed}}"
+  },
+  "prefix now": {
+    "value": "{{prefix}}現在"
+  },
+  "this": {
+    "value": "この"
+  },
+  "this startInterval to endInterval": "この{{startInterval}}から{{endInterval}}",
+  "value complete unitLabel": {
+    "value": "{{value}}{{complete}} {{unitLabel}}"
+  }
+}

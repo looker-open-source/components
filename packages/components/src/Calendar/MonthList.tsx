@@ -27,10 +27,8 @@
 import { getMonth, setMonth } from 'date-fns'
 import React from 'react'
 import { ScrollableDateList } from './ScrollableDateList'
+import type { MonthListProps } from './types'
 import { Month } from './Month'
-import type { ScrollableDateListBaseProps, MonthBaseProps } from './types'
-
-export type MonthListProps = MonthBaseProps & ScrollableDateListBaseProps
 
 const getItemMonth = (baseDate: Date, offset: number) => {
   const currentMonthIndex = getMonth(baseDate)

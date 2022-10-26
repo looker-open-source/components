@@ -26,7 +26,7 @@
 
 import type { Story } from '@storybook/react/types-6-0'
 import React from 'react'
-import { defaultArgTypes as argTypes } from '../../../../../apps/storybook/src/defaultArgTypes'
+import { defaultArgTypes as argTypes } from '@looker/storybook'
 import { TreeCollection } from '../../Tree'
 import type { LkFieldTreeProps } from '../'
 import { LkFieldItem, LkFieldTree } from '../'
@@ -37,7 +37,7 @@ export default {
   title: 'LkFieldTree',
 }
 
-export * from './FieldPicker.stories'
+export { FieldPicker } from './FieldPicker'
 
 const Template: Story<Omit<LkFieldTreeProps, 'label'>> = args => (
   <TreeCollection>

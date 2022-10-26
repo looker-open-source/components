@@ -24,4 +24,9 @@
 
  */
 
-export * from './Box2'
+import { Box } from '../Box'
+export type { BoxProps as Box2Props } from '../Box'
+/**
+ * @deprecated use Box instead.
+ */
+export const Box2 = Box

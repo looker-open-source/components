@@ -1,0 +1,38 @@
+{
+  "April": {
+    "value": "Nisan"
+  },
+  "August": {
+    "value": "Ağustos"
+  },
+  "December": {
+    "value": "Aralık"
+  },
+  "February": {
+    "value": "Şubat"
+  },
+  "January": {
+    "value": "Ocak"
+  },
+  "July": {
+    "value": "Temmuz"
+  },
+  "June": {
+    "value": "Haziran"
+  },
+  "March": {
+    "value": "Mart"
+  },
+  "May": {
+    "value": "May"
+  },
+  "November": {
+    "value": "Kasım"
+  },
+  "October": {
+    "value": "Ekim"
+  },
+  "September": {
+    "value": "Eylül"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "AllPageCountDisplayedSelected": "Alle {{pageCount}} weergegeven items geselecteerd",
+  "AllTotalCountSelected": "Alle {{totalCount}} items geselecteerd",
+  "Bulk Actions": "Bulkacties",
+  "Clear Selection": "Selectie verwijderen",
+  "SelectAllCountResults": "Selecteer alle {{totalCount}} resultaten",
+  "SelectedCountOfTotalDisplayed": "{{selectedItemCount}} van de {{pageCount}} weergegeven items geselecteerd"
+}

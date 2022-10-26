@@ -14,7 +14,7 @@ and the user attributes and field, if applicable.
 ;() => {
   const type = 'number'
   const [expression, setExpression] = useState('[0,20],>30')
-  const handleChange = value => {
+  const handleChange = (value) => {
     setExpression(value.expression)
   }
   return (

@@ -39,8 +39,9 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
     'plugin:react-hooks/recommended',
+    'plugin:@looker/recommended',
   ],
-  ignorePatterns: ['lib/', '*.d.ts'],
+  ignorePatterns: ['lib/', '*.d.ts', '!.storybook'],
   overrides: [
     {
       extends: ['plugin:mdx/recommended'],
@@ -58,6 +59,7 @@ module.exports = {
         '**/stories/**',
         '*.js',
         '**/__mocks__/**',
+        '**/fixtures/**',
         '**/locales/**',
       ],
       rules: {
@@ -84,6 +86,8 @@ module.exports = {
               '@looker/jest-config',
               // Actually public, but private: true locally.
               '@looker/sdk',
+              // Required for running Storybook.
+              '@looker/storybook',
               // Required for tests.
               '@looker/test-utils',
             ],
@@ -105,6 +109,7 @@ module.exports = {
     'react-hooks',
     'sort-keys-fix',
     'testing-library',
+    'unicorn',
   ],
   rules: {
     '@typescript-eslint/consistent-type-imports': 'error',
@@ -161,10 +166,19 @@ module.exports = {
       'error',
       {
         patterns: [
-          '@looker/icons/*',
-          '@styled-icons/material/*',
-          '@styled-icons/material-outlined/*',
-          '@styled-icons/material-rounded/*',
+          {
+            group: [
+              '@looker/icons/*',
+              '@styled-icons/material/*',
+              '@styled-icons/material-outlined/*',
+              '@styled-icons/material-rounded/*',
+            ],
+          },
+          {
+            group: ['**/__mocks__/**'],
+            message:
+              '`__mocks__` directories are reserved for use by the Jest auto-mock mechanism. Place normal test-only assets in a `fixtures` directory instead.',
+          },
         ],
       },
     ],
@@ -185,6 +199,8 @@ module.exports = {
 
     // Work to enable these soon-ish
     'testing-library/no-node-access': 'off',
+
+    'unicorn/no-useless-spread': 'error',
   },
 
   settings: {

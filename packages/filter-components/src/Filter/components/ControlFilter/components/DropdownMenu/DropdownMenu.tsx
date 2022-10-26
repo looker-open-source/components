@@ -80,10 +80,13 @@ export const DropdownMenu = styled(DropdownMenuComponent)`
     ${({ tokenStyle, value }) =>
       value !== '' && tokenStyle
         ? css`
-            background-color: ${({ theme }) => theme.colors.keySubtle};
-            color: ${({ theme }) => theme.colors.key};
+            background-color: ${({ theme }) => theme.colors.keyAccent};
+            color: ${({ theme }) => theme.colors.text5};
             &:not(:focus-within) {
               border-color: ${({ theme }) => theme.colors.ui2};
+            }
+            &:hover {
+              border: 1px solid ${({ theme }) => theme.colors.keyInteractive};
             }
           `
         : ''}

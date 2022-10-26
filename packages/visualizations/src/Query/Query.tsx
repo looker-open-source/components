@@ -26,6 +26,7 @@
 
 import type { FC, ComponentType } from 'react'
 import React, { Children } from 'react'
+import { useTheme } from 'styled-components'
 import flow from 'lodash/flow'
 import {
   useQueryId,
@@ -34,7 +35,7 @@ import {
   useQueryIdFromDashboard,
 } from '@looker/components-data'
 import type { CAll } from '@looker/visualizations-adapters'
-import { ProgressCircular, Space } from '@looker/components'
+import { ProgressCircular, Space, ComponentsProvider } from '@looker/components'
 import { useTranslation } from '../utils'
 import {
   ErrorBoundary,
@@ -185,6 +186,18 @@ const QueryInternal: FC<QueryProps> = ({
 }
 
 export const Query: FC<QueryProps> = props => {
+  const theme = useTheme()
+
+  if (!theme) {
+    // Recursively wrap Query in ComponentsProvider to ensure that
+    // i18n and theme values can be accessed outside Looker context.
+    return (
+      <ComponentsProvider>
+        <Query {...props} />
+      </ComponentsProvider>
+    )
+  }
+
   return (
     <ErrorBoundary>
       <QueryInternal {...props} />

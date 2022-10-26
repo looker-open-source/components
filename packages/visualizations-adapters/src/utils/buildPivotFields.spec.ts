@@ -25,7 +25,7 @@
  */
 
 import { buildPivotFields } from './buildPivotFields'
-import { mockFields, mockPivots } from '../__mocks__'
+import { mockFields, mockPivots } from '../fixtures'
 
 describe('buildPivotFields', () => {
   it('creates pivot measure objects for each measure and pivot value pairing', () => {

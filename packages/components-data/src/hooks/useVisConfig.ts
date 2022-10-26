@@ -24,7 +24,7 @@
 
  */
 
-import type { CAll, RawChartType } from '@looker/visualizations-adapters'
+import type { CAll, KnownChartTypes } from '@looker/visualizations-adapters'
 import merge from 'lodash/merge'
 import {
   buildChartConfig,
@@ -66,7 +66,7 @@ export const useVisConfig = (id: number, configOverrides?: Partial<CAll>) => {
 
   const { data, fields } = useQueryData(
     id,
-    buildTrackingTag(CHART_TYPE_MAP[type as RawChartType])
+    buildTrackingTag(CHART_TYPE_MAP[type as KnownChartTypes] || type)
   )
 
   const {

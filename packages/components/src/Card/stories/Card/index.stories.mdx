@@ -1,0 +1,15 @@
+import { Card } from '@looker/components'
+import { excludedProps } from '@looker/storybook'
+import storyExample from '!!raw-loader!./Example'
+
+<Meta component={Card} title="Content/Card" />
+
+# Card
+
+At its most basic, a `Card` is a slightly styled container that organizes groups of content, usually linking to a more in-depth view of that content. It can have elevation and a border. A default `Card` makes no assumptions about the content you place inside of it or the size of your card, but you should follow the guidelines to be sure you use them effectively.
+
+<Editor code={storyExample} />
+
+## Props
+
+<ArgsTable of={Card} exclude={excludedProps} />

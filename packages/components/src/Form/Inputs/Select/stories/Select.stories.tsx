@@ -27,9 +27,9 @@
 import type { Story } from '@storybook/react/types-6-0'
 import { AutoGraph, PieChart, TableChart } from '@styled-icons/material'
 import React from 'react'
+import { defaultArgTypes as argTypes } from '@looker/storybook'
 import type { SelectProps } from '../Select'
 import { Select } from '../Select'
-import { defaultArgTypes as argTypes } from '../../../../../../../apps/storybook/src/defaultArgTypes'
 import { options1kGrouped } from './options1k'
 
 const Template: Story<SelectProps> = args => <Select {...args} />

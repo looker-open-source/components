@@ -137,8 +137,8 @@ describe('InputColor', () => {
     fireEvent.click(document)
   })
 
-  // mouseMove doesn't seem to move mouse position; leaving as xtest for now
-  xtest('changes color on <ColorPicker/> mouse drag', () => {
+  // mouseMove doesn't seem to move mouse position; leaving as test.skip( for now
+  test.skip('changes color on <ColorPicker/> mouse drag', () => {
     renderWithTheme(<InputColor placeholder="Select a color" />)
     const input = screen.getByPlaceholderText(
       'Select a color'

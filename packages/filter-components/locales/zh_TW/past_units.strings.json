@@ -1,0 +1,32 @@
+{
+  "complete days": {
+    "value": "天整"
+  },
+  "complete fiscal quarters": {
+    "value": "個完整會計季度"
+  },
+  "complete fiscal years": {
+    "value": "個完整會計年度"
+  },
+  "complete hours": {
+    "value": "小時整"
+  },
+  "complete minutes": {
+    "value": "分鐘整"
+  },
+  "complete months": {
+    "value": "個月整"
+  },
+  "complete quarters": {
+    "value": "季整"
+  },
+  "complete seconds": {
+    "value": "秒整"
+  },
+  "complete weeks": {
+    "value": "週整"
+  },
+  "complete years": {
+    "value": "年整"
+  }
+}
