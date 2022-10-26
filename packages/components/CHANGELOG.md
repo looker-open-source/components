@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.4](https://github.com/looker-open-source/components/compare/22.16.0...4.0.4) (2022-10-26)
+
+
+### Bug Fixes
+
+* Space/SpaceVertical props cleanup ([b9145ad](https://github.com/looker-open-source/components/commit/b9145ade9426fe2389806ac2db4cce316562e509))
+
+### Features
+
+* Widen React peer dependency version range
+* **Menu:** First item is not focused when opened via click ([bd97544](https://github.com/looker-open-source/components/commit/bd975446277afabc644888ae823eff5889eede9f))
 
 # [4.0.0](https://github.com/looker-open-source/components/compare/22.16.0...4.0.0) (2022-09-29)
 

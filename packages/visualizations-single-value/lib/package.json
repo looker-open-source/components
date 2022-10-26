@@ -1,0 +1,32 @@
+{
+	"name": "@looker/visualizations-single-value",
+	"license": "MIT",
+	"version": "1.0.1",
+	"sideEffects": false,
+	"publishConfig": {
+		"access": "public",
+		"registry": "https://registry.npmjs.org"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/looker-open-source/components",
+		"directory": "packages/visualizations-single-value"
+	},
+	"dependencies": {
+		"@looker/visualizations-adapters": "^1.0.1",
+		"numeral": "2.0.6"
+	},
+	"peerDependencies": {
+		"@looker/components": "1.4 - 4",
+		"react": "16.14.0 - 18",
+		"react-dom": "16.14.0 - 18",
+		"styled-components": "^5.3.1"
+	},
+	"stylelint": {
+		"extends": "@looker/stylelint-config"
+	},
+	"author": "Looker",
+	"main": "cjs/index.js",
+	"module": "index.js",
+	"types": "index.d.ts"
+}

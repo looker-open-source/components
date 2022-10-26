@@ -1,0 +1,43 @@
+{
+	"name": "@looker/filter-components",
+	"license": "MIT",
+	"version": "0.10.24",
+	"sideEffects": false,
+	"publishConfig": {
+		"access": "public",
+		"registry": "https://registry.npmjs.org"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/looker-open-source/components",
+		"directory": "packages/filter-components"
+	},
+	"dependencies": {
+		"@looker/components": "4.0.4",
+		"@looker/filter-expressions": "1.0.0",
+		"@looker/i18n": "0.1.8",
+		"@looker/sdk": "22.4.2",
+		"@looker/sdk-rtl": "^21.3.3",
+		"@styled-icons/material": "10.34.0",
+		"@styled-icons/material-outlined": "10.34.0",
+		"@styled-icons/material-rounded": "10.34.0",
+		"date-fns": "^2.10.0",
+		"lodash": "*",
+		"polished": "3.4.1",
+		"use-debounce": "5.2.1"
+	},
+	"peerDependencies": {
+		"i18next": "20.3.1",
+		"react": "16.14.0 - 18",
+		"react-dom": "16.14.0 - 18",
+		"react-i18next": "11.8.15",
+		"styled-components": "^5.3.1"
+	},
+	"stylelint": {
+		"extends": "@looker/stylelint-config"
+	},
+	"author": "Looker",
+	"main": "cjs/index.js",
+	"module": "index.js",
+	"types": "index.d.ts"
+}

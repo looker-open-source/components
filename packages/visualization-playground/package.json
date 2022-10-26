@@ -2,7 +2,7 @@
   "name": "@looker/visualization-playground",
   "license": "MIT",
   "main": "src/index.ts",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "A demo and development environment for building Looker Visualization Components",
   "sideEffects": false,
   "publishConfig": {
@@ -23,11 +23,11 @@
     "prepublishOnly": "lk prepublishOnly"
   },
   "dependencies": {
-    "@looker/components": "*",
-    "@looker/components-data": "^1.0.0",
-    "@looker/filter-components": "*",
-    "@looker/visualizations": "^1.1.0",
-    "@looker/visualizations-adapters": "^1.0.0",
+    "@looker/components": "4.0.4",
+    "@looker/components-data": "^1.0.1",
+    "@looker/filter-components": "0.10.24",
+    "@looker/visualizations": "^1.1.2",
+    "@looker/visualizations-adapters": "^1.0.1",
     "@looker/extension-sdk-react": "^22.4.2",
     "@looker/sdk": "^22.4.2",
     "@looker/sdk-rtl": "^21.3.3",

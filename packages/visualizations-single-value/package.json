@@ -2,7 +2,7 @@
   "name": "@looker/visualizations-single-value",
   "license": "MIT",
   "main": "src/index.ts",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "sideEffects": false,
   "publishConfig": {
     "access": "public",
@@ -22,7 +22,7 @@
     "prepublishOnly": "lk prepublishOnly"
   },
   "dependencies": {
-    "@looker/visualizations-adapters": "^1.0.0",
+    "@looker/visualizations-adapters": "^1.0.1",
     "numeral": "2.0.6"
   },
   "devDependencies": {

@@ -2,7 +2,7 @@
   "name": "@looker/components-data",
   "license": "MIT",
   "main": "src/index.ts",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "sideEffects": false,
   "publishConfig": {
     "access": "public",
@@ -22,10 +22,10 @@
     "prepublishOnly": "lk prepublishOnly"
   },
   "dependencies": {
-    "@looker/components": "*",
+    "@looker/components": "4.0.4",
     "@looker/sdk": "^22.4.2",
     "@looker/sdk-rtl": "^21.3.3",
-    "@looker/visualizations-adapters": "^1.0.0",
+    "@looker/visualizations-adapters": "^1.0.1",
     "lodash": "4.17.21",
     "swr": "1.2.2",
     "unstated-next": "1.1.0"

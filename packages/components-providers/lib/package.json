@@ -1,0 +1,33 @@
+{
+	"name": "@looker/components-providers",
+	"license": "MIT",
+	"version": "1.5.28",
+	"sideEffects": false,
+	"publishConfig": {
+		"access": "public",
+		"registry": "https://registry.npmjs.org"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/looker-open-source/components",
+		"directory": "packages/components-providers"
+	},
+	"dependencies": {
+		"@looker/design-tokens": "3.0.5",
+		"@looker/i18n": "0.1.8",
+		"i18next": "20.3.1",
+		"react-helmet-async": "^1.0.9",
+		"react-i18next": "11.8.15",
+		"tabbable": "^5.2.0"
+	},
+	"peerDependencies": {
+		"lodash": "^4.17.20",
+		"react": "16.14.0 - 18",
+		"styled-components": "^5.3.1"
+	},
+	"gitHead": "62febc162e3e45124f403e2c84fc741f68fe6714",
+	"author": "Looker",
+	"main": "cjs/index.js",
+	"module": "index.js",
+	"types": "index.d.ts"
+}

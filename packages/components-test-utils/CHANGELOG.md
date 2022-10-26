@@ -1,3 +1,9 @@
+## [1.5.27](https://github.com/looker-open-source/components/compare/22.16.0...1.5.27) (2022-10-26)
+
+### Features
+
+* Widen React peer dependency version range
+
 # Change Log
 
 All notable changes to this project will be documented in this file.

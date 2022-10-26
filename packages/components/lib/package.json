@@ -1,0 +1,67 @@
+{
+	"name": "@looker/components",
+	"license": "MIT",
+	"version": "4.0.4",
+	"sideEffects": false,
+	"publishConfig": {
+		"access": "public",
+		"registry": "https://registry.npmjs.org"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/looker-open-source/components",
+		"directory": "packages/components"
+	},
+	"gitHead": "62febc162e3e45124f403e2c84fc741f68fe6714",
+	"dependencies": {
+		"@looker/components-providers": "1.5.28",
+		"@looker/design-tokens": "3.0.5",
+		"@looker/i18n": "0.1.8",
+		"@popperjs/core": "^2.6.0",
+		"@styled-icons/material": "10.34.0",
+		"@styled-icons/material-outlined": "10.34.0",
+		"@styled-icons/material-rounded": "10.34.0",
+		"@styled-icons/styled-icon": "^10.6.3",
+		"d3-color": "^2.0.0",
+		"d3-hsv": "^0.1.0",
+		"date-fns": "^2.10.0",
+		"date-fns-tz": "^1.0.12",
+		"hotkeys-js": "^3.8.3",
+		"i18next": "20.3.1",
+		"react-hotkeys-hook": "2.3.1",
+		"react-i18next": "11.8.15",
+		"uuid": "*"
+	},
+	"peerDependencies": {
+		"lodash": "^4.17.20",
+		"react": "16.14.0 - 18",
+		"react-dom": "16.14.0 - 18",
+		"styled-components": "^5.3.1"
+	},
+	"stylelint": {
+		"extends": "@looker/stylelint-config"
+	},
+	"looker-storybook": {
+		"stories": [
+			"./src",
+			"@looker/components-providers/src",
+			"@looker/components-test-utils/src",
+			"@looker/design-tokens/src",
+			"@looker/eslint-config-oss/src",
+			"@looker/filter-components/src",
+			"@looker/filter-expressions/src",
+			"@looker/icons/src",
+			"@looker/stylelint-config/src",
+			"@looker/visualization-playground/src",
+			"@looker/visualizations/src",
+			"@looker/visualizations-adapters/src",
+			"@looker/visualizations-single-value/src",
+			"@looker/visualizations-table/src",
+			"@looker/visualizations-visx/src"
+		]
+	},
+	"author": "Looker",
+	"main": "cjs/index.js",
+	"module": "index.js",
+	"types": "index.d.ts"
+}

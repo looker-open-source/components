@@ -1,0 +1,2 @@
+import type { I18nStateWithDates } from '../../utils';
+export declare const frFR: I18nStateWithDates;

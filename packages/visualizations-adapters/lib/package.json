@@ -1,0 +1,37 @@
+{
+	"name": "@looker/visualizations-adapters",
+	"license": "MIT",
+	"version": "1.0.1",
+	"sideEffects": false,
+	"publishConfig": {
+		"access": "public",
+		"registry": "https://registry.npmjs.org"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/looker-open-source/components",
+		"directory": "packages/visualizations-adapters"
+	},
+	"dependencies": {
+		"@looker/components": "^4.0.3",
+		"@looker/i18n": "*",
+		"@looker/sdk": "^22.4.2",
+		"@looker/sdk-rtl": "^21.3.3",
+		"d3-color": "3.0.1",
+		"d3-hsv": "0.1.0",
+		"lodash": "4.17.21",
+		"react-i18next": "*"
+	},
+	"peerDependencies": {
+		"react": "16.14.0 - 18",
+		"react-dom": "16.11.0 - 18",
+		"styled-components": "^5.3.1"
+	},
+	"stylelint": {
+		"extends": "@looker/stylelint-config"
+	},
+	"author": "Looker",
+	"main": "cjs/index.js",
+	"module": "index.js",
+	"types": "index.d.ts"
+}

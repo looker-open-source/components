@@ -2,7 +2,7 @@
   "name": "@looker/visualizations-table",
   "license": "MIT",
   "main": "src/index.ts",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "sideEffects": false,
   "publishConfig": {
     "access": "public",
@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "@looker/components": "^4.0.3",
-    "@looker/visualizations-adapters": "^1.0.0",
+    "@looker/visualizations-adapters": "^1.0.1",
     "@tanstack/react-table": "^8.5.11",
     "@tanstack/react-virtual": "3.0.0-beta.18",
     "@styled-icons/material": "10.34.0",

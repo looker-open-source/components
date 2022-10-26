@@ -1,0 +1,15 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.formatOptionAsString = formatOptionAsString;
+
+function formatOptionAsString(option) {
+  if (option.label && option.label !== option.value) {
+    return JSON.stringify(option);
+  }
+
+  return option.value;
+}
+//# sourceMappingURL=formatOptionAsString.js.map

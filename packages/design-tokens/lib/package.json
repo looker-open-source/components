@@ -1,0 +1,31 @@
+{
+	"name": "@looker/design-tokens",
+	"license": "MIT",
+	"version": "3.0.5",
+	"sideEffects": false,
+	"publishConfig": {
+		"access": "public",
+		"registry": "https://registry.npmjs.org"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/looker-open-source/components",
+		"directory": "packages/design-tokens"
+	},
+	"dependencies": {
+		"@styled-system/props": "^5.1.5",
+		"@styled-system/should-forward-prop": "5.1.5",
+		"polished": "^4.1.2",
+		"styled-system": "*"
+	},
+	"peerDependencies": {
+		"lodash": "^4.17.20",
+		"react": "16.14.0 - 18",
+		"react-dom": "16.14.0 - 18",
+		"styled-components": "^5.3.1"
+	},
+	"author": "Looker",
+	"main": "cjs/index.js",
+	"module": "index.js",
+	"types": "index.d.ts"
+}

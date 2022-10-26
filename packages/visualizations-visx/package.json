@@ -2,7 +2,7 @@
   "name": "@looker/visualizations-visx",
   "license": "MIT",
   "main": "src/index.ts",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "sideEffects": false,
   "publishConfig": {
     "access": "public",
@@ -23,9 +23,9 @@
     "coverage": "lk coverage"
   },
   "dependencies": {
-    "@looker/components-providers": "*",
+    "@looker/components-providers": "1.5.28",
     "@looker/i18n": "*",
-    "@looker/visualizations-adapters": "^1.0.0",
+    "@looker/visualizations-adapters": "^1.0.1",
     "@styled-icons/material": "10.34.0",
     "@types/d3-scale": "^3.3.0",
     "@visx/annotation": "^2.10.0",
