@@ -1,8 +1,8 @@
 .direnv
 .eslintcache
 coverage
-node_modules
-packages
+/node_modules
+/packages
 playground
 /storybook
 www
