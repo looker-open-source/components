@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+
+    <title>@storybook/cli - Storybook</title>
+
+    <link rel="shortcut icon" href="./favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+     <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet"> 
+
+    <style>
+      #storybook-root[hidden]{
+        display: none !important;
+      }
+    </style>
+
+    
+  </head>
+  <body>
+    <div id="root"></div>
+
+    
+    <script>
+      
+        
+          window['FEATURES'] = {
+  "postcss": false,
+  "warnOnLegacyHierarchySeparator": true,
+  "buildStoriesJson": false,
+  "storyStoreV7": true,
+  "breakingChangesV7": true,
+  "interactionsDebugger": false,
+  "babelModeV7": true,
+  "argTypeTargetsV7": true,
+  "previewMdx2": false
+};
+        
+      
+        
+          window['REFS'] = {};
+        
+      
+        
+          window['LOGLEVEL'] = "info";
+        
+      
+        
+          window['DOCS_OPTIONS'] = {
+  "enabled": true,
+  "defaultName": "Docs",
+  "docsPage": true
+};
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </script>
+    
+
+    <script src="./sb-manager/runtime.mjs" type="module"></script>
+
+    
+    <script src="./sb-addons/node_modules/%40storybook/addon-controls/manager.mjs" type="module"></script>
+    
+    <script src="./sb-addons/node_modules/%40storybook/addon-actions/manager.mjs" type="module"></script>
+    
+    <script src="./sb-addons/node_modules/%40storybook/addon-backgrounds/manager.mjs" type="module"></script>
+    
+    <script src="./sb-addons/node_modules/%40storybook/addon-viewport/manager.mjs" type="module"></script>
+    
+    <script src="./sb-addons/node_modules/%40storybook/addon-toolbars/manager.mjs" type="module"></script>
+    
+    <script src="./sb-addons/node_modules/%40storybook/addon-measure/manager.mjs" type="module"></script>
+    
+    <script src="./sb-addons/node_modules/%40storybook/addon-outline/manager.mjs" type="module"></script>
+    
+    <script src="./sb-addons/node_modules/%40storybook/addon-a11y/manager.mjs" type="module"></script>
+    
+    <script src="./sb-addons/packages/storybook/storybook/manager.mjs" type="module"></script>
+    
+  </body>
+</html>
