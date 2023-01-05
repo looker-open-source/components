@@ -44,7 +44,8 @@ import { StyleDefender } from './StyleDefender'
 export interface ComponentsProviderProps
   extends ThemeProviderProps,
     ExtendComponentsTheme,
-    UseI18nProps {
+    UseI18nProps,
+    React.PropsWithChildren<{}> {
   /**
    * Load any font faces specified on theme.fontSources
    * @default true

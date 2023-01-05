@@ -29,7 +29,7 @@ import type { Theme } from '@looker/design-tokens'
 import { theme as builtIn } from '@looker/design-tokens'
 import { ThemeProvider as ActualThemeProvider } from 'styled-components'
 
-export interface ThemeProviderProps {
+export interface ThemeProviderProps extends React.PropsWithChildren<{}> {
   theme?: Theme
 }
 
