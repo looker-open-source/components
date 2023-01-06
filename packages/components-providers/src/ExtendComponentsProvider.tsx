@@ -30,7 +30,9 @@ import { ThemeProvider, useTheme } from 'styled-components'
 import type { FC } from 'react'
 import React, { useMemo } from 'react'
 
-export interface ExtendComponentsTheme extends React.PropsWithChildren<{}> {
+export type ExtendComponentsTheme = React.PropsWithChildren<{
+  themeCustomizations?: ThemeCustomizations
+}>
   themeCustomizations?: ThemeCustomizations
 }
 
