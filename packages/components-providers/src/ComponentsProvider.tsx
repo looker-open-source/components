@@ -30,7 +30,7 @@ import {
   theme as defaultTheme,
 } from '@looker/design-tokens'
 import type { FC } from 'react'
-import React, { Fragment, useMemo } from 'react'
+import React, { Fragment, PropsWithChildren, useMemo } from 'react'
 import { HelmetProvider } from 'react-helmet-async'
 import { FocusTrapProvider } from './FocusTrap'
 import { ScrollLockProvider } from './ScrollLock'
@@ -41,34 +41,35 @@ import { ThemeProvider } from './ThemeProvider'
 import type { ExtendComponentsTheme } from './ExtendComponentsProvider'
 import { FontFaceLoader } from './FontFaceLoader'
 import { StyleDefender } from './StyleDefender'
-export interface ComponentsProviderProps
-  extends ThemeProviderProps,
-    ExtendComponentsTheme,
-    UseI18nProps,
-    React.PropsWithChildren<{}> {
-  /**
-   * Load any font faces specified on theme.fontSources
-   * @default true
-   */
-  loadFontSources?: boolean
-  /**
-   * Load fonts from the Google Fonts CDN if not already available
-   * @default false
-   */
-  loadGoogleFonts?: boolean
+export type ComponentsProviderProps = PropsWithChildren<
+  ThemeProviderProps &
+  ExtendComponentsTheme &
+  UseI18nProps &
+  {
+    /**
+     * Load any font faces specified on theme.fontSources
+     * @default true
+     */
+    loadFontSources?: boolean
+    /**
+     * Load fonts from the Google Fonts CDN if not already available
+     * @default false
+     */
+    loadGoogleFonts?: boolean
 
-  /**
-   * Disables the "StyleDefender"
-   *
-   * StyledDefender is a utility component that attempts to ensure that a few common
-   * styles are injected at any point where @looker/components are injected into the DOM.
-   * When taking code-snapshots (a pattern we generally discourage) the `StyleDefender`
-   * may be visible in output so we generally recommend disabling it for those use-cases.
-   *
-   * @default false
-   */
-  disableStyleDefender?: boolean
-}
+    /**
+     * Disables the "StyleDefender"
+     *
+     * StyledDefender is a utility component that attempts to ensure that a few common
+     * styles are injected at any point where @looker/components are injected into the DOM.
+     * When taking code-snapshots (a pattern we generally discourage) the `StyleDefender`
+     * may be visible in output so we generally recommend disabling it for those use-cases.
+     *
+     * @default false
+     */
+    disableStyleDefender?: boolean
+  }
+>
 
 /**
  * ComponentsProvider registers fundamental infrastructure for @looker/components to
