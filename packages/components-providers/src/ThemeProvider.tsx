@@ -23,15 +23,15 @@
  SOFTWARE.
 
  */
-import type { FC } from 'react'
+import type { FC, PropsWithChildren } from 'react'
 import React from 'react'
 import type { Theme } from '@looker/design-tokens'
 import { theme as builtIn } from '@looker/design-tokens'
 import { ThemeProvider as ActualThemeProvider } from 'styled-components'
 
-export interface ThemeProviderProps extends React.PropsWithChildren<{}> {
+export type ThemeProviderProps = PropsWithChildren<{
   theme?: Theme
-}
+}>
 
 export const ThemeProvider: FC<ThemeProviderProps> = ({
   children,

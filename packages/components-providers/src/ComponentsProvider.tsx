@@ -29,8 +29,8 @@ import {
   googleFontUrl,
   theme as defaultTheme,
 } from '@looker/design-tokens'
-import type { FC } from 'react'
-import React, { Fragment, PropsWithChildren, useMemo } from 'react'
+import type { FC, PropsWithChildren } from 'react'
+import React, { Fragment, useMemo } from 'react'
 import { HelmetProvider } from 'react-helmet-async'
 import { FocusTrapProvider } from './FocusTrap'
 import { ScrollLockProvider } from './ScrollLock'

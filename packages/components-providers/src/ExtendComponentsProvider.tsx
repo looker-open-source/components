@@ -27,14 +27,12 @@
 import type { ThemeCustomizations } from '@looker/design-tokens'
 import { generateTheme } from '@looker/design-tokens'
 import { ThemeProvider, useTheme } from 'styled-components'
-import type { FC } from 'react'
+import type { FC, PropsWithChildren } from 'react'
 import React, { useMemo } from 'react'
 
-export type ExtendComponentsTheme = React.PropsWithChildren<{
+export type ExtendComponentsTheme = PropsWithChildren<{
   themeCustomizations?: ThemeCustomizations
 }>
-  themeCustomizations?: ThemeCustomizations
-}
 
 /**
  * This component is designed for making adjustments to the Theme without
