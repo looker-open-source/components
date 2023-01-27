@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { AllPresetTimeframes } from '../../../types/relative_timeframe_types';
 export declare const useRelativeTimeframePresets: () => {
     Today: string;

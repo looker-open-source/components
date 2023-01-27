@@ -1,0 +1,123 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`createExploresTree tests should mark explore-level entries as not highlightable 1`] = `
+Array [
+  Object {
+    "children": Array [
+      Object {
+        "children": Array [
+          Object {
+            "id": ".explore-a_0.view-a_0.dim-1_0",
+            "isOpen": false,
+            "isSecondary": undefined,
+            "payload": Object {
+              "enumerations": undefined,
+              "explore": "explore-a",
+              "field": "explore-a.dim-1",
+              "fieldOptions": Object {
+                "can_filter": true,
+                "label_short": "dim-1",
+                "name": "explore-a.dim-1",
+                "view_label": "view-a",
+              },
+              "model": "model-a",
+              "suggestDimension": undefined,
+              "suggestExplore": "explore-a",
+              "type": "string",
+              "view": undefined,
+            },
+            "value": "dim-1",
+          },
+          Object {
+            "id": ".explore-a_0.view-a_0.measure-1_1",
+            "isOpen": false,
+            "isSecondary": true,
+            "payload": Object {
+              "enumerations": undefined,
+              "explore": "explore-a",
+              "field": "explore-a.measure-1",
+              "fieldOptions": Object {
+                "can_filter": true,
+                "label_short": "measure-1",
+                "measure": true,
+                "name": "explore-a.measure-1",
+                "view_label": "view-a",
+              },
+              "model": "model-a",
+              "suggestDimension": undefined,
+              "suggestExplore": "explore-a",
+              "type": "string",
+              "view": undefined,
+            },
+            "value": "measure-1",
+          },
+        ],
+        "id": ".explore-a_0.view-a_0",
+        "isOpen": false,
+        "value": "view-a",
+      },
+      Object {
+        "children": Array [
+          Object {
+            "id": ".explore-a_0.view-b_1.dim-2_0",
+            "isOpen": false,
+            "isSecondary": undefined,
+            "payload": Object {
+              "enumerations": undefined,
+              "explore": "explore-a",
+              "field": "explore-a.dim-2",
+              "fieldOptions": Object {
+                "can_filter": true,
+                "label_short": "dim-2",
+                "name": "explore-a.dim-2",
+                "view_label": "view-b",
+              },
+              "model": "model-a",
+              "suggestDimension": undefined,
+              "suggestExplore": "explore-a",
+              "type": "string",
+              "view": undefined,
+            },
+            "value": "dim-2",
+          },
+          Object {
+            "id": ".explore-a_0.view-b_1.measure-2_1",
+            "isOpen": false,
+            "isSecondary": true,
+            "payload": Object {
+              "enumerations": undefined,
+              "explore": "explore-a",
+              "field": "explore-a.measure-2",
+              "fieldOptions": Object {
+                "can_filter": true,
+                "label_short": "measure-2",
+                "measure": true,
+                "name": "explore-a.measure-2",
+                "view_label": "view-b",
+              },
+              "model": "model-a",
+              "suggestDimension": undefined,
+              "suggestExplore": "explore-a",
+              "type": "string",
+              "view": undefined,
+            },
+            "value": "measure-2",
+          },
+        ],
+        "id": ".explore-a_0.view-b_1",
+        "isOpen": false,
+        "value": "view-b",
+      },
+    ],
+    "detail": "model-a",
+    "id": ".explore-a_0",
+    "isNotHighlightable": true,
+    "isOpen": false,
+    "payload": Object {
+      "explore": "explore-a",
+      "model": "model-a",
+    },
+    "value": "explore-a",
+  },
+]
+`;

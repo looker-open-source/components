@@ -24,7 +24,7 @@
 
  */
 
-import type { FC, ReactNode } from 'react'
+import type { ReactNode } from 'react'
 import React, { useState } from 'react'
 import type {
   DrawerPlacements,
@@ -104,7 +104,7 @@ export interface UseDialogProps extends UseDialogBaseProps, DialogSurfaceProps {
    * This is intended for internal components use only (specifically `Drawer`)
    * @private
    */
-  Surface?: FC
+  Surface?: React.ComponentType
 }
 
 export interface UseDialogPropsInternal

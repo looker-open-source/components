@@ -24,6 +24,6 @@
     "value": "{{lon}}°E"
   },
   "lon degrees west": {
-    "value": "{{lon}}°O"
+    "value": "{{lon}}°W"
   }
 }

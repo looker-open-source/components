@@ -1,59 +1,42 @@
 import { Chip } from '@looker/components'
-import { excludedProps } from '@looker/storybook'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
 import storyBasic from '!!raw-loader!./Basic'
 import storyClickAndDelete from '!!raw-loader!./ClickAndDelete'
-import storyDeletable from '!!raw-loader!./Deletable'
-import storyDisabled from '!!raw-loader!./Disabled'
 import storyMaxWidth from '!!raw-loader!./MaxWidth'
 import storyPrefix from '!!raw-loader!./Prefix'
 import storyRemovable from '!!raw-loader!./Removable'
 import storyIconLabel from '!!raw-loader!./IconLabel'
 
-<Meta component={Chip} title="Content/Chip" />
+<Meta component={Chip} title="Docs/Chip" />
 
 # Chip
 
-The `Chip` component is a compact element.
-
-## Basic
-
-It has some basic functionality
+The `Chip` component can represent multiple interactive elements in the same area, such as a multiple values on a single filter or a list of email addresses.
 
 <Editor code={storyBasic} />
 
-## Click and Delete
-
-It has Click and Delete functionality.
+The `onClick` handler is called when when the user clicks anywhere on the `Chip` except for the x icon.
+This icon appears when `onDelete` is defined and calls that intead when clicked.
+`onDelete` is also called via the delete key. Neither callback is called when `disabled` is true.
 
 <Editor code={storyClickAndDelete} />
 
-## Deletable
-
-It can have `onDelete` available
-
-<Editor code={storyDeletable} />
-
-## Disabled
-
-It can be disabled.
-
-<Editor code={storyDisabled} />
-
 ## MaxWidth
 
-The width of the `Chip` will accomodate its contents, by default. Setting a `maxWidth` will cause any overflow text to be truncated with ellipses.
+The width of the `Chip` will accomodate its contents, by default. Setting a `maxWidth` will cause any overflow text to be truncated with ellipses. The full text will show in a tooltip on hover.
 
 <Editor code={storyMaxWidth} />
 
 ## Prefix
 
-TBD.
+Text in the `prefix` will render before the children, in normal font-weight, with a colon after it.
 
 <Editor code={storyPrefix} />
 
 ## Removable
 
-A chip can be removed by clicking X.
+The following is an example of a collection of removable chips.
 
 <Editor code={storyRemovable} />
 

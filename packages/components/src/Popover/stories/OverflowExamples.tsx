@@ -25,14 +25,14 @@
  */
 
 import React from 'react'
-import { Box2 } from '../../Layout'
+import { Box } from '../../Layout'
 
 import { ContentOverflow } from './ContentOverflow'
 import { EdgeOverflow } from './EdgeOverflow'
 
-export const OverflowExamples = () => {
+export default function OverflowExamples() {
   return (
-    <Box2 p="u10" width="100%" position="relative" height="100%">
+    <Box p="u10" width="100%" position="relative" height="100%">
       <EdgeOverflow top={0} left={0}>
         Top Left
       </EdgeOverflow>
@@ -95,10 +95,6 @@ export const OverflowExamples = () => {
       <p>....</p>
       <p>....</p>
       <p>....</p>
-    </Box2>
+    </Box>
   )
-}
-
-OverflowExamples.parameters = {
-  storyshots: { disable: true },
 }

@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2022 Looker Data Sciences, Inc.
+ Copyright (c) 2023 Google LLC
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -23,8 +23,10 @@
  SOFTWARE.
 
  */
+
 import dateLocale from 'date-fns/locale/nl'
-import type { I18nStateWithDates } from '@looker/i18n'
+
+import { mergeLocaleObjects } from '@looker/i18n'
 
 const resources = {
   AdvancedInputControls: {
@@ -41,7 +43,7 @@ const resources = {
       'Alle {{pageCount}} weergegeven items geselecteerd',
     AllTotalCountSelected: 'Alle {{totalCount}} items geselecteerd',
     'Bulk Actions': 'Bulkacties',
-    'Clear Selection': 'Selectie verwijderen',
+    'Clear Selection': 'Selectie wissen',
     SelectAllCountResults: 'Selecteer alle {{totalCount}} resultaten',
     SelectedCountOfTotalDisplayed:
       '{{selectedItemCount}} van de {{pageCount}} weergegeven items geselecteerd',
@@ -78,7 +80,7 @@ const resources = {
     Options: 'Opties',
   },
   FieldTimeSelect: {
-    'Please enter a valid time': 'Voer een geldige tijd in',
+    'Please use format HHMM': 'Gebruik de indeling UU:MM',
   },
   GetIntentLabel: {
     Error: 'Fout',
@@ -134,7 +136,9 @@ const resources = {
     Save: 'Opslaan',
   },
   RangeSlider: {
+    'Maximum Name': 'Maximaal {{name}}',
     'Maximum Value': 'Maximumwaarden',
+    'Minimum Name': 'Minimaal {{name}}',
     'Minimum Value': 'Minimumwaarden',
   },
   RequiredStar: {
@@ -149,8 +153,4 @@ const resources = {
   },
 }
 
-export const nlNL: I18nStateWithDates = {
-  dateLocale,
-  locale: 'nl-NL',
-  resources: { 'nl-NL': resources },
-}
+export const nlNL = mergeLocaleObjects([], 'nl-NL', resources, dateLocale)

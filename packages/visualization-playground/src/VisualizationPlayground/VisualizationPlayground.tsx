@@ -141,7 +141,7 @@ export const VisualizationPlayground = ({
       sdk={
         storedTabId === 'live' && sdk
           ? sdk
-          : ((mockSDK as unknown) as Looker40SDK)
+          : (mockSDK as unknown as Looker40SDK)
       }
     >
       <ExtendComponentsThemeProvider

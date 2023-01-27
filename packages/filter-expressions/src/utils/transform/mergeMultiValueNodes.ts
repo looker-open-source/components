@@ -30,8 +30,8 @@ import type { FilterASTNode } from '../../types'
  * Merges the value array of two nodes, removing duplicates
  */
 const mergeNodes = (
-  left: FilterASTNode,
-  right: FilterASTNode
+  left: FilterASTNode = {},
+  right: FilterASTNode = {}
 ): FilterASTNode => ({
   ...left,
   type: left.type,
@@ -80,13 +80,13 @@ const mergeNodesWithSameType = (
 
   while (canMergeLeftNodes(node, compareType, allowDifferentIsValue)) {
     const { left, right, ...rest } = node
-    const newLeft = mergeNodes(left!, right!.left!)
-    const newRight = right!.right
+    const newLeft = mergeNodes(left, right?.left)
+    const newRight = right?.right
     node = { ...rest, left: newLeft, right: newRight }
   }
 
   if (canMergeEndNodes(node, compareType, allowDifferentIsValue)) {
-    node = mergeNodes(node.left!, node.right!)
+    node = mergeNodes(node.left, node.right)
   }
   return node
 }

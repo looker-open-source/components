@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2022 Looker Data Sciences, Inc.
+ Copyright (c) 2023 Google LLC
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,8 @@
  SOFTWARE.
 
  */
-import type { I18nState } from '../../utils'
+
+import { mergeLocaleObjects } from '@looker/i18n'
 
 const resources = {
   describe_date: {
@@ -49,8 +50,8 @@ const resources = {
     'is type unitLabel': 'est {{type}} {{unitLabel}}',
     next: 'suivant',
     'prefix interval timePassed': '{{prefix}} {{interval}} {{timePassed}}',
-    'prefix now': '{{prefix}} présentement',
-    this: 'cela',
+    'prefix now': '{{prefix}} maintenant',
+    this: 'ce',
     'this startInterval to endInterval':
       'ce {{startInterval}} à {{endInterval}}',
     'value complete unitLabel': '{{value}}{{complete}} {{unitLabel}}',
@@ -63,7 +64,7 @@ const resources = {
     'is value': 'est {{value}}',
   },
   describe_location: {
-    'coords1 to coords2': '{{coords1}} à {{coords2}}',
+    'coords1 to coords2': '{{coords1}} vers {{coords2}}',
     'distance unit from lat, lon': '{{distance}} {{unit}} de {{lat}}, {{lon}}',
     'is anywhere': "est n'importe où",
     'is not null': "n'est pas nul",
@@ -156,7 +157,4 @@ const resources = {
   },
 }
 
-export const frFR: I18nState = {
-  locale: 'fr-FR',
-  resources: { 'fr-FR': resources },
-}
+export const frFR = mergeLocaleObjects([], 'fr-FR', resources)

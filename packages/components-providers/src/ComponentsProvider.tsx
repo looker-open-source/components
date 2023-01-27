@@ -29,8 +29,8 @@ import {
   googleFontUrl,
   theme as defaultTheme,
 } from '@looker/design-tokens'
-import type { FC } from 'react'
 import React, { Fragment, useMemo } from 'react'
+import type { ReactNode } from 'react'
 import { HelmetProvider } from 'react-helmet-async'
 import { FocusTrapProvider } from './FocusTrap'
 import { ScrollLockProvider } from './ScrollLock'
@@ -67,6 +67,7 @@ export interface ComponentsProviderProps
    * @default false
    */
   disableStyleDefender?: boolean
+  children?: ReactNode
 }
 
 /**
@@ -84,7 +85,7 @@ export interface ComponentsProviderProps
  *   - GoogleFont loading
  *
  */
-export const ComponentsProvider: FC<ComponentsProviderProps> = ({
+export const ComponentsProvider = ({
   children,
   loadFontSources = true,
   loadGoogleFonts = false,
@@ -94,7 +95,7 @@ export const ComponentsProvider: FC<ComponentsProviderProps> = ({
   resources,
   themeCustomizations,
   ...props
-}) => {
+}: ComponentsProviderProps) => {
   const theme = useMemo(() => {
     const draft = generateTheme(
       props.theme || defaultTheme,

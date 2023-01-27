@@ -1,5 +1,9 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { CompatibleHTMLProps } from '@looker/design-tokens';
-import type { FC, ReactNode } from 'react';
+import type { ReactNode } from 'react';
 export declare const isLegacyComposition: (children: ReactNode) => boolean;
 declare type DomProps = CompatibleHTMLProps<HTMLElement>;
 declare type AccordionLegacyProps = DomProps & {
@@ -8,5 +12,5 @@ declare type AccordionLegacyProps = DomProps & {
     disclosureProps: DomProps;
     isOpen: boolean;
 };
-export declare const AccordionLegacy: FC<AccordionLegacyProps>;
+export declare const AccordionLegacy: ({ children, contentDomProps, disclosureProps, isOpen, ...props }: AccordionLegacyProps) => JSX.Element;
 export {};

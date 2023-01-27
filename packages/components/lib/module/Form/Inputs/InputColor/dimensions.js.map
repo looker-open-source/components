@@ -1,0 +1,1 @@
+{"version":3,"file":"dimensions.js","names":["DEFAULT_INPUT_COLOR_WIDTH"],"sources":["../../../../../src/Form/Inputs/InputColor/dimensions.ts"],"sourcesContent":["/**\n * Copyright (c) 2023 Google LLC\n * SPDX-License-Identifier: MIT\n */\n\nexport const DEFAULT_INPUT_COLOR_WIDTH = 200\n"],"mappings":";;AAKA,OAAO,MAAMA,yBAAyB,GAAG,GAAG"}

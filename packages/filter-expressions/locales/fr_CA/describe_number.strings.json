@@ -1,8 +1,8 @@
 {
   "is in range range": {
-    "value": "est dans la plage {{range}}"
+    "value": "est à portée {{range}}"
   },
   "is not in range range": {
-    "value": "n’est pas dans la plage {{range}}"
+    "value": "n’est pas à portée {{range}}"
   }
 }

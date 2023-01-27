@@ -1,0 +1,54 @@
+import { Drawer } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import storyBasic from '!!raw-loader!./Basic'
+import storyAnimationCallbacks from '!!raw-loader!./AnimationCallbacks'
+import storyUseDrawer from '!!raw-loader!./UseDrawer'
+import storyWidth from '!!raw-loader!./Width'
+import storyPlacement from '!!raw-loader!./Placement'
+
+<Meta component={Drawer} title="Docs/Drawer" />
+
+# Drawer
+
+Drawer is a specialized form of `Dialog` that is attached to the edge of the viewport.
+
+# Standard Use
+<Editor code={storyBasic} />
+
+## onAfterClose and onAfterOpen function
+
+onAfterClose: this function will be called after the `Drawer` is closed
+
+onAfterOpen: this function will be called after the `Drawer` is open
+<Editor code={storyAnimationCallbacks} />
+
+# useDrawer
+
+We provide a custom hook that returns the opener function and rendered drawer.
+<Editor code={storyUseDrawer} />
+
+## Width
+
+All variants of Drawer allow you to specify `width` - it can be specified as `xxsmall`, `xsmall`, `small`, `medium`, & `large`.
+
+By default, `width` defaults to `small` so that Dialog Surface will conform to the width of its content.
+<Editor code={storyWidth} />
+
+## Placement
+
+Determines how surface is positioned in the the viewport.
+
+- `right` (default) - surface is centered horizontally and vertically above mobile breakpoint.
+  - _mobile_: positioned at top of window and covers entire width.
+  - _width_: defaults to 100% in mobile breakpoint and 37.5rem above that unless otherwise specified
+  - _height_: fits content unless it's explicitly specified with `minHeight` prop
+- `left` - positioned to cover nearly the entire window.
+  - _mobile & tablet_: cover the entire window.
+
+<Editor code={storyPlacement} />
+
+
+## Props
+
+<ArgsTable of={Drawer} exclude={excludedProps} />

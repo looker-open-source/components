@@ -24,7 +24,6 @@
 
  */
 
-import type { FC } from 'react'
 import React from 'react'
 import styled from 'styled-components'
 import { Select } from '../Form'
@@ -67,14 +66,14 @@ const stringToSelectOption = (option: string) => ({
 const arrayToSelectOptions = (options: Array<string | number>) =>
   options.map(option => stringToSelectOption(String(option)))
 
-export const PageSizeLayout: FC<PageSizeProps> = ({
+export const PageSizeLayout = ({
   alwaysVisible = false,
   value,
   total,
   className,
   onChange,
   options = defaultPageSizes,
-}) => {
+}: PageSizeProps) => {
   const { t } = useTranslation('PageSize')
 
   const handleOnChange = (newValue: string) => onChange(Number(newValue))

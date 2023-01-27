@@ -1,8 +1,11 @@
 {
   "name": "@looker/filter-expressions",
-  "main": "src/index.ts",
   "license": "MIT",
-  "version": "1.0.0",
+  "version": "1.0.2",
+  "main": "lib/main/index.js",
+  "module": "lib/module/index.js",
+  "types": "lib/index.d.ts",
+  "src": "src/index.ts",
   "sideEffects": false,
   "publishConfig": {
     "access": "public",
@@ -19,7 +22,7 @@
     "coverage": "lk coverage"
   },
   "dependencies": {
-    "@looker/i18n": "*",
+    "@looker/i18n": "1.0.0",
     "@looker/sdk": "^22.4.2",
     "lodash": "*",
     "pegjs": "0.10.0"
@@ -32,8 +35,10 @@
     "@looker/components-scripts": "*",
     "@looker/eslint-config-oss": "*",
     "@looker/jest-config": "*",
+    "@looker/prettier-config": "*",
     "@types/pegjs": "^0.10.1",
-    "glob": "7.1.6"
+    "glob": "7.1.6",
+    "prettier": "2.8.2"
   },
   "peerDependencies": {
     "i18next": "20.3.1"
@@ -44,7 +49,6 @@
       "@looker/eslint-config-oss"
     ],
     "rules": {
-      "@typescript-eslint/no-non-null-assertion": "off",
       "import/order": "off",
       "sort-keys-fix/sort-keys-fix": "off",
       "i18next/no-literal-string": "off"

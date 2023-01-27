@@ -6,7 +6,7 @@
     "value": "वृत्त"
   },
   "Location": {
-    "value": "स्थान"
+    "value": "लोकेशन"
   },
   "feet": {
     "value": "फ़ीट"
@@ -15,10 +15,10 @@
     "value": "कहीं भी है"
   },
   "is not null": {
-    "value": "शून्य नहीं है"
+    "value": "नल नहीं है"
   },
   "is null": {
-    "value": "शून्य है"
+    "value": "नल है"
   },
   "kilometers": {
     "value": "किलोमीटर"

@@ -84,7 +84,7 @@ describe('Query', () => {
     return (
       <DataProvider
         sdk={
-          ({
+          {
             ...mockSDK,
             run_query: () =>
               Promise.resolve({
@@ -95,7 +95,7 @@ describe('Query', () => {
                   fields: mockSdkFieldsResponse,
                 },
               } as Response),
-          } as unknown) as Looker40SDK
+          } as unknown as Looker40SDK
         }
       >
         <Query query={'1'} config={config}>
@@ -155,14 +155,14 @@ describe('Query', () => {
   it('Renders sdk error message in the dom', async () => {
     const errorMessage = 'Query not found'
 
-    const mockSDKNotFound = ({
+    const mockSDKNotFound = {
       ...mockSDK,
       query_for_slug: () =>
         Promise.resolve({
           ok: false,
           error: { message: errorMessage },
         }),
-    } as unknown) as Looker40SDK
+    } as unknown as Looker40SDK
 
     renderWithTheme(
       <DataProvider sdk={mockSDKNotFound}>

@@ -1,38 +1,24 @@
-/*
-
- MIT License
-
- Copyright (c) 2022 Looker Data Sciences, Inc.
-
- Permission is hereby granted, free of charge, to any person obtaining a copy
- of this software and associated documentation files (the "Software"), to deal
- in the Software without restriction, including without limitation the rights
- to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- copies of the Software, and to permit persons to whom the Software is
- furnished to do so, subject to the following conditions:
-
- The above copyright notice and this permission notice shall be included in all
- copies or substantial portions of the Software.
-
- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- SOFTWARE.
-
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
  */
-import type { I18nState } from '../../utils'
+
+import { jaJP as componentsLocale } from '@looker/components'
+import { jaJP as visualizationsadaptersLocale } from '@looker/visualizations-adapters'
+import { mergeLocaleObjects } from '@looker/i18n'
 
 const resources = {
   Table: {
+    'Shift + Click to sort additional columns':
+      'Shift + クリックで、追加の列を並べ替えます',
     'Sort ascending': '昇順で並べ替え',
     'Sort descending': '降順で並べ替え',
+    Totals: '合計',
   },
 }
 
-export const jaJP: I18nState = {
-  locale: 'ja-JP',
-  resources: { 'ja-JP': resources },
-}
+export const jaJP = mergeLocaleObjects(
+  [componentsLocale, visualizationsadaptersLocale],
+  'ja-JP',
+  resources
+)

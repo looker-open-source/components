@@ -1,0 +1,59 @@
+import { InputText } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import storyBasic from '!!raw-loader!./Basic'
+import storyBeforeAfter from '!!raw-loader!./BeforeAfter'
+import storyAutoResize from '!!raw-loader!./AutoResize'
+import storyDisabled from '!!raw-loader!./Disabled'
+import storyPlaceholder from '!!raw-loader!./Placeholder'
+import storyReadOnly from '!!raw-loader!./ReadOnly'
+
+<Meta component={InputText} title="Docs/InputText" />
+
+# InputText
+
+The `<InputText />` component renders a single text input element on the page, with no accompanying label. It is generally used to construct higher-order components like the `<FieldText />`. If you are building a form, you probably want to use `<FieldText />` instead as it provides label and validation support.
+
+<Editor code={storyBasic} />
+
+## Before & After
+
+Use `iconBefore` and `iconAfter` to render an icon before or after the input.
+
+For more custom content, `before` and `after` accept a React node. A string is passed to `before` or `after` will have formatting applied, while JSX will be rendered as-is.
+If both `iconBefore` and `before`, or `iconAfter` and `after` are passed, a warning will appear in the console and the `InputText` will not render.
+
+<Editor code={storyBeforeAfter} />
+
+## autoResize
+
+Use `autoResize` to allow the width of the component to adjust to the current value or placeholder.
+
+<Editor code={storyAutoResize} />
+
+### Disabled
+
+Use the disable property to make an input field un-editable.
+
+<Editor code={storyDisabled} />
+
+### Placeholders
+
+Placeholders are used to give a hint to the user of the expected value for the input. They should not be used as a complete replacement of labels.
+
+<Editor code={storyPlaceholder} />
+
+### ReadOnly Property
+
+As the name suggests, `readOnly` makes the text un-editable.
+
+<Editor code={storyReadOnly} />
+
+## Accessibility
+
+Use `FieldInputText` to ensure accessibility. If you must use `InputText` on its own,
+always follow [best practices for accessible labeling](https://www.w3.org/WAI/tutorials/forms/labels/).
+
+## Props
+
+<ArgsTable of={InputText} exclude={excludedProps} />

@@ -133,10 +133,10 @@ const getPartitionedOptions = (
 
 // When suggestions/options are empty for checkboxes/button_groups (may not have fully loaded yet)
 // but filter values exists, return filter values.
-const getMultiStringSelectChange = (
-  item: FilterModel,
-  changeFilter: AdapterProps['changeFilter']
-) => (value: string[]) => changeFilter(Number(item.id), { ...item, value })
+const getMultiStringSelectChange =
+  (item: FilterModel, changeFilter: AdapterProps['changeFilter']) =>
+  (value: string[]) =>
+    changeFilter(Number(item.id), { ...item, value })
 
 /**
  * Adapter for Button Group props
@@ -218,12 +218,11 @@ const getSingleValue = (
   return singleValue
 }
 
-const getSingleStringSelectChange = (
-  item: FilterModel,
-  changeFilter: AdapterProps['changeFilter']
-) => (value: string) => {
-  changeFilter(Number(item.id), { ...item, value: [value] })
-}
+const getSingleStringSelectChange =
+  (item: FilterModel, changeFilter: AdapterProps['changeFilter']) =>
+  (value: string) => {
+    changeFilter(Number(item.id), { ...item, value: [value] })
+  }
 
 /**
  * Returns the props needed to render a Button Toggle control

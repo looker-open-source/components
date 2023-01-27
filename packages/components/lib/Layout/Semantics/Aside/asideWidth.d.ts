@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { ResponsiveValue } from '@looker/design-tokens';
 export declare type AsideSizes = 'rail' | 'navigation' | 'sidebar';
 export declare type AsideSizeRamp = Record<AsideSizes, string>;

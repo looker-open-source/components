@@ -17,10 +17,10 @@ export interface DrawerSurfaceProps {
      */
     width?: DialogDrawerWidth;
 }
-export declare const DrawerSurface: import("styled-components").StyledComponent<import("react").FC<{
+export declare const DrawerSurface: import("styled-components").StyledComponent<(props: {
     className?: string | undefined;
     id?: string | undefined;
-}>, import("styled-components").DefaultTheme, {
+}) => JSX.Element, import("styled-components").DefaultTheme, {
     'aria-modal': boolean;
     role: string;
 } & DrawerSurfaceProps, "role" | "aria-modal">;

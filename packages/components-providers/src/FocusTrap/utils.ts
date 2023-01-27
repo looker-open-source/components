@@ -98,28 +98,30 @@ export const activateFocusTrap = ({
       return autoFocusElement
     }
 
-    // Without autofocus, fallback to a tabbable node by priority, if one exists.
-    const inputElements = Array.from(
-      element.querySelectorAll('input, textarea, select')
-    )
-    const tabbableInputElement = inputElements.find(inputElement =>
-      isTabbable(inputElement)
-    )
-    if (tabbableInputElement) {
-      return tabbableInputElement
-    }
+    if (isFocusVisible()) {
+      // Without autofocus, fallback to a tabbable node by priority, if one exists.
+      const inputElements = Array.from(
+        element.querySelectorAll('input, textarea, select')
+      )
+      const tabbableInputElement = inputElements.find(inputElement =>
+        isTabbable(inputElement)
+      )
+      if (tabbableInputElement) {
+        return tabbableInputElement
+      }
 
-    const footerElement = element.querySelector('footer')
-    const firstTabbableFooterElement = footerElement
-      ? tabbable(footerElement)[0]
-      : null
-    if (firstTabbableFooterElement) {
-      return firstTabbableFooterElement
-    }
+      const footerElement = element.querySelector('footer')
+      const firstTabbableFooterElement = footerElement
+        ? tabbable(footerElement)[0]
+        : null
+      if (firstTabbableFooterElement) {
+        return firstTabbableFooterElement
+      }
 
-    const firstTabbableElement = tabbable(element)[0]
-    if (firstTabbableElement) {
-      return firstTabbableElement
+      const firstTabbableElement = tabbable(element)[0]
+      if (firstTabbableElement) {
+        return firstTabbableElement
+      }
     }
 
     // In the absence of autofocus and any tabbable element, the surface will have initial focus.
@@ -136,10 +138,13 @@ export const activateFocusTrap = ({
 
   const getInitialFocusNode = () => {
     const node = getInitialFocusNodeByPriority()
-    if (!node || !isFocusable(node)) {
+    const noFocusableNode = !node || !isFocusable(node)
+    if (isFocusVisible() && noFocusableNode) {
       throw new Error(
         'Your focus trap needs to have at least one focusable element'
       )
+    } else if (noFocusableNode) {
+      return null
     }
     return node as FocusableElement
   }
@@ -151,9 +156,9 @@ export const activateFocusTrap = ({
       tabbableNodes[tabbableNodes.length - 1] || getInitialFocusNode()
   }
 
-  const tryFocus = (node: FocusableElement) => {
-    if (node === document.activeElement) return
-    if (!node || !node.focus) {
+  const tryFocus = (node: FocusableElement | null) => {
+    if (!node || node === document.activeElement) return
+    if (!node.focus) {
       tryFocus(getInitialFocusNode())
       return
     }
@@ -225,9 +230,7 @@ export const activateFocusTrap = ({
     // We use the default document activeElement because it will cover a
     // superset of elements that we do not account for (or need to) with
     // our internally maintained version of activeElement.
-    if (isFocusVisible()) {
-      tryFocus(getInitialFocusNode())
-    }
+    tryFocus(getInitialFocusNode())
   }, 0)
 
   // Deactivate function

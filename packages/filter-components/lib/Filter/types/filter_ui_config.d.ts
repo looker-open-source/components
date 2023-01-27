@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 export declare enum FilterUIDisplay {
     INLINE = "inline",
     OVERFLOW = "overflow",

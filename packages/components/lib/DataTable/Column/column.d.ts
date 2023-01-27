@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { IconType } from '../../Icon';
 import type { DataTableColumnSize } from './columnSize';
 export declare type DataTableColumnType = 'string' | 'number' | 'date';

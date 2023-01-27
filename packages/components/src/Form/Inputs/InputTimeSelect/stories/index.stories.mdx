@@ -1,0 +1,51 @@
+import { InputTimeSelect } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import basicStory from '!!raw-loader!./Basic'
+import intervalsStory from '!!raw-loader!./Intervals'
+import timeFormattingStory from '!!raw-loader!./TimeFormatting'
+import controlledStory from '!!raw-loader!./Controlled'
+import defaultValueStory from '!!raw-loader!./DefaultValue'
+
+<Meta component={InputTimeSelect} title="Docs/InputTimeSelect" />
+
+# InputTimeSelect
+
+`InputTimeSelect` provides a [`Select`](/components/forms/select)-based dropdown UI for picking a 24-hour time value. This is an alternative to [`InputTime`](/components/forms/input-time), which provides an HTML5-standard time picking experience.
+
+The default implementation provides a dropdown list of times in 15-minute increments, formatted in for a 12-hour clock.
+
+<Editor code={basicStory} />
+
+## Intervals
+
+You can choose from any of the following options: 5, 10, 15, 20, 30, or 60 minute intervals.
+
+We've limited allowed intervals to a few approved options rather than accepting any number. This is to protect against uninteded use where an engineer might specify 1-minute intervals and generate an unusable select box with 1400 options. We also wouldn't want to support bizarre instances of a random numbers like 37 or 152 minute intervals.
+
+<Editor code={intervalsStory} />
+
+## 12- or 24-hour formatting
+
+Depending on readability preference, the time picker can format the labels in either 12- or 24-hour time. Regardless of label formatting, this component returns a 24-hour time formatted string when changed.
+
+<Editor code={timeFormattingStory} />
+
+## Controlled Component
+
+Consistent with all other inputs, `InputTimeSelect` accepts `value` and `onChange` props for use in a controlled form setting.
+
+- `value` accepts a 24-hour formatted time string (e.g. `15:45`)
+- `onChange` returns a 24-hour time string
+
+<Editor code={controlledStory} />
+
+## DefaultValue
+
+If you don't want to control the form value externally, but still want to listen for changes, you can still pass in an initial `defaultValue`.
+
+<Editor code={defaultValueStory} />
+
+## Props
+
+<ArgsTable of={InputTimeSelect} exclude={excludedProps} />

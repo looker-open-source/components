@@ -31,7 +31,6 @@ import { Error } from '@styled-icons/material/Error'
 import { Info } from '@styled-icons/material/Info'
 import { Warning } from '@styled-icons/material/Warning'
 import { color, size } from '@looker/design-tokens'
-import omit from 'lodash/omit'
 import type { Ref } from 'react'
 import React, { forwardRef } from 'react'
 import styled from 'styled-components'
@@ -94,9 +93,11 @@ const StatusLayout = forwardRef(
     const { t } = useTranslation('Status')
     const Component = getIntentIcon(intent)
 
+    const { size: _size, ...rest } = props
+
     return (
       <Component
-        {...omit(props, 'size', 'crossOrigin')}
+        {...rest}
         className={className}
         ref={ref}
         /* Don't specify title if Status is wrapped in tooltip */

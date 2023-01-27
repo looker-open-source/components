@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { CompatibleHTMLProps, SizeProps, SpaceProps } from '@looker/design-tokens';
 export interface SwatchProps extends SizeProps, SpaceProps, CompatibleHTMLProps<HTMLDivElement> {
     /**

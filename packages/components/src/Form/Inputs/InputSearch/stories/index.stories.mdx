@@ -1,0 +1,88 @@
+import { InputSearch } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import basicStory from '!!raw-loader!./Basic'
+import autoResizeStory from '!!raw-loader!./AutoResize'
+import defaultValueStory from '!!raw-loader!./DefaultValue'
+import controlledStory from '!!raw-loader!./Controlled'
+import disableStory from '!!raw-loader!./Disable'
+import hideSearchIconStory from '!!raw-loader!./HideSearchIcon'
+import isClearableStory from '!!raw-loader!./IsClearable'
+import summaryStory from '!!raw-loader!./Summary'
+import readOnlyStory from '!!raw-loader!./ReadOnly'
+import clearIconLabelStory from '!!raw-loader!./ClearIconLabel'
+import optionsStory from '!!raw-loader!./Options'
+
+<Meta component={InputSearch} title="Docs/InputSearch" />
+
+# InputSearch
+
+The `<InputSearch />` component renders a single search input element.
+
+You can add a placeholder, and a starter value, also a summary text and a closing button associated with it.
+
+<Editor code={basicStory} />
+
+## hideSearchIcon
+
+If you don't want to see the search `Icon` use the prop `hideSearchIcon`.
+
+<Editor code={hideSearchIconStory} />
+
+## autoResize
+
+Use the `autoResize` prop to allow the input's width to adjust to its current value or placeholder.
+
+<Editor code={autoResizeStory} />
+
+## isClearable
+
+To remove the Clear Field button, use `isClearable={false}`.
+
+<Editor code={isClearableStory} />
+
+## summary
+
+<Editor code={summaryStory} />
+
+## defaultValue
+
+Use `defaultValue` when you want to set an initial value but still want InputSearch to control state internally.
+
+<Editor code={defaultValueStory} />
+
+## Controlled Example
+
+<Editor code={controlledStory} />
+
+## Disabled
+
+Use the `disable` property to make an input field un-editable.
+
+<Editor code={disableStory} />
+
+## ReadOnly property
+
+As the name suggests, readOnly makes the text un-editable.
+
+<Editor code={readOnlyStory} />
+
+## clearIconLabel
+
+The `InputSearch` component provides the prop `clearIconLabel` to customize the input icon label. Hover over the the `x` icon to see the tooltip.
+
+<Editor code={clearIconLabelStory} />
+
+## Options (experimental)
+
+The `options` prop offers users suggestions or results as they type, similar to a filterable
+[`Select`](/components/forms/select/), but without the intent to restrict the field's value.
+
+Additional props `onSelectOption`, `changeOnSelect` (defaults to true), which determines whether the input
+will be updated with the selected option's value, and `clearOnClose` (defaults to the opposite of
+`changeOnSelect`), which determines whether the input value will persist after the option list is closed,
+(via blur, escape, etc).
+
+<Editor code={optionsStory} />
+
+<ArgsTable of={InputSearch} exclude={excludedProps} />

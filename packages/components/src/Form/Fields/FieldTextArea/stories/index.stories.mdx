@@ -1,0 +1,66 @@
+import { FieldTextArea } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import basicStory from '!!raw-loader!./Basic'
+import controlledStory from '!!raw-loader!./Controlled'
+import defaultValueStory from '!!raw-loader!./DefaultValue'
+import detailDescriptionStory from '!!raw-loader!./DetailDescription'
+import disabledStory from '!!raw-loader!./Disabled'
+import floatingLabelStory from '!!raw-loader!./FloatingLabel'
+import floatingLabelDefaultValueStory from '!!raw-loader!./FloatingLabelDefaultValue'
+import inlineStory from '!!raw-loader!./Inline'
+import noResizeStory from '!!raw-loader!./NoResize'
+import requiredStory from '!!raw-loader!./Required'
+import validationMessageStory from '!!raw-loader!./ValidationMessage'
+
+<Meta component={FieldTextArea} title="Docs/FieldTextArea" />
+
+# FieldTextArea
+
+The `<FieldTextArea />` component is composed of `<TextArea />` and `<Label />` components. Using `<FieldTextArea />` allows for rendering validation messages.
+
+<Editor code={basicStory} />
+
+## Controlled
+
+<Editor code={controlledStory} />
+
+## Default Value
+
+<Editor code={defaultValueStory} />
+
+## Detail & Description
+
+<Editor code={detailDescriptionStory} />
+
+## Disabled
+
+<Editor code={disabledStory} />
+
+## Floating Label
+
+<Editor code={floatingLabelStory} />
+
+### Floating Label with Default Value
+
+<Editor code={floatingLabelDefaultValueStory} />
+
+## Inline
+
+<Editor code={inlineStory} />
+
+## Disabling Textare Resizing
+
+<Editor code={noResizeStory} />
+
+## Required
+
+<Editor code={requiredStory} />
+
+## Validation Message
+
+<Editor code={validationMessageStory} />
+
+## Props
+
+<ArgsTable of={FieldTextArea} exclude={excludedProps} />

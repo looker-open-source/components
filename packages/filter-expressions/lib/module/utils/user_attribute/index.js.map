@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","names":[],"sources":["../../../../src/utils/user_attribute/index.ts"],"sourcesContent":["/**\n * Copyright (c) 2023 Google LLC\n * SPDX-License-Identifier: MIT\n */\nexport * from './find_user_attribute'\nexport * from './get_user_attribute_matching_type_and_expression'\n"],"mappings":";AAIA,cAAc,uBAAuB;AACrC,cAAc,mDAAmD"}

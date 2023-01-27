@@ -190,7 +190,7 @@ describe('normalizeChartTypes', () => {
     })
 
     test('undefined', () => {
-      const config = { type: (undefined as unknown) as 'default' }
+      const config = { type: undefined as unknown as 'default' }
       const { config: transformedConfig } = normalizeChartTypes({
         config,
         data: mockSdkDataResponse,

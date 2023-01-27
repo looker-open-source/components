@@ -1,0 +1,42 @@
+import { InputColor } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import storyBasic from '!!raw-loader!./Basic'
+import storyDefaultValue from '!!raw-loader!./DefaultValue'
+import storyControlledColor from '!!raw-loader!./ControlledColor'
+import storyDisabled from '!!raw-loader!./Disabled'
+import storyDisabledNoValue from '!!raw-loader!./DisabledNoValue'
+import storyReadOnly from '!!raw-loader!./ReadOnly'
+
+<Meta component={InputColor} title="Docs/InputColor" />
+
+# InputColor
+
+The `InputColor` component has an input to add a color value and a color wheel to pick color directly.
+
+<Editor code={storyBasic} />
+
+## Value
+
+Use the `value` prop for a controlled component.
+
+<Editor code={storyControlledColor} />
+
+## DefaultValue
+
+To set an initial value on an uncontrolled component use `defaultValue`.
+
+<Editor code={storyDefaultValue} />
+
+## Disabled
+
+<Editor code={storyDisabled} />
+<Editor code={storyDisabledNoValue} />
+
+## ReadOnly
+
+<Editor code={storyReadOnly} />
+
+## Props
+
+<ArgsTable of={InputColor} exclue={excludedProps} />

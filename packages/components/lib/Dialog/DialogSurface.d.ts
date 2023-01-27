@@ -36,10 +36,10 @@ export interface DialogSurfaceProps {
      */
     height?: ResponsiveValue<string>;
 }
-export declare const DialogSurface: import("styled-components").StyledComponent<import("react").FC<{
+export declare const DialogSurface: import("styled-components").StyledComponent<(props: {
     className?: string | undefined;
     id?: string | undefined;
-}>, import("styled-components").DefaultTheme, {
+}) => JSX.Element, import("styled-components").DefaultTheme, {
     'aria-modal': boolean;
     role: string;
 } & DialogSurfaceProps, "role" | "aria-modal">;

@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { FlatOption, SelectOptionObject, SelectOptionProps } from '../types';
 export declare const getFlatOptions: (options: SelectOptionProps[]) => {
     flatOptions: FlatOption[];

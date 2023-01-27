@@ -1,0 +1,40 @@
+import { Grid } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import storyBasic from '!!raw-loader!./Basic'
+import storyColumns1 from '!!raw-loader!./Columns1'
+import storyColumns4 from '!!raw-loader!./Columns4'
+import storyGapNone from '!!raw-loader!./GapNone'
+import storyGapU15 from '!!raw-loader!./GapU15'
+
+<Meta component={Grid} title="Docs/Grid" />
+
+# Grid
+
+`<Grid />` provides a simple implementation of the CSS Grid.
+
+## Default
+
+By default `Grid` has two columns with a "medium" `gap` between grid cells and "100%" `width`
+
+<Editor code={storyBasic} />
+
+## Columns
+
+Use the `columns` prop to specify the number of columns to display.
+
+<Editor code={storyColumns4} />
+
+<Editor code={storyColumns1} />
+
+## Gap
+
+Specify `gap` to change the distance between grid cells (defaults to `medium`)
+
+<Editor code={storyGapNone} />
+
+<Editor code={storyGapU15} />
+
+## Props
+
+<ArgsTable of={Grid} exclude={excludedProps} />

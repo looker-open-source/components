@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type React from 'react';
 /**
  * Partitions an object into 2 objects, the first containing all aria related prop keys and their respective values

@@ -58,7 +58,7 @@ const OverlaySurfaceLayout = forwardRef(
     const innerRef = useRef<null | HTMLElement>(null)
     const ref = useForkedRef(forwardedRef, innerRef)
 
-    useGlobalHotkeys('esc', closeModal, innerRef)
+    useGlobalHotkeys('Escape', closeModal, innerRef)
 
     return (
       <div

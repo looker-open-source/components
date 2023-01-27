@@ -1,9 +1,12 @@
 import { InputDateRange } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import storyValue from '!!raw-loader!./Value'
+import storyExternalUpdates from '!!raw-loader!./ExternalUpdates'
+import storyOnChange from '!!raw-loader!./OnChange'
+import storyOnValidationFail from '!!raw-loader!./OnValidationFail'
 
-<Meta
-  component={InputDateRange}
-  title="Docs/Form/Inputs/InputDateRange"
-/>
+<Meta component={InputDateRange} title="Docs/InputDateRange" />
 
 # InputDateRange
 
@@ -11,130 +14,25 @@ import { InputDateRange } from '@looker/components'
 
 ## Value
 
-`InputDateRange` can receive a value from an outside source and will update accordingly.
+The `value` prop is a date range object, while `onChange` is a callback that receives the new date range object.
+Both props are both required – there is no uncontrolled option.
 
-```jsx
-;() => {
-  const [value, setValue] = useState()
-  const handleButtonClick = () => {
-    setValue({ from: new Date('Feb 1, 2020'), to: new Date('Feb 29, 2020') })
-  }
-  const handleChange = dateRange => {
-    setValue(dateRange)
-  }
-  return (
-    <>
-      <Box2 mb="u4">
-        <Button onClick={handleButtonClick}>Select February 2020</Button>
-      </Box2>
-      <InputDateRange value={value} onChange={handleChange} />
-    </>
-  )
-}
-```
+<Editor code={storyValue} />
 
-## Default Value
+The `value` prop responds to external updates. Both the `from` and `to` properties of `value` are optional.
 
-`InputDateRange` can be initialized with a default selected date range, for use in uncontrolled form.
-
-```jsx
-<InputDateRange
-  defaultValue={{
-    from: new Date('June 3, 2019'),
-    to: new Date('June 8, 2019'),
-  }}
-/>
-```
-
-## Change Event
-
-`InputDateRange` accepts a single event callback: `onChange`. The handler will receive a date range object.
-
-```jsx
-;() => {
-  const [selectedDate, setSelectedDate] = useState({
-    from: new Date(),
-    to: new Date(),
-  })
-  const handleChange = dateRange => {
-    setSelectedDate(dateRange)
-  }
-  return (
-    <>
-      <Box2 mb="u4" pb="u3" borderBottom>
-        <Heading>Selected:</Heading>{' '}
-        <Text color="text2">
-          <DateFormat>{selectedDate.from}</DateFormat> &mdash;
-          <DateFormat>{selectedDate.to}</DateFormat>
-        </Text>
-      </Box2>
-      <InputDateRange onChange={handleChange} defaultValue={selectedDate} />
-    </>
-  )
-}
-```
+<Editor code={storyExternalUpdates} />
 
 ## onValidationFail
 
-`InputDateRange` has built-in validation to verify that users enter a valid date string when manually typing into the provided textarea. If you wish to hook into this validation, you can pass an `onValidationFail` callback which will fire on blur if the text value does not match expected localized format.
+The `onValidationFail` handler will be called with "Invalid range" when one or both of the dates is invalid, or the from date is after the to date.
 
-```jsx
-;() => {
-  const [isValid, setIsValid] = useState(true)
-  const handleChange = () => setIsValid(true)
-  const handleValidationFail = () => setIsValid(false)
-
-  const message = isValid ? 'Valid Input' : 'Invalid Input'
-  const color = isValid ? undefined : 'critical'
-
-  return (
-    <SpaceVertical>
-      <Text color="text2">
-        INSTRUCTIONS: Try typing an invalid date string (ex: 'not/a/valid/date')
-        and clicking or tabbing away to trigger blur event.
-      </Text>
-      <Heading>Result:</Heading>
-      <Text color={color}>{message}</Text>
-      <Divider />
-      <InputDateRange
-        onChange={handleChange}
-        onValidationFail={handleValidationFail}
-      />
-    </SpaceVertical>
-  )
-}
-```
+<Editor code={storyOnValidationFail} />
 
 ## I18n
 
-See `locale` prop on the [`Calendar`](calendar) component.
+See [Calendar component](?path=/docs/docs-calendar--docs#i18n).
 
-## Composing InputDateRange in a Popover
+## Props
 
-A common UI pattern is to combine `InputDateRange` with [Popover](/components/overlays/popover), [Button](/components/actions/button), and [DateFormat](/components/content/date-time-format). This enables the full calendar functionality without having to take up so much space on the page.
-
-```jsx
-;() => {
-  const [selectedDateRange, setSelectedDateRange] = useState({
-    from: new Date(),
-    to: new Date(),
-  })
-  return (
-    <Popover
-      content={
-        <Box2 p="u3">
-          <InputDateRange
-            defaultValue={selectedDateRange}
-            onChange={setSelectedDateRange}
-          />
-        </Box2>
-      }
-    >
-      <Button>
-        <DateFormat>{selectedDateRange.from}</DateFormat> &mdash;
-        <DateFormat>{selectedDateRange.to}</DateFormat>
-      </Button>
-    </Popover>
-  )
-}
-```
+<ArgsTable of={InputDateRange} exclude={excludedProps} />

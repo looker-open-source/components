@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import React from 'react';
 import type { SelectMultiProps } from '../../Inputs/Select/SelectMulti';
 import type { FloatingLabelFieldProps } from '../Field';

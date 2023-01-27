@@ -50,9 +50,11 @@ const ButtonLayout = forwardRef(
     { children, className, onClick, style, value, ...props }: ButtonItemProps,
     forwardedRef: Ref<HTMLButtonElement>
   ) => {
-    const { disabled, value: contextValue, onItemClick } = useContext(
-      ButtonSetContext
-    )
+    const {
+      disabled,
+      value: contextValue,
+      onItemClick,
+    } = useContext(ButtonSetContext)
 
     function handleClick(e: MouseEvent<HTMLButtonElement>) {
       onClick && onClick(e)

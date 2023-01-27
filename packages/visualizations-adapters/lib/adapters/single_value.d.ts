@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { VisWrapperProps } from '../VisWrapper';
 import type { CSeriesBasic, SupportedChartTypes, SDKRecord, Fields, ChartLayoutProps } from '../types';
 export declare type CSingleValueSeries = Omit<CSeriesBasic, 'visible'>;

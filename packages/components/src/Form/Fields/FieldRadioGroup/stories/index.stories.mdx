@@ -1,0 +1,26 @@
+import { FieldRadioGroup } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import storyBasic from '!!raw-loader!./Basic'
+
+<Meta component={FieldRadioGroup} title="Docs/FieldRadioGroup" />
+
+#FieldRadioGroup
+
+Groups of radios can be displayed with `FieldRadioGroup`
+
+There are two "inline" variations:
+
+- The `inline` prop will put the group label and all the inputs in one line (wrapping the inputs as necessary)
+- The `inputsInline` prop will stack the group label on top but keep all the inputs inline
+
+The `<FieldRadio />` component is composed of a `<Radio />` component
+and a `<Label />` component. Using `<FieldRadio />` allows for rendering validation
+messages. By default, the label will render to the right of the radio button, however
+this is adjustable with the `inline` property.
+
+<Editor code={storyBasic} />
+
+## Props
+
+<ArgsTable of={FieldRadioGroup} exclude={excludedProps} />

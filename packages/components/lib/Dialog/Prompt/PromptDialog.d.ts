@@ -1,4 +1,4 @@
-import type { FC, ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import type { StatefulColor } from '@looker/design-tokens';
 export declare type PromptCallback = (close: () => void) => void;
 export interface PromptBaseProps {
@@ -58,4 +58,4 @@ export interface PromptDialogProps extends PromptBaseProps {
      */
     isOpen?: boolean;
 }
-export declare const PromptDialog: FC<PromptDialogProps>;
+export declare const PromptDialog: (props: PromptDialogProps) => JSX.Element;

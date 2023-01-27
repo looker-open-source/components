@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { LayoutProps, SpaceProps, PositionProps } from '@looker/design-tokens';
 export interface SimpleLayoutProps extends LayoutProps, PositionProps, SpaceProps {
 }

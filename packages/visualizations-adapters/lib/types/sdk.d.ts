@@ -44,7 +44,7 @@ export declare type Fields = {
     pivots?: DimensionMetadata[];
 };
 export declare type PivotMetadata = {
-    data: Record<string, string>;
+    data: Record<string, string | null>;
     key: string;
     is_total: boolean;
     labels: Record<string, string>;

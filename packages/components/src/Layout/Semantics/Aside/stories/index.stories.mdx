@@ -1,0 +1,44 @@
+import { Aside } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import storyDefaultWidthSidebar from '!!raw-loader!./DefaultWidthSidebar'
+import storyWidthNavigation from '!!raw-loader!./WidthNavigation'
+import storyWidthRail from '!!raw-loader!./WidthRail'
+import storyCollapse from '!!raw-loader!./Collapse'
+import storyBorderBottom from '!!raw-loader!./BorderBottom'
+import storyBorderLeft from '!!raw-loader!./BorderLeft'
+import storyBorderRight from '!!raw-loader!./BorderRight'
+import storyBorderTop from '!!raw-loader!./BorderTop'
+import storyBorderX from '!!raw-loader!./BorderX'
+import storyBorderY from '!!raw-loader!./BorderY'
+
+<Meta component={Aside} title="Docs/Aside" />
+
+#  Default Width Sidebar
+
+<Editor code={storyDefaultWidthSidebar} />
+
+#  Width Navigation
+
+<Editor code={storyWidthNavigation} />
+
+#  Width Rail
+
+<Editor code={storyWidthRail} />
+
+#  Collapse
+
+<Editor code={storyCollapse} />
+
+#  Border
+
+<Editor code={storyBorderBottom} />
+<Editor code={storyBorderLeft} />
+<Editor code={storyBorderRight} />
+<Editor code={storyBorderTop} />
+<Editor code={storyBorderX} />
+<Editor code={storyBorderY} />
+
+## Props
+
+<ArgsTable of={Aside} exclude={excludedProps} />

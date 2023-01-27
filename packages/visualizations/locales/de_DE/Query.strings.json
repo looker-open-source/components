@@ -1,4 +1,4 @@
 {
-  "No children passed to Query component": "Keine untergeordneten Elemente an Abfragekomponente übergeben",
-  "Query component received both dashboard and query props": "Abfragekomponente hat Dashboard- und Abfrageeigenschaften erhalten."
+  "No children passed to Query component": "Keine untergeordneten Elemente an Abfragekomponente weitergegeben",
+  "Query component received both dashboard and query props": "Abfragekomponente hat Dashboard- und Abfrageeigenschaften erhalten"
 }

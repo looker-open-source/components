@@ -21,6 +21,7 @@
   "gitHead": "62febc162e3e45124f403e2c84fc741f68fe6714",
   "devDependencies": {
     "@looker/components-scripts": "*",
+    "@looker/prettier-config": "*",
     "@typescript-eslint/eslint-plugin": "5.20.0",
     "@typescript-eslint/parser": "5.20.0",
     "eslint": "8.24.0",
@@ -28,10 +29,9 @@
     "eslint-config-standard": "17.0.0",
     "eslint-import-resolver-typescript": "2.7.1",
     "eslint-import-resolver-webpack": "0.13.2",
-    "eslint-plugin-header": "3.1.1",
     "eslint-plugin-i18next": "5.1.2",
     "eslint-plugin-import": "2.26.0",
-    "eslint-plugin-jest-dom": "4.0.1",
+    "eslint-plugin-jest-dom": "4.0.3",
     "eslint-plugin-lodash": "7.4.0",
     "eslint-plugin-mdx": "1.17.0",
     "eslint-plugin-n": "15.2.4",
@@ -42,6 +42,7 @@
     "eslint-plugin-sort-keys-fix": "1.1.2",
     "eslint-plugin-testing-library": "5.3.1",
     "eslint-plugin-unicorn": "44.0.2",
+    "prettier": "2.8.2",
     "typescript": "4.6.3"
   }
 }

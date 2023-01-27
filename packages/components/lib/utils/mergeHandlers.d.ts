@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { SyntheticEvent } from 'react';
 /**
  * Merges 2 optional event handlers

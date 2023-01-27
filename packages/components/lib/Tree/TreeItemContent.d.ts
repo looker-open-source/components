@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 /// <reference types="react" />
 export declare const TreeItemContent: import("styled-components").StyledComponent<import("react").ForwardRefExoticComponent<import("packages/design-tokens/src").CompatibleHTMLProps<HTMLElement> & import("../ListItem").ListItemStatefulProps & import("../ListItem").ListItemColorProp & {
     cursorPointer?: boolean | undefined;

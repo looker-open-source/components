@@ -154,8 +154,6 @@ const InputComponent = forwardRef(
   }
 )
 
-InputComponent.displayName = 'InputComponent'
-
 const StyledInput = styled.input`
   ${innerInputStyle}
   flex: 1;

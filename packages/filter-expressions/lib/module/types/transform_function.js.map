@@ -1,0 +1,1 @@
+{"version":3,"file":"transform_function.js","names":[],"sources":["../../../src/types/transform_function.ts"],"sourcesContent":["/**\n * Copyright (c) 2023 Google LLC\n * SPDX-License-Identifier: MIT\n */\nimport type { FilterASTNode } from './filter_ast_node'\n\nexport type TransformFunction = (root: FilterASTNode) => FilterASTNode\n"],"mappings":""}

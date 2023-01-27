@@ -45,7 +45,7 @@ describe('MultiStringInput tests', () => {
     it('defaults true, show options', () => {
       renderWithTheme(getMockedComponent({ suggestions: ['Foo'] }))
 
-      const input = screen.getByPlaceholderText('any value')!
+      const input = screen.getByPlaceholderText('any value')
       fireEvent.click(input)
 
       expect(screen.getByRole('listbox')).toBeInTheDocument()
@@ -60,7 +60,7 @@ describe('MultiStringInput tests', () => {
         getMockedComponent({ showDropDownMenu: false, suggestions: ['Foo'] })
       )
 
-      const input = screen.getByPlaceholderText('any value')!
+      const input = screen.getByPlaceholderText('any value')
       fireEvent.click(input)
 
       expect(screen.queryByRole('listbox')).not.toBeInTheDocument()
@@ -73,7 +73,7 @@ describe('MultiStringInput tests', () => {
       const onChangeMock = jest.fn()
       renderWithTheme(getMockedComponent({ onChange: onChangeMock }))
 
-      const input = screen.getByPlaceholderText('any value')!
+      const input = screen.getByPlaceholderText('any value')
       fireEvent.change(input, { target: { value: 'bar,' } })
 
       expect(input).toHaveValue('')
@@ -89,7 +89,7 @@ describe('MultiStringInput tests', () => {
         getMockedComponent({ disableCreate: true, onChange: onChangeMock })
       )
 
-      const input = screen.getByPlaceholderText('any value')!
+      const input = screen.getByPlaceholderText('any value')
       fireEvent.change(input, { target: { value: 'bar,' } })
 
       expect(input).toHaveValue('bar,')

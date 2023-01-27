@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { DataTableColumns } from '../Column';
 export declare const stringComparator: (stringA: string, stringB: string) => 0 | 1 | -1;
 export declare const dateComparator: (dateA: Date, dateB: Date) => 0 | 1 | -1;

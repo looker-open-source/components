@@ -49,7 +49,7 @@ describe('FieldSelectMulti', () => {
     )
 
     expect(screen.getByText('5/50')).toBeInTheDocument()
-    expect(screen.getByLabelText('👍')).toHaveDescription(
+    expect(screen.getByLabelText('👍')).toHaveAccessibleDescription(
       'this is the description'
     )
   })

@@ -1,8 +1,11 @@
 {
   "name": "@looker/filter-components",
-  "main": "src/index.ts",
   "license": "MIT",
-  "version": "0.10.24",
+  "version": "1.0.1",
+  "main": "lib/main/index.js",
+  "module": "lib/module/index.js",
+  "types": "lib/index.d.ts",
+  "src": "src/index.ts",
   "sideEffects": false,
   "publishConfig": {
     "access": "public",
@@ -19,9 +22,9 @@
     "coverage": "lk coverage"
   },
   "dependencies": {
-    "@looker/components": "4.0.4",
-    "@looker/filter-expressions": "1.0.0",
-    "@looker/i18n": "0.1.8",
+    "@looker/components": "4.1.1",
+    "@looker/filter-expressions": "1.0.2",
+    "@looker/i18n": "1.0.0",
     "@looker/sdk": "22.4.2",
     "@looker/sdk-rtl": "^21.3.3",
     "@styled-icons/material": "10.34.0",
@@ -29,7 +32,7 @@
     "@styled-icons/material-rounded": "10.34.0",
     "date-fns": "^2.10.0",
     "lodash": "*",
-    "polished": "3.4.1",
+    "polished": "3.7.2",
     "use-debounce": "5.2.1"
   },
   "devDependencies": {
@@ -41,13 +44,15 @@
     "@looker/components-test-utils": "*",
     "@looker/eslint-config-oss": "*",
     "@looker/jest-config": "*",
+    "@looker/prettier-config": "*",
+    "@looker/storybook": "*",
     "@looker/stylelint-config": "*",
     "@looker/test-utils": "*",
     "@storybook/testing-react": "^0.0.22",
     "@testing-library/react": "*",
     "@testing-library/react-hooks": "*",
-    "enzyme": "3.10.0",
     "glob": "7.1.6",
+    "prettier": "2.8.2",
     "react": "16.14.0",
     "react-dom": "16.14.0",
     "react-i18next": "11.8.15",
@@ -67,7 +72,6 @@
     ],
     "rules": {
       "@typescript-eslint/no-explicit-any": "off",
-      "@typescript-eslint/no-non-null-assertion": "off",
       "camelcase": "off",
       "import/order": "off",
       "no-restricted-imports": "off",

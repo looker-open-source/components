@@ -42,9 +42,11 @@ import { isDateTime } from './is_date_time'
 import { zeroPad2, zeroPad4 } from './zero_pad'
 
 const describeDateTime = (
-  { year, month, day, hour = 0, minute = 0 }: FilterDateTimeModel,
-  showTime: boolean
+  date?: FilterDateTimeModel,
+  showTime?: boolean
 ): string => {
+  if (!date) return 'Invalid Date'
+  const { year, month, day, hour = 0, minute = 0 } = date
   let result = String(zeroPad4(year))
   result += month ? `/${zeroPad2(month)}` : ''
   result += day ? `/${zeroPad2(day)}` : ''
@@ -149,7 +151,7 @@ const beforeAfter = (item: FilterModel, showTime: boolean) => {
     return t('absolute prefix dateTime', {
       ns: 'describe_date',
       prefix,
-      dateTime: describeDateTime(date!, showTime),
+      dateTime: describeDateTime(date, showTime),
     })
   }
   const timePassed = fromnow
@@ -177,7 +179,7 @@ const on = ({ date }: FilterModel, showTime: boolean) => {
   return t('is on dateTime', {
     ns: 'describe_date',
     dateTime: describeDateTime(
-      date!,
+      date,
       showTime && hasTimeFilterDateTimeModel(date)
     ),
   })
@@ -187,8 +189,8 @@ const describeRange = ({ start, end }: FilterModel, showTime: boolean) => {
   const t = i18next.t.bind(i18next)
   return t('is from dateTimeStart until dateTimeEnd', {
     ns: 'describe_date',
-    dateTimeStart: describeDateTime(start!, showTime),
-    dateTimeEnd: describeDateTime(end!, showTime),
+    dateTimeStart: describeDateTime(start, showTime),
+    dateTimeEnd: describeDateTime(end, showTime),
   })
 }
 

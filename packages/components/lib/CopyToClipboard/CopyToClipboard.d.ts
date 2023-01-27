@@ -1,4 +1,4 @@
-import type { FC } from 'react';
+import type { ReactElement } from 'react';
 /**
  */
 export interface CopyToClipboardProps {
@@ -11,12 +11,16 @@ export interface CopyToClipboardProps {
      * button's label | a JSX element to replace the button
      * I18n recommended: content that is user visible should be treated for i18n
      */
-    children?: string | JSX.Element;
+    children?: string | ReactElement;
     /**
      * button's successfully copied label | a JSX element to replace the button
      * I18n recommended: content that is user visible should be treated for i18n
      * @default Copied
      */
     success?: string | JSX.Element;
+    /**
+     * button's disabled property
+     */
+    disabled?: boolean;
 }
-export declare const CopyToClipboard: FC<CopyToClipboardProps>;
+export declare const CopyToClipboard: (props: CopyToClipboardProps) => JSX.Element;

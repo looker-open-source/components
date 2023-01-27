@@ -33,8 +33,7 @@ export const mockSdkPivotDataResponse = [
           label: 'by Created Time',
           label_prefix: 'by',
           label_value: 'Created Time',
-          url:
-            '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-12-22&sorts=orders.created_date desc&limit=500',
+          url: '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-12-22&sorts=orders.created_date desc&limit=500',
           type: 'drill',
           type_label: 'Drill into 2019-12-22',
           type_label_prefix: 'Drill into',
@@ -75,8 +74,7 @@ export const mockSdkPivotDataResponse = [
           label: 'by Created Time',
           label_prefix: 'by',
           label_value: 'Created Time',
-          url:
-            '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-12-21&sorts=orders.created_date desc&limit=500',
+          url: '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-12-21&sorts=orders.created_date desc&limit=500',
           type: 'drill',
           type_label: 'Drill into 2019-12-21',
           type_label_prefix: 'Drill into',
@@ -116,8 +114,7 @@ export const mockSdkPivotDataResponse = [
           label: 'by Created Time',
           label_prefix: 'by',
           label_value: 'Created Time',
-          url:
-            '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-12-20&sorts=orders.created_date desc&limit=500',
+          url: '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-12-20&sorts=orders.created_date desc&limit=500',
           type: 'drill',
           type_label: 'Drill into 2019-12-20',
           type_label_prefix: 'Drill into',
@@ -157,8 +154,7 @@ export const mockSdkPivotDataResponse = [
           label: 'by Created Time',
           label_prefix: 'by',
           label_value: 'Created Time',
-          url:
-            '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-12-19&sorts=orders.created_date desc&limit=500',
+          url: '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-12-19&sorts=orders.created_date desc&limit=500',
           type: 'drill',
           type_label: 'Drill into 2019-12-19',
           type_label_prefix: 'Drill into',
@@ -199,8 +195,7 @@ export const mockSdkPivotDataResponse = [
           label: 'by Created Time',
           label_prefix: 'by',
           label_value: 'Created Time',
-          url:
-            '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-12-18&sorts=orders.created_date desc&limit=500',
+          url: '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-12-18&sorts=orders.created_date desc&limit=500',
           type: 'drill',
           type_label: 'Drill into 2019-12-18',
           type_label_prefix: 'Drill into',
@@ -241,8 +236,7 @@ export const mockSdkPivotDataResponse = [
           label: 'by Created Time',
           label_prefix: 'by',
           label_value: 'Created Time',
-          url:
-            '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-12-17&sorts=orders.created_date desc&limit=500',
+          url: '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-12-17&sorts=orders.created_date desc&limit=500',
           type: 'drill',
           type_label: 'Drill into 2019-12-17',
           type_label_prefix: 'Drill into',
@@ -284,8 +278,7 @@ export const mockSdkPivotDataResponse = [
           label: 'by Created Time',
           label_prefix: 'by',
           label_value: 'Created Time',
-          url:
-            '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-12-16&sorts=orders.created_date desc&limit=500',
+          url: '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-12-16&sorts=orders.created_date desc&limit=500',
           type: 'drill',
           type_label: 'Drill into 2019-12-16',
           type_label_prefix: 'Drill into',
@@ -328,8 +321,7 @@ export const mockSdkPivotDataResponse = [
           label: 'by Created Time',
           label_prefix: 'by',
           label_value: 'Created Time',
-          url:
-            '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-12-15&sorts=orders.created_date desc&limit=500',
+          url: '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-12-15&sorts=orders.created_date desc&limit=500',
           type: 'drill',
           type_label: 'Drill into 2019-12-15',
           type_label_prefix: 'Drill into',
@@ -372,8 +364,7 @@ export const mockSdkPivotDataResponse = [
           label: 'by Created Time',
           label_prefix: 'by',
           label_value: 'Created Time',
-          url:
-            '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-12-14&sorts=orders.created_date desc&limit=500',
+          url: '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-12-14&sorts=orders.created_date desc&limit=500',
           type: 'drill',
           type_label: 'Drill into 2019-12-14',
           type_label_prefix: 'Drill into',
@@ -416,8 +407,7 @@ export const mockSdkPivotDataResponse = [
           label: 'by Created Time',
           label_prefix: 'by',
           label_value: 'Created Time',
-          url:
-            '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-12-13&sorts=orders.created_date desc&limit=500',
+          url: '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-12-13&sorts=orders.created_date desc&limit=500',
           type: 'drill',
           type_label: 'Drill into 2019-12-13',
           type_label_prefix: 'Drill into',
@@ -459,8 +449,7 @@ export const mockSdkPivotDataResponse = [
           label: 'by Created Time',
           label_prefix: 'by',
           label_value: 'Created Time',
-          url:
-            '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-12-12&sorts=orders.created_date desc&limit=500',
+          url: '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-12-12&sorts=orders.created_date desc&limit=500',
           type: 'drill',
           type_label: 'Drill into 2019-12-12',
           type_label_prefix: 'Drill into',
@@ -502,8 +491,7 @@ export const mockSdkPivotDataResponse = [
           label: 'by Created Time',
           label_prefix: 'by',
           label_value: 'Created Time',
-          url:
-            '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-12-11&sorts=orders.created_date desc&limit=500',
+          url: '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-12-11&sorts=orders.created_date desc&limit=500',
           type: 'drill',
           type_label: 'Drill into 2019-12-11',
           type_label_prefix: 'Drill into',
@@ -544,8 +532,7 @@ export const mockSdkPivotDataResponse = [
           label: 'by Created Time',
           label_prefix: 'by',
           label_value: 'Created Time',
-          url:
-            '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-12-10&sorts=orders.created_date desc&limit=500',
+          url: '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-12-10&sorts=orders.created_date desc&limit=500',
           type: 'drill',
           type_label: 'Drill into 2019-12-10',
           type_label_prefix: 'Drill into',
@@ -586,8 +573,7 @@ export const mockSdkPivotDataResponse = [
           label: 'by Created Time',
           label_prefix: 'by',
           label_value: 'Created Time',
-          url:
-            '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-12-09&sorts=orders.created_date desc&limit=500',
+          url: '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-12-09&sorts=orders.created_date desc&limit=500',
           type: 'drill',
           type_label: 'Drill into 2019-12-09',
           type_label_prefix: 'Drill into',
@@ -628,8 +614,7 @@ export const mockSdkPivotDataResponse = [
           label: 'by Created Time',
           label_prefix: 'by',
           label_value: 'Created Time',
-          url:
-            '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-12-08&sorts=orders.created_date desc&limit=500',
+          url: '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-12-08&sorts=orders.created_date desc&limit=500',
           type: 'drill',
           type_label: 'Drill into 2019-12-08',
           type_label_prefix: 'Drill into',
@@ -669,8 +654,7 @@ export const mockSdkPivotDataResponse = [
           label: 'by Created Time',
           label_prefix: 'by',
           label_value: 'Created Time',
-          url:
-            '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-12-07&sorts=orders.created_date desc&limit=500',
+          url: '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-12-07&sorts=orders.created_date desc&limit=500',
           type: 'drill',
           type_label: 'Drill into 2019-12-07',
           type_label_prefix: 'Drill into',
@@ -710,8 +694,7 @@ export const mockSdkPivotDataResponse = [
           label: 'by Created Time',
           label_prefix: 'by',
           label_value: 'Created Time',
-          url:
-            '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-12-06&sorts=orders.created_date desc&limit=500',
+          url: '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-12-06&sorts=orders.created_date desc&limit=500',
           type: 'drill',
           type_label: 'Drill into 2019-12-06',
           type_label_prefix: 'Drill into',
@@ -752,8 +735,7 @@ export const mockSdkPivotDataResponse = [
           label: 'by Created Time',
           label_prefix: 'by',
           label_value: 'Created Time',
-          url:
-            '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-12-05&sorts=orders.created_date desc&limit=500',
+          url: '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-12-05&sorts=orders.created_date desc&limit=500',
           type: 'drill',
           type_label: 'Drill into 2019-12-05',
           type_label_prefix: 'Drill into',
@@ -793,8 +775,7 @@ export const mockSdkPivotDataResponse = [
           label: 'by Created Time',
           label_prefix: 'by',
           label_value: 'Created Time',
-          url:
-            '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-12-04&sorts=orders.created_date desc&limit=500',
+          url: '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-12-04&sorts=orders.created_date desc&limit=500',
           type: 'drill',
           type_label: 'Drill into 2019-12-04',
           type_label_prefix: 'Drill into',
@@ -835,8 +816,7 @@ export const mockSdkPivotDataResponse = [
           label: 'by Created Time',
           label_prefix: 'by',
           label_value: 'Created Time',
-          url:
-            '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-12-03&sorts=orders.created_date desc&limit=500',
+          url: '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-12-03&sorts=orders.created_date desc&limit=500',
           type: 'drill',
           type_label: 'Drill into 2019-12-03',
           type_label_prefix: 'Drill into',
@@ -876,8 +856,7 @@ export const mockSdkPivotDataResponse = [
           label: 'by Created Time',
           label_prefix: 'by',
           label_value: 'Created Time',
-          url:
-            '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-12-02&sorts=orders.created_date desc&limit=500',
+          url: '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-12-02&sorts=orders.created_date desc&limit=500',
           type: 'drill',
           type_label: 'Drill into 2019-12-02',
           type_label_prefix: 'Drill into',
@@ -917,8 +896,7 @@ export const mockSdkPivotDataResponse = [
           label: 'by Created Time',
           label_prefix: 'by',
           label_value: 'Created Time',
-          url:
-            '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-12-01&sorts=orders.created_date desc&limit=500',
+          url: '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-12-01&sorts=orders.created_date desc&limit=500',
           type: 'drill',
           type_label: 'Drill into 2019-12-01',
           type_label_prefix: 'Drill into',
@@ -958,8 +936,7 @@ export const mockSdkPivotDataResponse = [
           label: 'by Created Time',
           label_prefix: 'by',
           label_value: 'Created Time',
-          url:
-            '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-30&sorts=orders.created_date desc&limit=500',
+          url: '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-30&sorts=orders.created_date desc&limit=500',
           type: 'drill',
           type_label: 'Drill into 2019-11-30',
           type_label_prefix: 'Drill into',
@@ -999,8 +976,7 @@ export const mockSdkPivotDataResponse = [
           label: 'by Created Time',
           label_prefix: 'by',
           label_value: 'Created Time',
-          url:
-            '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-29&sorts=orders.created_date desc&limit=500',
+          url: '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-29&sorts=orders.created_date desc&limit=500',
           type: 'drill',
           type_label: 'Drill into 2019-11-29',
           type_label_prefix: 'Drill into',
@@ -1041,8 +1017,7 @@ export const mockSdkPivotDataResponse = [
           label: 'by Created Time',
           label_prefix: 'by',
           label_value: 'Created Time',
-          url:
-            '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-28&sorts=orders.created_date desc&limit=500',
+          url: '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-28&sorts=orders.created_date desc&limit=500',
           type: 'drill',
           type_label: 'Drill into 2019-11-28',
           type_label_prefix: 'Drill into',
@@ -1083,8 +1058,7 @@ export const mockSdkPivotDataResponse = [
           label: 'by Created Time',
           label_prefix: 'by',
           label_value: 'Created Time',
-          url:
-            '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-27&sorts=orders.created_date desc&limit=500',
+          url: '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-27&sorts=orders.created_date desc&limit=500',
           type: 'drill',
           type_label: 'Drill into 2019-11-27',
           type_label_prefix: 'Drill into',
@@ -1125,8 +1099,7 @@ export const mockSdkPivotDataResponse = [
           label: 'by Created Time',
           label_prefix: 'by',
           label_value: 'Created Time',
-          url:
-            '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-26&sorts=orders.created_date desc&limit=500',
+          url: '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-26&sorts=orders.created_date desc&limit=500',
           type: 'drill',
           type_label: 'Drill into 2019-11-26',
           type_label_prefix: 'Drill into',
@@ -1166,8 +1139,7 @@ export const mockSdkPivotDataResponse = [
           label: 'by Created Time',
           label_prefix: 'by',
           label_value: 'Created Time',
-          url:
-            '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-25&sorts=orders.created_date desc&limit=500',
+          url: '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-25&sorts=orders.created_date desc&limit=500',
           type: 'drill',
           type_label: 'Drill into 2019-11-25',
           type_label_prefix: 'Drill into',
@@ -1208,8 +1180,7 @@ export const mockSdkPivotDataResponse = [
           label: 'by Created Time',
           label_prefix: 'by',
           label_value: 'Created Time',
-          url:
-            '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-24&sorts=orders.created_date desc&limit=500',
+          url: '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-24&sorts=orders.created_date desc&limit=500',
           type: 'drill',
           type_label: 'Drill into 2019-11-24',
           type_label_prefix: 'Drill into',
@@ -1249,8 +1220,7 @@ export const mockSdkPivotDataResponse = [
           label: 'by Created Time',
           label_prefix: 'by',
           label_value: 'Created Time',
-          url:
-            '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-23&sorts=orders.created_date desc&limit=500',
+          url: '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-23&sorts=orders.created_date desc&limit=500',
           type: 'drill',
           type_label: 'Drill into 2019-11-23',
           type_label_prefix: 'Drill into',
@@ -1290,8 +1260,7 @@ export const mockSdkPivotDataResponse = [
           label: 'by Created Time',
           label_prefix: 'by',
           label_value: 'Created Time',
-          url:
-            '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-22&sorts=orders.created_date desc&limit=500',
+          url: '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-22&sorts=orders.created_date desc&limit=500',
           type: 'drill',
           type_label: 'Drill into 2019-11-22',
           type_label_prefix: 'Drill into',
@@ -1333,8 +1302,7 @@ export const mockSdkPivotDataResponse = [
           label: 'by Created Time',
           label_prefix: 'by',
           label_value: 'Created Time',
-          url:
-            '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-21&sorts=orders.created_date desc&limit=500',
+          url: '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-21&sorts=orders.created_date desc&limit=500',
           type: 'drill',
           type_label: 'Drill into 2019-11-21',
           type_label_prefix: 'Drill into',
@@ -1374,8 +1342,7 @@ export const mockSdkPivotDataResponse = [
           label: 'by Created Time',
           label_prefix: 'by',
           label_value: 'Created Time',
-          url:
-            '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-20&sorts=orders.created_date desc&limit=500',
+          url: '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-20&sorts=orders.created_date desc&limit=500',
           type: 'drill',
           type_label: 'Drill into 2019-11-20',
           type_label_prefix: 'Drill into',
@@ -1415,8 +1382,7 @@ export const mockSdkPivotDataResponse = [
           label: 'by Created Time',
           label_prefix: 'by',
           label_value: 'Created Time',
-          url:
-            '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-19&sorts=orders.created_date desc&limit=500',
+          url: '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-19&sorts=orders.created_date desc&limit=500',
           type: 'drill',
           type_label: 'Drill into 2019-11-19',
           type_label_prefix: 'Drill into',
@@ -1457,8 +1423,7 @@ export const mockSdkPivotDataResponse = [
           label: 'by Created Time',
           label_prefix: 'by',
           label_value: 'Created Time',
-          url:
-            '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-18&sorts=orders.created_date desc&limit=500',
+          url: '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-18&sorts=orders.created_date desc&limit=500',
           type: 'drill',
           type_label: 'Drill into 2019-11-18',
           type_label_prefix: 'Drill into',
@@ -1500,8 +1465,7 @@ export const mockSdkPivotDataResponse = [
           label: 'by Created Time',
           label_prefix: 'by',
           label_value: 'Created Time',
-          url:
-            '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-17&sorts=orders.created_date desc&limit=500',
+          url: '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-17&sorts=orders.created_date desc&limit=500',
           type: 'drill',
           type_label: 'Drill into 2019-11-17',
           type_label_prefix: 'Drill into',
@@ -1543,8 +1507,7 @@ export const mockSdkPivotDataResponse = [
           label: 'by Created Time',
           label_prefix: 'by',
           label_value: 'Created Time',
-          url:
-            '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-16&sorts=orders.created_date desc&limit=500',
+          url: '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-16&sorts=orders.created_date desc&limit=500',
           type: 'drill',
           type_label: 'Drill into 2019-11-16',
           type_label_prefix: 'Drill into',
@@ -1586,8 +1549,7 @@ export const mockSdkPivotDataResponse = [
           label: 'by Created Time',
           label_prefix: 'by',
           label_value: 'Created Time',
-          url:
-            '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-15&sorts=orders.created_date desc&limit=500',
+          url: '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-15&sorts=orders.created_date desc&limit=500',
           type: 'drill',
           type_label: 'Drill into 2019-11-15',
           type_label_prefix: 'Drill into',
@@ -1628,8 +1590,7 @@ export const mockSdkPivotDataResponse = [
           label: 'by Created Time',
           label_prefix: 'by',
           label_value: 'Created Time',
-          url:
-            '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-14&sorts=orders.created_date desc&limit=500',
+          url: '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-14&sorts=orders.created_date desc&limit=500',
           type: 'drill',
           type_label: 'Drill into 2019-11-14',
           type_label_prefix: 'Drill into',
@@ -1670,8 +1631,7 @@ export const mockSdkPivotDataResponse = [
           label: 'by Created Time',
           label_prefix: 'by',
           label_value: 'Created Time',
-          url:
-            '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-13&sorts=orders.created_date desc&limit=500',
+          url: '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-13&sorts=orders.created_date desc&limit=500',
           type: 'drill',
           type_label: 'Drill into 2019-11-13',
           type_label_prefix: 'Drill into',
@@ -1711,8 +1671,7 @@ export const mockSdkPivotDataResponse = [
           label: 'by Created Time',
           label_prefix: 'by',
           label_value: 'Created Time',
-          url:
-            '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-12&sorts=orders.created_date desc&limit=500',
+          url: '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-12&sorts=orders.created_date desc&limit=500',
           type: 'drill',
           type_label: 'Drill into 2019-11-12',
           type_label_prefix: 'Drill into',
@@ -1752,8 +1711,7 @@ export const mockSdkPivotDataResponse = [
           label: 'by Created Time',
           label_prefix: 'by',
           label_value: 'Created Time',
-          url:
-            '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-11&sorts=orders.created_date desc&limit=500',
+          url: '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-11&sorts=orders.created_date desc&limit=500',
           type: 'drill',
           type_label: 'Drill into 2019-11-11',
           type_label_prefix: 'Drill into',
@@ -1793,8 +1751,7 @@ export const mockSdkPivotDataResponse = [
           label: 'by Created Time',
           label_prefix: 'by',
           label_value: 'Created Time',
-          url:
-            '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-10&sorts=orders.created_date desc&limit=500',
+          url: '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-10&sorts=orders.created_date desc&limit=500',
           type: 'drill',
           type_label: 'Drill into 2019-11-10',
           type_label_prefix: 'Drill into',
@@ -1834,8 +1791,7 @@ export const mockSdkPivotDataResponse = [
           label: 'by Created Time',
           label_prefix: 'by',
           label_value: 'Created Time',
-          url:
-            '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-09&sorts=orders.created_date desc&limit=500',
+          url: '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-09&sorts=orders.created_date desc&limit=500',
           type: 'drill',
           type_label: 'Drill into 2019-11-09',
           type_label_prefix: 'Drill into',
@@ -1876,8 +1832,7 @@ export const mockSdkPivotDataResponse = [
           label: 'by Created Time',
           label_prefix: 'by',
           label_value: 'Created Time',
-          url:
-            '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-08&sorts=orders.created_date desc&limit=500',
+          url: '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-08&sorts=orders.created_date desc&limit=500',
           type: 'drill',
           type_label: 'Drill into 2019-11-08',
           type_label_prefix: 'Drill into',
@@ -1917,8 +1872,7 @@ export const mockSdkPivotDataResponse = [
           label: 'by Created Time',
           label_prefix: 'by',
           label_value: 'Created Time',
-          url:
-            '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-07&sorts=orders.created_date desc&limit=500',
+          url: '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-07&sorts=orders.created_date desc&limit=500',
           type: 'drill',
           type_label: 'Drill into 2019-11-07',
           type_label_prefix: 'Drill into',
@@ -1959,8 +1913,7 @@ export const mockSdkPivotDataResponse = [
           label: 'by Created Time',
           label_prefix: 'by',
           label_value: 'Created Time',
-          url:
-            '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-06&sorts=orders.created_date desc&limit=500',
+          url: '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-06&sorts=orders.created_date desc&limit=500',
           type: 'drill',
           type_label: 'Drill into 2019-11-06',
           type_label_prefix: 'Drill into',
@@ -2000,8 +1953,7 @@ export const mockSdkPivotDataResponse = [
           label: 'by Created Time',
           label_prefix: 'by',
           label_value: 'Created Time',
-          url:
-            '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-05&sorts=orders.created_date desc&limit=500',
+          url: '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-05&sorts=orders.created_date desc&limit=500',
           type: 'drill',
           type_label: 'Drill into 2019-11-05',
           type_label_prefix: 'Drill into',
@@ -2041,8 +1993,7 @@ export const mockSdkPivotDataResponse = [
           label: 'by Created Time',
           label_prefix: 'by',
           label_value: 'Created Time',
-          url:
-            '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-04&sorts=orders.created_date desc&limit=500',
+          url: '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-04&sorts=orders.created_date desc&limit=500',
           type: 'drill',
           type_label: 'Drill into 2019-11-04',
           type_label_prefix: 'Drill into',
@@ -2082,8 +2033,7 @@ export const mockSdkPivotDataResponse = [
           label: 'by Created Time',
           label_prefix: 'by',
           label_value: 'Created Time',
-          url:
-            '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-03&sorts=orders.created_date desc&limit=500',
+          url: '/explore/thelook/orders?fields=orders.created_time,orders.average_total_amount_of_order_usd,orders.count,orders.status&pivots=orders.status&f[orders.created_date]=2019-11-03&sorts=orders.created_date desc&limit=500',
           type: 'drill',
           type_label: 'Drill into 2019-11-03',
           type_label_prefix: 'Drill into',

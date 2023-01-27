@@ -74,13 +74,12 @@ export const useAxis = ({ config, data, fields }: UseAxisProps) => {
     }).slice(0, MAX_TICK_LABEL_LENGTH)
   )
   const xAxisLongestLabel = pickLongestLabel(xAxisLabels)
-  const {
-    height: xAxisLongestLabelHeight,
-    width: xAxisLongestLabelWidth,
-  } = useMeasuredText(xAxisLongestLabel, {
-    fontFamily: visxTheme.axisStyles.x.bottom.tickLabel.fontFamily || 'Roboto',
-    fontSize: visxTheme.axisStyles.x.bottom.tickLabel.fontSize || '1rem',
-  })
+  const { height: xAxisLongestLabelHeight, width: xAxisLongestLabelWidth } =
+    useMeasuredText(xAxisLongestLabel, {
+      fontFamily:
+        visxTheme.axisStyles.x.bottom.tickLabel.fontFamily || 'Roboto',
+      fontSize: visxTheme.axisStyles.x.bottom.tickLabel.fontSize || '1rem',
+    })
   const averageLabelLength = xAxisLabels.join('').length / xAxisLabels.length
 
   const renderXAxisTicks = config?.x_axis?.[0]?.values

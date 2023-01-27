@@ -2,7 +2,10 @@
   "name": "@looker/icons",
   "license": "MIT",
   "version": "1.5.21",
-  "main": "src/index.ts",
+  "main": "lib/main/index.js",
+  "module": "lib/module/index.js",
+  "types": "src/index.ts",
+  "src": "src/index.ts",
   "sideEffects": false,
   "publishConfig": {
     "access": "public",
@@ -26,12 +29,14 @@
     "@looker/babel-preset-typescript": "*",
     "@looker/components-scripts": "*",
     "@looker/eslint-config-oss": "*",
+    "@looker/prettier-config": "*",
     "fast-glob": "^3.2.5",
     "fs-extra": "^10.0.0",
     "h2x-core": "^1.1.1",
     "h2x-plugin-jsx": "^1.2.0",
     "h2x-types": "^1.1.0",
     "number-to-words": "^1.2.4",
+    "prettier": "2.8.2",
     "react": "16.14.0"
   },
   "peerDependencies": {

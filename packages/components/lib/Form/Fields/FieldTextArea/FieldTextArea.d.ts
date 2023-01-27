@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 /// <reference types="react" />
 import type { TextAreaProps } from '../../Inputs/TextArea';
 import type { FloatingLabelFieldProps } from '../Field';

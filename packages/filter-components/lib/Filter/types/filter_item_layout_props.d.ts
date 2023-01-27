@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { FilterModel } from '@looker/filter-expressions';
 export declare type FilterItemLayoutProps<T extends string = string> = {
     item: FilterModel<T>;

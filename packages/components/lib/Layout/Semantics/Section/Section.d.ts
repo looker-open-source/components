@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { CompatibleHTMLProps } from '@looker/design-tokens';
 import React from 'react';
 import type { CommonLayoutProps } from '../../utils/common';

@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 declare type Controlled = {
     /**
      * Use this property (alongside toggleOpen) if you wish to use the component in a `controlled` manner.

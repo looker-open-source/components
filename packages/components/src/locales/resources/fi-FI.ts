@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2022 Looker Data Sciences, Inc.
+ Copyright (c) 2023 Google LLC
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -23,8 +23,10 @@
  SOFTWARE.
 
  */
+
 import dateLocale from 'date-fns/locale/fi'
-import type { I18nStateWithDates } from '@looker/i18n'
+
+import { mergeLocaleObjects } from '@looker/i18n'
 
 const resources = {
   AdvancedInputControls: {
@@ -78,7 +80,7 @@ const resources = {
     Options: 'Asetukset',
   },
   FieldTimeSelect: {
-    'Please enter a valid time': 'Lisää kelvollinen aika',
+    'Please use format HHMM': 'Käytä muotoa HH:MM',
   },
   GetIntentLabel: {
     Error: 'Virhe',
@@ -134,7 +136,9 @@ const resources = {
     Save: 'Tallenna',
   },
   RangeSlider: {
+    'Maximum Name': 'Enintään {{name}}',
     'Maximum Value': 'Enimmäisarvo',
+    'Minimum Name': 'Vähintään {{name}}',
     'Minimum Value': 'Vähimmäisarvo',
   },
   RequiredStar: {
@@ -149,8 +153,4 @@ const resources = {
   },
 }
 
-export const fiFI: I18nStateWithDates = {
-  dateLocale,
-  locale: 'fi-FI',
-  resources: { 'fi-FI': resources },
-}
+export const fiFI = mergeLocaleObjects([], 'fi-FI', resources, dateLocale)

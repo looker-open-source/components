@@ -1,0 +1,104 @@
+import { InputChips } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import basicStory from '!!raw-loader!./Basic'
+import summaryStory from '!!raw-loader!./Summary'
+import isClearableStory from '!!raw-loader!./IsClearable'
+import clearIconLabelStory from '!!raw-loader!./ClearIconLabel'
+import autoResizeStory from '!!raw-loader!./AutoResize'
+import controlledStory from '!!raw-loader!./Controlled'
+import validationStory from '!!raw-loader!./Validation'
+import formatInputStory from '!!raw-loader!./FormatInput'
+import formatInputFalseStory from '!!raw-loader!./FormatInputFalse'
+import removeOnBackspaceStory from '!!raw-loader!./RemoveOnBackspace'
+import disableStory from '!!raw-loader!./Disable'
+import readOnlyStory from '!!raw-loader!./ReadOnly'
+
+<Meta component={InputChips} title="Docs/InputChips" />
+
+# InputChips
+
+The `InputChips` component takes an array of strings (`values`) and renders them each as a [Chip](?path=/docs/docs-chip--docs) inside a text box.
+The input value is converted to chip values as the user types via the <strong>comma</strong> or <strong>enter</strong> keys, or on blur.
+Chips can be selected, via keyboard commands or clicking, and copy-pasted.
+
+Unlike other form elements, `InputChips` does not store internal value state, and can only be used as a controlled component. Therefore the `values` and `onChange` props are required.
+
+`InputChips` also supports `summary` and `isClearable`, similar to [InputSearch](?path=/docs/docs-inputsearch--docs) and `autoResize`, similar to [InputText](?path=/docs/docs-inputtext--docs).
+
+## Values
+
+The most basic implementation of `InputChips` requires setting the `values` and `onChange` props, where `values` is an array of string values.
+
+<Editor code={basicStory} />
+
+## Summary
+
+Use the `summary` prop to render string value to the right side of the input box (in this example: "You've entered 2 items").
+
+<Editor code={summaryStory} />
+
+## isClearable
+
+You can disable the single-click clear button by setting `isClearable` to false. Users will still be able to clear individual chips using either backspace or the in-chip clear icons.
+
+<Editor code={isClearableStory} />
+
+## clearIconLabel and chipIconLabel
+
+The `InputChips` component provides the prop `clearIconLabel` to customize the input icon label, the same is available to the individual `Chip` with the prop `chipIconLabel`. Hover over the the `x` icon to see the tooltip.
+
+<Editor code={clearIconLabelStory} />
+
+## autoresize
+
+To make the input box sizing respond dynamically to the amount of content set in the values, set `autoResize` to true.
+
+<Editor code={autoResizeStory} />
+
+## Controlled Input Value
+
+The `inputValue` and `onInputChange` props allow control of the typed value. We also provide an optional `onClear` event hook that can be used for post-event cleanup or rendering helpful undo functionality.
+
+<Editor code={controlledStory} />
+
+## Validation
+
+If a duplicate value is entered, it will not be added to the values list.
+The optional `validate` prop is a function returning a boolean that is called for each value that is entered.
+If it returns false, the value is not added. `onValidationFail` and `onDuplicate` are optional handlers for when
+invalid and duplicate values are entered.
+
+<Editor code={validationStory} />
+
+## formatInputValue
+
+Use this callback to format values after there are entered, before validation. In this example, all chips are converted to UPPERCASE upon entry:
+
+<Editor code={formatInputStory} />
+
+By default, any leading or trailing whitespace will be trimmed. To disable input formatting altogether,
+use `formatInputValue={false}`.
+
+<Editor code={formatInputFalseStory} />
+
+## removeOnBackspace
+
+The `removeOnBackspace` prop defaults to true.
+When set to false, hitting the `Backspace` key while focused in the input will not remove values.
+
+<Editor code={removeOnBackspaceStory} />
+
+## Disable
+
+Use the `disable` property to make an input field un-editable.
+
+<Editor code={disableStory} />
+
+## ReadOnly property
+
+As the name suggests, readOnly makes the text un-editable.
+
+<Editor code={readOnlyStory} />
+
+<ArgsTable of={InputChips} exclude={excludedProps} />

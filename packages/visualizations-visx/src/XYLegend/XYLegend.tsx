@@ -23,7 +23,6 @@
  SOFTWARE.
 
  */
-import type { FC } from 'react'
 import React, { useContext } from 'react'
 import type { CCartesian, Fields } from '@looker/visualizations-adapters'
 import { useTheme } from 'styled-components'
@@ -41,7 +40,7 @@ type LegendProps = {
 
 const DEFAULT_LEGEND_WIDTH = 200
 
-export const XYLegend: FC<LegendProps> = ({ chartWidth, config, fields }) => {
+export const XYLegend = ({ chartWidth, config, fields }: LegendProps) => {
   const {
     colorScale = {} as ScaleOrdinal<string, string, never>,
     theme: visxTheme,

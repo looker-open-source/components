@@ -73,21 +73,19 @@ const LkFieldTreeLayout = ({
     onMouseLeave,
   })
 
-  const {
-    color,
-    disabled,
-    icon,
-    selected,
-  } = treeItemInnerProps as Partial<ListItemProps>
+  const { color, disabled, icon, selected } =
+    treeItemInnerProps as Partial<ListItemProps>
   const [ariaProps] = partitionAriaProps(restProps)
   const treeContext = useContext(TreeContext)
 
   // Context for supporting windowing
   // - opened / closed state must be managed at the collection level for accurate item count
   // - partialRender to hide the accordion disclosure if it's above the window
-  const { isOpen: contextIsOpen, toggleNode, partialRender } = useContext(
-    WindowedTreeContext
-  )
+  const {
+    isOpen: contextIsOpen,
+    toggleNode,
+    partialRender,
+  } = useContext(WindowedTreeContext)
 
   const isOpen = contextIsOpen ?? propsIsOpen
   const toggleOpen = toggleNode ?? propsToggleOpen

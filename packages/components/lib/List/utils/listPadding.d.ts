@@ -1,4 +1,8 @@
 /**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
+/**
  * Produces a CSS interpolation for a styled collection component (e.g. Menu, Select)
  * that applies spacing to the top of the first item, the bottom of the last,
  * and the top and bottom of each divider.

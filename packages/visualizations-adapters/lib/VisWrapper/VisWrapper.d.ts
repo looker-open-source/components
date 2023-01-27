@@ -1,4 +1,9 @@
-import type { ReactNode, Ref, FC } from 'react';
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
+import type { ReactNode } from 'react';
+import React from 'react';
 import type { CommonCartesianProperties } from '../types';
 export declare type VisWrapperProps = {
     children?: ReactNode;
@@ -6,6 +11,7 @@ export declare type VisWrapperProps = {
 };
 export declare type VisWrapperInternalProps = VisWrapperProps & {
     className?: string;
-    ref?: Ref<HTMLDivElement>;
 };
-export declare const VisWrapper: import("styled-components").StyledComponent<FC<VisWrapperInternalProps>, import("styled-components").DefaultTheme, {}, never>;
+export declare const VisWrapper: import("styled-components").StyledComponent<React.ForwardRefExoticComponent<VisWrapperProps & {
+    className?: string | undefined;
+} & React.RefAttributes<HTMLDivElement>>, import("styled-components").DefaultTheme, {}, never>;

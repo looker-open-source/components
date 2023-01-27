@@ -23,8 +23,8 @@
  SOFTWARE.
 
  */
-import type { FC } from 'react'
 import React from 'react'
+import type { ReactElement } from 'react'
 import { ComponentsProvider } from '@looker/components'
 import { useTheme } from 'styled-components'
 import { Table } from '@looker/visualizations-table'
@@ -52,6 +52,8 @@ import has from 'lodash/has'
 import { QueryError } from '../QueryError'
 import { useTranslation } from '../utils'
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type FunctionComponentType = (props: any) => ReactElement<any, any> | null
 export interface VisualizationProps extends VisWrapperProps, ChartLayoutProps {
   /*
    * debug renders the raw query data and query config rather than the chart
@@ -62,14 +64,12 @@ export interface VisualizationProps extends VisWrapperProps, ChartLayoutProps {
   config?: CAll
   totals?: Record<string, number>
   pivots?: Pivots
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  chartTypeMap?: Record<string, FC<any>>
+  chartTypeMap?: Record<string, FunctionComponentType>
 }
 
 export const defaultChartTypeMap: Record<
   keyof SupportedChartTypes | 'default',
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  FC<any>
+  FunctionComponentType
 > = {
   area: Area,
   bar: Bar,
@@ -83,7 +83,7 @@ export const defaultChartTypeMap: Record<
   table: Table,
 }
 
-const VisualizationComponent: FC<VisualizationProps> = ({
+const VisualizationComponent = ({
   height,
   width,
   data = [],
@@ -92,7 +92,7 @@ const VisualizationComponent: FC<VisualizationProps> = ({
   totals,
   config,
   chartTypeMap = {},
-}) => {
+}: VisualizationProps) => {
   const { t } = useTranslation('Visualization')
 
   if (fields?.measures.some(measure => measure.type === 'date')) {
@@ -132,7 +132,7 @@ const VisualizationComponent: FC<VisualizationProps> = ({
   }
 }
 
-export const Visualization: FC<VisualizationProps> = props => {
+export const Visualization = (props: VisualizationProps) => {
   const theme = useTheme()
 
   if (!theme) {

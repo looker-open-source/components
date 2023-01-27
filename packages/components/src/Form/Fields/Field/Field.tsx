@@ -27,14 +27,13 @@
 import { width } from '@looker/design-tokens'
 import React from 'react'
 import styled, { css } from 'styled-components'
-import omit from 'lodash/omit'
 import pick from 'lodash/pick'
 import { inputHeight } from '../../Inputs/height'
 import { HelperText } from './HelperText'
 import { FieldDetail } from './FieldDetail'
 import { FieldLabel } from './FieldLabel'
 import { InputArea } from './InputArea'
-import type { FieldProps } from './types'
+import type { FieldProps, FloatingLabelFieldProps } from './types'
 
 export const fieldPropKeys = [
   'className',
@@ -45,15 +44,35 @@ export const fieldPropKeys = [
   'inline',
   'label',
   'hideLabel',
-  'labelWidth',
   'validationMessage',
   'width',
-]
+] as const
 
 export const pickFieldProps = (props: FieldProps) =>
   pick(props, [...fieldPropKeys, 'disabled', 'required', 'autoResize'])
 
-export const omitFieldProps = (props: FieldProps) => omit(props, fieldPropKeys)
+type ExcludedProps = typeof fieldPropKeys[number]
+type OmitFieldPropsResult<FieldPropsType extends FloatingLabelFieldProps> =
+  Omit<FieldPropsType, ExcludedProps>
+
+export function omitFieldProps<FieldPropsType extends FloatingLabelFieldProps>(
+  props: FieldPropsType
+): OmitFieldPropsResult<FieldPropsType> {
+  const {
+    className: _className,
+    description: _description,
+    detail: _detail,
+    externalLabel: _externalLabel,
+    id: _id,
+    inline: _inline,
+    label: _label,
+    hideLabel: _hideLabel,
+    validationMessage: _validationMessage,
+    width: _width,
+    ...rest
+  } = props
+  return rest
+}
 
 /**
  * `<Field />` allows the rendering of a label (optionally associated with a child input like `<InputText />`),

@@ -67,7 +67,7 @@ test('FieldDate should accept detail and description attributes', () => {
   )
 
   expect(screen.getByText('5/50')).toBeInTheDocument()
-  expect(screen.getByLabelText('Label')).toHaveDescription(
+  expect(screen.getByLabelText('Label')).toHaveAccessibleDescription(
     'this is the description'
   )
 })

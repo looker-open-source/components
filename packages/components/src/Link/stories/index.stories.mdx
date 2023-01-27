@@ -1,5 +1,6 @@
 import { Link } from '@looker/components'
-import { Meta } from '@storybook/addon-docs'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
 import underline from '!!raw-loader!./Underline'
 import basic from '!!raw-loader!./Basic'
 import keyColor from '!!raw-loader!./KeyColor'
@@ -33,4 +34,4 @@ Set `keyColor` to true if you wish the link color to be branded as defined by yo
 
 ## Props
 
-<ArgsTable of={Link} />
+<ArgsTable of={Link} exclude={excludedProps} />

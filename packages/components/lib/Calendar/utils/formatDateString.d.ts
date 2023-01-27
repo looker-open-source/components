@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { Locale } from 'date-fns';
 declare type Full = 'full';
 declare type Long = 'long';

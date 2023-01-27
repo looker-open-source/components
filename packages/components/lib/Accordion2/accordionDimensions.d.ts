@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { DensityRamp, FontSizes, SpacingSizes } from '@looker/design-tokens';
 import type { IconSize } from '../Icon';
 declare type AccordionDensityDimensions = {

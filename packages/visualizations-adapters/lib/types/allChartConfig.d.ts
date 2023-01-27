@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { CArea, CBar, CColumn, CLine, CPie, CScatter, CSparkline, CTable, CSingleValue } from '../adapters';
 export declare const SUPPORTED_CHART_TYPES: {
     readonly area: "area";

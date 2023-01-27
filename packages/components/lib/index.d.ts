@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 export * from './Accordion';
 export * from './Accordion2';
 export * from './Animate';
@@ -16,6 +20,7 @@ export * from './Dialog';
 export * from './Divider';
 export * from './Drawer';
 export * from './Form';
+export * from './Fieldset';
 export * from './Icon';
 export * from './Layout';
 export * from './Link';
@@ -34,6 +39,7 @@ export * from './Panel';
 export * from './Popover';
 export * from './Portal';
 export * from './ProgressCircular';
+export * from './ReplaceText';
 export * from './Spinner';
 export * from './Status';
 export * from './Table';
@@ -48,6 +54,10 @@ export * from './VisuallyHidden';
 export * from './locales';
 export * from './utils';
 export * from './utils-storybook';
+/**
+ * Needed for some helpers in Storybook
+ */
+export * from './fixtures';
 export { ComponentsProvider, ExtendComponentsThemeProvider, } from '@looker/components-providers';
 export { i18nUpdate } from '@looker/i18n';
 export { theme, Theme } from '@looker/design-tokens';

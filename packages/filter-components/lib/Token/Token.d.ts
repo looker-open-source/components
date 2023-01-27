@@ -17,7 +17,22 @@ interface ChipTokenProps {
  * that displays the summary (label) description of a filter's value
  */
 export declare const Token: React.ForwardRefExoticComponent<TokenProps & React.RefAttributes<HTMLDivElement>>;
-export declare const SubduedToken: import("styled-components").StyledComponent<React.ForwardRefExoticComponent<import("@looker/components").ChipProps & React.RefAttributes<HTMLSpanElement>>, import("styled-components").DefaultTheme, {
+export declare const TokenBase: import("styled-components").StyledComponent<React.ForwardRefExoticComponent<import("styled-system").MaxWidthProps<Required<import("styled-system").Theme<import("styled-system").TLengthStyledSystem>>, import("csstype").Property.MaxWidth<import("styled-system").TLengthStyledSystem>> & import("@looker/components").GenericClickProps<HTMLSpanElement> & {
+    iconLabel?: string | undefined;
+    onDelete?: ((e?: React.KeyboardEvent<HTMLSpanElement> | React.MouseEvent<HTMLSpanElement, MouseEvent> | undefined) => void) | undefined;
+    prefix?: string | undefined;
+    readOnly?: boolean | undefined;
+} & React.RefAttributes<HTMLSpanElement>>, import("styled-components").DefaultTheme, {
+    role: "button";
+} & import("@looker/components").ChipButtonProps & ChipTokenProps & {
+    maxWidth?: string | undefined;
+}, "role">;
+export declare const SubduedToken: import("styled-components").StyledComponent<React.ForwardRefExoticComponent<import("styled-system").MaxWidthProps<Required<import("styled-system").Theme<import("styled-system").TLengthStyledSystem>>, import("csstype").Property.MaxWidth<import("styled-system").TLengthStyledSystem>> & import("@looker/components").GenericClickProps<HTMLSpanElement> & {
+    iconLabel?: string | undefined;
+    onDelete?: ((e?: React.KeyboardEvent<HTMLSpanElement> | React.MouseEvent<HTMLSpanElement, MouseEvent> | undefined) => void) | undefined;
+    prefix?: string | undefined;
+    readOnly?: boolean | undefined;
+} & React.RefAttributes<HTMLSpanElement>>, import("styled-components").DefaultTheme, {
     role: "button";
 } & import("@looker/components").ChipButtonProps & ChipTokenProps & {
     maxWidth?: string | undefined;

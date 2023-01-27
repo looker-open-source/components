@@ -1,0 +1,55 @@
+import { Heading } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import storyDefault from '!!raw-loader!./Default'
+import storyLevel from '!!raw-loader!./Level'
+import storyFontSize from '!!raw-loader!./FontSize'
+import storyFontWeight from '!!raw-loader!./FontWeight'
+import storyTextTransform from '!!raw-loader!./TextTransform'
+import storyTextAlign from '!!raw-loader!./TextAlign'
+import storyColor from '!!raw-loader!./Color'
+
+<Meta component={Heading} title="Docs/Heading" />
+
+# Heading
+
+The `<Heading />` component is used to render a HTML `<h1>` - `<h6>` element, by default it will render a `<h2>` element
+
+<Editor code={storyDefault} />
+
+## Heading Levels
+
+To use a different HTML heading element, the `<Heading />` component accepts a `as` attribute that corresponds to the `<h1>` - `<h6>` elements. The font-size of each heading element maps to the [type ramp](/#!/Typography)
+
+<Editor code={storyLevel} />
+
+## Heading Sizes
+
+When creating accessible pages it is important that headings create a [logical document outline](https://bitsofco.de/using-heading-elements-to-create-a-document-outline/), but sometimes the font-size of the heading element doesn't match to the needs of the design or layout. Composing the `is` and the `fontSize` attributes lets you choose the semantically correct level heading and the desired size. The available size values come from the [type ramp](/#!/Typography).
+
+<Editor code={storyFontSize} />
+
+---
+
+## Weight and Transform
+
+Another common pattern for headings is to control the font-weight and the text-transform properties. The `<Heading />` component allows you to adjust those with the `fontWeight` and `textTransform` attributes.
+
+<Editor code={storyFontWeight} />
+<Editor code={storyTextTransform} />
+
+---
+
+## Heading alignment
+
+The `align` property allows you to adjust the `text-align` property of your `<Heading />` component. This is useful if you need to center or right align the text.
+
+<Editor code={storyTextAlign} />
+
+## Color
+
+Heading supports a `color` prop that supports the full theme color object. Common uses are shown in the example below:
+
+<Editor code={storyColor} />
+
+<ArgsTable of={Heading} exclude={excludedProps} />

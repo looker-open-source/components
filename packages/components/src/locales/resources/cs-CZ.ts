@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2022 Looker Data Sciences, Inc.
+ Copyright (c) 2023 Google LLC
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -23,8 +23,10 @@
  SOFTWARE.
 
  */
+
 import dateLocale from 'date-fns/locale/cs'
-import type { I18nStateWithDates } from '@looker/i18n'
+
+import { mergeLocaleObjects } from '@looker/i18n'
 
 const resources = {
   AdvancedInputControls: {
@@ -79,7 +81,7 @@ const resources = {
     Options: 'Možnosti',
   },
   FieldTimeSelect: {
-    'Please enter a valid time': 'Zadejte platný název čas',
+    'Please use format HHMM': 'Použijte formát HH:MM',
   },
   GetIntentLabel: {
     Error: 'Chyba',
@@ -135,7 +137,9 @@ const resources = {
     Save: 'Uložit',
   },
   RangeSlider: {
+    'Maximum Name': 'Maximální hodnota {{name}}',
     'Maximum Value': 'Maximální hodnota',
+    'Minimum Name': 'Minimální hodnota {{name}}',
     'Minimum Value': 'Minimální hodnota',
   },
   RequiredStar: {
@@ -150,8 +154,4 @@ const resources = {
   },
 }
 
-export const csCZ: I18nStateWithDates = {
-  dateLocale,
-  locale: 'cs-CZ',
-  resources: { 'cs-CZ': resources },
-}
+export const csCZ = mergeLocaleObjects([], 'cs-CZ', resources, dateLocale)

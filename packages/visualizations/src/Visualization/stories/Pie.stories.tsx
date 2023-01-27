@@ -24,7 +24,7 @@
 
  */
 
-import type { Story } from '@storybook/react/types-6-0'
+import type { Story } from '@storybook/react'
 import React from 'react'
 import { Visualization } from '../Visualization'
 import type {
@@ -89,7 +89,7 @@ const defaultPieFields: Fields = {
 
 export default {
   component: Visualization,
-  title: 'Visualizations/Pie',
+  title: 'Visualizations/Stories/Pie',
 }
 
 const Template: Story<Partial<PieProps>> = ({

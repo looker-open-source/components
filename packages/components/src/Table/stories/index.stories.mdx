@@ -1,0 +1,14 @@
+import { excludedProps } from '@looker/storybook'
+import { Table } from '@looker/components'
+import { Meta } from '@storybook/addon-docs'
+import storyBasic from '!!raw-loader!./Basic'
+
+<Meta component={Table} title="Docs/Table" />
+
+# Table
+
+The `<Table>` component defines a structure for the display of tabular data. A `<TableHeader>` is used to display the table header and the `<TableBody>` is used to show the data rows.
+
+<Editor code={storyBasic} />
+
+<ArgsTable of={Table} exclude={excludedProps} />

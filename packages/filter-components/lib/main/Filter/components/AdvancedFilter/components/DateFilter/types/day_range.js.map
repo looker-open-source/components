@@ -1,0 +1,1 @@
+{"version":3,"file":"day_range.js","names":[],"sources":["../../../../../../../../src/Filter/components/AdvancedFilter/components/DateFilter/types/day_range.ts"],"sourcesContent":["/**\n * Copyright (c) 2023 Google LLC\n * SPDX-License-Identifier: MIT\n */\nexport interface DayRange {\n  from: Date\n  to: Date\n}\n"],"mappings":""}

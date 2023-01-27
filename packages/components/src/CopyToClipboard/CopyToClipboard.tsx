@@ -23,8 +23,14 @@
  SOFTWARE.
 
  */
-import type { FC } from 'react'
-import React, { useRef, useState, cloneElement, isValidElement } from 'react'
+import React, {
+  useEffect,
+  useRef,
+  useState,
+  cloneElement,
+  isValidElement,
+} from 'react'
+import type { RefObject, ReactElement } from 'react'
 import { Assignment } from '@styled-icons/material/Assignment'
 import { Done } from '@styled-icons/material/Done'
 import { ButtonOutline } from '../Button/ButtonOutline'
@@ -43,20 +49,32 @@ export interface CopyToClipboardProps {
    * button's label | a JSX element to replace the button
    * I18n recommended: content that is user visible should be treated for i18n
    */
-  children?: string | JSX.Element
+  children?: string | ReactElement
   /**
    * button's successfully copied label | a JSX element to replace the button
    * I18n recommended: content that is user visible should be treated for i18n
    * @default Copied
    */
   success?: string | JSX.Element
+
+  /**
+   * button's disabled property
+   */
+  disabled?: boolean
 }
 
-export const CopyToClipboard: FC<CopyToClipboardProps> = props => {
+type ChildProps = { onClick: () => void; ref: RefObject<HTMLButtonElement> }
+
+export const CopyToClipboard = (props: CopyToClipboardProps) => {
   const { t } = useTranslation('CopyToClipboard')
   const childrenText = t('Copy to Clipboard')
   const successText = t('Copied')
-  const { children = childrenText, content, success = successText } = props
+  const {
+    children = childrenText,
+    content,
+    success = successText,
+    disabled,
+  } = props
 
   const [copied, setCopied] = useState(false)
   const buttonRef = useRef<HTMLButtonElement>(null)
@@ -71,12 +89,18 @@ export const CopyToClipboard: FC<CopyToClipboardProps> = props => {
       document.execCommand('copy')
       textField.remove()
       setCopied(true)
-      setTimeout(() => setCopied(false), 2500)
     }
   }
 
+  useEffect(() => {
+    const t = setTimeout(() => copied && setCopied(false), 2500)
+    return () => {
+      clearTimeout(t)
+    }
+  }, [copied])
+
   const copyButton = isValidElement(children) ? (
-    cloneElement(children, {
+    cloneElement<ChildProps>(children as ReactElement<ChildProps>, {
       onClick: clickCopyButton,
       ref: buttonRef,
     })
@@ -104,6 +128,7 @@ export const CopyToClipboard: FC<CopyToClipboardProps> = props => {
       alternate={successButton}
       ref={buttonRef}
       swap={copied}
+      disabled={disabled}
     >
       {copyButton}
     </MultiFunctionButton>

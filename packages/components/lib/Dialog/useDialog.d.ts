@@ -1,4 +1,5 @@
-import type { FC, ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import React from 'react';
 import type { DrawerPlacements, DialogDrawerWidth } from '../Drawer/DrawerSurface';
 import type { DialogSurfaceProps, DialogPlacements } from './DialogSurface';
 import type { DialogWidth } from './dialogWidth';
@@ -53,7 +54,7 @@ export interface UseDialogProps extends UseDialogBaseProps, DialogSurfaceProps {
      * This is intended for internal components use only (specifically `Drawer`)
      * @private
      */
-    Surface?: FC;
+    Surface?: React.ComponentType;
 }
 export interface UseDialogPropsInternal extends Omit<UseDialogProps, 'placement' | 'width'> {
     placement?: DialogPlacements | DrawerPlacements;

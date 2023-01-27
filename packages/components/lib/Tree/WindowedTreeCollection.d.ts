@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 /// <reference types="react" />
 import type { DensityProp, HeightProps, WidthProps } from '@looker/design-tokens';
 import type { WindowedTreeNodeProps } from './types';

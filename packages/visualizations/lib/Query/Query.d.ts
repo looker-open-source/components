@@ -1,8 +1,9 @@
-import type { FC, ComponentType } from 'react';
+import type { ComponentType, ReactNode } from 'react';
 import type { CAll } from '@looker/visualizations-adapters';
 export declare type QueryProps = {
     config?: Partial<CAll>;
     LoadingIndicator?: ComponentType;
+    children?: ReactNode;
 } & (/* Restricted prop combo: use EITHER a dashboard or query, but not both */ {
     dashboard?: never;
     query?: string | number;
@@ -10,4 +11,4 @@ export declare type QueryProps = {
     dashboard?: number;
     query?: never;
 });
-export declare const Query: FC<QueryProps>;
+export declare const Query: (props: QueryProps) => JSX.Element;

@@ -62,12 +62,13 @@ test('value can be updated externally', () => {
   renderWithTheme(<ExternalUpdates />)
 
   expect(screen.getByDisplayValue('06/03/2019')).toBeInTheDocument()
-  fireEvent.click(screen.getByText('June 5 - 15, 2019')) // helper isDateRangeInView returns true
+  expect(screen.getByDisplayValue('06/09/2019')).toBeInTheDocument()
 
-  expect(screen.getByDisplayValue('06/15/2019')).toBeInTheDocument()
   fireEvent.click(screen.getByText('January 1 - February 15, 2012')) // helper isDateRangeInView returns false
-
   expect(screen.getByDisplayValue('01/01/2012')).toBeInTheDocument()
+
+  fireEvent.click(screen.getByText('From: February 9, 2021')) // helper isDateRangeInView returns false
+  expect(screen.getByDisplayValue('02/09/2021')).toBeInTheDocument()
 })
 
 test('user can change the selected date via text input field', () => {

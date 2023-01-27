@@ -24,7 +24,6 @@
 
  */
 
-import type { FC } from 'react'
 import React from 'react'
 import styled from 'styled-components'
 import { Truncate } from '@looker/components'
@@ -101,7 +100,7 @@ const DT = styled.dt`
   margin: 0;
 `
 
-export const KeyValueList: FC<KeyValueListProps> = ({ value }) => {
+export const KeyValueList = ({ value }: KeyValueListProps) => {
   const i18n = useTranslation('KeyValueList' as Namespace<string>)
 
   return renderKeyValueList(value, i18n)

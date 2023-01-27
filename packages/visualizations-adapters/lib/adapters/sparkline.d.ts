@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { VisWrapperProps } from '../VisWrapper';
 import type { SDKRecord, Fields, CSeriesBasic, CSeriesLine, SupportedChartTypes, ChartLayoutProps, CommonCartesianProperties } from '../types';
 export declare type CSparklineSeries = Pick<CSeriesBasic, 'color' | 'visible'> & CSeriesLine;

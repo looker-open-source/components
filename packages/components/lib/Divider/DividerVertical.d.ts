@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { DividerProps } from './Divider';
 export interface DividerVerticalProps extends DividerProps {
     height?: number | string;

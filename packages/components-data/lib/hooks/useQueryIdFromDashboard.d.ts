@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { IError } from '@looker/sdk';
 /**
  * This hook fetches data from provided dashboard Id, and returns

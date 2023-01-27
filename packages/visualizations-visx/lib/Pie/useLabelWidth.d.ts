@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { CPie } from '@looker/visualizations-adapters';
 export declare const MIN_LABEL_SPACE = 90;
 /**

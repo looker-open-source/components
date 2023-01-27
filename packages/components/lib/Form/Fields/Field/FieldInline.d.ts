@@ -1,4 +1,4 @@
-import type { FC } from 'react';
+/// <reference types="react" />
 import type { FieldBaseProps } from './types';
 /**
  * `<FieldInline />` allows the rendering of a label (for FieldCheckbox, FieldRadio and FieldToggleSwitch),
@@ -8,5 +8,5 @@ import type { FieldBaseProps } from './types';
 interface FieldInlinePropsInternal extends FieldBaseProps {
     id: string;
 }
-export declare const FieldInline: import("styled-components").StyledComponent<FC<FieldInlinePropsInternal>, import("styled-components").DefaultTheme, {}, never>;
+export declare const FieldInline: import("styled-components").StyledComponent<({ className, children, description, detail, label, id, required, validationMessage, }: FieldInlinePropsInternal) => JSX.Element, import("styled-components").DefaultTheme, {}, never>;
 export {};

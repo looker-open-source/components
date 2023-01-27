@@ -24,7 +24,6 @@
 
  */
 
-import type { FC } from 'react'
 import React, { isValidElement } from 'react'
 import styled from 'styled-components'
 import { Label } from '../../Label/Label'
@@ -44,7 +43,7 @@ interface FieldInlinePropsInternal extends FieldBaseProps {
   id: string
 }
 
-const FieldInlineLayout: FC<FieldInlinePropsInternal> = ({
+const FieldInlineLayout = ({
   className,
   children,
   description,
@@ -53,7 +52,7 @@ const FieldInlineLayout: FC<FieldInlinePropsInternal> = ({
   id,
   required,
   validationMessage,
-}) => {
+}: FieldInlinePropsInternal) => {
   const describedbyId = `describedby-${id}`
 
   const inputWithAriaDescribed = isValidElement(children)

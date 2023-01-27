@@ -1,8 +1,11 @@
 {
   "name": "@looker/visualizations-table",
   "license": "MIT",
-  "main": "src/index.ts",
-  "version": "1.1.1",
+  "version": "1.1.3",
+  "main": "lib/main/index.js",
+  "module": "lib/module/index.js",
+  "types": "lib/index.d.ts",
+  "src": "src/index.ts",
   "sideEffects": false,
   "publishConfig": {
     "access": "public",
@@ -23,17 +26,17 @@
     "coverage": "lk coverage"
   },
   "dependencies": {
-    "@looker/components": "^4.0.3",
-    "@looker/visualizations-adapters": "^1.0.1",
+    "@looker/components": "^4.1.1",
+    "@looker/visualizations-adapters": "^1.0.3",
+    "@styled-icons/material": "10.34.0",
     "@tanstack/react-table": "^8.5.11",
     "@tanstack/react-virtual": "3.0.0-beta.18",
-    "@styled-icons/material": "10.34.0",
     "lodash": "4.17.21",
     "numeral": "2.0.6"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-decorators": "^7.18.10",
     "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@babel/plugin-proposal-decorators": "^7.18.10",
     "@looker/babel-preset-react": "*",
     "@looker/babel-preset-typescript": "*",
     "@looker/components-scripts": "*",
@@ -41,9 +44,11 @@
     "@looker/eslint-config-oss": "*",
     "@looker/i18n": "*",
     "@looker/jest-config": "*",
+    "@looker/prettier-config": "*",
     "@testing-library/react": "*",
     "@testing-library/react-hooks": "^8.0.1",
-    "jest-environment-jsdom": "26.6.2"
+    "jest-environment-jsdom": "29.3.1",
+    "prettier": "2.8.2"
   },
   "peerDependencies": {
     "react": "16.14.0 - 18",

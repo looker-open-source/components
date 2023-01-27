@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { WidthProps, MinWidthProps } from '@looker/design-tokens';
 export interface UseListWidthProps extends MinWidthProps, WidthProps {
     isVisible?: boolean;

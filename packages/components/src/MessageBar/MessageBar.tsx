@@ -216,6 +216,7 @@ const MessageBarLayout = forwardRef(
         ref={ref}
         role="status"
         {...omitStyledProps(props)}
+        data-testid="message-bar"
       >
         <Status intent={intent} />
         <MessageBarContent>{children}</MessageBarContent>

@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { SDKRecord } from '../types';
 export declare type TabularResponseHelper = (data: SDKRecord[]) => SDKRecord[];
 /**

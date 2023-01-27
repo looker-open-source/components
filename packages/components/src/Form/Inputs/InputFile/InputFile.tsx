@@ -42,14 +42,14 @@ export type InputFileProps = Omit<
 > &
   Pick<CompatibleHTMLProps<HTMLInputElement>, 'onChange'> & {
     /**
+     * A string containing one or more unique file type specifiers i.e. '.pdf', each file type separated by a comma
+     */
+    accept?: string
+
+    /**
      * Text for the button which uploads the file
      */
     buttonText?: string
-
-    /**
-     * A string containing one or more unique file type specifiers i.e. '.pdf', each file type seperated by a comma
-     */
-    accept?: string
 
     /**
      * A function that takes the uploaded file

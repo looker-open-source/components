@@ -1,4 +1,6 @@
-import type { FC } from 'react';
-export declare const RequiredStar: import("styled-components").StyledComponent<FC<{
-    className?: string | undefined;
-}>, import("styled-components").DefaultTheme, {}, never>;
+/// <reference types="react" />
+declare type RequiredStarLayoutProps = {
+    className?: string;
+};
+export declare const RequiredStar: import("styled-components").StyledComponent<({ className }: RequiredStarLayoutProps) => JSX.Element, import("styled-components").DefaultTheme, {}, never>;
+export {};

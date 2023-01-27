@@ -1,4 +1,8 @@
 /**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
+/**
  * Set a glyph size based on data point and min/max values.
  * Relevant for Scatter charts.
  *

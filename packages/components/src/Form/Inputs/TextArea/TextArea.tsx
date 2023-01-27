@@ -24,7 +24,6 @@
 
  */
 
-import type { FC } from 'react'
 import React from 'react'
 import styled, { css } from 'styled-components'
 import type { CompatibleHTMLProps } from '@looker/design-tokens'
@@ -54,11 +53,11 @@ export interface TextAreaProps
   validationType?: ValidationType
 }
 
-const TextAreaLayout: FC<TextAreaProps> = ({
+const TextAreaLayout = ({
   className,
   validationType,
   ...props
-}) => {
+}: TextAreaProps) => {
   const textareaProps = pickInputProps(props)
 
   return (

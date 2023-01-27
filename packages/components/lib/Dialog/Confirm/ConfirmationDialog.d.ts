@@ -1,4 +1,4 @@
-import type { FC, ReactElement } from 'react';
+import type { ReactElement } from 'react';
 import type { StatefulColor } from '@looker/design-tokens';
 import type { DialogProps } from '../Dialog';
 export declare type ConfirmationCallback = (close: () => void) => void;
@@ -59,4 +59,4 @@ export interface ConfirmationDialogProps extends ConfirmationProps {
      */
     isOpen?: boolean;
 }
-export declare const ConfirmationDialog: FC<ConfirmationDialogProps>;
+export declare const ConfirmationDialog: (props: ConfirmationDialogProps) => JSX.Element;

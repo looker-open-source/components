@@ -30,7 +30,7 @@ import { renderWithTheme } from '@looker/components-test-utils'
 import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { ListItem } from '../ListItem'
-import { Basic, KeyboardNavigation, LongList } from './List.stories'
+import { Basic, KeyboardNavigation, LongList } from './stories/index.stories'
 import { List } from './List'
 
 /* eslint-disable-next-line @typescript-eslint/unbound-method */

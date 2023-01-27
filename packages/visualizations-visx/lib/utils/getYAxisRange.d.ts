@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { ContinuousDomain } from '@visx/scale';
 import type { GetDataRangeProps } from '@looker/visualizations-adapters';
 /**

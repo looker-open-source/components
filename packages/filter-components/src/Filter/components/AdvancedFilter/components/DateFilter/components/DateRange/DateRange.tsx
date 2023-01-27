@@ -30,7 +30,6 @@ import {
   dateToFilterDateTimeModel,
   filterDateTimeModelToDate,
 } from '@looker/filter-expressions'
-import type { FC } from 'react'
 import React from 'react'
 import type { PlacementProps } from '../../../../../../utils/filter_styles'
 import { MidInputLabel } from '../../../MidInputLabel'
@@ -44,7 +43,7 @@ interface DateRangeParamProps extends PlacementProps {
   showTime?: boolean
 }
 
-export const DateRange: FC<DateRangeParamProps> = ({
+export const DateRange = ({
   item,
   onChange,
   placement,

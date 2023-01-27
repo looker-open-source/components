@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { DensityProp, DensityRamp, Theme } from '@looker/design-tokens';
 export declare type GenerateIndentProps = DensityProp & {
     depth?: number;

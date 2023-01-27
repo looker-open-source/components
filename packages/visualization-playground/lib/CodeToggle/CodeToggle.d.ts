@@ -1,4 +1,4 @@
-import type { FC, SetStateAction, Dispatch } from 'react';
+import type { SetStateAction, Dispatch } from 'react';
 import type { CAll } from '@looker/visualizations-adapters';
 declare type CodeToggleProps = {
     config: Partial<CAll>;
@@ -11,5 +11,5 @@ declare type CodeToggleProps = {
     dashboard?: number;
     query?: never;
 });
-export declare const CodeToggle: FC<CodeToggleProps>;
+export declare const CodeToggle: ({ config: configOverrides, query, dashboard, codeToggled, setCodeToggled, }: CodeToggleProps) => JSX.Element;
 export {};

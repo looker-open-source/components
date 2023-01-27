@@ -41,8 +41,8 @@ import {
   Controlled,
   ControlledLegacy,
   ControlledNoChildren,
-} from './stories/Controlled'
-import { CloseIconButton } from './stories/Dialog.stories'
+  CloseIconButton,
+} from './stories/index.stories'
 
 describe('Dialog', () => {
   test('Verify initial state', () => {
@@ -133,12 +133,14 @@ describe('Dialog', () => {
     // Open Dialog
     const link = screen.getByText('Open Dialog')
     fireEvent.click(link)
-    expect(screen.getByText(/We the People/)).toBeInTheDocument()
+    expect(screen.getByText(/Lorem Ipsum is simply/)).toBeInTheDocument()
 
     // Close the Dialog
     const doneButton = screen.getByText('Done Reading')
     fireEvent.click(doneButton)
-    await waitForElementToBeRemoved(() => screen.queryByText(/We the People/))
+    await waitForElementToBeRemoved(() =>
+      screen.queryByText(/Lorem Ipsum is simply/)
+    )
   })
 
   test('Controlled no callbacks', async () => {
@@ -167,12 +169,14 @@ describe('Dialog', () => {
     // Open Dialog
     const link = screen.getByText('Open Dialog')
     fireEvent.click(link)
-    expect(screen.getByText(/We the People/)).toBeInTheDocument()
+    expect(screen.getByText(/Lorem Ipsum is simply/)).toBeInTheDocument()
 
     // Close the Dialog
     const doneButton = screen.getByText('Done Reading')
     fireEvent.click(doneButton)
-    await waitForElementToBeRemoved(() => screen.queryByText(/We the People/))
+    await waitForElementToBeRemoved(() =>
+      screen.queryByText(/Lorem Ipsum is simply/)
+    )
   })
 
   test('Controlled - legacy', async () => {
@@ -181,12 +185,14 @@ describe('Dialog', () => {
     // Open Dialog
     const link = screen.getByText('Open Dialog')
     fireEvent.click(link)
-    expect(screen.getByText(/We the People/)).toBeInTheDocument()
+    expect(screen.getByText(/Lorem Ipsum is simply/)).toBeInTheDocument()
 
     // Close the Dialog
     const doneButton = screen.getByText('Done Reading')
     fireEvent.click(doneButton)
-    await waitForElementToBeRemoved(() => screen.queryByText(/We the People/))
+    await waitForElementToBeRemoved(() =>
+      screen.queryByText(/Lorem Ipsum is simply/)
+    )
   })
 
   describe('Animation behavior', () => {
@@ -351,9 +357,9 @@ describe('Dialog', () => {
       const globalConsole = global.console
       const errorMock = jest.fn()
 
-      global.console = ({
+      global.console = {
         error: errorMock,
-      } as unknown) as Console
+      } as unknown as Console
 
       renderWithTheme(<Dialog />)
       expect(errorMock.mock.calls).toMatchInlineSnapshot(`

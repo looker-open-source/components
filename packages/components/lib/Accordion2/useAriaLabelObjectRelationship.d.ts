@@ -1,4 +1,8 @@
 /**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
+/**
  * Generates a tuple with appropriate DOM props to create an ARIA label
  * relationship based on the ID (ID will be dynamically generated if not supplied)
  *

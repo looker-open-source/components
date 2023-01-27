@@ -1,4 +1,4 @@
-import type { FC } from 'react';
+/// <reference types="react" />
 import type { DataTableProps } from './types';
-export declare const DataTableLayout: FC<DataTableProps>;
-export declare const DataTable: import("styled-components").StyledComponent<FC<DataTableProps>, import("styled-components").DefaultTheme, DataTableProps, never>;
+export declare const DataTableLayout: (props: DataTableProps) => JSX.Element;
+export declare const DataTable: import("styled-components").StyledComponent<(props: DataTableProps) => JSX.Element, import("styled-components").DefaultTheme, DataTableProps, never>;

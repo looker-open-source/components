@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { ConfigHelper } from '../types';
 import type { CSparkline } from '../adapters';
 /**

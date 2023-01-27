@@ -1,0 +1,39 @@
+import { InlineInputText } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import storyHeadingParagraph from '!!raw-loader!./HeadingParagraph'
+import storySimple from '!!raw-loader!./Simple'
+import storyDisabled from '!!raw-loader!./Disabled'
+import storyReadOnly from '!!raw-loader!./ReadOnly'
+
+<Meta component={InlineInputText} title="Docs/InlineInputText" />
+
+# InlineInputText
+
+An input styled as text, with an underline and hover styles to indicate it is editable.
+
+`InlineInputText` implements `InputText` internally – see [that component's documentation](?path=/docs/docs-inputtext--docs) for more information.
+
+<Editor code={storyHeadingParagraph} />
+
+## Simple
+
+Use the `simple` prop to remove the underline except on hover and focus.
+
+<Editor code={storySimple} />
+
+## Disabled
+
+Use the `disabled` prop to make the input uneditable and greyed out.
+
+<Editor code={storyDisabled} />
+
+## ReadOnly
+
+Use the `readOnly` prop to make the input uneditable and have no underline.
+
+<Editor code={storyReadOnly} />
+
+## Props
+
+<ArgsTable of={InlineInputText} exclude={excludedProps} />

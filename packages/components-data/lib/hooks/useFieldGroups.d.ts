@@ -1,4 +1,8 @@
-import type { IError, ILookmlModelExploreField } from '@looker/sdk';
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
+import type { ILookmlModelExploreField } from '@looker/sdk';
 declare type FieldGroups = {
     [group: string]: ILookmlModelExploreField[];
 };
@@ -10,14 +14,14 @@ declare type FieldGroups = {
  * @returns field groups and api state
  */
 export declare const useFieldGroups: (id: number) => {
-    error: IError;
-    fieldGroups: FieldGroups;
+    error: import("@looker/sdk").IError;
     isOK: boolean;
     isPending: boolean;
+    fieldGroups: FieldGroups;
 } | {
     error?: undefined;
-    fieldGroups: FieldGroups;
     isOK: boolean;
     isPending: boolean;
+    fieldGroups: FieldGroups;
 };
 export {};

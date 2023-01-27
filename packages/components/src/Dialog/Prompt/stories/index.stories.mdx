@@ -1,0 +1,18 @@
+import { Prompt } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import storyBasic from '!!raw-loader!./Basic'
+
+<Meta component={Prompt} title="Docs/Prompt" />
+
+# Prompt
+
+The `<Prompt/>` component is similar to the `<Confirm/>` component in that you can use either to render a dialog.
+
+However, unlike the `<Confirm/>`, the `<Prompt/>` component comes with a built in `<InputText/>` component. This makes it more suitable for use cases where you want to grab user input before performing an action.
+
+<Editor code={storyBasic} />
+
+## Props
+
+<ArgsTable of={Prompt} exclude={excludedProps} />

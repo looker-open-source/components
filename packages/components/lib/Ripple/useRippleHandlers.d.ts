@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { CompatibleHTMLProps } from '@looker/design-tokens';
 import type { RippleCallbacks } from './types';
 export declare const rippleHandlerKeys: readonly ["onBlur", "onFocus", "onKeyDown", "onKeyUp", "onMouseDown", "onMouseEnter", "onMouseLeave", "onMouseUp"];

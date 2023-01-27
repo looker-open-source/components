@@ -24,7 +24,6 @@
 
  */
 
-import type { FC } from 'react'
 import React, { Fragment } from 'react'
 import { DataProvider, GlyphSeries, XYChart } from '@visx/xychart'
 import type { AxisScaleOutput, AxisScale } from '@visx/axis'
@@ -62,13 +61,13 @@ import { XYTooltip } from '../XYTooltip'
 import { Glyph } from '../Glyph'
 import { Grid } from '../Grid'
 
-export const Scatter: FC<ScatterProps> = ({
+export const Scatter = ({
   data,
   config,
   height = DEFAULT_HEIGHT,
   width,
   fields,
-}) => {
+}: ScatterProps) => {
   /**
    * The concatDimensions call will further format the data array returned from
    * the tabularReponse call. This new array combines existing dimension properties

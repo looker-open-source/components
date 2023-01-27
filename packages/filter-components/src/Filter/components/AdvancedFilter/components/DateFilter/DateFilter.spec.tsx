@@ -31,10 +31,10 @@ import { DateFilter } from './DateFilter'
 
 describe('Date filter test', () => {
   it('should render a DateFilter', () => {
-    const item = ({
+    const item = {
       id: '1',
       type: 'anyvalue',
-    } as any) as FilterModel<DateFilterType>
+    } as any as FilterModel<DateFilterType>
     renderWithTheme(
       <DateFilter
         item={item}
@@ -53,11 +53,11 @@ describe('Date filter test', () => {
   })
 
   it('should render a DateFilter with type day', () => {
-    const item = ({
+    const item = {
       id: '1',
       type: 'day',
       day: 'yesterday',
-    } as any) as FilterModel<DateFilterType>
+    } as any as FilterModel<DateFilterType>
     renderWithTheme(
       <DateFilter
         item={item}
@@ -78,10 +78,10 @@ describe('Date filter test', () => {
   })
 
   it('should render a DateFilter with time dropdown(s)', () => {
-    const item = ({
+    const item = {
       id: '1',
       type: 'range',
-    } as any) as FilterModel<DateFilterType>
+    } as any as FilterModel<DateFilterType>
     renderWithTheme(
       <DateFilter
         item={item}

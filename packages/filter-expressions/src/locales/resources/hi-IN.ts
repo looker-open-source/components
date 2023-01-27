@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2022 Looker Data Sciences, Inc.
+ Copyright (c) 2023 Google LLC
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -23,12 +23,13 @@
  SOFTWARE.
 
  */
-import type { I18nState } from '../../utils'
+
+import { mergeLocaleObjects } from '@looker/i18n'
 
 const resources = {
   describe_date: {
-    ' complete': ' पूरा हुआ',
-    'absolute prefix dateTime': '{{dateTime}} {{prefix}}',
+    ' complete': ' पूर्ण',
+    'absolute prefix dateTime': '{{prefix}} {{dateTime}}',
     ago: 'पहले',
     'from now': 'अब से',
     'is any time': 'किसी भी समय है',
@@ -63,7 +64,7 @@ const resources = {
     'is value': '{{value}} है',
   },
   describe_location: {
-    'coords1 to coords2': '{{coords1}} से {{coords2}}',
+    'coords1 to coords2': '{{coords1}} से लेकर {{coords2}} तक',
     'distance unit from lat, lon': '{{lat}} से {{distance}} {{unit}}, {{lon}}',
     'is anywhere': 'कहीं भी है',
     'is not null': 'नल नहीं है',
@@ -74,16 +75,16 @@ const resources = {
     'lon degrees west': '{{lon}}°पश्चिम',
   },
   describe_number: {
-    'is in range range': '{{range}} रेंज में है',
-    'is not in range range': '{{range}} रेंज में नहीं है',
+    'is in range range': 'रेंज {{range}} में है',
+    'is not in range range': 'रेंज {{range}} में नहीं है',
   },
   describe_string: {
     blank: 'खाली है',
     'contains value': '{{value}} शामिल है',
     'does not contain value': '{{value}} शामिल नहीं है',
     'does not end with value': '{{value}} के साथ समाप्त नहीं होता',
-    'does not start with value': '{{value}} से शुरू नहीं होता',
-    'ends with value': '{{value}} के साथ खत्म होता है',
+    'does not start with value': '{{value}} से शुरू नहीं होता है',
+    'ends with value': '{{value}} पर समाप्त होता है',
     'starts with value': '{{value}} से शुरू होता है',
   },
   get_distance_unit_labels: {
@@ -103,7 +104,7 @@ const resources = {
     March: 'मार्च',
     May: 'मई',
     November: 'नवंबर',
-    October: 'अक्तूबर',
+    October: 'अक्टूबर',
     September: 'सितंबर',
   },
   get_unit_label: {
@@ -152,11 +153,8 @@ const resources = {
     'a or b': '{{a}} या {{b}}',
   },
   summary: {
-    'Value required': 'मान दर्ज करना ज़रूरी है',
+    'Value required': 'मान आवश्यक',
   },
 }
 
-export const hiIN: I18nState = {
-  locale: 'hi-IN',
-  resources: { 'hi-IN': resources },
-}
+export const hiIN = mergeLocaleObjects([], 'hi-IN', resources)

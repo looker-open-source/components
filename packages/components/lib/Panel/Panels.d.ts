@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { TrapStackContextProps } from '@looker/components-providers';
 import type { CompatibleHTMLProps } from '@looker/design-tokens';
 import React from 'react';

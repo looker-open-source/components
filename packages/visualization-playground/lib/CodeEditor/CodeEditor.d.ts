@@ -1,4 +1,4 @@
-import type { FC } from 'react';
+/// <reference types="react" />
 import type { CAll } from '@looker/visualizations-adapters';
 declare type CodeEditorProps = {
     config: Partial<CAll>;
@@ -9,5 +9,5 @@ declare type CodeEditorProps = {
     dashboard?: number;
     query?: never;
 });
-export declare const CodeEditor: FC<CodeEditorProps>;
+export declare const CodeEditor: ({ config: configOverrides, query, dashboard, }: CodeEditorProps) => JSX.Element;
 export {};

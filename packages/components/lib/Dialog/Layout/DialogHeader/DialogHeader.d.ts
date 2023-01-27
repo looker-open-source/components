@@ -1,4 +1,8 @@
-import type { FC } from 'react';
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
+/// <reference types="react" />
 import type { ModalHeaderProps } from '../../../Modal/ModalHeader';
 declare type WithDetail = {
     detail?: ModalHeaderProps['detail'];
@@ -14,5 +18,5 @@ declare type WithHideClose = {
 };
 export declare type DetailOptions = WithDetail | WithHideClose;
 export declare type DialogHeaderProps = DetailOptions & Omit<ModalHeaderProps, 'detail'>;
-export declare const DialogHeader: import("styled-components").StyledComponent<FC<DialogHeaderProps>, import("styled-components").DefaultTheme, {} & DialogHeaderProps, never>;
+export declare const DialogHeader: import("styled-components").StyledComponent<({ children, hideClose, detail, ...props }: DialogHeaderProps) => JSX.Element, import("styled-components").DefaultTheme, {} & DialogHeaderProps, never>;
 export {};

@@ -24,14 +24,13 @@
 
  */
 import {
-  ChipButton,
   usePopover,
   Breakpoint,
   Dialog,
   DialogLayout,
 } from '@looker/components'
-import type { FC } from 'react'
 import React, { useRef } from 'react'
+import { TokenBase } from '../../../../../../../Token'
 import { useTranslation } from '../../../../../../../utils'
 import type { DayRange } from '../../types/day_range'
 import type {
@@ -55,10 +54,10 @@ type PopperInstance = {
   setOptions: (options: any) => Promise<any>
 }
 
-export const RelativeTimeframes: FC<RelativeTimeframesProps> = ({
+export const RelativeTimeframes = ({
   value,
   onChange,
-}) => {
+}: RelativeTimeframesProps) => {
   // track the popperjs instance returned by usePopper
   // https://popper.js.org/docs/v2/constructors/#instance
   const internalPopoverInstanceRef = useRef<PopperInstance | undefined>()
@@ -101,9 +100,9 @@ export const RelativeTimeframes: FC<RelativeTimeframesProps> = ({
   const label = useRelativeTimeframeToString(value)
 
   const overlayTrigger = (
-    <ChipButton ref={ref} onClick={open}>
+    <TokenBase ref={ref} onClick={open} aria-selected="true">
       {label}
-    </ChipButton>
+    </TokenBase>
   )
 
   return (

@@ -1,0 +1,128 @@
+import { Tree } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import storyDefault from '!!raw-loader!./Default'
+import storyDetail from '!!raw-loader!./Detail'
+import storyBorder from '!!raw-loader!./Border'
+import storyExample1 from '!!raw-loader!./Example1'
+import storyTruncateExample from '!!raw-loader!./TruncateExample'
+import storyHandlers from '!!raw-loader!./Handlers'
+import storyNesting from '!!raw-loader!./Nesting'
+import storyControlled from '!!raw-loader!./Controlled'
+import storyCustomDetail from '!!raw-loader!./CustomDetail'
+import storyWindowingExample from '!!raw-loader!./WindowingExample'
+import storyCallbacks from '!!raw-loader!./Callbacks'
+import storyIcon from '!!raw-loader!./Icon'
+
+<Meta component={Tree} title="Docs/Tree" />
+
+# Tree
+
+Tree, like Accordion, is a collapsible section component designed for hiding and showing content. However, unlike Accordion, Tree has a more structured interface and is best used when building tree views like a file structure or a sidebar.
+
+Use the required label prop to set the text of the Tree disclosure. label alternatively accepts a ReactNode for more advanced layouts.
+
+Use the icon prop to display an icon next to the Tree label.
+
+<Editor code={storyIcon} />
+
+Use detail to display an element in the negative space of the Tree label.
+
+<Editor code={storyDetail} />
+
+Use the border prop if you would like to have vertical lines expand from your Tree's indicator icon when open.
+
+<Editor code={storyBorder} />
+
+Use the selected prop to display a light grey background on your Tree.
+
+Use the color='key' prop to get more colorful backgrounds when your Tree (or its child Trees and TreeItems) is hovered or selected.
+
+Use the disabled prop to present your Tree in a disabled state. Note that using disabled will not change any Tree behavior like opening and closing on click.
+
+<Editor code={storyExample1} />
+
+## Truncating Tree Items & Labels
+
+Occasionally tree item labels will wrap to a second line when the text content is very long, or the available space is very narrow. The text content will wrap by default, but if that is undesirable you can use the truncate prop to limit text content to a single line.
+
+When text content overflows, it will render a tooltip to view the entire content, which is consistent with the [Truncate](/components/text/truncate) component.
+
+<Editor code={storyTruncateExample} />
+
+## Nesting Trees
+
+You can nest trees within each other by passing a Tree in as a child of another Tree.
+
+**Note:** Tree will automatically indent any child Tree and TreeItems based on their depth in the hierarchy.
+
+<Editor code={storyNesting} />
+
+## Tree Callbacks
+
+Use the onOpen and onClose props if you would like to trigger callbacks on Tree open or close, respectively.
+
+<Editor code={storyCallbacks} />
+
+## Controlling a Tree
+
+Like Accordion, a Tree can be either uncontrolled or controlled.
+
+By default, the Tree is an uncontrolled component and maintains its own opened/closed state. If you are using an uncontrolled Tree and want it initially open, use the defaultOpen prop.
+
+However, you can use the isOpen and toggleOpen props to explicitly control the state of your Tree.
+
+When the isOpen prop receives true, your Tree will reveal its content. When false, your content will be hidden.
+
+The toggleOpen prop should receive a function that has one parameter: a boolean. When the Tree's disclosure is clicked, the toggleOpen callback will be triggered and passed the opposite boolean of the current isOpen prop value.
+
+<Editor code={storyControlled} />
+
+## TreeCollection
+
+TreeCollection acts as a wrapper component to Tree and TreeItem elements. For accessibility purposes, all Tree and TreeItem compositions should have a TreeCollection as the top-level element.
+
+<Editor code={storyDefault} />
+
+## TreeItem
+
+TreeItem is used to create branches in a tree view; it is best used as the direct child of a Tree.
+
+The table below displays TreeItem's prop names and descriptions.
+
+<ListItemPropTable />
+
+Note: In addition these custom props, TreeItem also accepts standard handlers like onClick, onKeyDown, etc.
+
+<Editor code={storyHandlers} />
+
+## Customizing Detail Elements on Tree and TreeItem
+
+You can customize the look and behavior of detail elements by providing the detail prop an object with an "options" property.
+
+Enabling the hoverDisclosure option will hide and show the detail on hover on and hover off.
+
+Enabling the accessory option will render the detail element outside of the label container. This option is most commonly used when you'd like to have a button as your detail element.
+
+<Editor code={storyCustomDetail} />
+
+## Windowing
+
+If a TreeCollection contains more than 100 visible descendants (trees, items, and nested trees) at a given time, performance will begin to degrade.
+Use WindowedTreeCollection instead, with the following differences:
+
+- The trees prop replaces children
+- trees accepts an array of nestable objects where:
+  - content is a Tree, TreeItem, or other JSX element that renders either
+  - items are any nested tree/items (replaces Tree children)
+  - isOpen (optional) controls the state of each tree, rather than the
+    isOpen or defaultOpen props on the Tree component itself
+
+**Note:** WindowedTreeCollection should be rendered inside an element with a specified height
+or add a height prop to the component directly.
+
+<Editor code={storyWindowingExample} />
+
+## Props
+
+<ArgsTable of={Tree} exclude={excludedProps} />

@@ -1,0 +1,81 @@
+import { RangeSlider } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import basicStory from '!!raw-loader!./Basic'
+import valueStory from '!!raw-loader!./Value'
+import minMaxStory from '!!raw-loader!./MinMax'
+import invalidValueStory from '!!raw-loader!./InvalidValue'
+import stepStory from '!!raw-loader!./Step'
+import readOnlyStory from '!!raw-loader!./ReadOnly'
+import disabledStory from '!!raw-loader!./Disabled'
+import controlledStory from '!!raw-loader!./Controlled'
+import withLabelStory from '!!raw-loader!./WithLabel'
+
+<Meta component={RangeSlider} title="Docs/RangeSlider" />
+
+# RangeSlider
+
+`RangeSlider` is the 2-point alternative to the [single-value Slider component](?path=/docs/docs-slider--docs).
+
+## Default RangeSlider
+
+The `<RangeSlider />` component renders a styled range slider on the page. It will render a range from 0 to 10, and select all possible values inbetween.
+
+<Editor code={basicStory} />
+
+## Value and DefaultValue
+
+By default, this component will select the entire range from Min to Max values. You can control the selected range by passing an array of integers to either `value` or `defaultValue`.
+
+<Editor code={valueStory} />
+
+Like all standard form elements, you cannot interact with this component if you pass in a value without an onChange handler.
+
+## Min, Max
+
+You can customize `min` and `max` values.
+
+<Editor code={minMaxStory} />
+
+Min and max default to the following values:
+
+- **min**: 0
+- **max**: 10
+
+The slider component will disregard any value prop that goes outside of the defined min or max range. The following example illustrates passing a value that falls outside the acceptable range.
+
+<Editor code={invalidValueStory} />
+
+## Step
+
+You change the granularity of the slider options by using the `step` prop.
+
+<Editor code={stepStory} />
+
+## readOnly
+
+Use the readOnly property to render the component normally, but prevent user interaction.
+
+<Editor code={readOnlyStory} />
+
+## Disabled
+
+Use the `disabled` property to gray out the Input, making it a fixed value.
+
+<Editor code={disabledStory} />
+
+## Controlled component with an onChange callback
+
+If you'd like to read and control the input value externally, `Slider` accepts an `onChange` event callback along with the `value` prop.
+
+<Editor code={controlledStory} />
+
+## Accessibility
+
+`RangeSlider` accepts the standard aria-labelledby to help screen readers associate the range input with the relevant form label.
+
+<Editor code={withLabelStory} />
+
+## Props
+
+<ArgsTable of={RangeSlider} exclude={excludedProps} />

@@ -24,7 +24,6 @@
 
  */
 
-import type { FC } from 'react'
 import React from 'react'
 import { waitFor, render } from '@testing-library/react'
 import type { IWriteQuery } from '@looker/sdk'
@@ -40,7 +39,7 @@ type TestComponentProps = {
   newQuery?: Partial<IWriteQuery>
 }
 
-const TestComponent: FC<TestComponentProps> = ({ newQuery }) => {
+const TestComponent = ({ newQuery }: TestComponentProps) => {
   const response = useCreateQuery(newQuery)
   const { getById } = DataState.useContainer()
 

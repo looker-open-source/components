@@ -1,4 +1,6 @@
 {
+  "Maximum Name": "Maximal {{name}}",
   "Maximum Value": "Höchstwert",
+  "Minimum Name": "Mindestens {{name}}",
   "Minimum Value": "Mindestwert"
 }

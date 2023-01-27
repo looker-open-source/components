@@ -1,5 +1,5 @@
+/// <reference types="react" />
 import type { ExactLocationFilterItem } from '@looker/filter-expressions';
-import type { FC } from 'react';
 interface LocationExactProps {
     item: ExactLocationFilterItem;
     onChange: (id: string, value: any) => void;
@@ -9,5 +9,5 @@ interface LocationExactProps {
     lon?: string;
     placement?: 'middle' | 'right';
 }
-export declare const LocationExact: FC<LocationExactProps>;
+export declare const LocationExact: ({ item, onChange, latString, lonString, lat, lon, placement, }: LocationExactProps) => JSX.Element;
 export {};

@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { Theme } from '@looker/design-tokens';
 import type { ListItemColorProp, ListItemStatefulProps } from '../types';
 export declare type ListItemBackgroundColorProps = ListItemStatefulProps & ListItemColorProp & {

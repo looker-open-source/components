@@ -27,7 +27,7 @@
 import type { ValidationMessageProps } from '@looker/components'
 import { Space } from '@looker/components'
 import type { FilterModel } from '@looker/filter-expressions'
-import type { ChangeEvent, FC } from 'react'
+import type { ChangeEvent } from 'react'
 import React from 'react'
 import { useTranslation } from '../../../../../../../utils'
 import { GroupInput } from '../../../GroupInput'
@@ -51,11 +51,11 @@ interface BetweenFilterProps {
   validationMessage?: ValidationMessageProps
 }
 
-export const Between: FC<BetweenFilterProps> = ({
+export const Between = ({
   item,
   onChange,
   validationMessage,
-}) => {
+}: BetweenFilterProps) => {
   const { t } = useTranslation('Between')
 
   const betweenOptions = useBetweenOptions()

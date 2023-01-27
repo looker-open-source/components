@@ -36,16 +36,8 @@ import { AllPresetTimeframes } from '../types/relative_timeframe_types'
 export const filterModelToRelativeTimeframeModel = (
   filterModel: FilterModel
 ): RelativeTimeframeModel | undefined => {
-  const {
-    day,
-    end,
-    start,
-    type,
-    unit,
-    value,
-    startInterval,
-    endInterval,
-  } = filterModel
+  const { day, end, start, type, unit, value, startInterval, endInterval } =
+    filterModel
   if (type === 'day' && day === 'today') {
     return AllPresetTimeframes.Today
   } else if (type === 'day' && day === 'yesterday') {

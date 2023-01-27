@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2022 Looker Data Sciences, Inc.
+ Copyright (c) 2023 Google LLC
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -23,11 +23,11 @@
  SOFTWARE.
 
  */
-import merge from 'lodash/merge'
+
 import dateLocale from 'date-fns/locale/de'
-import type { I18nStateWithDates } from '../../utils'
-import { deDE as expressionLocale } from '@looker/filter-expressions'
 import { deDE as componentsLocale } from '@looker/components'
+import { deDE as filterexpressionsLocale } from '@looker/filter-expressions'
+import { mergeLocaleObjects } from '@looker/i18n'
 
 const resources = {
   AddRemoveButtons: {
@@ -62,7 +62,7 @@ const resources = {
     relative: '(relativ)',
   },
   Between: {
-    AND: 'UND',
+    AND: 'AND',
   },
   date_units: {
     day: 'Tag',
@@ -93,10 +93,10 @@ const resources = {
     is: 'ist',
     'is any time': 'ist jederzeit',
     'is before': 'ist vor dem',
-    'is in range': 'ist im Bereich',
+    'is in range': 'befindet sich im Bereich',
     'is in the last': 'ist in den letzten',
     'is in the month': 'ist im Monat',
-    'is in the year': 'ist im Jahr',
+    'is in the year': 'befindet sich im Jahr',
     'is next': 'ist nächste/r/s',
     'is not null': 'ist nicht null',
     'is null': 'ist null',
@@ -106,12 +106,12 @@ const resources = {
     'is this': 'ist diese/r/s',
   },
   get_filter_options: {
-    'matches advanced': 'Übereinstimmungen (erweitert)',
+    'matches advanced': 'Übereinstimmung (für Fortgeschrittene)',
   },
   get_location_filter_options: {
     Box: 'Feld',
     Circle: 'Kreis',
-    Location: 'Ort',
+    Location: 'Standort',
     feet: 'Fuß',
     'is anywhere': 'ist überall',
     'is not null': 'ist nicht null',
@@ -183,12 +183,17 @@ const resources = {
     Remove: '',
     Toggle: '',
   },
+  NoMatchingFields: {
+    'No Matching Fields': 'Keine übereinstimmenden Felder',
+    'Try Something Else':
+      'Versuchen Sie es mit einem anderen Suchbegriff oder beginnen Sie von vorne und erweitern Sie einen beliebigen Explore, um die verfügbaren Felder zu durchsuchen.',
+  },
   NumberFilter: {
     'any value': 'beliebiger Wert',
   },
   OperatorLabel: {
-    AND: 'UND',
-    OR: 'ODER',
+    AND: 'AND',
+    OR: 'OR',
   },
   past_units: {
     'complete days': 'vollständige Tage',
@@ -227,7 +232,7 @@ const resources = {
   use_filters_errors: {
     'Invalid value': 'Ungültiger Wert',
     'No value is set for your user attribute':
-      'Für dieses Benutzerattribut ist kein Wert festgelegt.',
+      'Für dieses Benutzerattribut ist kein Wert festgelegt',
     'Selection required': 'Auswahl erforderlich',
   },
   use_option_filtering: {
@@ -245,15 +250,9 @@ const resources = {
   },
 }
 
-export const deDE: I18nStateWithDates = {
-  dateLocale,
-  locale: 'de-DE',
-  resources: {
-    'de-DE': merge(
-      {},
-      resources,
-      expressionLocale.resources['de-DE'],
-      componentsLocale.resources['de-DE']
-    ),
-  },
-}
+export const deDE = mergeLocaleObjects(
+  [componentsLocale, filterexpressionsLocale],
+  'de-DE',
+  resources,
+  dateLocale
+)

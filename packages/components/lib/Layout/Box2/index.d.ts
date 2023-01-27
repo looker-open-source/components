@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 export type { BoxProps as Box2Props } from '../Box';
 /**
  * @deprecated use Box instead.

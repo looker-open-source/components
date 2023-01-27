@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { CompatibleHTMLProps, DensityProp } from '@looker/design-tokens';
 import type { ReactNode } from 'react';
 import type { TruncateConfigProp } from '../Truncate';

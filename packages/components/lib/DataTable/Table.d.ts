@@ -1,4 +1,4 @@
-import type { FC } from 'react';
+/// <reference types="react" />
 import type { DataTableProps } from './types';
 export interface TableProps extends DataTableProps {
     /**
@@ -7,6 +7,6 @@ export interface TableProps extends DataTableProps {
     caption: string;
     columnsVisible: string[];
 }
-export declare const TableLayout: FC<TableProps>;
-export declare const Table: import("styled-components").StyledComponent<FC<TableProps>, import("styled-components").DefaultTheme, {}, never>;
+export declare const TableLayout: (props: TableProps) => JSX.Element;
+export declare const Table: import("styled-components").StyledComponent<(props: TableProps) => JSX.Element, import("styled-components").DefaultTheme, {}, never>;
 export declare const TableScroll: import("styled-components").StyledComponent<"div", import("styled-components").DefaultTheme, {}, never>;

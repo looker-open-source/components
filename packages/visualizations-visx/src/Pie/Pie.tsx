@@ -24,7 +24,6 @@
 
  */
 
-import type { FC } from 'react'
 import React, { Fragment } from 'react'
 import { DEFAULT_HEIGHT } from '@looker/visualizations-adapters'
 import type { PieArcDatum } from '@visx/shape/lib/shapes/Pie'
@@ -70,13 +69,13 @@ const generateColorScale = (
   })
 }
 
-export const Pie: FC<PieProps> = ({
+export const Pie = ({
   data,
   config,
   height = DEFAULT_HEIGHT,
   width = DEFAULT_HEIGHT,
   fields,
-}) => {
+}: PieProps) => {
   const { showTooltip, hideTooltip, ...tooltipProps } = useTooltip()
   const { series, legend, tooltips = true } = config
   const {
@@ -105,18 +104,13 @@ export const Pie: FC<PieProps> = ({
 
   const labelWidth = useLabelWidth(measureTotal, keyValData, legend)
 
-  const {
-    canvasW,
-    canvasH,
-    pieCenterX,
-    pieCenterY,
-    outerRadius,
-  } = getChartGeometry({
-    legendType: legend ? legend.type : undefined,
-    width,
-    height,
-    labelWidth,
-  })
+  const { canvasW, canvasH, pieCenterX, pieCenterY, outerRadius } =
+    getChartGeometry({
+      legendType: legend ? legend.type : undefined,
+      width,
+      height,
+      labelWidth,
+    })
 
   // derive colors based on series config
   const colorScale = generateColorScale(limitedData, series, firstDimension)

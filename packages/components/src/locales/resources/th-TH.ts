@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2022 Looker Data Sciences, Inc.
+ Copyright (c) 2023 Google LLC
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -23,8 +23,10 @@
  SOFTWARE.
 
  */
+
 import dateLocale from 'date-fns/locale/th'
-import type { I18nStateWithDates } from '@looker/i18n'
+
+import { mergeLocaleObjects } from '@looker/i18n'
 
 const resources = {
   AdvancedInputControls: {
@@ -78,7 +80,7 @@ const resources = {
     Options: 'ตัวเลือก',
   },
   FieldTimeSelect: {
-    'Please enter a valid time': 'โปรดป้อนเวลาที่ถูกต้อง',
+    'Please use format HHMM': 'โปรดใช้รูปแบบ HH:MM',
   },
   GetIntentLabel: {
     Error: 'ข้อผิดพลาด',
@@ -134,7 +136,9 @@ const resources = {
     Save: 'บันทึก',
   },
   RangeSlider: {
+    'Maximum Name': '{{name}} สูงสุด',
     'Maximum Value': 'ค่าสูงสุด',
+    'Minimum Name': '{{name}} ต่ำสุด',
     'Minimum Value': 'ค่าต่ำสุด',
   },
   RequiredStar: {
@@ -149,8 +153,4 @@ const resources = {
   },
 }
 
-export const thTH: I18nStateWithDates = {
-  dateLocale,
-  locale: 'th-TH',
-  resources: { 'th-TH': resources },
-}
+export const thTH = mergeLocaleObjects([], 'th-TH', resources, dateLocale)

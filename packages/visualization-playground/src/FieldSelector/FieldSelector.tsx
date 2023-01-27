@@ -1,80 +1,40 @@
-/*
-
- MIT License
-
- Copyright (c) 2022 Looker Data Sciences, Inc.
-
- Permission is hereby granted, free of charge, to any person obtaining a copy
- of this software and associated documentation files (the "Software"), to deal
- in the Software without restriction, including without limitation the rights
- to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- copies of the Software, and to permit persons to whom the Software is
- furnished to do so, subject to the following conditions:
-
- The above copyright notice and this permission notice shall be included in all
- copies or substantial portions of the Software.
-
- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- SOFTWARE.
-
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
  */
 import React, { useContext } from 'react'
-import {
-  DialogContext,
-  TreeCollection,
-  Tree,
-  TreeItem,
-} from '@looker/components'
+import { Box, DialogContext } from '@looker/components'
+import { TreeSelect } from '@looker/filter-components'
+import type { TreeModel } from '@looker/filter-components'
 import type { ILookmlModelExploreField } from '@looker/sdk'
-
-export type FieldGroups = {
-  [group: string]: ILookmlModelExploreField[]
-}
 
 export type FieldSelectorProps = {
   current?: ILookmlModelExploreField
-  groups: FieldGroups
+  tree: TreeModel[]
   onChange: (field: ILookmlModelExploreField) => void
 }
 
 export const FieldSelector = ({
-  groups,
+  tree,
   current,
   onChange,
 }: FieldSelectorProps) => {
   const { closeModal } = useContext(DialogContext)
-  const getFieldClickHandler = (field: ILookmlModelExploreField) => () => {
-    onChange(field)
+  const getFieldClickHandler = (field: {
+    fieldOptions: ILookmlModelExploreField
+  }) => {
+    onChange(field.fieldOptions)
     // Close the popover after selecting a field
     closeModal()
   }
   return (
-    <TreeCollection>
-      {Object.keys(groups).map(group => (
-        <Tree
-          selected={current?.name?.split('.')[0] === group}
-          key={group}
-          label={group.replace(/_/g, ' ')}
-        >
-          {groups[group].map(field => {
-            const { name = '' } = field
-            return (
-              <TreeItem
-                selected={current?.name === name}
-                key={name}
-                onClick={getFieldClickHandler(field)}
-              >
-                {name.replace(`${group}.`, '').replace(/_/g, ' ')}
-              </TreeItem>
-            )
-          })}
-        </Tree>
-      ))}
-    </TreeCollection>
+    <Box p="u2">
+      <TreeSelect
+        searchInputValue={current?.label_short || ''}
+        tree={tree}
+        onSelectedFieldChange={getFieldClickHandler}
+        withDropdown={false}
+      />
+    </Box>
   )
 }

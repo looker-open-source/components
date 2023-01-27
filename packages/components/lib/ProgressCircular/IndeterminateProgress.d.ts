@@ -1,7 +1,7 @@
-import type { FC } from 'react';
+/// <reference types="react" />
 import type { ProgressCircularSizes } from './size';
 interface IndeterminateSpinnerProps {
     size: ProgressCircularSizes;
 }
-export declare const IndeterminateProgress: FC<IndeterminateSpinnerProps>;
+export declare const IndeterminateProgress: ({ size }: IndeterminateSpinnerProps) => JSX.Element;
 export {};

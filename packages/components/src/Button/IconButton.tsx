@@ -78,14 +78,16 @@ export const IconButton = styled(
       ...rest
     } = props
 
-    const { callbacks, className: rippleClassName, ...rippleProps } = useRipple(
-      {
-        bounded: shape === 'square',
-        color: toggle ? toggleColor : undefined,
-        size: shape === 'square' ? SQUARE_RIPPLE : 1,
-        style,
-      }
-    )
+    const {
+      callbacks,
+      className: rippleClassName,
+      ...rippleProps
+    } = useRipple({
+      bounded: shape === 'square',
+      color: toggle ? toggleColor : undefined,
+      size: shape === 'square' ? SQUARE_RIPPLE : 1,
+      style,
+    })
 
     // any of the hover/focus handlers being present disables built-in tooltip
     const hasOuterTooltip = some(

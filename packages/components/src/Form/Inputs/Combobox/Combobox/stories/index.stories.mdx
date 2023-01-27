@@ -1,0 +1,49 @@
+import { Combobox } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import basicStory from '!!raw-loader!./Basic'
+import controlledStory from '!!raw-loader!./Controlled'
+import loadingStory from '!!raw-loader!./Loading'
+import customIndicatorStory from '!!raw-loader!./CustomIndicator'
+import noIndicatorStory from '!!raw-loader!./NoIndicator'
+import listLayout from '!!raw-loader!./ListLayout'
+
+<Meta component={Combobox} title="Docs/Combobox" />
+
+# Combobox
+
+For the vast majority of use cases, you should be using the [Select input](?path=/docs/docs-select--docs) instead of rendering Combobox directly. Combobox is the lower-level abstraction used for rendering Select.
+
+<Editor code={basicStory} />
+
+## Controlled Component
+
+<Editor code={controlledStory} />
+
+## Loading Indicator
+
+Combobox doesn't have built-in functionality for handling a loading state. We recommend handling state externally and setting a custom ComboboxOption indicating that more options are loading.
+
+<Editor code={loadingStory} />
+
+## Customizing the indicator
+
+Open the select menu to see the custom indicator appear on hover.
+
+<Editor code={customIndicatorStory} />
+
+## Hiding the indicator
+
+You can disable the option indicator entirely by setting `indicator={false}` on the ComboboxList component.
+
+<Editor code={noIndicatorStory} />
+
+## Customizing the list width
+
+You can set either `width`, `min-width`, or `max-width` on the ComboboxList to customize how much space the combox will take up when the list overlay is open.
+
+<Editor code={listLayout} />
+
+## Props
+
+<ArgsTable of={Combobox} exclude={excludedProps} />

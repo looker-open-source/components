@@ -25,12 +25,13 @@
  */
 
 import React from 'react'
-import type { FC } from 'react'
 import { renderHook } from '@testing-library/react-hooks'
 import { render, screen } from '@testing-library/react'
 import { useVirtual } from './useVirtual'
 
-const wrapper: FC = ({ children }) => <>{children}</>
+const wrapper = ({ children }: React.PropsWithChildren<unknown>) => (
+  <>{children}</>
+)
 
 const mockDomRect = {
   x: 146,
@@ -50,11 +51,11 @@ it('Configures virtual scrolling object', () => {
       useVirtual({
         data: Array(15).fill({}),
         scrollContainer: {
-          current: ({
+          current: {
             addEventListener: () => null,
             removeEventListener: () => null,
             getBoundingClientRect: () => mockDomRect,
-          } as unknown) as HTMLDivElement,
+          } as unknown as HTMLDivElement,
         },
       }),
     {
@@ -71,11 +72,11 @@ it('Simulates scroll height with OffsetBottom component', () => {
       useVirtual({
         data: Array(30).fill({}),
         scrollContainer: {
-          current: ({
+          current: {
             addEventListener: () => null,
             removeEventListener: () => null,
             getBoundingClientRect: () => mockDomRect,
-          } as unknown) as HTMLDivElement,
+          } as unknown as HTMLDivElement,
         },
       }),
     {
@@ -96,7 +97,7 @@ it('Simulates scroll height with OffsetBottom component', () => {
   render(<MockTableComponent />)
 
   const spacer = screen.getByRole('cell')
-  expect(spacer).toHaveStyle({ height: '150px' })
+  expect(spacer).toHaveAttribute('height', '150')
 })
 
 it('Simulates scroll height with OffsetTop component', () => {
@@ -105,11 +106,11 @@ it('Simulates scroll height with OffsetTop component', () => {
       useVirtual({
         data: Array(30).fill({}),
         scrollContainer: {
-          current: ({
+          current: {
             addEventListener: () => null,
             removeEventListener: () => null,
             getBoundingClientRect: () => mockDomRect,
-          } as unknown) as HTMLDivElement,
+          } as unknown as HTMLDivElement,
         },
       }),
     {
@@ -130,5 +131,5 @@ it('Simulates scroll height with OffsetTop component', () => {
   render(<MockTableComponent />)
 
   const spacer = screen.getByRole('cell')
-  expect(spacer).toHaveStyle({ height: '120px' })
+  expect(spacer).toHaveAttribute('height', '120')
 })

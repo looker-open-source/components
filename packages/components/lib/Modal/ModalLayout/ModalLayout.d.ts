@@ -1,4 +1,8 @@
-import type { FC, ReactNode } from 'react';
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
+import type { ReactNode } from 'react';
 export interface ModalLayoutProps {
     /**
      * Content to be displayed within Modal
@@ -18,4 +22,4 @@ export interface ModalLayoutProps {
     isLoading?: boolean;
 }
 export declare const ModalLoading: () => JSX.Element;
-export declare const ModalLayout: FC<ModalLayoutProps>;
+export declare const ModalLayout: ({ children, footer, header }: ModalLayoutProps) => JSX.Element;

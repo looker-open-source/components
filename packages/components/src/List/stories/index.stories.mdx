@@ -1,0 +1,64 @@
+import { List } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { Meta, ArgsTable } from '@storybook/addon-docs'
+import basicStory from '!!raw-loader!./Basic'
+import densityStory from '!!raw-loader!./Density'
+import fontFamilyStory from '!!raw-loader!./FontFamily'
+import colorStory from '!!raw-loader!./Color'
+import iconGutterStory from '!!raw-loader!./IconGutter'
+import longListStory from '!!raw-loader!./LongList'
+
+<Meta component={List} title="Docs/List" />
+
+# List
+
+`List`, along with its companion component `ListItem`, renders a list of items. However, unlike standard `ul` and `li` elements, `List` and `ListItem` come prebuilt with a number of props to simplify item style and behavior customization.
+
+<Editor code={basicStory} />
+
+## Font Family
+
+Use the `fontFamily` prop to change the font on all text elements in the `List`. The prop accepts the following values:
+
+- body
+- brand
+- code
+
+<Editor code={fontFamilyStory} />
+
+## Color
+
+Use the `color` prop to change the text color within the list. Accepts the following values:
+
+- calculation
+- dimension
+- key
+- measure
+
+<Editor code={colorStory} />
+
+## Density
+
+Use the `density` prop to set the size and spacing of your `List`. As `density` decreases, so does the height and spacing of your `List`'s child `ListItem`s.
+
+`density` values range from -3 to 1.
+
+<Editor code={densityStory} />
+
+## Icon Gutter
+
+Use the `iconGutter` prop if you want `ListItem` children without icons to align their text with `ListItem` children with icons.
+
+<Editor code={iconGutterStory} />
+
+## Windowing
+
+If a `List` contains more than 100 children it will use windowing to display
+only the visible items for performance reasons. Windowing uses the item height to calculate
+positioning for natural scrolling behavior.
+
+**Note:** A parent element of your `List` should have an explicit height. If no explicit height is set, your `List` will attempt to render all child items and not utilize the windowing logic.
+
+<Editor code={longListStory} />
+
+<ArgsTable of={List} exclude={excludedProps} />

@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 /// <reference types="react" />
 import type { CompatibleHTMLProps, Transitions } from '@looker/design-tokens';
 import type { SimpleLayoutProps } from '../Layout/utils/simple';

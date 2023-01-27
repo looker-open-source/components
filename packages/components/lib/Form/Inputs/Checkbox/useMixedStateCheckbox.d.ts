@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { Dispatch, SetStateAction } from 'react';
 import type { MixedBoolean } from './Checkbox';
 export interface CheckboxTreeAction {

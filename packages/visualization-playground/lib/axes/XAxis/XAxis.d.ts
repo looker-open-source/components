@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { Dispatch, SetStateAction } from 'react';
 import type { CArea, CBar, CColumn, CLine, CScatter, CAll } from '@looker/visualizations-adapters';
 /**

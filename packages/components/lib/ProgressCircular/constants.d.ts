@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 interface ProgressConstants {
     /**
      * Amount of the circle the arc takes up

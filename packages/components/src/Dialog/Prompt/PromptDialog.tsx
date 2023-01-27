@@ -24,7 +24,7 @@
 
  */
 
-import type { FC, FormEvent, KeyboardEvent, ReactNode } from 'react'
+import type { FormEvent, KeyboardEvent, ReactNode } from 'react'
 import React, { useState, useCallback, useEffect } from 'react'
 import type { StatefulColor } from '@looker/design-tokens'
 import { Button, ButtonTransparent } from '../../Button'
@@ -94,7 +94,7 @@ export interface PromptDialogProps extends PromptBaseProps {
   isOpen?: boolean
 }
 
-export const PromptDialog: FC<PromptDialogProps> = props => {
+export const PromptDialog = (props: PromptDialogProps) => {
   const { t } = useTranslation('PromptDialog')
   const cancelLabelText = t('Cancel')
   const saveLabelText = t('Save')

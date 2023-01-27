@@ -24,10 +24,9 @@
 
  */
 
-import type { FC, ReactNode } from 'react'
+import type { ReactNode } from 'react'
 import React from 'react'
 import styled from 'styled-components'
-import omit from 'lodash/omit'
 import type { TextColorProps, TypographyProps } from '@looker/design-tokens'
 import { textColor, typography } from '@looker/design-tokens'
 import type { SimpleLayoutProps } from '../Layout/utils/simple'
@@ -68,13 +67,13 @@ export type AccordionProps = ControlledLoosely &
 /**
  * @deprecated Use `Accordion2` instead
  */
-const AccordionInternal: FC<AccordionProps> = ({
+const AccordionInternal = ({
   content: children,
   children: label,
   isOpen: propsIsOpen,
   toggleOpen: propsToggleOpen,
   ...props
-}) => {
+}: AccordionProps) => {
   if (
     (propsIsOpen && propsToggleOpen === undefined) ||
     (propsIsOpen === undefined && propsToggleOpen)
@@ -108,11 +107,13 @@ const AccordionInternal: FC<AccordionProps> = ({
   })
 
   if (isLegacyComposition(label)) {
+    const { children: _children1, ...restContentDomProps } = contentDomProps
+    const { children: _children2, ...restDisclosureProps } = disclosureProps
     return (
       <AccordionLegacy
         {...domProps}
-        contentDomProps={omit(contentDomProps, 'children')}
-        disclosureProps={omit(disclosureProps, 'children')}
+        contentDomProps={restContentDomProps}
+        disclosureProps={restDisclosureProps}
         isOpen={isOpen}
       >
         {label}

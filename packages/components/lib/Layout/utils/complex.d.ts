@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { BorderProps, BoxShadowProps, ColorProps, TypographyProps } from '@looker/design-tokens';
 import type { SimpleLayoutProps } from './simple';
 /**

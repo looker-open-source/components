@@ -1,0 +1,26 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.DEFAULT_STRING_FORMAT_PERCENT = exports.DEFAULT_STRING_FORMAT = exports.DEFAULT_SERIES_COLORS = exports.DEFAULT_MIN_HEIGHT = exports.DEFAULT_MARGIN = exports.DEFAULT_HEIGHT = exports.DEFAULT_EMPTY_FIELDS = void 0;
+
+var DEFAULT_HEIGHT = 500;
+exports.DEFAULT_HEIGHT = DEFAULT_HEIGHT;
+var DEFAULT_MIN_HEIGHT = 75;
+exports.DEFAULT_MIN_HEIGHT = DEFAULT_MIN_HEIGHT;
+var DEFAULT_SERIES_COLORS = ['#6c43e0', '#b73ec3', '#db4da8', '#ed6995', '#f1898f'];
+exports.DEFAULT_SERIES_COLORS = DEFAULT_SERIES_COLORS;
+var DEFAULT_STRING_FORMAT = '0,0.[00]';
+exports.DEFAULT_STRING_FORMAT = DEFAULT_STRING_FORMAT;
+var DEFAULT_STRING_FORMAT_PERCENT = '0.[00]%';
+exports.DEFAULT_STRING_FORMAT_PERCENT = DEFAULT_STRING_FORMAT_PERCENT;
+var DEFAULT_MARGIN = 50;
+exports.DEFAULT_MARGIN = DEFAULT_MARGIN;
+var DEFAULT_EMPTY_FIELDS = {
+  dimensions: [],
+  measures: [],
+  pivots: []
+};
+exports.DEFAULT_EMPTY_FIELDS = DEFAULT_EMPTY_FIELDS;
+//# sourceMappingURL=constants.js.map

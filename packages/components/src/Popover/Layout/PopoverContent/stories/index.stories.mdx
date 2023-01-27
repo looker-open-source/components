@@ -1,0 +1,24 @@
+import { PopoverContent, MessageBar } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import storyBasic from '!!raw-loader!./Basic'
+import storyScroll from '!!raw-loader!./Scroll'
+
+<Meta component={PopoverContent} title="Docs/PopoverContent" />
+
+# PopoverContent
+
+Using the `PopoverContent` component gives your content consistent spacing. It also manages overflow if the content is taller than the viewport.
+
+<MessageBar noActions intent="warn">
+  When possible, use `PopoverLayout` instead of using `PopoverContent` directly.
+</MessageBar>
+
+<Editor code={storyBasic} />
+
+If content overflows the component's height an visual indicator of content that extends
+beyond the visible edges is added (border on top and shadow on the bottom).
+
+<Editor code={storyScroll} />
+
+<ArgsTable of={PopoverContent} exclude={excludedProps} />

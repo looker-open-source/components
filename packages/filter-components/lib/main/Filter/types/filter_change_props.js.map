@@ -1,0 +1,1 @@
+{"version":3,"file":"filter_change_props.js","names":[],"sources":["../../../../src/Filter/types/filter_change_props.ts"],"sourcesContent":["/**\n * Copyright (c) 2023 Google LLC\n * SPDX-License-Identifier: MIT\n */\n\n/**\n * Interface used by parameters to the FilterChange functions\n */\nexport interface FilterChangeProps {\n  value: any\n}\n"],"mappings":""}

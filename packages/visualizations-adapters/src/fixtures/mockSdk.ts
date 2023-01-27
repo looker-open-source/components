@@ -39,7 +39,7 @@ import type { SDKResponse } from '@looker/sdk-rtl'
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export type Response = SDKResponse<any, any>
 
-export const mockSDK = ({
+export const mockSDK = {
   color_collection: () =>
     Promise.resolve({
       ok: true,
@@ -101,4 +101,4 @@ export const mockSDK = ({
         view: 'orders',
       },
     } as Response),
-} as unknown) as Looker40SDK
+} as unknown as Looker40SDK

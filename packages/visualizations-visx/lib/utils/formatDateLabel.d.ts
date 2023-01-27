@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { Fields } from '@looker/visualizations-adapters';
 declare type FormatDateLabelProps = {
     dateString: string;

@@ -24,7 +24,6 @@
 
  */
 
-import type { FC } from 'react'
 import React from 'react'
 import styled from 'styled-components'
 import {
@@ -45,11 +44,15 @@ export interface TableProps extends VisWrapperProps, ChartLayoutProps {
   fields?: Fields
 }
 
-export const StaticTable: FC<TableProps> = ({
+interface StaticTableProps extends Omit<TableProps, 'width'> {
+  width?: TableProps['width'] | 'auto'
+}
+
+export const StaticTable  = ({
   data = [],
   fields = { dimensions: [], measures: [] },
   width = 'auto',
-}) => {
+} : StaticTableProps) => {
   if (!data.length) {
     return null
   }

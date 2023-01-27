@@ -23,7 +23,6 @@
  SOFTWARE.
 
  */
-import type { FC } from 'react'
 import React from 'react'
 import type { InternalFilterProps } from '../../types/filter_props'
 import type { FilterModel, FilterASTNode } from '@looker/filter-expressions'
@@ -44,7 +43,7 @@ export interface AdvancedFilterProps extends InternalFilterProps {
   updateAST: (ast?: FilterASTNode) => void
 }
 
-export const AdvancedFilter: FC<AdvancedFilterProps> = ({
+export const AdvancedFilter = ({
   ast,
   updateAST,
   name,
@@ -60,7 +59,7 @@ export const AdvancedFilter: FC<AdvancedFilterProps> = ({
   validationMessage,
   isLoading,
   allowMultipleValues,
-}) => {
+}: AdvancedFilterProps) => {
   const onAdd = (filterItem: FilterModel, keepValue?: boolean) => {
     if (ast) {
       const newItem = keepValue ? filterItem : { ...filterItem, value: [] }
@@ -77,7 +76,7 @@ export const AdvancedFilter: FC<AdvancedFilterProps> = ({
   const FilterComponent = typeToComponent(expressionType)
   if (!FilterComponent) return null
 
-  const items: FilterModel[] = treeToList(ast!)
+  const items: FilterModel[] = treeToList(ast || {})
 
   const lastItemIndex = items.length - 1
 

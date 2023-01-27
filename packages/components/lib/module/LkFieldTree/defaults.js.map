@@ -1,0 +1,1 @@
+{"version":3,"file":"defaults.js","names":["lkFieldItemDensity"],"sources":["../../../src/LkFieldTree/defaults.ts"],"sourcesContent":["/**\n * Copyright (c) 2023 Google LLC\n * SPDX-License-Identifier: MIT\n */\n\nexport const lkFieldItemDensity = -3\n"],"mappings":";;AAKA,OAAO,MAAMA,kBAAkB,GAAG,CAAC,CAAC"}

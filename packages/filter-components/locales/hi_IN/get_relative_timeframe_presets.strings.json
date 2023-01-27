@@ -48,9 +48,9 @@
     "value": "आज"
   },
   "Year To Date": {
-    "value": "एक साल पहले से आज तक"
+    "value": "आज से पिछले एक साल का"
   },
   "Yesterday": {
-    "value": "बीता कल"
+    "value": "कल का"
   }
 }

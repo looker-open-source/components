@@ -1,0 +1,91 @@
+import { MessageBar } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import storyBasic from '!!raw-loader!./Basic'
+import storyNoAction from '!!raw-loader!./NoAction'
+import storyCustomAction from '!!raw-loader!./CustomAction'
+import storyControlled from '!!raw-loader!./Controlled'
+import storyIntent from '!!raw-loader!./Intent'
+
+<Meta component={MessageBar} title="Docs/MessageBar" />
+
+# MessageBar
+
+The `<MessageBar />` component is used to alert the user with `warn`, `critical`, `inform`, or `positive` messages, settable via the `intent` property. If no intent is set, it will fall back to `inform` by default.
+
+<Editor code={storyBasic} />
+
+## Intent
+
+MessageBar `intent` is specified as a design token with a semantic meaning. The values can be one of `critical`, `inform`, `positive`, `warn`.
+<Editor code={storyIntent} />
+
+### Non-clearable MessageBar
+
+If you don't want the MessageBar to be clearable, you can hide all action buttons with the `noActions` prop.
+<Editor code={storyNoAction} />
+
+### Customizing the action buttons
+`MessageBar` allows you to pass your own custom buttons in place of the standard dismiss button. 
+
+The relevant props for modifying button labels and actions are as follows:
+
+- `primaryAction`: string or ReactElement
+- `onPrimaryClick`: () => void
+- `secondaryAction`: string or ReactElement
+- `onSecondaryClick`: () => void
+
+<Editor code={storyCustomAction} />
+
+### Rendering custom components
+
+This is not the recommended happy path for using MessageBar, but it is available if you run into an edge case that is not supported by customizing the string label and click callbacks. Just keep in mind that if you decide to render custom components you will be responsible for allowing the MessageBar to be cleared.
+
+```jsx
+;() => {
+  const [visible, setVisible] = useState(true)
+  const handlePrimaryClick = () => {
+    alert('Primary Action')
+    setVisible(false)
+  }
+  const handleSecondaryClick = () => {
+    alert('Secondary Action')
+    setVisible(false)
+  }
+  return (
+    <MessageBar
+      primaryAction={
+        <IconButton
+          icon={<Favorite />}
+          label="Add to Favorites"
+          onClick={handlePrimaryClick}
+          color="key"
+        />
+      }
+      secondaryAction={
+        <IconButton
+          onClick={handleSecondaryClick}
+          color="neutral"
+          icon={<Settings />}
+          label="Settings"
+          color="neutral"
+        />
+      }
+      visible={visible}
+    >
+      Render some custom action components!
+    </MessageBar>
+  )
+}
+```
+
+## Controlled Component Pattern
+
+To control MessageBar renderin externally, use `onPrimaryAction` in conjunction with the `visible` boolean prop. This can be useful if you wish to provide an Undo or other complex workflows.
+<Editor code={storyControlled} />
+
+
+## Props
+
+<ArgsTable of={MessageBar} exclude={excludedProps} />
+

@@ -26,14 +26,18 @@
 
 import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import type { FC } from 'react'
+import type { ReactNode } from 'react'
 import React, { useState } from 'react'
 import type { UseArrowKeyNavProps } from './useArrowKeyNav'
 import { useArrowKeyNav } from './useArrowKeyNav'
 
-const ArrowKeyNavComponent: FC<{
+const ArrowKeyNavComponent = ({
+  axis,
+  children,
+}: {
   axis?: UseArrowKeyNavProps<HTMLUListElement>['axis']
-}> = ({ axis, children }) => {
+  children?: ReactNode
+}) => {
   const navProps = useArrowKeyNav<HTMLUListElement>({ axis })
   return (
     <ul role="list" {...navProps}>

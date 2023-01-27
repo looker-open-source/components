@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { CCartesian, Fields } from '@looker/visualizations-adapters';
 /**
  * Return the properly formatted field name when provided a series key.

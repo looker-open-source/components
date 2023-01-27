@@ -1,0 +1,14 @@
+import { VisuallyHidden } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import storyBasic from '!!raw-loader!./Basic'
+
+<Meta component={VisuallyHidden} title="Docs/VisuallyHidden" />
+
+# VisuallyHidden
+
+This component will hide the contents from the screen. The main use for this component is to provide accessible content to visual elements of a UI, for example adding a screen reader accessible label to an icon.
+
+<Editor code={storyBasic} />
+
+<ArgsTable of={VisuallyHidden} exclude={excludedProps} />

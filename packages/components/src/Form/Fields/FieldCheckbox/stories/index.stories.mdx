@@ -1,0 +1,33 @@
+import { FieldCheckbox } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import storyBasic from '!!raw-loader!./Basic'
+import storyValidation from '!!raw-loader!./Validation'
+
+<Meta component={FieldCheckbox} title="Docs/FieldCheckbox" />
+
+
+# FieldCheckbox
+
+The `<FieldCheckbox />` component is composed of a `<Checkbox />` component and a `<Label />` component. Using `<FieldCheckbox />` allows for rendering validation messages.
+
+<Editor code={storyBasic} />
+
+### FieldCheckbox Validation
+
+The `<FieldCheckbox />` components accepts `validationMessage` as a property. This is an object with properties `type` and `message`.
+
+See `ValidationMessage` [here](?path=/docs/docs-validationmessage--docs)
+
+If you have multiple fields in need of validation, it is recommended that you wrap them in a `<Form />` component and pass to it a dictionary with key as field name and value as a `ValidationMessage`.
+
+The `alignValidationMessage` can also be used to adjust where the validation message appears in relation to the input field. By default, it will render to the right, which is the best practice in most cases.
+
+**_Note: In the current implementation, any `ValidationMessage` set in a `<FieldCheckbox />` component will be overridden by `ValidationMessages` set in the parent `<Form />` component. Because of this, it is highly recommended that you only ever directly set `ValidationMessage` if a `<FieldCheckbox />` is outside a `<Form />`._**
+
+<Editor code={storyValidation} />
+
+
+## Props
+
+<ArgsTable of={FieldCheckbox} exclude={excludedProps} />

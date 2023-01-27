@@ -23,7 +23,6 @@
  SOFTWARE.
 
  */
-import type { FC } from 'react'
 import React, { useState, useEffect } from 'react'
 import { useTheme } from 'styled-components'
 import { LinePath } from '@visx/shape'
@@ -104,13 +103,13 @@ const generatePoints = ({
   })
 }
 
-export const Sparkline: FC<SparklineProps> = ({
+export const Sparkline = ({
   data = [],
   config,
   fields,
   height = DEFAULT_HEIGHT,
   width,
-}) => {
+}: SparklineProps) => {
   const { series = {} } = config || {}
 
   // only allow one measure for sparklines

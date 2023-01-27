@@ -24,7 +24,7 @@
 
  */
 
-import type { FC, KeyboardEvent } from 'react'
+import type { KeyboardEvent } from 'react'
 import type { ScaleOrdinal } from 'd3-scale'
 import type { CPie } from '@looker/visualizations-adapters'
 import React, { useState } from 'react'
@@ -84,14 +84,14 @@ const getLegendStyle = (
     : {}
 }
 
-export const PieLegend: FC<PieLegendProps> = ({
+export const PieLegend = ({
   legendConfig,
   scale,
   data,
   measureTotal,
   height,
   width,
-}) => {
+}: PieLegendProps) => {
   const { t } = useTranslation('PieLegend')
 
   // track state for scrolling through very long legends
@@ -104,9 +104,8 @@ export const PieLegend: FC<PieLegendProps> = ({
 
   // find the dimensions of content and container to trigger pagination behavior
   const [contentElement, contentRef] = useCallbackRef(null)
-  const [{ height: contentHeight, width: contentWidth }] = useMeasuredElement(
-    contentElement
-  )
+  const [{ height: contentHeight, width: contentWidth }] =
+    useMeasuredElement(contentElement)
   const [containerElement, containerRef] = useCallbackRef(null)
   const [containerElementRect] = useMeasuredElement(containerElement)
 

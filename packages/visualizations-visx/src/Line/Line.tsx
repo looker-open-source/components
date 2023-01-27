@@ -24,7 +24,6 @@
 
  */
 
-import type { FC } from 'react'
 import React, { Fragment } from 'react'
 import { useTheme } from 'styled-components'
 import { DataProvider, LineSeries, XYChart } from '@visx/xychart'
@@ -55,13 +54,13 @@ import { XYTooltip } from '../XYTooltip'
 import { Marker } from '../Marker'
 import { Grid } from '../Grid'
 
-export const Line: FC<LineProps> = ({
+export const Line = ({
   data,
   config,
   height = DEFAULT_HEIGHT,
   width,
   fields,
-}) => {
+}: LineProps) => {
   const theme = useTheme()
 
   /**

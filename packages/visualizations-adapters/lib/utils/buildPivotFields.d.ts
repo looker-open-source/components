@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { MeasureMetadata, Fields, Pivots } from '../types';
 /**
  * Creates a new fields metadata object, replacing the existing fields.measures

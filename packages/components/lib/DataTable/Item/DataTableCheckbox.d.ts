@@ -1,4 +1,8 @@
-import type { FC } from 'react';
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
+/// <reference types="react" />
 import type { MixedBoolean } from '../../Form';
 export interface DataTableCheckboxProps {
     id?: string;
@@ -7,4 +11,4 @@ export interface DataTableCheckboxProps {
     onChange?: () => void;
 }
 export declare const checkListProps: string[];
-export declare const DataTableCheckbox: FC<DataTableCheckboxProps>;
+export declare const DataTableCheckbox: ({ id, onChange, checked, disabled, }: DataTableCheckboxProps) => JSX.Element;

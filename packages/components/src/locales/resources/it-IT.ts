@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2022 Looker Data Sciences, Inc.
+ Copyright (c) 2023 Google LLC
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -23,8 +23,10 @@
  SOFTWARE.
 
  */
+
 import dateLocale from 'date-fns/locale/it'
-import type { I18nStateWithDates } from '@looker/i18n'
+
+import { mergeLocaleObjects } from '@looker/i18n'
 
 const resources = {
   AdvancedInputControls: {
@@ -78,7 +80,7 @@ const resources = {
     Options: 'Opzioni',
   },
   FieldTimeSelect: {
-    'Please enter a valid time': 'Inserisci un orario valido.',
+    'Please use format HHMM': 'Usa il formato OO:MM',
   },
   GetIntentLabel: {
     Error: 'Errore',
@@ -134,7 +136,9 @@ const resources = {
     Save: 'Salva',
   },
   RangeSlider: {
+    'Maximum Name': 'Valore massimo {{name}}',
     'Maximum Value': 'Valore massimo',
+    'Minimum Name': 'Valore minimo {{name}}',
     'Minimum Value': 'Valore minimo',
   },
   RequiredStar: {
@@ -149,8 +153,4 @@ const resources = {
   },
 }
 
-export const itIT: I18nStateWithDates = {
-  dateLocale,
-  locale: 'it-IT',
-  resources: { 'it-IT': resources },
-}
+export const itIT = mergeLocaleObjects([], 'it-IT', resources, dateLocale)

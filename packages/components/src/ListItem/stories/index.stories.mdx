@@ -1,0 +1,68 @@
+import { ListItem } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { Meta, ArgsTable } from '@storybook/addon-docs'
+import clickEventStory from '!!raw-loader!./ClickEvent'
+import detailStory from '!!raw-loader!./Detail'
+import colorStory from '!!raw-loader!./Color'
+import disabledStory from '!!raw-loader!./Disabled'
+import selectedStory from '!!raw-loader!./Selected'
+import descriptionStory from '!!raw-loader!./Description'
+import linkStory from '!!raw-loader!./ListItemLink'
+import truncateStory from '!!raw-loader!./ListItemTruncated'
+import roleStory from '!!raw-loader!./ListItemRole'
+
+<Meta component={ListItem} title="Docs/ListItem" />
+
+# ListItem
+
+`ListItem` renders an `li` element and should be the child of a `List` element.
+
+## Icon and Color customization
+
+`ListItem` allows you to customise the icon that will be rendered for that item by passing a react element to the `icon` prop.
+
+If the icon is an SVG element, it will be colored to match the text as specified by the `color` prop. `color` will accept any of our predefined theme names (e.g. `calculation`, `key`), or any custom hex code.
+
+<Editor code={colorStory} />
+
+## Disabled
+
+<Editor code={disabledStory} />
+
+## Description & Detail
+
+<Editor code={descriptionStory} />
+
+## Selected
+
+<Editor code={selectedStory} />
+
+## Customizing a ListItem detail
+
+You can customize the look and behavior of `detail` elements by providing the `detail` prop an object with an "options" property.
+
+Enabling the `hoverDisclosure` option will hide and show the detail on hover on and hover off.
+
+Enabling the `accessory` option will render the detail element outside of the label container. This option is most commonly used when you'd like to have a button as your `detail` element.
+
+<Editor code={detailStory} />
+
+## List item as a Link
+
+<Editor code={linkStory} />
+
+## Truncated text
+
+<Editor code={truncateStory} />
+
+## ARIA Role
+
+<Editor code={roleStory} />
+
+## Event Handlers
+
+In addition the props listed below, `ListItem` also accepts standard handlers like `onClick`, `onKeyDown`, etc.
+
+<Editor code={clickEventStory} />
+
+<ArgsTable of={ListItem} exclude={excludedProps} />

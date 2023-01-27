@@ -1,2 +1,6 @@
-import type { FC } from 'react';
-export declare const Spinner: FC;
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
+/// <reference types="react" />
+export declare const Spinner: () => JSX.Element;

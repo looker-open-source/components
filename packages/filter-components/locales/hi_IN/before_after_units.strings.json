@@ -3,7 +3,7 @@
     "value": "दिन पहले"
   },
   "days from now": {
-    "value": "अभी से दिनों बाद"
+    "value": "दिन बाद"
   },
   "fiscal quarter from now": {
     "value": "अब से शुरू होने वाली वित्तीय तिमाही"
@@ -42,7 +42,7 @@
     "value": "तिमाहियां पहले"
   },
   "quarters from now": {
-    "value": "अभी से तिमाहियां"
+    "value": "तिमाहियों बाद"
   },
   "seconds ago": {
     "value": "सेकंड पहले"
@@ -54,7 +54,7 @@
     "value": "सप्ताह पहले"
   },
   "weeks from now": {
-    "value": "अभी से सप्ताहों बाद"
+    "value": "सप्ताहों बाद"
   },
   "years ago": {
     "value": "वर्ष पहले"

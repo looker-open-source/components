@@ -1,4 +1,8 @@
 /**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
+/**
  * This is provided for legacy implementation support within `Tree`
  * The component will be removed without triggering a MAJOR release. Use with caution
  *

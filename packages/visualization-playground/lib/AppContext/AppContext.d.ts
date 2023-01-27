@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import React from 'react';
 declare type AppContextValues = {
     localStorageGetItem?: (key: string) => Promise<string | null>;

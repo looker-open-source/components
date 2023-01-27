@@ -24,7 +24,7 @@
 
  */
 
-import type { FC, ReactNode } from 'react'
+import type { ReactNode } from 'react'
 import React, { useContext } from 'react'
 import styled, { useTheme } from 'styled-components'
 import type {
@@ -45,11 +45,11 @@ interface MenuHeadingProps
   className?: string
 }
 
-const MenuHeadingInternal: FC<MenuHeadingProps> = ({
+const MenuHeadingInternal = ({
   children,
   className,
   ...restProps
-}) => {
+}: MenuHeadingProps) => {
   const theme = useTheme()
   const [isLabelShimVisible, ref] = useElementVisibility()
 

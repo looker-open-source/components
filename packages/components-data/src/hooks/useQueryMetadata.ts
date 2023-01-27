@@ -53,10 +53,10 @@ export const useQueryMetadata = (id: number) => {
    * -----------------------------------------------------------
    */
 
-  const metadata = useMemo(() => getById(id, 'metadata') || ({} as IQuery), [
-    id,
-    getById,
-  ])
+  const metadata = useMemo(
+    () => getById(id, 'metadata') || ({} as IQuery),
+    [id, getById]
+  )
 
   /*
    * Dispatch network request

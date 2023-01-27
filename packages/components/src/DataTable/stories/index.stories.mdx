@@ -1,0 +1,190 @@
+import { DataTable } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import storyBasic from '!!raw-loader!./Basic'
+import storyIndicator from '!!raw-loader!./Indicator'
+import storyNoResults from '!!raw-loader!./NoResults'
+import storySorting from '!!raw-loader!./Sorting'
+import storySelectRow from '!!raw-loader!./SelectRow'
+import storySelectManager from '!!raw-loader!./SelectManager'
+import storyControlBar from '!!raw-loader!./ControlBar'
+import storyTruncate from '!!raw-loader!./Truncate'
+
+<Meta component={DataTable} title="Docs/DataTable" />
+
+# DataTable
+
+The `<DataTable>` component, like `<Table>`, displays tabular data. However, unlike a `<Table>`, a `<DataTable>` allows you to bake in a set of actions on each row. Common use cases include:
+
+- A list of users with user details and a "Delete This User" action
+- A list of groups and their associated permissions with an "Edit This Group's Permissions" action on each row
+- A list of recently run queries and a "Rerun This Query" action on each row
+
+The `<DataTable>` component acts as the main wrapper to other `<DataTable>`-related components. It must receive an array of type `DataTableColumn` in its `columns` prop. That array should contain objects that describe the columns in your `<DataTable>`.
+
+For accessibility `caption` must be specified to describe the table's contents.
+
+## Columns
+
+`DataTableColumn`s are defined as an array of objects that conform to the `DataTableColumn` interface:
+
+### **title** (required)
+
+- `title` for the column
+- `titleIcon` is an `Icon` specified instead of the title text in the header row.
+  - NOTE: `title` will still be used in column selector and will be added as a tooltip to the icon displayed in the header row.
+
+### **id** (required)
+
+A unique identifier for a given column. NOTE: A column object's id should match a key in your data object template, see example below.
+
+### **type**
+
+Defaults to `string`. In some locales, we may change horizontal alignment of 'number'
+
+- `string`
+- `number`
+- `date`
+
+### **size**
+
+Specify a size to have the column consume a fixed width. Defaults to `auto`
+
+For content that is not expected to wrap `auto` is often the best choice as the column will only consume the horizontal room needed to contain its content.
+
+- `auto` columns will use browser-native table column behavior.
+- `small`, `medium`, & `large` are the predefined sizes and will truncate
+- `nowrap` - column will not truncate and content will not wrap. Use with caution.
+- `0-100` (number) - width is a percentage of the table's width.
+  - Columns sized as a percentage do not support truncation.
+  - Mixing percentage columns with other sizing formats is not supported and yields unpredictable behavior.
+  - If percentages of all columns do not total 100% column widths may be somewhat unpredictable as well (browser table column calculations vary widely in these scenarios)
+
+<Editor code={storyBasic} />
+
+## DataTableItem
+
+The `<DataTableItem>` component represents a row of data in your DataTable.
+
+To define actions on a row, pass in `<DataTableAction>` elements (wrapped in a React.Fragment if there are multiple) into the `actions` prop.
+
+You can also pass a callback to the `onClick` prop, but note that this callback will not fire when clicking on the Vertical Dots `<IconButton />`.
+
+The `actionsTooltip` prop can be used to set the tooltip text of a row's actions button. This prop will also be used in a visually hidden label on the actions button, which is especially useful for getting the actions button DOM element when testing.
+
+## DataTableCell
+
+The `<DataTableCell>` component is equivalent to a data cell in your DataTable. `<DataTableCell>` elements should always be children of a `<DataTableItem>` element (i.e. each row should contain some number of column elements).
+
+In its simplest form, a `<DataTableCell>` element will display whatever child elements it has.
+
+You can also create more advanced layouts within your `<DataTableCell>` by utilizing the optional `description` and `indicator` props.
+
+Passing in a React element into the `description` prop will display said element underneath any child elements of your `<DataTableCell>`.
+
+Passing in a React element into the `indicator` prop will display said element left of any child elements (and any element passed into the `description` prop).
+
+<Editor code={storyIndicator} />
+
+**Note:** By default, clicking on any element within a `<DataTableCell>` will trigger the `onClick` of the parent `<DataTableItem>`. To prevent this, make sure to include an `event.stopPropagation()` call within your `<DataTableCell>`'s `onClick`.
+
+## DataTableAction
+
+The `<DataTableAction>` component represents an actionable item on the rows of your `DataTable`. As noted above, you can supply each of your rows with actions by passing `<DataTableAction>` elements into the `actions` prop of the parent `<DataTableItem>` element.
+
+## States
+
+In the event that your page and `<DataTable>` render before data is available (i.e. before a Promise resolves), you can use the `state` prop to conditionally render a loading icon until your data is ready.
+
+Passing "loading" into a `<DataTable>`'s `state` prop will render a `<Spinner>` icon.
+
+Additionally, you can render a "No Results" message using the `state="noResults"` prop. When `state="noResults"` the `<DataTable>` will display a "No Results" message in place of its children.
+
+To customize the "No Results" message text, use the `noResultsDisplay` prop. Strings will be formatted as shown below, use JSX for custom formattng if you prefer.
+
+<Editor code={storyNoResults} />
+
+## Sorting
+
+You can implement sorting on a `<DataTable>` by passing a function into the optional `onSort` prop. In addition, sortable columns must have `canSort: true` on their corresponding column object.
+
+Clicking on the header of a sortable column will lead to an `onSort` call, with (1) the column's id and (2) the next sort direction, passed in as arguments. The sort direction argument will either be a string 'desc' if the current sort direction of the column is 'asc', or 'asc' in all other cases.
+
+If your data is initially sorted on a specific column, you may want to default the corresponding column object with a `sortDirection` property.
+
+For default sort behavior, use the `doDataTableSort` helper function. The `doDataTableSort` helper function will return a sorted data array as well as an updated columns array, which can then be used to replace your existing arrays post-sort.
+
+**Note:** `doDataTableSort` is a generic function. The returned data array will have the same type as the data array argument.
+
+`doDataTableSort` currently supports `string`, `number`, and `date` sorting. It will use the `type` property on the corresponding column object of the passed-in `id` to determine which sort logic to use.
+
+If using a custom `onSort`, make sure the function performs the following:
+
+- Updates the corresponding column object's `sortDirection`
+- Sorts the collection representing your data
+
+<Editor code={storySorting} />
+
+## Selecting rows
+
+You can add row select behavior on a `<DataTable />` by passing a valid into the `select` prop.
+
+The following properties are **required** in the object passed into the `select` prop.
+
+- `onSelect`: Clicking on a checkbox will trigger the `onSelect` callback, with the id of the checkbox's `DataTableItem` passed in as an argument.
+
+- `onSelectAll`: Callback that is triggered when the header's checkbox is clicked
+
+- `selectedItems`: An array containing the `id`s of all selected items. Will usually be a piece of state.
+
+- `pageItems`: An array containing the `id`s of all currently visible items. This is mainly used to help calculate the checked state of the header checkbox.
+
+The following properties are **optional** in the object passed into the `select` prop:
+
+**Note:** For accessibility purposes, the header checkbox is described by the ID of the header row. To set the ID of the header row, use the `headerRowId` prop on `DataTable`.
+<Editor code={storySelectRow} />
+
+### useSelectManager
+
+The `useSelectManager` hook can be used to quickly create the standard building blocks of `DataTable` select behavior.
+
+`useSelectManager` accepts the following parameters:
+
+<SelectManagerParameterTable />
+
+`useSelectManager` returns an object with the following properties:
+
+<SelectManagerReturnTable />
+
+<Editor code={storySelectManager} />
+
+## Control Bar
+
+`DataTable` comes with a built-in control bar that allows for bulk actions and additional select control.
+
+A `DataTable` will reveal its control bar when the following conditions are met:
+
+1. The array passed into the `select.selectedItems` prop has length > 0.
+2. A valid object is passed into the `bulk` prop.
+
+The `bulk` prop is used to configure a `DataTable`'s control bar. The object passed into `bulk` _must_ have the following properties:
+
+- `actions`: Bulk actions that are available when one or more items are selected
+- `onTotalClearAll`: Callback that is triggered when the user presses the "Clear Selection" button
+- `onTotalSelectAll`: Callback that is triggered when the user presses the "Select all X results" button in the control bar
+- `pageCount`: The total number of visible items (i.e. the total number of items on the current page in paginated `DataTable`s)
+- `totalCount`: The total number of items, both visible and nonvisible, in this `DataTable`
+
+**Note:** The `onSelect` returned from the `useSelectManager` hook is designed to work seamlessly with the control bar. In the event that a user selects all items, both visible and non-visible, a follow-up click on a checkbox will unselect both the clicked item and all non-visible items.
+
+<Editor code={storyControlBar} />
+
+## Truncation
+
+DataTable plays nicely with [Truncate](?path=/docs/docs-truncate--docs), when you wish to condense the table and keep all values to a single line.
+<Editor code={storyTruncate} />
+
+
+## Props
+
+<ArgsTable of={DataTable} exclude={excludedProps} />

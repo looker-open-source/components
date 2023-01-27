@@ -28,11 +28,8 @@ import 'jest-styled-components'
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { act, fireEvent, screen } from '@testing-library/react'
-import { composeStories } from '@storybook/testing-react'
 import { RIPPLE_RATIO } from '../../../Ripple'
-import * as stories from './ToggleSwitch.stories'
-
-const { Basic, Checked, Disabled } = composeStories(stories)
+import { Basic, Checked, Disabled } from './stories/index.stories'
 
 beforeEach(() => {
   jest.useFakeTimers()

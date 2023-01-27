@@ -25,7 +25,6 @@
  */
 
 import styled from 'styled-components'
-import type { FC } from 'react'
 import React, { useState } from 'react'
 import { BulkActions } from './BulkActions'
 import { DataTableContext } from './DataTableContext'
@@ -34,7 +33,7 @@ import { Table } from './Table'
 import type { DataTableProps } from './types'
 import { allItemsSelected } from './utils/allItemsSelected'
 
-export const DataTableLayout: FC<DataTableProps> = props => {
+export const DataTableLayout = (props: DataTableProps) => {
   const {
     bulk,
     className,

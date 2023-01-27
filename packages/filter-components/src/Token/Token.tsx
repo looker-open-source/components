@@ -87,7 +87,9 @@ export const Token = forwardRef(
 
 Token.displayName = 'Token'
 
-const TokenBase = styled(ChipButton)<ChipTokenProps & { maxWidth?: string }>`
+export const TokenBase = styled(ChipButton)<
+  ChipTokenProps & { maxWidth?: string }
+>`
   ${({ theme, showError }) =>
     showError && `border: 1px solid ${theme.colors.criticalBorder};`}
   max-width: ${({ maxWidth }) => maxWidth || MAX_TOKEN_WIDTH};

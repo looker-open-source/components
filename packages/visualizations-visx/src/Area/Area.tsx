@@ -24,7 +24,6 @@
 
  */
 
-import type { FC } from 'react'
 import React, { Fragment } from 'react'
 import { DataProvider, AreaSeries, XYChart, AreaStack } from '@visx/xychart'
 import type { AxisScaleOutput, AxisScale } from '@visx/axis'
@@ -54,15 +53,15 @@ import { Marker } from '../Marker'
 import { Grid } from '../Grid'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const NoopComponent: FC<any> = ({ children }) => <>{children}</>
+const NoopComponent = ({ children }: any) => <>{children}</>
 
-export const Area: FC<AreaProps> = ({
+export const Area = ({
   data,
   config,
   height = DEFAULT_HEIGHT,
   width,
   fields,
-}) => {
+}: AreaProps) => {
   const { positioning, series: seriesList, legend } = config
 
   /**

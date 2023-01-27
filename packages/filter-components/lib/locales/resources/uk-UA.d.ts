@@ -1,2 +1,1 @@
-import type { I18nStateWithDates } from '../../utils';
-export declare const ukUA: I18nStateWithDates;
+export declare const ukUA: import("@looker/i18n").I18nStateWithDates;

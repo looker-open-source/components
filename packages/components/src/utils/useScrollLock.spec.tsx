@@ -35,10 +35,10 @@ let paddingSpy: jest.SpyInstance<void, string[]>
 
 beforeEach(() => {
   paddingSpy = jest.spyOn(document.body.style, 'paddingRight', 'set')
-  global.console = ({
+  global.console = {
     ...globalConsole,
     warn: warnMock,
-  } as unknown) as Console
+  } as unknown as Console
 })
 
 afterEach(() => {

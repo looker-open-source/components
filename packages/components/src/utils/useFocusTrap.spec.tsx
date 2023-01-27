@@ -28,7 +28,7 @@ import { FocusTrapProvider } from '@looker/components-providers'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { act, fireEvent, render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import type { FC } from 'react'
+import type { ReactNode } from 'react'
 import React from 'react'
 import { FieldSelect, FieldText } from '../Form/Fields'
 import { useFocusTrap, useToggle } from './'
@@ -43,9 +43,10 @@ afterEach(() => {
 
 interface TestProps {
   clickOutsideDeactivates?: boolean
+  children?: ReactNode
 }
 
-const Inner: FC<TestProps> = ({ children, clickOutsideDeactivates }) => {
+const Inner = ({ children, clickOutsideDeactivates }: TestProps) => {
   const [, ref] = useFocusTrap({ clickOutsideDeactivates })
   const { value, setOff, toggle } = useToggle()
   return (
@@ -64,7 +65,7 @@ const Inner: FC<TestProps> = ({ children, clickOutsideDeactivates }) => {
   )
 }
 
-const FocusTrapComponent: FC<TestProps> = props => {
+const FocusTrapComponent = (props: TestProps) => {
   return (
     <FocusTrapProvider>
       <Inner {...props} />
@@ -72,7 +73,7 @@ const FocusTrapComponent: FC<TestProps> = props => {
   )
 }
 
-const Surface: FC = ({ children }) => (
+const Surface = ({ children }: React.PropsWithChildren<unknown>) => (
   <div tabIndex={-1} data-testid="surface" data-overlay-surface="true">
     {children}
   </div>

@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { DimensionMetadata, SDKRecord } from '@looker/visualizations-adapters';
 import type { ColumnDef } from '@tanstack/table-core';
 /**

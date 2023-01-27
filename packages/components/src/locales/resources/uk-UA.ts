@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2022 Looker Data Sciences, Inc.
+ Copyright (c) 2023 Google LLC
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -23,8 +23,10 @@
  SOFTWARE.
 
  */
+
 import dateLocale from 'date-fns/locale/uk'
-import type { I18nStateWithDates } from '@looker/i18n'
+
+import { mergeLocaleObjects } from '@looker/i18n'
 
 const resources = {
   AdvancedInputControls: {
@@ -78,7 +80,7 @@ const resources = {
     Options: 'Параметри',
   },
   FieldTimeSelect: {
-    'Please enter a valid time': 'Введіть дійсне значення часу',
+    'Please use format HHMM': 'Використовуйте формат ГГ:ХХ',
   },
   GetIntentLabel: {
     Error: 'Помилка',
@@ -134,7 +136,9 @@ const resources = {
     Save: 'Зберегти',
   },
   RangeSlider: {
+    'Maximum Name': 'Максимум {{name}}',
     'Maximum Value': 'Максимальне значення',
+    'Minimum Name': 'Мінімум {{name}}',
     'Minimum Value': 'Мінімальне значення',
   },
   RequiredStar: {
@@ -149,8 +153,4 @@ const resources = {
   },
 }
 
-export const ukUA: I18nStateWithDates = {
-  dateLocale,
-  locale: 'uk-UA',
-  resources: { 'uk-UA': resources },
-}
+export const ukUA = mergeLocaleObjects([], 'uk-UA', resources, dateLocale)

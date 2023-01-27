@@ -24,8 +24,8 @@
 
  */
 
-import type { FC } from 'react'
 import React, { createContext, useContext, useState } from 'react'
+import type { ReactNode } from 'react'
 import {
   FilterList,
   MoreVert,
@@ -37,7 +37,7 @@ import { IconButton, Menu, MenuItem, Tooltip, Flex, Truncate } from '../..'
 import { LkFieldItem } from '..'
 import { HoverDisclosure } from '../../utils'
 import { listItemDimensions } from '../../ListItem'
-import { ReplaceText, Span } from '../../Text'
+import { ReplaceText } from '../../ReplaceText'
 
 export const HighlightContext = createContext({ term: '' })
 
@@ -46,15 +46,16 @@ type FieldPickerItemProps = {
   filter?: boolean
   pivot?: boolean
   selected?: boolean
+  children?: ReactNode
 }
 
-export const FieldPickerItem: FC<FieldPickerItemProps> = ({
+export const FieldPickerItem = ({
   children = 'Cost',
   color = 'dimension',
   filter = false,
   pivot = false,
   selected = false,
-}) => {
+}: FieldPickerItemProps) => {
   const [isFieldMenuOpen, setIsFieldMenuOpen] = useState<boolean>(false)
   const { term } = useContext(HighlightContext)
 
@@ -128,20 +129,7 @@ export const FieldPickerItem: FC<FieldPickerItemProps> = ({
           width="100%"
         >
           <Truncate>
-            <ReplaceText
-              match={term}
-              replace={(str, index) => (
-                <Span
-                  fontWeight="semiBold"
-                  textDecoration="underline"
-                  key={index}
-                >
-                  {str}
-                </Span>
-              )}
-            >
-              {children}
-            </ReplaceText>
+            <ReplaceText match={term}>{children}</ReplaceText>
           </Truncate>
         </Flex>
         <HoverDisclosure visible={isPivot}>

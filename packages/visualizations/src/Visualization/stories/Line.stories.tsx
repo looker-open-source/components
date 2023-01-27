@@ -24,9 +24,8 @@
 
  */
 
-import type { Story } from '@storybook/react/types-6-0'
+import type { Story } from '@storybook/react'
 import React from 'react'
-import omit from 'lodash/omit'
 import { Visualization } from '../Visualization'
 import type { Fields, LineProps, CLine } from '@looker/visualizations-adapters'
 import {
@@ -44,7 +43,7 @@ import {
 
 export default {
   component: Visualization,
-  title: 'Visualizations/Line',
+  title: 'Visualizations/Stories/Line',
 }
 
 type StoryTemplateProps = Omit<LineProps, 'config' | 'fields' | 'data'> & {
@@ -138,7 +137,11 @@ export const DefaultYAxisSingleMeasure: Story<LineProps> = () => {
 
   const data = tabularResponse(
     [...mockSdkDataResponse].map(datum => {
-      return omit(datum, 'orders.average_total_amount_of_order_usd')
+      const {
+        'orders.average_total_amount_of_order_usd': _ordersAverageEtc,
+        ...rest
+      } = datum
+      return rest
     })
   )
 

@@ -1,0 +1,43 @@
+import { Popover } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import storyRenderProps from '!!raw-loader!./RenderProps'
+import storyPopoverWithLayout from '!!raw-loader!./PopoverWithLayout'
+import storyPlacement from '!!raw-loader!./Placement'
+import storyHover from '!!raw-loader!./Hover'
+
+<Meta component={Popover} title="Docs/Popover" />
+
+# Popover
+
+Popovers are containers for things like contextual information, menus, and related actions.
+
+## Terminology
+
+Popovers are assembled of two pieces: an overlay and a surface. Unlike [Dialogs](/components/dialogs/), the `Popover` overlay is transparent, but it still blocks the application behind it until it is closed, with the exception of [grouped Popovers](#grouped-popovers). The `Popover`'s surface renders the content above the overlay and the rest of the application.
+
+<Editor code={storyPopoverWithLayout} />
+
+## Placement
+
+Placement can be adjusted with the `placement` prop. Valid positions are `top`, `left`, `right` and `bottom`, each can be augmented with -`start` or `-end` which places the edge of the popover at the start or end of the target.
+
+<Editor code={storyPlacement} />
+
+## Disclosing the Trigger on Hover
+
+<Editor code={storyHover} />
+
+## PopoverContent
+
+`PopoverContent` is a simple container component that can be used to apply a consistent style to content placed within a Popover surface.
+
+## "Render Prop" style
+
+Sometimes you may need to control how `Tooltip` applies handlers to the component within it. If so you can use the render prop form of the component:
+
+<Editor code={storyRenderProps} />
+
+## Props
+
+<ArgsTable of={Popover} exclude={excludedProps} />

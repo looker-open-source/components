@@ -11,22 +11,25 @@ declare type ExpressionTypeProps = {
      * Will be derived from field and type if absent.
      */
     expressionType: FilterExpressionType;
-};
-declare type FieldProps = {
     /**
      * The field associated with the filter.
      * Required if expressionType is not provided.
      */
     field: ILookmlModelExploreField | null;
-};
-declare type TypeProps = {
     /**
      * The type on the DashboardFilter, e.g. field_filter,
      * used to derive expressionType if that is not provided
      */
     type: string;
 };
-declare type ExpressionTypeOrFieldProps = (ExpressionTypeProps | FieldProps | TypeProps) & (Partial<ExpressionTypeProps> & Partial<FieldProps> & Partial<TypeProps>);
+declare type AtLeastOnePropertyOf<T> = {
+    [K in keyof T]: {
+        [L in K]: T[L];
+    } & {
+        [L in Exclude<keyof T, K>]?: T[L];
+    };
+}[keyof T];
+declare type ExpressionTypeOrFieldProps = AtLeastOnePropertyOf<ExpressionTypeProps>;
 /**
  * Interface for the <Filter/> component's props property.
  * Requires at least one of: expressionType, field, type
@@ -38,7 +41,7 @@ export declare type FilterProps = ExpressionTypeOrFieldProps & {
     config?: any;
     /**
      * The current value of the filter.
-     * See {@link https://docs.looker.com/reference/filter-expressions Looker Filter Expressions}.
+     * See {@link https://cloud.google.com/looker/docs/reference/filter-expressions Looker Filter Expressions}.
      */
     expression: string;
     /**

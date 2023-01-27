@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2022 Looker Data Sciences, Inc.
+ Copyright (c) 2023 Google LLC
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -23,11 +23,11 @@
  SOFTWARE.
 
  */
-import merge from 'lodash/merge'
+
 import dateLocale from 'date-fns/locale/ru'
-import type { I18nStateWithDates } from '../../utils'
-import { ruRU as expressionLocale } from '@looker/filter-expressions'
 import { ruRU as componentsLocale } from '@looker/components'
+import { ruRU as filterexpressionsLocale } from '@looker/filter-expressions'
+import { mergeLocaleObjects } from '@looker/i18n'
 
 const resources = {
   AddRemoveButtons: {
@@ -183,6 +183,11 @@ const resources = {
     Remove: '',
     Toggle: '',
   },
+  NoMatchingFields: {
+    'No Matching Fields': 'Нет соответствующих полей',
+    'Try Something Else':
+      'Попробуйте использовать другое условие поиска или вернитесь и разверните любой объект Explore, чтобы просмотреть доступные поля.',
+  },
   NumberFilter: {
     'any value': 'любое значение',
   },
@@ -245,15 +250,9 @@ const resources = {
   },
 }
 
-export const ruRU: I18nStateWithDates = {
-  dateLocale,
-  locale: 'ru-RU',
-  resources: {
-    'ru-RU': merge(
-      {},
-      resources,
-      expressionLocale.resources['ru-RU'],
-      componentsLocale.resources['ru-RU']
-    ),
-  },
-}
+export const ruRU = mergeLocaleObjects(
+  [componentsLocale, filterexpressionsLocale],
+  'ru-RU',
+  resources,
+  dateLocale
+)

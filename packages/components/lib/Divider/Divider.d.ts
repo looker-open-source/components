@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { CompatibleHTMLProps, PositionProps, SpaceProps } from '@looker/design-tokens';
 export interface DividerProps extends CompatibleHTMLProps<HTMLHRElement>, PositionProps, SpaceProps {
     appearance?: 'default' | 'light' | 'dark' | 'onDark';

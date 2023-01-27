@@ -1,32 +1,10 @@
-/*
-
- MIT License
-
- Copyright (c) 2022 Looker Data Sciences, Inc.
-
- Permission is hereby granted, free of charge, to any person obtaining a copy
- of this software and associated documentation files (the "Software"), to deal
- in the Software without restriction, including without limitation the rights
- to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- copies of the Software, and to permit persons to whom the Software is
- furnished to do so, subject to the following conditions:
-
- The above copyright notice and this permission notice shall be included in all
- copies or substantial portions of the Software.
-
- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- SOFTWARE.
-
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
  */
-import omit from 'lodash/omit'
 import type { InputTextProps } from '@looker/components'
 import { InputText } from '@looker/components'
-import type { FC, FormEvent } from 'react'
+import type { FormEvent } from 'react'
 import React from 'react'
 import styled from 'styled-components'
 import type { PlacementProps } from '../../../../utils/filter_styles'
@@ -34,11 +12,11 @@ import { inputPlacementStyle } from '../../../../utils/filter_styles'
 
 export type GroupInputProps = InputTextProps & PlacementProps
 
-const InputLayout: FC<GroupInputProps> = ({
+const InputLayout = ({
   type = 'number',
   width = '80px',
   ...props
-}) => {
+}: GroupInputProps) => {
   const inputValidator = (evt: FormEvent<HTMLInputElement>) => {
     if (evt.target && evt.currentTarget.value) {
       evt.currentTarget.value = evt.currentTarget.value
@@ -47,19 +25,14 @@ const InputLayout: FC<GroupInputProps> = ({
     }
   }
 
-  return (
-    <InputText
-      autoResize
-      onInput={inputValidator}
-      type={type}
-      {...omit(props, 'placement')}
-    />
-  )
+  const { placement: _placement, ...rest } = props
+
+  return <InputText autoResize onInput={inputValidator} type={type} {...rest} />
 }
 
-export const GroupInput = styled(
-  InputLayout
-).attrs(({ placement = 'middle' }) => ({ placement }))`
+export const GroupInput = styled(InputLayout).attrs(
+  ({ placement = 'middle' }) => ({ placement })
+)`
   ${inputPlacementStyle}
   input {
     text-align: right;

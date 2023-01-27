@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { IWriteQuery } from '@looker/sdk';
 /**
  * useCreateQuery creates a new query derived from the `newQuery` configuration.

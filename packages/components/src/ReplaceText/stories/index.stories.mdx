@@ -1,0 +1,21 @@
+import { ReplaceText } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import storyBasic from '!!raw-loader!./Basic'
+import storyCustomReplace from '!!raw-loader!./CustomReplace'
+
+<Meta component={ReplaceText} title="Docs/ReplaceText" />
+
+# ReplaceText
+
+Highlights the `match` string in the child text (case-insensitive and global).
+
+<Editor code={storyBasic} />
+
+## Custom Replace
+
+Optionally pass a component to the `replace` prop to customize the highlighted text.
+
+<Editor code={storyCustomReplace} />
+
+<ArgsTable of={ReplaceText} exclude={excludedProps} />

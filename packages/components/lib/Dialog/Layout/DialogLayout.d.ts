@@ -1,4 +1,4 @@
-import type { FC, ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import type { ModalHeaderProps } from '../../Modal/ModalHeader';
 import type { ModalLayoutProps } from '../../Modal/ModalLayout';
 declare type WithFooter = {
@@ -35,5 +35,5 @@ export declare type DialogLayoutProps = FooterOptions & ModalLayoutProps & {
      */
     headerCloseButton?: boolean;
 };
-export declare const DialogLayout: FC<DialogLayoutProps>;
+export declare const DialogLayout: ({ children, footer, footerSecondary, header, headerCloseButton, headerDetail, isLoading, }: DialogLayoutProps) => JSX.Element;
 export {};

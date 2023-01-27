@@ -292,6 +292,7 @@ describe('<Menu />', () => {
       expect(child2).toBeVisible()
 
       // Escape key closes the child & parent menus
+      const spy = jest.spyOn(document, 'elementsFromPoint').mockReturnValue([])
       fireEvent.keyDown(child2, { key: 'Escape' })
       expect(screen.queryByText('Swiss')).not.toBeInTheDocument()
       expect(screen.queryByText('Gouda')).not.toBeInTheDocument()
@@ -299,6 +300,7 @@ describe('<Menu />', () => {
       await waitFor(() => {
         expect(button).toHaveFocus()
       })
+      spy.mockRestore()
     })
 
     test('toggle on click', () => {

@@ -1,0 +1,14 @@
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import { Code } from '@looker/components'
+import storyDefault from '!!raw-loader!./Default'
+
+<Meta component={Code} title="Docs/Code" />
+
+# Code
+
+Renders a inline level `<code />` element on the page.
+
+<Editor code={storyDefault} />
+
+<ArgsTable of={Code} exclude={excludedProps} />

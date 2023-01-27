@@ -1,5 +1,4 @@
 import type { IDashboardFilter } from '@looker/sdk';
-import type { FC } from 'react';
 import React from 'react';
 declare type FilterWithExpresison = {
     filter: IDashboardFilter;
@@ -29,5 +28,5 @@ export declare const FilterContext: React.Context<FilterContextProps>;
  * This allows filters with `listens_to_filters` to pull the relevant
  * expressions out when performing a linked filter suggestion query.
  */
-export declare const FilterCollection: FC;
+export declare const FilterCollection: ({ children, }: React.PropsWithChildren<unknown>) => JSX.Element;
 export {};

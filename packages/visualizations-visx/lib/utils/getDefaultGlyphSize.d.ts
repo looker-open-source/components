@@ -1,4 +1,8 @@
 /**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
+/**
  * Set a static marker glyph size for use in line, area, and scatter.
  * Calibrated to the line_width value
  *

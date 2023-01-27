@@ -102,7 +102,7 @@ export const AccordionIndicator = styled(
       Default vertical-align is set to middle which shifts indicator icon
       below mid-point
     */
-    vertical-align: baseline;
+    vertical-align: top;
     width: ${({ density, theme }) => theme.sizes[size(density)]};
   }
 `

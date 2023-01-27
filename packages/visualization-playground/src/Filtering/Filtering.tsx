@@ -24,7 +24,7 @@
 
  */
 
-import type { FC, FormEvent } from 'react'
+import type { FormEvent } from 'react'
 import React, { useState, useEffect, useCallback } from 'react'
 import {
   useQueryId,
@@ -62,12 +62,12 @@ const createQueryRequest = (
   return result
 }
 
-export const Filtering: FC<FilteringProps> = ({
+export const Filtering = ({
   query,
   dashboard,
   setQueryIdentifier,
   setFetchBy,
-}) => {
+}: FilteringProps) => {
   const [draftQueryMetadata, setDraftQueryMetadata] = useState<
     Partial<IWriteQuery> | undefined
   >()
@@ -79,9 +79,8 @@ export const Filtering: FC<FilteringProps> = ({
     metadata: { filters: currentFilters = {} },
   } = useQueryMetadata(queryId)
 
-  const [draftFilters, setDraftFilters] = useState<IQuery['filters']>(
-    currentFilters
-  )
+  const [draftFilters, setDraftFilters] =
+    useState<IQuery['filters']>(currentFilters)
   const [isFieldsetOpen, setIsFieldsetOpen] = useState(false)
 
   // caution: side effects!

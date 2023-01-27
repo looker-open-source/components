@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","names":[],"sources":["../../../../src/types/location/index.ts"],"sourcesContent":["/**\n * Copyright (c) 2023 Google LLC\n * SPDX-License-Identifier: MIT\n */\nexport * from './location_item_types'\n"],"mappings":";AAIA,cAAc,uBAAuB"}

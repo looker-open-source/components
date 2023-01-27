@@ -1,4 +1,4 @@
-import type { FC, ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import type { CompatibleHTMLProps } from '@looker/design-tokens';
 export interface DataTableItemProps extends CompatibleHTMLProps<HTMLDivElement> {
     /**
@@ -26,4 +26,4 @@ export interface DataTableItemProps extends CompatibleHTMLProps<HTMLDivElement> 
     children: JSX.Element | JSX.Element[];
     actionPrimary?: ReactNode;
 }
-export declare const DataTableItem: import("styled-components").StyledComponent<FC<DataTableItemProps>, import("styled-components").DefaultTheme, {}, never>;
+export declare const DataTableItem: import("styled-components").StyledComponent<(props: DataTableItemProps) => JSX.Element, import("styled-components").DefaultTheme, {}, never>;

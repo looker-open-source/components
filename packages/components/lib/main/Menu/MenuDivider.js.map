@@ -1,0 +1,1 @@
+{"version":3,"file":"MenuDivider.js","names":["MenuDivider","ListDivider"],"sources":["../../../src/Menu/MenuDivider.tsx"],"sourcesContent":["/**\n * Copyright (c) 2023 Google LLC\n * SPDX-License-Identifier: MIT\n */\n\nimport { ListDivider } from '../List'\n\nexport const MenuDivider = ListDivider\n"],"mappings":";;;;;;AAKA;;AAEO,IAAMA,WAAW,GAAGC,iBAAW;AAAA"}

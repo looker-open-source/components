@@ -26,10 +26,8 @@
 
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
-import { theme } from '@looker/design-tokens'
 import { fireEvent, screen } from '@testing-library/react'
 import { FieldSelect } from './FieldSelect'
-import { LabelFocusColorTest } from './FieldSelect.stories'
 
 describe('FieldSelect', () => {
   test('autoResize', () => {
@@ -117,40 +115,5 @@ describe('FieldSelect', () => {
     const errorMessageDom = screen.getByText(errorMessage)
     expect(errorMessageDom.parentElement).toBeInTheDocument()
     expect(errorMessageDom.parentElement?.id).toEqual(id)
-  })
-
-  test('Floating label focus color', () => {
-    renderWithTheme(<LabelFocusColorTest />)
-    const input1 = screen.getByLabelText('Label Initial')
-    const label1 = screen.getByText('Label Initial')
-
-    // Label has correct color before & after focus
-    expect(label1).not.toHaveStyle(`color: ${theme.colors.key}`)
-    fireEvent.focus(input1)
-    fireEvent.click(input1)
-    expect(label1).toHaveStyle(`color: ${theme.colors.key}`)
-    fireEvent.click(screen.getByText('Kiwis'))
-    // Input briefly loses focus when an option is clicked,
-    // but the label should still have key color
-    expect(label1).toHaveStyle(`color: ${theme.colors.key}`)
-
-    const openDialog = screen.getByText('Open Dialog')
-    fireEvent.blur(input1, { relatedTarget: openDialog })
-    fireEvent.click(openDialog)
-    expect(label1).not.toHaveStyle(`color: ${theme.colors.key}`)
-
-    const input2 = screen.getByLabelText('Label Dialog')
-    const label2 = screen.getByText('Label Dialog')
-    fireEvent.focus(input2)
-    fireEvent.click(input2)
-    fireEvent.click(screen.getByText('Kiwis'))
-    expect(label2).toHaveStyle(`color: ${theme.colors.key}`)
-
-    const buttonDialog = screen.getByText('Button Dialog')
-    fireEvent.blur(input2, { relatedTarget: buttonDialog })
-    fireEvent.click(buttonDialog)
-    // When the field is in a dialog, the label should not have key color
-    // when input is blurred (the bug was it stayed key color)
-    expect(label2).not.toHaveStyle(`color: ${theme.colors.key}`)
   })
 })

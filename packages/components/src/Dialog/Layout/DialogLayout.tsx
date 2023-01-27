@@ -24,7 +24,7 @@
 
  */
 
-import type { FC, ReactNode } from 'react'
+import type { ReactNode } from 'react'
 import React from 'react'
 import type { ModalHeaderProps } from '../../Modal/ModalHeader'
 import type { ModalLayoutProps } from '../../Modal/ModalLayout'
@@ -94,7 +94,7 @@ const constructDialogHeader = (
   return <DialogHeader {...props} />
 }
 
-export const DialogLayout: FC<DialogLayoutProps> = ({
+export const DialogLayout = ({
   children,
   footer,
   footerSecondary,
@@ -102,7 +102,7 @@ export const DialogLayout: FC<DialogLayoutProps> = ({
   headerCloseButton = !footer && true,
   headerDetail,
   isLoading,
-}) => {
+}: DialogLayoutProps) => {
   const dialogFooter = footer ? (
     <DialogFooter secondary={footerSecondary}>{footer}</DialogFooter>
   ) : null

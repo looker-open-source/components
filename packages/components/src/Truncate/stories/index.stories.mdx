@@ -1,0 +1,29 @@
+import { MessageBar, Truncate } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import storyBasic from '!!raw-loader!./Basic'
+import storyDescription from '!!raw-loader!./Description'
+
+<Meta component={Truncate} title="Docs/Truncate" />
+
+# Truncate
+
+`Truncate` can be used when you want to prevent text from wrapping. Text will be limited to a single line, and if it overflows an ellipsis will be rendered. In addition, a tooltip will be activated to display the full text on hover.
+
+<MessageBar intent="warn" noActions mb="medium">
+  <strong>Caveat:</strong> the direct parent of this component must have a width
+  or max-width styled on it or else it will invisibly overflow without rendering
+  the proper ellipsis.
+</MessageBar>
+
+<Editor code={storyBasic} />
+
+## Description
+
+You can optionally add the `description` prop, which is additional content that can be rendered at the end of the tooltip overlay. Specifying `description` will cause truncation tooltip to always be present on hover, even when the content does not overflow.
+
+<Editor code={storyDescription} />
+
+## Props
+
+<ArgsTable of={Truncate} />

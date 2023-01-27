@@ -35,6 +35,7 @@ import {
   useForkedRef,
 } from '../utils'
 import { Portal } from '../Portal'
+import { DialogContext } from '../Dialog'
 import { TooltipContent } from './TooltipContent'
 import { TooltipSurface } from './TooltipSurface'
 import type { UseTooltipProps } from './types'
@@ -44,6 +45,7 @@ const noop = () => {}
 
 export const useTooltip = ({
   canClose,
+  canOpen,
   content,
   isOpen: initializeOpen = false,
   width,
@@ -122,9 +124,8 @@ export const useTooltip = ({
     [element, propsPlacement]
   )
 
-  const { placement, popperInstanceRef, style, targetRef } = usePopper(
-    usePopperProps
-  )
+  const { placement, popperInstanceRef, style, targetRef } =
+    usePopper(usePopperProps)
 
   const ref = useForkedRef(targetRef, surfaceCallbackRef)
 
@@ -134,33 +135,48 @@ export const useTooltip = ({
   return useMemo(() => {
     const popper =
       renderDOM && content && !disabled ? (
-        <Portal>
-          <TooltipSurface
-            aria-busy={busy ? true : undefined}
-            className={className}
-            eventHandlers={{ onMouseOut: handleMouseOut }}
-            placement={placement}
-            ref={ref}
-            style={style}
-            maxWidth={maxWidth}
-            invert={invert}
-          >
-            <TooltipContent
-              role="tooltip"
-              id={guaranteedId}
-              width={width}
-              textAlign={textAlign}
+        <DialogContext.Provider
+          value={{
+            busy,
+            closeModal: handleClose,
+            id: guaranteedId,
+          }}
+        >
+          <Portal>
+            <TooltipSurface
+              aria-busy={busy ? true : undefined}
+              className={className}
+              eventHandlers={{ onMouseOut: handleMouseOut }}
+              placement={placement}
+              ref={ref}
+              style={style}
+              maxWidth={maxWidth}
+              invert={invert}
             >
-              {content}
-            </TooltipContent>
-          </TooltipSurface>
-        </Portal>
+              <TooltipContent
+                role="tooltip"
+                id={guaranteedId}
+                width={width}
+                textAlign={textAlign}
+              >
+                {content}
+              </TooltipContent>
+            </TooltipSurface>
+          </Portal>
+        </DialogContext.Provider>
       ) : null
 
     const handleOpen = (e: { currentTarget: HTMLElement }) => {
       setTriggerElement(e.currentTarget)
+
       const currentElement = triggerElement ?? e.currentTarget
-      if (!disabled && (!currentElement || !currentElement.dataset.notooltip)) {
+      const shouldOpen = canOpen ? canOpen(currentElement) : true
+
+      if (
+        shouldOpen &&
+        !disabled &&
+        (!currentElement || !currentElement.dataset.notooltip)
+      ) {
         setIsOpen(true)
       }
     }
@@ -182,7 +198,7 @@ export const useTooltip = ({
         onFocus: handleOpen,
         onMouseOut: handleMouseOut,
         onMouseOver: handleOpen,
-        ref: noop,
+        ref: initializeOpen ? setTriggerElement : noop,
       },
       popperInstanceRef,
       tooltip: popper,
@@ -190,11 +206,13 @@ export const useTooltip = ({
   }, [
     busy,
     className,
+    canOpen,
     content,
     disabled,
     guaranteedId,
     handleClose,
     handleMouseOut,
+    initializeOpen,
     invert,
     maxWidth,
     placement,

@@ -1,4 +1,4 @@
-import type { FC } from 'react';
+/// <reference types="react" />
 import type { Arc } from 'd3-shape';
 import type { SDKRecord } from '@looker/visualizations-adapters';
 import type { PieArcDatum } from '@visx/shape/lib/shapes/Pie';
@@ -11,5 +11,5 @@ declare type PieArcProps = {
     renderTooltip: boolean;
     datumColor: string;
 };
-export declare const PieArc: FC<PieArcProps>;
+export declare const PieArc: ({ arc, path, datumColor, onMouseOver, onMouseOut, renderTooltip, }: PieArcProps) => JSX.Element;
 export {};

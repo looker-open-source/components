@@ -78,10 +78,10 @@ export const MonthPicker = styled(
         aria-current={isTodaysMonth}
         aria-selected={isMonth}
         type="button"
-        onClick={useCallback(() => onMonthClick(monthNumber), [
-          monthNumber,
-          onMonthClick,
-        ])}
+        onClick={useCallback(
+          () => onMonthClick(monthNumber),
+          [monthNumber, onMonthClick]
+        )}
         {...restProps}
         {...rippleProps}
         {...rippleHandlers}

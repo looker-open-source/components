@@ -1,0 +1,26 @@
+import { DialogHeader } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import storyBasic from '!!raw-loader!./Basic'
+import storyHideClose from '!!raw-loader!./HideClose'
+import storyDetail from '!!raw-loader!./Detail'
+
+<Meta component={DialogHeader} title="Docs/DialogHeader" />
+
+# DialogHeader
+
+`DialogHeader` is attached to the top of dialog and provides a button to close the containing Dialog. Uses the `DialogContext` to get access to the `close` callback.
+
+DialogHeader supports all [`Box`](/src-documentation-components-box) properties.
+
+<Editor code={storyBasic} />
+
+`hideClose` property remove the "close" `IconButton`
+
+<Editor code={storyHideClose} />
+
+`detail` property allows the developer to specify a ReactNode that will replace the "close" `IconButton`
+
+<Editor code={storyDetail} />
+
+<ArgsTable of={DialogHeader} exclude={excludedProps} />

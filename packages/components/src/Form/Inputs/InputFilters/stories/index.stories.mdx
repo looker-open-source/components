@@ -1,0 +1,35 @@
+import { InputFilters } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import basicStory from '!!raw-loader!./Basic'
+import customFilterStory from '!!raw-loader!./CustomFilter'
+import filterSelectedStory from '!!raw-loader!./FilterSelected'
+import hideFilterIconStory from '!!raw-loader!./HideFilterIcon'
+
+<Meta component={InputFilters} title="Docs/InputFilters" />
+
+# InputFilters
+
+`<InputFilters />` component, displays a lits of filterable items that then have a second layer of filtering. Once the filter statement is set it can still be editable by clicking on the element itself.
+
+<Editor code={basicStory} />
+
+## Hide Filter Icon
+
+You can render the filter input box without the filter icon by setting `hideFilterIcon` to `true`.
+
+<Editor code={hideFilterIconStory} />
+
+## Default Selected Filters
+
+Define the `value` an a single filter item to have it render selected by default.
+
+<Editor code={filterSelectedStory} />
+
+## Custom Filters
+
+Filters are able to render custom components for inputting user generated content for the value. In the example below, try adding the filter labeled "important".
+
+<Editor code={customFilterStory} />
+
+<ArgsTable of={InputFilters} exclude={excludedProps} />

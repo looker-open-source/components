@@ -24,7 +24,6 @@
 
  */
 
-import type { FC } from 'react'
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { omitStyledProps, shouldForwardProp } from '@looker/design-tokens'
@@ -41,13 +40,13 @@ export interface AvatarUserProps extends AvatarProps {
   }
 }
 
-const AvatarLayout: FC<AvatarUserProps> = ({
+const AvatarLayout = ({
   color,
   user,
   role,
   size,
   ...props
-}) => {
+}: AvatarUserProps) => {
   const { t } = useTranslation('AvatarUser')
 
   const [imgError, setImgError] = useState(false)

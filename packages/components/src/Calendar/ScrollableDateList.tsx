@@ -37,19 +37,20 @@ import type {
 
 type ItemPosition = { date: Date; top?: number; bottom?: number }
 
-export type ScrollableScrollableDateListBaseProps = ScrollableDateListBaseProps & {
-  className?: string
-  buffer: number
-  getItemDate: (baseMonth: Date, offset: number) => Date
-  // Guy Ellis 2022-09-23 - I've taken a few stabs at removing the no-explicit-any for itemComponent and
-  // each time the refactor turns out to be very large and messy and makes the code far more complex.
-  // I think that this is still a candidate for a refactor and a fix and that this should happen if and
-  // when this component is refactored for a different reason. b/201417582
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  itemComponent: (itemProps: any) => JSX.Element
-  itemProps: YearListItemProps | MonthListItemProps
-  thresholdRatio: number
-}
+export type ScrollableScrollableDateListBaseProps =
+  ScrollableDateListBaseProps & {
+    className?: string
+    buffer: number
+    getItemDate: (baseMonth: Date, offset: number) => Date
+    // Guy Ellis 2022-09-23 - I've taken a few stabs at removing the no-explicit-any for itemComponent and
+    // each time the refactor turns out to be very large and messy and makes the code far more complex.
+    // I think that this is still a candidate for a refactor and a fix and that this should happen if and
+    // when this component is refactored for a different reason. b/201417582
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    itemComponent: (itemProps: any) => JSX.Element
+    itemProps: YearListItemProps | MonthListItemProps
+    thresholdRatio: number
+  }
 
 export const ScrollableDateList = styled(
   ({

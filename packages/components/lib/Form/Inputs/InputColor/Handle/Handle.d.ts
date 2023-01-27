@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 export declare const HANDLE_SIZE: string;
 export declare const handleCSS: import("styled-components").FlattenInterpolation<import("styled-components").ThemedStyledProps<HandleProps, import("styled-components").DefaultTheme>>;
 export interface HandleProps {

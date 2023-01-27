@@ -24,7 +24,6 @@
 
  */
 
-import type { FC } from 'react'
 import React from 'react'
 import styled from 'styled-components'
 import { omitStyledProps } from '@looker/design-tokens'
@@ -54,7 +53,7 @@ export interface AvatarComboProps
 
 const AvatarIconSecondary = styled(AvatarIcon)``
 
-const AvatarLayout: FC<AvatarComboProps> = ({
+const AvatarLayout = ({
   secondaryIcon,
   secondaryColor,
   secondaryBg,
@@ -63,7 +62,7 @@ const AvatarLayout: FC<AvatarComboProps> = ({
   user,
   role,
   ...props
-}) => {
+}: AvatarComboProps) => {
   const BaseElement = role === 'button' ? 'button' : 'div'
 
   return (

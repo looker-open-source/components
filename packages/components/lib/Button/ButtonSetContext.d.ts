@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { MouseEvent } from 'react';
 export declare type ButtonSetCallback<TValue extends string | string[] = string[]> = (option: TValue, event?: MouseEvent<HTMLButtonElement>) => void;
 export interface ButtonSetContextProps<TValue extends string | string[] = string[]> {

@@ -25,7 +25,7 @@
  */
 import { Flex } from '@looker/components'
 import type { ExactLocationFilterItem } from '@looker/filter-expressions'
-import type { ChangeEvent, FC } from 'react'
+import type { ChangeEvent } from 'react'
 import React from 'react'
 import styled from 'styled-components'
 import {
@@ -49,7 +49,7 @@ interface LocationExactProps {
   placement?: 'middle' | 'right'
 }
 
-export const LocationExact: FC<LocationExactProps> = ({
+export const LocationExact = ({
   item,
   onChange,
   latString = 'LATITUDE',
@@ -57,7 +57,7 @@ export const LocationExact: FC<LocationExactProps> = ({
   lat = 'lat',
   lon = 'lon',
   placement = 'right',
-}) => {
+}: LocationExactProps) => {
   const latChange = (event: ChangeEvent<HTMLInputElement>) => {
     // Latitude range: [-90, 90]
     if (

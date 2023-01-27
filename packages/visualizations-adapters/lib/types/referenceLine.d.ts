@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 declare type ReferenceValues = 'mean' | 'median' | 'max' | 'min';
 export declare type ReferenceLine = {
     reference_type: 'line' | 'range' | 'margins';

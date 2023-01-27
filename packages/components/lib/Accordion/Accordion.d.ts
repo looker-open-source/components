@@ -1,4 +1,4 @@
-import type { FC, ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import type { TextColorProps, TypographyProps } from '@looker/design-tokens';
 import type { SimpleLayoutProps } from '../Layout/utils/simple';
 import type { AccordionIndicatorProps } from '../Accordion2/types';
@@ -25,4 +25,4 @@ export declare type AccordionProps = ControlledLoosely & AccordionIndicatorProps
 /**
  * @deprecated Use `Accordion2` instead
  */
-export declare const Accordion: import("styled-components").StyledComponent<FC<AccordionProps>, import("styled-components").DefaultTheme, {}, never>;
+export declare const Accordion: import("styled-components").StyledComponent<({ content: children, children: label, isOpen: propsIsOpen, toggleOpen: propsToggleOpen, ...props }: AccordionProps) => JSX.Element, import("styled-components").DefaultTheme, {}, never>;

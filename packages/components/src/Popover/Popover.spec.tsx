@@ -228,4 +228,21 @@ describe('Popover', () => {
 
     fireEvent.click(document)
   })
+
+  test('onClose', () => {
+    const onCloseMock = jest.fn()
+    renderWithTheme(
+      <Popover content={SimpleContent} onClose={onCloseMock}>
+        <Button>Open</Button>
+      </Popover>
+    )
+
+    const button = screen.getByText('Open')
+    fireEvent.click(button)
+    expect(screen.getByText('simple content')).toBeVisible()
+
+    fireEvent.click(document)
+    expect(screen.queryByText('simple content')).not.toBeInTheDocument()
+    expect(onCloseMock).toHaveBeenCalled()
+  })
 })

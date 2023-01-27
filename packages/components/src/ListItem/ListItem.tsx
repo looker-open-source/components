@@ -45,11 +45,11 @@ import type { ListItemProps } from './types'
 const ListItemInternal = forwardRef(
   (props: ListItemProps, ref: Ref<HTMLLIElement | HTMLDivElement>) => {
     const {
-      children,
+      children: _children,
       className,
       color: propsColor,
       density: propsDensity,
-      description,
+      description: _description,
       detail,
       disabled = false,
       hovered: propsHovered = false,
@@ -68,7 +68,7 @@ const ListItemInternal = forwardRef(
       selected,
       tabIndex = -1,
       target,
-      truncate,
+      truncate: _truncate,
       ...restProps
     } = props
 
@@ -182,7 +182,5 @@ const ListItemInternal = forwardRef(
     )
   }
 )
-
-ListItemInternal.displayName = 'ListItemInternal'
 
 export const ListItem = styled(ListItemInternal)<ListItemProps>``

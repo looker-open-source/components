@@ -1,0 +1,35 @@
+import { TextArea } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import storyBasic from '!!raw-loader!./Basic'
+import storyResize from '!!raw-loader!./Resize'
+import storyDisabled from '!!raw-loader!./Disabled'
+import storyError from '!!raw-loader!./Error'
+import storyDefaultValue from '!!raw-loader!./DefaultValue'
+
+<Meta component={TextArea} title="Docs/TextArea" />
+
+# TextArea
+
+`TextArea` component offers a multi-line text editor. If you are building a form `FieldTextArea` may be a better fit.
+
+<Editor code={storyBasic} />
+
+## DefaultValue
+
+<Editor code={storyDefaultValue} />
+
+## Allowing TextArea to be resized
+
+`true` and `vertical` will allow the `TextArea` height to be resized. Alternatively, `none` and `false` will not allow resizing.
+<Editor code={storyResize} />
+
+## Disabled
+<Editor code={storyDisabled} />
+
+## Error Message
+<Editor code={storyError} />
+
+## Props
+
+<ArgsTable of={TextArea} exclude={excludedProps} />

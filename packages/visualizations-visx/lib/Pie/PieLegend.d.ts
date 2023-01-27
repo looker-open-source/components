@@ -1,4 +1,4 @@
-import type { FC } from 'react';
+/// <reference types="react" />
 import type { ScaleOrdinal } from 'd3-scale';
 import type { CPie } from '@looker/visualizations-adapters';
 declare type PieLegendProps = {
@@ -9,5 +9,5 @@ declare type PieLegendProps = {
     height: number;
     width: number;
 };
-export declare const PieLegend: FC<PieLegendProps>;
+export declare const PieLegend: ({ legendConfig, scale, data, measureTotal, height, width, }: PieLegendProps) => JSX.Element;
 export {};

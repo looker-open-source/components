@@ -34,7 +34,7 @@ import {
 } from '@looker/components'
 import { Check } from '@styled-icons/material/Check'
 import { ExpandMore } from '@styled-icons/material-rounded/ExpandMore'
-import type { FC, MouseEvent } from 'react'
+import type { MouseEvent } from 'react'
 import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
 import { useTranslation } from '../../../../../../../../../utils'
@@ -57,8 +57,8 @@ interface RelativeTimeframePresetsProps {
   onPresetChange: (selected: AllPresetTimeframes) => void
 }
 
-export const RelativeTimeframePresets: FC<RelativeTimeframePresetsProps> = (
-  props
+export const RelativeTimeframePresets  = (
+  props : RelativeTimeframePresetsProps
 ) => {
   const { t } = useTranslation('RelativeTimeframePresets')
 
@@ -128,13 +128,13 @@ interface PresetTimeframeGroupProps
   presetTimeframe: { [key: string]: string }
 }
 
-const PresetTimeframeGroup: FC<PresetTimeframeGroupProps> = ({
+const PresetTimeframeGroup  = ({
   duration = 'simple',
   delay,
   onPresetChange,
   presetTimeframe,
   value,
-}) => {
+} : PresetTimeframeGroupProps) => {
   const presets = useRelativeTimeframePresets()
   const { closeModal } = useContext(DialogContext)
 

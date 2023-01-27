@@ -33,11 +33,11 @@ import { Space, SpaceVertical } from '../../Layout'
 import { useToggle } from '../../utils'
 import type { WindowedTreeNodeProps } from '..'
 import { WindowedTreeCollection, Tree } from '..'
-import { generateBorderRadius } from '../utils/generateBorderRadius'
 import {
   FieldPickerItem,
   HighlightContext,
 } from '../../LkFieldTree/stories/FieldPickerItem'
+import { generateBorderRadius } from '../utils/generateBorderRadius'
 
 const BorderRadiusOverrideTree = styled(Tree)`
   ${({ theme }) => generateBorderRadius('medium', theme)}
@@ -99,16 +99,16 @@ const getTrees = (labelLength: number): WindowedTreeNodeProps[] =>
 const treesRandomText = getTrees(50)
 const treesNoText = getTrees(0)
 
-const getUpdater = (isOpen: boolean) => (
-  tree: WindowedTreeNodeProps
-): WindowedTreeNodeProps => {
-  if (tree.items) {
-    return { ...tree, isOpen, items: tree.items.map(getUpdater(isOpen)) }
+const getUpdater =
+  (isOpen: boolean) =>
+  (tree: WindowedTreeNodeProps): WindowedTreeNodeProps => {
+    if (tree.items) {
+      return { ...tree, isOpen, items: tree.items.map(getUpdater(isOpen)) }
+    }
+    return { ...tree, isOpen }
   }
-  return { ...tree, isOpen }
-}
 
-export const Windowing = ({ noText }: { noText?: boolean }) => {
+export default function Windowing({ noText }: { noText?: boolean }) {
   const { value, toggle, setOn } = useToggle()
   const [term, setTerm] = useState('')
   const handleChange = (e: FormEvent<HTMLInputElement>) => {
@@ -138,9 +138,4 @@ export const Windowing = ({ noText }: { noText?: boolean }) => {
       </HighlightContext.Provider>
     </SpaceVertical>
   )
-}
-
-Windowing.parameters = {
-  docs: { disable: true },
-  storyshots: { disable: true },
 }

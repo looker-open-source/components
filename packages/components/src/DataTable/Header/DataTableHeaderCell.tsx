@@ -68,7 +68,7 @@ const DataTableHeaderCellLayout = forwardRef(
         onSort(columnId, sortDirection === 'asc' ? 'desc' : 'asc')
       }
     }
-    const { role, ...clickableProps } = useClickable({ onClick })
+    const { role: _role, ...clickableProps } = useClickable({ onClick })
 
     let label
 

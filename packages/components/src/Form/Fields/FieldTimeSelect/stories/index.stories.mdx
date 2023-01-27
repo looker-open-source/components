@@ -1,0 +1,43 @@
+import { FieldTimeSelect } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import basicStory from '!!raw-loader!./Basic'
+import controlledStory from '!!raw-loader!./Controlled'
+import disabledStory from '!!raw-loader!./Disabled'
+import floatingLabelStory from '!!raw-loader!./FloatingLabel'
+import requiredStory from '!!raw-loader!./Required'
+import validationMessageStory from '!!raw-loader!./ValidationMessage'
+import validationMessageFloatingLabelStory from '!!raw-loader!./ValidationMessageFloatingLabel'
+
+<Meta component={FieldTimeSelect} title="Docs/FieldTimeSelect" />
+
+# FieldTimeSelect
+
+The `<FieldTimeSelect />` component is composed of an `<InputTimeSelect />` component and a `<Label />` component. It has attributes to help display additional information. `detail`, `description` and `validation messages` are available to the component.
+
+<Editor code={basicStory} />
+
+## Controlled
+
+<Editor code={controlledStory} />
+
+## Disabled
+
+<Editor code={disabledStory} />
+
+## Required
+
+<Editor code={requiredStory} />
+
+## Validation Message
+
+<Editor code={validationMessageStory} />
+
+## Floating Label
+
+<Editor code={floatingLabelStory} />
+<Editor code={validationMessageFloatingLabelStory} />
+
+## Props
+
+<ArgsTable of={FieldTimeSelect} exclude={excludedProps} />

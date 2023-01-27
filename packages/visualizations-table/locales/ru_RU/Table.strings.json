@@ -1,4 +1,6 @@
 {
+  "Shift + Click to sort additional columns": "Чтобы отсортировать дополнительные столбцы, щелкайте по ним, удерживая нажатой клавишу SHIFT",
   "Sort ascending": "Сортировка по возрастанию",
-  "Sort descending": "Сортировка по убыванию"
+  "Sort descending": "Сортировка по убыванию",
+  "Totals": "Сумма"
 }

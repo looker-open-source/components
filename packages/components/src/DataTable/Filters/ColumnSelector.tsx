@@ -24,13 +24,12 @@
 
  */
 
-import type { FC } from 'react'
 import React, { useState } from 'react'
 import { ViewColumn } from '@styled-icons/material/ViewColumn'
 import { useTranslation } from '../../utils'
 import { usePopover, PopoverContent } from '../../Popover'
 import { IconButton } from '../../Button/IconButton'
-import { CheckboxGroup } from '../../Form/Inputs/OptionsGroup'
+import { CheckboxGroup } from '../../Form/Inputs'
 import { ButtonTransparent } from '../../Button/ButtonTransparent'
 import { Space, SpaceVertical } from '../../Layout'
 import type { DataTableColumns } from '../Column'
@@ -41,11 +40,11 @@ export interface ColumnSelectorProps {
   onColumnVisibilityChange: (value: string[]) => void
 }
 
-export const ColumnSelector: FC<ColumnSelectorProps> = ({
+export const ColumnSelector = ({
   columns,
   columnsVisible: defaultColumnsVisible,
   onColumnVisibilityChange,
-}) => {
+}: ColumnSelectorProps) => {
   const { t } = useTranslation('ColumnSelector')
   const [isOpen, setOpen] = useState(false)
 

@@ -1,2 +1,1 @@
-import type { I18nStateWithDates } from '../../utils';
-export declare const koKR: I18nStateWithDates;
+export declare const koKR: import("@looker/i18n").I18nStateWithDates;

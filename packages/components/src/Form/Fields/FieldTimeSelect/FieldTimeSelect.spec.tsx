@@ -94,15 +94,16 @@ describe('FieldTimeSelect', () => {
       <FieldTimeSelect label="Label" id="field-time-select" interval={10} />
     )
 
-    fireEvent.click(screen.getByLabelText('Label'))
-    fireEvent.change(screen.getByLabelText('Label'), {
+    const input = screen.getByLabelText('Label')
+    fireEvent.click(input)
+    fireEvent.change(input, {
       target: { value: 'invalid time' },
     })
-    fireEvent.keyDown(screen.getByLabelText('Label'), { key: 'Enter' })
+    fireEvent.keyDown(input, { key: 'Enter' })
     expect(
       screen.getAllByText('Please use format HH:MM')[0]
     ).toBeInTheDocument()
-    fireEvent.click(document)
+    fireEvent.blur(input)
   })
 
   test('should reset any format errors on blur', () => {

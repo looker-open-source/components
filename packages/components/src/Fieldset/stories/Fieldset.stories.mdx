@@ -1,0 +1,67 @@
+import { Fieldset } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import basicStory from '!!raw-loader!./Basic'
+import inlineStory from '!!raw-loader!./Inline'
+import inlineFieldStory from '!!raw-loader!./InlineField'
+import hideLabelStory from '!!raw-loader!./HideLabel'
+import accordionStory from '!!raw-loader!./Accordion'
+import accordionControlledStory from '!!raw-loader!./AccordionControlled'
+
+<Meta component={Fieldset} title="Docs/Fieldset" />
+
+# Fieldset
+
+The `<Fieldset />` component is used to wrap Field components into groups.
+
+## Legend
+
+The `legend` property allows for a heading which is by default aligned above and to the left.
+
+<Editor code={basicStory} />
+
+## Inline
+
+`Fieldset` can be displayed inline
+
+<Editor code={inlineStory} />
+
+Likewise, `Field` can be individually displayed as inline inside `Fieldset`
+
+<Editor code={inlineFieldStory} />
+
+## hideLabel and fieldsHideLabel
+
+`fieldsHideLabel` visually hides all child `Label`s inside a `Fieldset`, while preserving them in the DOM to improve accessibility.
+
+Additionally, each individual `Field` accepts a `hideLabel` prop to hide that single label, or override the containing `Fieldset` label settings.
+
+<Editor code={hideLabelStory} />
+
+## Accordion
+
+`Fieldset` offers an accordion mode via the `accordion` prop.
+
+In accordion mode, the `legend` acts as a disclosure and clicking on it will show (or hide) the `Fieldset`'s `children`.
+
+<Editor code={accordionStory} />
+
+**Note:** Using accordion mode without passing a value to `legend` will throw a console warning and will result in a regular `Fieldset`.
+
+### Controlling a Fieldset Accordion
+
+All `Accordion` props pertaining to open state control can be used on `Fieldset`. Simply pass said props to `Fieldset` while the `accordion` prop is true.
+
+Viable `Accordion` props include:
+
+- defaultOpen
+- isOpen
+- toggleOpen
+- onOpen
+- onClose
+
+For more details on the props listed above, visit the [Accordion documentation](../content/accordion).
+
+<Editor code={accordionControlledStory} />
+
+<ArgsTable of={Fieldset} exclude={excludedProps} />

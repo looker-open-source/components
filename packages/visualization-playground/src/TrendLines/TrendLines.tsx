@@ -23,7 +23,7 @@
  SOFTWARE.
 
  */
-import type { FC, SetStateAction, Dispatch } from 'react'
+import type { SetStateAction, Dispatch } from 'react'
 import React from 'react'
 import type { TrendLine, CAll } from '@looker/visualizations-adapters'
 import {
@@ -65,7 +65,7 @@ interface TrendLinesEditorProps {
 //   show_label: true,
 // }
 
-export const TrendLines: FC<TrendLinesEditorProps> = ({ value }) => {
+export const TrendLines = ({ value }: TrendLinesEditorProps) => {
   const addLine = () => {
     // TODO: re-enable config change when we support reference lines
     // const newValue = [...(value || []), trendLineDefaults]
@@ -116,11 +116,11 @@ interface TrendLineFormProps extends TrendLine {
   onDelete: () => void
 }
 
-const TrendLineForm: FC<TrendLineFormProps> = ({
+const TrendLineForm = ({
   onDelete,
   arrayPos,
   ...lineProps
-}) => {
+}: TrendLineFormProps) => {
   const {
     color,
     label_position,

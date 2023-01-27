@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 export * from './constants';
 export * from './inputRippleColor';
 export * from './rippleStyle';

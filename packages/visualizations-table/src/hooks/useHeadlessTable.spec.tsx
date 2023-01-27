@@ -24,7 +24,7 @@
 
  */
 import React from 'react'
-import type { FC, MouseEvent } from 'react'
+import type { MouseEvent } from 'react'
 import { renderHook, act } from '@testing-library/react-hooks'
 import { render, screen } from '@testing-library/react'
 import {
@@ -38,7 +38,9 @@ import type { SDKRecord } from '@looker/visualizations-adapters'
 import { flexRender } from '@tanstack/react-table'
 import type { Column, Header } from '@tanstack/react-table'
 import { useHeadlessTable } from './useHeadlessTable'
-const wrapper: FC = ({ children }) => <>{children}</>
+const wrapper = ({ children }: React.PropsWithChildren<unknown>) => (
+  <>{children}</>
+)
 
 it('configures table object', () => {
   const { result } = renderHook(

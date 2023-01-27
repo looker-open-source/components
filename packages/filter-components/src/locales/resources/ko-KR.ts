@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2022 Looker Data Sciences, Inc.
+ Copyright (c) 2023 Google LLC
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -23,11 +23,11 @@
  SOFTWARE.
 
  */
-import merge from 'lodash/merge'
+
 import dateLocale from 'date-fns/locale/ko'
-import type { I18nStateWithDates } from '../../utils'
-import { koKR as expressionLocale } from '@looker/filter-expressions'
 import { koKR as componentsLocale } from '@looker/components'
+import { koKR as filterexpressionsLocale } from '@looker/filter-expressions'
+import { mergeLocaleObjects } from '@looker/i18n'
 
 const resources = {
   AddRemoveButtons: {
@@ -183,6 +183,11 @@ const resources = {
     Remove: '',
     Toggle: '',
   },
+  NoMatchingFields: {
+    'No Matching Fields': '일치하는 필드 없음',
+    'Try Something Else':
+      '다른 검색어를 시도해보거나 처음부터 다시 시작하여 모든 Explore를 확장해 이용 가능한 필드를 탐색합니다.',
+  },
   NumberFilter: {
     'any value': '모든 값',
   },
@@ -244,15 +249,9 @@ const resources = {
   },
 }
 
-export const koKR: I18nStateWithDates = {
-  dateLocale,
-  locale: 'ko-KR',
-  resources: {
-    'ko-KR': merge(
-      {},
-      resources,
-      expressionLocale.resources['ko-KR'],
-      componentsLocale.resources['ko-KR']
-    ),
-  },
-}
+export const koKR = mergeLocaleObjects(
+  [componentsLocale, filterexpressionsLocale],
+  'ko-KR',
+  resources,
+  dateLocale
+)

@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { CompatibleHTMLProps, LayoutProps, PositionProps, SpaceProps, TextColorProps, TypographyProps } from '@looker/design-tokens';
 export interface UnorderedListProps extends CompatibleHTMLProps<HTMLUListElement>, PositionProps, LayoutProps, SpaceProps, TextColorProps, TypographyProps {
     /**

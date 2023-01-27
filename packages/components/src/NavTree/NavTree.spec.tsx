@@ -28,7 +28,7 @@ import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { act, fireEvent, screen } from '@testing-library/react'
 import { NavList } from '../NavList'
-import { Link } from './NavTree.stories'
+import { Link } from './stories/index.stories'
 import { NavTreeItem } from './NavTreeItem'
 import { NavTree } from './NavTree'
 

@@ -23,7 +23,7 @@
  SOFTWARE.
 
  */
-import type { FC, SetStateAction, Dispatch } from 'react'
+import type { SetStateAction, Dispatch } from 'react'
 import React from 'react'
 import type { ReferenceLine, CAll } from '@looker/visualizations-adapters'
 import {
@@ -65,10 +65,10 @@ interface ReferenceLinesEditorProps {
 //   reference_type: 'line',
 // }
 
-export const ReferenceLines: FC<ReferenceLinesEditorProps> = ({
+export const ReferenceLines = ({
   value,
-  // name,
-}) => {
+}: // name,
+ReferenceLinesEditorProps) => {
   const addLine = () => {
     // TODO: re-enable config change when we support trendlines
     // const newValue = [...(value || []), referenceLineDefaults]
@@ -119,10 +119,10 @@ interface ReferenceLineFormProps extends ReferenceLine {
   onDelete: () => void
 }
 
-const ReferenceLineForm: FC<ReferenceLineFormProps> = ({
+const ReferenceLineForm = ({
   onDelete,
   ...lineProps
-}) => {
+}: ReferenceLineFormProps) => {
   const {
     arrayPos,
     color,

@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2022 Looker Data Sciences, Inc.
+ Copyright (c) 2023 Google LLC
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,8 @@
  SOFTWARE.
 
  */
-import type { I18nState } from '../../utils'
+
+import { mergeLocaleObjects } from '@looker/i18n'
 
 const resources = {
   describe_date: {
@@ -155,7 +156,4 @@ const resources = {
   },
 }
 
-export const ptBR: I18nState = {
-  locale: 'pt-BR',
-  resources: { 'pt-BR': resources },
-}
+export const ptBR = mergeLocaleObjects([], 'pt-BR', resources)

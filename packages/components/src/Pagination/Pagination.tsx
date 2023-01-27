@@ -24,7 +24,6 @@
 
  */
 
-import type { FC } from 'react'
 import React from 'react'
 import styled from 'styled-components'
 import { ChevronLeft } from '@styled-icons/material-rounded/ChevronLeft'
@@ -50,17 +49,17 @@ export interface PaginationProps {
   alwaysVisible?: boolean
 }
 
-const PaginationButton: FC<IconButtonProps> = props => (
+const PaginationButton = (props: IconButtonProps) => (
   <IconButton outline shape="square" mx="xxsmall" {...props} />
 )
 
-const PaginationLayout: FC<PaginationProps> = ({
+const PaginationLayout = ({
   alwaysVisible = false,
   className,
   current,
   pages,
   onChange,
-}) => {
+}: PaginationProps) => {
   const { t } = useTranslation('Pagination')
   if (pages <= 1 && !alwaysVisible) return null
 

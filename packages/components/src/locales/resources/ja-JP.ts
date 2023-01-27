@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2022 Looker Data Sciences, Inc.
+ Copyright (c) 2023 Google LLC
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -23,8 +23,10 @@
  SOFTWARE.
 
  */
+
 import dateLocale from 'date-fns/locale/ja'
-import type { I18nStateWithDates } from '@looker/i18n'
+
+import { mergeLocaleObjects } from '@looker/i18n'
 
 const resources = {
   AdvancedInputControls: {
@@ -78,7 +80,7 @@ const resources = {
     Options: 'オプション',
   },
   FieldTimeSelect: {
-    'Please enter a valid time': '有効な時間を入力してください',
+    'Please use format HHMM': 'HH:MM の形式を使用してください',
   },
   GetIntentLabel: {
     Error: 'エラー',
@@ -134,7 +136,9 @@ const resources = {
     Save: '保存',
   },
   RangeSlider: {
+    'Maximum Name': '最大 {{name}}',
     'Maximum Value': '最大値',
+    'Minimum Name': '最小 {{name}}',
     'Minimum Value': '最小値',
   },
   RequiredStar: {
@@ -149,8 +153,4 @@ const resources = {
   },
 }
 
-export const jaJP: I18nStateWithDates = {
-  dateLocale,
-  locale: 'ja-JP',
-  resources: { 'ja-JP': resources },
-}
+export const jaJP = mergeLocaleObjects([], 'ja-JP', resources, dateLocale)

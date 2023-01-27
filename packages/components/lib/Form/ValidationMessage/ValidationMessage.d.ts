@@ -1,4 +1,8 @@
-import type { FC } from 'react';
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
+/// <reference types="react" />
 export declare type ValidationType = 'error';
 export interface ValidationMessageProps {
     className?: string;
@@ -12,4 +16,4 @@ export interface ValidationMessageProps {
      */
     message?: string;
 }
-export declare const ValidationMessage: import("styled-components").StyledComponent<FC<ValidationMessageProps>, import("styled-components").DefaultTheme, {}, never>;
+export declare const ValidationMessage: import("styled-components").StyledComponent<({ className, message, }: ValidationMessageProps) => JSX.Element, import("styled-components").DefaultTheme, {}, never>;

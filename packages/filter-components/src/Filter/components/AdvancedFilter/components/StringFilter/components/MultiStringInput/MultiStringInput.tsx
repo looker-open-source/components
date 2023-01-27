@@ -27,7 +27,6 @@ import type { ValidationMessageProps } from '@looker/components'
 import { InputChips, InputText, SelectMulti } from '@looker/components'
 import type { FilterModel } from '@looker/filter-expressions'
 import isArray from 'lodash/isArray'
-import type { FC } from 'react'
 import React, { useMemo } from 'react'
 import styled from 'styled-components'
 import type { Option } from '../../../../../../types/option'
@@ -58,7 +57,7 @@ interface MultiStringInputProps extends PlacementProps {
   showDropDownMenu?: boolean
 }
 
-export const MultiStringInputLayout: FC<MultiStringInputProps> = ({
+export const MultiStringInputLayout = ({
   className,
   onChange,
   onInputChange,
@@ -75,7 +74,7 @@ export const MultiStringInputLayout: FC<MultiStringInputProps> = ({
   height,
 
   showDropDownMenu = true,
-}) => {
+}: MultiStringInputProps) => {
   const values = isArray(item.value) ? item.value : []
 
   // if suggestions exist, create Option[]
@@ -83,17 +82,13 @@ export const MultiStringInputLayout: FC<MultiStringInputProps> = ({
     return suggestions ? createOptions(suggestions) : enumerations || []
   }, [suggestions, enumerations])
 
-  const {
-    debouncedFilterTerm,
-    filteredOptions,
-    noOptionsLabel,
-    onFilter,
-  } = useOptionFiltering({
-    excludeValues: true,
-    onInputChange,
-    options,
-    value: item.value,
-  })
+  const { debouncedFilterTerm, filteredOptions, noOptionsLabel, onFilter } =
+    useOptionFiltering({
+      excludeValues: true,
+      onInputChange,
+      options,
+      value: item.value,
+    })
 
   const handleChange = (newValues?: string[]) => {
     onChange?.(item.id, { value: newValues })

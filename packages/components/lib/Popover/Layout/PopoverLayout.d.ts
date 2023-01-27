@@ -1,4 +1,8 @@
-import type { FC } from 'react';
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
+/// <reference types="react" />
 import type { ModalLayoutProps } from '../../Modal/ModalLayout';
 import type { PopoverFooterProps } from './PopoverFooter';
 export declare type PopoverLayoutProps = ModalLayoutProps & Pick<PopoverFooterProps, 'closeButton'> & {
@@ -8,4 +12,4 @@ export declare type PopoverLayoutProps = ModalLayoutProps & Pick<PopoverFooterPr
      */
     hideHeader?: boolean;
 };
-export declare const PopoverLayout: FC<PopoverLayoutProps>;
+export declare const PopoverLayout: ({ children, closeButton, footer, header, hideHeader, isLoading, }: PopoverLayoutProps) => JSX.Element;

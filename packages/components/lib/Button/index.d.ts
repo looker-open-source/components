@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 export * from './Button';
 export * from './ButtonBase';
 export * from './ButtonGroup';

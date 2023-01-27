@@ -23,22 +23,14 @@
  SOFTWARE.
 
  */
-import { act, fireEvent, render, screen } from '@testing-library/react'
+import { act, fireEvent, screen } from '@testing-library/react'
 import type { FormEvent } from 'react'
 import React from 'react'
+import { renderWithTheme } from '@looker/components-test-utils'
 import {
   useOptionFiltering,
   useDebouncedFilterTerm,
 } from './use_option_filtering'
-
-jest.mock('@looker/i18n', () => ({
-  // this mock makes sure any components using the translate hook can use it without breaking tests
-  useTranslationBase: () => {
-    return {
-      t: (str: string) => str,
-    }
-  },
-}))
 
 const options = [
   { value: 'Foo', label: 'Foo' },
@@ -52,11 +44,8 @@ const DebounceComponent = ({
 }: {
   onInputChange: (val: string) => void
 }) => {
-  const {
-    debouncedFilterTerm,
-    noOptionsLabel,
-    onFilter,
-  } = useDebouncedFilterTerm(onInputChange)
+  const { debouncedFilterTerm, noOptionsLabel, onFilter } =
+    useDebouncedFilterTerm(onInputChange)
   const handleChange = (e: FormEvent<HTMLInputElement>) => {
     onFilter(e.currentTarget.value)
   }
@@ -102,7 +91,7 @@ test.each([
   ['useOptionFiltering', OptionFilterComponent],
 ])('%s: updates only after a delay', (_, Component) => {
   const mockOnInputChange = jest.fn()
-  render(<Component onInputChange={mockOnInputChange} />)
+  renderWithTheme(<Component onInputChange={mockOnInputChange} />)
   expect(screen.getByTestId('noOptionsLabel')).toHaveTextContent('No values')
 
   const input = screen.getByPlaceholderText('input')
@@ -133,7 +122,7 @@ test.each([
 describe('useDebouncedFilterTerm', () => {
   it('does not update on initial render with updateOnFirstRender', () => {
     const mockOnInputChange = jest.fn()
-    render(<DebounceComponent onInputChange={mockOnInputChange} />)
+    renderWithTheme(<DebounceComponent onInputChange={mockOnInputChange} />)
     expect(screen.getByTestId('debouncedFilterTerm')).toHaveTextContent('')
     expect(screen.getByTestId('noOptionsLabel')).toHaveTextContent('No values')
     expect(mockOnInputChange).not.toHaveBeenCalled()
@@ -156,7 +145,7 @@ describe('useDebouncedFilterTerm', () => {
 describe('useOptionFiltering', () => {
   it('adds the current value as an option unless a filter term is added', () => {
     const mockOnInputChange = jest.fn()
-    render(<OptionFilterComponent onInputChange={mockOnInputChange} />)
+    renderWithTheme(<OptionFilterComponent onInputChange={mockOnInputChange} />)
     const options = screen.getAllByRole('option')
     expect(options).toHaveLength(3)
     expect(options[0]).toHaveTextContent('Foo')
@@ -176,7 +165,7 @@ describe('useOptionFiltering', () => {
 
   it('should recognize a value even if its surrounded by whitespace', () => {
     const mockOnInputChange = jest.fn()
-    render(<OptionFilterComponent onInputChange={mockOnInputChange} />)
+    renderWithTheme(<OptionFilterComponent onInputChange={mockOnInputChange} />)
 
     const input = screen.getByPlaceholderText('input')
     fireEvent.change(input, { target: { value: '   Foo  ' } })

@@ -204,10 +204,10 @@ describe('DashboardFilter', () => {
         suggestions: ['complete', 'pending', 'cancelled'],
       }))
 
-      const sdkMock = ({
+      const sdkMock = {
         ok: sdkOkMock,
         get: sdkGetMock,
-      } as unknown) as IAPIMethods
+      } as unknown as IAPIMethods
 
       renderWithTheme(
         <DashboardFilter
@@ -253,12 +253,12 @@ describe('DashboardFilter', () => {
 
     it('shows fetch error message', async () => {
       const onChangeMock = jest.fn()
-      const sdkMock = ({
+      const sdkMock = {
         ok: jest.fn((value) => value),
         get: jest.fn(() => {
           throw new Error()
         }),
-      } as unknown) as IAPIMethods
+      } as unknown as IAPIMethods
       renderWithTheme(
         <DashboardFilter
           filter={{

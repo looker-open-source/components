@@ -1,0 +1,52 @@
+import { FieldToggleSwitch } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import basicStory from '!!raw-loader!./Basic'
+import checkedStory from '!!raw-loader!./Checked'
+import controlledStory from '!!raw-loader!./Controlled'
+import detailDescriptionStory from '!!raw-loader!./DetailDescription'
+import disabledStory from '!!raw-loader!./Disabled'
+import disabledCheckedStory from '!!raw-loader!./DisabledChecked'
+import readOnlyStory from '!!raw-loader!./ReadOnly'
+import richDetailDescriptionStory from '!!raw-loader!./RichDetailDescription'
+import validationMessageStory from '!!raw-loader!./ValidationMessage'
+
+<Meta component={FieldToggleSwitch} title="Docs/FieldToggleSwitch" />
+
+# FieldToggleSwitch
+
+The `<FieldToggleSwitch />` component is composed of a `<ToggleSwitch />` component and a `<Label />` component. By default, the label will render to the right of the toggle switch, however this is adjustable with the inline property.
+
+<Editor code={basicStory} />
+
+## Controlled
+
+<Editor code={controlledStory} />
+
+## Checked
+
+<Editor code={checkedStory} />
+
+## Detail & Description
+
+<Editor code={detailDescriptionStory} />
+
+<Editor code={richDetailDescriptionStory} />
+
+## Disabled
+
+<Editor code={disabledStory} />
+
+<Editor code={disabledCheckedStory} />
+
+## Read Only
+
+<Editor code={readOnlyStory} />
+
+## ValidationMessage
+
+<Editor code={validationMessageStory} />
+
+## Props
+
+<ArgsTable of={FieldToggleSwitch} exclude={excludedProps} />

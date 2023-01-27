@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 export * from './constants';
 export * from './Filter/Filter';
 export * from './Filter/components/AdvancedFilter/components/StringFilter/components/MultiStringInput';
@@ -12,6 +16,7 @@ export * from './Filter/types/filter_props';
 export * from './FilterCollection';
 export * from './FilterErrorMessage';
 export * from './DashboardFilter';
+export * from './FieldSelectTree';
 export * from './Token';
 export * from './utils';
 export * from './locales';

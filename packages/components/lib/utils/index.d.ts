@@ -1,7 +1,12 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 export * from './createSafeRel';
 export * from './getNextFocus';
 export * from './getWindowedListBoundaries';
 export * from './HoverDisclosure';
+export * from './isOverflowing';
 export * from './mergeClassNames';
 export * from './mergeHandlers';
 export * from './partitionAriaProps';

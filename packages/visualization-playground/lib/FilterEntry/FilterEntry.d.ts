@@ -1,10 +1,11 @@
-import type { FC } from 'react';
+/// <reference types="react" />
+import type { TreeModel } from '@looker/filter-components';
 import type { ILookmlModelExploreField } from '@looker/sdk';
 declare type FilterEntryProps = {
     onUpdateFilter: (name: string, expression: string) => void;
     filterField?: ILookmlModelExploreField;
     filterExpression?: string;
-    queryId: number;
+    tree: TreeModel[];
 };
-export declare const FilterEntry: FC<FilterEntryProps>;
+export declare const FilterEntry: ({ onUpdateFilter, tree, filterField: filterFieldProp, filterExpression: filterExpressionProp, }: FilterEntryProps) => JSX.Element;
 export {};

@@ -1,4 +1,8 @@
-import type { FC, ReactElement } from 'react';
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
+import type { ReactElement } from 'react';
 import type { ButtonProps } from '../../Button';
 interface ConfirmLayoutProps {
     /**
@@ -20,5 +24,5 @@ interface ConfirmLayoutProps {
      */
     secondaryButton: ReactElement<ButtonProps>;
 }
-export declare const ConfirmLayout: FC<ConfirmLayoutProps>;
+export declare const ConfirmLayout: ({ secondaryButton, primaryButton, message, title, }: ConfirmLayoutProps) => JSX.Element;
 export {};

@@ -1,0 +1,49 @@
+import { PopoverLayout } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import storyBasic from '!!raw-loader!./Basic'
+import storyHeader from '!!raw-loader!./Header'
+import storyNoFooter from '!!raw-loader!./NoFooter'
+import storyHeaderHideHeading from '!!raw-loader!./HeaderHideHeading'
+import storyFull from '!!raw-loader!./Full'
+import storyFooterCloseButton from '!!raw-loader!./FooterCloseButton'
+
+<Meta component={PopoverLayout} title="Docs/PopoverLayout" />
+
+# PopoverLayout
+
+The `PopoverLayout` component manages the popover layout components below to easily meet design-system expectations.
+
+This component composes `PopoverHeader`, `PopoverContent` and `PopverFooter` as needed.
+
+`PopoverHeader` will display the closing button if `footer` is set to false.
+
+By default `PopoverFooter` will contain a dismissal button with the text "Done". That value can be changed by using the prop `closeButton`.
+
+<Editor code={storyHeader} />
+
+## Header hidden
+
+Use the hidden prop to hide the visible header text but still provide context for screen readers
+
+<Editor code={storyHeaderHideHeading} />
+
+## Footer extra content
+
+Use the footer prop to add an extra element to the Footer.
+
+<Editor code={storyFull} />
+
+## Footer closeButton
+
+Use the closeButton prop to change the default value of Footer.
+
+<Editor code={storyFooterCloseButton} />
+
+## no Footer
+
+<Editor code={storyNoFooter} />
+
+## Props
+
+<ArgsTable of={PopoverLayout} exclude={excludedProps} />

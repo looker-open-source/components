@@ -1,6 +1,6 @@
 # @looker/filter-expressions
 
-This TypeScript package provides the necessary functions for transforming [Looker filter expressions](https://docs.looker.com/reference/filter-expressions) into data structures and localized text summaries – and vice versa.
+This TypeScript package provides the necessary functions for transforming [Looker filter expressions](https://cloud.google.com/looker/docs/reference/filter-expressions) into data structures and localized text summaries – and vice versa.
 
 #### `getExpressionType`
 

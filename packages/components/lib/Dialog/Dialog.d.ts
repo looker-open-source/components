@@ -1,4 +1,8 @@
-import type { FC, ReactNode } from 'react';
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
+import type { ReactNode } from 'react';
 import type { UseDialogProps } from './useDialog';
 import type { DialogRenderProp } from './DialogRender';
 export interface DialogProps extends Omit<UseDialogProps, 'content'> {
@@ -17,4 +21,4 @@ export interface DialogProps extends Omit<UseDialogProps, 'content'> {
      */
     content?: ReactNode;
 }
-export declare const Dialog: FC<DialogProps>;
+export declare const Dialog: ({ children, content, ...props }: DialogProps) => JSX.Element | null;

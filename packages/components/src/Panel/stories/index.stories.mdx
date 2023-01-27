@@ -1,0 +1,22 @@
+import { Panel } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import storyDirection from '!!raw-loader!./Direction'
+import storyHook from '!!raw-loader!./Hook'
+
+<Meta component={Panel} title="Docs/Panel" />
+
+# Panel
+
+Use the `Panel` component to display content with a directional animation. All `Panel`s need to be wrapped in the `Panels` component to ensure proper animation.
+
+<Editor code={storyDirection} />
+
+# usePanel
+
+We provide a custom hook that returns the opener function and rendered panel.
+Note: `panel` needs to be placed before `children`. The order in which the `panel` will be render metters for the component to be rendered correctly.
+
+<Editor code={storyHook} />
+
+<ArgsTable of={Panel} exclude={excludedProps} />

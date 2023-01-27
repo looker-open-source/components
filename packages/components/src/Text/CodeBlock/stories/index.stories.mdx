@@ -1,0 +1,21 @@
+import { CodeBlock } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import storyBasic from '!!raw-loader!./Basic'
+import storyBorder from '!!raw-loader!./Border'
+
+<Meta component={CodeBlock} title="Docs/CodeBlock" />
+
+## CodeBlock
+
+A `CodeBlock` is a dedicated container for multiple lines of source code. It produces un-styled code with whitespace preserved.
+
+NOTE: Currently, this component doesn't support syntax highlighting.
+
+<Editor code={storyBasic} />
+
+## A `CodeBlock` can be given a border with the `border` prop
+
+<Editor code={storyBorder} />
+
+<ArgsTable of={CodeBlock} exclude={excludedProps} />

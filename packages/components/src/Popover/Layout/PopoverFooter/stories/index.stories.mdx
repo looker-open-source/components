@@ -1,0 +1,28 @@
+import { PopoverFooter } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import storyBasic from '!!raw-loader!./Basic'
+import storyFooterClose from '!!raw-loader!./FooterClose'
+import storyFooterWithChildren from '!!raw-loader!./FooterWithChildren'
+
+<Meta component={PopoverFooter} title="Docs/PopoverFooter" />
+
+# PopoverFooter
+
+`PopoverFooter` can be attached to the bottom of Popover.
+
+This component contains a dismissal button with the default text of "Done", which can be customized using the `closeButton` prop.
+
+<Editor code={storyBasic} />
+
+<Editor code={storyFooterClose} />
+
+## Footer with children
+
+Use this to render additional contents inside the footer.
+
+<Editor code={storyFooterWithChildren} />
+
+## Props
+
+<ArgsTable of={PopoverFooter} exclude={excludedProps} />

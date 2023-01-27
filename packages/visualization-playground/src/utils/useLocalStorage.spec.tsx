@@ -23,7 +23,6 @@
  SOFTWARE.
 
  */
-import type { FC } from 'react'
 import React, { useEffect } from 'react'
 import { render, waitFor } from '@testing-library/react'
 import { AppContext } from '../AppContext'
@@ -47,7 +46,7 @@ afterEach(() => {
   jest.fn()
 })
 
-const MockContextWrapper: FC = ({ children }) => {
+const MockContextWrapper = ({ children }: React.PropsWithChildren<unknown>) => {
   return (
     <AppContext.Provider value={{ localStorageGetItem, localStorageSetItem }}>
       {children}

@@ -1,6 +1,6 @@
+/// <reference types="react" />
 import type { ValidationMessageProps } from '@looker/components';
 import type { FilterModel } from '@looker/filter-expressions';
-import type { FC } from 'react';
 interface BetweenItemProps extends FilterModel {
     bounds: string;
     high?: string;
@@ -14,5 +14,5 @@ interface BetweenFilterProps {
     borderLeftColor?: string;
     validationMessage?: ValidationMessageProps;
 }
-export declare const Between: FC<BetweenFilterProps>;
+export declare const Between: ({ item, onChange, validationMessage, }: BetweenFilterProps) => JSX.Element;
 export {};

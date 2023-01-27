@@ -1,0 +1,68 @@
+import { DateFormat } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import storyBasic from '!!raw-loader!./Basic'
+import storyDateObject from '!!raw-loader!./DateObject'
+import { DateFormatTable } from './DateFormatTable'
+import storyTimezone from '!!raw-loader!./Timezone'
+
+<Meta component={DateFormat} title="Docs/DateFormat" />
+
+# DateFormat
+
+As it's name implies, `DateFormat` is used to format a javascript Date object to human readable and localized text.
+
+This is the sibling component of [`TimeFormat`](time-format), which does the same thing for times. If no Date object is provided, it will default to `Now`.
+
+<Editor code={storyBasic} />
+
+## Providing A Date Object
+
+Wrap the `DateFormat` component around a javascript Date object to render a human-readable date.
+
+<Editor code={storyDateObject} />
+
+## Format
+
+<DateFormatTable />
+
+\* medium is the default format
+
+## TimeZone
+
+`DateFormat`, as well as [`TimeFormat`]('time-format') assume that the provided date object is anchored in UTC time. If you need to adjust this to display correctly, you can pass the user's preferred time zone into the `timeZone` prop. This component will accept any string listed in the the [IANA standard](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
+
+<Editor code={storyTimezone} />
+
+## I18n
+
+For languages other than English, import the locale (e.g. `koKR`) and spread it onto `ComponentsProvider`.
+This will provide translated strings for components that use them, as well as the locale-specific date strings and formatting.
+
+```js static
+import { ComponentsProvider, koKR } from '@looker/components'
+import { DateFormat } from '@looker/components'
+
+export const App = () => {
+  return (
+    <ComponentsProvider {...koKR}>
+      <DateFormat />
+    </ComponentsProvider>
+  )
+}
+```
+
+The locale from the [date-fns package](https://www.npmjs.com/package/date-fns) can also be passed directly to the `DateFormat` component.
+
+```js static
+import { DateFormat } from '@looker/components'
+import ko from 'date-fns/locale/ko'
+
+export const LocalizedDateFormat = () => {
+  return <DateFormat locale={ko} />
+}
+```
+
+## Props
+
+<ArgsTable of={DateFormat} exclude={excludedProps} />

@@ -1,0 +1,68 @@
+import { Space } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import storyAround from '!!raw-loader!./Around'
+import storyBasic from '!!raw-loader!./Basic'
+import storyBetween from '!!raw-loader!./Between'
+import storyEvenly from '!!raw-loader!./Evenly'
+import storyGap from '!!raw-loader!./Gap'
+import storyProperties from '!!raw-loader!./Properties'
+import storyReverse from '!!raw-loader!./Reverse'
+import storySpaceCrush from '!!raw-loader!./SpaceCrush'
+
+<Meta component={Space} title="Docs/Space" />
+
+# Space
+
+`Space` is designed to put space between its children. `Space` operates on the horizontal axis.
+
+<Editor code={storyBasic} />
+
+## Space supports spacing properties
+
+1. Margin (`m`, `mx`, `ml`, etc...)
+2. Padding (`p`, `px`, `pl`, etc...)
+
+# Alignment
+
+`Space` supports `align` and defaults to `center`.
+
+<Editor code={storyProperties} />
+
+# Gap
+
+Specify the width of the gap between items:
+
+<Editor code={storyGap} />
+
+## Between
+
+The spacing between each pair of adjacent items is the same. The first item is flush with the main-start edge, and the last item is flush with the main-end edge. (citation: https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content)
+
+<Editor code={storyBetween} />
+
+## Around
+
+The spacing between each pair of adjacent items is the same. The empty space before the first and after the last item equals half of the space between each pair of adjacent items. (citation: https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content)
+
+<Editor code={storyAround} />
+
+## Evenly
+
+The spacing between each pair of adjacent items, the main-start edge and the first item, and the main-end edge and the last item, are all exactly the same. (citation: https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content)
+
+<Editor code={storyEvenly} />
+
+## Reverse
+
+Reverse the order of the items in the space.
+
+<Editor code={storyReverse} />
+
+## Space Crush
+
+<Editor code={storySpaceCrush} />
+
+## Props
+
+<ArgsTable of={Space} exclude={excludedProps} />

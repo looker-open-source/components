@@ -27,6 +27,7 @@
 import 'jest-styled-components'
 import React, { useState } from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
+import * as popperJSCore from '@popperjs/core'
 import { act, fireEvent, screen } from '@testing-library/react'
 import { Button } from '../Button'
 import { Popover } from '../Popover'
@@ -69,11 +70,18 @@ describe('Tooltip', () => {
   })
 
   test('isOpen', () => {
+    const createPopperSpy = jest.spyOn(popperJSCore, 'createPopper')
     renderWithTheme(
       <Tooltip content="Hello world" isOpen>
         <Button>Test</Button>
       </Tooltip>
     )
+    const button = screen.getByRole('button')
+    // Verifies that trigger element is provided immediately to PopperJS
+    // (without isOpen prop, trigger element is not immediately available
+    // it's grabbed from the focus/mouseover event for better performance)
+    expect(createPopperSpy.mock.calls[0][0]).toBe(button)
+
     const tooltip = screen.getByText('Hello world')
     expect(tooltip).toBeInTheDocument()
     expect(tooltip).not.toBeVisible()
@@ -84,6 +92,8 @@ describe('Tooltip', () => {
     fireEvent.mouseOut(tooltip)
     runTimers()
     expect(tooltip).not.toBeInTheDocument()
+
+    createPopperSpy.mockClear()
   })
 
   test('delayNone', () => {
@@ -240,13 +250,47 @@ describe('Tooltip', () => {
     fireEvent.blur(screen.getByRole('textbox'))
   })
 
-  test('disabled, no undefined className', () => {
+  test('disabled', () => {
     renderWithTheme(
       <Tooltip disabled content="Hello world">
         <Button>Test</Button>
       </Tooltip>
     )
     const button = screen.getByRole('button')
+    // Verify a bugfix
     expect(button).not.toHaveClass('undefined')
+
+    fireEvent.mouseOver(button)
+    runTimers()
+    expect(screen.queryByText('Hello world')).not.toBeInTheDocument()
+  })
+
+  test('can open returns true', () => {
+    renderWithTheme(
+      <Tooltip canOpen={() => true} content="Hello world">
+        <Button>Test</Button>
+      </Tooltip>
+    )
+    const button = screen.getByRole('button')
+
+    fireEvent.mouseOver(button)
+    runTimers()
+    expect(screen.getByText('Hello world')).toBeVisible()
+
+    fireEvent.mouseOut(button)
+    runTimers()
+  })
+
+  test('can open returns false', () => {
+    renderWithTheme(
+      <Tooltip canOpen={() => false} content="Hello world">
+        <Button>Test</Button>
+      </Tooltip>
+    )
+    const button = screen.getByRole('button')
+
+    fireEvent.mouseOver(button)
+    runTimers()
+    expect(screen.queryByText('Hello world')).not.toBeInTheDocument()
   })
 })

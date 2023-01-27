@@ -1,0 +1,42 @@
+import { DashboardFilter } from '@looker/filter-components'
+import { ImportMessage, Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import storyBasic from '!!raw-loader!./Basic'
+import storyExpressionOnChange from '!!raw-loader!./ExpressionOnChange'
+import storySuggestions from '!!raw-loader!./Suggestions'
+import storyRequired from '!!raw-loader!./Required'
+
+<Meta component={DashboardFilter} title="Filters/Docs/DashboardFilter" />
+
+# DashboardFilter
+
+<ImportMessage packageName="filter-components">DashboardFilter</ImportMessage>
+
+`DashboardFilter` renders a dashboard filter as returned by the Looker API.
+
+**Note:** for more direct rendering control, see the [`Filter`](filter) component.
+
+<Editor code={storyBasic} />
+
+## expression & onChange
+
+Use `onChange` to get updates to the `expression`.
+
+<Editor code={storyExpressionOnChange} />
+
+## Suggestions
+
+When the filter is on a field where the `suggestable` property is true,
+the supplied `sdk` instance will be used to fetch the suggested values.
+
+<Editor code={storySuggestions} />
+
+## Required
+
+When `required` is true an error message will render below the filter when the expression is empty.
+
+<Editor code={storyRequired} />
+
+## Props
+
+<ArgsTable of={DashboardFilter} exclude={excludedProps} />

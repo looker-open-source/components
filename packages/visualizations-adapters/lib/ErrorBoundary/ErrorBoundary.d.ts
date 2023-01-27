@@ -1,6 +1,10 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import React, { Component } from 'react';
 import type { ReactNode, ErrorInfo } from 'react';
-import type { SDKRecord, Fields, CAll } from '@looker/visualizations-adapters';
+import type { SDKRecord, Fields, CAll } from '../types';
 interface ErrorBoundaryProps {
     children: ReactNode;
     data?: SDKRecord[];

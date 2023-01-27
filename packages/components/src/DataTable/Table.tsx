@@ -25,7 +25,6 @@
  */
 
 import { densityTarget } from '@looker/design-tokens'
-import type { FC } from 'react'
 import React from 'react'
 import styled, { css } from 'styled-components'
 import { Spinner } from '../Spinner'
@@ -53,7 +52,7 @@ export interface TableProps extends DataTableProps {
   columnsVisible: string[]
 }
 
-export const TableLayout: FC<TableProps> = props => {
+export const TableLayout = (props: TableProps) => {
   const { t } = useTranslation('DataTable')
   const noResultsDisplayText = t('No Results')
   const {

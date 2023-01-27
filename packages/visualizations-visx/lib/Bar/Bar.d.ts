@@ -1,3 +1,3 @@
-import type { FC } from 'react';
+/// <reference types="react" />
 import type { BarProps } from '@looker/visualizations-adapters';
-export declare const Bar: FC<BarProps>;
+export declare const Bar: ({ data, config, height, width, fields, }: BarProps) => JSX.Element | null;

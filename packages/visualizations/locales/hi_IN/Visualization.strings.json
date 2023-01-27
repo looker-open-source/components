@@ -1,4 +1,4 @@
 {
-  "Measures of type 'date' are currently not supported": "'दिनांक' प्रकार के माप वर्तमान में समर्थित नहीं हैं",
+  "Measures of type 'date' are currently not supported": "'तारीख' प्रकार के माप वर्तमान में समर्थित नहीं हैं",
   "No chart found for type \"{{type}}\"": "\"{{type}}\" प्रकार के लिए कोई चार्ट नहीं मिला"
 }

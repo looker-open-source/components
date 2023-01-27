@@ -1,0 +1,1 @@
+{"version":3,"file":"constants.js","names":["DISABLED_OPACITY"],"sources":["../../../src/Form/constants.ts"],"sourcesContent":["/**\n * Copyright (c) 2023 Google LLC\n * SPDX-License-Identifier: MIT\n */\n\nexport const DISABLED_OPACITY = '0.4'\n"],"mappings":";;;;;;;AAKO,IAAMA,gBAAgB,GAAG,KAAK;AAAA"}

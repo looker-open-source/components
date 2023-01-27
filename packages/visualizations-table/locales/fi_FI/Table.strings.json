@@ -1,4 +1,6 @@
 {
+  "Shift + Click to sort additional columns": "Lajittele lisäsarakkeet painamalla vaihtonäppäintä samalla, kun napsautat",
   "Sort ascending": "Lajittele nousevassa järjestyksessä",
-  "Sort descending": "Lajittele laskevassa järjestyksessä"
+  "Sort descending": "Lajittele laskevassa järjestyksessä",
+  "Totals": "Summat"
 }

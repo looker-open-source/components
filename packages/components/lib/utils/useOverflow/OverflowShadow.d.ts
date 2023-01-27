@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { PaddingProps } from '@looker/design-tokens';
 import type { UseOverflowProps } from './useOverflow';
 export declare type OverflowShadowProps = PaddingProps & UseOverflowProps;

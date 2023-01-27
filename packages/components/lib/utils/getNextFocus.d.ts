@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 export declare const getTabStops: (ref: HTMLElement, selector?: string) => HTMLElement[];
 export declare const getFallbackElement: (direction: 1 | -1, containerElement: HTMLElement, tabStops: HTMLElement[]) => HTMLElement;
 /**

@@ -1,8 +1,11 @@
 {
   "name": "@looker/components-data",
   "license": "MIT",
-  "main": "src/index.ts",
-  "version": "1.0.1",
+  "main": "lib/main/index.js",
+  "module": "lib/module/index.js",
+  "types": "lib/index.d.ts",
+  "src": "src/index.ts",
+  "version": "1.0.3",
   "sideEffects": false,
   "publishConfig": {
     "access": "public",
@@ -22,10 +25,10 @@
     "prepublishOnly": "lk prepublishOnly"
   },
   "dependencies": {
-    "@looker/components": "4.0.4",
+    "@looker/components": "4.1.1",
     "@looker/sdk": "^22.4.2",
     "@looker/sdk-rtl": "^21.3.3",
-    "@looker/visualizations-adapters": "^1.0.1",
+    "@looker/visualizations-adapters": "^1.0.3",
     "lodash": "4.17.21",
     "swr": "1.2.2",
     "unstated-next": "1.1.0"
@@ -37,8 +40,10 @@
     "@looker/components-test-utils": "*",
     "@looker/eslint-config-oss": "*",
     "@looker/jest-config": "*",
+    "@looker/prettier-config": "*",
     "@testing-library/react": "*",
-    "@testing-library/react-hooks": "*"
+    "@testing-library/react-hooks": "*",
+    "prettier": "2.8.2"
   },
   "peerDependencies": {
     "react": "16.14.0 - 18",

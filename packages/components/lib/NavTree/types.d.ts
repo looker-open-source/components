@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { ListItemProps } from '../ListItem';
 import type { GenericClickProps } from '../utils/useClickable';
 import type { TreeProps } from '../Tree';

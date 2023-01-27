@@ -24,7 +24,7 @@
 
  */
 
-import type { Story } from '@storybook/react/types-6-0'
+import type { Story } from '@storybook/react'
 import React from 'react'
 import { Visualization } from '../Visualization'
 import type { AreaProps, CArea, Fields } from '@looker/visualizations-adapters'
@@ -43,7 +43,7 @@ import {
 
 export default {
   component: Visualization,
-  title: 'Visualizations/Area',
+  title: 'Visualizations/Stories/Area',
 }
 
 type StoryTemplateProps = Omit<AreaProps, 'config' | 'fields' | 'data'> & {

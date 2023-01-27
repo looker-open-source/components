@@ -1,4 +1,8 @@
-import type { FC, ReactNode, ReactElement } from 'react';
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
+import type { ReactNode, ReactElement } from 'react';
 import type { ModalFooterProps } from '../../../Modal/ModalFooter/ModalFooter';
 export interface PopoverFooterProps extends Omit<ModalFooterProps, 'secondary' | 'children'> {
     children?: ReactNode;
@@ -9,4 +13,4 @@ export interface PopoverFooterProps extends Omit<ModalFooterProps, 'secondary' |
      */
     closeButton?: ReactElement | string;
 }
-export declare const PopoverFooter: import("styled-components").StyledComponent<FC<PopoverFooterProps>, import("styled-components").DefaultTheme, PopoverFooterProps, never>;
+export declare const PopoverFooter: import("styled-components").StyledComponent<({ children, closeButton, ...props }: PopoverFooterProps) => JSX.Element, import("styled-components").DefaultTheme, PopoverFooterProps, never>;

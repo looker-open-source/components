@@ -1,0 +1,136 @@
+import { Select } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import storyBasic from '!!raw-loader!./Basic'
+import storyFiltering from '!!raw-loader!./Filtering'
+import storyShowCreate from '!!raw-loader!./ShowCreate'
+import storyGroups from '!!raw-loader!./Groups'
+import storyDescription from '!!raw-loader!./Description'
+import storyDetail from '!!raw-loader!./Detail'
+import storyError from '!!raw-loader!./Error'
+import storyDisabled from '!!raw-loader!./Disabled'
+import storyPlaceholder from '!!raw-loader!./Placeholder'
+import storyLoading from '!!raw-loader!./Loading'
+import storyScrollIntoView from '!!raw-loader!./ScrollIntoView'
+import storyWindowing from '!!raw-loader!./Windowing'
+import storyListLayout from '!!raw-loader!./ListLayout'
+import storyAutoResize from '!!raw-loader!./AutoResize'
+import storyIcons from '!!raw-loader!./Icons'
+import storyPreface from '!!raw-loader!./Preface'
+
+<Meta component={Select} title="Docs/Select" />
+
+# Select
+
+The `<Select />` component renders a single menu on the page, with no accompanying label. It is generally used to construct higher-order components like the `<FieldText />`. If you are building a form, you probably want to use `<FieldSelect />` instead as it provides label and validation support.
+It will render a range from 0 to 10, and select all possible values inbetween.
+
+<Editor code={storyBasic} />
+
+## Placeholder
+
+Placeholders are used to give a hint to the user of the expected value for the input.
+To allow the user to clear the `Select`'s value, add the `isClearable` prop.
+
+<Editor code={storyPlaceholder} />
+
+## Description
+
+Options can have a `description` property.
+
+<Editor code={storyDescription} />
+
+## Detail
+
+Right aligned content in the option.
+
+<Editor code={storyDetail} />
+
+## Preface
+
+Content rendered above the option label.
+
+<Editor code={storyPreface} />
+
+## validationType Property
+
+Use the validationType property to present a validation message.
+
+<Editor code={storyError} />
+
+## Disabled Property
+
+Use the disable property to make an input field uneditable.
+
+<Editor code={storyDisabled} />
+
+## Icons
+
+Define an icon for each option that will display in the list to the left of the option label as well as in the
+input when the option is selected. Use icons from our [list](/?path=/docs/docs-icon--docs) or custom JSX.
+
+<Editor code={storyIcons} />
+
+## isLoading
+
+Indicates that options are currently being loaded.
+
+<Editor code={storyLoading} />
+
+## Filtering
+
+The `isFilterable` option allows the user to type in the input, triggering the `onFilter` callback,
+which should be used to narrow the options passed to the `Select`. Use the `isClearable` prop to allow
+the user to delete the current value.
+
+<Editor code={storyFiltering} />
+
+## showCreate
+
+When `isFilterable` is true, use the `showCreate` prop along with the `formatCreateLabel` (defaults to `'Create "${input value}"'`)
+to allow the user to enter a value not found in the options.
+<Editor code={storyShowCreate} />
+
+## Groups
+
+Options can be organized into groups, with an optional `label`.
+
+<Editor code={storyGroups} />
+
+## scrollIntoView for improved UX on a long list of options
+
+If you're rendering a long list which scrolls beyond the max-height of the list, you can leverage the `scrollIntoView` option property to focus the list to a helpful scroll position. Using `scrollIntoView` will also highlight the option, so that keyboard navigation will start from there as well.
+
+When you open the following list, `Mascarpone` will be highlighted and visible at the bottom of the menu:
+
+<Editor code={storyScrollIntoView} />
+
+## Windowing
+
+Another feature for long lists. Because rendering hundreds of options results in poor performance,
+if there are 100 or more options, the option list will be "windowed", (a.k.a. "virtualized") and only the
+options visibile in the scroll area will be rendered, plus a buffer of 5 above and below. The `windowing`
+prop can be used to override this – either by setting it to `true` for under 100 or `false` for over 100.
+
+To observe the performance impact, add `windowing={false}` after `options={options1k}` below:
+
+<Editor code={storyWindowing} />
+
+## List Layout
+
+Use the `listLayout` prop to control layout properties of the list,
+like width and height, separately from the input.
+
+<Editor code={storyListLayout} />
+
+## autoResize
+
+Use the `autoResize` prop to allow the width of the component to adjust to the current value or placeholder, which is useful
+when the `Select` is meant to be rendered inline and horizontal space is at a premium.
+The container will default to `display: inline-flex` and both the container and list will default to `width: auto`.
+
+<Editor code={storyAutoResize} />
+
+## Props
+
+<ArgsTable of={Select} exclude={excludedProps} />

@@ -1,0 +1,36 @@
+import { ProgressCircular, MessageBar } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import storyDefault from '!!raw-loader!./Default'
+import storyDeterminateProgress from '!!raw-loader!./DeterminateProgress'
+import storySize from '!!raw-loader!./Size'
+
+<Meta component={ProgressCircular} title="Docs/ProgressCircular" />
+
+# ProgressCircular
+
+<MessageBar noActions intent="warn">
+  This component is currently experimental.
+</MessageBar>
+
+The `ProgressCircular` helps express an unspecified wait time or displays the length of a process
+
+## Showing a generic loading state
+
+To show a generic loading state or process, use the default `ProgressCircular` behavior.
+
+<Editor code={storyDefault} />
+
+## Rendering defined async progress
+
+If the process has known steps to completion, you can use the `progress` prop to indicate a more precise loading state. The `progress` prop accepts a number from `0` to `1`, where `0` is 0% complete and `1` is 100% complete.
+
+<Editor code={storyDeterminateProgress} />
+
+## Size
+
+`ProgressCircular` is available in four sizes, `xsmall`, `small`, `medium`, and `large`.
+
+<Editor code={storySize} />
+
+<ArgsTable of={ProgressCircular} exclude={excludedProps} />

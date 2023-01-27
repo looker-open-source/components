@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2022 Looker Data Sciences, Inc.
+ Copyright (c) 2023 Google LLC
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -23,8 +23,10 @@
  SOFTWARE.
 
  */
+
 import dateLocale from 'date-fns/locale/ko'
-import type { I18nStateWithDates } from '@looker/i18n'
+
+import { mergeLocaleObjects } from '@looker/i18n'
 
 const resources = {
   AdvancedInputControls: {
@@ -77,7 +79,7 @@ const resources = {
     Options: '옵션',
   },
   FieldTimeSelect: {
-    'Please enter a valid time': '올바른 시간을 입력하십시오',
+    'Please use format HHMM': 'HH:MM 형식을 사용하세요.',
   },
   GetIntentLabel: {
     Error: '오류',
@@ -133,7 +135,9 @@ const resources = {
     Save: '저장',
   },
   RangeSlider: {
+    'Maximum Name': '최대 {{name}}',
     'Maximum Value': '최댓값',
+    'Minimum Name': '최소 {{name}}',
     'Minimum Value': '최솟값',
   },
   RequiredStar: {
@@ -148,8 +152,4 @@ const resources = {
   },
 }
 
-export const koKR: I18nStateWithDates = {
-  dateLocale,
-  locale: 'ko-KR',
-  resources: { 'ko-KR': resources },
-}
+export const koKR = mergeLocaleObjects([], 'ko-KR', resources, dateLocale)

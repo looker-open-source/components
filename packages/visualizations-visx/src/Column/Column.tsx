@@ -24,7 +24,6 @@
 
  */
 
-import type { FC } from 'react'
 import React from 'react'
 import {
   DataProvider,
@@ -57,13 +56,13 @@ import {
 import { XYTooltip } from '../XYTooltip'
 import { Grid } from '../Grid'
 
-export const Column: FC<ColumnProps> = ({
+export const Column = ({
   data,
   config,
   height = DEFAULT_HEIGHT,
   width,
   fields,
-}) => {
+}: ColumnProps) => {
   const { positioning, series: seriesList, legend } = config
 
   /**

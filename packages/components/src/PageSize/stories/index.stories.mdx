@@ -1,0 +1,27 @@
+import { PageSize } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import storyBasic from '!!raw-loader!./Basic'
+import storyAlwaysVisible from '!!raw-loader!./AlwaysVisible'
+
+<Meta component={PageSize} title="Docs/PageSize" />
+
+# PageSize
+
+At its core, `<PageSize/>` is a composition of `<Select/>` and `<Text/>`.
+
+A typical use case of `<PageSize/>` is to set the number of viewable items on each page in a paginated list.
+
+Regarding implementation details, a `<PageSize/>` element will call the callback it received via its `onChange` prop any time a user selects a new options from the `<Select/>`, passing in the newly selected value.
+
+<Editor code={storyBasic} />
+
+## AlwaysVisible
+
+Set alwaysVisible to
+
+<Editor code={storyAlwaysVisible} />
+
+## Props
+
+<ArgsTable of={PageSize} exclude={excludedProps} />

@@ -1,0 +1,14 @@
+import { TableBody } from '@looker/components'
+import { Meta } from '@storybook/addon-docs'
+import storyBasic from '!!raw-loader!./Basic'
+import { excludedProps } from '@looker/storybook'
+
+<Meta component={TableBody} title="Docs/TableBody" />
+
+# TableBody
+
+This component is used to define the body of the table and holds the data for the table. The `<TableBody>` can have multiple `<TableRow>` tags for each row of data, and a `<TableDataCell>` tag for each cell of data to be semantically correct.
+
+<Editor code={storyBasic} />
+
+<ArgsTable of={TableBody} exclude={excludedProps} />

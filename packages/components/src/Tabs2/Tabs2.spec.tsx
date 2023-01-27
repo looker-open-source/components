@@ -30,7 +30,7 @@ import { renderWithTheme } from '@looker/components-test-utils'
 import React, { useState } from 'react'
 import { act, fireEvent, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { StateChanges } from './Tabs2.stories'
+import { StateChanges } from './stories/index.stories'
 import { Tab2, Tabs2 } from './'
 
 beforeEach(() => {

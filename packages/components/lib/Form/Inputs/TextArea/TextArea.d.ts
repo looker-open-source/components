@@ -1,4 +1,4 @@
-import type { FC } from 'react';
+/// <reference types="react" />
 import type { CompatibleHTMLProps } from '@looker/design-tokens';
 import type { ValidationType } from '../../ValidationMessage';
 import type { SimpleLayoutProps } from '../../../Layout/utils/simple';
@@ -11,5 +11,5 @@ export interface TextAreaProps extends Omit<SimpleLayoutProps, 'size'>, Compatib
     resize?: TextAreaResize;
     validationType?: ValidationType;
 }
-export declare const TextArea: import("styled-components").StyledComponent<FC<TextAreaProps>, import("styled-components").DefaultTheme, TextAreaProps, never>;
+export declare const TextArea: import("styled-components").StyledComponent<({ className, validationType, ...props }: TextAreaProps) => JSX.Element, import("styled-components").DefaultTheme, TextAreaProps, never>;
 export {};

@@ -1,8 +1,11 @@
 {
   "name": "@looker/i18n",
   "license": "MIT",
-  "version": "0.1.8",
-  "main": "src/index.ts",
+  "version": "1.0.0",
+  "main": "lib/main/index.js",
+  "module": "lib/module/index.js",
+  "types": "lib/index.d.ts",
+  "src": "src/index.ts",
   "sideEffects": false,
   "publishConfig": {
     "access": "public",
@@ -26,7 +29,9 @@
     "@looker/babel-preset-typescript": "*",
     "@looker/components-scripts": "*",
     "@looker/eslint-config-oss": "*",
-    "@looker/jest-config": "*"
+    "@looker/jest-config": "*",
+    "@looker/prettier-config": "*",
+    "prettier": "2.8.2"
   },
   "eslintConfig": {
     "root": true,

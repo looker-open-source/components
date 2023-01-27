@@ -23,7 +23,6 @@
  SOFTWARE.
 
  */
-import type { FC } from 'react'
 import React from 'react'
 import { screen, fireEvent, waitFor } from '@testing-library/react'
 import { renderWithTheme } from '@looker/components-test-utils'
@@ -59,16 +58,16 @@ afterEach(() => {
   jest.clearAllMocks()
 })
 
-const MockContextWrapper: FC = ({ children }) => {
+const MockContextWrapper = ({ children }: React.PropsWithChildren<unknown>) => {
   return (
     <ExtensionContext.Provider
       value={
-        ({
-          extensionSDK: ({
+        {
+          extensionSDK: {
             openBrowserWindow: jest.fn(),
-          } as unknown) as ExtensionSDK,
+          } as unknown as ExtensionSDK,
           core40SDK: mockSDK as Looker40SDK,
-        } as unknown) as ExtensionContextData
+        } as unknown as ExtensionContextData
       }
     >
       <AppContext.Provider value={{ localStorageGetItem, localStorageSetItem }}>

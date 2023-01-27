@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2022 Looker Data Sciences, Inc.
+ Copyright (c) 2023 Google LLC
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -23,8 +23,10 @@
  SOFTWARE.
 
  */
+
 import dateLocale from 'date-fns/locale/hi'
-import type { I18nStateWithDates } from '@looker/i18n'
+
+import { mergeLocaleObjects } from '@looker/i18n'
 
 const resources = {
   AdvancedInputControls: {
@@ -37,13 +39,13 @@ const resources = {
     Avatar: 'अवतार',
   },
   BulkActions: {
-    AllPageCountDisplayedSelected: 'सभी {{pageCount}} दिखाए गए आइटम चुने गए',
-    AllTotalCountSelected: 'सभी {{totalCount}} आइटम चुने गए',
-    'Bulk Actions': 'बल्क क्रियाएं',
-    'Clear Selection': 'चुना गया हटाएं',
-    SelectAllCountResults: 'सभी {{totalCount}} नतीजे चुनें',
+    AllPageCountDisplayedSelected: 'सभी {{pageCount}} दिखाई गई वस्तुएँ चुनी गई',
+    AllTotalCountSelected: 'सभी {{totalCount}} वस्तुएँ चुनी गई',
+    'Bulk Actions': 'बल्क क्रियाएँ',
+    'Clear Selection': 'चयन साफ़ करें',
+    SelectAllCountResults: 'सभी {{totalCount}} परिणाम चुनें',
     SelectedCountOfTotalDisplayed:
-      '{{pageCount}} के {{selectedItemCount}} दिखाए गए आइटम चुने गए',
+      '{{pageCount}} के {{selectedItemCount}} दिखाई गई वस्तुएँ चुनी गई',
   },
   CalendarNav: {
     'next month': 'अगले महीने',
@@ -71,13 +73,13 @@ const resources = {
     'Copy to Clipboard': 'क्लिपबोर्ड पर कॉपी करें',
   },
   DataTable: {
-    'No Results': 'कोई नतीजा नहीं',
+    'No Results': 'कोई परिणाम नहीं',
   },
   DataTableItem: {
     Options: 'विकल्प',
   },
   FieldTimeSelect: {
-    'Please enter a valid time': 'कृपया मान्य समय दर्ज करें',
+    'Please use format HHMM': 'कृपया HH:MM फ़ॉर्मेट का इस्तेमाल करें',
   },
   GetIntentLabel: {
     Error: 'त्रुटि',
@@ -116,10 +118,10 @@ const resources = {
     of: 'में से',
   },
   Pagination: {
-    'First page of results': 'नतीजों का पहला पेज',
-    'Last page of results': 'नतीजों का अंतिम पेज',
-    'Next page of results': 'नतीजों का अगला पेज',
-    'Previous page of results': 'नतीजों का पिछला पेज',
+    'First page of results': 'परिणामों का पहला पेज',
+    'Last page of results': 'परिणामों का अंतिम पेज',
+    'Next page of results': 'परिणामों का अगला पेज',
+    'Previous page of results': 'परिणामों का पिछला पेज',
     of: 'में से',
   },
   PanelHeader: {
@@ -133,7 +135,9 @@ const resources = {
     Save: 'सहेजें',
   },
   RangeSlider: {
+    'Maximum Name': 'अधिकतम {{name}}',
     'Maximum Value': 'अधिकतम मान',
+    'Minimum Name': 'न्यूनतम {{name}}',
     'Minimum Value': 'न्यूनतम मान',
   },
   RequiredStar: {
@@ -148,8 +152,4 @@ const resources = {
   },
 }
 
-export const hiIN: I18nStateWithDates = {
-  dateLocale,
-  locale: 'hi-IN',
-  resources: { 'hi-IN': resources },
-}
+export const hiIN = mergeLocaleObjects([], 'hi-IN', resources, dateLocale)

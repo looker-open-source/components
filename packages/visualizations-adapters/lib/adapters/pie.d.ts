@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { VisWrapperProps } from '../VisWrapper';
 import type { ChartLayoutProps, CSeriesBasic, LegendTypes, LegendValues, SDKRecord, SupportedChartTypes, LegendPositions, Fields } from '../types';
 export declare type CPieSeries = Pick<CSeriesBasic, 'color'>;

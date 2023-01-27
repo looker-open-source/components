@@ -1,0 +1,32 @@
+import { Paragraph } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import storyDefault from '!!raw-loader!./Default'
+import storyMultilineTruncate from '!!raw-loader!./MultilineTruncate'
+import storyTruncate from '!!raw-loader!./Truncate'
+import storyTextAlign from '!!raw-loader!./TextAlign'
+
+<Meta component={Paragraph} title="Docs/Paragraph" />
+
+# Paragraph
+
+Renders a block level `<Paragraph />` element on the page.
+
+<Editor code={storyDefault} />
+
+By default, paragraphs inherit the font size of the parent element.
+
+## Truncate
+
+At times you may want your `<Paragraph />` to truncate instead of the text wrapping, the `truncate` property will do that for you. For a multiline truncate, use `truncateLines`.
+
+<Editor code={storyTruncate} />
+<Editor code={storyMultilineTruncate} />
+
+## Text Alignment
+
+You can use the `textAlign` property to change the alignment of the rendered text, below is an example with aligned text put into `<Card />`s.
+
+<Editor code={storyTextAlign} />
+
+<ArgsTable of={Paragraph} exclude={excludedProps} />

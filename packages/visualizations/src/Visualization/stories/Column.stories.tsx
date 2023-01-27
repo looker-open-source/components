@@ -24,7 +24,7 @@
 
  */
 
-import type { Story } from '@storybook/react/types-6-0'
+import type { Story } from '@storybook/react'
 import React from 'react'
 import { Visualization } from '../Visualization'
 import type {
@@ -47,7 +47,7 @@ import {
 
 export default {
   component: Visualization,
-  title: 'Visualizations/Column',
+  title: 'Visualizations/Stories/Column',
 }
 
 type StoryTemplateProps = Omit<ColumnProps, 'config' | 'fields' | 'data'> & {

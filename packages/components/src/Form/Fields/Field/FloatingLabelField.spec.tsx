@@ -24,7 +24,6 @@
 
  */
 
-import type { FC } from 'react'
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { ExtendComponentsThemeProvider } from '@looker/components-providers'
@@ -33,10 +32,10 @@ import { theme } from '@looker/design-tokens'
 import { FloatingLabelField } from './FloatingLabelField'
 import type { FloatingLabelFieldPropsInternal } from './types'
 
-const TestComponent: FC<FloatingLabelFieldPropsInternal> = ({
+const TestComponent = ({
   children = <input id="test" type="text" />,
   ...props
-}) => (
+}: FloatingLabelFieldPropsInternal) => (
   <ExtendComponentsThemeProvider
     themeCustomizations={{ defaults: { externalLabel: false } }}
   >

@@ -24,7 +24,7 @@
 
  */
 
-import type { ReactNode, FC } from 'react'
+import type { ReactNode } from 'react'
 import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { ArrowDropDown } from '@styled-icons/material/ArrowDropDown'
@@ -44,14 +44,14 @@ interface BulkActionsProps {
   totalCount: number
 }
 
-const BulkActionsLayout: FC<BulkActionsProps> = ({
+const BulkActionsLayout = ({
   actions,
   className,
   onTotalClearAll,
   onTotalSelectAll,
   pageCount,
   totalCount,
-}) => {
+}: BulkActionsProps) => {
   const { t } = useTranslation('BulkActions')
   const { select } = useContext(DataTableContext)
   const selectedItemCount = select ? select.selectedItems.length : 0

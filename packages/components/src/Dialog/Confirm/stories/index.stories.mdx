@@ -1,0 +1,62 @@
+import { Confirm } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import storyBasic from '!!raw-loader!./Basic'
+import storyCritical from '!!raw-loader!./Critical'
+import storyLayout from '!!raw-loader!./Layout'
+
+<Meta component={Confirm} title="Docs/Confirm" />
+
+# Confirm
+
+Confirm provides a helpful composition of dialog components to drive the most common use case: driving user action to confirm or cancel a specific outcome.
+
+# Standard Use
+
+Confirm makes use of the render prop pattern to provide `open` and `close` functions to be called when needed.
+
+<Editor code={storyBasic} />
+
+Updating color and text of the button
+
+<Editor code={storyCritical} />
+
+# useConfirm
+
+If you want more control over markup and state, we provide a custom hook that returns the opener function and rendered confirmation dialog. The following example illustrates how the opener can be called outside the Confirm component.
+
+```jsx
+;() => {
+  function handleConfirm(close) {
+    alert('You deleted it')
+    close()
+  }
+
+  const [confirmationDialog, openDialog] = useConfirm({
+    confirmLabel: 'Yes, Delete all',
+    buttonColor: 'critical',
+    title: `Delete all`,
+    message: 'Are you sure you want to delete all?',
+    onConfirm: handleConfirm,
+  })
+
+  return (
+    <>
+      {confirmationDialog}
+      <ButtonOutline onClick={openDialog}>useConfirm</ButtonOutline>
+    </>
+  )
+}
+```
+
+# ConfirmLayout
+
+We've found that most Dialogs involve the same common elements: Title, Message, a primary action (usually "Confirm"), and a secondary action (usually "Cancel").
+
+To help standardize that layout, we created the `ConfirmLayout` component for composing the relevant pieces. This is handy if you need something like Confirm in a separate context (e.g. when you need to lay out surface content for use in [`Dialog`](/components/dialogs/dialog)).
+
+<Editor code={storyCritical} />
+
+## Props
+
+<ArgsTable of={Confirm} exclude={excludedProps} />

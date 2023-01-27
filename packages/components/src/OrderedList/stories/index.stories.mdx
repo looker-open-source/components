@@ -1,0 +1,25 @@
+import { OrderedList } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import storyBasic from '!!raw-loader!./Basic'
+import storyNumber from '!!raw-loader!./Number'
+import storyLetter from '!!raw-loader!./Letter'
+
+<Meta component={OrderedList} title="Docs/OrderedList" />
+
+# OrderedList
+
+The `OrderedList` component renders an `ol` element. Its children should be `li` elements.
+
+<Editor code={storyBasic} />
+
+## Types
+
+Use the `type` prop to set the `OrderedList`'s marker type.
+
+`OrderedList`s be of type "none" (default) or "number" or "letter".
+
+<Editor code={storyNumber} />
+<Editor code={storyLetter} />
+
+<ArgsTable of={OrderedList} exclude={excludedProps} />

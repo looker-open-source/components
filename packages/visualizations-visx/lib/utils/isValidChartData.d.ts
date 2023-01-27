@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { SDKRecord, Fields } from '@looker/visualizations-adapters';
 /**
  * A simple utility function that validates whether there is sufficient data to render

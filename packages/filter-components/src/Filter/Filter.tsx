@@ -32,7 +32,6 @@ import {
   updateNode,
 } from '@looker/filter-expressions'
 import isEmpty from 'lodash/isEmpty'
-import type { FC } from 'react'
 import React, { useMemo, useRef, useState } from 'react'
 import type { FilterProps } from './types/filter_props'
 import { useFilterConfig, useValidationMessage } from './utils'
@@ -47,14 +46,14 @@ import { AdvancedFilter } from './components/AdvancedFilter'
  * `Filter` renders only the filter input control(s) – for label and validation display
  * and suggestion fetching, see `DashboardFilter`.
  */
-export const Filter: FC<FilterProps> = ({
+export const Filter = ({
   expression,
   type,
   expressionType: propsExpressionType,
   loadUserAttributes,
   skipFilterConfigCheck,
   ...props
-}) => {
+}: FilterProps) => {
   const expressionType = useMemo(() => {
     return (
       propsExpressionType ||
@@ -133,7 +132,7 @@ export const Filter: FC<FilterProps> = ({
   }
 
   const { uiConfig: config } = useFilterConfig({
-    ast: ast!,
+    ast: ast || {},
     config: props.config,
     field: props.field,
     suggestions: props.suggestions,

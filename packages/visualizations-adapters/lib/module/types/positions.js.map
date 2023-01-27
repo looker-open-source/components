@@ -1,0 +1,1 @@
+{"version":3,"file":"positions.js","names":[],"sources":["../../../src/types/positions.ts"],"sourcesContent":["/**\n * Copyright (c) 2023 Google LLC\n * SPDX-License-Identifier: MIT\n */\n\nexport type LinearPositions = 'overlay' | 'stacked' | 'percent'\n\nexport type BarPositions = 'grouped' | 'stacked' | 'percent'\n"],"mappings":""}

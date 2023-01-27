@@ -1,0 +1,22 @@
+import { Text } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import { MessageBar } from '@looker/components'
+import storyBasic from '!!raw-loader!./Basic'
+
+<Meta component={Text} title="Docs/Text" />
+
+<MessageBar intent="warn" noActions>
+  NOTE: This component has been deprecated. Use `Span` component instead for a
+  more predictable behavior
+</MessageBar>
+
+The Text component outputs a `span` HTML element with specified props.
+
+<Editor code={storyBasic} />
+
+This component has a historic "quirk" where the `font-size` defaults to medium rather
+than simply inheriting it's size from the parent DOM element (what one might expect of a
+"normal" inline element. `line-height` will match the `font-size` (`medium` unless otherwise specified) as well.
+
+<ArgsTable of={Text} exclude={excludedProps} />

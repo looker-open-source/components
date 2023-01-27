@@ -1,0 +1,41 @@
+import { Layout } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import storyBasic from '!!raw-loader!./Basic'
+import storyFixedWithFooterAndHeaderShadow from '!!raw-loader!./FixedWithFooterAndHeaderShadow'
+import storyScrollAllAreasTogetherDefault from '!!raw-loader!./ScrollAllAreasTogetherDefault'
+import storyScrollIndependently from '!!raw-loader!./ScrollIndependently'
+import storyScrollSelectedAreas from '!!raw-loader!./ScrollSelectedAreas'
+import storyWhitespaceRepro from '!!raw-loader!./WhitespaceRepro'
+
+<Meta component={Layout} title="Docs/Layout" />
+
+# Layout
+
+## Basic
+
+<Editor code={storyBasic} />
+
+## Fixed With Footer And Header Shadow
+
+<Editor code={storyFixedWithFooterAndHeaderShadow} />
+
+## Scroll All Areas Together Default
+
+<Editor code={storyScrollAllAreasTogetherDefault} />
+
+## Scroll Independently
+
+<Editor code={storyScrollIndependently} />
+
+## Scroll Selected Areas
+
+<Editor code={storyScrollSelectedAreas} />
+
+## Whitespace Repro
+
+<Editor code={storyWhitespaceRepro} />
+
+## Props
+
+<ArgsTable of={Layout} exclude={excludedProps} />

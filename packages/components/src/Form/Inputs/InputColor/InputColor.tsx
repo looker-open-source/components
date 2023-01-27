@@ -190,6 +190,4 @@ const InputColorInternal = forwardRef(
   }
 )
 
-InputColorInternal.displayName = 'InputColorInternal'
-
 export const InputColor = styled(InputColorInternal)``

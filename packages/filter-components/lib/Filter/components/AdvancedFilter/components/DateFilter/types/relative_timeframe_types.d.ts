@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { DayRange } from './day_range';
 export declare enum PresetTimeframes {
     Today = "Today",

@@ -1,3 +1,21 @@
+# [3.1.0](https://github.com/looker-open-source/components/compare/22.16.0...3.1.0) (2022-11-15)
+
+
+### Bug Fixes
+
+* design-tokens stories respect package boundaries ([33ac4f5](https://github.com/looker-open-source/components/commit/33ac4f5521382ce6295c8b43508613c00227d664))
+
+
+### Features
+
+* **theming:** expanded dash controls - hide filters toggle ([a04cab2](https://github.com/looker-open-source/components/commit/a04cab2d71340cb1220b78df52be76dfa52852bf))
+* **theming:** expanded dash controls - rename runtime ([fefecb9](https://github.com/looker-open-source/components/commit/fefecb92f4926976ee89fd9f099f597d19f9811f))
+* **theming:** expanded dash controls - three-dot menu ([2db5282](https://github.com/looker-open-source/components/commit/2db52829db4b748df2534715deef1cfcd89b0c23))
+* **theming:** expanded dashboard controls - reload data ([a33917b](https://github.com/looker-open-source/components/commit/a33917b0ee5d616818dd9fab01f778a51ab0ad99))
+* **theming:** expanded dashboard controls - runtime ([335120a](https://github.com/looker-open-source/components/commit/335120a841600616705f3056eab96967e1d0b67f))
+
+
+
 ## [3.0.5](https://github.com/looker-open-source/components/compare/22.16.0...3.0.5) (2022-10-26)
 
 ### Features

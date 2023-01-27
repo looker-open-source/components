@@ -1,0 +1,73 @@
+import { Filter } from '@looker/filter-components'
+import { ImportMessage, Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import storyExpressionTypeOrField from '!!raw-loader!./ExpressionTypeOrField'
+import storyExpressionOnChange from '!!raw-loader!./ExpressionOnChange'
+import storySuggestions from '!!raw-loader!./Suggestions'
+import storyConfig from '!!raw-loader!./Config'
+
+<Meta component={Filter} title="Filters/Docs/Filter" />
+
+# Filter
+
+<ImportMessage packageName="filter-components">Filter</ImportMessage>
+
+`Filter` is the top level component for rendering a
+[Looker filter expression](https://cloud.google.com/looker/docs/reference/filter-expressions)
+that the user can update.
+
+**Note:** for more out-of-the-box render of a dashboard filter, including label,
+suggestion fetching, and validation messaging, see the
+[`DashboardFilter`](dashboard-filter) component.
+
+## expressionType
+
+`Filter` relies on the `expressionType` to properly parse and render the expression.
+It can eithe rtake the `expressionType` prop directly or derive it from filter
+`type` and `field` returned by the Looker API.
+
+<Editor code={storyExpressionTypeOrField} />
+
+## expression & onChange
+
+Use `onChange` to get updates to the `expression`.
+
+<Editor code={storyExpressionOnChange} />
+
+## Suggestions
+
+`Filter` supports suggestions for string expression types.
+
+<Editor code={storySuggestions} />
+
+The `useSuggestable` hook will fetch and format suggestions when passed an
+initialized Looker SDK instance.
+
+```jsx static
+const FilterItem = ({ filter, sdk }) => {
+  const { errorMessage, suggestableProps } = useSuggestable({
+    filter,
+    sdk,
+  })
+
+  return (
+    <Filter
+      name="Status"
+      expressionType="string"
+      expression="pending"
+      {...suggestableProps}
+    />
+  )
+}
+```
+
+## Config
+
+`Filter` supports the various permutations of UI `config` options that are returned in the
+Looker API via the filter's `ui_config` property.
+
+<Editor code={storyConfig} />
+
+## Props
+
+<ArgsTable of={Filter} exclude={excludedProps} />

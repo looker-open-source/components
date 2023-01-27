@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 /// <reference types="react" />
 import type { Fields } from '@looker/visualizations-adapters';
 export declare type YAxisProps = {

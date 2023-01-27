@@ -1,4 +1,8 @@
-import type { FC } from 'react';
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
+/// <reference types="react" />
 import type { ProgressCircularSizes } from './size';
 export interface ProgressCircularProps {
     /**
@@ -15,4 +19,4 @@ export interface ProgressCircularProps {
      */
     label?: string;
 }
-export declare const ProgressCircular: FC<ProgressCircularProps>;
+export declare const ProgressCircular: ({ size, progress, label, ...props }: ProgressCircularProps) => JSX.Element;

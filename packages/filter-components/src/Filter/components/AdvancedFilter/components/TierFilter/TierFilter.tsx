@@ -28,7 +28,7 @@ import {
   convertOptionToType,
   convertTypeToOption,
 } from '@looker/filter-expressions'
-import type { ElementType, FC } from 'react'
+import type { ElementType } from 'react'
 import React from 'react'
 import type { FilterParamProps } from '../../../../types/filter_param_props'
 import { GroupSelect } from '../GroupSelect'
@@ -41,7 +41,7 @@ import {
 import { ItemLayout } from '../ItemLayout'
 import { createEnumeration } from '../../../../utils'
 
-export const TierFilter: FC<FilterParamProps> = ({
+export const TierFilter  = ({
   item,
   filterType,
   enumerations,
@@ -51,7 +51,7 @@ export const TierFilter: FC<FilterParamProps> = ({
   showMatchesAdvanced,
   validationMessage,
   ...rest
-}) => {
+} : FilterParamProps) => {
   const typeChange = (value: string) =>
     onChange(item.id, convertOptionToType(String(value)))
   const selectValue = convertTypeToOption(item)

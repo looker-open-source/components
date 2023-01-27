@@ -57,14 +57,13 @@ export type UseRippleBaseProps = {
   size?: number
 }
 
-export type UseBoundedRippleProps<
-  T extends HTMLElement = HTMLElement
-> = UseRippleBaseProps & {
-  /**
-   * Existing ref to wrap
-   */
-  ref?: Ref<T>
-}
+export type UseBoundedRippleProps<T extends HTMLElement = HTMLElement> =
+  UseRippleBaseProps & {
+    /**
+     * Existing ref to wrap
+     */
+    ref?: Ref<T>
+  }
 
 export type UseRippleProps = UseRippleBaseProps & {
   /**
@@ -100,11 +99,10 @@ export type UseRippleResponse = {
   style: CSSProperties
 }
 
-export type UseBoundedRippleResponse<
-  T extends HTMLElement = HTMLElement
-> = UseRippleResponse & {
-  /**
-   * ref used for measuring the element for correct ripple sizing
-   */
-  ref: (node: T | null) => void
-}
+export type UseBoundedRippleResponse<T extends HTMLElement = HTMLElement> =
+  UseRippleResponse & {
+    /**
+     * ref used for measuring the element for correct ripple sizing
+     */
+    ref: (node: T | null) => void
+  }

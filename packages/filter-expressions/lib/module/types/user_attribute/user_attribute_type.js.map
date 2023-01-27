@@ -1,0 +1,1 @@
+{"version":3,"file":"user_attribute_type.js","names":["TYPE_USER_ATTRIBUTE"],"sources":["../../../../src/types/user_attribute/user_attribute_type.ts"],"sourcesContent":["/**\n * Copyright (c) 2023 Google LLC\n * SPDX-License-Identifier: MIT\n */\nexport const TYPE_USER_ATTRIBUTE = 'user_attribute'\n"],"mappings":";AAIA,OAAO,MAAMA,mBAAmB,GAAG,gBAAgB"}

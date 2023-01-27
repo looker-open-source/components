@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 export * from './FieldCheckbox';
 export * from './FieldCheckboxGroup';
 export * from './FieldChips';
@@ -14,4 +18,5 @@ export * from './FieldText';
 export * from './FieldTextArea';
 export * from './FieldToggleSwitch';
 export * from './Field';
+export * from './FieldTime';
 export * from './FieldTimeSelect';

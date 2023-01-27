@@ -1,4 +1,4 @@
-import type { FC } from 'react';
+/// <reference types="react" />
 import type { IconType } from '../Icon';
 import type { AvatarProps } from './Avatar';
 export interface AvatarIconProps extends AvatarProps {
@@ -20,7 +20,7 @@ export interface AvatarIconProps extends AvatarProps {
 /**
  * Display an Avatar with the specified Icon
  */
-export declare const AvatarIcon: import("styled-components").StyledComponent<FC<AvatarIconProps>, import("styled-components").DefaultTheme, {
+export declare const AvatarIcon: import("styled-components").StyledComponent<({ color, icon, role, ...props }: AvatarIconProps) => JSX.Element, import("styled-components").DefaultTheme, {
     bg: string;
     color: string;
     size: string;

@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { CompatibleHTMLProps, StatefulColor, MaxWidthProps, MinWidthProps, SpaceProps, WidthProps } from '@looker/design-tokens';
 import type { IconType } from '../Icon';
 import type { ButtonSizeProps, ButtonSizes } from './size';

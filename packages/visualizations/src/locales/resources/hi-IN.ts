@@ -1,33 +1,13 @@
-/*
-
- MIT License
-
- Copyright (c) 2022 Looker Data Sciences, Inc.
-
- Permission is hereby granted, free of charge, to any person obtaining a copy
- of this software and associated documentation files (the "Software"), to deal
- in the Software without restriction, including without limitation the rights
- to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- copies of the Software, and to permit persons to whom the Software is
- furnished to do so, subject to the following conditions:
-
- The above copyright notice and this permission notice shall be included in all
- copies or substantial portions of the Software.
-
- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- SOFTWARE.
-
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
  */
-import merge from 'lodash/merge'
-import type { I18nState } from '../../utils'
-import { hiIN as visAdapterLocales } from '@looker/visualizations-adapters'
-import { hiIN as visTableLocales } from '@looker/visualizations-table'
-import { hiIN as visVisxLocales } from '@looker/visualizations-visx'
+
+import { hiIN as componentsLocale } from '@looker/components'
+import { hiIN as visualizationsadaptersLocale } from '@looker/visualizations-adapters'
+import { hiIN as visualizationstableLocale } from '@looker/visualizations-table'
+import { hiIN as visualizationsvisxLocale } from '@looker/visualizations-visx'
+import { mergeLocaleObjects } from '@looker/i18n'
 
 const resources = {
   Query: {
@@ -41,21 +21,19 @@ const resources = {
   },
   Visualization: {
     "Measures of type 'date' are currently not supported":
-      "'दिनांक' प्रकार के माप वर्तमान में समर्थित नहीं हैं",
+      "'तारीख' प्रकार के माप वर्तमान में समर्थित नहीं हैं",
     'No chart found for type "{{type}}"':
       '"{{type}}" प्रकार के लिए कोई चार्ट नहीं मिला',
   },
 }
 
-export const hiIN: I18nState = {
-  locale: 'hi-IN',
-  resources: {
-    'hi-IN': merge(
-      {},
-      resources,
-      visAdapterLocales.resources['hi-IN'],
-      visTableLocales.resources['hi-IN'],
-      visVisxLocales.resources['hi-IN']
-    ),
-  },
-}
+export const hiIN = mergeLocaleObjects(
+  [
+    componentsLocale,
+    visualizationsadaptersLocale,
+    visualizationstableLocale,
+    visualizationsvisxLocale,
+  ],
+  'hi-IN',
+  resources
+)

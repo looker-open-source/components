@@ -1,4 +1,8 @@
 /**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
+/**
  * The ratio of ripple size (28) to container size (24) in Checkbox and Radio at their
  * smallest density – the only time the former exceeds the latter.
  * Defined in the format required by CSS transform translate, to avoid the need

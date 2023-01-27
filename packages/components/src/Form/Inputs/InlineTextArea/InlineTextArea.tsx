@@ -85,8 +85,6 @@ export const InlineTextAreaLayout = forwardRef(
   }
 )
 
-InlineTextAreaLayout.displayName = 'InlineTextAreaLayout'
-
 const Input = styled.textarea<InlineTextAreaProps>`
   background: transparent;
   border: none;

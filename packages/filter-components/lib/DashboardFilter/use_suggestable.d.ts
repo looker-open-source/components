@@ -20,29 +20,9 @@ export interface UseSuggestableProps {
 export declare const useSuggestable: ({ filter, sdk }: UseSuggestableProps) => {
     errorMessage: string;
     suggestableProps: {
-        expressionType: "string" | "number" | "date" | "location" | "date_time" | "tier";
-        field?: ILookmlModelExploreField | null | undefined;
-        type?: string | undefined;
-        config?: any;
-        expression: string;
-        name: string;
-        isLinked?: boolean | undefined;
-        isLoading: boolean;
-        isRequired?: boolean | undefined;
-        inline?: boolean | undefined;
-        onChange?: ((value: import("../Filter/types/filter_props").FilterChangeProps) => void) | undefined;
-        onInputChange: (value: string) => void;
-        loadUserAttributes?: (() => void) | undefined;
-        userAttributes?: import("packages/filter-expressions/src").UserAttributeWithValue[] | undefined;
-        suggestions?: string[] | undefined;
-        enumerations?: import("..").Option[] | null | undefined;
-        dispatchConfigTypeChange?: boolean | undefined;
-        skipFilterConfigCheck?: boolean | undefined;
-        allowMultipleValues?: boolean | undefined;
-    } | {
         field: ILookmlModelExploreField | null;
-        expressionType?: import("packages/filter-expressions/src").FilterExpressionType | undefined;
         type?: string | undefined;
+        expressionType?: import("packages/filter-expressions/lib").FilterExpressionType | undefined;
         config?: any;
         expression: string;
         name: string;
@@ -53,7 +33,7 @@ export declare const useSuggestable: ({ filter, sdk }: UseSuggestableProps) => {
         onChange?: ((value: import("../Filter/types/filter_props").FilterChangeProps) => void) | undefined;
         onInputChange: (value: string) => void;
         loadUserAttributes?: (() => void) | undefined;
-        userAttributes?: import("packages/filter-expressions/src").UserAttributeWithValue[] | undefined;
+        userAttributes?: import("packages/filter-expressions/lib").UserAttributeWithValue[] | undefined;
         suggestions?: string[] | undefined;
         enumerations?: import("..").Option[] | null | undefined;
         dispatchConfigTypeChange?: boolean | undefined;
@@ -61,8 +41,8 @@ export declare const useSuggestable: ({ filter, sdk }: UseSuggestableProps) => {
         allowMultipleValues?: boolean | undefined;
     } | {
         type: string;
-        expressionType?: import("packages/filter-expressions/src").FilterExpressionType | undefined;
         field?: ILookmlModelExploreField | null | undefined;
+        expressionType?: import("packages/filter-expressions/lib").FilterExpressionType | undefined;
         config?: any;
         expression: string;
         name: string;
@@ -73,7 +53,27 @@ export declare const useSuggestable: ({ filter, sdk }: UseSuggestableProps) => {
         onChange?: ((value: import("../Filter/types/filter_props").FilterChangeProps) => void) | undefined;
         onInputChange: (value: string) => void;
         loadUserAttributes?: (() => void) | undefined;
-        userAttributes?: import("packages/filter-expressions/src").UserAttributeWithValue[] | undefined;
+        userAttributes?: import("packages/filter-expressions/lib").UserAttributeWithValue[] | undefined;
+        suggestions?: string[] | undefined;
+        enumerations?: import("..").Option[] | null | undefined;
+        dispatchConfigTypeChange?: boolean | undefined;
+        skipFilterConfigCheck?: boolean | undefined;
+        allowMultipleValues?: boolean | undefined;
+    } | {
+        expressionType: import("packages/filter-expressions/lib").FilterExpressionType;
+        field?: ILookmlModelExploreField | null | undefined;
+        type?: string | undefined;
+        config?: any;
+        expression: string;
+        name: string;
+        isLinked?: boolean | undefined;
+        isLoading: boolean;
+        isRequired?: boolean | undefined;
+        inline?: boolean | undefined;
+        onChange?: ((value: import("../Filter/types/filter_props").FilterChangeProps) => void) | undefined;
+        onInputChange: (value: string) => void;
+        loadUserAttributes?: (() => void) | undefined;
+        userAttributes?: import("packages/filter-expressions/lib").UserAttributeWithValue[] | undefined;
         suggestions?: string[] | undefined;
         enumerations?: import("..").Option[] | null | undefined;
         dispatchConfigTypeChange?: boolean | undefined;

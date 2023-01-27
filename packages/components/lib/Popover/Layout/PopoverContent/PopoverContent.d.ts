@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 /// <reference types="react" />
 import type { LayoutProps } from '@looker/design-tokens';
 import type { ModalContentProps } from '../../../Modal/ModalContent';

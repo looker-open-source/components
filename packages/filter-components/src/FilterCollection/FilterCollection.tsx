@@ -25,7 +25,7 @@
  */
 
 import type { IDashboardFilter } from '@looker/sdk'
-import type { FC, Reducer } from 'react'
+import type { Reducer } from 'react'
 import React, { createContext, useCallback, useReducer } from 'react'
 
 type FilterWithExpresison = {
@@ -51,7 +51,7 @@ const getFilterMap = (filterMap: FilterMap, payload: FilterWithExpresison) => {
     return { ...filterMap, ...newKeyValue }
   }
   if (filter.title) {
-    const { [filter.title]: filterToRemove, ...rest } = filterMap
+    const { [filter.title]: _filterToRemove, ...rest } = filterMap
     return rest
   }
   return filterMap
@@ -99,7 +99,9 @@ export const FilterContext = createContext(initialContext)
  * This allows filters with `listens_to_filters` to pull the relevant
  * expressions out when performing a linked filter suggestion query.
  */
-export const FilterCollection: FC = ({ children }) => {
+export const FilterCollection = ({
+  children,
+}: React.PropsWithChildren<unknown>) => {
   const [state, dispatch] = useReducer(reducer, initialState)
 
   const updateExpression = useCallback(

@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { Fields } from '../types';
 export declare const DEFAULT_HEIGHT = 500;
 export declare const DEFAULT_MIN_HEIGHT = 75;

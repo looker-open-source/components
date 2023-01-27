@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { MouseEvent, ReactNode } from 'react';
 import type { DataTableColumns } from '../Column';
 import type { DataTableDatum, DataTableData } from './sort_utils';

@@ -1,6 +1,7 @@
 {
+  "Row Total": "Total des lignes",
   "false": "faux",
   "null": "nul",
   "true": "vrai",
-  "undefined": "non défini"
+  "undefined": "undefined"
 }

@@ -1,0 +1,79 @@
+import { InputTime } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import basicStory from '!!raw-loader!./Basic'
+import timeFormattingStory from '!!raw-loader!./TimeFormatting'
+import controlledStory from '!!raw-loader!./Controlled'
+import defaultValueStory from '!!raw-loader!./DefaultValue'
+import disabledStory from '!!raw-loader!./Disabled'
+import readOnlyStory from '!!raw-loader!./ReadOnly'
+import withLabelStory from '!!raw-loader!./WithLabel'
+import focusBlurStory from '!!raw-loader!./FocusBlurEvents'
+import validationErrorStory from '!!raw-loader!./ValidationError'
+import onValidationFailStory from '!!raw-loader!./OnValidationFail'
+
+<Meta component={InputTime} title="Docs/InputTime" />
+
+# InputTime
+
+`InputTime` provides a themable HTML5-equivalent time picking experience.
+
+<Editor code={basicStory} />
+
+## 12 And 24 Hour Format
+
+`InputTime` can display either a 12-hour or 24-hour time selecting interface. If not specified, it defaults to 12-hour time.
+
+<Editor code={timeFormattingStory} />
+
+## Controlled Component
+
+`InputTime` accepts a value and onChange listener for the standard controlled component pattern.
+
+<Editor code={controlledStory} />
+
+## defaultValue
+
+`InputTime` also accetpts a `defaultValue` prop if you don't want to control component value externally.
+
+<Editor code={defaultValueStory} />
+
+## disabled
+
+Use the disable property to make an input field uneditable.
+
+<Editor code={disabledStory} />
+
+## readOnly
+
+As the name suggests, `readOnly` makes the text uneditable.
+
+<Editor code={readOnlyStory} />
+
+## ID & Form Labels
+
+You can combine the `id` prop with form label, so that when the label is clicked it will focus on the `hour` input.
+
+<Editor code={withLabelStory} />
+
+## Focus & Blur Events
+
+`onFocus` callback will fire when any of the three sub-fields (hour, minute, period) are focused. `onBlur` fires when the focus moves outside the component entirely.
+
+<Editor code={focusBlurStory} />
+
+## Validation Error State
+
+You can render a failed validation state with the prop `validationType="error"`.
+
+<Editor code={validationErrorStory} />
+
+## onValidationFail
+
+In addition, `InputTime` will automatically check whether the provided `value` prop is actually a valid 24 hour time string, and fire the `onValidationFail` callback.
+
+<Editor code={onValidationFailStory} />
+
+## Props
+
+<ArgsTable of={InputTime} exclude={excludedProps} />

@@ -1,41 +1,10 @@
-/*
-
- MIT License
-
- Copyright (c) 2022 Looker Data Sciences, Inc.
-
- Permission is hereby granted, free of charge, to any person obtaining a copy
- of this software and associated documentation files (the "Software"), to deal
- in the Software without restriction, including without limitation the rights
- to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- copies of the Software, and to permit persons to whom the Software is
- furnished to do so, subject to the following conditions:
-
- The above copyright notice and this permission notice shall be included in all
- copies or substantial portions of the Software.
-
- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- SOFTWARE.
-
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
  */
 
-import { useEffect } from 'react'
-import type {
-  IError,
-  ILookmlModelExplore,
-  ILookmlModelExploreField,
-} from '@looker/sdk'
-import type { SDKResponse } from '@looker/sdk-rtl'
-import isEmpty from 'lodash/isEmpty'
-import isEqual from 'lodash/isEqual'
-import useSWR from 'swr'
-import { getErrorResponse } from '../utils'
-import { useSDK, useQueryMetadata, DataState } from '.'
+import type { ILookmlModelExplore, ILookmlModelExploreField } from '@looker/sdk'
+import { useExplore } from './useExplore'
 
 type FieldGroups = {
   [group: string]: ILookmlModelExploreField[]
@@ -64,73 +33,13 @@ const groupFields = (fields: ILookmlModelExploreField[] | undefined) => {
  */
 
 export const useFieldGroups = (id: number) => {
-  const sdk = useSDK()
-  const { setModelExplore, getModelExplore } = DataState.useContainer()
+  const { explore, ...rest } = useExplore(id)
+  const { fields } = explore || ({} as ILookmlModelExplore)
 
-  /*
-   * Check for stored values
-   * -----------------------------------------------------------
-   */
-  const {
-    metadata: { model, view },
-  } = useQueryMetadata(id)
-  const allModelFields = getModelExplore(model, view)
-
-  /*
-   * Dispatch network request
-   * -----------------------------------------------------------
-   */
-
-  const fetcher = async () => {
-    if (id > 0 && model && view && isEmpty(allModelFields)) {
-      return await sdk.lookml_model_explore(model, view, 'fields')
-    }
-
-    return undefined
-  }
-
-  const { data: SWRData, isValidating } = useSWR<void | SDKResponse<
-    ILookmlModelExplore,
-    IError
-  >>(
-    `useFieldGroups-${model}-${view}`, // caution: argument string must be unique to this instance
-    fetcher,
-    { revalidateOnFocus: false }
-  )
-
-  /*
-   * Publish SWR response to central data store
-   * -----------------------------------------------------------
-   */
-
-  useEffect(() => {
-    const { fields: draftModelFields } =
-      (SWRData?.ok && SWRData.value) || ({} as ILookmlModelExplore)
-
-    if (
-      id &&
-      model &&
-      view &&
-      draftModelFields &&
-      !isEqual(draftModelFields, allModelFields)
-    ) {
-      setModelExplore(model, view, draftModelFields)
-    }
-  }, [id, SWRData, allModelFields, model, setModelExplore, view])
-
-  /*
-   * Group dimension fields for easier use in filters
-   * -----------------------------------------------------------
-   */
-
-  const fieldGroups = allModelFields?.dimensions
-    ? groupFields(allModelFields?.dimensions)
-    : {}
+  const fieldGroups = fields?.dimensions ? groupFields(fields?.dimensions) : {}
 
   return {
     fieldGroups,
-    isOK: !!fieldGroups,
-    isPending: isValidating,
-    ...getErrorResponse(SWRData),
+    ...rest,
   }
 }

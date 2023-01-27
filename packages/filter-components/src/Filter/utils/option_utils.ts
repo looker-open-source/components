@@ -44,16 +44,16 @@ export const createOptions = (values?: string | string[]) => {
  * If the enumeration value remains escaped the unescaped value will not match
  * and a new option will be added to the option list.
  *
- * https://docs.looker.com/reference/filter-expressions
+ * https://cloud.google.com/looker/docs/reference/filter-expressions
  *
  * @param e Enumeration option
  */
-export const createEnumeration = (isParameter = false) => (
-  e: Option
-): Option => ({
-  label: e.label,
-  value: isParameter ? unescapeParameterValue(e.value) : String(e.value),
-})
+export const createEnumeration =
+  (isParameter = false) =>
+  (e: Option): Option => ({
+    label: e.label,
+    value: isParameter ? unescapeParameterValue(e.value) : String(e.value),
+  })
 
 /**
  * Unescape parameter values to match the escape done in

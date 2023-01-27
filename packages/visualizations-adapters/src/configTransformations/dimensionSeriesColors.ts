@@ -47,7 +47,7 @@ export const dimensionSeriesColors: ConfigHelper<CommonCartesianProperties> = ({
   const {
     series_colors,
     series = {},
-    custom_color,
+    custom_color: _custom_color,
     default_series_colors,
     ...restConfig
   } = config

@@ -1,4 +1,4 @@
-import type { FC } from 'react';
+/// <reference types="react" />
 export interface PaginationProps {
     className?: string;
     current: number;
@@ -11,4 +11,4 @@ export interface PaginationProps {
      */
     alwaysVisible?: boolean;
 }
-export declare const Pagination: import("styled-components").StyledComponent<FC<PaginationProps>, import("styled-components").DefaultTheme, {}, never>;
+export declare const Pagination: import("styled-components").StyledComponent<({ alwaysVisible, className, current, pages, onChange, }: PaginationProps) => JSX.Element | null, import("styled-components").DefaultTheme, {}, never>;

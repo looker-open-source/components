@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { ValidationMessageProps } from '@looker/components';
 import type { Option } from '../types/option';
 interface StringSelectProps<V extends string | string[]> {

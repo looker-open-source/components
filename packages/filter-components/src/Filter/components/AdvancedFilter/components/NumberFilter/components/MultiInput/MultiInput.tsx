@@ -28,7 +28,6 @@ import type { ValidationMessageProps } from '@looker/components'
 import { InputChips } from '@looker/components'
 import { getNumberFromString } from '@looker/filter-expressions'
 import type { ValueProps } from '@looker/filter-expressions'
-import type { FC } from 'react'
 import React, { useRef, useEffect, useState } from 'react'
 import {
   inputPlacementStyle,
@@ -53,14 +52,14 @@ const validate = (value: string) => {
   return value !== '' && !isNaN(Number(value))
 }
 
-export const MultiInputInternal: FC<MultiInputProps> = ({
+export const MultiInputInternal = ({
   className,
   item,
   onChange,
   width,
   placeholder,
   validationMessage,
-}) => {
+}: MultiInputProps) => {
   const ref = useRef<HTMLInputElement>(null)
   const values = item.value.map(String)
   const [inputValue, setInputValue] = useState('')

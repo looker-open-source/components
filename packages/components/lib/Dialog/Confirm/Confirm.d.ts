@@ -1,4 +1,8 @@
-import type { FC, ReactNode } from 'react';
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
+import type { ReactNode } from 'react';
 import type { ConfirmationProps } from './ConfirmationDialog';
 export interface ConfirmProps extends ConfirmationProps {
     /**
@@ -7,4 +11,4 @@ export interface ConfirmProps extends ConfirmationProps {
     children: (open: () => void) => ReactNode;
 }
 export declare function useConfirm(props: ConfirmationProps): [ReactNode, () => void];
-export declare const Confirm: FC<ConfirmProps>;
+export declare const Confirm: ({ children, ...props }: ConfirmProps) => JSX.Element;

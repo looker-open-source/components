@@ -1,4 +1,4 @@
-import type { FC } from 'react';
+/// <reference types="react" />
 export interface UseTabsProps {
     controlledIndex?: number;
     defaultIndex?: number;
@@ -19,4 +19,4 @@ export declare function useTabs(props?: UseTabsProps): {
 /**
  * @deprecated Use `Tabs2` and `Tab2` instead
  */
-export declare const Tabs: FC<TabsProps>;
+export declare const Tabs: ({ children, index: controlledIndex, defaultIndex, onChange, }: TabsProps) => JSX.Element;

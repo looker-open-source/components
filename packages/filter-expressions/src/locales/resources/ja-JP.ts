@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2022 Looker Data Sciences, Inc.
+ Copyright (c) 2023 Google LLC
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,8 @@
  SOFTWARE.
 
  */
-import type { I18nState } from '../../utils'
+
+import { mergeLocaleObjects } from '@looker/i18n'
 
 const resources = {
   describe_date: {
@@ -32,19 +33,19 @@ const resources = {
     ago: '前',
     'from now': '後',
     'is any time': 'の時間を問わずすべて',
-    'is before': 'が次の日以前',
+    'is before': 'が指定の日以前',
     'is day': 'が次である（{{day}}）',
     'is from dateTimeStart until dateTimeEnd':
       'が{{dateTimeStart}}から{{dateTimeEnd}}まで',
     'is in month year': 'が次である（{{year}}{{month}}）',
     'is in the last': 'が直近{{describeInterval}}以内である',
-    'is in the year year': 'が次の年である（{{year}}）',
+    'is in the year year': 'が指定の年である（{{year}}）',
     'is interval ago': 'が{{interval}}前である',
     'is intervalStart intervalType for intervalEnd':
       'が{{intervalEnd}}の{{intervalStart}}{{intervalType}}',
-    'is not null': 'がNullでない',
+    'is not null': 'が Null でない',
     'is on dateTime': 'が次である（{{dateTime}}）',
-    'is on or after': 'が次の日以降',
+    'is on or after': 'が指定の日以降',
     'is previous unitLabel': 'が前の{{unitLabel}}である',
     'is type unitLabel': 'が次である（{{type}}{{unitLabel}}）',
     next: '次',
@@ -66,15 +67,15 @@ const resources = {
     'coords1 to coords2': '{{coords1}}から{{coords2}}へ',
     'distance unit from lat, lon': '{{lat}}、{{lon}}から{{distance}}{{unit}}',
     'is anywhere': 'がいずれかの場所にある',
-    'is not null': 'がNullでない',
-    'is null': 'がNullである',
-    'lat degrees north': '北緯{{lat}}°',
-    'lat degrees south': '南緯{{lat}}°',
-    'lon degrees east': '東経{{lon}}°',
-    'lon degrees west': '西経{{lon}}°',
+    'is not null': 'が Null でない',
+    'is null': 'が Null である',
+    'lat degrees north': '北緯 {{lat}}°',
+    'lat degrees south': '南緯 {{lat}}°',
+    'lon degrees east': '東経 {{lon}}°',
+    'lon degrees west': '西経 {{lon}}°',
   },
   describe_number: {
-    'is in range range': 'が次の範囲内（{{range}}）',
+    'is in range range': 'が指定の範囲内（{{range}}）',
     'is not in range range': 'が次の範囲外（{{range}}）',
   },
   describe_string: {
@@ -93,18 +94,18 @@ const resources = {
     miles: 'マイル',
   },
   get_months: {
-    April: '4月',
-    August: '8月',
-    December: '12月',
-    February: '2月',
-    January: '1月',
-    July: '7月',
-    June: '6月',
-    March: '3月',
-    May: '5月',
-    November: '11月',
-    October: '10月',
-    September: '9月',
+    April: '4 月',
+    August: '8 月',
+    December: '12 月',
+    February: '2 月',
+    January: '1 月',
+    July: '7 月',
+    June: '6 月',
+    March: '3 月',
+    May: '5 月',
+    November: '11 月',
+    October: '10 月',
+    September: '9 月',
   },
   get_unit_label: {
     'complete day': '終了した日',
@@ -137,8 +138,8 @@ const resources = {
     hours: '時間',
     minute: '分',
     minutes: '分',
-    month: '月',
-    months: '月',
+    month: 'か月',
+    months: 'か月',
     quarter: '四半期',
     quarters: '四半期',
     second: '秒',
@@ -156,7 +157,4 @@ const resources = {
   },
 }
 
-export const jaJP: I18nState = {
-  locale: 'ja-JP',
-  resources: { 'ja-JP': resources },
-}
+export const jaJP = mergeLocaleObjects([], 'ja-JP', resources)

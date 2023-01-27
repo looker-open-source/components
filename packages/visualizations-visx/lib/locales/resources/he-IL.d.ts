@@ -1,2 +1,5 @@
-import type { I18nState } from '../../utils';
-export declare const heIL: I18nState;
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
+export declare const heIL: import("@looker/i18n").I18nStateWithDates;

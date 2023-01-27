@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2022 Looker Data Sciences, Inc.
+ Copyright (c) 2023 Google LLC
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -23,8 +23,10 @@
  SOFTWARE.
 
  */
+
 import dateLocale from 'date-fns/locale/he'
-import type { I18nStateWithDates } from '@looker/i18n'
+
+import { mergeLocaleObjects } from '@looker/i18n'
 
 const resources = {
   AdvancedInputControls: {
@@ -77,7 +79,7 @@ const resources = {
     Options: 'אפשרויות',
   },
   FieldTimeSelect: {
-    'Please enter a valid time': 'הזן זמן חוקי',
+    'Please use format HHMM': 'יש להשתמש בתבנית HH:MM',
   },
   GetIntentLabel: {
     Error: 'שגיאה',
@@ -133,7 +135,9 @@ const resources = {
     Save: 'שמור',
   },
   RangeSlider: {
+    'Maximum Name': 'לכל היותר {{name}}',
     'Maximum Value': 'ערך מקסימום',
+    'Minimum Name': 'לכל הפחות {{name}}',
     'Minimum Value': 'ערך מינימום',
   },
   RequiredStar: {
@@ -148,8 +152,4 @@ const resources = {
   },
 }
 
-export const heIL: I18nStateWithDates = {
-  dateLocale,
-  locale: 'he-IL',
-  resources: { 'he-IL': resources },
-}
+export const heIL = mergeLocaleObjects([], 'he-IL', resources, dateLocale)

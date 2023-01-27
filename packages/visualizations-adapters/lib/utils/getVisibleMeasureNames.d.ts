@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { CCartesian, Fields } from '../types';
 /**
  * This function extracts measure names of visible measures from the fields object.

@@ -49,7 +49,7 @@ const getIsInSelectList = (
   }
   if (portalRoot.contains(inputArea)) {
     return (
-      ((nextFocusTarget as unknown) as Element)?.closest('portal-child') !==
+      (nextFocusTarget as unknown as Element)?.closest('portal-child') !==
       inputArea.closest('portal-child')
     )
   }

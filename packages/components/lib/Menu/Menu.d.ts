@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { Ref, ReactElement } from 'react';
 import React from 'react';
 import type { ListProps } from '../List';

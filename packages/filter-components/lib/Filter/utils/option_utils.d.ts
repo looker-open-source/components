@@ -7,7 +7,7 @@ export declare const createOptions: (values?: string | string[] | undefined) => 
  * If the enumeration value remains escaped the unescaped value will not match
  * and a new option will be added to the option list.
  *
- * https://docs.looker.com/reference/filter-expressions
+ * https://cloud.google.com/looker/docs/reference/filter-expressions
  *
  * @param e Enumeration option
  */

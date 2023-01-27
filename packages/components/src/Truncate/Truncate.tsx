@@ -23,8 +23,8 @@
  SOFTWARE.
 
  */
-import type { FC } from 'react'
-import React, { useState, useCallback } from 'react'
+import type { ReactNode } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import type {
   TextColorProps,
@@ -37,8 +37,8 @@ import {
   width as widthHelper,
 } from '@looker/design-tokens'
 import { Span } from '../Text/Span'
-import { useTooltip } from '../Tooltip'
-import { mergeClassNames, useIsTruncated } from '../utils'
+import { mergeClassNames } from '../utils'
+import { useTruncateTooltip } from './useTruncateTooltip'
 
 export type TruncateProps = TextColorProps &
   TypographyProps &
@@ -49,6 +49,7 @@ export type TruncateProps = TextColorProps &
      * Text specified in `description` property will be displayed below `children` supplied
      */
     description?: string
+    children?: ReactNode
   }
 
 export type TruncateConfigProp =
@@ -63,11 +64,12 @@ const getTruncateDescription = (truncate: TruncateConfigProp) =>
  * If `truncate` is truthy will output a `Truncate` component.
  * If `truncate` is falsy returns a `Span`
  */
-export const TruncateOptionally: FC<
-  TruncateProps & {
-    truncate?: TruncateConfigProp
-  }
-> = ({ truncate, ...props }) =>
+export const TruncateOptionally = ({
+  truncate,
+  ...props
+}: TruncateProps & {
+  truncate?: TruncateConfigProp
+}) =>
   truncate ? (
     <Truncate description={getTruncateDescription(truncate)} {...props} />
   ) : (
@@ -78,41 +80,14 @@ export const TruncateOptionally: FC<
  * Prevent text wrapping on long labels and instead render truncated text.
  * Renders a tooltip to view the entire text content on hover.
  **/
-const TruncateLayout: FC<TruncateProps> = ({
+const TruncateLayout = ({
   children,
   className: propsClassName,
   description,
-}) => {
-  const [domNode, setDomNode] = useState<HTMLDivElement | null>(null)
-
-  const isTruncated = useIsTruncated(domNode)
-
-  const textRef = useCallback((node: HTMLDivElement) => {
-    setDomNode(node)
-  }, [])
-
-  /*
-   * only render tooltip if text actually overflows
-   */
-
-  const { tooltip, domProps } = useTooltip({
-    content: (
-      <>
-        {children}
-        {description && (
-          <>
-            <br />
-            <Span color="text2">{description}</Span>
-          </>
-        )}
-      </>
-    ),
-    disabled: !description && !isTruncated,
-    invert: false,
-    placement: 'top-start',
-    textAlign: 'left',
-    triggerElement: domNode,
-    width: 'auto',
+}: TruncateProps) => {
+  const { tooltip, domProps } = useTruncateTooltip({
+    children,
+    description,
   })
 
   return (
@@ -121,7 +96,6 @@ const TruncateLayout: FC<TruncateProps> = ({
       <span
         {...domProps}
         className={mergeClassNames([domProps.className, propsClassName])}
-        ref={textRef}
       >
         {children}
       </span>

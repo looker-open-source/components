@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { ColorProps, TypographyProps, SemanticBorderProps } from '@looker/design-tokens';
 import type { SimpleLayoutProps } from './simple';
 export declare type CommonLayoutProps = ColorProps & SimpleLayoutProps & SemanticBorderProps & TypographyProps & {

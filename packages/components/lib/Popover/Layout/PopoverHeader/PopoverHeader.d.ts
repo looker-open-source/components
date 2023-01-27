@@ -1,4 +1,8 @@
-import type { FC, ReactNode } from 'react';
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
+import type { ReactNode } from 'react';
 import type { ModalHeaderProps } from '../../../Modal';
 declare type WithDetail = {
     detail?: ModalHeaderProps['detail'];
@@ -21,7 +25,7 @@ export declare type PopoverHeaderProps = DetailOptions & {
      */
     hidden?: boolean;
 };
-export declare const PopoverHeader: import("styled-components").StyledComponent<FC<PopoverHeaderProps>, import("styled-components").DefaultTheme, import("packages/design-tokens/src").CompatibleHTMLProps<HTMLDivElement> & import("../../..").SpaceHelperProps & import("packages/design-tokens/src").FontSizeProps & import("packages/design-tokens/src").FontWeightProps & {
+export declare const PopoverHeader: import("styled-components").StyledComponent<({ children, hideClose, detail, hidden, ...props }: PopoverHeaderProps) => JSX.Element, import("styled-components").DefaultTheme, import("packages/design-tokens/src").CompatibleHTMLProps<HTMLDivElement> & import("../../..").SpaceHelperProps & import("packages/design-tokens/src").FontSizeProps & import("packages/design-tokens/src").FontWeightProps & {
     children: ReactNode;
     detail?: ReactNode;
 }, never>;

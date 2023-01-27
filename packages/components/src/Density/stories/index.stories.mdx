@@ -1,0 +1,35 @@
+import { Density } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import storyBasic from '!!raw-loader!./Basic'
+import storyPositive1 from '!!raw-loader!./Positive1'
+import storyNegative1 from '!!raw-loader!./Negative1'
+import storyNegative2 from '!!raw-loader!./Negative2'
+import storyNegative3 from '!!raw-loader!./Negative3'
+import storyDensity1 from '!!raw-loader!./Density1'
+import storyDensityNegative1 from '!!raw-loader!./DensityNegative1'
+
+<Meta component={Density} title="Docs/Density" />
+
+# Density
+
+Adjusting a component’s density changes its overall height and space it takes up in a UI. The higher the density, the smaller the height of the component.
+
+## Helpers
+
+Looker Compnents ships a small collection of density "helpers". The `Density` component takes a `scale` value to specify which key of the density scale to apply to children.
+
+<Editor code={storyBasic} />
+<Editor code={storyPositive1} />
+<Editor code={storyNegative1} />
+<Editor code={storyNegative2} />
+<Editor code={storyNegative3} />
+
+Also included are a set of helpers for each specific density size: `Density1`, `Density0`, `DensityNegative1`, `DensityNegative2`, `DensityNegative3`
+
+<Editor code={storyDensity1} />
+<Editor code={storyDensityNegative1} />
+
+## Props
+
+<ArgsTable of={Density} exclude={excludedProps} />

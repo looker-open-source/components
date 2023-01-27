@@ -1,0 +1,31 @@
+import { InlineTextArea } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import basicStory from '!!raw-loader!./Basic'
+import underlineStory from '!!raw-loader!./Underline'
+import disabledStory from '!!raw-loader!./Disabled'
+import readOnlyStory from '!!raw-loader!./ReadOnly'
+
+<Meta component={InlineTextArea} title="Docs/InlineTextArea" />
+
+# InlineTextArea
+
+Input styled to have underline follow the input and with word wrapping.
+
+<Editor code={basicStory} />
+
+## underlineOnlyOnHover
+
+You can override the default underline styling, causing it to render only on hover by setting the `underlineOnlyOnHover` prop.
+
+<Editor code={underlineStory} />
+
+## Disabled
+
+<Editor code={disabledStory} />
+
+## ReadOnly
+
+<Editor code={readOnlyStory} />
+
+<ArgsTable of={InlineTextArea} exclude={excludedProps} />

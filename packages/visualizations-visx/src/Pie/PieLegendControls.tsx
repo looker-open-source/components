@@ -24,7 +24,6 @@
 
  */
 
-import type { FC } from 'react'
 import React from 'react'
 import {
   KeyboardArrowUp,
@@ -47,7 +46,7 @@ type PieLegendControlsProps = {
   handlePrevClick: () => void
 }
 
-export const PieLegendControls: FC<PieLegendControlsProps> = ({
+export const PieLegendControls = ({
   orientation,
   contentRect,
   containerRect,
@@ -55,63 +54,65 @@ export const PieLegendControls: FC<PieLegendControlsProps> = ({
   totalPages,
   handleNextClick,
   handlePrevClick,
-}) => {
+}: PieLegendControlsProps) => {
   const { t } = useTranslation('PieLegendControls')
   return (
     <>
       {/* Vertical layout */}
-      {contentRect.height > containerRect.height && orientation === 'vertical' && (
-        <LegendControls orientation={orientation}>
-          <CondensedIconButton
-            shape="square"
-            p="small"
-            icon={<KeyboardArrowUp />}
-            onClick={handlePrevClick}
-            disabled={page === 0}
-            size="large"
-            label={t('Previous page')}
-          />
-          <span>
-            {page + 1}/{totalPages + 1}
-          </span>
-          <CondensedIconButton
-            shape="square"
-            icon={<KeyboardArrowDown />}
-            onClick={handleNextClick}
-            disabled={page === totalPages}
-            p="small"
-            size="large"
-            label={t('Next page')}
-          />
-        </LegendControls>
-      )}
+      {contentRect.height > containerRect.height &&
+        orientation === 'vertical' && (
+          <LegendControls orientation={orientation}>
+            <CondensedIconButton
+              shape="square"
+              p="small"
+              icon={<KeyboardArrowUp />}
+              onClick={handlePrevClick}
+              disabled={page === 0}
+              size="large"
+              label={t('Previous page')}
+            />
+            <span>
+              {page + 1}/{totalPages + 1}
+            </span>
+            <CondensedIconButton
+              shape="square"
+              icon={<KeyboardArrowDown />}
+              onClick={handleNextClick}
+              disabled={page === totalPages}
+              p="small"
+              size="large"
+              label={t('Next page')}
+            />
+          </LegendControls>
+        )}
 
       {/* Horizontal layout */}
-      {contentRect.width > containerRect.width && orientation === 'horizontal' && (
-        <LegendControls orientation={orientation}>
-          <CondensedIconButton
-            shape="square"
-            p="small"
-            icon={<KeyboardArrowRight />}
-            onClick={handleNextClick}
-            disabled={page === totalPages}
-            size="large"
-            label={t('Next page')}
-          />
-          <span>
-            {page + 1}/{totalPages + 1}
-          </span>
-          <CondensedIconButton
-            shape="square"
-            icon={<KeyboardArrowLeft />}
-            onClick={handlePrevClick}
-            disabled={page === 0}
-            p="small"
-            size="large"
-            label={t('Previous page')}
-          />
-        </LegendControls>
-      )}
+      {contentRect.width > containerRect.width &&
+        orientation === 'horizontal' && (
+          <LegendControls orientation={orientation}>
+            <CondensedIconButton
+              shape="square"
+              p="small"
+              icon={<KeyboardArrowRight />}
+              onClick={handleNextClick}
+              disabled={page === totalPages}
+              size="large"
+              label={t('Next page')}
+            />
+            <span>
+              {page + 1}/{totalPages + 1}
+            </span>
+            <CondensedIconButton
+              shape="square"
+              icon={<KeyboardArrowLeft />}
+              onClick={handlePrevClick}
+              disabled={page === 0}
+              p="small"
+              size="large"
+              label={t('Previous page')}
+            />
+          </LegendControls>
+        )}
     </>
   )
 }

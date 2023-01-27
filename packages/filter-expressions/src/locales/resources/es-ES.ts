@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2022 Looker Data Sciences, Inc.
+ Copyright (c) 2023 Google LLC
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,8 @@
  SOFTWARE.
 
  */
-import type { I18nState } from '../../utils'
+
+import { mergeLocaleObjects } from '@looker/i18n'
 
 const resources = {
   describe_date: {
@@ -37,9 +38,9 @@ const resources = {
     'is from dateTimeStart until dateTimeEnd':
       'es de {{dateTimeStart}} a {{dateTimeEnd}}',
     'is in month year': 'es en {{month}} de {{year}}',
-    'is in the last': 'es en {{describeInterval}} anterior',
+    'is in the last': 'es en el {{describeInterval}} pasado',
     'is in the year year': 'es en el año {{year}}',
-    'is interval ago': 'es en {{interval}} antes',
+    'is interval ago': 'es hace {{interval}}',
     'is intervalStart intervalType for intervalEnd':
       'es en {{intervalType}} de {{intervalStart}} a {{intervalEnd}}',
     'is not null': 'no es nulo',
@@ -63,7 +64,7 @@ const resources = {
     'is value': 'es {{value}}',
   },
   describe_location: {
-    'coords1 to coords2': '{{coords1}} a {{coords2}}',
+    'coords1 to coords2': 'De {{coords1}} a {{coords2}}',
     'distance unit from lat, lon':
       '{{distance}} {{unit}} desde {{lat}}, {{lon}}',
     'is anywhere': 'está en cualquier lugar',
@@ -157,7 +158,4 @@ const resources = {
   },
 }
 
-export const esES: I18nState = {
-  locale: 'es-ES',
-  resources: { 'es-ES': resources },
-}
+export const esES = mergeLocaleObjects([], 'es-ES', resources)

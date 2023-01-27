@@ -1,3 +1,3 @@
-import type { FC } from 'react';
+/// <reference types="react" />
 import type { SliderProps } from './types';
-export declare const Slider: FC<SliderProps>;
+export declare const Slider: ({ onChange, value, options }: SliderProps) => JSX.Element;

@@ -24,11 +24,10 @@
 
  */
 
-import type { FC } from 'react'
 import React, { useState, useEffect } from 'react'
-import { useFieldGroups, useSDK } from '@looker/components-data'
+import { useSDK } from '@looker/components-data'
 import { ButtonOutline, Popover, Space } from '@looker/components'
-import type { FilterChangeProps } from '@looker/filter-components'
+import type { FilterChangeProps, TreeModel } from '@looker/filter-components'
 import {
   Filter,
   getExpressionTypeFromField,
@@ -41,7 +40,7 @@ type FilterEntryProps = {
   onUpdateFilter: (name: string, expression: string) => void
   filterField?: ILookmlModelExploreField
   filterExpression?: string
-  queryId: number
+  tree: TreeModel[]
 }
 
 // The label for the button to select a field for filtering
@@ -52,19 +51,17 @@ const getSelectFilterLabel = (field: ILookmlModelExploreField | undefined) => {
   return 'Select a field'
 }
 
-export const FilterEntry: FC<FilterEntryProps> = ({
+export const FilterEntry = ({
   onUpdateFilter,
-  queryId,
+  tree,
   filterField: filterFieldProp,
   filterExpression: filterExpressionProp = '',
-}) => {
+}: FilterEntryProps) => {
   const sdk = useSDK()
   const [filterField, setFilterField] = useState<
     ILookmlModelExploreField | undefined
   >(filterFieldProp)
   const [filterExpression, setFilterExpression] = useState(filterExpressionProp)
-
-  const { fieldGroups } = useFieldGroups(queryId)
 
   const handleFilterChange = ({ expression }: FilterChangeProps) => {
     if (setFilterExpression) {
@@ -79,7 +76,7 @@ export const FilterEntry: FC<FilterEntryProps> = ({
   }, [filterField, filterExpression, onUpdateFilter])
 
   const { suggestableProps } = useSuggestable({
-    filter: { field: filterField },
+    filter: { field: filterField, model: filterField?.project_name },
     sdk,
   })
 
@@ -89,7 +86,7 @@ export const FilterEntry: FC<FilterEntryProps> = ({
         placement="bottom-start"
         content={
           <FieldSelector
-            groups={fieldGroups}
+            tree={tree}
             current={filterField}
             onChange={setFilterField}
           />

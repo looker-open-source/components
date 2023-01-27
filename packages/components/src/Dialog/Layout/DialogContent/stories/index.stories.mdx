@@ -1,0 +1,21 @@
+import { DialogContent } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import storyBasic from '!!raw-loader!./Basic'
+import storyOverflow from '!!raw-loader!./Overflow'
+
+<Meta component={DialogContent} title="Docs/DialogContent" />
+
+# DialogContent
+
+Using the `DialogContent` component quickly gives your content consistent spacing inside a dialog component. It also manages overflow if the content is taller than the viewport.
+
+NOTE: When possible, use `DialogLayout` instead of using `DialogContent` directly.
+
+<Editor code={storyBasic} />
+
+If content overflows the component's height an visual indicator of content that extends beyond the visible edges is added (border on top and shadow on the bottom).
+
+<Editor code={storyOverflow} />
+
+<ArgsTable of={DialogContent} exclude={excludedProps} />

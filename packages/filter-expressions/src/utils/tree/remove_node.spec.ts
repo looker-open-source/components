@@ -40,8 +40,8 @@ describe('Remove node', () => {
 
     const ast = removeNode(root, 'n0')
 
-    expect(ast!.value).toEqual(15)
-    expect(treeToList(ast!)).toHaveLength(1)
+    expect(ast?.value).toEqual(15)
+    expect(ast && treeToList(ast)).toHaveLength(1)
   })
 
   it('Three tree node reduces to one when removing right leaf', () => {
@@ -51,8 +51,8 @@ describe('Remove node', () => {
 
     const ast = removeNode(root, 'n1')
 
-    expect(ast!.value).toEqual(10)
-    expect(treeToList(ast!)).toHaveLength(1)
+    expect(ast?.value).toEqual(10)
+    expect(ast && treeToList(ast)).toHaveLength(1)
   })
 
   it('Five tree node reduces to 3 when removing right leaf', () => {
@@ -64,7 +64,7 @@ describe('Remove node', () => {
 
     const ast = removeNode(root, 'm1')
 
-    expect(treeToList(ast!)).toHaveLength(3)
+    expect(ast && treeToList(ast)).toHaveLength(3)
   })
 
   it('Five tree node reduces to 3 when removing left leaf', () => {
@@ -76,7 +76,7 @@ describe('Remove node', () => {
 
     const ast = removeNode(root, 'm0')
 
-    expect(treeToList(ast!)).toHaveLength(3)
+    expect(ast && treeToList(ast)).toHaveLength(3)
   })
 
   it('Seven tree node reduces to 5 when removing left leaf', () => {
@@ -90,7 +90,7 @@ describe('Remove node', () => {
 
     const ast = removeNode(root, 'x0')
 
-    expect(treeToList(ast!)).toHaveLength(5)
+    expect(ast && treeToList(ast)).toHaveLength(5)
   })
 
   it('Tree stays same size if we cant find node', () => {
@@ -104,6 +104,6 @@ describe('Remove node', () => {
 
     const ast = removeNode(root, 'cantfindme')
 
-    expect(treeToList(ast!)).toHaveLength(7)
+    expect(ast && treeToList(ast)).toHaveLength(7)
   })
 })

@@ -1,8 +1,11 @@
 {
   "name": "@looker/components-providers",
   "license": "MIT",
-  "version": "1.5.28",
-  "main": "src/index.ts",
+  "version": "1.5.30",
+  "main": "lib/main/index.js",
+  "module": "lib/module/index.js",
+  "types": "lib/index.d.ts",
+  "src": "src/index.ts",
   "sideEffects": false,
   "publishConfig": {
     "access": "public",
@@ -21,8 +24,8 @@
     "prepublishOnly": "lk prepublishOnly"
   },
   "dependencies": {
-    "@looker/design-tokens": "3.0.5",
-    "@looker/i18n": "0.1.8",
+    "@looker/design-tokens": "3.1.0",
+    "@looker/i18n": "1.0.0",
     "i18next": "20.3.1",
     "react-helmet-async": "^1.0.9",
     "react-i18next": "11.8.15",
@@ -34,8 +37,10 @@
     "@looker/components-scripts": "*",
     "@looker/eslint-config-oss": "*",
     "@looker/jest-config": "*",
+    "@looker/prettier-config": "*",
     "@testing-library/react": "*",
     "lodash": "^4.17.20",
+    "prettier": "2.8.2",
     "react": "16.14.0",
     "styled-components": "5.3.1"
   },

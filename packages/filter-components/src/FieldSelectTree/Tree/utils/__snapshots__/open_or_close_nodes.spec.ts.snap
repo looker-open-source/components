@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`openOrCloseNodes tests should match the snapshot 1`] = `
+Array [
+  Object {
+    "children": Array [
+      Object {
+        "children": Array [
+          Object {
+            "id": ".Root1_0.some section_0.a leaf node_0",
+            "isOpen": false,
+            "payload": Object {
+              "data": "some data",
+            },
+            "value": "a leaf node",
+          },
+          Object {
+            "id": ".Root1_0.some section_0.another leaf node_1",
+            "isOpen": false,
+            "payload": Object {
+              "data": "more data",
+            },
+            "value": "another leaf node",
+          },
+        ],
+        "id": ".Root1_0.some section_0",
+        "isOpen": false,
+        "value": "some section",
+      },
+      Object {
+        "children": Array [
+          Object {
+            "id": ".Root1_0.anotha one_1.child of anotha one_0",
+            "isOpen": false,
+            "payload": Object {
+              "data": "hello",
+            },
+            "value": "child of anotha one",
+          },
+        ],
+        "id": ".Root1_0.anotha one_1",
+        "isOpen": false,
+        "value": "anotha one",
+      },
+    ],
+    "id": ".Root1_0",
+    "isOpen": false,
+    "value": "Root1",
+  },
+  Object {
+    "children": Array [
+      Object {
+        "children": Array [
+          Object {
+            "id": ".Root2_1.some section2_0.a leaf node2_0",
+            "isOpen": false,
+            "payload": Object {
+              "data": "some data",
+            },
+            "value": "a leaf node2",
+          },
+          Object {
+            "id": ".Root2_1.some section2_0.another leaf node2_1",
+            "isOpen": false,
+            "payload": Object {
+              "data": "more data2",
+            },
+            "value": "another leaf node2",
+          },
+        ],
+        "id": ".Root2_1.some section2_0",
+        "isOpen": false,
+        "value": "some section2",
+      },
+      Object {
+        "children": Array [
+          Object {
+            "id": ".Root2_1.anotha one2_1.child of anotha one_0",
+            "isOpen": false,
+            "payload": Object {
+              "data": "hello",
+            },
+            "value": "child of anotha one",
+          },
+        ],
+        "id": ".Root2_1.anotha one2_1",
+        "isOpen": false,
+        "value": "anotha one2",
+      },
+    ],
+    "id": ".Root2_1",
+    "isOpen": false,
+    "value": "Root2",
+  },
+]
+`;

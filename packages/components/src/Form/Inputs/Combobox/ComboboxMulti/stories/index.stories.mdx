@@ -1,0 +1,47 @@
+import { ComboboxMulti } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import basicStory from '!!raw-loader!./Basic'
+import controlledStory from '!!raw-loader!./Controlled'
+import controlledInputValueStory from '!!raw-loader!./ControlledInputValue'
+import customIndicatorStory from '!!raw-loader!./CustomIndicator'
+import noIndicatorStory from '!!raw-loader!./NoIndicator'
+import listLayout from '!!raw-loader!./ListLayout'
+
+<Meta component={ComboboxMulti} title="Docs/ComboboxMulti" />
+
+# ComboboxMulti
+
+For the vast majority of use cases, you should be using the [Select input](?path=/docs/docs-select--docs) instead of rendering ComboboxMulti directly. ComboboxMulti is the lower-level abstraction used for rendering Select.
+
+<Editor code={basicStory} />
+
+## Controlled Component
+
+<Editor code={controlledStory} />
+
+## Controlled Input Value
+
+<Editor code={controlledInputValueStory} />
+
+## Customizing the indicator
+
+Open the select menu to see the custom indicator appear on hover.
+
+<Editor code={customIndicatorStory} />
+
+## Hiding the indicator
+
+You can disable the option indicator entirely by setting `indicator={false}` on the ComboboxMultiList component.
+
+<Editor code={noIndicatorStory} />
+
+## Customizing the list width
+
+You can set either `width`, `min-width`, or `max-width` on the ComboboxList to customize how much space the combox will take up when the list overlay is open.
+
+<Editor code={listLayout} />
+
+## Props
+
+<ArgsTable of={ComboboxMulti} exclude={excludedProps} />

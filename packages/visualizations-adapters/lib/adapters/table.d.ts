@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { VisWrapperProps } from '../VisWrapper';
 import type { Fields, SDKRecord, CSeriesBasic, SupportedChartTypes, ChartLayoutProps, Pivots } from '../types';
 export declare type CTableSeries = {

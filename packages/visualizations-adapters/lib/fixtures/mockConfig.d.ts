@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { CBar, CLine, CPie, CScatter, CTable } from '../adapters';
 export declare const mockBarConfig: CBar;
 export declare const mockPieConfig: CPie;

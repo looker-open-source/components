@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2022 Looker Data Sciences, Inc.
+ Copyright (c) 2023 Google LLC
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,8 @@
  SOFTWARE.
 
  */
-import type { I18nState } from '../../utils'
+
+import { mergeLocaleObjects } from '@looker/i18n'
 
 const resources = {
   describe_date: {
@@ -31,20 +32,20 @@ const resources = {
     'absolute prefix dateTime': '{{prefix}} {{dateTime}}',
     ago: 'geleden',
     'from now': 'vanaf nu',
-    'is any time': 'is elk tijdstip',
-    'is before': 'is voor',
+    'is any time': 'alles',
+    'is before': 'vóór datum',
     'is day': 'is {{day}}',
     'is from dateTimeStart until dateTimeEnd':
-      'is van {{dateTimeStart}} tot {{dateTimeEnd}}',
+      'van {{dateTimeStart}} tot {{dateTimeEnd}}',
     'is in month year': 'is in {{month}} {{year}}',
-    'is in the last': 'is in de laatste {{describeInterval}}',
-    'is in the year year': 'is in het jaar {{year}}',
+    'is in the last': 'is in de afgelopen {{describeInterval}}',
+    'is in the year year': 'specifiek jaar {{year}}',
     'is interval ago': 'is {{interval}} geleden',
     'is intervalStart intervalType for intervalEnd':
       'is {{intervalStart}} {{intervalType}} voor {{intervalEnd}}',
-    'is not null': 'is geldig',
+    'is not null': 'geldige datums',
     'is on dateTime': 'is op/om {{dateTime}}',
-    'is on or after': 'is op of na',
+    'is on or after': 'op of na datum',
     'is previous unitLabel': 'is een {{unitLabel}} eerder',
     'is type unitLabel': 'is {{type}} {{unitLabel}}',
     next: 'volgende',
@@ -65,17 +66,17 @@ const resources = {
   describe_location: {
     'coords1 to coords2': '{{coords1}} tot {{coords2}}',
     'distance unit from lat, lon': '{{distance}} {{unit}} van {{lat}}, {{lon}}',
-    'is anywhere': 'is overal',
-    'is not null': 'is geldig',
-    'is null': 'is ongeldig',
+    'is anywhere': 'overal',
+    'is not null': 'geldige datums',
+    'is null': 'ongeldige datums',
     'lat degrees north': '{{lat}}°N',
     'lat degrees south': '{{lat}}°Z',
     'lon degrees east': '{{lon}}°O',
     'lon degrees west': '{{lon}}°W',
   },
   describe_number: {
-    'is in range range': 'ligt in het bereik {{range}}',
-    'is not in range range': 'ligt niet in het bereik {{range}}',
+    'is in range range': 'datumbereik (van/tot) {{range}}',
+    'is not in range range': 'buiten datumbereik (van/tot) {{range}}',
   },
   describe_string: {
     blank: 'leeg',
@@ -93,18 +94,18 @@ const resources = {
     miles: 'mijl',
   },
   get_months: {
-    April: 'April',
-    August: 'Augustus',
-    December: 'December',
-    February: 'Februari',
-    January: 'Januari',
-    July: 'Juli',
-    June: 'Juni',
-    March: 'Maart',
-    May: 'Mei',
-    November: 'November',
-    October: 'Oktober',
-    September: 'September',
+    April: 'april',
+    August: 'augustus',
+    December: 'december',
+    February: 'februari',
+    January: 'januari',
+    July: 'juli',
+    June: 'juni',
+    March: 'maart',
+    May: 'mei',
+    November: 'november',
+    October: 'oktober',
+    September: 'september',
   },
   get_unit_label: {
     'complete day': 'hele dag',
@@ -156,7 +157,4 @@ const resources = {
   },
 }
 
-export const nlNL: I18nState = {
-  locale: 'nl-NL',
-  resources: { 'nl-NL': resources },
-}
+export const nlNL = mergeLocaleObjects([], 'nl-NL', resources)

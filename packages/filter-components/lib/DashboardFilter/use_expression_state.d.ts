@@ -3,7 +3,7 @@ import type { FilterChangeProps } from '../Filter/types/filter_props';
 export interface UseExpressionStateProps {
     /**
      * The current value of the filter.
-     * See {@link https://docs.looker.com/reference/filter-expressions Looker Filter Expressions}.
+     * See {@link https://cloud.google.com/looker/docs/reference/filter-expressions Looker Filter Expressions}.
      */
     expression?: string;
     /**

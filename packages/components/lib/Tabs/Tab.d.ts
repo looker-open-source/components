@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 /// <reference types="react" />
 import type { Tab2Props } from '../Tabs2/types';
 export interface TabProps extends Omit<Tab2Props, 'label'> {

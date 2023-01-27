@@ -1,0 +1,32 @@
+import { NavTree } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import storyBasic from '!!raw-loader!./Basic'
+import storyLink from '!!raw-loader!./Link'
+import storyParentIcon from '!!raw-loader!./ParentIcon'
+
+<Meta component={NavTree} title="Docs/NavTree" />
+
+# NavTree
+
+<Editor code={storyBasic} />
+
+`NavTree`, along with its companion component `NavTreeItem`, renders a collapsible list of items. However, unlike standard `ul` and `li` elements, `NavTree` and `NavTreeItem` come prebuilt with a number of props to simplify item style and behavior customization.
+
+<Editor code={storyBasic} />
+
+## As Links
+
+A `NavTree` component will behave as a link by providing  `href` and `target` props.
+
+<Editor code={storyLink} />
+
+## Nested
+
+A `NavTree` component can also be nested within  another `NavTree`. 
+
+<Editor code={storyParentIcon} />
+
+## Props
+
+<ArgsTable of={NavTree} exclude={excludedProps} />

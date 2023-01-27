@@ -1,0 +1,96 @@
+import { FieldText } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import basicStory from '!!raw-loader!./Basic'
+import inlineStory from '!!raw-loader!./Inline'
+import requiredStory from '!!raw-loader!./Required'
+import validationMessageStory from '!!raw-loader!./ValidationMessage'
+import afterStory from '!!raw-loader!./After'
+import afterIconStory from '!!raw-loader!./AfterIcon'
+import autoResizeStory from '!!raw-loader!./AutoResize'
+import beforeStory from '!!raw-loader!./Before'
+import beforeAfterValidationStory from '!!raw-loader!./BeforeAfterValidation'
+import beforeIconStory from '!!raw-loader!./BeforeIcon'
+import descriptionStory from '!!raw-loader!./Description'
+import detailStory from '!!raw-loader!./Detail'
+import disabledStory from '!!raw-loader!./Disabled'
+import floatingLabelStory from '!!raw-loader!./FloatingLabel'
+import floatingLabelDefaultValueStory from '!!raw-loader!./FloatingLabelDefaultValue'
+import floatingLabelValidationStory from '!!raw-loader!./FloatingLabelValidation'
+import placeholderStory from '!!raw-loader!./Placeholder'
+
+<Meta component={FieldText} title="Docs/FieldText" />
+
+# FieldText
+
+The `<FieldText />` component is composed of an `<InputText />` component and a `<Label />` component. Using `<FieldText />` allows for rendering validation messages. By default, the label will render directly above the input field, which is the recommended convention, however this is adjustable with the `inline` property.
+
+<Editor code={basicStory} />
+
+## Inline
+
+<Editor code={inlineStory} />
+
+## Detail
+
+<Editor code={detailStory} />
+
+## Description
+
+<Editor code={descriptionStory} />
+
+## Disabled
+
+<Editor code={disabledStory} />
+
+## Placeholder
+
+<Editor code={placeholderStory} />
+
+## Before & After Text
+
+<Editor code={beforeStory} />
+
+<Editor code={afterStory} />
+
+## Before & After Icons
+
+<Editor code={beforeIconStory} />
+
+<Editor code={afterIconStory} />
+
+## AutoResize
+
+<Editor code={autoResizeStory} />
+
+## Required
+
+<Editor code={requiredStory} />
+
+## FieldText Validation
+
+The `<FieldText />` component accepts `validationMessage` as a property. This is an object with properties `type` and `message`.
+
+See `ValidationMessage` [here](https://github.com/looker-open-source/components/blob/main/packages/components/src/Form/ValidationMessage/ValidationMessage.tsx)
+
+If you have multiple fields in need of validation, it is recommended that you wrap them in a `<Form />` component and pass to it a dictionary with key as field name and value as a `ValidationMessage`.
+
+**_Note: In the current implementation, any `ValidationMessage` set in a `<FieldText />` component will be overridden by `ValidationMessages` set in the parent `<Form />` component. Because of this, it is highly recommended that you only ever directly set `ValidationMessage` if a `<FieldText />` is outside a `<Form />`._**
+
+<Editor code={validationMessageStory} />
+
+<Editor code={beforeAfterValidationStory} />
+
+## Floating Label
+
+As an alterative input UI, you can set `externalLabel: false` in the theme context to toggle to the floating label style.
+
+<Editor code={floatingLabelStory} />
+
+<Editor code={floatingLabelDefaultValueStory} />
+
+<Editor code={floatingLabelValidationStory} />
+
+## Props
+
+<ArgsTable of={FieldText} exclude={excludedProps} />

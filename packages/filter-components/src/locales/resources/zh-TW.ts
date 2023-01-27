@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2022 Looker Data Sciences, Inc.
+ Copyright (c) 2023 Google LLC
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -23,11 +23,11 @@
  SOFTWARE.
 
  */
-import merge from 'lodash/merge'
+
 import dateLocale from 'date-fns/locale/zh-TW'
-import type { I18nStateWithDates } from '../../utils'
-import { zhTW as expressionLocale } from '@looker/filter-expressions'
 import { zhTW as componentsLocale } from '@looker/components'
+import { zhTW as filterexpressionsLocale } from '@looker/filter-expressions'
+import { mergeLocaleObjects } from '@looker/i18n'
 
 const resources = {
   AddRemoveButtons: {
@@ -183,6 +183,11 @@ const resources = {
     Remove: '',
     Toggle: '',
   },
+  NoMatchingFields: {
+    'No Matching Fields': '無對應的欄位',
+    'Try Something Else':
+      '嘗試其他搜尋字詞，或重新開始並展開任何 Explore 以瀏覽可用欄位。',
+  },
   NumberFilter: {
     'any value': '任何值',
   },
@@ -244,15 +249,9 @@ const resources = {
   },
 }
 
-export const zhTW: I18nStateWithDates = {
-  dateLocale,
-  locale: 'zh-TW',
-  resources: {
-    'zh-TW': merge(
-      {},
-      resources,
-      expressionLocale.resources['zh-TW'],
-      componentsLocale.resources['zh-TW']
-    ),
-  },
-}
+export const zhTW = mergeLocaleObjects(
+  [componentsLocale, filterexpressionsLocale],
+  'zh-TW',
+  resources,
+  dateLocale
+)

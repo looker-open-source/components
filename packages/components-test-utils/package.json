@@ -2,7 +2,10 @@
   "name": "@looker/components-test-utils",
   "license": "MIT",
   "version": "1.5.27",
-  "main": "src/index.ts",
+  "main": "lib/main/index.js",
+  "module": "lib/module/index.js",
+  "types": "src/index.ts",
+  "src": "src/index.ts",
   "sideEffects": false,
   "publishConfig": {
     "access": "public",
@@ -21,8 +24,10 @@
     "@looker/components-providers": "*",
     "@looker/components-scripts": "*",
     "@looker/eslint-config-oss": "*",
+    "@looker/prettier-config": "*",
     "@testing-library/react": "*",
-    "jest-styled-components": "*",
+    "jest-styled-components": "7.1.1",
+    "prettier": "2.8.2",
     "react": "16.14.0",
     "styled-components": "5.3.1"
   },

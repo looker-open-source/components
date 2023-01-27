@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { SpaceHelperProps } from '../Space';
 export interface GridProps extends SpaceHelperProps {
     /**

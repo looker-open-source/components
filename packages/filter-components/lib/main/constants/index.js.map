@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","names":["ERROR_TYPE"],"sources":["../../../src/constants/index.ts"],"sourcesContent":["/**\n * Copyright (c) 2023 Google LLC\n * SPDX-License-Identifier: MIT\n */\nexport const ERROR_TYPE = 'error'\n"],"mappings":";;;;;;AAIO,IAAMA,UAAU,GAAG,OAAO;AAAA"}

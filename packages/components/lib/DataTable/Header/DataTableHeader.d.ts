@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
+/// <reference types="react" />
 import type { CompatibleHTMLProps } from '@looker/design-tokens';
-import type { FC } from 'react';
-export declare const DataTableHeader: FC<CompatibleHTMLProps<HTMLDivElement>>;
+export declare const DataTableHeader: ({ id, }: CompatibleHTMLProps<HTMLDivElement>) => JSX.Element;

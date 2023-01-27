@@ -7,6 +7,7 @@ export declare type MultiFunctionButtonProps = {
     alternateRef?: Ref<HTMLButtonElement>;
     children: ReactElement<(ButtonProps | IconButtonProps) & RefAttributes<HTMLButtonElement>>;
     swap?: boolean;
+    disabled?: boolean;
 };
 /**
  * MultiFunctionButton "swaps" the button shown generally with the "alternate"

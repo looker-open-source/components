@@ -1,0 +1,1 @@
+{"version":3,"file":"points.js","names":[],"sources":["../../../src/types/points.ts"],"sourcesContent":["/**\n * Copyright (c) 2023 Google LLC\n * SPDX-License-Identifier: MIT\n */\n\nexport type PointShapes =\n  | 'circle'\n  | 'diamond'\n  | 'square'\n  | 'triangle'\n  | 'triangle-down'\n\nexport type PointStyles = 'none' | 'filled' | 'outline'\n"],"mappings":""}

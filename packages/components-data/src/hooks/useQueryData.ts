@@ -84,13 +84,13 @@ export const useQueryData = (id: number, agentTag?: string) => {
 
   const fetcher = async () => {
     if (id > 0 && isEmpty(data)) {
-      return ((await sdk.run_query(
+      return (await sdk.run_query(
         {
           query_id: String(id),
           result_format: `json_detail`,
         },
         { agentTag }
-      )) as unknown) as Promise<RunQueryReturnType>
+      )) as unknown as Promise<RunQueryReturnType>
     }
 
     return undefined

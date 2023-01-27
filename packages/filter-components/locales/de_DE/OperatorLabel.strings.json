@@ -1,8 +1,8 @@
 {
   "AND": {
-    "value": "UND"
+    "value": "AND"
   },
   "OR": {
-    "value": "ODER"
+    "value": "OR"
   }
 }

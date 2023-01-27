@@ -26,7 +26,6 @@
 import type { ValidationMessageProps } from '@looker/components'
 import { InputText, InputSearch } from '@looker/components'
 import type { FilterModel } from '@looker/filter-expressions'
-import type { FC } from 'react'
 import isArray from 'lodash/isArray'
 import React, { useMemo } from 'react'
 import styled from 'styled-components'
@@ -54,7 +53,7 @@ interface StringInputProps extends PlacementProps {
   height?: string | number
 }
 
-export const StringInputLayout: FC<StringInputProps> = ({
+export const StringInputLayout = ({
   className,
   onChange,
   onInputChange,
@@ -66,7 +65,7 @@ export const StringInputLayout: FC<StringInputProps> = ({
   id,
   width = multiInputWidth,
   height,
-}) => {
+}: StringInputProps) => {
   // if suggestions exist, create Option[]
   const options = useMemo(() => {
     return suggestions ? createOptions(suggestions) : enumerations || []

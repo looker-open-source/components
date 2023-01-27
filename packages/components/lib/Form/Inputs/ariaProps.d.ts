@@ -1,4 +1,7 @@
-/// <reference types="lodash" />
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { AriaAttributes } from 'react';
 import type { ValidationType } from '../ValidationMessage';
 declare const ariaKeys: readonly ["aria-describedby", "aria-invalid", "aria-label", "aria-labelledby"];
@@ -14,5 +17,6 @@ export declare function pickAriaAndValidationProps({ required, validationType, .
     'aria-label'?: string | undefined;
     'aria-labelledby'?: string | undefined;
 };
-export declare function omitAriaAndValidationProps(props: AriaAndValidationProps): import("lodash").Omit<AriaAndValidationProps, "aria-describedby" | "aria-invalid" | "aria-label" | "aria-labelledby" | "required" | "validationType">;
+declare type NotAriaAndValidationProps<PropsType extends AriaAndValidationProps> = Omit<PropsType, typeof ariaKeys[number] | 'validationType' | 'required'>;
+export declare function omitAriaAndValidationProps<PropsType extends AriaAndValidationProps>(props: PropsType): NotAriaAndValidationProps<PropsType>;
 export {};

@@ -1,6 +1,6 @@
+/// <reference types="react" />
 import type { ValidationMessageProps } from '@looker/components';
 import type { ValueProps } from '@looker/filter-expressions';
-import type { FC } from 'react';
 interface MultiInputProps {
     onChange?: (...args: any) => void;
     inputValue?: string;
@@ -12,6 +12,6 @@ interface MultiInputProps {
     placeholder?: string;
     validationMessage?: ValidationMessageProps;
 }
-export declare const MultiInputInternal: FC<MultiInputProps>;
-export declare const MultiInput: import("styled-components").StyledComponent<FC<MultiInputProps>, import("styled-components").DefaultTheme, {}, never>;
+export declare const MultiInputInternal: ({ className, item, onChange, width, placeholder, validationMessage, }: MultiInputProps) => JSX.Element;
+export declare const MultiInput: import("styled-components").StyledComponent<({ className, item, onChange, width, placeholder, validationMessage, }: MultiInputProps) => JSX.Element, import("styled-components").DefaultTheme, {}, never>;
 export {};

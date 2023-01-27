@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import { SwapVert } from '@styled-icons/material';
 import type { TFunction } from 'react-i18next';
 import type { ColumnSort } from '@tanstack/table-core';

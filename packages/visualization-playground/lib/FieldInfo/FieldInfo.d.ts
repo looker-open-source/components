@@ -1,6 +1,6 @@
-import type { FC } from 'react';
+/// <reference types="react" />
 interface FieldInfoProps {
     content: string;
 }
-export declare const FieldInfo: FC<FieldInfoProps>;
+export declare const FieldInfo: ({ content }: FieldInfoProps) => JSX.Element;
 export {};

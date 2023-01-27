@@ -1,0 +1,39 @@
+import { Span } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import storyBasic from '!!raw-loader!./Basic'
+import storyXXXXLarge from '!!raw-loader!./XXXXLarge'
+import storyColor from '!!raw-loader!./Color'
+import storyTextTransform from '!!raw-loader!./TextTransform'
+import storyBold from '!!raw-loader!./Bold'
+
+<Meta component={Span} title="Docs/Span" />
+
+# Span
+
+By default the `<Span />` component will render text wrapped in a `<span>`, if you need another html element for semantic purposes you can use the `element` property.
+
+Note: `@looker/components` also exports a, now deprecated, `Text` component that is identical to `Span` except that it has a default `fontSize="medium"` rather than inheriting it's parent element's fontSize.
+
+<Editor code={storyBasic} />
+
+## Text Size
+
+If you need to adjust the font-size of the rendered text, you can use the `size` property and a value from the [type scale](/#!/Typography)
+
+<Editor code={storyXXXXLarge} />
+
+## Weight & Transform
+
+Common patterns for text is to adjust the font weight and transform the text. Below are examples of using the `weight` and `textTransform` properties to modify the rendered text
+
+<Editor code={storyTextTransform} />
+<Editor code={storyBold} />
+
+## Color
+
+`Span` supports a `color` prop that supports the full theme color object.
+
+<Editor code={storyColor} />
+
+<ArgsTable of={Span} exclude={excludedProps} />

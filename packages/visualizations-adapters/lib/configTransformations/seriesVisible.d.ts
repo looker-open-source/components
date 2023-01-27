@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { ConfigHelper, CommonCartesianProperties } from '../types';
 /**
  * Populate series visibility from hidden_series response.

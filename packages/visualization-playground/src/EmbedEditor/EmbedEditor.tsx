@@ -23,7 +23,7 @@
  SOFTWARE.
 
  */
-import type { FC, FormEvent, SetStateAction, Dispatch } from 'react'
+import type { FormEvent, SetStateAction, Dispatch } from 'react'
 import React from 'react'
 import {
   FieldText,
@@ -63,7 +63,7 @@ interface EmbedEditorProps {
 
 /** EmbedEditor is used to modify settings unrelated to vis config  */
 
-export const EmbedEditor: FC<EmbedEditorProps> = ({
+export const EmbedEditor = ({
   width,
   height,
   setWidth,
@@ -72,7 +72,7 @@ export const EmbedEditor: FC<EmbedEditorProps> = ({
   onConfigChange,
   query,
   dashboard,
-}) => {
+}: EmbedEditorProps) => {
   const handleWidthChange = (e: FormEvent) => {
     const value = (e.target as HTMLInputElement).value
     setWidth(value)

@@ -1,0 +1,47 @@
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import { Table } from '@looker/visualizations-table'
+import horizontalScrollStory from '!!raw-loader!./TableHorizontalScroll'
+import basicStory from '!!raw-loader!./TableBasic'
+import pivotStory from '!!raw-loader!./TablePivot'
+import truncatedTextStory from '!!raw-loader!./TableTruncatedText'
+import wrappedTextStory from '!!raw-loader!./TableWrappedText'
+import multiSortStory from '!!raw-loader!./TableMultiSort'
+
+<Meta component={Table} title="Visualizations/Docs/Table" />
+
+# Visualizations: Table
+
+The Table data visualization can be rendered by setting config type to `table`.
+
+<Editor code={basicStory} />
+
+## Grouped/pivoted columns
+
+<Editor code={pivotStory} />
+
+## Wrapped text
+
+By default, the Table visualization will wrap long headers and cell content into multiple lines.
+
+<Editor code={wrappedTextStory} />
+
+## Truncated text
+
+If you wish the header text or cell text to be contained to a single line, set `truncate_header` and `truncate_text` to `true`.
+
+<Editor code={truncatedTextStory} />
+
+## Column Sorting State
+
+The Table visualization can sort by multiple columns simultaneously.
+
+<Editor code={multiSortStory} />
+
+## Horizontal virtual scrolling
+
+When your dataset is very wide, as in the case of a pivoted query with many columns, the Table visualization utilizes horizontal scroll virtualization to maintain page performance.
+
+<Editor code={horizontalScrollStory} />
+
+<ArgsTable of={Table} exclude={excludedProps} />

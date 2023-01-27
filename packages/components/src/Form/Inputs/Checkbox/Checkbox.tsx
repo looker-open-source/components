@@ -42,7 +42,6 @@ import {
 } from '../../../Ripple'
 import type { InputProps } from '../InputProps'
 import { pickInputProps } from '../InputProps'
-import type { ValidationType } from '../../ValidationMessage'
 
 import { CheckMark } from './CheckMark'
 import { CheckMarkMixed } from './CheckMarkMixed'
@@ -54,7 +53,6 @@ export interface CheckboxProps
   extends SpaceProps,
     Omit<InputProps, 'type' | 'checked' | 'onClick'> {
   checked?: MixedBoolean
-  validationType?: ValidationType
 }
 
 export const Checkbox = styled(

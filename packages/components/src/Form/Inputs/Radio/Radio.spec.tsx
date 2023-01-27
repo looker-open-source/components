@@ -30,9 +30,9 @@ import { renderWithTheme } from '@looker/components-test-utils'
 import { act, fireEvent, screen } from '@testing-library/react'
 import { composeStories } from '@storybook/testing-react'
 import { RIPPLE_RATIO } from '../../../Ripple'
-import * as stories from './Radio.stories'
+import * as stories from './stories/index.stories'
 
-const { Basic, Disabled, DisabledChecked } = composeStories(stories)
+const { Basic, Disabled } = composeStories(stories)
 
 beforeEach(() => {
   jest.useFakeTimers()
@@ -61,13 +61,13 @@ describe('Radio', () => {
 
   test('should accept disabled prop', () => {
     renderWithTheme(<Disabled />)
-    expect(screen.getByRole('radio')).toBeDisabled()
+    expect(screen.getAllByRole('radio')[0]).toBeDisabled()
   })
 
   test('should accept disabled and checked props together', () => {
-    renderWithTheme(<DisabledChecked />)
-    expect(screen.getByRole('radio')).toBeDisabled()
-    expect(screen.getByRole('radio')).toBeChecked()
+    renderWithTheme(<Disabled />)
+    expect(screen.getAllByRole('radio')[1]).toBeDisabled()
+    expect(screen.getAllByRole('radio')[1]).toBeChecked()
   })
 
   test('has aria-describedby attribute', () => {

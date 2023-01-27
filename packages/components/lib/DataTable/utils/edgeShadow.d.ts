@@ -1,4 +1,8 @@
 /**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
+/**
  * This utility function produces a shadow on the outside edge of the DOM element to which it is assigned
  * @param placement which side to place the shadow on
  * @param depth size of the shadow in pixels

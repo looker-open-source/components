@@ -1,11 +1,5 @@
-export declare const i18nResources: {
-    [x: string]: import("i18next").ResourceLanguage;
-} & {
-    [x: string]: import("i18next").ResourceLanguage;
-} & {
-    [x: string]: import("i18next").ResourceLanguage;
-} & {
-    [x: string]: import("i18next").ResourceLanguage;
-} & {
-    [x: string]: import("i18next").ResourceLanguage;
-};
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
+export declare const i18nResources: any;

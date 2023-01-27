@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { IError } from '@looker/sdk';
 import type { SDKResponse, ISDKSuccessResponse } from '@looker/sdk-rtl';
 /**

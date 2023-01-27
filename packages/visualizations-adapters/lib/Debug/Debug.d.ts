@@ -1,5 +1,9 @@
-import type { FC } from 'react';
-import type { SDKRecord, Fields, CAll } from '@looker/visualizations-adapters';
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
+/// <reference types="react" />
+import type { SDKRecord, Fields, CAll } from '../types';
 import type { IError } from '@looker/sdk';
 declare type DebugProps = {
     ok?: boolean;
@@ -8,5 +12,5 @@ declare type DebugProps = {
     config?: Partial<CAll>;
     fields?: Fields;
 };
-export declare const Debug: FC<DebugProps>;
+export declare const Debug: ({ ok, data, error, config, fields }: DebugProps) => JSX.Element;
 export {};

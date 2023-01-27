@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2022 Looker Data Sciences, Inc.
+ Copyright (c) 2023 Google LLC
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -23,12 +23,14 @@
  SOFTWARE.
 
  */
+
 import dateLocale from 'date-fns/locale/de'
-import type { I18nStateWithDates } from '@looker/i18n'
+
+import { mergeLocaleObjects } from '@looker/i18n'
 
 const resources = {
   AdvancedInputControls: {
-    'Clear Field': 'Feld leeren',
+    'Clear Field': 'Feld löschen',
   },
   AvatarButton: {
     'Profile Picture': 'Profilbild',
@@ -78,7 +80,7 @@ const resources = {
     Options: 'Optionen',
   },
   FieldTimeSelect: {
-    'Please enter a valid time': 'Geben Sie eine gültige Zeit ein.',
+    'Please use format HHMM': 'Bitte Format „HH:MM“ verwenden',
   },
   GetIntentLabel: {
     Error: 'Fehler',
@@ -113,7 +115,7 @@ const resources = {
     'previous year': 'vorheriges Jahr',
   },
   PageSize: {
-    Display: 'Anzeige',
+    Display: 'Anzeigen',
     of: 'von',
   },
   Pagination: {
@@ -134,7 +136,9 @@ const resources = {
     Save: 'Speichern',
   },
   RangeSlider: {
+    'Maximum Name': 'Maximal {{name}}',
     'Maximum Value': 'Höchstwert',
+    'Minimum Name': 'Mindestens {{name}}',
     'Minimum Value': 'Mindestwert',
   },
   RequiredStar: {
@@ -149,8 +153,4 @@ const resources = {
   },
 }
 
-export const deDE: I18nStateWithDates = {
-  dateLocale,
-  locale: 'de-DE',
-  resources: { 'de-DE': resources },
-}
+export const deDE = mergeLocaleObjects([], 'de-DE', resources, dateLocale)

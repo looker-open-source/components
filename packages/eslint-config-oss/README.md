@@ -53,18 +53,6 @@ module.exports = {
 }
 ```
 
-### Prettier
-
-Need to customize the prettier configuration? Add a `.prettierrc.json` to the root of your repository:
-
-```json
-{
-  "$schema": "http://json.schemastore.org/prettierrc",
-  "semi": false,
-  "singleQuote": true
-}
-```
-
 ## LICENCE
 
 [MIT](LICENCE)

@@ -24,7 +24,6 @@
 
  */
 
-import type { FC } from 'react'
 import React from 'react'
 import { waitFor, render } from '@testing-library/react'
 import { mockSdkConfigResponse } from '@looker/visualizations-adapters'
@@ -38,7 +37,7 @@ type TestComponentProps = {
   queryId?: number
 }
 
-const TestComponent: FC<TestComponentProps> = ({ queryId = 1 }) => {
+const TestComponent = ({ queryId = 1 }: TestComponentProps) => {
   const response = useQueryMetadata(queryId)
   dataContainerListener(response)
   return null

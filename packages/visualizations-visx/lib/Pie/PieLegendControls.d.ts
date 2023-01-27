@@ -1,4 +1,4 @@
-import type { FC } from 'react';
+/// <reference types="react" />
 import type { LegendOrientations } from './types';
 declare type PieLegendControlsProps = {
     contentRect: {
@@ -15,5 +15,5 @@ declare type PieLegendControlsProps = {
     handleNextClick: () => void;
     handlePrevClick: () => void;
 };
-export declare const PieLegendControls: FC<PieLegendControlsProps>;
+export declare const PieLegendControls: ({ orientation, contentRect, containerRect, page, totalPages, handleNextClick, handlePrevClick, }: PieLegendControlsProps) => JSX.Element;
 export {};

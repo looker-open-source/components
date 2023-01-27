@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 /// <reference types="react" />
 import type { CalendarLocaleProps, RangeProps } from './types';
 export declare type MonthTitleProps = Pick<CalendarLocaleProps, 'locale'> & RangeProps & {

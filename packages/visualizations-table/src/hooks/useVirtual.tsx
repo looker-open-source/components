@@ -26,14 +26,21 @@
 
 import React from 'react'
 import type { RefObject } from 'react'
-import type { SDKRecord } from '@looker/visualizations-adapters'
 import { useVirtualizer } from '@tanstack/react-virtual'
+import styled from 'styled-components'
+import { deriveVirtualizerPadding } from '../utils'
 
 type UseVirtualArgs = {
-  data: SDKRecord[]
+  // Explicit `any` type: for the purposes of virtualization, we truly aren't
+  // concerned with the contents of data, as long as it is a 2-dimensional array.
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  data: any[][]
   scrollContainer: RefObject<HTMLDivElement>
   defaultRowHeight?: number
+  defaultColumnWidth?: number
 }
+
+type StyledProps = { as?: 'td' | 'th' }
 
 /**
  * useVirtual handles the logic related to configuring our virtual scrolling
@@ -44,6 +51,7 @@ export const useVirtual = ({
   data,
   scrollContainer,
   defaultRowHeight = 30,
+  defaultColumnWidth = 100,
 }: UseVirtualArgs) => {
   const rowVirtualizer = useVirtualizer({
     count: data.length,
@@ -52,30 +60,58 @@ export const useVirtual = ({
     estimateSize: () => defaultRowHeight,
   })
 
-  const { getTotalSize, getVirtualItems } = rowVirtualizer
+  const columnVirtualizer = useVirtualizer({
+    count: data[0].length,
+    getScrollElement: () => scrollContainer.current,
+    overscan: 30,
+    horizontal: true,
+    estimateSize: () => defaultColumnWidth,
+  })
 
-  const virtualRows = getVirtualItems()
+  const virtualRows = rowVirtualizer.getVirtualItems()
+  const virtualColumns = columnVirtualizer.getVirtualItems()
 
-  const paddingTop = virtualRows.length > 0 ? virtualRows[0]?.start || 0 : 0
+  const [paddingTop, paddingBottom] = deriveVirtualizerPadding(rowVirtualizer)
 
-  const paddingBottom =
-    virtualRows.length > 0
-      ? getTotalSize() - (virtualRows[virtualRows.length - 1]?.end || 0)
-      : 0
+  const [paddingLeft, paddingRight] =
+    deriveVirtualizerPadding(columnVirtualizer)
 
-  const OffsetTop = () =>
+  const OffsetTop = ({ as = 'td' }: StyledProps) =>
     paddingTop > 0 ? (
       <tr>
-        <td style={{ height: `${paddingTop}px` }} />
+        <TableCell as={as} height={paddingTop} />
       </tr>
     ) : null
 
-  const OffsetBottom = () =>
+  const OffsetBottom = ({ as = 'td' }: StyledProps) =>
     paddingBottom > 0 ? (
       <tr>
-        <td style={{ height: `${paddingBottom}px` }} />
+        <TableCell as={as} height={paddingBottom} />
       </tr>
     ) : null
 
-  return { virtualRows, OffsetTop, OffsetBottom }
+  const OffsetLeft = ({ as = 'td' }: StyledProps) => (
+    <TableCell as={as}>
+      <div style={{ width: `${paddingLeft}px` }} />
+    </TableCell>
+  )
+
+  const OffsetRight = ({ as = 'td' }: StyledProps) => (
+    <TableCell as={as}>
+      <div style={{ width: `${paddingRight}px` }} />
+    </TableCell>
+  )
+
+  return {
+    virtualRows,
+    virtualColumns,
+    OffsetTop,
+    OffsetBottom,
+    OffsetLeft,
+    OffsetRight,
+  }
 }
+
+const TableCell = styled.td.attrs<{ height?: number }>(({ height }) => ({
+  height,
+}))<{ height?: number }>``

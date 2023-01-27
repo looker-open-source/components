@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { CCartesian, CSeriesBasic, CSeriesPoints, CSeriesLine, CSeriesSize, Fields } from '../types';
 declare type AllSeriesAttributes = Partial<CSeriesBasic & CSeriesPoints & CSeriesLine & CSeriesSize>;
 /**

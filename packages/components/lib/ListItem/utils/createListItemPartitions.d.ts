@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { ReactElement } from 'react';
 import type { ListItemProps } from '../types';
 import type { IconPlaceholderProps, IconType } from '../../Icon';

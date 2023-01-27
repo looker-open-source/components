@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2022 Looker Data Sciences, Inc.
+ Copyright (c) 2023 Google LLC
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -23,8 +23,10 @@
  SOFTWARE.
 
  */
+
 import dateLocale from 'date-fns/locale/en-US'
-import type { I18nStateWithDates } from '@looker/i18n'
+
+import { mergeLocaleObjects } from '@looker/i18n'
 
 const resources = {
   AdvancedInputControls: {
@@ -95,7 +97,6 @@ const resources = {
   InputFilters: {
     'Clear Filters': 'Clear Filters',
     'Filter List': 'Filter List',
-    'bottom-start': 'bottom-start',
   },
   InputTimeSelect: {
     'Select time': 'Select time',
@@ -150,8 +151,4 @@ const resources = {
   },
 }
 
-export const en: I18nStateWithDates = {
-  dateLocale,
-  locale: 'en',
-  resources: { en: resources },
-}
+export const en = mergeLocaleObjects([], 'en', resources, dateLocale)

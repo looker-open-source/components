@@ -24,9 +24,9 @@
 
  */
 
-import type { FC } from 'react'
 import React, { useState } from 'react'
-import { useFieldGroups } from '@looker/components-data'
+import { useExplore } from '@looker/components-data'
+import { createExploreViewsTree, findField } from '@looker/filter-components'
 import { Space, IconButton, ButtonOutline } from '@looker/components'
 import { Close } from '@styled-icons/material/Close'
 import { Add } from '@styled-icons/material/Add'
@@ -40,13 +40,14 @@ type ActiveFiltersProps = {
   onUpdateFilter: (name: string, expression: string) => void
 }
 
-export const ActiveFilters: FC<ActiveFiltersProps> = ({
+export const ActiveFilters = ({
   filters,
   queryId,
   onRemoveFilter,
   onUpdateFilter,
-}) => {
-  const { fieldGroups } = useFieldGroups(queryId)
+}: ActiveFiltersProps) => {
+  const { explore } = useExplore(queryId)
+  const tree = explore ? createExploreViewsTree(explore) : []
 
   const [filterEntries, setFilterEntries] = useState(
     Object.entries(filters || {})
@@ -66,9 +67,7 @@ export const ActiveFilters: FC<ActiveFiltersProps> = ({
   return (
     <>
       {filterEntries.map(([name, value], i) => {
-        const filterView = name.split('.')[0]
-        const fieldGroup = fieldGroups[filterView]
-        const filterField = fieldGroup?.find(g => g.name === name)
+        const filterField = findField(name, explore)
         if (filterField || name === '') {
           return (
             <Space key={`${name}${i}`}>
@@ -79,7 +78,7 @@ export const ActiveFilters: FC<ActiveFiltersProps> = ({
                 onClick={() => handleDeleteFilter(name, i)}
               />
               <FilterEntry
-                queryId={queryId}
+                tree={tree}
                 filterExpression={value}
                 filterField={filterField}
                 onUpdateFilter={onUpdateFilter}

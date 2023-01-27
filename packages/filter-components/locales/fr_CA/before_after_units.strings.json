@@ -3,7 +3,7 @@
     "value": "jours auparavant"
   },
   "days from now": {
-    "value": "jours à partir de maintenant"
+    "value": "journées à partir de maintenant"
   },
   "fiscal quarter from now": {
     "value": "trimestre fiscal à partir de maintenant"
@@ -36,7 +36,7 @@
     "value": "mois à partir de maintenant"
   },
   "now": {
-    "value": "maintenant"
+    "value": "présentement"
   },
   "quarters ago": {
     "value": "trimestres auparavant"

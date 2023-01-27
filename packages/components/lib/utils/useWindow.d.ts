@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { Ref } from 'react';
 import type { GetWindowedListBoundaryProps } from './getWindowedListBoundaries';
 export declare type WindowSpacerTag = 'div' | 'li' | 'tr';

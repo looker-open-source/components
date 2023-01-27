@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { CompatibleHTMLProps } from '@looker/design-tokens';
 import type { FocusEvent } from 'react';
 export declare const useTreeHandlers: (props: Pick<CompatibleHTMLProps<HTMLElement>, 'onFocus' | 'onMouseEnter' | 'onMouseLeave'>) => {

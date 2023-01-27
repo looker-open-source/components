@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 export * from './control_filter_utils';
 export * from './branded_tint';
 export * from './filter_test_utils';

@@ -66,9 +66,11 @@ export const TreeItem = styled(
     target,
     ...restProps
   }: TreeItemProps) => {
-    const { density: contextDensity, depth, color: contextColor } = useContext(
-      TreeContext
-    )
+    const {
+      density: contextDensity,
+      depth,
+      color: contextColor,
+    } = useContext(TreeContext)
 
     const [hovered, setHovered] = useState(false)
     const handleWrapperMouseEnter = useWrapEvent(

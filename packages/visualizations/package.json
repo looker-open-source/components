@@ -1,8 +1,11 @@
 {
   "name": "@looker/visualizations",
   "license": "MIT",
-  "main": "src/index.ts",
-  "version": "1.1.2",
+  "version": "1.1.4",
+  "main": "lib/main/index.js",
+  "module": "lib/module/index.js",
+  "types": "lib/index.d.ts",
+  "src": "src/index.ts",
   "sideEffects": false,
   "publishConfig": {
     "access": "public",
@@ -23,15 +26,15 @@
     "coverage": "lk coverage"
   },
   "dependencies": {
-    "@looker/components": "^4.0.3",
-    "@looker/components-data": "^1.0.1",
-    "@looker/i18n": "*",
-    "@looker/visualizations-adapters": "^1.0.1",
-    "@looker/visualizations-single-value": "^1.0.1",
-    "@looker/visualizations-table": "^1.1.1",
-    "@looker/visualizations-visx": "^1.0.1",
+    "@looker/components": "^4.1.1",
+    "@looker/components-data": "^1.0.3",
+    "@looker/i18n": "^1.0.0",
     "@looker/sdk": "^22.4.2",
     "@looker/sdk-rtl": "^21.3.3",
+    "@looker/visualizations-adapters": "^1.0.3",
+    "@looker/visualizations-single-value": "^1.0.3",
+    "@looker/visualizations-table": "^1.1.3",
+    "@looker/visualizations-visx": "^1.0.3",
     "@styled-icons/material": "10.34.0",
     "lodash": "4.17.21"
   },
@@ -42,8 +45,10 @@
     "@looker/components-test-utils": "*",
     "@looker/eslint-config-oss": "*",
     "@looker/jest-config": "*",
+    "@looker/prettier-config": "*",
     "@storybook/testing-react": "0.0.22",
-    "@testing-library/react": "*"
+    "@testing-library/react": "*",
+    "prettier": "2.8.2"
   },
   "peerDependencies": {
     "react": "16.14.0 - 18",
@@ -62,6 +67,7 @@
         ],
         "rules": {
           "camelcase": "off",
+          "import/no-webpack-loader-syntax": "off",
           "import/order": "off",
           "sort-keys-fix/sort-keys-fix": "off",
           "no-restricted-imports": [

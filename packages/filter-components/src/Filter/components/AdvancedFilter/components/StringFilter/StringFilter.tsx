@@ -29,7 +29,7 @@ import {
   convertTypeToOption,
   sanitizeString,
 } from '@looker/filter-expressions'
-import type { ElementType, FC } from 'react'
+import type { ElementType } from 'react'
 import React from 'react'
 import type { FilterParamProps } from '../../../../types/filter_param_props'
 import { GroupSelect } from '../GroupSelect'
@@ -44,7 +44,7 @@ const typesUsingSuggestions: StringFilterType[] = [
   'endsWith',
 ]
 
-export const StringFilter: FC<FilterParamProps<StringFilterType>> = ({
+export const StringFilter = ({
   item,
   filterType,
   onInputChange,
@@ -55,7 +55,7 @@ export const StringFilter: FC<FilterParamProps<StringFilterType>> = ({
   showMatchesAdvanced,
   validationMessage,
   ...rest
-}) => {
+}: FilterParamProps<StringFilterType>) => {
   const isParameter = rest.field?.parameter
   const stringFilterOptions = useStringFilterOptions(isParameter)
   const options = useFilterOptions(

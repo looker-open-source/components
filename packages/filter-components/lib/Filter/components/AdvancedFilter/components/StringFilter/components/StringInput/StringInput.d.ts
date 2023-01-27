@@ -1,6 +1,6 @@
+/// <reference types="react" />
 import type { ValidationMessageProps } from '@looker/components';
 import type { FilterModel } from '@looker/filter-expressions';
-import type { FC } from 'react';
 import type { Option } from '../../../../../../types/option';
 import type { PlacementProps } from '../../../../../../utils/filter_styles';
 interface StringInputProps extends PlacementProps {
@@ -16,6 +16,6 @@ interface StringInputProps extends PlacementProps {
     width?: string | number;
     height?: string | number;
 }
-export declare const StringInputLayout: FC<StringInputProps>;
-export declare const StringInput: import("styled-components").StyledComponent<FC<StringInputProps>, import("styled-components").DefaultTheme, {}, never>;
+export declare const StringInputLayout: ({ className, onChange, onInputChange, isLoading, item, suggestions, enumerations, validationMessage, id, width, height, }: StringInputProps) => JSX.Element;
+export declare const StringInput: import("styled-components").StyledComponent<({ className, onChange, onInputChange, isLoading, item, suggestions, enumerations, validationMessage, id, width, height, }: StringInputProps) => JSX.Element, import("styled-components").DefaultTheme, {}, never>;
 export {};

@@ -76,14 +76,12 @@ export type InputDateRangeProps = {
 
 type Endpoint = keyof RangeModifier
 
-const getTextForDate = (
-  range?: RangeModifier,
-  dateStringFormat?: string,
-  locale?: Locale
-) => (endpoint?: Endpoint) => {
-  const date = endpoint ? range?.[endpoint] : undefined
-  return formatDateString(date, dateStringFormat, locale)
-}
+const getTextForDate =
+  (range?: RangeModifier, dateStringFormat?: string, locale?: Locale) =>
+  (endpoint?: Endpoint) => {
+    const date = endpoint ? range?.[endpoint] : undefined
+    return formatDateString(date, dateStringFormat, locale)
+  }
 
 const getViewMonthFromValue = (value: RangeModifier) =>
   value.from || value.to || new Date()

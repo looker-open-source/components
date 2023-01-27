@@ -24,7 +24,6 @@
 
  */
 
-import type { FC } from 'react'
 import React from 'react'
 import { omitStyledProps, variant } from '@looker/design-tokens'
 import { PersonOutline } from '@styled-icons/material/PersonOutline'
@@ -80,12 +79,12 @@ const size = variant({
   },
 })
 
-const AvatarLayout: FC<AvatarIconProps> = ({
+const AvatarLayout = ({
   color,
   icon = <PersonOutline />,
   role,
   ...props
-}) => {
+}: AvatarIconProps) => {
   const BaseElement = role === 'button' ? 'button' : 'div'
 
   return <BaseElement {...omitStyledProps(props)}>{icon}</BaseElement>

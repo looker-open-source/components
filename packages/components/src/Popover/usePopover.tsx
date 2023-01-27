@@ -27,7 +27,7 @@
 import type { WidthProps } from '@looker/design-tokens'
 import type { Placement } from '@popperjs/core'
 import type { AriaAttributes, ReactNode, Ref, SyntheticEvent } from 'react'
-import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Flex } from '../Layout'
 import { Portal } from '../Portal'
 import { DialogContext } from '../Dialog'
@@ -187,6 +187,15 @@ export const usePopover = ({
     element
   )
 
+  // Detect when isOpen has changed from true to false and call onClose
+  const prevIsOpenRef = useRef(isOpen)
+  useEffect(() => {
+    if (prevIsOpenRef.current && !isOpen) {
+      onClose?.()
+    }
+    prevIsOpenRef.current = isOpen
+  }, [isOpen, onClose])
+
   const openWithoutElem = useOpenWithoutElement(isOpen, element)
 
   const handleOpen = (event: SyntheticEvent) => {
@@ -204,8 +213,7 @@ export const usePopover = ({
   const handleClose = useCallback(() => {
     if (canClose && !canClose()) return
     setOpen(false)
-    onClose && onClose()
-  }, [canClose, onClose, setOpen])
+  }, [canClose, setOpen])
 
   const usePopperProps = useMemo<UsePopperProps>(
     () => ({
@@ -234,9 +242,8 @@ export const usePopover = ({
     }),
     [element, pin, propsPlacement]
   )
-  const { placement, popperInstanceRef, style, targetRef } = usePopper(
-    usePopperProps
-  )
+  const { placement, popperInstanceRef, style, targetRef } =
+    usePopper(usePopperProps)
 
   const verticalSpace = useVerticalSpace(
     element,

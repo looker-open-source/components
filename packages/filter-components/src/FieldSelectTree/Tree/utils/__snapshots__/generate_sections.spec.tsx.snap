@@ -1,0 +1,108 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`generateSections tests should match the snapshot 1`] = `
+Array [
+  <Section
+    id=".Root1_0"
+    isOpen={false}
+    onClick={[Function]}
+  >
+    <Section
+      id=".Root1_0.some section_0"
+      isOpen={false}
+      onClick={[Function]}
+    >
+      <Field
+        alignItems="center"
+        label="a leaf node"
+        onClick={[Function]}
+        payload={
+          Object {
+            "data": "some data",
+          }
+        }
+        pl="medium"
+      />
+      <Field
+        alignItems="center"
+        label="another leaf node"
+        onClick={[Function]}
+        payload={
+          Object {
+            "data": "more data",
+          }
+        }
+        pl="medium"
+      />
+    </Section>
+    <Section
+      id=".Root1_0.anotha one_1"
+      isOpen={false}
+      onClick={[Function]}
+    >
+      <Field
+        alignItems="center"
+        label="child of anotha one"
+        onClick={[Function]}
+        payload={
+          Object {
+            "data": "hello",
+          }
+        }
+        pl="medium"
+      />
+    </Section>
+  </Section>,
+  <Section
+    id=".Root2_1"
+    isOpen={false}
+    onClick={[Function]}
+  >
+    <Section
+      id=".Root2_1.some section2_0"
+      isOpen={false}
+      onClick={[Function]}
+    >
+      <Field
+        alignItems="center"
+        label="a leaf node2"
+        onClick={[Function]}
+        payload={
+          Object {
+            "data": "some data",
+          }
+        }
+        pl="medium"
+      />
+      <Field
+        alignItems="center"
+        label="another leaf node2"
+        onClick={[Function]}
+        payload={
+          Object {
+            "data": "more data2",
+          }
+        }
+        pl="medium"
+      />
+    </Section>
+    <Section
+      id=".Root2_1.anotha one2_1"
+      isOpen={false}
+      onClick={[Function]}
+    >
+      <Field
+        alignItems="center"
+        label="child of anotha one"
+        onClick={[Function]}
+        payload={
+          Object {
+            "data": "hello",
+          }
+        }
+        pl="medium"
+      />
+    </Section>
+  </Section>,
+]
+`;

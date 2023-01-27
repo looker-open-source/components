@@ -1,4 +1,8 @@
-import type { FC, ReactNode } from 'react';
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
+import type { ReactNode } from 'react';
 import type { CompatibleHTMLProps } from '@looker/design-tokens';
 import type { SpaceHelperProps } from '../../Layout/Space';
 export interface ModalFooterProps extends CompatibleHTMLProps<HTMLDivElement>, SpaceHelperProps {
@@ -11,4 +15,4 @@ export interface ModalFooterProps extends CompatibleHTMLProps<HTMLDivElement>, S
      */
     secondary?: ReactNode;
 }
-export declare const ModalFooter: import("styled-components").StyledComponent<FC<ModalFooterProps>, import("styled-components").DefaultTheme, {}, never>;
+export declare const ModalFooter: import("styled-components").StyledComponent<({ children, secondary, ...props }: ModalFooterProps) => JSX.Element, import("styled-components").DefaultTheme, {}, never>;

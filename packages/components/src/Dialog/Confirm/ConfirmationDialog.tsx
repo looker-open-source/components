@@ -24,7 +24,7 @@
 
  */
 
-import type { FC, ReactElement } from 'react'
+import type { ReactElement } from 'react'
 import React, { useCallback } from 'react'
 import type { StatefulColor } from '@looker/design-tokens'
 import { Button, ButtonTransparent } from '../../Button'
@@ -94,7 +94,7 @@ export interface ConfirmationDialogProps extends ConfirmationProps {
   isOpen?: boolean
 }
 
-export const ConfirmationDialog: FC<ConfirmationDialogProps> = props => {
+export const ConfirmationDialog = (props: ConfirmationDialogProps) => {
   const { t } = useTranslation('ConfirmationDialog')
   const {
     cancelLabel = t('Cancel'),

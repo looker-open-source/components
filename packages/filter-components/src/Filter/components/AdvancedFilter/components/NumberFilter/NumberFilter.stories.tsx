@@ -24,7 +24,7 @@
 
  */
 import React from 'react'
-import type { Story } from '@storybook/react/types-6-0'
+import type { Story } from '@storybook/react'
 import type { NumberFilterType } from '@looker/filter-expressions'
 
 import { i18nInit } from '../../../../../utils'
@@ -103,6 +103,6 @@ BetweenError.args = {
 }
 
 export default {
-  title: 'Filters / Number Filter',
+  title: 'Filters/Stories/Number Filter',
   component: NumberFilter,
 }

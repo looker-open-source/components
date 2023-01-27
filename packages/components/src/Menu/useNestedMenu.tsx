@@ -27,7 +27,6 @@
 import type { CompatibleHTMLProps } from '@looker/design-tokens'
 import { transitions } from '@looker/design-tokens'
 import type { Placement } from '@popperjs/core'
-import omit from 'lodash/omit'
 import type { KeyboardEvent, MouseEvent, ReactNode } from 'react'
 import React, { useContext, useEffect, useRef } from 'react'
 import { DialogContext } from '../Dialog'
@@ -95,9 +94,8 @@ export const useNestedMenu = ({
 }: UseNestedMenuProps) => {
   const mousePosition = useRef<MousePosition>()
   const focusRef = useRef<Element | null>(null)
-  const { value, change, delayChange, waitChange } = useContext(
-    NestedMenuContext
-  )
+  const { value, change, delayChange, waitChange } =
+    useContext(NestedMenuContext)
 
   const { closeModal } = useContext(DialogContext)
   const { density } = useContext(ListItemContext)
@@ -187,8 +185,11 @@ export const useNestedMenu = ({
         onMouseEnter: openNestedMenu,
       }
     : {}
-
-  const { popover, popperInstanceRef, domProps } = usePopover({
+  const {
+    popover,
+    popperInstanceRef,
+    domProps: { onClick: _domPropsOnClick, ...restDomProps },
+  } = usePopover({
     content: (
       <MenuList
         data-autofocus="true"
@@ -226,7 +227,7 @@ export const useNestedMenu = ({
   const combinedDomProps = {
     ...itemHandlers,
     // No need for Popover's aria props without nestedMenu
-    ...(nestedMenu ? omit(domProps, 'onClick') : {}),
+    ...(nestedMenu ? restDomProps : {}),
   }
 
   return {

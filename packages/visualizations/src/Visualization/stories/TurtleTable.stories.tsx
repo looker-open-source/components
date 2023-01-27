@@ -25,7 +25,7 @@
  */
 
 import React from 'react'
-import type { Story } from '@storybook/react/types-6-0'
+import type { Story } from '@storybook/react'
 import { Sparkline } from '@looker/visualizations-visx'
 import { Table } from '@looker/visualizations-table'
 import { Visualization } from '../Visualization'
@@ -37,11 +37,11 @@ import type {
   SDKRecord,
   Pivots,
 } from '@looker/visualizations-adapters'
-import { mockTurtlesProps } from './TurtleTable.data'
+import { mockPivotedQuery } from '@looker/visualizations-adapters'
 
 export default {
   component: Visualization,
-  title: 'Visualizations/TurtleTable',
+  title: 'Visualizations/Stories/TurtleTable',
 }
 
 type StoryTemplateProps = Omit<TableProps, 'config' | 'fields' | 'data'> & {
@@ -126,7 +126,7 @@ const TurtleTableComponent = ({
 const Template: Story<StoryTemplateProps> = () => {
   return (
     <Visualization
-      {...mockTurtlesProps}
+      {...mockPivotedQuery}
       height={600}
       /* add custom vis type */
       chartTypeMap={{

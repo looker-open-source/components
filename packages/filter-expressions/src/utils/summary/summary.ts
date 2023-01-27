@@ -105,7 +105,7 @@ export const summary: ISummary = (props) => {
   if (hasUserAttributeNodeWithoutValue(ast)) {
     const userAttribute = getUserAttributeMatchingAST(ast, userAttributes)
     if (userAttribute) {
-      return `${userAttribute!.label} (null)`
+      return `${userAttribute?.label} (null)`
     }
   }
 

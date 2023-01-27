@@ -24,7 +24,6 @@
 
  */
 
-import type { FC } from 'react'
 import React, { Children, cloneElement, useRef, useState } from 'react'
 
 export interface UseTabsProps {
@@ -64,12 +63,12 @@ export function useTabs(props?: UseTabsProps) {
 /**
  * @deprecated Use `Tabs2` and `Tab2` instead
  */
-export const Tabs: FC<TabsProps> = ({
+export const Tabs = ({
   children,
   index: controlledIndex,
   defaultIndex,
   onChange,
-}) => {
+}: TabsProps) => {
   const { current: isControlled } = useRef(controlledIndex !== undefined)
 
   /* eslint-disable no-console */

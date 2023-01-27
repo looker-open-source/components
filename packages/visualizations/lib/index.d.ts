@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import { Area, Bar, Column, Line, Scatter, Sparkline } from '@looker/visualizations-visx';
 import { Table } from '@looker/visualizations-table';
 import { SingleValue } from '@looker/visualizations-single-value';

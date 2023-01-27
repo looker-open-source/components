@@ -1,0 +1,81 @@
+import { Menu } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import storyBasic from '!!raw-loader!./Basic'
+import storyDensity from '!!raw-loader!./Density'
+import storyWithTooltip from '!!raw-loader!./WithTooltip'
+import storyPlacement from '!!raw-loader!./Placement'
+import storyNested from '!!raw-loader!./Nested'
+import storyControlled from '!!raw-loader!./Controlled'
+import storyHover from '!!raw-loader!./Hover'
+import storyIconPlaceholder from '!!raw-loader!./IconPlaceholder'
+import storyHeadingDivider from '!!raw-loader!./HeadingDivider'
+
+<Meta component={Menu} title="Docs/Menu" />
+
+# Menu
+
+
+`Menu` is a specific implementation of [`Popover`](popover) that accepts an array
+(or React Fragment) of [`MenuItem`](menuitem)s in the content prop.
+
+**Note:** The direct child of `Menu` should be able to accept the following props. TypeScript currently doesn't support the enforcement of this.
+
+- `onClick` for toggling the menu
+- `ref` for popover placement
+- aria attributes for accessibility
+
+<Editor code={storyBasic} />
+
+Use the `density` prop to set the size and spacing of your `Menu`. As `density` decreases, so does the height and spacing of child `MenuItem`s.
+
+`density` values range from -3 to 1.
+
+<Editor code={storyDensity} />
+
+## Tooltip
+
+To add a tooltip to the menu button, nest a `Tooltip` inside `Menu`.
+
+<Editor code={storyWithTooltip} />
+
+## Placement
+
+Use the `placement` prop to position the overlay that contains the list.
+The `pin` props allow you to enforce the placement to varying degrees.
+<Editor code={storyPlacement} />
+
+## Nested Menu
+
+Add `nestedMenu` to a `MenuItem` to create a nested menu.
+
+<Editor code={storyNested} />
+
+## Controlled Menu
+
+Control the state of the menu with the React `useState` hook.
+<Editor code={storyControlled} />
+
+## Toggling the menu button on hover
+<Editor code={storyHover} />
+
+## Adding icon placeholder space
+
+If a `Menu` contains some number of `MenuItem`s with icons and some without, use the `iconGutter` prop to properly align all item labels with each other.
+
+More specifically, when `iconGutter` is true on a `Menu`, all `MenuItem`s without `icon` prop values will allocate icon placeholder space.
+<Editor code={storyIconPlaceholder} />
+
+## MenuHeading and MenuDivider
+
+`MenuHeading` is typically used as a title for a group of `MenuItem`s. `MenuHeading` children must be of type string.
+
+`MenuDivider` is a divider element used to separate groups of `MenuItem`s.
+
+**Note:** As a convenience feature, `MenuDivider` will not render a divider if it is the first or last child of a `Menu`.
+
+<Editor code={storyHeadingDivider} />
+
+## Props
+
+<ArgsTable of={Menu} exclude={excludedProps} />

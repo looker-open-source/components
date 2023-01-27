@@ -1,0 +1,48 @@
+import { FieldTime } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import basicStory from '!!raw-loader!./Basic'
+import ControlledStory from '!!raw-loader!./Controlled'
+import DisabledStory from '!!raw-loader!./Disabled'
+import FloatingLabelStory from '!!raw-loader!./FloatingLabel'
+import RequiredStory from '!!raw-loader!./Required'
+import TimeFormatStory from '!!raw-loader!./TimeFormat'
+import ValidationMessageStory from '!!raw-loader!./ValidationMessage'
+
+<Meta component={FieldTime} title="Docs/FieldTime" />
+
+# FieldTime
+
+The `<FieldTime />` component is composed of an `<InputTime />` component and a `<Label />` component. It has attributes to help display additional information. `detail`, `description` and `validation messages` are available to the component.
+
+<Editor code={basicStory} />
+
+## Controlled
+
+<Editor code={ControlledStory} />
+
+## Floating Label
+
+<Editor code={FloatingLabelStory} />
+
+## Validation Message
+
+<Editor code={ValidationMessageStory} />
+
+## Disabled
+
+<Editor code={DisabledStory} />
+
+## Required
+
+<Editor code={RequiredStory} />
+
+## 12- or 24-Hour Time
+
+Set the `format` prop to either `12hr` or `24hr` to toggle between the two supported time formats.
+
+<Editor code={TimeFormatStory} />
+
+## Props
+
+<ArgsTable of={FieldTime} exclude={excludedProps} />

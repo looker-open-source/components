@@ -24,7 +24,6 @@
 
  */
 
-import type { FC } from 'react'
 import React, { useState } from 'react'
 import { hsv } from 'd3-hsv'
 import type { Arc } from 'd3-shape'
@@ -45,14 +44,14 @@ type PieArcProps = {
   datumColor: string
 }
 
-export const PieArc: FC<PieArcProps> = ({
+export const PieArc = ({
   arc,
   path,
   datumColor,
   onMouseOver,
   onMouseOut,
   renderTooltip,
-}) => {
+}: PieArcProps) => {
   const [isHovered, setIsHovered] = useState(false)
 
   const theme = useTheme()

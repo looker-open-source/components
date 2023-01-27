@@ -1,0 +1,121 @@
+import { Flex } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import storyAlignContent from '!!raw-loader!./AlignContent'
+import storyAlignItems from '!!raw-loader!./AlignItems'
+import storyBasic from '!!raw-loader!./Basic'
+import storyChangeDirectionOrder from '!!raw-loader!./ChangeDirectionOrder'
+import storyFlexBasis from '!!raw-loader!./FlexBasis'
+import storyFlexGrow from '!!raw-loader!./FlexGrow'
+import storyFlexShrink from '!!raw-loader!./FlexShrink'
+import storyIndividualAlignment from '!!raw-loader!./IndividualAlignment'
+import storyItemDistribution from '!!raw-loader!./ItemDistribution'
+import storyItemOrder from '!!raw-loader!./ItemOrder'
+import storyResponsive from '!!raw-loader!./Responsive'
+import storyWrapping from '!!raw-loader!./Wrapping'
+
+<Meta component={Flex} title="Docs/Flex" />
+
+# Flex
+
+`Flex` has been deprecated. Use a more specific layout helper such as `Space` or `SpaceVertical` or `Grid`.
+
+The `Flex` component creates a flex container for you to place `FlexItem` components inside. It lets you utilize [flex box](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout) to create a wide variety of layouts, with powerful alignment, directional, and space distribution abilities.
+
+If you are not familiar with flex box, [here is a great guide](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) for how it works.
+
+## Basic Usage
+
+The `Flex` component has the ability to control the layout direction and order of its children. By default the children will layout in a row.
+
+<Editor code={storyBasic} />
+
+## Changing direction and order
+
+You can change the layout direction and order of flex children by using the `flexDirection` property. Below we use the same children in each example but can adjust the layout quickly using `flexDirection`.
+
+<Editor code={storyChangeDirectionOrder} />
+
+## Item distribution
+
+The `Flex` component allows you to control how its children are distributed within its container. Using the `justifyContent` property you can adjust the distribution of the children.
+
+Here is a visual example of how using `justifyContent` affects the distribution of items in a `Flex` component.
+
+<Editor code={storyItemDistribution} />
+
+## Aligning Items
+
+Flex box allows for quickly adjusting the alignment of items inside the flex container.
+
+Here is an example of using `alignItems` to adjust how items are aligned within the flex container.
+
+<Editor code={storyAlignItems} />
+
+## Aligning Content
+
+If you have multiple rows of flex items, the `alignContent` property determines how the rows are distributed within the flex container.
+
+<Editor code={storyAlignContent} />
+
+## Wrapping Flex Items
+
+The `flexWrap` property determines if flex items should be forced into a single line or if they can wrap onto multiple lines.
+
+<Editor code={storyWrapping} />
+
+## Responsive Behavior
+
+Many of the properties you can set on the `Flex` component will accept an array of values that will then be applied at different breakpoints. There are 5 [breakpoints](/#!/Breakpoints) slots that you can target. Here is an example of what that looks like.
+
+<Editor code={storyResponsive} />
+
+## FlexItem
+
+The `FlexItem` component lets you have more control of the properties that apply to just children inside a `Flex` container. These properties affect how a flex item aligns its self, it's order, and how it resizes to fill the available space in the flex container.
+
+### Adjusting Individual Alignment
+
+Using the `alignSelf` property on a `FlexItem` allows you to override the the `alignItems` value from the flex container. This is useful if you need to adjust how a single flex item aligns itself in the container.
+
+<Editor code={storyIndividualAlignment} />
+
+### Item Order
+
+By default flex items are laid our in source order, the `order` property on a `FlexItem` allows you to adjust how an individual flex item is is ordered in a flex container.
+
+**Note:** the `order` value default is `0`, so setting an `order="1"` will put the item at the end unless another flex item has a higher `order` set. You can also use negative numbers to set an item at the beginning.
+
+<Editor code={storyItemOrder} />
+
+### Controlling Item Size
+
+The `FlexItem` has two properties for managing its size. You can use the `flexBasis` property or the `flex` property.
+
+#### Flex Basis example.
+
+The `flexBasis` property defines the flex-items' default size before the remaining space is distributed.
+
+<Editor code={storyFlexBasis} />
+
+### Flex Example
+
+The `flex` property is a shorthand for `flex-grow`, `flex-shrink`, and `flex-basis` properties. It specifies how a flex item will grow or shrink to fit the space in its flex container.
+
+**Note**: The `flex` syntax can be a bit confusing, if you need a more detail set of examples check out this [MDN flex overview](https://developer.mozilla.org/en-US/docs/Web/CSS/flex).
+
+### Flex Grow Example
+
+Below we set the flex grow value of the first flex item to `2` so it will take up a factor of two in the flex container
+
+<Editor code={storyFlexGrow} />
+
+### Flex Shrink
+
+Below we have a flex container with a set width of 500px and each child's `flex-basis` is set to 200px. The flex shrink value on the last two flex items is set to `1` and they will now shrink so that all the flex items fit within the flex container.
+
+<Editor code={storyFlexShrink} />
+
+## Props
+
+<ArgsTable of={Flex} exclude={excludedProps} />

@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { BackgroundColorProps, CompatibleHTMLProps, OpacityProps } from '@looker/design-tokens';
 import type { CSSObject } from 'styled-components';
 export interface BackdropProps extends CompatibleHTMLProps<HTMLDivElement>, BackgroundColorProps, OpacityProps {

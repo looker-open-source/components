@@ -24,7 +24,7 @@
 
  */
 
-import type { FC, ComponentType } from 'react'
+import type { ComponentType, ReactNode } from 'react'
 import React, { Children } from 'react'
 import { useTheme } from 'styled-components'
 import flow from 'lodash/flow'
@@ -50,6 +50,7 @@ export type QueryProps = {
   /* Accept user defined config options to overwrite API response */
   config?: Partial<CAll>
   LoadingIndicator?: ComponentType
+  children?: ReactNode
 } & (
   | /* Restricted prop combo: use EITHER a dashboard or query, but not both */
   {
@@ -62,13 +63,13 @@ export type QueryProps = {
     }
 )
 
-const QueryInternal: FC<QueryProps> = ({
+const QueryInternal = ({
   query,
   dashboard,
   children,
   config: configProp,
   LoadingIndicator,
-}) => {
+}: QueryProps) => {
   const { t } = useTranslation('Query')
 
   if (dashboard && query) {
@@ -185,7 +186,7 @@ const QueryInternal: FC<QueryProps> = ({
   }
 }
 
-export const Query: FC<QueryProps> = props => {
+export const Query = (props: QueryProps) => {
   const theme = useTheme()
 
   if (!theme) {

@@ -29,7 +29,7 @@ import { renderWithTheme } from '@looker/components-test-utils'
 import { Science } from '@styled-icons/material-outlined'
 import { screen, fireEvent } from '@testing-library/react'
 import { Button } from '../Button'
-import { Controlled } from './stories/Tree.stories'
+import Controlled from './stories/Controlled'
 import { Tree } from '.'
 
 describe('Tree', () => {
@@ -78,16 +78,16 @@ describe('Tree', () => {
     renderWithTheme(<Controlled />)
 
     const treeLabel = screen.getByText('Controlled Tree')
-    screen.getByText('Stuff here')
+    screen.getByText('Cost')
     fireEvent.click(treeLabel)
-    expect(screen.queryByText('Stuff here')).not.toBeInTheDocument()
+    expect(screen.queryByText('Cost')).not.toBeInTheDocument()
 
     fireEvent.click(treeLabel)
-    screen.getByText('Stuff here')
+    screen.getByText('Cost')
 
     const toggleSwitch = screen.getByRole('switch')
     fireEvent.click(toggleSwitch)
-    expect(screen.queryByText('Stuff here')).not.toBeInTheDocument()
+    expect(screen.queryByText('Cost')).not.toBeInTheDocument()
   })
 
   test('Triggers onClose and onOpen callbacks when provided via props', () => {

@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { Theme } from '@looker/components';
 import type { CSeriesBasic } from '@looker/visualizations-adapters';
 /**

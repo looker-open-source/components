@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { MutableRefObject } from 'react';
 export interface Trap<O = unknown> {
     element: HTMLElement;

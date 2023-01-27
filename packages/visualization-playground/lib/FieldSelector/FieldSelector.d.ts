@@ -1,11 +1,9 @@
 /// <reference types="react" />
+import type { TreeModel } from '@looker/filter-components';
 import type { ILookmlModelExploreField } from '@looker/sdk';
-export declare type FieldGroups = {
-    [group: string]: ILookmlModelExploreField[];
-};
 export declare type FieldSelectorProps = {
     current?: ILookmlModelExploreField;
-    groups: FieldGroups;
+    tree: TreeModel[];
     onChange: (field: ILookmlModelExploreField) => void;
 };
-export declare const FieldSelector: ({ groups, current, onChange, }: FieldSelectorProps) => JSX.Element;
+export declare const FieldSelector: ({ tree, current, onChange, }: FieldSelectorProps) => JSX.Element;

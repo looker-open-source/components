@@ -25,17 +25,17 @@
  */
 
 import type { FontSizes } from '@looker/design-tokens'
-import type { FC } from 'react'
 import React from 'react'
 import styled from 'styled-components'
-import { Heading, Paragraph } from '../'
+import { Heading } from '../Text/Heading'
+import { Paragraph } from '../Text/Paragraph'
 
 export const constitutionShort =
   'We the People of the United States, in Order to form a more perfect Union, establish Justice, insure domestic Tranquility, provide for the common defense, promote the general Welfare, and secure the Blessings of Liberty to ourselves and our Posterity, do ordain and establish this Constitution for the United States of America.'
 
-export const ConstitutionShort: FC<{ fontSize?: FontSizes }> = ({
-  fontSize,
-}) => <Paragraph fontSize={fontSize}>{constitutionShort}</Paragraph>
+export const ConstitutionShort = ({ fontSize }: { fontSize?: FontSizes }) => (
+  <Paragraph fontSize={fontSize}>{constitutionShort}</Paragraph>
+)
 
 export const Constitution = () => (
   <Format>

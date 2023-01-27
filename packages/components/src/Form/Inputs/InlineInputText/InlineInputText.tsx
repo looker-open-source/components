@@ -81,8 +81,6 @@ const InlineInputTextLayout = forwardRef(
   }
 )
 
-InlineInputTextLayout.displayName = 'InlineInputTextLayout'
-
 const StyledInput = styled.input`
   ${innerInputStyle}
   cursor: ${({ readOnly, disabled }) =>

@@ -60,7 +60,7 @@
     "value": "{{prefix}} {{interval}} {{timePassed}}"
   },
   "prefix now": {
-    "value": "{{prefix}} maintenant"
+    "value": "{{prefix}} présentement"
   },
   "this": {
     "value": "ce"

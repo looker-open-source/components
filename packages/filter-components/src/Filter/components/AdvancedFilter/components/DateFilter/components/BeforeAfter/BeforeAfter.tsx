@@ -29,7 +29,7 @@ import {
   filterDateTimeModelToDate,
 } from '@looker/filter-expressions'
 import type { ILookmlModelExploreField } from '@looker/sdk'
-import type { ChangeEvent, FC } from 'react'
+import type { ChangeEvent } from 'react'
 import React, { useMemo } from 'react'
 import {
   useBeforeOrAfterUnits,
@@ -51,12 +51,12 @@ interface BeforeAfterProps {
   filterType: string
 }
 
-export const BeforeAfter: FC<BeforeAfterProps> = ({
+export const BeforeAfter = ({
   item,
   onChange,
   showTime,
   field,
-}) => {
+} : BeforeAfterProps) => {
   const { t } = useTranslation('BeforeAfter')
   const options = [
     { value: 'absolute', label: t('absolute') },

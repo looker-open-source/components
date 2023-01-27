@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { Dispatch, SetStateAction } from 'react';
 /**
  * A version of useState that is synced with a prop

@@ -1,0 +1,1 @@
+{"version":3,"file":"chartLayoutProps.js","names":[],"sources":["../../../src/types/chartLayoutProps.ts"],"sourcesContent":["/**\n * Copyright (c) 2023 Google LLC\n * SPDX-License-Identifier: MIT\n */\nexport type ChartLayoutProps = {\n  width?: number\n  height?: number\n}\n"],"mappings":""}

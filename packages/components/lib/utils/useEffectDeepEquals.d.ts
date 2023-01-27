@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import React from 'react';
 declare type UseEffectParams = Parameters<typeof React.useEffect>;
 declare type EffectCallback = UseEffectParams[0];

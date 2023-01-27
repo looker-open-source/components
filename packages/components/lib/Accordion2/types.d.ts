@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { ReactNode } from 'react';
 import type { CompatibleHTMLProps, DensityProp } from '@looker/design-tokens';
 import type { IconType } from '../Icon';

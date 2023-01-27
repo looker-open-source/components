@@ -1,0 +1,53 @@
+import { SelectMulti } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import storyBasic from '!!raw-loader!./Basic'
+import storyCloseOnSelect from '!!raw-loader!./CloseOnSelect'
+import storyFreeInput from '!!raw-loader!./FreeInput'
+import storyClearIconLabel from '!!raw-loader!./ClearIconLabel'
+
+<Meta component={SelectMulti} title="Docs/SelectMulti" />
+
+# SelectMulti
+
+The `SelectMulti` component is an extension of the [`Select`](/components/forms/select) component that supports multiple selected values and has the following specific features:
+
+- The input field renders an underlying [`InputChips`](/components/forms/input-chips)
+- An on-the-fly "Create" option allows the user to enter custom values (see [`showCreate`](#showcreate) prop)
+- Option list stays open by default so the user can select multiple options (see [`closeOnSelect`](#closeonselect) prop)
+- Values can be cleared individually or all at once (does not use the `Select` component's `isClearable` prop)
+
+<Editor code={storyBasic} />
+
+
+## closeOnSelect
+
+With the `closeOnSelect` prop, the option list closes after an option is selected.
+
+<Editor code={storyCloseOnSelect} />
+
+## freeInput
+
+Use the `freeInput` prop when the user needs to be able to easily enter values not found in the list of options.
+This enables the inputting behavior of [`InputChips`](/?path=/docs/docs-input-chips--docs) where values are separated
+by the enter key, comma, or tab or newline character when pasting. This prop also supports accepting values copy-pasted in from another `SelectMulti`.
+
+Use the `validate` callback to ensure that values entered via `freeInput` are valid, and the `onValidationFail` and `onDuplicate`
+callbacks to handle invalid values. By default, any leading or trailing whitespace will be trimmed from
+entered values, before validation. To avoid this, use `formatInputValue={false}`, or provide a callback for custom formatting.
+
+<Editor code={storyFreeInput} />
+
+## clearIconLabel
+
+The `InputChips` component provides the prop `clearIconLabel` to customize the input icon label, the same is available to the individual `Chip` with the prop `chipIconLabel`. Hover over the the `x` icon to see the tooltip.
+
+<Editor code={storyClearIconLabel} />
+
+## removeOnBackspace
+
+The `removeOnBackspace` prop inherits from [`InputChips`](/?path=/docs/docs-input-chips--docs#removeonbackspace).
+
+## Props
+
+<ArgsTable of={SelectMulti} exclude={excludedProps} />

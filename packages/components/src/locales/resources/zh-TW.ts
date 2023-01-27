@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2022 Looker Data Sciences, Inc.
+ Copyright (c) 2023 Google LLC
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -23,8 +23,10 @@
  SOFTWARE.
 
  */
+
 import dateLocale from 'date-fns/locale/zh-TW'
-import type { I18nStateWithDates } from '@looker/i18n'
+
+import { mergeLocaleObjects } from '@looker/i18n'
 
 const resources = {
   AdvancedInputControls: {
@@ -77,7 +79,7 @@ const resources = {
     Options: '選項',
   },
   FieldTimeSelect: {
-    'Please enter a valid time': '請輸入有效的時間',
+    'Please use format HHMM': '請使用 HH:MM 的格式',
   },
   GetIntentLabel: {
     Error: '錯誤',
@@ -93,8 +95,8 @@ const resources = {
     'Start date': '開始日期',
   },
   InputFilters: {
-    'Clear Filters': '清除篩選器',
-    'Filter List': '篩選器清單',
+    'Clear Filters': '清除 filter',
+    'Filter List': 'Filter 清單',
     'bottom-start': '從下開始',
   },
   InputTimeSelect: {
@@ -133,7 +135,9 @@ const resources = {
     Save: '儲存',
   },
   RangeSlider: {
+    'Maximum Name': '最大 {{name}}',
     'Maximum Value': '最大值',
+    'Minimum Name': '最小 {{name}}',
     'Minimum Value': '最小值',
   },
   RequiredStar: {
@@ -148,8 +152,4 @@ const resources = {
   },
 }
 
-export const zhTW: I18nStateWithDates = {
-  dateLocale,
-  locale: 'zh-TW',
-  resources: { 'zh-TW': resources },
-}
+export const zhTW = mergeLocaleObjects([], 'zh-TW', resources, dateLocale)

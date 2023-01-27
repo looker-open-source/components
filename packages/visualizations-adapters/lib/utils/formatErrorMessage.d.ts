@@ -1,4 +1,8 @@
 /**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
+/**
  * Creates more descriptive error messages (that may or may not include solutions)
  * based on common query errors.
  *

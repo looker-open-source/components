@@ -1,4 +1,6 @@
 {
+  "Shift + Click to sort additional columns": "按 Shift 键并单击，对其他列进行排序",
   "Sort ascending": "按升序排序",
-  "Sort descending": "按降序排序"
+  "Sort descending": "按降序排序",
+  "Totals": "总计"
 }

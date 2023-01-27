@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { MouseEvent as ReactMouseEvent } from 'react';
 /**
  * Walks up the dom tree from an event's target to its currentTarget

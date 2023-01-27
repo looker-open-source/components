@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { HandleProps } from './Handle';
 interface Handle2dProps extends HandleProps {
     y: number;

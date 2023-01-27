@@ -32,7 +32,7 @@ import { userAttribute } from './user_attribute_grammar'
 // ==========================
 //
 // Accepts expressions like "not 66, 99, 4", "1 to 100" and returns a json representation
-// See https://docs.looker.com/reference/filter-expressions#number
+// See https://cloud.google.com/looker/docs/reference/filter-expressions#number
 
 const grammar = `
 

@@ -24,7 +24,7 @@
 
  */
 
-import type { FC, MouseEvent } from 'react'
+import type { MouseEvent } from 'react'
 import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import { useMouseDragPosition, usePreviousValue } from '../../../../utils'
@@ -32,12 +32,12 @@ import { simpleHsvToHex } from '../utils'
 import type { ColorPickerProps } from '../types'
 import { Handle } from '../Handle'
 
-export const HueSliderLayout: FC<ColorPickerProps> = ({
+export const HueSliderLayout = ({
   className,
   hsv,
   setHsv,
   width,
-}) => {
+}: ColorPickerProps) => {
   const handlePosition = (hsv.h / 360) * width
 
   const sliderRef = useRef<HTMLDivElement>(null)

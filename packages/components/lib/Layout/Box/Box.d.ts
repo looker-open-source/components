@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { CompatibleHTMLProps, CursorProps, FlexboxProps, UserSelectProps } from '@looker/design-tokens';
 import type { CommonLayoutProps } from '../utils/common';
 export declare type BoxProps = CompatibleHTMLProps<HTMLElement> & CommonLayoutProps & FlexboxProps & CursorProps & UserSelectProps;

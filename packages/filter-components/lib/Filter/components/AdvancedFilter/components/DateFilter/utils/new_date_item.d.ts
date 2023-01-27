@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { DateFilterType, FilterModel } from '@looker/filter-expressions';
 /**
  * Used when adding a new row to an advanced date filter
@@ -10,6 +14,11 @@ export declare const newDateItem: ({ value, unit, ...restItem }: FilterModel<Dat
     type: "past";
     unit: any;
     value: any;
+    /**
+     * Used when adding a new row to an advanced date filter
+     * @param item The item in the previous row
+     * @returns An item based on the previous item but with a conventional default, e.g. 1 month
+     */
     year?: undefined;
     month?: undefined;
     range?: undefined;
@@ -20,7 +29,7 @@ export declare const newDateItem: ({ value, unit, ...restItem }: FilterModel<Dat
 } | {
     id: string;
     is: boolean;
-    type: "this" | "next" | "last";
+    type: "last" | "this" | "next";
     unit: any;
     value?: undefined;
     year?: undefined;
@@ -59,7 +68,7 @@ export declare const newDateItem: ({ value, unit, ...restItem }: FilterModel<Dat
 } | {
     id: string;
     is: boolean;
-    type: "before" | "after";
+    type: "after" | "before";
     range: any;
     unit: any;
     value: any;

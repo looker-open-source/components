@@ -1,4 +1,4 @@
-import type { FC } from 'react';
+/// <reference types="react" />
 import type { IconType } from '../Icon';
 import type { AvatarUserProps } from './AvatarUser';
 import type { AvatarIconProps } from './AvatarIcon';
@@ -15,4 +15,4 @@ export interface AvatarComboProps extends Omit<AvatarIconProps & AvatarUserProps
      **/
     secondaryBg?: string;
 }
-export declare const AvatarCombo: import("styled-components").StyledComponent<FC<AvatarComboProps>, import("styled-components").DefaultTheme, {}, never>;
+export declare const AvatarCombo: import("styled-components").StyledComponent<({ secondaryIcon, secondaryColor, secondaryBg, color, icon, user, role, ...props }: AvatarComboProps) => JSX.Element, import("styled-components").DefaultTheme, {}, never>;

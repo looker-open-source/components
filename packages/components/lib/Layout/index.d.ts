@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 export { Box } from './Box';
 export type { BoxProps } from './Box';
 export { Box2 } from './Box2';

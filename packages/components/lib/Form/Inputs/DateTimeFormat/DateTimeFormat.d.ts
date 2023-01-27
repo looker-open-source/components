@@ -1,4 +1,8 @@
-import type { FC } from 'react';
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
+/// <reference types="react" />
 import type { Locale } from 'date-fns';
 import type { DateFormats, DateTimeOptions } from '../../../Calendar/utils';
 export declare type DateTimeFormatProps = {
@@ -13,5 +17,5 @@ export declare type DateTimeFormatProps = {
     timeZone?: string;
 };
 declare type DateTimeFormatExtensionProps = DateTimeFormatProps & DateTimeOptions;
-export declare const DateTimeFormat: FC<DateTimeFormatExtensionProps>;
+export declare const DateTimeFormat: ({ children, date, format, locale, time, timeZone, }: DateTimeFormatExtensionProps) => JSX.Element;
 export {};

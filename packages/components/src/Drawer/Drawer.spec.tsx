@@ -35,7 +35,7 @@ import {
 } from '@testing-library/react'
 import { DialogContext } from '../Dialog/DialogContext'
 import { Drawer } from './Drawer'
-import { UseDrawerHook, RenderProps } from './stories/Drawer.stories'
+import { UseDrawer } from './stories/index.stories'
 
 const SimpleContent = () => {
   const { closeModal } = useContext(DialogContext)
@@ -76,53 +76,24 @@ describe('Drawer', () => {
   })
 
   test('useDrawer hook', async () => {
-    renderWithTheme(<UseDrawerHook />)
+    renderWithTheme(<UseDrawer />)
 
     // Dialog closed
-    expect(
-      screen.queryByText('The Constitution of the United States')
-    ).not.toBeInTheDocument()
+    expect(screen.queryByText('Drawer content')).not.toBeInTheDocument()
 
     // Open Drawer
     const link = screen.getByText('Open Drawer')
     fireEvent.click(link)
     runTimers()
-    expect(
-      screen.getByText('The Constitution of the United States')
-    ).toBeInTheDocument()
+    expect(screen.getByText('Drawer content')).toBeInTheDocument()
 
     // Close the Drawer
-    const doneButton = screen.getByText('Done Reading')
-    fireEvent.click(doneButton)
-    await waitForElementToBeRemoved(() =>
-      screen.queryByText('The Constitution of the United States')
-    )
+    const backdrop = screen.getByTestId('backdrop')
+    fireEvent.click(backdrop)
+    await waitForElementToBeRemoved(() => screen.queryByText('Drawer content'))
   })
 
-  test('renderProps form', async () => {
-    renderWithTheme(<RenderProps />)
-
-    // Dialog closed
-    expect(
-      screen.queryByText('The Constitution of the United States')
-    ).not.toBeInTheDocument()
-
-    // Open Drawer
-    const link = screen.getByText('Open Drawer')
-    fireEvent.click(link)
-    runTimers()
-    expect(
-      screen.getByText('The Constitution of the United States')
-    ).toBeInTheDocument()
-
-    // Close the Drawer
-    const doneButton = screen.getByText('Done Reading')
-    fireEvent.click(doneButton)
-    await waitForElementToBeRemoved(() =>
-      screen.queryByText('The Constitution of the United States')
-    )
-  })
-  test('renderProps form', async () => {
+  test('drawer form', async () => {
     renderWithTheme(
       <Drawer defaultOpen width="rail" content={<SimpleContent />}></Drawer>
     )

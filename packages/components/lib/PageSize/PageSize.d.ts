@@ -1,4 +1,4 @@
-import type { FC } from 'react';
+/// <reference types="react" />
 export interface PageSizeProps {
     className?: string;
     /**
@@ -25,5 +25,5 @@ export interface PageSizeProps {
      */
     alwaysVisible?: boolean;
 }
-export declare const PageSizeLayout: FC<PageSizeProps>;
-export declare const PageSize: import("styled-components").StyledComponent<FC<PageSizeProps>, import("styled-components").DefaultTheme, {}, never>;
+export declare const PageSizeLayout: ({ alwaysVisible, value, total, className, onChange, options, }: PageSizeProps) => JSX.Element | null;
+export declare const PageSize: import("styled-components").StyledComponent<({ alwaysVisible, value, total, className, onChange, options, }: PageSizeProps) => JSX.Element | null, import("styled-components").DefaultTheme, {}, never>;

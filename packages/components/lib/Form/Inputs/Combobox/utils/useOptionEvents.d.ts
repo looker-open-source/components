@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { Context } from 'react';
 import type { ComboboxContextProps, ComboboxMultiContextProps } from '../ComboboxContext';
 import type { ComboboxOptionProps } from '../types';

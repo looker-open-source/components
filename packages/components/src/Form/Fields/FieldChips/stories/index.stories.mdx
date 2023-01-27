@@ -1,0 +1,16 @@
+import { FieldChips } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import storyBasic from '!!raw-loader!./Basic'
+
+<Meta component={FieldChips} title="Docs/FieldChips" />
+
+# FieldChips
+
+The `<FieldChips />` component is composed of an `<InputChips />` component and a `<Label />` component. Using `<FieldChips />` allows for rendering validation messages, label, details and description. By default, the label will render directly above the input field, which is the recommended convention, however this is adjustable with the `inline` property.
+
+<Editor code={storyBasic} />
+
+## Props
+
+<ArgsTable of={FieldChips} exclude={excludedProps} />

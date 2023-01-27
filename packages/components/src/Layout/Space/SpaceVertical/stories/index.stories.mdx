@@ -1,0 +1,47 @@
+import { SpaceVertical } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import storyVerticalBasic from '!!raw-loader!./VerticalBasic'
+import storyVerticalGap from '!!raw-loader!./VerticalGap'
+import storyVerticalProperties from '!!raw-loader!./VerticalProperties'
+import storyVerticalReverse from '!!raw-loader!./VerticalReverse'
+import storyVerticalStretch from '!!raw-loader!./VerticalStretch'
+
+<Meta component={SpaceVertical} title="Docs/SpaceVertical" />
+
+# SpaceVertical
+
+`SpaceVertical` is designed to put space between its children. `SpaceVertical` operates on the vertical axis.
+
+<Editor code={storyVerticalBasic} />
+
+## Space & SpaceVertical Support spacing properties
+
+1. Margin (`m`, `mx`, `ml`, etc...)
+2. Padding (`p`, `px`, `pl`, etc...)
+
+# Alignment
+
+`SpaceVertical` supports `align` which defaults to `stretch`.
+
+<Editor code={storyVerticalProperties} />
+
+# Gap
+
+Specify the width of the gap between items:
+
+<Editor code={storyVerticalGap} />
+
+## Reverse
+
+Reverse the order of the items in the space.
+
+<Editor code={storyVerticalReverse} />
+
+## Stretch
+
+<Editor code={storyVerticalStretch} />
+
+## Props
+
+<ArgsTable of={SpaceVertical} exclude={excludedProps} />

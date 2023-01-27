@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","names":[],"sources":["../../../../src/Layout/Space/index.ts"],"sourcesContent":["/**\n * Copyright (c) 2023 Google LLC\n * SPDX-License-Identifier: MIT\n */\n\nexport * from './Space'\nexport * from './SpaceVertical'\n"],"mappings":";;AAKA,cAAc,SAAS;AACvB,cAAc,iBAAiB"}

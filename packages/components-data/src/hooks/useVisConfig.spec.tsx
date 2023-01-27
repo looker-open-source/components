@@ -24,7 +24,6 @@
 
  */
 
-import type { FC } from 'react'
 import React from 'react'
 import { waitFor, render } from '@testing-library/react'
 import { ContextWrapper, sdkMethodQueryListener } from '../testUtils'
@@ -37,7 +36,7 @@ type TestComponentProps = {
   queryId?: number
 }
 
-const TestComponent: FC<TestComponentProps> = ({ queryId = 1 }) => {
+const TestComponent = ({ queryId = 1 }: TestComponentProps) => {
   const response = useVisConfig(queryId)
   dataContainerListener(response)
   return null

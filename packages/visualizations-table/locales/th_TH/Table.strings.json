@@ -1,4 +1,6 @@
 {
+  "Shift + Click to sort additional columns": "Shift + Click เพื่อจัดเรียงคอลัมน์เพิ่มเติม",
   "Sort ascending": "จัดเรียงจากน้อยไปมาก",
-  "Sort descending": "จัดเรียงจากมากไปน้อย"
+  "Sort descending": "จัดเรียงจากมากไปน้อย",
+  "Totals": "ยอดรวม"
 }

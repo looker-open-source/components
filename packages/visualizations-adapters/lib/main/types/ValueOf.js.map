@@ -1,0 +1,1 @@
+{"version":3,"file":"ValueOf.js","names":[],"sources":["../../../src/types/ValueOf.ts"],"sourcesContent":["/**\n * Copyright (c) 2023 Google LLC\n * SPDX-License-Identifier: MIT\n */\n\n/**\n * A simple utility type to extract the values from a key/value type.\n * Mimics the behavior of `KeyOf`, but for values.\n */\nexport type ValueOf<T> = T[keyof T]\n"],"mappings":""}

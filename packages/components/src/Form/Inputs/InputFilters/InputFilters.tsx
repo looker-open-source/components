@@ -24,9 +24,7 @@
 
  */
 
-import omit from 'lodash/omit'
 import styled from 'styled-components'
-import type { FC } from 'react'
 import React, { useMemo, useState, useRef } from 'react'
 import { Close } from '@styled-icons/material/Close'
 import { FilterList } from '@styled-icons/material/FilterList'
@@ -43,13 +41,13 @@ import { InputFiltersChip } from './InputFiltersChip'
 import { inputFilterEditor } from './inputFilterEditor'
 import type { InputFiltersProps } from './types'
 
-const InputFiltersLayout: FC<InputFiltersProps> = ({
+const InputFiltersLayout = ({
   className,
   filters,
   hideFilterIcon = false,
   onChange,
   ...props
-}) => {
+}: InputFiltersProps) => {
   const { t } = useTranslation('InputFilters')
   const placeholder = props.placeholder || t('Filter List')
   const [fieldEditing, setFieldEditing] = useState<undefined | string>(
@@ -99,7 +97,7 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
   const isClearable = assignedFilters.length > 0
 
   const clearFilters = () => {
-    onChange(filters.map(filter => omit(filter, 'value')))
+    onChange(filters.map(({ value, ...rest }) => rest))
   }
 
   const focusInput = () => inputRef.current && inputRef.current.focus()
@@ -130,11 +128,13 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
 
           const handleDelete = () =>
             onChange(
-              filters.map(currentFilter =>
-                currentFilter.field !== field
-                  ? currentFilter
-                  : omit(currentFilter, 'value')
-              )
+              filters.map(currentFilter => {
+                if (currentFilter.field !== field) {
+                  return currentFilter
+                }
+                const { value: _value, ...rest } = currentFilter
+                return rest
+              })
             )
 
           const setFieldEditingValue = (value?: string) => {
@@ -184,7 +184,7 @@ const InputFiltersLayout: FC<InputFiltersProps> = ({
               }
               isOpen={fieldEditing !== undefined}
               key={i}
-              placement={t('bottom-start')}
+              placement="bottom-start"
               setOpen={closeEditor}
             >
               {filterToken}

@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 export * from './available_locales';
 export * from './i18n_resources';
 export * from './resources/cs-CZ';

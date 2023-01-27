@@ -24,7 +24,7 @@
 
  */
 
-import type { Story } from '@storybook/react/types-6-0'
+import type { Story } from '@storybook/react'
 import React from 'react'
 import { Visualization } from '../Visualization'
 import type { Fields, BarProps, CBar } from '@looker/visualizations-adapters'
@@ -43,7 +43,7 @@ import {
 
 export default {
   component: Visualization,
-  title: 'Visualizations/Bar',
+  title: 'Visualizations/Stories/Bar',
 }
 
 type StoryTemplateProps = Omit<BarProps, 'config' | 'fields' | 'data'> & {

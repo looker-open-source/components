@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { MouseEvent as ReactMouseEvent } from 'react';
 /**
  * @param onMouseDownClick callback with React.MouseEvent for the first of either mousedown OR click

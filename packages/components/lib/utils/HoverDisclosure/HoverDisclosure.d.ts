@@ -1,4 +1,8 @@
-import type { FC } from 'react';
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
+import type { ReactNode } from 'react';
 export interface HoverDisclosureProps {
     visible?: boolean;
     /**
@@ -7,5 +11,6 @@ export interface HoverDisclosureProps {
      * width (in pixels)
      */
     width?: number;
+    children?: ReactNode;
 }
-export declare const HoverDisclosure: FC<HoverDisclosureProps>;
+export declare const HoverDisclosure: ({ children, width, visible, }: HoverDisclosureProps) => JSX.Element;

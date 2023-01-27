@@ -349,12 +349,14 @@ export const InternalRangeSlider = forwardRef(
       ]
     )
 
-    const handleMouseDown = useMemo(() => partial(handleMouseEvent, false), [
-      handleMouseEvent,
-    ])
-    const handleMouseDrag = useMemo(() => partial(handleMouseEvent, true), [
-      handleMouseEvent,
-    ])
+    const handleMouseDown = useMemo(
+      () => partial(handleMouseEvent, false),
+      [handleMouseEvent]
+    )
+    const handleMouseDrag = useMemo(
+      () => partial(handleMouseEvent, true),
+      [handleMouseEvent]
+    )
 
     /*
      * Mouse down event (and re-measure the client rectangle values before calculating value).

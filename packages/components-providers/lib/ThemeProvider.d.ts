@@ -1,6 +1,7 @@
-import type { FC } from 'react';
+import type { ReactNode } from 'react';
 import type { Theme } from '@looker/design-tokens';
 export interface ThemeProviderProps {
     theme?: Theme;
+    children?: ReactNode;
 }
-export declare const ThemeProvider: FC<ThemeProviderProps>;
+export declare const ThemeProvider: ({ children, theme, }: ThemeProviderProps) => JSX.Element;

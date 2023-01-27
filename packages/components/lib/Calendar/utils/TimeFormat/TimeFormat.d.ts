@@ -1,3 +1,7 @@
-import type { FC } from 'react';
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
+/// <reference types="react" />
 import type { DateTimeFormatProps } from '../../../Form/Inputs/DateTimeFormat';
-export declare const TimeFormat: FC<DateTimeFormatProps>;
+export declare const TimeFormat: (props: DateTimeFormatProps) => JSX.Element;

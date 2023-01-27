@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 export { doDataTableSort } from './sort_utils';
 export type { DataTableDatum, DataTableData } from './sort_utils';
 export * from './useDataTable';

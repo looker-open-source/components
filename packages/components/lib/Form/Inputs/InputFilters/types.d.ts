@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { ReactNode } from 'react';
 export interface InputFilterEditorProps {
     closeEditor: () => void;

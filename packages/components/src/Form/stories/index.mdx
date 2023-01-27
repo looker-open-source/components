@@ -1,0 +1,18 @@
+import { Form } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import storyBasic from '!!raw-loader!./Basic'
+import storyValidation from '!!raw-loader!./Validation'
+
+<Meta component={Form} title="Docs/Form" />
+
+# Form
+
+The `<Form />` component wraps a collection of field components and allows for multi-field validation message rendering by accepting a `validationMessages` property. The property takes a dictionary with key as field name and value as a `ValidationMessage` object which has a `type` and a `message`:
+
+## Form Validation
+
+<Editor code={storyBasic} />
+
+A complete implementation that keeps track of state and updates validation messages onChange.
+
+<Editor code={storyValidation} />

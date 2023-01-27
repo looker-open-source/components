@@ -46,10 +46,9 @@ export type DateFilterItemToStringFunction = (
   showTime: boolean
 ) => string
 
-const datetime = (
-  { year, month, day, hour, minute }: FilterDateTimeModel,
-  showTime: boolean
-): string => {
+const datetime = (date?: FilterDateTimeModel, showTime?: boolean): string => {
+  if (!date) return 'Invalid Date'
+  const { year, month, day, hour, minute } = date
   let result = String(zeroPad4(year))
   result += month ? `/${zeroPad2(month)}` : ''
   result += day ? `/${zeroPad2(day)}` : ''
@@ -63,7 +62,7 @@ const datetime = (
 const beforeAfter = (item: FilterModel, showTime: boolean) => {
   const { type, range, date, fromnow, unit } = item
   if (range === 'absolute') {
-    return `${type} ${datetime(date!, showTime)}`
+    return `${type} ${datetime(date, showTime)}`
   }
 
   const fromNowAgoText = fromnow ? 'from now' : 'ago'
@@ -73,7 +72,7 @@ const beforeAfter = (item: FilterModel, showTime: boolean) => {
 }
 
 const dateRange = ({ start, end }: FilterModel, showTime: boolean) =>
-  `${datetime(start!, showTime)} to ${datetime(end!, showTime)}`
+  `${datetime(start, showTime)} to ${datetime(end, showTime)}`
 
 const thisRange = ({ startInterval, endInterval }: FilterModel) =>
   `this ${startInterval} to ${endInterval}`
@@ -90,7 +89,7 @@ const monthToString = ({ year, month }: FilterModel) =>
 const dayToString = ({ day }: FilterModel) => `${day}`
 
 const on = ({ date }: FilterModel, showTime: boolean) =>
-  `${datetime(date!, showTime && hasTimeFilterDateTimeModel(date))}`
+  `${datetime(date, showTime && hasTimeFilterDateTimeModel(date))}`
 
 const relative = ({ startInterval, intervalType, endInterval }: FilterModel) =>
   `${intervalToString(startInterval)} ${intervalType} for ${intervalToString(
@@ -130,11 +129,13 @@ const filterToStringMap: DateFilterItemToStringMapType = {
 /**
  * Maps a FilterItem to a function for converting it to an expression
  */
-const dateToString = (showTime: boolean) => (item: FilterModel): string => {
-  const toStringFunction: DateFilterItemToStringFunction =
-    filterToStringMap[item.type]
-  return toStringFunction?.(item, showTime) || ''
-}
+const dateToString =
+  (showTime: boolean) =>
+  (item: FilterModel): string => {
+    const toStringFunction: DateFilterItemToStringFunction =
+      filterToStringMap[item.type]
+    return toStringFunction?.(item, showTime) || ''
+  }
 
 /**
  * Converts the AST to an array of FilterItems and then

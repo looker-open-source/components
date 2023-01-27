@@ -1,0 +1,28 @@
+import { Radio } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import storyChecked from '!!raw-loader!./Checked'
+import storyDisabled from '!!raw-loader!./Disabled'
+
+<Meta component={Radio} title="Docs/Radio" />
+
+# Radio
+
+The `Radio` component renders a single radio button on the page, with no accompanying label.
+If you are building a form, you probably want to use [`FieldRadioGroup`](/?path=/docs/docs-form-fields-fieldradiogroup--docs) instead as it provides label and group support.
+
+## Checked Property
+
+The `Radio` component accepts the `checked` prop, which sets the radio button as selected.
+
+<Editor code={storyChecked} />
+
+## Disabled Property
+
+Use the disable property to gray out the radio button, making it un-clickable.
+
+<Editor code={storyDisabled} />
+
+## Props
+
+<ArgsTable of={Radio} exclude={excludedProps} />

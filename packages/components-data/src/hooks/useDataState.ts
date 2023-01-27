@@ -27,7 +27,7 @@
 import { useReducer } from 'react'
 import type { Reducer } from 'react'
 import { createContainer } from 'unstated-next'
-import type { ILookmlModelExploreFieldset, IQuery } from '@looker/sdk'
+import type { ILookmlModelExplore, IQuery } from '@looker/sdk'
 import type {
   SDKRecord,
   Fields,
@@ -48,7 +48,7 @@ export type DataStore = {
   dashboardIdMap: Record<number, number> // { DashboardID: QueryID }
   slugIdMap: Record<string, number> // { Slug: QueryID }
   byId: Record<number, Partial<QueryAttributes>>
-  modelExplore: Record<string, Record<string, ILookmlModelExploreFieldset>> // { thelook: { orders: {... } }
+  modelExplore: Record<string, Record<string, ILookmlModelExplore>> // { thelook: { orders: {... } }
 }
 
 type UpdateByDashboardID = {
@@ -75,7 +75,7 @@ type UpdateModelView = {
   payload: {
     model: string
     view: string
-    fieldset: ILookmlModelExploreFieldset
+    explore: ILookmlModelExplore
   }
 }
 
@@ -87,9 +87,9 @@ const setModelExplore = (
   state: DataStore,
   action: UpdateModelView
 ): DataStore['modelExplore'] => {
-  const { model, view, fieldset } = action.payload
+  const { model, view, explore } = action.payload
   const draftModelExplore = { ...state.modelExplore }
-  set(draftModelExplore, [model, view], fieldset)
+  set(draftModelExplore, [model, view], explore)
 
   return draftModelExplore
 }
@@ -161,10 +161,8 @@ const defaultInitialState: DataStore = {
  * This hook stores the data primitives used in the rest of the system.
  */
 const useDataState = (initialState = defaultInitialState) => {
-  const [
-    { dashboardIdMap, slugIdMap, byId, modelExplore },
-    dispatch,
-  ] = useReducer(reducer, initialState)
+  const [{ dashboardIdMap, slugIdMap, byId, modelExplore }, dispatch] =
+    useReducer(reducer, initialState)
 
   const getIdFromDashboard = (dashboardId?: number) =>
     dashboardId && dashboardIdMap[dashboardId]
@@ -199,9 +197,9 @@ const useDataState = (initialState = defaultInitialState) => {
   const setModelExplore = (
     model: string,
     view: string,
-    fieldset: ILookmlModelExploreFieldset
+    explore: ILookmlModelExplore
   ) =>
-    dispatch({ payload: { fieldset, model, view }, type: 'update_model_view' })
+    dispatch({ payload: { explore, model, view }, type: 'update_model_view' })
 
   const getModelExplore = (model?: string, view?: string) =>
     model && view ? modelExplore[model]?.[view] : undefined

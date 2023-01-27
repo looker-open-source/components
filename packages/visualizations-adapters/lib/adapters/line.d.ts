@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { VisWrapperProps } from '../VisWrapper';
 import type { CommonCartesianProperties, Fields, SDKRecord, CSeriesBasic, CSeriesPoints, CSeriesLine, LinearPositions, SupportedChartTypes, ChartLayoutProps } from '../types';
 export declare type CLineSeries = Partial<CSeriesBasic & CSeriesPoints & CSeriesLine>;

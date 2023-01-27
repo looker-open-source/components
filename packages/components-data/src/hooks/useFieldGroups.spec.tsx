@@ -24,7 +24,6 @@
 
  */
 
-import type { FC } from 'react'
 import React from 'react'
 import { waitFor, render } from '@testing-library/react'
 import {
@@ -40,7 +39,7 @@ type TestComponentProps = {
   id?: number
 }
 
-const TestComponent: FC<TestComponentProps> = ({ id = 1 }) => {
+const TestComponent = ({ id = 1 }: TestComponentProps) => {
   const response = useFieldGroups(id)
   dataContainerListener(response)
   return null
@@ -77,7 +76,9 @@ describe('useFieldGroups', () => {
           byId: {},
           dashboardIdMap: {},
           modelExplore: {
-            thelook: { orders: { dimensions: [dimensionMetadata] } },
+            thelook: {
+              orders: { fields: { dimensions: [dimensionMetadata] } },
+            },
           },
           slugIdMap: {},
         }}

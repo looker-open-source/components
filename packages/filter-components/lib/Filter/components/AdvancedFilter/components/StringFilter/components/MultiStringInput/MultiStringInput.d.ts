@@ -1,6 +1,6 @@
+/// <reference types="react" />
 import type { ValidationMessageProps } from '@looker/components';
 import type { FilterModel } from '@looker/filter-expressions';
-import type { FC } from 'react';
 import type { Option } from '../../../../../../types/option';
 import type { PlacementProps } from '../../../../../../utils/filter_styles';
 interface MultiStringInputProps extends PlacementProps {
@@ -18,6 +18,6 @@ interface MultiStringInputProps extends PlacementProps {
     height?: string | number;
     showDropDownMenu?: boolean;
 }
-export declare const MultiStringInputLayout: FC<MultiStringInputProps>;
-export declare const MultiStringInput: import("styled-components").StyledComponent<FC<MultiStringInputProps>, import("styled-components").DefaultTheme, {}, never>;
+export declare const MultiStringInputLayout: ({ className, onChange, onInputChange, isLoading, item, disableCreate, suggestions, enumerations, validationMessage, id, width, height, showDropDownMenu, }: MultiStringInputProps) => JSX.Element;
+export declare const MultiStringInput: import("styled-components").StyledComponent<({ className, onChange, onInputChange, isLoading, item, disableCreate, suggestions, enumerations, validationMessage, id, width, height, showDropDownMenu, }: MultiStringInputProps) => JSX.Element, import("styled-components").DefaultTheme, {}, never>;
 export {};

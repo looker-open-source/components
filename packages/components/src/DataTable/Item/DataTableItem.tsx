@@ -24,7 +24,7 @@
 
  */
 
-import type { FC, ReactNode } from 'react'
+import type { ReactNode } from 'react'
 import React, { useContext, useRef } from 'react'
 import styled from 'styled-components'
 import type { CompatibleHTMLProps } from '@looker/design-tokens'
@@ -67,7 +67,7 @@ export interface DataTableItemProps
   actionPrimary?: ReactNode
 }
 
-const DataTableItemLayout: FC<DataTableItemProps> = props => {
+const DataTableItemLayout = (props: DataTableItemProps) => {
   const { t } = useTranslation('DataTableItem')
   const actionsTooltipText = t('Options')
   const {

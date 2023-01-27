@@ -1,4 +1,8 @@
-import type { FC } from 'react';
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
+import type { ReactNode } from 'react';
 export interface TabPanelProps {
     className?: string;
     selected?: boolean;
@@ -8,8 +12,9 @@ export interface TabPanelProps {
      * @default false
      */
     isTabStop?: boolean;
+    children?: ReactNode;
 }
 /**
  * @deprecated Use `Tabs2` & `Tab2` instead
  */
-export declare const TabPanel: import("styled-components").StyledComponent<FC<TabPanelProps>, import("styled-components").DefaultTheme, {}, never>;
+export declare const TabPanel: import("styled-components").StyledComponent<({ children, className, selected, isTabStop, }: TabPanelProps) => JSX.Element | null, import("styled-components").DefaultTheme, {}, never>;

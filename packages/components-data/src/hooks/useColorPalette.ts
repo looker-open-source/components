@@ -94,9 +94,9 @@ export const useColorPalette = (colorApplication?: ColorApplication) => {
 
   const fetcher = async () => {
     if (collection_id) {
-      return ((await sdk.color_collection(
+      return (await sdk.color_collection(
         collection_id
-      )) as unknown) as Promise<RunQueryReturnType>
+      )) as unknown as Promise<RunQueryReturnType>
     }
 
     return undefined

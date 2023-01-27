@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 export * from './get_filter_options';
 export * from './get_location_filter_options';
 export * from './get_number_filter_options';

@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { SizeSmall, SizeMedium, SizeLarge } from '@looker/design-tokens';
 export declare type DataTableColumnSize = SizeSmall | SizeMedium | SizeLarge | 'auto' | 'nowrap' | number;
 export declare const sizeInfersTruncate: (size: DataTableColumnSize) => boolean | 0;

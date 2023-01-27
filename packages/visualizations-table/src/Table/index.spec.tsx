@@ -78,8 +78,8 @@ it('renders row numbers when config.show_row_numbers is true', () => {
     />
   )
 
-  // assert that the first table cell rendered is the row index (1)
-  expect(screen.getAllByRole('cell')[0]).toHaveTextContent('1')
+  // assert that the first visible table cell rendered is the row index (1)
+  expect(screen.getAllByRole('cell')[1]).toHaveTextContent('1')
 })
 
 it('hides row numbers when config.show_row_numbers is false', () => {
@@ -91,8 +91,8 @@ it('hides row numbers when config.show_row_numbers is false', () => {
     />
   )
 
-  // assert that the first table cell rendered is a query response value
-  expect(screen.getAllByRole('cell')[0]).toHaveTextContent('2019-12-22')
+  // assert that the first visible table cell rendered is a query response value
+  expect(screen.getAllByRole('cell')[1]).toHaveTextContent('2019-12-22')
 })
 
 it('sorts table columns', () => {
@@ -121,6 +121,7 @@ it('sorts table columns', () => {
   // mock fields sorted by 'orders.count' by default
   const topRow = screen.getAllByRole('row')[1]
   expect(getTextContent(within(topRow).getAllByRole('cell'))).toEqual([
+    '',
     '2012-12-12',
     'Oregon',
     'Infinity',
@@ -133,6 +134,7 @@ it('sorts table columns', () => {
 
   const newTopRow = screen.getAllByRole('row')[1]
   expect(getTextContent(within(newTopRow).getAllByRole('cell'))).toEqual([
+    '',
     '2022-09-01',
     'Oregon',
     '-Infinity',
@@ -152,7 +154,8 @@ it('sorts multiple table columns when shift key is held down', () => {
     />
   )
 
-  const headers = screen.getAllByRole('columnheader')
+  // omit first and last elements which will always be the virtual scrolling spacers
+  const headers = screen.getAllByRole('columnheader').slice(1, -1)
 
   const sortButtons = headers.map(h =>
     within(h).getByRole('button', { hidden: true })
@@ -190,9 +193,8 @@ it('renders totals when config.show_totals is true', () => {
       totals={mockTotals}
     />
   )
-  const footerRow = screen.getAllByRole('row')[
-    screen.getAllByRole('row').length - 1
-  ]
+  const footerRow =
+    screen.getAllByRole('row')[screen.getAllByRole('row').length - 1]
   expect(
     getTextContent(within(footerRow).getAllByRole('columnheader'))
   ).toEqual(['Totals', '', '5689', '2245'])
@@ -212,10 +214,10 @@ it('renders value format on body', () => {
       totals={mockTotals}
     />
   )
-  const bodyRow = screen.getAllByRole('row')[
-    screen.getAllByRole('row').length - 2
-  ]
+  const bodyRow =
+    screen.getAllByRole('row')[screen.getAllByRole('row').length - 2]
   expect(getTextContent(within(bodyRow).getAllByRole('cell'))).toEqual([
+    '',
     '2019-12-19',
     'Oregon',
     '$87.00',
@@ -237,9 +239,8 @@ it('renders value format on totals', () => {
       totals={mockTotals}
     />
   )
-  const footerRow = screen.getAllByRole('row')[
-    screen.getAllByRole('row').length - 1
-  ]
+  const footerRow =
+    screen.getAllByRole('row')[screen.getAllByRole('row').length - 1]
   expect(
     getTextContent(within(footerRow).getAllByRole('columnheader'))
   ).toEqual(['Totals', '', '$5,689.00', '2,245'])
@@ -264,7 +265,7 @@ it('renders multiple table head rows for pivoted queries', () => {
   // first header row is the pivot labels
   expect(
     getTextContent(within(headerRows[0]).getAllByRole('columnheader'))
-  ).toEqual(['Users Gender', 'f', 'm', 'male'])
+  ).toEqual(['', 'Users Gender', 'f', 'm', 'male', ''])
 
   // second header row is the column labels
   expect(

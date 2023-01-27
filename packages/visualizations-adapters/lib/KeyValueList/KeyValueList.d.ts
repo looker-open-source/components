@@ -1,7 +1,7 @@
-import type { FC } from 'react';
+/// <reference types="react" />
 import type { SDKRecord } from '../types';
 interface KeyValueListProps {
     value: SDKRecord;
 }
-export declare const KeyValueList: FC<KeyValueListProps>;
+export declare const KeyValueList: ({ value }: KeyValueListProps) => JSX.Element;
 export {};

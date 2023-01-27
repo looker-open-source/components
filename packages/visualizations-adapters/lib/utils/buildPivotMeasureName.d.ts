@@ -1,4 +1,8 @@
 /**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
+/**
  * Builds a key for a pivot "measure" (i.e. a pivot series). Should be
  * used when transforming pivot data and pivot fields metadata.
  *

@@ -86,7 +86,7 @@ export type Fields = {
 }
 
 export type PivotMetadata = {
-  data: Record<string, string>
+  data: Record<string, string | null>
   key: string
   is_total: boolean
   labels: Record<string, string>

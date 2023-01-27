@@ -24,7 +24,7 @@
 
  */
 
-import type { FC, Ref, ReactNode } from 'react'
+import type { Ref, ReactNode } from 'react'
 import React, { forwardRef } from 'react'
 import styled, { css } from 'styled-components'
 import type { CompatibleHTMLProps, DensityProp } from '@looker/design-tokens'
@@ -37,13 +37,20 @@ import type { AccordionIndicatorPosition } from './types'
 export type Accordion2DisclosureProps = CompatibleHTMLProps<HTMLElement> &
   DensityProp &
   FocusVisibleProps & {
-    ref?: Ref<HTMLDivElement>
     indicator: ReactNode
     indicatorPosition?: AccordionIndicatorPosition
   }
 
-const Accordion2DisclosureInternal: FC<Accordion2DisclosureProps> = forwardRef(
-  ({ children, indicator, indicatorPosition, ...props }, ref) => (
+const Accordion2DisclosureInternal = forwardRef(
+  (
+    {
+      children,
+      indicator,
+      indicatorPosition,
+      ...props
+    }: Accordion2DisclosureProps,
+    ref?: Ref<HTMLDivElement>
+  ) => (
     <div ref={ref} {...props}>
       {indicatorPosition === 'left' && indicator}
       <AccordionLabel>{children}</AccordionLabel>

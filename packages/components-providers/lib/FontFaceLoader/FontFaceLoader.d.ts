@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 /// <reference types="react" />
 import type { FontSources } from '@looker/design-tokens';
 export declare const fontFacesCSS: (fontSources: FontSources) => string;

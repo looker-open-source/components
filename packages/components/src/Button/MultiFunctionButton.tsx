@@ -46,6 +46,7 @@ export type MultiFunctionButtonProps = {
     (ButtonProps | IconButtonProps) & RefAttributes<HTMLButtonElement>
   >
   swap?: boolean
+  disabled?: boolean
 }
 
 /**
@@ -63,6 +64,7 @@ export const MultiFunctionButton = forwardRef(
       children,
       alternateRef,
       swap = false,
+      disabled = undefined,
     }: MultiFunctionButtonProps,
     forwardedRef: Ref<HTMLButtonElement>
   ) => {
@@ -102,13 +104,13 @@ export const MultiFunctionButton = forwardRef(
       >
         {cloneElement(children, {
           'aria-hidden': !!swap,
-          disabled: swap === true ? true : undefined,
+          disabled: swap === true ? true : disabled,
           ref: useForkedRef(aRef, forwardedRef),
           style,
         })}
         {cloneElement(alternate, {
           'aria-hidden': !swap,
-          disabled: swap === false ? true : undefined,
+          disabled: swap === false ? true : disabled,
           ref: useForkedRef(bRef, alternateRef),
           style,
         })}

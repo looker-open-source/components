@@ -1,4 +1,4 @@
-import type { FC } from 'react';
+import type { ReactNode } from 'react';
 import type { UseI18nProps } from './I18n';
 import type { ThemeProviderProps } from './ThemeProvider';
 import type { ExtendComponentsTheme } from './ExtendComponentsProvider';
@@ -24,6 +24,7 @@ export interface ComponentsProviderProps extends ThemeProviderProps, ExtendCompo
      * @default false
      */
     disableStyleDefender?: boolean;
+    children?: ReactNode;
 }
 /**
  * ComponentsProvider registers fundamental infrastructure for @looker/components to
@@ -40,4 +41,4 @@ export interface ComponentsProviderProps extends ThemeProviderProps, ExtendCompo
  *   - GoogleFont loading
  *
  */
-export declare const ComponentsProvider: FC<ComponentsProviderProps>;
+export declare const ComponentsProvider: ({ children, loadFontSources, loadGoogleFonts, disableStyleDefender, dateLocale, locale, resources, themeCustomizations, ...props }: ComponentsProviderProps) => JSX.Element;

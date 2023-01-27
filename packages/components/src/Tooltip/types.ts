@@ -41,6 +41,11 @@ export interface UseTooltipProps {
    * Specify a callback to be called each time this Tooltip is closed
    */
   canClose?: () => boolean
+  /**
+   * Specify a callback to be called before trying to open the Tooltip.
+   * Useful for cases when something needs to be checked on the trigger element first.
+   */
+  canOpen?: (triggerElement: HTMLElement) => boolean
   isOpen?: boolean
   /**
    * Can be one of: top, bottom, left, right, auto, with the modifiers: start,

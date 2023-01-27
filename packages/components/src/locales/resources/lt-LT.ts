@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2022 Looker Data Sciences, Inc.
+ Copyright (c) 2023 Google LLC
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -23,8 +23,10 @@
  SOFTWARE.
 
  */
+
 import dateLocale from 'date-fns/locale/lt'
-import type { I18nStateWithDates } from '@looker/i18n'
+
+import { mergeLocaleObjects } from '@looker/i18n'
 
 const resources = {
   AdvancedInputControls: {
@@ -78,7 +80,7 @@ const resources = {
     Options: 'Parinktys',
   },
   FieldTimeSelect: {
-    'Please enter a valid time': 'Įveskite teisingą laiką',
+    'Please use format HHMM': 'Naudokite formatą HH:MM',
   },
   GetIntentLabel: {
     Error: 'Klaida',
@@ -134,7 +136,9 @@ const resources = {
     Save: 'Išsaugoti',
   },
   RangeSlider: {
+    'Maximum Name': 'Daugiausiai {{name}}',
     'Maximum Value': 'Didžiausia vertė',
+    'Minimum Name': 'Mažiausiai {{name}}',
     'Minimum Value': 'Mažiausia vertė',
   },
   RequiredStar: {
@@ -149,8 +153,4 @@ const resources = {
   },
 }
 
-export const ltLT: I18nStateWithDates = {
-  dateLocale,
-  locale: 'lt-LT',
-  resources: { 'lt-LT': resources },
-}
+export const ltLT = mergeLocaleObjects([], 'lt-LT', resources, dateLocale)

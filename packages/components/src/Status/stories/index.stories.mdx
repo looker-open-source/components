@@ -1,0 +1,26 @@
+import { Status } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import storyCritical from '!!raw-loader!./Critical'
+import storyInform from '!!raw-loader!./Inform'
+import storyNeutral from '!!raw-loader!./Neutral'
+import storyPositive from '!!raw-loader!./Positive'
+import storyWarn from '!!raw-loader!./Warn'
+
+<Meta component={Status} title="Docs/Status" />
+
+# Status
+
+The `Status` component can be used to indicate `critical` `inform` `neutral` `positive` or `warn` of an item and to inform user and take actions. This is accomplished using `intent` property.
+
+<Editor code={storyCritical} />
+
+<Editor code={storyNeutral} />
+
+<Editor code={storyInform} />
+
+<Editor code={storyPositive} />
+
+<Editor code={storyWarn} />
+
+<ArgsTable of={Status} exclude={excludedProps} />

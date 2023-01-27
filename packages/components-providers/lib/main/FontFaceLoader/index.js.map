@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","names":[],"sources":["../../../src/FontFaceLoader/index.ts"],"sourcesContent":["/**\n * Copyright (c) 2023 Google LLC\n * SPDX-License-Identifier: MIT\n */\n\nexport { FontFaceLoader } from './FontFaceLoader'\n"],"mappings":";;;;;;;;;;;AAKA"}

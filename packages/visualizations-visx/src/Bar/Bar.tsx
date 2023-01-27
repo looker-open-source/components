@@ -24,7 +24,6 @@
 
  */
 
-import type { FC } from 'react'
 import React, { useContext } from 'react'
 import {
   DataProvider,
@@ -70,13 +69,13 @@ import { XYTooltip } from '../XYTooltip'
 import { Grid } from '../Grid'
 import numeral from 'numeral'
 
-export const Bar: FC<BarProps> = ({
+export const Bar = ({
   data,
   config,
   height = DEFAULT_HEIGHT,
   width,
   fields,
-}) => {
+}: BarProps) => {
   const { positioning, series: seriesList, legend } = config
 
   /**
@@ -132,13 +131,12 @@ export const Bar: FC<BarProps> = ({
 
   const xAxisLongestLabel = pickLongestLabel(measureValues)
 
-  const {
-    height: xAxisLongestLabelHeight,
-    width: xAxisLongestLabelWidth,
-  } = useMeasuredText(xAxisLongestLabel, {
-    fontFamily: visxTheme.axisStyles.x.bottom.tickLabel.fontFamily || 'Roboto',
-    fontSize: visxTheme.axisStyles.x.bottom.tickLabel.fontSize || '1rem',
-  })
+  const { height: xAxisLongestLabelHeight, width: xAxisLongestLabelWidth } =
+    useMeasuredText(xAxisLongestLabel, {
+      fontFamily:
+        visxTheme.axisStyles.x.bottom.tickLabel.fontFamily || 'Roboto',
+      fontSize: visxTheme.axisStyles.x.bottom.tickLabel.fontSize || '1rem',
+    })
 
   const averageMeasureValueLength =
     measureValues.join('').length / measureValues.length

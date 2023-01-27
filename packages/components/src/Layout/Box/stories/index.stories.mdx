@@ -1,0 +1,75 @@
+import { Box } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import storyBackgroundColors from '!!raw-loader!./BackgroundColors'
+import storyBasic from '!!raw-loader!./Basic'
+import storyBorders from '!!raw-loader!./Borders'
+import storyCustomized from '!!raw-loader!./Customized'
+import storyHeightsWidths from '!!raw-loader!./HeightsWidths'
+import storyPositioning from '!!raw-loader!./Positioning'
+import storySpacing from '!!raw-loader!./Spacing'
+import storySpacingResponsively from '!!raw-loader!./SpacingResponsively'
+
+<Meta component={Box} title="Docs/Box" />
+
+# Box
+
+`<Box />` is a low level component whose primary purpose is to provide a utility for easily controlling the spacing around elements in a consistent way using the [spacing values](/#!/Spacing).
+
+<Editor code={storyBasic} />
+
+## Spacing with Box
+
+The `<Box />` component allows you to control it's margin and padding properties for a chosen side.
+
+Using spacing on a `<Box />` is like following a recipe, you select:
+
+1. The type of spacing, margin or padding
+1. The side to apply it to
+1. The amount of space to apply
+
+To get the correct spacing you choose one value from each of the above columns. For example, to get 8px of margin on the right side you would do. `<Box mr="u2">` or if you wanted 40px of padding on all sides you would do `<Box p="u10">`.
+
+You can combine different spacing recipes to apply spacing to multiple sides at one time. For example if you wanted 16px of margin on the left and 20px of padding on the top you would do `<Box ml="u4" pt="u5">`
+
+<Editor code={storySpacing} />
+
+### Spacing Responsively
+
+Any one of the spacing properties can be passed an array of spacing sizes that will then apply at different breakpoints. There are 5 breakpoints slots that you can target. Here is an example of what that looks like.
+
+<Editor code={storySpacingResponsively} />
+
+## Customizing a Box
+
+Boxes provide a low-level customization interface which allows them to have different display properties, heights, widths, background colors, positioning, etc. Here are some examples:
+
+### Customized Display
+
+<Editor code={storyCustomized} />
+
+### Heights and Widths
+
+<Editor code={storyHeightsWidths} />
+
+### Background Colors
+
+Boxes can reference colors from the theme object, pulling any color on the theme's `colors` property.
+
+<Editor code={storyBackgroundColors} />
+
+### Positioning
+
+Boxes can set positioning when needed.
+
+<Editor code={storyPositioning} />
+
+### Borders
+
+Boxes can have borders.
+
+<Editor code={storyBorders} />
+
+## Props
+
+<ArgsTable of={Box} exclude={excludedProps} />

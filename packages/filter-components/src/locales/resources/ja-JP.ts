@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2022 Looker Data Sciences, Inc.
+ Copyright (c) 2023 Google LLC
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -23,11 +23,11 @@
  SOFTWARE.
 
  */
-import merge from 'lodash/merge'
+
 import dateLocale from 'date-fns/locale/ja'
-import type { I18nStateWithDates } from '../../utils'
-import { jaJP as expressionLocale } from '@looker/filter-expressions'
 import { jaJP as componentsLocale } from '@looker/components'
+import { jaJP as filterexpressionsLocale } from '@looker/filter-expressions'
+import { mergeLocaleObjects } from '@looker/i18n'
 
 const resources = {
   AddRemoveButtons: {
@@ -183,6 +183,11 @@ const resources = {
     Remove: '',
     Toggle: '',
   },
+  NoMatchingFields: {
+    'No Matching Fields': '一致するフィールドがありません',
+    'Try Something Else':
+      '別の検索語句を試すか、最初からもう一度 Explore を展開し、利用可能なフィールドを確認してください。',
+  },
   NumberFilter: {
     'any value': '任意の値',
   },
@@ -245,15 +250,9 @@ const resources = {
   },
 }
 
-export const jaJP: I18nStateWithDates = {
-  dateLocale,
-  locale: 'ja-JP',
-  resources: {
-    'ja-JP': merge(
-      {},
-      resources,
-      expressionLocale.resources['ja-JP'],
-      componentsLocale.resources['ja-JP']
-    ),
-  },
-}
+export const jaJP = mergeLocaleObjects(
+  [componentsLocale, filterexpressionsLocale],
+  'ja-JP',
+  resources,
+  dateLocale
+)

@@ -1,8 +1,8 @@
 {
-  "AllPageCountDisplayedSelected": "सभी {{pageCount}} दिखाए गए आइटम चुने गए",
-  "AllTotalCountSelected": "सभी {{totalCount}} आइटम चुने गए",
-  "Bulk Actions": "बल्क क्रियाएं",
-  "Clear Selection": "चुना गया हटाएं",
-  "SelectAllCountResults": "सभी {{totalCount}} नतीजे चुनें",
-  "SelectedCountOfTotalDisplayed": "{{pageCount}} के {{selectedItemCount}} दिखाए गए आइटम चुने गए"
+  "AllPageCountDisplayedSelected": "सभी {{pageCount}} दिखाई गई वस्तुएँ चुनी गई",
+  "AllTotalCountSelected": "सभी {{totalCount}} वस्तुएँ चुनी गई",
+  "Bulk Actions": "बल्क क्रियाएँ",
+  "Clear Selection": "चयन साफ़ करें",
+  "SelectAllCountResults": "सभी {{totalCount}} परिणाम चुनें",
+  "SelectedCountOfTotalDisplayed": "{{pageCount}} के {{selectedItemCount}} दिखाई गई वस्तुएँ चुनी गई"
 }

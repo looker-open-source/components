@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { DensityRamp } from '@looker/design-tokens';
 import type { ListItemDimensions } from '../types';
 export declare const density0: ListItemDimensions;

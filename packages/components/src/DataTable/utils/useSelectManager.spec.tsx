@@ -24,7 +24,6 @@
 
  */
 
-import type { FC } from 'react'
 import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { screen, fireEvent } from '@testing-library/react'
@@ -65,7 +64,7 @@ describe('useSelectManager', () => {
 
   type TestProps = { defaultSelected?: string[] }
 
-  const Test: FC<TestProps> = ({ defaultSelected }) => {
+  const Test = ({ defaultSelected }: TestProps) => {
     const allSelectableItems = data.map(({ id }) => String(id))
 
     const { onSelect, onSelectAll, selections } = useSelectManager(

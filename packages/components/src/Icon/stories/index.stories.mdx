@@ -1,0 +1,72 @@
+import { Icon } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import storyAccessibility from '!!raw-loader!./Accessibility'
+import storyArtwork from '!!raw-loader!./Artwork'
+import storyBasic from '!!raw-loader!./Basic'
+import storyColor from '!!raw-loader!./Color'
+import storyInsideComponents from '!!raw-loader!./InsideComponents'
+import storyPairedWithText from '!!raw-loader!./PairedWithText'
+import storySize from '!!raw-loader!./Size'
+
+<Meta component={Icon} title="Docs/Icon" />
+
+# Icon
+
+`<Icon />` component uses the property `icon` to display the correct icon.
+
+Icon is expected be a `ReactNode` element (most likely an SVG).
+
+<Editor code={storyBasic} />
+
+## Color
+
+`color` defaults to `currentColor` - that is, the text color of the component they are embedded within. However the developer can explicitly specify color as a prop.
+
+<Editor code={storyColor} />
+
+## Size
+
+`size` can be specified by using the size prop. By default the size will be medium.
+
+<Editor code={storySize} />
+
+## Accessibility
+
+When using an `Icon` we strongly encourage specification of a `title` attribute. If an `Icon` is used without an explicitly specified `title` attribute `aria-hidden="true"` will be added to hide the icon from screen readers. The assumption will be made that other efforts have been made to give the user context.
+
+<Editor code={storyAccessibility} />
+
+## Artwork
+
+<Editor code={storyArtwork} />
+
+## Icons Inside Components
+
+<Editor code={storyInsideComponents} />
+
+## Icons Paired With Text
+
+<Editor code={storyPairedWithText} />
+
+# Material Design Icons
+
+[Styled Icons](https://styled-icons.js.org/) has a massive suite of prebuilt icons for an array of icon libraries including the Material Design collection. Within suite of components we often leverage `@styled-icons/material`, `@styled-icons/material-outlined` and `@styled-icons/material-rounded`
+
+```js static
+import { Add } from '@styled-icons/material/Add'
+import { Add } from '@styled-icons/material-outlined/Add'
+import { Add } from '@styled-icons/material-rounded/Add'
+```
+
+# @looker/icons Library
+
+The Looker Components team ships a small suite of Looker-specific icons via a NPM package - `@looker/icons`. Below you can see a complete list of the icons we ship in our package. To use one simply add the package to your project and import the apppriate icon:
+
+```js static
+import { Pivot } from '@looker/icons'
+```
+
+## Props
+
+<ArgsTable of={Icon} exclude={excludedProps} />

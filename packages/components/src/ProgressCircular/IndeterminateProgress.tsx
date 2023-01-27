@@ -24,7 +24,6 @@
 
  */
 
-import type { FC } from 'react'
 import React from 'react'
 import styled, { css, keyframes } from 'styled-components'
 import type { ProgressCircularSizes } from './size'
@@ -36,9 +35,7 @@ interface IndeterminateSpinnerProps {
   size: ProgressCircularSizes
 }
 
-export const IndeterminateProgress: FC<IndeterminateSpinnerProps> = ({
-  size,
-}) => {
+export const IndeterminateProgress = ({ size }: IndeterminateSpinnerProps) => {
   const { stroke, half, radius, dashArray, dashOffset } = progressCircularSVG({
     size,
   })

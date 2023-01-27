@@ -1,4 +1,8 @@
-import type { FC, ReactNode } from 'react';
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
+import type { ReactNode } from 'react';
 import type { PromptBaseProps } from './PromptDialog';
 export interface PromptProps extends PromptBaseProps {
     /**
@@ -7,4 +11,4 @@ export interface PromptProps extends PromptBaseProps {
     children: (onClick: () => void) => ReactNode;
 }
 export declare function usePrompt(props: PromptBaseProps): [ReactNode, () => void];
-export declare const Prompt: FC<PromptProps>;
+export declare const Prompt: ({ children, ...props }: PromptProps) => JSX.Element;

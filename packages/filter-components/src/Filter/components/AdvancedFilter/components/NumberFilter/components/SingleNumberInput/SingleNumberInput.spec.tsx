@@ -1,27 +1,6 @@
-/*
-
- MIT License
-
- Copyright (c) 2022 Looker Data Sciences, Inc.
-
- Permission is hereby granted, free of charge, to any person obtaining a copy
- of this software and associated documentation files (the "Software"), to deal
- in the Software without restriction, including without limitation the rights
- to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- copies of the Software, and to permit persons to whom the Software is
- furnished to do so, subject to the following conditions:
-
- The above copyright notice and this permission notice shall be included in all
- copies or substantial portions of the Software.
-
- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- SOFTWARE.
-
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
  */
 import { renderWithTheme } from '@looker/components-test-utils'
 import type { FilterModel } from '@looker/filter-expressions'
@@ -31,7 +10,7 @@ import { SingleNumberInput } from './SingleNumberInput'
 
 describe('SingleNumberInput component', () => {
   const props = {
-    item: ({ id: 'test_id', type: '=', value: [] } as unknown) as FilterModel,
+    item: { id: 'test_id', type: '=', value: [] } as unknown as FilterModel,
     onChange: jest.fn(),
   }
   beforeEach(() => {
@@ -51,9 +30,7 @@ describe('SingleNumberInput component', () => {
     renderWithTheme(
       <SingleNumberInput
         {...props}
-        item={
-          ({ id: 'test_id', type: '=', value: 1 } as unknown) as FilterModel
-        }
+        item={{ id: 'test_id', type: '=', value: 1 } as unknown as FilterModel}
       />
     )
     // Can't use getByRole('textbox') for type="number"
@@ -61,6 +38,18 @@ describe('SingleNumberInput component', () => {
     // type="number" is important, it prevents non-numeric input
     expect(input).toHaveAttribute('type', 'number')
     expect(input).toHaveDisplayValue('1')
+  })
+
+  it('shows the current itemValue if it is zero (0)', () => {
+    // bug fix for b/265746708
+    renderWithTheme(
+      <SingleNumberInput
+        {...props}
+        item={{ id: 'test_id', type: '=', value: 0 } as unknown as FilterModel}
+      />
+    )
+    const input = screen.getByTestId('single-number')
+    expect(input).toHaveDisplayValue('0')
   })
 
   describe('calls onChange handler', () => {

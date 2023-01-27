@@ -1,3 +1,3 @@
-import type { FC } from 'react';
+/// <reference types="react" />
 import type { RangeSliderProps } from './types';
-export declare const RangeSlider: FC<RangeSliderProps>;
+export declare const RangeSlider: ({ value, options, onChange, name, }: RangeSliderProps) => JSX.Element;

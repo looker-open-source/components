@@ -1,0 +1,66 @@
+import { Slider } from '@looker/components'
+import { Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import basicStory from '!!raw-loader!./Basic'
+import minMaxValueStory from '!!raw-loader!./MinMaxValue'
+import invalidValueStory from '!!raw-loader!./InvalidValue'
+import stepStory from '!!raw-loader!./Step'
+import labelStory from '!!raw-loader!./Label'
+import disabledStory from '!!raw-loader!./Disabled'
+import controlledStory from '!!raw-loader!./Controlled'
+
+<Meta component={Slider} title="Docs/Slider" />
+
+# Slider
+
+`Slider` is used for selecting a single value. If you need to specify a range of values, use the [RangeSlider component](?path=/docs/docs-rangeslider--docs) instead.
+
+## Default Slider
+
+The `<Slider />` component renders a styled range slider on the page, with no accompanying label.
+
+<Editor code={basicStory} />
+
+## Value, Min, Max
+
+The `<Slider />` component accepts a `value` property, allowing the user to set the initial value at which the slider is initialized.
+It also accepts `min` and `max` values.
+
+<Editor code={minMaxValueStory} />
+
+Min and max default to the following values:
+
+- **min**: 0
+- **max**: 10
+
+The slider component will disregard any value prop that goes outside of the defined min or max. The following example illustrates default settings when `max=10` but `value=5000`
+
+<Editor code={invalidValueStory} />
+
+## Step
+
+Just like the standard HTML range input, you change the granularity of slider options by using the `step` prop.
+
+<Editor code={stepStory} />
+
+## Accessibility
+
+Slider accepts the standard aria-labelledby to help screen readers associate the range input with the relevant form label.
+
+<Editor code={labelStory} />
+
+## Disabled
+
+Use the disable property to gray out the Input, making it a fixed value.
+
+<Editor code={disabledStory} />
+
+## Controlled component
+
+If you'd like to read and control the input value externally, `Slider` accepts an onChange event callback.
+
+<Editor code={controlledStory} />
+
+## Props
+
+<ArgsTable of={Slider} exclude={excludedProps} />

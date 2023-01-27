@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 import type { ComboboxOptionObject } from '../../Combobox';
 import type { SelectOptionObject, SelectOptionProps } from '../types';
 export declare function getMatchingOption(value?: string, options?: SelectOptionObject[]): SelectOptionObject | undefined;

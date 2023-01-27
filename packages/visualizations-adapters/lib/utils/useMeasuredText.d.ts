@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
 export interface TextTheme {
     fontSize: number | string;
     fontFamily: string;

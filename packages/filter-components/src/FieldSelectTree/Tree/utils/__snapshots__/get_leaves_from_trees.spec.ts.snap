@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getLeavesFromTrees tests should match the snapshot 1`] = `
+Array [
+  Object {
+    "data": "some data",
+    "label": "a leaf node",
+  },
+  Object {
+    "data": "more data",
+    "label": "another leaf node",
+  },
+  Object {
+    "data": "hello",
+    "label": "child of anotha one",
+  },
+  Object {
+    "data": "some data",
+    "label": "a leaf node2",
+  },
+  Object {
+    "data": "more data2",
+    "label": "another leaf node2",
+  },
+  Object {
+    "data": "hello",
+    "label": "child of anotha one",
+  },
+]
+`;

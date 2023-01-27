@@ -1,15 +1,12 @@
-<Meta title="Docs/Develop/Add NPM Package" />
+<Meta title="Develop/Add npm Package" />
 
-# Add NPM Package
+# Add npm Package
 
-To add Looker UI Components to your project, add the [NPM package](https://www.npmjs.com/package/@looker/components) to your project:
+To add Looker UI Components to your project, add the [npm package](https://www.npmjs.com/package/@looker/components) to your project:
 
 ```bash static
-# Looker projects generally utilize Yarn (https://yarnpkg.com/)
-yarn add @looker/components styled-components react react-dom lodash
-
-# If you prefer you can of course also use NPM directly:
-npm install @looker/components styled-components lodash
+# Looker projects generally utilize npm (https://npm.org/)
+npm install --save @looker/components styled-components react react-dom lodash
 ```
 
 ## Using Typescript?
@@ -17,14 +14,7 @@ npm install @looker/components styled-components lodash
 If you're using Typescript you'll also need to add the type definitions for Styled Components.
 
 ```bash static
-yarn add --dev @types/styled-components @types/react @types/react-dom @types/styled-system
-```
-
-Unfortunately, due to [this issue with the type definitions for Styled Components](https://github.com/DefinitelyTyped/DefinitelyTyped/issues/33311) you'll need to apply a minor workaround if you're using ESLint along with Styled Component's Typescript definitions.
-
-```bash static
-rm -R node_modules/@types/react-native
-echo '@types/react-native' > .yarnclean
+npm install --save-dev @types/styled-components @types/react @types/react-dom @types/styled-system
 ```
 
 ## Setup
