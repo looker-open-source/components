@@ -1,0 +1,1 @@
+{"version":3,"file":"omit.js","names":["omitStyledProps","omit"],"sources":["../../../src/utils/omit.ts"],"sourcesContent":["/**\n * Copyright (c) 2023 Google LLC\n * SPDX-License-Identifier: MIT\n */\n\nimport { omit } from '@styled-system/props'\n\nexport const omitStyledProps = omit\n"],"mappings":";;;;;;AAKA;;AAEO,IAAMA,eAAe,GAAGC,WAAI;AAAA"}

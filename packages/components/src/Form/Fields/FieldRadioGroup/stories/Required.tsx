@@ -23,7 +23,6 @@ export default function Required() {
   ]
   return (
     <FieldRadioGroup
-      autoFocus
       label="Cheeses"
       description="Pick all your cheeses"
       options={options}

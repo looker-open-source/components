@@ -1,0 +1,1 @@
+{"version":3,"file":"pick.js","names":["pickStyledProps","pick"],"sources":["../../../src/utils/pick.ts"],"sourcesContent":["/**\n * Copyright (c) 2023 Google LLC\n * SPDX-License-Identifier: MIT\n */\n\nimport { pick } from '@styled-system/props'\n\nexport const pickStyledProps = pick\n"],"mappings":";;;;;;AAKA;;AAEO,IAAMA,eAAe,GAAGC,WAAI;AAAA"}

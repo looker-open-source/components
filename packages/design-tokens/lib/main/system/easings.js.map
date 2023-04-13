@@ -1,0 +1,1 @@
+{"version":3,"file":"easings.js","names":[],"sources":["../../../src/system/easings.ts"],"sourcesContent":["/**\n * Copyright (c) 2023 Google LLC\n * SPDX-License-Identifier: MIT\n */\n\nexport interface Easings {\n  ease: string\n  easeIn: string\n  easeInBack: string\n  easeOut: string\n  easeOutBack: string\n}\n"],"mappings":""}

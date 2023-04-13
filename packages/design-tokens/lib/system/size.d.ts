@@ -1,0 +1,18 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
+export declare type SizeNone = 'none';
+export declare type SizeXXXSmall = 'xxxsmall';
+export declare type SizeXXSmall = 'xxsmall';
+export declare type SizeXSmall = 'xsmall';
+export declare type SizeSmall = 'small';
+export declare type SizeMedium = 'medium';
+export declare type SizeLarge = 'large';
+export declare type SizeXLarge = 'xlarge';
+export declare type SizeXXLarge = 'xxlarge';
+export declare type SizeXXXLarge = 'xxxlarge';
+export declare type SizeXXXXLarge = 'xxxxlarge';
+export declare type SizeXXXXXLarge = 'xxxxxlarge';
+export declare type Sizes = SizeXXXSmall | SizeXXSmall | SizeXSmall | SizeSmall | SizeMedium | SizeLarge;
+export declare type SizeRamp = Record<Sizes, string>;

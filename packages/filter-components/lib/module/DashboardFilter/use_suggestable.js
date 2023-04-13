@@ -1,9 +1,9 @@
 import _defineProperty from "@babel/runtime/helpers/defineProperty";
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
+import { useEffectDeepEquals } from '@looker/components';
 import { model_fieldname_suggestions } from '@looker/sdk';
-import { useContext, useEffect, useMemo, useState } from 'react';
+import { useContext, useMemo, useState } from 'react';
 import { useTranslation } from '../utils';
 import { FilterContext } from '../FilterCollection';
 const shouldFetchSuggestions = field => {
@@ -43,7 +43,7 @@ const getLinkedFilterMap = (filterMap, listensToFilters) => {
         expression
       } = filterMap[title];
       if (filter.dimension && expression) {
-        acc[filter.dimension] = expression;
+        acc[filter.dimension] = encodeURIComponent(expression);
       }
     }
     return acc;
@@ -52,10 +52,11 @@ const getLinkedFilterMap = (filterMap, listensToFilters) => {
 
 export const useSuggestable = ({
   filter,
-  sdk
+  sdk: propsSdk
 }) => {
   const {
-    state
+    state,
+    sdk = propsSdk
   } = useContext(FilterContext);
   const filterMap = state.filterMap;
   const field = filter.field;
@@ -73,7 +74,7 @@ export const useSuggestable = ({
 
   const linkedFilterMap = useMemo(() => getLinkedFilterMap(filterMap, listens_to_filters), [filterMap, listens_to_filters]);
 
-  useEffect(() => {
+  useEffectDeepEquals(() => {
     const loadSuggestions = async () => {
       if (sdk && shouldFetchSuggestions(field)) {
         setLoading(true);
@@ -95,7 +96,7 @@ export const useSuggestable = ({
       }
     };
     loadSuggestions();
-  }, [filter.model, field, searchTerm, sdk, linkedFilterMap, translatedErrorMessage]);
+  }, [filter.model, field, searchTerm, sdk, linkedFilterMap || {}, translatedErrorMessage]);
   return {
     errorMessage,
     suggestableProps: _objectSpread({

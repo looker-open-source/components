@@ -1,0 +1,1 @@
+{"version":3,"file":"shadows.js","names":[],"sources":["../../../src/system/shadows.ts"],"sourcesContent":["/**\n * Copyright (c) 2023 Google LLC\n * SPDX-License-Identifier: MIT\n */\n\nexport type ElevationLayers = '1' | '2' | '3' | '4' | '5' | '6'\n\n/**\n * @deprecated - Use `Elevations` instead\n */\nexport type Shadows = { [K in ElevationLayers]: string }\n"],"mappings":""}

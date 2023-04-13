@@ -37,7 +37,6 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:testing-library/react',
     'plugin:@typescript-eslint/recommended',
-    'plugin:prettier/recommended',
     'plugin:react-hooks/recommended',
     'plugin:@looker/recommended',
   ],
@@ -62,6 +61,7 @@ module.exports = {
         '**/locales/**',
       ],
       rules: {
+        '@typescript-eslint/no-non-null-assertion': 'off',
         'i18next/no-literal-string': 'off',
       },
     },

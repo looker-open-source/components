@@ -374,9 +374,9 @@ test('Focus maintained with Select', async () => {
   // We this represents the host div, not the internal input.
   const select = screen.getByPlaceholderText('Components Select')
 
-  // Focus so the activeElement gets recorded. Firing the click event will
-  // not do this.
-  fireEvent.focus(select)
+  // Focus the select so it is set as the document.activeElement
+  // fireEvent.click() does not do this.
+  select.focus()
 
   // Click so the dropdown is opened. Focusing will not do this.
   fireEvent.click(select)
@@ -385,11 +385,6 @@ test('Focus maintained with Select', async () => {
   // option will not change the value.
   fireEvent.click(screen.getByText('1'))
 
-  // The select should briefly not have focus because this was clicked.
-  expect(select).not.toHaveFocus()
-
-  // We must wait for the select to be refocused on the next event loop.
-  await waitFor(() => {
-    expect(select).toHaveFocus()
-  })
+  // The select should still have focus.
+  expect(select).toHaveFocus()
 })

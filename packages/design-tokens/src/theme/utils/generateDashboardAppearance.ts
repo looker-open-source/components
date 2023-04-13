@@ -4,10 +4,8 @@
  */
 
 import type { Colors } from '../../color/types'
-import type {
-  DashboardAppearance,
-  TileTitleAlignment,
-} from '../dashboardAppearance'
+import type { DashboardAppearance } from '../dashboardAppearance'
+import { TileTitleAlignment } from '../dashboardAppearance'
 
 export const generateDashboardAppearance = (
   colors: Colors
@@ -24,7 +22,7 @@ export const generateDashboardAppearance = (
     body: colors.body,
     text_tile_background_color: colors.pageBackground,
     title: colors.title,
-    titleAlignment: 'center' as TileTitleAlignment,
+    title_alignment: TileTitleAlignment.center,
   },
   title: true,
 })

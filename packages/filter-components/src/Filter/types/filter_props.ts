@@ -134,6 +134,10 @@ export type FilterProps = ExpressionTypeOrFieldProps & {
    * Allow multiple values to filter by
    */
   allowMultipleValues?: boolean
+  /**
+   * Hide the add button even when allowMultipleValues is true
+   */
+  hideAdd?: boolean
 }
 
 /**

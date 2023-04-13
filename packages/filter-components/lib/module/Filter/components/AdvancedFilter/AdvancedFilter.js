@@ -26,7 +26,8 @@ export const AdvancedFilter = ({
   inline,
   validationMessage,
   isLoading,
-  allowMultipleValues
+  allowMultipleValues,
+  hideAdd
 }) => {
   const onAdd = (filterItem, keepValue) => {
     if (ast) {
@@ -48,7 +49,7 @@ export const AdvancedFilter = ({
   const filterList = items.map((item, itemIndex) => {
     const key = `${name}-${item.id}`;
     const isMatchesAdvanced = item.type === 'matchesAdvanced';
-    const showAdd = itemIndex === lastItemIndex && !isMatchesAdvanced && !(field !== null && field !== void 0 && field.parameter) && Boolean(allowMultipleValues);
+    const showAdd = itemIndex === lastItemIndex && !isMatchesAdvanced && !(field !== null && field !== void 0 && field.parameter) && Boolean(allowMultipleValues) && !hideAdd;
     const showRemove = lastItemIndex > 0 && !isMatchesAdvanced;
     return React.createElement(FilterComponent, {
       key: key,

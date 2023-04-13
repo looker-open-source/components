@@ -30,7 +30,7 @@
     "@looker/components-scripts": "*",
     "@looker/eslint-config-oss": "*",
     "@looker/prettier-config": "*",
-    "fast-glob": "^3.2.5",
+    "glob": "9.2.1",
     "fs-extra": "^10.0.0",
     "h2x-core": "^1.1.1",
     "h2x-plugin-jsx": "^1.2.0",

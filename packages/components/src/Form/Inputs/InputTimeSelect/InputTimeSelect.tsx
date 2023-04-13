@@ -378,6 +378,8 @@ const InputTimeSelectLayout = forwardRef(
           autoComplete={false}
           validationType={validationType}
           disabled={disabled}
+          // Leaving autoFocus to avoid changing legacy behavior, do not use for new features
+          // eslint-disable-next-line jsx-a11y/no-autofocus
           autoFocus={autoFocus}
           id={id}
           {...ariaProps}

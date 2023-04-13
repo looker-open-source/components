@@ -27,7 +27,6 @@ export default function Disabled() {
 
   return (
     <FieldCheckboxGroup
-      autoFocus
       defaultValue={['cheddar']}
       description="Pick all your cheeses"
       label="Cheeses"

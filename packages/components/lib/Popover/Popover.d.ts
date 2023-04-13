@@ -15,4 +15,4 @@ export interface PopoverProps extends UsePopoverProps {
     hoverDisclosureRef?: HTMLElement | null | RefObject<HTMLElement>;
 }
 export declare const popoverPropKeys: Array<keyof PopoverProps>;
-export declare const Popover: React.ForwardRefExoticComponent<Pick<PopoverProps, "content" | "width" | "disabled" | "id" | "aria-haspopup" | "children" | "isOpen" | "placement" | "onClose" | "canClose" | "triggerElement" | "setOpen" | "cancelClickOutside" | "pin" | "triggerToggle" | "focusTrap" | "scrollLock" | "surface" | "ariaLabel" | "hoverDisclosureRef" | "portalElement" | "disableScrollLock"> & React.RefAttributes<any>>;
+export declare const Popover: React.ForwardRefExoticComponent<Pick<PopoverProps, "width" | "children" | "content" | "aria-haspopup" | "isOpen" | "disabled" | "id" | "placement" | "onClose" | "canClose" | "triggerElement" | "setOpen" | "cancelClickOutside" | "pin" | "triggerToggle" | "focusTrap" | "scrollLock" | "surface" | "ariaLabel" | "hoverDisclosureRef" | "portalElement" | "disableScrollLock"> & React.RefAttributes<any>>;

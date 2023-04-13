@@ -1,0 +1,35 @@
+{
+  "name": "@looker/redux",
+  "license": "MIT",
+  "version": "0.0.1",
+  "main": "lib/main/index.js",
+  "module": "lib/module/index.js",
+  "types": "lib/index.d.ts",
+  "src": "src/index.ts",
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "repository": {
+    "url": "looker-open-source/components",
+    "directory": "packages/redux"
+  },
+  "scripts": {
+    "prepublishOnly": "lk prepublishOnly",
+    "test": "jest"
+  },
+  "peerDependencies": {
+    "@reduxjs/toolkit": "^1.1.0",
+    "react-redux": "*",
+    "redux-saga": "^1.1.3"
+  },
+  "devDependencies": {
+    "@looker/babel-preset-react": "*",
+    "@looker/babel-preset-typescript": "*",
+    "@looker/components-scripts": "*",
+    "@looker/jest-config": "*",
+    "@looker/prettier-config": "*",
+    "prettier": "2.8.2"
+  }
+}

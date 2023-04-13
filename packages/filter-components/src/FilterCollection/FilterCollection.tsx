@@ -25,26 +25,27 @@
  */
 
 import type { IDashboardFilter } from '@looker/sdk'
-import type { Reducer } from 'react'
+import type { IAPIMethods } from '@looker/sdk-rtl'
+import type { ReactNode, Reducer } from 'react'
 import React, { createContext, useCallback, useReducer } from 'react'
 
-type FilterWithExpresison = {
+type FilterWithExpression = {
   filter: IDashboardFilter
   expression?: string
 }
 
 export interface FilterCollectionAction {
   type: 'UPDATE_EXPRESSION' | 'REMOVE_FILTER'
-  payload: FilterWithExpresison
+  payload: FilterWithExpression
 }
 
-export type FilterMap = { [key: string]: FilterWithExpresison }
+export type FilterMap = { [key: string]: FilterWithExpression }
 
 export type FilterCollectionState = {
   filterMap: FilterMap
 }
 
-const getFilterMap = (filterMap: FilterMap, payload: FilterWithExpresison) => {
+const getFilterMap = (filterMap: FilterMap, payload: FilterWithExpression) => {
   const { filter, expression } = payload
   if (expression) {
     const newKeyValue = filter.title ? { [filter.title]: payload } : {}
@@ -77,6 +78,7 @@ export type FilterContextProps = {
   state: FilterCollectionState
   updateExpression: (filter: IDashboardFilter, expression: string) => void
   removeFilter: (filter: IDashboardFilter) => void
+  sdk?: IAPIMethods
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -91,6 +93,13 @@ const initialContext: FilterContextProps = {
 }
 export const FilterContext = createContext(initialContext)
 
+export type FilterCollectionProps = {
+  children: ReactNode | ReactNode[]
+  /**
+   * An initialized Looker SDK instance
+   */
+  sdk?: IAPIMethods
+}
 /**
  * FilterCollection's primary purpose is to manage a filter map
  * object, with filter metadata objects as keys and current
@@ -98,10 +107,11 @@ export const FilterContext = createContext(initialContext)
  *
  * This allows filters with `listens_to_filters` to pull the relevant
  * expressions out when performing a linked filter suggestion query.
+ *
+ * The initialized Looker SDK instance can also be stored here
+ * to be used for fetching suggestions.
  */
-export const FilterCollection = ({
-  children,
-}: React.PropsWithChildren<unknown>) => {
+export const FilterCollection = ({ children, sdk }: FilterCollectionProps) => {
   const [state, dispatch] = useReducer(reducer, initialState)
 
   const updateExpression = useCallback(
@@ -114,7 +124,9 @@ export const FilterCollection = ({
     dispatch({ type: 'REMOVE_FILTER', payload: { filter } })
   }, [])
   return (
-    <FilterContext.Provider value={{ removeFilter, state, updateExpression }}>
+    <FilterContext.Provider
+      value={{ removeFilter, state, sdk, updateExpression }}
+    >
       {children}
     </FilterContext.Provider>
   )

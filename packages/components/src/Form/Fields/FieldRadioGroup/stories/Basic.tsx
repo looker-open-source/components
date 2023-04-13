@@ -22,7 +22,6 @@ export default function Basic() {
   ]
   return (
     <FieldRadioGroup
-      autoFocus
       label="Cheeses"
       description="Pick all your cheeses"
       options={options}

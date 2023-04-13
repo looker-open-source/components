@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","names":[],"sources":["../../../src/color/index.ts"],"sourcesContent":["/**\n * Copyright (c) 2023 Google LLC\n * SPDX-License-Identifier: MIT\n */\n\nexport * from './colors'\nexport * from './types'\nexport * from './utils'\n"],"mappings":";;AAKA,cAAc,UAAU;AACxB,cAAc,SAAS;AACvB,cAAc,SAAS"}

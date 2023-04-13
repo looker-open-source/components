@@ -48,9 +48,9 @@ const initialContext = {
   updateExpression: noop
 };
 export const FilterContext = createContext(initialContext);
-
 export const FilterCollection = ({
-  children
+  children,
+  sdk
 }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const updateExpression = useCallback((filter, expression) => {
@@ -74,6 +74,7 @@ export const FilterCollection = ({
     value: {
       removeFilter,
       state,
+      sdk,
       updateExpression
     }
   }, children);

@@ -8,6 +8,7 @@ exports.useSuggestable = void 0;
 var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
 var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
 var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
+var _components = require("@looker/components");
 var _sdk = require("@looker/sdk");
 var _react = require("react");
 var _utils = require("../utils");
@@ -49,7 +50,7 @@ var getLinkedFilterMap = function getLinkedFilterMap(filterMap, listensToFilters
         filter = _filterMap$title2.filter,
         expression = _filterMap$title2.expression;
       if (filter.dimension && expression) {
-        acc[filter.dimension] = expression;
+        acc[filter.dimension] = encodeURIComponent(expression);
       }
     }
     return acc;
@@ -58,9 +59,11 @@ var getLinkedFilterMap = function getLinkedFilterMap(filterMap, listensToFilters
 
 var useSuggestable = function useSuggestable(_ref2) {
   var filter = _ref2.filter,
-    sdk = _ref2.sdk;
+    propsSdk = _ref2.sdk;
   var _useContext = (0, _react.useContext)(_FilterCollection.FilterContext),
-    state = _useContext.state;
+    state = _useContext.state,
+    _useContext$sdk = _useContext.sdk,
+    sdk = _useContext$sdk === void 0 ? propsSdk : _useContext$sdk;
   var filterMap = state.filterMap;
   var field = filter.field;
   var _useState = (0, _react.useState)(''),
@@ -88,7 +91,7 @@ var useSuggestable = function useSuggestable(_ref2) {
     return getLinkedFilterMap(filterMap, listens_to_filters);
   }, [filterMap, listens_to_filters]);
 
-  (0, _react.useEffect)(function () {
+  (0, _components.useEffectDeepEquals)(function () {
     var loadSuggestions = function () {
       var _ref3 = (0, _asyncToGenerator2["default"])(regeneratorRuntime.mark(function _callee() {
         var params, result;
@@ -132,7 +135,7 @@ var useSuggestable = function useSuggestable(_ref2) {
       };
     }();
     loadSuggestions();
-  }, [filter.model, field, searchTerm, sdk, linkedFilterMap, translatedErrorMessage]);
+  }, [filter.model, field, searchTerm, sdk, linkedFilterMap || {}, translatedErrorMessage]);
   return {
     errorMessage: errorMessage,
     suggestableProps: _objectSpread({

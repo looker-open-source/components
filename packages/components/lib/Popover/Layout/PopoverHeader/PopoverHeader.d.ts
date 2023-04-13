@@ -25,7 +25,7 @@ export declare type PopoverHeaderProps = DetailOptions & {
      */
     hidden?: boolean;
 };
-export declare const PopoverHeader: import("styled-components").StyledComponent<({ children, hideClose, detail, hidden, ...props }: PopoverHeaderProps) => JSX.Element, import("styled-components").DefaultTheme, import("packages/design-tokens/src").CompatibleHTMLProps<HTMLDivElement> & import("../../..").SpaceHelperProps & import("packages/design-tokens/src").FontSizeProps & import("packages/design-tokens/src").FontWeightProps & {
+export declare const PopoverHeader: import("styled-components").StyledComponent<({ children, hideClose, detail, hidden, ...props }: PopoverHeaderProps) => JSX.Element, import("styled-components").DefaultTheme, import("packages/design-tokens/lib").CompatibleHTMLProps<HTMLDivElement> & import("../../..").SpaceHelperProps & import("packages/design-tokens/lib").FontSizeProps & import("packages/design-tokens/lib").FontWeightProps & {
     children: ReactNode;
     detail?: ReactNode;
 }, never>;

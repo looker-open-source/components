@@ -27,7 +27,7 @@ export interface ButtonColorProps {
   color?: StatefulColor
 }
 export interface ButtonBaseProps
-  extends Omit<CompatibleHTMLProps<HTMLButtonElement>, 'type'>,
+  extends CompatibleHTMLProps<HTMLButtonElement>,
     ButtonSizeProps,
     ButtonColorProps,
     MaxWidthProps,

@@ -46,3 +46,15 @@ test('should show file name in textbox once file uploads', async () => {
 
   expect(text).toHaveValue('testing.json')
 })
+
+test('prop: type - defaults to button', () => {
+  renderWithTheme(<InputFile buttonText="btn" handleFile={jest.fn()} />)
+  expect(screen.getByText('btn')).toHaveAttribute('type', 'button')
+})
+
+test('prop: type - overriding has no effect', () => {
+  renderWithTheme(
+    <InputFile buttonText="btn" handleFile={jest.fn()} type="submit" />
+  )
+  expect(screen.getByText('btn')).toHaveAttribute('type', 'button')
+})

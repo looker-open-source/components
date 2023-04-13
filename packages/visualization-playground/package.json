@@ -4,7 +4,7 @@
   "version": "2.1.3",
   "main": "lib/main/index.js",
   "module": "lib/module/index.js",
-  "types": "lib/index.d.ts",
+  "types": "src/index.ts",
   "src": "src/index.ts",
   "description": "A demo and development environment for building Looker Visualization Components",
   "sideEffects": false,
@@ -26,10 +26,10 @@
     "prepublishOnly": "lk prepublishOnly"
   },
   "dependencies": {
-    "@looker/components": "4.1.1",
+    "@looker/components": "^4.1.3",
     "@looker/components-data": "^1.0.3",
     "@looker/extension-sdk-react": "^22.4.2",
-    "@looker/filter-components": "1.0.1",
+    "@looker/filter-components": "1.0.3",
     "@looker/sdk": "^22.4.2",
     "@looker/sdk-rtl": "^21.3.3",
     "@looker/visualizations": "^1.1.3",

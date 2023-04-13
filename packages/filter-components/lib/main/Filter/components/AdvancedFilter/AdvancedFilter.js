@@ -33,7 +33,8 @@ var AdvancedFilter = function AdvancedFilter(_ref) {
     inline = _ref.inline,
     validationMessage = _ref.validationMessage,
     isLoading = _ref.isLoading,
-    allowMultipleValues = _ref.allowMultipleValues;
+    allowMultipleValues = _ref.allowMultipleValues,
+    hideAdd = _ref.hideAdd;
   var onAdd = function onAdd(filterItem, keepValue) {
     if (ast) {
       var newItem = keepValue ? filterItem : _objectSpread(_objectSpread({}, filterItem), {}, {
@@ -54,7 +55,7 @@ var AdvancedFilter = function AdvancedFilter(_ref) {
   var filterList = items.map(function (item, itemIndex) {
     var key = "".concat(name, "-").concat(item.id);
     var isMatchesAdvanced = item.type === 'matchesAdvanced';
-    var showAdd = itemIndex === lastItemIndex && !isMatchesAdvanced && !(field !== null && field !== void 0 && field.parameter) && Boolean(allowMultipleValues);
+    var showAdd = itemIndex === lastItemIndex && !isMatchesAdvanced && !(field !== null && field !== void 0 && field.parameter) && Boolean(allowMultipleValues) && !hideAdd;
     var showRemove = lastItemIndex > 0 && !isMatchesAdvanced;
     return _react["default"].createElement(FilterComponent, {
       key: key,

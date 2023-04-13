@@ -167,6 +167,8 @@ export const PromptDialog = (props: PromptDialogProps) => {
           <Label htmlFor="promptInput">{inputLabel}</Label>
         </VisuallyHidden>
         <InputText
+          // Leaving autoFocus to avoid changing legacy behavior, do not use for new features
+          // eslint-disable-next-line jsx-a11y/no-autofocus
           autoFocus
           onKeyDown={onKeyDown}
           id="promptInput"

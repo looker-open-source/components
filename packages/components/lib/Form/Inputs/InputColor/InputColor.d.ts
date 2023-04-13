@@ -10,7 +10,7 @@ export declare type InputColorProps = Omit<ComboboxProps, 'value' | 'defaultValu
     value?: string;
     defaultValue?: string;
 };
-export declare const InputColor: import("styled-components").StyledComponent<React.ForwardRefExoticComponent<Omit<ComboboxProps, "value" | "onChange" | "defaultValue"> & Pick<InputTextProps, "onChange" | "readOnly" | "validationType"> & {
+export declare const InputColor: import("styled-components").StyledComponent<React.ForwardRefExoticComponent<Omit<ComboboxProps, "value" | "defaultValue" | "onChange"> & Pick<InputTextProps, "readOnly" | "onChange" | "validationType"> & {
     /**
      * No longer supported and will be removed in an upcoming 3.x release
      * @deprecated

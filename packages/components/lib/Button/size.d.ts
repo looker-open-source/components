@@ -34,5 +34,5 @@ export declare const buttonIconSizeMap: {
     medium: string;
     large: string;
 };
-export declare const buttonPadding: (hasIcon: boolean, size: ButtonBaseSizes | undefined) => "xsmall" | "small" | "medium" | "large" | "1.5rem";
+export declare const buttonPadding: (hasIcon: boolean, size: ButtonBaseSizes | undefined) => "small" | "medium" | "large" | "xsmall" | "1.5rem";
 export declare const buttonSize: (...args: any[]) => any;

@@ -122,27 +122,38 @@ const organizeKeyCommands = (keyCommand: string) => {
   return commandGroup
 }
 
+function getKeys(keys: string) {
+  const keysArray = keys.split('+')
+  const keyCommand = keysArray.at(-1) || ''
+  const firstKey = keysArray[0].toLowerCase()
+  const metaKeyRequired = ['cmd', 'ctl', 'ctrl'].includes(firstKey)
+  return { keyCommand, metaKeyRequired }
+}
+
 /**
  * Registers a global key command tied to a given element
- * @param keyCommand A single key to be used in the keydown listener
+ * @param keys A + delimited string of one or more keys to be used in the keydown listener
  * @param cb The function to be called on keydown
  * @param elementOrRef The element or ref associated with the key command
  */
 export const useGlobalHotkeys = (
-  keyCommand: string,
+  keys: string,
   cb: CB,
   elementOrRef: ElementOrRef
 ) => {
+  const { keyCommand, metaKeyRequired } = getKeys(keys)
+
   useEffect(() => {
     const target = getCurrentNode(elementOrRef)
 
     const handleKeydown = (e: KeyboardEvent) => {
-      if (e.key === keyCommand) {
+      const metaKeySatisfied = metaKeyRequired ? e.metaKey || e.ctrlKey : true
+      if (e.key === keyCommand && metaKeySatisfied) {
         // Compare with other existing key command elements and if this is
         // the 1st one (stacked on top or focused), call the handler
         const orderedCommands = organizeKeyCommands(keyCommand)
         if (orderedCommands[0]?.target === target) {
-          orderedCommands[0].cb()
+          orderedCommands[0].cb(e)
         }
       }
     }
@@ -156,5 +167,5 @@ export const useGlobalHotkeys = (
       removeCommand(keyCommand, target)
       document.removeEventListener('keydown', handleKeydown)
     }
-  }, [keyCommand, cb, elementOrRef])
+  }, [keyCommand, cb, elementOrRef, metaKeyRequired])
 }

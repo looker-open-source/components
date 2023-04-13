@@ -24,4 +24,4 @@ export declare const AvatarIcon: import("styled-components").StyledComponent<({ 
     bg: string;
     color: string;
     size: string;
-}, "color" | "size" | "bg">;
+}, "size" | "color" | "bg">;

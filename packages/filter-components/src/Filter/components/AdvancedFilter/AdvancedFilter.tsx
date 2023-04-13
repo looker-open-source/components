@@ -59,6 +59,7 @@ export const AdvancedFilter = ({
   validationMessage,
   isLoading,
   allowMultipleValues,
+  hideAdd,
 }: AdvancedFilterProps) => {
   const onAdd = (filterItem: FilterModel, keepValue?: boolean) => {
     if (ast) {
@@ -87,8 +88,10 @@ export const AdvancedFilter = ({
       itemIndex === lastItemIndex &&
       !isMatchesAdvanced &&
       !field?.parameter &&
-      Boolean(allowMultipleValues)
+      Boolean(allowMultipleValues) &&
+      !hideAdd
     const showRemove = lastItemIndex > 0 && !isMatchesAdvanced
+
     return (
       <FilterComponent
         key={key}

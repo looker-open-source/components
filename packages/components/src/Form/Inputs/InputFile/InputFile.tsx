@@ -76,11 +76,6 @@ export const InputFile = styled(
     onChange,
     onClick,
     placeholder,
-
-    /** Unused props destructured to be excluded from spread onto <ButtonOutline> */
-    type,
-    /** End of exclusion */
-
     ...restProps
   }: InputFileProps) => {
     const [fileName, setFileName] = useState('')
@@ -120,7 +115,11 @@ export const InputFile = styled(
           readOnly
           {...ariaProps}
         />
-        <ButtonOutline onClick={handleClick} {...buttonOutlineProps}>
+        <ButtonOutline
+          onClick={handleClick}
+          {...buttonOutlineProps}
+          type="button"
+        >
           {buttonText}
         </ButtonOutline>
         <HiddenFileInput

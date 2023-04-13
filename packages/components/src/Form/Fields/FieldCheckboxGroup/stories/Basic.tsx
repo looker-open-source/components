@@ -31,7 +31,6 @@ export default function Basic(props: FieldCheckboxGroupProps) {
 
   return (
     <FieldCheckboxGroup
-      autoFocus
       defaultValue={['cheddar']}
       description="Pick all your cheeses"
       label="Cheeses"

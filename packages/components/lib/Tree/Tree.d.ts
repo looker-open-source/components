@@ -8,9 +8,9 @@ export declare const Tree: import("styled-components").StyledComponent<({ border
     defaultOpen?: boolean | undefined;
     onClose?: (() => void) | undefined;
     onOpen?: (() => void) | undefined;
-} & import("../utils").GenericClickProps<HTMLElement> & Pick<ListItemProps, "color" | "icon" | "disabled" | "target" | "href" | "rel" | "download" | "selected" | "description" | "density" | "detail" | "truncate" | "hovered"> & {
+} & import("../utils").GenericClickProps<HTMLElement> & Pick<ListItemProps, "color" | "disabled" | "download" | "href" | "rel" | "selected" | "target" | "icon" | "detail" | "density" | "description" | "truncate" | "hovered"> & {
     border?: boolean | undefined;
     dividers?: boolean | undefined;
-    itemRole?: "link" | "none" | undefined;
+    itemRole?: "none" | "link" | undefined;
     label: React.ReactNode;
 }, never>;

@@ -13,6 +13,8 @@
   "dependencies": {
     "@looker/eslint-config-oss": "*",
     "@manypkg/get-packages": "1.1.3",
+    "eslint-plugin-disable": "2.0.3",
+    "eslint-plugin-jsx-a11y": "6.7.1",
     "eslint-traverse": "1.0.0",
     "jsonc-eslint-parser": "2.1.0",
     "read-pkg-up": "7.0.1"

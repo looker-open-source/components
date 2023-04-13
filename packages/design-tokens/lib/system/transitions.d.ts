@@ -1,0 +1,13 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
+export declare type TransitionNone = 'none';
+export declare type TransitionRapid = 'rapid';
+export declare type TransitionQuick = 'quick';
+export declare type TransitionSimple = 'simple';
+export declare type TransitionModerate = 'moderate';
+export declare type TransitionComplex = 'complex';
+export declare type TransitionIntricate = 'intricate';
+export declare type Transitions = TransitionNone | TransitionRapid | TransitionQuick | TransitionSimple | TransitionModerate | TransitionComplex | TransitionIntricate;
+export declare type TransitionRamp = Record<Transitions, number>;

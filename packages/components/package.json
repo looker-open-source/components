@@ -1,10 +1,10 @@
 {
   "name": "@looker/components",
   "license": "MIT",
-  "version": "4.1.1",
+  "version": "4.1.3",
   "main": "lib/main/index.js",
   "module": "lib/module/index.js",
-  "types": "lib/index.d.ts",
+  "types": "src/index.ts",
   "src": "src/index.ts",
   "sideEffects": false,
   "publishConfig": {
@@ -27,8 +27,8 @@
     "coverage": "lk coverage"
   },
   "dependencies": {
-    "@looker/components-providers": "1.5.30",
-    "@looker/design-tokens": "3.1.0",
+    "@looker/components-providers": "^1.5.31",
+    "@looker/design-tokens": "^3.1.1",
     "@looker/i18n": "1.0.0",
     "@popperjs/core": "^2.6.0",
     "@styled-icons/material": "10.34.0",
@@ -44,7 +44,6 @@
     "uuid": "*"
   },
   "peerDependencies": {
-    "csstype": "3.0.2",
     "lodash": "^4.17.20",
     "react": "16.14.0 - 18",
     "react-dom": "16.14.0 - 18",
@@ -64,7 +63,9 @@
     "@storybook/testing-react": "^0.0.22",
     "@testing-library/jest-dom": "5.16.5",
     "@testing-library/react": "*",
+    "@testing-library/react-hooks": "*",
     "@testing-library/user-event": "*",
+    "csstype": "3.0.2",
     "jest-styled-components": "7.1.1",
     "lodash": "^4.17.20",
     "prettier": "2.8.2",

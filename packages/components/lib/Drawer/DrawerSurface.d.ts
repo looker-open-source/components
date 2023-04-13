@@ -23,4 +23,4 @@ export declare const DrawerSurface: import("styled-components").StyledComponent<
 }) => JSX.Element, import("styled-components").DefaultTheme, {
     'aria-modal': boolean;
     role: string;
-} & DrawerSurfaceProps, "role" | "aria-modal">;
+} & DrawerSurfaceProps, "aria-modal" | "role">;

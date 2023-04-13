@@ -18,7 +18,11 @@ In your `eslint` config:
 }
 ```
 
-## Rules
+## Custom Rules
 
 - [`license-header`](src/licenseHeader/README.md) - Checks for a valid license header in public packages.
 - [`no-private-dependencies`](src/noPrivateDependencies/README.md) - Prevents public packages from depending on private packages.
+
+## Bundled Rules
+
+- `eslint-plugin-jsx-a11y`

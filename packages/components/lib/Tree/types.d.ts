@@ -4,7 +4,7 @@ import type { ListItemProps } from '../ListItem';
 import type { GenericClickProps } from '../utils/useClickable';
 export declare const treeItemInnerPropKeys: readonly ["color", "density", "description", "detail", "disabled", "hovered", "icon", "selected", "truncate", "download", "href", "rel", "target"];
 export declare type TreeItemInnerPropKey = typeof treeItemInnerPropKeys[number];
-export declare const isTreeItemInnerPropKey: (propKey: string) => propKey is "color" | "icon" | "disabled" | "target" | "href" | "rel" | "download" | "selected" | "description" | "density" | "detail" | "truncate" | "hovered";
+export declare const isTreeItemInnerPropKey: (propKey: string) => propKey is "color" | "disabled" | "download" | "href" | "rel" | "selected" | "target" | "icon" | "detail" | "density" | "description" | "truncate" | "hovered";
 export declare type TreeProps = ControlledLoosely & GenericClickProps<HTMLElement> & Pick<ListItemProps, TreeItemInnerPropKey> & {
     /**
      * If true, vertical lines will extend from the Tree indicator (and all sub-Trees' indicators)

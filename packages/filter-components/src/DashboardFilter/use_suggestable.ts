@@ -23,10 +23,11 @@
  SOFTWARE.
 
  */
+import { useEffectDeepEquals } from '@looker/components'
 import type { IDashboardFilter, ILookmlModelExploreField } from '@looker/sdk'
 import type { IAPIMethods } from '@looker/sdk-rtl'
 import { model_fieldname_suggestions } from '@looker/sdk'
-import { useContext, useEffect, useMemo, useState } from 'react'
+import { useContext, useMemo, useState } from 'react'
 import { useTranslation } from '../utils'
 import type { FilterProps } from '../Filter/types/filter_props'
 import type { FilterMap } from '../FilterCollection'
@@ -84,7 +85,7 @@ const getLinkedFilterMap = (
     if (filterMap[title]) {
       const { filter, expression } = filterMap[title]
       if (filter.dimension && expression) {
-        acc[filter.dimension] = expression
+        acc[filter.dimension] = encodeURIComponent(expression)
       }
     }
     return acc
@@ -97,8 +98,11 @@ const getLinkedFilterMap = (
  * calls the API to fetch suggestions if applicable,
  * and returns the necessary props
  */
-export const useSuggestable = ({ filter, sdk }: UseSuggestableProps) => {
-  const { state } = useContext(FilterContext)
+export const useSuggestable = ({
+  filter,
+  sdk: propsSdk,
+}: UseSuggestableProps) => {
+  const { state, sdk = propsSdk } = useContext(FilterContext)
   const filterMap = state.filterMap
 
   const field = filter.field as ILookmlModelExploreField | undefined
@@ -123,7 +127,7 @@ export const useSuggestable = ({ filter, sdk }: UseSuggestableProps) => {
   )
 
   // linkedFilterMap is empty for linked filters, and undefined for non-linked filters
-  useEffect(() => {
+  useEffectDeepEquals(() => {
     const loadSuggestions = async () => {
       // Only need to fetch suggestions if they're not included on the field
       if (sdk && shouldFetchSuggestions(field)) {
@@ -153,7 +157,7 @@ export const useSuggestable = ({ filter, sdk }: UseSuggestableProps) => {
     field,
     searchTerm,
     sdk,
-    linkedFilterMap,
+    linkedFilterMap || {},
     translatedErrorMessage,
   ])
 

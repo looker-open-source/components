@@ -4,7 +4,7 @@
   "version": "1.0.3",
   "main": "lib/main/index.js",
   "module": "lib/module/index.js",
-  "types": "lib/index.d.ts",
+  "types": "src/index.ts",
   "src": "src/index.ts",
   "sideEffects": false,
   "publishConfig": {
@@ -26,7 +26,7 @@
     "coverage": "lk coverage"
   },
   "dependencies": {
-    "@looker/components-providers": "1.5.30",
+    "@looker/components-providers": "^1.5.31",
     "@looker/i18n": "^1.0.0",
     "@looker/visualizations-adapters": "^1.0.3",
     "@styled-icons/material": "10.34.0",

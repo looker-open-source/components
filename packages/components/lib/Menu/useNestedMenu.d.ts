@@ -11,7 +11,7 @@ export interface UseNestedMenuProps extends Pick<CompatibleHTMLProps<HTMLLIEleme
 export declare const useNestedMenu: ({ id, onClick, onKeyDown, onMouseEnter, onMouseLeave, nestedMenu, }: UseNestedMenuProps) => {
     domProps: {
         'aria-expanded'?: boolean | undefined;
-        'aria-haspopup'?: boolean | "grid" | "dialog" | "menu" | "listbox" | "false" | "true" | "tree" | undefined;
+        'aria-haspopup'?: boolean | "dialog" | "menu" | "grid" | "listbox" | "tree" | "true" | "false" | undefined;
         ref?: ((node: HTMLElement | null) => void) | undefined;
         onClick: (event: MouseEvent<HTMLLIElement, globalThis.MouseEvent>) => void;
         onKeyDown: (event: KeyboardEvent<HTMLLIElement>) => void;

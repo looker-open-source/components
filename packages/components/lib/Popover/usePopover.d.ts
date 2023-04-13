@@ -76,7 +76,7 @@ export declare const usePopover: ({ "aria-haspopup": ariaHaspopup, canClose, con
     contentContainer: HTMLElement | null;
     domProps: {
         'aria-expanded': boolean;
-        'aria-haspopup': boolean | "grid" | "dialog" | "menu" | "listbox" | "false" | "true" | "tree" | undefined;
+        'aria-haspopup': boolean | "dialog" | "menu" | "grid" | "listbox" | "tree" | "true" | "false" | undefined;
         onClick: (event: SyntheticEvent) => void;
         ref: (node: HTMLElement | null) => void;
     };

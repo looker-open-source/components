@@ -13,7 +13,7 @@ export declare const ComboboxOption: import("styled-components").StyledComponent
     lineHeight: import("styled-system").ResponsiveValue<import("@looker/design-tokens").FontSizes, Required<import("styled-system").Theme<import("styled-system").TLengthStyledSystem>>>;
     px: import("styled-system").ResponsiveValue<string | number | symbol, Required<import("styled-system").Theme<import("styled-system").TLengthStyledSystem>>>;
     py: import("styled-system").ResponsiveValue<string | number | symbol, Required<import("styled-system").Theme<import("styled-system").TLengthStyledSystem>>>;
-}, "color" | "display" | "fontSize" | "lineHeight" | "py" | "px">;
+}, "display" | "color" | "fontSize" | "lineHeight" | "py" | "px">;
 export declare function ComboboxOptionTextInternal({ highlightText, ...props }: CompatibleHTMLProps<HTMLSpanElement> & HighlightTextProps): JSX.Element;
 export declare const ComboboxOptionText: import("styled-components").StyledComponent<typeof ComboboxOptionTextInternal, import("styled-components").DefaultTheme, {}, never>;
 export {};

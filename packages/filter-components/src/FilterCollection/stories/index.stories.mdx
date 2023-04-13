@@ -1,0 +1,22 @@
+import { FilterCollection } from '@looker/filter-components'
+import { ImportMessage, Editor, excludedProps } from '@looker/storybook'
+import { ArgsTable, Meta } from '@storybook/addon-docs'
+import storyBasic from '!!raw-loader!./Basic'
+
+<Meta component={FilterCollection} title="Filters/Docs/FilterCollection" />
+
+# FilterCollection
+
+<ImportMessage packageName="filter-components">FilterCollection</ImportMessage>
+
+`FilterCollection` provides context for a set of `DashboardFilter`s.
+It can store a reference to your application's initialized Looker SDK instance,
+used for fetching suggestions on applicable filters.
+And it keeps track of the current filter values in case any of the filters are linked,
+meaning the suggeestions of one are filtered by the current value of another.
+
+<Editor code={storyBasic} />
+
+## Props
+
+<ArgsTable of={FilterCollection} exclude={excludedProps} />

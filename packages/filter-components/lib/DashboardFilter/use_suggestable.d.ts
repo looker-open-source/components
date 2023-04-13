@@ -17,32 +17,12 @@ export interface UseSuggestableProps {
  * calls the API to fetch suggestions if applicable,
  * and returns the necessary props
  */
-export declare const useSuggestable: ({ filter, sdk }: UseSuggestableProps) => {
+export declare const useSuggestable: ({ filter, sdk: propsSdk, }: UseSuggestableProps) => {
     errorMessage: string;
     suggestableProps: {
-        field: ILookmlModelExploreField | null;
-        type?: string | undefined;
-        expressionType?: import("packages/filter-expressions/lib").FilterExpressionType | undefined;
-        config?: any;
-        expression: string;
-        name: string;
-        isLinked?: boolean | undefined;
-        isLoading: boolean;
-        isRequired?: boolean | undefined;
-        inline?: boolean | undefined;
-        onChange?: ((value: import("../Filter/types/filter_props").FilterChangeProps) => void) | undefined;
-        onInputChange: (value: string) => void;
-        loadUserAttributes?: (() => void) | undefined;
-        userAttributes?: import("packages/filter-expressions/lib").UserAttributeWithValue[] | undefined;
-        suggestions?: string[] | undefined;
-        enumerations?: import("..").Option[] | null | undefined;
-        dispatchConfigTypeChange?: boolean | undefined;
-        skipFilterConfigCheck?: boolean | undefined;
-        allowMultipleValues?: boolean | undefined;
-    } | {
         type: string;
         field?: ILookmlModelExploreField | null | undefined;
-        expressionType?: import("packages/filter-expressions/lib").FilterExpressionType | undefined;
+        expressionType?: import("packages/filter-expressions/src").FilterExpressionType | undefined;
         config?: any;
         expression: string;
         name: string;
@@ -53,16 +33,17 @@ export declare const useSuggestable: ({ filter, sdk }: UseSuggestableProps) => {
         onChange?: ((value: import("../Filter/types/filter_props").FilterChangeProps) => void) | undefined;
         onInputChange: (value: string) => void;
         loadUserAttributes?: (() => void) | undefined;
-        userAttributes?: import("packages/filter-expressions/lib").UserAttributeWithValue[] | undefined;
+        userAttributes?: import("packages/filter-expressions/src").UserAttributeWithValue[] | undefined;
         suggestions?: string[] | undefined;
         enumerations?: import("..").Option[] | null | undefined;
         dispatchConfigTypeChange?: boolean | undefined;
         skipFilterConfigCheck?: boolean | undefined;
         allowMultipleValues?: boolean | undefined;
+        hideAdd?: boolean | undefined;
     } | {
-        expressionType: import("packages/filter-expressions/lib").FilterExpressionType;
-        field?: ILookmlModelExploreField | null | undefined;
+        field: ILookmlModelExploreField | null;
         type?: string | undefined;
+        expressionType?: import("packages/filter-expressions/src").FilterExpressionType | undefined;
         config?: any;
         expression: string;
         name: string;
@@ -73,12 +54,34 @@ export declare const useSuggestable: ({ filter, sdk }: UseSuggestableProps) => {
         onChange?: ((value: import("../Filter/types/filter_props").FilterChangeProps) => void) | undefined;
         onInputChange: (value: string) => void;
         loadUserAttributes?: (() => void) | undefined;
-        userAttributes?: import("packages/filter-expressions/lib").UserAttributeWithValue[] | undefined;
+        userAttributes?: import("packages/filter-expressions/src").UserAttributeWithValue[] | undefined;
         suggestions?: string[] | undefined;
         enumerations?: import("..").Option[] | null | undefined;
         dispatchConfigTypeChange?: boolean | undefined;
         skipFilterConfigCheck?: boolean | undefined;
         allowMultipleValues?: boolean | undefined;
+        hideAdd?: boolean | undefined;
+    } | {
+        expressionType: import("packages/filter-expressions/src").FilterExpressionType;
+        type?: string | undefined;
+        field?: ILookmlModelExploreField | null | undefined;
+        config?: any;
+        expression: string;
+        name: string;
+        isLinked?: boolean | undefined;
+        isLoading: boolean;
+        isRequired?: boolean | undefined;
+        inline?: boolean | undefined;
+        onChange?: ((value: import("../Filter/types/filter_props").FilterChangeProps) => void) | undefined;
+        onInputChange: (value: string) => void;
+        loadUserAttributes?: (() => void) | undefined;
+        userAttributes?: import("packages/filter-expressions/src").UserAttributeWithValue[] | undefined;
+        suggestions?: string[] | undefined;
+        enumerations?: import("..").Option[] | null | undefined;
+        dispatchConfigTypeChange?: boolean | undefined;
+        skipFilterConfigCheck?: boolean | undefined;
+        allowMultipleValues?: boolean | undefined;
+        hideAdd?: boolean | undefined;
     } | {
         suggestions: string[];
         isLoading: boolean;

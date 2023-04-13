@@ -26,7 +26,11 @@
 
 import type { SpecifiableTextColors } from '../color/types'
 
-export type TileTitleAlignment = 'left' | 'center' | 'right'
+export enum TileTitleAlignment {
+  left = 'left',
+  center = 'center',
+  right = 'right',
+}
 
 /**
  * DashboardAppearance stores customization settings that control a dashboard's
@@ -75,6 +79,10 @@ export interface DashboardAppearance {
    */
   center_dashboard_title: boolean
   /**
+   * Font size of the dashboard title
+   */
+  dashboard_title_font_size?: string
+  /**
    * Default appearance for non-text tiles displayed within this DashboardAppearance
    */
   tiles: TileAppearance
@@ -85,7 +93,11 @@ export interface TileAppearance extends TileAppearanceColors {
    * The text alignment of tile titles
    * @default 'center'
    */
-  titleAlignment: TileTitleAlignment
+  title_alignment: TileTitleAlignment
+  /**
+   * The box shadow of tiles.
+   */
+  box_shadow?: string
 }
 
 export interface TileAppearanceColors extends SpecifiableTextColors {

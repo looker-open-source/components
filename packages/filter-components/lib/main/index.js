@@ -215,15 +215,15 @@ Object.keys(_DashboardFilter).forEach(function (key) {
     }
   });
 });
-var _FieldSelectTree = require("./FieldSelectTree");
-Object.keys(_FieldSelectTree).forEach(function (key) {
+var _TreeSelect = require("./TreeSelect");
+Object.keys(_TreeSelect).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
-  if (key in exports && exports[key] === _FieldSelectTree[key]) return;
+  if (key in exports && exports[key] === _TreeSelect[key]) return;
   Object.defineProperty(exports, key, {
     enumerable: true,
     get: function get() {
-      return _FieldSelectTree[key];
+      return _TreeSelect[key];
     }
   });
 });

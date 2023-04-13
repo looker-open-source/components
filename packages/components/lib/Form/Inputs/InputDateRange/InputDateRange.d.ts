@@ -16,4 +16,4 @@ export declare type InputDateRangeProps = {
     validationType?: ValidationType;
     value: RangeModifier;
 };
-export declare const InputDateRange: import("styled-components").StyledComponent<React.ForwardRefExoticComponent<Pick<InputDateRangeProps, "value" | "disabled" | "id" | "aria-labelledby" | "onChange" | "readOnly" | "locale" | "validationType" | "onValidationFail" | "dateStringFormat"> & React.RefAttributes<HTMLInputElement>>, import("styled-components").DefaultTheme, {}, never>;
+export declare const InputDateRange: import("styled-components").StyledComponent<React.ForwardRefExoticComponent<Pick<InputDateRangeProps, "value" | "aria-labelledby" | "disabled" | "readOnly" | "id" | "onChange" | "locale" | "validationType" | "onValidationFail" | "dateStringFormat"> & React.RefAttributes<HTMLInputElement>>, import("styled-components").DefaultTheme, {}, never>;

@@ -3,11 +3,12 @@
  * SPDX-License-Identifier: MIT
  */
 import { AdvancedFilter } from './AdvancedFilter'
+import type { AdvancedFilterProps } from './AdvancedFilter'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { screen } from '@testing-library/react'
 import React from 'react'
 
-const renderAdvancedFilter = (props?: any) => {
+const renderAdvancedFilter = (props?: Partial<AdvancedFilterProps>) => {
   return renderWithTheme(
     <AdvancedFilter
       updateAST={jest.fn()}
@@ -35,22 +36,31 @@ describe('Advanced filters', () => {
       expect(addButtonIcon).toBeInTheDocument()
     })
 
-    it('should not render the add button when allowMultipleOptions is false', () => {
+    it('should not render the add button when allowMultipleValues is false', () => {
       renderAdvancedFilter({
-        allowMultipleOptions: false,
+        allowMultipleValues: false,
       })
-      const addButtonIcon = screen.queryByRole('img')
+      const addButtonIcon = screen.queryByText('Add')
+      expect(addButtonIcon).not.toBeInTheDocument()
+    })
+
+    it('should not render the add button when allowMultipleValues and hideAdd are both true', () => {
+      renderAdvancedFilter({
+        allowMultipleValues: true,
+        hideAdd: true,
+      })
+      const addButtonIcon = screen.queryByText('Add')
       expect(addButtonIcon).not.toBeInTheDocument()
     })
 
     it('should not render the add button when the field is a parameter', () => {
       renderAdvancedFilter({
-        allowMultipleOptions: false,
+        allowMultipleValues: true,
         field: {
-          paremeter: true,
+          parameter: true,
         },
       })
-      const addButtonIcon = screen.queryByRole('img')
+      const addButtonIcon = screen.queryByText('Add')
       expect(addButtonIcon).not.toBeInTheDocument()
     })
   })

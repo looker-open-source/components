@@ -14,4 +14,4 @@ export declare const Slider: import("styled-components").StyledComponent<React.F
     lineHeight: import("styled-system").ResponsiveValue<import("@looker/design-tokens").FontSizes, Required<import("styled-system").Theme<import("styled-system").TLengthStyledSystem>>>;
     mt: import("styled-system").ResponsiveValue<string | number | symbol, Required<import("styled-system").Theme<import("styled-system").TLengthStyledSystem>>>;
     width: import("styled-system").ResponsiveValue<import("csstype").Property.Width<import("styled-system").TLengthStyledSystem>, Required<import("styled-system").Theme<import("styled-system").TLengthStyledSystem>>>;
-} & SliderProps, "fontSize" | "lineHeight" | "width" | "mt">;
+} & SliderProps, "width" | "fontSize" | "lineHeight" | "mt">;

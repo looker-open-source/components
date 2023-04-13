@@ -34,7 +34,6 @@ export default function Controlled() {
           label="Standard Time"
           value={controlledTime}
           onChange={setControlledTime}
-          autoFocus
         />
         <FieldTimeSelect
           label="Military Time"

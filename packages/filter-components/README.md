@@ -50,12 +50,12 @@ import {
 export const FiltersSection = ({ filters, filterValues, updateFilters }) => {
   return (
     <ComponentsProvider {...koKR}>
-      {filters.map((filter) => (
+      {filters.map(filter => (
         <DashboardFilter
           key={filter.id}
           filter={filter}
           expression={filterValues[filter.name]}
-          onChange={(expression) => updateFilters(filter.name, expression)}
+          onChange={expression => updateFilters(filter.name, expression)}
         />
       ))}
     </ComponentsProvider>

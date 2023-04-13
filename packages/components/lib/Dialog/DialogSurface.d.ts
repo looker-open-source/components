@@ -42,4 +42,4 @@ export declare const DialogSurface: import("styled-components").StyledComponent<
 }) => JSX.Element, import("styled-components").DefaultTheme, {
     'aria-modal': boolean;
     role: string;
-} & DialogSurfaceProps, "role" | "aria-modal">;
+} & DialogSurfaceProps, "aria-modal" | "role">;

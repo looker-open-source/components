@@ -26,7 +26,12 @@ export declare const complexLayoutCSS: import("styled-components").FlattenInterp
     border?: (string | boolean) | undefined;
     borderBottom?: (string | boolean) | undefined;
     borderLeft?: (string | boolean) | undefined;
-    borderRight?: (string | boolean) | undefined;
+    borderRight?: (string | boolean) | undefined; /**
+     * Rules here should provide convenience styling for Box derived components.
+     * Generally anything here could be overwritten by explicit values set via
+     * Box's prop values. For example a function here that sets 'cursor: pointer'
+     * would be overwritten by an explicit <Box cursor='copy'/>.
+     */
     borderTop?: (string | boolean) | undefined;
     borderX?: (string | boolean) | undefined;
     borderY?: (string | boolean) | undefined;

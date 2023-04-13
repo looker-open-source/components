@@ -8,7 +8,6 @@ module.exports = {
   rules: {
     camelcase: 'off',
     'import/order': 'off',
-    'prettier/prettier': 'off',
     'sort-keys-fix/sort-keys-fix': 'off',
   },
 }

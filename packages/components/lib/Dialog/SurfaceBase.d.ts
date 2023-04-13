@@ -11,5 +11,5 @@ export declare const surfaceTransition: () => import("styled-components").Flatte
 export declare const SurfaceBase: import("styled-components").StyledComponent<(props: SurfaceLayoutProps) => JSX.Element, import("styled-components").DefaultTheme, {
     'aria-modal': boolean;
     role: string;
-}, "role" | "aria-modal">;
+}, "aria-modal" | "role">;
 export {};

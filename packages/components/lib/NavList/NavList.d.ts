@@ -11,17 +11,17 @@
  *     - background color is `keySubtle`
  *   - `ListItem` at the root are indented to align properly with `Tree`(s) at the root as well
  */
-export declare const NavList: import("styled-components").StyledComponent<import("react").ForwardRefExoticComponent<import("styled-system").HeightProps<Required<import("styled-system").Theme<import("styled-system").TLengthStyledSystem>>, import("csstype").Property.Height<import("styled-system").TLengthStyledSystem>> & import("styled-system").WidthProps<Required<import("styled-system").Theme<import("styled-system").TLengthStyledSystem>>, import("csstype").Property.Width<import("styled-system").TLengthStyledSystem>> & Omit<import("packages/design-tokens/src").CompatibleHTMLProps<HTMLUListElement>, "label"> & import("packages/design-tokens/src").DensityProp & {
+export declare const NavList: import("styled-components").StyledComponent<import("react").ForwardRefExoticComponent<import("styled-system").HeightProps<Required<import("styled-system").Theme<import("styled-system").TLengthStyledSystem>>, import("csstype").Property.Height<import("styled-system").TLengthStyledSystem>> & import("styled-system").WidthProps<Required<import("styled-system").Theme<import("styled-system").TLengthStyledSystem>>, import("csstype").Property.Width<import("styled-system").TLengthStyledSystem>> & Omit<import("packages/design-tokens/lib").CompatibleHTMLProps<HTMLUListElement>, "label"> & import("packages/design-tokens/lib").DensityProp & {
     color?: import("../List").ListColor | undefined;
     disableKeyboardNav?: boolean | undefined;
     iconGutter?: boolean | undefined;
-    fontFamily?: import("packages/design-tokens/src").FontFamilies | undefined;
+    fontFamily?: import("packages/design-tokens/lib").FontFamilies | undefined;
     windowing?: boolean | undefined;
-} & import("react").RefAttributes<HTMLUListElement>>, import("styled-components").DefaultTheme, import("styled-system").HeightProps<Required<import("styled-system").Theme<import("styled-system").TLengthStyledSystem>>, import("csstype").Property.Height<import("styled-system").TLengthStyledSystem>> & import("styled-system").WidthProps<Required<import("styled-system").Theme<import("styled-system").TLengthStyledSystem>>, import("csstype").Property.Width<import("styled-system").TLengthStyledSystem>> & Omit<import("packages/design-tokens/src").CompatibleHTMLProps<HTMLUListElement>, "label"> & import("packages/design-tokens/src").DensityProp & {
+} & import("react").RefAttributes<HTMLUListElement>>, import("styled-components").DefaultTheme, import("styled-system").HeightProps<Required<import("styled-system").Theme<import("styled-system").TLengthStyledSystem>>, import("csstype").Property.Height<import("styled-system").TLengthStyledSystem>> & import("styled-system").WidthProps<Required<import("styled-system").Theme<import("styled-system").TLengthStyledSystem>>, import("csstype").Property.Width<import("styled-system").TLengthStyledSystem>> & Omit<import("packages/design-tokens/lib").CompatibleHTMLProps<HTMLUListElement>, "label"> & import("packages/design-tokens/lib").DensityProp & {
     color?: import("../List").ListColor | undefined;
     disableKeyboardNav?: boolean | undefined;
     iconGutter?: boolean | undefined;
-    fontFamily?: import("packages/design-tokens/src").FontFamilies | undefined;
+    fontFamily?: import("packages/design-tokens/lib").FontFamilies | undefined;
     windowing?: boolean | undefined;
 } & {
     color: import("../List").ListColor;

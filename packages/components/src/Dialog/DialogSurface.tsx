@@ -74,6 +74,15 @@ export interface DialogSurfaceProps {
    * no larger than the viewport height.
    */
   height?: ResponsiveValue<string>
+
+  /**
+   * Explicitly specifying top allows the Dialog to be positioned within
+   * the visible viewport of an IFRAME. This should only be used with placement
+   * 'top' in embed scenarios where the scrollY position of the parent window
+   * and offsetTop of the containing IFRAME is known. Under normal circumstances
+   * top should NEVER be set.
+   */
+  top?: ResponsiveValue<string>
 }
 
 const { space, breakpoints } = theme
@@ -139,26 +148,32 @@ to {
 `
 
 export const DialogSurface = styled(SurfaceBase).attrs<DialogSurfaceProps>(
-  ({ placement = defaultDialogSurfacePlacement, width = 'medium' }) => ({
+  ({
+    placement = defaultDialogSurfacePlacement,
+    width = 'medium',
+    top = '0',
+  }) => ({
     placement,
+    top,
     width,
   })
 )<DialogSurfaceProps>`
   box-shadow: ${({ theme }) => theme.elevations.plus3};
   position: relative;
+  top: ${({ top }) => top};
 
   ${dialogWidth}
   ${({ placement }) => placements[placement || defaultDialogSurfacePlacement]}
-  ${height}
+    ${height}
 
-  @media screen and (min-width: ${breakpoints[0]}) {
+    @media screen and (min-width: ${breakpoints[0]}) {
     border-radius: ${({ theme }) => theme.radii.medium};
   }
 
   &.entering {
-    animation: ${dialogIn} ${surfaceTransition};
+    animation: ${dialogIn} ${surfaceTransition} forwards;
   }
   &.exiting {
-    animation: ${dialogOut} ${surfaceTransition};
+    animation: ${dialogOut} ${surfaceTransition} forwards;
   }
 `

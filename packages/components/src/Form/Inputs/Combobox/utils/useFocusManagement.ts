@@ -3,7 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { useCallbackRef, useSafeLayoutEffect } from '../../../../utils'
+import { useEffect } from 'react'
+import { useCallbackRef } from '../../../../utils'
 import { ComboboxActionType } from './state'
 
 // Move focus back to the input if we start navigating w/ the
@@ -12,9 +13,7 @@ import { ComboboxActionType } from './state'
 
 export function useFocusManagement(lastActionType?: ComboboxActionType) {
   const [inputElement, inputCallbackRef] = useCallbackRef<HTMLInputElement>()
-  // useSafeLayoutEffect so that the cursor goes to the end of the input instead
-  // of awkwardly at the beginning, unclear to my why ...
-  useSafeLayoutEffect(() => {
+  useEffect(() => {
     if (
       lastActionType === ComboboxActionType.SELECT_WITH_CLICK ||
       lastActionType === ComboboxActionType.INTERACT

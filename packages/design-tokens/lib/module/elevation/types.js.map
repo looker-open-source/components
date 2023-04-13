@@ -1,0 +1,1 @@
+{"version":3,"file":"types.js","names":[],"sources":["../../../src/elevation/types.ts"],"sourcesContent":["/**\n * Copyright (c) 2023 Google LLC\n * SPDX-License-Identifier: MIT\n */\n\nexport type ElevationRamp =\n  | 'plus0'\n  | 'plus1'\n  | 'plus2'\n  | 'plus3'\n  | 'plus4'\n  | 'plus5'\n\nexport type Elevations = { [K in ElevationRamp]: string }\n"],"mappings":""}

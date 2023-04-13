@@ -27,7 +27,6 @@ export default function Inline() {
 
   return (
     <FieldCheckboxGroup
-      autoFocus
       defaultValue={['cheddar']}
       description="Pick all your cheeses"
       label="Cheeses"

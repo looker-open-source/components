@@ -30,21 +30,29 @@ describe('Advanced filters', function () {
       var addButtonIcon = _react.screen.queryByText('Add');
       expect(addButtonIcon).toBeInTheDocument();
     });
-    it('should not render the add button when allowMultipleOptions is false', function () {
+    it('should not render the add button when allowMultipleValues is false', function () {
       renderAdvancedFilter({
-        allowMultipleOptions: false
+        allowMultipleValues: false
       });
-      var addButtonIcon = _react.screen.queryByRole('img');
+      var addButtonIcon = _react.screen.queryByText('Add');
+      expect(addButtonIcon).not.toBeInTheDocument();
+    });
+    it('should not render the add button when allowMultipleValues and hideAdd are both true', function () {
+      renderAdvancedFilter({
+        allowMultipleValues: true,
+        hideAdd: true
+      });
+      var addButtonIcon = _react.screen.queryByText('Add');
       expect(addButtonIcon).not.toBeInTheDocument();
     });
     it('should not render the add button when the field is a parameter', function () {
       renderAdvancedFilter({
-        allowMultipleOptions: false,
+        allowMultipleValues: true,
         field: {
-          paremeter: true
+          parameter: true
         }
       });
-      var addButtonIcon = _react.screen.queryByRole('img');
+      var addButtonIcon = _react.screen.queryByText('Add');
       expect(addButtonIcon).not.toBeInTheDocument();
     });
   });

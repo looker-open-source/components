@@ -1,7 +1,7 @@
 {
   "name": "@looker/design-tokens",
   "license": "MIT",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "main": "lib/main/index.js",
   "module": "lib/module/index.js",
   "types": "src/index.ts",
@@ -22,11 +22,11 @@
   "dependencies": {
     "@styled-system/props": "^5.1.5",
     "@styled-system/should-forward-prop": "5.1.5",
+    "@types/styled-system": "5.1.13",
     "polished": "^4.1.3",
     "styled-system": "*"
   },
   "peerDependencies": {
-    "csstype": "3.0.2",
     "lodash": "^4.17.20",
     "react": "16.14.0 - 18",
     "react-dom": "16.14.0 - 18",
@@ -40,6 +40,7 @@
     "@looker/jest-config": "*",
     "@looker/prettier-config": "*",
     "@testing-library/react": "*",
+    "csstype": "3.0.2",
     "lodash": "^4.17.20",
     "prettier": "2.8.2",
     "react": "16.14.0",

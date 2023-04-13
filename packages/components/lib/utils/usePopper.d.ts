@@ -9,7 +9,7 @@ export interface UsePopperProps {
     };
 }
 export declare function usePopper({ anchor, target, options }: UsePopperProps): {
-    placement: "bottom" | "left" | "right" | "top" | "auto" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end";
+    placement: "auto" | "bottom" | "top" | "right" | "left" | "auto-start" | "auto-end" | "top-start" | "top-end" | "bottom-start" | "bottom-end" | "right-start" | "right-end" | "left-start" | "left-end";
     popperInstanceRef: import("react").MutableRefObject<Instance | undefined>;
     style: CSSProperties;
     targetRef: (node: HTMLElement | null) => void;

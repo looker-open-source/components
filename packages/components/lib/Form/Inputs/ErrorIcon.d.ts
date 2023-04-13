@@ -7,4 +7,4 @@ export declare const ErrorIcon: import("styled-components").StyledComponent<Reac
     color: "critical";
     icon: JSX.Element;
     size: "xsmall";
-}, "color" | "size" | "icon">;
+}, "size" | "color" | "icon">;

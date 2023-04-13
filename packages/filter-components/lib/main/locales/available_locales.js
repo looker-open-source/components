@@ -5,6 +5,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.availableLocales = void 0;
 
-var availableLocales = ['cs-CZ', 'da-DK', 'de-DE', 'en', 'es-ES', 'fi-FI', 'fr-CA', 'fr-FR', 'he-IL', 'hi-IN', 'it-IT', 'ja-JP', 'ko-KR', 'lt-LT', 'nb-NO', 'nl-NL', 'pl-PL', 'pt-BR', 'pt-PT', 'ru-RU', 'sv-SE', 'th-TH', 'tr-TR', 'uk-UA', 'zh-CN', 'zh-TW'];
+var availableLocales = ['zh-TW', 'zh-CN', 'uk-UA', 'tr-TR', 'th-TH', 'sv-SE', 'ru-RU', 'pt-PT', 'pt-BR', 'pl-PL', 'nl-NL', 'nb-NO', 'lt-LT', 'ko-KR', 'ja-JP', 'it-IT', 'hi-IN', 'he-IL', 'fr-FR', 'fr-CA', 'fi-FI', 'es-ES', 'en', 'de-DE', 'da-DK', 'cs-CZ'];
 exports.availableLocales = availableLocales;
 //# sourceMappingURL=available_locales.js.map

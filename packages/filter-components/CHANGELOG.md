@@ -1,3 +1,9 @@
+## 1.0.3 (2023-03-28)
+
+### Bug Fixes
+
+- **DashboardFilter:** URI-encode linked filter values when fetching suggestions b/267303329
+
 ## 1.0.1 (2023-01-26)
 
 ### Bug Fixes

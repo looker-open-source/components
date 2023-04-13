@@ -12,7 +12,6 @@ export { default as Evenly } from './Evenly'
 export { default as Gap } from './Gap'
 export { default as Properties } from './Properties'
 export { default as Reverse } from './Reverse'
-export { default as SpaceCrush } from './SpaceCrush'
 
 export default {
   argTypes,

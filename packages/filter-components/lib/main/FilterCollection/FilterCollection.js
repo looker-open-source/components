@@ -52,10 +52,10 @@ var initialContext = {
   updateExpression: noop
 };
 var FilterContext = (0, _react.createContext)(initialContext);
-
 exports.FilterContext = FilterContext;
 var FilterCollection = function FilterCollection(_ref2) {
-  var children = _ref2.children;
+  var children = _ref2.children,
+    sdk = _ref2.sdk;
   var _useReducer = (0, _react.useReducer)(reducer, initialState),
     _useReducer2 = (0, _slicedToArray2["default"])(_useReducer, 2),
     state = _useReducer2[0],
@@ -81,6 +81,7 @@ var FilterCollection = function FilterCollection(_ref2) {
     value: {
       removeFilter: removeFilter,
       state: state,
+      sdk: sdk,
       updateExpression: updateExpression
     }
   }, children);

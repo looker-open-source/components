@@ -33,7 +33,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 
 const path = require('path')
-const fg = require('fast-glob')
+const { glob } = require('glob')
 const fs = require('fs-extra')
 const h2x = require('./h2x')
 
@@ -78,7 +78,7 @@ export * from './${name}'
 `
 
 const generate = async () => {
-  const files = await fg(['svg/*.svg'])
+  const files = await glob(['svg/*.svg'], { nodir: true })
   const icons = files.map(icon => icon.replace('.svg', '').replace('svg/', ''))
 
   if (icons.length === 0) {

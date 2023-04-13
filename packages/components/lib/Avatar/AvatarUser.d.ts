@@ -10,4 +10,4 @@ export interface AvatarUserProps extends AvatarProps {
 export declare const AvatarUser: import("styled-components").StyledComponent<({ color, user, role, size, ...props }: AvatarUserProps) => JSX.Element, import("styled-components").DefaultTheme, {
     color: string;
     size: string;
-}, "color" | "size">;
+}, "size" | "color">;

@@ -4,7 +4,7 @@
   "version": "1.0.2",
   "main": "lib/main/index.js",
   "module": "lib/module/index.js",
-  "types": "lib/index.d.ts",
+  "types": "src/index.ts",
   "src": "src/index.ts",
   "sideEffects": false,
   "publishConfig": {
@@ -37,7 +37,6 @@
     "@looker/jest-config": "*",
     "@looker/prettier-config": "*",
     "@types/pegjs": "^0.10.1",
-    "glob": "7.1.6",
     "prettier": "2.8.2"
   },
   "peerDependencies": {

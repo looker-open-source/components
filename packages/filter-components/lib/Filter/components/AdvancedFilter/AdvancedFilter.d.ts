@@ -7,4 +7,4 @@ import type { FilterASTNode } from '@looker/filter-expressions';
 export interface AdvancedFilterProps extends InternalFilterProps {
     updateAST: (ast?: FilterASTNode) => void;
 }
-export declare const AdvancedFilter: ({ ast, updateAST, name, onInputChange, changeFilter, suggestions, enumerations, isLinked, expressionType, userAttributes, field, inline, validationMessage, isLoading, allowMultipleValues, }: AdvancedFilterProps) => JSX.Element | null;
+export declare const AdvancedFilter: ({ ast, updateAST, name, onInputChange, changeFilter, suggestions, enumerations, isLinked, expressionType, userAttributes, field, inline, validationMessage, isLoading, allowMultipleValues, hideAdd, }: AdvancedFilterProps) => JSX.Element | null;
